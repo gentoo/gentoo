@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=dev-libs/wayland-1.21.0
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5=[egl,gles2-only=,libinput]
+	>=dev-qt/qtgui-${QTMIN}:5=[accessibility,egl,gles2-only=,libinput]
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
