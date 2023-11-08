@@ -316,7 +316,6 @@ x11-misc/sselp
 # #898314, #898322, #898324, #898326.
 dev-libs/libtubo
 x11-libs/librfm
-x11-misc/rodent
 
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
