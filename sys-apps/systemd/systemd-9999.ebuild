@@ -36,9 +36,9 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnutls homed http idn importd iptables +kmod
+	fido2 +gcrypt gnutls homed http idn importd iptables kernel-install +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
-	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
+	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -47,6 +47,8 @@ REQUIRED_USE="
 	homed? ( cryptsetup pam openssl )
 	importd? ( curl lzma || ( gcrypt openssl ) )
 	pwquality? ( homed )
+	boot? ( kernel-install )
+	ukify? ( boot )
 "
 RESTRICT="!test? ( test )"
 
@@ -124,7 +126,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
-	boot? (
+	ukify? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "${PEFILE_DEPEND}")
 	)
@@ -170,10 +172,8 @@ BDEPEND="
 	$(python_gen_cond_dep "
 		dev-python/jinja[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
-		boot? (
-			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
-			test? ( ${PEFILE_DEPEND} )
-		)
+		boot? ( >=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}] )
+		ukify? ( test? ( ${PEFILE_DEPEND} ) )
 	")
 "
 
@@ -300,6 +300,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool importd)
 		$(meson_native_use_bool importd bzip2)
 		$(meson_native_use_bool importd zlib)
+		$(meson_native_use_bool kernel-install)
 		$(meson_native_use_bool kmod)
 		$(meson_use lz4)
 		$(meson_use lzma xz)
@@ -317,6 +318,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool selinux)
 		$(meson_native_use_bool tpm tpm2)
 		$(meson_native_use_bool test dbus)
+		$(meson_native_use_bool ukify)
 		$(meson_native_use_bool xkb xkbcommon)
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
@@ -395,10 +397,8 @@ multilib_src_install_all() {
 		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
 	fi
 
-	if use boot; then
-		python_fix_shebang "${ED}"
-		secureboot_auto_sign
-	fi
+	use ukify && python_fix_shebang "${ED}"
+	use boot && secureboot_auto_sign
 }
 
 migrate_locale() {
