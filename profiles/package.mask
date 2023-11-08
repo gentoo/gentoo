@@ -332,7 +332,6 @@ sys-fs/dmg2img
 # Incompatible with newer media-video/ffmpeg, bug #914499.
 # Deps appenh and loadlib not used by anything else.
 # Removal on 2023-11-04.
-media-video/jubler
 dev-java/appenh
 dev-java/loadlib
 
