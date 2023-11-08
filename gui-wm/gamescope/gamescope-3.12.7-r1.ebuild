@@ -22,7 +22,7 @@ RDEPEND="
 	=dev-libs/libliftoff-0.4*
 	>=dev-libs/wayland-1.21
 	>=dev-libs/wayland-protocols-1.17
-	=gui-libs/wlroots-0.16*[X]
+	=gui-libs/wlroots-0.16*[X,libinput(+)]
 	>=media-libs/libdisplay-info-0.1.1
 	media-libs/libsdl2[video,vulkan]
 	media-libs/vulkan-loader
