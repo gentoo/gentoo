@@ -280,11 +280,6 @@ app-text/coolreader
 # Removal on 2023-11-09.
 dev-libs/libchdr
 
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Upstream long gone, unmaintained, EAPI 6, only Gentoo still packages
-# this. Removal on 2023-11-07. Bug #905187.
-app-misc/dvorakng
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
