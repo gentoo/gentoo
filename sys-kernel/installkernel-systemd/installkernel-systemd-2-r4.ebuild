@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Wrap kernel-install from systemd-boot as installkernel"
+DESCRIPTION="Wrap kernel-install from systemd as installkernel"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 S="${WORKDIR}"
 
