@@ -3,48 +3,17 @@
 
 EAPI=8
 
-inherit autotools elisp-common readme.gentoo-r1 toolchain-funcs
-
-if [[ ${PV##*.} = 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="emacs-27"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
-	S="${EGIT_CHECKOUT_DIR}"
-	SLOT="${PV%%.*}-vcs"
-else
-	# FULL_VERSION keeps the full version number, which is needed in
-	# order to determine some path information correctly for copy/move
-	# operations later on
-	FULL_VERSION="${PV%%_*}"
-	SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
-	S="${WORKDIR}/emacs-${FULL_VERSION}"
-	# PV can be in any of the following formats:
-	# 27.1                 released version (slot 27)
-	# 27.1_rc1             upstream release candidate (27)
-	# 27.0.9999            live ebuild (slot 27-vcs)
-	# 27.0.90              upstream prerelease snapshot (27-vcs)
-	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
-	if [[ ${PV} == *_pre* ]]; then
-		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
-		S="${WORKDIR}/emacs"
-	elif [[ ${PV//[0-9]} != "." ]]; then
-		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
-	fi
-	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-6.tar.xz"
-	PATCHES=("${WORKDIR}/patch")
-	SLOT="${PV%%.*}"
-	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-fi
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
+SRC_URI="mirror://gnu/emacs/${P}.tar.xz
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm xwidgets zlib"
-RESTRICT="test"
+SLOT="26"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm xwidgets zlib"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
@@ -52,10 +21,8 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
 	games? ( acct-group/gamestat )
-	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
-	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -83,14 +50,13 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:= )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
+		imagemagick? ( media-gfx/imagemagick:0=[jpeg?,png?,svg?,tiff?] )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
+			x11-libs/libXft
 			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18[X] )
-			!cairo? ( x11-libs/libXft )
-			harfbuzz? ( media-libs/harfbuzz:0= )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -128,8 +94,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 DEPEND="${RDEPEND}
 	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
-BDEPEND="sys-apps/texinfo
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 IDEPEND="app-eselect/eselect-emacs"
@@ -138,19 +103,14 @@ RDEPEND+=" ${IDEPEND}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
+# FULL_VERSION keeps the full version number, which is needed in
+# order to determine some path information correctly for copy/move
+# operations later on
+FULL_VERSION="${PV%%_*}"
+S="${WORKDIR}/emacs-${FULL_VERSION}"
+PATCHES=("${WORKDIR}/patch")
 
 src_prepare() {
-	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
-			configure.ac)
-		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
-		einfo "Emacs branch: ${EGIT_BRANCH}"
-		einfo "Commit: ${EGIT_VERSION}"
-		einfo "Emacs version number: ${FULL_VERSION}"
-		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
-			|| die "Upstream version number changed to ${FULL_VERSION}"
-	fi
-
 	default
 
 	# Fix filename reference in redirected man page
@@ -160,6 +120,15 @@ src_prepare() {
 }
 
 src_configure() {
+	strip-flags
+	filter-flags -pie					#526948
+
+	if use ia64; then
+		replace-flags "-O[2-9]" -O1		#325373
+	else
+		replace-flags "-O[3-9]" -O2
+	fi
+
 	local myconf
 
 	if use alsa; then
@@ -193,7 +162,6 @@ src_configure() {
 		if use xft; then
 			myconf+=" --with-xft"
 			myconf+=" $(use_with cairo)"
-			myconf+=" $(use_with harfbuzz)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
@@ -242,20 +210,6 @@ src_configure() {
 			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
-	if tc-is-cross-compiler; then
-		# Configure a CBUILD directory when cross-compiling to make tools
-		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
-		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
-		popd >/dev/null || die
-		# Don't try to execute the binary for dumping during the build
-		myconf+=" --with-dumping=none"
-	elif use m68k; then
-		# Workaround for https://debbugs.gnu.org/44531
-		myconf+=" --with-dumping=unexec"
-	else
-		myconf+=" --with-dumping=pdumper"
-	fi
-
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX} \
@@ -266,14 +220,11 @@ src_configure() {
 		--without-hesiod \
 		--without-pop \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
-		--with-pdumper \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
-		$(use_with gmp libgmp) \
 		$(use_with gpm) \
-		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
@@ -290,17 +241,8 @@ src_configure() {
 src_compile() {
 	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
 
-	if tc-is-cross-compiler; then
-		# Build native tools for compiling lisp etc.
-		emake -C "${S}-build" src
-		emake lib	   # Cross-compile dependencies first for timestamps
-		# Save native build tools in the cross-directory
-		cp "${S}-build"/lib-src/make-{docfile,fingerprint} lib-src || die
-		# Specify the native Emacs to compile lisp
-		emake -C lisp all EMACS="${S}-build/src/emacs"
-	fi
-
-	emake
+	# Disable sandbox when dumping. For the unbelievers, see bug #131505
+	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install() {
@@ -406,11 +348,6 @@ src_install() {
 			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
 			symlink it into /Applications by yourself."
 	fi
-	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
-		a portable dump file due to being cross-compiled.
-		To create this file at run time, execute the following command:
-		\\n${EMACS_SUFFIX} --batch -Q --eval='(dump-emacs-portable
-		\"/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/emacs.pdmp\")'"
 	readme.gentoo_create_doc
 }
 
