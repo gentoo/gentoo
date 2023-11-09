@@ -38,7 +38,8 @@ RESTRICT="binchecks strip test
 
 BDEPEND="initramfs? ( app-arch/cpio )
 	compress-xz? ( app-arch/xz-utils )
-	compress-zstd? ( app-arch/zstd )"
+	compress-zstd? ( app-arch/zstd )
+	app-misc/rdfind"
 
 #add anything else that collides to this
 RDEPEND="!savedconfig? (
