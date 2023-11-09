@@ -12,7 +12,7 @@ SRC_URI="https://github.com/erincatto/Box2D/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="doc test"
+IUSE="doc test testbed"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-cpp/doctest )"
@@ -28,11 +28,19 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBOX2D_BUILD_TESTBED=OFF # bundled libs, broken anyway right now
+		-DBOX2D_BUILD_TESTBED=$(usex testbed)
 		-DBOX2D_BUILD_UNIT_TESTS=$(usex test)
 		-DBOX2D_BUILD_DOCS=$(usex doc)
 	)
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use testbed; then
+		dobin "${BUILD_DIR}"/bin/testbed
+	fi
 }
 
 src_test() {
