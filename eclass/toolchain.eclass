@@ -1378,7 +1378,10 @@ toolchain_src_configure() {
 			--disable-systemtap
 			--enable-host-shared
 			--enable-languages=jit
-			--without-isl
+			# Might be used for the just-built GCC. Easier to just
+			# respect USE=graphite here in case the user passes some
+			# graphite flags rather than try strip them out.
+			$(use_with graphite isl)
 			--without-zstd
 			--with-system-zlib
 		)
