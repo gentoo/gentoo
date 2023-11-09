@@ -273,13 +273,6 @@ media-video/transcode
 # Removal on 2023-11-11
 app-text/coolreader
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
-# Formerly added for unbundling on games-emulation/pcsx2, which is
-# no longer needed. Has no real use on its own, has no revdeps, and
-# does not have real releases (snapshot-only).
-# Removal on 2023-11-09.
-dev-libs/libchdr
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
