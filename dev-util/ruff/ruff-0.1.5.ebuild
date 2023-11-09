@@ -34,7 +34,7 @@ CRATES="
 	bit-set@0.5.3
 	bit-vec@0.6.3
 	bitflags@1.3.2
-	bitflags@2.4.0
+	bitflags@2.4.1
 	bstr@1.6.2
 	bumpalo@3.13.0
 	cachedir@0.3.0
@@ -46,17 +46,17 @@ CRATES="
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.6
-	clap_builder@4.4.6
+	clap@4.4.7
+	clap_builder@4.4.7
 	clap_complete@4.4.0
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.4.0
 	clap_complete_nushell@0.1.11
-	clap_derive@4.4.2
-	clap_lex@0.5.1
+	clap_derive@4.4.7
+	clap_lex@0.6.0
 	clearscreen@2.0.1
-	codspeed-criterion-compat@2.3.0
-	codspeed@2.3.0
+	codspeed-criterion-compat@2.3.1
+	codspeed@2.3.1
 	colorchoice@1.0.0
 	colored@2.0.4
 	configparser@3.0.2
@@ -143,12 +143,12 @@ CRATES="
 	lexical-parse-float@0.8.5
 	lexical-parse-integer@0.8.6
 	lexical-util@0.8.5
-	libc@0.2.147
+	libc@0.2.149
 	libcst@1.1.0
 	libcst_derive@1.1.0
 	libmimalloc-sys@0.1.35
 	linked-hash-map@0.5.6
-	linux-raw-sys@0.4.5
+	linux-raw-sys@0.4.10
 	lock_api@0.4.10
 	log@0.4.20
 	matchers@0.1.0
@@ -204,7 +204,7 @@ CRATES="
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
 	proc-macro2@1.0.69
-	pyproject-toml@0.7.0
+	pyproject-toml@0.8.0
 	quick-junit@0.3.3
 	quick-xml@0.29.0
 	quote@1.0.33
@@ -215,6 +215,7 @@ CRATES="
 	rayon@1.8.0
 	redox_syscall@0.2.16
 	redox_syscall@0.3.5
+	redox_syscall@0.4.1
 	redox_users@0.4.3
 	regex-automata@0.1.10
 	regex-automata@0.3.9
@@ -228,7 +229,7 @@ CRATES="
 	ring@0.16.20
 	rust-stemmers@1.2.0
 	rustc-hash@1.1.0
-	rustix@0.38.10
+	rustix@0.38.21
 	rustls-webpki@0.101.4
 	rustls@0.21.7
 	rustversion@1.0.14
@@ -241,11 +242,11 @@ CRATES="
 	sct@0.7.0
 	seahash@4.1.0
 	semver@1.0.20
-	serde-wasm-bindgen@0.6.0
-	serde@1.0.188
-	serde_derive@1.0.188
+	serde-wasm-bindgen@0.6.1
+	serde@1.0.190
+	serde_derive@1.0.190
 	serde_derive_internals@0.26.0
-	serde_json@1.0.107
+	serde_json@1.0.108
 	serde_spanned@0.6.3
 	serde_test@1.0.176
 	serde_with@3.4.0
@@ -264,8 +265,8 @@ CRATES="
 	strum_macros@0.25.3
 	syn-ext@0.4.0
 	syn@1.0.109
-	syn@2.0.38
-	tempfile@3.8.0
+	syn@2.0.39
+	tempfile@3.8.1
 	term@0.7.0
 	termcolor@1.2.0
 	terminfo@0.8.0
@@ -310,8 +311,8 @@ CRATES="
 	ureq@2.8.0
 	url@2.4.1
 	utf8parse@0.2.1
-	uuid-macro-internal@1.4.1
-	uuid@1.4.1
+	uuid-macro-internal@1.5.0
+	uuid@1.5.0
 	valuable@0.1.0
 	version_check@0.9.4
 	vt100@0.15.2
