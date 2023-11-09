@@ -1,0 +1,30 @@
+diff --git a/config.h.in b/config.h.in
+index be3cee9..7b939b6 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -704,6 +704,12 @@
+ 
+ #undef WITH_MSGLEVEL
+ 
++/* Number of bits in a file offset, on hosts where this is settable. */
++#undef _FILE_OFFSET_BITS
++
++/* Define for large files, on AIX-style hosts. */
++#undef _LARGE_FILES
++
+ #define BUILD_DATE __DATE__ " " __TIME__
+ 
+ #endif /* !defined(__config_h_included) */
+diff --git a/configure.ac b/configure.ac
+index e89f231..2abd820 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,6 +30,8 @@ if test -z "$CFLAGS"; then
+    export CFLAGS=-O
+ fi
+ 
++AC_SYS_LARGEFILE
++
+ dnl Checks for programs.
+ AC_PROG_INSTALL(install)
+ AC_PROG_CC
