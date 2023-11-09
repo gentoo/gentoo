@@ -484,16 +484,6 @@ x11-drivers/nvidia-drivers:0/390
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# Jaco Kroon <jaco@uls.co.za> (2022-11-05)
-# Some potentially breaking changes here, please check the UPGRADE.txt file.
-# Most important:  chan_sip no longer builds by default, if you've migrated to
-# PJSIP you should be OK and most likely you should be able to safely unmask.
-# For now to prevent accidental upgrades and to allow proper testing this will
-# be in place for minimum six months (2023-04-22).
-=net-misc/asterisk-20*
-=net-misc/asterisk-opus-20*
-=net-misc/asterisk-g729-20*
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
