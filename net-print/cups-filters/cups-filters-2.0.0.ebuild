@@ -1,0 +1,45 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="Cups filters"
+HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
+SRC_URI="https://github.com/OpenPrinting/cups-filters/releases/download/${PV}/${P}.tar.xz"
+
+LICENSE="Apache-2.0"
+SLOT="0"
+IUSE="+foomatic"
+#IUSE=""
+KEYWORDS="~amd64"
+
+RDEPEND="
+	net-print/libcupsfilters
+	net-print/libppd
+	>=net-print/cups-1.7.3
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	>=sys-devel/gettext-0.18.3
+	virtual/pkgconfig
+"
+
+src_configure() {
+	local myeconfargs=(
+		--enable-imagefilters
+		--enable-driverless
+		--enable-poppler
+		--localstatedir="${EPREFIX}"/var
+		--with-fontdir="fonts/conf.avail"
+		# cups-browsed is split out and avahi is not needed for filters
+		# https://github.com/OpenPrinting/cups-filters/pull/558
+		--disable-avahi
+		# These are just probed for the path. Always enable them.
+		--with-gs-path="${EPREFIX}"/usr/bin/gs
+		--with-mutool-path="${EPREFIX}"/usr/bin/mutool
+
+		$(use_enable foomatic)
+	)
+
+	econf "${myeconfargs[@]}"
+}
