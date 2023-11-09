@@ -99,7 +99,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="
-	>=virtual/rust-1.72
+	>=virtual/rust-1.63
 "
 
 QA_FLAGS_IGNORED="usr/bin/jaq"
