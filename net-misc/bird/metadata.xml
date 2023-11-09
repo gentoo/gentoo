@@ -10,6 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="bmp">
+			Compile with BMP support (alpha support, not prod ready)
+		</flag>
 		<flag name="client">Build the ncurses/readline full featured CLI</flag>
 		<flag name="libssh">
 			Enables <pkg>net-libs/libssh</pkg> binding, mendatory for RPKI
