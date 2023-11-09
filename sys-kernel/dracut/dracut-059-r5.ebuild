@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/059-uefi-split-usr.patch
 	"${FILESDIR}"/059-uki-systemd-254.patch
 	"${FILESDIR}"/059-gawk.patch
+	"${FILESDIR}"/dracut-059-dmsquash-live.patch
 )
 
 src_configure() {
