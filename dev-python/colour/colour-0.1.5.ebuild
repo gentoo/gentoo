@@ -17,8 +17,14 @@ SLOT="0"
 
 PATCHES=( "${FILESDIR}"/${PN}-setup.patch )
 
+distutils_enable_tests pytest
+
 src_prepare() {
 	rm setup.cfg || die
 
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	epytest --doctest-modules
 }
