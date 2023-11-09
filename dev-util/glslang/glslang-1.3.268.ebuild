@@ -26,10 +26,10 @@ SLOT="0/12"
 RESTRICT="test"
 
 BDEPEND="${PYTHON_DEPS}
-	~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]
+	~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]
 "
 
-DEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+DEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
 
 PATCHES=( "${FILESDIR}/${PN}-1.3.236-Install-static-libs.patch" )
 
