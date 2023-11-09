@@ -97,6 +97,8 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 		-DENABLE_NLS=$(usex nls)
 		-DENABLE_DISCORD=$(usex discord)
+
+		-DFMT_INSTALL=OFF
 	)
 
 	cmake_src_configure
