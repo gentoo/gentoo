@@ -100,6 +100,8 @@ BDEPEND="
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:5"
 
+PATCHES=( "${FILESDIR}/${P}-xdgshellwindow-enforce-min-size.patch" ) # KDE-bug 469237
+
 src_prepare() {
 	ecm_src_prepare
 	use multimedia || eapply "${FILESDIR}/${PN}-5.26.80-gstreamer-optional.patch"
