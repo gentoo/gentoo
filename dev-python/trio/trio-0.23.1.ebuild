@@ -42,11 +42,12 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/source \
-	dev-python/immutables \
-	dev-python/sphinxcontrib-trio \
-	dev-python/sphinx-rtd-theme \
-	dev-python/towncrier
+# Bug https://bugs.gentoo.org/916756
+# distutils_enable_sphinx docs/source \
+# 	dev-python/immutables \
+# 	dev-python/sphinxcontrib-trio \
+# 	dev-python/sphinx-rtd-theme \
+# 	dev-python/towncrier
 
 python_test() {
 	local EPYTEST_IGNORE=(
