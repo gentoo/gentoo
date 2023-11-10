@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,8 @@ LICENSE="BSD-2"
 # See bug #822336 re subslot
 SLOT="0/${PV}"
 KEYWORDS=""
-IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1"
+IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( aom dav1d )"
 
@@ -22,7 +23,7 @@ DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-3.3.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( >=media-libs/dav1d-1.0.0:=[${MULTILIB_USEDEP}] )
-	extras? ( dev-cpp/gtest )
+	extras? ( test? ( dev-cpp/gtest ) )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	rav1e? ( >=media-video/rav1e-0.5.1[capi] )
 	svt-av1? ( >=media-libs/svt-av1-0.9.1 )"
@@ -52,8 +53,8 @@ multilib_src_configure() {
 
 			-DAVIF_BUILD_EXAMPLES=$(usex examples ON OFF)
 			-DAVIF_BUILD_APPS=$(usex extras ON OFF)
-			-DAVIF_BUILD_TESTS=$(usex extras ON OFF)
-			-DAVIF_ENABLE_GTEST=$(usex extras ON OFF)
+			-DAVIF_BUILD_TESTS=$(usex test ON OFF)
+			-DAVIF_ENABLE_GTEST=$(usex extras $(usex test ON OFF) OFF)
 		)
 	else
 		mycmakeargs+=(
