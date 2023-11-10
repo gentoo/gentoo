@@ -8,13 +8,16 @@ inherit check-reqs desktop unpacker xdg
 
 DESCRIPTION="Wolfram Mathematica"
 HOMEPAGE="https://www.wolfram.com/mathematica/"
-SRC_URI="Mathematica_${PV}_BNDL_LINUX.sh"
+SRC_URI="
+	bundle?  ( Mathematica_${PV}_BNDL_LINUX.sh )
+	!bundle? ( Mathematica_${PV}_LINUX.sh )
+"
 S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 KEYWORDS="-* ~amd64"
 SLOT="0"
-IUSE="cuda doc ffmpeg R"
+IUSE="bundle cuda doc ffmpeg R"
 
 RESTRICT="strip mirror bindist fetch"
 
