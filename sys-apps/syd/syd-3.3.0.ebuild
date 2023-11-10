@@ -28,6 +28,7 @@ CRATES="
 	either@1.9.0
 	env_logger@0.10.0
 	errno@0.3.5
+	fastrand@2.0.1
 	fnv@1.0.7
 	getargs@0.5.0
 	globset@0.4.13
@@ -40,7 +41,7 @@ CRATES="
 	itertools@0.10.5
 	itoa@1.0.9
 	lazy_static@1.4.0
-	libc@0.2.149
+	libc@0.2.150
 	libseccomp-sys@0.2.1
 	libseccomp@0.3.0
 	linux-raw-sys@0.4.10
@@ -64,18 +65,19 @@ CRATES="
 	regex-automata@0.4.3
 	regex-syntax@0.8.2
 	regex@1.10.2
-	rustix@0.38.20
+	rustix@0.38.21
 	rustversion@1.0.14
 	ryu@1.0.15
 	same-file@1.0.6
 	scopeguard@1.2.0
 	serde@1.0.190
 	serde_derive@1.0.190
-	serde_json@1.0.107
+	serde_json@1.0.108
 	smallvec@1.11.1
 	strum@0.25.0
 	strum_macros@0.25.3
-	syn@2.0.38
+	syn@2.0.39
+	tempfile@3.8.1
 	threadpool@1.8.1
 	tinytemplate@1.2.1
 	unicode-ident@1.0.12
