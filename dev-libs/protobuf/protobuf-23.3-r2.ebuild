@@ -11,7 +11,8 @@ if [[ "${PV}" == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf.git"
 	EGIT_SUBMODULES=()
 else
-	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/protocolbuffers/protobuf/commit/e6f8b9d102.patch -> protobuf-e6f8b9d102.patch"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
@@ -38,6 +39,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-23.3-disable-32-bit-tests.patch"
 	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
+	"${DISTDIR}/protobuf-e6f8b9d102.patch"
 )
 
 DOCS=( CONTRIBUTORS.txt README.md )
