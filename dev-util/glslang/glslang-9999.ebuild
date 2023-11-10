@@ -31,7 +31,9 @@ BDEPEND="${PYTHON_DEPS}
 
 DEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
 
-PATCHES=( "${FILESDIR}/${PN}-1.3.236-Install-static-libs.patch" )
+PATCHES=( "${FILESDIR}"/${PN}-1.3.236-Install-static-libs.patch
+		  "${FILESDIR}"/${PN}-1.3.238-Fix-cmake-targets.patch
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(
