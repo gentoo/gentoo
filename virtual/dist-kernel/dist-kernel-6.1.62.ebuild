@@ -4,10 +4,6 @@
 EAPI=7
 
 DESCRIPTION="Virtual to depend on any Distribution Kernel"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
