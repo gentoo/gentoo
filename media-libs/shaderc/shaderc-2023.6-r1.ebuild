@@ -18,12 +18,12 @@ KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="doc"
 
 RDEPEND="
-	~dev-util/glslang-1.3.268:=[${MULTILIB_USEDEP}]
-	~dev-util/spirv-tools-1.3.268[${MULTILIB_USEDEP}]
+	~dev-util/glslang-1.3.261:=[${MULTILIB_USEDEP}]
+	~dev-util/spirv-tools-1.3.261[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	~dev-util/spirv-headers-1.3.268"
+	~dev-util/spirv-headers-1.3.261"
 
 BDEPEND="doc? ( dev-ruby/asciidoctor )"
 
