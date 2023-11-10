@@ -5,7 +5,7 @@ EAPI="8"
 
 DESCRIPTION="Realtime plotting utility with data input from stdin"
 HOMEPAGE="https://github.com/tenox7/ttyplot"
-SRC_URI="https://github.com/tenox7/ttyplot/archive/refs/tags/${PV}.tar.gz -> ${PV}.gh.tar.gz"
+SRC_URI="https://github.com/tenox7/ttyplot/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
