@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org> (2023-11-10)
+# Only available for amd64.
+sys-apps/irqbalance -thermal
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
