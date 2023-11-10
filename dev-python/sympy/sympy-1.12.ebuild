@@ -4,13 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Computer Algebra System in pure Python"
-HOMEPAGE="https://www.sympy.org/"
-SRC_URI="https://github.com/sympy/sympy/archive/${P}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://www.sympy.org/
+	https://github.com/sympy/sympy/
+	https://pypi.org/project/sympy/
+"
+SRC_URI="
+	https://github.com/sympy/sympy/archive/${P}.tar.gz -> ${P}.gh.tar.gz
+"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
@@ -21,7 +27,11 @@ IUSE="aesara examples imaging ipython latex mathml opengl pdf png pyglet symengi
 RDEPEND="
 	dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
-	aesara? ( $(python_gen_cond_dep 'dev-python/aesara[${PYTHON_USEDEP}]' python3_{9..10}) )
+	aesara? (
+		$(python_gen_cond_dep '
+			dev-python/aesara[${PYTHON_USEDEP}]
+		' python3_{10..11})
+	)
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
 	latex? (
