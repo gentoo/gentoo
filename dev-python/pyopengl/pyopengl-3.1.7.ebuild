@@ -59,6 +59,10 @@ EPYTEST_DESELECT=(
 	tests/test_vbo_memusage.py::test_sf_2980896
 )
 
+python_test() {
+	nonfatal epytest || die "Tests failed with ${EPYTHON}"
+}
+
 src_test() {
 	virtx distutils-r1_src_test
 }
