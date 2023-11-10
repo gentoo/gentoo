@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=PyOpenGL
 PYTHON_REQ_USE="tk?"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi virtualx
 
@@ -48,6 +48,16 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/mcfletch/pyopengl/commit/b49af26c615236ebc29cf125a8315091482a4a2a
+	"${FILESDIR}/${P}-py312.patch"
+)
+
+EPYTEST_DESELECT=(
+	# unreliable memory counting test
+	tests/test_vbo_memusage.py::test_sf_2980896
+)
 
 src_test() {
 	virtx distutils-r1_src_test
