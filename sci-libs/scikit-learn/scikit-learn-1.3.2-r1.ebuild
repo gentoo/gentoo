@@ -31,6 +31,7 @@ RDEPEND="
 	>=dev-python/threadpoolctl-2.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	>=dev-python/pythran-0.14.0[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 "
 
