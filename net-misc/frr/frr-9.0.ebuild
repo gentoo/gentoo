@@ -55,6 +55,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
 	"${FILESDIR}"/${PN}-8.4.1-logrotate.patch
+	"${FILESDIR}"/${P}-bug-913242.patch
 )
 
 src_prepare() {
