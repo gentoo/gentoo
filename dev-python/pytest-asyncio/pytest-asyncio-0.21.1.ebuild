@@ -40,6 +40,9 @@ python_test() {
 		tests/trio/test_fixtures.py::test_strict_mode_ignores_trio_fixtures
 		tests/test_event_loop_fixture_finalizer.py::test_event_loop_fixture_finalizer_raises_warning_when_fixture_leaves_loop_unclosed
 		tests/test_event_loop_fixture_finalizer.py::test_event_loop_fixture_finalizer_raises_warning_when_test_leaves_loop_unclosed
+		# incorrect use of hypothesis, test removed in git
+		# https://bugs.gentoo.org/916339
+		tests/hypothesis/test_inherited_test.py
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
