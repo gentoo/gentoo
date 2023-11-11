@@ -21,7 +21,7 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	libcanberra? ( notification )
 	libnotify? ( notification )
@@ -54,7 +54,6 @@ COMMONDEPEND="
 		>=dev-libs/dbus-glib-0.60
 		sys-apps/dbus
 	)
-	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
@@ -143,7 +142,6 @@ src_configure() {
 		$(use_enable debug more-addressbook-debug)
 		$(use_enable debug more-ldap-debug)
 		$(use_enable doc manual)
-		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
 		$(use_enable ldap)
 		$(use_enable litehtml litehtml_viewer-plugin)
