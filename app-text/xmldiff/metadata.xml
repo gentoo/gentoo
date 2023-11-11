@@ -10,6 +10,8 @@
 		with XML files or DOM trees.
 	</longdescription>
 	<upstream>
+		<doc>https://xmldiff.readthedocs.io</doc>
 		<remote-id type="github">Shoobx/xmldiff</remote-id>
+		<remote-id type="pypi">xmldiff</remote-id>
 	</upstream>
 </pkgmetadata>
