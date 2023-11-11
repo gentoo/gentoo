@@ -51,22 +51,10 @@ sed_Imakefile() {
 	done
 }
 
-src_prepare() {
-	default
-
-	# find . -type f -exec chmod a-x '{}' \; || die
-	# find . -name Makefile -delete || die
-
-	# sed -e 's:-L$(ZLIBDIR) -lz::' \
-	# 	-e 's: -lX11::' \
-	# 		-i fig2dev/Imakefile || die
-	# sed_Imakefile fig2dev/Imakefile fig2dev/dev/Imakefile
-}
-
 src_configure() {
 	# export IMAKECPP=${IMAKECPP:-${CHOST}-gcc -E}
 	# CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" xmkmf || die
-	econf
+	econf --enable-transfig
 }
 
 src_compile() {
