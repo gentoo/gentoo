@@ -10,7 +10,7 @@ inherit meson python-any-r1
 DESCRIPTION="Simple framework for writing Vulkan layers"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/libdisplay-info"
 SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/${PV}/downloads/${P}.tar.xz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
