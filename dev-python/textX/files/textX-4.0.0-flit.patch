@@ -1,0 +1,125 @@
+From aaac277940c70190c126f6775743c59226abd694 Mon Sep 17 00:00:00 2001
+From: Igor Dejanovic <igor.dejanovic@gmail.com>
+Date: Fri, 10 Nov 2023 22:13:36 +0100
+Subject: [PATCH] add flit-core as a build backend for test projects
+
+closes #418
+---
+ .../registration/projects/data_dsl/pyproject.toml          | 7 ++++++-
+ .../registration/projects/flow_codegen/pyproject.toml      | 7 ++++++-
+ .../registration/projects/flow_dsl/pyproject.toml          | 7 ++++++-
+ .../registration/projects/types_dsl/pyproject.toml         | 7 ++++++-
+ .../functional/subcommands/example_project/pyproject.toml  | 7 ++++++-
+ 5 files changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/tests/functional/registration/projects/data_dsl/pyproject.toml b/tests/functional/registration/projects/data_dsl/pyproject.toml
+index 4db8e9e..15129a5 100644
+--- a/tests/functional/registration/projects/data_dsl/pyproject.toml
++++ b/tests/functional/registration/projects/data_dsl/pyproject.toml
+@@ -1,5 +1,6 @@
+ [project]
+-name = "data_dsl"
++name = "data-dsl"
++description = "Data DSL"
+ version = "1.0.0"
+ 
+ dependencies = [
+@@ -7,5 +8,9 @@ dependencies = [
+     "types_dsl"
+ ]
+ 
++[build-system]
++build-backend = "flit_core.buildapi"
++requires = ["flit_core >=3.8.0,<4"]
++
+ [project.entry-points.textx_languages]
+ data_dsl = "data_dsl:data_dsl"
+diff --git a/tests/functional/registration/projects/flow_codegen/pyproject.toml b/tests/functional/registration/projects/flow_codegen/pyproject.toml
+index 191a3b2..cec623f 100644
+--- a/tests/functional/registration/projects/flow_codegen/pyproject.toml
++++ b/tests/functional/registration/projects/flow_codegen/pyproject.toml
+@@ -1,5 +1,6 @@
+ [project]
+-name = "flow_codegen"
++name = "flow-codegen"
++description = "Flow code generator"
+ version = "1.0.0"
+ 
+ dependencies = [
+@@ -7,5 +8,9 @@ dependencies = [
+     "click"
+ ]
+ 
++[build-system]
++build-backend = "flit_core.buildapi"
++requires = ["flit_core >=3.8.0,<4"]
++
+ [project.entry-points.textx_generators]
+ flow_dsl_plantuml = "flow_codegen.generators:flow_pu"
+diff --git a/tests/functional/registration/projects/flow_dsl/pyproject.toml b/tests/functional/registration/projects/flow_dsl/pyproject.toml
+index e2ac207..5d57387 100644
+--- a/tests/functional/registration/projects/flow_dsl/pyproject.toml
++++ b/tests/functional/registration/projects/flow_dsl/pyproject.toml
+@@ -1,10 +1,15 @@
+ [project]
+-name = "flow_dsl"
++name = "flow-dsl"
++description = "Flow DSL"
+ version = "1.0.0"
+ 
+ dependencies = [
+     "textX"
+ ]
+ 
++[build-system]
++build-backend = "flit_core.buildapi"
++requires = ["flit_core >=3.8.0,<4"]
++
+ [project.entry-points.textx_languages]
+ flow_dsl = "flow_dsl:flow_dsl"
+diff --git a/tests/functional/registration/projects/types_dsl/pyproject.toml b/tests/functional/registration/projects/types_dsl/pyproject.toml
+index 345d964..9ca7cd3 100644
+--- a/tests/functional/registration/projects/types_dsl/pyproject.toml
++++ b/tests/functional/registration/projects/types_dsl/pyproject.toml
+@@ -1,10 +1,15 @@
+ [project]
+-name = "types_dsl"
++name = "types-dsl"
++description = "Types DSL"
+ version = "1.0.0"
+ 
+ dependencies = [
+     "textX"
+ ]
+ 
++[build-system]
++build-backend = "flit_core.buildapi"
++requires = ["flit_core >=3.8.0,<4"]
++
+ [project.entry-points.textx_languages]
+ types_dsl = "types_dsl:types_dsl"
+diff --git a/tests/functional/subcommands/example_project/pyproject.toml b/tests/functional/subcommands/example_project/pyproject.toml
+index 5ee7009..636065a 100644
+--- a/tests/functional/subcommands/example_project/pyproject.toml
++++ b/tests/functional/subcommands/example_project/pyproject.toml
+@@ -1,11 +1,16 @@
+ [project]
+-name = "textX-subcommand-test"
++name = "textx-subcommand-test"
++description = "Test project for textX subcommands"
+ version = "1.0.0"
+ 
+ dependencies = [
+     "textX"
+ ]
+ 
++[build-system]
++build-backend = "flit_core.buildapi"
++requires = ["flit_core >=3.8.0,<4"]
++
+ [project.entry-points.textx_commands]
+ testcommand = "textx_subcommand_test.cli:testcommand"
+ testgroup = "textx_subcommand_test.cli:create_testgroup"
+-- 
+2.42.1
+
