@@ -30,6 +30,10 @@ llvm.org_set_globals
 # TODO: move the manpage generation here (from sys-devel/llvm)
 
 src_prepare() {
+	# flaky test
+	# https://github.com/llvm/llvm-project/issues/72022
+	rm tests/progress-bar.py || die
+
 	cd "${WORKDIR}" || die
 	distutils-r1_src_prepare
 }
