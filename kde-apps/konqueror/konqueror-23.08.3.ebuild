@@ -72,7 +72,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Hunspell=ON # requires fixing bug 634122
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package speech Qt5TextToSpeech)
-		-DWITHOUT_X11=OFF
 	)
 	ecm_src_configure
 }
