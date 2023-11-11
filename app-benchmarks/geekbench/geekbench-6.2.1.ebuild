@@ -11,7 +11,7 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 LICENSE="geekbench"
 SLOT="6"
 
