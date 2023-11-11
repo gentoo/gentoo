@@ -7,5 +7,7 @@
 	</use>
 	<upstream>
 		<remote-id type="savannah-nongnu">hddtemp</remote-id>
+		<remote-id type="github">vitlav/hddtemp</remote-id>
+        <bugs-to>https://github.com/vitlav/hddtemp/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
