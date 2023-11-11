@@ -14,7 +14,7 @@ EAPI=8
 
 inherit meson
 
-COMMIT="26757103dde8133bab432d172b8841df6bb48155"
+COMMIT="d5ef31abc7cb5c69aee4bcb67b10dd543c1ff7ac"
 DESCRIPTION="Simple framework for writing Vulkan layers"
 HOMEPAGE="https://github.com/Joshua-Ashton/vkroots"
 SRC_URI="https://github.com/Joshua-Ashton/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
