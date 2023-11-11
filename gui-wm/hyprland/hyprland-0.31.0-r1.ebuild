@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/hyprwm/Hyprland"
 SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${PN}-source"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="BSD"
 SLOT="0"
 IUSE="X legacy-renderer systemd video_cards_nvidia"
