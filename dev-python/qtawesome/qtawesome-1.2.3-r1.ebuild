@@ -22,7 +22,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	media-fonts/fontawesome
-	dev-python/QtPy[pyqt5(+),gui,${PYTHON_USEDEP}]
+	dev-python/QtPy[gui,${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
@@ -38,7 +38,5 @@ src_test() {
 }
 
 python_test() {
-	# Tests fail with pyside2, so depend on QtPy[pyqt5] and explicitly run
-	# the tests with pyqt5
-	PYTEST_QT_API="pyqt5" epytest || die "Tests failed with ${EPYTHON}"
+	nonfatal epytest || die -n "Tests failed with ${EPYTHON}"
 }
