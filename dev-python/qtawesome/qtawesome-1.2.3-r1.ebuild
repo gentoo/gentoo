@@ -17,6 +17,13 @@ SRC_URI="$(pypi_sdist_url --no-normalize QtAwesome)"
 S="${WORKDIR}/QtAwesome-${PV}"
 
 LICENSE="MIT"
+# bundled fonts
+# -------------
+# Font Awesome, Elusive Icons: OFL-1.1
+# Phosphor: MIT
+# Material Design Icons, Remix Icon: Apache-2.0
+# Codicons: CC-BY-4.0
+LICENSE+=" Apache-2.0 CC-BY-4.0 MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
