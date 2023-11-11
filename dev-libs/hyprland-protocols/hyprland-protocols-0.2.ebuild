@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/hyprwm/hyprland-protocols"
 SRC_URI="https://github.com/hyprwm/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 LICENSE="BSD"
 SLOT="0"
 
