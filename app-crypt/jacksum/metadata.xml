@@ -6,6 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://jacksum.net/en/release-notes.html</changelog>
 		<remote-id type="github">jonelo/jacksum</remote-id>
 	</upstream>
 </pkgmetadata>
