@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_QTHELP="true"
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
