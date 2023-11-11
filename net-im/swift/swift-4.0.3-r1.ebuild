@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD BSD-1 CC-BY-3.0 GPL-3 OFL-1.1"
 SLOT="4/0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="expat +icu +idn lua test zeroconf"
 REQUIRED_USE="
 	|| ( icu idn )
