@@ -45,12 +45,11 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/benchmark
 	dev-libs/stb
 	dev-util/vulkan-headers
 	media-libs/glm
 	dev-util/spirv-headers
-	wsi-layer? ( >=media-libs/vkroots-0_p20230103 )
+	wsi-layer? ( >=media-libs/vkroots-0_p20231108 )
 "
 BDEPEND="
 	dev-util/glslang
@@ -86,6 +85,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		--force-fallback-for=
+		-Dbenchmark=disabled
 		-Denable_openvr_support=false
 		$(meson_feature pipewire)
 		$(meson_use wsi-layer enable_gamescope_wsi_layer)
