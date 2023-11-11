@@ -35,6 +35,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
+	"${FILESDIR}"/${P}-gcc14.patch # 917164
 	"${FILESDIR}"/${P}-teakra-no-test_generator.patch # 914196
 )
 
