@@ -29,6 +29,9 @@ all_ruby_prepare() {
 	sed -i -e '/rake/ s/~> 12.0.0/>= 10/ ; /minitest/ s/5.10.1/5.10/' Gemfile || die
 
 	sed -i -e 's/git ls-files --/find/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Work around incompatibilities in newer minitest versions.
+	sed -i -e "15irequire 'minitest/unit'" test/test_declarative_test.rb || die
 }
 
 each_ruby_test() {
