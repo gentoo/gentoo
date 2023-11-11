@@ -41,8 +41,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=(
+	mycmakeargs=(
 		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON
+		-DONNX_USE_LITE_PROTO=ON
 	)
 	cmake_src_configure
 	use python && distutils-r1_src_configure
@@ -50,7 +51,7 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	use python && distutils-r1_src_compile
+	use python && CMAKE_ARGS="${mycmakeargs[@]}" distutils-r1_src_compile
 }
 
 src_install() {
