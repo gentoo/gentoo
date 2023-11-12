@@ -21,6 +21,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/yaml-cpp-0.8.0-gtest.patch"
+	"${FILESDIR}/yaml-cpp-0.8.0-gcc13.patch"
 )
 
 src_configure() {
