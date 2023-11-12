@@ -147,13 +147,12 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
-# is ${PV} and 5.82.0 baseline for everything else. This is not going to be
-# changed unless we also bump EAPI, which usually implies (rev-)bumping.
+# is ${PV} and 5.106.0 baseline for everything else.
 # Version will also be used to differentiate between KF5/Qt5 and KF6/Qt6.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${KFMIN:=$(ver_cut 1-2)}"
 fi
-: "${KFMIN:=5.82.0}"
+: "${KFMIN:=5.106.0}"
 
 # @ECLASS_VARIABLE: KFSLOT
 # @INTERNAL
