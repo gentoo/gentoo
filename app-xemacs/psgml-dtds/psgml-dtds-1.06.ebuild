@@ -17,6 +17,6 @@ app-xemacs/fsf-compat
 app-xemacs/xemacs-eterm
 app-xemacs/sh-script
 "
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv sparc x86"
 
 inherit xemacs-packages
