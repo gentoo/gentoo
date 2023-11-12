@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
 	dev-libs/libuv:=
-	>=dev-libs/raft-0.17.1:="
+	>=dev-libs/raft-0.18.1:="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/raft[lz4,test] )"
 BDEPEND="virtual/pkgconfig"
