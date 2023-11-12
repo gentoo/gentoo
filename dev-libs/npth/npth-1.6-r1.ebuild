@@ -25,7 +25,9 @@ src_configure() {
 	# https://github.com/gentoo/gentoo/pull/28355
 	# mold needs this too but right now tc-ld-is-mold is also not available
 	if tc-ld-is-lld; then
-		append-ldflags -Wl,--undefined-version
+		if ! use kernel_Darwin; then
+			append-ldflags -Wl,--undefined-version
+		fi
 	fi
 
 	econf \
