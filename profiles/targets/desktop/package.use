@@ -27,7 +27,7 @@ media-fonts/fonts-meta emoji
 dev-lang/python -bluetooth
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-12-18)
-# Required by media-gfx/digikam
+# Required by media-gfx/digikam, kde-apps/libkexiv2
 media-gfx/exiv2 xmp
 
 # Marek Szuba <marecki@gentoo.org> (2020-12-24)

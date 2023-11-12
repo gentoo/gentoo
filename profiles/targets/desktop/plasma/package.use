@@ -44,9 +44,6 @@ kde-apps/ktp-common-internals otr
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
 
-# Required by kde-apps/libkexiv2
-media-gfx/exiv2 xmp
-
 # Required by kde-frameworks/kapidox
 media-gfx/graphviz python
 
