@@ -29,6 +29,18 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# The tests are new since the split out of cups-filters. Actually running them
+# seems to be challenging. You need:
+# - cups tools that are USE-optional
+# - running avahi-daemon (as root!)
+# - disable portage's pid-sandbox, which interferes with avahi
+# - ipptool still fails to connect to port 8xxx
+#
+# If anything fails, a `while true` loop fails to successfully launch and break
+# out of the loop, leading to a hang. Until there's an obvious recipe for
+# successfully running the tests, restrict it.
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}"/0001-cups-browsed.c-Fix-build-with-avahi-disabled-20.patch
 )
@@ -45,6 +57,13 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	# Requires avahi running. Hangs forever if not available.
+	avahi-daemon --check 2>/dev/null || die "no running avahi daemon found, cannot run tests"
+
+	default
 }
 
 src_install() {
