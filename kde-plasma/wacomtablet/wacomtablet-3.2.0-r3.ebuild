@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,9 +9,8 @@ QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
-DESCRIPTION="System settings module for Wacom tablets"
-HOMEPAGE="https://apps.kde.org/wacomtablet/
-https://userbase.kde.org/Wacomtablet"
+DESCRIPTION="Wacom system settings module that supports different button/pen layout profiles"
+HOMEPAGE="https://userbase.kde.org/Wacomtablet"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
 https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-1.tar.xz"
 
