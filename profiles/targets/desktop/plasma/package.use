@@ -29,6 +29,9 @@ dev-python/pyside6 webchannel
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
 
+# Required by net-im/neochat:5
+dev-qt/qtmultimedia:5 gstreamer
+
 # Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools
 
