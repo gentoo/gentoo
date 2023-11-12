@@ -7,11 +7,11 @@ KFMIN=5.106.0
 QTMIN=5.15.9
 inherit ecm gear.kde.org
 
-DESCRIPTION="Manage print jobs and printers in Plasma"
+DESCRIPTION="Manage CUPS print jobs and printers in Plasma"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+gtk"
 
 DEPEND="
