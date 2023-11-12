@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64"
 	fi
 fi
 
@@ -32,14 +32,14 @@ IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X
 
 # As of 2.4.2, they don't actually seem to be interactive (they pass some flags
 # by default to input for us), but they fail on some greyscale issue w/ poppler?
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	acct-group/lp
 	acct-group/lpadmin
 	virtual/pkgconfig
 "
-DEPEND="
+COMMON_DEPEND="
 	app-text/libpaper:=
 	sys-libs/zlib
 	acl? (
@@ -60,8 +60,13 @@ DEPEND="
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[dbus,${MULTILIB_USEDEP}] )
 "
+# if libcupsfilters is installed, more tests are run. They fail without at least one of the two formats enabled.
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( || ( net-print/libcupsfilters[jpeg] net-print/libcupsfilters[png] ) )
+"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	acct-group/lp
 	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
