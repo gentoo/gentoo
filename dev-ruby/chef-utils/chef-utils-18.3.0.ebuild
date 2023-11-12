@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/chef/chef/tree/main/chef-utils"
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/concurrent-ruby"
