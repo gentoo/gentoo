@@ -1,0 +1,252 @@
+https://bugs.gentoo.org/show_bug.cgi?id=912709
+https://github.com/adamchainz/time-machine/pull/400
+
+From b489a478193982c17cf7847d32cae2b53a904222 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Thu, 9 Nov 2023 13:03:49 -0500
+Subject: [PATCH 1/2] Fix tests on platforms with low clock resolution
+
+On platforms without a high-resolution clock, such as Alpha and PA-RISC
+is is likely that two sequential calls to time.time() will return the
+same value if the execution time is not sufficient to allow one full
+clock resolution cycle to pass.  This adds sleeps of one cycle to
+enforce that the minimum amount of time to guarantee a clock change has
+passed.
+
+On systems with high-resolution clocks, clock_getres() will return 1ns;
+in reality the sleep will take longer than 1ns to execute but should
+still be a negligible amount of time.
+---
+ tests/test_time_machine.py | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/tests/test_time_machine.py b/tests/test_time_machine.py
+index fe98fb7..7b5abbe 100644
+--- a/tests/test_time_machine.py
++++ b/tests/test_time_machine.py
+@@ -155,8 +155,10 @@ def test_time_clock_gettime_realtime():
+ @py_have_clock_gettime
+ def test_time_clock_gettime_monotonic_unaffected():
+     start = time.clock_gettime(time.CLOCK_MONOTONIC)
++    time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+     with time_machine.travel(EPOCH + 180.0):
+         frozen = time.clock_gettime(time.CLOCK_MONOTONIC)
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert isinstance(frozen, float)
+         assert frozen > start
+ 
+@@ -169,6 +171,7 @@ def test_time_clock_gettime_monotonic_unaffected():
+ def test_time_clock_gettime_ns_realtime():
+     with time_machine.travel(EPOCH + 190.0):
+         first = time.clock_gettime_ns(time.CLOCK_REALTIME)
++        time.sleep(time.clock_getres(time.CLOCK_REALTIME))
+         assert isinstance(first, int)
+         assert first == int((EPOCH + 190.0) * NANOSECONDS_PER_SECOND)
+         second = time.clock_gettime_ns(time.CLOCK_REALTIME)
+@@ -182,8 +185,10 @@ def test_time_clock_gettime_ns_realtime():
+ @py_have_clock_gettime
+ def test_time_clock_gettime_ns_monotonic_unaffected():
+     start = time.clock_gettime_ns(time.CLOCK_MONOTONIC)
++    time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+     with time_machine.travel(EPOCH + 190.0):
+         frozen = time.clock_gettime_ns(time.CLOCK_MONOTONIC)
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert isinstance(frozen, int)
+         assert frozen > start
+ 
+@@ -279,6 +284,7 @@ def test_time_strftime_format_t():
+ def test_time_time():
+     with time_machine.travel(EPOCH):
+         first = time.time()
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert isinstance(first, float)
+         assert first == EPOCH
+         second = time.time()
+@@ -300,6 +306,7 @@ def test_time_time():
+ def test_time_time_windows():
+     with time_machine.travel(EPOCH):
+         first = time.time()
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert isinstance(first, float)
+         assert first == windows_epoch_in_posix
+ 
+@@ -316,6 +323,7 @@ def test_time_time_no_tick():
+ def test_time_time_ns():
+     with time_machine.travel(EPOCH + 150.0):
+         first = time.time_ns()
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert isinstance(first, int)
+         assert first == int((EPOCH + 150.0) * NANOSECONDS_PER_SECOND)
+         second = time.time_ns()
+@@ -561,6 +569,7 @@ def test_method_decorator(self):
+ @time_machine.travel(EPOCH + 95.0)
+ class UnitTestClassTests(TestCase):
+     def test_class_decorator(self):
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert EPOCH + 95.0 < time.time() < EPOCH + 96.0
+ 
+     @time_machine.travel(EPOCH + 25.0)
+@@ -578,6 +587,7 @@ def setUpClass(cls):
+         cls.custom_setupclass_ran = True
+ 
+     def test_class_decorator(self):
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert EPOCH + 95.0 < time.time() < EPOCH + 96.0
+         assert self.custom_setupclass_ran
+ 
+@@ -639,6 +649,7 @@ def test_move_to_datetime():
+         traveller.move_to(EPOCH_PLUS_ONE_YEAR_DATETIME)
+ 
+         first = time.time()
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert first == EPOCH_PLUS_ONE_YEAR
+ 
+         second = time.time()
+@@ -706,6 +717,7 @@ def test_move_to_datetime_change_tick_on():
+     with time_machine.travel(EPOCH, tick=False) as traveller:
+         traveller.move_to(EPOCH_PLUS_ONE_YEAR_DATETIME, tick=True)
+         assert time.time() == EPOCH_PLUS_ONE_YEAR
++        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+         assert time.time() > EPOCH_PLUS_ONE_YEAR
+ 
+ 
+@@ -756,6 +768,7 @@ def test_fixture_used_tick_false(time_machine):
+ def test_fixture_used_tick_true(time_machine):
+     time_machine.move_to(EPOCH, tick=True)
+     original = time.time()
++    time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
+     assert original == EPOCH
+     assert original < time.time() < EPOCH + 10.0
+ 
+
+From 9e84584325ec06eb997716b6a0f42e9ca6540994 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Fri, 10 Nov 2023 11:06:23 -0500
+Subject: [PATCH 2/2] Wrap sleep calls in "sleep_one_cycle" function
+
+---
+ tests/test_time_machine.py | 30 +++++++++++++++++-------------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/tests/test_time_machine.py b/tests/test_time_machine.py
+index 7b5abbe..163ec2b 100644
+--- a/tests/test_time_machine.py
++++ b/tests/test_time_machine.py
+@@ -38,6 +38,10 @@
+ )
+ 
+ 
++def sleep_one_cycle(clock: int) -> None:
++    time.sleep(time.clock_getres(clock))
++
++
+ @contextmanager
+ def change_local_timezone(local_tz: str | None) -> typing.Iterator[None]:
+     orig_tz = os.environ["TZ"]
+@@ -155,10 +159,10 @@ def test_time_clock_gettime_realtime():
+ @py_have_clock_gettime
+ def test_time_clock_gettime_monotonic_unaffected():
+     start = time.clock_gettime(time.CLOCK_MONOTONIC)
+-    time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++    sleep_one_cycle(time.CLOCK_MONOTONIC)
+     with time_machine.travel(EPOCH + 180.0):
+         frozen = time.clock_gettime(time.CLOCK_MONOTONIC)
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert isinstance(frozen, float)
+         assert frozen > start
+ 
+@@ -171,7 +175,7 @@ def test_time_clock_gettime_monotonic_unaffected():
+ def test_time_clock_gettime_ns_realtime():
+     with time_machine.travel(EPOCH + 190.0):
+         first = time.clock_gettime_ns(time.CLOCK_REALTIME)
+-        time.sleep(time.clock_getres(time.CLOCK_REALTIME))
++        sleep_one_cycle(time.CLOCK_REALTIME)
+         assert isinstance(first, int)
+         assert first == int((EPOCH + 190.0) * NANOSECONDS_PER_SECOND)
+         second = time.clock_gettime_ns(time.CLOCK_REALTIME)
+@@ -185,10 +189,10 @@ def test_time_clock_gettime_ns_realtime():
+ @py_have_clock_gettime
+ def test_time_clock_gettime_ns_monotonic_unaffected():
+     start = time.clock_gettime_ns(time.CLOCK_MONOTONIC)
+-    time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++    sleep_one_cycle(time.CLOCK_MONOTONIC)
+     with time_machine.travel(EPOCH + 190.0):
+         frozen = time.clock_gettime_ns(time.CLOCK_MONOTONIC)
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert isinstance(frozen, int)
+         assert frozen > start
+ 
+@@ -284,7 +288,7 @@ def test_time_strftime_format_t():
+ def test_time_time():
+     with time_machine.travel(EPOCH):
+         first = time.time()
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert isinstance(first, float)
+         assert first == EPOCH
+         second = time.time()
+@@ -306,7 +310,7 @@ def test_time_time():
+ def test_time_time_windows():
+     with time_machine.travel(EPOCH):
+         first = time.time()
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert isinstance(first, float)
+         assert first == windows_epoch_in_posix
+ 
+@@ -323,7 +327,7 @@ def test_time_time_no_tick():
+ def test_time_time_ns():
+     with time_machine.travel(EPOCH + 150.0):
+         first = time.time_ns()
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert isinstance(first, int)
+         assert first == int((EPOCH + 150.0) * NANOSECONDS_PER_SECOND)
+         second = time.time_ns()
+@@ -569,7 +573,7 @@ def test_method_decorator(self):
+ @time_machine.travel(EPOCH + 95.0)
+ class UnitTestClassTests(TestCase):
+     def test_class_decorator(self):
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert EPOCH + 95.0 < time.time() < EPOCH + 96.0
+ 
+     @time_machine.travel(EPOCH + 25.0)
+@@ -587,7 +591,7 @@ def setUpClass(cls):
+         cls.custom_setupclass_ran = True
+ 
+     def test_class_decorator(self):
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert EPOCH + 95.0 < time.time() < EPOCH + 96.0
+         assert self.custom_setupclass_ran
+ 
+@@ -649,7 +653,7 @@ def test_move_to_datetime():
+         traveller.move_to(EPOCH_PLUS_ONE_YEAR_DATETIME)
+ 
+         first = time.time()
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert first == EPOCH_PLUS_ONE_YEAR
+ 
+         second = time.time()
+@@ -717,7 +721,7 @@ def test_move_to_datetime_change_tick_on():
+     with time_machine.travel(EPOCH, tick=False) as traveller:
+         traveller.move_to(EPOCH_PLUS_ONE_YEAR_DATETIME, tick=True)
+         assert time.time() == EPOCH_PLUS_ONE_YEAR
+-        time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++        sleep_one_cycle(time.CLOCK_MONOTONIC)
+         assert time.time() > EPOCH_PLUS_ONE_YEAR
+ 
+ 
+@@ -768,7 +772,7 @@ def test_fixture_used_tick_false(time_machine):
+ def test_fixture_used_tick_true(time_machine):
+     time_machine.move_to(EPOCH, tick=True)
+     original = time.time()
+-    time.sleep(time.clock_getres(time.CLOCK_MONOTONIC))
++    sleep_one_cycle(time.CLOCK_MONOTONIC)
+     assert original == EPOCH
+     assert original < time.time() < EPOCH + 10.0
+ 

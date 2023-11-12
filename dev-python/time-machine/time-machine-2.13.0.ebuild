@@ -27,4 +27,6 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/${PN}-2.13.0-backport-pr400.patch" )
+
 distutils_enable_tests pytest
