@@ -27,7 +27,7 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin
-	emake GOBIN="${ED}"/usr/bin install
+	emake VERSION=${PV} GOBIN="${ED}"/usr/bin install
 	doman ./assets/packaging/micro.1
 	domenu assets/packaging/micro.desktop
 	einstalldocs
