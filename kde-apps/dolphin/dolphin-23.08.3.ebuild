@@ -55,7 +55,7 @@ DEPEND="
 		>=kde-frameworks/baloo-${KFMIN}:5
 		>=kde-frameworks/kfilemetadata-${KFMIN}:5
 	)
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}
 	>=kde-apps/kio-extras-${PVCUT}:5

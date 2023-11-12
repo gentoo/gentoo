@@ -64,7 +64,7 @@ DEPEND="
 		sys-libs/zlib
 	)
 	serial? ( >=dev-qt/qtserialport-${QTMIN}:5 )
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}"
 # not packaged: dev-qt/qtmqtt, bug 683994

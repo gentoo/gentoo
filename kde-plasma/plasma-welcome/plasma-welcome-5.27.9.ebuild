@@ -34,7 +34,7 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/plasma-${KFMIN}:5
 	kaccounts? ( kde-apps/kaccounts-integration:5 )
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}
 	discover? ( kde-plasma/discover:5 )

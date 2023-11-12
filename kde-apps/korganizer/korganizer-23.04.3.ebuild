@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	x11-libs/libX11
-	telemetry? ( >=dev-libs/kuserfeedback-1.2.0:5 )
+	telemetry? ( >=kde-frameworks/kuserfeedback-1.2.0:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/designer-${QTMIN}:5

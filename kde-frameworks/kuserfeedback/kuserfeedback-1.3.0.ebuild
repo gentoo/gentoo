@@ -3,19 +3,18 @@
 
 EAPI=8
 
+ECM_QTHELP="false"
 ECM_TEST="forceoptional"
 KFMIN=5.106.0
 QTMIN=5.15.9
 inherit ecm kde.org
 
 DESCRIPTION="Framework to collect user feedback for applications via telemetry and surveys"
+SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
-if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-fi
 LICENSE="MIT"
 SLOT="5"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="doc"
 
 DEPEND="

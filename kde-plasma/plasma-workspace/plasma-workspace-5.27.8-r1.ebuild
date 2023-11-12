@@ -121,7 +121,7 @@ COMMON_DEPEND="
 		x11-libs/libdrm
 	)
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:5 )
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 	wallpaper-metadata? ( kde-apps/libkexiv2:5 )
 "
 DEPEND="${COMMON_DEPEND}

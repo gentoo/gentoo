@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+ECM_QTHELP="false"
 ECM_TEST="forceoptional"
 KFMIN=5.82.0
 QTMIN=5.15.2
@@ -10,13 +11,11 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Framework to collect user feedback for applications via telemetry and surveys"
+SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
-if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-fi
 LICENSE="MIT"
 SLOT="5"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="doc"
 
 DEPEND="

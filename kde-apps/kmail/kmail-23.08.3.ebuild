@@ -73,7 +73,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
-	telemetry? ( >=dev-libs/kuserfeedback-1.2.0:5 )
+	telemetry? ( >=kde-frameworks/kuserfeedback-1.2.0:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=kde-apps/kcalutils-${PVCUT}:5
