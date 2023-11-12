@@ -30,8 +30,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X xinetd zeroconf"
 
-# As of 2.4.2, they don't actually seem to be interactive (they pass some flags
-# by default to input for us), but they fail on some greyscale issue w/ poppler?
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -167,7 +165,6 @@ multilib_src_configure() {
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
 		$(use_enable static-libs static)
-		$(use_enable test unit-tests)
 		--with-tls=$(usex openssl openssl gnutls)
 		$(use_with systemd ondemand systemd)
 		$(multilib_native_use_enable usb libusb)
@@ -222,7 +219,12 @@ multilib_src_test() {
 	mkdir "${T}"/cups-tests || die
 
 	# We only build some of CUPS for multilib, so can't run the tests.
-	multilib_is_native_abi && default
+	if multilib_is_native_abi; then
+		# avoid building *and running* test binaries in src_compile
+		# https://github.com/OpenPrinting/cups/commit/b1d42061e9286f50eefc851ed906d17c6e80c4b0
+		emake UNITTESTS=unittests
+		default
+	fi
 }
 
 multilib_src_install() {
