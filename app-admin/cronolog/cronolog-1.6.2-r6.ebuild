@@ -17,6 +17,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-patches
 	# rename and move into ${PV}-patches after -r3 removal
 	"${FILESDIR}"/${P}-umask.patch
+        "${FILESDIR}"/${P}-stringh.patch
 )
 
 src_prepare() {
