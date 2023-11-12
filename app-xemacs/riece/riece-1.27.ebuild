@@ -13,6 +13,6 @@ RDEPEND="app-xemacs/xemacs-base
 app-xemacs/mail-lib
 app-xemacs/bbdb
 "
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv sparc x86"
 
 inherit xemacs-packages
