@@ -91,7 +91,7 @@ FFMPEG_FLAG_MAP=(
 		appkit
 		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite frei0r vmaf:libvmaf
 		fribidi:libfribidi fontconfig ladspa lcms:lcms2 libass libplacebo libtesseract lv2
-		truetype:libfreetype vidstab:libvidstab
+		truetype:libfreetype truetype:libharfbuzz vidstab:libvidstab
 		rubberband:librubberband zeromq:libzmq zimg:libzimg
 		# libswresample options
 		libsoxr
@@ -269,7 +269,10 @@ RDEPEND="
 	)
 	nvenc? ( >=media-libs/nv-codec-headers-9.1.23.1 )
 	svt-av1? ( >=media-libs/svt-av1-0.9.0[${MULTILIB_USEDEP}] )
-	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
+	truetype? (
+		>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
+		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
+	)
 	vaapi? ( >=media-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vidstab? ( >=media-libs/vidstab-1.1.0[${MULTILIB_USEDEP}] )
@@ -447,6 +450,8 @@ multilib_src_configure() {
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		use ${i%:*} || myconf+=( --disable-${i#*:} )
 	done
+	# Bug #917277, #917278
+	myconf+=( --disable-dotprod --disable-i8mm )
 
 	if use pic ; then
 		myconf+=( --enable-pic )
@@ -468,11 +473,16 @@ multilib_src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	[[ ${ABI} != x86 ]] && is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	if [[ ${ABI} != x86 ]] && is-flagq "-flto*"; then
+		# Respect -flto value, e.g -flto=thin
+		local v="$(get-flag flto)"
+		[[ -n ${v} ]] && myconf+=( "--enable-lto=${v}" ) || myconf+=( "--enable-lto" )
+	fi
 	filter-lto
 
 	# Mandatory configuration
 	myconf=(
+		--disable-libaribcaption # libaribcaption is not packaged (yet?)
 		--enable-avfilter
 		--disable-stripping
 		# This is only for hardcoded cflags; those are used in configure checks that may
