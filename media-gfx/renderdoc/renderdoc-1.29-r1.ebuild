@@ -47,7 +47,7 @@ RDEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
 	dev-libs/miniz:=
-	>=dev-util/glslang-1.3.231:=
+	>=dev-util/glslang-1.3.231:= <dev-util/glslang-1.3.268
 	x11-libs/libX11
 	x11-libs/libxcb:=
 	x11-libs/xcb-util-keysyms
