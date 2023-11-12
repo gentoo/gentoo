@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# moarvm: https://github.com/walles/moar/issues/143
 RDEPEND="!dev-lang/moarvm"
 BDEPEND="
 	test? (
