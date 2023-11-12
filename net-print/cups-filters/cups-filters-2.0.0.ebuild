@@ -24,6 +24,15 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# The tests are composed of:
+# - built program
+# - test case itself: filter/test.sh
+#
+# The latter is not wired up, and it becomes immediately evident why.
+# Bow to this reality and don't claim we can run anything. As a side
+# effect, don't compile in src_test, that which we never use.
+RESTRICT="test"
+
 src_configure() {
 	local myeconfargs=(
 		--enable-imagefilters
