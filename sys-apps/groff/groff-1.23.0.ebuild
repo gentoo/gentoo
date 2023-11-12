@@ -69,6 +69,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--with-appdefdir="${EPREFIX}"/usr/share/X11/app-defaults
+		--without-compatibility-wrappers   # for Prefix
 		$(use_with uchardet)
 		$(use_with X x)
 	)
