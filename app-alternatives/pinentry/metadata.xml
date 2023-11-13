@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>vimproved@inventati.org</email>
+		<name>Violet Purcell</name>
+	</maintainer>
+	<use>
+		<flag name="pinentry-efl">Symlink to pinentry-efl</flag>
+		<flag name="pinentry-gnome3">Symlink to pinentry-gnome3</flag>
+		<flag name="pinentry-curses">Symlink to pinentry-curses</flag>
+		<flag name="pinentry-qt5">Symlink to pinentry-qt5</flag>
+		<flag name="pinentry-tty">Symlink to pinentry-tty</flag>
+	</use>
+</pkgmetadata>
