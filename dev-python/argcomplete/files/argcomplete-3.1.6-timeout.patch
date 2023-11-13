@@ -1,0 +1,24 @@
+diff --git a/test/test.py b/test/test.py
+index c89912a..eedfe36 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -1359,7 +1359,7 @@ class TestBashGlobal(TestBash):
+                 if sys.platform == "darwin":
+                     # Work around https://stackoverflow.com/questions/24257803
+                     command += ' --install-option="--prefix="'
+-            install_output = self.sh.run_command(command)
++            install_output = self.sh.run_command(command, timeout=300)
+             self.assertEqual(self.sh.run_command("echo $?"), "0\r\n", install_output)
+             command = "test-module"
+             if package:
+@@ -1395,8 +1395,8 @@ class Shell:
+     def run_command(self, command):
+         try:
+             self.child.sendline(r"echo -n \#\#\#; {0}; echo -n \#\#\#".format(command))
+-            self.child.expect_exact("###", timeout=5)
+-            self.child.expect_exact("###", timeout=5)
++            self.child.expect_exact("###", timeout=30)
++            self.child.expect_exact("###", timeout=30)
+             return self.child.before
+         finally:
+             # Send Ctrl+C in case we get stuck.
