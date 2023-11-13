@@ -35,7 +35,6 @@ IUSE="cairo doc excel gtk3 latex qt5 tk webagg wxwidgets"
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
 RDEPEND="
-	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/contourpy-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/cycler-0.10.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/fonttools-4.22.0[${PYTHON_USEDEP}]
