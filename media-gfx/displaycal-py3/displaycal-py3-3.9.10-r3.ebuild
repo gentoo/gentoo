@@ -28,7 +28,6 @@ PATCHES="${FILESDIR}/${P}-python-3.11.patch"
 
 DEPEND="
 	dev-python/build[${PYTHON_USEDEP}]
-	dev-python/certifi:0[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -45,6 +44,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	# Fix QA warning
 	sed -e 's/license_file/license_files/g' -i setup.cfg || die
+
+	# remove dependency only imported if `sys.platform in ("darwin", "win32")`
+	sed -e '/certifi/d' -i setup.cfg || die
 
 	# Remove x-world MIME
 	sed -i 's|x-world/x-vrml;||g' \
