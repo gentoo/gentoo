@@ -14,7 +14,7 @@ SRC_URI="https://github.com/joostkremers/${PN}/archive/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
