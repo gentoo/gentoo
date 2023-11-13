@@ -12,6 +12,9 @@
 	<slots>
 		<subslots>Soname version number</subslots>
 	</slots>
+	<use>
+		<flag name="system-protoc">Use the system copy of protoc vs building and providing it.</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:google:protobuf</remote-id>
 		<remote-id type="github">protocolbuffers/protobuf</remote-id>
