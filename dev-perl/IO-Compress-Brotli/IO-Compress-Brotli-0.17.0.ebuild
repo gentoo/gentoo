@@ -25,5 +25,5 @@ BDEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.010-unbundle.patch
+	"${FILESDIR}"/${PN}-0.017-unbundle.patch
 )
