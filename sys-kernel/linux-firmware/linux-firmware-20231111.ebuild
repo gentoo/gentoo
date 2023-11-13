@@ -19,7 +19,7 @@ else
 		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
+	KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux firmware files"
