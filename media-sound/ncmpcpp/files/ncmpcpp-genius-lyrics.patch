@@ -1,0 +1,13 @@
+diff --git a/src/lyrics_fetcher.h b/src/lyrics_fetcher.h
+index dd08939d..672352ff 100644
+--- a/src/lyrics_fetcher.h
++++ b/src/lyrics_fetcher.h
+@@ -118,7 +118,7 @@ struct GeniusFetcher : public GoogleLyricsFetcher
+ 	virtual const char *name() const override { return "genius.com"; }
+ 
+ protected:
+-	virtual const char *regex() const override { return "<div class=\"[Ll]yrics.*?>(.*?)</div>"; }
++	virtual const char *regex() const override { return "<div.*?class=\"(?:lyrics|Lyrics__Container).*?>(.*?)</div>"; }
+ };
+ 
+ struct JahLyricsFetcher : public GoogleLyricsFetcher
