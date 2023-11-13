@@ -29,6 +29,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.9.1-bashism-configure.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
