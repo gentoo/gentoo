@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>parona@protonmail.com</email>
+		<name>Alfred Wingate</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<changelog>https://github.com/zerotier/ZeroTierOne/raw/master/RELEASE-NOTES.md</changelog>
 		<remote-id type="github">zerotier/ZeroTierOne</remote-id>
