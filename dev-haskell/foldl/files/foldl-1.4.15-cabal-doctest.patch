@@ -18,10 +18,14 @@ diff --git a/Setup.hs b/Setup.hs
 index 9a994af..f21ad76 100644
 --- a/Setup.hs
 +++ b/Setup.hs
-@@ -1,2 +1,19 @@
+@@ -1,2 +1,23 @@
 +{-# LANGUAGE CPP #-}
 +
 +module Main (main) where
++
++#ifndef MIN_VERSION_cabal_doctest
++#define MIN_VERSION_cabal_doctest(x,y,z) 0
++#endif
 +
 +#if MIN_VERSION_cabal_doctest(1,0,0)
 +
