@@ -22,7 +22,6 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.25[${PYTHON_USEDEP}]
 "
 BDEPEND="
