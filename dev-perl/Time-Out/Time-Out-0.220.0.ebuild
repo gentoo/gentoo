@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Easily timeout long running operations"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Try-Tiny
