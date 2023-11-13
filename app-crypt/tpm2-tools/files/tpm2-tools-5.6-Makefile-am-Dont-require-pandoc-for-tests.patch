@@ -1,0 +1,15 @@
+diff --git a/Makefile.am b/Makefile.am
+index 627983ca..d32f109c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -659,10 +659,3 @@ else
+ endif
+ 
+ check: prepare-check
+-
+-if !HAVE_PANDOC
+-# If pandoc is not enabled, we want to complain that you need pandoc for make dist,
+-# so hook the target and complain.
+-	@(>&2 echo "You do not have pandoc, a requirement for the distribution of manpages")
+-	@exit 1
+-endif
