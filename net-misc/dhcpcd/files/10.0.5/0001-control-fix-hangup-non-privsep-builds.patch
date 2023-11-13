@@ -1,0 +1,23 @@
+https://github.com/NetworkConfiguration/dhcpcd/issues/262
+https://github.com/NetworkConfiguration/dhcpcd/commit/584b52db330a96471ff9301b85ce47ebb065a8a4
+
+From 584b52db330a96471ff9301b85ce47ebb065a8a4 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Sun, 12 Nov 2023 11:30:01 +0000
+Subject: [PATCH] control: Fix hangup for non privsep builds
+
+Fix related to #262.
+--- a/src/control.c
++++ b/src/control.c
+@@ -113,8 +113,9 @@ control_handle_read(struct fd_list *fd)
+ 	ssize_t bytes;
+ 
+ 	bytes = read(fd->fd, buffer, sizeof(buffer) - 1);
+-	if (bytes == -1) {
++	if (bytes == -1)
+ 		logerr(__func__);
++	if (bytes == -1 || bytes == 0) {
+ 		control_hangup(fd);
+ 		return;
+ 	}
+

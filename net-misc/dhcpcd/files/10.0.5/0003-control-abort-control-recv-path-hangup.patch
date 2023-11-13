@@ -1,0 +1,105 @@
+https://github.com/NetworkConfiguration/dhcpcd/issues/262
+https://github.com/NetworkConfiguration/dhcpcd/commit/3b4c71859c45b9405f96a5ee8fce04bd3014b2d0
+
+From 3b4c71859c45b9405f96a5ee8fce04bd3014b2d0 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Mon, 13 Nov 2023 10:24:15 +0000
+Subject: [PATCH] control: Abort control recv path on hangup
+
+This fixes a crash when we try and re-use it in another function.
+--- a/src/control.c
++++ b/src/control.c
+@@ -106,7 +106,7 @@ control_hangup(struct fd_list *fd)
+ 	control_free(fd);
+ }
+ 
+-static void
++static int
+ control_handle_read(struct fd_list *fd)
+ {
+ 	char buffer[1024];
+@@ -117,7 +117,7 @@ control_handle_read(struct fd_list *fd)
+ 		logerr(__func__);
+ 	if (bytes == -1 || bytes == 0) {
+ 		control_hangup(fd);
+-		return;
++		return -1;
+ 	}
+ 
+ #ifdef PRIVSEP
+@@ -129,21 +129,23 @@ control_handle_read(struct fd_list *fd)
+ 		fd->flags &= ~FD_SENDLEN;
+ 		if (err == -1) {
+ 			logerr(__func__);
+-			return;
++			return 0;
+ 		}
+ 		if (err == 1 &&
+ 		    ps_ctl_sendargs(fd, buffer, (size_t)bytes) == -1) {
+ 			logerr(__func__);
+ 			control_free(fd);
++			return -1;
+ 		}
+-		return;
++		return 0;
+ 	}
+ #endif
+ 
+ 	control_recvdata(fd, buffer, (size_t)bytes);
++	return 0;
+ }
+ 
+-static void
++static int
+ control_handle_write(struct fd_list *fd)
+ {
+ 	struct iovec iov[2];
+@@ -170,7 +172,7 @@ control_handle_write(struct fd_list *fd)
+ 			logerr("%s: write", __func__);
+ 		}
+ 		control_hangup(fd);
+-		return;
++		return -1;
+ 	}
+ 
+ 	TAILQ_REMOVE(&fd->queue, data, next);
+@@ -183,7 +185,7 @@ control_handle_write(struct fd_list *fd)
+ #endif
+ 
+ 	if (TAILQ_FIRST(&fd->queue) != NULL)
+-		return;
++		return 0;
+ 
+ #ifdef PRIVSEP
+ 	if (IN_PRIVSEP_SE(fd->ctx) && !(fd->flags & FD_LISTEN)) {
+@@ -196,9 +198,9 @@ control_handle_write(struct fd_list *fd)
+ 	if (eloop_event_add(fd->ctx->eloop, fd->fd, ELE_READ,
+ 	    control_handle_data, fd) == -1)
+ 		logerr("%s: eloop_event_add", __func__);
++	return 0;
+ }
+ 
+-
+ static void
+ control_handle_data(void *arg, unsigned short events)
+ {
+@@ -207,10 +209,14 @@ control_handle_data(void *arg, unsigned short events)
+ 	if (!(events & (ELE_READ | ELE_WRITE | ELE_HANGUP)))
+ 		logerrx("%s: unexpected event 0x%04x", __func__, events);
+ 
+-	if (events & ELE_WRITE && !(events & ELE_HANGUP))
+-		control_handle_write(fd);
+-	if (events & ELE_READ)
+-		control_handle_read(fd);
++	if (events & ELE_WRITE && !(events & ELE_HANGUP)) {
++		if (control_handle_write(fd) == -1)
++			return;
++	}
++	if (events & ELE_READ) {
++		if (control_handle_read(fd) == -1)
++			return;
++	}
+ 	if (events & ELE_HANGUP)
+ 		control_hangup(fd);
+ }
+

@@ -1,0 +1,286 @@
+https://github.com/NetworkConfiguration/dhcpcd/issues/262
+https://github.com/NetworkConfiguration/dhcpcd/commit/ea53344a2430736124bf9fa62acb0d3107acd58f
+
+From ea53344a2430736124bf9fa62acb0d3107acd58f Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Mon, 13 Nov 2023 10:29:58 +0000
+Subject: [PATCH] dhcpcd: Remove stdio callback and detach on daemonise
+
+For some reason, the stdio callback is extremely flaky on
+*some* Linux based distributions making it very hard to debug some
+things.
+Removing it is fine because we now enforce that we have file descriptors
+for stdin, stdout and stdrr on launch and dup them to /dev/null on daemonise.
+
+It's also interesting to see behavioural differences between
+some socketpair implementations that emit a HANGUP and some don't.
+
+As such, we now close the fork socket on daemonise once more AND
+in the fork_cb depending on if we hangup or read zero first.
+
+Fixes #262
+--- a/src/dhcpcd.c
++++ b/src/dhcpcd.c
+@@ -364,7 +364,7 @@ dhcpcd_daemonise(struct dhcpcd_ctx *ctx)
+ 	errno = ENOSYS;
+ 	return;
+ #else
+-	int i;
++	int exit_code;
+ 
+ 	if (ctx->options & DHCPCD_DAEMONISE &&
+ 	    !(ctx->options & (DHCPCD_DAEMONISED | DHCPCD_NOWAITIP)))
+@@ -385,16 +385,19 @@ dhcpcd_daemonise(struct dhcpcd_ctx *ctx)
+ 		return;
+ 
+ #ifdef PRIVSEP
+-	ps_daemonised(ctx);
++	if (IN_PRIVSEP(ctx))
++		ps_daemonised(ctx);
++	else
+ #else
+-	dhcpcd_daemonised(ctx);
++		dhcpcd_daemonised(ctx);
+ #endif
+ 
+-	i = EXIT_SUCCESS;
+-	if (write(ctx->fork_fd, &i, sizeof(i)) == -1)
+-		logerr("write");
+-	ctx->options |= DHCPCD_DAEMONISED;
+-	// dhcpcd_fork_cb will close the socket
++	eloop_event_delete(ctx->eloop, ctx->fork_fd);
++	exit_code = EXIT_SUCCESS;
++	if (write(ctx->fork_fd, &exit_code, sizeof(exit_code)) == -1)
++		logerr(__func__);
++	close(ctx->fork_fd);
++	ctx->fork_fd = -1;
+ #endif
+ }
+ 
+@@ -1814,30 +1817,6 @@ dhcpcd_readdump(struct dhcpcd_ctx *ctx)
+ 	    dhcpcd_readdump0, ctx);
+ }
+ 
+-static void
+-dhcpcd_stderr_cb(void *arg, unsigned short events)
+-{
+-	struct dhcpcd_ctx *ctx = arg;
+-	char log[BUFSIZ];
+-	ssize_t len;
+-
+-	if (events & ELE_HANGUP)
+-		eloop_exit(ctx->eloop, EXIT_SUCCESS);
+-
+-	if (!(events & ELE_READ))
+-		return;
+-
+-	len = read(ctx->stderr_fd, log, sizeof(log) - 1);
+-	if (len == -1) {
+-		if (errno != ECONNRESET)
+-			logerr(__func__);
+-		return;
+-	}
+-
+-	log[len] = '\0';
+-	fprintf(stderr, "%s", log);
+-}
+-
+ static void
+ dhcpcd_fork_cb(void *arg, unsigned short events)
+ {
+@@ -1928,7 +1907,7 @@ main(int argc, char **argv, char **envp)
+ 	ssize_t len;
+ #if defined(USE_SIGNALS) || !defined(THERE_IS_NO_FORK)
+ 	pid_t pid;
+-	int fork_fd[2], stderr_fd[2];
++	int fork_fd[2];
+ #endif
+ #ifdef USE_SIGNALS
+ 	int sig = 0;
+@@ -2013,22 +1992,17 @@ main(int argc, char **argv, char **envp)
+ 	TAILQ_INIT(&ctx.ps_processes);
+ #endif
+ 
+-	/* Check our streams for validity */
+-	ctx.stdin_valid =  fcntl(STDIN_FILENO,  F_GETFD) != -1;
+-	ctx.stdout_valid = fcntl(STDOUT_FILENO, F_GETFD) != -1;
+-	ctx.stderr_valid = fcntl(STDERR_FILENO, F_GETFD) != -1;
++	logopts = LOGERR_LOG | LOGERR_LOG_DATE | LOGERR_LOG_PID;
+ 
+-	/* Even we if we don't have input/outputs, we need to
+-	 * ensure they are setup for shells. */
+-	if (!ctx.stdin_valid)
++	/* Ensure we have stdin, stdout and stderr file descriptors.
++	 * This is important as we do run scripts which expect these. */
++	if (fcntl(STDIN_FILENO,  F_GETFD) == -1)
+ 		dup_null(STDIN_FILENO);
+-	if (!ctx.stdout_valid)
++	if (fcntl(STDOUT_FILENO,  F_GETFD) == -1)
+ 		dup_null(STDOUT_FILENO);
+-	if (!ctx.stderr_valid)
++	if (fcntl(STDERR_FILENO,  F_GETFD) == -1)
+ 		dup_null(STDERR_FILENO);
+-
+-	logopts = LOGERR_LOG | LOGERR_LOG_DATE | LOGERR_LOG_PID;
+-	if (ctx.stderr_valid)
++	else
+ 		logopts |= LOGERR_ERR;
+ 
+ 	i = 0;
+@@ -2398,17 +2372,13 @@ main(int argc, char **argv, char **envp)
+ 	loginfox(PACKAGE "-" VERSION " starting");
+ 
+ 	// We don't need stdin past this point
+-	if (ctx.stdin_valid)
+-		dup_null(STDIN_FILENO);
++	dup_null(STDIN_FILENO);
+ 
+ #if defined(USE_SIGNALS) && !defined(THERE_IS_NO_FORK)
+ 	if (!(ctx.options & DHCPCD_DAEMONISE))
+ 		goto start_manager;
+ 
+-	if (xsocketpair(AF_UNIX, SOCK_SEQPACKET|SOCK_CXNB, 0, fork_fd) == -1 ||
+-	    (ctx.stderr_valid &&
+-	    xsocketpair(AF_UNIX, SOCK_SEQPACKET|SOCK_CXNB, 0, stderr_fd) == -1))
+-	{
++	if (xsocketpair(AF_UNIX, SOCK_SEQPACKET|SOCK_CXNB, 0, fork_fd) == -1) {
+ 		logerr("socketpair");
+ 		goto exit_failure;
+ 	}
+@@ -2429,22 +2399,6 @@ main(int argc, char **argv, char **envp)
+ 		    dhcpcd_fork_cb, &ctx) == -1)
+ 			logerr("%s: eloop_event_add", __func__);
+ 
+-		/*
+-		 * Redirect stderr to the stderr socketpair.
+-		 * Redirect stdout as well.
+-		 * dhcpcd doesn't output via stdout, but something in
+-		 * a called script might.
+-		 */
+-		if (ctx.stderr_valid) {
+-			if (dup2(stderr_fd[1], STDERR_FILENO) == -1 ||
+-			    (ctx.stdout_valid &&
+-			    dup2(stderr_fd[1], STDOUT_FILENO) == -1))
+-				logerr("dup2");
+-			close(stderr_fd[0]);
+-			close(stderr_fd[1]);
+-		} else if (ctx.stdout_valid)
+-			dup_null(STDOUT_FILENO);
+-
+ 		if (setsid() == -1) {
+ 			logerr("%s: setsid", __func__);
+ 			goto exit_failure;
+@@ -2478,19 +2432,6 @@ main(int argc, char **argv, char **envp)
+ 		    dhcpcd_fork_cb, &ctx) == -1)
+ 			logerr("%s: eloop_event_add", __func__);
+ 
+-		if (ctx.stderr_valid) {
+-			ctx.stderr_fd = stderr_fd[0];
+-			close(stderr_fd[1]);
+-#ifdef PRIVSEP_RIGHTS
+-			if (ps_rights_limit_fd(ctx.stderr_fd) == 1) {
+-				logerr("ps_rights_limit_fd");
+-				goto exit_failure;
+-			}
+-#endif
+-			if (eloop_event_add(ctx.eloop, ctx.stderr_fd, ELE_READ,
+-			    dhcpcd_stderr_cb, &ctx) == -1)
+-				logerr("%s: eloop_event_add", __func__);
+-		}
+ #ifdef PRIVSEP
+ 		if (IN_PRIVSEP(&ctx) && ps_managersandbox(&ctx, NULL) == -1)
+ 			goto exit_failure;
+@@ -2602,6 +2543,7 @@ main(int argc, char **argv, char **envp)
+ 		if (ifp->active == IF_ACTIVE_USER)
+ 			break;
+ 	}
++
+ 	if (ifp == NULL) {
+ 		if (ctx.ifc == 0) {
+ 			int loglevel;
+@@ -2735,24 +2677,22 @@ main(int argc, char **argv, char **envp)
+ 	if (ps_stopwait(&ctx) != EXIT_SUCCESS)
+ 		i = EXIT_FAILURE;
+ #endif
+-	if (ctx.options & DHCPCD_STARTED && !(ctx.options & DHCPCD_FORKED)) {
++	if (ctx.options & DHCPCD_STARTED && !(ctx.options & DHCPCD_FORKED))
+ 		loginfox(PACKAGE " exited");
+-#ifdef USE_SIGNALS
+-		/* Detach from the launch process.
+-		 * This *should* happen after we stop the root process,
+-		 * but for some reason non privsep builds get a zero length
+-		 * read in dhcpcd_fork_cb(). */
+-		if (ctx.fork_fd != -1) {
+-			if (write(ctx.fork_fd, &i, sizeof(i)) == -1)
+-				logerr("%s: write", __func__);
+-		}
+-#endif
+-	}
+ #ifdef PRIVSEP
+ 	if (ps_root_stop(&ctx) == -1)
+ 		i = EXIT_FAILURE;
+ 	eloop_free(ctx.ps_eloop);
+ #endif
++
++#ifdef USE_SIGNALS
++	/* If still attached, detach from the launcher */
++	if (ctx.options & DHCPCD_STARTED && ctx.fork_fd != -1) {
++		if (write(ctx.fork_fd, &i, sizeof(i)) == -1)
++			logerr("%s: write", __func__);
++	}
++#endif
++
+ 	eloop_free(ctx.eloop);
+ 	logclose();
+ 	free(ctx.logfile);
+@@ -2760,6 +2700,7 @@ main(int argc, char **argv, char **envp)
+ #ifdef SETPROCTITLE_H
+ 	setproctitle_fini();
+ #endif
++
+ #ifdef USE_SIGNALS
+ 	if (ctx.options & (DHCPCD_FORKED | DHCPCD_PRIVSEP))
+ 		_exit(i); /* so atexit won't remove our pidfile */
+--- a/src/dhcpcd.h
++++ b/src/dhcpcd.h
+@@ -116,10 +116,6 @@ struct passwd;
+ struct dhcpcd_ctx {
+ 	char pidfile[sizeof(PIDFILE) + IF_NAMESIZE + 1];
+ 	char vendor[256];
+-	bool stdin_valid;	/* It's possible stdin, stdout and stderr */
+-	bool stdout_valid;	/* could be closed when dhcpcd starts. */
+-	bool stderr_valid;
+-	int stderr_fd;	/* FD for logging to stderr */
+ 	int fork_fd;	/* FD for the fork init signal pipe */
+ 	const char *cffile;
+ 	unsigned long long options;
+--- a/src/privsep.c
++++ b/src/privsep.c
+@@ -172,8 +172,7 @@ ps_dropprivs(struct dhcpcd_ctx *ctx)
+ 	 * Obviously this won't work if we are using a logfile
+ 	 * or redirecting stderr to a file. */
+ 	if ((ctx->options & DHC_NOCHKIO) == DHC_NOCHKIO ||
+-	    (ctx->logfile == NULL &&
+-	    (!ctx->stderr_valid || isatty(STDERR_FILENO) == 1)))
++	    (ctx->logfile == NULL && isatty(STDERR_FILENO) == 1))
+ 	{
+ 		if (setrlimit(RLIMIT_FSIZE, &rzero) == -1)
+ 			logerr("setrlimit RLIMIT_FSIZE");
+@@ -305,14 +304,11 @@ ps_rights_limit_stdio(struct dhcpcd_ctx *ctx)
+ 	const int iebadf = CAPH_IGNORE_EBADF;
+ 	int error = 0;
+ 
+-	if (ctx->stdin_valid &&
+-	    caph_limit_stream(STDIN_FILENO, CAPH_READ | iebadf) == -1)
++	if (caph_limit_stream(STDIN_FILENO, CAPH_READ | iebadf) == -1)
+ 		error = -1;
+-	if (ctx->stdout_valid &&
+-	    caph_limit_stream(STDOUT_FILENO, CAPH_WRITE | iebadf) == -1)
++	if (caph_limit_stream(STDOUT_FILENO, CAPH_WRITE | iebadf) == -1)
+ 		error = -1;
+-	if (ctx->stderr_valid &&
+-	    caph_limit_stream(STDERR_FILENO, CAPH_WRITE | iebadf) == -1)
++	if (caph_limit_stream(STDERR_FILENO, CAPH_WRITE | iebadf) == -1)
+ 		error = -1;
+ 
+ 	return error;
