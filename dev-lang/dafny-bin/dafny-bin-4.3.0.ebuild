@@ -10,7 +10,7 @@ SRC_URI="https://github.com/dafny-lang/dafny/releases/download/v${PV}/dafny-${PV
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 REQUIRED_USE="elibc_glibc"
 
 RDEPEND="
