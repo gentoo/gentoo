@@ -25,7 +25,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	>=dev-db/postgresql-9.6[uuid]
+	>=dev-db/postgresql-9.6:=[uuid]
 "
 
 src_install() {
