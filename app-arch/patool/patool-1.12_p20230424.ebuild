@@ -119,6 +119,8 @@ python_test() {
 	if use x86; then
 		EPYTEST_IGNORE+=(
 			"tests/archives/test_clzip.py"
+			# bug #916317
+			"tests/archives/test_lrzip.py"
 		)
 	fi
 
