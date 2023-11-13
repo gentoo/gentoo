@@ -19,7 +19,7 @@ else
 		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
 	fi
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -38,7 +38,8 @@ RESTRICT="binchecks strip test
 
 BDEPEND="initramfs? ( app-arch/cpio )
 	compress-xz? ( app-arch/xz-utils )
-	compress-zstd? ( app-arch/zstd )"
+	compress-zstd? ( app-arch/zstd )
+	app-misc/rdfind"
 
 #add anything else that collides to this
 RDEPEND="!savedconfig? (
