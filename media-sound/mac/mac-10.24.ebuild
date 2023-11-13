@@ -9,7 +9,7 @@ DESCRIPTION="Monkey's Audio Codecs"
 HOMEPAGE="https://www.monkeysaudio.com"
 SRC_URI="http://monkeysaudio.com/files/MAC_${PV/.}_SDK.zip -> ${P}.zip"
 
-LICENSE="mac"
+LICENSE="BSD"
 SLOT="0/10"
 KEYWORDS="~alpha amd64 ~loong ppc ppc64 ~riscv sparc x86"
 
