@@ -72,6 +72,7 @@ src_configure() {
 		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
+		-DMOLD_USE_MIMALLOC=$(usex !kernel_Darwin)
 		-DMOLD_USE_SYSTEM_MIMALLOC=ON
 		-DMOLD_USE_SYSTEM_TBB=ON
 	)
@@ -90,5 +91,5 @@ src_install() {
 
 	dosym ${PN} /usr/bin/ld.${PN}
 	dosym ${PN} /usr/bin/ld64.${PN}
-	dosym ../../../usr/bin/${PN} /usr/libexec/${PN}/ld
+	dosym -r /usr/bin/${PN} /usr/libexec/${PN}/ld
 }

@@ -92,5 +92,5 @@ src_install() {
 
 	dosym ${PN} /usr/bin/ld.${PN}
 	dosym ${PN} /usr/bin/ld64.${PN}
-	dosym ../../../usr/bin/${PN} /usr/libexec/${PN}/ld
+	dosym -r /usr/bin/${PN} /usr/libexec/${PN}/ld
 }
