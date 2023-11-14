@@ -255,7 +255,6 @@ media-plugins/gst-plugins-libmms
 # Florian Schmaus <flow@gentoo.org> (2023-10-14)
 # Obsolete acct-* packages that became leaf packages.
 # Removal on 2023-11-14.
-acct-user/tpm
 acct-user/ultimaker
 acct-group/ultimaker
 acct-group/systemd-hostname
