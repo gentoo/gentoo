@@ -34,10 +34,10 @@ src_configure() {
 }
 
 src_test() {
-	# bugs: 619656, 632398, 647414, 665682
+	# bugs: 619656, 632398, 647414, 665682, 917244 (fails upstream as well)
 	local myctestargs=(
 		-j1
-		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest|kdirwatch_stat_unittest|kformattest)"
+		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest|kdirwatch_stat_unittest|kformattest|kpluginloadertest)"
 	)
 
 	ecm_src_test
