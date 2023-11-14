@@ -19,6 +19,8 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${PN}-${CommitId}
 
+PATCHES=( "${FILESDIR}"/${P}-libstdc++.patch )
+
 src_compile() {
 	use test && default
 }
