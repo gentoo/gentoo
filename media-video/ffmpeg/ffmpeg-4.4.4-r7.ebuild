@@ -568,7 +568,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
-		emake V=1 fate
+		emake V=1 fate -k
 }
 
 multilib_src_install() {
