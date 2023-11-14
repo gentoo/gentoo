@@ -252,11 +252,6 @@ media-libs/libofa
 # streams using MMS are known to exist. Removal on 2023-11-13. Bug #915771.
 media-plugins/gst-plugins-libmms
 
-# Florian Schmaus <flow@gentoo.org> (2023-10-14)
-# Obsolete acct-* packages that became leaf packages.
-# Removal on 2023-11-14.
-acct-user/ultimaker
-
 # Michał Górny <mgorny@gentoo.org> (2023-10-14)
 # media-video/transcode is dead for many years.  We already piled up
 # a lot of downstream patches just to keep it working, and it's broken
