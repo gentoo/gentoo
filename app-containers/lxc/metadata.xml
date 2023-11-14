@@ -16,5 +16,6 @@
   </use>
   <upstream>
     <remote-id type="github">lxc/lxc</remote-id>
+    <remote-id type="cpe">cpe:/a:linuxcontainers:lxc</remote-id>
   </upstream>
 </pkgmetadata>

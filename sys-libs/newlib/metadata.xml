@@ -11,4 +11,7 @@
 <use>
 		<flag name="nano">Build additional newlib-nano library</flag>
 </use>
+<upstream>
+		<remote-id type="cpe">cpe:/a:newlib_project:newlib</remote-id>
+</upstream>
 </pkgmetadata>

@@ -22,5 +22,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
+		<remote-id type="cpe">cpe:/a:llvm:llvm</remote-id>
 	</upstream>
 </pkgmetadata>

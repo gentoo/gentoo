@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">libfuse/libfuse</remote-id>
+		<remote-id type="cpe">cpe:/a:libfuse_project:libfuse</remote-id>
 	</upstream>
 </pkgmetadata>

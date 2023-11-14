@@ -25,5 +25,6 @@
   </use>
   <upstream>
     <remote-id type="savannah">gsl</remote-id>
+    <remote-id type="cpe">cpe:/a:gnu:gnu_scientific_library</remote-id>
   </upstream>
 </pkgmetadata>

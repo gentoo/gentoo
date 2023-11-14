@@ -9,5 +9,6 @@
   <upstream>
     <remote-id type="github">cherrypy/cherrypy</remote-id>
     <remote-id type="pypi">CherryPy</remote-id>
+    <remote-id type="cpe">cpe:/a:cherrypy:cherrypy</remote-id>
   </upstream>
 </pkgmetadata>

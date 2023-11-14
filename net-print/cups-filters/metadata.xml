@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">OpenPrinting/cups-filters</remote-id>
+		<remote-id type="cpe">cpe:/a:linuxfoundation:cups-filters</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,5 +11,6 @@
 	</maintainer> 
 	<upstream>
 		<remote-id type="github">docker/cli</remote-id>
+		<remote-id type="cpe">cpe:/a:docker:command_line_interface</remote-id>
 	</upstream>
 </pkgmetadata>
