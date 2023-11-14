@@ -53,12 +53,10 @@ RDEPEND="${DEPEND}
 	dev-perl/XML-SAX
 	dev-perl/XML-Writer"
 
-# Tests observed failing after upgrade to polymake-4.5. No idea if they
-# worked prior to that. Someone who actually understands polymake will
-# have to get these working (at least briefly) before we re-enable them.
-RESTRICT=test
-
-PATCHES=( "${FILESDIR}/${P}-singular-sat.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-singular-sat.patch"
+	"${FILESDIR}/${P}-barycentric-subdiv.patch"
+)
 
 src_configure() {
 	# Without this, the build system tries to use "the highest possible"
