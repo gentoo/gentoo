@@ -27,6 +27,7 @@ SLOT="0"
 IUSE="debug"
 
 RDEPEND="
+	dev-libs/libclc
 	dev-util/spirv-tools
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
