@@ -256,7 +256,6 @@ media-plugins/gst-plugins-libmms
 # Obsolete acct-* packages that became leaf packages.
 # Removal on 2023-11-14.
 acct-user/ultimaker
-acct-group/ultimaker
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-14)
 # media-video/transcode is dead for many years.  We already piled up
