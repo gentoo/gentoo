@@ -54,6 +54,9 @@ DEPEND="
 "
 #doc? ( app-doc/doxygen[dot] )
 BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' python3_12)
 	python? ( dev-lang/swig )
 	verify-sig? ( sec-keys/openpgp-keys-gnupg )
 "
