@@ -8,7 +8,7 @@ inherit autotools flag-o-matic git-r3
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="https://ncmpcpp.rybczak.net/ https://github.com/ncmpcpp/ncmpcpp"
 EGIT_REPO_URI="https://github.com/ncmpcpp/ncmpcpp"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 
 SLOT="0"
 KEYWORDS=""
