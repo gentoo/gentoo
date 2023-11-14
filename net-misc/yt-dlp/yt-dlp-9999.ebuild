@@ -28,7 +28,7 @@ src_prepare() {
 	# adjust requires for pycryptodome and optional dependencies (bug #828466)
 	sed -ri requirements.txt \
 		-e "s/^(pycryptodome)x/\1/" \
-		-e "/^(brotli.*|certifi|mutagen|websockets)/d" || die
+		-e "/^(brotli.*|certifi|mutagen|requests|secretstorage|urllib3|websockets)/d" || die
 }
 
 python_compile() {
@@ -69,6 +69,7 @@ pkg_postinst() {
 	optfeature "various features (merging tracks, streamed content)" media-video/ffmpeg
 	has_version media-video/atomicparsley || # allow fallback but don't advertise
 		optfeature "embedding metadata thumbnails in MP4/M4A files" media-libs/mutagen
+	optfeature "decrypting cookies from Chromium-based browsers" dev-python/secretstorage
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog 'A wrapper using "yt-dlp --compat-options youtube-dl" was installed'
