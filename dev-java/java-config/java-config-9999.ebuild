@@ -1,11 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # jython depends on java-config, so don't add it or things will break
 PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 prefix
 
@@ -30,7 +30,8 @@ DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 # baselayout-java is added as a dep till it can be added to eclass.
 RDEPEND="
 	sys-apps/baselayout-java
-	sys-apps/portage[${PYTHON_USEDEP}]"
+	sys-apps/portage[${PYTHON_USEDEP}]
+"
 
 python_configure_all() {
 	# setup.py fails to update this file
