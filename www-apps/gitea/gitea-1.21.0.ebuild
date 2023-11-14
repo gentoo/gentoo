@@ -101,7 +101,7 @@ src_install() {
 	newtmpfiles - gitea.conf <<-EOF
 		d /run/gitea 0755 git git
 	EOF
-	systemd_newunit "${FILESDIR}"/gitea.service-r3 gitea.service
+	systemd_newunit "${FILESDIR}"/gitea.service-r4 gitea.service
 
 	insinto /etc/gitea
 	newins custom/conf/app.example.ini app.ini
