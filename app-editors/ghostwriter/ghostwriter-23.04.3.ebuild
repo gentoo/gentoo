@@ -39,3 +39,7 @@ BDEPEND="
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-23.0.4-stdint.patch
+)
