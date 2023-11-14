@@ -4,7 +4,7 @@
 EAPI=8
 
 # jython depends on java-config, so don't add it or things will break
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 prefix
@@ -26,6 +26,8 @@ RDEPEND="
 	sys-apps/baselayout-java
 	sys-apps/portage[${PYTHON_USEDEP}]
 "
+
+PATCHES=( "${FILESDIR}/2.3.2-fix-deprecated-test-methods.patch" )
 
 python_configure_all() {
 	# setup.py fails to update this file
