@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic git-r3
 
@@ -15,9 +15,9 @@ KEYWORDS=""
 IUSE="clock lto outputs taglib visualizer"
 
 RDEPEND="
-	>=media-libs/libmpdclient-2.1
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
+	media-libs/libmpdclient
 	net-misc/curl
 	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/readline:=
