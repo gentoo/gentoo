@@ -30,9 +30,6 @@ _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{10..12} )
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-	# If we have enabled module signing IUSE
-	# then we can also enable secureboot IUSE
-	KERNEL_IUSE_SECUREBOOT=1
 	inherit secureboot
 fi
 
@@ -56,10 +53,10 @@ IUSE="+strip"
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If set to a non-null value, adds IUSE=modules-sign and required
-# logic to manipulate the kernel config while respecting the
-# MODULES_SIGN_HASH, MODULES_SIGN_CERT, and MODULES_SIGN_KEY  user
-# variables.
+# If set to a non-null value, inherits secureboot.eclass, adds
+# IUSE=modules-sign and required logic to manipulate the kernel
+# config while respecting the MODULES_SIGN_HASH, MODULES_SIGN_CERT,
+# and MODULES_SIGN_KEY  user variables.
 
 # @ECLASS_VARIABLE: MODULES_SIGN_HASH
 # @USER_VARIABLE
@@ -381,7 +378,7 @@ kernel-build_src_install() {
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
 
-	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 		secureboot_sign_efi_file "${image}"
 	fi
 

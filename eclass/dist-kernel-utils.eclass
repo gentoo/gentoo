@@ -12,13 +12,6 @@
 # This eclass provides various utility functions related to Distribution
 # Kernels.
 
-# @ECLASS_VARIABLE: KERNEL_IUSE_SECUREBOOT
-# @PRE_INHERIT
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# If set to a non-null value, inherits secureboot.eclass
-# and allows signing of generated kernel images.
-
 # @ECLASS_VARIABLE: KERNEL_EFI_ZBOOT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -34,43 +27,6 @@ case ${EAPI} in
 esac
 
 inherit toolchain-funcs
-
-if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-	inherit secureboot
-fi
-
-# @FUNCTION: dist-kernel_build_initramfs
-# @USAGE: <output> <version>
-# @DESCRIPTION:
-# Build an initramfs for the kernel.  <output> specifies the absolute
-# path where initramfs will be created, while <version> specifies
-# the kernel version, used to find modules.
-#
-# Note: while this function uses dracut at the moment, other initramfs
-# variants may be supported in the future.
-dist-kernel_build_initramfs() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
-	local output=${1}
-	local version=${2}
-
-	local rel_image_path=$(dist-kernel_get_image_path)
-	local image=${output%/*}/${rel_image_path##*/}
-
-	local args=(
-		--force
-		# if uefi=yes is used, dracut needs to locate the kernel image
-		--kernel-image "${image}"
-
-		# positional arguments
-		"${output}" "${version}"
-	)
-
-	ebegin "Building initramfs via dracut"
-	dracut "${args[@]}"
-	eend ${?} || die -n "Building initramfs failed"
-}
 
 # @FUNCTION: dist-kernel_get_image_path
 # @DESCRIPTION:
@@ -123,26 +79,6 @@ dist-kernel_install_kernel() {
 	local image=${2}
 	local map=${3}
 
-	if has_version "<=sys-kernel/installkernel-gentoo-7"; then
-		# if dracut is used in uefi=yes mode, initrd will actually
-		# be a combined kernel+initramfs UEFI executable.  we can easily
-		# recognize it by PE magic (vs cpio for a regular initramfs)
-		local initrd=${image%/*}/initrd
-		local magic
-		[[ -s ${initrd} ]] && read -n 2 magic < "${initrd}"
-		if [[ ${magic} == MZ ]]; then
-			einfo "Combined UEFI kernel+initramfs executable found"
-			# install the combined executable in place of kernel
-			image=${initrd%/*}/uki.efi
-			mv "${initrd}" "${image}" || die
-
-			if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-				# Ensure the uki is signed if dracut hasn't already done so.
-				secureboot_sign_efi_file "${image}"
-			fi
-		fi
-	fi
-
 	ebegin "Installing the kernel via installkernel"
 	# note: .config is taken relatively to System.map;
 	# initrd relatively to bzImage
@@ -159,10 +95,6 @@ dist-kernel_install_kernel() {
 # The function will determine whether <kernel-dir> is actually
 # a dist-kernel, and whether initramfs was used.
 #
-# With sys-kernel/installkernel-systemd, or version 8 or greater of
-# sys-kernel/installkernel-gentoo, the generation of the initrd via dracut
-# is handled by kernel-install instead.
-#
 # This function is to be used in pkg_postinst() of ebuilds installing
 # kernel modules that are included in the initramfs.
 dist-kernel_reinstall_initramfs() {
@@ -178,16 +110,6 @@ dist-kernel_reinstall_initramfs() {
 		eerror "  ${image_path}"
 		eerror "Initramfs will not be updated.  Please reinstall your kernel."
 		return
-	fi
-
-	if has_version "<=sys-kernel/installkernel-gentoo-7"; then
-		local initramfs_path=${image_path%/*}/initrd
-		if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
-			einfo "No initramfs or uki found at ${image_path}"
-			return
-		fi
-
-		dist-kernel_build_initramfs "${initramfs_path}" "${ver}"
 	fi
 
 	dist-kernel_install_kernel "${ver}" "${image_path}" \
