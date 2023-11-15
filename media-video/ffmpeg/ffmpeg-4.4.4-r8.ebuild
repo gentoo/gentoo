@@ -12,7 +12,7 @@ EAPI=8
 # changes its ABI then this package will be rebuilt needlessly. Hence, such a
 # package is free _not_ to := depend on FFmpeg but I would strongly encourage
 # doing so since such a case is unlikely.
-FFMPEG_SUBSLOT=58.60.60
+FFMPEG_SUBSLOT=56.58.58
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -64,7 +64,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -83,16 +83,15 @@ FFMPEG_FLAG_MAP=(
 		libv4l:libv4l2 pulseaudio:libpulse libdrm jack:libjack
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
-		jpeg2k:libopenjpeg jpegxl:libjxl bluray:libbluray gme:libgme gsm:libgsm
-		libaribb24 mmal modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
+		jpeg2k:libopenjpeg bluray:libbluray gme:libgme gsm:libgsm
+		libaribb24 mmal modplug:libmodplug opus:libopus qsv:libmfx libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg nvenc:ffnvcodec
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
-		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite fontconfig frei0r
-		fribidi:libfribidi glslang:libglslang ladspa lcms:lcms2 libass libplacebo
-		libtesseract lv2 rubberband:librubberband shaderc:libshaderc truetype:libfreetype
-		truetype:libharfbuzz vidstab:libvidstab vmaf:libvmaf zeromq:libzmq zimg:libzimg
+		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite frei0r fribidi:libfribidi
+		fontconfig glslang:libglslang ladspa libass libtesseract lv2 truetype:libfreetype
+		vidstab:libvidstab vmaf:libvmaf rubberband:librubberband zeromq:libzmq zimg:libzimg
 		# libswresample options
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
@@ -101,8 +100,8 @@ FFMPEG_FLAG_MAP=(
 
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
-	amf amrenc:libvo-amrwbenc kvazaar:libkvazaar libaom	mp3:libmp3lame
-	openh264:libopenh264 rav1e:librav1e snappy:libsnappy svt-av1:libsvtav1
+	amf amrenc:libvo-amrwbenc kvazaar:libkvazaar libaom mp3:libmp3lame
+	openh264:libopenh264 rav1e:librav1e	snappy:libsnappy svt-av1:libsvtav1
 	theora:libtheora twolame:libtwolame webp:libwebp x264:libx264
 	x265:libx265 xvid:libxvid
 )
@@ -193,13 +192,13 @@ RDEPEND="
 	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
 	codec2? ( media-libs/codec2[${MULTILIB_USEDEP}] )
-	dav1d? ( >=media-libs/dav1d-0.5.0:0=[${MULTILIB_USEDEP}] )
+	dav1d? ( >=media-libs/dav1d-0.4.0:0=[${MULTILIB_USEDEP}] )
 	encode? (
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
-		kvazaar? ( >=media-libs/kvazaar-2.0.0[${MULTILIB_USEDEP}] )
+		kvazaar? ( >=media-libs/kvazaar-1.2.0[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
-		rav1e? ( >=media-video/rav1e-0.5:=[capi] )
+		rav1e? ( >=media-video/rav1e-0.4:=[capi] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
@@ -232,16 +231,13 @@ RDEPEND="
 		>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
 	)
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
-	jpeg2k? ( >=media-libs/openjpeg-2.1:2=[${MULTILIB_USEDEP}] )
-	jpegxl? ( >=media-libs/libjxl-0.7.0[$MULTILIB_USEDEP] )
-	lcms? ( >=media-libs/lcms-2.13:2[$MULTILIB_USEDEP] )
+	jpeg2k? ( >=media-libs/openjpeg-2:2[${MULTILIB_USEDEP}] )
 	libaom? ( >=media-libs/libaom-1.0.0-r1:=[${MULTILIB_USEDEP}] )
 	libaribb24? ( >=media-libs/aribb24-1.0.3-r2[${MULTILIB_USEDEP}] )
-	libass? ( >=media-libs/libass-0.11.0:=[${MULTILIB_USEDEP}] )
+	libass? ( >=media-libs/libass-0.10.2:=[${MULTILIB_USEDEP}] )
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
 	libdrm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
 	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
-	libplacebo? ( >=media-libs/libplacebo-4.192.0:=[$MULTILIB_USEDEP] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libtesseract? ( >=app-text/tesseract-4.1.0-r1[${MULTILIB_USEDEP}] )
@@ -253,45 +249,41 @@ RDEPEND="
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
-	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
+	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
-	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
-	qsv? ( media-libs/oneVPL[${MULTILIB_USEDEP}] )
+	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	qsv? ( media-libs/intel-mediasdk[${MULTILIB_USEDEP}] )
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
-	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
-	ssh? ( >=net-libs/libssh-0.6.0:=[sftp,${MULTILIB_USEDEP}] )
+	ssh? ( >=net-libs/libssh-0.5.5:=[sftp,${MULTILIB_USEDEP}] )
 	svg? (
 		gnome-base/librsvg:2=[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 	)
 	nvenc? ( >=media-libs/nv-codec-headers-9.1.23.1 )
-	svt-av1? ( >=media-libs/svt-av1-0.9.0[${MULTILIB_USEDEP}] )
-	truetype? (
-		>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
-		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
-	)
+	svt-av1? ( >=media-libs/svt-av1-0.8.4[${MULTILIB_USEDEP}] )
+	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	vaapi? ( >=media-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vidstab? ( >=media-libs/vidstab-1.1.0[${MULTILIB_USEDEP}] )
-	vmaf? ( >=media-libs/libvmaf-2.0.0[${MULTILIB_USEDEP}] )
+	vmaf? ( media-libs/libvmaf[${MULTILIB_USEDEP}] )
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)
 	vpx? ( >=media-libs/libvpx-1.4.0:=[${MULTILIB_USEDEP}] )
-	vulkan? ( >=media-libs/vulkan-loader-1.3.255:=[${MULTILIB_USEDEP}] )
+	vulkan? ( >=media-libs/vulkan-loader-1.1.97:=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
 		>=x11-libs/libxcb-1.4:=[${MULTILIB_USEDEP}]
 	)
-	zeromq? ( >=net-libs/zeromq-4.2.1:= )
+	zeromq? ( >=net-libs/zeromq-4.1.6 )
 	zimg? ( >=media-libs/zimg-2.7.4:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
@@ -306,7 +298,6 @@ DEPEND="${RDEPEND}
 	amf? ( media-libs/amf-headers )
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
-	vulkan? ( >=dev-util/vulkan-headers-1.3.255 )
 "
 
 # += for verify-sig above
@@ -336,9 +327,8 @@ GPL_REQUIRED_USE="
 REQUIRED_USE="
 	cuda? ( nvenc )
 	fftools_cws2fws? ( zlib )
-	glslang? ( vulkan !shaderc )
+	glslang? ( vulkan )
 	libv4l? ( v4l )
-	shaderc? ( vulkan !glslang )
 	test? ( encode )
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
@@ -351,6 +341,12 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}"/${PN}-5.0-backport-ranlib-build-fix.patch
+	"${FILESDIR}"/${PN}-4.4.3-clang-14-ff_seek_frame_binary-crash.patch
+	"${FILESDIR}"/${PN}-4.4.3-get_cabac_inline_x86-32-bit.patch
+	"${FILESDIR}"/${PN}-4.4.4-wint-conversion-vulkan.patch
+	"${FILESDIR}"/${P}-fix-build-svt-av1-1.5.0.patch
+	"${FILESDIR}"/${PN}-5.1.3-binutils-2.41.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -379,6 +375,8 @@ src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
+
+	eapply "${FILESDIR}/vmaf-models-default-path.patch"
 
 	default
 
@@ -440,7 +438,6 @@ multilib_src_configure() {
 
 	if use openssl ; then
 		myconf+=( --disable-gnutls )
-		has_version dev-libs/openssl:0/3 && myconf+=( --enable-version3 )
 	fi
 
 	# (temporarily) disable non-multilib deps
@@ -454,8 +451,6 @@ multilib_src_configure() {
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		use ${i%:*} || myconf+=( --disable-${i#*:} )
 	done
-	# Bug #917277, #917278
-	myconf+=( --disable-dotprod --disable-i8mm )
 
 	if use pic ; then
 		myconf+=( --enable-pic )
@@ -477,17 +472,13 @@ multilib_src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	if [[ ${ABI} != x86 ]] && is-flagq "-flto*"; then
-		# Respect -flto value, e.g -flto=thin
-		local v="$(get-flag flto)"
-		[[ -n ${v} ]] && myconf+=( "--enable-lto=${v}" ) || myconf+=( "--enable-lto" )
-	fi
+	[[ ${ABI} != x86 ]] && is-flagq "-flto*" && myconf+=( "--enable-lto" )
 	filter-lto
 
 	# Mandatory configuration
 	myconf=(
-		--disable-libaribcaption # libaribcaption is not packaged (yet?)
 		--enable-avfilter
+		--enable-avresample
 		--disable-stripping
 		# This is only for hardcoded cflags; those are used in configure checks that may
 		# interfere with proper detections, bug #671746 and bug #645778
@@ -578,7 +569,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil" \
+	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
 		emake V=1 fate -k
 }
 

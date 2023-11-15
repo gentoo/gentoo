@@ -89,10 +89,10 @@ FFMPEG_FLAG_MAP=(
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
-		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite frei0r vmaf:libvmaf
-		fribidi:libfribidi fontconfig ladspa lcms:lcms2 libass libplacebo libtesseract lv2
-		truetype:libfreetype truetype:libharfbuzz vidstab:libvidstab
-		rubberband:librubberband zeromq:libzmq zimg:libzimg
+		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite fontconfig frei0r
+		fribidi:libfribidi glslang:libglslang ladspa lcms:lcms2 libass libplacebo
+		libtesseract lv2 rubberband:librubberband shaderc:libshaderc truetype:libfreetype
+		truetype:libharfbuzz vidstab:libvidstab vmaf:libvmaf zeromq:libzmq zimg:libzimg
 		# libswresample options
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
@@ -217,6 +217,7 @@ RDEPEND="
 	frei0r? ( media-plugins/frei0r-plugins[${MULTILIB_USEDEP}] )
 	fribidi? ( >=dev-libs/fribidi-0.19.6[${MULTILIB_USEDEP}] )
 	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
+	glslang? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
 	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
@@ -259,6 +260,7 @@ RDEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
+	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
@@ -333,8 +335,10 @@ GPL_REQUIRED_USE="
 "
 REQUIRED_USE="
 	cuda? ( nvenc )
-	libv4l? ( v4l )
 	fftools_cws2fws? ( zlib )
+	glslang? ( vulkan !shaderc )
+	libv4l? ( v4l )
+	shaderc? ( vulkan !glslang )
 	test? ( encode )
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
