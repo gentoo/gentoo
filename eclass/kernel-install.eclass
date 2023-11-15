@@ -510,7 +510,7 @@ kernel-install_pkg_postrm() {
 		local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
-		rm -f "${kernel_dir}/${image_path%/*}"/initrd{,.uefi} &&
+		rm -f "${kernel_dir}/${image_path%/*}"/{initrd,uki.efi} &&
 			find "${kernel_dir}" -depth -type d -empty -delete
 		eend ${?}
 	fi
