@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
+# media-libs/shaderc in not keyworded
+media-video/ffmpeg shaderc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-13)
 # kde-plasma/print-manager is not keyworded
 kde-plasma/plasma-meta cups
