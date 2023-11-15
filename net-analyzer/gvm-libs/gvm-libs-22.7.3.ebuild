@@ -17,20 +17,19 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-user/gvm
-	app-crypt/gpgme:=
-	dev-libs/glib:2
-	dev-libs/hiredis:=
+	>=app-crypt/gpgme-1.7.0:=
+	>=dev-libs/glib-2.42:2
+	>=dev-libs/hiredis-0.10.1:=
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error
-	dev-libs/libxml2
-	dev-perl/UUID
-	net-libs/gnutls:=
+	>=dev-libs/libxml2-2.0:2
+	>=net-libs/gnutls-3.2.15
 	net-libs/libnet:1.1
 	net-libs/libpcap
-	net-libs/libssh:=
-	sys-apps/util-linux
+	>=net-libs/libssh-0.6.0:=
+	>=sys-apps/util-linux-2.25.0
 	sys-libs/libxcrypt:=
-	sys-libs/zlib
+	>=sys-libs/zlib-1.2.8
 	net-libs/paho-mqtt-c:1.3
 	ldap? ( net-nds/openldap:= )
 	radius? ( net-dialup/freeradius-client )
