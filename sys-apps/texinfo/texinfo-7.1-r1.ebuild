@@ -54,6 +54,11 @@ BDEPEND="
 	nls? ( >=sys-devel/gettext-0.19.6 )
 "
 
+PATCHES=(
+	# Backports from the release/7.1 branch
+	"${FILESDIR}"/7.1
+)
+
 src_prepare() {
 	default
 
