@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Apply default POSIX ACLs to files and directories"
-HOMEPAGE="http://michael.orlitzky.com/code/apply-default-acl.xhtml"
-SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.xz"
+HOMEPAGE="https://michael.orlitzky.com/code/apply-default-acl.xhtml"
+SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0"
