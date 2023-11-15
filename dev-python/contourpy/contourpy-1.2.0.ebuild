@@ -42,6 +42,11 @@ DISTUTILS_ARGS=(
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/contourpy/contourpy/pull/327
+	"${FILESDIR}/${P}-unicore.patch"
+)
+
 python_test() {
 	local EPYTEST_IGNORE=(
 		# linters
