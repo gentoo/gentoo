@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="doc/${PN}.example.conf.yml"
 inherit ruby-fakegem
 
 DESCRIPTION="Mangle your mail garden"
-HOMEPAGE="http://michael.orlitzky.com/code/mailshears.xhtml"
+HOMEPAGE="https://michael.orlitzky.com/code/mailshears.xhtml"
 
 LICENSE="AGPL-3"
 SLOT="0"
