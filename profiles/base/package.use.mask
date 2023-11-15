@@ -46,9 +46,8 @@ media-video/chaplin transcode
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
 # Broken with Qt6.6 and, given USE has no revdeps, simpler to just
 # mask for now to save desktop profile users (default bluetooth)
-# from failures. Limited to -r1 to spare stable users from rebuilds
-# (-r0 instead requires <6.6).
-=dev-python/PyQt6-6.5.2-r1 bluetooth
+# from failures. Update: could be cleaned up now but waiting for
+# 6.6.0 stable to avoid unnecessary rebuilds.
 ~dev-python/PyQt6-6.5.3 bluetooth
 
 # Jaco Kroon <jaco@uls.co.za> (2023-09-19)
