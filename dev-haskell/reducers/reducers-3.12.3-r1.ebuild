@@ -23,7 +23,7 @@ RDEPEND=">=dev-haskell/fingertree-0.1:=[profile?] <dev-haskell/fingertree-0.2:=[
 	>=dev-haskell/semigroups-0.9:=[profile?] <dev-haskell/semigroups-1:=[profile?]
 	>=dev-haskell/text-0.11.1.5:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-haskell/unordered-containers-0.2:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:= <dev-lang/ghc-9.1
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
