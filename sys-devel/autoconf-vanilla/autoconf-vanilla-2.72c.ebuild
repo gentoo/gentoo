@@ -51,6 +51,8 @@ PATCHES=(
 	"${FILESDIR}"/"${MY_P}"-conflicts.patch
 )
 
+TC_AUTOCONF_ENVPREFIX=07
+
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
 		# Avoid the "dirty" suffix in the git version by generating it
