@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python library to solve linear games over symmetric cones"
-HOMEPAGE="http://michael.orlitzky.com/code/dunshire/"
+HOMEPAGE="https://michael.orlitzky.com/code/dunshire/"
 
 LICENSE="AGPL-3+"
 SLOT="0"
