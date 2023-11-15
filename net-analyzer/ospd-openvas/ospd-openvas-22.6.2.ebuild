@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 systemd
 
@@ -19,12 +19,15 @@ IUSE="doc +notus"
 DEPEND="
 	acct-user/gvm
 	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
+	<dev-python/defusedxml-0.8[${PYTHON_USEDEP}]
 	>=dev-python/deprecated-1.2.10[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.5.2[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
+	<dev-python/packaging-24.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.5.1[${PYTHON_USEDEP}]
 	>=dev-python/redis-4.5.0[${PYTHON_USEDEP}]
-	>=dev-python/python-gnupg-0.5.0[${PYTHON_USEDEP}]
+	>=dev-python/python-gnupg-0.4.8[${PYTHON_USEDEP}]
+	<dev-python/python-gnupg-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.4.8[${PYTHON_USEDEP}]
 	net-libs/paho-mqtt-c
@@ -33,7 +36,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-admin/sudo
-	>=net-analyzer/openvas-scanner-${PV}
+	>=net-analyzer/openvas-scanner-22.4
 	notus? ( >=net-analyzer/notus-scanner-22.4 )
 "
 
