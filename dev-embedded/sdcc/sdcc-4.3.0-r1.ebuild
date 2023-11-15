@@ -96,6 +96,10 @@ src_prepare() {
 	# libiberty configure will fail if this was not set
 	export libiberty_topdir="${S}"/support/sdbinutils/libiberty
 
+	# this does not build: https://sourceforge.net/p/sdcc/bugs/3673/
+	# disable for now
+	sed 's:device/lib/mos65c02/Makefile::' -i configure.ac || die
+
 	default
 	eautoreconf
 
@@ -144,10 +148,6 @@ src_configure() {
 		$(use_enable mos65c02 mos65c02-port)
 	)
 	econf "${myeconfargs[@]}"
-
-	# this does not build: https://sourceforge.net/p/sdcc/bugs/3673/
-	# disable for now
-	rm device/lib/mos65c02/Makefile || die
 }
 
 src_compile() {
