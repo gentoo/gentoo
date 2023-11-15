@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
+# Vulkan is not available here
+media-video/ffmpeg glslang shaderc vulkan
+
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
 # dev-util/samurai is not keyworded here.
 app-alternatives/ninja samurai
