@@ -20,6 +20,10 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="mmap"
 
+CABAL_CHDEPS=(
+	'bytestring          >= 0.9     && < 0.11' 'bytestring >=0.9'
+)
+
 RDEPEND=">=dev-haskell/mtl-1.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
 	>=dev-haskell/primitive-0.4:=[profile?]
 	>=dev-haskell/vector-0.10:=[profile?] <dev-haskell/vector-0.13:=[profile?]
