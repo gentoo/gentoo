@@ -19,8 +19,8 @@ LICENSE="AGPL-3+"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
-	>=net-libs/nodejs-14.0.0[ssl]
-	>=sys-apps/yarn-1.15.2
+	>=net-libs/nodejs-18.0.0[ssl]
+	>=sys-apps/yarn-1.22
 "
 
 MY_NODE_DIR="${S}/${MY_NODE_D}/"
