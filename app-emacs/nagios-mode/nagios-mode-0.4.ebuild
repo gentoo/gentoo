@@ -6,8 +6,8 @@ EAPI=8
 inherit elisp
 
 DESCRIPTION="Major mode for editing Nagios configuration files"
-HOMEPAGE="http://michael.orlitzky.com/code/nagios-mode.xhtml"
-SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.xz"
+HOMEPAGE="https://michael.orlitzky.com/code/nagios-mode.xhtml"
+SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
