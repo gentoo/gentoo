@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/627532
+https://github.com/util-linux/util-linux/commit/f5715c117e727d4ff45e0d8568f188753620356e
+
+From f5715c117e727d4ff45e0d8568f188753620356e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Mon, 13 Nov 2023 21:05:59 +0100
+Subject: [PATCH] fincore: (tests) also use nosize error file
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Link: https://lore.kernel.org/util-linux/b8cafd0d89878949705782312dfe800ec2779035.camel@physik.fu-berlin.de/
+Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
+--- a/tests/ts/fincore/count
++++ b/tests/ts/fincore/count
+@@ -107,6 +107,7 @@ if test -f "$TS_EXPECTED.$PAGE_SIZE"; then
+ 	OUT_COLUMNS="PAGES,SIZE,FILE"
+ else
+ 	TS_EXPECTED+=".nosize"
++	TS_EXPECTED_ERR+=".nosize"
+ 	OUT_COLUMNS="PAGES,FILE"
+ fi
+ 
