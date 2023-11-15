@@ -109,8 +109,13 @@ src_install() {
 	done
 	popd >/dev/null || die
 
-	local major="$(ver_cut 1)"
-	local minor="$(ver_cut 2)"
+	if [[ ${PV} == 9999 ]]; then
+		local major="89"
+		local minor="999"
+	else
+		local major="$(ver_cut 1)"
+		local minor="$(ver_cut 2)"
+	fi
 	local idx="$((99999-(major*1000+minor)))"
 	newenvd - "06automake${idx}" <<-EOF
 	INFOPATH="${infopath}"
