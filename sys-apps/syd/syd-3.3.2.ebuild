@@ -14,20 +14,20 @@ CRATES="
 	autocfg@1.1.0
 	bitflags@1.3.2
 	bitflags@2.4.1
-	bstr@1.7.0
+	bstr@1.8.0
 	cast@0.3.0
 	cfg-if@1.0.0
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.7
-	clap_builder@4.4.7
+	clap@4.4.8
+	clap_builder@4.4.8
 	clap_lex@0.6.0
 	criterion-plot@0.5.0
 	criterion@0.5.1
 	either@1.9.0
-	env_logger@0.10.0
-	errno@0.3.5
+	env_logger@0.10.1
+	errno@0.3.6
 	fastrand@2.0.1
 	fnv@1.0.7
 	getargs@0.5.0
@@ -44,7 +44,7 @@ CRATES="
 	libc@0.2.150
 	libseccomp-sys@0.2.1
 	libseccomp@0.3.0
-	linux-raw-sys@0.4.10
+	linux-raw-sys@0.4.11
 	lock_api@0.4.11
 	log@0.4.20
 	memchr@2.6.4
@@ -70,10 +70,10 @@ CRATES="
 	ryu@1.0.15
 	same-file@1.0.6
 	scopeguard@1.2.0
-	serde@1.0.190
-	serde_derive@1.0.190
+	serde@1.0.192
+	serde_derive@1.0.192
 	serde_json@1.0.108
-	smallvec@1.11.1
+	smallvec@1.11.2
 	strum@0.25.0
 	strum_macros@0.25.3
 	syn@2.0.39

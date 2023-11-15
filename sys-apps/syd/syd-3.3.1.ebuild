@@ -5,7 +5,6 @@ EAPI=8
 
 RESTRICT="test" # fails with sandbox
 
-
 CRATES="
 	aho-corasick@1.1.2
 	anes@0.1.6
