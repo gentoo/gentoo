@@ -276,7 +276,7 @@ esac
 
 BDEPEND+="
 	dev-libs/libpcre2:*
-	>=kde-frameworks/extra-cmake-modules-${KFMIN}:${KFSLOT}
+	>=kde-frameworks/extra-cmake-modules-${KFMIN}:*
 "
 RDEPEND+=" >=kde-frameworks/kf-env-4"
 if [[ ${_KFSLOT} == 6 ]]; then
