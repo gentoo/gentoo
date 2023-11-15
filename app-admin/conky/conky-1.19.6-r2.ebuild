@@ -65,13 +65,6 @@ RDEPEND="
 	cmus? ( media-sound/cmus )
 	hddtemp? ( app-admin/hddtemp )
 	moc? ( media-sound/moc )
-	extras? (
-		app-editors/nano
-		|| (
-			app-editors/vim
-			app-editors/gvim
-		)
-	)
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -150,6 +143,7 @@ src_configure() {
 			-DBUILD_X11=yes
 			-DBUILD_XDAMAGE=yes
 			-DBUILD_XDBE=yes
+			-DBUILD_XFIXES=yes
 			-DBUILD_XSHAPE=yes
 			-DBUILD_MOUSE_EVENTS=yes
 			-DOWN_WINDOW=yes
