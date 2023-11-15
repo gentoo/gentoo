@@ -22,7 +22,7 @@ DEPEND="
 	net-misc/rsync
 	>=net-analyzer/gvmd-22.5.0
 	dev-python/tomli[${PYTHON_USEDEP}]
-	dev-python/rich[${PYTHON_USEDEP}]
+	>=dev-python/rich-13.2.0[${PYTHON_USEDEP}]
 "
 
 RDEPEND="
