@@ -49,7 +49,7 @@ src_prepare() {
 
 src_configure() {
 	# Also used in install.
-	MY_INFODIR="${EPREFIX}/usr/share/automake-vanilla-${PV}/info"
+	MY_INFODIR="${EPREFIX}/usr/share/${P}/info"
 	econf \
 		--datadir="${EPREFIX}"/usr/share/automake-vanilla-${PV} \
 		--program-suffix="-vanilla" \
@@ -90,14 +90,14 @@ src_install() {
 	pushd "${D}/${MY_INFODIR}" >/dev/null || die
 	for f in *.info*; do
 		# Install convenience aliases for versioned Automake pages.
-		ln -s "$f" "${f/./-${PV}.}" || die
+		ln -s "$f" "${f/./-vanilla-${PV}.}" || die
 	done
 	popd >/dev/null || die
 
 	local major="$(ver_cut 1)"
 	local minor="$(ver_cut 2)"
 	local idx="$((99999-(major*1000+minor)))"
-	newenvd - "06automake${idx}" <<-EOF
+	newenvd - "07automake${idx}" <<-EOF
 	INFOPATH="${MY_INFODIR}"
 	EOF
 }
