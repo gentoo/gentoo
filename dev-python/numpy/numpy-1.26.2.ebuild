@@ -95,7 +95,7 @@ python_test() {
 
 		# flaky
 		f2py/tests/test_crackfortran.py
-		f2py/tests/test_data.py::TestDataF77::test_crackedlines
+		f2py/tests/test_data.py::TestData{,F77}::test_crackedlines
 	)
 
 	if use arm && [[ $(uname -m || echo "unknown") == "armv8l" ]] ; then
