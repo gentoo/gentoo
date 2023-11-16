@@ -120,7 +120,7 @@ src_configure() {
 
 		# Much can be optional, but do not want to flood users (or maintainers)
 		# with too many flags. Not to mention that many plugins are merely
-		# wrappers around still optional tools (e.g. git) and any unwanted
+		# wrappers around still optional tools (e.g. cvs) and any unwanted
 		# plugins can be disabled at runtime. So optional flags are limited
 		# to plugins with additional build-time dependencies.
 		-DBUILD_LIBRARY_TRACING=$(usex tracing) # qml+perfprofiler,ctfvisual
@@ -240,6 +240,7 @@ Utilities:
 - StudioWelcome (USE=qmldesigner)
 
 Version Control:
+- CVS (dev-vcs/cvs)
 - Fossil (dev-vcs/fossil)
 - Git (dev-vcs/git)
 - Mercurial (dev-vcs/mercurial)
