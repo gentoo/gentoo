@@ -9,7 +9,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="A small 'shelve' like datastore with concurrency support"
 HOMEPAGE="
-	https://github.com/pickleshare/pickleshare/
+	https://github.com/ipython/pickleshare/
 	https://pypi.org/project/pickleshare/
 "
 
