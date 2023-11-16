@@ -22,3 +22,4 @@ move app-office/kalendar app-office/merkuro
 move kde-misc/wacomtablet kde-plasma/wacomtablet
 move kde-apps/print-manager kde-plasma/print-manager
 move dev-libs/kuserfeedback kde-frameworks/kuserfeedback
+move dev-python/pure_eval dev-python/pure-eval
