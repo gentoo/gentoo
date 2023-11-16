@@ -126,6 +126,9 @@ src_prepare() {
 	# bat needs to respect LDFLAGS and CFLAGS
 	eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-bat-pro.patch
 
+	# tray-monitor needs to respect LDFLAGS and CFLAGS
+	eapply -p0 "${FILESDIR}"/tray-monitor-pro.patch
+
 	# bug #328701
 	eapply -p0 "${FILESDIR}"/5.2.3/${PN}-5.2.3-openssl-1.patch
 
@@ -140,6 +143,8 @@ src_prepare() {
 	# do not strip binaries
 	sed -i -e "s/strip /# strip /" src/filed/Makefile.in || die
 	sed -i -e "s/strip /# strip /" src/console/Makefile.in || die
+	sed -i -e "s/+= qt$/+= qt nostrip/" \
+			src/qt-console/tray-monitor/tray-monitor.pro.in || die
 
 	eapply_user
 
