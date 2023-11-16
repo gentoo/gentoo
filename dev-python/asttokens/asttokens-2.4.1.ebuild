@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -35,3 +35,18 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# already skipped in git
+				tests/test_tokenless.py::TestFstringPositionsWork::test_fstring_positions_work
+			)
+			;;
+	esac
+
+	epytest
+}
