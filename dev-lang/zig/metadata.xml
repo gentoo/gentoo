@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="llvm">Build with LLVM backend and extensions enabled.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">ziglang/zig</remote-id>
 		<bugs-to>https://github.com/ziglang/zig/issues</bugs-to>
