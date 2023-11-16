@@ -1,0 +1,30 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aa68d60..522c9f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -98,12 +98,11 @@ message( ${VERBOSE} "  CMAKE_AUTORCC:           ${CMAKE_AUTORCC}")
+ 
+ set(QT5_LIBRARIES Qt5::Widgets )
+ # Ensures all Qt componenets have same version: 
+-find_package(Qt5 ${ddcui_qt_version} COMPONENTS Core Widgets Gui Help REQUIRED)
++find_package(Qt5 ${ddcui_qt_version} COMPONENTS Core Widgets Gui REQUIRED)
+ message( ${VERBOSE} "Qt directories:")
+ message( ${VERBOSE} "  Qt5Widgets_INCLUDE_DIRS:  ${Qt5Widgets_INCLUDE_DIRS}" )
+ message( ${VERBOSE} "  Qt5Core_INCLUDE_DIRS:     ${Qt5Core_INCLUDE_DIRS}"    )
+ message( ${VERBOSE} "  Qt5Gui_INCLUDE_DIRS:      ${Qt5Gui_INCLUDE_DIRS}"     )
+-message( ${VERBOSE} "  Qt5Help_INCLUDE_DIRS:     ${Qt5Help_INCLUDE_DIRS}"    )
+ 
+ find_package (PkgConfig REQUIRED )
+ pkg_check_modules(GLIB2 REQUIRED glib-2.0>=${ddcui_glib_version})
+@@ -239,9 +238,9 @@ target_compile_options(ddcui PUBLIC "-fPIC" ${coverity_cflags})
+ # add_compile_options(-Og -H V=1)
+ 
+ # redundant: ${Qt5Gui_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS}. 
+-#            ${Qt5Help_INCLUDE_DIRS} is a superset of them all 
+ target_include_directories(ddcui SYSTEM PRIVATE
+-                                 ${Qt5Help_INCLUDE_DIRS}
++                                 ${Qt5Gui_INCLUDE_DIRS}
++                                 ${Qt5Widgets_INCLUDE_DIRS}
+                                  ${GLIB2_INCLUDE_DIRS} 
+                                  ${DDCUTIL_INCLUDE_DIRS})
+ 
