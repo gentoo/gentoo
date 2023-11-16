@@ -43,7 +43,7 @@ RDEPEND=">=dev-haskell/async-2.0:=
 	>=dev-haskell/tar-0.5.0.3:=
 	dev-haskell/xml:=
 	>=dev-haskell/zlib-0.5.3:=
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:= <dev-lang/ghc-9.1
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
