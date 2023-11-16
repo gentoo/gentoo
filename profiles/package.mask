@@ -33,10 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Florian Schmaus <flow@gentoo.org> (2023-11-15)
-# Installs launcher.bash into wrong position. Bug #917346.
-=dev-java/java-config-2.3.2
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-11-10)
 # No reverse dependencies, no tests, no upstream activity. All ebuild
 # maintenance on this package was done randomly by @python project members,
