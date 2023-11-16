@@ -48,6 +48,10 @@ DEPEND="${RDEPEND}"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.12.1-gcc14.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_AVCODEC=$(usex ffmpeg)
