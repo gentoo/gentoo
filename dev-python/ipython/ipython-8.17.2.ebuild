@@ -4,8 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
-PYTHON_REQ_USE='readline,sqlite,threads(+)'
+PYTHON_FULL=( python3_{10..12} )
+PYTHON_COMPAT=( "${PYTHON_FULL[@]}" pypy3 )
+PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 optfeature pypi virtualx
 
@@ -40,20 +41,24 @@ RDEPEND="
 BDEPEND="
 	test? (
 		app-text/dvipng[truetype]
-		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
-		dev-python/nbformat[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			dev-python/nbformat[${PYTHON_USEDEP}]
+		' "${PYTHON_FULL[@]}")
 		>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
+		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 		dev-python/pickleshare[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	doc? (
-		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-2[${PYTHON_USEDEP}]
-		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			>=dev-python/sphinx-2[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		' "${PYTHON_FULL[@]}")
 	)
 "
 
@@ -61,23 +66,29 @@ distutils_enable_tests pytest
 
 RDEPEND+="
 	nbconvert? (
-		dev-python/nbconvert[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/nbconvert[${PYTHON_USEDEP}]
+		' "${PYTHON_FULL[@]}")
 	)
 "
 PDEPEND="
-	notebook? (
-		dev-python/notebook[${PYTHON_USEDEP}]
-		dev-python/ipywidgets[${PYTHON_USEDEP}]
-		dev-python/widgetsnbextension[${PYTHON_USEDEP}]
-	)
-	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
-	smp? (
-		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		notebook? (
+			dev-python/notebook[${PYTHON_USEDEP}]
+			dev-python/ipywidgets[${PYTHON_USEDEP}]
+			dev-python/widgetsnbextension[${PYTHON_USEDEP}]
+		)
+		qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
+		smp? (
+			>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+			>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
+		)
+	' "${PYTHON_FULL[@]}")
 "
 
-PATCHES=( "${FILESDIR}"/2.1.0-substitute-files.patch )
+PATCHES=(
+	"${FILESDIR}"/2.1.0-substitute-files.patch
+)
 
 python_prepare_all() {
 	# Remove out of date insource files
@@ -97,7 +108,7 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	if use doc; then
+	if use doc && has "${EPYTHON/./_}" "${PYTHON_FULL[@]}"; then
 		emake -C docs html_noapi
 		HTML_DOCS=( docs/build/html/. )
 	fi
@@ -115,6 +126,16 @@ python_test() {
 		IPython/core/tests/test_oinspect.py::test_render_signature_long
 		IPython/terminal/tests/test_shortcuts.py::test_modify_shortcut_with_filters
 	)
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# https://github.com/numpy/numpy/issues/25164
+				IPython/lib/tests/test_display.py::TestAudioDataWithoutNumpy
+			)
+			;;
+	esac
+
 	# nonfatal implied by virtx
 	nonfatal epytest || die "Tests failed with ${EPYTHON}"
 }
