@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 # Noah Friedman and Bob Manson have confirmed that this is in the public domain
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 PATCHES=( "${FILESDIR}/${P}-iap.patch" )
 SITEFILE="50${PN}-gentoo.el"
