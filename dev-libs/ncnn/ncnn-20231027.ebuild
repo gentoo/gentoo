@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD ZLIB"
 SLOT="0/${PV}" # currently has unstable ABI that often requires rebuilds
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="tools +vulkan"
 
 # Need the static library to run tests + skip vulkan / GPU:
