@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="OpenPGP keys used to sign midipix releases"
 HOMEPAGE="https://midipix.org/"
-SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-6482133FE45A8A91EEB0733716997AE880F70A46.asc"
+SRC_URI="https://dl.foss21.org/keys/6482133FE45A8A91EEB0733716997AE880F70A46.asc"
 S="${WORKDIR}"
 
 LICENSE="public-domain"
@@ -14,7 +14,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 
 src_install() {
 	local files=(
-		${P}-6482133FE45A8A91EEB0733716997AE880F70A46.asc
+		6482133FE45A8A91EEB0733716997AE880F70A46.asc
 	)
 
 	insinto /usr/share/openpgp-keys
