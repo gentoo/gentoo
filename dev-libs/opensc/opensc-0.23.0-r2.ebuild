@@ -43,6 +43,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2023-2977.patch
 	"${FILESDIR}"/${P}-backport-pr2656.patch
+	"${FILESDIR}"/${P}-backport-pr2765.patch
 )
 
 src_prepare() {
