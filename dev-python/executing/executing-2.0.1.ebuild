@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 optfeature
 
@@ -26,13 +26,14 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/asttokens-2.1.0[${PYTHON_USEDEP}]
-		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/littleutils[${PYTHON_USEDEP}]
 		dev-python/rich[${PYTHON_USEDEP}]
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.0.1-additional-slow-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.1-additional-slow-tests.patch"
+)
 
 distutils_enable_tests pytest
 
@@ -41,6 +42,11 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 python_test() {
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				"tests/test_main.py::test_small_samples[46597f8f896f11c5d7f432236344cc7e5645c2a39836eb6abdd2437c0422f0f4.py]"
+			)
+			;;
 		python3.10)
 			EPYTEST_DESELECT+=(
 				# crashes with infinite recursion (?)
@@ -48,6 +54,11 @@ python_test() {
 			)
 			;;
 	esac
+	if ! has_version "dev-python/ipython[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_ipython.py
+		)
+	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
