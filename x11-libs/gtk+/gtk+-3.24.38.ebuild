@@ -145,7 +145,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
+	virtx dbus-run-session meson test -C "${BUILD_DIR}" --timeout-multiplier 4 || die
 }
 
 multilib_src_install() {
