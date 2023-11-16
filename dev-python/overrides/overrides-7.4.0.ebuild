@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -26,7 +26,14 @@ python_test() {
 	case ${EPYTHON} in
 		python3.12)
 			EPYTEST_DESELECT+=(
+				# https://github.com/mkorpela/overrides/issues/117
 				tests/test_enforce__py38.py::EnforceTests::test_enforcing_when_incompatible
+			)
+			;;
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# https://github.com/mkorpela/overrides/issues/118
+				tests/test_overrides.py::OverridesTests::test_overrides_builtin_method_{,in}correct_signature
 			)
 			;;
 	esac
