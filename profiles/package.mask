@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <scardracs-gentoo@proton.me> (2023-11-16)
+# This package has not been updated on ::gentoo for really long time
+# and we actually use a version released back on 2007.
+# We (and Arch Linux) are the only distros which actually have it.
+# No revdeps. Removal after 30 days. # Bug 890975
+mail-filter/policyd
+
 # Florian Schmaus <flow@gentoo.org> (2023-11-15)
 # Installs launcher.bash into wrong position. Bug #917346.
 =dev-java/java-config-2.3.2
