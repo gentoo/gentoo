@@ -10,6 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="hackage">HsYAML</remote-id>
-		<remote-id type="github">haskell-hvr/HsYAML</remote-id>
+		<remote-id type="github">hvr/HsYAML</remote-id>
 	</upstream>
 </pkgmetadata>
