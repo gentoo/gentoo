@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-${P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="aesara examples imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs"
+IUSE="aesara examples imaging ipython latex mathml opengl pdf png pyglet symengine texmacs"
 
 RDEPEND="
 	dev-python/mpmath[${PYTHON_USEDEP}]
@@ -47,14 +47,39 @@ RDEPEND="
 	texmacs? ( app-office/texmacs )
 "
 
-distutils_enable_tests pytest
-
 src_test() {
 	virtx distutils-r1_src_test
 }
 
 python_test() {
-	esetup.py test
+	local color=True
+	[[ ${NO_COLOR} ]] && color=False
+
+	"${EPYTHON}" - <<-EOF || die -n "Tests failed with ${EPYTHON}"
+		from sympy.testing.runtests import run_all_tests
+
+		common = {
+			"verbose": True,
+			"colors": ${color},
+			"force_colors": ${color},
+			"blacklist": [
+				# these require old version of antlr4
+				"sympy/parsing/autolev/__init__.py",
+				"sympy/parsing/latex/__init__.py",
+				"sympy/parsing/tests/test_autolev.py",
+				"sympy/parsing/tests/test_latex.py",
+				# these fail on assertions inside LLVM
+				"sympy/parsing/tests/test_c_parser.py",
+				# hangs
+				"sympy/printing/preview.py",
+			],
+		}
+
+		run_all_tests(
+			test_kwargs=common,
+			doctest_kwargs=common,
+		)
+	EOF
 }
 
 python_install_all() {
