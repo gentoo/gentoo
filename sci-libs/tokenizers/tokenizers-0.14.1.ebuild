@@ -11,8 +11,7 @@ DISTUTILS_EXT=1
 
 CRATES="
 	adler@1.0.2
-	aho-corasick@0.7.20
-	aho-corasick@1.0.5
+	aho-corasick@1.1.1
 	aho-corasick@1.1.2
 	anes@0.1.6
 	anstream@0.6.4
@@ -21,7 +20,6 @@ CRATES="
 	anstyle-wincon@3.0.1
 	anstyle@1.0.4
 	assert_approx_eq@1.1.0
-	atty@0.2.14
 	autocfg@1.1.0
 	base64@0.13.1
 	base64@0.21.5
@@ -32,16 +30,19 @@ CRATES="
 	bitflags@2.4.1
 	bumpalo@3.14.0
 	cast@0.3.0
+	cc@1.0.79
 	cc@1.0.83
 	cfg-if@1.0.0
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@3.2.25
+	clap@4.4.6
 	clap@4.4.8
+	clap_builder@4.4.6
 	clap_builder@4.4.8
+	clap_derive@4.4.2
 	clap_derive@4.4.7
-	clap_lex@0.2.4
+	clap_lex@0.5.1
 	clap_lex@0.6.0
 	colorchoice@1.0.0
 	console@0.15.7
@@ -49,8 +50,7 @@ CRATES="
 	core-foundation@0.9.3
 	crc32fast@1.3.2
 	criterion-plot@0.5.0
-	criterion@0.4.0
-	crossbeam-channel@0.5.8
+	criterion@0.5.1
 	crossbeam-deque@0.8.3
 	crossbeam-epoch@0.9.15
 	crossbeam-utils@0.8.16
@@ -62,16 +62,15 @@ CRATES="
 	derive_builder_macro@0.12.0
 	dirs-sys@0.4.1
 	dirs@5.0.1
+	either@1.8.1
 	either@1.9.0
 	encode_unicode@0.3.6
 	env_logger@0.10.0
 	errno-dragonfly@0.1.2
-	errno@0.3.3
-	errno@0.3.6
+	errno@0.3.1
+	errno@0.3.7
 	esaxx-rs@0.1.10
-	esaxx-rs@0.1.8
-	fancy-regex@0.10.0
-	fastrand@2.0.0
+	fancy-regex@0.11.0
 	fastrand@2.0.1
 	flate2@1.0.28
 	fnv@1.0.7
@@ -81,23 +80,20 @@ CRATES="
 	getrandom@0.2.10
 	getrandom@0.2.11
 	half@1.8.2
-	hashbrown@0.12.3
 	heck@0.4.1
-	hermit-abi@0.1.19
 	hermit-abi@0.3.2
-	hf-hub@0.2.0
+	hermit-abi@0.3.3
+	hf-hub@0.3.2
 	humantime@2.1.0
 	ident_case@1.0.1
 	idna@0.4.0
-	indexmap@1.9.3
-	indicatif@0.15.0
 	indicatif@0.17.7
 	indoc@1.0.9
 	instant@0.1.12
 	is-terminal@0.4.9
 	itertools@0.10.5
-	itertools@0.8.2
-	itertools@0.9.0
+	itertools@0.11.0
+	itoa@1.0.8
 	itoa@1.0.9
 	js-sys@0.3.65
 	lazy_static@1.4.0
@@ -105,14 +101,14 @@ CRATES="
 	libc@0.2.150
 	libredox@0.0.1
 	linux-raw-sys@0.4.11
-	linux-raw-sys@0.4.5
+	linux-raw-sys@0.4.8
 	lock_api@0.4.10
+	log@0.4.19
 	log@0.4.20
-	macro_rules_attribute-proc_macro@0.1.3
-	macro_rules_attribute@0.1.3
-	matrixmultiply@0.2.4
+	macro_rules_attribute-proc_macro@0.2.0
+	macro_rules_attribute@0.2.0
 	matrixmultiply@0.3.7
-	memchr@2.6.3
+	memchr@2.5.0
 	memchr@2.6.4
 	memoffset@0.9.0
 	minimal-lexical@0.2.1
@@ -122,16 +118,12 @@ CRATES="
 	monostate@0.1.10
 	monostate@0.1.9
 	native-tls@0.2.11
-	ndarray@0.13.1
 	ndarray@0.15.6
 	nom@7.1.3
-	num-complex@0.2.4
-	num-complex@0.4.4
+	num-complex@0.4.3
 	num-integer@0.1.45
-	num-traits@0.2.16
+	num-traits@0.2.15
 	num-traits@0.2.17
-	num_cpus@1.16.0
-	number_prefix@0.3.0
 	number_prefix@0.4.0
 	numpy@0.19.0
 	once_cell@1.18.0
@@ -143,7 +135,6 @@ CRATES="
 	openssl-sys@0.9.95
 	openssl@0.10.59
 	option-ext@0.2.0
-	os_str_bytes@6.6.1
 	parking_lot@0.12.1
 	parking_lot_core@0.9.8
 	paste@1.0.14
@@ -152,52 +143,55 @@ CRATES="
 	plotters-backend@0.3.5
 	plotters-svg@0.3.5
 	plotters@0.3.5
+	portable-atomic@1.4.3
 	portable-atomic@1.5.1
 	ppv-lite86@0.2.17
-	proc-macro2@1.0.66
+	proc-macro2@1.0.64
 	proc-macro2@1.0.69
 	pyo3-build-config@0.19.2
 	pyo3-ffi@0.19.2
 	pyo3-macros-backend@0.19.2
 	pyo3-macros@0.19.2
 	pyo3@0.19.2
+	quote@1.0.29
 	quote@1.0.33
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
 	rawpointer@0.2.1
-	rayon-cond@0.1.0
-	rayon-core@1.11.0
+	rayon-cond@0.3.0
 	rayon-core@1.12.0
-	rayon@1.7.0
 	rayon@1.8.0
 	redox_syscall@0.3.5
 	redox_syscall@0.4.1
 	redox_users@0.4.4
-	regex-automata@0.3.8
+	regex-automata@0.3.3
 	regex-automata@0.4.3
+	regex-syntax@0.7.4
 	regex-syntax@0.7.5
 	regex-syntax@0.8.2
 	regex@1.10.2
-	regex@1.9.5
+	regex@1.9.1
 	ring@0.17.5
 	rustc-hash@1.1.0
-	rustix@0.38.11
+	rustix@0.38.13
 	rustix@0.38.24
 	rustls-webpki@0.101.7
-	rustls@0.21.8
+	rustls@0.21.9
+	ryu@1.0.14
 	ryu@1.0.15
 	same-file@1.0.6
 	schannel@0.1.22
+	scopeguard@1.1.0
 	scopeguard@1.2.0
 	sct@0.7.1
 	security-framework-sys@2.9.1
 	security-framework@2.9.2
-	serde@1.0.188
+	serde@1.0.171
 	serde@1.0.192
-	serde_derive@1.0.188
+	serde_derive@1.0.171
 	serde_derive@1.0.192
-	serde_json@1.0.105
+	serde_json@1.0.102
 	serde_json@1.0.108
 	smallvec@1.11.0
 	smallvec@1.11.2
@@ -205,22 +199,21 @@ CRATES="
 	spm_precompiled@0.1.4
 	strsim@0.10.0
 	syn@1.0.109
-	syn@2.0.31
+	syn@2.0.25
 	syn@2.0.39
-	target-lexicon@0.12.11
+	target-lexicon@0.12.9
 	tempfile@3.8.0
 	tempfile@3.8.1
 	termcolor@1.2.0
-	textwrap@0.16.0
-	thiserror-impl@1.0.48
+	thiserror-impl@1.0.49
 	thiserror-impl@1.0.50
-	thiserror@1.0.48
+	thiserror@1.0.49
 	thiserror@1.0.50
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
 	unicode-bidi@0.3.13
-	unicode-ident@1.0.11
+	unicode-ident@1.0.10
 	unicode-ident@1.0.12
 	unicode-normalization-alignments@0.1.12
 	unicode-normalization@0.1.22
@@ -250,20 +243,28 @@ CRATES="
 	windows-sys@0.45.0
 	windows-sys@0.48.0
 	windows-targets@0.42.2
+	windows-targets@0.48.1
 	windows-targets@0.48.5
 	windows_aarch64_gnullvm@0.42.2
+	windows_aarch64_gnullvm@0.48.0
 	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_msvc@0.42.2
+	windows_aarch64_msvc@0.48.0
 	windows_aarch64_msvc@0.48.5
 	windows_i686_gnu@0.42.2
+	windows_i686_gnu@0.48.0
 	windows_i686_gnu@0.48.5
 	windows_i686_msvc@0.42.2
+	windows_i686_msvc@0.48.0
 	windows_i686_msvc@0.48.5
 	windows_x86_64_gnu@0.42.2
+	windows_x86_64_gnu@0.48.0
 	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnullvm@0.42.2
+	windows_x86_64_gnullvm@0.48.0
 	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_msvc@0.42.2
+	windows_x86_64_msvc@0.48.0
 	windows_x86_64_msvc@0.48.5
 "
 
