@@ -33,6 +33,10 @@ BDEPEND="
 
 S="${WORKDIR}/sdbus-cpp-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-14.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_CODE_GEN=$(usex tools)
