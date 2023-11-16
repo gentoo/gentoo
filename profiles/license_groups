@@ -81,7 +81,7 @@ OSI-APPROVED @OSI-APPROVED-FREE @OSI-APPROVED-NONFREE
 
 # License agreements that try to take away your rights. These are more
 # restrictive than "all-rights-reserved" or require explicit approval.
-EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline bestcrypt CAPYBARA-EULA Coherent-Graphics ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-edge Microsoft-vscode Mojang MTA-0.5 NVIDIA-CUDA NVIDIA-SDK Ookla OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL-11 Q3AEULA-20000111 QUAKE4 RAR sfpg SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
+EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline bestcrypt CAPYBARA-EULA Coherent-Graphics Dell-EULA ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-edge Microsoft-vscode Mojang MTA-0.5 NVIDIA-CUDA NVIDIA-SDK Ookla OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL-11 Q3AEULA-20000111 QUAKE4 RAR sfpg SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
 
 # Deprecated license labels, used by repoman and pkgcheck
 #DEPRECATED (currently none)
