@@ -37,6 +37,9 @@ oci8
 cuda
 nvenc
 
+# ROCm/HIP only works on amd64
+hip
+
 # masking here, and unmasking in arch/x86/use.mask
 vidix
 
