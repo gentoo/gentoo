@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_SUBMODULES=(
 		# uses hacks / recent features and easily breaks, keep bundled headers
 		# (also cross-compiled and -I/usr/include is troublesome)
-		subprojects/{SPIRV,Vulkan}-Headers
+		khronos/{SPIRV,Vulkan}-Headers
 		subprojects/dxil-spirv
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
@@ -85,15 +85,13 @@ src_prepare() {
 	if [[ ${PV} != 9999 ]]; then
 		rmdir subprojects/{{SPIRV,Vulkan}-Headers,dxil-spirv} || die
 		mv ../dxil-spirv-${HASH_DXIL} subprojects/dxil-spirv || die
-		mv ../SPIRV-Headers-${HASH_SPIRV} subprojects/SPIRV-Headers || die
-		mv ../Vulkan-Headers-${HASH_VULKAN} subprojects/Vulkan-Headers || die
+		mv ../SPIRV-Headers-${HASH_SPIRV} khronos/SPIRV-Headers || die
+		mv ../Vulkan-Headers-${HASH_VULKAN} khronos/Vulkan-Headers || die
 
 		# dxil and vkd3d's spirv headers currently mismatch and incompatible
 		rmdir subprojects/dxil-spirv/third_party/spirv-headers || die
 		mv ../SPIRV-Headers-${HASH_SPIRV_DXIL} \
 			subprojects/dxil-spirv/third_party/spirv-headers || die
-#		ln -s ../../../SPIRV-Headers/include \
-#			subprojects/dxil-spirv/third_party/spirv-headers || die
 	fi
 
 	default
@@ -132,10 +130,6 @@ src_configure() {
 		CHOST_amd64=x86_64-w64-mingw32
 		CHOST_x86=i686-w64-mingw32
 		CHOST=$(usex x86 ${CHOST_x86} ${CHOST_amd64})
-
-		# preferring meson eclass' cross file over upstream's but, unlike
-		# dxvk, we lose static options in the process (from build-win*.txt)
-		append-ldflags -static -static-libgcc -static-libstdc++
 
 		strip-unsupported-flags
 	fi
