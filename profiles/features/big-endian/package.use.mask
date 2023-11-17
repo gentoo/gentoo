@@ -2,6 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# media-libs/libvpx casualties (#700902)
+media-video/ffmpeg vpx
+www-client/firefox system-libvpx
+www-client/seamonkey system-libvpx
+media-video/vlc vpx
+media-libs/xine-lib vpx
+media-libs/libopenglrecorder vpx
+mail-client/thunderbird system-libvpx
+games-fps/eduke32 vpx
+media-plugins/gst-plugins-meta vpx
+net-p2p/ktorrent rss webengine
+net-irc/quassel urlpreview
+kde-apps/kalarm pim
+dev-python/QtPy pyqt5
+gnome-base/gnome extras
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libaom casualties
 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
 media-video/ffmpeg libaom

@@ -1,6 +1,54 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-17)
+# media-libs/libvpx casualties (#700902)
+media-plugins/gst-plugins-vpx
+dev-qt/qtwebengine
+www-client/falkon
+www-client/otter
+net-libs/signon-ui
+media-video/cheese
+kde-apps/messagelib
+kde-apps/kmail
+kde-apps/libksieve
+kde-apps/kdepim-runtime
+kde-apps/kontact
+kde-apps/kimagemapeditor
+kde-apps/grantlee-editor
+kde-apps/akregator
+dev-util/kdevelop
+dev-qt/qtwebview
+dev-python/PyQtWebEngine
+app-text/kchmviewer
+app-office/merkuro
+app-editors/ghostwriter
+kde-misc/zanshin
+kde-apps/mailcommon
+kde-apps/pim-sieve-editor
+kde-apps/korganizer
+kde-apps/knotes
+kde-apps/kdepim-meta
+kde-apps/kdepim-addons
+kde-apps/kaddressbook
+kde-apps/kaccounts-providers
+kde-apps/akonadiconsole
+kde-apps/akonadi-calendar
+kde-apps/akonadi-import-wizard
+gnome-base/gnome-extra-apps
+kde-misc/kio-gdrive
+kde-apps/pim-data-exporter
+kde-apps/mbox-importer
+kde-apps/konsolekalendar
+kde-apps/incidenceeditor
+kde-apps/eventviews
+kde-apps/calendarsupport
+kde-apps/calendarjanitor
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# Test failures on BE (#700902)
+media-libs/libvpx
+
 # matoro <matoro_gentoo@matoro.tk> (2023-12-07)
 # Explicit no-support for BE (#891517)
 media-sound/audacity
