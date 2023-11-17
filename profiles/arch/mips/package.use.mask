@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# gui-libs/gtk:4 casualties
+app-i18n/ibus gtk4
+
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
 # dev-util/samurai is not keyworded here.
 app-alternatives/ninja samurai
