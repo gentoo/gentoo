@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Ultra-lightweight pure Python package to guess whether a file is binary or text"
 HOMEPAGE="
-	https://github.com/audreyfeldroy/binaryornot/
+	https://github.com/binaryornot/binaryornot
 	https://pypi.org/project/binaryornot/
 "
 
