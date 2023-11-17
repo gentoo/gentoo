@@ -77,6 +77,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2-gentoo.patch
 	"${FILESDIR}"/${PN}-4.17-use-system-libltdl.patch
+	"${FILESDIR}"/${PN}-6.4-gcc14-algorithm.patch
 )
 
 pkg_pretend() {
@@ -124,6 +125,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
+
 		--datadir=/usr/share/squid
 		--libexecdir=/usr/libexec/squid
 		--localstatedir=/var
