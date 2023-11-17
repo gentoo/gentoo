@@ -23,12 +23,15 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+IUSE="+native-extensions"
 
 RDEPEND="
 	>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	native-extensions? (
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
 	test? (
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		app-arch/zopfli
@@ -55,8 +58,9 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-src_configure() {
-	export FONTTOOLS_WITH_CYTHON=1
+python_compile() {
+	local -x FONTTOOLS_WITH_CYTHON=$(usex native-extensions)
+	distutils-r1_python_compile
 }
 
 src_test() {
