@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>jpds@protonmail.com</email>
-		<name>Jonathan Davies</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>matthew@gentoo.org</email>
 		<name>Matthew Smith</name>
