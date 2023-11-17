@@ -20,7 +20,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="test"
+IUSE="+compat test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -64,8 +64,10 @@ src_install() {
 	mapfile -t scripts < <(awk '/^#!.*python/ {print FILENAME} {nextfile}' "${ED}"/usr/bin/* || die)
 	python_replicate_script "${scripts[@]}"
 
-	# This replaces the file installed by java-config-wrapper.
-	dosym java-config-2 /usr/bin/java-config
+	if use compat; then
+		# Symlink java-config-2 to java-config for now.
+		dosym java-config /usr/bin/java-config-2
+	fi
 }
 
 my_src_install() {
