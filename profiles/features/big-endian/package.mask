@@ -1,6 +1,11 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# Test failures on BE
+# https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
+media-libs/libaom
+
 # matoro <matoro_gentoo@matoro.tk> (2023-10-09)
 # Tested on LE only (#889996, #908893)
 dev-games/mygui
