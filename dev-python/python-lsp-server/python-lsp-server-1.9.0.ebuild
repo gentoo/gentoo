@@ -81,7 +81,7 @@ python_test() {
 		test/plugins/test_pydocstyle_lint.py
 	)
 
-	if [[ ${EPYTHON} == pypy3 ]] then
+	if [[ ${EPYTHON} == pypy3 ]] ; then
 		# Not all plugins are available for pypy3
 		EPYTEST_IGNORE+=(
 			test/plugins/test_autoimport.py
