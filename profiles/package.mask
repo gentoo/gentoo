@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-11-19)
+# GCC 10 and older no longer receive upstream support or fixes for
+# bugs. Please switch to a newer GCC version using gcc-config.
+# The lowest supported version of GCC is GCC 11.
+<sys-devel/gcc-11
+<sys-devel/kgcc64-11
+
 # Sam James <sam@gentoo.org> (2023-11-18)
 # Lots of applications need porting, bug #917537.
 >=dev-libs/libxml2-2.12.0
@@ -488,12 +495,6 @@ sys-cluster/slurm
 # haskell-cabal.eclass)
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
 dev-haskell/doctest-parallel
-
-# Sam James <sam@gentoo.org> (2022-05-28)
-# GCC 9 and older no longer receive upstream support or fixes for
-# bugs. Please switch to a newer GCC version using gcc-config.
-# The lowest supported version of GCC is GCC 10.
-<sys-devel/gcc-10
 
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
