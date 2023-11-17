@@ -30,7 +30,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
-		app-arch/brotli[python,${PYTHON_USEDEP}]
+		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		app-arch/zopfli
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
