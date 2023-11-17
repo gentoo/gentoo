@@ -33,11 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2023-11-17)
-# Missing 'java-config' symlink to 'java-config-2', breaking Java eclasses
-# at least. See bug #917458.
-=dev-java/java-config-2.3.3
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-11-10)
 # No reverse dependencies, no tests, no upstream activity. All ebuild
 # maintenance on this package was done randomly by @python project members,

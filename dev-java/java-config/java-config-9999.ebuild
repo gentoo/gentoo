@@ -63,6 +63,9 @@ src_install() {
 	local scripts
 	mapfile -t scripts < <(awk '/^#!.*python/ {print FILENAME} {nextfile}' "${ED}"/usr/bin/* || die)
 	python_replicate_script "${scripts[@]}"
+
+	# This replaces the file installed by java-config-wrapper.
+	dosym java-config-2 /usr/bin/java-config
 }
 
 my_src_install() {
