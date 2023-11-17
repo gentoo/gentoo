@@ -1,13 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri mirror://apache/commons/imaging/source/commons-imaging-1.0-alpha3-src.tar.gz --slot 0 --keywords "~amd64 ~x86" --ebuild commons-imaging-1.0_alpha3.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.apache.commons:commons-imaging:1.0-alpha2"
+MAVEN_ID="org.apache.commons:commons-imaging:${PV/_/-}"
 
 inherit java-pkg-2 java-pkg-simple verify-sig
 
@@ -21,18 +18,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Compile dependencies
-# POM: pom.xml
-# test? commons-io:commons-io:2.7 -> >=dev-java/commons-io-2.11.0:1
-# test? org.hamcrest:hamcrest:2.2 -> !!!artifactId-not-found!!!
-# test? org.junit.jupiter:junit-jupiter:5.6.2 -> !!!groupId-not-found!!!
-
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
-DOCS=( {LICENSE,NOTICE,RELEASE-NOTES}.txt README.md )
+DOCS=( {NOTICE,RELEASE-NOTES}.txt README.md )
 PATCHES=( "${FILESDIR}/commons-imaging-1.0_alpha3-PngChunk.javadoc.patch" )
 
 JAVA_SRC_DIR="src/main/java"
