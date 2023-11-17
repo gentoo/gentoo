@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 virtualx
 
@@ -49,6 +49,10 @@ RDEPEND="
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}/${P}-py312.patch"
+)
 
 src_test() {
 	virtx distutils-r1_src_test
