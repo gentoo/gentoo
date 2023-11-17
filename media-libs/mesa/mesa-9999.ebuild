@@ -160,9 +160,9 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
-	llvm? (
-		vulkan? (
-			dev-util/glslang
+	vulkan? (
+		dev-util/glslang
+		llvm? (
 			video_cards_intel? (
 				amd64? (
 					$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
