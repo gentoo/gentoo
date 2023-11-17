@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -31,10 +31,12 @@ RDEPEND="
 		>=dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/pycodestyle-2.9.0[${PYTHON_USEDEP}]
 		>=dev-python/pyflakes-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/rope-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/yapf-0.33.0[${PYTHON_USEDEP}]
-		>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
+			>=dev-python/rope-1.2.0[${PYTHON_USEDEP}]
+			>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 BDEPEND="
@@ -42,17 +44,19 @@ BDEPEND="
 		>=dev-python/autopep8-1.6.0[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		>=dev-python/flake8-5.0.0[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
 		>=dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pandas[${PYTHON_USEDEP}]
 		>=dev-python/pycodestyle-2.9.0[${PYTHON_USEDEP}]
 		>=dev-python/pyflakes-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
-		dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
-		>=dev-python/rope-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/yapf-0.33.0[${PYTHON_USEDEP}]
-		>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			dev-python/pandas[${PYTHON_USEDEP}]
+			>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
+			dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
+			>=dev-python/rope-1.2.0[${PYTHON_USEDEP}]
+			>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
@@ -76,6 +80,18 @@ python_test() {
 		# pydocstyle is archived upstream and broken with py3.12
 		test/plugins/test_pydocstyle_lint.py
 	)
+
+	if [[ ${EPYTHON} == pypy3 ]] then
+		# Not all plugins are available for pypy3
+		EPYTEST_IGNORE+=(
+			test/plugins/test_autoimport.py
+			test/plugins/test_completion.py
+			test/plugins/test_pylint_lint.py
+			test/plugins/test_rope_rename.py
+			# whatthepatch required for yapf
+			test/plugins/test_yapf_format.py
+		)
+	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
