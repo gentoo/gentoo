@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 virtualx
@@ -30,12 +30,13 @@ RDEPEND="
 "
 BDEPEND="
 	native-extensions? (
-		dev-python/cython[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 	test? (
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		app-arch/zopfli
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 	)
 "
 
@@ -60,6 +61,7 @@ python_prepare_all() {
 
 python_compile() {
 	local -x FONTTOOLS_WITH_CYTHON=$(usex native-extensions)
+	[[ ${EPYTHON} == pypy3 ]] && FONTTOOLS_WITH_CYTHON=0
 	distutils-r1_python_compile
 }
 
@@ -69,8 +71,17 @@ src_test() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if [[ ${EPYTHON} == pypy3 ]] &&
+		has_version "dev-python/pyxattr[${PYTHON_USEDEP}]"
+	then
+		EPYTEST_DESELECT+=(
+			# affected by a bug in PyPy/pyxattr
+			# https://github.com/iustin/pyxattr/issues/41
+			Tests/t1Lib/t1Lib_test.py::ReadWriteTest::test_read_with_path
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest Tests fontTools \
-		-p rerunfailures --reruns=5 ||
-		die "Tests failed with ${EPYTHON}"
+	nonfatal epytest Tests fontTools || die -n "Tests failed with ${EPYTHON}"
 }
