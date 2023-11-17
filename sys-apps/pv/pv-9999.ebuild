@@ -50,6 +50,5 @@ src_configure() {
 }
 
 src_test() {
-	# -j1: https://codeberg.org/a-j-wood/pv/issues/78
-	emake -Onone check -j1
+	emake -Onone check
 }
