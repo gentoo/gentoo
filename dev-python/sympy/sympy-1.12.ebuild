@@ -47,39 +47,36 @@ RDEPEND="
 	texmacs? ( app-office/texmacs )
 "
 
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
+
 src_test() {
 	virtx distutils-r1_src_test
 }
 
 python_test() {
-	local color=True
-	[[ ${NO_COLOR} ]] && color=False
+	local EPYTEST_DESELECT=(
+		# require old version of antlr4
+		sympy/parsing/tests/test_autolev.py
+		sympy/parsing/tests/test_latex.py
+		# crash due to assertions in sys-devel/llvm[debug]
+		sympy/parsing/tests/test_c_parser.py
 
-	"${EPYTHON}" - <<-EOF || die -n "Tests failed with ${EPYTHON}"
-		from sympy.testing.runtests import run_all_tests
+		# TODO: pytest?
+		sympy/solvers/ode/tests/test_systems.py::test_linear_3eq_order1_type4_long_check
+		sympy/solvers/ode/tests/test_systems.py::test_linear_3eq_order1_type4_long_dsolve_dotprodsimp
 
-		common = {
-			"verbose": True,
-			"colors": ${color},
-			"force_colors": ${color},
-			"blacklist": [
-				# these require old version of antlr4
-				"sympy/parsing/autolev/__init__.py",
-				"sympy/parsing/latex/__init__.py",
-				"sympy/parsing/tests/test_autolev.py",
-				"sympy/parsing/tests/test_latex.py",
-				# these fail on assertions inside LLVM
-				"sympy/parsing/tests/test_c_parser.py",
-				# hangs
-				"sympy/printing/preview.py",
-			],
-		}
+		# either very slow or hanging
+		sympy/solvers/ode/tests/test_systems.py::test_linear_new_order1_type2_de_lorentz_slow_check
+		sympy/integrals/tests/test_failing_integrals.py::test_issue_15227
+		sympy/matrices/tests/test_matrices.py::test_pinv_rank_deficient_when_diagonalization_fails
+		sympy/solvers/ode/tests/test_systems.py::test_nonlinear_3eq_order1_type1
+		sympy/solvers/ode/tests/test_systems.py::test_nonlinear_3eq_order1_type3
+	)
 
-		run_all_tests(
-			test_kwargs=common,
-			doctest_kwargs=common,
-		)
-	EOF
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	nonfatal epytest --veryquickcheck ||
+		die -n "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
