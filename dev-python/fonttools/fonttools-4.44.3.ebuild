@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 multiprocessing virtualx
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Library for manipulating TrueType, OpenType, AFM and Type1 fonts"
 HOMEPAGE="
@@ -33,10 +33,10 @@ BDEPEND="
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
 		app-arch/zopfli
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -67,7 +67,6 @@ src_test() {
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest Tests fontTools \
-		-p rerunfailures --reruns=5 \
-		-p xdist -n "$(makeopts_jobs)" --dist=worksteal ||
+		-p rerunfailures --reruns=5 ||
 		die "Tests failed with ${EPYTHON}"
 }
