@@ -23,6 +23,10 @@ IUSE=""
 
 RESTRICT="test" # Requires unmaintaned dev-haskell/testpack
 
+CABAL_CHDEPS=(
+	'time >= 1.5 && < 1.10' 'time >= 1.5'
+)
+
 RDEPEND=">=dev-haskell/convertible-1.1.0.0:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/old-locale:=[profile?]
@@ -36,3 +40,13 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
+
+src_configure() {
+	config_flags=(
+		--flag=-buildtests
+		--flag=splitBase
+		--flag=minTime15
+	)
+
+	haskell-cabal_src_configure ${config_flags[@]}
+}
