@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -14,6 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Apache Commons Imaging (previously Sanselan) is a pure-Java image library."
 HOMEPAGE="https://commons.apache.org/proper/commons-imaging/"
 SRC_URI="mirror://apache/commons/imaging/source/commons-imaging-${PV/_/-}-src.tar.gz"
+S="${WORKDIR}/${P/_/-}-src"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -29,9 +30,13 @@ DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=( {LICENSE,NOTICE,RELEASE-NOTES}.txt README.md )
-
-S="${WORKDIR}/${P/_/-}-src"
+PATCHES=( "${FILESDIR}/commons-imaging-1.0_alpha3-PngChunk.javadoc.patch" )
 
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_AUTOMATIC_MODULE_NAME="org.apache.commons.imaging"
+
+src_prepare() {
+	default #780585
+	java-pkg-2_src_prepare
+}
