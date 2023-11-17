@@ -486,10 +486,11 @@ sys-cluster/slurm
 dev-haskell/doctest-parallel
 
 # Sam James <sam@gentoo.org> (2022-05-28)
-# GCC 9 and older no longer receive upstream support or fixes for
+# GCC 10 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
-# The lowest supported version of GCC is GCC 10.
-<sys-devel/gcc-10
+# The lowest supported version of GCC is GCC 11.
+<sys-devel/gcc-11
+<sys-devel/kgcc64-11
 
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
