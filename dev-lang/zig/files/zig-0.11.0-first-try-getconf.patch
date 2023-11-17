@@ -17,14 +17,14 @@ Bug: https://bugs.gentoo.org/914731
 Bug: https://bugs.gentoo.org/914101
 
 diff --git a/lib/std/zig/system/NativeTargetInfo.zig b/lib/std/zig/system/NativeTargetInfo.zig
-index 99a1a8f2e..d1032a716 100644
+index 99a1a8f2e..0250db968 100644
 --- a/lib/std/zig/system/NativeTargetInfo.zig
 +++ b/lib/std/zig/system/NativeTargetInfo.zig
 @@ -19,6 +19,32 @@ dynamic_linker: DynamicLinker = DynamicLinker{},
- 
+
  pub const DynamicLinker = Target.DynamicLinker;
- 
-+// Copy-pasted from `std.zig.CrossTarget.parse` to avoid changing visibility of mentioned function.
+
++// Copy-pasted from `std.zig.CrossTarget.parse` to avoid introducing unexpected new public function as part of standard library.
 +/// Parses a version with an omitted patch component, such as "1.0",
 +/// which SemanticVersion.parse is not capable of.
 +fn parseWithOptionalPatchField(ver: []const u8) error{ InvalidVersion, Overflow }!std.SemanticVersion {
@@ -38,7 +38,7 @@ index 99a1a8f2e..d1032a716 100644
 +            };
 +        }
 +    }.parseVersionComponent;
-+    var version_components = mem.split(u8, ver, ".");
++    var version_components = mem.splitScalar(u8, ver, '.');
 +    const major = version_components.first();
 +    const minor = version_components.next() orelse return error.InvalidVersion;
 +    const patch = version_components.next() orelse "0";
@@ -53,10 +53,10 @@ index 99a1a8f2e..d1032a716 100644
  pub const DetectError = error{
      FileSystem,
      SystemResources,
-@@ -307,6 +333,35 @@ fn detectAbiAndDynamicLinker(
+@@ -307,6 +333,39 @@ fn detectAbiAndDynamicLinker(
      }
      const ld_info_list = ld_info_list_buffer[0..ld_info_list_len];
- 
+
 +    if (is_linux and !os_is_non_native and cross_target.glibc_version == null) try_getconf: {
 +        var buf: [4096]u8 = undefined;
 +        var fba = std.heap.FixedBufferAllocator.init(&buf);
@@ -68,20 +68,24 @@ index 99a1a8f2e..d1032a716 100644
 +            .max_output_bytes = 1024,
 +        }) catch break :try_getconf;
 +        if (!std.mem.startsWith(u8, getconf.stdout, "glibc ")) break :try_getconf;
-+        const version_string = getconf.stdout["glibc ".len..];
++        const version_string = std.mem.trim(u8, getconf.stdout["glibc ".len..], &std.ascii.whitespace);
 +        const glibc_version = parseWithOptionalPatchField(version_string) catch break :try_getconf;
 +
 +        var os_with_glibc = os;
 +        os_with_glibc.version_range.linux.glibc = glibc_version;
 +
++        const target: Target = .{
++            .cpu = cpu,
++            .os = os_with_glibc,
++            .abi = .gnu,
++            .ofmt = cross_target.ofmt orelse Target.ObjectFormat.default(os_with_glibc.tag, cpu.arch),
++        };
 +        const result: NativeTargetInfo = .{
-+            .target = .{
-+                .cpu = cpu,
-+                .os = os_with_glibc,
-+                .abi = cross_target.abi orelse Target.Abi.default(cpu.arch, os_with_glibc),
-+                .ofmt = cross_target.ofmt orelse Target.ObjectFormat.default(os_with_glibc.tag, cpu.arch),
-+            },
-+            .dynamic_linker = cross_target.dynamic_linker,
++            .target = target,
++            .dynamic_linker = if (cross_target.dynamic_linker.get() == null)
++                target.standardDynamicLinkerPath()
++            else
++                cross_target.dynamic_linker,
 +        };
 +        return result;
 +    }
@@ -89,7 +93,7 @@ index 99a1a8f2e..d1032a716 100644
      // Best case scenario: the executable is dynamically linked, and we can iterate
      // over our own shared objects and find a dynamic linker.
      const elf_file = blk: {
-@@ -563,7 +618,7 @@ fn glibcVerFromSoFile(file: fs.File) !std.SemanticVersion {
+@@ -563,7 +622,7 @@ fn glibcVerFromSoFile(file: fs.File) !std.SemanticVersion {
      while (it.next()) |s| {
          if (mem.startsWith(u8, s, "GLIBC_2.")) {
              const chopped = s["GLIBC_".len..];
@@ -98,7 +102,7 @@ index 99a1a8f2e..d1032a716 100644
                  error.Overflow => return error.InvalidGnuLibCVersion,
                  error.InvalidVersion => return error.InvalidGnuLibCVersion,
              };
-@@ -586,7 +641,7 @@ fn glibcVerFromLinkName(link_name: []const u8, prefix: []const u8) !std.Semantic
+@@ -586,7 +645,7 @@ fn glibcVerFromLinkName(link_name: []const u8, prefix: []const u8) !std.Semantic
      }
      // chop off "libc-" and ".so"
      const link_name_chopped = link_name[prefix.len .. link_name.len - suffix.len];
