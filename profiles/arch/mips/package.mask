@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-17)
+# Broken on BE and no way to test on LE, mask for now (#700902)
+media-libs/libvpx
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-17)
 # Broken on BE and no way to test on LE, mask for now
 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
 media-libs/libaom
