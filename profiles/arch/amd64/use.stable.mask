@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2023-11-17)
+# ROCm/HIP is not suitable for stabilization.
+hip
+
 # Jimi Huotari <chiitoo@gentoo.org> (2023-03-03)
 # Mask until stable.
 pyside6
