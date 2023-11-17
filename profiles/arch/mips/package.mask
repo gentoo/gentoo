@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Broken on BE and no way to test on LE, mask for now
+# https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
+media-libs/libaom
+
+# Broken on BE and no way to test on LE, mask for now
 # https://gitlab.gnome.org/GNOME/gtk/-/issues/5904
 gui-libs/gtk:4
 
