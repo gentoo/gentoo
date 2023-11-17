@@ -22,7 +22,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +monitor ofono standalone systemd wired"
+IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +monitor ofono selinux standalone systemd wired"
 
 DEPEND="
 	sys-apps/dbus
@@ -35,6 +35,7 @@ RDEPEND="
 	${DEPEND}
 	acct-group/netdev
 	net-wireless/wireless-regdb
+	selinux? ( sec-policy/selinux-networkmanager )
 	standalone? (
 		systemd? ( sys-apps/systemd )
 		!systemd? ( virtual/resolvconf )
