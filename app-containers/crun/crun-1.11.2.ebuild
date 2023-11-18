@@ -40,6 +40,7 @@ PATCHES=(
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		$(use_enable bpf)
 		$(use_enable caps)
 		$(use_enable criu)
