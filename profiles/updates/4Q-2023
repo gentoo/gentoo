@@ -26,3 +26,4 @@ move dev-python/pure_eval dev-python/pure-eval
 slotmove dev-haskell/extra 2 0
 slotmove dev-haskell/hdbc-postgresql 2 0
 slotmove dev-haskell/hdbc 2 0
+slotmove dev-haskell/parallel 3 0
