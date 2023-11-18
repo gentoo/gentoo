@@ -6,7 +6,7 @@ EAPI=8
 FORTRAN_NEEDED=fortran
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit fortran-2 distutils-r1 multiprocessing
@@ -118,6 +118,22 @@ python_test() {
 			scipy/datasets/tests/test_data.py
 		)
 	fi
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# TODO: fd leaks?
+				scipy/fft/_pocketfft/tests/test_real_transforms.py
+				# timeouts
+				scipy/sparse/linalg/tests/test_propack.py::test_examples
+				# hang or incredibly slow
+				scipy/optimize/tests/test_lsq_linear.py::TestBVLS::test_large_rank_deficient
+				scipy/optimize/tests/test_lsq_linear.py::TestTRF::test_large_rank_deficient
+				# TODO
+				'scipy/special/tests/test_data.py::test_boost[<Data for expi: expinti_data_long_ipp-expinti_data_long>]'
+			)
+			;;
+	esac
 
 	epytest -n "$(makeopts_jobs)" --dist=worksteal scipy
 }
