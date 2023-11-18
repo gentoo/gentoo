@@ -16,6 +16,7 @@ IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
+RDEPEND="app-arch/libarchive[bzip2]"
 BDEPEND="
 	doc? (
 		${PYTHON_DEPS}
@@ -27,14 +28,12 @@ BDEPEND="
 		>=dev-qt/qtcore-${QTMIN}:5
 	)
 "
-RDEPEND="
-	app-arch/libarchive[bzip2]
-"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.49.0-no-fatal-warnings.patch"
 	"${FILESDIR}/${PN}-5.93.0-skip-ecm_add_test-early.patch"
 	"${FILESDIR}/${PN}-5.93.0-disable-qmlplugindump.patch"
+	"${FILESDIR}/${PN}-5.112.0-disable-tests-requiring-PyQt5.patch" # bug 680256
 )
 
 python_check_deps() {
@@ -43,13 +42,6 @@ python_check_deps() {
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	cmake_src_prepare
-	# Requires PyQt5, bug #680256
-	sed -i -e "/^if(NOT SIP_Qt5Core_Mod_FILE)/s/NOT SIP_Qt5Core_Mod_FILE/TRUE/" \
-		tests/CMakeLists.txt || die "failed to disable GenerateSipBindings tests"
 }
 
 src_configure() {
