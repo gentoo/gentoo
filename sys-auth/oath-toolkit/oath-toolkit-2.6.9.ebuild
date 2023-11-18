@@ -33,6 +33,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		--enable-pskc
 		$(use_enable test xmltest)
 		$(use_enable pam)
