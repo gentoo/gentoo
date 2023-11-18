@@ -75,6 +75,8 @@ src_configure() {
 	export PATH_RUBY=/bin/false
 
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
+
 		--with-lineeditlibs=readline,edit,editline
 		--with-yielding-select
 		--disable-local-libevent
