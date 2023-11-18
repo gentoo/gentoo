@@ -31,6 +31,7 @@ BDEPEND="app-arch/unzip"
 PATCHES=(
 	"${FILESDIR}/${PN}_bundledjars.patch"
 	"${FILESDIR}/pauker-1.8-r3-project.properties.patch"
+	"${FILESDIR}/pauker-1.8-javadoc.patch"
 )
 
 src_prepare() {
