@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    tea is a productivity helper for Gitea. It can be used to manage most
+    entities on one or multiple Gitea instances and provides local helpers like
+    'tea pr checkout'.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitea.com/gitea/tea/issues/</bugs-to>
+  </upstream>
+</pkgmetadata>
