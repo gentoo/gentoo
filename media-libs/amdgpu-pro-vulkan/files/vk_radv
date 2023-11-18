@@ -1,0 +1,2 @@
+#!/bin/bash
+VK_DRIVER_FILES="/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json" "$@"

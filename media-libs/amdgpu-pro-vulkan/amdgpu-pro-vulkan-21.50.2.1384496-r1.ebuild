@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,8 @@ QA_PREBUILT="
 "
 
 src_unpack() {
+	default
+
 	if use abi_x86_64 ; then
 		mkdir "${S}/${PN}-amd64" || die
 		cd "${S}/${PN}-amd64" || die
@@ -105,4 +107,16 @@ src_install() {
 		insinto /usr/share/vulkan/icd.d
 		doins "${S}"/"${PN}"-i386/opt/amdgpu-pro/etc/vulkan/icd.d/amd_pro_icd32.json
 	fi
+
+	# AMDGPU-PRO & RADV Vulkan prefix
+	dobin "${FILESDIR}/vk_pro"
+	dobin "${FILESDIR}/vk_radv"
+}
+
+pkg_postinst() {
+	elog "To execute programs with the amdgpu-pro-vulkan driver:"
+	elog "  - Use the `vk_pro` wrapper script: e.g. 'vk_pro vkcube'"
+	elog "  - Define the following environment variable: "
+	elog "    VK_DRIVER_FILES=/usr/share/vulkan/icd.d/amd_pro_icd64.json:/usr/share/vulkan/icd.d/amd_pro_icd32.json"
+	elog
 }
