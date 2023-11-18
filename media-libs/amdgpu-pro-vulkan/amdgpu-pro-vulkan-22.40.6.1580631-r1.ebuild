@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,12 @@ MY_PV_REV=$(ver_cut 4)
 
 MY_PV="${MY_PV_HIGH}.${MY_PV_MIDDLE}"
 
-INTERNAL_VER="5.5.3"
+INTERNAL_VER="5.4.6"
 
 MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 
 MY_PN="vulkan-amdgpu-pro"
+# https://repo.radeon.com/amdgpu/5.4.6/ubuntu/pool/proprietary/v/vulkan-amdgpu-pro/
 MY_LINK="https://repo.radeon.com/amdgpu/${INTERNAL_VER}/ubuntu/pool/proprietary/v/${MY_PN}"
 
 UBUNTU_VER="22.04"
@@ -46,6 +47,8 @@ QA_PREBUILT="
 "
 
 src_unpack() {
+	default
+
 	if use abi_x86_64 ; then
 		mkdir "${S}/${PN}-amd64" || die
 		cd "${S}/${PN}-amd64" || die
@@ -117,20 +120,16 @@ src_install() {
 		insinto /usr/share/vulkan/icd.d
 		doins "${S}"/"${PN}"-i386/opt/amdgpu-pro/etc/vulkan/icd.d/amd_pro_icd32.json
 	fi
+
+	# AMDGPU-PRO & RADV Vulkan prefix
+	dobin "${FILESDIR}/vk_pro"
+	dobin "${FILESDIR}/vk_radv"
 }
 
 pkg_postinst() {
-
-	if use abi_x86_32; then
-		elog "To run a 32bit program using the amdgpu-pro vulkan driver, the environment variable"
-		elog "     VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_pro_icd32.json"
-		elog "must be set beforehand"
-		elog
-	fi
-
-	if use abi_x86_64; then
-		elog "To run a 64bit program using the amdgpu-pro vulkan driver, the environment variable"
-		elog "     VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_pro_icd64.json"
-		elog "must be set beforehand"
-	fi
+	elog "To execute programs with the amdgpu-pro-vulkan driver:"
+	elog "  - Use the `vk_pro` wrapper script: e.g. 'vk_pro vkcube'"
+	elog "  - Define the following environment variable: "
+	elog "    VK_DRIVER_FILES=/usr/share/vulkan/icd.d/amd_pro_icd64.json:/usr/share/vulkan/icd.d/amd_pro_icd32.json"
+	elog
 }
