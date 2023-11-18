@@ -1390,10 +1390,14 @@ epytest() {
 	if [[ ${EPYTEST_XDIST} ]]; then
 		local jobs=${EPYTEST_JOBS:-$(makeopts_jobs)}
 		if [[ ${jobs} -gt 1 ]]; then
+			if [[ ${PYTEST_PLUGINS} != *xdist.plugin* ]]; then
+				args+=(
+					# explicitly enable the plugin, in case the ebuild was
+					# using PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+					-p xdist
+				)
+			fi
 			args+=(
-				# explicitly enable the plugin, in case the ebuild was using
-				# PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-				-p xdist
 				-n "${jobs}"
 				# worksteal ensures that workers don't end up idle when heavy
 				# jobs are unevenly distributed
