@@ -26,8 +26,6 @@ RDEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.57.0-python.patch" )
-
 pkg_setup() {
 	ecm_pkg_setup
 	python-single-r1_pkg_setup
