@@ -1813,6 +1813,9 @@ distutils-r1_run_phase() {
 		local -x CYTHON_FORCE_REGEN=1
 	fi
 
+	# silence warnings when pydevd is loaded on Python 3.11+
+	local -x PYDEVD_DISABLE_FILE_VALIDATION=1
+
 	# Rust extensions are incompatible with C/C++ LTO compiler
 	# see e.g. https://bugs.gentoo.org/910220
 	if has cargo ${INHERITED}; then
