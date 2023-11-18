@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ndmitchell/extra#readme"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="2/${PV}"
+SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/clock-0.7:=[profile?]
