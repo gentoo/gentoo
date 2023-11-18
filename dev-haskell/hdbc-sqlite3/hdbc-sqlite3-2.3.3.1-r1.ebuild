@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+splitbase"
 
 RDEPEND=">=dev-db/sqlite-3.0
-	>=dev-haskell/hdbc-2.3.0.0:2=[profile?]
+	>=dev-haskell/hdbc-2.3.0.0:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
 	>=dev-lang/ghc-7.4.1:=

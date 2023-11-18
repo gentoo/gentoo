@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND="
 	>=dev-db/postgresql-7:*
 	dev-haskell/convertible:=[profile?]
-	>=dev-haskell/hdbc-2.2.0:2=[profile?]
+	>=dev-haskell/hdbc-2.2.0:=[profile?]
 	dev-haskell/old-time:=[profile?]
 	dev-haskell/parsec:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
