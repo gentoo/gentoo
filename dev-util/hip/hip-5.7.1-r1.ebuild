@@ -5,21 +5,26 @@ EAPI=8
 
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
+ROCM_SKIP_GLOBALS=1
 
-inherit cmake docs llvm
+inherit cmake docs llvm rocm
 
 LLVM_MAX_SLOT=17
+
+TEST_PV=5.7.0 # No hip-test-5.7.1 release
 
 DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipamd"
 SRC_URI="https://github.com/ROCm-Developer-Tools/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz
-	https://github.com/ROCm-Developer-Tools/HIP/archive/refs/tags/rocm-${PV}.tar.gz -> hip-${PV}.tar.gz"
+	https://github.com/ROCm-Developer-Tools/HIP/archive/refs/tags/rocm-${PV}.tar.gz -> hip-${PV}.tar.gz
+	test? ( https://github.com/ROCm-Developer-Tools/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz )"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-IUSE="debug"
+RESTRICT="!test? ( test )"
+IUSE="debug test"
 
 DEPEND="
 	dev-util/hipcc
@@ -45,18 +50,35 @@ PATCHES=(
 
 S="${WORKDIR}/clr-rocm-${PV}/"
 
+hip_test_wrapper() {
+	local S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
+	local CMAKE_USE_DIR="${S}"
+	local BUILD_DIR="${S}_build"
+	cd "${S}" || die
+	$@
+}
+
+src_prepare() {
+	# https://github.com/ROCm-Developer-Tools/HIP/commit/405d029422ba8bb6be5a233d5eebedd2ad2e8bd3
+	# https://github.com/ROCm-Developer-Tools/clr/commit/ab6d34ae773f4d151e04170c0f4e46c1135ddf3e
+	# Migrated to hip-test, but somehow the change is not applied to the tarball.
+	rm -rf "${WORKDIR}"/HIP-rocm-${PV}/tests || die
+	sed -e '/tests.*cmake/d' -i hipamd/CMakeLists.txt || die
+
+	cmake_src_prepare
+
+	if use test; then
+		PATCHES=${FILESDIR}/hip-test-5.7.0-rocm_agent_enumerator-location.patch \
+			   hip_test_wrapper cmake_src_prepare
+	fi
+}
+
 src_configure() {
 	use debug && CMAKE_BUILD_TYPE="Debug"
 
-	# TODO: Currently a GENTOO configuration is build,
-	# this is also used in the cmake configuration files
-	# which will be installed to find HIP;
-	# Other ROCm packages expect a "RELEASE" configuration,
-	# see "hipBLAS"
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 		-DCMAKE_BUILD_TYPE=${buildtype}
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_HIPIFY_CLANG=OFF
 		-DHIP_PLATFORM=amd
@@ -70,10 +92,45 @@ src_configure() {
 	)
 
 	cmake_src_configure
+
+	if use test; then
+		local mycmakeargs=(
+			-DROCM_PATH="${BUILD_DIR}"/hipamd
+			-DHIP_PLATFORM=amd
+		)
+		hip_test_wrapper cmake_src_configure
+	fi
 }
 
 src_compile() {
 	cmake_src_compile
+
+	if use test; then
+		HIP_PATH="${BUILD_DIR}"/hipamd \
+			hip_test_wrapper cmake_src_compile build_tests
+	fi
+}
+
+src_test() {
+	check_amdgpu
+	export LD_LIBRARY_PATH="${BUILD_DIR}/hipamd/lib"
+
+	# TODO: research how to test Vulkan-related features.
+	local CMAKE_SKIP_TESTS=(
+		Unit_hipExternalMemoryGetMappedBuffer_Vulkan_Positive_Read_Write
+		Unit_hipExternalMemoryGetMappedBuffer_Vulkan_Negative_Parameters
+		Unit_hipImportExternalMemory_Vulkan_Negative_Parameters
+		Unit_hipWaitExternalSemaphoresAsync_Vulkan_Positive_Binary_Semaphore
+		Unit_hipWaitExternalSemaphoresAsync_Vulkan_Positive_Multiple_Semaphores
+		Unit_hipWaitExternalSemaphoresAsync_Vulkan_Negative_Parameters
+		Unit_hipSignalExternalSemaphoresAsync_Vulkan_Positive_Binary_Semaphore
+		Unit_hipSignalExternalSemaphoresAsync_Vulkan_Positive_Multiple_Semaphores
+		Unit_hipSignalExternalSemaphoresAsync_Vulkan_Negative_Parameters
+		Unit_hipImportExternalSemaphore_Vulkan_Negative_Parameters
+		Unit_hipDestroyExternalSemaphore_Vulkan_Negative_Parameters
+	)
+
+	MAKEOPTS="-j1" hip_test_wrapper cmake_src_test
 }
 
 src_install() {
