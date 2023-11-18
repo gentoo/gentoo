@@ -490,12 +490,6 @@ x11-drivers/nvidia-drivers:0/390
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
 
-# hololeap <hololeap@protonmail.com> (2022-08-21)
-# doctest-parallel does not currently work with Setup.hs (used internally by
-# haskell-cabal.eclass)
-# See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
-dev-haskell/doctest-parallel
-
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
