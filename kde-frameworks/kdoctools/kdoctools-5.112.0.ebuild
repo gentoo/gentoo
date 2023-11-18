@@ -13,11 +13,6 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="nls"
 
-BDEPEND="
-	dev-lang/perl
-	dev-perl/URI
-	nls? ( >=kde-frameworks/ki18n-${PVCUT}:5 )
-"
 DEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -27,8 +22,16 @@ DEPEND="
 	=kde-frameworks/karchive-${PVCUT}*:5
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	dev-lang/perl
+	dev-perl/URI
+	nls? ( >=kde-frameworks/ki18n-${PVCUT}:5 )
+"
 
-PATCHES=( "${FILESDIR}/${PN}-5.54.0-gentoo-docbundledir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.54.0-gentoo-docbundledir.patch"
+	"${FILESDIR}/${P}-libxml2-2.12.patch" # in 5.113; bug 917527
+)
 
 src_configure() {
 	local mycmakeargs=(

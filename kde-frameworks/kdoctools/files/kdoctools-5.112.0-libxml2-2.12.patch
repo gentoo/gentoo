@@ -1,0 +1,25 @@
+From b77fe5677f9727778ceea5d3c04c0a97c9a23566 Mon Sep 17 00:00:00 2001
+From: Haochen Tong <i@hexchain.org>
+Date: Fri, 17 Nov 2023 14:54:23 +0800
+Subject: [PATCH] Fix build with libxml2 v2.12
+
+(cherry picked from commit 0a90be000709f9dd85936ffc6a5415684f650c3a)
+---
+ src/xslt.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/xslt.cpp b/src/xslt.cpp
+index 28c724f..dbc5435 100644
+--- a/src/xslt.cpp
++++ b/src/xslt.cpp
+@@ -14,6 +14,7 @@
+ #include <libxml/parser.h>
+ #include <libxml/parserInternals.h>
+ #include <libxml/xmlIO.h>
++#include <libxml/xmlsave.h>
+ #include <libxslt/transform.h>
+ #include <libxslt/xsltInternals.h>
+ #include <libxslt/xsltconfig.h>
+-- 
+2.42.1
+
