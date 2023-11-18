@@ -74,7 +74,7 @@ BDEPEND="
 		)
 	)
 	virtual/pkgconfig
-	virtual/rust
+	<virtual/rust-1.73.0
 	amd64? ( >=dev-lang/yasm-1.1 )
 	lto? ( sys-devel/binutils[gold] )
 	x86? ( >=dev-lang/yasm-1.1 )
