@@ -52,6 +52,7 @@ src_configure() {
 	export LANG=C LC_ALL=C
 
 	econf \
+		--cache-file="${S}"/config.cache \
 		--enable-shared \
 		$(use_enable static-libs static) \
 		--sysconfdir="${EPREFIX}"/etc/a2ps \
