@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="dap">Build debugger for CMake with Debug Adapter Protocol support via <pkg>dev-cpp/cppdap</pkg></flag>
+		<flag name="bootstrap">Run the bootstrap process regardless of whether CMake is already installed</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:cmake_project:cmake</remote-id>
