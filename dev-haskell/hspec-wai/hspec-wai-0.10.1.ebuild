@@ -26,7 +26,7 @@ RDEPEND="dev-haskell/base-compat:=[profile?]
 	dev-haskell/text:=[profile?]
 	>=dev-haskell/wai-3:=[profile?]
 	>=dev-haskell/wai-extra-3:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:= <dev-lang/ghc-9.1
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3
