@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # hololeap <hololeap@protonmail.com> (2023-11-19)
+# Package has been masked for a long time, is useless for ::gentoo, and has no
+# reverse dependencies.
+# Removal on 2023-12-19.
+dev-haskell/doctest-parallel
+
+# hololeap <hololeap@protonmail.com> (2023-11-19)
 # Bundled library for GHC, exposed as an ebuild for historical reasons.
 # No reverse dependencies, no longer needed in ::gentoo tree.
 # See: <https://github.com/gentoo-haskell/gentoo-haskell/issues/1464>
