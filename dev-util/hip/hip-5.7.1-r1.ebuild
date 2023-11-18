@@ -26,6 +26,7 @@ DEPEND="
 	>=dev-util/rocminfo-5
 	sys-devel/clang:${LLVM_MAX_SLOT}
 	dev-libs/rocm-comgr:${SLOT}
+	>=dev-libs/rocr-runtime-5.6
 	x11-base/xorg-proto
 	virtual/opengl
 "
