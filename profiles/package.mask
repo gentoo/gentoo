@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-11-18)
+# Lots of applications need porting, bug #917537.
+>=dev-libs/libxml2-2.12.0
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-11-10)
 # No reverse dependencies, no tests, no upstream activity. All ebuild
 # maintenance on this package was done randomly by @python project members,
