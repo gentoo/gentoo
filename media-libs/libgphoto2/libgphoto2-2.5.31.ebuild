@@ -105,6 +105,7 @@ multilib_src_configure() {
 	# --with-doc-dir needed to prevent duplicate docs installation, bug #586842
 	ECONF_SOURCE=${S} \
 	econf \
+		--cache-file="${BUILD_DIR}"/config.cache \
 		--with-doc-dir="${EPREFIX}"/usr/share/doc/${PF} \
 		--disable-docs \
 		--disable-gp2ddb \
