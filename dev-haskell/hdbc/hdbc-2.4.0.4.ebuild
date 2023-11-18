@@ -15,7 +15,7 @@ DESCRIPTION="Haskell Database Connectivity"
 HOMEPAGE="https://github.com/hdbc/hdbc"
 
 LICENSE="BSD"
-SLOT="2/${PV}"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 PATCHES=(

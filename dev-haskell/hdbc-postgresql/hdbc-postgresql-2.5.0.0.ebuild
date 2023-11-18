@@ -23,7 +23,7 @@ IUSE=""
 
 RDEPEND=">=dev-db/postgresql-7:*
 	dev-haskell/convertible:=[profile?]
-	>=dev-haskell/hdbc-2.2.0:2=[profile?]
+	>=dev-haskell/hdbc-2.2.0:=[profile?]
 	dev-haskell/mtl:=[profile?]
 	dev-haskell/old-locale:=[profile?]
 	dev-haskell/old-time:=[profile?]
