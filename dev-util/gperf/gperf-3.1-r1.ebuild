@@ -24,3 +24,7 @@ src_prepare() {
 
 	default
 }
+
+src_configure() {
+	econf --cache-file="${S}"/config.cache
+}
