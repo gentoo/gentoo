@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/nick8325/quickcheck"
 SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="2/${PV}"
+SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="+template-haskell"
 

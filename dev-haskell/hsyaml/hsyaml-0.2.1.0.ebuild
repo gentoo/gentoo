@@ -27,7 +27,7 @@ RDEPEND=">=dev-haskell/fail-4.9.0.0:=[profile?] <dev-haskell/fail-4.10:=[profile
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.14
-	test? ( >=dev-haskell/quickcheck-2.13:2=
+	test? ( >=dev-haskell/quickcheck-2.13:=
 		>=dev-haskell/tasty-1.2:=
 		>=dev-haskell/tasty-quickcheck-0.10:= )
 "

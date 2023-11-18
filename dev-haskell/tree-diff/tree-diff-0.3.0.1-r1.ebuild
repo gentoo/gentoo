@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/bytestring-builder-0.10.8.2.0:=[profile?] <dev-haskell/by
 	>=dev-haskell/data-array-byte-0.1.0.1:=[profile?] <dev-haskell/data-array-byte-0.2:=[profile?]
 	>=dev-haskell/parsec-3.1.13.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
 	>=dev-haskell/parsers-0.12.10:=[profile?] <dev-haskell/parsers-0.13:=[profile?]
-	>=dev-haskell/quickcheck-2.14.2:2=[profile?] <dev-haskell/quickcheck-2.15:2=[profile?]
+	>=dev-haskell/quickcheck-2.14.2:=[profile?] <dev-haskell/quickcheck-2.15:=[profile?]
 	>=dev-haskell/scientific-0.3.6.2:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
 	>=dev-haskell/tagged-0.8.6:=[profile?] <dev-haskell/tagged-0.9:=[profile?]
 	>=dev-haskell/unordered-containers-0.2.8.0:=[profile?] <dev-haskell/unordered-containers-0.3:=[profile?]

@@ -28,11 +28,11 @@ RDEPEND=">=dev-haskell/base-orphans-0.1:=[profile?]
 	dev-haskell/tagged:=[profile?]
 	>=dev-lang/ghc-8.0.1:=
 	aeson? ( >=dev-haskell/aeson-0.9:=[profile?] )
-	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
+	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:=[profile?] )
 	semigroupoids? ( dev-haskell/semigroupoids:=[profile?] )
 	semirings? ( >=dev-haskell/semirings-0.4.2:=[profile?] )
-	unary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
-	!unary-laws? ( !binary-laws? ( >=dev-haskell/quickcheck-2.7:2=[profile?] ) )
+	unary-laws? ( >=dev-haskell/quickcheck-2.10.0:=[profile?] )
+	!unary-laws? ( !binary-laws? ( >=dev-haskell/quickcheck-2.7:=[profile?] ) )
 	vector? ( >=dev-haskell/vector-0.12:=[profile?] )
 "
 DEPEND="${RDEPEND}

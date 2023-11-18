@@ -28,7 +28,7 @@ RDEPEND=">=dev-haskell/aeson-1.4.1.0:=[profile?] <dev-haskell/aeson-3:=[profile?
 	>=dev-haskell/http-types-0.12.2:=[profile?] <dev-haskell/http-types-0.13:=[profile?]
 	>=dev-haskell/mmorph-1.1.2:=[profile?] <dev-haskell/mmorph-1.3:=[profile?]
 	>=dev-haskell/network-uri-2.6.1.0:=[profile?] <dev-haskell/network-uri-2.7:=[profile?]
-	>=dev-haskell/quickcheck-2.12.6.1:2=[profile?] <dev-haskell/quickcheck-2.15:2=[profile?]
+	>=dev-haskell/quickcheck-2.12.6.1:=[profile?] <dev-haskell/quickcheck-2.15:=[profile?]
 	>=dev-haskell/singleton-bool-0.1.4:=[profile?] <dev-haskell/singleton-bool-0.2:=[profile?]
 	>=dev-haskell/sop-core-0.4.0.0:=[profile?] <dev-haskell/sop-core-0.6:=[profile?]
 	>=dev-haskell/string-conversions-0.4.0.1:=[profile?] <dev-haskell/string-conversions-0.5:=[profile?]

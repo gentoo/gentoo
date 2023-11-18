@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-haskell/network-2.6:=
 	>=dev-haskell/network-uri-2.6:=
 	>=dev-haskell/optparse-applicative-0.14.1:=
-	dev-haskell/quickcheck:2=
+	dev-haskell/quickcheck:=
 	dev-haskell/split:=
 	dev-haskell/text:=
 	>=dev-haskell/unix-compat-0.5:=
