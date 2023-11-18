@@ -16,7 +16,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/aeson-0.6.2:=[profile?] <dev-haskell/aeson-2.3:=[profile?]
-	>=dev-haskell/quickcheck-2.10:2=[profile?] <dev-haskell/quickcheck-2.15:2=[profile?]
+	>=dev-haskell/quickcheck-2.10:=[profile?] <dev-haskell/quickcheck-2.15:=[profile?]
 	>=dev-haskell/syb-0.1:=[profile?] <dev-haskell/syb-0.8:=[profile?]
 	dev-haskell/text:=[profile?]
 	>=dev-lang/ghc-8.8.1:=

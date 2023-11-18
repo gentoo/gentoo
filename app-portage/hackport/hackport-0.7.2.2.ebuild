@@ -33,7 +33,7 @@ RDEPEND=">=dev-haskell/async-2.0:=
 	>=dev-haskell/network-3.0:=
 	>=dev-haskell/network-uri-2.6.0.2:=
 	>=dev-haskell/parallel-3.2.1.0:=
-	dev-haskell/quickcheck:2=
+	dev-haskell/quickcheck:=
 	>=dev-haskell/random-1:=
 	>=dev-haskell/regex-base-0.94.0.0:=
 	>=dev-haskell/regex-posix-0.96.0.0:=
