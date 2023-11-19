@@ -10,6 +10,9 @@
 		highlighting and a built in file manager as well as a built in image viewer.
 		It can also read lots of 'other' filetypes.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">psemiletov/tea-qt</remote-id>
+	</upstream>
 	<use>
 		<flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
 		<flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
