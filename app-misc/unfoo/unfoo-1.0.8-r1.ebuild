@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-DESCRIPTION="A simple bash driven frontend to simplify decompression of files"
-HOMEPAGE="http://obsoleet.org/code/unfoo"
+DESCRIPTION="Simple bash driven frontend to simplify decompression of files"
+HOMEPAGE="https://github.com/jlec/unfoo"
 SRC_URI="https://github.com/jlec/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
