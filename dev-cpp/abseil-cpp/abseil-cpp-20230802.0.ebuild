@@ -28,6 +28,7 @@ BDEPEND="
 "
 
 RESTRICT="!test? ( test )"
+PATCHES=( "${FILESDIR}/${PN}-20230802.0-sdata-tests.patch" )
 
 src_prepare() {
 	cmake_src_prepare
