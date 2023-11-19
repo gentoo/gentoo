@@ -20,7 +20,11 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/HIPCC-rocm-${PV}
 
-RDEPEND="!<dev-util/hip-5.7"
+DEPEND="<sys-devel/llvm-18:=
+	<sys-devel/clang-18:=
+	"
+RDEPEND="${DEPEND}
+	!<dev-util/hip-5.7"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-fno-stack-protector.patch"
