@@ -1,0 +1,38 @@
+From 8c09a6f31d84904dcf411e50102ac1ad159e4dd9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 19 Nov 2023 08:56:20 +0100
+Subject: [PATCH] Fix assertion in TestCheckParseValues::test_warns_bad_type
+
+Fix the assertion in TestCheckParseValues::test_warns_bad_type
+to use `.assert_called_with()` rather than non-existing `.called_with()`
+method.  The latter is wrongly interpreted as calling a mocked method
+in Python < 3.12, and therefore does not test anything at all.  Starting
+with Python 3.12, it results in an error:
+
+    AttributeError: 'called_with' is not a valid assertion. Use a spec for the mock if 'called_with' is meant to be an attribute.
+
+Fixing the call also revealed that the assertion was incorrect, so I've
+updated it to match the current call.
+---
+ tests/unit/test_helpers.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/unit/test_helpers.py b/tests/unit/test_helpers.py
+index 0d3da1c4..19fddc08 100644
+--- a/tests/unit/test_helpers.py
++++ b/tests/unit/test_helpers.py
+@@ -300,10 +300,10 @@ def test_warns_bad_type(self, item):
+         with patch("tavern._core.dict_util.logger.warning") as wmock:
+             _check_and_format_values("{fd}", {"fd": item})
+ 
+-        assert wmock.called_with(
+-            "Formatting 'fd' will result in it being coerced to a string (it is a {})".format(
+-                type(item)
+-            )
++        wmock.assert_called_with(
++            "Formatting '%s' will result in it being coerced to a string (it is a %s)",
++            "fd",
++            type(item),
+         )
+ 
+     @pytest.mark.parametrize("item", [1, "a", 1.3, format_keys("{s}", {"s": 2})])
