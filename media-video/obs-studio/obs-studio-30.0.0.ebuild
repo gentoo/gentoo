@@ -11,7 +11,7 @@ inherit cmake lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux_x86_64"
 CEF_REVISION="_v3"
-OBS_BROWSER_COMMIT="2ba72dbdfed60acd38fa1ac7a52cbc6617ae8fd1"
+OBS_BROWSER_COMMIT="e397df52e70392ebb9146e0ab6317c0d1a30bce4"
 OBS_WEBSOCKET_COMMIT="4ff109b62bc221192943541010d055be9ae5dbba"
 
 if [[ ${PV} == 9999 ]]; then
@@ -27,7 +27,7 @@ else
 		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
 		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64"
 fi
 SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
