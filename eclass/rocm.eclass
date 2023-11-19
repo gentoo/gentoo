@@ -125,11 +125,26 @@ _ROCM_ECLASS=1
 # DEPEND="sci-libs/rocBLAS[${ROCM_USEDEP}]"
 # @CODE
 
+# @ECLASS_VARIABLE: ROCM_SKIP_GLOBALS
+# @DESCRIPTION:
+# Controls whether _rocm_set_globals() is executed. This variable is for
+# ebuilds that call check_amdgpu() without the need to define amdgpu_targets_*
+# USE-flags, such as dev-util/hip and dev-libs/rocm-opencl-runtime.
+#
+# Example use:
+# @CODE
+# ROCM_SKIP_GLOBALS=1
+# inherit rocm
+# @CODE
+
 # @FUNCTION: _rocm_set_globals
 # @DESCRIPTION:
 # Set global variables useful to ebuilds: IUSE, ROCM_REQUIRED_USE, and
-# ROCM_USEDEP
+# ROCM_USEDEP, unless ROCM_SKIP_GLOBALS is set.
+
 _rocm_set_globals() {
+	[[ -n ${ROCM_SKIP_GLOBALS} ]] && return
+
 	# Two lists of AMDGPU_TARGETS of certain ROCm version.  Official support
 	# matrix:
 	# https://docs.amd.com/bundle/ROCm-Installation-Guide-v${ROCM_VERSION}/page/Prerequisite_Actions.html.
@@ -178,7 +193,6 @@ _rocm_set_globals() {
 }
 _rocm_set_globals
 unset -f _rocm_set_globals
-
 
 # @FUNCTION: get_amdgpu_flags
 # @USAGE: get_amdgpu_flags
