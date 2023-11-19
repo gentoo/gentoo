@@ -247,7 +247,7 @@ src_configure() {
 		# notable options left to automagic
 		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
 		#libplacebo-next: USE="libplacebo" + >=libplacebo-5.264
-		#vulkan-interop: USE="libplacebo vulkan" + ffmpeg-9999 currently
+		#vulkan-interop: USE="libplacebo vulkan" + >=ffmpeg-6.1
 		# TODO?: perhaps few more similar compound options should be left auto
 	)
 

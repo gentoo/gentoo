@@ -240,7 +240,7 @@ src_configure() {
 
 		# notable options left to automagic
 		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
-		#vulkan-interop: USE="vulkan" + ffmpeg-9999 currently
+		#vulkan-interop: USE="vulkan" + >=ffmpeg-6.1
 		# TODO?: perhaps few more similar compound options should be left auto
 	)
 
