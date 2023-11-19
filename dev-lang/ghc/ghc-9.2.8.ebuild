@@ -30,30 +30,39 @@ BUILD_BIN_PV=9.0.2
 BUILD_BIN_REV=r4
 BUILD_BIN_PVR="${BUILD_BIN_PV}${BUILD_BIN_REV:+-${BUILD_BIN_REV}}"
 
-DEFAULT_SRC_HOST="https://eidetic.codes"
-
-ghc_binaries() {
+# Binaries created and uploaded by hololeap
+SRC_URL_HOLOLEAP="https://eidetic.codes"
+ghc_binaries_hololeap() {
 	echo "
-		binary? ( ${DEFAULT_SRC_HOST}/${PN}-bin-${BIN_PVR}-${1}.gpkg.tar )
-		!binary? ( ${DEFAULT_SRC_HOST}/${PN}-bin-${BUILD_BIN_PVR}-${1}.gpkg.tar )
+		binary? ( ${SRC_URL_HOLOLEAP}/${PN}-bin-${BIN_PVR}-${1}.gpkg.tar )
+		!binary? ( ${SRC_URL_HOLOLEAP}/${PN}-bin-${BUILD_BIN_PVR}-${1}.gpkg.tar )
+	"
+}
+
+# Binaries created and uploaded by matoro
+SRC_URL_MATORO="https://github.com/matoro/${PN}/releases/download"
+ghc_binaries_matoro() {
+	echo "
+		binary? ( ${SRC_URL_MATORO}/${BIN_PVR}/${PN}-bin-${BIN_PVR}-${1}.gpkg.tar )
+		!binary? ( ${SRC_URL_MATORO}/${BUILD_BIN_PVR}/${PN}-bin-${BUILD_BIN_PVR}-${1}.tar.gz )
 	"
 }
 
 # Differentiate glibc/musl
 
 #glibc_binaries="$glibc_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
-glibc_binaries+=" amd64? ( $(ghc_binaries x86_64-pc-linux-gnu) )"
+glibc_binaries+=" amd64? ( $(ghc_binaries_hololeap x86_64-pc-linux-gnu) )"
 #glibc_binaries="$glibc_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-#glibc_binaries+=" arm64? ( $(ghc_binaries_gz_build_bin aarch64-unknown-linux-gnu) )"
+glibc_binaries+=" arm64? ( $(ghc_binaries_matoro aarch64-unknown-linux-gnu) )"
 #glibc_binaries="$glibc_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #glibc_binaries="$glibc_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-#glibc_binaries+=" ppc64? (
-#	big-endian? ( $(ghc_binaries_gz_build_bin powerpc64-unknown-linux-gnu) )
-#	!big-endian? ( $(ghc_binaries_gz_build_bin powerpc64le-unknown-linux-gnu) )
-#)"
-#glibc_binaries+=" riscv? ( $(ghc_binaries_gz_build_bin riscv64-unknown-linux-gnu) )"
+glibc_binaries+=" ppc64? (
+	big-endian? ( $(ghc_binaries_matoro powerpc64-unknown-linux-gnu) )
+	!big-endian? ( $(ghc_binaries_matoro powerpc64le-unknown-linux-gnu) )
+)"
+glibc_binaries+=" riscv? ( $(ghc_binaries_matoro riscv64-unknown-linux-gnu) )"
 #glibc_binaries="$glibc_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
-glibc_binaries+=" x86? ( $(ghc_binaries i686-pc-linux-gnu) )"
+glibc_binaries+=" x86? ( $(ghc_binaries_hololeap i686-pc-linux-gnu) )"
 
 #musl_binaries="$musl_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
 #musl_binaries="$musl_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-musl.tbz2 )"
@@ -79,13 +88,13 @@ yet_binary() {
 		glibc)
 			case "${ARCH}" in
 				#alpha) return 0 ;;
-				#arm64) return 0 ;;
+				arm64) return 0 ;;
 				#arm) return 0 ;;
 				amd64) return 0 ;;
 				#ia64) return 0 ;;
 				#ppc) return 0 ;;
-				#ppc64) return 0 ;;
-				#riscv) return 0 ;;
+				ppc64) return 0 ;;
+				riscv) return 0 ;;
 				#sparc) return 0 ;;
 				x86) return 0 ;;
 				*) return 1 ;;
