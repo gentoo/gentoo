@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# media-libs/oneVPL is only keyworded for amd64 at this time.
+media-video/obs-studio qsv
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# dev-libs/qr-code-generator is only keyworded for amd64 at this time.
+media-video/obs-studio websocket
+
 # Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
 # net-libs/librist is only keyworded for arm64 at this time.
 media-video/obs-studio mpegts

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# Unmask on amd64.
+media-video/obs-studio -qsv -websocket
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
 # Qt6 is still experimental in freecad, currently the configure phase
 # gets itself stuck by importing both qt5 and qt6 cmake files.
