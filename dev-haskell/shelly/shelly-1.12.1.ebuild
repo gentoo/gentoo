@@ -7,7 +7,7 @@ EAPI=8
 #hackport: flags: build-examples:examples
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
-inherit haskell-cabal
+inherit ghc-package haskell-cabal
 
 DESCRIPTION="shell-like (systems) programming in Haskell"
 HOMEPAGE="https://github.com/gregwebs/Shelly.hs"

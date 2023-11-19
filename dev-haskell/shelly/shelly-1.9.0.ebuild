@@ -9,7 +9,7 @@ EAPI=8
 CABAL_HACKAGE_REVISION=3
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
-inherit haskell-cabal
+inherit ghc-package haskell-cabal
 
 DESCRIPTION="shell-like (systems) programming in Haskell"
 HOMEPAGE="https://github.com/yesodweb/Shelly.hs"
