@@ -56,6 +56,7 @@ KEYWORDS="amd64 ~ppc64 x86"
 
 RESTRICT="!test? ( test )"
 
+# rust restriction: bug #916304
 BDEPEND="
 	app-arch/unzip
 	app-arch/zip
