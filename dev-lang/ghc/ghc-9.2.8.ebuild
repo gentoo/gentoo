@@ -693,6 +693,10 @@ src_prepare() {
 
 src_configure() {
 	if ! use binary; then
+		# No upstream LTO support. bug #855596
+		filter-lto
+		append-flags -fno-strict-aliasing
+
 		# initialize build.mk
 		echo '# Gentoo changes' > mk/build.mk
 
