@@ -110,6 +110,12 @@ python_test() {
 		# Crashes with assertion, not a regression
 		# https://github.com/scipy/scipy/issues/19321
 		scipy/signal/tests/test_signaltools.py::test_lfilter_bad_object
+
+		# timeouts
+		scipy/sparse/linalg/tests/test_propack.py::test_examples
+		# hang or incredibly slow
+		scipy/optimize/tests/test_lsq_linear.py::TestBVLS::test_large_rank_deficient
+		scipy/optimize/tests/test_lsq_linear.py::TestTRF::test_large_rank_deficient
 	)
 	local EPYTEST_IGNORE=()
 
@@ -122,13 +128,9 @@ python_test() {
 	case ${EPYTHON} in
 		pypy3)
 			EPYTEST_DESELECT+=(
-				# TODO: fd leaks?
+				# fd leaks in tests
+				# https://github.com/scipy/scipy/issues/19553
 				scipy/fft/_pocketfft/tests/test_real_transforms.py
-				# timeouts
-				scipy/sparse/linalg/tests/test_propack.py::test_examples
-				# hang or incredibly slow
-				scipy/optimize/tests/test_lsq_linear.py::TestBVLS::test_large_rank_deficient
-				scipy/optimize/tests/test_lsq_linear.py::TestTRF::test_large_rank_deficient
 				# TODO
 				'scipy/special/tests/test_data.py::test_boost[<Data for expi: expinti_data_long_ipp-expinti_data_long>]'
 			)
