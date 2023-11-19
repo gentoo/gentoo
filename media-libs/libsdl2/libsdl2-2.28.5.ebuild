@@ -15,7 +15,8 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	alsa? ( sound )
 	fcitx4? ( dbus )
@@ -110,6 +111,10 @@ src_prepare() {
 	# Unbundle some headers.
 	rm -r src/video/khronos || die
 	ln -s "${ESYSROOT}/usr/include" src/video/khronos || die
+	if ! use vulkan
+	then
+		sed -i '/testvulkan$(EXE) \\/d' "test/Makefile.in" || die
+	fi
 
 	# SDL seems to customize SDL_config.h.in to remove macros like
 	# PACKAGE_NAME. Add AT_NOEAUTOHEADER="yes" to prevent those macros from
@@ -202,13 +207,32 @@ multilib_src_configure() {
 		--disable-rpath
 		--disable-render-d3d
 		$(use_with X x)
+		ac_cv_header_libunwind_h=no
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+
+	if use test; then
+		# Most of these workarounds courtesy Debian
+		# https://salsa.debian.org/sdl-team/libsdl2/-/blob/debian/latest/debian/rules
+		local mytestargs=(
+			--x-includes="/usr/include"
+			--x-libraries="/usr/$(get_libdir)"
+			SDL_CFLAGS="-I${S}/include"
+			SDL_LIBS="-L${BUILD_DIR}/build/.libs -lSDL2"
+			ac_cv_lib_SDL2_ttf_TTF_Init=no
+			CFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+		)
+
+		mkdir "${BUILD_DIR}/test" || die
+		cd "${BUILD_DIR}/test" || die
+		ECONF_SOURCE="${S}/test" econf "${mytestargs[@]}"
+	fi
 }
 
 multilib_src_compile() {
-	emake V=1
+	emake all V=1
+	use test && emake -C test all V=1
 }
 
 src_compile() {
@@ -218,6 +242,10 @@ src_compile() {
 		cd docs || die
 		doxygen || die
 	fi
+}
+
+multilib_src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/build/.libs" emake -C test check V=1
 }
 
 multilib_src_install() {
