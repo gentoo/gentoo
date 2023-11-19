@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic prefix pypi toolchain-funcs virtualx
@@ -74,7 +74,9 @@ RDEPEND="
 		dev-texlive/texlive-xetex
 	)
 	qt5? (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		' 'python3*')
 	)
 	webagg? (
 		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
@@ -241,13 +243,36 @@ python_test() {
 		tests/test_testing.py::test_warn_to_fail
 		# TODO?
 		tests/test_backend_qt.py::test_fig_sigint_override
-		# unhappy about xdist
-		tests/test_widgets.py::test_span_selector_animated_artists_callback
 		# leak tests are fragile
 		tests/test_backends_interactive.py::test_figure_leak_20490
 	)
 
 	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# TypeError is raised when exception is raised in a starred
+				# expression referencing a generator that uses "yield from"
+				# and raises -- non-critical, since some exception is raised
+				# after all
+				# https://foss.heptapod.net/pypy/pypy/-/issues/4032
+				tests/test_axes.py::test_bad_plot_args
+				tests/test_axes.py::test_plot_errors
+				tests/test_axes.py::test_plot_format_errors
+				# TODO: warning isn't passed through
+				tests/test_image.py::test_large_image
+				# TODO
+				tests/test_legend.py::test_plot_multiple_label_incorrect_length_exception
+				tests/test_pickle.py::test_complete
+				tests/test_pickle.py::test_no_pyplot
+				tests/test_pickle.py::test_pickle_load_from_subprocess
+				tests/test_pickle.py::test_simple
+				tests/test_texmanager.py::test_openin_any_paranoid
+				tests/test_widgets.py::test_check_buttons
+				tests/test_widgets.py::test_check_buttons_lines
+				tests/test_widgets.py::test_check_radio_buttons_image
+				tests/test_widgets.py::test_radio_buttons
+			)
+			;;
 		python3.11)
 			EPYTEST_DESELECT+=(
 				# https://github.com/matplotlib/matplotlib/issues/23384
