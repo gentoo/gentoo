@@ -176,9 +176,12 @@ _rocm_set_globals() {
 	local optflags=${allflags[@]/%/(-)?}
 	ROCM_USEDEP=${optflags// /,}
 }
-_rocm_set_globals
-unset -f _rocm_set_globals
 
+# dev-util/hip uses checkgpu but does not need the USE flags.
+if [[ ${CATEGORY}/${PN} != dev-util/hip ]]; then
+	_rocm_set_globals
+	unset -f _rocm_set_globals
+fi
 
 # @FUNCTION: get_amdgpu_flags
 # @USAGE: get_amdgpu_flags
