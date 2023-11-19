@@ -76,6 +76,10 @@ python_prepare_all() {
 }
 
 python_compile() {
+	local DISTUTILS_ARGS=(
+		# by default it adds -w to CFLAGS
+		--warnings
+	)
 	tc-export PKG_CONFIG
 	distutils-r1_python_compile
 }
