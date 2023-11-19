@@ -13,7 +13,7 @@ SLOT="0"
 IUSE="debug +gnome-shell +nautilus vanilla"
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.44.0-cntr-ntfy-autottl-ts.patch.xz )"
 
-KEYWORDS="amd64 ~arm arm64 ~mips ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 # FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 RDEPEND="
