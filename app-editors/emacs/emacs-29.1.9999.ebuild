@@ -387,10 +387,12 @@ src_compile() {
 		# Save native build tools in the cross-directory
 		cp "${S}-build"/lib-src/make-{docfile,fingerprint} lib-src || die
 		# Specify the native Emacs to compile lisp
-		emake -C lisp all EMACS="${S}-build/src/emacs"
+		EMACS_EMAKE_ARGS=( EMACS="${S}-build/src/emacs" )
+		emake "${EMACS_EMAKE_ARGS[@]}" actual-all
+	else
+		unset EMACS_EMAKE_ARGS
+		emake
 	fi
-
-	emake
 }
 
 src_test() {
@@ -438,7 +440,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
+	emake "${EMACS_EMAKE_ARGS[@]}" DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
