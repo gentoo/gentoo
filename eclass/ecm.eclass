@@ -87,26 +87,27 @@ fi
 # Will accept "true", "false", "optional", "forceoptional". If set to "false",
 # do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and let
-# KF5DocTools generate and install the handbook from docbook file(s) found in
-# ECM_HANDBOOK_DIR. However if !handbook, disable build of ECM_HANDBOOK_DIR
-# in CMakeLists.txt.
-# If set to "optional", build with -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON
-# when !handbook. In case package requires KF5KDELibs4Support, see next:
-# If set to "forceoptional", remove a KF5DocTools dependency from the root
-# CMakeLists.txt in addition to the above.
+# KF${_KFSLOT}DocTools generate and install the handbook from docbook file(s)
+# found in ECM_HANDBOOK_DIR. However if !handbook, disable build of
+# ECM_HANDBOOK_DIR in CMakeLists.txt.
+# If set to "optional", build with
+# -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools=ON when !handbook. In case
+# package requires KF5KDELibs4Support, see next:
+# If set to "forceoptional", remove a KF${_KFSLOT}DocTools dependency from the
+# root CMakeLists.txt in addition to the above.
 : "${ECM_HANDBOOK:=false}"
 
 # @ECLASS_VARIABLE: ECM_HANDBOOK_DIR
 # @DESCRIPTION:
 # Specifies the directory containing the docbook file(s) relative to ${S} to
-# be processed by KF5DocTools (kdoctools_install).
+# be processed by KF${_KFSLOT}DocTools (kdoctools_install).
 : "${ECM_HANDBOOK_DIR:=doc}"
 
 # @ECLASS_VARIABLE: ECM_PO_DIRS
 # @DESCRIPTION:
 # Specifies directories of l10n files relative to ${S} to be processed by
-# KF5I18n (ki18n_install). If IUSE nls exists and is disabled then disable
-# build of these directories in CMakeLists.txt.
+# KF${_KFSLOT}I18n (ki18n_install). If IUSE nls exists and is disabled then
+# disable build of these directories in CMakeLists.txt.
 : "${ECM_PO_DIRS:="po poqm"}"
 
 # @ECLASS_VARIABLE: ECM_QTHELP
@@ -128,14 +129,14 @@ fi
 # "forceoptional-recursive".
 # Default value is "false", except for CATEGORY=kde-frameworks where it is
 # set to "true". If set to "false", do nothing.
-# For any other value, add "test" to IUSE and DEPEND on dev-qt/qttest:5.
-# If set to "optional", build with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
-# when USE=!test.
-# If set to "forceoptional", punt Qt5Test dependency and ignore "autotests",
+# For any other value, add "test" to IUSE and DEPEND on dev-qt/qtbase:6[test]
+# (for KF5: dev-qt/qttest:5). If set to "optional", build with
+# -DCMAKE_DISABLE_FIND_PACKAGE_Qt${_KFSLOT}Test=ON when USE=!test. If set
+# to "forceoptional", punt Qt${_KFSLOT}Test dependency and ignore "autotests",
 # "test", "tests" subdirs from top-level CMakeLists.txt when USE=!test.
-# If set to "forceoptional-recursive", punt Qt5Test dependencies and make
-# autotest(s), unittest(s) and test(s) subdirs from *any* CMakeLists.txt in
-# ${S} and below conditional on BUILD_TESTING when USE=!test. This is always
+# If set to "forceoptional-recursive", punt Qt${_KFSLOT}Test dependencies and
+# make autotest(s), unittest(s) and test(s) subdirs from *any* CMakeLists.txt
+# in ${S} and below conditional on BUILD_TESTING when USE=!test. This is always
 # meant as a short-term fix and creates ${T}/${P}-tests-optional.patch to
 # refine and submit upstream.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
@@ -158,7 +159,10 @@ fi
 # @ECLASS_VARIABLE: _KFSLOT
 # @INTERNAL
 # @DESCRIPTION:
-# KDE Frameworks and Qt slot dependency, implied by KFMIN version.
+# KDE Frameworks and Qt main slot dependency, implied by KFMIN version, *not*
+# necessarily the package's SLOT. This is being used throughout the eclass to
+# depend on either :5 or :6 Qt/KF packages as well as setting correctly
+# prefixed cmake args.
 : "${_KFSLOT:=5}"
 if [[ ${CATEGORY} == kde-frameworks ]]; then
 	if [[ ${PV} != 5.9999 ]] && $(ver_test ${KFMIN} -ge 5.240); then
@@ -489,7 +493,7 @@ ecm_src_prepare() {
 		# always install unconditionally for kconfigwidgets - if you use
 		# language X as system language, and there is a combobox with language
 		# names, the translated language name for language Y is taken from
-		# /usr/share/locale/Y/kf5_entry.desktop
+		# /usr/share/locale/Y/kf${_KFSLOT}_entry.desktop
 		[[ ${PN} != kconfigwidgets ]] && _ecm_strip_handbook_translations
 	fi
 
@@ -551,12 +555,12 @@ ecm_src_configure() {
 		cmakeargs+=( -DBUILD_TESTING=OFF )
 
 		if [[ ${ECM_TEST} = optional ]] ; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt${_KFSLOT}Test=ON )
 		fi
 	fi
 
 	if [[ ${ECM_HANDBOOK} = optional ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=$(usex !handbook) )
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools=$(usex !handbook) )
 	fi
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
