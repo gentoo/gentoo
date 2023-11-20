@@ -123,6 +123,13 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${ED}" install
 
+	local pinta_home="/usr/$(get_libdir)/${PN}"
+
+	mv "${ED}/usr/bin/pinta" "${ED}/${pinta_home}" || die
+	sed -e 's|dotnet|${DOTNET_ROOT}/dotnet|g' -i "${ED}/${pinta_home}/pinta" \
+		|| die                                              # No interpolation!
+	dotnet-pkg-base_dolauncher "${pinta_home}/${PN}" "${PN}"
+
 	rm "${ED}/usr/share/man/man1/${PN}.1.gz" || die
 	doman xdg/${PN}.1
 }
