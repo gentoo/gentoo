@@ -5,6 +5,10 @@
 # dev-qt/qtwebengine:6 is keyworded here.
 dev-python/PyQt6 -pdfium
 
+# Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
+# app-crypt/rpm-sequoia is keyworded here.
+app-arch/rpm -sequoia
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # media-libs/shaderc in not keyworded
 media-video/ffmpeg shaderc

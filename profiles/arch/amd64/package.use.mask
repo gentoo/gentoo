@@ -30,6 +30,10 @@ dev-python/PyQt6 -pdfium
 # Unmask on amd64.
 media-video/obs-studio -qsv -websocket
 
+# Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
+# app-crypt/rpm-sequoia is keyworded here.
+app-arch/rpm -sequoia
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
 # Qt6 is still experimental in freecad, currently the configure phase
 # gets itself stuck by importing both qt5 and qt6 cmake files.
