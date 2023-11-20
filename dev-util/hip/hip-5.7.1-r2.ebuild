@@ -76,8 +76,11 @@ src_prepare() {
 	cmake_src_prepare
 
 	if use test; then
-		PATCHES=${FILESDIR}/hip-test-5.7.0-rocm_agent_enumerator-location.patch \
-			   hip_test_wrapper cmake_src_prepare
+		local PATCHES=(
+			"${FILESDIR}"/hip-test-5.7.0-rocm_agent_enumerator-location.patch \
+			"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
+		)
+		hip_test_wrapper cmake_src_prepare
 	fi
 }
 
