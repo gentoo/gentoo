@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -41,6 +41,16 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				tests/ui/test_exception_trace.py::test_render_debug_better_error_message_recursion_error
+			)
+			;;
+	esac
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_mock
 	epytest
