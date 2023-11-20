@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
+# Need app-crypt/rpm-sequoia.
+app-arch/rpm sequoia
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/jupyter-server.
 dev-python/ipykernel test
