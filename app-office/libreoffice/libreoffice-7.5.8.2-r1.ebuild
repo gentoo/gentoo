@@ -295,6 +295,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
 
+	# maybe upstreamable
+	"${FILESDIR}/libreoffice-7.5.8.2-icu-74-compatibility.patch"
+
 	# git master
 	"${WORKDIR}/${PN}-7.5.2.2-loong-buildsys-fix.patch"
 	"${FILESDIR}/${PN}-7.5.6.2-gcc-14.patch"
