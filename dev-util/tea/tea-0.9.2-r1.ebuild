@@ -19,6 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
+# bug #917587
+RDEPEND="!<app-editors/tea-62.1.1"
+
 DOCS=( CHANGELOG.md README.md )
 
 src_compile() {
