@@ -25,6 +25,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
 "
 
