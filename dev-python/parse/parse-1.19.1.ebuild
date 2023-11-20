@@ -4,12 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Parse strings using a specification based on the Python format() syntax"
-HOMEPAGE="https://pypi.org/project/parse/"
-SRC_URI="https://github.com/r1chardj0n3s/parse/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/r1chardj0n3s/parse/
+	https://pypi.org/project/parse/
+"
+SRC_URI="
+	https://github.com/r1chardj0n3s/parse/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
