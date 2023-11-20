@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
@@ -62,6 +62,13 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# "database is locked", upstream probably relies on GC
+				# too much
+				tests/integration/test_sqlite.py
+			)
+			;;
 		python3.12)
 			# https://github.com/requests-cache/requests-cache/issues/845
 			EPYTEST_DESELECT+=(
