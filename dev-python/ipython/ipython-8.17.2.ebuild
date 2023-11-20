@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_FULL=( python3_{10..12} )
-PYTHON_COMPAT=( "${PYTHON_FULL[@]}" pypy3 )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 optfeature pypi virtualx
@@ -41,11 +40,9 @@ RDEPEND="
 BDEPEND="
 	test? (
 		app-text/dvipng[truetype]
-		$(python_gen_cond_dep '
-			>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-			dev-python/matplotlib[${PYTHON_USEDEP}]
-			dev-python/nbformat[${PYTHON_USEDEP}]
-		' "${PYTHON_FULL[@]}")
+		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/nbformat[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
 		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 		dev-python/pickleshare[${PYTHON_USEDEP}]
@@ -53,12 +50,10 @@ BDEPEND="
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 	doc? (
-		$(python_gen_cond_dep '
-			>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-			dev-python/matplotlib[${PYTHON_USEDEP}]
-			>=dev-python/sphinx-2[${PYTHON_USEDEP}]
-			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
-		' "${PYTHON_FULL[@]}")
+		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-2[${PYTHON_USEDEP}]
+		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 	)
 "
 
@@ -66,9 +61,7 @@ distutils_enable_tests pytest
 
 RDEPEND+="
 	nbconvert? (
-		$(python_gen_cond_dep '
-			dev-python/nbconvert[${PYTHON_USEDEP}]
-		' "${PYTHON_FULL[@]}")
+		dev-python/nbconvert[${PYTHON_USEDEP}]
 	)
 "
 PDEPEND="
@@ -79,11 +72,11 @@ PDEPEND="
 			dev-python/widgetsnbextension[${PYTHON_USEDEP}]
 		)
 		qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
-		smp? (
-			>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-			>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
-		)
-	' "${PYTHON_FULL[@]}")
+	' 'python*')
+	smp? (
+		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
+	)
 "
 
 PATCHES=(
@@ -108,7 +101,7 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	if use doc && has "${EPYTHON/./_}" "${PYTHON_FULL[@]}"; then
+	if use doc; then
 		emake -C docs html_noapi
 		HTML_DOCS=( docs/build/html/. )
 	fi
