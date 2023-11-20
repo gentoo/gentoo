@@ -27,7 +27,7 @@ DEPEND="${POSTGRES_DEP}
 "
 RDEPEND=${DEPEND}
 
-REQUIRE_USE="${POSTGRES_REQ_USE}"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 # Testing requires a more complex setup than we benefit from being able
 # to perform.
