@@ -664,6 +664,11 @@ src_prepare() {
 
 	eapply "${WORKDIR}/firefox-patches"
 
+	# Workaround for bgo#917599
+	if has_version ">=dev-libs/icu-74.1" && use system-icu ; then
+		eapply "${FILESDIR}"/firefox-115.4.0-icu-74.patch
+	fi
+
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
 
