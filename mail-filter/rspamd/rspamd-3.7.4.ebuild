@@ -99,6 +99,9 @@ src_configure() {
 		-DSYSTEM_ZSTD=ON
 
 		# For bundled https://github.com/bombela/backward-cpp
+		# Bundled backward library uses execinfo.h in current setting, which is
+		# available in glibc, but not in musl. Let's enable it for glibc only.
+		-DENABLE_BACKWARD=$(usex elibc_glibc ON OFF) # bug 917643
 		-DSTACK_DETAILS_AUTO_DETECT=OFF
 
 		-DENABLE_BLAS=$(usex blas ON OFF)
