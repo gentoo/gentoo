@@ -20,20 +20,22 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="4.27"
 IUSE="+ant"
 
-COMMON_DEP="
-	app-eselect/eselect-java
-	dev-java/ant-core:0"
+BDEPEND="
+	app-arch/unzip
+	app-arch/zip"
+COMMON_DEP="app-eselect/eselect-java"
 # ElementsImpl9.java:206: error:
 # method does not override or implement a method from a supertype
 DEPEND="${COMMON_DEP}
-	>=virtual/jdk-21:*
-	app-arch/unzip"
+	dev-java/ant-core:0
+	>=virtual/jdk-21:*"
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-11:*"
-PDEPEND="
-	ant? ( ~dev-java/ant-eclipse-ecj-${PV} )"
+PDEPEND="ant? ( ~dev-java/ant-eclipse-ecj-${PV} )"
 
-JAVA_GENTOO_CLASSPATH="ant-core"
+DOCS=( org/eclipse/jdt/core/README.md )
+
+JAVA_CLASSPATH_EXTRA="ant-core"
 JAVA_JAR_FILENAME="${MY_PN}.jar"
 JAVA_LAUNCHER_FILENAME="${MY_PN}-${SLOT}"
 JAVA_MAIN_CLASS="org.eclipse.jdt.internal.compiler.batch.Main"
@@ -48,9 +50,15 @@ src_prepare() {
 	rm -r org/eclipse/jdt/internal/antadapter || die
 
 	mkdir "${JAVA_RESOURCE_DIRS}" || die
-	find -type f \
+	find org META-INF -type f \
 		! -name '*.java' \
 		| xargs cp --parent -t "${JAVA_RESOURCE_DIRS}" || die
+}
+
+src_compile() {
+	java-pkg-simple_src_compile
+	# Error: A JNI error has occurred, please check your installation and try again
+	zip -d ecj.jar "META-INF/MANIFEST.MF" || die "Failed to remove MANIFEST.MF"
 }
 
 pkg_postinst() {
