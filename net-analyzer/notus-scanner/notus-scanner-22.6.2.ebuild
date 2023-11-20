@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 readme.gentoo-r1 systemd
 
@@ -20,8 +20,7 @@ DEPEND="
 	net-libs/paho-mqtt-c
 	>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.1[${PYTHON_USEDEP}]
-	<dev-python/packaging-23.2[${PYTHON_USEDEP}]
-	>=dev-python/rope-1.9.0[${PYTHON_USEDEP}]
+	<dev-python/packaging-23.3[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
 	<dev-python/tomli-3[${PYTHON_USEDEP}]
 "
@@ -32,7 +31,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-remove-tests.patch
+	"${FILESDIR}"/notus-scanner-22.6.2-remove-tests.patch
 )
 
 DOC_CONTENTS="
