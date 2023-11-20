@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -42,7 +42,9 @@ BDEPEND="
 		>=dev-python/tomlkit-0.11.4[${PYTHON_USEDEP}]
 		>=dev-python/ujson-5.4.0[${PYTHON_USEDEP}]
 		test-rust? (
-			>=dev-python/orjson-3.5.2[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				>=dev-python/orjson-3.5.2[${PYTHON_USEDEP}]
+			' 'python*')
 		)
 	)
 "
