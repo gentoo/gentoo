@@ -103,6 +103,7 @@ PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.5.2-libcxx17.patch
 	"${FILESDIR}"/${PN}-6.5.2-cstdint.patch
+	"${FILESDIR}"/${PN}-6.5.3-icu74.patch
 )
 
 python_check_deps() {
