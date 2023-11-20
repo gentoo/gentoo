@@ -33,9 +33,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_INCLUDEDIR="include/hipfft"
 		-DCMAKE_MODULE_PATH="${EPREFIX}"/usr/$(get_libdir)/cmake/hip
-		-DHIP_ROOT_DIR="${EPREFIX}/usr"
 		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_CLIENTS_TESTS=OFF
 		-DBUILD_CLIENTS_RIDER=OFF
