@@ -159,9 +159,8 @@ REQUIRED_USE="
 # There is no py3.12 support planned for pyside2
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
-	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${FILESDIR}"/${PN}-0.21.1-Gentoo-specific-don-t-check-vcs.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
@@ -193,7 +192,7 @@ src_configure() {
 		-DBUILD_DRAFT=ON
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DBUILD_DRAWING=ON
-		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for current git master
+		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for >=boost-1.77.0
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=$(usex netgen)
 		-DBUILD_FLAT_MESH=ON

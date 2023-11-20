@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
+# Qt6 is still experimental in freecad, currently the configure phase
+# gets itself stuck by importing both qt5 and qt6 cmake files.
+# Since there is no python3.12 support for shiboken2/pyside2, we have
+# to mask that flag as well.
+media-gfx/freecad qt6 python_single_target_python3_12
+
 # Florian Schmaus <flow@gentoo.org> (2023-11-10)
 # Only available for amd64.
 sys-apps/irqbalance thermal
