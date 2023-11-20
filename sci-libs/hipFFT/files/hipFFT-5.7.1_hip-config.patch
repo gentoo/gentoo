@@ -1,0 +1,40 @@
+From c2b06a3b49257b3f89cf203895cf370e64e47b27 Mon Sep 17 00:00:00 2001
+From: trixirt <trix@redhat.com>
+Date: Mon, 31 Jul 2023 09:50:19 -0700
+Subject: [PATCH] Simplify finding the hip package
+
+On Fedora, where hip is installed as an rpm, its cmake files can
+not be found and are reported as an error.
+
+CMake Error at cmake/dependencies.cmake:44 (find_package):
+  No "FindHIP.cmake" found in CMAKE_MODULE_PATH.
+
+This change treats hip as a normal package.
+
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ cmake/dependencies.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/dependencies.cmake b/cmake/dependencies.cmake
+index 262478d..5810e37 100644
+--- a/cmake/dependencies.cmake
++++ b/cmake/dependencies.cmake
+@@ -30,7 +30,7 @@ if( NOT CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
+     if( WIN32 )
+       find_package( HIP CONFIG REQUIRED )
+     else()
+-      find_package( HIP MODULE REQUIRED )
++      find_package( HIP REQUIRED )
+     endif()
+     list( APPEND HIP_INCLUDE_DIRS "${HIP_ROOT_DIR}/include" )
+   endif()
+@@ -41,7 +41,7 @@ else()
+     if( WIN32 )
+       find_package( HIP CONFIG REQUIRED )
+     else()
+-      find_package( HIP MODULE REQUIRED )
++      find_package( HIP REQUIRED )
+     endif()
+   endif()
+ endif()

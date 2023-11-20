@@ -28,6 +28,7 @@ S="${WORKDIR}/hipFFT-rocm-${PV}"
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.2-remove-git-dependency.patch"
 	"${FILESDIR}/${PN}-4.3.0-add-complex-header.patch"
+	"${FILESDIR}/${PN}-5.7.1_hip-config.patch"
 )
 
 src_configure() {
