@@ -59,6 +59,10 @@ hip_test_wrapper() {
 }
 
 src_prepare() {
+	# hipamd is itself built by cmake, and should never provide a
+	# FindHIP.cmake module.
+	rm -r "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP* || die
+
 	# https://github.com/ROCm-Developer-Tools/HIP/commit/405d029422ba8bb6be5a233d5eebedd2ad2e8bd3
 	# https://github.com/ROCm-Developer-Tools/clr/commit/ab6d34ae773f4d151e04170c0f4e46c1135ddf3e
 	# Migrated to hip-test, but somehow the change is not applied to the tarball.
