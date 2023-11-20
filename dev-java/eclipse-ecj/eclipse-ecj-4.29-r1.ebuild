@@ -4,21 +4,22 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
+# 3.35.0 according to
+# https://github.com/eclipse-jdt/eclipse.jdt.core/blob/R4_29/org.eclipse.jdt.core.compiler.batch/pom.xml#L20
+MAVEN_ID="org.eclipse.jdt:org.eclipse.jdt.core.compiler.batch:3.35.0"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple prefix
 
-MY_PN="ecj"
 DMF="R-${PV}-202309031000"
 
 DESCRIPTION="Eclipse Compiler for Java"
 HOMEPAGE="https://www.eclipse.org/"
-SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/${MY_PN}src-${PV}.jar"
+SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV}.jar"
 S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="4.29"
-IUSE="+ant"
 
 BDEPEND="
 	app-arch/unzip
@@ -34,23 +35,18 @@ DEPEND="${COMMON_DEP}
 # pattern matching in instanceof is not supported in -source 11
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-17:*"
-PDEPEND="ant? ( ~dev-java/ant-eclipse-ecj-${PV} )"
 
 DOCS=( org/eclipse/jdt/core/README.md )
 
+JAVA_AUTOMATIC_MODULE_NAME="org.eclipse.jdt.core.compiler.batch"
 JAVA_CLASSPATH_EXTRA="ant-core"
-JAVA_JAR_FILENAME="${MY_PN}.jar"
-JAVA_LAUNCHER_FILENAME="${MY_PN}-${SLOT}"
+JAVA_JAR_FILENAME="ecj.jar"
+JAVA_LAUNCHER_FILENAME="ecj-${SLOT}"
 JAVA_MAIN_CLASS="org.eclipse.jdt.internal.compiler.batch.Main"
 JAVA_RESOURCE_DIRS="res"
 
-# See https://bugs.eclipse.org/bugs/show_bug.cgi?id=479134 for details
 src_prepare() {
 	java-pkg-2_src_prepare
-
-	# These have their own package.
-	rm org/eclipse/jdt/core/JDTCompilerAdapter.java || die
-	rm -r org/eclipse/jdt/internal/antadapter || die
 
 	mkdir "${JAVA_RESOURCE_DIRS}" || die
 	find -type f \
@@ -64,6 +60,13 @@ src_compile() {
 	# Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
 	zip -d ecj.jar "META-INF/ECLIPSE_.RSA" || die "Failed to remove ECLIPSE_.RSA"
 	zip -d ecj.jar "META-INF/ECLIPSE_.SF" || die "Failed to remove ECLIPSE_.SF"
+}
+
+src_install() {
+	java-pkg-simple_src_install
+	insinto /usr/share/java-config-2/compiler
+	doins "${FILESDIR}/ecj-${SLOT}"
+	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
 }
 
 pkg_postinst() {
