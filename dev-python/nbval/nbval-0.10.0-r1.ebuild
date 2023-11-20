@@ -26,7 +26,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/nbdime[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/sympy[${PYTHON_USEDEP}]
 		' python3_{10..11})
