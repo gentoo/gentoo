@@ -41,6 +41,9 @@ BDEPEND="
 	)
 "
 
+# https://github.com/tdf/libcmis/pull/52
+PATCHES=( "${FILESDIR}/${P}-libxml2-2.12.patch" ) # bug 917523
+
 src_prepare() {
 	default
 	eautoreconf
