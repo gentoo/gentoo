@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa"
 
 RDEPEND="
 	>=dev-python/multidict-4.0[${PYTHON_USEDEP}]
