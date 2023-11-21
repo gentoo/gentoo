@@ -1,22 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit vdr-plugin-2
+inherit user-info vdr-plugin-2
 
 VERSION="2028" # every bump, new version!
 
 DESCRIPTION="VDR Plugin: burn records on DVD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-burn"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
+S="${WORKDIR}/${P#vdr-}"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="dvdarchive"
 
-DEPEND="media-libs/gd[png,truetype,jpeg]
+BDEPEND="acct-user/vdr"
+DEPEND="${BDEPEND}
+	dev-libs/boost
+	media-libs/gd[png,truetype,jpeg]
 	media-video/vdr"
 RDEPEND="${DEPEND}
 	app-cdr/dvd+rw-tools
@@ -28,27 +32,15 @@ RDEPEND="${DEPEND}
 	media-video/transcode
 	sys-apps/util-linux"
 
-# depends that are not rdepend
-DEPEND="${DEPEND}
-		dev-libs/boost"
-
-S="${WORKDIR}/${P#vdr-}"
+PATCHES=( "${FILESDIR}"/${P}_gentoo-path.patch
+	"${FILESDIR}"/${P}_setdefaults.patch
+	"${FILESDIR}"/${P}_dmh-archive.patch )
+QA_FLAGS_IGNORED="
+	usr/lib/vdr/plugins/libvdr-.*
+	usr/lib64/vdr/plugins/libvdr-.*"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
-
-	eapply \
-		"${FILESDIR}"/${P}_gentoo-path.patch \
-		"${FILESDIR}"/${P}_setdefaults.patch \
-		"${FILESDIR}"/${P}_dmh-archive.patch
-
-	if use dvdarchive; then
-		sed -i Makefile \
-		-e "s:#ENABLE_DMH_ARCHIVE:ENABLE_DMH_ARCHIVE:" || die
-	fi
-
-	sed -i Makefile \
-		-e 's:^ISODIR=.*$:ISODIR=/var/vdr/video/dvd-images:' || die
 
 	sed -i Makefile -e 's:DEFINES += -DTTXT_SUBTITLES:#DEFINES += -DTTXT_SUBTITLES:' || die
 
@@ -69,6 +61,14 @@ src_prepare() {
 	fix_vdr_libsi_include scanner.c
 }
 
+src_compile() {
+	local vdr_user_home=$(egethome vdr)
+	BUILD_PARAMS="BURN_ISODIR=${vdr_user_home}/video/dvd-images"
+	use dvdarchive && BUILD_PARAMS+=" ENABLE_DMH_ARCHIVE=1"
+
+	vdr-plugin-2_src_compile
+}
+
 src_install() {
 	vdr-plugin-2_src_install
 
@@ -86,6 +86,9 @@ src_install() {
 	doins "${S}/config/counters/standard"
 
 	fowners -R vdr:vdr /usr/share/vdr/burn
+
+	insinto /usr/share/vdr/plugins
+	dosym ../burn /usr/share/vdr/plugins/burn
 }
 
 pkg_preinst() {
