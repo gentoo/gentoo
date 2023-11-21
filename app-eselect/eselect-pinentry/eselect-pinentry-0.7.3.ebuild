@@ -14,7 +14,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 RDEPEND=">=app-eselect/eselect-lib-bin-symlink-0.1.1"
 
 src_install() {
-	default
 	insinto /usr/share/eselect/modules
 	newins "${FILESDIR}"/pinentry.eselect-${PV} pinentry.eselect
 }
