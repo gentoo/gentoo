@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 virtualx xdg-utils
 
@@ -62,13 +62,15 @@ python_test() {
 		tests/unit/media/test_player.py::PlayerTestCase::test_pause_resume
 		tests/unit/test_clock_freq.py::test_elapsed_time_between_tick
 	)
-	if [[ ${EPYTHON} == python3.11 ]]; then
-		EPYTEST_DESELECT+=(
-			# broken test
-			# https://github.com/pyglet/pyglet/issues/606
-			tests/unit/test_events.py::test_push_handlers_instance
-		)
-	fi
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# https://github.com/pyglet/pyglet/issues/1000
+				tests/unit/test_events.py::test_weakref_to_instance{,_method}
+				tests/unit/test_events.py::test_weakref_deleted_when_instance_is_deleted
+			)
+			;;
+	esac
 
 	# Specify path to avoid running interactive tests
 	# We could add in integration tests, but they're slow
