@@ -105,7 +105,11 @@ BDEPEND="${PYTHON_DEPS}
 	ppc64? ( >=dev-util/gn-0.1807 )
 "
 
-PATCHES=( "${WORKDIR}/${PATCHSET}" )
+PATCHES=(
+	"${WORKDIR}/${PATCHSET}"
+	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.5.3-icu74.patch
+)
 
 qtwebengine_check-reqs() {
 	# bug #307861
