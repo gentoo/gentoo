@@ -107,6 +107,11 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=( "${WORKDIR}/${PATCHSET}" )
 
+PATCHES+=(
+	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.5.3-icu74.patch
+)
+
 qtwebengine_check-reqs() {
 	# bug #307861
 	eshopts_push -s extglob
