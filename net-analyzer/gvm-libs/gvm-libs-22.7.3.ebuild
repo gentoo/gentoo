@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error
 	>=dev-libs/libxml2-2.0:2
-	>=net-libs/gnutls-3.2.15
+	>=net-libs/gnutls-3.2.15:=
 	net-libs/libnet:1.1
 	net-libs/libpcap
 	>=net-libs/libssh-0.6.0:=
