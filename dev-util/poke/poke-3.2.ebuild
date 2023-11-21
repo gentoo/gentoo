@@ -60,6 +60,13 @@ BDEPEND="
 
 SITEFILE="50${PN}-gentoo.el"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# FP, bug #123456
+	MIN # gl_MINMAX
+	static_assert # gl_ASSERT_H
+	alignof # gl_STDALIGN_H
+)
+
 pkg_pretend() {
 	if use pvm-profiling && ! tc-is-gcc; then
 		die "USE=pvm-profiling requires GCC"

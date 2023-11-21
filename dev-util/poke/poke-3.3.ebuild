@@ -58,6 +58,13 @@ BDEPEND="
 	)
 "
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# FP, bug #123456
+	MIN # gl_MINMAX
+	static_assert # gl_ASSERT_H
+	alignof # gl_STDALIGN_H
+)
+
 SITEFILE="50${PN}-gentoo.el"
 
 pkg_pretend() {
