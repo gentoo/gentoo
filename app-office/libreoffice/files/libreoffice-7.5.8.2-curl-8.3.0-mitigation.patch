@@ -1,0 +1,316 @@
+From 045bef390a025c3615d904524bf5ee21fa697ca4 Mon Sep 17 00:00:00 2001
+From: Michael Stahl <michael.stahl@allotropia.de>
+Date: Fri, 3 Nov 2023 20:16:09 +0100
+Subject: [PATCH] curl: mitigate migration to OpenSSL on Linux
+
+The problem is that curl 8.3.0 removed the NSS backend, so we now
+have no other choice than to use the bundled OpenSSL on Linux.
+
+Currently any curl https connection fails with:
+
+  CurlSession.cxx:963: curl_easy_perform failed: (60) SSL certificate problem: unable to get local issuer certificate
+
+Apparently this requires manually telling curl which CA certificates to
+trust; there is a configure flag --with-ca-bundle but that is useless as
+it tries to load the file relative to whatever is the current working
+directory, and also did i mention that there are at least 3 different
+locations where a Linux system may store its system trusted CA
+certificates because ALL ABOUT CHOICE.
+
+So add a new header with an init function to try out various file
+locations listed in this nice blog article and call it from way too many
+places that independently use curl.
+
+https://www.happyassassin.net/posts/2015/01/12/a-note-about-ssltls-trusted-certificate-stores-and-platforms/
+
+TODO: perhaps bundle a cacert.pem as a fallback in case the system chose
+to innovate by putting its certificates in yet another unexpected place
+
+(regression from commit c2930ebff82c4f7ffe8377ab82627131f8544226)
+
+Change-Id: Ibf1cc0069bc2ae011ecead9a4c2b455e94b01241
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/158915
+Tested-by: Jenkins
+Reviewed-by: Michael Stahl <michael.stahl@allotropia.de>
+(cherry picked from commit 11f439b861922b9286b2e47ed326f3508a48d44e)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/159125
+Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
+---
+ desktop/source/app/updater.cxx                |  4 ++
+ desktop/source/minidump/minidump.cxx          |  4 ++
+ extensions/source/update/check/download.cxx   |  4 ++
+ include/curlinit.hxx                          | 59 +++++++++++++++++++
+ .../languagetool/languagetoolimp.cxx          |  5 ++
+ linguistic/source/translate.cxx               |  4 ++
+ svl/source/crypto/cryptosign.cxx              |  6 ++
+ ucb/source/ucp/cmis/cmis_content.cxx          |  5 ++
+ ucb/source/ucp/ftp/ftploaderthread.cxx        |  4 ++
+ ucb/source/ucp/webdav-curl/CurlSession.cxx    |  2 +
+ 10 files changed, 97 insertions(+)
+ create mode 100644 include/curlinit.hxx
+
+diff --git a/desktop/source/app/updater.cxx b/desktop/source/app/updater.cxx
+index 5fb18dfad0bf8..4e4d2cda413ff 100644
+--- a/desktop/source/app/updater.cxx
++++ b/desktop/source/app/updater.cxx
+@@ -37,6 +37,8 @@
+ #include <orcus/json_document_tree.hpp>
+ #include <orcus/config.hpp>
+ #include <orcus/pstring.hpp>
++
++#include <curlinit.hxx>
+ #include <comphelper/hash.hxx>
+ 
+ #include <com/sun/star/container/XNameAccess.hpp>
+@@ -546,6 +548,8 @@ std::string download_content(const OString& rURL, bool bFile, OUString& rHash)
+     if (!curl)
+         return std::string();
+ 
++    ::InitCurl_easy(curl.get());
++
+     curl_easy_setopt(curl.get(), CURLOPT_URL, rURL.getStr());
+     curl_easy_setopt(curl.get(), CURLOPT_USERAGENT, kUserAgent);
+     bool bUseProxy = false;
+diff --git a/desktop/source/minidump/minidump.cxx b/desktop/source/minidump/minidump.cxx
+index 0bf20f2aa419e..7fbb0884987d8 100644
+--- a/desktop/source/minidump/minidump.cxx
++++ b/desktop/source/minidump/minidump.cxx
+@@ -17,6 +17,8 @@
+ 
+ #include <curl/curl.h>
+ 
++#include <curlinit.hxx>
++
+ #ifdef _WIN32
+ #include <memory>
+ #include <windows.h>
+@@ -95,6 +97,8 @@ static bool uploadContent(std::map<std::string, std::string>& parameters, std::s
+     if (!curl)
+         return false;
+ 
++    ::InitCurl_easy(curl);
++
+     std::string proxy, proxy_user_pwd, ca_certificate_file, file, url, version;
+ 
+     getProperty("Proxy", proxy, parameters);
+diff --git a/extensions/source/update/check/download.cxx b/extensions/source/update/check/download.cxx
+index ba371bdee570b..cdbbe2c327343 100644
+--- a/extensions/source/update/check/download.cxx
++++ b/extensions/source/update/check/download.cxx
+@@ -23,6 +23,8 @@
+ 
+ #include <curl/curl.h>
+ 
++#include <curlinit.hxx>
++
+ #include <o3tl/string_view.hxx>
+ #include <osl/diagnose.h>
+ #include <osl/file.h>
+@@ -222,6 +224,8 @@ static bool curl_run(std::u16string_view rURL, OutData& out, const OString& aPro
+ 
+     if( nullptr != pCURL )
+     {
++        ::InitCurl_easy(pCURL);
++
+         out.curl = pCURL;
+ 
+         OString aURL(OUStringToOString(rURL, RTL_TEXTENCODING_UTF8));
+diff --git a/include/curlinit.hxx b/include/curlinit.hxx
+new file mode 100644
+index 0000000000000..8b3a9968419da
+--- /dev/null
++++ b/include/curlinit.hxx
+@@ -0,0 +1,59 @@
++/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; fill-column: 100 -*- */
++/*
++ * This file is part of the LibreOffice project.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
++ */
++
++#pragma once
++
++#include <curl/curl.h>
++
++#if defined(LINUX) && !defined(SYSTEM_CURL)
++#include <com/sun/star/uno/RuntimeException.hpp>
++
++#include <unistd.h>
++
++static char const* GetCABundleFile()
++{
++    // try system ones first; inspired by:
++    // https://www.happyassassin.net/posts/2015/01/12/a-note-about-ssltls-trusted-certificate-stores-and-platforms/
++    auto const candidates = {
++        "/etc/pki/tls/certs/ca-bundle.crt",
++        "/etc/pki/tls/certs/ca-bundle.trust.crt",
++        "/etc/ssl/certs/ca-certificates.crt",
++        "/var/lib/ca-certificates/ca-bundle.pem",
++    };
++    for (char const* const candidate : candidates)
++    {
++        if (access(candidate, R_OK) == 0)
++        {
++            return candidate;
++        }
++    }
++
++    throw css::uno::RuntimeException("no OpenSSL CA certificate bundle found");
++}
++
++static void InitCurl_easy(CURL* const pCURL)
++{
++    char const* const path = GetCABundleFile();
++    auto rc = curl_easy_setopt(pCURL, CURLOPT_CAINFO, path);
++    if (rc != CURLE_OK) // only if OOM?
++    {
++        throw css::uno::RuntimeException("CURLOPT_CAINFO failed");
++    }
++}
++
++#else
++
++static void InitCurl_easy(CURL* const)
++{
++    // these don't use OpenSSL so CAs work out of the box
++}
++
++#endif
++
++/* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
+diff --git a/lingucomponent/source/spellcheck/languagetool/languagetoolimp.cxx b/lingucomponent/source/spellcheck/languagetool/languagetoolimp.cxx
+index 4fa88ac0118f4..455fa12803d51 100644
+--- a/lingucomponent/source/spellcheck/languagetool/languagetoolimp.cxx
++++ b/lingucomponent/source/spellcheck/languagetool/languagetoolimp.cxx
+@@ -35,6 +35,9 @@
+ #include <boost/property_tree/json_parser.hpp>
+ #include <algorithm>
+ #include <string_view>
++
++#include <curlinit.hxx>
++
+ #include <sal/log.hxx>
+ #include <svtools/languagetoolcfg.hxx>
+ #include <tools/color.hxx>
+@@ -336,6 +339,8 @@ std::string LanguageToolGrammarChecker::makeHttpRequest(std::string_view aURL, H
+     if (!curl)
+         return {}; // empty string
+ 
++    ::InitCurl_easy(curl.get());
++
+     bool isPremium = false;
+     SvxLanguageToolOptions& rLanguageOpts = SvxLanguageToolOptions::Get();
+     OString apiKey = OUStringToOString(rLanguageOpts.getApiKey(), RTL_TEXTENCODING_UTF8);
+diff --git a/linguistic/source/translate.cxx b/linguistic/source/translate.cxx
+index 12f5491e21297..fdd95fca2988e 100644
+--- a/linguistic/source/translate.cxx
++++ b/linguistic/source/translate.cxx
+@@ -4,6 +4,7 @@
+ #include <rtl/string.h>
+ #include <boost/property_tree/ptree.hpp>
+ #include <boost/property_tree/json_parser.hpp>
++#include <curlinit.hxx>
+ #include <vcl/htmltransferable.hxx>
+ #include <tools/long.hxx>
+ 
+@@ -16,6 +17,9 @@ OString Translate(const OString& rTargetLang, const OString& rAPIUrl, const OStr
+ 
+     std::unique_ptr<CURL, std::function<void(CURL*)>> curl(curl_easy_init(),
+                                                            [](CURL* p) { curl_easy_cleanup(p); });
++
++    ::InitCurl_easy(curl.get());
++
+     (void)curl_easy_setopt(curl.get(), CURLOPT_URL, rAPIUrl.getStr());
+     (void)curl_easy_setopt(curl.get(), CURLOPT_FAILONERROR, 1L);
+     (void)curl_easy_setopt(curl.get(), CURLOPT_TIMEOUT, CURL_TIMEOUT);
+diff --git a/svl/source/crypto/cryptosign.cxx b/svl/source/crypto/cryptosign.cxx
+index 1d63378455690..b5e2eb0155e13 100644
+--- a/svl/source/crypto/cryptosign.cxx
++++ b/svl/source/crypto/cryptosign.cxx
+@@ -15,6 +15,10 @@
+ #include <svl/sigstruct.hxx>
+ #include <config_crypto.h>
+ 
++#if USE_CRYPTO_NSS
++#include <curlinit.hxx>
++#endif
++
+ #include <rtl/character.hxx>
+ #include <rtl/strbuf.hxx>
+ #include <rtl/string.hxx>
+@@ -1081,6 +1085,8 @@ bool Signing::Sign(OStringBuffer& rCMSHexBuffer)
+             return false;
+         }
+ 
++        ::InitCurl_easy(curl);
++
+         SAL_INFO("svl.crypto", "Setting curl to verbose: " << (curl_easy_setopt(curl, CURLOPT_VERBOSE, 1) == CURLE_OK ? "OK" : "FAIL"));
+ 
+         if ((rc = curl_easy_setopt(curl, CURLOPT_URL, OUStringToOString(m_aSignTSA, RTL_TEXTENCODING_UTF8).getStr())) != CURLE_OK)
+diff --git a/ucb/source/ucp/cmis/cmis_content.cxx b/ucb/source/ucp/cmis/cmis_content.cxx
+index 0bd38ea31f651..2ec1c336a706b 100644
+--- a/ucb/source/ucp/cmis/cmis_content.cxx
++++ b/ucb/source/ucp/cmis/cmis_content.cxx
+@@ -56,6 +56,8 @@
+ #include <ucbhelper/proxydecider.hxx>
+ #include <ucbhelper/macros.hxx>
+ #include <sax/tools/converter.hxx>
++#include <curlinit.hxx>
++
+ #include <utility>
+ 
+ #include "auth_provider.hxx"
+@@ -335,6 +337,9 @@ namespace cmis
+                     new CertValidationHandler( xEnv, m_xContext, aBindingUrl.GetHost( ) ) );
+             libcmis::SessionFactory::setCertificateValidationHandler( certHandler );
+ 
++            // init libcurl callback
++            libcmis::SessionFactory::setCurlInitProtocolsFunction(&::InitCurl_easy);
++
+             // Get the auth credentials
+             AuthProvider aAuthProvider(xEnv, m_xIdentifier->getContentIdentifier(), m_aURL.getBindingUrl());
+             AuthProvider::setXEnv( xEnv );
+diff --git a/ucb/source/ucp/ftp/ftploaderthread.cxx b/ucb/source/ucp/ftp/ftploaderthread.cxx
+index f5ebfe36cdda5..91130fc1bc9cf 100644
+--- a/ucb/source/ucp/ftp/ftploaderthread.cxx
++++ b/ucb/source/ucp/ftp/ftploaderthread.cxx
+@@ -25,6 +25,8 @@
+ #include "ftploaderthread.hxx"
+ #include "curl.hxx"
+ 
++#include <curlinit.hxx>
++
+ using namespace ftp;
+ 
+ 
+@@ -75,6 +77,8 @@ CURL* FTPLoaderThread::handle() {
+     if(!ret) {
+         ret = curl_easy_init();
+         if (ret != nullptr) {
++            ::InitCurl_easy(ret);
++
+             // Make sure curl is not internally using environment variables like
+             // "ftp_proxy":
+             if (curl_easy_setopt(ret, CURLOPT_PROXY, "") != CURLE_OK) {
+diff --git a/ucb/source/ucp/webdav-curl/CurlSession.cxx b/ucb/source/ucp/webdav-curl/CurlSession.cxx
+index 4839a1f85e03d..346d58b5969d5 100644
+--- a/ucb/source/ucp/webdav-curl/CurlSession.cxx
++++ b/ucb/source/ucp/webdav-curl/CurlSession.cxx
+@@ -34,6 +34,7 @@
+ #include <rtl/uri.hxx>
+ #include <rtl/strbuf.hxx>
+ #include <rtl/ustrbuf.hxx>
++#include <curlinit.hxx>
+ #include <config_version.h>
+ 
+ #include <map>
+@@ -679,6 +680,7 @@ CurlSession::CurlSession(uno::Reference<uno::XComponentContext> xContext,
+     assert(rc == CURLE_OK);
+     rc = curl_easy_setopt(m_pCurl.get(), CURLOPT_HEADERFUNCTION, &header_callback);
+     assert(rc == CURLE_OK);
++    ::InitCurl_easy(m_pCurl.get());
+     // tdf#149921 by default, with schannel (WNT) connection fails if revocation
+     // lists cannot be checked; try to limit the checking to when revocation
+     // lists can actually be retrieved (usually not the case for self-signed CA)

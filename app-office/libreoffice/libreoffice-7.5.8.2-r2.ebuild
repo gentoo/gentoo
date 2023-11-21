@@ -298,6 +298,9 @@ PATCHES=(
 	# maybe upstreamable
 	"${FILESDIR}/libreoffice-7.5.8.2-icu-74-compatibility.patch"
 
+	# 7.5.9.1
+	"${FILESDIR}/${P}-curl-8.3.0-mitigation.patch" # bug 891903(?)
+
 	# git master
 	"${WORKDIR}/${PN}-7.5.2.2-loong-buildsys-fix.patch"
 	"${FILESDIR}/${PN}-7.5.6.2-gcc-14.patch"
