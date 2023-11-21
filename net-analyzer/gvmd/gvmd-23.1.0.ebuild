@@ -21,9 +21,9 @@ DEPEND="
 	dev-libs/libbsd
 	>=dev-db/postgresql-9.6:=[uuid]
 	>=dev-libs/glib-2.42:2
-	>=dev-libs/libical-1.0.0
+	>=dev-libs/libical-1.0.0:=
 	>=net-analyzer/gvm-libs-22.7
-	>=net-libs/gnutls-3.2.15[tools]
+	>=net-libs/gnutls-3.2.15:=[tools]
 "
 
 # gvmd (optionally) uses xml_split from XML-Twig at runtime. And texlive
