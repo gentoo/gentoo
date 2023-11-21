@@ -80,10 +80,14 @@ python_test() {
 
 	case ${EPYTHON} in
 		pypy3)
-			EPYTEST_DESELECT+=(
-				# https://foss.heptapod.net/pypy/pypy/-/issues/4032
-				sympy/tensor/array/tests/test_array_comprehension.py::test_arraycomprehensionmap
-			)
+			if has_version "<dev-python/pypy3_10-exe-7.3.13_p2" ||
+				has_version "<dev-python/pypy3_10-exe-bin-7.3.13_p2"
+			then
+				EPYTEST_DESELECT+=(
+					# https://foss.heptapod.net/pypy/pypy/-/issues/4032
+					sympy/tensor/array/tests/test_array_comprehension.py::test_arraycomprehensionmap
+				)
+			fi
 			;;
 	esac
 
