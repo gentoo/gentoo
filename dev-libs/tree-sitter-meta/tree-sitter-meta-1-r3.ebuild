@@ -27,7 +27,6 @@ RDEPEND="
 	dev-libs/tree-sitter-jsdoc
 	dev-libs/tree-sitter-json
 	dev-libs/tree-sitter-julia
-	dev-libs/tree-sitter-meta
 	dev-libs/tree-sitter-ocaml
 	dev-libs/tree-sitter-php
 	dev-libs/tree-sitter-python
