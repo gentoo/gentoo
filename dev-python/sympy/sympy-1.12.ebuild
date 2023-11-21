@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 virtualx
 
@@ -77,6 +77,15 @@ python_test() {
 		sympy/solvers/ode/tests/test_systems.py::test_nonlinear_3eq_order1_type1
 		sympy/solvers/ode/tests/test_systems.py::test_nonlinear_3eq_order1_type3
 	)
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# https://foss.heptapod.net/pypy/pypy/-/issues/4032
+				sympy/tensor/array/tests/test_array_comprehension.py::test_arraycomprehensionmap
+			)
+			;;
+	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	nonfatal epytest --veryquickcheck ||
