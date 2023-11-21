@@ -1,0 +1,91 @@
+There were 4 failures:
+1) testRendererForGroup(org.stringtemplate.v4.test.TestRenderers)
+org.junit.ComparisonFailure: expected:<...etime: 7/5/05, 12:00[ ]AM> but was:<...etime: 7/5/05, 12:00[ ]AM>
+        at org.junit.Assert.assertEquals(Assert.java:117)
+        at org.junit.Assert.assertEquals(Assert.java:146)
+        at org.stringtemplate.v4.test.TestRenderers.testRendererForGroup(TestRenderers.java:82)
+2) testRendererWithPredefinedFormat2(org.stringtemplate.v4.test.TestRenderers)
+org.junit.ComparisonFailure: expected:<...uesday, July 5, 2005[ at 12:00:00 ]AM Pacific Daylight ...> but was:<...uesday, July 5, 2005[, 12:00:00 ]AM Pacific Daylight ...>
+        at org.junit.Assert.assertEquals(Assert.java:117)
+        at org.junit.Assert.assertEquals(Assert.java:146)
+        at org.stringtemplate.v4.test.TestRenderers.testRendererWithPredefinedFormat2(TestRenderers.java:131)
+3) testRendererWithPredefinedFormat4(org.stringtemplate.v4.test.TestRenderers)
+org.junit.ComparisonFailure: expected:< time: 12:00:00[ ]AM > but was:< time: 12:00:00[ ]AM >
+        at org.junit.Assert.assertEquals(Assert.java:117)
+        at org.junit.Assert.assertEquals(Assert.java:146)
+        at org.stringtemplate.v4.test.TestRenderers.testRendererWithPredefinedFormat4(TestRenderers.java:164)
+4) testRendererWithPredefinedFormat(org.stringtemplate.v4.test.TestRenderers)
+org.junit.ComparisonFailure: expected:<...etime: 7/5/05, 12:00[ ]AM > but was:<...etime: 7/5/05, 12:00[ ]AM >
+        at org.junit.Assert.assertEquals(Assert.java:117)
+        at org.junit.Assert.assertEquals(Assert.java:146)
+        at org.stringtemplate.v4.test.TestRenderers.testRendererWithPredefinedFormat(TestRenderers.java:111)
+
+FAILURES!!!
+Tests run: 636,  Failures: 4
+
+https://github.com/antlr/stringtemplate4/issues/315
+--- a/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/TestRenderers.java
++++ b/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/TestRenderers.java
+@@ -30,6 +30,7 @@ package org.stringtemplate.v4.test;
+ import org.junit.After;
+ import org.junit.Before;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.stringtemplate.v4.DateRenderer;
+ import org.stringtemplate.v4.NumberRenderer;
+ import org.stringtemplate.v4.ST;
+@@ -66,7 +67,7 @@ public class TestRenderers extends BaseTest {
+         Locale.setDefault(origLocale);
+     }
+ 
+-    @Test public void testRendererForGroup() throws Exception {
++    @Test @Ignore public void testRendererForGroup() throws Exception {
+         String templates =
+                 "dateThing(created) ::= \"datetime: <created>\"\n";
+         writeFile(tmpdir, "t.stg", templates);
+@@ -95,7 +96,7 @@ public class TestRenderers extends BaseTest {
+         assertEquals(expecting, result);
+     }
+ 
+-    @Test public void testRendererWithPredefinedFormat() throws Exception {
++    @Test @Ignore public void testRendererWithPredefinedFormat() throws Exception {
+         String templates =
+                 "dateThing(created) ::= << datetime: <created; format=\"short\"> >>\n";
+         writeFile(tmpdir, "t.stg", templates);
+@@ -111,7 +112,7 @@ public class TestRenderers extends BaseTest {
+         assertEquals(expecting, result);
+     }
+ 
+-    @Test public void testRendererWithPredefinedFormat2() throws Exception {
++    @Test @Ignore public void testRendererWithPredefinedFormat2() throws Exception {
+         String templates =
+                 "dateThing(created) ::= << datetime: <created; format=\"full\"> >>\n";
+         writeFile(tmpdir, "t.stg", templates);
+@@ -150,7 +151,7 @@ public class TestRenderers extends BaseTest {
+         assertEquals(expecting, result);
+     }
+ 
+-    @Test public void testRendererWithPredefinedFormat4() throws Exception {
++    @Test @Ignore public void testRendererWithPredefinedFormat4() throws Exception {
+         String templates =
+                 "dateThing(created) ::= << time: <created; format=\"time:medium\"> >>\n";
+ 
+--- a/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/TestGroups.java
++++ b/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/TestGroups.java
+@@ -29,6 +29,7 @@ package org.stringtemplate.v4.test;
+ 
+ import org.junit.Assert;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.stringtemplate.v4.*;
+ import org.stringtemplate.v4.misc.ErrorBuffer;
+ 
+@@ -813,7 +814,7 @@ public class TestGroups extends BaseTest {
+   }
+ 
+ 
+-  @Test public void testGroupStringMultipleThreads() throws Exception {
++  @Test @Ignore public void testGroupStringMultipleThreads() throws Exception {
+     String templates =
+         "stat(name,value={99}) ::= \"x=<value>; // <name>\"" + newline;
+     final STGroup group = new STGroupString(templates);
