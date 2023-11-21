@@ -300,6 +300,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.0-fix-protobuf.patch
 	"${FILESDIR}"/${PN}-4.8.0-fix-flatbuffer.patch
 	"${FILESDIR}"/${PN}-4.8.0-arm64-fp16.patch
+	"${FILESDIR}"/${PN}-4.8.0-fix-cuda-12.2.0.patch
 )
 
 pkg_pretend() {

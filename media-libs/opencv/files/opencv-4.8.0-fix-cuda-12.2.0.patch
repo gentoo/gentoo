@@ -1,0 +1,40 @@
+https://github.com/opencv/opencv/pull/24104
+https://github.com/opencv/opencv/commit/5466fd2606ca6df57bbe43f064d2ae73fe4329eb
+https://bugs.gentoo.org/915775
+
+From ab8cb6f8a9034da2a289b84685c6d959266029be Mon Sep 17 00:00:00 2001
+From: cudawarped <12133430+cudawarped@users.noreply.github.com>
+Date: Tue, 1 Aug 2023 13:02:42 +0300
+Subject: [PATCH] cuda: fix for compatibility with CUDA Toolkit >= 12.2.0
+
+---
+ modules/dnn/src/cuda4dnn/primitives/normalize_bbox.hpp | 2 +-
+ modules/dnn/src/cuda4dnn/primitives/region.hpp         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/dnn/src/cuda4dnn/primitives/normalize_bbox.hpp b/modules/dnn/src/cuda4dnn/primitives/normalize_bbox.hpp
+index f067dddaa701..91ff33f81718 100644
+--- a/modules/dnn/src/cuda4dnn/primitives/normalize_bbox.hpp
++++ b/modules/dnn/src/cuda4dnn/primitives/normalize_bbox.hpp
+@@ -111,7 +111,7 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+              * or there might be several weights
+              * or we don't have to scale
+              */
+-            if (weight != 1.0)
++            if (weight != static_cast<T>(1.0f))
+             {
+                 kernels::scale1_with_bias1<T>(stream, output, input, weight, 1.0);
+             }
+diff --git a/modules/dnn/src/cuda4dnn/primitives/region.hpp b/modules/dnn/src/cuda4dnn/primitives/region.hpp
+index d22d44214e7b..3af05155feea 100644
+--- a/modules/dnn/src/cuda4dnn/primitives/region.hpp
++++ b/modules/dnn/src/cuda4dnn/primitives/region.hpp
+@@ -121,7 +121,7 @@ namespace cv { namespace dnn { namespace cuda4dnn {
+                 new_coords
+             );
+ 
+-            if (nms_iou_threshold > 0) {
++            if (nms_iou_threshold > static_cast<T>(0.0f)) {
+                 auto output_mat = output_wrapper->getMutableHostMat();
+                 CV_Assert(output_mat.type() == CV_32F);
+                 for (int i = 0; i < input.get_axis_size(0); i++) {
