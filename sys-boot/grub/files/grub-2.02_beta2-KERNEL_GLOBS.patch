@@ -62,13 +62,15 @@ index 859b608..e5ac11d 100644
  
  case "$machine" in
      i?86) GENKERNEL_ARCH="x86" ;;
---- a/util/grub-mkconfig.in
-+++ b/util/grub-mkconfig.in
-@@ -252,6 +252,7 @@
+--- a/util/grub-mkconfig.in	2023-11-16 15:20:02.326386360 -0800
++++ b/util/grub-mkconfig.in	2023-11-16 15:20:50.271572593 -0800
+@@ -251,7 +251,8 @@
+   GRUB_ENABLE_CRYPTODISK \
    GRUB_BADRAM \
    GRUB_OS_PROBER_SKIP_LIST \
-   GRUB_DISABLE_SUBMENU
-+export GRUB_LINUX_KERNEL_GLOBS
+-  GRUB_DISABLE_SUBMENU
++  GRUB_DISABLE_SUBMENU \
++  GRUB_LINUX_KERNEL_GLOBS
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"

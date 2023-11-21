@@ -25,7 +25,7 @@ GRUB_AUTOGEN=1
 GRUB_AUTORECONF=1
 PYTHON_COMPAT=( python3_{8..11} )
 WANT_LIBTOOL=none
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/dkiper.gpg
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 	inherit python-any-r1
@@ -65,8 +65,10 @@ SRC_URI+=" https://dev.gentoo.org/~floppym/dist/${P}-backports-r3.tar.xz"
 PATCHES=(
 	"${WORKDIR}/${P}-backports"
 	"${FILESDIR}"/gfxpayload.patch
-	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/grub-2.06-add-blscfg-module.patch
+	"${FILESDIR}"/grub-2.06-add-devicetree-loading.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
@@ -315,6 +317,8 @@ src_install() {
 pkg_postinst() {
 	elog "For information on how to configure GRUB2 please refer to the guide:"
 	elog "    https://wiki.gentoo.org/wiki/GRUB2_Quick_Start"
+	elog "Add something like the following if you need to set devicetree:"
+	elog "    GRUB_DEFAULT_DTB=marvell/armada-3720-espressobin.dtb"
 
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		local v
