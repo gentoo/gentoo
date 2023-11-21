@@ -15,12 +15,15 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="https://github.com/haskell/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
+DEPEND="test? ( dev-lang/ghc )"
 BDEPEND="sys-apps/texinfo"
 
 ELISP_REMOVE="
