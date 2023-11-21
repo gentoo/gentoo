@@ -18,6 +18,8 @@ SRC_URI="
 	https://repo1.maven.org/maven2/org/antlr/ST4/${PV}/ST4-${PV}-sources.jar
 	https://github.com/antlr/stringtemplate4/archive/ST4-${PV}.tar.gz
 "
+S="${WORKDIR}"
+TARBALL_S="${S}/${PN}4-ST4-${PV}"
 
 LICENSE="BSD"
 SLOT="4"
@@ -44,9 +46,6 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
-S="${WORKDIR}"
-TARBALL_S="${S}/${PN}4-ST4-${PV}"
-
 JAVA_SRC_DIR="org"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,antlr-tool-3.5"
@@ -54,18 +53,13 @@ JAVA_TEST_SRC_DIR="${TARBALL_S}/test"
 JAVA_TEST_RESOURCE_DIRS=( "${TARBALL_S}/test/resources" )
 
 DOCS=( "${TARBALL_S}/"{CHANGES.txt,README.md} )
+PATCHES=( "${FILESDIR}/stringtemplate-4.3.4-BaseTest-javac-source-target.patch" )
 
 src_prepare() {
-	# Do not call java-pkg_clean; otherwise, it would remove
-	# ${TARBALL_S}/test/test.jar, which is merely used as a
-	# test resource file, does not contain any *.class files,
-	# and is required to pass the tests as of version 4.3.2
-	pushd "${TARBALL_S}" > /dev/null ||
-		die "Failed to enter directory storing tarball contents"
-	eapply "${FILESDIR}/${PN}-4.3.1-BaseTest-javac-source-target.patch"
-	popd > /dev/null ||
-		die "Failed to leave directory storing tarball contents"
+	default #780585
 	java-pkg-2_src_prepare
+	# keep test.jar - it is required to pass the tests as of version 4.3.2
+	java-pkg_clean ! -path */test.jar
 	# Some of these tests requires a graphical display.
 	rm -v "${JAVA_TEST_SRC_DIR}/org/stringtemplate/v4/test/TestEarlyEvaluation.java" || die
 }
@@ -99,9 +93,4 @@ src_test() {
 		JAVA_GENTOO_CLASSPATH_EXTRA+=":"
 	JAVA_GENTOO_CLASSPATH_EXTRA+="${new_test_cp}"
 	java-pkg-simple_src_test
-}
-
-src_install() {
-	java-pkg-simple_src_install
-	einstalldocs # https://bugs.gentoo.org/789582
 }
