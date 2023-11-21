@@ -69,11 +69,11 @@ IUSE+=" +telemetry valgrind wayland wifi +X"
 # Firefox-only IUSE
 IUSE+=" geckodriver +gmp-autoupdate screencast"
 
-# jumbo-build? ( system-icu ): build failure on firefox-120:
+# "-jumbo-build +system-icu": build failure on firefox-120:
 #   firefox-120.0/intl/components/src/TimeZone.cpp:345:3: error: use of undeclared identifier 'MOZ_TRY'
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
-	jumbo-build? ( system-icu )
+	!jumbo-build? ( !system-icu )
 	pgo? ( lto )
 	wifi? ( dbus )"
 
