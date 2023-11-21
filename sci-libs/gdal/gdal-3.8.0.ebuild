@@ -101,6 +101,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
 	"${FILESDIR}"/${PN}-3.7.0-zlib-OF.patch
+	"${FILESDIR}"/${P}-libxml2-2.12-{1,2}.patch # bug 917564
 )
 
 pkg_setup() {

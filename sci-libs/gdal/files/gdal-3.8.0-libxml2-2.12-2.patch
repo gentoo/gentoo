@@ -1,0 +1,27 @@
+From ec33f6d6dfe944f59dc5454d01b4d000d9479c02 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sat, 18 Nov 2023 16:33:25 +0100
+Subject: [PATCH] Fix build error with libxml2 2.12 (cont'd)
+
+---
+ gcore/gdaljp2metadatagenerator.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/gcore/gdaljp2metadatagenerator.cpp b/gcore/gdaljp2metadatagenerator.cpp
+index b6caa2db9def..751fa3d5e9dd 100644
+--- a/gcore/gdaljp2metadatagenerator.cpp
++++ b/gcore/gdaljp2metadatagenerator.cpp
+@@ -357,7 +357,12 @@ static CPLString GDALGMLJP2EvalExpr(const CPLString &osTemplate,
+ /************************************************************************/
+ 
+ static void GDALGMLJP2XPathErrorHandler(void * /* userData */,
+-                                        xmlErrorPtr error)
++#if LIBXML_VERSION >= 21200
++                                        const xmlError *error
++#else
++                                        xmlErrorPtr error
++#endif
++)
+ {
+     if (error->domain == XML_FROM_XPATH && error->str1 != nullptr &&
+         error->int1 < static_cast<int>(strlen(error->str1)))
