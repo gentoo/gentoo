@@ -73,7 +73,11 @@ src_test() {
 python_test() {
 	local EPYTEST_DESELECT=()
 	if [[ ${EPYTHON} == pypy3 ]] &&
-		has_version "dev-python/pyxattr[${PYTHON_USEDEP}]"
+		has_version "dev-python/pyxattr[${PYTHON_USEDEP}]" &&
+		{
+			has_version "<dev-python/pypy3_10-exe-7.3.13_p2" ||
+			has_version "<dev-python/pypy3_10-exe-bin-7.3.13_p2"
+		}
 	then
 		EPYTEST_DESELECT+=(
 			# affected by a bug in PyPy/pyxattr
