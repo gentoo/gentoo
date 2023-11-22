@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-119-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-120-patches-01.tar.xz"
 
 LLVM_MAX_SLOT=17
 
@@ -663,8 +663,8 @@ src_prepare() {
 	eapply "${WORKDIR}/firefox-patches"
 
 	# Workaround for bgo#917599
-	if has_version ">=dev-libs/icu-74.1" && use system-icu ; then
-		eapply "${FILESDIR}"/firefox-115.4.0-icu-74.patch
+	if use system-icu && ! has_version ">=dev-libs/icu-74.1" ; then
+		rm -v "${WORKDIR}"/firefox-patches/0028-bmo-1862601-system-icu-74.patch || die
 	fi
 
 	# Allow user to apply any additional patches without modifing ebuild
