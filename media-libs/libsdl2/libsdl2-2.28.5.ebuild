@@ -82,6 +82,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	ibus? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
+	test? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
 	vulkan? ( dev-util/vulkan-headers )
 	X? ( x11-base/xorg-proto )
 "
