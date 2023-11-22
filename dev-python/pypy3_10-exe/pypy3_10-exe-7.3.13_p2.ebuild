@@ -37,6 +37,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-python/pypy
+	virtual/pkgconfig
 "
 
 check_env() {
