@@ -260,6 +260,8 @@ src_test() {
 		tst_qwebengineview
 		# certs verfication seems flaky and gives expiration warnings
 		tst_qwebengineclientcertificatestore
+		# test is misperformed when qtbase is built USE=-test?
+		tst_touchinput
 	)
 
 	# prevent using the system's qtwebengine
