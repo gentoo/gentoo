@@ -31,11 +31,11 @@ RDEPEND="
 		>=dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/pycodestyle-2.9.0[${PYTHON_USEDEP}]
 		>=dev-python/pyflakes-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
 		>=dev-python/yapf-0.33.0[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
 			>=dev-python/rope-1.2.0[${PYTHON_USEDEP}]
-			>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
 		' 'python*')
 	)
 "
@@ -44,18 +44,18 @@ BDEPEND="
 		>=dev-python/autopep8-1.6.0[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		>=dev-python/flake8-5.0.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 		>=dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pycodestyle-2.9.0[${PYTHON_USEDEP}]
 		>=dev-python/pyflakes-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
 		>=dev-python/yapf-0.33.0[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/matplotlib[${PYTHON_USEDEP}]
 			dev-python/pandas[${PYTHON_USEDEP}]
-			>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
 			dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]
 			>=dev-python/rope-1.2.0[${PYTHON_USEDEP}]
-			>=dev-python/whatthepatch-1.0.2[${PYTHON_USEDEP}]
 		' 'python*')
 	)
 "
@@ -86,10 +86,7 @@ python_test() {
 		EPYTEST_IGNORE+=(
 			test/plugins/test_autoimport.py
 			test/plugins/test_completion.py
-			test/plugins/test_pylint_lint.py
 			test/plugins/test_rope_rename.py
-			# whatthepatch required for yapf
-			test/plugins/test_yapf_format.py
 		)
 	fi
 
