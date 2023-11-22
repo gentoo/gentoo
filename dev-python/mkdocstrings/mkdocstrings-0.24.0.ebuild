@@ -5,7 +5,7 @@ EAPI=8
 
 # py3.12 blocked by mkdocs-material
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
