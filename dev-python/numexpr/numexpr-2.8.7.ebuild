@@ -30,7 +30,7 @@ RDEPEND="
 "
 
 python_test() {
-	pushd "${BUILD_DIR}/install/usr/lib/${EPYTHON}/site-packages" >/dev/null || die
+	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null || die
 	"${EPYTHON}" - <<-EOF || die "Tests failed with ${EPYTHON}"
 		import sys,numexpr
 		sys.exit(0 if numexpr.test().wasSuccessful() else 1)
