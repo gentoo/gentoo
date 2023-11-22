@@ -104,6 +104,7 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.5.2-libcxx17.patch
 	"${FILESDIR}"/${PN}-6.5.2-cstdint.patch
 	"${FILESDIR}"/${PN}-6.5.3-icu74.patch
+	"${FILESDIR}"/${PN}-6.5.3-libxml2-2.12.patch
 )
 
 python_check_deps() {
