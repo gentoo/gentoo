@@ -9,7 +9,9 @@ DESCRIPTION="Programs for elliptic curves defined over the rational numbers"
 HOMEPAGE="https://github.com/JohnCremona/eclib"
 SRC_URI="https://github.com/JohnCremona/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+# COPYING is GPL-2 but the file headers say "or ... any later version"
+# LGPL-2.1+ is for bundled GetOpt.cc
+LICENSE="GPL-2+ LGPL-2.1+"
 
 SLOT="0/12"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
