@@ -94,7 +94,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	mv "${ED}"/usr/bin/mpg123{,-mpg123}
+	mv "${ED}"/usr/bin/mpg123{,-mpg123} || die
 	find "${ED}" -type f -name '*.la' -delete || die
 }
 
