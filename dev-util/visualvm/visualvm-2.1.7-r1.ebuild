@@ -73,6 +73,11 @@ src_unpack() {
 
 src_prepare() {
 	default
+	# Keep netbeans jar files
+	# Keep jar files needed for tests
+	java-pkg_clean \
+		! -path "./netbeans/**/*.jar" \
+		! -path "./libs.profiler/*/test/**/*.jar"
 
 	# Remove unneeded binaries
 	rm -rv netbeans/platform/lib/*.{dll,exe} \
@@ -109,28 +114,28 @@ src_install() {
 	# replace bundled stuff
 	pushd "${ED}/${INSTALL_DIR}/platform/core" > /dev/null || die
 	for name in asm{,-commons,-tree}; do
-		rm ${name}-9.2.jar && java-pkg_jar-from asm-9 ${name}.jar ${name}-9.2.jar || die
+		java-pkg_jar-from asm-9 ${name}.jar ${name}-9.2.jar || die
 	done
 	popd > /dev/null
 
 	pushd "${ED}/${INSTALL_DIR}/platform/modules/ext" > /dev/null || die
-	rm hamcrest-core-1.3.jar && java-pkg_jar-from hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar || die
-	rm jcommander-1.78.jar && java-pkg_jar-from jcommander jcommander.jar jcommander-1.78.jar || die
+	java-pkg_jar-from hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar || die
+	java-pkg_jar-from jcommander jcommander.jar jcommander-1.78.jar || die
 	for name in jna{,-platform}; do
-		rm ${name}-5.12.1.jar && java-pkg_jar-from jna-4 ${name}.jar ${name}-5.12.1.jar || die
+		java-pkg_jar-from jna-4 ${name}.jar ${name}-5.12.1.jar || die
 	done
-	rm junit-4.13.2.jar && java-pkg_jar-from junit-4 junit.jar junit-4.13.2.jar || die
+	java-pkg_jar-from junit-4 junit.jar junit-4.13.2.jar || die
 	for name in junit-jupiter-{api,engine,params}; do
-		rm ${name}-5.6.0.jar && java-pkg_jar-from junit-5 ${name}.jar ${name}-5.6.0.jar || die
+		java-pkg_jar-from junit-5 ${name}.jar ${name}-5.6.0.jar || die
 	done
-	rm testng-6.14.3.jar && java-pkg_jar-from testng testng.jar testng-6.14.3.jar || die
+	java-pkg_jar-from testng testng.jar testng-6.14.3.jar || die
 	popd > /dev/null
 
 	pushd "${ED}/${INSTALL_DIR}/cluster/modules/ext" > /dev/null || die
-	rm ${COMMON_FILE} && java-pkg_jar-from jmc jmc-common.jar ${COMMON_FILE} || die
-	rm ${FLIGHT_RECORDER_FILE} && java-pkg_jar-from jmc jmc-flightrecorder.jar ${FLIGHT_RECORDER_FILE} || die
-	rm ${LZ4_JAVA_FILE} && java-pkg_jar-from lz4-java lz4-java.jar ${LZ4_JAVA_FILE} || die
-	rm ${ENCODER_FILE} && java-pkg_jar-from owasp-java-encoder owasp-java-encoder.jar ${ENCODER_FILE} || die
+	java-pkg_jar-from jmc jmc-common.jar ${COMMON_FILE} || die
+	java-pkg_jar-from jmc jmc-flightrecorder.jar ${FLIGHT_RECORDER_FILE} || die
+	java-pkg_jar-from lz4-java lz4-java.jar ${LZ4_JAVA_FILE} || die
+	java-pkg_jar-from owasp-java-encoder owasp-java-encoder.jar ${ENCODER_FILE} || die
 	popd > /dev/null
 
 	# visualvm runtime script
