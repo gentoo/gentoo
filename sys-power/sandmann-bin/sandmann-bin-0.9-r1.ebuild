@@ -18,6 +18,7 @@ SLOT="0"
 
 # >=java-config-2.3.2 to get the libdir fix.
 RDEPEND="
+	acct-user/sandmann
 	>=dev-java/java-config-2.3.2
 	sys-apps/systemd
 	sys-auth/polkit
