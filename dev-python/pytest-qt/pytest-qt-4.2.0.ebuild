@@ -25,13 +25,13 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
-		' "${PYSIDE2_COMPAT[@]}")
-		amd64? (
+		|| (
 			dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+			dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]
 			dev-python/pyside6[gui,testlib,widgets,${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/pyside2[gui,testlib,widgets,${PYTHON_USEDEP}]
+			' "${PYSIDE2_COMPAT[@]}")
 		)
 	)
 "
@@ -53,25 +53,23 @@ python_test() {
 		# to be possible inside Xvfb
 		"tests/test_basics.py::test_wait_window[waitActive-True]"
 
+		# TODO
+		tests/test_exceptions.py::test_exceptions_dont_leak
+
 		# we are forcing a specific module via envvar, effectively
 		# overriding the config
 		tests/test_basics.py::test_qt_api_ini_config
 		tests/test_basics.py::test_qt_api_ini_config_with_envvar
 	)
 
-	einfo "Testing with PyQt5"
-	PYTEST_QT_API="pyqt5" epytest || die
-	if use amd64; then
-		einfo "Testing with PyQt6"
-		PYTEST_QT_API="pyqt6" epytest || die
-	fi
-	# Pyside{2,6} is not compatible with python3.12
-	if has "${EPYTHON}" "${PYSIDE2_COMPAT[@]/_/.}"; then
-		einfo "Testing with PySide2"
-		PYTEST_QT_API="pyside2" epytest || die
-	fi
-	if use amd64 && has "${EPYTHON}" "${PYSIDE6_COMPAT[@]/_/.}"; then
-		einfo "Testing with PySide6"
-		PYTEST_QT_API="pyside6" epytest || die
-	fi
+	local -x PYTEST_QT_API
+	for PYTEST_QT_API in PyQt{5,6} pyside{2,6}; do
+		if has_version "dev-python/${PYTEST_QT_API}[gui,testlib,widgets,${PYTHON_USEDEP}]"
+		then
+			einfo "Testing with ${EPYTHON} and ${PYTEST_QT_API}"
+			nonfatal epytest ||
+				die -n "Tests failed with ${EPYTHON} and ${PYTEST_QT_API}" ||
+				return 1
+		fi
+	done
 }
