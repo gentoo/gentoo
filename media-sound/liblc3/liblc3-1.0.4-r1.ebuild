@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10,11,12} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 inherit meson python-any-r1
 
 DESCRIPTION="LC3 is an efficient low latency audio codec"
@@ -16,16 +16,18 @@ IUSE="test tools"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? (
-	$(python_gen_any_dep '
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/scipy[${PYTHON_USEDEP}]
-	')
-)"
+BDEPEND="
+	test? (
+		$(python_gen_any_dep '
+			dev-python/numpy[${PYTHON_USEDEP}]
+			dev-python/scipy[${PYTHON_USEDEP}]
+		')
+	)
+"
 
 python_check_deps() {
-	python_has_version -d "dev-python/numpy[${PYTHON_USEDEP}]" &&
-	python_has_version -d "dev-python/scipy[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/numpy[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/scipy[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
