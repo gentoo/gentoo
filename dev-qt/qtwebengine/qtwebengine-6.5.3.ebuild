@@ -195,7 +195,7 @@ src_configure() {
 		# cooperate with new major ffmpeg versions (bug #831487)
 		-DQT_FEATURE_webengine_system_ffmpeg=OFF
 
-		# preemptively using bundled to avoid complications, may revisit
+		# use bundled re2 to avoid complications, may revisit
 		# (see discussions in https://github.com/gentoo/gentoo/pull/32281)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
