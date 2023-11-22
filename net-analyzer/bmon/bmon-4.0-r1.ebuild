@@ -21,7 +21,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( ChangeLog NEWS README )
+DOCS=( ChangeLog NEWS README.md )
 
 CONFIG_CHECK="~NET_SCHED"
 ERROR_NET_SCHED="
