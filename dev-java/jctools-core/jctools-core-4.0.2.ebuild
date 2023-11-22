@@ -1,13 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/JCTools/JCTools/archive/v4.0.1.tar.gz --slot 3 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild jctools-core-4.0.1.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.jctools:jctools-core:4.0.2"
+MAVEN_ID="org.jctools:jctools-core:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
@@ -15,6 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Java Concurrency Tools Core Library"
 HOMEPAGE="https://jctools.github.io/JCTools/"
 SRC_URI="https://github.com/JCTools/JCTools/archive/v${PV}.tar.gz -> jctools-${PV}.tar.gz"
+S="${WORKDIR}/JCTools-${PV}/jctools-core"
 
 LICENSE="Apache-2.0"
 SLOT="3"
@@ -31,8 +29,6 @@ DEPEND="
 RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=( ../{README,RELEASE-NOTES}.md )
-
-S="${WORKDIR}/JCTools-${PV}/jctools-core"
 
 JAVA_AUTOMATIC_MODULE_NAME="org.jctools.core"
 JAVA_CLASSPATH_EXTRA="osgi-annotation"
