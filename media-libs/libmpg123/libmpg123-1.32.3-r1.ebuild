@@ -31,7 +31,6 @@ BDEPEND="
 	sys-devel/libtool
 	virtual/pkgconfig
 "
-IDEPEND="app-eselect/eselect-mpg123"
 
 DOCS=( AUTHORS ChangeLog NEWS NEWS.libmpg123 README )
 
@@ -93,12 +92,4 @@ multilib_src_install_all() {
 	einstalldocs
 	mv "${ED}"/usr/bin/mpg123{,-mpg123}
 	find "${ED}" -type f -name '*.la' -delete || die
-}
-
-pkg_postinst() {
-	eselect mpg123 update ifunset
-}
-
-pkg_postrm() {
-	eselect mpg123 update ifunset
 }
