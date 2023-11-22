@@ -9,7 +9,7 @@
  #
  #	Tells the script to attach specified leaf queueing discipline to HTB
  #	class. By default, no leaf qdisc is used.
-@@ -261,6 +261,15 @@
+@@ -265,6 +265,15 @@
  #	will never take place which is what you probably don't want. The
  #	default value of 10 seconds is probably a good value.
  #
@@ -25,7 +25,7 @@
  ### PFIFO/BFIFO qdisc parameters
  #
  # Those are simple FIFO queueing disciplines. They only have one parameter
-@@ -427,14 +445,14 @@
+@@ -440,14 +449,14 @@
  
  ### Modules to probe for. Uncomment the last HTB_PROBE
  ### line if you have QoS support compiled into kernel
@@ -42,7 +42,7 @@
  HTB_CLASS="$HTB_CLASS\|TOS"
  
  
-@@ -801,6 +819,8 @@
+@@ -815,6 +824,8 @@
  			LEAFPARM="${PERTURB:+perturb $PERTURB} ${QUANTUM:+quantum $QUANTUM}"
  		elif [ "$LEAF" = "pfifo" -o "$LEAF" = "bfifo" ]; then
  			LEAFPARM="${LIMIT:+limit $LIMIT}"
