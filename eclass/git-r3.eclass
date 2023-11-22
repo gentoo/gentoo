@@ -682,6 +682,8 @@ git-r3_fetch() {
 					# and HEAD in case we need the default branch
 					# (we keep it in refs/git-r3 since otherwise --prune interferes)
 					"+HEAD:refs/git-r3/HEAD"
+					# fetch the specifc commit_ref to deal with orphan commits
+					"${remote_ref}"
 				)
 			else # single or shallow
 				local fetch_l fetch_r
