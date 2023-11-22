@@ -215,9 +215,7 @@ python_test() {
 		QT_API="pyqt6" virtx epytest \
 			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
 			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6] \
-			--deselect qtpy/tests/test_qtsensors.py::test_qtsensors
-			# Qt6Sensors not yet packaged and enabled in PyQt6 ebuild
+			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6]
 	fi
 	if use pyside2; then
 		einfo "Testing with ${EPYTHON} and QT_API=PySide2"
@@ -231,9 +229,7 @@ python_test() {
 		QT_API="pyside6" virtx epytest \
 			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
 			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_qtsensors.py::test_qtsensors
-			# Qt6Sensors not yet packaged and enabled in PySide6 ebuild
+			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6]
 	fi
 }
 
