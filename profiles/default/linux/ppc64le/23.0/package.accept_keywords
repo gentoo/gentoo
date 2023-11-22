@@ -1,0 +1,6 @@
+# Copyright 2022-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-04)
+# only contains critical ieee-long-double patches.
+=sys-libs/glibc-2.36-r7 ~ppc64
