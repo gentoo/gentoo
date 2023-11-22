@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# Broken on <dev-lang/ruby-3.2
+# https://github.com/msgpack/msgpack-ruby/pull/355
+dev-ruby/msgpack ruby_targets_ruby30 ruby_targets_ruby31
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-19)
 # VSX asm causes passing test suite on LE to fail
 media-libs/libaom cpu_flags_ppc_vsx
