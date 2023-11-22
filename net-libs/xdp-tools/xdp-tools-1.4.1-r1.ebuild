@@ -33,13 +33,14 @@ QA_PREBUILT="usr/lib/bpf/*.o"
 MAKEOPTS+=" V=1"
 
 PATCHES=(
+	"${FILESDIR}"/1.4.1-fix-memory-leak-in-xsk_setup_xdp_prog.patch
 )
 
 src_prepare() {
 	# remove -Werror: #899744
-	sed -i 's/-Werror//g' lib/Makefile lib/defines.mk
+	sed -i 's/-Werror//g' lib/Makefile lib/defines.mk || die
 	sed -i '/-Werror/d' lib/common.mk lib/libxdp/Makefile \
-		lib/libxdp/tests/Makefile lib/util/Makefile
+		lib/libxdp/tests/Makefile lib/util/Makefile || die
 
 	default
 }
