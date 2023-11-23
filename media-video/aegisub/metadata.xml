@@ -9,7 +9,7 @@
 		<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>http://devel.aegisub.org/wiki/NewTicket</bugs-to>
-		<remote-id type="github">Aegisub/Aegisub</remote-id>
+		<bugs-to>https://github.com/wangqr/Aegisub/issues</bugs-to>
+		<remote-id type="github">wangqr/Aegisub</remote-id>
 	</upstream>
 </pkgmetadata>
