@@ -240,6 +240,7 @@ smi
 # Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # We don't have sys-devel/llvm
 llvm
+llvm-libunwind
 
 # Matt Turner <mattst88@gentoo.org> (2011-06-14)
 # pdfannotextractor needs java
