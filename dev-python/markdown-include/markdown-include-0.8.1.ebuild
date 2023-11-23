@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND=">=dev-python/markdown-3.0[${PYTHON_USEDEP}]"
 BDEPEND=">=dev-python/setuptools-scm-6.2[${PYTHON_USEDEP}]"
