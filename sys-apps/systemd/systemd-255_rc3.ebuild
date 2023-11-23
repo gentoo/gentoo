@@ -23,11 +23,11 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 inherit bash-completion-r1 linux-info meson-multilib pam python-single-r1
-inherit secureboot systemd toolchain-funcs udev usr-ldscript
+inherit secureboot systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="http://systemd.io/"
@@ -181,6 +181,11 @@ QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
+	if use split-usr; then
+		eerror "Please complete the migration to merged-usr."
+		eerror "https://wiki.gentoo.org/wiki/Merge-usr"
+		die "systemd no longer supports split-usr"
+	fi
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if use test && has pid-sandbox ${FEATURES}; then
 			ewarn "Tests are known to fail with PID sandboxing enabled."
@@ -240,7 +245,6 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/systemd-253-initrd-generators.patch"
 	)
 
 	if ! use vanilla; then
@@ -249,9 +253,6 @@ src_prepare() {
 			"${FILESDIR}/gentoo-journald-audit-r1.patch"
 		)
 	fi
-
-	# Fails with split-usr.
-	sed -i -e '2i exit 77' test/test-rpm-macros.sh || die
 
 	default
 }
@@ -272,10 +273,7 @@ multilib_src_configure() {
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
-		$(meson_use split-usr)
-		$(meson_use split-usr split-bin)
-		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
-		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
+		-Dsplit-bin=false
 		# Disable compatibility with sysvinit
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
@@ -359,9 +357,6 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	local rootprefix=$(usex split-usr '' /usr)
-	local sbin=$(usex split-usr sbin bin)
-
 	# meson doesn't know about docdir
 	mv "${ED}"/usr/share/doc/{systemd,${PF}} || die
 
@@ -372,11 +367,11 @@ multilib_src_install_all() {
 	doins "${FILESDIR}"/legacy.conf
 
 	if ! use resolvconf; then
-		rm -f "${ED}${rootprefix}/${sbin}"/resolvconf || die
+		rm -f "${ED}"/usr/bin/resolvconf || die
 	fi
 
 	if ! use sysv-utils; then
-		rm "${ED}${rootprefix}/${sbin}"/{halt,init,poweroff,reboot,shutdown} || die
+		rm "${ED}"/usr/bin/{halt,init,poweroff,reboot,shutdown} || die
 		rm "${ED}"/usr/share/man/man1/init.1 || die
 		rm "${ED}"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8 || die
 	fi
@@ -392,7 +387,7 @@ multilib_src_install_all() {
 
 	keepdir /etc/udev/hwdb.d
 
-	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
+	keepdir /usr/lib/systemd/{system-sleep,system-shutdown}
 	keepdir /usr/lib/{binfmt.d,modules-load.d}
 	keepdir /usr/lib/systemd/user-generators
 	keepdir /var/lib/systemd
@@ -401,14 +396,6 @@ multilib_src_install_all() {
 	if use pam; then
 		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
 	fi
-
-	if use split-usr; then
-		# Avoid breaking boot/reboot
-		dosym ../../../lib/systemd/systemd /usr/lib/systemd/systemd
-		dosym ../../../lib/systemd/systemd-shutdown /usr/lib/systemd/systemd-shutdown
-	fi
-
-	gen_usr_ldscript -a systemd udev
 
 	use ukify && python_fix_shebang "${ED}"
 	use boot && secureboot_auto_sign
@@ -464,20 +451,6 @@ pkg_preinst() {
 		dosym ../../../etc/sysctl.conf /usr/lib/sysctl.d/99-sysctl.conf
 	fi
 
-	if ! use split-usr; then
-		local dir
-		for dir in bin sbin lib usr/sbin; do
-			if [[ ! -L ${EROOT}/${dir} ]]; then
-				eerror "'${EROOT}/${dir}' is not a symbolic link."
-				FAIL=1
-			fi
-		done
-		if [[ ${FAIL} ]]; then
-			eerror "Migration to system layout with merged directories must be performed before"
-			eerror "installing ${CATEGORY}/${PN} with USE=\"-split-usr\" to avoid run-time breakage."
-			die "System layout with split directories still used"
-		fi
-	fi
 	if ! use boot && has_version "sys-apps/systemd[gnuefi(-)]"; then
 		ewarn "The 'gnuefi' USE flag has been renamed to 'boot'."
 		ewarn "Make sure to enable the 'boot' USE flag if you use systemd-boot."
