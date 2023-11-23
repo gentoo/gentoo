@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	dev-python/markdown[${PYTHON_USEDEP}]
