@@ -3,6 +3,10 @@
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
+app-admin/setools X
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# Qt 5 is not keyworded here
 net-p2p/bitcoin-core gui
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-20)
