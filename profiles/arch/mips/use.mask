@@ -5,6 +5,10 @@
 -mips
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# KDE not keyworded here
+kde
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # dev-db/redis fails test suite on BE at least
 redis
 
