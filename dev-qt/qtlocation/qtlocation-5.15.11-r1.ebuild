@@ -12,7 +12,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	MAPBOXGL_COMMIT=4c88f2c0e61daa89f584a8a9a3eba210221c6920
 	SRC_URI+=" https://invent.kde.org/qt/qt/${PN}-mapboxgl/-/archive/${MAPBOXGL_COMMIT}/${PN}-mapboxgl-${MAPBOXGL_COMMIT}.tar.gz -> ${PN}-mapboxgl-${PV}-${MAPBOXGL_COMMIT:0:8}.tar.gz
 	https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv ~x86"
 fi
 
 RDEPEND="
