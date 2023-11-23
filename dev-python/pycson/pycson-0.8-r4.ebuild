@@ -13,7 +13,7 @@ SRC_URI="https://github.com/avakar/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 
 RDEPEND="dev-python/speg[${PYTHON_USEDEP}]"
 
