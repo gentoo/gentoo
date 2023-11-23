@@ -20,7 +20,7 @@ SRC_URI="
 "
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 SLOT="0"
 
 RDEPEND="
