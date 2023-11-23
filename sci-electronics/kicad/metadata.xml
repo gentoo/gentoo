@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="ngspice">Enable circuit simulation</flag>
-	</use>
 	<longdescription>
 		Kicad is an open source (GPL) software for the creation of electronic
 		schematic diagrams and printed circuit board artwork.
