@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~sparc ~x86"
 
 RDEPEND="app-crypt/pinentry[emacs]"
 
