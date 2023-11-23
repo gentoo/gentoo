@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="BSD-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
