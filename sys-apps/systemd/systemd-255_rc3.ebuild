@@ -55,14 +55,14 @@ RESTRICT="!test? ( test )"
 MINKV="4.15"
 
 COMMON_DEPEND="
-	>=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
+	>=sys-apps/util-linux-2.32:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl:0= )
-	apparmor? ( sys-libs/libapparmor:0= )
+	apparmor? ( >=sys-libs/libapparmor-2.13:0= )
 	audit? ( >=sys-process/audit-2:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
-	curl? ( net-misc/curl:0= )
+	curl? ( >=net-misc/curl-7.32.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	fido2? ( dev-libs/libfido2:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
@@ -79,12 +79,12 @@ COMMON_DEPEND="
 	iptables? ( net-firewall/iptables:0= )
 	openssl? ( >=dev-libs/openssl-1.1.0:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
-	pkcs11? ( app-crypt/p11-kit:0= )
+	pkcs11? ( >=app-crypt/p11-kit-0.23.3:0= )
 	pcre? ( dev-libs/libpcre2 )
-	pwquality? ( dev-libs/libpwquality:0= )
-	qrcode? ( media-gfx/qrencode:0= )
+	pwquality? ( >=dev-libs/libpwquality-1.4.1:0= )
+	qrcode? ( >=media-gfx/qrencode-3:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
-	selinux? ( sys-libs/libselinux:0= )
+	selinux? ( >=sys-libs/libselinux-2.1.9:0= )
 	tpm? ( app-crypt/tpm2-tss:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	zstd? ( >=app-arch/zstd-1.4.0:0=[${MULTILIB_USEDEP}] )
