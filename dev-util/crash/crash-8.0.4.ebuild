@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 GDB_VERSION=10.2
 UPSTREAM_VER=
-EXTRA_VER=
+EXTRA_VER=0
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/crash-utility/crash.git"
@@ -19,7 +19,7 @@ else
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-patches-${UPSTREAM_VER}.tar.xz"
 
 	[[ -n ${EXTRA_VER} ]] && \
-		EXTRA_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-extra-${EXTRA_VER}.tar.xz"
+		EXTRA_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${PN}-8.0.3-extra-${EXTRA_VER}.tar.xz"
 
 	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		${UPSTREAM_PATCHSET_URI} ${EXTRA_PATCHSET_URI}
