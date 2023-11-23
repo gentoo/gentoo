@@ -88,7 +88,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
-	=dev-python/anyio-3*[${PYTHON_USEDEP}]
+	>=dev-python/anyio-3.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
