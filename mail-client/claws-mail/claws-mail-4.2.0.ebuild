@@ -31,7 +31,7 @@ REQUIRED_USE="
 "
 
 COMMONDEPEND="
-	>=dev-libs/glib-2.50:2
+	>=dev-libs/glib-2.36:2
 	dev-libs/nettle:=
 	net-mail/ytnef
 	sys-libs/zlib:=
@@ -106,12 +106,11 @@ RDEPEND="${COMMONDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
+	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
 )
 
 src_prepare() {
 	default
-	sed -e "s/webkit2gtk-4.0/webkit2gtk-4.1/" -i configure.ac || die
-
 	eautoreconf
 }
 
@@ -139,8 +138,6 @@ src_configure() {
 		$(use_enable clamav clamd-plugin)
 		$(use_enable dbus)
 		$(use_enable debug crash-dialog)
-		$(use_enable debug more-addressbook-debug)
-		$(use_enable debug more-ldap-debug)
 		$(use_enable doc manual)
 		$(use_enable gnutls)
 		$(use_enable ldap)
