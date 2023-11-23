@@ -13,7 +13,7 @@ SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test tools"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
