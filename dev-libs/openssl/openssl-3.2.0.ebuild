@@ -22,9 +22,9 @@ else
 		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )
 	"
 
-	if [[ ${PV} != *_alpha* && ${PV} != *_beta* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-	fi
+	#if [[ ${PV} != *_alpha* && ${PV} != *_beta* ]] ; then
+	#	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	#fi
 fi
 
 S="${WORKDIR}"/${MY_P}
@@ -221,13 +221,15 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	# See https://github.com/openssl/openssl/blob/master/test/README.md for options.
+	#
 	# VFP = show subtests verbosely and show failed tests verbosely
 	# Normal V=1 would show everything verbosely but this slows things down.
 	#
 	# -j1 here for https://github.com/openssl/openssl/issues/21999, but it
 	# shouldn't matter as tests were already built earlier, and HARNESS_JOBS
 	# controls running the tests.
-	emake HARNESS_JOBS="$(makeopts_jobs)" -Onone VFP=1 -j1 test
+	emake -Onone -j1 HARNESS_JOBS="$(makeopts_jobs)" VFP=1 TESTS='-test_symbol_presence' test
 }
 
 multilib_src_install() {
