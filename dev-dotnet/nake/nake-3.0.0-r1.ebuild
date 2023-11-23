@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=6.0
+DOTNET_PKG_COMPAT=8.0
 NUGETS="
 dotnet.script.dependencymodel.nuget@1.3.1
 dotnet.script.dependencymodel@1.3.1
@@ -247,6 +247,12 @@ SLOT="0"
 CHECKREQS_DISK_BUILD="2G"
 DOTNET_PKG_PROJECTS=( "${S}/Source/Nake/Nake.csproj" )
 PATCHES=( "${FILESDIR}/${PN}-3.0.0-csproj-framework.patch" )
+
+DOTNET_PKG_RESTORE_EXTRA_ARGS=(
+	-p:RollForward=Major
+)
+DOTNET_PKG_BUILD_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
+DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 
 pkg_setup() {
 	check-reqs_pkg_setup
