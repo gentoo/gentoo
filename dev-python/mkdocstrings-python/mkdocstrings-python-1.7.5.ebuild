@@ -23,7 +23,7 @@ S="${WORKDIR}/python-${PV}"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	>=dev-python/griffe-0.37[${PYTHON_USEDEP}]
