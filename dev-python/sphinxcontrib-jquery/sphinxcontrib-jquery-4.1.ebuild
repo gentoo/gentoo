@@ -24,4 +24,6 @@ RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/${PN}-4.1-backport-pr28.patch" )
+
 distutils_enable_tests pytest
