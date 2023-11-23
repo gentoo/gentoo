@@ -11,7 +11,7 @@ SRC_URI="https://github.com/stripe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT ISC BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 src_compile() {
 	emake build
