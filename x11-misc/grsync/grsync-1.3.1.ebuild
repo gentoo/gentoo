@@ -23,6 +23,15 @@ BDEPEND="virtual/pkgconfig
 
 DOCS="AUTHORS NEWS README"
 
+src_prepare() {
+	default
+
+	if ! use gtk3; then
+		sed -e "s/gtk_widget_override_font/gtk_widget_modify_font/" \
+			-i src/callbacks.c || die
+	fi
+}
+
 src_configure() {
 	econf --disable-unity $(use_enable gtk3)
 }
