@@ -25,7 +25,7 @@ elif [[ $(ver_cut 2) -ge 90 || $(ver_cut 3) -ge 90 ]]; then
 	REGEN_BDEPEND=""
 else
 	SRC_URI="mirror://gnu/poke/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	REGEN_BDEPEND=""
 fi
 
