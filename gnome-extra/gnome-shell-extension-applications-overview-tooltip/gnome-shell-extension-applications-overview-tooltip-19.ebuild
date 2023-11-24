@@ -12,14 +12,11 @@ SRC_URI="https://github.com/RaphaelRochet/applications-overview-tooltip/archive/
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
 	>=gnome-base/gnome-shell-45
 "
-DEPEND=""
-BDEPEND=""
 
 S="${WORKDIR}/${P/gnome-shell-extension-}"
 extension_uuid="applications-overview-tooltip@RaphaelRochet"
