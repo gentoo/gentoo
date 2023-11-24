@@ -24,7 +24,10 @@ ssh tar test tcpdump zip zlib zstd"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/python-magic[${PYTHON_USEDEP}]
+	|| (
+		dev-python/python-magic[${PYTHON_USEDEP}]
+		sys-apps/file[python,${PYTHON_USEDEP}]
+	)
 	dev-python/libarchive-c[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/tlsh[${PYTHON_USEDEP}]
@@ -71,9 +74,6 @@ RDEPEND="
 	zlib? ( app-arch/gzip )
 	zstd? ( app-arch/zstd )
 "
-# Presence of filemagic's magic.py breaks imports
-# of dev-python/python-magic: bug #716482
-RDEPEND+=" !dev-python/filemagic"
 
 # pull in optional tools for tests:
 # img2txt: bug #797688
