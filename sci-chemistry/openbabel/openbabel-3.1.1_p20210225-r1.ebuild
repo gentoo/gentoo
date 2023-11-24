@@ -9,7 +9,7 @@ WX_GTK_VER=3.2-gtk3
 inherit cmake desktop flag-o-matic perl-functions python-r1 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Interconverts file formats used in molecular modeling"
-HOMEPAGE="https://openbabel.org/"
+HOMEPAGE="https://openbabel.org/ https://github.com/openbabel/openbabel/"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
@@ -17,7 +17,7 @@ if [[ "${PV}" == *9999* ]]; then
 else
 	if [[ "${PV}" == *_p* ]]; then	# eg., openbabel-3.1.1_p20210325
 		# Set to commit hash
-		OPENBABEL_COMMIT=
+		OPENBABEL_COMMIT=08e23f39b0cc39b4eebd937a5a2ffc1a7bac3e1b
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${OPENBABEL_COMMIT}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}/${PN}-${OPENBABEL_COMMIT}"
 	else
@@ -79,6 +79,10 @@ RDEPEND="
 		!sci-chemistry/openbabel-perl
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/openbabel-3.1.1-fix-time-check-cmake.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
