@@ -14,7 +14,7 @@ SRC_URI="https://github.com/libspatialindex/${PN}/releases/download/${PV}/${MY_P
 
 LICENSE="MIT"
 SLOT="0/6"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
