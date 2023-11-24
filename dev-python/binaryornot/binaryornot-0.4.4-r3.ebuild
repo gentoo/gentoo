@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/chardet-3.0.2[${PYTHON_USEDEP}]
