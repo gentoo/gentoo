@@ -3,10 +3,14 @@
 
 EAPI=8
 
+DOCS_BUILDER="mkdocs"
+DOCS_DEPEND="dev-python/mkdocs-material"
+DOCS_DIR="doc"
+
 PYTHON_COMPAT=( python3_{10..12} )
 
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 docs xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -14,7 +18,6 @@ if [[ ${PV} == "9999" ]] ; then
 	S="${WORKDIR}/${P}"
 else
 	SRC_URI="https://github.com/eduvpn/python-eduvpn-client/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/python-${P}"
 fi
 
@@ -30,9 +33,20 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	>=net-vpn/eduvpn-common-1.1.2[${PYTHON_USEDEP}]
+	>=net-vpn/eduvpn-common-1.1.99.0[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx doc
+PATCHES=(
+	"${FILESDIR}/${PN}-desktop.patch"
+)
+
+pkg_postinst() {
+	default
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	default
+	xdg_icon_cache_update
+}
