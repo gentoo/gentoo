@@ -14,7 +14,6 @@ SRC_URI="https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/r
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
@@ -22,7 +21,6 @@ RDEPEND="
 	gui-libs/libadwaita
 "
 DEPEND="${COMMON_DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}/alphabetical-grid-extension-${PV}"
 extension_uuid="AlphabeticalAppGrid@stuarthayhurst"
