@@ -11,6 +11,7 @@ QTMIN=5.15.9
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Workspace library to interact with the Plasma session manager"
+S="${S}/${PN}"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -34,15 +35,13 @@ DEPEND="${RDEPEND}
 	>=kde-plasma/kwin-${PVCUT}:5
 "
 
-S="${S}/${PN}"
-
 src_prepare() {
 	# delete colliding libkworkspace translations, let ecm_src_prepare do its magic
 	find ../po -type f -name "*po" -and -not -name "libkworkspace*" -delete || die
 	rm -rf po/*/docs || die
 	cp -a ../po ./ || die
 
-	eapply "${FILESDIR}/${PN}-5.22.80-standalone.patch"
+	eapply "${FILESDIR}/${P}-standalone.patch"
 	sed -e "/set/s/GENTOO_PV/$(ver_cut 1-3)/" -i CMakeLists.txt || die
 	cat >> CMakeLists.txt <<- _EOF_ || die
 		ki18n_install(po)

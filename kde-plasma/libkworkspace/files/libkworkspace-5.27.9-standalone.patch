@@ -39,7 +39,7 @@ index 015c5181f..0aa635e11 100644
 +    include(ECMMarkAsTest)
 +    include(GenerateExportHeader)
 +
-+    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config CoreAddons I18n Init WindowSystem)
++    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Config CoreAddons I18n WindowSystem)
 +
 +    find_package(KWinDBusInterface CONFIG REQUIRED)
 +    find_package(KScreenLocker 5.13.80 REQUIRED)
@@ -69,7 +69,7 @@ index 015c5181f..0aa635e11 100644
  set(kworkspace_LIB_SRCS kdisplaymanager.cpp
                          kworkspace.cpp
 @@ -12,9 +65,17 @@ add_definitions(-DTRANSLATION_DOMAIN=\"libkworkspace\")
- qt_add_dbus_interface(kworkspace_LIB_SRCS ${KINIT_DBUS_INTERFACES_DIR}/kf5_org.kde.KLauncher.xml klauncher_interface)
+ qt_add_dbus_interface(kworkspace_LIB_SRCS kf5_org.kde.KLauncher.xml klauncher_interface)
  qt_add_dbus_interface(kworkspace_LIB_SRCS ${KSCREENLOCKER_DBUS_INTERFACES_DIR}/kf5_org.freedesktop.ScreenSaver.xml screenlocker_interface )
  qt_add_dbus_interface(kworkspace_LIB_SRCS ${KSCREENLOCKER_DBUS_INTERFACES_DIR}/org.kde.screensaver.xml kscreenlocker_interface )
 +if(${CMAKE_SOURCE_DIR} STREQUAL ${libkworkspace_SOURCE_DIR})
