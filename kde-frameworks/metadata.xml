@@ -5,4 +5,8 @@
 		The kde-frameworks category contains KDE Frameworks –
 		add-on libraries for programming with Qt.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie kde-frameworks enthält die KDE Frameworks –
+		Erweiterungen für Qt.
+	</longdescription>
 </catmetadata>
