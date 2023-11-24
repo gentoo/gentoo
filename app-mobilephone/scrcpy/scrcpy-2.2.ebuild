@@ -22,9 +22,6 @@ DEPEND="media-libs/libsdl2[X]
 # Manual install for ppc64 until bug #723528 is fixed
 RDEPEND="${DEPEND}
 	!ppc64? ( dev-util/android-tools )"
-BDEPEND=""
-
-PATCHES=( "${FILESDIR}"/${P}-desktop.patch )
 
 src_configure() {
 	local emesonargs=(
@@ -36,4 +33,9 @@ src_configure() {
 
 pkg_postinst() {
 	xdg_pkg_postrm
+
+	einfo "If you use pipewire because of a problem with libsdl2 it is possible that"
+	einfo "scrcpy will not start, in which case start the program by exporting the"
+	einfo "environment variable SDL_AUDIODRIVER=pipewire."
+	einfo "For more information see https://github.com/Genymobile/scrcpy/issues/3864."
 }
