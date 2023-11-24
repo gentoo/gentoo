@@ -62,7 +62,7 @@ src_prepare() {
 
 	cat <<-EOF > hack/libdm_tag.sh || die
 	#!/usr/bin/env bash
-	$(usex device-mapper echo "echo libdm_no_deferred_remove")
+	$(usex device-mapper echo "echo libdm_no_deferred_remove exclude_graphdriver_devicemapper")
 	EOF
 
 	cat <<-EOF > hack/libsubid_tag.sh || die
