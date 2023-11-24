@@ -25,11 +25,18 @@ CRATES="
 	clap_lex@0.6.0
 	criterion-plot@0.5.0
 	criterion@0.5.1
+	crossbeam-channel@0.5.8
+	crossbeam-utils@0.8.16
 	either@1.9.0
 	env_logger@0.10.1
 	errno@0.3.6
 	fastrand@2.0.1
 	fnv@1.0.7
+	futures-channel@0.3.29
+	futures-core@0.3.29
+	futures-executor@0.3.29
+	futures-task@0.3.29
+	futures-util@0.3.29
 	getargs@0.5.0
 	globset@0.4.13
 	half@1.8.2
@@ -58,6 +65,8 @@ CRATES="
 	openat2@0.1.2
 	parking_lot@0.12.1
 	parking_lot_core@0.9.9
+	pin-project-lite@0.2.13
+	pin-utils@0.1.0
 	pkg-config@0.3.27
 	proc-macro2@1.0.69
 	quote@1.0.33
@@ -67,18 +76,19 @@ CRATES="
 	regex@1.10.2
 	rustix@0.38.21
 	rustversion@1.0.14
+	rusty_pool@0.7.0
 	ryu@1.0.15
 	same-file@1.0.6
 	scopeguard@1.2.0
 	serde@1.0.192
 	serde_derive@1.0.192
 	serde_json@1.0.108
+	slab@0.4.9
 	smallvec@1.11.2
 	strum@0.25.0
 	strum_macros@0.25.3
 	syn@2.0.39
 	tempfile@3.8.1
-	threadpool@1.8.1
 	tinytemplate@1.2.1
 	unicode-ident@1.0.12
 	walkdir@2.4.0
