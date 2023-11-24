@@ -9,7 +9,7 @@ DESCRIPTION="Free and Open, Distributed, RESTful Search Engine"
 HOMEPAGE="https://www.elastic.co/elasticsearch/"
 SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}-no-jdk-linux-x86_64.tar.gz"
 LICENSE="Apache-2.0 BSD-2 Elastic-2.0 LGPL-3 MIT public-domain"
-SLOT="0"
+SLOT="0/7"
 KEYWORDS="~amd64"
 
 RDEPEND="acct-group/elasticsearch

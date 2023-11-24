@@ -10,7 +10,7 @@ HOMEPAGE="https://www.elastic.co/elasticsearch/"
 SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}-linux-x86_64.tar.gz"
 
 LICENSE="Apache-2.0 BSD-2 Elastic-2.0 LGPL-3 MIT public-domain"
-SLOT="0"
+SLOT="0/8"
 KEYWORDS="~amd64"
 
 DEPEND="acct-group/elasticsearch
