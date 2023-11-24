@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # Not all modules needed by py script are packaged in Gentoo
 #PYTHON_COMPAT=( python3_{6..9} )
@@ -56,18 +56,22 @@ RDEPEND="${COMMON_DEPEND}
 # eautoreconf, bug #659748
 DEPEND="${COMMON_DEPEND}
 	media-libs/gstreamer:1.0
+"
+
+BDEPEND="
 	dev-util/intltool
 	sys-devel/flex
 	sys-devel/gettext
-	virtual/os-headers
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	xdg_src_prepare
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.3-gold.patch
+	"${FILESDIR}"/${PN}-2.1.5-m4a.patch
+)
 
-	eapply "${FILESDIR}"/${PN}-2.1.3-gold.patch
-	eapply "${FILESDIR}"/${PN}-2.1.5-m4a.patch
+src_prepare() {
+	default
 
 #	python_fix_shebang scripts/
 #	2to3 --no-diffs -w scripts/sync-palm-jppy.py || die
