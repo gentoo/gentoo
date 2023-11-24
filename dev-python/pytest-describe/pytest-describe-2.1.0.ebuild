@@ -27,8 +27,7 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	# We need to disable some plugins because tests don't like unexpected
-	# output
-	local -x PYTEST_ADDOPTS="-p no:flaky -p no:capturelog"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_describe.plugin
 	epytest
 }
