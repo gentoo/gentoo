@@ -32,6 +32,7 @@ RDEPEND="
 # util-linux provides script(1)
 BDEPEND="
 	test? (
+		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		sys-apps/util-linux
 	)
