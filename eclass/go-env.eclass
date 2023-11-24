@@ -31,7 +31,7 @@ go-env_set_compile_environment() {
 
 	export GOARCH="$(go-env_goarch)"
 	use arm && export GOARM=$(go-env_goarm)
-	use x86 && export GO386=$(usex cpu_flags_x86_sse2 '' 'softfloat')
+	use x86 && export GO386=$(go-env_go386)
 
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
@@ -60,6 +60,27 @@ go-env_goarch() {
 		s390) echo s390x ;;
 		*)		echo "${tc_arch}";;
 	esac
+}
+
+# @FUNCTION: go-env_go386
+# @DESCRIPTION:
+# Returns the appropriate GO386 setting for the CFLAGS in use.
+go-env_go386() {
+	# Piggy-back off any existing CPU_FLAGS_X86 usage in the ebuild if
+	# it's there.
+	if in_iuse cpu_flags_x86_sse2 && use cpu_flags_x86_sse2 ; then
+		echo 'sse2'
+		return
+	fi
+
+	if tc-cpp-is-true "defined(__SSE2__)" ${CFLAGS} ${CXXFLAGS} ; then
+		echo 'sse2'
+		return
+	fi
+
+	# Go 1.16 dropped explicit support for 386 FP and relies on software
+	# emulation instead in the absence of SSE2.
+	echo 'softfloat'
 }
 
 # @FUNCTION: go-env_goarm
