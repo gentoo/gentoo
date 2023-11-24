@@ -28,6 +28,12 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/click-contrib/click-help-colors/pull/25
+	# https://github.com/click-contrib/click-help-colors/pull/26
+	"${FILESDIR}/${P}-no-color.patch"
+)
+
 python_install_all() {
 	use examples && dodoc -r examples
 	distutils-r1_python_install_all
