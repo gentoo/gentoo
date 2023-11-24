@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit flag-o-matic toolchain-funcs wxwidgets
+inherit flag-o-matic wxwidgets
 
 DESCRIPTION="Full-featured wxWidgets version of the classic dice game Yahtzee"
 HOMEPAGE="https://openyahtzee.sourceforge.net/"
