@@ -13,6 +13,7 @@
     <remote-id type="github">rspamd/rspamd</remote-id>
   </upstream>
   <use>
+    <flag name="hyperscan">Enable hyperscan for fast regexp processing</flag>
     <flag name="jit">Enable PCRE JIT support</flag>
   </use>
 </pkgmetadata>
