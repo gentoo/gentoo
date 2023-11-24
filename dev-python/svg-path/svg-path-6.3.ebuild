@@ -32,3 +32,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# broken with new pillow version (also potentially super-fragile)
+	# https://github.com/regebro/svg.path/issues/103
+	tests/test_boundingbox_image.py::BoundingBoxImageTest::test_image
+	tests/test_image.py::ImageTest::test_image
+)
