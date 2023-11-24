@@ -83,7 +83,7 @@ src_test() {
 
 src_install() {
 	meson_src_install
-	python_fix_shebang "${ED}/usr/share/lutris/bin/lutris-wrapper" #740048
+	python_fix_shebang "${ED}/usr/" #740048
 }
 
 pkg_postinst() {
