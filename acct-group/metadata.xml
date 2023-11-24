@@ -4,4 +4,7 @@
 	<longdescription lang="en">
 		The acct-group category contains packages for system groups.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie acct-group enthält Pakete für System-Gruppen.
+	</longdescription>
 </catmetadata>
