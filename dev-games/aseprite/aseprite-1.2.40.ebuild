@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake desktop ninja-utils python-any-r1 toolchain-funcs xdg-utils
 
@@ -32,7 +32,7 @@ RDEPEND="
 	dev-libs/tinyxml
 	media-libs/freetype
 	media-libs/giflib:=
-	media-libs/harfbuzz:=
+	media-libs/harfbuzz:=[truetype]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	net-misc/curl
