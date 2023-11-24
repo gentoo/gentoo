@@ -33,6 +33,7 @@ BDEPEND="
 		dev-python/bottle[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)
 "
