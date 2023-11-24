@@ -2,7 +2,8 @@
 <!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		The virtual category contains packages which satisfy virtual dependencies.
+		The virtual category contains packages which satisfy virtual
+		dependencies.
 	</longdescription>
 	<longdescription lang="es">
 		La categoría virtual contiene paquetes para satisfacer las
