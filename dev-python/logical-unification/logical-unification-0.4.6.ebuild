@@ -22,7 +22,7 @@ S="${WORKDIR}/unification-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/multipledispatch[${PYTHON_USEDEP}]
