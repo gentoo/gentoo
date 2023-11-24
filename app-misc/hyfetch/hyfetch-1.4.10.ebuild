@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/hykilpikonna/${PN}/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="MIT"
