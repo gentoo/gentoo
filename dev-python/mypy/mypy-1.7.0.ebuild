@@ -37,6 +37,7 @@ RDEPEND="
 "
 BDEPEND="
 	native-extensions? (
+		${RDEPEND}
 		dev-python/types-psutil[${PYTHON_USEDEP}]
 		dev-python/types-setuptools[${PYTHON_USEDEP}]
 	)
