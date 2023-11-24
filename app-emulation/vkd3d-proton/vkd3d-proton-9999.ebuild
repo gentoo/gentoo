@@ -18,11 +18,11 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	HASH_VKD3D=6365efeba253807beecaed0eaa963295522c6b70 # match tag on bumps
-	HASH_DXIL=f20a0fb4e984a83743baa9d863eb7b26228bcca3
+	HASH_VKD3D=eb4b411734f8de04912c4a950f407f25a92f35ab # match tag on bumps
+	HASH_DXIL=fc4df6ce3aa7deffa764847c6e59f8df63c7b4b6
 	HASH_SPIRV=1d31a100405cf8783ca7a31e31cdd727c9fc54c3
 	HASH_SPIRV_DXIL=aa331ab0ffcb3a67021caa1a0c1c9017712f2f31
-	HASH_VULKAN=bd6443d28f2ebecedfb839b52d612011ba623d14
+	HASH_VULKAN=a0c76b4ef76e219483755ff61dce6b67ff79f24b
 	SRC_URI="
 		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
@@ -83,7 +83,7 @@ pkg_pretend() {
 
 src_prepare() {
 	if [[ ${PV} != 9999 ]]; then
-		rmdir subprojects/{{SPIRV,Vulkan}-Headers,dxil-spirv} || die
+		rmdir khronos/{SPIRV,Vulkan}-Headers subprojects/dxil-spirv || die
 		mv ../dxil-spirv-${HASH_DXIL} subprojects/dxil-spirv || die
 		mv ../SPIRV-Headers-${HASH_SPIRV} khronos/SPIRV-Headers || die
 		mv ../Vulkan-Headers-${HASH_VULKAN} khronos/Vulkan-Headers || die
