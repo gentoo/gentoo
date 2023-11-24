@@ -1,0 +1,12 @@
+diff -Nur dfarc-3.14/src/Tar.cpp new/src/Tar.cpp
+--- dfarc-3.14/src/Tar.cpp	2018-06-05 23:18:34.000000000 +0200
++++ new/src/Tar.cpp	2019-02-02 02:41:40.128841786 +0100
+@@ -610,7 +610,7 @@
+             if (lLastCharacter != '\\' && lLastCharacter != '/')
+             {
+                 // Open the file.
+-                std::ostream* lStreamOut = ostream_open_unicode(lCurrentFilePath);
++                std::ostream* lStreamOut = ostream_open_unicode(lCurrentFilePath.mb_str());
+ 		if (!lStreamOut->good())
+                 {
+ 		    wxLogError(_("Error: Improperly archived file '%s'.  Skipping."), lCurrentFilePath);
