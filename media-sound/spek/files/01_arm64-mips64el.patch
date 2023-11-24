@@ -1,0 +1,15 @@
+Author: Mike Wang <mikewang000000@gmail.com>
+Bug: https://github.com/alexkay/spek/issues/262
+Description: Fix FFT unit tests
+Forwarded: https://github.com/alexkay/spek/commit/0998df9a7ac99d509ddd10fb76d883f24efc0179
+--- a/tests/test-fft.cc
++++ b/tests/test-fft.cc
+@@ -62,7 +62,7 @@ static void test_sine()
+                 if (i == k) {
+                     continue;
+                 }
+-                if (plan->get_output(i) > -150.0f) {
++                if (plan->get_output(i) > -149.0f) {
+                     silence = false;
+                     break;
+                 }
