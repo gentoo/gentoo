@@ -9,4 +9,8 @@
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 </pkgmetadata>
