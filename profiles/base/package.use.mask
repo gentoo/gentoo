@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# John Helmert III <ajak@gentoo.org> (2023-11-25)
+# app-text/gocr has been masked for removal, bug #824290
+media-gfx/xsane ocr
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
 # Qt6 is still experimental in freecad, currently the configure phase
 # gets itself stuck by importing both qt5 and qt6 cmake files.
