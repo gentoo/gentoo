@@ -1,0 +1,114 @@
+https://github.com/lsh123/xmlsec/commit/ffb327376f5bb69e8dfe7f805529e45a40118c2b
+
+From ffb327376f5bb69e8dfe7f805529e45a40118c2b Mon Sep 17 00:00:00 2001
+From: lsh123 <aleksey@aleksey.com>
+Date: Mon, 20 Nov 2023 11:50:43 -0500
+Subject: [PATCH] Fix libxml2 v2.12.0 includes  (#729)
+
+--- a/apps/crypto.c
++++ b/apps/crypto.c
+@@ -12,6 +12,7 @@
+ #endif
+ 
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include <xmlsec/xmlsec.h>
+ #include <xmlsec/keys.h>
+--- a/apps/xmlsec.c
++++ b/apps/xmlsec.c
+@@ -22,6 +22,7 @@
+ #include <libxml/xmlmemory.h>
+ #include <libxml/parser.h>
+ #include <libxml/xpath.h>
++#include <libxml/xmlsave.h>
+ #include <libxml/xpathInternals.h>
+ 
+ #ifndef XMLSEC_NO_XSLT
+@@ -3030,7 +3031,7 @@ xmlSecAppInit(void) {
+     /* Init libxml */
+     xmlInitParser();
+     LIBXML_TEST_VERSION
+-    xmlTreeIndentString = "\t";
++    xmlThrDefTreeIndentString("\t");
+ #ifndef XMLSEC_NO_XSLT
+     xmlIndentTreeOutput = 1;
+ #endif /* XMLSEC_NO_XSLT */
+--- a/include/xmlsec/xmlsec.h
++++ b/include/xmlsec/xmlsec.h
+@@ -12,6 +12,7 @@
+ #define __XMLSEC_H__
+ 
+ #include <libxml/tree.h>
++#include <libxml/parser.h>
+ 
+ #include <xmlsec/version.h>
+ #include <xmlsec/exports.h>
+--- a/src/errors_helpers.h
++++ b/src/errors_helpers.h
+@@ -136,7 +136,7 @@ extern "C" {
+  */
+ #define xmlSecXmlError(errorFunction, errorObject) \
+     {                                                 \
+-        xmlErrorPtr error = xmlGetLastError();        \
++        const xmlError * error = xmlGetLastError();        \
+         int code = (error != NULL) ? error->code : 0; \
+         const char* message = (error != NULL) ? error->message : NULL; \
+         xmlSecError(XMLSEC_ERRORS_HERE,               \
+@@ -159,7 +159,7 @@ extern "C" {
+  */
+ #define xmlSecXmlError2(errorFunction, errorObject, msg, param) \
+     {                                                 \
+-        xmlErrorPtr error = xmlGetLastError();        \
++        const xmlError * error = xmlGetLastError();        \
+         int code = (error != NULL) ? error->code : 0; \
+         const char* message = (error != NULL) ? error->message : NULL; \
+         xmlSecError(XMLSEC_ERRORS_HERE,               \
+@@ -181,7 +181,7 @@ extern "C" {
+  */
+ #define xmlSecXmlParserError(errorFunction, ctxt, errorObject) \
+     {                                                 \
+-        xmlErrorPtr error = xmlCtxtGetLastError(ctxt);\
++        const xmlError * error = xmlCtxtGetLastError(ctxt);\
+         int code = (error != NULL) ? error->code : 0; \
+         const char* message = (error != NULL) ? error->message : NULL; \
+         xmlSecError(XMLSEC_ERRORS_HERE,               \
+@@ -205,7 +205,7 @@ extern "C" {
+  */
+ #define xmlSecXmlParserError2(errorFunction, ctxt, errorObject, msg, param) \
+     {                                                 \
+-        xmlErrorPtr error = xmlCtxtGetLastError(ctxt);\
++        const xmlError * error = xmlCtxtGetLastError(ctxt);\
+         int code = (error != NULL) ? error->code : 0; \
+         const char* message = (error != NULL) ? error->message : NULL; \
+         xmlSecError(XMLSEC_ERRORS_HERE,               \
+@@ -227,7 +227,7 @@ extern "C" {
+  */
+ #define xmlSecXsltError(errorFunction, ctxt, errorObject) \
+     {                                                 \
+-        xmlErrorPtr error = xmlGetLastError();        \
++        const xmlError * error = xmlGetLastError();        \
+         int code = (error != NULL) ? error->code : 0; \
+         const char* message = (error != NULL) ? error->message : NULL; \
+         xmlSecError(XMLSEC_ERRORS_HERE,               \
+--- a/src/mscrypto/certkeys.c
++++ b/src/mscrypto/certkeys.c
+@@ -18,6 +18,7 @@
+ #include "globals.h"
+ 
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #ifndef XMLSEC_NO_GOST
+ #include "csp_oid.h"
+--- a/src/mscrypto/signatures.c
++++ b/src/mscrypto/signatures.c
+@@ -17,6 +17,7 @@
+ #include "globals.h"
+ 
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #ifndef XMLSEC_NO_GOST
+ #include "csp_calg.h"
+
