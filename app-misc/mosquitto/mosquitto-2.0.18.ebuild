@@ -35,7 +35,10 @@ DEPEND="
 	test? ( dev-util/cunit )
 "
 BDEPEND="
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/psutil[${PYTHON_USEDEP}]')
+	)
 "
 
 pkg_setup() {
