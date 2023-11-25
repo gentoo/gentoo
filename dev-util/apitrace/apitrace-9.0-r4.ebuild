@@ -22,7 +22,7 @@ DEPEND="${PYTHON_DEPS}
 	>=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=
 	media-libs/mesa[egl(+),gles1,gles2,X?,${MULTILIB_USEDEP}]
-	>=media-libs/waffle-1.6.0-r1[egl,${MULTILIB_USEDEP}]
+	>=media-libs/waffle-1.6.0-r1[egl(+),${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	sys-process/procps:=[${MULTILIB_USEDEP}]
 	X? ( x11-libs/libX11 )
