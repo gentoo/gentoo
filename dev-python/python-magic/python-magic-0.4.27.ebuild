@@ -32,7 +32,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fix-gzip-test.patch
+	# upstream git backports
+	"${FILESDIR}"/${P}-test.patch
 )
 
 distutils_enable_tests unittest
