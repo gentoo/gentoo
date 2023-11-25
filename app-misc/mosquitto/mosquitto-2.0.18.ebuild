@@ -13,7 +13,7 @@ SRC_URI="https://mosquitto.org/files/source/${P}.tar.gz"
 LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="bridge examples +persistence +srv ssl systemd tcpd test websockets"
+IUSE="+bridge examples +persistence +srv ssl systemd tcpd test websockets"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( bridge )"
