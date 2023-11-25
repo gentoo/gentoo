@@ -71,8 +71,4 @@ if [[ ${PV} == 9999* ]]; then
 	"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/${P}-libxml2-2.12.0.patch
-)
-
 distutils_enable_tests pytest
