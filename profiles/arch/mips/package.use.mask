@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-24)
+# media-libs/shaderc not keyworded here.
+>=media-video/ffmpeg-5 shaderc
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
 app-admin/setools X
