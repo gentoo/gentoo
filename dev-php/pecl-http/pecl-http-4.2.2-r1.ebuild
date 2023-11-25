@@ -18,14 +18,14 @@ KEYWORDS="amd64 x86"
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"
 SLOT="8"
-IUSE="ssl curl_ssl_gnutls curl_ssl_nss +curl_ssl_openssl"
+IUSE="ssl curl_ssl_gnutls +curl_ssl_openssl"
 
 COMMON_DEPEND="app-arch/brotli:=
 	dev-libs/libevent
 	>=dev-php/pecl-raphf-2.0.1:7[php_targets_php8-0(-)?,php_targets_php8-1(-)?]
 	net-dns/libidn2
 	sys-libs/zlib
-	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=] )
+	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=] )
 	!ssl? ( net-misc/curl[-ssl] )
 "
 DEPEND="
