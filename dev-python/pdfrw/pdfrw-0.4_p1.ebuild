@@ -21,7 +21,7 @@ else
 	SRC_URI="https://github.com/sarnold/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz
 		test? ( https://github.com/pmaupin/static_pdfs/archive/${PDFS_COMMIT}.tar.gz
 			-> pdfrw-static_pdfs-${PDFS_COMMIT}.tar.gz )"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ppc ppc64 ~sparc x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

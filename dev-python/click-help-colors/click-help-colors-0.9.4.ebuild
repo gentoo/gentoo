@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="examples"
 
 RDEPEND="
@@ -27,6 +27,12 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/click-contrib/click-help-colors/pull/25
+	# https://github.com/click-contrib/click-help-colors/pull/26
+	"${FILESDIR}/${P}-no-color.patch"
+)
 
 python_install_all() {
 	use examples && dodoc -r examples

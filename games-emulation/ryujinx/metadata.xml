@@ -6,6 +6,10 @@
     <email>dotnet@gentoo.org</email>
     <name>Gentoo Dotnet Project</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>audvare@gmail.com</email>
+    <name>Andrew Udvare</name>
+  </maintainer>
   <longdescription>
     Ryujinx is an open-source Nintendo Switch emulator, created by gdkchan,
     written in C#. This emulator aims at providing excellent accuracy and

@@ -25,7 +25,7 @@ LICENSE="MIT"
 # Codicons: CC-BY-4.0
 LICENSE+=" Apache-2.0 CC-BY-4.0 MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	media-fonts/fontawesome

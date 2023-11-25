@@ -36,7 +36,7 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
@@ -393,7 +393,7 @@ src_compile() {
 		EMACS_EMAKE_ARGS=( EMACS="${S}-build/src/emacs" )
 		emake "${EMACS_EMAKE_ARGS[@]}" actual-all
 	else
-		unset EMACS_EMAKE_ARGS
+		EMACS_EMAKE_ARGS=()
 		emake
 	fi
 }
@@ -443,7 +443,12 @@ src_test() {
 }
 
 src_install() {
-	emake "${EMACS_EMAKE_ARGS[@]}" DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
+	emake \
+		"${EMACS_EMAKE_ARGS[@]}" \
+		DESTDIR="${D}" \
+		NO_BIN_LINK=t \
+		BLESSMAIL_TARGET="" \
+		install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die

@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/celery/py-amqp https://pypi.org/project/amqp/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="extras"
 
 RDEPEND="

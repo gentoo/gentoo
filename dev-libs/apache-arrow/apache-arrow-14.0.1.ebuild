@@ -63,7 +63,10 @@ REQUIRED_USE="
 	ssl? ( json )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-11.0.0-shared-lz4.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-11.0.0-shared-lz4.patch"
+	"${FILESDIR}"/${P}-gcc14.patch
+)
 
 src_prepare() {
 	# use Gentoo CXXFLAGS, specify docdir at src_configure.

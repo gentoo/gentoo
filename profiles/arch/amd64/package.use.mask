@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
+# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
+# are only available for amd64 and riscv
+>=gui-libs/wlroots-0.17.0 -drm -liftoff
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# Unmask on amd64.
+media-video/obs-studio -qsv -websocket
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
 # Qt6 is still experimental in freecad, currently the configure phase
 # gets itself stuck by importing both qt5 and qt6 cmake files.

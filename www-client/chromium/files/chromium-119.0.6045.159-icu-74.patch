@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/917645
+(copied patch from qtwebengine:6 - https://bugs.gentoo.org/917633)
+
+Quick fix for a static_assert failure with icu74. Still waiting
+for a proper upstream fix and unknown if entirely right, but is
+an extension of [1] (is now 48 rather than 43).
+
+[1] https://crrev.com/e60b571faa3f14dd9119a6792dccf12f8bf80192
+--- a/third_party/blink/renderer/platform/text/text_break_iterator.cc
++++ b/third_party/blink/renderer/platform/text/text_break_iterator.cc
+@@ -161,7 +161,9 @@ static const unsigned char kAsciiLineBreakTable[][(kAsciiLineBreakTableLastChar
+ };
+ // clang-format on
+ 
+-#if U_ICU_VERSION_MAJOR_NUM >= 58
++#if U_ICU_VERSION_MAJOR_NUM >= 74
++#define BA_LB_COUNT (U_LB_COUNT - 8)
++#elif U_ICU_VERSION_MAJOR_NUM >= 58
+ #define BA_LB_COUNT (U_LB_COUNT - 3)
+ #else
+ #define BA_LB_COUNT U_LB_COUNT

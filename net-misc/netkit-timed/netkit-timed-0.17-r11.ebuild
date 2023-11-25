@@ -9,7 +9,7 @@ DESCRIPTION="Netkit - timed: Time daemon"
 HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
 SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~mips ~ppc ~ppc64 ~sparc x86"
 LICENSE="BSD GPL-2"
 SLOT="0"
 

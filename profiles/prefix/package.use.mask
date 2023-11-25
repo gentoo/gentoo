@@ -5,10 +5,6 @@
 # needs unkeyworded virtual/gsasl
 mail-client/mutt gsasl
 
-# Fabian Groffen <grobian@gentoo.org> (2021-03-13)
-# nss-pem, bug #769578
-net-misc/curl curl_ssl_nss
-
 # Sam James <sam@gentoo.org> (2020-12-10)
 # Disable systemtap for now to be consistent
 # with ::prefix pre-merge.
