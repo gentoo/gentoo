@@ -58,6 +58,7 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
+		"${FILESDIR}/${P}-no-color.patch"
 	)
 
 	distutils-r1_python_prepare_all

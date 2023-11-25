@@ -1,0 +1,35 @@
+From ad01e9c2a965d395c5902c8ad70c970c7631316b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 25 Nov 2023 07:36:59 +0100
+Subject: [PATCH] Fix tests when NO_COLOR is set in the calling environment
+
+Add `FORCE_COLOR` and `NO_COLOR` variables to the `isolate()` fixture
+to ensure that these two variables do not affect internal test output.
+This fixes the following two test failures when pytest is called with
+`NO_COLOR` set:
+
+```
+FAILED tests/unit/test_exceptions.py::TestDiagnosticPipErrorPresentation_ASCII::test_complete_color - AssertionError: assert '\x1b[1merror...ing harder.\n' == '\x1b[1;31mer...ing harder.\n'
+FAILED tests/unit/test_exceptions.py::TestDiagnosticPipErrorPresentation_Unicode::test_complete_color - AssertionError: assert '\x1b[1merror...ing harder.\n' == '\x1b[1;31mer...ing harder.\n'
+```
+---
+ news/7ae28a10-04c4-4a1f-a276-4c9e04f2e0c1.trivial.rst | 0
+ tests/conftest.py                                     | 4 ++++
+ 2 files changed, 4 insertions(+)
+ create mode 100644 news/7ae28a10-04c4-4a1f-a276-4c9e04f2e0c1.trivial.rst
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index c5bf4bb9567..8d9eb029c79 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -318,6 +318,10 @@ def isolate(tmpdir: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+     # Make sure tests don't share a requirements tracker.
+     monkeypatch.delenv("PIP_BUILD_TRACKER", False)
+ 
++    # Make sure color control variables don't affect internal output.
++    monkeypatch.delenv("FORCE_COLOR", False)
++    monkeypatch.delenv("NO_COLOR", False)
++
+     # FIXME: Windows...
+     os.makedirs(os.path.join(home_dir, ".config", "git"))
+     with open(os.path.join(home_dir, ".config", "git", "config"), "wb") as fp:
