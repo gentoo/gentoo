@@ -20,5 +20,5 @@ src_unpack() {
 
 src_install() {
 	insinto /lib/firmware
-	doins -r epdc sdma vpu
+	doins -r */
 }
