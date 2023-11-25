@@ -27,8 +27,7 @@ RESTRICT="!test? ( test )"
 # enable x11-backend with X and vice versa
 WLROOTS_CDEPEND="
 	>=dev-libs/libinput-1.14.0:=
-	>=dev-libs/wayland-1.22
-	media-libs/libdisplay-info
+	>=dev-libs/wayland-1.21
 	media-libs/libglvnd
 	media-libs/mesa[egl(+),gles2]
 	sys-apps/hwdata:=
@@ -46,7 +45,7 @@ WLROOTS_CDEPEND="
 	)
 "
 WLROOTS_DEPEND="
-	>=dev-libs/wayland-protocols-1.32
+	>=dev-libs/wayland-protocols-1.28
 "
 WLROOTS_BDEPEND="
 	dev-util/glslang
@@ -61,10 +60,10 @@ CDEPEND="
 	>=dev-libs/wayland-protocols-1.12
 	media-libs/glm
 	media-libs/libglvnd
-	media-libs/libjpeg-turbo
-	media-libs/libpng
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	x11-libs/cairo
-	x11-libs/libdrm
+	x11-libs/libdrm:=
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
