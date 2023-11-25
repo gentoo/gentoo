@@ -22,6 +22,7 @@ net-p2p/bitcoin-core gui
 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
 media-video/ffmpeg libaom
 media-libs/libavif aom
+media-libs/libheif aom
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-19)
 # Pulls in LXDE which is not keyworded here
