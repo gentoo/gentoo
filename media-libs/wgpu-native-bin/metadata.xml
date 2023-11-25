@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>lisyarus@gmail.com</email>
     <description>Primary maintainer</description>
   </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">gfx-rs/wgpu-native</remote-id>
+  </upstream>
   <longdescription>
     WebGPU is an API that exposes the capabilities of GPU hardware for the Web. The API is designed from the ground up to efficiently map to (post-2014) native GPU APIs. WebGPU is not related to WebGL and does not explicitly target OpenGL ES.
-	wgpu-native is a native WebGPU implementation in Rust, based on wgpu-core, with C bindings.
+  wgpu-native is a native WebGPU implementation in Rust, based on wgpu-core, with C bindings.
   </longdescription>
   <use>
     <flag name="debug">Install debug version of the library</flag>

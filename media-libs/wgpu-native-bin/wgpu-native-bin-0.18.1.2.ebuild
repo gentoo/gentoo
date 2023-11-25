@@ -19,7 +19,7 @@ IUSE="debug static-libs"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
