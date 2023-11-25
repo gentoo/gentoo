@@ -63,6 +63,7 @@ RDEPEND="!savedconfig? (
 	)"
 
 QA_PREBUILT="*"
+PATCHES=( "${FILESDIR}/${PN}-remove-rdfind-dep-and-use.patch" )
 
 pkg_setup() {
 	if use compress-xz || use compress-zstd ; then
@@ -99,9 +100,7 @@ src_unpack() {
 
 src_prepare() {
 
-	if ! use deduplicate; then
-		PATCHES+=( "${FILESDIR}"/${PN}-remove-rdfind-dep-and-use.patch )
-	fi
+	use deduplicate && export LINUX_FIRMWARE_DO_DEDUPE=1
 	default
 
 	find . -type f -not -perm 0644 -print0 \
