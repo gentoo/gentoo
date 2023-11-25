@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 MY_P="${P/_pre/.}"
 MY_PV="${PV/_pre/.}"
@@ -13,7 +13,6 @@ SRC_URI="https://github.com/fujiwarat/${PN}/releases/download/${MY_PV}/${MY_P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="app-i18n/ibus
 	dev-libs/glib:2
