@@ -28,6 +28,6 @@ DEPEND="
 	>=kde-frameworks/kitemmodels-${KFMIN}:5
 	>=kde-frameworks/krunner-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"

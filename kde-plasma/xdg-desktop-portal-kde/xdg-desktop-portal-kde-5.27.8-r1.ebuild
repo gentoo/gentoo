@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kwayland-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	x11-libs/libxkbcommon
 "
 DEPEND="${COMMON_DEPEND}

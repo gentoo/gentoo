@@ -39,7 +39,7 @@ DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}

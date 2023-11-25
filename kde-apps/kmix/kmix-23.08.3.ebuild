@@ -35,7 +35,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	alsa? ( >=media-libs/alsa-lib-1.0.14a )
-	plasma? ( >=kde-frameworks/plasma-${KFMIN}:5 )
+	plasma? ( >=kde-plasma/libplasma-${KFMIN}:5 )
 	pulseaudio? (
 		media-libs/libcanberra
 		media-libs/libpulse

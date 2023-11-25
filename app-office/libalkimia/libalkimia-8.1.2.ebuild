@@ -43,7 +43,7 @@ DEPEND="
 	gmp? ( dev-libs/gmp:0=[cxx(+)] )
 	plasma? (
 		>=kde-frameworks/kpackage-${KFMIN}:5
-		>=kde-frameworks/plasma-${KFMIN}:5
+		>=kde-plasma/libplasma-${KFMIN}:5
 	)
 	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 "

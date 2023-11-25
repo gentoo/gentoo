@@ -27,7 +27,7 @@ DEPEND="
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	media-libs/libcanberra
 	media-libs/libpulse
 "

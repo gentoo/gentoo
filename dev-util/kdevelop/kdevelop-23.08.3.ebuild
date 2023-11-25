@@ -70,7 +70,7 @@ COMMON_DEPEND="
 	hex? ( app-editors/okteta:5 )
 	plasma? (
 		>=kde-frameworks/krunner-${KFMIN}:5
-		>=kde-frameworks/plasma-${KFMIN}:5
+		>=kde-plasma/libplasma-${KFMIN}:5
 	)
 	qmake? ( dev-util/kdevelop-pg-qt:5 )
 	reviewboard? ( >=kde-frameworks/purpose-${KFMIN}:5 )

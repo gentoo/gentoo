@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwayland-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5[X(+)]
+	>=kde-plasma/libplasma-${KFMIN}:5[X(+)]
 	x11-libs/libSM
 	x11-libs/libX11
 	x11-libs/libxcb

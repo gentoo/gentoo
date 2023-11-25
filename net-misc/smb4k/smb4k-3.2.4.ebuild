@@ -54,7 +54,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	plasma? (
 		>=dev-qt/qtquickcontrols2-${QTMIN}:5
-		>=kde-frameworks/plasma-${KFMIN}:5
+		>=kde-plasma/libplasma-${KFMIN}:5
 	)
 "
 

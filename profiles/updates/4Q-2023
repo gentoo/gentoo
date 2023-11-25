@@ -28,3 +28,4 @@ slotmove dev-haskell/hdbc-postgresql 2 0
 slotmove dev-haskell/hdbc 2 0
 slotmove dev-haskell/parallel 3 0
 slotmove dev-haskell/quickcheck 2 0
+move kde-frameworks/plasma kde-plasma/libplasma

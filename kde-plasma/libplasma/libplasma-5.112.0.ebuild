@@ -3,8 +3,11 @@
 
 EAPI=8
 
-KDE_ORG_NAME="${PN}-framework"
-PVCUT=$(ver_cut 1-2)
+ECM_NONGUI="true"
+ECM_QTHELP="true"
+ECM_TEST="true"
+KDE_ORG_NAME="plasma-framework"
+KFMIN=$(ver_cut 1-2)
 QTMIN=5.15.9
 inherit ecm frameworks.kde.org
 
@@ -26,36 +29,36 @@ RDEPEND="
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
-	=kde-frameworks/kactivities-${PVCUT}*:5
-	=kde-frameworks/karchive-${PVCUT}*:5
-	=kde-frameworks/kconfig-${PVCUT}*:5[qml]
-	=kde-frameworks/kconfigwidgets-${PVCUT}*:5
-	=kde-frameworks/kcoreaddons-${PVCUT}*:5
-	=kde-frameworks/kdeclarative-${PVCUT}*:5
-	=kde-frameworks/kglobalaccel-${PVCUT}*:5
-	=kde-frameworks/kguiaddons-${PVCUT}*:5
-	=kde-frameworks/ki18n-${PVCUT}*:5
-	=kde-frameworks/kiconthemes-${PVCUT}*:5
-	=kde-frameworks/kio-${PVCUT}*:5
-	=kde-frameworks/kirigami-${PVCUT}*:5
-	=kde-frameworks/knotifications-${PVCUT}*:5
-	=kde-frameworks/kpackage-${PVCUT}*:5
-	=kde-frameworks/kservice-${PVCUT}*:5
-	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X]
-	=kde-frameworks/kxmlgui-${PVCUT}*:5
+	=kde-plasma/plasma-activities-${KFMIN}*:5
+	=kde-frameworks/karchive-${KFMIN}*:5
+	=kde-frameworks/kconfig-${KFMIN}*:5[qml]
+	=kde-frameworks/kconfigwidgets-${KFMIN}*:5
+	=kde-frameworks/kcoreaddons-${KFMIN}*:5
+	=kde-frameworks/kdeclarative-${KFMIN}*:5
+	=kde-frameworks/kglobalaccel-${KFMIN}*:5
+	=kde-frameworks/kguiaddons-${KFMIN}*:5
+	=kde-frameworks/ki18n-${KFMIN}*:5
+	=kde-frameworks/kiconthemes-${KFMIN}*:5
+	=kde-frameworks/kio-${KFMIN}*:5
+	=kde-frameworks/kirigami-${KFMIN}*:5
+	=kde-frameworks/knotifications-${KFMIN}*:5
+	=kde-frameworks/kpackage-${KFMIN}*:5
+	=kde-frameworks/kservice-${KFMIN}*:5
+	=kde-frameworks/kwidgetsaddons-${KFMIN}*:5
+	=kde-frameworks/kwindowsystem-${KFMIN}*:5[X]
+	=kde-frameworks/kxmlgui-${KFMIN}*:5
 	x11-libs/libX11
 	x11-libs/libxcb
 	!gles2-only? ( media-libs/libglvnd[X] )
 	wayland? (
-		=kde-frameworks/kwayland-${PVCUT}*:5
+		=kde-frameworks/kwayland-${KFMIN}*:5
 		media-libs/libglvnd
 	)
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
-BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )"
+BDEPEND="man? ( >=kde-frameworks/kdoctools-${KFMIN}:5 )"
 
 src_configure() {
 	local mycmakeargs=(
