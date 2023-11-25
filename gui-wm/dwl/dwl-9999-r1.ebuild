@@ -6,7 +6,7 @@ EAPI=8
 inherit savedconfig toolchain-funcs
 
 MY_P="${PN}-v${PV}"
-WLROOTS_SLOT="0/16"
+WLROOTS_SLOT="0/18"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/djpohly/dwl"
 	inherit git-r3
@@ -70,7 +70,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	dodoc README.md
+	dodoc CHANGELOG.md README.md
 
 	save_config config.h
 }
