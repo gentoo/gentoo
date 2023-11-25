@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 GNOME_ORG_MODULE="gamin"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit autotools epatch gnome.org multilib-minimal
+inherit autotools gnome.org multilib-minimal
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
 HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
@@ -27,40 +27,19 @@ RDEPEND="
 	!<app-admin/gamin-0.1.10"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.10-noinst-lib.patch
+	"${FILESDIR}/${PN}-0.1.10-G_CONST_RETURN-removal.patch"
+	#"${FILESDIR}/${PN}-0.1.10-crosscompile-fix.patch"
+	"${FILESDIR}/${P}-armel-features.patch"
+	"${FILESDIR}/${PN}-0.1.10-deadlock.patch"
+	"${FILESDIR}/${PN}-0.1.10-musl-pthread.patch"
+	"${FILESDIR}"/${PN}-0.1.10-compilewarnings.patch
+)
+
 src_prepare() {
 	default
 	mv "${WORKDIR}"/pkg-config-*/pkg.m4 "${WORKDIR}"/ || die
-
-	# Fix QA warnings, bug #257281, upstream #466791
-	epatch "${FILESDIR}"/${PN}-0.1.10-compilewarnings.patch
-
-	if [[ ${CHOST} != *-solaris* ]] ; then
-		# Fix compile warnings; bug #188923
-		epatch "${DISTDIR}"/gamin-0.1.9-freebsd.patch.bz2
-	else
-		# (Open)Solaris necessary patches (changes configure.in), unfortunately
-		# conflicts with freebsd patch and breaks some linux installs so it must
-		# only be applied if on solaris.
-		epatch "${DISTDIR}"/${P}-opensolaris.patch.bz2
-	fi
-
-	# Fix collision problem due to intermediate library, upstream bug #530635
-	epatch "${FILESDIR}"/${PN}-0.1.10-noinst-lib.patch
-
-	# Fix compilation with latest glib, bug #382783
-	epatch "${FILESDIR}/${PN}-0.1.10-G_CONST_RETURN-removal.patch"
-
-	# Fix crosscompilation issues, bug #267604
-	epatch "${FILESDIR}/${PN}-0.1.10-crosscompile-fix.patch"
-
-	# Enable linux specific features on armel, upstream bug #588338
-	epatch "${FILESDIR}/${P}-armel-features.patch"
-
-	# Fix possible server deadlock in ih_sub_cancel, upstream bug #667230
-	epatch "${FILESDIR}/${PN}-0.1.10-deadlock.patch"
-
-	# Fix musl build, upstream bug #588337
-	epatch "${FILESDIR}/${PN}-0.1.10-musl-pthread.patch"
 
 	# Drop DEPRECATED flags
 	sed -i -e 's:-DG_DISABLE_DEPRECATED:$(NULL):g' server/Makefile.am || die
