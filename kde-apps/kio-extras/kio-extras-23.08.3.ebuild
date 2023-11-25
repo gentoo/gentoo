@@ -47,7 +47,7 @@ DEPEND="
 	activities? (
 		>=dev-qt/qtsql-${QTMIN}:5
 		>=kde-frameworks/kactivities-${KFMIN}:5
-		>=kde-frameworks/kactivities-stats-${KFMIN}:5
+		>=kde-plasma/plasma-activities-stats-${KFMIN}:5
 	)
 	ios? (
 		app-pda/libimobiledevice:=
