@@ -39,7 +39,7 @@ RDEPEND="
 	wayland? ( dev-libs/wayland )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="wayland? ( kde-frameworks/extra-cmake-modules:5 )"
+BDEPEND="wayland? ( kde-frameworks/extra-cmake-modules:0 )"
 
 # used for JIT recompiler
 QA_EXECSTACK="usr/bin/melonDS"

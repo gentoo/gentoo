@@ -39,7 +39,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	gui? ( >=kde-frameworks/kf-env-4 )
 "
-BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:5 )"
+BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
 
 src_prepare() {
 	cmake_src_prepare

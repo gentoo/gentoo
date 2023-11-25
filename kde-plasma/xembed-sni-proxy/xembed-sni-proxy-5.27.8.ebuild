@@ -29,7 +29,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-plasma/xembed-sni-proxy:0
 "
-BDEPEND=">=kde-frameworks/extra-cmake-modules-${KFMIN}:5"
+BDEPEND=">=kde-frameworks/extra-cmake-modules-${KFMIN}:0"
 
 PATCHES=( "${FILESDIR}/${PN}-5.24.80-standalone.patch" )
 
