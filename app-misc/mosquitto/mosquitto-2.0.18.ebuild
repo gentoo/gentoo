@@ -21,12 +21,12 @@ REQUIRED_USE="test? ( bridge )"
 RDEPEND="
 	acct-user/mosquitto
 	acct-group/mosquitto
-	dev-libs/cJSON:=
+	dev-libs/cJSON
 	srv? ( net-dns/c-ares:= )
 	ssl? (
 		dev-libs/openssl:0=
 	)
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	websockets? ( net-libs/libwebsockets[lejp] )
 "
