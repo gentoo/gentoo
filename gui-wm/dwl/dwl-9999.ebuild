@@ -6,7 +6,7 @@ EAPI=8
 inherit savedconfig toolchain-funcs
 
 MY_P="${PN}-v${PV}"
-WLROOTS_SLOT="0/16"
+WLROOTS_SLOT="0/17"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/djpohly/dwl"
 	inherit git-r3
@@ -38,7 +38,7 @@ IUSE="X"
 RDEPEND="
 	dev-libs/libinput:=
 	dev-libs/wayland
-	gui-libs/wlroots:${WLROOTS_SLOT}[libinput(+),X?]
+	gui-libs/wlroots:${WLROOTS_SLOT}[libinput,session,X?]
 	x11-libs/libxkbcommon
 	X? (
 		x11-libs/libxcb:=
@@ -52,7 +52,7 @@ DEPEND="
 	sys-kernel/linux-headers
 "
 BDEPEND="
-	dev-libs/wayland-protocols
+	>=dev-libs/wayland-protocols-1.32
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
@@ -70,7 +70,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	dodoc README.md
+	dodoc CHANGELOG.md README.md
 
 	save_config config.h
 }
