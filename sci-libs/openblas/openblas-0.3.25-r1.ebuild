@@ -126,7 +126,7 @@ src_compile() {
 	if use index-64bit; then
 		emake -C "${S}-index-64bit" \
 			  INTERFACE64=1 \
-			  LIBPREFIX=libopenblas64
+			  LIBPREFIX=libopenblas64 shared
 	fi
 }
 
@@ -148,15 +148,15 @@ src_install() {
 	if use eselect-ldso; then
 		insinto /usr/$(get_libdir)/blas/openblas/
 		doins interface/libblas.so.3
-		dosym libblas.so.3 usr/$(get_libdir)/blas/openblas/libblas.so
+		dosym -r /usr/$(get_libdir)/libblas.so.3 /usr/$(get_libdir)/blas/openblas/libblas.so
 		doins interface/libcblas.so.3
-		dosym libcblas.so.3 usr/$(get_libdir)/blas/openblas/libcblas.so
+		dosym -r /usr/$(get_libdir)/libcblas.so.3 /usr/$(get_libdir)/blas/openblas/libcblas.so
 
 		insinto /usr/$(get_libdir)/lapack/openblas/
 		doins interface/liblapack.so.3
-		dosym liblapack.so.3 usr/$(get_libdir)/lapack/openblas/liblapack.so
+		dosym -r /usr/$(get_libdir)/liblapack.so.3 /usr/$(get_libdir)/lapack/openblas/liblapack.so
 		doins interface/liblapacke.so.3
-		dosym liblapacke.so.3 usr/$(get_libdir)/lapack/openblas/liblapacke.so
+		dosym -r /usr/$(get_libdir)/liblapacke.so.3 /usr/$(get_libdir)/lapack/openblas/liblapacke.so
 	fi
 }
 
