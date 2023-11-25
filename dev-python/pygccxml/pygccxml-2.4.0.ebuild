@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}"
 distutils_enable_tests unittest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
-
 python_prepare_all() {
 	eapply -p0 "${FILESDIR}/${PN}-2.4.0-pyproject.patch"
 	eapply_user
