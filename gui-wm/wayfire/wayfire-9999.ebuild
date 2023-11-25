@@ -108,7 +108,7 @@ src_prepare() {
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
 		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 
-	if [[ "${PV}" == 9999 ]]; then
+	if [[ "${PV}" != 9999 ]]; then
 		# Don't run git if git is installed and its not a git dir
 		sed -i \
 			-e "/git = find_program/ifs = import\('fs'\)" \
