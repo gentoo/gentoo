@@ -16,6 +16,7 @@ IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
+RDEPEND="app-arch/libarchive[bzip2]"
 BDEPEND="
 	doc? (
 		${PYTHON_DEPS}
@@ -26,9 +27,6 @@ BDEPEND="
 		>=dev-qt/linguist-tools-${QTMIN}:5
 		>=dev-qt/qtcore-${QTMIN}:5
 	)
-"
-RDEPEND="
-	app-arch/libarchive[bzip2]
 "
 
 PATCHES=(
