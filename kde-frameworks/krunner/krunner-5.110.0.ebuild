@@ -26,7 +26,7 @@ DEPEND="
 	=kde-plasma/libplasma-${PVCUT}*:5
 	=kde-frameworks/solid-${PVCUT}*:5
 	=kde-frameworks/threadweaver-${PVCUT}*:5
-	activities? ( =kde-frameworks/kactivities-${PVCUT}*:5 )
+	activities? ( =kde-plasma/plasma-activities-${PVCUT}*:5 )
 "
 RDEPEND="${DEPEND}"
 

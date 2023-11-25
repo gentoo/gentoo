@@ -3,12 +3,16 @@
 
 EAPI=8
 
-PVCUT=$(ver_cut 1-2)
-PLASMA_MINIMAL=5.16.5
+ECM_NONGUI="true"
+ECM_QTHELP="true"
+ECM_TEST="true"
+KDE_ORG_NAME="kactivities"
+KFMIN=$(ver_cut 1-2)
 QTMIN=5.15.9
 inherit ecm frameworks.kde.org
 
-DESCRIPTION="Framework for working with KDE activities"
+DESCRIPTION="Core components for KDE's Activities System"
+
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
@@ -18,11 +22,11 @@ COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
-	=kde-frameworks/kconfig-${PVCUT}*:5
-	=kde-frameworks/kcoreaddons-${PVCUT}*:5
+	=kde-frameworks/kconfig-${KFMIN}*:5
+	=kde-frameworks/kcoreaddons-${KFMIN}*:5
 "
 RDEPEND="${COMMON_DEPEND}
-	>=kde-plasma/kactivitymanagerd-${PLASMA_MINIMAL}:5
+	>=kde-plasma/kactivitymanagerd-5.16.5:5
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost

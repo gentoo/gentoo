@@ -20,8 +20,8 @@ IUSE=""
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
-	=kde-frameworks/kactivities-${KFMIN}*:5
 	=kde-frameworks/kconfig-${KFMIN}*:5
+	=kde-plasma/plasma-activities-${KFMIN}*:5
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/boost )

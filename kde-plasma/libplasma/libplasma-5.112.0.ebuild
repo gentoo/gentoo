@@ -29,7 +29,6 @@ RDEPEND="
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
-	=kde-plasma/plasma-activities-${KFMIN}*:5
 	=kde-frameworks/karchive-${KFMIN}*:5
 	=kde-frameworks/kconfig-${KFMIN}*:5[qml]
 	=kde-frameworks/kconfigwidgets-${KFMIN}*:5
@@ -47,6 +46,7 @@ RDEPEND="
 	=kde-frameworks/kwidgetsaddons-${KFMIN}*:5
 	=kde-frameworks/kwindowsystem-${KFMIN}*:5[X]
 	=kde-frameworks/kxmlgui-${KFMIN}*:5
+	=kde-plasma/plasma-activities-${KFMIN}*:5
 	x11-libs/libX11
 	x11-libs/libxcb
 	!gles2-only? ( media-libs/libglvnd[X] )
