@@ -176,7 +176,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Fix desktop file
-	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecadweb.FreeCAD.desktop || die
+	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecad.FreeCAD.desktop || die
 
 	find "${S}" -type f -exec dos2unix -q {} \; || die "failed to convert to unix line endings"
 
