@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit linux-info mount-boot savedconfig multiprocessing
 
 # In case this is a real snapshot, fill in commit below.
@@ -29,9 +29,10 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )
 	unknown-license? ( all-rights-reserved )"
 SLOT="0"
-IUSE="compress-xz compress-zstd initramfs +redistributable savedconfig unknown-license"
+IUSE="compress-xz compress-zstd deduplicate initramfs +redistributable savedconfig unknown-license"
 REQUIRED_USE="initramfs? ( redistributable )
-	?? ( compress-xz compress-zstd )"
+	?? ( compress-xz compress-zstd )
+	savedconfig? ( !deduplicate )"
 
 RESTRICT="binchecks strip test
 	unknown-license? ( bindist )"
@@ -39,7 +40,7 @@ RESTRICT="binchecks strip test
 BDEPEND="initramfs? ( app-arch/cpio )
 	compress-xz? ( app-arch/xz-utils )
 	compress-zstd? ( app-arch/zstd )
-	app-misc/rdfind"
+	deduplicate? ( app-misc/rdfind )"
 
 #add anything else that collides to this
 RDEPEND="!savedconfig? (
@@ -63,6 +64,7 @@ RDEPEND="!savedconfig? (
 	)"
 
 QA_PREBUILT="*"
+PATCHES=( "${FILESDIR}/${PN}-remove-rdfind-dep-and-use.patch" )
 
 pkg_setup() {
 	if use compress-xz || use compress-zstd ; then
@@ -98,6 +100,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	use deduplicate && export LINUX_FIRMWARE_DO_DEDUPE=1
 	default
 
 	find . -type f -not -perm 0644 -print0 \
