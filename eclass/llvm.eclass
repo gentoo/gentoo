@@ -174,6 +174,37 @@ get_llvm_prefix() {
 	echo "${prefix}/usr/lib/llvm/$(get_llvm_slot "${@}")"
 }
 
+# @FUNCTION: llvm_tuple_to_target
+# @USAGE: [<tuple>]
+# @DESCRIPTION:
+# Translate a tuple into a target suitable for LLVM_TARGETS.
+# Defaults to ${CHOST} if not specified.
+llvm_tuple_to_target() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	case ${1:-${CHOST}} in
+		aarch64*) echo "AArch64";;
+		amdgcn*) echo "AMDGPU";;
+		arc*) echo "ARC";;
+		arm*) echo "ARM";;
+		avr*) echo "AVR";;
+		bpf*) echo "BPF";;
+		csky*) echo "CSKY";;
+		loong*) echo "LoongArch";;
+		m68k*) echo "M68k";;
+		mips*) echo "Mips";;
+		msp430*) echo "MSP430";;
+		nvptx*) echo "NVPTX";;
+		powerpc*) echo "PowerPC";;
+		riscv*) echo "RISCV";;
+		sparc*) echo "Sparc";;
+		s390*) echo "SystemZ";;
+		x86_64*|i?86*) echo "X86";;
+		xtensa*) echo "Xtensa";;
+		*) die "Unknown LLVM target for tuple ${1:-${CHOST}}"
+	esac
+}
+
 # @FUNCTION: llvm_fix_clang_version
 # @USAGE: <variable-name>...
 # @DESCRIPTION:
