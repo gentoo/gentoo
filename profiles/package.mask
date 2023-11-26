@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-11-26)
+# Work in progress
+~dev-lang/perl-5.38.1
+
 # John Helmert III <ajak@gentoo.org> (2023-11-25)
 # Multiple vulnerabilities, unmaintained upstream and in Gentoo.
 # subtitleripper included as sole reverse dependency, similarly
