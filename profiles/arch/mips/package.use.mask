@@ -15,7 +15,7 @@ app-admin/setools X
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
-net-p2p/bitcoin-core gui
+net-p2p/bitcoin-core gui qrcode
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-20)
 # media-libs/libaom casualties
