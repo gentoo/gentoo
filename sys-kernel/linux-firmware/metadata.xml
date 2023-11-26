@@ -20,6 +20,7 @@
 <use>
 	<flag name="compress-xz">Compress firmware using xz (<pkg>app-arch/xz-utils</pkg>) before installation</flag>
 	<flag name="compress-zstd">Compress firmware using zstd (<pkg>app-arch/zstd</pkg>) before installation</flag>
+	<flag name="deduplicate">Create symlinks for all firmware that is duplicate using rdfind</flag>
 	<flag name="initramfs">Create and install initramfs for early microcode loading in /boot (only AMD for now)</flag>
 	<flag name="redistributable">Install also non-free (but redistributable) firmware files</flag>
 	<flag name="savedconfig">Allows individual selection of firmware files</flag>
