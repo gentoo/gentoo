@@ -61,9 +61,13 @@ src_install() {
 	docompress -x /usr/share/doc/${PF}/NEWS.org
 	dodoc NEWS.org
 
-	# Same as above.
-	docompress -x /usr/share/doc/${PF}/mu4e-about.org
-	dodoc mu4e/mu4e-about.org
+	if use emacs; then
+		# Same as above.
+		docompress -x /usr/share/doc/${PF}/mu4e-about.org
+		dodoc mu4e/mu4e-about.org
+
+		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
+	fi
 }
 
 pkg_preinst() {
