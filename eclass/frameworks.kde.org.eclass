@@ -36,7 +36,7 @@ inherit kde.org
 HOMEPAGE="https://develop.kde.org/products/frameworks/"
 
 SLOT=6
-if [[ ${PV} == 5.9999 ]] || ver_test ${PV} -lt 5.240; then
+if ver_test ${PV} -lt 5.240; then
 	SLOT=5
 fi
 if [[ ${PN} == extra-cmake-modules ]]; then
@@ -63,7 +63,7 @@ _KDE_SRC_URI="mirror://kde/"
 
 case ${KDE_BUILD_TYPE} in
 	live)
-		if [[ ${PV} == 5.9999 ]]; then
+		if [[ ${PV} == 5.239.9999 ]]; then
 			EGIT_BRANCH="kf5"
 		fi
 		;;
