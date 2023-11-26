@@ -28,7 +28,7 @@ BDEPEND="sys-kernel/linux-headers
 "
 
 RDEPEND="
-	legion-tools? ( dev-python/PyQt5 dev-python/pyyaml dev-python/argcomplete )
+	legion-tools? ( dev-python/PyQt5 dev-python/pyyaml dev-python/argcomplete dev-python/darkdetect )
 	downgrade-nvidia? ( <=x11-drivers/nvidia-drivers-525 )
 	legion-acpi? ( sys-power/acpid )
 	radeon-dgpu? ( dev-util/rocm-smi )
@@ -83,8 +83,8 @@ src_install() {
 		fi
 
 		if use legion-acpi; then
-			insinto /etc/acpi/events/ && doins acpi/events/{ac_adapter_legion-fancurve,novo-button,PrtSc-button,fn-r-refrate}
-			insinto /etc/acpi/actions/ && doins acpi/actions/{battery-legion-quiet.sh,snipping-tool.sh,fn-r-refresh-rate.sh}
+			insinto /usr/share/legion_linux/acpi/events && doins acpi/events/{ac_adapter_legion-fancurve,novo-button,PrtSc-button,fn-r-refrate}
+			insinto /usr/share/legion_linux/acpi/actions  && doins acpi/actions/{battery-legion-quiet.sh,snipping-tool.sh,fn-r-refresh-rate.sh}
 		fi
 	fi
 }
@@ -102,6 +102,7 @@ pkg_postinst() {
 			ewarn "Note: Edit /etc/legion_linux/.env to enable nvidia TDP control\n"
 		fi
 	fi
+	use legion-acpi && ewarn "Acpi exemples are included in /usr/share/legion_linux/acpi\n"
 	ewarn "Note for 2023-2023 Legion user: It need help for testing the features"
 	ewarn "Pls test the feature how is decribe in the README of the project!"
 	ewarn "and also go to this issue in github: https://github.com/johnfanv2/LenovoLegionLinux/issues/46"

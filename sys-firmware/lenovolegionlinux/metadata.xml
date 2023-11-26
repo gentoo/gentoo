@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<use>
 		<flag name="legion-tools">Build and install legion_gui and legion_cli</flag>
-		<flag name="legion-acpi">Install acpi script (experimental feature)</flag>
+		<flag name="legion-acpi">Provide acpi exemple /usr/share/legion_linux/acpi </flag>
 		<flag name="radeon-dgpu">Enable AMD GPU TDP control (systemd-service)</flag>
 		<flag name="downgrade-nvidia">Downgrade nvidia for 525 to enable TDP control (systemd-service)</flag>
 		<flag name="ryzenadj">[AMD] CPU and APU control using ryzenadj (systemd-service)</flag>
