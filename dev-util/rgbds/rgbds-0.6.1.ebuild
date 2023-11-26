@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="ZLIB"
+LICENSE="MIT"
 SLOT="0"
 
 DEPEND="media-libs/libpng"
