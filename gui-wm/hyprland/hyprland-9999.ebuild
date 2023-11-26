@@ -80,7 +80,6 @@ BDEPEND="
 	app-misc/jq
 	dev-util/cmake
 	dev-util/wayland-scanner
-	dev-vcs/git
 	virtual/pkgconfig
 "
 
