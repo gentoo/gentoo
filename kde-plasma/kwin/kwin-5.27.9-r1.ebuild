@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/kpackage-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
-	>=kde-frameworks/kwayland-${KFMIN}:5
+	>=kde-plasma/kwayland-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5=[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5

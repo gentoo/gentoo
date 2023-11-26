@@ -51,7 +51,7 @@ RDEPEND="
 	x11-libs/libxcb
 	!gles2-only? ( media-libs/libglvnd[X] )
 	wayland? (
-		=kde-frameworks/kwayland-${KFMIN}*:5
+		=kde-plasma/kwayland-${KFMIN}*:5
 		media-libs/libglvnd
 	)
 "

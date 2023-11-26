@@ -46,7 +46,7 @@ COMMON_DEPEND="
 			>=dev-qt/qtgui-${QTMIN}:5[X]
 		)
 		>=dev-qt/qtwayland-${QTMIN}:5
-		>=kde-frameworks/kwayland-${KFMIN}:5
+		>=kde-plasma/kwayland-${KFMIN}:5
 		kde-plasma/kpipewire:5
 	)
 "
