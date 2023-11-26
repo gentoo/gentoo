@@ -51,6 +51,10 @@ src_unpack() {
 }
 
 src_compile() {
+	if use x86; then
+		#917577 pie breaks build on x86
+		GOFLAGS=${GOFLAGS//-buildmode=pie}
+	fi
 	promu build -v || die
 	./"${PN}" --help-man > "${PN}".1 || die
 }
