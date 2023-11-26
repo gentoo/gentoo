@@ -120,14 +120,6 @@ dev-python/future
 # preferably) or last rite it.
 dev-python/nose
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-14)
-# The toml package is unmaintained (last release in 2020) and does not
-# implement TOML 1.0.  The recommended alternatives include the built-in
-# tomllib module, dev-python/tomli, dev-python/tomli-w
-# and dev-python/tomlkit.  Please consult Guide for porting tips:
-# https://projects.gentoo.org/python/guide/porting.html#replacing-the-toml-package
-dev-python/toml
-
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 # When possible, replace dependencies on these packages with a dependency on
