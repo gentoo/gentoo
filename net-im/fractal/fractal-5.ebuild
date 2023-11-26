@@ -63,6 +63,9 @@ DEPEND="
 	>=dev-db/sqlite-3.24.0:3
 	>=sys-apps/xdg-desktop-portal-1.14.1
 "
+RDEPEND="
+	${DEPEND}
+"
 
 # Rust
 QA_FLAGS_IGNORED="usr/bin/fractal"
