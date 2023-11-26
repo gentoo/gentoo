@@ -31,7 +31,8 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 SLOT="0"
 IUSE="compress-xz compress-zstd deduplicate initramfs +redistributable savedconfig unknown-license"
 REQUIRED_USE="initramfs? ( redistributable )
-	?? ( compress-xz compress-zstd )"
+	?? ( compress-xz compress-zstd )
+	savedconfig? ( !deduplicate )"
 
 RESTRICT="binchecks strip test
 	unknown-license? ( bindist )"
