@@ -17,10 +17,9 @@ S="${WORKDIR}/${PN}-rocm-${PV}"
 LICENSE="BSD"
 KEYWORDS="~amd64"
 SLOT="0/$(ver_cut 1-2)"
+RESTRICT="!test? ( test )"
 IUSE="benchmark test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
-
-RESTRICT="test" # Tests fail
 
 BDEPEND="
 	>=dev-util/rocm-cmake-5.3
@@ -76,7 +75,6 @@ src_configure() {
 		-DCMAKE_INSTALL_INCLUDEDIR="include/rocblas"
 		-DBUILD_CLIENTS_SAMPLES=OFF
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
-		-DTensile_TEST_LOCAL_PATH="${EPREFIX}/usr/share/Tensile"
 		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
 		-DTensile_CPU_THREADS=$(makeopts_jobs)
 		-DBUILD_WITH_PIP=OFF
