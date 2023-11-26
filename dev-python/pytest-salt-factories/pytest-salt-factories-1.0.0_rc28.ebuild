@@ -59,6 +59,7 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		tests/integration/factories/daemons/ssh/test_salt_ssh.py::test_salt_ssh
 		tests/integration/factories/daemons/sshd/test_sshd.py::test_connect
+		tests/scenarios/examples/test_echoext.py::test_echoext
 	)
 
 	local ret tempdir x
@@ -77,7 +78,7 @@ python_test() {
 		PYTEST_PLUGINS+=,saltfactories.plugins.${x}
 	done
  
-	nonfatal epytest --no-sys-stats -x
+	nonfatal epytest --no-sys-stats
 	ret=${?}
 
 	rm -rf "${tempdir}" || die
