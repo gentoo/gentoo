@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-25)
+# Casualty of dev-ruby/msgpack restriction to ruby32
+# Remove this once ruby32 is unmasked in base
+dev-ruby/activesupport msgpack test
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Broken on <dev-lang/ruby-3.2
 # https://github.com/msgpack/msgpack-ruby/pull/355
