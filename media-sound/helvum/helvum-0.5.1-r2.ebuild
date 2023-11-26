@@ -109,7 +109,7 @@ CRATES="
 	winnow@0.5.15
 "
 
-LLVM_MAX_SLOT=16
+LLVM_MAX_SLOT=17
 
 inherit cargo desktop xdg llvm
 
