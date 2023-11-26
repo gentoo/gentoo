@@ -14,8 +14,6 @@ HOMEPAGE="https://github.com/stleary/JSON-java"
 SRC_URI="https://codeload.github.com/stleary/JSON-java/tar.gz/${PV} -> ${P}.tar.gz
 	test? (
 		https://repo1.maven.org/maven2/com/jayway/jsonpath/json-path/2.1.0/json-path-2.1.0.jar
-		https://repo1.maven.org/maven2/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar
-		https://repo1.maven.org/maven2/net/minidev/asm/1.0.2/asm-1.0.2.jar
 	)"
 S="${WORKDIR}/JSON-java-${PV}"
 
@@ -26,23 +24,25 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	>=virtual/jdk-1.8:*
 	test? (
+		dev-java/asm:9
+		dev-java/json-smart:2
+		dev-java/mockito:4
 		dev-java/slf4j-api:0
-		dev-java/mockito:0
 	)
 "
 
 RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=( {CONTRIBUTING,README,SECURITY}.md )
-PATCHES=( "${FILESDIR}/json-20231013-JSONObjectTest.patch" )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.json"
 JAVA_SRC_DIR="src/main/java"
 
 JAVA_TEST_GENTOO_CLASSPATH="
 	asm-9
+	json-smart-2
 	junit-4
-	mockito
+	mockito-4
 	slf4j-api
 "
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
@@ -55,10 +55,6 @@ src_prepare() {
 
 src_test() {
 	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/json-path-2.1.0.jar" # Test compile dependency
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/json-smart-2.5.0.jar" # Test runtime dependency
-
-	# Exception java.lang.NoClassDefFoundError: net/minidev/asm/FieldFilter
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/asm-1.0.2.jar" # Test runtime dependency
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if ver_test "${vm_version}" -ge 17; then
