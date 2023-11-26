@@ -6,14 +6,6 @@
 # See https://github.com/systemd/systemd/issues/29775 and bug #916469.
 >=sys-apps/systemd-254
 
-# Sam James <sam@gentoo.org> (2023-08-28)
-# libuv >=1.45.0 starts to use iouring (but via its own implementation, not sys-libs/liburing)
-# which means CMake then starts using iouring. There are some kernel bugs which
-# got shaken out on hppa: linux 6.4.x is okay, but 6.1.x at least need backports.
-#
-# See https://lore.kernel.org/linux-parisc/87jztggow5.fsf@gentoo.org/T/.
->=dev-libs/libuv-1.45.0
-
 # Sam James <sam@gentoo.org> (2023-07-03)
 # Broken memory handling
 # https://lore.kernel.org/linux-parisc/612eaa53-6904-6e16-67fc-394f4faa0e16@bell.net/
