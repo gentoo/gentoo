@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit bash-completion-r1 distutils-r1 git-r3 optfeature wrapper
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
-HOMEPAGE="https://github.com/yt-dlp/yt-dlp/"
+HOMEPAGE="https://youngunix.github.io/yt-dlp/"
 EGIT_REPO_URI="https://github.com/yt-dlp/yt-dlp.git"
 
 LICENSE="Unlicense"
