@@ -1,0 +1,63 @@
+--- a/copy-firmware.sh	2023-11-26 12:59:08.842285196 -0500
++++ b/copy-firmware.sh	2023-11-26 16:05:25.737443551 -0500
+@@ -69,36 +69,44 @@ if [ -z "$destdir" ]; then
+ 	exit 1
+ fi
+ 
+-if ! which rdfind 2>/dev/null >/dev/null; then
++if [ -n "$LINUX_FIRMWARE_DO_DEDUPE" ] && ! which rdfind 2>/dev/null >/dev/null; then
+ 	echo "ERROR: rdfind is not installed"
+ 	exit 1
+ fi
+ 
++LINUX_SAVED_CONFIG_ARRAY=($LINUX_FIRMWARE_SAVED_CONFIG_FILES)
++
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g' | while read k f; do
+     test -f "$f" || continue
+-    install -d "$destdir/$(dirname "$f")"
+-    $verbose "copying/compressing file $f$compext"
+-    if test "$compress" != "cat" && test "$k" = "RawFile"; then
+-        $verbose "compression will be skipped for file $f"
+-        cat "$f" > "$destdir/$f"
+-    else
+-        $compress "$f" > "$destdir/$f$compext"
+-    fi
++		[[ -n ${LINUX_SAVED_CONFIG_ARRAY} ]] && [[ ! " ${LINUX_SAVED_CONFIG_ARRAY[@]} " =~ " $f " ]] && continue
++	  install -d "$destdir/$(dirname "$f")"
++	  $verbose "copying/compressing file $f$compext"
++	  if test "$compress" != "cat" && test "$k" = "RawFile"; then
++	      $verbose "compression will be skipped for file $f"
++	      cat "$f" > "$destdir/$f"
++	  else
++	      $compress "$f" > "$destdir/$f$compext"
++	  fi
+ done
+ 
+-$verbose "Finding duplicate files"
+-rdfind -makesymlinks true -makeresultsfile false "$destdir" >/dev/null
+-find "$destdir" -type l | while read -r l; do
+-	target="$(realpath "$l")"
+-	$verbose "Correcting path for $l"
+-	ln -fs "$(realpath --relative-to="$(dirname "$(realpath -s "$l")")" "$target")" "$l"
+-done
++if [ -n "$LINUX_FIRMWARE_DO_DEDUPE" ]; then
++	$verbose "Finding duplicate files"
++	rdfind -makesymlinks true -makeresultsfile false "$destdir" >/dev/null
++	find "$destdir" -type l | while read -r l; do
++		target="$(realpath "$l")"
++		$verbose "Correcting path for $l"
++		ln -fs "$(realpath --relative-to="$(dirname "$(realpath -s "$l")")" "$target")" "$l"
++	done
++fi
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read f d; do
++		[[ -n ${LINUX_SAVED_CONFIG_ARRAY} ]] && [[ ! " ${LINUX_SAVED_CONFIG_ARRAY[@]} " =~ " $f " ]] && continue
++
+     if test -L "$f$compext"; then
+         test -f "$destdir/$f$compext" && continue
++
+         $verbose "copying link $f$compext"
+         install -d "$destdir/$(dirname "$f")"
+         cp -d "$f$compext" "$destdir/$f$compext"
