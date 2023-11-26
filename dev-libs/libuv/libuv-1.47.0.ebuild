@@ -24,6 +24,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ipv6-tests.patch
+)
+
 src_prepare() {
 	default
 
