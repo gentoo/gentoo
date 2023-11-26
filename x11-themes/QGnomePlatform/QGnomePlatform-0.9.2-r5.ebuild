@@ -23,6 +23,7 @@ RDEPEND="
 	)
 	qt6? (
 		dev-qt/qtbase:6=[dbus,gui,widgets]
+		dev-qt/qtdeclarative:6=
 		wayland? ( dev-qt/qtwayland:6= )
 	)
 	gnome-base/gsettings-desktop-schemas
