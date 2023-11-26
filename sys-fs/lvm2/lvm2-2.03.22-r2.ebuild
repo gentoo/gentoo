@@ -204,7 +204,9 @@ src_install() {
 	else
 		targets+=( install_device-mapper )
 	fi
-	emake V=1 DESTDIR="${D}" "${targets[@]}"
+
+	# -j1 for bug #918125
+	emake -j1 V=1 DESTDIR="${D}" "${targets[@]}"
 
 	newinitd "${FILESDIR}"/device-mapper.rc-r3 device-mapper
 	newconfd "${FILESDIR}"/device-mapper.conf-r4 device-mapper
