@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit flag-o-matic libtool toolchain-funcs
 
@@ -67,7 +67,7 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		find "${ED}"usr/lib* -name '*.la' -o -name '*.a' -delete || die
+		find "${ED}"/usr/lib64/ -name '*.la' -o -name '*.a' -delete || die
 	fi
 
 	dodoc Changes README*
