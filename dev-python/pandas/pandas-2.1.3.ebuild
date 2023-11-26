@@ -21,7 +21,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
 

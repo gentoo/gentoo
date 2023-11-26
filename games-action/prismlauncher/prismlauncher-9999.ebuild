@@ -84,7 +84,7 @@ COMMON_DEPENDS="
 BDEPEND="
 	app-text/scdoc
 	dev-cpp/gulrak-filesystem
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 "
 
 DEPEND="

@@ -32,7 +32,7 @@ DEPEND="
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	kaccounts? ( kde-apps/kaccounts-integration:5 )
 	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "

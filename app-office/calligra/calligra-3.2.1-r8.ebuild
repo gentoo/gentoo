@@ -72,7 +72,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	sys-libs/zlib
 	virtual/libiconv
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	charts? ( dev-libs/kdiagram:5 )
 	crypt? ( >=app-crypt/qca-2.3.0:2 )
 	fontconfig? ( media-libs/fontconfig )

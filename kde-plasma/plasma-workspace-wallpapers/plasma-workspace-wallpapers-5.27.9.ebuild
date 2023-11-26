@@ -15,5 +15,5 @@ IUSE=""
 
 BDEPEND="
 	dev-qt/qtcore:5
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 "

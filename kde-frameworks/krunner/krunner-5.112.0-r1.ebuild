@@ -23,9 +23,9 @@ DEPEND="
 	=kde-frameworks/ki18n-${PVCUT}*:5
 	=kde-frameworks/kio-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
-	=kde-frameworks/plasma-${PVCUT}*:5
+	=kde-plasma/libplasma-${PVCUT}*:5
 	=kde-frameworks/threadweaver-${PVCUT}*:5
-	activities? ( =kde-frameworks/kactivities-${PVCUT}*:5 )
+	activities? ( =kde-plasma/plasma-activities-${PVCUT}*:5 )
 "
 RDEPEND="${DEPEND}"
 

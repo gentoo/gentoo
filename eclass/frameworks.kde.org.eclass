@@ -35,8 +35,19 @@ inherit kde.org
 
 HOMEPAGE="https://develop.kde.org/products/frameworks/"
 
-SLOT=5/${PV}
-[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
+SLOT=6
+if [[ ${PV} == 5.9999 ]] || ver_test ${PV} -lt 5.240; then
+	SLOT=5
+fi
+if [[ ${PN} == extra-cmake-modules ]]; then
+	SLOT=0
+else
+	if [[ ${KDE_BUILD_TYPE} == release ]]; then
+		SLOT=${SLOT}/$(ver_cut 1-2)
+	else
+		SLOT=${SLOT}/9999
+	fi
+fi
 
 # @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
 # @INTERNAL
@@ -50,23 +61,32 @@ KDE_ORG_SCHEDULE_URI+="/Frameworks"
 # Helper variable to construct release group specific SRC_URI.
 _KDE_SRC_URI="mirror://kde/"
 
-if [[ ${KDE_BUILD_TYPE} != live && -z ${KDE_ORG_COMMIT} ]]; then
-	_KDE_SRC_URI+="stable/frameworks/$(ver_cut 1-2)/"
-	case ${KDE_ORG_NAME} in
-		kdelibs4support | \
-		kdesignerplugin | \
-		kdewebkit | \
-		khtml | \
-		kjs | \
-		kjsembed | \
-		kmediaplayer | \
-		kross | \
-		kxmlrpcclient)
-			_KDE_SRC_URI+="portingAids/"
-			;;
-	esac
+case ${KDE_BUILD_TYPE} in
+	live)
+		if [[ ${PV} == 5.9999 ]]; then
+			EGIT_BRANCH="kf5"
+		fi
+		;;
+	*)
+		if [[ -z ${KDE_ORG_COMMIT} ]]; then
+			_KDE_SRC_URI+="stable/frameworks/$(ver_cut 1-2)/"
+			case ${KDE_ORG_NAME} in
+				kdelibs4support | \
+				kdesignerplugin | \
+				kdewebkit | \
+				khtml | \
+				kjs | \
+				kjsembed | \
+				kmediaplayer | \
+				kross | \
+				kxmlrpcclient)
+					_KDE_SRC_URI+="portingAids/"
+					;;
+			esac
 
-	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_NAME}-${PV}.tar.xz"
-fi
+			SRC_URI="${_KDE_SRC_URI}${KDE_ORG_NAME}-${PV}.tar.xz"
+		fi
+		;;
+esac
 
 fi

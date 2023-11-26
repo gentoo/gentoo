@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtwayland-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/kwayland-${KFMIN}:5
+	>=kde-plasma/kwayland-${KFMIN}:5
 	media-libs/libepoxy
 	media-libs/libglvnd
 	media-video/ffmpeg:=

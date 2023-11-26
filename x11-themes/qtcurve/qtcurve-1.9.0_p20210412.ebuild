@@ -55,7 +55,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	plasma? ( kde-frameworks/extra-cmake-modules:5 )
+	plasma? ( kde-frameworks/extra-cmake-modules:0 )
 "
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )

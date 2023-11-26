@@ -28,3 +28,8 @@ slotmove dev-haskell/hdbc-postgresql 2 0
 slotmove dev-haskell/hdbc 2 0
 slotmove dev-haskell/parallel 3 0
 slotmove dev-haskell/quickcheck 2 0
+move kde-frameworks/plasma kde-plasma/libplasma
+move kde-frameworks/kactivities-stats kde-plasma/plasma-activities-stats
+move kde-frameworks/kactivities kde-plasma/plasma-activities
+slotmove kde-frameworks/extra-cmake-modules 5 0
+move kde-frameworks/kwayland kde-plasma/kwayland

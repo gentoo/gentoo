@@ -27,7 +27,7 @@ RUNTIME_SLOT="${SDK_SLOT}.14"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 arm arm64"
+KEYWORDS="amd64 arm arm64"
 RESTRICT="splitdebug"
 
 RDEPEND="
