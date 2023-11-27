@@ -41,7 +41,7 @@ RDEPEND="
 			dev-qt/qtbase:6[icu,sqlite]
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
-			pdf? ( www-plugins/pdfjs )
+			pdf? ( <www-plugins/pdfjs-4 )
 		)
 		!qt6? (
 			dev-qt/qtcore:5[icu]
