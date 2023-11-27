@@ -9,4 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">hattedsquirrel/ryzen_monitor</remote-id>
+		<remote-id type="gitlab">leogx9r/ryzen_smu</remote-id>
+	</upstream>
 </pkgmetadata>
