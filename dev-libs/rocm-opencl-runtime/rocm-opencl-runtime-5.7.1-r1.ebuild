@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake edo flag-o-matic
+ROCM_SKIP_GLOBALS=1
+inherit cmake edo flag-o-matic rocm
 
 DESCRIPTION="Radeon Open Compute OpenCL Compatible Runtime"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/clr"
@@ -72,24 +73,8 @@ src_install() {
 	doins tools/cltrace/libcltrace.so
 }
 
-# Copied from rocm.eclass. This ebuild does not need amdgpu_targets
-# USE_EXPANDS, so it should not inherit rocm.eclass; it only uses the
-# check_amdgpu function in src_test. Rename it to check-amdgpu to avoid
-# pkgcheck warning.
-check-amdgpu() {
-	for device in /dev/kfd /dev/dri/render*; do
-		addwrite ${device}
-		if [[ ! -r ${device} || ! -w ${device} ]]; then
-			eerror "Cannot read or write ${device}!"
-			eerror "Make sure it is present and check the permission."
-			ewarn "By default render group have access to it. Check if portage user is in render group."
-			die "${device} inaccessible"
-		fi
-	done
-}
-
 src_test() {
-	check-amdgpu
+	check_amdgpu
 	cd "${BUILD_DIR}"/tests/ocltst || die
 	export OCL_ICD_FILENAMES="${BUILD_DIR}"/amdocl/libamdocl64.so
 	local instruction1="Please start an X server using amdgpu driver (not Xvfb!),"
