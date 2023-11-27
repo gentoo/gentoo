@@ -305,6 +305,9 @@ src_prepare() {
 	#  * https://github.com/php/php-src/issues/11819
 	#
 	rm ext/oci8/tests/*.phpt || die
+
+	# https://github.com/php/php-src/issues/12801
+	rm ext/pcre/tests/gh11374.phpt || die
 }
 
 src_configure() {
