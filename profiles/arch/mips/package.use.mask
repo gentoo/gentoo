@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-26)
+# Qt 5 is not keyworded here
+dev-vcs/subversion kwallet
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-24)
 # sys-cluster/ceph not keyworded here.
 net-analyzer/rrdtool rados
