@@ -17,9 +17,6 @@ S="${WORKDIR}/${P}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-# tests want sofile built into jar.
-# cannot find /net/jpountz/util/linux/amd64/liblz4-java.so
-RESTRICT="test"
 
 DEPEND="
 	app-arch/lz4:=
@@ -31,6 +28,8 @@ RDEPEND="
 	app-arch/lz4:=
 	>=virtual/jre-1.8:*"
 
+PATCHES=( "${FILESDIR}/${P}-fix-load.patch" )
+
 DOCS=( CHANGES.md README.md )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.lz4.java"
@@ -38,6 +37,10 @@ JAVA_SRC_DIR=( src/java{,-unsafe} )
 JAVA_TEST_GENTOO_CLASSPATH="junit-4 randomized-runner"
 JAVA_TEST_RESOURCE_DIRS="src/test-resources"
 JAVA_TEST_SRC_DIR="src/test"
+
+src_prepare() {
+	default
+}
 
 src_compile() {
 	# remove precompiled native libraries
