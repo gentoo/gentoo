@@ -203,7 +203,6 @@ multilib_src_configure() {
 		$(meson_native_use_feature doc docs)
 		$(meson_native_use_feature man)
 		$(meson_native_enabled examples) # TODO: Figure out if this is still important now that media-session gone
-		$(meson_native_enabled man)
 		$(meson_feature test tests)
 		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
 		$(meson_feature ieee1394 libffado)
