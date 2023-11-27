@@ -76,7 +76,10 @@ IUSE="+pcre"
 
 RDEPEND="pcre? ( dev-libs/libpcre2:= )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	>=virtual/rust-1.72
+	virtual/pkgconfig
+"
 
 QA_FLAGS_IGNORED="usr/bin/rg"
 
