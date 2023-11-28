@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Requires systemd
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
+
 # Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
 # execinfo.h required for server.
 games-board/cockatrice server

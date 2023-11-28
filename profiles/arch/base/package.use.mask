@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Experimental and only available on a subset of architectures
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # Needs dev-qt/qtwebengine:6 which has very few keywords.
 dev-python/PyQt6 pdfium
