@@ -272,6 +272,8 @@ src_configure() {
 multilib_src_configure() {
 	local myconf=(
 		--localstatedir="${EPREFIX}/var"
+		# default is developer, bug 918671
+		-Dmode=release
 		-Dsupport-url="https://gentoo.org/support/"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
