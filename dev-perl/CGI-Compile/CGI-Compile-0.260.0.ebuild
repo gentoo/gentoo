@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Compile .cgi scripts to a code reference like ModPerl::Registry"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-perl/File-pushd
