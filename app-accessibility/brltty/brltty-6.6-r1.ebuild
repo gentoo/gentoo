@@ -68,6 +68,7 @@ RDEPEND="${DEPEND}
 	java? ( >=virtual/jre-1.8:* )
 "
 BDEPEND="
+	>=dev-lang/tcl-8.6.13-r1
 	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.8:* )
 	nls? ( virtual/libintl )
