@@ -7,5 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="initramfs">Build initramfs along with the kernel.</flag>
+		<flag name="generic-uki">Install a prebuilt generic initramfs and Unified Kernel Image (EXPERIMENTAL).</flag>
+		<flag name="module-compress">Install kernel modules .xz compressed.</flag>
 	</use>
 </pkgmetadata>

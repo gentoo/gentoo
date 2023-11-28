@@ -4,6 +4,7 @@
 EAPI=8
 
 KERNEL_EFI_ZBOOT=1
+KERNEL_IUSE_GENERIC_UKI=1
 KERNEL_IUSE_SECUREBOOT=1
 inherit kernel-install toolchain-funcs unpacker
 
@@ -36,7 +37,6 @@ SRC_URI+="
 "
 S=${WORKDIR}
 
-LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
@@ -98,18 +98,34 @@ src_configure() {
 		O="${WORKDIR}"/modprep
 	)
 
+	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+	local image_path="${kernel_dir}/$(dist-kernel_get_image_path)"
+	# We need the plain image for the test phase
+	kernel-install_extract_from_uki linux \
+		"${image_path%/*}"/uki.efi "${image_path}"
+
 	mkdir modprep || die
-	cp "${BINPKG}/image/usr/src/linux-${KPV}/.config" modprep/ || die
+	cp "${kernel_dir}/.config" modprep/ || die
 	emake -C "${MY_P}" "${makeargs[@]}" modules_prepare
 }
 
 src_test() {
+	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
 	kernel-install_test "${KPV}" \
-		"${WORKDIR}/${BINPKG}/image/usr/src/linux-${KPV}/$(dist-kernel_get_image_path)" \
+		"${kernel_dir}/$(dist-kernel_get_image_path)" \
 		"${BINPKG}/image/lib/modules/${KPV}"
 }
 
 src_install() {
+	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+	# Keep the kernel image type we don't want out of install tree
+	# Replace back with placeholder
+	local to_remove="${kernel_dir}/$(dist-kernel_get_image_path)"
+	if ! use generic-uki; then
+		to_remove=${to_remove%/*}/uki.efi
+	fi
+	> "${to_remove}" || die
+
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
@@ -129,4 +145,5 @@ src_install() {
 
 	# Modules were already stripped before signing
 	dostrip -x /lib/modules
+	kernel-install_compress_modules
 }
