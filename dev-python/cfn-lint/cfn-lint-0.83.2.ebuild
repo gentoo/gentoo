@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 multiprocessing pypi
+inherit distutils-r1 pypi
 
 DESCRIPTION="CloudFormation Linter"
 HOMEPAGE="
@@ -32,11 +32,6 @@ RDEPEND="
 	>=dev-python/regex-2021.7.1[${PYTHON_USEDEP}]
 	>=dev-python/sarif-om-1.0.4[${PYTHON_USEDEP}]
 	>=dev-python/sympy-1.0.0[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? (
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest
@@ -66,5 +61,5 @@ python_test() {
 	# from tox.ini
 	local -x AWS_DEFAULT_REGION=us-east-1
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p xdist -n "$(makeopts_jobs)" --dist=worksteal
+	epytest
 }
