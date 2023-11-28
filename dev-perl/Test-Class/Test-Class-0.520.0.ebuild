@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Easily create test classes in an xUnit/JUnit style"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	>=virtual/perl-Attribute-Handlers-0.770.0
