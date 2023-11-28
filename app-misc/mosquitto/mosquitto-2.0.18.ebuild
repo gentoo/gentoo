@@ -41,6 +41,10 @@ BDEPEND="
 	)
 "
 
+python_check_deps() {
+	python_has_version -b "dev-python/psutil[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
 	use test && python_setup
 }
