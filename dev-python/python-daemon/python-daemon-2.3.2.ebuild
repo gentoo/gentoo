@@ -18,7 +18,7 @@ HOMEPAGE="
 # build system and tests use GPL-3.0+ but none of these files are installed
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-python/lockfile[${PYTHON_USEDEP}]
