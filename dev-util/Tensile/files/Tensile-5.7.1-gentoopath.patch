@@ -1,0 +1,57 @@
+Fix incorrect path in scripts and CMakeLists, in order to build tensile_client 
+
+--- a/HostLibraryTests/CMakeLists.txt
++++ b/HostLibraryTests/CMakeLists.txt
+@@ -139,7 +139,7 @@ set(test_sources ${test_sources}
+ )
+ 
+ if(TENSILE_USE_LLVM)
+-    find_package(LLVM REQUIRED CONFIG)
++    find_package(LLVM PATHS @LLVM_PATH@ REQUIRED CONFIG)
+ 
+     set(test_sources ${test_sources}
+         ContractionLibraryLoading_test.cpp
+--- a/Tensile/ClientWriter.py
++++ b/Tensile/ClientWriter.py
+@@ -176,7 +176,7 @@ def runClient(libraryLogicPath, forBenchmark, enableTileSelection, configPaths=N
+ def getBuildClientLibraryScript(buildPath, libraryLogicPath):
+   callCreateLibraryCmd = ["python"] if os.name == "nt" else []
+ 
+-  callCreateLibraryCmd += [os.path.join(globalParameters["ScriptPath"] , "bin", "TensileCreateLibrary")]
++  callCreateLibraryCmd += ["TensileCreateLibrary"]
+ 
+   if globalParameters["MergeFiles"]:
+     callCreateLibraryCmd += ["--merge-files"]
+--- a/Tensile/Common.py
++++ b/Tensile/Common.py
+@@ -2108,7 +2108,7 @@ def assignGlobalParameters( config ):
+     else:
+       print2(" %24s: %8s (unspecified)" % (key, defaultValue))
+ 
+-  globalParameters["ROCmPath"] = "/opt/rocm"
++  globalParameters["ROCmPath"] = "@GENTOO_PORTAGE_EPREFIX@/usr"
+   if "ROCM_PATH" in os.environ:
+     globalParameters["ROCmPath"] = os.environ.get("ROCM_PATH")
+   if "TENSILE_ROCM_PATH" in os.environ:
+--- a/Tensile/GenerateSummations.py
++++ b/Tensile/GenerateSummations.py
+@@ -59,7 +59,7 @@ def createLibraryForBenchmark(logicPath, libraryPath, currentPath):
+     Selection.
+     """
+ 
+-    pythonExePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), "bin", "TensileCreateLibrary")
++    pythonExePath = "TensileCreateLibrary"
+     args = [pythonExePath, \
+         "--merge-files", "--new-client-only", "--no-short-file-names", "--no-library-print-debug", \
+         "--architecture=all", "--cxx-compiler=hipcc", "--library-format=yaml", \
+--- a/Tensile/Source/lib/CMakeLists.txt
++++ b/Tensile/Source/lib/CMakeLists.txt
+@@ -52,7 +52,7 @@ set(tensile_sources  ${tensile_sources}
+     )
+ 
+ if(TENSILE_USE_LLVM)
+-    find_package(LLVM REQUIRED CONFIG)
++    find_package(LLVM PATHS @LLVM_PATH@ REQUIRED CONFIG)
+ 
+     set(tensile_sources ${tensile_sources}
+         source/llvm/YAML.cpp

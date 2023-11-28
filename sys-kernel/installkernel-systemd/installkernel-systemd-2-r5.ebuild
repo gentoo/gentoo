@@ -9,7 +9,7 @@ S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	!sys-kernel/installkernel-gentoo

@@ -13,11 +13,24 @@ EAPI=8
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
-PYTHON_COMPAT=( python3_{10..12} )
+# TODO: Maybe get upstream to produce `meson dist` tarballs:
+# - https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3663
+# - https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1788
+#
+# Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-pipewire-docs
+# Set to 1 if prebuilt, 0 if not
+# (the construct below is to allow overriding from env for script)
+: ${PIPEWIRE_DOCS_PREBUILT:=1}
 
+PIPEWIRE_DOCS_PREBUILT_DEV=sam
+PIPEWIRE_DOCS_VERSION="${PV}"
+# Default to generating docs (inc. man pages) if no prebuilt; overridden later
+PIPEWIRE_DOCS_USEFLAG="+man"
+PYTHON_COMPAT=( python3_{10..12} )
 inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]]; then
+	PIPEWIRE_DOCS_PREBUILT=0
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
 else
@@ -29,7 +42,12 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~sparc ~x86"
+	if [[ ${PIPEWIRE_DOCS_PREBUILT} == 1 ]] ; then
+		SRC_URI+=" !man? ( https://dev.gentoo.org/~${PIPEWIRE_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${PIPEWIRE_DOCS_VERSION}-docs.tar.xz )"
+		PIPEWIRE_DOCS_USEFLAG="man"
+	fi
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -38,7 +56,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
+IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 lv2"
 IUSE+=" modemmanager pipewire-alsa readline roc selinux sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
@@ -68,12 +86,15 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	>=dev-util/meson-0.59
 	virtual/pkgconfig
-	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
 	dbus? ( dev-util/gdbus-codegen )
 	doc? (
-		app-doc/doxygen
+		${PYTHON_DEPS}
+		>=app-doc/doxygen-1.9.8
 		media-gfx/graphviz
+	)
+	man? (
+		${PYTHON_DEPS}
+		>=app-doc/doxygen-1.9.8
 	)
 "
 # * While udev could technically be optional, it's needed for a number of options,
@@ -81,6 +102,10 @@ BDEPEND="
 #
 # * Supports both legacy webrtc-audio-processing:0 and new webrtc-audio-processing:1.
 # We depend on :1 as it prefers that, it's not legacy, and to avoid automagic.
+#
+# * Older Doxygen (<1.9.8) may work but inferior output is created:
+#   - https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1778
+#   - https://github.com/doxygen/doxygen/issues/9254
 RDEPEND="
 	acct-group/audio
 	acct-group/pipewire
@@ -120,7 +145,7 @@ RDEPEND="
 	modemmanager? ( >=net-misc/modemmanager-1.10.0 )
 	pipewire-alsa? ( >=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}] )
 	sound-server? ( !media-sound/pulseaudio-daemon )
-	roc? ( media-libs/roc-toolkit )
+	roc? ( >=media-libs/roc-toolkit-0.3.0:= )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( dev-libs/openssl:= )
@@ -150,14 +175,14 @@ PDEPEND=">=media-video/wireplumber-0.4.8-r3"
 # Ditto for DEPEND
 #	>=dev-util/vulkan-headers-1.1.69
 
-DOCS=( {README,INSTALL}.md NEWS )
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
 )
 
-python_check_deps() {
-	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
+pkg_setup() {
+	if use doc || use man ; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
@@ -177,8 +202,8 @@ multilib_src_configure() {
 		$(meson_feature dbus)
 		$(meson_native_use_feature zeroconf avahi)
 		$(meson_native_use_feature doc docs)
+		$(meson_native_use_feature man)
 		$(meson_native_enabled examples) # TODO: Figure out if this is still important now that media-session gone
-		$(meson_native_enabled man)
 		$(meson_feature test tests)
 		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
 		$(meson_feature ieee1394 libffado)
@@ -270,6 +295,10 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
+
+	if ! use man && [[ ${PIPEWIRE_DOCS_PREBUILT} == 1 ]] ; then
+		doman "${WORKDIR}"/${PN}-${PIPEWIRE_DOCS_VERSION}-docs/man/*/*.[0-8]
+	fi
 
 	if use pipewire-alsa; then
 		dodir /etc/alsa/conf.d

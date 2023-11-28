@@ -17,10 +17,10 @@ else
 	#     cd build && cmake ..
 	# 3.  Set LIBAOM_TEST_DATA_PATH to the directory you want and
 	#     run the "make testdata" target:
-	#     LIBAOM_TEST_DATA_PATH=../libaom-3.7.0-testdata make testdata
+	#     LIBAOM_TEST_DATA_PATH=../libaom-3.7.1-testdata make testdata
 	#     This will download the test data from the internet.
 	# 4.  Create a tarball out of that directory.
-	#     cd .. && tar cvaf libaom-3.7.0-testdata.tar.xz libaom-3.7.0-testdata
+	#     cd .. && tar cvaf libaom-3.7.1-testdata.tar.xz libaom-3.7.1-testdata
 	SRC_URI="
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
 		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
@@ -88,6 +88,7 @@ multilib_src_configure() {
 		-DENABLE_SSE4_2=$(usex cpu_flags_x86_sse4_2 ON OFF)
 		-DENABLE_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
+
 		-DENABLE_VSX=$(usex cpu_flags_ppc_vsx ON OFF)
 	)
 

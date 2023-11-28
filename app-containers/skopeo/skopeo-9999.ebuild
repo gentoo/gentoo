@@ -16,14 +16,11 @@ else
 fi
 
 # main
-LICENSE="Apache-2.0"
-# deps
-LICENSE+=" BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
 IUSE="btrfs device-mapper rootless"
 
-RDEPEND="
-	app-containers/containers-common
+COMMON_DEPEND="
 	>=app-crypt/gpgme-1.5.5:=
 	>=dev-libs/libassuan-2.4.3:=
 	btrfs? ( >=sys-fs/btrfs-progs-4.0.1 )
@@ -33,7 +30,11 @@ RDEPEND="
 
 # TODO: Is this really needed? cause upstream doesnt mention it https://github.com/containers/skopeo/blob/main/install.md#building-from-source
 # 	dev-libs/libgpg-error:=
-DEPEND="${RDEPEND}"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="
+	${COMMON_DEPEND}
+	app-containers/containers-common
+"
 BDEPEND="dev-go/go-md2man"
 
 RESTRICT="test"

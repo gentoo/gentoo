@@ -1,6 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-26)
+# Qt 5 is not keyworded here
+dev-vcs/subversion kwallet
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-24)
+# sys-cluster/ceph not keyworded here.
+net-analyzer/rrdtool rados
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-24)
 # media-libs/shaderc not keyworded here.
 >=media-video/ffmpeg-5 shaderc
@@ -11,13 +19,14 @@ app-admin/setools X
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
-net-p2p/bitcoin-core gui
+net-p2p/bitcoin-core gui qrcode
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-20)
 # media-libs/libaom casualties
 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
 media-video/ffmpeg libaom
 media-libs/libavif aom
+media-libs/libheif aom
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-19)
 # Pulls in LXDE which is not keyworded here
