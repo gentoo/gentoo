@@ -13,7 +13,7 @@ SRC_URI="https://github.com/PJK/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="+custom-alloc doc test"
+IUSE="doc test"
 
 BDEPEND="
 	doc? (
@@ -42,7 +42,6 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
-		-DCBOR_CUSTOM_ALLOC=$(usex custom-alloc 'ON' 'OFF')
 		-DWITH_TESTS=$(usex test 'ON' 'OFF')
 	)
 
