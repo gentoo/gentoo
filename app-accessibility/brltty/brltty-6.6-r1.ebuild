@@ -135,7 +135,6 @@ src_configure() {
 		$(use_enable ocaml ocaml-bindings)
 		$(use_with pcm pcm-package)
 		$(use_enable policykit polkit)
-		$(use_enable python python-bindings)
 		$(use_enable speech speech-support)
 		$(use_with systemd service-package)
 		$(use_enable tcl tcl-bindings)
