@@ -53,7 +53,7 @@ SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 lto pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
 
@@ -228,6 +228,11 @@ src_prepare() {
 	# Fix for building on x86 https://bugs.gentoo.org/915336 (x86-only)
 	if use x86 ; then
 		eapply -p1 "${PATCH_S}/USE_flag/2021_seamonkey_2.53.17-floating-point_normalization_on_x86_build_fix.patch"
+	fi
+
+	# Patch for people who use their systems ICU 74
+	if has_version ">=dev-libs/icu-74.1" && use system-icu ; then
+		eapply -p1 "${PATCH_S}/USE_flag/2022-bmo-1862601-system-icu-74.patch"
 	fi
 
 	# Allow user to apply any additional patches without modifing ebuild
