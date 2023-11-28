@@ -42,7 +42,10 @@ DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	pcm? ( media-libs/alsa-lib )
 	policykit? ( sys-auth/polkit )
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)
 	speech? (
 		app-accessibility/espeak-ng
 		app-accessibility/flite
