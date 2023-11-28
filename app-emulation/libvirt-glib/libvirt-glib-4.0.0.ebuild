@@ -31,6 +31,11 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0.0-Make-xmlError-structs-constant.patch
+	"${FILESDIR}"/${PN}-4.0.0-libvirt-gconfig-Add-more-libxml-includes.patch
+)
+
 src_prepare() {
 	default
 	use vala && vala_src_prepare
