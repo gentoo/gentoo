@@ -70,7 +70,7 @@ RDEPEND="
 	>=app-misc/pax-utils-0.1.17
 	dev-lang/python-exec:2
 	>=sys-apps/baselayout-2.9
-	>=sys-apps/findutils-4.4
+	>=sys-apps/findutils-4.9
 	!build? (
 		>=app-admin/eselect-1.2
 		app-portage/getuto
