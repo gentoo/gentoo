@@ -1,0 +1,23 @@
+Avoid crash that happens for some users in qsb, qmake, and
+potentially other Qt tools when ran under sandbox leading
+to build failures for qtdeclarative and other packages.
+
+Former fix involved replacing 4096 by SIGSTKSZ but
+bug #918664 shown that this may be insufficient so this
+tries 32k instead.
+
+https://bugs.gentoo.org/908809
+https://bugs.gentoo.org/908816
+https://bugs.gentoo.org/913493
+https://bugs.gentoo.org/915695
+https://bugs.gentoo.org/918664
+https://codereview.qt-project.org/c/qt/qtbase/+/513140
+--- a/src/3rdparty/forkfd/forkfd_linux.c
++++ b/src/3rdparty/forkfd/forkfd_linux.c
+@@ -158,5 +158,5 @@
+ int system_vforkfd(int flags, pid_t *ppid, int (*childFn)(void *), void *token, int *system)
+ {
+-    __attribute__((aligned(64))) char childStack[SIGSTKSZ];
++    __attribute__((aligned(64))) char childStack[32768];
+     pid_t pid;
+     int pidfd;

@@ -136,6 +136,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-hppa-forkfd-grow-stack.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-glx.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
+	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 )
 
 src_prepare() {
