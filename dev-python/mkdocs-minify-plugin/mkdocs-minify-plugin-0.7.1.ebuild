@@ -22,6 +22,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
+# https://bugs.gentoo.org/911738
+# The tests compare hard coded hashes, since we cannot guarantee reproducibility
+# of our own build the test will likely fail.
+RESTRICT="test"
+
 RDEPEND="
 	>=dev-python/csscompressor-0.9.5[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.4.1[${PYTHON_USEDEP}]
