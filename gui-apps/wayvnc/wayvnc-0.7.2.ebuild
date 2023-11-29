@@ -24,7 +24,7 @@ RDEPEND="
 	=dev-libs/aml-0.3*
 	dev-libs/jansson:=
 	dev-libs/wayland
-	=gui-libs/neatvnc-0.6*[tracing?]
+	=gui-libs/neatvnc-0.7*[tracing?]
 	media-libs/mesa:=[egl(+),gles2,gbm(+)?]
 	x11-libs/libxkbcommon
 	x11-libs/pixman
