@@ -15,7 +15,6 @@ KEYWORDS="amd64 ~hppa ~mips ppc sparc x86"
 IUSE="+libtirpc"
 
 DEPEND="
-	!<=net-misc/netkit-bootpd-0.17-r2
 	libtirpc? ( net-libs/rpcsvc-proto net-libs/libtirpc )
 	!libtirpc? ( sys-libs/glibc[rpc(-)] )
 "
