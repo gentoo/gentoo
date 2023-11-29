@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
+# execinfo.h required for server.
+games-board/cockatrice server
+
 # Violet Purcell <vimproved@inventati.org> (2023-09-18)
 # Fails to compile on musl, bug 829544.
 media-sound/supercollider ableton-link
