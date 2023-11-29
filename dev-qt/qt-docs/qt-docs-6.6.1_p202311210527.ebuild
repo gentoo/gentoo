@@ -97,7 +97,7 @@ qt6_docs_generate_metadata() {
 		+webengine/qtpdf:
 		+webengine/qtwebengine
 		+websockets/qtwebsockets
-		-webview/qtwebview
+		+webview/qtwebview
 	)
 
 	local entry operator use subdir package exception modules uris
