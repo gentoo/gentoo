@@ -11,7 +11,7 @@ SRC_URI="http://www.tigr.net/afterstep/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="jpeg"
 
 RDEPEND="
