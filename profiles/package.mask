@@ -41,6 +41,7 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-11-26)
 # Work in progress
 ~dev-lang/perl-5.38.1
+~dev-lang/perl-5.38.2
 ~virtual/perl-Module-CoreList-5.202.311.250
 
 # John Helmert III <ajak@gentoo.org> (2023-11-25)
