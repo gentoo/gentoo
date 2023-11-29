@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic autotools
 
 DESCRIPTION="A tool to color syslog files as well"
-HOMEPAGE="http://www.nongnu.org/regex-markup/"
+HOMEPAGE="https://www.nongnu.org/regex-markup/"
 SRC_URI="https://savannah.nongnu.org/download/regex-markup/${P}.tar.gz"
 
 LICENSE="GPL-2"
