@@ -27,9 +27,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 
-	# Can drop this once bashism patch unnecessary
-	eautoreconf
-
 	# workaround for temporary files (missing directory). Fixes:
 	# sh ./scripts/build-font.sh . font/default-lower.fnt font/default-upper-alt.fnt font/default-upper-itf.fnt font/half-width.fnt >auto/default-font.c
 	# /bin/sh: auto/default-font.c: No such file or directory
