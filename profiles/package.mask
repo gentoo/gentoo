@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-11-29)
+# Breaks dev-python/passlib (bug #918708). This release has also now been
+# yanked from pypi: https://github.com/pyca/bcrypt/issues/677.
+=dev-python/bcrypt-4.1.0
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-11-26)
 # Work in progress
 ~dev-lang/perl-5.38.1
