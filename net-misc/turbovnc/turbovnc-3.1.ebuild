@@ -130,8 +130,10 @@ src_install() {
 	fi
 
 	# Don't install incompatible init script
-	rm -r "${ED}"/etc/init.d/ || die
-	rm -r "${ED}"/etc/sysconfig/ || die
+	if use server; then
+		rm -r "${ED}"/etc/init.d/ || die
+		rm -r "${ED}"/etc/sysconfig/ || die
+	fi
 
 	# Conflicts with x11-base/xorg-server
 	find "${ED}"/usr/share/man/man1/ -name Xserver.1\* -delete || die
