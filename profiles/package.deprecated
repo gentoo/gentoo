@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Petr Vaněk <arkamar@gentoo.org> (2023-10-26)
+# dev-libs/hyperscan upstream is inactive [1], please switch to more portable,
+# drop-in replacement dev-libs/vectorscan. dev-libs/hyperscan will be
+# last-rited when all its revdeps are gone.
+# [1] https://github.com/intel/hyperscan/issues/421
+dev-libs/hyperscan
+
 # Matt Whitlock <gentoo@mattwhitlock.name> (2023-10-24)
 # Transitional meta packages. Please update dependencies:
 #   dev-util/bitcoin-tx          -> net-p2p/bitcoin-core
