@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-single-r1 readme.gentoo-r1 systemd
 
@@ -33,7 +33,11 @@ SLOT="0/${PV}"
 IUSE="+icu nls perl python +ssl sasl tcl test +zlib"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
+# tests run znc-buildmod which is a Python script
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} icu )
+	test? ( ${PYTHON_REQUIRED_USE} )
+"
 
 # perl is a build-time dependency of modpython
 BDEPEND="
@@ -53,6 +57,7 @@ BDEPEND="
 	)
 "
 DEPEND="
+	app-crypt/argon2:=
 	icu? ( dev-libs/icu:= )
 	nls? ( dev-libs/boost:=[nls] )
 	perl? ( >=dev-lang/perl-5.10:= )
@@ -73,7 +78,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use python; then
+	if use python || use test; then
 		python-single-r1_pkg_setup
 	fi
 }

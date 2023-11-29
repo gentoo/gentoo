@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit fcaps go-module tmpfiles systemd flag-o-matic
+inherit fcaps go-module tmpfiles systemd flag-o-matic user-info
 
 DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.com https://github.com/go-gitea/gitea"
@@ -105,7 +105,24 @@ src_install() {
 
 pkg_postinst() {
 	fcaps_pkg_postinst
-	tmpfiles_process gitea.conf
+
+	# It is not guaranteed that the git user and group always exist (due to the acct USE Flag),
+	# but for convenience, the tmpfile uses the git user and group by default.
+	# To avoid installation errors, a condition needs to be added here:
+	#   if there is no git user or group, the installation of tmpfile will be skipped
+	#   and the user will be notified to handle it by themselves.
+	if egetent passwd git &>/dev/null && \
+		egetent group git &>/dev/null; then
+		tmpfiles_process gitea.conf
+	else
+		eerror "Unable to install the tmpfile for gitea due to the git user or group is missing,"
+		eerror "please install tmpfile manually or rebuild this package with USE flag 'acct'."
+		eerror "You can simply copy the default tmpfile from '/usr/lib/tmpfiles.d/gitea.conf'"
+		eerror "to higher priority path '/etc/tmpfiles.d/gitea.conf', and correct it with"
+		eerror "the right User and Group value (see tmpfiles.d(5) for details), then execute:"
+		eerror "  # systemd-tmpfiles --create /etc/tmpfiles.d/gitea.conf"
+		eerror "to install it."
+	fi
 
 	ewarn "The default JWT signing algorithm changed in 1.15.0 from HS256 (symmetric) to"
 	ewarn "RS256 (asymmetric). Gitea OAuth2 tokens (and potentially client secrets) will"

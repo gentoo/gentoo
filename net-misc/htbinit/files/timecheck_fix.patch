@@ -1,6 +1,6 @@
 --- a/htb.init
 +++ b/htb.init
-@@ -891,7 +895,6 @@
+@@ -903,7 +903,6 @@
  TIME_TMP=`date +%w/%k:%M`
  TIME_DOW=${TIME_TMP%%/*}
  TIME_NOW=${TIME_TMP##*/}
@@ -8,7 +8,7 @@
  
  ### Check all classes (if configured)
  for classfile in `htb_class_list`; do
-@@ -914,6 +917,7 @@
+@@ -926,6 +925,7 @@
  		### Compute interval boundaries
  		BEG_ABS=`htb_time2abs $BEG_TIME`
  		END_ABS=`htb_time2abs $END_TIME`
@@ -16,7 +16,7 @@
  
  		### Midnight wrap fixup
  		if [ $BEG_ABS -gt $END_ABS ]; then
-@@ -926,6 +930,23 @@
+@@ -938,6 +938,23 @@
  		### If time period matches, remember params and set MATCH flag
  		if [ $TIME_ABS -ge $BEG_ABS -a $TIME_ABS -lt $END_ABS ]; then
  			RATESPEC=${PARAMS%%,*}; CEILSPEC=${PARAMS##*,}

@@ -6,7 +6,7 @@ EAPI=8
 WX_GTK_VER="3.0-gtk3"
 # In alpha26 bundled spidermonkey-78.6.0 does not build with python 3.11.
 PYTHON_COMPAT=( python3_10 )
-inherit desktop toolchain-funcs multiprocessing python-any-r1 wxwidgets xdg
+inherit desktop flag-o-matic toolchain-funcs multiprocessing python-any-r1 wxwidgets xdg
 
 DESCRIPTION="A free, real-time strategy game"
 HOMEPAGE="https://play0ad.com/"
@@ -133,6 +133,9 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# https://bugs.gentoo.org/859244
+	filter-lto
 
 	# SpiderMonkey's configure no longer recognises --build for
 	# the build tuple

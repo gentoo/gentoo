@@ -12,4 +12,7 @@
     <email>xgreenlandforwyy@gmail.com</email>
     <name>Yiyang Wu</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">ROCmSoftwarePlatform/hipBLAS</remote-id>
+  </upstream>
 </pkgmetadata>

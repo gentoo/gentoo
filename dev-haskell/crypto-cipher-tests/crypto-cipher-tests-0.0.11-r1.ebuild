@@ -21,7 +21,7 @@ RDEPEND=">=dev-haskell/byteable-0.1.1:=[profile?] <dev-haskell/byteable-0.2:=[pr
 	>=dev-haskell/crypto-cipher-types-0.0.8:=[profile?] <dev-haskell/crypto-cipher-types-0.1:=[profile?]
 	dev-haskell/hunit:=[profile?]
 	dev-haskell/mtl:=[profile?]
-	>=dev-haskell/quickcheck-2:2=[profile?]
+	>=dev-haskell/quickcheck-2:=[profile?]
 	>=dev-haskell/securemem-0.1.1:=[profile?] <dev-haskell/securemem-0.2:=[profile?]
 	dev-haskell/test-framework:=[profile?]
 	dev-haskell/test-framework-hunit:=[profile?]

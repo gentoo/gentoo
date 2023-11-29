@@ -1,6 +1,16 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-11-12)
+# NSS: Required by kde-apps/okular[pdf]
+# Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
+app-text/poppler nss boost
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-11-11)
+# egl, libinput required by kde-frameworks/kwayland
+# accessibility required by kde-plasma/kwin
+dev-qt/qtgui:5 accessibility egl libinput
+
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Most people aren't going to use CMake's GUI. USE=gui is enabled by default
 # on desktop profiles and CMake is unavoidable, it feels a shame to drag in
@@ -22,7 +32,7 @@ media-fonts/fonts-meta emoji
 dev-lang/python -bluetooth
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-12-18)
-# Required by media-gfx/digikam
+# Required by media-gfx/digikam, kde-apps/libkexiv2
 media-gfx/exiv2 xmp
 
 # Marek Szuba <marecki@gentoo.org> (2020-12-24)
@@ -49,10 +59,6 @@ dev-libs/xmlsec nss
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Not required, but makes life easier with Qt; bug #457934
 app-arch/unzip natspec
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Required by kde-frameworks/kwayland
-dev-qt/qtgui:5 egl libinput
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-08-04)
 # Required by flac and mp3

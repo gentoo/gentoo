@@ -18,6 +18,7 @@ LICENSE="qwt"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="6/2.0"
 IUSE="designer doc examples opengl polar +qt5 qt6 svg"
+REQUIRED_USE="|| ( qt5 qt6 )"
 
 DEPEND="
 	qt5? (

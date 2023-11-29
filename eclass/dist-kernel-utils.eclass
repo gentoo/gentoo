@@ -33,6 +33,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+inherit toolchain-funcs
+
 if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
 	inherit secureboot
 fi
@@ -125,20 +127,6 @@ dist-kernel_install_kernel() {
 		# install the combined executable in place of kernel
 		image=${initrd%/*}/uki.efi
 		mv "${initrd}" "${image}" || die
-		# We moved the generated initrd, prevent dracut from running again
-		# https://github.com/dracutdevs/dracut/pull/2405
-		shopt -s nullglob
-		local plugins=()
-		for file in "${EROOT}"/etc/kernel/install.d/*.install; do
-			plugins+=( "${file}" )
-		done
-		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
-			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install "${plugins[@]##*/}"; then
-					plugins+=( "${file}" )
-			fi
-		done
-		shopt -u nullglob
-		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
 
 		if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
 			# Ensure the uki is signed if dracut hasn't already done so.
@@ -149,7 +137,7 @@ dist-kernel_install_kernel() {
 	ebegin "Installing the kernel via installkernel"
 	# note: .config is taken relatively to System.map;
 	# initrd relatively to bzImage
-	installkernel "${version}" "${image}" "${map}"
+	ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}"
 	eend ${?} || die -n "Installing the kernel failed"
 }
 

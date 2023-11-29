@@ -5,4 +5,7 @@
 		<email>pgsql-bugs@gentoo.org</email>
 		<name>PostgreSQL and Related Package Development</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">citusdata/citus</remote-id>
+	</upstream>
 </pkgmetadata>

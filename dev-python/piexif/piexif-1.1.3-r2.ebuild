@@ -17,7 +17,7 @@ SRC_URI="$(pypi_sdist_url "${PN}" "${PV}" .zip)"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

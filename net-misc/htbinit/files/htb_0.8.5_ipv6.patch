@@ -1,6 +1,6 @@
 --- a/htb.init
 +++ b/htb.init
-@@ -275,6 +284,7 @@
+@@ -279,6 +279,7 @@
  ### Filtering parameters
  #
  # RULE=[[saddr[/prefix]][:port[/mask]],][daddr[/prefix]][:port[/mask]]
@@ -8,7 +8,7 @@
  #
  #	These parameters make up "u32" filter rules that select traffic for
  #	each of the classes. You can use multiple RULE fields per config.
-@@ -300,9 +310,13 @@
+@@ -304,9 +305,13 @@
  #	RULE=10.5.5.5:80,
  #		selects traffic going from port 80 of single host 10.5.5.5
  #
@@ -22,7 +22,7 @@
  #
  #	These parameters make up "route" filter rules that classify traffic
  #	according to packet source/destination realms. For information about
-@@ -327,6 +341,7 @@
+@@ -331,6 +336,7 @@
  #
  #
  # MARK=<mark>
@@ -30,7 +30,7 @@
  #
  #	These parameters make up "fw" filter rules that select traffic for
  #	each of the classes accoring to firewall "mark". Mark is a decimal
-@@ -414,6 +429,9 @@
+@@ -418,6 +424,9 @@
  PRIO_RULE_DEFAULT=${PRIO_RULE:-100}
  PRIO_MARK_DEFAULT=${PRIO_MARK:-200}
  PRIO_REALM_DEFAULT=${PRIO_REALM:-300}
@@ -40,7 +40,7 @@
  
  ### Default HTB_PATH & HTB_CACHE settings
  HTB_PATH=${HTB_PATH:-/etc/sysconfig/htb}
-@@ -818,6 +838,13 @@
+@@ -823,6 +832,13 @@
  		prio $PRIO_MARK handle $mark fw classid 1:$CLASS
  	done ### mark
  
@@ -54,7 +54,7 @@
  	### Create route filter for REALM fields
  	for realm in `htb_cfile_rules REALM`; do
  		### Split realm into source & destination realms
-@@ -833,6 +860,21 @@
+@@ -838,6 +854,21 @@
  		${DREALM:+to $DREALM} classid 1:$CLASS
  	done ### realm
  
@@ -76,8 +76,8 @@
  	### Create u32 filter for RULE fields
  	for rule in `htb_cfile_rules RULE`; do
  		### Split rule into source & destination
-@@ -876,6 +918,49 @@
- 		prio $PRIO_RULE u32 $u32_s $u32_d classid 1:$CLASS
+@@ -888,6 +919,49 @@
+ 		prio $PRIO_RULE u32 $u32_s $u32_d $u32_tos classid 1:$CLASS
  	done ### rule
  
 +       ### Create u32 filter for RULEIPv6 fields

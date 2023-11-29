@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-haskell/parsec-3.1.13.0:=[profile?]
 	dev-haskell/parser-combinators:=[profile?]
 	dev-haskell/prettyprinter:=[profile?]
-	dev-haskell/quickcheck:2=
+	dev-haskell/quickcheck:=
 	>=dev-haskell/random-1.2:=[profile?]
 	>=dev-haskell/regex-base-0.94.0.0:=[profile?]
 	>=dev-haskell/regex-posix-0.96.0.0:=[profile?]

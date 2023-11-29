@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -28,10 +28,14 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	>=dev-python/cffi-1.4.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/cffi-1.4.1[${PYTHON_USEDEP}]
+	' 'python*')
 "
 BDEPEND="
-	>=dev-python/cffi-1.4.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/cffi-1.4.1[${PYTHON_USEDEP}]
+	' 'python*')
 	test? (
 		>=dev-python/hypothesis-3.27.0[${PYTHON_USEDEP}]
 	)

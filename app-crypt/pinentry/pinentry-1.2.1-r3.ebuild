@@ -27,7 +27,7 @@ DEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-		wayland? ( kde-frameworks/kwayland:5 )
+		wayland? ( kde-plasma/kwayland:5 )
 		X? (
 			dev-qt/qtx11extras:5
 			x11-libs/libX11

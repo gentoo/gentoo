@@ -23,6 +23,7 @@
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
 		<flag name="iptables">Use libiptc from <pkg>net-firewall/iptables</pkg> for NAT support in systemd-networkd; this is used only if the running kernel does not support nftables</flag>
+		<flag name="kernel-install">Enable kernel-install</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
 		<flag name="lz4">Enable lz4 compression for the journal</flag>
 		<flag name="openssl">Enable use of <pkg>dev-libs/openssl</pkg> for various features</flag>
@@ -32,6 +33,7 @@
 		<flag name="resolvconf">Install resolvconf symlink for systemd-resolve</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
 		<flag name="tpm">Enable TPM support</flag>
+		<flag name="ukify">Enable systemd-ukify</flag>
 		<flag name="vanilla">Disable Gentoo-specific behavior and compatibility quirks</flag>
 		<flag name="xkb">Depend on <pkg>x11-libs/libxkbcommon</pkg> to allow logind to control the X11 keymap</flag>
 	</use>

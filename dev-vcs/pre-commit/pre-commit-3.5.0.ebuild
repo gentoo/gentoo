@@ -42,17 +42,20 @@ PATCHES=(
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
 
-# The former two require a boatload of dependencies (e.g. Conda, Go, R and more) in order to run
-# and while some of them do include "skip if not found" logic, most of them do not.
-# The latter consistently fail with
-#     Calling "git rev-parse" fails with "fatal: not a git repository (or any of the parent directories): .git".
-# including with the sandbox disabled.
 EPYTEST_DESELECT=(
+	# All of these require a boatload of dependencies (e.g. Conda, Go, R and more) in order to run
+	# and while some of them do include "skip if not found" logic, most of them do not.
 	tests/languages/
 	tests/repository_test.py
+	# These three consistently fail with
+	#     Calling "git rev-parse" fails with "fatal: not a git repository (or any of the parent directories): .git".
+	# including with the sandbox disabled.
 	tests/main_test.py::test_all_cmds
 	tests/main_test.py::test_hook_stage_migration
 	tests/main_test.py::test_try_repo
+	# These two fail if pre-commit is already installed (Bug #894502)
+	tests/commands/install_uninstall_test.py::test_environment_not_sourced
+	tests/commands/install_uninstall_test.py::test_installed_from_venv
 )
 
 distutils_enable_tests pytest

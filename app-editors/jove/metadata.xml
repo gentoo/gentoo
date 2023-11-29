@@ -12,4 +12,7 @@
   language specific modes) while weighing in with CPU, memory, and disk
   requirements comparable to vi.
 </longdescription>
+<upstream>
+  <remote-id type="github">jonmacs/jove</remote-id>
+</upstream>
 </pkgmetadata>

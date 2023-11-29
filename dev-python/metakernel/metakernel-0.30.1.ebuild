@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/ipykernel-5.5.6[${PYTHON_USEDEP}]
@@ -27,9 +27,10 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/jupyter-kernel-test[${PYTHON_USEDEP}]
+		dev-python/pydot[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
 

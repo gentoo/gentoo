@@ -1,0 +1,6 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-14)
+# dev-db/mysql not keyworded here
+dev-perl/DBD-mysql -mysql mariadb

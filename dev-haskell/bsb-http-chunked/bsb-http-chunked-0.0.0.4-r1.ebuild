@@ -11,7 +11,7 @@ CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Chunked HTTP transfer encoding for bytestring builders"
-HOMEPAGE="https://github.com/sjakobi/bsb-https-chunked"
+HOMEPAGE="https://github.com/sjakobi/bsb-http-chunked"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

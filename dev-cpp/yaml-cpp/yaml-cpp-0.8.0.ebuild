@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jbeder/yaml-cpp/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0/0.8"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -21,6 +21,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/yaml-cpp-0.8.0-gtest.patch"
+	"${FILESDIR}/yaml-cpp-0.8.0-gcc13.patch"
 )
 
 src_configure() {

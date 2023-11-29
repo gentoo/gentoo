@@ -25,7 +25,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="BSD BSD-2 RAR"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="all-sfx"
 RESTRICT="bindist mirror"
 

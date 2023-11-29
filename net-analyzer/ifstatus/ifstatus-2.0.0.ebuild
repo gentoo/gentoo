@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="A simple CLI program for displaying network statistics in real time"
-HOMEPAGE="http://ifstatus.sourceforge.net/"
+DESCRIPTION="Simple CLI program for displaying network statistics in real time"
+HOMEPAGE="https://ifstatus.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ~ppc ~riscv x86"
 

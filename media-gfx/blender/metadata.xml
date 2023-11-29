@@ -33,6 +33,9 @@
 		<flag name="cuda">
 			Build cycles renderer with nVidia CUDA support.
 		</flag>
+		<flag name="hip">
+			Build cycles renderer with AMD HIP support.
+		</flag>
 		<flag name="cycles">
 			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
 			<pkg>dev-libs/boost</pkg>).

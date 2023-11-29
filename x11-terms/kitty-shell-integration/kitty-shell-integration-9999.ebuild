@@ -13,10 +13,6 @@ LICENSE="GPL-3"
 SLOT="0"
 RESTRICT="test" # intended to be ran on the full kitty package
 
-PATCHES=(
-	"${FILESDIR}"/kitty-0.30.1-no-sudo.patch
-)
-
 src_compile() { :; }
 
 src_install() {

@@ -33,6 +33,97 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-11-29)
+# Breaks dev-python/passlib (bug #918708). This release has also now been
+# yanked from pypi: https://github.com/pyca/bcrypt/issues/677.
+=dev-python/bcrypt-4.1.0
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-11-26)
+# Work in progress
+~dev-lang/perl-5.38.1
+~virtual/perl-Module-CoreList-5.202.311.250
+
+# John Helmert III <ajak@gentoo.org> (2023-11-25)
+# Multiple vulnerabilities, unmaintained upstream and in Gentoo.
+# subtitleripper included as sole reverse dependency, similarly
+# unmaintained, and with no other reverse dependencies.
+# Removal on 2023-12-24, bug #824290.
+app-text/gocr
+media-video/subtitleripper
+
+# Sam James <sam@gentoo.org> (2023-11-25)
+# Breaks desktop icon rendering, see bug #904468.
+# Upstream bug: https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
+=xfce-base/xfdesktop-4.19.1
+
+# Sam James <sam@gentoo.org> (2023-11-22)
+# Further bugs with CoW via copy_file_range (bug #917224, https://github.com/openzfs/zfs/issues/15526).
+# The issue is very similar to bug #815469.
+# ZFS 2.2.1 has a workaround but if you haven't already upgraded your pool to
+# use the new block cloning feature, consider using <zfs-2.2 for now.
+=sys-fs/zfs-2.2.0
+=sys-fs/zfs-kmod-2.2.0
+
+# hololeap <hololeap@protonmail.com> (2023-11-19)
+# Package has been masked for a long time, is useless for ::gentoo, and has no
+# reverse dependencies.
+# Removal on 2023-12-19.
+dev-haskell/doctest-parallel
+
+# hololeap <hololeap@protonmail.com> (2023-11-19)
+# Bundled library for GHC, exposed as an ebuild for historical reasons.
+# No reverse dependencies, no longer needed in ::gentoo tree.
+# See: <https://github.com/gentoo-haskell/gentoo-haskell/issues/1464>
+# Removal on 2023-12-19.
+dev-haskell/terminfo
+
+# Sam James <sam@gentoo.org> (2023-11-19)
+# GCC 10 and older no longer receive upstream support or fixes for
+# bugs. Please switch to a newer GCC version using gcc-config.
+# The lowest supported version of GCC is GCC 11.
+<sys-devel/gcc-11
+<sys-devel/kgcc64-11
+
+# Sam James <sam@gentoo.org> (2023-11-18)
+# Lots of applications need porting, bug #917537.
+>=dev-libs/libxml2-2.12.0
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-11-10)
+# No reverse dependencies, no tests, no upstream activity. All ebuild
+# maintenance on this package was done randomly by @python project members,
+# at late stage of python porting, which is hard with no tests.
+# Removal on 2023-12-10.  Bug #917124.
+dev-python/empy
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-06)
+# Unmaintained.  Last commit in 2017.  Distutils is deprecated.
+# No revdeps.
+# Removal on 2023-12-06.  Bug #916968.
+dev-python/pyqt-distutils
+
+# Sam James <sam@gentoo.org> (2023-11-05)
+# Mask broken versions:
+# - sys-fs/btrfs-progs-6.6(-r0) was respun upstream.
+# - sys-fs/btrfs-progs-6.6-r1 had the fixed tarball, but contained an upstream
+# bug in the ioctl numbers.
+# Please use sys-fs/btrfs-progs-6.6-r2 or, better, sys-fs/btrfs-progs-6.6.1
+# (identical in functional contents).
+=sys-fs/btrfs-progs-6.6
+=sys-fs/btrfs-progs-6.6-r1
+=sys-fs/btrfs-progs-6.6-r2
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-05)
+# Discontinued upstream.  Fails tests with modern pytest.
+# No revdeps left.
+# Removal on 2023-12-05.  Bug #906834.
+dev-python/pytest-subtesthack
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-05)
+# Discontinued in favor of built-in support in setuptools-scm-7.
+# No revdeps left.
+# Removal on 2023-12-05.  Bug #916904.
+dev-python/setuptools_scm_git_archive
+
 # Mart Raudsepp <leio@gentoo.org> (2023-11-04)
 # gst-transcoder was merged into gst-plugins-bad and can be installed via
 # media-libs/gst-plugins-bad instead. Removal on 2023-12-04. Bug #916871.
@@ -211,20 +302,6 @@ dev-python/ypy-websocket
 # a while. Removal on 2023-11-13. Bug #915190.
 media-libs/libofa
 
-# Mart Raudsepp <leio@gentoo.org> (2023-10-14)
-# GStreamer plugin removed upstream. MMS was deprecated in 2003 and no
-# streams using MMS are known to exist. Removal on 2023-11-13. Bug #915771.
-media-plugins/gst-plugins-libmms
-
-# Florian Schmaus <flow@gentoo.org> (2023-10-14)
-# Obsolete acct-* packages that became leaf packages.
-# Removal on 2023-11-14.
-acct-user/tpm
-acct-group/tpm
-acct-user/ultimaker
-acct-group/ultimaker
-acct-group/systemd-hostname
-
 # Michał Górny <mgorny@gentoo.org> (2023-10-14)
 # media-video/transcode is dead for many years.  We already piled up
 # a lot of downstream patches just to keep it working, and it's broken
@@ -237,104 +314,9 @@ media-video/dvd9to5
 media-video/dvdrip
 media-video/transcode
 
-# Andrey Grozin <grozin@gentoo.org> (2023-10-12)
-# The last upstream tag in 2021
-# There is an active fork: app-text/crqt-ng and app-text/crwx-ng
-# Bug https://bugs.gentoo.org/915634
-# Removal on 2023-11-11
-app-text/coolreader
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
-# Formerly added for unbundling on games-emulation/pcsx2, which is
-# no longer needed. Has no real use on its own, has no revdeps, and
-# does not have real releases (snapshot-only).
-# Removal on 2023-11-09.
-dev-libs/libchdr
-
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Upstream long gone, unmaintained, EAPI 6, only Gentoo still packages
-# this. Removal on 2023-11-07. Bug #905187.
-app-misc/dvorakng
-
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Unmaintained, EAPI 6, tons of patches we have to carry, last release
-# 20 years ago, all major distros have removed this.
-# Removal on 2023-11-07. Bug #602382.
-app-backup/flexbackup
-
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Unmaintained, last release over 23 years(!) ago, multiple QA issues,
-# no other major distro carries this anymore. Removal on 2023-11-07.
-# Bug #425872, #452982, #520968, #605450, #878621, #905945.
-app-admin/qpage
-
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Upstream gone, kept on life support by Debian, most distros don't
-# carry this anymore, Transmeta CPUs are long obsolete at this point.
-# Removal on 2023-11-07. Bug #541694, #905186.
-app-admin/longrun
-
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Unmaintained, typical broken suckless build system, no upstream
-# activity, only Fedora still carries it.
-# Removal on 2023-11-06. Bug #732422, #914638.
-x11-misc/sselp
-
-# David Seifert <soap@gentoo.org> (2023-10-08)
-# Unmaintained, last release over 5 years ago, lots of QA issues, no
-# other distro carries this.
-# Removal on 2023-11-06. Bug #742782, #742809, #771858, #811393,
-# #898314, #898322, #898324, #898326.
-dev-libs/libtubo
-x11-libs/librfm
-x11-misc/rodent
-
-# Hans de Graaff <graaff@gentoo.org> (2023-10-07)
-# Unresolved security issues since two years, bug #792336. Original
-# upstream inactive since 2019. Substitute upstream inactive since
-# 2020. No reverse dependencies. Masked for removal on 2023-11-07.
-sys-fs/dmg2img
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-04)
-# Incompatible with newer media-video/ffmpeg, bug #914499.
-# Deps appenh and loadlib not used by anything else.
-# Removal on 2023-11-04.
-media-video/jubler
-dev-java/appenh
-dev-java/loadlib
-
-# Michał Górny <mgorny@gentoo.org> (2023-10-04)
-# The project was abandoned upstream.  The test suite is broken
-# with python3.12.  It was used only as an optional test dep
-# for dev-python/Arpeggio.
-# Removal on 2023-11-03.  Bug #915162.
-dev-python/memory-profiler
-
-# Michał Górny <mgorny@gentoo.org> (2023-09-29)
-# The project is no longer maintained upstream.  We haven't handled
-# the version bump from a year ago yet.  No reverse dependencies.
-# Removal on 2023-10-29.  Bug #894592.
-dev-python/django-mptt
-
-# Hans de Graaff <graaff@gentoo.org> (2023-09-23)
-# ruby31-only package. No reverse dependencies. Archived by
-# upstream. Last release in 2012. Removal on 2023-10-23.
-dev-ruby/kirbybase
-
-# Hans de Graaff <graaff@gentoo.org> (2023-09-23)
-# ruby31-only package. No reverse dependencies. Discontinued by
-# upstream who recommends using dev-ruby/bunny instead. Removal on
-# 2023-10-23.
-dev-ruby/amqp
-
-# Hans de Graaff <graaff@gentoo.org> (2023-09-23)
-# ruby30-only package. Upstream HOMEPAGE and SRC_URI are gone. Last
-# release at least 8 years ago. Bug #909023. Removal on 2024-10-23.
-app-dicts/prime-dict
 
 # Michał Górny <mgorny@gentoo.org> (2023-09-22)
 # =dev-python/setuptools-scm-8.0.1 broke compatibility hard but reverted
@@ -449,12 +431,6 @@ net-misc/openr2
 =dev-db/mariadb-10.11.2
 =dev-db/mariadb-10.11.3
 
-# Sam James <sam@gentoo.org> (2023-05-19)
-# Breaks Portage's pid-sandbox at least with 5.10 kernels. Pending investigation.
-# If you're hitting this, try: FEATURES="-pid-sandbox" emerge -v1 sys-apps/util-linux
-# as a workaround. bug #906797.
-~sys-apps/util-linux-2.39
-
 # Sam James <sam@gentoo.org> (2023-05-10)
 # Lots of package breakage as usual for new versions. Masked until most/all
 # reverse dependencies are fixed. Tracker bug is bug #906077.
@@ -539,16 +515,6 @@ x11-drivers/nvidia-drivers:0/390
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# Jaco Kroon <jaco@uls.co.za> (2022-11-05)
-# Some potentially breaking changes here, please check the UPGRADE.txt file.
-# Most important:  chan_sip no longer builds by default, if you've migrated to
-# PJSIP you should be OK and most likely you should be able to safely unmask.
-# For now to prevent accidental upgrades and to allow proper testing this will
-# be in place for minimum six months (2023-04-22).
-=net-misc/asterisk-20*
-=net-misc/asterisk-opus-20*
-=net-misc/asterisk-g729-20*
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
@@ -557,18 +523,6 @@ x11-drivers/nvidia-drivers:0/390
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
-
-# hololeap <hololeap@protonmail.com> (2022-08-21)
-# doctest-parallel does not currently work with Setup.hs (used internally by
-# haskell-cabal.eclass)
-# See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
-dev-haskell/doctest-parallel
-
-# Sam James <sam@gentoo.org> (2022-05-28)
-# GCC 9 and older no longer receive upstream support or fixes for
-# bugs. Please switch to a newer GCC version using gcc-config.
-# The lowest supported version of GCC is GCC 10.
-<sys-devel/gcc-10
 
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we

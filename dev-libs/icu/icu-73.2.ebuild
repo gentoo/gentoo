@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-65.1-remove-bashisms.patch"
 	"${FILESDIR}/${PN}-64.2-darwin.patch"
 	"${FILESDIR}/${PN}-68.1-nonunicode.patch"
+	"${FILESDIR}/${P}-fix-TestHebrewCalendarInTemporalLeapYear-test.patch"
 )
 
 src_prepare() {

@@ -39,8 +39,8 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}
 	!<kde-apps/kate-22.08.0:5

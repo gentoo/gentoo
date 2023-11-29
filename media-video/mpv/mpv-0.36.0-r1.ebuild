@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 else
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv x86 ~amd64-linux"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86 ~amd64-linux"
 fi
 
 DESCRIPTION="Media player for the command line"
@@ -247,7 +247,7 @@ src_configure() {
 		# notable options left to automagic
 		#dmabuf-wayland: USE="drm wayland" + plus memfd_create support
 		#libplacebo-next: USE="libplacebo" + >=libplacebo-5.264
-		#vulkan-interop: USE="libplacebo vulkan" + ffmpeg-9999 currently
+		#vulkan-interop: USE="libplacebo vulkan" + >=ffmpeg-6.1
 		# TODO?: perhaps few more similar compound options should be left auto
 	)
 

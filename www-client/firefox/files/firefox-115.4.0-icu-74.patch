@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/917599
+https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
+https://hg.mozilla.org/try/rev/d5f3b0c4f08a426ce00a153c04e177eecb6820e2
+
+# HG changeset patch
+# User André Bargull <andre.bargull@gmail.com>
+# Date 1697435923 -7200
+# Node ID d5f3b0c4f08a426ce00a153c04e177eecb6820e2
+# Parent  c63994f8259efdf6e745c960aa9e1409d5477049
+Bug xxx - Part 12: Add new line break classes. r?
+
+diff --git a/intl/lwbrk/LineBreaker.cpp b/intl/lwbrk/LineBreaker.cpp
+--- a/intl/lwbrk/LineBreaker.cpp
++++ b/intl/lwbrk/LineBreaker.cpp
+@@ -443,17 +443,23 @@ static int8_t GetClass(uint32_t u, LineB
+       /* JT = 34,                           [JT] */ CLASS_CHARACTER,
+       /* JV = 35,                           [JV] */ CLASS_CHARACTER,
+       /* CLOSE_PARENTHESIS = 36,            [CP] */ CLASS_CLOSE_LIKE_CHARACTER,
+       /* CONDITIONAL_JAPANESE_STARTER = 37, [CJ] */ CLASS_CLOSE,
+       /* HEBREW_LETTER = 38,                [HL] */ CLASS_CHARACTER,
+       /* REGIONAL_INDICATOR = 39,           [RI] */ CLASS_CHARACTER,
+       /* E_BASE = 40,                       [EB] */ CLASS_BREAKABLE,
+       /* E_MODIFIER = 41,                   [EM] */ CLASS_CHARACTER,
+-      /* ZWJ = 42,                          [ZWJ]*/ CLASS_CHARACTER};
++      /* ZWJ = 42,                          [ZWJ]*/ CLASS_CHARACTER,
++      /* AKSARA = 43,                       [AK] */ CLASS_CHARACTER,
++      /* AKSARA_PREBASE = 44,               [AP] */ CLASS_CHARACTER,
++      /* AKSARA_START = 45,                 [AS] */ CLASS_CHARACTER,
++      /* VIRAMA_FINAL = 46,                 [VF] */ CLASS_CHARACTER,
++      /* VIRAMA = 47,                       [VI] */ CLASS_CHARACTER,
++  };
+ 
+   static_assert(U_LB_COUNT == mozilla::ArrayLength(sUnicodeLineBreakToClass),
+                 "Gecko vs ICU LineBreak class mismatch");
+ 
+   auto cls = GetLineBreakClass(u);
+   MOZ_ASSERT(cls < mozilla::ArrayLength(sUnicodeLineBreakToClass));
+ 
+   // Overrides based on rules for the different line-break values given in
+
+

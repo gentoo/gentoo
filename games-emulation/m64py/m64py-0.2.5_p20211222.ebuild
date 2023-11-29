@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 qmake-utils xdg-utils
 
@@ -44,6 +44,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
+	<dev-python/setuptools-69
 	dev-qt/linguist-tools:5
 "
 

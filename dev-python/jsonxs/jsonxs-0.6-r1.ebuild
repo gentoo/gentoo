@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/fboender/jsonxs"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 python_test() {
 	"${EPYTHON}" jsonxs/jsonxs.py -v || die "Tests failed with ${EPYTHON}"

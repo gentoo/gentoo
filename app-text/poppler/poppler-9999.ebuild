@@ -25,7 +25,7 @@ DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="boost cairo cjk curl +cxx debug doc gpgme +introspection +jpeg +jpeg2k +lcms nss png qt5 test tiff +utils"
+IUSE="boost cairo cjk curl +cxx debug doc gpgme +introspection +jpeg +jpeg2k +lcms nss png qt5 qt6 test tiff +utils"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -49,6 +49,7 @@ COMMON_DEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtxml:5
 	)
+	qt6? ( dev-qt/qtbase:6[gui,xml] )
 	tiff? ( media-libs/tiff:= )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -56,10 +57,13 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.71 )
-	test? ( qt5? (
-		dev-qt/qttest:5
-		dev-qt/qtwidgets:5
-	) )
+	test? (
+		qt5? (
+			dev-qt/qttest:5
+			dev-qt/qtwidgets:5
+		)
+		qt6? ( dev-qt/qtbase:6[test,widgets] )
+	)
 "
 BDEPEND="
 	>=dev-util/glib-utils-2.64
@@ -131,9 +135,9 @@ src_configure() {
 		-DENABLE_NSS3=$(usex nss)
 		-DWITH_PNG=$(usex png)
 		-DENABLE_QT5=$(usex qt5)
+		-DENABLE_QT6=$(usex qt6)
 		-DENABLE_LIBTIFF=$(usex tiff)
 		-DENABLE_UTILS=$(usex utils)
-		-DENABLE_QT6=OFF
 	)
 	use cairo && mycmakeargs+=( -DWITH_GObjectIntrospection=$(usex introspection) )
 

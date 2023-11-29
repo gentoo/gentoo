@@ -12,7 +12,7 @@ DESCRIPTION="Components relating to Flatpak pipewire use in Plasma"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtwayland-${QTMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/kwayland-${KFMIN}:5
+	>=kde-plasma/kwayland-${KFMIN}:5
 	media-libs/libepoxy
 	media-libs/libglvnd
 	media-video/ffmpeg:=

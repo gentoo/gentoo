@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -45,17 +45,14 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
-src_prepare() {
-	# relies on specific test runner name
-	sed -i -e 's:run\.py:unittest_or_fail.py:' \
-		keystoneauth1/tests/unit/test_session.py || die
-	# remove the test that requires hacking
-	rm keystoneauth1/tests/unit/test_hacking_checks.py || die
-	distutils-r1_src_prepare
-}
+EPYTEST_DESELECT=(
+	# fragile to test runner name
+	keystoneauth1/tests/unit/test_session.py::SessionTests::test_user_agent
+)
 
-python_test() {
-	eunittest -b
-}
+EPYTEST_IGNORE=(
+	# require hacking
+	keystoneauth1/tests/unit/test_hacking_checks.py
+)

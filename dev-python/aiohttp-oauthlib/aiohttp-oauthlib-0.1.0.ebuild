@@ -15,7 +15,7 @@ SRC_URI="https://git.sr.ht/~whynothugo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 SLOT="0"
 LICENSE="ISC"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/aiohttp[${PYTHON_USEDEP}]

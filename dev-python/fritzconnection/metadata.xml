@@ -11,4 +11,10 @@
 		<remote-id type="github">kbr/fritzconnection</remote-id>
 		<remote-id type="pypi">fritzconnection</remote-id>
 	</upstream>
+	<use>
+		<flag name="qrcode">
+			Install dependencies needed to generate QR Codes for WiFi
+			login.
+		</flag>
+	</use>
 </pkgmetadata>

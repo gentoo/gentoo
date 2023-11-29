@@ -13,6 +13,9 @@
     <remote-id type="github">kovidgoyal/calibre</remote-id>
   </upstream>
   <use>
+    <flag name="font-subsetting">Enable font subsetting support</flag>
     <flag name="speech">Enable text-to-speech support</flag>
+    <flag name="system-mathjax">Use a system copy of mathjax</flag>
+    <flag name="unrar">Enable support for comic books compressed with the non-free Rar format</flag>
   </use>
 </pkgmetadata>

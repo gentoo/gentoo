@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ekenberg/quotatool/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 
 RDEPEND="sys-fs/quota"
 

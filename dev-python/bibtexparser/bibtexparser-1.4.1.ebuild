@@ -21,7 +21,7 @@ S="${WORKDIR}/python-${P}"
 
 LICENSE="|| ( BSD LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/pyparsing[${PYTHON_USEDEP}]

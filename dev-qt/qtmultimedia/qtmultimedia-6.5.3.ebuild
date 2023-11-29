@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 IUSE="+X alsa +ffmpeg gstreamer opengl pulseaudio qml v4l vaapi vulkan"
@@ -49,6 +49,7 @@ DEPEND="
 	${RDEPEND}
 	X? ( x11-base/xorg-proto )
 	v4l? ( sys-kernel/linux-headers )
+	vulkan? ( dev-util/vulkan-headers )
 "
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 

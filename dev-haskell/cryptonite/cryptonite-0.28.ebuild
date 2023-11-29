@@ -21,7 +21,7 @@ IUSE="cpu_flags_x86_rdrand cpu_flags_x86_aes cpu_flags_x86_sse cpu_flags_x86_sse
 
 RDEPEND=">=dev-haskell/basement-0.0.6:=[profile?]
 	>=dev-haskell/memory-0.14.18:=[profile?]
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:= <dev-lang/ghc-9.1
 	virtual/libc
 "
 DEPEND="${RDEPEND}

@@ -17,7 +17,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/fleep-py-${COMMIT}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="File format determination library for Python"

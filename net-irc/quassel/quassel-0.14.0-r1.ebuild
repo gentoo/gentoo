@@ -72,7 +72,7 @@ DEPEND="dev-libs/boost:=
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5
-	kde-frameworks/extra-cmake-modules:5"
+	kde-frameworks/extra-cmake-modules:0"
 
 DEPEND+=" test? ( dev-cpp/gtest dev-qt/qttest )"
 

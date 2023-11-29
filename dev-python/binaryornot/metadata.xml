@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">audreyfeldroy/binaryornot</remote-id>
+		<remote-id type="github">binaryornot/binaryornot</remote-id>
 		<remote-id type="pypi">binaryornot</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -13,7 +13,7 @@ DESCRIPTION="Backend implementation for xdg-desktop-portal that is using Qt/KDE 
 
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 # dev-qt/qtgui: QtXkbCommonSupport is provided by either IUSE libinput or X
@@ -41,8 +41,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	>=kde-frameworks/kwayland-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/kwayland-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	x11-libs/libxkbcommon
 "
 DEPEND="${COMMON_DEPEND}

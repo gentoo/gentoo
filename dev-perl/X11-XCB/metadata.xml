@@ -21,6 +21,6 @@
     <remote-id type="cpan-module">X11::XCB::Sizehints</remote-id>
     <remote-id type="cpan-module">X11::XCB::Sizehints::Aspect</remote-id>
     <remote-id type="cpan-module">X11::XCB::Window</remote-id>
-    <remote-id type="github">tapelberg/X11-XCB</remote-id>
+    <remote-id type="github">zhmylove/X11-XCB</remote-id>
   </upstream>
 </pkgmetadata>

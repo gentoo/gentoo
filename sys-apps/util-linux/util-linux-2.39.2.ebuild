@@ -95,6 +95,10 @@ fi
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.39.2-fincore-test.patch
+)
+
 pkg_pretend() {
 	if use su && ! use suid ; then
 		elog "su will be installed as suid despite USE=-suid (bug #832092)"
@@ -141,6 +145,8 @@ src_prepare() {
 
 			lsfd/mkfds-symlink
 			lsfd/mkfds-rw-character-device
+			# Fails with network-sandbox at least in nspawn
+			lsfd/option-inet
 		)
 
 		local known_failing_test

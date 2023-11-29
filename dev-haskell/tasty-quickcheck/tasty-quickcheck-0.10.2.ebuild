@@ -16,7 +16,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-haskell/optparse-applicative:=[profile?]
-	>=dev-haskell/quickcheck-2.10:2=[profile?]
+	>=dev-haskell/quickcheck-2.10:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/tagged:=[profile?]
 	>=dev-haskell/tasty-1.0.1:=[profile?]

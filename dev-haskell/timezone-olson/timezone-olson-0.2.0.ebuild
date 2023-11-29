@@ -16,6 +16,10 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+CABAL_CHDEPS=(
+	'time >= 1.6 && < 1.10' 'time >= 1.6'
+)
+
 RDEPEND=">=dev-haskell/extensible-exceptions-0.1.0:=[profile?] <dev-haskell/extensible-exceptions-0.2:=[profile?]
 	>=dev-haskell/timezone-series-0.1.0:=[profile?] <dev-haskell/timezone-series-0.2:=[profile?]
 	>=dev-lang/ghc-8.4.3:=

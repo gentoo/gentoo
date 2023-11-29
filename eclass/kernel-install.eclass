@@ -50,9 +50,9 @@ RESTRICT+="
 IDEPEND="
 	|| (
 		sys-kernel/installkernel-gentoo
-		sys-kernel/installkernel-systemd-boot
+		sys-kernel/installkernel-systemd
 	)
-	initramfs? ( >=sys-kernel/dracut-049-r3 )"
+	initramfs? ( >=sys-kernel/dracut-059-r4 )"
 # needed by objtool that is installed along with the kernel and used
 # to build external modules
 # NB: linux-mod.eclass also adds this dep but it's cleaner to have
@@ -510,7 +510,7 @@ kernel-install_pkg_postrm() {
 		local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
-		rm -f "${kernel_dir}/${image_path%/*}"/initrd{,.uefi} &&
+		rm -f "${kernel_dir}/${image_path%/*}"/{initrd,uki.efi} &&
 			find "${kernel_dir}" -depth -type d -empty -delete
 		eend ${?}
 	fi

@@ -1,8 +1,10 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 command=/usr/sbin/bacula-dir
 command_args="${DIR_OPTIONS}"
+# make sure the following line matches the portnumber from bacula-dir.conf
 pidfile=/var/run/bacula-dir.9101.pid
 
 depend() {

@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/rblaze/haskell-dbus#readme"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 # exotic keywords require ghc bump to 9.2 series
 #KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 

@@ -1,0 +1,14 @@
+This package (and corresponding support in app-crypt/pinentry)
+provides a way to input a passphrase through the Emacs minibuffer.
+
+To use it, add the line
+
+    allow-emacs-pinentry
+
+to your gpg-agent.conf configuration file, which can usually be found
+in the ~/.gnupg/ directory.
+
+The pinentry server can be started with the command "pinentry-start".
+You may add the following line to your Emacs configuration file:
+
+    (pinentry-start 'quiet)

@@ -1,0 +1,16 @@
+commit f244de224400d9634742c52c655ac705cce9658a
+Author: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date:   Thu Sep 14 12:32:44 2023 +0000
+
+    data/xml-schema/metadata.xsd: add codeberg remote-id
+
+--- a/data/share/pkgcore/xml-schema/metadata.xsd
++++ b/data/share/pkgcore/xml-schema/metadata.xsd
+@@ -271,6 +271,7 @@
+ 	<xs:simpleType name='upstreamRemoteIdTypeAttrType'>
+ 		<xs:restriction base='xs:token'>
+ 			<xs:enumeration value='bitbucket'/>
++			<xs:enumeration value='codeberg'/>
+ 			<xs:enumeration value='cpan'/>
+ 			<xs:enumeration value='cpan-module'/>
+ 			<xs:enumeration value='cpe'/>

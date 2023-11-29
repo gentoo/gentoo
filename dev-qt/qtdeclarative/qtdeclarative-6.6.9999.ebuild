@@ -18,7 +18,10 @@ IUSE="opengl +sql vulkan +widgets"
 RESTRICT="test"
 
 RDEPEND="~dev-qt/qtbase-${PV}:6[network,opengl=,sql?,vulkan=,widgets=]"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 src_configure() {

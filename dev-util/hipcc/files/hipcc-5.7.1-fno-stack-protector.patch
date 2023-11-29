@@ -1,0 +1,13 @@
+Related bug: https://bugs.gentoo.org/890377
+--- a/bin/hipcc.pl
++++ b/bin/hipcc.pl
+@@ -552,6 +552,9 @@ if ($buildDeps and $HIP_PLATFORM eq 'amd') {
+ # pass-through CPP mode.
+ 
+ if ($HIP_PLATFORM eq "amd") {
++    # Append -fno-stack-protector due to stack protection for HIP is not supported
++    $HIPCXXFLAGS .= " -fno-stack-protector";
++    $HIPCFLAGS .= " -fno-stack-protector";
+     # Set default optimization level to -O3 for hip-clang.
+     if ($optArg eq "") {
+         $HIPCXXFLAGS .= " -O3";

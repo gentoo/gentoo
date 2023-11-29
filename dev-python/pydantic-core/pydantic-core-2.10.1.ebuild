@@ -5,8 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-# pypy3 is waiting for new pyo3 release
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 CRATES="
 	ahash@0.8.3
@@ -99,7 +98,7 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/typing-extensions-4.7.1[${PYTHON_USEDEP}]

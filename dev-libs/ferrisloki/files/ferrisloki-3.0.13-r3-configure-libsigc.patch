@@ -1,0 +1,97 @@
+Rollup of src_prepare() from previous revisions plus additional fixes
+
+ * derice damn configure script
+ * fix building with libsgc++-2.6
+ * fix building with /bin/sh -> dash (bug #886619)
+--- a/configure.in
++++ b/configure.in
+@@ -1,4 +1,5 @@
+ AC_INIT(ferrisloki, 3.0.13)
++AC_CONFIG_MACRO_DIR([macros])
+ 
+ PACKAGE=$PACKAGE_NAME
+ VERSION=$PACKAGE_VERSION
+@@ -45,9 +46,6 @@ AC_STDC_HEADERS
+ #AC_ARG_PROGRAM
+ AM_PROG_LIBTOOL
+ 
+-STLPORT_CFLAGS=""
+-STLPORT_LDFLAGS=""
+-
+ ###############################################################################
+ ###############################################################################
+ ###############################################################################
+@@ -57,12 +55,6 @@ AM_FERRIS_SIGC2( 2.0.0 )
+ 
+ ###############################################################################
+ 
+-CFLAGS=" $STLPORT_CFLAGS $CXXFLAGS -DNDEBUG "
+-CXXFLAGS=" $STLPORT_CFLAGS $CXXFLAGS -DNDEBUG "
+-LDFLAGS=" $STLPORT_LDFLAGS $LDFLAGS"
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CPPFLAGS)
+-AC_SUBST(LDFLAGS)
+ AC_SUBST(CXXFLAGS)
+ AC_SUBST(CXXCPPFLAGS)
+ 
+--- a/macros/ferrismacros.m4
++++ b/macros/ferrismacros.m4
+@@ -303,30 +303,6 @@ if test x"$have_stlport" = xno; then
+ 
+ 	AC_LANG_CPLUSPLUS
+ 	STLPORT_IO64_CFLAGS=" -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 "
+-
+-	AC_CHECK_PROG( have_stlportcfg, stlport-config, yes, no )
+-	
+-	if test "$have_stlportcfg" = yes; then
+-
+-#		AC_PATH_GENERIC( STLPORT, 4.5, [ have_stlport=yes ], [foo=2] )
+-		stlport_installed_version=`stlport-config --version`
+-
+-		# Calculate the available version number
+-		[f_tmp=( `echo $stlport_installed_version | sed 's/[^0-9]\+/ /g'` )]
+-		[f_tmp=$(( 1000000 * ${f_tmp[0]:-0} + 1000 * ${f_tmp[1]:-0} + ${f_tmp[2]:-0} ))]
+-
+-		[freq_version=( `echo $stlport_required_version | sed 's/[^0-9]\+/ /g'` )]
+-		[freq_version=$(( 1000000 * ${freq_version[0]:-0} + 1000 * ${freq_version[1]:-0} + ${freq_version[2]:-0} ))]
+-
+-		if test $freq_version -gt $f_tmp ; then
+-			AC_MSG_WARN([STLPort version $1 is required, you have $stlport_installed_version])
+-		else
+-			have_stlport=yes
+-			STLPORT_LIBS=" `stlport-config --libs` -lpthread "
+-			STLPORT_CFLAGS=" `stlport-config --cflags` "
+-			AM_FERRIS_STLPORT_INTERNAL_TRYLINK( [have_stlport=yes], [have_stlport=no]  )
+-		fi
+-	fi
+ fi
+ 
+ if test x"$have_stlport" = xno; then
+@@ -442,15 +418,11 @@ dnl
+ stlport_required_version=$1
+ have_stlport=no
+ 
+-attempt_to_use_stlport=yes
++attempt_to_use_stlport=no
+ AC_ARG_ENABLE(stlport,
+ [--disable-stlport            Don't use STLport even if it is detected],
+ [
+-  if test x$enableval = xyes; then
+-	attempt_to_use_stlport=yes
+-  else
+-	attempt_to_use_stlport=no
+-  fi
++  attempt_to_use_stlport=no
+ ])
+ 
+ echo "attempt_to_use_stlport:${attempt_to_use_stlport}"
+--- a/src/Extensions.hh
++++ b/src/Extensions.hh
+@@ -29,7 +29,6 @@
+ ******************************************************************************/
+ 
+ #include <sigc++/signal.h>
+-#include <sigc++/object.h>
+ #include <loki/SmartPtr.h>
+ #include <loki/SmallObj.h>
+ 

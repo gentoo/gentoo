@@ -1,6 +1,16 @@
 # Copyright 2006-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-17)
+# Broken on BE and no way to test on LE, mask for now
+# https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
+media-libs/libaom
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-17)
+# Broken on BE and no way to test on LE, mask for now
+# https://gitlab.gnome.org/GNOME/gtk/-/issues/5904
+gui-libs/gtk:4
+
 # Mask pam_ldap and nss_ldap - openldap dep missing.
 sys-auth/pam_ldap
 sys-auth/nss_ldap

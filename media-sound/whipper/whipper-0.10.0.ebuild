@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/musicbrainzngs[${PYTHON_USEDEP}]
 	>=dev-python/pycdio-2.1.0[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/python-discid[${PYTHON_USEDEP}]
+	dev-python/discid[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]

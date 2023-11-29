@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1
 
@@ -30,7 +30,7 @@ LICENSE="
 	test? ( Apache-2.0 )
 "
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	<dev-python/parso-0.9[${PYTHON_USEDEP}]
@@ -64,6 +64,17 @@ python_test() {
 		# assumes pristine virtualenv
 		test/test_inference/test_imports.py::test_os_issues
 	)
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				test/test_api/test_api.py::test_preload_modules
+				test/test_api/test_interpreter.py::test_param_infer_default
+				test/test_inference/test_compiled.py::test_next_docstr
+				test/test_inference/test_compiled.py::test_time_docstring
+			)
+			;;
+	esac
 
 	# some plugin breaks case-insensitivity on completions
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1

@@ -58,7 +58,7 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	holidays? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
 	kwallet? (
 		>=app-crypt/qca-2.3.0:2

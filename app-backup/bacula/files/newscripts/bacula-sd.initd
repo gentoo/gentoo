@@ -1,8 +1,10 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 command=/usr/sbin/bacula-sd
 command_args="${SD_OPTIONS}"
+# make sure the following line matches the portnumber from bacula-sd.conf
 pidfile=/var/run/bacula-sd.9103.pid
 
 depend() {

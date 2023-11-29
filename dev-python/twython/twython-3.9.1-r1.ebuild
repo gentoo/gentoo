@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]

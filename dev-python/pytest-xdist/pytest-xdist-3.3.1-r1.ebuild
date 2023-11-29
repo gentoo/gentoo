@@ -17,7 +17,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	dev-python/execnet[${PYTHON_USEDEP}]
@@ -38,7 +38,7 @@ python_test() {
 	# disable autoloading plugins in nested pytest calls
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# since we disabled autoloading, force loading necessary plugins
-	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_forked
+	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail
 
 	epytest
 }

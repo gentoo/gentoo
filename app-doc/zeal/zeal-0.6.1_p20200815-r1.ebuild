@@ -35,7 +35,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	x11-themes/hicolor-icon-theme
 "
-BDEPEND="kde-frameworks/extra-cmake-modules:5"
+BDEPEND="kde-frameworks/extra-cmake-modules:0"
 
 PATCHES=(
 	"${FILESDIR}/0002-settings-disable-checking-for-updates-by-default.patch"

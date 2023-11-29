@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 pypi
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -30,6 +30,13 @@ BDEPEND="
 		dev-python/threadpoolctl[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# Borrowed from Fedora: https://github.com/joblib/joblib/issues/1478
+	"${FILESDIR}/${P}-py3.12-no-depr-warn.patch"
+	# https://github.com/joblib/joblib/pull/1518
+	"${FILESDIR}/${P}-py3.12-avoid-ast.num-and-node.n.patch"
+)
 
 distutils_enable_tests pytest
 

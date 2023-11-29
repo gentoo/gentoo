@@ -29,6 +29,7 @@ ruby_add_bdepend "test? (
 		dev-ruby/connection_pool
 		dev-ruby/minitest:5
 		dev-ruby/rack
+		dev-ruby/rack-session
 )"
 
 all_ruby_prepare() {

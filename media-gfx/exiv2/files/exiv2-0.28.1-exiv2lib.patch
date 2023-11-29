@@ -1,0 +1,31 @@
+From 4f6d0b806714a702ccbe9e10c5155eb6a1699380 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <toscano.pino@tiscali.it>
+Date: Tue, 14 Nov 2023 07:23:32 +0100
+Subject: [PATCH] cmake: restore a "exiv2lib" target
+
+Commit a8c3455e5cd7ee65acc5f398581e1386f7df5108 and
+commit eb05551ed2d21079299f2f4da2f463df6857b884 changed the target of
+the exiv2 library ("exiv2lib"), exporting it in the "Exiv2" namespace,
+so making it usable as "Exiv2::exiv2lib" instead. An ALIAS to "exiv2lib"
+was added, however cmake does not install or export ALIAS targets [1].
+
+Hence, restore compatibility with the existing cmake users of exiv2:
+manually create an ALIAS target in the cmake config files after all the
+targets are loaded and checked.
+
+[1] https://cmake.org/cmake/help/latest/command/add_library.html
+---
+ cmake/exiv2Config.cmake.in | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/cmake/exiv2Config.cmake.in b/cmake/exiv2Config.cmake.in
+index 63c9362ff7..c9e2eba9b5 100644
+--- a/cmake/exiv2Config.cmake.in
++++ b/cmake/exiv2Config.cmake.in
+@@ -14,3 +14,6 @@ endif()
+ include("${CMAKE_CURRENT_LIST_DIR}/exiv2Export.cmake")
+ 
+ check_required_components(exiv2)
++
++# compatibility with non-aliased users
++add_library(exiv2lib ALIAS Exiv2::exiv2lib)

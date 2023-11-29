@@ -16,7 +16,7 @@ IUSE="grub"
 RDEPEND="
 	>=sys-apps/debianutils-4.9-r1
 	!<sys-apps/debianutils-4.9-r1[installkernel(+)]
-	!sys-kernel/installkernel-systemd-boot"
+	!sys-kernel/installkernel-systemd"
 
 src_install() {
 	into /

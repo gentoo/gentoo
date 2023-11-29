@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/python-discid[${PYTHON_USEDEP}]
+		dev-python/discid[${PYTHON_USEDEP}]
 		media-libs/mutagen[${PYTHON_USEDEP}]
 	')
 	media-libs/flac

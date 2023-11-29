@@ -175,7 +175,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	emake -Onone
 }
 
 src_install() {

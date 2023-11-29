@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/bytestring-builder-0.10.4:=[profile?] <dev-haskell/bytestring-builder-1:=[profile?]
 	>=dev-haskell/fail-4.9:=[profile?] <dev-haskell/fail-4.10:=[profile?]
-	>=dev-lang/ghc-7.4.1:=
+	>=dev-lang/ghc-7.4.1:= <dev-lang/ghc-9.1:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10

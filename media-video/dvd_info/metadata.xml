@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>media-video@gentoo.org</email>
-</maintainer>
-<upstream>
-<remote-id type="sourceforge">dvdinfo</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="libmpv">Build DVD player using libmpv</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">dvdinfo</remote-id>
+		<remote-id type="github">beandog/dvd_info</remote-id>
+	</upstream>
 </pkgmetadata>

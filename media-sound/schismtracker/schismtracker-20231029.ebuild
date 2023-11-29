@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 LGPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=media-libs/libsdl2-2.0.5[X]
@@ -26,9 +26,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-
-	# Can drop this once bashism patch unnecessary
-	eautoreconf
 
 	# workaround for temporary files (missing directory). Fixes:
 	# sh ./scripts/build-font.sh . font/default-lower.fnt font/default-upper-alt.fnt font/default-upper-itf.fnt font/half-width.fnt >auto/default-font.c

@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="hackage">cryptohash-md5</remote-id>
-		<remote-id type="github">haskell-hvr/cryptohash-md5</remote-id>
+		<remote-id type="github">hvr/cryptohash-md5</remote-id>
 	</upstream>
 </pkgmetadata>

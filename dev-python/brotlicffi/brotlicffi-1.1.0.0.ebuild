@@ -24,13 +24,13 @@ SRC_URI="
 	test? (
 		https://github.com/google/brotli/archive/${BROTLI_BUNDLED_COMMIT}.tar.gz
 			-> brotli-${BROTLI_BUNDLED_COMMIT}.tar.gz
-		https://github.com/google/brotli/blob/ed738e842d2fbdf2d6459e39267a633c4a9b2f5d/tests/testdata/alice29.txt
+		https://github.com/google/brotli/raw/ed738e842d2fbdf2d6459e39267a633c4a9b2f5d/tests/testdata/alice29.txt
 	)
 "
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	app-arch/brotli:=

@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # custom wrapper over setuptools
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 multiprocessing pypi
 

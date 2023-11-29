@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN="CherryPy"
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -47,6 +47,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/cherrypy/cherrypy/pull/1959
+		"${FILESDIR}/${P}-py312.patch"
+	)
+
 	sed -i -e '/cov/d' pytest.ini || die
 	# upstream has been using xfail to mark flaky tests, then added
 	# xfail_strict... not a good idea

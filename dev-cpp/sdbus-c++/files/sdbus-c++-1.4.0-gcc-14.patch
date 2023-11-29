@@ -1,0 +1,25 @@
+From 066785da67f0d7e2fa5f45c0fb25c333679be061 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Thu, 16 Nov 2023 18:52:48 +0200
+Subject: [PATCH] fix: Add header for gcc-14 that isn't included by default
+ anymore
+
+* https://gcc.gnu.org/gcc-14/porting_to.html
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ include/sdbus-c++/Message.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/sdbus-c++/Message.h b/include/sdbus-c++/Message.h
+index 915a071b..9c85c019 100644
+--- a/include/sdbus-c++/Message.h
++++ b/include/sdbus-c++/Message.h
+@@ -42,6 +42,7 @@
+ #include <cassert>
+ #include <functional>
+ #include <sys/types.h>
++#include <algorithm>
+ 
+ // Forward declarations
+ namespace sdbus {

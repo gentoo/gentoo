@@ -12,12 +12,14 @@ app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
 app-eselect/eselect-rust
+app-misc/khal
 app-text/mdbook
 dev-embedded/esptool
 dev-lang/rust
 dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
+dev-python/aiohttp-oauthlib
 dev-python/autobahn
 dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
@@ -83,7 +85,6 @@ dev-python/python-ironicclient
 dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
-dev-python/python-sshpubkeys
 dev-python/readme-renderer
 dev-python/referencing
 dev-python/requests-kerberos
@@ -94,12 +95,14 @@ dev-python/selenium
 dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/spur
+dev-python/sshpubkeys
 dev-python/sshtunnel
 dev-python/tempest
 dev-python/trustme
 dev-python/trio
 dev-python/trio-websocket
 dev-python/twine
+dev-python/vdirsyncer
 dev-python/watchfiles
 dev-python/wcmatch
 dev-python/widgetsnbextension

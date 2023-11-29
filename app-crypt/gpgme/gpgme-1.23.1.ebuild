@@ -33,7 +33,7 @@ LICENSE="GPL-2 LGPL-2.1"
 # Bump FUDGE if a release is made which breaks ABI without changing SONAME.
 # (Reset to 0 if FUDGE != 0 if libgpgme/libgpgmepp/libqpggme change.)
 SLOT="1/11.6.15.2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="common-lisp static-libs +cxx python qt5 test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
@@ -54,6 +54,9 @@ DEPEND="
 "
 #doc? ( app-doc/doxygen[dot] )
 BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' python3_12)
 	python? ( dev-lang/swig )
 	verify-sig? ( sec-keys/openpgp-keys-gnupg )
 "

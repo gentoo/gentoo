@@ -8,14 +8,21 @@ inherit linux-info toolchain-funcs verify-sig
 
 DESCRIPTION="Pipe Viewer: a tool for monitoring the progress of data through a pipe"
 HOMEPAGE="https://www.ivarch.com/programs/pv.shtml https://codeberg.org/a-j-wood/pv"
-SRC_URI="
-	https://www.ivarch.com/programs/sources/${P}.tar.gz
-	verify-sig? ( https://www.ivarch.com/programs/sources/${P}.tar.gz.txt -> ${P}.tar.gz.asc )
-"
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://codeberg.org/a-j-wood/pv"
+	inherit autotools git-r3
+else
+	SRC_URI="
+		https://www.ivarch.com/programs/sources/${P}.tar.gz
+		verify-sig? ( https://www.ivarch.com/programs/sources/${P}.tar.gz.txt -> ${P}.tar.gz.asc )
+	"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug nls"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-pv )"
@@ -26,6 +33,12 @@ pkg_setup() {
 		ERROR_SYSVIPC="You will need to enable CONFIG_SYSVIPC in your kernel to use the --remote option."
 		linux-info_pkg_setup
 	fi
+}
+
+src_prepare() {
+	default
+
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {

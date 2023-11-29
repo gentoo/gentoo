@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
-PYTHON_REQ_USE='readline,sqlite,threads(+)'
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 optfeature pypi virtualx
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 IUSE="doc examples notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
@@ -42,9 +42,9 @@ BDEPEND="
 		app-text/dvipng[truetype]
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
+		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
 		dev-python/pickleshare[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
@@ -65,19 +65,23 @@ RDEPEND+="
 	)
 "
 PDEPEND="
-	notebook? (
-		dev-python/notebook[${PYTHON_USEDEP}]
-		dev-python/ipywidgets[${PYTHON_USEDEP}]
-		dev-python/widgetsnbextension[${PYTHON_USEDEP}]
-	)
-	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		notebook? (
+			dev-python/notebook[${PYTHON_USEDEP}]
+			dev-python/ipywidgets[${PYTHON_USEDEP}]
+			dev-python/widgetsnbextension[${PYTHON_USEDEP}]
+		)
+		qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
+	' 'python*')
 	smp? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
 		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
 	)
 "
 
-PATCHES=( "${FILESDIR}"/2.1.0-substitute-files.patch )
+PATCHES=(
+	"${FILESDIR}"/2.1.0-substitute-files.patch
+)
 
 python_prepare_all() {
 	# Remove out of date insource files
@@ -115,6 +119,16 @@ python_test() {
 		IPython/core/tests/test_oinspect.py::test_render_signature_long
 		IPython/terminal/tests/test_shortcuts.py::test_modify_shortcut_with_filters
 	)
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# https://github.com/numpy/numpy/issues/25164
+				IPython/lib/tests/test_display.py::TestAudioDataWithoutNumpy
+			)
+			;;
+	esac
+
 	# nonfatal implied by virtx
 	nonfatal epytest || die "Tests failed with ${EPYTHON}"
 }

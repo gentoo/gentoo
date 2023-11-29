@@ -6,7 +6,7 @@ EAPI=8
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake cuda fortran-2 python-single-r1 toolchain-funcs
 
@@ -43,6 +43,7 @@ REQUIRED_USE="
 	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
+	jupyter? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( root7 )
 	roofit? ( minuit )
@@ -128,11 +129,13 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
 RDEPEND="${CDEPEND}
-	$(python_gen_cond_dep '
-		dev-python/jupyter[${PYTHON_USEDEP}]
-		dev-python/notebook[${PYTHON_USEDEP}]
-		dev-python/metakernel[${PYTHON_USEDEP}]
-	')
+	jupyter? (
+		$(python_gen_cond_dep '
+			dev-python/jupyter[${PYTHON_USEDEP}]
+			dev-python/notebook[${PYTHON_USEDEP}]
+			dev-python/metakernel[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 PATCHES=(

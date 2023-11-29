@@ -1,3 +1,8 @@
+From 59541041bc3b39e8539fd12a8e584a63040ad7a5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 4 Feb 2020 23:17:49 +1300
+Subject: Disable using bundled brotli
+
 diff --git a/Makefile.PL b/Makefile.PL
 index 3c92f12..00ff4e3 100644
 --- a/Makefile.PL

@@ -1,28 +1,32 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# qtwebchannel package is fairly small, and python bindings are
-# required by some popular desktop packages such as calibre,
-# qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
-dev-python/PyQt5 webchannel
-dev-python/PyQt6 webchannel
-dev-python/pyside2 webchannel
-dev-python/pyside6 webchannel
-
-# NSS: Required by kde-apps/okular[pdf]
-# Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
-app-text/poppler nss boost
+# Marek Szuba <marecki@gentoo.org> (2023-11-12)
+# FUSE cannot be built with multiple audio drivers, and desktop/gnome
+# profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
+# from desktop). Default to the latter for now because PulseAudio support
+# in FUSE is currently considered experimental.
+app-emulation/fuse -pulseaudio
 
 # Required by sys-apps/fwupd, a dependency of kde-plasma/discover
 dev-libs/libjcat gpg pkcs7
 
 # Required by www-client/falkon[python] and dev-python/pyside2[location],
 # in addition fix REQUIRED_USE conflict caused if "webengine" is enabled.
+# qtwebchannel package is fairly small, and python bindings are
+# required by some popular desktop packages such as calibre,
+# qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
+dev-python/PyQt5 webchannel
+dev-python/PyQt6 webchannel
 dev-python/pyside2 designer location positioning quick
 dev-python/pyside2 printsupport webchannel
+dev-python/pyside6 webchannel
 
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
+
+# Required by net-im/neochat:5
+dev-qt/qtmultimedia:5 gstreamer
 
 # Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools
@@ -35,9 +39,6 @@ kde-apps/ktp-common-internals otr
 
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
-
-# Required by kde-apps/libkexiv2
-media-gfx/exiv2 xmp
 
 # Required by kde-frameworks/kapidox
 media-gfx/graphviz python

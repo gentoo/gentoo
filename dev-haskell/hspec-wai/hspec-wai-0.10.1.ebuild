@@ -22,11 +22,11 @@ RDEPEND="dev-haskell/base-compat:=[profile?]
 	>=dev-haskell/hspec-core-2:=[profile?] <dev-haskell/hspec-core-3:=[profile?]
 	>=dev-haskell/hspec-expectations-0.8.0:=[profile?]
 	dev-haskell/http-types:=[profile?]
-	dev-haskell/quickcheck:2=[profile?]
+	dev-haskell/quickcheck:=[profile?]
 	dev-haskell/text:=[profile?]
 	>=dev-haskell/wai-3:=[profile?]
 	>=dev-haskell/wai-extra-3:=[profile?]
-	>=dev-lang/ghc-7.8.2:=
+	>=dev-lang/ghc-7.8.2:= <dev-lang/ghc-9.1
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.18.1.3

@@ -10,7 +10,7 @@
 # This eclass contains functions to be used with cuda package. Currently it is
 # setting and/or sanitizing NVCCFLAGS, the compiler flags for nvcc. This is
 # automatically done and exported in src_prepare() or manually by calling
-# cuda_sanatize.
+# cuda_sanitize.
 # @EXAMPLE:
 # inherit cuda
 

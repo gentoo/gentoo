@@ -1,0 +1,30 @@
+From 11c46987aed7f8ef941140a171d55abc8cd8d0d5 Mon Sep 17 00:00:00 2001
+From: Kostadin <kocelfc@tutanota.com>
+Date: Thu, 16 Nov 2023 22:26:05 +0200
+Subject: [PATCH] Add #include <algorithm> to fix building with gcc 14 (#20981)
+
+With gcc 14 some C++ Standard Library headers have been changed to no
+longer include other headers that were used internally by the library.
+In OpenRCT2's case it is the <algorithm> header.
+
+Downstream Gentoo bug: https://bugs.gentoo.org/917016
+
+GCC 14 porting guide: https://gcc.gnu.org/gcc-14/porting_to.html#header-dep-changes
+
+Signed-off-by: Kostadin Shishmanov <kocelfc@tutanota.com>
+---
+ src/openrct2/core/FileWatcher.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/openrct2/core/FileWatcher.cpp b/src/openrct2/core/FileWatcher.cpp
+index 439be15859ed..3ce0309c8cc8 100644
+--- a/src/openrct2/core/FileWatcher.cpp
++++ b/src/openrct2/core/FileWatcher.cpp
+@@ -7,6 +7,7 @@
+  * OpenRCT2 is licensed under the GNU General Public License version 3.
+  *****************************************************************************/
+ 
++#include <algorithm>
+ #include <array>
+ #include <cstdio>
+ #include <stdexcept>

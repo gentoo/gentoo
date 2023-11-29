@@ -84,6 +84,9 @@ python_compile() {
 		distutils-r1_python_compile
 	fi
 	if use airdrop-ng; then
+		if [ -d "${BUILD_DIR}"/build ]; then
+			rm -r "${BUILD_DIR}"/build || die
+		fi
 		cd "${S}/scripts/airdrop-ng" || die
 		distutils-r1_python_compile
 	fi

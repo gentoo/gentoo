@@ -12,7 +12,7 @@ S="${WORKDIR}/libQuotient-${PV}"
 
 LICENSE="LGPL-2+"
 SLOT="0/${PV}" # FIXME: check soname on next version bump
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

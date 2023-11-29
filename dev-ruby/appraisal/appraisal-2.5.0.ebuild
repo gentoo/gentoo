@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/thoughtbot/appraisal"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 ruby_add_rdepend "

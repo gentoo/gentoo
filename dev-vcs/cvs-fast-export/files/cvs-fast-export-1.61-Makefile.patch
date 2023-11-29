@@ -1,0 +1,20 @@
+--- cvs-fast-export-1.61/Makefile
++++ cvs-fast-export-1.61/Makefile
+@@ -36,7 +36,7 @@
+ GCC_WARNINGS2=-Wmissing-prototypes -Wmissing-declarations
+ GCC_WARNINGS3=-Wno-unused-function -Wno-unused-label -Wno-format-zero-length
+ GCC_WARNINGS=$(GCC_WARNINGS1) $(GCC_WARNINGS2) $(GCC_WARNINGS3)
+-CFLAGS += $(GCC_WARNINGS)
++#CFLAGS += $(GCC_WARNINGS)
+ CPPFLAGS += -I. -I$(srcdir)
+ #LIBS=-lrt
+ CPPFLAGS += -DVERSION=\"$(VERSION)\"
+@@ -83,7 +83,7 @@
+ # CFLAGS += -O2
+ # If your toolchain supports link time optimization this is a cheap speedup
+ # CFLAGS += -flto
+-CFLAGS += -g
++# CFLAGS += -g
+ # Test coverage flags
+ # CFLAGS += -ftest-coverage -fprofile-arcs
+ CFLAGS += $(EXTRA_CFLAGS)

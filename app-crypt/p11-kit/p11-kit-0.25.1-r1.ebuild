@@ -12,7 +12,7 @@ SRC_URI="https://github.com/p11-glue/p11-kit/releases/download/${PV}/${P}.tar.xz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~m68k ~mips ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+libffi gtk-doc nls systemd test"
 RESTRICT="!test? ( test )"
 

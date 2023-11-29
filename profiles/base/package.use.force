@@ -1,6 +1,13 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-11-22)
+# USE=-gui is broken in this and the subsequent version (bug
+# 916718). Package is a PITA: the maintainer is combative, and the
+# issue tracker is a French-language forum that never sends me
+# confirmation emails when I try to sign up.
+=sci-mathematics/giac-1.9.0.67 gui
+
 # Matt Turner <mattst88@gentoo.org> (2023-09-18)
 # Disabling gstreamer seems to be untested upstream and is often broken.
 # The gstreamer dependencies are trivial in compile time and disk usage

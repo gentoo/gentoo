@@ -5,7 +5,15 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>amadio@gentoo.org</email>
+		<name>Guilherme Amadio</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">facebook/rocksdb</remote-id>
 	</upstream>
+	<use>
+		<flag name="numa">Enable NUMA support</flag>
+		<flag name="tbb">Enable support for <pkg>dev-cpp/tbb</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -30,7 +30,14 @@ _TOOLCHAIN_AUTOCONF_ECLASS=1
 # @ECLASS_VARIABLE: TC_AUTOCONF_INFOPATH
 # @DESCRIPTION:
 # Where to install info files if not slotting.
-TC_AUTOCONF_INFOPATH="${EPREFIX}/usr/share/autoconf-${PV}/info"
+TC_AUTOCONF_INFOPATH="${EPREFIX}/usr/share/${P}/info"
+
+# @ECLASS_VARIABLE: TC_AUTOCONF_ENVPREFIX
+# @DESCRIPTION:
+# Prefix number for env.d files produced by this eclass.  Defaults to
+# 06.  Note that the generated env.d filename format is
+# "${TC_AUTOCONF_ENVPREFIX}${PN}$((99999-(major*1000+minor)))"
+: "${TC_AUTOCONF_ENVPREFIX:=06}"
 
 toolchain-autoconf_src_prepare() {
 	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} + || die
@@ -40,15 +47,18 @@ toolchain-autoconf_src_prepare() {
 toolchain-autoconf_src_configure() {
 	# Disable Emacs in the build system since it is in a separate package.
 	export EMACS=no
+
+	MY_P="${P#autoconf-}"
+
 	local myconf=(
-		--program-suffix="-${PV}"
+		--program-suffix="-${MY_P}"
 	)
 	if [[ -z "${TC_AUTOCONF_BREAK_INFOS}" && "${SLOT}" != 0 ]]; then
 		myconf+=(
 			--infodir="${TC_AUTOCONF_INFOPATH}"
 		)
 	fi
-	econf "${myconf[@]}" || die
+	econf "${myconf[@]}" "${@}" || die
 	# econf updates config.{sub,guess} which forces the manpages
 	# to be regenerated which we dont want to do #146621
 	touch man/*.1
@@ -95,7 +105,7 @@ toolchain-autoconf_src_install() {
 		local major="$(ver_cut 1)"
 		local minor="$(ver_cut 2)"
 		local idx="$((99999-(major*1000+minor)))"
-		newenvd - "06autoconf${idx}" <<-EOF
+		newenvd - "${TC_AUTOCONF_ENVPREFIX}${PN}${idx}" <<-EOF
 		INFOPATH="${TC_AUTOCONF_INFOPATH}"
 		EOF
 

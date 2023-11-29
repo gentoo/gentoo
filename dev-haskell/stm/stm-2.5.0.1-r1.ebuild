@@ -16,8 +16,12 @@ SLOT="0/${PV}"
 # Keep in sync with relevant ghc versions (CABAL_CORE_LIB_GHC_PV)
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
+CABAL_CHDEPS=(
+	'base  >= 4.3 && < 4.15' 'base >= 4.3'
+)
+
 RDEPEND="
-	>=dev-lang/ghc-8.10.6:=
+	>=dev-lang/ghc-8.10.6:= <dev-lang/ghc-9.1
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

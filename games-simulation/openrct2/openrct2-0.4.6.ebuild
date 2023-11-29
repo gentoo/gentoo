@@ -73,6 +73,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.0-include-additional-paths.patch"
 	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
+	"${FILESDIR}/${PN}-0.4.6-gcc14.patch"
 )
 
 src_unpack() {

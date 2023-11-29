@@ -4,12 +4,8 @@
 EAPI=7
 
 DESCRIPTION="Virtual to depend on any Distribution Kernel"
-HOMEPAGE=""
-SRC_URI=""
-
-LICENSE=""
 SLOT="0/${PVR}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ppc64 x86"
 
 RDEPEND="
 	|| (

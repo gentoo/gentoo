@@ -36,7 +36,9 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 
-# PATCHES=( "${FILESDIR}"/${PN}-2.4.3-musl.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.2-gcc-14.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare

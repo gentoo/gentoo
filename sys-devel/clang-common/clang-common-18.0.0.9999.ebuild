@@ -62,7 +62,7 @@ pkg_pretend() {
 	fi
 }
 
-doclang_cfg() {
+_doclang_cfg() {
 	local triple="${1}"
 
 	local tool
@@ -90,6 +90,37 @@ doclang_cfg() {
 			fi
 		done
 	done
+}
+
+doclang_cfg() {
+	local triple="${1}"
+
+	_doclang_cfg ${triple}
+
+	# LLVM may have different arch names in some cases. For example in x86
+	# profiles the triple uses i686, but llvm will prefer i386 if invoked
+	# with "clang" on x86 or "clang -m32" on x86_64. The gentoo triple will
+	# be used if invoked through ${CHOST}-clang{,++,-cpp} though.
+	#
+	# To make sure the correct triples are installed,
+	# see Triple::getArchTypeName() in llvm/lib/TargetParser/Triple.cpp
+	# and compare with CHOST values in profiles.
+
+	local abi=${triple%%-*}
+	case ${abi} in
+		armv4l|armv4t|armv5tel|armv6j|armv7a)
+			_doclang_cfg ${triple/${abi}/arm}
+			;;
+		i686)
+			_doclang_cfg ${triple/${abi}/i386}
+			;;
+		sparc)
+			_doclang_cfg ${triple/${abi}/sparcel}
+			;;
+		sparc64)
+			_doclang_cfg ${triple/${abi}/sparcv9}
+			;;
+	esac
 }
 
 src_install() {
@@ -203,10 +234,7 @@ src_install() {
 
 	# We only install config files for supported ABIs because unprefixed tools
 	# might be used for crosscompilation where e.g. PIE may not be supported.
-	# See bug #912237 and bug #901247.
-	doclang_cfg "${CHOST}"
-
-	# Just ${CHOST} won't do due to bug #912685.
+	# See bug #912237 and bug #901247. Just ${CHOST} won't do due to bug #912685.
 	local abi
 	for abi in $(get_all_abis); do
 		local abi_chost=$(get_abi_CHOST "${abi}")

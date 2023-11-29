@@ -1,6 +1,6 @@
 --- a/htb.init
 +++ b/htb.init
-@@ -468,8 +468,8 @@
+@@ -473,8 +473,8 @@
  	### List of classes in $HTB_PATH
  	htb_class_list () {
  		for dev in `htb_device_list`; do
@@ -11,7 +11,7 @@
  			-printf "%f\n"| sort
  		done
  	} # htb_class_list
-@@ -483,8 +483,8 @@
+@@ -488,8 +488,8 @@
  	### Validate cache against config files
  	htb_valid_cache () {
  		for dev in `htb_device_list`; do
@@ -22,7 +22,7 @@
  			  wc -l` -gt 0 ] && VALID=0
  			[ $VALID -ne 1 ] && break
  		done
-@@ -493,7 +493,7 @@
+@@ -498,7 +498,7 @@
  
  	### Find class config for device $1, which is newer than cache
  	htb_cache_older () {

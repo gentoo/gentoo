@@ -10,7 +10,7 @@ DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 # TODO: egl and gtk IUSE only for transition
 IUSE="X bzip2 +egl gles2 gtk +introspection +opengl +orc vnc wayland qsv" # Keep default IUSE mirrored with gst-plugins-base where relevant
@@ -34,7 +34,12 @@ RDEPEND="
 
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 
-	qsv? ( media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}] )
+	qsv? (
+		dev-libs/libgudev[${MULTILIB_USEDEP}]
+		media-libs/libva[wayland?,X?,${MULTILIB_USEDEP}]
+		media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}]
+		x11-libs/libdrm[${MULTILIB_USEDEP}]
+	)
 "
 
 DEPEND="${RDEPEND}"

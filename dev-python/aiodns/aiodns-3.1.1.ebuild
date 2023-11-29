@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/saghul/aiodns/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 
 # Tests fail with network-sandbox, since they try to resolve google.com
 PROPERTIES="test_network"

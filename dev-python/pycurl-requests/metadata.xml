@@ -10,4 +10,8 @@
 		<name>Python</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">dcoles/pycurl-requests</remote-id>
+		<remote-id type="pypi">pycurl-requests</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -9,7 +9,7 @@ CABAL_FEATURES="test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Hath manipulates network blocks in CIDR notation"
-HOMEPAGE="http://michael.orlitzky.com/code/hath.xhtml"
+HOMEPAGE="https://michael.orlitzky.com/code/hath.xhtml"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="AGPL-3"

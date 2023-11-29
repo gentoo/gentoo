@@ -11,6 +11,5 @@
 	</use>
 	<upstream>
 		<remote-id type="github">mozilla/cubeb</remote-id>
-		<remote-id type="github">mozilla/cubeb-pulse-rs</remote-id>
 	</upstream>
 </pkgmetadata>

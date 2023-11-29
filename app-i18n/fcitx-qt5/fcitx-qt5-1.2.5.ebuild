@@ -28,7 +28,7 @@ BDEPEND=">=app-i18n/fcitx-4.2.9:4
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtwidgets:5
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 	virtual/pkgconfig"
 # Private headers of dev-qt/qtgui:5 used.
 RDEPEND=">=app-i18n/fcitx-4.2.9:4

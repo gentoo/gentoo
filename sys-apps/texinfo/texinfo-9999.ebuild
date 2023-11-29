@@ -5,6 +5,8 @@
 # virtual/texi2dvi package to pull in all the right deps.  The tool is not
 # usable out-of-the-box because it requires the large tex packages.
 
+# Keep an eye on the release/$(ver_cut 1-2) branch upstream for backports.
+
 EAPI=8
 
 inherit flag-o-matic toolchain-funcs

@@ -129,8 +129,8 @@ multibuild_foreach_variant() {
 		_multibuild_run "${@}" \
 			> >(exec tee -a "${T}/build-${MULTIBUILD_ID}.log") 2>&1
 		lret=${?}
+		[[ ${ret} -eq 0 && ${lret} -ne 0 ]] && ret=${lret}
 	done
-	[[ ${ret} -eq 0 && ${lret} -ne 0 ]] && ret=${lret}
 
 	return ${ret}
 }

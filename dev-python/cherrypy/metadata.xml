@@ -7,6 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">cherrypy/cherrypy</remote-id>
     <remote-id type="pypi">CherryPy</remote-id>
   </upstream>
 </pkgmetadata>

@@ -11,10 +11,10 @@ DESCRIPTION="Breeze theme for Plymouth"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 x86"
 IUSE=""
 
-BDEPEND=">=kde-frameworks/extra-cmake-modules-${KFMIN}:5"
+BDEPEND=">=kde-frameworks/extra-cmake-modules-${KFMIN}:0"
 DEPEND="sys-boot/plymouth"
 RDEPEND="${DEPEND}"
 

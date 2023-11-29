@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2023-11-10)
+# Not stable yet.
+postgres_targets_postgres16
+
 # Sam James <sam@gentoo.org> (2023-05-29)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby32
@@ -16,10 +20,6 @@ python_single_target_python3_12
 # Brian Evans <grknight@gentoo.org> (2022-12-09)
 # PHP 8.2 is in testing
 php_targets_php8-2
-
-# Alfredo Tupone <tupone@gentoo.org> (2022-12-04)
-# sys-devel/gcc:12 is not stable yet
-ada_target_gcc_12_2_0
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.

@@ -53,10 +53,11 @@ SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 lto pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
 
+# rust restriction: bug #916304
 BDEPEND="
 	app-arch/unzip
 	app-arch/zip
@@ -75,7 +76,7 @@ BDEPEND="
 		)
 	)
 	virtual/pkgconfig
-	virtual/rust
+	<virtual/rust-1.73.0
 	amd64? ( >=dev-lang/yasm-1.1 )
 	lto? ( sys-devel/binutils[gold] )
 	x86? ( >=dev-lang/yasm-1.1 )

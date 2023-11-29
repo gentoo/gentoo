@@ -1,5 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-11-13)
+# mold supports sparc64, but not sparc32.
+sys-devel/mold
 
 # matoro <matoro_gentoo@matoro.tk> (2022-08-05)
 # Test failures on 32-bit, passes on 64-bit.  Bug #638888

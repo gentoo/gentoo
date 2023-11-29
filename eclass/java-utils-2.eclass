@@ -2451,6 +2451,9 @@ java-pkg_do_write_() {
 		echo "SLOT=\"${SLOT}\""
 		echo "CATEGORY=\"${CATEGORY}\""
 		echo "PVR=\"${PVR}\""
+		# Record LIBDIR so that gjl can set java.library.path
+		# accordingly. Bug #917326.
+		echo "LIBDIR=\"$(get_libdir)\""
 
 		[[ -n "${JAVA_PKG_CLASSPATH}" ]] && echo "CLASSPATH=\"${JAVA_PKG_CLASSPATH}\""
 		[[ -n "${JAVA_PKG_LIBRARY}" ]] && echo "LIBRARY_PATH=\"${JAVA_PKG_LIBRARY}\""

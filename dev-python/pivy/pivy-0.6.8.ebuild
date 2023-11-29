@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -16,7 +16,10 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	PIVY_REPO_URI="https://github.com/coin3d/pivy.git"
 else
-	SRC_URI="https://github.com/coin3d/pivy/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/coin3d/pivy/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~andrewammerlaan/${P}-python312-unittests.patch
+	"
 	KEYWORDS="amd64 x86"
 fi
 
@@ -46,6 +49,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.6-0001-fix-CMakeLists.txt-for-distutils_cmake.patch
 	"${FILESDIR}"/${PN}-0.6.6-0002-Gentoo-specific-clear-swig-deprecation-warning.patch
 	"${FILESDIR}"/${PN}-0.6.7-find-qmake.patch
+	# https://github.com/coin3d/pivy/issues/105
+	"${FILESDIR}"/${PN}-0.6.8-python312.patch
+	# https://github.com/coin3d/pivy/pull/109
+	"${DISTDIR}"/${PN}-0.6.8-python312-unittests.patch
 )
 
 DOCS=( AUTHORS HACKING NEWS README.md THANKS )

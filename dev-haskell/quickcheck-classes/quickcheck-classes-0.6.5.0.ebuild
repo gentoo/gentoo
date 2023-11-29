@@ -22,11 +22,11 @@ RDEPEND=">=dev-haskell/primitive-0.6.4:=[profile?] <dev-haskell/primitive-0.8:=[
 	>=dev-haskell/quickcheck-classes-base-0.6.2:=[profile?] <dev-haskell/quickcheck-classes-base-0.7:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 	aeson? ( >=dev-haskell/aeson-0.9:=[profile?] )
-	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
+	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:=[profile?] )
 	semigroupoids? ( dev-haskell/semigroupoids:=[profile?] )
 	semirings? ( >=dev-haskell/semirings-0.4.2:=[profile?] )
-	unary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
-	!unary-laws? ( !binary-laws? ( >=dev-haskell/quickcheck-2.7:2=[profile?] ) )
+	unary-laws? ( >=dev-haskell/quickcheck-2.10.0:=[profile?] )
+	!unary-laws? ( !binary-laws? ( >=dev-haskell/quickcheck-2.7:=[profile?] ) )
 	vector? ( >=dev-haskell/vector-0.12:=[profile?] )
 "
 DEPEND="${RDEPEND}

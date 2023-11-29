@@ -37,7 +37,7 @@ CDEPEND="X? (
 	expat? ( dev-libs/expat )
 	gtk? ( x11-libs/gtk+:3 )
 	gtk2? ( x11-libs/gtk+:2 )
-	kde? ( kde-frameworks/plasma:5 )
+	kde? ( kde-plasma/libplasma:5 )
 	libedit? ( dev-libs/libedit )
 	libffi? ( dev-libs/libffi:= )
 	libnotify? ( x11-libs/libnotify )

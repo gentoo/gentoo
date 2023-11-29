@@ -1378,7 +1378,10 @@ toolchain_src_configure() {
 			--disable-systemtap
 			--enable-host-shared
 			--enable-languages=jit
-			--without-isl
+			# Might be used for the just-built GCC. Easier to just
+			# respect USE=graphite here in case the user passes some
+			# graphite flags rather than try strip them out.
+			$(use_with graphite isl)
 			--without-zstd
 			--with-system-zlib
 		)
@@ -1542,6 +1545,9 @@ gcc_do_filter_flags() {
 			-fharden-control-flow-redundancy -fno-harden-control-flow-redundancy \
 			-fhardcfr-skip-leaf -fhardcfr-check-exceptions \
 			-fhardcfr-check-returning-calls '-fhardcfr-check-noreturn-calls=*'
+
+		# New in GCC 14.
+		filter-flags -Walloc-size
 	else
 		# Makes things painfully slow and no real benefit for the compiler.
 		append-flags $(test-flags-CC -fno-harden-control-flow-redundancy)

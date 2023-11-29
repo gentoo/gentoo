@@ -9,9 +9,13 @@
     <email>waebbl-gentoo@posteo.net</email>
     <name>Bernd Waibel</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>negril.nx+gentoo@gmail.com</email>
+    <name>Paul Zander</name>
+  </maintainer>
   <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
-    <description>Gentoo Proxy Maintainers</description>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="all-modules">Build all modules</flag>

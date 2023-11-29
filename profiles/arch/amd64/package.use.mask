@@ -17,6 +17,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
+# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
+# are only available for amd64 and riscv
+>=gui-libs/wlroots-0.17.0 -drm -liftoff
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# Unmask on amd64.
+media-video/obs-studio -qsv -websocket
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
+# Qt6 is still experimental in freecad, currently the configure phase
+# gets itself stuck by importing both qt5 and qt6 cmake files.
+# Since there is no python3.12 support for shiboken2/pyside2, we have
+# to mask that flag as well.
+#
+# We have to mask this here as well as in base/package.use.mask
+# because qt6 is globally unmasked on amd64
+media-gfx/freecad qt6 python_single_target_python3_12
+
+# Florian Schmaus <flow@gentoo.org> (2023-11-10)
+# Only available for amd64.
+sys-apps/irqbalance -thermal
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
@@ -361,8 +384,8 @@ sys-boot/grub:2 -grub_platforms_xen-32
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sd-boot is not supported on all archs.
-sys-apps/systemd -boot -gnuefi
-sys-apps/systemd-utils -boot
+sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd-utils -boot -ukify
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
@@ -476,6 +499,7 @@ media-libs/smpeg cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
+media-libs/libmpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 
 # Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # x86 asm only, it won't be built on amd64 if mmx useflag is enabled but that

@@ -16,7 +16,7 @@ S=${WORKDIR}/${PN}-${MY_COMMIT}
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 
 distutils_enable_tests pytest
 

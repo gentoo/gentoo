@@ -35,7 +35,7 @@ REQUIRED_USE="cairo? ( X )
 RESTRICT="!test? ( test )"
 
 BDEPEND="dev-util/glib-utils
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 	virtual/pkgconfig
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( sys-devel/gettext )"

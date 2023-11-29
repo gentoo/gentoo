@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 "
 RDEPEND="${COMMON_DEPEND}
 	kde-apps/kfind:5

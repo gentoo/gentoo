@@ -55,7 +55,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen[dot]
-		media-gfx/transfig
+		>=media-gfx/fig2dev-3.2.9-r1
 	)"
 
 src_prepare() {

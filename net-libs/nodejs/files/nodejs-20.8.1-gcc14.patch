@@ -1,0 +1,24 @@
+https://chromium-review.googlesource.com/c/v8/v8/+/4583222
+
+From 6100b929273cffbd1377e21cce2cd0f83e99e459 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 04 Jun 2023 04:15:16 +0100
+Subject: [PATCH] heap: Add missing <algorithm> include for std::remove
+
+GCC 14 changes some internal includes within libstdc++ so this transient
+include gets lost. Include <algorithm> explicitly for std::remove.
+
+Change-Id: Iab8a2c751a0f9c9dc6a770d6296ad6de724ef3bb
+---
+
+diff --git a/src/heap/cppgc/stats-collector.h b/src/heap/cppgc/stats-collector.h
+index 2cf7284..d8414ae 100644
+--- a/deps/v8/src/heap/cppgc/stats-collector.h
++++ b/deps/v8/src/heap/cppgc/stats-collector.h
+@@ -8,6 +8,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+
++#include <algorithm>
+ #include <atomic>
+ #include <vector>

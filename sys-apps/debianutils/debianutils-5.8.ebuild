@@ -18,7 +18,7 @@ PDEPEND="
 	installkernel? (
 		|| (
 			sys-kernel/installkernel-gentoo
-			sys-kernel/installkernel-systemd-boot
+			sys-kernel/installkernel-systemd
 		)
 	)"
 

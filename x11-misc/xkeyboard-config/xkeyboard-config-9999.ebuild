@@ -23,19 +23,37 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	${PYTHON_DEPS}
 	dev-lang/perl
 	dev-libs/libxslt
 	sys-devel/gettext
 	test? (
+		${PYTHON_DEPS}
+		x11-apps/xkbcomp
+		x11-libs/libxkbcommon
 		$(python_gen_any_dep '
+			dev-python/pycountry[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
 	)
 "
 
+python_check_deps() {
+	use test || return 0
+	python_has_version "dev-python/pycountry[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	eapply_user
+
+	# Remove pytest timeout
+	sed -i -e "/test('pytest'/,/)$/ { s/timeout: [0-9]*/timeout: 0/ }" meson.build || die
 }
 
 src_configure() {

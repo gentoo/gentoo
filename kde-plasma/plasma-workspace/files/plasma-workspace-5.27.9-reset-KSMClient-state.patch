@@ -1,0 +1,29 @@
+From 6e88325d25c06d3e8fdca49d13dd5a6d5ccefc0c Mon Sep 17 00:00:00 2001
+From: xiaofeng zhou <rpg2010@yeah.net>
+Date: Wed, 1 Nov 2023 18:14:22 +0000
+Subject: [PATCH] Reset KSMClient state even when logout is cancelled
+
+Now the KSMClient state is properly reset when a log out is canceled, preventing some funny business
+when the state is not cleared. For example inside of KSMServer::handlePendingInteractions, when it
+checks if a client has pending interactions.
+
+(cherry picked from commit b5b2c757e98511a7eb6c56b9e009e98f0e132c26)
+---
+ ksmserver/logout.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ksmserver/logout.cpp b/ksmserver/logout.cpp
+index f267338860..fb912714ba 100644
+--- a/ksmserver/logout.cpp
++++ b/ksmserver/logout.cpp
+@@ -346,6 +346,7 @@ void KSMServer::cancelShutdown(KSMClient *c)
+                 if (!discard.isEmpty())
+                     executeCommand(discard);
+             }
++            c->resetState();
+         }
+     }
+     state = Idle;
+-- 
+GitLab
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">lazy_loader</remote-id>
+    <remote-id type="github">scientific-python/lazy_loader</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+lukko +native-dns"
 
 CABAL_CHDEPS=(
-	'base       >= 4.8      && < 4.15' 'base >= 4.8'
+	'base       >= 4.8      && < 4.16' 'base >= 4.8'
 	'hashable   >= 1.0      && < 1.4' 'hashable >=1.0'
 	'HTTP       >= 4000.1.5 && < 4000.4' 'HTTP       >= 4000.1.5 && < 4000.5'
 )

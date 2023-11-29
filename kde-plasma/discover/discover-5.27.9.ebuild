@@ -13,7 +13,7 @@ HOMEPAGE="https://userbase.kde.org/Discover"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="+firmware flatpak snap telemetry webengine"
 
 # libmarkdown (app-text/discount) only used in PackageKitBackend
@@ -45,7 +45,7 @@ DEPEND="
 	firmware? ( >=sys-apps/fwupd-1.5.0 )
 	flatpak? ( sys-apps/flatpak )
 	snap? ( sys-libs/snapd-glib:=[qt5] )
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 	webengine? ( >=dev-qt/qtwebview-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}

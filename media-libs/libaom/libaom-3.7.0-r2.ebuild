@@ -36,7 +36,7 @@ SLOT="0/3"
 IUSE="big-endian doc +examples test"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3"
 IUSE="${IUSE} cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2"
-IUSE="${IUSE} cpu_flags_arm_neon"
+IUSE="${IUSE} cpu_flags_arm_neon cpu_flags_ppc_vsx"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -91,6 +91,8 @@ multilib_src_configure() {
 		-DENABLE_SSE4_2=$(usex cpu_flags_x86_sse4_2 ON OFF)
 		-DENABLE_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
+
+		-DENABLE_VSX=$(usex cpu_flags_ppc_vsx ON OFF)
 	)
 
 	# For 32-bit multilib builds, force some intrinsics on to work around

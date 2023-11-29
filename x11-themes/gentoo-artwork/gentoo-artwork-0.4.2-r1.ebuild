@@ -63,7 +63,7 @@ src_unpack() {
 	if use icons ; then
 		# Gentoo Bubble Icons
 		unpack gentoo-bubble-icons-${BI_VER}.tar.gz
-		cd "${WORKDIR}"/${PN}-0.4.2/icons/gentoo || die
+		pushd "${WORKDIR}"/${PN}-0.4.2/icons/gentoo >/dev/null || die
 
 		cp "${FILESDIR}"/index.theme . || die
 
@@ -75,10 +75,12 @@ src_unpack() {
 		# fix errors in filenames
 		mv l33t/l33t_nero.png l33t/l33t_UTI_nero.png || die
 		# fix permissions (bug #213385)
-		fperms 644 l33t/l33t_MAI_mutt.png
+		chmod -x l33t/l33t_MAI_mutt.png || die
 
 		# remove misspelled files
 		rm "${S}"/icons/gentoo/{32x32,48x48,64x64}/slypheed.png || die
+
+		popd >/dev/null || die
 	fi
 
 	if use pixmaps ; then
@@ -102,8 +104,9 @@ src_unpack() {
 	fi
 
 	if ! use offensive ; then
+		local i
 		for i in $(<"${FILESDIR}"/offensive_list) ; do
-			rm "${S}/${i}" || die
+			rm -f "${S}/${i}" || die
 		done
 	fi
 }

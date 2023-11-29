@@ -15,7 +15,7 @@ SRC_URI="https://github.com/foutaise/texttable/archive/v${PV}.tar.gz -> ${P}.gh.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]

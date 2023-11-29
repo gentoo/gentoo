@@ -16,7 +16,10 @@ HOMEPAGE="https://www.singular.uni-kl.de/ https://github.com/Singular/Singular"
 SRC_URI="https://www.singular.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_DIR2}"
 
-LICENSE="BSD GPL-2 GPL-3"
+# Most files say "version 2 or version 3 of the License," which is not
+# quite GPL-2+, and is why we have listed GPL-2 below. But AFAIK there
+# are no GPL-2-only files.
+LICENSE="BSD GPL-2 GPL-2+ GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~riscv ~x86 ~x86-linux"
 IUSE="emacs examples polymake +readline static-libs"

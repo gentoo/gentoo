@@ -120,6 +120,14 @@ fi
 # usage.
 : "${EGIT_LFS_CLONE_TYPE:=shallow}"
 
+# @ECLASS_VARIABLE: EVCS_STORE_DIRS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Record of names of all the repositories directories being cloned in the git3_src.
+# This is useful in the case of ebuild that fetch multiple repos and
+# it would be used by eclean to clean them up.
+EVCS_STORE_DIRS=()
+
 # @ECLASS_VARIABLE: EGIT3_STORE_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -359,6 +367,8 @@ _git-r3_set_gitdir() {
 	: "${EGIT3_STORE_DIR:=${distdir}/git3-src}"
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
+
+	EVCS_STORE_DIRS+=( "${GIT_DIR}" )
 
 	if [[ ! -d ${EGIT3_STORE_DIR} && ! ${EVCS_OFFLINE} ]]; then
 		(

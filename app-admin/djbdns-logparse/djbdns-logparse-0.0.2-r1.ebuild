@@ -8,8 +8,8 @@ DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
 DESCRIPTION="Make tinydns and dnscache logs human-readable"
-HOMEPAGE="http://michael.orlitzky.com/code/djbdns-logparse.xhtml"
-SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.gz"
+HOMEPAGE="https://michael.orlitzky.com/code/djbdns-logparse.xhtml"
+SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.gz"
 LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="amd64"

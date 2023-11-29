@@ -11,7 +11,7 @@ if [[ "${PV}" == 9999 ]]; then
 else
 	SRC_URI="https://hg.sr.ht/~scoopta/wofi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 ~riscv"
 fi
 
 DESCRIPTION="Wofi is a launcher/menu program for wlroots based wayland compositors like sway"

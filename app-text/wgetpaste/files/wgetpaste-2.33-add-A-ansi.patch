@@ -1,0 +1,39 @@
+From 9614658e6a31bf1b318972008fd9fd1301e9d92f Mon Sep 17 00:00:00 2001
+From: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Date: Sun, 13 Aug 2023 14:32:34 -0500
+Subject: [PATCH 2/3] Add -A/--ansi
+
+Don't strip ANSI codes.
+---
+See also: https://github.com/zlin/wgetpaste/pull/46
+- Oskari
+
+ wgetpaste | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/wgetpaste b/wgetpaste
+index 5f4152d..1e3ae35 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -556,6 +556,8 @@ Options:
+     -X, --xpaste                  write resulting url to the X primary selection buffer (requires x11-misc/xclip)
+     -C, --xclippaste              write resulting url to the X clipboard selection buffer (requires x11-misc/xclip)
+     -N, --no-ansi                 strip ANSI codes such as colors before pasting (requires app-text/ansifilter)
++    -A, --ansi                    don't strip ANSI codes
++                                  (useful for undoing NOANSI specified in a config file)
+ 
+     -r, --raw                     show url for the raw paste (no syntax highlighting or html)
+     -t, --tee                     use tee to show what is being pasted
+@@ -789,6 +791,9 @@ while [[ -n $1 ]]; do
+ 		-- )
+ 		shift && getfilenames "$@" && break
+ 		;;
++		-A | --ansi )
++		NOANSI=
++		;;
+ 		-c | --command )
+ 		requiredarg "$@"
+ 		SOURCE="command"
+-- 
+2.41.0
+

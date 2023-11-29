@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
@@ -42,11 +42,12 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/source \
-	dev-python/immutables \
-	dev-python/sphinxcontrib-trio \
-	dev-python/sphinx-rtd-theme \
-	dev-python/towncrier
+# Bug https://bugs.gentoo.org/916756
+# distutils_enable_sphinx docs/source \
+# 	dev-python/immutables \
+# 	dev-python/sphinxcontrib-trio \
+# 	dev-python/sphinx-rtd-theme \
+# 	dev-python/towncrier
 
 python_test() {
 	local EPYTEST_IGNORE=(

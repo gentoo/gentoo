@@ -18,7 +18,7 @@ LICENSE="BSD"
 SLOT="0"
 
 # Keep in sync with relevant dev-haskell/cabal versions
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+lukko +native-dns"
 
 RDEPEND="

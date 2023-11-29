@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -26,7 +26,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/nbdime[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/sympy[${PYTHON_USEDEP}]
 		' python3_{10..11})

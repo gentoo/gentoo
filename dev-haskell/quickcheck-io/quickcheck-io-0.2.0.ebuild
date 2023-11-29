@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/hunit-1.2.5:=[profile?]
-	>=dev-haskell/quickcheck-2.7:2=[profile?]
+	>=dev-haskell/quickcheck-2.7:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}

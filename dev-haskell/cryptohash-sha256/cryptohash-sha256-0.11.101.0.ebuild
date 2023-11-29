@@ -34,6 +34,7 @@ CABAL_CHDEPS=(
 	'tasty             == 0.11.*' 'tasty             >= 0.11'
 	'tasty-quickcheck  == 0.8.*' 'tasty-quickcheck  >= 0.8'
 	'tasty-hunit       == 0.9.*' 'tasty-hunit       >= 0.9'
+	'bytestring       >= 0.9.2 && < 0.11' 'bytestring >= 0.9.2'
 )
 
 src_configure() {

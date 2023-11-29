@@ -44,6 +44,7 @@ inherit edo multiprocessing nuget
 # should be picked by the maintainer.
 
 # @ECLASS_VARIABLE: DOTNET_PKG_RDEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Populated with important dependencies on .NET ecosystem packages for running
 # .NET packages.
@@ -52,6 +53,7 @@ inherit edo multiprocessing nuget
 DOTNET_PKG_RDEPS=""
 
 # @ECLASS_VARIABLE: DOTNET_PKG_BDEPS
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Populated with important dependencies on .NET ecosystem packages for building
 # .NET packages.
@@ -98,6 +100,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_RUNTIME
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Sets the runtime used to build a package.
 #
@@ -105,6 +108,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_EXECUTABLE
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Sets path of a "dotnet" executable.
 #
@@ -112,6 +116,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_CONFIGURATION
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Configuration value passed to "dotnet" in the compile phase.
 # Is either Debug or Release, depending on the "debug" USE flag.
@@ -120,6 +125,7 @@ export UseSharedCompilation=false
 
 # @ECLASS_VARIABLE: DOTNET_PKG_OUTPUT
 # @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Path of the output directory, where the package artifacts are placed during
 # the building of packages with "dotnet-pkg-base_build" function.
@@ -222,28 +228,22 @@ dotnet-pkg-base_setup() {
 		dotnet_compat_impl_path="$(type -P "${dotnet_compat_impl}")"
 
 		if [[ -n ${dotnet_compat_impl_path} ]] ; then
-			DOTNET_PKG_EXECUTABLE=${dotnet_compat_impl}
-			DOTNET_PKG_EXECUTABLE_PATH="${dotnet_compat_impl_path}"
-
+			DOTNET_PKG_EXECUTABLE="${dotnet_compat_impl}"
 			break
 		fi
 	done
 
 	# Link "DOTNET_PKG_EXECUTABLE" to "dotnet" only for the package build.
-	local dotnet_spoof_path="${T}"/dotnet_spoof/${DOTNET_PKG_COMPAT}
+	local dotnet_spoof_path="${T}/dotnet_spoof/${DOTNET_PKG_COMPAT}"
 	mkdir -p "${dotnet_spoof_path}" || die
-	ln -s "${DOTNET_PKG_EXECUTABLE_PATH}" "${dotnet_spoof_path}"/dotnet || die
+	ln -s "${dotnet_compat_impl_path}" "${dotnet_spoof_path}/dotnet" || die
 	export PATH="${dotnet_spoof_path}:${PATH}"
 
-	einfo "Using dotnet SDK \"${DOTNET_PKG_EXECUTABLE}\" from \"${DOTNET_PKG_EXECUTABLE_PATH}\"."
+	einfo "Using dotnet SDK \"${DOTNET_PKG_EXECUTABLE}\" from \"${dotnet_compat_impl_path}\"."
 
 	# The picked "DOTNET_PKG_EXECUTABLE" should set "DOTNET_ROOT" internally
 	# and not rely upon this environment variable.
 	unset DOTNET_ROOT
-
-	# Unset .NET and NuGet directories.
-	unset DOTNET_DATA
-	unset NUGET_DATA
 
 	DOTNET_PKG_RUNTIME="$(dotnet-pkg-base_get-runtime)"
 	DOTNET_PKG_CONFIGURATION="$(dotnet-pkg-base_get-configuration)"

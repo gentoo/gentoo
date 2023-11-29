@@ -414,4 +414,9 @@ pkg_postinst() {
 	einfo
 	einfo "/var/lib/bacula/tmp was configured for archivedir. This dir will be used during"
 	einfo "restores, so be sure to set it to an appropriate in dir in the bacula config."
+
+	einfo
+	einfo "If you adapt the port numbers for baculas components in the config files"
+	einfo "make sure to adapt the file names for the pidfile accordingly"
+	einfo "(see init.d scripts)."
 }

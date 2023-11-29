@@ -5,10 +5,6 @@
 # Requires media-libs/libva since 29.0.0.
 >=media-video/obs-studio-29.0.0
 
-# Sam James <sam@gentoo.org> (2022-10-08)
-# sys-boot/gnu-efi isn't keyworded here right now
-sys-kernel/installkernel-systemd-boot
-
 # Michał Górny <mgorny@gentoo.org> (2022-08-25)
 # Only ppc64le binpkg is provided.
 dev-python/pypy-exe-bin

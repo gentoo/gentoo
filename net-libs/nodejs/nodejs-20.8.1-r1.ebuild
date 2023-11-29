@@ -62,6 +62,7 @@ CHECKREQS_DISK_BUILD="22G"
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-20.3.0-gcc14.patch
+	"${FILESDIR}"/"${PN}"-20.8.1-gcc14.patch
 	)
 
 pkg_pretend() {
@@ -174,7 +175,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	emake -Onone
 }
 
 src_install() {

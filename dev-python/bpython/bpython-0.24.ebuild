@@ -18,7 +18,7 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 IUSE="clipboard +jedi watch"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/curtsies-0.4.0[${PYTHON_USEDEP}]

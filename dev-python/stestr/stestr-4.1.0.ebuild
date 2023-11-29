@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="A parallel Python test runner built around subunit"
 HOMEPAGE="
@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -39,6 +39,8 @@ BDEPEND="
 "
 
 python_test() {
+	local -x PYTHONPATH="${BUILD_DIR}/install$(python_get_sitedir)"
 	stestr init || die
-	stestr run || die "Tests failed with ${EPYTHON}"
+	stestr run --concurrency "${EPYTEST_JOBS:-$(makeopts_jobs)}" ||
+		die "Tests failed with ${EPYTHON}"
 }

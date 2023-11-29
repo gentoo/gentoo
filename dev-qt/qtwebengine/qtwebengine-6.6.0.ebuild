@@ -111,6 +111,8 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.5.3-icu74.patch
+	"${FILESDIR}"/${PN}-6.5.3-libxml2-2.12.patch
 )
 
 python_check_deps() {
@@ -202,7 +204,7 @@ src_configure() {
 		# cooperate with new major ffmpeg versions (bug #831487)
 		-DQT_FEATURE_webengine_system_ffmpeg=OFF
 
-		# preemptively using bundled to avoid complications, may revisit
+		# use bundled re2 to avoid complications, may revisit
 		# (see discussions in https://github.com/gentoo/gentoo/pull/32281)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
@@ -258,6 +260,8 @@ src_test() {
 		tst_qwebengineview
 		# certs verfication seems flaky and gives expiration warnings
 		tst_qwebengineclientcertificatestore
+		# test is misperformed when qtbase is built USE=-test?
+		tst_touchinput
 	)
 
 	# prevent using the system's qtwebengine

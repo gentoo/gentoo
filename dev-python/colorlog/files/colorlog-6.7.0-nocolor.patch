@@ -1,0 +1,31 @@
+From 4babdb5f18bd4799c25d61f0f7937b5e164770cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 24 Nov 2023 16:45:42 +0100
+Subject: [PATCH] Fix running tests in environment with NO_COLOR=1
+
+Fix running the test suite when pytest is run with NO_COLOR=1 set
+in the environment.  An fixture is autoused to ensure that the variables
+are removed for the scope of the test, while they are respected
+e.g. by pytest itself.
+---
+ colorlog/tests/conftest.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/colorlog/tests/conftest.py b/colorlog/tests/conftest.py
+index 65fd6d4..33e23e6 100644
+--- a/colorlog/tests/conftest.py
++++ b/colorlog/tests/conftest.py
+@@ -28,6 +28,13 @@ def assert_log_message(capsys, log_function, message, *args):
+     return err
+ 
+ 
++@pytest.fixture(autouse=True)
++def clean_env(monkeypatch):
++    monkeypatch.delenv("FORCE_COLOR", raising=False)
++    monkeypatch.delenv("NO_COLOR", raising=False)
++    yield
++
++
+ @pytest.fixture()
+ def reset_loggers():
+     logging.root.handlers = list()

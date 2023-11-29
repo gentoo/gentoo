@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -21,10 +21,6 @@ KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	dev-python/jupyter-packaging[${PYTHON_USEDEP}]
-"
-
-RDEPEND="
-	dev-python/notebook[${PYTHON_USEDEP}]
 "
 
 src_install() {

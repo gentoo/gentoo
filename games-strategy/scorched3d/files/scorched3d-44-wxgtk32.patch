@@ -1,0 +1,19 @@
+--- a/src/launcher/scorched/main.cpp
++++ b/src/launcher/scorched/main.cpp
+@@ -26,6 +26,7 @@
+ #include <graph/OptionsDisplay.h>
+ #include <wx/wx.h>
+ #include <wx/utils.h>
++#include <wx/sizer.h>
+ #include <locale.h>
+ #include <math.h>
+ #include <signal.h>
+@@ -86,6 +87,8 @@ int main(int argc, char *argv[])
+ 		ScorchedParams::instance()->getSDLInitVideo() = true;
+ 	}
+ 
++	wxSizerFlags::DisableConsistencyChecks();
++
+ #ifdef _WIN32
+ 		wxEntry((WXHINSTANCE) (HINSTANCE) GetModuleHandle(NULL),
+ 			(WXHINSTANCE) NULL, "", SW_SHOWNORMAL);

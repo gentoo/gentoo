@@ -10,4 +10,7 @@
 		tasks that you have to do. It can organise tasks in a hierarchy, produce
 		weekly reports of completed tasks and so on.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rc0/tdl</remote-id>
+	</upstream>
 </pkgmetadata>

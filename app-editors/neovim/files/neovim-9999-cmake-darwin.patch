@@ -1,0 +1,13 @@
+--- a/src/nvim/CMakeLists.txt
++++ b/src/nvim/CMakeLists.txt
+@@ -416,10 +416,6 @@ foreach(target ${targets})
+   endforeach()
+ endforeach()
+ 
+-if(APPLE AND CMAKE_OSX_SYSROOT)
+-  list(APPEND gen_cflags "-isysroot")
+-  list(APPEND gen_cflags "${CMAKE_OSX_SYSROOT}")
+-endif()
+ if(MSVC)
+   list(APPEND gen_cflags -wd4003)
+ endif()

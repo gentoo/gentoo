@@ -11,7 +11,7 @@ HOMEPAGE="https://pypi.org/project/pysnmp/ https://github.com/etingof/pysnmp"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ~sparc x86"
 IUSE="doc examples"
 
 RDEPEND="

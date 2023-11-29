@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/pytest-dev/pytest-services/archive/${PV}.tar.gz
-		-> ${P}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
@@ -34,7 +34,7 @@ BDEPEND="
 		dev-python/pylibmc[${PYTHON_USEDEP}]
 		x11-base/xorg-server[xvfb]
 		net-misc/memcached
-		!dev-python/pytest-salt
+		!!dev-python/pytest-salt
 	)
 "
 
