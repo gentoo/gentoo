@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="LGPL-2.1"
 SLOT="0/5"
-KEYWORDS="amd64 ~arm ~ppc ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm ppc ~riscv ~s390 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
