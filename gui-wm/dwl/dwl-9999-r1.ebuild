@@ -8,7 +8,7 @@ inherit savedconfig toolchain-funcs
 MY_P="${PN}-v${PV}"
 WLROOTS_SLOT="0/18"
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/djpohly/dwl"
+	EGIT_REPO_URI="https://codeberg.org/dwl/dwl.git"
 	inherit git-r3
 
 	# 9999-r0: main (latest stable wlroots release)
@@ -29,7 +29,7 @@ else
 fi
 
 DESCRIPTION="dwm for Wayland"
-HOMEPAGE="https://github.com/djpohly/dwl"
+HOMEPAGE="https://codeberg.org/dwl/dwl"
 
 LICENSE="CC0-1.0 GPL-3+ MIT"
 SLOT="0"
