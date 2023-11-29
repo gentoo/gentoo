@@ -1,0 +1,78 @@
+From 71055058c0bdb6fec0dbebf2ec8bbfc968820b88 Mon Sep 17 00:00:00 2001
+From: Laszlo Gombos <laszlo.gombos@gmail.com>
+Date: Tue, 21 Feb 2023 00:20:29 +0000
+Subject: [PATCH] fix(test): running tests no longer requires to be root
+
+Remove sudo from test containers.
+---
+ Makefile                                  |  1 -
+ test/Makefile                             |  1 -
+ test/test-functions                       | 12 ------------
+ 7 files changed, 6 insertions(+), 22 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5fd9395648..15c0af245a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -270,7 +270,6 @@ endif
+ endif
+
+ check: all syncheck
+-	@[ "$$EUID" == "0" ] || { echo "'check' must be run as root! Please use 'sudo'."; exit 1; }
+ 	@$(MAKE) -C test check
+
+ testimage: all
+diff --git a/test/Makefile b/test/Makefile
+index dfaa4509ea..518e7d616d 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -1,7 +1,6 @@
+ .PHONY: all check clean $(wildcard TEST-??-*)
+
+ $(wildcard TEST-??-*):
+-	@[ "$(shell id -u)" = 0 ] || { echo "'check' must be run as root! Please use 'sudo'."; exit 1; }
+ 	@{ \
+ 		[ -d $@ ] || exit 0; \
+ 		[ -f $@/Makefile ] || exit 0; \
+diff --git a/test/test-functions b/test/test-functions
+index abd20ec628..8a3765af0d 100644
+--- a/test/test-functions
++++ b/test/test-functions
+@@ -49,15 +49,6 @@ COLOR_FAILURE='\033[0;31m'
+ COLOR_WARNING='\033[0;33m'
+ COLOR_NORMAL='\033[0;39m'
+
+-check_root() {
+-    if ((EUID != 0)); then
+-        SETCOLOR_FAILURE
+-        echo "Tests must be run as root! Please use 'sudo'."
+-        SETCOLOR_NORMAL
+-        exit 1
+-    fi
+-}
+-
+ # generate qemu arguments for named raw disks
+ #
+ # qemu_add_drive_args <index> <args> <filename> <id-name> [<bootindex>]
+@@ -119,13 +110,11 @@ test_marker_check() {
+ while (($# > 0)); do
+     case $1 in
+         --run)
+-            check_root
+             echo "TEST RUN: $TEST_DESCRIPTION"
+             test_check && test_run
+             exit $?
+             ;;
+         --setup)
+-            check_root
+             echo "TEST SETUP: $TEST_DESCRIPTION"
+             test_check && test_setup
+             exit $?
+@@ -138,7 +127,6 @@ while (($# > 0)); do
+             exit $?
+             ;;
+         --all)
+-            check_root
+             if ! test_check 2 &> test${TEST_RUN_ID:+-$TEST_RUN_ID}.log; then
+                 echo -e "TEST: $TEST_DESCRIPTION " "$COLOR_WARNING" "[SKIPPED]" "$COLOR_NORMAL"
+                 exit 0
