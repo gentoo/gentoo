@@ -38,13 +38,6 @@
 # yanked from pypi: https://github.com/pyca/bcrypt/issues/677.
 =dev-python/bcrypt-4.1.0
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-11-26)
-# Work in progress
-~dev-lang/perl-5.38.1
-~dev-lang/perl-5.38.2
-~virtual/perl-Module-CoreList-5.202.311.250
-~virtual/perl-Module-CoreList-5.202.311.290
-
 # John Helmert III <ajak@gentoo.org> (2023-11-25)
 # Multiple vulnerabilities, unmaintained upstream and in Gentoo.
 # subtitleripper included as sole reverse dependency, similarly
