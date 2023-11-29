@@ -408,6 +408,9 @@ src_configure() {
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
 
+		# Workaround for bug #907905
+		filter-lto
+
 		# Workaround for bug #915067
 		append-ldflags -Wl,--undefined-version
 
