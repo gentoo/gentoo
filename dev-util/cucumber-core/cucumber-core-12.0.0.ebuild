@@ -29,7 +29,7 @@ ruby_add_bdepend "
 ruby_add_rdepend "
 	dev-util/cucumber-gherkin:26
 	dev-util/cucumber-messages:20
-	>=dev-util/cucumber-tag-expressions-4.1.0:4
+	>=dev-util/cucumber-tag-expressions-5.0.4:5
 "
 
 all_ruby_prepare() {
