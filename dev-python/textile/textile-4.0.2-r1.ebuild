@@ -27,7 +27,6 @@ KEYWORDS="amd64 arm64 ppc ppc64 ~riscv sparc x86"
 RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
