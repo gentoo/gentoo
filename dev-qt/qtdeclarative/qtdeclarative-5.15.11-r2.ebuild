@@ -5,7 +5,7 @@ EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
 	QT5_KDEPATCHSET_REV=3
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 PYTHON_COMPAT=( python3_{8..12} )
