@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby31"
 
 inherit desktop ruby-ng
 
