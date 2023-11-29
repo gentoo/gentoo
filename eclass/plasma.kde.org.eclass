@@ -31,6 +31,16 @@ _PLASMA_KDE_ORG_ECLASS=1
 # For proper description see kde.org.eclass manpage.
 KDE_PV_UNRELEASED=( )
 
+# @ECLASS_VARIABLE: _PSLOT
+# @INTERNAL
+# @DESCRIPTION:
+# KDE Plasma major version mapping, implied by package version. This is being
+# used throughout the eclass as a switch between Plasma 5 and 6 packages.
+_PSLOT=6
+if $(ver_test -lt 5.27.50); then
+	_PSLOT=5
+fi
+
 inherit kde.org
 
 HOMEPAGE="https://kde.org/plasma-desktop"
@@ -39,7 +49,7 @@ HOMEPAGE="https://kde.org/plasma-desktop"
 # @INTERNAL
 # @DESCRIPTION:
 # For proper description see kde.org.eclass manpage.
-KDE_ORG_SCHEDULE_URI+="/Plasma_5"
+KDE_ORG_SCHEDULE_URI+="/Plasma_${_PSLOT}"
 
 # @ECLASS_VARIABLE: _KDE_SRC_URI
 # @INTERNAL
@@ -61,6 +71,19 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 	esac
 
 	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_NAME}-${PV}.tar.xz"
+fi
+
+if [[ ${_PSLOT} == 6 ]]; then
+	case ${PN} in
+		kglobalacceld | \
+		kwayland | \
+		libplasma | \
+		ocean-sound-theme | \
+		plasma-activities | \
+		plasma-activities-stats | \
+		plasma5support) ;;
+		*) RDEPEND+=" !kde-plasma/${PN}:5" ;;
+	esac
 fi
 
 fi
