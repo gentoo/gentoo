@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 GENTOO_MAN_P="portage-${PN}-20060415"
 
 DESCRIPTION="A collection of manual pages translated into Japanese"
@@ -12,7 +12,6 @@ SRC_URI="http://linuxjm.osdn.jp/${P}.tar.gz
 LICENSE="GPL-2+ GPL-2 LGPL-2+ LGPL-2 BSD MIT ISC HPND FDL-1.1+ LDP-1 LDP-1a man-pages Texinfo-manual"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE=""
 
 RDEPEND="virtual/man"
 

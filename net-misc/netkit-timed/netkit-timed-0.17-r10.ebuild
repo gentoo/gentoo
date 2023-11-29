@@ -1,20 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit flag-o-matic toolchain-funcs
 
-IUSE=""
 DESCRIPTION="Netkit - timed"
 HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
 SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
 KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 LICENSE="BSD GPL-2"
 SLOT="0"
-
-DEPEND=""
-RDEPEND=""
 
 src_prepare() {
 	eapply "${FILESDIR}"/0.17-CFLAG-DEF-fix.patch
