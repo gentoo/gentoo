@@ -22,7 +22,7 @@ HOMEPAGE="https://pypi.org/project/molecule/ https://github.com/ansible/molecule
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="selinux"
 
 RDEPEND="$(python_gen_cond_dep '
