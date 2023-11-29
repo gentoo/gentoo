@@ -1,6 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Violet Purcell <vimproved@inventati.org> (2023-11-29)
+# app-alternatives/pinentry defaults to ncurses, and the desktop profile causes
+# issues due to gtk and qt5 being enabled. Disable them by default, let the
+# user set them.
+app-alternatives/pinentry -gtk -qt5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-12)
 # NSS: Required by kde-apps/okular[pdf]
 # Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)

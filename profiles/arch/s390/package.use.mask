@@ -102,6 +102,7 @@ dev-libs/gobject-introspection doctool
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # dev-libs/efl not keyworded here and is a desktop application mainly
+app-alternatives/pinentry efl
 app-crypt/pinentry efl
 
 # Sam James <sam@gentoo.org> (2022-04-24)

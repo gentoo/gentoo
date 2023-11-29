@@ -241,6 +241,7 @@ dev-lang/php avif
 # dev-libs/efl not keyworded here
 # and is a desktop application mainly
 # bug #773178
+app-alternatives/pinentry efl
 app-crypt/pinentry efl
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
