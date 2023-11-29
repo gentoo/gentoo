@@ -12,7 +12,7 @@ HOMEPAGE="https://pypi.org/project/sphinx-argparse/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
