@@ -44,6 +44,10 @@ RDEPEND="
 		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
 	')"
 
+PATCHES=(
+	"${FILESDIR}/${P}-no-venv.patch"	# Bug 918705
+)
+
 src_prepare() {
 	if [[ ${PV} == *9999 ]]; then
 		rm -r gdb-pt-dump/.git || die
