@@ -18,7 +18,7 @@ LICENSE="GPL-3+"
 
 # API/ABI changes in point releases
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 DEPEND="dev-libs/ppl
