@@ -103,10 +103,7 @@ COMMON_DEPEND="
 	sndio? ( media-sound/sndio:= )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
-	vulkan? (
-		media-libs/shaderc
-		media-libs/vulkan-loader[X?,wayland?]
-	)
+	vulkan? ( media-libs/vulkan-loader[X?,wayland?] )
 	wayland? (
 		dev-libs/wayland
 		dev-libs/wayland-protocols
@@ -222,7 +219,6 @@ src_configure() {
 		$(meson_feature raspberry-pi rpi)
 
 		$(meson_feature vulkan)
-		$(meson_feature vulkan shaderc)
 
 		# hardware decoding
 		$(meson_feature nvenc cuda-hwaccel)
