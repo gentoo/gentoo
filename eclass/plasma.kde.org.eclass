@@ -67,6 +67,10 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-3)/"
 			RESTRICT+=" mirror"
 			;;
+		5.9?.0* )
+			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-3)/"
+			RESTRICT+=" mirror"
+			;;
 		*) _KDE_SRC_URI+="stable/plasma/$(ver_cut 1-3)/" ;;
 	esac
 
