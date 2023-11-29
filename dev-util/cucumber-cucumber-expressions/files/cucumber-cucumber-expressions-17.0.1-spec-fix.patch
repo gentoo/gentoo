@@ -1,0 +1,22 @@
+From 22bd7a0f13b3aa46cc55015f096cf0bccad70151 Mon Sep 17 00:00:00 2001
+From: Luke Hill <lukehill_uk@hotmail.com>
+Date: Fri, 24 Nov 2023 10:37:33 +0000
+Subject: [PATCH] Hotfix - Missing spec test issue
+
+---
+ .../cucumber_expressions/parameter_type_registry_spec.rb        | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ruby/spec/cucumber/cucumber_expressions/parameter_type_registry_spec.rb b/ruby/spec/cucumber/cucumber_expressions/parameter_type_registry_spec.rb
+index 2be26e39..bd847915 100644
+--- a/spec/cucumber/cucumber_expressions/parameter_type_registry_spec.rb
++++ b/spec/cucumber/cucumber_expressions/parameter_type_registry_spec.rb
+@@ -24,7 +24,7 @@ class Place; end
+           @registry.define_parameter_type(ParameterType.new('place', CAPITALISED_WORD, Place, ->(s) { Place.new }, true, true))
+         end.to raise_error(
+           CucumberExpressionError,
+-          'There can only be one preferential parameter type per regexp. The regexp /[A-Z]+\\w+/ is used for two preferential parameter types, {name} and {place}'
++          'There can only be one preferential parameter type per regexp. The regexp /[A-Z]+\\w+/ is used for two: {name} and {place}'
+         )
+       end
+ 
