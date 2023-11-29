@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/any1/aml.git"
 else
 	SRC_URI="https://github.com/any1/aml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="ISC"
