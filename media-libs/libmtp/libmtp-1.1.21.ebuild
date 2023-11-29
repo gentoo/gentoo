@@ -64,7 +64,7 @@ src_configure() {
 		$(use_enable crypt mtpz)
 		$(use_enable doc doxygen)
 		$(use_enable static-libs static)
-		--with-udev="$(get_udevdir)"
+		--with-udev="${EPREFIX}$(get_udevdir)"
 		--with-udev-group=plugdev
 		--with-udev-mode=0660
 	)
