@@ -45,7 +45,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# fast_float_testbed on hppa -> 1458s from default timeout of 600, #913067
-	meson_src_test --timeout-mutliplier=3
+	meson_src_test --timeout-multiplier=3
 }
 
 multilib_src_install_all() {
