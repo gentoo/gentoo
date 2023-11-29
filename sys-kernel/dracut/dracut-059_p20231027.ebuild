@@ -81,11 +81,6 @@ src_configure() {
 	tc-export CC PKG_CONFIG
 
 	edo ./configure "${myconf[@]}"
-
-	if [[ ${PV} != 9999 && ! -f dracut-version.sh ]] ; then
-		# Source tarball from github doesn't include this file
-		echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
-	fi
 }
 
 src_test() {
