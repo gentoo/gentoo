@@ -266,7 +266,7 @@ LICENSE+="
 	|| ( Artistic-2 CC0-1.0 )
 " # crates
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
