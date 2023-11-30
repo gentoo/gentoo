@@ -253,7 +253,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris)"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 fi
 
 LICENSE="Apache-2.0 Artistic-2 Boost-1.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB"
