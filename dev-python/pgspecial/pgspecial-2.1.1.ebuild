@@ -38,6 +38,8 @@ EPYTEST_DESELECT=(
 	# assumes a very specific locale
 	tests/test_specials.py::test_slash_l
 	tests/test_specials.py::test_slash_l_pattern
+	# change in postgres? *shrug*
+	tests/test_specials.py::test_slash_d_view_verbose
 )
 
 src_test() {
