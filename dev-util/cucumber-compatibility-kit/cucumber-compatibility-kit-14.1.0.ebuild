@@ -18,7 +18,7 @@ SLOT="$(ver_cut 1)"
 IUSE="test"
 
 ruby_add_rdepend "
-	dev-util/cucumber-messages:20
+	dev-util/cucumber-messages:22
 	>=dev-ruby/rake-13.0.6 =dev-ruby/rake-13*
 	>=dev-ruby/rspec-3.12.0:3
 "
