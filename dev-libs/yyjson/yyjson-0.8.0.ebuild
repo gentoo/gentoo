@@ -27,7 +27,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DYYJSON_BUILD_DOC=$(usex doc)
 		-DYYJSON_BUILD_TESTS=$(usex test)
-		-DYYJSON_ENABLE_VALGRIND=$(usex test)
+		-DYYJSON_ENABLE_VALGRIND=OFF
 	)
 
 	cmake_src_configure
