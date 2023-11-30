@@ -1,4 +1,4 @@
-# Copyright 2003-2022 Gentoo Authors
+# Copyright 2003-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -39,7 +39,8 @@ BDEPEND="dev-util/glib-utils
 	virtual/pkgconfig
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( sys-devel/gettext )"
-DEPEND="dev-libs/glib:2
+DEPEND="!app-i18n/fcitx:5
+	dev-libs/glib:2
 	sys-apps/dbus
 	sys-apps/util-linux
 	virtual/libiconv
