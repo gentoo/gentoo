@@ -151,6 +151,9 @@ python_prepare_all() {
 		"${FILESDIR}"/matplotlib-3.8.0-test.patch
 	)
 
+	# increase lock timeout to 30 s
+	sed -i -e 's:retries = 50:retries = 300:' lib/matplotlib/cbook.py || die
+
 	hprefixify setupext.py
 
 	rm -rf libqhull || die
