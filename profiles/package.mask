@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-11-30)
+# Last commit in 2020.  It was used exclusively by dev-python/ipython,
+# and it is used no more.
+# Removal on 2023-12-30.  Bug #916535.
+dev-python/backcall
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-30)
 # Originally added for net-im/synapse, which switched
 # to dev-python/immutabledict since.  Hacky C extension that supports
 # up to Python 3.10.  No revdeps left.
