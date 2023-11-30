@@ -31,6 +31,9 @@ BDEPEND="
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 	)
 "
+PDEPEND="
+	>=dev-python/ipython-6.1.0[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
