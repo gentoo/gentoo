@@ -16,7 +16,6 @@ games-fps/prboom-plus
 games-fps/freedoom-data
 media-libs/zmusic
 games-util/deutex
-media-libs/assimp
 games-fps/doom-data
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
