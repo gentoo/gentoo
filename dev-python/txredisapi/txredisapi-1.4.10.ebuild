@@ -31,7 +31,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-db/redis
+		<dev-db/redis-7.2
 		dev-python/hiredis[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
