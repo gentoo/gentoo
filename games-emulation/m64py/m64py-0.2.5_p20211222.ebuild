@@ -44,11 +44,15 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	<dev-python/setuptools-69
 	dev-qt/linguist-tools:5
 "
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/mupen64plus/mupen64plus-ui-python/issues/227
+		"${FILESDIR}/${P}-setuptools-69.patch"
+	)
+
 	# set the correct search path
 	cat >> src/m64py/platform.py <<-_EOF_ || die
 		SEARCH_DIRS = ["/usr/$(get_libdir)/mupen64plus"]
