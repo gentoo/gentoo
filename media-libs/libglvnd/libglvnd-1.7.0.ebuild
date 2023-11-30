@@ -40,6 +40,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 
+PATCHES=( "${FILESDIR}/${PN}-1.7.0-backport-pr291.patch" )
+
 src_prepare() {
 	default
 	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \

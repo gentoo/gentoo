@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/915660
+https://gitlab.freedesktop.org/glvnd/libglvnd/-/merge_requests/291
+
+From a0945923439d765217cf1cd97d8e948930190c2b Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 15 Jan 2020 19:21:02 -0800
+Subject: [PATCH] tests: Add _GLOBAL_OFFSET_TABLE_ to PLATFORM_SYMBOLS
+
+On PA-RISC, the _GLOBAL_OFFSET_TABLE_ symbol is always exposed. See
+
+https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=blob;f=bfd/elf32-hppa.c;h=2e653083ce05a77b3e33c056e2f9a51b327c2b22#l1001
+https://sourceware.org/git/gitweb.cgi?p=glibc.git;a=blob;f=sysdeps/hppa/dl-machine.h;h=9e98366ea3b09612d54a3e956d5c35c1bdc86560#l80
+---
+ bin/symbols-check.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/bin/symbols-check.py b/bin/symbols-check.py
+index 947105f..812c3d5 100644
+--- a/bin/symbols-check.py
++++ b/bin/symbols-check.py
+@@ -7,6 +7,7 @@ import subprocess
+ 
+ # This list contains symbols that _might_ be exported for some platforms
+ PLATFORM_SYMBOLS = [
++    '_GLOBAL_OFFSET_TABLE_',
+     '__bss_end__',
+     '__bss_start__',
+     '__bss_start',
+-- 
+GitLab
+
