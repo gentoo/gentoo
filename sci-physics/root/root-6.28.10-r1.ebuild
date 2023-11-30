@@ -13,10 +13,11 @@ inherit cmake cuda fortran-2 python-single-r1 toolchain-funcs
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X aqua +asimage c++14 +c++17 cuda cudnn +davix debug +examples
-	fits fftw fortran +gdml graphviz +gsl http jupyter libcxx +minuit mpi
-	mysql odbc +opengl oracle postgres pythia6 pythia8 +python qt5 R +roofit
-	+root7 shadow sqlite +ssl +tbb test +tmva +unuran uring vc +xml xrootd"
+IUSE="+X aqua +asimage cuda cudnn +davix debug +examples fits fftw fortran
+	+gdml graphviz +gsl http jupyter libcxx +minuit mpi mysql odbc +opengl
+	oracle postgres pythia6 pythia8 +python qt5 R +roofit +root7 shadow
+	sqlite +ssl +tbb test +tmva +unuran uring vc +xml xrootd"
+
 RESTRICT="test"
 PROPERTIES="test_network"
 
@@ -38,7 +39,6 @@ fi
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 REQUIRED_USE="
-	^^ ( c++14 c++17 )
 	cuda? ( tmva )
 	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
@@ -47,7 +47,6 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( root7 )
 	roofit? ( minuit )
-	root7? ( || ( c++17 ) )
 	tmva? ( gsl python )
 	uring? ( root7 )
 "
@@ -175,7 +174,6 @@ src_configure() {
 		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_CXX_STANDARD=$( (usev c++14 || usev c++17) | cut -c4-)
 		# set build type flags to empty to avoid overriding CXXFLAGS
 		-UCMAKE_C_FLAGS_RELEASE
 		-UCMAKE_C_FLAGS_RELWITHDEBINFO

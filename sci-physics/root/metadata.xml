@@ -24,8 +24,6 @@
   </upstream>
   <use>
     <flag name="asimage">Enable support for <pkg>media-libs/libafterimage</pkg></flag>
-    <flag name="c++14">Build using the C++14 standard</flag>
-    <flag name="c++17">Build using the C++17 standard</flag>
     <flag name="cuda">Enable support for nVidia CUDA</flag>
     <flag name="cudnn">Enable support for nVidia cuDNN library</flag>
     <flag name="davix">Enable support for DAVIX Data Management Client (https://cern.ch/davix)</flag>
