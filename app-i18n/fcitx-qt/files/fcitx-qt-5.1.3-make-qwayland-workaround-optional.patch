@@ -1,0 +1,158 @@
+Backport of https://github.com/fcitx/fcitx5-qt/commit/af535e7e106f69e7dc6dc28db3653601d1e6156a
+
+Backport upstream commit af535e7e making QtWayland optional.
+All QtWayland-related code is guarded behind `isWayland` checks anyways.
+This benefits users of pure X11 setups.
+
+Author: Lucio Sauer <watermanpaint@posteo.net>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,7 @@ option(ENABLE_QT6 "Enable Qt 6" Off)
+ option(BUILD_ONLY_PLUGIN "Build only plugin" Off)
+ option(BUILD_STATIC_PLUGIN "Build plugin as static" Off)
+ option(WITH_FCITX_PLUGIN_NAME "Enable plugin name with fcitx" On)
++option(ENABLE_QT6_WAYLAND_WORKAROUND "Enable Qt6 Wayland workaround" On)
+ 
+ if (BUILD_ONLY_PLUGIN)
+   set(LIBRARY_TYPE OBJECT)
+--- a/qt5/platforminputcontext/fcitxcandidatewindow.cpp
++++ b/qt5/platforminputcontext/fcitxcandidatewindow.cpp
+@@ -21,7 +21,7 @@
+ #include <QtMath>
+ #include <utility>
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++#if defined(FCITX_ENABLE_QT6_WAYLAND_WORKAROUND) && QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+ #include <QtWaylandClient/private/qwayland-xdg-shell.h>
+ #include <QtWaylandClient/private/qwaylanddisplay_p.h>
+ #include <QtWaylandClient/private/qwaylandintegration_p.h>
+@@ -34,7 +34,7 @@ namespace fcitx {
+ 
+ namespace {
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++#if defined(FCITX_ENABLE_QT6_WAYLAND_WORKAROUND) && QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+ class XdgWmBase : public QtWayland::xdg_wm_base {
+ public:
+     using xdg_wm_base::xdg_wm_base;
+@@ -120,7 +120,7 @@ FcitxCandidateWindow::FcitxCandidateWindow(QWindow *window,
+         // Not using Qt::BypassWindowManagerHint ensures wayland handle
+         // fractional scale.
+         setFlags(Qt::ToolTip | commonFlags);
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++#if defined(FCITX_ENABLE_QT6_WAYLAND_WORKAROUND) && QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+         if (auto instance = QtWaylandClient::QWaylandIntegration::instance()) {
+             for (QtWaylandClient::QWaylandDisplay::RegistryGlobal global :
+                  instance->display()->globals()) {
+@@ -132,7 +132,6 @@ FcitxCandidateWindow::FcitxCandidateWindow(QWindow *window,
+                 }
+             }
+         }
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+         setProperty("_q_waylandPopupAnchor",
+                     QVariant::fromValue(Qt::BottomEdge | Qt::LeftEdge));
+         setProperty("_q_waylandPopupGravity",
+@@ -142,7 +141,6 @@ FcitxCandidateWindow::FcitxCandidateWindow(QWindow *window,
+             static_cast<unsigned int>(
+                 QtWayland::xdg_positioner::constraint_adjustment_slide_x |
+                 QtWayland::xdg_positioner::constraint_adjustment_flip_y));
+-#endif
+ #endif
+     } else {
+         // Qt::Popup ensures X11 doesn't apply tooltip animation under kwin.
+@@ -484,7 +482,7 @@ void FcitxCandidateWindow::updateClientSideUI(
+     QRect cursorRect = context_->cursorRectangleWrapper();
+     QRect screenGeometry;
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++#if defined(FCITX_ENABLE_QT6_WAYLAND_WORKAROUND) && QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+     if (isWayland_) {
+         auto waylandWindow =
+             static_cast<QtWaylandClient::QWaylandWindow *>(window->handle());
+@@ -520,12 +518,10 @@ void FcitxCandidateWindow::updateClientSideUI(
+         }
+         bool wasVisible = isVisible();
+         bool cursorRectChanged = false;
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+         if (property("_q_waylandPopupAnchorRect") != cursorRect) {
+             cursorRectChanged = true;
+             setProperty("_q_waylandPopupAnchorRect", cursorRect);
+         }
+-#endif
+         // This try to ensure xdg_popup is available.
+         show();
+         xdg_popup *xdgPopup = static_cast<xdg_popup *>(
+@@ -553,7 +549,6 @@ void FcitxCandidateWindow::updateClientSideUI(
+             positioner->destroy();
+             return;
+         }
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+         // Check if we need remap.
+         // If it was invisible, nothing need to be done.
+         // If cursor rect changed, the window must be remapped.
+@@ -570,7 +565,6 @@ void FcitxCandidateWindow::updateClientSideUI(
+             show();
+         }
+         return;
+-#endif
+     }
+ #endif
+     // Try to apply the screen edge detection over the window, because if we
+--- a/qt5/platforminputcontext/fcitxcandidatewindow.h
++++ b/qt5/platforminputcontext/fcitxcandidatewindow.h
+@@ -19,7 +19,7 @@
+ #include <qscopedpointer.h>
+ #include <vector>
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++#if defined(FCITX_ENABLE_QT6_WAYLAND_WORKAROUND) && QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+ #include <QtWaylandClient/private/qwayland-xdg-shell.h>
+ #endif
+ 
+@@ -93,7 +93,7 @@ public Q_SLOTS:
+     std::vector<QRect> candidateRegions_;
+     QPointer<QWindow> parent_;
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++#if defined(FCITX_ENABLE_QT6_WAYLAND_WORKAROUND) && QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+     QScopedPointer<QtWayland::xdg_wm_base> xdgWmBase_;
+ #endif
+ };
+--- a/qt6/CMakeLists.txt
++++ b/qt6/CMakeLists.txt
+@@ -1,8 +1,10 @@
+ 
+ find_package(Qt6 ${REQUIRED_QT6_VERSION} CONFIG REQUIRED Core DBus Widgets)
+ find_package(Qt6Gui ${REQUIRED_QT6_VERSION} REQUIRED Private)
+-find_package(Qt6WaylandClient ${REQUIRED_QT6_VERSION} REQUIRED Private)
+-find_package(Qt6WaylandGlobalPrivate ${REQUIRED_QT6_VERSION} REQUIRED)
++if (ENABLE_QT6_WAYLAND_WORKAROUND)
++  find_package(Qt6WaylandClient ${REQUIRED_QT6_VERSION} REQUIRED Private)
++  find_package(Qt6WaylandGlobalPrivate ${REQUIRED_QT6_VERSION} REQUIRED)
++endif()
+ 
+ add_subdirectory(dbusaddons)
+ add_subdirectory(platforminputcontext)
+--- a/qt6/platforminputcontext/CMakeLists.txt
++++ b/qt6/platforminputcontext/CMakeLists.txt
+@@ -49,11 +49,16 @@ target_link_libraries(fcitx5platforminputcontextplugin-qt6
+                           XCB::XCB
+                           Fcitx5Qt6::DBusAddons
+                           XKBCommon::XKBCommon
+-                          Qt6::WaylandGlobalPrivate
+-                          Qt6::WaylandClient
+-                          Qt6::WaylandClientPrivate
+                          )
+ 
++if (ENABLE_QT6_WAYLAND_WORKAROUND)
++    target_compile_definitions(fcitx5platforminputcontextplugin-qt6 PRIVATE "-DFCITX_ENABLE_QT6_WAYLAND_WORKAROUND")
++    target_link_libraries(fcitx5platforminputcontextplugin-qt6
++        Qt6::WaylandGlobalPrivate
++        Qt6::WaylandClient
++        Qt6::WaylandClientPrivate)
++endif()
++
+ get_target_property(_QT6_QMAKE_EXECUTABLE Qt6::qmake LOCATION)
+ execute_process(
+     COMMAND ${_QT6_QMAKE_EXECUTABLE} -query "QT_INSTALL_PLUGINS"
