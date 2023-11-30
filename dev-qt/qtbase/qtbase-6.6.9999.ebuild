@@ -309,10 +309,11 @@ src_test() {
 		# similarly, but on armv7 and potentially others (bug #914028)
 		tst_qlineedit
 		tst_qpainter
-		# likewise, known failing at least on BE arches (bug #914033,914371)
+		# likewise, known failing on BE arches (bug #914033,914371,918878)
 		tst_qimagereader
 		tst_qimagewriter
 		tst_qpluginloader
+		tst_quuid
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '
