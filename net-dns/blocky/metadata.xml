@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>me@rahil.website</email>
+    <name>Rahil Bhimjiani</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Blocky is a DNS proxy and ad-blocker alternative to Pi-Hole and AdGuard Home written in Go with support for DNSSEC, DNS over HTTPS (DoH), DNS over TLS (DoT), metrics via prometheus-grafana, REST api, per client per group blacklists and whitelists, custom domains, conditional forwarding and simple YAML config.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">0xERR0R/blocky</remote-id>
+    <bugs-to>https://github.com/0xERR0R/blocky/issues</bugs-to>
+    <doc>https://0xerr0r.github.io/blocky/</doc>
+  </upstream>
+</pkgmetadata>

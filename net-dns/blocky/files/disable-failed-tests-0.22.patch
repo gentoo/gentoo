@@ -1,0 +1,2272 @@
+diff --git a/cache/stringcache/chained_grouped_cache_test.go b/cache/stringcache/chained_grouped_cache_test.go
+deleted file mode 100644
+index e83f956..0000000
+--- a/cache/stringcache/chained_grouped_cache_test.go
++++ /dev/null
+@@ -1,93 +0,0 @@
+-package stringcache_test
+-
+-import (
+-	"github.com/0xERR0R/blocky/cache/stringcache"
+-	. "github.com/onsi/ginkgo/v2"
+-	. "github.com/onsi/gomega"
+-)
+-
+-var _ = Describe("Chained grouped cache", func() {
+-	Describe("Empty cache", func() {
+-		When("empty cache was created", func() {
+-			cache := stringcache.NewChainedGroupedCache()
+-
+-			It("should have element count of 0", func() {
+-				Expect(cache.ElementCount("someGroup")).Should(BeNumerically("==", 0))
+-			})
+-
+-			It("should not find any string", func() {
+-				Expect(cache.Contains("searchString", []string{"someGroup"})).Should(BeEmpty())
+-			})
+-		})
+-	})
+-	Describe("Delegation", func() {
+-		When("Chained cache contains delegates", func() {
+-			inMemoryCache1 := stringcache.NewInMemoryGroupedStringCache()
+-			inMemoryCache2 := stringcache.NewInMemoryGroupedStringCache()
+-			cache := stringcache.NewChainedGroupedCache(inMemoryCache1, inMemoryCache2)
+-
+-			factory := cache.Refresh("group1")
+-
+-			factory.AddEntry("string1")
+-			factory.AddEntry("string2")
+-
+-			It("cache should still have 0 element, since finish was not executed", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 0))
+-			})
+-
+-			It("factory has 4 elements (both caches)", func() {
+-				Expect(factory.Count()).Should(BeNumerically("==", 4))
+-			})
+-
+-			It("should have element count of 4", func() {
+-				factory.Finish()
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 4))
+-			})
+-
+-			It("should find strings", func() {
+-				Expect(cache.Contains("string1", []string{"group1"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("string2", []string{"group1", "someOtherGroup"})).Should(ConsistOf("group1"))
+-			})
+-		})
+-	})
+-
+-	Describe("Cache refresh", func() {
+-		When("cache with 2 groups was created", func() {
+-			inMemoryCache1 := stringcache.NewInMemoryGroupedStringCache()
+-			inMemoryCache2 := stringcache.NewInMemoryGroupedStringCache()
+-			cache := stringcache.NewChainedGroupedCache(inMemoryCache1, inMemoryCache2)
+-
+-			factory := cache.Refresh("group1")
+-
+-			factory.AddEntry("g1")
+-			factory.AddEntry("both")
+-			factory.Finish()
+-
+-			factory = cache.Refresh("group2")
+-			factory.AddEntry("g2")
+-			factory.AddEntry("both")
+-			factory.Finish()
+-
+-			It("should contain 4 elements in 2 groups", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 4))
+-				Expect(cache.ElementCount("group2")).Should(BeNumerically("==", 4))
+-				Expect(cache.Contains("g1", []string{"group1", "group2"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("g2", []string{"group1", "group2"})).Should(ConsistOf("group2"))
+-				Expect(cache.Contains("both", []string{"group1", "group2"})).Should(ConsistOf("group1", "group2"))
+-			})
+-
+-			It("Should replace group content on refresh", func() {
+-				factory := cache.Refresh("group1")
+-				factory.AddEntry("newString")
+-				factory.Finish()
+-
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 2))
+-				Expect(cache.ElementCount("group2")).Should(BeNumerically("==", 4))
+-				Expect(cache.Contains("g1", []string{"group1", "group2"})).Should(BeEmpty())
+-				Expect(cache.Contains("newString", []string{"group1", "group2"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("g2", []string{"group1", "group2"})).Should(ConsistOf("group2"))
+-				Expect(cache.Contains("both", []string{"group1", "group2"})).Should(ConsistOf("group2"))
+-			})
+-		})
+-	})
+-})
+diff --git a/cache/stringcache/in_memory_grouped_cache_test.go b/cache/stringcache/in_memory_grouped_cache_test.go
+deleted file mode 100644
+index 7692935..0000000
+--- a/cache/stringcache/in_memory_grouped_cache_test.go
++++ /dev/null
+@@ -1,130 +0,0 @@
+-package stringcache_test
+-
+-import (
+-	"github.com/0xERR0R/blocky/cache/stringcache"
+-	. "github.com/onsi/ginkgo/v2"
+-	. "github.com/onsi/gomega"
+-)
+-
+-var _ = Describe("In-Memory grouped cache", func() {
+-	Describe("Empty cache", func() {
+-		When("empty cache was created", func() {
+-			cache := stringcache.NewInMemoryGroupedStringCache()
+-
+-			It("should have element count of 0", func() {
+-				Expect(cache.ElementCount("someGroup")).Should(BeNumerically("==", 0))
+-			})
+-
+-			It("should not find any string", func() {
+-				Expect(cache.Contains("searchString", []string{"someGroup"})).Should(BeEmpty())
+-			})
+-		})
+-		When("cache with one empty group", func() {
+-			cache := stringcache.NewInMemoryGroupedStringCache()
+-			factory := cache.Refresh("group1")
+-			factory.Finish()
+-
+-			It("should have element count of 0", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 0))
+-			})
+-
+-			It("should not find any string", func() {
+-				Expect(cache.Contains("searchString", []string{"group1"})).Should(BeEmpty())
+-			})
+-		})
+-	})
+-	Describe("Cache creation", func() {
+-		When("cache with 1 group was created", func() {
+-			cache := stringcache.NewInMemoryGroupedStringCache()
+-
+-			factory := cache.Refresh("group1")
+-
+-			factory.AddEntry("string1")
+-			factory.AddEntry("string2")
+-
+-			It("cache should still have 0 element, since finish was not executed", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 0))
+-			})
+-
+-			It("factory has 2 elements", func() {
+-				Expect(factory.Count()).Should(BeNumerically("==", 2))
+-			})
+-
+-			It("should have element count of 2", func() {
+-				factory.Finish()
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 2))
+-			})
+-
+-			It("should find strings", func() {
+-				Expect(cache.Contains("string1", []string{"group1"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("string2", []string{"group1", "someOtherGroup"})).Should(ConsistOf("group1"))
+-			})
+-		})
+-		When("String grouped cache is used", func() {
+-			cache := stringcache.NewInMemoryGroupedStringCache()
+-			factory := cache.Refresh("group1")
+-
+-			factory.AddEntry("string1")
+-			factory.AddEntry("/string2/")
+-			factory.Finish()
+-
+-			It("should ignore regex", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 1))
+-				Expect(cache.Contains("string1", []string{"group1"})).Should(ConsistOf("group1"))
+-			})
+-		})
+-		When("Regex grouped cache is used", func() {
+-			cache := stringcache.NewInMemoryGroupedRegexCache()
+-			factory := cache.Refresh("group1")
+-
+-			factory.AddEntry("string1")
+-			factory.AddEntry("/string2/")
+-			factory.Finish()
+-
+-			It("should ignore non-regex", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 1))
+-				Expect(cache.Contains("string1", []string{"group1"})).Should(BeEmpty())
+-				Expect(cache.Contains("string2", []string{"group1"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("shouldalsomatchstring2", []string{"group1"})).Should(ConsistOf("group1"))
+-			})
+-		})
+-	})
+-
+-	Describe("Cache refresh", func() {
+-		When("cache with 2 groups was created", func() {
+-			cache := stringcache.NewInMemoryGroupedStringCache()
+-
+-			factory := cache.Refresh("group1")
+-
+-			factory.AddEntry("g1")
+-			factory.AddEntry("both")
+-			factory.Finish()
+-
+-			factory = cache.Refresh("group2")
+-			factory.AddEntry("g2")
+-			factory.AddEntry("both")
+-			factory.Finish()
+-
+-			It("should contain 4 elements in 2 groups", func() {
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 2))
+-				Expect(cache.ElementCount("group2")).Should(BeNumerically("==", 2))
+-				Expect(cache.Contains("g1", []string{"group1", "group2"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("g2", []string{"group1", "group2"})).Should(ConsistOf("group2"))
+-				Expect(cache.Contains("both", []string{"group1", "group2"})).Should(ConsistOf("group1", "group2"))
+-			})
+-
+-			It("Should replace group content on refresh", func() {
+-				factory := cache.Refresh("group1")
+-				factory.AddEntry("newString")
+-				factory.Finish()
+-
+-				Expect(cache.ElementCount("group1")).Should(BeNumerically("==", 1))
+-				Expect(cache.ElementCount("group2")).Should(BeNumerically("==", 2))
+-				Expect(cache.Contains("g1", []string{"group1", "group2"})).Should(BeEmpty())
+-				Expect(cache.Contains("newString", []string{"group1", "group2"})).Should(ConsistOf("group1"))
+-				Expect(cache.Contains("g2", []string{"group1", "group2"})).Should(ConsistOf("group2"))
+-				Expect(cache.Contains("both", []string{"group1", "group2"})).Should(ConsistOf("group2"))
+-			})
+-		})
+-	})
+-})
+diff --git a/lists/downloader_test.go b/lists/downloader_test.go
+deleted file mode 100644
+index 5387c86..0000000
+--- a/lists/downloader_test.go
++++ /dev/null
+@@ -1,218 +0,0 @@
+-package lists
+-
+-import (
+-	"errors"
+-	"io"
+-	"net"
+-	"net/http"
+-	"net/http/httptest"
+-	"strings"
+-	"sync/atomic"
+-	"time"
+-
+-	"github.com/0xERR0R/blocky/config"
+-	. "github.com/0xERR0R/blocky/evt"
+-	. "github.com/0xERR0R/blocky/helpertest"
+-	"github.com/0xERR0R/blocky/log"
+-	. "github.com/onsi/ginkgo/v2"
+-	. "github.com/onsi/gomega"
+-	"github.com/sirupsen/logrus/hooks/test"
+-)
+-
+-var _ = Describe("Downloader", func() {
+-	var (
+-		sutConfig                     config.DownloaderConfig
+-		sut                           *httpDownloader
+-		failedDownloadCountEvtChannel chan string
+-		loggerHook                    *test.Hook
+-	)
+-	BeforeEach(func() {
+-		var err error
+-
+-		sutConfig, err = config.WithDefaults[config.DownloaderConfig]()
+-		Expect(err).Should(Succeed())
+-
+-		failedDownloadCountEvtChannel = make(chan string, 5)
+-		// collect received events in the channel
+-		fn := func(url string) {
+-			failedDownloadCountEvtChannel <- url
+-		}
+-		Expect(Bus().Subscribe(CachingFailedDownloadChanged, fn)).Should(Succeed())
+-		DeferCleanup(func() {
+-			Expect(Bus().Unsubscribe(CachingFailedDownloadChanged, fn))
+-		})
+-
+-		loggerHook = test.NewGlobal()
+-		log.Log().AddHook(loggerHook)
+-		DeferCleanup(loggerHook.Reset)
+-	})
+-
+-	JustBeforeEach(func() {
+-		sut = newDownloader(sutConfig, nil)
+-	})
+-
+-	Describe("NewDownloader", func() {
+-		It("Should use provided parameters", func() {
+-			transport := &http.Transport{}
+-
+-			sut = NewDownloader(
+-				config.DownloaderConfig{
+-					Attempts: 5,
+-					Cooldown: config.Duration(2 * time.Second),
+-					Timeout:  config.Duration(5 * time.Second),
+-				},
+-				transport,
+-			).(*httpDownloader)
+-
+-			Expect(sut.cfg.Attempts).Should(BeNumerically("==", 5))
+-			Expect(sut.cfg.Timeout).Should(BeNumerically("==", 5*time.Second))
+-			Expect(sut.cfg.Cooldown).Should(BeNumerically("==", 2*time.Second))
+-			Expect(sut.client.Transport).Should(BeIdenticalTo(transport))
+-		})
+-	})
+-
+-	Describe("Download of a file", func() {
+-		var server *httptest.Server
+-		When("Download was successful", func() {
+-			BeforeEach(func() {
+-				server = TestServer("line.one\nline.two")
+-				DeferCleanup(server.Close)
+-
+-				sut = newDownloader(sutConfig, nil)
+-			})
+-			It("Should return all lines from the file", func() {
+-				reader, err := sut.DownloadFile(server.URL)
+-
+-				Expect(err).Should(Succeed())
+-				Expect(reader).Should(Not(BeNil()))
+-				DeferCleanup(reader.Close)
+-				buf := new(strings.Builder)
+-				_, err = io.Copy(buf, reader)
+-				Expect(err).Should(Succeed())
+-				Expect(buf.String()).Should(Equal("line.one\nline.two"))
+-			})
+-		})
+-		When("Server returns NOT_FOUND (404)", func() {
+-			BeforeEach(func() {
+-				server = httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
+-					rw.WriteHeader(http.StatusNotFound)
+-				}))
+-				DeferCleanup(server.Close)
+-
+-				sutConfig.Attempts = 3
+-			})
+-			It("Should return error", func() {
+-				reader, err := sut.DownloadFile(server.URL)
+-
+-				Expect(err).Should(HaveOccurred())
+-				Expect(reader).Should(BeNil())
+-				Expect(err.Error()).Should(Equal("got status code 404"))
+-				Expect(failedDownloadCountEvtChannel).Should(HaveLen(3))
+-				Expect(failedDownloadCountEvtChannel).Should(Receive(Equal(server.URL)))
+-			})
+-		})
+-		When("Wrong URL is defined", func() {
+-			BeforeEach(func() {
+-				sutConfig.Attempts = 1
+-			})
+-			It("Should return error", func() {
+-				_, err := sut.DownloadFile("somewrongurl")
+-
+-				Expect(err).Should(HaveOccurred())
+-				Expect(loggerHook.LastEntry().Message).Should(ContainSubstring("Can't download file: "))
+-				// failed download event was emitted only once
+-				Expect(failedDownloadCountEvtChannel).Should(HaveLen(1))
+-				Expect(failedDownloadCountEvtChannel).Should(Receive(Equal("somewrongurl")))
+-			})
+-		})
+-
+-		When("If timeout occurs on first request", func() {
+-			var attempt uint64 = 1
+-
+-			BeforeEach(func() {
+-				sutConfig = config.DownloaderConfig{
+-					Timeout:  config.Duration(20 * time.Millisecond),
+-					Attempts: 3,
+-					Cooldown: config.Duration(time.Millisecond),
+-				}
+-
+-				// should produce a timeout on first attempt
+-				server = httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
+-					a := atomic.LoadUint64(&attempt)
+-					atomic.AddUint64(&attempt, 1)
+-					if a == 1 {
+-						time.Sleep(500 * time.Millisecond)
+-					} else {
+-						_, err := rw.Write([]byte("blocked1.com"))
+-						Expect(err).Should(Succeed())
+-					}
+-				}))
+-				DeferCleanup(server.Close)
+-			})
+-			It("Should perform a retry and return file content", func() {
+-				reader, err := sut.DownloadFile(server.URL)
+-				Expect(err).Should(Succeed())
+-				Expect(reader).Should(Not(BeNil()))
+-				DeferCleanup(reader.Close)
+-
+-				buf := new(strings.Builder)
+-				_, err = io.Copy(buf, reader)
+-				Expect(err).Should(Succeed())
+-				Expect(buf.String()).Should(Equal("blocked1.com"))
+-
+-				// failed download event was emitted only once
+-				Expect(failedDownloadCountEvtChannel).Should(HaveLen(1))
+-				Expect(failedDownloadCountEvtChannel).Should(Receive(Equal(server.URL)))
+-				Expect(loggerHook.LastEntry().Message).Should(ContainSubstring("Temporary network err / Timeout occurred: "))
+-			})
+-		})
+-		When("If timeout occurs on all request", func() {
+-			BeforeEach(func() {
+-				sutConfig = config.DownloaderConfig{
+-					Timeout:  config.Duration(10 * time.Millisecond),
+-					Attempts: 3,
+-					Cooldown: config.Duration(time.Millisecond),
+-				}
+-
+-				// should always produce a timeout
+-				server = httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
+-					time.Sleep(20 * time.Millisecond)
+-				}))
+-				DeferCleanup(server.Close)
+-			})
+-			It("Should perform a retry until max retry attempt count is reached and return TransientError", func() {
+-				reader, err := sut.DownloadFile(server.URL)
+-				Expect(err).Should(HaveOccurred())
+-				Expect(errors.As(err, new(*TransientError))).Should(BeTrue())
+-				Expect(err.Error()).Should(ContainSubstring("Timeout"))
+-				Expect(reader).Should(BeNil())
+-
+-				// failed download event was emitted 3 times
+-				Expect(failedDownloadCountEvtChannel).Should(HaveLen(3))
+-				Expect(failedDownloadCountEvtChannel).Should(Receive(Equal(server.URL)))
+-			})
+-		})
+-		When("DNS resolution of passed URL fails", func() {
+-			BeforeEach(func() {
+-				sutConfig = config.DownloaderConfig{
+-					Timeout:  config.Duration(500 * time.Millisecond),
+-					Attempts: 3,
+-					Cooldown: 200 * config.Duration(time.Millisecond),
+-				}
+-			})
+-			It("Should perform a retry until max retry attempt count is reached and return DNSError", func() {
+-				reader, err := sut.DownloadFile("http://some.domain.which.does.not.exist")
+-				Expect(err).Should(HaveOccurred())
+-
+-				var dnsError *net.DNSError
+-				Expect(errors.As(err, &dnsError)).Should(BeTrue(), "received error %w", err)
+-				Expect(reader).Should(BeNil())
+-
+-				// failed download event was emitted 3 times
+-				Expect(failedDownloadCountEvtChannel).Should(HaveLen(3))
+-				Expect(failedDownloadCountEvtChannel).Should(Receive(Equal("http://some.domain.which.does.not.exist")))
+-				Expect(loggerHook.LastEntry().Message).Should(ContainSubstring("Name resolution err: "))
+-			})
+-		})
+-	})
+-})
+diff --git a/lists/list_cache_benchmark_test.go b/lists/list_cache_benchmark_test.go
+deleted file mode 100644
+index fedf2fd..0000000
+--- a/lists/list_cache_benchmark_test.go
++++ /dev/null
+@@ -1,29 +0,0 @@
+-package lists
+-
+-import (
+-	"testing"
+-
+-	"github.com/0xERR0R/blocky/config"
+-)
+-
+-func BenchmarkRefresh(b *testing.B) {
+-	file1, _ := createTestListFile(b.TempDir(), 100000)
+-	file2, _ := createTestListFile(b.TempDir(), 150000)
+-	file3, _ := createTestListFile(b.TempDir(), 130000)
+-	lists := map[string][]config.BytesSource{
+-		"gr1": config.NewBytesSources(file1, file2, file3),
+-	}
+-
+-	cfg := config.SourceLoadingConfig{
+-		Concurrency:   5,
+-		RefreshPeriod: config.Duration(-1),
+-	}
+-	downloader := NewDownloader(config.DownloaderConfig{}, nil)
+-	cache, _ := NewListCache(ListCacheTypeBlacklist, cfg, lists, downloader)
+-
+-	b.ReportAllocs()
+-
+-	for n := 0; n < b.N; n++ {
+-		cache.Refresh()
+-	}
+-}
+diff --git a/lists/list_cache_test.go b/lists/list_cache_test.go
+deleted file mode 100644
+index 2d08cfb..0000000
+--- a/lists/list_cache_test.go
++++ /dev/null
+@@ -1,496 +0,0 @@
+-package lists
+-
+-import (
+-	"bufio"
+-	"context"
+-	"errors"
+-	"fmt"
+-	"io"
+-	"math/rand"
+-	"net/http/httptest"
+-	"os"
+-	"strings"
+-
+-	"github.com/0xERR0R/blocky/config"
+-	. "github.com/0xERR0R/blocky/evt"
+-	"github.com/0xERR0R/blocky/lists/parsers"
+-	"github.com/0xERR0R/blocky/log"
+-	"github.com/0xERR0R/blocky/util"
+-	"github.com/sirupsen/logrus"
+-
+-	. "github.com/0xERR0R/blocky/helpertest"
+-	. "github.com/onsi/ginkgo/v2"
+-	. "github.com/onsi/gomega"
+-)
+-
+-var _ = Describe("ListCache", func() {
+-	var (
+-		tmpDir                         *TmpFolder
+-		emptyFile, file1, file2, file3 *TmpFile
+-		server1, server2, server3      *httptest.Server
+-
+-		sut       *ListCache
+-		sutConfig config.SourceLoadingConfig
+-
+-		listCacheType  ListCacheType
+-		lists          map[string][]config.BytesSource
+-		downloader     FileDownloader
+-		mockDownloader *MockDownloader
+-	)
+-
+-	BeforeEach(func() {
+-		var err error
+-
+-		listCacheType = ListCacheTypeBlacklist
+-
+-		sutConfig, err = config.WithDefaults[config.SourceLoadingConfig]()
+-		Expect(err).Should(Succeed())
+-
+-		sutConfig.RefreshPeriod = -1
+-
+-		downloader = NewDownloader(config.DownloaderConfig{}, nil)
+-		mockDownloader = nil
+-
+-		server1 = TestServer("blocked1.com\nblocked1a.com\n192.168.178.55")
+-		DeferCleanup(server1.Close)
+-		server2 = TestServer("blocked2.com")
+-		DeferCleanup(server2.Close)
+-		server3 = TestServer("blocked3.com\nblocked1a.com")
+-		DeferCleanup(server3.Close)
+-
+-		tmpDir = NewTmpFolder("ListCache")
+-		Expect(tmpDir.Error).Should(Succeed())
+-		DeferCleanup(tmpDir.Clean)
+-
+-		emptyFile = tmpDir.CreateStringFile("empty", "#empty file")
+-		Expect(emptyFile.Error).Should(Succeed())
+-
+-		emptyFile = tmpDir.CreateStringFile("empty", "#empty file")
+-		Expect(emptyFile.Error).Should(Succeed())
+-		file1 = tmpDir.CreateStringFile("file1", "blocked1.com", "blocked1a.com")
+-		Expect(file1.Error).Should(Succeed())
+-		file2 = tmpDir.CreateStringFile("file2", "blocked2.com")
+-		Expect(file2.Error).Should(Succeed())
+-		file3 = tmpDir.CreateStringFile("file3", "blocked3.com", "blocked1a.com")
+-		Expect(file3.Error).Should(Succeed())
+-	})
+-
+-	JustBeforeEach(func() {
+-		var err error
+-
+-		Expect(lists).ShouldNot(BeNil(), "bad test: forgot to set `lists`")
+-
+-		if mockDownloader != nil {
+-			downloader = mockDownloader
+-		}
+-
+-		sut, err = NewListCache(listCacheType, sutConfig, lists, downloader)
+-		Expect(err).Should(Succeed())
+-	})
+-
+-	Describe("List cache and matching", func() {
+-		When("List is empty", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr0": config.NewBytesSources(emptyFile.Path),
+-				}
+-			})
+-
+-			When("Query with empty", func() {
+-				It("should not panic", func() {
+-					group := sut.Match("", []string{"gr0"})
+-					Expect(group).Should(BeEmpty())
+-				})
+-			})
+-
+-			It("should not match anything", func() {
+-				group := sut.Match("google.com", []string{"gr1"})
+-				Expect(group).Should(BeEmpty())
+-			})
+-		})
+-		When("List becomes empty on refresh", func() {
+-			BeforeEach(func() {
+-				mockDownloader = newMockDownloader(func(res chan<- string, err chan<- error) {
+-					res <- "blocked1.com"
+-					res <- "# nothing"
+-				})
+-
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {mockDownloader.ListSource()},
+-				}
+-			})
+-
+-			It("should delete existing elements from group cache", func(ctx context.Context) {
+-				group := sut.Match("blocked1.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				err := sut.refresh(ctx)
+-				Expect(err).Should(Succeed())
+-
+-				group = sut.Match("blocked1.com", []string{"gr1"})
+-				Expect(group).Should(BeEmpty())
+-			})
+-		})
+-		When("List has invalid lines", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {
+-						config.TextBytesSource(
+-							"inlinedomain1.com",
+-							"invaliddomain!",
+-							"inlinedomain2.com",
+-						),
+-					},
+-				}
+-			})
+-
+-			It("should still other domains", func() {
+-				group := sut.Match("inlinedomain1.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("inlinedomain2.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-			})
+-		})
+-		When("a temporary/transient err occurs on download", func() {
+-			BeforeEach(func() {
+-				// should produce a transient error on second and third attempt
+-				mockDownloader = newMockDownloader(func(res chan<- string, err chan<- error) {
+-					res <- "blocked1.com\nblocked2.com\n"
+-					err <- &TransientError{inner: errors.New("boom")}
+-					err <- &TransientError{inner: errors.New("boom")}
+-				})
+-
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {mockDownloader.ListSource()},
+-				}
+-			})
+-
+-			It("should not delete existing elements from group cache", func(ctx context.Context) {
+-				By("Lists loaded without timeout", func() {
+-					Eventually(func(g Gomega) {
+-						group := sut.Match("blocked1.com", []string{"gr1"})
+-						g.Expect(group).Should(ContainElement("gr1"))
+-					}, "1s").Should(Succeed())
+-				})
+-
+-				Expect(sut.refresh(ctx)).Should(HaveOccurred())
+-
+-				By("List couldn't be loaded due to timeout", func() {
+-					group := sut.Match("blocked1.com", []string{"gr1"})
+-					Expect(group).Should(ContainElement("gr1"))
+-				})
+-
+-				sut.Refresh()
+-
+-				By("List couldn't be loaded due to timeout", func() {
+-					group := sut.Match("blocked1.com", []string{"gr1"})
+-					Expect(group).Should(ContainElement("gr1"))
+-				})
+-			})
+-		})
+-		When("non transient err occurs on download", func() {
+-			BeforeEach(func() {
+-				// should produce a non transient error on second attempt
+-				mockDownloader = newMockDownloader(func(res chan<- string, err chan<- error) {
+-					res <- "blocked1.com"
+-					err <- errors.New("boom")
+-				})
+-
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {mockDownloader.ListSource()},
+-				}
+-			})
+-
+-			It("should keep existing elements from group cache", func(ctx context.Context) {
+-				By("Lists loaded without err", func() {
+-					group := sut.Match("blocked1.com", []string{"gr1"})
+-					Expect(group).Should(ContainElement("gr1"))
+-				})
+-
+-				Expect(sut.refresh(ctx)).Should(HaveOccurred())
+-
+-				By("Lists from first load is kept", func() {
+-					group := sut.Match("blocked1.com", []string{"gr1"})
+-					Expect(group).Should(ContainElement("gr1"))
+-				})
+-			})
+-		})
+-		When("Configuration has 3 external working urls", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": config.NewBytesSources(server1.URL, server2.URL),
+-					"gr2": config.NewBytesSources(server3.URL),
+-				}
+-			})
+-
+-			It("should download the list and match against", func() {
+-				group := sut.Match("blocked1.com", []string{"gr1", "gr2"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("blocked1a.com", []string{"gr1", "gr2"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("blocked1a.com", []string{"gr2"})
+-				Expect(group).Should(ContainElement("gr2"))
+-			})
+-		})
+-		When("Configuration has some faulty urls", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": config.NewBytesSources(server1.URL, server2.URL, "doesnotexist"),
+-					"gr2": config.NewBytesSources(server3.URL, "someotherfile"),
+-				}
+-			})
+-
+-			It("should download the list and match against", func() {
+-				group := sut.Match("blocked1.com", []string{"gr1", "gr2"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("blocked1a.com", []string{"gr1", "gr2"})
+-				Expect(group).Should(ContainElements("gr1", "gr2"))
+-
+-				group = sut.Match("blocked1a.com", []string{"gr2"})
+-				Expect(group).Should(ContainElement("gr2"))
+-			})
+-		})
+-		When("List will be updated", func() {
+-			resultCnt := 0
+-
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": config.NewBytesSources(server1.URL),
+-				}
+-
+-				_ = Bus().SubscribeOnce(BlockingCacheGroupChanged, func(listType ListCacheType, group string, cnt int) {
+-					resultCnt = cnt
+-				})
+-			})
+-
+-			It("event should be fired and contain count of elements in downloaded lists", func() {
+-				group := sut.Match("blocked1.com", []string{})
+-				Expect(group).Should(BeEmpty())
+-				Expect(resultCnt).Should(Equal(3))
+-			})
+-		})
+-		When("multiple groups are passed", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": config.NewBytesSources(file1.Path, file2.Path),
+-					"gr2": config.NewBytesSources("file://" + file3.Path),
+-				}
+-			})
+-
+-			It("should match", func() {
+-				Expect(sut.groupedCache.ElementCount("gr1")).Should(Equal(3))
+-				Expect(sut.groupedCache.ElementCount("gr2")).Should(Equal(2))
+-
+-				group := sut.Match("blocked1.com", []string{"gr1", "gr2"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("blocked1a.com", []string{"gr1", "gr2"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("blocked1a.com", []string{"gr2"})
+-				Expect(group).Should(ContainElement("gr2"))
+-			})
+-		})
+-		When("group with bigger files", func() {
+-			It("should match", func() {
+-				file1, lines1 := createTestListFile(GinkgoT().TempDir(), 10000)
+-				file2, lines2 := createTestListFile(GinkgoT().TempDir(), 15000)
+-				file3, lines3 := createTestListFile(GinkgoT().TempDir(), 13000)
+-				lists := map[string][]config.BytesSource{
+-					"gr1": config.NewBytesSources(file1, file2, file3),
+-				}
+-
+-				sut, err := NewListCache(ListCacheTypeBlacklist, sutConfig, lists, downloader)
+-				Expect(err).Should(Succeed())
+-
+-				Expect(sut.groupedCache.ElementCount("gr1")).Should(Equal(lines1 + lines2 + lines3))
+-			})
+-		})
+-		When("inline list content is defined", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {config.TextBytesSource(
+-						"inlinedomain1.com",
+-						"#some comment",
+-						"inlinedomain2.com",
+-					)},
+-				}
+-			})
+-
+-			It("should match", func() {
+-				Expect(sut.groupedCache.ElementCount("gr1")).Should(Equal(2))
+-				group := sut.Match("inlinedomain1.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("inlinedomain2.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-			})
+-		})
+-		When("Text file can't be parsed", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {
+-						config.TextBytesSource(
+-							"inlinedomain1.com",
+-							"lineTooLong"+strings.Repeat("x", bufio.MaxScanTokenSize), // too long
+-						),
+-					},
+-				}
+-			})
+-
+-			It("should still match already imported strings", func() {
+-				group := sut.Match("inlinedomain1.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-			})
+-		})
+-		When("Text file has too many errors", func() {
+-			BeforeEach(func() {
+-				sutConfig.MaxErrorsPerSource = 0
+-				sutConfig.Strategy = config.StartStrategyTypeFailOnError
+-			})
+-			It("should fail parsing", func() {
+-				lists := map[string][]config.BytesSource{
+-					"gr1": {
+-						config.TextBytesSource("invaliddomain!"), // too many errors since `maxErrorsPerSource` is 0
+-					},
+-				}
+-
+-				_, err := NewListCache(ListCacheTypeBlacklist, sutConfig, lists, downloader)
+-				Expect(err).ShouldNot(Succeed())
+-				Expect(err).Should(MatchError(parsers.ErrTooManyErrors))
+-			})
+-		})
+-		When("file has end of line comment", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {config.TextBytesSource("inlinedomain1.com#a comment")},
+-				}
+-			})
+-
+-			It("should still parse the domain", func() {
+-				group := sut.Match("inlinedomain1.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-			})
+-		})
+-		When("inline regex content is defined", func() {
+-			BeforeEach(func() {
+-				lists = map[string][]config.BytesSource{
+-					"gr1": {config.TextBytesSource("/^apple\\.(de|com)$/")},
+-				}
+-			})
+-
+-			It("should match", func() {
+-				group := sut.Match("apple.com", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-
+-				group = sut.Match("apple.de", []string{"gr1"})
+-				Expect(group).Should(ContainElement("gr1"))
+-			})
+-		})
+-	})
+-	Describe("LogConfig", func() {
+-		var (
+-			logger *logrus.Entry
+-			hook   *log.MockLoggerHook
+-		)
+-
+-		BeforeEach(func() {
+-			logger, hook = log.NewMockEntry()
+-		})
+-
+-		It("should print list configuration", func() {
+-			lists := map[string][]config.BytesSource{
+-				"gr1": config.NewBytesSources(server1.URL, server2.URL),
+-				"gr2": {config.TextBytesSource("inline", "definition")},
+-			}
+-
+-			sut, err := NewListCache(ListCacheTypeBlacklist, sutConfig, lists, downloader)
+-			Expect(err).Should(Succeed())
+-
+-			sut.LogConfig(logger)
+-			Expect(hook.Calls).ShouldNot(BeEmpty())
+-			Expect(hook.Messages).Should(ContainElement(ContainSubstring("gr1:")))
+-			Expect(hook.Messages).Should(ContainElement(ContainSubstring("gr2:")))
+-			Expect(hook.Messages).Should(ContainElement(ContainSubstring("TOTAL:")))
+-		})
+-	})
+-
+-	Describe("StartStrategy", func() {
+-		When("async load is enabled", func() {
+-			BeforeEach(func() {
+-				sutConfig.Strategy = config.StartStrategyTypeFast
+-			})
+-
+-			It("should never return an error", func() {
+-				lists := map[string][]config.BytesSource{
+-					"gr1": config.NewBytesSources("doesnotexist"),
+-				}
+-
+-				_, err := NewListCache(ListCacheTypeBlacklist, sutConfig, lists, downloader)
+-				Expect(err).Should(Succeed())
+-			})
+-		})
+-	})
+-})
+-
+-type MockDownloader struct {
+-	util.MockCallSequence[string]
+-}
+-
+-func newMockDownloader(driver func(res chan<- string, err chan<- error)) *MockDownloader {
+-	return &MockDownloader{util.NewMockCallSequence(driver)}
+-}
+-
+-func (m *MockDownloader) DownloadFile(_ string) (io.ReadCloser, error) {
+-	str, err := m.Call()
+-	if err != nil {
+-		return nil, err
+-	}
+-
+-	return io.NopCloser(strings.NewReader(str)), nil
+-}
+-
+-func (m *MockDownloader) ListSource() config.BytesSource {
+-	return config.BytesSource{
+-		Type: config.BytesSourceTypeHttp,
+-		From: "http://mock-downloader",
+-	}
+-}
+-
+-func createTestListFile(dir string, totalLines int) (string, int) {
+-	file, err := os.CreateTemp(dir, "blocky")
+-	if err != nil {
+-		log.Log().Fatal(err)
+-	}
+-
+-	w := bufio.NewWriter(file)
+-	for i := 0; i < totalLines; i++ {
+-		fmt.Fprintln(w, RandStringBytes(8+rand.Intn(10))+".com")
+-	}
+-	w.Flush()
+-
+-	return file.Name(), totalLines
+-}
+-
+-const (
+-	initCharpool = "abcdefghijklmnopqrstuvwxyz"
+-	contCharpool = initCharpool + "0123456789-"
+-)
+-
+-func RandStringBytes(n int) string {
+-	b := make([]byte, n)
+-
+-	pool := initCharpool
+-
+-	for i := range b {
+-		b[i] = pool[rand.Intn(len(pool))]
+-
+-		pool = contCharpool
+-	}
+-
+-	return string(b)
+-}
+diff --git a/server/server_test.go b/server/server_test.go
+deleted file mode 100644
+index 65b30bc..0000000
+--- a/server/server_test.go
++++ /dev/null
+@@ -1,888 +0,0 @@
+-package server
+-
+-import (
+-	"bytes"
+-	"encoding/base64"
+-	"encoding/json"
+-	"io"
+-	"net"
+-	"net/http"
+-	"strings"
+-	"sync/atomic"
+-	"time"
+-
+-	"github.com/0xERR0R/blocky/api"
+-	"github.com/0xERR0R/blocky/config"
+-	. "github.com/0xERR0R/blocky/helpertest"
+-	. "github.com/0xERR0R/blocky/log"
+-	"github.com/0xERR0R/blocky/model"
+-	"github.com/0xERR0R/blocky/resolver"
+-	"github.com/0xERR0R/blocky/util"
+-	"github.com/creasty/defaults"
+-	. "github.com/onsi/ginkgo/v2"
+-	. "github.com/onsi/gomega"
+-
+-	"github.com/miekg/dns"
+-)
+-
+-var (
+-	mockClientName atomic.Value
+-	sut            *Server
+-	err            error
+-)
+-
+-var _ = BeforeSuite(func() {
+-	var upstreamGoogle, upstreamFritzbox, upstreamClient config.Upstream
+-	googleMockUpstream := resolver.NewMockUDPUpstreamServer().WithAnswerFn(func(request *dns.Msg) (response *dns.Msg) {
+-		if request.Question[0].Name == "error." {
+-			return nil
+-		}
+-		response, err := util.NewMsgWithAnswer(
+-			util.ExtractDomain(request.Question[0]), 123, A, "123.124.122.122",
+-		)
+-
+-		Expect(err).Should(Succeed())
+-
+-		return response
+-	})
+-	DeferCleanup(googleMockUpstream.Close)
+-
+-	fritzboxMockUpstream := resolver.NewMockUDPUpstreamServer().WithAnswerFn(func(request *dns.Msg) (response *dns.Msg) {
+-		response, err := util.NewMsgWithAnswer(
+-			util.ExtractDomain(request.Question[0]), 3600, A, "192.168.178.2",
+-		)
+-
+-		Expect(err).Should(Succeed())
+-
+-		return response
+-	})
+-	DeferCleanup(fritzboxMockUpstream.Close)
+-
+-	clientMockUpstream := resolver.NewMockUDPUpstreamServer().WithAnswerFn(func(request *dns.Msg) (response *dns.Msg) {
+-		var clientName string
+-		client := mockClientName.Load()
+-
+-		if client != nil {
+-			clientName = mockClientName.Load().(string)
+-		}
+-
+-		response, err := util.NewMsgWithAnswer(
+-			util.ExtractDomain(request.Question[0]), 3600, dns.Type(dns.TypePTR), clientName,
+-		)
+-
+-		Expect(err).Should(Succeed())
+-
+-		return response
+-	})
+-	DeferCleanup(clientMockUpstream.Close)
+-
+-	upstreamClient = clientMockUpstream.Start()
+-	upstreamFritzbox = fritzboxMockUpstream.Start()
+-	upstreamGoogle = googleMockUpstream.Start()
+-
+-	tmpDir := NewTmpFolder("server")
+-	Expect(tmpDir.Error).Should(Succeed())
+-	DeferCleanup(tmpDir.Clean)
+-
+-	certPem := writeCertPem(tmpDir)
+-	Expect(certPem.Error).Should(Succeed())
+-
+-	keyPem := writeKeyPem(tmpDir)
+-	Expect(keyPem.Error).Should(Succeed())
+-
+-	doubleclickFile := tmpDir.CreateStringFile("doubleclick.net.txt", "doubleclick.net", "doubleclick.net.cn")
+-	Expect(doubleclickFile.Error).Should(Succeed())
+-
+-	bildFile := tmpDir.CreateStringFile("www.bild.de.txt", "www.bild.de")
+-	Expect(bildFile.Error).Should(Succeed())
+-
+-	heiseFile := tmpDir.CreateStringFile("heise.de.txt", "heise.de")
+-	Expect(heiseFile.Error).Should(Succeed())
+-
+-	youtubeFile := tmpDir.CreateStringFile("youtube.com.txt", "youtube.com")
+-	Expect(youtubeFile.Error).Should(Succeed())
+-
+-	// create server
+-	sut, err = NewServer(&config.Config{
+-		CustomDNS: config.CustomDNSConfig{
+-			CustomTTL: config.Duration(3600 * time.Second),
+-			Mapping: config.CustomDNSMapping{
+-				HostIPs: map[string][]net.IP{
+-					"custom.lan": {net.ParseIP("192.168.178.55")},
+-					"lan.home":   {net.ParseIP("192.168.178.56")},
+-				},
+-			},
+-		},
+-		Conditional: config.ConditionalUpstreamConfig{
+-			Mapping: config.ConditionalUpstreamMapping{
+-				Upstreams: map[string][]config.Upstream{
+-					"net.cn":    {upstreamClient},
+-					"fritz.box": {upstreamFritzbox},
+-				},
+-			},
+-		},
+-		Blocking: config.BlockingConfig{
+-			BlackLists: map[string][]config.BytesSource{
+-				"ads": config.NewBytesSources(
+-					doubleclickFile.Path,
+-					bildFile.Path,
+-					heiseFile.Path,
+-				),
+-				"youtube": config.NewBytesSources(youtubeFile.Path),
+-			},
+-			WhiteLists: map[string][]config.BytesSource{
+-				"ads":       config.NewBytesSources(heiseFile.Path),
+-				"whitelist": config.NewBytesSources(heiseFile.Path),
+-			},
+-			ClientGroupsBlock: map[string][]string{
+-				"default":         {"ads"},
+-				"clWhitelistOnly": {"whitelist"},
+-				"clAdsAndYoutube": {"ads", "youtube"},
+-				"clYoutubeOnly":   {"youtube"},
+-			},
+-			BlockType: "zeroIp",
+-			BlockTTL:  config.Duration(6 * time.Hour),
+-		},
+-		Upstreams: config.UpstreamsConfig{
+-			Groups: map[string][]config.Upstream{"default": {upstreamGoogle}},
+-		},
+-		ClientLookup: config.ClientLookupConfig{
+-			Upstream: upstreamClient,
+-		},
+-
+-		Ports: config.PortsConfig{
+-			DNS:   config.ListenConfig{"55555"},
+-			TLS:   config.ListenConfig{"8853"},
+-			HTTP:  config.ListenConfig{"4000"},
+-			HTTPS: config.ListenConfig{"4443"},
+-		},
+-		CertFile: certPem.Path,
+-		KeyFile:  keyPem.Path,
+-		Prometheus: config.MetricsConfig{
+-			Enable: true,
+-			Path:   "/metrics",
+-		},
+-	})
+-
+-	Expect(err).Should(Succeed())
+-
+-	errChan := make(chan error, 10)
+-
+-	// start server
+-	go func() {
+-		sut.Start(errChan)
+-	}()
+-	DeferCleanup(sut.Stop)
+-
+-	Consistently(errChan, "1s").ShouldNot(Receive())
+-})
+-
+-var _ = Describe("Running DNS server", func() {
+-	Describe("performing DNS request with running server", func() {
+-		BeforeEach(func() {
+-			mockClientName.Store("")
+-			// reset client cache
+-			res := sut.queryResolver
+-			for res != nil {
+-				if t, ok := res.(*resolver.ClientNamesResolver); ok {
+-					t.FlushCache()
+-
+-					break
+-				}
+-				if c, ok := res.(resolver.ChainedResolver); ok {
+-					res = c.GetNext()
+-				} else {
+-					break
+-				}
+-			}
+-		})
+-
+-		Context("DNS query is resolvable via external DNS", func() {
+-			It("should return valid answer", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("google.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("google.de.", A, "123.124.122.122"),
+-							HaveTTL(BeNumerically("==", 123)),
+-						))
+-			})
+-		})
+-		Context("Custom DNS entry with exact match", func() {
+-			It("should return valid answer", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("custom.lan.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("custom.lan.", A, "192.168.178.55"),
+-							HaveTTL(BeNumerically("==", 3600)),
+-						))
+-			})
+-		})
+-		Context("Custom DNS entry with sub domain", func() {
+-			It("should return valid answer", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("host.lan.home.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("host.lan.home.", A, "192.168.178.56"),
+-							HaveTTL(BeNumerically("==", 3600)),
+-						))
+-			})
+-		})
+-		Context("Conditional upstream", func() {
+-			It("should resolve query via conditional upstream resolver", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("host.fritz.box.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("host.fritz.box.", A, "192.168.178.2"),
+-							HaveTTL(BeNumerically("==", 3600)),
+-						))
+-			})
+-		})
+-		Context("Conditional upstream blocking", func() {
+-			It("Query should be blocked, domain is in default group", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("doubleclick.net.cn.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("doubleclick.net.cn.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-			})
+-		})
+-		Context("Blocking default group", func() {
+-			It("Query should be blocked, domain is in default group", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("doubleclick.net.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("doubleclick.net.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-			})
+-		})
+-		Context("Blocking default group with sub domain", func() {
+-			It("Query with subdomain should be blocked, domain is in default group", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("www.bild.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("www.bild.de.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-			})
+-		})
+-		Context("no blocking default group with sub domain", func() {
+-			It("Query with should not be blocked, sub domain is not in blacklist", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("bild.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("bild.de.", A, "123.124.122.122"),
+-							HaveTTL(BeNumerically("<=", 123)),
+-						))
+-			})
+-		})
+-		Context("domain is on white and blacklist default group", func() {
+-			It("Query with should not be blocked, domain is on white and blacklist", func() {
+-				Expect(requestServer(util.NewMsgWithQuestion("heise.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("heise.de.", A, "123.124.122.122"),
+-							HaveTTL(BeNumerically("<=", 123)),
+-						))
+-			})
+-		})
+-		Context("domain is on client specific white list", func() {
+-			It("Query with should not be blocked, domain is on client's white list", func() {
+-				mockClientName.Store("clWhitelistOnly")
+-				Expect(requestServer(util.NewMsgWithQuestion("heise.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("heise.de.", A, "123.124.122.122"),
+-							HaveTTL(BeNumerically("<=", 123)),
+-						))
+-			})
+-		})
+-		Context("block client whitelist only", func() {
+-			It("Query with should be blocked, client has only whitelist, domain is not on client's white list", func() {
+-				mockClientName.Store("clWhitelistOnly")
+-				Expect(requestServer(util.NewMsgWithQuestion("google.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("google.de.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-			})
+-		})
+-		Context("block client with 2 groups", func() {
+-			It("Query with should be blocked, domain is on black list", func() {
+-				mockClientName.Store("clAdsAndYoutube")
+-
+-				Expect(requestServer(util.NewMsgWithQuestion("www.bild.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("www.bild.de.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-
+-				Expect(requestServer(util.NewMsgWithQuestion("youtube.com.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("youtube.com.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-			})
+-		})
+-		Context("client with 1 group: no block if domain in other group", func() {
+-			It("Query with should not be blocked, domain is on black list in another group", func() {
+-				mockClientName.Store("clYoutubeOnly")
+-
+-				Expect(requestServer(util.NewMsgWithQuestion("www.bild.de.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("www.bild.de.", A, "123.124.122.122"),
+-							HaveTTL(BeNumerically("<=", 123)),
+-						))
+-			})
+-		})
+-		Context("block client with 1 group", func() {
+-			It("Query with should not  blocked, domain is on black list in client's group", func() {
+-				mockClientName.Store("clYoutubeOnly")
+-
+-				Expect(requestServer(util.NewMsgWithQuestion("youtube.com.", A))).
+-					Should(
+-						SatisfyAll(
+-							BeDNSRecord("youtube.com.", A, "0.0.0.0"),
+-							HaveTTL(BeNumerically("==", 21600)),
+-						))
+-			})
+-		})
+-		Context("health check", func() {
+-			It("Should always return dummy response", func() {
+-				resp := requestServer(util.NewMsgWithQuestion("healthcheck.blocky.", A))
+-
+-				Expect(resp.Answer).Should(BeEmpty())
+-			})
+-		})
+-	})
+-
+-	Describe("Prometheus endpoint", func() {
+-		When("Prometheus URL is called", func() {
+-			It("should return prometheus data", func() {
+-				resp, err := http.Get("http://localhost:4000/metrics")
+-				Expect(err).Should(Succeed())
+-				Expect(resp).Should(HaveHTTPStatus(http.StatusOK))
+-			})
+-		})
+-	})
+-	Describe("Root endpoint", func() {
+-		When("Root URL is called", func() {
+-			It("should return root page", func() {
+-				resp, err := http.Get("http://localhost:4000/")
+-				Expect(err).Should(Succeed())
+-				Expect(resp).Should(
+-					SatisfyAll(
+-						HaveHTTPStatus(http.StatusOK),
+-						HaveHTTPHeaderWithValue("Content-type", "text/html; charset=UTF-8"),
+-					))
+-			})
+-		})
+-	})
+-
+-	Describe("Query Rest API", func() {
+-		When("Query API is called", func() {
+-			It("Should process the query", func() {
+-				req := api.QueryRequest{
+-					Query: "google.de",
+-					Type:  "A",
+-				}
+-				jsonValue, err := json.Marshal(req)
+-				Expect(err).Should(Succeed())
+-
+-				resp, err := http.Post("http://localhost:4000/api/query", "application/json", bytes.NewBuffer(jsonValue))
+-
+-				Expect(err).Should(Succeed())
+-				defer resp.Body.Close()
+-
+-				Expect(resp).Should(
+-					SatisfyAll(
+-						HaveHTTPStatus(http.StatusOK),
+-						HaveHTTPHeaderWithValue("Content-type", "application/json"),
+-					))
+-
+-				var result api.QueryResult
+-				err = json.NewDecoder(resp.Body).Decode(&result)
+-				Expect(err).Should(Succeed())
+-				Expect(result.Response).Should(Equal("A (123.124.122.122)"))
+-			})
+-		})
+-		When("Wrong request type is used", func() {
+-			It("Should return internal error", func() {
+-				req := api.QueryRequest{
+-					Query: "google.de",
+-					Type:  "WrongType",
+-				}
+-				jsonValue, err := json.Marshal(req)
+-				Expect(err).Should(Succeed())
+-
+-				resp, err := http.Post("http://localhost:4000/api/query", "application/json", bytes.NewBuffer(jsonValue))
+-
+-				Expect(err).Should(Succeed())
+-				DeferCleanup(resp.Body.Close)
+-
+-				Expect(resp.StatusCode).Should(Equal(http.StatusInternalServerError))
+-			})
+-		})
+-		When("Internal error occurs", func() {
+-			It("Should return internal error", func() {
+-				req := api.QueryRequest{
+-					Query: "error.",
+-					Type:  "A",
+-				}
+-				jsonValue, err := json.Marshal(req)
+-				Expect(err).Should(Succeed())
+-
+-				resp, err := http.Post("http://localhost:4000/api/query", "application/json", bytes.NewBuffer(jsonValue))
+-				Expect(err).Should(Succeed())
+-				DeferCleanup(resp.Body.Close)
+-				Expect(resp.StatusCode).Should(Equal(http.StatusInternalServerError))
+-			})
+-		})
+-		When("Request is malformed", func() {
+-			It("Should return internal error", func() {
+-				jsonValue := []byte("")
+-
+-				resp, err := http.Post("http://localhost:4000/api/query", "application/json", bytes.NewBuffer(jsonValue))
+-
+-				Expect(err).Should(Succeed())
+-				DeferCleanup(resp.Body.Close)
+-
+-				Expect(resp.StatusCode).Should(Equal(http.StatusInternalServerError))
+-			})
+-		})
+-	})
+-
+-	Describe("DOH endpoint", func() {
+-		Context("DOH over GET (RFC 8484)", func() {
+-			When("DOH get request with 'example.com' is performed", func() {
+-				It("should get a valid response", func() {
+-					resp, err := http.Get("http://localhost:4000/dns-query?dns=AAABAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB")
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusOK))
+-					Expect(resp).Should(HaveHTTPHeaderWithValue("Content-type", "application/dns-message"))
+-
+-					rawMsg, err := io.ReadAll(resp.Body)
+-					Expect(err).Should(Succeed())
+-
+-					msg := new(dns.Msg)
+-					err = msg.Unpack(rawMsg)
+-					Expect(err).Should(Succeed())
+-
+-					Expect(msg.Answer).Should(BeDNSRecord("www.example.com.", A, "123.124.122.122"))
+-				})
+-			})
+-			When("Request does not contain a valid DNS message", func() {
+-				It("should return 'Bad Request'", func() {
+-					resp, err := http.Get("http://localhost:4000/dns-query?dns=xxxx")
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusBadRequest))
+-				})
+-			})
+-			When("Request's parameter does not contain a valid base64'", func() {
+-				It("should return 'Bad Request'", func() {
+-					resp, err := http.Get("http://localhost:4000/dns-query?dns=äöä")
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusBadRequest))
+-				})
+-			})
+-			When("Request does not contain a dns parameter", func() {
+-				It("should return 'Bad Request'", func() {
+-					resp, err := http.Get("http://localhost:4000/dns-query?test")
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusBadRequest))
+-				})
+-			})
+-			When("Request's dns parameter is too long'", func() {
+-				It("should return 'URI Too Long'", func() {
+-					longBase64msg := base64.StdEncoding.EncodeToString([]byte(strings.Repeat("t", 513)))
+-
+-					resp, err := http.Get("http://localhost:4000/dns-query?dns=" + longBase64msg)
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusRequestURITooLong))
+-				})
+-			})
+-		})
+-		Context("DOH over POST (RFC 8484)", func() {
+-			When("DOH post request with 'example.com' is performed", func() {
+-				It("should get a valid response", func() {
+-					msg := util.NewMsgWithQuestion("www.example.com.", A)
+-					rawDNSMessage, err := msg.Pack()
+-					Expect(err).Should(Succeed())
+-
+-					resp, err := http.Post("http://localhost:4000/dns-query",
+-						"application/dns-message", bytes.NewReader(rawDNSMessage))
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(
+-						SatisfyAll(
+-							HaveHTTPStatus(http.StatusOK),
+-							HaveHTTPHeaderWithValue("Content-type", "application/dns-message"),
+-						))
+-
+-					rawMsg, err := io.ReadAll(resp.Body)
+-					Expect(err).Should(Succeed())
+-
+-					msg = new(dns.Msg)
+-					err = msg.Unpack(rawMsg)
+-					Expect(err).Should(Succeed())
+-
+-					Expect(msg.Answer).Should(BeDNSRecord("www.example.com.", A, "123.124.122.122"))
+-				})
+-				It("should get a valid response, clientId is passed", func() {
+-					msg := util.NewMsgWithQuestion("www.example.com.", A)
+-					rawDNSMessage, err := msg.Pack()
+-					Expect(err).Should(Succeed())
+-
+-					resp, err := http.Post("http://localhost:4000/dns-query/client123",
+-						"application/dns-message", bytes.NewReader(rawDNSMessage))
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(
+-						SatisfyAll(
+-							HaveHTTPStatus(http.StatusOK),
+-							HaveHTTPHeaderWithValue("Content-type", "application/dns-message"),
+-						))
+-					rawMsg, err := io.ReadAll(resp.Body)
+-					Expect(err).Should(Succeed())
+-
+-					msg = new(dns.Msg)
+-					err = msg.Unpack(rawMsg)
+-					Expect(err).Should(Succeed())
+-
+-					Expect(msg.Answer).Should(BeDNSRecord("www.example.com.", A, "123.124.122.122"))
+-				})
+-			})
+-			When("POST payload exceeds 512 bytes", func() {
+-				It("should return 'Payload Too Large'", func() {
+-					largeMessage := []byte(strings.Repeat("t", 513))
+-
+-					resp, err := http.Post("http://localhost:4000/dns-query", "application/dns-message", bytes.NewReader(largeMessage))
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusRequestEntityTooLarge))
+-				})
+-			})
+-			When("Request has wrong type", func() {
+-				It("should return 'Unsupported Media Type'", func() {
+-					resp, err := http.Post("http://localhost:4000/dns-query", "application/text", bytes.NewReader([]byte("a")))
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusUnsupportedMediaType))
+-				})
+-			})
+-			When("Internal error occurs", func() {
+-				It("should return 'Internal server error'", func() {
+-					msg := util.NewMsgWithQuestion("error.", A)
+-					rawDNSMessage, err := msg.Pack()
+-					Expect(err).Should(Succeed())
+-
+-					resp, err := http.Post("http://localhost:4000/dns-query",
+-						"application/dns-message", bytes.NewReader(rawDNSMessage))
+-					Expect(err).Should(Succeed())
+-					DeferCleanup(resp.Body.Close)
+-
+-					Expect(resp).Should(HaveHTTPStatus(http.StatusInternalServerError))
+-				})
+-			})
+-		})
+-	})
+-
+-	Describe("Server create", func() {
+-		var (
+-			cfg  config.Config
+-			cErr error
+-		)
+-		BeforeEach(func() {
+-			cErr = defaults.Set(&cfg)
+-
+-			Expect(cErr).Should(Succeed())
+-
+-			cfg.Upstreams.Groups = map[string][]config.Upstream{
+-				"default": {config.Upstream{Net: config.NetProtocolTcpUdp, Host: "1.1.1.1", Port: 53}},
+-			}
+-
+-			cfg.Redis.Address = "test-fail"
+-		})
+-		When("Server is created", func() {
+-			It("is created without redis connection", func() {
+-				_, err := NewServer(&cfg)
+-
+-				Expect(err).Should(Succeed())
+-			})
+-			It("can't be created if redis server is unavailable", func() {
+-				cfg.Redis.Required = true
+-
+-				_, err := NewServer(&cfg)
+-
+-				Expect(err).ShouldNot(Succeed())
+-			})
+-		})
+-	})
+-
+-	Describe("Server start", Label("XX"), func() {
+-		When("Server start is called", func() {
+-			It("start was called 2 times, start should fail", func() {
+-				// create server
+-				server, err := NewServer(&config.Config{
+-					Upstreams: config.UpstreamsConfig{
+-						Groups: map[string][]config.Upstream{
+-							"default": {config.Upstream{Net: config.NetProtocolTcpUdp, Host: "4.4.4.4", Port: 53}},
+-						},
+-					},
+-					CustomDNS: config.CustomDNSConfig{
+-						Mapping: config.CustomDNSMapping{
+-							HostIPs: map[string][]net.IP{
+-								"custom.lan": {net.ParseIP("192.168.178.55")},
+-								"lan.home":   {net.ParseIP("192.168.178.56")},
+-							},
+-						},
+-					},
+-					Blocking: config.BlockingConfig{BlockType: "zeroIp"},
+-					Ports: config.PortsConfig{
+-						DNS: config.ListenConfig{":55556"},
+-					},
+-				})
+-
+-				Expect(err).Should(Succeed())
+-
+-				errChan := make(chan error, 10)
+-
+-				// start server
+-				go server.Start(errChan)
+-
+-				DeferCleanup(server.Stop)
+-
+-				Consistently(errChan, "1s").ShouldNot(Receive())
+-
+-				// start again -> should fail
+-				server.Start(errChan)
+-
+-				Eventually(errChan).Should(Receive())
+-			})
+-		})
+-	})
+-	Describe("Server stop", func() {
+-		When("Stop is called", func() {
+-			It("stop was called 2 times, start should fail", func() {
+-				// create server
+-				server, err := NewServer(&config.Config{
+-					Upstreams: config.UpstreamsConfig{
+-						Groups: map[string][]config.Upstream{
+-							"default": {config.Upstream{Net: config.NetProtocolTcpUdp, Host: "4.4.4.4", Port: 53}},
+-						},
+-					},
+-					CustomDNS: config.CustomDNSConfig{
+-						Mapping: config.CustomDNSMapping{
+-							HostIPs: map[string][]net.IP{
+-								"custom.lan": {net.ParseIP("192.168.178.55")},
+-								"lan.home":   {net.ParseIP("192.168.178.56")},
+-							},
+-						},
+-					},
+-					Blocking: config.BlockingConfig{BlockType: "zeroIp"},
+-					Ports: config.PortsConfig{
+-						DNS: config.ListenConfig{"127.0.0.1:55557"},
+-					},
+-				})
+-
+-				Expect(err).Should(Succeed())
+-
+-				errChan := make(chan error, 10)
+-
+-				// start server
+-				go func() {
+-					server.Start(errChan)
+-				}()
+-
+-				time.Sleep(100 * time.Millisecond)
+-
+-				err = server.Stop()
+-
+-				// stop server, should be ok
+-				Expect(err).Should(Succeed())
+-
+-				// stop again, should raise error
+-				err = server.Stop()
+-
+-				Expect(err).Should(HaveOccurred())
+-			})
+-		})
+-	})
+-
+-	Describe("NewServer with strict upstream strategy", func() {
+-		It("successfully returns upstream branches", func() {
+-			branches, err := createUpstreamBranches(&config.Config{
+-				Upstreams: config.UpstreamsConfig{
+-					Strategy: config.UpstreamStrategyStrict,
+-					Groups: config.UpstreamGroups{
+-						"default": {{Host: "0.0.0.0"}},
+-					},
+-				},
+-			},
+-				nil)
+-
+-			Expect(err).ToNot(HaveOccurred())
+-			Expect(branches).ToNot(BeNil())
+-			Expect(branches).To(HaveLen(1))
+-			_ = branches["default"].(*resolver.StrictResolver)
+-		})
+-	})
+-
+-	Describe("create query resolver", func() {
+-		When("some upstream returns error", func() {
+-			It("create query resolver should return error", func() {
+-				r, err := createQueryResolver(&config.Config{
+-					StartVerifyUpstream: true,
+-					Upstreams: config.UpstreamsConfig{
+-						Groups: config.UpstreamGroups{
+-							"default": {{Host: "0.0.0.0"}},
+-						},
+-					},
+-				},
+-					nil, nil)
+-
+-				Expect(err).To(HaveOccurred())
+-				Expect(err).To(MatchError(ContainSubstring("creation of upstream branches failed: ")))
+-				Expect(r).To(BeNil())
+-			})
+-		})
+-	})
+-
+-	Describe("resolve client IP", func() {
+-		Context("UDP address", func() {
+-			It("should correct resolve client IP", func() {
+-				ip, protocol := resolveClientIPAndProtocol(&net.UDPAddr{IP: net.ParseIP("192.168.178.88")})
+-				Expect(ip).Should(Equal(net.ParseIP("192.168.178.88")))
+-				Expect(protocol).Should(Equal(model.RequestProtocolUDP))
+-			})
+-		})
+-		Context("TCP address", func() {
+-			It("should correct resolve client IP", func() {
+-				ip, protocol := resolveClientIPAndProtocol(&net.TCPAddr{IP: net.ParseIP("192.168.178.88")})
+-				Expect(ip).Should(Equal(net.ParseIP("192.168.178.88")))
+-				Expect(protocol).Should(Equal(model.RequestProtocolTCP))
+-			})
+-		})
+-	})
+-
+-	Describe("self-signed certificate creation", func() {
+-		var (
+-			cfg  config.Config
+-			cErr error
+-		)
+-		BeforeEach(func() {
+-			cErr = defaults.Set(&cfg)
+-
+-			Expect(cErr).Should(Succeed())
+-
+-			cfg.Upstreams.Groups = map[string][]config.Upstream{
+-				"default": {config.Upstream{Net: config.NetProtocolTcpUdp, Host: "1.1.1.1", Port: 53}},
+-			}
+-		})
+-
+-		It("should create self-signed certificate if key/cert files are not provided", func() {
+-			cfg.KeyFile = ""
+-			cfg.CertFile = ""
+-			cfg.Ports = config.PortsConfig{
+-				HTTPS: []string{":14443"},
+-			}
+-
+-			sut, err := NewServer(&cfg)
+-			Expect(err).Should(Succeed())
+-			Expect(sut.cert.Certificate).ShouldNot(BeNil())
+-		})
+-	})
+-})
+-
+-func requestServer(request *dns.Msg) *dns.Msg {
+-	conn, err := net.Dial("udp", ":55555")
+-	if err != nil {
+-		Log().Fatal("could not connect to server: ", err)
+-	}
+-	defer conn.Close()
+-
+-	msg, err := request.Pack()
+-	if err != nil {
+-		Log().Fatal("can't pack request: ", err)
+-	}
+-
+-	_, err = conn.Write(msg)
+-	if err != nil {
+-		Log().Fatal("can't send request to server: ", err)
+-	}
+-
+-	out := make([]byte, 1024)
+-
+-	if _, err := conn.Read(out); err == nil {
+-		response := new(dns.Msg)
+-
+-		err = response.Unpack(out)
+-
+-		if err != nil {
+-			Log().Fatal("can't unpack response: ", err)
+-		}
+-
+-		return response
+-	}
+-
+-	Log().Fatal("could not read from connection", err)
+-
+-	return nil
+-}
+-
+-func writeCertPem(tmpDir *TmpFolder) *TmpFile {
+-	return tmpDir.CreateStringFile("cert.pem",
+-		"-----BEGIN CERTIFICATE-----",
+-		"MIICMzCCAZygAwIBAgIRAJCCrDTGEtZfRpxDY1KAoswwDQYJKoZIhvcNAQELBQAw",
+-		"EjEQMA4GA1UEChMHQWNtZSBDbzAgFw03MDAxMDEwMDAwMDBaGA8yMDg0MDEyOTE2",
+-		"MDAwMFowEjEQMA4GA1UEChMHQWNtZSBDbzCBnzANBgkqhkiG9w0BAQEFAAOBjQAw",
+-		"gYkCgYEA4mEaF5yWYYrTfMgRXdBpgGnqsHIADQWlw7BIJWD/gNp+fgp4TUZ/7ggV",
+-		"rrvRORvRFjw14avd9L9EFP7XLi8ViU3uoE1UWI32MlrKqLbGNCXyUIApIoqlbRg6",
+-		"iErxIk5+ChzFuysQOx01S2yv/ML6dx7NOGHs1S38MUzRZtcXBH8CAwEAAaOBhjCB",
+-		"gzAOBgNVHQ8BAf8EBAMCAqQwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDwYDVR0TAQH/",
+-		"BAUwAwEB/zAdBgNVHQ4EFgQUslNI6tYIv909RttHaZVMS/u/VYYwLAYDVR0RBCUw",
+-		"I4IJbG9jYWxob3N0hwR/AAABhxAAAAAAAAAAAAAAAAAAAAABMA0GCSqGSIb3DQEB",
+-		"CwUAA4GBAJ2gRpQHr5Qj7dt26bYVMdN4JGXTsvjbVrJfKI0VfPGJ+SUY/uTVBUeX",
+-		"+Cwv4DFEPBlNx/lzuUkwmRaExC4/w81LWwxe5KltYsjyJuYowiUbLZ6tzLaQ9Bcx",
+-		"jxClAVvgj90TGYOwsv6ESOX7GWteN1FlD3+jk7vefjFagaKKFYR9",
+-		"-----END CERTIFICATE-----")
+-}
+-
+-func writeKeyPem(tmpDir *TmpFolder) *TmpFile {
+-	return tmpDir.CreateStringFile("key.pem",
+-		"-----BEGIN PRIVATE KEY-----",
+-		"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAOJhGheclmGK03zI",
+-		"EV3QaYBp6rByAA0FpcOwSCVg/4Dafn4KeE1Gf+4IFa670Tkb0RY8NeGr3fS/RBT+",
+-		"1y4vFYlN7qBNVFiN9jJayqi2xjQl8lCAKSKKpW0YOohK8SJOfgocxbsrEDsdNUts",
+-		"r/zC+ncezThh7NUt/DFM0WbXFwR/AgMBAAECgYEA1exixstPhI+2+OTrHFc1S4dL",
+-		"oz+ncqbSlZEBLGl0KWTQQfVM5+FmRR7Yto1/0lLKDBQL6t0J2x3fjWOhHmCaHKZA",
+-		"VAvZ8+OKxwofih3hlO0tGCB8szUJygp2FAmd0rOUqvPQ+PTohZEUXyDaB8MOIbX+",
+-		"qoo7g19+VlbyKqmM8HkCQQDs4GQJwEn7GXKllSMyOfiYnjQM2pwsqO0GivXkH+p3",
+-		"+h5KDp4g3O4EbmbrvZyZB2euVsBjW3pFMu+xPXuOXf91AkEA9KfC7LGLD2OtLmrM",
+-		"iCZAqHlame+uEEDduDmqjTPnNKUWVeRtYKMF5Hltbeo1jMXMSbVZ+fRWKfQ+HAhQ",
+-		"xjFJowJAV6U7PqRoe0FSO1QwXrA2fHnk9nCY4qlqckZObyckAVqJhIteFPjKFNeo",
+-		"u0dAPxsPUOGGc/zwA9Sx/ZmrMuUy1QJBALl7bqawO/Ng6G0mfwZBqgeQaYYHVnnw",
+-		"E6iV353J2eHpvzNDSUFYlyEOhk4soIindSf0m9CK08Be8a+jBkocF+0CQQC+Hi7L",
+-		"kZV1slpW82BxYIhs9Gb0OQgK8SsI4aQPTFGUarQXXAm4eRqBO0kaG+jGX6TtW353",
+-		"EHK784GIxwVXKej/",
+-		"-----END PRIVATE KEY-----")
+-}
+diff --git a/resolver/hosts_file_resolver_test.go b/resolver/hosts_file_resolver_test.go
+deleted file mode 100644
+index eef4591..0000000
+--- a/resolver/hosts_file_resolver_test.go
++++ /dev/null
+@@ -1,376 +0,0 @@
+-package resolver
+-
+-import (
+-	"context"
+-	"time"
+-
+-	"github.com/0xERR0R/blocky/config"
+-	. "github.com/0xERR0R/blocky/helpertest"
+-	"github.com/0xERR0R/blocky/log"
+-	. "github.com/0xERR0R/blocky/model"
+-	"github.com/miekg/dns"
+-	. "github.com/onsi/ginkgo/v2"
+-	. "github.com/onsi/gomega"
+-	"github.com/stretchr/testify/mock"
+-)
+-
+-var _ = Describe("HostsFileResolver", func() {
+-	var (
+-		TTL = uint32(time.Now().Second())
+-
+-		sut       *HostsFileResolver
+-		sutConfig config.HostsFileConfig
+-		m         *mockResolver
+-		tmpDir    *TmpFolder
+-		tmpFile   *TmpFile
+-	)
+-
+-	Describe("Type", func() {
+-		It("follows conventions", func() {
+-			expectValidResolverType(sut)
+-		})
+-	})
+-
+-	BeforeEach(func() {
+-		tmpDir = NewTmpFolder("HostsFileResolver")
+-		Expect(tmpDir.Error).Should(Succeed())
+-		DeferCleanup(tmpDir.Clean)
+-
+-		tmpFile = writeHostFile(tmpDir)
+-		Expect(tmpFile.Error).Should(Succeed())
+-
+-		sutConfig = config.HostsFileConfig{
+-			Sources:        config.NewBytesSources(tmpFile.Path),
+-			HostsTTL:       config.Duration(time.Duration(TTL) * time.Second),
+-			FilterLoopback: true,
+-			Loading: config.SourceLoadingConfig{
+-				RefreshPeriod:      -1,
+-				MaxErrorsPerSource: 5,
+-			},
+-		}
+-	})
+-
+-	JustBeforeEach(func() {
+-		var err error
+-
+-		sut, err = NewHostsFileResolver(sutConfig, systemResolverBootstrap)
+-		Expect(err).Should(Succeed())
+-
+-		m = &mockResolver{}
+-		m.On("Resolve", mock.Anything).Return(&Response{Res: new(dns.Msg)}, nil)
+-		sut.Next(m)
+-	})
+-
+-	Describe("IsEnabled", func() {
+-		It("is true", func() {
+-			Expect(sut.IsEnabled()).Should(BeTrue())
+-		})
+-	})
+-
+-	Describe("LogConfig", func() {
+-		It("should log something", func() {
+-			logger, hook := log.NewMockEntry()
+-
+-			sut.LogConfig(logger)
+-
+-			Expect(hook.Calls).ShouldNot(BeEmpty())
+-		})
+-	})
+-
+-	Describe("Using hosts file", func() {
+-		When("Hosts file cannot be located", func() {
+-			BeforeEach(func() {
+-				sutConfig = config.HostsFileConfig{
+-					Sources:  config.NewBytesSources("/this/file/does/not/exist"),
+-					HostsTTL: config.Duration(time.Duration(TTL) * time.Second),
+-				}
+-			})
+-			It("should not parse any hosts", func() {
+-				Expect(sut.cfg.Sources).ShouldNot(BeEmpty())
+-				Expect(sut.hosts.v4.hosts).Should(BeEmpty())
+-				Expect(sut.hosts.v6.hosts).Should(BeEmpty())
+-				Expect(sut.hosts.v4.aliases).Should(BeEmpty())
+-				Expect(sut.hosts.v6.aliases).Should(BeEmpty())
+-				Expect(sut.hosts.isEmpty()).Should(BeTrue())
+-			})
+-			It("should go to next resolver on query", func() {
+-				Expect(sut.Resolve(newRequest("example.com.", A))).
+-					Should(
+-						SatisfyAll(
+-							HaveResponseType(ResponseTypeRESOLVED),
+-							HaveReturnCode(dns.RcodeSuccess),
+-						))
+-				m.AssertExpectations(GinkgoT())
+-			})
+-		})
+-
+-		When("Hosts file is not set", func() {
+-			BeforeEach(func() {
+-				sutConfig.Deprecated.Filepath = new(config.BytesSource)
+-				sutConfig.Sources = nil
+-
+-				m = &mockResolver{}
+-				m.On("Resolve", mock.Anything).Return(&Response{Res: new(dns.Msg)}, nil)
+-				sut.Next(m)
+-			})
+-			It("should not return an error", func() {
+-				err := sut.loadSources(context.Background())
+-				Expect(err).Should(Succeed())
+-			})
+-			It("should go to next resolver on query", func() {
+-				Expect(sut.Resolve(newRequest("example.com.", A))).
+-					Should(
+-						SatisfyAll(
+-							HaveResponseType(ResponseTypeRESOLVED),
+-							HaveReturnCode(dns.RcodeSuccess),
+-						))
+-				m.AssertExpectations(GinkgoT())
+-			})
+-		})
+-
+-		When("Hosts file can be located", func() {
+-			It("should parse it successfully", func() {
+-				Expect(sut).ShouldNot(BeNil())
+-				Expect(sut.hosts.v4.hosts).Should(HaveLen(5))
+-				Expect(sut.hosts.v6.hosts).Should(HaveLen(2))
+-				Expect(sut.hosts.v4.aliases).Should(HaveLen(4))
+-				Expect(sut.hosts.v6.aliases).Should(HaveLen(2))
+-			})
+-
+-			When("filterLoopback is false", func() {
+-				BeforeEach(func() {
+-					sutConfig.FilterLoopback = false
+-				})
+-
+-				It("should parse it successfully", func() {
+-					Expect(sut).ShouldNot(BeNil())
+-					Expect(sut.hosts.v4.hosts).Should(HaveLen(7))
+-					Expect(sut.hosts.v6.hosts).Should(HaveLen(3))
+-					Expect(sut.hosts.v4.aliases).Should(HaveLen(5))
+-					Expect(sut.hosts.v6.aliases).Should(HaveLen(2))
+-				})
+-			})
+-		})
+-
+-		When("Hosts file has too many errors", func() {
+-			BeforeEach(func() {
+-				tmpFile = tmpDir.CreateStringFile("hosts-too-many-errors.txt",
+-					"invalidip localhost",
+-					"127.0.0.1 localhost", // ok
+-					"127.0.0.1 # no host",
+-					"127.0.0.1 invalidhost!",
+-					"a.b.c.d localhost",
+-					"127.0.0.x localhost",
+-					"256.0.0.1 localhost",
+-				)
+-				Expect(tmpFile.Error).Should(Succeed())
+-
+-				sutConfig.Sources = config.NewBytesSources(tmpFile.Path)
+-			})
+-
+-			It("should not be used", func() {
+-				Expect(sut).ShouldNot(BeNil())
+-				Expect(sut.cfg.Sources).ShouldNot(BeEmpty())
+-				Expect(sut.hosts.v4.hosts).Should(BeEmpty())
+-				Expect(sut.hosts.v6.hosts).Should(BeEmpty())
+-				Expect(sut.hosts.v4.aliases).Should(BeEmpty())
+-				Expect(sut.hosts.v6.aliases).Should(BeEmpty())
+-			})
+-		})
+-
+-		When("IPv4 mapping is defined for a host", func() {
+-			It("defined ipv4 query should be resolved", func() {
+-				Expect(sut.Resolve(newRequest("ipv4host.", A))).
+-					Should(
+-						SatisfyAll(
+-							HaveResponseType(ResponseTypeHOSTSFILE),
+-							HaveReturnCode(dns.RcodeSuccess),
+-							BeDNSRecord("ipv4host.", A, "192.168.2.1"),
+-							HaveTTL(BeNumerically("==", TTL)),
+-						))
+-			})
+-			It("defined ipv4 query for alias should be resolved", func() {
+-				Expect(sut.Resolve(newRequest("router2.", A))).
+-					Should(
+-						SatisfyAll(
+-							HaveResponseType(ResponseTypeHOSTSFILE),
+-							HaveReturnCode(dns.RcodeSuccess),
+-							BeDNSRecord("router2.", A, "10.0.0.1"),
+-							HaveTTL(BeNumerically("==", TTL)),
+-						))
+-			})
+-			It("ipv4 query should return NOERROR and empty result", func() {
+-				Expect(sut.Resolve(newRequest("does.not.exist.", A))).
+-					Should(
+-						SatisfyAll(
+-							HaveNoAnswer(),
+-							HaveReturnCode(dns.RcodeSuccess),
+-							HaveResponseType(ResponseTypeRESOLVED),
+-						))
+-			})
+-		})
+-
+-		When("IPv6 mapping is defined for a host", func() {
+-			It("defined ipv6 query should be resolved", func() {
+-				Expect(sut.Resolve(newRequest("ipv6host.", AAAA))).
+-					Should(
+-						SatisfyAll(
+-							HaveResponseType(ResponseTypeHOSTSFILE),
+-							HaveReturnCode(dns.RcodeSuccess),
+-							BeDNSRecord("ipv6host.", AAAA, "faaf:faaf:faaf:faaf::1"),
+-							HaveTTL(BeNumerically("==", TTL)),
+-						))
+-			})
+-			It("ipv6 query should return NOERROR and empty result", func() {
+-				Expect(sut.Resolve(newRequest("does.not.exist.", AAAA))).
+-					Should(
+-						SatisfyAll(
+-							HaveNoAnswer(),
+-							HaveReturnCode(dns.RcodeSuccess),
+-							HaveResponseType(ResponseTypeRESOLVED),
+-						))
+-			})
+-		})
+-
+-		When("the domain is not known", func() {
+-			It("calls the next resolver", func() {
+-				resp, err := sut.Resolve(newRequest("not-in-hostsfile.tld.", A))
+-				Expect(err).Should(Succeed())
+-				Expect(resp).ShouldNot(HaveResponseType(ResponseTypeHOSTSFILE))
+-				m.AssertExpectations(GinkgoT())
+-			})
+-		})
+-
+-		When("the question type is not handled", func() {
+-			It("calls the next resolver", func() {
+-				resp, err := sut.Resolve(newRequest("localhost.", MX))
+-				Expect(err).Should(Succeed())
+-				Expect(resp).ShouldNot(HaveResponseType(ResponseTypeHOSTSFILE))
+-				m.AssertExpectations(GinkgoT())
+-			})
+-		})
+-
+-		When("Reverse DNS request is received", func() {
+-			It("should resolve the defined domain name", func() {
+-				By("ipv4 with one hostname", func() {
+-					Expect(sut.Resolve(newRequest("2.0.0.10.in-addr.arpa.", PTR))).
+-						Should(
+-							SatisfyAll(
+-								HaveResponseType(ResponseTypeHOSTSFILE),
+-								HaveReturnCode(dns.RcodeSuccess),
+-								BeDNSRecord("2.0.0.10.in-addr.arpa.", PTR, "router3."),
+-								HaveTTL(BeNumerically("==", TTL)),
+-							))
+-				})
+-				By("ipv4 with aliases", func() {
+-					Expect(sut.Resolve(newRequest("1.0.0.10.in-addr.arpa.", PTR))).
+-						Should(
+-							SatisfyAll(
+-								HaveResponseType(ResponseTypeHOSTSFILE),
+-								HaveReturnCode(dns.RcodeSuccess),
+-								WithTransform(ToAnswer, ContainElements(
+-									BeDNSRecord("1.0.0.10.in-addr.arpa.", PTR, "router0."),
+-									BeDNSRecord("1.0.0.10.in-addr.arpa.", PTR, "router1."),
+-									BeDNSRecord("1.0.0.10.in-addr.arpa.", PTR, "router2."),
+-								)),
+-							))
+-				})
+-				By("ipv6", func() {
+-					Expect(sut.Resolve(newRequest("1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.f.a.a.f.f.a.a.f.f.a.a.f.f.a.a.f.ip6.arpa.", PTR))).
+-						Should(
+-							SatisfyAll(
+-								HaveResponseType(ResponseTypeHOSTSFILE),
+-								HaveReturnCode(dns.RcodeSuccess),
+-								WithTransform(ToAnswer, ContainElements(
+-									BeDNSRecord("1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.f.a.a.f.f.a.a.f.f.a.a.f.f.a.a.f.ip6.arpa.",
+-										PTR, "ipv6host."),
+-									BeDNSRecord("1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.f.a.a.f.f.a.a.f.f.a.a.f.f.a.a.f.ip6.arpa.",
+-										PTR, "ipv6host.local.lan."),
+-								)),
+-							))
+-				})
+-			})
+-
+-			It("should ignore invalid PTR", func() {
+-				resp, err := sut.Resolve(newRequest("2.0.0.10.in-addr.fail.arpa.", PTR))
+-				Expect(err).Should(Succeed())
+-				Expect(resp).ShouldNot(HaveResponseType(ResponseTypeHOSTSFILE))
+-				m.AssertExpectations(GinkgoT())
+-			})
+-
+-			When("filterLoopback is true", func() {
+-				It("calls the next resolver", func() {
+-					resp, err := sut.Resolve(newRequest("1.0.0.127.in-addr.arpa.", PTR))
+-					Expect(err).Should(Succeed())
+-					Expect(resp).ShouldNot(HaveResponseType(ResponseTypeHOSTSFILE))
+-					m.AssertExpectations(GinkgoT())
+-				})
+-			})
+-
+-			When("the IP is not known", func() {
+-				It("calls the next resolver", func() {
+-					resp, err := sut.Resolve(newRequest("255.255.255.255.in-addr.arpa.", PTR))
+-					Expect(err).Should(Succeed())
+-					Expect(resp).ShouldNot(HaveResponseType(ResponseTypeHOSTSFILE))
+-					m.AssertExpectations(GinkgoT())
+-				})
+-			})
+-
+-			When("filterLoopback is false", func() {
+-				BeforeEach(func() {
+-					sutConfig.FilterLoopback = false
+-				})
+-
+-				It("resolve the defined domain name", func() {
+-					Expect(sut.Resolve(newRequest("1.1.0.127.in-addr.arpa.", PTR))).
+-						Should(
+-							SatisfyAll(
+-								HaveResponseType(ResponseTypeHOSTSFILE),
+-								HaveReturnCode(dns.RcodeSuccess),
+-								WithTransform(ToAnswer, ContainElements(
+-									BeDNSRecord("1.1.0.127.in-addr.arpa.", PTR, "localhost2."),
+-									BeDNSRecord("1.1.0.127.in-addr.arpa.", PTR, "localhost2.local.lan."),
+-								)),
+-							))
+-				})
+-			})
+-		})
+-	})
+-
+-	Describe("Delegating to next resolver", func() {
+-		When("no hosts file is provided", func() {
+-			It("should delegate to next resolver", func() {
+-				_, err := sut.Resolve(newRequest("example.com.", A))
+-				Expect(err).Should(Succeed())
+-				// delegate was executed
+-				m.AssertExpectations(GinkgoT())
+-			})
+-		})
+-	})
+-})
+-
+-func writeHostFile(tmpDir *TmpFolder) *TmpFile {
+-	return tmpDir.CreateStringFile("hosts.txt",
+-		"# Random comment",
+-		"127.0.0.1               localhost",
+-		"127.0.1.1               localhost2  localhost2.local.lan",
+-		"::1                     localhost",
+-		"# Two empty lines to follow",
+-		"",
+-		"",
+-		"faaf:faaf:faaf:faaf::1  ipv6host    ipv6host.local.lan",
+-		"192.168.2.1             ipv4host    ipv4host.local.lan",
+-		"faaf:faaf:faaf:faaf::2  dualhost    dualhost.local.lan",
+-		"192.168.2.2             dualhost    dualhost.local.lan",
+-		"10.0.0.1                router0 router1 router2",
+-		"10.0.0.2                router3     # Another comment",
+-		"10.0.0.3                router4#comment without a space",
+-		"10.0.0.4                            # Invalid entry",
+-		"300.300.300.300         invalid4    # Invalid IPv4",
+-		"abcd:efgh:ijkl::1       invalid6    # Invalid IPv6",
+-		"1.2.3.4                 localhost", // localhost name but not localhost IP
+-
+-		// from https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+-		"fe80::1%lo0             localhost", // interface name
+-	)
+-}
