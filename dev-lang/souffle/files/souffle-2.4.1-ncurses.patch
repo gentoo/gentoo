@@ -1,0 +1,13 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -288,8 +288,8 @@ endif()
+ if (SOUFFLE_USE_CURSES)
+     target_compile_definitions(libsouffle PUBLIC USE_NCURSES)
+     target_compile_definitions(compiled PUBLIC USE_NCURSES)
+-    target_link_libraries(libsouffle PUBLIC Curses::NCurses)
+-    target_link_libraries(compiled PUBLIC Curses::NCurses)
++    target_link_libraries(libsouffle PUBLIC ${CURSES_LIBRARIES})
++    target_link_libraries(compiled PUBLIC ${CURSES_LIBRARIES})
+ endif()
+ 
+ if (SOUFFLE_USE_ZLIB)
