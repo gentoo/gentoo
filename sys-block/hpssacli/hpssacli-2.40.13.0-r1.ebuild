@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,9 +16,8 @@ SRC_URI="
 LICENSE="hpe"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE=""
+RESTRICT="mirror bindist"
 
-DEPEND=""
 RDEPEND="elibc_glibc? ( >sys-libs/glibc-2.14 )
 	>=sys-libs/libunwind-0.99
 	>=sys-process/procps-3.3.6"
