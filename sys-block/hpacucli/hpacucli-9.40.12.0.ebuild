@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,9 +22,8 @@ SRC_URI="
 LICENSE="hp-proliant-essentials"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE=""
+RESTRICT="mirror bindist"
 
-DEPEND=""
 RDEPEND="sys-apps/coreutils
 	sys-process/procps
 	>=sys-apps/util-linux-2.20.1"
