@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake xdg
 
 MY_P="tea-qt-${PV}"
 
@@ -54,6 +54,7 @@ src_prepare() {
 		CMakeLists.txt || die
 	sed -i -e '/Exec/ { s/tea/tea-qt/ }' desktop/tea.desktop || die
 }
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_ASPELL=$(usex aspell)
@@ -67,6 +68,8 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	if [[ "${REPLACING_VERSIONS}" == "47.0.0" ]]; then
 		elog "Executable 'tea' has been renamed to 'tea-qt'"
 	fi
