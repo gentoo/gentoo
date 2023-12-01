@@ -24,9 +24,9 @@ IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	sci-physics/geant:=[c++17,opengl,geant3?]
-	sci-physics/root:=[c++17,-vmc(-)]
-	sci-physics/vmc:=[c++17]
+	sci-physics/geant:=[opengl,geant3?]
+	sci-physics/root:=
+	sci-physics/vmc:=
 	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}
 	test? ( sci-physics/geant:=[gdml] )"
