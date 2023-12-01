@@ -188,6 +188,12 @@ LICENSE+=" Apache-2.0 BSD-2 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64"
 
+DEPEND="
+	media-libs/libv4l:=
+	media-libs/vulkan-loader:=
+"
+RDEPEND="${DEPEND}"
+
 QA_FLAGS_IGNORED="/usr/bin/${PN}"
 
 DOCS=(
