@@ -52,6 +52,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.1-ncurses.patch"
+	"${FILESDIR}/${PN}-2.4.1-threads.patch"
 )
 
 pkg_pretend() {
