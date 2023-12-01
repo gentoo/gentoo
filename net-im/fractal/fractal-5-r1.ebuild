@@ -70,6 +70,11 @@ RDEPEND="
 # Rust
 QA_FLAGS_IGNORED="usr/bin/fractal"
 
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/fractal/-/merge_requests/1462
+	"${FILESDIR}/${P}-secret-service.patch"
+)
+
 src_configure() {
 	meson_src_configure
 	ln -s "${CARGO_HOME}" "${BUILD_DIR}/cargo-home" || die
