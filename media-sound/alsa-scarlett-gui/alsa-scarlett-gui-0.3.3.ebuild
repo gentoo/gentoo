@@ -5,8 +5,7 @@ EAPI=8
 
 DESCRIPTION="A UI for Focusrite Scarlett and Clarett audio interfaces"
 HOMEPAGE="https://github.com/geoffreybennett/alsa-scarlett-gui"
-MY_PV="32c00623676e70572195ef28fd01ab8409b82541"
-SRC_URI="https://github.com/geoffreybennett/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/geoffreybennett/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -20,6 +19,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}-${MY_PV}/src"
+PATCHES=( "${FILESDIR}"/"${P}"-cflags.patch )
+MAKEOPTS="-C src"
 
 export PREFIX="/usr"
