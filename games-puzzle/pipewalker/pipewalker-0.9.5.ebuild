@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Rotating pieces puzzle game"
-HOMEPAGE="https://pipewalker.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pipewalker/${P}.tar.gz"
+HOMEPAGE="https://github.com/artemsen/pipewalker"
+SRC_URI="https://github.com/artemsen/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
