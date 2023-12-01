@@ -5,4 +5,7 @@
 <email>zx2c4@gentoo.org</email>
 <name>Jason A. Donenfeld</name>
 </maintainer>
+<upstream>
+<remote-id type="github">geoffreybennett/alsa-scarlett-gui</remote-id>
+</upstream>
 </pkgmetadata>
