@@ -7,7 +7,7 @@ DESCRIPTION="A set of free reverb effects"
 HOMEPAGE="https://michaelwillis.github.io/dragonfly-reverb/"
 SRC_URI="https://github.com/michaelwillis/dragonfly-reverb/releases/download/${PV}/${PN%-plugins}-${PV}-src.tar.xz"
 
-LICENSE="GPL-3.0"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
