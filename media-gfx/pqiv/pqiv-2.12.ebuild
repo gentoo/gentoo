@@ -11,7 +11,7 @@ SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="archive ffmpeg imagemagick pdf postscript webp"
 
 RDEPEND="
