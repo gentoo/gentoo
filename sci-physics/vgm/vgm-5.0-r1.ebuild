@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,10 +26,10 @@ IUSE="doc examples +geant4 +root test"
 RDEPEND="
 	sci-physics/clhep:=
 	geant4? (
-		>=sci-physics/geant-4.11[c++17]
-		<sci-physics/geant-4.11.1[c++17]
+		>=sci-physics/geant-4.11
+		<sci-physics/geant-4.11.1
 	)
-	root? ( sci-physics/root:=[c++17] )"
+	root? ( sci-physics/root:= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	test? (

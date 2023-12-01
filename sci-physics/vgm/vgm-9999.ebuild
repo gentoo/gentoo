@@ -24,8 +24,8 @@ IUSE="doc examples +geant4 +root test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	geant4? ( sci-physics/geant:=[c++17] )
-	root? ( sci-physics/root:=[c++17] )"
+	geant4? ( sci-physics/geant:= )
+	root? ( sci-physics/root:= )"
 DEPEND="${RDEPEND}
 	test? (
 		sci-physics/geant:=[gdml]
