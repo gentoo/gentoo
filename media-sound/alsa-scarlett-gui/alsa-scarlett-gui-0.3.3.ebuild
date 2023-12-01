@@ -20,6 +20,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/"${P}"-cflags.patch )
-MAKEOPTS="-C src"
+MAKEOPTS="${MAKEOPTS} -C src"
 
 export PREFIX="/usr"
