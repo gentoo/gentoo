@@ -8,7 +8,7 @@ inherit pax-utils unpacker
 PYVER=3.10
 MY_P=pypy3_10-exe-${PV}-1
 
-DESCRIPTION="PyPy3 executable (pre-built version)"
+DESCRIPTION="PyPy3.10 executable (pre-built version)"
 HOMEPAGE="https://www.pypy.org/"
 SRC_URI="
 	elibc_glibc? (
