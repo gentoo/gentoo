@@ -52,6 +52,11 @@ src_configure() {
 	tc-export AR CC RANLIB
 	tc-export_build_env
 
+	# The build incorrectly discards its local -I if $CPPFLAGS is set.
+	if [[ -n ${BUILD_CPPFLAGS} ]]; then
+		BUILD_CPPFLAGS+=' -I$(INCDIR)'
+	fi
+
 	local myeconfargs=(
 		$(use_enable cancel-locks)
 		$(use_with cancel-locks canlock)
