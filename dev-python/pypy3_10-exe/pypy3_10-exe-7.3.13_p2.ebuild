@@ -10,7 +10,7 @@ PYVER=3.10
 MY_P="pypy${PYVER}-v${PYPY_PV/_}"
 PATCHSET="pypy${PYVER}-gentoo-patches-${PV}"
 
-DESCRIPTION="PyPy3 executable (build from source)"
+DESCRIPTION="PyPy3.10 executable (build from source)"
 HOMEPAGE="https://www.pypy.org/"
 SRC_URI="
 	https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
