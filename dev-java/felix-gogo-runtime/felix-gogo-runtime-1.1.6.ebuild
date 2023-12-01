@@ -37,6 +37,8 @@ RDEPEND="${CP_DEPEND}
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-felix )"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/felix.apache.org.asc"
 
+PATCHES=( "${FILESDIR}/${P}-skip-tests-non-java-8.patch" )
+
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_EXCLUDES=(
 	#Invalid test class No runnable methods
@@ -48,17 +50,6 @@ JAVA_TEST_GENTOO_CLASSPATH="
 "
 JAVA_TEST_SRC_DIR="src/test/java"
 
-src_test() {
-	local vm_version="$(java-config -g PROVIDES_VERSION)"
-	if ver_test "${vm_version}" -lt 11; then
-		java-pkg-simple_src_test
-	else
-		# There was 1 failure:
-		# 1) testPipe(org.apache.felix.gogo.runtime.TestParser)
-		# org.junit.ComparisonFailure: expected:<[def]> but was:<[]>
-		#         at org.junit.Assert.assertEquals(Assert.java:117)
-		#         at org.junit.Assert.assertEquals(Assert.java:146)
-		#         at org.apache.felix.gogo.runtime.TestParser.testPipe(TestParser.java:152)
-		einfo "Tests would fail with Java 11 or higher"
-	fi
+src_prepare() {
+	default
 }
