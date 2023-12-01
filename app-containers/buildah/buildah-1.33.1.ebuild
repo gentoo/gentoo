@@ -43,6 +43,9 @@ RDEPEND="
 	sys-apps/shadow:=
 "
 DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/fix-non-amd64-build-1.33.2.patch
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK=""
