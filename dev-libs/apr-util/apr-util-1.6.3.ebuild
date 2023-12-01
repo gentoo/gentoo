@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-my_bool.patch
 	"${FILESDIR}"/${PN}-1.6.1-drop-my_init.patch
 	"${FILESDIR}"/${PN}-1.6.3-fix-pkgconfig-libs.patch
+	"${FILESDIR}"/${PN}-1.6.3-configure-int.patch
 )
 
 src_prepare() {
