@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
 IUSE="libnotify taglib wayland X"
+REQUIRED_USE="|| ( wayland X )"
 
 DEPEND="
 	>=dev-libs/dbus-glib-0.100
