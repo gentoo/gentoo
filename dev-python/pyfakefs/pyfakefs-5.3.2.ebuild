@@ -31,16 +31,6 @@ python_test() {
 		pyfakefs/pytest_tests/segfault_test.py
 	)
 
-	case ${EPYTHON} in
-		python3.12)
-			EPYTEST_DESELECT+=(
-				# happens with pandas + zstandard [cffi backend]
-				# https://github.com/pytest-dev/pyfakefs/issues/910
-				pyfakefs/tests/patched_packages_test.py::TestPatchedPackages::test_read_{csv,table}
-			)
-			;;
-	esac
-
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p pyfakefs.pytest_plugin
 }
