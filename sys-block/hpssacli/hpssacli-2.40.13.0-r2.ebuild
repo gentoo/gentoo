@@ -58,5 +58,5 @@ src_install() {
 
 	dodoc "${DOCS[@]}"
 
-	pax-mark m "${D%/}${HPSSACLI_BASEDIR}"/*.bin
+	pax-mark m "${D}${HPSSACLI_BASEDIR}"/*.bin
 }
