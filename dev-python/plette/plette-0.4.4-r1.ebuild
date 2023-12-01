@@ -13,6 +13,8 @@ HOMEPAGE="
 	https://github.com/sarugaku/plette
 	https://pypi.org/project/plette/
 "
+# pypi tarballs are missing test data
+SRC_URI="https://github.com/sarugaku/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
