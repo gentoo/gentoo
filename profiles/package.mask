@@ -1,37 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-####################################################################
-#
-# When you add an entry to the top of this file, add your name, the date
-# in the UTC timezone with a format of YYYY-MM-DD, and an explanation of why
-# something is getting masked.
-# Please be extremely careful not to commit atoms that are not valid, as it can
-# cause large-scale breakage, especially if it ends up in the daily snapshot.
-#
-## Example:
-##
-## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
-## # Masking  these versions until we can get the
-## # v4l stuff to work properly again
-## =media-video/mplayer-0.90_pre5
-## =media-video/mplayer-0.90_pre5-r1
-#
-# - Best last rites (removal) practices -
-# Include the following info:
-# a) reason for masking
-# b) bug # for the removal (and yes you should have one)
-# c) date of removal (either the date or "in x days")
-#
-## Example:
-##
-## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
-## # Masked for removal in 30 days.  Doesn't work
-## # with new libfoo. Upstream dead, gtk-1, smells
-## # funny. (bug #987654)
-## app-misc/some-package
-
-#--- END OF EXAMPLES ---
+# Uses GLEP 84 format
 
 # Michał Górny <mgorny@gentoo.org> (2023-11-30)
 # Last commit in 2020.  It was used exclusively by dev-python/ipython,
