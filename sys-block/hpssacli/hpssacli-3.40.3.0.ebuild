@@ -1,11 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit pax-utils rpm versionator
+inherit pax-utils rpm
 
-MY_PV=$(replace_version_separator 2 '-')
+MY_PV=$(ver_rs 2 '-')
 
 DESCRIPTION="HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)"
 HOMEPAGE="https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_688838b13b194c7abe1aa98584"
