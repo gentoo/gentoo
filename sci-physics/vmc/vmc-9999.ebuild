@@ -20,11 +20,9 @@ HOMEPAGE="https://vmc-project.github.io/ https://github.com/vmc-project/vmc"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="c++14 +c++17 doc"
+IUSE="doc"
 
-REQUIRED_USE="^^ ( c++14 c++17 )"
-
-RDEPEND="sci-physics/root:=[c++14?,c++17?,-vmc(-)]"
+RDEPEND="sci-physics/root:="
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
