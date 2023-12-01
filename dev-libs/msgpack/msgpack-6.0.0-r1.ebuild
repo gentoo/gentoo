@@ -18,7 +18,7 @@ LICENSE="Boost-1.0"
 # has all the same problems a new SONAME would have.
 # See https://github.com/msgpack/msgpack-c/pull/1053.
 SLOT="0/2-c"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc examples test"
 
 RESTRICT="!test? ( test )"
