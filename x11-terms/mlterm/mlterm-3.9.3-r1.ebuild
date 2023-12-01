@@ -25,7 +25,7 @@ RDEPEND="virtual/libcrypt:=
 	brltty? ( app-accessibility/brltty[api(+)] )
 	cairo? ( x11-libs/cairo[X(+)] )
 	fbcon? ( media-fonts/unifont )
-	fcitx? ( app-i18n/fcitx )
+	fcitx? ( app-i18n/fcitx:* )
 	freewnn? ( app-i18n/freewnn )
 	gtk? ( x11-libs/gtk+:3 )
 	harfbuzz? ( media-libs/harfbuzz[truetype(+)] )
