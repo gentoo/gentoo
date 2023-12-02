@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">samuelcolvin/dirty-equals</remote-id>
 		<remote-id type="pypi">dirty-equals</remote-id>
