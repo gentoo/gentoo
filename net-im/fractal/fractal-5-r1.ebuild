@@ -65,6 +65,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	virtual/secret-service
 "
 
 # Rust
