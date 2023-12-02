@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..12} )
 
 inherit distutils-r1
 
-DESCRIPTION="A library to parse gdb mi output and interact with gdb subprocesses"
+DESCRIPTION="Library to parse gdb mi output and interact with gdb subprocesses"
 HOMEPAGE="
 	https://cs01.github.io/pygdbmi/
 	https://github.com/cs01/pygdbmi/
