@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple syntax for lexical field-based objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	>=dev-perl/XS-Parse-Keyword-0.370.0
