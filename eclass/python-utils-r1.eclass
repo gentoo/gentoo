@@ -1336,15 +1336,8 @@ epytest() {
 	_python_check_EPYTHON
 	_python_check_occluded_packages
 
-	local color
-	case ${NOCOLOR} in
-		true|yes)
-			color=no
-			;;
-		*)
-			color=yes
-			;;
-	esac
+	local color=yes
+	[[ ${NO_COLOR} ]] && color=no
 
 	local args=(
 		# verbose progress reporting and tracebacks
