@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
+# Needs dev-qt/qtwebengine:6 which has very few keywords.
+dev-python/PyQt6 pdfium
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
 # media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
 # are only available for amd64 and riscv
