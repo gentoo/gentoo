@@ -1,0 +1,32 @@
+https://src.fedoraproject.org/rpms/bash/blob/bd5ac20b134f2936c54245fc83a8e70207d3e07e/f/bash-configure-c99-2.patch
+
+Another C compatibility issue: char ** and char * are distinct types,
+and strtold expects the former for its second argument.
+
+Submitted upstream:
+
+  <https://lists.gnu.org/archive/html/bug-bash/2023-11/msg00104.html>
+
+--- configure.ac
++++ configure.ac
+@@ -885,7 +885,7 @@ AC_CHECK_DECLS([strtold], [
+ 	[AC_COMPILE_IFELSE(
+ 		[AC_LANG_PROGRAM(
+ 		[[#include <stdlib.h>]],
+-		[[long double r; char *foo, bar; r = strtold(foo, &bar);]]
++		[[long double r; char *foo, *bar; r = strtold(foo, &bar);]]
+ 	)],
+ 	[bash_cv_strtold_broken=no],[bash_cv_strtold_broken=yes])
+         ]
+
+--- configure
++++ configure
+@@ -15676,7 +15676,7 @@ else $as_nop
+ int
+ main (void)
+ {
+-long double r; char *foo, bar; r = strtold(foo, &bar);
++long double r; char *foo, *bar; r = strtold(foo, &bar);
+ 
+   ;
+   return 0;
