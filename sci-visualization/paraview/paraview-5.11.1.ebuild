@@ -135,8 +135,10 @@ src_configure() {
 	# Needed to compile bundled VTK in ParaView 5.11.1 with gcc 12
 	# see also, bug #863299
 	filter-lto
-	append-cflags $(test-flags-CC -fno-strict-aliasing -Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
-	append-cxxflags $(test-flags-CXX -fno-strict-aliasing -Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
+	append-cflags $(test-flags-CC -fno-strict-aliasing \
+		-Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
+	append-cxxflags $(test-flags-CXX -fno-strict-aliasing \
+		-Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
 
 	# Make sure qmlplugindump is in path:
 	export PATH="$(qt5_get_bindir):${PATH}"
