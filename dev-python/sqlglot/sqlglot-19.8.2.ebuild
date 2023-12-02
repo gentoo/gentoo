@@ -31,6 +31,12 @@ EPYTEST_IGNORE=(
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# remove fragile timing check
+	sed -i -e '/assertLessEqual(time\.time/d' tests/test_parser.py || die
+	distutils-r1_src_prepare
+}
+
 pkg_postinst() {
 	optfeature "simplifying timedelta expressions" dev-python/python-dateutil
 }
