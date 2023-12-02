@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="activities fits +mpris raw semantic-desktop share X"
 
 # requires running environment
@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	>=media-libs/phonon-4.11.0
 	media-libs/tiff:=
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	fits? ( sci-libs/cfitsio )
 	mpris? ( >=dev-qt/qtdbus-${QTMIN}:5 )
 	raw? ( >=kde-apps/libkdcraw-${PVCUT}:5 )

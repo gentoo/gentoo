@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org xdg-utils
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="dbus fam"
 
 DEPEND="
@@ -34,10 +34,10 @@ src_configure() {
 }
 
 src_test() {
-	# bugs: 619656, 632398, 647414, 665682
+	# bugs: 619656, 632398, 647414, 665682, 917244 (fails upstream as well)
 	local myctestargs=(
 		-j1
-		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest|kdirwatch_stat_unittest|kformattest)"
+		-E "(kautosavefiletest|kdirwatch_qfswatch_unittest|kdirwatch_stat_unittest|kformattest|kpluginloadertest)"
 	)
 
 	ecm_src_test

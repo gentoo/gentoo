@@ -20,6 +20,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">pickleshare</remote-id>
-    <remote-id type="github">pickleshare/pickleshare</remote-id>
+    <remote-id type="github">ipython/pickleshare</remote-id>
   </upstream>
 </pkgmetadata>

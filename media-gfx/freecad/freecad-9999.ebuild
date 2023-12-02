@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
@@ -26,7 +26,7 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui test"
+IUSE="debug designer +gui qt6 test"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
@@ -50,11 +50,16 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/libspnav[X]
 	dev-libs/xerces-c[icu]
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtxml:5
-	dev-qt/qtxmlpatterns:5
+	!qt6? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qtcore:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtxml:5
+		dev-qt/qtxmlpatterns:5
+	)
+	qt6? (
+		dev-qt/qtbase:6[concurrent,network,xml]
+	)
 	media-libs/freetype
 	media-libs/qhull:=
 	sci-libs/hdf5:=[fortran,zlib]
@@ -67,25 +72,42 @@ RDEPEND="
 		dev-libs/openssl:=
 		net-misc/curl
 	)
-	fem? ( sci-libs/vtk:=[qt5,rendering] )
+	fem? (
+		!qt6? ( sci-libs/vtk:=[qt5,rendering] )
+		qt6? ( sci-libs/vtk:=[-qt5,qt6,rendering] )
+	)
 	gui? (
-		dev-qt/designer:5
-		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwebengine:5[widgets]
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
 		>=media-libs/coin-4.0.0
 		virtual/glu
 		virtual/opengl
-		$(python_gen_cond_dep '
-			dev-python/matplotlib[${PYTHON_USEDEP}]
-			>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-			dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
-			dev-python/shiboken2[${PYTHON_USEDEP}]
-		')
+		!qt6? (
+			designer? ( dev-qt/designer:5 )
+			dev-qt/qtgui:5
+			dev-qt/qtopengl:5
+			dev-qt/qtprintsupport:5
+			dev-qt/qtsvg:5
+			dev-qt/qtwebengine:5[widgets]
+			dev-qt/qtwidgets:5
+			dev-qt/qtx11extras:5
+			$(python_gen_cond_dep '
+				dev-python/matplotlib[${PYTHON_USEDEP}]
+				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
+				dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+				dev-python/shiboken2[${PYTHON_USEDEP}]
+			' python3_{10..11} )
+		)
+		qt6? (
+			designer? ( dev-qt/qttools:6[designer] )
+			dev-qt/qtbase:6[gui,opengl,widgets]
+			dev-qt/qtsvg:6
+			dev-qt/qtwebengine:6[widgets]
+			$(python_gen_cond_dep '
+				dev-python/matplotlib[${PYTHON_USEDEP}]
+				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
+				dev-python/pyside6[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+				dev-python/shiboken6[${PYTHON_USEDEP}]
+			' )
+		)
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
@@ -102,7 +124,7 @@ DEPEND="
 	>=dev-cpp/eigen-3.3.1:3
 	test? (
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
-		dev-qt/qttest:5
+		!qt6? ( dev-qt/qttest:5 )
 	)
 "
 BDEPEND="
@@ -110,7 +132,7 @@ BDEPEND="
 	dev-lang/swig
 	test? (
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
-		dev-qt/qttest:5
+		!qt6? ( dev-qt/qttest:5 )
 	)
 "
 
@@ -132,7 +154,9 @@ REQUIRED_USE="
 	designer? ( gui )
 	inspection? ( points )
 	path? ( robot )
+	python_single_target_python3_12? ( gui? ( qt6 ) )
 "
+# There is no py3.12 support planned for pyside2
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
@@ -189,7 +213,6 @@ src_configure() {
 		-DBUILD_PART_DESIGN=$(usex part-design)
 		-DBUILD_PATH=$(usex path)
 		-DBUILD_POINTS=$(usex points)
-		-DBUILD_QT5=ON							# OFF means to use Qt4
 		-DBUILD_RAYTRACING=$(usex raytracing)
 		-DBUILD_REVERSEENGINEERING=OFF			# currently only an empty sandbox
 		-DBUILD_ROBOT=$(usex robot)
@@ -212,8 +235,6 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX=/usr/$(get_libdir)/${PN}
 
 		-DFREECAD_BUILD_DEBIAN=OFF
-
-		-DFREECAD_QT_VERSION="5"
 
 		-DFREECAD_USE_EXTERNAL_KDL=ON
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
@@ -248,6 +269,20 @@ src_configure() {
 		)
 	fi
 
+	if use qt6; then
+		mycmakeargs+=(
+			-DFREECAD_QT_VERSION=6
+			-DQT_DEFAULT_MAJOR_VERSION=6
+			-DBUILD_QT5=OFF
+		)
+	else
+		mycmakeargs+=(
+			-DFREECAD_QT_VERSION=5
+			-DQT_DEFAULT_MAJOR_VERSION=5
+			-DBUILD_QT5=ON
+		)
+	fi
+
 	cmake_src_configure
 }
 
@@ -274,7 +309,13 @@ src_install() {
 	dobin src/Tools/freecad-thumbnailer
 
 	if use gui; then
-		dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
+		newbin - freecad <<- _EOF_
+		#!/bin/sh
+		# https://github.com/coin3d/coin/issues/451
+		: \${QT_QPA_PLATFORM:=xcb}
+		export QT_QPA_PLATFORM
+		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD
+		_EOF_
 		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi
 	dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd

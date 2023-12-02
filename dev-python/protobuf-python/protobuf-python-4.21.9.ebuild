@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -66,6 +66,10 @@ python_prepare_all() {
 	[[ -n "${PARENT_PATCHES[@]}" ]] && eapply "${PARENT_PATCHES[@]}"
 	eapply_user
 	popd > /dev/null || die
+
+	# py3.12
+	sed -i -e 's:assertRaisesRegexp:assertRaisesRegex:' \
+		google/protobuf/internal/json_format_test.py || die
 
 	distutils-r1_python_prepare_all
 }

@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	inherit pypi
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 arm64 ~x86"
 fi
 
 DESCRIPTION="Continuation of the official Python API client for Discogs"

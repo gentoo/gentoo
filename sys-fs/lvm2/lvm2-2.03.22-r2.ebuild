@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN^^}.${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="lvm readline sanlock selinux static static-libs systemd thin +udev valgrind"
 REQUIRED_USE="
 	static? ( !systemd !udev )
@@ -204,7 +204,9 @@ src_install() {
 	else
 		targets+=( install_device-mapper )
 	fi
-	emake V=1 DESTDIR="${D}" "${targets[@]}"
+
+	# -j1 for bug #918125
+	emake -j1 V=1 DESTDIR="${D}" "${targets[@]}"
 
 	newinitd "${FILESDIR}"/device-mapper.rc-r3 device-mapper
 	newconfd "${FILESDIR}"/device-mapper.conf-r4 device-mapper

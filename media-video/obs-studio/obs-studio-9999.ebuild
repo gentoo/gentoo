@@ -9,10 +9,10 @@ PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake lua-single optfeature python-single-r1 xdg
 
-CEF_DIR="cef_binary_5060_linux64"
-OBS_BROWSER_COMMIT="e397df52e70392ebb9146e0ab6317c0d1a30bce4"
+CEF_DIR="cef_binary_5060_linux_x86_64"
+CEF_REVISION="_v3"
+OBS_BROWSER_COMMIT="2ba72dbdfed60acd38fa1ac7a52cbc6617ae8fd1"
 OBS_WEBSOCKET_COMMIT="4ff109b62bc221192943541010d055be9ae5dbba"
-QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -29,7 +29,7 @@ else
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
-SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}.tar.bz2 )"
+SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
@@ -131,6 +131,7 @@ DEPEND="
 		dev-cpp/asio
 		dev-cpp/nlohmann_json
 		dev-cpp/websocketpp
+		dev-libs/qr-code-generator
 	)
 "
 RDEPEND="${DEPEND}"

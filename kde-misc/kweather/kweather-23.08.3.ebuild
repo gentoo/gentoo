@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kweather/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 x86"
 
 DEPEND="
 	>=dev-libs/kirigami-addons-0.6:5
@@ -32,7 +32,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5

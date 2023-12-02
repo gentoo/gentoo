@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kalgebra/ https://edu.kde.org/kalgebra/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE="readline"
 
 DEPEND="
@@ -31,7 +31,7 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	readline? ( sys-libs/readline:0= )
 "
 RDEPEND="${DEPEND}

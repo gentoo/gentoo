@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="dev-haskell/cereal:=[profile?]
 	>=dev-haskell/crypto-api-0.13:=[profile?]
 	dev-haskell/hunit:=[profile?]
-	>=dev-haskell/quickcheck-2.4:2=[profile?]
+	>=dev-haskell/quickcheck-2.4:=[profile?]
 	>=dev-haskell/test-framework-0.4:=[profile?]
 	>=dev-haskell/test-framework-hunit-0.2:=[profile?]
 	>=dev-haskell/test-framework-quickcheck2-0.3:=[profile?]

@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
+# Vulkan is not available here
+media-video/ffmpeg glslang shaderc vulkan
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-22)
 # This is not ISDN CAPI, so unmask it.
 media-video/rav1e -capi

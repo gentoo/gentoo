@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 # py3.12: https://github.com/pydata/patsy/issues/196
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( pypy3 python3_{10..11} )
 
 inherit distutils-r1 pypi
 

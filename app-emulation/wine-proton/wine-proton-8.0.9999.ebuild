@@ -66,6 +66,7 @@ WINE_COMMON_DEPEND="
 	sys-devel/gcc:*
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libdrm[video_cards_amdgpu,${MULTILIB_USEDEP}]
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	gstreamer? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
@@ -115,8 +116,8 @@ QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-musl.patch
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
-	"${FILESDIR}"/${PN}-7.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
+	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
 )
 
 pkg_pretend() {

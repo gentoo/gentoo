@@ -6,7 +6,7 @@ EAPI=8
 FORTRAN_NEEDED=fortran
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit fortran-2 distutils-r1 multiprocessing
@@ -38,7 +38,7 @@ else
 		)"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
+		KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv ~sparc x86"
 	fi
 fi
 
@@ -110,6 +110,12 @@ python_test() {
 		# Crashes with assertion, not a regression
 		# https://github.com/scipy/scipy/issues/19321
 		scipy/signal/tests/test_signaltools.py::test_lfilter_bad_object
+
+		# timeouts
+		scipy/sparse/linalg/tests/test_propack.py::test_examples
+		# hang or incredibly slow
+		scipy/optimize/tests/test_lsq_linear.py::TestBVLS::test_large_rank_deficient
+		scipy/optimize/tests/test_lsq_linear.py::TestTRF::test_large_rank_deficient
 	)
 	local EPYTEST_IGNORE=()
 
@@ -118,6 +124,18 @@ python_test() {
 			scipy/datasets/tests/test_data.py
 		)
 	fi
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# fd leaks in tests
+				# https://github.com/scipy/scipy/issues/19553
+				scipy/fft/_pocketfft/tests/test_real_transforms.py
+				# TODO
+				'scipy/special/tests/test_data.py::test_boost[<Data for expi: expinti_data_long_ipp-expinti_data_long>]'
+			)
+			;;
+	esac
 
 	epytest -n "$(makeopts_jobs)" --dist=worksteal scipy
 }

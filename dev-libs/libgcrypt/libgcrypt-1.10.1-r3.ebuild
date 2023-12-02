@@ -160,6 +160,14 @@ multilib_src_compile() {
 	multilib_is_native_abi && use doc && VARTEXFONTS="${T}/fonts" emake -C doc gcrypt.pdf
 }
 
+multilib_src_test() {
+	# t-secmem and t-sexp need mlock which requires extra privileges; nspawn
+	# at least disallows that by default.
+	local -x GCRYPT_IN_ASAN_TEST=1
+
+	default
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 	multilib_is_native_abi && use doc && dodoc doc/gcrypt.pdf

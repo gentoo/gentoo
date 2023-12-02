@@ -13,7 +13,7 @@ DESCRIPTION="Concise Binary Object Representation (CBOR, RFC7049)"
 # License note: see bottom of ecb.h license block
 LICENSE="GPL-3 || ( GPL-2+ BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	dev-perl/Types-Serialiser

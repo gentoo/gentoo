@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND="dev-haskell/ansi-terminal:=[profile?]
 	dev-haskell/call-stack:=[profile?]
 	dev-haskell/clock:=[profile?]
-	>=dev-haskell/quickcheck-2.12:2=[profile?]
+	>=dev-haskell/quickcheck-2.12:=[profile?]
 	dev-haskell/quickcheck-io:=[profile?]
 	dev-haskell/random:=[profile?]
 	dev-haskell/setenv:=[profile?]

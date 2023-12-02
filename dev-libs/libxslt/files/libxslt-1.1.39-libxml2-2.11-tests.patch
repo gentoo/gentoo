@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/918973
+https://gitlab.gnome.org/GNOME/libxslt/-/issues/99
+https://gitlab.gnome.org/GNOME/libxslt/-/commit/86ec392efd75ce24b79f4baa9822a1b088f3e47f
+
+From 86ec392efd75ce24b79f4baa9822a1b088f3e47f Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Fri, 1 Dec 2023 21:05:19 +0100
+Subject: [PATCH] tests: Fix build with older libxml2
+
+Fixes #99.
+--- a/tests/runtest.c
++++ b/tests/runtest.c
+@@ -456,7 +456,8 @@ initializeLibxml2(void) {
+     xmlSetExternalEntityLoader(xmlNoNetExternalEntityLoader);
+     xmlSetGenericErrorFunc(NULL, testErrorHandler);
+     xsltSetGenericErrorFunc(NULL, testErrorHandler);
+-    xmlSetStructuredErrorFunc(NULL, testStructuredErrorHandler);
++    xmlSetStructuredErrorFunc(NULL,
++            (xmlStructuredErrorFunc) testStructuredErrorHandler);
+     exsltRegisterAll();
+     xsltRegisterTestModule();
+     xsltMaxDepth = 200;
+-- 
+GitLab

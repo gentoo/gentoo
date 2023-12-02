@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/krfb/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="wayland"
 
 COMMON_DEPEND="
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 			>=dev-qt/qtgui-${QTMIN}:5[X]
 		)
 		>=dev-qt/qtwayland-${QTMIN}:5
-		>=kde-frameworks/kwayland-${KFMIN}:5
+		>=kde-plasma/kwayland-${KFMIN}:5
 		kde-plasma/kpipewire:5
 	)
 "

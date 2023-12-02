@@ -52,7 +52,7 @@ esac
 if [[ -z ${_GOLANG_VCS_SNAPSHOT_ECLASS} ]]; then
 _GOLANG_VCS_SNAPSHOT_ECLASS=1
 
-inherit golang-base
+inherit golang-base go-env
 
 # @ECLASS_VARIABLE: EGO_VENDOR
 # @DESCRIPTION:
@@ -92,6 +92,7 @@ _golang-vcs-snapshot_dovendor() {
 # @FUNCTION: golang-vcs-snapshot_src_unpack
 # @DESCRIPTION:
 # Extract the first archive from ${A} to the appropriate location for GOPATH.
+# Set compile env via go-env.
 golang-vcs-snapshot_src_unpack() {
 	local lib vendor_path x
 	ego_pn_check
@@ -117,6 +118,8 @@ golang-vcs-snapshot_src_unpack() {
 			fi
 		done
 	fi
+
+	go-env_set_compile_environment
 }
 
 fi

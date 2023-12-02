@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/graphics/colord-kde"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="X"
 
 COMMON_DEPEND="
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X=]
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-libs/kirigami-addons:5
@@ -48,9 +48,11 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/colord
 "
 
+PATCHES=( "${FILESDIR}/${P}-without_x11.patch" )
+
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package X X11)
+		-DWITHOUT_X11=$(usex !X)
 	)
 	ecm_src_configure
 }

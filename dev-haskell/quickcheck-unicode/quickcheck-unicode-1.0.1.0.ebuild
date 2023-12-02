@@ -15,7 +15,7 @@ LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
-RDEPEND=">=dev-haskell/quickcheck-2.7:2=[profile?]
+RDEPEND=">=dev-haskell/quickcheck-2.7:=[profile?]
 	>=dev-lang/ghc-8.10.6:=
 "
 DEPEND="${RDEPEND}

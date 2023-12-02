@@ -14,7 +14,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
-IUSE="gtk-doc test"
+IUSE="gtk-doc selinux test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
@@ -25,6 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/libgudev-234
 	>=sys-auth/polkit-0.114
 	sys-power/upower
+	selinux? ( sec-policy/selinux-powerprofiles )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

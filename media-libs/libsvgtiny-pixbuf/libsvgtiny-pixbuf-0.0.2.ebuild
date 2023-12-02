@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="Add SVG support to GTK without librsvg"
-HOMEPAGE="http://michael.orlitzky.com/code/libsvgtiny-pixbuf.xhtml"
-SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.xz"
+HOMEPAGE="https://michael.orlitzky.com/code/libsvgtiny-pixbuf.xhtml"
+SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"

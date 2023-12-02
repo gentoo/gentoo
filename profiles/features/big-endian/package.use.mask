@@ -1,6 +1,17 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# media-libs/libaom casualties
+# https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
+media-video/ffmpeg libaom
+www-client/firefox system-av1
+www-client/seamonkey system-av1
+media-video/vlc aom
+media-libs/libheif aom
+media-libs/libavif aom
+mail-client/thunderbird system-av1
+
 # matoro <matoro_gentoo@matoro.tk> (2023-04-11)
 # dev-libs/weston casualties (#833010)
 # https://gitlab.freedesktop.org/wayland/weston/-/issues/739

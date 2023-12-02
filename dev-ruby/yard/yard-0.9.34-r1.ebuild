@@ -32,7 +32,7 @@ PATCHES=( "${FILESDIR}/${P}-beginless-range.patch" )
 
 ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/kramdown ) )"
 
-ruby_add_bdepend "test? ( dev-ruby/rack:2.2 >=dev-ruby/rspec-3.11.0 )"
+ruby_add_bdepend "test? ( dev-ruby/rack:2.2 >=dev-ruby/rspec-3.11.0 dev-ruby/webrick )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' -e '3igem "rack", "~> 2.2.0"' spec/spec_helper.rb || die

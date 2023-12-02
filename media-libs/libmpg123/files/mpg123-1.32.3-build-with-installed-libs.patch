@@ -1,0 +1,252 @@
+build: allow building with installed libmpg123 libsyn123 libout123
+
+From: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+
+Upstream PR: https://github.com/madebr/mpg123/pull/11
+Bug: https://bugs.gentoo.org/915858
+---
+ Makefile.am                 |   18 +++++++++++++++---
+ configure.ac                |   33 +++++++++++++++++++++++----------
+ libmpg123.pc.in             |    2 +-
+ libout123.pc.in             |    2 +-
+ libsyn123.pc.in             |    2 +-
+ src/Makemodule.am           |   30 +++++++++++++++++++++++-------
+ src/libmpg123/Makemodule.am |    2 +-
+ src/libout123/Makemodule.am |    2 +-
+ src/libsyn123/Makemodule.am |    2 +-
+ 9 files changed, 67 insertions(+), 26 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 5b58dc4d..be3bfed0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -37,13 +37,25 @@ AM_CPPFLAGS = -DPKGLIBDIR="\"$(pkglibdir)\""
+ AM_CPPFLAGS += \
+   $(LTDLINCL) \
+   -I$(top_srcdir)/src \
+-  -I$(top_srcdir)/src/compat \
++  -I$(top_srcdir)/src/compat
++
++if BUILD_LIBMPG123
++AM_CPPFLAGS += \
+   -I$(top_srcdir)/src/libmpg123 \
++  -I$(top_builddir)/src/libmpg123
++endif
++
++if BUILD_LIBSYN123
++AM_CPPFLAGS += \
+   -I$(top_srcdir)/src/libsyn123 \
++  -I$(top_builddir)/src/libsyn123
++endif
++
++if BUILD_LIBOUT123
++AM_CPPFLAGS += \
+   -I$(top_srcdir)/src/libout123 \
+-  -I$(top_builddir)/src/libmpg123 \
+-  -I$(top_builddir)/src/libsyn123 \
+   -I$(top_builddir)/src/libout123
++endif
+ 
+ # Include Make modules from subdirectories.
+ include src/Makemodule.am
+diff --git a/configure.ac b/configure.ac
+index db37ff9b..d782dbe5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -472,7 +472,7 @@ AM_CONDITIONAL([BUILD_LIBSYN123], [ test "x$build_libsyn123" = xyes ])
+ AM_CONDITIONAL([NEED_FMT123], [ test "x$build_libmpg123" = xyes || test "x$build_libout123" = xyes || test "x$build_libsyn123" = xyes ])
+ # If we install libraries, prompting pkgconfig and include directories.
+ AM_CONDITIONAL([NEED_LIB], [ test "x$build_libmpg123" = xyes || test "x$build_libout123" = xyes || test "x$build_libout123_modules" = xyes || test "x$build_libsyn123" = xyes ])
+-AM_CONDITIONAL([NEED_MAINLIB], [ test "x$build_libmpg123" = xyes || test "x$build_libout123" = xyes || test "x$build_libsyn123" = xyes ])
++AM_CONDITIONAL([NEED_MAINLIB], [ test "x$build_libmpg123" = xyes || test "x$build_libout123" = xyes || test "x$build_libsyn123" = xyes || test "x$build_programs" = xyes ])
+ 
+ 
+ if test "x$build_libmpg123" = xyes; then
+@@ -2911,15 +2911,28 @@ dnl ############## Library cleanup
+ 
+ PROG_LIBS=$LIBS
+ LIBS=
+-LIBMPG123_LIBS="$LIBM $COMPAT_LIBS"
+-LIBSYN123_LIBS=$LIBM
+-LIBOUT123_LIBS="$LIBRT $LIBM $COMPAT_LIBS"
++
++if test "x$build_libmpg123" = xyes; then
++  LIBMPG123_DEP_LIBS="$LIBM $COMPAT_LIBS"
++else
++  PKG_CHECK_MODULES(LIBMPG123, libmpg123, HAVE_LIBMPG123="yes", HAVE_LIBMPG123="no" check_failed=yes)
++fi
++if test "x$build_libsyn123" = xyes; then
++  LIBSYN123_DEP_LIBS=$LIBM
++else
++  PKG_CHECK_MODULES(LIBSYN123, libsyn123, HAVE_LIBSYN123="yes", HAVE_LIBSYN123="no" check_failed=yes)
++fi
++if test "x$build_libout123" = xyes; then
++  LIBOUT123_DEP_LIBS="$LIBRT $LIBM $COMPAT_LIBS"
++else
++  PKG_CHECK_MODULES(LIBOUT123, libout123, HAVE_LIBOUT123="yes", HAVE_LIBOUT123="no" check_failed=yes)
++fi
+ 
+ AC_SUBST(PROG_LIBS)
+ AC_SUBST(LIBM)
+-AC_SUBST(LIBMPG123_LIBS)
+-AC_SUBST(LIBSYN123_LIBS)
+-AC_SUBST(LIBOUT123_LIBS)
++AC_SUBST(LIBMPG123_DEP_LIBS)
++AC_SUBST(LIBSYN123_DEP_LIBS)
++AC_SUBST(LIBOUT123_DEP_LIBS)
+ 
+ dnl ############## Final Output
+ 
+@@ -3034,8 +3047,8 @@ echo "  CFLAGS='$CFLAGS'"
+ echo "  PROG_LIBS='$PROG_LIBS'"
+ echo "       (derived from LIBS, only used for end-user binaries and modules)"
+ echo "  LIBDL='$LIBDL'"
+-echo "  LIBMPG123_LIBS='$LIBMPG123_LIBS'"
+-echo "  LIBSYN123_LIBS='$LIBSYN123_LIBS'"
+-echo "  LIBOUT123_LIBS='$LIBOUT123_LIBS'"
++echo "  LIBMPG123_DEP_LIBS='$LIBMPG123_DEP_LIBS'"
++echo "  LIBSYN123_DEP_LIBS='$LIBSYN123_DEP_LIBS'"
++echo "  LIBOUT123_DEP_LIBS='$LIBOUT123_DEP_LIBS'"
+ echo
+ echo "Next type 'make' and then 'make install'."
+diff --git a/libmpg123.pc.in b/libmpg123.pc.in
+index a8f692eb..c980a8c5 100644
+--- a/libmpg123.pc.in
++++ b/libmpg123.pc.in
+@@ -8,5 +8,5 @@ Description: An optimised MPEG Audio decoder
+ Requires: 
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lmpg123 
+-Libs.private: @LIBMPG123_LIBS@
++Libs.private: @LIBMPG123_DEP_LIBS@
+ Cflags: -I${includedir} 
+diff --git a/libout123.pc.in b/libout123.pc.in
+index fc4713f3..2c09778c 100644
+--- a/libout123.pc.in
++++ b/libout123.pc.in
+@@ -8,5 +8,5 @@ Description: A streaming audio output API derived from mpg123
+ Requires: 
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lout123 
+-Libs.private: @LIBOUT123_LIBS@ @LIBDL@
++Libs.private: @LIBOUT123_DEP_LIBS@ @LIBDL@
+ Cflags: -I${includedir} 
+diff --git a/libsyn123.pc.in b/libsyn123.pc.in
+index 7e4ce2ed..60d0a572 100644
+--- a/libsyn123.pc.in
++++ b/libsyn123.pc.in
+@@ -8,5 +8,5 @@ Description: A signal synthesis library accompanying mpg123
+ Requires: 
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lsyn123 
+-Libs.private: @LIBSYN123_LIBS@
++Libs.private: @LIBSYN123_DEP_LIBS@
+ Cflags: -I${includedir} 
+diff --git a/src/Makemodule.am b/src/Makemodule.am
+index b894a8aa..14dc8667 100644
+--- a/src/Makemodule.am
++++ b/src/Makemodule.am
+@@ -3,10 +3,26 @@
+ include src/tests/Makemodule.am
+ include src/compat/Makemodule.am
+ if NEED_LIB
++if BUILD_LIBOUT123
+ include src/libout123/Makemodule.am
++LIBOUT123_LINK_LIBS = src/libout123/libout123.la
++else
++LIBOUT123_LINK_LIBS = @LIBOUT123_LIBS@
++endif
+ if NEED_MAINLIB
++if BUILD_LIBMPG123
+ include src/libmpg123/Makemodule.am
++LIBMPG123_LINK_LIBS = src/libmpg123/libmpg123.la
++else
++LIBMPG123_LINK_LIBS = @LIBMPG123_LIBS@
++endif
++
++if BUILD_LIBSYN123
+ include src/libsyn123/Makemodule.am
++LIBSYN123_LINK_LIBS = src/libsyn123/libsyn123.la
++else
++LIBSYN123_LINK_LIBS = @LIBSYN123_LIBS@
++endif
+ endif
+ endif
+ 
+@@ -22,17 +38,17 @@ endif
+ 
+ src_mpg123_LDADD = \
+   src/compat/libcompat.la \
+-  src/libmpg123/libmpg123.la \
+-  src/libout123/libout123.la \
+-  src/libsyn123/libsyn123.la \
++  ${LIBMPG123_LINK_LIBS} \
++  ${LIBOUT123_LINK_LIBS} \
++  ${LIBSYN123_LINK_LIBS} \
+   @PROG_LIBS@
+ 
+ src_mpg123_LDFLAGS = @EXEC_LT_LDFLAGS@
+ 
+ src_out123_LDADD = \
+   src/compat/libcompat.la \
+-  src/libsyn123/libsyn123.la \
+-  src/libout123/libout123.la \
++  ${LIBSYN123_LINK_LIBS} \
++  ${LIBOUT123_LINK_LIBS} \
+   @PROG_LIBS@
+ 
+ src_out123_LDFLAGS = @EXEC_LT_LDFLAGS@
+@@ -46,12 +62,12 @@ CLEANFILES += src/*.a
+ 
+ src_mpg123_id3dump_LDADD = \
+   src/compat/libcompat.la \
+-  src/libmpg123/libmpg123.la \
++  ${LIBMPG123_LINK_LIBS} \
+   @PROG_LIBS@
+ 
+ src_mpg123_strip_LDADD = \
+   src/compat/libcompat.la \
+-  src/libmpg123/libmpg123.la \
++  ${LIBMPG123_LINK_LIBS} \
+   @PROG_LIBS@
+ 
+ src_mpg123_SOURCES = \
+diff --git a/src/libmpg123/Makemodule.am b/src/libmpg123/Makemodule.am
+index 48e3820f..7c64ea68 100644
+--- a/src/libmpg123/Makemodule.am
++++ b/src/libmpg123/Makemodule.am
+@@ -34,7 +34,7 @@ src_libmpg123_libmpg123_la_LDFLAGS = \
+   -export-symbols-regex '^mpg123_'
+ src_libmpg123_libmpg123_la_LIBADD = \
+   src/compat/libcompat.la \
+-  @LIBMPG123_LIBS@
++  @LIBMPG123_DEP_LIBS@
+ src_libmpg123_libmpg123_la_DEPENDENCIES = \
+   src/compat/libcompat.la
+ 
+diff --git a/src/libout123/Makemodule.am b/src/libout123/Makemodule.am
+index fcc5f87d..196b9de6 100644
+--- a/src/libout123/Makemodule.am
++++ b/src/libout123/Makemodule.am
+@@ -55,7 +55,7 @@ src_libout123_libout123_la_LDFLAGS = \
+ src_libout123_libout123_la_LIBADD = \
+   src/libout123/libmodule.la \
+   src/compat/libcompat.la \
+-  @LIBOUT123_LIBS@
++  @LIBOUT123_DEP_LIBS@
+ 
+ if HAVE_MODULES
+ 
+diff --git a/src/libsyn123/Makemodule.am b/src/libsyn123/Makemodule.am
+index d85824fa..ff2a4848 100644
+--- a/src/libsyn123/Makemodule.am
++++ b/src/libsyn123/Makemodule.am
+@@ -18,7 +18,7 @@ src_libsyn123_libsyn123_la_LDFLAGS = \
+ 
+ src_libsyn123_libsyn123_la_LIBADD = \
+   src/compat/libcompat_str.la \
+-  @LIBSYN123_LIBS@
++  @LIBSYN123_DEP_LIBS@
+ 
+ src_libsyn123_libsyn123_la_SOURCES = \
+   src/libsyn123/syn123.h \

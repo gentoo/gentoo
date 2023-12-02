@@ -11,7 +11,7 @@ SRC_URI="https://vcgit.hhi.fraunhofer.de/jvet/HM/-/archive/HM-${PV}/HM-HM-${PV}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~ia64 ~loong ~mips ~riscv"
+KEYWORDS="amd64 arm ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv"
 
 S="${WORKDIR}/HM-HM-${PV}"
 

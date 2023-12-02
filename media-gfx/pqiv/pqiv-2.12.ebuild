@@ -6,12 +6,12 @@ EAPI=8
 inherit edo linux-info toolchain-funcs xdg
 
 DESCRIPTION="A powerful GTK 3 based command-line image viewer with a minimal UI"
-HOMEPAGE="https://github.com/phillipberndt/pqiv http://www.pberndt.com/Programme/Linux/pqiv/"
+HOMEPAGE="https://github.com/phillipberndt/pqiv https://www.pberndt.com/Programme/Linux/pqiv/"
 SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 IUSE="archive ffmpeg imagemagick pdf postscript webp"
 
 RDEPEND="
@@ -23,7 +23,7 @@ RDEPEND="
 	archive? ( app-arch/libarchive:0= )
 	ffmpeg? ( media-video/ffmpeg:0= )
 	imagemagick? ( media-gfx/imagemagick:0= )
-	pdf? ( app-text/poppler:0= )
+	pdf? ( app-text/poppler:0=[cairo] )
 	postscript? ( app-text/libspectre:0= )
 	webp? ( media-libs/libwebp:0= )
 "

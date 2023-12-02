@@ -1,0 +1,218 @@
+https://bugs.gentoo.org/917618
+https://bugs.documentfoundation.org/show_bug.cgi?id=158108
+
+From bcd5d851ebe91fc22edd3ea92be4a674bd13acba Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 20 Nov 2023 14:47:28 +0200
+Subject: [PATCH] Remove use of the now removed LBCMNoChain options
+
+* This change removes its use and explicitly prevents chaining where
+  the rule would have applied.
+
+https://github.com/unicode-org/icu/commit/84e47620692be90950d090f2f4722494b020ad96
+https://github.com/unicode-org/icu/commit/9d9256f3b792100cda697c7bcf52bacfbc3bca87
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/i18npool/source/breakiterator/data/line.txt
++++ b/i18npool/source/breakiterator/data/line.txt
+@@ -14,7 +14,6 @@
+ #
+ 
+ !!chain;
+-!!LBCMNoChain;
+ 
+ 
+ !!lookAheadHardBreak;
+@@ -206,13 +205,13 @@ $CR $LF {100};
+ #
+ $LB4NonBreaks?  $LB4Breaks {100};    # LB 5  do not break before hard breaks.
+ $CAN_CM $CM*    $LB4Breaks {100};
+-$CM+            $LB4Breaks {100};
++^$CM+           $LB4Breaks {100};
+ 
+ # LB 7         x SP
+ #              x ZW
+ $LB4NonBreaks [$SP $ZW];
+ $CAN_CM $CM*  [$SP $ZW];
+-$CM+          [$SP $ZW];
++^$CM+         [$SP $ZW];
+ 
+ #
+ # LB 8         Break after zero width space
+@@ -226,14 +225,14 @@ $LB8NonBreaks = [[$LB4NonBreaks] - [$ZW]];
+ #                                See definition of $CAN_CM.
+ 
+ $CAN_CM $CM+;                   #  Stick together any combining sequences that don't match other rules.
+-$CM+;
++^$CM+;
+ 
+ #
+ # LB 11  Do not break before or after WORD JOINER & related characters.
+ #
+ $CAN_CM $CM*  $WJcm;
+ $LB8NonBreaks $WJcm;
+-$CM+          $WJcm;
++^$CM+          $WJcm;
+ 
+ $WJcm [^$CAN_CM];
+ $WJcm $CAN_CM $CM*;
+@@ -243,7 +242,7 @@ $WJcm $CAN_CM $CM*;
+ #
+ #         (!SP) x GL
+ [$LB8NonBreaks-$SP] $CM* $GLcm;
+-$CM+               $GLcm;
++^$CM+               $GLcm;
+ 
+ #         GL  x
+ $GLcm ($LB8Breaks | $SP);
+@@ -260,19 +259,19 @@ $GLcm [$LB8NonBreaks-$SP] $CM*;     # Don't let a combining mark go onto $CR, $B
+ #
+ $LB8NonBreaks $CL;
+ $CAN_CM $CM*  $CL;
+-$CM+          $CL;              # by rule 10, stand-alone CM behaves as AL
++^$CM+         $CL;              # by rule 10, stand-alone CM behaves as AL
+ 
+ $LB8NonBreaks $EX;
+ $CAN_CM $CM*  $EX;
+-$CM+          $EX;              # by rule 10, stand-alone CM behaves as AL
++^$CM+         $EX;              # by rule 10, stand-alone CM behaves as AL
+ 
+ $LB8NonBreaks $IS;
+ $CAN_CM $CM*  $IS;
+-$CM+          $IS;              # by rule 10, stand-alone CM behaves as AL
++^$CM+         $IS;              # by rule 10, stand-alone CM behaves as AL
+ 
+ $LB8NonBreaks $SY;
+ $CAN_CM $CM*  $SY;
+-$CM+          $SY;              # by rule 10, stand-alone CM behaves as AL
++^$CM+         $SY;              # by rule 10, stand-alone CM behaves as AL
+ 
+ 
+ #
+@@ -302,7 +301,7 @@ $LB18Breaks    = [$LB8Breaks $SP];
+ # LB 19
+ #         x QU
+ $LB18NonBreaks $CM* $QUcm;
+-$CM+                $QUcm;
++^$CM+               $QUcm;
+ 
+ #         QU  x
+ $QUcm .?;
+@@ -331,7 +330,7 @@ $HLcm ($HYcm | $BAcm) [^$CB]?;
+ 
+ # LB 22
+ ($ALcm | $HLcm) $INcm;
+-$CM+     $INcm;     #  by rule 10, any otherwise unattached CM behaves as AL
++^$CM+    $INcm;     #  by rule 10, any otherwise unattached CM behaves as AL
+ $IDcm    $INcm;
+ $INcm    $INcm;
+ $NUcm    $INcm;
+@@ -341,7 +340,7 @@ $NUcm    $INcm;
+ $IDcm  $POcm;
+ $ALcm  $NUcm;       # includes $LB19
+ $HLcm  $NUcm;
+-$CM+   $NUcm;       # Rule 10, any otherwise unattached CM behaves as AL
++^$CM+  $NUcm;       # Rule 10, any otherwise unattached CM behaves as AL
+ $NUcm  $ALcm;
+ $NUcm  $HLcm;
+ 
+@@ -373,7 +372,7 @@ $PRcm ($JLcm | $JVcm | $JTcm | $H2cm | $H3cm);
+ # LB 28   Do not break between alphabetics
+ #
+ ($ALcm | $HLcm) ($ALcm | $HLcm);
+-$CM+ ($ALcm | $HLcm);      # The $CM+ is from rule 10, an unattached CM is treated as AL
++^$CM+ ($ALcm | $HLcm);      # The $CM+ is from rule 10, an unattached CM is treated as AL
+ 
+ # LB 29
+ $IScm ($ALcm | $NUcm);
+@@ -383,7 +382,7 @@ $IScm ($ALcm | $NUcm);
+ #           and opening or closing punctuation
+ #
+ ($ALcm | $HLcm | $NUcm) $OPcm;
+-$CM+ $OPcm;
++^$CM+ $OPcm;
+ $CLcm ($ALcm | $HLcm | $NUcm);
+ 
+ #
+@@ -393,32 +392,32 @@ $CLcm ($ALcm | $HLcm | $NUcm);
+ 
+ !!reverse;
+ 
+-$CM+ $ALPlus;
+-$CM+ $BA;
+-$CM+ $BB;
+-$CM+ $B2;
+-$CM+ $CL;
+-$CM+ $EX;
+-$CM+ $GL;
+-$CM+ $HL;
+-$CM+ $HY;
+-$CM+ $H2;
+-$CM+ $H3;
+-$CM+ $ID;
+-$CM+ $IN;
+-$CM+ $IS;
+-$CM+ $JL;
+-$CM+ $JV;
+-$CM+ $JT;
+-$CM+ $NS;
+-$CM+ $NU;
+-$CM+ $OP;
+-$CM+ $PO;
+-$CM+ $PR;
+-$CM+ $QU;
+-$CM+ $SY;
+-$CM+ $WJ;
+-$CM+;
++^$CM+ $ALPlus;
++^$CM+ $BA;
++^$CM+ $BB;
++^$CM+ $B2;
++^$CM+ $CL;
++^$CM+ $EX;
++^$CM+ $GL;
++^$CM+ $HL;
++^$CM+ $HY;
++^$CM+ $H2;
++^$CM+ $H3;
++^$CM+ $ID;
++^$CM+ $IN;
++^$CM+ $IS;
++^$CM+ $JL;
++^$CM+ $JV;
++^$CM+ $JT;
++^$CM+ $NS;
++^$CM+ $NU;
++^$CM+ $OP;
++^$CM+ $PO;
++^$CM+ $PR;
++^$CM+ $QU;
++^$CM+ $SY;
++^$CM+ $WJ;
++^$CM+;
+ 
+ 
+ #
+@@ -468,7 +467,7 @@ $LF $CR;
+ #    X   $CM needs to behave like X, where X is not $SP or controls.
+ #    $CM not covered by the above needs to behave like $AL
+ # Stick together any combining sequences that don't match other rules.
+-$CM+ $CAN_CM;
++^$CM+ $CAN_CM;
+ 
+ 
+ # LB 11
+@@ -606,8 +605,8 @@ $CM* ($ALPlus | $HL | $NU) $CM* ($CL | $SY)+ [^$SP];
+ !!safe_reverse;
+ 
+ # LB 7
+-$CM+ [^$CM $BK $CR $LF $NL $ZW $SP];
+-$CM+ $SP / .;
++^$CM+ [^$CM $BK $CR $LF $NL $ZW $SP];
++^$CM+ $SP / .;
+ 
+ # LB 9
+ $SP+ $CM* $OP;
+-- 
+2.42.1
+

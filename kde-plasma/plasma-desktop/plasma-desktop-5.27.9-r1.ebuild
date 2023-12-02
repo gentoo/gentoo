@@ -16,7 +16,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="ibus +kaccounts scim screencast +semantic-desktop"
 
 # kde-frameworks/kwindowsystem[X]: Uses KX11Extras
@@ -35,8 +35,8 @@ COMMON_DEPEND="
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/attica-${KFMIN}:5
-	>=kde-frameworks/kactivities-${KFMIN}:5
-	>=kde-frameworks/kactivities-stats-${KFMIN}:5
+	>=kde-plasma/plasma-activities-${KFMIN}:5
+	>=kde-plasma/plasma-activities-stats-${KFMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kauth-${KFMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
@@ -69,7 +69,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	>=kde-plasma/kwin-${PVCUT}:5

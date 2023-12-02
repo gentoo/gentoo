@@ -18,7 +18,7 @@ S="${WORKDIR}/${P}-ga"
 
 LICENSE="UPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-java/lz4-java:0

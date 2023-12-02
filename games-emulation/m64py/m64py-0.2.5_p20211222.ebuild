@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 qmake-utils xdg-utils
 
@@ -48,6 +48,11 @@ BDEPEND="
 "
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/mupen64plus/mupen64plus-ui-python/issues/227
+		"${FILESDIR}/${P}-setuptools-69.patch"
+	)
+
 	# set the correct search path
 	cat >> src/m64py/platform.py <<-_EOF_ || die
 		SEARCH_DIRS = ["/usr/$(get_libdir)/mupen64plus"]

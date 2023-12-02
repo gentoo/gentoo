@@ -16,7 +16,7 @@ IUSE=""
 
 BDEPEND="
 	>=dev-qt/qtcore-5.12.3:5
-	>=kde-frameworks/extra-cmake-modules-5.60.0:5
+	>=kde-frameworks/extra-cmake-modules-5.60.0:0
 	media-gfx/fontforge
 "
 

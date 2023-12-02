@@ -5,6 +5,6 @@
 		<email>graaff@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">cucumber/cucumber</remote-id>
+		<remote-id type="github">cucumber/tag-expressions</remote-id>
 	</upstream>
 </pkgmetadata>

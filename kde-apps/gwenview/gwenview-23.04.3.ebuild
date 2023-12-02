@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	>=media-libs/phonon-4.11.0
 	media-libs/tiff:=
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	fits? ( sci-libs/cfitsio )
 	mpris? ( >=dev-qt/qtdbus-${QTMIN}:5 )
 	raw? ( >=kde-apps/libkdcraw-${PVCUT}:5 )

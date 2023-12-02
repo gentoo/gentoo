@@ -38,7 +38,7 @@ python_test() {
 	# disable autoloading plugins in nested pytest calls
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# since we disabled autoloading, force loading necessary plugins
-	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_forked
+	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail
 
 	epytest
 }

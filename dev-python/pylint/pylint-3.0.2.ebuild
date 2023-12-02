@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="examples"
 
 # Make sure to check https://github.com/pylint-dev/pylint/blob/main/pyproject.toml#L34 on bumps
@@ -44,7 +44,9 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/GitPython-3[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/GitPython-3[${PYTHON_USEDEP}]
+		' 'python*' )
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	)
@@ -65,6 +67,15 @@ python_test() {
 		# No need to run the benchmarks
 		tests/benchmark/test_baseline_benchmarks.py
 	)
+
+	if [[ ${EPYTHON} == pypy3 ]]; then
+		# Requires GitPython
+		EPYTEST_IGNORE+=(
+			tests/profile/test_profile_against_externals.py
+			tests/testutils/_primer/test_package_to_lint.py
+			tests/testutils/_primer/test_primer.py
+		)
+	fi
 
 	rm -rf pylint || die
 

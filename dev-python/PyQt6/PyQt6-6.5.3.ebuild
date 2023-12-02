@@ -17,7 +17,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 # defaults match what is provided with qtbase by default (except testlib),
 # reduces the need to set flags but does increase build time a fair amount
 IUSE="
@@ -46,8 +46,9 @@ REQUIRED_USE="
 	widgets? ( gui )
 "
 
+# may use qt private symbols wrt qtbase's :=
 DEPEND="
-	>=dev-qt/qtbase-${QT_PV}[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
+	>=dev-qt/qtbase-${QT_PV}=[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
 	bluetooth? ( >=dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]

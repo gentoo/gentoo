@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kmix/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="alsa plasma pulseaudio"
 
 # kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
@@ -35,7 +35,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	alsa? ( >=media-libs/alsa-lib-1.0.14a )
-	plasma? ( >=kde-frameworks/plasma-${KFMIN}:5 )
+	plasma? ( >=kde-plasma/libplasma-${KFMIN}:5 )
 	pulseaudio? (
 		media-libs/libcanberra
 		media-libs/libpulse

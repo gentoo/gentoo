@@ -13,8 +13,8 @@ USE="${USE} -cli"
 # bug 849875
 USE="${USE} -dri"
 
-# bug 818376
-LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs"
+# bug 818376 (only on specific arches)
+LDFLAGS="-Wl,-O1 -Wl,--as-needed"
 
 # copied from merged-usr feature
 # Mike Gilbert <floppym@gentoo.org> (2022-08-31)

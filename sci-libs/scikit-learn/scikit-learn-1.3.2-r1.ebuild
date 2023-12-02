@@ -15,7 +15,7 @@ SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
 IUSE="examples"
 
 DEPEND="

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 inherit distutils-r1 pypi
 
 DESCRIPTION="JavaScript minifier"
@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/tikitu/jsmin/
 "
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 LICENSE="MIT"
 SLOT="0"
 

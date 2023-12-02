@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org python-single-r1
 
 DESCRIPTION="Framework based on Gettext for internationalizing user interface text"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -25,8 +25,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
 "
-
-PATCHES=( "${FILESDIR}/${PN}-5.57.0-python.patch" )
 
 pkg_setup() {
 	ecm_pkg_setup

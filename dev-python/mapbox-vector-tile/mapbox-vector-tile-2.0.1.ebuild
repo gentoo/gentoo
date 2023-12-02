@@ -16,7 +16,7 @@ SRC_URI="https://github.com/tilezen/mapbox-vector-tile/archive/refs/tags/v${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 RDEPEND="
 	dev-python/protobuf-python[${PYTHON_USEDEP}]

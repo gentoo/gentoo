@@ -136,6 +136,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-hppa-forkfd-grow-stack.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-glx.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
+	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 )
 
 src_prepare() {
@@ -308,10 +309,11 @@ src_test() {
 		# similarly, but on armv7 and potentially others (bug #914028)
 		tst_qlineedit
 		tst_qpainter
-		# likewise, known failing at least on BE arches (bug #914033,914371)
+		# likewise, known failing on BE arches (bug #914033,914371,918878)
 		tst_qimagereader
 		tst_qimagewriter
 		tst_qpluginloader
+		tst_quuid
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '
@@ -323,6 +325,12 @@ src_test() {
 		$(usev hppa '
 			tst_qcborvalue
 			tst_qnumeric
+		')
+		# bug #914033
+		$(usev sparc '
+			tst_qbuffer
+			tst_qprocess
+			tst_qtconcurrentiteratekernel
 		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
 		# https://doc.qt.io/qt-6/supported-platforms.html

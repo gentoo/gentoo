@@ -10,7 +10,7 @@ PYVER=3.9
 MY_P="pypy${PYVER}-v${PYPY_PV/_}"
 PATCHSET="pypy${PYVER}-gentoo-patches-${PV/_}"
 
-DESCRIPTION="PyPy3 executable (build from source)"
+DESCRIPTION="PyPy3.9 executable (build from source)"
 HOMEPAGE="https://www.pypy.org/"
 SRC_URI="
 	https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
@@ -37,6 +37,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-python/pypy
+	virtual/pkgconfig
 "
 
 check_env() {

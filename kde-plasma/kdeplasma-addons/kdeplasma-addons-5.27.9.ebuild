@@ -13,7 +13,7 @@ DESCRIPTION="Extra Plasma applets and engines"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="+alternate-calendar networkmanager share webengine"
 
 RESTRICT="test" # bug 727846
@@ -40,7 +40,7 @@ DEPEND="
 	>=kde-frameworks/kunitconversion-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	alternate-calendar? ( dev-libs/icu:= )
 	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:5 )

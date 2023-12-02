@@ -24,7 +24,7 @@ RDEPEND=">=dev-haskell/case-insensitive-1.2.0.4:=[profile?] <dev-haskell/case-in
 	>=dev-haskell/integer-logarithms-1.0.3:=[profile?] <dev-haskell/integer-logarithms-1.1:=[profile?]
 	>=dev-haskell/old-time-1.1.0.0:=[profile?] <dev-haskell/old-time-1.2:=[profile?]
 	>=dev-haskell/onetuple-0.3:=[profile?] <dev-haskell/onetuple-0.4:=[profile?]
-	>=dev-haskell/quickcheck-2.14.1:2=[profile?] <dev-haskell/quickcheck-2.14.3:2=[profile?]
+	>=dev-haskell/quickcheck-2.14.1:=[profile?] <dev-haskell/quickcheck-2.14.3:=[profile?]
 	>=dev-haskell/scientific-0.3.6.2:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
 	>=dev-haskell/splitmix-0.0.2:=[profile?] <dev-haskell/splitmix-0.2:=[profile?]
 	>=dev-haskell/strict-0.4:=[profile?] <dev-haskell/strict-0.5:=[profile?]

@@ -23,14 +23,15 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain unicode ZLIB"
 SLOT="0"
-IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit selinux test"
+IUSE="blas +hyperscan jemalloc +jit selinux test"
 RESTRICT="!test? ( test )"
 
 # A part of tests use ffi luajit extension
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	test? ( lua_single_target_luajit )"
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
+	${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 		dev-lua/lua-argparse[${LUA_USEDEP}]
@@ -41,25 +42,24 @@ RDEPEND="${LUA_DEPS}
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
-	dev-libs/libev
-	dev-libs/libfmt:=
 	dev-libs/libpcre2:=[jit=]
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/snowball-stemmer:=
-	>=dev-libs/xxhash-0.8.0
-	sys-apps/file
 	sys-libs/zlib
 	blas? (
 		virtual/blas
 		virtual/lapack
 	)
-	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
+	hyperscan? ( dev-libs/vectorscan:= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	selinux? ( sec-policy/selinux-spamassassin )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-cpp/doctest
+	dev-libs/libfmt:=
+	>=dev-libs/xxhash-0.8.0
 "
 BDEPEND="
 	dev-lang/perl
@@ -98,8 +98,14 @@ src_configure() {
 		-DSYSTEM_XXHASH=ON
 		-DSYSTEM_ZSTD=ON
 
+		# For bundled https://github.com/bombela/backward-cpp
+		# Bundled backward library uses execinfo.h in current setting, which is
+		# available in glibc, but not in musl. Let's enable it for glibc only.
+		-DENABLE_BACKWARD=$(usex elibc_glibc ON OFF) # bug 917643
+		-DSTACK_DETAILS_AUTO_DETECT=OFF
+
 		-DENABLE_BLAS=$(usex blas ON OFF)
-		-DENABLE_HYPERSCAN=$(usex cpu_flags_x86_ssse3 ON OFF)
+		-DENABLE_HYPERSCAN=$(usex hyperscan ON OFF)
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
 		-DENABLE_LUAJIT=$(usex lua_single_target_luajit ON OFF)
 		-DENABLE_PCRE2=ON

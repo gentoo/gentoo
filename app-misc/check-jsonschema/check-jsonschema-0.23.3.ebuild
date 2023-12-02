@@ -16,7 +16,7 @@ SRC_URI="https://github.com/python-jsonschema/${PN}/archive/refs/tags/${PV}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]

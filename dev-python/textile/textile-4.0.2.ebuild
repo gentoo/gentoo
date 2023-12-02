@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-python/html5lib[${PYTHON_USEDEP}]

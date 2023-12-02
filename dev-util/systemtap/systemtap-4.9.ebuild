@@ -93,6 +93,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		--disable-docs
 		--disable-grapher
 		--disable-refdocs

@@ -1,0 +1,25 @@
+https://lore.kernel.org/netdev/20231202024705.1375296-1-sam@gentoo.org/T/#u
+
+From 3dc0bf34c1571429c08a8d0c08a69502e3e4575c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 2 Dec 2023 02:46:05 +0000
+Subject: [PATCH] configure: Add _GNU_SOURCE to strlcpy configure test
+
+>=glibc-2.38 adds strlcpy but it's guarded under a feature-test macro. Just
+add _GNU_SOURCE to the configure test because we already pass _GNU_SOURCE unconditionally
+in the Makefiles when building iproute2.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure
++++ b/configure
+@@ -445,6 +445,7 @@ EOF
+ check_strlcpy()
+ {
+     cat >$TMPDIR/strtest.c <<EOF
++#define _GNU_SOURCE
+ #include <string.h>
+ int main(int argc, char **argv) {
+ 	char dst[10];
+-- 
+2.43.0
+

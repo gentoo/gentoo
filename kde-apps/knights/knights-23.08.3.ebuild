@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/knights/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 IUSE="speech"
 
 DEPEND="
@@ -39,7 +39,7 @@ DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}

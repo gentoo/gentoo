@@ -17,7 +17,7 @@ HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="+gdbui hex +plasma +qmake reviewboard subversion"
 
 # see bug 366471
@@ -70,7 +70,7 @@ COMMON_DEPEND="
 	hex? ( app-editors/okteta:5 )
 	plasma? (
 		>=kde-frameworks/krunner-${KFMIN}:5
-		>=kde-frameworks/plasma-${KFMIN}:5
+		>=kde-plasma/libplasma-${KFMIN}:5
 	)
 	qmake? ( dev-util/kdevelop-pg-qt:5 )
 	reviewboard? ( >=kde-frameworks/purpose-${KFMIN}:5 )

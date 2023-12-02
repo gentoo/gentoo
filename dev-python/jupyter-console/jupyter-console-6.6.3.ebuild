@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -32,6 +32,7 @@ RDEPEND="
 # util-linux provides script(1)
 BDEPEND="
 	test? (
+		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		sys-apps/util-linux
 	)

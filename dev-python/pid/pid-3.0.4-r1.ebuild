@@ -13,6 +13,6 @@ HOMEPAGE="https://pypi.org/project/pid/ https://github.com/trbs/pid/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 distutils_enable_tests pytest

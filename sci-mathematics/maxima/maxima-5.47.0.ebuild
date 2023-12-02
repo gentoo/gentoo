@@ -11,7 +11,12 @@ DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2 GPL-2+"
+# Licensing is a mess. COPYING is GPL-2. A few files such as
+# src/numth.lisp explicitly mention GPL-2 without the "or later version"
+# bit. Others such as src/airy.lisp have the "or later version." Both
+# src/maxmin.lisp and src/nummod.lisp declare the LLGPL; in fact they
+# say LLGPL version 2 or later which I have approximated by LLGPL-2.1.
+LICENSE="GPL-2 GPL-2+ LLGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 

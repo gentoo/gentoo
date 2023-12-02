@@ -74,7 +74,6 @@ BDEPEND="
 	app-misc/jq
 	dev-util/cmake
 	dev-util/wayland-scanner
-	dev-vcs/git
 	virtual/pkgconfig
 "
 
@@ -116,7 +115,9 @@ src_configure() {
 }
 
 src_install() {
+	# First install everything except wlroots to avoid conflicts.
 	meson_src_install --skip-subprojects wlroots
+	# Then install development files (mainly wlroots) for bug #916760.
 	meson_src_install --tags devel
 
 	# Wlroots headers are required by hyprland-plugins and the pkgconfig file expects

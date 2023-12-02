@@ -26,7 +26,7 @@ else
 		https://github.com/kbr/fritzconnection/archive/${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 RDEPEND="

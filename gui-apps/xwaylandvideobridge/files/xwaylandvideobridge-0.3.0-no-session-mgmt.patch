@@ -1,0 +1,54 @@
+From 0ca63bfbd8b30dfdb5807f6e4e35ca272d7cdc01 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Fri, 10 Nov 2023 09:52:33 +0100
+Subject: [PATCH] Do not start in an X11 session and opt out of session
+ managment
+
+xwaylandvideobridge runs with the Qt xcb backend, this means it
+is also session managed by default. Since it is also autostarted
+on every log a new instance is auotstarted and in addition the
+session manager will start an instance for every one that was
+running. So on second log in you will have 2 running instances,
+on the third three, ...
+Also exit on X11 where it is not needed.
+---
+ src/main.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 8dda8a5..84e3677 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -11,12 +11,16 @@
+ 
+ #include <QApplication>
+ #include <QCommandLineParser>
++#include <QSessionManager>
+ #include <QIcon>
+ #include <KLocalizedString>
+ #include <KAboutData>
+ 
+ int main(int argc, char **argv)
+ {
++    if (qgetenv("XDG_SESSION_TYPE") == "x11") {
++        return 0;
++    }
+     qputenv("QT_QPA_PLATFORM", "xcb");
+     qputenv("QT_XCB_GL_INTEGRATION", "xcb_egl");
+ 
+@@ -25,6 +29,12 @@ int main(int argc, char **argv)
+     QApplication app(argc, argv); // widgets are needed just for the SNI.
+     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+ 
++     auto disableSessionManagement = [](QSessionManager &sm) {
++        sm.setRestartHint(QSessionManager::RestartNever);
++    };
++    QObject::connect(&app, &QGuiApplication::commitDataRequest, disableSessionManagement);
++    QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
++
+     KLocalizedString::setApplicationDomain("xwaylandvideobridge");
+     {
+         KAboutData about("xwaylandvideobridge", i18n("Xwayland Video Bridge"), version, i18n("Offer XDG Desktop Portals screencast streams to X11 apps"),
+-- 
+GitLab
+

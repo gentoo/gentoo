@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 	OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
 	Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
@@ -35,7 +42,7 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
 		<remote-id type="github">opencv/opencv</remote-id>
-		<remote-id type="github">Itseez/opencv_contrib</remote-id>
+		<remote-id type="github">opencv/opencv_contrib</remote-id>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
 	</upstream>
 </pkgmetadata>

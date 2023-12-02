@@ -15,7 +15,4 @@
 		proportionally-spaced font optimized for readability in long
 		printed documents.
 	</longdescription>
-	<use>
-		<flag name="compact">Use more compactly spaced font</flag>
-	</use>
 </pkgmetadata>

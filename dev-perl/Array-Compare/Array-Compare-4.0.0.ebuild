@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for comparing arrays"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 
 # Object-Pad is only for < 5.38, so we can clean it up later
 RDEPEND="

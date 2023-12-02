@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/python-utils-3.0.0[${PYTHON_USEDEP}]

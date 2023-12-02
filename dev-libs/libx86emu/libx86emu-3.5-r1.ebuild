@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wfeldt/libx86emu/archive/refs/tags/${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
 
 src_prepare() {
 	default

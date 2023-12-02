@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -28,9 +28,11 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples nls openmp"
+IUSE="doc examples nls openmp test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
@@ -53,7 +55,7 @@ COMMON_DEPEND="
 	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
-		~dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
+		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
 	nls? (
@@ -116,6 +118,9 @@ src_configure() {
 
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
+
+		-DKICAD_SPICE_QA="$(usex test)"
+		-DKICAD_BUILD_QA_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure

@@ -7,7 +7,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nettle.asc
 inherit multilib-build multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Low-level cryptographic library"
-HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
+HOMEPAGE="https://www.lysator.liu.se/~nisse/nettle/ https://git.lysator.liu.se/nettle/nettle"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${P}.tar.gz.sig )"
 

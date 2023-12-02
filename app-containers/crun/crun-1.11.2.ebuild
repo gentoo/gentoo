@@ -40,6 +40,7 @@ PATCHES=(
 
 src_configure() {
 	local myeconfargs=(
+		--cache-file="${S}"/config.cache
 		$(use_enable bpf)
 		$(use_enable caps)
 		$(use_enable criu)
@@ -57,6 +58,14 @@ src_compile() {
 	emake crun
 }
 
+# the crun test suite is comprehensive to the extent that tests will fail
+# within a sandbox environment, due to the nature of the privileges
+# required to create linux "containers".
+# due to this we disable most of the core test suite by unsetting PYTHON_TESTS
+src_test() {
+	emake check PYTHON_TESTS=
+}
+
 src_install() {
 	emake "DESTDIR=${D}" install-exec
 	doman crun.1
@@ -64,12 +73,4 @@ src_install() {
 
 	einfo "Cleaning up .la files"
 	find "${ED}" -name '*.la' -delete || die
-}
-
-# the crun test suite is comprehensive to the extent that tests will fail
-# within a sandbox environment, due to the nature of the privileges
-# required to create linux "containers".
-# due to this we disable most of the core test suite by unsetting PYTHON_TESTS
-src_test() {
-	emake check PYTHON_TESTS=
 }

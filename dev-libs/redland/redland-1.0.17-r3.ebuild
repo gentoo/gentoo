@@ -56,6 +56,7 @@ src_configure() {
 
 	# FIXME: upstream doesn't test with --with-threads and testsuite fails
 	econf \
+		--cache-file="${S}"/config.cache \
 		$(use_with berkdb bdb) \
 		$(use_with mysql) \
 		$(use_with sqlite) \

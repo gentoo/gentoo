@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/ukkonen[${PYTHON_USEDEP}]

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/jupyter-client-6.1.12[${PYTHON_USEDEP}]
@@ -38,17 +38,10 @@ BDEPEND="
 	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
-	nbclient/tests/test_client.py::test_many_parallel_notebooks
-	'nbclient/tests/test_client.py::test_run_all_notebooks[Interrupt.ipynb-opts6]'
+	# hangs?
+	'tests/test_client.py::test_run_all_notebooks[Interrupt.ipynb-opts6]'
 )
-
-python_test() {
-	# The tests run the pydevd debugger, the debugger prints a warning
-	# in python3.11 when frozen modules are being used.
-	# This warning makes the tests fail, silence it.
-	local -x PYDEVD_DISABLE_FILE_VALIDATION=1
-	epytest
-}

@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt Declarative (Quick 2)"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~x86"
 fi
 
 IUSE="opengl +sql vulkan +widgets"
@@ -18,7 +18,10 @@ IUSE="opengl +sql vulkan +widgets"
 RESTRICT="test"
 
 RDEPEND="~dev-qt/qtbase-${PV}:6[network,opengl=,sql?,vulkan=,widgets=]"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 src_configure() {

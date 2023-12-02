@@ -1,0 +1,61 @@
+From bed9a444b85951cb83e2b37d07cea2dcadb551b3 Mon Sep 17 00:00:00 2001
+From: Matthew Flatt <mflatt@racket-lang.org>
+Date: Wed, 15 Nov 2023 10:56:31 -0700
+Subject: [PATCH] repair install of a builtpkgs build
+
+---
+ racket/src/bc/build.zuo   | 3 ++-
+ racket/src/cs/c/build.zuo | 3 ++-
+ racket/src/lib.zuo        | 4 ++++
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/bc/build.zuo b/bc/build.zuo
+index 5af471ba8cd..98b6ea34f3b 100644
+--- a/bc/build.zuo
++++ b/bc/build.zuo
+@@ -637,7 +637,8 @@
+ 
+   (define (setup-prepare-to-here?)
+     (and (equal? (lookup 'MAKE_COPYTREE) "copytree")
+-         (not cross?)))
++         (not cross?)
++         (not (in-builtpkgs-distro?))))
+ 
+   (define the-targets
+     (append
+diff --git a/cs/c/build.zuo b/cs/c/build.zuo
+index 451e2c8c2a0..c47649f206f 100644
+--- a/cs/c/build.zuo
++++ b/cs/c/build.zuo
+@@ -373,7 +373,8 @@
+ 
+   (define (setup-prepare-to-here?)
+     (and (equal? (lookup 'MAKE_COPYTREE) "copytree")
+-         (not cross?)))
++         (not cross?)
++         (not (in-builtpkgs-distro?))))
+ 
+   (define the-targets
+     (make-targets
+diff --git a/lib.zuo b/lib.zuo
+index 80c5c88c94e..64c41b6c7a4 100644
+--- a/lib.zuo
++++ b/lib.zuo
+@@ -42,6 +42,7 @@
+          strip-lib-debug
+          run-raco-setup
+          raco-setup-prepare-to-here
++         in-builtpkgs-distro?
+ 
+          install-license-files
+          maybe-copytree
+@@ -494,6 +495,9 @@
+                   built-racket
+                   #f '()))
+ 
++(define (in-builtpkgs-distro?)
++  (file-exists? (at-source "../collects/racket/compiled/base_rkt.zo")))
++
+ (define (install-license-files sharepltdir)
+   (mkdir-p sharepltdir)
+   (for-each (lambda (path)

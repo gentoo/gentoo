@@ -152,7 +152,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C out
+	emake -C out -Onone
 }
 
 src_install() {

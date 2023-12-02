@@ -1,0 +1,46 @@
+diff -up megaglest-3.13.0/source/shared_lib/include/feathery_ftp/ftpTypes.h.orig megaglest-3.13.0/source/shared_lib/include/feathery_ftp/ftpTypes.h
+--- megaglest-3.13.0/source/shared_lib/include/feathery_ftp/ftpTypes.h.orig	2020-03-30 13:56:49.360323060 -0300
++++ megaglest-3.13.0/source/shared_lib/include/feathery_ftp/ftpTypes.h	2020-03-30 13:58:21.924743049 -0300
+@@ -69,7 +69,7 @@ typedef uint16_t port_t;
+ extern "C" {
+ #endif
+ 
+-int VERBOSE_MODE_ENABLED;
++extern int VERBOSE_MODE_ENABLED;
+ 
+ typedef ip_t (*ftpFindExternalFTPServerIpType)(ip_t clientIp);
+ typedef void (*ftpAddUPNPPortForwardType)(int internalPort, int externalPort);
+@@ -77,11 +77,11 @@ typedef void (*ftpRemoveUPNPPortForwardT
+ typedef int (*ftpIsValidClientType)(ip_t clientIp);
+ typedef int (*ftpIsClientAllowedToGetFileType)(ip_t clientIp, const char *username, const char *filename);
+ 
+-ftpFindExternalFTPServerIpType	ftpFindExternalFTPServerIp;
+-ftpAddUPNPPortForwardType		ftpAddUPNPPortForward;
+-ftpRemoveUPNPPortForwardType	ftpRemoveUPNPPortForward;
+-ftpIsValidClientType            ftpIsValidClient;
+-ftpIsClientAllowedToGetFileType ftpIsClientAllowedToGetFile;
++extern ftpFindExternalFTPServerIpType	ftpFindExternalFTPServerIp;
++extern ftpAddUPNPPortForwardType		ftpAddUPNPPortForward;
++extern ftpRemoveUPNPPortForwardType	ftpRemoveUPNPPortForward;
++extern ftpIsValidClientType            ftpIsValidClient;
++extern ftpIsClientAllowedToGetFileType ftpIsClientAllowedToGetFile;
+ 
+ #ifdef	__cplusplus
+ }
+diff -up megaglest-3.13.0/source/shared_lib/sources/feathery_ftp/ftpRuntime.c.orig megaglest-3.13.0/source/shared_lib/sources/feathery_ftp/ftpRuntime.c
+--- megaglest-3.13.0/source/shared_lib/sources/feathery_ftp/ftpRuntime.c.orig	2020-03-30 13:56:56.412355058 -0300
++++ megaglest-3.13.0/source/shared_lib/sources/feathery_ftp/ftpRuntime.c	2020-03-30 13:58:30.524782070 -0300
+@@ -30,6 +30,13 @@
+ #include "ftp.h"
+ #include "ftpMessages.h"
+ 
++int VERBOSE_MODE_ENABLED;
++
++ftpFindExternalFTPServerIpType  ftpFindExternalFTPServerIp;
++ftpAddUPNPPortForwardType               ftpAddUPNPPortForward;
++ftpRemoveUPNPPortForwardType    ftpRemoveUPNPPortForward;
++ftpIsValidClientType            ftpIsValidClient;
++ftpIsClientAllowedToGetFileType ftpIsClientAllowedToGetFile;
+ 
+ /**
+  * @brief server-sockets that listens for incoming connections

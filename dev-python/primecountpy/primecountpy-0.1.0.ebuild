@@ -15,7 +15,7 @@ HOMEPAGE="https://pypi.org/project/primecountpy/
 # LICENSE clarification in README.md
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="sci-mathematics/primecount

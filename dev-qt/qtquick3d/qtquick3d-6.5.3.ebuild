@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
+	vulkan? ( dev-util/vulkan-headers )
 "
 
 CMAKE_SKIP_TESTS=(

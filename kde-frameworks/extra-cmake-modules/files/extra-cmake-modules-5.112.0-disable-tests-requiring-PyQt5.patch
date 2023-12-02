@@ -1,0 +1,27 @@
+From 35d209b5662e468aa2f613ffdb9b91bc2e7f7e26 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 18 Nov 2023 17:58:36 +0100
+Subject: [PATCH] Disable tests requiring PyQt5
+
+Gentoo-bug: https://bugs.gentoo.org/680256
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ tests/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 1415bb91..09d998e4 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -79,7 +79,7 @@ find_file(SIP_Qt5Core_Mod_FILE
+     PATH_SUFFIXES share/sip/PyQt5/QtCore
+ )
+ 
+-if(NOT SIP_Qt5Core_Mod_FILE)
++if(TRUE)
+     message(STATUS "WARNING: skipping tests that require PyQt")
+ else()
+   find_package(PythonModuleGeneration)
+-- 
+2.42.1
+

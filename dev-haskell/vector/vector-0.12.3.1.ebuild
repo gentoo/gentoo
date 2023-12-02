@@ -33,6 +33,14 @@ PATCHES=(
 RDEPEND=">=dev-haskell/primitive-0.6.4.0:=[profile?] <dev-haskell/primitive-0.8:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
+
+# doctests do not work on >=ghc-9.2
+RDEPEND+="
+	test? (
+		<dev-lang/ghc-9.1
+	)
+"
+
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
 	dev-haskell/cabal-doctest
@@ -46,6 +54,7 @@ DEPEND="${RDEPEND}
 		dev-haskell/tasty-hunit
 		dev-haskell/tasty-quickcheck )
 "
+
 CABAL_CHDEPS=(
 	'doctest   >=0.15 && <0.19' 'doctest >=0.15'
 )

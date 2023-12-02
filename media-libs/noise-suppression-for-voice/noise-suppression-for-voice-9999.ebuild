@@ -18,7 +18,9 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
+
 IUSE="+ladspa lv2 vst vst3"
+REQUIRED_USE="|| ( ladspa lv2 vst vst3 )"
 
 COMMON_DEPEND="
 	media-libs/freetype

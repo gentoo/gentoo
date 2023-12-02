@@ -1,0 +1,59 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3675
+https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1790
+
+From 6b4cdab57a0678e88992fb4e5b216e481b051808 Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Sun, 26 Nov 2023 18:31:43 +0200
+Subject: [PATCH] meson.build: fix compile with -Dexamples=disabled
+
+--- a/spa/examples/meson.build
++++ b/spa/examples/meson.build
+@@ -6,6 +6,10 @@ spa_examples = [
+   'local-v4l2',
+ ]
+ 
++if not get_option('examples').allowed()
++  subdir_done()
++endif
++
+ spa_examples_extra_deps = {
+   'local-v4l2': [sdl_dep],
+   'local-libcamera': [sdl_dep, libcamera_dep],
+--- a/spa/meson.build
++++ b/spa/meson.build
+@@ -113,6 +113,4 @@ endif
+ 
+ subdir('tools')
+ subdir('tests')
+-if get_option('examples').allowed()
+-  subdir('examples')
+-endif
++subdir('examples')
+--- a/src/examples/meson.build
++++ b/src/examples/meson.build
+@@ -22,6 +22,10 @@ examples = [
+   'local-v4l2',
+ ]
+ 
++if not get_option('examples').allowed()
++  subdir_done()
++endif
++
+ examples_extra_deps = {
+   'video-src-fixate': [drm_dep],
+   'video-play': [sdl_dep],
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -3,9 +3,7 @@ subdir('pipewire')
+ subdir('daemon')
+ subdir('tools')
+ subdir('modules')
+-if get_option('examples').allowed()
+-  subdir('examples')
+-endif
++subdir('examples')
+ if get_option('tests').allowed()
+   subdir('tests')
+ endif
+-- 
+GitLab

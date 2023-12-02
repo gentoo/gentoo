@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND="~dev-haskell/hspec-core-2.9.4:=[profile?]
 	~dev-haskell/hspec-discover-2.9.4:=[profile?]
 	>=dev-haskell/hspec-expectations-0.8.2:=[profile?] <dev-haskell/hspec-expectations-0.8.3:=[profile?]
-	>=dev-haskell/quickcheck-2.12:2=[profile?]
+	>=dev-haskell/quickcheck-2.12:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
 DEPEND="${RDEPEND}

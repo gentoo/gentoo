@@ -33,6 +33,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+inherit toolchain-funcs
+
 if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
 	inherit secureboot
 fi
@@ -135,7 +137,7 @@ dist-kernel_install_kernel() {
 	ebegin "Installing the kernel via installkernel"
 	# note: .config is taken relatively to System.map;
 	# initrd relatively to bzImage
-	installkernel "${version}" "${image}" "${map}"
+	ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}"
 	eend ${?} || die -n "Installing the kernel failed"
 }
 

@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 RDEPEND="
 	>=dev-python/babelfish-0.5.5[${PYTHON_USEDEP}]

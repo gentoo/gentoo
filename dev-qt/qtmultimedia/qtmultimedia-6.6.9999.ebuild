@@ -49,6 +49,7 @@ DEPEND="
 	${RDEPEND}
 	X? ( x11-base/xorg-proto )
 	v4l? ( sys-kernel/linux-headers )
+	vulkan? ( dev-util/vulkan-headers )
 "
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 

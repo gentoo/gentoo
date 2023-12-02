@@ -39,7 +39,7 @@ RDEPEND="
 	net-libs/libslirp
 "
 DEPEND="${RDEPEND}"
-BDEPEND="kde-frameworks/extra-cmake-modules:5"
+BDEPEND="kde-frameworks/extra-cmake-modules:0"
 
 PATCHES=( "${FILESDIR}"/${P}-no-ccache-detection.patch )
 

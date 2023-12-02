@@ -9,10 +9,10 @@ DESCRIPTION="Shared icons, artwork and data files for educational applications"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE=""
 
 BDEPEND="
 	dev-qt/qtcore:5
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 "

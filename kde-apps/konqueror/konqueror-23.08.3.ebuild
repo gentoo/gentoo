@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/konqueror/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE="activities speech"
 
 # 4 of 4 tests fail. Last checked for 4.0.3
@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 "
 RDEPEND="${COMMON_DEPEND}
 	kde-apps/kfind:5

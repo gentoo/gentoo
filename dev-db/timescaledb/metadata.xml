@@ -5,6 +5,9 @@
 		<email>pgsql-bugs@gentoo.org</email>
 		<name>PostgreSQL and Related Package Development</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">timescale/timescaledb</remote-id>
+	</upstream>
 	<use>
 		<flag name="proprietary-extensions">
 			Enable proprietary features/extensions licensed under the TimeScale License

@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	<dev-python/pytest-8[${PYTHON_USEDEP}]
@@ -27,8 +27,7 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	# We need to disable some plugins because tests don't like unexpected
-	# output
-	local -x PYTEST_ADDOPTS="-p no:flaky -p no:capturelog"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_describe.plugin
 	epytest
 }

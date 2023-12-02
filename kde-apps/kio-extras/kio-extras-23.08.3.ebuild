@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/network/kio-extras"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="activities ios +man mtp nfs openexr phonon samba +sftp taglib X"
 
 # requires running Plasma environment
@@ -46,8 +46,8 @@ DEPEND="
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
 	activities? (
 		>=dev-qt/qtsql-${QTMIN}:5
-		>=kde-frameworks/kactivities-${KFMIN}:5
-		>=kde-frameworks/kactivities-stats-${KFMIN}:5
+		>=kde-plasma/plasma-activities-${KFMIN}:5
+		>=kde-plasma/plasma-activities-stats-${KFMIN}:5
 	)
 	ios? (
 		app-pda/libimobiledevice:=

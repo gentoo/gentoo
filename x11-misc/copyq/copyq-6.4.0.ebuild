@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 	!qt6? (
 		dev-qt/linguist-tools:5
 		dev-qt/qtwaylandscanner:5

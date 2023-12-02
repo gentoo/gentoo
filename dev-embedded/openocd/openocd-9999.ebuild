@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="OpenOCD - Open On-Chip Debugger"
-HOMEPAGE="https://openocd.sourceforge.net"
+HOMEPAGE="https://openocd.sourceforge.io"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -27,6 +27,7 @@ RESTRICT="strip" # includes non-native binaries
 RDEPEND="
 	acct-group/plugdev
 	>=dev-lang/jimtcl-0.81:=
+	dev-libs/libgpiod:0/2
 	capstone? ( dev-libs/capstone )
 	cmsis-dap? ( dev-libs/hidapi )
 	jlink? ( >=dev-embedded/libjaylink-0.2.0 )

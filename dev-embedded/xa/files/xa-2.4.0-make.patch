@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/722600
+--- a/Makefile
++++ b/Makefile
+@@ -4,2 +3,0 @@
+-CC = gcc
+-LD = gcc
+@@ -9,2 +6,0 @@
+-CFLAGS = -O2 
+-LDFLAGS = -lc
+@@ -33 +29 @@
+-all: killxa xa uncpk
++all: xa uncpk
+@@ -39 +35 @@
+-	(cd src && LD=${LD} CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd src && ${MAKE})
+@@ -45 +41 @@
+-	(cd misc && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd misc && ${MAKE})
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -5 +5 @@
+-CFLAGS =  -O2 -g
++CFLAGS := $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -12 +12 @@
+-	${LD} -o ../xa ${OBJ} ${LDFLAGS}
++	${CC} ${LDFLAGS} -o ../xa ${OBJ}

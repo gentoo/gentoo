@@ -41,7 +41,8 @@ PATCHES=(
 	"${FILESDIR}"/loong-fix-build.patch
 	"${FILESDIR}"/${PN}-1.4.19-make-4.4-tests.patch
 	"${WORKDIR}"/${P}-test-198-sysval-r1.patch
-	"${FILESDIR}"/${PN}-1.4.19-fortify-source.patch
+	"${FILESDIR}"/${P}-fortify-source.patch
+	"${FILESDIR}"/${P}-race-condition-tests.patch
 )
 
 src_unpack() {

@@ -17,13 +17,17 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+CABAL_CHDEPS=(
+	'chell >= 0.4 && < 0.5' 'chell >= 0.4'
+)
+
 RDEPEND=">=dev-haskell/system-filepath-0.3.1:=[profile?] <dev-haskell/system-filepath-0.5:=[profile?]
 	>=dev-haskell/text-0.7.1:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
-	test? ( >=dev-haskell/chell-0.4 <dev-haskell/chell-0.5
+	test? ( >=dev-haskell/chell-0.4
 		>=dev-haskell/temporary-1.1 <dev-haskell/temporary-2.0
 		>=dev-haskell/transformers-0.2 )
 "

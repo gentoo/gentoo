@@ -200,41 +200,34 @@ src_prepare() {
 }
 
 python_test() {
+	local -x QT_API
+	local -a EPYTEST_DESELECT
+	local other
+
 	# Test for each enabled Qt4Python target.
 	# Deselect the other targets, their test fails if we specify QT_API
 	# or if we have disabled their corresponding inherit in __init__.py above
-	if use pyqt5; then
-		einfo "Testing with ${EPYTHON} and QT_API=PyQt5"
-		QT_API="pyqt5" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6]
-	fi
-	if use pyqt6; then
-		einfo "Testing with ${EPYTHON} and QT_API=PyQt6"
-		QT_API="pyqt6" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6] \
-			--deselect qtpy/tests/test_qtsensors.py::test_qtsensors
-			# Qt6Sensors not yet packaged and enabled in PyQt6 ebuild
-	fi
-	if use pyside2; then
-		einfo "Testing with ${EPYTHON} and QT_API=PySide2"
-		QT_API="pyside2" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6]
-	fi
-	if use pyside6; then
-		einfo "Testing with ${EPYTHON} and QT_API=PySide6"
-		QT_API="pyside6" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_qtsensors.py::test_qtsensors
-			# Qt6Sensors not yet packaged and enabled in PySide6 ebuild
-	fi
+	for QT_API in PyQt{5,6} PySide{2,6}; do
+		if use "${QT_API,,}"; then
+			EPYTEST_DESELECT=()
+			for other in PyQt{5,6} PySide{2,6}; do
+				if [[ ${QT_API} != ${other} ]]; then
+					EPYTEST_DESELECT+=(
+						"qtpy/tests/test_main.py::test_qt_api_environ[${other}]"
+					)
+				fi
+			done
+
+			einfo "Testing with ${EPYTHON} and QT_API=${QT_API}"
+			nonfatal epytest ||
+				die -n "Tests failed with ${EPYTHON} and QT_API=${QT_API}" ||
+				return 1
+		fi
+	done
+}
+
+src_test() {
+	virtx distutils-r1_src_test
 }
 
 pkg_postinst() {

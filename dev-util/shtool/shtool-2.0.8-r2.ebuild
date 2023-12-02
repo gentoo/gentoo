@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ~s390 sparc x86"
 
 DEPEND="dev-lang/perl"
 DOCS=( AUTHORS ChangeLog README THANKS VERSION NEWS RATIONAL )

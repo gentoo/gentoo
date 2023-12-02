@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/prometheus/promu/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 MIT"
@@ -34,6 +34,10 @@ src_unpack() {
 }
 
 src_compile() {
+	if use x86; then
+		#917577 pie breaks build on x86
+		GOFLAGS=${GOFLAGS//-buildmode=pie}
+	fi
 	emake build
 }
 

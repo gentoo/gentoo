@@ -1,0 +1,15 @@
+Most implicit function declarations left come from the included libiberty.
+Add it to eautoreconf to regenerate its tests.
+https://bugs.gentoo.org/898594
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -874,7 +874,7 @@
+ test $OPT_DISABLE_PACKIHX = 0 && AC_CONFIG_SUBDIRS(support/packihx)
+ test $OPT_DISABLE_UCSIM   = 0 && AC_CONFIG_SUBDIRS(sim/ucsim)
+ test $OPT_DISABLE_SDCDB   = 0 && AC_CONFIG_SUBDIRS(debugger/mcs51)
+-test $OPT_DISABLE_SDBINUTILS = 0 && AC_CONFIG_SUBDIRS(support/sdbinutils)
++test $OPT_DISABLE_SDBINUTILS = 0 && AC_CONFIG_SUBDIRS(support/sdbinutils support/sdbinutils/libiberty)
+ AC_CONFIG_FILES([doc/Makefile])
+ 
+ ####test $OPT_DISABLE_AVR = 0 && AC_CONFIG_FILES([src/avr/Makefile])

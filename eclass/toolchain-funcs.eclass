@@ -1216,4 +1216,18 @@ tc-get-c-rtlib() {
 	return 0
 }
 
+# @FUNCTION: tc-get-ptr-size
+# @RETURN: Size of a pointer in bytes for CHOST (e.g. 4 or 8).
+tc-get-ptr-size() {
+	$(tc-getCPP) -P - <<< __SIZEOF_POINTER__ ||
+		die "Could not determine CHOST pointer size"
+}
+
+# @FUNCTION: tc-get-build-ptr-size
+# @RETURN: Size of a pointer in bytes for CBUILD (e.g. 4 or 8).
+tc-get-build-ptr-size() {
+	$(tc-getBUILD_CPP) -P - <<< __SIZEOF_POINTER__ ||
+		die "Could not determine CBUILD pointer size"
+}
+
 fi

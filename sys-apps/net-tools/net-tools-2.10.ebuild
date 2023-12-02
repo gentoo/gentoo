@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Standard Linux networking tools"
-HOMEPAGE="http://net-tools.sourceforge.net/"
+HOMEPAGE="https://net-tools.sourceforge.io/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -15,7 +15,7 @@ HOMEPAGE="https://techbase.kde.org/Kirigami"
 EGIT_REPO_URI="${EGIT_REPO_URI/${PN}2/${PN}}"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="+openmp"
 
 # requires package to already be installed

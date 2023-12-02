@@ -18,7 +18,7 @@ LICENSE="BSD"
 # (2.2.0 needed a minor bump due to undocumented but breaking ABI changes, just to be sure.
 #  https://github.com/cisco/openh264/issues/3459 )
 SLOT="0/7"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin test utils"
 
 RESTRICT="bindist !test? ( test )"

@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# KDE not keyworded here
+kde
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# dev-db/redis fails test suite on BE at least
+redis
+
 # matoro <matoro_gentoo@matoro.tk> (2023-03-07)
 # GPU-related USE flags.  While hardware with PCIe host
 # capabilities exists, mask these by default to reduce burden
@@ -236,6 +244,7 @@ smi
 # Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # We don't have sys-devel/llvm
 llvm
+llvm-libunwind
 
 # Matt Turner <mattst88@gentoo.org> (2011-06-14)
 # pdfannotextractor needs java

@@ -26,6 +26,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
+	vulkan? ( dev-util/vulkan-headers )
 "
 
 CMAKE_SKIP_TESTS=(

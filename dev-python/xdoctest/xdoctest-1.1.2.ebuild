@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 # dev-python/nbformat-5.1.{0..2} did not install package data
 BDEPEND="

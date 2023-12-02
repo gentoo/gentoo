@@ -141,6 +141,8 @@ src_prepare() {
 
 			lsfd/mkfds-symlink
 			lsfd/mkfds-rw-character-device
+			# Fails with network-sandbox at least in nspawn
+			lsfd/option-inet
 		)
 
 		local known_failing_test

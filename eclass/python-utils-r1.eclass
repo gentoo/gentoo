@@ -1362,38 +1362,47 @@ epytest() {
 		# count is more precise when we're dealing with a large number
 		# of tests
 		-o console_output_style=count
-		# disable the undesirable-dependency plugins by default to
-		# trigger missing argument strips.  strip options that require
-		# them from config files.  enable them explicitly via "-p ..."
-		# if you *really* need them.
-		-p no:cov
-		-p no:flake8
-		-p no:flakes
-		-p no:pylint
-		# sterilize pytest-markdown as it runs code snippets from all
-		# *.md files found without any warning
-		-p no:markdown
-		# pytest-sugar undoes everything that's good about pytest output
-		# and makes it hard to read logs
-		-p no:sugar
-		# pytest-xvfb automatically spawns Xvfb for every test suite,
-		# effectively forcing it even when we'd prefer the tests
-		# not to have DISPLAY at all, causing crashes sometimes
-		# and causing us to miss missing virtualx usage
-		-p no:xvfb
-		# intrusive packages that break random test suites
-		-p no:pytest-describe
-		-p no:plus
-		-p no:tavern
 	)
+
+	if [[ ! ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
+		args+=(
+			# disable the undesirable-dependency plugins by default to
+			# trigger missing argument strips.  strip options that require
+			# them from config files.  enable them explicitly via "-p ..."
+			# if you *really* need them.
+			-p no:cov
+			-p no:flake8
+			-p no:flakes
+			-p no:pylint
+			# sterilize pytest-markdown as it runs code snippets from all
+			# *.md files found without any warning
+			-p no:markdown
+			# pytest-sugar undoes everything that's good about pytest output
+			# and makes it hard to read logs
+			-p no:sugar
+			# pytest-xvfb automatically spawns Xvfb for every test suite,
+			# effectively forcing it even when we'd prefer the tests
+			# not to have DISPLAY at all, causing crashes sometimes
+			# and causing us to miss missing virtualx usage
+			-p no:xvfb
+			# intrusive packages that break random test suites
+			-p no:pytest-describe
+			-p no:plus
+			-p no:tavern
+		)
+	fi
 
 	if [[ ${EPYTEST_XDIST} ]]; then
 		local jobs=${EPYTEST_JOBS:-$(makeopts_jobs)}
 		if [[ ${jobs} -gt 1 ]]; then
+			if [[ ${PYTEST_PLUGINS} != *xdist.plugin* ]]; then
+				args+=(
+					# explicitly enable the plugin, in case the ebuild was
+					# using PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+					-p xdist
+				)
+			fi
 			args+=(
-				# explicitly enable the plugin, in case the ebuild was using
-				# PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-				-p xdist
 				-n "${jobs}"
 				# worksteal ensures that workers don't end up idle when heavy
 				# jobs are unevenly distributed

@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kscreen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 # bug #580440, last checked 5.6.3
@@ -36,7 +36,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	>=kde-plasma/layer-shell-qt-${PVCUT}:5
 	>=kde-plasma/libkscreen-${PVCUT}:5=
 	x11-libs/libX11

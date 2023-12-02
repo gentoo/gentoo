@@ -1,0 +1,34 @@
+--- a/copy-firmware.sh	2023-11-25 18:07:49.362441380 -0500
++++ b/copy-firmware.sh	2023-11-25 18:19:03.612907595 -0500
+@@ -69,7 +69,7 @@ if [ -z "$destdir" ]; then
+ 	exit 1
+ fi
+ 
+-if ! which rdfind 2>/dev/null >/dev/null; then
++if [ -n "$LINUX_FIRMWARE_DO_DEDUPE" ] && ! which rdfind 2>/dev/null >/dev/null; then
+ 	echo "ERROR: rdfind is not installed"
+ 	exit 1
+ fi
+@@ -87,13 +87,15 @@ grep -E '^(RawFile|File):' WHENCE | sed
+     fi
+ done
+ 
+-$verbose "Finding duplicate files"
+-rdfind -makesymlinks true -makeresultsfile false "$destdir" >/dev/null
+-find "$destdir" -type l | while read -r l; do
+-	target="$(realpath "$l")"
+-	$verbose "Correcting path for $l"
+-	ln -fs "$(realpath --relative-to="$(dirname "$(realpath -s "$l")")" "$target")" "$l"
+-done
++if [ -n "$LINUX_FIRMWARE_DO_DEDUPE" ]; then
++	$verbose "Finding duplicate files"
++	rdfind -makesymlinks true -makeresultsfile false "$destdir" >/dev/null
++	find "$destdir" -type l | while read -r l; do
++		target="$(realpath "$l")"
++		$verbose "Correcting path for $l"
++		ln -fs "$(realpath --relative-to="$(dirname "$(realpath -s "$l")")" "$target")" "$l"
++	done
++fi
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read f d; do

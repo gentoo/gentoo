@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~arsen/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	app-text/enchant:2

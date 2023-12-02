@@ -12,7 +12,7 @@ SRC_URI="https://github.com/linux-nvme/libnvme/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc64 ~riscv x86"
 IUSE="dbus +json keyutils python ssl test +uuid"
 RESTRICT="!test? ( test )"
 

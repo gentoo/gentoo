@@ -16,7 +16,7 @@ HOMEPAGE="https://pypi.org/project/fpylll/
 # setup.py says "or later"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 RDEPEND="sci-libs/fplll

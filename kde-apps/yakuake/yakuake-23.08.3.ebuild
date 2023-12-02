@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/yakuake/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="absolute-position"
 
 # kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
@@ -43,7 +43,7 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	x11-libs/libX11
-	absolute-position? ( >=kde-frameworks/kwayland-${KFMIN}:5 )
+	absolute-position? ( >=kde-plasma/kwayland-${KFMIN}:5 )
 "
 RDEPEND="${DEPEND}"
 

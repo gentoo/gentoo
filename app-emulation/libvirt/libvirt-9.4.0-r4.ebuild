@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.4.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-9.6.0-storage-Fix-returning-of-locked-objects-from-virStor.patch
+	"${FILESDIR}"/${PN}-9.10.0-virxml-include-libxml-xmlsave.h-for-xmlIndentTreeOut.patch
 )
 
 pkg_setup() {

@@ -24,7 +24,7 @@ HOMEPAGE="https://github.com/dracutdevs/dracut/wiki"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
@@ -82,11 +82,6 @@ src_configure() {
 	tc-export CC PKG_CONFIG
 
 	edo ./configure "${myconf[@]}"
-
-	if [[ ${PV} != 9999 && ! -f dracut-version.sh ]] ; then
-		# Source tarball from github doesn't include this file
-		echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
-	fi
 }
 
 src_test() {

@@ -11,7 +11,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.6-patchset-1.tar.xz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.6-patchset-5.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -172,6 +172,7 @@ src_configure() {
 		$(qt_feature pdfium qtpdf_build)
 		$(qt_feature qml qtpdf_quick_build)
 		$(qt_feature widgets qtpdf_widgets_build)
+		$(usev pdfium -DQT_FEATURE_pdf_v8=ON)
 
 		-DQT_FEATURE_qtwebengine_build=ON
 		$(qt_feature qml qtwebengine_quick_build)
@@ -202,7 +203,7 @@ src_configure() {
 		# cooperate with new major ffmpeg versions (bug #831487)
 		-DQT_FEATURE_webengine_system_ffmpeg=OFF
 
-		# preemptively using bundled to avoid complications, may revisit
+		# use bundled re2 to avoid complications, may revisit
 		# (see discussions in https://github.com/gentoo/gentoo/pull/32281)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
@@ -258,6 +259,8 @@ src_test() {
 		tst_qwebengineview
 		# certs verfication seems flaky and gives expiration warnings
 		tst_qwebengineclientcertificatestore
+		# test is misperformed when qtbase is built USE=-test?
+		tst_touchinput
 	)
 
 	# prevent using the system's qtwebengine

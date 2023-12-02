@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/milou"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="
@@ -28,6 +28,6 @@ DEPEND="
 	>=kde-frameworks/kitemmodels-${KFMIN}:5
 	>=kde-frameworks/krunner-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"

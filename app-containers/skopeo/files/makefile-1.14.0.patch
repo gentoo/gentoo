@@ -1,0 +1,38 @@
+# Patch by Rahil Bhimjiani (IRC: rahilarious) (rahil3108@gmail.com)
+#
+# Rationale behind this patch:
+# 1. We don't install these files (policy.json default.yaml) as part of skopeo because podman, buildah, et. al need them as well, and there's no need for those to depend on skopeo just for configuration. Rely on app-containers/containers-common which has them split out instead. See https://bugs.gentoo.org/849863
+# 2. Remove install-*: because it tries to (re)compile stuff (which we already built in src_compile) on install commands. src_install should only install, not compile
+#
+#
+--- a/Makefile
++++ b/Makefile
+@@ -158,23 +158,20 @@
+ 	rm -rf bin docs/*.1 completions/
+ 
+ install: install-binary install-docs install-completions
+-	install -d -m 755 ${DESTDIR}${LOOKASIDEDIR}
+ 	install -d -m 755 ${DESTDIR}${CONTAINERSCONFDIR}
+-	install -m 644 default-policy.json ${DESTDIR}${CONTAINERSCONFDIR}/policy.json
+ 	install -d -m 755 ${DESTDIR}${REGISTRIESDDIR}
+-	install -m 644 default.yaml ${DESTDIR}${REGISTRIESDDIR}/default.yaml
+ 
+-install-binary: bin/skopeo
++install-binary:
+ 	install -d -m 755 ${DESTDIR}${BINDIR}
+ 	install -m 755 bin/skopeo ${DESTDIR}${BINDIR}/skopeo
+ 
+-install-docs: docs
++install-docs:
+ ifneq ($(DISABLE_DOCS), 1)
+ 	install -d -m 755 ${DESTDIR}${MANDIR}/man1
+ 	install -m 644 docs/*.1 ${DESTDIR}${MANDIR}/man1
+ endif
+ 
+-install-completions: completions
++install-completions:
+ 	install -d -m 755 ${DESTDIR}${BASHINSTALLDIR}
+ 	install -m 644 completions/bash/skopeo ${DESTDIR}${BASHINSTALLDIR}
+ 	install -d -m 755 ${DESTDIR}${ZSHINSTALLDIR}
+ 	install -m 644 completions/zsh/_skopeo ${DESTDIR}${ZSHINSTALLDIR}
+ 	install -d -m 755 ${DESTDIR}${FISHINSTALLDIR}

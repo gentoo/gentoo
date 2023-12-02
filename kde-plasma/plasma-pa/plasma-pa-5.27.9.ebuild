@@ -12,7 +12,7 @@ DESCRIPTION="Plasma applet for audio volume management using PulseAudio"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="
@@ -27,7 +27,7 @@ DEPEND="
 	>=kde-frameworks/kglobalaccel-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	media-libs/libcanberra
 	media-libs/libpulse
 "
