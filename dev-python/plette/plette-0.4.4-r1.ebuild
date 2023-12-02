@@ -18,7 +18,7 @@ SRC_URI="https://github.com/sarugaku/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	dev-python/cerberus[${PYTHON_USEDEP}]
