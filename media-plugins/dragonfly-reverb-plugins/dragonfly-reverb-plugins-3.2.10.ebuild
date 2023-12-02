@@ -12,11 +12,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXrandr
 	media-libs/libglvnd
 	virtual/jack
+	x11-libs/cairo
+	x11-libs/libX11
+	x11-libs/libXcursor
+	x11-libs/libXext
+	x11-libs/libXext
+	x11-libs/libXrandr
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
