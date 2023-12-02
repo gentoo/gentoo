@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 BDEPEND="app-arch/xz-utils"
 # Mixing libguestfs versions causes weird problems, bug #501588
