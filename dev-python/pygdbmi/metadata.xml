@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-	</maintainer>
 	<maintainer type="person">
 		<email>parona@protonmail.com</email>
 		<name>Alfred Wingate</name>
@@ -11,6 +8,9 @@
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
