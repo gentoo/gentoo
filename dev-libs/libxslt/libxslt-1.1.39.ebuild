@@ -39,6 +39,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libxslt/xsltconfig.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libxml2-2.11-tests.patch
+)
+
 src_prepare() {
 	default
 
