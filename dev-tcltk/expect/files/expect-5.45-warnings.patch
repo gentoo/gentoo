@@ -1,0 +1,684 @@
+https://bugs.gentoo.org/918972
+https://core.tcl-lang.org/expect/info/35d0b2bdfecd634d
+--- a/Dbg.c
++++ b/Dbg.c
+@@ -173,12 +173,12 @@ Tcl_Obj *objPtr;
+     }
+ }
+ 
+-/* return 1 to break, 0 to continue */
++/* return 1 to break, 0 to continue 
++ * cmd: command about to be executed
++ * bp: breakpoint to test
++ */
+ static int
+-breakpoint_test(interp,cmd,bp)
+-Tcl_Interp *interp;
+-char *cmd;		/* command about to be executed */
+-struct breakpoint *bp;	/* breakpoint to test */
++breakpoint_test(Tcl_Interp *interp,const char *cmd,struct breakpoint *bp)
+ {
+     if (bp->re) {
+         int found = 0;
+@@ -239,7 +239,7 @@ TclGetFrame2(interp, origFramePtr, string, framePtrPtr, dir)
+ {
+     Interp *iPtr = (Interp *) interp;
+     int level, result;
+-    CallFrame *framePtr;	/* frame currently being searched */
++    CallFrame *framePtr = NULL;	/* frame currently being searched */
+ 
+     CallFrame *curFramePtr = iPtr->varFramePtr;
+ 
+@@ -302,7 +302,6 @@ TclGetFrame2(interp, origFramePtr, string, framePtrPtr, dir)
+     return result;
+ }
+ 
+-
+ static char *printify(s)
+ char *s;
+ {
+@@ -658,6 +657,8 @@ debugger_trap(clientData,interp,level,command,commandInfo,objc,objv)
+ 		if (goalFramePtr != iPtr->varFramePtr) goto finish;
+ 		goto start_interact;
+     /* DANGER: unhandled cases! none, up, down, where */
++	default:
++		break; /* Silence compiler warning */
+ 	}
+ 
+ start_interact:
+@@ -716,6 +717,8 @@ end_interact:
+ 	case where:
+ 	PrintStack(interp,iPtr->varFramePtr,viewFramePtr,objc,objv,level_text);
+ 		break;
++	default:
++		break; /* Silence compiler warning */
+ 	}
+ 
+ 	/* restore view and restart interactor */
+--- a/exp_chan.c
++++ b/exp_chan.c
+@@ -58,17 +58,14 @@ static int		ExpGetHandleProc _ANSI_ARGS_((ClientData instanceData,
+  */
+ 
+ Tcl_ChannelType expChannelType = {
+-    "exp",				/* Type name. */
+-    ExpBlockModeProc,			/* Set blocking/nonblocking mode.*/
+-    ExpCloseProc,			/* Close proc. */
+-    ExpInputProc,			/* Input proc. */
+-    ExpOutputProc,			/* Output proc. */
+-    NULL,				/* Seek proc. */
+-    NULL,				/* Set option proc. */
+-    NULL,				/* Get option proc. */
+-    ExpWatchProc,			/* Initialize notifier. */
+-    ExpGetHandleProc,			/* Get OS handles out of channel. */
+-    NULL,				/* Close2 proc */
++    .typeName = "exp",			/* Type name. */
++    .version = TCL_CHANNEL_VERSION_2,
++    .blockModeProc = ExpBlockModeProc,	/* Set blocking/nonblocking mode.*/
++    .closeProc = ExpCloseProc,		/* Close proc. */
++    .inputProc = ExpInputProc,		/* Input proc. */
++    .outputProc = ExpOutputProc,	/* Output proc. */
++    .watchProc = ExpWatchProc,		/* Initialize notifier. */
++    .getHandleProc = ExpGetHandleProc	/* Get OS handles out of channel. */
+ };
+ 
+ typedef struct ThreadSpecificData {
+@@ -437,10 +434,10 @@ ExpGetHandleProc(instanceData, direction, handlePtr)
+     ExpState *esPtr = (ExpState *) instanceData;
+ 
+     if (direction & TCL_WRITABLE) {
+-	*handlePtr = (ClientData) esPtr->fdin;
++	*handlePtr = (ClientData)(intptr_t)esPtr->fdin;
+     }
+     if (direction & TCL_READABLE) {
+-	*handlePtr = (ClientData) esPtr->fdin;
++	*handlePtr = (ClientData)(intptr_t)esPtr->fdin;
+     } else {
+ 	return TCL_ERROR;
+     }
+--- a/exp_clib.c
++++ b/exp_clib.c
+@@ -56,6 +56,10 @@ would appreciate credit if this program or parts of it are used.
+ # endif
+ #endif
+ 
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
+ #include <signal.h>
+ /*#include <memory.h> - deprecated - ANSI C moves them into string.h */
+ #include "string.h"
+@@ -122,6 +126,7 @@ extern unsigned long	strtoul _ANSI_ARGS_((CONST char *string,
+ 
+ #include <tcl.h>
+ #include "expect.h"
++#include "exp_command.h"
+ #define TclRegError exp_TclRegError
+ 
+ /*
+@@ -1814,6 +1819,13 @@ int fd;
+ 
+ }
+ 
++/* ultrix (at least 4.1-2) fails to obtain controlling tty if setsid */
++/* is called.  setpgrp works though.  */
++#if defined(POSIX) && !defined(ultrix) || defined(__convex__)
++#define DO_SETSID
++#endif
++
++#if !defined(DO_SETSID) && (!defined(SYSV3) || defined(CRAY)) /* { */
+ static
+ void
+ exp_setpgrp()
+@@ -1830,6 +1842,7 @@ exp_setpgrp()
+     (void) setpgrp(0,0);
+ #endif
+ }
++#endif /* } */
+ 
+ /* returns fd of master side of pty */
+ int
+@@ -1840,7 +1853,9 @@ char *argv[];	/* some compiler complains about **argv? */
+ 	int cc;
+ 	int errorfd;	/* place to stash fileno(stderr) in child */
+ 			/* while we're setting up new stderr */
++#if defined(TIOCNOTTY) && !defined(SYSV3) && !defined(DO_SETSID)
+ 	int ttyfd;
++#endif
+ 	int sync_fds[2];
+ 	int sync2_fds[2];
+ 	int status_pipe[2];
+@@ -2015,15 +2030,6 @@ when trapping, see below in child half of fork */
+ 	(void) close(exp_pty[0]);
+ #endif
+ 
+-/* ultrix (at least 4.1-2) fails to obtain controlling tty if setsid */
+-/* is called.  setpgrp works though.  */
+-#if defined(POSIX) && !defined(ultrix)
+-#define DO_SETSID
+-#endif
+-#ifdef __convex__
+-#define DO_SETSID
+-#endif
+-
+ #ifdef DO_SETSID
+ 	setsid();
+ #else
+@@ -2451,7 +2457,7 @@ struct exp_case *ecases;
+ 	int return_val;
+ 	int sys_error = 0;
+ #define return_normally(x)	{return_val = x; goto cleanup;}
+-#define return_errno(x)	{sys_error = x; goto cleanup;}
++#define return_errno(x)	{sys_error = x; return_val = -1; goto cleanup;}
+ 
+ 	f = fdfp2f(fd,fp);
+ 	if (!f) return_errno(ENOMEM);
+@@ -2860,7 +2866,9 @@ char *program;
+ int
+ exp_disconnect()
+ {
++#if defined(TIOCNOTTY) && !defined(SYSV3) && !defined(POSIX)
+ 	int ttyfd;
++#endif
+ 
+ #ifndef EALREADY
+ #define EALREADY 37
+--- a/exp_command.c
++++ b/exp_command.c
+@@ -532,6 +532,13 @@ set_pgrp(int fd)
+ }
+ #endif
+ 
++/* ultrix (at least 4.1-2) fails to obtain controlling tty if setsid */
++/* is called.  setpgrp works though.  */
++#if defined(POSIX) && !defined(ultrix) || defined(__convex__)
++#define DO_SETSID
++#endif
++
++#if !defined(DO_SETSID) && (!defined(SYSV3) || defined(CRAY)) /* { */
+ static
+ void
+ expSetpgrp()
+@@ -548,7 +555,7 @@ expSetpgrp()
+     (void) setpgrp(0,0);
+ #endif
+ }
+-
++#endif /* } */
+ 
+ /*ARGSUSED*/
+ static void
+@@ -581,9 +588,7 @@ Exp_SpawnObjCmd(
+     ExpState *esPtr = 0;
+     int slave;
+     int pid;
+-#ifdef TIOCNOTTY
+-    /* tell Saber to ignore non-use of ttyfd */
+-    /*SUPPRESS 591*/
++#if defined(TIOCNOTTY) && !defined(SYSV3) && !defined(DO_SETSID)
+     int ttyfd;
+ #endif /* TIOCNOTTY */
+     int errorfd;	/* place to stash fileno(stderr) in child */
+@@ -903,13 +908,17 @@ Exp_SpawnObjCmd(
+ 	    if (TCL_ERROR == Tcl_GetChannelHandle(channel, TCL_READABLE, &rfdc)) {
+ 		return TCL_ERROR;
+ 	    }
+-	    rfd = (int)(long) rfdc;
++	    rfd = (int)(intptr_t) rfdc;
++	} else {
++	    rfd = -1;
+ 	}
+ 	if (mode & TCL_WRITABLE) {
+ 	    if (TCL_ERROR == Tcl_GetChannelHandle(channel, TCL_WRITABLE, &wfdc)) {
+ 		return TCL_ERROR;
+ 	    }
+-	    wfd = (int)(long) wfdc;
++	    wfd = (int)(intptr_t) wfdc;
++	} else {
++	    wfd = -1;
+ 	}
+ 	master = ((mode & TCL_READABLE)?rfd:wfd);
+ 
+@@ -1126,15 +1135,6 @@ Exp_SpawnObjCmd(
+     (void) close(master);
+ #endif
+ 
+-/* ultrix (at least 4.1-2) fails to obtain controlling tty if setsid */
+-/* is called.  setpgrp works though.  */
+-#if defined(POSIX) && !defined(ultrix)
+-#define DO_SETSID
+-#endif
+-#ifdef __convex__
+-#define DO_SETSID
+-#endif
+-
+ #ifdef DO_SETSID
+     setsid();
+ #else
+@@ -1976,7 +1976,7 @@ Exp_SendObjCmd(
+ #define SEND_STYLE_BREAK	0x20
+     int send_style = SEND_STYLE_PLAIN;
+     int want_cooked = TRUE;
+-    char *string;		/* string to send */
++    char *string = NULL;		/* string to send */
+     int len = -1;		/* length of string to send */
+     int zeros;		/* count of how many ascii zeros to send */
+ 
+@@ -3114,9 +3114,7 @@ Exp_DisconnectObjCmd(
+ {
+     ThreadSpecificData *tsdPtr = TCL_TSD_INIT(&dataKey);
+     
+-#ifdef TIOCNOTTY
+-    /* tell CenterLine to ignore non-use of ttyfd */
+-    /*SUPPRESS 591*/
++#if defined(TIOCNOTTY) && !defined(SYSV3) && !defined(DO_SETSID)
+     int ttyfd;
+ #endif /* TIOCNOTTY */
+ 
+--- a/exp_event.c
++++ b/exp_event.c
+@@ -24,6 +24,7 @@ NIST would appreciate credit if this program or parts of it are used.
+ #include "exp_prog.h"
+ #include "exp_command.h"	/* for ExpState defs */
+ #include "exp_event.h"
++#include "exp_log.h"
+ 
+ typedef struct ThreadSpecificData {
+     int rr;		/* round robin ptr */
+@@ -120,6 +121,9 @@ exp_unblock_background_channelhandler(esPtr)
+ 	case disarm_req_while_blocked:
+ 	    exp_disarm_background_channelhandler_force(esPtr);
+ 	    break;
++	default:
++	    expDiagLog("Unexpected value %d of bg-handler in %s",
++		esPtr->bg_status, __func__);
+     }
+ }
+ 
+--- a/exp_inter.c
++++ b/exp_inter.c
+@@ -404,8 +404,8 @@ intEcho(
+     int matchBytes)
+ {
+     int seenBytes;	/* either printed or echoed */
+-    int echoBytes;
+-    int offsetBytes;
++    int echoBytes = 0;
++    int offsetBytes = 0;
+ 
+     /* write is unlikely to fail, since we just read from same descriptor */
+     seenBytes = esPtr->printed + esPtr->echoed;
+@@ -706,9 +706,6 @@ inter_updateproc(
+ 			
+ #define finish(x)	{ status = x; goto done; }
+ 
+-static char return_cmd[] = "return";
+-static char interpreter_cmd[] = "interpreter";
+-
+ /*ARGSUSED*/
+ int
+ Exp_InteractObjCmd(
+@@ -1344,15 +1341,15 @@ Exp_InteractObjCmd(
+ 	int rc;	/* return code from ready.  This is further refined by matcher. */
+ 	int cc;			/* # of chars from read() */
+ 	struct action *action = 0;
+-	time_t previous_time;
++	time_t previous_time = 0;
+ 	time_t current_time;
+-	int matchLen;	/* # of chars matched */
++	int matchLen = 0;	/* # of chars matched */
+ 	int skip;		/* # of chars not involved in match */
+ 	int print;		/* # of chars to print */
+ 	int oldprinted;		/* old version of u->printed */
+ 	int change;		/* if action requires cooked mode */
+ 	int attempt_match = TRUE;
+-	struct input *soonest_input;
++	struct input *soonest_input = NULL;
+ 	int timeout;	/* current as opposed to default_timeout */
+ 	Tcl_Time temp_time;
+ 
+--- a/exp_log.c
++++ b/exp_log.c
+@@ -90,6 +90,8 @@ expWriteBytesAndLogIfTtyU(esPtr,buf,lenChars)
+ 
+     if (esPtr->valid)
+ 	wc = expWriteCharsUni(esPtr,buf,lenChars);
++    else
++	wc = -1;
+ 
+     if (tsdPtr->logChannel && ((esPtr->fdout == 1) || expDevttyIs(esPtr))) {
+       Tcl_DString ds;
+--- a/exp_pty.c
++++ b/exp_pty.c
+@@ -135,7 +135,9 @@ int timeout;
+ }
+ 
+ static RETSIGTYPE (*oldAlarmHandler)();
++#ifndef O_NOCTTY
+ static RETSIGTYPE (*oldHupHandler)();
++#endif
+ static time_t current_time;	/* time when testing began */
+ 
+ /* if TRUE, begin testing, else end testing */
+--- a/exp_trap.c
++++ b/exp_trap.c
+@@ -298,11 +298,10 @@ char *s;
+ 
+ /*ARGSUSED*/
+ int
+-Exp_TrapObjCmd(clientData, interp, objc, objv)
+-ClientData clientData;
+-Tcl_Interp *interp;
+-int objc;
+-Tcl_Obj *CONST objv[];
++Exp_TrapObjCmd(ClientData clientData,
++	       Tcl_Interp *interp,
++	       int objc,
++	       Tcl_Obj *CONST objv[])
+ {
+ 	char *action = 0;
+ 	int n;		/* number of signals in list */
+@@ -320,7 +319,9 @@ Tcl_Obj *CONST objv[];
+ 
+ 	objc--; objv++;
+ 
+-	while (objc) {
++	if (objc <= 0) goto usage_error;
++
++	do {
+ 	  arg = Tcl_GetString(*objv);
+ 
+ 		if (streq(arg,"-code")) {
+@@ -339,7 +340,7 @@ Tcl_Obj *CONST objv[];
+ 			objc--; objv++;
+ 			show_max = TRUE;
+ 		} else break;
+-	}
++	} while(objc);
+ 
+ 	if (show_name || show_number || show_max) {
+ 		if (objc > 0) goto usage_error;
+--- a/exp_tty.c
++++ b/exp_tty.c
+@@ -585,18 +585,20 @@ Exp_SystemCmd(
+ 	int total_len = 0, arg_len;
+ 
+ 	int stty_args_recognized = TRUE;
+-	int cmd_is_stty = FALSE;
++	int cmd_is_stty;
+ 	int cooked = FALSE;
+-	int was_raw, was_echo;
++	const char *was_raw = "-raw", *was_echo = "-echo";
+ 
+ 	if (argc == 1) return TCL_OK;
+ 
+-	if (streq(argv[1],"stty")) {
++	cmd_is_stty = streq(argv[1],"stty");
++	if (cmd_is_stty) {
+ 		expDiagLogU("system stty is deprecated, use stty\r\n");
+ 
+-		cmd_is_stty = TRUE;
+-		was_raw = exp_israw();
+-		was_echo = exp_isecho();
++		if (exp_israw())
++			was_raw++;
++		if (exp_isecho())
++			was_echo++;
+ 	}
+ 
+ 	if (argc > 2 && cmd_is_stty) {
+@@ -635,11 +637,7 @@ Exp_SystemCmd(
+ 			    return(TCL_ERROR);
+ 			}
+ 			if (cmd_is_stty) {
+-			    char buf [11];
+-			    sprintf(buf,"%sraw %secho",
+-				    (was_raw?"":"-"),
+-				    (was_echo?"":"-"));
+-			    Tcl_SetResult (interp, buf, TCL_VOLATILE);
++			    Tcl_AppendResult (interp, was_raw, " ", was_echo, NULL);
+ 			}
+ 			return(TCL_OK);
+ 		}
+@@ -699,11 +697,7 @@ Exp_SystemCmd(
+ 	}
+ 
+ 	if (cmd_is_stty) {
+-	    char buf [11];
+-	    sprintf(buf,"%sraw %secho",
+-		    (was_raw?"":"-"),
+-		    (was_echo?"":"-"));
+-	    Tcl_SetResult (interp, buf, TCL_VOLATILE);
++	    Tcl_AppendResult (interp, was_raw, " ", was_echo, NULL);
+ 	}
+ 
+ /* following macros stolen from Tcl's tclUnix.h file */
+--- a/exp_win.c
++++ b/exp_win.c
+@@ -78,9 +78,9 @@ typedef struct {
+ static exp_winsize winsize = {0, 0};
+ static exp_winsize win2size = {0, 0};
+ 
+-int exp_window_size_set(fd)
+-int fd;
++int exp_window_size_set(int fd)
+ {
++	return
+ #ifdef TIOCSWINSZ
+ 	ioctl(fd,TIOCSWINSZ,&winsize);
+ #endif
+@@ -89,9 +89,9 @@ int fd;
+ #endif
+ }
+ 
+-int exp_window_size_get(fd)
+-int fd;
++int exp_window_size_get(int fd)
+ {
++	return
+ #ifdef TIOCGWINSZ
+ 	ioctl(fd,TIOCGWINSZ,&winsize);
+ #endif
+@@ -105,8 +105,7 @@ int fd;
+ }
+ 
+ void
+-exp_win_rows_set(rows)
+-char *rows;
++exp_win_rows_set(const char *rows)
+ {
+ 	winsize.rows = atoi(rows);
+ 	exp_window_size_set(exp_dev_tty);
+@@ -122,8 +121,7 @@ exp_win_rows_get()
+ }
+ 
+ void
+-exp_win_columns_set(columns)
+-char *columns;
++exp_win_columns_set(const char *columns)
+ {
+ 	winsize.columns = atoi(columns);
+ 	exp_window_size_set(exp_dev_tty);
+@@ -142,8 +140,8 @@ exp_win_columns_get()
+  * separate copy of everything above - used for handling user stty requests
+  */
+ 
+-int exp_win2_size_set(fd)
+-int fd;
++static void
++exp_win2_size_set(int fd)
+ {
+ #ifdef TIOCSWINSZ
+ 			ioctl(fd,TIOCSWINSZ,&win2size);
+@@ -153,8 +151,8 @@ int fd;
+ #endif
+ }
+ 
+-int exp_win2_size_get(fd)
+-int fd;
++static void
++exp_win2_size_get(int fd)
+ {
+ #ifdef TIOCGWINSZ
+ 	ioctl(fd,TIOCGWINSZ,&win2size);
+@@ -165,9 +163,7 @@ int fd;
+ }
+ 
+ void
+-exp_win2_rows_set(fd,rows)
+-int fd;
+-char *rows;
++exp_win2_rows_set(int fd,const char *rows)
+ {
+ 	exp_win2_size_get(fd);
+ 	win2size.rows = atoi(rows);
+@@ -175,8 +171,7 @@ char *rows;
+ }
+ 
+ char*
+-exp_win2_rows_get(fd)
+-int fd;
++exp_win2_rows_get(int fd)
+ {
+     static char rows [20];
+ 	exp_win2_size_get(fd);
+@@ -189,9 +184,7 @@ int fd;
+ }
+ 
+ void
+-exp_win2_columns_set(fd,columns)
+-int fd;
+-char *columns;
++exp_win2_columns_set(int fd,const char *columns)
+ {
+ 	exp_win2_size_get(fd);
+ 	win2size.columns = atoi(columns);
+@@ -199,8 +192,7 @@ char *columns;
+ }
+ 
+ char*
+-exp_win2_columns_get(fd)
+-int fd;
++exp_win2_columns_get(int fd)
+ {
+     static char columns [20];
+ 	exp_win2_size_get(fd);
+--- a/exp_win.h
++++ b/exp_win.h
+@@ -11,12 +11,12 @@ would appreciate credit if you use this file or parts of it.
+ int exp_window_size_set();
+ int exp_window_size_get();
+ 
+-void  exp_win_rows_set    _ANSI_ARGS_ ((char* rows));
++void  exp_win_rows_set    _ANSI_ARGS_ ((const char* rows));
+ char* exp_win_rows_get    _ANSI_ARGS_ ((void));
+-void  exp_win_columns_set _ANSI_ARGS_ ((char* columns));
++void  exp_win_columns_set _ANSI_ARGS_ ((const char* columns));
+ char* exp_win_columns_get _ANSI_ARGS_ ((void));
+ 
+-void  exp_win2_rows_set    _ANSI_ARGS_ ((int fd, char* rows));
++void  exp_win2_rows_set    _ANSI_ARGS_ ((int fd, const char* rows));
+ char* exp_win2_rows_get    _ANSI_ARGS_ ((int fd));
+-void  exp_win2_columns_set _ANSI_ARGS_ ((int fd, char* columns));
++void  exp_win2_columns_set _ANSI_ARGS_ ((int fd, const char* columns));
+ char* exp_win2_columns_get _ANSI_ARGS_ ((int fd));
+--- a/expect.c
++++ b/expect.c
+@@ -2537,7 +2537,7 @@ Exp_ExpectObjCmd(
+     struct exp_state_list *state_list;	/* list of ExpStates to watch */
+     struct exp_state_list *slPtr;	/* temp for interating over state_list */
+     ExpState **esPtrs;
+-    int mcount;			/* number of esPtrs to watch */
++    int mcount = 0;		/* number of esPtrs to watch */
+ 
+     struct eval_out eo;		/* final case of interest */
+ 
+@@ -2546,7 +2546,7 @@ Exp_ExpectObjCmd(
+     time_t start_time_total;	/* time at beginning of this procedure */
+     time_t start_time = 0;	/* time when restart label hit */
+     time_t current_time = 0;	/* current time (when we last looked)*/
+-    time_t end_time;		/* future time at which to give up */
++    time_t end_time = 0;	/* future time at which to give up */
+ 
+     ExpState *last_esPtr;	/* for differentiating when multiple f's */
+ 				/* to print out better debugging messages */
+@@ -2554,7 +2554,7 @@ Exp_ExpectObjCmd(
+     int first_time = 1;		/* if not "restarted" */
+     
+     int key;			/* identify this expect command instance */
+-    int configure_count;	/* monitor exp_configure_count */
++    int configure_count = 0;	/* monitor exp_configure_count */
+ 
+     int timeout;		/* seconds */
+     int remtime;		/* remaining time in timeout */
+@@ -2947,12 +2947,14 @@ process_di (
+ 	} else {
+ 	    esPtr = expStateFromChannelName(interp,chan,0,0,0,(char*)cmd);
+ 	}
+-	if (!esPtr) return(TCL_ERROR);
++	if (!esPtr)
++	    return(TCL_ERROR);
++
++	*esOut = esPtr;
+     }
+ 
+     *at = i;
+     *Default = def;
+-    *esOut = esPtr;
+     return TCL_OK;
+ }
+ 
+--- a/pty_termios.c
++++ b/pty_termios.c
+@@ -71,6 +71,14 @@ with openpty which supports 4000 while ptmx supports 60. */
+ #endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#if defined(HAVE_OPENPTY)
++#include <termios.h>
++#if defined(HAVE_LIBUTIL_H)
++#include <libutil.h>
++#else
++#include <pty.h>
++#endif
++#endif
+ 
+ #ifdef NO_STDLIB_H
+ #include "../compat/stdlib.h"
+@@ -381,11 +389,14 @@ exp_init_pty()
+ int
+ exp_getptymaster()
+ {
++#if !defined(HAVE_CONVEX_GETPTY) && !defined(HAVE_PTYM) && !defined(HAVE_SCO_CLIST_PTYS) && defined(TEST_PTY)
+ 	char *hex, *bank;
+-	struct stat stat_buf;
++#endif
+ 	int master = -1;
+ 	int slave = -1;
++#ifdef HAVE_SCO_CLIST_PTYS
+ 	int num;
++#endif
+ 
+ 	exp_pty_error = 0;
+ 
+@@ -438,6 +449,7 @@ exp_getptymaster()
+ 	master = open("/dev/ptc", O_RDWR);
+ 	if (master >= 0) {
+ 		int ptynum;
++		struct stat stat_buf;
+ 
+ 		if (fstat(master, &stat_buf) < 0) {
+ 			close(master);
+@@ -644,8 +656,10 @@ exp_getptyslave(
+     int ttyinit,
+     CONST char *stty_args)
+ {
+-	int slave, slave2;
++	int slave;
++#if defined(HAVE_PTMX_BSD)
+ 	char buf[10240];
++#endif
+ 
+ 	if (0 > (slave = open(slave_name, O_RDWR))) {
+ 		static char buf[500];
