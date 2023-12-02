@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 # TODO: check licenses of plugins (USE=plugins)
 LICENSE="BSD MIT PSF-2 VTK"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="" # ~amd64 ~x86
 IUSE="boost cg examples ffmpeg mpi nvcontrol openmp offscreen plugins python +qt5 +sqlite test tk +webengine"
 
 RESTRICT="mirror test"
@@ -179,6 +179,7 @@ src_configure() {
 
 		# qt5
 		-DPARAVIEW_USE_QT="$(usex qt5)"
+		-DPARAVIEW_QT_VERSION="5"
 		-DModule_pqPython="$(usex qt5 "$(usex python)" "off")"
 		-DVTK_USE_NVCONTROL="$(usex nvcontrol)"
 		-DVTK_GROUP_ENABLE_Qt="$(usex qt5 YES NO)"
