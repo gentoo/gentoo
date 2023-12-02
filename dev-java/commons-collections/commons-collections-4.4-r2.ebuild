@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -10,11 +10,12 @@ JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="org.apache.commons:commons-collections4:4.4"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple verify-sig
 
 DESCRIPTION="Extends the JCF classes with new interfaces, implementations and utilities"
 HOMEPAGE="https://commons.apache.org/proper/commons-collections/"
-SRC_URI="mirror://apache/commons/collections/source/${PN}4-${PV}-src.tar.gz -> ${P}-src.tar.gz"
+SRC_URI="mirror://apache/commons/collections/source/${PN}4-${PV}-src.tar.gz
+	verify-sig? ( https://downloads.apache.org/commons/collections/source/${PN}4-${PV}-src.tar.gz.asc )"
 
 LICENSE="Apache-2.0"
 SLOT="4"
@@ -26,8 +27,11 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 # test? org.apache.commons:commons-lang3:3.9 -> >=dev-java/commons-lang-3.12.0:3.6
 # test? org.easymock:easymock:4.0.2 -> !!!suitable-mavenVersion-not-found!!!
 
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/commons.apache.org.asc"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
+# broken with jdk:21 - https://bugs.gentoo.org/916445
 DEPEND="
-	>=virtual/jdk-1.8:*
+	<=virtual/jdk-17:*
 	test? (
 		dev-java/easymock:3.2
 		dev-java/commons-lang:3.6
