@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="XS functions to assist in parsing sub-like syntax"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc x86"
 
 BDEPEND="
 	>=dev-perl/Module-Build-0.400.400
