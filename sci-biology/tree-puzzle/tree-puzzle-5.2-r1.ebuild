@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-C99-decls.patch
 	"${FILESDIR}"/${P}-MPI-3.0.patch
+	"${FILESDIR}"/${P}-configure-c99.patch
 )
 
 src_prepare() {
