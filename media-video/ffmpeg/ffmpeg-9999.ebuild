@@ -334,6 +334,7 @@ GPL_REQUIRED_USE="
 	)
 "
 REQUIRED_USE="
+	chromium? ( opus )
 	cuda? ( nvenc )
 	fftools_cws2fws? ( zlib )
 	glslang? ( vulkan !shaderc )
@@ -350,7 +351,7 @@ RESTRICT="
 S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
-	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}"/chromium-r2.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -382,6 +383,7 @@ src_prepare() {
 	# will ignore user's preference.
 	sed -i -e '/check_cflags -fdiagnostics-color=auto/d' configure || die
 
+	ln -snf "${FILESDIR}"/chromium.c chromium.c || die
 	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
 }
 
@@ -566,13 +568,8 @@ multilib_src_install() {
 			fi
 		done
 
-		if use chromium; then
+		use chromium &&
 			emake V=1 DESTDIR="${D}" install-libffmpeg
-
-			# When not built separately, libffmpeg has no code of
-			# its own so this QA check raises a false positive.
-			QA_FLAGS_IGNORED+=" usr/$(get_libdir)/chromium/.*"
-		fi
 	fi
 }
 
