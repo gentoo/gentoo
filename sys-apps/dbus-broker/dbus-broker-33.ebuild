@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit flag-o-matic meson
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -50,6 +50,9 @@ src_unpack() {
 fi
 
 src_configure() {
+	# Causes test failures
+	filter-flags -fno-semantic-interposition
+
 	local emesonargs=(
 		$(meson_use apparmor)
 		$(meson_use audit)

@@ -1,9 +1,9 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson
+inherit flag-o-matic meson
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -50,6 +50,9 @@ src_unpack() {
 fi
 
 src_configure() {
+	# Causes test failures
+	filter-flags -fno-semantic-interposition
+
 	local emesonargs=(
 		$(meson_use apparmor)
 		$(meson_use audit)
