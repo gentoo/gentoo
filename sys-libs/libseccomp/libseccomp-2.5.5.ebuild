@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz
-		experimental-loong? ( https://dev.gentoo.org/~xen0n/distfiles/${PN}-2.5.4-loongarch64-20220425.patch.xz )"
+		experimental-loong? ( https://dev.gentoo.org/~xen0n/distfiles/${PN}-2.5.5-loongarch64-20231204.patch.xz )"
 	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 fi
 
