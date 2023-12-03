@@ -357,10 +357,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
 
-build_separate_libffmpeg() {
-	use opencl
-}
-
 pkg_setup() {
 	# ffmpeg[chromaprint] depends on chromaprint, and chromaprint[tools] depends on ffmpeg.
 	# May cause breakage while updating, #862996, #625210, #833821.
@@ -538,20 +534,6 @@ multilib_src_configure() {
 		${EXTRA_FFMPEG_CONF}
 	echo "${@}"
 	"${@}" || die
-
-	if multilib_is_native_abi && use chromium && build_separate_libffmpeg; then
-		einfo "Configuring for Chromium"
-		mkdir -p ../chromium || die
-		pushd ../chromium >/dev/null || die
-		set -- "${@}" \
-			--disable-shared \
-			--enable-static \
-			--enable-pic \
-			--disable-opencl
-		echo "${@}"
-		"${@}" || die
-		popd >/dev/null || die
-	fi
 }
 
 multilib_src_compile() {
@@ -564,16 +546,8 @@ multilib_src_compile() {
 			fi
 		done
 
-		if use chromium; then
-			if build_separate_libffmpeg; then
-				einfo "Compiling for Chromium"
-				pushd ../chromium >/dev/null || die
-				emake V=1 libffmpeg
-				popd >/dev/null || die
-			else
-				emake V=1 libffmpeg
-			fi
-		fi
+		use chromium &&
+			emake V=1 libffmpeg
 	fi
 }
 
@@ -593,18 +567,11 @@ multilib_src_install() {
 		done
 
 		if use chromium; then
-			if build_separate_libffmpeg; then
-				einfo "Installing for Chromium"
-				pushd ../chromium >/dev/null || die
-				emake V=1 DESTDIR="${D}" install-libffmpeg
-				popd >/dev/null || die
-			else
-				emake V=1 DESTDIR="${D}" install-libffmpeg
+			emake V=1 DESTDIR="${D}" install-libffmpeg
 
-				# When not built separately, libffmpeg has no code of
-				# its own so this QA check raises a false positive.
-				QA_FLAGS_IGNORED+=" usr/$(get_libdir)/chromium/.*"
-			fi
+			# When not built separately, libffmpeg has no code of
+			# its own so this QA check raises a false positive.
+			QA_FLAGS_IGNORED+=" usr/$(get_libdir)/chromium/.*"
 		fi
 	fi
 }
