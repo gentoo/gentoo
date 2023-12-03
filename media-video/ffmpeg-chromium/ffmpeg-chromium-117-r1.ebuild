@@ -5,7 +5,7 @@ EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
-COMMIT="842ef367665edee29efa2b09f7298fa5ecabe8b5"
+COMMIT="556e3ba65d21006a8732d66e4aa8f810cee39ed0"
 DESCRIPTION="FFmpeg built specifically for codec support in Chromium-based browsers"
 HOMEPAGE="https://ffmpeg.org/"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
@@ -16,7 +16,7 @@ LICENSE="
 	gpl? ( GPL-2 )
 "
 
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 # Options to use as use_enable in the foo[:bar] form.
 # This will feed configure with $(use_enable foo bar)
@@ -27,7 +27,7 @@ FFMPEG_FLAG_MAP=(
 		+gpl
 		vaapi vdpau vulkan
 		# decoders
-		mmal +opus:libopus
+		mmal
 		nvenc:ffnvcodec
 		# Threads; we only support pthread for now but ffmpeg supports more
 		+threads:pthreads
@@ -50,13 +50,19 @@ ARM_CPU_FEATURES=(
 )
 ARM_CPU_REQUIRED_USE="
 	arm64? ( cpu_flags_arm_v8 )
-	cpu_flags_arm_v8? (  cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
-	cpu_flags_arm_neon? ( cpu_flags_arm_thumb2 cpu_flags_arm_vfp )
+	cpu_flags_arm_v8? ( cpu_flags_arm_vfpv3 cpu_flags_arm_neon )
+	cpu_flags_arm_neon? (
+		cpu_flags_arm_vfp
+		arm? ( cpu_flags_arm_thumb2 )
+	)
 	cpu_flags_arm_vfpv3? ( cpu_flags_arm_vfp )
 	cpu_flags_arm_thumb2? ( cpu_flags_arm_v6 )
-	cpu_flags_arm_v6? ( cpu_flags_arm_thumb )
+	cpu_flags_arm_v6? (
+		arm? ( cpu_flags_arm_thumb )
+	)
 "
-X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
+X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx
+					   mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
 X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
 X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_avx2? ( cpu_flags_x86_avx )
@@ -90,14 +96,15 @@ CPU_REQUIRED_USE="
 
 RDEPEND="
 	mmal? ( media-libs/raspberrypi-userland )
-	opus? ( >=media-libs/opus-1.0.2-r2 )
+	>=media-libs/opus-1.0.2-r2
 	vaapi? ( >=media-libs/libva-1.2.1-r1:0= )
-	nvenc? ( >=media-libs/nv-codec-headers-9.1.23.1 )
+	nvenc? ( >=media-libs/nv-codec-headers-11.1.5.3 )
 	vdpau? ( >=x11-libs/libvdpau-0.7 )
-	vulkan? ( >=media-libs/vulkan-loader-1.2.189:= )
+	vulkan? ( >=media-libs/vulkan-loader-1.3.255:= )
 "
 
 DEPEND="${RDEPEND}
+	vulkan? ( >=dev-util/vulkan-headers-1.3.255 )
 "
 BDEPEND="
 	>=sys-devel/make-3.81
@@ -112,8 +119,7 @@ RESTRICT="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-100.patch
-	"${FILESDIR}"/${PN}-binutils-2.41.patch
+	"${FILESDIR}"/${PN}-117.patch
 	"${FILESDIR}"/chromium.patch
 )
 
@@ -130,6 +136,9 @@ src_prepare() {
 
 src_configure() {
 	local myconf=( )
+
+	# Bug #918997. Will probably be fixed upstream in the next release.
+	use vulkan && append-ldflags -Wl,-z,muldefs
 
 	# bug 842201
 	use ia64 && tc-is-gcc && append-flags \
@@ -163,7 +172,11 @@ src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	if [[ ${ABI} != x86 ]] && is-flagq "-flto*"; then
+		# Respect -flto value, e.g -flto=thin
+		local v="$(get-flag flto)"
+		[[ -n ${v} ]] && myconf+=( "--enable-lto=${v}" ) || myconf+=( "--enable-lto" )
+	fi
 	filter-lto
 
 	# Mandatory configuration
@@ -213,6 +226,7 @@ src_configure() {
 		--enable-avcodec \
 		--enable-avformat \
 		--enable-avutil \
+		--enable-libopus \
 		--enable-decoder=aac,flac,h264,libopus,mp3,pcm_alaw,pcm_f32le,pcm_mulaw,pcm_s16be,pcm_s16le,pcm_s24be,pcm_s24le,pcm_s32le,pcm_u8,theora,vorbis,vp8 \
 		--enable-demuxer=aac,flac,matroska,mov,mp3,ogg,wav \
 		--enable-parser=aac,flac,h264,mpegaudio,opus,vorbis,vp3,vp8,vp9 \
