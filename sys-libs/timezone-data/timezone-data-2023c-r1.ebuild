@@ -61,7 +61,7 @@ src_configure() {
 	if use nls ; then
 		# See if an external libintl is available. bug #154181, bug #578424
 		local c="${T}/test"
-		echo 'main(){}' > "${c}.c" || die
+		echo 'int main(){}' > "${c}.c" || die
 		if $(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} "${c}.c" -o "${c}" -lintl 2>/dev/null ; then
 			LDLIBS+=" -lintl"
 		fi
