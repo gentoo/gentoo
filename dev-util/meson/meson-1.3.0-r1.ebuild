@@ -54,6 +54,9 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-python-path.patch
+
+	# backport fix for broken configure_file()
+	"${FILESDIR}"/0001-Only-convert-boolean-values-for-cmake-formats.patch
 )
 
 python_prepare_all() {
