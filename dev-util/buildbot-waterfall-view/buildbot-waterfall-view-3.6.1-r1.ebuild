@@ -21,6 +21,5 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~amd64-linux ~x86-linux"
 RDEPEND="
 	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
 	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
