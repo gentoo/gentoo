@@ -31,7 +31,7 @@ RDEPEND="
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/dulwich[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]')
+	')
 	plugins? ( $(python_gen_cond_dep '
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/cssselect[${PYTHON_USEDEP}]
