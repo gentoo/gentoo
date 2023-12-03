@@ -20,8 +20,8 @@ CRATES="
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.8
-	clap_builder@4.4.8
+	clap@4.4.10
+	clap_builder@4.4.9
 	clap_lex@0.6.0
 	criterion-plot@0.5.0
 	criterion@0.5.1
@@ -29,16 +29,15 @@ CRATES="
 	crossbeam-utils@0.8.16
 	either@1.9.0
 	env_logger@0.10.1
-	errno@0.3.6
+	errno@0.3.8
 	fastrand@2.0.1
-	fnv@1.0.7
 	futures-channel@0.3.29
 	futures-core@0.3.29
 	futures-executor@0.3.29
 	futures-task@0.3.29
 	futures-util@0.3.29
 	getargs@0.5.0
-	globset@0.4.13
+	globset@0.4.14
 	half@1.8.2
 	heck@0.4.1
 	hermit-abi@0.3.3
@@ -68,20 +67,20 @@ CRATES="
 	pin-project-lite@0.2.13
 	pin-utils@0.1.0
 	pkg-config@0.3.27
-	proc-macro2@1.0.69
+	proc-macro2@1.0.70
 	quote@1.0.33
 	redox_syscall@0.4.1
 	regex-automata@0.4.3
 	regex-syntax@0.8.2
 	regex@1.10.2
-	rustix@0.38.21
+	rustix@0.38.25
 	rustversion@1.0.14
 	rusty_pool@0.7.0
 	ryu@1.0.15
 	same-file@1.0.6
 	scopeguard@1.2.0
-	serde@1.0.192
-	serde_derive@1.0.192
+	serde@1.0.193
+	serde_derive@1.0.193
 	serde_json@1.0.108
 	slab@0.4.9
 	smallvec@1.11.2
@@ -97,14 +96,23 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
 	windows-sys@0.48.0
+	windows-sys@0.52.0
 	windows-targets@0.48.5
+	windows-targets@0.52.0
 	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_gnullvm@0.52.0
 	windows_aarch64_msvc@0.48.5
+	windows_aarch64_msvc@0.52.0
 	windows_i686_gnu@0.48.5
+	windows_i686_gnu@0.52.0
 	windows_i686_msvc@0.48.5
+	windows_i686_msvc@0.52.0
 	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnu@0.52.0
 	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_gnullvm@0.52.0
 	windows_x86_64_msvc@0.48.5
+	windows_x86_64_msvc@0.52.0
 "
 
 inherit cargo
