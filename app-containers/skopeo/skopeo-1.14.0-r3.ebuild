@@ -49,8 +49,8 @@ run_make() {
 	emake \
 		BTRFS_BUILD_TAG="$(usex btrfs '' 'btrfs_noversion exclude_graphdriver_btrfs')" \
 		CONTAINERSCONFDIR="${EPREFIX}/etc/containers" \
-		LIBDM_BUILD_TAG=$(usex device-mapper '' libdm_no_deferred_remove) \
-		LIBSUBID_BUILD_TAG=$(usex rootless 'libsubid' '') \
+		LIBDM_BUILD_TAG="$(usex device-mapper '' 'libdm_no_deferred_remove exclude_graphdriver_devicemapper')" \
+		LIBSUBID_BUILD_TAG="$(usex rootless 'libsubid' '')" \
 		PREFIX="${EPREFIX}/usr" \
 		$@
 }
@@ -63,7 +63,7 @@ src_install() {
 	# The install target in the Makefile tries to rebuild the binary and
 	# installs things that are already installed by containers-common.
 	dobin bin/skopeo
-dodoc README.md
+	einstalldocs
 	doman docs/*.1
 	run_make "DESTDIR=${D}" install-completions
 }
