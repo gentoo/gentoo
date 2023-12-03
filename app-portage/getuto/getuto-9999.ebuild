@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Stand-alone gentoo install trust anchor generation tool"
+DESCRIPTION="Standalone Gentoo gpg trust anchor generation tool for binpkgs"
 HOMEPAGE="https://github.com/projg2/getuto"
 
 if [[ ${PV} == 9999 ]] ; then
