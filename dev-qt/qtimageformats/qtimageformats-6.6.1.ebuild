@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Additional format plugins for the Qt image I/O system"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 fi
 
 IUSE="mng"
