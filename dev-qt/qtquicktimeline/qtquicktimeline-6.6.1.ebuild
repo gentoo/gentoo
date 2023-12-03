@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module for keyframe-based timeline construction"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
 fi
 
 RDEPEND="
