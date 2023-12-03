@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/QtPy[gui,testlib,widgets(+),${PYTHON_USEDEP}]
