@@ -50,8 +50,9 @@ src_unpack() {
 fi
 
 src_configure() {
-	# Causes test failures
-	filter-flags -fno-semantic-interposition
+	# Causes test failures with -fno-semantic-interposition (bug #919100)
+	append-flags -fno-strict-aliasing
+	filter-lto
 
 	local emesonargs=(
 		$(meson_use apparmor)
