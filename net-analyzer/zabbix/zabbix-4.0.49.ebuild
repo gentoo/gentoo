@@ -15,7 +15,7 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy selinux server snmp sqlite ssh static xmpp"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	?? ( gnutls mbedtls openssl )
