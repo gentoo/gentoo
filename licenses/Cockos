@@ -1,0 +1,103 @@
+END USER LICENSE AGREEMENT For REAPER®
+
+IMPORTANT:  This REAPER® ("Software") End User License Agreement ("EULA") is a legal agreement between you (either an individual or, if purchased for an entity, an entity) and Cockos Incorporated ("Cockos").  READ IT CAREFULLY BEFORE COMPLETING THE INSTALLATION PROCESS AND USING THIS SOFTWARE.  It provides a license to use this software and contains warranty and liability disclaimers.  BY DOWNLOADING OR INSTALLING THE SOFTWARE YOU ARE INDICATING YOUR FULL AND VOLUNTARY ASSENT TO THE TERMS OF THIS LICENSE.  If you do not agree to all of the following terms, do not download or install the software or discontinue use immediately and destroy all copies on your computer. 
+
+1. License Grants and Purchase:
+
+1.1  Trial Period License.  You may download and use the Software for free for sixty (60) days after installation ("Trial Period").  During the Trial Period, Cockos grants you a limited, non-exclusive and non-transferable license to copy and use the Software for evaluation purposes only. The evaluation copy of the Software is fully functional. 
+
+1.2  License After Trial Period. If you continue to use this Software after the Trial Period, you are required to purchase a license.  The license fee varies according to your use, as follows:
+  a)  A commercial license currently is $225.00 USD. 
+  b)  The following users are granted permission to purchase a discounted license for $60 USD:
+    i) You are an individual, using REAPER® only for personal and non-commercial uses.
+    ii) You are either an individual or business, using REAPER® for a commercial purpose, and your annual gross revenue derived from commercial activity does not exceed $20,000 USD.
+    iii) You are an educational or other non-profit organization.
+
+1.3  To Purchase License.  To purchase one of the licenses specified above, visit our web site at http://www.reaper.fm and follow the links.
+
+1.4  Those interested in licensing REAPER® for any other purpose should contact Cockos Incorporated at licensing@cockos.com.
+
+1.5  Subject to the terms and conditions of this Agreement, you are granted a limited non-exclusive license to use the Software on one (1) computer any given time.  This License is not a sale of the Software or any other copy.  Cockos retains title and ownership of the Software and documentation, including all intellectual property rights.  No title to the intellectual property in the Software is transferred to you.  You will not acquire any rights to the Software except as expressly set forth herein.
+
+1.6  Said purchased license shall apply to the current version of REAPER® and any future versions of REAPER® up through and including version 8.99.  
+
+1.7  Cockos reserves the right within its sole discretion to modify the terms of its license for all future versions of REAPER®.
+
+2.  End User Support:  At Cockos’ discretion, Cockos may provide limited support through email or discussion forums at http://www.reaper.fm.
+ 
+3.  License Restrictions:
+
+3.1  You may not alter, merge, modify, adapt or translate the Software, or decompile, reverse engineer, disassemble, or otherwise reduce the Software to a human-perceivable form. 
+
+3.2  You may not sell, rent, lease, sublicense, transfer, resell for profit or otherwise distribute the Software, its documentation, or any part thereof. 
+
+3.3  You may not modify the Software or create derivative works based upon the Software.  However, you may develop, distribute, and sell plug-ins and extension software that interacts with REAPER® using the VST, Audio Units, or REAPER® Extensions APIs, provided that such activity does not conflict with any other provision of this Agreement.  (Use of third party APIs may require you to enter into additional legal agreements with the third party. Use of the REAPER® Extensions API does not require any additional legal agreement.)
+
+3.4  You may not remove or obscure any copyright and trademark notices relating to the Software. 
+
+3.5  Note that specific included libraries/executables, including SoundTouch, MP3DEC, cdrecord.exe, and FFmpeg, are licensed under the GNU GPL and/or LGPL; these libraries/executables do not have the above restrictions, and we make their source code for these libraries available at http://www.reaper.fm/lgpl
+
+4.  Ownership and Intellectual Property Rights:   This Agreement gives you limited rights to use the Software.  Cockos retains any and all rights, title and interest in and to the Software and all copies thereof, including copyrights, patents, trade secret rights, trademarks and other intellectual property rights.  All rights not specifically granted in this Agreement, including International Copyrights, are reserved by Cockos.  The structure, organization and code of the Software are valuable trade secrets and confidential information of Cockos. 
+
+5.  Disclaimer of Warranties: Cockos does not warrant that the Software is error free.  Cockos offers the Software “as is” and “with all faults” and by using the Software, you accept it “as is” and “with all faults”.  Cockos disclaims all other warranties, either express or implied, including but not limited to implied warranties of merchantability and fitness for a particular purpose.  Should the Software prove defective, you assume the entire cost of all necessary servicing, repair or correction.  Some jurisdictions may not allow the exclusion of implied warranties, so the above disclaimers may not apply to you.
+
+6.  No Refund:  Because the Software is provided free of charge during the Trial Period to allow potential customers to evaluate and test it before paying the license fee, Cockos enforces a strict no-refund policy.  Please evaluate and test the Software carefully during the Trial Period.  Once you pay the license fee, your payment is final and may not be reimbursed. 
+
+7.  Limitations on Liability:  To the maximum extent permitted by applicable law, Cockos shall not be liable for any special, incidental, indirect, or consequential damages whatsoever, (including, but not limited to, damages for loss of profits or loss of confidential or other information, for business interruption, for personal injury, for loss of privacy, for failure to meet any duty including of good faith or of reasonable care, for negligence, and for any other pecuniary or other loss whatsoever), arising out of or in any way related to the use or inability to use the Software, the provision of or failure to provide support services, or otherwise under or in connection with any provision of this EULA, even in event of fault, tort (including negligence), strict liability, breach of contract or breach of warranty of Cockos, and even if Cockos has been advised of the possibility of such damages.  In any case, Cockos’ entire liability under the provisions of this EULA or the applicable law shall be limited to the amount paid by you for the Software.  Some jurisdictions may not allow the exclusion of consequential damages, so the above limitations and exclusions may not apply to you.  This Agreement sets forth Cockos’ entire liability and your exclusive remedy with respect to the Software.
+
+8.  Termination of EULA:  This Agreement is effective until terminated.  This Agreement, including the license to use the Software, will terminate automatically if you fail to comply with any term or condition.
+
+9.  General: 
+
+9.1  Cockos reserves the right at any time to cease the support of the Software and to alter prices, features, specifications, capabilities, functions, licensing terms, release dates, general availability or other characteristics of the Software. 
+
+9.2  If any provision hereof shall be held illegal, invalid or unenforceable, in whole or in part, such provision shall be modified to the minimum extent necessary to make it legal, valid and enforceable, and the legality, validity and enforceability of all other provisions of this Agreement shall not be affected.
+
+9.3  This Agreement is to be governed by and construed in accordance with the laws of California.  Each party for itself and its property, hereby submits to the jurisdiction and venue of San Francisco, California in relation to any claim or dispute that may arise with respect to this Agreement and any judgment that may be rendered in connection with any such claim or dispute.  This Agreement will be will be interpreted as if the agreement were made between California residents and performed entirely within California.
+
+9.4 You may not assign this Agreement. Any attempt by You to assign this Agreement will be null and void.
+
+9.5  This Agreement contains the entire agreement between Cockos and You related to the software and supersedes all prior agreements and understandings, whether oral or written. All questions concerning this Agreement shall be directed to licensing@cockos.com.
+
+10. Software license agreements of third parties:
+
+10.1 Xiph.org's BSD license
+- libflac:     Copyright (c) 2000-2007 Josh Coalson
+- libogg:      Copyright (c) 2002, Xiph.org Foundation
+- libvorbis:   Copyright (c) 2002-2008 Xiph.org Foundation
+- libopusfile: Copyright (c) 1994-2013 Xiph.Org Foundation
+- libopus:     Copyright (c) 2001-2011 Xiph.Org, Skype Limited,
+               Octasic, Jean-Marc Valin, Timothy B. Terriberry,
+               CSIRO, Gregory Maxwell, Mark Borgerding,
+               Erik de Castro Lopo
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+- Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+- Neither the name of the Xiph.Org Foundation nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+10.2 r8brain free MIT license
+- r8brain free: Copyright (c) 2013-2021 Aleksey Vaneev
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+© Cockos Incorporated
