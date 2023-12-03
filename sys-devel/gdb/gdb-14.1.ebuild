@@ -111,6 +111,10 @@ BDEPEND="
 	test? ( dev-util/dejagnu )
 "
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	MIN # gnulib FP (bug #898688)
+)
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
 )
