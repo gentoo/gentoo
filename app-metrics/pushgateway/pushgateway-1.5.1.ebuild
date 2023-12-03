@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	acct-group/pushgateway
