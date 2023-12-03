@@ -137,6 +137,9 @@ src_prepare() {
 src_configure() {
 	local myconf=( )
 
+	# Bug #918997. Will probably be fixed upstream in the next release.
+	use vulkan && append-ldflags -Wl,-z,muldefs
+
 	# bug 842201
 	use ia64 && tc-is-gcc && append-flags \
 		-fno-tree-ccp \
