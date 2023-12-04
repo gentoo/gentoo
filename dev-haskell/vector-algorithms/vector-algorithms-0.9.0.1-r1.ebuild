@@ -24,6 +24,15 @@ RDEPEND=">=dev-haskell/bitvec-1.0:=[profile?] <dev-haskell/bitvec-1.2:=[profile?
 	>=dev-haskell/vector-0.6:=[profile?] <dev-haskell/vector-0.14:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
+
+# bug 916191
+RDEPEND+="
+	|| (
+		dev-haskell/bitvec[gmp]
+		dev-lang/ghc[gmp]
+	)
+"
+
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
 	test? ( properties? ( >dev-haskell/quickcheck-2.9 <dev-haskell/quickcheck-2.15 ) )
