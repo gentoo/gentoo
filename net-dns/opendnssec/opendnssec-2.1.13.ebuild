@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P="${P/_}"
 PKCS11_IUSE="+softhsm opensc external-hsm"
@@ -58,6 +58,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}/${PN}-fix-run-dir-2.1.x.patch"
 	"${FILESDIR}/${PN}-use-system-trang.patch"
+	"${FILESDIR}/${PN}-fix-mysql.patch"
 )
 
 DOCS=( MIGRATION NEWS )
