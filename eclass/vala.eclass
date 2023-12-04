@@ -174,7 +174,7 @@ vala_setup() {
 
 	# See bug #892708.
 	# Workaround for https://gitlab.gnome.org/GNOME/vala/-/issues/1408.
-	append-cflags $(test-flags-CC -Wno-incompatible-function-pointer-types)
+	append-cflags $(test-flags-CC -Wno-incompatible-pointer-types)
 }
 
 # @FUNCTION: vala_src_prepare
