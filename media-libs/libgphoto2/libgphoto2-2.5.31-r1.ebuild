@@ -77,7 +77,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/c99.patch
+	"${FILESDIR}"/${PN}-2.5.31-c99.patch
 )
 
 pkg_pretend() {
