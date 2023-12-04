@@ -375,27 +375,6 @@ pkg_postinst() {
 	elog "zabbix-trapper   10051/tcp Zabbix Trapper"
 	elog "zabbix-trapper   10051/udp Zabbix Trapper"
 	elog
-
-	if use server || use proxy ; then
-		# check for fping
-		fping_perms=$(stat -c %a /usr/sbin/fping 2>/dev/null)
-		case "${fping_perms}" in
-			4[157][157][157])
-				;;
-			*)
-				ewarn
-				ewarn "If you want to use the checks 'icmpping' and 'icmppingsec',"
-				ewarn "you have to make /usr/sbin/fping setuid root and executable"
-				ewarn "by everyone. Run the following command to fix it:"
-				ewarn
-				ewarn "  chmod u=rwsx,g=rx,o=rx /usr/sbin/fping"
-				ewarn
-				ewarn "Please be aware that this might impose a security risk,"
-				ewarn "depending on the code quality of fping."
-				ewarn
-				;;
-		esac
-	fi
 }
 
 pkg_prerm() {
