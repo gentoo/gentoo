@@ -8,12 +8,15 @@
 # confirmation emails when I try to sign up.
 =sci-mathematics/giac-1.9.0.67 gui
 
-# Matt Turner <mattst88@gentoo.org> (2023-09-18)
-# Disabling gstreamer seems to be untested upstream and is often broken.
-# The gstreamer dependencies are trivial in compile time and disk usage
-# compared to webkit-gtk.
-# Bugs #911663, #914362
->=net-libs/webkit-gtk-2.42 gstreamer
+# Michael Orlitzky <mjo@gentoo.org> (2023-12-04)
+# This was originally forced because gstreamer-less builds are untested
+# upstream and are often broken (e.g. bugs 911663 and 914362). But from
+# the user's perspective, having it forced is worse than having it fail
+# to build; if it fails, you can always set USE=gstreamer for one
+# version, i.e. at least you have a choice. The two latest 2.42.x
+# ebuilds in the tree both build fine with gstreamer disabled, so it is
+# at least safe to re-enable for those. Older ebuilds, who knows.
+<net-libs/webkit-gtk-2.42 gstreamer
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
