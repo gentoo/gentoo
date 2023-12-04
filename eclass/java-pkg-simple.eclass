@@ -412,11 +412,15 @@ java-pkg-simple_src_compile() {
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
-		mkdir -p ${apidoc}
-		ejavadoc -d ${apidoc} \
-			-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
-			${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
-			@${sources} || die "javadoc failed"
+		if [[ ${JAVADOC_SRC_DIRS} ]]; then
+			einfo "JAVADOC_SRC_DIRS exists, you need to call ejavadoc separately"
+		else
+			mkdir -p ${apidoc}
+			ejavadoc -d ${apidoc} \
+				-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
+				${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
+				@${sources} || die "javadoc failed"
+			fi
 	fi
 
 	# package
