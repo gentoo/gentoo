@@ -19,7 +19,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/"${P}"-cflags.patch )
+PATCHES=(
+	"${FILESDIR}"/"${P}"-cflags.patch
+	"${FILESDIR}"/"${P}"-fabs.patch
+)
 MAKEOPTS="${MAKEOPTS} -C src"
 
 export PREFIX="/usr"
