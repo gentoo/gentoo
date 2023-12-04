@@ -4,4 +4,7 @@
 <maintainer type="person">
   <email>robbat2@gentoo.org</email>
 </maintainer>
+<upstream>
+  <remote-id type="cpe">cpe:/a:blktrace_project:blktrace</remote-id>
+</upstream>
 </pkgmetadata>

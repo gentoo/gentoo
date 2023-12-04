@@ -14,5 +14,6 @@
 </use>
 <upstream>
 	<remote-id type="github">tianocore/edk2</remote-id>
+	<remote-id type="cpe">cpe:/a:tianocore:edk2</remote-id>
 </upstream>
 </pkgmetadata>

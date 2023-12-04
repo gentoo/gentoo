@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">libssh2/libssh2</remote-id>
+		<remote-id type="cpe">cpe:/a:libssh2:libssh2</remote-id>
 	</upstream>
 </pkgmetadata>

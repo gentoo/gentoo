@@ -21,4 +21,7 @@
 		- Mismatched use of malloc/new/new [] vs free/delete/delete []
 		- Some abuses of the POSIX Pthreads API
 	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:valgrind:valgrind</remote-id>
+	</upstream>
 </pkgmetadata>

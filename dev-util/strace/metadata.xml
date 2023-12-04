@@ -20,5 +20,6 @@
 		<remote-id type="github">strace/strace</remote-id>
 		<remote-id type="gitlab">strace/strace</remote-id>
 		<remote-id type="sourceforge">strace</remote-id>
+		<remote-id type="cpe">cpe:/a:strace_project:strace</remote-id>
 	</upstream>
 </pkgmetadata>

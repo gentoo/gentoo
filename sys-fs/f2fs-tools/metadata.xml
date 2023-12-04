@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="sourceforge">f2fs-tools</remote-id>
 		<remote-id type="github">jaegeuk/f2fs-tools</remote-id>
+		<remote-id type="cpe">cpe:/a:f2fs-tools_project:f2fs-tools</remote-id>
 	</upstream>
 </pkgmetadata>

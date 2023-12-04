@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">linuxptp</remote-id>
+		<remote-id type="cpe">cpe:/a:linuxptp_project:linuxptp</remote-id>
 	</upstream>
 </pkgmetadata>

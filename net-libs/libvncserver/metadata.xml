@@ -22,5 +22,6 @@
 	<upstream>
 		<remote-id type="github">LibVNC/libvncserver</remote-id>
 		<remote-id type="sourceforge">libvncserver</remote-id>
+		<remote-id type="cpe">cpe:/a:libvnc_project:libvncserver</remote-id>
 	</upstream>
 </pkgmetadata>

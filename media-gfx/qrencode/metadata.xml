@@ -12,4 +12,7 @@
   <use>
     <flag name="png">Enable PNG output support in qrencode tool</flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:qrencode_project:qrencode</remote-id>
+  </upstream>
 </pkgmetadata>
