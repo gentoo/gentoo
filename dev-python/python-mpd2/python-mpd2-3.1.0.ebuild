@@ -30,7 +30,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 	)
 "
