@@ -38,7 +38,10 @@ RDEPEND="
 	libdrm? ( x11-libs/libdrm )
 	soundio? ( media-libs/libsoundio:= )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
-	vdpau? ( x11-libs/libvdpau )
+	vdpau? (
+		x11-libs/libvdpau
+		media-libs/libsdl2[X]
+	)
 	wayland? ( dev-libs/wayland )
 	X? ( x11-libs/libX11 )
 "
