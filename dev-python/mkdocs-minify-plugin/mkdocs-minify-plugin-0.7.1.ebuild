@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 # https://bugs.gentoo.org/911738
 # The tests compare hard coded hashes, since we cannot guarantee reproducibility
