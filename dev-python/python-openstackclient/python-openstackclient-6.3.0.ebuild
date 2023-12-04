@@ -50,6 +50,11 @@ BDEPEND="
 distutils_enable_tests unittest
 
 src_prepare() {
+	local PATCHES=(
+		# backport from master
+		"${FILESDIR}/${P}-test.patch"
+	)
+
 	# Depends on specific runner
 	sed -e 's/test_command_has_logger/_&/' -i openstackclient/tests/unit/common/test_command.py || die
 
