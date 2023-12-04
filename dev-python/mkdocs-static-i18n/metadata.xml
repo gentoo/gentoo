@@ -6,7 +6,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="gitlab">ultrabug/mkdocs-static-i18n</remote-id>
+    <remote-id type="github">ultrabug/mkdocs-static-i18n</remote-id>
     <remote-id type="pypi">mkdocs-static-i18n</remote-id>
   </upstream>
   <stabilize-allarches/>
