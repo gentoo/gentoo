@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit distutils-r1
 
@@ -36,4 +36,11 @@ src_install() {
 	insinto "/usr/share/${PN}/themes"
 	doins bpytop-themes/*.theme
 	distutils-r1_src_install
+}
+
+python_test() {
+	EPYTEST_DESELECT=(
+		tests/test_functions.py::test_get_cpu_core_mapping
+	)
+	epytest
 }
