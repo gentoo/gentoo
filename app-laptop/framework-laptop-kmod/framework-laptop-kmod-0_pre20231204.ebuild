@@ -5,7 +5,7 @@ EAPI=8
 
 inherit linux-mod-r1
 
-COMMIT_HASH="fed64af4c19a15ef6bb7dca79b692d265e845699"
+COMMIT_HASH="d5367eb9e5b5542407494d04ac1a0e77f10cc89d"
 DESCRIPTION="Kernel module to expose more Framework Laptop stuff"
 HOMEPAGE="https://github.com/DHowett/framework-laptop-kmod"
 SRC_URI="https://github.com/DHowett/framework-laptop-kmod/archive/${COMMIT_HASH}.tar.gz -> ${P}.gh.tar.gz"
@@ -23,6 +23,14 @@ CONFIG_CHECK="
 DOCS=(
 	README.md
 )
+
+pkg_setup() {
+	linux-mod-r1_pkg_setup
+
+	MODULES_MAKEARGS+=(
+		KDIR="${KERNEL_DIR}"
+	)
+}
 
 pkg_pretend() {
 	check_extra_config
