@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 LLVM_MAX_SLOT=17
+LLVM_MIN_SLOT=14
 inherit toolchain-funcs llvm optfeature python-single-r1
 
 AFL_PATCHSET="${PN}-4.07c-patches"
@@ -24,14 +25,20 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # This isn't compatible with sandbox
 RESTRICT="test"
 
-RDEPEND="
-	${PYTHON_DEPS}
+LLVM_DEPS="
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
 	|| (
-		sys-devel/clang:14
-		sys-devel/clang:15
-		sys-devel/clang:${LLVM_MAX_SLOT}
-	)
+"
+# We go downwards as Portage prefers left-most in || ( .. )
+for ((i=${LLVM_MAX_SLOT}; i >= ${LLVM_MIN_SLOT}; i--)) ; do
+	LLVM_DEPS+=" sys-devel/clang:${i}"
+done
+LLVM_DEPS+=" )"
+unset i
+
+RDEPEND="
+	${PYTHON_DEPS}
+	${LLVM_DEPS}
 	!app-forensics/afl
 "
 DEPEND="
