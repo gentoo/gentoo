@@ -29,8 +29,9 @@ RDEPEND="
 	>=virtual/jre-17:*
 	dev-libs/boehm-gc
 "
+# jdk:17 for https://bugs.gentoo.org/916689
 DEPEND="
-	>=virtual/jdk-17:*
+	virtual/jdk:17
 "
 BDEPEND="
 	test? ( sys-devel/clang:* )
