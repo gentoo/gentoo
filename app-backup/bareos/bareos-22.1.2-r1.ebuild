@@ -5,7 +5,6 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
 CMAKE_WARN_UNUSED_CLI=no
-#CMAKE_REMOVE_MODULES=yes
 
 inherit python-any-r1 systemd cmake tmpfiles
 
@@ -71,6 +70,9 @@ DEPEND="
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
 		sys-libs/zlib
+	)
+	X? (
+		dev-qt/qtwidgets:5=
 	)
 	"
 RDEPEND="${DEPEND}
@@ -175,6 +177,9 @@ src_configure() {
 		systemd lmdb; do
 		mycmakeargs+=( -D$useflag=$(usex $useflag) )
 	done
+	if use X; then
+		mycmakeargs+=( -Dtraymonitor=yes )
+	fi
 
 	mycmakeargs+=(
 		-DHAVE_PYTHON=0
