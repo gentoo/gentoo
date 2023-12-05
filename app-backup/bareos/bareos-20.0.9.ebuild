@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
 CMAKE_WARN_UNUSED_CLI=no
@@ -9,31 +9,17 @@ CMAKE_WARN_UNUSED_CLI=no
 
 inherit python-any-r1 systemd cmake tmpfiles
 
-if [[ ${PV} == *9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/Release/${PV}.tar.gz -> ${P}.tar.gz"
-
-	KEYWORDS="~amd64 ~x86"
-	S=${WORKDIR}/${PN}-Release-${PV}
-fi
-
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bareos.org/"
-
-# some tests still fail propably due to missing bits in src_test -> TODO
-RESTRICT="mirror test"
-#RESTRICT="
-#	mirror
-#	!test? ( test )
-#"
+SRC_URI="https://github.com/${PN}/${PN}/archive/Release/${PV}.tar.gz -> ${P}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="AGPL-3"
 SLOT="0"
-IUSE="X acl ceph clientonly +director glusterfs ipv6 lmdb
-	logwatch ndmp readline scsi-crypto split-usr
-	static +storage-daemon systemd tcpd test vim-syntax vmware xattr"
+KEYWORDS="~amd64 ~x86"
+IUSE="X acl ceph clientonly +director glusterfs ipv6 jansson lmdb
+	logwatch mysql ndmp +postgres readline scsi-crypto
+	sqlite static +storage-daemon systemd tcpd vim-syntax vmware xattr"
 
 # get cmake variables from core/cmake/BareosSetVariableDefaults.cmake
 DEPEND="
@@ -47,9 +33,12 @@ DEPEND="
 	dev-libs/gmp:0
 	!clientonly? (
 		acct-user/${PN}
-		dev-db/postgresql:*[threads(+)]
+		postgres? ( dev-db/postgresql:*[threads(+)] )
+		mysql? ( virtual/mysql )
+		sqlite? ( dev-db/sqlite:3 )
 		director? (
 			virtual/mta
+			jansson? ( dev-libs/jansson:= )
 		)
 	)
 	logwatch? ( sys-apps/logwatch )
@@ -58,15 +47,13 @@ DEPEND="
 	readline? ( sys-libs/readline:0 )
 	static? (
 		acl? ( virtual/acl[static-libs] )
-		dev-libs/jansson:=[static-libs]
-		dev-libs/lzo[static-libs]
-		dev-libs/openssl:0=[static-libs]
-		sys-libs/ncurses:=[static-libs]
 		sys-libs/zlib[static-libs]
+		dev-libs/lzo[static-libs]
+		sys-libs/ncurses:=[static-libs]
+		dev-libs/openssl:0=[static-libs]
 	)
 	!static? (
 		acl? ( virtual/acl )
-		dev-libs/jansson:=
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
@@ -82,86 +69,53 @@ RDEPEND="${DEPEND}
 	)
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 	"
-
-BDEPEND="
-	${PYTHON_DEPS}
-	test? (
-		dev-cpp/gtest
-		dev-db/postgresql:*[server,threads(+)]
-		dev-db/mariadb:*[server]
-	)
-"
+BDEPEND="${PYTHON_DEPS}"
 
 REQUIRED_USE="
+	!clientonly? ( || ( mysql postgres sqlite ) )
 	static? ( clientonly )
 	x86? ( !ceph )
 "
 
-pkg_pretend() {
-	local active_removed_backend=""
-	if has_version "<app-backup/bareos-21[director,mysql]"; then
-		if grep -qhriE "dbdriver.*=.*mysql" /etc/bareos/; then
-			active_removed_backend=MySQL
-		fi
-	elif has_version "<app-backup/bareos-21[director,sqlite]"; then
-		if grep -qhriE "dbdriver.*=.*sqlite" /etc/bareos/; then
-			active_removed_backend=SQLite
-		fi
-	fi
-	if [[ -n $active_removed_backend ]]; then
-		ewarn
-		ewarn "You are currently using bareos with the $active_removed_backend"
-		ewarn "catalog backend."
-		ewarn
-		ewarn "THIS IS NOT SUPPORTED ANYMORE"
-		ewarn
-		ewarn "Beginning with version 21.0.0 bareos has dropped support for"
-		ewarn "MySQL and SQLite catalog backends."
-		ewarn
-		ewarn "To upgrade to bareos >=21.0.0 you need to migrate to PostgreSQL"
-		ewarn "catalog backend using the 'bareos-dbcopy' tool of your current"
-		ewarn "installation first."
-		ewarn
-		die "current catalog backend not supported anymore"
-	fi
-}
-
-src_test() {
-	# initialze catalog test database
-	initdb -D "${T}"/pgsql || die
-	pg_ctl -w -D "${T}"/pgsql start \
-		-o "-h '' -k '${T}'" || die
-	createuser -h "${T}" bareos || die
-	createdb -h "${T}" --owner bareos bareos || die
-	export PGHOST="${T}"
-
-	# initiale mariadb database for backup tests
-	# $USER must be set and != root
-	export USER=portage
-
-	default
-	cmake_src_test
-
-	pg_ctl -w -D "${T}"/pgsql stop || die
-	rm -rvf "${T}"/pgsql
-}
+S=${WORKDIR}/${PN}-Release-${PV}
 
 src_prepare() {
+	use mysql    && export mydbtypes+=( mysql )
+	use postgres && export mydbtypes+=( postgresql )
+	use sqlite   && export mydbtypes+=( sqlite )
+
+	# enables default database driver in catalog
+	pushd core/src/defaultconfigs >&/dev/null || die
+		sed -i -e 's/#dbdriver/dbdriver/' -e '/XXX_REPLACE_WITH_DATABASE_DRIVER_XXX/d' \
+			$(grep -rl XXX_REPLACE_WITH_DATABASE_DRIVER_XXX) || die "sed on MyCatalog.conf.in failed"
+	popd >&/dev/null || die
+
 	# fix gentoo platform support
-	eapply -p1 "${FILESDIR}/${PN}-21-cmake-gentoo.patch"
-	eapply "${FILESDIR}/${PN}-22.0.2-werror.patch"
-	eapply "${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
+	eapply -p1 "${FILESDIR}/${PN}-20.0.2-cmake-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-gcc13-fixes.patch"
 
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
 
+	# disable dird and stored plugins, because of
+	# py2 dependency
+	cd "${S}/core/src/plugins"
+	cmake_comment_add_subdirectory dird
+	cmake_comment_add_subdirectory stored
+	cd -
+
+	CMAKE_USE_DIR="$S/core"
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=()
 
-	cmake_comment_add_subdirectory webui
+	CMAKE_USE_DIR="$S/core"
+
+	pushd core/platforms >&/dev/null || die
+	cmake_comment_add_subdirectory '${DISTNAME}'
+	popd >&/dev/null || die
 
 	if use clientonly; then
 		mycmakeargs+=(
@@ -172,12 +126,13 @@ src_configure() {
 	fi
 
 	for useflag in acl ipv6 ndmp scsi-crypto \
-		systemd lmdb; do
+		systemd mysql lmdb; do
 		mycmakeargs+=( -D$useflag=$(usex $useflag) )
 	done
 
 	mycmakeargs+=(
 		-DHAVE_PYTHON=0
+		-DDEFAULT_DB_TYPE=${mydbtypes[0]}
 		-Darchivedir=/var/lib/bareos/storage
 		-Dbackenddir=/usr/$(get_libdir)/${PN}/backend
 		-Dbasename="`hostname -s`"
@@ -204,15 +159,18 @@ src_configure() {
 		-Dmon-dir-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
 		-Dmon-fd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
 		-Dmon-sd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
+		-Dmysql=$(usex mysql)
 		-Dopenssl=yes
 		-Dpiddir=/run/bareos
 		-Dplugindir=/usr/$(get_libdir)/${PN}/plugin
+		-Dpostgresql=$(usex postgres)
 		-Dsbin-perm=0755
 		-Dsbindir=/usr/sbin
 		-Dscriptdir=/usr/libexec/bareos
 		-Dsd-group=bareos
 		-Dsd-password="`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`"
 		-Dsd-user=root
+		-Dsqlite3=$(usex sqlite)
 		-Dsubsysdir=/run/lock/subsys
 		-Dsysconfdir=/etc
 		-Dworkingdir=/var/lib/bareos
@@ -230,7 +188,7 @@ src_install() {
 	cmake_src_install
 
 	# remove some scripts we don't need at all
-	rm -f "${D}"/usr/libexec/bareos/{bareos,bareos-ctl-dir,bareos-ctl-fd,bareos-ctl-sd}
+	rm -f "${D}"/usr/libexec/bareos/{bareos,bareos-ctl-dir,bareos-ctl-fd,bareos-ctl-sd,startmysql,stopmysql}
 	rm -f "${D}"/usr/sbin/bareos
 
 	# remove upstream init scripts and systemd units
@@ -240,18 +198,9 @@ src_install() {
 	rm -f "${D}"/etc/bareos/bareos-regress.conf
 	rm -f "${D}"/etc/logrotate.d/bareos-dir
 
-	# remove duplicate binaries being installed in /usr/sbin and replace
-	# them by symlinks to not break systems that still use split-usr
-	if use split-usr; then
-		for f in bwild bregex bsmtp bconsole; do
-			rm -f "${D}/usr/sbin/$f" || die
-			ln -s "../bin/$f" "${D}/usr/sbin/$f" || die
-		done
-	fi
-
 	# get rid of py2 stuff
-	rm -rf "$D"/usr/lib64/python2.7 || die
-	rm -f "$D"/usr/lib64/bareos/plugin/python-fd.so || die
+	rm -rf "$D"/usr/lib64/python2.7
+	rm -f "$D"/usr/lib64/bareos/plugin/python-fd.so
 	if ! use vmware; then
 		rm -f "$D"/usr/lib64/bareos/plugin/{BareosFdPluginVMware.py,bareos-fd-vmware.py}
 	fi
@@ -356,15 +305,29 @@ src_install() {
 		fi
 	fi
 	for script in ${myscripts}; do
+		# copy over init script and config to a temporary location
+		# so we can modify them as needed
+		cp "${FILESDIR}/${script}".confd "${T}/${script}".confd || die "failed to copy ${script}.confd"
+		cp "${FILESDIR}/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
+
+		# now set the database dependency for the director init script
+		case "${script}" in
+			bareos-dir)
+				sed -i -e "s:%databasetypes%:${mydbtypes[*]}:" "${T}/${script}".confd || die
+				;;
+			*)
+				;;
+		esac
+
 		# install init script and config
-		newinitd "${FILESDIR}/${script}-21-r1".initd "${script}"
-		newconfd "${FILESDIR}/${script}-21".confd "${script}"
+		newinitd "${T}/${script}".initd "${script}"
+		newconfd "${T}/${script}".confd "${script}"
 	done
 
 	# install systemd unit files
 	if use systemd; then
 		if ! use clientonly; then
-			use director && systemd_newunit "${FILESDIR}"/bareos-dir-21.service bareos-dir.service
+			use director && systemd_dounit "${FILESDIR}"/bareos-dir.service
 			use storage-daemon && systemd_dounit "${FILESDIR}"/bareos-sd.service
 		fi
 		systemd_dounit "${FILESDIR}"/bareos-fd.service
@@ -375,10 +338,7 @@ src_install() {
 	keepdir /var/lib/bareos
 	keepdir /var/lib/bareos/storage
 
-	# set log directory ownership
-	if ! use clientonly; then
-		diropts -m0755 -o bareos -g bareos
-	fi
+	diropts -m0755 -o bareos -g bareos
 	keepdir /var/log/bareos
 
 	newtmpfiles "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
@@ -399,29 +359,36 @@ pkg_postinst() {
 	if ! use clientonly && use director; then
 		einfo
 		einfo "If this is a new install, you must create the database:"
-		einfo
-		einfo "  su postgres -c '/usr/libexec/bareos/create_bareos_database'"
-		einfo "  su postgres -c '/usr/libexec/bareos/make_bareos_tables'"
-		einfo "  su postgres -c '/usr/libexec/bareos/grant_bareos_privileges'"
-		einfo
-		einfo "or run"
-		einfo
-		einfo " emerge --config app-backup/bareos"
-		einfo
-		einfo "to do this"
-		einfo
-		einfo "For major upgrades you may need to run:"
-		einfo
-		einfo "  su postgres -c '/usr/libexec/bareos/update_bareos_tables'"
-		einfo
-		einfo "Please see release notes for details."
-		einfo "( https://docs.bareos.org/Appendix/ReleaseNotes.html )"
+		if use postgres; then
+			einfo
+			einfo "For postgresql:"
+			einfo "  su postgres -c '/usr/libexec/bareos/create_bareos_database postgresql'"
+			einfo "  su postgres -c '/usr/libexec/bareos/make_bareos_tables postgresql'"
+			einfo "  su postgres -c '/usr/libexec/bareos/grant_bareos_privileges postgresql'"
+		fi
+		if use mysql; then
+			einfo
+			einfo "For mysql:"
+			einfo
+			einfo "  Make sure root has direct access to your mysql server. You may want to"
+			einfo "  create a /root/.my.cnf file with"
+			einfo "    [client]"
+			einfo "    user=root"
+			einfo "    password=YourPasswordForAccessingMysqlAsRoot"
+			einfo "  before running:"
+			einfo "  /usr/libexec/bareos/create_bareos_database mysql"
+			einfo "  /usr/libexec/bareos/make_bareos_tables mysql"
+			einfo "  /usr/libexec/bareos/grant_bareos_privileges mysql"
+		fi
 		einfo
 	fi
-}
 
-pkg_config() {
-	su postgres -c '/usr/libexec/bareos/create_bareos_database' || die "could not create bareos database"
-	su postgres -c '/usr/libexec/bareos/make_bareos_tables' || die "could not create bareos database tables"
-	su postgres -c '/usr/libexec/bareos/grant_bareos_privileges' || die "could not grant bareos database privileges"
+	if use sqlite; then
+		einfo
+		einfo "Be aware that Bareos does not officially support SQLite database."
+		einfo "Best use it only for a client-only installation. See Bug #445540."
+		einfo
+		einfo "It is strongly recommended to use either postgresql or mysql as"
+		einfo "catalog database backend."
+	fi
 }
