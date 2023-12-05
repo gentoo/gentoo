@@ -1,0 +1,107 @@
+From bd958f2e8f03a85a7e1fe40a3ca7b78e0b24b79f Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Sat, 11 Feb 2023 15:39:06 +0000
+Subject: [PATCH] UEFI 2.10 fixes
+
+Revert "Align sections to 512 bytes"
+
+This is not permitted according to the Microsoft
+guidelines which require section alignment to be
+the same as the page size of the architecture which
+for all supported archs is the default in Binutils
+
+https://techcommunity.microsoft.com/t5/hardware-dev-center/new-uefi-ca-memory-mitigation-requirements-for-signing/ba-p/3608714
+
+This reverts commit c60c0b8dfda71275ab40bdb316a6ca650c7a8948.
+
+Keep .areloc ARM32 section
+
+This is the psuedo .reloc section but renamed only on ARM32 to avoid
+a bad RELSZ value (gnu-efi 3.0.18+)
+
+Only use 4KiB pages on aarch64
+
+Binutils is currently configured by default
+to use 64KiB pages on aarch64, however this
+is not allowed by the UEFI specification
+
+Check if crt0 contains .note.GNU-stack section
+
+We need the .note.GNU-stack section for NX
+compat. If we don't have a new enough
+gnu-efi, error as the gnu-efi libraries
+themselves must have been built as NX
+for this to work
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+---
+ efi/crt0/meson.build   |  1 +
+ efi/generate_binary.py |  4 ++--
+ efi/meson.build        | 12 +++++++++++-
+ 3 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/efi/crt0/meson.build b/efi/crt0/meson.build
+index f5f45c5..fbd943e 100644
+--- a/efi/crt0/meson.build
++++ b/efi/crt0/meson.build
+@@ -1,3 +1,4 @@
++arch_crt_source = 'crt0-efi-@0@.S'.format(gnu_efi_path_arch)
+ o_crt0 = custom_target('efi_crt0',
+                        input : arch_crt_source,
+                        output : arch_crt,
+diff --git a/efi/generate_binary.py b/efi/generate_binary.py
+index bd2d959..e27f926 100755
+--- a/efi/generate_binary.py
++++ b/efi/generate_binary.py
+@@ -31,9 +31,9 @@ def _run_objcopy(args):
+         "-j",
+         ".rodata",
+         "-j",
++        ".areloc",
++        "-j",
+         ".rel*",
+-        "--section-alignment",
+-        "512",
+         args.infile,
+         args.outfile,
+     ]
+diff --git a/efi/meson.build b/efi/meson.build
+index 1931855..a476884 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -95,6 +95,11 @@ else
+         coff_header_in_crt0 = false
+ endif
+ 
++# For NX compat, we must ensure we have .note.GNU-stack
++if run_command('grep', '-q', '.note.GNU-stack', join_paths(efi_crtdir, arch_crt), check: false).returncode() != 0
++    error('Cannot find NX section in @0@, update to gnu-efi 3.0.15+'.format(join_paths(efi_crtdir, arch_crt)))
++endif
++
+ # older objcopy for Aarch64 and ARM32 are not EFI capable.
+ # Use 'binary' instead, and add required symbols manually.
+ if host_cpu == 'arm' or (host_cpu == 'aarch64' and (objcopy_version.version_compare ('< 2.38') or coff_header_in_crt0))
+@@ -119,7 +124,6 @@ endif
+ # is the system crt0 for arm and aarch64 new enough to know about SBAT?
+ if objcopy_manualsymbols
+   if get_option('efi_sbat_distro_id') != ''
+-    arch_crt_source = 'crt0-efi-@0@.S'.format(gnu_efi_path_arch)
+     cmd = run_command('grep', '-q', 'sbat', join_paths(efi_crtdir, arch_crt))
+     if cmd.returncode() != 0
+       warning('Cannot find SBAT section in @0@, using local copy'.format(join_paths(efi_crtdir, arch_crt)))
+@@ -187,6 +191,12 @@ efi_ldflags = ['-T',
+                '-L', efi_libdir,
+                join_paths(efi_crtdir, arch_crt)]
+ 
++if host_cpu == 'aarch64'
++# Don't use 64KiB pages
++  efi_ldflags += ['-z', 'common-page-size=4096']
++  efi_ldflags += ['-z', 'max-page-size=4096']
++endif
++
+ if objcopy_manualsymbols
+   # older objcopy for Aarch64 and ARM32 are not EFI capable.
+   # Use 'binary' instead, and add required symbols manually.
+-- 
+2.34.1
+
