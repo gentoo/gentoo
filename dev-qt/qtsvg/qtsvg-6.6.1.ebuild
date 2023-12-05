@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="SVG rendering library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 RDEPEND="
