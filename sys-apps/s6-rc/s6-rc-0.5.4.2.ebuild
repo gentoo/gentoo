@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="Service manager for the s6 supervision suite"
 HOMEPAGE="https://www.skarnet.org/software/s6-rc/"
@@ -62,4 +62,6 @@ pkg_postinst() {
 			elog "version."
 		fi
 	done
+
+	optfeature "man pages" app-doc/s6-rc-man-pages
 }
