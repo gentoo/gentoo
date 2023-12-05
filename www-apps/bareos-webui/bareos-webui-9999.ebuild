@@ -6,18 +6,19 @@ EAPI=8
 CMAKE_WARN_UNUSED_CLI=no
 CMAKE_MAKEFILE_GENERATOR="emake"
 
+inherit cmake webapp
+
 MY_PV=${PV/_/-}
 MY_PN="bareos"
 MY_P="${MY_PN}-${MY_PV}"
 
 if [[ ${PV} == 9999 ]]; then
-	inherit cmake webapp git-r3
+	inherit git-r3
 	S=${WORKDIR}/${PF}/webui
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	KEYWORDS=""
 else
-	inherit cmake webapp
 	S=${WORKDIR}/${MY_PN}-Release-${PV}/webui
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/Release/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
