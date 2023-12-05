@@ -24,24 +24,19 @@ PATCHES=(
 )
 
 RDEPEND="
-	>=dev-python/cerberus-1.3.2[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-didyoumean[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
 	dev-python/dparse[${PYTHON_USEDEP}]
-	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.8.0[${PYTHON_USEDEP}]
 	dev-python/pipdeptree[${PYTHON_USEDEP}]
 	dev-python/plette[${PYTHON_USEDEP}]
-	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
-	<dev-python/pydantic-2.0.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/pythonfinder[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	dev-python/shellingham[${PYTHON_USEDEP}]
 	dev-python/tomli[${PYTHON_USEDEP}]
