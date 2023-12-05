@@ -16,5 +16,5 @@ HOMEPAGE="https://github.com/ruby/ruby2_keywords"
 
 LICENSE="|| ( BSD-2 Ruby-BSD )"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
