@@ -93,3 +93,11 @@ src_install() {
 	dosym ${PN} /usr/bin/ld64.${PN}
 	dosym -r /usr/bin/${PN} /usr/libexec/${PN}/ld
 }
+
+src_test() {
+	export TEST_CC="$(tc-getCC)" \
+		   TEST_GCC="$(tc-getCC)" \
+		   TEST_CXX="$(tc-getCXX)" \
+		   TEST_GXX="$(tc-getCXX)"
+	cmake_src_test
+}
