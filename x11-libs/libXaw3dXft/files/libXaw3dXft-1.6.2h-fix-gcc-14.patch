@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/919239
+
+Fix compilation with gcc 14 [-Wincompatible-pointer-types]
+
+buffer_return is a char* cast to wchar_t* at call site.
+
+--- a/src/XawIm.c
++++ b/src/XawIm.c
+@@ -1522,7 +1522,7 @@
+     if ((vw = SearchVendorShell(inwidg)) && (ve = GetExtPart(vw)) &&
+ 	ve->im.xim && (p = GetIcTableShared(inwidg, ve)) && p->xic) {
+           if (_Xaw3dXft->encoding == -1)
+-	      ret = Xutf8LookupString (p->xic, event, buffer_return, bytes_buffer, keysym_return, status_return);
++	      ret = Xutf8LookupString (p->xic, event, (char*)buffer_return, bytes_buffer, keysym_return, status_return);
+           else
+ 	      ret = XwcLookupString(p->xic, event, buffer_return, bytes_buffer,
+ 				 keysym_return, status_return);
