@@ -6,8 +6,8 @@ EAPI=8
 inherit go-module
 
 DESCRIPTION="Modern terminal IRC client. NOTICE me :senpai!"
-HOMEPAGE="https://sr.ht/~taiite/senpai"
-SRC_URI="https://git.sr.ht/~taiite/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://sr.ht/~delthas/senpai"
+SRC_URI="https://git.sr.ht/~delthas/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/alfredfo/${PN}-deps/raw/master/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
