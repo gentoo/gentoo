@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/pulsectl-23.5.0[${PYTHON_USEDEP}]
