@@ -44,7 +44,7 @@ PATCHES=(
 
 src_prepare() {
 	if use experimental-loong; then
-		PATCHES+=( "${WORKDIR}/${PN}-2.5.4-loongarch64-20220425.patch" )
+		PATCHES+=( "${WORKDIR}/${PN}-2.5.5-loongarch64-20231204.patch" )
 	fi
 
 	default
