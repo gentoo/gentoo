@@ -20,6 +20,10 @@
     <flag name="bcmath">
       Enable the BCMath Arbitrary Precision Mathematics extension
     </flag>
+    <flag name="capstone">
+      Support opcache JIT disassembly through
+      <pkg>dev-libs/capstone</pkg>
+    </flag>
     <flag name="cli">
       Enable the Command-Line Interface (CLI) SAPI
     </flag>
