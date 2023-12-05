@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-inherit flag-o-matic go-module systemd
+inherit go-module systemd
 
 DESCRIPTION="soju is a user-friendly IRC bouncer"
 HOMEPAGE="https://soju.im/"
