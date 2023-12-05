@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="skarnet.org's small and secure supervision software suite"
 HOMEPAGE="https://www.skarnet.org/software/s6/"
@@ -51,4 +51,8 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	optfeature "man pages" app-doc/s6-man-pages
 }
