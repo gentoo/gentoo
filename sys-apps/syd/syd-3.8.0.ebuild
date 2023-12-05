@@ -79,6 +79,7 @@ CRATES="
 	ryu@1.0.15
 	same-file@1.0.6
 	scopeguard@1.2.0
+	sendfd@0.4.3
 	serde@1.0.193
 	serde_derive@1.0.193
 	serde_json@1.0.108
