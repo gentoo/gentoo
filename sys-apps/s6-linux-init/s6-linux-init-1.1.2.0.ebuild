@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="Generates an init binary for s6-based init systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-linux-init/"
@@ -72,4 +72,6 @@ src_install() {
 pkg_postinst() {
 	einfo "Read ${EROOT}/usr/share/doc/${PF}/html/quickstart.html"
 	einfo "for usage instructions."
+
+	optfeature "man pages" app-doc/s6-linux-init-man-pages
 }
