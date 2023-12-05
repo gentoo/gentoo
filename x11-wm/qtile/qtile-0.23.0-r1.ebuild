@@ -43,7 +43,7 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		media-gfx/imagemagick[X]
-		x11-base/xorg-server[xephyr]
+		x11-base/xorg-server[xephyr,xvfb]
 	)
 	wayland? (
 		>=dev-python/pywlroots-0.16[${PYTHON_USEDEP}]
