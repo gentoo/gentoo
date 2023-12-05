@@ -18,24 +18,36 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~riscv ~x86"
+IUSE="X"
 
 # See README for wlroots dep
 DEPEND="
 	dev-python/cffi:=[${PYTHON_USEDEP}]
 	>=dev-python/pywayland-0.4.14[${PYTHON_USEDEP}]
 	>=dev-python/xkbcommon-0.2[${PYTHON_USEDEP}]
-	=gui-libs/wlroots-$(ver_cut 1-2)*:=
-	x11-base/xwayland
+	=gui-libs/wlroots-$(ver_cut 1-2)*:=[X?]
 "
 RDEPEND="
 	${DEPEND}
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.15.24-no-import-version-check.patch
-)
-
 distutils_enable_tests pytest
+
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/${PN}-0.15.24-no-import-version-check.patch
+	)
+
+	# override automagic detection and caching that's completely broken
+	# by design; https://github.com/flacjacket/pywlroots/issues/132
+	cat > wlroots/_build.py <<-EOF || die
+		has_xwayland = $(usex X True False)
+	EOF
+	sed -e "s:return.*has_xwayland$:return $(usex X True False):" \
+		-i wlroots/ffi_build.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	rm -rf wlroots || die
