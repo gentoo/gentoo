@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="A non-interactive scripting language"
 HOMEPAGE="https://www.skarnet.org/software/execline/"
@@ -44,4 +44,8 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	optfeature "man pages" app-doc/execline-man-pages
 }
