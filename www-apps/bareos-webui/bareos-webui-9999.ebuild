@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,6 @@ if [[ ${PV} == 9999 ]]; then
 	S=${WORKDIR}/${PF}/webui
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
-	KEYWORDS=""
 else
 	S=${WORKDIR}/${MY_PN}-Release-${PV}/webui
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/Release/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
