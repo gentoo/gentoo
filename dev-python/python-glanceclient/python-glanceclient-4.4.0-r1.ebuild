@@ -40,6 +40,7 @@ BDEPEND="
 		dev-python/tempest[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
+		<dev-python/urllib3-2[${PYTHON_USEDEP}]
 	)
 "
 
