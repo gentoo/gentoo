@@ -1,0 +1,61 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -482,19 +482,20 @@ AC_MSG_RESULT([$ac_cv_pnt_arith_type])
+ AC_CHECK_FUNCS(abort)
+ AC_MSG_CHECKING([abort safe])
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ static int main_b = 0;
+ static char heap_mem[102400], *heap_p = heap_mem;
+-free () { if (main_b) _exit(0); }
++void free () { if (main_b) exit(0); }
+ char *malloc (int size) {
+   char *pnt;
+-  if (main_b) _exit(0);
++  if (main_b) exit(0);
+   pnt = heap_p;
+   heap_p += size;
+   return pnt;
+ }
+ char *calloc (int number, int size) {
+   char *start, *pnt, *end;
+-  if (main_b) _exit(0);
++  if (main_b) exit(0);
+   /* it should be already 0s */
+   start = malloc (number * size);
+   pnt = start;
+@@ -504,7 +505,7 @@ char *calloc (int number, int size) {
+ }
+ char *realloc (char *old_pnt, int new_size) {
+   char *start, *pnt, *end;
+-  if (main_b) _exit(0);
++  if (main_b) exit(0);
+   start = malloc (new_size);
+   pnt = start;
+   end = start + new_size;
+@@ -647,6 +648,7 @@ fi
+ #
+ AC_MSG_CHECKING([constructor attribute])
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ /* if we call the loc_con constructor then exit with error code 0 */
+ static void loc_con() __attribute__((constructor));
+ static void loc_con() { exit(0); }
+@@ -662,6 +664,7 @@ int main() { return 1; }
+ #
+ AC_MSG_CHECKING([destructor attribute])
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ /* if we call the loc_decon destructor then exit with error code 0 */
+ static void loc_decon() __attribute__((destructor));
+ static void loc_decon() { exit(0); }
+--- a/configure.ac
++++ b/configure.ac
+@@ -546,6 +546,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ AC_CHECK_FUNCS(getenv)
+ AC_MSG_CHECKING([getenv safe])
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdlib.h>
+ static char heap_mem[102400], *heap_p = heap_mem;
+ free (char *pnt) {
+ }
