@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/audacity/audacity.git"
 else
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	MY_P="Audacity-${PV}"
 	S="${WORKDIR}/${PN}-${MY_P}"
 	SRC_URI="https://github.com/audacity/audacity/archive/${MY_P}.tar.gz"
