@@ -14,4 +14,5 @@
 	<upstream>
 		<remote-id type="github">projg2/installkernel-gentoo</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
