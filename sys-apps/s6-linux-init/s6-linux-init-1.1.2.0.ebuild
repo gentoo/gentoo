@@ -70,8 +70,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Read ${EROOT}/usr/share/doc/${PF}/html/quickstart.html"
-	einfo "for usage instructions."
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		elog "Read ${EROOT}/usr/share/doc/${PF}/html/quickstart.html"
+		elog "for usage instructions."
+	fi
 
 	optfeature "man pages" app-doc/s6-linux-init-man-pages
 }
