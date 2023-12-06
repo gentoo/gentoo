@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-libmilter-search.patch"
 	"${FILESDIR}/${P}-snprintf-include.patch"
 	"${FILESDIR}/${P}-c-std.patch"
+	"${FILESDIR}/${P}-fix-ldap-sasl-pc.patch"
 )
 
 pkg_setup() {
