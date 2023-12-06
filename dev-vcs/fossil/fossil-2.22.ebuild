@@ -15,7 +15,8 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~ppc ppc64 ~riscv x86"
 IUSE="debug fusefs json system-sqlite +ssl static tcl tcl-stubs
-	  tcl-private-stubs th1-docs th1-hooks"
+	  tcl-private-stubs test th1-docs th1-hooks"
+RESTRICT="!test? ( test )"
 
 # Please check sqlite minimum version on every release. This can be done with:
 #     ./configure --print-minimum-sqlite-version
@@ -40,8 +41,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# Tests can't be run from the build directory
-RESTRICT="test"
+BDEPEND="test? ( dev-lang/tcl )"
 
 PATCHES=(
 	# fossil-2.10-check-lib64-for-tcl.patch: Bug 690828
@@ -70,6 +70,10 @@ src_configure() {
 
 	tc-export CC CXX
 	CC_FOR_BUILD=${CC} ./configure ${myconf} || die
+}
+
+src_test() {
+	emake test
 }
 
 src_install() {
