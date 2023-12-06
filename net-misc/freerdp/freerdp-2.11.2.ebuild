@@ -93,6 +93,10 @@ BDEPEND="
 	) )
 "
 
+PATCHES=(
+	"${FILESDIR}/freerdp-2.11.2-clang.patch"
+)
+
 src_configure() {
 	# bug #881695
 	filter-lto
