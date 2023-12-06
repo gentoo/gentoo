@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<doc>https://copyq.readthedocs.io/</doc>
 		<remote-id type="github">hluk/CopyQ</remote-id>
 	</upstream>
 	<use>
