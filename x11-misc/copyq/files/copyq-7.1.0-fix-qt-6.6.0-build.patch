@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/916129
+https://github.com/hluk/CopyQ/pull/2508
+https://github.com/hluk/CopyQ/commit/19e9dd1c2ecb49b14a24159c5ac3bc1b77fdf250
+
+From 19e9dd1c2ecb49b14a24159c5ac3bc1b77fdf250 Mon Sep 17 00:00:00 2001
+From: Nick Cao <nickcao@nichi.co>
+Date: Tue, 17 Oct 2023 02:08:51 -0400
+Subject: [PATCH] itemfakevim: fix build with qt 6.6.0 (#2508)
+
+Reference: https://github.com/qt-creator/qt-creator/commit/e56e3b6f374e00179eb0537198437864dddc47f2
+--- a/plugins/itemfakevim/fakevim/fakevimhandler.cpp
++++ b/plugins/itemfakevim/fakevim/fakevimhandler.cpp
+@@ -1057,14 +1057,6 @@ inline QString msgMarkNotSet(const QString &text)
+     return Tr::tr("Mark \"%1\" not set.").arg(text);
+ }
+ 
+-static void initSingleShotTimer(QTimer *timer, int interval, FakeVimHandler::Private *receiver,
+-                                void (FakeVimHandler::Private::*slot)())
+-{
+-    timer->setSingleShot(true);
+-    timer->setInterval(interval);
+-    QObject::connect(timer, &QTimer::timeout, receiver, slot);
+-}
+-
+ class Input
+ {
+ public:
+@@ -2424,6 +2416,16 @@ class FakeVimHandler::Private : public QObject
+     FakeVimSettings &s = *fakeVimSettings();
+ };
+ 
++static void initSingleShotTimer(QTimer *timer,
++                                int interval,
++                                FakeVimHandler::Private *receiver,
++                                void (FakeVimHandler::Private::*slot)())
++{
++    timer->setSingleShot(true);
++    timer->setInterval(interval);
++    QObject::connect(timer, &QTimer::timeout, receiver, slot);
++}
++
+ FakeVimHandler::Private::GlobalData FakeVimHandler::Private::g;
+ 
+ FakeVimHandler::Private::Private(FakeVimHandler *parent, QWidget *widget)
