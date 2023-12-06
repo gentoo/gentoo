@@ -1,0 +1,79 @@
+Backport of https://github.com/fcitx/libime/commit/59ae4a3ab4becdab164f29af07c502096c745b94.diff
+
+Backport upstream commit 59ae4a3 to fix the nanf value issue on musl
+
+--- a/src/libime/core/datrie.cpp
++++ b/src/libime/core/datrie.cpp
+@@ -47,12 +47,24 @@ struct NanValue {
+     static inline int32_t NO_PATH() { return -2; }
+ };
+ 
++// Musl doesn't have nanf implementation we need, just check if they are the
++// same value. If not, prefer old hardcoded value.
++bool isGoodNanf() {
++    int32_t noValue = decodeValue(std::nanf("1"));
++    int32_t noPath = decodeValue(std::nanf("2"));
++    return (noValue != noPath);
++}
++
+ template <>
+ struct NanValue<float> {
+     static_assert(std::numeric_limits<float>::has_quiet_NaN,
+                   "Require support for quiet NaN.");
+-    static inline int32_t NO_VALUE() { return decodeValue(std::nanf("1")); }
+-    static inline int32_t NO_PATH() { return decodeValue(std::nanf("2")); }
++    static inline int32_t NO_VALUE() {
++        return isGoodNanf() ? decodeValue(std::nanf("1")) : 0x7fc00001;
++    }
++    static inline int32_t NO_PATH() {
++        return isGoodNanf() ? decodeValue(std::nanf("2")) : 0x7fc00002;
++    }
+ };
+ 
+ } // namespace
+@@ -1144,6 +1156,20 @@ bool DATrie<T>::isValid(value_type v) {
+     return !(isNoPath(v) || isNoValue(v));
+ }
+ 
++template <typename T>
++T DATrie<T>::noPath() {
++    typename DATriePrivate<T>::decorder_type d;
++    d.result = DATriePrivate<value_type>::CEDAR_NO_PATH;
++    return d.result_value;
++}
++
++template <typename T>
++T DATrie<T>::noValue() {
++    typename DATriePrivate<T>::decorder_type d;
++    d.result = DATriePrivate<value_type>::CEDAR_NO_VALUE;
++    return d.result_value;
++}
++
+ template <typename T>
+ size_t DATrie<T>::mem_size() const {
+     //     std::cout << "tail" << d->m_tail.size() << std::endl
+--- a/src/libime/core/datrie.h
++++ b/src/libime/core/datrie.h
+@@ -136,6 +136,9 @@ class DATrie {
+     static bool isNoPath(value_type v);
+     static bool isNoValue(value_type v);
+ 
++    static value_type noPath();
++    static value_type noValue();
++
+     size_t mem_size() const;
+ 
+ private:
+--- a/test/testtrie.cpp
++++ b/test/testtrie.cpp
+@@ -40,8 +40,8 @@ int main() {
+         FCITX_ASSERT(trie.size() == 4);
+         DATrie<float>::position_type pos = 0;
+         auto result = trie.traverse("aaa", pos);
+-        auto nan1 = std::nanf("1");
+-        auto nan2 = std::nanf("2");
++        auto nan1 = trie.noValue();
++        auto nan2 = trie.noPath();
+         // NaN != NaN, we must use memcmp to do this.
+         FCITX_ASSERT(memcmp(&nan1, &result, sizeof(float)) == 0);
+         FCITX_ASSERT(trie.isNoValue(result));
