@@ -32,7 +32,7 @@ RDEPEND="
 	dev-python/pipdeptree[${PYTHON_USEDEP}]
 	dev-python/plette[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
-	<dev-python/pythonfinder-2.0.5[${PYTHON_USEDEP}]
+	<dev-python/pythonfinder-2.0.6[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
