@@ -533,6 +533,8 @@ multilib_src_configure() {
 		-DBUILD_opencv_python3=OFF
 	)
 
+	use qt5 && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON )
+
 	cmake_src_configure
 
 	# Copy face_land_model to ${CMAKE_BINARY_DIR}/${OPENCV_TEST_DATA_INSTALL_PATH}
@@ -542,6 +544,11 @@ multilib_src_configure() {
 		cp "${WORKDIR}"/face_landmark_model.dat "${BUILD_DIR}"/share/OpenCV/testdata/cv/face/ || die
 	fi
 
+	if use contrib; then
+		cd "${WORKDIR}/opencv_contrib-${PV}" || die
+		eapply "${FILESDIR}/${PN}-4.7.0-CVE-2023-2617.patch"
+		eapply "${FILESDIR}/${PN}-4.7.0-CVE-2023-2618.patch"
+	fi
 }
 
 python_module_compile() {
