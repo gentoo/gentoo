@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-06)
+# Copy of dev-ruby/listen spefically for dev-ruby/sass. That package now
+# uses dev-ruby/listen directly so there is no longer a need for
+# sass-listen. Masked for removal on 2024-01-06.
+dev-ruby/sass-listen
+
+# Hans de Graaff <graaff@gentoo.org> (2023-12-06)
 # Last release in 2015, not compatible with Ruby 3.2. No reverse
 # dependencies. Masked for removal on 2024-01-06.
 dev-ruby/semver2
