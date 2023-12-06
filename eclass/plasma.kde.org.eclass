@@ -74,7 +74,7 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 		*) _KDE_SRC_URI+="stable/plasma/$(ver_cut 1-3)/" ;;
 	esac
 
-	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_NAME}-${PV}.tar.xz"
+	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
 fi
 
 if [[ ${_PSLOT} == 6 ]]; then
