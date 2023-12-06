@@ -41,6 +41,7 @@ src_prepare() {
 
 src_configure() {
 	use sparc && append-fflags $(test-flags-FC -fno-store-merging -fno-tree-slp-vectorize) # bug 818400
+	append-cflags $(test-flags-CC -fcommon) # bug 899452
 	default
 }
 
