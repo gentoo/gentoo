@@ -557,9 +557,7 @@ dev-php/PEAR-Text_Password test
 dev-php/PEAR-Text_Wiki test
 dev-php/PEAR-Text_Wiki_Mediawiki test
 dev-php/PEAR-XML_RSS test
-dev-php/PHP_CodeCoverage test
 dev-php/PHP_CodeSniffer test
-dev-php/PHP_TokenStream test
 dev-php/awl test
 dev-php/fedora-autoloader test
 dev-php/json-schema test
