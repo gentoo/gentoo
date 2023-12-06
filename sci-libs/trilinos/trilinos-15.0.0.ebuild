@@ -92,32 +92,21 @@ trilinos_conf() {
 	[[ -n ${dirs} ]] && mycmakeargs+=( "-D${2}_INCLUDE_DIRS=${dirs:1}" )
 }
 
-#
-# The following packages are currently disabled:
-#  - Adelus/Zadelus due to underlinkage.
-#  - Moertel due to underlinkage
-#  - SEACAS is incompatible with netcdf, see
-#    https://github.com/trilinos/Trilinos/tree/master/packages/seacas#netcdf
-#
-
 src_configure() {
-	# Trilinos is a massive CPP project. Fixing all of the lto warnings and
-	# making lto compilation/linking save will be a massive undertaking.
-	# Thus, simply filter lto flags. bug #862987
+	# Trilinos is a massive C++ project. Fixing all of the lto warnings and
+	# making safe for lto compilation/linking will be a massive
+	# undertaking. Thus, simply filter lto flags. bug #862987
 	filter-lto
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
+		-DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_SKIP_INSTALL_RPATH=ON
-		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all-packages)"
-		-DTrilinos_ENABLE_Adelus=OFF
-		-DTrilinos_ENABLE_Moertel=OFF
 		-DTrilinos_ENABLE_PyTrilinos=OFF
-		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_Amesos=ON
 		-DTrilinos_ENABLE_AztecOO=ON
 		-DTrilinos_ENABLE_EpetraExt=ON

@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Scientific library collection for large scale problems"
 HOMEPAGE="http://trilinos.sandia.gov/"
@@ -94,18 +94,21 @@ trilinos_conf() {
 
 #
 # The following packages are currently disabled:
-#  - Adelus/Zadelus due to underlinkage.
-#  - Moertel due to underlinkage
 #  - SEACAS is incompatible with netcdf, see
 #    https://github.com/trilinos/Trilinos/tree/master/packages/seacas#netcdf
 #
 
 src_configure() {
+	# Trilinos is a massive C++ project. Fixing all of the lto warnings and
+	# making safe for lto compilation/linking will be a massive
+	# undertaking. Thus, simply filter lto flags. bug #862987
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
+		-DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_SKIP_INSTALL_RPATH=ON
-		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all-packages)"
