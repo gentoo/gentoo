@@ -84,7 +84,7 @@ case ${KDE_BUILD_TYPE} in
 					;;
 			esac
 
-			SRC_URI="${_KDE_SRC_URI}${KDE_ORG_NAME}-${PV}.tar.xz"
+			SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
 		fi
 		;;
 esac
