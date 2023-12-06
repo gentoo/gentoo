@@ -1,0 +1,188 @@
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -487,7 +487,7 @@ endif()
+ list(APPEND Caffe2_DEPENDENCY_LIBS cpuinfo)
+ 
+ # ---[ QNNPACK
+-if(USE_QNNPACK)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+ 
+   if(NOT DEFINED QNNPACK_SOURCE_DIR)
+@@ -543,7 +543,7 @@ if(USE_QNNPACK)
+ endif()
+ 
+ # ---[ Caffe2 Int8 operators (enabled by USE_QNNPACK) depend on gemmlowp and neon2sse headers
+-if(USE_QNNPACK)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+   include_directories(SYSTEM "${CAFFE2_THIRD_PARTY_ROOT}/gemmlowp")
+   include_directories(SYSTEM "${CAFFE2_THIRD_PARTY_ROOT}/neon2sse")
+@@ -803,7 +803,7 @@
+ endif()
+ 
+ # ---[ FBGEMM
+-if(USE_FBGEMM)
++if(FALSE)
+   set(CAFFE2_THIRD_PARTY_ROOT "${PROJECT_SOURCE_DIR}/third_party")
+   if(NOT DEFINED FBGEMM_SOURCE_DIR)
+     set(FBGEMM_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/fbgemm" CACHE STRING "FBGEMM source directory")
+@@ -848,6 +848,7 @@
+ endif()
+ 
+ if(USE_FBGEMM)
++  list(APPEND Caffe2_DEPENDENCY_LIBS fbgemm)
+   caffe2_update_option(USE_FBGEMM ON)
+ else()
+   caffe2_update_option(USE_FBGEMM OFF)
+@@ -1552,7 +1553,6 @@
+       set_target_properties(onnx_proto PROPERTIES CXX_STANDARD 17)
+     endif()
+   endif()
+-  add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../third_party/foxi EXCLUDE_FROM_ALL)
+ 
+   add_definitions(-DONNX_NAMESPACE=${ONNX_NAMESPACE})
+   if(NOT USE_SYSTEM_ONNX)
+@@ -1831,7 +1831,6 @@
+ #
+ set(TEMP_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libs" FORCE)
+-add_subdirectory(${PROJECT_SOURCE_DIR}/third_party/fmt)
+ 
+ # Disable compiler feature checks for `fmt`.
+ #
+@@ -1840,9 +1839,7 @@
+ # CMAKE_CXX_FLAGS in ways that break feature checks. Since we already know
+ # `fmt` is compatible with a superset of the compilers that PyTorch is, it
+ # shouldn't be too bad to just disable the checks.
+-set_target_properties(fmt-header-only PROPERTIES INTERFACE_COMPILE_FEATURES "")
+ 
+-list(APPEND Caffe2_DEPENDENCY_LIBS fmt::fmt-header-only)
+ set(BUILD_SHARED_LIBS ${TEMP_BUILD_SHARED_LIBS} CACHE BOOL "Build shared libs" FORCE)
+ 
+ # ---[ Kineto
+--- a/c10/CMakeLists.txt
++++ b/c10/CMakeLists.txt
+@@ -87,7 +87,7 @@
+ if(${USE_GLOG})
+     target_link_libraries(c10 PUBLIC glog::glog)
+ endif()
+-target_link_libraries(c10 PRIVATE fmt::fmt-header-only)
++target_link_libraries(c10 PRIVATE fmt)
+ 
+ find_package(Backtrace)
+ if(Backtrace_FOUND)
+--- a/torch/CMakeLists.txt
++++ b/torch/CMakeLists.txt
+@@ -63,15 +63,9 @@
+     ${CMAKE_BINARY_DIR}
+     ${CMAKE_BINARY_DIR}/aten/src
+     ${CMAKE_BINARY_DIR}/caffe2/aten/src
+-    ${CMAKE_BINARY_DIR}/third_party
+-    ${CMAKE_BINARY_DIR}/third_party/onnx
+ 
+-    ${TORCH_ROOT}/third_party/valgrind-headers
+ 
+-    ${TORCH_ROOT}/third_party/gloo
+-    ${TORCH_ROOT}/third_party/onnx
+-    ${TORCH_ROOT}/third_party/flatbuffers/include
+-    ${TORCH_ROOT}/third_party/kineto/libkineto/include
++    /usr/include/kineto
+ 
+     ${TORCH_SRC_DIR}/csrc
+     ${TORCH_SRC_DIR}/csrc/api/include
+@@ -84,7 +78,6 @@
+     python::python
+     pybind::pybind11
+     shm
+-    fmt::fmt-header-only
+     ATEN_CPU_FILES_GEN_LIB)
+ 
+ if(USE_ASAN AND TARGET Sanitizer::address)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -812,12 +812,11 @@
+ 
+ # ---[ Build flags
+ if(NOT MSVC)
+-  string(APPEND CMAKE_CXX_FLAGS " -O2 -fPIC")
++  string(APPEND CMAKE_CXX_FLAGS " -fPIC")
+   # Eigen fails to build with some versions, so convert this to a warning
+   # Details at http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1459
+   string(APPEND CMAKE_CXX_FLAGS " -Wall")
+   string(APPEND CMAKE_CXX_FLAGS " -Wextra")
+-  append_cxx_flag_if_supported("-Werror=return-type" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-Werror=non-virtual-dtor" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-Werror=braced-scalar-init" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-Werror=range-loop-construct" CMAKE_CXX_FLAGS)
+@@ -917,8 +916,6 @@
+   string(APPEND CMAKE_LINKER_FLAGS_DEBUG " -fno-omit-frame-pointer -O0")
+   append_cxx_flag_if_supported("-fno-math-errno" CMAKE_CXX_FLAGS)
+   append_cxx_flag_if_supported("-fno-trapping-math" CMAKE_CXX_FLAGS)
+-  append_cxx_flag_if_supported("-Werror=format" CMAKE_CXX_FLAGS)
+-  append_cxx_flag_if_supported("-Werror=cast-function-type" CMAKE_CXX_FLAGS)
+ else()
+   # skip unwanted includes from windows.h
+   add_compile_definitions(WIN32_LEAN_AND_MEAN)
+--- a/cmake/public/utils.cmake
++++ b/cmake/public/utils.cmake
+@@ -492,8 +492,6 @@
+   endif()
+ 
+   # Use -O2 for release builds (-O3 doesn't improve perf, and -Os results in perf regression)
+-  target_compile_options(${libname} PRIVATE
+-      $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<OR:$<CONFIG:Release>,$<CONFIG:RelWithDebInfo>>>:-O2>)
+ 
+ endfunction()
+ 
+--- a/cmake/Codegen.cmake
++++ b/cmake/Codegen.cmake
+@@ -57,7 +57,7 @@
+   if(MSVC)
+     set(OPT_FLAG "/fp:strict ")
+   else(MSVC)
+-    set(OPT_FLAG "-O3 ")
++    set(OPT_FLAG " ")
+     if("${CMAKE_BUILD_TYPE}" MATCHES "Debug")
+       set(OPT_FLAG " ")
+     endif()
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -107,7 +107,7 @@
+ # Note: the folders that are being commented out have not been properly
+ # addressed yet.
+ 
+-if(NOT MSVC AND USE_XNNPACK)
++if(FALSE)
+   if(NOT TARGET fxdiv)
+     set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+     set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+@@ -1023,7 +1025,6 @@
+ endif()
+ 
+ if(NOT MSVC AND USE_XNNPACK)
+-  TARGET_LINK_LIBRARIES(torch_cpu PRIVATE fxdiv)
+ endif()
+ 
+ # ==========================================================
+@@ -1143,8 +1146,7 @@
+ target_include_directories(torch_cpu PRIVATE
+   ${TORCH_ROOT}/third_party/miniz-2.1.0)
+ 
+-target_include_directories(torch_cpu PRIVATE
+-  ${TORCH_ROOT}/third_party/kineto/libkineto/include)
++target_include_directories(torch_cpu PRIVATE /usr/include/kineto)
+ 
+ if(USE_KINETO)
+   target_include_directories(torch_cpu PRIVATE
+--- a/cmake/External/nnpack.cmake
++++ b/cmake/External/nnpack.cmake
+@@ -58,7 +58,7 @@
+   set(PTHREADPOOL_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/pthreadpool" CACHE STRING "pthreadpool source directory")
+   set(GOOGLETEST_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/googletest" CACHE STRING "Google Test source directory")
+ 
+-  if(NOT TARGET nnpack)
++  if(FALSE)
+     if(NOT USE_SYSTEM_PTHREADPOOL AND USE_INTERNAL_PTHREADPOOL_IMPL)
+       set(NNPACK_CUSTOM_THREADPOOL ON CACHE BOOL "")
+     endif()
