@@ -98,7 +98,7 @@ readonly KDE_ORG_CATEGORIES
 # @PRE_INHERIT
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
-# Name of the package as hosted on kde.org mirrors.
+# Name of the package (repository) as hosted on invent.kde.org.
 : "${KDE_ORG_NAME:=$PN}"
 
 # @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
@@ -113,6 +113,15 @@ readonly KDE_ORG_CATEGORIES
 # For any other value, add selinux to IUSE, and depending on that useflag
 # add a dependency on sec-policy/selinux-${KDE_SELINUX_MODULE} to (R)DEPEND.
 : "${KDE_SELINUX_MODULE:=none}"
+
+# @ECLASS_VARIABLE: KDE_ORG_TAR_PN
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If unset, default value is set to ${KDE_ORG_NAME}.
+# Filename sans version of the tarball as hosted on kde.org download mirrors.
+# This is used e.g. when upstream's tarball name differs from repository,
+# especially after repository moves.
+: "${KDE_ORG_TAR_PN:=$KDE_ORG_NAME}"
 
 case ${KDE_SELINUX_MODULE} in
 	none)   ;;
@@ -179,7 +188,7 @@ case ${KDE_BUILD_TYPE} in
 			S=${WORKDIR}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}
 			[[ ${CATEGORY} == dev-qt ]] && QT5_BUILD_DIR="${S}_build"
 		else
-			S=${WORKDIR}/${KDE_ORG_NAME}-${PV}
+			S=${WORKDIR}/${KDE_ORG_TAR_PN}-${PV}
 		fi
 		;;
 esac
