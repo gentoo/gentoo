@@ -19,7 +19,7 @@ SRC_URI="
 	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64le.zip )"
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
-SLOT="4.27"
+SLOT="4.30"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="cairo opengl webkit"
 
