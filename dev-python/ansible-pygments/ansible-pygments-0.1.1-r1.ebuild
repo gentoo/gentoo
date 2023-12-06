@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/ansible-community/ansible-pygments"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
 
