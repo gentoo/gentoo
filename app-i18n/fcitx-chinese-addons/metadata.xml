@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="cloudpinyin">Build cloud pinyin addon</flag>
+		<flag name="gui">Enable GUI support (qt5 or qt6)</flag>
+		<flag name="opencc">Enable support for conversion between Traditional and Simplified Chinese</flag>
+		<flag name="qt5">Enable configure qt5</flag>
+		<flag name="webengine">Enable built-in browser using <pkg>dev-qt/qtwebengine</pkg></flag>
+	</use>
+<upstream>
+<remote-id type="github">fcitx/fcitx5-chinese-addons</remote-id>
+</upstream>
+</pkgmetadata>
