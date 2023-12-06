@@ -22,7 +22,7 @@ else
 		)
 	"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
