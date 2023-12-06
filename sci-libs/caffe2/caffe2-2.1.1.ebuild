@@ -135,7 +135,6 @@ src_configure() {
 		-DUSE_CCACHE=OFF
 		-DUSE_CUDA=$(usex cuda)
 		-DUSE_CUDNN=$(usex cuda)
-		-DUSE_FAST_NVCC=$(usex cuda)
 		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
 		-DBUILD_NVFUSER=$(usex cuda)
 		-DUSE_DISTRIBUTED=$(usex distributed)
@@ -204,7 +203,12 @@ src_install() {
 	mkdir -p python/torch/include || die
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
 	mv "${ED}"/usr/include/torch python/torch/include || die
+	mv "${ED}${S}"/nvfuser python/nvfuser || die
+	rm -r "${ED}${S}"/test || die
+	rm -r "${ED}${S}"/third_party || die
 	cp torch/version.py python/torch/ || die
 	python_domodule python/caffe2
 	python_domodule python/torch
+	python_domodule python/nvfuser
+	find "${ED}" -empty -delete
 }
