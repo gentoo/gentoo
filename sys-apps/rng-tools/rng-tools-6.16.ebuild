@@ -12,7 +12,9 @@ SRC_URI="https://github.com/nhorman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ppc64 ~riscv x86"
-IUSE="jitterentropy nistbeacon pkcs11 qrypt rtlsdr selinux"
+IUSE="jitterentropy nistbeacon pkcs11 qrypt rtlsdr selinux test"
+REQUIRED_USE="test? ( jitterentropy )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/openssl:=
@@ -38,6 +40,7 @@ RDEPEND="
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	sed -i "s/sleep 30/sleep 120/g" tests/rngtestjitter.sh || die
 	default
 
 	eautoreconf
@@ -53,6 +56,10 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	RNGD_JITTER_TIMEOUT=90 default
 }
 
 src_install() {
