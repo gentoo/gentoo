@@ -11,7 +11,7 @@ QTMIN=5.15.9
 inherit ecm plasma.kde.org optfeature
 
 DESCRIPTION="KDE Plasma desktop"
-XORGHDRS="${PN}-override-include-dirs-2"
+XORGHDRS="${PN}-override-include-dirs-3"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
@@ -126,7 +126,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${WORKDIR}/${XORGHDRS}/${PN}-5.25.80-override-include-dirs.patch" # downstream patch
+	"${WORKDIR}/${XORGHDRS}/${PN}-5.27.9-override-include-dirs.patch" # downstream patch
 )
 
 src_prepare() {
