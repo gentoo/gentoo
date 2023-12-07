@@ -13,7 +13,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="+webengine"
 
 DEPEND="
@@ -29,12 +29,10 @@ DEPEND="
 	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}
-	net-libs/signon-oauth2
-	net-libs/signon-ui
+	net-libs/signon-oauth2[qt5(+)]
+	net-libs/signon-ui[-qt6(-)]
 "
-BDEPEND="
-	dev-util/intltool
-"
+BDEPEND="dev-util/intltool"
 
 src_configure() {
 	local mycmakeargs=(
