@@ -414,6 +414,9 @@ src_configure() {
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
 
+		# Workaround for bug #907905
+		filter-lto
+
 		# Workaround for bug #915067
 		append-ldflags -Wl,--undefined-version
 
@@ -439,9 +442,6 @@ src_configure() {
 	else
 		strip-flags
 	fi
-
-	# Workaround for bug #907905
-	filter-lto
 
 	export LO_CLANG_CC=${CC}
 	export LO_CLANG_CXX=${CXX}
