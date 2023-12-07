@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-11-30)
+# The new release fails to build if media player backend is disabled.
+# Masked pending a fix.
+# https://github.com/martinrotter/rssguard/issues/1237
+=net-news/rssguard-4.6.0
+
 # Hans de Graaff <graaff@gentoo.org> (2023-12-06)
 # Copy of dev-ruby/listen spefically for dev-ruby/sass. That package now
 # uses dev-ruby/listen directly so there is no longer a need for
