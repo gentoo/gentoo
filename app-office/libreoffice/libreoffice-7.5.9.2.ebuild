@@ -298,9 +298,12 @@ PATCHES=(
 	# maybe upstreamable
 	"${FILESDIR}/libreoffice-7.5.8.2-icu-74-compatibility.patch"
 
+	# 7.6 branch
+	"${WORKDIR}/${PN}-7.5.2.2-loong-buildsys-fix.patch" # bug 881389
+
 	# git master
-	"${WORKDIR}/${PN}-7.5.2.2-loong-buildsys-fix.patch"
-	"${FILESDIR}/${PN}-7.5.6.2-gcc-14.patch"
+	"${FILESDIR}/${PN}-7.5.6.2-gcc-14.patch" # bug 916621
+	"${FILESDIR}/${P}-libxml2-2.12.patch" # bug 917691
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
