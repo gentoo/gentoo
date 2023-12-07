@@ -327,6 +327,34 @@ riscv		default/linux/riscv/20.0/rv64gc/multilib				exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd/merged-usr		exp
 
+riscv		default/linux/riscv/23.0/rv64/lp64d					exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop				exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome			exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/plasma			exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/plasma/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/systemd			exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/lp64					exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop				exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/gnome			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/gnome/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/plasma			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/plasma/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/systemd			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/multilib					exp
+riscv		default/linux/riscv/23.0/rv64/multilib/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop			exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/gnome		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/plasma		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop			exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/gnome		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/plasma		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/multilib			exp
+
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
 s390		default/linux/s390/17.0						stable
@@ -391,6 +419,10 @@ mips		default/linux/mips/17.0/mipsel/o32/musl				exp
 mips		default/linux/mips/17.0/mipsel/n64/musl				exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/musl			dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/musl			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/musl				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		exp
 x86		default/linux/x86/17.0/musl					dev
 x86		default/linux/x86/17.0/musl/selinux				exp
 
