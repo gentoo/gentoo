@@ -14,7 +14,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # bug #549444
@@ -31,13 +31,13 @@ COMMON_DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kwallet-${KFMIN}:5
-	net-libs/accounts-qt
-	net-libs/signond
+	net-libs/accounts-qt[qt5(+)]
+	net-libs/signond[qt5(+)]
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/qcoro5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
-	kde-plasma/kde-cli-tools:5
+	kde-plasma/kde-cli-tools:*
 "
 # KAccountsMacros.cmake needs intltool
 RDEPEND="${COMMON_DEPEND}
