@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-${MY_DIR2}"
 LICENSE="BSD GPL-2 GPL-2+ GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x86-linux"
-IUSE="emacs examples polymake +readline static-libs"
+IUSE="emacs examples polymake +readline"
 
 # The interactive help uses "info" from sys-apps/texinfo.
 RDEPEND="
@@ -32,7 +32,7 @@ RDEPEND="
 	sci-libs/cddlib
 	sci-mathematics/flint
 	sys-apps/texinfo
-	emacs? ( >=app-editors/emacs-23.1:* )
+	emacs? ( app-editors/emacs:* )
 	polymake? ( sci-mathematics/polymake )
 	readline? ( sys-libs/readline )
 "
@@ -60,7 +60,6 @@ src_configure() {
 		--without-pythonmodule
 		$(use_enable emacs)
 		$(use_enable polymake polymake-module)
-		$(use_enable static-libs static)
 		$(use_with readline)
 	)
 	econf "${myconf[@]}"
@@ -85,8 +84,7 @@ src_install() {
 
 	dosym Singular /usr/bin/"${PN}"
 
-	# purge .la file
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
 
 src_test() {
