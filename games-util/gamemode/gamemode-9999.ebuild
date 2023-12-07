@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,16 +28,12 @@ REQUIRED_USE="^^ ( systemd elogind )"
 
 RDEPEND="
 	acct-group/gamemode
-	>=dev-libs/inih-53
+	>=dev-libs/inih-54
 	sys-apps/dbus[${MULTILIB_USEDEP},systemd(+)=,elogind(-)=]
 	sys-auth/polkit
 	sys-libs/libcap
 "
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7-static-libs.patch
-)
 
 DOCS=(
 	CHANGELOG.md
@@ -46,42 +42,13 @@ DOCS=(
 	example/gamemode.ini
 )
 
-pkg_pretend() {
-	elog
-	elog "GameMode needs a kernel capable of SCHED_ISO to use its soft realtime"
-	elog "feature. Example of a kernel providing that is sys-kernel/pf-sources."
-	elog
-	elog "Support for soft realtime is completely optional. It may provide the"
-	elog "following benefits with systems having at least four CPU cores:"
-	elog
-	elog "  * more CPU shares allocated exclusively to the game"
-	elog "  * reduced input lag and reduced thread latency"
-	elog "  * more consistent frame times resulting in less microstutters"
-	elog
-	elog "You probably won't benefit from soft realtime mode and thus don't need"
-	elog "SCHED_ISO if:"
-	elog
-	elog "  * Your CPU has less than four cores because the game may experience"
-	elog "    priority inversion with the graphics driver (thus heuristics"
-	elog "    automatically disable SCHED_ISO usage then)"
-	elog "  * Your game uses busy-loops to interface with the graphics driver"
-	elog "    but you may still force SCHED_ISO per configuation file, YMMV,"
-	elog "    it depends on the graphics driver implementation, i.e. usage of"
-	elog "    __GL_THREADED_OPTIMIZATIONS or similar."
-	elog "  * If your game causes more than 70% CPU usage across all cores,"
-	elog "    SCHED_ISO automatically turns off and on depending on usage and"
-	elog "    is processed with higher-than-normal priority then (renice)."
-	elog "    This auto-switching may result in a lesser game experience."
-	elog
-	elog "For more info look at:"
-	elog "https://github.com/FeralInteractive/gamemode/blob/${GAMEMODE_GIT_PTR}/README.md"
-	elog
-}
-
 multilib_src_configure() {
 	local emesonargs=(
-		-Dwith-systemd-user-unit-dir="$(systemd_get_userunitdir)"
+		-Dwith-examples=false
 		-Dwith-pam-limits-dir="${EPREFIX}"/etc/security/limits.d
+		-Dwith-pam-renicing=true
+		-Dwith-privileged-group=gamemode
+		-Dwith-systemd-user-unit-dir="$(systemd_get_userunitdir)"
 	)
 	if multilib_is_native_abi; then
 		emesonargs+=(
@@ -91,8 +58,6 @@ multilib_src_configure() {
 	else
 		emesonargs+=(
 			-Dwith-sd-bus-provider=no-daemon
-			-Dwith-pam-renicing=false
-			-Dwith-examples=false
 			-Dwith-util=false
 		)
 	fi
