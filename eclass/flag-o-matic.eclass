@@ -20,7 +20,7 @@ _FLAG_O_MATIC_ECLASS=1
 
 inherit toolchain-funcs
 
-[[ ${EAPI} == 6 ]] && inherit eutils
+[[ ${EAPI} == 6 ]] && inherit eqawarn
 
 # @FUNCTION: all-flag-vars
 # @DESCRIPTION:
