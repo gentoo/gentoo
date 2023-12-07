@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ LICENSE="BSD"
 # Subslot indicates the fork / new version
 # 3 doesn't include the same games as the classic variant, etc
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~riscv ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ~riscv ~x86"
 
 # 'check' target doesn't exist, nor do any actual tests
 # bug #779649
