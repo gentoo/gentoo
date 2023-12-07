@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/libglvnd
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11
 	x11-libs/libXi
 	jack? ( virtual/jack )
