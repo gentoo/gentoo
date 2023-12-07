@@ -47,12 +47,10 @@ REQUIRED_USE="
 			video_cards_vmware
 		)
 	)
-	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
-	video_cards_radeonsi?   ( llvm )
 	vdpau? ( X )
 	xa? ( X )
 	zink? ( vulkan )
