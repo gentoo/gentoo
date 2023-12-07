@@ -237,6 +237,9 @@ qt5-build_src_configure() {
 		append-ldflags -Wl,--undefined-version
 	fi
 
+	# many bugs, no one to fix
+	filter-lto
+
 	qt5_foreach_target_subdir qt5_qmake
 }
 
