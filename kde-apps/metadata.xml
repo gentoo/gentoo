@@ -2,7 +2,7 @@
 <!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		The kde-apps category contains packages released by
-		KDE as part of KDE Applications 5.
+		The kde-apps category contains packages released by KDE as part
+		of KDE Gear.
 	</longdescription>
 </catmetadata>
