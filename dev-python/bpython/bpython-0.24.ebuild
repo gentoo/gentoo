@@ -20,6 +20,7 @@ SLOT="0"
 IUSE="clipboard +jedi watch"
 KEYWORDS="amd64 arm64 ~riscv x86"
 
+# see https://github.com/bpython/bpython/issues/641 wrt greenlet
 RDEPEND="
 	>=dev-python/curtsies-0.4.0[${PYTHON_USEDEP}]
 	dev-python/cwcwidth[${PYTHON_USEDEP}]
