@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/leogx9r/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 S="${WORKDIR}/${PN}-v${PV}"
 
