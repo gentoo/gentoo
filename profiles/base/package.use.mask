@@ -38,7 +38,7 @@ net-analyzer/nagios-plugin-check_raid hpa
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Requires LLVM 14 that is being removed.
 <dev-lang/ghc-9.4 llvm
-media-gfx/openvdb ax
+<media-gfx/openvdb-11 ax
 sys-devel/sparse llvm
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
