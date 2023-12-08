@@ -216,8 +216,8 @@ src_prepare() {
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
-		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i tests/CMakeLists.txt || die
-		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
+		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i tests/CMakeLists.txt || die
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
 	fi
 }
 
@@ -320,13 +320,13 @@ src_configure() {
 src_test() {
 	# A lot of tests needs to have access to the installed data files.
 	# So install them into the image directory now.
-	cmake_src_install
+	DESTDIR="${T}" cmake_build install
 
 	blender_get_version
 	# Define custom blender data/script file paths not be able to find them otherwise during testing.
 	# (Because the data is in the image directory and it will default to look in /usr/share)
-	export BLENDER_SYSTEM_SCRIPTS="${ED}"/usr/share/blender/${BV}/scripts
-	export BLENDER_SYSTEM_DATAFILES="${ED}"/usr/share/blender/${BV}/datafiles
+	export BLENDER_SYSTEM_SCRIPTS="${T}/usr/share/blender/${BV}/scripts"
+	export BLENDER_SYSTEM_DATAFILES="${T}/usr/share/blender/${BV}/datafiles"
 
 	# Sanity check that the script and datafile path is valid.
 	# If they are not vaild, blender will fallback to the default path which is not what we want.
@@ -336,7 +336,7 @@ src_test() {
 	cmake_src_test
 
 	# Clean up the image directory for src_install
-	rm -fr "${ED}"/* || die
+	rm -fr "${T}"/usr || die
 }
 
 src_install() {
