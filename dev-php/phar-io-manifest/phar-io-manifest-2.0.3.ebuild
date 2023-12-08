@@ -9,7 +9,7 @@ SRC_URI="https://github.com/phar-io/manifest/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="examples"
 
 CDEPEND="dev-php/fedora-autoloader
