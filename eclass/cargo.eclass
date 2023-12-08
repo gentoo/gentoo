@@ -18,24 +18,29 @@ esac
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-# check and document RUST_DEPEND and options we need below in case conditions.
+# @ECLASS_VARIABLE: RUST_DEPEND
+# @INTERNAL
+# @DESCRIPTION:
+# Minimum rust/cargo version that should be used with this eclass.
+# Versions below that may not provide functionality we rely on.
+# This variable should not be overriden by ebuilds, just manually
+# add more recent version if package requires it.
 # https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
-RUST_DEPEND="virtual/rust"
+# 1.37 added 'cargo vendor' subcommand and net.offline config knob
+# 1.39 added --workspace
+# 1.46 added --target dir
+# 1.48 added term.progress config option
+# 1.51 added split-debuginfo profile option
+# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
+# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
+# 1.57 added named profile support in stable
+# 1.59 stabilized strip in profiles
+readonly RUST_DEPEND=">=virtual/rust-1.59"
 
 case ${EAPI} in
 	7)
-		# 1.37 added 'cargo vendor' subcommand and net.offline config knob
-		RUST_DEPEND=">=virtual/rust-1.37.0"
 		;;
 	8)
-		# 1.39 added --workspace
-		# 1.46 added --target dir
-		# 1.48 added term.progress config option
-		# 1.51 added split-debuginfo profile option
-		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
-		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
-		RUST_DEPEND=">=virtual/rust-1.53"
-
 		if [[ -z ${CRATES} && "${PV}" != *9999* ]]; then
 			eerror "undefined CRATES variable in non-live EAPI=8 ebuild"
 			die "CRATES variable not defined"
@@ -49,8 +54,15 @@ inherit flag-o-matic multiprocessing toolchain-funcs
 
 IUSE="${IUSE} debug"
 
-ECARGO_HOME="${WORKDIR}/cargo_home"
-ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
+# @ECLASS_VARIABLE: ECARGO_HOME
+# @DESCRIPTION:
+# Directory for CARGO_HOME used by build process.
+readonly ECARGO_HOME="${WORKDIR}/cargo_home"
+
+# @ECLASS_VARIABLE: ECARGO_VENDOR
+# @DESCRIPTION:
+# Directory for 'cargo vendor' subcommand output.
+readonly ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
 # @ECLASS_VARIABLE: CRATES
 # @DEFAULT_UNSET
@@ -276,13 +288,35 @@ cargo_gen_config() {
 	[net]
 	offline = true
 
+	[profile.gentoo]
+	# https://doc.rust-lang.org/cargo/reference/profiles.html#custom-profiles
+	inherits = "release"
+
+	# emulate dev profile with USE=debug
+	# https://doc.rust-lang.org/cargo/reference/profiles.html#dev
+	debug = $(usex debug true false)
+	debug-assertions = $(usex debug true false)
+	overflow-checks = $(usex debug true false)
+	strip = "none"
+	$(usex debug 'opt-level = 0' '')
+	$(usex debug 'lto = false' '')
+
+	# https://doc.rust-lang.org/rustc/codegen-options/index.html#codegen-units
+	# We use single codegen unit for most optimized code and to honor -j from MAKEOPTS.
+	# Users can override via e.g. CARGO_PROFILE_gentoo_CODEGEN_UNITS="16" in make.conf.
+	codegen-units = 1
+
 	[build]
 	jobs = $(makeopts_jobs)
 	incremental = false
 
+	[install]
+	root = "${ED}/usr"
+
 	[term]
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
+	progress.when = "never"
 	$(_cargo_gen_git_config)
 	_EOF_
 
@@ -516,7 +550,7 @@ cargo_src_compile() {
 	filter-lto
 	tc-export AR CC CXX PKG_CONFIG
 
-	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- cargo build --profile gentoo ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo build failed"
 }
@@ -534,15 +568,16 @@ cargo_src_install() {
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
-		--root "${ED}/usr" \
-		${GIT_CRATES[@]:+--frozen} \
-		$(usex debug --debug "") \
-		${ECARGO_ARGS[@]} "$@"
+		--profile gentoo --no-track \
+		 ${GIT_CRATES[@]:+--frozen} ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo install failed"
 
-	rm -f "${ED}/usr/.crates.toml" || die
-	rm -f "${ED}/usr/.crates2.json" || die
+	# HACK: compat symlinks until old ebuilds migrate.
+	# create target/{debug,release} symlinks that some ebuilds rely on.
+	# This only affects ebuilds that pick extra generated files from target directory, that's rare.
+	ln -s gentoo "${S}"/target/debug || :
+	ln -s gentoo "${S}"/target/release || :
 
 	# it turned out to be non-standard dir, so get rid of it future EAPI
 	# and only run for EAPI=7
@@ -565,7 +600,7 @@ cargo_src_test() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
-	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- cargo test --profile gentoo ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo test failed"
 }
