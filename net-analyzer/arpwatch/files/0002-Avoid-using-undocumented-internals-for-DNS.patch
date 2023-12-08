@@ -1,0 +1,35 @@
+sent upstream on 2023-12-05
+
+From 957425ec7ca2714a4c31431f4746da7644a7f4e9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 5 Dec 2023 08:40:31 +0000
+Subject: [PATCH 2/2] Avoid using undocumented internals for DNS
+
+_getshort is a reserved internal function and is deprecated per
+glibc's resolv.h at least.
+
+Use ns_get32 instead as recommended by the deprecation warning.
+
+This also fixes an implicit function declaration warning/error with
+Clang 16 / GCC 14.
+
+Bug: https://bugs.gentoo.org/829633
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/dns.c
++++ b/dns.c
+@@ -115,10 +115,10 @@ gethinfo(char *hostname, char *cpu, int cpulen, char *os, int oslen)
+ 		    (u_char *)cp, (char *)bp, buflen)) < 0)
+ 			break;
+ 		cp += n;
+-		type = _getshort(cp);
++		type = ns_get32(cp);
+ 		cp += sizeof(u_short);			/* class */
+ 		cp += sizeof(u_short) + sizeof(u_int32_t);
+-		n = _getshort(cp);
++		n = ns_get32(cp);
+ 		cp += sizeof(u_short);
+ 		if (type == T_HINFO) {
+ 			/* Unpack */
+-- 
+2.43.0
+

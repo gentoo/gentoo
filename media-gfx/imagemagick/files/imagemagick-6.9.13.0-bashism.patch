@@ -1,0 +1,37 @@
+https://github.com/ImageMagick/ImageMagick6/pull/292
+
+From 9661325ece66c0262727cbcdffbe7efb59b5c46d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 8 Dec 2023 09:47:06 +0000
+Subject: [PATCH] configure.ac: Fix bashism
+
+We need to use '=', not '==', or configure won't run with stricter POSIX
+shells as /bin/sh. This retains compatibility with Bash.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e9cd4fb20..23c00268d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -474,7 +474,7 @@ CFLAGS="$OPENMP_CFLAGS $CFLAGS"
+ MAGICK_PCFLAGS="$MAGICK_PCFLAGS $OPENMP_CFLAGS"
+ AC_SUBST([OPENMP_CFLAGS])
+ AC_CHECK_DECL([_OPENMP],[OPENMP_ENABLED='yes'],[OPENMP_ENABLED='no'],[])
+-if test "${OPENMP_ENABLED}" == 'yes' && \
++if test "${OPENMP_ENABLED}" = 'yes' && \
+    test "$ac_cv_prog_c_openmp" != 'unsupported'; then
+     MAGICK_FEATURES="OpenMP $MAGICK_FEATURES"
+ fi
+@@ -1247,7 +1247,7 @@ AC_DEFINE_UNQUOTED([X11_CONFIGURE_PATH],["$X11ConfigurePath"],[Location of X11 c
+ # Find OpenMP library
+ #
+ GOMP_LIBS=''
+-if test "${OPENMP_ENABLED}" == 'yes' && \
++if test "${OPENMP_ENABLED}" = 'yes' && \
+    test "$ac_cv_prog_c_openmp" != 'unsupported'; then
+   AC_CHECK_HEADER([omp.h], [], [AC_MSG_RESULT([OpenMP header file not found])])
+   if test "${GCC}" = "yes"; then

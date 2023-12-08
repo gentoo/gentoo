@@ -63,9 +63,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-FILE_OFFSET_BITS.patch
 )
 
+pkg_setup() {
+	use vala && vala_setup
+}
+
 src_prepare() {
 	default
-	use vala && vala_src_prepare
 
 	# Test requires a running session
 	# https://github.com/hughsie/colord/issues/94

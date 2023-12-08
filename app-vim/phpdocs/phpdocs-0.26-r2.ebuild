@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: PHPDoc Support in VIM"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=520"
 
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 VIM_PLUGIN_HELPURI="https://www.vim.org/scripts/script.php?script_id=520"
 

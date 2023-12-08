@@ -10,7 +10,7 @@ SRC_URI="https://feh.finalrewind.org/${P}.tar.bz2"
 
 LICENSE="feh"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv x86"
 IUSE="debug curl exif test xinerama inotify"
 RESTRICT="test" # Tests are broken.
 

@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
+# New unstable PHP slot.
+php_targets_php8-3
+
 # Michał Górny <mgorny@gentoo.org> (2023-11-10)
 # Not stable yet.
 postgres_targets_postgres16

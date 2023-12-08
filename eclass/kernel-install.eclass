@@ -48,11 +48,21 @@ RESTRICT+="
 
 # note: we need installkernel with initramfs support!
 IDEPEND="
-	|| (
-		sys-kernel/installkernel-gentoo
-		sys-kernel/installkernel-systemd
+	!initramfs? (
+		|| (
+			sys-kernel/installkernel-gentoo
+			sys-kernel/installkernel-systemd
+		)
 	)
-	initramfs? ( >=sys-kernel/dracut-059-r4 )"
+	initramfs? (
+		>=sys-kernel/dracut-059-r4
+		|| (
+			<=sys-kernel/installkernel-gentoo-7
+			>=sys-kernel/installkernel-gentoo-8[dracut(-)]
+			sys-kernel/installkernel-systemd
+		)
+	)
+"
 # needed by objtool that is installed along with the kernel and used
 # to build external modules
 # NB: linux-mod.eclass also adds this dep but it's cleaner to have
@@ -429,9 +439,13 @@ kernel-install_pkg_preinst() {
 # @FUNCTION: kernel-install_install_all
 # @USAGE: <ver>
 # @DESCRIPTION:
-# Build an initramfs for the kernel and install the kernel.  This is
-# called from pkg_postinst() and pkg_config().  <ver> is the full
-# kernel version.
+# Build an initramfs for the kernel if required and install the kernel.
+# This is called from pkg_postinst() and pkg_config().  <ver> is the
+# full kernel version.
+#
+# With sys-kernel/installkernel-systemd, or version 8 or greater of
+# sys-kernel/installkernel-gentoo, the generation of the initrd via dracut
+# is handled by kernel-install instead.
 kernel-install_install_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -448,7 +462,7 @@ kernel-install_install_all() {
 		nonfatal mount-boot_check_status || break
 
 		local image_path=$(dist-kernel_get_image_path)
-		if use initramfs; then
+		if use initramfs && has_version "<=sys-kernel/installkernel-gentoo-7"; then
 			# putting it alongside kernel image as 'initrd' makes
 			# kernel-install happier
 			nonfatal dist-kernel_build_initramfs \

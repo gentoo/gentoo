@@ -69,14 +69,12 @@ src_compile() {
 	mkdir -p build/objects/src/jni
 	mkdir -p build/jni/net/jpountz/util/linux/amd64
 	"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
-		-I$(java-config -O)/../include -I$(java-config -O)/../include/linux \
-		-I$(java-config -O)/include -I$(java-config -O)/include/linux \
+		$(java-pkg_get-jni-cflags) \
 		-Ibuild/jni-headers \
 		-c -o build/objects/src/jni/net_jpountz_lz4_LZ4JNI.o \
 		src/jni/net_jpountz_lz4_LZ4JNI.c
 	"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
-		-I$(java-config -O)/../include -I$(java-config -O)/../include/linux \
-		-I$(java-config -O)/include -I$(java-config -O)/include/linux \
+		$(java-pkg_get-jni-cflags) \
 		-Ibuild/jni-headers \
 		-c -o build/objects/src/jni/net_jpountz_xxhash_XXHashJNI.o \
 		src/jni/net_jpountz_xxhash_XXHashJNI.c

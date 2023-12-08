@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-build-Add-option-to-disable-libsoup3.patch
+	"${FILESDIR}"/1.11.0-osinfo-Make-xmlError-struct-constant-in-propagate_li.patch
 )
 
 src_prepare() {

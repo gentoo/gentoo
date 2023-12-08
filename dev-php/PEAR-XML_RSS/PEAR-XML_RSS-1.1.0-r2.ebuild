@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="PHP parser for RDF and RSS documents"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

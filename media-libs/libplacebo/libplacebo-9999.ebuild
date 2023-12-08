@@ -52,12 +52,12 @@ RDEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
-	xxhash? ( dev-libs/xxhash[${MULTILIB_USEDEP}] )
 "
 # vulkan-headers is required even with USE=-vulkan (bug #882065)
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
+	xxhash? ( dev-libs/xxhash[${MULTILIB_USEDEP}] )
 "
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')

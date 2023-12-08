@@ -6,9 +6,13 @@
 		<name>Distribution Kernel Project</name>
 	</maintainer>
 	<use>
+		<flag name="dracut">Generate an initrd or UKI on each kernel installation</flag>
 		<flag name="grub">Re-generate grub.cfg on each kernel installation</flag>
+		<flag name="uki">Install UKIs to ESP/EFI/Linux for EFI stub booting and/or bootloaders with support for auto-discovering UKIs</flag>
+		<flag name="ukify">Build an UKI with systemd's ukify on each kernel installation</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">projg2/installkernel-gentoo</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

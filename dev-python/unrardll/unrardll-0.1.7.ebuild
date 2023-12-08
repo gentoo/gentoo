@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # The version constraint is needed to resolve https://bugs.gentoo.org/916036
 # and guarantee the headers are findable.

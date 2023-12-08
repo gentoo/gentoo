@@ -1,0 +1,254 @@
+From fb2e0ced6e2413f5641e65bdc44ff1350a172a24 Mon Sep 17 00:00:00 2001
+From: Stephen Finucane <stephenfin@redhat.com>
+Date: Mon, 11 Sep 2023 10:46:23 +0100
+Subject: [PATCH] tests: Explicitly specify port fields for output
+
+Rather than excluding the few fields we don't want, explicitly indicate
+the ones we do want. We were already in-effect doing this in our tests,
+so this is simply moving the definition from tests to the main code.
+
+Note that this is a problem in the tests for virtually all commands
+that will be seen as the SDK continues to evolve and new fields are
+added to existing resources. This is a problem that be solved over
+time though, rather than in a big bang commit.
+
+Change-Id: Iaa64e97450f5c73cab2e2c3b0c741aec1495b4f1
+Signed-off-by: Stephen Finucane <stephenfin@redhat.com>
+---
+ openstackclient/network/v2/port.py            | 52 +++++++++++++++----
+ .../tests/unit/network/v2/test_port.py        | 36 ++++++-------
+ 2 files changed, 59 insertions(+), 29 deletions(-)
+
+diff --git a/openstackclient/network/v2/port.py b/openstackclient/network/v2/port.py
+index 6ca069bb..710e8fe3 100644
+--- a/openstackclient/network/v2/port.py
++++ b/openstackclient/network/v2/port.py
+@@ -55,18 +55,48 @@ _formatters = {
+ 
+ 
+ def _get_columns(item):
+-    column_map = {
+-        'binding:host_id': 'binding_host_id',
+-        'binding:profile': 'binding_profile',
+-        'binding:vif_details': 'binding_vif_details',
+-        'binding:vif_type': 'binding_vif_type',
+-        'binding:vnic_type': 'binding_vnic_type',
+-        'is_admin_state_up': 'admin_state_up',
+-        'is_port_security_enabled': 'port_security_enabled',
++    column_data_mapping = {
++        'admin_state_up': 'is_admin_state_up',
++        'allowed_address_pairs': 'allowed_address_pairs',
++        'binding_host_id': 'binding_host_id',
++        'binding_profile': 'binding_profile',
++        'binding_vif_details': 'binding_vif_details',
++        'binding_vif_type': 'binding_vif_type',
++        'binding_vnic_type': 'binding_vnic_type',
++        'created_at': 'created_at',
++        'data_plane_status': 'data_plane_status',
++        'description': 'description',
++        'device_id': 'device_id',
++        'device_owner': 'device_owner',
++        'device_profile': 'device_profile',
++        'dns_assignment': 'dns_assignment',
++        'dns_domain': 'dns_domain',
++        'dns_name': 'dns_name',
++        'extra_dhcp_opts': 'extra_dhcp_opts',
++        'fixed_ips': 'fixed_ips',
++        'hints': 'hints',
++        'id': 'id',
++        'ip_allocation': 'ip_allocation',
++        'mac_address': 'mac_address',
++        'name': 'name',
++        'network_id': 'network_id',
++        'numa_affinity_policy': 'numa_affinity_policy',
++        'port_security_enabled': 'is_port_security_enabled',
++        'project_id': 'project_id',
++        'propagate_uplink_status': 'propagate_uplink_status',
++        'resource_request': 'resource_request',
++        'revision_number': 'revision_number',
++        'qos_network_policy_id': 'qos_network_policy_id',
++        'qos_policy_id': 'qos_policy_id',
++        'security_group_ids': 'security_group_ids',
++        'status': 'status',
++        'tags': 'tags',
++        'trunk_details': 'trunk_details',
++        'updated_at': 'updated_at',
+     }
+-    hidden_columns = ['location', 'tenant_id']
+-    return utils.get_osc_show_columns_for_sdk_resource(
+-        item, column_map, hidden_columns
++    return (
++        tuple(column_data_mapping.keys()),
++        tuple(column_data_mapping.values()),
+     )
+ 
+ 
+diff --git a/openstackclient/tests/unit/network/v2/test_port.py b/openstackclient/tests/unit/network/v2/test_port.py
+index 59755bb9..c897a1af 100644
+--- a/openstackclient/tests/unit/network/v2/test_port.py
++++ b/openstackclient/tests/unit/network/v2/test_port.py
+@@ -172,7 +172,7 @@ class TestCreatePort(TestPort):
+         )
+         self.assertFalse(self.network_client.set_tags.called)
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_full_options(self):
+@@ -245,7 +245,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_invalid_json_binding_profile(self):
+@@ -309,7 +309,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_security_group(self):
+@@ -347,7 +347,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_port_with_dns_name(self):
+@@ -380,7 +380,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_security_groups(self):
+@@ -420,7 +420,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_no_security_groups(self):
+@@ -449,7 +449,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_no_fixed_ips(self):
+@@ -478,7 +478,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_port_with_allowed_address_pair_ipaddr(self):
+@@ -520,7 +520,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_port_with_allowed_address_pair(self):
+@@ -571,7 +571,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_port_with_qos(self):
+@@ -608,7 +608,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_port_security_enabled(self):
+@@ -738,7 +738,7 @@ class TestCreatePort(TestPort):
+             else:
+                 self.assertFalse(self.network_client.set_tags.called)
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_tags(self):
+@@ -787,7 +787,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_uplink_status_propagation_enabled(self):
+@@ -893,7 +893,7 @@ class TestCreatePort(TestPort):
+             create_args['numa_affinity_policy'] = numa_affinity_policy
+         self.network_client.create_port.assert_called_once_with(**create_args)
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_with_numa_affinity_policy_required(self):
+@@ -940,7 +940,7 @@ class TestCreatePort(TestPort):
+             'device_profile': 'cyborg_device_profile_1',
+         }
+         self.network_client.create_port.assert_called_once_with(**create_args)
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_hints_invalid_json(self):
+@@ -1032,7 +1032,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+     def test_create_hints_valid_json(self):
+@@ -1067,7 +1067,7 @@ class TestCreatePort(TestPort):
+             }
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+ 
+@@ -2496,7 +2496,7 @@ class TestShowPort(TestPort):
+             self._port.name, ignore_missing=False
+         )
+ 
+-        self.assertEqual(set(self.columns), set(columns))
++        self.assertCountEqual(self.columns, columns)
+         self.assertCountEqual(self.data, data)
+ 
+ 
+-- 
+2.43.0
+

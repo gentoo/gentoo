@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>matthew@gentoo.org</email>
-		<name>Matthew Smith</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		mitmproxy is your swiss-army knife for debugging,
 		testing, privacy measurements, and penetration

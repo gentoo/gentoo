@@ -116,21 +116,23 @@ dist-kernel_install_kernel() {
 	local image=${2}
 	local map=${3}
 
-	# if dracut is used in uefi=yes mode, initrd will actually
-	# be a combined kernel+initramfs UEFI executable.  we can easily
-	# recognize it by PE magic (vs cpio for a regular initramfs)
-	local initrd=${image%/*}/initrd
-	local magic
-	[[ -s ${initrd} ]] && read -n 2 magic < "${initrd}"
-	if [[ ${magic} == MZ ]]; then
-		einfo "Combined UEFI kernel+initramfs executable found"
-		# install the combined executable in place of kernel
-		image=${initrd%/*}/uki.efi
-		mv "${initrd}" "${image}" || die
+	if has_version "<=sys-kernel/installkernel-gentoo-7"; then
+		# if dracut is used in uefi=yes mode, initrd will actually
+		# be a combined kernel+initramfs UEFI executable.  we can easily
+		# recognize it by PE magic (vs cpio for a regular initramfs)
+		local initrd=${image%/*}/initrd
+		local magic
+		[[ -s ${initrd} ]] && read -n 2 magic < "${initrd}"
+		if [[ ${magic} == MZ ]]; then
+			einfo "Combined UEFI kernel+initramfs executable found"
+			# install the combined executable in place of kernel
+			image=${initrd%/*}/uki.efi
+			mv "${initrd}" "${image}" || die
 
-		if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-			# Ensure the uki is signed if dracut hasn't already done so.
-			secureboot_sign_efi_file "${image}"
+			if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
+				# Ensure the uki is signed if dracut hasn't already done so.
+				secureboot_sign_efi_file "${image}"
+			fi
 		fi
 	fi
 
@@ -150,6 +152,10 @@ dist-kernel_install_kernel() {
 # The function will determine whether <kernel-dir> is actually
 # a dist-kernel, and whether initramfs was used.
 #
+# With sys-kernel/installkernel-systemd, or version 8 or greater of
+# sys-kernel/installkernel-gentoo, the generation of the initrd via dracut
+# is handled by kernel-install instead.
+#
 # This function is to be used in pkg_postinst() of ebuilds installing
 # kernel modules that are included in the initramfs.
 dist-kernel_reinstall_initramfs() {
@@ -160,19 +166,23 @@ dist-kernel_reinstall_initramfs() {
 	local ver=${2}
 
 	local image_path=${kernel_dir}/$(dist-kernel_get_image_path)
-	local initramfs_path=${image_path%/*}/initrd
 	if [[ ! -f ${image_path} ]]; then
 		eerror "Kernel install missing, image not found:"
 		eerror "  ${image_path}"
 		eerror "Initramfs will not be updated.  Please reinstall your kernel."
 		return
 	fi
-	if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
-		einfo "No initramfs or uki found at ${image_path}"
-		return
+
+	if has_version "<=sys-kernel/installkernel-gentoo-7"; then
+		local initramfs_path=${image_path%/*}/initrd
+		if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
+			einfo "No initramfs or uki found at ${image_path}"
+			return
+		fi
+
+		dist-kernel_build_initramfs "${initramfs_path}" "${ver}"
 	fi
 
-	dist-kernel_build_initramfs "${initramfs_path}" "${ver}"
 	dist-kernel_install_kernel "${ver}" "${image_path}" \
 		"${kernel_dir}/System.map"
 }

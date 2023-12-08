@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2023-12-05)
+# Needs USE=video_cards_amdgpu, currently masked on all PowerPC
+# arches except ppc64le
+>=sys-apps/fwupd-1.9.10 amdgpu
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-25)
 # Casualty of dev-ruby/msgpack restriction to ruby32
 # Remove this once ruby32 is unmasked in base

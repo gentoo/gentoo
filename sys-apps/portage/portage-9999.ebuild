@@ -36,6 +36,10 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-util/meson-1.2.1-r1
+	|| (
+		>=dev-util/meson-1.3.0-r1
+		<dev-util/meson-1.3.0
+	)
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	' python3_12)

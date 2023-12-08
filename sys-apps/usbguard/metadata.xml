@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">USBGuard/usbguard</remote-id>
+		<remote-id type="cpe">cpe:/a:usbguard_project:usbguard</remote-id>
 	</upstream>
 </pkgmetadata>

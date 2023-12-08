@@ -12,5 +12,6 @@
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/libsoup</remote-id>
+    <remote-id type="cpe">cpe:/a:gnome:libsoup</remote-id>
   </upstream>
 </pkgmetadata>

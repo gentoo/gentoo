@@ -71,6 +71,8 @@ PATCHES=(
 	"${FILESDIR}/rspamd-3.6-cmake-lua-version.patch"
 	"${FILESDIR}/rspamd-3.6-unbundle-lua.patch"
 	"${FILESDIR}/rspamd-3.6-unbundle-snowball.patch"
+
+	"${FILESDIR}/${P}-no-hyperscan.patch" #917512
 )
 
 src_prepare() {

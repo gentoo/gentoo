@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/pacman-arena-${PV}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	media-libs/libsdl[sound]

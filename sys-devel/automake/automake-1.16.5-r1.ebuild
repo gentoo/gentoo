@@ -56,8 +56,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.16.5-py3-compile.patch
 	"${FILESDIR}"/${PN}-1.16.5-fix-instmany-python.sh-test.patch
 	"${FILESDIR}"/${PN}-1.16.5-fix-py-compile-basedir.sh-test.patch
-	# upstreamed
 	"${FILESDIR}"/${PN}-1.16.5-apostrophe-in-tests.patch
+	"${FILESDIR}"/${PN}-1.16.5-parallel-build.patch
 )
 
 pkg_setup() {

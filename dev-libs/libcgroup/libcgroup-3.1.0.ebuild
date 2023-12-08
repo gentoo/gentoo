@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libcgroup/libcgroup/releases/download/v${PV}/${P}.ta
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+daemon pam static-libs systemd test +tools"
 REQUIRED_USE="daemon? ( tools )"
 

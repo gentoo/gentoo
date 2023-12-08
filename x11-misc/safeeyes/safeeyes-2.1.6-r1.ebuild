@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="tk"  # for site-packages/Xlib/ext/randr.py
 DISTUTILS_USE_PEP517=setuptools
 

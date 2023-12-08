@@ -86,5 +86,6 @@
 	</slots>
 	<upstream>
 		<remote-id type="github">FFmpeg/FFmpeg</remote-id>
+		<remote-id type="cpe">cpe:/a:ffmpeg:ffmpeg</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<changelog>https://pyropus.ca./software/memtester/CHANGELOG</changelog>
+		<remote-id type="cpe">cpe:/a:pryopus:memtester</remote-id>
 	</upstream>
 </pkgmetadata>

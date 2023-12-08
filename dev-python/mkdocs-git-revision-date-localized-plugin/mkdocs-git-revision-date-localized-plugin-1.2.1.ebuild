@@ -29,7 +29,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/Babel-2.7.0[${PYTHON_USEDEP}]
@@ -41,7 +41,7 @@ BDEPEND="
 	test? (
 		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/mkdocs-material[${PYTHON_USEDEP}]
-		dev-python/mkdocs-i18n[${PYTHON_USEDEP}]
+		dev-python/mkdocs-static-i18n[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 	doc? ( dev-vcs/git )

@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="An API for talking to sieve (RFC 3028) servers"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="sasl"
 
 RDEPEND="dev-php/PEAR-Net_Socket

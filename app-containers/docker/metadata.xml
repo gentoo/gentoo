@@ -36,5 +36,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">moby/moby</remote-id>
+		<remote-id type="cpe">cpe:/a:docker:docker</remote-id>
 	</upstream>
 </pkgmetadata>

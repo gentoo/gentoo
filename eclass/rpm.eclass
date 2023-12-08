@@ -8,7 +8,7 @@
 # @BLURB: convenience class for extracting RPMs
 
 case ${EAPI} in
-	6) inherit epatch eutils ;; # eutils for eqawarn
+	6) inherit epatch eqawarn ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac

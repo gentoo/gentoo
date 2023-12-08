@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
@@ -50,6 +50,11 @@ BDEPEND="
 distutils_enable_tests unittest
 
 src_prepare() {
+	local PATCHES=(
+		# backport from master
+		"${FILESDIR}/${P}-test.patch"
+	)
+
 	# Depends on specific runner
 	sed -e 's/test_command_has_logger/_&/' -i openstackclient/tests/unit/common/test_command.py || die
 

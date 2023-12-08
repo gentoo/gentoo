@@ -13,5 +13,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">mozilla/gmp-api</remote-id>
+		<remote-id type="cpe">cpe:/a:cisco:openh264</remote-id>
 	</upstream>
 </pkgmetadata>

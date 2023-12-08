@@ -56,6 +56,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Fails with inlining
+	filter-flags -fno-semantic-interposition
 	# tests fail with LTO enabbled. See bug 865275 and 865279
 	filter-lto
 

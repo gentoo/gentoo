@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="An implementation of Integrated Templates API with template 'compilation' added"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

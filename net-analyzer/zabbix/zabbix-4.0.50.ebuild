@@ -15,7 +15,7 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy selinux server snmp sqlite ssh static xmpp"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	?? ( gnutls mbedtls openssl )
@@ -340,27 +340,6 @@ pkg_postinst() {
 	elog "zabbix-trapper   10051/tcp Zabbix Trapper"
 	elog "zabbix-trapper   10051/udp Zabbix Trapper"
 	elog
-
-	if use server || use proxy ; then
-		# check for fping
-		fping_perms=$(stat -c %a /usr/sbin/fping 2>/dev/null)
-		case "${fping_perms}" in
-			4[157][157][157])
-				;;
-			*)
-				ewarn
-				ewarn "If you want to use the checks 'icmpping' and 'icmppingsec',"
-				ewarn "you have to make /usr/sbin/fping setuid root and executable"
-				ewarn "by everyone. Run the following command to fix it:"
-				ewarn
-				ewarn "  chmod u=rwsx,g=rx,o=rx /usr/sbin/fping"
-				ewarn
-				ewarn "Please be aware that this might impose a security risk,"
-				ewarn "depending on the code quality of fping."
-				ewarn
-				;;
-		esac
-	fi
 }
 
 pkg_prerm() {

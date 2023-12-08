@@ -24,5 +24,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">openocd</remote-id>
+		<remote-id type="cpe">cpe:/a:openocd:open_on-chip_debugger</remote-id>
 	</upstream>
 </pkgmetadata>

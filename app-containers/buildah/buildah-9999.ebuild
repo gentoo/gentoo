@@ -7,6 +7,7 @@ inherit go-module linux-info
 
 DESCRIPTION="A tool that facilitates building OCI images"
 HOMEPAGE="https://github.com/containers/buildah"
+
 # main pkg
 LICENSE="Apache-2.0"
 # deps

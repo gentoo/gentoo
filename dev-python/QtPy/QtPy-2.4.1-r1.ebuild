@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 _IUSE_QT_MODULES="
 	designer +gui help multimedia +network opengl positioning
@@ -110,7 +110,6 @@ RDEPEND="
 # all flags are available in PyQt5/PySide2, so some tests are still skipped.
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		pyqt5? (
 			dev-python/PyQt5[${PYTHON_USEDEP}]

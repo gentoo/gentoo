@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shemminga/${PN}/releases/download/${PV}/${PN}_${PV}.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ia64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="nls"
 
 BDEPEND="nls? ( sys-devel/gettext )"

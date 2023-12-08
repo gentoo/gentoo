@@ -59,3 +59,7 @@ multilib_src_configure() {
 
 	meson_src_configure
 }
+
+multilib_src_test() {
+	meson_src_test --timeout-multiplier=2
+}

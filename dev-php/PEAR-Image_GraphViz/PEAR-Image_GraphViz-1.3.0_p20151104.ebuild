@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="PHP interface to AT&T's GraphViz tools"
 SRC_URI="https://github.com/pear/Image_GraphViz/archive/3f8a01ae0597ca9d1d08a6e442cb0b153358fc0d.tar.gz -> ${PEAR_P}.tar.gz"
 LICENSE="PHP-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~sparc x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 RDEPEND="media-gfx/graphviz"

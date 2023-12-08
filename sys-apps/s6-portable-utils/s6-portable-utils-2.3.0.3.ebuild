@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="Set of tiny portable unix utilities"
 HOMEPAGE="https://www.skarnet.org/software/s6-portable-utils/"
@@ -43,4 +43,8 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	optfeature "man pages" app-doc/s6-portable-utils-man-pages
 }

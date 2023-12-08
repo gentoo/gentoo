@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 # TODO: investigate
 RESTRICT="test"

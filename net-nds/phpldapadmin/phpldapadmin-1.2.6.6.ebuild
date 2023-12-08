@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/leenooks/phpLDAPadmin"
 SRC_URI="https://github.com/leenooks/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 
 RDEPEND="
 	>=dev-lang/php-8.0[hash(+),ldap,session,xml,nls]

@@ -1,0 +1,47 @@
+https://github.com/ImageMagick/ImageMagick/pull/6931
+
+From 2dd466333cd06773422795030ff2712181fbbb89 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 8 Dec 2023 09:41:59 +0000
+Subject: [PATCH] configure.ac: Fix bashism
+
+We need to use '=', not '==', or configure won't run with stricter POSIX
+shells as /bin/sh. This retains compatibility with Bash.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9880be30ec..b19a087a85 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -474,7 +474,7 @@ CFLAGS="$OPENMP_CFLAGS $CFLAGS"
+ MAGICK_PCFLAGS="$MAGICK_PCFLAGS $OPENMP_CFLAGS"
+ AC_SUBST([OPENMP_CFLAGS])
+ AC_CHECK_DECL([_OPENMP],[OPENMP_ENABLED='yes'],[OPENMP_ENABLED='no'],[])
+-if test "${OPENMP_ENABLED}" == 'yes' && \
++if test "${OPENMP_ENABLED}" = 'yes' && \
+    test "$ac_cv_prog_c_openmp" != 'unsupported'; then
+     MAGICK_FEATURES="OpenMP $MAGICK_FEATURES"
+ fi
+@@ -1266,7 +1266,7 @@ AC_DEFINE_UNQUOTED([X11_CONFIGURE_PATH],["$X11ConfigurePath"],[Location of X11 c
+ # Find OpenMP library
+ #
+ GOMP_LIBS=''
+-if test "${OPENMP_ENABLED}" == 'yes'; then
++if test "${OPENMP_ENABLED}" = 'yes'; then
+   AC_CHECK_HEADER([omp.h], [], [AC_MSG_RESULT([OpenMP header file not found])])
+   if test "${GCC}" = "yes"; then
+     # Open64 (passes for GCC but uses different OpenMP implementation)
+@@ -3533,7 +3533,7 @@ if test "$enable_64bit_channel_masks" = 'yes'; then
+         ])
+     fi
+ fi
+-if test "$magick_channel_mask_depth" == '64'; then
++if test "$magick_channel_mask_depth" = '64'; then
+     MAGICK_FEATURES="Channel-masks(64-bit) $MAGICK_FEATURES"
+ else
+     MAGICK_FEATURES="Channel-masks(32-bit) $MAGICK_FEATURES"
+

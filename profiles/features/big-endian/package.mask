@@ -1,6 +1,10 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-12-07)
+# Explicit no-support for BE (#891517)
+media-sound/audacity
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-28)
 # Explicit no-support for BE (#884295)
 media-gfx/alembic

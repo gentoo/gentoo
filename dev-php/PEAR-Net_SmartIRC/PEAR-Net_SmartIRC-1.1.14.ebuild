@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="PHP class to communicate with IRC networks"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="doc examples"
 DOCS=( CREDITS FEATURES docs/HOWTO README.md )
 

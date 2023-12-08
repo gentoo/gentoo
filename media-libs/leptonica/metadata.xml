@@ -15,5 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">danbloomberg/leptonica</remote-id>
+		<remote-id type="cpe">cpe:/a:leptonica:leptonica</remote-id>
 	</upstream>
 </pkgmetadata>

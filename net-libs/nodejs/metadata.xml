@@ -18,5 +18,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">nodejs/node</remote-id>
+		<remote-id type="cpe">cpe:/a:nodejs:nodejs</remote-id>
 	</upstream>
 </pkgmetadata>

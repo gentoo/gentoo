@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="github">kanaka/noVNC</remote-id>
+    <remote-id type="cpe">cpe:/a:novnc:novnc</remote-id>
   </upstream>
 </pkgmetadata>

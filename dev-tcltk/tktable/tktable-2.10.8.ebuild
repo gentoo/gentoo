@@ -9,7 +9,7 @@ SRC_URI="https://github.com/wjoye/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 IUSE=""
 RESTRICT="test"

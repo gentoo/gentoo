@@ -62,7 +62,6 @@ BDEPEND="
 		dev-python/ldap3[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
-		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/pypugjs[${PYTHON_USEDEP}]
 		dev-python/treq[${PYTHON_USEDEP}]

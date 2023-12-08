@@ -8,4 +8,7 @@
 	<use>
 		<flag name="gssapi">Enable gssapi support</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:isc:bind</remote-id>
+	</upstream>
 </pkgmetadata>

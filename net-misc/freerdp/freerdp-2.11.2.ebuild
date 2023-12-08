@@ -93,6 +93,11 @@ BDEPEND="
 	) )
 "
 
+PATCHES=(
+	"${FILESDIR}/freerdp-2.11.2-clang.patch"
+	"${FILESDIR}/freerdp-2.11-Revert-codec-encode-messages-considering-endianness.patch"
+)
+
 src_configure() {
 	# bug #881695
 	filter-lto

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -22,12 +22,6 @@ KEYWORDS="~amd64 ~arm64-macos ~x64-macos"
 RDEPEND="
 	>=dev-python/agate-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.4[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? (
-		dev-python/greenlet[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest
