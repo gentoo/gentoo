@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 BDEPEND="dev-util/mk-configure"
 
