@@ -16,9 +16,10 @@
 	</longdescription>
 	<use>
 		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>
-		<flag name="qt5">Build the osltoy binary</flag>
+		<flag name="gui">Build the osltoy binary (with Qt5)</flag>
+		<flag name="qt6">Build the osltoy binary (with Qt6)</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">imageworks/OpenShadingLanguage</remote-id>
+		<remote-id type="github">AcademySoftwareFoundation/OpenShadingLanguage</remote-id>
 	</upstream>
 </pkgmetadata>
