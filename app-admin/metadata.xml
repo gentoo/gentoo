@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<catmetadata>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>sdlarsen@gmail.com</email>
+		<name>Søren Dalby Larsen</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
-		The app-admin category contains non-core applications which relate to
-		system administration.
+		OpenTofu is an infrastructure as code tool that lets you define
+		both cloud and on-prem resources in human-readable configuration
+		files that you can version, reuse, and share. It is hosted by 
+		the Linux Foundation (LF).
 	</longdescription>
-	<longdescription lang="es">
-		La categoría app-admin contiene aplicaciones para la administración
-		del sistema.
-	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie app-admin enthält Applikationen zur Systemadministration,
-		die nicht Bestandteil des Basissystems sind.
-	</longdescription>
-	<longdescription lang="ja">
-		app-adminカテゴリにはnon-corシステム管理に関連したアプリケーションが含まれます。
-	</longdescription>
-	<longdescription lang="nl">
-		De app-admin categorie bevat applicaties met betrekking tot systeem
-		administratie.
-	</longdescription>
-	<longdescription lang="vi">
-		Nhóm app-admin category chứa các ứng dụng liên quan
-		đến quản trị hệ thống (không tính các ứng dụng lõi).
-	</longdescription>
-	<longdescription lang="it">
-		La categoria app-admin contiene applicazioni per l'amministrazione del sistema.
-	</longdescription>
-	<longdescription lang="pt">
-		A categoria app-admin contém aplicações para a administração
-		do sistema.
-	</longdescription>
-	<longdescription lang="pl">
-		Kategoria app-admin zawiera aplikacje dla administratorów systemu.
-	</longdescription>
-</catmetadata>
+	<upstream>
+		<changelog>https://github.com/opentofu/opentofu/blob/main/CHANGELOG.md</changelog>
+		<remote-id type="github">opentofu/opentofu</remote-id>
+	</upstream>
+</pkgmetadata>
