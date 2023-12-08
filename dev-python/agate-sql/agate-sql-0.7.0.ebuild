@@ -23,12 +23,6 @@ RDEPEND="
 	>=dev-python/agate-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.4[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/greenlet[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
 
