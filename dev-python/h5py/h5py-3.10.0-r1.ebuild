@@ -19,7 +19,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.10.0-
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 IUSE="examples"
 
 DEPEND="
