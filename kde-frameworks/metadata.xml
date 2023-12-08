@@ -2,8 +2,7 @@
 <!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		The kde-frameworks category contains KDE Frameworks -
-		the next generation of KDE libraries modularized for
-		easy integration in Qt applications.
+		The kde-frameworks category contains KDE Frameworks –
+		add-on libraries for programming with Qt.
 	</longdescription>
 </catmetadata>
