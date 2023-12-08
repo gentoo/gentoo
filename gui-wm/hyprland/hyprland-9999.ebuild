@@ -55,6 +55,7 @@ WLROOTS_BDEPEND="
 
 RDEPEND="
 	${WLROOTS_RDEPEND}
+	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/wayland
