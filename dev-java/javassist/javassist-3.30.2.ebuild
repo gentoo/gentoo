@@ -19,7 +19,7 @@ SLOT="3"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND=">=virtual/jdk-11:*
-	test? ( dev-java/hamcrest-library:1.3 )"
+	test? ( dev-java/hamcrest:0 )"
 
 RDEPEND=">=virtual/jre-1.8:*"
 
@@ -36,7 +36,7 @@ JAVA_MAIN_CLASS="javassist.CtClass"
 JAVA_NEEDS_TOOLS=1
 JAVA_SRC_DIR="src/main"
 
-JAVA_TEST_GENTOO_CLASSPATH="hamcrest-library-1.3,junit-4"
+JAVA_TEST_GENTOO_CLASSPATH="hamcrest,junit-4"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_RUN_ONLY="javassist.JvstTest" # pom.xml, line 167
 JAVA_TEST_SRC_DIR="src/test"
