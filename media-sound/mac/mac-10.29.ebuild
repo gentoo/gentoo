@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Monkey's Audio Codecs"
 HOMEPAGE="https://www.monkeysaudio.com"
-SRC_URI="http://monkeysaudio.com/files/MAC_${PV/.}_SDK.zip -> ${P}.zip"
+SRC_URI="https://monkeysaudio.com/files/MAC_${PV/.}_SDK.zip -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="0/10"
