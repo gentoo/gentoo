@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-12-08)
+# Broken build system:
+# https://github.com/iovisor/bcc/issues/4823
+# https://github.com/iovisor/bcc/issues/4830
+=dev-util/bcc-0.29.0
+
 # Hans de Graaff <graaff@gentoo.org> (2023-12-06)
 # Copy of dev-ruby/listen spefically for dev-ruby/sass. That package now
 # uses dev-ruby/listen directly so there is no longer a need for
