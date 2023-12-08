@@ -34,7 +34,7 @@ WLROOTS_RDEPEND="
 	media-libs/mesa[egl(+),gles2]
 	sys-apps/hwdata:=
 	sys-auth/seatd:=
-	>=x11-libs/libdrm-2.4.114
+	>=x11-libs/libdrm-2.4.118
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
 	virtual/libudev:=
@@ -55,6 +55,7 @@ WLROOTS_BDEPEND="
 
 RDEPEND="
 	${WLROOTS_RDEPEND}
+	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/wayland
