@@ -16,32 +16,38 @@
 	</longdescription>
 	<use>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
+		<flag name="contribcvv">Enable CVV in contrib (requires Qt5)</flag>
+		<flag name="contribdnn">Enable DNN module contrib (requires tinydnn)</flag>
+		<flag name="contribfreetype">Enable Drawing UTF-8 strings with <pkg>media-libs/freetype</pkg>&amp;<pkg>media-libs/harfbuzz</pkg></flag>
+		<flag name="contribhdf">Enable HDF module (requires <pkg>sci-libs/hdf5</pkg>)</flag>
+		<flag name="contribovis">Enable OGRE vision module support (<pkg>dev-games/ogre</pkg>)</flag>
+		<flag name="contribsfm">Enable SFM module (requires USE="eigen gflags glog")</flag>
+		<flag name="contribxfeatures2d" restrict="&gt;media-libs/opencv-4.8.1-r1">Enable xfeatures2d in contrib</flag>
+		<flag name="contribxfeatures2d" restrict="&lt;=media-libs/opencv-4.8.1">Enables xfeatures2d and autodownload of samples in contrib</flag>
 		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
-		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="download">Enable download during cmake configure</flag>
+		<flag name="cudnn">Enable support for nVidia cuDNN library</flag>
+		<flag name="dnnsamples">Enable dnn caffeemodel samples</flag>
+		<flag name="download">Enable download during cmake configure</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="features2d">Enable features2d module</flag>
 		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
+		<flag name="gflags">Use Google's C++ argument parsing library (<pkg>dev-cpp/gflags</pkg>)</flag>
+		<flag name="glog">Use Google's C++ logging library (<pkg>dev-cpp/glog</pkg>)</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
-		<flag restrict="&gt;=media-libs/opencv-4.4.0" name="lto">Build using Link Time Optimizations (LTO)</flag>
-		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="opencvapps">Enable compilation with opencvapps</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="gflags">Use Google's C++ argument parsing library</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="glog">Use Google's C++ loggin library</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribxfeatures2d">Enables xfeatures2d and autodownload of samples in contrib</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribcvv">CVV module requires Qt5</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.3.0" name="contribdnn">DNN module contrib requires tiny dnn</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribhdf">HDF module requires <pkg>sci-libs/hdf5</pkg></flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribsfm">SFM module requires eigen, gflags, and glog</flag>
-		<flag restrict="&gt;=media-libs/opencv-4.4.0" name="contribfreetype">Enable Drawing UTF-8 strings with freetype/harfbuzz</flag>
-		<flag restrict="&gt;=media-libs/opencv-4.4.0" name="contribovis">Enable Ogre vision module support</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.4.0" name="dnnsamples">Download dnn caffeemodel samples</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="tesseract">Use Google's OCR Engine</flag>
+		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
+		<flag name="non-free">Enable non-free components</flag>
+		<flag name="opencvapps">Enable compilation with opencvapps</flag>
+		<flag name="tbb">Enable multithreading with the Intel Threads Building Block (<pkg>dev-cpp/tbb</pkg>)</flag>
+		<flag name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
+		<flag name="video_cards_intel">Enable Video Acceleration API for hardware decoding for Intel cards</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
 		<remote-id type="github">opencv/opencv</remote-id>
 		<remote-id type="github">opencv/opencv_contrib</remote-id>
+		<remote-id type="github">opencv/opencv_3rdparty</remote-id>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
 	</upstream>
 </pkgmetadata>

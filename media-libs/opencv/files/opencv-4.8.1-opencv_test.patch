@@ -1,0 +1,18 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+We don't package quirc, so the misplaced #ifdef breaks compilation.
+
+diff --git a/modules/objdetect/test/test_qrcode.cpp b/modules/objdetect/test/test_qrcode.cpp
+index 5e6ec6f..6dc14cc 100644
+--- a/modules/objdetect/test/test_qrcode.cpp
++++ b/modules/objdetect/test/test_qrcode.cpp
+@@ -374,8 +374,8 @@ TEST_P(Objdetect_QRCode_Multi, regression)
+         qrcode = QRCodeDetectorAruco();
+     }
+     std::vector<Point> corners;
+-#ifdef HAVE_QUIRC
+     std::vector<cv::String> decoded_info;
++#ifdef HAVE_QUIRC
+     std::vector<Mat> straight_barcode;
+     EXPECT_TRUE(qrcode.detectAndDecodeMulti(src, decoded_info, corners, straight_barcode));
+     ASSERT_FALSE(corners.empty());
