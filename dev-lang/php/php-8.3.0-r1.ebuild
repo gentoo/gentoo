@@ -20,7 +20,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -31,7 +31,7 @@ IUSE="${IUSE}
 	threads"
 
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
-	cdb cjk +ctype curl debug
+	capstone cdb cjk +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
 	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
@@ -76,8 +76,8 @@ RESTRICT="!test? ( test )"
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
 COMMON_DEPEND="
-	>=app-eselect/eselect-php-0.9.7[apache2?,fpm?]
-	>=dev-libs/libpcre2-10.30[jit?,unicode]
+	app-eselect/eselect-php[apache2?,fpm?]
+	dev-libs/libpcre2[jit?,unicode]
 	virtual/libcrypt:=
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
@@ -85,49 +85,50 @@ COMMON_DEPEND="
 	avif? ( media-libs/libavif:= )
 	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
+	capstone? ( dev-libs/capstone )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
-	curl? ( >=net-misc/curl-7.29.0 )
+	curl? ( net-misc/curl )
 	enchant? ( app-text/enchant:2 )
-	ffi? ( >=dev-libs/libffi-3.0.11:= )
+	ffi? ( dev-libs/libffi:= )
 	firebird? ( dev-db/firebird )
 	gd? ( media-libs/libjpeg-turbo:0= media-libs/libpng:0= )
-	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
+	gdbm? ( sys-libs/gdbm:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
 	imap? ( net-libs/c-client[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
 	kerberos? ( virtual/krb5 )
-	ldap? ( >=net-nds/openldap-1.2.11:= )
+	ldap? ( net-nds/openldap:= )
 	ldap-sasl? ( dev-libs/cyrus-sasl )
 	libedit? ( dev-libs/libedit )
 	lmdb? ( dev-db/lmdb:= )
 	mssql? ( dev-db/freetds[mssql] )
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient[sdk] )
-	odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( >=dev-db/unixODBC-1.8.13 ) )
-	postgres? ( >=dev-db/postgresql-9.1:* )
+	odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) )
+	postgres? ( dev-db/postgresql:* )
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
 	session-mm? ( dev-libs/mm )
-	snmp? ( >=net-analyzer/net-snmp-5.2 )
+	snmp? ( net-analyzer/net-snmp )
 	sodium? ( dev-libs/libsodium:=[-minimal] )
-	spell? ( >=app-text/aspell-0.50 )
-	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
-	ssl? ( >=dev-libs/openssl-1.0.2:0= )
+	spell? ( app-text/aspell )
+	sqlite? ( dev-db/sqlite )
+	ssl? ( dev-libs/openssl:0= )
 	tidy? ( app-text/htmltidy )
 	tokyocabinet? ( dev-db/tokyocabinet )
-	truetype? ( =media-libs/freetype-2* )
+	truetype? ( media-libs/freetype )
 	unicode? ( dev-libs/oniguruma:= )
 	valgrind? ( dev-util/valgrind )
 	webp? ( media-libs/libwebp:0= )
-	xml? ( >=dev-libs/libxml2-2.9.0 )
+	xml? ( dev-libs/libxml2 )
 	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt )
-	zip? ( >=dev-libs/libzip-1.2.0:= )
-	zlib? ( >=sys-libs/zlib-1.2.0.4:0= )
+	zip? ( dev-libs/libzip:= )
+	zlib? ( sys-libs/zlib:0= )
 "
 
-IDEPEND=">=app-eselect/eselect-php-0.9.7[apache2?,fpm?]"
+IDEPEND="app-eselect/eselect-php[apache2?,fpm?]"
 
 RDEPEND="${COMMON_DEPEND}
 	virtual/mta
@@ -140,7 +141,7 @@ RDEPEND="${COMMON_DEPEND}
 # have an incompatible version installed. See bug 593278.
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
-	>=sys-devel/bison-3.0.1"
+	sys-devel/bison"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -148,8 +149,6 @@ PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
-	"${FILESDIR}/php-capstone-optional.patch"
-	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
 )
 
 php_install_ini() {
@@ -162,15 +161,18 @@ php_install_ini() {
 	local phpinisrc="php.ini-production-${phpsapi}"
 	cp php.ini-production "${phpinisrc}" || die
 
-	# default to /tmp for save_path, bug #282768
-	sed -e 's|^;session.save_path .*$|session.save_path = "'"${EPREFIX}"'/tmp"|g' -i "${phpinisrc}" || die
-
 	# Set the extension dir
 	sed -e "s|^extension_dir .*$|extension_dir = ${extension_dir}|g" \
 		-i "${phpinisrc}" || die
 
-	# Set the include path to point to where we want to find PEAR packages
-	sed -e 's|^;include_path = ".:/php/includes".*|include_path = ".:'"${EPREFIX}"'/usr/share/php'${PHP_MV}':'"${EPREFIX}"'/usr/share/php"|' -i "${phpinisrc}" || die
+	# Set the include path to point to where we want to find PEAR
+	# packages
+	local sed_src='^;include_path = ".:/php.*'
+	local include_path="."
+	include_path+=":${EPREFIX}/usr/share/php${PHP_MV}"
+	include_path+=":${EPREFIX}/usr/share/php"
+	local sed_dst="include_path = \"${include_path}\""
+	sed -e "s|${sed_src}|${sed_dst}|" -i "${phpinisrc}" || die
 
 	insinto "${PHP_INI_DIR#${EPREFIX}}"
 	newins "${phpinisrc}" php.ini
@@ -226,55 +228,11 @@ src_prepare() {
 	eautoconf --force
 	eautoheader
 
-	# missing skipif; fixed upstream already
-	rm sapi/cgi/tests/005.phpt || die
-
-	# These three get BORKED on no-ipv6 systems,
-	#
-	#   https://github.com/php/php-src/pull/11651
-	#
-	rm ext/sockets/tests/mcast_ipv6_recv.phpt \
-	   ext/sockets/tests/mcast_ipv6_recv_limited.phpt \
-	   ext/sockets/tests/mcast_ipv6_send.phpt \
-	   || die
-
 	# fails in a network sandbox,
 	#
 	#   https://github.com/php/php-src/issues/11662
 	#
 	rm ext/sockets/tests/bug63000.phpt || die
-
-	# expected output needs to be updated,
-	#
-	#   https://github.com/php/php-src/pull/11648
-	#
-	rm ext/dba/tests/dba_tcadb.phpt || die
-
-	# Two IMAP tests missing SKIPIFs,
-	#
-	#   https://github.com/php/php-src/pull/11654
-	#
-	rm ext/imap/tests/imap_mutf7_to_utf8.phpt \
-	   ext/imap/tests/imap_utf8_to_mutf7_basic.phpt \
-	   || die
-
-	# broken upstream with icu-73.x,
-	#
-	#   https://github.com/php/php-src/issues/11128
-	#
-	rm ext/intl/tests/calendar_clear_variation1.phpt || die
-
-	# overly sensitive to INI values; fixes sent upstream:
-	#
-	#  https://github.com/php/php-src/pull/11631
-	#
-	rm ext/session/tests/{bug74514,bug74936,gh7787}.phpt || die
-
-	# This is sensitive to the current "nice" level:
-	#
-	#   https://github.com/php/php-src/issues/11630
-	#
-	rm ext/standard/tests/general_functions/proc_nice_basic.phpt || die
 
 	# Tests ignoring the "-n" flag we pass to run-tests.php,
 	#
@@ -293,10 +251,6 @@ src_prepare() {
 	   sapi/cli/tests/bug74600.phpt \
 	   sapi/cli/tests/bug78323.phpt \
 	   || die
-
-	# Same TEST_PHP_EXTRA_ARGS (-n) issue with this one, but it's
-	# already been fixed upstream.
-	rm sapi/cli/tests/017.phpt || die
 
 	# Most Oracle tests are borked,
 	#
@@ -335,7 +289,7 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var"
 		--without-pear
 		--without-valgrind
-		--enable-ipv6
+		--with-external-libcrypt
 		$(use_enable threads zts)
 	)
 
@@ -346,6 +300,7 @@ src_configure() {
 		$(use_enable bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
 		$(use_enable calendar)
+		$(use_with capstone)
 		$(use_enable ctype)
 		$(use_with curl)
 		$(use_enable xml dom)
