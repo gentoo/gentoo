@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs pax-utils toolchain-funcs
+inherit check-reqs flag-o-matic pax-utils toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 PYVER=3.10
@@ -69,6 +69,10 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+
+	# Yes, yuck, but it's being worked on upstream (bug #918971).
+	# https://foss.heptapod.net/pypy/pypy/-/issues/4042
+	append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
 
 	local jit_backend
 	if use jit; then
