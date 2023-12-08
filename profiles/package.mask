@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-12-08)
+# The both remaining virtuals are deprecated in favor of using
+# python_gen_cond_dep directly, and no longer used in any packages
+# in ::gentoo.
+# Removal on 2024-01-07.  Bug #919467.
+virtual/python-cffi
+virtual/python-greenlet
+
 # Sam James <sam@gentoo.org> (2023-12-08)
 # Broken build system:
 # https://github.com/iovisor/bcc/issues/4823
