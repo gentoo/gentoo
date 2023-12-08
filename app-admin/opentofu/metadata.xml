@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>sdlarsen@gmail.com</email>
+		<name>Søren Dalby Larsen</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		OpenTofu is an infrastructure as code tool that lets you define
+		both cloud and on-prem resources in human-readable configuration
+		files that you can version, reuse, and share. It is hosted by 
+		the Linux Foundation (LF).
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/opentofu/opentofu/blob/main/CHANGELOG.md</changelog>
+		<remote-id type="github">opentofu/opentofu</remote-id>
+	</upstream>
+</pkgmetadata>
