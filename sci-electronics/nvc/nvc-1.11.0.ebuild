@@ -11,8 +11,9 @@ DESCRIPTION="NVC is a VHDL compiler and simulator"
 HOMEPAGE="https://www.nickg.me.uk/nvc/
 	https://github.com/nickg/nvc/"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_REPO_URI="https://github.com/nickg/nvc.git"
 
 	NVC_SOURCEDIR="${WORKDIR}"/${PN}-${PV}
@@ -26,8 +27,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="debug jit llvm"
-REQUIRED_USE="jit? ( llvm )"
+IUSE="debug llvm"
 RESTRICT="test"         # Some tests fail.
 
 RDEPEND="
@@ -89,7 +89,6 @@ src_configure() {
 		--enable-vital
 		--with-bash-completion="$(get_bashcompdir)"
 		$(use_enable debug)
-		$(use_enable jit)
 		$(use_enable llvm)
 	)
 	econf "${myconf[@]}"
