@@ -16,8 +16,11 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/eduvpn/eduvpn-common.git"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eduvpn.asc
+	inherit verify-sig
 	SRC_URI="
-		https://github.com/eduvpn/eduvpn-common/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
+		https://github.com/eduvpn/eduvpn-common/releases/download/${PV}/eduvpn-common-${PV}.tar.xz
+		verify-sig? ( https://github.com/eduvpn/eduvpn-common/releases/download/${PV}/eduvpn-common-${PV}.tar.xz.asc )
 		https://www-user.tu-chemnitz.de/~hamari/eduvpn/${P}-deps.tar.xz
 	"
 fi
@@ -30,6 +33,10 @@ RESTRICT="test"
 RDEPEND="
 	openvpn? ( net-vpn/openvpn )
 "
+
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-eduvpn )"
+fi
 
 wrap_python() {
 	local phase=$1
@@ -46,6 +53,17 @@ pkg_pretend() {
 		WARNING_WIREGUARD="You must enable WIREGUARD to use wireguard."
 		check_extra_config
 	fi
+}
+
+src_unpack() {
+	# go dependencies are not signed
+	if use verify-sig; then
+		pushd "${DISTDIR}" > /dev/null || die
+		verify-sig_verify_detached \
+			${P}.tar.xz{,.asc}
+		popd > /dev/null || die
+	fi
+	default_src_unpack
 }
 
 src_prepare() {
