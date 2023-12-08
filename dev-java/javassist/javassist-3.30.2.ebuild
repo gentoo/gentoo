@@ -1,8 +1,5 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/jboss-javassist/javassist/archive/rel_3_29_2_ga.tar.gz --slot 3 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild javassist-3.29.2.ebuild
 
 EAPI=8
 
@@ -21,11 +18,6 @@ LICENSE="Apache-2.0 LGPL-2.1 MPL-1.1"
 SLOT="3"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
-# Compile dependencies
-# POM: pom.xml
-# test? junit:junit:[4.13.1,) -> >=dev-java/junit-4.13.2:4
-# test? org.hamcrest:hamcrest-all:1.3 -> !!!artifactId-not-found!!!
-
 DEPEND=">=virtual/jdk-11:*
 	test? ( dev-java/hamcrest-library:1.3 )"
 
@@ -34,8 +26,10 @@ RDEPEND=">=virtual/jre-1.8:*"
 DOCS=( Changes.md README.md )
 HTML_DOCS=( tutorial/{brown.css,tutorial.html,tutorial2.html,tutorial3.html} )
 
-#	S="${WORKDIR}/${PN}-rel_${PV//./_}_ga"
-S="${WORKDIR}/javassist-${MY_COMMIT}"
+PATCHES=(
+	"${FILESDIR}/javassist-3.30.2-gentoo.patch"
+	"${FILESDIR}/javassist-3.30.2-skip-failing-tests.patch"
+)
 
 JAVA_AUTOMATIC_MODULE_NAME="org.javassist"
 JAVA_MAIN_CLASS="javassist.CtClass"
@@ -48,33 +42,12 @@ JAVA_TEST_RUN_ONLY="javassist.JvstTest" # pom.xml, line 167
 JAVA_TEST_SRC_DIR="src/test"
 
 src_prepare() {
-	default
-	java-pkg_clean javassist.jar
-	sed -e 's:\.\./\.\./::' -i src/test/javassist/JvstTest{4,Root}.java || die
-
-	# Tests run: 432,  Failures: 6
-	# https://bugs.gentoo.org/856364
-	# Cannot solve those test failures.
-	# replacing test... with notTest... for those tests
-	sed \
-		-e '/public void/s:testInsertAt:notTestInsertAt:' \
-		-e '/public void/s:testInsertLocal:notTestInsertLocal:' \
-		-e '/public void/s:testNewArray:notTestNewArray:' \
-		-e '/public void/s:testURL:notTestURL:' \
-		-i src/test/javassist/JvstTest2.java || die
-
-	sed \
-		-e '/public void/s:testMethodParameters:notTestMethodParameters:' \
-		-i src/test/javassist/JvstTest4.java || die
-
-	sed \
-		-e '/public void/s:testLocalVarAttribute:notTestLocalVarAttribute:' \
-		-i src/test/javassist/bytecode/BytecodeTest.java || die
+	default #780585
+	java-pkg-2_src_prepare
+	java-pkg_clean ! -path "./src/test*"
 }
 
 src_test() {
-	default
-	einfo "Testing"
 	JAVA_PKG_WANT_SOURCE=11
 	JAVA_PKG_WANT_TARGET=11
 	java-pkg-simple_src_test
