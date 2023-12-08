@@ -11,7 +11,7 @@ SRC_URI="https://rdfind.pauldreik.se/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="dev-libs/nettle:="
 DEPEND="${RDEPEND}"
