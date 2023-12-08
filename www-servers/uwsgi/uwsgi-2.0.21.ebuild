@@ -6,7 +6,7 @@ EAPI=7
 # Check the upstream uwsgi-2.0 branch, not master, for backports
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -137,7 +137,7 @@ CDEPEND="
 		php_targets_php8-2? ( dev-lang/php:8.2[embed] )
 	)
 	python? ( ${PYTHON_DEPS} )
-	python-asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
+	python-asyncio? ( dev-python/greenlet[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )
 "
 DEPEND="${CDEPEND}"
