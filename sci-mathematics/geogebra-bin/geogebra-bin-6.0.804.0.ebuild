@@ -38,11 +38,19 @@ src_unpack() {
 	mv -v GeoGebra-linux-x64 "${P}" || die
 }
 
-src_prepare() {
-	eapply_user
-}
-
 src_install() {
+	# Fix PNGs
+	png_path="${S}/resources/app/node_modules/ref-napi/docs/images"
+	pngfix --out=out.png "${png_path}/apple-touch-icon.png"
+	mv -f out.png "${png_path}/apple-touch-icon.png" || die
+	pngfix --out=out.png "${png_path}/apple-touch-icon-72x72.png"
+	mv -f out.png "${png_path}/apple-touch-icon-72x72.png" || die
+	pngfix --out=out.png "${png_path}/apple-touch-icon-114x114.png"
+	mv -f out.png "${png_path}/apple-touch-icon-114x114.png" || die
+
+	rm -r "${S}/resources/app/node_modules/ref-napi/prebuilds/linux-arm64"
+	rm -r "${S}/resources/app/node_modules/ffi-napi/prebuilds/linux-arm64"
+
 	insinto /opt/GeoGebra
 	doins -r .
 
