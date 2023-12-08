@@ -14,6 +14,6 @@ inherit php-ext-pecl-r3
 DESCRIPTION="Timezone Database to be used with PHP's date and time functions"
 LICENSE="PHP-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 PHP_EXT_ECONF_ARGS=""
