@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>t.x00100x.t@yandex.ru</email>
+		<name>Alexander Pavlov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="alsa">Enable support ALSA sound.</flag>
+		<flag name="pipewire">Enable support for pipewire.</flag>
+		<flag name="vulkan">Enable support Vulkan render.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tx00100xt/SeriousSamClassic-VK</remote-id>
+		<bugs-to>https://github.com/tx00100xt/SeriousSamClassic-VK/issues</bugs-to>
+		<changelog>https://github.com/tx00100xt/SeriousSamClassic-VK/releases</changelog>
+	</upstream>
+</pkgmetadata>
