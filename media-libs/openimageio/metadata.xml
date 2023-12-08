@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
+		<flag name="gui">Build iv (with Qt5)</flag>
 		<flag name="opencv">Enable OpenCV support via <pkg>media-libs/opencv</pkg></flag>
 		<flag name="openvdb">Enable OpenVDB support via <pkg>media-gfx/openvdb</pkg></flag>
 		<flag name="ptex">Enable Ptex texture mapping system file support via <pkg>media-libs/ptex</pkg></flag>
