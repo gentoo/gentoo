@@ -15,6 +15,7 @@ CRATES="
 	bitflags@1.3.2
 	bitflags@2.4.1
 	bstr@1.8.0
+	byteorder@1.5.0
 	cast@0.3.0
 	cfg-if@1.0.0
 	ciborium-io@0.2.1
@@ -41,6 +42,8 @@ CRATES="
 	half@1.8.2
 	heck@0.4.1
 	hermit-abi@0.3.3
+	hex@0.4.3
+	io-lifetimes@1.0.11
 	io-uring@0.6.2
 	ipnetwork@0.20.0
 	is-terminal@0.4.9
@@ -50,6 +53,7 @@ CRATES="
 	libc@0.2.150
 	libseccomp-sys@0.2.1
 	libseccomp@0.3.0
+	linux-raw-sys@0.1.4
 	linux-raw-sys@0.4.11
 	lock_api@0.4.11
 	log@0.4.20
@@ -64,15 +68,18 @@ CRATES="
 	openat2@0.1.2
 	parking_lot@0.12.1
 	parking_lot_core@0.9.9
+	parse-size@1.0.0
 	pin-project-lite@0.2.13
 	pin-utils@0.1.0
 	pkg-config@0.3.27
 	proc-macro2@1.0.70
+	procfs@0.15.1
 	quote@1.0.33
 	redox_syscall@0.4.1
 	regex-automata@0.4.3
 	regex-syntax@0.8.2
 	regex@1.10.2
+	rustix@0.36.17
 	rustix@0.38.25
 	rustversion@1.0.14
 	rusty_pool@0.7.0
@@ -96,22 +103,31 @@ CRATES="
 	winapi-util@0.1.6
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
+	windows-sys@0.45.0
 	windows-sys@0.48.0
 	windows-sys@0.52.0
+	windows-targets@0.42.2
 	windows-targets@0.48.5
 	windows-targets@0.52.0
+	windows_aarch64_gnullvm@0.42.2
 	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.0
+	windows_aarch64_msvc@0.42.2
 	windows_aarch64_msvc@0.48.5
 	windows_aarch64_msvc@0.52.0
+	windows_i686_gnu@0.42.2
 	windows_i686_gnu@0.48.5
 	windows_i686_gnu@0.52.0
+	windows_i686_msvc@0.42.2
 	windows_i686_msvc@0.48.5
 	windows_i686_msvc@0.52.0
+	windows_x86_64_gnu@0.42.2
 	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnu@0.52.0
+	windows_x86_64_gnullvm@0.42.2
 	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_gnullvm@0.52.0
+	windows_x86_64_msvc@0.42.2
 	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.0
 "
