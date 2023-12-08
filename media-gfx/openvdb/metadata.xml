@@ -15,6 +15,12 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
+		<flag name="abi12-compat">
+			Disables newer features to maintain compatibility with ABI12
+		</flag>
+		<flag name="abi11-compat">
+			Disables newer features to maintain compatibility with ABI11
+		</flag>
 		<flag name="abi10-compat">
 			Disables newer features to maintain compatibility with ABI10
 		</flag>
@@ -23,6 +29,10 @@
 		</flag>
 		<flag name="abi9-compat">
 			Disables newer features to maintain compatibility with ABI9
+		</flag>
+		<flag name="alembic">
+			Add support for Alembic through
+			<pkg>media-gfx/alembic</pkg>.
 		</flag>
 		<flag name="ax">
 			Build the OpenVDB AX module to perform custom manipulation of

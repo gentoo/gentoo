@@ -143,6 +143,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.1-fix-cflags-cleaner.patch"  # to be dropped for releases after Dec 8, 2023
+	"${FILESDIR}/${PN}-4.0.1-openvdb-11.patch"
 )
 
 blender_check_requirements() {
