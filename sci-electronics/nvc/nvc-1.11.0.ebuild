@@ -54,7 +54,7 @@ BDEPEND="
 NVC_BUILDDIR="${NVC_SOURCEDIR}_BuildDir"
 S="${NVC_BUILDDIR}"
 
-PATCHES=( "${FILESDIR}"/nvc-1.9.2-jit-code-capstone.patch )
+PATCHES=( "${FILESDIR}/nvc-1.9.2-jit-code-capstone.patch" )
 
 # Special libraries for NVC.
 QA_FLAGS_IGNORED="usr/lib[0-9]*/nvc/preload[0-9]*.so"
@@ -108,7 +108,7 @@ src_test() {
 src_install() {
 	default
 
-	mv "$(get_bashcompdir)"/nvc{.bash,} || die
+	mv "${D}/$(get_bashcompdir)"/nvc{.bash,} || die
 
 	dostrip -x "/usr/$(get_libdir)/nvc"
 }
