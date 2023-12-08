@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://pear.php.net/package/Net_DNSBL"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 sparc x86"
+KEYWORDS="amd64 ~hppa ~ia64 sparc x86"
 IUSE="examples"
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-Cache_Lite
