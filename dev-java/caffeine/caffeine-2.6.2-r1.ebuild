@@ -12,7 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="A high performance caching library"
 HOMEPAGE="https://github.com/ben-manes/caffeine"
 SRC_URI="https://repo1.maven.org/maven2/com/github/ben-manes/caffeine/caffeine/${PV}/caffeine-${PV}-sources.jar"
-# Compiling from Github would require to be packaged at least
+# Compiling from Github tarball would require to be packaged at least
 # package com.squareup.javapoet
 # package MethodSpec
 # package TypeSpec
@@ -25,8 +25,9 @@ KEYWORDS="amd64 ppc64 x86"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND="dev-java/jsr305:0"
+# min java 11 for bug #919464
 DEPEND="${CP_DEPEND}
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-11:*"
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
