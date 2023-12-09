@@ -5,6 +5,10 @@
 		<email>arfrever.fta@gmail.com</email>
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>jake@crazylinuxnerd.net</email>
+		<name>Jake Shipton</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
