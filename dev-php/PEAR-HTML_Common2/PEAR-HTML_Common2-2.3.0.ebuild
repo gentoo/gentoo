@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 #IUSE="test"
 #RESTRICT="!test? ( test )"
 # Tests fail with current phpunit
