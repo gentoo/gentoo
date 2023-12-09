@@ -156,7 +156,7 @@ RDEPEND="
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
-	mp3? ( media-libs/libmpg123 )
+	mp3? ( media-sound/mpg123-base )
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )

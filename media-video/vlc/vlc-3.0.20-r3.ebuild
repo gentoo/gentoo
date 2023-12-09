@@ -155,7 +155,7 @@ RDEPEND="
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
-	mp3? ( media-libs/libmpg123 )
+	mp3? ( media-sound/mpg123-base )
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
@@ -236,6 +236,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
+	"${FILESDIR}"/${PN}-3.0.20-c99.patch
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
