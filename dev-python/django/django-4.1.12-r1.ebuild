@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..11} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
-inherit bash-completion-r1 distutils-r1 optfeature verify-sig
+inherit bash-completion-r1 distutils-r1 multiprocessing optfeature verify-sig
 
 DESCRIPTION="High-level Python web framework"
 HOMEPAGE="
@@ -76,7 +76,8 @@ src_unpack() {
 python_test() {
 	# Tests have non-standard assumptions about PYTHONPATH,
 	# and don't work with ${BUILD_DIR}/lib.
-	PYTHONPATH=. "${EPYTHON}" tests/runtests.py --settings=test_sqlite -v2 ||
+	PYTHONPATH=. "${EPYTHON}" tests/runtests.py --settings=test_sqlite \
+		-v2 --parallel="${EPYTEST_JOBS:-$(makeopts_jobs)}" ||
 		die "Tests fail with ${EPYTHON}"
 }
 
