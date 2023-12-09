@@ -11,6 +11,6 @@ SRC_URI="https://github.com/LASzip/LASzip/releases/download/${PV}/${PN}-src-${PV
 
 SLOT="0"
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 
 S="${WORKDIR}/${PN}-src-${PV}"
