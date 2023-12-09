@@ -1,12 +1,12 @@
+Patch author: mortezadadgar <mortezadadgar97@gmail.com>
 --- a/src/nvim/CMakeLists.txt
 +++ b/src/nvim/CMakeLists.txt
-@@ -416,10 +416,6 @@ foreach(target ${targets})
+@@ -477,9 +477,6 @@ foreach(target ${targets})
    endforeach()
  endforeach()
  
 -if(APPLE AND CMAKE_OSX_SYSROOT)
--  list(APPEND gen_cflags "-isysroot")
--  list(APPEND gen_cflags "${CMAKE_OSX_SYSROOT}")
+-  list(APPEND gen_cflags "-isysroot" "${CMAKE_OSX_SYSROOT}")
 -endif()
  if(MSVC)
    list(APPEND gen_cflags -wd4003)
