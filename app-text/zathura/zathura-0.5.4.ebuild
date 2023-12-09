@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://cdn.turret.cyou/e28b2f940d1a19a74ecbfd80ea4477c5ea9ac627/${P}-manpages.tar.xz
+		https://cdn.turret.cyou/~turret/distfiles/${PN}/${P}-manpages.tar.xz
 	"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -50,7 +50,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/zathura-0.5.4-disable-seccomp-tests.patch"
+	"${FILESDIR}"/${P}-disable-seccomp-tests.patch
 )
 
 src_configure() {
