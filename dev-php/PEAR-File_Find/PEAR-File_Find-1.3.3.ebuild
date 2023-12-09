@@ -11,7 +11,7 @@ HOMEPAGE="https://pear.php.net/package/File_Find"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

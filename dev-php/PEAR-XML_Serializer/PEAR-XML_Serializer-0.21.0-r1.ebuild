@@ -8,7 +8,7 @@ DESCRIPTION="Swiss-army knife for reading and writing XML files"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 

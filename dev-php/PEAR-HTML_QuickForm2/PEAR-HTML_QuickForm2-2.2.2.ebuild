@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Creating, validating, processing HTML forms methods (PHP5 optimize)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
 DEPEND=">=dev-lang/php-5.4.0:*"

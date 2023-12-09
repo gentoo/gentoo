@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="An implementation of Integrated Templates API with template 'compilation' added"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

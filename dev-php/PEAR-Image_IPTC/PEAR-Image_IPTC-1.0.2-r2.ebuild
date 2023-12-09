@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="This package provides a mechanism for modifying IPTC header information"
 LICENSE="PHP-2.02"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 IUSE=""
 
 src_install() {

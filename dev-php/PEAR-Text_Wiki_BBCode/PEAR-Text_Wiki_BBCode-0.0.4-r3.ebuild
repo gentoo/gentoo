@@ -9,7 +9,7 @@ DESCRIPTION="BBCode parser for Text_Wiki"
 
 LICENSE="LGPL-2.1 PHP-3"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 DEPEND=""
 RDEPEND=">=dev-php/PEAR-Text_Wiki-1.0.3"
