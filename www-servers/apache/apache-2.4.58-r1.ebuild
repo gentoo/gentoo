@@ -4,9 +4,9 @@
 EAPI=7
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20231011"
+GENTOO_PATCHSTAMP="20231019"
 GENTOO_DEVELOPER="graaff"
-GENTOO_PATCHNAME="gentoo-apache-2.4.57-r5"
+GENTOO_PATCHNAME="gentoo-apache-2.4.58"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
