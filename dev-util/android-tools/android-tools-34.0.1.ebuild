@@ -47,6 +47,7 @@ DOCS=()
 src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-no-gtest.patch"
 	eapply "${FILESDIR}/${PN}-34.0.0-protobuf.patch"
+	eapply "${FILESDIR}/${PN}-34.0.1-include-algorithm.patch"
 
 	cd "${S}/vendor/core" || die
 	eapply "${S}/patches/core/0011-Remove-the-useless-dependency-on-gtest.patch"

@@ -1,0 +1,37 @@
+diff --git a/vendor/adb/client/incremental_utils.cpp b/vendor/adb/client/incremental_utils.cpp
+index 2f6958b..67f21a1 100644
+--- a/vendor/adb/client/incremental_utils.cpp
++++ b/vendor/adb/client/incremental_utils.cpp
+@@ -24,6 +24,7 @@
+ #include <ziparchive/zip_archive.h>
+ #include <ziparchive/zip_writer.h>
+ 
++#include <algorithm>
+ #include <array>
+ #include <cinttypes>
+ #include <numeric>
+diff --git a/vendor/core/fs_mgr/liblp/super_layout_builder.cpp b/vendor/core/fs_mgr/liblp/super_layout_builder.cpp
+index 37f28e1..0db82e5 100644
+--- a/vendor/core/fs_mgr/liblp/super_layout_builder.cpp
++++ b/vendor/core/fs_mgr/liblp/super_layout_builder.cpp
+@@ -17,6 +17,8 @@
+ 
+ #include <liblp/liblp.h>
+ 
++#include <algorithm>
++
+ #include "images.h"
+ #include "utility.h"
+ #include "writer.h"
+diff --git a/vendor/core/fs_mgr/liblp/utility.cpp b/vendor/core/fs_mgr/liblp/utility.cpp
+index d8e171b..70c7b79 100644
+--- a/vendor/core/fs_mgr/liblp/utility.cpp
++++ b/vendor/core/fs_mgr/liblp/utility.cpp
+@@ -25,6 +25,7 @@
+ #include <sys/ioctl.h>
+ #endif
+ 
++#include <algorithm>
+ #include <map>
+ #include <string>
+ #include <vector>
