@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 multiprocessing optfeature verify-sig
@@ -17,6 +17,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://media.djangoproject.com/releases/$(ver_cut 1-2)/${P^}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/python/django-5.0-pypy3.patch.xz
 	verify-sig? ( https://media.djangoproject.com/pgp/${P^}.checksum.txt )
 "
 S="${WORKDIR}/${P^}"
@@ -53,6 +54,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/django-4.0-bashcomp.patch
+	"${WORKDIR}"/django-5.0-pypy3.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
