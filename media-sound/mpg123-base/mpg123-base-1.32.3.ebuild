@@ -3,30 +3,30 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic multilib-minimal
+MY_PN="mpg123"
+MY_P="${MY_PN}-${PV}"
+inherit flag-o-matic toolchain-funcs libtool multilib-minimal
 
 DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
 HOMEPAGE="https://www.mpg123.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.bz2"
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="alsa coreaudio int-quality ipv6 jack nas oss portaudio pulseaudio sdl"
+IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext cpu_flags_ppc_altivec alsa coreaudio int-quality ipv6 jack cpu_flags_x86_mmx nas oss portaudio pulseaudio sdl cpu_flags_x86_sse"
 
 # No MULTILIB_USEDEP here since we only build libmpg123 for non native ABIs.
 # Note: build system prefers libsdl2 > libsdl. We could in theory add both
 # but it's tricky when it comes to handling switching between them properly.
 # We'd need a USE flag for both sdl1 and sdl2 and to make them clash.
 RDEPEND="
-	~media-libs/libmpg123-${PV}[${MULTILIB_USEDEP},int-quality?]
+	!<media-sound/mpg123-1.32.3-r100
+	!media-libs/libmpg123
 	dev-libs/libltdl:0
-	alsa? ( media-libs/alsa-lib )
-	jack? ( virtual/jack )
-	nas? ( media-libs/nas )
-	portaudio? ( media-libs/portaudio )
-	pulseaudio? ( media-libs/libpulse )
-	sdl? ( media-libs/libsdl2 )"
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/libtool
@@ -36,25 +36,16 @@ IDEPEND="app-eselect/eselect-mpg123"
 
 DOCS=( AUTHORS ChangeLog NEWS NEWS.libmpg123 README )
 
-PATCHES=(
-	"${FILESDIR}"/mpg123-1.32.3-build-programs-component.patch
-	"${FILESDIR}"/mpg123-1.32.3-build-with-installed-libs.patch
-)
-
 src_prepare() {
 	default
-
-	# Upstream already applied the change to move shared internal implementation headers
-	# for next release, we just move them by hand now to fix build with patched sources.
-	mv src/libmpg123/{abi_align.h,debug.h,sample.h,swap_bytes_impl.h,true.h} src/ || die
+	elibtoolize # for Darwin bundles
 
 	# Rerun autotools with patched configure.ac
-	eautoreconf
+	#eautoreconf
 }
 
 multilib_src_configure() {
-	local _audio=dummy
-	local _output=dummy
+	local _audio=
 	local _cpu=generic_fpu
 
 	# Build fails without -D_GNU_SOURCE like this:
@@ -65,25 +56,39 @@ multilib_src_configure() {
 
 	if $(multilib_is_native_abi) ; then
 		local flag
-		for flag in nas portaudio sdl oss jack alsa pulseaudio coreaudio; do
+		for flag in coreaudio pulseaudio jack alsa oss sdl portaudio nas ; do
 			if use ${flag}; then
 				_audio+=" ${flag/pulseaudio/pulse}"
-				_output=${flag/pulseaudio/pulse}
 			fi
 		done
 	fi
 
+	use cpu_flags_ppc_altivec && _cpu=altivec
+
+	if [[ $(tc-arch) == amd64 || ${ARCH} == x64-* ]]; then
+		use cpu_flags_x86_sse && _cpu=x86-64
+	elif use x86 && gcc-specs-pie ; then
+		# Don't use any mmx, 3dnow, sse and 3dnowext
+		# bug #164504
+		_cpu=generic_fpu
+	else
+		use cpu_flags_x86_mmx && _cpu=mmx
+		use cpu_flags_x86_3dnow && _cpu=3dnow
+		use cpu_flags_x86_sse && _cpu=x86
+		use cpu_flags_x86_3dnowext && _cpu=x86
+	fi
+
 	local myconf=(
 		--with-optimization=0
-		--with-audio="${_audio}"
-		--with-default-audio=${_output}
+		--with-audio=dummy
+		--with-default-audio="${_audio} dummy"
+		--with-cpu=${_cpu}
 		--enable-network
 		$(use_enable ipv6)
-		--disable-components
+		--enable-int-quality=$(usex int-quality)
 	)
 
 	multilib_is_native_abi || myconf+=( --disable-modules )
-	multilib_is_native_abi && myconf+=( --enable-libout123-modules --enable-programs )
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
