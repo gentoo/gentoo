@@ -33,10 +33,17 @@ BDEPEND="
 	)
 "
 
+# note: test suite fails with xdist
 distutils_enable_tests pytest
 
-EPYTEST_IGNORE=(
-	# lz4.stream is not officially supported and not installed by default
-	# (we do not support installing it at the moment)
-	tests/stream
-)
+python_test() {
+	local EPYTEST_IGNORE=(
+		# lz4.stream is not officially supported and not installed by default
+		# (we do not support installing it at the moment)
+		tests/stream
+	)
+
+	rm -rf lz4 || die
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
