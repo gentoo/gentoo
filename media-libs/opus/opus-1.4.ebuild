@@ -12,7 +12,7 @@ SRC_URI="https://github.com/xiph/opus/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="custom-modes debug doc hardened static-libs test ${INTRINSIC_FLAGS}"
 RESTRICT="!test? ( test )"
