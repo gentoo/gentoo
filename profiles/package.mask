@@ -34,10 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-09)
-# Old slot that depends on packages that are not ruby32-compatible. No
-# reverse dependencies left. Please use the newer slot instead. Masked
-# for removal on 2024-01-09.
+# Old slots that are not ruby32-compatible. No reverse dependencies
+# left. Please use the newer slot instead. Masked for removal on
+# 2024-01-09.
 dev-ruby/gettext-setup:0
+dev-ruby/fast_gettext:0
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-08)
 # The both remaining virtuals are deprecated in favor of using
