@@ -36,28 +36,16 @@
 # Sam James <sam@gentoo.org> (2023-12-09)
 # ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/
 # Please update immediately to the latest versions in each series.
-=sys-kernel/gentoo-sources-5.10.202
-=sys-kernel/gentoo-sources-5.15.140
-=sys-kernel/gentoo-sources-5.15.141
-=sys-kernel/gentoo-sources-6.1.44
-=sys-kernel/gentoo-sources-6.1.44-r1
-=sys-kernel/gentoo-sources-6.1.45
-=sys-kernel/gentoo-kernel-5.10.202
-=sys-kernel/gentoo-kernel-5.15.140
-=sys-kernel/gentoo-kernel-5.15.141
+=sys-kernel/gentoo-sources-6.1.64
+=sys-kernel/gentoo-sources-6.1.64-r1
+=sys-kernel/gentoo-sources-6.1.65
 =sys-kernel/gentoo-kernel-6.1.64
 =sys-kernel/gentoo-kernel-6.1.64-r1
 =sys-kernel/gentoo-kernel-6.1.65
-=sys-kernel/vanilla-sources-5.10.202
-=sys-kernel/vanilla-sources-5.15.140
-=sys-kernel/vanilla-sources-5.15.141
-=sys-kernel/vanilla-sources-6.1.44
-=sys-kernel/vanilla-sources-6.1.55
-=sys-kernel/vanilla-kernel-5.10.202
-=sys-kernel/vanilla-kernel-5.15.140
-=sys-kernel/vanilla-kernel-5.15.141
-=sys-kernel/vanilla-kernel-6.1.44
-=sys-kernel/vanilla-kernel-6.1.55
+=sys-kernel/vanilla-sources-6.1.64
+=sys-kernel/vanilla-sources-6.1.65
+=sys-kernel/vanilla-kernel-6.1.64
+=sys-kernel/vanilla-kernel-6.1.65
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-09)
 # Old slots that are not ruby32-compatible. No reverse dependencies
