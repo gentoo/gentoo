@@ -34,3 +34,4 @@ move kde-frameworks/kactivities kde-plasma/plasma-activities
 slotmove kde-frameworks/extra-cmake-modules 5 0
 move kde-frameworks/kwayland kde-plasma/kwayland
 move dev-java/aqute-bnd-annotation dev-java/bnd-annotation
+move dev-python/pycson dev-python/cson
