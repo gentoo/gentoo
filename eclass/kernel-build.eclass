@@ -218,11 +218,6 @@ kernel-build_src_compile() {
 # from kernel-install.eclass with the correct paths.
 kernel-build_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
-	local targets=( modules_install )
-	# on arm or arm64 you also need dtb
-	if use arm || use arm64 || use riscv; then
-		targets+=( dtbs_install )
-	fi
 
 	# Use the kernel build system to strip, this ensures the modules
 	# are stripped *before* they are signed or compressed.
@@ -233,7 +228,7 @@ kernel-build_src_test() {
 
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
-		"${targets[@]}"
+		modules_install
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local relfile=${WORKDIR}/build/include/config/kernel.release
