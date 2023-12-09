@@ -4,11 +4,11 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_11 )
 inherit distutils-r1
 
 DESCRIPTION="Intelligent recursive search/replace utility"
-HOMEPAGE="http://rpl.sourceforge.net/
+HOMEPAGE="https://rpl.sourceforge.net/
 	https://github.com/rrthomas/rpl"
 SRC_URI="
 	https://github.com/rrthomas/rpl/archive/v${PV}.tar.gz
@@ -22,5 +22,13 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	dev-python/argparse-manpage[${PYTHON_USEDEP}]
-	sys-apps/help2man[nls]
+	dev-python/regex[${PYTHON_USEDEP}]
+	dev-python/chainstream[${PYTHON_USEDEP}]
 "
+
+src_prepare() {
+	sed -i "s/VERSION = importlib.metadata.version('rpl')/VERSION = '${PV}'/" rpl/__init__.py || die
+	distutils-r1_src_prepare
+}
+
+distutils_enable_tests pytest
