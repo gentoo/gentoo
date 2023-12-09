@@ -47,7 +47,7 @@ fi
 
 LICENSE="GPL-3+ public-domain"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 if [[ "${PV}" == 9999 ]]; then
 	PROPERTIES="live"
