@@ -8,7 +8,7 @@ inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.6
-NV_PIN=535.129.03
+NV_PIN=535.146.02
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://developer.nvidia.com/vulkan-driver"
