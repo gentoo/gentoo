@@ -1,0 +1,45 @@
+From e31a6865958442435ae9b31f312129c44f66eb5e Mon Sep 17 00:00:00 2001
+From: Ville Aikas <11279988+vaikas@users.noreply.github.com>
+Date: Mon, 6 Nov 2023 09:24:40 -0800
+Subject: [PATCH] Add missing dependencies for: _khash_primitive_helper
+ (#55795)
+
+* Add missing dependencies for: _khash_primitive_helper
+
+Signed-off-by: Ville Aikas <vaikas@chainguard.dev>
+
+* source->dep change.
+
+Signed-off-by: Ville Aikas <vaikas@chainguard.dev>
+
+* Remove dep from arrays.
+
+Signed-off-by: Ville Aikas <vaikas@chainguard.dev>
+
+---------
+
+Signed-off-by: Ville Aikas <vaikas@chainguard.dev>
+---
+ pandas/_libs/meson.build | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pandas/_libs/meson.build b/pandas/_libs/meson.build
+index b4662d6bf8dd2..c27386743c6e9 100644
+--- a/pandas/_libs/meson.build
++++ b/pandas/_libs/meson.build
+@@ -61,12 +61,12 @@ subdir('tslibs')
+ libs_sources = {
+     # Dict of extension name -> dict of {sources, include_dirs, and deps}
+     # numpy include dir is implicitly included
+-    'algos': {'sources': ['algos.pyx', _algos_common_helper, _algos_take_helper, _khash_primitive_helper]},
++    'algos': {'sources': ['algos.pyx', _algos_common_helper, _algos_take_helper], 'deps': _khash_primitive_helper_dep},
+     'arrays': {'sources': ['arrays.pyx']},
+     'groupby': {'sources': ['groupby.pyx']},
+     'hashing': {'sources': ['hashing.pyx']},
+-    'hashtable': {'sources': ['hashtable.pyx', _khash_primitive_helper, _hashtable_class_helper, _hashtable_func_helper]},
+-    'index': {'sources': ['index.pyx', _index_class_helper]},
++    'hashtable': {'sources': ['hashtable.pyx', _hashtable_class_helper, _hashtable_func_helper], 'deps': _khash_primitive_helper_dep},
++    'index': {'sources': ['index.pyx', _index_class_helper], 'deps': _khash_primitive_helper_dep},
+     'indexing': {'sources': ['indexing.pyx']},
+     'internals': {'sources': ['internals.pyx']},
+     'interval': {'sources': ['interval.pyx', _intervaltree_helper],
