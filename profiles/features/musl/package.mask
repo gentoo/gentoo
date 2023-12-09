@@ -347,6 +347,7 @@ sys-auth/nss-mdns
 sys-auth/nss-myhostname
 sys-auth/nss-pam-ldapd
 sys-auth/nss_ldap
+sys-libs/nss-usrfiles
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # Needs a port to musl. Uses glibc-specific termio and __getppid.
