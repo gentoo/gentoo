@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-12-09)
+# Old slot that depends on packages that are not ruby32-compatible. No
+# reverse dependencies left. Please use the newer slot instead. Masked
+# for removal on 2024-01-09.
+dev-ruby/gettext-setup:0
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-08)
 # The both remaining virtuals are deprecated in favor of using
 # python_gen_cond_dep directly, and no longer used in any packages
