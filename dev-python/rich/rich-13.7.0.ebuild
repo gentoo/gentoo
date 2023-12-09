@@ -30,6 +30,11 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/Textualize/rich/pull/3226
+	"${FILESDIR}/${P}-nocolor.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
