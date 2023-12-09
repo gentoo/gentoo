@@ -171,6 +171,14 @@ ia64		default/linux/ia64/17.0/desktop/gnome/systemd/merged-usr	stable
 ia64		default/linux/ia64/17.0/developer				exp
 ia64		default/linux/ia64/17.0/systemd					exp
 ia64		default/linux/ia64/17.0/systemd/merged-usr			exp
+ia64		default/linux/ia64/23.0						exp
+ia64		default/linux/ia64/23.0/desktop					exp
+ia64		default/linux/ia64/23.0/desktop/gnome				exp
+ia64		default/linux/ia64/23.0/desktop/gnome/systemd			exp
+ia64		default/linux/ia64/23.0/systemd					exp
+ia64		default/linux/ia64/23.0/split-usr				exp
+ia64		default/linux/ia64/23.0/split-usr/desktop			exp
+ia64		default/linux/ia64/23.0/split-usr/desktop/gnome			exp
 
 
 # LoongArch Profiles
