@@ -33,6 +33,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-12-14)
+# Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
+# gentoo-kernel for old kernel LTS branches because of the resources to require
+# testing and patching them, combined with changing kernel lifecycles.
+#
+# The new policy is to support kernels with genpatches for 3 years after their
+# release.
+#
+# Specifically, 4.14/4.19/5.4 have been dropped. See https://www.mpagano.com/blog/?p=315
+# and http://www.kroah.com/log/blog/2018/08/24/what-stable-kernel-should-i-use/.
+#
+# sys-kernel/vanilla-sources will continue to be provided for all branches
+# until they reach formal upstream EOL.
+#
+<sys-kernel/gentoo-sources-5.10
+<sys-kernel/gentoo-kernel-5.10
+<virtual/dist-kernel-5.10
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-12)
 # Merged into dev-python/blake3[-rust].  Please use that instead.
 # Removal on 2024-01-11.  Bug #919771.
