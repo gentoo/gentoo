@@ -13,8 +13,8 @@
 # This eclass should be inherited for pure Java packages, or by packages which
 # need to use Java.
 
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
