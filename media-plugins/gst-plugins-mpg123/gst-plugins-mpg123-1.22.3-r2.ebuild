@@ -10,6 +10,6 @@ DESCRIPTION="MP3 decoder plugin for GStreamer"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
-	>=media-libs/libmpg123-1.23[${MULTILIB_USEDEP}]
+	>=media-sound/mpg123-base-1.23[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
