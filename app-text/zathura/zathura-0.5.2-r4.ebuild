@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}-manpages.tar.xz
+		https://cdn.turret.cyou/~turret/distfiles/${PN}/${P}-manpages.tar.xz
 	"
 	KEYWORDS="amd64 arm ~riscv x86 ~amd64-linux ~x86-linux"
 fi
