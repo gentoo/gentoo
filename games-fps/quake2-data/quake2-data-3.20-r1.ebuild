@@ -14,6 +14,7 @@ LICENSE="Q2EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="videos"
+RESTRICT="bindist"
 
 RDEPEND="!games-fps/quake2-demodata[symlink]"
 BDEPEND="app-arch/unzip"
