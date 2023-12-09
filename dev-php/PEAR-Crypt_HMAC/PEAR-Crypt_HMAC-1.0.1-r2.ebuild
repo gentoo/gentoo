@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Calculates RFC 2104 compliant hashes"
 LICENSE="PHP-3"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-php/PEAR-PEAR )"

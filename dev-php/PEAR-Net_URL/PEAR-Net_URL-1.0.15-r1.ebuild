@@ -9,7 +9,7 @@ DESCRIPTION="Easy parsing of URLs"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 src_install() {

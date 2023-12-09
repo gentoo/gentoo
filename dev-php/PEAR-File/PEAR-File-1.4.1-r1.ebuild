@@ -9,7 +9,7 @@ DESCRIPTION="Common file and directory routines"
 
 LICENSE="PHP-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-php/PEAR-PEAR )"

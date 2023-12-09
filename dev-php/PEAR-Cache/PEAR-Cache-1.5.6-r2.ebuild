@@ -9,7 +9,7 @@ DESCRIPTION="Framework for caching of arbitrary data"
 
 LICENSE="PHP-2.02"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 src_install() {
