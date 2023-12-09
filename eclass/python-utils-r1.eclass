@@ -1382,6 +1382,8 @@ epytest() {
 			-p no:pytest-describe
 			-p no:plus
 			-p no:tavern
+			# does something to logging
+			-p no:salt-factories
 		)
 	fi
 
