@@ -38,10 +38,17 @@ RDEPEND="
 	net-libs/libpcap
 	net-libs/libslirp
 "
-DEPEND="${RDEPEND}"
-BDEPEND="kde-frameworks/extra-cmake-modules:0"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	kde-frameworks/extra-cmake-modules:0
+"
 
-PATCHES=( "${FILESDIR}"/${P}-no-ccache-detection.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.5-DSi_Camera-algorithm.patch"
+	"${FILESDIR}/${PN}-0.9.5-no-ccache-detection.patch"
+)
 
 # used for JIT recompiler
 QA_EXECSTACK="usr/bin/melonDS"
