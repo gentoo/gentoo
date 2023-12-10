@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: for packages that make use of the Haskell Common Architecture for Building Applications and Libraries (cabal)
 # @DESCRIPTION:
 # Basic instructions:
@@ -41,9 +41,7 @@
 #                  is fixed.
 
 case ${EAPI} in
-	# eutils is for eqawarn
-	6) inherit eutils ;;
-	8|7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -98,7 +96,6 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
 : "${CABAL_EXTRA_HSCOLOUR_FLAGS:=}"
-
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_TEST_FLAGS
 # @USER_VARIABLE
@@ -157,7 +154,7 @@ S="${WORKDIR}/${CABAL_P}"
 # @DESCRIPTION:
 # The location of the .cabal file for the Haskell package. This defaults to
 # "${S}/${CABAL_PN}.cabal".
-# 
+#
 # NOTE: If $S is redefined in the ebuild after inheriting this eclass,
 # $CABAL_FILE will also need to be redefined as well.
 : "${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}"
