@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="doc libnotify test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	app-accessibility/at-spi2-core
 	dev-libs/glib:2
 	dev-libs/json-glib:=
@@ -33,7 +33,8 @@ DEPEND="
 	x11-libs/pango
 	libnotify? ( x11-libs/libnotify )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${DEPEND}
+	x11-base/xorg-proto"
 # Tests are run under virtx
 BDEPEND="
 	virtual/pkgconfig
