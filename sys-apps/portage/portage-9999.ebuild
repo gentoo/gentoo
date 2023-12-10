@@ -209,6 +209,10 @@ pkg_preinst() {
 		env -u FEATURES -u PORTAGE_REPOSITORIES \
 			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 			"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+
+		env -u BINPKG_FORMAT \
+			PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+			"${PYTHON}" -m portage._compat_upgrade.binpkg_format || die
 	fi
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
