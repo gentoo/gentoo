@@ -39,6 +39,12 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# sigh, can't people just stop using poetry?!
+		# https://github.com/PyCQA/isort/commit/f7a6b0eea57e87155a367e2490b49b40f83c3944
+		"${FILESDIR}/${P}-poetry.patch"
+	)
+
 	# unbundle tomli
 	sed -i -e 's:from ._vendored ::' isort/settings.py || die
 	rm -r isort/_vendored || die
