@@ -40,7 +40,7 @@
 dev-ruby/sinatra-partial
 
 # Sam James <sam@gentoo.org> (2023-12-09)
-# ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/
+# ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/ (bug #919675)
 # Please update immediately to the latest versions in each series.
 =sys-kernel/gentoo-sources-6.1.64
 =sys-kernel/gentoo-sources-6.1.64-r1
