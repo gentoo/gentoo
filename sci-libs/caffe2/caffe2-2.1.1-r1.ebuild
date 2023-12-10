@@ -209,6 +209,5 @@ src_install() {
 	cp torch/version.py python/torch/ || die
 	python_domodule python/caffe2
 	python_domodule python/torch
-	python_domodule python/nvfuser
 	find "${ED}" -empty -delete
 }
