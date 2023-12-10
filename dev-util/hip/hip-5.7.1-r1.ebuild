@@ -70,6 +70,7 @@ src_prepare() {
 		PATCHES=(
 			"${FILESDIR}"/hip-test-5.7.0-rocm_agent_enumerator-location.patch
 			"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
+			"${FILESDIR}"/hip-test-5.7.1-build-stress-test.patch
 		)
 		hip_test_wrapper cmake_src_prepare
 	fi
