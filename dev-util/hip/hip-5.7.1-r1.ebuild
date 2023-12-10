@@ -16,7 +16,7 @@ DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipamd"
 SRC_URI="https://github.com/ROCm-Developer-Tools/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz
 	https://github.com/ROCm-Developer-Tools/HIP/archive/refs/tags/rocm-${PV}.tar.gz -> hip-${PV}.tar.gz
-	test? ( https://github.com/ROCm-Developer-Tools/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz )"
+	test? ( https://github.com/ROCm-Developer-Tools/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz -> rocm-hip-tests-${TEST_PV}.tar.gz )"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"
