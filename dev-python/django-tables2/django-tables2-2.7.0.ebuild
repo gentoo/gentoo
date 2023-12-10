@@ -32,7 +32,13 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/django-filter[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/psycopg:2[${PYTHON_USEDEP}]
+		|| (
+			(
+				>=dev-python/django-4.2[${PYTHON_USEDEP}]
+				dev-python/psycopg:*[${PYTHON_USEDEP}]
+			)
+			dev-python/psycopg:2[${PYTHON_USEDEP}]
+		)
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
