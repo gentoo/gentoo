@@ -1,0 +1,13 @@
+diff --git a/src/MPDeviceBleImpl.cpp b/src/MPDeviceBleImpl.cpp
+index 58c836e..795aba1 100644
+--- a/src/MPDeviceBleImpl.cpp
++++ b/src/MPDeviceBleImpl.cpp
+@@ -735,7 +735,7 @@ bool MPDeviceBleImpl::processReceivedData(const QByteArray &data, QByteArray &da
+ {
+     if (data.size() < 2)
+     {
+-        return {0};
++        return {QByteArray::number(0)};
+     }
+     QVector<QByteArray> res;
+     for (int i = 0; i < data.size() - 1; i += 2)
