@@ -1,0 +1,23 @@
+diff --git a/setup.py b/setup.py
+index 6711c8a1..2bc0bd95 100755
+--- a/setup.py
++++ b/setup.py
+@@ -108,18 +108,6 @@ def get_data_files():
+                 "bin/duplicity.1",
+             ],
+         ),
+-        (
+-            f"share/doc/duplicity-{Version}",
+-            [
+-                "CHANGELOG.md",
+-                "CONTRIBUTING.md",
+-                "COPYING",
+-                "README.md",
+-                "README-LOG.md",
+-                "README-REPO.md",
+-                "README-TESTING.md",
+-            ],
+-        ),
+     ]
+ 
+     # short circuit fot READTHEDOCS
