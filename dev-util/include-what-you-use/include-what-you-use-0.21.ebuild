@@ -28,10 +28,6 @@ DEPEND="${RDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.19-tests-cxx-badinc.cc-remove-stddef-from-expected.patch
-)
-
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
 }
@@ -81,7 +77,7 @@ src_test() {
 		die "Could not infer clang include directory. Candidates: ${clang_include_dir_candidates[*]}"
 	fi
 
-	local -x EXTRA_IWYU_ARGS="-I ${clang_include_dir}"
+	local -x IWYU_EXTRA_ARGS="-I ${clang_include_dir}"
 	"${EPYTHON}" run_iwyu_tests.py \
 				 -- "${BUILD_DIR}"/bin/${PN} \
 		|| die "Tests failed with $? (using ${EPYTHON})"
