@@ -81,7 +81,7 @@ CDEPEND="
 	)
 "
 RDEPEND="${CDEPEND}
-	webkit? ( net-libs/webkit-gtk:4 )
+	webkit? ( net-libs/webkit-gtk:4.1 net-libs/webkit-gtk:6 )
 "
 DEPEND="${CDEPEND}
 	>=dev-cpp/cppgir-0_p20230926
@@ -149,6 +149,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Evil flag (bug #919201)
+	filter-flags -fno-delete-null-pointer-checks
+
 	# The ABI of media-libs/tg_owt breaks if the -DNDEBUG flag doesn't keep
 	# the same state across both projects.
 	# See https://bugs.gentoo.org/866055
