@@ -91,7 +91,7 @@ python_install_all() {
 pkg_postinst() {
 	optfeature_header "Additional Backend support can be enabled via:"
 	optfeature "MySQL backend support" dev-python/mysqlclient
-	optfeature "PostgreSQL backend support" dev-python/psycopg:2
+	optfeature "PostgreSQL backend support" dev-python/psycopg:0
 	optfeature_header
 	optfeature "GEO Django" "sci-libs/gdal[geos]"
 	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
