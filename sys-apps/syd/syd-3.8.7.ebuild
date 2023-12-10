@@ -60,6 +60,7 @@ CRATES="
 	memchr@2.6.4
 	memoffset@0.7.1
 	nix@0.26.4
+	nix@0.27.1
 	nonempty@0.8.1
 	num-traits@0.2.17
 	num_cpus@1.16.0
