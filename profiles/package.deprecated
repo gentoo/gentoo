@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-12-10)
+# Superseded by dev-python/psycopg:0 (version 3).
+dev-python/psycopg:2
+
 # Petr Vaněk <arkamar@gentoo.org> (2023-10-26)
 # dev-libs/hyperscan upstream is inactive [1], please switch to more portable,
 # drop-in replacement dev-libs/vectorscan. dev-libs/hyperscan will be
