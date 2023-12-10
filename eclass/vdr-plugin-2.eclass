@@ -9,7 +9,7 @@
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Christian Ruppert <idl0r@gentoo.org>
 # (undisclosed contributors)
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
@@ -61,14 +61,13 @@
 # @CODE
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_VDR_PLUGIN_2_ECLASS} ]]; then
 _VDR_PLUGIN_2_ECLASS=1
 
-[[ ${EAPI} == 6 ]] && inherit eutils
 inherit flag-o-matic strip-linguas toolchain-funcs unpacker
 
 # Name of the plugin stripped from all vdrplugin-, vdr- and -cvs pre- and postfixes
@@ -82,18 +81,9 @@ DESCRIPTION="vdr Plugin: ${VDRPLUGIN} (based on vdr-plugin-2.eclass)"
 S="${WORKDIR}/${VDRPLUGIN}-${PV}"
 
 # depend on headers for DVB-driver and vdr-scripts
-case ${EAPI} in
-	6)
-		DEPEND="media-tv/gentoo-vdr-scripts
-			virtual/linuxtv-dvb-headers
-			virtual/pkgconfig"
-		;;
-	*)
-		BDEPEND="virtual/pkgconfig"
-		DEPEND="media-tv/gentoo-vdr-scripts
-			virtual/linuxtv-dvb-headers"
-		;;
-esac
+BDEPEND="virtual/pkgconfig"
+DEPEND="media-tv/gentoo-vdr-scripts
+	virtual/linuxtv-dvb-headers"
 RDEPEND="media-tv/gentoo-vdr-scripts
 	app-eselect/eselect-vdr"
 
