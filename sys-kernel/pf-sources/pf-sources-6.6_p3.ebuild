@@ -13,7 +13,7 @@ K_EXP_GENPATCHES_NOUSE="1"
 # is the wanted value here, but the genpatches patch set can be bumped if it includes some
 # important fixes. src_prepare() will handle deleting the updated vanilla linux patches.
 # See https://archives.gentoo.org/gentoo-kernel/ (or subscribe to the list) to see all patches.
-K_GENPATCHES_VER="1"
+K_GENPATCHES_VER="7"
 
 # -pf patch set already sets EXTRAVERSION to kernel Makefile.
 K_NOSETEXTRAVERSION="1"
