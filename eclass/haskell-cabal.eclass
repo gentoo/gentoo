@@ -35,7 +35,7 @@
 #                  package it might cause cause the test-suite to fail with
 #                  errors like:
 #                  > <command line>: cannot satisfy -package-id singletons-2.7-3Z7pnljD8tU1NrslJodXmr
-#                  Workaround re-reginsters the package to avoid the failure
+#                  Workaround re-registers the package to avoid the failure
 #                  (and rebuilds changes).
 #                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
 #                  is fixed.
@@ -760,7 +760,7 @@ cabal_src_compile() {
 		fi
 		if [[ -n "${CABAL_REBUILD_AFTER_DOC_WORKAROUND}" ]]; then
 			ewarn "rebuild-after-doc-workaround is enabled. This is a"
-			ewarn "temporary worakround to deal with https://github.com/haskell/cabal/issues/7213"
+			ewarn "temporary workaround to deal with https://github.com/haskell/cabal/issues/7213"
 			ewarn "until the upstream issue can be resolved."
 			cabal-build
 		fi
@@ -1101,7 +1101,7 @@ cabal-register-inplace() {
 # needed by the executable. (Needed libraries are automatically added to
 # LD_LIBRARY_PATH by haskell-cabal_src_compile().)
 #
-# This is only inteded to be run in the test and install phases.
+# This is only intended to be run in the test and install phases.
 cabal-run-dist-bin() {
 	einfo "LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}"
 	case "$EBUILD_PHASE_FUNC" in
