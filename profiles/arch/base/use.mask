@@ -37,6 +37,10 @@ oci8
 cuda
 nvenc
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2023-12-10)
+# cuDNN only works on amd64
+cudnn
+
 # ROCm/HIP only works on amd64
 hip
 

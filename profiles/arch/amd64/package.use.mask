@@ -247,10 +247,6 @@ app-text/texlive-core -xindy
 # static-pie works on amd64, #719444
 sys-libs/glibc -static-pie
 
-# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
-# media-libs/cudnn is keyworded on amd64
-sci-physics/root -cudnn
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can be disabled on amd64
 mail-client/thunderbird -eme-free
