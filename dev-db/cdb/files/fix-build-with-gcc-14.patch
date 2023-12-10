@@ -1,0 +1,113 @@
+From da58cdb665f46d17e82e803af7b3b70c521a38f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Leonardo=20Hern=C3=A1ndez=20Hern=C3=A1ndez?=
+ <leohdz172@proton.me>
+Date: Mon, 11 Dec 2023 12:33:12 -0600
+Subject: [PATCH] fix build with gcc-14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+it enables by default -Werror=implicit-int and -Werror=implicit-function-declaration
+
+Signed-off-by: Leonardo Hernández Hernández <leohdz172@proton.me>
+---
+ cdbget.c     | 2 +-
+ cdbmake.c    | 2 +-
+ seek_cur.c   | 1 +
+ seek_set.c   | 1 +
+ testzero.c   | 2 +-
+ tryulong32.c | 2 +-
+ x86cpuid.c   | 4 +++-
+ 7 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/cdbget.c b/cdbget.c
+index 1c76fe2..1ad9c20 100644
+--- a/cdbget.c
++++ b/cdbget.c
+@@ -23,7 +23,7 @@ void die_usage(void)
+ static struct cdb c;
+ char buf[1024];
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   char *key;
+   int r;
+diff --git a/cdbmake.c b/cdbmake.c
+index 3c1c8bd..4df65d2 100644
+--- a/cdbmake.c
++++ b/cdbmake.c
+@@ -36,7 +36,7 @@ inline void get(char *ch)
+ 
+ static struct cdb_make c;
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   unsigned int klen;
+   unsigned int dlen;
+diff --git a/seek_cur.c b/seek_cur.c
+index c2950a1..c08a90c 100644
+--- a/seek_cur.c
++++ b/seek_cur.c
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define CUR 1 /* sigh */
+diff --git a/seek_set.c b/seek_set.c
+index d08d4f3..47c61e4 100644
+--- a/seek_set.c
++++ b/seek_set.c
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define SET 0 /* sigh */
+diff --git a/testzero.c b/testzero.c
+index ba07865..cb296a9 100644
+--- a/testzero.c
++++ b/testzero.c
+@@ -14,7 +14,7 @@ static char key[4];
+ static char data[65536];
+ struct cdb_make c;
+ 
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   int fd;
+   unsigned long loop;
+diff --git a/tryulong32.c b/tryulong32.c
+index a108076..20683d6 100644
+--- a/tryulong32.c
++++ b/tryulong32.c
+@@ -1,4 +1,4 @@
+-void main()
++int main()
+ {
+   unsigned long u;
+   u = 1;
+diff --git a/x86cpuid.c b/x86cpuid.c
+index 900d7d5..d752d07 100644
+--- a/x86cpuid.c
++++ b/x86cpuid.c
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <stdlib.h>
+ #include <signal.h>
+ 
+ void nope()
+@@ -5,7 +7,7 @@ void nope()
+   exit(1);
+ }
+ 
+-main()
++int main(void)
+ {
+   unsigned long x[4];
+   unsigned long y[4];
+-- 
+2.43.0
+

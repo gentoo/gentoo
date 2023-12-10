@@ -1,0 +1,427 @@
+From 59b8a524882c3bc408bb980aba81070f196f24bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Leonardo=20Hern=C3=A1ndez=20Hern=C3=A1ndez?=
+ <leohdz172@proton.me>
+Date: Sat, 9 Dec 2023 17:55:17 -0600
+Subject: [PATCH] fix K&R declarations and some -Wstrict-prototypes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Leonardo Hernández Hernández <leohdz172@proton.me>
+--- a/alloc.c
++++ b/alloc.c
+@@ -1,7 +1,6 @@
++#include <stdlib.h>
+ #include "alloc.h"
+ #include "error.h"
+-extern char *malloc();
+-extern void free();
+ 
+ #define ALIGNMENT 16 /* XXX: assuming that this alignment is enough */
+ #define SPACE 4096 /* must be multiple of ALIGNMENT */
+@@ -11,8 +10,7 @@ static aligned realspace[SPACE / ALIGNMENT];
+ #define space ((char *) realspace)
+ static unsigned int avail = SPACE; /* multiple of ALIGNMENT; 0<=avail<=SPACE */
+ 
+-/*@null@*//*@out@*/char *alloc(n)
+-unsigned int n;
++/*@null@*//*@out@*/char *alloc(unsigned int n)
+ {
+   char *x;
+   n = ALIGNMENT + n - (n & (ALIGNMENT - 1)); /* XXX: could overflow */
+@@ -22,8 +20,8 @@ unsigned int n;
+   return x;
+ }
+ 
+-void alloc_free(x)
+-char *x;
++void 
++alloc_free (char *x)
+ {
+   if (x >= space)
+     if (x < space + SPACE)
+--- a/alloc.h
++++ b/alloc.h
+@@ -1,8 +1,8 @@
+ #ifndef ALLOC_H
+ #define ALLOC_H
+ 
+-extern /*@null@*//*@out@*/char *alloc();
+-extern void alloc_free();
++extern /*@null@*//*@out@*/char *alloc(unsigned int n);
++extern void alloc_free(char *x);
+ extern int alloc_re();
+ 
+ #endif
+--- a/auto-str.c
++++ b/auto-str.c
+@@ -5,15 +5,14 @@
+ char buf1[256];
+ buffer ss1 = BUFFER_INIT(write,1,buf1,sizeof(buf1));
+ 
+-void puts(s)
+-char *s;
++void 
++puts (char *s)
+ {
+   if (buffer_puts(&ss1,s) == -1) _exit(111);
+ }
+ 
+-main(argc,argv)
+-int argc;
+-char **argv;
++int 
++main (int argc, char **argv)
+ {
+   char *name;
+   char *value;
+--- a/buffer.c
++++ b/buffer.c
+@@ -1,6 +1,6 @@
+ #include "buffer.h"
+ 
+-void buffer_init(buffer *s,int (*op)(),int fd,char *buf,unsigned int len)
++void buffer_init(buffer *s,op_func op,int fd,char *buf,unsigned int len)
+ {
+   s->x = buf;
+   s->fd = fd;
+--- a/buffer.h
++++ b/buffer.h
+@@ -1,19 +1,23 @@
+ #ifndef BUFFER_H
+ #define BUFFER_H
+ 
++#include <unistd.h>
++
++typedef ssize_t (*op_func)(int fd, void *buf, size_t count);
++
+ typedef struct buffer {
+   char *x;
+   unsigned int p;
+   unsigned int n;
+   int fd;
+-  int (*op)();
++  op_func op;
+ } buffer;
+ 
+ #define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+ #define BUFFER_INSIZE 8192
+ #define BUFFER_OUTSIZE 8192
+ 
+-extern void buffer_init(buffer *,int (*)(),int,char *,unsigned int);
++extern void buffer_init(buffer *,op_func,int,char *,unsigned int);
+ 
+ extern int buffer_flush(buffer *);
+ extern int buffer_put(buffer *,char *,unsigned int);
+--- a/buffer_0.c
++++ b/buffer_0.c
+@@ -1,7 +1,8 @@
+ #include "readwrite.h"
+ #include "buffer.h"
+ 
+-int buffer_0_read(fd,buf,len) int fd; char *buf; int len;
++int 
++buffer_0_read (int fd, char *buf, int len)
+ {
+   if (buffer_flush(buffer_1) == -1) return -1;
+   return read(fd,buf,len);
+--- a/byte.h
++++ b/byte.h
+@@ -3,9 +3,9 @@
+ 
+ extern unsigned int byte_chr();
+ extern unsigned int byte_rchr();
+-extern void byte_copy();
+-extern void byte_copyr();
+-extern int byte_diff();
++extern void byte_copy(register char *to, register unsigned int n, register char *from);
++extern void byte_copyr(register char *to, register unsigned int n, register char *from);
++extern int byte_diff(register char *s, register unsigned int n, register char *t);
+ extern void byte_zero();
+ 
+ #define byte_equal(s,n,t) (!byte_diff((s),(n),(t)))
+--- a/byte_copy.c
++++ b/byte_copy.c
+@@ -1,9 +1,7 @@
+ #include "byte.h"
+ 
+-void byte_copy(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void 
++byte_copy (char *to, unsigned int n, char *from)
+ {
+   for (;;) {
+     if (!n) return; *to++ = *from++; --n;
+--- a/byte_cr.c
++++ b/byte_cr.c
+@@ -1,9 +1,7 @@
+ #include "byte.h"
+ 
+-void byte_copyr(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void 
++byte_copyr (char *to, unsigned int n, char *from)
+ {
+   to += n;
+   from += n;
+--- a/byte_diff.c
++++ b/byte_diff.c
+@@ -1,9 +1,7 @@
+ #include "byte.h"
+ 
+-int byte_diff(s,n,t)
+-register char *s;
+-register unsigned int n;
+-register char *t;
++int 
++byte_diff (char *s, unsigned int n, char *t)
+ {
+   for (;;) {
+     if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+--- a/cdbdump.c
++++ b/cdbdump.c
+@@ -58,7 +58,8 @@ void getnum(uint32_t *num)
+ 
+ char strnum[FMT_ULONG];
+ 
+-main()
++int 
++main (void)
+ {
+   uint32_t eod;
+   uint32_t klen;
+--- a/cdbget.c
++++ b/cdbget.c
+@@ -1,4 +1,4 @@
+-#include "exit.h"
++#include "error.h"
+ #include "scan.h"
+ #include "str.h"
+ #include "buffer.h"
+--- a/cdbstats.c
++++ b/cdbstats.c
+@@ -68,7 +68,8 @@ static struct cdb c;
+ static unsigned long numrecords;
+ static unsigned long numd[11];
+ 
+-main()
++int 
++main (void)
+ {
+   uint32_t eod;
+   uint32_t klen;
+--- a/cdbtest.c
++++ b/cdbtest.c
+@@ -66,7 +66,8 @@ unsigned long numfound = 0;
+ 
+ static struct cdb c;
+ 
+-main()
++int 
++main (void)
+ {
+   uint32_t eod;
+   uint32_t klen;
+--- a/exit.h
++++ b/exit.h
+@@ -1,6 +1,6 @@
+ #ifndef EXIT_H
+ #define EXIT_H
+ 
+-extern void _exit();
++#include <unistd.h>
+ 
+ #endif
+--- a/hier.c
++++ b/hier.c
+@@ -1,6 +1,7 @@
+ #include "auto_home.h"
+ 
+-void hier()
++void 
++hier (void)
+ {
+   h(auto_home,-1,-1,02755);
+   d(auto_home,"bin",-1,-1,02755);
+--- a/install.c
++++ b/install.c
+@@ -11,11 +11,7 @@ extern void hier();
+ 
+ int fdsourcedir = -1;
+ 
+-void h(home,uid,gid,mode)
+-char *home;
+-int uid;
+-int gid;
+-int mode;
++void h(char *home, int uid, int gid, int mode)
+ {
+   if (mkdir(home,0700) == -1)
+     if (errno != error_exist)
+@@ -26,12 +22,8 @@ int mode;
+     strerr_die4sys(111,FATAL,"unable to chmod ",home,": ");
+ }
+ 
+-void d(home,subdir,uid,gid,mode)
+-char *home;
+-char *subdir;
+-int uid;
+-int gid;
+-int mode;
++void 
++d (char *home, char *subdir, int uid, int gid, int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+@@ -49,13 +41,8 @@ char outbuf[BUFFER_OUTSIZE];
+ buffer ssin;
+ buffer ssout;
+ 
+-void c(home,subdir,file,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int uid;
+-int gid;
+-int mode;
++void 
++c (char *home, char *subdir, char *file, int uid, int gid, int mode)
+ {
+   int fdin;
+   int fdout;
+@@ -99,14 +86,8 @@ int mode;
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-void z(home,subdir,file,len,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int len;
+-int uid;
+-int gid;
+-int mode;
++void 
++z (char *home, char *subdir, char *file, int len, int uid, int gid, int mode)
+ {
+   int fdout;
+ 
+@@ -137,7 +118,8 @@ int mode;
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-main()
++int 
++main (void)
+ {
+   fdsourcedir = open_read(".");
+   if (fdsourcedir == -1)
+--- a/instcheck.c
++++ b/instcheck.c
+@@ -40,46 +40,30 @@ int mode;
+     strerr_warn6(WARNING,prefix1,prefix2,prefix3,file," has wrong type",0);
+ }
+ 
+-void h(home,uid,gid,mode)
+-char *home;
+-int uid;
+-int gid;
+-int mode;
++void 
++h (char *home, int uid, int gid, int mode)
+ {
+   perm("","","",home,S_IFDIR,uid,gid,mode);
+ }
+ 
+-void d(home,subdir,uid,gid,mode)
+-char *home;
+-char *subdir;
+-int uid;
+-int gid;
+-int mode;
++void 
++d (char *home, char *subdir, int uid, int gid, int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+   perm("",home,"/",subdir,S_IFDIR,uid,gid,mode);
+ }
+ 
+-void p(home,fifo,uid,gid,mode)
+-char *home;
+-char *fifo;
+-int uid;
+-int gid;
+-int mode;
++void 
++p (char *home, char *fifo, int uid, int gid, int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+   perm("",home,"/",fifo,S_IFIFO,uid,gid,mode);
+ }
+ 
+-void c(home,subdir,file,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int uid;
+-int gid;
+-int mode;
++void 
++c (char *home, char *subdir, char *file, int uid, int gid, int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+@@ -88,20 +72,16 @@ int mode;
+   perm(".../",subdir,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-void z(home,file,len,uid,gid,mode)
+-char *home;
+-char *file;
+-int len;
+-int uid;
+-int gid;
+-int mode;
++void 
++z (char *home, char *file, int len, int uid, int gid, int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+   perm("",home,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-main()
++int 
++main (void)
+ {
+   hier();
+   _exit(0);
+--- a/readwrite.h
++++ b/readwrite.h
+@@ -1,7 +1,6 @@
+ #ifndef READWRITE_H
+ #define READWRITE_H
+ 
+-extern int read();
+-extern int write();
++#include <unistd.h>
+ 
+ #endif
+--- a/trycpp.c
++++ b/trycpp.c
+@@ -1,4 +1,5 @@
+-main()
++int 
++main (void)
+ {
+ #ifdef NeXT
+   printf("nextstep\n"); exit(0);
+-- 
+2.43.0
+
