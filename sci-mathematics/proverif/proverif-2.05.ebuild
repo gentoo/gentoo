@@ -33,7 +33,7 @@ DEPEND="
 	${RDEPEND}
 "
 
-DOCS=( CHANGES README docs/dev docs/manual )
+DOCS=( CHANGES README )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
