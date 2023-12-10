@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-12-10)
+# Test failures that seem to indicate this package no longer works
+# correctly. Last release 6 years ago. No reverse dependencies.
+# Masked for removal on 2024-01-10.
+dev-ruby/sinatra-partial
+
 # Sam James <sam@gentoo.org> (2023-12-09)
 # ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/
 # Please update immediately to the latest versions in each series.
