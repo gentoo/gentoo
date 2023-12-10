@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CHROMIUM_VERSION="114"
+CHROMIUM_VERSION="120"
 CHROMIUM_LANGS="
 	af
 	am
@@ -72,6 +72,7 @@ SRC_URI="amd64? ( https://dl.nwjs.io/v${PV}/${MY_P}-linux-x64.tar.gz )"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="ffmpeg-chromium"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
@@ -82,7 +83,6 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/libglvnd
 	media-libs/vulkan-loader
-	media-video/ffmpeg-chromium:${CHROMIUM_VERSION}
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -105,9 +105,11 @@ RDEPEND="
 	x11-libs/pango[X]
 	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	!<games-rpg/crosscode-1.4.2.2-r1
+	!ffmpeg-chromium? ( >=media-video/ffmpeg-6.1-r1:0/58.60.60[chromium] )
+	ffmpeg-chromium? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 "
 
-S="${WORKDIR}/${A%.tar.gz}"
+S="${WORKDIR}/${MY_P}-linux-x64"
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
 
@@ -135,7 +137,7 @@ src_install() {
 	exeinto "${DIR}"/lib
 	doexe lib/*.so*
 
-	dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so.${CHROMIUM_VERSION} \
+	dosym ../../../usr/$(get_libdir)/chromium/libffmpeg.so$(usex ffmpeg-chromium .${CHROMIUM_VERSION} "") \
 		"${DIR}"/lib/libffmpeg.so
 
 	dosym ../.."${DIR}"/nw /usr/bin/${PN}
