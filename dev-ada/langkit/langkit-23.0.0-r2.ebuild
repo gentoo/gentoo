@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-ADA_COMPAT=( gnat_2021 gcc_12 )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
 
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 ada multiprocessing
@@ -21,6 +21,7 @@ IUSE="+shared static-libs static-pic"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	${ADA_REQUIRED_USE}
 	|| ( shared static-libs static-pic )"
+RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
