@@ -37,6 +37,9 @@ oci8
 cuda
 nvenc
 
+# cuDNN only works on amd64
+cudnn
+
 # ROCm/HIP only works on amd64
 hip
 

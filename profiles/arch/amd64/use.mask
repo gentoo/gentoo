@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2023-12-10)
+# cuDNN works here
+-cudnn
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2023-11-17)
 # ROCm/HIP works here
 -hip
