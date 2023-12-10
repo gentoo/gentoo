@@ -75,7 +75,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.3-configure-clang16.patch"
 )
 
-
 src_unpack() {
 	unpack ${A}
 	# handle local bind hell
@@ -207,10 +206,13 @@ src_compile() {
 	emake -C bind/bind-*/lib install
 	# then build standard dhcp code
 	emake AR="$(tc-getAR)"
+	emake -C keama AR="$(tc-getAR)"
 }
 
 src_install() {
 	default
+
+	emake -C keama DESTDIR="${D}" install
 
 	dodoc README RELNOTES doc/{api+protocol,IANA-arp-parameters}
 	docinto html
