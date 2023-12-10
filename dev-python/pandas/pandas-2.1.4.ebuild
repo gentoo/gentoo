@@ -84,7 +84,6 @@ BDEPEND="
 		>=dev-python/hypothesis-6.46.1[${PYTHON_USEDEP}]
 		>=dev-python/openpyxl-3.0.10[${PYTHON_USEDEP}]
 		>=dev-python/pymysql-1.0.2[${PYTHON_USEDEP}]
-		>=dev-python/psycopg-2.9.3:2[${PYTHON_USEDEP}]
 		>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
 		x11-misc/xclip
 		x11-misc/xsel
