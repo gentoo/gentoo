@@ -44,7 +44,10 @@ RDEPEND="
 	pci? ( sys-apps/pciutils )
 	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
-	vulkan? ( media-libs/vulkan-loader )
+	vulkan? (
+		media-libs/vulkan-loader
+		sys-apps/pciutils
+	)
 	wayland? ( dev-libs/wayland )
 	xcb? ( x11-libs/libxcb )
 	xfce? ( xfce-base/xfconf )
