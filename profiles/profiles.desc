@@ -143,6 +143,26 @@ arm64		default/linux/arm64/17.0/systemd/selinux/merged-usr		exp
 arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm				exp
 arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
+arm64		default/linux/arm64/23.0					exp
+arm64		default/linux/arm64/23.0/hardened				exp
+arm64		default/linux/arm64/23.0/hardened/selinux			exp
+arm64		default/linux/arm64/23.0/hardened/selinux/systemd		exp
+arm64		default/linux/arm64/23.0/desktop				exp
+arm64		default/linux/arm64/23.0/desktop/gnome				exp
+arm64		default/linux/arm64/23.0/desktop/gnome/systemd			exp
+arm64		default/linux/arm64/23.0/desktop/plasma				exp
+arm64		default/linux/arm64/23.0/desktop/plasma/systemd			exp
+arm64		default/linux/arm64/23.0/desktop/systemd			exp
+arm64		default/linux/arm64/23.0/systemd				exp
+arm64		default/linux/arm64/23.0/llvm					exp
+arm64		default/linux/arm64/23.0/llvm/systemd				exp
+arm64		default/linux/arm64/23.0/split-usr				exp
+arm64		default/linux/arm64/23.0/split-usr/hardened			exp
+arm64		default/linux/arm64/23.0/split-usr/hardened/selinux		exp
+arm64		default/linux/arm64/23.0/split-usr/desktop			exp
+arm64		default/linux/arm64/23.0/split-usr/desktop/gnome		exp
+arm64		default/linux/arm64/23.0/split-usr/desktop/plasma		exp
+arm64		default/linux/arm64/23.0/split-usr/llvm				exp
 
 
 # ARM64 Profiles (big-endian)
@@ -152,6 +172,10 @@ arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 arm64		default/linux/arm64/17.0/big-endian				exp
 arm64		default/linux/arm64/17.0/big-endian/systemd			exp
 arm64		default/linux/arm64/17.0/big-endian/systemd/merged-usr		exp
+arm64		default/linux/arm64/23.0/big-endian				exp
+arm64		default/linux/arm64/23.0/big-endian/systemd			exp
+arm64		default/linux/arm64/23.0/split-usr/big-endian			exp
+
 
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
