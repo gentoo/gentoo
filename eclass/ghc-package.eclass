@@ -23,7 +23,7 @@ esac
 # QA check generates false positive because it assumes
 # presence of GCC-specific sections.
 #
-# Workaround false positiove by disabling the check completely.
+# Workaround false positive by disabling the check completely.
 # bug #722078, bug #677600
 QA_FLAGS_IGNORED='.*'
 
