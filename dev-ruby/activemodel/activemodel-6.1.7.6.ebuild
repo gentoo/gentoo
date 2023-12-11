@@ -43,5 +43,7 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	# Set test environment to our hand.
-	sed -i -e '/load_paths/d' test/cases/helper.rb || die "Unable to remove load paths"
+	sed -e '/load_paths/d' \
+		-e '2igem "activesupport", "~> 6.1.0"; gem "railties", "~> 6.1.0"' \
+		-i test/cases/helper.rb || die "Unable to remove load paths"
 }
