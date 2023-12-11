@@ -15,6 +15,7 @@ RESTRICT="test"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}[debug?,doc?,ieee-long-double?,llvm_projects_clang,pie?,static-analyzer?,test?,xml?]
+	>=sys-devel/llvm-18.0.0_pre20231129-r1
 	extra? ( ~sys-devel/llvm-${PV}[llvm_projects_clang-tools-extra] )
 "
 

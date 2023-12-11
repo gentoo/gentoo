@@ -10,11 +10,13 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="metapackage"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
+KEYWORDS="~amd64"
 IUSE="debug doc +extra ieee-long-double +pie +static-analyzer test xml"
 RESTRICT="test"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}[debug?,doc?,ieee-long-double?,llvm_projects_clang,pie?,static-analyzer?,test?,xml?]
+	>=sys-devel/llvm-17.0.6-r1
 	extra? ( ~sys-devel/llvm-${PV}[llvm_projects_clang-tools-extra] )
 "
 
