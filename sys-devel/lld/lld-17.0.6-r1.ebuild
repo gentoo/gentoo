@@ -10,6 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="metapackage"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
+KEYWORDS="~amd64"
 IUSE="debug test zstd"
 RESTRICT="test"
 
