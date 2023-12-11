@@ -35,8 +35,8 @@
  
 -set(DYNOLOG_INCLUDE_DIR "${LIBKINETO_THIRDPARTY_DIR}/dynolog/")
 -set(IPCFABRIC_INCLUDE_DIR "${DYNOLOG_INCLUDE_DIR}/dynolog/src/ipcfabric/")
-+set(DYNOLOG_INCLUDE_DIR "/usr/include/dynolog/")
-+set(IPCFABRIC_INCLUDE_DIR "/usr/include/dynolog/src/ipcfabric/")
++set(DYNOLOG_INCLUDE_DIR "@GENTOO_PORTAGE_EPREFIX@/usr/include/dynolog/")
++set(IPCFABRIC_INCLUDE_DIR "@GENTOO_PORTAGE_EPREFIX@/usr/include/dynolog/src/ipcfabric/")
  
  message(INFO " CUPTI_INCLUDE_DIR = ${CUPTI_INCLUDE_DIR}")
  message(INFO " ROCTRACER_INCLUDE_DIR = ${ROCTRACER_INCLUDE_DIR}")
