@@ -231,6 +231,8 @@ kernel-install_create_qemu_image() {
 	# some layout needed to pass dracut's usable_root() validation
 	mkdir -p "${imageroot}"/{bin,dev,etc,lib,proc,root,sbin,sys} || die
 	touch "${imageroot}/lib/ld-fake.so" || die
+	# Initrd images with systemd require some os-release file
+	cp "${BROOT}/etc/os-release" "${imageroot}/etc/os-release" || die
 
 	kernel-install_create_init "${imageroot}/sbin/init"
 
@@ -263,6 +265,7 @@ kernel-install_test() {
 		plymouth # hangs, or sometimes steals output
 		rngd # hangs or segfaults sometimes
 		i18n # copies all the fonts from /usr/share/consolefonts
+		dracut-systemd systemd systemd-initrd # gets stuck in boot loop
 	)
 
 	# NB: if you pass a path that does not exist or is not a regular
