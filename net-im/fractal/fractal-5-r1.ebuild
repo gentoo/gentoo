@@ -67,6 +67,10 @@ RDEPEND="
 	${DEPEND}
 	virtual/secret-service
 "
+# clang needed by bindgen
+BDEPEND="
+	sys-devel/clang
+"
 
 # Rust
 QA_FLAGS_IGNORED="usr/bin/fractal"
