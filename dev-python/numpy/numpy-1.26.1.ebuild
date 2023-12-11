@@ -49,7 +49,10 @@ BDEPEND="
 		>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	)
 "
-PATCHES=( "${FILESDIR}/${PN}-1.26.1-alpha.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.26.1-more-arches.patch"
+)
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
