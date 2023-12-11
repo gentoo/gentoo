@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit python-any-r1 cmake
+inherit python-any-r1 cmake prefix
 
 CommitId=a30ca3f9509c2cfd28561abbca51328f0bdf9014
 
@@ -30,7 +30,6 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${PN}-0.4.0-gcc13.patch
 )
 
@@ -44,8 +43,9 @@ src_prepare() {
 src_configure() {
 	cd libkineto
 	local mycmakeargs=(
-		-DLIBKINETO_THIRDPARTY_DIR=/usr/include/
+		-DLIBKINETO_THIRDPARTY_DIR="${EPREFIX}"/usr/include/
 	)
+	eapply $(prefixify_ro "${FILESDIR}"/${P}-gentoo.patch)
 
 	cmake_src_configure
 }
