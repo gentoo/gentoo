@@ -294,6 +294,10 @@ DOCS=(
 	docs/
 )
 
+PATCHES=(
+	"${FILESDIR}/helix-23.10-tree-sitter-gemini-path.patch"
+)
+
 src_compile() {
 	use grammar || local -x HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
 
