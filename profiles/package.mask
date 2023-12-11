@@ -194,12 +194,6 @@ dev-python/setuptools_scm_git_archive
 # media-libs/gst-plugins-bad instead. Removal on 2023-12-04. Bug #916871.
 media-plugins/gst-transcoder
 
-# Mart Raudsepp <leio@gentoo.org> (2023-11-04)
-# Legacy GStreamer non-linear multimedia editing elements, superseded by
-# media-libs/gstreamer-editing-services long ago.
-# Removal on 2023-12-04. Bug #916870.
-media-libs/gnonlin
-
 # Michał Górny <mgorny@gentoo.org> (2023-11-04)
 # Broken on py3.12.  Last commit in 2020.  Already a second fork
 # of the package.  No revdeps.
