@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 optfeature xdg
 
 DESCRIPTION="Console XMPP client that looks like most famous IRC clients"
-HOMEPAGE="https://poez.io/"
+HOMEPAGE="https://poez.io/ https://codeberg.org/poezio/poezio"
 LICENSE="GPL-3+"
 SLOT="0"
 
