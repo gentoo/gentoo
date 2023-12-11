@@ -15,7 +15,9 @@
 		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
 		<flag name="exegesis">Enable performance counter support for llvm-exegesis tool
 			that can be used to measure host machine instruction characteristics</flag>
+		<flag name="ieee-long-double">Use accelerated 128-bit IEEE long double ABI (ppc64le only)</flag>
 		<flag name="ncurses">Support querying terminal properties using ncurses' terminfo</flag>
+		<flag name="static-analyzer">Install the Clang static analyzer</flag>
 		<flag name="xar">Support dumping LLVM bitcode sections in Mach-O files
 			(uses <pkg>app-arch/xar</pkg>)</flag>
 		<flag name="z3">Enable support for <pkg>sci-mathematics/z3</pkg> constraint solver</flag>

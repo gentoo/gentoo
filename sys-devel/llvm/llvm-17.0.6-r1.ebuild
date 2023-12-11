@@ -3,6 +3,9 @@
 
 EAPI=8
 
+LLVM_PATCHSET="${PV}"
 LLVM_USE_PROJECTS=( clang clang-tools-extra lld )
 PYTHON_COMPAT=( python3_{10..12} )
 inherit llvm-toolchain
+
+KEYWORDS="~amd64"
