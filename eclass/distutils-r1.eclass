@@ -50,6 +50,7 @@ case ${EAPI} in
 esac
 
 # @ECLASS_VARIABLE: DISTUTILS_EXT
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a non-null value if the package (possibly
