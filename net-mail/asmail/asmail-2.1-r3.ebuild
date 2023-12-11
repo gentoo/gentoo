@@ -31,7 +31,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	cd "${S}/autoconf"
+	cd "${S}/autoconf" || die
 	eautoreconf
 	cp "${S}/autoconf/configure" "${S}/" || die
 }
