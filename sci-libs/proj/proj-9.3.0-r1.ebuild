@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 # Check https://proj.org/download.html for latest data tarball
-PROJ_DATA="proj-data-1.13.tar.gz"
+PROJ_DATA="proj-data-1.15.tar.gz"
 DESCRIPTION="PROJ coordinate transformation software"
 HOMEPAGE="https://proj.org/"
 SRC_URI="
@@ -17,7 +17,7 @@ SRC_URI="
 LICENSE="MIT"
 # Changes on every major release
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="curl test +tiff"
 RESTRICT="!test? ( test )"
 
@@ -30,6 +30,10 @@ DEPEND="
 	${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-geotiff.patch
+)
 
 src_unpack() {
 	unpack ${P}.tar.gz
