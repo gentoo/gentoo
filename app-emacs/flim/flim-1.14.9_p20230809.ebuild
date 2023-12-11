@@ -24,6 +24,10 @@ src_compile() {
 	emake PACKAGE_LISPDIR="NONE"
 }
 
+src_test() {
+	emake check PACKAGE_LISPDIR="NONE"
+}
+
 src_install() {
 	emake PREFIX="${ED}/usr" \
 		LISPDIR="${ED}/${SITELISP}" \
