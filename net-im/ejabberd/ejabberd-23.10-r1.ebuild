@@ -9,6 +9,10 @@ DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
 SRC_URI="
 	https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/processone/ejabberd/commit/841d5c029905d5feabe07ab5a4db3aacfeedefb6.patch ->
+		${P}-fix-ejabberdctl.patch
+	https://github.com/processone/ejabberd/commit/4ea46c57653b3d9ea9c1386d1cc3dd07163d74d6.patch ->
+		${P}-set-ejabberd-opts.patch
 "
 
 LICENSE="GPL-2"
@@ -66,6 +70,9 @@ RDEPEND="
 DOCS=( CHANGELOG.md README.md )
 PATCHES=(
 	"${FILESDIR}/ejabberd-22.10-adjust-ejabberd.service.template-to-Gentoo.patch"
+	# Both patches for https://bugs.gentoo.org/919711
+	"${DISTDIR}/${P}-fix-ejabberdctl.patch"
+	"${DISTDIR}/${P}-set-ejabberd-opts.patch"
 )
 
 # Get path to ejabberd lib directory.
