@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Vlastimil Babka <caster@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: Eclass for building dev-java/ant-* packages
 # @DESCRIPTION:
@@ -14,7 +14,7 @@
 # dev-java/ant-* packages easily.
 
 case ${EAPI} in
-	7) ;;
+	[78]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
