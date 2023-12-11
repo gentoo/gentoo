@@ -75,7 +75,7 @@ RDEPEND="${PYTHON_DEPS}
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
-	hip? ( dev-util/hip )
+	hip? ( >=dev-util/hip-5.7.1 )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -93,7 +93,7 @@ RDEPEND="${PYTHON_DEPS}
 	openpgl? ( >=media-libs/openpgl-0.5.0 )
 	opensubdiv? ( >=media-libs/opensubdiv-3.5.0 )
 	openvdb? (
-		>=media-gfx/openvdb-10.0.0:=[nanovdb?]
+		>=media-gfx/openvdb-10.1.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
 	optix? ( <dev-libs/optix-7.5.0 )
