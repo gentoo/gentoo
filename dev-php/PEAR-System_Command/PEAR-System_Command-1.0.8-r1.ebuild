@@ -11,7 +11,7 @@ HOMEPAGE="https://pear.php.net/package/System_Command"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="examples"
 
 RDEPEND="dev-lang/php:*
