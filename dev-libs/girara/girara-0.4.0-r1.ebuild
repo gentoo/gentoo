@@ -33,8 +33,10 @@ RDEPEND="
 	x11-libs/pango
 	libnotify? ( x11-libs/libnotify )
 "
-DEPEND="${DEPEND}
-	x11-base/xorg-proto"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 # Tests are run under virtx
 BDEPEND="
 	virtual/pkgconfig
