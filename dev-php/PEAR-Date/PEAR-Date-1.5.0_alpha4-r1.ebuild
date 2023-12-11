@@ -6,7 +6,7 @@ EAPI=6
 PEAR_PV=${PV/_alpha/a}
 inherit php-pear-r2
 
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 
 DESCRIPTION="Date and Time Zone classes"
 LICENSE="BSD"
