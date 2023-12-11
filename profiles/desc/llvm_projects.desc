@@ -1,0 +1,7 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+clang - Build clang, the C frontend for LLVM
+clang-tools-extra - Build extra tools for clang (clangd, clang-tidy, etc)
+lld - Build lld, the LLVM Linker
+lldb - Build lldb, the LLVM Debugger
