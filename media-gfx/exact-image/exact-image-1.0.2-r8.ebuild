@@ -13,7 +13,7 @@ SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="expat jpeg lua openexr perl png ruby swig tiff truetype X"
 REQUIRED_USE="lua? ( swig ) perl? ( swig ) ruby? ( swig )"
 # Tests are broken; 'make check' fails and referenced testsuite dir not found
