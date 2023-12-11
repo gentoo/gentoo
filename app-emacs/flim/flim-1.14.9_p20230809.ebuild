@@ -14,6 +14,7 @@ S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+RESTRICT="test"  # tests not updated for a long time and don't work
 
 RDEPEND=">=app-emacs/apel-10.8"
 DEPEND="${RDEPEND}"
