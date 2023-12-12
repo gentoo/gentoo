@@ -148,6 +148,11 @@ src_configure() {
 }
 
 src_compile() {
+	# Remove "limit memory usage" flags, it's already verified by
+	# CHECKREQS_MEMORY and causes unneccessary errors. Upstream set them
+	# according to CI OOM failures, which are higher than during Gentoo build.
+	sed -i -e '/\.max_rss = .*,/d' build.zig || die
+
 	if ! use llvm; then
 		$(tc-getCC) -o bootstrap bootstrap.c || die "Zig's bootstrap.c compilation failed"
 		edob ./bootstrap
