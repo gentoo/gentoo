@@ -58,7 +58,10 @@ DEPEND="
 	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}
-	>=kde-apps/kio-extras-${PVCUT}:5
+	|| (
+		kde-apps/kio-extras-kf5:5
+		>=kde-apps/kio-extras-${PVCUT}:5
+	)
 "
 
 src_configure() {
