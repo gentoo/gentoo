@@ -18,7 +18,7 @@ KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/docker-5[${PYTHON_USEDEP}]
+	<dev-python/docker-7[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.13.0[${PYTHON_USEDEP}]
