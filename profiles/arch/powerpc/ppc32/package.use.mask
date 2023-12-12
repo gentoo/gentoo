@@ -170,6 +170,7 @@ dev-python/pyopengl test
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+media-libs/libv4l bpf
 media-tv/v4l-utils bpf
 
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)

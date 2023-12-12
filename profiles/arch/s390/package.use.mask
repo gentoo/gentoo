@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot (2023-12-12)
+# USE=bpf depends on sys-devel/clang which is not keyworded on s390
+media-libs/libv4l bpf
+
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/notebook (that indirectly requires net-libs/nodejs).
 dev-python/ipython notebook

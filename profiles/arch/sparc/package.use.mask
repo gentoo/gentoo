@@ -339,6 +339,7 @@ x11-libs/qwt designer
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # USE=bpf depends on sys-devel/clang which is not keyworded on sparc
+media-libs/libv4l bpf
 media-tv/v4l-utils bpf
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
