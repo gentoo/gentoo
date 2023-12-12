@@ -62,6 +62,7 @@ BDEPEND="
 		${RDEPEND}
 		$(python_gen_cond_dep '
 			>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
+			>=dev-python/bcrypt-3.0.0[${PYTHON_USEDEP}]
 			>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
 			<dev-python/cython-test-exception-raiser-2[${PYTHON_USEDEP}]
 			>=dev-python/cython-test-exception-raiser-1.0.2[${PYTHON_USEDEP}]
