@@ -7,7 +7,7 @@ if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.linuxtv.org/dtv-scan-tables.git"
 else
-	COMMIT="f07bde777d4d"
+	COMMIT="57ed29822750"
 	SRC_URI="https://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${PV:3:4}-${PV:7:2}-${PV:9:2}-${COMMIT}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 	S="${WORKDIR}/usr/share/dvb"
