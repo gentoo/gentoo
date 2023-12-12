@@ -3,8 +3,9 @@
 
 EAPI=8
 
+CARGO_OPTIONAL=1
 DISTUTILS_EXT=1
-DISTUTILS_USE_PEP517=maturin
+DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{10..12} )
 
 CRATES="
@@ -66,20 +67,37 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/oconnor663/blake3-py/archive/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
-	${CARGO_CRATE_URIS}
+	rust? (
+		${CARGO_CRATE_URIS}
+	)
 "
 S=${WORKDIR}/${MY_P}
 
-LICENSE="|| ( CC0-1.0 Apache-2.0 )"
+LICENSE="
+	|| ( CC0-1.0 Apache-2.0 )
+	rust? (
+"
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0-with-LLVM-exceptions BSD-2 MIT Unicode-DFS-2016
 	|| ( Apache-2.0 CC0-1.0 )
 "
+LICENSE+="
+	)
+"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+rust"
 
 BDEPEND="
+	rust? (
+		${RUST_DEPEND}
+		dev-util/maturin[${PYTHON_USEDEP}]
+	)
+	!rust? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+	)
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
@@ -88,3 +106,28 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/blake3/blake3.*.so"
 
 distutils_enable_tests pytest
+
+src_unpack() {
+	cargo_src_unpack
+}
+
+src_prepare() {
+	# sed the package name and version to improve compatibility
+	sed -e 's:blake3_experimental_c:blake3:' \
+		-e "s:0[.]0[.]1:${PV}:" \
+		-i c_impl/setup.py || die
+
+	distutils-r1_src_prepare
+}
+
+python_compile() {
+	local DISTUTILS_USE_PEP517=$(usex rust maturin setuptools)
+
+	if ! use rust; then
+		cd c_impl || die
+	fi
+	distutils-r1_python_compile
+	if ! use rust; then
+		cd - >/dev/null || die
+	fi
+}
