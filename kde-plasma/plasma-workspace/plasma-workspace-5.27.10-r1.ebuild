@@ -138,7 +138,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtquickcontrols-${QTMIN}:5[widgets]
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
-	kde-apps/kio-extras:5
+	|| (
+		kde-apps/kio-extras-kf5:5
+		kde-apps/kio-extras:5
+	)
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/kquickcharts-${KFMIN}:5
 	>=kde-plasma/kactivitymanagerd-${PVCUT}:5
