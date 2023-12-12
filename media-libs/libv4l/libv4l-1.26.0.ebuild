@@ -34,7 +34,7 @@ RDEPEND="
 		qt5? (
 			dev-qt/qtcore:5
 			dev-qt/qtgui:5
-			dev-qt/qtopengl:5[-gles2(-)]
+			dev-qt/qtopengl:5[-gles2-only(-),-gles2(-)]
 			dev-qt/qtwidgets:5
 			media-libs/alsa-lib
 			virtual/opengl
