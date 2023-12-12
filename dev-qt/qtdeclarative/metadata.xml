@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="localstorage">Build the LocalStorage import for QtQuick (requires QtSql)</flag>
+		<flag name="network">Enable QtNetwork support</flag>
 		<flag name="opengl">Enable OpenGL support</flag>
 		<flag name="sql">Enable QtSQL support</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
