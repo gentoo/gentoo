@@ -15,7 +15,7 @@ IUSE="compositor qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
-	~dev-qt/qtbase-${PV}:6[gui,opengl,vulkan=]
+	~dev-qt/qtbase-${PV}:6[gui,opengl,vulkan=,wayland]
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
 	compositor? (
