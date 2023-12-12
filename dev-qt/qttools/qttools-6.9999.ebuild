@@ -31,11 +31,15 @@ REQUIRED_USE="
 # and 3rdparty/ tries to FetchContent gtest)
 RESTRICT="test"
 
-LLVM_MAX_SLOT=17
+QTTOOLS_LLVM_SLOTS=({17..15}) # QDOC_MINIMUM_CLANG_VERSION
+LLVM_MAX_SLOT=${QTTOOLS_LLVM_SLOTS[0]}
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[network,widgets?]
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
-	clang? ( <sys-devel/clang-$((LLVM_MAX_SLOT+1)):= )
+	clang? (
+		<sys-devel/clang-$((LLVM_MAX_SLOT+1)):=
+		|| ( $(printf "sys-devel/clang:%d " "${QTTOOLS_LLVM_SLOTS[@]}") )
+	)
 	designer? (
 		~dev-qt/qtbase-${PV}:6[xml,zstd=]
 		zstd? ( app-arch/zstd:= )
