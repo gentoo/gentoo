@@ -55,7 +55,10 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
-	kde-apps/kio-extras:5
+	|| (
+		kde-apps/kio-extras-kf5:5
+		kde-apps/kio-extras:5
+	)
 "
 
 src_prepare() {
