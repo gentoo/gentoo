@@ -24,6 +24,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
 	)
 	dev-libs/protobuf:=
 "
