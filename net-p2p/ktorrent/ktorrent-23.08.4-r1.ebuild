@@ -65,7 +65,10 @@ RDEPEND="${COMMON_DEPEND}
 	ipfilter? (
 		app-arch/bzip2
 		app-arch/unzip
-		kde-apps/kio-extras:5
+		|| (
+			kde-apps/kio-extras-kf5:5
+			kde-apps/kio-extras:5
+		)
 		>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	)
 "
