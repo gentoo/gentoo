@@ -84,6 +84,10 @@ BDEPEND="
 	dbus? ( virtual/pkgconfig )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.6.1-qt670.patch
+)
+
 src_prepare() {
 	default
 
