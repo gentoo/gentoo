@@ -90,7 +90,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	dev-util/ninja
 	kde-apps/kapptemplate:5
-	kde-apps/kio-extras:5
+	|| (
+		kde-apps/kio-extras-kf5:5
+		kde-apps/kio-extras:5
+	)
 	>=sys-devel/gdb-7.0[python]
 	reviewboard? ( kde-apps/ktp-accounts-kcm:5 )
 "
