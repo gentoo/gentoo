@@ -67,6 +67,7 @@ CRATES="
 
 inherit cargo distutils-r1
 
+MY_P=blake3-py-${PV}
 DESCRIPTION="Python bindings for the BLAKE3 cryptographic hash function"
 HOMEPAGE="
 	https://github.com/oconnor663/blake3-py/
@@ -74,9 +75,10 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/oconnor663/blake3-py/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 	${CARGO_CRATE_URIS}
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( CC0-1.0 Apache-2.0 )"
 # Dependent crate licenses
