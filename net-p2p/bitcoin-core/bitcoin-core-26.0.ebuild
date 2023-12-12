@@ -194,7 +194,9 @@ src_configure() {
 src_compile() {
 	default
 
-	tc-is-cross-compiler || TOPDIR="${S}" bash contrib/devtools/gen-bitcoin-conf.sh || die
+	if use daemon && ! tc-is-cross-compiler ; then
+		TOPDIR="${S}" bash contrib/devtools/gen-bitcoin-conf.sh || die
+	fi
 	sed -e 's/ To use, copy this file$//p;Tp;:0;n;/save the file\.$/!b0;d;:p;p' \
 		-ni share/examples/bitcoin.conf || die
 }
