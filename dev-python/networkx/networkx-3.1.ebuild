@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_FULLY_TESTED=( python3_{9..11} )
+PYTHON_FULLY_TESTED=( python3_{10..11} )
 PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
 inherit distutils-r1 multiprocessing optfeature pypi virtualx
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 BDEPEND="
 	test? (

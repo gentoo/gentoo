@@ -24,7 +24,7 @@ SLOT="0"
 # is barely supported anyway, see bug #914358.
 IUSE="+lapack"
 if [[ ${PV} != *_[rab]* ]] ; then
-	KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~ppc ppc64 ~riscv ~s390 sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc ~x86"
 fi
 
 RDEPEND="
@@ -49,7 +49,10 @@ BDEPEND="
 		>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	)
 "
-PATCHES=( "${FILESDIR}/${PN}-1.26.1-alpha.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.26.1-more-arches.patch"
+)
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest

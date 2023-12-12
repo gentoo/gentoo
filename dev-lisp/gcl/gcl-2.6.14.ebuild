@@ -10,7 +10,7 @@ SRC_URI="https://ftp.gnu.org/gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ppc64 ~x86"
 IUSE="+ansi athena emacs +readline tk X"
 RESTRICT="strip"  #205803
 

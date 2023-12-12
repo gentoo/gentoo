@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mattn/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 
 RDEPEND="
 	app-vim/webapi

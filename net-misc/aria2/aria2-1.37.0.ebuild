@@ -10,7 +10,7 @@ HOMEPAGE="https://aria2.github.io/"
 SRC_URI="https://github.com/aria2/${PN}/releases/download/release-${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+-with-openssl-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="
 	adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle

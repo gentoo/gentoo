@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/show_bug.cgi?id=917059
+https://github.com/rails/rails/pull/50097
+
+From 2ddb90f63e0fffea493cb1987850797608c4d895 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Sat, 18 Nov 2023 12:46:23 -0500
+Subject: [PATCH] Skip activesupport event processing tests on platforms w/o
+ highres clock
+
+On platforms without a high-resolution (nanosecond) clock, it is likely
+that the processing of an event will take less time than one complete
+clock resolution cycle, which means that the start and end times will be
+equal and the duration zero, failing these tests.  Usually these issues
+are fixed by adding a sleep of equal to one clock resolution cycle, but
+that is not applicable here since the duration measurement occurs in the
+actual library code rather than the test code, so just skip these tests
+on such platforms.  Also tested and confirmed that the tests are not
+skipped under normal platforms with a highres clock.
+---
+ test/log_subscriber_test.rb | 9 +++++++--
+ test/notifications_test.rb  | 9 ++++++---
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/test/log_subscriber_test.rb b/test/log_subscriber_test.rb
+index 455f6952e31b..0fd3ff69eb19 100644
+--- a/test/log_subscriber_test.rb
++++ b/test/log_subscriber_test.rb
+@@ -108,10 +108,15 @@ def test_event_attributes
+       assert_equal 0, event.cpu_time
+       assert_equal 0, event.allocations
+     else
+-      assert_operator event.cpu_time, :>, 0
++      # These assertions may fail on platforms without nanosecond-resolution clocks
++      if Process.clock_getres(Process::CLOCK_MONOTONIC) <= 1.0e-09
++        assert_operator event.cpu_time, :>, 0
++      end
+       assert_operator event.allocations, :>, 0
+     end
+-    assert_operator event.duration, :>, 0
++    if Process.clock_getres(Process::CLOCK_MONOTONIC) <= 1.0e-09
++      assert_operator event.duration, :>, 0
++    end
+     assert_operator event.idle_time, :>=, 0
+   end
+ 
+diff --git a/test/notifications_test.rb b/test/notifications_test.rb
+index 87416602bb2f..9bc7e393e3a9 100644
+--- a/test/notifications_test.rb
++++ b/test/notifications_test.rb
+@@ -36,9 +36,12 @@ def test_subscribe_events
+       event = events.first
+       assert event, "should have an event"
+       assert_operator event.allocations, :>, 0
+-      assert_operator event.cpu_time, :>, 0
+-      assert_operator event.idle_time, :>=, 0
+-      assert_operator event.duration, :>, 0
++      # These assertions may fail on platforms without nanosecond-resolution clocks
++      if Process.clock_getres(Process::CLOCK_MONOTONIC) <= 1.0e-09
++        assert_operator event.cpu_time, :>, 0
++        assert_operator event.idle_time, :>=, 0
++        assert_operator event.duration, :>, 0
++      end
+     end
+ 
+     def test_subscribe_to_events_where_payload_is_changed_during_instrumentation

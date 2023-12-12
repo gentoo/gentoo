@@ -5,7 +5,7 @@
 #   - "$" - shell command,
 #   - ">" - manual action.
 # $  git clone --depth 1 -b v8.0.0 https://github.com/dotnet/dotnet  \
-#	     dotnet-sdk-8.0.0
+#		 dotnet-sdk-8.0.0
 # $  cd dotnet-sdk-8.0.0
 # >  Note the checkout tag hash.
 # $  ./prep.sh
@@ -22,7 +22,7 @@ COMMIT=113d797bc90104bb4f1cc51e1a462cf3d4ef18fc
 LLVM_MAX_SLOT=16
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit check-reqs llvm python-any-r1
+inherit check-reqs flag-o-matic llvm python-any-r1
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
@@ -86,6 +86,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	filter-lto
 
 	unset DOTNET_ROOT
 	unset NUGET_PACKAGES

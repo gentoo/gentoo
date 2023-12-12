@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Denote is a simple note-taking tool for Emacs. It is based on the idea that
+    notes should follow a predictable and descriptive file-naming scheme. The
+    file name must offer a clear indication of what the note is about, without
+    reference to any other metadata. Denote basically streamlines the creation
+    of such files while providing facilities to link between them.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/protesilaos/denote/issues/</bugs-to>
+    <remote-id type="github">protesilaos/denote</remote-id>
+  </upstream>
+</pkgmetadata>

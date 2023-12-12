@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: PDV (phpDocumentor for Vim)"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1355"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPTEXT="To use this plugin, you should map the PhpDoc() function
 to something. For example, add the following to your ~/.vimrc:

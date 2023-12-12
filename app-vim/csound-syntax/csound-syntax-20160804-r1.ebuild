@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: set of tools for editing Csound files with vim"
 HOMEPAGE="https://github.com/luisjure/csound-vim"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}"
 

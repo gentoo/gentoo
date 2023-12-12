@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ~ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86"
 IUSE="debug dnscrypt dnstap +ecdsa ecs gost +http2 python redis selinux static-libs systemd test +tfo threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"

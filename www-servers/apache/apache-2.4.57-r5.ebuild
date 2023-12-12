@@ -118,7 +118,7 @@ MODULE_DEFINES="
 	proxy_http:PROXY
 	proxy_http2:PROXY
 	proxy_scgi:PROXY
-	proxy_uswgi:PROXY
+	proxy_uwsgi:PROXY
 	proxy_wstunnel:PROXY
 	socache_shmcb:SSL
 	socache_memcache:CACHE

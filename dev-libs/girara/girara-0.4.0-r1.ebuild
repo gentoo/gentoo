@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="amd64 arm ~riscv x86"
 fi
 
 LICENSE="ZLIB"
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="doc libnotify test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	app-accessibility/at-spi2-core
 	dev-libs/glib:2
 	dev-libs/json-glib:=
@@ -33,7 +33,10 @@ DEPEND="
 	x11-libs/pango
 	libnotify? ( x11-libs/libnotify )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 # Tests are run under virtx
 BDEPEND="
 	virtual/pkgconfig

@@ -1,0 +1,21 @@
+https://github.com/libunwind/libunwind/pull/675
+
+From ac81d339a7999e054deda2c0041c01424df3eadd Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 2 Dec 2023 21:18:44 +0000
+Subject: [PATCH] configure.ac: fix bashism in LDFLAGS append
+
+'+=' is not required for POSIX shells and may not work with e.g. /bin/sh
+provided by dash. Just expand it instead.
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,7 +54,7 @@ dnl Checks for libraries.
+ AC_MSG_NOTICE([--- Checking for libraries ---])
+ save_LDFLAGS="$LDFLAGS"
+ save_LIBS="$LIBS"
+-LDFLAGS+=" -nostdlib"
++LDFLAGS="${LDFLAGS} -nostdlib"
+ AC_SEARCH_LIBS([_Unwind_Resume], [gcc_s gcc],
+                [AS_IF([test "$ac_cv_search__Unwind_Resume" != "none required"],
+                       [AC_SUBST([LIBCRTS], ["$ac_cv_search__Unwind_Resume"])])],
+

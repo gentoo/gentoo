@@ -7,9 +7,11 @@ PYTHON_COMPAT=( python3_{9..11} )
 DOCS_BUILDER="doxygen"
 inherit cmake flag-o-matic desktop docs python-single-r1 qmake-utils toolchain-funcs xdg
 
-MAIN_PV=$(ver_cut 0-1)
-MAJOR_PV=$(ver_cut 1-2)
-MY_P="ParaView-v${PV}"
+MAJOR_PV="$(ver_cut 1-2)"
+MINOR_PV="$(ver_cut 3)"
+RC_PV="$(ver_cut 4-5)"
+RC_PV="${RC_PV:+-${RC_PV^^}}"
+MY_P="ParaView-v${MAJOR_PV}.${MINOR_PV}${RC_PV}"
 
 DESCRIPTION="Powerful scientific data visualization application"
 HOMEPAGE="https://www.paraview.org"
@@ -30,10 +32,6 @@ REQUIRED_USE="
 	qt5? ( sqlite )
 	?? ( offscreen qt5 )"
 
-# TODO: Verify that these two are not needed any more for the catalyst
-# module:
-#  - dev-python/PyQt5
-#  - dev-qt/qtgui:5[-gles2-only]
 RDEPEND="
 	app-arch/lz4
 	dev-libs/expat
@@ -137,8 +135,10 @@ src_configure() {
 	# Needed to compile bundled VTK in ParaView 5.11.1 with gcc 12
 	# see also, bug #863299
 	filter-lto
-	append-cflags $(test-flags-CC -fno-strict-aliasing -Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
-	append-cxxflags $(test-flags-CXX -fno-strict-aliasing -Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
+	append-cflags $(test-flags-CC -fno-strict-aliasing \
+		-Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
+	append-cxxflags $(test-flags-CXX -fno-strict-aliasing \
+		-Wno-error=incompatible-function-pointer-types -Wno-error=int-conversion)
 
 	# Make sure qmlplugindump is in path:
 	export PATH="$(qt5_get_bindir):${PATH}"

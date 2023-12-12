@@ -13,7 +13,7 @@ SRC_URI="
 "
 S="${WORKDIR}/lib${P}"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 LICENSE="LGPL-2+"
 SLOT="0"
 

@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="caps gnutls pam ldap samba sasl kerberos nis radius ssl snmp selinux logrotate test ecap"
 IUSE+=" esi ssl-crtd mysql postgres sqlite systemd perl qos tproxy +htcp valgrind +wccp +wccpv2"
 RESTRICT="!test? ( test )"

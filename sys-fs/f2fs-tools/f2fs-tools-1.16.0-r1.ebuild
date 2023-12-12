@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="dev"
 else
 	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/${PN}.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"

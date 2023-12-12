@@ -8,7 +8,7 @@ inherit fcaps go-module systemd shell-completion
 DESCRIPTION="Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS"
 HOMEPAGE="https://caddyserver.com"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ "${PV}" == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/caddyserver/caddy.git"
 else
@@ -36,7 +36,7 @@ PATCHES=(
 )
 
 src_unpack() {
-	if [[ "${PV}" == *9999* ]]; then
+	if [[ "${PV}" == 9999* ]]; then
 		# unpack code
 		git-r3_src_unpack
 
@@ -91,8 +91,4 @@ src_install() {
 	newzshcomp completion.zsh _"${PN}"
 	newdoc ../dist-"${PV}"/init/README.md systemd-services-README.md
 	doman manpages/*
-}
-
-pkg_postinst() {
-	fcaps_pkg_postinst
 }

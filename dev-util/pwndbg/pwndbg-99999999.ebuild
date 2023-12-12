@@ -3,9 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+DISTUTILS_USE_PEP517=poetry
+DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit python-single-r1 wrapper
+inherit distutils-r1 wrapper
 
 DESCRIPTION="A GDB plug-in that makes debugging with GDB suck less"
 HOMEPAGE="https://github.com/pwndbg/pwndbg"
@@ -15,21 +17,16 @@ if [[ ${PV} == "99999999" ]]; then
 	EGIT_REPO_URI="https://github.com/pwndbg/pwndbg"
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
-	GDB_PT_DUMP_COMMIT="ebdc24573a4bf075cf3ab6016add9db6baacf977"
-	SRC_URI="
-		https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/martinradev/gdb-pt-dump/archive/${GDB_PT_DUMP_COMMIT}.tar.gz -> gdb-pt-dump-${GDB_PT_DUMP_COMMIT}.tar.gz
-	"
+	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	${PYTHON_DEPS}
+	~dev-python/gdb-pt-dump-0.0.0_p20231111[${PYTHON_SINGLE_USEDEP}]
 	sys-devel/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-libs/capstone-5.0_rc4[python,${PYTHON_USEDEP}]
@@ -42,27 +39,27 @@ RDEPEND="
 		>=dev-util/pwntools-4.10.0[${PYTHON_USEDEP}]
 		>=dev-util/ROPgadget-7.2[${PYTHON_USEDEP}]
 		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
-	')"
+	')
+"
 
 src_prepare() {
-	if [[ ${PV} == *9999 ]]; then
-		rm -r gdb-pt-dump/.git || die
-	else
+	if [[ ${PV} != 99999999 ]]; then
 		sed -e "s/__version__ = '\(.*\)'/__version__ = '${PV}'/" \
 			-i pwndbg/lib/version.py || die
-
-		rm -r gdb-pt-dump || die
-		mv "${WORKDIR}/gdb-pt-dump-${GDB_PT_DUMP_COMMIT}" gdb-pt-dump || die
 	fi
 
-	python_fix_shebang "${S}"
 	default
 }
 
 src_install() {
+	distutils-r1_src_install
+
 	insinto /usr/share/${PN}
-	doins -r pwndbg/ gdbinit.py # ida_script.py
-	doins -r gdb-pt-dump/
+	doins gdbinit.py
+
+	# Signal pwndbg not to create it's own python venv (Bug #918705).
+	# See: https://github.com/pwndbg/pwndbg/commit/139b7542cd9567eaff32bd713df971b6ac5b81de
+	touch "${ED}/usr/share/${PN}/.skip-venv" || die
 
 	python_optimize "${ED}"/usr/share/${PN}
 

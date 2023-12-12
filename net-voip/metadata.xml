@@ -4,6 +4,10 @@
 	<longdescription lang="en">
 		The net-voip category contains packages related to Voice-over-IP
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-voip enthält Pakete für Internet-Telefonie
+		(Voice-over-IP).
+	</longdescription>
 	<longdescription lang="es">
 		La categoría net-voip contiene paquetes relacionados con Voz sobre
 		IP.

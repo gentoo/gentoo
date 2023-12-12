@@ -95,10 +95,6 @@ dev-libs/redland-bindings php
 media-gfx/exact-image php
 sci-geosciences/mapserver php
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
-# php-7.x is End-of-Life (EOL) and masked.
-www-servers/nginx-unit php7-4
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on
@@ -150,7 +146,8 @@ net-misc/curl sslv3
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-05-04)
 # No suitable version of dev-libs/protobuf available.
-dev-java/protobuf-java system-protoc
+>=dev-java/protobuf-java-3.24.2 system-protoc
+=dev-java/protobuf-java-3.23.0 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-06-06)
 # Runtime not tested, may require more configuration in the ebuild.
@@ -561,9 +558,7 @@ dev-php/PEAR-Text_Password test
 dev-php/PEAR-Text_Wiki test
 dev-php/PEAR-Text_Wiki_Mediawiki test
 dev-php/PEAR-XML_RSS test
-dev-php/PHP_CodeCoverage test
 dev-php/PHP_CodeSniffer test
-dev-php/PHP_TokenStream test
 dev-php/awl test
 dev-php/fedora-autoloader test
 dev-php/json-schema test

@@ -1,8 +1,7 @@
-# Copyright 2014-2021 Gentoo Authors
+# Copyright 2014-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-
+EAPI=8
 inherit cmake xdg-utils
 
 if [[ "${PV}" == 9999 ]]; then
@@ -12,9 +11,7 @@ if [[ "${PV}" == 9999 ]]; then
 elif [[ "${PV}" == *_pre* ]]; then
 	inherit vcs-snapshot
 
-	TAGAINIJISHO_GIT_REVISION=""
-fi
-if [[ "${PV}" != 9999 ]]; then
+	TAGAINIJISHO_GIT_REVISION="a16d7b82002d95365b54b8cd07d4fd80e2b9cfeb"
 	TAGAINIJISHO_VERSION="${PV%_p*_p*}"
 	JMDICT_DATE="${PV#${TAGAINIJISHO_VERSION}_p}"
 	JMDICT_DATE="${JMDICT_DATE%_p*}"
@@ -22,25 +19,28 @@ if [[ "${PV}" != 9999 ]]; then
 	KANJIDIC2_DATE="${PV#${TAGAINIJISHO_VERSION}_p*_p}"
 	KANJIDIC2_DATE="${KANJIDIC2_DATE:0:4}-${KANJIDIC2_DATE:4:2}-${KANJIDIC2_DATE:6}"
 fi
+
 if [[ "${PV}" == 9999 || "${PV}" == *_pre* ]]; then
-	KANJIVG_VERSION="20160426"
+	KANJIVG_VERSION="20220427"
 fi
 
 DESCRIPTION="Open-source Japanese dictionary and kanji lookup tool"
 HOMEPAGE="https://www.tagaini.net/ https://github.com/Gnurou/tagainijisho"
 if [[ "${PV}" == 9999 ]]; then
+	# A daily archive is fetched for both JMdict and kanjidic2
 	SRC_URI=""
 elif [[ "${PV}" == *_pre* ]]; then
 	SRC_URI="https://github.com/Gnurou/${PN}/archive/${TAGAINIJISHO_GIT_REVISION}.tar.gz -> ${PN}-${TAGAINIJISHO_VERSION}.tar.gz"
-else
-	SRC_URI="https://github.com/Gnurou/${PN}/releases/download/${PV}/${PN}-${TAGAINIJISHO_VERSION}.tar.gz"
-fi
-if [[ "${PV}" != 9999 ]]; then
+
 	# Upstream: https://www.edrdg.org/pub/Nihongo/JMdict.gz
 	SRC_URI+=" https://home.apache.org/~arfrever/distfiles/JMdict-${JMDICT_DATE}.gz"
 	# Upstream: https://www.edrdg.org/pub/Nihongo/kanjidic2.xml.gz
 	SRC_URI+=" https://home.apache.org/~arfrever/distfiles/kanjidic2-${KANJIDIC2_DATE}.xml.gz"
+else
+	# JMdict and kanjidic2 are already included in stable release archive.
+	SRC_URI="https://github.com/Gnurou/${PN}/releases/download/${PV}/${PN}-${PV}.tar.gz"
 fi
+
 if [[ "${PV}" == 9999 || "${PV}" == *_pre* ]]; then
 	SRC_URI+=" https://github.com/KanjiVG/kanjivg/releases/download/r${KANJIVG_VERSION}/kanjivg-${KANJIVG_VERSION}.xml.gz"
 fi
@@ -49,23 +49,20 @@ LICENSE="GPL-3+ public-domain"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-if [[ "${PV}" == 9999 ]]; then
-	PROPERTIES="live"
-fi
 
 BDEPEND="dev-qt/linguist-tools:5"
-DEPEND=">=dev-db/sqlite-3.12:3
+DEPEND=">=dev-db/sqlite-3.40:3
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}"
 
-pkg_langs=(ar cs de es fa fi fr hu id it nb nl pl pt ru sv th tr uk vi zh)
+pkg_langs=(ar cs de es fa fi fr hr hu id it nb nl no pl pt ru sv ta th tr uk vi zh)
 IUSE+=" ${pkg_langs[@]/#/l10n_}"
 unset pkg_langs
 
-if [[ "${PV}" != 9999 ]]; then
+if [[ "${PV}" == *_pre* ]]; then
 	S="${WORKDIR}/${PN}-${TAGAINIJISHO_VERSION}"
 fi
 
@@ -76,7 +73,7 @@ src_unpack() {
 		unpack ${PN}-${TAGAINIJISHO_VERSION}.tar.gz
 		mv ${PN}-${TAGAINIJISHO_GIT_REVISION} ${PN}-${TAGAINIJISHO_VERSION} || die
 	else
-		unpack ${PN}-${TAGAINIJISHO_VERSION}.tar.gz
+		unpack ${PN}-${PV}.tar.gz
 	fi
 
 	if [[ "${PV}" == 9999 ]]; then
@@ -129,7 +126,7 @@ src_unpack() {
 		mkdir "${S}/3rdparty" || die
 		gzip -cd "${distdir}/JMdict-${JMDICT_DATE}.gz" > "${S}/3rdparty/JMdict" || die
 		gzip -cd "${distdir}/kanjidic2-${KANJIDIC2_DATE}.xml.gz" > "${S}/3rdparty/kanjidic2.xml" || die
-	else
+	elif [[ "${PV}" == *_pre* ]]; then
 		mkdir "${S}/3rdparty" || die
 		pushd "${S}/3rdparty" > /dev/null || die
 
@@ -160,7 +157,7 @@ src_configure() {
 		lang=${lang#i18n/tagainijisho_}
 		lang=${lang%.ts}
 		case ${lang} in
-			fa_IR|fi_FI|pt_BR)
+			es_AR|fa_IR|fi_FI|pt_BR|zh_TW)
 				# Use generic tags.
 				use_lang=${lang%%_*}
 				;;

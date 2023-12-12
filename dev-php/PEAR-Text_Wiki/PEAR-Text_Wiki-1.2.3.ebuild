@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Abstracts parsing and rendering rules for Wiki markup in structured plain text"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

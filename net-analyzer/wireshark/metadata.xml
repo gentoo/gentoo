@@ -66,5 +66,6 @@
 		<changelog>https://www.wireshark.org/news/</changelog>
 		<remote-id type="github">wireshark/wireshark</remote-id>
 		<remote-id type="gitlab">wireshark/wireshark</remote-id>
+		<remote-id type="cpe">cpe:/a:wireshark:wireshark</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,6 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
+
 inherit distutils-r1 multiprocessing
 
 MY_PV=${PV/_beta/b}
@@ -16,7 +17,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"

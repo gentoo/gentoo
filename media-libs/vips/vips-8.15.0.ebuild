@@ -96,6 +96,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-disabled-jpeg.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

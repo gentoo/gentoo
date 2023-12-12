@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ibireme/yyjson/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="MIT test? ( BSD )"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 IUSE="doc test"
 

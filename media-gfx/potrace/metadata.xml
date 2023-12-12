@@ -12,5 +12,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">potrace</remote-id>
+		<remote-id type="cpe">cpe:/a:potrace_project:potrace</remote-id>
 	</upstream>
 </pkgmetadata>

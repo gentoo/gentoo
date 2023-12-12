@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 multiprocessing
@@ -103,6 +103,9 @@ src_prepare() {
 			test/packaging/rpm/multipackage.py
 			test/packaging/rpm/package.py
 			test/packaging/rpm/tagging.py
+			# apparently fragile to... limits?
+			# https://bugs.gentoo.org/908347#c7
+			test/builderrors.py
 		)
 
 		if ! use amd64 && ! use x86 ; then

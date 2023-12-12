@@ -158,19 +158,19 @@ CRATES="
 	regex-syntax@0.8.2
 	relative-path@1.9.0
 	reqwest@0.11.22
-	ring@0.16.20
+	ring@0.17.3
 	rstest@0.18.2
 	rstest_macros@0.18.2
 	rustc-demangle@0.1.23
 	rustc_version@0.4.0
 	rustix@0.36.11
 	rustix@0.38.8
-	rustls@0.21.6
+	rustls@0.21.9
 	rustls-pemfile@1.0.2
-	rustls-webpki@0.101.4
+	rustls-webpki@0.101.7
 	ryu@1.0.13
 	same-file@1.0.6
-	sct@0.7.0
+	sct@0.7.1
 	semver@1.0.17
 	serde@1.0.189
 	serde_derive@1.0.189
@@ -184,7 +184,7 @@ CRATES="
 	slab@0.4.8
 	socket2@0.4.9
 	socket2@0.5.3
-	spin@0.5.2
+	spin@0.9.8
 	strsim@0.10.0
 	subtle@2.4.1
 	syn@1.0.109
@@ -217,7 +217,7 @@ CRATES="
 	unicode-bidi@0.3.13
 	unicode-ident@1.0.8
 	unicode-normalization@0.1.22
-	untrusted@0.7.1
+	untrusted@0.9.0
 	url@2.3.1
 	utf8parse@0.2.1
 	uuid@1.3.0
@@ -282,13 +282,18 @@ S="${WORKDIR}/selenium-selenium-${PV}/rust"
 # use cargo-license for a more accurate license picture
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( || ( www-client/firefox www-client/firefox-bin ) )"
+
+PATCHES=(
+	# bug 918098
+	"${FILESDIR}"/${P}-update-ring.patch
+)
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /

@@ -3,6 +3,10 @@
 <catmetadata>
 	<longdescription lang="en">
 		The gui-libs category contains miscellaneous libraries that
-		support	various window managers.
+		support various window managers.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gui-libs enthält diverse Bibliotheken zur
+		Unterstützung verschiedener Fenstermanager.
 	</longdescription>
 </catmetadata>

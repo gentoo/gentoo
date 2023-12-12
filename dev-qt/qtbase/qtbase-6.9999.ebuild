@@ -328,6 +328,12 @@ src_test() {
 			tst_qcborvalue
 			tst_qnumeric
 		')
+		# bug #914033
+		$(usev sparc '
+			tst_qbuffer
+			tst_qprocess
+			tst_qtconcurrentiteratekernel
+		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
 		# https://doc.qt.io/qt-6/supported-platforms.html
 	)

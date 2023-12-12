@@ -23,7 +23,7 @@ SRC_URI="
 #   SpecialElite.ttf -- Apache-2.0
 LICENSE="BSD fonts? ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="elogind fonts gdm gles glx jpeg +locking logind-idle-hint new-login offensive pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gles? ( !glx )

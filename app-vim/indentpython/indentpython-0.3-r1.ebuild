@@ -11,4 +11,4 @@ SRC_URI="https://github.com/vim-scripts/${PN}.vim/archive/${PV}.tar.gz -> ${P}.t
 S="${WORKDIR}/${PN}.vim-${PV}"
 
 LICENSE="vim.org"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"

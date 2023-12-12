@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/junegunn/vim-easy-align
 SRC_URI="https://github.com/junegunn/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}"
 

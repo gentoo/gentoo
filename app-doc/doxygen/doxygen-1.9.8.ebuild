@@ -24,7 +24,7 @@ fi
 # GPL-2 also for bundled libmscgen
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch gui sqlite test"
+IUSE="clang debug doc dot doxysearch gui test"
 # - We need TeX for tests, bug #765472
 # - We keep the odd construct of noop USE=test because of
 #   the special relationship b/t RESTRICT & USE for tests.

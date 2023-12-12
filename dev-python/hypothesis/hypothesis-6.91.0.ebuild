@@ -54,7 +54,7 @@ distutils_enable_tests pytest
 python_test() {
 	# subtests are broken by warnings from random plugins
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=xdist.plugin,pytest_forked,_hypothesis_pytestplugin
+	local -x PYTEST_PLUGINS=xdist.plugin,_hypothesis_pytestplugin
 	local -x HYPOTHESIS_NO_PLUGINS=1
 
 	# NB: paths need to be relative to pytest.ini,

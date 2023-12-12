@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="github">smartmontools/smartmontools</remote-id>
 		<remote-id type="sourceforge">smartmontools</remote-id>
+		<remote-id type="cpe">cpe:/a:smartmontools:smartmontools</remote-id>
 	</upstream>
 </pkgmetadata>

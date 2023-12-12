@@ -9,7 +9,7 @@ SRC_URI="https://github.com/phar-io/version/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 S="${WORKDIR}/version-${PV}"

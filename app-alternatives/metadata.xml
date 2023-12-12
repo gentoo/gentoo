@@ -6,4 +6,9 @@
 		symlinks linking different available implementations for various
 		executables.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-alternatives enthält Pakete, die symbolische
+		Verknüpfungen zu verschiedenen verfügbaren Implementierungen
+		eines Programms bereitstellen.
+	</longdescription>
 </catmetadata>

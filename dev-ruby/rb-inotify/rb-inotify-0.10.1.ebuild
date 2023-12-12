@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/nex3/rb-inotify"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/ffi"

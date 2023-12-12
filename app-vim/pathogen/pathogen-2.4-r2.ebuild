@@ -12,4 +12,4 @@ SRC_URI="https://github.com/tpope/vim-pathogen/archive/v${PV}.tar.gz -> ${P}.tar
 S="${WORKDIR}/vim-${P}"
 
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"

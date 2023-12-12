@@ -32,7 +32,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -103,6 +103,9 @@ src_prepare() {
 			test/packaging/rpm/multipackage.py
 			test/packaging/rpm/package.py
 			test/packaging/rpm/tagging.py
+			# apparently fragile to... limits?
+			# https://bugs.gentoo.org/908347#c7
+			test/builderrors.py
 		)
 
 		if ! use amd64 && ! use x86 ; then

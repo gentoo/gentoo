@@ -53,6 +53,7 @@ if [[ ${PV} != 9999 ]]; then
 		S=${WORKDIR}/${P%_*}
 	fi
 	#KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~loong"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"

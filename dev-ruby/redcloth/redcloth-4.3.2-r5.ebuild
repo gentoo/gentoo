@@ -28,7 +28,7 @@ SRC_URI="https://github.com/jgarber/redcloth/archive/v${PV}.tar.gz -> ${RUBY_FAK
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
 
 DEPEND+=" =dev-util/ragel-6*"

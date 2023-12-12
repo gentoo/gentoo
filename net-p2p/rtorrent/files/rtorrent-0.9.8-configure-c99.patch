@@ -1,0 +1,79 @@
+https://github.com/rakshasa/rtorrent/commit/3f72e2760305936b27904d0080a5fb5600948bd5
+
+From 3f72e2760305936b27904d0080a5fb5600948bd5 Mon Sep 17 00:00:00 2001
+From: rakshasa <sundell.software@gmail.com>
+Date: Sat, 27 Feb 2021 22:13:01 +0900
+Subject: [PATCH] Replaced custom execinfo autoconf test.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,8 +20,6 @@ TORRENT_DISABLE_IPV6
+ 
+ AC_SYS_LARGEFILE
+ 
+-TORRENT_CHECK_EXECINFO
+-
+ TORRENT_ENABLE_ARCH
+ TORRENT_WITH_SYSROOT
+ 
+@@ -29,6 +27,7 @@ TORRENT_WITHOUT_VARIABLE_FDSET
+ TORRENT_WITHOUT_STATVFS
+ TORRENT_WITHOUT_STATFS
+ 
++AX_EXECINFO
+ AX_PTHREAD([], AC_MSG_ERROR([requires pthread]))
+ AX_WITH_CURSES
+ 
+--- a/scripts/common.m4
++++ b/scripts/common.m4
+@@ -150,21 +150,6 @@ dnl   Need to fix this so that it uses the stuff defined by the system.
+   ])
+ ])
+ 
+-AC_DEFUN([TORRENT_CHECK_EXECINFO], [
+-  AC_MSG_CHECKING(for execinfo.h)
+-
+-  AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+-      #include <execinfo.h>
+-      int main() { backtrace((void**)0, 0); backtrace_symbols((char**)0, 0); return 0;}
+-      ])],
+-    [
+-      AC_MSG_RESULT(yes)
+-      AC_DEFINE(USE_EXECINFO, 1, Use execinfo.h)
+-    ], [
+-      AC_MSG_RESULT(no)
+-  ])
+-])
+-
+ AC_DEFUN([TORRENT_CHECK_ALIGNED], [
+   AC_MSG_CHECKING(the byte alignment)
+ 
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -53,7 +53,7 @@
+ #include <rak/functional.h>
+ #include <rak/error_number.h>
+ 
+-#ifdef USE_EXECINFO
++#ifdef HAVE_BACKTRACE
+ #include <execinfo.h>
+ #endif
+ 
+@@ -533,7 +533,7 @@ handle_sigbus(int signum, siginfo_t* sa, void* ptr) {
+   std::stringstream output;
+   output << "Caught SIGBUS, dumping stack:" << std::endl;
+ 
+-#ifdef USE_EXECINFO
++#ifdef HAVE_BACKTRACE
+   void* stackPtrs[20];
+ 
+   // Print the stack and exit.
+@@ -604,7 +604,7 @@ do_panic(int signum) {
+ 
+   output << "Caught " << SignalHandler::as_string(signum) << ", dumping stack:" << std::endl;
+   
+-#ifdef USE_EXECINFO
++#ifdef HAVE_BACKTRACE
+   void* stackPtrs[20];
+ 
+   // Print the stack and exit.

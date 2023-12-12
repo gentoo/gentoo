@@ -11,7 +11,7 @@ SRC_URI="https://github.com/3MFConsortium/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="+system-act test"
 RESTRICT="!test? ( test )"
 

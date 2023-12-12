@@ -2,6 +2,13 @@
 <!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		The app-metrics category contains software generating, transforming or consuming application, service and system metrics.
+		The app-metrics category contains software generating,
+		transforming or consuming application, service and system
+		metrics.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-metrics enthält Software zur Erzeugung,
+		Transformation oder Verwendung von Anwendungs-, Service-
+		und Systemmetriken.
 	</longdescription>
 </catmetadata>

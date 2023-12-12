@@ -18,7 +18,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT JSON"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/jre:1.8"
 BDEPEND="app-arch/unzip"

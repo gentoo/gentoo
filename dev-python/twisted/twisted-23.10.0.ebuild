@@ -22,7 +22,7 @@ SRC_URI+="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~arm64-macos ~x64-macos"
 IUSE="conch http2 serial ssl test"
 RESTRICT="!test? ( test )"
 
@@ -62,6 +62,7 @@ BDEPEND="
 		${RDEPEND}
 		$(python_gen_cond_dep '
 			>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
+			>=dev-python/bcrypt-3.0.0[${PYTHON_USEDEP}]
 			>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
 			<dev-python/cython-test-exception-raiser-2[${PYTHON_USEDEP}]
 			>=dev-python/cython-test-exception-raiser-1.0.2[${PYTHON_USEDEP}]

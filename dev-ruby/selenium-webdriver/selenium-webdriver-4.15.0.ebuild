@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/seleniumhq/selenium"
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND+=" >=dev-util/selenium-manager-$(ver_cut 1-2)"

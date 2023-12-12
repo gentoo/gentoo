@@ -21,7 +21,7 @@ SRC_URI="
 # |- pico-sdk (BSD)
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}"

@@ -110,7 +110,6 @@ RDEPEND="
 # all flags are available in PyQt5/PySide2, so some tests are still skipped.
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		pyqt5? (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
 			dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]

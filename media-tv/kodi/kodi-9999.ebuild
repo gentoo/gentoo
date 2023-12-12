@@ -62,6 +62,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/lzo-2.04
 	>=dev-libs/flatbuffers-1.11.0:=
+	>=dev-libs/tinyxml2-9.0.0:=
 	>=media-libs/libjpeg-turbo-2.1.4:=
 	>=media-libs/libpng-1.6.26:0=
 "

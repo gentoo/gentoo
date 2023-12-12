@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: diff and merge two directories recursively"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=102"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-apps/diffutils"
 

@@ -13,7 +13,7 @@ SRC_URI="https://download.moodle.org/download.php/direct/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 #SLOT empty due to webapp
 
 DB_FLAGS="mysqli?,mssql?,postgres?"

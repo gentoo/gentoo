@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ DESCRIPTION="PEAR Base System"
 HOMEPAGE="https://pear.php.net/package/PEAR"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="MIT"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 SLOT="0"
 IUSE=""
 

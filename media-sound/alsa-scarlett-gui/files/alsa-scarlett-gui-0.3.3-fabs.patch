@@ -1,0 +1,33 @@
+From 883541a1073e5bd2f8a8f759db56e48d90a2f448 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Tue, 5 Dec 2023 00:00:34 +0100
+Subject: [PATCH] gtkdial: use fabs() for double
+
+Passing a double to abs() truncates it to an integer, which is probably
+not intended, and also causes fatal errors on clang.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ src/gtkdial.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/gtkdial.c b/src/gtkdial.c
+index ce06515..931b06b 100644
+--- a/src/gtkdial.c
++++ b/src/gtkdial.c
+@@ -832,9 +832,9 @@ gtk_dial_scroll_controller_scroll (GtkEventControllerScroll *scroll,
+                                     double                    dy,
+                                     GtkDial                  *dial)
+ {
+-    double delta = dx ? dx : dy;
+-    if (abs(delta) > 1)
+-      delta *= abs(delta);
++    double delta = dx ? dx : dy, absolute_delta = fabs(delta);
++    if (absolute_delta > 1)
++      delta *= absolute_delta;
+     double step = -gtk_adjustment_get_step_increment(dial->adj)*delta;
+ 
+     set_value(dial, gtk_adjustment_get_value(dial->adj) + step);
+-- 
+2.42.0
+

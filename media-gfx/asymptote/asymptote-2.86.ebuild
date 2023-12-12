@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools elisp-common latex-package python-r1
 
@@ -44,8 +44,8 @@ RDEPEND="
 	X? (
 		${PYTHON_DEPS}
 		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,svg]
+		dev-python/cson
 		dev-python/numpy
-		dev-python/pycson
 		>=gnome-base/librsvg-2.40
 	)
 	latex? (

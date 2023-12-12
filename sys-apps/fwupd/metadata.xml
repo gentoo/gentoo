@@ -26,5 +26,6 @@
 	<upstream>
 		<bugs-to>https://github.com/fwupd/fwupd/issues</bugs-to>
 		<remote-id type="github">fwupd/fwupd</remote-id>
+		<remote-id type="cpe">cpe:/a:fwupd:fwupd</remote-id>
 	</upstream>
 </pkgmetadata>

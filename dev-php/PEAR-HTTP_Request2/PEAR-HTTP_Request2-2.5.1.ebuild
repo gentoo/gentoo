@@ -9,7 +9,7 @@ DESCRIPTION="Provides an easy way to perform HTTP requests"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 sparc x86"
 IUSE="+curl +fileinfo +ssl test +zlib"
 
 # We don't have Yoast\PHPUnitPolyfills in Gentoo

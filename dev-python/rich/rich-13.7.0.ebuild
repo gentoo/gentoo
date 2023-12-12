@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
@@ -29,6 +29,11 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/Textualize/rich/pull/3226
+	"${FILESDIR}/${P}-nocolor.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(

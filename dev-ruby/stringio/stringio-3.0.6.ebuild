@@ -26,5 +26,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:.:test -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+	${RUBY} -Ilib:.:test:test/lib -rhelper -e 'Dir["test/**/test_*.rb"].each{|f| require f}' || die
 }

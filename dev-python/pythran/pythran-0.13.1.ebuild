@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{9..11} )
+PYTHON_TESTED=( python3_{10..11} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 multiprocessing
@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	dev-libs/boost

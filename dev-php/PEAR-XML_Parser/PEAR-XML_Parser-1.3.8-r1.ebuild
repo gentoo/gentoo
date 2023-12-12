@@ -9,7 +9,7 @@ DESCRIPTION="XML parsing class based on PHP's SAX parser"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE=""
 # This is to match patch compatibility
 RDEPEND="!<dev-php/PEAR-XML_RSS-1.1.0-r2"

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/c9s/${PN}.vim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}.vim-${PV}"
 
 LICENSE="vim.org"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}"

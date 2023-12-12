@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="Suite of small networking utilities for Unix systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-networking/"
@@ -54,4 +54,8 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	optfeature "man pages" app-doc/s6-networking-man-pages
 }

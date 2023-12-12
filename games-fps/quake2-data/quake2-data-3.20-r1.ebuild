@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,9 @@ S="${WORKDIR}"
 
 LICENSE="Q2EULA"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="videos"
+RESTRICT="bindist"
 
 RDEPEND="!games-fps/quake2-demodata[symlink]"
 BDEPEND="app-arch/unzip"

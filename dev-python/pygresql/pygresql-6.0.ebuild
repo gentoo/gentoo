@@ -21,10 +21,15 @@ HOMEPAGE="
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ~sparc x86"
 
 DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
+BDEPEND="
+	test? (
+		dev-db/postgresql[server]
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.2-CFLAGS.patch

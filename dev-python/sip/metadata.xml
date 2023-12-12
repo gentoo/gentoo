@@ -5,10 +5,7 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
-	<!--
-		TODO: mark stabilize-allarches after sip-6.8.0 is released
-		and 6.7.12 stabilization is done (6.8 becomes pure python)
-	-->
+	<stabilize-allarches/>
 	<upstream>
 		<maintainer status="active">
 			<email>phil@riverbankcomputing.com</email>

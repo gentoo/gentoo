@@ -2,10 +2,7 @@ diff --git a/test/test.py b/test/test.py
 index c89912a..eedfe36 100755
 --- a/test/test.py
 +++ b/test/test.py
-@@ -1359,7 +1359,7 @@ class TestBashGlobal(TestBash):
-                 if sys.platform == "darwin":
-                     # Work around https://stackoverflow.com/questions/24257803
-                     command += ' --install-option="--prefix="'
+@@ -1362,4 +1362,4 @@ class TestBashGlobal(TestBash):
 -            install_output = self.sh.run_command(command)
 +            install_output = self.sh.run_command(command, timeout=300)
              self.assertEqual(self.sh.run_command("echo $?"), "0\r\n", install_output)

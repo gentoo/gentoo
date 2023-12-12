@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: unite all sources"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3396"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 

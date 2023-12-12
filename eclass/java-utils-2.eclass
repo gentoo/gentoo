@@ -17,17 +17,17 @@
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
 
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
 _JAVA_UTILS_2_ECLASS=1
 
-# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
+# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier EAPIs.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver eutils multilib versionator
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver eqawarn multilib versionator
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
@@ -1703,16 +1703,6 @@ java-pkg_get-jni-cflags() {
 	echo ${flags}
 }
 
-java-pkg_ensure-gcj() {
-	# was enforcing sys-devel/gcc[gcj]
-	die "${FUNCNAME} was removed. Use use-deps available as of EAPI 2 instead. #261562"
-}
-
-java-pkg_ensure-test() {
-	# was enforcing USE=test if FEATURES=test
-	die "${FUNCNAME} was removed. Package mangers handle this already. #278965"
-}
-
 # @FUNCTION: java-pkg_register-ant-task
 # @USAGE: [--version x.y] [<name>]
 # @DESCRIPTION:
@@ -1942,10 +1932,7 @@ etestng() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	case ${EAPI:-0} in
-		[678]) eapply_user ;;
-		*) default_src_prepare ;;
-	esac
+	eapply_user
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then
@@ -1960,12 +1947,6 @@ java-utils-2_src_prepare() {
 		find "${WORKDIR}" -name "*.class"
 		echo "Search done."
 	fi
-
-	# Delete bundled .class and .jar files.
-	case ${EAPI:-0} in
-		[678]) ;;
-		*) java-pkg_clean ;;
-	esac
 }
 
 # @FUNCTION: java-utils-2_pkg_preinst

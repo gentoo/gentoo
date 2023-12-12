@@ -4,4 +4,8 @@
 	<longdescription lang="en">
 		The kde-plasma category contains KDE Plasma
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie kde-plasma enthält Pakete für die Desktop-Umgebung
+		KDE Plasma.
+	</longdescription>
 </catmetadata>

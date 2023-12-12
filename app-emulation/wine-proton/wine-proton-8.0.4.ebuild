@@ -115,8 +115,8 @@ QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-musl.patch
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
-	"${FILESDIR}"/${PN}-7.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
+	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
 )
 
 pkg_pretend() {

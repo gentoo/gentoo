@@ -33,6 +33,76 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-12-10)
+# Test failures that seem to indicate this package no longer works
+# correctly. Last release 6 years ago. No reverse dependencies.
+# Masked for removal on 2024-01-10.
+dev-ruby/sinatra-partial
+
+# Sam James <sam@gentoo.org> (2023-12-09)
+# ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/ (bug #919675)
+# Please update immediately to the latest versions in each series.
+=sys-kernel/gentoo-sources-6.1.64
+=sys-kernel/gentoo-sources-6.1.64-r1
+=sys-kernel/gentoo-sources-6.1.65
+=sys-kernel/gentoo-kernel-6.1.64
+=sys-kernel/gentoo-kernel-6.1.64-r1
+=sys-kernel/gentoo-kernel-6.1.65
+=sys-kernel/vanilla-sources-6.1.64
+=sys-kernel/vanilla-sources-6.1.65
+=sys-kernel/vanilla-kernel-6.1.64
+=sys-kernel/vanilla-kernel-6.1.65
+
+# Hans de Graaff <graaff@gentoo.org> (2023-12-09)
+# Old slots that are not ruby32-compatible. No reverse dependencies
+# left. Please use the newer slot instead. Masked for removal on
+# 2024-01-09.
+dev-ruby/gettext-setup:0
+dev-ruby/fast_gettext:0
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-08)
+# The both remaining virtuals are deprecated in favor of using
+# python_gen_cond_dep directly, and no longer used in any packages
+# in ::gentoo.
+# Removal on 2024-01-07.  Bug #919467.
+virtual/python-cffi
+virtual/python-greenlet
+
+# Sam James <sam@gentoo.org> (2023-12-08)
+# Broken build system:
+# https://github.com/iovisor/bcc/issues/4823
+# https://github.com/iovisor/bcc/issues/4830
+=dev-util/bcc-0.29.0
+
+# Hans de Graaff <graaff@gentoo.org> (2023-12-06)
+# Copy of dev-ruby/listen spefically for dev-ruby/sass. That package now
+# uses dev-ruby/listen directly so there is no longer a need for
+# sass-listen. Masked for removal on 2024-01-06.
+dev-ruby/sass-listen
+
+# Hans de Graaff <graaff@gentoo.org> (2023-12-06)
+# Last release in 2015, not compatible with Ruby 3.2. No reverse
+# dependencies. Masked for removal on 2024-01-06.
+dev-ruby/semver2
+
+# Eli Schwartz <eschwartz93@gmail.com> (2023-12-02)
+# Has a bug that breaks sys-apps/portage. Upgrade to 1.3.0-r1 instead.
+# Bug #919072.
+=dev-util/meson-1.3.0
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-30)
+# Last commit in 2020.  It was used exclusively by dev-python/ipython,
+# and it is used no more.
+# Removal on 2023-12-30.  Bug #916535.
+dev-python/backcall
+
+# Michał Górny <mgorny@gentoo.org> (2023-11-30)
+# Originally added for net-im/synapse, which switched
+# to dev-python/immutabledict since.  Hacky C extension that supports
+# up to Python 3.10.  No revdeps left.
+# Removal on 2023-12-30.  Bug #918899.
+dev-python/frozendict
+
 # Sam James <sam@gentoo.org> (2023-11-29)
 # Breaks dev-python/passlib (bug #918708). This release has also now been
 # yanked from pypi: https://github.com/pyca/bcrypt/issues/677.
@@ -123,12 +193,6 @@ dev-python/setuptools_scm_git_archive
 # gst-transcoder was merged into gst-plugins-bad and can be installed via
 # media-libs/gst-plugins-bad instead. Removal on 2023-12-04. Bug #916871.
 media-plugins/gst-transcoder
-
-# Mart Raudsepp <leio@gentoo.org> (2023-11-04)
-# Legacy GStreamer non-linear multimedia editing elements, superseded by
-# media-libs/gstreamer-editing-services long ago.
-# Removal on 2023-12-04. Bug #916870.
-media-libs/gnonlin
 
 # Michał Górny <mgorny@gentoo.org> (2023-11-04)
 # Broken on py3.12.  Last commit in 2020.  Already a second fork

@@ -16,5 +16,6 @@
 	<upstream>
 		<remote-id type="github">systemd/systemd</remote-id>
 		<remote-id type="github">systemd/systemd-stable</remote-id>
+		<remote-id type="cpe">cpe:/a:systemd_project:systemd</remote-id>
 	</upstream>
 </pkgmetadata>

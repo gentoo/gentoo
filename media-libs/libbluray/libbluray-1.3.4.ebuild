@@ -8,7 +8,7 @@ if [[ ${PV#9999} != ${PV} ]] ; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libbluray.git"
 else
 	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
-	KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 fi
 
 inherit autotools java-pkg-opt-2 multilib-minimal

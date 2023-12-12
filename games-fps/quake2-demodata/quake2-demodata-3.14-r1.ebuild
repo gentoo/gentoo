@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ S="${WORKDIR}"
 # See license.txt - it's a bit different to Q2EULA in Portage
 LICENSE="quake2-demodata"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="symlink"
 
 RDEPEND="!games-fps/quake2-data" # games-fps/quake2-data already includes the demo data

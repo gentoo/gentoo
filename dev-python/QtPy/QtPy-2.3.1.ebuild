@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 virtualx pypi
 
@@ -103,7 +103,6 @@ RDEPEND="
 # all flags are available in PyQt5/PySide2, so some tests are still skipped.
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		pyqt5? (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
 			dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]

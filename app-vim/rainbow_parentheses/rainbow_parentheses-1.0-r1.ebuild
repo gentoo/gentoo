@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.zip"
 S="${WORKDIR}/${PN}.vim-master"
 
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND="${DEPEND}"

@@ -13,7 +13,7 @@ SRC_URI="http://foremost.sourceforge.net/pkg/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 ppc x86 ~arm64-macos ~x64-macos"
 IUSE=""
 
 src_prepare() {

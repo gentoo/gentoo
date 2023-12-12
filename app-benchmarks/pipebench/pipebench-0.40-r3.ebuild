@@ -11,7 +11,7 @@ SRC_URI="https://www.habets.pp.se/synscan/files/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ppc64 x86 ~x86-linux"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.40-fix-build-system.patch

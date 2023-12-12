@@ -19,6 +19,14 @@ alpha		default/linux/alpha/17.0/desktop/gnome				exp
 alpha		default/linux/alpha/17.0/desktop/gnome/systemd			exp
 alpha		default/linux/alpha/17.0/desktop/gnome/systemd/merged-usr	exp
 alpha		default/linux/alpha/17.0/developer				exp
+alpha		default/linux/alpha/23.0					exp
+alpha		default/linux/alpha/23.0/systemd				exp
+alpha		default/linux/alpha/23.0/desktop				exp
+alpha		default/linux/alpha/23.0/desktop/gnome				exp
+alpha		default/linux/alpha/23.0/desktop/gnome/systemd			exp
+alpha		default/linux/alpha/23.0/split-usr				exp
+alpha		default/linux/alpha/23.0/split-usr/desktop			exp
+alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		exp
 
 # SYMLINK_LIB=no profiles
 # Run app-portage/unsymlink-lib *before* switching the profile.
@@ -135,6 +143,26 @@ arm64		default/linux/arm64/17.0/systemd/selinux/merged-usr		exp
 arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm				exp
 arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
+arm64		default/linux/arm64/23.0					exp
+arm64		default/linux/arm64/23.0/hardened				exp
+arm64		default/linux/arm64/23.0/hardened/selinux			exp
+arm64		default/linux/arm64/23.0/hardened/selinux/systemd		exp
+arm64		default/linux/arm64/23.0/desktop				exp
+arm64		default/linux/arm64/23.0/desktop/gnome				exp
+arm64		default/linux/arm64/23.0/desktop/gnome/systemd			exp
+arm64		default/linux/arm64/23.0/desktop/plasma				exp
+arm64		default/linux/arm64/23.0/desktop/plasma/systemd			exp
+arm64		default/linux/arm64/23.0/desktop/systemd			exp
+arm64		default/linux/arm64/23.0/systemd				exp
+arm64		default/linux/arm64/23.0/llvm					exp
+arm64		default/linux/arm64/23.0/llvm/systemd				exp
+arm64		default/linux/arm64/23.0/split-usr				exp
+arm64		default/linux/arm64/23.0/split-usr/hardened			exp
+arm64		default/linux/arm64/23.0/split-usr/hardened/selinux		exp
+arm64		default/linux/arm64/23.0/split-usr/desktop			exp
+arm64		default/linux/arm64/23.0/split-usr/desktop/gnome		exp
+arm64		default/linux/arm64/23.0/split-usr/desktop/plasma		exp
+arm64		default/linux/arm64/23.0/split-usr/llvm				exp
 
 
 # ARM64 Profiles (big-endian)
@@ -144,6 +172,10 @@ arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 arm64		default/linux/arm64/17.0/big-endian				exp
 arm64		default/linux/arm64/17.0/big-endian/systemd			exp
 arm64		default/linux/arm64/17.0/big-endian/systemd/merged-usr		exp
+arm64		default/linux/arm64/23.0/big-endian				exp
+arm64		default/linux/arm64/23.0/big-endian/systemd			exp
+arm64		default/linux/arm64/23.0/split-usr/big-endian			exp
+
 
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
@@ -163,6 +195,14 @@ ia64		default/linux/ia64/17.0/desktop/gnome/systemd/merged-usr	stable
 ia64		default/linux/ia64/17.0/developer				exp
 ia64		default/linux/ia64/17.0/systemd					exp
 ia64		default/linux/ia64/17.0/systemd/merged-usr			exp
+ia64		default/linux/ia64/23.0						exp
+ia64		default/linux/ia64/23.0/desktop					exp
+ia64		default/linux/ia64/23.0/desktop/gnome				exp
+ia64		default/linux/ia64/23.0/desktop/gnome/systemd			exp
+ia64		default/linux/ia64/23.0/systemd					exp
+ia64		default/linux/ia64/23.0/split-usr				exp
+ia64		default/linux/ia64/23.0/split-usr/desktop			exp
+ia64		default/linux/ia64/23.0/split-usr/desktop/gnome			exp
 
 
 # LoongArch Profiles
@@ -180,12 +220,28 @@ loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr		stabl
 loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd					stable
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			stable
+loong		default/linux/loong/23.0/la64v100/lp64d						exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop					exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome				exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome/systemd			exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/plasma				exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/plasma/systemd			exp
+loong		default/linux/loong/23.0/la64v100/lp64d/desktop/systemd				exp
+loong		default/linux/loong/23.0/la64v100/lp64d/systemd					exp
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d				exp
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop			exp
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop/gnome			exp
+loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop/plasma		exp
+
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
 m68k		default/linux/m68k/17.0						exp
 m68k		default/linux/m68k/17.0/systemd					exp
 m68k		default/linux/m68k/17.0/systemd/merged-usr			exp
+m68k		default/linux/m68k/23.0						exp
+m68k		default/linux/m68k/23.0/systemd					exp
+m68k		default/linux/m68k/23.0/split-usr				exp
 
 # MIPS Profiles
 # @MAINTAINER: mips@gentoo.org
@@ -303,6 +359,34 @@ riscv		default/linux/riscv/20.0/rv64gc/multilib				exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd/merged-usr		exp
 
+riscv		default/linux/riscv/23.0/rv64/lp64d					exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop				exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome			exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/plasma			exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/plasma/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/systemd			exp
+riscv		default/linux/riscv/23.0/rv64/lp64d/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/lp64					exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop				exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/gnome			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/gnome/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/plasma			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/plasma/systemd		exp
+riscv		default/linux/riscv/23.0/rv64/lp64/desktop/systemd			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/multilib					exp
+riscv		default/linux/riscv/23.0/rv64/multilib/systemd				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop			exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/gnome		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/plasma		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop			exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/gnome		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/plasma		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/multilib			exp
+
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
 s390		default/linux/s390/17.0						stable
@@ -359,12 +443,18 @@ arm64		default/linux/arm64/17.0/musl/llvm				exp
 arm64		default/linux/arm64/17.0/musl/hardened				exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux			exp
 m68k		default/linux/m68k/17.0/musl					exp
+m68k		default/linux/m68k/23.0/musl					exp
+m68k		default/linux/m68k/23.0/split-usr/musl				exp
 mips		default/linux/mips/17.0/o32/musl				exp
 mips		default/linux/mips/17.0/n64/musl				exp
 mips		default/linux/mips/17.0/mipsel/o32/musl				exp
 mips		default/linux/mips/17.0/mipsel/n64/musl				exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/musl			dev
+riscv		default/linux/riscv/23.0/rv64/lp64d/musl			exp
+riscv		default/linux/riscv/23.0/rv64/lp64/musl				exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		exp
+riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		exp
 x86		default/linux/x86/17.0/musl					dev
 x86		default/linux/x86/17.0/musl/selinux				exp
 

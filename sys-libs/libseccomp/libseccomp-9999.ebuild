@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"

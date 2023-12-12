@@ -4,4 +4,7 @@
 	<longdescription lang="en">
 		The acct-user category contains packages for system users.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie acct-user enthält Pakete für System-Benutzer.
+	</longdescription>
 </catmetadata>

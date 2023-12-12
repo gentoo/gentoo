@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -325,6 +325,12 @@ src_test() {
 		$(usev hppa '
 			tst_qcborvalue
 			tst_qnumeric
+		')
+		# bug #914033
+		$(usev sparc '
+			tst_qbuffer
+			tst_qprocess
+			tst_qtconcurrentiteratekernel
 		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
 		# https://doc.qt.io/qt-6/supported-platforms.html

@@ -114,6 +114,13 @@ kernel-build_pkg_setup() {
 	python-any-r1_pkg_setup
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 		secureboot_pkg_setup
+		if [[ -e ${MODULES_SIGN_KEY} && ${MODULES_SIGN_KEY} != pkcs11:* ]]; then
+			if [[ -e ${MODULES_SIGN_CERT} && ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
+				MODULES_SIGN_KEY_CONTENTS="$(cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" || die)"
+			else
+				MODULES_SIGN_KEY_CONTENTS="$(< "${MODULES_SIGN_KEY}")"
+			fi
+		fi
 	fi
 }
 
@@ -218,11 +225,6 @@ kernel-build_src_compile() {
 # from kernel-install.eclass with the correct paths.
 kernel-build_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
-	local targets=( modules_install )
-	# on arm or arm64 you also need dtb
-	if use arm || use arm64 || use riscv; then
-		targets+=( dtbs_install )
-	fi
 
 	# Use the kernel build system to strip, this ensures the modules
 	# are stripped *before* they are signed or compressed.
@@ -233,7 +235,7 @@ kernel-build_src_test() {
 
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
-		"${targets[@]}"
+		modules_install
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local relfile=${WORKDIR}/build/include/config/kernel.release
@@ -427,12 +429,11 @@ kernel-build_merge_configs() {
 				CONFIG_MODULE_SIG_FORCE=y
 				CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
 			EOF
-			if [[ -e ${MODULES_SIGN_KEY} && -e ${MODULES_SIGN_CERT} &&
-				${MODULES_SIGN_KEY} != ${MODULES_SIGN_CERT} &&
-				${MODULES_SIGN_KEY} != pkcs11:* ]]
-			then
-				cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" > "${T}/kernel_key.pem" || die
-				MODULES_SIGN_KEY="${T}/kernel_key.pem"
+			if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
+				(umask 066 && touch "${T}/kernel_key.pem" || die)
+				echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
+				unset MODULES_SIGN_KEY_CONTENTS
+				export MODULES_SIGN_KEY="${T}/kernel_key.pem"
 			fi
 			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
 				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \

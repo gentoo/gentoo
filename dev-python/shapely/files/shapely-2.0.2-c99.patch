@@ -1,0 +1,19 @@
+https://github.com/shapely/shapely/pull/1945
+
+From 9795506bba84e96418466ae84573c0cf8654bbeb Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Sun, 3 Dec 2023 11:36:36 -0500
+Subject: [PATCH] Fix incompatible pointer type passed to GEOSPolygonize_r
+
+--- a/src/ufuncs.c
++++ b/src/ufuncs.c
+@@ -2160,7 +2160,7 @@ static void polygonize_func(char** args, const npy_intp* dimensions, const npy_i
+ 
+   GEOS_INIT;
+ 
+-  GEOSGeometry** geoms = malloc(sizeof(void*) * dimensions[1]);
++  const GEOSGeometry** geoms = malloc(sizeof(void*) * dimensions[1]);
+   if (geoms == NULL) {
+     errstate = PGERR_NO_MALLOC;
+     goto finish;
+

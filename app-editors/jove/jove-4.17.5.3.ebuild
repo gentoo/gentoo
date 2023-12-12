@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jonmacs/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="JOVE"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
 RDEPEND="sys-libs/ncurses:0="

@@ -44,4 +44,7 @@
 		<flag name="tvmet">Add support for tvmet (<pkg>dev-libs/tvmet</pkg>)</flag>
 		<flag name="yaml">Add support for yaml (<pkg>dev-cpp/yaml-cpp</pkg>)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">trilinos/Trilinos</remote-id>
+	</upstream>
 </pkgmetadata>

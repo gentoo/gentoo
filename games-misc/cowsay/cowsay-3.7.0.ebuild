@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/cowsay-org/cowsay/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~mips ppc64 ~riscv x86 ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ~hppa ~mips ppc64 ~riscv x86 ~x64-macos ~x64-solaris"
 
 RDEPEND="dev-lang/perl"
 BDEPEND="${RDEPEND}"

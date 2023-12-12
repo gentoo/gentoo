@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: for packages that make use of the Haskell Common Architecture for Building Applications and Libraries (cabal)
 # @DESCRIPTION:
 # Basic instructions:
@@ -35,15 +35,13 @@
 #                  package it might cause cause the test-suite to fail with
 #                  errors like:
 #                  > <command line>: cannot satisfy -package-id singletons-2.7-3Z7pnljD8tU1NrslJodXmr
-#                  Workaround re-reginsters the package to avoid the failure
+#                  Workaround re-registers the package to avoid the failure
 #                  (and rebuilds changes).
 #                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
 #                  is fixed.
 
 case ${EAPI} in
-	# eutils is for eqawarn
-	6) inherit eutils ;;
-	8|7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -98,7 +96,6 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_in
 # example: /etc/portage/make.conf:
 #    CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
 : "${CABAL_EXTRA_HSCOLOUR_FLAGS:=}"
-
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_TEST_FLAGS
 # @USER_VARIABLE
@@ -157,7 +154,7 @@ S="${WORKDIR}/${CABAL_P}"
 # @DESCRIPTION:
 # The location of the .cabal file for the Haskell package. This defaults to
 # "${S}/${CABAL_PN}.cabal".
-# 
+#
 # NOTE: If $S is redefined in the ebuild after inheriting this eclass,
 # $CABAL_FILE will also need to be redefined as well.
 : "${CABAL_FILE:="${S}/${CABAL_PN}.cabal"}"
@@ -763,7 +760,7 @@ cabal_src_compile() {
 		fi
 		if [[ -n "${CABAL_REBUILD_AFTER_DOC_WORKAROUND}" ]]; then
 			ewarn "rebuild-after-doc-workaround is enabled. This is a"
-			ewarn "temporary worakround to deal with https://github.com/haskell/cabal/issues/7213"
+			ewarn "temporary workaround to deal with https://github.com/haskell/cabal/issues/7213"
 			ewarn "until the upstream issue can be resolved."
 			cabal-build
 		fi
@@ -1104,7 +1101,7 @@ cabal-register-inplace() {
 # needed by the executable. (Needed libraries are automatically added to
 # LD_LIBRARY_PATH by haskell-cabal_src_compile().)
 #
-# This is only inteded to be run in the test and install phases.
+# This is only intended to be run in the test and install phases.
 cabal-run-dist-bin() {
 	einfo "LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}"
 	case "$EBUILD_PHASE_FUNC" in

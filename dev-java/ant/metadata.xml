@@ -28,4 +28,9 @@
     <flag name="testutil">Enable optional test util classes</flag>
     <flag name="xz">Enable XZ Ant tasks</flag>
   </use>
+  <upstream>
+    <bugs-to>https://bz.apache.org/bugzilla/enter_bug.cgi?product=Ant</bugs-to>
+    <doc>https://ant.apache.org/manual/</doc>
+    <remote-id type="github">apache/ant</remote-id>
+  </upstream>
 </pkgmetadata>

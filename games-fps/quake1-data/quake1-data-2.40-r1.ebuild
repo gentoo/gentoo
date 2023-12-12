@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: if installing off of the 1.01 cd, need to fetch the
@@ -17,6 +17,7 @@ S="${WORKDIR}"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="bindist"
 
 RDEPEND="!games-fps/quake1-demodata[symlink]"
 BDEPEND="app-arch/lha"

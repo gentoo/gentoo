@@ -12,7 +12,7 @@ SRC_URI="mirror://gimp/help/${P}.tar.bz2"
 
 LICENSE="FDL-1.2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="nls"
 
 BDEPEND="

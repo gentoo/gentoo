@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/aws-xray-sdk-0.93[${PYTHON_USEDEP}]
@@ -111,6 +111,8 @@ python_test() {
 		# these tests apparently rely on some other test setting credentials
 		# up for them, so they need to be run separately, after the above
 		tests/test_dynamodb/exceptions/test_dynamodb_exceptions.py
+		tests/test_dynamodb/test_dynamodb.py::test_transact_write_items_put_conditional_expressions
+		tests/test_dynamodb/test_dynamodb.py::test_transact_write_items_failure__return_item
 		tests/test_lakeformation/test_resource_tags_integration.py
 		tests/test_redshiftdata
 		tests/test_resourcegroupstaggingapi/test_server.py::test_resourcegroupstaggingapi_list

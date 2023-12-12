@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/Townk/vim-autoclose"
 SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DOCS=( README.txt AUTHORS.txt )
 

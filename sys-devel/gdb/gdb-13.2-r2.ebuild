@@ -74,7 +74,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 IUSE="cet debuginfod guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
 if [[ -n ${REGULAR_RELEASE} ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"

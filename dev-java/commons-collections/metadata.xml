@@ -5,6 +5,12 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://issues.apache.org/jira/projects/COLLECTIONS/issues</bugs-to>
+		<changelog>https://commons.apache.org/proper/commons-collections/changes-report.html</changelog>
+		<doc>https://commons.apache.org/proper/commons-collections/userguide.html</doc>
+		<remote-id type="github">apache/commons-collections</remote-id>
+	</upstream>
 	<longdescription>
 		The Apache Commons Collections package contains types that extend and augment the Java Collections Framework.
 	</longdescription>

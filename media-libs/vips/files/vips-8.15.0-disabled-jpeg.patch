@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/918954
+https://github.com/libvips/libvips/pull/3772
+From: Ionen Wolkens <ionen@gentoo.org>
+Date: Fri, 1 Dec 2023 11:33:13 -0500
+Subject: [PATCH] Sync vips__jpeg_region_write_target definitions
+
+Prevents a build failure in the off-chance jpeg was disabled.
+--- a/libvips/foreign/vips2jpeg.c
++++ b/libvips/foreign/vips2jpeg.c
+@@ -1035,7 +1035,7 @@ vips__jpeg_region_write_target(VipsRegion *region, VipsRect *rect,
+ 	VipsTarget *target,
+ 	int Q, const char *profile,
+ 	gboolean optimize_coding, gboolean progressive,
+-	gboolean strip, gboolean trellis_quant,
++	VipsForeignKeep keep, gboolean trellis_quant,
+ 	gboolean overshoot_deringing, gboolean optimize_scans,
+ 	int quant_table, VipsForeignSubsample subsample_mode,
+ 	int restart_interval)

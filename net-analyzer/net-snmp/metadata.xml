@@ -20,5 +20,6 @@
 	<upstream>
 		<remote-id type="github">net-snmp/net-snmp</remote-id>
 		<remote-id type="sourceforge">net-snmp</remote-id>
+		<remote-id type="cpe">cpe:/a:net-snmp:net-snmp</remote-id>
 	</upstream>
 </pkgmetadata>

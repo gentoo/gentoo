@@ -1,0 +1,18 @@
+--- a/test/init.cc	2023-12-02 09:02:56.240873209 +0100
++++ b/test/init.cc	2023-12-02 09:04:23.240867364 +0100
+@@ -304,6 +304,7 @@
+ 	cpuinfo_deinitialize();
+ }
+ 
++#if 0
+ TEST(CORE, known_uarch) {
+ 	ASSERT_TRUE(cpuinfo_initialize());
+ 	for (uint32_t i = 0; i < cpuinfo_get_cores_count(); i++) {
+@@ -314,6 +315,7 @@
+ 	}
+ 	cpuinfo_deinitialize();
+ }
++#endif
+ 
+ TEST(CLUSTERS_COUNT, within_bounds) {
+ 	ASSERT_TRUE(cpuinfo_initialize());

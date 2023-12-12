@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
-		<longdescription lang="en">
-				The sci-physics category contains physics related software.
-		</longdescription>
-		<longdescription lang="pt">
-				A categoria sci-physics contém programas relacionados com
-				física.
-		</longdescription>
-		<longdescription lang="es">
-				La categoría sci-physics contiene software relacionado con
-				la física.
-		</longdescription>
+	<longdescription lang="en">
+		The sci-physics category contains physics related software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-physics enthält Software, die mit Physik
+		zusammenhängt.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-physics contiene software relacionado con
+		la física.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-physics contém programas relacionados com
+		física.
+	</longdescription>
 </catmetadata>

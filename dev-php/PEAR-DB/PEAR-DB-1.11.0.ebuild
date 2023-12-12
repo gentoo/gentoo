@@ -5,7 +5,7 @@ EAPI=7
 
 inherit php-pear-r2
 
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 
 DESCRIPTION="Database abstraction layer for PHP"
 LICENSE="PHP-3"

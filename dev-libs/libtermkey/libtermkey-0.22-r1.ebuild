@@ -11,7 +11,7 @@ SRC_URI="http://www.leonerd.org.uk/code/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86 ~x64-macos"
 IUSE="demos static-libs"
 
 RDEPEND="dev-libs/unibilium:="

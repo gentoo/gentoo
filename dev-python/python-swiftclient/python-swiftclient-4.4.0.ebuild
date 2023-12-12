@@ -28,7 +28,6 @@ BDEPEND="
 	test? (
 		>=dev-python/keystoneauth1-3.4.0[${PYTHON_USEDEP}]
 		dev-python/python-keystoneclient[${PYTHON_USEDEP}]
-		>=dev-python/mock-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/openstacksdk-0.11.0[${PYTHON_USEDEP}]
 	)
 "

@@ -1,0 +1,82 @@
+--- a/CMakeLists.txt	2023-12-06 07:46:09.148777964 +0100
++++ b/CMakeLists.txt	2023-12-06 07:46:17.995438966 +0100
+@@ -31,7 +31,6 @@
+ 
+ if(BUILD_TESTS)
+   enable_testing()
+-  add_subdirectory("third_party/googletest" "third_party/googletest")
+ endif()
+ 
+ include_directories(".")
+@@ -49,6 +49,7 @@
+ set(BUILD_TESTING OFF CACHE BOOL "")
+ set(WITH_GFLAGS OFF CACHE BOOL "")
+ add_subdirectory(third_party/glog)
++find_package(glog)
+ target_link_libraries(dynolog_lib PUBLIC glog::glog)
+ 
+ set(GFLAGS_BUILD_TESTING OFF CACHE BOOL "")
+@@ -54,7 +53,7 @@
+ 
+ set(GFLAGS_BUILD_TESTING OFF CACHE BOOL "")
+ add_subdirectory(third_party/gflags)
+-target_link_libraries(dynolog_lib PUBLIC gflags::gflags)
++target_link_libraries(dynolog_lib PUBLIC gflags)
+ 
+ # https://github.com/nlohmann/json#cmake
+ set(JSON_BuildTests OFF CACHE INTERNAL "")
+--- a/dynolog/src/rpc/CMakeLists.txt	2023-12-06 07:40:29.268997358 +0100
++++ b/dynolog/src/rpc/CMakeLists.txt	2023-12-06 07:40:45.038986775 +0100
+@@ -12,7 +12,8 @@
+     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..
+ )
+ target_link_libraries(dynolog_rpc_lib PRIVATE dynolog_lib)
+-target_link_libraries(dynolog_rpc_lib PUBLIC gflags::gflags)
++target_link_libraries(dynolog_rpc_lib PUBLIC gflags)
++find_package(glog)
+ target_link_libraries(dynolog_rpc_lib PUBLIC glog::glog)
+ target_link_libraries(dynolog_rpc_lib PUBLIC nlohmann_json::nlohmann_json)
+ target_link_libraries(dynolog_rpc_lib PUBLIC fmt::fmt)
+--- a/dynolog/src/gpumon/CMakeLists.txt	2023-12-06 07:41:18.658964157 +0100
++++ b/dynolog/src/gpumon/CMakeLists.txt	2023-12-06 07:41:30.005623376 +0100
+@@ -16,7 +16,8 @@
+ )
+ target_include_directories(dynolog_dcgm_lib PUBLIC
+                             ${PROJECT_SOURCE_DIR}/third_party/pfs/include)
+-target_link_libraries(dynolog_dcgm_lib PUBLIC gflags::gflags)
++target_link_libraries(dynolog_dcgm_lib PUBLIC gflags)
++find_package(glog)
+ target_link_libraries(dynolog_dcgm_lib PUBLIC glog::glog)
+ target_link_libraries(dynolog_dcgm_lib PUBLIC nlohmann_json::nlohmann_json)
+ target_link_libraries(dynolog_dcgm_lib PUBLIC pfs)
+--- a/dynolog/src/tracing/CMakeLists.txt	2023-12-06 08:42:39.313607692 +0100
++++ b/dynolog/src/tracing/CMakeLists.txt	2023-12-06 08:42:59.377010468 +0100
+@@ -11,5 +11,6 @@
+     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..
+ )
+ 
++find_package(glog)
+ target_link_libraries(dynolog_ipcmonitor_lib PUBLIC glog::glog)
+ target_link_libraries(dynolog_ipcmonitor_lib PUBLIC dynolog_ipcfabric_lib)
+--- a/dynolog/tests/rpc/CMakeLists.txt	2023-12-06 07:41:52.818942108 +0100
++++ b/dynolog/tests/rpc/CMakeLists.txt	2023-12-06 07:42:04.415601339 +0100
+@@ -2,7 +2,8 @@
+ 
+ add_executable(json_client SimpleJsonClientTestCLI.cpp SimpleJsonClientTest.h)
+ 
+-target_link_libraries(json_client PUBLIC gflags::gflags)
++target_link_libraries(json_client PUBLIC gflags)
++find_package(glog)
+ target_link_libraries(json_client PUBLIC glog::glog)
+ 
+ dynolog_add_test(SimpleJsonClientTest
+--- a/dynolog/tests/tracing/CMakeLists.txt	2023-12-06 08:44:45.267376972 +0100
++++ b/dynolog/tests/tracing/CMakeLists.txt	2023-12-06 08:45:01.977434795 +0100
+@@ -2,6 +2,7 @@
+ 
+ dynolog_add_test(IPCMonitorTest IPCMonitorTest.cpp)
+ 
++find_package(glog)
+ target_link_libraries(IPCMonitorTest PRIVATE glog::glog)
+ target_link_libraries(IPCMonitorTest PRIVATE dynolog_ipcmonitor_lib)
+ target_link_libraries(IPCMonitorTest PRIVATE dynolog_lib)

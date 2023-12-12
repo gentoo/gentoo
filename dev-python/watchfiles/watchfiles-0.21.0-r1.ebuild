@@ -112,6 +112,12 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# test broken with new anyio
+		# https://github.com/samuelcolvin/watchfiles/issues/254
+		tests/test_watch.py::test_awatch_interrupt_raise
+	)
+
 	rm -rf watchfiles || die
 	epytest
 }

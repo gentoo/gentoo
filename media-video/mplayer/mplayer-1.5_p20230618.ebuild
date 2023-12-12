@@ -169,7 +169,7 @@ RDEPEND+="selinux? ( sec-policy/selinux-mplayer )"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 fi
 
 # faac codecs are nonfree
@@ -193,6 +193,10 @@ REQUIRED_USE="
 	xscreensaver? ( X )
 	xv? ( X )"
 RESTRICT="faac? ( bindist )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc13.patch
+)
 
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then

@@ -32,7 +32,6 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/django-filter[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
@@ -41,8 +40,6 @@ BDEPEND="
 src_prepare() {
 	# these tests require tablib
 	rm tests/test_export.py tests/test_templatetags.py || die
-	# these tests require fudge
-	rm tests/test_config.py || die
 
 	distutils-r1_src_prepare
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>xgqt@gentoo.org</email>
+		<name>Maciej Barć</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">linode/linode-cli</remote-id>
+		<remote-id type="pypi">linode-cli</remote-id>
+	</upstream>
+</pkgmetadata>

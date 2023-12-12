@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517="poetry"
 PYPI_NO_NORMALIZE=1
 
@@ -14,13 +14,12 @@ HOMEPAGE="https://github.com/ansible-community/ansible-pygments"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
-# 2.14.0+ needed in order for tests to pass
-RDEPEND=">=dev-python/pygments-2.14.0[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.1.1-tests_pygments2_14.patch
+	"${FILESDIR}"/${PN}-0.1.1-make_lexer_test_compare_tokens.patch
 )
 
 distutils_enable_tests pytest
