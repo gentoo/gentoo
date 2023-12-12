@@ -6,7 +6,10 @@ EAPI=8
 inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="Scrolling, platform-jumping, key-collecting, ancient pyramid exploring game"
-HOMEPAGE="https://abe.sourceforge.net/"
+HOMEPAGE="
+	https://abe.sourceforge.net/
+	https://github.com/OSSGames/GAME-SDL-ADVENTURE-Abe-s_Amazing_Adventure
+"
 SRC_URI="
 	mirror://sourceforge/abe/${P}.tar.gz
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
