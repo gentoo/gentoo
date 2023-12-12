@@ -31,6 +31,7 @@ RDEPEND="|| (
 	app-editors/levee
 	app-editors/lpe
 	app-editors/mg
+	app-editors/micro
 	app-editors/moe
 	app-editors/ne
 	app-editors/neovim
