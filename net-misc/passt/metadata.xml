@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>me@rahil.website</email>
+    <name>Rahil Bhimjiani</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    passt implements a translation layer between a Layer-2 network interface and native Layer-4 sockets (TCP, UDP, ICMP/ICMPv6 echo) on a host. It doesn't require any capabilities or privileges, and it can be used as a simple replacement for Slirp.
+
+    pasta (same binary as passt, different command) offers equivalent functionality, for network namespaces: traffic is forwarded using a tap interface inside the namespace, without the need to create further interfaces on the host, hence not requiring any capabilities or privileges.
+
+    qrap  is  a  wrapper,  designed specifically for usage with qemu(1) and passt(1), connecting a UNIX domain socket to a file descriptor, and running qemu(1) with given arguments.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://passt.top/passt/bugs</bugs-to>
+    <doc>https://passt.top/passt/about/</doc>
+  </upstream>
+</pkgmetadata>
