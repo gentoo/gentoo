@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X legacy-renderer systemd video_cards_nvidia"
+IUSE="X legacy-renderer systemd"
 
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
@@ -34,7 +34,7 @@ WLROOTS_RDEPEND="
 	media-libs/mesa[egl(+),gles2]
 	sys-apps/hwdata:=
 	sys-auth/seatd:=
-	>=x11-libs/libdrm-2.4.114
+	>=x11-libs/libdrm-2.4.118
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
 	virtual/libudev:=
@@ -95,16 +95,6 @@ pkg_setup() {
 		eerror "Please upgrade Clang: emerge -v1 sys-devel/clang"
 		die "Clang version is too old to compile Hyprland!"
 	fi
-}
-
-src_prepare() {
-	if use video_cards_nvidia; then
-		cd "${S}/subprojects/wlroots" || die
-		eapply "${S}/nix/patches/wlroots-nvidia.patch"
-		cd "${S}" || die
-	fi
-
-	default
 }
 
 src_configure() {
