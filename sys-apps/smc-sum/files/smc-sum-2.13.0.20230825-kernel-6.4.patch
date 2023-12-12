@@ -1,0 +1,15 @@
+--- a/driver/Source/Linux/sum_bios.c
++++ b/driver/Source/Linux/sum_bios.c
+@@ -345,8 +345,12 @@
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 13)
+     sum_bios_class = class_simple_create(THIS_MODULE, "sum_bios");
+ #else
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0)
++    sum_bios_class = class_create("sum_bios");
++#else
+     sum_bios_class = class_create(THIS_MODULE, "sum_bios");
+ #endif
++#endif
+ 
+     if (IS_ERR(sum_bios_class)) {
+         printk(KERN_ERR "Error creating sum bios class.\n");

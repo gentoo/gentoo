@@ -13,7 +13,7 @@ MY_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards"
 HOMEPAGE="https://www.supermicro.com"
-SRC_URI="https://www.supermicro.com/Bios/sw_download/570/${MY_PN}_${MY_PV}_Linux_x86_64_${MY_DATE}.tar.gz"
+SRC_URI="https://www.supermicro.com/Bios/sw_download/633/${MY_PN}_${MY_PV}_Linux_x86_64_${MY_DATE}.tar.gz"
 S="${WORKDIR}/${MY_PN}_${MY_PV}_Linux_x86_64"
 
 LICENSE="supermicro"
@@ -37,7 +37,10 @@ DOCS=(
 	"ExternalData/VENID.txt"
 )
 
-PATCHES=( "${FILESDIR}/${PN}-2.7.0.20210903-missing-include.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.7.0.20210903-missing-include.patch"
+	"${FILESDIR}/${PN}-2.13.0.20230825-kernel-6.4.patch"
+)
 
 QA_PREBUILT="usr/bin/smc-sum"
 
