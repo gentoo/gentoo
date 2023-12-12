@@ -334,4 +334,9 @@ pkg_postinst() {
 	einfo "HELIX_RUNTIME was also installed on your system. In running shell instances"
 	einfo "you need to run 'source /etc/profile' to pick up the new variable"
 	einfo "or manually set the environment variable HELIX_RUNTIME=/usr/share/helix/runtime."
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
