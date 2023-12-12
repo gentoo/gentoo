@@ -1,0 +1,29 @@
+From 440ad305e76a0a948e0df54eb9b92b59c1ac9cb9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 12 Dec 2023 18:17:50 +0100
+Subject: [PATCH] Fix building with hatchling-1.19
+
+Explicitly specify package name, as hatchling-1.19 now does not include
+packages that do not match the project name by default, and raises
+an error instead.
+---
+ pyproject.toml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index cf963d8..478d8fc 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -42,6 +42,9 @@ tests = [
+ [project.urls]
+ Homepage = "https://github.com/matthiask/django-js-asset/"
+ 
++[tool.hatch.build.targets.wheel]
++packages = ["js_asset"]
++
+ [tool.hatch.version]
+ path = "js_asset/__init__.py"
+ 
+-- 
+2.43.0
+
