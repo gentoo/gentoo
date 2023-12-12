@@ -18,13 +18,13 @@ declare -A QT6_IUSE=(
 
 	[gui]="
 		+X accessibility eglfs evdev gles2-only +libinput
-		opengl renderdoc tslib vulkan +widgets
+		opengl renderdoc tslib vulkan wayland +widgets
 	"
 	[network]="brotli gssapi libproxy sctp"
 	[sql]="mysql oci8 odbc postgres +sqlite"
 	[widgets]="cups gtk"
 
-	[optfeature]="nls wayland" #810802,864509
+	[optfeature]="nls" #810802
 )
 IUSE="${QT6_IUSE[*]}"
 REQUIRED_USE="
@@ -202,6 +202,7 @@ src_configure() {
 		$(qt_feature renderdoc graphicsframecapture)
 		$(qt_feature tslib)
 		$(qt_feature vulkan)
+		$(qt_feature wayland)
 		$(qt_feature widgets)
 		-DINPUT_opengl=$(usex opengl $(usex gles2-only es2 desktop) no)
 		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
