@@ -45,7 +45,7 @@ LICENSE+="
 	MPL-2.0 MPL-2.0 Unicode-DFS-2016 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	>=dev-libs/glib-2.72
