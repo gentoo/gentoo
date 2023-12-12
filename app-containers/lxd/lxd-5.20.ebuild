@@ -11,7 +11,7 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 	verify-sig? ( https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz.asc
 )"
 
-LICENSE="Apache-2.0 BSD LGPL-3 MIT"
+LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
 SLOT="0/stable"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="apparmor nls"
