@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
-RDEPEND="media-tv/v4l-utils
+RDEPEND="media-libs/libv4l[utils(-)]
 	 || ( media-video/mplayer[v4l]
 		media-video/mplayer[dvb] )
 	 media-sound/alsa-utils
