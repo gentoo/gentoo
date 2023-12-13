@@ -1,0 +1,14 @@
+--- a/Source/IntegrationTests/TestFiles/LitTests/LitTest/lit.site.cfg
++++ b/Source/IntegrationTests/TestFiles/LitTests/LitTest/lit.site.cfg
+@@ -215,9 +215,9 @@ def find(name, rooot):
+                 return name
+     return ""
+ 
++import shutil
+ solverPath = \
+-    find("z3-4.12.1", binaryDir) or \
+-    find("cvc4", binaryDir)
++    shutil.which("z3")
+ 
+ if not solverPath:
+     lit_config.fatal('Could not find solver')
