@@ -62,6 +62,10 @@ BDEPEND="
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
 	virtual/pkgconfig
+	test? (
+		app-shells/dash
+		app-emulation/qemu
+	)
 "
 
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
@@ -69,6 +73,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	"${FILESDIR}"/dracut-060-fix-resume-hostonly.patch
+	"${FILESDIR}"/dracut-tests.patch
 )
 
 src_configure() {
@@ -85,13 +90,10 @@ src_configure() {
 }
 
 src_test() {
-	if [[ ${EUID} != 0 ]]; then
-		# Tests need root privileges, bug #298014
-		ewarn "Skipping tests: Not running as root."
-	elif [[ ! -w /dev/kvm ]]; then
+	if [[ ! -w /dev/kvm ]]; then
 		ewarn "Skipping tests: Unable to access /dev/kvm."
 	else
-		emake -C test check
+		tools/test-github.sh gentoo "98"
 	fi
 }
 
