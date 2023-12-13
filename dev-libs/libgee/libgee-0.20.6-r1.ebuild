@@ -18,7 +18,10 @@ RDEPEND="
 	>=dev-libs/glib-2.36:2
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	$(vala_depend)
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
