@@ -30,6 +30,8 @@ src_unpack() {
 src_prepare() {
 	rm "src/lib/"* || die
 	cp -a "${WORKDIR}/${SMU_PN}-v${SMU_PV}/lib/libsmu."{c,h} "src/lib/" || die
+
+	default
 }
 
 src_compile() {
