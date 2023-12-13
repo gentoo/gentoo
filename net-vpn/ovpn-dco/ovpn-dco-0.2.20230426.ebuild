@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/OpenVPN/ovpn-dco"
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/OpenVPN/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~mips ~ppc ppc64 ~riscv x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~mips ~ppc ppc64 ~riscv x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
