@@ -36,6 +36,9 @@ src_prepare() {
 		-e 's/libcheck.a/libcheck.so/g' \
 		configure.ac || die
 	sed -i \
+		-e "s/lib\/libcheck/$(get_libdir)\/libcheck/g" \
+		configure.ac || die
+	sed -i \
 		-e 's|-L$libdir ||g' \
 		dnet-config.in || die
 	sed -i \
