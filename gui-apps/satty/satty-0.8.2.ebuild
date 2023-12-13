@@ -8,9 +8,9 @@ CRATES="
 	adler-1.0.2
 	anstream-0.6.4
 	anstyle-1.0.4
-	anstyle-parse-0.2.2
-	anstyle-query-1.0.0
-	anstyle-wincon-3.0.1
+	anstyle-parse-0.2.3
+	anstyle-query-1.0.1
+	anstyle-wincon-3.0.2
 	anyhow-1.0.75
 	async-trait-0.1.74
 	autocfg-1.1.0
@@ -24,8 +24,11 @@ CRATES="
 	cc-1.0.83
 	cfg-expr-0.15.5
 	cfg-if-1.0.0
-	clap-4.4.7
-	clap_builder-4.4.7
+	clap-4.4.11
+	clap_builder-4.4.11
+	clap_complete-4.4.4
+	clap_complete_fig-4.4.2
+	clap_complete_nushell-4.4.2
 	clap_derive-4.4.7
 	clap_lex-0.6.0
 	colorchoice-1.0.0
@@ -48,8 +51,8 @@ CRATES="
 	gdk-pixbuf-sys-0.17.10
 	gdk4-0.6.3
 	gdk4-sys-0.6.3
-	getrandom-0.2.10
-	gimli-0.28.0
+	getrandom-0.2.11
+	gimli-0.28.1
 	gio-0.17.10
 	gio-sys-0.17.10
 	glib-0.17.10
@@ -64,12 +67,12 @@ CRATES="
 	gtk4-macros-0.6.6
 	gtk4-sys-0.6.3
 	gvdb-0.4.2
-	hashbrown-0.14.2
+	hashbrown-0.14.3
 	heck-0.4.1
 	hermit-abi-0.3.3
 	indexmap-2.1.0
 	itoa-1.0.9
-	js-sys-0.3.65
+	js-sys-0.3.66
 	lazy_static-1.4.0
 	libadwaita-0.4.4
 	libadwaita-sys-0.4.4
@@ -99,7 +102,7 @@ CRATES="
 	proc-macro-crate-1.3.1
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
-	proc-macro2-1.0.69
+	proc-macro2-1.0.70
 	quick-xml-0.29.0
 	quote-1.0.33
 	redox_syscall-0.4.1
@@ -113,13 +116,13 @@ CRATES="
 	same-file-1.0.6
 	scopeguard-1.2.0
 	semver-1.0.20
-	serde-1.0.192
-	serde_derive-1.0.192
+	serde-1.0.193
+	serde_derive-1.0.193
 	serde_json-1.0.108
 	serde_spanned-0.6.4
 	signal-hook-registry-1.4.1
 	slab-0.4.9
-	smallvec-1.11.1
+	smallvec-1.11.2
 	socket2-0.5.5
 	spin-0.9.8
 	static_assertions-1.1.0
@@ -130,8 +133,8 @@ CRATES="
 	target-lexicon-0.12.12
 	thiserror-1.0.50
 	thiserror-impl-1.0.50
-	tokio-1.33.0
-	tokio-macros-2.1.0
+	tokio-1.34.0
+	tokio-macros-2.2.0
 	toml-0.8.8
 	toml_datetime-0.6.5
 	toml_edit-0.19.15
@@ -145,25 +148,34 @@ CRATES="
 	version_check-0.9.4
 	walkdir-2.4.0
 	wasi-0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-0.2.88
-	wasm-bindgen-backend-0.2.88
-	wasm-bindgen-macro-0.2.88
-	wasm-bindgen-macro-support-0.2.88
-	wasm-bindgen-shared-0.2.88
+	wasm-bindgen-0.2.89
+	wasm-bindgen-backend-0.2.89
+	wasm-bindgen-macro-0.2.89
+	wasm-bindgen-macro-support-0.2.89
+	wasm-bindgen-shared-0.2.89
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-util-0.1.6
 	winapi-x86_64-pc-windows-gnu-0.4.0
 	windows-sys-0.48.0
+	windows-sys-0.52.0
 	windows-targets-0.48.5
+	windows-targets-0.52.0
 	windows_aarch64_gnullvm-0.48.5
+	windows_aarch64_gnullvm-0.52.0
 	windows_aarch64_msvc-0.48.5
+	windows_aarch64_msvc-0.52.0
 	windows_i686_gnu-0.48.5
+	windows_i686_gnu-0.52.0
 	windows_i686_msvc-0.48.5
+	windows_i686_msvc-0.52.0
 	windows_x86_64_gnu-0.48.5
+	windows_x86_64_gnu-0.52.0
 	windows_x86_64_gnullvm-0.48.5
+	windows_x86_64_gnullvm-0.52.0
 	windows_x86_64_msvc-0.48.5
-	winnow-0.5.19
+	windows_x86_64_msvc-0.52.0
+	winnow-0.5.25
 	zvariant-3.15.0
 	zvariant_derive-3.15.0
 	zvariant_utils-1.0.1
