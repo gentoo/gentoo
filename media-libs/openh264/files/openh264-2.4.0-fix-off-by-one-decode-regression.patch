@@ -1,0 +1,26 @@
+From ff7cc30b59bea581b3a9455009cc0deb67fee98c Mon Sep 17 00:00:00 2001
+From: Kalev Lember <klember@redhat.com>
+Date: Wed, 29 Nov 2023 13:40:53 +0100
+Subject: [PATCH] Fix off by one regression in decoder
+
+Fix iPicBuffIdx bounds check introduced in commit
+986bd65b711191d4883c54ace32a9879e17729c2 and allow 0 as an index value.
+
+This fixes Big_Buck_Bunny_720_10s_30MB.mp4 playback with gst-play-1.0.
+---
+ codec/decoder/plus/src/welsDecoderExt.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/codec/decoder/plus/src/welsDecoderExt.cpp b/codec/decoder/plus/src/welsDecoderExt.cpp
+index 170d17dec..457effb68 100644
+--- a/codec/decoder/plus/src/welsDecoderExt.cpp
++++ b/codec/decoder/plus/src/welsDecoderExt.cpp
+@@ -1136,7 +1136,7 @@ void CWelsDecoder::ReleaseBufferedReadyPictureReorder (PWelsDecoderContext pCtx,
+       m_sPictInfoList[m_sReoderingStatus.iPictInfoIndex].iPOC = IMinInt32;
+       int32_t iPicBuffIdx = m_sPictInfoList[m_sReoderingStatus.iPictInfoIndex].iPicBuffIdx;
+       if (pPicBuff != NULL) {
+-        if (iPicBuffIdx > 0 && iPicBuffIdx < pPicBuff->iCapacity)
++        if (iPicBuffIdx >= 0 && iPicBuffIdx < pPicBuff->iCapacity)
+         {
+             PPicture pPic = pPicBuff->ppPic[iPicBuffIdx];
+             --pPic->iRefCount;
