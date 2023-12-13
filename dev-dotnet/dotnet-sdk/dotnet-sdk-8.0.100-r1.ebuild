@@ -46,7 +46,6 @@ CURRENT_NUGETS_DEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
 "
 EXTRA_NUGETS_DEPEND="
-	~dev-dotnet/dotnet-runtime-nugets-3.1.32
 	~dev-dotnet/dotnet-runtime-nugets-6.0.25
 	~dev-dotnet/dotnet-runtime-nugets-7.0.14
 "
