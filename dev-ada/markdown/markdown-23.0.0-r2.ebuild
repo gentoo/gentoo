@@ -3,8 +3,8 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 )
-inherit ada
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
+inherit ada multiprocessing
 
 DESCRIPTION="Provides a markdown parser written in Ada"
 HOMEPAGE="https://github.com/AdaCore/markdown"
@@ -20,3 +20,7 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/VSS[${ADA_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND=""
+
+src_compile() {
+	gprbuild -v -p -j$(makeopts_jobs) -XBUILD_MODE=dev gnat/markdown.gpr -cargs ${ADAFLAGS}
+}
