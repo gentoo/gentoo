@@ -52,7 +52,6 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xkbcomp
-	!<=x11-base/xorg-server-1.20.11
 
 	libei? ( >=sys-apps/xdg-desktop-portal-1.18.0 )
 	selinux? ( sec-policy/selinux-xserver )
