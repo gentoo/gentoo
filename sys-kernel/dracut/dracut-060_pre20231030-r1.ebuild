@@ -69,6 +69,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	"${FILESDIR}"/dracut-060-fix-resume-hostonly.patch
+	"${FILESDIR}"/dracut-060-systemd-255.patch
 )
 
 src_configure() {
