@@ -129,8 +129,8 @@ qtwebengine_check-reqs() {
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD=7G
-	local CHECKREQS_DISK_USR=220M
+	local CHECKREQS_DISK_BUILD=8G
+	local CHECKREQS_DISK_USR=360M
 
 	if ! has distcc ${FEATURES}; then #830661
 		# assume ~2GB per job or 1.5GB if clang, possible with less
