@@ -361,7 +361,7 @@ xunit@2.4.1
 xunit@2.4.2
 "
 
-inherit check-reqs dotnet-pkg edo multiprocessing python-any-r1
+inherit check-reqs dotnet-pkg edo java-pkg-2 multiprocessing python-any-r1
 
 DESCRIPTION="Dafny is a verification-aware programming language"
 HOMEPAGE="https://dafny.org/
@@ -390,7 +390,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dev-lang/dafny-bin
+	>=virtual/jre-1.8:*
 	sci-mathematics/z3
+"
+DEPEND="
+	>=virtual/jdk-1.8:*
 "
 BDEPEND="
 	${RDEPEND}
@@ -416,8 +420,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.12.0-DafnyRuntime-csproj.patch"
 	"${FILESDIR}/${PN}-4.4.0-lit-config.patch"
 	"${FILESDIR}/${PN}-4.4.0-lit-system-boogie.patch"
-	"${FILESDIR}/${PN}-4.4.0-no-copy-jar.patch"
-	"${FILESDIR}/${PN}-4.4.0-no-output-jar.patch"
 )
 
 DOCS=(
@@ -436,8 +438,15 @@ pkg_setup() {
 	# Clean the environment.
 	unset NPM_CONFIG_USERCONFIG
 
+	if [[ -n "${_JAVA_OPTIONS}" ]] ; then
+		ewarn "Cleaning _JAVA_OPTIONS because when set compile and test may fail"
+
+		unset _JAVA_OPTIONS
+	fi
+
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
+	java-pkg-2_pkg_setup
 
 	# We need to set up Python only for running test tools (called via lit).
 	if use test ; then
@@ -459,41 +468,52 @@ src_prepare() {
 		if grep "// RUN: %testDafnyForEachCompiler" "${test_file}" >/dev/null ; then
 			rm "${test_file}" || die
 		fi
-	done  < <(find "${TEST_S}" -type f -name "*.dfy")
+	done < <(find "${TEST_S}" -type f -name "*.dfy")
 
 	# Remove bad tests (recursive).
 	local -a bad_tests=(
 		# Following tests fail:
-		DafnyTests/TestAttribute.dfy
 		VSComp2010/Problem2-Invert.dfy
 		auditor/TestAuditor.dfy
 		benchmarks/sequence-race/SequenceRace.dfy
-		comp/CoverageReport.dfy
 		dafny0/Fuel.legacy.dfy
 		dafny0/JavaUseRuntimeLib.dfy
 		dafny0/Stdin.dfy
 		dafny4/Lucas-up.legacy.dfy
-		examples/Simple_compiler/Compiler.dfy
 		git-issues/git-issue-2026.dfy
 		git-issues/git-issue-2299.dfy
 		git-issues/git-issue-2301.dfy
-		metatests/InconsistentCompilerBehavior.dfy
-		metatests/TestBeyondVerifierExpect.dfy
 		separate-verification/assumptions.dfy
 		server/counterexample_none.transcript
-		unicodechars/expectations/Expect.dfy
 		wishlist/exists-b-exists-not-b.dfy
 
 		# Following tests are very slow:
+		VSI-Benchmarks/b4.dfy
+		comp/CompileWithArguments.dfy
+		comp/MainMethod.dfy
+		comp/compile3/JustRun.dfy
+		concurrency/07-CounterThreadOwnership.dfy
+		concurrency/09-CounterNoStateMachine.dfy
+		concurrency/10-SequenceInvariant.dfy
+		concurrency/12-MutexLifetime-short.dfy
+		dafny1/SchorrWaite.dfy
+		dafny2/SnapshotableTrees.dfy
+		dafny4/git-issue250.dfy
+		git-issues/git-issue-Main4.dfy
+		git-issues/git-issue-MainE.dfy
+		unicodechars/comp/CompileWithArguments.dfy
 	)
 	local bad_test
 	for bad_test in "${bad_tests[@]}" ; do
 		rm "${TEST_S}/${bad_test}" || die "failed to remove test ${bad_test}"
 	done
 
+	dotnet-pkg_src_prepare
+
 	# Update lit's "lit.site.cfg" file.
 	local dotnet_exec="${DOTNET_PKG_EXECUTABLE} exec ${DOTNET_PKG_OUTPUT}"
 	local lit_config="${TEST_S}/lit.site.cfg"
+
 	sed "/^defaultDafnyExecutable/s|=.*|= '${dotnet_exec}/Dafny.dll '|" \
 		-i "${lit_config}" || die "failed to update ${lit_config}"
 	sed "/^dafnyExecutable/s|=.*|= '${dotnet_exec}/Dafny.dll '|" \
@@ -506,8 +526,22 @@ src_prepare() {
 		-i "${lit_config}" || die "failed to update ${lit_config}"
 	sed "/^serverExecutable/s|=.*|= '${dotnet_exec}/DafnyServer.dll'|" \
 		-i "${lit_config}" || die "failed to update ${lit_config}"
+}
 
-	dotnet-pkg_src_prepare
+src_compile () {
+	einfo "Building DafnyRuntimeJava JAR."
+	local dafny_runtime_java="${S}/Source/DafnyRuntime/DafnyRuntimeJava"
+	mkdir -p "${dafny_runtime_java}/build/libs/" || die
+	pushd "${dafny_runtime_java}/build" || die
+
+	ejavac -d ./ $(find "${dafny_runtime_java}/src/main" -type f -name "*.java")
+	edo jar cvf "DafnyRuntime-${PV}.jar" dafny/*
+
+	cp "DafnyRuntime-${PV}.jar" "${dafny_runtime_java}/build/libs/" || die
+	popd || die
+
+	# Build main dotnet package.
+	dotnet-pkg_src_compile
 }
 
 src_test() {
