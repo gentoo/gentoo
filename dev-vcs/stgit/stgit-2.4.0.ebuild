@@ -160,7 +160,7 @@ inherit cargo flag-o-matic
 
 DESCRIPTION="Stack-based patch management for Git"
 HOMEPAGE="https://stacked-git.github.io/"
-SRC_URI="$(cargo_crate_uris)"
+SRC_URI="${CARGO_CRATE_URIS}"
 SRC_URI+=" https://github.com/stacked-git/stgit/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -171,7 +171,6 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="doc"
 
 DEPEND="doc? ( app-text/asciidoc )"
-RDEPEND=""
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
