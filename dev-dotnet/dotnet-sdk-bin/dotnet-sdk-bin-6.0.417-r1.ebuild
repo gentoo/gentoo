@@ -4,8 +4,7 @@
 EAPI=8
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
-HOMEPAGE="https://dotnet.microsoft.com/
-	https://github.com/dotnet/dotnet/"
+HOMEPAGE="https://dotnet.microsoft.com/"
 SRC_URI="
 amd64? (
 	elibc_glibc? ( https://dotnetcli.azureedge.net/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-x64.tar.gz )
@@ -23,7 +22,7 @@ arm64? (
 S="${WORKDIR}"
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.14"
+RUNTIME_SLOT="${SDK_SLOT}.25"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
@@ -39,14 +38,12 @@ RDEPEND="
 IDEPEND="app-eselect/eselect-dotnet"
 PDEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
-	~dev-dotnet/dotnet-runtime-nugets-3.1.32
-	~dev-dotnet/dotnet-runtime-nugets-6.0.25
 "
 
 QA_PREBUILT="*"
 
 src_install() {
-	local dest="opt/${PN}-${SDK_SLOT}"
+	local dest=opt/${PN}-${SDK_SLOT}
 	dodir "${dest%/*}"
 
 	# Create a magic workloads file, bug #841896
@@ -60,7 +57,7 @@ src_install() {
 	mkdir "${S}" || die
 
 	fperms 0755 "/${dest}"
-	dosym "../../${dest}/dotnet" "/usr/bin/dotnet-bin-${SDK_SLOT}"
+	dosym ../../${dest}/dotnet /usr/bin/dotnet-bin-${SDK_SLOT}
 }
 
 pkg_postinst() {

@@ -23,11 +23,11 @@ arm64? (
 S="${WORKDIR}"
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.0"
+RUNTIME_SLOT="${SDK_SLOT}.14"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 arm arm64"
 RESTRICT="splitdebug"
 
 RDEPEND="
@@ -39,9 +39,7 @@ RDEPEND="
 IDEPEND="app-eselect/eselect-dotnet"
 PDEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
-	~dev-dotnet/dotnet-runtime-nugets-3.1.32
 	~dev-dotnet/dotnet-runtime-nugets-6.0.25
-	~dev-dotnet/dotnet-runtime-nugets-7.0.14
 "
 
 QA_PREBUILT="*"
