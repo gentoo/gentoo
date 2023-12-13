@@ -138,7 +138,7 @@ src_configure() {
 		--enable-png
 	)
 
-	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]]; then
+	if [[ ${FVWM3_DOCS_PREBUILT} == 0 ]]; then
 		myconf+=(
 			--enable-mandoc
 			--enable-htmldoc
