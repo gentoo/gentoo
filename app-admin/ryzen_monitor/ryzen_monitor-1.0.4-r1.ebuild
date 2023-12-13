@@ -13,9 +13,7 @@ HOMEPAGE="https://github.com/hattedsquirrel/ryzen_monitor"
 
 SLOT="0"
 LICENSE="AGPL-3"
-IUSE=""
 
-DEPEND=""
 RDEPEND="app-admin/ryzen_smu"
 
 PATCHES=(
