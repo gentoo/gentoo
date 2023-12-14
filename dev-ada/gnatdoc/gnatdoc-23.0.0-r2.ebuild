@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
 inherit ada multiprocessing
 
 DESCRIPTION="GNAT Documentation Generation Tool"
@@ -18,8 +18,8 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="${ADA_DEPS}
 	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared,static-libs,static-pic]
 	dev-ada/gnatcoll-core[${ADA_USEDEP},shared,static-libs,static-pic]
-	dev-ada/gpr[${ADA_USEDEP},shared]
-	dev-ada/gpr-unit-provider[${ADA_USEDEP},shared]
+	dev-ada/gpr[${ADA_USEDEP},shared,static-libs]
+	dev-ada/gpr-unit-provider[${ADA_USEDEP},shared,static-libs]
 	dev-ada/langkit[${ADA_USEDEP},shared,static-libs,static-pic]
 	dev-ada/libadalang[${ADA_USEDEP},static-libs,static-pic]
 	dev-ada/libgpr[${ADA_USEDEP},shared,static-libs,static-pic]
