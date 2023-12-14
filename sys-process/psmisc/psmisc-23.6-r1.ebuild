@@ -31,6 +31,11 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
+PATCHES=(
+	# https://gitlab.com/psmisc/psmisc/-/issues/51
+	"${FILESDIR}/${PN}-23.6-include-config.h-in-pslog.patch"
+)
+
 src_configure() {
 	if tc-is-cross-compiler ; then
 		# This isn't ideal but upstream don't provide a placement
