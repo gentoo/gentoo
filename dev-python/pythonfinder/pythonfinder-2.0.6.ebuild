@@ -21,6 +21,11 @@ KEYWORDS="~amd64 ~arm64 ~riscv"
 RDEPEND="
 	>=dev-python/pydantic-2[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/click[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
