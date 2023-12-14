@@ -16,10 +16,11 @@ SLOT="9"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CDEPEND="
-	dev-java/xom:0
-	dev-java/jdom:0
+	dev-java/ant-core:0
 	dev-java/dom4j:1
-	dev-java/ant-core"
+	dev-java/jdom:0
+	dev-java/xom:0
+"
 
 RDEPEND="
 	${CDEPEND}
