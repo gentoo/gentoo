@@ -20,9 +20,6 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep '
-		dev-python/future[${PYTHON_USEDEP}]
-	')
 	dev-libs/openssl:=
 	dev-db/sqlite:3
 	dev-libs/glib:2
