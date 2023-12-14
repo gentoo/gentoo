@@ -90,10 +90,16 @@ DEPEND="
 	sys-devel/libtool
 	>=dev-cpp/gtest-1.8.0
 "
+# distutils is not available in python3.12, but it is still in setuptools
 BDEPEND="
 	dev-lang/swig
 	>=dev-util/cmake-3.10
 	virtual/pkgconfig
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 PDEPEND="
@@ -111,6 +117,9 @@ PATCHES=(
 	# This is only to prevent webkit2gtk-4 from being selected.
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
+
+	# bug #919859
+	"${FILESDIR}/${PN}-5.4-fix-python-finding.patch"
 )
 
 # guile generates ELF files without use of C or machine code
