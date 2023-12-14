@@ -9,6 +9,6 @@ DESCRIPTION="Abstraction of various SASL mechanism responses"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~s390 sparc x86"
 IUSE=""
 RDEPEND=">=dev-php/PEAR-PEAR-1.10.1"
