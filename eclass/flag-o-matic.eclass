@@ -115,6 +115,10 @@ _setup-allowed-flags() {
 		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 '-mcmodel=*'
 		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' '-mfloat-abi=*'
 
+		# This is default on for a bunch of arches except amd64 in GCC
+		# already, and amd64 itself is planned too.
+		'-mtls-dialect=*'
+
 		# MIPS errata
 		-mfix-24k -mno-fix-24k -mfix-r4000 -mno-fix-r4000
 		-mfix-r4400 -mno-fix-r4400 -mfix-r5900 -mno-fix-r5900
