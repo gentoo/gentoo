@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_PEP517=setuptools
@@ -16,6 +16,8 @@ SRC_URI="https://github.com/aitjcize/cppman/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+PROPERTIES="test_network"
+RESTRICT="test"
 
 RDEPEND="
 	sys-apps/groff
@@ -30,6 +32,10 @@ src_prepare() {
 	sed -i '/data_files = _data_files,/d' setup.py || die
 
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	${EPYTHON} test/test.py || die
 }
 
 src_install() {
