@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,16 +7,16 @@ PHP_EXT_NAME="xdiff"
 PHP_EXT_PECL_PKG="xdiff"
 DOCS=( README.API )
 
-USE_PHP="php8-0 php8-1 php8-2"
+USE_PHP="php8-1 php8-2 php8-3"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~x86"
-
 DESCRIPTION="PHP extension for generating diff files"
 LICENSE="PHP-3.01"
-SLOT="7"
 
-DEPEND="dev-libs/libxdiff"
-RDEPEND="${DEPEND}"
+SLOT="7"
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="dev-libs/libxdiff"
+DEPEND="${RDEPEND}"
 PHP_EXT_ECONF_ARGS=()
