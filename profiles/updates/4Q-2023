@@ -36,3 +36,4 @@ move kde-frameworks/kwayland kde-plasma/kwayland
 move dev-java/aqute-bnd-annotation dev-java/bnd-annotation
 move dev-python/pycson dev-python/cson
 move dev-python/blake3-py dev-python/blake3
+move games-action/minetest games-engines/minetest
