@@ -1,0 +1,13 @@
+Upstream seperate the build and test of stress test cases. This patch includes
+the stress test into the general tests.
+===================================================================
+--- catch/stress/CMakeLists.txt
++++ catch/stress/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-add_custom_target(stress_test COMMAND "${CMAKE_CTEST_COMMAND}" -R "Stress_"
+-                              COMMENT "Build complete, now executing the stress test ...")
++add_custom_target(stress_test)
++add_dependencies(build_tests stress_test)
+ 
+ add_subdirectory(memory)
+ if(HIP_PLATFORM MATCHES "amd")
