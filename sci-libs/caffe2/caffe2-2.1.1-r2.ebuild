@@ -43,10 +43,10 @@ RDEPEND="
 	sci-libs/foxi
 	cuda? (
 		=dev-libs/cudnn-8*
-		dev-libs/cudnn-frontend:0/8
+		>=dev-libs/cudnn-frontend-0.9.2:0/8
 		<dev-util/nvidia-cuda-toolkit-12:=[profiler]
 	)
-	fbgemm? ( dev-libs/FBGEMM )
+	fbgemm? ( >=dev-libs/FBGEMM-2023.11.02 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	gloo? ( sci-libs/gloo[cuda?] )
 	mpi? ( virtual/mpi )
@@ -63,7 +63,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/eigen
-	cuda? ( dev-libs/cutlass )
+	cuda? ( >=dev-libs/cutlass-3.1.0 )
 	dev-libs/psimd
 	dev-libs/FP16
 	dev-libs/FXdiv
@@ -203,7 +203,9 @@ src_install() {
 	mkdir -p python/torch/include || die
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
 	mv "${ED}"/usr/include/torch python/torch/include || die
-	mv "${ED}${S}"/nvfuser python/nvfuser || die
+	if use cuda; then
+		mv "${ED}${S}"/nvfuser python/nvfuser || die
+	fi
 	rm -r "${ED}${S}"/test || die
 	rm -r "${ED}${S}"/third_party || die
 	cp torch/version.py python/torch/ || die
