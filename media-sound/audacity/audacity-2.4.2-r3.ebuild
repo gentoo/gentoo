@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
 IUSE="alsa doc ffmpeg +flac id3tag jack +ladspa +lv2 mad ogg oss
 	portmidi +portmixer portsmf sbsms twolame vamp +vorbis +vst"
 
