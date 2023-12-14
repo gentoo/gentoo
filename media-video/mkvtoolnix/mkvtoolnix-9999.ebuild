@@ -27,7 +27,7 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dbus debug dvd gui nls qt6 pch test"
+IUSE="debug dvd gui nls pch test"
 RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
@@ -39,31 +39,17 @@ RDEPEND="
 	>=dev-libs/libebml-1.4.4:=
 	>=dev-libs/libfmt-8.0.1:=
 	>=dev-libs/pugixml-1.11
+	>=dev-qt/qtbase-6.2:6[dbus]
 	media-libs/flac:=
 	>=media-libs/libmatroska-1.7.1:=
 	media-libs/libogg
 	media-libs/libvorbis
 	sys-libs/zlib
 	dvd? ( media-libs/libdvdread:= )
-	!qt6? (
-		dev-qt/qtcore:5
-		dbus? ( dev-qt/qtdbus:5 )
-		gui? (
-			dev-qt/qtsvg:5
-			dev-qt/qtgui:5
-			dev-qt/qtnetwork:5
-			dev-qt/qtwidgets:5
-			dev-qt/qtconcurrent:5
-			dev-qt/qtmultimedia:5
-		)
-	)
-	qt6? (
-		dev-qt/qtbase:6[dbus?]
-		gui? (
-			dev-qt/qtbase:6[concurrent,gui,network,widgets]
-			dev-qt/qtmultimedia:6
-			dev-qt/qtsvg:6
-		)
+	gui? (
+		>=dev-qt/qtbase-6.2:6[concurrent,gui,network,widgets]
+		>=dev-qt/qtmultimedia-6.2:6
+		>=dev-qt/qtsvg-6.2:6
 	)
 "
 DEPEND="${RDEPEND}
@@ -85,12 +71,6 @@ BDEPEND="
 if [[ ${PV} != *9999 ]] ; then
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-mkvtoolnix )"
 fi
-
-PATCHES=(
-	"${FILESDIR}"/mkvtoolnix-80.0.0-no-uic-qtwidgets.patch
-	"${FILESDIR}"/mkvtoolnix-80.0.0-fix-qtmultimedia.patch
-	"${FILESDIR}"/mkvtoolnix-80.0.0-optional-qtdbus.patch
-)
 
 src_prepare() {
 	default
@@ -115,7 +95,6 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 		$(usex pch "" --disable-precompiled-headers)
-		$(use_enable dbus)
 		$(use_enable gui)
 		$(use_with dvd dvdread)
 		$(use_with nls gettext)
@@ -124,24 +103,12 @@ src_configure() {
 		--disable-optimization
 		--with-boost="${ESYSROOT}"/usr
 		--with-boost-libdir="${ESYSROOT}"/usr/$(get_libdir)
-	)
 
-	# Qt (of some version) is always needed, even for non-GUI builds,
-	# to do e.g. MIME detection. See e.g. bug #844097.
-	# But most of the Qt deps are conditional on a GUI build.
-	if use qt6; then
-		myeconfargs+=(
-			--enable-qt6
-			--disable-qt5
-			--with-qmake6="$(qt6_get_bindir)"/qmake
-		)
-	else
-		myeconfargs+=(
-			--disable-qt6
-			--enable-qt5
-			--with-qmake="$(qt5_get_bindir)"/qmake
-		)
-	fi
+		# Qt (of some version) is always needed, even for non-GUI builds,
+		# to do e.g. MIME detection. See e.g. bug #844097.
+		# But most of the Qt deps are conditional on a GUI build.
+		--with-qmake6="$(qt6_get_bindir)"/qmake
+	)
 
 	# Work around bug #904710.
 	use nls || export ac_cv_path_PO4A=
