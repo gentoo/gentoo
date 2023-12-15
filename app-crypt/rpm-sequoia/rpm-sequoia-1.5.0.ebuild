@@ -236,7 +236,7 @@ LLVM_MAX_SLOT=17
 
 inherit cargo llvm
 
-DESCRIPTION="An implementation of the RPM PGP interface using Sequoia."
+DESCRIPTION="Implementation of the RPM PGP interface using Sequoia"
 HOMEPAGE="https://sequoia-pgp.org/ https://github.com/rpm-software-management/rpm-sequoia"
 SRC_URI="
 	https://github.com/rpm-software-management/rpm-sequoia/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
@@ -250,7 +250,7 @@ LICENSE+="
 	|| ( GPL-2 GPL-3 LGPL-3 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64"
 IUSE="nettle +openssl"
 REQUIRED_USE="^^ ( nettle openssl )"
 
@@ -261,8 +261,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 # Clang is required for bindgen
 BDEPEND="
-	nettle? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)) )
 	virtual/pkgconfig
+	nettle? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)) )
 "
 
 QA_FLAGS_IGNORED="usr/lib.*/librpm_sequoia.so"
@@ -283,7 +283,7 @@ src_configure() {
 
 src_compile() {
 	# These variables will be used to generate the pkgconfig file.
-	PREFIX=/usr LIBDIR=$PREFIX/$(get_libdir) cargo_src_compile
+	PREFIX="${EPREFIX}/usr" LIBDIR="${PREFIX}"/$(get_libdir) cargo_src_compile
 }
 
 src_install() {
