@@ -11,6 +11,7 @@ app-backup/borgmatic
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
+app-crypt/rpm-sequoia
 app-eselect/eselect-rust
 app-misc/khal
 app-text/mdbook
