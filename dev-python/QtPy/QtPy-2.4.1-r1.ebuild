@@ -118,6 +118,7 @@ BDEPEND="
 			dev-python/PyQt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
 			dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+			dev-qt/qtsql:5[sqlite]
 		)
 		pyqt6? (
 			dev-python/PyQt6[${PYTHON_USEDEP}]
@@ -126,6 +127,7 @@ BDEPEND="
 			dev-python/PyQt6[sensors(-),spatialaudio(-),speech(-),sql,ssl,svg,testlib,webchannel]
 			dev-python/PyQt6[websockets,widgets,xml]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets,quick]
+			dev-qt/qtbase:6[sqlite]
 		)
 		pyside2? (
 			$(python_gen_cond_dep '
@@ -136,6 +138,7 @@ BDEPEND="
 				dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
 				dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
 				dev-python/pyside2[xml,xmlpatterns]
+				dev-qt/qtsql:5[sqlite]
 			' python3_{10..11})
 		)
 		pyside6? (
@@ -145,6 +148,7 @@ BDEPEND="
 			dev-python/pyside6[printsupport,qml,quick,quick3d,scxml(-),sensors(-)]
 			dev-python/pyside6[serialport,spatialaudio(-),speech(-),sql,svg,testlib,webchannel]
 			dev-python/pyside6[webengine,websockets,widgets,xml]
+			dev-qt/qtbase:6[sqlite]
 		)
 	)
 "
