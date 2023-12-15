@@ -193,13 +193,6 @@ dev-haskell/terminfo
 # Lots of applications need porting, bug #917537.
 >=dev-libs/libxml2-2.12.0
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2023-11-10)
-# No reverse dependencies, no tests, no upstream activity. All ebuild
-# maintenance on this package was done randomly by @python project members,
-# at late stage of python porting, which is hard with no tests.
-# Removal on 2023-12-10.  Bug #917124.
-dev-python/empy
-
 # Michał Górny <mgorny@gentoo.org> (2023-11-06)
 # Unmaintained.  Last commit in 2017.  Distutils is deprecated.
 # No revdeps.
