@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}/2.0.5-fix-import-cached-property.patch"
