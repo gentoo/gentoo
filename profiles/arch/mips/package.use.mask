@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
+# media-libs/libjxl casualties
+# https://github.com/libjxl/libjxl/issues/2433
+media-video/ffmpeg jpegxl
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # media-libs/libvpx casualties (#700902)
 media-video/ffmpeg vpx
 media-plugins/gst-plugins-meta vpx

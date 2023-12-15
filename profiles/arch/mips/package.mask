@@ -1,6 +1,11 @@
 # Copyright 2006-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-12-15)
+# Broken on BE and no way to test on LE, mask for now
+# https://github.com/libjxl/libjxl/issues/2433
+media-libs/libjxl
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-17)
 # Broken on BE and no way to test on LE, mask for now (#700902)
 media-libs/libvpx
