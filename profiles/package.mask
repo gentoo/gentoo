@@ -254,11 +254,6 @@ games-rpg/sumwars
 dev-lang/ferite
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
-# Dead (and discouraged prior to death).  No revdeps.
-# Removal on 2023-11-25.  Bug #912879.
-dev-php/securimage
-
-# Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # Not installable due to conflict with sys-apps/coreutils.
 # Removal on 2023-11-25.  Bug #908406.
 app-misc/realpath
