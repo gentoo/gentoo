@@ -278,12 +278,6 @@ dev-libs/libe
 dev-libs/libpo6
 dev-libs/libtreadstone
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-26)
-# Fails to compile with modern C++ compilers.  Last release in 2011.
-# No revdeps.
-# Removal on 2023-11-25.  Bug #722006.
-sci-electronics/freehdl
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-23)
 # Java libraries. No reverse dependencies.
 # Removal on 2023-11-23.
