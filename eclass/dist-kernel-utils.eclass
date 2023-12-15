@@ -87,6 +87,13 @@ dist-kernel_get_image_path() {
 				echo arch/${ARCH}/boot/Image.gz
 			fi
 			;;
+		loong)
+			if [[ ${KERNEL_EFI_ZBOOT} ]]; then
+				echo arch/loongarch/boot/vmlinuz.efi
+			else
+				echo arch/loongarch/boot/vmlinux.elf
+			fi
+			;;
 		arm)
 			echo arch/arm/boot/zImage
 			;;
