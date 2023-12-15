@@ -19,7 +19,7 @@ DESCRIPTION="NVIDIA GameStream (and Sunshine) client"
 HOMEPAGE="https://github.com/moonlight-stream/moonlight-qt"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda +libdrm embedded glslow mmal soundio +vaapi vdpau wayland X"
+IUSE="cuda +libdrm embedded glslow soundio +vaapi vdpau wayland X"
 
 RDEPEND="
 	dev-libs/openssl:=
@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/libsdl2[haptic,kms,joystick,sound,video]
 	media-libs/opus
 	media-libs/sdl2-ttf
-	media-video/ffmpeg:=[cuda?,libdrm?,mmal?]
+	media-video/ffmpeg:=[cuda?,libdrm?]
 	libdrm? ( x11-libs/libdrm )
 	soundio? ( media-libs/libsoundio:= )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
@@ -66,7 +66,7 @@ src_configure() {
 	eqmake5 PREFIX="${EPREFIX}/usr" CONFIG+=" \
 		$(usex cuda "" disable-cuda) \
 		$(usex libdrm "" disable-libdrm) \
-		$(usex mmal "" disable-mmal) \
+		--disable-mmal \
 		$(usex vaapi "" disable-libva) \
 		$(usex vdpau "" disable-libvdpau) \
 		$(usex wayland "" disable-wayland) \
