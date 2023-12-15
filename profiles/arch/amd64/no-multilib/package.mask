@@ -92,7 +92,6 @@ games-rpg/wasteland2
 games-server/etqw-ded
 games-strategy/darwinia
 games-strategy/darwinia-demo
-games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/knights-demo
 games-strategy/majesty-demo

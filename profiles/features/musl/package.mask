@@ -214,7 +214,6 @@ games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
 games-strategy/darwinia-demo
-games-strategy/defcon-demo
 games-strategy/knights-demo
 games-strategy/majesty-demo
 gnome-extra/nautilus-dropbox
