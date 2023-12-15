@@ -260,12 +260,6 @@ games-strategy/defcon-demo
 dev-lang/ferite
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
-# Obsolete package for GRUB 1.x.  No updates since 2009, multiple bugs
-# reported.
-# Removal on 2023-11-25.  Bug #912684.
-media-gfx/grub-splashes
-
-# Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # Dead (and discouraged prior to death).  No revdeps.
 # Removal on 2023-11-25.  Bug #912879.
 dev-php/securimage
