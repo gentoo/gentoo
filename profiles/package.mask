@@ -316,12 +316,6 @@ dev-java/apache-rat-tasks
 # Removal on 2023-11-21.  Bug #909917.
 dev-python/exam
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-20)
-# The test suite is broken and does not fail correctly.  No maintainer.
-# No revdeps.
-# Removal on 2023-11-19.  Bug #916047.
-dev-python/pydotplus
-
 # Ulrich Müller <ulm@gentoo.org> (2023-10-19)
 # Pretest versions, masked for testing.
 <app-editors/emacs-29.1.9999:29-vcs
