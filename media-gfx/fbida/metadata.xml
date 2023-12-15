@@ -7,4 +7,7 @@
 		<flag name="ghostscript">Install the framebuffer ghostscript viewer "fbgs"</flag>
 		<flag name="X">Install the Motif based image viewer "ida"</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">kraxel/fbida</remote-id>
+	</upstream>
 </pkgmetadata>
