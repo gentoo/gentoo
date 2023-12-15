@@ -11,7 +11,7 @@ EAPI=8
 GO_OPTIONAL="yes"
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
+inherit autotools webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
 HOMEPAGE="https://www.zabbix.com/"
@@ -148,6 +148,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Since we patch configure.ac with e.g., ${PN}-6.4.0-configure-sscanf.patch".
+	eautoreconf
 }
 
 src_configure() {
