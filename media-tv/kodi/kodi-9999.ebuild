@@ -76,7 +76,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio raspberry-pi samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	^^ ( gbm wayland X )
@@ -147,7 +147,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		sys-libs/libcap
 	)
 	cec? (
-		>=dev-libs/libcec-4.0[-cubox,raspberry-pi?]
+		>=dev-libs/libcec-4.0[-cubox]
 	)
 	dbus? (
 		sys-apps/dbus
@@ -158,9 +158,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		x11-libs/libxkbcommon
 	)
 	gles? (
-		!raspberry-pi? (
-			media-libs/mesa[gles2]
-		)
+		media-libs/mesa[gles2]
 	)
 	!gles? (
 		media-libs/glu
@@ -188,13 +186,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	pulseaudio? (
 		media-libs/libpulse
-	)
-	raspberry-pi? (
-		|| (
-			media-libs/raspberrypi-userland
-			media-libs/raspberrypi-userland-bin
-			media-libs/mesa[gles2,video_cards_vc4]
-		)
 	)
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
