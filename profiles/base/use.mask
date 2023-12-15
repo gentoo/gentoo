@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-12-15)
+# KF6 is not in ::gentoo yet. Move to stable.use.mask on KF6 intro.
+kf6compat
+
 # David Seifert <soap@gentoo.org> (2023-09-09)
 # EOL upstream in 2 months, causes major headaches for OpenSSL 1.1
 # masking. Removal on 2023-10-09.
