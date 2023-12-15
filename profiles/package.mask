@@ -232,11 +232,6 @@ app-admin/aws-elb-tools
 # instead of net-libs/xrootd-ceph. Removal on 2023-11-30.
 net-libs/xrootd-ceph
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-10-28)
-# Fails to build with glibc-2.38 (and musl).  No maintainer.
-# Removal on 2023-11-28.  Bug #713402
-app-editors/fte
-
 # Michał Górny <mgorny@gentoo.org> (2023-10-27)
 # dev-games/cegui is unmaintained, does not support Python 3.11 and has
 # a ton of open bugs.  It is only used by games-rpg/sumwars.  CeGUI has
