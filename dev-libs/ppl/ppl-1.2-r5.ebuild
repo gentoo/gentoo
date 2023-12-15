@@ -8,7 +8,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="The Parma Polyhedra Library for numerical analysis of complex systems"
 HOMEPAGE="http://bugseng.com/products/ppl"
 SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.xz
-	https://dev.gentoo.org/~juippis/distfiles/tmp/ppl-1.2-r3-disable-boeing-tests.patch"
+	https://dev.gentoo.org/~juippis/distfiles/tmp/${P}-r3-disable-boeing-tests.patch"
 
 LICENSE="GPL-3"
 SLOT="0/4.14" # SONAMEs
