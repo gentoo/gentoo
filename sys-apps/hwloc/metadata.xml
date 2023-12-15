@@ -25,4 +25,7 @@
   <flag name="xml">use libxml2 for XML support, instead of a custom minimalistic support</flag>
   <flag name="X">use the X Window System</flag>
 </use>
+<upstream>
+  <remote-id type="github">open-mpi/hwloc</remote-id>
+</upstream>
 </pkgmetadata>
