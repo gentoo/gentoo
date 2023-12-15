@@ -296,6 +296,18 @@ ppc		default/linux/ppc/17.0/systemd/merged-usr			stable
 ppc		default/linux/ppc/17.0/developer				exp
 ppc		default/linux/ppc/17.0/musl					dev
 ppc		default/linux/ppc/17.0/musl/hardened				exp
+ppc		default/linux/ppc/23.0						exp
+ppc		default/linux/ppc/23.0/desktop					exp
+ppc		default/linux/ppc/23.0/desktop/gnome				exp
+ppc		default/linux/ppc/23.0/desktop/gnome/systemd			exp
+ppc		default/linux/ppc/23.0/systemd					exp
+ppc		default/linux/ppc/23.0/musl					exp
+ppc		default/linux/ppc/23.0/musl/hardened				exp
+ppc		default/linux/ppc/23.0/split-usr				exp
+ppc		default/linux/ppc/23.0/split-usr/desktop			exp
+ppc		default/linux/ppc/23.0/split-usr/desktop/gnome			exp
+ppc		default/linux/ppc/23.0/split-usr/musl				exp
+ppc		default/linux/ppc/23.0/split-usr/musl/hardened			exp
 
 # PPC64 profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
