@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-12-15)
+# media-libs/libvpx casualties (#700902)
+media-video/ffmpeg vpx
+media-plugins/gst-plugins-meta vpx
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-26)
 # Qt 5 is not keyworded here
 dev-vcs/subversion kwallet
