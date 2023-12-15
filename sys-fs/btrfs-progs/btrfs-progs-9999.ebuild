@@ -96,6 +96,11 @@ pkg_setup() {
 }
 
 src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		return
+	fi
+
 	if in_iuse verify-sig && use verify-sig ; then
 		mkdir "${T}"/verify-sig || die
 		pushd "${T}"/verify-sig &>/dev/null || die
