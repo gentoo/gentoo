@@ -519,6 +519,14 @@ arm64		default/linux/arm64/17.0/musl					dev
 arm64		default/linux/arm64/17.0/musl/llvm				exp
 arm64		default/linux/arm64/17.0/musl/hardened				exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux			exp
+# arm64		default/linux/arm64/23.0/musl					exp
+# arm64		default/linux/arm64/23.0/musl/llvm				exp
+# arm64		default/linux/arm64/23.0/musl/hardened				exp
+# arm64		default/linux/arm64/23.0/musl/hardened/selinux			exp
+# arm64		default/linux/arm64/23.0/split-usr/musl				exp
+# arm64		default/linux/arm64/23.0/split-usr/musl/llvm			exp
+# arm64		default/linux/arm64/23.0/split-usr/musl/hardened		exp
+# arm64		default/linux/arm64/23.0/split-usr/musl/hardened/selinux	exp
 m68k		default/linux/m68k/17.0/musl					exp
 m68k		default/linux/m68k/23.0/musl					exp
 m68k		default/linux/m68k/23.0/split-usr/musl				exp
