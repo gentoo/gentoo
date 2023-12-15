@@ -90,6 +90,9 @@ src_prepare() {
 		hppa)
 			return
 			;;
+		loong)
+			return
+			;;
 		ppc)
 			# assume powermac/powerbook defconfig
 			# we still package.use.force savedconfig
