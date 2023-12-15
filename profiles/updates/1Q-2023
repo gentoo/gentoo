@@ -18,7 +18,6 @@ move dev-python/myst_parser dev-python/myst-parser
 move dev-python/setuptools_scm dev-python/setuptools-scm
 move dev-python/netcdf4-python dev-python/netcdf4
 move dev-python/jupyterlab_server dev-python/jupyterlab-server
-move dev-python/jupyter_server_ydoc dev-python/jupyter-server-ydoc
 move app-text/pytextile dev-python/textile
 move dev-python/jupyter_server dev-python/jupyter-server
 move dev-python/pytest_jupyter dev-python/pytest-jupyter

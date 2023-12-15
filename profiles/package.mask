@@ -326,7 +326,6 @@ dev-perl/PathTools
 # and dev-python/notebook, and are no longer used.
 # Removal on 2023-11-14.  Bug #915824.
 dev-python/jupyter-server-fileid
-dev-python/jupyter-server-ydoc
 dev-python/jupyter-ydoc
 
 # Mart Raudsepp <leio@gentoo.org> (2023-10-14)
