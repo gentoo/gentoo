@@ -210,12 +210,6 @@ dev-python/pyqt-distutils
 =sys-fs/btrfs-progs-6.6-r1
 =sys-fs/btrfs-progs-6.6-r2
 
-# Michał Górny <mgorny@gentoo.org> (2023-11-05)
-# Discontinued upstream.  Fails tests with modern pytest.
-# No revdeps left.
-# Removal on 2023-12-05.  Bug #906834.
-dev-python/pytest-subtesthack
-
 # Mart Raudsepp <leio@gentoo.org> (2023-11-04)
 # gst-transcoder was merged into gst-plugins-bad and can be installed via
 # media-libs/gst-plugins-bad instead. Removal on 2023-12-04. Bug #916871.
