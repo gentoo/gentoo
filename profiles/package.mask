@@ -290,11 +290,6 @@ dev-libs/libtreadstone
 # Removal on 2023-11-25.  Bug #722006.
 sci-electronics/freehdl
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-26)
-# Incompatible with Cython 3.  Last commit in 2016.  No revdeps.
-# Removal on 2023-11-25.  Bug #898696.
-dev-python/plyr
-
 # Marek Szuba <marecki@gentoo.org> (2023-10-26)
 # Upstream uses a massive home-made Makefile which has since the beginning
 # required massive amounts of patching to make it behave reasonably
