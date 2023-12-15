@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-12-15)
+# Superseded by dev-python/pypy3_10-exe{,-bin}.
+# Removal on 2024-01-14.  Bug #920036.
+dev-python/pypy3-exe
+dev-python/pypy3-exe-bin
+
 # Hans de Graaff <graaff@gentoo.org> (2023-12-15)
 # Last release in 2020. Does not work with current activesupport
 # versions. No reverse dependencies. Masked for removal on 2024-01-15.
