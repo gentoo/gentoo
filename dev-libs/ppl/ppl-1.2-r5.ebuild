@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="The Parma Polyhedra Library for numerical analysis of complex systems"
 HOMEPAGE="http://bugseng.com/products/ppl"
@@ -41,6 +41,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# mem_fun_ref and friends were removed in c++17, and some toolchains
+	# are beginning to default to that (bug 919850).
+	append-cxxflags -std=c++14
+
 	local interfaces=( c )
 	use cxx && interfaces+=( cxx )
 	econf \
