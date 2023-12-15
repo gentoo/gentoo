@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="oauth2 test"
 RESTRICT="!test? ( test )"
 
