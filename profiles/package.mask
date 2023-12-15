@@ -330,7 +330,6 @@ dev-python/jupyter-server-fileid
 dev-python/jupyter-server-ydoc
 dev-python/jupyter-ydoc
 dev-python/y-py
-dev-python/ypy-websocket
 
 # Mart Raudsepp <leio@gentoo.org> (2023-10-14)
 # The database used by this music fingerprint library has been defunct for
