@@ -10,6 +10,7 @@
 	</upstream>
 	<use>
 		<flag name="kaccounts">Enable support for system-wide defined KAccounts</flag>
+		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
 	</use>
 	<slots>
 		<subslots>
