@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    The debugger provides GDB/MI and VSCode Debug Adapter Protocol and allows
+    to debug .NET apps under .NET Core runtime. Also debugger allows debugging
+    from command line (like as GDB).
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/Samsung/netcoredbg/issues/</bugs-to>
+    <remote-id type="github">Samsung/netcoredbg</remote-id>
+  </upstream>
+</pkgmetadata>
