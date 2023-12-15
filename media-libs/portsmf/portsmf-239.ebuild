@@ -13,7 +13,7 @@ SRC_URI="
 S="${WORKDIR}/${PN}"
 LICENSE="MIT"
 SLOT="0/1"  # SOVERSION in CMakeLists.txt / SONAME suffix
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
