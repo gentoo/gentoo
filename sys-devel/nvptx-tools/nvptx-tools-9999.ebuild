@@ -4,14 +4,14 @@
 EAPI=8
 
 DESCRIPTION="Collection of tools for use with nvptx-none GCC toolchains"
-HOMEPAGE="https://github.com/MentorEmbedded/nvptx-tools https://gcc.gnu.org/wiki/nvptx"
+HOMEPAGE="https://github.com/SourceryTools/nvptx-tools https://gcc.gnu.org/wiki/nvptx"
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/MentorEmbedded/nvptx-tools"
+	EGIT_REPO_URI="https://github.com/SourceryTools/nvptx-tools"
 	inherit git-r3
 else
 	MY_COMMIT="93e00909ceb9cbbc104f0fcba56c0361ffb3ca4b"
-	SRC_URI="https://github.com/MentorEmbedded/nvptx-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/SourceryTools/nvptx-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${MY_COMMIT}
 
 	KEYWORDS="~amd64"

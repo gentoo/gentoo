@@ -6,6 +6,6 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">MentorEmbedded/nvptx-tools</remote-id>
+		<remote-id type="github">SourceryTools/nvptx-tools</remote-id>
 	</upstream>
 </pkgmetadata>
