@@ -35,7 +35,7 @@ else
 	LANGS=" cs de es fi fr he hu it ja nl pl pt-BR ru sl sq tr uk zh-CN zh-TW"
 fi
 
-IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr gamepad geolocation gmic keyring gphoto2 graphicsmagick heif jpeg2k kwallet lto lua midi nls opencl openmp openexr test tools webp
+IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc flickr gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k kwallet lto lua midi nls opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -80,7 +80,6 @@ DEPEND="dev-db/sqlite:3
 	flickr? ( media-libs/flickcurl )
 	gamepad? ( media-libs/libsdl2 )
 	geolocation? ( >=sci-geosciences/osm-gps-map-1.1.0 )
-	gmic? ( media-gfx/gmic )
 	keyring? ( >=app-crypt/libsecret-0.18 )
 	gphoto2? ( media-libs/libgphoto2:= )
 	graphicsmagick? ( media-gfx/graphicsmagick )
@@ -149,7 +148,7 @@ src_configure() {
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)
 		-DUSE_FLICKR=$(usex flickr)
-		-DUSE_GMIC=$(usex gmic)
+		-DUSE_GMIC=OFF
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
 		-DUSE_KWALLET=$(usex kwallet)
 		-DUSE_LIBSECRET=$(usex keyring)
