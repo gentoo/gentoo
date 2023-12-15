@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-12-15)
+# Old slot without any remaining reverse dependencies. Does not work
+# with ruby32. Use the newer slot instead. Masked for removal on
+# 2024-01-15.
+dev-ruby/http:4
+
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require
