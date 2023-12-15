@@ -87,12 +87,6 @@ dev-ruby/sass-listen
 net-libs/libgsasl
 virtual/gsasl
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# The same functionality is supported by dev-python/setuptools-scm-7.
-# See: https://github.com/pypa/setuptools_scm/#git-archives
-# https://github.com/Changaco/setuptools_scm_git_archive/#readme
-dev-python/setuptools_scm_git_archive
-
 # Michał Górny <mgorny@gentoo.org> (2023-01-30)
 # The package is on keep-alive by Debian.  Nevertheless, they can't
 # keep up with changes in dev-python/setuptools, and they do not accept
