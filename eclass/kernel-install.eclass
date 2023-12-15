@@ -167,6 +167,9 @@ kernel-install_get_qemu_arch() {
 		arm64)
 			echo aarch64
 			;;
+		loong)
+			echo loongarch64
+			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
 			;;
