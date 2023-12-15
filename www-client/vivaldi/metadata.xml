@@ -6,7 +6,8 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<use>
-		<flag name="proprietary-codecs">Use system <pkg>media-video/ffmpeg</pkg> to support patent-encumbered media codecs</flag>
+		<flag name="ffmpeg-chromium">Use Chromium FFmpeg fork (<pkg>media-video/ffmpeg-chromium</pkg>) rather than mainline FFmpeg (<pkg>media-video/ffmpeg</pkg>)</flag>
+		<flag name="proprietary-codecs">Use system FFmpeg library to support patent-encumbered media codecs</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 </pkgmetadata>
