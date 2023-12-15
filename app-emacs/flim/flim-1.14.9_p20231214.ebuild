@@ -7,14 +7,13 @@ inherit elisp
 
 DESCRIPTION="A library to provide basic features about message representation or encoding"
 HOMEPAGE="https://github.com/wanderlust/flim"
-GITHUB_SHA1="80b8121f05a5a0d7fcfe3e54085467a646dd2028"
+GITHUB_SHA1="c430c5498ad5843f40ef758685e29431f167478c"
 SRC_URI="https://github.com/wanderlust/${PN}/archive/${GITHUB_SHA1}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-RESTRICT="test"  # tests not updated for a long time and don't work
 
 RDEPEND=">=app-emacs/apel-10.8"
 DEPEND="${RDEPEND}"
@@ -23,6 +22,10 @@ SITEFILE="60${PN}-gentoo.el"
 
 src_compile() {
 	emake PACKAGE_LISPDIR="NONE"
+}
+
+src_test() {
+	emake PACKAGE_LISPDIR="NONE" check
 }
 
 src_install() {
