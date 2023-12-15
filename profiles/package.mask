@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-15)
+# Last release in 2020. Does not work with current activesupport
+# versions. No reverse dependencies. Masked for removal on 2024-01-15.
+dev-ruby/gh
+
+# Hans de Graaff <graaff@gentoo.org> (2023-12-15)
 # Old slot without any remaining reverse dependencies. Does not work
 # with ruby32. Use the newer slot instead. Masked for removal on
 # 2024-01-15.
