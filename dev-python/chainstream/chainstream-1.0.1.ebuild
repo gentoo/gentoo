@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 
 DESCRIPTION="Chain I/O-Streams together into a single stream"
@@ -13,11 +13,7 @@ SRC_URI="https://github.com/rrthomas/chainstream/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
-BDEPEND=""
+KEYWORDS="~amd64"
 
 src_configure() {
 	# upstream doesn't provide build system in pyproject.toml
