@@ -150,11 +150,6 @@ media-video/jellyfin-media-player
 app-office/libreoffice-bin
 app-office/libreoffice-bin-debug
 
-# Marek Szuba <marecki@gentoo.org> (2020-05-08)
-# Requires sys-cluster/ceph, which is masked in this profile as well
-# (see below)
-net-libs/xrootd-ceph
-
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # requires net-libs/nodejs | sys-apps/yarn
 net-analyzer/gvm
