@@ -10,7 +10,6 @@ move dev-python/pretty-yaml dev-python/pyaml
 move dev-python/aws-xray-sdk-python dev-python/aws-xray-sdk
 move dev-python/python-docs app-doc/python-docs
 move dev-python/flit_core dev-python/flit-core
-move dev-python/jupyter_ydoc dev-python/jupyter-ydoc
 move dev-python/jupyter_console dev-python/jupyter-console
 move dev-python/jupyter_events dev-python/jupyter-events
 move dev-python/jupyter_kernel_test dev-python/jupyter-kernel-test
