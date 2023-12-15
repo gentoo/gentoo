@@ -55,17 +55,7 @@ _NINJA_UTILS_ECLASS=1
 
 inherit multiprocessing
 
-case "${NINJA}" in
-	ninja)
-		NINJA_DEPEND=">=dev-util/ninja-1.8.2"
-	;;
-	samu)
-		NINJA_DEPEND="dev-util/samurai"
-	;;
-	*)
-		NINJA_DEPEND=""
-	;;
-esac
+NINJA_DEPEND="app-alternatives/ninja"
 
 # @FUNCTION: get_NINJAOPTS
 # @DESCRIPTION:
@@ -84,7 +74,14 @@ get_NINJAOPTS() {
 # by the supplied arguments.  This function dies if ninja fails.  It
 # also supports being called via 'nonfatal'.
 eninja() {
-	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+	case "${NINJA}" in
+		ninja|samu)
+			;;
+		*)
+			ewarn "Unknown value '${NINJA}' for \${NINJA}"
+			;;
+	esac
+
 	local v
 	case "${NINJA_VERBOSE}" in
 		OFF) ;;
