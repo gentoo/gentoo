@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
