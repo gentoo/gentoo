@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="utempter wayland X"
+REQUIRED_USE="|| ( wayland X )"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
