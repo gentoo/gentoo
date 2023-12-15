@@ -24,3 +24,8 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/pelican-plugins/minify/pull/3
+	"${FILESDIR}/${P}-hatchling.patch"
+)
