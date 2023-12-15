@@ -9,7 +9,6 @@ DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://github.com/podofo/podofo"
 # testsuite resources require separate download. Reported at https://github.com/podofo/podofo/issues/102
 SRC_URI="https://github.com/podofo/podofo/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/podofo/podofo/commit/5f4df41c552cb2357ff6fefdbe277b072a4c1c4a.patch -> ${P}-libxml2-2.12.patch
 	test? (
 		https://github.com/podofo/podofo-resources/archive/4afe5c3fdb543a4347681b2e52252f1b10f12f24.tar.gz
 			-> podofo-0.10.1-test-resources.tar.gz
@@ -37,8 +36,6 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( fontconfig? ( media-fonts/liberation-fonts ) )
 "
-
-PATCHES=("${DISTDIR}/${P}-libxml2-2.12.patch")
 
 src_prepare() {
 	cmake_src_prepare
