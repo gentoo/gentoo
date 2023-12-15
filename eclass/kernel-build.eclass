@@ -203,6 +203,12 @@ kernel-build_src_configure() {
 			.config)
 	fi
 
+	# If this is set by USE=secureboot or user config this will have an effect
+	# on the name of the output image. Set this variable to track this setting.
+	if grep -q "CONFIG_EFI_ZBOOT=y" .config; then
+		KERNEL_EFI_ZBOOT=1
+	fi
+
 	mkdir -p "${WORKDIR}"/modprep || die
 	mv .config "${WORKDIR}"/modprep/ || die
 	emake O="${WORKDIR}"/modprep "${MAKEARGS[@]}" olddefconfig
@@ -456,12 +462,6 @@ kernel-build_merge_configs() {
 
 	./scripts/kconfig/merge_config.sh -m -r \
 		.config "${merge_configs[@]}"  || die
-
-	# If this is set by USE=secureboot or user config this will have an effect
-	# on the name of the output image. Set this variable to track this setting.
-	if grep -q "CONFIG_EFI_ZBOOT=y" .config; then
-		KERNEL_EFI_ZBOOT=1
-	fi
 }
 
 fi
