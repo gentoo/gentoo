@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}1.3src
 
 LICENSE="richardson"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-ldflags.patch
