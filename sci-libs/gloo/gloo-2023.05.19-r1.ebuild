@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="cuda libuv mpi redis ssl test"
 
 RDEPEND="
-	cuda? ( <dev-util/nvidia-cuda-toolkit-12:= )
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	libuv? ( dev-libs/libuv )
 	mpi? ( virtual/mpi )
 	redis? (
