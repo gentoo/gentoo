@@ -114,7 +114,7 @@ nssbits() {
 	# TODO: Port this to toolchain-funcs tc-get-ptr-size/tc-get-build-ptr-size
 	echo > "${T}"/test.c || die
 	${cc} ${!cppflags} ${!cflags} -fno-lto -c "${T}"/test.c -o "${T}/${1}test.o" || die
-	case $(file "${T}/${1}test.o") in
+	case $(file -S "${T}/${1}test.o") in
 		*32-bit*x86-64*) echo USE_X32=1;;
 		*64-bit*|*ppc64*|*x86_64*) echo USE_64=1;;
 		*32-bit*|*ppc*|*i386*) ;;
