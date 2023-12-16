@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cargo desktop flag-o-matic git-r3 xdg
+inherit cargo desktop git-r3 xdg
 
 DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
@@ -38,38 +38,21 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.70
+	>=virtual/rust-1.72
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0_p20230724-skip-render-tests.patch
+	"${FILESDIR}"/${PN}-0_p20231216-skip-render-tests.patch
 )
 
 src_unpack() {
 	git-r3_src_unpack
-
-	# hack: cargo_live_src_unpack (currently) fails due to dasp being
-	# vendored from two sources, roughly merge with a patch directive
-	# https://github.com/rust-lang/cargo/issues/10310
-	local rev=$(sed -En '/^dasp =/s/.*, rev = "([a-z0-9]+).*/\1/p' \
-		"${S}"/core/Cargo.toml) # skip || die
-	if [[ ${rev} ]]; then
-		cat >> "${S}"/Cargo.toml <<-EOF || die
-			[patch.crates-io]
-			dasp_sample = { git = "https://github.com/RustAudio/dasp", rev = "${rev}" }
-		EOF
-	else
-		eqawarn "dasp hack either needs an update or removal"
-	fi
-
 	cargo_live_src_unpack
 }
 
 src_configure() {
-	filter-lto # TODO: cleanup after bug #893658
-
 	# see .cargo/config.toml, only needed if RUSTFLAGS is set by the user
 	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
 
@@ -79,7 +62,7 @@ src_configure() {
 		$(usev test tests)
 	)
 
-	cargo_src_configure ${workspaces[*]/#/--package=}
+	cargo_src_configure "${workspaces[@]/#/--package=}"
 }
 
 src_test() {
