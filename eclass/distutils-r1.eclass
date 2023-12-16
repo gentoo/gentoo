@@ -1243,7 +1243,7 @@ _distutils-r1_get_backend() {
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
-		build_backend=$(gpep517 get-backend)
+		build_backend=$("${EPYTHON}" -m gpep517 get-backend)
 	fi
 	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
 		-f setup.py ]]
@@ -1317,7 +1317,7 @@ distutils_wheel_install() {
 
 	einfo "  Installing ${wheel##*/} to ${root}"
 	local cmd=(
-		gpep517 install-wheel
+		"${EPYTHON}" -m gpep517 install-wheel
 			--destdir="${root}"
 			--interpreter="${PYTHON}"
 			--prefix="${EPREFIX}/usr"
@@ -1446,7 +1446,7 @@ distutils_pep517_install() {
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
 	local cmd=(
-		gpep517 build-wheel
+		"${EPYTHON}" -m gpep517 build-wheel
 			--prefix="${EPREFIX}/usr"
 			--backend "${build_backend}"
 			--output-fd 3
