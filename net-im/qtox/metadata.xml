@@ -6,7 +6,6 @@
 		<name>Jimi Huotari</name>
 	</maintainer>
 	<use>
-		<flag name="notification">Use snorenotify for desktop notifications</flag>
 		<flag name="spellcheck">Enable spell checking support</flag>
 		<flag name="X">Enable auto-away support</flag>
 	</use>
