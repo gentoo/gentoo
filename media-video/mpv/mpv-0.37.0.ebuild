@@ -134,6 +134,10 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.37.0-drm-fix.patch
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	python-single-r1_pkg_setup
