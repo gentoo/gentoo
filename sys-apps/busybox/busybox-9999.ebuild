@@ -5,7 +5,7 @@
 
 EAPI=8
 
-inherit flag-o-matic savedconfig toolchain-funcs
+inherit flag-o-matic readme.gentoo-r1 savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	)
 	sys-kernel/linux-headers"
 BDEPEND="virtual/pkgconfig"
+
+DISABLE_AUTOFORMATTING=yes
+DOC_CONTENTS='
+If you want a smaller executable, add `-Oz` to your busybox `CFLAGS`.'
 
 busybox_config_option() {
 	local flag=$1 ; shift
@@ -91,7 +95,7 @@ src_prepare() {
 
 	# flag cleanup
 	sed -i -r \
-		-e 's:[[:space:]]?-(Werror|Os|falign-(functions|jumps|loops|labels)=1|fomit-frame-pointer)\>::g' \
+		-e 's:[[:space:]]?-(Werror|Os|Oz|falign-(functions|jumps|loops|labels)=1|fomit-frame-pointer)\>::g' \
 		Makefile.flags || die
 	#sed -i '/bbsh/s:^//::' include/applets.h
 	sed -i '/^#error Aborting compilation./d' applets/applets.c || die
@@ -331,6 +335,8 @@ src_install() {
 
 	cd ../networking || die
 	dodoc httpd_indexcgi.c httpd_post_upload.cgi
+
+	readme.gentoo_create_doc
 }
 
 pkg_preinst() {
@@ -359,5 +365,15 @@ pkg_postinst() {
 		elog "     init=/ginit /sbin/yourinit"
 		elog "To get a rescue shell, you may boot with:"
 		elog "     init=/ginit bb"
+	fi
+
+	if [[ ${MERGE_TYPE} != binary ]] && ! is-flagq -Oz; then
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test ${v} -le 1.36.1; then
+				FORCE_PRINT_ELOG=yes
+			fi
+		done
+
+		readme.gentoo_print_elog
 	fi
 }
