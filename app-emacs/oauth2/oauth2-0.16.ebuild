@@ -13,6 +13,6 @@ S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 
 SITEFILE="50${PN}-gentoo.el"
