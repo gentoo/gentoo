@@ -4,6 +4,11 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+		<description>chromium and soc USE flags</description>
+	</maintainer>
 	<use>
 		<flag name="amf">Enables support for AMD's Advanced Media Framework (AMF)</flag>
 		<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
@@ -65,6 +70,7 @@
 		<flag name="shaderc">Use <pkg>media-libs/shaderc</pkg> to compile GLSL</flag>
 		<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+		<flag name="soc">Apply additional patches for efficient playback on some SoCs (e.g. ARM, RISC-V).</flag>
 		<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
 		<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
 		<flag name="svt-av1">Enables AV1 encoding support via <pkg>media-libs/svt-av1</pkg>.</flag>
