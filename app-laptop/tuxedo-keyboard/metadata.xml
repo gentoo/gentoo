@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">tuxedocomputers/tuxedo-keyboard</remote-id>
+    <remote-id type="gitlab">tuxedocomputers/development/packages/tuxedo-drivers</remote-id>
   </upstream>
 </pkgmetadata>

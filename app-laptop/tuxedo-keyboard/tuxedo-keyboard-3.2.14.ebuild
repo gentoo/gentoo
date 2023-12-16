@@ -7,14 +7,16 @@ CONFIG_CHECK="ACPI_WMI INPUT_SPARSEKMAP"
 inherit linux-mod-r1
 
 DESCRIPTION="Kernel Module for Tuxedo Keyboard"
-HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-keyboard"
-SRC_URI="https://github.com/tuxedocomputers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
+SRC_URI="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v${PV}/tuxedo-drivers-v${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 PATCHES=( )
+
+S="${WORKDIR}/tuxedo-drivers-v${PV}"
 
 src_compile() {
 	local modlist=(
