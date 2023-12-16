@@ -59,6 +59,7 @@ PATCHES=(
 	"${WORKDIR}/${P}-only-show-on-X11.patch"
 	"${FILESDIR}/${P}-port-to-QRegularExpression.patch" # pre-requisite for below:
 	"${FILESDIR}/${P}-fix-incorrect-xsetwacom-call.patch" # bug 850652, KDE-bug 454947
+	"${FILESDIR}/${P}-missing-include.patch" # bug 920043
 )
 
 src_test() {
