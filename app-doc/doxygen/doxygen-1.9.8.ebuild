@@ -106,6 +106,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Very slow to compile, bug #920092
+	filter-flags -fipa-pta
 	# -Wodr warnings, see bug #854357 and https://github.com/doxygen/doxygen/issues/9287
 	filter-lto
 
