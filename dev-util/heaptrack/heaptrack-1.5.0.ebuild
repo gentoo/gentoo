@@ -42,6 +42,15 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# This doesn't exist in libunwind (bug #898768).
+	unw_backtrace_skip
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.0-c99.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	rm -rf 3rdparty/boost-zstd || die # ensure no bundling
