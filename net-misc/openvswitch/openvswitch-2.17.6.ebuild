@@ -36,8 +36,10 @@ BDEPEND="virtual/pkgconfig
 	$(python_gen_cond_dep '
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	')"
+
 PATCHES=(
 	"${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
+	"${FILESDIR}/openvswitch-2.17.6-groff-1.23.0.patch"
 )
 
 CONFIG_CHECK="~NET_CLS_ACT ~NET_CLS_U32 ~NET_SCH_INGRESS ~NET_ACT_POLICE ~IPV6 ~TUN"
