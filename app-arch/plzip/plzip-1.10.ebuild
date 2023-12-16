@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( https://download.savannah.gnu.org/releases/lzip/${PN}/$
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 
 RDEPEND="app-arch/lzlib:0="
 DEPEND="${RDEPEND}"
