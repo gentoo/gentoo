@@ -1,3 +1,10 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2023-12-16)
+# Apply additional patches for efficient playback on some SoCs.
+media-video/ffmpeg soc
+
 # Yixun Lan <dlan@gentoo.org> (2021-07-20)
 # Enable the GPU targets matching the default VIDEO_CARDS
 dev-ml/llvm-ocaml llvm_targets_AMDGPU
