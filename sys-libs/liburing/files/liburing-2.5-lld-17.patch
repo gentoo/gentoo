@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/919780
+https://github.com/axboe/liburing/commit/92b21aa1b4ea98e322c5eca9db1d94b837f4be75
+
+(Rebased.)
+
+From 92b21aa1b4ea98e322c5eca9db1d94b837f4be75 Mon Sep 17 00:00:00 2001
+From: Jens Axboe <axboe@kernel.dk>
+Date: Mon, 11 Dec 2023 13:14:54 -0700
+Subject: [PATCH] Rename ffi io_uring_prep_sock_cmd _> io_uring_prep_cmd_sock()
+
+The non-ffi versions already use this name, and to make this as painless
+as it can be, rename the ffi version even though it is technically
+the better one. The documentation also matches prep_cmd_sock().
+
+Link: https://github.com/axboe/liburing/issues/1013
+Fixes: 2459fef09411 ("io_uring_prep_cmd: Create a new helper for command ops")
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+--- a/src/liburing-ffi.map
++++ b/src/liburing-ffi.map
+@@ -179,5 +179,5 @@ LIBURING_2.4 {
+ LIBURING_2.5 {
+ 	global:
+ 		io_uring_queue_init_mem;
+-		io_uring_prep_sock_cmd;
++		io_uring_prep_cmd_sock;
+ } LIBURING_2.4;
