@@ -252,22 +252,15 @@ inherit check-reqs desktop dotnet-pkg xdg
 DESCRIPTION="Cross-platform automation and configuration tool"
 HOMEPAGE="https://microsoft.com/powershell/
 	https://github.com/PowerShell/PowerShell/"
-
-if [[ "${PV}" == *9999* ]] ; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/PowerShell/PowerShell.git"
-else
-	SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}.tar.xz"
-
-	KEYWORDS="~amd64 ~arm ~arm64"
-fi
-
-SRC_URI+=" ${NUGET_URIS} "
+SRC_URI="
+	https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}.tar.xz
+	${NUGET_URIS}
+"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-RESTRICT="test"  # TODO: "LibraryImports.g.cs" not found.
+KEYWORDS="~amd64 ~arm ~arm64"
+RESTRICT="test"                        # TODO: "LibraryImports.g.cs" not found.
 
 RDEPEND="
 	>=dev-libs/libpsl-native-7.4.0:=
@@ -289,13 +282,9 @@ DOTNET_PKG_PROJECTS=(
 	src/powershell-unix/powershell-unix.csproj
 	src/Modules/PSGalleryModules.csproj
 )
-# Lower warning level to skip CS0162 error for the "disable-telemetry" patch.
-DOTNET_PKG_BUILD_EXTRA_ARGS=(
-	-p:WarningLevel=1
-)
 PATCHES=(
-	"${FILESDIR}/pwsh-7.3.3-disable-telemetry.patch"
 	"${FILESDIR}/pwsh-7.3.3-disable-update-check.patch"
+	"${FILESDIR}/pwsh-7.4.0-disable-telemetry.patch"
 )
 
 DOCS=( CHANGELOG CHANGELOG.md CODE_OF_CONDUCT.md README.md docs )
@@ -303,13 +292,23 @@ DOCS=( CHANGELOG CHANGELOG.md CODE_OF_CONDUCT.md README.md docs )
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
-}
 
-src_unpack() {
-	dotnet-pkg_src_unpack
+	if [[ "${MERGE_TYPE}" != binary ]] ; then
+		local locales="$(locale -a)"
 
-	if [[ -n "${EGIT_REPO_URI}" ]] ; then
-		git-r3_src_unpack
+		if has en_US.utf8 ${locales} ; then
+			LC_ALL=en_US.utf8
+		elif has en_US.UTF-8 ${locales} ; then
+			LC_ALL=en_US.UTF-8
+		else
+			eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
+			eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
+
+			die "Could not switch to the en_US.UTF-8 locale."
+		fi
+
+		export LC_ALL
+		einfo "Successfully switched to the ${LC_ALL} locale."
 	fi
 }
 
