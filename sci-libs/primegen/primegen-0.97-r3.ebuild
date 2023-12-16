@@ -11,7 +11,7 @@ SRC_URI="https://cr.yp.to/primegen/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-man.patch
