@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/841296
+https://github.com/amule-project/amule/issues/342
+https://github.com/amule-project/amule/pull/368
+
+commit 1c57ce9c688d26d95fe8f9d7b7590f4670956749
+Author: matoro <matoro@users.noreply.github.com>
+Date:   Thu Dec 14 00:28:50 2023 -0500
+
+    SafeFile: do endian-swap on float tag values
+    
+    There are comments noting that writing raw float values may not be
+    endian-correct and indeed it is not.  WX does not provide functions for
+    endian-swapping floats, but since amule explicitly uses exclusively
+    single-precision (32-bit) floats, just cast it into a uint32_t for the
+    swapping.
+    
+    This is a no-op on little-endian.
+
+diff --git a/src/SafeFile.cpp b/src/SafeFile.cpp
+index 30f9a7f23..0d9c4f8e7 100644
+--- a/src/SafeFile.cpp
++++ b/src/SafeFile.cpp
+@@ -31,6 +31,7 @@
+ #include <common/Format.h>		// Needed for CFormat
+ #include "CompilerSpecific.h"		// Needed for __FUNCTION__
+ 
++#include <cstring>              // For std::memcpy
+ 
+ #define CHECK_BOM(size, x) ((size >= 3)  && (x[0] == (char)0xEF) && (x[1] == (char)0xBB) && (x[2] == (char)0xBF))
+ 
+@@ -189,6 +190,10 @@ float CFileDataIO::ReadFloat() const
+ {
+ 	float retVal;
+ 	Read(&retVal, sizeof(float));
++	uint32_t toswap{};
++	std::memcpy(&toswap, &retVal, sizeof(toswap));
++	toswap = ENDIAN_SWAP_32(toswap);
++	std::memcpy(&retVal, &toswap, sizeof(retVal));
+ 	return retVal;
+ }
+ 
+@@ -306,6 +311,10 @@ void CFileDataIO::WriteHash(const CMD4Hash& value)
+ 
+ void CFileDataIO::WriteFloat(float value)
+ {
++	uint32_t toswap{};
++	std::memcpy(&toswap, &value, sizeof(toswap));
++	toswap = ENDIAN_SWAP_32(toswap);
++	std::memcpy(&value, &toswap, sizeof(value));
+ 	Write(&value, sizeof(float));
+ }
+ 
