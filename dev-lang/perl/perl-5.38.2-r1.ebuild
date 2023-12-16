@@ -75,6 +75,7 @@ PDEPEND="
 		>=virtual/perl-Encode-3.120.0
 		>=virtual/perl-File-Temp-0.230.400-r2
 		>=virtual/perl-Data-Dumper-2.154.0
+		>=virtual/perl-Math-BigInt-1.999.842
 		virtual/perl-Test-Harness
 	)
 "
