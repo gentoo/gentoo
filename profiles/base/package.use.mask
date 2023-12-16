@@ -50,10 +50,6 @@ dev-haskell/scientific test
 dev-haskell/splitmix test
 dev-haskell/tasty-expected-failure test
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-14)
-# media-video/transcode is masked for removal.
-media-video/chaplin transcode
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
 # Broken with Qt6.6 and, given USE has no revdeps, simpler to just
 # mask for now to save desktop profile users (default bluetooth)
