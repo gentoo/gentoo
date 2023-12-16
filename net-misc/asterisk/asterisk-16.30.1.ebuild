@@ -19,7 +19,7 @@ IUSE_VOICEMAIL_STORAGE=(
 	voicemail_storage_odbc
 	voicemail_storage_imap
 )
-IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster codec2 curl dahdi debug deprecated doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog systemd unbound vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster codec2 curl debug deprecated doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog systemd unbound vorbis xmpp"
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -55,10 +55,6 @@ DEPEND="acct-user/asterisk
 	cluster? ( sys-cluster/corosync )
 	codec2? ( media-libs/codec2:= )
 	curl? ( net-misc/curl )
-	dahdi? (
-		net-libs/libpri
-		net-misc/dahdi-tools
-	)
 	freetds? ( dev-db/freetds )
 	gtalk? ( dev-libs/iksemel )
 	http? ( dev-libs/gmime:2.6 )
@@ -232,6 +228,9 @@ src_configure() {
 	# Disable conversion tools (which fails to compile in some cases).
 	_menuselect --disable astdb2bdb menuselect.makeopts
 
+	# dahdi isn't packaged anymore
+	_menuselect --disable app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
+
 	# The others are based on USE-flag settings
 	_use_select alsa         chan_alsa
 	_use_select bluetooth    chan_mobile
@@ -239,7 +238,6 @@ src_configure() {
 	_use_select cluster      res_corosync
 	_use_select codec2       codec_codec2
 	_use_select curl         func_curl res_config_curl res_curl
-	_use_select dahdi        app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
 	_use_select deprecated   app_macro
 	_use_select freetds      {cdr,cel}_tds
 	_use_select gtalk        chan_motif
