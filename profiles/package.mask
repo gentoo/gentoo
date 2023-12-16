@@ -264,7 +264,6 @@ dev-perl/PathTools
 # a lot of downstream patches just to keep it working, and it's broken
 # again (ffmpeg-5 this time).  The mask includes revdeps.
 # Removal on 2023-11-13.  Bug #861311.
-app-cdr/dvdshrink
 media-plugins/vdr-burn
 media-plugins/vdr-burn-templates
 media-video/dvd9to5
