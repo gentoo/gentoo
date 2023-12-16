@@ -40,6 +40,7 @@ BDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/libseccomp-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
+	"${FILESDIR}"/libseccomp-2.5.5-which-hunt.patch
 )
 
 src_prepare() {
