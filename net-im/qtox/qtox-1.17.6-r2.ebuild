@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="qTox-${PV}"
 	SRC_URI="https://github.com/qTox/qTox/releases/download/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/qTox"
 fi
 
