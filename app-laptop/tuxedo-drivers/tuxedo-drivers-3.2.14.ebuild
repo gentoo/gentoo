@@ -8,7 +8,7 @@ inherit linux-mod-r1
 
 DESCRIPTION="Kernel Module for Tuxedo Keyboard"
 HOMEPAGE="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers"
-SRC_URI="https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v${PV}/tuxedo-drivers-v${PV}.tar.bz2"
+SRC_URI="https://gitlab.com/tuxedocomputers/development/packages/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=( )
 
-S="${WORKDIR}/tuxedo-drivers-v${PV}"
+S="${WORKDIR}/${PN}-v${PV}"
 
 src_compile() {
 	local modlist=(
