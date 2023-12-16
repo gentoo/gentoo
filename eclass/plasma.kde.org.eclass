@@ -81,6 +81,7 @@ if [[ ${_PSLOT} == 6 ]]; then
 	case ${PN} in
 		kglobalacceld | \
 		kwayland | \
+		kwayland-integration | \
 		libplasma | \
 		ocean-sound-theme | \
 		plasma-activities | \
