@@ -19,7 +19,6 @@
   </longdescription>
   <use>
     <flag name="llvm">Build LLVM code generator</flag>
-    <flag name="jit">Enable experimental JIT complilation with LLVM</flag>
   </use>
   <upstream>
     <bugs-to>https://github.com/nickg/nvc/issues/</bugs-to>
