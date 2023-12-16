@@ -265,7 +265,6 @@ dev-perl/PathTools
 # again (ffmpeg-5 this time).  The mask includes revdeps.
 # Removal on 2023-11-13.  Bug #861311.
 media-plugins/vdr-burn
-media-plugins/vdr-burn-templates
 media-video/dvd9to5
 media-video/dvdrip
 media-video/transcode
