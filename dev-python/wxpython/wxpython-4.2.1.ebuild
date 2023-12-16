@@ -49,6 +49,7 @@ BDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
