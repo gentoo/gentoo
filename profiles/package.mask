@@ -204,11 +204,6 @@ dev-haskell/terminfo
 =sys-fs/btrfs-progs-6.6-r1
 =sys-fs/btrfs-progs-6.6-r2
 
-# Mart Raudsepp <leio@gentoo.org> (2023-11-04)
-# gst-transcoder was merged into gst-plugins-bad and can be installed via
-# media-libs/gst-plugins-bad instead. Removal on 2023-12-04. Bug #916871.
-media-plugins/gst-transcoder
-
 # Michał Górny <mgorny@gentoo.org> (2023-10-29)
 # This version contains a major bug that causes pytest internal error
 # when tests are skippeed at module level.
