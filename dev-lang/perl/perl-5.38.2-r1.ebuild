@@ -538,6 +538,10 @@ src_configure() {
 
 	use sparc && myconf -Ud_longdbl
 
+	# This urgently needs debugging - on m68k, miniperl crashes during
+	# build otherwise..
+	use m68k && append-ldflags -Wl,-z,norelro
+
 	export BUILD_BZIP2=0
 	export BZIP2_INCLUDE=${EROOT}/usr/include
 	export BZIP2_LIB=${EROOT}/usr/$(get_libdir)
