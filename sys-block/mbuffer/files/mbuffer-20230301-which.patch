@@ -1,3 +1,4 @@
+Sent upstream by email on 2023-12-16.
 --- a/mkversion.sh
 +++ b/mkversion.sh
 @@ -21,9 +21,9 @@
