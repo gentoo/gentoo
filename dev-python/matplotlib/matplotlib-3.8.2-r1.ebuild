@@ -112,6 +112,12 @@ BDEPEND="
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
+		!s390? (
+			|| (
+				media-video/ffmpeg[openh264]
+				media-video/ffmpeg[x264]
+			)
+		)
 		gtk3? (
 			>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
 			x11-libs/gtk+:3[introspection]
