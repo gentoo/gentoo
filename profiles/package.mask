@@ -252,7 +252,6 @@ dev-libs/libtreadstone
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-23)
 # Java libraries. No reverse dependencies.
 # Removal on 2023-11-23.
-dev-java/apache-rat-core
 dev-java/apache-rat-tasks
 
 # Ulrich Müller <ulm@gentoo.org> (2023-10-19)
