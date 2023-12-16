@@ -423,10 +423,6 @@ media-sound/pulseaudio-daemon webrtc-aec
 # mips only use flags
 >=sci-libs/fftw-3 zbus
 
-# Samuli Suominen <ssuominen@gentoo.org> (2011-12-06)
-# NuppelVideo is available on x86 only
-media-video/transcode nuv pic
-
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86, so
 # mask the flag here and unmask it in the appropriate arch profiles.

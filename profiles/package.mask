@@ -259,13 +259,6 @@ dev-libs/libtreadstone
 # Removal on 2023-11-15.
 dev-perl/PathTools
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-14)
-# media-video/transcode is dead for many years.  We already piled up
-# a lot of downstream patches just to keep it working, and it's broken
-# again (ffmpeg-5 this time).  The mask includes revdeps.
-# Removal on 2023-11-13.  Bug #861311.
-media-video/transcode
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3

@@ -317,7 +317,6 @@ media-sound/mpg123 -sdl
 media-video/ffmpeg -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
-media-video/transcode -sdl
 >=x11-libs/wxGTK-3 -sdl
 
 # Michał Górny <mgorny@gentoo.org> (2018-07-07)
