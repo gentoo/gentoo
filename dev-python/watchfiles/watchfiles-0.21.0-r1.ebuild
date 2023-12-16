@@ -85,7 +85,7 @@ LICENSE+="
 	|| ( Artistic-2 CC0-1.0 )
 "
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/anyio-3.0.0[${PYTHON_USEDEP}]
