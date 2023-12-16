@@ -105,19 +105,15 @@ nssarch() {
 }
 
 nssbits() {
-	# bgo#917792
-	if tc-is-clang && use x86 ; then
-		filter-lto
-	fi
-
 	local cc cppflags="${1}CPPFLAGS" cflags="${1}CFLAGS"
 	if [[ ${1} == BUILD_ ]]; then
 		cc=$(tc-getBUILD_CC)
 	else
 		cc=$(tc-getCC)
 	fi
+	# TODO: Port this to toolchain-funcs tc-get-ptr-size/tc-get-build-ptr-size
 	echo > "${T}"/test.c || die
-	${cc} ${!cppflags} ${!cflags} -c "${T}"/test.c -o "${T}/${1}test.o" || die
+	${cc} ${!cppflags} ${!cflags} -fno-lto -c "${T}"/test.c -o "${T}/${1}test.o" || die
 	case $(file "${T}/${1}test.o") in
 		*32-bit*x86-64*) echo USE_X32=1;;
 		*64-bit*|*ppc64*|*x86_64*) echo USE_64=1;;
@@ -175,10 +171,6 @@ multilib_src_compile() {
 		export CC_IS_GCC=1
 	elif tc-is-clang; then
 		export CC_IS_CLANG=1
-		if use x86 ; then
-			filter-lto
-			elog "lto disabled when using clang on x86. bgo#917792"
-		fi
 	fi
 
 	export NSS_DISABLE_GTESTS=$(usex !test 1 0)
