@@ -17,8 +17,8 @@ IUSE="debug fftw l10n_nl ncurses ssl +tfo"
 
 RDEPEND="
 	fftw? ( sci-libs/fftw:3.0 )
-	ncurses? ( sys-libs/ncurses:0= )
-	ssl? ( dev-libs/openssl:0= )
+	ncurses? ( sys-libs/ncurses:= )
+	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="ncurses? ( virtual/pkgconfig )"
@@ -29,6 +29,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-flags.patch
+	"${FILESDIR}"/${PN}-2.9-c99.patch
 )
 
 src_prepare() {

@@ -1,0 +1,35 @@
+https://github.com/folkertvanheusden/HTTPing/pull/12
+
+From 684a6e255ea2f5b11a0548e5d99c2678be7563d9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 16 Dec 2023 10:48:17 +0000
+Subject: [PATCH] http.c: add <stdlib.h> for malloc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 14 makes implicit function declarations an error by default:
+```
+http.c: In function ‘get_HTTP_headers’:
+http.c:21:32: error: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   21 |         char *buffer = (char *)malloc(len + 1);
+      |                                ^~~~~~
+http.c:16:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+   15 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+   16 |
+[...]
+```
+
+Bug: https://bugs.gentoo.org/920107
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/http.c
++++ b/http.c
+@@ -2,6 +2,7 @@
+ 
+ #include <assert.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+ #ifndef NO_SSL
