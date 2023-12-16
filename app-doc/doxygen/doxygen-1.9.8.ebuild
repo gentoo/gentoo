@@ -98,13 +98,9 @@ src_prepare() {
 		doc/maintainers.txt || die
 
 	if is-flagq "-O3" ; then
-		ewarn
+		# TODO: Investigate this and report a bug accordingly...
 		ewarn "Compiling with -O3 is known to produce incorrectly"
-		ewarn "optimized code which breaks doxygen."
-		ewarn
-		elog
-		elog "Continuing with -O2 instead ..."
-		elog
+		ewarn "optimized code which breaks doxygen. Using -O2 instead."
 		replace-flags "-O3" "-O2"
 	fi
 }
