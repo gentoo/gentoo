@@ -106,10 +106,6 @@ sys-apps/util-linux nls
 # Needs libexecinfo on musl, not yet packaged
 sys-libs/compiler-rt-sanitizers gwp-asan
 
-# James Le Cuirot <chewi@gentoo.org> (2020-05-16)
-# execinfo.h is required for debug.
-dev-games/cegui debug
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-19)
 # check does not work on musl, bug #713138
 dev-lang/gforth check
