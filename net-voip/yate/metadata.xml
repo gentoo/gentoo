@@ -6,7 +6,6 @@
 		<name>Radio</name>
 	</maintainer>
 	<use>
-		<flag name="dahdi">Enable Dahdi driver</flag>
 		<flag name="zaptel">Enable Zaptel driver</flag>
 		<flag name="wpcard">Enable Wanpipe card driver</flag>
 		<flag name="tdmcard">Enable TDMV API card driver</flag>

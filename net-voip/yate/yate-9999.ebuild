@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="doc cpu_flags_x86_sse2 sctp dahdi zaptel wpcard tdmcard wanpipe +ilbc +ilbc-webrtc +isac-float isac-fixed postgres mysql +gsm +speex spandsp +ssl +zlib amrnb"
+IUSE="doc cpu_flags_x86_sse2 sctp zaptel wpcard tdmcard wanpipe +ilbc +ilbc-webrtc +isac-float isac-fixed postgres mysql +gsm +speex spandsp +ssl +zlib amrnb"
 
 RDEPEND="
 	postgres? ( dev-db/postgresql:* )
@@ -30,7 +30,6 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 	ilbc? ( media-libs/libilbc:= )
 	spandsp? ( >=media-libs/spandsp-0.0.3 )
-	dahdi? ( net-misc/dahdi )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -61,7 +60,7 @@ src_configure() {
 		--without-libqt4 \
 		$(use_enable cpu_flags_x86_sse2 sse2) \
 		$(use_enable sctp) \
-		$(use_enable dahdi) \
+		--disable-dahdi \
 		$(use_enable zaptel) \
 		$(use_enable wpcard) \
 		$(use_enable tdmcard) \
