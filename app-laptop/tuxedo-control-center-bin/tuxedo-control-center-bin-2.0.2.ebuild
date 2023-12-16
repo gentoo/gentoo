@@ -17,7 +17,7 @@ KEYWORDS="-* ~amd64"
 
 RESTRICT="strip splitdebug"
 
-DEPEND=">=app-laptop/tuxedo-keyboard-3.1.3"
+DEPEND=">=app-laptop/tuxedo-drivers-3.2.14"
 RDEPEND="${DEPEND}"
 # See bug #827729
 BDEPEND="app-arch/xz-utils[extra-filters]"
