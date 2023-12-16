@@ -249,11 +249,6 @@ dev-libs/libe
 dev-libs/libpo6
 dev-libs/libtreadstone
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-10-23)
-# Java libraries. No reverse dependencies.
-# Removal on 2023-11-23.
-dev-java/apache-rat-tasks
-
 # Ulrich Müller <ulm@gentoo.org> (2023-10-19)
 # Pretest versions, masked for testing.
 <app-editors/emacs-29.1.9999:29-vcs
