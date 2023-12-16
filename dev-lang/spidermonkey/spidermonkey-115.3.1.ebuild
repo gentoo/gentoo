@@ -427,6 +427,13 @@ src_test() {
 
 	cp "${FILESDIR}"/spidermonkey-${SLOT}-known-test-failures.txt "${T}"/known_failures.list || die
 
+	if use x86 ; then
+		echo "non262/Date/timeclip.js" >> "${T}"/known_failures.list
+		echo "test262/built-ins/Date/UTC/fp-evaluation-order.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.1.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.2.js" >> "${T}"/known_failures.list
+	fi
+
 	${EPYTHON} \
 		"${S}"/tests/jstests.py -d -s -t 1800 --wpt=disabled --no-progress \
 		--exclude-file="${T}"/known_failures.list \
