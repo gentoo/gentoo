@@ -16,7 +16,4 @@
 		<flag name="uhd">Build with Ettus Research USRP Hardware Driver support through <pkg>net-wireless/uhd</pkg></flag>
 		<flag name="xtrx">Build with xtrx Hardware Driver support through <pkg>net-wireless/libxtrx</pkg></flag>
 	</use>
-	<upstream>
-		<remote-id type="github">osmocom/gr-osmosdr</remote-id>
-	</upstream>
 </pkgmetadata>
