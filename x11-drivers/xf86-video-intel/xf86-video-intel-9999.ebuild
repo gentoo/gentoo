@@ -64,6 +64,8 @@ pkg_setup() {
 src_configure() {
 	# bug #582910
 	replace-flags -Os -O2
+	# Uses the 'flatten' attribute which explodes with LTO (bug #864379)
+	filter-lto
 
 	local XORG_CONFIGURE_OPTIONS=(
 		--disable-dri1
