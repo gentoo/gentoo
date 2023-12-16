@@ -16,7 +16,7 @@ else
 		MY_PV="${PV}"
 	fi
 	SRC_URI="https://github.com/votca/votca/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	KEYWORDS="amd64 ~x86 ~amd64-linux"
 	S="${WORKDIR}/votca-${MY_PV}"
 fi
 
