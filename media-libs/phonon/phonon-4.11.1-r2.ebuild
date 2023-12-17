@@ -33,7 +33,7 @@ BDEPEND="
 "
 PDEPEND="
 	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.60 )
-	vlc? ( >=media-libs/phonon-vlc-0.9.60 )
+	vlc? ( >=media-libs/phonon-vlc-0.9.60[qt5(+)] )
 "
 
 PATCHES=( "${FILESDIR}/${P}-clang-16.patch" ) # bug 894346
