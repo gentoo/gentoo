@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 PYPI_NO_NORMALIZE=1
 inherit distutils-r1 pypi
 
-DESCRIPTION=" setuptools plugin for building mo files"
+DESCRIPTION="Setuptools plugin for building mo files"
 HOMEPAGE="
 	https://pypi.org/project/setuptools-gettext/
 	https://github.com/breezy-team/setuptools-gettext
