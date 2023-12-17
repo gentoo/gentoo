@@ -11,7 +11,7 @@ VIM_PATCHES_VERSION="9.0.2092"
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31 ruby32"
 
 inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single toolchain-funcs desktop xdg-utils
 
