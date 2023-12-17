@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools fixheadtails qmail
+inherit autotools fixheadtails qmail toolchain-funcs
 
-HOMEPAGE="http://www.inter7.com/index.php?page=vpopmail"
+HOMEPAGE="https://www.inter7.com/index.php?page=vpopmail"
 DESCRIPTION="Collection of programs to manage virtual email on Qmail servers"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ~hppa ~ia64 ppc64 ~s390 sparc x86"
 IUSE="clearpasswd ipalias maildrop mysql postgres spamassassin"
