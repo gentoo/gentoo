@@ -1,9 +1,9 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit flag-o-matic vdr-plugin-2
 
 MY_PV=0.9.13-MKIV-pre3
 MY_P=${PN}-${MY_PV}
