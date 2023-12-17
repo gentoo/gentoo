@@ -6,8 +6,8 @@
 <name>Jason A. Donenfeld</name>
 </maintainer>
 <maintainer type="project">
-<email>sound@gentoo.org</email>
-<name>Gentoo Sound project</name>
+<email>proaudio@gentoo.org</email>
+<name>Gentoo ProAudio Project</name>
 </maintainer>
 <upstream>
 <remote-id type="github">michaelwillis/dragonfly-reverb</remote-id>
