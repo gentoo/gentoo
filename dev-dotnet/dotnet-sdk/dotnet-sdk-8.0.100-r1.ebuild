@@ -40,7 +40,7 @@ SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 S="${WORKDIR}/${PN}-${RUNTIME_SLOT}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CURRENT_NUGETS_DEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
