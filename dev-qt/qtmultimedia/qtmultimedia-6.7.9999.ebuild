@@ -15,7 +15,7 @@ IUSE="+X alsa +ffmpeg gstreamer opengl pulseaudio qml v4l vaapi vulkan"
 # tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
-	vaapi? ( ffmpeg )
+	vaapi? ( ffmpeg opengl )
 	test? ( qml )
 "
 
@@ -30,15 +30,14 @@ RDEPEND="
 			x11-libs/libXext
 			x11-libs/libXrandr
 		)
-		vaapi? ( media-libs/libglvnd )
 	)
 	gstreamer? (
 		dev-libs/glib:2
 		media-libs/gst-plugins-bad:1.0
 		media-libs/gst-plugins-base:1.0[X=,opengl?]
 		media-libs/gstreamer:1.0
-		opengl? ( media-libs/libglvnd )
 	)
+	opengl? ( media-libs/libglvnd )
 	pulseaudio? ( media-libs/libpulse )
 	qml? (
 		~dev-qt/qtdeclarative-${PV}:6
