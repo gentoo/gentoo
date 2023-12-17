@@ -119,10 +119,6 @@ dev-python/bracex doc
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
 
-# Andrey Grozin <grozin@gentoo.org> (2022-09-02)
-# dev-libs/capstone not keyworded
-dev-lisp/sbcl capstone
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
@@ -251,10 +247,6 @@ app-text/enchant voikko
 # dev-embedded/libftd2xx unavailable here
 dev-embedded/urjtag ftd2xx
 
-# Matthias Maier <tamiko@gentoo.org> (2020-12-03)
-# Requires sci-mathematics/z3.
-dev-util/cppcheck z3
-
 # Mart Raudsepp <leio@gentoo.org> (2020-11-26)
 # dev-libs/libmanette not keyworded, limited usefulness
 net-libs/webkit-gtk gamepad
@@ -382,10 +374,6 @@ app-portage/g-sorcery bson
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
 # app-emacs/wanderlust is not keyworded
 app-emacs/elscreen wanderlust
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-20)
-# Mask as dev-lang/spidermonkey:0 does not work on sparc, bug #710204
-net-libs/libproxy spidermonkey
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded

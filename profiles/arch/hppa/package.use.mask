@@ -176,10 +176,6 @@ dev-cpp/eigen test
 # Avoid unkeyworded sci dependencies for bug #804115
 sci-libs/pastix starpu
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-24)
-# dev-ruby/furo isn't keyworded here
-dev-python/argon2-cffi doc
-
 # Sam James <sam@gentoo.org> (2021-10-24)
 # Avoid Pipewire for now because of new wireplumber dependency which lacks
 # keywords. Doubt anybody is using PW here anyway right now.
@@ -231,10 +227,6 @@ sys-apps/groff uchardet
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
-
-# Matthias Maier <tamiko@gentoo.org> (2020-12-03)
-# Requires sci-mathematics/z3.
-dev-util/cppcheck z3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
 # media-sound/lash not keyworded, bug #736725

@@ -229,12 +229,6 @@ sys-block/fio python gnuplot
 app-emulation/aranym jit
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
-# net-libs/quiche is not available on all arches
-# Track addition arch keywording of quiche at:
-# bug #694320
-net-misc/curl quiche
-
-# Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
 net-misc/curl nghttp3
 
@@ -371,10 +365,6 @@ sys-apps/systemd-utils boot ukify
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
 media-libs/libbluray bdplus
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
-# It's only supported on amd64
-dev-db/mariadb tokudb
 
 # Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Not working on 64bit systems

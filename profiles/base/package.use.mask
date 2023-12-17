@@ -77,14 +77,6 @@ sci-libs/gloo ssl
 # Polymake itself is masked for removal (bug 909570).
 sci-mathematics/singular polymake
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-08-12)
-# php-7.x is End-of-Life (EOL) and masked, but these packages don't
-# support any newer versions with USE=php. Bugs 912183, 912184,
-# and 912185.
-dev-libs/redland-bindings php
-media-gfx/exact-image php
-sci-geosciences/mapserver php
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on
@@ -152,10 +144,6 @@ app-emulation/qemu aio
 # Doesn't compile, see #894210.
 dev-libs/log4cxx smtp
 
-# Mike Gilbert <floppym@gentoo.org> (2023-05-04)
-# Requires unreleased >media-libs/libaom-3.6.0.
->=www-client/chromium-113 system-av1
-
 # Sam James <sam@gentoo.org> (2023-05-01)
 # Doc building is broken with Python 3.11. See https://github.com/ukoethe/vigra/issues/529.
 media-libs/vigra doc
@@ -184,10 +172,6 @@ dev-java/ant-apache-bsf python
 # https://bugs.gentoo.org/833097
 # https://bugs.gentoo.org/833098
 dev-java/openjdk:11 lto
-
-# Sam James <sam@gentoo.org> (2023-03-29)
-# Depends on last-rited kde-apps/kross-interpreters.
-kde-apps/kdesdk-meta ruby
 
 # Sam James <sam@gentoo.org> (2023-03-15)
 # Signing key is expired on Savannah. The same key is renewed elsewhere
@@ -232,10 +216,6 @@ dev-libs/libffi exec-static-trampoline
 # fragility to Portage which relies on pax-utils' scanelf heavily. bug #815877.
 app-misc/pax-utils seccomp
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-20)
-# sys-cluster/ganglia is masked for removal.
-app-metrics/collectd collectd_plugins_gmond
-
 # Sam James <sam@gentoo.org> (2022-12-17)
 # Broken when trying to use sys-libs/binutils-libs header, bug #879067
 >=x11-libs/cairo-1.17.6 debug
@@ -248,11 +228,6 @@ x11-wm/stumpwm doc
 # USE=tbb is broken in 7.7.0
 # https://tracker.dev.opencascade.org/view.php?id=33152
 ~sci-libs/opencascade-7.7.0 tbb
-
-# Sam James <sam@gentoo.org> (2022-11-24)
-# Depends on old dev-lang/spidermonkey:68, bug #807772
-# Particularly unwise given it parses data from network.
-net-libs/libproxy spidermonkey
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not keyworded on most architectures
@@ -339,11 +314,6 @@ sci-physics/bullet tbb
 # This flag concerns an x86-specific problem.
 sys-libs/glibc stack-realign
 sys-libs/ncurses stack-realign
-
-# Matt Turner <mattst88@gentoo.org> (2022-06-21)
-# Depends on old spidermonkey:68. Upstream recommends using Duktape or Webkit
-# for PAC parsing. See https://github.com/libproxy/libproxy/pull/139
->=net-libs/libproxy-0.4.18 spidermonkey
 
 # Maciej Barć <xgqt@gentoo.org> (2022-05-31)
 # "doc" require old version of dev-python/antlr4-python3-runtime (4.9.3)
@@ -439,10 +409,6 @@ x11-misc/read-edid vbe-mode
 # https://bugs.gentoo.org/813954
 # https://github.com/rust-lang/rust/issues/89108
 dev-lang/rust parallel-compiler
-
-# Stephan Hartmann <sultan@gentoo.org> (2021-09-16)
-# Uses a function that is not available in media-video/ffmpeg.
->=www-client/chromium-94 system-ffmpeg
 
 # Petr Vanek <arkamar@atlas.cz> (2021-09-12)
 # rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
@@ -625,12 +591,6 @@ dev-python/autobahn xbr
 # Multiple runtime crashes, see bug #724672
 media-gfx/inkscape jemalloc
 
-# Stephan Hartmann <stha09@googlemail.com> (2020-16-06)
-# Mostly intended for debugging and development,
-# not recommended for general use. Build is also often
-# broken.
-www-client/chromium component-build
-
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
 net-fs/samba test
@@ -730,12 +690,6 @@ app-text/ghostscript-gpl l10n_ja
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi
-
-# William Hubbs <williamh@gentoo.org> (2019-01-13)
-# For memtest86+ mask the floppy use flag since it requires grub:0 which
-# is being removed
-# (bug #674364)
-sys-apps/memtest86+ floppy
 
 # Alfredo Tupone <tupone@gentoo.org> (2018-11-18)
 # go brokes build of gnat-gpl

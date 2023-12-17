@@ -79,7 +79,6 @@ net-misc/unison gtk
 # Michał Górny <mgorny@gentoo.org> (2019-09-08)
 # virtual/jdk is not stable here.
 sci-mathematics/z3 java
-media-libs/portmidi java
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
@@ -106,7 +105,6 @@ app-text/dblatex inkscape
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # Requires not stabilised dev-python/matplotlib
 dev-python/numpydoc test
-dev-python/ipython matplotlib
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-01-25)
 # Requires not stabilised app-text/libexttextcat, bug #637086

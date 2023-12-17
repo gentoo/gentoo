@@ -399,10 +399,6 @@ sys-apps/systemd-utils -boot -ukify
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
-# It's only supported on amd64
-dev-db/mariadb -tokudb
-
 # Samuli Suominen <ssuominen@gentoo.org> (2014-02-16)
 # Still considered experimental by upstream:
 # https://sourceforge.net/p/mikmod/bugs/16/#17ea

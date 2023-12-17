@@ -306,7 +306,6 @@ dev-libs/libcec -raspberry-pi
 
 # Thomas Deutschmann <whissi@gentoo.org> (2016-03-19)
 # Unkeyworded deps, bug #564274
-app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_ipmi
 app-metrics/collectd collectd_plugins_modbus
 app-metrics/collectd collectd_plugins_oracle

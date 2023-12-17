@@ -232,11 +232,6 @@ media-tv/kodi system-ffmpeg
 # No patch yet, #516626
 >=net-fs/netatalk-3.1.3 acl
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2014-06-12)
-# Chromium builds in PIC mode on most arches anyway,
-# i.e. this use flag has no effect on them.
-www-client/chromium pic
-
 # Zac Medico <zmedico@gentoo.org> (2012-12-04)
 # Force app-shells/bash[readline] in stage1 builds, so that compgen is
 # available for sys-apps/portage (see bug #445576).

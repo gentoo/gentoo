@@ -61,10 +61,6 @@ sys-devel/clang extra
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 bluetooth location speech
 
-# Andrey Grozin <grozin@gentoo.org> (2022-09-02)
-# dev-libs/capstone not keyworded
-dev-lisp/sbcl capstone
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs

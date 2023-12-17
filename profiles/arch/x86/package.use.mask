@@ -90,10 +90,6 @@ sys-cluster/slurm nvml
 # ada bootstrap currently only available on amd64/x86
 sys-devel/gcc -ada
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-09-11)
-# media-libs/qtav not keyworded yet
-media-gfx/kphotoalbum qtav
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs

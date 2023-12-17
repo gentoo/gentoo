@@ -96,4 +96,3 @@ sci-libs/plplot ocaml
 # Mask due Gnome3 not going to be stabilized on this arch
 gnome-base/gvfs google
 mail-client/balsa webkit
-net-libs/libproxy webkit

@@ -139,10 +139,6 @@ dev-python/scipy fortran
 # No real point in running it here right now, bug #804115.
 dev-cpp/eigen test
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2021-10-24)
-# dev-ruby/furo isn't keyworded here
-dev-python/argon2-cffi doc
-
 # Sam James <sam@gentoo.org> (2021-09-12)
 # dev-ruby/asciidoctor isn't keyworded here
 dev-util/ccache doc
@@ -342,7 +338,6 @@ net-analyzer/wireshark doc
 # Masked due to missing deps. Some *could* have their deps keyworded,
 # but we're trying to keep the maintenance load low.
 app-metrics/collectd collectd_plugins_amqp
-app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_gps
 app-metrics/collectd collectd_plugins_ipmi
 app-metrics/collectd collectd_plugins_modbus
