@@ -24,9 +24,6 @@
     <flag name="hwloc">
       Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support
     </flag>
-    <flag name="opencl">
-      Enable OpenCL support
-    </flag>
   </use>
   <upstream>
     <remote-id type="github">xmrig/xmrig</remote-id>

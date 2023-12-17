@@ -232,6 +232,7 @@ offensive - Enable potentially offensive items in packages
 ofx - Enable support for importing (and exporting) OFX (Open Financial eXchange) data files
 ogg - Add support for the Ogg container format (commonly used by Vorbis, Theora and flac)
 openal - Add support for the Open Audio Library
+opencl - Enable OpenCL support (computation on GPU)
 openexr - Support for the OpenEXR graphics file format
 opengl - Add support for OpenGL (3D graphics)
 openmp - Build support for the OpenMP (support parallel computing), requires >=sys-devel/gcc-4.2 built with USE="openmp"
