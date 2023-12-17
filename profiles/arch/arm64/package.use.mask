@@ -19,7 +19,7 @@ media-video/obs-studio -mpegts
 
 # Sam James <sam@gentoo.org> (2023-10-11)
 # Supports 64-bit NEON
-dev-libs/botan -cpu_flags_arm_neo
+dev-libs/botan -cpu_flags_arm_neon
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
