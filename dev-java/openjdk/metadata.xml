@@ -23,7 +23,6 @@
 		<flag name="javafx" restrict="&lt;=dev-java/openjdk-9">Provide JavaFX support via <pkg>dev-java/openjfx</pkg></flag>
 		<flag name="javafx" restrict="&gt;=dev-java/openjdk-11">Import OpenJFX modules at build time, via <pkg>dev-java/openjfx</pkg></flag>
 		<flag name="jbootstrap">Build OpenJDK twice, the second time using the result of the first</flag>
-		<flag name="lto">Enable Link Time Optimization (LTO)</flag>
 		<flag name="source">Install JVM sources</flag>
 		<flag name="system-bootstrap">Bootstrap using installed openjdk</flag>
 		<flag name="systemtap" restrict="&gt;=dev-java/openjdk-11">Enable SystemTAP/DTrace tracing</flag>

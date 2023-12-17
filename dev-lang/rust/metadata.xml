@@ -12,7 +12,6 @@
 	<use>
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="dist">Install dist tarballs (used for bootstrapping)</flag>
-		<flag name="lto">Optimize the build using Link Time Optimization (LTO)</flag>
 		<flag name="miri">Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)</flag>
 		<flag name="nightly">Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>

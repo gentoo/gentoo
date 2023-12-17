@@ -23,9 +23,6 @@
 			by running Python's test suite and collecting statistics
 			based on its performance. This will take longer to build.
 		</flag>
-		<flag name="lto">
-			Optimize the build using Link Time Optimization (LTO)
-		</flag>
 		<flag name="valgrind">
 			Disable pymalloc when running under
 			<pkg>dev-util/valgrind</pkg> is detected (may incur minor

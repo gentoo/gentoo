@@ -13,7 +13,6 @@
 		<!--<flag name="hsa">Enable the HSA base profile runtime device driver</flag>-->
 		<flag name="hwloc">Enable hwloc support</flag>
 		<flag name="memmanager">Enables custom memory manager. Except for special circumstances, this should be disabled</flag>
-		<flag name="lto">Adds support for link time optimization</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pocl/pocl</remote-id>

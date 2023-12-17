@@ -39,7 +39,6 @@
 		<flag name="http2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 		<flag name="ilbc">Build with iLBC support in RTP Player using <pkg>media-libs/libilbc</pkg></flag>
 		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
-		<flag name="lto">Enable link time optimization</flag>
 		<flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
 		<flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
 		<flag name="minizip">Build with zip file compression support</flag>
