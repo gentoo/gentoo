@@ -7,12 +7,16 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="Software synthesizer capable of making a countless number of instruments"
 HOMEPAGE="https://zynaddsubfx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/zynaddsubfx/${P}.tar.bz2"
+
+SRC_URI="
+	mirror://sourceforge/zynaddsubfx/${P}.tar.bz2
+	mirror://sourceforge/zynaddsubfx/zyn-fusion-ui-src-${PV}.tar.bz2
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
-IUSE="+alsa doc dssi +fltk jack lash portaudio"
+KEYWORDS="~amd64"
+IUSE="+alsa doc dssi jack lash portaudio"
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
 DEPEND="
@@ -23,16 +27,14 @@ DEPEND="
 	alsa? ( media-libs/alsa-lib )
 	doc? ( dev-texlive/texlive-fontutils )
 	dssi? ( media-libs/dssi )
-	fltk? (
-		x11-libs/fltk:1
-		x11-libs/libX11
-		x11-libs/libXpm
-	)
 	jack? ( virtual/jack )
 	lash? ( media-sound/lash )
 	portaudio? ( media-libs/portaudio )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	media-fonts/roboto
+"
 BDEPEND="
 	dev-lang/ruby:*
 	virtual/pkgconfig
@@ -42,6 +44,13 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-docs.patch
 	"${FILESDIR}"/${P}-stdint.patch
+	"${FILESDIR}"/${P}-libzest_location.patch
+)
+ZYN_FUSION_UI_PATCHES=(
+	"${FILESDIR}"/zyn-fusion-ui-${PV}-cflags_ldflags.patch
+	"${FILESDIR}"/zyn-fusion-ui-${PV}-libzest_location.patch
+	"${FILESDIR}"/zyn-fusion-ui-${PV}-makefile_find.patch
+	"${FILESDIR}"/zyn-fusion-ui-${PV}-system_wide_location.patch
 )
 
 DOCS=( AUTHORS.txt NEWS.txt README.adoc )
@@ -64,6 +73,9 @@ src_prepare() {
 
 	# FIXME upstream: sandbox error
 	sed -i -e '/add_subdirectory(bash-completion)/d' doc/CMakeLists.txt || die
+
+	cd ../zyn-fusion-ui-src-${PV}
+	eapply "${ZYN_FUSION_UI_PATCHES[@]}"
 }
 
 src_configure() {
@@ -71,9 +83,11 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DPluginLibDir=$(get_libdir)
+		-DGuiModule=zest
+		-DDefaultInput=jack
+		-DDefaultOutput=jack
 		$(cmake_use_find_package alsa Alsa)
 		$(cmake_use_find_package doc Doxygen)
-		$(cmake_use_find_package fltk FLTK)
 	)
 	cmake_src_configure
 }
@@ -81,11 +95,19 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	use doc && cmake_src_compile doc
+	emake -C ../zyn-fusion-ui-src-${PV}
 }
 
 src_install() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	cmake_src_install
-	insinto /usr/share/${PN}
-	doins -r instruments/*
+
+	cd ../zyn-fusion-ui-src-${PV}
+	newbin zest zyn-fusion
+	insinto /usr/$(get_libdir)/${PN}
+	doins libzest.so
+	insinto /usr/share/${PN}/qml
+	doins -r src/mruby-zest/{example,qml}/*.qml
+	insinto /usr/share/${PN}/schema
+	doins src/osc-bridge/schema/test.json
 }
