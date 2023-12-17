@@ -246,7 +246,6 @@ src_configure() {
 		-DWITH_ROUTER=$(usex router ON OFF)
 	)
 
-
 	if use debug; then
 		# Debug build type used extensively to add preprocessor definitions
 		local -x CMAKE_BUILD_TYPE="Debug"
