@@ -207,7 +207,7 @@ thoth.json.net@8.0.0
 
 inherit check-reqs dotnet-pkg
 
-DESCRIPTION=" FSharp source code formatter "
+DESCRIPTION="FSharp source code formatter"
 HOMEPAGE="https://fsprojects.github.io/fantomas/
 	https://github.com/fsprojects/fantomas/"
 
