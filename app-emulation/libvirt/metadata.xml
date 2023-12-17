@@ -96,6 +96,9 @@
 		<flag name="zfs">
 			Enable ZFS backend storage <pkg>sys-fs/zfs</pkg>
 		</flag>
+		<flag name="virtiofsd">
+			Drag in virtiofsd dependency <pkg>app-emulation/virtiofsd</pkg>
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">libvirt/libvirt</remote-id>

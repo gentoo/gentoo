@@ -518,3 +518,7 @@ media-sound/mpg123-base cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dno
 # saves people from needlessly installing nasm
 # Refs bug #93279
 media-sound/lame cpu_flags_x86_mmx
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is available here
+app-emulation/libvirt -virtiofsd

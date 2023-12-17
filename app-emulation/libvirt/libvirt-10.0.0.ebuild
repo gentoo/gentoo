@@ -32,7 +32,7 @@ IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
 	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nbd nfs nls numa
 	openvz parted pcap policykit +qemu rbd sasl selinux test +udev
-	virtualbox +virt-network wireshark-plugins xen zfs
+	virtiofsd virtualbox +virt-network wireshark-plugins xen zfs
 "
 RESTRICT="!test? ( test )"
 
@@ -120,6 +120,7 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
+	virtiofsd? ( app-emulation/virtiofsd )
 	wireshark-plugins? ( >=net-analyzer/wireshark-2.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.9.0
