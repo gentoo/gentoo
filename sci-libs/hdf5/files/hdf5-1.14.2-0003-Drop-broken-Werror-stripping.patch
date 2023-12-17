@@ -1,0 +1,37 @@
+From 5c87a2125ca2620de633e33a52020d12b7661da8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 17 Dec 2023 09:27:18 +0000
+Subject: [PATCH 3/3] Drop broken -Werror stripping
+
+The stripping is broken and mangles -Werror=x -> -x [0].
+
+[0] https://github.com/HDFGroup/hdf5/commit/41526f68f3482f2b3a7aa581288bc86e9c6dcb43#r100076265
+
+Bug: https://bugs.gentoo.org/917448
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8c6b6f4..a66830e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -189,14 +189,6 @@ saved_user_JAVAFLAGS="$JAVAFLAGS"
+ saved_user_LDFLAGS="$LDFLAGS"
+ saved_user_CPPFLAGS="$CPPFLAGS"
+ 
+-## Strip out -Werror from CFLAGS since that can cause checks to fail when
+-## compiling the test program fails due to warnings
+-CFLAGS="`echo $CFLAGS | sed -e 's/-Werror//g'`"
+-CXXFLAGS="`echo $CXXFLAGS | sed -e 's/-Werror//g'`"
+-FCFLAGS="`echo $FCFLAGS | sed -e 's/-Werror//g'`"
+-JAVACFLAGS="`echo $JAVACFLAGS | sed -e 's/-Werror//g'`"
+-CPPFLAGS="`echo $CPPFLAGS | sed -e 's/-Werror//g'`"
+-
+ ## Support F9X variable to define Fortran compiler if FC variable is
+ ## not used.  This should be deprecated in the future.
+ if test "x" = "x$FC"; then
+-- 
+2.43.0
+

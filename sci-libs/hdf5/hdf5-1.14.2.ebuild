@@ -37,8 +37,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.9-static_libgfortran.patch
-	"${FILESDIR}"/${PN}-1.12.2-no-strip-symbols.patch
+	"${FILESDIR}"/hdf5-1.14.2-0001-Make-sure-that-during-runtime-we-ll-use-the-same-lib.patch
+	"${FILESDIR}"/hdf5-1.14.2-0002-Disable-forced-stripping.patch
+	"${FILESDIR}"/hdf5-1.14.2-0003-Drop-broken-Werror-stripping.patch
 )
 
 pkg_setup() {
