@@ -17,7 +17,6 @@
 		<flag name="gloo">Use sci-libs/gloo</flag>
 		<flag name="nnpack">Use NNPACK</flag>
 		<flag name="numpy">Add support for math operations through numpy</flag>
-		<flag name="opencl">Use OpenCL</flag>
 		<flag name="opencv">Add support for image processing operators</flag>
 		<flag name="openmp">Use OpenMP for parallel code</flag>
 		<flag name="qnnpack">Use QNNPACK</flag>

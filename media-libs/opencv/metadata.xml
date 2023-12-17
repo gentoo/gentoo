@@ -34,7 +34,6 @@
 		<flag restrict="&gt;=media-libs/opencv-4.4.0" name="contribfreetype">Enable Drawing UTF-8 strings with freetype/harfbuzz</flag>
 		<flag restrict="&gt;=media-libs/opencv-4.4.0" name="contribovis">Enable Ogre vision module support</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.4.0" name="dnnsamples">Download dnn caffeemodel samples</flag>
-		<flag name="opencl">Add support for OpenCL</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>

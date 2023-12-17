@@ -23,7 +23,6 @@ This variant of the Wine packaging includes the Wine-Staging patchset.
 		<flag name="mingw">Build PE files using a MinGW toolchain for better compatibility</flag>
 		<flag name="mono">Enable .NET support using <pkg>app-emulation/wine-mono</pkg></flag>
 		<flag name="netapi">Enable support for configuring remote shares using <pkg>net-fs/samba</pkg></flag>
-		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="osmesa">Enable off-screen rendering (OpenGL in bitmaps) support</flag>
 		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
 		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>

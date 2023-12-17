@@ -18,12 +18,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
 
-  <use>
-    <flag name="opencl">
-      Enable the use of OpenCL in LinBox
-    </flag>
-  </use>
-
   <longdescription lang="en">
     LinBox is a C++ template library for exact, high-performance
     linear algebra computation with dense, sparse, and structured

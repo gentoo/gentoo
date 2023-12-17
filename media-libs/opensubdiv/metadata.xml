@@ -14,10 +14,6 @@
 			Enable NVIDIA CUDA Toolkit support through
 			<pkg>dev-util/nvidia-cuda-toolkit</pkg>
 		</flag>
-		<flag name="opencl">
-			Enable OpenCL support through
-			<pkg>virtual/opencl</pkg>
-		</flag>
 		<flag name="ptex">
 			Adds support for faster per-face texture mapping through
 			<pkg>media-libs/ptex</pkg>
