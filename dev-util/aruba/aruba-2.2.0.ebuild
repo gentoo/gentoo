@@ -48,7 +48,7 @@ all_ruby_prepare() {
 
 	sed -e 's:_relative ": "./:' \
 		-e 's/git ls-files -z/find * -print0/' \
-		-e '/\(pry-doc\|rake-manifest\|rubocop\|yard-junk\)/ s:^:#:' \
+		-e '/\(kramdown\|pry-doc\|rake-manifest\|rubocop\|yard-junk\)/ s:^:#:' \
 		-e '/simplecov/ s/22/23/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
