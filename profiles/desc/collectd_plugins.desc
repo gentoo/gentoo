@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of COLLECTD_PLUGINS USE_EXPAND flags.
@@ -39,7 +39,6 @@ exec - Build the exec input/output plugin (executes scripts / applications and r
 fhcount - Build the file handles input plugin (reports the number of used file handles)
 filecount - Build the filecount input plugin (counts the number of files in a directory and all its subdirectories)
 fscache - Build the fscache input plugin (collects information about the file-system based caching infrastructure for network file-systems and other slow media)
-gmond - Build the gmond input plugin (receives data from gmond, the client daemon of the Ganglia project)
 gps - Build the gps input plugin (collects number of satellites seen by a GPS receiver using sci-geosciences/gpsd)
 gpu_nvidia - Build the NVIDIA GPU input plugin (collects stats from NVIDIA GPU)
 hddtemp - Build the hddtemp input plugin (collects the temperature of disks from hddtemp daemon)

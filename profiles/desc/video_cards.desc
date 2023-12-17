@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors.
+# Copyright 1999-2023 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
@@ -13,7 +13,6 @@ exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
 freedreno - VIDEO_CARDS setting to build reverse-engineered driver for Qualcomm Adreno cards
 fbdev - VIDEO_CARDS setting to build driver for fbdev video cards
 geode - VIDEO_CARDS setting to build driver for AMD Geode GX and LX video cards
-glint - VIDEO_CARDS setting to build driver for glint video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
