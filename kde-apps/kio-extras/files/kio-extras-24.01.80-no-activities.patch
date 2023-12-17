@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2023-12-17 13:30:08.829164269 +0100
++++ b/CMakeLists.txt	2023-12-17 13:30:28.109541642 +0100
+@@ -67,7 +67,7 @@
+ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+ 
+-if (NOT WIN32)
++if (0)
+     find_package(PlasmaActivities REQUIRED)
+     find_package(Qt6Sql REQUIRED)
+     find_package(PlasmaActivitiesStats REQUIRED)

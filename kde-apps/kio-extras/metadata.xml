@@ -8,6 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 		<remote-id type="cpe">cpe:/a:kde:kio-extras</remote-id>
+		<remote-id type="kde-invent">network/kio-extras</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable activities KIO worker and fileitem plugin</flag>
