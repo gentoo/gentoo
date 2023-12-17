@@ -27,6 +27,11 @@ RDEPEND="
 	' 3.10)
 "
 
+PATCHES=(
+	# https://github.com/breezy-team/setuptools-gettext/pull/31
+	"${FILESDIR}/${P}-wheel.patch"
+)
+
 python_test() {
 	cd example || die
 	distutils_pep517_install "${T}/${EPYTHON}"

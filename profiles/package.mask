@@ -44,12 +44,6 @@ dev-ruby/elasticsearch:8.8.0
 # https://github.com/sdispater/pendulum/issues/769
 =dev-python/pendulum-3.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-16)
-# This package is completely broken upstream: it installs locales
-# into an incorrect subdirectory:
-# https://github.com/breezy-team/setuptools-gettext/issues/30
-=dev-python/setuptools-gettext-0.1.8
-
 # Michał Górny <mgorny@gentoo.org> (2023-12-15)
 # Superseded by dev-python/pypy3_10-exe{,-bin}.
 # Removal on 2024-01-14.  Bug #920036.
