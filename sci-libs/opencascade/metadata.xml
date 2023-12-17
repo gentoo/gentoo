@@ -17,9 +17,6 @@
 	<flag name="freeimage">
 		Enable support for image i/o via <pkg>media-libs/freeimage</pkg>
 	</flag>
-	<flag name="gles2">
-		Use OpenGL ES 2.0
-	</flag>
 	<flag name="json">
 		Enable JSON support through <pkg>dev-libs/rapidjson</pkg>
 	</flag>

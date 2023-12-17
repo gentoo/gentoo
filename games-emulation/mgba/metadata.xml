@@ -8,7 +8,6 @@
   <use>
     <flag name="discord">Enable Discord RPC support</flag>
     <flag name="elf">Enable the use of elf utils via <pkg>dev-libs/elfutils</pkg></flag>
-    <flag name="gles2">Build OpenGL ES 2.x RenderSystem</flag>
     <flag name="gles3">Build OpenGL ES 3.x RenderSystem</flag>
     <flag name="libretro">Build libretro port</flag>
   </use>
