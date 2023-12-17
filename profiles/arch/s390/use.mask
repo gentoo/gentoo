@@ -44,7 +44,6 @@ llvm-libunwind
 # No luajit available for s390
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 luajittex
 
 # Stuff we don't want/not tested
@@ -92,7 +91,6 @@ pdfannotextractor
 
 # no gnome love yet
 fits
-gconf
 gimp
 gtk
 gtk2

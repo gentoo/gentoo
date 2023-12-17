@@ -3,7 +3,7 @@
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev impact"
+VIDEO_CARDS="fbdev"
 
 ARCH="mips"
 ACCEPT_KEYWORDS="${ARCH} ~mips"

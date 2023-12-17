@@ -62,7 +62,6 @@ dmi
 tracker
 lasi
 pdfannotextractor
-prelude
 mssql
 gajim
 
@@ -77,7 +76,6 @@ sid
 mms
 mtp
 ieee1394
-darcs
 ggi
 fits
 vaapi

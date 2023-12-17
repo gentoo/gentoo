@@ -65,10 +65,6 @@ OFFICE_IMPLEMENTATION="libreoffice"
 # By default do not build any grub platform and let it guess.
 GRUB_PLATFORMS=""
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (2013-05-05)
-# By default enable all extensions with no dependencies
-LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2011-08-19, 2012-03-25)
 # Johannes Huber <johu@gentoo.org> (2018-04-15)
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-01-01)
@@ -81,21 +77,21 @@ COLLECTD_PLUGINS="df interface irq load memory rrdtool swap syslog"
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (2010-10-26)
 # By default enable all protocols for average GPS user
-GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax mtk3301 nmea ntrip navcom oceanserver oldstyle oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 timing tsip tripmate tnt ublox ubx"
+GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax mtk3301 ntrip navcom oceanserver oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 tsip tripmate tnt ublox"
 
 # Benedikt Böhm <hollow@gentoo.org> (2007-11-27)
 # Sane defaults for built-in apache modules
 # Patrick Lauer <patrick@gentoo.org> (2012-10-12)
 # extend for apache 2.4
-APACHE2_MODULES="authn_core authz_core socache_shmcb unixd actions alias auth_basic authn_alias authn_anon authn_dbm authn_default authn_file authz_dbm authz_default authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir disk_cache env expires ext_filter file_cache filter headers include info log_config logio mem_cache mime mime_magic negotiation rewrite setenvif speling status unique_id userdir usertrack vhost_alias"
+APACHE2_MODULES="authn_core authz_core socache_shmcb unixd actions alias auth_basic authn_anon authn_dbm authn_file authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir env expires ext_filter file_cache filter headers include info log_config logio mime mime_magic negotiation rewrite setenvif speling status unique_id userdir usertrack vhost_alias"
 
 # Peter Volkov <pva@gentoo.org> (2010-04-29)
 # Set some defaults or package will fail to build (Check mconfig in package sources)
-XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipset ipp2p iface geoip fuzzy condition tee tarpit sysrq proto steal rawnat logmark ipmark dhcpmac delude chaos account"
+XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipp2p iface geoip fuzzy condition tarpit sysrq proto logmark ipmark dhcpmac delude chaos account"
 
 # Robert Buchholz <rbu@gentoo.org> (2006-01-17)
 # Some common lcd devices
-LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses text"
+LCD_DEVICES="bayrad cfontz glk hd44780 lb216 lcdm001 mtxorb text"
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)

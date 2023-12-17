@@ -37,9 +37,8 @@ USE="${USE} iconv"
 INPUT_DEVICES="libinput"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
-# Lowest common denominator defaults for video drivers,
-# except hppa, which lacks v4l so removes it in the hppa profile
-VIDEO_CARDS="dummy fbdev v4l"
+# Lowest common denominator defaults for video drivers
+VIDEO_CARDS="dummy fbdev"
 
 # Doug Goldstein <cardoe@gentoo.org> (2008-07-09)
 # Adding LDFLAGS="-Wl,-O1 for all Linux profiles by default

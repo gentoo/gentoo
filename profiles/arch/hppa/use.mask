@@ -95,7 +95,6 @@ clang
 # dev-lang/luajit has not been ported to HPPA
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (2014-05-20)
@@ -134,10 +133,6 @@ dvb
 # No support for Blu-ray (bug #397531).
 bluray
 
-# Jeroen Roovers <jer@gentoo.org> (2011-09-15)
-# Prelude has not been tested on HPPA.
-prelude
-
 # Jeroen Roovers <jer@gentoo.org> (2011-06-09)
 # Lots of untested dependencies (bug #365451)
 facedetect
@@ -154,7 +149,6 @@ webkit
 # Mask USE=gnome entirely (bug #324511)
 glade
 libnotify
-gconf
 gnome
 gnome-keyring
 gnome-online-accounts
@@ -169,10 +163,6 @@ applet
 # No known hardware support for video decoding
 vaapi
 vdpau
-
-# Jeroen Roovers <jer@gentoo.org> (2010-07-01)
-# Drop support for ghc and darcs
-darcs
 
 # Jeroen Roovers <jer@gentoo.org> (2010-04-05)
 # Mask USE=kde (bug #304363).

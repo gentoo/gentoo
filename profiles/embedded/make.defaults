@@ -1,7 +1,7 @@
 # Copyright 2008-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-USE="kdrive minimal multicall zlib"
+USE="minimal multicall zlib"
 CFLAGS="-Os -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
@@ -11,7 +11,6 @@ octave
 # Pacho Ramos <pacho@gentoo.org> (2014-04-17)
 # Dropped stable keywords after the discussion caused by
 # Gnome 3.8/3.10 stabilization on this arch
-devhelp
 dia
 eds
 evo

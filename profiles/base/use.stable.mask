@@ -25,10 +25,6 @@ python_single_target_python3_12
 # PHP 8.2 is in testing
 php_targets_php8-2
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
-# dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
-darcs
-
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
 # Needs dev-python/pypy* stable
 python_targets_pypy3

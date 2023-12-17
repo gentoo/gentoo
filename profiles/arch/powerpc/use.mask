@@ -54,7 +54,6 @@ gnuefi
 -cpu_flags_ppc_vsx
 -cpu_flags_ppc_vsx2
 -cpu_flags_ppc_vsx3
--ppcsha1
 
 # Incompatible Use Flags
 #

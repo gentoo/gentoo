@@ -32,10 +32,6 @@ vulkan
 # media-libs/allegro is not keyworded.
 allegro
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
-# Drop support for ghc and darcs
-darcs
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-12)
 # ruby-2.7 dropped ia64 support, mask ruby in Gentoo.
 ruby
@@ -46,7 +42,6 @@ gnome-online-accounts
 # There is no luajit support on ia64. Bug #554376
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 luajittex
 
 # No hardware to test by the team
@@ -85,7 +80,6 @@ metalink
 upnp
 fdk
 valgrind
-matplotlib
 mongodb
 pgm
 scim
@@ -114,7 +108,6 @@ frei0r
 lpsol
 prelude
 ladspa
-aacplus
 devil
 gts
 clang

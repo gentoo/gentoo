@@ -49,10 +49,6 @@ vulkan
 # media-libs/allegro is not keyworded.
 allegro
 
-# Matt Turner <mattst88@gentoo.org> (2020-03-16)
-# Drop support for ghc and darcs
-darcs
-
 # Matt Turner <mattst88@gentoo.org> (2020-02-02)
 # Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
 mongodb
@@ -69,7 +65,6 @@ acpi
 # There is no luajit support on alpha. Bugs #554376, #608322.
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 luajittex
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
@@ -135,9 +130,7 @@ openexr
 afs
 ots
 frei0r
-prelude
 libtar
-aacplus
 devil
 gts
 

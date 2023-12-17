@@ -52,9 +52,6 @@ d3d9
 # masking here and unmasking in default/linux/
 kmod
 
-# not ready for primetime
-packagekit
-
 # profile specific USE flags
 # Don't put hardened in here.
 # TODO: move multilib into arch/base once inherit order is fixed

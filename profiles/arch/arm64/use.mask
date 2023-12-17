@@ -99,17 +99,14 @@ mpi
 lasi
 hardened
 pdfannotextractor
-prelude
 mssql
 
 # havent tested yet
-darcs
 afs
 zvbi
 sid
 mms
 ieee1394
-darcs
 bs2b
 ggi
 dvd
