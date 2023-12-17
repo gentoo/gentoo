@@ -12,7 +12,7 @@ SRC_URI="https://github.com/newren/git-filter-repo/releases/download/v${PV}/${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
