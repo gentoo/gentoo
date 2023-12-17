@@ -263,34 +263,6 @@ dev-perl/PathTools
 <dev-libs/openssl-3
 <app-crypt/xca-2.4.0_p20230526
 
-# Mike Pagano <mpagano@gentoo.org> (2023-07-18)
-# Mask impacted kernels vulnerable to StackRot and
-# ones with a memory corruption bug
-# Bug #909829, #794547.
-=sys-kernel/gentoo-kernel-6.1.28
-=sys-kernel/gentoo-kernel-6.1.37*
-=sys-kernel/gentoo-kernel-6.3*
-=sys-kernel/gentoo-kernel-bin-6.1.28
-=sys-kernel/gentoo-kernel-bin-6.1.37*
-=sys-kernel/gentoo-kernel-bin-6.3*
-=sys-kernel/gentoo-sources-6.1.28
-=sys-kernel/gentoo-sources-6.1.37*
-=sys-kernel/gentoo-sources-6.4.0
-=sys-kernel/gentoo-sources-6.4.1*
-=sys-kernel/gentoo-sources-6.4.2
-=sys-kernel/vanilla-kernel-6.1.28
-=sys-kernel/vanilla-kernel-6.1.37*
-=sys-kernel/vanilla-kernel-6.3*
-=sys-kernel/vanilla-sources-6.1.28
-=sys-kernel/vanilla-sources-6.1.37*
-=sys-kernel/vanilla-sources-6.3*
-=sys-kernel/vanilla-sources-6.4.0
-=sys-kernel/vanilla-sources-6.4.1*
-=sys-kernel/vanilla-sources-6.4.2
-=virtual/dist-kernel-6.1.28
-=virtual/dist-kernel-6.1.37*
-=virtual/dist-kernel-6.3*
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
 # The catalyst-3 branch is outdated and not used by Gentoo
 # Release Engineering anymore. Please either use git master
@@ -372,11 +344,6 @@ dev-perl/PathTools
 # [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
 # [2] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/390
-
-# Mike Pagano <mpagano@gentoo.org> (2023-03-10)
-# Mask =sys-kernel/gentoo-sources-5.15.99 since it does
-# not include 5.15.99 and is misleading
-=sys-kernel/gentoo-sources-5.15.99
 
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
