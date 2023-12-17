@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake optfeature python-single-r1 xdg
 
@@ -11,11 +11,11 @@ MY_P="${PN^}-v${PV}"
 
 DESCRIPTION="A GTK+ RDP, SPICE, VNC and SSH client"
 HOMEPAGE="https://remmina.org/"
-SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.bz2"
+SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v.${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="+appindicator crypt cups examples keyring gvnc kwallet nls python spice ssh rdp vnc wayland webkit zeroconf"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	crypt? ( dev-libs/libgcrypt:0= )
 	keyring? ( app-crypt/libsecret )
 	gvnc? ( net-libs/gtk-vnc )
-	kwallet? ( kde-frameworks/kwallet )
+	kwallet? ( kde-frameworks/kwallet:5 )
 	python? ( ${PYTHON_DEPS} )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129[X]
 		<net-misc/freerdp-3[X]
@@ -64,13 +64,14 @@ RDEPEND="
 
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN^}-v.${PV}-2c4e1479433e51418ecb6089f35182bfebc5b57e"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
+	PATCHES+=( "${FILESDIR}"/${PN}-1.4.32-REM-2981.patch ) #914851
 	xdg_environment_reset
 	cmake_src_prepare
 }
