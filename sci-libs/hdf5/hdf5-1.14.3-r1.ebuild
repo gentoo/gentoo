@@ -65,10 +65,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Respect Gentoo examples directory
-	sed \
-		-e "s:hdf5_examples:doc/${PF}/examples:g" \
-		-i $(find . -name Makefile.am) $(find . -name "run*.sh.in") || die
 	sed \
 		-e '/docdir/d' \
 		-i config/commence.am || die
@@ -96,6 +92,7 @@ src_configure() {
 		--enable-deprecated-symbols
 		--enable-build-mode=$(usex debug debug production)
 		--with-default-plugindir="${EPREFIX}/usr/$(get_libdir)/${PN}/plugin"
+		--with-examplesdir="\${datarootdir}/doc/${PF}/examples" \
 		$(use_enable cxx)
 		$(use_enable debug codestack)
 		$(use_enable fortran)
