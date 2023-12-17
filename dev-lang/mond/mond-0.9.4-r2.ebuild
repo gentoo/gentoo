@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=7.0
+DOTNET_PKG_COMPAT=8.0
 NUGETS="
 fleck@1.2.0
 microsoft.build.tasks.git@1.1.1
@@ -103,8 +103,13 @@ LICENSE="MIT"
 SLOT="0"
 
 DOTNET_PKG_PROJECTS=( Mond.Repl/Mond.Repl.csproj )
-DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
-DOTNET_PKG_TEST_EXTRA_ARGS=( -p:RollForward=Major )
+DOTNET_PKG_RESTORE_EXTRA_ARGS=(
+	-p:RollForward=Major
+	-p:TargetFramework="net${DOTNET_PKG_COMPAT}"
+	-p:TargetFrameworks="net${DOTNET_PKG_COMPAT}"
+)
+DOTNET_PKG_BUILD_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
+DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 
 DOCS=( README.md Examples )
 
