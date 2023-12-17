@@ -1,0 +1,61 @@
+# Remove tests with a reference to system tmp directory
+# Patch by Giuseppe Foti
+
+--- a/tests/version/commands/test_java.py
++++ b/tests/version/commands/test_java.py
+@@ -154,17 +154,6 @@ class GetCurrentJavaVersionCommandTestCase(unittest.TestCase):
+ 
+             version_file_path.unlink()
+ 
+-    def test_getting_version_without_version_config(self):
+-        exp_err_msg = (
+-            r"No /tmp/.*/upgradeVersion\.json config file found\. "
+-            r"This file is required for pontos"
+-        )
+-        with temp_directory(change_into=True), self.assertRaisesRegex(
+-            VersionError,
+-            exp_err_msg,
+-        ):
+-            JavaVersionCommand(SemanticVersioningScheme).get_current_version()
+-
+ 
+ class VerifyJavaVersionCommandTestCase(unittest.TestCase):
+     def test_verify_version(self):
+@@ -196,37 +185,6 @@ class VerifyJavaVersionCommandTestCase(unittest.TestCase):
+             readme_file_path.unlink()
+             properties_file_path.unlink()
+ 
+-    def test_verify_version_does_not_match(self):
+-        exp_err_msg = (
+-            r"Provided version 2023\.9\.4 does not match the "
+-            + r"current version 2023\.9\.3 "
+-            + r"in '/tmp/.*/upgradeVersion\.json'"
+-        )
+-
+-        with temp_directory(change_into=True), self.assertRaisesRegex(
+-            VersionError,
+-            exp_err_msg,
+-        ):
+-            version_file_path = Path("upgradeVersion.json")
+-            version_file_path.write_text(
+-                TEMPLATE_UPGRADE_VERSION_SINGLE_JSON, encoding="utf-8"
+-            )
+-
+-            version = "2023.9.3"
+-            new_version = "2023.9.4"
+-            readme_file_path = Path("README.md")
+-            readme_file_path.write_text(
+-                TEMPLATE_UPGRADE_VERSION_MARKDOWN.format(version),
+-                encoding="utf-8",
+-            )
+-
+-            JavaVersionCommand(SemanticVersioningScheme).verify_version(
+-                SemanticVersioningScheme.parse_version(new_version)
+-            )
+-
+-            version_file_path.unlink()
+-            readme_file_path.unlink()
+-
+ 
+ class UpdateJavaVersionCommandTestCase(unittest.TestCase):
+     def test_update_version(self):
