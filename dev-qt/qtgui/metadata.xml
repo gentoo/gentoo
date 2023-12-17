@@ -6,7 +6,6 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="egl">Enable EGL integration</flag>
 		<flag name="eglfs">Build the EGL Full Screen/Single Surface platform plugin</flag>
 		<flag name="evdev">Enable support for input devices via evdev</flag>
 		<flag name="ibus">Build the IBus input method plugin</flag>
