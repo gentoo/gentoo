@@ -110,7 +110,7 @@ COMMON_DEPEND="
 	geolocation? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:5 )
 	gps? ( sci-geosciences/gpsd )
 	policykit? (
-		sys-auth/polkit-qt
+		sys-auth/polkit-qt[qt5(+)]
 		virtual/libcrypt:=
 	)
 	screencast? (
