@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="drm">Enable DRM renderer</flag>
-		<flag name="egl">Enable EGL support</flag>
 		<flag name="gles2">Enable GLESv2 and GLESv3 support</flag>
 	</use>
 </pkgmetadata>

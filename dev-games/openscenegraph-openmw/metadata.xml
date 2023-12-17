@@ -27,7 +27,6 @@
 	<use>
 		<flag name="collada">Enable DAE file support via <pkg>dev-libs/collada-dom</pkg></flag>
 		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
-		<flag name="egl">Enable EGL support</flag>
 		<flag name="fox">Build examples using <pkg>x11-libs/fox</pkg> library</flag>
 		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
 		<flag name="las">Enable support for geospatial data LAS LiDAR format using <pkg>sci-geosciences/liblas</pkg></flag>
