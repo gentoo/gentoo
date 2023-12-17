@@ -5,7 +5,7 @@ EAPI=7
 
 inherit eapi8-dosym flag-o-matic toolchain-funcs prefix
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.musl-libc.org/musl"
+	EGIT_REPO_URI="https://git.musl-libc.org/git/musl"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/musl.asc
