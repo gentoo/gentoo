@@ -241,6 +241,7 @@ oracle - Enable Oracle Database support
 orc - Use dev-lang/orc for just-in-time optimization of array operations
 osc - Enable support for Open Sound Control
 oss - Add support for OSS (Open Sound System)
+otf - Install OpenType font versions
 pam - Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
 pch - Enable precompiled header support for faster compilation at the expense of disk space and memory (>=sys-devel/gcc-3.4 only)
 pcmcia - Add support for PCMCIA slots/devices found on laptop computers
@@ -333,6 +334,7 @@ tiff - Add support for the TIFF image format
 timidity - Build with Timidity++ (MIDI sequencer) support
 tk - Add support for Tk GUI toolkit
 truetype - Add support for FreeType and/or FreeType2 fonts
+ttf - Install TrueType font versions
 udev - Enable virtual/udev integration (device discovery, power and storage device support, etc)
 udisks - Enable storage management support (automounting, volume monitoring, etc)
 uefi - Enable support for the Unified Extensible Firmware Interface
