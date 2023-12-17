@@ -26,7 +26,6 @@
 	<use>
 		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
 		<flag name="gles1">include OpenGL ES 1.0 support</flag>
-		<flag name="gles2">include OpenGL ES 2.0 support</flag>
 		<flag name="haptic">Enable the haptic (force feedback) subsystem</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="joystick">Control joystick support (disable at your own risk)</flag>

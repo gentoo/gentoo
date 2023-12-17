@@ -8,7 +8,6 @@
   <use>
     <flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
     <flag name="gles1">Enable GLESv1 support.</flag>
-    <flag name="gles2">Enable GLESv2 support.</flag>
     <flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
     <flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
     <flag name="opencl">Enable the Rusticl Gallium OpenCL state tracker.</flag>
