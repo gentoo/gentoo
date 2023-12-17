@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+jbig"
 
 DEPEND=">=app-text/ghostscript-gpl-9.02
