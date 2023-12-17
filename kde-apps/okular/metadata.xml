@@ -19,6 +19,5 @@
 		<flag name="plucker">Enable Plucker E-Book for Palm OS devices support</flag>
 		<flag name="qml">Install Okular Qml components</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
-		<flag name="speech">Enable text-to-speech support</flag>
 	</use>
 </pkgmetadata>

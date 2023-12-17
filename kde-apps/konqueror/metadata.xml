@@ -11,6 +11,5 @@
 	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
-		<flag name="speech">Build text-to-speech plugin</flag>
 	</use>
 </pkgmetadata>

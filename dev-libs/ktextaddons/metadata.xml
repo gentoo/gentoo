@@ -11,6 +11,5 @@
 	</upstream>
 	<use>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
-		<flag name="speech">Enable text-to-speech support</flag>
 	</use>
 </pkgmetadata>

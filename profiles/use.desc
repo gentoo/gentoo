@@ -300,6 +300,7 @@ socks5 - Add support for the socks5 proxy
 sound - Enable sound support
 source - Zip the sources and install them
 sox - Add support for Sound eXchange (SoX)
+speech - Enable text-to-speech support
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
 split-usr - Enable behavior to support maintaining /bin, /lib*, /sbin and /usr/sbin  separately from /usr/bin and /usr/lib*
