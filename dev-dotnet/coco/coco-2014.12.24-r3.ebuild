@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=7.0
+DOTNET_PKG_COMPAT=8.0
 unset NUGET_PACKAGES
 
 inherit dotnet-pkg
