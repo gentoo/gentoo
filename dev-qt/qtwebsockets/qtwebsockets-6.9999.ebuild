@@ -11,10 +11,10 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="qml"
+IUSE="qml +ssl"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[network,ssl]
+	~dev-qt/qtbase-${PV}:6[network,ssl=]
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="${RDEPEND}"
