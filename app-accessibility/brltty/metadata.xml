@@ -12,7 +12,6 @@
   <flag name="louis">Use braille translator <pkg>dev-libs/liblouis</pkg></flag>
   <flag name="midi">support the musical instrument digital interface</flag>
   <flag name="pcm">support for sound card digital audio</flag>
-  <flag name="speech">speech support</flag>
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:mielke:brltty</remote-id>

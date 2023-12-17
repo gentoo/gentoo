@@ -8,7 +8,6 @@
 			(Note: not required for local notifications via <pkg>net-misc/eventd</pkg>)</flag>
 		<flag name="notification">Enable plugin to display on-screen notifications</flag>
 		<flag name="purple">Enable plugin for IM notifications via libpurple</flag>
-		<flag name="speech">Enable plugin for Text-To-Speech support</flag>
 		<flag name="webhook">Enable plugin to send payloads to webhook handlers</flag>
 		<flag name="websocket">Enable support for WebSocket protocol</flag>
 	</use>

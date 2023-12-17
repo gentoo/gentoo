@@ -5,9 +5,6 @@
 	<email>gnustep@gentoo.org</email>
 	<name>Gentoo GNUstep Project</name>
 </maintainer>
-<use>
-	<flag name="speech">Audio support using <pkg>app-accessibility/flite</pkg></flag>
-</use>
 <longdescription>
 It is a library of graphical user interface classes written completely
 in the Objective-C language; the classes are based upon the OpenStep
