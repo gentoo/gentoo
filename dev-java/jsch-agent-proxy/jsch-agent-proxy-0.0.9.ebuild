@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -40,6 +40,16 @@ S="${WORKDIR}/jsch-agent-proxy-${MY_COMMIT}"
 
 JAVA_GENTOO_CLASSPATH="jna-4,jsch"
 JAVA_GENTOO_CLASSPATH_EXTRA="jsch-agentproxy-core.jar:jsch-agentproxy-pageant.jar:jsch-agentproxy-sshagent.jar:jsch-agentproxy-usocket-jna.jar:jsch-agentproxy-usocket-nc.jar"
+JAVADOC_CLASSPATH="${JAVA_GENTOO_CLASSPATH}"
+JAVADOC_SRC_DIRS=(
+	"${PN}-core"
+	"${PN}-jsch"
+	"${PN}-pageant"
+	"${PN}-sshagent"
+	"${PN}-usocket-jna"
+	"${PN}-usocket-nc"
+	"${PN}-connector-factory"
+)
 
 src_compile() {
 	JAVA_SRC_DIR="${PN}-core"
@@ -77,17 +87,7 @@ src_compile() {
 	java-pkg-simple_src_compile
 	rm -fr target || die
 
-	JAVA_SRC_DIR=(
-		"${PN}-core"
-		"${PN}-jsch"
-		"${PN}-pageant"
-		"${PN}-sshagent"
-		"${PN}-usocket-jna"
-		"${PN}-usocket-nc"
-		"${PN}-connector-factory"
-	)
-	JAVA_JAR_FILENAME="ignoreme.jar"
-	java-pkg-simple_src_compile
+	use doc && ejavadoc
 }
 
 src_install() {
