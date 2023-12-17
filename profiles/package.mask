@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-12-17)
+# Subslots added by accident. Please use the normal "7" or "8" slots
+# instead. Masked for removal on 2024-01-17.
+dev-ruby/elasticsearch:7.17.7
+dev-ruby/elasticsearch:8.8.0
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-17)
 # Broken due to invalid use of tzdata.
 # https://github.com/sdispater/pendulum/issues/769
