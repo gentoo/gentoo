@@ -29,7 +29,7 @@ DEPEND="
 	>=dev-qt/qtwidgets-5.15:5
 	=lxqt-base/liblxqt-${MY_PV}*
 	kde-frameworks/kwindowsystem:5
-	>=sys-auth/polkit-qt-0.113.0
+	>=sys-auth/polkit-qt-0.113.0[qt5(+)]
 	=lxqt-base/liblxqt-${MY_PV}*:=
 "
 RDEPEND="${DEPEND}"
