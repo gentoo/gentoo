@@ -31,7 +31,7 @@ DEPEND="
 	>=dev-qt/qtgui-5.15:5
 	>=dev-qt/qtwidgets-5.15:5
 	=lxqt-base/liblxqt-${MY_PV}*:=
-	>=sys-auth/polkit-qt-0.113.0
+	>=sys-auth/polkit-qt-0.113.0[qt5(+)]
 "
 RDEPEND="${DEPEND}"
 
