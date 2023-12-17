@@ -25,7 +25,6 @@
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="scrobbler">Enable audioscrobbler/last.fm support</flag>
 		<flag name="shout">Enable shoutcast plug-in via <pkg>media-libs/libshout</pkg>.</flag>
-		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Use the SoX resampling library</flag>
 		<flag name="sndfile">Enable wav playback support via <pkg>media-libs/libsndfile</pkg></flag>
 		<flag name="stereo">Enable stereo effect</flag>
