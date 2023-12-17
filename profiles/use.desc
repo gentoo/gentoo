@@ -17,6 +17,7 @@ alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
 ao - Use libao audio output library for sound playback
 apache2 - Add Apache2 support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
+asm - Enable using assembly for optimization
 atm - Enable Asynchronous Transfer Mode protocol support
 apparmor - Enable support for the AppArmor application security system
 appindicator - Build in support for notifications using the libindicate or libappindicator plugin
