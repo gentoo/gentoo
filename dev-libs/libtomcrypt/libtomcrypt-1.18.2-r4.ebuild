@@ -28,12 +28,15 @@ BDEPEND="
 	sys-devel/libtool
 	virtual/pkgconfig
 "
-DEPEND="
+RDEPEND="
 	gmp? ( dev-libs/gmp:= )
 	libtommath? ( dev-libs/libtommath:= )
 	tomsfastmath? ( dev-libs/tomsfastmath:= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${RDEPEND}
+	sys-devel/libtool
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-slibtool.patch
@@ -72,6 +75,9 @@ mymake() {
 	elif use tomsfastmath ; then
 		enabled_features+=( -DUSE_TFM=1 )
 	fi
+
+	# Fix cross-compiling, but allow manual overrides for slibtool, which works.
+	[[ -z ${LIBTOOL} ]] && declare -x LIBTOOL="${BASH} ${ESYSROOT}/usr/bin/libtool"
 
 	# IGNORE_SPEED=1 is needed to respect CFLAGS
 	EXTRALIBS="${extra_libs[*]}" emake \
