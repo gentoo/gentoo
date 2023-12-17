@@ -42,11 +42,6 @@ sys-apps/smcipmitool
 # Uses dev-util/nvidia-cuda-sdk
 dev-libs/cutlass
 
-# Sam James <sam@gentoo.org> (2023-01-02)
-# Uses error.h, bug #888956
-=sys-libs/liburing-2.3
-=sys-libs/liburing-2.3-r1
-
 # Conrad Kostecki <conikost@gentoo.org> (2022-12-31)
 # RTLD_DEEPBIND does not exist on musl
 dev-libs/intel-compute-runtime
@@ -235,7 +230,6 @@ net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
 net-im/slack
 net-im/telegram-desktop-bin
-net-im/wazzapp-bin
 net-im/whatsapp-desktop-bin
 net-im/zoom
 net-misc/chrome-remote-desktop

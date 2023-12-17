@@ -6,24 +6,6 @@
 # See https://github.com/systemd/systemd/issues/29775 and bug #916469.
 >=sys-apps/systemd-254
 
-# Sam James <sam@gentoo.org> (2023-07-03)
-# Broken memory handling
-# https://lore.kernel.org/linux-parisc/612eaa53-6904-6e16-67fc-394f4faa0e16@bell.net/
-# https://lore.kernel.org/linux-parisc/b886c0ee-2ef6-5ec9-17e0-eb66c63a61d4@roeck-us.net/T/#m250c15554add9bf4909751adccfe18c6ee0198a8
-# Fix: https://github.com/torvalds/linux/commit/f66066bc5136f25e36a2daff4896c768f18c211e
-=sys-kernel/gentoo-kernel-6.1.37
-=sys-kernel/gentoo-kernel-6.3.11
-=sys-kernel/gentoo-sources-6.1.37
-=sys-kernel/gentoo-sources-6.3.11
-=sys-kernel/gentoo-sources-6.4.1
-=sys-kernel/vanilla-kernel-6.1.37
-=sys-kernel/vanilla-kernel-6.3.11
-=sys-kernel/vanilla-sources-6.1.37
-=sys-kernel/vanilla-sources-6.3.11
-=sys-kernel/vanilla-sources-6.4.1
-=virtual/dist-kernel-6.1.37
-=virtual/dist-kernel-6.3.11
-
 # Sam James <sam@gentoo.org> (2023-03-28)
 # Needs explicit porting to each platform (bug 894078#c6)
 dev-python/py-cpuinfo

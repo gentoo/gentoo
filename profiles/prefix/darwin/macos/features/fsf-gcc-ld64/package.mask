@@ -1,5 +1,0 @@
-# Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# packages which link to framework and therefore fail (blocks)
-=sys-devel/binutils-apple-11.3.1-r1

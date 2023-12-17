@@ -72,7 +72,6 @@ kde-apps/plasma-telepathy-meta:5
 kde-misc/kio-gdrive
 kde-misc/tellico:5
 kde-misc/zanshin:5
-mail-client/kube
 media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi

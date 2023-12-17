@@ -1,14 +1,5 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # The 32-bits profile is inherited by the 64-bits one!
 # All the Mac OS X profiles inherit from their matching arch profile here.
-
-
-# Fabian Groffen <grobian@gentoo.org> (2012-03-05)
-# Apple removed entire PowerPC support from ld in ld64-128.2 (4.3)
-# darwin-xtools added back support and allows to be compiled from FSF
-# GCC for version ld64-274.2 (8.2.1), so basically 3.2.3 and the xtools
-# version 8.2.1 are unmasked for us, allowing a non-gcc-apple path, we
-# dropped all versions inbetween, mask the incompatible ones remaining
-=sys-devel/binutils-apple-8.2.1-r1
