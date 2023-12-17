@@ -38,6 +38,6 @@ DEPEND="
 	>=kde-frameworks/knewstuff-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/knotifyconfig-${KFMIN}:5
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 "
 RDEPEND="${DEPEND}"

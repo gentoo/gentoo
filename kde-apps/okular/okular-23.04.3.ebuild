@@ -43,7 +43,7 @@ DEPEND="
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/threadweaver-${KFMIN}:5
 	media-libs/freetype
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 	sys-libs/zlib
 	crypt? ( >=kde-frameworks/kwallet-${KFMIN}:5 )
 	djvu? ( app-text/djvu )

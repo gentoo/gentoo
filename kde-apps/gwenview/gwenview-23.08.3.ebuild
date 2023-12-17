@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 	media-libs/tiff:=
 	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	fits? ( sci-libs/cfitsio )

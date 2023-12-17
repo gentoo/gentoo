@@ -48,7 +48,7 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	semantic-desktop? (
 		>=kde-apps/baloo-widgets-${PVCUT}:5

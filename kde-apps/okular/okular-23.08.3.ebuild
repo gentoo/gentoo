@@ -54,7 +54,7 @@ DEPEND="
 	markdown? ( >=app-text/discount-2.2.7-r1:= )
 	mobi? ( >=kde-apps/kdegraphics-mobipocket-${PVCUT}:5 )
 	pdf? ( >=app-text/poppler-21.10.0[nss,qt5] )
-	phonon? ( >=media-libs/phonon-4.11.0 )
+	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 	plucker? ( media-libs/libjpeg-turbo:= )
 	postscript? ( app-text/libspectre )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )

@@ -86,7 +86,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/knotifyconfig-${KFMIN}:5
 	>=kde-frameworks/kparts-${KFMIN}:5
 	>=kde-frameworks/ktexteditor-${KFMIN}:5
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	gadu? ( >=net-libs/libgadu-1.8.0[threads] )

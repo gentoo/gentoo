@@ -45,7 +45,7 @@ RDEPEND="
 	media-libs/giflib:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 	sys-libs/zlib
 	X? (
 		>=dev-qt/qtx11extras-${QTMIN}:5

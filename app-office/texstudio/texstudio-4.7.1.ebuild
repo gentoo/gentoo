@@ -35,7 +35,7 @@ DEPEND="
 	sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXext
-	video? ( >=media-libs/phonon-4.11.0 )
+	video? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 "
 RDEPEND="
 	${DEPEND}

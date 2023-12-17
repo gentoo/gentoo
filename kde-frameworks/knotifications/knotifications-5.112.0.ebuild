@@ -23,7 +23,7 @@ RDEPEND="
 	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X?]
 	dbus? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	!phonon? ( media-libs/libcanberra )
-	phonon? ( >=media-libs/phonon-4.11.0 )
+	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 	X? (

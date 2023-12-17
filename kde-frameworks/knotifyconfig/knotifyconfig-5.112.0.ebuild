@@ -22,7 +22,7 @@ DEPEND="
 	=kde-frameworks/ki18n-${PVCUT}*:5
 	=kde-frameworks/kio-${PVCUT}*:5
 	!phonon? ( media-libs/libcanberra )
-	phonon? ( >=media-libs/phonon-4.11.0 )
+	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 "
 RDEPEND="${DEPEND}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ IUSE=""
 DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 	media-video/vlc:=[dbus,ogg,vorbis(+)]
 "
 RDEPEND="${DEPEND}"

@@ -29,6 +29,6 @@ DEPEND="
 	>=kde-frameworks/knewstuff-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=media-libs/phonon-4.11.0
+	>=media-libs/phonon-4.11.0[qt5(+)]
 "
 RDEPEND="${DEPEND}"

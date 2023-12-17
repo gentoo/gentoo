@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=net-libs/libktorrent-${PVCUT}:5
 	infowidget? ( dev-libs/geoip )
 	mediaplayer? (
-		>=media-libs/phonon-4.11.0
+		>=media-libs/phonon-4.11.0[qt5(+)]
 		>=media-libs/taglib-1.5
 	)
 	rss? (
