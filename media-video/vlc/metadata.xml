@@ -43,7 +43,6 @@
 		<flag name="sdl-image">Enable sdl image video decoder (depends on sdl)</flag>
 		<flag name="sftp">Enable libssh2 to support SFTP file transfer</flag>
 		<flag name="shout">Enable libshout output</flag>
-		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2</flag>
 		<flag name="skins">Enable support for the skins2 interface</flag>
 		<flag name="soxr">Enable SoX Resampler support via <pkg>media-libs/soxr</pkg></flag>
 		<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>

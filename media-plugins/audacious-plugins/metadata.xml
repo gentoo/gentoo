@@ -15,7 +15,6 @@
 		<flag name="openmpt">Add support for OpenMPT</flag>
 		<flag name="pipewire">Build the PipeWire output plugin</flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
-		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Build with SoX Resampler support</flag>
 		<flag name="speedpitch">Enable speed/pitch effects</flag>
 		<flag name="streamtuner">Build the streamtuner plugin</flag>
