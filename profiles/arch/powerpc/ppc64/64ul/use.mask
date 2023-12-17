@@ -24,7 +24,6 @@ luajittex
 opencl
 
 pda
-prelude
 mono
 
 # not tested on ppc64
@@ -36,9 +35,6 @@ diet
 # we don't have hardware to test. also see bug #113398
 dvb
 
-# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-20)
-# Modular X: mask for architectures on which they aren't available
-video_cards_glint
 # llvm is not keyworded
 video_cards_radeonsi
 

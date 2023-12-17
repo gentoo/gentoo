@@ -106,7 +106,6 @@ rtmp
 vpx
 frei0r
 lpsol
-prelude
 ladspa
 devil
 gts

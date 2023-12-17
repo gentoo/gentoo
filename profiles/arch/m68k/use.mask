@@ -38,7 +38,6 @@ vim-syntax
 # Hardware that probably doesn't apply to m68k.
 input_devices_elographics
 video_cards_amdgpu
-video_cards_glint
 video_cards_mga
 video_cards_nouveau
 video_cards_r128

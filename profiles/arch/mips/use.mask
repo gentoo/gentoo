@@ -128,7 +128,6 @@ input_devices_vmmouse
 input_devices_void
 input_devices_wacom
 input_devices_joystick
-video_cards_glint
 video_cards_nvidia
 
 # Matt Turner <mattst88@gentoo.org>

@@ -175,7 +175,6 @@ gps
 # Stuff we don't want
 ots
 frei0r
-prelude
 redis
 
 # USE-flags from differents origins

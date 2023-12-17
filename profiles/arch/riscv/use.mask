@@ -48,7 +48,6 @@ video_cards_ast
 video_cards_dummy
 video_cards_freedreno
 video_cards_geode
-video_cards_glint
 video_cards_i915
 video_cards_i965
 video_cards_intel

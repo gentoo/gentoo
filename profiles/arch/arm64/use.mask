@@ -136,7 +136,6 @@ snapcast
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
-video_cards_glint
 video_cards_mga
 video_cards_r128
 

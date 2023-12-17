@@ -78,10 +78,6 @@ prefix-stack
 # netlink is a Linux-specific interface
 netlink
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-18)
-# Prelude is being masked for removal
-prelude
-
 # Diego Pettenò <flameeyes@gentoo.org> (2006-12-30)
 # These are specific to Mac OS X
 aqua
