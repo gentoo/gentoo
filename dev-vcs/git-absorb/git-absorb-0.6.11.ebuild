@@ -85,7 +85,7 @@ SRC_URI+=" https://github.com/tummychow/${PN}/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 CC0-1.0 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DOCS=( README.md )
 
