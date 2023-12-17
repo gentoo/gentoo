@@ -8,7 +8,6 @@
 	<use>
 		<flag name="corepack">Enable the experimental corepack package management tool</flag>
 		<flag name="inspector">Enable V8 inspector</flag>
-		<flag name="lto">Build with link-time optimisation</flag>
 		<flag name="npm">Enable NPM package manager</flag>
 		<flag name="pax-kernel">Enable building under a PaX enabled kernel</flag>
 		<flag name="snapshot">Enable snapshot creation for faster startup</flag>

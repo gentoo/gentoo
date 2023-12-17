@@ -11,7 +11,6 @@
     <flag name="dbengine">Enable the Netdata database engine</flag>
     <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
     <flag name="jsonc">Enable optimization of JSON using <pkg>dev-libs/json-c</pkg></flag>
-    <flag name="lto">Build with Link Time Optimization (LTO)</flag>
     <flag name="mongodb">Enable support for the mongodb backend</flag>
     <flag name="nfacct">Enable the nfacct plugin</flag>
     <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>

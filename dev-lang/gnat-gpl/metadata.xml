@@ -20,7 +20,6 @@
 		<flag name="libssp">Build SSP support into a dedicated library rather
 			than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T
 			KNOW WHAT IT DOES)</flag>
-		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
 		<flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>
 		<flag name="objc">Build support for the Objective C code language
 		</flag>
