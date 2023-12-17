@@ -5,7 +5,7 @@ EAPI=8
 
 inherit dune
 
-DESCRIPTION=" Streaming client for OCaml's Memprof "
+DESCRIPTION="Streaming client for OCaml's Memprof "
 HOMEPAGE="https://github.com/janestreet/memtrace/"
 
 if [[ "${PV}" == *9999* ]] ; then
