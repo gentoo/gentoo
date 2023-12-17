@@ -6,7 +6,6 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
-		<flag name="asm">Enable use of hand optimized assembly routines (faster execution)</flag>
 		<flag name="cpudetection">
 			Enables runtime CPU detection (useful for binpkgs, compatibility on other CPUs).
 

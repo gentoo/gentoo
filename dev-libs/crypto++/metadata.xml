@@ -5,9 +5,6 @@
     <email>sam@gentoo.org</email>
     <name>Sam James</name>
   </maintainer>
-  <use>
-    <flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
-  </use>
   <upstream>
     <remote-id type="github">weidai11/cryptopp</remote-id>
   </upstream>

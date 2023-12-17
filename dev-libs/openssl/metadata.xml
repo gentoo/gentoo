@@ -6,7 +6,6 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
-		<flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
 		<flag name="bindist">Disable/Restrict EC algorithms (as they seem to be patented) -- note: changes the ABI</flag>
 		<flag name="fips">Enable FIPS provider</flag>
 		<flag name="ktls">Enable support for Kernel implementation of TLS (kTLS)</flag>
