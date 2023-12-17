@@ -228,3 +228,7 @@ net-im/pidgin gstreamer
 
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
 media-video/mplayer cpudetection
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is available here
+app-emulation/libvirt -virtiofsd
