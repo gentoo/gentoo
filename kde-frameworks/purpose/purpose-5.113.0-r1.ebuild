@@ -11,8 +11,8 @@ inherit ecm frameworks.kde.org optfeature xdg-utils
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="bluetooth +kaccounts"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="bluetooth +kaccounts kf6compat"
 
 # requires running environment
 RESTRICT="test"
@@ -33,15 +33,16 @@ DEPEND="
 	=kde-frameworks/prison-${PVCUT}*:5
 	kaccounts? (
 		>=kde-apps/kaccounts-integration-19.04.3:5
-		net-libs/accounts-qt
+		net-libs/accounts-qt[qt5(+)]
 	)
 "
 RDEPEND="${DEPEND}
+	kf6compat? ( kde-frameworks/purpose:6 )
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kdeclarative-${PVCUT}:5
 	bluetooth? ( =kde-frameworks/bluez-qt-${PVCUT}*:5 )
-	kaccounts? ( net-libs/accounts-qml )
+	kaccounts? ( net-libs/accounts-qml[qt5(+)] )
 "
 
 src_prepare() {
@@ -57,6 +58,16 @@ src_configure() {
 	)
 
 	ecm_src_configure
+}
+
+src_install() {
+	ecm_src_install
+
+	if use kf6compat; then
+		rm "${D}"/usr/share/icons/hicolor/128x128/apps/{reviewboard,phabricator}-purpose.png \
+			"${D}"/usr/share/icons/hicolor/16x16/apps/{reviewboard,phabricator}-purpose.png \
+			|| die
+	fi
 }
 
 pkg_postinst() {
