@@ -10,21 +10,13 @@ DESCRIPTION="Framework providing data models to help with tasks such as sorting 
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64"
-IUSE="qml"
 
 RDEPEND="
-	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:6 )
+	>=dev-qt/qtdeclarative-${QTMIN}:6
 "
 DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qtbase-${QTMIN}:6[widgets] )
 "
-
-src_configure() {
-	local mycmakeargs=(
-		$(cmake_use_find_package qml Qt6Qml)
-	)
-	ecm_src_configure
-}
 
 src_test() {
 	LC_NUMERIC="C" ecm_src_test # bug 708820
