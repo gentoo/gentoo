@@ -21,13 +21,13 @@ CRATES="
 	ciborium-io@0.2.1
 	ciborium-ll@0.2.1
 	ciborium@0.2.1
-	clap@4.4.10
-	clap_builder@4.4.9
+	clap@4.4.11
+	clap_builder@4.4.11
 	clap_lex@0.6.0
 	criterion-plot@0.5.0
 	criterion@0.5.1
-	crossbeam-channel@0.5.8
-	crossbeam-utils@0.8.16
+	crossbeam-channel@0.5.9
+	crossbeam-utils@0.8.17
 	either@1.9.0
 	env_logger@0.10.1
 	errno@0.3.8
@@ -48,23 +48,22 @@ CRATES="
 	ipnetwork@0.20.0
 	is-terminal@0.4.9
 	itertools@0.10.5
-	itoa@1.0.9
+	itoa@1.0.10
 	lazy_static@1.4.0
-	libc@0.2.150
+	libc@0.2.151
 	libseccomp-sys@0.2.1
 	libseccomp@0.3.0
 	linux-raw-sys@0.1.4
-	linux-raw-sys@0.4.11
+	linux-raw-sys@0.4.12
 	lock_api@0.4.11
 	log@0.4.20
 	memchr@2.6.4
 	memoffset@0.7.1
 	nix@0.26.4
-	nix@0.27.1
-	nonempty@0.8.1
+	nonempty@0.9.0
 	num-traits@0.2.17
 	num_cpus@1.16.0
-	once_cell@1.18.0
+	once_cell@1.19.0
 	oorandom@11.1.3
 	openat2@0.1.2
 	parking_lot@0.12.1
@@ -81,10 +80,10 @@ CRATES="
 	regex-syntax@0.8.2
 	regex@1.10.2
 	rustix@0.36.17
-	rustix@0.38.25
+	rustix@0.38.28
 	rustversion@1.0.14
 	rusty_pool@0.7.0
-	ryu@1.0.15
+	ryu@1.0.16
 	same-file@1.0.6
 	scopeguard@1.2.0
 	sendfd@0.4.3
@@ -95,7 +94,7 @@ CRATES="
 	smallvec@1.11.2
 	strum@0.25.0
 	strum_macros@0.25.3
-	syn@2.0.39
+	syn@2.0.41
 	tempfile@3.8.1
 	tinytemplate@1.2.1
 	unicode-ident@1.0.12
