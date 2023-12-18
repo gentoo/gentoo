@@ -1,0 +1,20 @@
+[Unit]
+Description=Push daemon for Nextcloud clients
+After=mysqld.service
+After=redis.service
+
+[Service]
+Type=simple
+Environment=NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE=
+EnvironmentFile=-/etc/systemd/system/nextcloud-notify_push.d/00gentoo.conf
+ExecStart=/usr/bin/nextcloud-notify_push $NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE
+Restart=on-failure
+
+# Adjust user/group to match Nextcloud configuration.
+# E.g. make sure that User is able to access NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE
+# when used; make sure that webserver is in Group when using sockets
+User=nobody
+Group=nobody
+
+[Install]
+WantedBy=multi-user.target
