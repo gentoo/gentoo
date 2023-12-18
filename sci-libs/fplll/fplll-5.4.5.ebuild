@@ -9,7 +9,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/8"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="qd"
 
 BDEPEND="virtual/pkgconfig"
