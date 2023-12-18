@@ -1,0 +1,18 @@
+Patch status: fixed in >=qtwebengine-6.7
+
+https://bugs.gentoo.org/920257
+https://chromium-review.googlesource.com/c/v8/v8/+/4583222
+From: Sam James <sam@gentoo.org>
+Date: Sun, 4 Jun 2023 04:15:16 +0100
+Subject: [PATCH] heap: Add missing <algorithm> include for std::remove
+
+GCC 14 changes some internal includes within libstdc++ so this transient
+include gets lost. Include <algorithm> explicitly for std::remove.
+--- a/src/3rdparty/chromium/v8/src/heap/cppgc/stats-collector.h
++++ b/src/3rdparty/chromium/v8/src/heap/cppgc/stats-collector.h
+@@ -9,4 +9,5 @@
+ #include <stdint.h>
+ 
++#include <algorithm>
+ #include <atomic>
+ #include <vector>
