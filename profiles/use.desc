@@ -52,6 +52,7 @@ coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
 crypt - Add support for encryption -- using mcrypt or gpg where applicable
 css - Enable reading of encrypted DVDs
+cuda - Enable NVIDIA CUDA support (computation on GPU)
 cups - Add support for CUPS (Common Unix Printing System)
 curl - Add support for client-side URL transfer library
 custom-cflags - Build with user-specified CFLAGS (unsupported)

@@ -32,7 +32,6 @@
 		<flag name="symengine">Add support for symengine (<pkg>sci-libs/symengine</pkg>)</flag>
 		<flag name="trilinos">Add support for trilinos (<pkg>sci-libs/trilinos</pkg>)</flag>
 		<flag name="assimp">Add support for assimp (<pkg>media-libs/assimp</pkg>)</flag>
-		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>
 		<flag name="ginkgo">Add support for ginkgo (<pkg>sci-libs/ginkgo</pkg>)</flag>
 		<flag name="sundials">Add support for sundials (<pkg>sci-libs/sundials</pkg>)</flag>
 	</use>
