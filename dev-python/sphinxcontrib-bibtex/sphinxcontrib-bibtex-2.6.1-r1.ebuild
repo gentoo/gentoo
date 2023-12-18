@@ -28,6 +28,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/numpydoc[${PYTHON_USEDEP}]
+		dev-python/sphinx-autoapi[${PYTHON_USEDEP}]
 	)
 "
 
