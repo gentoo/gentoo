@@ -141,6 +141,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-43.0-Disable-anonymous-file-test.patch
+	"${FILESDIR}"/${P}-fullscreen-leak.patch
 )
 
 python_check_deps() {
