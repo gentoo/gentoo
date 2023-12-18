@@ -34,8 +34,6 @@ RDEPEND="
 	qt5? ( x11-themes/adwaita-qt )
 	webp? ( gui-libs/gdk-pixbuf-loader-webp )
 "
-BDEPEND=""
-DEPEND=""
 
 pkg_preinst() {
 	gnome2_schemas_update
