@@ -12,7 +12,7 @@ S="${WORKDIR}"/OpenBLAS-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="dynamic eselect-ldso index-64bit openmp pthread relapack test"
 REQUIRED_USE="?? ( openmp pthread )"
 RESTRICT="!test? ( test )"
