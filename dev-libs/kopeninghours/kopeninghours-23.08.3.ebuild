@@ -8,7 +8,7 @@ ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.106.0
 QTMIN=5.15.9
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit ecm gear.kde.org python-single-r1
 
 DESCRIPTION="Library for parsing and evaluating OSM opening hours expressions"
