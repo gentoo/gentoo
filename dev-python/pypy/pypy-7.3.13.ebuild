@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit pax-utils python-utils-r1
+inherit pax-utils
 
 PYPY_PV=${PV%_p*}
 MY_P=pypy2.7-v${PYPY_PV/_}
@@ -288,13 +288,14 @@ src_install() {
 	dosym ../lib/pypy2.7/pypy-c /usr/bin/pypy
 	dodoc README.rst
 
-	local -x EPYTHON=pypy
 	local -x PYTHON=${ED}${dest}/pypy-c-${PYPY_PV}
 	# temporarily copy to build tree to facilitate module builds
 	cp -p "${BROOT}${dest}/pypy-c-${PYPY_PV}" "${PYTHON}" || die
 
 	einfo "Byte-compiling Python standard library..."
-	python_optimize "${ED}${dest}"
+	"${PYTHON}" -m compileall \
+		-x 'bad_coding|badsyntax|make_ssl_data|lib2to3/tests/data' \
+		-q -f -d "${dest}" "${ED}/${dest}" || die
 
 	# remove to avoid collisions
 	rm "${PYTHON}" || die
