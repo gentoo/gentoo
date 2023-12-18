@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	dev-python/cerberus[${PYTHON_USEDEP}]
+	dev-python/tomlkit[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
