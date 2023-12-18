@@ -111,7 +111,6 @@ DEPEND+="
 #	)"
 
 RDEPEND="${DEPEND}
-
 	!<gui-libs/gtk-4.6.4:4
 "
 DEPEND="${DEPEND}
