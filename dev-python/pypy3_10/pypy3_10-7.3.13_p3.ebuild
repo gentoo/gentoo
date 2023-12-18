@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit pax-utils python-utils-r1 toolchain-funcs
+inherit multiprocessing pax-utils toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 PYVER=3.10
@@ -198,13 +198,15 @@ src_install() {
 	fi
 	dosym ../python/EXTERNALLY-MANAGED "${dest}/EXTERNALLY-MANAGED"
 
-	local -x EPYTHON=pypy3
 	local -x PYTHON=${ED}/usr/bin/pypy${PYVER}-c-${PYPY_PV}
 	# temporarily copy to build tree to facilitate module builds
 	cp -p "${BROOT}/usr/bin/pypy${PYVER}-c-${PYPY_PV}" "${PYTHON}" || die
 
 	einfo "Byte-compiling Python standard library..."
-	python_optimize "${ED}${dest}"
+	# exclude list from CPython Makefile.pre.in
+	"${PYTHON}" -m compileall -j "$(makeopts_jobs)" -o 0 -o 1 -o 2 \
+		--hardlink-dupes -q -f -d "${dest}" "${ED}${dest}" \
+		-x 'bad_coding|badsyntax|site-packages|lib2to3/tests/data' || die
 
 	# remove to avoid collisions
 	rm "${PYTHON}" || die
