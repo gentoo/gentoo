@@ -116,6 +116,7 @@ dev-python/ruamel-std-pathlib
 ~kde-frameworks/kservice-5.246.0
 ~kde-frameworks/ktexteditor-5.246.0
 ~kde-frameworks/ktextwidgets-5.246.0
+~kde-frameworks/kuserfeedback-5.246.0
 ~kde-frameworks/kwallet-5.246.0
 ~kde-frameworks/kxmlgui-5.246.0
 ~kde-frameworks/purpose-5.246.0
