@@ -45,7 +45,7 @@ src_configure() {
 		$(use_enable exif)
 		$(use_enable dbus)
 		$(use_enable poppler)
-		$(use_enable postscript)
+		$(use_enable postscript ghostscript)
 		$(use_enable pdf mutool)
 		$(use_with jpeg)
 		$(use_with png)
