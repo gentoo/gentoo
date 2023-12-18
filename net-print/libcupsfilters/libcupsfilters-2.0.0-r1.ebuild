@@ -24,6 +24,7 @@ RDEPEND="
 	exif? ( media-libs/libexif )
 	dbus? ( sys-apps/dbus )
 	jpeg? ( media-libs/libjpeg-turbo:= )
+	pdf? ( app-text/mupdf )
 	poppler? ( >=app-text/poppler-0.32[cxx] )
 	png? ( media-libs/libpng:= )
 	tiff? ( media-libs/tiff:= )
