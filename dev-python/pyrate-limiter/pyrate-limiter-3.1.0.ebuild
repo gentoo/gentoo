@@ -25,6 +25,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		dev-db/redis
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-db/redis
