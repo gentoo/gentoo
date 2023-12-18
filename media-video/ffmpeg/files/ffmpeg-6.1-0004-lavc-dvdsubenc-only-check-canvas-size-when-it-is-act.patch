@@ -1,0 +1,31 @@
+From 111035ccae52b448ccee889546a54594cd3fca5e Mon Sep 17 00:00:00 2001
+From: Anton Khirnov <anton@khirnov.net>
+Date: Thu, 30 Nov 2023 11:21:24 +0100
+Subject: [PATCH 4/6] lavc/dvdsubenc: only check canvas size when it is
+ actually set
+
+Fixes #10650
+
+(cherry picked from commit 5230257ea18e1d3761ee6b0549d56a3ca817f301)
+Signed-off-by: Anton Khirnov <anton@khirnov.net>
+---
+ libavcodec/dvdsubenc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libavcodec/dvdsubenc.c b/libavcodec/dvdsubenc.c
+index d272b57675..06c2cf5e5a 100644
+--- a/libavcodec/dvdsubenc.c
++++ b/libavcodec/dvdsubenc.c
+@@ -376,7 +376,8 @@ static int encode_dvd_subtitles(AVCodecContext *avctx,
+     x2 = vrect.x + vrect.w - 1;
+     y2 = vrect.y + vrect.h - 1;
+ 
+-    if (x2 > avctx->width || y2 > avctx->height) {
++    if ((avctx->width  > 0 && x2 > avctx->width) ||
++        (avctx->height > 0 && y2 > avctx->height)) {
+         av_log(avctx, AV_LOG_ERROR, "canvas_size(%d:%d) is too small(%d:%d) for render\n",
+                avctx->width, avctx->height, x2, y2);
+         ret = AVERROR(EINVAL);
+-- 
+2.43.0
+

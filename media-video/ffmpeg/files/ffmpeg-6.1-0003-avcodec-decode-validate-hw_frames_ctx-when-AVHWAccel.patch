@@ -1,0 +1,64 @@
+From 466799d4f570db5ed3e70239c12c96a2dc3bfc06 Mon Sep 17 00:00:00 2001
+From: Dmitry Rogozhkin <dmitry.v.rogozhkin-at-intel.com@ffmpeg.org>
+Date: Mon, 20 Nov 2023 21:57:32 -0800
+Subject: [PATCH 3/6] avcodec/decode: validate hw_frames_ctx when
+ AVHWAccel.free_frame_priv is used
+
+Validate that a hw_frames_ctx is available before using it for
+the AVHWAccel.free_frame_priv callback, and don't require it to
+be present when the callback is not in use by the HWAccel.
+
+v2: check for free_frame_priv (Hendrik)
+v3: return EINVAL (Christoph Reiter)
+v4: better commit message (Hendrik)
+v5: fix typo with missed frames_ctx (Lynne)
+
+See[1]: https://github.com/msys2/MINGW-packages/pull/19050
+Fixes: be07145109 ("avcodec: add AVHWAccel.free_frame_priv callback")
+CC: Lynne <dev@lynne.ee>
+CC: Christoph Reiter <reiter.christoph@gmail.com>
+Signed-off-by: Dmitry Rogozhkin <dmitry.v.rogozhkin@intel.com>
+(cherry picked from commit e9c93009fc34ca9dfcf0c6f2ed90ef1df298abf7)
+---
+ libavcodec/decode.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/libavcodec/decode.c b/libavcodec/decode.c
+index ad39021354..2cfb3fcf97 100644
+--- a/libavcodec/decode.c
++++ b/libavcodec/decode.c
+@@ -1838,17 +1838,26 @@ int ff_copy_palette(void *dst, const AVPacket *src, void *logctx)
+ int ff_hwaccel_frame_priv_alloc(AVCodecContext *avctx, void **hwaccel_picture_private)
+ {
+     const FFHWAccel *hwaccel = ffhwaccel(avctx->hwaccel);
+-    AVHWFramesContext *frames_ctx;
+ 
+     if (!hwaccel || !hwaccel->frame_priv_data_size)
+         return 0;
+ 
+     av_assert0(!*hwaccel_picture_private);
+ 
+-    frames_ctx = (AVHWFramesContext *)avctx->hw_frames_ctx->data;
+-    *hwaccel_picture_private = ff_refstruct_alloc_ext(hwaccel->frame_priv_data_size, 0,
+-                                                      frames_ctx->device_ctx,
+-                                                      hwaccel->free_frame_priv);
++    if (hwaccel->free_frame_priv) {
++        AVHWFramesContext *frames_ctx;
++
++        if (!avctx->hw_frames_ctx)
++            return AVERROR(EINVAL);
++
++        frames_ctx = (AVHWFramesContext *) avctx->hw_frames_ctx->data;
++        *hwaccel_picture_private = ff_refstruct_alloc_ext(hwaccel->frame_priv_data_size, 0,
++                                                          frames_ctx->device_ctx,
++                                                          hwaccel->free_frame_priv);
++    } else {
++        *hwaccel_picture_private = ff_refstruct_allocz(hwaccel->frame_priv_data_size);
++    }
++
+     if (!*hwaccel_picture_private)
+         return AVERROR(ENOMEM);
+ 
+-- 
+2.43.0
+

@@ -1,0 +1,26 @@
+From c7fe7ee8d4dcae510453abedabae53e45135144a Mon Sep 17 00:00:00 2001
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Sun, 12 Nov 2023 18:46:28 +0100
+Subject: [PATCH 2/6] avcoded/fft: Fix memory leak if ctx2 is used
+
+Signed-off-by: James Almer <jamrial@gmail.com>
+(cherry picked from commit 250471ea1745fc703eb346a2a662304536a311b1)
+---
+ libavcodec/avfft.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libavcodec/avfft.c b/libavcodec/avfft.c
+index 3ef076d222..999b5ed79a 100644
+--- a/libavcodec/avfft.c
++++ b/libavcodec/avfft.c
+@@ -130,6 +130,7 @@ av_cold void av_mdct_end(FFTContext *s)
+ {
+     if (s) {
+         AVTXWrapper *w = (AVTXWrapper *)s;
++        av_tx_uninit(&w->ctx2);
+         av_tx_uninit(&w->ctx);
+         av_free(w);
+     }
+-- 
+2.43.0
+

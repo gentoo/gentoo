@@ -1,0 +1,54 @@
+From af912d80d8880797bef9f2ba9809ecd84ed9acd9 Mon Sep 17 00:00:00 2001
+From: Sebastian Ramacher <sramacher@debian.org>
+Date: Sun, 12 Nov 2023 18:46:27 +0100
+Subject: [PATCH 1/6] avcodec/fft: Use av_mallocz to avoid invalid free/uninit
+
+Signed-off-by: James Almer <jamrial@gmail.com>
+(cherry picked from commit a562cfee2e214252f8b3f516527272ae32ef9532)
+---
+ libavcodec/avfft.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libavcodec/avfft.c b/libavcodec/avfft.c
+index fb635abfff..3ef076d222 100644
+--- a/libavcodec/avfft.c
++++ b/libavcodec/avfft.c
+@@ -46,7 +46,7 @@ FFTContext *av_fft_init(int nbits, int inverse)
+ {
+     int ret;
+     float scale = 1.0f;
+-    AVTXWrapper *s = av_malloc(sizeof(*s));
++    AVTXWrapper *s = av_mallocz(sizeof(*s));
+     if (!s)
+         return NULL;
+ 
+@@ -85,7 +85,7 @@ FFTContext *av_mdct_init(int nbits, int inverse, double scale)
+ {
+     int ret;
+     float scale_f = scale;
+-    AVTXWrapper *s = av_malloc(sizeof(*s));
++    AVTXWrapper *s = av_mallocz(sizeof(*s));
+     if (!s)
+         return NULL;
+ 
+@@ -146,7 +146,7 @@ RDFTContext *av_rdft_init(int nbits, enum RDFTransformType trans)
+     if (trans != IDFT_C2R && trans != DFT_R2C)
+         return NULL;
+ 
+-    s = av_malloc(sizeof(*s));
++    s = av_mallocz(sizeof(*s));
+     if (!s)
+         return NULL;
+ 
+@@ -199,7 +199,7 @@ DCTContext *av_dct_init(int nbits, enum DCTTransformType inverse)
+         [DST_I] = AV_TX_FLOAT_DST_I,
+     };
+ 
+-    AVTXWrapper *s = av_malloc(sizeof(*s));
++    AVTXWrapper *s = av_mallocz(sizeof(*s));
+     if (!s)
+         return NULL;
+ 
+-- 
+2.43.0
+

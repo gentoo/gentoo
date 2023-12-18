@@ -1,0 +1,33 @@
+From 884a660cae23769d92d533cc1b6232d3cdfbae43 Mon Sep 17 00:00:00 2001
+From: Benjamin Cheng <ben@bcheng.me>
+Date: Fri, 22 Sep 2023 12:49:22 -0400
+Subject: [PATCH 6/6] hwcontext_vulkan: guard unistd.h include
+
+win32 typically doesn't have unistd.h, so always including it will break
+MSVC builds. The usage of those POSIX functions are already guarded by
+_WIN32, so use that to guard unistd.h include as well.
+
+(cherry picked from commit 185871fdd39762295973c1f3db1459e04121317c)
+---
+ libavutil/hwcontext_vulkan.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavutil/hwcontext_vulkan.c b/libavutil/hwcontext_vulkan.c
+index 506a218a42..d288fb7ac7 100644
+--- a/libavutil/hwcontext_vulkan.c
++++ b/libavutil/hwcontext_vulkan.c
+@@ -27,10 +27,10 @@
+ #include "compat/w32dlfcn.h"
+ #else
+ #include <dlfcn.h>
++#include <unistd.h>
+ #endif
+ 
+ #include "thread.h"
+-#include <unistd.h>
+ 
+ #include "config.h"
+ #include "pixdesc.h"
+-- 
+2.43.0
+
