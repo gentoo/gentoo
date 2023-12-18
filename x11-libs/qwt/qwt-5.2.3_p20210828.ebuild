@@ -21,7 +21,7 @@ SRC_URI="https://github.com/SciDAVis/qwt5-qt5/archive/${COMMIT}.tar.gz -> ${P}.t
 S="${WORKDIR}/${PN}5-qt5-${COMMIT}"
 
 LICENSE="qwt"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 ~riscv x86"
 SLOT="5"
 IUSE="designer examples"
 
