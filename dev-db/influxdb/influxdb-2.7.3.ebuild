@@ -209,13 +209,11 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 
-COMMON_DEPEND="
+DEPEND="
 	acct-group/influxdb
 	acct-user/influxdb
 "
-
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	cargo_src_unpack
