@@ -199,7 +199,7 @@ FLUX_PV="0.194.3"
 SRC_URI="https://github.com/influxdata/influxdb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/influxdata/ui/releases/download/OSS-v2.7.1/build.tar.gz -> ${P}-assets.tar.gz"
 SRC_URI+=" https://gentoo.kropotkin.rocks/go-pkgs/${P}-deps.tar.xz"
-SRC_URI+=" $(cargo_crate_uris)"
+SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="Apache-2.0 BSD BSD-2 EPL-2.0 ISC MIT MPL-2.0"
 SLOT="0"
