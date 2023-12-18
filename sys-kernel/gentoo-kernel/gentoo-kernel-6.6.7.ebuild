@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KERNEL_IUSE_GENERIC_UKI=1
 KERNEL_IUSE_MODULES_SIGN=1
 inherit kernel-build toolchain-funcs
 
@@ -43,7 +44,6 @@ SRC_URI+="
 "
 S=${WORKDIR}/${MY_P}
 
-LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
