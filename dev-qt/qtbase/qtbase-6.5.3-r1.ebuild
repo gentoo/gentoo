@@ -185,7 +185,8 @@ src_configure() {
 		$(qt_feature gui)
 		$(qt_feature network)
 		$(qt_feature sql)
-		-DQT_FEATURE_testlib=ON # trivial and often needed to build revdeps
+		# trivial, and is often needed (sometimes even when not building tests)
+		-DQT_FEATURE_testlib=ON
 		$(qt_feature xml)
 	)
 
