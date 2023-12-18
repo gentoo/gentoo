@@ -25,6 +25,7 @@ DEPEND="
 	!elibc_Darwin? ( sys-apps/util-linux )
 "
 BDEPEND="
+	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
 		app-text/xmlto
