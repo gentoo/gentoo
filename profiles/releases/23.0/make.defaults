@@ -21,3 +21,6 @@ LDFLAGS="-Wl,-O1 -Wl,--as-needed"
 # Avoid removing merged-usr symlinks.
 UNINSTALL_IGNORE="${UNINSTALL_IGNORE} /bin /lib /lib32 /lib64 /libx32 /sbin /usr/sbin"
 UNINSTALL_IGNORE="${UNINSTALL_IGNORE} /usr/lib/modules/*"
+
+# needed for llvm profiles
+BOOTSTRAP_USE="${BOOTSTRAP_USE} zstd"
