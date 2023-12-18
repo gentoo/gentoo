@@ -38,8 +38,9 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
-	python qsv speex +ssl truetype v4l vlc wayland websocket
+	python qsv speex +ssl test truetype v4l vlc wayland websocket
 "
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -114,6 +115,7 @@ DEPEND="
 	qsv? ( media-libs/oneVPL )
 	speex? ( media-libs/speexdsp )
 	ssl? ( net-libs/mbedtls:= )
+	test? ( dev-util/cmocka )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -194,6 +196,7 @@ src_configure() {
 		-DENABLE_RNNOISE=ON
 		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
 		-DENABLE_SPEEXDSP=$(usex speex)
+		-DENABLE_UNIT_TESTS=$(usex test)
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
