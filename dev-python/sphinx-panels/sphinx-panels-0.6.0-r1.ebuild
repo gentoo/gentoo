@@ -22,5 +22,7 @@ RDEPEND="
 
 BDEPEND="test? ( dev-python/pytest-regressions[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}/${PN}-0.6.0-Make-the-tests-pass-with-Sphinx-7.x.patch" )
+
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
