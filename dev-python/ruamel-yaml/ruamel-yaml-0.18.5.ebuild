@@ -26,11 +26,6 @@ RDEPEND="
 	dev-python/ruamel-yaml-clib[${PYTHON_USEDEP}]
 	!dev-python/namespace-ruamel
 "
-BDEPEND="
-	test? (
-		dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
 
