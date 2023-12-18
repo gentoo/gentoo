@@ -16,7 +16,7 @@ HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+kaccounts +mysql postgres sqlite tools xml"
 
 REQUIRED_USE="|| ( mysql postgres sqlite ) test? ( tools )"
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	kaccounts? (
 		>=kde-apps/kaccounts-integration-20.08.3:5
-		>=net-libs/accounts-qt-1.16
+		>=net-libs/accounts-qt-1.16[qt5(+)]
 	)
 	xml? ( dev-libs/libxml2 )
 "
