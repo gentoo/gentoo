@@ -93,7 +93,7 @@ COMMON_DEPEND="
 	)
 	kaccounts? (
 		kde-apps/kaccounts-integration:5
-		net-libs/accounts-qt
+		net-libs/accounts-qt[qt5(+)]
 	)
 	scim? ( app-i18n/scim )
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:5 )
@@ -116,7 +116,7 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	x11-misc/xdg-user-dirs
-	kaccounts? ( net-libs/signon-oauth2 )
+	kaccounts? ( net-libs/signon-oauth2[qt5(+)] )
 	screencast? ( >=kde-plasma/kpipewire-${PVCUT}:5 )
 "
 BDEPEND="
