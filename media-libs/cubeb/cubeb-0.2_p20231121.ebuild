@@ -17,7 +17,7 @@ S=${WORKDIR}/${PN}-${HASH_CUBEB}
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="alsa doc jack pulseaudio sndio test"
 RESTRICT="!test? ( test )"
 
