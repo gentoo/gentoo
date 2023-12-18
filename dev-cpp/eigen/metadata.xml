@@ -16,9 +16,6 @@
 		OpenGL apps, spreadsheets and other office apps, etc. Eigen is dedicated to
 		providing optimal speed with GCC.
 	</longdescription>
-	<use>
-		<flag name="cuda">Build with cuda support</flag>
-	</use>
 	<upstream>
 		<remote-id type="gitlab">libeigen/eigen</remote-id>
 	</upstream>

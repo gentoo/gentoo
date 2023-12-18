@@ -17,7 +17,6 @@
   <use>
     <flag name="octave">Add bindings for
     <pkg>sci-mathematics/octave</pkg></flag>
-    <flag name="cuda">Enable support for nVidia CUDA</flag>
   </use>
   <upstream>
     <remote-id type="github">mariusmuja/flann</remote-id>

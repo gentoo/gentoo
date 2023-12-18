@@ -6,7 +6,6 @@
 		<name>Jason Zaman</name>
 	</maintainer>
 	<use>
-		<flag name="cuda">Enable support for nVidia CUDA</flag>
 		<flag name="xla">XLA (Accelerated Linear Algebra) Optimizing Compiler for TensorFlow</flag>
 	</use>
 	<upstream>

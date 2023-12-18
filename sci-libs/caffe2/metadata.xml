@@ -10,7 +10,6 @@
 		<name>James Beddek</name>
 	</maintainer>
 	<use>
-		<flag name="cuda">Add support for CUDA processing</flag>
 		<flag name="distributed">Support distributed applications</flag>
 		<flag name="fbgemm">Use FBGEMM</flag>
 		<flag name="ffmpeg">Add support for video processing operators</flag>

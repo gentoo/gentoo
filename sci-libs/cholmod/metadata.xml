@@ -6,7 +6,6 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <use>
-    <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
     <flag name="cholesky">
       Enable sparse Cholesky factorisation
     </flag>

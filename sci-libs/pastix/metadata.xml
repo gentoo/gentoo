@@ -17,7 +17,6 @@
   block structure of the incomplete factors.
   </longdescription>
   <use>
-    <flag name="cuda">Enable GPU support using CUDA kernels</flag>
     <flag name="fortran">Install the Fortran interface</flag>
     <flag name="int64">Use 64- rather than 32-bit integer representation</flag>
     <flag name="metis">Enable matrix ordering with <pkg>sci-libs/metis</pkg></flag>
