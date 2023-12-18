@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ RDEPEND="
 	)
 	sso? (
 		>=kde-apps/kaccounts-integration-${PVCUT}:5
-		net-libs/accounts-qt
+		net-libs/accounts-qt[qt5(+)]
 		net-libs/telepathy-accounts-signon
 	)
 "
