@@ -5,7 +5,7 @@ EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
 	QT5_KDEPATCHSET_REV=2
-	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 fi
 
 QT5_MODULE="qttools"
