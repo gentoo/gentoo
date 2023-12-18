@@ -644,7 +644,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=virtual/rust-1.60
+	>=virtual/rust-1.72.1
 	virtual/pkgconfig
 "
 
