@@ -39,3 +39,9 @@ PATCHES=(
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
+
+src_prepare() {
+	# unpin deps
+	sed -i -e 's:,<[0-9.]*::' setup.py || die
+	distutils-r1_src_prepare
+}
