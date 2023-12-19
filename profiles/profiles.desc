@@ -269,7 +269,8 @@ loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd					stable
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			stable
 loong		default/linux/loong/23.0/la64v100/lp64d						exp
-loong		default/linux/loong/23.0/la64v100/lp64d/clang					exp
+loong		default/linux/loong/23.0/la64v100/lp64d/llvm					exp
+loong		default/linux/loong/23.0/la64v100/lp64d/llvm/systemd				exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop					exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome				exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome/systemd			exp
@@ -277,7 +278,6 @@ loong		default/linux/loong/23.0/la64v100/lp64d/desktop/plasma				exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop/plasma/systemd			exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop/systemd				exp
 loong		default/linux/loong/23.0/la64v100/lp64d/systemd					exp
-loong		default/linux/loong/23.0/la64v100/lp64d/systemd/clang				exp
 loong		default/linux/loong/23.0/la64v100/split-usr/lp64d				exp
 loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop			exp
 loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop/gnome			exp
