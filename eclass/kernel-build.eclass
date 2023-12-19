@@ -107,6 +107,12 @@ if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	"
 fi
 
+if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+	BDEPEND+="
+		generic-uki? ( ${!INITRD_PACKAGES[@]} )
+	"
+fi
+
 # @FUNCTION: kernel-build_pkg_setup
 # @DESCRIPTION:
 # Call python-any-r1 and secureboot pkg_setup
@@ -333,7 +339,8 @@ kernel-build_src_install() {
 	# build/Module.symvers does not exist if CONFIG_MODULES is not set.
 	[[ -f build/Module.symvers ]] && doins build/Module.symvers
 	local image_path=$(dist-kernel_get_image_path)
-	cp -p "build/${image_path}" "${ED}${kernel_dir}/${image_path}" || die
+	local image=${ED}${kernel_dir}/${image_path}
+	cp -p "build/${image_path}" "${image}" || die
 
 	# If a key was generated, copy it so external modules can be signed
 	local suffix
@@ -366,7 +373,95 @@ kernel-build_src_install() {
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
 
 	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-		secureboot_sign_efi_file "${ED}${kernel_dir}/${image_path}"
+		secureboot_sign_efi_file "${image}"
+	fi
+
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+		if use generic-uki; then
+			# NB: if you pass a path that does not exist or is not a regular
+			# file/directory, dracut will silently ignore it and use the default
+			# https://github.com/dracutdevs/dracut/issues/1136
+			> "${T}"/empty-file || die
+			mkdir -p "${T}"/empty-directory || die
+
+			local dracut_modules=(
+				base bash btrfs cifs crypt crypt-gpg crypt-loop dbus dbus-daemon
+				dm dmraid drm dracut-systemd fido2 i18n fs-lib kernel-modules
+				kernel-network-modules kernel-modules-extra lunmask lvm nbd
+				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
+				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
+				systemd systemd-ac-power systemd-ask-password systemd-initrd
+				systemd-integritysetup systemd-pcrphase systemd-sysusers
+				systemd-udevd systemd-veritysetup terminfo tpm2-tss udev-rules
+				uefi-lib usrmount virtiofs
+			)
+
+			local dracut_args=(
+				--conf "${T}/empty-file"
+				--confdir "${T}/empty-directory"
+				--kernel-image "${image}"
+				--kmoddir "${ED}/lib/modules/${dir_ver}"
+				--kver "${dir_ver}"
+				--verbose
+				--no-hostonly
+				--no-hostonly-cmdline
+				--no-hostonly-i18n
+				--no-machineid
+				--nostrip
+				--no-uefi
+				--early-microcode
+				--reproducible
+				--ro-mnt
+				--modules "${dracut_modules[*]}"
+			)
+
+			# Tries to update ld cache
+			addpredict /etc/ld.so.cache~
+			dracut "${dracut_args[@]}" "${image%/*}/initrd" ||
+				die "Failed to generate initramfs"
+
+			local ukify_args=(
+				--linux="${image}"
+				--initrd="${image%/*}/initrd"
+				--cmdline="root=/dev/gpt-auto-root ro quiet splash"
+				--uname="${dir_ver}"
+				--output="${image%/*}/uki.efi"
+			)
+
+			if [[ ${KERNEL_IUSE_SECUREBOOT} ]] && use secureboot; then
+				ukify_args+=(
+					--signtool=sbsign
+					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
+					--secureboot-certificate="${SECUREBOOT_SIGN_CERT}"
+				)
+				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+					ukify_args+=(
+						--signing-engine="pkcs11"
+					)
+				else
+					# Sytemd-measure does not currently support pkcs11
+					ukify_args+=(
+						--measure
+						--pcrpkey="${ED}${kernel_dir}/certs/signing_key.x509"
+						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--phases="enter-initrd"
+						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--phases="enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready"
+					)
+				fi
+			fi
+
+			# systemd<255 does not install ukify in /usr/bin
+			PATH="${PATH}:${BROOT}/usr/lib/systemd:${BROOT}/lib/systemd" \
+				ukify build "${ukify_args[@]}" || die "Failed to generate UKI"
+
+			# Overwrite unnecessary image types to save space
+			> "${image}" || die
+		else
+			# Placeholders to ensure we own these files
+			> "${image%/*}/uki.efi" || die
+		fi
+		> "${image%/*}/initrd" || die
 	fi
 
 	# unset to at least be out of the environment file in, e.g. shared binpkgs
