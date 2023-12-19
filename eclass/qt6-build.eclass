@@ -66,11 +66,7 @@ readonly QT6_BUILD_TYPE
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-if ver_test ${PV} -ge 6.5.3; then
-	SLOT=6/${PV%%_*}
-else
-	SLOT=6/${PV%.*} # TODO: remove this after <6.5.3 is gone
-fi
+SLOT=6/${PV%%_*}
 
 if [[ ${PN} != qttranslations ]]; then
 	IUSE="test"
@@ -257,13 +253,11 @@ _qt6-build_match_cpu_flags() {
 				[[ ${intrin} ]] && flags+=( -mno-${intrin} )
 			done
 	done < <(
-		# TODO: drop ver_test and ${fma} when <6.5.3 and 6.6.0 are gone
-		ver_test ${PV} -ge 6.5.3 && ver_test ${PV} -ne 6.6.0 && fma= || fma=fma
 		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 2
 			#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
 			#include <x86intrin.h>
 			#endif
-			avx2=__AVX2__ =__BMI__ =__BMI2__ =__F16C__ ${fma}=__FMA__ =__LZCNT__ =__POPCNT__
+			avx2=__AVX2__ =__BMI__ =__BMI2__ =__F16C__ =__FMA__ =__LZCNT__ =__POPCNT__
 			avx512f=__AVX512F__ avx512bw=__AVX512BW__ avx512cd=__AVX512CD__ avx512dq=__AVX512DQ__ avx512vl=__AVX512VL__
 		EOF
 		assert
