@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# <dev-python/pycountry-23.12.7 bug #920278
 BDEPEND="
 	dev-lang/perl
 	dev-libs/libxslt
@@ -31,7 +32,7 @@ BDEPEND="
 		x11-apps/xkbcomp
 		x11-libs/libxkbcommon
 		$(python_gen_any_dep '
-			dev-python/pycountry[${PYTHON_USEDEP}]
+			<dev-python/pycountry-23.12.7[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
@@ -40,9 +41,10 @@ BDEPEND="
 
 python_check_deps() {
 	use test || return 0
-	python_has_version "dev-python/pycountry[${PYTHON_USEDEP}]"
-	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"
-	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version \
+		"<dev-python/pycountry-23.12.7[${PYTHON_USEDEP}]" \
+		"dev-python/pytest-xdist[${PYTHON_USEDEP}]" \
+		"dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
