@@ -55,3 +55,9 @@ src_configure() {
 	fi
 	meson_src_configure
 }
+
+src_install() {
+	default
+	insinto /usr/share/xdg-desktop-portal/portals
+	doins "${WORKDIR}/${P}/contrib/wlroots-portals.conf"
+}
