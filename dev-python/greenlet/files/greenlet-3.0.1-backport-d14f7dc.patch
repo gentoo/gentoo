@@ -1,0 +1,64 @@
+https://bugs.gentoo.org/917191
+https://github.com/python-greenlet/greenlet/commit/d14f7dcd29c8287170dfa3cc47d47c03a91dde52
+https://github.com/python-greenlet/greenlet/issues/385
+
+From d14f7dcd29c8287170dfa3cc47d47c03a91dde52 Mon Sep 17 00:00:00 2001
+From: Jason Madden <jamadden@gmail.com>
+Date: Fri, 8 Dec 2023 10:56:24 -0600
+Subject: [PATCH] Fix #385
+
+---
+ CHANGES.rst                    | 4 +++-
+ src/greenlet/TUserGreenlet.cpp | 6 +++++-
+ src/greenlet/tests/test_cpp.py | 6 +++++-
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/CHANGES.rst b/CHANGES.rst
+index 919d4ff..686501f 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -5,7 +5,9 @@
+ 3.0.2 (unreleased)
+ ==================
+ 
+-- Nothing changed yet.
++- Fix a test case on Arm32. Note that this is not a supported platform
++  (there is no CI for it) and support is best effort; there may be
++  other issues lurking. See `issue 385 <https://github.com/python-greenlet/greenlet/issues/385>`_
+ 
+ 
+ 3.0.1 (2023-10-25)
+diff --git a/src/greenlet/TUserGreenlet.cpp b/src/greenlet/TUserGreenlet.cpp
+index 975b29c..495a794 100644
+--- a/src/greenlet/TUserGreenlet.cpp
++++ b/src/greenlet/TUserGreenlet.cpp
+@@ -314,7 +314,11 @@ UserGreenlet::g_initialstub(void* mark)
+         // Getting a C++ exception here isn't good. It's probably a
+         // bug in the underlying greenlet, meaning it's probably a
+         // C++ extension. We're going to abort anyway, but try to
+-        // display some nice information if possible.
++        // display some nice information *if* possible. Some obscure
++        // platforms don't properly support this (old 32-bit Arm, see see
++        // https://github.com/python-greenlet/greenlet/issues/385); that's not
++        // great, but should usually be OK because, as mentioned above, we're
++        // terminating anyway.
+         //
+         // The catching is tested by
+         // ``test_cpp.CPPTests.test_unhandled_exception_in_greenlet_aborts``.
+diff --git a/src/greenlet/tests/test_cpp.py b/src/greenlet/tests/test_cpp.py
+index 4d9a4da..2d0cc9c 100644
+--- a/src/greenlet/tests/test_cpp.py
++++ b/src/greenlet/tests/test_cpp.py
+@@ -56,7 +56,11 @@ def test_unhandled_std_exception_as_greenlet_function_aborts(self):
+         # verify that plain unhandled throw aborts
+         output = self._do_test_unhandled_exception('run_as_greenlet_target')
+         self.assertIn(
+-            'greenlet: Unhandled C++ exception: Thrown from an extension.',
++            # We really expect this to be prefixed with "greenlet: Unhandled C++ exception:"
++            # as added by our handler for std::exception (see TUserGreenlet.cpp), but
++            # that's not correct everywhere --- our handler never runs before std::terminate
++            # gets called (for example, on arm32).
++            'Thrown from an extension.',
+             output
+         )
+ 

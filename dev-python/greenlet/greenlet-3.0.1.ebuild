@@ -29,6 +29,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-3.0.1-backport-d14f7dc.patch" )
+
 distutils_enable_sphinx docs
 distutils_enable_tests unittest
 
