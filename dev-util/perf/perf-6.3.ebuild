@@ -179,6 +179,19 @@ perf_make() {
 	local arch=$(tc-arch-kernel)
 	local java_dir
 	use java && java_dir="${EPREFIX}/etc/java-config-2/current-system-vm"
+
+	# sync this with the whitelist in tools/perf/Makefile.config
+	local disable_libdw
+	if ! use amd64 && ! use x86 && \
+	   ! use arm && \
+	   ! use arm64 && \
+	   ! use ppc && ! use ppc64 \
+	   ! use s390 && \
+	   ! use riscv
+	then
+		disable_libdw=1
+	fi
+
 	# FIXME: NO_CORESIGHT
 	emake V=1 VF=1 \
 		HOSTCC="$(tc-getBUILD_CC)" HOSTLD="$(tc-getBUILD_LD)" \
@@ -204,7 +217,7 @@ perf_make() {
 		NO_LIBBIONIC=1 \
 		NO_LIBBPF= \
 		NO_LIBCRYPTO=$(puse crypt) \
-		NO_LIBDW_DWARF_UNWIND= \
+		NO_LIBDW_DWARF_UNWIND="${disable_libdw}" \
 		NO_LIBELF= \
 		NO_LIBNUMA=$(puse numa) \
 		NO_LIBPERL=$(puse perl) \
