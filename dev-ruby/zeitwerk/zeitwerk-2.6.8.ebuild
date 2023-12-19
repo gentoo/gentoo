@@ -21,7 +21,7 @@ SLOT="2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/bundler )"
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/warning )"
 
 all_ruby_prepare() {
 	rm -f Gemfile.lock || die
