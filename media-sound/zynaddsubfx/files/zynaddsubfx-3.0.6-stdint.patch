@@ -1,46 +1,121 @@
-Upstream Commit: https://github.com/zynaddsubfx/zynaddsubfx/commit/f384d92486d6b515cb628d0f52008a9e03341d8c
-Upstream Commit: https://github.com/zynaddsubfx/zynaddsubfx/commit/70905c96fe7b9ffde19bc4bc05b0dc53a1ed1707
-
-From f384d92486d6b515cb628d0f52008a9e03341d8c Mon Sep 17 00:00:00 2001
-From: fundamental <mark.d.mccurry@gmail.com>
-Date: Wed, 19 Apr 2023 21:52:01 -0400
-Subject: [PATCH] Bank: Add stdint.h header include
-
-As uint8_t is used, this header should be included.
----
- src/Misc/Bank.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/src/Misc/Bank.h b/src/Misc/Bank.h
-index 5120441a5..3f324dd84 100644
---- a/src/Misc/Bank.h
-+++ b/src/Misc/Bank.h
-@@ -18,6 +18,7 @@
+--- zynaddsubfx-3.0.6/src/Params/ADnoteParameters.h
++++ zynaddsubfx-3.0.6.mod/src/Params/ADnoteParameters.h
+@@ -16,6 +16,7 @@
+ 
+ #include "../globals.h"
+ #include "PresetsArray.h"
++#include <cstdint>
+ 
+ namespace zyn {
+ 
+--- zynaddsubfx-3.0.6/src/Params/Controller.h
++++ zynaddsubfx-3.0.6.mod/src/Params/Controller.h
+@@ -17,6 +17,7 @@
+ 
+ #include <stdint.h>
+ #include "../globals.h"
++#include <cstdint>
+ 
+ namespace zyn {
+ 
+--- zynaddsubfx-3.0.6/src/Params/EnvelopeParams.h
++++ zynaddsubfx-3.0.6.mod/src/Params/EnvelopeParams.h
+@@ -17,6 +17,7 @@
+ #include "../globals.h"
+ #include "../Misc/XMLwrapper.h"
+ #include "Presets.h"
++#include <cstdint>
+ 
+ namespace zyn {
+ 
+--- zynaddsubfx-3.0.6/src/Params/FilterParams.h
++++ zynaddsubfx-3.0.6.mod/src/Params/FilterParams.h
+@@ -17,6 +17,7 @@
+ #include "../globals.h"
+ #include "../Misc/XMLwrapper.h"
+ #include "PresetsArray.h"
++#include <cstdint>
+ 
+ namespace zyn {
+ 
+--- zynaddsubfx-3.0.6/src/Params/LFOParams.h
++++ zynaddsubfx-3.0.6.mod/src/Params/LFOParams.h
+@@ -17,6 +17,7 @@
+ #include <Misc/Time.h>
+ #include <rtosc/ports.h>
+ #include "Presets.h"
++#include <cstdint>
+ 
+ #define LFO_SINE      0
+ #define LFO_TRIANGLE  1
+--- zynaddsubfx-3.0.6/src/Params/PADnoteParameters.h
++++ zynaddsubfx-3.0.6.mod/src/Params/PADnoteParameters.h
+@@ -19,7 +19,7 @@
+ #include "Presets.h"
+ #include <string>
+ #include <functional>
+-
++#include <cstdint>
+ namespace zyn {
+ 
+ /**
+--- zynaddsubfx-3.0.6/src/Params/SUBnoteParameters.h
++++ zynaddsubfx-3.0.6.mod/src/Params/SUBnoteParameters.h
+@@ -17,6 +17,7 @@
+ #include <stdint.h>
+ #include "../globals.h"
+ #include "Presets.h"
++#include <cstdint>
+ 
+ namespace zyn {
+ 
+--- zynaddsubfx-3.0.6.old/src/Misc/Bank.cpp
++++ zynaddsubfx-3.0.6/src/Misc/Bank.cpp
+@@ -17,6 +17,7 @@
+ #include <cstring>
+ #include <cstdio>
+ #include <cstdlib>
++#include <cstdint>
+ #include <dirent.h>
+ #include <sys/stat.h>
+ #include <algorithm>
+--- zynaddsubfx-3.0.6.old/src/Misc/Bank.h
++++ zynaddsubfx-3.0.6/src/Misc/Bank.h
+@@ -16,6 +16,7 @@
+ 
+ #include <string>
  #include <vector>
++#include <cstdint>
  #include "../globals.h"
  #include "Config.h"
-+#include <stdint.h>
  
- //entries in a bank
- #define BANK_SIZE 160
-
-From 70905c96fe7b9ffde19bc4bc05b0dc53a1ed1707 Mon Sep 17 00:00:00 2001
-From: fundamental <mark.d.mccurry@gmail.com>
-Date: Sat, 22 Apr 2023 10:21:09 -0400
-Subject: [PATCH] MidiIn: Add stdint.h header include
-
----
- src/Nio/MidiIn.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/src/Nio/MidiIn.h b/src/Nio/MidiIn.h
-index ce0bcfec3..c6b30c61d 100644
---- a/src/Nio/MidiIn.h
-+++ b/src/Nio/MidiIn.h
+--- zynaddsubfx-3.0.6.old/src/Nio/InMgr.cpp
++++ zynaddsubfx-3.0.6/src/Nio/InMgr.cpp
+@@ -17,6 +17,7 @@
+ #include "../Misc/MiddleWare.h"
+ #include <rtosc/thread-link.h>
+ #include <iostream>
++#include <cstdint>
+ using namespace std;
+ 
+ extern zyn::MiddleWare *middleware;
+--- zynaddsubfx-3.0.6.old/src/Nio/MidiIn.cpp
++++ zynaddsubfx-3.0.6/src/Nio/MidiIn.cpp
+@@ -15,6 +15,7 @@
+ #include "../globals.h"
+ #include "InMgr.h"
+ #include <string.h>
++#include <cstdint>
+ 
+ namespace zyn {
+ 
+--- zynaddsubfx-3.0.6.old/src/Nio/MidiIn.h
++++ zynaddsubfx-3.0.6/src/Nio/MidiIn.h
 @@ -17,6 +17,7 @@
  #define MIDI_IN_H
  
  #include "Engine.h"
-+#include <stdint.h>//uint8_t
++#include <cstdint>
  
  namespace zyn {
+ 
