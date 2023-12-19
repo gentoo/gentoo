@@ -40,5 +40,5 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 	>=dev-qt/qtmultimedia-${QTMIN}:5
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
-	>=kde-apps/kdeedu-data-${PVCUT}:5
+	>=kde-apps/kdeedu-data-${PVCUT}:*
 "
