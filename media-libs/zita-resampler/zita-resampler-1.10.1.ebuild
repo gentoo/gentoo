@@ -16,7 +16,6 @@ IUSE="cpu_flags_x86_sse2 tools"
 
 RDEPEND="tools? ( media-libs/libsndfile )"
 DEPEND="${RDEPEND}"
-BDEPEND=""
 
 HTML_DOCS="docs/."
 
@@ -24,8 +23,14 @@ PATCHES=( "${FILESDIR}"/${PN}-1.10.1-makefile.patch )
 
 src_compile() {
 	tc-export CXX
+	# Code paths that uses intrinsics are not properly guarded by symbol checks
 	if use cpu_flags_x86_sse2 ; then
-		append-cppflags "-DENABLE_SSE2"
+		if tc-cpp-is-true "defined(__SSE2__)" ${CFLAGS} ${CXXFLAGS} ; then
+			append-cppflags "-DENABLE_SSE2"
+		else
+			ewarn "SSE2 support has been disabled automatically because the"
+			ewarn "compiler does not support corresponding intrinsics"
+		fi
 	fi
 
 	emake -C source
