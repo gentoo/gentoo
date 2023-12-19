@@ -66,11 +66,6 @@ dev-haskell/tasty-expected-failure test
 # Not ported to libsoup:3.0
 app-office/abiword collab
 
-# Sam James <sam@gentoo.org> (2023-09-09)
-# Needs <dev-libs/openssl-3 which is EOL on 2023-09-11. Please upgrade immediately.
-# See bug #913685.
-sci-libs/gloo ssl
-
 # WANG Xuerui <xen0n@gentoo.org> (2023-08-28)
 # Breaks multiple high-profile packages depending on outdated proc-macro2 when
 # USE=nightly and using an affected Rust version; keep until revdep problems
