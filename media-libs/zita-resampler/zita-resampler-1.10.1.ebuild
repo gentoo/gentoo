@@ -11,7 +11,7 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0/1"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~mips ~ppc ppc64 ~riscv sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc ~x86"
 IUSE="cpu_flags_x86_sse2 tools"
 
 RDEPEND="tools? ( media-libs/libsndfile )"
