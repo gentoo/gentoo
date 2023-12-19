@@ -61,7 +61,7 @@ DEPEND="
 	opengl? (
 		gles2-only? ( media-libs/libglvnd )
 	)
-	pdfium? ( >=dev-qt/qtwebengine-${QT_PV}[pdfium(-),widgets?] )
+	pdfium? ( >=dev-qt/qtwebengine-${QT_PV}[pdfium,widgets?] )
 	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
 	qml? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
 	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
