@@ -1,6 +1,10 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-12-18)
+# Using boringssl which is explicit no-support for BE (#733080)
+net-libs/quiche
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-17)
 # media-libs/libvpx casualties (#700902)
 media-plugins/gst-plugins-vpx
