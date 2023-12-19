@@ -46,7 +46,7 @@ DEPEND="
 	>=kde-frameworks/sonnet-${KFMIN}:5
 "
 RDEPEND="${DEPEND}
-	>=kde-apps/kdeedu-data-${PVCUT}:5
+	>=kde-apps/kdeedu-data-${PVCUT}:*
 "
 
 src_prepare() {
