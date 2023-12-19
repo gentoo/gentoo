@@ -24,7 +24,7 @@ RDEPEND="
 		dev-db/redis
 		dev-libs/hiredis
 	)
-	ssl? ( dev-libs/openssl:0/1.1 )
+	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}
 "
