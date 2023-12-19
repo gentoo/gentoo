@@ -55,13 +55,6 @@ dev-haskell/scientific test
 dev-haskell/splitmix test
 dev-haskell/tasty-expected-failure test
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
-# Broken with Qt6.6 and, given USE has no revdeps, simpler to just
-# mask for now to save desktop profile users (default bluetooth)
-# from failures. Update: could be cleaned up now but waiting for
-# 6.6.0 stable to avoid unnecessary rebuilds.
-~dev-python/PyQt6-6.5.3 bluetooth
-
 # Matt Turner <mattst88@gentoo.org> (2023-09-14)
 # Not ported to libsoup:3.0
 app-office/abiword collab
