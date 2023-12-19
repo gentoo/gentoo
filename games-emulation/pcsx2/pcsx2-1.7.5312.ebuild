@@ -9,9 +9,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PCSX2/pcsx2.git"
 else
-	# formerly was attempting to unbundle most, but upstream dropped every
-	# checks for alternatively using system's and keeping this up has become
-	# unmaintainable, and to simplify now also using tarballs with submodules
+	# unbundling on this package has become unmaintainable and, rather than
+	# handle submodules separately, using a tarball that includes them
 	SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
 	KEYWORDS="-* ~amd64"
 fi
