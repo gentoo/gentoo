@@ -7,7 +7,7 @@ PVCUT=$(ver_cut 1-2)
 QTMIN=6.6.0
 inherit ecm frameworks.kde.org
 
-DESCRIPTION="Framework for common completion tasks such as filename or URL completion"
+DESCRIPTION="Components for handling SVGs"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64"
