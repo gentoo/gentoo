@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexander Tsoy <alexander@tsoy.me> (2024-01-31)
+# Supports 64-bit NEON
+media-libs/zita-resampler -cpu_flags_arm_neon
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-python/PyQt6 is keyworded here
 dev-python/QtPy -pyqt6
