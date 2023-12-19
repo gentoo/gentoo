@@ -1,0 +1,29 @@
+From ede34901ec30342137d2bcde0c2124222d5d1229 Mon Sep 17 00:00:00 2001
+From: Cameron Miller <cameron.miller@homeaware.com>
+Date: Fri, 30 Oct 2020 21:23:53 -0700
+Subject: [PATCH] Fixes RPI-Distro/pi-bluetooth#18 - Integrated (UART)
+ bluetooth adapter not working after restart if another (USB) adapter
+ connected
+
+When more than one bluetooth interface is desired and a user connects a USB bluetooth dongle to the Raspberry Pi, the onboard bluetooth interface will fail to be configured after the first reboot and every boot after that. This is due to the btuart script making the erronious assumption that the on-board bluetooth will be configured via UART prior to any USB bluetooth interfaces and thus recieve the interface number: hci0. Currently the btuart script checks whether hci0 is present and exits the script if it exists, without confirming whether it is indeed the onboard chip.
+
+To fix this, the MAC addresses of the available interfaces are compared to the known MAC prefixes of the Raspberry Pi Foundation and if any matches are found, the btuart script exits. Otherwise, the script proceeds and properly configures the onboard bluetooth interface.
+---
+ usr/bin/btuart | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/usr/bin/btuart b/usr/bin/btuart
+index 1f05ed5..e0ab9e7 100755
+--- a/usr/bin/btuart
++++ b/usr/bin/btuart
+@@ -11,8 +11,8 @@ else
+   BDADDR=`printf b8:27:eb:%02x:%02x:%02x $((0x$B1 ^ 0xaa)) $((0x$B2 ^ 0xaa)) $((0x$B3 ^ 0xaa))`
+ fi
+ 
+-if [ -e /sys/class/bluetooth/hci0 ]; then
+-  # Bluetooth is already enabled
++if ( /usr/bin/hcitool dev | grep -q -E '\s(B8:27:EB:|DC:A6:32:)' ); then
++  # On-board bluetooth is already enabled
+   exit 0
+ fi
+ 
