@@ -18,9 +18,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# TODO: TypeError: Need to pass a QWidget to addWidget!
-RESTRICT="test"
-
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
@@ -41,8 +38,8 @@ EPYTEST_IGNORE=(
 )
 
 EPYTEST_DESELECT=(
-	# hangs
-	tests/test_utils.py::test_exception_context
+	# fails in the sandbox, but works outside of it
+	tests/test_eliding_label.py::test_wrapped_eliding_label
 )
 
 distutils_enable_tests pytest
