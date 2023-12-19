@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-qt/qtwebengine-${QT_PV}[widgets]
 	quick? (
 		dev-python/PyQt6[qml]
-		>=dev-qt/qtwebengine-${QT_PV}[qml(+)]
+		>=dev-qt/qtwebengine-${QT_PV}[qml]
 	)
 	widgets? ( dev-python/PyQt6[network,printsupport,webchannel,widgets] )
 "
