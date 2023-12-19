@@ -11,7 +11,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+foomatic"
 #IUSE=""
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 RDEPEND="
 	net-print/libcupsfilters
