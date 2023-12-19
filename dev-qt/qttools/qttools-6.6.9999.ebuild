@@ -62,6 +62,8 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		# prevent the clang test as it can abort due to bug #916098
+		$(cmake_use_find_package clang WrapLibClang)
 		$(cmake_use_find_package qml Qt6Qml)
 		$(cmake_use_find_package widgets Qt6Widgets)
 		$(qt_feature assistant)
