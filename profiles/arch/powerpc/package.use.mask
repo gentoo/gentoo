@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-12-19)
+# JIT not supported here (#909826)
+dev-scheme/racket chez futures jit
+
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, currently masked on all PowerPC
 # arches except ppc64le
