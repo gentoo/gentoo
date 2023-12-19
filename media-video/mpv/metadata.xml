@@ -10,7 +10,6 @@
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="cli">Enable the command-line player</flag>
 		<flag name="drm">Enable Kernel Mode Setting / Direct Rendering Manager based video outputs</flag>
-		<flag name="egl">Enable support for various EGL-based video outputs / backends</flag>
 		<flag name="gamepad">Enable gamepad input support</flag>
 		<flag name="libmpv">Enable the shared library and headers (used by frontends / plugins)</flag>
 		<flag name="libplacebo">Enable support for GPU accelerated video rendering with <pkg>media-libs/libplacebo</pkg></flag>
