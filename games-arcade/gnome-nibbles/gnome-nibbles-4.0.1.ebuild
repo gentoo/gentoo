@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 RDEPEND="
-	>=dev-libs/glib-2.66.0:2
+	>=dev-libs/glib-2.78.0:2
 	dev-libs/libgee:0.8=
 	>=media-libs/gsound-1.0.2
 	>=gui-libs/gtk-4.6:4
@@ -28,11 +28,6 @@ BDEPEND="
 	$(vala_depend)
 	media-libs/gsound[vala]
 "
-
-src_unpack() {
-	default
-	mv "${WORKDIR}"/gnome-nibbles-4.0.rc2 "${WORKDIR}"/gnome-nibbles-4.0.rc.2
-}
 
 src_prepare() {
 	default
