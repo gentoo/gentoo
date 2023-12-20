@@ -40,7 +40,7 @@
 dev-python/ruamel-std-pathlib
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-17)
-# KDE Frameworks 6 Beta 1 mask
+# KDE Frameworks 6 Beta 2 mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
 # To install alongside KDE Frameworks 5:
 # - put '-kf6compat' into /etc/portage/profile/use.mask
