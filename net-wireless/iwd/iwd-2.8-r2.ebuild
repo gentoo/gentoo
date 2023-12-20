@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	ELL_EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 	MYRST2MAN="RST2MAN=:"
 fi
 
