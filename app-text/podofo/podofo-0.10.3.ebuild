@@ -17,7 +17,7 @@ SRC_URI="https://github.com/podofo/podofo/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-2+ tools? ( GPL-2+ )"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="idn jpeg tiff png fontconfig test tools"
 RESTRICT="!test? ( test )"
 
