@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Project manager for Gnome"
-HOMEPAGE="https://wiki.gnome.org/Apps/Planner"
+HOMEPAGE="https://wiki.gnome.org/Apps/Planner https://gitlab.gnome.org/World/planner"
 if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/World/planner.git"
 	inherit git-r3
