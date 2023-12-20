@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 PYTHON_REQ_USE="sqlite"
 
 inherit optfeature python-single-r1 systemd
@@ -12,7 +12,7 @@ MY_PV="${PV/_alpha/Alpha}"
 MY_PV="${MY_PV/_beta/Beta}"
 MY_PV="${MY_PV/_rc/RC}"
 
-MY_P="${PN/sab/SAB}-${MY_PV}"
+MY_P="SABnzbd-${MY_PV}"
 
 DESCRIPTION="Binary newsgrabber with web-interface"
 HOMEPAGE="https://sabnzbd.org/"
@@ -44,11 +44,6 @@ DEPEND="
 		dev-python/puremagic[${PYTHON_USEDEP}]
 		~dev-python/sabctools-7.1.2[${PYTHON_USEDEP}]
 	')
-		test? ( $(python_gen_cond_dep '
-				dev-python/tavalidate[${PYTHON_USEDEP}]
-				>=dev-python/tavern-2[${PYTHON_USEDEP}]
-			')
-		)
 "
 RDEPEND="
 	${DEPEND}
@@ -69,6 +64,8 @@ BDEPEND="
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/selenium[${PYTHON_USEDEP}]
+			dev-python/tavalidate[${PYTHON_USEDEP}]
+			>=dev-python/tavern-2[${PYTHON_USEDEP}]
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/xmltodict[${PYTHON_USEDEP}]
 		')
@@ -122,11 +119,8 @@ src_test() {
 }
 
 src_install() {
-	local d
-	for d in email icons interfaces locale po sabnzbd scripts tools; do
-		insinto /usr/share/${PN}/${d}
-		doins -r ${d}/*
-	done
+	insinto /usr/share/${PN}
+	doins -r email icons interfaces locale po sabnzbd scripts tools
 
 	exeinto /usr/share/${PN}
 	doexe SABnzbd.py
