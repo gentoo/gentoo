@@ -40,6 +40,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-include.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		# disable server application
