@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-align.patch
 	"${FILESDIR}"/${P}-alignment.patch
 	"${FILESDIR}"/${P}-no-malloc-check.patch
+	"${FILESDIR}"/${P}-hmac-uaf-test.patch
 )
 
 DOCS=( doc/example.c doc/skid2-authentication )
