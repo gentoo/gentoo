@@ -10,7 +10,7 @@ SRC_URI="https://github.com/ibm-power-utilities/${PN}/archive/v${PV}.tar.gz -> $
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~ppc ppc64 ~ppc64-linux"
+KEYWORDS="ppc ppc64 ~ppc64-linux"
 IUSE="static-libs"
 
 src_prepare() {
