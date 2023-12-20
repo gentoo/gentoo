@@ -57,8 +57,6 @@ src_prepare() {
 		"${WORKDIR}/${PATCHSET}"
 	)
 	default
-
-	eapply_user
 }
 
 src_configure() {
