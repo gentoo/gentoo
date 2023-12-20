@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.tartarus.org/simon/putty.git"
 else
 	SRC_URI+=" https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ppc64 sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ppc ppc64 sparc ~x86"
 fi
 LICENSE="MIT"
 
