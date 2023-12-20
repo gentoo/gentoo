@@ -307,12 +307,6 @@ dev-haskell/terminfo
 =sys-fs/btrfs-progs-6.6-r1
 =sys-fs/btrfs-progs-6.6-r2
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-29)
-# This version contains a major bug that causes pytest internal error
-# when tests are skippeed at module level.
-# https://github.com/pytest-dev/pytest-asyncio/issues/655
-=dev-python/pytest-asyncio-0.22.0
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2023-11-02)
 # Performance regression. Bug #916713.
 =dev-db/mydumper-0.15.1.3
