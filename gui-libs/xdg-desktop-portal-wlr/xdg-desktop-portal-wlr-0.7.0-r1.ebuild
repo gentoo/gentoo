@@ -43,6 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-portal-config.patch
+)
+
 src_configure() {
 	local emesonargs=()
 

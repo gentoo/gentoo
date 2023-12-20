@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/915702
+https://github.com/emersion/xdg-desktop-portal-wlr/commit/e88e00ca9bc1b2e0e91bc297ff95c882dd1829ff
+
+From e88e00ca9bc1b2e0e91bc297ff95c882dd1829ff Mon Sep 17 00:00:00 2001
+From: columbarius <co1umbarius@protonmail.com>
+Date: Wed, 10 May 2023 01:36:21 +0200
+Subject: [PATCH] contrib: Add portals config example
+
+This is an example configuration for choosing the portal implementations
+which should be used [1]. Compositors and distributions are expected to ship
+their modified version according to their choice of components.
+
+[1] https://github.com/flatpak/xdg-desktop-portal/pull/955
+---
+ contrib/wlroots-portals.conf | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 contrib/wlroots-portals.conf
+
+diff --git a/contrib/wlroots-portals.conf b/contrib/wlroots-portals.conf
+new file mode 100644
+index 00000000..0baa2ca4
+--- /dev/null
++++ b/contrib/wlroots-portals.conf
+@@ -0,0 +1,7 @@
++[preferred]
++# Use xdg-desktop-portal-gtk for every portal interface...
++default=gtk
++# ... except for the Screencast, Screenshot and Settings (dark/light mode) interface
++org.freedesktop.impl.portal.Screencast=wlr
++org.freedesktop.impl.portal.Screenshot=wlr
++org.freedesktop.impl.portal.Settings=darkman
+
