@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,11 +15,12 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	SRC_URI="https://gitlab.com/jgemu/${MY_PN}/-/archive/${PV}/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="BSD GPL-2 GPL-2+ LGPL-2.1+ ZLIB"
 SLOT="1"
+IUSE="cpu_flags_x86_avx"
 
 DEPEND="
 	app-arch/zstd
@@ -46,7 +47,7 @@ src_prepare() {
 
 src_configure() {
 	cd jollygood/conf || die
-	econf
+	econf $(use_enable cpu_flags_x86_avx avx)
 }
 
 src_compile() {
