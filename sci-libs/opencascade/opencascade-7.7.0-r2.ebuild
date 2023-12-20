@@ -17,7 +17,7 @@ S="${WORKDIR}/occt-185d29b"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="doc examples ffmpeg freeimage gles2 json optimize tbb vtk"
 
 REQUIRED_USE="?? ( optimize tbb )"
