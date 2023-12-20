@@ -74,7 +74,7 @@ DEPEND="
 	sys-process/numactl:=
 	virtual/libcrypt:=
 	x11-libs/libpciaccess:=
-	babeltrace? ( dev-util/babeltrace )
+	babeltrace? ( dev-util/babeltrace:0/2 )
 	fuse? ( sys-fs/fuse:3= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
