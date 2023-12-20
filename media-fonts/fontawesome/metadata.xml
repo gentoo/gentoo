@@ -10,4 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">FortAwesome/Font-Awesome</remote-id>
+	</upstream>
 </pkgmetadata>
