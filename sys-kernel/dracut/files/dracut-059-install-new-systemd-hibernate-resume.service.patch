@@ -1,0 +1,21 @@
+From https://github.com/dracutdevs/dracut/pull/2527
+From a2fe89116db4b286fbf515f26bd1773b5e6ee8ad Mon Sep 17 00:00:00 2001
+From: Antonio Alvarez Feijoo <antonio.feijoo@suse.com>
+Date: Tue, 26 Sep 2023 09:43:37 +0200
+Subject: [PATCH] fix(resume): add new systemd-hibernate-resume.service
+
+Since https://github.com/systemd/systemd/commit/a628d933, the generator only
+does the initial validation of the system info and then enables the new
+`systemd-hibernate-resume.service`.
+
+Fixes #2513
+--- a/modules.d/95resume/module-setup.sh
++++ b/modules.d/95resume/module-setup.sh
+@@ -44,6 +44,7 @@ install() {
+     if dracut_module_included "systemd" && [[ -x $dracutsysrootdir$systemdutildir/systemd-hibernate-resume ]]; then
+         inst_multiple -o \
+             "$systemdutildir"/system-generators/systemd-hibernate-resume-generator \
++            "$systemdsystemunitdir"/systemd-hibernate-resume.service \
+             "$systemdsystemunitdir"/systemd-hibernate-resume@.service \
+             "$systemdutildir"/systemd-hibernate-resume
+         return 0
