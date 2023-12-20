@@ -13,7 +13,7 @@ else
 	MY_P="${PN/m/M}-${PV}"
 	SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
