@@ -1,0 +1,35 @@
+Make specifying `.jsonc` suffix for configs optional
+
+https://github.com/fastfetch-cli/fastfetch/commit/456a58c8f57aaf22c51571ec0ead1e7c40c3d860
+
+From: =?UTF-8?q?=E6=9D=8E=E9=80=9A=E6=B4=B2?= <zhangsongcui3371@sina.com>
+Date: Tue, 19 Dec 2023 15:26:51 +0800
+Subject: [PATCH] fastfetch: default preset names to `.jsonc`
+
+Fix #666
+--- a/src/fastfetch.c
++++ b/src/fastfetch.c
+@@ -501,6 +501,11 @@ static void optionParseConfigFile(FFdata* data, const char* key, const char* val
+         ffStrbufAppendS(&absolutePath, value);
+ 
+         bool success = isJsonConfig ? parseJsoncFile(absolutePath.chars) : parseConfigFile(data, absolutePath.chars);
++        if (!success)
++        {
++            ffStrbufAppendS(&absolutePath, ".jsonc");
++            success = parseJsoncFile(absolutePath.chars);
++        }
+ 
+         if(success)
+             return;
+@@ -514,6 +519,11 @@ static void optionParseConfigFile(FFdata* data, const char* key, const char* val
+         ffStrbufAppendS(&absolutePath, value);
+ 
+         bool success = isJsonConfig ? parseJsoncFile(absolutePath.chars) : parseConfigFile(data, absolutePath.chars);
++        if (!success)
++        {
++            ffStrbufAppendS(&absolutePath, ".jsonc");
++            success = parseJsoncFile(absolutePath.chars);
++        }
+ 
+         if(success)
+             return;

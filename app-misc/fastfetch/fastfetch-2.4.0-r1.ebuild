@@ -62,6 +62,10 @@ REQUIRED_USE="
 	chafa? ( imagemagick )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-default-config-suffix.patch
+)
+
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
 	local fastfetch_enable_imagemagick6=no
