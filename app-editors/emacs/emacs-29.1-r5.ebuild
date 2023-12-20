@@ -207,6 +207,12 @@ src_prepare() {
 	# with a wrong library name.
 	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
 
+	# Tests that use bubblewrap don't work in the sandbox:
+	# "bwrap: setting up uid map: Permission denied"
+	# So, disrupt the search for the bwrap executable.
+	sed -i -e 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
+		test/lisp/emacs-lisp/bytecomp-tests.el || die
+
 	AT_M4DIR=m4 eautoreconf
 }
 
@@ -426,12 +432,6 @@ src_test() {
 		%lisp/mail/undigest-tests.el
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
-
-		# Reason: fails if bubblewrap (bwrap) is installed
-		# "bwrap: setting up uid map: Permission denied"
-		#
-		# bytecomp-tests--dest-mountpoint
-		%lisp/emacs-lisp/bytecomp-tests.el
 
 		# Reason: tries to access network
 		# internet-is-working
