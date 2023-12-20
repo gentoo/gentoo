@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-KFMIN=5.245.0
+KFMIN=5.247.0
 QTMIN=6.6.0
 inherit ecm gear.kde.org
 
@@ -75,7 +75,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="man? ( dev-util/gperf )"
 
-PATCHES=( "${FILESDIR}/${P}-no-activities.patch" )
+PATCHES=( "${FILESDIR}/${PN}-24.01.80-no-activities.patch" )
 
 src_configure() {
 	local mycmakeargs=(
