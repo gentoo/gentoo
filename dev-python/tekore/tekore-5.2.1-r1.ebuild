@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~arm64"
 SLOT="0"
 
 RDEPEND="
-	<dev-python/httpx-0.26[${PYTHON_USEDEP}]
+	dev-python/httpx[${PYTHON_USEDEP}]
 	>=dev-python/pydantic-1.8[${PYTHON_USEDEP}]
 "
 
@@ -49,3 +49,10 @@ EPYTEST_DESELECT=(
 	# Internet
 	tests/auth/expiring.py::TestCredentialsOnline::test_bad_arguments_raises_error
 )
+
+src_prepare() {
+	# unpin dependencies
+	sed -i -e 's:,<[0-9.]*::' pyproject.toml || die
+
+	distutils-r1_src_prepare
+}
