@@ -62,7 +62,7 @@ DEPEND="${COMMON_DEPEND}
 			dev-qt/qttest:5
 			dev-qt/qtwidgets:5
 		)
-		qt6? ( dev-qt/qtbase:6[test,widgets] )
+		qt6? ( dev-qt/qtbase:6[widgets] )
 	)
 "
 BDEPEND="
