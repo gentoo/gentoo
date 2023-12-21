@@ -11,11 +11,12 @@ SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64"
-RESTRICT=test
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Circular dependency alnuth->polycyclic->alnuth...
 RDEPEND="dev-gap/polycyclic"
-#BDEPEND="test? ( dev-gap/radiroot )"
+BDEPEND="test? ( dev-gap/radiroot )"
 
 GAP_PKG_HTML_DOCDIR="htm"
 
