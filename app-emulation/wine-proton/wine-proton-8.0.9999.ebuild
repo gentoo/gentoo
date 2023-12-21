@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools flag-o-matic multilib multilib-build prefix
 inherit python-any-r1 readme.gentoo-r1 toolchain-funcs wrapper
 
-WINE_GECKO=2.47.3
+WINE_GECKO=2.47.4
 WINE_MONO=8.1.0
 WINE_PV=$(ver_rs 2 -)
 
