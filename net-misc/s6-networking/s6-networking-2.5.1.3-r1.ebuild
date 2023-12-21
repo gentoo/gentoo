@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit optfeature toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Suite of small networking utilities for Unix systems"
 HOMEPAGE="https://www.skarnet.org/software/s6-networking/"
@@ -16,10 +16,11 @@ IUSE="ssl"
 
 RDEPEND="
 	dev-lang/execline:=
-	>=dev-libs/skalibs-2.14.0.0:=
-	>=net-dns/s6-dns-2.3.7.0:=
+	>=dev-libs/skalibs-2.13.0.0:=
+	<dev-libs/skalibs-2.14.1.0:=
+	net-dns/s6-dns:=
 	sys-apps/s6:=[execline]
-	ssl? ( dev-libs/libretls:= )
+	ssl? ( dev-libs/libretls )
 "
 DEPEND="${RDEPEND}"
 
@@ -54,8 +55,4 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
-}
-
-pkg_postinst() {
-	optfeature "man pages" app-doc/s6-networking-man-pages
 }
