@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm ~mips ~riscv x86"
 IUSE="+execline"
 
 RDEPEND="
-	>=dev-libs/skalibs-2.14.0.0:=
+	=dev-libs/skalibs-2.14.0*:=
 	execline? ( dev-lang/execline:= )
 "
 DEPEND="${RDEPEND}"
