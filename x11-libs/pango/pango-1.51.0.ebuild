@@ -45,10 +45,6 @@ src_prepare() {
 	default
 	xdg_environment_reset
 	gnome2_environment_reset
-
-	# False positive with GCC 13 and -O3 at least, see bug #903259
-	# https://gitlab.gnome.org/GNOME/pango/-/issues/740
-	sed -i -e '/\-Werror=array-bounds/d' meson.build || die
 }
 
 multilib_src_configure() {
