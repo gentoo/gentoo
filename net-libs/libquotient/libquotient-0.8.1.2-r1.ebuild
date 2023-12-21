@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 			dev-qt/qtconcurrent:5
 			dev-qt/qttest:5
 		)
-		qt6? ( dev-qt/qtbase:6[concurrent,test] )
+		qt6? ( dev-qt/qtbase:6[concurrent] )
 	)
 "
 
