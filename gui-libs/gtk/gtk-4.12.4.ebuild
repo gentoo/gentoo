@@ -89,6 +89,9 @@ BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
+	wayland? (
+		dev-util/wayland-scanner
+	)
 	test? (
 		dev-libs/glib:2
 		media-fonts/cantarell
