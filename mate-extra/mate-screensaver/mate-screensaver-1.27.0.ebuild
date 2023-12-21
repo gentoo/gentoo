@@ -8,8 +8,6 @@ inherit mate readme.gentoo-r1
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Replaces xscreensaver, integrating with the MATE desktop"
@@ -48,7 +46,6 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	>=mate-base/mate-session-manager-1.6
 	virtual/libintl
-	!!<gnome-extra/gnome-screensaver-3
 	mate-base/mate-panel
 "
 
