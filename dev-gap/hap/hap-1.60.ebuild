@@ -11,8 +11,8 @@ SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-#IUSE="test"
-RESTRICT=test
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-gap/aclib
 	dev-gap/crystcat
@@ -33,15 +33,15 @@ RDEPEND="dev-gap/aclib
 #
 #   https://github.com/gap-packages/hap/issues/115
 #
-# BDEPEND="test? (
-# 	dev-gap/congruence
-# 	dev-gap/edim
-# 	dev-gap/hapcryst
-# 	dev-gap/laguna
-# 	dev-gap/polymaking
-# 	dev-gap/singular
-# 	media-gfx/imagemagick[png]
-# )"
+BDEPEND="test? (
+	dev-gap/congruence
+	dev-gap/edim
+	dev-gap/hapcryst
+	dev-gap/laguna
+	dev-gap/polymaking
+	dev-gap/singular
+	media-gfx/imagemagick[png]
+)"
 
 HTML_DOCS="www/* tutorial"
 
