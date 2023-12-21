@@ -35,7 +35,7 @@ RDEPEND="
 		test? ( dev-qt/qttest:5 )
 	)
 	qt6? (
-		dev-qt/qtbase:6=[X,gui,network,test?,widgets,xml(+)]
+		dev-qt/qtbase:6=[X,gui,network,widgets,xml(+)]
 		dev-qt/qtdeclarative:6
 		dev-qt/qtsvg:6
 		dev-qt/qtwayland:6
