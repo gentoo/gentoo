@@ -45,7 +45,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_KAccounts6=$(usex kaccounts)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KAccounts6=ON
 	)
 
 	ecm_src_configure
