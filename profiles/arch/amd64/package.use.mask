@@ -31,9 +31,8 @@ sys-kernel/gentoo-kernel-bin -generic-uki
 dev-python/PyQt6 -pdfium
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
-# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
-# are only available for amd64 and riscv
->=gui-libs/wlroots-0.17.0 -drm -liftoff
+# dev-libs/libliftoff is only available for amd64 and riscv
+gui-libs/wlroots -liftoff
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
 # Unmask on amd64.
