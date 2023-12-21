@@ -3,12 +3,11 @@
 
 EAPI=8
 
-if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/mate-desktop/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/mate-desktop/${PN}/archive/${P}.tar.xz"
+MINOR=$((ver_cut 2) % 2)
+if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+else
+	KEYWORDS=""
 fi
 
 inherit mate optfeature

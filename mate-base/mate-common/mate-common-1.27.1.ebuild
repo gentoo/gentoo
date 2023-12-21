@@ -5,10 +5,11 @@ EAPI=8
 
 inherit mate-desktop.org
 
-if [[ ${PV} == 9999 ]]; then
-	inherit autotools
-else
+MINOR=$((ver_cut 2) % 2)
+if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+else
+	KEYWORDS=""
 fi
 
 DESCRIPTION="Common files for development of MATE packages"

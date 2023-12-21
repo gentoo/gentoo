@@ -1,12 +1,15 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit mate
 
-if [[ ${PV} != 9999 ]]; then
+MINOR=$((ver_cut 2) % 2)
+if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+else
+	KEYWORDS=""
 fi
 
 DESCRIPTION="MATE default icon themes"
