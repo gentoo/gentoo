@@ -28,6 +28,7 @@ COMMON_DEPEND="
 	>=x11-libs/gdk-pixbuf-2.22:2
 	>=x11-libs/gtk+-3.22:3
 	>=media-libs/libcanberra-0.4:0[gtk3]
+	x11-libs/libnotify
 	X? (
 		x11-libs/libX11
 		>=x11-libs/libwnck-3:3
