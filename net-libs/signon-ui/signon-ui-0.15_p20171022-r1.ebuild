@@ -51,6 +51,10 @@ src_configure() {
 	eqmake5
 }
 
+src_compile() {
+	emake -j1
+}
+
 src_install() {
-	emake INSTALL_ROOT="${D}" install
+	emake INSTALL_ROOT="${D}" -j1 install
 }
