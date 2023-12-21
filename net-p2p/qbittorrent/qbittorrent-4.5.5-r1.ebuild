@@ -55,7 +55,6 @@ DEPEND="
 	dev-libs/boost
 	test? (
 		!qt6? ( dev-qt/qttest:5 )
-		qt6? ( dev-qt/qtbase:6[test] )
 	)"
 BDEPEND="
 	!qt6? ( dev-qt/linguist-tools:5 )
