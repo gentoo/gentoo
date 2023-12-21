@@ -1,17 +1,15 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-
-MATE_THEMES_V=3
+MATE_THEMES_V=3 # Better solution required for next version
 MATE_BRANCH="$(ver_cut 1-2)"
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-        KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
-SRC_URI=""
 DESCRIPTION="Meta ebuild for MATE, a traditional desktop environment"
 HOMEPAGE="https://mate-desktop.org"
 
