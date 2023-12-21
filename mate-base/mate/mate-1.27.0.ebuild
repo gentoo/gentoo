@@ -3,13 +3,12 @@
 
 EAPI=7
 
-if [[ ${PV} == 9999 ]]; then
-	MATE_BRANCH=9999
-	MATE_THEMES_V=9999
-else
-	MATE_BRANCH="$(ver_cut 1-2)"
-	MATE_THEMES_V=3
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+
+MATE_THEMES_V=3
+MATE_BRANCH="$(ver_cut 1-2)"
+MINOR=$(($(ver_cut 2) % 2))
+if [[ ${MINOR} -eq 0 ]]; then
+        KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 SRC_URI=""

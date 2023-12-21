@@ -11,7 +11,7 @@ inherit mate python-r1
 DESCRIPTION="Mozo menu editor for MATE"
 LICENSE="GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 
-MINOR=$((ver_cut 2) % 2)
+MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 else
