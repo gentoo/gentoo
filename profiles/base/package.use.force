@@ -169,6 +169,8 @@ sys-libs/libcxx libcxxabi
 # the mask, so that users don't brick their systems.  If somebody wants
 # to avoid initramfs, he needs to use a custom .config and unforce
 # the flag.
+sys-kernel/gentoo-kernel initramfs
+sys-kernel/gentoo-kernel-bin initramfs
 sys-kernel/vanilla-kernel initramfs
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
