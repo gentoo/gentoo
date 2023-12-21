@@ -30,6 +30,7 @@ RDEPEND="
 	dev-qt/qtgui:5=
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtquickcontrols2:5
+	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtsvg:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
