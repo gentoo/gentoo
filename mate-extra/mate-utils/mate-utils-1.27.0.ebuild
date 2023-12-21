@@ -10,15 +10,13 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Utilities for the MATE desktop"
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+"
 SLOT="0"
 
-IUSE="X applet debug ipv6 nls test udisks"
+IUSE="X applet debug nls test udisks"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -71,7 +69,6 @@ src_configure() {
 		--enable-debug=$(usex debug yes minimum) \
 		$(use_with X x) \
 		$(use_enable applet gdict-applet) \
-		$(use_enable ipv6) \
 		$(use_enable nls) \
 		$(use_enable udisks disk_image_mounter)
 }
