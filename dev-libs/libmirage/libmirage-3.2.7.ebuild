@@ -11,7 +11,7 @@ SRC_URI="https://download.sourceforge.net/cdemu/libmirage/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/11" # subslot = libmirage soname version
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc +introspection"
 
 RDEPEND=">=app-arch/bzip2-1:=
