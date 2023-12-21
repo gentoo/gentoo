@@ -12,9 +12,21 @@ SRC_URI="https://github.com/gap-system/gap/releases/download/v${PV}/${P}-core.ta
 LICENSE="GPL-2+"
 SLOT="0/8"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_popcnt debug emacs memcheck readline valgrind"
+IUSE="cpu_flags_x86_popcnt debug emacs memcheck readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
-RESTRICT=test
+RESTRICT="!test? ( test )"
+
+# The minimum set of packages needed for basic GAP operation. You can
+# actually start gap without these by passing "--bare" to it on the CLI,
+# but don't expect anything to work.
+REQUIRED_PKGS="
+	dev-gap/gapdoc
+	dev-gap/primgrp
+	dev-gap/smallgrp
+	dev-gap/transgrp"
+
+# The test suite will fail without the "required" subset.
+BDEPEND="test? ( ${REQUIRED_PKGS} )"
 
 DEPEND="dev-libs/gmp:=
 	sys-libs/zlib
@@ -22,6 +34,10 @@ DEPEND="dev-libs/gmp:=
 	readline? ( sys-libs/readline:= )"
 
 RDEPEND="${DEPEND}"
+
+# If you _really_ want to install GAP without the set of required
+# packages, use package.provided.
+PDEPEND="${REQUIRED_PKGS}"
 
 pkg_setup() {
 	if use valgrind; then
@@ -64,6 +80,21 @@ src_configure() {
 src_compile() {
 	# Without this, the default is a quiet build.
 	emake V=1
+}
+
+src_test() {
+	# We need to specify additional root paths because otherwise the
+	# recently-built GAP doesn't know where to look for the "required"
+	# packages (which must already be installed). The two paths we
+	# append to $S are where those packages wind up.
+	local gaproots="${S}/;"
+	gaproots+="${EPREFIX}/usr/$(get_libdir)/gap/;"
+	gaproots+="${EPREFIX}/usr/share/gap/"
+
+	# GAPARGS is a Makefile variable that exists for this purpose. We
+	# use "-A" to hide the warnings about missing autoloaded-but-not-
+	# required packages.
+	emake GAPARGS="-A -l '${gaproots}'" check
 }
 
 src_install() {
