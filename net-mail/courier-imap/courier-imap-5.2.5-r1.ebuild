@@ -39,6 +39,7 @@ RDEPEND="${CDEPEND}
 RDEPEND="${RDEPEND}
 	!net-mail/cyrus-imapd
 	!net-mail/courier-common
+	!net-mail/courier-makedat
 "
 
 RC_VER="4.0.6-r1"
