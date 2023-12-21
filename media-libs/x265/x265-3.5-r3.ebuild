@@ -19,7 +19,7 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/207"
+SLOT="0/199"
 IUSE="+10bit +12bit cpu_flags_ppc_vsx2 numa test"
 RESTRICT="!test? ( test )"
 
@@ -31,9 +31,9 @@ BDEPEND="
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-arm.patch"
-	#"${FILESDIR}/neon.patch"
-	"${FILESDIR}/${PN}-9999-ppc64.patch"
+	"${FILESDIR}/arm-r1.patch"
+	"${FILESDIR}/neon.patch"
+	"${FILESDIR}/x265-3.3-ppc64.patch"
 	"${FILESDIR}/tests.patch"
 	"${FILESDIR}/test-ns.patch"
 )
