@@ -15,6 +15,7 @@
 		<flag name="notification">Notification for new mail in different way, see also USE flags libcanberra, libindicate and libnotify</flag>
 		<flag name="oauth">Enable OAuth2 authentication support</flag>
 		<flag name="pgp">Enable PGP support</flag>
+		<flag name="python">Enable plugin for Python scripting</flag>
 		<flag name="sieve">Build plugin for sieve filter support</flag>
 		<flag name="smime">Build plugin for S/MIME support</flag>
 		<flag name="spam-report">Enable plugin for spam reporting to various services</flag>
