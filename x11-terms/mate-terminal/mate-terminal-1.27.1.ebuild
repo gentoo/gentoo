@@ -8,15 +8,11 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="The MATE Terminal"
 LICENSE="FDL-1.1+ GPL-3+ LGPL-3+"
 SLOT="0"
-
-IUSE=""
 
 COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
