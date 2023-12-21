@@ -9,7 +9,7 @@ inherit mate python-single-r1 virtualx
 
 DESCRIPTION="Pluma text editor for the MATE desktop"
 
-MINOR=$((ver_cut 2) % 2)
+MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 else

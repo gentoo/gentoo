@@ -7,7 +7,7 @@ MATE_LA_PUNT="yes"
 
 inherit mate
 
-MINOR=$((ver_cut 2) % 2)
+MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 else

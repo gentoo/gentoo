@@ -5,7 +5,7 @@ EAPI=8
 
 inherit mate readme.gentoo-r1
 
-MINOR=$((ver_cut 2) % 2)
+MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 else
