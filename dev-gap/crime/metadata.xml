@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This CRIME package computes cohomology rings for finite p-groups
+    using Jon Carlson's method, both as GAP objects, and also in terms
+    of generators and relators. It also computes induced homomorphisms
+    on cohomology and Massey products in the cohomology ring.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/crime</remote-id>
+  </upstream>
+</pkgmetadata>
