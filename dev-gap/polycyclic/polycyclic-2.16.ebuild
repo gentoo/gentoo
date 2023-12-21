@@ -11,13 +11,12 @@ SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64"
-RESTRICT=test
 
 # Circular dependency polycyclic->alnuth->polycyclic. There's a global
 # variable called USE_ALNUTH in polycyclic, but setting it to "false"
 # doesn't stop polycyclic from using alnuth (why would it?).
 RDEPEND="dev-gap/autpgrp"
-#PDEPEND="dev-gap/alnuth"
+PDEPEND="dev-gap/alnuth"
 
 # There are likely more problems hiding in the test suite. If we run
 # into them, upstream recommends disabling it:
