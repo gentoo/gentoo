@@ -39,6 +39,7 @@ dev-dotnet
 dev-embedded
 dev-erlang
 dev-games
+dev-gap
 dev-go
 dev-haskell
 dev-java
