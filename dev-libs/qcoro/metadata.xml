@@ -12,7 +12,6 @@
 	<use>
 		<flag name="network">Build <pkg>dev-qt/qtbase</pkg> network support</flag>
 		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
-		<flag name="testlib">Install coroutine-friendly versions of <pkg>dev-qt/qtbase</pkg> test macros</flag>
 		<flag name="websockets">Build <pkg>dev-qt/qtwebsockets</pkg> support</flag>
 	</use>
 </pkgmetadata>

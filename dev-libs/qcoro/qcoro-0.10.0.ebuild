@@ -18,20 +18,19 @@ HOMEPAGE="https://qcoro.dvratil.cz/ https://github.com/danvratil/qcoro"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="dbus examples +network qml test testlib websockets"
+IUSE="dbus examples +network qml test websockets"
 
-REQUIRED_USE="examples? ( network ) test? ( testlib )"
+REQUIRED_USE="examples? ( network )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtbase:6[dbus?,network?]
 	qml? ( dev-qt/qtdeclarative:6= )
-	testlib? ( dev-qt/qtbase:6[test] )
 	websockets? ( dev-qt/qtwebsockets:6 )
 "
 DEPEND="${RDEPEND}
 	examples? ( dev-qt/qtbase:6[concurrent,network,widgets] )
-	test? ( dev-qt/qtbase:6[concurrent,test] )
+	test? ( dev-qt/qtbase:6[concurrent] )
 "
 
 src_configure() {
@@ -42,7 +41,7 @@ src_configure() {
 		-DQCORO_WITH_QTNETWORK=$(usex network)
 		-DQCORO_WITH_QML=$(usex qml)
 		-DQCORO_WITH_QTQUICK=$(usex qml)
-		-DQCORO_WITH_QTTEST=$(usex testlib)
+		-DQCORO_WITH_QTTEST=ON
 		-DBUILD_TESTING=$(usex test)
 		-DQCORO_WITH_QTWEBSOCKETS=$(usex websockets)
 	)
