@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-inherit gnome2-utils distutils-r1
+inherit desktop gnome2-utils distutils-r1
 
 DESCRIPTION="Visual novel engine written in python"
 HOMEPAGE="https://www.renpy.org"
@@ -14,7 +14,7 @@ SRC_URI="https://www.renpy.org/dl/${PV}/${P}-source.tar.bz2"
 S="${WORKDIR}/${P}-source"
 
 LICENSE="MIT"
-SLOT=0
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="development doc examples"
 REQUIRED_USE="examples? ( development )"
