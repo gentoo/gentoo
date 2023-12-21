@@ -515,6 +515,18 @@ arm		default/linux/arm/17.0/musl/armv6j/hardened/selinux		exp
 arm		default/linux/arm/17.0/musl/armv7a				dev
 arm		default/linux/arm/17.0/musl/armv7a/hardened			exp
 arm		default/linux/arm/17.0/musl/armv7a/hardened/selinux		exp
+# arm		default/linux/arm/23.0/armv6j_hf/musl				exp
+# arm		default/linux/arm/23.0/armv6j_hf/musl/hardened			exp
+# arm		default/linux/arm/23.0/armv6j_hf/musl/hardened/selinux		exp
+# arm		default/linux/arm/23.0/armv7a_hf/musl				exp
+# arm		default/linux/arm/23.0/armv7a_hf/musl/hardened			exp
+# arm		default/linux/arm/23.0/armv7a_hf/musl/hardened/selinux		exp
+# arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl			exp
+# arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl/hardened	exp
+# arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl/hardened/selinux	exp
+# arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl			exp
+# arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl/hardened		exp
+# arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl/hardened/selinux	exp
 arm64		default/linux/arm64/17.0/musl					dev
 arm64		default/linux/arm64/17.0/musl/llvm				exp
 arm64		default/linux/arm64/17.0/musl/hardened				exp
