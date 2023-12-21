@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 			dev-qt/qtnetwork:5
 			dev-qt/qttest:5
 		)
-		qt6? ( dev-qt/qtbase:6[network,test] )
+		qt6? ( dev-qt/qtbase:6[network] )
 	)
 "
 BDEPEND="
