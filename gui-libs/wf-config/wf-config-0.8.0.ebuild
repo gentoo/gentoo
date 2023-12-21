@@ -34,6 +34,10 @@ BDEPEND="
 	test? ( dev-cpp/doctest )
 "
 
+PATCHES=(
+	"${FILESDIR}/wf-config-0.8.0-gcc14.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature test tests)
