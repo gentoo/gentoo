@@ -1,0 +1,286 @@
+Namespace functions for multi-bitdepth builds so that libraries are self-contained.
+--- a/common/param.cpp
++++ b/common/param.cpp
+@@ -102,7 +102,7 @@ x265_param *x265_param_alloc()
+ 
+ void x265_param_free(x265_param* p)
+ {
+-    x265_zone_free(p);
++    PARAM_NS::x265_zone_free(p);
+ #ifdef SVT_HEVC
+      x265_free(p->svtHevcParam);
+ #endif
+--- a/common/param.h
++++ b/common/param.h
+@@ -55,6 +55,18 @@ int x265_param_apply_profile(x265_param *, const char *profile);
+ int x265_param_parse(x265_param *p, const char *name, const char *value);
+ int x265_scenecut_aware_qp_param_parse(x265_param* p, const char* name, const char* value);
+ int x265_zone_param_parse(x265_param* p, const char* name, const char* value);
++void x265_free_analysis_data(x265_param *param, x265_analysis_data* analysis);
++void x265_alloc_analysis_data(x265_param *param, x265_analysis_data* analysis);
++void x265_picture_free(x265_picture *);
++x265_zone *x265_zone_alloc(int zoneCount, int isZoneFile);
++void x265_zone_free(x265_param *param);
++FILE* x265_csvlog_open(const x265_param *);
++void x265_csvlog_frame(const x265_param *, const x265_picture *);
++void x265_csvlog_encode(const x265_param*, const x265_stats *, int padx, int pady, int argc, char** argv);
++void x265_dither_image(x265_picture *, int picWidth, int picHeight, int16_t *errorBuf, int bitDepth);
++int x265_encoder_reconfig(x265_encoder *, x265_param *);
++x265_picture *x265_picture_alloc(void);
++void x265_picture_init(x265_param *param, x265_picture *pic);
+ #define PARAM_NS X265_NS
+ #endif
+ }
+--- a/encoder/api.cpp
++++ b/encoder/api.cpp
+@@ -106,9 +106,9 @@ x265_encoder *x265_encoder_open(x265_param *p)
+     if (p->rc.zoneCount || p->rc.zonefileCount)
+     {
+         int zoneCount = p->rc.zonefileCount ? p->rc.zonefileCount : p->rc.zoneCount;
+-        param->rc.zones = x265_zone_alloc(zoneCount, !!p->rc.zonefileCount);
+-        latestParam->rc.zones = x265_zone_alloc(zoneCount, !!p->rc.zonefileCount);
+-        zoneParam->rc.zones = x265_zone_alloc(zoneCount, !!p->rc.zonefileCount);
++        param->rc.zones = PARAM_NS::x265_zone_alloc(zoneCount, !!p->rc.zonefileCount);
++        latestParam->rc.zones = PARAM_NS::x265_zone_alloc(zoneCount, !!p->rc.zonefileCount);
++        zoneParam->rc.zones = PARAM_NS::x265_zone_alloc(zoneCount, !!p->rc.zonefileCount);
+     }
+ 
+     x265_copy_params(param, p);
+@@ -214,7 +214,7 @@ x265_encoder *x265_encoder_open(x265_param *p)
+     /* Try to open CSV file handle */
+     if (encoder->m_param->csvfn)
+     {
+-        encoder->m_param->csvfpt = x265_csvlog_open(encoder->m_param);
++        encoder->m_param->csvfpt = PARAM_NS::x265_csvlog_open(encoder->m_param);
+         if (!encoder->m_param->csvfpt)
+         {
+             x265_log(encoder->m_param, X265_LOG_ERROR, "Unable to open CSV log file <%s>, aborting\n", encoder->m_param->csvfn);
+@@ -319,7 +319,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
+     if (encoder->m_latestParam->rc.zoneCount || encoder->m_latestParam->rc.zonefileCount)
+     {
+         int zoneCount = encoder->m_latestParam->rc.zonefileCount ? encoder->m_latestParam->rc.zonefileCount : encoder->m_latestParam->rc.zoneCount;
+-        save.rc.zones = x265_zone_alloc(zoneCount, !!encoder->m_latestParam->rc.zonefileCount);
++        save.rc.zones = PARAM_NS::x265_zone_alloc(zoneCount, !!encoder->m_latestParam->rc.zonefileCount);
+     }
+     x265_copy_params(&save, encoder->m_latestParam);
+     int ret = encoder->reconfigureParam(encoder->m_latestParam, param_in);
+@@ -602,7 +602,7 @@ fail:
+         *pi_nal = 0;
+ 
+     if (numEncoded && encoder->m_param->csvLogLevel && encoder->m_outputCount >= encoder->m_latestParam->chunkStart)
+-        x265_csvlog_frame(encoder->m_param, pic_out);
++        PARAM_NS::x265_csvlog_frame(encoder->m_param, pic_out);
+ 
+     if (numEncoded < 0)
+         encoder->m_aborted = true;
+@@ -643,7 +643,7 @@ void x265_vmaf_encoder_log(x265_encoder* enc, int argc, char **argv, x265_param
+         encoder->fetchStats(&stats, sizeof(stats));
+         int padx = encoder->m_sps.conformanceWindow.rightOffset;
+         int pady = encoder->m_sps.conformanceWindow.bottomOffset;
+-        x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
++        PARAM_NS::x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
+     }
+ }
+ #endif
+@@ -657,7 +657,7 @@ void x265_encoder_log(x265_encoder* enc, int argc, char **argv)
+         encoder->fetchStats(&stats, sizeof(stats));
+         int padx = encoder->m_sps.conformanceWindow.rightOffset;
+         int pady = encoder->m_sps.conformanceWindow.bottomOffset;
+-        x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
++        PARAM_NS::x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
+     }
+ }
+ 
+@@ -878,7 +878,7 @@ void x265_alloc_analysis_data(x265_param *param, x265_analysis_data* analysis)
+     return;
+ 
+ fail:
+-    x265_free_analysis_data(param, analysis);
++    PARAM_NS::x265_free_analysis_data(param, analysis);
+ }
+ 
+ void x265_free_analysis_data(x265_param *param, x265_analysis_data* analysis)
+--- a/encoder/encoder.cpp
++++ b/encoder/encoder.cpp
+@@ -216,8 +216,8 @@ void Encoder::create()
+         {
+             m_dupBuffer[i] = (AdaptiveFrameDuplication*)x265_malloc(sizeof(AdaptiveFrameDuplication));
+             m_dupBuffer[i]->dupPic = NULL;
+-            m_dupBuffer[i]->dupPic = x265_picture_alloc();
+-            x265_picture_init(p, m_dupBuffer[i]->dupPic);
++            m_dupBuffer[i]->dupPic = PARAM_NS::x265_picture_alloc();
++            PARAM_NS::x265_picture_init(p, m_dupBuffer[i]->dupPic);
+             m_dupBuffer[i]->dupPlane = NULL;
+             m_dupBuffer[i]->dupPlane = X265_MALLOC(char, framesize);
+             m_dupBuffer[i]->dupPic->planes[0] = m_dupBuffer[i]->dupPlane;
+@@ -768,7 +768,7 @@ int Encoder::setAnalysisData(x265_analysis_data *analysis_data, int poc, uint32_
+         curFrame->m_analysisData = (*analysis_data);
+         curFrame->m_analysisData.numCUsInFrame = widthInCU * heightInCU;
+         curFrame->m_analysisData.numPartitions = m_param->num4x4Partitions;
+-        x265_alloc_analysis_data(m_param, &curFrame->m_analysisData);
++        PARAM_NS::x265_alloc_analysis_data(m_param, &curFrame->m_analysisData);
+         if (m_param->maxCUSize == 16)
+         {
+             if (analysis_data->sliceType == X265_TYPE_IDR || analysis_data->sliceType == X265_TYPE_I)
+@@ -872,7 +872,7 @@ void Encoder::destroy()
+         for (uint32_t i = 0; i < DUP_BUFFER; i++)
+         {
+             X265_FREE(m_dupBuffer[i]->dupPlane);
+-            x265_picture_free(m_dupBuffer[i]->dupPic);
++            PARAM_NS::x265_picture_free(m_dupBuffer[i]->dupPic);
+             X265_FREE(m_dupBuffer[i]);
+         }
+ 
+@@ -1478,7 +1478,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+     if (m_exportedPic)
+     {
+         if (!m_param->bUseAnalysisFile && m_param->analysisSave)
+-            x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
++            PARAM_NS::x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
+ 
+         ATOMIC_DEC(&m_exportedPic->m_countRefEncoders);
+ 
+@@ -1892,7 +1892,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+ 
+             /* Free up inputPic->analysisData since it has already been used */
+             if ((m_param->analysisLoad && !m_param->analysisSave) || ((m_param->bAnalysisType == AVC_INFO) && slice->m_sliceType != I_SLICE))
+-                x265_free_analysis_data(m_param, &outFrame->m_analysisData);
++                PARAM_NS::x265_free_analysis_data(m_param, &outFrame->m_analysisData);
+ 
+             if (pic_out)
+             {
+@@ -1971,7 +1971,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+                     writeAnalysisFile(&pic_out->analysisData, *outFrame->m_encData);
+                     pic_out->analysisData.saveParam = pic_out->analysisData.saveParam;
+                     if (m_param->bUseAnalysisFile)
+-                        x265_free_analysis_data(m_param, &pic_out->analysisData);
++                        PARAM_NS::x265_free_analysis_data(m_param, &pic_out->analysisData);
+                 }
+             }
+             if (m_param->rc.bStatWrite && (m_param->analysisMultiPassRefine || m_param->analysisMultiPassDistortion))
+@@ -1986,7 +1986,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+                 writeAnalysisFileRefine(&outFrame->m_analysisData, *outFrame->m_encData);
+             }
+             if (m_param->analysisMultiPassRefine || m_param->analysisMultiPassDistortion)
+-                x265_free_analysis_data(m_param, &outFrame->m_analysisData);
++                PARAM_NS::x265_free_analysis_data(m_param, &outFrame->m_analysisData);
+             if (m_param->internalCsp == X265_CSP_I400)
+             {
+                 if (slice->m_sliceType == P_SLICE)
+@@ -2153,7 +2153,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+                 uint32_t heightInCU = (m_param->sourceHeight + m_param->maxCUSize - 1) >> m_param->maxLog2CUSize;
+                 frameEnc->m_analysisData.numCUsInFrame = widthInCU * heightInCU;
+                 frameEnc->m_analysisData.numPartitions = m_param->num4x4Partitions;
+-                x265_alloc_analysis_data(m_param, &frameEnc->m_analysisData);
++                PARAM_NS::x265_alloc_analysis_data(m_param, &frameEnc->m_analysisData);
+                 frameEnc->m_analysisData.poc = frameEnc->m_poc;
+                 if (m_param->rc.bStatRead)
+                     readAnalysisFile(&frameEnc->m_analysisData, frameEnc->m_poc, frameEnc->m_lowres.sliceType);
+@@ -2164,7 +2164,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+                 for (int i = 0; i < m_param->rc.zonefileCount; i++)
+                 {
+                     if (m_param->rc.zones[i].startFrame == frameEnc->m_poc)
+-                        x265_encoder_reconfig(this, m_param->rc.zones[i].zoneParam);
++                        PARAM_NS::x265_encoder_reconfig(this, m_param->rc.zones[i].zoneParam);
+                 }
+             }
+ 
+@@ -2307,7 +2307,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+                 analysis->numCUsInFrame  = numCUsInFrame;
+                 analysis->numCuInHeight = heightInCU;
+                 analysis->numPartitions  = m_param->num4x4Partitions;
+-                x265_alloc_analysis_data(m_param, analysis);
++                PARAM_NS::x265_alloc_analysis_data(m_param, analysis);
+             }
+             if (m_param->bEnableTemporalSubLayers > 2)
+             {
+@@ -4434,7 +4434,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+         else if (fread(val, size, readSize, fileOffset) != readSize)\
+     {\
+         x265_log(NULL, X265_LOG_ERROR, "Error reading analysis data\n");\
+-        x265_free_analysis_data(m_param, analysis);\
++        PARAM_NS::x265_free_analysis_data(m_param, analysis);\
+         m_aborted = true;\
+         return;\
+     }\
+@@ -4470,7 +4470,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+         if (poc != curPoc || feof(m_analysisFileIn))
+         {
+             x265_log(NULL, X265_LOG_WARNING, "Error reading analysis data: Cannot find POC %d\n", curPoc);
+-            x265_free_analysis_data(m_param, analysis);
++            PARAM_NS::x265_free_analysis_data(m_param, analysis);
+             return;
+         }
+     }
+@@ -4504,7 +4504,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+     if (m_param->scaleFactor)
+         analysis->numPartitions *= factor;
+     /* Memory is allocated for inter and intra analysis data based on the slicetype */
+-    x265_alloc_analysis_data(m_param, analysis);
++    PARAM_NS::x265_alloc_analysis_data(m_param, analysis);
+ 
+     if (m_param->ctuDistortionRefine == CTU_DISTORTION_INTERNAL)
+     {
+@@ -4757,7 +4757,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+     else if (fread(val, size, readSize, fileOffset) != readSize)\
+     {\
+         x265_log(NULL, X265_LOG_ERROR, "Error reading analysis data\n");\
+-        x265_free_analysis_data(m_param, analysis);\
++        PARAM_NS::x265_free_analysis_data(m_param, analysis);\
+         m_aborted = true;\
+         return;\
+     }\
+@@ -4794,7 +4794,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+         if (poc != curPoc || feof(m_analysisFileIn))
+         {
+             x265_log(NULL, X265_LOG_WARNING, "Error reading analysis data: Cannot find POC %d\n", curPoc);
+-            x265_free_analysis_data(m_param, analysis);
++            PARAM_NS::x265_free_analysis_data(m_param, analysis);
+             return;
+         }
+     }
+@@ -4825,7 +4825,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+     analysis->numCuInHeight = cuLoc.heightInCU;
+ 
+     /* Memory is allocated for inter and intra analysis data based on the slicetype */
+-    x265_alloc_analysis_data(m_param, analysis);
++    PARAM_NS::x265_alloc_analysis_data(m_param, analysis);
+ 
+     if (m_param->ctuDistortionRefine == CTU_DISTORTION_INTERNAL)
+     {
+@@ -5440,7 +5440,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, int sli
+     if (fread(val, size, readSize, fileOffset) != readSize)\
+     {\
+     x265_log(NULL, X265_LOG_ERROR, "Error reading analysis 2 pass data\n"); \
+-    x265_alloc_analysis_data(m_param, analysis); \
++    PARAM_NS::x265_alloc_analysis_data(m_param, analysis); \
+     m_aborted = true; \
+     return; \
+ }\
+@@ -5454,7 +5454,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, int sli
+     if (poc != curPoc || feof(m_analysisFileIn))
+     {
+         x265_log(NULL, X265_LOG_WARNING, "Error reading analysis 2 pass data: Cannot find POC %d\n", curPoc);
+-        x265_free_analysis_data(m_param, analysis);
++        PARAM_NS::x265_free_analysis_data(m_param, analysis);
+         return;
+     }
+     /* Now arrived at the right frame, read the record */
+@@ -5561,7 +5561,7 @@ void Encoder::writeAnalysisFile(x265_analysis_data* analysis, FrameData &curEncD
+     if (fwrite(val, size, writeSize, fileOffset) < writeSize)\
+     {\
+         x265_log(NULL, X265_LOG_ERROR, "Error writing analysis data\n");\
+-        x265_free_analysis_data(m_param, analysis);\
++        PARAM_NS::x265_free_analysis_data(m_param, analysis);\
+         m_aborted = true;\
+         return;\
+     }\
+@@ -5783,7 +5783,7 @@ void Encoder::writeAnalysisFileRefine(x265_analysis_data* analysis, FrameData &c
+     if (fwrite(val, size, writeSize, fileOffset) < writeSize)\
+     {\
+     x265_log(NULL, X265_LOG_ERROR, "Error writing analysis 2 pass data\n"); \
+-    x265_free_analysis_data(m_param, analysis); \
++    PARAM_NS::x265_free_analysis_data(m_param, analysis); \
+     m_aborted = true; \
+     return; \
+ }\
