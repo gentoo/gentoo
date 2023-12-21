@@ -23,15 +23,15 @@ SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/atlasrep/${P}.tar.gz
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
-#IUSE="test"
-RESTRICT=test
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-gap/io
 	dev-gap/utils"
 
-#BDEPEND="test? (
-#	dev-gap/tomlib
-#)"
+BDEPEND="test? (
+	dev-gap/tomlib
+)"
 gap-pkg_enable_tests
 
 PATCHES=(
