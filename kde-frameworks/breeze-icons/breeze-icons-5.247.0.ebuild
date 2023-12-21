@@ -15,7 +15,6 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-qt/qtbase:6[test] )"
 RDEPEND="!kde-frameworks/${PN}:5"
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
