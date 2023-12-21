@@ -1,0 +1,29 @@
+From f69df24cf2c37dd8353fa227b03336b52c717d6d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 13 Dec 2023 14:39:03 -0500
+Subject: [PATCH] tst/testall.g: load GAPDoc before testing
+
+To help resolve the chicken and egg problem, it's nice to be able to
+launch gap with --bare when testing transgrp. But without GAPDoc
+loaded, the test suite fails. So let's load it explicitly. This won't
+hurt anything under normal circumstances where GAPDoc is loaded
+anyway.
+---
+ tst/testall.g | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tst/testall.g b/tst/testall.g
+index 19275f8..92a1653 100644
+--- a/tst/testall.g
++++ b/tst/testall.g
+@@ -4,6 +4,7 @@
+ # This file runs package tests. It is also referenced in the package
+ # metadata in PackageInfo.g.
+ #
++LoadPackage( "gapdoc" );
+ LoadPackage( "transgrp" );
+ 
+ TestDirectory(DirectoriesPackageLibrary( "transgrp", "tst" ),
+-- 
+2.41.0
+
