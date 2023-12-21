@@ -11,15 +11,15 @@ SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
-#IUSE="test"
-RESTRICT=test
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-gap/atlasrep"
-#BDEPEND="test? (
-#	dev-gap/browse
-#	dev-gap/spinsym
-#	dev-gap/tomlib
-#)"
+BDEPEND="test? (
+	dev-gap/browse
+	dev-gap/spinsym
+	dev-gap/tomlib
+)"
 
 # The are "extra" docs and not the HTML produced by GAPDoc. The glob
 # gets expanded if we use a plain variable but not if we use a bash
