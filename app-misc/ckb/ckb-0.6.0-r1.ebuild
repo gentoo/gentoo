@@ -40,6 +40,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-bashism.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_UPDATER=yes
