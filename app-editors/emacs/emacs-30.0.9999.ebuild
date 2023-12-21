@@ -211,6 +211,11 @@ src_prepare() {
 	sed -i -e 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
 		test/lisp/emacs-lisp/bytecomp-tests.el || die
 
+	# Tests use this dir as GNUPGHOME. Move to shorter path, in order
+	# not to exceed the 108 char limit for GnuPG's sockets on Linux.
+	mv test/lisp/gnus/mml-sec-resources "${T}"/gnupg || die
+	ln -s "${T}"/gnupg test/lisp/gnus/mml-sec-resources || die
+
 	AT_M4DIR=m4 eautoreconf
 }
 
@@ -408,14 +413,6 @@ src_test() {
 	# subtests which caused failure. Elements should begin with a %.
 	# e.g. %lisp/gnus/mml-sec-tests.el.
 	local exclude_tests=(
-		# Reason: not yet known
-		# mml-secure-en-decrypt-{1,2,3,4}
-		# mml-secure-find-usable-keys-{1,2}
-		# mml-secure-key-checks
-		# mml-secure-select-preferred-keys-4
-		# mml-secure-sign-verify-1
-		%lisp/gnus/mml-sec-tests.el
-
 		# Reason: permission denied on /nonexistent
 		# (vc-*-bzr only fails if breezy is installed, as they
 		# try to access cache dirs under /nonexistent)
