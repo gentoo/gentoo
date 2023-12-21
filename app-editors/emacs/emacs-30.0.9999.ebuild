@@ -211,11 +211,6 @@ src_prepare() {
 	sed -i -e 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
 		test/lisp/emacs-lisp/bytecomp-tests.el || die
 
-	# Tests use this dir as GNUPGHOME. Move to shorter path, in order
-	# not to exceed the 108 char limit for GnuPG's sockets on Linux.
-	mv test/lisp/gnus/mml-sec-resources "${T}"/gnupg || die
-	ln -s "${T}"/gnupg test/lisp/gnus/mml-sec-resources || die
-
 	AT_M4DIR=m4 eautoreconf
 }
 
@@ -440,6 +435,15 @@ src_test() {
 			%src/keyboard-tests.el
 		)
 	use xpm || exclude_tests+=( %src/image-tests.el )
+
+	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
+	# for socket paths on Linux.
+	mkdir "${T}"/gnupg || die
+	local f
+	for f in S.gpg-agent{,.browser,.extra,.ssh}; do
+		printf "%%Assuan%%\nsocket=%s\n" "${T}/gnupg/${f}" \
+			> "test/lisp/gnus/mml-sec-resources/${f}" || die
+	done
 
 	# See test/README for possible options
 	emake \
