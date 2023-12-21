@@ -10,8 +10,6 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="MATE Notification daemon"
@@ -21,13 +19,13 @@ SLOT="0"
 IUSE="nls X wayland"
 REQUIRED_USE="|| ( X wayland )"
 
-COMMON_DEPEND="dev-libs/atk
+COMMON_DEPEND="
+	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libxml2-2.9.0
 	>=sys-apps/dbus-1
 	x11-libs/cairo
 	>=x11-libs/gdk-pixbuf-2.22:2
-	>=x11-libs/libnotify-0.7
 	>=x11-libs/gtk+-3.22:3
 	>=media-libs/libcanberra-0.4:0[gtk3]
 	X? (
@@ -39,7 +37,6 @@ COMMON_DEPEND="dev-libs/atk
 
 RDEPEND="${COMMON_DEPEND}
 	!x11-misc/notify-osd
-	!x11-misc/qtnotifydaemon
 	!x11-misc/notification-daemon
 "
 
