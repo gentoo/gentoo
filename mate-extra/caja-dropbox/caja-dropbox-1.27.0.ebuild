@@ -10,9 +10,7 @@ inherit mate python-single-r1 linux-info
 
 MINOR=$((ver_cut 2) % 2)
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Store, Sync and Share Files Online"
