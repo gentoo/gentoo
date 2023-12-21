@@ -11,15 +11,15 @@ SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
-IUSE="examples"
-RESTRICT=test
+IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sci-mathematics/gap"
-#BDEPEND="test? (
-#	dev-gap/atlasrep
-#	dev-gap/cvec
-#	dev-gap/io
-#)"
+BDEPEND="test? (
+	dev-gap/atlasrep
+	dev-gap/cvec
+	dev-gap/io
+)"
 
 gap-pkg_enable_tests
 
