@@ -3,11 +3,12 @@
 
 EAPI=8
 
-if [[ ${PV} == 9999 ]]; then
-	MATE_BRANCH=9999
-else
-	MATE_BRANCH="$(ver_cut 1-2)"
+MATE_BRANCH="$(ver_cut 1-2)"
+MINOR=$((ver_cut 2) % 2)
+if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+else
+	KEYWORDS=""
 fi
 
 DESCRIPTION="Meta package for MATE panel applets"

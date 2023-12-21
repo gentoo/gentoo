@@ -5,7 +5,12 @@ EAPI=8
 
 inherit mate
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+MINOR=$((ver_cut 2) % 2)
+if [[ ${MINOR} -eq 0 ]]; then
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+else
+	KEYWORDS=""
+fi
 
 DESCRIPTION="Applets for the MATE Desktop and Panel"
 LICENSE="CC-BY-SA-3.0 FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+"

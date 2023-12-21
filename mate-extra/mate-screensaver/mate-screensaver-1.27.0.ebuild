@@ -5,8 +5,11 @@ EAPI=8
 
 inherit mate readme.gentoo-r1
 
-if [[ ${PV} != 9999 ]]; then
+MINOR=$((ver_cut 2) % 2)
+if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+else
+	KEYWORDS=""
 fi
 
 DESCRIPTION="Replaces xscreensaver, integrating with the MATE desktop"
