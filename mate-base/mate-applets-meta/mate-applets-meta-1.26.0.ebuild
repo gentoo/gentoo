@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} == 9999 ]]; then
 	MATE_BRANCH=9999
@@ -12,13 +12,11 @@ fi
 
 DESCRIPTION="Meta package for MATE panel applets"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
 IUSE="appindicator sensors"
 
-DEPEND=""
 RDEPEND="=mate-base/mate-applets-${MATE_BRANCH}*
 	appindicator? ( =mate-extra/mate-indicator-applet-${MATE_BRANCH}* )
 	sensors? ( =mate-extra/mate-sensors-applet-${MATE_BRANCH}* )
