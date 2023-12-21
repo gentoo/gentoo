@@ -8,15 +8,11 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="MATE utilities for netbooks"
 LICENSE="GPL-3"
 SLOT="0"
-
-IUSE=""
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
