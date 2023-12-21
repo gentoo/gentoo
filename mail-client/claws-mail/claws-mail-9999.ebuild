@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit autotools desktop python-any-r1 xdg
+inherit autotools desktop python-single-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -21,12 +21,13 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
 	oauth? ( gnutls )
+	python? ( ${PYTHON_REQUIRED_USE} )
 	smime? ( pgp )
 "
 
@@ -71,6 +72,12 @@ COMMONDEPEND="
 	perl? ( dev-lang/perl:= )
 	pdf? ( app-text/poppler[cairo] )
 	pgp? ( >=app-crypt/gpgme-1.0.0:= )
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		')
+	)
 	rss? (
 		dev-libs/libxml2
 		net-misc/curl
@@ -121,7 +128,6 @@ src_configure() {
 		--disable-dillo-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
-		--disable-python-plugin
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
 		--enable-alternate-addressbook
@@ -154,6 +160,7 @@ src_configure() {
 		$(use_enable pgp pgpcore-plugin)
 		$(use_enable pgp pgpinline-plugin)
 		$(use_enable pgp pgpmime-plugin)
+		$(use_enable python python-plugin)
 		$(use_enable rss rssyl-plugin)
 		$(use_enable session libsm)
 		$(use_enable sieve managesieve-plugin)
