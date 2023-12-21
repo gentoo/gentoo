@@ -16,13 +16,6 @@ DESCRIPTION="Common files for development of MATE packages"
 LICENSE="GPL-3+"
 SLOT="0"
 
-src_prepare() {
-	default
-	if [[ ${PV} == 9999 ]]; then
-		eautoreconf
-	fi
-}
-
 src_install() {
 	mv doc-build/README README.doc-build \
 		|| die "Failed to rename doc-build/README."
