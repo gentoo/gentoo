@@ -24,9 +24,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	<dev-python/httpx-0.26.0[${PYTHON_USEDEP}]
 	>=dev-python/httpx-0.21.0[${PYTHON_USEDEP}]
-	<dev-python/httpcore-2[${PYTHON_USEDEP}]
 	>=dev-python/httpcore-0.17.3[${PYTHON_USEDEP}]
 	>=dev-python/python-socks-2.0.0[${PYTHON_USEDEP}]
 "
@@ -42,3 +40,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# unpin dependencies
+	sed -i -e 's:,<[0-9.]*::' setup.py || die
+
+	distutils-r1_src_prepare
+}
