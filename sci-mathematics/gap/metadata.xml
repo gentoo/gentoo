@@ -28,6 +28,11 @@
   </longdescription>
   <use>
     <flag name="memcheck">Enable memory checking</flag>
+    <flag name="minimal">
+      Install only the GAP packages that are strictly required for GAP
+      to run. GAP will complain about the others unless you either start
+      it with the "-A" flag or set "AutoloadPackages" in your gap.ini.
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">gap-system/gap</remote-id>

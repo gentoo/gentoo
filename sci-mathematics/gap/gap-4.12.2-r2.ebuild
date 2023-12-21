@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gap-system/gap/releases/download/v${PV}/${P}-core.ta
 LICENSE="GPL-2+"
 SLOT="0/8"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_popcnt debug emacs memcheck readline test valgrind"
+IUSE="cpu_flags_x86_popcnt debug emacs memcheck minimal readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
 RESTRICT="!test? ( test )"
 
@@ -24,6 +24,29 @@ REQUIRED_PKGS="
 	dev-gap/primgrp
 	dev-gap/smallgrp
 	dev-gap/transgrp"
+
+# The packages aren't really required, but GAP tries to load them
+# automatically, and will complain to the user if they fail to load.
+# The list of automatically-loaded packages is a user preference, called
+# AutoloadPackages, and the upstream default can be found in
+# lib/package.gi within the GAP source tree. Passing "-A" to GAP on the
+# CLI (or setting that user preference) will suppress the autoload
+# behavior and allow GAP to start without these, which is why we allow
+# the user to skip them with USE=minimal if he knows what he is doing.
+AUTOLOADED_PKGS="
+	dev-gap/autpgrp
+	dev-gap/alnuth
+	dev-gap/crisp
+	dev-gap/ctbllib
+	dev-gap/factint
+	dev-gap/fga
+	dev-gap/irredsol
+	dev-gap/laguna
+	dev-gap/polenta
+	dev-gap/polycyclic
+	dev-gap/resclasses
+	dev-gap/sophus
+	dev-gap/tomlib"
 
 # The test suite will fail without the "required" subset.
 BDEPEND="test? ( ${REQUIRED_PKGS} )"
@@ -37,7 +60,7 @@ RDEPEND="${DEPEND}"
 
 # If you _really_ want to install GAP without the set of required
 # packages, use package.provided.
-PDEPEND="${REQUIRED_PKGS}"
+PDEPEND="${REQUIRED_PKGS} !minimal? ( ${AUTOLOADED_PKGS} )"
 
 pkg_setup() {
 	if use valgrind; then
