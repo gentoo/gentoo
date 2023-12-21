@@ -7,7 +7,8 @@ MATE_LA_PUNT="yes"
 
 inherit mate
 
-if [[ ${PV} != 9999 ]]; then
+MINOR=$(($(ver_cut 2) % 2))
+if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
@@ -18,10 +19,7 @@ SLOT="0"
 IUSE="+introspection +mate nls xmp"
 
 COMMON_DEPEND="
-	|| (
-		>=app-accessibility/at-spi2-core-2.46.0:2
-		dev-libs/atk
-	)
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.58.1:2
 	>=dev-libs/libxml2-2.4.7:2
 	gnome-base/dconf
