@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-12-22)
+# Unmaintained.  EAPI 6.  Last commit in 2017.  No revdeps.
+# Removal on 2024-01-21.  Bug #919050.
+app-containers/go-secbench
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-18)
 # A broken package that used to be a test dependency
 # of dev-python/ruamel-yaml.  No revdeps left.
