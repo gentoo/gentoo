@@ -185,6 +185,7 @@ src_configure() {
 
 src_install() {
 	default
+	find "${D}" -name '*.la' -delete || die
 	rm -r "${ED}"/usr/share/doc/${PF}/README{,.html} || die
 
 	dobashcomp doc/bash_completion/aria2c
