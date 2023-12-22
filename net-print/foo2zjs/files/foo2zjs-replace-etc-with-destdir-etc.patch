@@ -1,0 +1,190 @@
+From 020fef1d5c2dc5ce97dc5acd9f06ed359daa90c7 Mon Sep 17 00:00:00 2001
+From: Marco Scardovi <mscardovi@icloud.com>
+Date: Mon, 6 Nov 2023 22:03:30 +0100
+Subject: [PATCH] Replace /etc with ${DESTDIR}/etc
+
+Signed-off-by: Marco Scardovi <mscardovi@icloud.com>
+---
+ Makefile | 60 ++++++++++++++++++++++++++++----------------------------
+ hplj1000 | 24 +++++++++++------------
+ 2 files changed, 42 insertions(+), 42 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 20ebc7a..259c4f1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -977,13 +977,13 @@ install-gui:
+ 	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
+ 	
+ 
+-USBDIR=/etc/hotplug/usb
+-UDEVDIR=/etc/udev/rules.d
++USBDIR="${DESTDIR}"/etc/hotplug/usb
++UDEVDIR="${DESTDIR}"/etc/udev/rules.d
+ LIBUDEVDIR=/lib/udev/rules.d
+ RULES=hplj10xx.rules
+ #UDEVD=/sbin/udevd
+ # For FreeBSD 8.0
+-DEVDDIR=/etc/devd
++DEVDDIR="${DESTDIR}"/etc/devd
+ 
+ ifeq ($(UNAME),Darwin)
+ install-hotplug: install-hotplug-test install-hotplug-osx
+@@ -1100,18 +1100,18 @@ install-aa:
+ 	#
+ 	# openSUSE tumbleweed distro breaks ghostscript with pipes!
+ 	# 
+-	if [ -f /etc/apparmor.d/ghostscript ]; then \
++	if [ -f "${DESTDIR}"/etc/apparmor.d/ghostscript ]; then \
+ 	    aa-disable --no-reload ghostscript; \
+ 	fi
+ 
+ uninstall-aa:
+-	if [ -f /etc/apparmor.d/ghostscript ]; then \
++	if [ -f "${DESTDIR}"/etc/apparmor.d/ghostscript ]; then \
+ 	    aa-enforce ghostscript; \
+ 	fi
+ 
+-CUPSDCONF=/etc/cups/cupsd.conf
+-CUPSFILESCONF=/etc/cups/cups-files.conf
+-CUPSPRINTERS=/etc/cups/printers.conf
++CUPSDCONF="${DESTDIR}"/etc/cups/cupsd.conf
++CUPSFILESCONF="${DESTDIR}"/etc/cups/cups-files.conf
++CUPSPRINTERS="${DESTDIR}"/etc/cups/printers.conf
+ MACLOAD=/System/Library/LaunchDaemons/org.cups.cupsd.plist
+ # cups-config doesn't exist on Ubuntu unless apt-get install libcups2-dev ...
+ CUPSMAJVER=cups-config --version | sed "s/[.].*//"
+@@ -1152,22 +1152,22 @@ cups:	FRC
+ 	#
+ 	# CUPS restart
+ 	#
+-	if [ -x /etc/init.d/cups ]; then \
+-	    /etc/init.d/cups restart; \
++	if [ -x "${DESTDIR}"/etc/init.d/cups ]; then \
++	    "${DESTDIR}"/etc/init.d/cups restart; \
+ 	    if [ $$? != 0 ]; then \
+ 		service cups restart; \
+ 	    fi \
+-	elif [ -x /etc/rc.d/rc.cups ]; then \
+-	    /etc/rc.d/rc.cups restart; \
+-	elif [ -x /etc/init.d/cupsys ]; then \
+-	    /etc/init.d/cupsys restart; \
+-	elif [ -x /etc/init.d/cupsd ]; then \
+-	    /etc/init.d/cupsd restart; \
+-	elif [ -x /usr/local/etc/rc.d/cups.sh ]; then \
+-	    /usr/local/etc/rc.d/cups.sh restart; \
+-	elif [ -x /usr/local/etc/rc.d/cups.sh.sample ]; then \
+-	    cp /usr/local/etc/rc.d/cups.sh.sample /usr/local/etc/rc.d/cups.sh; \
+-	    /usr/local/etc/rc.d/cups.sh restart; \
++	elif [ -x "${DESTDIR}"/etc/rc.d/rc.cups ]; then \
++	    "${DESTDIR}"/etc/rc.d/rc.cups restart; \
++	elif [ -x "${DESTDIR}"/etc/init.d/cupsys ]; then \
++	    "${DESTDIR}"/etc/init.d/cupsys restart; \
++	elif [ -x "${DESTDIR}"/etc/init.d/cupsd ]; then \
++	    "${DESTDIR}"/etc/init.d/cupsd restart; \
++	elif [ -x /usr/local"${DESTDIR}"/etc/rc.d/cups.sh ]; then \
++	    /usr/local"${DESTDIR}"/etc/rc.d/cups.sh restart; \
++	elif [ -x /usr/local"${DESTDIR}"/etc/rc.d/cups.sh.sample ]; then \
++	    cp /usr/local"${DESTDIR}"/etc/rc.d/cups.sh.sample /usr/local"${DESTDIR}"/etc/rc.d/cups.sh; \
++	    /usr/local"${DESTDIR}"/etc/rc.d/cups.sh restart; \
+ 	elif [ -x /bin/systemctl -o -x /usr/bin/systemctl ]; then \
+ 	    systemctl restart cups.service \
+ 		|| systemctl restart org.cups.cupsd.service; \
+@@ -1185,16 +1185,16 @@ cups:	FRC
+ #
+ uninstall: uninstall-aa
+ 	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) uninstall
+-	-rm -f /etc/hotplug/usb/hplj1000
+-	-rm -f /etc/hotplug/usb/hplj1005
+-	-rm -f /etc/hotplug/usb/hplj1018
+-	-rm -f /etc/hotplug/usb/hplj1020
+-	-rm -f /etc/hotplug/usb/foo2zjs.usermap
+-	-(echo "g/^hplj10[02][05]/d"; echo "w") | ex /etc/hotplug/usb.usermap
+-	-rm -f /etc/udev/rules.d/11-hplj10xx.rules
++	-rm -f "${DESTDIR}"/etc/hotplug/usb/hplj1000
++	-rm -f "${DESTDIR}"/etc/hotplug/usb/hplj1005
++	-rm -f "${DESTDIR}"/etc/hotplug/usb/hplj1018
++	-rm -f "${DESTDIR}"/etc/hotplug/usb/hplj1020
++	-rm -f "${DESTDIR}"/etc/hotplug/usb/foo2zjs.usermap
++	-(echo "g/^hplj10[02][05]/d"; echo "w") | ex "${DESTDIR}"/etc/hotplug/usb.usermap
++	-rm -f "${DESTDIR}"/etc/udev/rules.d/11-hplj10xx.rules
+ 	-rm -f /usr/bin/usb_printerid /bin/usb_printerid /sbin/usb_printerid
+-	-rm -f /etc/hotplug/usb/hplj.usermap #
+-	-rm -f /etc/udev/rules.d/58-foo2zjs.rules #
++	-rm -f "${DESTDIR}"/etc/hotplug/usb/hplj.usermap #
++	-rm -f "${DESTDIR}"/etc/udev/rules.d/58-foo2zjs.rules #
+ 	-rm -f /sbin/foo2zjs-loadfw #
+ 	-rm -rf /usr/share/doc/foo2zjs/
+ 	-rm -f $(MANDIR)/man1/foo2zjs*.1 $(MANDIR)/man1/zjsdecode.1
+diff --git a/hplj1000 b/hplj1000
+index 323069c..73c5b16 100755
+--- a/hplj1000
++++ b/hplj1000
+@@ -17,7 +17,7 @@
+ #	is powered up or plugged into the USB port.
+ #
+ #	Also, run this script once with the magic argument "install-usermap"
+-#	to create the proper entry in the /etc/hotplug/usb.usermap file.
++#	to create the proper entry in the "${DESTDIR}"/etc/hotplug/usb.usermap file.
+ #
+ #	The inspiration fo this script is from:
+ #		Oscar Santacreu. Alicante-Spain (2002)
+@@ -55,7 +55,7 @@ FWDIR=/usr/share/foo2zjs/firmware
+ #
+ # NOTE: /usr/bin is NOT mounted at this point
+ #
+-# e.g. /etc/rc.sysinit:
++# e.g. "${DESTDIR}"/etc/rc.sysinit:
+ #    /sbin/start_udev
+ #    [snip]
+ #    # Mount all other filesystems (except for NFS and /proc, which is already
+@@ -152,28 +152,28 @@ esac
+ #	Remove HPLIP proprietary rules!
+ #
+ model=` echo "$MODEL" | tr 'A-Z' 'a-z' `
+-rm -f /etc/udev/rules.d/*hpmud*laserjet_${model}*
+-rm -f /etc/udev/rules.d/*hpmud_support.rules
+-rm -f /etc/udev/rules.d/*hpmud_plugin.rules
++rm -f "${DESTDIR}"/etc/udev/rules.d/*hpmud*laserjet_${model}*
++rm -f "${DESTDIR}"/etc/udev/rules.d/*hpmud_support.rules
++rm -f "${DESTDIR}"/etc/udev/rules.d/*hpmud_plugin.rules
+ rm -f /lib/udev/rules.d/*hpmud_support.rules
+ rm -f /lib/udev/rules.d/*hpmud_plugin.rules
+ 
+ #
+ #	The special command line argument "install-usermap" will install
+-#	the proper entry into the /etc/hotplug/usb.usermap file
++#	the proper entry into the "${DESTDIR}"/etc/hotplug/usb.usermap file
+ #
+ case "$1" in
+ install-usermap)
+     if [ "$USB2" != "" ]; then
+-	if [ -w /etc/hotplug/usb.usermap ]; then
+-		USERMAP=/etc/hotplug/usb.usermap
+-	elif [ -d /etc/hotplug/usb/ ]; then
+-		USERMAP=/etc/hotplug/usb/foo2zjs.usermap
++	if [ -w "${DESTDIR}"/etc/hotplug/usb.usermap ]; then
++		USERMAP="${DESTDIR}"/etc/hotplug/usb.usermap
++	elif [ -d "${DESTDIR}"/etc/hotplug/usb/ ]; then
++		USERMAP="${DESTDIR}"/etc/hotplug/usb/foo2zjs.usermap
+ 		if [ ! -s $USERMAP ]; then
+ 			echo > $USERMAP
+ 		fi
+ 	else
+-		log "No /etc/hotplug usermap!"
++		log "No "${DESTDIR}"/etc/hotplug usermap!"
+ 		exit
+ 	fi
+ 	chmod 664 $USERMAP
+@@ -193,7 +193,7 @@ install-usermap)
+     exit 0
+     ;;
+ install-usblp)
+-    for f in /etc/modprobe.d/blacklist*; do
++    for f in "${DESTDIR}"/etc/modprobe.d/blacklist*; do
+ 	if grep -s -q usblp $f; then
+ 	    ed - $f <<-EOF
+ 		g/^blacklist.*usblp/d
+-- 
+2.42.1
+

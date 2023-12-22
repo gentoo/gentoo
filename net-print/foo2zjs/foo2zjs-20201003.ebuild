@@ -1,12 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="Support for printing to ZjStream-based printers"
-HOMEPAGE="http://foo2zjs.rkkda.com/"
+HOMEPAGE="https://www.quirinux.org"
+SRC_URI="https://www.quirinux.org/printers/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,38 +16,40 @@ IUSE="test"
 
 RESTRICT="bindist !test? ( test )"
 
-RDEPEND="net-print/cups
+RDEPEND="
+	net-print/cups
 	net-print/foomatic-db-engine
 	>=net-print/cups-filters-1.0.43-r1[foomatic]
-	virtual/udev"
-DEPEND="${RDEPEND}
+	virtual/udev
+"
+DEPEND="
+	${RDEPEND}
 	app-arch/unzip
 	app-editors/vim
 	net-misc/wget
 	sys-apps/ed
 	sys-devel/bc
-	test? ( sys-process/time )"
+	test? ( sys-process/time )
+"
 
-SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
+PATCHES=(
+	"${FILESDIR}/${PN}-replace-etc-with-destdir-etc.patch"
+	"${FILESDIR}/${PN}-udev.patch"
+	"${FILESDIR}/${PN}-usbbackend.patch"
+)
+
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-udev.patch"\
-		"${FILESDIR}/${PN}-usbbackend.patch"
-
-	# Prevent an access violation.
-	sed -e "s~/etc~${D}/etc~g" -i Makefile || die
-	sed -e "s~/etc~${D}/etc~g" -i hplj1000 || die
-
+	default
 	# Prevent an access violation, do not create symlinks on live file system
 	# during installation.
-	sed -e 's/ install-filter / /g' -i Makefile || die
+	sed -e 's/ install-filter / /g' -i Makefile || die "Failed to sed Makefile"
 
 	# Prevent an access violation, do not remove files from live filesystem
 	# during make install
-	sed -e '/rm .*LIBUDEVDIR)\//d' -i Makefile || die
-	sed -e '/rm .*lib\/udev\/rules.d\//d' -i hplj1000 || die
-
-	default
+	sed -e '/rm .*LIBUDEVDIR)\//d' -i Makefile || die "Failed to sed Makefile"
+	sed -e '/rm .*lib\/udev\/rules.d\//d' -i hplj1000 || die "Failed to sed hplj1000"
 }
 
 src_compile() {
