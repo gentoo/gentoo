@@ -202,7 +202,7 @@ src_compile() {
 		if [[ ${1} == -x ]]; then
 			(
 				# cross-compiling, cleanup and let ./configure handle it
-				unset AR AS CC CPP CXX LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
+				unset AR AS CC CPP CXX DLLTOOL LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
 				CHOST=${CTARGET}
 				filter-flags '-fuse-ld=*'
 				filter-flags '-mfunction-return=thunk*' #878849
