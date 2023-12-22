@@ -1,15 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="GNU VCDimager"
 HOMEPAGE="https://www.gnu.org/software/vcdimager/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="static-libs +xml"
@@ -19,9 +19,8 @@ RDEPEND="
 	dev-libs/popt
 	xml? ( dev-libs/libxml2:2 )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS BUGS ChangeLog FAQ HACKING NEWS README THANKS TODO )
 
@@ -38,6 +37,11 @@ src_prepare() {
 	sed -i \
 		-e 's/noinst_PROGRAMS =/check_PROGRAMS =/' \
 		example/Makefile.am || die
+
+	# don't call nm directly. Bug #724838
+	sed -i \
+		-e "s|nm|$(tc-getNM)|" \
+		lib/Makefile.am || die
 
 	eautoreconf
 }
