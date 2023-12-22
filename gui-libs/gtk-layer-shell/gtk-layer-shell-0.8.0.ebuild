@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wmww/${PN}"
 else
 	SRC_URI="https://github.com/wmww/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Library to create desktop components for Wayland using the Layer Shell protocol"
