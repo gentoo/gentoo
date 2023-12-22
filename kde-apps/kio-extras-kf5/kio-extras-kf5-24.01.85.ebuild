@@ -18,7 +18,7 @@ EGIT_BRANCH="kf5"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="ios kf6compat +man mtp nfs openexr phonon samba +sftp taglib X"
+IUSE="activities ios kf6compat +man mtp nfs openexr phonon samba +sftp taglib X"
 
 # requires running Plasma environment
 RESTRICT="test"
@@ -27,7 +27,6 @@ DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
@@ -47,8 +46,11 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
-	>=kde-plasma/plasma-activities-${KFMIN}:5
-	>=kde-plasma/plasma-activities-stats-${KFMIN}:5
+	activities? (
+		>=dev-qt/qtbase-${QTMIN}:6[sql]
+		kde-plasma/plasma-activities:6
+		kde-plasma/plasma-activities-stats:6
+	)
 	ios? (
 		app-pda/libimobiledevice:=
 		app-pda/libplist:=
@@ -66,14 +68,17 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	!kde-apps/kio-extras:5
+	!<kde-apps/kio-extras-23.08.5-r100:5
 	>=kde-frameworks/kded-${KFMIN}:5
 	kf6compat? ( kde-apps/kio-extras:6 )
 "
 BDEPEND="man? ( dev-util/gperf )"
 
+PATCHES=( "${FILESDIR}/${P}-activities-optional.patch" )
+
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_ACTIVITIES=$(usex activities)
 		$(cmake_use_find_package ios IMobileDevice)
 		$(cmake_use_find_package ios PList)
 		$(cmake_use_find_package man Gperf)

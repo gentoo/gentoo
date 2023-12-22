@@ -1,0 +1,48 @@
+From d6db8756c906db73b22faf83a3bb5d2884342ba8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 16 Dec 2023 21:25:17 +0100
+Subject: [PATCH] Add BUILD_ACTIVITIES option (default=ON)
+
+Maybe we can keep this optional while the future of activities is still
+not entirely clear.
+
+Follow-up to f220e0ebf670e64f3e7dc4d8a75c3b5dd00bfe2c
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit d74e09cace0cd533648b37e81c9d07f9a7c82043)
+---
+ CMakeLists.txt | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 685302eb5..faa2be999 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,9 +63,12 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+ 
+ if (NOT WIN32)
+-    find_package(KF5Activities REQUIRED)
+-    find_package(Qt5Sql REQUIRED)
+-    find_package(KF5ActivitiesStats ${KF_MIN_VERSION} REQUIRED)
++    option(BUILD_ACTIVITIES "Build recentlyused:/, activities:/ KIO workers and fileitem plugin." ON)
++    if(BUILD_ACTIVITIES)
++        find_package(Qt5Sql REQUIRED)
++        find_package(KF5Activities REQUIRED)
++        find_package(KF5ActivitiesStats ${KF_MIN_VERSION} REQUIRED)
++    endif()
+ endif()
+ 
+ find_package(Phonon4Qt5 4.6.60 NO_MODULE)
+@@ -160,7 +163,7 @@ option(KF6_COMPAT_BUILD "Don't install files that conflict with KF6-based kio-ex
+ 
+ add_subdirectory( doc )
+ 
+-if(NOT WIN32)
++if(BUILD_ACTIVITIES)
+   add_subdirectory( activities )
+   add_subdirectory( recentlyused )
+ endif()
+-- 
+2.43.0
+
