@@ -55,7 +55,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with python) \
-		$(use_with test check "${ESYSROOT}/usr")
+		$(use_enable test check)
 }
 
 src_compile() {
