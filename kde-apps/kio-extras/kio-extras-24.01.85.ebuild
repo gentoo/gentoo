@@ -79,6 +79,7 @@ PATCHES=( "${FILESDIR}/${PN}-24.01.80-no-activities.patch" )
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_ACTIVITIES=OFF
 		$(cmake_use_find_package ios IMobileDevice)
 		$(cmake_use_find_package ios PList)
 		$(cmake_use_find_package man Gperf)

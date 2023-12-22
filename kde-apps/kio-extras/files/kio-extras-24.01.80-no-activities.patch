@@ -1,11 +1,48 @@
---- a/CMakeLists.txt	2023-12-17 13:30:08.829164269 +0100
-+++ b/CMakeLists.txt	2023-12-17 13:30:28.109541642 +0100
-@@ -67,7 +67,7 @@
- file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+https://invent.kde.org/network/kio-extras/-/commit/d74e09cace0cd533648b37e81c9d07f9a7c82043
+
+From d74e09cace0cd533648b37e81c9d07f9a7c82043 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 16 Dec 2023 21:25:17 +0100
+Subject: [PATCH] Add BUILD_ACTIVITIES option (default=ON)
+
+Maybe we can keep this optional while the future of activities is still
+not entirely clear.
+
+Follow-up to f220e0ebf670e64f3e7dc4d8a75c3b5dd00bfe2c
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e085b18c..6c5c43da9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,9 +68,12 @@ file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
  kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
  
--if (NOT WIN32)
-+if (0)
-     find_package(PlasmaActivities REQUIRED)
-     find_package(Qt6Sql REQUIRED)
-     find_package(PlasmaActivitiesStats REQUIRED)
+ if (NOT WIN32)
+-    find_package(PlasmaActivities REQUIRED)
+-    find_package(Qt6Sql REQUIRED)
+-    find_package(PlasmaActivitiesStats REQUIRED)
++    option(BUILD_ACTIVITIES "Build recentlyused:/, activities:/ KIO workers and fileitem plugin." ON)
++    if(BUILD_ACTIVITIES)
++        find_package(Qt6Sql REQUIRED)
++        find_package(PlasmaActivities REQUIRED)
++        find_package(PlasmaActivitiesStats REQUIRED)
++    endif()
+ endif()
+ 
+ find_package(Phonon4Qt6 4.6.60 NO_MODULE)
+@@ -164,7 +167,7 @@ ecm_set_disabled_deprecation_versions(
+ add_subdirectory(doc)
+ add_subdirectory(kcms)
+ 
+-if(NOT WIN32)
++if(BUILD_ACTIVITIES)
+   add_subdirectory( activities )
+   add_subdirectory( recentlyused )
+ endif()
+-- 
+GitLab
