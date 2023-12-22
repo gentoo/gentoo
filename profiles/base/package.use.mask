@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-20)
+# Requires LLVM 14 that is being removed.
+<dev-lang/ghc-9.4 llvm
+
 # Sam James <sam@gentoo.org> (2023-12-18)
 # libgrust build is broken for multilib
 # https://gcc.gnu.org/PR113056
