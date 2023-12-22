@@ -6,11 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Sam James <sam@gentoo.org> (2023-12-20)
-# Needs <dev-libs/openssl-3 which is EOL on 2023-09-11. Please upgrade immediately.
-# See bug #913685.
-<sci-libs/gloo-2023.05.19-r1 ssl
-
 # Sam James <sam@gentoo.org> (2023-12-18)
 # libgrust build is broken for multilib
 # https://gcc.gnu.org/PR113056
