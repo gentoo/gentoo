@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Network Security Analysis Tool, an application-level network security scanner"
-HOMEPAGE="http://nsat.sourceforge.net/"
+HOMEPAGE="https://nsat.sourceforge.net/"
 SRC_URI="mirror://sourceforge/nsat/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE="X"
