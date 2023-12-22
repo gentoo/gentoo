@@ -382,12 +382,6 @@ dev-libs/libtreadstone
 # Pretest versions, masked for testing.
 <app-editors/emacs-29.1.9999:29-vcs
 
-# Sam James <sam@gentoo.org> (2023-10-16)
-# Part of Perl core and better maintained there - the version on CPAN is out of
-# date and incompatible with Perl 5.38. No reverse dependencies.
-# Removal on 2023-11-15.
-dev-perl/PathTools
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
