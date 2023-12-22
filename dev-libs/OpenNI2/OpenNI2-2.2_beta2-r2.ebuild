@@ -40,6 +40,8 @@ PATCHES=(
 	"${FILESDIR}/jpeg.patch"
 	"${FILESDIR}/rpath.patch"
 	"${FILESDIR}/soname.patch"
+	"${FILESDIR}/pthread.patch"
+	"${FILESDIR}/c++14.patch"
 	"${FILESDIR}/${PN}-drop-register.patch"
 )
 
@@ -92,7 +94,7 @@ src_install() {
 		dobin org.openni.Samples.SimpleViewer
 	fi
 
-	dodoc CHANGES.txt NOTICE README.md ReleaseNotes.txt Source/Documentation/Text/*.txt
+	dodoc CHANGES.txt NOTICE README ReleaseNotes.txt Source/Documentation/Text/*.txt
 
 	if use doc ; then
 		docinto html
