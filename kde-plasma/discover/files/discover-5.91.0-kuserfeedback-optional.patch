@@ -1,0 +1,22 @@
+https://invent.kde.org/plasma/discover/-/merge_requests/724
+
+From 47ac41ac57e4df182b0443bb1bde3b8ff60f05e2 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 20 Dec 2023 20:48:59 +0200
+Subject: [PATCH] Make UserFeedback an optional component
+
+BUG: 478766
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
+ find_package(PkgConfig REQUIRED)
+ 
+ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED Kirigami CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO KCMUtils IdleTime Notifications Purpose Auth StatusNotifierItem)
+-find_package(KF6 ${KF6_MIN_VERSION} COMPONENTS UserFeedback)
++find_package(KF6 ${KF6_MIN_VERSION} OPTIONAL_COMPONENTS UserFeedback)
+ 
+ find_package(packagekitqt6 1.0.1 CONFIG)
+ find_package(AppStreamQt 1.0 CONFIG REQUIRED)
+-- 
+GitLab
