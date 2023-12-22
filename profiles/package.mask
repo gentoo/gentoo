@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
+# Ancient.  The website is gone.  No revdeps.
+# Removal on 2024-01-21.  Bug #918622.
+net-analyzer/lilac
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Unmaintained.  Unfetchable and mirror-restricted.  No revdeps.
 # Removal on 2024-01-21.  Bug #918905.
 sys-block/hpacucli
