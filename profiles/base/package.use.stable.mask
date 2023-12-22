@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Joonas Niilola <juippis@gentoo.org> (2023-07-14)
+# Calendar is broken with some languages on 115.0 release with <icu-74.
+# Bug #910229
+>=mail-client/thunderbird-115.0 system-icu
+
 # Sam James <sam@gentoo.org> (2023-10-23)
 # Requires llvm-17.
 >=www-client/chromium-118 libcxx lto pgo
