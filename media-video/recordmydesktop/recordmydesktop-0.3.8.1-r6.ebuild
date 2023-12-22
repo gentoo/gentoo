@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A desktop session recorder producing Ogg video/audio files"
-HOMEPAGE="http://recordmydesktop.sourceforge.net/"
+DESCRIPTION="Desktop session recorder producing Ogg video/audio files"
+HOMEPAGE="https://recordmydesktop.sourceforge.net/"
 SRC_URI="mirror://sourceforge/recordmydesktop/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="alsa jack"
@@ -44,7 +44,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--enable-dependency-tracking \
 		$(use_enable !alsa oss) \
 		$(use_enable jack)
 }
