@@ -34,5 +34,4 @@ BDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	!!<mate-base/mate-applets-1.8
 "
