@@ -122,10 +122,6 @@ xine
 # virtual/opencl is not keyworded
 opencl
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
-# sys-devel/llvm is keyworded
--llvm
-
 # Missing sys-process/numactl keywords.
 numa
 
