@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Rule management for SNORT"
+HOMEPAGE="https://oinkmaster.sourceforge.net/"
 SRC_URI="mirror://sourceforge/oinkmaster/${P}.tar.gz"
-HOMEPAGE="http://oinkmaster.sf.net/"
 
 LICENSE="BSD"
 SLOT="0"
