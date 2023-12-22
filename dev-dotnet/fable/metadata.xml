@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Fable is an F# to JavaScript compiler powered FSharp Compiler Services,
+    designed to make F# a first-class citizen of the JavaScript ecosystem.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/fable-compiler/fable/issues/</bugs-to>
+    <remote-id type="github">fable-compiler/fable</remote-id>
+  </upstream>
+</pkgmetadata>
