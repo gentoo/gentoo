@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
+# Broken on Python 3.11+.  No revdeps.
+# Removal on 2024-01-21.  Bug #896752.
+dev-python/awxkit
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Crashes.  Discontinued upstream.  No revdeps.
 # Removal on 2024-01-21.  Bug #907758.
 media-sound/guayadeque
