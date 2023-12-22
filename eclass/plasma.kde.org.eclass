@@ -86,7 +86,8 @@ if [[ ${_PSLOT} == 6 ]]; then
 		ocean-sound-theme | \
 		plasma-activities | \
 		plasma-activities-stats | \
-		plasma5support) ;;
+		plasma5support | \
+		print-manager) ;;
 		*) RDEPEND+=" !kde-plasma/${PN}:5" ;;
 	esac
 fi
