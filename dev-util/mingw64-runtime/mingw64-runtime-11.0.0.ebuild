@@ -60,7 +60,7 @@ src_configure() {
 
 	# likely cross-compiling from here, update toolchain variables
 	if ${MW_CROSS} && [[ ! -v MINGW_BYPASS ]]; then
-		unset AR AS CC CPP CXX LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
+		unset AR AS CC CPP CXX DLLTOOL LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
 		filter-flags '-fuse-ld=*'
 		filter-flags '-mfunction-return=thunk*' #878849
 	fi
