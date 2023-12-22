@@ -24,7 +24,6 @@ HOMEPAGE="https://www.kernel.org"
 SRC_URI="${KERNEL_URI}"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE=""
 
 K_EXTRAEINFO="This kernel is not supported by Gentoo due to its unstable and
 experimental nature. If you have any issues, try a matching vanilla-sources
@@ -32,7 +31,6 @@ ebuild -- if the problem is not there, please contact the upstream kernel
 developers at https://bugzilla.kernel.org and on the linux-kernel mailing list to
 report the problem so it can be fixed in time for the next kernel release."
 
-RDEPEND=""
 DEPEND="${RDEPEND}
 	>=sys-devel/patch-2.7.6-r4"
 
