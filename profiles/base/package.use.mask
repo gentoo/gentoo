@@ -9,6 +9,7 @@
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # Requires LLVM 14 that is being removed.
 <dev-lang/ghc-9.4 llvm
+media-gfx/openvdb ax
 
 # Sam James <sam@gentoo.org> (2023-12-18)
 # libgrust build is broken for multilib
