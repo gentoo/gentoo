@@ -9,7 +9,7 @@
 		<remote-id type="gitlab">cespedes/ltrace</remote-id>
 	</upstream>
 	<use>
-		<flag name="elfutils">Use libdwfl from <pkg>sys-libs/libunwind</pkg> for frame unwinding support</flag>
+		<flag name="elfutils">Use libdwfl from <pkg>dev-libs/elfutils</pkg> for frame unwinding support</flag>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> for frame unwinding support</flag>
 	</use>
 </pkgmetadata>
