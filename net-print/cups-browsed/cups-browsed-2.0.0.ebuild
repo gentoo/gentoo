@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenPrinting/cups-browsed/releases/download/${PV}/${
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="ldap test zeroconf"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="~amd64 ~arm64 ~loong"
 
 RDEPEND="
 	dev-libs/glib:2
