@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/network/kio-extras"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="ios +man mtp openexr phonon +sftp taglib X"
+IUSE="activities ios +man mtp openexr phonon +sftp taglib X"
 # TODO: activities: collides with Plasma-5, plus:
 # https://invent.kde.org/network/kio-extras/-/merge_requests/320
 # TODO: samba (net-libs/kdsoap packaging issue w/ upstream)
@@ -47,6 +47,11 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/solid-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
+	activities? (
+		>=dev-qt/qtbase-${QTMIN}:6[sql]
+		kde-plasma/plasma-activities:6
+		kde-plasma/plasma-activities-stats:6
+	)
 	ios? (
 		app-pda/libimobiledevice:=
 		app-pda/libplist:=
@@ -68,18 +73,18 @@ DEPEND="
 # 		>=net-libs/kdsoap-ws-discovery-client-0.3.0
 # 	)
 RDEPEND="${DEPEND}
-	!kde-apps/kio-extras:5
+	!<kde-apps/kio-extras-23.08.5-r100:5
 	!kde-apps/kio-extras-kf5:5[-kf6compat]
 	!kde-frameworks/kio:5[-kf6compat(-)]
 	>=kde-frameworks/kded-${KFMIN}:6
 "
 BDEPEND="man? ( dev-util/gperf )"
 
-PATCHES=( "${FILESDIR}/${PN}-24.01.80-no-activities.patch" )
+PATCHES=( "${FILESDIR}/${P}-activities-optional.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_ACTIVITIES=OFF
+		-DBUILD_ACTIVITIES=$(usex activities)
 		$(cmake_use_find_package ios IMobileDevice)
 		$(cmake_use_find_package ios PList)
 		$(cmake_use_find_package man Gperf)
