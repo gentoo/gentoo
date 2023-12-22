@@ -359,12 +359,6 @@ dev-haskell/terminfo
 =dev-db/mydumper-0.15.1.3
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-26)
-# An unmaintained programming language with last release in 2009.
-# Multiple bugs reported.  No revdeps.
-# Removal on 2023-11-25.
-dev-lang/ferite
-
-# Michał Górny <mgorny@gentoo.org> (2023-10-26)
 # Not installable due to conflict with sys-apps/coreutils.
 # Removal on 2023-11-25.  Bug #908406.
 app-misc/realpath
