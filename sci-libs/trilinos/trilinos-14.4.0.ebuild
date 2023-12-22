@@ -130,6 +130,11 @@ src_configure() {
 		-DTrilinos_ENABLE_Tpetra=ON
 		-DTrilinos_ENABLE_Zoltan=ON
 		-DTrilinos_ENABLE_TESTS="$(usex test)"
+		-DTrilinos_ENABLE_TrilinosCouplings=ON
+		-DEpetraExt_BUILD_BTF=ON
+		-DEpetraExt_BUILD_EXPERIMENTAL=ON
+		-DEpetraExt_BUILD_GRAPH_REORDERINGS=ON
+		-DTrilinos_ENABLE_COMPLEX_DOUBLE=ON
 		-DTPL_ENABLE_BinUtils=ON
 		-DTPL_ENABLE_BLAS=ON
 		-DTPL_ENABLE_LAPACK=ON
