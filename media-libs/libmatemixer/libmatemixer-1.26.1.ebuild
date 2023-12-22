@@ -7,41 +7,40 @@ inherit mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 DESCRIPTION="Mixer library for MATE Desktop"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="+alsa oss pulseaudio"
+IUSE="+alsa pulseaudio +udev"
+REQUIRED_USE="udev? ( alsa )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
-	>=sys-devel/gettext-0.19.8:*
+	virtual/libintl
 	alsa? ( >=media-libs/alsa-lib-1.0.5 )
 	pulseaudio? ( media-libs/libpulse[glib] )
 "
-
-RDEPEND="${COMMON_DEPEND}
-	virtual/libintl
-"
-
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
+	>=sys-devel/gettext-0.19.8:*
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-slibtool.patch # 785232
-)
+RDEPEND="${COMMON_DEPEND}
+	alsa? ( udev? ( virtual/libudev:= ) )
+"
+
+DEPEND="${COMMON_DEPEND}
+"
 
 src_configure() {
 	mate_src_configure \
 		--disable-null \
 		$(use_enable alsa) \
-		$(use_enable oss) \
 		$(use_enable pulseaudio)
 }
