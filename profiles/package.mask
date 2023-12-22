@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
+# Abandoned and archived upstream.  Known broken.  No revdeps.
+# dev-go/lichen::guru is the recommended replacement.
+# Removal on 2024-01-21.  Bug #913755.
+dev-go/golicense
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Unmaintained tool with NIH libraries that (optionally) depend
 # on vulnerable media-gfx/transfig.  Homepage gone.  No other revdeps.
 # Removal on 2024-01-21.  Bug #917248.
