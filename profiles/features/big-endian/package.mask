@@ -48,6 +48,7 @@ kde-apps/incidenceeditor
 kde-apps/eventviews
 kde-apps/calendarsupport
 kde-apps/calendarjanitor
+net-im/telegram-desktop
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # Test failures on BE (#700902)
