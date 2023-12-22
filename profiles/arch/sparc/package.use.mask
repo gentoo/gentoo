@@ -230,13 +230,6 @@ sys-apps/grep static
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
 
-# Sam James <sam@gentoo.org> (2021-03-13)
-# media-libs/libavif isn't keyworded here
-media-libs/gd avif
-net-libs/webkit-gtk avif
-www-client/links avif
-dev-lang/php avif
-
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
 # and is a desktop application mainly

@@ -1,6 +1,12 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
+# media-libs/libavif isn't stable here
+dev-lang/php avif
+media-libs/gd avif
+www-client/links avif
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-28)
 # dev-ruby/stringex is not marked stable here yet
 dev-ruby/kramdown unicode
