@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
+# Unmaintained.  Last release in 2001.  media-gfx/xfig
+# (that is still maintained) is recommended instead.
+# Removal on 2024-01-21.  Bug #899790.
+media-gfx/figurine
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Broken on Python 3.11+.  No revdeps.
 # Removal on 2024-01-21.  Bug #896752.
 dev-python/awxkit
