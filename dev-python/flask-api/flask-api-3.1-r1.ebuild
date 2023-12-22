@@ -24,8 +24,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-python/flask[${PYTHON_USEDEP}]
+	<dev-python/flask-3[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
+	<dev-python/werkzeug-3[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
