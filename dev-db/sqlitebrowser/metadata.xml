@@ -26,6 +26,12 @@
 		d'un tableur, et, de ce fait, ne pas être contraint à apprendre des
 		commandes SQL complexes.
 	</longdescription>
+	<use>
+		<flag name="sqlcipher">Allow to open and to edit databases encrypted using <pkg>dev-db/sqlcipher</pkg></flag>
+	</use>
+	<use lang="fr">
+		<flag name="sqlcipher">Permettre d'ouvrir et d'éditer des bases de données chiffrées en utilisant <pkg>dev-db/sqlcipher</pkg></flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/sqlitebrowser/sqlitebrowser/issues/</bugs-to>
 		<remote-id type="github">sqlitebrowser/sqlitebrowser</remote-id>
