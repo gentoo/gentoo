@@ -17,6 +17,7 @@
 		from a zip file.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">0-wiz-0/trrntzip</remote-id>
 		<remote-id type="sourceforge">trrntzip</remote-id>
 	</upstream>
 </pkgmetadata>
