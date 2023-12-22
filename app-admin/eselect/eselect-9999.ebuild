@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,10 +15,7 @@ SLOT="0"
 IUSE="doc emacs vim-syntax"
 
 DEPEND="sys-apps/sed
-	|| (
-		sys-apps/coreutils
-		app-misc/realpath
-	)"
+		sys-apps/coreutils"
 RDEPEND="${DEPEND}
 	sys-apps/file
 	sys-libs/ncurses:0"
