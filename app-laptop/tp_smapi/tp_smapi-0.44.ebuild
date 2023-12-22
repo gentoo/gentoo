@@ -6,16 +6,14 @@ EAPI=8
 inherit linux-mod-r1
 
 DESCRIPTION="IBM ThinkPad SMAPI BIOS driver"
-HOMEPAGE="https://github.com/evgeni/tp_smapi"
-SRC_URI="https://github.com/evgeni/tp_smapi/releases/download/tp-smapi/${PV}/${P}.tgz"
+HOMEPAGE="https://github.com/linux-thinkpad/tp_smapi"
+SRC_URI="https://github.com/linux-thinkpad/tp_smapi/releases/download/tp-smapi/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="hdaps"
-
-PATCHES=( "${FILESDIR}/${P}-linux-6.4.patch" )
 
 pkg_setup() {
 	if use hdaps; then
