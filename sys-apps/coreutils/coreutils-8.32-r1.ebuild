@@ -50,7 +50,6 @@ RDEPEND+="
 		!sys-apps/util-linux[kill]
 		!sys-process/procps[kill]
 	)
-	!app-misc/realpath
 	!<sys-apps/util-linux-2.13
 	!<sys-apps/sandbox-2.10-r4
 	!sys-apps/stat
