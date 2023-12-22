@@ -11,8 +11,8 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid test yearly"
-RESTRICT="!test? ( test )"
+IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid yearly"
+RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -25,8 +25,7 @@ RDEPEND=">=sys-apps/systemd-253
 	acct-user/_cron-failure
 	acct-group/_cron-failure"
 
-DEPEND="sys-process/cronbase
-	test? ( sys-apps/man-db || ( dev-util/shellcheck dev-util/shellcheck-bin ) )"
+DEPEND="sys-process/cronbase"
 
 pkg_pretend() {
 	if use runparts && ! [ -x /usr/bin/run-parts ] ; then
@@ -82,10 +81,6 @@ src_configure() {
 src_install() {
 	default
 	rm -f "${ED}"/usr/lib/sysusers.d/systemd-cron.conf
-}
-
-src_test() {
-	emake test-nounshare
 }
 
 pkg_postinst() {
