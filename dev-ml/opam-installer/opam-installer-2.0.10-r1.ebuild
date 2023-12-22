@@ -16,7 +16,7 @@ OPAM_INSTALLER="${S}/opam-installer"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~x86"
 
 # Cherry-picked from https://deb.debian.org/debian/pool/main/o/opam/opam_2.0.8-1.debian.tar.xz
 PATCHES=( "${FILESDIR}/debian-Port-to-Dose3-6.0.1.patch" )
