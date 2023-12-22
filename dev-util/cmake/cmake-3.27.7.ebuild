@@ -60,7 +60,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="${CMAKE_DOCS_USEFLAG} dap emacs gui ncurses qt6 test"
+IUSE="${CMAKE_DOCS_USEFLAG} bootstrap dap emacs gui ncurses qt6 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -183,7 +183,7 @@ src_prepare() {
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
 
-	if ! has_version -b \>=${CATEGORY}/${PN}-3.13 || ! cmake --version &>/dev/null ; then
+	if ! has_version -b \>=${CATEGORY}/${PN}-3.13 || ! cmake --version &>/dev/null || use bootstrap ; then
 		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
 		cmake_src_bootstrap
 	fi
