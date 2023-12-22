@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit perl-module
 
-DESCRIPTION="A tool for running Nmap scans and diff'ing the results"
-HOMEPAGE="http://pbnj.sourceforge.net/"
+DESCRIPTION="Tool for running Nmap scans and diff'ing the results"
+HOMEPAGE="https://pbnj.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pbnj/${P}.tar.bz2"
 
 LICENSE="GPL-2"
