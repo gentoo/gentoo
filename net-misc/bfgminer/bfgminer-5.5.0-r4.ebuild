@@ -90,10 +90,7 @@ DEPEND="
 	)
 	screen? (
 		app-misc/screen
-		|| (
-			>=sys-apps/coreutils-8.15
-			app-misc/realpath
-		)
+		>=sys-apps/coreutils-8.15
 	)
 "
 RDEPEND="${DEPEND}
