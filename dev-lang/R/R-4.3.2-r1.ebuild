@@ -39,10 +39,7 @@ DEPEND="
 	net-misc/curl
 	virtual/blas
 	sys-libs/zlib[minizip]
-	|| (
-		sys-apps/coreutils
-		app-misc/realpath
-	)
+	sys-apps/coreutils
 	cairo? (
 		x11-libs/cairo:=[X=]
 		x11-libs/pango:=
