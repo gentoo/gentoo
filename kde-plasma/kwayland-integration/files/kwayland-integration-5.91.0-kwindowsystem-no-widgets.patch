@@ -1,0 +1,68 @@
+From b672d78b8fa59e0e41dab7d06816ea751f24b461 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 16 Dec 2023 19:57:03 +0100
+Subject: [PATCH] Fix build against KF5WindowSystem with
+ -DKWINDOWSYSTEM_NO_WIDGETS=ON
+
+Deprecation #ifdefs got lost between 1102b5470e0573efe817ca12e649977007d3e6c0 and 4a3ae83979507598fae29d1b6d0a449779fda5eb.
+
+5.101 deprecation #ifdefs are still missing after this change.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/windowsystem/windowsystem.cpp | 4 ++++
+ src/windowsystem/windowsystem.h   | 2 ++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/windowsystem/windowsystem.cpp b/src/windowsystem/windowsystem.cpp
+index 9266ddd..6f67129 100644
+--- a/src/windowsystem/windowsystem.cpp
++++ b/src/windowsystem/windowsystem.cpp
+@@ -192,12 +192,14 @@ QPoint WindowSystem::desktopToViewport(int desktop, bool absolute)
+     return QPoint();
+ }
+ 
++#if KWINDOWSYSTEM_BUILD_DEPRECATED_SINCE(5, 0)
+ WId WindowSystem::groupLeader(WId window)
+ {
+     Q_UNUSED(window)
+     qCDebug(KWAYLAND_KWS) << "This plugin does not support group leader";
+     return 0;
+ }
++#endif
+ 
+ bool WindowSystem::icccmCompliantMappingState()
+ {
+@@ -549,12 +551,14 @@ QList<WId> WindowSystem::stackingOrder()
+     return QList<WId>();
+ }
+ 
++#if KWINDOWSYSTEM_BUILD_DEPRECATED_SINCE(5, 0)
+ WId WindowSystem::transientFor(WId window)
+ {
+     Q_UNUSED(window)
+     qCDebug(KWAYLAND_KWS) << "This plugin does not support transient for windows";
+     return 0;
+ }
++#endif
+ 
+ int WindowSystem::viewportToDesktop(const QPoint &pos)
+ {
+diff --git a/src/windowsystem/windowsystem.h b/src/windowsystem/windowsystem.h
+index 8c978e6..c59675a 100644
+--- a/src/windowsystem/windowsystem.h
++++ b/src/windowsystem/windowsystem.h
+@@ -42,8 +42,10 @@ public:
+     void setOnAllDesktops(WId win, bool b) override;
+     void setOnDesktop(WId win, int desktop) override;
+     void setOnActivities(WId win, const QStringList &activities) override;
++#if KWINDOWSYSTEM_BUILD_DEPRECATED_SINCE(5, 0)
+     WId transientFor(WId window) override;
+     WId groupLeader(WId window) override;
++#endif
+     QPixmap icon(WId win, int width, int height, bool scale, int flags) override;
+     void setIcons(WId win, const QPixmap &icon, const QPixmap &miniIcon) override;
+     void setType(WId win, NET::WindowType windowType) override;
+-- 
+GitLab
+
