@@ -13,6 +13,7 @@ KEYWORDS="~amd64"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-implicit-int-incompat-ptr.patch
+	"${FILESDIR}"/${P}-implicit-function.patch
 )
 
 src_configure() {
