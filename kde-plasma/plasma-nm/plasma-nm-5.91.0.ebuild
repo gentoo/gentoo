@@ -43,7 +43,7 @@ DEPEND="
 	net-misc/mobile-broadband-provider-info
 	net-misc/networkmanager[teamd=]
 	openconnect? (
-		>=dev-qt/qtwebengine-${QTMIN}:6[widgets]
+		>=dev-qt/qtwebengine-${QTMIN}:6
 		net-vpn/networkmanager-openconnect
 		net-vpn/openconnect:=
 	)
