@@ -11,14 +11,23 @@ else
 	MY_PV="${PV}"
 	MY_P="${PN}-${MY_PV}"
 	#PATCH_TARBALL_NAME="${PN}-2.70-patches-01"
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.xz
-		https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
+
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/zackweinberg.asc
+	inherit verify-sig
+
+	SRC_URI="
+		mirror://gnu/${PN}/${MY_P}.tar.xz
+		https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz
+		verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.xz.sig )
+	"
 	#SRC_URI+=" https://dev.gentoo.org/~polynomial-c/${PATCH_TARBALL_NAME}.tar.xz"
+	S="${WORKDIR}"/${MY_P}
 
 	if ! [[ ${PV} == *_beta* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
-	S="${WORKDIR}"/${MY_P}
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-zackweinberg )"
 fi
 
 inherit toolchain-autoconf
@@ -32,12 +41,16 @@ IUSE="emacs"
 
 # for 2.71, our Perl time resolution patch changes our min Perl from 5.6
 # (vanilla upstream for 2.71) to 5.8.
-BDEPEND=">=sys-devel/m4-1.4.16
-	>=dev-lang/perl-5.8"
-RDEPEND="${BDEPEND}
+BDEPEND+="
+	>=sys-devel/m4-1.4.16
+	>=dev-lang/perl-5.8
+"
+RDEPEND="
+	${BDEPEND}
 	>=sys-devel/autoconf-wrapper-15
 	sys-devel/gnuconfig
-	!~sys-devel/${P}:2.5"
+	!~sys-devel/${P}:2.5
+"
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
