@@ -164,15 +164,6 @@ net-misc/wget ssl
 # is maintained for experts only.
 sys-libs/libcxx libcxxabi
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-06)
-# Non-initramfs builds do not work with the default .config.  Force
-# the mask, so that users don't brick their systems.  If somebody wants
-# to avoid initramfs, he needs to use a custom .config and unforce
-# the flag.
-sys-kernel/gentoo-kernel initramfs
-sys-kernel/gentoo-kernel-bin initramfs
-sys-kernel/vanilla-kernel initramfs
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
 media-sound/lilypond guile2
