@@ -81,6 +81,7 @@ _setup-allowed-flags() {
 		-gstabs -gstabs+
 		-gz
 		-glldb
+		'-fdebug-default-version=*'
 
 		# Cosmetic/output related, see e.g. bug #830534
 		-fno-diagnostics-color '-fmessage-length=*'
