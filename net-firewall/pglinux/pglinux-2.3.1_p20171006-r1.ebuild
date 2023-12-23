@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,10 @@ DEPEND="
 		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-		|| ( kde-plasma/kde-cli-tools[kdesu] x11-misc/ktsuss )
+		|| (
+			kde-plasma/kde-cli-tools:*[kdesu]
+			x11-misc/ktsuss
+		)
 	)
 	zlib? ( sys-libs/zlib )
 "
