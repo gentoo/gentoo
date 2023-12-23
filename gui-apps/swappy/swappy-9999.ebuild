@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,15 +19,18 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/glib:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	media-fonts/fontawesome[otf]
+"
+DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto
 "
 BDEPEND="
 	app-text/scdoc
