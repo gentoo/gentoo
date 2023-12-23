@@ -99,7 +99,7 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/xcb-util
-	appstream? ( dev-libs/appstream[qt5] )
+	appstream? ( dev-libs/appstream[qt5(-)] )
 	calendar? ( >=kde-frameworks/kholidays-${KFMIN}:5 )
 	fontconfig? (
 		>=dev-qt/qtprintsupport-${QTMIN}:5
