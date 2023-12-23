@@ -111,7 +111,7 @@ LICENSE="Vivaldi"
 SLOT="0"
 IUSE="ffmpeg-chromium gtk proprietary-codecs qt5 widevine"
 RESTRICT="bindist mirror"
-REQUIRED_USE="ffmpeg-chromium? ( proprietary-codecs )"
+#REQUIRED_USE="ffmpeg-chromium? ( proprietary-codecs )"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
