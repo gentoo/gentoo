@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Fraunhofer AAC codec library"
-HOMEPAGE="https://sourceforge.net/projects/opencore-amr/"
+HOMEPAGE="https://sourceforge.net/projects/opencore-amr/ https://github.com/mstorsjo/fdk-aac"
 LICENSE="FraunhoferFDK"
 # subslot == N where N is libfdk-aac.so.N
 SLOT="0/2"
