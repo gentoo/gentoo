@@ -27,7 +27,8 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="debug"
 
-COMMON_DEPEND="dev-libs/elfutils"
+COMMON_DEPEND="dev-libs/elfutils
+	x11-libs/libdrm"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
