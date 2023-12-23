@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_SINGLE_IMPL=true
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 readme.gentoo-r1 virtualx xdg
@@ -28,6 +28,7 @@ RDEPEND="
 "
 BDEPEND="sys-devel/gettext
 	$(python_gen_cond_dep "
+		dev-python/setuptools-scm[\${PYTHON_USEDEP}]
 		test? (
 			${VIRTUALX_DEPEND}
 			dev-python/pytest[\${PYTHON_USEDEP}]
