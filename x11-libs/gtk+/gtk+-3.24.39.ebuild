@@ -58,10 +58,6 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	test? (
-		media-fonts/font-cursor-misc
-		media-fonts/font-misc-misc
-	)
 	X? ( x11-base/xorg-proto )
 "
 RDEPEND="${COMMON_DEPEND}
