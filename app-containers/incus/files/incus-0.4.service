@@ -1,0 +1,22 @@
+[Unit]
+Description=Incus - main daemon
+After=network-online.target lxcfs.service incus.socket
+Requires=network-online.target lxcfs.service incus.socket
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/sbin/incusd --group incus-admin --syslog
+ExecStartPost=/usr/sbin/incusd waitready --timeout=600
+ExecStartPre=/bin/mkdir -p /var/log/incus
+ExecStartPre=/bin/chown -R root:incus-admin /var/log/incus
+KillMode=process
+PermissionsStartOnly=true
+TimeoutStartSec=600s
+TimeoutStopSec=30s
+Restart=on-failure
+LimitNOFILE=1048576
+LimitNPROC=infinity
+TasksMax=infinity
+
+[Install]
+Also=incus-startup.service incus.socket
