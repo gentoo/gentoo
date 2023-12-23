@@ -26,7 +26,8 @@ RDEPEND="
 	')
 	dev-vcs/git
 "
-BDEPEND="sys-devel/gettext
+BDEPEND="
+	sys-devel/gettext
 	$(python_gen_cond_dep "
 		dev-python/setuptools-scm[\${PYTHON_USEDEP}]
 		test? (
