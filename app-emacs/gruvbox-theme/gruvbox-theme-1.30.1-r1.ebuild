@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/greduan/emacs-theme-gruvbox/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/emacs-theme-gruvbox-${PV}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="MIT"
