@@ -205,6 +205,7 @@ src_install() {
 	mv "${ED}"/usr/include/torch python/torch/include || die
 	if use cuda; then
 		mv "${ED}${S}"/nvfuser python/nvfuser || die
+		mv "${ED}"/usr/$(get_libdir)/nvfuser.so python/nvfuser/_C.so || die
 	fi
 	rm -rf "${ED}${S}"/test
 	rm -rf "${ED}${S}"/third_party
