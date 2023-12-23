@@ -168,6 +168,8 @@ XFAIL_TEST_LIST=(
 	tst-system
 	tst-strerror
 	tst-strsignal
+	# Fails with certain PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
+	tst-sched1
 )
 
 XFAIL_NSPAWN_TEST_LIST=(
@@ -190,7 +192,6 @@ XFAIL_NSPAWN_TEST_LIST=(
 
 	# These fail if --suppress-sync and/or low priority is set
 	tst-sync_file_range
-	tst-sched1
 	test-errno
 )
 
