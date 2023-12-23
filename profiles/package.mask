@@ -42,6 +42,7 @@
 >=dev-libs/rocm-opencl-runtime-6.0.0
 >=dev-util/hipcc-6.0.0
 >=dev-util/hip-6.0.0
+>=dev-util/rocminfo-6.0.0
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Unmaintained.  Last release in 2001.  media-gfx/xfig
