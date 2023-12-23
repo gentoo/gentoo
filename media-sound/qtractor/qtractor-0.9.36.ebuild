@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake xdg
 
 DESCRIPTION="Audio/MIDI multi-track sequencer written in C++ with the Qt framework"
-HOMEPAGE="https://qtractor.sourceforge.io"
+HOMEPAGE="https://qtractor.sourceforge.io https://github.com/rncbc/qtractor"
 SRC_URI="mirror://sourceforge/qtractor/${P}.tar.gz"
 
 LICENSE="GPL-2"
