@@ -21,6 +21,7 @@ COMMON_DEPEND="
 	media-libs/tiff:=
 	x11-libs/libX11
 	x11-libs/libXaw3d[unicode(+)]
+	x11-libs/libXft
 	x11-libs/libXpm
 	x11-libs/libXt
 "
