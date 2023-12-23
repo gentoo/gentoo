@@ -38,6 +38,8 @@ BDEPEND="sys-devel/gettext
 		)
 	")
 "
+# https://bugs.gentoo.org/920534
+PATCHES=( "${FILESDIR}/${P}-fix-setuptools.patch" )
 
 distutils_enable_sphinx docs \
 	'dev-python/rst-linker'
