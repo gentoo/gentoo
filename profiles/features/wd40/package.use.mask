@@ -118,6 +118,7 @@ dev-python/python-socks test
 dev-python/starlette test
 dev-python/tiny-proxy test
 dev-python/twisted test
+net-misc/stunnel test
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/pyopenssl or its revdeps.
