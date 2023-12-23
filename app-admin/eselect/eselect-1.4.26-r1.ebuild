@@ -19,8 +19,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc emacs vim-syntax"
 
-DEPEND="sys-apps/sed
-		sys-apps/coreutils"
+# coreutils for realpath
+DEPEND="sys-apps/coreutils
+	sys-apps/sed"
 RDEPEND="${DEPEND}
 	sys-apps/file
 	sys-libs/ncurses:0"
