@@ -554,6 +554,20 @@ kernel-install_pkg_pretend() {
 			elog "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
 		fi
 	fi
+
+	if ! use initramfs && ! has_version "${CATEGORY}/${PN}[-initramfs]"; then
+		ewarn
+		ewarn "WARNING: The standard configuration of the Gentoo distribution"
+		ewarn "kernels requires an initramfs! You have disabled the initramfs"
+		ewarn "USE flag and as a result dracut was not pulled in as a dependency."
+		ewarn "Please ensure that you are either overriding the standard"
+		ewarn "configuration or that an alternative initramfs generation plugin"
+		ewarn "is installed for your installkernel implementation!"
+		ewarn
+		ewarn "This is an advanced use case, you are on your own to ensure"
+		ewarn "that your system is bootable!"
+		ewarn
+	fi
 }
 
 # @FUNCTION: kernel-install_src_test
