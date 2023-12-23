@@ -206,8 +206,8 @@ src_install() {
 	if use cuda; then
 		mv "${ED}${S}"/nvfuser python/nvfuser || die
 	fi
-	rm -r "${ED}${S}"/test || die
-	rm -r "${ED}${S}"/third_party || die
+	rm -rf "${ED}${S}"/test
+	rm -rf "${ED}${S}"/third_party
 	cp torch/version.py python/torch/ || die
 	python_domodule python/caffe2
 	python_domodule python/torch
