@@ -32,6 +32,8 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	# The upstream build system isn't pure gettext and doesn't distinguish
 	# between empty and unset LINGUAS. Default to English only if either
 	# nls is unset or if LINGUAS exists but is empty. #891709
