@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2023-12-22)
+# Overflows R_MIPS_TLS_GOTTPREL with LTO
+# https://github.com/rust-lang/rust/issues/118794
+dev-lang/rust lto
+
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # media-libs/libjxl casualties
 # https://github.com/libjxl/libjxl/issues/2433
