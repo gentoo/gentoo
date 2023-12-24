@@ -28,9 +28,13 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://gitlab.gnome.org/GNOME/fractal/-/archive/${PV/_/.}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/${P}-crates.tar.xz
 	${CARGO_CRATE_URIS}
 "
+if [[ ! ${PKGBUMPING} ]]; then
+	SRC_URI+="
+		https://dev.gentoo.org/~mgorny/dist/${P}-crates.tar.xz
+	"
+fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
