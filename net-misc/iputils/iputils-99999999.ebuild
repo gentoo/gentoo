@@ -75,9 +75,9 @@ src_configure() {
 		$(meson_use !test SKIP_TESTS)
 	)
 
-	if [[ ${PV} == 9999 ]] ; then
+	if use doc || [[ ${PV} == 9999 ]] ; then
 		emesonargs+=(
-			-DBUILD_HTML_MANS=$(usex doc true false)
+			-DBUILD_HTML_MANS=true
 			-DBUILD_MANS=true
 		)
 	fi
