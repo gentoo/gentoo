@@ -20,7 +20,7 @@ HOMEPAGE="
 SRC_URI+="
 	${CARGO_CRATE_URIS}
 "
-if [[ ! ${PKGBUMPING} ]]; then
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
 	SRC_URI+="
 		https://dev.gentoo.org/~mgorny/dist/${P/-/_}-crates.tar.xz
 	"
