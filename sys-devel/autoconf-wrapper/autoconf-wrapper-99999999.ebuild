@@ -5,6 +5,8 @@ EAPI=8
 
 MY_P="autotools-wrappers-at-${PV}"
 
+# Remember to modify LAST_KNOWN_VER 'upstream' on new autoconf releases!
+
 DESCRIPTION="Wrapper for autoconf to manage multiple autoconf versions"
 HOMEPAGE="https://gitweb.gentoo.org/proj/autotools-wrappers.git"
 
