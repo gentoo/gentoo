@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">apprise</remote-id>
+		<remote-id type="github">caronc/apprise</remote-id>
+	</upstream>
+	<use>
+		<flag name="dbus">Support sending notifications to the desktop over D-Bus</flag>
+		<flag name="mqtt">Support sending notifications over MQTT</flag>
+	</use>
+</pkgmetadata>
