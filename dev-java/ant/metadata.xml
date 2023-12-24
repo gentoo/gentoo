@@ -13,6 +13,7 @@
     <flag name="commonslogging">Enable commons-logging Ant tasks</flag>
     <flag name="commonsnet">Enable commons-net Ant tasks</flag>
     <flag name="jai">Enable JAI (Java Imaging) Ant task</flag>
+    <flag name="jakartamail">Enable Jakartamail Ant task</flag>
     <flag name="javamail">Enable JavaMail Ant task</flag>
     <flag name="jdepend">Enable Jdepend Ant tasks</flag>
     <flag name="jmf">Enable JMF (Java Media Framework) Ant tasks</flag>
@@ -26,6 +27,7 @@
     <flag name="resolver">Enable Apache Resolver Ant tasks</flag>
     <flag name="swing">Enable Swing Ant tasks</flag>
     <flag name="testutil">Enable optional test util classes</flag>
+    <flag name="xalan">Enable Apache Xalan2 Ant tasks</flag>
     <flag name="xz">Enable XZ Ant tasks</flag>
   </use>
   <upstream>
