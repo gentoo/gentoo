@@ -287,7 +287,7 @@ src_configure() {
 
 src_compile() {
 	# Sandbox bug 404013.
-	use libzfs && addpredict /etc/dfs:/dev/zfs
+	use libzfs && { addpredict /etc/dfs; addpredict /dev/zfs; }
 
 	grub_do emake
 	use doc && grub_do_once emake -C docs html
