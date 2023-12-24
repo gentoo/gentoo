@@ -403,6 +403,7 @@ kernel-build_src_install() {
 				--kmoddir "${ED}/lib/modules/${dir_ver}"
 				--kver "${dir_ver}"
 				--verbose
+				--compress="xz -9e --check=crc32"
 				--no-hostonly
 				--no-hostonly-cmdline
 				--no-hostonly-i18n

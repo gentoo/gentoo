@@ -430,6 +430,12 @@ kernel-install_test() {
 	> "${T}"/empty-file || die
 	mkdir -p "${T}"/empty-directory || die
 
+	local compress="gzip"
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && use generic-uki; then
+		# Test with same compression method as the generic initrd
+		compress="xz -9e --check=crc32"
+	fi
+
 	dracut \
 		--conf "${T}"/empty-file \
 		--confdir "${T}"/empty-directory \
@@ -439,6 +445,7 @@ kernel-install_test() {
 		--omit "${omit_mods[*]}" \
 		--nostrip \
 		--no-early-microcode \
+		--compress="${compress}" \
 		"${T}/initrd" "${version}" || die
 
 	kernel-install_create_qemu_image "${T}/fs.img"
