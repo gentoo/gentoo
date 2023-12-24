@@ -3,8 +3,7 @@
 
 EAPI=8
 
-CODENAME="Omega"
-
+# FFmpeg can be unbundled, but is currently stuck at a very old version.
 # libdvd{css,read,nav} are not unbundlable without patching the buildsystem.
 
 # Versions for the forked projects that are bundled
@@ -12,11 +11,9 @@ CODENAME="Omega"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
-
-# Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.16"
-APACHE_COMMON_LANG_VERSION="3.14.0"
-APACHE_COMMON_TEXT_VERSION="1.11.0"
+FFMPEG_VERSION="4.4.1"
+CODENAME="Nexus"
+FFMPEG_KODI_VERSION="Alpha1"
 
 # Doesn't build with jdk-21
 _JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17} )
@@ -26,7 +23,7 @@ JAVA_PKG_WANT_SOURCE="17"
 JAVA_PKG_WANT_TARGET="17"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} ) # python3.12 support added in 21
 
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 
@@ -40,12 +37,13 @@ SRC_URI="
 		-> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz
 		-> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
-	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
 	css? (
 		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
+	)
+	!system-ffmpeg? (
+		https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz
+			-> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz
 	)
 "
 if [[ ${PV} == *9999 ]] ; then
@@ -108,15 +106,13 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/openssl-1.1.1k:0=
 	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
-	dev-libs/tinyxml2:=
 	media-fonts/roboto
 	media-libs/libglvnd[X?]
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
-	>=media-libs/libass-0.15.0:=
+	>=media-libs/libass-0.13.4:=
 	media-libs/mesa[egl(+),gbm(+)?,wayland?,X?]
 	>=media-libs/taglib-1.9.0
-	=media-video/ffmpeg-6*:=[encode,postproc,vaapi?,vdpau?,X?]
 	sci-libs/kissfft
 	virtual/libiconv
 	virtual/ttf-fonts
@@ -149,7 +145,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	gbm? (
 		>=dev-libs/libinput-1.10.5:=
-		media-libs/libdisplay-info
 		x11-libs/libxkbcommon
 	)
 	gles? (
@@ -179,7 +174,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/libnfs-2.0.0:=
 	)
 	pipewire? (
-		>=media-video/pipewire-0.3.50:=
+		>=media-video/pipewire-0.3.24:=
 	)
 	pulseaudio? (
 		media-libs/libpulse
@@ -193,6 +188,14 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
+	)
+	system-ffmpeg? (
+		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc,vaapi?,vdpau?,X?]
+		=media-video/ffmpeg-4*[openssl]
+	)
+	!system-ffmpeg? (
+		app-arch/bzip2
+		media-libs/dav1d:=
 	)
 	udf? (
 		>=dev-libs/libudfread-1.0.0
@@ -235,7 +238,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	${COMMON_TARGET_DEPEND}
-	>=dev-libs/rapidjson-1.0.2
+	dev-libs/rapidjson
 	test? (
 		>=dev-cpp/gtest-1.10.0
 	)
@@ -247,11 +250,11 @@ DEPEND="
 		x11-libs/libXrender
 	)
 "
+# <dev-lang/swig-4.2.0 https://github.com/xbmc/xbmc/issues/24385
 BDEPEND="
 	${COMMON_DEPEND}
-	app-arch/unzip
 	dev-build/cmake
-	dev-lang/swig
+	<dev-lang/swig-4.2.0
 	virtual/pkgconfig
 	<=virtual/jre-17:*
 	doc? (
@@ -265,6 +268,10 @@ ERROR_IP_MULTICAST="
 In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
+
+PATCHES=(
+	"${FILESDIR}"/kodi-20.2-binutils-2.41.patch
+)
 
 pkg_setup() {
 	check_extra_config
@@ -294,23 +301,6 @@ src_prepare() {
 			-e "s/\(find_library(KISSFFT_LIBRARY NAMES .*\)/\1 kissfft-${datatype} kissfft-${datatype}-openmp/" \
 			cmake/modules/FindKissFFT.cmake || die
 	done
-
-	if tc-is-cross-compiler; then
-		# These tools are automatically built with CMake during a native build
-		# but need to be built in advance using Autotools for a cross build.
-		NATIVE_TOOLS=(
-			TexturePacker
-			JsonSchemaBuilder
-		)
-
-		local t
-		for t in "${NATIVE_TOOLS[@]}" ; do
-			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
-			AT_NOELIBTOOLIZE="yes" AT_TOPLEVEL_EAUTORECONF="yes" eautoreconf
-			popd >/dev/null || die
-		done
-		elibtoolize
-	fi
 }
 
 src_configure() {
@@ -374,7 +364,6 @@ src_configure() {
 		-DENABLE_XSLT=$(usex xslt)
 
 		#To bundle or not
-		-DENABLE_INTERNAL_CEC=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
@@ -389,13 +378,17 @@ src_configure() {
 		-DENABLE_INTERNAL_TAGLIB=OFF
 		-DENABLE_INTERNAL_UDFREAD=OFF
 
-		-DTARBALL_DIR="${DISTDIR}"
+		-DWITH_FFMPEG=$(usex system-ffmpeg)
+
 		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.gz"
 		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.gz"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
+	use !system-ffmpeg && mycmakeargs+=(
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz"
+	)
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
