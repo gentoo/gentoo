@@ -5,7 +5,7 @@ EAPI=8
 
 inherit rpm systemd
 
-MY_P="NessusAgent-${PV}-es8"
+MY_P="NessusAgent-${PV}-el8"
 
 DESCRIPTION="A remote security scanner for Linux - agent component"
 HOMEPAGE="https://www.tenable.com/"
