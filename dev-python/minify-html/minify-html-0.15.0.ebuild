@@ -19,8 +19,12 @@ HOMEPAGE="
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
-	https://dev.gentoo.org/~mgorny/dist/${P/-/_}-crates.tar.xz
 "
+if [[ ! ${PKGBUMPING} ]]; then
+	SRC_URI+="
+		https://dev.gentoo.org/~mgorny/dist/${P/-/_}-crates.tar.xz
+	"
+fi
 
 LICENSE="MIT"
 # Dependent crate licenses
