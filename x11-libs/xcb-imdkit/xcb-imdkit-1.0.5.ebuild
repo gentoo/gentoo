@@ -11,7 +11,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~loong ~x86"
 
 RDEPEND="
 	x11-libs/libxcb
