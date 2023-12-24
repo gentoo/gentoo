@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Remember to modify LAST_KNOWN_AUTOAKE_VER 'upstream' on new automake (major) releases!
+
 MY_P="autotools-wrappers-at-${PV}"
 
 DESCRIPTION="Wrapper for automake to manage multiple automake versions"
