@@ -1,11 +1,6 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2023-10-31)
-# Tries to use unsupported MemoryDenyWriteExecute and crashes on boot.
-# See https://github.com/systemd/systemd/issues/29775 and bug #916469.
->=sys-apps/systemd-254
-
 # Sam James <sam@gentoo.org> (2023-03-28)
 # Needs explicit porting to each platform (bug 894078#c6)
 dev-python/py-cpuinfo
