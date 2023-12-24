@@ -121,6 +121,8 @@ src_prepare() {
 	# fix RISC-V build err, bug 811375
 	symlink_build_rules riscv
 	symlink_build_rules riscv64
+	# big endian support, bug 907029
+	symlink_build_rules riscv64be
 
 	# Add support for loong
 	symlink_build_rules loongarch64
