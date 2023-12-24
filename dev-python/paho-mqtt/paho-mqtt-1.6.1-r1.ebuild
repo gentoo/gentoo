@@ -18,7 +18,7 @@ S="${WORKDIR}/paho.mqtt.python-${PV}"
 
 LICENSE="EPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 BDEPEND="
 	test? (
