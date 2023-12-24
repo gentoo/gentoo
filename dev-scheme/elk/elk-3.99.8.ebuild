@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Scheme implementation designed to be embeddable extension to C/C++ applications"
-HOMEPAGE="http://sam.zoy.org/elk"
+HOMEPAGE="http://sam.zoy.org/elk/"
 SRC_URI="http://sam.zoy.org/elk/${P}.tar.bz2"
 
 LICENSE="GPL-2"
