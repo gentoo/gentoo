@@ -63,6 +63,4 @@ python_compile() {
 
 python_install() {
 	USE_SYSTEM_LIBS=ON distutils-r1_python_install
-	python_moduleinto nvfuser
-	python_domodule third_party/nvfuser/python/__init__.py
 }
