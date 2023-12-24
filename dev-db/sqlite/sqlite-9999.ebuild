@@ -360,7 +360,8 @@ multilib_src_test() {
 	# e_uri.test tries to open files in /.
 	# bug #839798
 	local SANDBOX_PREDICT=${SANDBOX_PREDICT}
-	addpredict "/test.db:/ÿ.db"
+	addpredict "/test.db"
+	addpredict "/ÿ.db"
 
 	emake -Onone HAVE_TCL="$(usex tcl 1 "")" $(usex debug 'fulltest' 'test')
 }
