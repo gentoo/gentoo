@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit rebar
 
@@ -15,12 +15,12 @@ KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND=">=dev-lang/erlang-17.1"
-DEPEND="${CDEPEND}
+COMMON_DEPEND=">=dev-lang/erlang-17.1"
+DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-erlang/proper-1.2 )"
-RDEPEND="${CDEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
-DOCS=( NOTES  README.markdown TODO.md )
+DOCS=( NOTES README.markdown TODO.md )
 
 # Override with EAPI default because it's missing hamcrest.app.src and doesn't
 # have any deps.
