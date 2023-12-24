@@ -32,6 +32,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-131.1.0-cross.patch
+)
+
 python_check_deps() {
 	python_has_version -d "dev-python/numpy[${PYTHON_USEDEP}]"
 }
