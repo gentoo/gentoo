@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Remember to modify LAST_KNOWN_VER 'upstream' in sys-devel/autoconf-wrapper
+# on new autoconf releases, as well as the dependency in RDEPEND below too.
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
 	inherit git-r3
@@ -45,7 +48,7 @@ BDEPEND+="
 "
 RDEPEND="
 	${BDEPEND}
-	>=sys-devel/autoconf-wrapper-15
+	>=sys-devel/autoconf-wrapper-20231224
 	sys-devel/gnuconfig
 	!~sys-devel/${P}:2.5
 "
