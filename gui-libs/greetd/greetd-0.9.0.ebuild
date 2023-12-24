@@ -59,7 +59,7 @@ DESCRIPTION="ipc based login daemon"
 
 HOMEPAGE="https://git.sr.ht/~kennylevinsen/greetd/"
 SRC_URI="https://git.sr.ht/~kennylevinsen/greetd/archive/${PV}.tar.gz -> ${P}.tar.gz
-	$(cargo_crate_uris ${CRATES})
+	${CARGO_CRATE_URIS}
 "
 
 LICENSE="GPL-3+"
