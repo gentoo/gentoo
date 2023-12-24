@@ -30,7 +30,8 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 
-inherit cmake desktop flag-o-matic java-pkg-2 linux-info optfeature pax-utils python-single-r1 xdg
+inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
+	toolchain-funcs xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/"
@@ -415,10 +416,26 @@ src_configure() {
 	# https://github.com/xbmc/xbmc/commit/cb72a22d54a91845b1092c295f84eeb48328921e
 	filter-lto
 
+	if tc-is-cross-compiler; then
+		for t in "${NATIVE_TOOLS[@]}" ; do
+			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
+			econf_build
+			install -m0755 /dev/null "$t" || die # Actually build later.
+			mycmakeargs+=( -DWITH_${t^^}="${PWD}/$t" )
+			popd >/dev/null || die
+		done
+	fi
+
 	cmake_src_configure
 }
 
 src_compile() {
+	if tc-is-cross-compiler; then
+		for t in "${NATIVE_TOOLS[@]}" ; do
+			emake -C "${S}/tools/depends/native/$t/src"
+		done
+	fi
+
 	cmake_src_compile all
 	use doc && cmake_build doc
 	use test && cmake_build kodi-test
