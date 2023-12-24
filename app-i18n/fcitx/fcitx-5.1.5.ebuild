@@ -13,7 +13,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${PV}_dict.tar.xz ->
 
 LICENSE="LGPL-2+ Unicode-DFS-2016"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~loong ~x86"
 IUSE="+autostart doc +emoji +enchant +keyboard presage +server systemd test wayland +X"
 REQUIRED_USE="
 	|| ( wayland X )
