@@ -30,7 +30,7 @@ SRC_URI="
 	https://gitlab.gnome.org/GNOME/fractal/-/archive/${PV/_/.}/${MY_P}.tar.bz2
 	${CARGO_CRATE_URIS}
 "
-if [[ ! ${PKGBUMPING} ]]; then
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
 	SRC_URI+="
 		https://dev.gentoo.org/~mgorny/dist/${P}-crates.tar.xz
 	"
