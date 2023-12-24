@@ -14,7 +14,7 @@ HOMEPAGE="https://torsion.org/borgmatic/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="apprise"
 
 REQUIRED_USE="test? ( apprise )"
