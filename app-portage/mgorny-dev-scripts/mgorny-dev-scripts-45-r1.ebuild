@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-ma
 
 RDEPEND="
 	app-portage/gentoolkit
-	app-portage/portage-utils
 	dev-perl/URI
 	dev-util/pkgcheck
 	dev-vcs/git
