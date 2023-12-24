@@ -1,0 +1,15 @@
+From: "xz-dev" <xiangzhedev@gmail.com>
+For fix GRUB_TOP_LEVEL support for SYMLINK which created by genkernel
+it's look like `/boot/kernel`
+
+--- a/util/grub-mkconfig_lib.in	2023-12-24 16:10:45.058339649 +0800
++++ b/util/grub-mkconfig_lib.in	2023-12-24 16:11:17.757919249 +0800
+@@ -223,7 +223,7 @@
+ # the list.
+ grub_move_to_front ()
+ {
+-  item="$1"
++  item=$(readlink -f "$1")
+   shift
+ 
+   item_found=false
