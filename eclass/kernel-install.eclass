@@ -765,6 +765,17 @@ kernel-install_pkg_config() {
 	kernel-install_install_all "${PV}${KV_LOCALVERSION}"
 }
 
+# @FUNCTION: kernel-install_compress_modules
+# @DESCRIPTION:
+# Compress modules installed in ED, if USE=module-compress is enabled.
+kernel-install_compress_modules() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if use module-compress; then
+		# taken from scripts/Makefile.modinst
+		find "${ED}/lib" -name '*.ko' -exec \
+			xz --check=crc32 --lzma2=dict=1MiB {} + || die
+	fi
 fi
 
 EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm
