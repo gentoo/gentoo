@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
+
 # James Le Cuirot (2023-12-12)
 # USE=bpf depends on sys-devel/clang which is not keyworded on hppa
 media-libs/libv4l bpf
@@ -37,10 +41,6 @@ app-doc/doxygen gui
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
 dev-util/cmake gui
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
 
 # Sam James <sam@gentoo.org> (2023-09-18)
 # x11-libs/gtksourceview:4 not keyworded here

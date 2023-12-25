@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
+
 # Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
 # media-video/rav1e isn't keyworded here
 media-libs/libavif rav1e
@@ -37,10 +41,6 @@ sys-apps/openrc s6
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
 dev-util/cmake gui
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
 
 # Rich Freeman <rich0@gentoo.org> (2023-09-13)
 # Tests require shellcheck which is not currently available

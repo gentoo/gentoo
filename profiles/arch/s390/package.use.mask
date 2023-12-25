@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
+
 # James Le Cuirot (2023-12-12)
 # USE=bpf depends on sys-devel/clang which is not keyworded on s390
 media-libs/libv4l bpf
@@ -26,10 +30,6 @@ app-doc/doxygen gui
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
 dev-util/cmake gui
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
 
 # Sam James <sam@gentoo.org> (2023-06-18)
 # Qt 5 not keyworded here

@@ -34,10 +34,6 @@ sys-apps/openrc s6
 # https://github.com/openjdk/jdk17u-dev/commit/5b29c6ec93372b20016565b84d449860b7233d6c
 dev-java/openjdk:17 systemtap
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo

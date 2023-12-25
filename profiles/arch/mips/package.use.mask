@@ -55,10 +55,6 @@ app-i18n/ibus gtk4
 # dev-util/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
-
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # app-i18n/fcitx:4 not keyworded here
 media-libs/libsdl2 fcitx4

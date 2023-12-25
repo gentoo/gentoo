@@ -22,10 +22,6 @@
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
 
-# Matt Turner <mattst88@gentoo.org> (2023-10-30)
-# libei not stable yet
-x11-base/xwayland libei
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been stabalized on this arch yet
 dev-db/spatialite rttopo

@@ -22,10 +22,6 @@
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
 
-# Matt Turner <mattst88@gentoo.org> (2023-10-30)
-# libei not stable yet
-x11-base/xwayland libei
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
 # Destabilizing x86 keywords on sci-*/* packages
 app-metrics/collectd collectd_plugins_gps collectd_plugins_sigrok
