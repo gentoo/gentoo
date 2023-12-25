@@ -41,10 +41,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-33-strict-aliasing.patch
-)
-
 if [[ ${PV} == 9999 ]]; then
 src_unpack() {
 	git-r3_src_unpack
