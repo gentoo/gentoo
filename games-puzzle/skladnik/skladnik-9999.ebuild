@@ -18,7 +18,9 @@ KEYWORDS=""
 RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-apps/libkdegames-22.12.0:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
@@ -26,3 +28,4 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${RDEPEND}"
+BDEPEND="media-gfx/povray"
