@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2023-12-25)
+# Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
+>=media-tv/kodi-20.2 wayland -X
+
 # Mart Raudsepp <leio@gentoo.org> (2023-10-01)
 # x11-wm/mutter[wayland] requires xwayland[libei] for emulated input portal
 # for e.g. remote desktop remote input support
