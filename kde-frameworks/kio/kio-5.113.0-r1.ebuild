@@ -70,7 +70,10 @@ DEPEND="${RDEPEND}
 "
 PDEPEND=">=kde-frameworks/kded-${PVCUT}:5"
 
-PATCHES=( "${FILESDIR}/${P}-fix-crash-while-copying.patch" ) # KDE-bug 448532
+PATCHES=(
+	"${FILESDIR}/${P}-fix-crash-while-copying.patch" # KDE-bug 448532
+	"${FILESDIR}/${P}-fix-crash-malformed-exec.patch" # KDE-bug 465290
+)
 
 src_configure() {
 	local mycmakeargs=(
