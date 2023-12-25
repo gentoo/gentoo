@@ -30,7 +30,7 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm libedit lto
+	bluetooth build debug +ensurepip examples gdbm libedit
 	+ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
@@ -202,7 +202,6 @@ build_cbuild_python() {
 }
 
 src_configure() {
-	local disable
 	# disable automagic bluetooth headers detection
 	if ! use bluetooth; then
 		local -x ac_cv_header_bluetooth_bluetooth_h=no
@@ -210,11 +209,6 @@ src_configure() {
 
 	append-flags -fwrapv
 	filter-flags -malign-double
-
-	# https://bugs.gentoo.org/700012
-	if is-flagq -flto || is-flagq '-flto=*'; then
-		append-cflags $(test-flags-CC -ffat-lto-objects)
-	fi
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	# PKG_CONFIG needed for cross.
@@ -279,6 +273,7 @@ src_configure() {
 		--with-libc=
 		--enable-loadable-sqlite-extensions
 		--without-ensurepip
+		--without-lto
 		--with-system-expat
 		--with-system-ffi
 		--with-platlibdir=lib
@@ -286,7 +281,6 @@ src_configure() {
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
 		$(use_with debug assertions)
-		$(use_with lto)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
 		$(use_with valgrind)
@@ -294,6 +288,14 @@ src_configure() {
 
 	# disable implicit optimization/debugging flags
 	local -x OPT=
+
+	# https://bugs.gentoo.org/700012
+	if tc-is-lto; then
+		append-cflags $(test-flags-CC -ffat-lto-objects)
+		myeconfargs+=(
+			--with-lto
+		)
+	fi
 
 	if tc-is-cross-compiler ; then
 		build_cbuild_python
