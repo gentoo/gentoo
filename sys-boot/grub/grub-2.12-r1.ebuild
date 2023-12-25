@@ -120,11 +120,11 @@ DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
 	grub_platforms_emu? (
-		sdl? ( media-libs/libsdl )
+		sdl? ( media-libs/libsdl2 )
 	)
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 	libzfs? ( sys-fs/zfs:= )
-	mount? ( sys-fs/fuse:0 )
+	mount? ( sys-fs/fuse:3 )
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
 	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
@@ -231,7 +231,8 @@ grub_configure() {
 		$(use_enable themes grub-themes)
 		$(use_enable truetype grub-mkfont)
 		$(use_enable libzfs)
-		$(use_enable sdl grub-emu-sdl)
+		--enable-grub-emu-sdl=no
+		$(use_enable sdl grub-emu-sdl2)
 		${platform:+--with-platform=}${platform}
 
 		# Let configure detect this where supported
