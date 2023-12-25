@@ -79,7 +79,7 @@ _IDEPEND_BASE="
 
 LICENSE="GPL-2"
 if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
-	IUSE+=" generic-uki"
+	IUSE+=" generic-uki module-compress"
 	# https://github.com/AndrewAmmerlaan/dist-kernel-log-to-licenses
 	# This script can help with generating the array below, keep in mind
 	# that it is not a fully automatic solution, i.e. use flags will
@@ -200,6 +200,9 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		generic-uki? ( ${INITRD_PACKAGES[@]} )
 	"
 
+	RDEPEND+="
+		sys-apps/kmod[lzma]
+	"
 	IDEPEND="
 		generic-uki? (
 			|| (
