@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}-src-v${PV}"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="dev-lang/perl
 	dev-perl/libwww-perl
