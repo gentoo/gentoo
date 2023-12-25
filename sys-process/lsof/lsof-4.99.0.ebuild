@@ -39,6 +39,11 @@ src_compile() {
 	emake DEBUG="" all
 }
 
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}
+
 pkg_postinst() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		einfo "Note: to use lsof on Solaris you need read permissions on"
