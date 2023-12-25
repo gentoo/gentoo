@@ -29,7 +29,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm libedit lto
+	bluetooth build debug +ensurepip examples gdbm libedit
 	+ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
@@ -201,7 +201,6 @@ build_cbuild_python() {
 }
 
 src_configure() {
-	local disable
 	# disable automagic bluetooth headers detection
 	if ! use bluetooth; then
 		local -x ac_cv_header_bluetooth_bluetooth_h=no
@@ -209,11 +208,6 @@ src_configure() {
 
 	append-flags -fwrapv
 	filter-flags -malign-double
-
-	# https://bugs.gentoo.org/700012
-	if is-flagq -flto || is-flagq '-flto=*'; then
-		append-cflags $(test-flags-CC -ffat-lto-objects)
-	fi
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	# PKG_CONFIG needed for cross.
@@ -278,17 +272,26 @@ src_configure() {
 		--with-libc=
 		--enable-loadable-sqlite-extensions
 		--without-ensurepip
+		--without-lto
 		--with-system-expat
 		--with-platlibdir=lib
 		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
 		$(use_with debug assertions)
-		$(use_with lto)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
 		$(use_with valgrind)
 	)
+
+	# https://bugs.gentoo.org/700012
+	if tc-is-lto; then
+		append-cflags $(test-flags-CC -ffat-lto-objects)
+		myeconfargs+=(
+			--with-lto
+		)
+	fi
+
 	# Force-disable modules we don't want built.
 	# See Modules/Setup for docs on how this works. Setup.local contains our local deviations.
 	cat > Modules/Setup.local <<-EOF || die
