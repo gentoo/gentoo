@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
@@ -27,6 +27,17 @@ BDEPEND="
 
 # Needs fixing first for sandbox
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.98.0-fix-clang-version-parser.patch
+)
+
+# TODO: drop this block, "inherit autotools" and clang-version-parser patch after 4.99.3
+# https://github.com/lsof-org/lsof/pull/306
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	export ac_cv_header_selinux_selinux_h=$(usex selinux)

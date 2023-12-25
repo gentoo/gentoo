@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
 HOMEPAGE="https://github.com/lsof-org/lsof"
@@ -25,6 +27,17 @@ BDEPEND="
 
 # Needs fixing first for sandbox
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.98.0-fix-clang-version-parser.patch
+)
+
+# TODO: drop this block, "inherit autotools" and clang-version-parser patch after 4.99.3
+# https://github.com/lsof-org/lsof/pull/306
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
