@@ -456,7 +456,6 @@ media-video/subtitleripper
 # Please run a full world upgrade, especially checking /etc/portage and your world file
 # for old PHP or Ruby references.
 <dev-libs/openssl-3
-<app-crypt/xca-2.4.0_p20230526
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
 # The catalyst-3 branch is outdated and not used by Gentoo
