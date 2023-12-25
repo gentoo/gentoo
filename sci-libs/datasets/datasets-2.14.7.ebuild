@@ -20,26 +20,30 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# For pin on fsspec see https://github.com/huggingface/datasets/issues/6333
 RDEPEND="
 	${PYTHON_DEPS}
 	sci-libs/pytorch[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/aiohttp[${PYTHON_USEDEP}]
-		dev-python/fsspec[${PYTHON_USEDEP}]
+		<=dev-python/fsspec-2023.10.0[${PYTHON_USEDEP}]
 		dev-python/multiprocess[${PYTHON_USEDEP}]
+		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
-		sci-libs/huggingface_hub[${PYTHON_USEDEP}]
+		>=sci-libs/huggingface_hub-0.14.0[${PYTHON_USEDEP}]
 		sci-libs/scikit-learn[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	$(python_gen_cond_dep '
+		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
 		=dev-python/sqlalchemy-1*[${PYTHON_USEDEP}]
@@ -48,7 +52,7 @@ BDEPEND="test? (
 	')
 )"
 
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.14.4-tests.patch )
 
 distutils_enable_tests pytest
 
@@ -56,4 +60,7 @@ src_prepare() {
 	distutils-r1_src_prepare
 	rm tests/packaged_modules/test_spark.py || die
 	rm tests/test_upstream_hub.py || die
+	sed -i -e \
+		"/pyarrow_hotfix/d" \
+		src/datasets/features/features.py || die
 }
