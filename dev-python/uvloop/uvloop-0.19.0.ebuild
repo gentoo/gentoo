@@ -46,13 +46,8 @@ python_prepare_all() {
 		cython_always=True
 	EOF
 
-	# flake8 only
-	#rm tests/test_sourcecode.py || die
 	# force cythonization
 	rm uvloop/loop.c || die
-	# hangs
-	#sed -i -e 's:test_remote_shutdown_receives_trailing_data:_&:' \
-	#	tests/test_tcp.py || die
 
 	distutils-r1_python_prepare_all
 }
