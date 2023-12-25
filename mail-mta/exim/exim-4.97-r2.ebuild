@@ -622,10 +622,6 @@ pkg_postinst() {
 		einfo "documentation at the bottom of this prerelease message:"
 		einfo "  http://article.gmane.org/gmane.mail.exim.devel/3579"
 	fi
-	if use srs; then
-		einfo "SRS support using libsrs_alt was dropped in this"
-		einfo "release of Exim, you are now using the native SRS implementation"
-	fi
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	einfo
 	elog "Note that this release contains a tainted variable check that"
