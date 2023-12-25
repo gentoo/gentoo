@@ -38,6 +38,8 @@ BDEPEND="doc? ( app-doc/doxygen[dot] )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-cmake-build-type.patch
 	"${FILESDIR}"/${PN}-0.8.1-fix_llvm.patch
+	# https://github.com/symengine/symengine/pull/1985
+	"${FILESDIR}"/${PN}-0.11.1-flint-3.patch
 )
 
 pkg_pretend() {
