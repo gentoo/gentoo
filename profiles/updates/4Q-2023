@@ -39,3 +39,4 @@ move dev-python/blake3-py dev-python/blake3
 move games-action/minetest games-engines/minetest
 move app-laptop/tuxedo-keyboard app-laptop/tuxedo-drivers
 move dev-libs/clhpp dev-cpp/clhpp
+move games-puzzle/ksokoban games-puzzle/skladnik

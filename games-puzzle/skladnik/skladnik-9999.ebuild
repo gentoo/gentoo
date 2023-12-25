@@ -1,20 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-ECM_HANDBOOK="forceoptional"
-KDE_ORG_COMMIT=39b9d1c1702a21a6e0fae82876c29c1f6bb77fae
-KFMIN=5.82.0
-QTMIN=5.15.2
+ECM_HANDBOOK="optional"
+KFMIN=5.106.0
+QTMIN=5.15.9
 inherit ecm kde.org
 
-DESCRIPTION="The Japanese warehouse keeper game"
-HOMEPAGE="https://invent.kde.org/games/ksokoban"
+DESCRIPTION="The Japanese warehouse keeper sokoban game"
+HOMEPAGE="https://invent.kde.org/games/skladnik"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5

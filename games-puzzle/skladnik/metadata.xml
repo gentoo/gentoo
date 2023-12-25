@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=skladnik</bugs-to>
+		<remote-id type="kde-invent">games/skladnik</remote-id>
+	</upstream>
+</pkgmetadata>
