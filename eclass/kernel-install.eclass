@@ -127,7 +127,6 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["dev-libs/openssl"]="Apache-2.0"
 		["dev-libs/userspace-rcu"]="LGPL-2.1"
 		["media-libs/libmtp"]="LGPL-2.1"
-		["media-libs/libpng"]="libpng2"
 		["media-libs/libv4l"]="LGPL-2.1+"
 		["net-dns/c-ares"]="MIT ISC"
 		["net-dns/libidn2"]="|| ( GPL-2+ LGPL-3+ ) GPL-3+ unicode"
@@ -159,15 +158,12 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-apps/nvme-cli"]="GPL-2 GPL-2+"
 		["sys-apps/pcsc-lite"]="BSD ISC MIT GPL-3+ GPL-2"
 		["sys-apps/rng-tools"]="GPL-2"
-		["sys-apps/sandbox"]="GPL-2"
 		["sys-apps/sed"]="GPL-3+"
 		["sys-apps/shadow"]="BSD GPL-2"
 		["sys-apps/systemd[boot(-),cryptsetup,pkcs11,policykit,tpm,ukify(-)]"]="GPL-2 LGPL-2.1 MIT public-domain"
 		["sys-apps/util-linux"]="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 		["sys-auth/polkit"]="LGPL-2"
 		["sys-block/nbd"]="GPL-2"
-		["sys-block/open-isns"]="LGPL-2.1"
-		["sys-boot/plymouth"]="GPL-2"
 		["sys-devel/gcc"]="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
 		["sys-fs/btrfs-progs"]="GPL-2"
 		["sys-fs/cryptsetup"]="GPL-2+"
@@ -192,7 +188,6 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-libs/readline"]="GPL-3+"
 		["sys-libs/zlib"]="ZLIB"
 		["sys-process/procps"]="GPL-2+ LGPL-2+ LGPL-2.1+"
-		["x11-libs/libdrm"]="MIT"
 		["amd64? ( sys-firmware/intel-microcode )"]="amd64? ( intel-ucode )"
 		["x86? ( sys-firmware/intel-microcode )"]="x86? ( intel-ucode )"
 	)
@@ -772,10 +767,13 @@ kernel-install_compress_modules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if use module-compress; then
+		einfo "Compressing kernel modules ..."
 		# taken from scripts/Makefile.modinst
 		find "${ED}/lib" -name '*.ko' -exec \
 			xz --check=crc32 --lzma2=dict=1MiB {} + || die
 	fi
+}
+
 fi
 
 EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm

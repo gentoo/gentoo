@@ -395,10 +395,10 @@ kernel-build_src_install() {
 
 			local dracut_modules=(
 				base bash btrfs cifs crypt crypt-gpg crypt-loop dbus dbus-daemon
-				dm dmraid drm dracut-systemd fido2 i18n fs-lib kernel-modules
+				dm dmraid dracut-systemd fido2 i18n fs-lib kernel-modules
 				kernel-network-modules kernel-modules-extra lunmask lvm nbd
 				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
-				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
+				pkcs11 qemu qemu-net resume rngd rootfs-block shutdown
 				systemd systemd-ac-power systemd-ask-password systemd-initrd
 				systemd-integritysetup systemd-pcrphase systemd-sysusers
 				systemd-udevd systemd-veritysetup terminfo tpm2-tss udev-rules
@@ -423,6 +423,8 @@ kernel-build_src_install() {
 				--reproducible
 				--ro-mnt
 				--modules "${dracut_modules[*]}"
+				# Pulls in huge firmware files
+				--omit-drivers "nfp"
 			)
 
 			# Tries to update ld cache
@@ -433,7 +435,7 @@ kernel-build_src_install() {
 			local ukify_args=(
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
-				--cmdline="root=/dev/gpt-auto-root ro quiet splash"
+				--cmdline="root=/dev/gpt-auto-root ro"
 				--uname="${dir_ver}"
 				--output="${image%/*}/uki.efi"
 			)
