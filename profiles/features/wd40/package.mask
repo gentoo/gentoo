@@ -26,6 +26,7 @@ dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
 dev-python/cfn-lint
 >=dev-python/cryptography-36
+dev-python/apprise
 dev-python/dirty-equals
 dev-python/hatch-jupyter-builder
 dev-python/inflect
