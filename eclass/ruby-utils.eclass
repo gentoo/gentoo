@@ -35,14 +35,14 @@ if [[ ! ${_RUBY_UTILS} ]]; then
 RUBY_TARGETS_PREFERENCE="ruby31 "
 
 # All other active ruby targets
-RUBY_TARGETS_PREFERENCE+="ruby32"
+RUBY_TARGETS_PREFERENCE+="ruby32 ruby33"
 
 _ruby_implementation_depend() {
 	local rubypn=
 	local rubyslot=
 
 	case $1 in
-		ruby1[89]|ruby2[0-7]|ruby3[0-2])
+		ruby1[89]|ruby2[0-7]|ruby3[0-3])
 			rubypn="dev-lang/ruby"
 			rubyslot=":${1:4:1}.${1:5}"
 			;;
