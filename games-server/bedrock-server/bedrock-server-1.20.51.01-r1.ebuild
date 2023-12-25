@@ -47,7 +47,7 @@ src_install() {
 	dodir /opt/bin
 	dosym ../bedrock-server/bedrock_server /opt/bin/bedrock-server
 
-	newinitd "${FILESDIR}"/bedrock-server.initd-r4 bedrock-server
+	newinitd "${FILESDIR}"/bedrock-server.initd-r5 bedrock-server
 	newconfd "${FILESDIR}"/bedrock-server.confd bedrock-server
 	systemd_newunit "${FILESDIR}"/bedrock-server.service bedrock-server@.service
 
