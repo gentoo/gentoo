@@ -1,0 +1,21 @@
+From 0d5beb7fe9d8a7f0fa6f56044077f83605a778fa Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Sat, 2 Dec 2023 10:06:59 +0100
+Subject: [PATCH] Link against httplib if using system libraries (#1968)
+
+---
+ drivers/telescope/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/telescope/CMakeLists.txt b/drivers/telescope/CMakeLists.txt
+index 331a30d84e..9c2f9f234c 100644
+--- a/drivers/telescope/CMakeLists.txt
++++ b/drivers/telescope/CMakeLists.txt
+@@ -262,6 +262,6 @@ install(TARGETS indi_skywatcherAltAzMount RUNTIME DESTINATION bin)
+ add_executable(indi_planewave_telescope
+     planewave_mount.cpp)
+ 
+-target_link_libraries(indi_planewave_telescope indidriver)
++target_link_libraries(indi_planewave_telescope indidriver ${HTTPLIB_LIBRARY})
+ 
+ install(TARGETS indi_planewave_telescope RUNTIME DESTINATION bin)
