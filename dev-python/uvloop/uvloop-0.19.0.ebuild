@@ -26,6 +26,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# <cython-3: https://github.com/MagicStack/uvloop/issues/586
 BDEPEND="
 	<dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.29.32[${PYTHON_USEDEP}]
