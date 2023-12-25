@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
+# Masked until KF6 is unmasked.
+~media-libs/mpvqt-1.0.0
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-25)
 # libtinynotify-systemwide is not ported to procps-4.  It is only
 # used to implement sw-notify-send which is used as an optional RDEP
