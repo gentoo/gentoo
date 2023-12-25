@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-03)
+# Unmaintained upstream, no more revdeps.
+# Removal on 2024-02-03.  Bug #877311
+x11-libs/snorenotify
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-02-02)
 # No more used by any package (bug #921167)
 # remove in 30 days
