@@ -43,7 +43,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 	sys-devel/gcc:*"
 BDEPEND="${PYTHON_DEPS}
-	dev-util/ninja
+	app-alternatives/ninja
 	sys-apps/coreutils
 	virtual/pkgconfig
 	test? ( net-misc/curl )
