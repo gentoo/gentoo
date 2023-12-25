@@ -33,6 +33,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://trac.kodi.tv/</bugs-to>
+		<doc>https://kodi.wiki/</doc>
 		<remote-id type="github">xbmc/xbmc</remote-id>
 	</upstream>
 </pkgmetadata>
