@@ -35,14 +35,14 @@ COMM_URI="https://downloads.exim.org/exim4${SDIR}"
 GPV="r0"
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
 SRC_URI="${COMM_URI}/${P//_rc/-RC}.tar.xz
-	https://dev.gentoo.org/~grobian/distfiles/${P}-gentoo-patches-${GPV}.tar.xz
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-4.96-gentoo-patches-${GPV}.tar.xz
 	mirror://gentoo/system_filter.exim.gz
 	doc? ( ${COMM_URI}/${PN}-pdf-${PV//_rc/-RC}.tar.xz )"
 HOMEPAGE="https://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc ~x86"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	dev-libs/libpcre2:=
@@ -116,9 +116,10 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.95-localscan_dlopen.patch
+	eapply -p2 "${FILESDIR}"/exim-4.97-CVE-2023-51766.patch # 3063
 
 	# Upstream post-release fixes :(
-	local GPVDIR=${WORKDIR}/${P}-gentoo-patches-${GPV}
+	local GPVDIR=${WORKDIR}/${PN}-4.96-gentoo-patches-${GPV}
 	eapply     "${GPVDIR}"/exim-4.96-rewrite-malformed-addr-fix.patch # upstr
 	eapply     "${GPVDIR}"/exim-4.96-spf-memory-error-fix.patch # upstr
 	eapply     "${GPVDIR}"/exim-4.96-regex-use-after-free.patch # upstr
@@ -133,8 +134,6 @@ src_prepare() {
 	eapply     "${GPVDIR}"/exim-4.96-dane-dns_again.patch # upstr
 	eapply     "${GPVDIR}"/exim-4.96-expansion-crash.patch # upstr
 	eapply     "${GPVDIR}"/exim-4.96-transport-crash.patch # upstr
-
-	eapply -p2 "${FILESDIR}"/exim-4.97-CVE-2023-51766.patch # 3063
 
 	# oddity, they disable berkdb as hack, and then throw an error when
 	# berkdb isn't enabled
