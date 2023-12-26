@@ -33,10 +33,12 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs verify-sig
+inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
 
 MY_P=${P}
 if [[ ${PV} != 9999 ]]; then
+	inherit verify-sig
+
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
@@ -52,6 +54,7 @@ if [[ ${PV} != 9999 ]]; then
 		"
 		S=${WORKDIR}/${P%_*}
 	fi
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
@@ -88,7 +91,7 @@ REQUIRED_USE="
 	grub_platforms_loongson? ( fonts )
 "
 
-BDEPEND="
+BDEPEND+="
 	${PYTHON_DEPS}
 	>=sys-devel/flex-2.5.35
 	sys-devel/bison
@@ -114,7 +117,6 @@ BDEPEND="
 		virtual/pkgconfig
 	)
 	truetype? ( virtual/pkgconfig )
-	verify-sig? ( sec-keys/openpgp-keys-danielkiper )
 "
 DEPEND="
 	app-arch/xz-utils
@@ -185,7 +187,7 @@ src_prepare() {
 	fi
 
 	# Avoid error due to extra_deps.lst missing from source tarball:
-	#	make[3]: *** No rule to make target 'grub-core/extra_deps.lst', needed by 'syminfo.lst'.  Stop.
+	#       make[3]: *** No rule to make target 'grub-core/extra_deps.lst', needed by 'syminfo.lst'.  Stop.
 	echo "depends bli part_gpt" > grub-core/extra_deps.lst || die
 }
 
