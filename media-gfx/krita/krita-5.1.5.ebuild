@@ -90,6 +90,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3.1-tests-optional.patch"
 	"${WORKDIR}/${P}-exiv2-0.28.patch" # bug 906472
 	"${FILESDIR}/${P}-ocio-2.3.0.patch" # bug 915107
+	"${FILESDIR}/${P}-sip-6.8.patch" # bug 919139
 )
 
 pkg_setup() {
