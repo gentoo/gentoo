@@ -12,6 +12,7 @@
 	<use>
 		<flag name="amqp">Enable support for AMQP destinations</flag>
 		<flag name="geoip2">Add support for geo lookup based on IPs via <pkg>dev-libs/libmaxminddb</pkg></flag>
+		<flag name="grpc">Enable GRPC based driver support (OpenTelemetry) via <pkg>net-libs/grpc</pkg></flag>
 		<flag name="http">Enable support for HTTP destinations</flag>
 		<flag name="json">Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
 		<flag name="kafka">Enable support for Kafka destinations</flag>
