@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-PATCHES=( "${FILESDIR}"/${P}-test.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.6.0-test.patch )
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
