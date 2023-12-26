@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="dcron debug nls lm-sensors lto selinux systemd"
+IUSE="dcron debug nls lm-sensors selinux systemd"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -48,12 +48,12 @@ src_prepare() {
 src_configure() {
 	tc-export AR
 
+	# --enable-lto only appends -flto
 	sa_lib_dir=/usr/lib/sa \
 		conf_dir=/etc \
 		econf \
 			$(use_enable !systemd use-crond) \
 			$(use_enable lm-sensors sensors) \
-			$(use_enable lto) \
 			$(use_enable nls) \
 			$(usex debug --enable-debuginfo '') \
 			--disable-compress-manpg \
