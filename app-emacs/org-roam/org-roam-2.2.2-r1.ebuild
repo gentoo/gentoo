@@ -31,6 +31,8 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}"
 
+SITEFILE="50${PN}-gentoo.el"
+
 src_install() {
 	elisp-make-autoload-file
 	elisp_src_install
