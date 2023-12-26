@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc64"
 # TODO: hsa tce
-IUSE="accel +conformance cuda debug examples float-conversion hardening +hwloc memmanager lto test"
+IUSE="accel +conformance cuda debug examples float-conversion hardening +hwloc memmanager test"
 # Tests not yet passing, fragile in Portage environment(?)
 RESTRICT="!test? ( test ) test"
 
@@ -69,7 +69,8 @@ src_configure() {
 		-DPOCL_ICD_ABSOLUTE_PATH=ON
 		-DPOCL_INSTALL_PUBLIC_LIBDIR="${EPREFIX}/usr/$(get_libdir)/OpenCL/vendors/pocl"
 
-		-DENABLE_IPO=$(usex lto)
+		# only appends -flto
+		-DENABLE_IPO=OFF
 
 		-DENABLE_POCL_BUILDING=ON
 		-DKERNELLIB_HOST_CPU_VARIANTS="${host_cpu_variants}"
