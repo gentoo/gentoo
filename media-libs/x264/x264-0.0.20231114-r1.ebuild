@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Please bump with media-video/x264-encoder
+
 inherit multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="Free library for encoding X264/AVC streams"
