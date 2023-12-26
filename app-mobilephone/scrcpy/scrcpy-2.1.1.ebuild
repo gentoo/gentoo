@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,6 @@ SRC_URI="https://github.com/Genymobile/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="lto"
 
 DEPEND="media-libs/libsdl2[X]
 	media-video/ffmpeg
@@ -26,7 +25,6 @@ BDEPEND=""
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use lto b_lto)
 		-Dprebuilt_server="${DISTDIR}/${PN}-server-v${PV}"
 	)
 	meson_src_configure
