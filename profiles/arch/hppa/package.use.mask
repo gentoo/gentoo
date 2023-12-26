@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-06)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc
+
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here
 dev-lang/php capstone
