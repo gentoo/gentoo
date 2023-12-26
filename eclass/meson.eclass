@@ -1,4 +1,4 @@
-# Copyright 2017-2023 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -334,6 +334,10 @@ meson_src_configure() {
 		# It's Gentoo policy to not have builds die on blanket -Werror, as it's
 		# an upstream development matter. bug #754279.
 		-Dwerror=false
+
+		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
+		# enabled via setting *FLAGS appropriately.
+		-Db_lto=false
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
