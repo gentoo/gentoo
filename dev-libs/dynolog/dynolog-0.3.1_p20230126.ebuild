@@ -62,6 +62,9 @@ DEPEND="dev-cpp/gflags
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+# Partially rust build
+QA_FLAGS_IGNORED=/usr/bin/dyno
+
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc13.patch
 	"${FILESDIR}"/${P}-unbundling.patch
