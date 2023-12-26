@@ -5,10 +5,6 @@
 		<name>Alarig Le Lay</name>
 		<email>alarig@swordarmor.fr</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>jsmolic@gentoo.org</email>
-		<name>Jakov Smolić</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>
