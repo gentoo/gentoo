@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="apidoc +caps +clsync cluster control-socket cgroups doc debug
 examples extra-debug extra-hardened gio +hardened +highload-locks
-+inotify +lto mhash namespaces seccomp socket-library static-libs"
++inotify mhash namespaces seccomp socket-library static-libs"
 
 REQUIRED_USE="
 	|| ( clsync socket-library )
@@ -65,7 +65,9 @@ src_configure() {
 	use debug && debug_level=1
 	use extra-debug && debug_level=2
 
+	# --enable-lto just appends -flto
 	econf \
+		--disable-lto \
 		--enable-debug=${debug_level} \
 		--enable-paranoid=${harden_level} \
 		--without-bsm \
@@ -75,7 +77,6 @@ src_configure() {
 		$(use_enable cluster) \
 		$(use_enable control-socket socket) \
 		$(use_enable highload-locks) \
-		$(use_enable lto) \
 		$(use_enable namespaces unshare) \
 		$(use_enable seccomp) \
 		$(use_enable socket-library) \
