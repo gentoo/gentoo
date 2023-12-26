@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES.md README.md"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -41,6 +41,9 @@ all_ruby_prepare() {
 		-e 's|sdoc|rdoc|' \
 		-e 's|`git ls-files`|""|' \
 		Rakefile || die "rakefile fix failed"
+
+	sed -e 's/__dir__/"."/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid setting gem since it will not be available yet when installing
 	sed -i -e '/gem/ s:^:#:' tests/test_helper.rb || die
