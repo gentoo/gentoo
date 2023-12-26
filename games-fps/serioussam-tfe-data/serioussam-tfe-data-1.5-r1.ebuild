@@ -5,14 +5,14 @@ EAPI=8
 
 inherit cdrom unpacker
 
-PATCH_PREFIX="Patch_1.05_FE"
 # Game name
 GN="serioussam"
+PATCH_PREFIX="${GN}fe-patch_1.05_FE"
 
 DESCRIPTION="Croteam's Serious Sam Classic The First Encounter ... the data files"
 HOMEPAGE="https://www.croteam.com/
 	https://store.steampowered.com/app/41050/Serious_Sam_Classic_The_First_Encounter/"
-SRC_URI="https://github.com/tx00100xt/serioussam-mods/raw/main/Patches/${PATCH_PREFIX}.tar.xz -> ${GN}-${PATCH_PREFIX}.tar.xz"
+SRC_URI="https://github.com/tx00100xt/serioussam-mods/raw/main/Patches/${PATCH_PREFIX}.tar.xz"
 S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
@@ -26,7 +26,7 @@ pkg_setup() {
 
 src_unpack() {
 	mkdir Levels Mods || die "failed create dirs"
-	cat "${DISTDIR}/${GN}-${PATCH_PREFIX}.tar.xz" > "${PATCH_PREFIX}.tar.xz" \
+	cat "${DISTDIR}/${PATCH_PREFIX}.tar.xz" > "${PATCH_PREFIX}.tar.xz" \
 		|| die "failed to copy patch 1.05"
 	unpack "${WORKDIR}/${PATCH_PREFIX}.tar.xz"
 }
