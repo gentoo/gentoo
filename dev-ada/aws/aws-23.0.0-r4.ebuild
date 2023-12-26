@@ -27,7 +27,8 @@ RDEPEND="dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared?,static-libs]
 		dev-ada/gnatcoll-bindings:=[${ADA_USEDEP},gmp,iconv,static-libs]
 		dev-libs/gmp
 	)
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl )
+	!dev-ada/templates-parser"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
