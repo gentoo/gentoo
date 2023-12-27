@@ -26,6 +26,7 @@ ruby_add_rdepend "
 # upstream, so we must use the bundled version :-(
 CDEPEND="
 	>=dev-libs/libuv-1.8.0
+	dev-libs/openssl:=
 	net-misc/curl[ssl]
 	apache2? ( www-servers/apache[apache2_modules_unixd(+)] )"
 
