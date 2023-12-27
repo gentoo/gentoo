@@ -99,12 +99,17 @@ _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
 if [[ -n ${WANT_AUTOMAKE} ]] ; then
 	case ${WANT_AUTOMAKE} in
-		# Even if the package doesn't use automake, we still need to depend
-		# on it because we run aclocal to process m4 macros.  This matches
-		# the autoreconf tool, so this requirement is correct, bug #401605.
-		none) ;;
-		latest) _automake_atom="|| ( `printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }` )" ;;
-		*) _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*";;
+		none)
+			# Even if the package doesn't use automake, we still need to depend
+			# on it because we run aclocal to process m4 macros.  This matches
+			# the autoreconf tool, so this requirement is correct, bug #401605.
+			;;
+		latest)
+			_automake_atom="|| ( $(printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }) )"
+			;;
+		*)
+			_automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*"
+			;;
 	esac
 	export WANT_AUTOMAKE
 fi
