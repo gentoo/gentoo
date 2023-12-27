@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-12-27)
+# Broken with all versions of dev-python/snakeoil.  Archived upstream.
+# No revdeps.
+# Removal on 2024-01-26.  Bug #920763.
+dev-python/pychroot
+
 # Hans de Graaff <graaff@gentoo.org> (2023-12-27)
 # Obsolete slot that no longer has any reverse dependencies. Use the
 # newer slot instead. Masked for removal on 2024-01-27.
