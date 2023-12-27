@@ -72,7 +72,7 @@ inherit gnuconfig libtool
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOCONF>
-_LATEST_AUTOCONF=( 2.72-r1:2.72 2.71-r7:2.71 2.71-r6:2.71 2.69-r9:2.69 2.13-r8:2.1 )
+_LATEST_AUTOCONF=( 2.72-r1:2.72 2.71-r6:2.71 )
 
 # @ECLASS_VARIABLE: _LATEST_AUTOMAKE
 # @INTERNAL
