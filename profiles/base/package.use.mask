@@ -103,6 +103,10 @@ media-video/mpv lua_single_target_lua5-1
 # See e.g. bugs 617518, 638522, 711302, 802435, 904987
 dev-lang/ruby jemalloc
 
+# Joonas Niilola <juippis@gentoo.org> (2023-07-14)
+# Calendar is broken with some languages on 115.0 release. Bug #910229
+>=mail-client/thunderbird-115.0 system-icu
+
 # Marek Szuba <marecki@gentoo.org> (2023-07-10)
 # dev-python/mkdocs-material is by design directly integrated with
 # Google Fonts and as such violates the network sandbox [1].
