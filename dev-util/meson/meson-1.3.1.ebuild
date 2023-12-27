@@ -71,9 +71,6 @@ python_prepare_all() {
 		# ASAN is unsupported on some targets
 		# https://bugs.gentoo.org/692822
 		-e 's/test_pch_with_address_sanitizer/_&/'
-
-		# https://github.com/mesonbuild/meson/issues/7203
-		-e 's/test_templates/_&/'
 	)
 
 	sed -i "${disable_unittests[@]}" unittests/*.py || die
