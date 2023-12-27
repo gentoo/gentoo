@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -20,7 +20,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 )
 
-RDEPEND="sci-libs/branca[${PYTHON_USEDEP}]
+RDEPEND="sci-geosciences/xyzservices[${PYTHON_USEDEP}]
+	sci-libs/branca[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
