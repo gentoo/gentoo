@@ -5,7 +5,7 @@ EAPI=8
 
 # This gem bundles dejavu fonts, freefonts
 
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG"
 RUBY_FAKEGEM_GEMSPEC="rbpdf-font.gemspec"
