@@ -182,10 +182,8 @@ src_install() {
 pkg_postinst() {
 	elog
 	elog "Please see"
-	elog "  https://linuxcontainers.org/incus/introduction/"
-	elog "  https://linuxcontainers.org/incus/docs/main/tutorial/first_steps/"
-	elog "  https://linuxcontainers.org/incus/docs/main/howto/server_migrate_lxd/"
-	elog "before a Gentoo Wiki page is made."
+	elog "  https://wiki.gentoo.org/wiki/Incus"
+	elog "  https://wiki.gentoo.org/wiki/Incus#Migrating_from_LXD"
 	elog
 	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
