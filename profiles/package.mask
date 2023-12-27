@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2023-12-27)
+# Requires >=media-libs/lsp-plugins-1.2.10, which as of December 2023
+# remain unavailable in the tree. Builds against 1.2.6 but some plug-ins
+# no longer work. Bug #915777.
+>=media-sound/easyeffects-7.0.8
+
 # Ulrich Müller <ulm@gentoo.org> (2023-12-26)
 # Program errors out with a segmentation fault.
 # Use games-fps/serioussam along with games-fps/serioussam-tfe-data

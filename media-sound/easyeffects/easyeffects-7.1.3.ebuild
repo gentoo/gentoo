@@ -20,9 +20,9 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="calf +doc mda-lv2 zamaudio"
 
-# Reminder: since 7.0.8 upstream recommends >=>=media-libs/lsp-plugins-1.2.10
+# FIXME: >=>=media-libs/lsp-plugins-1.2.10 required since 7.0.8
 # but as of late December 2023, the tree remains stuck at 1.2.6.
-# Update the dependency when possible (Bug #915777).
+# Update the dependency + remove the mask when possible (Bug #915777).
 COMMON="dev-cpp/nlohmann_json
 	dev-cpp/tbb
 	>=dev-libs/glib-2.56:2
