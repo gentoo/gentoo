@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_BRANCH="develop"
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -30,19 +30,16 @@ IUSE="
 
 RDEPEND="
 	sys-apps/pciutils
-	>=dev-python/cryptography-41.0.3[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.5[${PYTHON_USEDEP}]
-	>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja-3.0.3[${PYTHON_USEDEP}]
 	dev-python/jmespath[${PYTHON_USEDEP}]
 	dev-python/libnacl[${PYTHON_USEDEP}]
-	dev-python/looseversion[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pycryptodome-3.9.8[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-6.0.1[${PYTHON_USEDEP}]
-	>=dev-python/markupsafe-2.1.2[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.31.0[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
+	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
@@ -58,7 +55,7 @@ RDEPEND="
 		dev-python/libvirt-python[${PYTHON_USEDEP}]
 	)
 	openssl? (
-		>=dev-python/pyopenssl-23.2.0[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
 	)
 	raet? (
 		>=dev-python/libnacl-1.0.0[${PYTHON_USEDEP}]
@@ -85,35 +82,32 @@ RDEPEND="
 	zeromq? ( >=dev-python/pyzmq-19.0.0[${PYTHON_USEDEP}] )
 "
 BDEPEND="
-	dev-python/build[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/apache-libcloud[${PYTHON_USEDEP}]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
-		>=dev-python/certifi-2023.07.22[${PYTHON_USEDEP}]
+		dev-python/certifi[${PYTHON_USEDEP}]
 		dev-python/cherrypy[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.0[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/moto-2.0.0[${PYTHON_USEDEP}]
-		dev-python/passlib[${PYTHON_USEDEP}]
-		dev-python/bcrypt[${PYTHON_USEDEP}]
+		dev-python/passlib
 		dev-python/pip[${PYTHON_USEDEP}]
-		>=dev-python/pyopenssl-23.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-7.2.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-salt-factories-1.0.0_rc25[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		>=dev-python/pytest-7.0.1[${PYTHON_USEDEP}]
+		>=dev-python/pytest-salt-factories-1.0.0_rc17[${PYTHON_USEDEP}]
 		dev-python/pytest-tempdir[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 		dev-python/pytest-shell-utilities[${PYTHON_USEDEP}]
 		dev-python/pytest-skip-markers[${PYTHON_USEDEP}]
 		dev-python/pytest-system-statistics[${PYTHON_USEDEP}]
-		dev-python/pytest-custom-exit-code[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		net-dns/bind-tools
 		>=dev-python/virtualenv-20.3.0[${PYTHON_USEDEP}]
 		dev-util/yamllint[${PYTHON_USEDEP}]
-		!x86? ( >=dev-python/boto3-1.21.46[${PYTHON_USEDEP}] )
+		!x86? ( >=dev-python/boto3-1.17.67[${PYTHON_USEDEP}] )
 	)
 "
 
@@ -124,11 +118,16 @@ REQUIRED_USE="|| ( raet zeromq )
 RESTRICT="!test? ( test ) x86? ( test )"
 
 PATCHES=(
+	"${FILESDIR}/salt-3003-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3003-gentoolkit-revdep.patch"
+	"${FILESDIR}/salt-3002-tests.patch"
+	"${FILESDIR}/salt-3003.1-tests.patch"
+	"${FILESDIR}/salt-3005-relax-pyzmq-dep.patch"
+	"${FILESDIR}/salt-3005-tests.patch"
 	"${FILESDIR}/salt-3005.1-no-entry-points.patch"
-	"${FILESDIR}/salt-3006-skip-tests-that-oom-machine.patch"
-	"${FILESDIR}/salt-3006-tests.patch"
-	"${FILESDIR}/salt-3006.2-tests.patch"
+	"${FILESDIR}/salt-3005.1-importlib-metadata-5-r1.patch"
+	"${FILESDIR}/salt-3005.1-tests.patch"
+	"${FILESDIR}/salt-3005.1-modules-file-python-3.11-host.patch"
 )
 
 python_prepare_all() {
@@ -137,12 +136,10 @@ python_prepare_all() {
 	rm tests/unit/{test_{zypp_plugins,module_names},utils/test_extend}.py || die
 	rm tests/unit/modules/test_boto_{vpc,secgroup,elb}.py || die
 	rm tests/unit/states/test_boto_vpc.py || die
-
-	#rm tests/support/gitfs.py || die
+	rm tests/support/gitfs.py tests/unit/runners/test_git_pillar.py || die
 	rm tests/pytests/functional/transport/server/test_req_channel.py || die
 	rm tests/pytests/functional/utils/test_async_event_publisher.py || die
 	rm tests/pytests/functional/runners/test_winrepo.py || die
-	rm tests/unit/netapi/rest_tornado/test_saltnado.py || die
 
 	# tests that require network access
 	rm tests/unit/{states,modules}/test_zcbuildout.py || die
@@ -184,35 +181,24 @@ python_install_all() {
 }
 
 python_test() {
-	local -a EPYTEST_DESELECT=(
-		# doesn't like the distutils warning
-		tests/pytests/integration/cli/test_batch.py::test_batch_retcode
-		tests/pytests/integration/cli/test_batch.py::test_multiple_modules_in_batch
-		# hangs indefinitely
-		tests/pytests/unit/test_minion.py::test_master_type_disable
-		# needs root
-		tests/pytests/unit/modules/test_cmdmod.py::test_runas_env_sudo_group
-		# don't like sandbox
-		tests/pytests/functional/cli/test_salt.py::test_versions_report
-		tests/unit/utils/test_vt.py::test_split_multibyte_characters_unicode
-		tests/unit/utils/test_vt.py::test_split_multibyte_characters_shiftjis
-		tests/pytests/unit/utils/test_vt.py::test_log_sanitize
-		tests/pytests/unit/client/ssh/test_single.py::test_run_with_pre_flight_args
-		tests/pytests/unit/modules/test_aptpkg.py::test_call_apt_dpkg_lock
-		tests/pytests/unit/test_template.py::test_compile_template_str_mkstemp_cleanup
-		tests/pytests/unit/_logging/handlers/test_deferred_stream_handler.py::test_deferred_write_on_flush
-		tests/pytests/unit/_logging/handlers/test_deferred_stream_handler.py::test_sync_with_handlers
-		tests/pytests/unit/modules/test_portage_config.py::test_enforce_nice_config
-		tests/unit/utils/test_schema.py::ConfigTestCase::test_anyof_config_validation
-		tests/unit/utils/test_schema.py::ConfigTestCase::test_dict_config_validation
-		tests/unit/utils/test_schema.py::ConfigTestCase::test_hostname_config_validation
-		tests/unit/utils/test_schema.py::ConfigTestCase::test_not_config_validation
-		tests/unit/utils/test_schema.py::ConfigTestCase::test_oneof_config_validation
-		tests/unit/utils/test_schema.py::ConfigTestCase::test_optional_requirements_config_validation
-	)
-
 	# testsuite likes lots of files
 	ulimit -n 4096 || die
+
+	local -a disable_tests=(
+		# doesn't like the distutils warning
+		batch_retcode
+		multiple_modules_in_batch
+		# hangs indefinitely
+		master_type_disable
+		# needs root
+		runas_env_sudo_group
+		# don't like sandbox
+		split_multibyte_characters_{shiftjis,unicode}
+		# doesn't like sandbox env
+		log_sanitize
+	)
+	local textexpr
+	testexpr=$(printf 'not %s and ' "${disable_tests[@]}")
 
 	# ${T} is too long a path for the tests to work
 	local TMPDIR
@@ -226,6 +212,7 @@ python_test() {
 		addwrite "${TMPDIR}"
 
 		USE_SETUPTOOLS=1 NO_INTERNET=1 SHELL="/bin/bash" \
-			epytest
+			"${EPYTHON}" -m pytest -vv -k "${testexpr%and }" \
+			|| die "testing failed with ${EPYTHON}"
 	)
 }
