@@ -15,7 +15,7 @@ SRC_URI="https://github.com/geopandas/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
