@@ -105,7 +105,9 @@ if [[ -n ${WANT_AUTOMAKE} ]] ; then
 			# the autoreconf tool, so this requirement is correct, bug #401605.
 			;;
 		latest)
-			_automake_atom="|| ( $(printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }) )"
+			printf -v _automake_atom_tmp '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }
+			_automake_atom="|| ( ${_automake_atom_tmp} )"
+			unset _automake_atom_tmp
 			;;
 		*)
 			_automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*"
@@ -128,7 +130,9 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 			_autoconf_atom=">=sys-devel/autoconf-2.71-r6"
 			;;
 		latest)
-			_autoconf_atom="|| ( $(printf '>=sys-devel/autoconf-%s:%s ' ${_LATEST_AUTOCONF[@]/:/ }) )"
+			printf -v _autoconf_atom_tmp '>=sys-devel/autoconf-%s:%s ' ${_LATEST_AUTOCONF[@]/:/ }
+			_autoconf_atom="|| ( ${_autoconf_atom_tmp} )"
+			unset _autoconf_atom_tmp
 			;;
 		*)
 			die "Invalid WANT_AUTOCONF value '${WANT_AUTOCONF}'"
