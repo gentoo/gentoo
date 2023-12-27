@@ -118,6 +118,8 @@ fi
 
 if [[ -n ${WANT_AUTOCONF} ]] ; then
 	# TODO: Fix the slot mess here and just have proper PV-as-SLOT?
+	# TODO: Make _LATEST_AUTOCONF an assoc. array and instead iterate over
+	# its keys.
 	case ${WANT_AUTOCONF} in
 		none)
 			# some packages don't require autoconf at all
@@ -127,7 +129,13 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 			_autoconf_atom=">=sys-devel/autoconf-2.13-r7:2.1"
 			;;
 		2.5)
-			_autoconf_atom=">=sys-devel/autoconf-2.71-r6"
+			_autoconf_atom=">=sys-devel/autoconf-2.71-r6:2.71"
+			;;
+		2.69)
+			_autoconf_atom=">=sys-devel/autoconf-2.69-r9:2.69"
+			;;
+		2.71)
+			_autoconf_atom=">=sys-devel/autoconf-2.71-r6:2.71"
 			;;
 		latest)
 			printf -v _autoconf_atom_tmp '>=sys-devel/autoconf-%s:%s ' ${_LATEST_AUTOCONF[@]/:/ }
