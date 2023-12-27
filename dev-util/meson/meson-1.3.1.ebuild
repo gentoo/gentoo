@@ -74,9 +74,6 @@ python_prepare_all() {
 
 		# https://github.com/mesonbuild/meson/issues/7203
 		-e 's/test_templates/_&/'
-
-		# Broken due to python2 wrapper
-		-e 's/test_python_module/_&/'
 	)
 
 	sed -i "${disable_unittests[@]}" unittests/*.py || die
@@ -98,6 +95,11 @@ src_test() {
 
 python_test() {
 	(
+		# remove unwanted python_wrapper_setup contents
+		# We actually do want to non-error if python2 is installed and tested.
+		remove="${T}/${EPYTHON}/bin:"
+		PATH=${PATH/${remove}/}
+
 		# test_meson_installed
 		unset PYTHONDONTWRITEBYTECODE
 
