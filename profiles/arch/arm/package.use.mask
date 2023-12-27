@@ -375,6 +375,10 @@ sci-libs/netcdf hdf
 # Unkeyworded deps, bug #519618
 sys-block/fio glusterfs rbd
 
+# Rick Farina <zerochaos@gentoo.org> (2014-07-27)
+# net-misc/dahdi doesn't build
+net-voip/yate dahdi
+
 # Markus Meier <maekke@gentoo.org> (2014-06-24)
 # Unkeyworded deps, bug #513108
 >=net-misc/spice-gtk-0.25 smartcard
