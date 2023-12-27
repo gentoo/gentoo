@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README"
 inherit ruby-fakegem
 
 DESCRIPTION="Universal capture of STDOUT and STDERR and handling of child process PID"
-HOMEPAGE="http://codeforpeople.com/lib/ruby/systemu/"
+HOMEPAGE="https://github.com/ahoward/systemu"
 
 LICENSE="Ruby-BSD"
 SLOT="0"
