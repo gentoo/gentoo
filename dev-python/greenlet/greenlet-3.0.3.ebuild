@@ -29,7 +29,8 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/furo
 distutils_enable_tests unittest
 
 src_prepare() {
