@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Petr Vaněk <arkamar@gentoo.org> (2023-12-27)
+# Unmaintained package with multiple open bugs. Upstream seems to be inactive.
+# Version bumps are available for 7 years but nobody seems to care.
+# Removal: 2024-01-26.  Bugs #303339, #712770, #732282, #782907, #870883, #898858.
+www-apache/anyterm
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-27)
 # Broken with all versions of dev-python/snakeoil.  Archived upstream.
 # No revdeps.
