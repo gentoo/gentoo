@@ -23,6 +23,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390
 # all these are header-only libraries
 DEPEND="
 	>=dev-cpp/taskflow-3.0.0
+	<dev-cpp/rapidfuzz-cpp-3
 	>=dev-cpp/rapidfuzz-cpp-2.2.3
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
