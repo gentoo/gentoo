@@ -3,8 +3,10 @@
 
 EAPI=8
 
-# Remember to modify LAST_KNOWN_VER 'upstream' in sys-devel/autoconf-wrapper
+# Bumping notes:
+# * Remember to modify LAST_KNOWN_VER 'upstream' in sys-devel/autoconf-wrapper
 # on new autoconf releases, as well as the dependency in RDEPEND below too.
+# * Update _WANT_AUTOCONF and _autoconf_atom case statement in autotools.eclass.
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
