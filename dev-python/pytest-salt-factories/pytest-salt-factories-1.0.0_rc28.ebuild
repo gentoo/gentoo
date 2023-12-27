@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -77,7 +77,7 @@ python_test() {
 	do
 		PYTEST_PLUGINS+=,saltfactories.plugins.${x}
 	done
- 
+
 	nonfatal epytest --no-sys-stats
 	ret=${?}
 
