@@ -486,6 +486,7 @@ media-video/subtitleripper
 # some ideas how to help, please see bug #914477.
 # Removal on 2024-03-01.
 net-misc/dahdi
+net-misc/dahdi-tools
 net-misc/openr2
 
 # Sam James <sam@gentoo.org> (2023-09-09)
