@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc"
 inherit ruby-fakegem
 
 DESCRIPTION="Provides transaction support at the object level"
-HOMEPAGE="https://github.com/halostatue/transaction-simple"
+HOMEPAGE="https://github.com/halostatue-archive/transaction-simple"
 
 LICENSE="MIT"
 SLOT="0"
