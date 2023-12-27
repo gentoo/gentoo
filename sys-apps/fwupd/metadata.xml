@@ -10,7 +10,6 @@
 		<flag name="amdgpu">Build and install AMD dGPU (Navi3x and above) plugin</flag>
 		<flag name="amt">Build and install Intel AMT plugin</flag>
 		<flag name="cbor">Enable CBOR support for coSWID and uSWID via <pkg>dev-libs/libcbor</pkg></flag>
-		<flag name="dell">Enable Dell-specific support</flag>
 		<flag name="fastboot">Build and install fastboot plugin</flag>
 		<flag name="flashrom">Enable flashrom plugin via <pkg>sys-apps/flashrom</pkg></flag>
 		<flag name="gusb">Enable <pkg>dev-libs/libgusb</pkg> support</flag>
