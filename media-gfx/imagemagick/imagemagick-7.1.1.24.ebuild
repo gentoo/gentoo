@@ -89,6 +89,7 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/${PN}-7.1.1.24-c99.patch"
 	"${FILESDIR}/${PN}-9999-nocputuning.patch"
 )
 
