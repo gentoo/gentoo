@@ -23,7 +23,7 @@ RDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/flask-sphinx-themes
+	dev-python/pallets-sphinx-themes
 distutils_enable_tests pytest
 
 PATCHES=(
