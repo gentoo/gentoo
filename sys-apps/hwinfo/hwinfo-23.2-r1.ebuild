@@ -13,8 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~riscv x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="amd64? ( dev-libs/libx86emu )
-	x86? ( dev-libs/libx86emu )"
+RDEPEND="amd64? ( dev-libs/libx86emu:= )
+	x86? ( dev-libs/libx86emu:= )"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.17"
 BDEPEND="sys-devel/flex"
