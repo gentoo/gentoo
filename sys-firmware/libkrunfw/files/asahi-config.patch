@@ -1,0 +1,65 @@
+diff --git a/config-libkrunfw_aarch64 b/config-libkrunfw_aarch64
+index 5b463e3..4c4c1f5 100644
+--- a/config-libkrunfw_aarch64
++++ b/config-libkrunfw_aarch64
+@@ -1863,7 +1863,18 @@ CONFIG_MFD_VEXPRESS_SYSREG=y
+ #
+ # Graphics support
+ #
+-# CONFIG_DRM is not set
++CONFIG_VIDEO_CMDLINE=y
++CONFIG_VIDEO_NOMODESET=y
++CONFIG_DRM=y
++CONFIG_DRM_KMS_HELPER=y
++CONFIG_DRM_GEM_SHMEM_HELPER=y
++CONFIG_DRM_VGEM=y
++CONFIG_DRM_VKMS=y
++CONFIG_DRM_VIRTIO_GPU=y
++CONFIG_DRM_VIRTIO_GPU_KMS=y
++CONFIG_DRM_PANEL=y
++CONFIG_DRM_BRIDGE=y
++CONFIG_DRM_PANEL_BRIDGE=y
+ 
+ #
+ # ARM devices
+@@ -1901,7 +1912,39 @@ CONFIG_DUMMY_CONSOLE_ROWS=25
+ # end of Console display driver support
+ # end of Graphics support
+ 
+-# CONFIG_SOUND is not set
++CONFIG_SOUND=y
++CONFIG_SND=y
++CONFIG_SND_TIMER=y
++CONFIG_SND_PCM=y
++CONFIG_SND_JACK=y
++CONFIG_SND_JACK_INPUT_DEV=y
++# CONFIG_SND_OSSEMUL is not set
++CONFIG_SND_PCM_TIMER=y
++# CONFIG_SND_HRTIMER is not set
++# CONFIG_SND_DYNAMIC_MINORS is not set
++# CONFIG_SND_SUPPORT_OLD_API is not set
++CONFIG_SND_PROC_FS=y
++CONFIG_SND_VERBOSE_PROCFS=y
++# CONFIG_SND_VERBOSE_PRINTK is not set
++CONFIG_SND_CTL_FAST_LOOKUP=y
++# CONFIG_SND_DEBUG is not set
++# CONFIG_SND_CTL_INPUT_VALIDATION is not set
++# CONFIG_SND_SEQUENCER is not set
++CONFIG_SND_DRIVERS=y
++CONFIG_SND_DUMMY=y
++CONFIG_SND_ALOOP=y
++# CONFIG_SND_MTPAV is not set
++# CONFIG_SND_SERIAL_U16550 is not set
++# CONFIG_SND_MPU401 is not set
++
++#
++# HD-Audio
++#
++# end of HD-Audio
++
++CONFIG_SND_HDA_PREALLOC_SIZE=2048
++# CONFIG_SND_SOC is not set
++CONFIG_SND_VIRTIO=y
+ 
+ #
+ # HID support

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>asahi@gentoo.org</email>
+  <name>Asahi</name>
+</maintainer>
+<use>
+  <flag name="asahi">Use the experimental Asahi kernel config - required for DRM Native Context and sound output</flag>
+</use>
+<upstream>
+  <remote-id type="github">containers/libkrunfw</remote-id>
+</upstream>
+</pkgmetadata>

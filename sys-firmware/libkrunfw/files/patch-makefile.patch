@@ -1,0 +1,43 @@
+diff --git a/Makefile b/Makefile
+index 5ab5d2b..c5ef712 100644
+--- a/Makefile
++++ b/Makefile
+@@ -51,22 +51,17 @@ ifeq ($(SEV),1)
+     INITRD_C_BUNDLE = initrd.c
+ endif
+ 
+-.PHONY: all install clean
++.PHONY: all $(KERNEL_SOURCES) install clean
+ 
+ all: $(KRUNFW_BINARY_$(OS))
+ 
+-$(KERNEL_TARBALL):
+-	@mkdir -p tarballs
+-	curl $(KERNEL_REMOTE) -o $(KERNEL_TARBALL)
+-
+-$(KERNEL_SOURCES): $(KERNEL_TARBALL)
+-	tar xf $(KERNEL_TARBALL)
++$(KERNEL_SOURCES):
+ 	for patch in $(KERNEL_PATCHES); do patch -p1 -d $(KERNEL_SOURCES) < "$$patch"; done
+ 	cp config-libkrunfw$(VARIANT)_$(ARCH) $(KERNEL_SOURCES)/.config
+-	cd $(KERNEL_SOURCES) ; $(MAKE) olddefconfig
++	cd $(KERNEL_SOURCES) ; $(MAKE) ARCH=$(KARCH) olddefconfig
+ 
+ $(KERNEL_BINARY_$(ARCH)): $(KERNEL_SOURCES)
+-	cd $(KERNEL_SOURCES) ; rm -f .version ; $(MAKE) $(MAKEFLAGS) $(KERNEL_FLAGS)
++	cd $(KERNEL_SOURCES) ; rm -f .version ; $(MAKE) $(MAKEFLAGS) ARCH=$(KARCH) $(KERNEL_FLAGS)
+ 
+ ifeq ($(OS),Darwin)
+ $(KERNEL_C_BUNDLE):
+@@ -89,10 +84,7 @@ $(INITRD_C_BUNDLE): $(INITRD_BINARY)
+ endif
+ 
+ $(KRUNFW_BINARY_$(OS)): $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE)
+-	$(CC) -fPIC -DABI_VERSION=$(ABI_VERSION) -shared $(SONAME_$(OS)) -o $@ $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE)
+-ifeq ($(OS),Linux)
+-	strip $(KRUNFW_BINARY_$(OS))
+-endif
++	$(CC) $(CFLAGS) $(LDFLAGS) -fPIC -DABI_VERSION=$(ABI_VERSION) -shared $(SONAME_$(OS)) -o $@ $(KERNEL_C_BUNDLE) $(QBOOT_C_BUNDLE) $(INITRD_C_BUNDLE)
+ 
+ install:
+ 	install -d $(DESTDIR)$(PREFIX)/$(LIBDIR_$(OS))/
