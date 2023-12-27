@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-12-27)
+# Obsolete slot that no longer has any reverse dependencies. Use the
+# newer slot instead. Masked for removal on 2024-01-27.
+dev-ruby/rubyzip:1
+
 # Marek Szuba <marecki@gentoo.org> (2023-12-27)
 # Requires >=media-libs/lsp-plugins-1.2.10, which as of December 2023
 # remain unavailable in the tree. Builds against 1.2.6 but some plug-ins
