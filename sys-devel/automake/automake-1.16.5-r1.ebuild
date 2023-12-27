@@ -3,8 +3,10 @@
 
 EAPI=7
 
-# Remember to modify LAST_KNOWN_AUTOMAKE_VER 'upstream' in sys-devel/automake-wrapper
+# Bumping notes:
+# * Remember to modify LAST_KNOWN_AUTOMAKE_VER 'upstream' in sys-devel/automake-wrapper
 # on new automake (major) releases, as well as the dependency in RDEPEND below too.
+# * Update _WANT_AUTOMAKE and _automake_atom case statement in autotools.eclass.
 
 PYTHON_COMPAT=( python3_{10..11} )
 
