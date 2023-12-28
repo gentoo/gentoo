@@ -39,6 +39,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	# fix bashism
+	# https://gitlab.xfce.org/apps/xfburn/-/merge_requests/36
+	sed -i -e 's:== x:= x:' configure || die
+	default
+}
+
 src_configure() {
 	local myconf=(
 		$(use_enable udev gudev)
