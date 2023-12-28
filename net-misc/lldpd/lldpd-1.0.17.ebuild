@@ -55,6 +55,7 @@ src_configure() {
 	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
 
 	econf \
+		--cache-file="${S}"/config.cache \
 		--without-embedded-libevent \
 		--with-privsep-user=${PN} \
 		--with-privsep-group=${PN} \
