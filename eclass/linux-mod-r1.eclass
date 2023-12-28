@@ -837,7 +837,14 @@ _modules_prepare_toolchain() {
 _modules_process_compress() {
 	local -a compress
 	if linux_chkconfig_present MODULE_COMPRESS_XZ; then
-		compress=(xz -qT"$(makeopts_jobs)" --memlimit-compress=50%)
+		compress=(
+			xz -q
+			--memlimit-compress=50%
+			--threads="$(makeopts_jobs)"
+			# match options from kernel's Makefile.modinst (bug #920837)
+			--check=crc32
+			--lzma2=dict=1MiB
+		)
 	elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
 		if type -P pigz &>/dev/null; then
 			compress=(pigz -p"$(makeopts_jobs)")
