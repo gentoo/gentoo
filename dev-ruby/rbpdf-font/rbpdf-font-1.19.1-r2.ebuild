@@ -20,7 +20,6 @@ RUBY_S="rbpdf-${PV}/rbpdf-font"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 ruby_add_bdepend ">=dev-ruby/test-unit-3:2"
 
@@ -31,7 +30,10 @@ all_ruby_prepare() {
 	pushd lib/fonts/src || die
 	tar xf ttf2ufm-src.tar.gz || die
 	emake -C ttf2ufm-src clean
-	sed -i -e '/^CFLAGS_SYS=/ s/-O/$(CFLAGS)/' -e '/CFLAGS.*LIBS/ s/CFLAGS/LDFLAGS/' ttf2ufm-src/Makefile || die
+	sed -e '/^CFLAGS_SYS=/ s/-O/$(CFLAGS)/' \
+		-e '/CFLAGS.*LIBS/ s/CFLAGS/LDFLAGS/' \
+		-i ttf2ufm-src/Makefile || die
+	sed -e '/limits.h/a#include <getopt.h>' -i ttf2ufm-src/t1asm.c || die
 	popd || die
 }
 
