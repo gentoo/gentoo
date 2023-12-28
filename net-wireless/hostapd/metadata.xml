@@ -7,7 +7,6 @@
 		RADIUS Authentication client, RADIUS Accounting client
 	</longdescription>
 	<use>
-		<flag name="crda">Add CRDA support</flag>
 		<flag name="internal-tls">Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS</flag>
 		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
 		<flag name="suiteb">Adding support for NSA Suite B Cryptography</flag>
