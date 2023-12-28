@@ -14,7 +14,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Core components for KDE's Activities System"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
