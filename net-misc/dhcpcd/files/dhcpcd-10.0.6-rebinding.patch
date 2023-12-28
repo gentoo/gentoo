@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/920652#c2
+https://github.com/NetworkConfiguration/dhcpcd/commit/8ab7ca1eb4e9bb797d6e6d955c83d8a82f69a663
+
+From 8ab7ca1eb4e9bb797d6e6d955c83d8a82f69a663 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Sun, 24 Dec 2023 12:07:25 +0000
+Subject: [PATCH] DHCP: DECLINE address on ARP defend failure
+
+Also, drop the lease.
+This should get us a new address from the DHCP server when we
+re-enter DISCOVER to avoid looping on the same address and fail
+again.
+---
+ src/dhcp.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/dhcp.c b/src/dhcp.c
+index 014ce6cf..a58e1db2 100644
+--- a/src/dhcp.c
++++ b/src/dhcp.c
+@@ -1944,7 +1944,11 @@ dhcp_expire(void *arg)
+ static void
+ dhcp_decline(struct interface *ifp)
+ {
++	struct dhcp_state *state = D_STATE(ifp);
+ 
++	// Set the expired state so we send over BPF as this could be
++	// an address defence failure.
++	state->added |= STATE_EXPIRED;
+ 	send_message(ifp, DHCP_DECLINE, NULL);
+ }
+ #endif
+@@ -2098,8 +2102,12 @@ static void
+ dhcp_arp_defend_failed(struct arp_state *astate)
+ {
+ 	struct interface *ifp = astate->iface;
++	struct dhcp_state *state = D_STATE(ifp);
+ 
++	if (!(ifp->options->options & (DHCPCD_INFORM | DHCPCD_STATIC)))
++		dhcp_decline(ifp);
+ 	dhcp_drop(ifp, "EXPIRED");
++	dhcp_unlink(ifp->ctx, state->leasefile);
+ 	dhcp_start1(ifp);
+ }
+ #endif
+
