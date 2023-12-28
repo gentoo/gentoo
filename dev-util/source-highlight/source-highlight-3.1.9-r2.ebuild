@@ -35,6 +35,8 @@ src_configure() {
 	# required as rev-dep of dev-libs/boost-1.62.0
 	# https://wiki.gentoo.org/wiki/Project:C%2B%2B/Maintaining_ABI
 	append-cxxflags -std=c++14
+	# ODR violations: https://savannah.gnu.org/bugs/index.php?65086
+	filter-lto
 
 	econf \
 		--with-boost="${EPREFIX}/usr" \
