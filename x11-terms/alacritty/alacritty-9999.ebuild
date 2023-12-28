@@ -7,10 +7,8 @@ CRATES="
 "
 
 MY_PV="${PV//_rc/-rc}"
-# https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{9..12} )
 
-inherit bash-completion-r1 cargo desktop python-any-r1
+inherit bash-completion-r1 cargo desktop
 
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://alacritty.org"
@@ -20,11 +18,16 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="https://github.com/alacritty/alacritty"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
-		$(cargo_crate_uris)"
+		${CARGO_CRATE_URIS}"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="Apache-2.0 Artistic-2 Boost-1.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB"
+LICENSE="Apache-2.0"
+# Dependent crate licenses
+LICENSE+="
+	Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0
+	Unicode-DFS-2016
+"
 SLOT="0"
 IUSE="wayland +X"
 
@@ -39,7 +42,6 @@ COMMON_DEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	${PYTHON_DEPS}
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -56,7 +58,7 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	dev-util/cmake
-	>=virtual/rust-1.65.0
+	>=virtual/rust-1.70.0
 	app-text/scdoc
 "
 
@@ -114,8 +116,7 @@ src_install() {
 	doins -r scripts/*
 
 	local DOCS=(
-		CHANGELOG.md INSTALL.md README.md
-		docs/{escape_support.md,features.md}
+		CHANGELOG.md README.md
 	)
 	einstalldocs
 }
