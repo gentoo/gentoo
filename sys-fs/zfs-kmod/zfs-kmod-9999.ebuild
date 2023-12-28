@@ -60,7 +60,6 @@ PDEPEND="dist-kernel? ( ~sys-fs/zfs-${PV}[dist-kernel] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
-	"${FILESDIR}"/${PN}-2.2.1-Disable-zfs_dmu_offset_next_sync-tunable-by-default.patch
 )
 
 pkg_pretend() {
