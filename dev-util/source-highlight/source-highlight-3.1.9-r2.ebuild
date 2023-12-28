@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 flag-o-matic optfeature
+inherit bash-completion-r1 flag-o-matic libtool optfeature
 
 DESCRIPTION="Generate highlighted source code as an (x)html document"
 HOMEPAGE="https://www.gnu.org/software/src-highlite/source-highlight.html"
@@ -22,6 +22,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.9-test-clang-p1.patch
 	"${FILESDIR}"/${PN}-3.1.9-test-clang-p2.patch
 )
+
+src_prepare() {
+	default
+
+	# Although all unpatched libtools are probably broken, this one ignores LTO
+	# warning flags.
+	elibtoolize
+}
 
 src_configure() {
 	# required as rev-dep of dev-libs/boost-1.62.0
