@@ -1,0 +1,40 @@
+diff --git a/Makefile b/Makefile
+index bf5ab7c..5781083 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@ all: debug release
+ # sort is used to remove potential duplicates
+ DIRS := $(sort $(build_bindir) $(build_depsbindir) $(build_libdir) $(build_private_libdir) $(build_libexecdir) $(build_includedir) $(build_includedir)/julia $(build_sysconfdir)/julia $(build_datarootdir)/julia $(build_datarootdir)/julia/stdlib $(build_man1dir))
+ ifneq ($(BUILDROOT),$(JULIAHOME))
+-BUILDDIRS := $(BUILDROOT) $(addprefix $(BUILDROOT)/,base src src/flisp src/support src/clangsa cli doc deps stdlib test test/clangsa test/embedding test/gcext test/llvmpasses)
++BUILDDIRS := $(BUILDROOT) $(addprefix $(BUILDROOT)/,base src src/flisp src/support src/clangsa cli deps stdlib test test/clangsa test/embedding test/gcext test/llvmpasses)
+ BUILDDIRMAKE := $(addsuffix /Makefile,$(BUILDDIRS)) $(BUILDROOT)/sysimage.mk $(BUILDROOT)/pkgimage.mk
+ DIRS += $(BUILDDIRS)
+ $(BUILDDIRMAKE): | $(BUILDDIRS)
+@@ -128,8 +128,6 @@ release-candidate: release testall
+ 	@$(JULIA_EXECUTABLE) $(JULIAHOME)/contrib/add_license_to_files.jl #add license headers
+ 	@#Check documentation
+ 	@$(JULIA_EXECUTABLE) $(JULIAHOME)/doc/NEWS-update.jl #Add missing cross-references to NEWS.md
+-	@$(MAKE) -C $(BUILDROOT)/doc html doctest=true linkcheck=true
+-	@$(MAKE) -C $(BUILDROOT)/doc pdf
+ 
+ 	@# Check to see if the above make invocations changed anything important
+ 	@if [ -n "$$(git status --porcelain)" ]; then \
+@@ -265,7 +263,7 @@ define stringreplace
+ endef
+ 
+ 
+-install: $(build_depsbindir)/stringreplace docs
++install: $(build_depsbindir)/stringreplace 
+ 	@$(MAKE) $(QUIET_MAKE) $(JULIA_BUILD_MODE)
+ 	@for subdir in $(bindir) $(datarootdir)/julia/stdlib/$(VERSDIR) $(docdir) $(man1dir) $(includedir)/julia $(libdir) $(private_libdir) $(sysconfdir) $(private_libexecdir); do \
+ 		mkdir -p $(DESTDIR)$$subdir; \
+@@ -368,8 +366,6 @@ endif
+ 	cp -R -L $(JULIAHOME)/base/* $(DESTDIR)$(datarootdir)/julia/base
+ 	cp -R -L $(JULIAHOME)/test/* $(DESTDIR)$(datarootdir)/julia/test
+ 	cp -R -L $(build_datarootdir)/julia/* $(DESTDIR)$(datarootdir)/julia
+-	# Copy documentation
+-	cp -R -L $(BUILDROOT)/doc/_build/html $(DESTDIR)$(docdir)/
+ 	# Remove various files which should not be installed
+ 	-rm -f $(DESTDIR)$(datarootdir)/julia/base/version_git.sh
+ 	-rm -f $(DESTDIR)$(datarootdir)/julia/test/Makefile

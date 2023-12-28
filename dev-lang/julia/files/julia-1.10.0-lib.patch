@@ -1,0 +1,35 @@
+diff --git a/stdlib/SuiteSparse_jll/src/SuiteSparse_jll.jl b/stdlib/SuiteSparse_jll/src/SuiteSparse_jll.jl
+index f245759..e5a4502 100644
+--- a/stdlib/SuiteSparse_jll/src/SuiteSparse_jll.jl
++++ b/stdlib/SuiteSparse_jll/src/SuiteSparse_jll.jl
+@@ -67,18 +67,18 @@ elseif Sys.isapple()
+     const libsuitesparseconfig = "@rpath/libsuitesparseconfig.7.dylib"
+     const libumfpack = "@rpath/libumfpack.6.dylib"
+ else
+-    const libamd = "libamd.so.3"
+-    const libbtf = "libbtf.so.2"
+-    const libcamd = "libcamd.so.3"
+-    const libccolamd = "libccolamd.so.3"
+-    const libcholmod = "libcholmod.so.4"
+-    const libcolamd = "libcolamd.so.3"
+-    const libklu = "libklu.so.2"
+-    const libldl = "libldl.so.3"
+-    const librbio = "librbio.so.4"
+-    const libspqr = "libspqr.so.4"
+-    const libsuitesparseconfig = "libsuitesparseconfig.so.7"
+-    const libumfpack = "libumfpack.so.6"
++    const libamd = "libamd.so"
++    const libbtf = "libbtf.so"
++    const libcamd = "libcamd.so"
++    const libccolamd = "libccolamd.so"
++    const libcholmod = "libcholmod.so"
++    const libcolamd = "libcolamd.so"
++    const libklu = "libklu.so"
++    const libldl = "libldl.so"
++    const librbio = "librbio.so"
++    const libspqr = "libspqr.so"
++    const libsuitesparseconfig = "libsuitesparseconfig.so"
++    const libumfpack = "libumfpack.so"
+ end
+ 
+ function __init__()
