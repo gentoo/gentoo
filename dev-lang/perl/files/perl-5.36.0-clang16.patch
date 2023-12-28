@@ -1,0 +1,129 @@
+https://bugs.gentoo.org/879857
+https://github.com/Perl/perl5/commit/e1ca9a418fa6b7d26fbb1931c9164141035262c3
+https://github.com/Perl/perl5/commit/fc35cee89c1a42558f50a37a6b4d5186b77f058b
+
+From e1ca9a418fa6b7d26fbb1931c9164141035262c3 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Tue, 17 Jan 2023 02:47:12 -0500
+Subject: [PATCH] Add parameter types to declarations for clang-16
+
+ANSI C style function declarations without parameter types are errors with clang-16.
+--- a/Configure
++++ b/Configure
+@@ -7927,10 +7927,10 @@ $cat >malloc.c <<END
+ #include <stdlib.h>
+ #endif
+ #ifdef TRY_MALLOC
+-void *malloc();
++void *malloc(size_t);
+ #endif
+ #ifdef TRY_FREE
+-void free();
++void free(void *);
+ #endif
+ END
+ case "$malloctype" in
+
+From fc35cee89c1a42558f50a37a6b4d5186b77f058b Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 17 Jan 2023 19:07:54 +0100
+Subject: [PATCH] Configure: Add various C99 compatibility improvements
+
+Two C99 compatibility issues are fixed by these changes: Return
+types are made explicit where they previously defaulted to int,
+and all called functions are now declared explicitly (either by
+including additional headers, or by adding prototypes manually).
+
+This avoids implict ints and implicit function declarations,
+both legacy C language features removed in the 1999 revision
+of the language.
+
+Verified with an instrumented GCC compiler on GNU/Linux.
+--- a/Configure
++++ b/Configure
+@@ -4655,7 +4655,7 @@ esac
+ # so we will take those off from locincpth.
+ case "$gccversion" in
+ 3.*)
+-    echo "main(){}">try.c
++    echo "int main(){}">try.c
+     for incdir in $locincpth; do
+        warn=`$cc $ccflags -I$incdir -c try.c 2>&1 | \
+ 	     grep '^c[cp]p*[01]: warning: changing search order '`
+@@ -5798,6 +5798,7 @@ case "$intsize" in
+ #ifdef I_STDLIB
+ #include <stdlib.h>
+ #endif
++#include <stdio.h>
+ int main()
+ {
+ 	printf("intsize=%d;\n", (int)sizeof(int));
+@@ -6871,6 +6872,7 @@ case "$doublesize" in
+ #ifdef I_STDLIB
+ #include <stdlib.h>
+ #endif
++#include <stdio.h>
+ int main()
+ {
+     printf("%d\n", (int)sizeof(double));
+@@ -12660,7 +12662,7 @@ case "$dlsrc" in
+ dl_dlopen.xs)
+ 	echo "Checking whether your dlsym() needs a leading underscore ..." >&4
+ 	$cat >dyna.c <<'EOM'
+-fred () { }
++void fred (void) { }
+ EOM
+ 
+ $cat >fred.c<<EOM
+@@ -12679,7 +12681,7 @@ $cat >fred.c<<EOM
+ #include <link.h>
+ #endif
+ 
+-extern int fred() ;
++extern void fred(void) ;
+ 
+ int main()
+ {
+@@ -13713,6 +13715,7 @@ $cat >try.c <<EOP
+ #ifdef I_STDLIB
+ #include <stdlib.h>
+ #endif
++#include <string.h>
+ #define FILE_ptr(fp)	$stdio_ptr
+ #define FILE_cnt(fp)	$stdio_cnt
+ int main() {
+@@ -16220,6 +16223,7 @@ echo "Checking to see if your libm supports _LIB_VERSION..." >&4
+ $cat >try.c <<EOCP
+ #include <unistd.h>
+ #include <math.h>
++#include <stdio.h>
+ int main (int argc, char *argv[])
+ {
+     printf ("%d\n", _LIB_VERSION);
+@@ -22168,13 +22172,15 @@ pager="$ans"
+ : see if ar generates random libraries by itself
+ echo " "
+ echo "Checking how to generate random libraries on your machine..." >&4
+-echo 'int bar1() { return bar2(); }' > bar1.c
++echo 'extern int bar2(); int bar1() { return bar2(); }' > bar1.c
+ echo 'int bar2() { return 2; }' > bar2.c
+ $cat > foo.c <<EOP
+ #$i_stdlib I_STDLIB
+ #ifdef I_STDLIB
+ #include <stdlib.h>
+ #endif
++#include <stdio.h>
++extern int bar1();
+ int main() { printf("%d\n", bar1()); exit(0); }
+ EOP
+ $cc $ccflags -c bar1.c >/dev/null 2>&1
+@@ -22400,7 +22406,7 @@ EOM
+ 			for nfd in 'int' 'size_t' 'unsigned long' 'unsigned' ; do
+ 				for tmo in 'struct timeval *' 'const struct timeval *'; do
+ 					case "$val" in
+-					'')	try="$extern_C select _(($nfd, $xxx, $xxx, $xxx, $tmo));"
++					'')	try="$extern_C int select _(($nfd, $xxx, $xxx, $xxx, $tmo));"
+ 						if ./protochk "$try" $hdrs; then
+ 							echo "Your system accepts $xxx."
+ 							val="$xxx"
+
