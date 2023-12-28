@@ -15,7 +15,6 @@
 		<flag name="curl">Enable support for uploading journals</flag>
 		<flag name="cryptsetup">Enable cryptsetup tools (includes unit generator for crypttab)</flag>
 		<flag name="dns-over-tls">Enable DNS-over-TLS support</flag>
-		<flag name="gnuefi">Enable EFI boot manager and stub loader (built using <pkg>sys-boot/gnu-efi</pkg>)</flag>
 		<flag name="elfutils">Enable coredump stacktraces in the journal</flag>
 		<flag name="fido2">Enable FIDO2 support</flag>
 		<flag name="gcrypt">Enable use of <pkg>dev-libs/libgcrypt</pkg> for various features</flag>
