@@ -8,6 +8,7 @@ inherit bash-completion-r1 flag-o-matic libtool optfeature
 DESCRIPTION="Generate highlighted source code as an (x)html document"
 HOMEPAGE="https://www.gnu.org/software/src-highlite/source-highlight.html"
 SRC_URI="mirror://gnu/src-highlite/${P}.tar.gz"
+
 LICENSE="GPL-3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
@@ -45,6 +46,13 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
+src_test() {
+	export LD_LIBRARY_PATH="${S}/lib/srchilite/.libs/"
+	# upstream uses the same temporary filenames in numerous places
+	# see https://bugs.gentoo.org/635100
+	emake -j1 check
+}
+
 src_install() {
 	use doc && local HTML_DOCS=( doc/*.{html,css,java} )
 	default
@@ -56,13 +64,6 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	dobashcomp completion/source-highlight
-}
-
-src_test() {
-	export LD_LIBRARY_PATH="${S}/lib/srchilite/.libs/"
-	# upstream uses the same temporary filenames in numerous places
-	# see https://bugs.gentoo.org/635100
-	emake -j1 check
 }
 
 pkg_postinst() {
