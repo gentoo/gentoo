@@ -185,10 +185,6 @@ x86? (
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
 
-PATCHES=(
-	"${FILESDIR}"/${PV}-d3d12-Fix-AV1-video-encode-32-bits-build.patch
-)
-
 llvm_check_deps() {
 	if use opencl; then
 		has_version "sys-devel/clang:${LLVM_SLOT}[${LLVM_USE_DEPS}]" || return 1
