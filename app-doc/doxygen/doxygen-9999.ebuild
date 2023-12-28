@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://doxygen.nl/files/${P}.src.tar.gz"
 	SRC_URI+=" mirror://sourceforge/doxygen/rel-${PV}/${P}.src.tar.gz"
-	KEYWORDS="~alpha ~amd64 arm ~arm64 ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 # GPL-2 also for bundled libmscgen
@@ -96,18 +96,16 @@ src_prepare() {
 		doc/maintainers.txt || die
 
 	if is-flagq "-O3" ; then
-		ewarn
+		# TODO: Investigate this and report a bug accordingly...
 		ewarn "Compiling with -O3 is known to produce incorrectly"
-		ewarn "optimized code which breaks doxygen."
-		ewarn
-		elog
-		elog "Continuing with -O2 instead ..."
-		elog
+		ewarn "optimized code which breaks doxygen. Using -O2 instead."
 		replace-flags "-O3" "-O2"
 	fi
 }
 
 src_configure() {
+	# Very slow to compile, bug #920092
+	filter-flags -fipa-pta
 	# -Wodr warnings, see bug #854357 and https://github.com/doxygen/doxygen/issues/9287
 	filter-lto
 
