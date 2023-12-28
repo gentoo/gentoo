@@ -6,7 +6,7 @@ EAPI=7
 inherit xdg-utils
 
 DESCRIPTION="GTK+ based CD and DVD burning application"
-HOMEPAGE="https://goodies.xfce.org/projects/applications/xfburn"
+HOMEPAGE="https://docs.xfce.org/apps/xfburn/start"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
