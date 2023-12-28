@@ -96,5 +96,5 @@ pkg_preinst() {
 }
 
 pkg_prerm() {
-	use boot && mount-boot_pk_prerm
+	use boot && mount-boot_pkg_prerm
 }
