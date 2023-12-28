@@ -109,7 +109,7 @@ esac
 if [[ ! ${_LINUX_MOD_R1_ECLASS} ]]; then
 _LINUX_MOD_R1_ECLASS=1
 
-inherit edo linux-info multiprocessing toolchain-funcs
+inherit dist-kernel-utils edo linux-info multiprocessing toolchain-funcs
 
 IUSE="dist-kernel modules-compress modules-sign +strip ${MODULES_OPTIONAL_IUSE}"
 
@@ -468,6 +468,7 @@ linux-mod-r1_pkg_postinst() {
 	debug-print-function ${FUNCNAME[0]} "${@}"
 	_modules_check_function ${#} 0 0 || return 0
 
+	dist-kernel_compressed_module_cleanup "${EROOT}/lib/modules/${KV_FULL}"
 	_modules_update_depmod
 
 	# post_process ensures modules were installed and that the eclass' USE
