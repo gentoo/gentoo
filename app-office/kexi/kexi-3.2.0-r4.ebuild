@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,10 @@ DEPEND="
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
-	>=kde-frameworks/breeze-icons-rcc-${KFMIN}:5
+	|| (
+		kde-frameworks/breeze-icons:6
+		>=kde-frameworks/breeze-icons-rcc-${KFMIN}:5
+	)
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
