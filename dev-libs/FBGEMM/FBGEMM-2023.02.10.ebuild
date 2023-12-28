@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit python-any-r1 flag-o-matic cmake
 
 CommitId=03b2046676707da64504e898490ab46104d4682a
