@@ -42,11 +42,11 @@ src_configure() {
 src_install() {
 	php-ext-pecl-r3_src_install
 
-	insinto /usr/share/php7/apcu
+	insinto /usr/share/php8/apcu
 	doins apc.php
 }
 
 pkg_postinst() {
 	elog "The apc.php file shipped with this release of pecl-apcu"
-	elog "was installed to ${EPREFIX}/usr/share/php7/apcu/."
+	elog "was installed to ${EPREFIX}/usr/share/php8/apcu/."
 }
