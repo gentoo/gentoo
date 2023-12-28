@@ -284,7 +284,7 @@ kernel-build_src_install() {
 	dostrip -x /lib/modules
 
 	local compress=()
-	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && ! use module-compress; then
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && ! use modules-compress; then
 		compress+=(
 			# force installing uncompressed modules even if compression
 			# is enabled via config
@@ -560,7 +560,7 @@ kernel-build_merge_configs() {
 
 	# Only semi-related but let's use that to avoid changing stable ebuilds.
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
-		# NB: we enable this even with USE=-module-compress, in order
+		# NB: we enable this even with USE=-modules-compress, in order
 		# to support both uncompressed and compressed modules in prebuilt
 		# kernels
 		cat <<-EOF > "${WORKDIR}/module-compress.config" || die
