@@ -22,7 +22,6 @@ RDEPEND="
 	media-libs/clutter:1.0[introspection]
 	x11-libs/pango[introspection]
 "
-DEPEND=""
 
 src_install() {
 	insinto /usr/share/gnome-shell/extensions
