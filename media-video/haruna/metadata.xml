@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>oniGino@protonmail.com</email>
+		<name>Gino</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="kde-invent">multimedia/haruna</remote-id> 
+		<bugs-to>https://invent.kde.org/multimedia/haruna"</bugs-to>
+	</upstream>
+	<use>
+		<flag name="youtube">Youtube Streaming Support</flag>
+	</use>
+</pkgmetadata>
