@@ -47,9 +47,10 @@ src_prepare() {
 		.
 	)
 
+	local i
 	for i in ${subdirs[@]}; do
 		(
-			cd "$i" || die
+			cd "${i}" || die
 			eautoreconf
 		)
 	done
@@ -59,6 +60,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--cache-file="${BUILD_DIR}"/config.cache
 		--enable-shared
 		--with-pic
 		$(use_enable static-libs static)
