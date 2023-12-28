@@ -79,7 +79,7 @@ _IDEPEND_BASE="
 
 LICENSE="GPL-2"
 if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
-	IUSE+=" generic-uki module-compress"
+	IUSE+=" generic-uki modules-compress"
 	# https://github.com/AndrewAmmerlaan/dist-kernel-log-to-licenses
 	# This script can help with generating the array below, keep in mind
 	# that it is not a fully automatic solution, i.e. use flags will
@@ -762,11 +762,11 @@ kernel-install_pkg_config() {
 
 # @FUNCTION: kernel-install_compress_modules
 # @DESCRIPTION:
-# Compress modules installed in ED, if USE=module-compress is enabled.
+# Compress modules installed in ED, if USE=modules-compress is enabled.
 kernel-install_compress_modules() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if use module-compress; then
+	if use modules-compress; then
 		einfo "Compressing kernel modules ..."
 		# taken from scripts/Makefile.modinst
 		find "${ED}/lib" -name '*.ko' -exec \
