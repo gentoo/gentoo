@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="dinput experimental +fluidsynth +munt new-dynarec +openal +qt5 +threads"
+IUSE="dinput experimental +fluidsynth +munt new-dynarec +openal qt5 +qt6 +threads"
 
 DEPEND="
 	app-emulation/faudio
@@ -25,6 +25,7 @@ DEPEND="
 	net-libs/libslirp
 	sys-libs/zlib
 	qt5? ( x11-libs/libXi )
+	qt6? ( x11-libs/libXi )
 "
 
 RDEPEND="
@@ -39,6 +40,11 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qttranslations:5
 		dev-qt/qtwidgets:5
+		kde-frameworks/extra-cmake-modules
+	)
+	qt6? (
+		dev-qt/qtbase:6[gui,network,opengl,widgets]
+		dev-qt/qttranslations:6
 		kde-frameworks/extra-cmake-modules
 	)
 "
@@ -64,8 +70,9 @@ src_configure() {
 		-DOPENAL="$(usex openal)"
 		-DPREFER_STATIC="OFF"
 		-DRTMIDI="ON"
-		-DQT="$(usex qt5)"
+		-DQT="$(usex qt5 'ON' $(usex qt6))"
 		-DRELEASE="ON"
+		-DUSE_QT6="$(usex qt6)"
 	)
 
 	cmake_src_configure
