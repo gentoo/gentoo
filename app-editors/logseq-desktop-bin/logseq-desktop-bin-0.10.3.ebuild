@@ -84,5 +84,6 @@ src_install() {
 
 	make_desktop_entry "/opt/bin/logseq %U" Logseq logseq Office \
 		"StartupWMClass=logseq\nTerminal=false\nMimeType=x-scheme-handler/logseq"
-	#doicon resources/app/icons/logseq.png
+	# some releases do not have an icon included, but we dont fail if that happens
+	doicon resources/app/icons/logseq.png || true
 }
