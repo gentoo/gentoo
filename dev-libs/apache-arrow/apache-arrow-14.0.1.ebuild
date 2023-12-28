@@ -14,9 +14,9 @@ SRC_URI="
 	mirror://apache/arrow/arrow-${PV}/${P}.tar.gz
 	test? (
 		https://github.com/apache/parquet-testing/archive/${PARQUET_DATA_GIT_HASH}.tar.gz
-			-> ${PN}-parquet-data-${PV}.tar.gz
+			-> ${PN}-parquet-data-${PARQUET_DATA_GIT_HASH}.tar.gz
 		https://github.com/apache/arrow-testing/archive/${ARROW_DATA_GIT_HASH}.tar.gz
-			-> ${PN}-arrow-data-${PV}.tar.gz
+			-> ${PN}-arrow-data-${ARROW_DATA_GIT_HASH}.tar.gz
 	)
 "
 S="${WORKDIR}/${P}/cpp"
