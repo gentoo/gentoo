@@ -201,6 +201,7 @@ mms - Support for Microsoft Media Server (MMS) streams
 mng - Add support for libmng (MNG images)
 modplug - Add libmodplug support for playing SoundTracker-style music files
 modules - Build the kernel modules
+modules-compress - Install compressed kernel modules (if kernel config enables module compression)
 modules-sign - Cryptographically sign installed kernel modules (requires CONFIG_MODULE_SIG=y in the kernel)
 mono - Build Mono bindings to support dotnet type stuff
 motif - Add support for the Motif toolkit
