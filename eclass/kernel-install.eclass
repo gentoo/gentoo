@@ -592,6 +592,7 @@ kernel-install_pkg_preinst() {
 		die "Release file ${relfile} not installed!"
 	local release
 	release="$(<"${relfile}")" || die
+	DIST_KERNEL_RELEASE="${release}"
 
 	# perform the version check for release ebuilds only
 	if [[ ${PV} != *9999 ]]; then
@@ -706,6 +707,8 @@ kernel-install_pkg_postinst() {
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${dir_ver}"
+	dist-kernel_compressed_module_cleanup \
+		"${EROOT}/lib/modules/${DIST_KERNEL_RELEASE}"
 
 	if [[ -z ${ROOT} ]]; then
 		kernel-install_install_all "${dir_ver}"
