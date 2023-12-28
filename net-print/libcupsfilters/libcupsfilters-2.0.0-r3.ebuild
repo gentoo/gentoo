@@ -27,6 +27,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	pdf? ( app-text/mupdf )
+	postscript? ( app-text/ghostscript-gpl[cups] )
 	poppler? ( >=app-text/poppler-0.32[cxx] )
 	png? ( media-libs/libpng:= )
 	tiff? ( media-libs/tiff:= )
