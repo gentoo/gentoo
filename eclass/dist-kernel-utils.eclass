@@ -210,5 +210,42 @@ dist-kernel_PV_to_KV() {
 	echo "${kv}"
 }
 
+# @FUNCTION: dist-kernel_compressed_module_cleanup
+# @USAGE: <path>
+# @DESCRIPTION:
+# Traverse path for duplicate (un)compressed modules and remove all
+# but the newest variant.
+dist-kernel_compressed_module_cleanup() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
+	local path=${1}
+	local basename f
+
+	while read -r basename; do
+		local prev=
+		for f in "${path}/${basename}"{,.gz,.xz,.zst}; do
+			if [[ ! -e ${f} ]]; then
+				continue
+			elif [[ -z ${prev} ]]; then
+				prev=${f}
+			elif [[ ${f} -nt ${prev} ]]; then
+				rm -v "${prev}" || die
+				prev=${f}
+			else
+				rm -v "${f}" || die
+			fi
+		done
+	done < <(
+		cd "${path}" &&
+		find -type f \
+			\( -name '*.ko' \
+			-o -name '*.ko.gz' \
+			-o -name '*.ko.xz' \
+			-o -name '*.ko.zst' \
+			\) | sed -e 's:[.]\(gz\|xz\|zst\)$::' | sort | uniq -d || die
+	)
+}
+
 _DIST_KERNEL_UTILS=1
 fi
