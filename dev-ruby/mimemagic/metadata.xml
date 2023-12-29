@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">minad/mimemagic</remote-id>
+    <remote-id type="github">mimemagicrb/mimemagic</remote-id>
   </upstream>
 </pkgmetadata>
