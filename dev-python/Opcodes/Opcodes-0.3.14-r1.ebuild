@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1
 
 CommitId=0f7c7d63f5e13ce5a89d9acc3934f1b6e247ec1f
@@ -23,3 +23,8 @@ KEYWORDS="~amd64"
 RESTRICT="test" # depends on an old version of werkzeug
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+DOCS=readme.rst
+
+distutils_enable_sphinx sphinx \
+	dev-python/sphinx-bootstrap-theme
