@@ -116,7 +116,6 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.97-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.97-no-exim_id_update.patch
-	eapply -p2 "${FILESDIR}"/exim-4.97-CVE-2023-51766.patch # 3063
 
 	# oddity, they disable berkdb as hack, and then throw an error when
 	# berkdb isn't enabled
