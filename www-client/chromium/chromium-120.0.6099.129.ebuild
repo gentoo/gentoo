@@ -152,7 +152,7 @@ DEPEND="${COMMON_DEPEND}
 depend_clang_llvm_version() {
 	echo "sys-devel/clang:$1"
 	echo "sys-devel/llvm:$1"
-	echo "=sys-devel/lld-$1*"
+	echo "sys-devel/lld:$1"
 }
 
 # When passed multiple arguments we assume that
@@ -257,8 +257,8 @@ llvm_check_deps() {
 		return 1
 	fi
 
-	if ( use lto || use pgo ) && ! has_version -b "=sys-devel/lld-${LLVM_SLOT}*" ; then
-		einfo "=sys-devel/lld-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+	if ( use lto || use pgo ) && ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
+		einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 		return 1
 	fi
 
