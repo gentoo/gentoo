@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTENSIONS=(src/ruby/ext/grpc/extconf.rb)
 RUBY_FAKEGEM_EXTRAINSTALL="etc src"
