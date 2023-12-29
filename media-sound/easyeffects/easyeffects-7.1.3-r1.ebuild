@@ -20,9 +20,6 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="calf +doc mda-lv2 zamaudio"
 
-# FIXME: >=>=media-libs/lsp-plugins-1.2.10 required since 7.0.8
-# but as of late December 2023, the tree remains stuck at 1.2.6.
-# Update the dependency + remove the mask when possible (Bug #915777).
 COMMON="dev-cpp/nlohmann_json
 	dev-cpp/tbb
 	>=dev-libs/glib-2.56:2
@@ -47,7 +44,7 @@ DEPEND="${COMMON}
 	media-libs/ladspa-sdk
 	media-libs/libsamplerate"
 RDEPEND="${COMMON}
-	>=media-libs/lsp-plugins-1.2.6[lv2]
+	>=media-libs/lsp-plugins-1.2.10[lv2]
 	sys-apps/dbus
 	calf? ( >=media-plugins/calf-0.90.1[lv2] )
 	doc? ( gnome-extra/yelp )
