@@ -42,10 +42,10 @@ _SSL_CERT_ECLASS=1
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		BDEPEND="${SSL_CERT_USE}? ( dev-libs/openssl:0 )"
+		BDEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		BDEPEND="dev-libs/openssl:0"
+		BDEPEND="dev-libs/openssl"
 	fi
 fi
 
