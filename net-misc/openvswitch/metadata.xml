@@ -10,7 +10,7 @@
 	</maintainer>
 	<use>
 		<flag name="monitor">Build the Python and GUI dependent monitor applications</flag>
-		<flag name="xdp">Enable support eXpress Data Path (Experimental)</flag>
+		<flag name="xdp">Enable support for eXpress Data Path (Experimental)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">openvswitch/ovs</remote-id>
