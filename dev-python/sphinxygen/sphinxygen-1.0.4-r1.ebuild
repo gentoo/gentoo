@@ -22,7 +22,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 S="${WORKDIR}/${PN}-v${PV}"
 
-DEPEND="app-doc/doxygen"
+DEPEND="
+	app-doc/doxygen
+	dev-python/sphinx[${PYTHON_USEDEP}]
+"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-python/html5lib[${PYTHON_USEDEP}] )"
 
