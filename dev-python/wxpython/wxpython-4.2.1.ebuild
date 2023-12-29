@@ -71,7 +71,7 @@ src_configure() {
 }
 
 python_compile() {
-	DOXYGEN=/usr/bin/doxygen ${PYTHON} build.py dox etg --nodoc || die
+	DOXYGEN="$(type -P doxygen)" ${PYTHON} build.py dox etg --nodoc || die
 
 	# Refresh the bundled/pregenerated sip files
 	"${EPYTHON}" build.py sip || die
