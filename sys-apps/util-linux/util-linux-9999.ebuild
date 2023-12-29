@@ -143,6 +143,7 @@ src_prepare() {
 			lsfd/mkfds-rw-character-device
 			# Fails with network-sandbox at least in nspawn
 			lsfd/option-inet
+			utmp/last-ipv6
 		)
 
 		local known_failing_test
