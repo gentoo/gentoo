@@ -12,6 +12,7 @@ neon - Use the NEON (ASIMD) instruction set
 sha1 - Use the SHA-1 cryptography instruction set
 sha2 - Use the SHA-2 cryptography instruction set
 sm4 - Use the SM4 cryptography instruction set
+sve - Use the Scalable Vector Extension instruction set
 thumb - Enable Thumb instruction set (ARMv*T and ARMv6+)
 thumb2 - Enable Thumb-2 instruction set (ARMv*T2 and ARMv7+)
 v4 - Use instructions added in ARMv4
