@@ -11,17 +11,19 @@ SRC_URI="https://github.com/ocaml-ppx/ppx_deriving/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-ml/ppx_tools:=
-	dev-ml/ocaml-migrate-parsetree:=
-	dev-ml/ppx_derivers:=
-	>=dev-ml/ppxlib-0.20.0:=
-	dev-ml/result:=
+	dev-ml/ppx_tools:=[ocamlopt?]
+	dev-ml/ocaml-migrate-parsetree:=[ocamlopt?]
+	dev-ml/ppx_derivers:=[ocamlopt?]
+	>=dev-ml/ppxlib-0.20.0:=[ocamlopt?]
+	dev-ml/findlib:=[ocamlopt?]
+	dev-ml/result:=[ocamlopt?]
+	dev-ml/sexplib0:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}
-	dev-ml/cppo
+	dev-ml/cppo[ocamlopt?]
 	test? ( dev-ml/ounit2 )"
