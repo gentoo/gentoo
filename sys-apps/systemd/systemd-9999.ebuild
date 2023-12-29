@@ -350,6 +350,7 @@ multilib_src_configure() {
 		$(meson_native_true timesyncd)
 		$(meson_native_true tmpfiles)
 		$(meson_native_true vconsole)
+		$(meson_native_enabled vmspawn)
 	)
 
 	meson_src_configure "${myconf[@]}"
