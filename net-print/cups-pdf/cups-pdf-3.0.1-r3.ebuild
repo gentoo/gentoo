@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -16,16 +16,17 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="+ppds"
 
 DEPEND="net-print/cups"
-
 RDEPEND="${DEPEND}
 	>=app-text/ghostscript-gpl-9.54"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.0.1-ghostscript-gpl-9.54-compat.patch )
 
+src_configure() {
+	tc-export CC
+}
+
 src_compile() {
-	pushd src &>/dev/null || die
-	$(tc-getCC) ${LDFLAGS} ${CFLAGS} ${PN}.c -o ${PN} -lcups || die
-	popd &>/dev/null || die
+	LDLIBS="-lcups" emake -C src ${PN}
 }
 
 src_install() {
@@ -43,5 +44,5 @@ src_install() {
 		doins extra/CUPS-PDF_noopt.ppd
 	fi
 
-	dodoc ChangeLog README
+	einstalldocs
 }
