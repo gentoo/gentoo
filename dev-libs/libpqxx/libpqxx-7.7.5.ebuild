@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 inherit python-any-r1
 
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 DESCRIPTION="Standard front-end for writing C++ programs that use PostgreSQL"
 SRC_URI="https://github.com/jtv/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
