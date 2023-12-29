@@ -14,7 +14,7 @@ S="${WORKDIR}"/netkit-ntalk-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=sys-libs/ncurses-5.2:="
 BDEPEND="virtual/pkgconfig"
