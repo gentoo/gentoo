@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 # There are no specs in the gem and the source cannot be downloaded separately.
 RUBY_FAKEGEM_RECIPE_TEST="none"
