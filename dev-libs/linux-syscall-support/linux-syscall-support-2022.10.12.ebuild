@@ -5,18 +5,12 @@ EAPI=8
 
 DESCRIPTION="Linux Syscall Support"
 HOMEPAGE="https://chromium.googlesource.com/linux-syscall-support"
-SRC_URI="https://chromium.googlesource.com/${PN}/+archive/refs/tags/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+#SRC_URI="https://chromium.googlesource.com/${PN}/+archive/refs/tags/v${PV}.tar.gz
+SRC_URI="https://dev.gentoo.org/~tupone/distfiles/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-
-DEPEND=""
-RDEPEND="
-	${DEPEND}
-"
-BDEPEND=""
 
 S="${WORKDIR}"
 
