@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-qt/qtsql-${QTMIN}:5
 	=kde-frameworks/kconfig-${KFMIN}*:5
 	=kde-frameworks/kcoreaddons-${KFMIN}*:5
+	=kde-frameworks/kwindowsystem-${KFMIN}*:5
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

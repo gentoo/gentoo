@@ -24,6 +24,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtsql-${QTMIN}:5
 	=kde-frameworks/kconfig-${KFMIN}*:5
 	=kde-frameworks/kcoreaddons-${KFMIN}*:5
+	=kde-frameworks/kwindowsystem-${KFMIN}*:5
 "
 RDEPEND="${COMMON_DEPEND}
 	>=kde-plasma/kactivitymanagerd-5.16.5:5
