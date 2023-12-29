@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,14 +15,13 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	=dev-ml/base-0.14*:=
-	dev-ml/findlib:=
-	>=dev-ml/ppxlib-0.18.0:=
-	<dev-ml/ppxlib-0.22:=
-	>=dev-ml/ocaml-compiler-libs-0.11.0:=
-	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
-	dev-ml/cinaps:=
-	dev-ml/sexplib0:=
+	=dev-ml/base-0.14*:=[ocamlopt?]
+	dev-ml/findlib:=[ocamlopt?]
+	<dev-ml/ppxlib-0.22:=[ocamlopt?]
+	dev-ml/ocaml-compiler-libs:=[ocamlopt?]
+	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=[ocamlopt?]
+	dev-ml/cinaps:=[ocamlopt?]
+	dev-ml/sexplib0:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 
