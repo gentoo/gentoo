@@ -5,6 +5,7 @@ aes - Use the AES cryptography instruction set
 asimddp - Use the Advanced SIMD dot product instructions
 crc32 - Use the CRC32 instruction set
 edsp - Use the enhanced DSP instructions (ARMv*E and ARMv6+)
+i8mm - Use the AArch64 Int8 matrix multiplication instructions
 iwmmxt - Use the iwMMXt instruction set
 iwmmxt2 - Use the iwMMXt2 instruction set
 neon - Use the NEON (ASIMD) instruction set
