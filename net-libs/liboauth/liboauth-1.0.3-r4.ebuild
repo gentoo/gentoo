@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 MIT )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 IUSE="curl doc"
 
 PATCHES=(
