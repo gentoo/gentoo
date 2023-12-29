@@ -53,6 +53,8 @@ DEPEND="
 	libatomic? ( dev-libs/libatomic_ops[${MULTILIB_USEDEP}] )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-1.7.2-backport-pr521.patch" )
+
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libunwind.h
 
