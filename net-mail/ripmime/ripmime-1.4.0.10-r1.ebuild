@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="extract attachment files out of a MIME-encoded email pack"
-HOMEPAGE="http://pldaniels.com/ripmime/"
-SRC_URI="http://www.pldaniels.com/ripmime/${P}.tar.gz"
+HOMEPAGE="https://pldaniels.com/ripmime/"
+SRC_URI="https://www.pldaniels.com/ripmime/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
