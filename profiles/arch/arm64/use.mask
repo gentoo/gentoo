@@ -113,7 +113,6 @@ dvd
 fits
 lpsol
 zvbi
-gts
 anthy
 snapcast
 
