@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 aes - Use the AES cryptography instruction set
+asimddp - Use the Advanced SIMD dot product instructions
 crc32 - Use the CRC32 instruction set
 edsp - Use the enhanced DSP instructions (ARMv*E and ARMv6+)
 iwmmxt - Use the iwMMXt instruction set
