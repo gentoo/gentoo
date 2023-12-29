@@ -81,6 +81,7 @@ fi
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-7.94-patches
+	"${FILESDIR}"/${PN}-7.94-autoconf-2.72.patch
 )
 
 pkg_setup() {

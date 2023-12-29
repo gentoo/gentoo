@@ -1,0 +1,31 @@
+--- a/libdnet-stripped/config/acinclude.m4
++++ b/libdnet-stripped/config/acinclude.m4
+@@ -201,6 +201,8 @@
+ dnl
+ AC_DEFUN(AC_DNET_IOCTL_ARP,
+     [AC_MSG_CHECKING(for arp(7) ioctls)
++    AC_PROG_EGREP
++    AC_PROG_CPP
+     AC_CACHE_VAL(ac_cv_dnet_ioctl_arp,
+ 	AC_EGREP_CPP(werd, [
+ #	include <sys/types.h>
+--- a/libdnet-stripped/configure.in
++++ b/libdnet-stripped/configure.in
+@@ -211,7 +211,7 @@
+ AC_REPLACE_FUNCS(err strlcpy strsep)
+ 
+ dnl Checks for other system-specific jonks.
+-if test "$CYGWIN" != yes ; then
++AS_IF([test "$CYGWIN" != yes], [
+ 	AC_DNET_BSD_BPF
+ 	AC_DNET_LINUX_PROCFS
+ 	AC_DNET_LINUX_PF_PACKET
+@@ -221,7 +221,7 @@
+ 	AC_DNET_RAWIP_HOST_OFFLEN
+ 	AC_DNET_RAWIP_COOKED
+ 	AC_DNET_GETKERNINFO
+-fi
++])
+ 
+ dnl Check for arp interface.
+ if test "$ac_cv_header_Iphlpapi_h" = yes ; then
