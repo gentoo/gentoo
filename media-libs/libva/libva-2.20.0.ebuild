@@ -33,7 +33,10 @@ RDEPEND="
 		x11-libs/libxcb:=[${MULTILIB_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	virtual/pkgconfig
