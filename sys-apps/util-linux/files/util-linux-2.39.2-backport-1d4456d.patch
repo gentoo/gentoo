@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/920904
+https://github.com/util-linux/util-linux/commit/1d4456dd81a64a73685df9e5f1232d566818e453
+
+From 1d4456dd81a64a73685df9e5f1232d566818e453 Mon Sep 17 00:00:00 2001
+From: John David Anglin <dave@parisc-linux.org>
+Date: Mon, 7 Aug 2023 15:37:17 +0000
+Subject: [PATCH] enosys: fix build on hppa
+
+The following patch fixes the definition of SECCOMP_ARCH_NATIVE
+on hppa.
+
+Signed-off-by: John David Anglin <dave.anglin@bell.net>
+---
+ include/audit-arch.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/include/audit-arch.h b/include/audit-arch.h
+index 63d9eb52c1..f1354eec5d 100644
+--- a/include/audit-arch.h
++++ b/include/audit-arch.h
+@@ -57,6 +57,12 @@
+ #    else
+ # 	 define SECCOMP_ARCH_NATIVE AUDIT_ARCH_LOONGARCH64
+ #    endif
++#elif __hppa__
++#    if __SIZEOF_POINTER__ == 4
++#	 define SECCOMP_ARCH_NATIVE AUDIT_ARCH_PARISC
++#    else
++#	 define SECCOMP_ARCH_NATIVE AUDIT_ARCH_PARISC64
++#    endif
+ #else
+ #    error Unknown target architecture
+ #endif
