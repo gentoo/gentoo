@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}.RELEASE"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-java/commons-lang:3.6
