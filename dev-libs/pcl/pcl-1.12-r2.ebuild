@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="Portable Coroutine Library"
-HOMEPAGE="http://xmailserver.org/libpcl.html"
-SRC_URI="http://xmailserver.org/${P}.tar.gz"
+HOMEPAGE="http://www.xmailserver.org/libpcl.html"
+SRC_URI="http://www.xmailserver.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/1"
