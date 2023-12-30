@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv ~x86"
 
 RDEPEND="net-libs/libnet:1.1"
 DEPEND="${RDEPEND}"
