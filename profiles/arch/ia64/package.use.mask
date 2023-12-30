@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (2023-12-30)
+# sys-auth/sssd not keyworded here anymore
+app-admin/sudo sssd
+
 # Mart Raudsepp <leio@gentoo.org> (2023-12-25)
 # sys-apps/xdg-desktop-portal not keyworded here yet
 x11-base/xwayland libei
