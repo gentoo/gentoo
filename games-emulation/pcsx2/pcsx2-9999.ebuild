@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtsvg-6.6.0:6
 	media-libs/libglvnd
 	media-libs/libpng:=
-	>=media-libs/libsdl2-2.28.4[haptic,joystick]
+	>=media-libs/libsdl2-2.28.5[haptic,joystick]
 	media-video/ffmpeg:=
 	net-libs/libpcap
 	net-misc/curl
