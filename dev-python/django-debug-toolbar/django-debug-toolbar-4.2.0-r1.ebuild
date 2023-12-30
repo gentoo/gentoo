@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -29,6 +29,8 @@ BDEPEND="
 		dev-python/html5lib[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=( "${FILESDIR}"/${P}-py312.patch )
 
 python_test() {
 	"${EPYTHON}" -m django test -v 2 --settings tests.settings \
