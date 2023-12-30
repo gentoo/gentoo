@@ -6,10 +6,13 @@ EAPI=7
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Font utilities for eg manipulating OTF"
-HOMEPAGE="https://lcdf.org/type/#typetools"
+HOMEPAGE="
+	https://lcdf.org/type/#typetools
+	https://github.com/kohler/lcdf-typetools
+"
 SRC_URI="https://lcdf.org/type/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+kpathsea"
