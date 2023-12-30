@@ -20,7 +20,7 @@ else
 
 	SRC_URI="https://github.com/raspberrypi/firmware/archive/${MY_PV}.tar.gz -> raspberrypi-firmware-${MY_PV}.tar.gz"
 	S="${WORKDIR}/firmware-${MY_PV}"
-	KEYWORDS="-* arm ~arm64"
+	KEYWORDS="-* arm arm64"
 fi
 
 LICENSE="GPL-2 raspberrypi-videocore-bin"
