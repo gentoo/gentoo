@@ -50,14 +50,6 @@ media-gfx/inkscape sourceview
 # Tests require shellcheck which is not currently available on hppa
 sys-process/systemd-cron test
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
-# MPV currently[1] has no plans to support >=lua5-3 making luajit
-# the only choice for maintained lua. Apply mask/force to override
-# the profile's defaults, and invert on arches where not keyworded.
-# Done this way also avoids conflicts for users using another default.
-# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
-media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
-
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
 app-accessibility/at-spi2-core dbus-broker

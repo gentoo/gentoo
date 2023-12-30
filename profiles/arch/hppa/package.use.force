@@ -1,14 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
-# MPV currently[1] has no plans to support >=lua5-3 making luajit
-# the only choice for maintained lua. Apply mask/force to override
-# the profile's defaults, and invert on arches where not keyworded.
-# Done this way also avoids conflicts for users using another default.
-# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
-media-video/mpv lua_single_target_lua5-1 -lua_single_target_luajit
-
 # Sam James <sam@gentoo.org> (2023-04-30)
 # Stacks on HPPA grow upwards and GCC doesn't support SSP or SCP there.
 sys-devel/gcc -default-stack-clash-protection
