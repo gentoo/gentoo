@@ -9,6 +9,9 @@
   <email>fonts@gentoo.org</email>
   <name>Fonts</name>
 </maintainer>
+<upstream>
+  <remote-id type="github">kohler/lcdf-typetools</remote-id>
+</upstream>
 <longdescription lang="en">
   The LCDF Typetools package contains several programs for manipulating
   PostScript Type 1, Type 1 multiple master, and PostScript-flavored OpenType
