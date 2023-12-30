@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-12-30)
+# Qt not marked stable here.
+app-doc/doxygen gui
+
 # Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
 # media-libs/libavif isn't stable here
 dev-lang/php avif
