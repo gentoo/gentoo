@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-default-args.patch
 	# prevent pre-stripped binaries
 	"${FILESDIR}"/${P}-no-strip.patch
+	# missing function prototype, see bug #882157
+	"${FILESDIR}"/${P}-missing-prototype.patch
 )
 
 src_prepare() {
