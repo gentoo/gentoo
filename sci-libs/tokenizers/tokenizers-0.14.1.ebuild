@@ -292,6 +292,8 @@ BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
+QA_FLAGS_IGNORED="/usr/bin/cli .*/site-packages/tokenizers/.*gnu.so"
+
 src_unpack() {
 	cargo_src_unpack
 }
