@@ -855,6 +855,9 @@ _modules_process_compress() {
 			compress=(gzip)
 		fi
 	elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
+		if ! type -P zstd &>/dev/null; then
+			die "zstd not found, please install app-arch/zstd or disable USE=modules-compress"
+		fi
 		compress=(zstd -qT"$(makeopts_jobs)" --rm)
 	else
 		die "USE=modules-compress enabled but no MODULE_COMPRESS* configured"
