@@ -40,20 +40,15 @@ DEPEND="
 	virtual/os-headers
 "
 BDEPEND="
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-ns-stylesheets
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 	virtual/pkgconfig
 	test? ( sys-apps/iproute2 )
 	nls? ( sys-devel/gettext )
 "
-
-if [[ ${PV} == 9999 ]] ; then
-	BDEPEND+="
-		app-text/docbook-xml-dtd:4.2
-		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-ns-stylesheets
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt
-	"
-fi
 
 src_prepare() {
 	default
@@ -73,14 +68,9 @@ src_configure() {
 		-Dsystemdunitdir=$(systemd_get_systemunitdir)
 		-DUSE_GETTEXT=$(usex nls true false)
 		$(meson_use !test SKIP_TESTS)
+		-DBUILD_HTML_MANS=$(usex doc true false)
+		-DBUILD_MANS=true
 	)
-
-	if use doc || [[ ${PV} == 9999 ]] ; then
-		emesonargs+=(
-			-DBUILD_HTML_MANS=true
-			-DBUILD_MANS=true
-		)
-	fi
 
 	meson_src_configure
 }
