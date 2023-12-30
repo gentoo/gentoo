@@ -11,7 +11,7 @@ SRC_URI="https://codeload.github.com/tgraf/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.3-r2:0=
