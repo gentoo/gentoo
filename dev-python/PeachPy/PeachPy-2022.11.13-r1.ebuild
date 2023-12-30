@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1
 
 CommitId=349e8f836142b2ed0efeb6bb99b1b715d87202e9
@@ -24,6 +24,9 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}"/${PN}-${CommitId}
+
+DOCS=README.rst
+
+distutils_enable_sphinx sphinx
