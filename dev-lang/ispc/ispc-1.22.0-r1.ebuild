@@ -25,7 +25,9 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	dev-cpp/tbb:=
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+	sys-libs/ncurses:=
 "
 RDEPEND="
 	${DEPEND}
