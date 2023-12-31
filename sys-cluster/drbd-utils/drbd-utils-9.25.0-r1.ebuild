@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 linux-info tmpfiles udev
+inherit autotools bash-completion-r1 flag-o-matic linux-info tmpfiles udev
 
 DESCRIPTION="mirror/replicate block-devices across a network-connection"
 HOMEPAGE="https://www.linbit.com/drbd"
@@ -71,6 +71,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch, bug #863728
+	# https://github.com/LINBIT/drbd-utils/issues/40
+	filter-lto
+
 	local myeconfargs=(
 		--localstatedir="${EPREFIX}"/var
 		# don't autodetect systemd/sysv; install systemd and use our own openrc
