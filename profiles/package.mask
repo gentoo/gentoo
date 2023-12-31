@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
+# Buggy code with a number of local patches already.  Last release
+# in 2003.  media-sound/jack2 should be a good alternative.
+# Removal on 2024-01-30.  Bug #875152.
+media-sound/daudio
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # dev-python/pydocstyle does not work on Python 3.12 and it has been
 # archived in 2023-11.  dev-python/pylama is its only reverse
 # dependency, and did not have any activity since 2022-08.
