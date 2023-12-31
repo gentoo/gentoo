@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
+# Apparently broken on kernels > 5.15, with data loss potential.
+# Last release in 2010.  sys-apps/hd-idle is a good replacement.
+# Removal on 2024-01-30.  Bug #849077.
+sys-block/noflushd
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Buggy code that carries local patches already.  Last release in 2011.
 # Removal on 2024-01-30.  Bug #878629.
 net-proxy/tayga
