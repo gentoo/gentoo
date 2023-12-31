@@ -415,13 +415,6 @@ dev-ruby/semver2
 # Removal on 2023-12-30.  Bug #916535.
 dev-python/backcall
 
-# Michał Górny <mgorny@gentoo.org> (2023-11-30)
-# Originally added for net-im/synapse, which switched
-# to dev-python/immutabledict since.  Hacky C extension that supports
-# up to Python 3.10.  No revdeps left.
-# Removal on 2023-12-30.  Bug #918899.
-dev-python/frozendict
-
 # John Helmert III <ajak@gentoo.org> (2023-11-25)
 # Multiple vulnerabilities, unmaintained upstream and in Gentoo.
 # subtitleripper included as sole reverse dependency, similarly
