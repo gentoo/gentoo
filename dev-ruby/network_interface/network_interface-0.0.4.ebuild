@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_GEMSPEC="network_interface.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
