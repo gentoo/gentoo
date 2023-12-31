@@ -56,6 +56,10 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
 	)
+
+	# typo
+	mv lib_pypy/cffi{.,-}1.16.0.dist-info || die
+
 	default
 }
 
