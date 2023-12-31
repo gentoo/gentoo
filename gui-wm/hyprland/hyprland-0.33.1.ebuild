@@ -77,6 +77,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/gcc14.patch"
+)
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
