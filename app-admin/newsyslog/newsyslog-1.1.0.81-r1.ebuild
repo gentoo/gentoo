@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,10 +36,10 @@ src_configure() {
 }
 
 src_install() {
+	# The "install" target would install cached man pages #840951
 	emake \
 		DESTDIR="${D}" \
-		catmandir="${T}"/dont-install \
-		install
+		install-exec install-man
 
 	einstalldocs
 	dodoc newsyslog.conf ToDo
