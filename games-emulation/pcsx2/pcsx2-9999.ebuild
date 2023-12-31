@@ -29,13 +29,16 @@ RESTRICT="!test? ( test )"
 
 # dlopen: qtsvg, vulkan-loader, wayland
 COMMON_DEPEND="
+	app-arch/lz4:=
 	app-arch/xz-utils
+	app-arch/zstd:=
 	dev-libs/libaio
 	>=dev-qt/qtbase-6.6.0:6[gui,widgets]
 	>=dev-qt/qtsvg-6.6.0:6
 	media-libs/libglvnd
 	media-libs/libpng:=
 	>=media-libs/libsdl2-2.28.5[haptic,joystick]
+	media-libs/libwebp:=
 	media-video/ffmpeg:=
 	net-libs/libpcap
 	net-misc/curl
@@ -94,6 +97,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
+		-DDISABLE_ADVANCE_SIMD=yes
 		-DDISABLE_BUILD_DATE=yes
 		-DENABLE_TESTS=$(usex test)
 		-DUSE_LINKED_FFMPEG=yes
@@ -101,11 +105,6 @@ src_configure() {
 		-DUSE_VULKAN=$(usex vulkan)
 		-DWAYLAND_API=$(usex wayland)
 		-DX11_API=yes # X libs are currently hard-required either way
-
-		# sse4.1 is the bare minimum required, -m is required at build time
-		# (see PCSX2Base.h) and it dies if no support at runtime (AppInit.cpp)
-		# https://github.com/PCSX2/pcsx2/pull/4329
-		-DARCH_FLAG=-msse4.1
 
 		# not packaged due to bug #885471, but still disable for no automagic
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libbacktrace=yes
