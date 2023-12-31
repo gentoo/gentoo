@@ -33,7 +33,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="libusb lm-sensors mqtt networkmanager +pcre rtlsdr selinux +suid ubertooth udev"
+IUSE="libusb lm-sensors mqtt networkmanager +pcre rtlsdr selinux +suid ubertooth udev +wext"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
@@ -121,6 +121,7 @@ src_configure() {
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
 		$(use_enable ubertooth) \
+		$(use_enable wext linuxwext) \
 		--sysconfdir=/etc/kismet \
 		--disable-optimization
 }
