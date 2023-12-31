@@ -41,6 +41,18 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	if use amd64; then
+		# On amd64 systems, build system enables x86/i686 build too.
+		# This ebuild doesn't even have multilib support, nor need it.
+		# https://bugs.gentoo.org/730062
+		ewarn "Removing auto-x86 build on amd64"
+		sed -i -e 's:set(target_arch "i686"):return():' cmake/GenerateBuiltins.cmake || die
+	fi
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DARM_ENABLED=$(usex arm)
