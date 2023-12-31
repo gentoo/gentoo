@@ -25,4 +25,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
+	test? ( =kde-frameworks/kwindowsystem-${KFMIN}*:6 )
 "
