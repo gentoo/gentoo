@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,53 +17,38 @@ S="${WORKDIR}/apache-ant-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/ant.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-ant )"
 # reset to ant-core:0 when ready
 CP_DEPEND="
-	dev-java/ant-core:0
+	>=dev-java/ant-1.10.14:0
 	dev-java/junit:4
 "
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
-	test? (
-		dev-java/ant-testutil:0
-	)
+	test? ( >=dev-java/ant-1.10.14:0[junit,testutil] )
 "
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
 DOCS=( NOTICE README WHATSNEW )
 HTML_DOCS=( README.html )
+PATCHES=(
+	# Some tests expect classes in "build" instead in "target" directory.
+	"${FILESDIR}/antunit-1.4.1-gentoo.patch"
+)
 
 JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src/main"
-
-JAVA_TEST_GENTOO_CLASSPATH="ant-testutil"
+JAVA_TEST_GENTOO_CLASSPATH="ant"
 JAVA_TEST_SRC_DIR="src/tests/junit"
 
 src_prepare() {
+	default #780585
 	java-pkg-2_src_prepare
+	# java-pkg-simple.eclass wants resources in JAVA_RESOURCE_DIRS
 	mkdir -p "res/org/apache/ant/antunit" || die
 	cp {src/main,res}/org/apache/ant/antunit/antlib.xml || die
-
-	# Some tests expect classes in "build" instead in "target" directory.
-	sed -e 's:build\(/classes\):target\1:' \
-		-i src/etc/testcases/assert.xml \
-		-i src/tests/junit/org/apache/ant/antunit/AssertTest.java || die
-	sed -e 's:build\(/test-classes\):target\1:' \
-		-i src/etc/testcases/antunit/java-io.xml || die
-}
-
-src_test() {
-	local vm_version="$(java-config -g PROVIDES_VERSION)"
-	if ver_test "${vm_version}" -ge 21; then
-		eapply "${FILESDIR}/antunit-1.4.1-AntUnitTest.patch"
-		# java.lang.UnsupportedOperationException:
-		# The Security Manager is deprecated and will be removed in a future release
-		JAVA_TEST_EXCLUDES="org.apache.ant.antunit.junit3.EatYourOwnDogFoodTest"
-	fi
-	java-pkg-simple_src_test
 }
