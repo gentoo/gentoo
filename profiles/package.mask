@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-12-31)
+# Discontinued fork of net-firewall/firehol.  Last updated in 2013.
+# Unmaintained in Gentoo since 2015.  Use the original package instead.
+# Removal on 2024-01-30.  Bug #920659.
+net-firewall/sanewall
+
 # Petr Vaněk <arkamar@gentoo.org> (2023-12-27)
 # Unmaintained package with multiple open bugs. Upstream seems to be inactive.
 # Version bumps are available for 7 years but nobody seems to care.
