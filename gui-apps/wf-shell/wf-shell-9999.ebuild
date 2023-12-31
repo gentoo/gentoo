@@ -27,7 +27,7 @@ RESTRICT="test"
 DEPEND="
 	dev-cpp/gtkmm:3.0[wayland]
 	dev-libs/gobject-introspection
-	dev-libs/libdbusmenu
+	dev-libs/libdbusmenu[gtk3]
 	>=gui-libs/gtk-layer-shell-0.6
 	dev-libs/wayland
 	gui-libs/wf-config:${SLOT}
