@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit python-single-r1 cmake cuda flag-o-matic prefix
 
 MYPN=pytorch
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm ffmpeg gloo mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -38,7 +38,7 @@ RDEPEND="
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef
-	sci-libs/lapack
+	virtual/lapack
 	>=sci-libs/onnx-1.12.0
 	<sci-libs/onnx-1.15.0
 	sci-libs/foxi
@@ -60,10 +60,10 @@ RDEPEND="
 	qnnpack? ( sci-libs/QNNPACK )
 	tensorpipe? ( sci-libs/tensorpipe[cuda?] )
 	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
+	mkl? ( sci-libs/mkl )
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/eigen
 	cuda? ( >=dev-libs/cutlass-3.1.0 )
 	dev-libs/psimd
 	dev-libs/FP16
@@ -87,6 +87,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-gcc13.patch
 	"${FILESDIR}"/${PN}-2.0.0-cudnn_include_fix.patch
 	"${FILESDIR}"/${PN}-2.1.1-cudaExtra.patch
+	"${FILESDIR}"/${PN}-2.1.2-fix-rpath.patch
+	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
 )
 
 src_prepare() {
@@ -169,19 +171,24 @@ src_configure() {
 		-DPYBIND11_PYTHON_VERSION="${EPYTHON#python}"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DUSE_ITT=OFF
-		-DBLAS=Eigen # avoid the use of MKL, if found on the system
-		-DUSE_SYSTEM_EIGEN_INSTALL=ON
 		-DUSE_SYSTEM_PTHREADPOOL=ON
 		-DUSE_SYSTEM_FXDIV=ON
 		-DUSE_SYSTEM_FP16=ON
 		-DUSE_SYSTEM_GLOO=ON
 		-DUSE_SYSTEM_ONNX=ON
 		-DUSE_SYSTEM_SLEEF=ON
+		-DUSE_METAL=OFF
 
 		-Wno-dev
 		-DTORCH_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
 		-DLIBSHM_INSTALL_LIB_SUBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
+
+	if use mkl; then
+		mycmakeargs+=(-DBLAS=MKL)
+	else
+		mycmakeargs+=(-DBLAS=Generic -DBLAS_LIBRARIES=)
+	fi
 
 	if use cuda; then
 		addpredict "/dev/nvidiactl" # bug 867706

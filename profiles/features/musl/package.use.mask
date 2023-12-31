@@ -142,3 +142,6 @@ app-shells/bash mem-scramble
 
 # static linking works with musl
 app-shells/mksh -static
+
+# linked against glibc
+sci-libs/caffe2 mkl
