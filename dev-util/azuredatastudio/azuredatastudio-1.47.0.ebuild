@@ -6,7 +6,8 @@ EAPI=8
 inherit unpacker xdg
 
 DESCRIPTION="Data management and development tool from Microsoft"
-HOMEPAGE="https://vscodium.com/"
+HOMEPAGE="https://learn.microsoft.com/sql/azure-data-studio/
+	https://github.com/microsoft/azuredatastudio/"
 SRC_URI="
 	amd64? (
 		https://azuredatastudio-update.azurewebsites.net/${PV}/linux-deb-x64/stable
