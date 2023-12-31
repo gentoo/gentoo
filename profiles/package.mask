@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
+# Unmaintained.  A number of serious bugs reported.  Homepage gone.
+# No release since at least 2010.
+# Removal on 2024-01-30.  Bug #915827.
+app-misc/utimer
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Apparently broken on kernels > 5.15, with data loss potential.
 # Last release in 2010.  sys-apps/hd-idle is a good replacement.
 # Removal on 2024-01-30.  Bug #849077.
