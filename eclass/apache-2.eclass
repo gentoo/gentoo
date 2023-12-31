@@ -88,7 +88,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc gdbm ldap selinux ssl static suexec +suexec-caps suexec-syslog split-usr threads"
+IUSE="${IUSE} debug doc gdbm ldap selinux ssl static suexec +suexec-caps suexec-syslog threads"
 
 for module in ${IUSE_MODULES} ; do
 	case ${module} in

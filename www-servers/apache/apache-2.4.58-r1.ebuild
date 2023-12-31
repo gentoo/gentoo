@@ -8,6 +8,9 @@ GENTOO_PATCHSTAMP="20231019"
 GENTOO_DEVELOPER="graaff"
 GENTOO_PATCHNAME="gentoo-apache-2.4.58"
 
+# ancient hack: bug #502384
+IUSE="split-usr"
+
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
 IUSE_MPMS_THREAD="event worker"

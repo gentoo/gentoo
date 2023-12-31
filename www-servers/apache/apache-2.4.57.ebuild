@@ -8,6 +8,9 @@ GENTOO_PATCHSTAMP="20210212"
 GENTOO_DEVELOPER="polynomial-c"
 GENTOO_PATCHNAME="gentoo-apache-2.4.46-r6"
 
+# ancient hack: bug #502384
+IUSE="split-usr"
+
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
 IUSE_MPMS_THREAD="event worker"
