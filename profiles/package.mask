@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ####################################################################
@@ -32,6 +32,13 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Petr Vaněk <arkamar@gentoo.org> (2024-01-01)
+# Mirror restricted package, but the source code is no longer available.
+# Homepage gone. Moreover, there is multiple issues reported with modern
+# compilers.
+# Removal: 2024-01-31.  Bug #906645.
+net-mail/courierpassd
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Unmaintained.  A number of serious bugs reported.  Homepage gone.
