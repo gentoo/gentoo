@@ -423,7 +423,7 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
-inherit cargo shell-completion
+inherit cargo shell-completion systemd readme.gentoo-r1
 
 DESCRIPTION="Shell history manager supporting encrypted synchronisation"
 HOMEPAGE="https://atuin.sh https://github.com/atuinsh/atuin"
@@ -444,6 +444,7 @@ REQUIRED_USE="
 	sync? ( client )
 	test? ( client server sync )
 "
+RDEPEND="server? ( acct-user/atuin )"
 BDEPEND=">=virtual/rust-1.71.0"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
@@ -484,13 +485,20 @@ src_compile() {
 					 -o completions \
 			|| die
 	done
+
+	mkdir shell-init || die
+	for shell in bash fish zsh; do
+		"${ATUIN_BIN}" init ${shell} > shell-init/${shell} || die
+	done
 }
 
 src_install() {
 	exeinto "/usr/bin"
 	doexe "${ATUIN_BIN}"
 
-	if ! use server; then
+	if use server; then
+		systemd_dounit "${FILESDIR}/atuin.service"
+	else
 		rm -r "docs/docs/self-hosting" || die
 	fi
 
@@ -499,4 +507,18 @@ src_install() {
 	newbashcomp "completions/${PN}.bash" "${PN}"
 	dozshcomp "completions/_${PN}"
 	dofishcomp "completions/${PN}.fish"
+
+	insinto "/usr/share/${PN}"
+	doins -r shell-init
+
+	local DOC_CONTENTS="Gentoo installs atuin's shell-init code under
+		  /usr/share/atuin/shell-init/.
+		  Therefore, instead of using, e.g., 'eval \"\$(atuin init zsh)\"' in
+		  your .zshrc you can simply put \"source /usr/share/atuin/shell-init/zsh\"
+		  there, which avoids the cost of forking a process."
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
