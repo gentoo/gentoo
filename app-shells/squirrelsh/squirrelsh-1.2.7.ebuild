@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Cross-platform object-oriented scripting shell using the squirrel language"
-HOMEPAGE="http://squirrelsh.sourceforge.net/"
+HOMEPAGE="https://squirrelsh.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc"
@@ -30,6 +30,7 @@ PATCHES=(
 src_configure() {
 	#This package uses a custom written configure script
 	./configure --prefix="${D}"/usr \
+		--with-librarian="$(tc-getAR) rc" \
 		--with-cc="$(tc-getCC)" \
 		--with-cpp="$(tc-getCXX)" \
 		--with-linker="$(tc-getCXX)" \
