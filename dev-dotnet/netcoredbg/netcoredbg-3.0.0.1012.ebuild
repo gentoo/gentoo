@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -198,11 +198,13 @@ src_prepare() {
 	fi
 
 	export DOTNET_CLI_TELEMETRY_OPTOUT=1
+	export DOTNET_NOLOGO=1
 	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
 	export MSBUILDDISABLENODEREUSE=1
 	export UseSharedCompilation=false
 
-	cat <<EOF > nuget.config || die
+	find "${S}" -type f -iname nuget.config -exec rm -v {} + || die
+	cat <<-EOF > NuGet.config || die
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
 <packageSources>
@@ -211,7 +213,7 @@ src_prepare() {
 </packageSources>
 </configuration>
 EOF
-	cp nuget.config tools/generrmsg/nuget.xml || die
+	cp NuGet.config tools/generrmsg/nuget.xml || die
 
 	cmake_src_prepare
 }
