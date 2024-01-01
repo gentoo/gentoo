@@ -1,9 +1,9 @@
 Backport of https://github.com/scribusproject/scribus/commit/065459990d1fe097d4339653c7ba600cc3547523 to fix
-https://bugzilla.redhat.com/show_bug.cgi?id=2155514: Fails to build with Python 3.12: error: 'PyUnicode_AS_UNICODE'
+https://bugzilla.redhat.com/2155514: Fails to build with Python 3.12: error: 'PyUnicode_AS_UNICODE'
 was not declared in this scope.
 
---- scribus-1.5.8/scribus/plugins/scriptplugin/cmdgetsetprop.cpp		2022-01-23 17:16:04.000000000 +0100
-+++ scribus-1.5.8/scribus/plugins/scriptplugin/cmdgetsetprop.cpp.python-3.12	2023-06-17 23:59:35.497937156 +0200
+--- scribus-1.5.8/scribus/plugins/scriptplugin/cmdgetsetprop.cpp
++++ scribus-1.5.8/scribus/plugins/scriptplugin/cmdgetsetprop.cpp.python-3.12
 @@ -409,10 +409,8 @@
  			success = obj->setProperty(propertyName, QString::fromUtf8(PyBytes_AsString(objValue)));
  		else if (PyUnicode_Check(objValue))

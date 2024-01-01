@@ -1,5 +1,5 @@
---- a/CMakeLists.txt	2022-01-23 17:14:43.000000000 +0100
-+++ b/CMakeLists.txt	2023-02-05 15:59:57.828047452 +0100
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -362,25 +362,6 @@
  if(APPLE)
  	### Include our Apple configure commands

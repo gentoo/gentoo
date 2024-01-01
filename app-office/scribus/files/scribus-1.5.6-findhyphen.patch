@@ -1,5 +1,5 @@
---- a/CMakeLists_Dependencies.cmake	2019-07-31 00:34:43.000000000 +0200
-+++ b/CMakeLists_Dependencies.cmake	2019-10-02 00:17:34.968355656 +0200
+--- a/CMakeLists_Dependencies.cmake
++++ b/CMakeLists_Dependencies.cmake
 @@ -954,6 +954,16 @@
  endif()
  #>>HUNSPELL for Speelling support

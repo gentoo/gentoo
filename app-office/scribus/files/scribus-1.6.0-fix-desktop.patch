@@ -1,0 +1,20 @@
+--- a/scribus.desktop.in
++++ b/scribus.desktop.in
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+ Type=Application
+-Name=Scribus
+-Name[ar]=سكريبس
+-Name[fa]=اسکریباس
+-Name[lo]=ສະຄຣີບັດສ໌
+-Name[ru]=Scribus
+-Name[ta]=ஸ்கிரிபஸ்
++Name=Scribus@TAG_VERSION@
++Name[ar]=سكريبس@TAG_VERSION@
++Name[fa]=اسکریباس@TAG_VERSION@
++Name[lo]=ສະຄຣີບັດສ໌@TAG_VERSION@
++Name[ru]=Scribus@TAG_VERSION@
++Name[ta]=ஸ்கிரிபஸ்@TAG_VERSION@
+ Comment=Page Layout and Publication
+ Comment[ar]=سكريبس
+ Comment[fa]=اسکریباس

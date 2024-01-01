@@ -1,5 +1,3 @@
-diff --git a/CMakeLists_Directories.cmake b/CMakeLists_Directories.cmake
-index db6133f..faf85ce 100644
 --- a/CMakeLists_Directories.cmake
 +++ b/CMakeLists_Directories.cmake
 @@ -36,14 +36,16 @@ else()
