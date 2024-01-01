@@ -179,6 +179,15 @@ fi
 qt5-build_src_prepare() {
 	qt5_prepare_env
 
+	# Workaround for bug #915203
+	# Upstream: https://bugreports.qt.io/browse/QTBUG-111514
+	if [[ ${PN} != qtcore ]]; then
+		append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+	fi
+
+	# many bugs, no one to fix
+	filter-lto
+
 	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
 			einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
@@ -230,15 +239,6 @@ qt5-build_src_configure() {
 	if [[ ${QT5_MODULE} == qttools ]]; then
 		qt5_tools_configure
 	fi
-
-	# Workaround for bug #915203
-	# Upstream: https://bugreports.qt.io/browse/QTBUG-111514
-	if [[ ${PN} != qtcore ]] ; then
-		append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
-	fi
-
-	# many bugs, no one to fix
-	filter-lto
 
 	qt5_foreach_target_subdir qt5_qmake
 }
