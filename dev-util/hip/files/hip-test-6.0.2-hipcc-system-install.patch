@@ -1,0 +1,43 @@
+In Gentoo rocm_agent_enumerator is installed by rocminfo and is in PATH.
+
+Index: catch/CMakeLists.txt
+===================================================================
+--- catch.orig/CMakeLists.txt
++++ catch/CMakeLists.txt
+@@ -55,9 +55,9 @@ endif()
+ message(STATUS "HIP_PATH: ${HIP_PATH}")
+ message(STATUS "ROCM_PATH: ${ROCM_PATH}")
+ 
+-set(CMAKE_CXX_COMPILER "${HIP_PATH}/bin/hipcc${EXT}")
+-set(CMAKE_C_COMPILER "${HIP_PATH}/bin/hipcc${EXT}")
+-set(HIPCONFIG_EXECUTABLE "${HIP_PATH}/bin/hipconfig${EXT}")
++set(CMAKE_CXX_COMPILER "hipcc${EXT}")
++set(CMAKE_C_COMPILER "hipcc${EXT}")
++set(HIPCONFIG_EXECUTABLE "hipconfig${EXT}")
+ execute_process(COMMAND ${HIPCONFIG_EXECUTABLE} --version
+                 OUTPUT_VARIABLE HIP_VERSION
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+@@ -183,9 +183,8 @@ message(STATUS "CMAKE HIP ARCHITECTURES:
+ # OFFLOAD_ARCH_STR
+ # rocm_agent_enumerator
+ if(NOT DEFINED OFFLOAD_ARCH_STR
+-   AND EXISTS "${ROCM_PATH}/bin/rocm_agent_enumerator"
+    AND HIP_PLATFORM STREQUAL "amd" AND UNIX)
+-    execute_process(COMMAND "${ROCM_PATH}/bin/rocm_agent_enumerator"
++    execute_process(COMMAND "rocm_agent_enumerator"
+          OUTPUT_VARIABLE HIP_GPU_ARCH
+          RESULT_VARIABLE ROCM_AGENT_ENUM_RESULT
+          OUTPUT_STRIP_TRAILING_WHITESPACE)
+Index: catch/hipTestMain/hip_test_context.cc
+===================================================================
+--- catch.orig/hipTestMain/hip_test_context.cc
++++ catch/hipTestMain/hip_test_context.cc
+@@ -37,7 +37,7 @@ std::string TestContext::substringFound(
+ 
+ std::string TestContext::getCurrentArch() {
+ #if HT_LINUX
+-  const char* cmd = "/opt/rocm/bin/rocm_agent_enumerator | sort -u | xargs | sed -e 's/ /;/g'";
++  const char* cmd = "rocm_agent_enumerator | sort -u | xargs | sed -e 's/ /;/g'";
+   std::array<char, 1024> buffer;
+   std::string result;
+   std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);

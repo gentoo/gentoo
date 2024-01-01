@@ -1,0 +1,23 @@
+diff --git a/hipamd/CMakeLists.txt b/hipamd/CMakeLists.txt
+index 7ad30019d..e79ea0714 100755
+--- a/hipamd/CMakeLists.txt
++++ b/hipamd/CMakeLists.txt
+@@ -398,18 +398,7 @@ if (NOT ${HIPCC_BIN_DIR} STREQUAL "")
+       set(hipcc_bin ${hipcc_bin}.exe)
+       set(hipconfig_bin ${hipconfig_bin}.exe)
+     endif()
+-    if(EXISTS ${hipcc_bin} AND EXISTS ${hipconfig_bin})
+-      install(PROGRAMS ${hipcc_bin} DESTINATION bin)
+-      install(PROGRAMS ${hipconfig_bin} DESTINATION bin)
+-    endif()
+   endif()
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipcc DESTINATION bin)
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipconfig DESTINATION bin)
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipcc.pl DESTINATION bin)
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipconfig.pl DESTINATION bin)
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipvars.pm DESTINATION bin)
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipcc.bat DESTINATION bin)
+-  install(PROGRAMS ${HIPCC_BIN_DIR}/hipconfig.bat DESTINATION bin)
+ endif()
+ 
+ #############################
