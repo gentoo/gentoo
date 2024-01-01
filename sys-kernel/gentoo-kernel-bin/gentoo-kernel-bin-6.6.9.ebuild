@@ -100,11 +100,12 @@ src_configure() {
 	)
 
 	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
-	if has "${ARCH}" amd64 arm64; then
-		local image_path="${kernel_dir}/$(dist-kernel_get_image_path)"
-		# We need the plain image for the test phase
-		kernel-install_extract_from_uki linux \
-			"${image_path%/*}"/uki.efi "${image_path}"
+	local image="${kernel_dir}/$(dist-kernel_get_image_path)"
+	local uki="${image%/*}/uki.efi"
+	if [[ -s ${uki} ]]; then
+		# We need to extract the plain image for the test phase
+		# and USE=-generic-uki.
+		kernel-install_extract_from_uki linux "${uki}" "${image}"
 	fi
 
 	mkdir modprep || die
@@ -115,20 +116,22 @@ src_configure() {
 src_test() {
 	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
 	kernel-install_test "${KPV}" \
-		"${kernel_dir}/$(dist-kernel_get_image_path)" \
+		"${WORKDIR}/${kernel_dir}/$(dist-kernel_get_image_path)" \
 		"${BINPKG}/image/lib/modules/${KPV}"
 }
 
 src_install() {
-	if has "${ARCH}" amd64 arm64; then
-		local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+	local image="${kernel_dir}/$(dist-kernel_get_image_path)"
+	local uki="${image%/*}/uki.efi"
+	if [[ -s ${uki} ]]; then
 		# Keep the kernel image type we don't want out of install tree
 		# Replace back with placeholder
-		local to_remove="${kernel_dir}/$(dist-kernel_get_image_path)"
-		if ! use generic-uki; then
-			to_remove=${to_remove%/*}/uki.efi
+		if use generic-uki; then
+			> "${image}" || die
+		else
+			> "${uki}" || die
 		fi
-		> "${to_remove}" || die
 	fi
 
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
