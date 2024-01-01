@@ -84,3 +84,28 @@ index 2fa046c0..53cf832f 100644
 -- 
 2.42.1
 
+From 8927b2e98efa070999fdf2c3c61825e672044ffd Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 1 Jan 2024 22:05:34 +0000
+Subject: [PATCH] meson: Fix missing v4l2gl dependency on argp
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ contrib/test/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/contrib/test/meson.build b/contrib/test/meson.build
+index 29b51df6..48ee67b1 100644
+--- a/contrib/test/meson.build
++++ b/contrib/test/meson.build
+@@ -107,6 +107,7 @@ if dep_gl.found() and dep_glu.found() and dep_x11.found()
+     )
+ 
+     v4l2gl_deps = [
++        dep_argp,
+         dep_gl,
+         dep_glu,
+         dep_libv4l2,
+-- 
+2.43.0
+
