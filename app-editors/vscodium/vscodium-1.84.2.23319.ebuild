@@ -42,7 +42,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* amd64 ~arm ~arm64"
-IUSE="kerberos"
+IUSE="kerberos libnotify"
 RESTRICT="strip bindist"
 
 RDEPEND="
@@ -65,7 +65,7 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/libdrm
-	x11-libs/libnotify
+	libnotify? ( x11-libs/libnotify )
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXcomposite
