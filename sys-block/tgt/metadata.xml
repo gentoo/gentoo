@@ -10,9 +10,6 @@
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<use>
-		<flag name="ibmvio">Add support for IBM Virtual I/O</flag>
-		<flag name="fcp">Add support for new FC protocol</flag>
-		<flag name="fcoe">Add support for FCoE protocol</flag>
 		<flag name="rbd">Add support for ceph block devices</flag>
 	</use>
 	<upstream>
