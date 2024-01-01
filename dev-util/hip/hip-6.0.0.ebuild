@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -80,6 +80,16 @@ src_prepare() {
 
 src_configure() {
 	use debug && CMAKE_BUILD_TYPE="Debug"
+
+	# Fix ld.lld linker error: https://github.com/ROCm/HIP/issues/3382
+	# See also: https://github.com/gentoo/gentoo/pull/29097
+
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
 
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
