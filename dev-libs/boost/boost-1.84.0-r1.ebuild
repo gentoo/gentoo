@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,6 +55,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79.0-boost-mpi-python-PEP-328.patch
 	"${FILESDIR}"/${PN}-1.81.0-phoenix-multiple-definitions.patch
 	"${FILESDIR}"/${PN}-1.83.0-math-gcc14.patch
+
+	# upstreamed
+	"${FILESDIR}"/${PN}-1.84.0-signals2-patch1.patch
+	"${FILESDIR}"/${PN}-1.84.0-signals2-patch2.patch
 )
 
 python_bindings_needed() {
