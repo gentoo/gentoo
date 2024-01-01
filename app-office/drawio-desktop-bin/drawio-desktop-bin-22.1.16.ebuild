@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,11 +18,11 @@ HOMEPAGE="https://www.drawio.com/"
 
 SRC_URI="
 	amd64? ( https://github.com/jgraph/drawio-desktop/releases/download/v${PV}/drawio-amd64-${PV}.deb
-	-> ${PN}-amd64-${PV}.deb )
+		-> ${PN}-amd64-${PV}.deb )
 	arm64? ( https://github.com/jgraph/drawio-desktop/releases/download/v${PV}/drawio-arm64-${PV}.deb
-	-> ${PN}-arm64-${PV}.deb )
+		-> ${PN}-arm64-${PV}.deb )
 	https://github.com/jgraph/drawio-desktop/blob/${RC_COMMIT}/build/icon.svg
-	-> drawio-${PV}-icon.svg
+		-> drawio-${PV}-icon.svg
 "
 S="${WORKDIR}"
 
@@ -80,7 +80,7 @@ src_prepare() {
 }
 
 src_install() {
-	local DESTDIR="/opt/drawio"
+	local destdir="/opt/drawio"
 
 	# Copy icons
 	local IC_SIZE
@@ -100,14 +100,14 @@ src_install() {
 	insinto /usr/share/mime/packages
 	doins "usr/share/mime/packages/drawio.xml"
 
-	exeinto "${DESTDIR}"
+	exeinto "${destdir}"
 	doexe opt/drawio/chrome-sandbox opt/drawio/chrome_crashpad_handler opt/drawio/drawio opt/drawio/*.so*
 
-	insinto "${DESTDIR}"
+	insinto "${destdir}"
 	insopts -m0644
 	doins opt/drawio/*.pak opt/drawio/*.bin opt/drawio/*.json opt/drawio/*.dat
 	insopts -m0755
 	doins -r opt/drawio/locales opt/drawio/resources
 
-	dosym "${DESTDIR}"/drawio /usr/bin/drawio
+	dosym "${destdir}"/drawio /usr/bin/drawio
 }
