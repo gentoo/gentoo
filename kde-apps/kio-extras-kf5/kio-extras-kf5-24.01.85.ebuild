@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,9 +47,9 @@ DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
 	activities? (
-		>=dev-qt/qtbase-${QTMIN}:6[sql]
-		kde-plasma/plasma-activities:6
-		kde-plasma/plasma-activities-stats:6
+		>=dev-qt/qtsql-${QTMIN}:5
+		>=kde-plasma/plasma-activities-${KFMIN}:5
+		>=kde-plasma/plasma-activities-stats-${KFMIN}:5
 	)
 	ios? (
 		app-pda/libimobiledevice:=
