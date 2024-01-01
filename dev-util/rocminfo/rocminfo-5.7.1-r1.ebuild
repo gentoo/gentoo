@@ -22,9 +22,10 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND=">=dev-libs/rocr-runtime-${PV}"
 DEPEND="${RDEPEND}"
 
-#PATCHES=(
-#	"${FILESDIR}/${PN}-5.5.1-detect-builtin-amdgpu.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/${PN}-6.0.0-detect-builtin-amdgpu.patch"
+	"${FILESDIR}/${PN}-6.0.0_python-3.12.patch"
+)
 
 src_prepare() {
 	sed -e "/CPACK_RESOURCE_FILE_LICENSE/d" -i CMakeLists.txt || die
