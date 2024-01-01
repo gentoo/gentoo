@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,6 +68,11 @@ BDEPEND="
 EPYTEST_DESELECT=(
 	# TODO; incompatible Qt version?
 	Tests/test_qt_image_qapplication.py::test_sanity
+)
+
+PATCHES=(
+	# https://github.com/python-pillow/pillow/pull/7594
+	"${FILESDIR}/${P}-olefile-0.47.patch"
 )
 
 usepil() {
