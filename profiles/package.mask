@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-01-01)
+# The version seems to introduce an ABI breakage that causes
+# incompatibility with extensions built using the previous version
+# https://github.com/pypy/pypy/issues/4816
+=dev-python/pypy3-7.3.14
+=dev-python/pypy3_10-7.3.14-r1
+=dev-python/pypy3_10-exe-7.3.14
+=dev-python/pypy3_10-exe-bin-7.3.14
+
 # Petr Vaněk <arkamar@gentoo.org> (2024-01-01)
 # Mirror restricted package, but the source code is no longer available.
 # Homepage gone. Moreover, there is multiple issues reported with modern
