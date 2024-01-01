@@ -11,13 +11,13 @@ inherit cmake docs flag-o-matic llvm rocm
 
 LLVM_MAX_SLOT=17
 
-TEST_PV=5.7.0 # No hip-test-5.7.1 release
+TEST_PV=${PV}
 
 DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
-HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipamd"
-SRC_URI="https://github.com/ROCm-Developer-Tools/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz
-	https://github.com/ROCm-Developer-Tools/HIP/archive/refs/tags/rocm-${PV}.tar.gz -> hip-${PV}.tar.gz
-	test? ( https://github.com/ROCm-Developer-Tools/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz )"
+HOMEPAGE="https://github.com/ROCm/hipamd"
+SRC_URI="https://github.com/ROCm/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz
+	https://github.com/ROCm/HIP/archive/refs/tags/rocm-${PV}.tar.gz -> hip-${PV}.tar.gz
+	test? ( https://github.com/ROCm/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz -> hip-test-${TEST_PV}.tar.gz )"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"
@@ -27,7 +27,6 @@ RESTRICT="!test? ( test )"
 IUSE="debug test"
 
 DEPEND="
-	dev-util/hipcc
 	>=dev-util/rocminfo-5
 	sys-devel/clang:${LLVM_MAX_SLOT}
 	dev-libs/rocm-comgr:${SLOT}
@@ -35,13 +34,15 @@ DEPEND="
 	x11-base/xorg-proto
 	virtual/opengl
 "
+BDEPEND="test? ( dev-util/hipcc )"
 RDEPEND="${DEPEND}
+	dev-util/hipcc
 	dev-perl/URI-Encode
 	sys-devel/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.7.0-install.patch"
+	"${FILESDIR}/${PN}-6.0.2-install.patch"
 	"${FILESDIR}/${PN}-5.7.1-fix-unaligned-access.patch"
 	"${FILESDIR}/${PN}-5.7.1-exec-stack.patch"
 	"${FILESDIR}/${PN}-5.7.1-disable-stack-protector.patch"
@@ -50,12 +51,12 @@ PATCHES=(
 )
 
 S="${WORKDIR}/clr-rocm-${PV}/"
+TEST_S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
 
 hip_test_wrapper() {
-	local S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
-	local CMAKE_USE_DIR="${S}"
-	local BUILD_DIR="${S}_build"
-	cd "${S}" || die
+	local CMAKE_USE_DIR="${TEST_S}"
+	local BUILD_DIR="${TEST_S}_build"
+	cd "${TEST_S}" || die
 	$@
 }
 
@@ -64,8 +65,8 @@ src_prepare() {
 	# FindHIP.cmake module.
 	rm -r "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP* || die
 
-	# https://github.com/ROCm-Developer-Tools/HIP/commit/405d029422ba8bb6be5a233d5eebedd2ad2e8bd3
-	# https://github.com/ROCm-Developer-Tools/clr/commit/ab6d34ae773f4d151e04170c0f4e46c1135ddf3e
+	# https://github.com/ROCm/HIP/commit/405d029422ba8bb6be5a233d5eebedd2ad2e8bd3
+	# https://github.com/ROCm/clr/commit/ab6d34ae773f4d151e04170c0f4e46c1135ddf3e
 	# Migrated to hip-test, but somehow the change is not applied to the tarball.
 	rm -rf "${WORKDIR}"/HIP-rocm-${PV}/tests || die
 	sed -e '/tests.*cmake/d' -i hipamd/CMakeLists.txt || die
@@ -73,7 +74,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	if use test; then
-		PATCHES=${FILESDIR}/hip-test-5.7.0-rocm_agent_enumerator-location.patch \
+		PATCHES="${FILESDIR}"/hip-test-6.0.2-hipcc-system-install.patch \
 			   hip_test_wrapper cmake_src_prepare
 	fi
 }
@@ -97,7 +98,6 @@ src_configure() {
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 		-DCMAKE_BUILD_TYPE=${buildtype}
 		-DCMAKE_SKIP_RPATH=ON
-		-DBUILD_HIPIFY_CLANG=OFF
 		-DHIP_PLATFORM=amd
 		-DHIP_COMMON_DIR="${WORKDIR}/HIP-rocm-${PV}"
 		-DROCM_PATH="${EPREFIX}/usr"
@@ -114,8 +114,9 @@ src_configure() {
 		local mycmakeargs=(
 			-DROCM_PATH="${BUILD_DIR}"/hipamd
 			-DHIP_PLATFORM=amd
+			-DCMAKE_MODULE_PATH="${TEST_S}/external/Catch2/cmake/Catch2"
 		)
-		hip_test_wrapper cmake_src_configure
+		HIP_PATH="${EPREFIX}/usr" hip_test_wrapper cmake_src_configure
 	fi
 }
 
@@ -153,7 +154,7 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	# files already installed by hipcc, which is a build dep
+	# files already installed by hipcc, which is a runtime dep
 	rm "${ED}/usr/bin/hipconfig.pl" || die
 	rm "${ED}/usr/bin/hipcc.pl" || die
 	rm "${ED}/usr/bin/hipcc" || die
