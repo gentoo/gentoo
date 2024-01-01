@@ -22,16 +22,19 @@ HOMEPAGE="https://github.com/pkgcore/pkgcore"
 LICENSE="BSD MIT"
 SLOT="0"
 
+if [[ ${PV} == *9999 ]]; then
+	COMMON_DEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+else
+	COMMON_DEPEND=">=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]"
+fi
+
 RDEPEND="
+	${COMMON_DEPEND}
 	>=app-shells/bash-5.0[readline]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
-if [[ ${PV} == *9999 ]]; then
-	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
-else
-	RDEPEND+=" >=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]"
-fi
 BDEPEND="
+	${COMMON_DEPEND}
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
 		dev-vcs/git
