@@ -1,4 +1,4 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -116,6 +116,7 @@ src_configure() {
 		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
 		-DWITH_MANPAGES=ON
 		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_FREERDP_DEPRECATED_COMMANDLINE=ON
 		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
 		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
 		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
