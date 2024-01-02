@@ -8,6 +8,9 @@
 	<use>
 		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>
 	</use>
+	<slots>
+		<subslots>reflect soname of libavrdude</subslots>
+	</slots>
 	<upstream>
 		<remote-id type="github">avrdudes/avrdude</remote-id>
 	</upstream>
