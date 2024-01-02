@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,8 +25,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-configure.patch
-	"${FILESDIR}"/${P}-man.patch
+	"${FILESDIR}"/${PN}-0.2.17-configure.patch
+	"${FILESDIR}"/${PN}-0.2.17-man.patch
 )
 
 src_prepare() {
@@ -36,6 +36,7 @@ src_prepare() {
 }
 
 src_configure() {
+	local CONFIG_SHELL="$(type -P bash)"
 	export OS_LDFLAGS="${LDFLAGS}"
 
 	myeconfargs=(
