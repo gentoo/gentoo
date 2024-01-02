@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ColinIanKing/${PN}/archive/refs/tags/V${PV}.tar.gz -
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc64 ~riscv ~sparc ~x86"
-IUSE="apparmor sctp"
+IUSE="apparmor jpeg sctp"
 
 DEPEND="
 	dev-libs/libaio
@@ -27,6 +27,7 @@ DEPEND="
 		sys-apps/apparmor-utils
 		sys-libs/libapparmor
 	)
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	sctp? ( net-misc/lksctp-tools )
 "
 
@@ -48,6 +49,7 @@ src_compile() {
 
 	local myemakeopts=(
 		HAVE_APPARMOR="$(usex apparmor 1 0)"
+		HAVE_LIB_JPEG="$(usex jpeg 1 0)"
 		HAVE_LIB_SCTP="$(usex sctp 1 0)"
 		VERBOSE="1"
 	)
