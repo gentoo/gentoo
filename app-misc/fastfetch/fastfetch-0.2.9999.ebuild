@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,9 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="MIT"
+LICENSE="MIT nvidia-gpu? ( NVIDIA-NVLM )"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm gnome imagemagick networkmanager opencl opengl osmesa pci pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
+IUSE="X chafa dbus ddcutil drm gnome imagemagick networkmanager nvidia-gpu opencl opengl osmesa pci pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
@@ -87,6 +87,7 @@ src_configure() {
 		-DENABLE_IMAGEMAGICK7=${fastfetch_enable_imagemagick7}
 		-DENABLE_LIBNM=$(usex networkmanager)
 		-DENABLE_LIBPCI=$(usex pci)
+		-DENABLE_PROPRIETARY_GPU_DRIVER_API=$(usex nvidia-gpu)
 		-DENABLE_OPENCL=$(usex opencl)
 		-DENABLE_OSMESA=$(usex osmesa)
 		-DENABLE_PULSE=$(usex pulseaudio)
