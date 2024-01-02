@@ -1,4 +1,4 @@
-# Copyright 2009-2023 Gentoo Authors
+# Copyright 2009-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,9 @@ GN_MIN_VER=0.2122
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101227 - Chromium 120:
 #    webrtc -  no matching member function for call to 'emplace'
 : ${CHROMIUM_FORCE_LIBCXX=yes}
+# This variable is set to yes when building with bfd is broken.
+# See bug #918897 for arm64 where bfd can't handle the size.
+: ${CHROMIUM_FORCE_LLD=no}
 
 VIRTUALX_REQUIRED="pgo"
 
@@ -210,6 +213,13 @@ if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
 	BDEPEND+=" >=sys-devel/clang-${LLVM_MIN_SLOT}"
 fi
 
+if [[ ${CHROMIUM_FORCE_LLD} == yes ]]; then
+	BDEPEND+=" >=sys-devel/lld-${LLVM_MIN_SLOT}"
+else
+	# XXX: Hack for arm64 for bug #918897
+	BDEPEND+=" arm64? ( >=sys-devel/lld-${LLVM_MIN_SLOT} )"
+fi
+
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
 	EBUILD_DEATH_HOOKS+=" chromium_pkg_die";
 fi
@@ -245,6 +255,11 @@ in /etc/chromium/default.
 
 python_check_deps() {
 	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
+}
+
+needs_lld() {
+	# XXX: Temporary hack w/ use arm64 for bug #918897
+	[[ ${CHROMIUM_FORCE_LLD} == yes ]] || use arm64
 }
 
 needs_clang() {
@@ -705,7 +720,9 @@ chromium_configure() {
 	fi
 
 	# Force lld for lto and pgo builds, otherwise disable, bug 641556
-	if use lto || use pgo; then
+	if needs_lld || use lto || use pgo; then
+		# https://bugs.gentoo.org/918897#c32
+		append-ldflags -Wl,--undefined-version
 		myconf_gn+=" use_lld=true"
 	else
 		myconf_gn+=" use_lld=false"
