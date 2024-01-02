@@ -1401,6 +1401,9 @@ distutils_pep517_install() {
 			)
 			;;
 		setuptools)
+			if in_iuse debug && use debug; then
+				local -x SETUPTOOLS_RUST_CARGO_PROFILE=dev
+			fi
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				config_settings=$(
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
