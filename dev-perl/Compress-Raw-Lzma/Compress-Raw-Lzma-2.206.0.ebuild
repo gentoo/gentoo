@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl interface for reading and writing lzma, lzip, and xz files/buffers"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc"
 
 RDEPEND="app-arch/xz-utils"
 DEPEND="${RDEPEND}"
