@@ -1,0 +1,13 @@
+diff --git a/t/1161_save_multipage_pdf_with_utf8.t b/t/1161_save_multipage_pdf_with_utf8.t
+index 23ed652e..6b9537a0 100644
+--- a/t/1161_save_multipage_pdf_with_utf8.t
++++ b/t/1161_save_multipage_pdf_with_utf8.t
+@@ -26,7 +26,7 @@ system(qw(convert rose: 1.pnm));
+ my $n = 3;
+ 
+ my %options;
+-$options{font} = capture('fc-list : file | grep ttf 2> /dev/null | head -n 1');
++$options{font} = capture('fc-list :lang=ru file | grep ttf 2> /dev/null | head -n 1');
+ chomp $options{font};
+ $options{font} =~ s/: $//;
+ 
