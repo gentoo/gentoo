@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -1401,6 +1401,9 @@ distutils_pep517_install() {
 			)
 			;;
 		setuptools)
+			if in_iuse debug && use debug; then
+				local -x SETUPTOOLS_RUST_CARGO_PROFILE=dev
+			fi
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				config_settings=$(
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
