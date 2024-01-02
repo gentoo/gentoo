@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,17 @@ IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<dev-libs/openssl-3.1.4:=[bindist(+)]
+	dev-libs/openssl:=[bindist(+)]
+	|| (
+		(
+			>=dev-libs/openssl-3.1.0
+			<dev-libs/openssl-3.1.4
+		)
+		(
+			>=dev-libs/openssl-3.0.0
+			<dev-libs/openssl-3.0.12
+		)
+	)
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/softhsm )
