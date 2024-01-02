@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,13 @@ src_configure() {
 		local myeconfargs=( "--enable-ssl" )
 	fi
 
-	use mbedtls && myeconfargs+=( "--enable-mbedtls" )
+	if use mbedtls; then
+		myeconfargs+=( "--enable-mbedtls" )
+
+		# MbedTLS has no support for pkg-config
+		myeconfargs+=( MbedTLS_CFLAGS="-I/usr/include/mbedtls" )
+		myeconfargs+=( MbedTLS_LIBS="-lmbedtls" )
+	fi
 	use openssl && myeconfargs+=( "--enable-openssl" )
 
 	myeconfargs+=( --with-systemd="$(systemd_get_systemunitdir)" )
