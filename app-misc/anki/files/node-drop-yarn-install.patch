@@ -1,0 +1,13 @@
+diff --git a/build/ninja_gen/src/node.rs b/build/ninja_gen/src/node.rs
+index 111867783..e88bdfdb4 100644
+--- a/build/ninja_gen/src/node.rs
++++ b/build/ninja_gen/src/node.rs
+@@ -76,7 +76,7 @@ pub struct YarnInstall<'a> {
+ 
+ impl BuildAction for YarnInstall<'_> {
+     fn command(&self) -> &str {
+-        "$runner yarn $yarn $out"
++        "true"
+     }
+ 
+     fn files(&mut self, build: &mut impl build::FilesHandle) {

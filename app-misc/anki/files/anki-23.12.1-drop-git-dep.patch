@@ -1,0 +1,37 @@
+diff --git a/build/runner/src/build.rs b/build/runner/src/build.rs
+index e10c045fe..b213364de 100644
+--- a/build/runner/src/build.rs
++++ b/build/runner/src/build.rs
+@@ -42,7 +42,6 @@ pub fn run_build(args: BuildArgs) {
+     };
+ 
+     maybe_update_env_file(build_root);
+-    maybe_update_buildhash(build_root);
+ 
+     // Ensure build file is up to date
+     let build_file = build_root.join("build.ninja");
+@@ -152,24 +151,6 @@ fn bootstrap_build() {
+     assert!(status.expect("ninja").success());
+ }
+ 
+-fn maybe_update_buildhash(build_root: &Utf8Path) {
+-    // only updated on release builds
+-    let path = build_root.join("buildhash");
+-    if env::var("RELEASE").is_ok() || !path.exists() {
+-        write_if_changed(&path, &get_buildhash())
+-    }
+-}
+-
+-fn get_buildhash() -> String {
+-    let output = Command::new("git")
+-        .args(["rev-parse", "--short=8", "HEAD"])
+-        .output()
+-        .expect("git");
+-    assert!(output.status.success(),
+-            "Invoking 'git' failed. Make sure you're building from a clone of the git repo, and that 'git' is installed.");
+-    String::from_utf8(output.stdout).unwrap().trim().into()
+-}
+-
+ fn write_if_changed(path: &Utf8Path, contents: &str) {
+     if let Ok(old_contents) = fs::read_to_string(path) {
+         if old_contents == contents {
