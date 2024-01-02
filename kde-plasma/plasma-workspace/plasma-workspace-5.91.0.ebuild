@@ -186,7 +186,7 @@ src_prepare() {
 	fi
 
 	# TODO: try to get a build switch upstreamed
-	if use systemd; then
+	if ! use systemd; then
 		sed -e "s/^pkg_check_modules.*SYSTEMD/#&/" -i CMakeLists.txt || die
 	fi
 }
