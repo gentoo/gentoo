@@ -1,0 +1,47 @@
+From ee6c0bcb7f0bfe6440dd7c4c52dca87486abc181 Mon Sep 17 00:00:00 2001
+From: Stelios Fragkakis <52996999+stelfrag@users.noreply.github.com>
+Date: Wed, 20 Dec 2023 21:54:17 +0200
+Subject: [PATCH] Fix compilation error when using --disable-dbengine
+
+---
+ daemon/global_statistics.c | 2 ++
+ daemon/main.c              | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/daemon/global_statistics.c b/daemon/global_statistics.c
+index 8392a3c88e08d..6e286b18a7220 100644
+--- a/daemon/global_statistics.c
++++ b/daemon/global_statistics.c
+@@ -857,6 +857,7 @@ static void global_statistics_charts(void) {
+ 
+     // ----------------------------------------------------------------
+ 
++#ifdef ENABLE_DBENGINE
+     if (tier_page_type[0] == PAGE_GORILLA_METRICS)
+     {
+         static RRDSET *st_tier0_gorilla_pages = NULL;
+@@ -918,6 +919,7 @@ static void global_statistics_charts(void) {
+ 
+         rrdset_done(st_tier0_compression_info);
+     }
++#endif
+ }
+ 
+ // ----------------------------------------------------------------------------
+diff --git a/daemon/main.c b/daemon/main.c
+index fc15f0c9dfc52..7c7452c4aa055 100644
+--- a/daemon/main.c
++++ b/daemon/main.c
+@@ -1502,11 +1502,11 @@ int main(int argc, char **argv) {
+ #ifdef ENABLE_DBENGINE
+                         char* createdataset_string = "createdataset=";
+                         char* stresstest_string = "stresstest=";
+-#endif
+ 
+                         if(strcmp(optarg, "pgd-tests") == 0) {
+                             return pgd_test(argc, argv);
+                         }
++#endif
+ 
+                         if(strcmp(optarg, "sqlite-meta-recover") == 0) {
+                             sql_init_database(DB_CHECK_RECOVER, 0);

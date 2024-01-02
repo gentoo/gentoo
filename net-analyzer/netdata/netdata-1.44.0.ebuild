@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -82,6 +82,10 @@ FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep'
 	'usr/libexec/netdata/plugins.d/apps.plugin'
 	'usr/libexec/netdata/plugins.d/debugfs.plugin'
+)
+
+PATCHES=(
+	"${FILESDIR}/${P}-dbengine.patch"
 )
 
 pkg_setup() {
