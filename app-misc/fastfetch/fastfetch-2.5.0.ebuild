@@ -64,6 +64,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-nvidia.patch
+	"${FILESDIR}"/${P}-nvidia2.patch
 )
 
 src_configure() {
