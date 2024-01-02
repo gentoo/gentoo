@@ -1,14 +1,16 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit python-any-r1 cmake
+PYTHON_COMPAT=( python3_{9..12} )
+inherit python-any-r1 cmake prefix
+
+CommitId=a30ca3f9509c2cfd28561abbca51328f0bdf9014
 
 DESCRIPTION="part of the PyTorch Profiler"
 HOMEPAGE="https://github.com/pytorch/kineto"
-SRC_URI="https://github.com/pytorch/${PN}/archive/refs/tags/v${PV}.tar.gz
+SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -18,6 +20,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-libs/libfmt
+	dev-libs/dynolog
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -27,9 +30,10 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2021.11.17-gentoo.patch
-	"${FILESDIR}"/${P}-gcc13.patch
+	"${FILESDIR}"/${PN}-0.4.0-gcc13.patch
 )
+
+S="${WORKDIR}"/${PN}-${CommitId}
 
 src_prepare() {
 	cd libkineto
@@ -38,5 +42,10 @@ src_prepare() {
 
 src_configure() {
 	cd libkineto
+	local mycmakeargs=(
+		-DLIBKINETO_THIRDPARTY_DIR="${EPREFIX}"/usr/include/
+	)
+	eapply $(prefixify_ro "${FILESDIR}"/${P}-gentoo.patch)
+
 	cmake_src_configure
 }
