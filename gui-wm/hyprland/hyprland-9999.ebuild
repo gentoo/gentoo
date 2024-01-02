@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,23 @@ else
 	SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}-source"
 
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="X legacy-renderer systemd"
 
+# hyprpm (hyprland plugin manager) requires the dependencies at runtime
+# so that it can clone, compile and install plugins.
+HYPRPM_RDEPEND="
+	dev-util/cmake
+	dev-util/meson
+	dev-util/ninja
+	dev-vcs/git
+	sys-auth/polkit
+	virtual/pkgconfig
+"
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
 # enable x11-backend with X and vice versa
@@ -52,8 +62,8 @@ WLROOTS_BDEPEND="
 	dev-util/glslang
 	dev-util/wayland-scanner
 "
-
 RDEPEND="
+	${HYPRPM_RDEPEND}
 	${WLROOTS_RDEPEND}
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
