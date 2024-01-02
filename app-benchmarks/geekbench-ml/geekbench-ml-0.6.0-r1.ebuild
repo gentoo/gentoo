@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,11 +14,20 @@ SLOT="6"
 
 RESTRICT="bindist mirror"
 
+BDEPEND="dev-util/patchelf"
+
 QA_PREBUILT="
 	opt/geekbench-ml/banff_avx2
 	opt/geekbench-ml/banff_x86_64
 	opt/geekbench-ml/banff
 "
+
+src_prepare() {
+	default
+
+	# Fix QA insecure RUNPATHs
+	patchelf --remove-rpath banff{,_avx2,_x86_64} || die
+}
 
 src_install() {
 	exeinto /opt/geekbench-ml
