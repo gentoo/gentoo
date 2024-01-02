@@ -21,7 +21,8 @@ S="${WORKDIR}/kubernetes-${PV}"
 
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
-	emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
+	emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
+	WHAT=cmd/${PN}
 }
 
 src_install() {
