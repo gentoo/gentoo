@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Julien Roy</name>
+		<email>julien@jroy.ca</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<name>Felix Häcker</name>
+			<email>haeckerfelix@gnome.org</email>
+		</maintainer>
+		<bugs-to>https://gitlab.gnome.org/World/Fragments/-/issues</bugs-to>
+		<changelog>https://gitlab.gnome.org/World/Fragments/-/releases</changelog>
+		<remote-id type="gnome-gitlab">World/Fragments</remote-id>
+	</upstream>
+</pkgmetadata>
