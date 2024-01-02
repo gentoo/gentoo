@@ -32,7 +32,6 @@ RDEPEND="
 	dev-libs/icu
 	dev-util/lttng-ust:0
 	dev-db/sqlite
-	sys-libs/glibc
 "
 
 QA_PREBUILT="*"
