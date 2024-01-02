@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-02-02)
+# No more used by any package (bug #921167)
+# remove in 30 days
+net-mail/courier-makedat
+
 # Michał Górny <mgorny@gentoo.org> (2024-01-01)
 # The version seems to introduce an ABI breakage that causes
 # incompatibility with extensions built using the previous version
