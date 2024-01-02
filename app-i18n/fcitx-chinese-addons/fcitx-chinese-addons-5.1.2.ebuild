@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/fcitx/fcitx5-chinese-addons"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}_dict.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~loong ~x86"
 SLOT="5"
 IUSE="+gui webengine +cloudpinyin +qt5 lua +opencc test"
 REQUIRED_USE="
