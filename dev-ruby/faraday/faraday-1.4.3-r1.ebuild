@@ -73,7 +73,9 @@ all_ruby_prepare() {
 	# approach so we can add ruby32 compatibility to faraday:1 for
 	# those adapters that we do support.
 	sed -e '/require.*\(em_http\|em_synchrony\|excon\)/ s:^:#:' \
-		-i lib/faraday.rb ${RUBY_FAKEGEM_GEMSPEC} || die
+		-i lib/faraday.rb || die
+	sed -e '/\(em_http\|em_synchrony\|excon\)/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Make this adapter optional since it comes with a long list of
 	# dependencies.
