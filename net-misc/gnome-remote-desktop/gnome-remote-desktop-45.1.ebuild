@@ -28,6 +28,7 @@ DEPEND="
 	rdp? (
 		>=media-libs/nv-codec-headers-11.1.5.0
 		>=net-misc/freerdp-2.10.0:=[server]
+		<net-misc/freerdp-3
 		>=sys-fs/fuse-3.9.1:3
 		>=x11-libs/libxkbcommon-1.0.0
 
