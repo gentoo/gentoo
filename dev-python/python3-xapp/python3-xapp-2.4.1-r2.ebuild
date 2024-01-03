@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit meson python-r1
 
@@ -13,12 +13,13 @@ SRC_URI="https://github.com/linuxmint/python3-xapp/archive/${PV}.tar.gz -> ${P}.
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
-IUSE=""
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	>=x11-libs/xapp-2.4.1[introspection]
+	$(python_gen_cond_dep '
+		>=x11-libs/xapp-2.8.1[introspection,${PYTHON_USEDEP}]
+	')
 "
 RDEPEND="
 	${DEPEND}
@@ -26,16 +27,16 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
 
-src_prepare() {
-	echo "option('python', type: 'string', value: 'python3')" >> meson_options.txt || die
-	sed -i "s/find_installation('python3')/find_installation(get_option('python'))/" meson.build || die
-	default
-}
+PATCHES=(
+	# Make python installation configurable for distro packaging
+	# https://github.com/linuxmint/python3-xapp/pull/23
+	"${FILESDIR}"/${PN}-configurable-python-target.patch
+)
 
 src_configure() {
 	configuring() {
 		meson_src_configure \
-			-Dpython="${EPYTHON}"
+			-Dpython_target="${EPYTHON}"
 	}
 	python_foreach_impl configuring
 }
