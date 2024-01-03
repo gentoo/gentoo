@@ -1,0 +1,24 @@
+From c96e5123a521f27d7d327f09e5a2206cfd81328d Mon Sep 17 00:00:00 2001
+From: Alexander Miller <alex.miller@gmx.de>
+Date: Wed, 3 Jan 2024 17:29:38 +0100
+Subject: [PATCH] Fix version in -h/-v output
+
+---
+ src/trrntzip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/trrntzip.c b/src/trrntzip.c
+index 806cb8e..089e5ce 100644
+--- a/src/trrntzip.c
++++ b/src/trrntzip.c
+@@ -43,7 +43,7 @@
+ #include "util.h"
+ 
+ // We must change this at every new version
+-#define TZ_VERSION "0.9"
++#define TZ_VERSION "1.0"
+ 
+ #define MEGABYTE 1048576
+ #define ARRAY_ELEMENTS 256
+-- 
+2.41.0
