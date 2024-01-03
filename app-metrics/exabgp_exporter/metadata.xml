@@ -6,6 +6,6 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">lusis/exabgp_exporter</remote-id>
+		<remote-id type="github">gizmoguy/exabgp_exporter</remote-id>
 	</upstream>
 </pkgmetadata>
