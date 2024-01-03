@@ -83,7 +83,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-plasma/libplasma-${PVCUT}:6
 	sys-apps/hwdata
 	x11-base/xwayland
-	multimedia? ( >=dev-qt/qtmultimedia-${QTMIN}:6[gstreamer,qml] )
+	multimedia? (
+		>=dev-qt/qtmultimedia-${QTMIN}:6[gstreamer,qml]
+		media-plugins/gst-plugins-soup:1.0
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.11.1

@@ -81,7 +81,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kitemmodels-${KFMIN}:5[qml]
 	sys-apps/hwdata
 	x11-base/xwayland
-	multimedia? ( >=dev-qt/qtmultimedia-${QTMIN}:5[gstreamer,qml] )
+	multimedia? (
+		>=dev-qt/qtmultimedia-${QTMIN}:5[gstreamer,qml]
+		media-plugins/gst-plugins-soup:1.0
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.9
