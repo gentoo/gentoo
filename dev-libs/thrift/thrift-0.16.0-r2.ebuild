@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/thrift/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ppc64"
 IUSE="libevent lua +ssl test"
 
 RESTRICT="!test? ( test )"
