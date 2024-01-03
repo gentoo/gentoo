@@ -101,8 +101,8 @@ IUSE="+strip"
 # @DESCRIPTION:
 # If KERNEL_IUSE_GENERIC_UKI is set, this variable allows setting the
 # built-in kernel command line for the UKI. If unset, the default is
-# root=/dev/gpt-auto-root ro
-: "${KERNEL_GENERIC_UKI_CMDLINE:="root=/dev/gpt-auto-root ro"}"
+# root=/dev/gpt-auto-root ro lockdown=integrity
+: "${KERNEL_GENERIC_UKI_CMDLINE:="root=/dev/gpt-auto-root ro lockdown=integrity"}"
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
