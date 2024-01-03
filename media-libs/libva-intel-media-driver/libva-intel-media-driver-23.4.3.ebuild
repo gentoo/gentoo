@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/intel/media-driver/archive/intel-media-${MY_PV}.tar.gz"
 	S="${WORKDIR}/media-driver-intel-media-${MY_PV}"
 	if [[ ${PV} != *_pre* ]] ; then
-		KEYWORDS="~amd64"
+		KEYWORDS="amd64"
 	fi
 fi
 
