@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,3 +28,12 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# siiigh
+	cat >> setup.cfg <<-EOF
+		[metadata]
+		version = ${PV}
+	EOF
+	distutils-r1_src_prepare
+}
