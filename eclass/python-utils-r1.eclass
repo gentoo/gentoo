@@ -1296,6 +1296,16 @@ _python_check_occluded_packages() {
 # parameter, when calling epytest.  The listed files will be entirely
 # skipped from test collection.
 
+# @ECLASS_VARIABLE: EPYTEST_TIMEOUT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, enables pytest-timeout plugin and sets
+# test timeout to the specified value.  This variable can be either set
+# in ebuilds that are known to hang, or by user to prevent hangs
+# in automated test environments.  If this variable is set prior
+# to calling distutils_enable_tests in distutils-r1, a test dependency
+# on dev-python/pytest-timeout is added automatically.
+
 # @ECLASS_VARIABLE: EPYTEST_XDIST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1378,6 +1388,18 @@ epytest() {
 			-p no:tavern
 			# does something to logging
 			-p no:salt-factories
+		)
+	fi
+
+	if [[ -n ${EPYTEST_TIMEOUT} ]]; then
+		if [[ ${PYTEST_PLUGINS} != *pytest_timeout* ]]; then
+			args+=(
+				-p timeout
+			)
+		fi
+
+		args+=(
+			"--timeout=${EPYTEST_TIMEOUT}"
 		)
 	fi
 
