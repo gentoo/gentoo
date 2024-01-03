@@ -108,7 +108,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa chromium doc +encode oss pic sndio static-libs test v4l
+	alsa chromium doc +encode oss +pic sndio static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
