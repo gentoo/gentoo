@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -1344,6 +1344,11 @@ epytest() {
 		# count is more precise when we're dealing with a large number
 		# of tests
 		-o console_output_style=count
+		# minimize the temporary directory retention, the test suites
+		# of some packages can grow them pretty large and normally
+		# we don't need to preserve them
+		-o tmp_path_retention_count=0
+		-o tmp_path_retention_policy=failed
 	)
 
 	if [[ ! ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
