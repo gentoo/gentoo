@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -404,6 +404,9 @@ src_configure() {
 	einfo "Preset CFLAGS:    ${CFLAGS}"
 	einfo "Preset LDFLAGS:   ${LDFLAGS}"
 
+	# Workaround for bug #915067
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	if use clang ; then
 		# Force clang
 		einfo "Enforcing the use of clang due to USE=clang ..."
@@ -416,9 +419,6 @@ src_configure() {
 
 		# Workaround for bug #907905
 		filter-lto
-
-		# Workaround for bug #915067
-		append-ldflags -Wl,--undefined-version
 
 		# Not implemented by Clang, bug #903889
 		filter-flags -Wlto-type-mismatch -Werror=lto-type-mismatch
