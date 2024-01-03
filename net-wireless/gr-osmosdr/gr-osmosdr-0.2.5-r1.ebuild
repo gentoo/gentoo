@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="airspy bladerf doc hackrf iqbalance python rtlsdr sdrplay soapy uhd xtrx"
+IUSE="airspy bladerf doc hackrf iqbalance rtlsdr sdrplay soapy uhd xtrx"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
@@ -62,7 +62,7 @@ src_configure() {
 		-DENABLE_BLADERF="$(usex bladerf ON OFF)"
 		-DENABLE_HACKRF="$(usex hackrf ON OFF)"
 		-DENABLE_IQBALANCE="$(usex iqbalance ON OFF)"
-		-DENABLE_PYTHON="$(usex python ON OFF)"
+		-DENABLE_PYTHON=ON
 		-DENABLE_RTL="$(usex rtlsdr ON OFF)"
 		-DENABLE_RTL_TCP="$(usex rtlsdr ON OFF)"
 		-DENABLE_SDRPLAY="$(usex sdrplay ON OFF)"
@@ -78,10 +78,7 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	if use python; then
-		find "${ED}" -name '*.py[oc]' -delete || die
-		python_fix_shebang "${ED}"/usr/bin
-		python_optimize
-	fi
-	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${P}"
+	find "${ED}" -name '*.py[oc]' -delete || die
+	python_fix_shebang "${ED}"/usr/bin
+	python_optimize
 }
