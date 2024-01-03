@@ -52,6 +52,11 @@ BDEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+RDEPEND="
+	app-accessibility/at-spi2-core
+	dev-libs/glib
+"
+
 PDEPEND="mate? ( >=x11-themes/mate-icon-theme-${MATE_BRANCH} )"
 
 # TODO: Test fails because Caja is not merged yet:
