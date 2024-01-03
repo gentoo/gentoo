@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,16 +46,16 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/mapbox_earcut[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_TIMEOUT=900
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p timeout --timeout=900
+	epytest
 }
 
 pkg_postinst() {
