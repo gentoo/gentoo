@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-22)
-# dev-libs/libliftoff is only available for amd64 and riscv
-gui-libs/wlroots -liftoff
+# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
+# are only available for amd64 and riscv
+>=gui-libs/wlroots-0.17.0 -drm -liftoff
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
 # dev-util/samurai is not keyworded here.
