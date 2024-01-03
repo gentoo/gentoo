@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,17 +14,17 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="+geos iconv +proj rttopo test +xls +xml"
+IUSE="+geos iconv +proj rttopo test +xls"
 # Further poking required
 RESTRICT="test"
 
 RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]
+	dev-libs/libxml2
 	sys-libs/zlib[minizip]
 	geos? ( >=sci-libs/geos-3.11.0 )
 	proj? ( sci-libs/proj:= )
-	xls? ( >=dev-libs/freexl-2.0.0 )
-	xml? ( dev-libs/libxml2 )
+	xls? ( >=dev-libs/freexl-2.0.0[xml(+)] )
 	rttopo? ( sci-geosciences/librttopo )
 "
 DEPEND="${RDEPEND}"
@@ -38,6 +38,7 @@ src_configure() {
 		--disable-examples \
 		--disable-static \
 		--enable-epsg \
+		--enable-libxml2 \
 		$(use_enable rttopo) \
 		$(use_enable geos) \
 		$(use_enable geos geosadvanced) \
@@ -45,8 +46,7 @@ src_configure() {
 		$(use_enable geos geos3110) \
 		$(use_enable iconv) \
 		$(use_enable proj) \
-		$(use_enable xls freexl) \
-		$(use_enable xml libxml2)
+		$(use_enable xls freexl)
 }
 
 src_install() {
