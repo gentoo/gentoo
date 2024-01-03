@@ -14,9 +14,10 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
-IUSE="appindicator sensors"
+IUSE="appindicator networkmanager sensors"
 
 RDEPEND="=mate-base/mate-applets-${MATE_BRANCH}*
 	appindicator? ( =mate-extra/mate-indicator-applet-${MATE_BRANCH}* )
+	networkmanager? ( gnome-extra/nm-applet )
 	sensors? ( =mate-extra/mate-sensors-applet-${MATE_BRANCH}* )
 "
