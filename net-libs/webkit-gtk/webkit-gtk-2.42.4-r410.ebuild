@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -153,6 +153,8 @@ src_prepare() {
 
 	# Fix USE=-jumbo-build compilation on arm64
 	eapply "${FILESDIR}"/2.42.1-arm64-non-jumbo-fix.patch
+	# Fix assert failure on some machines, bug #920704
+	eapply "${FILESDIR}"/2.42.4-wasm-assert-fix.patch
 }
 
 src_configure() {
