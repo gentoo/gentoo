@@ -11,7 +11,7 @@ SRC_URI="https://github.com/JetBrains/JetBrainsMono/releases/download/v${PV}/Jet
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ppc64 ~riscv ~x86"
 
 BDEPEND="app-arch/unzip"
 
