@@ -36,9 +36,8 @@ DEPEND=">=dev-libs/openssl-1.0.1:=
 # - Digest::Haval256
 # - Digest::x
 # See bug #777369.
-# Pending keywording https://bugs.gentoo.org/921221
-#	dev-perl/Compress-Raw-Lzma
 RDEPEND="${DEPEND}
+	dev-perl/Compress-Raw-Lzma
 	dev-perl/Digest-MD2
 	virtual/perl-Digest-MD5
 	dev-perl/Digest-SHA3
