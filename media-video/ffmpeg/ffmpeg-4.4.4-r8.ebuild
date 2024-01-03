@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ else # Release
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ffmpeg.asc
 	inherit verify-sig
 	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-texinfo.patch.xz"
 	SRC_URI+=" verify-sig? ( https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc )"
 
 	BDEPEND=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
@@ -347,6 +348,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.4-wint-conversion-vulkan.patch
 	"${FILESDIR}"/${P}-fix-build-svt-av1-1.5.0.patch
 	"${FILESDIR}"/${PN}-5.1.3-binutils-2.41.patch
+	"${WORKDIR}"/${PN}-4.4.4-texinfo.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -369,6 +371,15 @@ pkg_setup() {
 		ewarn "without the 'tools' use flag first, then rebuild ffmpeg, and then finally enable "
 		ewarn "'tools' USE flag for chromaprint. See #862996."
 	fi
+}
+
+src_unpack() {
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P/_/-}.tar.xz{,.asc}
+	fi
+
+	default
 }
 
 src_prepare() {
