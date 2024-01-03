@@ -11,7 +11,7 @@ SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="doc gtk gtk2 qt5 test X"
 RESTRICT="!test? ( test )"
 
