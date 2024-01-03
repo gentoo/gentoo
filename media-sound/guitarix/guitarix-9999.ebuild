@@ -9,7 +9,7 @@ PYTHON_REQ_USE='threads(+)'
 EGIT_OVERRIDE_REPO_ENYOJS_BOOTPLATE="https://github.com/enyojs/bootplate.git"
 EGIT_OVERRIDE_BRANCH_ENYOJS_BOOTPLATE="master"
 
-inherit python-any-r1 waf-utils xdg git-r3
+inherit multiprocessing python-any-r1 waf-utils xdg git-r3
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="https://guitarix.org/"
@@ -79,6 +79,7 @@ src_configure() {
 		--no-faust
 		--no-ldconfig
 		--shared-lib
+		--jobs=$(makeopts_jobs)
 		$(use_enable nls)
 		$(usex bluetooth "" "--no-bluez")
 		$(usex debug "--debug" "")

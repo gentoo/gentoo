@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 waf-utils xdg
+inherit multiprocessing python-any-r1 waf-utils xdg
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="https://guitarix.org/"
@@ -63,8 +63,8 @@ DOCS=( changelog README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.41.0-nostrip.patch
-	"${FILESDIR}"/${PN}-0.41.0-py3.11.patch
-	"${FILESDIR}"/${PN}-0.44.1-zita-resampler-1.10.patch
+	"${FILESDIR}"/${P}-py3.11.patch
+	"${FILESDIR}"/${P}-zita-resampler-1.10.patch
 	"${FILESDIR}"/${P}-gcc-13.patch
 )
 
@@ -82,6 +82,7 @@ src_configure() {
 		--no-faust
 		--no-ldconfig
 		--shared-lib
+		--jobs=$(makeopts_jobs)
 		$(use_enable nls)
 		$(usex bluetooth "" "--no-bluez")
 		$(usex debug "--debug" "")
