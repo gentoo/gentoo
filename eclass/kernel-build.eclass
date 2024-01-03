@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -95,6 +95,14 @@ IUSE="+strip"
 # Used with USE=modules-sign.  Can be set to the path of the public
 # key in PEM format to use. Must be specified if MODULES_SIGN_KEY
 # is set to a path of a file that only contains the private key.
+
+# @ECLASS_VARIABLE: KERNEL_GENERIC_UKI_CMDLINE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# If KERNEL_IUSE_GENERIC_UKI is set, this variable allows setting the
+# built-in kernel command line for the UKI. If unset, the default is
+# root=/dev/gpt-auto-root ro
+: "${KERNEL_GENERIC_UKI_CMDLINE:="root=/dev/gpt-auto-root ro"}"
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
@@ -432,7 +440,7 @@ kernel-build_src_install() {
 			local ukify_args=(
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
-				--cmdline="root=/dev/gpt-auto-root ro"
+				--cmdline="${KERNEL_GENERIC_UKI_CMDLINE}"
 				--uname="${dir_ver}"
 				--output="${image%/*}/uki.efi"
 			)
