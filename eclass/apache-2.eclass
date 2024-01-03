@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -633,9 +633,6 @@ apache-2_src_install() {
 	else
 		dosym /etc/init.d/apache2 /usr/sbin/apache2ctl
 	fi
-
-	# provide legacy symlink for apxs, bug 177697
-	dosym apxs /usr/sbin/apxs2
 
 	# install some documentation
 	dodoc ABOUT_APACHE CHANGES LAYOUT README README.platforms VERSIONING
