@@ -20,6 +20,7 @@
 			call instead of malloc() when large chunks or memory are allocated
 			by LAMMPS. Aliengnment is on 16 byte boundaries.</flag>
 		<flag name="hip">Enable hip gpu computing support</flag>
+		<flag name="extra">Additional compute, dump, fix, molecular, pair styles</flag>
 		<!--<flag name="kokkos">Enable kokkos non-bonded kernels</flag>-->
 	</use>
 	<maintainer type="person">
@@ -30,4 +31,7 @@
 		<email>sci-physics@gentoo.org</email>
 		<name>Gentoo Physics Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">lammps/lammps</remote-id>
+	</upstream>
 </pkgmetadata>
