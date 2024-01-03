@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${PN}2-${PV}.Final"
 
 LICENSE="Apache-2.0"
 SLOT="2.5"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	dev-java/asm:9
