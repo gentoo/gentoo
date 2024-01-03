@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="metapackage"
 SLOT="0"
 IUSE="+browsed +foomatic pdf +postscript +poppler zeroconf"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	net-print/cups[zeroconf?]
