@@ -1,4 +1,4 @@
-# Copyright 2017-2023 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,7 +66,7 @@ LICENSE="GPL-3+"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~riscv ~x86"
 IUSE="man"
 
 DEPEND="
