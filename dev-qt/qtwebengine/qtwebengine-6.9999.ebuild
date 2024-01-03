@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.7-patchset-1.tar.xz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.7-patchset-2.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
