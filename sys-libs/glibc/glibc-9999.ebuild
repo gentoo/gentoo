@@ -88,6 +88,8 @@ fi
 #   * normal 'strip' command trims '.symtab'
 #   Thus our main goal here is to prevent 'libpthread.so.0' from
 #   losing it's '.symtab' entries.
+# - similarly, valgrind requires knowledge about symbols in ld.so:
+#	bug #920753
 # As Gentoo's strip does not allow us to pass less aggressive stripping
 # options and does not check the machine target we strip selectively.
 
@@ -1348,6 +1350,8 @@ glibc_do_src_install() {
 	# gdb thread introspection relies on local libpthreads symbols. stripping breaks it
 	# See Note [Disable automatic stripping]
 	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
+	# valgrind requires knowledge about ld.so symbols.
+	dostrip -x $(alt_libdir)/ld-*.so*
 
 	if [[ -e ${ED}/$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
 		# Move versioned .a file out of libdir to evade portage QA checks
