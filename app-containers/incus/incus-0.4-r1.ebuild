@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://linuxcontainers.org/downloads/incus/${P}.tar.xz
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="apparmor nls"
+IUSE="apparmor fuidshift nls"
 
 DEPEND="acct-group/incus
 	acct-group/incus-admin
@@ -28,6 +28,7 @@ DEPEND="acct-group/incus
 	sys-libs/libcap
 	virtual/udev"
 RDEPEND="${DEPEND}
+	fuidshift? ( !app-containers/lxd )
 	net-firewall/ebtables
 	net-firewall/iptables
 	sys-apps/iproute2
@@ -123,10 +124,13 @@ src_compile() {
 	export GOPATH="${S}/_dist"
 	export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
-	# fuidshift should be packaged for incus-lts, making it conflict with lxd.
-	for k in fuidshift incus-benchmark incus-user incus lxc-to-incus ; do
+	for k in incus-benchmark incus-user incus lxc-to-incus ; do
 		ego install -v -x "${S}/cmd/${k}"
 	done
+
+	if use fuidshift ; then
+		ego install -v -x "${S}/cmd/fuidshift"
+	fi
 
 	ego install -v -x -tags libsqlite3 "${S}"/cmd/incusd
 
@@ -152,7 +156,7 @@ src_install() {
 	newsbin "${FILESDIR}"/incus-startup-0.4.sh incus-startup
 
 	# Admin tools
-	for l in incusd incus-user fuidshift ; do
+	for l in incusd incus-user ; do
 		dosbin ${bindir}/${l}
 	done
 	dosbin cmd/lxd-to-incus/lxd-to-incus
@@ -161,6 +165,11 @@ src_install() {
 	for m in incus-agent incus-benchmark incus-migrate incus lxc-to-incus ; do
 		dobin ${bindir}/${m}
 	done
+
+	# fuidshift, should be moved under admin tools at some point
+	if use fuidshift ; then
+		dosbin ${bindir}/fuidshift
+	fi
 
 	newconfd "${FILESDIR}"/incus-0.4.confd incus
 	newinitd "${FILESDIR}"/incus-0.4.initd incus
