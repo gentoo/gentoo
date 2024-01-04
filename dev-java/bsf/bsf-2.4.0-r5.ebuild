@@ -35,16 +35,17 @@ RDEPEND="${CDEPEND}
 
 DOCS=( CHANGES.txt NOTICE.txt README.txt RELEASE-NOTE.txt TODO.txt )
 
-JAVA_CLASSPATH_EXTRA="
+JAVA_GENTOO_CLASSPATH="
 	commons-logging
 	xalan
 "
 JAVA_MAIN_CLASS="org.apache.bsf.Main"
+JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src"
 
 src_prepare() {
 	java-pkg-2_src_prepare
-	rm -r src/org/apache/bsf/engines/{netrexx,jython} || die
+	rm -r src/org/apache/bsf/engines/{java,javaclass,jython,netrexx} || die
 	if use javascript; then
 		JAVA_GENTOO_CLASSPATH+=" rhino-1.6"
 	else
@@ -55,6 +56,12 @@ src_prepare() {
 	else
 		rm -r src/org/apache/bsf/engines/jacl || die
 	fi
+	# java-pkg-simple.eclass wants resources in JAVA_RESOURCE_DIRS
+	mkdir res || die "create res"
+	pushd src > /dev/null || die "pushd"
+		find -type f -name '*.properties' \
+			| xargs cp --parent -t ../res || die "copy resources"
+	popd > /dev/null
 }
 
 src_install() {
