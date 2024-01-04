@@ -10,6 +10,6 @@ https://bugs.gentoo.org/912853
  target_link_libraries(libclementine-tagreader
 -  ${PROTOBUF_LIBRARY}
    libclementine-common
-+  ${PROTOBUF_LIBRARY} absl_log_internal_check_op absl_log_internal_message
++  ${PROTOBUF_LIBRARY} ${GENTOO_FIX_ABSL_LIBS}
  )
  
