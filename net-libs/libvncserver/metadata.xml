@@ -16,7 +16,6 @@
 	<use>
 		<flag name="24bpp">Enable 24bpp support</flag>
 		<flag name="filetransfer">Enable support for TightVNC's file transfer protocol</flag>
-		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> as crypto backend</flag>
 		<flag name="lzo">Enable LZO support via <pkg>dev-libs/lzo</pkg> instead of using internal miniLZO implementation</flag>
 	</use>
 	<upstream>
