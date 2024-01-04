@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -79,7 +79,8 @@ src_prepare() {
 				-e "s/from pipenv.vendor import ${pkgName}/import ${pkgName}/g" \
 				-e "s/from pipenv.vendor.${pkgName}\(.*\) import \(\w*\)/from ${pkgName}\1 import \2/g"\
 				-e "s/import pipenv.vendor.${pkgName} as ${pkgName}/import ${pkgName}/g" \
-				-e "s/from .vendor import ${pkgName}/import ${pkgName}/g" || die "Failed to sed for ${pkgName}"
+				-e "s/from .vendor import ${pkgName}/import ${pkgName}/g" \
+		        -e "s/from .vendor.${pkgName}/from ${pkgName}/g" || die "Failed to sed for ${pkgName}"
 	done
 
 	distutils-r1_src_prepare
@@ -116,6 +117,7 @@ src_prepare() {
 
 	rm -Rfv pipenv/vendor || die "Could not vendor"
 	rm -Rfv examples || die "Could not remove examples"
+	rm -Rfv docs || die "Could not remove docs"
 }
 
 python_test() {
