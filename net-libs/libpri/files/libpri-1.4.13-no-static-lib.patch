@@ -1,0 +1,35 @@
+diff -uNr libpri-1.4.13.ORIG/Makefile libpri-1.4.13/Makefile
+--- libpri-1.4.13.ORIG/Makefile	2012-10-27 13:22:57.902838938 +0100
++++ libpri-1.4.13/Makefile	2012-10-27 13:23:36.746837229 +0100
+@@ -120,7 +120,7 @@
+ SOFLAGS += -m32
+ endif
+ 
+-all: $(STATIC_LIBRARY) $(DYNAMIC_LIBRARY) $(UTILITIES)
++all: $(DYNAMIC_LIBRARY)
+ 
+ update:
+ 	@if [ -d .svn ]; then \
+@@ -139,7 +139,7 @@
+ 		echo "Not under version control";  \
+ 	fi
+ 
+-install: $(STATIC_LIBRARY) $(DYNAMIC_LIBRARY)
++install: $(DYNAMIC_LIBRARY)
+ 	mkdir -p $(LIBDIR)
+ 	mkdir -p $(INSTALL_PREFIX)$(INSTALL_BASE)/include
+ ifneq (${OSARCH},SunOS)
+@@ -147,13 +147,11 @@
+ 	install -m 755 $(DYNAMIC_LIBRARY) $(LIBDIR)
+ 	if [ -x /usr/sbin/sestatus ] && ( /usr/sbin/sestatus | grep "SELinux status:" | grep -q "enabled"); then /sbin/restorecon -v $(LIBDIR)/$(DYNAMIC_LIBRARY); fi
+ 	( cd $(LIBDIR) ; ln -sf libpri.so.$(SONAME) libpri.so)
+-	install -m 644 $(STATIC_LIBRARY) $(LIBDIR)
+ 	if test $$(id -u) = 0; then $(LDCONFIG) $(LDCONFIG_FLAGS) $(LIBDIR); fi
+ else
+ 	install -f $(INSTALL_PREFIX)$(INSTALL_BASE)/include -m 644 libpri.h
+ 	install -f $(LIBDIR) -m 755 $(DYNAMIC_LIBRARY)
+ 	( cd $(LIBDIR) ; ln -sf libpri.so.$(SONAME) libpri.so)
+-	install -f $(LIBDIR) -m 644 $(STATIC_LIBRARY)
+ endif
+ 
+ uninstall:
