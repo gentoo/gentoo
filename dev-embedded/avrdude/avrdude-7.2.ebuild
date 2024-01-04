@@ -53,6 +53,7 @@ src_configure() {
 		-DBUILD_DOC=OFF # This currently does nothing...
 		-DBUILD_SHARED_LIBS=ON
 		-DDEBUG_CMAKE=ON
+		-DHAVE_LIBGPIOD='' # Bug #921301
 		-DHAVE_LIBFTDI=''
 		-DHAVE_LINUXGPIO=ON # Seems like there is no reason to have this off.
 		-DHAVE_LINUXSPI=ON # Ditto.
