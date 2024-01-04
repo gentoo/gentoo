@@ -66,6 +66,8 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.1-allow-configuration-of-install-dirs.patch
 	"${FILESDIR}"/${PN}-1.12.1-fix-hardcoded-relative-directory-of-the-installed-cmake-files.patch
+	# https://github.com/PointCloudLibrary/pcl/commit/c750d074cdc5fbb5382ff302ba9afe43ce51a101
+	"${FILESDIR}"/${PN}-1.13.1-boost-1.84.patch
 )
 
 src_prepare() {
