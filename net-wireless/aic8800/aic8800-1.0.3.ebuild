@@ -10,7 +10,7 @@ HOMEPAGE="https://www.aicsemi.com/ https://linux.brostrend.com/troubleshooting/s
 
 SRC_URI="https://linux.brostrend.com/${PN}-dkms.deb -> ${P}.deb"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ firmware? ( freedist )"
 SLOT="0"
 KEYWORDS="~amd64"
 
