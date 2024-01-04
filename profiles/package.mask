@@ -562,6 +562,7 @@ media-video/subtitleripper
 # downstream. Has no active maintainer in Gentoo. If you use DAHDI and have
 # some ideas how to help, please see bug #914477.
 # Removal on 2024-03-01.
+net-libs/libpri
 net-misc/dahdi
 net-misc/dahdi-tools
 net-misc/openr2
