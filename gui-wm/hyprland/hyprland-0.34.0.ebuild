@@ -25,9 +25,9 @@ IUSE="X legacy-renderer systemd"
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
+	app-alternatives/ninja
 	dev-util/cmake
 	dev-util/meson
-	dev-util/ninja
 	dev-vcs/git
 	sys-auth/polkit
 	virtual/pkgconfig
