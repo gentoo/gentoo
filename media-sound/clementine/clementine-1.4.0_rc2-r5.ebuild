@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -148,6 +148,7 @@ src_configure() {
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
 		"$(cmake_use_find_package alsa ALSA)"
+		-DGENTOO_FIX_ABSL_LIBS="$(test-flags-CCLD -labsl_log_internal_check_op -labsl_log_internal_message)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
