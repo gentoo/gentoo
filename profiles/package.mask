@@ -182,7 +182,7 @@ media-sound/guayadeque
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Abandoned and archived upstream.  Known broken.  No revdeps.
-# dev-go/lichen::guru is the recommended replacement.
+# dev-go/lichen is the recommended replacement.
 # Removal on 2024-01-21.  Bug #913755.
 dev-go/golicense
 
