@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-desktop.patch"
 )
 
-distutils_enable_sphinx doc
+distutils_enable_sphinx doc \
+	dev-python/sphinx-rtd-theme
 
 pkg_postinst() {
 	xdg_icon_cache_update
