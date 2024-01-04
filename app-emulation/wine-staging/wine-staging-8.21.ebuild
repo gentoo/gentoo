@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -213,6 +213,11 @@ src_prepare() {
 	local patchinstallargs=(
 		--all
 		--no-autoconf
+		# patches known broken with USE=-mingw, retry occasionally (bug #921360)
+		$(usev !mingw '
+			-W winedevice-Default_Drivers
+			-W fltmgr.sys-FltBuildDefaultSecurityDescriptor
+		')
 		${MY_WINE_STAGING_CONF}
 	)
 
