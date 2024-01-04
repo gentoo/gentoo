@@ -14,7 +14,7 @@ SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="doc kf6compat"
 
 DEPEND="
