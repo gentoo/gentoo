@@ -21,6 +21,7 @@ KEYWORDS="~amd64 ~riscv"
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-2023.9.8-append-always-install-to-pip-extra-args.patch"
+	"${FILESDIR}/pipenv-2023.11.15-fix-import-path-PackageDAG.patch"
 )
 
 RDEPEND="
