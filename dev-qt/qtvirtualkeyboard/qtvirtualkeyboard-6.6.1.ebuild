@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Customizable input framework and virtual keyboard for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 ~loong"
 fi
 
 IUSE="+spell"
