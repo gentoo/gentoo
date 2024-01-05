@@ -1,0 +1,14 @@
+Eautoreconf fails because the version of gettext is not defined.
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-04)
+
+--- a/configure.in
++++ b/configure.in
+@@ -15,6 +15,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.])
+ 
++AM_GNU_GETTEXT_REQUIRE_VERSION(0.21.1)
+ AC_INIT([Concurrent Versions System (CVS)],[1.12.12],[bug-cvs@gnu.org],[cvs])
+ AC_CONFIG_SRCDIR(src/cvs.h)
+ AC_CONFIG_AUX_DIR(build-aux)
