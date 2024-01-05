@@ -1,10 +1,11 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# QA check: ensure that Python modules are compiled after installing
+# QA checks related to site-packages directory:
+# - missing, mismatched or stray .pyc files
 # Maintainer: Python project <python@gentoo.org>
 
-python_pyc_check() {
+python_site_check() {
 	local save=$(shopt -p nullglob)
 	shopt -s nullglob
 	local progs=( "${EPREFIX}"/usr/lib/python-exec/*/gpep517 )
@@ -69,7 +70,7 @@ python_pyc_check() {
 		eqawarn "not byte-compiled."
 		eqawarn "The following files are missing:"
 		eqawarn
-		eqatag -v python-pyc.missing "${missing[@]}"
+		eqatag -v python-site.pyc.missing "${missing[@]}"
 		found=1
 	fi
 
@@ -79,7 +80,7 @@ python_pyc_check() {
 		eqawarn "that seem to be invalid (do not have the correct header)."
 		eqawarn "The following files are invalid:"
 		eqawarn
-		eqatag -v python-pyc.invalid "${invalid[@]}"
+		eqatag -v python-site.pyc.invalid "${invalid[@]}"
 		found=1
 	fi
 
@@ -88,7 +89,7 @@ python_pyc_check() {
 		eqawarn "QA Notice: This package installs one or more compiled Python modules whose"
 		eqawarn ".py files have different content (size or hash) than recorded:"
 		eqawarn
-		eqatag -v python-pyc.mismatched.data "${mismatched_data[@]}"
+		eqatag -v python-site.pyc.mismatched.data "${mismatched_data[@]}"
 		found=1
 	fi
 
@@ -97,7 +98,7 @@ python_pyc_check() {
 		eqawarn "QA Notice: This package installs one or more compiled Python modules whose"
 		eqawarn ".py files have different timestamps than recorded:"
 		eqawarn
-		eqatag -v python-pyc.mismatched.timestamp "${mismatched_timestamp[@]}"
+		eqatag -v python-site.pyc.mismatched.timestamp "${mismatched_timestamp[@]}"
 		found=1
 	fi
 
@@ -107,7 +108,7 @@ python_pyc_check() {
 		eqawarn "that do not match installed modules (or their implementation)."
 		eqawarn "The following files are stray:"
 		eqawarn
-		eqatag -v python-pyc.stray "${stray[@]}"
+		eqatag -v python-site.pyc.stray "${stray[@]}"
 		found=1
 	fi
 
@@ -118,7 +119,7 @@ python_pyc_check() {
 	fi
 }
 
-python_pyc_check
+python_site_check
 
 : # guarantee successful exit
 
