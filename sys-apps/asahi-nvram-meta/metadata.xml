@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jcalligeros99@gmail.com</email>
+		<name>James Calligeros</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>asahi@gentoo.org</email>
+		<name>Asahi</name>
+	</maintainer>
+	<longdescription>
+		Apple Silicon Macs store a large amount of platform configuration data
+		in NVRAM. This can be considered as a synthesis of a PC's BIOS settings
+		and UEFI variable store. Being able to read and write the NVRAM is
+		useful for, inter alia, handing off Bluetooth and WiFi configuration
+		data from macOS, and setting the "default" boot disk.
+	</longdescription>
+	<use>
+		<flag name="bless">Pull in <pkg>sys-apps/asahi-bless</pkg></flag>
+		<flag name="gui">
+			Pull in <pkg>sys-apps/asahi-startup-disk</pkg> for a GUI boot
+			disk selector
+		</flag>
+		<flag name="bluetooth">Pull in <pkg>net-misc/asahi-btsync</pkg></flag>
+		<flag name="raw">
+			Enable raw NVRAM reading with <pkg>sys-apps/asahi-nvram</pkg>
+		</flag>
+		<flag name="wifi">Pull in <pkg>net-misc/asahi-wifisync</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">
+			WhatAmISupposedToPutHere/asahi-nvram
+		</remote-id>
+	</upstream>
+</pkgmetadata>
