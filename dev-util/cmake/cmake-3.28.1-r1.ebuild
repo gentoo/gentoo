@@ -105,6 +105,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0006-Filter-out-distcc-warnings-to-avoid-confusing-CMake.patch
 
 	# Upstream fixes (can usually be removed with a version bump)
+	"${FILESDIR}"/${PN}-3.28.0-c99.patch
 )
 
 cmake_src_bootstrap() {
