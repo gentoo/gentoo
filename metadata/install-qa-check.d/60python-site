@@ -9,6 +9,10 @@ python_site_check() {
 	local save=$(shopt -p nullglob)
 	shopt -s nullglob
 	local progs=( "${EPREFIX}"/usr/lib/python-exec/*/gpep517 )
+	local bad_libdirs=()
+	[[ $(get_libdir) != lib ]] && bad_libdirs=(
+		"${ED}/usr/$(get_libdir)"/{python3,pypy}*
+	)
 	${save}
 
 	local forbidden_package_names=(
@@ -184,6 +188,14 @@ python_site_check() {
 		# TODO: make this fatal once we fix the existing issues, and remove
 		# the previous version from distutils-r1
 		#die "Failing install because of stray top-level files in site-packages"
+	fi
+
+	if [[ ${bad_libdirs[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: Package installs Python files to /usr/$(get_libdir)"
+		eqawarn "instead of /usr/lib (use \$(python_get_sitedir)):"
+		eqawarn
+		eqatag -v python-site.libdir "${bad_libdirs[@]#${ED}}"
 	fi
 }
 
