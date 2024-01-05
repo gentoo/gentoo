@@ -13,6 +13,9 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<use>
+		<flag name="data">Build data</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">fcitx/libime</remote-id>
 	</upstream>
