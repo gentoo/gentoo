@@ -1,5 +1,6 @@
 https://github.com/Legrandin/pycryptodome/issues/787
 https://github.com/Legrandin/pycryptodome/commit/b4083688fde0580de6c2a4d36d84da31a2549a2c
+https://github.com/Legrandin/pycryptodome/commit/3f6a86e072ef0e650f04eebf086940e6d8b33c03
 
 From b4083688fde0580de6c2a4d36d84da31a2549a2c Mon Sep 17 00:00:00 2001
 From: Helder Eijs <helderijs@gmail.com>
@@ -44,5 +45,29 @@ Subject: [PATCH] Better autodetect of AES support, in case of aggressive
 +        return ret;
      }
      """
+
+From 3f6a86e072ef0e650f04eebf086940e6d8b33c03 Mon Sep 17 00:00:00 2001
+From: Helder Eijs <helderijs@gmail.com>
+Date: Fri, 29 Dec 2023 14:52:15 +0100
+Subject: [PATCH] Use memset, to avoid emmintrin.h
+
+---
+ compiler_opt.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/compiler_opt.py b/compiler_opt.py
+index 57db0a6f..a2711c09 100644
+--- a/compiler_opt.py
++++ b/compiler_opt.py
+@@ -169,7 +169,8 @@ def compiler_supports_aesni():
+     }
+     int main(void) {
+         int ret;
+-        __m128i x = _mm_setzero_si128();
++        __m128i x;
++        memset(&x, 0, sizeof(x));
+         x = f(x, x);
+         memcpy(&ret, &x, sizeof(ret));
+         return ret;
  
 
