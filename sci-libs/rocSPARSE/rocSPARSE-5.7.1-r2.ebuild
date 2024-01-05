@@ -45,7 +45,7 @@ IUSE="benchmark test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 SLOT="0/$(ver_cut 1-2)"
 
-RDEPEND="dev-util/hip
+RDEPEND="=dev-util/hip-5*
 	sci-libs/rocPRIM:${SLOT}"
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
@@ -83,11 +83,13 @@ src_prepare() {
 	sed -i -e "s.set(CMAKE_INSTALL_LIBDIR.#set(CMAKE_INSTALL_LIBDIR." CMakeLists.txt || die
 
 	# use python interpreter specifyied by python-any-r1
-	sed -e "/COMMAND ..\/common\/rocsparse_gentest.py/s,COMMAND ,COMMAND ${EPYTHON} ," -i clients/tests/CMakeLists.txt || die
+	sed -e "/COMMAND ..\/common\/rocsparse_gentest.py/s,COMMAND ,COMMAND ${EPYTHON} ," \
+	    -i clients/tests/CMakeLists.txt || die
 
 	cmake_src_prepare
 
-	# Test need download data from https://sparse.tamu.edu (or other mirror site), check MD5, unpack and convert them into csr format
+	# Test need download data from https://sparse.tamu.edu (or other mirror site), check MD5,
+	# unpack and convert them into csr format
 	# This process is handled default by ${S}/cmake/ClientMatrices.cmake, but should be the responsibility of portage.
 	if use test; then
 		mkdir -p "${BUILD_DIR}"/clients/matrices
