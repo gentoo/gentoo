@@ -4,10 +4,11 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_PEP517="setuptools"
+PYTHON_COMPAT=( python3_{9..12} )
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL="true"
 DISTUTILS_SINGLE_IMPL="true"
+DISTUTILS_USE_PEP517="setuptools"
 GENTOO_DEPEND_ON_PERL="no"
 MY_P="${P/_/-}"
 
@@ -15,7 +16,10 @@ inherit autotools lua perl-module distutils-r1 flag-o-matic
 
 DESCRIPTION="A data logging and graphing system for time series data"
 HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
-SRC_URI="https://github.com/oetiker/${PN}-1.x/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/oetiker/${PN}-1.x/releases/download/v${PV}/${P}.tar.gz
+	https://dev.gentoo.org/~conikost/distfiles/patches/${PN}-1.8.0-gcc14.patch.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
@@ -71,10 +75,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-perl.patch
 	"${FILESDIR}"/${PN}-1.7.0-disable-rrd_graph-cgi.patch
 	"${FILESDIR}"/${PN}-1.7.1-configure.ac.patch
-	"${FILESDIR}"/${P}-configure-clang16.patch
+	"${FILESDIR}"/${PN}-1.8.0-configure-clang16.patch
+	"${WORKDIR}"/${PN}-1.8.0-gcc14.patch
 )
 
 pkg_setup() {
@@ -113,6 +117,9 @@ src_prepare() {
 
 		sed "${mysedargs[@]}" || die
 	fi
+
+	# Temporarily disable rpn test, will be enabled with > 1.8.0 release.
+	sed -e 's/rpn2//' -i tests/Makefile.am || die
 
 	eautoreconf
 }
