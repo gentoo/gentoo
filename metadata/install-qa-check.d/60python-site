@@ -11,11 +11,20 @@ python_site_check() {
 	local progs=( "${EPREFIX}"/usr/lib/python-exec/*/gpep517 )
 	${save}
 
+	local forbidden_package_names=(
+		# NB: setuptools/discovery.py is a good source of ideas
+		benchmark benchmarks dist doc docs examples scripts tasks
+		test tests tools util utils
+		.pytest_cache .hypothesis _trial_temp
+	)
+
 	local invalid=()
 	local mismatched_timestamp=()
 	local mismatched_data=()
 	local missing=()
 	local stray=()
+
+	local stray_packages=()
 
 	# Avoid running the check if sufficiently new gpep517 is not installed
 	# yet. It's valid to schedule (for merge order) >=gpep517-8 after
@@ -24,12 +33,33 @@ python_site_check() {
 		return
 	fi
 
+	local f prog
 	for prog in "${progs[@]}"; do
 		local impl=${prog%/*}
 		impl=${impl##*/}
 
 		# NB: using ${impl}* to catch pypy3.* for pypy3
-		[[ -d "${ED}"/usr/lib/${impl}*/site-packages ]] || continue
+		local sitedir=( "${ED}"/usr/lib/${impl}*/site-packages )
+		[[ -d ${sitedir} ]] || continue
+
+		# check for stray files in site-packages
+		while IFS= read -d $'\0' -r f; do
+			stray_packages+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" -maxdepth 1 -type f '!' '(' \
+					-name '*.egg-info' -o \
+					-name '*.pth' -o \
+					-name '*.py' -o \
+					-name '*.pyi' -o \
+					-name "*$(get_modname)" \
+				')' -print0
+		)
+		# check for forbidden packages
+		for f in "${forbidden_package_names[@]}"; do
+			[[ -d ${sitedir}/${f} ]] && stray_packages+=(
+				"${sitedir#${ED}}/${f}"
+			)
+		done
 
 		einfo "Verifying compiled files for ${impl}"
 		local kind pyc py
@@ -116,6 +146,21 @@ python_site_check() {
 		eqawarn
 		eqawarn "For more information on bytecode files and related issues, please see:"
 		eqawarn "  https://projects.gentoo.org/python/guide/qawarn.html#compiled-bytecode-related-warnings"
+	fi
+
+	if [[ ${stray_packages[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: The following unexpected files/directories were found"
+		eqawarn "top-level in the site-packages directory:"
+		eqawarn
+		eqatag -v python-site.stray "${stray_packages[@]}"
+		eqawarn
+		eqawarn "This is most likely a bug in the build system.  More information"
+		eqawarn "can be found in the Python Guide:"
+		eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#stray-top-level-files-in-site-packages"
+		# TODO: make this fatal once we fix the existing issues, and remove
+		# the previous version from distutils-r1
+		#die "Failing install because of stray top-level files in site-packages"
 	fi
 }
 
