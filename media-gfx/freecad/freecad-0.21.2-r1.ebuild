@@ -98,7 +98,8 @@ RDEPEND="
 			' python3_{10..11} )
 		)
 		qt6? (
-			dev-qt/qttools:6[designer]
+			designer? ( dev-qt/qttools:6[designer] )
+			dev-qt/qttools:6[widgets]
 			dev-qt/qtbase:6[gui,opengl,widgets]
 			dev-qt/qtsvg:6
 			dev-qt/qtwebengine:6[widgets]
