@@ -20,7 +20,7 @@ SRC_URI="
 	arm64? ( https://github.com/jgraph/drawio-desktop/releases/download/v${PV}/drawio-arm64-${PV}.deb
 		-> ${PN}-arm64-${PV}.deb )
 	https://raw.githubusercontent.com/jgraph/drawio-desktop/626bbfa94ad4e1e9806ef076b5cd5d426bcf4976/build/icon.svg
-		-> drawio-${PV}-icon.svg
+		-> drawio-${PV}-icon-r1.svg
 "
 S="${WORKDIR}"
 
@@ -88,8 +88,8 @@ src_install() {
 		newicon -s "${IC_SIZE}" -c mimetypes "usr/share/icons/hicolor/${IC_SIZE}x${IC_SIZE}/apps/drawio.png" \
 		application-vnd.jgraph.mxfile.png
 	done
-	newicon -s scalable "${DISTDIR}/drawio-${PV}-icon.svg" drawio.svg
-	newicon -s scalable -c mimetypes "${DISTDIR}/drawio-${PV}-icon.svg" application-vnd.jgraph.mxfile.svg
+	newicon -s scalable "${DISTDIR}/drawio-${PV}-icon-r1.svg" drawio.svg
+	newicon -s scalable -c mimetypes "${DISTDIR}/drawio-${PV}-icon-r1.svg" application-vnd.jgraph.mxfile.svg
 
 	# Create a desktop entry and associate it with the drawio mime type
 	domenu usr/share/applications/drawio.desktop
