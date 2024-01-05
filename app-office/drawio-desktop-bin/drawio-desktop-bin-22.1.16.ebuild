@@ -9,8 +9,6 @@ CHROMIUM_LANGS="
 	sv sw ta te th tr uk ur vi zh-CN zh-TW
 "
 
-RC_COMMIT="626bbfa94ad4e1e9806ef076b5cd5d426bcf4976"
-
 inherit chromium-2 desktop unpacker xdg
 
 DESCRIPTION="draw.io diagramming and whiteboarding desktop app"
@@ -21,7 +19,7 @@ SRC_URI="
 		-> ${PN}-amd64-${PV}.deb )
 	arm64? ( https://github.com/jgraph/drawio-desktop/releases/download/v${PV}/drawio-arm64-${PV}.deb
 		-> ${PN}-arm64-${PV}.deb )
-	https://github.com/jgraph/drawio-desktop/blob/${RC_COMMIT}/build/icon.svg
+	https://raw.githubusercontent.com/jgraph/drawio-desktop/626bbfa94ad4e1e9806ef076b5cd5d426bcf4976/build/icon.svg
 		-> drawio-${PV}-icon.svg
 "
 S="${WORKDIR}"
