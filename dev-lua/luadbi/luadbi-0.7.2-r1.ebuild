@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,11 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.7.2-mysql-8.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.7.2-mysql-8.patch"
+	"${FILESDIR}/${PN}-0.7.2-incompatible-pointer-type.patch"
+	"${FILESDIR}/${PN}-0.7.2-incompatible-pointer-type2.patch"
+)
 
 src_prepare() {
 	default
