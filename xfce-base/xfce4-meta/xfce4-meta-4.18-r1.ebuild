@@ -8,7 +8,7 @@ HOMEPAGE="https://www.xfce.org/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="
 	archive calendar cdr editor image media minimal mpd pulseaudio
 	remote-fs search +svg upower
