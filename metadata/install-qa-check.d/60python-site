@@ -55,9 +55,9 @@ python_site_check() {
 		done < <(
 			find "${sitedir}" -maxdepth 1 '(' \
 				-name '*-0.0.0.dist-info' -o \
-				-name '*-UNKNOWN.dist-info' -o \
+				-name '*UNKNOWN*.dist-info' -o \
 				-name '*-0.0.0.egg-info' -o \
-				-name '*-UNKNOWN.egg-info' \
+				-name '*UNKNOWN*.egg-info' \
 				')' -print0
 		)
 
@@ -170,7 +170,7 @@ python_site_check() {
 	if [[ ${bad_versions[@]} ]]; then
 		eqawarn
 		eqawarn "QA Notice: The following Python packages were installed with"
-		eqawarn "invalid/suspicious versions in the site-packages directory:"
+		eqawarn "invalid/suspicious names or versions in the site-packages directory:"
 		eqawarn
 		eqatag -v python-site.bad_version "${bad_versions[@]}"
 	fi
