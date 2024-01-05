@@ -24,6 +24,7 @@ python_site_check() {
 	local missing=()
 	local stray=()
 
+	local bad_versions=()
 	local stray_packages=()
 
 	# Avoid running the check if sufficiently new gpep517 is not installed
@@ -41,6 +42,18 @@ python_site_check() {
 		# NB: using ${impl}* to catch pypy3.* for pypy3
 		local sitedir=( "${ED}"/usr/lib/${impl}*/site-packages )
 		[[ -d ${sitedir} ]] || continue
+
+		# check for bad package versions
+		while IFS= read -d $'\0' -r f; do
+			bad_versions+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" -maxdepth 1 '(' \
+				-name '*-0.0.0.dist-info' -o \
+				-name '*-UNKNOWN.dist-info' -o \
+				-name '*-0.0.0.egg-info' -o \
+				-name '*-UNKNOWN.egg-info' \
+				')' -print0
+		)
 
 		# check for stray files in site-packages
 		while IFS= read -d $'\0' -r f; do
@@ -146,6 +159,14 @@ python_site_check() {
 		eqawarn
 		eqawarn "For more information on bytecode files and related issues, please see:"
 		eqawarn "  https://projects.gentoo.org/python/guide/qawarn.html#compiled-bytecode-related-warnings"
+	fi
+
+	if [[ ${bad_versions[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: The following Python packages were installed with"
+		eqawarn "invalid/suspicious versions in the site-packages directory:"
+		eqawarn
+		eqatag -v python-site.bad_version "${bad_versions[@]}"
 	fi
 
 	if [[ ${stray_packages[@]} ]]; then
