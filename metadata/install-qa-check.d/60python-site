@@ -88,7 +88,8 @@ python_site_check() {
 					-name '*.pth' -o \
 					-name '*.py' -o \
 					-name '*.pyi' -o \
-					-name "*$(get_modname)" \
+					-name "*$(get_modname)" -o \
+					-name 'README.txt' \
 				')' -print0
 		)
 		# check for forbidden packages
