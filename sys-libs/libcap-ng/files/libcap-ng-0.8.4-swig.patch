@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/921305
+https://github.com/stevegrubb/libcap-ng/issues/48
+https://github.com/stevegrubb/libcap-ng/commit/30453b6553948cd05c438f9f509013e3bb84f25b
+
+From 30453b6553948cd05c438f9f509013e3bb84f25b Mon Sep 17 00:00:00 2001
+From: Steve Grubb <ausearch.1@gmail.com>
+Date: Thu, 4 Jan 2024 15:06:29 -0500
+Subject: [PATCH] Remove python global exception handler since its deprecated
+
+---
+ bindings/src/capng_swig.i | 7 -------
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/bindings/src/capng_swig.i b/bindings/src/capng_swig.i
+index fcdaf18..fa85e13 100644
+--- a/bindings/src/capng_swig.i
++++ b/bindings/src/capng_swig.i
+@@ -30,13 +30,6 @@
+ 
+ %varargs(16, signed capability = 0) capng_updatev;
+ 
+-%except(python) {
+-  $action
+-  if (result < 0) {
+-    PyErr_SetFromErrno(PyExc_OSError);
+-    return NULL;
+-  }
+-}
+ #endif
+ 
+ %define __signed__
