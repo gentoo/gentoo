@@ -129,8 +129,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-prefix.patch
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
-	"${FILESDIR}"/${P}-ipv6-configure-c99.patch
-	"${FILESDIR}"/${P}-mpd-stream-http-adjust_pollset.patch
 )
 
 src_prepare() {
