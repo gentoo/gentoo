@@ -28,12 +28,3 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	# siiigh
-	cat >> setup.cfg <<-EOF
-		[metadata]
-		version = ${PV}
-	EOF
-	distutils-r1_src_prepare
-}
