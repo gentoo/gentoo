@@ -161,6 +161,9 @@ src_configure() {
 	# Respect CC, otherwise fails on prefix #395875
 	tc-export CC
 
+	# ODR violations (bug #915230, https://bugs.webkit.org/show_bug.cgi?id=233007)
+	filter-lto
+
 	# It does not compile on alpha without this in LDFLAGS
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648761
 	use alpha && append-ldflags "-Wl,--no-relax"
