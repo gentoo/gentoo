@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit check-reqs cmake optfeature python-single-r1 xdg
+inherit check-reqs cmake optfeature python-single-r1 qmake-utils xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
@@ -81,7 +81,7 @@ RDEPEND="
 		virtual/glu
 		virtual/opengl
 		!qt6? (
-			designer? ( dev-qt/designer:5 )
+			dev-qt/designer:5
 			dev-qt/qtgui:5
 			dev-qt/qtopengl:5
 			dev-qt/qtprintsupport:5
@@ -89,6 +89,7 @@ RDEPEND="
 			dev-qt/qtwebengine:5[widgets]
 			dev-qt/qtwidgets:5
 			dev-qt/qtx11extras:5
+			pcl? ( sci-libs/pcl[qt5] )
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
@@ -97,10 +98,11 @@ RDEPEND="
 			' python3_{10..11} )
 		)
 		qt6? (
-			designer? ( dev-qt/qttools:6[designer] )
+			dev-qt/qttools:6[designer]
 			dev-qt/qtbase:6[gui,opengl,widgets]
 			dev-qt/qtsvg:6
 			dev-qt/qtwebengine:6[widgets]
+			pcl? ( sci-libs/pcl[-qt5,qt6(-)] )
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
@@ -111,7 +113,7 @@ RDEPEND="
 	)
 	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
-	pcl? ( sci-libs/pcl:=[opengl,openni2,qt5,vtk] )
+	pcl? ( sci-libs/pcl:=[opengl,openni2,vtk] )
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
@@ -271,14 +273,20 @@ src_configure() {
 
 	if use qt6; then
 		mycmakeargs+=(
+			-DFREECAD_QT_MAJOR_VERSION=6
 			-DFREECAD_QT_VERSION=6
 			-DQT_DEFAULT_MAJOR_VERSION=6
+			-DQt6Core_MOC_EXECUTABLE="$(qt6_get_bindir)/moc"
+			-DQt6Core_RCC_EXECUTABLE="$(qt6_get_bindir)/rcc"
 			-DBUILD_QT5=OFF
 		)
 	else
 		mycmakeargs+=(
+			-DFREECAD_QT_MAJOR_VERSION=5
 			-DFREECAD_QT_VERSION=5
 			-DQT_DEFAULT_MAJOR_VERSION=5
+			-DQt5Core_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
+			-DQt5Core_RCC_EXECUTABLE="$(qt5_get_bindir)/rcc"
 			-DBUILD_QT5=ON
 		)
 	fi
