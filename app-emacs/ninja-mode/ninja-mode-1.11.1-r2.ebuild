@@ -17,3 +17,5 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 RDEPEND="!<dev-util/ninja-1.11.1-r4[emacs(-)]"
 
 DOCS=()
+
+SITEFILE="50${PN}-gentoo.el"
