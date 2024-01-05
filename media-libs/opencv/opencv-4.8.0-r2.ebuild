@@ -87,7 +87,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
-	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
+	<dev-libs/protobuf-23:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	contribdnn? ( dev-libs/flatbuffers:= )
@@ -292,7 +292,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.2-opencl-license.patch
 	"${FILESDIR}"/${PN}-4.4.0-disable-native-cpuflag-detect.patch
 	"${FILESDIR}"/${PN}-4.5.0-link-with-cblas-for-lapack.patch
-	"${FILESDIR}"/${PN}-4.8.0-fix-protobuf.patch
 	"${FILESDIR}"/${PN}-4.8.0-fix-flatbuffer.patch
 	"${FILESDIR}"/${PN}-4.8.0-arm64-fp16.patch
 	"${FILESDIR}"/${PN}-4.8.0-fix-cuda-12.2.0.patch
