@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SRC_URI="
 	python-extensions? ( https://github.com/albertlauncher/python/archive/${PYTHON_EXTENSIONS_COMMIT}.tar.gz -> ${PN}-python-extensions-${PYTHON_EXTENSIONS_COMMIT}.tar.gz )
 "
 
-LICENSE="all-rights-reserved"	# unclear licensing #766129
+LICENSE="Albert-1.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug +python +python-extensions"
