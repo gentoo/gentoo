@@ -13,7 +13,7 @@ HOMEPAGE="https://pypi.org/project/random2/"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 python_test() {
 	"${EPYTHON}" -m unittest -vv src.tests.test_suite ||
