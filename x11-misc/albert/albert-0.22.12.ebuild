@@ -16,7 +16,10 @@ PYTHON_EXTENSIONS_COMMIT="f1e3cf96b263df519b9d30984eb99b4850fc1976"
 SRC_URI="
 	https://github.com/albertlauncher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/albertlauncher/plugins/archive/${PLUGINS_HASH}.tar.gz -> ${PN}-plugins-${PLUGINS_HASH}.tar.gz
-	python-extensions? ( https://github.com/albertlauncher/python/archive/${PYTHON_EXTENSIONS_COMMIT}.tar.gz -> ${PN}-python-extensions-${PYTHON_EXTENSIONS_COMMIT}.tar.gz )
+	python-extensions? (
+		https://github.com/albertlauncher/python/archive/${PYTHON_EXTENSIONS_COMMIT}.tar.gz ->
+			${PN}-python-extensions-${PYTHON_EXTENSIONS_COMMIT}.tar.gz
+	)
 "
 
 LICENSE="Albert-1.0"
