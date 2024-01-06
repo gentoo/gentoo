@@ -92,8 +92,6 @@ src_configure() {
 }
 
 src_test() {
-	gnome_environment_reset
-	export XDG_DATA_DIRS="${EPREFIX}"/usr/share
 	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
 
