@@ -7,7 +7,7 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 ROCM_SKIP_GLOBALS=1
 
-inherit cmake docs llvm rocm
+inherit cmake docs flag-o-matic llvm rocm
 
 LLVM_MAX_SLOT=17
 
@@ -83,13 +83,7 @@ src_configure() {
 
 	# Fix ld.lld linker error: https://github.com/ROCm/HIP/issues/3382
 	# See also: https://github.com/gentoo/gentoo/pull/29097
-
-	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
-	# https://github.com/gentoo/gentoo/pull/28355
-	# mold needs this too but right now tc-ld-is-mold is also not available
-	if tc-ld-is-lld; then
-		append-ldflags -Wl,--undefined-version
-	fi
+	append-ldflags $(tc-flags-CCLD -Wl,--undefined-version)
 
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
