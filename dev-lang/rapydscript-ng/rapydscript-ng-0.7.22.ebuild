@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ else
 		https://github.com/kovidgoyal/rapydscript-ng/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/rapydscript-ng-node_modules-${PV}.tar.xz
 	"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 inherit edo
