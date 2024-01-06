@@ -352,7 +352,11 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake tooldir="${EPREFIX}${TOOLPATH}" all
+	# see linker prefix patch
+	emake \
+		tooldir="${EPREFIX}${TOOLPATH}" \
+		gentoo_prefix=$(usex prefix-guest "${EPREFIX}"/usr /usr) \
+		all
 
 	# only build info pages if the user wants them
 	if use doc ; then
