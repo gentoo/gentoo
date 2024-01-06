@@ -123,6 +123,8 @@ ARM_CPU_FEATURES=(
 	cpu_flags_arm_vfp:vfp
 	cpu_flags_arm_vfpv3:vfpv3
 	cpu_flags_arm_v8:armv8
+	cpu_flags_arm_asimddp:dotprod
+	cpu_flags_arm_i8mm:i8mm
 )
 ARM_CPU_REQUIRED_USE="
 	arm64? ( cpu_flags_arm_v8 )
@@ -453,8 +455,6 @@ multilib_src_configure() {
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		use ${i%:*} || myconf+=( --disable-${i#*:} )
 	done
-	# Bug #917277, #917278
-	myconf+=( --disable-dotprod --disable-i8mm )
 
 	if use pic ; then
 		myconf+=( --enable-pic )
