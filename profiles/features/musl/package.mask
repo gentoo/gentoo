@@ -3,6 +3,10 @@
 
 # Maciej Barć <xgqt@gentoo.org> (2024-01-06)
 # Binary package, which is compiled against glibc
+app-office/joplin-desktop
+
+# Maciej Barć <xgqt@gentoo.org> (2024-01-06)
+# Binary package, which is compiled against glibc
 dev-util/azuredatastudio
 
 # Florian Schmaus <flow@gentoo.org> (2023-11-22)
