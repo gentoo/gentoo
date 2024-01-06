@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -10,7 +10,7 @@ inherit python-utils-r1 toolchain-funcs verify-sig
 MY_PV=${PV/_alpha/a}
 MY_P="Python-${MY_PV%_p*}"
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-${MY_PV}"
+PATCHSET="python-gentoo-patches-${MY_PV}_p1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -71,7 +71,7 @@ DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
 	test? (
-		app-arch/xz-utils[extra-filters(+)]
+		app-arch/xz-utils
 		dev-python/ensurepip-pip
 		dev-python/ensurepip-setuptools
 		dev-python/ensurepip-wheel
