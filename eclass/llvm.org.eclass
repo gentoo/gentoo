@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -72,6 +72,9 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
+				18.0.0_pre20240106)
+					EGIT_COMMIT=a085402ef54379758e6c996dbaedfcb92ad222b5
+					;;
 				18.0.0_pre20231228)
 					EGIT_COMMIT=a700298b3d538452915703268ca18f7f8f7537e6
 					;;
