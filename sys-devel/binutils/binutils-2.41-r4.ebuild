@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -184,12 +184,7 @@ src_configure() {
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
-	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
-	# https://github.com/gentoo/gentoo/pull/28355
-	# mold needs this too but right now tc-ld-is-mold is also not available
-	if tc-ld-is-lld; then
-		append-ldflags -Wl,--undefined-version
-	fi
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local x
 	echo
@@ -357,11 +352,7 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	# see linker prefix patch
-	emake \
-		tooldir="${EPREFIX}${TOOLPATH}" \
-		gentoo_prefix=$(usex prefix-guest "${EPREFIX}"/usr /usr) \
-		all
+	emake tooldir="${EPREFIX}${TOOLPATH}" all
 
 	# only build info pages if the user wants them
 	if use doc ; then
