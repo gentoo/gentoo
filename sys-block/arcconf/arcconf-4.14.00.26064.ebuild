@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,9 +24,8 @@ QA_PREBUILT="usr/bin/arcconf"
 
 pkg_setup() {
 	# CONFIG_HARDENED_USERCOPY_PAGESPAN makes ARCCONF segault
-	# LEGACY_VSYSCALL_NONE makes ARCCONF segaultmakes ARCCONF segault
 	if linux-info_get_any_version && linux_config_src_exists; then
-		CONFIG_CHECK="!HARDENED_USERCOPY_PAGESPAN !LEGACY_VSYSCALL_NONE"
+		CONFIG_CHECK="!HARDENED_USERCOPY_PAGESPAN"
 		check_extra_config
 	fi
 }
