@@ -32,6 +32,7 @@ REQUIRED_USE="
 	python-extensions? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
+RESTRICT="mirror"
 
 RDEPEND="
 	app-arch/libarchive:=
