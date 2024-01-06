@@ -23,7 +23,10 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
-PATCHES=( "${FILESDIR}/${PN}-2.0.05-musl.patch" )
+PATCHES=(
+		"${FILESDIR}/${PN}-2.0.05-musl.patch"
+		"${FILESDIR}/${PN}-2.0.04-stdint.patch"
+	)
 
 src_prepare() {
 	eapply ${PATCHES[@]}
