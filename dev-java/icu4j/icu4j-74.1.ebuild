@@ -20,7 +20,7 @@ S="${WORKDIR}/icu-release-${PV/./-}/icu4j/main"
 
 LICENSE="icu"
 SLOT="70"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
