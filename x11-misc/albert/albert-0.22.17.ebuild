@@ -26,6 +26,7 @@ LICENSE="Albert-1.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug +python +python-extensions"
+RESTRICT="mirror bindist"
 
 REQUIRED_USE="
 	python-extensions? ( python )
