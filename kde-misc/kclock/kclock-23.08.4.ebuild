@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kclock/"
 
 LICENSE="CC0-1.0 CC-BY-4.0 GPL-2+ GPL-3+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 x86"
 
 DEPEND="
 	>=dev-libs/kirigami-addons-0.6:5
