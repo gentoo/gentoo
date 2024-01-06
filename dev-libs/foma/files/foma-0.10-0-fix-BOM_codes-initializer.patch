@@ -1,0 +1,41 @@
+From 9a99d2d41809422080606bb49531b38ce1e2111a Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 4 Jan 2024 17:15:27 +0100
+Subject: [PATCH] Fix BOM_codes initializer
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Future compilers will reject the current initializer:
+
+io.c:1002:7: error: initialization of ‘char’ from ‘void *’ makes integer from pointer without a cast
+ 1002 |     { NULL, 0, NULL },
+      |       ^~~~
+io.c:1002:16: error: initialization of ‘char’ from ‘void *’ makes integer from pointer without a cast
+ 1002 |     { NULL, 0, NULL },
+      |                ^~~~
+io.c:996:26: warning: missing braces around initializer [-Wmissing-braces]
+  996 | static BOM BOM_codes[] = {
+      |                          ^
+io.c:996:26: warning: missing braces around initializer [-Wmissing-braces]
+
+
+The reason is that NULL is usually a pointer constant, which is not
+a valid expression for a character.
+---
+ foma/io.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/foma/io.c b/foma/io.c
+index b7bf69b..da1c57a 100644
+--- a/foma/io.c
++++ b/foma/io.c
+@@ -999,7 +999,7 @@ static BOM BOM_codes[] = {
+     { { 0x00, 0x00, 0xFE, 0xFF }, 4, "UTF-32BE" },
+     { { 0xFF, 0xFE }, 2, "UTF16-LE" },
+     { { 0xFE, 0xFF }, 2, "UTF16-BE" },
+-    { NULL, 0, NULL },
++    { { 0, } , 0, NULL },
+ };
+ 
+ BOM *check_BOM(char *buffer) {
