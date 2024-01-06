@@ -1,5 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-06)
+# <dev-lang/go-1.{20.12,21.5} has multiple vulns (#919738):
+# CVE-2023-39326, CVE-2023-45283, CVE-2023-45285
+# However cgo is broken for <dev-lang/go-1.21 on i386 (#921366)
+# <net-p2p/kubo-0.23.0 depends on <dev-lang/go-1.21 (#912149)
+<dev-lang/go-1.21
+<net-p2p/kubo-0.23.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
