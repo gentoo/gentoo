@@ -46,6 +46,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/tomli[${PYTHON_USEDEP}]
 		' 3.10)
+		media-libs/tiff[zlib]
 	)
 "
 
