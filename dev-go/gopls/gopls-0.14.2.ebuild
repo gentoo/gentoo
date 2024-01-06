@@ -13,7 +13,7 @@ LICENSE="BSD"
 BDEPEND=">=dev-lang/go-1.20"
 SRC_URI="
 	${ARCHIVE_URI}
-	https://github.com/alfredfo/gopls-deps/raw/master/${P}-deps.tar.xz
+	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz
 "
 # TODO: fix test failure with deps tarball
 RESTRICT+=" test"
