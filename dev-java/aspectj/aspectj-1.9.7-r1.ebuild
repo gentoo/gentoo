@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A seamless aspect-oriented extension to the Java programming language"
 HOMEPAGE="https://eclipse.org/aspectj/"
-SRC_URI="https://github.com/eclipse/org.aspectj/archive/refs/tags/V${PV//./_}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-aspectj/aspectj/archive/V${PV//./_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="0"
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/asm:9
 	dev-java/commons-logging:0
-	dev-java/ant-apache-regexp:0"
+	dev-java/jakarta-regexp:1.4"
 DEPEND="${CDEPEND}
 	>=virtual/jdk-1.8:*"
 RDEPEND="${CDEPEND}
@@ -26,7 +26,7 @@ BDEPEND="app-arch/zip"
 S=${WORKDIR}/org.${P//./_}
 
 JAVA_GENTOO_CLASSPATH_EXTRA="aspectjweaver.jar"
-JAVA_GENTOO_CLASSPATH="commons-logging,asm-9,ant-apache-regexp"
+JAVA_GENTOO_CLASSPATH="commons-logging,asm-9,jakarta-regexp-1.4"
 JAVA_ENCODING="iso8859-1"
 
 src_compile() {
