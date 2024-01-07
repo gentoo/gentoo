@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 GNOME_ORG_MODULE="NetworkManager"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit gnome.org linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
+inherit gnome.org linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd udev vala virtualx
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -16,7 +16,7 @@ SRC_URI+=" https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit lto +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -150,12 +150,6 @@ pkg_setup() {
 	if use introspection || use test; then
 		python-any-r1_pkg_setup
 	fi
-
-	# bug 809695
-	if tc-is-clang && use lto; then
-		eerror "Clang does not support -flto-partition"
-		die "Please use gcc or turn off USE=lto flag when building with clang"
-	fi
 }
 
 src_prepare() {
@@ -243,8 +237,6 @@ multilib_src_configure() {
 		-Dld_gc=false
 		$(meson_native_use_bool psl libpsl)
 		-Dqt=false
-
-		$(meson_use lto b_lto)
 	)
 
 	if multilib_is_native_abi && use systemd; then
