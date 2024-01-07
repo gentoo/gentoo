@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~mips ~riscv ~x86"
 IUSE="libnotify taglib wayland X"
 REQUIRED_USE="|| ( wayland X )"
 
