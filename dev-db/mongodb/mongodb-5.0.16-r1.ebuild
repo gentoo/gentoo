@@ -22,7 +22,7 @@ LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 -riscv"
 CPU_FLAGS="cpu_flags_x86_avx"
-IUSE="debug kerberos lto mongosh ssl +tools ${CPU_FLAGS}"
+IUSE="debug kerberos mongosh ssl +tools ${CPU_FLAGS}"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
@@ -138,7 +138,6 @@ src_configure() {
 	use arm64 && scons_opts+=( --use-hardware-crc32=off ) # Bug 701300
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
-	use lto && scons_opts+=( --lto=on )
 	use amd64 && ! use cpu_flags_x86_avx && scons_opts+=( --experimental-optimization=-sandybridge ) # Bug 890294
 
 	scons_opts+=( --ssl=$(usex ssl on off) )
