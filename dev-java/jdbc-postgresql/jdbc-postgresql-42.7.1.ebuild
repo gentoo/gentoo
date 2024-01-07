@@ -16,7 +16,7 @@ S="${WORKDIR}/postgresql-${PV}-jdbc-src"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc64"
+KEYWORDS="amd64 ppc64"
 # package se.jiderhamn.classloader does not exist
 # package se.jiderhamn.classloader.leak does not exist
 # package uk.org.webcompere.systemstubs.environment does not exist
