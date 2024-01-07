@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="${CARGO_CRATE_URIS}"
 	SRC_URI+="https://github.com/containers/aardvark-dns/releases/download/v${PV}/${PN}-v${PV}-vendor.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+	KEYWORDS="~amd64 arm64 ~ppc64 ~riscv"
 fi
 
 # main
