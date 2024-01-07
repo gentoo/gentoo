@@ -16,7 +16,7 @@ S="${WORKDIR}/waffle-waffle-parent-${PV}/Source/JNA/waffle-jna"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc64"
+KEYWORDS="amd64 ppc64 x86"
 RESTRICT="test" #839681
 
 DEPEND="
