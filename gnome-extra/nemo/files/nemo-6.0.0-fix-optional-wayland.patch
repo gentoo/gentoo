@@ -1,0 +1,61 @@
+From 1d74919f2657bdb0414d5bf631f6fb1207b261a9 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Sun, 7 Jan 2024 18:14:22 -0500
+Subject: [PATCH] Make wayland dependency optional
+
+---
+ eel/eel-gtk-extensions.c | 5 ++++-
+ meson.build              | 2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/eel/eel-gtk-extensions.c b/eel/eel-gtk-extensions.c
+index c4fcc942a..643a51726 100644
+--- a/eel/eel-gtk-extensions.c
++++ b/eel/eel-gtk-extensions.c
+@@ -38,7 +38,9 @@
+ #include <X11/Xatom.h>
+ #include <gdk/gdk.h>
+ #include <gdk/gdkprivate.h>
++#ifdef GDK_WINDOWING_WAYLAND
+ #include <gdk/gdkwayland.h>
++#endif
+ #include <gtk/gtk.h>
+ #include <glib/gi18n-lib.h>
+ #include <math.h>
+@@ -253,6 +255,7 @@ gboolean
+ eel_check_is_wayland (void)
+ {
+     static gboolean using_wayland = FALSE;
++#ifdef GDK_WINDOWING_WAYLAND
+     static gsize once_init = 0;
+ 
+     if (g_once_init_enter (&once_init)) {
+@@ -260,7 +263,7 @@ eel_check_is_wayland (void)
+ 
+         g_once_init_leave (&once_init, 1);
+     }
+-
++#endif
+     return using_wayland;
+ }
+ 
+diff --git a/meson.build b/meson.build
+index bba97ee31..998229620 100644
+--- a/meson.build
++++ b/meson.build
+@@ -72,7 +72,6 @@ glib_version = '>=2.45.7'
+ math    = cc.find_library('m', required: true)
+ 
+ gtk     = dependency('gtk+-3.0',                    version: '>=3.10.0')
+-gtk_wl  = dependency('gtk+-wayland-3.0',            version: '>=3.10.0')
+ gio     = dependency('gio-2.0',                     version: glib_version)
+ gio_unix= dependency('gio-unix-2.0',                version: glib_version)
+ glib    = dependency('glib-2.0',                    version: glib_version)
+@@ -201,6 +200,7 @@ message('\n'.join(['',
+ '    libexif support:        @0@'.format(libexif_enabled),
+ '    exempi  support:        @0@'.format(exempi_enabled),
+ '    Tracker support:        @0@'.format(tracker_enabled),
++'    Wayland support:        @0@'.format(cc.has_header('gdk/gdkwayland.h', dependencies: gtk)),
+ '',
+ '    nemo-extension documentation: @0@'.format(gtkdoc_enabled),
+ '    nemo-extension introspection: @0@'.format(true),
