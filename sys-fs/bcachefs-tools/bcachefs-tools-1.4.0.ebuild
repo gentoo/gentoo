@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -130,15 +130,16 @@ IUSE="fuse test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	fuse? ( >=sys-fs/fuse-3.7.0 )
 	app-arch/lz4:=
+	app-arch/zstd:=
 	dev-libs/libaio
 	dev-libs/libsodium:=
 	dev-libs/userspace-rcu:=
-	sys-apps/keyutils
+	sys-apps/keyutils:=
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/udev
+	fuse? ( >=sys-fs/fuse-3.7.0 )
 "
 
 RDEPEND="${DEPEND}"
