@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="
@@ -15,7 +15,7 @@ SRC_URI="https://rybczak.net/ncmpcpp/stable/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
-IUSE="clock lto outputs taglib visualizer"
+IUSE="clock outputs taglib visualizer"
 
 RDEPEND="
 	>=media-libs/libmpdclient-2.1
@@ -43,13 +43,12 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-lto
-
+	# --with-lto only appends -flto
 	econf \
 		$(use_enable clock) \
 		$(use_enable outputs) \
 		$(use_enable visualizer) \
-		$(use_with lto) \
+		--without-lto \
 		$(use_with taglib) \
 		$(use_with visualizer fftw)
 }
