@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -139,7 +139,7 @@ src_configure() {
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use lto && scons_opts+=( --lto=on )
-    use amd64 && ! use cpu_flags_x86_avx && scons_opts+=( --experimental-optimization=-sandybridge ) # Bug 890294
+	use amd64 && ! use cpu_flags_x86_avx && scons_opts+=( --experimental-optimization=-sandybridge ) # Bug 890294
 
 	scons_opts+=( --ssl=$(usex ssl on off) )
 
