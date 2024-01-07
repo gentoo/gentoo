@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # John Helmert III <ajak@gentoo.org> (2024-01-06)
+# Unmaintained in Gentoo, outdated, and vulnerable
+# Removal on 2024-02-06. Bugs #856466, #865253
+net-dns/totd
+
+# John Helmert III <ajak@gentoo.org> (2024-01-06)
 # Unmaintained in Gentoo, outdated, vulnerable
 # Removal on 2024-02-06. Bug #918536
 net-nds/tac_plus
