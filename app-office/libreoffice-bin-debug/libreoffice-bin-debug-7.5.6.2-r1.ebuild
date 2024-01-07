@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,31 +10,31 @@ BASE_X86_URI="https://tamiko.43-1.org/distfiles/x86-${BASE_PACKAGENAME}-"
 DESCRIPTION="LibreOffice, a full office productivity suite. Binary package, debug info"
 HOMEPAGE="https://www.libreoffice.org"
 SRC_URI_AMD64="
-	${BASE_AMD64_URI}libreoffice-${PVR}.tar.xz
+	${BASE_AMD64_URI}libreoffice-${PV}.tar.xz
 	kde? (
-		!java? ( ${BASE_AMD64_URI}libreoffice-kde-${PVR}.xd3 )
-		java? ( ${BASE_AMD64_URI}libreoffice-kde-java-${PVR}.xd3 )
+		!java? ( ${BASE_AMD64_URI}libreoffice-kde-${PV}.xd3 )
+		java? ( ${BASE_AMD64_URI}libreoffice-kde-java-${PV}.xd3 )
 	)
 	gnome? (
-		!java? ( ${BASE_AMD64_URI}libreoffice-gnome-${PVR}.xd3 )
-		java? ( ${BASE_AMD64_URI}libreoffice-gnome-java-${PVR}.xd3 )
+		!java? ( ${BASE_AMD64_URI}libreoffice-gnome-${PV}.xd3 )
+		java? ( ${BASE_AMD64_URI}libreoffice-gnome-java-${PV}.xd3 )
 	)
 	!kde? ( !gnome? (
-		java? ( ${BASE_AMD64_URI}libreoffice-java-${PVR}.xd3 )
+		java? ( ${BASE_AMD64_URI}libreoffice-java-${PV}.xd3 )
 	) )
 "
 SRC_URI_X86="
-	${BASE_X86_URI}libreoffice-${PVR}.tar.xz
+	${BASE_X86_URI}libreoffice-${PV}.tar.xz
 	kde? (
-		!java? ( ${BASE_X86_URI}libreoffice-kde-${PVR}.xd3 )
-		java? ( ${BASE_X86_URI}libreoffice-kde-java-${PVR}.xd3 )
+		!java? ( ${BASE_X86_URI}libreoffice-kde-${PV}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-kde-java-${PV}.xd3 )
 	)
 	gnome? (
-		!java? ( ${BASE_X86_URI}libreoffice-gnome-${PVR}.xd3 )
-		java? ( ${BASE_X86_URI}libreoffice-gnome-java-${PVR}.xd3 )
+		!java? ( ${BASE_X86_URI}libreoffice-gnome-${PV}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-gnome-java-${PV}.xd3 )
 	)
 	!kde? ( !gnome? (
-		java? ( ${BASE_X86_URI}libreoffice-java-${PVR}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-java-${PV}.xd3 )
 	) )
 "
 
