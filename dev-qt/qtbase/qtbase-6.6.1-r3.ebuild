@@ -6,6 +6,7 @@ EAPI=8
 inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
+SRC_URI+=" https://dev.gentoo.org/~ionen/distfiles/${P}-QTBUG-116905.patch.xz"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
@@ -138,6 +139,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 	"${FILESDIR}"/${P}-CVE-2023-51714.patch
+	"${WORKDIR}"/${P}-QTBUG-116905.patch
 )
 
 src_prepare() {
