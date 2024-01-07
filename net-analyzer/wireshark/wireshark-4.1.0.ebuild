@@ -32,7 +32,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
-IUSE+=" +dumpcap +editcap +gui http2 ilbc kerberos libxml2 lto lua lz4 maxminddb"
+IUSE+=" +dumpcap +editcap +gui http2 ilbc kerberos libxml2 lua lz4 maxminddb"
 IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap qt6 +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump wifi zlib +zstd"
@@ -194,7 +194,9 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	! use lto && filter-lto
+	# crashes at runtime
+	# https://bugs.gentoo.org/754021
+	filter-lto
 
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"
@@ -238,7 +240,8 @@ src_configure() {
 		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LIBXML2=$(usex libxml2)
-		-DENABLE_LTO=$(usex lto)
+		# only appends -flto
+		-DENABLE_LTO=OFF
 		-DENABLE_LUA=$(usex lua)
 		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)

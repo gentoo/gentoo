@@ -458,13 +458,6 @@ media-sound/puddletag quodlibet
 dev-libs/efl mono
 
 # Sam James <sam@gentoo.org> (2021-04-09)
-# Crashes at runtime.
-# Mask LTO for now until issue with Qt
-# (to be resolved in Wireshark?) is resolved
-# bug #754021
-net-analyzer/wireshark lto
-
-# Sam James <sam@gentoo.org> (2021-04-09)
 # Fails to build right now
 # bug #651740
 net-misc/openssh debug
