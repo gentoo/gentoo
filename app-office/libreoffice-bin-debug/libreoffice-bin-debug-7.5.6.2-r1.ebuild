@@ -60,8 +60,8 @@ S="${WORKDIR}"
 QA_PREBUILT="/usr/*"
 
 src_unpack() {
-	einfo "Uncompressing distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar.xz"
-	xz -cd "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar.xz" > "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" || die
+	einfo "Uncompressing distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar.xz"
+	xz -cd "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar.xz" > "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar" || die
 
 	local patchname
 	use kde && patchname="-kde"
@@ -69,13 +69,13 @@ src_unpack() {
 	use java && patchname="${patchname}-java"
 
 	if [[ -n "${patchname}" ]]; then
-		einfo "Patching distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar using ${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PVR}.xd3"
-		xdelta3 -d -s "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PVR}.xd3" "${WORKDIR}/tmpdist.tar" || die
-		mv "${WORKDIR}/tmpdist.tar" "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" || die
+		einfo "Patching distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar using ${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PV}.xd3"
+		xdelta3 -d -s "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar" "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PV}.xd3" "${WORKDIR}/tmpdist.tar" || die
+		mv "${WORKDIR}/tmpdist.tar" "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar" || die
 	fi
 
-	einfo "Unpacking new ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar"
-	unpack "./${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar"
+	einfo "Unpacking new ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar"
+	unpack "./${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar"
 }
 
 src_configure() { :; }
