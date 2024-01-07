@@ -27,7 +27,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
-IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpegxl lcms lzma"
+IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpeg2k jpegxl lcms lzma"
 IUSE+=" openmp perl png postscript q16 q32 static-libs tcmalloc tiff truetype"
 IUSE+=" webp wmf X zlib zstd"
 
@@ -39,6 +39,7 @@ RDEPEND="
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
 	jpeg? ( media-libs/libjpeg-turbo:= )
+	jpeg2k? ( media-libs/jasper:= )
 	jpegxl? ( media-libs/libjxl:= )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
@@ -113,8 +114,7 @@ src_configure() {
 		$(use_with jbig)
 		$(use_with webp)
 		$(use_with jpeg)
-		# Needs last-rited/unpackaged jasper
-		--without-jp2
+		$(use_with jpeg2k jp2)
 		$(use_with lcms lcms2)
 		$(use_with lzma)
 		$(use_with png)
