@@ -1,4 +1,4 @@
-# Copyright 2009-2023 Gentoo Authors
+# Copyright 2009-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,8 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	opencascade? ( sci-libs/opencascade:= )
-	sys-libs/zlib"
+	sys-libs/zlib
+	virtual/opengl"
 
 DEPEND="${RDEPEND}
 	dev-qt/qttest:5"
