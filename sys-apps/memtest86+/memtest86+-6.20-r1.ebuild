@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/memtest86plus/memtest86plus/archive/refs/tags/v${MY_
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="bios32 bios64 +boot efi32 efi64 iso32 iso64"
+IUSE="bios32 bios64 +boot uefi32 uefi64 iso32 iso64"
 
 ISODEPS="
 	dev-libs/libisoburn
@@ -29,7 +29,7 @@ BDEPEND="
 S=${WORKDIR}/memtest86plus-${MY_PV}
 
 pkg_setup() {
-	if use efi32 || use efi64; then
+	if use uefi32 || use uefi64; then
 		secureboot_pkg_setup
 	fi
 }
@@ -50,13 +50,13 @@ src_compile() {
 	export SIZE=$(tc-getPROG SIZE size)
 	pushd build32
 		use bios32 && emake memtest.bin
-		use efi32 && emake memtest.efi
+		use uefi32 && emake memtest.efi
 		use iso32 && emake iso
 	popd
 
 	pushd build64
 		use bios64 && emake memtest.bin
-		use efi64 && emake memtest.efi
+		use uefi64 && emake memtest.efi
 		use iso64 && emake iso
 	popd
 }
@@ -64,8 +64,8 @@ src_compile() {
 install_memtest_images() {
 	use bios32 && newins build32/memtest.bin memtest32.bios
 	use bios64 && newins build64/memtest.bin memtest64.bios
-	use efi32 && newins build32/memtest.efi memtest.efi32
-	use efi64 && newins build64/memtest.efi memtest.efi64
+	use uefi32 && newins build32/memtest.efi memtest.efi32
+	use uefi64 && newins build64/memtest.efi memtest.efi64
 }
 
 src_install() {
@@ -82,7 +82,7 @@ src_install() {
 	use iso32 && newins build32/memtest.iso memtest32.iso
 	use iso64 && newins build64/memtest.iso memtest64.iso
 
-	if use efi32 || use efi64; then
+	if use uefi32 || use uefi64; then
 		secureboot_auto_sign --in-place
 	fi
 }
