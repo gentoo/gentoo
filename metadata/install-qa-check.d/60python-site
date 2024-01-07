@@ -31,6 +31,7 @@ python_site_check() {
 	local stray=()
 
 	local bad_versions=()
+	local eggs=()
 	local outside_site=()
 	local stray_packages=()
 
@@ -79,11 +80,22 @@ python_site_check() {
 				')' -print0
 		)
 
+		# check for deprecated egg format
+		while IFS= read -d $'\0' -r f; do
+			eggs+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" -maxdepth 1 '(' \
+				-name '*.egg-info' -o \
+				-name '*.egg' \
+				')' -print0
+		)
+
 		# check for stray files in site-packages
 		while IFS= read -d $'\0' -r f; do
 			stray_packages+=( "${f#${ED}}" )
 		done < <(
 			find "${sitedir}" -maxdepth 1 -type f '!' '(' \
+					-name '*.egg' -o \
 					-name '*.egg-info' -o \
 					-name '*.pth' -o \
 					-name '*.py' -o \
@@ -192,6 +204,14 @@ python_site_check() {
 		eqawarn "invalid/suspicious names or versions in the site-packages directory:"
 		eqawarn
 		eqatag -v python-site.bad_version "${bad_versions[@]}"
+	fi
+
+	if [[ ${eggs[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: The following deprecated .egg or .egg-info files were found."
+		eqawarn "Please migrate the ebuild to use the PEP517 build."
+		eqawarn
+		eqatag -v python-site.egg "${eggs[@]}"
 	fi
 
 	if [[ ${stray_packages[@]} ]]; then
