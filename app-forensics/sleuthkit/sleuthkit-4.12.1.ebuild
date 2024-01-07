@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,9 +16,10 @@ HOMEPAGE="https://www.sleuthkit.org/sleuthkit/"
 #		See: https://bugs.gentoo.org/689752
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz
 	java? (
-		https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.36.0.3/sqlite-jdbc-3.36.0.3.jar
+		https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.42.0.0/sqlite-jdbc-3.42.0.0.jar
 	)
-	ewf? ( https://github.com/sleuthkit/libewf_64bit/archive/VisualStudio_2010.tar.gz -> sleuthkit-libewf_64bit-20130416.tar.gz )"
+	ewf? ( https://github.com/sleuthkit/libewf_64bit/archive/VisualStudio_2010.tar.gz
+			-> sleuthkit-libewf_64bit-20130416.tar.gz )"
 
 LICENSE="BSD CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )"
 SLOT="0/19" # subslot = major soname version
