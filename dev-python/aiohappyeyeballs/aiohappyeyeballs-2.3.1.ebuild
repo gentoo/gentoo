@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="~amd64 ~arm ~loong"
 
 BDEPEND="
 	test? (
