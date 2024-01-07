@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		The aim of the mbed TLS project is to provide a quality, open-source
+		The aim of the Mbed TLS project is to provide a quality, open-source
 		cryptographic library written in C and targeted at embedded systems.
 	</longdescription>
 	<use>
@@ -21,7 +21,7 @@
 			Warning: the HAVEGE random generator is not suitable for
 			virtualized environments
 		</flag>
-		<flag name="programs">Build PolarSSL programs</flag>
+		<flag name="programs">Build Mbed TLS programs</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Mbed-TLS/mbedtls</remote-id>
