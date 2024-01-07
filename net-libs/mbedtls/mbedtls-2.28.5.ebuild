@@ -71,16 +71,10 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	# psa isn't ready yet, it might be in 3.x(?) but certainly not
-	# at the moment.
-	# bug #718390
-	CMAKE_SKIP_TESTS=(
-		psa_crypto
-		psa_its-suite
-	)
-
+	# Disable parallel run, bug #718390
+	# https://github.com/Mbed-TLS/mbedtls/issues/4980
 	LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}/library" \
-		cmake_src_test
+		cmake_src_test -j1
 }
 
 multilib_src_install() {
