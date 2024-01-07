@@ -14,7 +14,6 @@ EGIT_REPO_URI="https://github.com/ncmpcpp/ncmpcpp"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS=""
 IUSE="clock lto outputs taglib visualizer"
 
 RDEPEND="
