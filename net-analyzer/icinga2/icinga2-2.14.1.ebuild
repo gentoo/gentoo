@@ -18,7 +18,7 @@ HOMEPAGE="https://icinga.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="console jumbo-build lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
+IUSE="console jumbo-build mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 
 # Add accounts to DEPEND because of fowners in src_install
 DEPEND="
@@ -60,7 +60,8 @@ src_configure() {
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=ON
 		-DUSE_SYSTEMD=$(usex systemd)
 		-DLOGROTATE_HAS_SU=ON
-		-DICINGA2_LTO_BUILD=$(usex lto)
+		# only appends -flto
+		-DICINGA2_LTO_BUILD=OFF
 	)
 	# default to off if minimal, allow the flags to be set otherwise
 	if use minimal; then
