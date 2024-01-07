@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LSI"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-solaris"
-IUSE="doc efi"
+IUSE="doc uefi"
 RESTRICT="strip fetch mirror"
 
 BDEPEND="app-arch/unzip"
@@ -43,7 +43,7 @@ pkg_nofetch() {
 }
 
 pkg_setup() {
-	use efi && secureboot_pkg_setup
+	use uefi && secureboot_pkg_setup
 }
 
 supportedcards() {
@@ -75,8 +75,8 @@ src_install() {
 	exeinto /opt/lsi/
 	doexe sas3ircu_rel/sas3ircu/sas3ircu_linux_"${ARCH}"_rel/sas3ircu
 
-	if use efi; then
-		if use amd64 || use efi64; then
+	if use uefi; then
+		if use amd64 || use arm64; then
 			exeinto /boot/efi/
 			doexe sas3ircu_rel/sas3ircu/sas3ircu_udk_uefi_"${ARCH}"_rel/sas3ircu.efi
 			secureboot_auto_sign --in-place
