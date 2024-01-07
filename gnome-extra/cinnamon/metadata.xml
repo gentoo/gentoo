@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">linuxmint/Cinnamon</remote-id>
 	</upstream>
+	<use>
+		<flag name="desktop-portal">Enable <pkg>sys-apps/xdg-desktop-portal</pkg> backend implementation for Cinnamon</flag>
+	</use>
 </pkgmetadata>
