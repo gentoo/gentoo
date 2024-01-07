@@ -1,0 +1,23 @@
+--- a/src/modules/audio_coding/neteq/reorder_optimizer.cc
++++ b/src/modules/audio_coding/neteq/reorder_optimizer.cc
+@@ -11,6 +11,7 @@
+ #include "modules/audio_coding/neteq/reorder_optimizer.h"
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <limits>
+ #include <vector>
+ 
+--- a/src/rtc_base/system/file_wrapper.h
++++ b/src/rtc_base/system/file_wrapper.h
+@@ -11,9 +11,10 @@
+ #ifndef RTC_BASE_SYSTEM_FILE_WRAPPER_H_
+ #define RTC_BASE_SYSTEM_FILE_WRAPPER_H_
+
+ #include <stddef.h>
+ #include <stdio.h>
++#include <stdint.h>
+
+ #include <string>
+
+ #include "absl/strings/string_view.h"

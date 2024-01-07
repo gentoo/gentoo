@@ -69,6 +69,10 @@ BDEPEND="
 	X? ( x11-base/xorg-proto )
 "
 
+PATCHES=(
+	"${FILESDIR}"/0001-include-missing-cstdint-musl.patch
+)
+
 src_unpack() {
 	unpack "${P}.tar.gz"
 	unpack "libyuv-${LIBYUV_COMMIT}.tar.bz2"
