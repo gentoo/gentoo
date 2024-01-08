@@ -110,7 +110,7 @@ DEPEND="
 if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
 	BDEPEND+=" app-alternatives/lex"
-	BDEPEND+=" >=sys-devel/bison-2.4.3"
+	BDEPEND+=" >=app-alternatives/yacc-2.4.3"
 	BDEPEND+=" >=dev-python/docutils-0.12"
 fi
 
