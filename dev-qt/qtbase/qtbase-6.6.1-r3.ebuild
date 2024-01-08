@@ -9,7 +9,7 @@ DESCRIPTION="Cross-platform application development framework"
 SRC_URI+=" https://dev.gentoo.org/~ionen/distfiles/${P}-QTBUG-116905.patch.xz"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 declare -A QT6_IUSE=(
