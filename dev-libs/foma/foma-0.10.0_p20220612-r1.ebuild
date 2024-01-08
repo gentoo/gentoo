@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0/0.10"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex"
 DEPEND="sys-libs/readline:=
 	sys-libs/zlib"
