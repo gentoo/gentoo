@@ -75,7 +75,7 @@ RDEPEND="
 	sendmail? ( virtual/mta )
 "
 BDEPEND+="
-	sys-devel/bison
+	app-alternatives/yacc
 	virtual/pkgconfig
 "
 
