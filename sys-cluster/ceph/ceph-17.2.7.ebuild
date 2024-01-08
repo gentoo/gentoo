@@ -120,7 +120,7 @@ BDEPEND="
 	sys-apps/grep
 	sys-apps/util-linux
 	sys-apps/which
-	sys-devel/bc
+	app-alternatives/bc
 	sys-devel/patch
 	virtual/pkgconfig
 	jaeger? (
