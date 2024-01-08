@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	>=dev-qt/linguist-tools-${QTMIN}:5
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 

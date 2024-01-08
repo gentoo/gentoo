@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	>=dev-qt/qttools-${QTMIN}:6[linguist]
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 
