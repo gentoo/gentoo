@@ -18,7 +18,7 @@ REQUIRED_USE="|| ( client server )"
 
 BDEPEND="
 	>=net-libs/rpcsvc-proto-1.3.1-r1
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 DEPEND="
