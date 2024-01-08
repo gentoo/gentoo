@@ -117,3 +117,12 @@ src_install() {
 
 	rm -r "${ED}"/usr/share/doc/${PF}/{LICENSE,licenses} || die
 }
+
+pkg_preinst() {
+	# hack: .shader/ were directories in <0.11 and are now single (zip) files
+	# named the same, that leads to portage mis-merging and leaving an empty
+	# directory behind rather than the new file
+	if use gui && has_version '<games-emulation/mgba-0.11[gui]'; then
+		rm -rf -- "${EROOT}"/usr/share/mgba/shaders/*.shader/ || die
+	fi
+}
