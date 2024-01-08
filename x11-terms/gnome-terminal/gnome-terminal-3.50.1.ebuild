@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="debug gnome-shell nautilus vanilla"
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.48.1-cntr-ntfy-autottl-ts.patch.xz )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 
 # FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 RDEPEND="
