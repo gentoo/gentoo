@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
 	sys-apps/which
-	sys-devel/bison
+	app-alternatives/yacc
 	sys-devel/gettext
 	app-alternatives/lex
 	doc? ( dev-tex/latex2html )
