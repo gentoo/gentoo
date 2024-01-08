@@ -147,7 +147,7 @@ BDEPEND="
 	)
 	dev-lang/perl
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig
 	mingw? ( !crossdev-mingw? (
 		>=dev-util/mingw64-toolchain-10.0.0_p1-r2[${MULTILIB_USEDEP}]
