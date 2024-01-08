@@ -20,7 +20,7 @@ RDEPEND="dev-libs/openssl:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/swig
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 "
