@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.18.2
 	virtual/pkgconfig
 	dev-util/gdbus-codegen
-	sys-devel/bison
+	app-alternatives/yacc
 	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
 	introspection? ( >=dev-libs/gobject-introspection-1.40 )
 	doc? (
