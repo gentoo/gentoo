@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	app-alternatives/lex
-	sys-devel/bison
+	app-alternatives/yacc
 	media-gfx/imagemagick
 "
 
