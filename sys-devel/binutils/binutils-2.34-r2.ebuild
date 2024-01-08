@@ -69,7 +69,7 @@ BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 "
 

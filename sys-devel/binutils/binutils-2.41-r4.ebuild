@@ -66,7 +66,7 @@ BDEPEND="
 	)
 	nls? ( sys-devel/gettext )
 	zstd? ( virtual/pkgconfig )
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 "
 
