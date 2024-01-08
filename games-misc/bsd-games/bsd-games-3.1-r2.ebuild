@@ -32,7 +32,7 @@ RDEPEND="
 "
 BDEPEND="
 	sys-apps/which
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 "
