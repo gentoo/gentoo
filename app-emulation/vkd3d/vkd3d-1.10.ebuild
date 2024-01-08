@@ -26,7 +26,7 @@ DEPEND="
 	dev-util/vulkan-headers
 "
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 	sys-devel/bison
 	virtual/pkgconfig
 "
