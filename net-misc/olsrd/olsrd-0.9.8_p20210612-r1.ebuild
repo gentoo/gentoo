@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ RDEPEND="gtk? (
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="app-alternatives/yacc
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig"
 
 PATCHES=(
