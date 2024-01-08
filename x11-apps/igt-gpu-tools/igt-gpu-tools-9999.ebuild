@@ -69,7 +69,7 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 	video_cards_intel? (
-		sys-devel/bison
+		app-alternatives/yacc
 		app-alternatives/lex
 	)
 "
