@@ -26,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	app-alternatives/lex
-	sys-devel/bison
+	app-alternatives/yacc
 "
 
 PATCHES=(
