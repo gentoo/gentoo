@@ -240,9 +240,6 @@ _qt6-build_match_cpu_flags() {
 			done
 	done < <(
 		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 2
-			#if defined(__GNUC__) && (defined(__x86_64__) || defined(__i386__))
-			#include <x86intrin.h>
-			#endif
 			avx2=__AVX2__ =__BMI__ =__BMI2__ =__F16C__ =__FMA__ =__LZCNT__ =__POPCNT__
 			avx512f=__AVX512F__ avx512bw=__AVX512BW__ avx512cd=__AVX512CD__ avx512dq=__AVX512DQ__ avx512vl=__AVX512VL__
 		EOF
