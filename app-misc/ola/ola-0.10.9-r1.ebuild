@@ -44,7 +44,7 @@ RDEPEND="<dev-libs/protobuf-23:=
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
