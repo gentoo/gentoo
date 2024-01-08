@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RDEPEND="amd64? ( dev-libs/libx86emu:= )
 	x86? ( dev-libs/libx86emu:= )"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.17"
-BDEPEND="sys-devel/flex"
+BDEPEND="app-alternatives/lex"
 
 src_prepare() {
 	default
