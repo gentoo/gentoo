@@ -16,7 +16,7 @@ SLOT="0/0.10"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="sys-devel/bison
-	sys-devel/flex"
+	app-alternatives/lex"
 DEPEND="sys-libs/readline:=
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"

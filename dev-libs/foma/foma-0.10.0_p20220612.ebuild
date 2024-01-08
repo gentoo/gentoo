@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SLOT="0/0.10"
 KEYWORDS="amd64 x86"
 
 BDEPEND="sys-devel/bison
-	sys-devel/flex"
+	app-alternatives/lex"
 DEPEND="sys-libs/readline:=
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
