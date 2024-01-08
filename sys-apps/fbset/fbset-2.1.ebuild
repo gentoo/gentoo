@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="static"
 
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex"
 RDEPEND=""
 
