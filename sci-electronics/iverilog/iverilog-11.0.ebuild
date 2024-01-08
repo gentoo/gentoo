@@ -32,7 +32,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/gperf
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 
