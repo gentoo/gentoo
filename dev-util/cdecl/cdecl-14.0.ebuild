@@ -18,7 +18,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 
