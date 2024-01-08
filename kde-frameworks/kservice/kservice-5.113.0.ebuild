@@ -17,7 +17,7 @@ IUSE="+man"
 RESTRICT="test"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )
 "
