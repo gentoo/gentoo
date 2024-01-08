@@ -58,7 +58,7 @@ BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? (
 		dev-util/dejagnu
-		sys-devel/bc
+		app-alternatives/bc
 	)
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
