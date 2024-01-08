@@ -110,7 +110,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	test? (
 		$(python_gen_cond_dep '
