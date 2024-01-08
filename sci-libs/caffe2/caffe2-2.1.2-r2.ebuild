@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,16 +8,18 @@ inherit python-single-r1 cmake cuda flag-o-matic prefix
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
+IDEEP_VERSION="6f4d653802bd43bc4eda515460df9f90353dbebe"
 
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
-SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${MYP}.tar.gz"
+SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${MYP}.tar.gz
+onednn? ( https://github.com/intel/ideep/archive/${IDEEP_VERSION}.tar.gz -> ideep-${IDEEP_VERSION}.tar.gz )
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy onednn opencl opencv openmp qnnpack tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -55,6 +57,7 @@ RDEPEND="
 	numpy? ( $(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		') )
+	onednn? ( dev-libs/oneDNN )
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
@@ -151,12 +154,11 @@ src_configure() {
 		-DUSE_KINETO=OFF # TODO
 		-DUSE_LEVELDB=OFF
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
-		-DUSE_MKLDNN=OFF
+		-DUSE_MKLDNN=$(usex onednn)
 		-DUSE_NCCL=OFF # TODO: NVIDIA Collective Communication Library
 		-DUSE_NNPACK=$(usex nnpack)
 		-DUSE_QNNPACK=$(usex qnnpack)
 		-DUSE_XNNPACK=$(usex xnnpack)
-		-DUSE_SYSTEM_XNNPACK=$(usex xnnpack)
 		-DUSE_TENSORPIPE=$(usex tensorpipe)
 		-DUSE_PYTORCH_QNNPACK=OFF
 		-DUSE_NUMPY=$(usex numpy)
@@ -164,19 +166,12 @@ src_configure() {
 		-DUSE_OPENCV=$(usex opencv)
 		-DUSE_OPENMP=$(usex openmp)
 		-DUSE_ROCM=OFF # TODO
-		-DUSE_SYSTEM_CPUINFO=ON
-		-DUSE_SYSTEM_PYBIND11=ON
 		-DUSE_UCC=OFF
 		-DUSE_VALGRIND=OFF
 		-DPYBIND11_PYTHON_VERSION="${EPYTHON#python}"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DUSE_ITT=OFF
-		-DUSE_SYSTEM_PTHREADPOOL=ON
-		-DUSE_SYSTEM_FXDIV=ON
-		-DUSE_SYSTEM_FP16=ON
-		-DUSE_SYSTEM_GLOO=ON
-		-DUSE_SYSTEM_ONNX=ON
-		-DUSE_SYSTEM_SLEEF=ON
+		-DUSE_SYSTEM_LIBS=ON
 		-DUSE_METAL=OFF
 
 		-Wno-dev
@@ -198,6 +193,16 @@ src_configure() {
 			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
 		)
 	fi
+
+	if use onednn; then
+		mycmakeargs+=(
+			-DUSE_MKLDNN=ON
+			-DMKLDNN_FOUND=ON
+			-DMKLDNN_LIBRARIES=dnnl
+			-DMKLDNN_INCLUDE_DIR="${ESYSROOT}/usr/include/oneapi/dnnl;${WORKDIR}/ideep-${IDEEP_VERSION}/include"
+		)
+	fi
+
 	cmake_src_configure
 }
 
