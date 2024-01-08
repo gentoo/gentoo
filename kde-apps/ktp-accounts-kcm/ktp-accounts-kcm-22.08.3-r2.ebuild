@@ -45,6 +45,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-apps/kaccounts-providers-${PVCUT}:5
 	net-im/telepathy-connection-managers
 "
+BDEPEND="dev-util/intltool"
 
 src_configure() {
 	local mycmakeargs=(
