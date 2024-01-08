@@ -15,7 +15,7 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
-	BDEPEND="sys-devel/bison"
+	BDEPEND="app-alternatives/yacc"
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.xz
 		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.xz.sig )"
