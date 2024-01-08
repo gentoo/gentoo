@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples +optimization"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 RDEPEND="
