@@ -1,0 +1,56 @@
+https://sourceforge.net/p/openipmi/patches/38/
+
+C type errors in the SWIG-generated Perl bindings
+
+The first change fixes an error with newer compilers:
+
+OpenIPMI_wrap.c: In function ‘_wrap_strconstarray_val_set’:
+OpenIPMI_wrap.c:10491:27: error: assignment to ‘const char **’ from incompatible pointer type ‘char **’
+10491 |     if (arg1) (arg1)->val = arg2;
+      |                           ^
+
+The second change is also about a compiler error:
+
+In file included from /usr/lib64/perl5/CORE/perl.h:4530,
+                 from OpenIPMI_wrap.c:751:
+OpenIPMI_wrap.c: In function ‘_wrap_ipmi_sol_conn_t_write’:
+/usr/lib64/perl5/CORE/sv.h:1952:31: error: passing argument 3 of ‘Perl_SvPV_helper’ from incompatible pointer type
+ 1952 |    Perl_SvPV_helper(aTHX_ sv, &len, flags, SvPVnormal_type_,                \
+/usr/lib64/perl5/CORE/sv.h:1972:37: note: in expansion of macro ‘SvPV_flags’
+ 1972 | #define SvPV(sv, len)               SvPV_flags(sv, len, SV_GMAGIC)
+      |                                     ^~~~~~~~~~
+OpenIPMI_wrap.c:27664:24: note: in expansion of macro ‘SvPV’
+27664 |         (&arg2)->val = SvPV(tempsv, (&arg2)->len);
+      |                        ^~~~
+In file included from /usr/lib64/perl5/CORE/perl.h:7812:
+/usr/lib64/perl5/CORE/sv_inline.h:908:33: note: expected ‘STRLEN * const’ {aka ‘long unsigned int * const’} but argument is of type ‘int *’
+  908 |                  STRLEN * const lp,
+      |                  ~~~~~~~~~~~~~~~^~
+
+But the existing code looks broken on big-endian 64-bit architectures,
+too.
+
+--- a/swig/OpenIPMI.i
++++ b/swig/OpenIPMI.i
+@@ -359,7 +359,7 @@ typedef struct iargarray
+ %}
+ typedef struct strconstarray
+ {
+-    char **val;
++    const char **val;
+     int len;
+ } strconstarray;
+ typedef struct argarray
+--- a/swig/perl/OpenIPMI_lang.i
++++ b/swig/perl/OpenIPMI_lang.i
+@@ -292,7 +292,9 @@
+ 	$1.val = NULL;
+ 	$1.len = 0;
+     } else {
+-	$1.val = SvPV(tempsv, $1.len);
++	STRLEN len;
++	$1.val = SvPV(tempsv, len);
++	$1.len = len;
+     }
+ }
+ 
