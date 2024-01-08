@@ -20,7 +20,7 @@ RDEPEND="dev-libs/libltdl:0=
 	debug? ( sys-libs/binutils-libs:0= )
 	motif? ( x11-libs/motif:0= )"
 DEPEND="${RDEPEND}
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	dev-util/gperf"
 
