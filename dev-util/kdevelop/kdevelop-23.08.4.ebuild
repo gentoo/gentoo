@@ -88,7 +88,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qdbus-${QTMIN}:*
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
-	dev-util/ninja
+	app-alternatives/ninja
 	kde-apps/kapptemplate:5
 	|| (
 		kde-apps/kio-extras-kf5:5
