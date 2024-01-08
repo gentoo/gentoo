@@ -21,7 +21,7 @@ RDEPEND="
 	png? ( media-libs/gd[png,truetype?] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig"
 
