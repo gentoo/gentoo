@@ -47,7 +47,7 @@ PDEPEND="
 	>=virtual/dist-kernel-${PV}
 "
 BDEPEND="
-	sys-devel/bc
+	app-alternatives/bc
 	sys-devel/flex
 	virtual/libelf
 	app-alternatives/yacc
