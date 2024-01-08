@@ -75,7 +75,7 @@ RDEPEND="
 	sys-fs/udev-init-scripts
 	dist-kernel? ( virtual/dist-kernel:= )
 	rootfs? (
-		app-arch/cpio
+		app-alternatives/cpio
 		app-misc/pax-utils
 	)
 	selinux? ( sec-policy/selinux-zfs )
