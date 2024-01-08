@@ -20,7 +20,7 @@ RDEPEND="app-eselect/eselect-chuck
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex"
 
 PATCHES=(
