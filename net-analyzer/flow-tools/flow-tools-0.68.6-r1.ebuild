@@ -28,7 +28,7 @@ DEPEND="
 "
 BDEPEND="
 	app-text/docbook-sgml-utils
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 DOCS=( ChangeLog.old README README.fork SECURITY TODO TODO.old )
