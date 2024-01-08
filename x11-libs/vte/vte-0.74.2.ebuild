@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91"      # vte_api_version in meson.build
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
