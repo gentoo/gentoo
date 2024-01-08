@@ -150,13 +150,6 @@ dev-python/pychroot
 # newer slot instead. Masked for removal on 2024-01-27.
 dev-ruby/rubyzip:1
 
-# Ulrich Müller <ulm@gentoo.org> (2023-12-26)
-# Program errors out with a segmentation fault.
-# Use games-fps/serioussam along with games-fps/serioussam-tfe-data
-# and games-fps/serioussam-tse-data as replacement.
-# Removal on 2024-01-09, bug #854567.
-games-fps/serious-sam-tse
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
