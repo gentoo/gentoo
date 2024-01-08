@@ -14,7 +14,7 @@ IUSE=""
 
 DEPEND="
 	app-alternatives/lex
-	sys-devel/bison"
+	app-alternatives/yacc"
 RDEPEND=""
 
 S="${WORKDIR}/${P}/src"
