@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,7 @@ pkg_postinst() {
 	optfeature "Support for 7-zip" app-arch/p7zip
 	optfeature "Support for ace" app-arch/unace
 	optfeature "Support for arj" app-arch/arj
-	optfeature "Support for cpio" app-arch/cpio
+	optfeature "Support for cpio" app-alternatives/cpio
 	optfeature "Support for deb" app-arch/dpkg
 	optfeature "Support for iso" app-cdr/cdrtools
 	optfeature "Support for jar,zip" app-arch/zip app-arch/unzip
