@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 
