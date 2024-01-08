@@ -101,7 +101,7 @@ BDEPEND="
 	dev-lang/perl
 	sys-devel/binutils
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
