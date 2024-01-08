@@ -52,7 +52,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/itstool
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
