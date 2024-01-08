@@ -312,7 +312,7 @@ BDEPEND+="
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
 	doc? ( sys-apps/texinfo )
-	test? ( net-misc/wget sys-devel/bc )
+	test? ( net-misc/wget app-alternatives/bc )
 "
 
 # Code requiring FFmpeg to be built under gpl license
