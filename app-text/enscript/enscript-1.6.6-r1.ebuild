@@ -18,7 +18,7 @@ RDEPEND="nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/lex
-	sys-devel/bison
+	app-alternatives/yacc
 	nls? ( sys-devel/gettext )
 "
 
