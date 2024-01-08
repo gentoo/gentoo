@@ -54,7 +54,7 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	>=dev-libs/protobuf-3.0.0
 	dev-util/gyp
-	dev-util/ninja
+	app-alternatives/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )
