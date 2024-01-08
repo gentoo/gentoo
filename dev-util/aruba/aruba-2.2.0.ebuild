@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~loong ~ppc ~riscv ~s390"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
-DEPEND="${DEPEND} test? ( sys-devel/bc )"
+DEPEND="${DEPEND} test? ( app-alternatives/bc )"
 RDEPEND="${RDEPEND}"
 
 ruby_add_rdepend "
