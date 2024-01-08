@@ -125,7 +125,7 @@ BDEPEND="
 	virtual/pkgconfig
 	jaeger? (
 		sys-devel/bison
-		sys-devel/flex
+		app-alternatives/lex
 	)
 	test? (
 		dev-util/cunit
