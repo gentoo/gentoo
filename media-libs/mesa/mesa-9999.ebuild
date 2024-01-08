@@ -157,7 +157,7 @@ BDEPEND="
 		>=dev-util/bindgen-0.58.0
 		>=dev-util/meson-1.3.0
 	)
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
