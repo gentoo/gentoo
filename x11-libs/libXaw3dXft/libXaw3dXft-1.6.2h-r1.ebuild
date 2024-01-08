@@ -9,7 +9,7 @@ DESCRIPTION="Xaw3dXft library"
 HOMEPAGE="https://sourceforge.net/projects/sf-xpaint/"
 SRC_URI="https://downloads.sourceforge.net/project/sf-xpaint/${PN,,}/${P}.tar.bz2"
 
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="xpm"
 
 RDEPEND="
