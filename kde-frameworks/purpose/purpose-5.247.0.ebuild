@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kdeclarative-${PVCUT}:6
 	bluetooth? ( =kde-frameworks/bluez-qt-${PVCUT}*:6 )
 "
+BDEPEND="kaccounts? ( dev-util/intltool )"
 
 src_prepare() {
 	ecm_src_prepare
