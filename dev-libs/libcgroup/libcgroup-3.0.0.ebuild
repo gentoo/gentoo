@@ -19,7 +19,7 @@ REQUIRED_USE="daemon? ( tools )"
 RESTRICT="!test? ( test ) test"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 DEPEND="

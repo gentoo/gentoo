@@ -20,7 +20,7 @@ REQUIRED_USE="daemon? ( tools )"
 RESTRICT="test"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	elibc_musl? ( sys-libs/fts-standalone )
 "
