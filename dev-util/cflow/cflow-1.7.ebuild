@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	nls? ( virtual/libintl virtual/libiconv )"
 DEPEND="nls? ( virtual/libintl virtual/libiconv )"
 BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
-	sys-devel/flex
+	app-alternatives/lex
 	nls? ( sys-devel/gettext )"
 
 SITEFILE="50${PN}-gentoo.el"
