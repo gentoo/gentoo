@@ -6,7 +6,6 @@
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<use>
-		<flag name="rust">Use the newer rust-based audio backends if available</flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	</use>
 	<upstream>
