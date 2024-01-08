@@ -26,7 +26,7 @@ IUSE="static-libs"
 RDEPEND=">=dev-libs/libgpg-error-1.33"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	verify-sig? ( sec-keys/openpgp-keys-gnupg )
 "
 
