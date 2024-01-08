@@ -30,7 +30,7 @@ BDEPEND="
 	dev-texlive/texlive-metapost
 	sys-apps/texinfo
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig
 	doc? ( app-text/texi2html )
 "
