@@ -83,7 +83,7 @@ RDEPEND="${CDEPEND}
 	xorg? ( >=x11-apps/xinit-1.3.3-r1 )
 "
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 "
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
