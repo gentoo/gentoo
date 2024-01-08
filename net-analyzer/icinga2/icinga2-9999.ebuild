@@ -33,7 +33,7 @@ DEPEND="
 	acct-group/icinga
 	acct-group/icingacmd"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex"
 RDEPEND="
 	${DEPEND}
