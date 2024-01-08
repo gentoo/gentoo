@@ -79,7 +79,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
