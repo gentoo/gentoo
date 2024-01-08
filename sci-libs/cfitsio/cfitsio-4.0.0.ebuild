@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~hppa ~ppc ppc64 ~riscv sparc ~x86 ~amd64-linux ~x86-linu
 IUSE="bzip2 curl cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 RDEPEND="
