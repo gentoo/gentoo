@@ -657,7 +657,7 @@ if [[ ${ETYPE} == sources ]]; then
 		dev-lang/perl
 		app-alternatives/bc
 		sys-devel/bison
-		sys-devel/flex
+		app-alternatives/lex
 		sys-devel/make
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
