@@ -39,7 +39,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3
 		app-text/docbook-xml-dtd:4.5
 	)
-	app-alternatives/yacc
+	sys-devel/bison
 	app-alternatives/lex
 	test? (
 		x11-libs/cairo[glib]
