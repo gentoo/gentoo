@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-python/reportlab-3.5.13-r1[${PYTHON_USEDEP}]
 	dev-python/pydot[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/flex"
+BDEPEND="app-alternatives/lex"
 
 DOCS=( {CONTRIB,DEPRECATED,NEWS,README}.rst Doc/. )
 
