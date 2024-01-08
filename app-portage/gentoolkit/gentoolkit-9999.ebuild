@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,8 +95,8 @@ my_src_install() {
 	)
 
 	meson_src_install
-	python_optimize "${pydirs[@]}"
 	python_fix_shebang "${pydirs[@]}"
+	python_optimize "${pydirs[@]}"
 }
 
 pkg_postinst() {
