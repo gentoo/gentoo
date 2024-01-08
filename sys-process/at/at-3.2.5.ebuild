@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	>=sys-devel/autoconf-2.64
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 
