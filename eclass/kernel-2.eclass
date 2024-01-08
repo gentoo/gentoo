@@ -653,7 +653,7 @@ kernel_is() {
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
 	RDEPEND="!build? (
-		app-arch/cpio
+		app-alternatives/cpio
 		dev-lang/perl
 		app-alternatives/bc
 		sys-devel/bison
