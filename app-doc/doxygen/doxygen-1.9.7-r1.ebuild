@@ -30,7 +30,7 @@ IUSE="clang debug doc dot doxysearch qt5 sqlite test"
 REQUIRED_USE="test? ( doc )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex
 	${PYTHON_DEPS}
 "
