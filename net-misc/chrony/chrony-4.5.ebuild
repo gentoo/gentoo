@@ -69,7 +69,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# Needed for doc generation in 9999
 	REQUIRED_USE+=" html"
 	BDEPEND+="
-		sys-devel/bison
+		app-alternatives/yacc
 		virtual/w3m
 	"
 else
