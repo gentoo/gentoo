@@ -26,7 +26,7 @@ RDEPEND="
 	sci-libs/buddy"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex"
 
 PATCHES=(
