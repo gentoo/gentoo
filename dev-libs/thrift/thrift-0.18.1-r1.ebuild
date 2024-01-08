@@ -25,7 +25,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	app-alternatives/lex
-	sys-devel/bison
+	app-alternatives/yacc
 "
 
 REQUIRED_USE="
