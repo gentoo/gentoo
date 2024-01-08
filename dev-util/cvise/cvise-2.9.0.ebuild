@@ -39,11 +39,11 @@ RDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 	')
 	dev-util/unifdef
-	sys-devel/flex
+	app-alternatives/lex
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/flex
+	app-alternatives/lex
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/pebble[${PYTHON_USEDEP}]
