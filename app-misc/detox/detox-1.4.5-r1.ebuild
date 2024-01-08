@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc ~riscv x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="!dev-python/detox"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex"
 
 src_prepare() {
