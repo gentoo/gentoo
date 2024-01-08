@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ IUSE="+client debug"
 
 RDEPEND="client? ( sys-libs/ncurses )
 	client? ( sys-libs/readline )"
-DEPEND="sys-devel/flex
+DEPEND="app-alternatives/lex
 	sys-devel/bison
 	sys-devel/m4"
 
