@@ -1,9 +1,5 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# media-libs/shaderc is not keyworded here, so enable glslang fallback.
-media-libs/libplacebo glslang -shaderc
 
 # Sam James <sam@gentoo.org> (2023-10-08)
 # dev-db/mysql not keyworded here
