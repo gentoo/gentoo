@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 "
 BDEPEND="
 	~dev-util/clippy-${PV}
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 	doc? ( dev-python/sphinx )
 "
