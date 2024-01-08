@@ -29,7 +29,7 @@ DEPEND="
 	x11-base/xorg-proto"
 BDEPEND="
 	app-text/rman
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	sys-devel/gcc
 	x11-misc/gccmakedep
