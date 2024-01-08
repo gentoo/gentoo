@@ -69,7 +69,7 @@ BDEPEND="
 	app-alternatives/awk
 	python? ( $(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]') )
 	test? (
-		sys-devel/bc
+		app-alternatives/bc
 		lua? ( ${LUA_DEPS} )
 	)
 "
