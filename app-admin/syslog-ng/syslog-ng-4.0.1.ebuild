@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/criterion )"
 BDEPEND="
 	>=sys-devel/bison-3.7.6
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunOS,doc}
