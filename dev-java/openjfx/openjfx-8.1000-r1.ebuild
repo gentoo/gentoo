@@ -35,7 +35,7 @@ DEPEND="
 	dev-java/openjdk:8
 	dev-java/stringtemplate:0
 	dev-java/swt:4.10[cairo,opengl]
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/jdk:1.8
 	virtual/pkgconfig
