@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,6 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-l
 RDEPEND=">=dev-libs/glib-2.44.1-r1:2"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 	virtual/pkgconfig"
