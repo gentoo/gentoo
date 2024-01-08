@@ -20,7 +20,7 @@ RDEPEND="zlib? ( sys-libs/zlib )
 
 DEPEND="${RDEPEND}
 	app-alternatives/lex
-	sys-devel/bison"
+	app-alternatives/yacc"
 
 # Fail on various locales
 RESTRICT="test"
