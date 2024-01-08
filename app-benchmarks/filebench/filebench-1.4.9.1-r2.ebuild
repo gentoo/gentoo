@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	app-alternatives/lex
-	sys-devel/bison
+	app-alternatives/yacc
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-fix-automagic-libtecla-dependency.patch )
