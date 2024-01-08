@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -123,7 +123,7 @@ BDEPEND="
 	dev-lang/perl
 	sys-devel/binutils
 	sys-devel/bison
-	app-alternatives/lex
+	sys-devel/flex
 	virtual/pkgconfig
 	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )
 	nls? ( sys-devel/gettext )"
