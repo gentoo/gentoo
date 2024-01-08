@@ -77,6 +77,7 @@ RDEPEND="
 	)
 	qt5? (
 		dev-qt/designer:5
+		dev-qt/qtdeclarative:5
 		dev-qt/qtgui:5[-gles2-only]
 		dev-qt/qthelp:5
 		dev-qt/qtopengl:5[-gles2-only]
