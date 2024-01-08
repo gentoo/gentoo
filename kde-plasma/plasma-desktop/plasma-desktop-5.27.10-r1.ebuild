@@ -120,6 +120,7 @@ RDEPEND="${COMMON_DEPEND}
 	screencast? ( >=kde-plasma/kpipewire-${PVCUT}:5 )
 "
 BDEPEND="
+	dev-util/intltool
 	dev-util/wayland-scanner
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	virtual/pkgconfig
