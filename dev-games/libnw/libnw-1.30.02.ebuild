@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="!sci-biology/newick-utils"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex"
 
 DOCS=( AUTHORS ChangeLog NEWS README README.tech TODO )
