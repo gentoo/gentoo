@@ -25,7 +25,7 @@ DEPEND="x11-libs/libX11
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	virtual/pkgconfig
 "
 
