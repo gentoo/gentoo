@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,7 @@ BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? (
 		dev-util/dejagnu
-		sys-devel/bc
+		app-alternatives/bc
 	)
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
