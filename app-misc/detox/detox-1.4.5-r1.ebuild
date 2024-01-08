@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc ~riscv x86 ~amd64-linux ~x86-linux"
 RDEPEND="!dev-python/detox"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/bison
-	sys-devel/flex"
+	app-alternatives/lex"
 
 src_prepare() {
 	default
