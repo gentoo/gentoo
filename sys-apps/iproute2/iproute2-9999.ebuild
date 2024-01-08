@@ -43,7 +43,7 @@ DEPEND="
 BDEPEND="
 	app-arch/xz-utils
 	>=sys-devel/bison-2.4
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig
 "
 
