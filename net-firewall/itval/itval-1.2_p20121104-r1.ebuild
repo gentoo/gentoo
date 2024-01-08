@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
 S=${WORKDIR}/${MY_P}
