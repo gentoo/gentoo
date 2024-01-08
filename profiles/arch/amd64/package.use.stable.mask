@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Joonas Niilola <juippis@gentoo.org> (2024-01-08)
+# Pulls in pandoc with all of its glory (haskell). #921501
+www-apps/hugo test
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
 # This is still experimental, prebuilt images may not boot on all systems.
