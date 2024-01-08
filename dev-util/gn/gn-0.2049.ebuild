@@ -1,4 +1,4 @@
-# Copyright 2018-2023 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="vim-syntax"
 
 BDEPEND="
 	${PYTHON_DEPS}
-	dev-util/ninja
+	app-alternatives/ninja
 "
 
 PATCHES=(
