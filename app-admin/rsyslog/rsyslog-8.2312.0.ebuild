@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -108,7 +108,7 @@ DEPEND="
 
 if [[ "${PV}" == "9999" ]]; then
 	BDEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
-	BDEPEND+=" >=sys-devel/flex-2.5.39-r1"
+	BDEPEND+=" >=app-alternatives/lex-2.5.39-r1"
 	BDEPEND+=" >=sys-devel/bison-2.4.3"
 	BDEPEND+=" >=dev-python/docutils-0.12"
 fi
