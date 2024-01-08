@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ DEPEND="
 BDEPEND="
 	app-text/docbook-sgml-utils
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 "
 DOCS=( ChangeLog.old README README.fork SECURITY TODO TODO.old )
 PATCHES=(
