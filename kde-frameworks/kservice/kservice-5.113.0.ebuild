@@ -18,7 +18,7 @@ RESTRICT="test"
 
 BDEPEND="
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )
 "
 RDEPEND="
