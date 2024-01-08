@@ -47,7 +47,7 @@ and install the relevant package. For example:
 ace     - app-arch/unace
 arj     - app-arch/arj
 brotli  - app-arch/brotli
-cpio    - app-arch/cpio
+cpio    - app-alternatives/cpio
 deb     - app-arch/dpkg
 iso     - app-cdr/cdrtools
 jar,zip - app-arch/zip and app-arch/unzip
