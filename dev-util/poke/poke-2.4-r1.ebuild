@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 		sys-apps/gawk
 		sys-apps/help2man
 		sys-apps/texinfo
-		sys-devel/bison
+		app-alternatives/yacc
 		app-alternatives/lex
 	"
 else

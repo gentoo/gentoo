@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 		sys-apps/gawk
 		sys-apps/help2man
 		sys-apps/texinfo
-		sys-devel/bison
+		app-alternatives/yacc
 		app-alternatives/lex
 	"
 elif [[ $(ver_cut 2) -ge 90 || $(ver_cut 3) -ge 90 ]]; then
