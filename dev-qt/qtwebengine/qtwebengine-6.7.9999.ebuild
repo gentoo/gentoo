@@ -101,7 +101,7 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
 	dev-util/gperf
 	net-libs/nodejs[ssl]
-	app-alternatives/yacc
+	sys-devel/bison
 	app-alternatives/lex
 "
 
