@@ -37,7 +37,7 @@ inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
 	${PYTHON_DEPS}
-	app-arch/cpio
+	app-alternatives/cpio
 	app-alternatives/bc
 	sys-devel/flex
 	virtual/libelf
