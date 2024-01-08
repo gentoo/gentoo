@@ -27,7 +27,7 @@ DEPEND="
 "
 BDEPEND="
 	app-alternatives/lex
-	app-alternatives/yacc
+	sys-devel/bison
 	virtual/pkgconfig
 "
 
