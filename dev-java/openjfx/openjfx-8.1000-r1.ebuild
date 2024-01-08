@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ DEPEND="
 	dev-java/stringtemplate:0
 	dev-java/swt:4.10[cairo,opengl]
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/jdk:1.8
 	virtual/pkgconfig
 "
