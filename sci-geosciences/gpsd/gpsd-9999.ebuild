@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,7 +68,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	$(python_gen_any_dep 'dev-util/scons[${PYTHON_USEDEP}]')
-	test? ( sys-devel/bc )"
+	test? ( app-alternatives/bc )"
 RDEPEND+=" selinux? ( sec-policy/selinux-gpsd )"
 
 # asciidoctor package is for man page generation
