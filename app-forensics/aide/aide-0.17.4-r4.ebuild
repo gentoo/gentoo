@@ -29,7 +29,7 @@ DEPEND="dev-libs/libpcre
 	xattr? ( sys-apps/attr )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-aide )"
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig"
 
