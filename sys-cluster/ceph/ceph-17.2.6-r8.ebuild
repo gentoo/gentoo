@@ -108,7 +108,7 @@ DEPEND="
 BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
-	app-arch/cpio
+	app-alternatives/cpio
 	>=dev-util/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
