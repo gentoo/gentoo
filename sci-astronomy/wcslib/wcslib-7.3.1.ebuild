@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 	fits? ( sci-libs/cfitsio:0= )
 	pgplot? ( sci-libs/pgplot:0= )"
 DEPEND="${RDEPEND}
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig"
 
 src_configure() {
