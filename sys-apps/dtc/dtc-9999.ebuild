@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	python? ( dev-lang/swig )
