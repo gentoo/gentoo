@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Calculator"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+introspection test"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 # gtksourceview vapi definitions in dev-lang/vala itself are too old, and newer vala removes them
 # altogether, thus we need them installed by gtksourceview[vala]
