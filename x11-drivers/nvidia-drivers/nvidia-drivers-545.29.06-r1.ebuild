@@ -134,6 +134,9 @@ src_prepare() {
 
 	default
 
+	kernel_is -ge 6 7 &&
+		eapply "${FILESDIR}"/nvidia-drivers-535.43.22-kernel-6.7.patch
+
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
 		-i kernel{,-module-source/kernel-open}/conftest.sh || die
