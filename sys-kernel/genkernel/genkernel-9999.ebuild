@@ -124,7 +124,7 @@ RDEPEND="${PYTHON_DEPS}
 	sys-devel/automake
 	app-alternatives/bc
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	sys-devel/libtool
 	virtual/pkgconfig
 	elibc_glibc? ( sys-libs/glibc[static-libs(+)] )
