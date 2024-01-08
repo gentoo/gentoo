@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	vala? ( $(vala_depend) )
 	dev-util/glib-utils
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
