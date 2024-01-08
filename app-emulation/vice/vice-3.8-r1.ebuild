@@ -69,7 +69,7 @@ BDEPEND="
 	dev-embedded/xa
 	dev-lang/perl
 	sys-apps/texinfo
-	sys-devel/flex
+	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( virtual/texi2dvi )
