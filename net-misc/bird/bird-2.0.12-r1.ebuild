@@ -25,7 +25,7 @@ RDEPEND="
 	)
 	libssh? ( net-libs/libssh:= )"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	sys-devel/m4
 "

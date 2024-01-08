@@ -15,7 +15,7 @@ IUSE="+client debug"
 RDEPEND="client? ( sys-libs/ncurses )
 	client? ( sys-libs/readline )"
 DEPEND="app-alternatives/lex
-	sys-devel/bison
+	app-alternatives/yacc
 	sys-devel/m4"
 
 PATCHES=(
