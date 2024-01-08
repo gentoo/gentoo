@@ -126,7 +126,7 @@ BDEPEND="
 	sys-devel/patch
 	virtual/pkgconfig
 	jaeger? (
-		sys-devel/bison
+		app-alternatives/yacc
 		app-alternatives/lex
 	)
 	test? (
