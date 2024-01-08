@@ -304,7 +304,7 @@ fi
 
 BDEPEND="
 	app-alternatives/yacc
-	app-alternatives/lex
+	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
 	test? (
 		>=dev-util/dejagnu-1.4.4
