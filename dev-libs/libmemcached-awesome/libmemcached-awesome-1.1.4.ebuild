@@ -22,7 +22,7 @@ RDEPEND="!app-forensics/memdump
 	sasl? ( dev-libs/cyrus-sasl:2 )"
 DEPEND="${RDEPEND}
 	test? ( net-misc/memcached )"
-BDEPEND="sys-devel/bison
+BDEPEND="app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig"
 
