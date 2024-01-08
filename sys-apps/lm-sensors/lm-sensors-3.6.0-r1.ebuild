@@ -37,7 +37,7 @@ RDEPEND="${COMMON_DEPS}
 	selinux? ( sec-policy/selinux-sensord )"
 
 DEPEND="${COMMON_DEPS}
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex"
 
 CONFIG_CHECK="~HWMON ~I2C_CHARDEV ~I2C"
