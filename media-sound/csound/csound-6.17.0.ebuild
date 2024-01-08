@@ -41,7 +41,7 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	app-alternatives/yacc
 	doc? ( media-libs/libpng )
