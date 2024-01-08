@@ -107,6 +107,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
 )
 
+# false positive when checking for available HDF5 interface, bug #904731
+QA_CONFIG_IMPL_DECL_SKIP=(
+	H5Pset_coll_metadata_write
+	H5Pset_all_coll_metadata_ops
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

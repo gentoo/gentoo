@@ -108,6 +108,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing-include.patch
 )
 
+# false positive when checking for available HDF5 interface, bug #904731
+QA_CONFIG_IMPL_DECL_SKIP=(
+	H5Pset_coll_metadata_write
+	H5Pset_all_coll_metadata_ops
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
