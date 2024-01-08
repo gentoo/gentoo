@@ -111,7 +111,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # things.
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}
-	app-arch/cpio
+	app-alternatives/cpio
 	>=app-misc/pax-utils-1.2.2
 	app-portage/elt-patches
 	app-portage/portage-utils
