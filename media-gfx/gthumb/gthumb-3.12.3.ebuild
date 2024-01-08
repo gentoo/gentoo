@@ -61,7 +61,7 @@ BDEPEND="
 	>=dev-libs/appstream-0.14.6
 	dev-util/glib-utils
 	dev-util/itstool
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
