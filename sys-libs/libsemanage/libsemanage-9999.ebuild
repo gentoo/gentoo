@@ -33,7 +33,7 @@ RDEPEND="app-arch/bzip2[${MULTILIB_USEDEP}]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-lang/swig-2.0.4-r1
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig"
 
