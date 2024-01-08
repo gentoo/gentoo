@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	doc? (
 		>=dev-qt/qdoc-${QTMIN}:5
 		>=dev-qt/qthelp-${QTMIN}:5
