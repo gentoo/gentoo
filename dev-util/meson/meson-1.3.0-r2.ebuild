@@ -42,7 +42,7 @@ DEPEND="
 	test? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
-		dev-util/ninja
+		app-alternatives/ninja
 		dev-vcs/git
 		sys-libs/zlib[static-libs(+)]
 		virtual/pkgconfig
