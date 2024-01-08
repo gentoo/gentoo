@@ -30,7 +30,7 @@ BDEPEND="
 	app-text/asciidoc
 	app-text/xmlto
 	dev-util/source-highlight
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 "
