@@ -37,7 +37,7 @@ RDEPEND="
 	>=dev-db/pg-gvm-22.4
 "
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
