@@ -39,7 +39,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-alternatives/bc
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/libelf
 	app-alternatives/yacc
 	arm? ( sys-apps/dtc )
