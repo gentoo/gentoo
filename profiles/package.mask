@@ -392,7 +392,6 @@ dev-python/ruamel-std-pathlib
 ~kde-apps/spectacle-24.01.85
 ~kde-misc/kio-fuse-5.1.0
 ~dev-libs/appstream-1.0.1
-~dev-libs/kdiagram-3.0.0
 ~dev-libs/kdiagram-3.0.1
 ~dev-libs/kirigami-addons-0.11.76_p20231222
 ~media-libs/libqaccessibilityclient-0.6.0
