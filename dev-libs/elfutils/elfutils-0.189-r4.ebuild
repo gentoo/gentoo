@@ -1,4 +1,4 @@
-# Copyright 2003-2023 Gentoo Authors
+# Copyright 2003-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	>=sys-devel/flex-2.5.4a
+	app-alternatives/lex
 	sys-devel/m4
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
