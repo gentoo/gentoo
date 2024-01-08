@@ -15,6 +15,6 @@ SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 "
