@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # As upstream (and we aswell) are not allowed to redistribute scansyn,
@@ -42,7 +42,7 @@ REQUIRED_USE="
 
 BDEPEND="
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 	doc? ( media-libs/libpng )
 	lua? ( dev-lang/swig )
