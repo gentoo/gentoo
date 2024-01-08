@@ -504,14 +504,6 @@ virtual/python-greenlet
 # Removal on 2023-12-30.  Bug #916535.
 dev-python/backcall
 
-# John Helmert III <ajak@gentoo.org> (2023-11-25)
-# Multiple vulnerabilities, unmaintained upstream and in Gentoo.
-# subtitleripper included as sole reverse dependency, similarly
-# unmaintained, and with no other reverse dependencies.
-# Removal on 2023-12-24, bug #824290.
-app-text/gocr
-media-video/subtitleripper
-
 # Sam James <sam@gentoo.org> (2023-11-25)
 # Breaks desktop icon rendering, see bug #904468.
 # Upstream bug: https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
