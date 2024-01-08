@@ -58,7 +58,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-xserver )
 "
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 	dev-util/wayland-scanner
 "
 
