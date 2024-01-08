@@ -45,7 +45,7 @@ PDEPEND="
 "
 BDEPEND="
 	app-alternatives/bc
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/libelf
 	app-alternatives/yacc
 "
