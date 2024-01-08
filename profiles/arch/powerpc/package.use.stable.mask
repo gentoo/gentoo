@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -57,10 +57,6 @@ media-sound/easytag nautilus
 # Michał Górny <mgorny@gentoo.org> (2018-08-26)
 # Non-stable dependency.  Used to be masked completely.
 media-sound/abcde replaygain
-
-# Ulrich Müller <ulm@gentoo.org> (2018-08-09)
-# Needs net-libs/webkit-gtk which is not stable, bug #663248
-app-editors/emacs xwidgets
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
 # dev-python/PyQt5 is not stable.
