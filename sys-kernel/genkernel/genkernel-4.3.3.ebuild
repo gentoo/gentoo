@@ -121,7 +121,7 @@ RDEPEND="${PYTHON_DEPS}
 	sys-devel/autoconf-archive
 	sys-devel/automake
 	app-alternatives/bc
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	sys-devel/libtool
 	virtual/pkgconfig
