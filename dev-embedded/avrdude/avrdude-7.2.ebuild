@@ -25,7 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/lex
 "
 
 src_prepare() {
