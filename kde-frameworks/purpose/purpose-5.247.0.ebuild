@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,6 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kdeclarative-${PVCUT}:6
 	bluetooth? ( =kde-frameworks/bluez-qt-${PVCUT}*:6 )
 "
-BDEPEND="kaccounts? ( dev-util/intltool )"
 
 src_prepare() {
 	ecm_src_prepare
