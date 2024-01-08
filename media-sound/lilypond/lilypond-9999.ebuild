@@ -29,7 +29,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 BDEPEND="
 	dev-texlive/texlive-metapost
 	sys-apps/texinfo
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	doc? ( app-text/texi2html )
