@@ -21,7 +21,7 @@ DEPEND="
 	udev? ( virtual/udev )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/flex"
+BDEPEND="app-alternatives/lex"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.23.1-respect-flags.patch
