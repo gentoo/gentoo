@@ -100,7 +100,7 @@ BDEPEND="${PYTHON_DEPS}
 	app-alternatives/ninja
 	dev-util/re2c
 	net-libs/nodejs[ssl]
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	ppc64? ( >=dev-util/gn-0.1807 )
 "
