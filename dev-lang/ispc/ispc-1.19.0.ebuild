@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):="
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	app-alternatives/lex
 	${PYTHON_DEPS}
 "
