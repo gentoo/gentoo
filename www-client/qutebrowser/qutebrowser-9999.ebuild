@@ -155,7 +155,7 @@ python_test() {
 	local epytestargs=(
 		# prefer pytest-xvfb over virtx given same upstream and is expected
 		-p xvfb
-		# skip warning tests broken by -wdefault, and benchmarks
+		# skip warning tests broken by -Wdefault, and benchmarks
 		-k 'not _bench and not _matches_tree and not _warning'
 		# override eclass' settings, tempdirs are re-used by Qt
 		-o tmp_path_retention_policy=all
