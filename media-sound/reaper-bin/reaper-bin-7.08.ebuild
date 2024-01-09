@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,13 +8,13 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="d974e49ac5afb57be6329674e046649a4f30bce9"
+WDL_COMMIT="3e3576d2d65bb028dde7026d0a6df334ab8e5710"
 
 SRC_URI="
-	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(ver_cut 2))_linux_x86_64.tar.xz )
-	x86? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(ver_cut 2))_linux_i686.tar.xz )
-	arm64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(ver_cut 2))_linux_aarch64.tar.xz )
-	arm? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(ver_cut 2))_linux_armv7l.tar.xz )
+	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
+	x86? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_i686.tar.xz )
+	arm64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_aarch64.tar.xz )
+	arm? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_armv7l.tar.xz )
 	https://github.com/justinfrankel/WDL/archive/${WDL_COMMIT}.tar.gz -> WDL-${WDL_COMMIT}.tar.gz
 "
 
