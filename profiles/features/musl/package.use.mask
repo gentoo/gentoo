@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-01-09)
+# linked against glibc
+sci-libs/caffe2 mkl
+dev-libs/oneDNN mkl
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Requires dev-libs/level-zero.
 dev-lang/ispc gpu
@@ -142,7 +147,3 @@ app-shells/bash mem-scramble
 
 # static linking works with musl
 app-shells/mksh -static
-
-# linked against glibc
-sci-libs/caffe2 mkl
-dev-libs/oneDNN mkl
