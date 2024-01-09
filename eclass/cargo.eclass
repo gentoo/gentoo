@@ -175,9 +175,6 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # If no arguments are provided, it uses the CRATES variable.
 # The value is set as CARGO_CRATE_URIS.
 _cargo_set_crate_uris() {
-	# when called by pkgbump, do not fetch crates
-	[[ ${PKGBUMPING} == ${PVR} ]] && return
-
 	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local crates=${1}
 	local crate
