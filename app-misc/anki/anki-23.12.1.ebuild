@@ -683,7 +683,6 @@ PATCHES=(
 	"${FILESDIR}"/${PV}/ninja-gentoo-setup.patch
 	"${FILESDIR}"/${PV}/no-git-submodule-sync.patch
 	"${FILESDIR}"/${PV}/pseudo-venv.patch
-	"${FILESDIR}"/${PV}/unbundle-sqlite.patch
 	"${FILESDIR}"/${PV}/use-system-nextest.patch
 	"${FILESDIR}"/${PV}/remove-formatter-dep.patch
 	"${FILESDIR}"/${PV}/remove-yarn-dep.patch
@@ -820,6 +819,7 @@ https://addon-docs.ankiweb.net/
 
 pkg_setup() {
 	export PROTOC_BINARY="${BROOT}"/usr/bin/protoc
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 
 	if use gui; then
