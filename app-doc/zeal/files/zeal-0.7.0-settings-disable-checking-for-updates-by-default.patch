@@ -1,0 +1,11 @@
+--- a/src/libs/core/settings.cpp
++++ b/src/libs/core/settings.cpp
+@@ -95,7 +95,7 @@ void Settings::load()
+ 
+     // TODO: Put everything in groups
+     startMinimized = settings->value(QStringLiteral("start_minimized"), false).toBool();
+-    checkForUpdate = settings->value(QStringLiteral("check_for_update"), true).toBool();
++    checkForUpdate = settings->value(QStringLiteral("check_for_update"), false).toBool();
+ 
+     showSystrayIcon = settings->value(QStringLiteral("show_systray_icon"), true).toBool();
+     minimizeToSystray = settings->value(QStringLiteral("minimize_to_systray"), false).toBool();
