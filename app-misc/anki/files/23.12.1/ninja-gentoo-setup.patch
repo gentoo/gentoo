@@ -1,4 +1,5 @@
 This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_runner_src_build.rs
 
 It adapts the ninja(-compatible) build system to the Gentoo system and
 prevents repo sync via git.
