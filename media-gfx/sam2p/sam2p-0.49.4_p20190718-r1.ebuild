@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,12 @@ src_configure() {
 }
 
 src_compile() {
-	emake GCC_STRIP=
+	emake GCC_STRIP= \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getCC)" \
+		LDXX="$(tc-getCXX)" \
+		LDY="$(tc-getCC)"
 }
 
 src_install() {
