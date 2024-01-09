@@ -1,0 +1,27 @@
+diff --git a/src/putty/unix/uxsftp.c b/src/putty/unix/uxsftp.c
+index f078d97..05ec2ff 100644
+--- a/src/putty/unix/uxsftp.c
++++ b/src/putty/unix/uxsftp.c
+@@ -211,7 +211,7 @@ int read_from_file(RFile *f, void *buffer, int length)
+ #if 1
+     if (f->state == ok && !f->remaining_) {
+         fznotify1(sftp_io_nextbuf, 0);
+-        char const* s = priority_read();
++        char *s = priority_read();
+         if (s[1] == '-') {
+             f->state = error;
+             return -1;
+@@ -220,11 +220,11 @@ int read_from_file(RFile *f, void *buffer, int length)
+             f->state = eof;
+         }
+         else {
+-            char const* p = s + 1;
++            char *p = s + 1;
+             f->buffer_ = f->memory_ + next_int(&p);
+             f->remaining_ = (int)next_int(&p);
+         }
+-        sfree(s);
++        sfree((void *)s);
+     }
+     if (f->state == eof) {
+         return 0;

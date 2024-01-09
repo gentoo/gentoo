@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.47.0-disable-shellext_conf.patch
 	"${FILESDIR}"/${PN}-3.52.2-slibtool.patch
 	"${FILESDIR}"/${PN}-3.60.1-desktop.patch
+	"${FILESDIR}"/${PN}-3.66.4-gcc14.patch
 )
 
 src_prepare() {
