@@ -40,18 +40,17 @@ src_compile() {
 		"-Wno-unused-but-set-variable"
 		"-Wno-cpp"
 		"-Wno-maybe-uninitialized"
-		"-Wno-lto-type-mismatch"
-		"-Wno-error=int-conversion"
-		"-Wno-int-conversion"
 		"-P"
 	)
 	append-cflags $(test-flags-CC ${extraflags[@]})
+	append-cflags -fno-strict-aliasing
 	filter-flags '-fdiagnostics-color=always' # https://github.com/ksh93/ksh/issues/379
-	export CCFLAGS="${CFLAGS} -fno-strict-aliasing"
+	filter-lto
 
+	export CCFLAGS="${CFLAGS}"
 	tc-export AR CC LD NM
 
-	sh bin/package make SHELL="${BROOT}"/bin/sh || die
+	sh bin/package make AR="${AR}" CC="${CC}" NM="${NM}" SHELL="${BROOT}"/bin/sh || die
 }
 
 src_test() {
