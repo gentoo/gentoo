@@ -1,4 +1,5 @@
 This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_runner_src_yarn.rs
 
 The ebuild ships a ready-to-use node_modules tarball which does not require
 sys-apps/yarn to be installed. Pre-built node_modules allows us to run JS tests.

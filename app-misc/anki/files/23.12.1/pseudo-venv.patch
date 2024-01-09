@@ -1,9 +1,13 @@
+This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_configure_src_python.rs
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_ninja__gen_src_python.rs
+
 Use the "PythonEnvironmentStub" function to use a native Python environment
 instead of a Python venv.
 * Avoid the use of Python's pip (network access).
-* Remove the python_binary input which is the only dependant of the
-  python_binary target. This saves us from setting an extra environment
-  variable to prevent network access.
+* Remove the python_binary input for PythonEnvironmentStub since we create the
+  pseudo venv manually in the ebuild. This saves us from setting an extra
+  environment variable to prevent network access.
   
   The python_binary input should really only be added to PythonEnvironment, if
   the venv is not set up.

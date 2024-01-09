@@ -1,4 +1,6 @@
 This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_configure_src_rust.rs
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_ninja__gen_src_git.rs
 
 It prevents the build system from issuing the repo sync that
 requires git and an internet connection.
