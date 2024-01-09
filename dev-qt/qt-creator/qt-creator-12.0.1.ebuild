@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ else
 	[[ ${QTC_PV} == ${PV} ]] && QTC_REL=official || QTC_REL=development
 	SRC_URI="https://download.qt.io/${QTC_REL}_releases/qtcreator/$(ver_cut 1-2)/${PV/_/-}/${QTC_P}.tar.xz"
 	S=${WORKDIR}/${QTC_P}
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
