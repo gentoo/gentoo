@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake edo flag-o-matic
+inherit cmake edo flag-o-matic toolchain-funcs
 
 DESCRIPTION="Radeon Open Compute OpenCL Compatible Runtime"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime"
@@ -46,6 +46,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# Fix ld.lld linker error: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/155
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
+
 	# Reported upstream: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/120
 	append-cflags -fcommon
 
