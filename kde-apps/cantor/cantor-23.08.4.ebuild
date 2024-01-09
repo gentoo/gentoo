@@ -100,6 +100,10 @@ src_configure() {
 	ecm_src_configure
 }
 
+src_compile() {
+	MAKEOPTS="-j1" ecm_src_compile
+}
+
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "Maxima backend" sci-mathematics/maxima
