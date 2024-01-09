@@ -326,7 +326,6 @@ media-sound/moc timidity
 # Markus Meier <maekke@gentoo.org> (2015-11-22)
 # unmask scanner for net-print/hplip, bug #518456
 net-print/hplip -scanner kde
-media-gfx/xsane ocr
 
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
