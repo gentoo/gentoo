@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
@@ -217,10 +217,6 @@ sys-cluster/ceph babeltrace lttng
 # pending re-keyword request, bug 615400
 net-analyzer/rrdtool rados
 www-servers/uwsgi uwsgi_plugins_rados
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-25)
-# (SM)BIOS outside of amd64/x86? - citation needed
-sys-apps/fwupd dell
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet

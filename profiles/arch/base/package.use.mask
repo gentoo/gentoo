@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
@@ -107,7 +107,6 @@ sys-devel/gcc fixed-point
 # only unmask on relevant arches.
 # bug #875830
 app-laptop/pbbuttonsd macbook
-sys-apps/fwupd dell
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
 # www-servers/nginx requires keywording
