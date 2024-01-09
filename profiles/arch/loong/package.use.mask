@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2024-01-09)
+# PCRE2 upstream has gained JIT support on loong since 10.43.
+<dev-libs/libpcre2-10.43_rc1 jit
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-08)
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
@@ -275,7 +279,6 @@ dev-util/catalyst -system-bootloader
 sys-devel/binutils gold
 
 # These aren't ported to LoongArch yet
-dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
 
