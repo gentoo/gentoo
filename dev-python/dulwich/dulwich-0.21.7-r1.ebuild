@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,15 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs
+
+src_prepare() {
+	# Do not install "docs" directory into site-packages
+	# https://github.com/jelmer/dulwich/issues/1248
+	sed -i -e '/package_data/d' setup.py || die
+	rm -r *.egg-info || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	# remove interference from the tests that do stuff like user.name
