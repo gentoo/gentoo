@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		WARNING: using this is discouraged and must be a *temporary*
+		last resort for >=python3.12 support, due to be last-rited in
+		time and packages still depending on this may go along with it
+		(primarily for qtwebengine/chromium due to non-trivial imp use)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">encukou/zombie-imp</remote-id>
+		<remote-id type="pypi">zombie-imp</remote-id>
+	</upstream>
+</pkgmetadata>
