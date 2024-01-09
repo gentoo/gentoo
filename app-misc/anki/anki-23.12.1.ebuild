@@ -880,7 +880,7 @@ src_compile() {
 	#    * generate the ninja file and run ninja afterwards
 	#    * create the Python wheel files in "${S}"/out/wheels
 
-	cargo_src_compile $(usev debug "--release") --package runner
+	cargo build --release --package runner || die
 	if use gui; then
 		out/rust/release/runner build -- $(get_NINJAOPTS) wheels  || die
 	else
