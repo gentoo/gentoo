@@ -25,7 +25,8 @@ BDEPEND="dev-python/setuptools-scm"
 
 distutils_enable_tests pytest
 
-distutils_enable_sphinx docs/source
+distutils_enable_sphinx docs/source \
+	dev-python/nbsphinx
 
 python_test() {
 	epytest -m 'not headless'
