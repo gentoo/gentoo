@@ -1,0 +1,32 @@
+Patch status: temporary until proper fixes
+
+Patch imported from Fedora[1], it is however not complete migration
+and requires use of dev-python/zombie-imp (this only migrates the
+bits which do not work with it).
+
+chromium uses imp in several components and proper fixes may take
+some time, Qt is tracking this in [2]. Note that this furthermore
+needs setuptools for distutils[3], and updating bundled six (there
+is multiple copies, and some are too old).
+
+[1] https://src.fedoraproject.org/rpms/qt6-qtwebengine/c/90a55c38544
+[2] https://bugreports.qt.io/browse/QTBUG-117978
+[3] https://bugreports.qt.io/browse/QTBUG-115512
+--- a/src/3rdparty/chromium/components/resources/protobufs/binary_proto_generator.py
++++ b/src/3rdparty/chromium/components/resources/protobufs/binary_proto_generator.py
+@@ -10,5 +10,5 @@
+ from __future__ import print_function
+ import abc
+-import imp
++from importlib import util
+ import optparse
+ import os
+@@ -69,5 +69,7 @@
+ 
+     filepath = self._fullname_to_filepath(fullname)
+-    return imp.load_source(fullname, filepath)
++    spec = util.spec_from_file_location(fullname, filepath)
++    loaded = util.module_from_spec(spec)
++    return spec.loader.exec_module(loaded)
+ 
+ class BinaryProtoGenerator:

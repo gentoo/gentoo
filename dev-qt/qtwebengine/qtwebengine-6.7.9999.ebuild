@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# 3.12 needs QTBUG-117979 (see also QTBUG-115512)
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
@@ -97,8 +96,25 @@ DEPEND="
 		vulkan? ( dev-util/vulkan-headers )
 	)
 "
+# python_gen_any_dep cannot really handle this scenario, define manually
 BDEPEND="
-	$(python_gen_any_dep 'dev-python/html5lib[${PYTHON_USEDEP}]')
+	|| (
+		(
+			dev-lang/python:3.12
+			dev-python/html5lib[python_targets_python3_12(-)]
+			dev-python/setuptools[python_targets_python3_12(-)]
+			dev-python/six[python_targets_python3_12(-)]
+			dev-python/zombie-imp[python_targets_python3_12(-)]
+		)
+		(
+			dev-lang/python:3.11
+			dev-python/html5lib[python_targets_python3_11(-)]
+		)
+		(
+			dev-lang/python:3.10[xml(+)]
+			dev-python/html5lib[python_targets_python3_10(-)]
+		)
+	)
 	dev-util/gperf
 	net-libs/nodejs[ssl]
 	sys-devel/bison
@@ -111,10 +127,16 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.6.1-python3.12.patch
 )
 
 python_check_deps() {
-	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]" &&
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/six[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/zombie-imp[${PYTHON_USEDEP}]"
+	fi
 }
 
 qtwebengine_check-reqs() {
@@ -154,6 +176,15 @@ pkg_setup() {
 
 src_prepare() {
 	qt6-build_src_prepare
+
+	# bundled six is too old for python3.12
+	# TODO: check if this is really needed
+	if [[ ${EPYTHON} == python3.12 ]]; then
+		local six=$(python_get_sitedir)/six.py
+		ln -sf -- "${six}" src/3rdparty/chromium/third_party/six/src/six.py || die
+		ln -sf -- "${six}" src/3rdparty/chromium/third_party/catapult/third_party/six/six.py || die
+		ln -sf -- "${six}" src/3rdparty/chromium/third_party/wpt_tools/wpt/tools/third_party/six/six.py || die
+	fi
 
 	# for www-plugins/chrome-binary-plugins (widevine) search paths on prefix
 	hprefixify -w /Gentoo/ src/core/content_client_qt.cpp
