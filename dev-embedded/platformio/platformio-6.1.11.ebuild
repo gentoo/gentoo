@@ -1,17 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 udev
 
 DESCRIPTION="An open source ecosystem for IoT development"
 HOMEPAGE="https://platformio.org/"
-SRC_URI="https://github.com/platformio/platformio-core/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/platformio/platformio-core/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}"/${PN}-core-${PV}
 
 LICENSE="BSD"
@@ -29,11 +29,11 @@ RDEPEND="
 		<dev-python/pyserial-4[${PYTHON_USEDEP}]
 		>=dev-python/zeroconf-0.37[${PYTHON_USEDEP}]
 		=dev-python/requests-2*[${PYTHON_USEDEP}]
-		>=dev-python/semantic-version-2.9[${PYTHON_USEDEP}]
+		>=dev-python/semantic-version-2.10[${PYTHON_USEDEP}]
 		<dev-python/semantic-version-3[${PYTHON_USEDEP}]
 		=dev-python/tabulate-0.9*[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
-		>=dev-python/pyelftools-0.27[${PYTHON_USEDEP}]
+		>=dev-python/pyelftools-0.30[${PYTHON_USEDEP}]
 		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
 		=dev-python/marshmallow-3*[${PYTHON_USEDEP}]
 		>=dev-python/starlette-0.21[${PYTHON_USEDEP}]
