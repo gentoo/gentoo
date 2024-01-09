@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python{3_9,3_10,3_11} )
 
-inherit autotools fcaps flag-o-matic linux-info optfeature python-single-r1 systemd toolchain-funcs
+inherit cmake fcaps linux-info optfeature python-single-r1 systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps cloud +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -41,19 +41,23 @@ RDEPEND="
 	net-misc/wget
 	sys-apps/util-linux
 	app-alternatives/awk
-	caps? ( sys-libs/libcap )
+	sys-libs/libcap
 	cups? ( net-print/cups )
+	app-arch/lz4:=
+	app-arch/zstd:=
+	app-arch/brotli:=
 	dbengine? (
-		app-arch/lz4:=
 		dev-libs/judy
 		dev-libs/openssl:=
 	)
+	dev-libs/libpcre2:=
 	dev-libs/libuv:=
 	dev-libs/libyaml
-	cloud? ( dev-libs/protobuf:= )
+	dev-libs/protobuf:=
+	bpf? ( virtual/libelf:= )
 	sys-libs/zlib
 	ipmi? ( sys-libs/freeipmi )
-	jsonc? ( dev-libs/json-c:= )
+	dev-libs/json-c:=
 	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
 		net-firewall/nfacct
@@ -89,59 +93,42 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
-	if use ppc64; then
-		# bundled dlib does not support vsx on big-endian
-		# https://github.com/davisking/dlib/issues/397
-		[[ $(tc-endian) == big ]] && append-flags -mno-vsx
-	fi
-
-	econf \
-		--localstatedir="${EPREFIX}"/var \
-		--with-user=netdata \
-		--without-bundled-protobuf \
-		$(use_enable cloud) \
-		$(use_enable jsonc) \
-		$(use_enable cups plugin-cups) \
-		$(use_enable dbengine) \
-		$(use_enable nfacct plugin-nfacct) \
-		$(use_enable ipmi plugin-freeipmi) \
-		--disable-exporting-kinesis \
-		$(use_enable lto lto) \
-		$(use_enable mongodb exporting-mongodb) \
-		$(use_enable prometheus exporting-prometheus-remote-write) \
-		$(use_enable xen plugin-xenstat) \
-		$(use_enable cpu_flags_x86_sse2 x86-sse)
-}
-
-src_compile() {
-	emake clean
-	default
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=TRUE
+		-DCMAKE_INSTALL_PREFIX=/
+		-DENABLE_ACLK=$(usex aclk)
+		-DENABLE_CLOUD=$(usex cloud)
+		-DENABLE_DBENGINE=$(usex dbengine)
+		-DENABLE_PLUGIN_CUPS=$(usex cups)
+		-DENABLE_PLUGIN_NFACCT=$(usex nfacct)
+		-DENABLE_PLUGIN_FREEIPMI=$(usex ipmi)
+		-DENABLE_EXPORTER_MONGODB=$(usex mongodb)
+		-DENABLE_EXPORTER_PROMETHEUS_REMOTE_WRITE=$(usex prometheus)
+		-DENABLE_PLUGIN_XENSTAT=$(usex xen)
+		-DENABLE_PLUGIN_EBPF=$(usex bpf)
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	default
+	cmake_src_install
 
 	rm -rf "${D}/var/cache" || die
+	rm -rf "${D}/var/run" || die
 
 	keepdir /var/log/netdata
 	fowners -Rc netdata:netdata /var/log/netdata
 	keepdir /var/lib/netdata
 	keepdir /var/lib/netdata/registry
+	keepdir /var/lib/netdata/cloud.d
 	fowners -Rc netdata:netdata /var/lib/netdata
 
-	fowners -Rc root:netdata /usr/share/${PN}
-
-	newinitd system/openrc/init.d/netdata ${PN}
-	newconfd system/openrc/conf.d/netdata ${PN}
-	systemd_dounit system/systemd/netdata.service
-	systemd_dounit system/systemd/netdata-updater.service
-	systemd_dounit system/systemd/netdata-updater.timer
+	newinitd "${D}/usr/lib/netdata/system/openrc/init.d/netdata" "${PN}"
+	newconfd "${D}/usr/lib/netdata/system/openrc/conf.d/netdata" "${PN}"
+	systemd_newunit "${D}/usr/lib/netdata/system/systemd/netdata.service.v235" netdata.service
+	systemd_dounit "${D}/usr/lib/netdata/system/systemd/netdata-updater.service"
+	systemd_dounit "${D}/usr/lib/netdata/system/systemd/netdata-updater.timer"
 	insinto /etc/netdata
 	doins system/netdata.conf
 }
