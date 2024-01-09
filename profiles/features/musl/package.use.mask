@@ -22,11 +22,6 @@ gui-libs/gtk cpu_flags_x86_f16c
 # possible on musl via systemd-utils[boot].
 sys-kernel/installkernel -systemd
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-01-09)
-# linked against glibc
-sci-libs/caffe2 mkl
-dev-libs/oneDNN mkl
-
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Requires dev-libs/level-zero.
 dev-lang/ispc gpu
@@ -80,13 +75,16 @@ net-irc/ngircd test
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Rolling mask for all USE flags which pull in a masked binary package
 # (linked against glibc). Use for all such packages.
+dev-libs/oneDNN mkl
 kde-apps/kdenetwork-meta dropbox
+media-libs/opencv atlas mkl
 media-video/ffmpeg amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
 sys-apps/hwloc gl
 sci-chemistry/gromacs mkl
 sci-libs/armadillo mkl
+sci-libs/caffe2 mkl
 sci-libs/dlib mkl
 sci-libs/trilinos mkl
 www-client/qutebrowser widevine
