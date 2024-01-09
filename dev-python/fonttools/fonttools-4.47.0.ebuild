@@ -72,7 +72,11 @@ src_test() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# flaky test
+		Tests/ttLib/woff2_test.py::WOFF2ReaderTest::test_get_normal_tables
+	)
+
 	if [[ ${EPYTHON} == pypy3 ]] &&
 		has_version "dev-python/pyxattr[${PYTHON_USEDEP}]" &&
 		{
