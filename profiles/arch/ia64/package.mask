@@ -1,5 +1,9 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-01-09)
+# glibc-2.39 dropped support for ia64.
+>=sys-libs/glibc-2.39
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-05-02)
 # greenlet needs arch-specific stack switching code. There is no ia64 port.
