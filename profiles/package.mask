@@ -394,6 +394,7 @@ dev-python/ruamel-std-pathlib
 ~dev-libs/appstream-1.0.1
 ~dev-libs/kdiagram-3.0.1
 ~dev-libs/kirigami-addons-0.11.76_p20231222
+~dev-libs/kweathercore-0.8.0
 ~media-libs/libqaccessibilityclient-0.6.0
 ~media-libs/phonon-4.12.0
 ~media-libs/phonon-vlc-0.12.0
