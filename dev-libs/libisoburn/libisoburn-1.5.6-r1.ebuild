@@ -45,20 +45,20 @@ src_prepare() {
 
 src_configure() {
 	econf \
-	$(use_enable static-libs static) \
-	$(use_enable readline libreadline) \
-	$(usex readline --disable-libedit $(use_enable libedit)) \
-	$(use_enable acl libacl) \
-	$(use_enable xattr) \
-	$(use_enable zlib) \
-	--disable-libjte \
-	$(use_enable external-filters) \
-	$(use_enable external-filters-setuid) \
-	$(use_enable launch-frontend) \
-	$(use_enable launch-frontend-setuid) \
-	--disable-ldconfig-at-install \
-	--enable-pkg-check-modules \
-	$(use_enable debug)
+		$(use_enable static-libs static) \
+		$(use_enable readline libreadline) \
+		$(usex readline --disable-libedit $(use_enable libedit)) \
+		$(use_enable acl libacl) \
+		$(use_enable xattr) \
+		$(use_enable zlib) \
+		--disable-libjte \
+		$(use_enable external-filters) \
+		$(use_enable external-filters-setuid) \
+		$(use_enable launch-frontend) \
+		$(use_enable launch-frontend-setuid) \
+		--disable-ldconfig-at-install \
+		--enable-pkg-check-modules \
+		$(use_enable debug)
 }
 
 src_install() {
