@@ -104,14 +104,6 @@ net-proxy/tayga
 app-admin/newsyslog
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Unresolved vulnerability.  The current version is from 2022-03,
-# and the bump is non-trivial.
-# Removal on 2024-01-30.  Bug #879181.
-acct-group/fluentd
-acct-user/fluentd
-app-admin/fluentd
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Buggy code with a number of local patches already.  Last release
 # in 2003.  media-sound/jack2 should be a good alternative.
 # Removal on 2024-01-30.  Bug #875152.
