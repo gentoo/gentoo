@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,6 +58,9 @@ src_unpack() {
 
 src_prepare() {
 	distutils-r1_src_prepare
+
+	# fixed in .post1 release
+	rm -r SCons/Tool/docbook/__pycache__ || die
 
 	# TODO: rebase the patches <4.5.1-r2 is gone
 	# support env passthrough for Gentoo ebuilds
