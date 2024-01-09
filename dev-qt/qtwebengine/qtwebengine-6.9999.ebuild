@@ -102,7 +102,7 @@ BDEPEND="
 	dev-util/gperf
 	net-libs/nodejs[ssl]
 	sys-devel/bison
-	app-alternatives/lex
+	sys-devel/flex
 "
 
 PATCHES=( "${WORKDIR}"/patches/${PN} )
