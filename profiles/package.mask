@@ -385,7 +385,6 @@ dev-python/ruamel-std-pathlib
 ~kde-misc/kio-fuse-5.1.0
 ~dev-libs/appstream-1.0.1
 ~dev-libs/kdiagram-3.0.1
-~dev-libs/kirigami-addons-0.11.76_p20231222
 ~dev-libs/kirigami-addons-0.11.90
 ~dev-libs/ktextaddons-1.5.2_p20240108
 ~dev-libs/kweathercore-0.8.0
