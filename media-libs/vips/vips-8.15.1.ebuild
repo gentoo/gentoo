@@ -1,10 +1,10 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit meson python-single-r1 vala
+inherit flag-o-matic toolchain-funcs meson python-single-r1 vala
 
 DESCRIPTION="VIPS Image Processing Library"
 HOMEPAGE="https://libvips.github.io/libvips/"
@@ -111,6 +111,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# workaround for bug in lld (bug #921728)
+	tc-ld-is-lld && filter-lto
+
 	local emesonargs=(
 		$(meson_use deprecated)
 		$(meson_use doc doxygen)
