@@ -24,14 +24,13 @@ fi
 
 LICENSE="MIT SGI-B-2.0"
 SLOT="0"
-IUSE="debug unwind"
+IUSE="debug"
 
 RDEPEND="
 	dev-libs/libclc
 	dev-util/spirv-tools
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
-	unwind? ( sys-libs/libunwind:= )
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
@@ -105,8 +104,6 @@ src_configure() {
 		-Dglx=disabled
 		-Dlibunwind=disabled
 		-Dzstd=disabled
-
-		$(meson_feature unwind libunwind)
 
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
