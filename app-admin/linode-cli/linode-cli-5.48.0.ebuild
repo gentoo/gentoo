@@ -15,6 +15,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# Tests require network, a linode account and an API key.
+# WARNING: tests will incur costs and will wipe the account.
+RESTRICT="test"
+
 RDEPEND="
 	dev-python/boto3[${PYTHON_USEDEP}]
 	dev-python/linode-metadata[${PYTHON_USEDEP}]
