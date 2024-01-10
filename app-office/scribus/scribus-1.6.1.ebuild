@@ -75,10 +75,8 @@ PATCHES=(
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.8-cmake.patch # bug 886251
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
-	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
 	"${FILESDIR}"/${PN}-1.5.8-findhyphen-1.patch
 	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
-	"${FILESDIR}"/${PN}-1.6.0-fix-desktop.patch
 )
 
 src_prepare() {
