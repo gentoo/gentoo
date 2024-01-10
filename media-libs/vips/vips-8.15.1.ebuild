@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit flag-o-matic toolchain-funcs meson python-single-r1 vala
+inherit flag-o-matic meson python-single-r1 toolchain-funcs vala
 
 DESCRIPTION="VIPS Image Processing Library"
 HOMEPAGE="https://libvips.github.io/libvips/"
