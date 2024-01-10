@@ -112,11 +112,6 @@ app-misc/utimer
 sys-block/noflushd
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Buggy code that carries local patches already.  Last release in 2011.
-# Removal on 2024-01-30.  Bug #878629.
-net-proxy/tayga
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Buggy code that carries local patches already.  The ebuild installs
 # junk files.  No upstream activity since 2009.
 # Removal on 2024-01-30.  Bug #874087.
