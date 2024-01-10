@@ -1,0 +1,15 @@
+Только в form-5.0.0-beta.1/doc/manual: auto
+diff -r -U1 form-5.0.0-beta.1.orig/doc/manual/manual.tex.in form-5.0.0-beta.1/doc/manual/manual.tex.in
+--- form-5.0.0-beta.1.orig/doc/manual/manual.tex.in	2023-04-11 17:18:30.000000000 +0700
++++ form-5.0.0-beta.1/doc/manual/manual.tex.in	2024-01-10 17:41:07.990916066 +0700
+@@ -1,6 +1,5 @@
+-\input{version.tex}
+-\def\formmajorversion{\repomajorversion}
+-\def\formminorversion{\repominorversion}
+-\def\formversiondesc{\repoversiondesc}
+-\def\formdate{\repodate}
++\def\formmajorversion{5}
++\def\formminorversion{0}
++\def\formversiondesc{5.0}
++\def\formdate{\today}
+ %begin{latexonly}  % To avoid latex2html/latex2html#37
