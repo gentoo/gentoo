@@ -147,10 +147,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-33.1-libva.patch
 	"${FILESDIR}"/${PN}-33.1-ffmpeg-binutils-2.41.patch
 	"${FILESDIR}"/${PN}-33.1-linux-headers-6.5.patch
-	# https://github.com/MythTV/mythtv/pull/824
-	# https://github.com/MythTV/mythtv/pull/838
-	# https://bugs.gentoo.org/888291
-	"${FILESDIR}"/${PN}-33.1-python3.12.patch
 )
 
 python_check_deps() {
@@ -167,6 +163,11 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	# https://github.com/MythTV/mythtv/pull/824
+	# https://github.com/MythTV/mythtv/pull/838
+	# https://bugs.gentoo.org/888291
+	eapply -p2 "${FILESDIR}"/${PN}-33.1-python3.12.patch
+
 
 	# Perl bits need to go into vendor_perl and not site_perl
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \

@@ -1,4 +1,4 @@
-From f1848eb41bf35d57b63b3a8cb19763c5b4656717 Mon Sep 17 00:00:00 2001
+From ea59f869dcbd73b1d0dca973314604f689b50c34 Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz93@gmail.com>
 Date: Thu, 4 Jan 2024 16:18:00 -0500
 Subject: [PATCH 1/2] hardwareprofile: remove external dependency on simplejson
@@ -41,24 +41,10 @@ Fixes: 1df343e9ab7defa284a73390210a65cf2112f17e
 Reimplements: bb154a843b737cc3ad8c1a45fa04a1a3609aff05
 (cherry picked from commit 6348dc01a45af6ed63c09326ec94cd425db1d6d7)
 ---
- .github/workflows/buildmaster.yml                | 2 +-
  mythtv/configure                                 | 1 -
  mythtv/programs/scripts/hardwareprofile/smolt.py | 5 ++---
- 3 files changed, 3 insertions(+), 5 deletions(-)
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/.github/workflows/buildmaster.yml b/.github/workflows/buildmaster.yml
-index eea6e9fc2a..325cc7da64 100644
---- a/.github/workflows/buildmaster.yml
-+++ b/.github/workflows/buildmaster.yml
-@@ -48,7 +48,7 @@ jobs:
-         sudo apt install ccache qt5-qmake qtscript5-dev nasm libsystemd-dev libfreetype6-dev libmp3lame-dev libx264-dev libx265-dev libxrandr-dev libxml2-dev
-         sudo apt install libavahi-compat-libdnssd-dev libasound2-dev liblzo2-dev libhdhomerun-dev libsamplerate0-dev libva-dev libdrm-dev libvdpau-dev
-         sudo apt install libass-dev libpulse-dev libcec-dev libssl-dev libtag1-dev libbluray-dev libbluray-bdj libgnutls28-dev libqt5webkit5-dev
--        sudo apt install libvpx-dev python3-mysqldb python3-lxml python3-simplejson python3-future python3-setuptools libdbi-perl libdbd-mysql-perl libnet-upnp-perl
-+        sudo apt install libvpx-dev python3-mysqldb python3-lxml python3-future python3-setuptools libdbi-perl libdbd-mysql-perl libnet-upnp-perl
-         sudo apt install libio-socket-inet6-perl libxml-simple-perl libqt5sql5-mysql libwayland-dev qtbase5-private-dev libzip-dev libsoundtouch-dev
-       if: runner.os == 'Linux'
- 
 diff --git a/mythtv/configure b/mythtv/configure
 index 7e966ef817..3429c208e2 100755
 --- a/mythtv/configure
@@ -98,7 +84,7 @@ index 1bcc8060d0..464f068d6f 100644
 2.41.0
 
 
-From 13f65c0015d3e0d82d01a1dd5c15afe0ff1e8029 Mon Sep 17 00:00:00 2001
+From 7c1dbe7a86dc9b445a1a491f5a849b0eba21aead Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz93@gmail.com>
 Date: Wed, 13 Dec 2023 23:11:11 -0500
 Subject: [PATCH 2/2] hardwareprofile: remove ancient "future" compatibility
