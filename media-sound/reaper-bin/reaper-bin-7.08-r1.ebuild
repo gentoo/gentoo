@@ -52,7 +52,9 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -C "WDL-${WDL_COMMIT}/WDL/swell" ALLOW_WARNINGS=1
+	emake -C "WDL-${WDL_COMMIT}/WDL/swell" \
+		ALLOW_WARNINGS=1 \
+		PRELOAD_GDK=1
 }
 
 QA_PREBUILT="*/*.so */reaper */reaper_host_*"
