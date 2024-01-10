@@ -41,11 +41,3 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.7-no-versioncheck.patch
 	"${FILESDIR}"/${PN}-3.0.10-slave-delay-fix.patch
 )
-
-src_prepare() {
-	default
-
-	sed -i \
-		-e "s/=> 'percona-toolkit',/=> 'Percona::Toolkit',/g" \
-		Makefile.PL || die
-}
