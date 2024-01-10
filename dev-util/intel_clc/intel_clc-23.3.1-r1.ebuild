@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,13 +24,14 @@ fi
 
 LICENSE="MIT SGI-B-2.0"
 SLOT="0"
-IUSE="debug"
+IUSE="debug unwind"
 
 RDEPEND="
 	dev-libs/libclc
 	dev-util/spirv-tools
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
+	unwind? ( sys-libs/libunwind:= )
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
@@ -103,6 +104,8 @@ src_configure() {
 
 		-Dglx=disabled
 		-Dzstd=disabled
+
+		$(meson_feature unwind libunwind)
 
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
