@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,13 +34,10 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	# Removing tests with a reference to system tmp directory
-	"${FILESDIR}"/pontos-23.12.3-remove-tests.patch
+EPYTEST_DESELECT=(
+	tests/git/test_git.py::GitExtendedTestCase::test_git_error
+	tests/version/commands/test_java.py::GetCurrentJavaVersionCommandTestCase::test_getting_version_without_version_config
+	tests/version/commands/test_java.py::VerifyJavaVersionCommandTestCase::test_verify_version_does_not_match
 )
 
-distutils_enable_tests unittest
-
-src_prepare() {
-	distutils-r1_src_prepare
-}
+distutils_enable_tests pytest
