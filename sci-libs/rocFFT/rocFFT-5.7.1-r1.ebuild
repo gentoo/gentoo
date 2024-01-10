@@ -54,7 +54,9 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/rocFFT-rocm-${PV}"
 
-PATCHES=()
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.7.1-fix-rocm-link-path.patch
+)
 
 required_mem() {
 	if use test; then
