@@ -20,4 +20,4 @@ DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui]
 "
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/bison"
+BDEPEND="app-alternatives/yacc"
