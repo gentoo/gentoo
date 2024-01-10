@@ -34,7 +34,6 @@
 		<flag name="gflags">Use Google's C++ argument parsing library (<pkg>dev-cpp/gflags</pkg>)</flag>
 		<flag name="glog">Use Google's C++ logging library (<pkg>dev-cpp/glog</pkg>)</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
-		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
 		<flag name="non-free">Enable non-free components</flag>
 		<flag name="opencvapps">Enable compilation with opencvapps</flag>
 		<flag name="tbb">Enable multithreading with the Intel Threads Building Block (<pkg>dev-cpp/tbb</pkg>)</flag>
