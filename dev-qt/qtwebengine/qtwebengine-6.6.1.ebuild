@@ -250,6 +250,13 @@ src_configure() {
 	qt6-build_src_configure
 }
 
+src_compile() {
+	# tentatively work around a possible (rare) race condition (bug #921680)
+	cmake_build WebEngineCore_sync_all_public_headers
+
+	cmake_src_compile
+}
+
 src_test() {
 	if [[ ${EUID} == 0 ]]; then
 		# almost every tests fail, so skip entirely
