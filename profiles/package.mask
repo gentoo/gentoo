@@ -506,7 +506,7 @@ dev-python/ruamel-std-pathlib
 ~kde-frameworks/kxmlgui-5.247.0
 ~kde-frameworks/purpose-5.247.0
 ~kde-frameworks/qqc2-desktop-style-5.247.0
-~kde-apps/kdegraphics-mobipocket-24.01.85
+~kde-apps/kdegraphics-mobipocket-24.01.90
 =kde-apps/kio-extras-23.08.5-r100
 ~kde-apps/kio-extras-24.01.85
 ~kde-apps/kio-extras-kf5-24.01.85
