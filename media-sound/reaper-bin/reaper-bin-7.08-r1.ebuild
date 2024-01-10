@@ -52,7 +52,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -C "WDL-${WDL_COMMIT}/WDL/swell" ALLOW_WARNINGS=1
+	emake -C "WDL-${WDL_COMMIT}/WDL/swell" ALLOW_WARNINGS=1 PRELOAD_GDK=1
 }
 
 QA_PREBUILT="*/*.so */reaper */reaper_host_*"
@@ -94,62 +94,62 @@ src_install() {
 	cat > application-x-reaper.xml <<-EOF
 	<?xml version="1.0" encoding="UTF-8"?>
 	<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-	  <mime-type type="application/x-reaper-project">
+		<mime-type type="application/x-reaper-project">
 		<sub-class-of type="text/plain"/>
 		<comment xml:lang="en">REAPER project</comment>
 		<icon name="cockos-reaper-document"/>
 		<glob pattern="*.rpp"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-project-backup">
+		</mime-type>
+		<mime-type type="application/x-reaper-project-backup">
 		<sub-class-of type="text/plain"/>
 		<comment xml:lang="en">REAPER project backup</comment>
 		<icon name="cockos-reaper-backup"/>
 		<glob pattern="*.rpp-bak"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-config">
+		</mime-type>
+		<mime-type type="application/x-reaper-config">
 		<sub-class-of type="text/plain"/>
 		<icon name="cockos-reaper"/>
 		<comment xml:lang="en">REAPER configuration</comment>
 		<glob pattern="reaper*.ini"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-fxchain">
+		</mime-type>
+		<mime-type type="application/x-reaper-fxchain">
 		<sub-class-of type="text/plain"/>
 		<comment xml:lang="en">REAPER fx chain</comment>
 		<icon name="cockos-reaper-template"/>
 		<glob pattern="*.rfxchain"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-tracktemplate">
+		</mime-type>
+		<mime-type type="application/x-reaper-tracktemplate">
 		<sub-class-of type="text/plain"/>
 		<comment xml:lang="en">REAPER track template</comment>
 		<icon name="cockos-reaper-template2"/>
 		<glob pattern="*.RTrackTemplate"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-theme">
+		</mime-type>
+		<mime-type type="application/x-reaper-theme">
 		<comment xml:lang="en">REAPER theme</comment>
 		<icon name="cockos-reaper-theme"/>
 		<glob pattern="*.ReaperTheme"/>
 		<glob pattern="*.ReaperThemeZip"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-undo">
+		</mime-type>
+		<mime-type type="application/x-reaper-undo">
 		<icon name="cockos-reaper-backup"/>
 		<comment xml:lang="en">REAPER undo</comment>
 		<glob pattern="*.rpp-undo"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-bak-undo">
+		</mime-type>
+		<mime-type type="application/x-reaper-bak-undo">
 		<icon name="cockos-reaper-backup"/>
 		<comment xml:lang="en">REAPER undo backup</comment>
 		<glob pattern="*.rpp-bak-undo"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-peak">
+		</mime-type>
+		<mime-type type="application/x-reaper-peak">
 		<comment xml:lang="en">REAPER peak file</comment>
 		<icon name="cockos-reaper-peak"/>
 		<glob pattern="*.reapeaks"/>
-	  </mime-type>
-	  <mime-type type="application/x-reaper-proxy">
+		</mime-type>
+		<mime-type type="application/x-reaper-proxy">
 		<icon name="cockos-reaper-peak"/>
 		<comment xml:lang="en">REAPER proxy</comment>
 		<glob pattern="*.rpp-prox"/>
-	  </mime-type>
+		</mime-type>
 	</mime-info>
 	EOF
 	insopts -m 0644
