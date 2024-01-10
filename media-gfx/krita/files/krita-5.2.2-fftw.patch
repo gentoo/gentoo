@@ -1,0 +1,18 @@
+Disable the cmake find_package method. It will instead fallback to use pkgconfig.
+Without this, it will fail to find fftw3 and error out.
+
+--- a/cmake/modules/FindFFTW3.cmake	2023-11-24 19:59:45.904059240 +0100
++++ b/cmake/modules/FindFFTW3.cmake	2023-11-24 20:00:17.029563107 +0100
+@@ -74,9 +74,9 @@
+ endforeach()
+ mark_as_advanced(PKG_FFTW_CONFIG_DIR)
+ 
+-find_package(FFTW3 QUIET NO_MODULE
+-    HINTS ${PKG_FFTW_CONFIG_DIR} /usr/lib/cmake/fftw3 /usr/local/lib/cmake/fftw3
+-)
++#find_package(FFTW3 QUIET NO_MODULE
++#    HINTS ${PKG_FFTW_CONFIG_DIR} /usr/lib/cmake/fftw3 /usr/local/lib/cmake/fftw3
++#)
+ mark_as_advanced(FFTW3_DIR)
+ 
+ # if we found the FFTW3 CMake package then we can start

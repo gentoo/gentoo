@@ -1,0 +1,14 @@
+Disable the cmake find_package method. It will instead fallback to use pkgconfig.
+Without this, it will fail to find openjpeg and error out.
+
+--- a/cmake/modules/FindOpenJPEG.cmake	2023-11-24 19:58:50.650715138 +0100
++++ b/cmake/modules/FindOpenJPEG.cmake	2023-11-24 19:58:57.217399495 +0100
+@@ -45,7 +45,7 @@
+ 
+ # No hints in this case because the library versions semantically
+ # the module folder, and it's also capitalized, so let CMake handle it.
+-find_package(OPENJPEG QUIET NO_MODULE NAMES OpenJPEG)
++#find_package(OPENJPEG QUIET NO_MODULE NAMES OpenJPEG)
+ mark_as_advanced(OPENJPEG_DIR)
+ 
+ if(OPENJPEG_FOUND)
