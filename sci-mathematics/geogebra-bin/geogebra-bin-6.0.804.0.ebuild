@@ -14,7 +14,7 @@ SRC_URI="https://download.geogebra.org/installers/$(ver_cut 1-2)/GeoGebra-Linux6
 
 LICENSE="Geogebra CC-BY-NC-SA-3.0 GPL-3 Apache-2.0 BSD-2 BSD BSD-4 colt EPL-1.0 icu LGPL-2.1 LGPL-2.1+ MIT W3C || ( GPL-2 CDDL )"
 SLOT="0"
-KEYWORDS="~amd64 -*"
+KEYWORDS="-* ~amd64"
 
 RDEPEND="
 	x11-libs/libxshmfence
