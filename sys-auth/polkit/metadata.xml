@@ -5,7 +5,7 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="daemon">Build polkitd in addition to libpolkit. Those using <pkg>sys-apps/dbus-broker</pkg> may wish to disable this flag.</flag>
+		<flag name="daemon">Build polkitd in addition to libpolkit.</flag>
 		<flag name="duktape">Use <pkg>dev-lang/duktape</pkg> instead of <pkg>dev-lang/spidermonkey</pkg> as JavaScript engine</flag>
 		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
 	</use>
