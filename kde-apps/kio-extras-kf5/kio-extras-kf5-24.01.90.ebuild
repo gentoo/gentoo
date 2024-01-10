@@ -7,7 +7,7 @@ ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
 KDE_ORG_NAME="kio-extras"
 KDE_ORG_TAR_PN="kio-extras-kf5"
-KFMIN=5.106.0
+KFMIN=5.113.0
 QTMIN=5.15.9
 inherit ecm gear.kde.org
 
@@ -73,8 +73,6 @@ RDEPEND="${DEPEND}
 	kf6compat? ( kde-apps/kio-extras:6 )
 "
 BDEPEND="man? ( dev-util/gperf )"
-
-PATCHES=( "${FILESDIR}/${P}-activities-optional.patch" )
 
 src_configure() {
 	local mycmakeargs=(
