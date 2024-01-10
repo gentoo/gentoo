@@ -103,6 +103,7 @@ src_configure() {
 		-Dplatforms=''
 
 		-Dglx=disabled
+		-Dlibunwind=disabled
 		-Dzstd=disabled
 
 		$(meson_feature unwind libunwind)
