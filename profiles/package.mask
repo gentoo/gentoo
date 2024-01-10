@@ -511,7 +511,7 @@ dev-python/ruamel-std-pathlib
 ~kde-apps/kio-extras-24.01.90
 ~kde-apps/kio-extras-kf5-24.01.90
 ~kde-apps/libkexiv2-24.01.90
-~kde-apps/spectacle-24.01.85
+~kde-apps/spectacle-24.01.90
 ~kde-misc/kio-fuse-5.1.0
 ~dev-libs/appstream-1.0.1
 ~dev-libs/kdiagram-3.0.1
