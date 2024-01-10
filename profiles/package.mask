@@ -221,8 +221,8 @@ app-containers/go-secbench
 # Removal on 2024-01-17.  Bug #920271.
 dev-python/ruamel-std-pathlib
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-12-20)
-# KDE Plasma 6 Beta 2 (5.91) and Frameworks 6 RC1 (5.248) mask
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-10)
+# KDE Plasma 6 RC1 (5.92) and Frameworks 6 RC1 (5.248) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
 # Do *not* attempt to mix with live ebuilds from kde overlay.
 # To install alongside KDE Frameworks 5:
@@ -240,8 +240,67 @@ dev-python/ruamel-std-pathlib
 #   - file a bug after making sure none exists yet for your issue
 # - runtime bugs: https://community.kde.org/Plasma/Plasma_6#How_to_use/test_it
 #   - work with upstream and help test patches using /etc/portage/patches
-# - trying to reproduce issues on master branch currently requires to go fully
-#   live. Plasma 5.91.0 will not build with Frameworks >=5.248.
+~kde-plasma/bluedevil-5.92.0
+~kde-plasma/breeze-5.92.0
+~kde-plasma/breeze-grub-5.92.0
+~kde-plasma/breeze-gtk-5.92.0
+~kde-plasma/breeze-plymouth-5.92.0
+~kde-plasma/discover-5.92.0
+~kde-plasma/drkonqi-5.92.0
+~kde-plasma/flatpak-kcm-5.92.0
+~kde-plasma/kactivitymanagerd-5.92.0
+~kde-plasma/kde-cli-tools-5.92.0
+~kde-plasma/kde-gtk-config-5.92.0
+~kde-plasma/kdecoration-5.92.0
+~kde-plasma/kdeplasma-addons-5.92.0
+~kde-plasma/kgamma-5.92.0
+~kde-plasma/kglobalacceld-5.92.0
+~kde-plasma/kinfocenter-5.92.0
+~kde-plasma/kmenuedit-5.92.0
+~kde-plasma/kpipewire-5.92.0
+~kde-plasma/kscreen-5.92.0
+~kde-plasma/kscreenlocker-5.92.0
+~kde-plasma/ksshaskpass-5.92.0
+~kde-plasma/ksystemstats-5.92.0
+~kde-plasma/kwallet-pam-5.92.0
+~kde-plasma/kwayland-5.92.0
+~kde-plasma/kwayland-integration-5.92.0
+~kde-plasma/kwin-5.92.0
+~kde-plasma/kwrited-5.92.0
+~kde-plasma/layer-shell-qt-5.92.0
+~kde-plasma/libkscreen-5.92.0
+~kde-plasma/libksysguard-5.92.0
+~kde-plasma/libplasma-5.92.0
+~kde-plasma/milou-5.92.0
+~kde-plasma/ocean-sound-theme-5.92.0
+~kde-plasma/oxygen-5.92.0
+~kde-plasma/oxygen-sounds-5.92.0
+~kde-plasma/plasma-activities-5.92.0
+~kde-plasma/plasma-activities-stats-5.92.0
+~kde-plasma/plasma-browser-integration-5.92.0
+~kde-plasma/plasma-desktop-5.92.0
+~kde-plasma/plasma-disks-5.92.0
+~kde-plasma/plasma-firewall-5.92.0
+~kde-plasma/plasma-integration-5.92.0
+~kde-plasma/plasma-meta-5.92.0
+~kde-plasma/plasma-nm-5.92.0
+~kde-plasma/plasma-pa-5.92.0
+~kde-plasma/plasma-sdk-5.92.0
+~kde-plasma/plasma-systemmonitor-5.92.0
+~kde-plasma/plasma-thunderbolt-5.92.0
+~kde-plasma/plasma-vault-5.92.0
+~kde-plasma/plasma-welcome-5.92.0
+~kde-plasma/plasma-workspace-5.92.0
+~kde-plasma/plasma-workspace-wallpapers-5.92.0
+~kde-plasma/plasma5support-5.92.0
+~kde-plasma/plymouth-kcm-5.92.0
+~kde-plasma/polkit-kde-agent-5.92.0
+~kde-plasma/powerdevil-5.92.0
+~kde-plasma/print-manager-5.92.0
+~kde-plasma/sddm-kcm-5.92.0
+~kde-plasma/systemsettings-5.92.0
+~kde-plasma/wacomtablet-5.92.0
+~kde-plasma/xdg-desktop-portal-kde-5.92.0
 ~kde-plasma/bluedevil-5.91.0
 ~kde-plasma/breeze-5.91.0
 ~kde-plasma/breeze-grub-5.91.0
