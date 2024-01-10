@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
-KFMIN=5.247.0
+KFMIN=5.248.0
 QTMIN=6.6.0
 inherit ecm gear.kde.org
 
@@ -16,8 +16,6 @@ LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64"
 IUSE="activities ios +man mtp openexr phonon +sftp taglib X"
-# TODO: activities: collides with Plasma-5, plus:
-# https://invent.kde.org/network/kio-extras/-/merge_requests/320
 # TODO: samba (net-libs/kdsoap packaging issue w/ upstream)
 # disabled upstream: nfs
 
@@ -79,8 +77,6 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kded-${KFMIN}:6
 "
 BDEPEND="man? ( dev-util/gperf )"
-
-PATCHES=( "${FILESDIR}/${P}-activities-optional.patch" )
 
 src_configure() {
 	local mycmakeargs=(
