@@ -10,7 +10,9 @@
 	</upstream>
 	<use>
 		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
+		<flag name="media">Enable sound support for animations via <pkg>media-libs/mlt</pkg></flag>
 		<flag name="mypaint-brush-engine">Enable MyPaint brush engine support <pkg>media-libs/libmypaint</pkg></flag>
 		<flag name="qtmedia">Enable sound support for animations via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="xsimd">Enable usage of SIMD instructions via <pkg>dev-cpp/xsimd</pkg></flag>
 	</use>
 </pkgmetadata>
