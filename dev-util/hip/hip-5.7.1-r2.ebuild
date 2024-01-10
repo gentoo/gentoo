@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,9 +60,10 @@ hip_test_wrapper() {
 }
 
 src_prepare() {
-	# hipamd is itself built by cmake, and should never provide a
-	# FindHIP.cmake module.
-	rm -r "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP* || die
+	# Set HIP and HIP Clang paths directly, don't search using heuristics
+	sed -e "s:# Search for HIP installation:set(HIP_ROOT_DIR \"${EPREFIX}/usr\"):" \
+		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d ${LLVM_MAX_SLOT})/bin\"):" \
+	    -i "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP.cmake || die
 
 	# https://github.com/ROCm-Developer-Tools/HIP/commit/405d029422ba8bb6be5a233d5eebedd2ad2e8bd3
 	# https://github.com/ROCm-Developer-Tools/clr/commit/ab6d34ae773f4d151e04170c0f4e46c1135ddf3e
