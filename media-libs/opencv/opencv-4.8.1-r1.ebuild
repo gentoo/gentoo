@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cuda java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
+inherit cuda java-pkg-opt-2 java-ant-2 cmake-multilib flag-o-matic python-r1 toolchain-funcs
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
@@ -351,6 +351,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #919101 and https://github.com/opencv/opencv/issues/19020
+	filter-lto
+
 	# please dont sort here, order is the same as in CMakeLists.txt
 	local mycmakeargs=(
 		-DMIN_VER_CMAKE=3.26
@@ -484,7 +487,6 @@ multilib_src_configure() {
 		-DENABLE_INSTRUMENTATION=OFF
 		-DGENERATE_ABI_DESCRIPTOR=OFF
 		-DDOWNLOAD_EXTERNAL_TEST_DATA=OFF
-		# -DENABLE_LTO=$(usex lto)
 	# ===================================================
 	# things we want to be hard off or not yet figured out
 	# ===================================================
