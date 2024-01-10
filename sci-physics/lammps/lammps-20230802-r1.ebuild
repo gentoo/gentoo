@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -132,7 +132,7 @@ src_configure() {
 	if use python; then
 		pushd ../python || die
 		distutils-r1_src_configure
-		popd
+		popd || die
 	fi
 }
 
@@ -141,7 +141,7 @@ src_compile() {
 	if use python; then
 		pushd ../python || die
 		distutils-r1_src_compile
-		popd
+		popd || die
 	fi
 }
 
@@ -150,7 +150,7 @@ src_test() {
 	if use python; then
 		pushd ../python || die
 		distutils-r1_src_test
-		popd
+		popd || die
 	fi
 }
 
@@ -159,7 +159,7 @@ src_install() {
 	if use python; then
 		pushd ../python || die
 		distutils-r1_src_install
-		popd
+		popd || die
 	fi
 
 	if use examples; then
