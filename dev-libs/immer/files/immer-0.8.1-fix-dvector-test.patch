@@ -1,0 +1,16 @@
+Without this array include, compilation of the dvektor test will fail.
+This has been fixed upstream in:
+https://github.com/arximboldi/immer/commit/f381e4988c1562f0f64533146c9b9cb7c0823b3e
+
+diff --git a/immer/experimental/detail/dvektor_impl.hpp b/immer/experimental/detail/dvektor_impl.hpp
+index 4f69733..7a21f1f 100644
+--- a/immer/experimental/detail/dvektor_impl.hpp
++++ b/immer/experimental/detail/dvektor_impl.hpp
+@@ -16,6 +16,7 @@
+ #include <boost/iterator/iterator_facade.hpp>
+ #include <boost/smart_ptr/intrusive_ref_counter.hpp>
+ 
++#include <array>
+ #include <cassert>
+ #include <cstddef>
+ #include <limits>
