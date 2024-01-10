@@ -23,7 +23,7 @@ SLOT="0"
 BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
-COMMON_DEPEND="
+DEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,opengl,sql,widgets,xml]
 	dev-qt/qtdeclarative:6[widgets]
 	dev-qt/qtmultimedia:6
@@ -31,9 +31,7 @@ COMMON_DEPEND="
 	media-video/ffmpeg
 "
 
-DEPEND="${COMMON_DEPEND}"
-
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	virtual/jack
 "
 
