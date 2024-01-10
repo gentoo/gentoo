@@ -43,6 +43,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.10-000-Fix-multilib.patch
+	"${FILESDIR}"/${PN}-10.43-fix-loong-sljit.patch
 )
 
 src_prepare() {
