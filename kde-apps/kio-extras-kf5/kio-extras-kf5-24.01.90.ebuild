@@ -59,7 +59,10 @@ DEPEND="
 	nfs? ( net-libs/libtirpc:= )
 	openexr? ( media-libs/openexr:= )
 	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
-	samba? ( net-fs/samba[client] )
+	samba? (
+		net-fs/samba[client]
+		net-libs/kdsoap:=[qt5(+)]
+	)
 	sftp? ( net-libs/libssh:=[sftp] )
 	taglib? ( >=media-libs/taglib-1.11.1 )
 	X? (
