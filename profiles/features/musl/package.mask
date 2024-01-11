@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2024-01-11)
+# Fails to compile: https://bugs.gentoo.org/908961
+=app-editors/vim-core-9.0.2092
+=app-editors/vim-9.0.2092
+
 # Maciej Barć <xgqt@gentoo.org> (2024-01-06)
 # Binary package, which is compiled against glibc
 app-office/joplin-desktop
