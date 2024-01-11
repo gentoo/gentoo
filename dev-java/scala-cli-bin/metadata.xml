@@ -6,6 +6,7 @@
 		<name>Florian Schmaus</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://github.com/VirtusLab/scala-cli/releases</changelog>
 		<remote-id type="github">VirtusLab/scala-cli</remote-id>
 		<bugs-to>https://github.com/VirtusLab/scala-cli/issues</bugs-to>
 	</upstream>
