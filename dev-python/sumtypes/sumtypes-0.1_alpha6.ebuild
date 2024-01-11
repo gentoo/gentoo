@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
