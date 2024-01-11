@@ -1,0 +1,30 @@
+Backport of https://github.com/fcitx/libime-jyutping/commit/994675817f7b027466f4a9d19098cd4f6cfc94f4
+
+Backport upstream commit 59ae4a3 to fix enable doc
+
+
+--- /dev/null
++++ b/.codedocs
+@@ -0,0 +1,15 @@
++INPUT                  = src/libime
++DOXYFILE_ENCODING      = UTF-8
++PROJECT_NAME           = libime
++OUTPUT_LANGUAGE        = English
++SOURCE_BROWSER         = YES
++FILE_PATTERNS          =
++QT_AUTOBRIEF           = YES
++RECURSIVE              = YES
++STRIP_CODE_COMMENTS    = NO
++EXCLUDE_PATTERNS       = "*/*_p.h" "*/src/libime/kenlm/*"
++ENABLE_PREPROCESSING   = YES
++MACRO_EXPANSION        = YES
++
++STRIP_FROM_PATH        = src
++STRIP_FROM_INC_PATH    = src
+--- /dev/null
++++ b/Doxyfile.in
+@@ -0,0 +1,4 @@
++OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc/
++PROJECT_NUMBER         = @FCITX_VERSION@
++
++@FCITX_DOXYGEN_CONFIGURATION@
