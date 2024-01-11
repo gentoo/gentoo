@@ -29,7 +29,7 @@ SRC_URI+="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm ~loong ~riscv"
 
 RDEPEND="
 	dev-vcs/git
