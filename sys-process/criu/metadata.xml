@@ -10,6 +10,7 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
+		<flag name="filecaps">Install the criu binary with file capabilities to allow for rootless CRIU</flag>
 		<flag name="setproctitle">Use <pkg>dev-libs/libbsd</pkg> to make process titles of service workers to be more verbose</flag>
 		<flag name="bpf">Add support for BPF programs via <pkg>dev-libs/libbpf</pkg></flag>
 		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg></flag>
