@@ -14,7 +14,10 @@ SLOT="0/6"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
 # N.B. Tests need some features enabled:
-REQUIRED_USE="test? ( jpeg png tiff zlib )"
+REQUIRED_USE="
+	tiff? ( jpeg )
+	test? ( jpeg png tiff zlib )
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -25,11 +28,11 @@ RDEPEND="
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	)
-	tiff? ( media-libs/tiff:=[jpeg,${MULTILIB_USEDEP}] )
+	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	test? ( media-libs/tiff[zlib] )"
+	test? ( media-libs/tiff[jpeg,zlib] )"
 
 DOCS=( README version-notes )
 
