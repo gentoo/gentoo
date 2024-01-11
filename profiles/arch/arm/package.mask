@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
@@ -9,7 +9,7 @@ dev-qt/qtwebview
 dev-python/PyQt6-WebEngine
 dev-python/PyQtWebEngine
 app-admin/calamares
-app-doc/zeal
+app-text/zeal
 app-editors/ghostwriter
 app-editors/retext
 app-misc/anki
