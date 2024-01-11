@@ -110,5 +110,5 @@ python_test() {
 	)
 
 	local EPYTEST_XDIST=1
-	epytest setuptools
+	epytest -o tmp_path_retention_policy=all setuptools
 }
