@@ -62,7 +62,7 @@ BDEPEND="
 	virtual/libiconv
 	virtual/libintl
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 PDEPEND="
 	|| (

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,7 +49,7 @@ BDEPEND="${PYTHON_DEPS}
 	abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 # The PATENTS file is required to be distributed with this package, bug #682214

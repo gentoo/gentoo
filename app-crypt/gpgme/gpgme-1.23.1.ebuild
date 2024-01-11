@@ -52,7 +52,7 @@ DEPEND="
 		qt5? ( dev-qt/qttest:5 )
 	)
 "
-#doc? ( app-doc/doxygen[dot] )
+#doc? ( app-text/doxygen[dot] )
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]

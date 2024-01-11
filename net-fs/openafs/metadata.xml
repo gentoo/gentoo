@@ -6,7 +6,7 @@
 	<name>Andrew Savchenko</name>
 </maintainer>
 <use>
-	<flag name="apidoc">Build API documentation using <pkg>app-doc/doxygen</pkg>.
+	<flag name="apidoc">Build API documentation using <pkg>app-text/doxygen</pkg>.
 	May take a *long* time to build.</flag>
 	<flag name="bitmap-later">Enable fast startup of file server by not
 	reading bitmap till needed.</flag>

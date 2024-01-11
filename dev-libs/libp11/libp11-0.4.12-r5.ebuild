@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? ( >=dev-libs/opensc-0.23.0-r2 )
 "
 

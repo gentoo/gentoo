@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-libs/boost
 	test? ( dev-util/cppunit[${MULTILIB_USEDEP}] )"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 src_prepare() {
 	default

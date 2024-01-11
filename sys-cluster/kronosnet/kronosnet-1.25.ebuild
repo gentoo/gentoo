@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	doc? (
 		>=sys-cluster/libqb-2.0.0
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 	)"
 
 PATCHES=(

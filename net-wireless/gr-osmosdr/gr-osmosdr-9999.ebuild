@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="
 		$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
-		doc? ( app-doc/doxygen )
+		doc? ( app-text/doxygen )
 	"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

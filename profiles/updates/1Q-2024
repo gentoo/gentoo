@@ -1,2 +1,3 @@
 move dev-python/pysol_cards dev-python/pysol-cards
 move app-doc/NaturalDocs app-text/NaturalDocs
+move app-doc/doxygen app-text/doxygen

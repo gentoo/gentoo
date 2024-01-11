@@ -864,7 +864,7 @@ media-libs/libsdl2 custom-cflags
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-05-19)
 # Fails to build, haven't had time to debug
-app-doc/doxygen sqlite
+app-text/doxygen sqlite
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)

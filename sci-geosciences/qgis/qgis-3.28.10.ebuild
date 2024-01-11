@@ -107,7 +107,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
 	app-alternatives/yacc
 	app-alternatives/lex
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},testlib]

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ DEPEND="dev-libs/apr:1=
 	mlogc? ( net-misc/curl )
 	pcre2? ( dev-libs/libpcre2:= )
 	www-servers/apache[apache2_modules_unique_id]"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 RDEPEND="${DEPEND}
 	geoip? ( dev-libs/geoip )
 	mlogc? ( dev-lang/perl )"

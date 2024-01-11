@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 PATCHES=(

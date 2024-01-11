@@ -88,7 +88,7 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 	)
 	gtk-doc? ( dev-util/gtk-doc )

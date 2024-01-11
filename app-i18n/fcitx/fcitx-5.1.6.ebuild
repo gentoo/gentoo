@@ -31,7 +31,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango[X?]
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		dev-texlive/texlive-fontutils
 	)
 	emoji? ( sys-libs/zlib )

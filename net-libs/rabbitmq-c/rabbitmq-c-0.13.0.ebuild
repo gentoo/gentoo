@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="ssl? ( dev-libs/openssl:0= )
 	tools? ( dev-libs/popt )"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )
+BDEPEND="doc? ( app-text/doxygen )
 	tools? ( app-text/xmlto )"
 
 PATCHES=(

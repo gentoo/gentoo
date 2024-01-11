@@ -121,7 +121,7 @@ DEPEND="${RDEPEND}
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	doc? (
-		>=app-doc/doxygen-1.5.7.1
+		>=app-text/doxygen-1.5.7.1
 		<dev-libs/mathjax-3
 	)
 	grc? ( x11-misc/xdg-utils )

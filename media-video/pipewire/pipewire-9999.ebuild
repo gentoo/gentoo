@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,12 +89,12 @@ BDEPEND="
 	dbus? ( dev-util/gdbus-codegen )
 	doc? (
 		${PYTHON_DEPS}
-		>=app-doc/doxygen-1.9.8
+		>=app-text/doxygen-1.9.8
 		media-gfx/graphviz
 	)
 	man? (
 		${PYTHON_DEPS}
-		>=app-doc/doxygen-1.9.8
+		>=app-text/doxygen-1.9.8
 	)
 "
 # * While udev could technically be optional, it's needed for a number of options,

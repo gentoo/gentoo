@@ -14,7 +14,7 @@ IUSE="doc static-libs"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 DEPEND=">=dev-libs/glib-2.16:2"
 RDEPEND="${DEPEND}"

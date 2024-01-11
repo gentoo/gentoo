@@ -29,7 +29,7 @@ REQUIRED_USE="
 "
 BDEPEND="
 	virtual/pkgconfig
-	apidoc? ( app-doc/doxygen[dot] )
+	apidoc? ( app-text/doxygen[dot] )
 "
 DEPEND="
 	caps? ( sys-libs/libcap )
