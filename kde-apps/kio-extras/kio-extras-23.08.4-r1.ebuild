@@ -59,8 +59,8 @@ DEPEND="
 	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 	samba? (
 		net-fs/samba[client]
-		net-libs/kdsoap:=
-		net-libs/kdsoap-ws-discovery-client
+		net-libs/kdsoap:=[qt5(+)]
+		<net-libs/kdsoap-ws-discovery-client-0.3.0
 	)
 	sftp? ( net-libs/libssh:=[sftp] )
 	taglib? ( >=media-libs/taglib-1.11.1 )
