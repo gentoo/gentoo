@@ -33,8 +33,9 @@ LIB_DEPEND="
 	zstd? ( app-arch/zstd:=[static-libs(+)] )
 	sys-libs/zlib:=[static-libs(+)]
 "
-
+# which: https://github.com/confluentinc/librdkafka/pull/4353
 BDEPEND="
+	sys-apps/which
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 "
