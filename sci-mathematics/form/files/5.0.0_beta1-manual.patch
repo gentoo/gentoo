@@ -1,8 +1,21 @@
-Только в form-5.0.0-beta.1/doc/manual: auto
-diff -r -U1 form-5.0.0-beta.1.orig/doc/manual/manual.tex.in form-5.0.0-beta.1/doc/manual/manual.tex.in
---- form-5.0.0-beta.1.orig/doc/manual/manual.tex.in	2023-04-11 17:18:30.000000000 +0700
-+++ form-5.0.0-beta.1/doc/manual/manual.tex.in	2024-01-10 17:41:07.990916066 +0700
+Только в form-5.0.0-beta.1/doc/devref: auto
+diff -r -U3 form-5.0.0-beta.1.orig/doc/devref/devref.tex.in form-5.0.0-beta.1/doc/devref/devref.tex.in
+--- form-5.0.0-beta.1.orig/doc/devref/devref.tex.in	2023-04-11 17:18:30.000000000 +0700
++++ form-5.0.0-beta.1/doc/devref/devref.tex.in	2024-01-11 16:56:42.853696984 +0700
 @@ -1,6 +1,5 @@
+-\input{version.tex}
+-\def\formversiondesc{\repoversiondesc}
+-\def\formdate{\repodate}
++\def\formversiondesc{5.0}
++\def\formdate{\today}
+ %begin{latexonly}  % To avoid latex2html/latex2html#37
+ \providecommand{\formversiondesc}{@VERSION@}
+ \providecommand{\repodate}{\today}
+Только в form-5.0.0-beta.1/doc/manual: auto
+diff -r -U3 form-5.0.0-beta.1.orig/doc/manual/manual.tex.in form-5.0.0-beta.1/doc/manual/manual.tex.in
+--- form-5.0.0-beta.1.orig/doc/manual/manual.tex.in	2023-04-11 17:18:30.000000000 +0700
++++ form-5.0.0-beta.1/doc/manual/manual.tex.in	2024-01-11 16:56:11.243697059 +0700
+@@ -1,8 +1,7 @@
 -\input{version.tex}
 -\def\formmajorversion{\repomajorversion}
 -\def\formminorversion{\repominorversion}
@@ -13,3 +26,5 @@ diff -r -U1 form-5.0.0-beta.1.orig/doc/manual/manual.tex.in form-5.0.0-beta.1/do
 +\def\formversiondesc{5.0}
 +\def\formdate{\today}
  %begin{latexonly}  % To avoid latex2html/latex2html#37
+ \providecommand{\formversiondesc}{@VERSION@}
+ \providecommand{\repodate}{\today}
