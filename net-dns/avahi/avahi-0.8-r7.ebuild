@@ -62,7 +62,7 @@ RDEPEND="
 BDEPEND="
 	dev-util/glib-utils
 	doc? ( app-text/doxygen )
-	app-doc/xmltoman
+	app-text/xmltoman
 	sys-devel/gettext
 	virtual/pkgconfig
 "

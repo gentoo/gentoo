@@ -3,3 +3,4 @@ move app-doc/NaturalDocs app-text/NaturalDocs
 move app-doc/doxygen app-text/doxygen
 move app-doc/halibut app-text/halibut
 move app-doc/psmark app-text/psmark
+move app-doc/xmltoman app-text/xmltoman
