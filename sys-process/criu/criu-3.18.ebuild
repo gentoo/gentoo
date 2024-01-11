@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit toolchain-funcs linux-info distutils-r1
+inherit fcaps toolchain-funcs linux-info distutils-r1
 
 DESCRIPTION="utility to checkpoint/restore a process tree"
 HOMEPAGE="
@@ -59,6 +59,10 @@ PATCHES=(
 	"${FILESDIR}/2.3/criu-2.3-no-git.patch"
 	"${FILESDIR}/criu-3.12-automagic-libbsd.patch"
 	"${FILESDIR}/criu-3.18-buildsystem.patch"
+)
+
+FILECAPS=(
+	cap_checkpoint_restore usr/bin/criu
 )
 
 criu_arch() {
