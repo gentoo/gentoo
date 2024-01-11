@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,7 @@ DEPEND="
 		>=dev-python/pygame_sdl2-8.1.1[${PYTHON_USEDEP}]
 		>=dev-lang/python-exec-0.3[${PYTHON_USEDEP}]
 		dev-python/ecdsa[${PYTHON_USEDEP}]
+		dev-python/future[${PYTHON_USEDEP}]
 	')
 	media-libs/glew:0
 	media-libs/libpng:0
