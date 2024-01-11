@@ -15,8 +15,7 @@ HOMEPAGE="https://invent.kde.org/network/kio-extras"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="activities ios +man mtp openexr phonon +sftp taglib X"
-# TODO: samba (net-libs/kdsoap packaging issue w/ upstream)
+IUSE="activities ios +man mtp openexr phonon samba +sftp taglib X"
 # disabled upstream: nfs
 
 # requires running Plasma environment
@@ -57,6 +56,11 @@ DEPEND="
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	openexr? ( media-libs/openexr:= )
 	phonon? ( >=media-libs/phonon-4.12.0[qt6] )
+	samba? (
+		net-fs/samba[client]
+		>=net-libs/kdsoap-2.2.0:=[qt6]
+		>=net-libs/kdsoap-ws-discovery-client-0.3.0
+	)
 	sftp? ( net-libs/libssh:=[sftp] )
 	taglib? ( >=media-libs/taglib-1.11.1 )
 	X? (
@@ -65,11 +69,6 @@ DEPEND="
 	)
 "
 # 	nfs? ( net-libs/libtirpc:= )
-# 	samba? (
-# 		net-fs/samba[client]
-# 		>=net-libs/kdsoap-2.1.1-r1:=
-# 		>=net-libs/kdsoap-ws-discovery-client-0.3.0
-# 	)
 RDEPEND="${DEPEND}
 	!<kde-apps/kio-extras-23.08.5-r100:5
 	!kde-apps/kio-extras-kf5:5[-kf6compat]
@@ -88,7 +87,7 @@ src_configure() {
 # 		$(cmake_use_find_package nfs TIRPC)
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package phonon Phonon4Qt6)
-		-DCMAKE_DISABLE_FIND_PACKAGE_Samba=ON
+		$(cmake_use_find_package samba Samba)
 		$(cmake_use_find_package sftp libssh)
 		$(cmake_use_find_package taglib Taglib)
 		-DWITHOUT_X11=$(usex !X)
