@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-01-11)
+# Breaks random test suites using pytest-xdist.
+=dev-python/pytest-asyncio-0.23.4_alpha1
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-01-08)
 # Masked for removal due to licensing issues and possible GPL infringement.
 # Removal: 2024-02-07.  Bug #766129.
