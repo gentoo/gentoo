@@ -4,3 +4,4 @@ move app-doc/doxygen app-text/doxygen
 move app-doc/halibut app-text/halibut
 move app-doc/psmark app-text/psmark
 move app-doc/xmltoman app-text/xmltoman
+move app-doc/zeal app-text/zeal
