@@ -16,7 +16,6 @@ EGIT_SUBMODULES=( waf-autooptions waftoolchainflags siginfo )
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="dbus"
 REQUIRED_USE="dbus? ( ${PYTHON_REQUIRED_USE} )"
 
