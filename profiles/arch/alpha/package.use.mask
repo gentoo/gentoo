@@ -95,7 +95,7 @@ net-misc/openvswitch unwind
 net-misc/openntpd constraints
 
 # Matthew Smith <matthew@gentoo.org> (2022-07-10)
-# Needs unkeyworded app-doc/halibut
+# Needs unkeyworded app-text/halibut
 >=net-misc/putty-0.77 doc
 
 # Sam James <sam@gentoo.org> (2022-04-29)
