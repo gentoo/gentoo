@@ -42,7 +42,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-text/doxygen[dot]
-		app-doc/xmltoman
+		app-text/xmltoman
 		app-text/htmldoc
 		dev-libs/libxslt
 	)

@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Simple scripts for converting xml to groff or html"
 HOMEPAGE="https://sourceforge.net/projects/xmltoman/"
-SRC_URI="https://github.com/atsb/xmltoman/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -13,12 +13,8 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 
 
 RDEPEND="
 	dev-lang/perl
-	dev-perl/XML-Parser
-"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-generate-man-pages.patch
-)
+	dev-perl/XML-Parser"
+BDEPEND="${RDEPEND}"
 
 src_install() {
 	# 'make install' requires GNU install, upstream is dead and carrying
