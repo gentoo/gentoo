@@ -60,7 +60,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.38.0-meson-Support-elogind.patch
+	#WIP "${FILESDIR}"/${PN}-3.38.0-meson-Support-elogind.patch
 )
 
 src_prepare() {
@@ -74,14 +74,14 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Ddeprecation_flags=false
-		$(meson_use elogind)
+		#WIP $(meson_use elogind)
 		-Dsession_selector=true # gnome-custom-session
-		$(meson_use systemd)
-		-Dsystemd_session=$(usex systemd default disable)
-		$(meson_use systemd systemd_journal)
+		#WIP $(meson_use systemd)
+		#WIP -Dsystemd_session=$(usex systemd default disable)
+		#WIP $(meson_use systemd systemd_journal)
 		$(meson_use doc docbook)
 		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
-		-Dconsolekit=false
+		#WIP -Dconsolekit=false
 		-Dman=true
 	)
 	meson_src_configure
