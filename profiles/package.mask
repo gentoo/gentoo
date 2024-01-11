@@ -403,6 +403,7 @@ dev-python/ruamel-std-pathlib
 ~media-libs/phonon-vlc-0.12.0
 ~media-libs/pulseaudio-qt-1.4.0
 ~net-libs/kdsoap-2.2.0
+~net-libs/kdsoap-ws-discovery-client-0.3.0
 ~sys-auth/polkit-qt-0.175.0
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-17)
