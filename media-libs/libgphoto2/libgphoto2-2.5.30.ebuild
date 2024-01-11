@@ -68,7 +68,7 @@ BDEPEND="
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.1
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 MULTILIB_CHOST_TOOLS=(

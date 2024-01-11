@@ -23,7 +23,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	gtk-doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		dev-lang/perl
 		dev-libs/libxslt
 	)

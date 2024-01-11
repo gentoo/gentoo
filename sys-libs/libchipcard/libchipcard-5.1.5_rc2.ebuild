@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="doc examples"
 
 BDEPEND="
 	sys-devel/gettext
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 DEPEND="
 	>=sys-apps/pcsc-lite-1.6.2

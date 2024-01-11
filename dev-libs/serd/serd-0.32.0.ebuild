@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		dev-python/sphinx
 		dev-python/sphinx-lv2-theme
 		dev-python/sphinxygen

@@ -40,7 +40,7 @@ IUSE="debug deep-sky doc gps +lens-distortion media nls qt6 +scripting +show-my-
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	doc? ( app-doc/doxygen[dot] )
+	doc? ( app-text/doxygen[dot] )
 	nls? (
 		!qt6? ( dev-qt/linguist-tools:5 )
 		qt6? ( dev-qt/qttools:6[linguist] )

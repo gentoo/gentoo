@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -153,7 +153,7 @@ dev-libs/check subunit
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-libs/xapian is not stable on hppa
-app-doc/doxygen doxysearch
+app-text/doxygen doxysearch
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # x11-base/xorg-server not stable.

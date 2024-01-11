@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	doc? (
 		>=sys-cluster/libqb-2.0.0
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 	)"
 
 PATCHES=(

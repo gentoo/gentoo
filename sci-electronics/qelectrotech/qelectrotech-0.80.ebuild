@@ -1,4 +1,4 @@
-# Copyright 2001-2023 Gentoo Authors
+# Copyright 2001-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ IUSE="doc"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 RDEPEND="
 	dev-db/sqlite:3

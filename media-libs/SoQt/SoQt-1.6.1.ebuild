@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 S="${WORKDIR}/soqt"

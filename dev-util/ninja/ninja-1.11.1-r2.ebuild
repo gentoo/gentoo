@@ -1,4 +1,4 @@
-# Copyright 2012-2023 Gentoo Authors
+# Copyright 2012-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ BDEPEND="
 	dev-util/re2c
 	doc? (
 		app-text/asciidoc
-		app-doc/doxygen
+		app-text/doxygen
 		dev-libs/libxslt
 		media-gfx/graphviz
 	)

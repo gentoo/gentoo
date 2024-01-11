@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="
 		dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen media-gfx/graphviz )
+	doc? ( app-text/doxygen media-gfx/graphviz )
 	test? ( dev-lang/perl )"
 
 enable_mbedtls_option() {

@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils
 	test? ( dev-libs/check )
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 	)"
 
 DOCS=( ChangeLog README.markdown )

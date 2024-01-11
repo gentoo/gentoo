@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		virtual/latex-base
 	)
 	tutorials? (

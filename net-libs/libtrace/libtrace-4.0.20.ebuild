@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="
 	numa? ( sys-process/numactl )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-doc/doxygen[dot]
+	app-text/doxygen[dot]
 	sys-devel/flex
 	virtual/os-headers
 	virtual/pkgconfig
@@ -39,7 +39,7 @@ src_prepare() {
 	eautoreconf
 
 	# Comment out FILE_PATTERNS definition (bug #706230)
-	if has_version ~app-doc/doxygen-1.8.16; then
+	if has_version ~app-text/doxygen-1.8.16; then
 		sed -i -e '/^FILE_PATTERNS/s|^|#|g' docs/${PN}.doxygen.in || die
 	fi
 

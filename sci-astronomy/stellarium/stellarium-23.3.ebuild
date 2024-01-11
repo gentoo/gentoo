@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ IUSE="debug deep-sky doc gps media nls qt6 +scripting +show-my-sky stars telesco
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	doc? ( app-doc/doxygen[dot] )
+	doc? ( app-text/doxygen[dot] )
 	nls? (
 		!qt6? ( dev-qt/linguist-tools:5 )
 		qt6? ( dev-qt/qttools:6[linguist] )

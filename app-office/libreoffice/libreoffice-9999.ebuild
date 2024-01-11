@@ -278,7 +278,7 @@ BDEPEND="
 				=sys-devel/lld-15*	)
 		)
 	)
-	odk? ( >=app-doc/doxygen-1.8.4 )
+	odk? ( >=app-text/doxygen-1.8.4 )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"

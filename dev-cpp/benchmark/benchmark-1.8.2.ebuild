@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="debug doc test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-doc/doxygen )
+BDEPEND="doc? ( app-text/doxygen )
 	test? ( >=dev-cpp/gtest-1.11.0 )"
 
 src_configure() {

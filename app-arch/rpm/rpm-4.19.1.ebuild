@@ -53,7 +53,7 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="

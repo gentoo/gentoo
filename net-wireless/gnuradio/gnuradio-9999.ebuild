@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -121,7 +121,7 @@ DEPEND="${RDEPEND}
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	doc? (
-		>=app-doc/doxygen-1.5.7.1
+		>=app-text/doxygen-1.5.7.1
 		<dev-libs/mathjax-3
 	)
 	grc? ( x11-misc/xdg-utils )

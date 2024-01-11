@@ -27,7 +27,7 @@ DEPEND="
 	java? ( >=virtual/jdk-1.8 )
 "
 BDEPEND="
-	doc? ( app-doc/doxygen[dot] )
+	doc? ( app-text/doxygen[dot] )
 "
 
 CMAKE_BUILD_TYPE=RelWithDebInfo

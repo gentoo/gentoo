@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		|| (
 			( dev-qt/qttools:6[assistant,qdoc] )
 			(

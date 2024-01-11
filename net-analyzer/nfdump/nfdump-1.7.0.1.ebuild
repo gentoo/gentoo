@@ -31,7 +31,7 @@ BDEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 	)
 "
