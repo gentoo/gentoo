@@ -369,7 +369,7 @@ multilib_src_configure() {
 		-DENABLE_DOWNLOAD=yes
 		-DOPENCV_ENABLE_NONFREE=$(usex non-free)
 		-DWITH_QUIRC=OFF # Do not have dependencies
-		-DWITH_FLATBUFFERS=$(usex contribdnn)
+		-DWITH_FLATBUFFERS=$(multilib_native_usex contribdnn)
 		-DWITH_1394=$(usex ieee1394)
 	#	-DWITH_AVFOUNDATION=OFF # IOS
 		-DWITH_VTK=$(multilib_native_usex vtk)
@@ -545,7 +545,7 @@ multilib_src_configure() {
 	# ===================================================
 	if use contrib; then
 		mycmakeargs+=(
-			-DBUILD_opencv_dnn=$(usex contribdnn ON OFF)
+			-DBUILD_opencv_dnn=$(multilib_native_usex contribdnn ON OFF)
 			-DBUILD_opencv_xfeatures2d=$(usex contribxfeatures2d ON OFF)
 			-DBUILD_opencv_cvv=$(usex contribcvv ON OFF)
 			-DBUILD_opencv_hdf=$(multilib_native_usex contribhdf ON OFF)
@@ -637,6 +637,155 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
+	if use abi_x86_64 && use abi_x86_32; then
+		MULTILIB_WRAPPED_HEADERS=(
+			# [opencv4]
+			/usr/include/opencv4/opencv2/cvconfig.h
+			/usr/include/opencv4/opencv2/opencv_modules.hpp
+
+			/usr/include/opencv4/opencv2/core_detect.hpp
+
+			/usr/include/opencv4/opencv2/cudaarithm.hpp
+			/usr/include/opencv4/opencv2/cudabgsegm.hpp
+			/usr/include/opencv4/opencv2/cudacodec.hpp
+			/usr/include/opencv4/opencv2/cudafeatures2d.hpp
+			/usr/include/opencv4/opencv2/cudafilters.hpp
+			/usr/include/opencv4/opencv2/cudaimgproc.hpp
+			/usr/include/opencv4/opencv2/cudalegacy.hpp
+			/usr/include/opencv4/opencv2/cudalegacy/NCV.hpp
+			/usr/include/opencv4/opencv2/cudalegacy/NCVBroxOpticalFlow.hpp
+			/usr/include/opencv4/opencv2/cudalegacy/NCVHaarObjectDetection.hpp
+			/usr/include/opencv4/opencv2/cudalegacy/NCVPyramid.hpp
+			/usr/include/opencv4/opencv2/cudalegacy/NPP_staging.hpp
+			/usr/include/opencv4/opencv2/cudaobjdetect.hpp
+			/usr/include/opencv4/opencv2/cudaoptflow.hpp
+			/usr/include/opencv4/opencv2/cudastereo.hpp
+			/usr/include/opencv4/opencv2/cudawarping.hpp
+			# [cudev]
+			/usr/include/opencv4/opencv2/cudev.hpp
+			/usr/include/opencv4/opencv2/cudev/block/block.hpp
+			/usr/include/opencv4/opencv2/cudev/block/detail/reduce.hpp
+			/usr/include/opencv4/opencv2/cudev/block/detail/reduce_key_val.hpp
+			/usr/include/opencv4/opencv2/cudev/block/dynamic_smem.hpp
+			/usr/include/opencv4/opencv2/cudev/block/reduce.hpp
+			/usr/include/opencv4/opencv2/cudev/block/scan.hpp
+			/usr/include/opencv4/opencv2/cudev/block/vec_distance.hpp
+			/usr/include/opencv4/opencv2/cudev/common.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/binary_func.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/binary_op.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/color.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/deriv.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/expr.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/per_element_func.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/reduction.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/unary_func.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/unary_op.hpp
+			/usr/include/opencv4/opencv2/cudev/expr/warping.hpp
+			/usr/include/opencv4/opencv2/cudev/functional/color_cvt.hpp
+			/usr/include/opencv4/opencv2/cudev/functional/detail/color_cvt.hpp
+			/usr/include/opencv4/opencv2/cudev/functional/functional.hpp
+			/usr/include/opencv4/opencv2/cudev/functional/tuple_adapter.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/copy.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/copy.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/histogram.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/integral.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/minmaxloc.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/pyr_down.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/pyr_up.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/reduce.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/reduce_to_column.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/reduce_to_row.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/split_merge.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/transform.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/detail/transpose.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/histogram.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/integral.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/pyramids.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/reduce.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/reduce_to_vec.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/split_merge.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/transform.hpp
+			/usr/include/opencv4/opencv2/cudev/grid/transpose.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/constant.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/deriv.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/detail/gpumat.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/extrapolation.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/glob.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/gpumat.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/interpolation.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/lut.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/mask.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/remap.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/resize.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/texture.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/traits.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/transform.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/warping.hpp
+			/usr/include/opencv4/opencv2/cudev/ptr2d/zip.hpp
+			/usr/include/opencv4/opencv2/cudev/util/atomic.hpp
+			/usr/include/opencv4/opencv2/cudev/util/detail/tuple.hpp
+			/usr/include/opencv4/opencv2/cudev/util/detail/type_traits.hpp
+			/usr/include/opencv4/opencv2/cudev/util/limits.hpp
+			/usr/include/opencv4/opencv2/cudev/util/saturate_cast.hpp
+			/usr/include/opencv4/opencv2/cudev/util/simd_functions.hpp
+			/usr/include/opencv4/opencv2/cudev/util/tuple.hpp
+			/usr/include/opencv4/opencv2/cudev/util/type_traits.hpp
+			/usr/include/opencv4/opencv2/cudev/util/vec_math.hpp
+			/usr/include/opencv4/opencv2/cudev/util/vec_traits.hpp
+			/usr/include/opencv4/opencv2/cudev/warp/detail/reduce.hpp
+			/usr/include/opencv4/opencv2/cudev/warp/detail/reduce_key_val.hpp
+			/usr/include/opencv4/opencv2/cudev/warp/reduce.hpp
+			/usr/include/opencv4/opencv2/cudev/warp/scan.hpp
+			/usr/include/opencv4/opencv2/cudev/warp/shuffle.hpp
+			/usr/include/opencv4/opencv2/cudev/warp/warp.hpp
+			# [contribcvv]
+			/usr/include/opencv4/opencv2/cvv.hpp
+			/usr/include/opencv4/opencv2/cvv/call_meta_data.hpp
+			/usr/include/opencv4/opencv2/cvv/cvv.hpp
+			/usr/include/opencv4/opencv2/cvv/debug_mode.hpp
+			/usr/include/opencv4/opencv2/cvv/dmatch.hpp
+			/usr/include/opencv4/opencv2/cvv/filter.hpp
+			/usr/include/opencv4/opencv2/cvv/final_show.hpp
+			/usr/include/opencv4/opencv2/cvv/show_image.hpp
+			# [contribdnn]
+			/usr/include/opencv4/opencv2/dnn.hpp
+			/usr/include/opencv4/opencv2/dnn/all_layers.hpp
+			/usr/include/opencv4/opencv2/dnn/dict.hpp
+			/usr/include/opencv4/opencv2/dnn/dnn.hpp
+			/usr/include/opencv4/opencv2/dnn/dnn.inl.hpp
+			/usr/include/opencv4/opencv2/dnn/layer.details.hpp
+			/usr/include/opencv4/opencv2/dnn/layer.hpp
+			/usr/include/opencv4/opencv2/dnn/shape_utils.hpp
+			/usr/include/opencv4/opencv2/dnn/utils/debug_utils.hpp
+			/usr/include/opencv4/opencv2/dnn/utils/inference_engine.hpp
+			/usr/include/opencv4/opencv2/dnn/version.hpp
+			/usr/include/opencv4/opencv2/dnn_superres.hpp
+			# [contribhdf]
+			/usr/include/opencv4/opencv2/hdf.hpp
+			/usr/include/opencv4/opencv2/hdf/hdf5.hpp
+
+			/usr/include/opencv4/opencv2/mcc.hpp
+			/usr/include/opencv4/opencv2/mcc/ccm.hpp
+			/usr/include/opencv4/opencv2/mcc/checker_detector.hpp
+			/usr/include/opencv4/opencv2/mcc/checker_model.hpp
+
+			/usr/include/opencv4/opencv2/text.hpp
+			/usr/include/opencv4/opencv2/text/erfilter.hpp
+			/usr/include/opencv4/opencv2/text/ocr.hpp
+			/usr/include/opencv4/opencv2/text/swt_text_detection.hpp
+			/usr/include/opencv4/opencv2/text/textDetector.hpp
+
+			# [qt5,qt6]
+			/usr/include/opencv4/opencv2/viz.hpp
+			/usr/include/opencv4/opencv2/viz/types.hpp
+			/usr/include/opencv4/opencv2/viz/viz3d.hpp
+			/usr/include/opencv4/opencv2/viz/vizcore.hpp
+			/usr/include/opencv4/opencv2/viz/widget_accessor.hpp
+			/usr/include/opencv4/opencv2/viz/widgets.hpp
+
+			/usr/include/opencv4/opencv2/wechat_qrcode.hpp
+		)
+	fi
 	if multilib_is_native_abi && use python; then
 		python_foreach_impl cmake_src_install
 		python_foreach_impl python_optimize
