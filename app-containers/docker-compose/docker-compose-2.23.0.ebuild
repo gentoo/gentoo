@@ -1,4 +1,4 @@
-# Copyright 2018-2023 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,6 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="2"
 KEYWORDS="~amd64 ~arm64"
 
+BDEPEND=">=dev-lang/go-1.21"
 RDEPEND=">=app-containers/docker-cli-23.0.0"
 
 RESTRICT="test"
