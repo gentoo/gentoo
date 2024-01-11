@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -71,7 +71,7 @@ _GO_MODULE_ECLASS=1
 inherit multiprocessing toolchain-funcs go-env
 
 if [[ ! ${GO_OPTIONAL} ]]; then
-	BDEPEND=">=dev-lang/go-1.18"
+	BDEPEND=">=dev-lang/go-1.20:="
 
 	# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
 	# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
