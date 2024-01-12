@@ -34,15 +34,15 @@ COMMON_DEPEND="
 		dev-qt/qtnetwork:5[ssl]
 		dev-qt/qtwebengine:5
 		dev-qt/qtwidgets:5
-		>=net-libs/accounts-qt-1.16-r1[qt5]
-		>=net-libs/signond-8.61-r1[qt5]
+		>=net-libs/accounts-qt-1.16_p20220803[qt5]
+		>=net-libs/signond-8.61-r100[qt5]
 	)
 	qt6? (
 		dev-qt/qtbase:6[dbus,gui,network,ssl,widgets]
 		dev-qt/qtdeclarative:6
 		dev-qt/qtwebengine:6
-		>=net-libs/accounts-qt-1.16-r1[qt6]
-		>=net-libs/signond-8.61-r1[qt6]
+		>=net-libs/accounts-qt-1.16_p20220803[qt6]
+		>=net-libs/signond-8.61-r100[qt6]
 	)
 	net-libs/libproxy
 	x11-libs/libnotify
