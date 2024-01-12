@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-01-12)
+# Breaks data collection for a lot of packages, by attempting to import
+# all modules (not just test files), and therefore failing if they have
+# optional runtime dependencies.
+=dev-python/pytest-asyncio-0.23.3
+
 # Michał Górny <mgorny@gentoo.org> (2024-01-11)
 # These plugins are no longer maintained.  At least
 # dev-python/pytest-virtualenv is broken.  They have no revdeps left.
