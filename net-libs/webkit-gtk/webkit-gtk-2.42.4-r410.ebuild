@@ -116,6 +116,8 @@ BDEPEND="
 	virtual/perl-Data-Dumper
 	virtual/perl-Carp
 	virtual/perl-JSON-PP
+
+	wayland? ( dev-util/wayland-scanner )
 "
 
 S="${WORKDIR}/${MY_P}"
