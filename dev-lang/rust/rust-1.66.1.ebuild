@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing \
 	multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
@@ -96,7 +96,7 @@ BDEPEND="${PYTHON_DEPS}
 		>=dev-util/cmake-3.13.4
 		app-alternatives/ninja
 	)
-	test? ( sys-devel/gdb )
+	test? ( dev-debug/gdb )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
 "
 
@@ -733,7 +733,7 @@ src_install() {
 pkg_postinst() {
 	eselect rust update
 
-	if has_version sys-devel/gdb || has_version dev-util/lldb; then
+	if has_version dev-debug/gdb || has_version dev-util/lldb; then
 		elog "Rust installs a helper script for calling GDB and LLDB,"
 		elog "for your convenience it is installed under /usr/bin/rust-{gdb,lldb}-${PV}."
 	fi

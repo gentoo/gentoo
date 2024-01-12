@@ -64,7 +64,7 @@ sys-process/htop hwloc
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # dev-util/source-highlight is not marked stable on HPPA
-sys-devel/gdb source-highlight
+dev-debug/gdb source-highlight
 
 # Matt Turner <mattst88@gentoo.org> (2021-09-22)
 # Non-stable deps.

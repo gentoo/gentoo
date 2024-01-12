@@ -151,7 +151,7 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install
 
-	# Provided by sys-devel/gdb instead
+	# Provided by dev-debug/gdb instead
 	rm "${ED}"/usr/share/info/sframe-spec.info || die
 
 	# Provide libiberty.h directly.

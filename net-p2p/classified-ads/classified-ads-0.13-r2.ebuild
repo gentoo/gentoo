@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/doxygen[dot] )
 	test? ( dev-libs/libgcrypt:0
 		dev-qt/qttest:5
-		sys-devel/gdb:0 )"
+		dev-debug/gdb:0 )"
 
 BDEPEND="sys-devel/gettext"
 

@@ -34,8 +34,8 @@ BDEPEND="
 		${PYTHON_DEPS}
 	)
 	test? (
+		dev-debug/gdb[python]
 		>=dev-util/cmake-3.16
-		sys-devel/gdb[python]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
 "

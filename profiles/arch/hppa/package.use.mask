@@ -296,7 +296,7 @@ net-analyzer/wireshark ilbc
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-19)
 # gdbserver is not implemented yet for hppa target.
-sys-devel/gdb server
+dev-debug/gdb server
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-07)
 # Test dependencies are no longer keyworded due to dropped Rails

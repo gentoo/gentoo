@@ -15,7 +15,7 @@
 		<flag name="numpy">Run tests depending on
 			<pkg>dev-python/numpy</pkg>, <pkg>dev-python/pandas</pkg>
 		</flag>
-		<flag name="gdb">Run tests depending on <pkg>sys-devel/gdb</pkg>
+		<flag name="gdb">Run tests depending on <pkg>dev-debug/gdb</pkg>
 		</flag>
 	</use>
 </pkgmetadata>

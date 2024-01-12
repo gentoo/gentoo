@@ -705,7 +705,7 @@ dev-python/paramiko server
 # and compiler/binutils combinations.)
 sys-devel/binutils cet
 sys-devel/binutils-hppa64 cet
-sys-devel/gdb cet
+dev-debug/gdb cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
 sys-devel/gcc cet

@@ -56,7 +56,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/sentry-sdk[${PYTHON_USEDEP}]
 	')
 	|| (
-		sys-devel/gdb
+		dev-debug/gdb
 		dev-util/lldb
 	)
 "

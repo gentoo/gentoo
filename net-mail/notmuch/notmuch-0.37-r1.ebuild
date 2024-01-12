@@ -67,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		>=app-editors/emacs-${NEED_EMACS}:*[libxml2]
 		app-misc/dtach
-		sys-devel/gdb[python]
+		dev-debug/gdb[python]
 		crypt? (
 			app-crypt/gnupg
 			dev-libs/openssl
