@@ -137,7 +137,7 @@ if [[ ! -d ${MYPROFILEDIR} ]] ; then
 	exit 1
 fi
 
-echo -e "\n${GOOD}Gentoo Linux; ${BRACKET}http://www.gentoo.org/${NORMAL}"
+echo -e "\n${GOOD}Gentoo Linux; ${BRACKET}https://www.gentoo.org/${NORMAL}"
 echo -e "${file_copyright}; Distributed under the GPLv2"
 if [[ " ${STRAP_EMERGE_OPTS} " == *" -f "* ]] ; then
 	echo "Fetching all bootstrap-related archives ..."
