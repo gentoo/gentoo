@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,9 +67,9 @@ multilib_src_configure() {
 
 pkg_postinst() {
 	elog
-	elog "GameMode has optional support for adjusting nice and ioprio of games"
-	elog "running with it. You may need to adjust your PAM limits to make use"
-	elog "of this. You need to be in the gamemode group for this to work."
+	elog "GameMode requires permissions to adjust your PAM limits and change system"
+	elog "performance settings (overclocking, scheduling, L2 cache usage, mitigations"
+	elog "etc). This permission is granted via the gamemode group."
 	elog
 	elog "Run the following command as root to add your user:"
 	elog "# gpasswd -a USER gamemode  # with USER = your user name"
@@ -78,16 +78,19 @@ pkg_postinst() {
 	elog
 	elog "# gamemoded -t"
 	elog
-	elog "GameMode supports GPU optimizations. It defaults to OFF. Any"
-	elog "damage resulting from usage of this is your own responsibility."
+	elog "GameMode supports GPU optimizations. It defaults to OFF. Any damage"
+	elog "resulting from usage of this is your own responsibility.  For safety"
+	elog "reasons, GPU settings are not allowed from \$HOME but only from"
+	elog "administrative directories."
 	elog
-	elog "systemd user sessions will automatically run the daemon on demand,"
-	elog "it does not need to be enabled explicitly. Games not supporting"
-	elog "GameMode natively can still make use of it, just add"
+	elog "systemd user sessions will automatically run the daemon on demand, it does"
+	elog "not need to be enabled explicitly. Games not supporting GameMode natively"
+	elog "can still make use of it, just add"
 	elog
 	elog "gamemoderun %command%"
 	elog
-	elog "to the start options of any steam game to enable optimizations"
-	elog "automatically as you start the game."
+	elog "to the start options of any Steam game to enable optimizations automatically"
+	elog "as you start the game. Similar options exist for other launchers like"
+	elog "Bottles or Lutris."
 	elog
 }
