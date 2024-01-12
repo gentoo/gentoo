@@ -99,8 +99,8 @@ gap-pkg_dir() {
 # @DESCRIPTION:
 # The directory containing sysinfo.gap. This is frequently passed to GAP
 # packages via ./configure --with-gaproot or as a positional argument to
-# the old-style fake configure scripts. We also use it to find the value
-# of $GAParch, which is contained in sysinfo.gap. The "gaproot" is
+# hand-written configure scripts. We also use it to find the value of
+# $GAParch, which is contained in sysinfo.gap. The "gaproot" is
 # implicitly determined by the econf call in sci-mathematics/gap. As a
 # result, calling this function requires sci-mathematics/gap at
 # build-time.
@@ -124,7 +124,7 @@ _gap-pkg_gaparch() {
 # @USAGE: [extra econf args]
 # @DESCRIPTION:
 # Call econf with the standard GAP package arguments that should be
-# passed to a real ./configure script:
+# passed to an autoconf ./configure script:
 #
 # 1. GAP uses the ABI variable internally so we have to unset it.
 # 2. We pass the value of _gap-pkg_gaproot to --with-gaproot.
@@ -151,19 +151,19 @@ gap-pkg_econf() {
 # @FUNCTION: gap-pkg_src_configure
 # @USAGE:
 # @DESCRIPTION:
-# Handle both "real" configure script and the fake "old-style" ones
-# still used by many GAP packages. We determine which one we're dealing
-# with by running ./configure --help; an autoconf configure script will
-# mention "PREFIX" in the output, a fake one will not.
+# Handle both autoconf configure scripts and the hand-written ones used
+# by many GAP packages. We determine which one we're dealing with by
+# running ./configure --help; an autoconf configure script will mention
+# "PREFIX" in the output, the others will not.
 #
-# Real configure scripts are configured using gap-pkg_econf, fake ones
-# are executed directly with _gap-pkg_gaproot as their sole positional
-# argument.
+# Autoconf configure scripts are configured using gap-pkg_econf, while
+# hand-written ones are executed directly with _gap-pkg_gaproot as their
+# sole positional argument.
 gap-pkg_src_configure() {
 	local _configure="${ECONF_SOURCE:-.}/configure"
 	if [[ -x ${_configure} ]] ; then
 		if ${_configure} --help | grep PREFIX &>/dev/null; then
-			# This is a real ./configure script
+			# This is an autoconf ./configure script
 			gap-pkg_econf
 		else
 			# It's an "old-style" handwritten script that does
