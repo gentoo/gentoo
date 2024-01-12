@@ -43,8 +43,8 @@ RDEPEND="
 		dev-qt/qtbase:6
 		dev-qt/qtdeclarative:6
 	)
-	>=net-libs/accounts-qt-1.16-r1[qt5?,qt6?]
-	>=net-libs/signond-8.61-r1[qt5?,qt6?]
+	>=net-libs/accounts-qt-1.16_p20220803[qt5?,qt6?]
+	>=net-libs/signond-8.61-r100[qt5?,qt6?]
 "
 DEPEND="${RDEPEND}
 	test? (
