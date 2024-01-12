@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -250,7 +250,7 @@ osc - Enable support for Open Sound Control
 oss - Add support for OSS (Open Sound System)
 otf - Install OpenType font versions
 pam - Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
-pch - Enable precompiled header support for faster compilation at the expense of disk space and memory (>=sys-devel/gcc-3.4 only)
+pch - Enable precompiled header support for faster compilation at the expense of disk space and memory
 pcmcia - Add support for PCMCIA slots/devices found on laptop computers
 pcre - Add support for Perl Compatible Regular Expressions
 pda - Add support for portable devices
