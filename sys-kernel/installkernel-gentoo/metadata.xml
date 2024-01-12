@@ -8,6 +8,7 @@
 	<use>
 		<flag name="dracut">Generate an initrd or UKI on each kernel installation</flag>
 		<flag name="grub">Re-generate grub.cfg on each kernel installation</flag>
+		<flag name="systemd">Use systemd's kernel-install to install kernels'</flag>
 		<flag name="uki">Install UKIs to ESP/EFI/Linux for EFI stub booting and/or bootloaders with support for auto-discovering UKIs</flag>
 		<flag name="ukify">Build an UKI with systemd's ukify on each kernel installation</flag>
 	</use>
