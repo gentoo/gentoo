@@ -231,7 +231,7 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
-	IUSE+=" debug +cxx +nptl" TC_FEATURES+=( nptl )
+	IUSE+=" debug +cxx"
 	IUSE+=" +fortran" TC_FEATURES+=( fortran )
 	IUSE+=" doc hardened multilib objc"
 	IUSE+=" pgo"
