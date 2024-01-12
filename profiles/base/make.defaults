@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -102,7 +102,7 @@ RUBY_TARGETS="ruby31"
 # These USE flags are what is common between the various sub-profiles. Stages 2
 # and 3 are built against these, so be careful what you add.
 # Moved here from releases/
-USE="acl bzip2 gdbm nptl unicode"
+USE="acl bzip2 gdbm unicode"
 
 # Enable extended filesystem attribute support by default.
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
