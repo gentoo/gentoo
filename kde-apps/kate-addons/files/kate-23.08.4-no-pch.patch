@@ -1,0 +1,58 @@
+https://bugs.gentoo.org/921720
+https://invent.kde.org/utilities/kate/-/issues/116
+https://invent.kde.org/utilities/kate/-/merge_requests/1387
+
+From 83fcf7b4e7cc7bc54828192e9b89cfb286d864fd Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Tue, 19 Sep 2023 16:34:49 +0200
+Subject: [PATCH] Fix build
+
+Ever since I last updated, I've started to get errors about includes
+missing, so I've added them.
+
+(cherry picked from commit 73d090f7f7cb7cc013f31c7b572ca78a7fbeb5b8)
+---
+ addons/git-blame/kategitblameplugin.h | 1 +
+ addons/project/git/gitstatus.h        | 1 +
+ apps/lib/ktexteditor_utils.h          | 2 ++
+ 3 files changed, 4 insertions(+)
+
+diff --git a/addons/git-blame/kategitblameplugin.h b/addons/git-blame/kategitblameplugin.h
+index 0a87f700e8..4c3d4a977f 100644
+--- a/addons/git-blame/kategitblameplugin.h
++++ b/addons/git-blame/kategitblameplugin.h
+@@ -20,6 +20,7 @@
+ #include <QLocale>
+ #include <QPointer>
+ #include <QTimer>
++#include <QUrl>
+ #include <QVariant>
+ #include <QVector>
+ 
+diff --git a/addons/project/git/gitstatus.h b/addons/project/git/gitstatus.h
+index 7caad963eb..dcf01b66c9 100644
+--- a/addons/project/git/gitstatus.h
++++ b/addons/project/git/gitstatus.h
+@@ -5,6 +5,7 @@
+ */
+ #pragma once
+ 
++#include <QSet>
+ #include <QString>
+ #include <QVector>
+ 
+diff --git a/apps/lib/ktexteditor_utils.h b/apps/lib/ktexteditor_utils.h
+index ac3f218870..d9d4e6fdaa 100644
+--- a/apps/lib/ktexteditor_utils.h
++++ b/apps/lib/ktexteditor_utils.h
+@@ -7,6 +7,8 @@
+ #include "kateprivate_export.h"
+ 
+ #include <QString>
++#include <QUrl>
++#include <QWidgetList>
+ 
+ QT_BEGIN_NAMESPACE
+ class QScrollBar;
+-- 
+GitLab
