@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,8 +26,8 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
+	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20231111[${PYTHON_SINGLE_USEDEP}]
-	sys-devel/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-libs/capstone-5.0_rc4[python,${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.9.5[${PYTHON_USEDEP}]
