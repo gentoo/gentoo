@@ -123,16 +123,7 @@ _gap-pkg_gaparch() {
 # @FUNCTION: gap-pkg_econf
 # @USAGE: [extra econf args]
 # @DESCRIPTION:
-# Call econf with the standard GAP package arguments that should be
-# passed to an autoconf ./configure script:
-#
-# 1. GAP uses the ABI variable internally so we have to unset it.
-# 2. We pass the value of _gap-pkg_gaproot to --with-gaproot.
-# 3. We set both bindir and libdir to bin/$GAParch within the
-#    gap-pkg_dir. This is where Makefile.gappkg stores both
-#    types of binaries, and is therefore where GAP expects to
-#    find them.
-#
+# Call econf, passing the value of _gap-pkg_gaproot to --with-gaproot.
 # All arguments to gap-pkg_econf are passed through to econf.
 #
 # @EXAMPLE
@@ -141,11 +132,7 @@ _gap-pkg_gaparch() {
 # }
 #
 gap-pkg_econf() {
-	econf \
-		--with-gaproot=$(_gap-pkg_gaproot) \
-		--bindir="$(gap-pkg_dir)/bin/$(_gap-pkg_gaparch)" \
-		--libdir="$(gap-pkg_dir)/bin/$(_gap-pkg_gaparch)" \
-		"${@}"
+	econf --with-gaproot="$(_gap-pkg_gaproot)" "${@}"
 }
 
 # @FUNCTION: gap-pkg_src_configure
