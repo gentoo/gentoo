@@ -7,6 +7,7 @@ DESCRIPTION="Gentoo fork of installkernel script from debianutils"
 HOMEPAGE="https://github.com/projg2/installkernel-gentoo"
 SRC_URI="https://github.com/projg2/installkernel-gentoo/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-gentoo-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"

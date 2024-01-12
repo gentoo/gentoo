@@ -7,6 +7,7 @@ DESCRIPTION="Gentoo fork of installkernel script from debianutils"
 HOMEPAGE="https://github.com/projg2/installkernel-gentoo"
 SRC_URI="https://github.com/projg2/installkernel-gentoo/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-gentoo-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -61,14 +62,22 @@ src_install() {
 	else
 		echo "layout=bls" >> "${T}/install.conf" || die
 	fi
+
 	if use dracut; then
 		echo "initrd_generator=dracut" >> "${T}/install.conf" || die
 		if ! use ukify; then
 			echo "uki_generator=dracut" >> "${T}/install.conf" || die
 		fi
+	else
+		echo "initrd_generator=none" >> "${T}/install.conf" || die
 	fi
+
 	if use ukify; then
 		echo "uki_generator=ukify" >> "${T}/install.conf" || die
+	else
+		if ! use dracut; then
+			echo "uki_generator=none" >> "${T}/install.conf" || die
+		fi
 	fi
 
 	if [[ -s "${T}/install.conf" ]]; then
