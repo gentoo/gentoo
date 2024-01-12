@@ -1,0 +1,57 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From 929f34fb07e30e17fc6a6ec117207390675be03b Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 6 Aug 2022 15:46:16 +0200
+Subject: [PATCH 08/11] Use return instead of reference for DBus output
+ parameter
+
+From a DBus perspective it's the same but it seems to work better that way with Qt6
+---
+ src/signond/signondaemonadaptor.cpp | 7 ++++---
+ src/signond/signondaemonadaptor.h   | 3 +--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/signond/signondaemonadaptor.cpp b/src/signond/signondaemonadaptor.cpp
+index a407175..0f01d34 100644
+--- a/src/signond/signondaemonadaptor.cpp
++++ b/src/signond/signondaemonadaptor.cpp
+@@ -63,17 +63,18 @@ SignonDaemonAdaptor::registerObject(const QDBusConnection &connection,
+     return QDBusObjectPath(path);
+ }
+ 
+-void SignonDaemonAdaptor::registerNewIdentity(const QString &applicationContext,
+-                                              QDBusObjectPath &objectPath)
++QDBusObjectPath SignonDaemonAdaptor::registerNewIdentity(const QString &applicationContext)
+ {
+     Q_UNUSED(applicationContext);
+ 
+     SignonIdentity *identity = m_parent->registerNewIdentity();
+ 
+     QDBusConnection dbusConnection(parentDBusContext().connection());
+-    objectPath = registerObject(dbusConnection, identity);
++    QDBusObjectPath objectPath = registerObject(dbusConnection, identity);
+ 
+     SignonDisposable::destroyUnused();
++
++    return objectPath;
+ }
+ 
+ void SignonDaemonAdaptor::securityErrorReply()
+diff --git a/src/signond/signondaemonadaptor.h b/src/signond/signondaemonadaptor.h
+index c51a6b8..639a135 100644
+--- a/src/signond/signondaemonadaptor.h
++++ b/src/signond/signondaemonadaptor.h
+@@ -49,8 +49,7 @@ public:
+         { return *static_cast<QDBusContext *>(m_parent); }
+ 
+ public Q_SLOTS:
+-    void registerNewIdentity(const QString &applicationContext,
+-                             QDBusObjectPath &objectPath);
++    QDBusObjectPath registerNewIdentity(const QString &applicationContext);
+     void getIdentity(const quint32 id, const QString &applicationContext,
+                      QDBusObjectPath &objectPath,
+                      QVariantMap &identityData);
+-- 
+2.43.0
+

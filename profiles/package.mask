@@ -412,6 +412,7 @@ dev-python/ruamel-std-pathlib
 ~net-libs/kdsoap-ws-discovery-client-0.3.0
 ~net-libs/signon-ui-0.15_p20231016
 ~net-libs/accounts-qt-1.16_p20220803
+=net-libs/signond-8.61-r100
 ~sys-auth/polkit-qt-0.175.0
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-17)
