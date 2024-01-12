@@ -1,0 +1,124 @@
+ * Info: Using [Gentoo] (https://bugs.gentoo.org/xmlrpc.cgi)
+ * Info: Getting bug 862615 ..
+cf_runtime_testing_required: ---
+remaining_time: 0.0
+Blocks      : 610764
+Component   : Current packages
+OpSystem    : Linux
+AssignedTo  : williamh@gentoo.org
+Updated     : 20220911T22:19:38
+Hardware    : All
+actual_time : 0.0
+classification: Unclassified
+Priority    : Normal
+Version     : unspecified
+Title       : sys-process/runit: duplicate pkg_preinst definition
+Severity    : normal
+Reporter    : sam@gentoo.org
+estimated_time: 0.0
+TargetMilestone: ---
+Status      : CONFIRMED
+CC          : base-system@gentoo.org
+Reported    : 20220801T02:32:59
+Product     : Gentoo Linux
+Attachments : 0
+
+Comments    : 3
+
+[Comment #0] sam@gentoo.org : 20220801T02:32:59
+-------------------------------------------------------------------------------
+runit-2.1.2-r1.ebuild has two definitions of pkg_preinst:
+
+1) This one comes first (so is NOT used):
+```
+pkg_preinst() {
+        if has_version 'sys-process/runit' &&
+                has_version '<sys-process/runit-2.1.2' &&
+                [ -d "${EROOT}"etc/runit/runsvdir/all ]; then
+                if [ -e "${EROOT}"etc/sv ]; then
+                        mv -f "${EROOT}"etc/sv "${EROOT}"etc/sv.bak || die
+                        ewarn "${EROOT}etc/sv was moved to ${EROOT}etc/sv.bak"
+                fi
+                mv "${EROOT}"etc/runit/runsvdir/all "${EROOT}"etc/sv|| die
+                ln -sf "${EROOT}"etc/sv "${EROOT}"etc/runit/runsvdir/all || die
+                cp -a "${EROOT}"etc/runit/runsvdir "${T}" || die
+                touch "${T}"/make_var_service || die
+        fi
+}
+```
+
+2) This one comes last (so is the one used):
+```
+pkg_postinst() {
+        if [[ -z $REPLACING_VERSIONS ]]; then
+                default_config
+        elif [[ -n $pre_212 ]]; then
+                migrate_from_211
+        fi
+
+        ewarn "To make sure sv works correctly in your currently open"
+        ewarn "shells, please run the following command:"
+        ewarn
+        ewarn "source /etc/profile"
+        ewarn
+
+        if [ -L "${EROOT}"var/service ]; then
+                ewarn "Once this version of runit is active, please remove the"
+                ewarn "compatibility symbolic link at ${EROOT}var/service"
+                ewarn "The correct path now is ${EROOT}etc/service"
+                ewarn
+        fi
+
+        if [ -L "${EROOT}"etc/runit/runsvdir/all ]; then
+                ewarn "${EROOT}etc/runit/runsvdir/all has moved to"
+                iewarn "${EROOT}etc/sv."
+                ewarn "Any symbolic links under ${EROOT}etc/runit/runsvdir"
+                ewarn "which point to services through ../all should be updated
+to"
+                ewarn "point to them through ${EROOT}etc/sv."
+                ewarn "Once that is done, ${EROOT}etc/runit/runsvdir/all should
+be"
+                ewarn "removed."
+                ewarn
+        fi
+}
+```
+
+Which one is supposed to be used?
+
+[Comment #1] sam@gentoo.org : 20220801T02:35:24
+-------------------------------------------------------------------------------
+(Recommenting as first comment had wrong paste of second definition.)
+
+runit-2.1.2-r1.ebuild has two definitions of pkg_preinst:
+
+1) This one comes first (so is NOT used):
+```
+pkg_preinst() {
+        if has_version 'sys-process/runit' &&
+                has_version '<sys-process/runit-2.1.2' &&
+                [ -d "${EROOT}"etc/runit/runsvdir/all ]; then
+                if [ -e "${EROOT}"etc/sv ]; then
+                        mv -f "${EROOT}"etc/sv "${EROOT}"etc/sv.bak || die
+                        ewarn "${EROOT}etc/sv was moved to ${EROOT}etc/sv.bak"
+                fi
+                mv "${EROOT}"etc/runit/runsvdir/all "${EROOT}"etc/sv|| die
+                ln -sf "${EROOT}"etc/sv "${EROOT}"etc/runit/runsvdir/all || die
+                cp -a "${EROOT}"etc/runit/runsvdir "${T}" || die
+                touch "${T}"/make_var_service || die
+        fi
+}
+```
+
+2) This one comes last (so is the one used):
+```
+pkg_preinst() {
+        if  has_version '<sys-process/runit-2.1.2'; then
+                pre_212=yes
+        fi
+}
+```
+
+[Comment #2] sam@gentoo.org : 20220911T22:19:38
+-------------------------------------------------------------------------------
+ping

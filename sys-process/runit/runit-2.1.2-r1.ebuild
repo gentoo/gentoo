@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,21 +71,6 @@ src_install() {
 		#/etc/env.d/20runit
 		SVDIR="/etc/service/"
 	EOF
-}
-
-pkg_preinst() {
-	if has_version 'sys-process/runit' &&
-		has_version '<sys-process/runit-2.1.2' &&
-		[ -d "${EROOT}"etc/runit/runsvdir/all ]; then
-		if [ -e "${EROOT}"etc/sv ]; then
-			mv -f "${EROOT}"etc/sv "${EROOT}"etc/sv.bak || die
-			ewarn "${EROOT}etc/sv was moved to ${EROOT}etc/sv.bak"
-		fi
-		mv "${EROOT}"etc/runit/runsvdir/all "${EROOT}"etc/sv|| die
-		ln -sf "${EROOT}"etc/sv "${EROOT}"etc/runit/runsvdir/all || die
-		cp -a "${EROOT}"etc/runit/runsvdir "${T}" || die
-		touch "${T}"/make_var_service || die
-	fi
 }
 
 default_config() {
