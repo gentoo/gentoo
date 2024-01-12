@@ -253,7 +253,6 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" ada"
 	IUSE+=" vtv"
 	IUSE+=" jit"
-	tc_version_is_between 5.0 9 && IUSE+=" mpx"
 	IUSE+=" +pie +ssp +pch"
 
 	IUSE+=" systemtap" TC_FEATURES+=( systemtap )
@@ -1239,14 +1238,6 @@ toolchain_src_configure() {
 		confgcc+=( $(use_enable cet) )
 	fi
 
-	if in_iuse cilk ; then
-		confgcc+=( $(use_enable cilk libcilkrts) )
-	fi
-
-	if in_iuse mpx ; then
-		confgcc+=( $(use_enable mpx libmpx) )
-	fi
-
 	if in_iuse systemtap ; then
 		confgcc+=( $(use_enable systemtap) )
 	fi
@@ -2002,8 +1993,6 @@ toolchain_src_install() {
 	# libgfortran.la: gfortran itself handles linkage correctly in the
 	# dynamic & static case (libgfortran.spec). bug #573302
 	# libgfortranbegin.la: Same as above, and it's an internal lib.
-	# libmpx.la: gcc itself handles linkage correctly (libmpx.spec).
-	# libmpxwrappers.la: See above.
 	# libitm.la: gcc itself handles linkage correctly (libitm.spec).
 	# libvtv.la: gcc itself handles linkage correctly.
 	# lib*san.la: Sanitizer linkage is handled internally by gcc, and they
@@ -2020,8 +2009,6 @@ toolchain_src_install() {
 			-name 'libgomp-plugin-*.la' -o \
 			-name libgfortran.la -o \
 			-name libgfortranbegin.la -o \
-			-name libmpx.la -o \
-			-name libmpxwrappers.la -o \
 			-name libitm.la -o \
 			-name libvtv.la -o \
 			-name 'lib*san.la' \
