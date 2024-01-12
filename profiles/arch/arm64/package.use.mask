@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
@@ -167,6 +167,7 @@ media-sound/bluez-alsa man
 # bug #729720
 sys-apps/systemd -boot -gnuefi -ukify
 sys-apps/systemd-utils -boot -ukify
+sys-kernel/installkernel -ukify
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.

@@ -398,6 +398,7 @@ sys-boot/grub:2 -grub_platforms_xen-32
 # sd-boot is not supported on all archs.
 sys-apps/systemd -boot -gnuefi -ukify
 sys-apps/systemd-utils -boot -ukify
+sys-kernel/installkernel -ukify
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag

@@ -369,6 +369,7 @@ net-misc/moonlight mmal
 # sd-boot and ukify are not supported on all archs.
 sys-apps/systemd boot gnuefi ukify
 sys-apps/systemd-utils boot ukify
+sys-kernel/installkernel ukify
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.

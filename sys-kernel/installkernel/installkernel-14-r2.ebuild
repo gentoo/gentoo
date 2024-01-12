@@ -16,10 +16,17 @@ IUSE="+dracut grub systemd uki ukify"
 
 RDEPEND="
 	>=sys-apps/debianutils-4.9-r1
+	dracut? ( >=sys-kernel/dracut-059-r4 )
 	systemd? (
 		|| (
 			sys-apps/systemd[kernel-install(-)]
 			sys-apps/systemd-utils[kernel-install(-)]
+		)
+	)
+	ukify? (
+		|| (
+			sys-apps/systemd[ukify(-)]
+			sys-apps/systemd-utils[ukify(-)]
 		)
 	)
 "
