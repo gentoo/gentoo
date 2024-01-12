@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="launchpad">signon-ui</remote-id>
+		<remote-id type="gitlab">accounts-sso/signon-ui</remote-id>
 	</upstream>
 </pkgmetadata>
