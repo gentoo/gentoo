@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -141,7 +141,6 @@
 # Simon Stelling <blubb@gentoo.org> (2007-02-16)
 # Since this profile forces >=portage-2.1.2, we can unmask all
 # SIMD assembler flags
--mpx
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
