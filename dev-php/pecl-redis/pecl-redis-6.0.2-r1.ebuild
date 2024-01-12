@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm ~arm64"
 IUSE="igbinary +json lz4 +session zstd"
 
 DEPEND="
-	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php8-0(-)?,php_targets_php8-1(-)?,php_targets_php8-2(-)?] )
+	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php8-1(-)?,php_targets_php8-2(-)?,php_targets_php8-3(-)?] )
 	lz4? ( app-arch/lz4:= )
 	zstd? ( app-arch/zstd:= )
 "
