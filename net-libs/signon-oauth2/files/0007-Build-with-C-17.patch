@@ -1,0 +1,26 @@
+From e9d3bdbd4eb8331a03b0c49d6b3a6c020db11c7f Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:06:05 +0200
+Subject: [PATCH 07/10] Build with C++17
+
+Needed for Qt6
+---
+ common-project-config.pri | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common-project-config.pri b/common-project-config.pri
+index 1d5cdc6..dc9b95d 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -8,7 +8,7 @@
+ #-----------------------------------------------------------------------------
+ 
+ CONFIG += \
+-    c++11 \
++    c++17 \
+     link_pkgconfig
+ #MOC_DIR         = .moc
+ #OBJECTS_DIR     = .obj
+-- 
+2.43.0
+
