@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,28 +27,12 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/hipCUB-rocm-${PV}"
 
-# src_prepare() {
-# 	sed -e "/PREFIX hipcub/d" \
-# 		-e "/DESTINATION/s:hipcub/include/:include/:" \
-# 		-e "/rocm_install_symlink_subdir(hipcub)/d" \
-# 		-e "/<INSTALL_INTERFACE/s:hipcub/include/:include/hipcub/:" -i hipcub/CMakeLists.txt || die
+src_prepare() {
+	sed -e "s:set(ROCM_INSTALL_LIBDIR lib):set(ROCM_INSTALL_LIBDIR $(get_libdir)):" \
+		-i cmake/ROCMExportTargetsHeaderOnly.cmake || die
 
-# 	sed	-e "s:\${ROCM_INSTALL_LIBDIR}:\${CMAKE_INSTALL_LIBDIR}:" -i cmake/ROCMExportTargetsHeaderOnly.cmake || die
-
-# 	# disable downloading googletest and googlebenchmark
-# 	sed  -r -e '/Downloading/{:a;N;/\n *\)$/!ba; d}' -i cmake/Dependencies.cmake || die
-
-# 	# remove GIT dependency
-# 	sed  -r -e '/find_package\(Git/{:a;N;/\nendif/!ba; d}' -i cmake/Dependencies.cmake || die
-
-# 	if use benchmark; then
-# 		sed -e "/get_filename_component/s,\${BENCHMARK_SOURCE},${PN}_\${BENCHMARK_SOURCE}," \
-# 			-e "/add_executable/a\  install(TARGETS \${BENCHMARK_TARGET})" -i benchmark/CMakeLists.txt || die
-# 	fi
-
-# 	eapply_user
-# 	cmake_src_prepare
-# }
+	cmake_src_prepare
+}
 
 src_configure() {
 	addpredict /dev/kfd
