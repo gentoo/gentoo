@@ -77,7 +77,11 @@ mymake() {
 	fi
 
 	# Fix cross-compiling, but allow manual overrides for slibtool, which works.
-	[[ -z ${LIBTOOL} ]] && declare -x LIBTOOL="${BASH} ${ESYSROOT}/usr/bin/libtool"
+	if [[ -z ${LIBTOOL} ]] ; then
+		local pfx=
+		[[ ${CHOST} == *-darwin* ]] && pfx=g  # Darwin libtool != glibtool
+		declare -x LIBTOOL="${BASH} ${ESYSROOT}/usr/bin/${pfx}libtool"
+	fi
 
 	# IGNORE_SPEED=1 is needed to respect CFLAGS
 	EXTRALIBS="${extra_libs[*]}" emake \
