@@ -200,8 +200,8 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	IDEPEND="
 		generic-uki? (
 			|| (
+				>=sys-kernel/installkernel-8[-dracut(-),-ukify(-),uki(-)]
 				>=sys-kernel/installkernel-systemd-3
-				>=sys-kernel/installkernel-8[-dracut(-),-ukify(-)]
 			)
 		)
 		!generic-uki? (
