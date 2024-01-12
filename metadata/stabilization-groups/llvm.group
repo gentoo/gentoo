@@ -1,8 +1,8 @@
+dev-debug/lldb
 dev-libs/libclc
 dev-ml/llvm-ocaml
 dev-python/clang-python
 dev-python/lit
-dev-util/lldb
 sys-devel/clang
 sys-devel/clang-common
 sys-devel/clang-runtime

@@ -57,7 +57,7 @@ RDEPEND="${COMMON_DEPEND}
 	')
 	|| (
 		dev-debug/gdb
-		dev-util/lldb
+		dev-debug/lldb
 	)
 "
 
