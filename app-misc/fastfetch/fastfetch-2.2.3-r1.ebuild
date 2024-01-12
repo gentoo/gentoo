@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,10 @@ RDEPEND="
 	xfce? ( xfce-base/xfconf )
 	xrandr? ( x11-libs/libXrandr )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
