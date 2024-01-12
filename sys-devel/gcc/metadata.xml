@@ -76,7 +76,6 @@
 		</flag>
 		<flag name="modula2">Build the GCC Modula-2 language frontend.</flag>
 		<flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
-		<flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>
 		<flag name="objc">Build support for the Objective C code language</flag>
 		<flag name="objc++">Build support for the Objective C++ language</flag>
 		<flag name="objc-gc">Build support for the Objective C code language Garbage Collector</flag>
