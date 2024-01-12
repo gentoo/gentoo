@@ -253,7 +253,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" ada"
 	IUSE+=" vtv"
 	IUSE+=" jit"
-	IUSE+=" +pie +ssp +pch"
+	IUSE+=" +pie +ssp pch"
 
 	IUSE+=" systemtap" TC_FEATURES+=( systemtap )
 
