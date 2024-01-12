@@ -410,6 +410,7 @@ dev-python/ruamel-std-pathlib
 ~media-libs/pulseaudio-qt-1.4.0
 ~net-libs/kdsoap-2.2.0
 ~net-libs/kdsoap-ws-discovery-client-0.3.0
+~net-libs/signon-ui-0.15_p20231016
 ~sys-auth/polkit-qt-0.175.0
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-17)
