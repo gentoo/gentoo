@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
+# The systemd flag is globally masked on musl. But we need
+# systemd's kernel-install to use systemd-boot which is still
+# possible on musl via systemd-utils[boot].
+sys-kernel/installkernel -systemd
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-01-09)
 # linked against glibc
 sci-libs/caffe2 mkl
