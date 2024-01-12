@@ -142,6 +142,17 @@ src_test() {
 src_install() {
 	cmake_src_install
 
+	# add version file that is required by some libraries
+	mkdir "${ED}"/usr/include/rocm-core || die
+	cat <<EOF > "${ED}"/usr/include/rocm-core/rocm_version.h || die
+#pragma once
+#define ROCM_VERSION_MAJOR $(ver_cut 1)
+#define ROCM_VERSION_MINOR $(ver_cut 2)
+#define ROCM_VERSION_PATCH $(ver_cut 3)
+#define ROCM_BUILD_INFO "$(ver_cut 1-3).0-9999-unknown"
+EOF
+	dosym -r /usr/include/rocm-core/rocm_version.h /usr/include/rocm_version.h
+
 	rm "${ED}/usr/include/hip/hcc_detail" || die
 
 	# files already installed by hipcc, which is a build dep
