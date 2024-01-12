@@ -232,7 +232,12 @@ gap-pkg_src_test() {
 	# the "-r" flag here because we use the UserGapRoot directory to
 	# store AtlasRep data, and without it, the atlasrep tests (and the
 	# tests of any packages depending on it) will fail.
-	local gapcmd="gap -R ${bareflag} --nointeract -c TestPackage(\"${PN}\");"
+	local gapcmd="gap -R ${bareflag} --nointeract"
+
+	# ForceQuitGap translates a boolean return value to the expected
+	# zero or one, useful for packages that set a single *.tst file as
+	# their TestFile.
+	gapcmd+=" -c ForceQuitGap(TestPackage(\"${PN}\"));"
 
 	# Fake the directory structure that GAP needs to be able to find
 	# packages with a symlink under ${T}, then prepend ${T} to the list
