@@ -70,6 +70,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	static-libs? (
+		x11-base/xorg-proto
 		x11-libs/libX11
 		x11-libs/libXext
 	)
