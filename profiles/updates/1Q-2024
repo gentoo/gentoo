@@ -1,1 +1,2 @@
 move dev-python/pysol_cards dev-python/pysol-cards
+move sys-kernel/installkernel-gentoo sys-kernel/installkernel

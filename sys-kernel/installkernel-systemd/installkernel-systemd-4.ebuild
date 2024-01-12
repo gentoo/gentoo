@@ -11,13 +11,13 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-RDEPEND=">=sys-kernel/installkernel-gentoo-14"
+RDEPEND=">=sys-kernel/installkernel-14"
 
 pkg_setup() {
 	elog "The wrapper functionality of ${PN} has been integrated into"
-	elog "sys-kernel/installkernel-gentoo[systemd]."
+	elog "sys-kernel/installkernel[systemd]."
 	elog "${PN} can be safely removed and replaced:"
 	elog
-	elog "emerge --noreplace sys-kernel/installkernel-gentoo"
+	elog "emerge --noreplace sys-kernel/installkernel"
 	elog "emerge --depclean sys-kernel/installkernel-systemd"
 }

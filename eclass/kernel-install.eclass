@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -63,14 +63,14 @@ RESTRICT+="
 _IDEPEND_BASE="
 	!initramfs? (
 		|| (
-			>=sys-kernel/installkernel-gentoo-8
+			>=sys-kernel/installkernel-8
 			>=sys-kernel/installkernel-systemd-2-r5
 		)
 	)
 	initramfs? (
 		>=sys-kernel/dracut-059-r4
 		|| (
-			>=sys-kernel/installkernel-gentoo-8[dracut(-)]
+			>=sys-kernel/installkernel-8[dracut(-)]
 			>=sys-kernel/installkernel-systemd-2-r5
 		)
 	)
@@ -201,7 +201,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		generic-uki? (
 			|| (
 				>=sys-kernel/installkernel-systemd-3
-				>=sys-kernel/installkernel-gentoo-8[-dracut(-),-ukify(-)]
+				>=sys-kernel/installkernel-8[-dracut(-),-ukify(-)]
 			)
 		)
 		!generic-uki? (
