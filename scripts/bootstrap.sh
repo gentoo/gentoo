@@ -230,9 +230,6 @@ for opt in ${ORIGUSE} ; do
 		multilib)
 			ALLOWED_USE="${ALLOWED_USE} multilib"
 			;;
-		userlocales)
-			ALLOWED_USE="${ALLOWED_USE} userlocales"
-			;;
 	esac
 done
 
