@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${LLVM_SOABI}"
-KEYWORDS="amd64 arm arm64 ~loong x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~x86"
 IUSE="debug +libedit lzma ncurses +python test +xml"
 RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
@@ -27,9 +27,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	python? (
-		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_USEDEP}]
-		')
 		${PYTHON_DEPS}
 	)
 "
@@ -38,9 +35,6 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	python? (
 		>=dev-lang/swig-3.0.11
-		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_USEDEP}]
-		')
 	)
 	test? (
 		$(python_gen_cond_dep "
