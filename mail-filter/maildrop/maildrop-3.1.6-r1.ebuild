@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,13 +32,13 @@ CDEPEND="!mail-mta/courier
 	berkdb? ( net-mail/courier-imap[gdbm?,berkdb?] )
 	tools? (
 		!mail-mta/netqmail
-		!net-mail/courier-imap
+		!<net-mail/courier-imap-5.2.6
+		net-mail/courier-common
 	)"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
-	dovecot? ( net-mail/dovecot )
-	!net-mail/courier-common"
+	dovecot? ( net-mail/dovecot )"
 BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
@@ -115,21 +115,21 @@ src_install() {
 		fperms 4755 /usr/bin/maildrop
 	fi
 
+	#  Moved to courier-common
+	rm "${D}"/usr/bin/deliverquota || die
+	rm "${D}"/usr/bin/maildirkw || die
+	rm "${D}"/usr/bin/makedat || die
+	rm "${D}"/usr/bin/makedatprog || die
+	rm "${D}"/usr/share/man/man1/maildirkw.1 || die
+	rm "${D}"/usr/share/man/man1/makedat.1 || die
+	rm "${D}"/usr/share/man/man8/deliverquota.8 || die
+
 	dodoc AUTHORS ChangeLog INSTALL NEWS README \
 		README.postfix README.dovecotauth UPGRADE \
 		maildroptips.txt
 	docinto maildir
 	dodoc libs/maildir/AUTHORS libs/maildir/INSTALL \
 		libs/maildir/README*.txt libs/maildir/*.html
-
-	# bugs 61116, 374009, and 639124
-	if ! use tools ; then
-		for tool in maildirmake maildirkw deliverquota; do
-			rm "${D}/usr/bin/${tool}" || die
-			rm "${D}/usr/share/man/man"[0-9]"/${tool}."[0-9] || die
-		done
-		rm "${D}/usr/share/man/man5/maildir.5" || die
-	fi
 
 	insinto /etc
 	doins "${FILESDIR}"/maildroprc
