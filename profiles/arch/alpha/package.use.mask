@@ -20,7 +20,7 @@ dev-perl/DBD-mysql mysql
 # matoro <matoro_gentoo@matoro.tk> (2023-11-01)
 # Qt 6 not keyworded here.
 app-text/doxygen gui
-dev-util/cmake gui
+dev-build/cmake gui
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
 # dev-build/samurai is not keyworded here.

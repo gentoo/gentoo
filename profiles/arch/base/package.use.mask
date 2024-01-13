@@ -53,7 +53,7 @@ media-video/pipewire roc
 
 # Sam James <sam@gentoo.org> (2023-07-18)
 # dev-cpp/cppdap is not keyworded in most places
-dev-util/cmake dap
+dev-build/cmake dap
 
 # Sam James <sam@gentoo.org> (2023-07-09)
 # sys-libs/libhugetlbfs is broken w/ newer glibc, bug #806079

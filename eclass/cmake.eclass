@@ -130,7 +130,7 @@ fi
 # @DESCRIPTION:
 # Array of tests that should be skipped when running CTest.
 
-[[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-util/cmake-${CMAKE_MIN_VERSION}\" directly"
+[[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-build/cmake-${CMAKE_MIN_VERSION}\" directly"
 [[ ${CMAKE_BUILD_DIR} ]] && die "The ebuild must be migrated to BUILD_DIR"
 [[ ${CMAKE_REMOVE_MODULES} ]] && die "CMAKE_REMOVE_MODULES is banned, set CMAKE_REMOVE_MODULES_LIST array instead"
 [[ ${CMAKE_UTILS_QA_SRC_DIR_READONLY} ]] && die "Use CMAKE_QA_SRC_DIR_READONLY instead"
@@ -151,7 +151,7 @@ case ${CMAKE_MAKEFILE_GENERATOR} in
 esac
 
 if [[ ${PN} != cmake ]]; then
-	BDEPEND+=" >=dev-util/cmake-3.20.5"
+	BDEPEND+=" >=dev-build/cmake-3.20.5"
 fi
 
 # @FUNCTION: cmake_run_in

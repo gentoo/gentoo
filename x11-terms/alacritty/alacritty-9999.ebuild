@@ -1,4 +1,4 @@
-# Copyright 2017-2023 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,7 +57,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 BDEPEND="
-	dev-util/cmake
+	dev-build/cmake
 	>=virtual/rust-1.70.0
 	app-text/scdoc
 "

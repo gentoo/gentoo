@@ -1,9 +1,9 @@
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # tricks to circumvent false positive checks of old kernel
 
-if [[ ${CATEGORY}/${PN} == dev-util/cmake && ${EBUILD_PHASE} == configure ]]; then
+if [[ ${CATEGORY}/${PN} == dev-build/cmake && ${EBUILD_PHASE} == configure ]]; then
     einfo "Removing utimensat outputs..."
     sed -e '/UTIMENSAT=/d' -i "${S}"/Source/kwsys/CMakeLists.txt || die
 elif [[ ${CATEGORY}/${PN} == dev-libs/libuv && ${EBUILD_PHASE} == prepare ]]; then

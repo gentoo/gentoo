@@ -87,7 +87,7 @@ net-misc/curl -nghttp3
 
 # Sam James <sam@gentoo.org> (2023-07-18)
 # dev-cpp/cppdap is not keyworded in most places
-dev-util/cmake -dap
+dev-build/cmake -dap
 
 # Marek Szuba <marecki@gentoo.org> (2023-06-29)
 # Now that we globally unmask USE=qt6 for amd64, the mask set

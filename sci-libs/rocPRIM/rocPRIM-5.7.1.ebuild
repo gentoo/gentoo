@@ -20,7 +20,7 @@ RDEPEND="dev-util/hip
 	benchmark? ( dev-cpp/benchmark )
 	test? ( dev-cpp/gtest )"
 BDEPEND="dev-build/rocm-cmake
-	>=dev-util/cmake-3.22"
+	>=dev-build/cmake-3.22"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/rocPRIM-rocm-${PV}"

@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -72,7 +72,7 @@ BDEPEND="
 	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
-	dev-util/cmake
+	dev-build/cmake
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

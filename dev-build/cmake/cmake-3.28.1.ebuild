@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,7 +48,7 @@ else
 			https://github.com/Kitware/CMake/releases/download/v$(ver_cut 1-3)/${MY_P}-SHA-256.txt.asc
 		)"
 
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20230817 )"
 	fi
@@ -106,9 +106,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0006-Filter-out-distcc-warnings-to-avoid-confusing-CMake.patch
 
 	# Upstream fixes (can usually be removed with a version bump)
-	# pkgconf
-	# fixes https://github.com/pkgconf/pkgconf/issues/317
-	"${FILESDIR}"/${PN}-3.27.4-0001-FindPkgConfig-ignore-whitespace-separators-in-versio.patch
+	"${FILESDIR}"/${PN}-3.28.0-c99.patch
 )
 
 cmake_src_bootstrap() {

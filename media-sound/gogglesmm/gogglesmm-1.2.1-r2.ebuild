@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ RDEPEND="x11-libs/fox:1.7
 	aac? ( media-libs/faad2 )
 	pulseaudio? ( media-sound/pulseaudio )
 	opengl? ( media-libs/libepoxy virtual/glu )"
-DEPEND="dev-util/cmake ${RDEPEND}"
+DEPEND="dev-build/cmake ${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/"${P}"-use-fox-1.7.67.patch )
 

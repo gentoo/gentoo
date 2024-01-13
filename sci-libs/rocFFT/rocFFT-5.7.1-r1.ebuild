@@ -40,7 +40,7 @@ BDEPEND="
 		sys-libs/libomp
 		sci-libs/hipRAND:${SLOT}[${ROCM_USEDEP}]
 	)
-	>=dev-util/cmake-3.22
+	>=dev-build/cmake-3.22
 	dev-build/rocm-cmake
 	dev-db/sqlite
 "

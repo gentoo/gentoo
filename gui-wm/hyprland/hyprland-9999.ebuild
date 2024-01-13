@@ -26,7 +26,7 @@ IUSE="X legacy-renderer systemd"
 # so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
-	dev-util/cmake
+	dev-build/cmake
 	dev-build/meson
 	dev-vcs/git
 	sys-auth/polkit
@@ -89,7 +89,7 @@ BDEPEND="
 	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
-	dev-util/cmake
+	dev-build/cmake
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

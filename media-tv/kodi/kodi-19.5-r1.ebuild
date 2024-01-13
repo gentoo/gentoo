@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -173,8 +173,8 @@ DEPEND="${COMMON_DEPEND} ${COMMON_TARGET_DEPEND}
 	test? ( >=dev-cpp/gtest-1.10.0 )
 "
 BDEPEND="${COMMON_DEPEND}
+	dev-build/cmake
 	dev-lang/swig
-	dev-util/cmake
 	media-libs/giflib
 	>=dev-libs/flatbuffers-1.11.0
 	>=media-libs/libjpeg-turbo-2.0.4:=

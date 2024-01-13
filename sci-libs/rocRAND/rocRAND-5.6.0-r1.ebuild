@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	benchmark? ( dev-cpp/benchmark )
 	test? ( dev-cpp/gtest )"
 BDEPEND="dev-build/rocm-cmake
-	>=dev-util/cmake-3.22"
+	>=dev-build/cmake-3.22"
 
 S="${WORKDIR}/rocRAND-rocm-${PV}"
 

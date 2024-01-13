@@ -49,7 +49,7 @@ DEPEND="${RDEPEND}
 	dev-qt/qtcore:5
 	gui? ( dev-qt/designer:5 )"
 
-BDEPEND="dev-util/cmake
+BDEPEND="dev-build/cmake
 	virtual/pkgconfig
 	jsonapi? ( app-text/doxygen )"
 
