@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 IUSE="+dracut grub systemd uki ukify"
 
 RDEPEND="
+	!<=sys-kernel/installkernel-systemd-3
 	>=sys-apps/debianutils-4.9-r1
 	dracut? ( >=sys-kernel/dracut-059-r4 )
 	systemd? (
