@@ -47,7 +47,7 @@ BDEPEND="
 		')
 	)
 "
-#	test? ( dev-util/valgrind )
+#	test? ( dev-debug/valgrind )
 
 python_check_deps() {
 	if use doc; then

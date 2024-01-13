@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 LUA_COMPAT=( lua5-3 )
 
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -102,13 +102,13 @@ BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
 	app-alternatives/cpio
+	dev-debug/valgrind
 	>=dev-util/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
 	dev-util/ragel
-	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/grep
 	sys-apps/util-linux

@@ -1,12 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-# The Valgrind upstream maintainer also maintains it in Fedora and will
-# backport fixes there which haven't yet made it into a release. Keep an eye
-# on it for fixes we should cherry-pick too:
-# https://src.fedoraproject.org/rpms/valgrind/tree/rawhide
 
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
@@ -20,7 +15,7 @@ else
 	inherit verify-sig
 	SRC_URI="https://sourceware.org/pub/valgrind/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://sourceware.org/pub/valgrind/${P}.tar.bz2.asc )"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="-* amd64 ~arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -37,8 +32,6 @@ PATCHES=(
 	# Respect CFLAGS, LDFLAGS
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
-	"${FILESDIR}"/${PN}-3.21.0-glibc-2.34-suppressions.patch
-	"${FILESDIR}"/${PN}-3.21.0-memcpy-fortify_source.patch
 )
 
 src_prepare() {

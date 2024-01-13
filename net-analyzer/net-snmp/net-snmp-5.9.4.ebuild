@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=yes
 DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 WANT_AUTOMAKE=none
 
 inherit autotools distutils-r1 perl-module systemd
@@ -68,7 +68,7 @@ COMMON_DEPEND="
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="
 	${COMMON_DEPEND}
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="
 	${COMMON_DEPEND}

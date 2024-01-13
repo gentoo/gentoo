@@ -68,7 +68,7 @@ COMMON_DEPEND="
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="
 	${COMMON_DEPEND}
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="
 	${COMMON_DEPEND}

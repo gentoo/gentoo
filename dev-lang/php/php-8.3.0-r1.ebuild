@@ -119,7 +119,7 @@ COMMON_DEPEND="
 	tokyocabinet? ( dev-db/tokyocabinet )
 	truetype? ( media-libs/freetype )
 	unicode? ( dev-libs/oniguruma:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	webp? ( media-libs/libwebp:0= )
 	xml? ( dev-libs/libxml2 )
 	xpm? ( x11-libs/libXpm )

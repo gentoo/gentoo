@@ -23,7 +23,7 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-base-policy )
 "
-DEPEND+=" valgrind? ( dev-util/valgrind )"
+DEPEND+=" valgrind? ( dev-debug/valgrind )"
 BDEPEND="
 	>=sys-devel/libtool-2.4.2
 	doc? ( app-text/doxygen )

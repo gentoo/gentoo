@@ -111,13 +111,13 @@ BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
 	app-alternatives/cpio
+	dev-debug/valgrind
 	>=dev-util/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
 	dev-util/ragel
-	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/grep
 	sys-apps/util-linux

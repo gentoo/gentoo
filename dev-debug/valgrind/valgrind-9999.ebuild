@@ -1,7 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+# The Valgrind upstream maintainer also maintains it in Fedora and will
+# backport fixes there which haven't yet made it into a release. Keep an eye
+# on it for fixes we should cherry-pick too:
+# https://src.fedoraproject.org/rpms/valgrind/tree/rawhide
 
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
@@ -13,9 +18,15 @@ if [[ ${PV} == 9999 ]]; then
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.gpg
 	inherit verify-sig
-	SRC_URI="https://sourceware.org/pub/valgrind/${P}.tar.bz2"
-	SRC_URI+=" verify-sig? ( https://sourceware.org/pub/valgrind/${P}.tar.bz2.asc )"
-	KEYWORDS="-* amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+
+	MY_P="${P/_rc/.RC}"
+	SRC_URI="https://sourceware.org/pub/valgrind/${MY_P}.tar.bz2"
+	SRC_URI+=" verify-sig? ( https://sourceware.org/pub/valgrind/${MY_P}.tar.bz2.asc )"
+	S="${WORKDIR}"/${MY_P}
+
+	if [[ ${PV} != *_rc* ]] ; then
+		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	fi
 fi
 
 LICENSE="GPL-2"
@@ -32,8 +43,7 @@ PATCHES=(
 	# Respect CFLAGS, LDFLAGS
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
-	"${FILESDIR}"/${P}-tests-clang16.patch
-	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}"/${PN}-3.21.0-glibc-2.34-suppressions.patch
 )
 
 src_prepare() {
@@ -42,13 +52,6 @@ src_prepare() {
 
 	# Don't force multiarch stuff on OSX, bug #306467
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
-
-	if use elibc_musl ; then
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-3.13.0-malloc.patch
-			"${FILESDIR}"/${PN}-3.20.0-musl-interpose.patch
-		)
-	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with
@@ -66,7 +69,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--with-gdbscripts-dir="${EPREFIX}"/usr/share/gdb/auto-load
+	)
 
 	# Respect ar, bug #468114
 	tc-export AR
@@ -79,7 +84,7 @@ src_configure() {
 	#                          Note: -fstack-protector-explicit is a no-op for Valgrind, no need to strip it
 	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
-	# -ggdb3                segmentation fault on startup
+	# -fharden-control-flow-redundancy: breaks runtime ('jump to the invalid address stated on the next line')
 	# -flto*                fails to build, bug #858509
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
@@ -87,7 +92,8 @@ src_configure() {
 	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	filter-flags -fsanitize -fsanitize=*
-	replace-flags -ggdb3 -ggdb2
+	filter-flags -fharden-control-flow-redundancy
+	append-cflags $(test-flags-CC -fno-harden-control-flow-redundancy)
 	filter-lto
 
 	if use amd64 || use ppc64; then
@@ -103,6 +109,11 @@ src_configure() {
 	fi
 
 	econf "${myconf[@]}"
+}
+
+src_test() {
+	# fxsave.o, tronical.o have textrels
+	emake LDFLAGS="${LDFLAGS} -Wl,-z,notext" check
 }
 
 src_install() {

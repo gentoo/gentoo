@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,15 +18,9 @@ if [[ ${PV} == 9999 ]]; then
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/valgrind.gpg
 	inherit verify-sig
-
-	MY_P="${P/_rc/.RC}"
-	SRC_URI="https://sourceware.org/pub/valgrind/${MY_P}.tar.bz2"
-	SRC_URI+=" verify-sig? ( https://sourceware.org/pub/valgrind/${MY_P}.tar.bz2.asc )"
-	S="${WORKDIR}"/${MY_P}
-
-	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-	fi
+	SRC_URI="https://sourceware.org/pub/valgrind/${P}.tar.bz2"
+	SRC_URI+=" verify-sig? ( https://sourceware.org/pub/valgrind/${P}.tar.bz2.asc )"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -44,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 	"${FILESDIR}"/${PN}-3.21.0-glibc-2.34-suppressions.patch
+	"${FILESDIR}"/${PN}-3.21.0-memcpy-fortify_source.patch
 )
 
 src_prepare() {
@@ -69,9 +64,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=(
-		--with-gdbscripts-dir="${EPREFIX}"/usr/share/gdb/auto-load
-	)
+	local myconf=()
 
 	# Respect ar, bug #468114
 	tc-export AR
@@ -84,7 +77,7 @@ src_configure() {
 	#                          Note: -fstack-protector-explicit is a no-op for Valgrind, no need to strip it
 	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
-	# -fharden-control-flow-redundancy: breaks runtime ('jump to the invalid address stated on the next line')
+	# -ggdb3                segmentation fault on startup
 	# -flto*                fails to build, bug #858509
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
@@ -92,8 +85,7 @@ src_configure() {
 	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	filter-flags -fsanitize -fsanitize=*
-	filter-flags -fharden-control-flow-redundancy
-	append-cflags $(test-flags-CC -fno-harden-control-flow-redundancy)
+	replace-flags -ggdb3 -ggdb2
 	filter-lto
 
 	if use amd64 || use ppc64; then
@@ -109,11 +101,6 @@ src_configure() {
 	fi
 
 	econf "${myconf[@]}"
-}
-
-src_test() {
-	# fxsave.o, tronical.o have textrels
-	emake LDFLAGS="${LDFLAGS} -Wl,-z,notext" check
 }
 
 src_install() {

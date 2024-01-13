@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	debug? ( dev-util/valgrind )"
+	debug? ( dev-debug/valgrind )"
 BDEPEND="
 	$(python_gen_any_dep '
 		>=dev-util/scons-3.1.1[${PYTHON_USEDEP}]

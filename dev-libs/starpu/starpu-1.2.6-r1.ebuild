@@ -30,7 +30,7 @@ RDEPEND="
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
 	opengl? ( media-libs/freeglut:0= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 
 DEPEND="${RDEPEND}"

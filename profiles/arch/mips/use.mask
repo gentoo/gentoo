@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -30,7 +30,7 @@ tpm
 rdma
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-11)
-# dev-util/valgrind is not keyworded here yet,
+# dev-debug/valgrind is not keyworded here yet,
 # though the MIPS platform is supported upstream
 valgrind
 

@@ -25,7 +25,7 @@
 		</flag>
 		<flag name="valgrind">
 			Disable pymalloc when running under
-			<pkg>dev-util/valgrind</pkg> is detected (may incur minor
+			<pkg>dev-debug/valgrind</pkg> is detected (may incur minor
 			performance penalty even when valgrind is not used)
 		</flag>
 		<flag name="wininst">

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_10 )
 
 inherit meson python-single-r1 systemd udev
 
@@ -34,7 +34,7 @@ BDEPEND="
 	test? (
 		dev-libs/check
 		dev-libs/gobject-introspection
-		dev-util/valgrind
+		dev-debug/valgrind
 		$(python_gen_cond_dep '
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
 			dev-python/python-evdev[${PYTHON_USEDEP}]

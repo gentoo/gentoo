@@ -96,7 +96,7 @@ media-video/jellyfin-media-player
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7
 # https://valgrind.org/info/platforms.html
-dev-util/valgrind
+dev-debug/valgrind
 
 # James Le Cuirot <chewi@gentoo.org> (2015-05-24)
 # This is built for armv7a and will not work on earlier generations.

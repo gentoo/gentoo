@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -102,7 +102,7 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-1.3:1 )
 	X? (
 		>=x11-libs/libxcb-1.6
