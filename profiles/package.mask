@@ -463,11 +463,6 @@ dev-ruby/http:4
 <sys-kernel/gentoo-kernel-5.10
 <virtual/dist-kernel-5.10
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-12)
-# Merged into dev-python/blake3[-rust].  Please use that instead.
-# Removal on 2024-01-11.  Bug #919771.
-dev-python/blake3-py-c
-
 # Hans de Graaff <graaff@gentoo.org> (2023-12-10)
 # Test failures that seem to indicate this package no longer works
 # correctly. Last release 6 years ago. No reverse dependencies.
