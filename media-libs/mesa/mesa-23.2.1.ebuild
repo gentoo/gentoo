@@ -167,7 +167,7 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	>=dev-util/meson-1.0.0
+	>=dev-build/meson-1.0.0
 	${PYTHON_DEPS}
 	opencl? (
 		>=virtual/rust-1.62.0

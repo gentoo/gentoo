@@ -29,7 +29,7 @@ sys-devel/gcc
 sys-devel/gcc-config
 dev-java/java-config
 dev-util/cmake
-dev-util/meson
+dev-build/meson
 # NOTE: portage no longer list /etc/gentoo-release,
 # so this is not redundant
 sys-apps/baselayout

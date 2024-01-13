@@ -126,7 +126,7 @@ pkg_postinst() {
 		optfeature "static C++ Qt code analysis" dev-util/clazy
 		optfeature "static C/C++ code analysis" dev-util/cppcheck
 		optfeature "heap memory profiling" "dev-util/heaptrack[gui]"
-		optfeature "meson project manager plugin" dev-util/meson
+		optfeature "meson project manager plugin" dev-build/meson
 		optfeature "formatting configurations via customscript plugin" dev-util/indent
 		optfeature "formatting configurations via customscript plugin" dev-util/uncrustify
 	fi

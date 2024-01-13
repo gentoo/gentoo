@@ -17,7 +17,7 @@
 	<use>
 		<flag name="dtc">Require <pkg>sys-apps/dtc</pkg></flag>
 		<flag name="lzip">Require <pkg>app-arch/lzip</pkg></flag>
-		<flag name="meson">Require <pkg>dev-util/meson</pkg></flag>
+		<flag name="meson">Require <pkg>dev-build/meson</pkg></flag>
 		<flag name="ninja">Require <pkg>app-alternatives/ninja</pkg></flag>
 		<flag name="rsync">Require <pkg>net-misc/rsync</pkg></flag>
 		<flag name="wget">Require <pkg>net-misc/wget</pkg></flag>

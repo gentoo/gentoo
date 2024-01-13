@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,7 +73,7 @@ COMMON_DEPEND="
 "
 BDEPEND="
 	${COMMON_DEPEND}
-	>=dev-util/meson-1.2.1
+	>=dev-build/meson-1.2.1
 	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	test? (

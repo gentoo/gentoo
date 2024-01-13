@@ -155,7 +155,7 @@ BDEPEND="
 	opencl? (
 		>=virtual/rust-1.62.0
 		>=dev-util/bindgen-0.58.0
-		>=dev-util/meson-1.3.0
+		>=dev-build/meson-1.3.0
 	)
 	app-alternatives/yacc
 	app-alternatives/lex

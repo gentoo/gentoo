@@ -111,7 +111,7 @@ that are currently available with packages include:
 * dev-python/python-lsp-server for more accurate Python
   autocompletion support.
 * dev-debug/valgrind for integration with valgrind.
-* dev-util/meson for integration with the Meson build system.
+* dev-build/meson for integration with the Meson build system.
 * virtual/rust for integration with the Rust Cargo build system.
 * dev-util/cmake for integration with the CMake build system.
 * net-libs/nodejs[npm] for integration with the NPM package system.
@@ -269,7 +269,7 @@ pkg_postinst() {
 	optfeature "Rust's Cargo build system" virtual/rust
 	optfeature "CMake" dev-util/cmake
 	optfeature "Java Maven build system" dev-java/maven-bin
-	optfeature "Meson Build system" dev-util/meson
+	optfeature "Meson Build system" dev-build/meson
 }
 
 pkg_postrm() {

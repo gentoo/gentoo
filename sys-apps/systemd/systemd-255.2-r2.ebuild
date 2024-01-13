@@ -158,7 +158,7 @@ PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 BDEPEND="
 	app-arch/xz-utils:0
 	dev-util/gperf
-	>=dev-util/meson-0.46
+	>=dev-build/meson-0.46
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
 	virtual/pkgconfig
