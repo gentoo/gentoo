@@ -51,7 +51,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/signify-keys-opensmtpd )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/signify-keys/${PN}.pub"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/signify-keys/${PN}.pub"
 
 QA_CONFIG_IMPL_DECL_SKIP=( closefrom )
 
