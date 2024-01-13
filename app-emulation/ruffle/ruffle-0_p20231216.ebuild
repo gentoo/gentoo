@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -642,7 +642,7 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB curl
 " # crates
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
