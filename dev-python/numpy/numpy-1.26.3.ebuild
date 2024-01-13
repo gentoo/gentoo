@@ -35,7 +35,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	>=dev-util/meson-1.1.0
+	>=dev-build/meson-1.1.0
 	>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
 	lapack? (
 		virtual/pkgconfig

@@ -196,7 +196,7 @@ else the example tab will be empty alongside missing documentation.
 
 Build Systems:
 - CMakeProjectManager (dev-util/cmake)
-- MesonProjectManager (dev-util/meson)
+- MesonProjectManager (dev-build/meson)
 - QbsProjectManager (dev-util/qbs)
 
 C++:

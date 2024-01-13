@@ -595,7 +595,7 @@ net-fs/samba test
 
 # Mike Gilbert <floppym@gentoo.org> (2020-04-23)
 # Tests are very sensitive to the host environment.
-dev-util/meson test
+dev-build/meson test
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-devel/gcc

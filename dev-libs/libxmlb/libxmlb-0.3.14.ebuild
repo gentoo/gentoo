@@ -34,7 +34,7 @@ DEPEND="
 
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/meson-0.47.0
+	>=dev-build/meson-0.47.0
 	virtual/pkgconfig
 	introspection? (
 		$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')

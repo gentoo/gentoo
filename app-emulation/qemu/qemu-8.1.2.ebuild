@@ -274,7 +274,7 @@ PPC_FIRMWARE_DEPEND="
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
-	>=dev-util/meson-0.63.0
+	>=dev-build/meson-0.63.0
 	dev-python/pip[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (

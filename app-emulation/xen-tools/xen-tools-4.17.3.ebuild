@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
@@ -150,7 +150,7 @@ DEPEND="${COMMON_DEPEND}
 	hvm? ( x11-base/xorg-proto )
 	qemu? (
 		app-arch/snappy:=
-		dev-util/meson
+		dev-build/meson
 		sdl? (
 			media-libs/libsdl[X]
 			media-libs/libsdl2[X]

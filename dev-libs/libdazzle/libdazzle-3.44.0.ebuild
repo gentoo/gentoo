@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # libxml2 required for glib-compile-resources; glib-utils for glib-mkenums
 BDEPEND="
-	>=dev-util/meson-0.49.0
+	>=dev-build/meson-0.49.0
 	vala? ( $(vala_depend) )
 	dev-libs/libxml2:2
 	dev-util/glib-utils

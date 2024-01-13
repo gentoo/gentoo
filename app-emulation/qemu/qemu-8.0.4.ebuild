@@ -273,7 +273,7 @@ PPC_FIRMWARE_DEPEND="
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
-	dev-util/meson
+	dev-build/meson
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (

@@ -27,7 +27,7 @@ IUSE="X legacy-renderer systemd"
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
 	dev-util/cmake
-	dev-util/meson
+	dev-build/meson
 	dev-vcs/git
 	sys-auth/polkit
 	virtual/pkgconfig

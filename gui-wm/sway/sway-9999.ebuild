@@ -60,7 +60,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.24
-	>=dev-util/meson-0.60.0
+	>=dev-build/meson-0.60.0
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then

@@ -13,7 +13,7 @@ QEMU_DOCS_VERSION="7.2.0"
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
@@ -272,7 +272,7 @@ PPC_FIRMWARE_DEPEND="
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
-	dev-util/meson
+	dev-build/meson
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (

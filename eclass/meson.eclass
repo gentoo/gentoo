@@ -43,7 +43,7 @@ _MESON_ECLASS=1
 
 inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
-BDEPEND=">=dev-util/meson-1.2.1
+BDEPEND=">=dev-build/meson-1.2.1
 	${NINJA_DEPEND}
 	dev-build/meson-format-array
 "

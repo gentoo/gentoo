@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ SVG_DEPEND="
 # therefore break existing installs but there's no way around this. At
 # least GTK+3 is unlikely to see a release beyond 3.24.
 BDEPEND="
-	>=dev-util/meson-0.56.0
+	>=dev-build/meson-0.56.0
 	cinnamon? (
 		${SASSC_DEPEND}
 		gnome-extra/cinnamon
