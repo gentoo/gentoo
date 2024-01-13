@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,9 @@ all_ruby_prepare() {
 	sed -e '/coveralls/I s:^:#:' -i test/helper.rb || die
 	sed -i -e '/rubocop/ s:^:#:' \
 		-e '/RuboCop/,/end/ s:^:#:' Rakefile || die
+
+	sed -e 's/MiniTest::Unit::TestCase/Minitest::Test/' \
+		-i test/helper.rb || die
 }
 
 each_ruby_test() {
