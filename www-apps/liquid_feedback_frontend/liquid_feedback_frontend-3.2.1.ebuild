@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ SRC_URI="https://www.public-software-group.org/pub/projects/liquid_feedback/fron
 LICENSE="HPND CC-BY-2.5"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="~www-apps/liquid_feedback_core-3.2.2
 	~www-servers/moonbridge-1.0.1
