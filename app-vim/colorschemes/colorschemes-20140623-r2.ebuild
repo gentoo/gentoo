@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,11 @@ VIM_PLUGIN_HELPTEXT=\
 color schemes, use :colorscheme schemename (tab completion is available
 for scheme names). To automatically set a scheme at startup, please see
 :help vimrc."
+
+RDEPEND="
+	!app-vim/molokai
+	!app-vim/zenburn
+"
 
 src_prepare() {
 	default
