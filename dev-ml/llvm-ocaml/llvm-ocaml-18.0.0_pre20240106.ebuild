@@ -28,7 +28,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
 	dev-ml/findlib
-	>=dev-util/cmake-3.16
 "
 
 LLVM_COMPONENTS=( llvm cmake third-party )
