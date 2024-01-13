@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,8 @@ IUSE="
 	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags debug
 	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls openal
 	osmesa perl pulseaudio +sdl selinux +ssl udev udisks +unwind usb
-	v4l +vkd3d +xcomposite xinerama"
+	v4l +vkd3d +xcomposite xinerama
+"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -59,7 +60,8 @@ WINE_DLOPEN_DEPEND="
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
-	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )"
+	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
+"
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
 	x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -78,7 +80,8 @@ WINE_COMMON_DEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
-	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )"
+	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )
+"
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
@@ -90,11 +93,13 @@ RDEPEND="
 		dev-perl/XML-LibXML
 	)
 	selinux? ( sec-policy/selinux-wine )
-	udisks? ( sys-fs/udisks:2 )"
+	udisks? ( sys-fs/udisks:2 )
+"
 DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
@@ -103,7 +108,8 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )
+"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
