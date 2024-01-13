@@ -39,7 +39,6 @@ DEPEND="
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
 "
 BDEPEND="
-	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
