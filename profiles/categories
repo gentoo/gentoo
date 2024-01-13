@@ -31,8 +31,10 @@ app-text
 app-vim
 app-xemacs
 dev-ada
+dev-build
 dev-cpp
 dev-db
+dev-debug
 dev-dotnet
 dev-embedded
 dev-erlang
