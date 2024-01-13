@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ SRC_URI="https://dev.gentoo.org/~tupone/distfiles/${MY_P}.tar.gz"
 LICENSE="Canon-IJ"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 DEPEND="virtual/libusb:1
 	dev-libs/libxml2
