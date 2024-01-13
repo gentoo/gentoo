@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-vcs/subversion
 	sys-apps/lsb-release
-	>=sys-devel/bmake-20210314-r1
+	>=dev-build/bmake-20210314-r1
 	app-alternatives/yacc"
 
 src_prepare() {
