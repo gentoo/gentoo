@@ -67,7 +67,7 @@ DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
 	test? ( app-arch/xz-utils )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 # autoconf-archive needed to eautoreconf
 BDEPEND="

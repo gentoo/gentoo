@@ -4,7 +4,7 @@
 EAPI=8
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/drm.git"
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
@@ -32,7 +32,7 @@ SLOT="0"
 RDEPEND="
 	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	valgrind? ( dev-util/valgrind )"
+	valgrind? ( dev-debug/valgrind )"
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')"
 

@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	)
 	test? (
 		dev-util/cunit
-		dev-util/valgrind
+		dev-debug/valgrind
 	)"
 
 BDEPEND="dev-util/glib-utils

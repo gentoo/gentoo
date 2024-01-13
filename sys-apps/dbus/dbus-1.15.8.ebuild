@@ -52,7 +52,7 @@ DEPEND="
 		${PYTHON_DEPS}
 		>=dev-libs/glib-2.40:2
 	)
-	valgrind? ( >=dev-util/valgrind-3.6 )
+	valgrind? ( >=dev-debug/valgrind-3.6 )
 	X? ( x11-base/xorg-proto )
 "
 RDEPEND="

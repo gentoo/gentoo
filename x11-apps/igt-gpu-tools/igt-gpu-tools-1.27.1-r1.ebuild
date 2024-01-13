@@ -7,7 +7,7 @@ if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="Intel GPU userland tools"
@@ -61,7 +61,7 @@ RDEPEND="
 	)
 	runner? ( dev-libs/json-c:= )
 	unwind? ( sys-libs/libunwind:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-1.25-r1 )

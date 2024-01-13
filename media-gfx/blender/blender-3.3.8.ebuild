@@ -107,7 +107,7 @@ RDEPEND="${PYTHON_DEPS}
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 
 DEPEND="${RDEPEND}

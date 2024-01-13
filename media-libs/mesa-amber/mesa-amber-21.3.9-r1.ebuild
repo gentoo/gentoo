@@ -71,7 +71,7 @@ for card in ${RADEON_CARDS}; do
 done
 
 DEPEND="${RDEPEND}
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	X? (
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-base/xorg-proto

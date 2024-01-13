@@ -76,7 +76,7 @@ DEPEND="
 		dev-python/ensurepip-setuptools
 		dev-python/ensurepip-wheel
 	)
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 # autoconf-archive needed to eautoreconf
 BDEPEND="

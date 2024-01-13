@@ -209,7 +209,7 @@ Code Analyzer:
 - Cppcheck (dev-util/cppcheck)
 - CtfVisualizer (USE=tracing)
 - PerfProfiler (USE=tracing)
-- Valgrind (dev-util/valgrind)
+- Valgrind (dev-debug/valgrind)
 
 Core:
 - Help (USE=help + dev-qt/qt-docs:6 with USE=\"examples qch\")

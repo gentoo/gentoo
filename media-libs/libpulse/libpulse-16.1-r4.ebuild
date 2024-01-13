@@ -39,7 +39,7 @@ RDEPEND="
 	gtk? ( x11-libs/gtk+:3 )
 	selinux? ( sec-policy/selinux-pulseaudio )
 	systemd? ( sys-apps/systemd:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]

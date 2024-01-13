@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -174,7 +174,7 @@ kwallet
 flite
 
 # Jeroen Roovers <jer@gentoo.org> (2008-06-07)
-# dev-util/valgrind has not been ported to HPPA.
+# dev-debug/valgrind has not been ported to HPPA.
 valgrind
 
 # Jeroen Roovers <jer@gentoo.org> (2008-01-04)

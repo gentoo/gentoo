@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ else
 	inherit verify-sig
 	SRC_URI="https://sourceware.org/pub/valgrind/${P}.tar.bz2"
 	SRC_URI+=" verify-sig? ( https://sourceware.org/pub/valgrind/${P}.tar.bz2.asc )"
-	KEYWORDS="-* amd64 ~arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="-* amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -32,6 +32,8 @@ PATCHES=(
 	# Respect CFLAGS, LDFLAGS
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
+	"${FILESDIR}"/${P}-tests-clang16.patch
+	"${FILESDIR}"/${P}-gcc-13.patch
 )
 
 src_prepare() {
@@ -40,6 +42,13 @@ src_prepare() {
 
 	# Don't force multiarch stuff on OSX, bug #306467
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
+
+	if use elibc_musl ; then
+		PATCHES+=(
+			"${FILESDIR}"/${PN}-3.13.0-malloc.patch
+			"${FILESDIR}"/${PN}-3.20.0-musl-interpose.patch
+		)
+	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with

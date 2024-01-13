@@ -104,7 +104,7 @@ RDEPEND="${PYTHON_DEPS}
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	wayland? (
 		>=dev-libs/wayland-1.12
 		>=dev-libs/wayland-protocols-1.15

@@ -242,7 +242,7 @@ DEPEND="${COMMON_DEPEND}
 		media-fonts/dejavu
 		media-fonts/liberation-fonts
 	)
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="${COMMON_DEPEND}
 	acct-group/libreoffice
