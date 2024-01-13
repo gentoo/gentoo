@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,8 +69,6 @@ KEYWORDS="~amd64"
 QA_FLAGS_IGNORED="usr/lib/.*"
 RESTRICT="test" #depends on single pkg ( pytorch )
 
-RDEPEND="
-"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
