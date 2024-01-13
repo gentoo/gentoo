@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,10 +32,13 @@ IUSE="
 	llvm-libunwind custom-cflags +fontconfig +gecko gphoto2 +gstreamer
 	kerberos +mingw +mono netapi nls odbc opencl +opengl osmesa pcap
 	perl pulseaudio samba scanner +sdl selinux +ssl +strip +truetype
-	udev udisks +unwind usb v4l +vulkan +xcomposite xinerama"
+	udev udisks +unwind usb v4l +vulkan +xcomposite xinerama
+"
+# bug #551124 for truetype
 REQUIRED_USE="
 	X? ( truetype )
-	crossdev-mingw? ( mingw )" # bug #551124 for truetype
+	crossdev-mingw? ( mingw )
+"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -67,7 +70,8 @@ WINE_DLOPEN_DEPEND="
 	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+"
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
 	X? (
@@ -91,7 +95,8 @@ WINE_COMMON_DEPEND="
 		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
-	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )"
+	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
+"
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
@@ -110,11 +115,13 @@ RDEPEND="
 	)
 	samba? ( net-fs/samba[winbind] )
 	selinux? ( sec-policy/selinux-wine )
-	udisks? ( sys-fs/udisks:2 )"
+	udisks? ( sys-fs/udisks:2 )
+"
 DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
-	X? ( x11-base/xorg-proto )"
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="
 	dev-lang/perl
 	sys-devel/binutils
@@ -124,7 +131,8 @@ BDEPEND="
 	mingw? ( !crossdev-mingw? (
 		>=dev-util/mingw64-toolchain-10.0.0_p1-r2[${MULTILIB_USEDEP}]
 	) )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
 QA_CONFIG_IMPL_DECL_SKIP=(

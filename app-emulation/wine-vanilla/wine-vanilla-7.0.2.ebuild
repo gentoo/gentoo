@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,8 @@ fi
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
 HOMEPAGE="
 	https://www.winehq.org/
-	https://gitlab.winehq.org/wine/wine/"
+	https://gitlab.winehq.org/wine/wine/
+"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
@@ -33,10 +34,13 @@ IUSE="
 	+gstreamer kerberos ldap +mingw +mono netapi nls odbc openal
 	opencl +opengl osmesa pcap perl pulseaudio samba scanner +sdl
 	selinux +ssl +truetype udev udisks +unwind usb v4l +vkd3d +vulkan
-	+xcomposite xinerama"
+	+xcomposite xinerama
+"
+# bug #551124 for truetype
 REQUIRED_USE="
 	X? ( truetype )
-	crossdev-mingw? ( mingw )" # bug #551124 for truetype
+	crossdev-mingw? ( mingw )
+"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -68,7 +72,8 @@ WINE_DLOPEN_DEPEND="
 	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+"
 WINE_COMMON_DEPEND="
 	${WINE_DLOPEN_DEPEND}
 	X? (
@@ -95,7 +100,8 @@ WINE_COMMON_DEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
-	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )"
+	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )
+"
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
@@ -114,11 +120,13 @@ RDEPEND="
 	)
 	samba? ( net-fs/samba[winbind] )
 	selinux? ( sec-policy/selinux-wine )
-	udisks? ( sys-fs/udisks:2 )"
+	udisks? ( sys-fs/udisks:2 )
+"
 DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
-	X? ( x11-base/xorg-proto )"
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="
 	dev-lang/perl
 	sys-devel/binutils
@@ -126,7 +134,8 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
