@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~arm arm64"
+KEYWORDS="arm arm64"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
