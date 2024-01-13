@@ -17,4 +17,5 @@ move sys-devel/bmake dev-build/bmake
 move sys-devel/pmake dev-build/pmake
 move sys-devel/remake dev-build/remake
 move dev-util/valgrind dev-debug/valgrind
+move dev-util/meson-format-array dev-build/meson-format-array
 move dev-util/meson dev-build/meson
