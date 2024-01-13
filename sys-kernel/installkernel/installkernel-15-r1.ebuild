@@ -89,7 +89,7 @@ src_install() {
 		fi
 	fi
 
-	insinto /etc/kernel
+	insinto /usr/lib/kernel
 	doins "${T}/install.conf"
 
 	exeinto /usr/lib/kernel/install.d
