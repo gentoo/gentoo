@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,8 +89,8 @@ DEPEND="${CDEPEND}
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	>=dev-build/cmake-3.16
 	>=dev-cpp/cppgir-0_p20230926
-	>=dev-util/cmake-3.16
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 	wayland? ( dev-util/wayland-scanner )

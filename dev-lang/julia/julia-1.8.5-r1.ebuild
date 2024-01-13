@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # correct versions for stdlibs are in deps/checksums
@@ -9,7 +9,7 @@ EAPI=8
 # >=1.8.2 still sits on LLVM 13, bug: https://bugs.gentoo.org/876184
 MY_LLVM_V=13.0.1
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit check-reqs flag-o-matic optfeature pax-utils python-any-r1 toolchain-funcs
 
@@ -59,7 +59,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	dev-util/cmake
+	dev-build/cmake
 	virtual/pkgconfig
 "
 

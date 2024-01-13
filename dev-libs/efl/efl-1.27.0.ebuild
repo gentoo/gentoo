@@ -126,7 +126,7 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	examples? ( sys-devel/gettext )
-	mono? ( dev-util/cmake )
+	mono? ( dev-build/cmake )
 	nls? ( sys-devel/gettext )
 	wayland? ( dev-util/wayland-scanner )"
 

@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	|| (
 		app-emacs/cmake-mode
-		dev-util/cmake[emacs(-)]
+		dev-build/cmake[emacs(-)]
 	)
 "
 BDEPEND="${RDEPEND}"

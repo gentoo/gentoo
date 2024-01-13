@@ -168,7 +168,7 @@ dev-python/twisted test
 dev-tcltk/bwidget test
 dev-tcltk/snack test
 dev-tcltk/tcllib test
-dev-util/cmake test
+dev-build/cmake test
 sys-apps/dbus test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)

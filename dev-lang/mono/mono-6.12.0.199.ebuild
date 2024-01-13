@@ -31,7 +31,7 @@ RDEPEND="
 "
 # CMake is used for bundled deps
 BDEPEND="
-	dev-util/cmake
+	dev-build/cmake
 	app-alternatives/bc
 	app-alternatives/yacc
 	pax-kernel? ( sys-apps/elfix )

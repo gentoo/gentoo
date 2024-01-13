@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,7 @@ RDEPEND="
 	>=dev-python/scipy-1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-util/cmake-3.17
+	>=dev-build/cmake-3.17
 	>=dev-python/scikit-build-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.6[${PYTHON_USEDEP}]
 	test? (

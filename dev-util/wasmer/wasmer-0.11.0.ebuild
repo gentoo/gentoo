@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -181,7 +181,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 BDEPEND="
-	dev-util/cmake
+	dev-build/cmake
 	>=virtual/rust-1.37.0
 "
 

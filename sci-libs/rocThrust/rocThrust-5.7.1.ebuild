@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RDEPEND="dev-util/hip
 	sci-libs/rocPRIM:${SLOT}[${ROCM_USEDEP}]
 	test? ( dev-cpp/gtest )"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-util/cmake-3.22"
+BDEPEND=">=dev-build/cmake-3.22"
 
 S="${WORKDIR}/rocThrust-rocm-${PV}"
 

@@ -23,7 +23,7 @@ dev-perl/DBD-mysql mysql
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
+dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # sys-apps/flatpak is not keyworded here

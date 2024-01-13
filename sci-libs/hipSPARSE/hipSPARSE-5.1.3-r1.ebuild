@@ -46,7 +46,7 @@ RDEPEND="dev-util/rocminfo
 		sci-libs/rocSPARSE:${SLOT}[${ROCM_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-build/rocm-cmake
-	>=dev-util/cmake-3.22
+	>=dev-build/cmake-3.22
 	test? ( dev-cpp/gtest )"
 
 S="${WORKDIR}/hipSPARSE-rocm-${PV}"

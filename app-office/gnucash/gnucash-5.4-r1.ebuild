@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake gnome2-utils python-single-r1
 
@@ -93,7 +93,7 @@ DEPEND="
 # distutils is not available in python3.12, but it is still in setuptools
 BDEPEND="
 	dev-lang/swig
-	>=dev-util/cmake-3.10
+	>=dev-build/cmake-3.10
 	virtual/pkgconfig
 	python? (
 		$(python_gen_cond_dep '

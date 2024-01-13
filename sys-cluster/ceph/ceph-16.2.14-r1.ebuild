@@ -103,7 +103,7 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 	app-alternatives/cpio
 	dev-debug/valgrind
-	>=dev-util/cmake-3.5.0
+	>=dev-build/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx

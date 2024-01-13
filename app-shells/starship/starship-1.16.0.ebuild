@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -400,7 +400,7 @@ LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
 
-BDEPEND="dev-util/cmake
+BDEPEND="dev-build/cmake
 	>=virtual/rust-1.65"
 
 PATCHES=(

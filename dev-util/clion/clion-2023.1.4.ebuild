@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/wayland
-	dev-util/cmake
+	dev-build/cmake
 	app-alternatives/ninja
 	media-libs/alsa-lib
 	media-libs/freetype:2
