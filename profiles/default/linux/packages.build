@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file describes the packages needed to build a stage1 based on this
@@ -10,6 +10,7 @@ app-arch/gzip
 app-arch/xz-utils
 app-arch/tar
 app-shells/bash:0
+dev-build/make
 net-misc/rsync
 net-misc/wget
 sys-devel/autoconf
@@ -33,7 +34,6 @@ sys-devel/flex
 sys-devel/gcc
 sys-devel/gettext
 sys-devel/gnuconfig
-sys-devel/make
 sys-devel/patch
 virtual/editor
 virtual/libc

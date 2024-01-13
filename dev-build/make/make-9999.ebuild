@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/make.asc
 inherit flag-o-matic verify-sig
@@ -11,13 +11,13 @@ HOMEPAGE="https://www.gnu.org/software/make/make.html"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/make.git"
 	inherit autotools git-r3
-elif [[ $(ver_cut 3) -ge 90 ]] ; then
+elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
 	SRC_URI="https://alpha.gnu.org/gnu/make/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/make/${P}.tar.gz.sig )"
 else
-	SRC_URI="mirror://gnu//make/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu//make/${P}.tar.gz.sig )"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	SRC_URI="mirror://gnu/make/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/make/${P}.tar.gz.sig )"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-3+"
@@ -25,14 +25,17 @@ SLOT="0"
 IUSE="guile nls static"
 
 DEPEND="guile? ( >=dev-scheme/guile-1.8:= )"
-BDEPEND="nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-make )"
-RDEPEND="${DEPEND}
-	nls? ( virtual/libintl )"
+RDEPEND="
+	${DEPEND}
+	nls? ( virtual/libintl )
+"
+BDEPEND="
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-make )
+"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.82-darwin-library_search-dylib.patch
-	"${FILESDIR}"/${PN}-4.2-default-cxx.patch
+	"${FILESDIR}"/${PN}-4.4-default-cxx.patch
 )
 
 src_unpack() {

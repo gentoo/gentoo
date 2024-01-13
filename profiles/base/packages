@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
 
 # Gentoo Base Profile
@@ -35,6 +35,7 @@
 *app-arch/tar
 *app-arch/xz-utils
 *app-shells/bash:0
+*dev-build/make
 *net-misc/iputils
 *net-misc/rsync
 *net-misc/wget
@@ -59,7 +60,6 @@
 *sys-devel/binutils
 *sys-devel/gcc
 *sys-devel/gnuconfig
-*sys-devel/make
 *>=sys-devel/patch-2.7
 *sys-fs/e2fsprogs
 *virtual/dev-manager

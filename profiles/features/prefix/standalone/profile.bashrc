@@ -43,7 +43,7 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/perl && ${EBUILD_PHASE} == configure ]]; t
     ebegin "Removing Android detection"
     sed "/libandroid.so/d" -i "${S}"/Configure
     eend $?
-elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
+elif [[ ${CATEGORY}/${PN} == dev-build/make && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying default shell"
     sed -i -r "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," "${S}"/job.c
     eend $?
