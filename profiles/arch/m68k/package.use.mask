@@ -6,7 +6,7 @@
 media-libs/libv4l bpf
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Sam James <sam@gentoo.org> (2023-06-18)

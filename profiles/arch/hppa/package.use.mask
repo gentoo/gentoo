@@ -21,7 +21,7 @@ media-libs/libv4l bpf
 media-video/ffmpeg glslang shaderc vulkan
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)

@@ -11,3 +11,4 @@ move sys-devel/gdb-apple dev-debug/gdb-apple
 move dev-util/lldb dev-debug/lldb
 move dev-util/cgdb dev-debug/cgdb
 move dev-util/ninja dev-build/ninja
+move dev-util/samurai dev-build/samurai
