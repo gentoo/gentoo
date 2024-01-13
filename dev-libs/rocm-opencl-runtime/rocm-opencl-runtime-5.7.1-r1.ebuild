@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND=">=dev-libs/rocr-runtime-5.7
 	>=virtual/opencl-3
 	media-libs/mesa[-opencl]"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-util/rocm-cmake-5.3
+BDEPEND=">=dev-build/rocm-cmake-5.3
 	media-libs/glew
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
 	"
