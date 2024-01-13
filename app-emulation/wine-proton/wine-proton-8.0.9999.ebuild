@@ -31,7 +31,7 @@ IUSE="
 	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags
 	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls osmesa
 	perl pulseaudio +sdl selinux +ssl +strip udev udisks +unwind
-	usb v4l +xcomposite xinerama
+	usb v4l video_cards_amdgpu +xcomposite xinerama
 "
 
 # tests are non-trivial to run, can hang easily, don't play well with
@@ -68,7 +68,7 @@ WINE_COMMON_DEPEND="
 	sys-devel/gcc:*
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
-	x11-libs/libdrm[video_cards_amdgpu,${MULTILIB_USEDEP}]
+	x11-libs/libdrm[video_cards_amdgpu?,${MULTILIB_USEDEP}]
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	gstreamer? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
@@ -221,6 +221,7 @@ src_configure() {
 
 		$(use_enable gecko mshtml)
 		$(use_enable mono mscoree)
+		$(use_enable video_cards_amdgpu amd_ags_x64)
 		--disable-tests
 		$(use_with alsa)
 		$(use_with fontconfig)
