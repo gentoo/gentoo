@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit flag-o-matic mount-boot python-any-r1 secureboot toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
+	EGIT_REPO_URI="https://xenbits.xen.org/git-http/xen.git"
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
