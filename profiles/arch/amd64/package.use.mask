@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
+
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Requires dev-libs/level-zero.
 dev-lang/ispc -gpu
