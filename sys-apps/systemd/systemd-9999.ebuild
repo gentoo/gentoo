@@ -1,4 +1,4 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnutls homed http idn importd iptables kernel-install +kmod
+	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
 "
@@ -401,6 +401,11 @@ multilib_src_install_all() {
 
 	if use pam; then
 		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+	fi
+
+	if use kernel-install; then
+		# Dummy config, remove to make room for sys-kernel/installkernel
+		rm "${ED}/usr/lib/kernel/install.conf" || die
 	fi
 
 	use ukify && python_fix_shebang "${ED}"
