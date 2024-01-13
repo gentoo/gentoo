@@ -15,3 +15,4 @@ move dev-util/samurai dev-build/samurai
 move sys-devel/make dev-build/make
 move sys-devel/bmake dev-build/bmake
 move sys-devel/pmake dev-build/pmake
+move sys-devel/remake dev-build/remake
