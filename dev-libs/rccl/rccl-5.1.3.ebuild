@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RDEPEND="dev-util/hip
 dev-util/rocm-smi:${SLOT}"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-util/cmake-3.22
-	>=dev-util/rocm-cmake-5.0.2-r1
+	>=dev-build/rocm-cmake-5.0.2-r1
 	test? ( dev-cpp/gtest )"
 
 RESTRICT="!test? ( test )"
