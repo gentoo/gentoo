@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,11 +50,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	#"${WORKDIR}"/${P}-ppp-2.5.0-patches
-	#"${FILESDIR}"/networkmanager-sstp-1.3.1-ppp-2.4.9.patch
-)
 
 src_prepare() {
 	default
