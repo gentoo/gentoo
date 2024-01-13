@@ -35,7 +35,6 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/cmake-3.16
 	python? (
 		>=dev-lang/swig-3.0.11
 		$(python_gen_cond_dep '
