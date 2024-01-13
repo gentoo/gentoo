@@ -311,7 +311,7 @@ DEPEND="${RDEPEND}
 
 # += for verify-sig above
 BDEPEND+="
-	>=sys-devel/make-3.81
+	>=dev-build/make-3.81
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
 	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )

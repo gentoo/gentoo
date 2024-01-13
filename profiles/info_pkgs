@@ -1,4 +1,4 @@
-# Copyright 2004-2022 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ##
@@ -14,7 +14,7 @@ sys-libs/musl
 sys-devel/binutils
 sys-devel/binutils-config
 sys-devel/libtool
-sys-devel/make
+dev-build/make
 dev-lang/python
 dev-lang/perl
 dev-lang/rust
