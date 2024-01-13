@@ -56,7 +56,7 @@ x11-misc/xscreensaver new-login
 app-i18n/ibus gtk4
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)

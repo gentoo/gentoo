@@ -11,6 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="reference">Symlink to dev-build/ninja.</flag>
-		<flag name="samurai">Symlink to dev-util/samurai.</flag>
+		<flag name="samurai">Symlink to dev-build/samurai.</flag>
 	</use>
 </pkgmetadata>

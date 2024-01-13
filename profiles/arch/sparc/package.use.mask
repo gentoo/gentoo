@@ -48,7 +48,7 @@ dev-python/nbclient test
 dev-python/nbconvert test
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)

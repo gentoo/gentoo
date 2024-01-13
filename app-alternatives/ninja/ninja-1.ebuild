@@ -5,7 +5,7 @@ EAPI=8
 
 ALTERNATIVES=(
 	"reference:>=dev-build/ninja-1.11.1-r3"
-	samurai:dev-util/samurai
+	samurai:dev-build/samurai
 )
 
 inherit app-alternatives
