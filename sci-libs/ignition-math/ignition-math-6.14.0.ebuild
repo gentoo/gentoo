@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,8 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
-	dev-util/ignition-cmake:2"
+	dev-build/ignition-cmake:2"
 BDEPEND="
-	dev-util/ignition-cmake:2"
+	dev-build/ignition-cmake:2"
 
 S="${WORKDIR}/${PN}6_${PV}"
