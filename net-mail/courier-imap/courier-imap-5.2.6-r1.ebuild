@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	sys-process/procps
+	net-mail/courier-common
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-courier )
@@ -38,7 +39,6 @@ RDEPEND="${CDEPEND}
 
 RDEPEND="${RDEPEND}
 	!net-mail/cyrus-imapd
-	!net-mail/courier-common
 	!net-mail/courier-makedat
 "
 
@@ -111,6 +111,10 @@ src_install() {
 		mv "${D}/usr/sbin/"{,courier-}${name} \
 			|| die "failed to rename ${name} to courier-${name}"
 	done
+
+	#  Moved to courier-common
+	rm "${D}"/usr/share/man/man1/maildirkw.1 || die
+	rm "${D}"/usr/share/man/man8/deliverquota.8 || die
 
 	# Hack /usr/lib/courier-imap/foo.rc to use ${MAILDIR} instead of
 	# 'Maildir', and to use /usr/sbin/courier-foo names.
