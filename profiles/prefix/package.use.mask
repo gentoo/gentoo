@@ -11,10 +11,6 @@ mail-client/mutt gsasl
 # Not yet tested so we may be able to drop this later.
 dev-lang/ruby systemtap
 
-# Fabian Groffen <grobian@gentoo.org> (2020-06-07)
-# installing kernels has no business in Prefix
-sys-apps/debianutils installkernel
-
 # Michael Haubenwallner <haubi@gentoo.org> (2019-05-02)
 # gold is linux only, and is required by cxx
 sys-devel/binutils gold default-gold
