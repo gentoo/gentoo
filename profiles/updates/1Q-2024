@@ -14,3 +14,4 @@ move dev-util/ninja dev-build/ninja
 move dev-util/samurai dev-build/samurai
 move sys-devel/make dev-build/make
 move sys-devel/bmake dev-build/bmake
+move sys-devel/pmake dev-build/pmake
