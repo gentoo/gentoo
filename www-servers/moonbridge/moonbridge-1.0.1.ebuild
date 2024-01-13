@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ DEPEND="
 	${LUA_DEPS}
 	dev-libs/libbsd"
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/pmake
+BDEPEND="dev-build/pmake
 	sys-apps/lsb-release
 	virtual/pkgconfig"
 

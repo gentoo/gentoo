@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc"
 RESTRICT="test"
 
 RDEPEND="
-	|| ( x11-misc/makedepend sys-devel/pmake )
+	|| ( x11-misc/makedepend dev-build/pmake )
 	dev-build/bmake
 "
 BDEPEND="${RDEPEND}"
