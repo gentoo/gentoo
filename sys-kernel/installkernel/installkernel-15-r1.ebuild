@@ -31,7 +31,11 @@ RDEPEND="
 			sys-apps/systemd-utils[ukify(-)]
 		)
 	)
-"
+	!=sys-apps/systemd-255.2-r1
+	!=sys-apps/systemd-254.8-r0
+	!=sys-apps/systemd-254.7-r0
+	!=sys-apps/systemd-254.5-r1
+" # Block against systemd that still installs dummy install.conf
 
 src_install() {
 	keepdir /etc/kernel/postinst.d
@@ -64,6 +68,7 @@ src_install() {
 
 	# set some default config using the flags we have anyway
 	touch "${T}/install.conf" || die
+	echo "# This file is managed by ${CATEGORY}/${PN}" >> "${T}/install.conf" || die
 	if use uki; then
 		echo "layout=uki" >> "${T}/install.conf" || die
 	elif use grub; then
@@ -89,7 +94,7 @@ src_install() {
 		fi
 	fi
 
-	insinto /etc/kernel
+	insinto /usr/lib/kernel
 	doins "${T}/install.conf"
 
 	exeinto /usr/lib/kernel/install.d
@@ -109,5 +114,5 @@ pkg_postinst() {
 	elog
 	elog "See the installkernel wiki page[1] for more details."
 	elog
-	elog "https://wiki.gentoo.org/wiki/Installkernel"
+	elog "[1]: https://wiki.gentoo.org/wiki/Installkernel"
 }
