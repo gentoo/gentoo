@@ -11,7 +11,7 @@ inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	REPO="xen.git"
-	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
+	EGIT_REPO_URI="https://xenbits.xen.org/git-http/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
