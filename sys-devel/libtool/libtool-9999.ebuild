@@ -34,6 +34,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 [[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"
 
+# Note that we have more patches in https://gitweb.gentoo.org/proj/elt-patches.git/
+# for package builds. The patches here are just those which are definitely fine
+# for the system-wide libtool installation as well.
 PATCHES=(
 	# bug #109105
 	"${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch
