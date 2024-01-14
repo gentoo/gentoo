@@ -12,6 +12,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid yearly"
+# We can't run the unshare tests within sandbox/with low privs, and the
+# 'test-nounshare' target just does static analysis (shellcheck etc).
 RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
