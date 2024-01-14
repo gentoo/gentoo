@@ -24,7 +24,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-base-policy )
 "
 BDEPEND="
-	>=sys-devel/libtool-2.4.2
+	>=dev-build/libtool-2.4.2
 	doc? ( app-text/doxygen )
 "
 

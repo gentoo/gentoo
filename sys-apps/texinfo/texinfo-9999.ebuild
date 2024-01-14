@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 	REGEN_BDEPEND="
 		>=dev-build/autoconf-2.62
 		>=dev-build/automake-1.16
-		sys-devel/libtool
+		dev-build/libtool
 	"
 elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
 	SRC_URI="https://alpha.gnu.org/gnu/${PN}/${P}.tar.xz"

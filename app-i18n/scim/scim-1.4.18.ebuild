@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	virtual/pkgconfig
 	>=dev-util/intltool-0.33
-	sys-devel/libtool"
+	dev-build/libtool"
 DOCS=(
 	README
 	AUTHORS

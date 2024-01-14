@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	sys-apps/texinfo
 	app-alternatives/yacc
-	sys-devel/libtool
+	dev-build/libtool
 "
 
 src_prepare() {

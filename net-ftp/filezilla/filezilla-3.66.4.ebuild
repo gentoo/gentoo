@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cppunit-1.13.0 )"
 BDEPEND="
 	virtual/pkgconfig
-	>=sys-devel/libtool-1.4
+	>=dev-build/libtool-1.4
 	nls? ( >=sys-devel/gettext-0.11 )"
 
 PATCHES=(

@@ -25,7 +25,7 @@ RDEPEND="
 "
 DEPEND+=" valgrind? ( dev-debug/valgrind )"
 BDEPEND="
-	>=sys-devel/libtool-2.4.2
+	>=dev-build/libtool-2.4.2
 	doc? ( app-text/doxygen )
 "
 

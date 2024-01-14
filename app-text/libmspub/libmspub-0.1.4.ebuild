@@ -30,7 +30,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	sys-devel/libtool
+	dev-build/libtool
 "
 
 PATCHES=( "${FILESDIR}/${P}-gcc10.patch" )

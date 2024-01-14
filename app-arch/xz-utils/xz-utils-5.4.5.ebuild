@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3 autotools
 
 	# bug #272880 and bug #286068
-	BDEPEND="sys-devel/gettext >=sys-devel/libtool-2"
+	BDEPEND="sys-devel/gettext >=dev-build/libtool-2"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jiatan.asc
 	inherit verify-sig

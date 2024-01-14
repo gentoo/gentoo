@@ -36,7 +36,7 @@ BDEPEND="
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/libtool-2.2.6:2
+	>=dev-build/libtool-2.2.6:2
 	virtual/pkgconfig
 "
 

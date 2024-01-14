@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	dev-libs/boost
 "
 BDEPEND="
-	sys-devel/libtool
+	dev-build/libtool
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	test? ( dev-util/cppunit )

@@ -33,6 +33,6 @@ RDEPEND="${COMMON_DEPEND}"
 BDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
 	>=dev-build/autoconf-2.53:*
-	>=sys-devel/libtool-2.2.6:2
+	>=dev-build/libtool-2.2.6:2
 	virtual/pkgconfig
 "

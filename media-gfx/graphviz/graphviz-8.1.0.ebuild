@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	app-alternatives/lex
-	sys-devel/libtool
+	dev-build/libtool
 	virtual/pkgconfig
 	doc? (
 		app-text/ghostscript-gpl

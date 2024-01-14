@@ -32,7 +32,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
-	>=sys-devel/libtool-2.2.6
+	>=dev-build/libtool-2.2.6
 	virtual/pkgconfig
 "
 

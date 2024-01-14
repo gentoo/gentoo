@@ -25,7 +25,7 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	!minimal? ( sys-devel/libtool )
+	!minimal? ( dev-build/libtool )
 	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
 "
 

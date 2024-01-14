@@ -30,7 +30,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:0= )
 "
 DEPEND="${RDEPEND}
-	sys-devel/libtool:2
+	dev-build/libtool:2
 	>=dev-build/autoconf-2.69
 "
 S="${WORKDIR}/${MY_P}"
