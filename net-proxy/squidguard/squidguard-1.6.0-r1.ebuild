@@ -60,8 +60,8 @@ src_prepare() {
 	eautoreconf
 
 	# Workaround for missing install-sh, bug #705374
-	local amver=$(best_version sys-devel/automake)
-	amver=$(ver_cut 1-2 "${amver#sys-devel/automake-}")
+	local amver=$(best_version dev-build/automake)
+	amver=$(ver_cut 1-2 "${amver#dev-build/automake-}")
 	cp -p "${BROOT}/usr/share/automake-${amver}/install-sh" . || die
 }
 

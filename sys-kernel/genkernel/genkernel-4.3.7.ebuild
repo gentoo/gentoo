@@ -121,7 +121,7 @@ RDEPEND="${PYTHON_DEPS}
 	sys-apps/sandbox
 	dev-build/autoconf
 	dev-build/autoconf-archive
-	sys-devel/automake
+	dev-build/automake
 	app-alternatives/bc
 	app-alternatives/yacc
 	app-alternatives/lex

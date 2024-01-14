@@ -95,7 +95,7 @@ _LATEST_AUTOCONF=( 2.72-r1:2.72 2.71-r6:2.71 )
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
 _LATEST_AUTOMAKE=( 1.16.5:1.16 )
 
-_automake_atom="sys-devel/automake"
+_automake_atom="dev-build/automake"
 _autoconf_atom="dev-build/autoconf"
 if [[ -n ${WANT_AUTOMAKE} ]] ; then
 	case ${WANT_AUTOMAKE} in
@@ -105,12 +105,12 @@ if [[ -n ${WANT_AUTOMAKE} ]] ; then
 			# the autoreconf tool, so this requirement is correct, bug #401605.
 			;;
 		latest)
-			printf -v _automake_atom_tmp '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }
+			printf -v _automake_atom_tmp '>=dev-build/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }
 			_automake_atom="|| ( ${_automake_atom_tmp} )"
 			unset _automake_atom_tmp
 			;;
 		*)
-			_automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*"
+			_automake_atom="=dev-build/automake-${WANT_AUTOMAKE}*"
 			;;
 	esac
 	export WANT_AUTOMAKE
@@ -570,7 +570,7 @@ autotools_env_setup() {
 					hv_args="-b"
 					;;
 			esac
-			has_version ${hv_args} "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
+			has_version ${hv_args} "=dev-build/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
 
 		# During bootstrap in prefix there might be no automake merged yet

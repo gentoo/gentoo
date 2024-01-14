@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-build/autoconf:*
-	sys-devel/automake:*"
+	dev-build/automake:*"
 DEPEND="${RDEPEND}
 	test? ( sys-apps/texinfo )"
 

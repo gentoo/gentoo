@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit linux-info python-any-r1 systemd
 
@@ -49,7 +49,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=sys-devel/automake-1.13.4
+	>=dev-build/automake-1.13.4
 	>=sys-devel/gettext-0.18.2
 	virtual/pkgconfig
 	dev-util/gdbus-codegen

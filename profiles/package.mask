@@ -688,9 +688,9 @@ dev-tex/pdfannotextractor
 x11-drivers/nvidia-drivers:0/vulkan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-09-18)
-# sys-devel/automake version 1.11 is EOL and is only useful for testing
+# dev-build/automake version 1.11 is EOL and is only useful for testing
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
-sys-devel/automake:1.11
+dev-build/automake:1.11
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
