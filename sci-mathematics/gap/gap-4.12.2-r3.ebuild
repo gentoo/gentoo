@@ -80,6 +80,14 @@ src_prepare() {
 	# produces a GNUmakefile.
 	rm Makefile || die
 
+	# Prepend AC_CONFIG_MACRO_DIRS to configure.ac so that eautoreconf
+	# recreates aclocal.m4 correctly. Upstream bundles libtool-2.4.6,
+	# and Gentoo uses 2.4.7, so we need to regenerate aclocal.m4. BUT,
+	# upstream also uses m4_include directives in aclocal.m4 rather than
+	# AC_CONFIG_MACRO_DIRS in configure.ac. Without AC_CONFIG_MACRO_DIRS
+	# eautoreconf will omit all of the macros in cnf/m4.
+	sed -e '1s;^;AC_CONFIG_MACRO_DIRS([cnf/m4])\n;' -i configure.ac || die
+
 	default
 
 	# Fix feature detection with pathological CFLAGS
