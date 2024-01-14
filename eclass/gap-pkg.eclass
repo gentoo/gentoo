@@ -234,9 +234,9 @@ gap-pkg_src_test() {
 		|| die "test suite failed, see test-suite.log"
 }
 
-# @ECLASS_VARIABLE GAP_PKG_EXTRA_INSTALL
+# @ECLASS_VARIABLE: GAP_PKG_EXTRA_INSTALL
 # @DEFAULT_UNSET
-# @DESCRIPTION
+# @DESCRIPTION:
 # A bash array of extra files and directories to install recursively at
 # the root of this package's directory tree. For example, if you have a
 # package that mostly follows the suggested layout (described in the
@@ -248,8 +248,8 @@ gap-pkg_src_test() {
 # to install the data directory without having to override the entire
 # src_install phase.
 
-# @ECLASS_VARIABLE GAP_PKG_HTML_DOCDIR
-# @DESCRIPTION
+# @ECLASS_VARIABLE: GAP_PKG_HTML_DOCDIR
+# @DESCRIPTION:
 # The directory inside the tarball where the HTML documentation is
 # located. This is _usually_ "doc", which conforms to the suggested
 # GAPDoc layout and is the default value of this variable. Many
