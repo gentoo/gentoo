@@ -17,17 +17,20 @@ IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid yearly"
 RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
-
-RDEPEND=">=sys-apps/systemd-253
-	dev-libs/openssl
-	runparts? ( sys-apps/debianutils )
+RDEPEND="
 	!sys-process/cronie[anacron]
-	!etc-crontab-systemd? ( !sys-process/dcron )
-	sys-process/cronbase
 	acct-user/_cron-failure
-	acct-group/_cron-failure"
-
-DEPEND="sys-process/cronbase"
+	acct-group/_cron-failure
+	dev-libs/openssl:=
+	sys-process/cronbase
+	>=sys-apps/systemd-253
+	!etc-crontab-systemd? ( !sys-process/dcron )
+	runparts? ( sys-apps/debianutils )
+"
+DEPEND="
+	dev-libs/openssl:=
+	sys-process/cronbase
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.0-pch.patch
