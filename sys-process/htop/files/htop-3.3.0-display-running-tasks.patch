@@ -1,0 +1,24 @@
+https://github.com/htop-dev/htop/issues/1369
+https://github.com/htop-dev/htop/commit/b6b9384678fa111d47a8d3074c31490863619d12
+
+From b6b9384678fa111d47a8d3074c31490863619d12 Mon Sep 17 00:00:00 2001
+From: Benny Baumann <BenBE@geshi.org>
+Date: Thu, 11 Jan 2024 21:09:43 +0100
+Subject: [PATCH] Fix the display of number of running tasks
+
+This was broken by a logic change in 72235d8e.
+
+Fixes: #1369
+--- a/linux/LinuxMachine.c
++++ b/linux/LinuxMachine.c
+@@ -489,8 +489,7 @@ static void LinuxMachine_scanCPUTime(LinuxMachine* this) {
+    char buffer[PROC_LINE_LENGTH + 1];
+    while (fgets(buffer, sizeof(buffer), file)) {
+       if (String_startsWith(buffer, "procs_running")) {
+-         ProcessTable* pt = (ProcessTable*) super->processTable;
+-         pt->runningTasks = strtoul(buffer + strlen("procs_running"), NULL, 10);
++         this->runningTasks = strtoul(buffer + strlen("procs_running"), NULL, 10);
+          break;
+       }
+    }
+
