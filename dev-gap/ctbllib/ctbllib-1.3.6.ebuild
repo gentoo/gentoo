@@ -44,6 +44,7 @@ src_install() {
 	local docdir="$(gap-pkg_dir)/doc2"
 	insinto "${docdir}"
 
+	local f
 	for f in *.{lab,six,txt,xml}; do
 		doins "${f}"
 	done
