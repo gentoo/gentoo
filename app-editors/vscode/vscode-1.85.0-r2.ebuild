@@ -35,7 +35,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* amd64 ~arm ~arm64"
-IUSE="kerberos wayland"
+IUSE="kerberos wayland egl"
 RESTRICT="mirror strip bindist"
 
 RDEPEND="
@@ -108,6 +108,9 @@ src_install() {
 	local EXEC_EXTRA_FLAGS=()
 	if use wayland; then
 		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" )
+	fi
+	if use egl; then
+		EXEC_EXTRA_FLAGS+=( "--use-gl=egl" )
 	fi
 
 	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
