@@ -47,6 +47,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 	"${FILESDIR}"/${PN}-3.21.0-glibc-2.34-suppressions.patch
 	# From stable branch
+	"${FILESDIR}"/0001-valgrind-monitor.py-regular-expressions-should-use-r.patch
+	"${FILESDIR}"/0002-Bug-476548-valgrind-3.22.0-fails-on-assertion-when-l.patch
+	"${FILESDIR}"/0003-Add-fchmodat2-syscall-on-linux.patch
 )
 
 src_prepare() {
