@@ -21,7 +21,7 @@ BDEPEND="test? (
 	dev-gap/tomlib
 )"
 
-# The are "extra" docs and not the HTML produced by GAPDoc. The glob
+# These are "extra" docs and not the HTML produced by GAPDoc. The glob
 # gets expanded if we use a plain variable but not if we use a bash
 # array.
 HTML_DOCS="htm/*"
