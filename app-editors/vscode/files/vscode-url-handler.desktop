@@ -2,7 +2,7 @@
 Name=VSCode - URL Handler
 Comment=Editing evolved
 GenericName=Code Editor
-Exec=/usr/bin/vscode --open-url %U
+Exec=/usr/bin/vscode @exec_extra_flags@ --open-url %U
 Icon=vscode
 Type=Application
 NoDisplay=true

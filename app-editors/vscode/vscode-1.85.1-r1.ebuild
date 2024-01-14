@@ -35,7 +35,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* amd64 ~arm ~arm64"
-IUSE="kerberos"
+IUSE="kerberos wayland"
 RESTRICT="mirror strip bindist"
 
 RDEPEND="
@@ -104,10 +104,22 @@ src_install() {
 
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/vscode"
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/code"
-	domenu "${FILESDIR}/vscode.desktop"
-	domenu "${FILESDIR}/vscode-url-handler.desktop"
-	domenu "${FILESDIR}/vscode-wayland.desktop"
-	domenu "${FILESDIR}/vscode-url-handler-wayland.desktop"
+
+	local EXEC_EXTRA_FLAGS=()
+	if use wayland; then
+		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" )
+	fi
+
+	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
+		"${FILESDIR}/vscode-url-handler.desktop" \
+		> "${T}/vscode-url-handler.desktop" || die
+
+	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
+		"${FILESDIR}/vscode.desktop" \
+		> "${T}/vscode.desktop" || die
+
+	domenu "${T}/vscode.desktop"
+	domenu "${T}/vscode-url-handler.desktop"
 	newicon "resources/app/resources/linux/code.png" "vscode.png"
 }
 

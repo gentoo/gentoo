@@ -2,7 +2,7 @@
 Name=VSCode
 Comment=Editing evolved
 GenericName=Code Editor
-Exec=/usr/bin/vscode --unity-launch %F
+Exec=/usr/bin/vscode @exec_extra_flags@ --unity-launch %F
 Icon=vscode
 Type=Application
 StartupNotify=false
@@ -14,5 +14,5 @@ Keywords=vscode;code;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/usr/bin/vscode --new-window %F
+Exec=/usr/bin/vscode @exec_extra_flags@ --new-window %F
 Icon=vscode
