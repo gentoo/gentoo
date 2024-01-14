@@ -12,7 +12,7 @@ DOCS_DEPEND="
 
 inherit python-single-r1 docs wrapper
 
-DESCRIPTION="A GDB Enhanced Features for exploit devs & reversers"
+DESCRIPTION="GDB Enhanced Features for exploit devs & reversers"
 HOMEPAGE="https://github.com/hugsy/gef"
 
 if [[ ${PV} == 9999 ]]; then
