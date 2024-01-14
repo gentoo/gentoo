@@ -22,6 +22,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-prevent-stripping.patch"
 	"${FILESDIR}/${P}-exclude-float-parse-tests.patch"
+	"${FILESDIR}/${P}-gcc13-build-fix.patch"
 )
 
 src_prepare() {
