@@ -1,5 +1,3 @@
-diff --git a/src/Makefile.am b/src/Makefile.am
-index 1c54f03..db187eb 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -1,7 +1,7 @@
