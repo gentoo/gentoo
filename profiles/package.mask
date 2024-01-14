@@ -458,12 +458,6 @@ dev-ruby/http:4
 <sys-kernel/gentoo-kernel-5.10
 <virtual/dist-kernel-5.10
 
-# Hans de Graaff <graaff@gentoo.org> (2023-12-10)
-# Test failures that seem to indicate this package no longer works
-# correctly. Last release 6 years ago. No reverse dependencies.
-# Masked for removal on 2024-01-10.
-dev-ruby/sinatra-partial
-
 # Sam James <sam@gentoo.org> (2023-12-09)
 # ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/ (bug #919675)
 # Please update immediately to the latest versions in each series.
@@ -477,13 +471,6 @@ dev-ruby/sinatra-partial
 =sys-kernel/vanilla-sources-6.1.65
 =sys-kernel/vanilla-kernel-6.1.64
 =sys-kernel/vanilla-kernel-6.1.65
-
-# Hans de Graaff <graaff@gentoo.org> (2023-12-09)
-# Old slots that are not ruby32-compatible. No reverse dependencies
-# left. Please use the newer slot instead. Masked for removal on
-# 2024-01-09.
-dev-ruby/gettext-setup:0
-dev-ruby/fast_gettext:0
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-08)
 # The both remaining virtuals are deprecated in favor of using
