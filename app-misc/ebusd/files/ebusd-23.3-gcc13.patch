@@ -1,0 +1,60 @@
+From 3384f3780087bd6b94d46bf18cdad18201ad516c Mon Sep 17 00:00:00 2001
+From: John <ebusd@ebusd.eu>
+Date: Sat, 30 Dec 2023 17:38:19 +0100
+Subject: [PATCH] add missed includes as reported by gcc13
+
+---
+ src/ebusd/mqttclient.h           | 1 +
+ src/ebusd/mqttclient_mosquitto.h | 1 +
+ src/lib/ebus/device.h            | 1 +
+ src/lib/ebus/transport.h         | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/src/ebusd/mqttclient.h b/src/ebusd/mqttclient.h
+index 5309d31a..965647ba 100755
+--- a/src/ebusd/mqttclient.h
++++ b/src/ebusd/mqttclient.h
+@@ -19,6 +19,7 @@
+ #ifndef EBUSD_MQTTCLIENT_H_
+ #define EBUSD_MQTTCLIENT_H_
+ 
++#include <cstdint>
+ #include <list>
+ #include <map>
+ #include <string>
+diff --git a/src/ebusd/mqttclient_mosquitto.h b/src/ebusd/mqttclient_mosquitto.h
+index d749b60b..e08ca5eb 100755
+--- a/src/ebusd/mqttclient_mosquitto.h
++++ b/src/ebusd/mqttclient_mosquitto.h
+@@ -21,6 +21,7 @@
+ 
+ #include "ebusd/mqttclient.h"
+ #include <mosquitto.h>
++#include <ctime>
+ #include <list>
+ #include <map>
+ #include <string>
+diff --git a/src/lib/ebus/device.h b/src/lib/ebus/device.h
+index d4224017..8da116a7 100755
+--- a/src/lib/ebus/device.h
++++ b/src/lib/ebus/device.h
+@@ -19,6 +19,7 @@
+ #ifndef LIB_EBUS_DEVICE_H_
+ #define LIB_EBUS_DEVICE_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include "lib/ebus/result.h"
+ #include "lib/ebus/transport.h"
+diff --git a/src/lib/ebus/transport.h b/src/lib/ebus/transport.h
+index ec4c2319..ba3a8324 100755
+--- a/src/lib/ebus/transport.h
++++ b/src/lib/ebus/transport.h
+@@ -21,6 +21,7 @@
+ 
+ #include <unistd.h>
+ #include <termios.h>
++#include <cstdint>
+ #include <string>
+ #include "lib/ebus/result.h"
+ #include "lib/ebus/symbol.h"

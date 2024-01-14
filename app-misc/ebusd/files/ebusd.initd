@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/ebusd"
+command_args="${EBUSD_OPTS}"
+ebusd_path="/var/lib/ebusd"
+html_path="${ebusd_path}/html"
+logfile_path="/var/log/ebusd"
+logfile="${pidfile_path}/ebusd.log"
+name="eBUS daemon"
+pidfile_path="/run/ebusd"
+pidfile="${pidfile_path}/ebusd.pid"
+
+start_pre() {
+	checkpath -d -q "${ebusd_path}" "${html_path}"
+	checkpath -d -q "${logfile_path}"
+	checkpath -d -q "${pidfile_path}"
+	checkpath -f -q "${logfile}"
+}
