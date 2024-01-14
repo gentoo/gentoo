@@ -142,7 +142,7 @@ src_install() {
 		newicon -s $size resources/iconsets/artwork/icon_${size}x${size}.png scribus-${SLOT}.png
 	done
 	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus-${SLOT}.png
-	newicon resources/iconsets/1_5_1/scribus.png scribus-${SLOT}.png
+	newicon resources/iconsets/1_7_0/scribus-icon.svg scribus-${SLOT}.png
 	newmenu scribus.desktop scribus-${SLOT}.desktop
 }
 
