@@ -24,6 +24,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+# The 'check' target currently wants network access to fetch libtool tarballs.
+RESTRICT="test"
 
 RDEPEND="sys-apps/gentoo-functions"
 BDEPEND="app-arch/xz-utils"
