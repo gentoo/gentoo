@@ -249,18 +249,18 @@ gap-pkg_src_test() {
 # src_install phase.
 
 # @ECLASS_VARIABLE GAP_PKG_HTML_DOCDIR
-# @DEFAULT_UNSET
 # @DESCRIPTION
 # The directory inside the tarball where the HTML documentation is
 # located. This is _usually_ "doc", which conforms to the suggested
-# GAPDoc layout and is where we look if this variable is left
-# unset. Many packages however use a top-level "htm" directory
-# instead. The named directory will be installed to gap-pkg_dir and
-# symlinked to the usual location under /usr/share/doc. As a result, you
-# should only use this for directories referenced by PackageInfo.g or by
-# some other part of the package.  HTML documentation whose location
-# doesn't need to be known to the package at runtime should instead be
-# installed with HTML_DOCS or a similar mechanism.
+# GAPDoc layout and is the default value of this variable. Many
+# packages however use a top-level "htm" directory instead. The named
+# directory will be installed to gap-pkg_dir and symlinked to the usual
+# location under /usr/share/doc. As a result, you should only use this
+# for directories referenced by PackageInfo.g or by some other part of
+# the package. HTML documentation whose location doesn't need to be
+# known to the package at runtime should instead be installed with
+# HTML_DOCS or a similar mechanism.
+: "${GAP_PKG_HTML_DOCDIR:=doc}"
 
 # @FUNCTION: gap-pkg_src_install
 # @DESCRIPTION:
@@ -332,9 +332,7 @@ gap-pkg_src_install() {
 	fi
 
 	# Install the HTML documentation. The procedure is basically the
-	# same as for the PDF docs. Default to "doc" as the location if
-	# nothing else was specified.
-	: "${GAP_PKG_HTML_DOCDIR:=doc}"
+	# same as for the PDF docs.
 	if [[ -d "${GAP_PKG_HTML_DOCDIR}" ]]; then
 		pushd "${GAP_PKG_HTML_DOCDIR}" > /dev/null || die
 
