@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86"
 IUSE="debug kerberos +pam pynslcd sasl test +utils"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	utils? ( ${PYTHON_REQUIRED_USE} )
 	test? ( ${PYTHON_REQUIRED_USE} pynslcd )
 "

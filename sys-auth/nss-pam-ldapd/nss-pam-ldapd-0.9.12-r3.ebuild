@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~sparc x86"
 IUSE="debug kerberos +pam pynslcd sasl selinux test +utils"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	utils? ( ${PYTHON_REQUIRED_USE} )
 	test? ( ${PYTHON_REQUIRED_USE} pynslcd )
 "
