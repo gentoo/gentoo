@@ -1,4 +1,4 @@
-This fixes build with sys-devel/slibtool
+This fixes build with dev-build/slibtool
 
 --- gloox-1.0.24/src/Makefile.am
 +++ gloox-1.0.24/src/Makefile.am
