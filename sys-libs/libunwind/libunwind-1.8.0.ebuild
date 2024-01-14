@@ -1,4 +1,4 @@
-# Copyright 2005-2023 Gentoo Authors
+# Copyright 2005-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,14 +6,14 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-libunwind-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-: ${LIBUNWIND_DOCS_PREBUILT:=0}
+: ${LIBUNWIND_DOCS_PREBUILT:=1}
 
 LIBUNWIND_DOCS_PREBUILT_DEV=sam
-LIBUNWIND_DOCS_VERSION=1.7.1
+LIBUNWIND_DOCS_VERSION=1.8.0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 LIBUNWIND_DOCS_USEFLAG="+doc"
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -74,21 +74,14 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libunwind-x86_64.h
 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.0_rc1-configure-bashism.patch
-)
-
 src_prepare() {
 	default
 
 	chmod +x src/ia64/mk_cursor_i || die
 
-	#if [[ ${PV} == 9999 ]] ; then
-	#	eautoreconf
-	#fi
-
-	# temporarily for bashism patch
-	eautoreconf
+	if [[ ${PV} == 9999 ]] ; then
+		eautoreconf
+	fi
 }
 
 multilib_src_configure() {
@@ -124,7 +117,6 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	# Explicitly allow parallel build of tests.
 	# Sandbox causes some tests to freak out.
 	SANDBOX_ON=0 emake check
 }

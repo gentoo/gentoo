@@ -1,4 +1,4 @@
-# Copyright 2005-2023 Gentoo Authors
+# Copyright 2005-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ EAPI=8
 : ${LIBUNWIND_DOCS_PREBUILT:=1}
 
 LIBUNWIND_DOCS_PREBUILT_DEV=sam
-LIBUNWIND_DOCS_VERSION=1.7.1
+LIBUNWIND_DOCS_VERSION=1.8.0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 LIBUNWIND_DOCS_USEFLAG="+doc"
 
@@ -117,7 +117,6 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	# Explicitly allow parallel build of tests.
 	# Sandbox causes some tests to freak out.
 	SANDBOX_ON=0 emake check
 }
