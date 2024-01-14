@@ -25,3 +25,4 @@ move dev-util/rocm-cmake dev-build/rocm-cmake
 move dev-util/tinycmmc dev-build/tinycmmc
 move dev-util/cmake dev-build/cmake
 move sys-devel/autoconf-wrapper dev-build/autoconf-wrapper
+move sys-devel/autoconf-vanilla dev-build/autoconf-vanilla
