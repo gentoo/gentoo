@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.6
-	>=sys-devel/automake-wrapper-11
+	>=dev-build/automake-wrapper-11
 	>=dev-build/autoconf-2.69:*
 	sys-devel/gnuconfig
 "
