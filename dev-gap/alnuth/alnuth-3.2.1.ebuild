@@ -15,7 +15,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 # Circular dependency alnuth->polycyclic->alnuth...
-RDEPEND="dev-gap/polycyclic"
+RDEPEND="dev-gap/polycyclic
+	sci-mathematics/pari"
 BDEPEND="test? ( dev-gap/radiroot )"
 
 GAP_PKG_HTML_DOCDIR="htm"
