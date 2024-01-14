@@ -59,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 "
 # KAccountsMacros.cmake needs intltool
 RDEPEND="${COMMON_DEPEND}
+	!${CATEGORY}/${PN}:5
 	dev-util/intltool
 "
 BDEPEND="
