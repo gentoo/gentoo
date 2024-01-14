@@ -46,6 +46,9 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+# For eshopts_push and eshopts_pop
+inherit estack
+
 # Some packages have additional homepages, but pretty much every GAP
 # package can be found at this URL.
 HOMEPAGE="https://www.gap-system.org/Packages/${PN}.html"
@@ -292,6 +295,9 @@ gap-pkg_src_test() {
 gap-pkg_src_install() {
 	einstalldocs
 
+	# So we don't have to "test -f" on the result of every glob.
+	eshopts_push -s nullglob
+
 	# Install the "normal" documentation from the doc directory. This
 	# includes anything the interactive GAP help might need in addition
 	# to the documentation intended for direct user consumption.
@@ -310,8 +316,7 @@ gap-pkg_src_install() {
 		# the bibliography is in BibXMLext format, but you may wind up
 		# with some additional GAPDoc (XML) source files as a result.
 		for f in *.{bib,lab,six,tex,txt,xml}; do
-			# The -f test avoids needing nullglob when no files match.
-			[[ -f "${f}" ]] && doins "${f}"
+			doins "${f}"
 		done
 
 		# The PDF docs are also potentially used by the interface, since
@@ -319,10 +324,8 @@ gap-pkg_src_install() {
 		# then afterwards we symlink them to their proper Gentoo
 		# locations
 		for f in *.pdf; do
-			if [[ -f "${f}" ]]; then
-				doins "${f}"
-				dosym -r "${docdir}/${f}" "/usr/share/doc/${PF}/${f}"
-			fi
+			doins "${f}"
+			dosym -r "${docdir}/${f}" "/usr/share/doc/${PF}/${f}"
 		done
 
 		popd > /dev/null || die
@@ -340,10 +343,8 @@ gap-pkg_src_install() {
 
 		# See above
 		for f in *.{htm,html,css,js,png}; do
-			if [[ -f "${f}" ]]; then
-				doins "${f}"
-				dosym -r "${docdir}/${f}" "/usr/share/doc/${PF}/html/${f}"
-			fi
+			doins "${f}"
+			dosym -r "${docdir}/${f}" "/usr/share/doc/${PF}/html/${f}"
 		done
 
 		popd > /dev/null || die
@@ -352,8 +353,11 @@ gap-pkg_src_install() {
 	# Any GAP source files that live in the top-level directory.
 	insinto $(gap-pkg_dir)
 	for f in *.g; do
-		[[ -f "${f}" ]] && doins "${f}"
+		doins "${f}"
 	done
+
+	# We're done globbing
+	eshopts_pop
 
 	# The gap and lib dirs that usually also contain GAP code.
 	[[ -d gap ]] && doins -r gap
