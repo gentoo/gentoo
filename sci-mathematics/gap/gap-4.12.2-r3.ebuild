@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gap-system/gap/releases/download/v${PV}/${P}-core.ta
 LICENSE="GPL-2+"
 SLOT="0/8"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_popcnt debug emacs memcheck minimal readline test valgrind"
+IUSE="cpu_flags_x86_popcnt debug memcheck minimal readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
 RESTRICT="!test? ( test )"
 
