@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ IUSE="vanilla"
 # Pull in libltdl directly until we convert packages to the new dep.
 RDEPEND="
 	sys-devel/gnuconfig
-	>=sys-devel/autoconf-2.69:*
+	>=dev-build/autoconf-2.69:*
 	>=sys-devel/automake-1.13:*
 	>=dev-libs/libltdl-2.4.7
 "

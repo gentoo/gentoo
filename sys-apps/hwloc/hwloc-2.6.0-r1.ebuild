@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -33,7 +33,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}"
 # 2.69-r5 for --runstatedir
 BDEPEND="
-	>=sys-devel/autoconf-2.69-r5
+	>=dev-build/autoconf-2.69-r5
 	virtual/pkgconfig
 "
 

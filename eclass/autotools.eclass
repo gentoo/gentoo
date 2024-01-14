@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools.eclass
@@ -96,7 +96,7 @@ _LATEST_AUTOCONF=( 2.72-r1:2.72 2.71-r6:2.71 )
 _LATEST_AUTOMAKE=( 1.16.5:1.16 )
 
 _automake_atom="sys-devel/automake"
-_autoconf_atom="sys-devel/autoconf"
+_autoconf_atom="dev-build/autoconf"
 if [[ -n ${WANT_AUTOMAKE} ]] ; then
 	case ${WANT_AUTOMAKE} in
 		none)
@@ -126,19 +126,19 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 			_autoconf_atom=""
 			;;
 		2.1)
-			_autoconf_atom=">=sys-devel/autoconf-2.13-r7:2.1"
+			_autoconf_atom=">=dev-build/autoconf-2.13-r7:2.1"
 			;;
 		2.5)
-			_autoconf_atom=">=sys-devel/autoconf-2.71-r6:2.71"
+			_autoconf_atom=">=dev-build/autoconf-2.71-r6:2.71"
 			;;
 		2.69)
-			_autoconf_atom=">=sys-devel/autoconf-2.69-r9:2.69"
+			_autoconf_atom=">=dev-build/autoconf-2.69-r9:2.69"
 			;;
 		2.71)
-			_autoconf_atom=">=sys-devel/autoconf-2.71-r6:2.71"
+			_autoconf_atom=">=dev-build/autoconf-2.71-r6:2.71"
 			;;
 		latest)
-			printf -v _autoconf_atom_tmp '>=sys-devel/autoconf-%s:%s ' ${_LATEST_AUTOCONF[@]/:/ }
+			printf -v _autoconf_atom_tmp '>=dev-build/autoconf-%s:%s ' ${_LATEST_AUTOCONF[@]/:/ }
 			_autoconf_atom="|| ( ${_autoconf_atom_tmp} )"
 			unset _autoconf_atom_tmp
 			;;
@@ -599,7 +599,7 @@ autotools_env_setup() {
 					hv_args="-b"
 					;;
 				esac
-			has_version ${hv_args} "=sys-devel/autoconf-${pv}*" && export WANT_AUTOCONF="${pv}" && break
+			has_version ${hv_args} "=dev-build/autoconf-${pv}*" && export WANT_AUTOCONF="${pv}" && break
 		done
 
 		# During bootstrap in prefix there might be no autoconf merged yet

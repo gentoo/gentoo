@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-at )
 "
 BDEPEND="
-	>=sys-devel/autoconf-2.64
+	>=dev-build/autoconf-2.64
 	app-alternatives/yacc
 	app-alternatives/lex
 "

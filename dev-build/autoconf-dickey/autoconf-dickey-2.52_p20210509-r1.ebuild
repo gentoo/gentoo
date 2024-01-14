@@ -7,7 +7,7 @@ EAPI=8
 # TODO: review our old autoconf-2.52 patches?
 
 MY_P=${PN/-dickey}-${PV/_p/-}
-DESCRIPTION="Fork of sys-devel/autoconf for Thomas Dickey's packages"
+DESCRIPTION="Fork of dev-build/autoconf for Thomas Dickey's packages"
 HOMEPAGE="https://invisible-island.net/autoconf/autoconf.html"
 SRC_URI="https://invisible-island.net/archives/autoconf/${MY_P}.tgz"
 S="${WORKDIR}"/${MY_P}

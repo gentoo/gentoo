@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/autoconf-2.53:*
+	>=dev-build/autoconf-2.53:*
 	>=sys-devel/libtool-2.2.6:2
 	virtual/pkgconfig
 "

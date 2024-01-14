@@ -28,7 +28,7 @@ IUSE="vanilla"
 # Pull in libltdl directly until we convert packages to the new dep.
 RDEPEND="
 	sys-devel/gnuconfig
-	>=sys-devel/autoconf-2.69:*
+	>=dev-build/autoconf-2.69:*
 	>=sys-devel/automake-1.13:*
 "
 DEPEND="${RDEPEND}"
