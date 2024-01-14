@@ -29,7 +29,7 @@ IUSE="vanilla"
 RDEPEND="
 	sys-devel/gnuconfig
 	>=dev-build/autoconf-2.69:*
-	>=sys-devel/automake-1.13:*
+	>=dev-build/automake-1.13:*
 "
 DEPEND="${RDEPEND}"
 [[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"

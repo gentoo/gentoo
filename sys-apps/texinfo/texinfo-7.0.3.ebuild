@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/texinfo.git"
 	REGEN_BDEPEND="
 		>=dev-build/autoconf-2.62
-		>=sys-devel/automake-1.16
+		>=dev-build/automake-1.16
 		sys-devel/libtool
 	"
 elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then

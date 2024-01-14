@@ -29,7 +29,7 @@ IUSE="vanilla"
 RDEPEND="
 	sys-devel/gnuconfig
 	>=dev-build/autoconf-2.69:*
-	>=sys-devel/automake-1.13:*
+	>=dev-build/automake-1.13:*
 	>=dev-libs/libltdl-2.4.7
 "
 DEPEND="${RDEPEND}"

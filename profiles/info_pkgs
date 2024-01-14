@@ -7,7 +7,7 @@
 ##
 app-shells/bash:0
 dev-build/autoconf
-sys-devel/automake
+dev-build/automake
 sys-kernel/linux-headers
 sys-libs/glibc
 sys-libs/musl
