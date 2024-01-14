@@ -2,7 +2,7 @@
 Name=VSCodium - URL Handler
 Comment=Editing evolved
 GenericName=Code Editor
-Exec=/usr/bin/vscodium --open-url %U
+Exec=/usr/bin/vscodium @exec_extra_flags@ --open-url %U
 Icon=vscodium
 Type=Application
 NoDisplay=true
