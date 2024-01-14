@@ -118,8 +118,10 @@ src_install() {
 	#  Moved to courier-common
 	rm "${D}"/usr/bin/deliverquota || die
 	rm "${D}"/usr/bin/maildirkw || die
-	rm "${D}"/usr/bin/makedat || die
-	rm "${D}"/usr/bin/makedatprog || die
+	if use gdbm; then
+		rm "${D}"/usr/bin/makedat || die
+		rm "${D}"/usr/bin/makedatprog || die
+	fi
 	rm "${D}"/usr/share/man/man1/maildirkw.1 || die
 	rm "${D}"/usr/share/man/man1/makedat.1 || die
 	rm "${D}"/usr/share/man/man8/deliverquota.8 || die
