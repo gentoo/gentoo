@@ -34,7 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	sdl? ( sys-devel/autoconf-archive )
+	sdl? ( dev-build/autoconf-archive )
 "
 
 PATCHES=(

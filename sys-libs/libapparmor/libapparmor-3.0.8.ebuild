@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 GENTOO_DEPEND_ON_PERL="no"
 
 inherit autotools distutils-r1 perl-functions
@@ -26,7 +26,7 @@ RDEPEND="perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/bison
 	sys-devel/flex
 	doc? ( dev-lang/perl )

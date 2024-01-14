@@ -30,10 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gtk-update-icon-cache
 	dev-util/intltool
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	app-alternatives/lex
 	app-alternatives/yacc
-" # eautoreconf needs sys-devel/autoconf-archive
+" # eautoreconf needs dev-build/autoconf-archive
 # dev-util/gtk-update-icon-cache because configure checks for it for some reason and never calls it with DESTDIR set..
 
 PATCHES=(

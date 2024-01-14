@@ -57,7 +57,7 @@ DEPEND="
 	valgrind? ( >=dev-debug/valgrind-3.6 )
 "
 BDEPEND="
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 "
 

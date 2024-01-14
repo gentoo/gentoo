@@ -21,7 +21,7 @@ REQUIRED_USE="
 	schnorr? ( extrakeys )
 "
 BDEPEND="
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 	valgrind? ( dev-debug/valgrind )
 "

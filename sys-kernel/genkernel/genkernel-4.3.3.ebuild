@@ -6,7 +6,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -118,7 +118,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-util/gperf
 	sys-apps/sandbox
 	sys-devel/autoconf
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/automake
 	app-alternatives/bc
 	app-alternatives/yacc

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools linux-info python-any-r1 systemd
 
@@ -41,7 +41,7 @@ REQUIRED_USE="
 	ssl? ( || ( gnutls openssl ) )
 "
 
-BDEPEND=">=sys-devel/autoconf-archive-2015.02.24
+BDEPEND=">=dev-build/autoconf-archive-2015.02.24
 	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (
