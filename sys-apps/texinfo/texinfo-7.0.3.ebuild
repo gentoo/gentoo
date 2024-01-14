@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: if your package uses the texi2dvi utility, it must depend on the
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/texinfo.git"
 	REGEN_BDEPEND="
-		>=sys-devel/autoconf-2.62
+		>=dev-build/autoconf-2.62
 		>=sys-devel/automake-1.16
 		sys-devel/libtool
 	"

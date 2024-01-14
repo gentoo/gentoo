@@ -16,7 +16,7 @@ index 1db714b..cb0650a 100644
  
  ACLOCAL_AMFLAGS = -I m4
  
-+# Work around file conflicts against sys-devel/autoconf   -- Arsen
++# Work around file conflicts against dev-build/autoconf   -- Arsen
 +pkgdatadir = $(datadir)/@PACKAGE@-vanilla-@VERSION@
 +
  ## All of these will be incrementally updated later, here or in included
@@ -39,7 +39,7 @@ index e5b3da5..04a3732 100644
    | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
  distcleancheck_listfiles = find . -type f -print
 +
-+# Work around file conflicts against sys-devel/autoconf   -- Arsen
++# Work around file conflicts against dev-build/autoconf   -- Arsen
 +pkgdatadir = $(datadir)/@PACKAGE@-vanilla-@VERSION@
  ACLOCAL = @ACLOCAL@
  AMTAR = @AMTAR@

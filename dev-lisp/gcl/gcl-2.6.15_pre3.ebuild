@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/gmp
 DEPEND="${RDEPEND}
 	virtual/texi2dvi
 	app-text/texi2html
-	>=sys-devel/autoconf-2.52"
+	>=dev-build/autoconf-2.52"
 
 PATCHES=( "${WORKDIR}"/${PF}-spelling.patch )
 S="${WORKDIR}"/${PN}-Version_2_6_15pre3/${PN}

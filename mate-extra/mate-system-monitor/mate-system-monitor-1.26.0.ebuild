@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/autoconf-2.63:*
+	>=dev-build/autoconf-2.63:*
 	virtual/pkgconfig
 "
 

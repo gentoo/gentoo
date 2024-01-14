@@ -16,7 +16,7 @@ index 17e1f8f..73d2ea7 100644
  
  ACLOCAL_AMFLAGS = -I m4
  
-+# Work around file conflicts against sys-devel/autoconf   -- Arsen
++# Work around file conflicts against dev-build/autoconf   -- Arsen
 +pkgdatadir = $(datadir)/@PACKAGE@-vanilla-@VERSION@
 +
  ## All of these will be incrementally updated later, here or in included

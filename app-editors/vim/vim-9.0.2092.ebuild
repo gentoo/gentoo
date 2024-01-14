@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ VIM_VERSION="9.0"
 VIM_PATCHES_VERSION="9.0.2092"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
@@ -61,7 +61,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # configure runs the Lua interpreter
 BDEPEND="
-	sys-devel/autoconf
+	dev-build/autoconf
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "

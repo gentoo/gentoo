@@ -37,7 +37,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	valgrind? ( dev-debug/valgrind )"
 # 2.69-r5 for --runstatedir
-BDEPEND=">=sys-devel/autoconf-2.69-r5
+BDEPEND=">=dev-build/autoconf-2.69-r5
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
