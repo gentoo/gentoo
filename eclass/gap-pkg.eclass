@@ -56,8 +56,8 @@ HOMEPAGE="https://www.gap-system.org/Packages/${PN}.html"
 # four somewhat differently since they are implicit dependencies of
 # everything else in the GAP ecosystem.
 _GAP_PKG_IS_REQUIRED=no
-case ${PN} in
-	 gapdoc|smallgrp|primgrp|transgrp)
+case ${CATEGORY}/${PN} in
+	 dev-gap/gapdoc|dev-gap/smallgrp|dev-gap/primgrp|dev-gap/transgrp)
 		_GAP_PKG_IS_REQUIRED=yes
 		;;
 	 *)
