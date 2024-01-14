@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ IUSE="emacs"
 BDEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.8"
 RDEPEND="${BDEPEND}
-	>=sys-devel/autoconf-wrapper-15
+	>=dev-build/autoconf-wrapper-15
 	sys-devel/gnuconfig
 	!~sys-devel/${P}:2.5"
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
