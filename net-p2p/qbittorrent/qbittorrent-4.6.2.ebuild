@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.1.1:=
 	>=net-libs/libtorrent-rasterbar-1.2.19:=
 	>=sys-libs/zlib-1.2.11
-	qt6? ( dev-qt/qtbase:6[network,ssl,sql,sqlite,xml] )
+	qt6? ( >=dev-qt/qtbase-6.2:6[network,ssl,sql,sqlite,xml] )
 	!qt6? (
 		dev-qt/qtcore:5
 		dev-qt/qtnetwork:5[ssl]
@@ -44,19 +44,19 @@ RDEPEND="
 			dbus? ( dev-qt/qtdbus:5 )
 		)
 		qt6? (
-			dev-qt/qtbase:6[dbus?,gui,widgets]
-			dev-qt/qtsvg:6
+			>=dev-qt/qtbase-6.2:6[dbus?,gui,widgets]
+			>=dev-qt/qtsvg-6.2:6
 		)
 	)"
 DEPEND="
 	${RDEPEND}
-	dev-libs/boost
+	>=dev-libs/boost-1.71
 	test? (
 		!qt6? ( dev-qt/qttest:5 )
 	)"
 BDEPEND="
 	!qt6? ( dev-qt/linguist-tools:5 )
-	qt6? ( dev-qt/qttools:6[linguist] )
+	qt6? ( >=dev-qt/qttools-6.2:6[linguist] )
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
