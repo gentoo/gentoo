@@ -2,8 +2,8 @@ Fix gtk+ and jack automagic detection.
 
 https://github.com/calf-studio-gear/calf/issues/166
 
---- a/configure.ac	2018-07-08 12:35:56.000000000 +0200
-+++ b/configure.ac	2019-03-10 19:22:05.578887471 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -150,13 +150,35 @@
    [set_enable_sse="no"])
  AC_MSG_RESULT($set_enable_sse)

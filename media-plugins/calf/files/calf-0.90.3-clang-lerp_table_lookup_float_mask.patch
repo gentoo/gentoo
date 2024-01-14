@@ -3,12 +3,6 @@ From: Krzysztof Foltman <wdev@foltman.com>
 Date: Fri, 2 Aug 2019 20:55:50 +0100
 Subject: [PATCH] Compatibility: A possible fix for the clang++-8 issue.
 
----
- src/calf/fixed_point.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/src/calf/fixed_point.h b/src/calf/fixed_point.h
-index 7dbf5c9bc..63bfce167 100644
 --- a/src/calf/fixed_point.h
 +++ b/src/calf/fixed_point.h
 @@ -215,7 +215,7 @@ template<class T, int FracBits> class fixed_point {
