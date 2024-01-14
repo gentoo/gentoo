@@ -19,7 +19,8 @@ fi
 
 LICENSE="JasPer2.0"
 SLOT="0/7"
-IUSE="doc heif jpeg opengl"
+IUSE="doc heif jpeg opengl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	heif? ( media-libs/libheif:= )
@@ -37,7 +38,12 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-plaingeneric
 		virtual/latex-base
-	)"
+	)
+	test? ( media-libs/openjpeg )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1.2-which-hunt.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
