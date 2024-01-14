@@ -15,7 +15,7 @@ SRC_URI="https://www.math.rwth-aachen.de/homes/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
