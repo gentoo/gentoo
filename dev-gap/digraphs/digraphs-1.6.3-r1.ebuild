@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 
 DEPEND="sci-mathematics/gap
 	sci-mathematics/planarity
-	sci-libs/bliss"
+	sci-libs/bliss:="
 RDEPEND="${DEPEND}
 	dev-gap/io
 	dev-gap/orb
