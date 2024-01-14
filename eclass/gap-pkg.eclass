@@ -292,7 +292,9 @@ gap-pkg_src_test() {
 gap-pkg_src_install() {
 	einstalldocs
 
-	# Install the "normal" documentation: pdf, six, and txt files under doc/
+	# Install the "normal" documentation from the doc directory. This
+	# includes anything the interactive GAP help might need in addition
+	# to the documentation intended for direct user consumption.
 	if [[ -d doc ]]; then
 		pushd doc > /dev/null || die
 
