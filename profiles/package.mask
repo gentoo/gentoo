@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
+# Unused Java libraries. Removal on 2024-02-15
+dev-java/glassfish-persistence
+dev-java/osgi-core-api
+dev-java/osgi-enterprise-api
+dev-java/osgi-compendium
+dev-java/osgi-foundation
+
 # Michał Górny <mgorny@gentoo.org> (2024-01-12)
 # Breaks data collection for a lot of packages, by attempting to import
 # all modules (not just test files), and therefore failing if they have
