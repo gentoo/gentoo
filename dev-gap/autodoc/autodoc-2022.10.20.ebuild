@@ -20,5 +20,5 @@ gap-pkg_enable_tests
 
 src_prepare() {
 	default
-	rm -f makefile
+	rm -f makefile || die
 }
