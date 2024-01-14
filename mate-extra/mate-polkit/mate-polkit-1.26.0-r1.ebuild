@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ BDEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
-	>=sys-devel/libtool-2.2.6
+	>=dev-build/libtool-2.2.6
 	virtual/pkgconfig"
 
 PATCHES=(

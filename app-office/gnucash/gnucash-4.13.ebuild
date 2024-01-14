@@ -83,7 +83,7 @@ DEPEND="
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
 	dev-perl/XML-Parser
-	sys-devel/libtool
+	dev-build/libtool
 	>=dev-cpp/gtest-1.8.0
 "
 BDEPEND="

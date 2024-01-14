@@ -16,7 +16,7 @@ IUSE="doc"
 
 BDEPEND="
 	sys-apps/which
-	sys-devel/libtool
+	dev-build/libtool
 	doc? (
 		app-text/doxygen
 		dev-texlive/texlive-latexrecommended

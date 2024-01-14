@@ -34,7 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/boost
 	dev-util/gperf
-	sys-devel/libtool
+	dev-build/libtool
 	test? ( dev-util/cppunit )
 "
 

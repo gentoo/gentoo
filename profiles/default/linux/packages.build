@@ -12,10 +12,10 @@ app-arch/tar
 app-shells/bash:0
 dev-build/autoconf
 dev-build/automake
+dev-build/libtool
 dev-build/make
 net-misc/rsync
 net-misc/wget
-sys-devel/libtool
 sys-apps/baselayout
 sys-apps/coreutils
 sys-apps/diffutils

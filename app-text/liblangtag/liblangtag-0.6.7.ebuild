@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	sys-devel/gettext
-	sys-devel/libtool
+	dev-build/libtool
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-libs/gobject-introspection-common )
 "

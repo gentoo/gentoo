@@ -30,7 +30,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-lang/perl
-	sys-devel/libtool
+	dev-build/libtool
 	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="

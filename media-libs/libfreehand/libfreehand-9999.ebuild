@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	dev-libs/icu
 	dev-util/gperf
 	media-libs/lcms
-	sys-devel/libtool
+	dev-build/libtool
 	test? ( dev-util/cppunit )
 "
 BDEPEND="

@@ -25,7 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	sys-devel/libtool
+	dev-build/libtool
 "
 
 src_configure() {

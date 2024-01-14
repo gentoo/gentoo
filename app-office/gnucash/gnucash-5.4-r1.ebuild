@@ -87,7 +87,7 @@ DEPEND="
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
 	dev-perl/XML-Parser
-	sys-devel/libtool
+	dev-build/libtool
 	>=dev-cpp/gtest-1.8.0
 "
 # distutils is not available in python3.12, but it is still in setuptools
