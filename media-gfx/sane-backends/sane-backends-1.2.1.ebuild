@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 # python-any-r1 required for a script in backends/pixma/scripts/
 inherit autotools flag-o-matic multilib-minimal optfeature python-any-r1 systemd toolchain-funcs udev
@@ -171,7 +171,7 @@ DEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig
 "

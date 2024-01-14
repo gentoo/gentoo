@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SLOT="2"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="static-libs"
 
-BDEPEND="sys-devel/autoconf-archive"
+BDEPEND="dev-build/autoconf-archive"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sidplay/sidconfig.h

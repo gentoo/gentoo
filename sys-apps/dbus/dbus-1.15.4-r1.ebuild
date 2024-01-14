@@ -34,7 +34,7 @@ BDEPEND="
 	acct-user/messagebus
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.4
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "

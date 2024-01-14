@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools python-any-r1
 
@@ -27,7 +27,7 @@ RDEPEND="dev-db/sqlite:3
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	doc? ( app-text/doxygen )"
 
 src_prepare() {

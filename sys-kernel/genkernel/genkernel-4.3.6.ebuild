@@ -120,7 +120,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-util/gperf
 	sys-apps/sandbox
 	sys-devel/autoconf
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/automake
 	app-alternatives/bc
 	app-alternatives/yacc

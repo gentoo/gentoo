@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )
 	verify-sig? ( >=sec-keys/openpgp-keys-icu-20221020 )

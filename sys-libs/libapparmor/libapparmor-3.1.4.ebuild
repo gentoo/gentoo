@@ -27,7 +27,7 @@ RDEPEND="perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/bison
 	sys-devel/flex
 	doc? ( dev-lang/perl )

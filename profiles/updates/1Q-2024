@@ -28,3 +28,4 @@ move sys-devel/autoconf-wrapper dev-build/autoconf-wrapper
 move sys-devel/autoconf-vanilla dev-build/autoconf-vanilla
 move sys-devel/autoconf-dickey dev-build/autoconf-dickey
 slotmove dev-build/autoconf-dickey 2.52_p20210509 2.52
+move sys-devel/autoconf-archive dev-build/autoconf-archive
