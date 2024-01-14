@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
+# Old version of a Java library, presently without consumer.
+# Blocks removal of dev-java/osgi-core-api
+# Version bump to be done later when junit5 can be used for testing.
+dev-java/bnd-junit
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
 # Unused Java libraries. Removal on 2024-02-15
 dev-java/glassfish-persistence
 dev-java/osgi-core-api
