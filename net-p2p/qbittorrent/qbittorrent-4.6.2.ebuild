@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 	acct-group/qbittorrent
 	acct-user/qbittorrent
 	>=dev-libs/openssl-1.1.1:=
-	>=net-libs/libtorrent-rasterbar-1.2.18:=
+	>=net-libs/libtorrent-rasterbar-1.2.19:=
 	>=sys-libs/zlib-1.2.11
 	qt6? ( dev-qt/qtbase:6[network,ssl,sql,sqlite,xml] )
 	!qt6? (
