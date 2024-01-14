@@ -53,7 +53,7 @@ BDEPEND="test? ( ${REQUIRED_PKGS} )"
 
 DEPEND="dev-libs/gmp:=
 	sys-libs/zlib
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	readline? ( sys-libs/readline:= )"
 
 RDEPEND="${DEPEND}"
