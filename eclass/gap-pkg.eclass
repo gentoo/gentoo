@@ -108,18 +108,6 @@ _gap-pkg_gaproot() {
 	echo "${ESYSROOT}/usr/$(get_libdir)/gap"
 }
 
-# @FUNCTION: _gap-pkg_gaparch
-# @INTERNAL
-# @USAGE:
-# @DESCRIPTION:
-# Return the variable $GAParch from sysinfo.gap. GAP packages put their
-# executables and libraries in bin/$GAParch, and to accomplish that, we
-# sometimes need to pass $GAParch to the build system.
-_gap-pkg_gaparch() {
-	# Use a subshell so we don't pollute the environment.
-	( . $(_gap-pkg_gaproot)/sysinfo.gap && echo "${GAParch}" )
-}
-
 # @FUNCTION: gap-pkg_econf
 # @USAGE: [extra econf args]
 # @DESCRIPTION:
