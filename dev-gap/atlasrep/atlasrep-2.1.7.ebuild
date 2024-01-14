@@ -6,7 +6,6 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="GAP Interface to the Atlas of Group Representations"
-SLOT="0"
 
 # How to make the test data:
 #
@@ -22,6 +21,7 @@ SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/atlasrep/${P}.tar.gz
 	https://dev.gentoo.org/~mjo/distfiles/${P}-testdata.tar.xz"
 
 LICENSE="GPL-3+"
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
