@@ -16,4 +16,8 @@
 	<upstream>
 		<remote-id type="github">raspberrypi/rpi-eeprom</remote-id>
 	</upstream>
+	<use>
+		<flag name="pi4">Install firmware files for the Raspberry Pi 4</flag>
+		<flag name="pi5">Install firmware files for the Raspberry Pi 5</flag>
+	</use>
 </pkgmetadata>

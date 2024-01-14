@@ -3,13 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit python-r1 systemd
 
 MY_P="${PN}-$(ver_cut 1-2)"
 MY_BASE_URL="https://archive.raspberrypi.org/debian/pool/main/r/${PN}/${PN}_$(ver_cut 1-2)"
-DESCRIPTION="Updater for Raspberry Pi 4 bootloader and the VL805 USB controller"
+DESCRIPTION="Updater for Raspberry Pi 4/5 bootloader and the VL805 USB controller"
 HOMEPAGE="https://github.com/raspberrypi/rpi-eeprom/"
 SRC_URI="${MY_BASE_URL}-$(ver_cut 4).debian.tar.xz
 	${MY_BASE_URL}.orig.tar.gz"
@@ -18,7 +18,11 @@ S="${WORKDIR}"
 LICENSE="BSD rpi-eeprom"
 SLOT="0"
 KEYWORDS="~arm ~arm64"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="pi4 pi5"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	^^ ( pi4 pi5 )
+"
 
 BDEPEND="sys-apps/help2man"
 DEPEND="${PYTHON_DEPS}"
@@ -37,6 +41,11 @@ src_prepare() {
 		"debian/rpi-eeprom.rpi-eeprom-update.service" || die "Failed sed on rpi-eeprom.rpi-eeprom-update.service"
 }
 
+src_configure() {
+	use pi4 && export BROADCOM=2711
+	use pi5 && export BROADCOM=2712
+}
+
 src_install() {
 	pushd "${MY_P}" 1>/dev/null || die "Cannot change into directory ${MY_P}"
 
@@ -46,12 +55,12 @@ src_install() {
 	dosbin rpi-eeprom-update rpi-eeprom-digest
 	keepdir /var/lib/raspberrypi/bootloader/backup
 
-	for dir in critical stable beta; do
+	for dir in default latest critical stable beta; do
 		insinto /lib/firmware/raspberrypi/bootloader
-		doins -r firmware/${dir}
+		doins -r firmware-$BROADCOM/${dir}
 	done
 
-	dodoc firmware/release-notes.md
+	dodoc firmware-$BROADCOM/release-notes.md
 
 	help2man -N \
 		--version-string="${PV}" --help-option="-h" \
