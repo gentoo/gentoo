@@ -58,8 +58,8 @@ HOMEPAGE="https://www.gap-system.org/Packages/${PN}.html"
 _GAP_PKG_IS_REQUIRED=no
 case "${PN}" in
 	 gapdoc|smallgrp|primgrp|transgrp)
-		 _GAP_PKG_IS_REQUIRED=yes
-		 ;;
+		_GAP_PKG_IS_REQUIRED=yes
+		;;
 	 *)
 		;;
 esac
@@ -75,11 +75,11 @@ _GAP_PKG_RDEPEND="sci-mathematics/gap"
 # The four "required" packages depend only on GAP itself, while every
 # other package depends (also) on the four required ones.
 if [[ "${_GAP_PKG_IS_REQUIRED}" = "no" ]]; then
-		_GAP_PKG_RDEPEND+="
-			dev-gap/gapdoc
-			dev-gap/smallgrp
-			dev-gap/primgrp
-			dev-gap/transgrp"
+	_GAP_PKG_RDEPEND+="
+		dev-gap/gapdoc
+		dev-gap/smallgrp
+		dev-gap/primgrp
+		dev-gap/transgrp"
 fi
 RDEPEND="${_GAP_PKG_RDEPEND}"
 
