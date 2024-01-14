@@ -1,3 +1,5 @@
+https://github.com/nmap/nmap/pull/2763
+https://bugs.gentoo.org/920712
 --- a/libdnet-stripped/config/acinclude.m4
 +++ b/libdnet-stripped/config/acinclude.m4
 @@ -201,6 +201,8 @@
