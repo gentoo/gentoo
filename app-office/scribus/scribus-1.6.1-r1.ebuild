@@ -72,31 +72,18 @@ BDEPEND="
 "
 
 PATCHES=(
-	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.8-cmake.patch # bug 886251
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
-	"${FILESDIR}"/${PN}-1.5.8-findhyphen-1.patch
-	"${FILESDIR}"/${PN}-1.5.6-findhyphen.patch
+	"${FILESDIR}"/${PN}-1.6.1-findhyphen.patch
+	"${FILESDIR}"/${PN}-1.7.0-remove-hello-world-test.patch
+	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
 )
 
 src_prepare() {
 	cmake_src_prepare
 
+	# for safety remove files that we patched out
 	rm -r scribus/third_party/hyphen || die
-
-	sed \
-		-e "/^\s*unzip\.[ch]/d" \
-		-e "/^\s*ioapi\.[ch]/d" \
-		-i scribus/CMakeLists.txt Scribus.pro || die
-	rm scribus/ioapi.[ch] || die
-
-	sed \
-		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
-		-i resources/templates/CMakeLists.txt || die
-
-	sed \
-		-e "/^add_subdirectory(ui\/qml)/s/^/#DONT/" \
-		-i scribus/CMakeLists.txt || die # nothing but a bogus Hello World test
 }
 
 src_configure() {
