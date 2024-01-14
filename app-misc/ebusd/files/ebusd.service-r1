@@ -4,8 +4,6 @@ After=network-online.target
 
 [Service]
 Type=forking
-User=ebusd
-Group=ebusd
 ExecStart=/usr/bin/ebusd ${EBUSD_OPTS}
 Restart=always
 
