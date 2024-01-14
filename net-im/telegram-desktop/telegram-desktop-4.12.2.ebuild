@@ -181,6 +181,9 @@ src_configure() {
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant)
 		## Use system fonts instead of bundled ones
 		-DDESKTOP_APP_USE_PACKAGED_FONTS=$(usex !fonts)
+
+		# TEMP: Override for new cmake.eclass defaults (https://bugs.gentoo.org/921939)
+		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=OFF
 	)
 
 	if [[ -n ${MY_TDESKTOP_API_ID} && -n ${MY_TDESKTOP_API_HASH} ]]; then
