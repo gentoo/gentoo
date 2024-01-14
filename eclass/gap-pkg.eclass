@@ -84,7 +84,6 @@ fi
 RDEPEND="${_GAP_PKG_RDEPEND}"
 
 # @FUNCTION: gap-pkg_dir
-# @USAGE:
 # @DESCRIPTION:
 # The directory into which the gap package should be installed. The
 # accepted current location is /usr/$(get_libdir)/gap/pkg, but
@@ -95,7 +94,6 @@ gap-pkg_dir() {
 
 # @FUNCTION: _gap-pkg_gaproot
 # @INTERNAL
-# @USAGE:
 # @DESCRIPTION:
 # The directory containing sysinfo.gap. This is frequently passed to GAP
 # packages via ./configure --with-gaproot or as a positional argument to
@@ -124,7 +122,6 @@ gap-pkg_econf() {
 }
 
 # @FUNCTION: gap-pkg_src_configure
-# @USAGE:
 # @DESCRIPTION:
 # Handle both autoconf configure scripts and the hand-written ones used
 # by many GAP packages. We determine which one we're dealing with by
@@ -149,7 +146,6 @@ gap-pkg_src_configure() {
 }
 
 # @FUNCTION: gap-pkg_src_compile
-# @USAGE:
 # @DESCRIPTION:
 # The default src_compile with the addition of V=1 to emake. The
 # Makefile.gappkg used to build most C packages defaults to a quiet
@@ -161,7 +157,6 @@ gap-pkg_src_compile() {
 }
 
 # @FUNCTION: gap-pkg_enable_tests
-# @USAGE:
 # @DESCRIPTION:
 # Amend IUSE, RESTRICT, and BDEPEND for a package with a test suite.
 # This is modeled on similar functions in the distutils-r1 and
@@ -180,7 +175,6 @@ gap-pkg_enable_tests() {
 }
 
 # @FUNCTION: gap-pkg_src_test
-# @USAGE:
 # @DESCRIPTION:
 # Run this package's test suite if it has one. The GAP TestPackage
 # function is the standard way to do this, but it does rely on the
@@ -266,7 +260,6 @@ gap-pkg_src_test() {
 # installed with HTML_DOCS or a similar mechanism.
 
 # @FUNCTION: gap-pkg_src_install
-# @USAGE:
 # @DESCRIPTION:
 # Install a GAP package that follows the suggested layout,
 #
