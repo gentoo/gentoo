@@ -25,6 +25,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
+	dev-libs/glib
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	>=sys-process/acct-6.6.4-r1
