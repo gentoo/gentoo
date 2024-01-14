@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ fi
 DESCRIPTION="Extended attributes tools"
 HOMEPAGE="https://savannah.nongnu.org/projects/attr"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="debug nls static-libs"
 
