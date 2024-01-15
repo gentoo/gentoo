@@ -26,17 +26,19 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
-	lapack? ( virtual/lapack )
+	dev-cpp/yaml-cpp
+	hdf5? ( sci-libs/HighFive )
+	!lapack? ( sci-libs/sundials:0= )
+	lapack? (
+		>=sci-libs/sundials-6.5.0:0=[lapack?]
+		virtual/lapack
+	)
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 		')
 	)
-	dev-cpp/yaml-cpp
-	hdf5? ( sci-libs/HighFive )
-	!lapack? ( sci-libs/sundials:0= )
-	lapack? ( >=sci-libs/sundials-6.5.0:0=[lapack?] )
 "
 
 DEPEND="
