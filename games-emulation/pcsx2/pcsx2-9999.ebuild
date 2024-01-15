@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop fcaps flag-o-matic
+inherit cmake desktop fcaps flag-o-matic toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -65,6 +65,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-qt/qttools:6[linguist]
+	sys-devel/clang:*
 	wayland? (
 		dev-util/wayland-scanner
 		kde-frameworks/extra-cmake-modules
@@ -72,7 +73,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3773-lto.patch
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 )
@@ -93,6 +93,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# upstream only supports clang and ignores gcc issues, e.g.
+	# https://github.com/PCSX2/pcsx2/issues/10624#issuecomment-1890326047
+	if ! tc-is-clang; then
+		local -x CC=${CHOST}-clang CXX=${CHOST}-clang++
+		strip-unsupported-flags
+	fi
+
 	if use vulkan; then
 		# for bundled glslang (bug #858374)
 		append-flags -fno-strict-aliasing
@@ -104,7 +111,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_ADVANCE_SIMD=yes
-		-DDISABLE_BUILD_DATE=yes
 		-DENABLE_TESTS=$(usex test)
 		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no
