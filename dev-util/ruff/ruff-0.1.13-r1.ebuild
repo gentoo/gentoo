@@ -389,7 +389,7 @@ LICENSE="MIT"
 
 BDEPEND="
 	dev-util/patchelf
-	>=virtual/rust-1.73
+	>=virtual/rust-1.71
 "
 
 # Dependent crate licenses
