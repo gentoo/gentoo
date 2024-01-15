@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/va/va_x11.h
 	/usr/include/va/va_dri2.h
 	/usr/include/va/va_dricommon.h
+)
+
+PATCHES=(
+	"${FILESDIR}/clang-17-version-script-check-fix.patch"
 )
 
 multilib_src_configure() {
