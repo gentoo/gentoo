@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib toolchain-funcs
+inherit cmake-multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="Video stabilization library"
 HOMEPAGE="http://public.hronopik.de/vid.stab/"
