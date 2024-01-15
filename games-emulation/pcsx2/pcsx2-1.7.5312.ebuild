@@ -90,13 +90,8 @@ src_prepare() {
 }
 
 src_configure() {
-	if use vulkan; then
-		# for bundled glslang (bug #858374)
-		append-flags -fno-strict-aliasing
-
-		# odr violations in pcsx2's vulkan code, disabling as a safety for now
-		filter-lto
-	fi
+	# for bundled old glslang (bug #858374)
+	use vulkan && append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
