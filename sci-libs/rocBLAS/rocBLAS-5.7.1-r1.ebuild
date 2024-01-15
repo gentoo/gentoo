@@ -104,4 +104,8 @@ src_install() {
 		dolib.a clients/librocblas_fortran_client.a
 		dobin clients/staging/rocblas-bench
 	fi
+
+	# Stop llvm-strip from removing .strtab section from *.hsaco files,
+	# otherwise rocclr/elf/elf.cpp complains with "failed: null sections(STRTAB)" and crashes
+	dostrip -x /usr/$(get_libdir)/rocblas/library/
 }
