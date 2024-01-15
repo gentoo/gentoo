@@ -12,7 +12,7 @@ SRC_URI="https://github.com/libvips/libvips/releases/download/v${PV}/${P}.tar.xz
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0/42" # soname
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="
 	deprecated doc exif fftw fits fontconfig graphicsmagick gsf gtk-doc heif
 	imagemagick imagequant +introspection +jpeg jpeg2k jpegxl lcms matio
