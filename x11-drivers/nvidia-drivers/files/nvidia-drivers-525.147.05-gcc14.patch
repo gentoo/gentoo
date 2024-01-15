@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/921370
+https://forums.developer.nvidia.com/t/279072
+--- a/kernel/conftest.sh
++++ b/kernel/conftest.sh
+@@ -4807,6 +4807,11 @@
+             CODE="
+             #include <drm/drm_gem.h>
++            #if defined(NV_LINUX_IOSYS_MAP_H_PRESENT)
++            typedef struct iosys_map nv_sysio_map_t;
++            #else
++            typedef struct dma_buf_map nv_sysio_map_t;
++            #endif
+             int conftest_drm_gem_object_vmap_has_map_arg(
+-                    struct drm_gem_object *obj, struct dma_buf_map *map) {
++                    struct drm_gem_object *obj, nv_sysio_map_t *map) {
+                 return obj->funcs->vmap(obj, map);
+             }"
+--- a/kernel-module-source/kernel-open/conftest.sh
++++ b/kernel-module-source/kernel-open/conftest.sh
+@@ -4807,6 +4807,11 @@
+             CODE="
+             #include <drm/drm_gem.h>
++            #if defined(NV_LINUX_IOSYS_MAP_H_PRESENT)
++            typedef struct iosys_map nv_sysio_map_t;
++            #else
++            typedef struct dma_buf_map nv_sysio_map_t;
++            #endif
+             int conftest_drm_gem_object_vmap_has_map_arg(
+-                    struct drm_gem_object *obj, struct dma_buf_map *map) {
++                    struct drm_gem_object *obj, nv_sysio_map_t *map) {
+                 return obj->funcs->vmap(obj, map);
+             }"

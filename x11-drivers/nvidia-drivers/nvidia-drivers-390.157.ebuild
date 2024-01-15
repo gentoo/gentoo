@@ -151,6 +151,16 @@ src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
+	# latest branches has proper fixes, but legacy have more issues and are
+	# not worth the trouble, so doing the lame "fix" for gcc14 (bug #921370)
+	local noerr=(
+		-Wno-error=implicit-function-declaration
+		-Wno-error=incompatible-pointer-types
+	)
+	# not *FLAGS to ensure it's used everywhere including conftest.sh
+	CC+=" $(test-flags-CC "${noerr[@]}")"
+	use modules && KERNEL_CC+=" $(CC=${KERNEL_CC} test-flags-CC "${noerr[@]}")"
+
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
 		HOST_CC="$(tc-getBUILD_CC)"
@@ -162,6 +172,7 @@ src_compile() {
 	local modlist=( nvidia{,-drm,-modeset}=video:kernel )
 	use x86 || modlist+=( nvidia-uvm=video:kernel )
 	local modargs=(
+		CC="${KERNEL_CC}" # for the above gcc14 workarounds
 		IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 	)

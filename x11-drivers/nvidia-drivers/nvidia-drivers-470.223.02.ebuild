@@ -148,6 +148,18 @@ src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
+	# latest branches has proper fixes, but legacy have more issues and are
+	# not worth the trouble, so doing the lame "fix" for gcc14 (bug #921370)
+	# TODO: check if still needed on bumps given this branch is supported,
+	# and reminder to cleanup the CC="${KERNEL_CC}" in modargs if removing
+	local noerr=(
+		-Wno-error=implicit-function-declaration
+		-Wno-error=incompatible-pointer-types
+	)
+	# not *FLAGS to ensure it's used everywhere including conftest.sh
+	CC+=" $(test-flags-CC "${noerr[@]}")"
+	use modules && KERNEL_CC+=" $(CC=${KERNEL_CC} test-flags-CC "${noerr[@]}")"
+
 	local xnvflags=-fPIC #840389
 	# lto static libraries tend to cause problems without fat objects
 	is-flagq '-flto@(|=*)' && xnvflags+=" $(test-flags-CC -ffat-lto-objects)"
@@ -163,6 +175,7 @@ src_compile() {
 
 	local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=video:kernel )
 	local modargs=(
+		CC="${KERNEL_CC}" # for the above gcc14 workarounds
 		IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 	)
