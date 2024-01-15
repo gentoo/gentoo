@@ -9,17 +9,26 @@ inherit elisp
 
 DESCRIPTION="CSL 1.0.2 Citation Processor for Emacs"
 HOMEPAGE="https://github.com/andras-simonyi/citeproc-el"
-SRC_URI="https://github.com/andras-simonyi/${PN}/archive/${PV}.tar.gz
-	-> ${P}.tar.gz"
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/andras-simonyi/${PN}.git"
+else
+	SRC_URI="https://github.com/andras-simonyi/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-editors/emacs-26:*[libxml2]
+	app-emacs/compat
 	app-emacs/dash
 	app-emacs/f
 	app-emacs/parsebib
@@ -38,10 +47,7 @@ BDEPEND="
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	${EMACS} ${EMACSFLAGS} -L . -L test \
-		-l citeproc-test-human.el \
-		-l test/citeproc-test-int-biblatex.el \
-		-l test/citeproc-test-int-formatters.el \
-		-f ert-run-tests-batch-and-exit || die
-}
+elisp-enable-tests ert test						\
+	-l citeproc-test-human.el					\
+	-l test/citeproc-test-int-biblatex.el		\
+	-l test/citeproc-test-int-formatters.el
