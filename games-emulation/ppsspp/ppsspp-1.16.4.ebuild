@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,8 +21,8 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 JSON MIT"
 SLOT="0"
-IUSE="discord qt5"
-RESTRICT="test"
+IUSE="discord qt5 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/snappy:=
@@ -53,6 +53,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-CMakeLists-flags.patch
 	"${FILESDIR}"/${PN}-disable-ccache-autodetection.patch
+	"${FILESDIR}"/${PN}-1.15.4-backport-ce83fec.patch
 )
 
 pkg_setup() {
@@ -70,6 +71,11 @@ src_configure() {
 		-DUSE_SYSTEM_ZSTD=ON
 		-DUSE_DISCORD=$(usex discord)
 		-DUSING_QT_UI=$(usex qt5)
+		-DUNITTEST=$(usex test)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	cmake_src_test -E glslang-testsuite
 }
