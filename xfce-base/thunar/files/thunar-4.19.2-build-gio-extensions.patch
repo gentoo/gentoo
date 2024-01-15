@@ -1,0 +1,42 @@
+Patch from https://gitlab.xfce.org/xfce/thunar/-/merge_requests/428
+diff --git a/thunar/thunar-gio-extensions.c b/thunar/thunar-gio-extensions.c
+index 5132e7d4..207800e7 100644
+--- a/thunar/thunar-gio-extensions.c
++++ b/thunar/thunar-gio-extensions.c
+@@ -1578,11 +1578,13 @@ thunar_g_file_info_set_attribute (GFileInfo   *info,
+         break;
+ 
+       case THUNAR_GTYPE_STRINGV:
++      {
+         gchar **setting_values;
+         setting_values = g_strsplit (setting_value, THUNAR_METADATA_STRING_DELIMETER, 100);
+         g_file_info_set_attribute_stringv (info, setting_name, setting_values);
+         g_strfreev (setting_values);
+         break;
++      }
+ 
+       default:
+         g_warning ("ThunarGType not supported, skipping");
+@@ -1603,6 +1605,7 @@ thunar_g_file_info_get_attribute (GFileInfo   *info,
+         return g_strdup (g_file_info_get_attribute_string (info, setting_name));
+ 
+       case THUNAR_GTYPE_STRINGV:
++      {
+         gchar **stringv = g_file_info_get_attribute_stringv (info, setting_name);
+         GList  *string_list = NULL;
+         gchar  *joined_string = NULL;
+@@ -1616,6 +1619,7 @@ thunar_g_file_info_get_attribute (GFileInfo   *info,
+         joined_string = thunar_util_strjoin_list (string_list, THUNAR_METADATA_STRING_DELIMETER);
+         g_list_free (string_list);
+         return joined_string;
++      }
+ 
+       default:
+         g_warning ("ThunarGType not supported, skipping");
+@@ -1760,4 +1764,4 @@ thunar_g_file_get_metadata_setting (GFile       *file,
+   g_free (attr_name);
+ 
+   return attr_value;
+-}
+\ No newline at end of file
++}
