@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
-	>=sys-devel/boost-m4-0.4_p20221019
+	>=dev-build/boost-m4-0.4_p20221019
 	nls? ( sys-devel/gettext )
 "
 
