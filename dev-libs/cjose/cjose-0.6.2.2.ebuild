@@ -22,7 +22,7 @@ RDEPEND=">=dev-libs/jansson-2.11:=
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( >=app-doc/doxygen-1.8 )
+	doc? ( >=app-text/doxygen-1.8 )
 	test? ( >=dev-libs/check-0.9.4 )"
 
 src_prepare() {
