@@ -23,7 +23,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	test? ( dev-libs/libxml2 )
 "
 

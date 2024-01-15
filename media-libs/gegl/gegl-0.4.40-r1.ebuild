@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	>=dev-util/gtk-doc-am-1
+	>=dev-build/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
 	>=dev-build/libtool-2.2
 	virtual/pkgconfig

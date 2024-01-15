@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/iso-codes
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
 	>=x11-libs/gdk-pixbuf-2.36.5
 	virtual/pkgconfig
