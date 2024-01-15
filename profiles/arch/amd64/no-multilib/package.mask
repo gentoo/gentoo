@@ -57,7 +57,6 @@ games-arcade/gish-demo
 games-arcade/jardinains
 games-arcade/thinktanks-demo
 games-emulation/gens
-<games-emulation/pcsx2-1.7
 games-emulation/vgba
 games-emulation/zinc
 games-emulation/zsnes
