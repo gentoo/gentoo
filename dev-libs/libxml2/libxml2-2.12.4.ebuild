@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} == 9999 ]] ; then
-	BDEPEND+=" dev-util/gtk-doc-am"
+	BDEPEND+=" dev-build/gtk-doc-am"
 fi
 
 MULTILIB_CHOST_TOOLS=(

@@ -39,3 +39,4 @@ move dev-util/mage dev-build/mage
 move dev-util/muon dev-build/muon
 move dev-util/xfce4-dev-tools dev-build/xfce4-dev-tools
 move sys-devel/boost-m4 dev-build/boost-m4
+move dev-util/gtk-doc-am dev-build/gtk-doc-am

@@ -58,7 +58,7 @@ DEPEND="
 
 # TODO: relax libbytesize condition once it has gained py3.11 support
 BDEPEND+="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 	test? (

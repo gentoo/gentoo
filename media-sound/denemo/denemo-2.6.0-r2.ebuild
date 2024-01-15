@@ -51,7 +51,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-util/gtk-doc-am-1.25-r1
+	>=dev-build/gtk-doc-am-1.25-r1
 	>=dev-util/intltool-0.51.0-r1
 	app-alternatives/lex
 	virtual/pkgconfig

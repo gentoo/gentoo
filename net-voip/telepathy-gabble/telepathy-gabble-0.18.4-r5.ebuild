@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Python is used during build for some scripted source files generation (and twisted tests)
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit gnome2 python-any-r1
 
@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.17
+	>=dev-build/gtk-doc-am-1.17
 	dev-libs/libxslt
 	virtual/pkgconfig
 "

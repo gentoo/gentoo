@@ -64,7 +64,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.1
 	virtual/pkgconfig

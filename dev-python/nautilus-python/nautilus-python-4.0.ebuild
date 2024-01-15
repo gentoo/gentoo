@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit gnome2 meson python-single-r1
 
@@ -29,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	gtk-doc? ( dev-util/gtk-doc )
-	>=dev-util/gtk-doc-am-1.14
+	>=dev-build/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
 

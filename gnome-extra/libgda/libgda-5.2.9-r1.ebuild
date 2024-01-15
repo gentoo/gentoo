@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	app-text/yelp-tools
 	dev-util/glib-utils
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=dev-util/intltool-0.40.6
 	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.6 )

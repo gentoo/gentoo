@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit gnome2 python-any-r1 readme.gentoo-r1 systemd udev vala
 
 DESCRIPTION="Modem and mobile broadband management libraries"
@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1
+	>=dev-build/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (

@@ -42,7 +42,7 @@ DEPEND="
 	)
 "
 BDEPEND="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=virtual/pkgconfig-0-r1
 	doc? ( dev-util/gtk-doc )
 	nls? ( sys-devel/gettext )

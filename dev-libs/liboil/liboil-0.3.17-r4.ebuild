@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="examples? ( dev-libs/glib:2 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-amd64-cpuid.patch )

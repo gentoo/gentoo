@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RDEPEND=">=dev-libs/glib-2.18:2"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig

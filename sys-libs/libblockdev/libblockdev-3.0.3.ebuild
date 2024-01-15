@@ -56,7 +56,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 	test? (
