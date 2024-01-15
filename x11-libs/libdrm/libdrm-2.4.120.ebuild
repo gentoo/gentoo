@@ -32,7 +32,7 @@ SLOT="0"
 COMMON_DEPEND="
 	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
-	valgrind? ( dev-util/valgrind )"
+	valgrind? ( dev-debug/valgrind )"
 RDEPEND="${COMMON_DEPEND}
 	video_cards_amdgpu? (
 		tools? ( >=dev-util/cunit-2.1 )
