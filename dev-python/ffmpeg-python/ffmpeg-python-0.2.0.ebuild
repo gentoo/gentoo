@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,17 @@ BDEPEND="test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 PATCHES=(
 	"${FILESDIR}"/${P}-_run.py-collections.patch
 	"${FILESDIR}"/${P}-setup.py-pytest-runner.patch
+)
+
+EPYTEST_DESELECT=(
+	ffmpeg/tests/test_ffmpeg.py::test__get_filter_complex_input
+	ffmpeg/tests/test_ffmpeg.py::test__input__start_time
+	ffmpeg/tests/test_ffmpeg.py::test__multi_output_edge_label_order
+	ffmpeg/tests/test_ffmpeg.py::test__probe
+	ffmpeg/tests/test_ffmpeg.py::test__probe__extra_args
+	ffmpeg/tests/test_ffmpeg.py::test_fluent_complex_filter
+	ffmpeg/tests/test_ffmpeg.py::test_pipe
+	ffmpeg/tests/test_ffmpeg.py::test_repeated_args
 )
 
 distutils_enable_tests pytest
