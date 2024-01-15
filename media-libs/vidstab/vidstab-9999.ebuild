@@ -1,4 +1,4 @@
-# Copyright 2018-2023 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="openmp cpu_flags_x86_sse2"
+IUSE="openmp cpu_flags_x86_sse2 flag-o-matic"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -54,6 +54,7 @@ multilib_src_test() {
 		-DUSE_OMP="$(usex openmp)"
 		-DSSE2_FOUND="$(usex cpu_flags_x86_sse2)"
 	)
+	append-cflags $(test-flags-CC -fopenmp)
 	local CMAKE_USE_DIR="${CMAKE_USE_DIR}/tests"
 	local BUILD_DIR="${BUILD_DIR}/tests"
 	cmake_src_configure
