@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,8 @@ fi
 LICENSE="ISC"
 SLOT="0"
 
-IUSE=""
-
 BDEPEND="virtual/pkgconfig"
-DEPEND="dev-libs/libsodium:=[-minimal]"
+DEPEND="dev-libs/libsodium:=[-minimal(-)]"
 RDEPEND="${DEPEND}"
 
 src_configure() {
