@@ -1,0 +1,11 @@
+--- a/WWW/Library/Implementation/www_tcp.h
++++ b/WWW/Library/Implementation/www_tcp.h
+@@ -105,7 +105,7 @@ Default values
+ # define STRUCT_DIRENT struct dirent64
+ #endif
+ 
+-#if !(defined(DOSPATH) || defined(__EMX__) || defined(__CYGWIN__))
++#if !(defined(DOSPATH) || defined(__EMX__) || defined(__CYGWIN__) || defined(__MINT__))
+ #define STRUCT_DIRENT__D_INO 1
+ #endif
+ 
