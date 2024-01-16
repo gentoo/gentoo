@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets xdg
+inherit cmake wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://www.audacityteam.org/"
@@ -37,10 +37,8 @@ LICENSE="GPL-2+
 "
 SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mad mpg123 ogg
-	opus +portmixer sbsms twolame vamp +vorbis wavpack"
-
-# The testsuite consists of two tests, 50% of which fail.
-RESTRICT="test"
+	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
+RESTRICT="!test? ( test )"
 
 # dev-db/sqlite:3 hard dependency.
 # dev-libs/glib:2, x11-libs/gtk+:3 hard dependency, from
@@ -104,7 +102,8 @@ RDEPEND="dev-db/sqlite:3
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/catch:0 )"
 BDEPEND="app-arch/unzip
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -135,6 +134,9 @@ PATCHES=(
 
 	# gettext 0.22
 	"${FILESDIR}/${PN}-3.3.3-gettext-0.22.patch"
+
+	# Allows running tests without conan
+	"${FILESDIR}/${PN}-3.3.3-remove-conan-test-dependency.patch"
 )
 
 src_prepare() {
@@ -215,9 +217,15 @@ src_configure() {
 		## Keep watch of PA_HAS_OSS in lib-src/portmixer/CMakeLists.txt;
 		## AFAICT it introduces no deps as-is, but that could change.
 		## Similar goes for PA_HAS_JACK.
+
+		-Daudacity_has_tests=$(usex test ON OFF)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
 }
 
 src_install() {
