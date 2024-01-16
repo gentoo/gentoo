@@ -314,6 +314,11 @@ src_install() {
 
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
+
+	if use elibc_musl; then
+		# https://bugs.gentoo.org/900348
+		QA_CONFIG_IMPL_DECL_SKIP=( re_set_syntax re_compile_pattern re_search )
+	fi
 }
 
 pkg_postinst() {
