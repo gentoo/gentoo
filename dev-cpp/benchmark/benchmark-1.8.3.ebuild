@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( app-text/doxygen )
 	test? ( >=dev-cpp/gtest-1.11.0 )"
+PATCHES=( "${FILESDIR}/${PN}-1.8.3-fix-32bit-test.patch" )
 
 src_configure() {
 	local mycmakeargs=(
