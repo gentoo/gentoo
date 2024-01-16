@@ -25,6 +25,16 @@ BDEPEND=""
 
 S="${WORKDIR}/darwin-xtools-gentoo-${PVR}"
 
+src_prepare() {
+	cmake_src_prepare
+	# kill forced libstd=libc++ usage, breaks with GCC-13 which has
+	# preliminary support for that
+	# check_cxx_compiler_flag(-stdlib=libc++ # XTOOLS_CXX_HAS_STDLIB_FLAG)
+	#
+	sed -i -e '/check_cxx_compiler_flag/s/XTOOLS_CXX_HAS_STDLIB_FLAG/NO_&/' \
+		cmake/config-ix.cmake || die
+}
+
 src_configure() {
 	CTARGET=${CTARGET:-${CHOST}}
 	if [[ ${CTARGET} == ${CHOST} ]] ; then
