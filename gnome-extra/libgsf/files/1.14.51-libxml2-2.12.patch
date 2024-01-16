@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/917549
+https://gitlab.gnome.org/GNOME/libgsf/-/commit/b6719aa4a8a0fc3acfd8e7ab339b3493f7251b22
+
+From b6719aa4a8a0fc3acfd8e7ab339b3493f7251b22 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=BCrg=20Billeter?= <j@bitron.ch>
+Date: Fri, 24 Nov 2023 19:47:35 +0100
+Subject: [PATCH] xml: Fix build with libxml2 2.12
+
+--- a/gsf/gsf-libxml.h
++++ b/gsf/gsf-libxml.h
+@@ -23,6 +23,7 @@
+ #define GSF_LIBXML_H
+ 
+ #include <gsf/gsf-fwd.h>
++#include <libxml/parser.h>
+ #include <libxml/tree.h>
+ 
+ G_BEGIN_DECLS
+-- 
+GitLab
