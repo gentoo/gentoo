@@ -44,6 +44,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.6-libxml2-2.12.patch
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
