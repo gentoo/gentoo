@@ -1,10 +1,10 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PN="ethersrv-linux"
-MY_PV_TSR="0.8.2"
+MY_PV_TSR="0.8.3"
 MY_P="${MY_PN}-${PV}"
 
 inherit systemd toolchain-funcs
@@ -13,7 +13,7 @@ DESCRIPTION="An ethernet-based file system for DOS"
 HOMEPAGE="http://etherdfs.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${MY_P}.tar.xz
-	tsr? ( mirror://sourceforge/${PN}/v${MY_PV_TSR}/${PN}.zip -> ${P}.zip )
+	tsr? ( mirror://sourceforge/${PN}/v${MY_PV_TSR}/${PN}.zip -> ${PN}-tsr-${MY_PV_TSR}.zip )
 "
 S="${WORKDIR}/${MY_P}"
 
