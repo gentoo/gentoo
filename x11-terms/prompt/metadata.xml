@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Prompt is a terminal for GNOME with first-class support for containers.
+	</longdescription>
+	<upstream>
+		<doc>https://blogs.gnome.org/chergert/2023/12/14/prompt/</doc>
+		<remote-id type="gnome-gitlab">chergert/prompt</remote-id>
+	</upstream>
+</pkgmetadata>
