@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-16)
+# cuda (and thus cudnn) are not available in stable
+media-libs/opencv cudnn
+
 # Joonas Niilola <juippis@gentoo.org> (2024-01-08)
 # Pulls in pandoc with all of its glory (haskell). #921501
 www-apps/hugo test
