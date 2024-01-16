@@ -39,6 +39,7 @@ SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( mpg123 )"
 
 # dev-db/sqlite:3 hard dependency.
 # dev-libs/glib:2, x11-libs/gtk+:3 hard dependency, from
@@ -65,6 +66,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/rapidjson
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
 	media-libs/portaudio[alsa?]
@@ -127,8 +129,8 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	local header_subs="${S}/lib-src/header-substitutes"
-	cat <<-EOF >"${header_subs}/allegro.h" || die
+	local header_subs="${S}/libraries/lib-note-track"
+	cat <<-EOF >"${header_subs}/WrapAllegro.h" || die
 	/* Hack the allegro.h header substitute to use system headers.  */
 	#include <portsmf/allegro.h>
 	EOF
