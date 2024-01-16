@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND="dev-libs/libsodium:=[asm,urandom,-minimal]
+DEPEND="dev-libs/libsodium:=[asm,urandom,-minimal(-)]
 	av? (
 		media-libs/libvpx:=
 		media-libs/opus
