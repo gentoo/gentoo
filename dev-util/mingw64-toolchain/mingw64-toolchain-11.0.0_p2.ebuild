@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -100,7 +100,8 @@ src_compile() {
 	local conf=(
 		--build=${CBUILD:-${CHOST}}
 		--target=${CTARGET}
-		--{doc,info,man}dir=/.skip # let individual packages handle docs
+		--{doc,info,man}dir=/.skip # let the real binutils+gcc handle docs
+		MAKEINFO=: #922230
 	)
 
 	# binutils
@@ -239,9 +240,9 @@ src_compile() {
 		pushd "${build_dir}" >/dev/null || die
 
 		edo "${conf[@]}"
-		emake V=1
+		emake MAKEINFO=: V=1
 		# -j1 to match bug #906155, other packages may be fragile too
-		emake -j1 V=1 DESTDIR="${MWT_D}" install
+		emake -j1 MAKEINFO=: V=1 DESTDIR="${MWT_D}" install
 
 		declare -f mwt-${id} >/dev/null && edo mwt-${id}
 		declare -f mwt-${id}_${2} >/dev/null && edo mwt-${id}_${2}
