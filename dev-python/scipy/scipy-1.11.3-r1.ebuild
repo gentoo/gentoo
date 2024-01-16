@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1 multiprocessing
+inherit flag-o-matic fortran-2 distutils-r1 multiprocessing
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="
@@ -87,6 +87,9 @@ src_unpack() {
 }
 
 python_configure_all() {
+	# https://github.com/scipy/scipy/pull/19857
+	# Fixed in 1.13.0
+	filter-lto
 	DISTUTILS_ARGS=(
 		-Dblas=blas
 		-Dlapack=lapack
