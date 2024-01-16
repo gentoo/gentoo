@@ -81,6 +81,7 @@ src_prepare() {
 }
 
 src_configure() {
+	ln -s "${BROOT}"/usr/bin/luajit "${BUILD_DIR}"/luajit || die
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
 		# appends -flto
