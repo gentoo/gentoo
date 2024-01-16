@@ -11,7 +11,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/libime/libime-${PV}_dict.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~loong ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 IUSE="+data doc test"
 RESTRICT="!test? ( test )"
 
