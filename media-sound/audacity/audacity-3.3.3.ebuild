@@ -103,7 +103,7 @@ RDEPEND="dev-db/sqlite:3
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/catch:0 )"
+	test? ( <dev-cpp/catch-3:0 )"
 BDEPEND="app-arch/unzip
 	sys-devel/gettext
 	virtual/pkgconfig
