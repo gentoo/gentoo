@@ -5,7 +5,7 @@ EAPI=8
 
 inherit bash-completion-r1 cmake
 
-COMMIT="193e6e34b40807cbeedee2e4abc3ef5165e14ae2"
+COMMIT="32602f565c6cb854d1f2643b51a022991cea2b1b"
 
 DESCRIPTION="Raspberry Pi userspace utilities"
 HOMEPAGE="https://github.com/raspberrypi/utils"
@@ -15,7 +15,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~arm ~arm64"
 
+DEPEND="
+	sys-apps/dtc
+"
+
 RDEPEND="
+	${DEPEND}
 	!media-libs/raspberrypi-userland
 	!media-libs/raspberrypi-userland-bin
 "
