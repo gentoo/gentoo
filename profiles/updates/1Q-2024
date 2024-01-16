@@ -35,3 +35,4 @@ move sys-devel/automake-vanilla dev-build/automake-vanilla
 move sys-devel/automake dev-build/automake
 move sys-devel/slibtool dev-build/slibtool
 move sys-devel/libtool dev-build/libtool
+move dev-util/mage dev-build/mage
