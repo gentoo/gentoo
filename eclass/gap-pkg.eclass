@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # François Bissey <frp.bissey@gmail.com>
 # Michael Orlitzky <mjo@gentoo.org>
+# Gentoo Mathematics Project <sci-mathematics@gentoo.org>
 # @AUTHOR:
 # François Bissey <frp.bissey@gmail.com>
 # Michael Orlitzky <mjo@gentoo.org>
