@@ -74,7 +74,7 @@ src_configure() {
 		-DBUILD_FlatpakBackend=$(usex flatpak)
 		-DBUILD_FwupdBackend=$(usex firmware)
 		-DBUILD_RpmOstreeBackend=OFF
-# 		-DBUILD_SnapBackend=$(usex snap)
+		-DBUILD_SnapBackend=OFF
 		-DBUILD_SteamOSBackend=OFF
 		$(cmake_use_find_package telemetry KF6UserFeedback)
 		$(cmake_use_find_package webengine Qt6WebView)
