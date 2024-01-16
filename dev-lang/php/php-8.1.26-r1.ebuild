@@ -110,7 +110,7 @@ COMMON_DEPEND="
 	readline? ( sys-libs/readline:0= )
 	session-mm? ( dev-libs/mm )
 	snmp? ( >=net-analyzer/net-snmp-5.2 )
-	sodium? ( dev-libs/libsodium:=[-minimal] )
+	sodium? ( dev-libs/libsodium:=[-minimal(-)] )
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? ( >=dev-libs/openssl-1.0.2:0= )
