@@ -41,7 +41,7 @@ esac
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+inherit flag-o-matic multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 BDEPEND=">=dev-build/meson-1.2.1
 	${NINJA_DEPEND}
@@ -283,6 +283,38 @@ meson_feature() {
 # variables. Invoke via "${MESONARGS[@]}" in the calling environment.
 # This function is called from meson_src_configure.
 setup_meson_src_configure() {
+	MESONARGS=()
+	if tc-is-lto; then
+		# We want to connect -flto in *FLAGS to the dedicated meson option,
+		# to ensure that meson has visibility into what the user set. Although
+		# it is unlikely projects will check `get_option('b_lto')` and change
+		# their behavior, individual targets which are broken with LTO can
+		# disable it per target. Injecting via *FLAGS means that meson cannot
+		# strip -flto from that target.
+		MESONARGS+=( -Db_lto=true )
+
+		# respect -flto value, e.g. -flto=8, -flto=thin
+		local v=$(get-flag flto)
+		case ${v} in
+			thin)
+				MESONARGS+=( -Db_lto_mode=thin )
+				;;
+			''|*[!0-9]*)
+				;;
+			*)
+				MESONARGS+=( -Db_lto_threads=${v} )
+				;;
+		esac
+		# finally, remove it from *FLAGS to avoid passing it:
+		# - twice, with potentially different values
+		# - on excluded targets
+		filter-lto
+	else
+		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
+		# enabled via setting *FLAGS appropriately.
+		MESONARGS+=( -Db_lto=false )
+	fi
+
 	local BUILD_CFLAGS=${BUILD_CFLAGS}
 	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
 	local BUILD_CXXFLAGS=${BUILD_CXXFLAGS}
@@ -311,7 +343,7 @@ setup_meson_src_configure() {
 		: "${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}"
 	fi
 
-	MESONARGS=(
+	MESONARGS+=(
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
@@ -331,9 +363,7 @@ setup_meson_src_configure() {
 		# an upstream development matter. bug #754279.
 		-Dwerror=false
 
-		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
-		# enabled via setting *FLAGS appropriately.
-		-Db_lto=false
+		"${ltoflags[@]}"
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
