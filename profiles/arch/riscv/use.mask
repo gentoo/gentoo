@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -19,6 +19,10 @@
 -gtk2
 -gtk3
 -introspection
+
+# Yongxiang Liang <tanekliang@gmail.com> (2024-01-16)
+# Requires qtwebengine, which is not ported to riscv
+webengine
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)
 # sci-libs/netcdf fails tests in a way suggesting it might be completely
