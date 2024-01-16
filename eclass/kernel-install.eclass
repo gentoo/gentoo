@@ -50,7 +50,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit dist-kernel-utils mount-boot toolchain-funcs
+inherit dist-kernel-utils mount-boot multiprocessing toolchain-funcs
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -757,8 +757,10 @@ kernel-install_compress_modules() {
 	if use modules-compress; then
 		einfo "Compressing kernel modules ..."
 		# taken from scripts/Makefile.modinst
-		find "${ED}/lib" -name '*.ko' -exec \
-			xz --check=crc32 --lzma2=dict=1MiB {} + || die
+		find "${ED}/lib" -name '*.ko' -print0 |
+			xargs -0 -P "$(makeopts_jobs)" -n 128 \
+				xz --check=crc32 --lzma2=dict=1MiB
+		assert "Compressing kernel modules failed"
 	fi
 }
 
