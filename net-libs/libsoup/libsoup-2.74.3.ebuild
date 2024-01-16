@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,6 +53,8 @@ BDEPEND="
 PATCHES=(
 	# Disable apache tests until they are usable on Gentoo, bug #326957
 	"${FILESDIR}"/disable-apache-tests.patch
+	# libxml2-2.12 fix, bug #917556
+	"${FILESDIR}"/libxml2-2.12.patch
 )
 
 src_prepare() {
