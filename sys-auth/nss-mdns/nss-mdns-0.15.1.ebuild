@@ -24,6 +24,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+	# Only needed for LLD 17 patch
 	eautoreconf
 }
 
