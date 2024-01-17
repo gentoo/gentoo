@@ -14,6 +14,14 @@
 		high-quality denoising filters for images rendered with ray tracing. Intel
 		Open Image Denoise is part of the Intel® oneAPI Rendering Toolkit and is
 	</longdescription>
+	<use>
+		<flag name="apps">
+			Build the standalone denoise, self test, and benchmark binaries.
+		</flag>
+		<flag name="hip">
+			Build OIDN with AMD HIP support.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">OpenImageDenoise/oidn</remote-id>
 	</upstream>
