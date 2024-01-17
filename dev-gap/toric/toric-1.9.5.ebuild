@@ -9,11 +9,10 @@ MY_PN="Toric"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="GAP package for computing with toric varieties"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-
-S="${WORKDIR}/${MY_P}"
 
 gap-pkg_enable_tests

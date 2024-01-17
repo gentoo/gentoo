@@ -8,13 +8,12 @@ inherit gap-pkg
 DESCRIPTION="GAP transitive groups library"
 SLOT="0"
 SRC_URI="https://www.math.colostate.edu/~hulpke/${PN}/${PN}${PV}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 # Data format is licensed Artistic-2
 # Code is licensed GPL-3
 LICENSE="GPL-3 Artistic-2"
 KEYWORDS="~amd64"
-
-S="${WORKDIR}/${PN}"
 
 # This is one of the four required packages whose dependencies are all
 # listed explicitly.
