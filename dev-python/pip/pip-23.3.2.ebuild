@@ -117,6 +117,7 @@ python_test() {
 
 	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
 	local -x PIP_DISABLE_PIP_VERSION_CHECK=1
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local EPYTEST_XDIST=1
 	epytest -m "not network"
 }
