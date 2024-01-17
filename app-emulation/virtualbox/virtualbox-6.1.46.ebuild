@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -103,8 +103,8 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
-	>=dev-util/kbuild-0.1.9998.3127
-	<=dev-util/kbuild-0.1.9998.3500
+	>=dev-build/kbuild-0.1.9998.3127
+	<=dev-build/kbuild-0.1.9998.3500
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
 	sys-apps/which
