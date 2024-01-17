@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-inherit bash-completion-r1 bazel java-pkg-2 multiprocessing
+inherit bash-completion-r1 java-pkg-2 multiprocessing
 
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="https://bazel.build/"
@@ -27,10 +27,24 @@ DEPEND="
 	app-arch/zip"
 
 S="${WORKDIR}"
-PATCHES=(
-	"${FILESDIR}/${PN}-3.2.0-include-limits-for-gcc-11.patch"
-	"${FILESDIR}/${PN}-4.2.2-absl_numeric_limits.patch"
-)
+
+bazel-get-flags() {
+	local i fs=()
+	for i in ${CFLAGS}; do
+		fs+=( "--copt=${i}" "--host_copt=${i}" )
+	done
+	for i in ${CXXFLAGS}; do
+		fs+=( "--cxxopt=${i}" "--host_cxxopt=${i}" )
+	done
+	for i in ${CPPFLAGS}; do
+		fs+=( "--copt=${i}" "--host_copt=${i}" )
+		fs+=( "--cxxopt=${i}" "--host_cxxopt=${i}" )
+	done
+	for i in ${LDFLAGS}; do
+		fs+=( "--linkopt=${i}" "--host_linkopt=${i}" )
+	done
+	echo "${fs[*]}"
+}
 
 pkg_setup() {
 	if has ccache ${FEATURES}; then
@@ -54,10 +68,13 @@ src_prepare() {
 	# R: /proc/24939/setgroups
 	# C: /usr/lib/systemd/systemd
 	addpredict /proc
+
+	eapply "${FILESDIR}/${PN}-3.2.0-include-limits-for-gcc-11.patch"
+	eapply "${FILESDIR}/${PN}-3.7.2-musl-temp-failure-retry.patch"
 }
 
 src_compile() {
-	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs) $(bazel_get_flags) --host_javabase=@local_jdk//:jdk"
+	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs) $(bazel-get-flags) --host_javabase=@local_jdk//:jdk"
 	VERBOSE=yes ./compile.sh || die
 
 	./scripts/generate_bash_completion.sh \
