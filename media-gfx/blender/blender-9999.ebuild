@@ -46,7 +46,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	test? ( color-management )"
 
 # Library versions for official builds can be found in the blender source directory in:
-# build_files/build_environment/install_deps.sh
+# build_files/build_environment/cmake/versions.cmake
 RDEPEND="${PYTHON_DEPS}
 	app-arch/zstd
 	dev-libs/boost:=[nls?]
@@ -234,7 +234,7 @@ src_prepare() {
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
 		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i tests/CMakeLists.txt || die
-		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/testing.cmake || die
 	fi
 }
 
