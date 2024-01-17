@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/fcitx/fcitx5-chinese-addons"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}_dict.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~loong ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 SLOT="5"
 IUSE="+data +gui webengine +cloudpinyin +qt5 qt6 lua +opencc test"
 REQUIRED_USE="
