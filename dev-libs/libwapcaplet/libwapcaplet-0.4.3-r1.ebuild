@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? ( >=dev-libs/check-0.9.11 )"
 BDEPEND="
-	>=dev-util/netsurf-buildsystem-1.7-r1"
+	>=dev-build/netsurf-buildsystem-1.7-r1"
 
 _emake() {
 	netsurf_define_makeconf

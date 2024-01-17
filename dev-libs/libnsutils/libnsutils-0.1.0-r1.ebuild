@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
-BDEPEND="dev-util/netsurf-buildsystem"
+BDEPEND="dev-build/netsurf-buildsystem"
 
 _emake() {
 	netsurf_define_makeconf

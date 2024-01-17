@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
 IUSE="doc test"
 
 BDEPEND="
-	dev-util/netsurf-buildsystem
+	dev-build/netsurf-buildsystem
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	test? ( dev-lang/perl )
