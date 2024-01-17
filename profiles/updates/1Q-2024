@@ -52,3 +52,4 @@ move dev-util/b2 dev-build/b2
 move dev-util/kbuild dev-build/kbuild
 move dev-util/ald dev-debug/ald
 move dev-util/ddd dev-debug/ddd
+move dev-util/edb-debugger dev-debug/edb-debugger
