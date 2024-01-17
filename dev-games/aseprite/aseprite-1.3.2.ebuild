@@ -59,7 +59,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	test? ( dev-cpp/gtest )
 	app-arch/unzip
-	dev-util/gn
+	dev-build/gn
 	virtual/pkgconfig"
 
 DOCS=(

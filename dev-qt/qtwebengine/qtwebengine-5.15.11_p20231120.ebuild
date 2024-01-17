@@ -102,7 +102,7 @@ BDEPEND="${PYTHON_DEPS}
 	net-libs/nodejs[ssl]
 	sys-devel/bison
 	sys-devel/flex
-	ppc64? ( >=dev-util/gn-0.1807 )
+	ppc64? ( >=dev-build/gn-0.1807 )
 "
 
 PATCHES=(
