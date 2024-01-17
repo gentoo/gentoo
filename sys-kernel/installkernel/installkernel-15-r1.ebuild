@@ -32,9 +32,13 @@ RDEPEND="
 		)
 	)
 	!=sys-apps/systemd-255.2-r1
+	!=sys-apps/systemd-255.2-r0
+	!~sys-apps/systemd-255.1
+	!~sys-apps/systemd-255.0
 	!=sys-apps/systemd-254.8-r0
 	!=sys-apps/systemd-254.7-r0
-	!=sys-apps/systemd-254.5-r1
+	!~sys-apps/systemd-254.6
+	!<=sys-apps/systemd-254.5-r1
 " # Block against systemd that still installs dummy install.conf
 
 src_install() {
