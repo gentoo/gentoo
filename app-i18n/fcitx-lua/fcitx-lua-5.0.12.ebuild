@@ -15,7 +15,7 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.xz -> 
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="+dlopen test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
