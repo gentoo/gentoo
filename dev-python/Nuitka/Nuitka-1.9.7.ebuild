@@ -23,7 +23,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-util/scons[${PYTHON_USEDEP}]
+	dev-build/scons[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
