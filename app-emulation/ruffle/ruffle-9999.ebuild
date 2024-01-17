@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,7 @@ EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 LICENSE="|| ( Apache-2.0 MIT )"
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
-	CC0-1.0 ISC UbuntuFontLicense-1.0 MIT MPL-2.0 OFL-1.1
-	Unicode-DFS-2016 ZLIB curl
+	CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB curl
 " # crates
 SLOT="0"
 IUSE="test"
@@ -38,7 +37,7 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.72
+	>=virtual/rust-1.74
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
