@@ -181,6 +181,9 @@ src_prepare() {
 	eautoreconf
 	tools/make_requests || die # perl
 	dlls/winevulkan/make_vulkan -x vk.xml || die # python, needed for proton's
+	# tip: if need more for user patches, with portage can e.g. do
+	# echo "post_src_prepare() { tools/make_specfiles || die; }" \
+	#     > /etc/portage/env/app-emulation/wine-proton
 }
 
 src_configure() {
