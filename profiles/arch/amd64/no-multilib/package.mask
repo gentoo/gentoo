@@ -24,9 +24,7 @@ app-arch/stuffit
 app-benchmarks/cpuburn
 app-editors/emacs:18
 app-emulation/crossover-bin
-app-emulation/protontricks
 app-emulation/q4wine
-app-emulation/winetricks
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-ndk
