@@ -97,15 +97,17 @@ src_prepare() {
 src_configure() {
 	# We unset $ABI because GAP uses it internally for something else.
 	# --without-gmp and --without-zlib both trigger an AC_MSG_ERROR
-	econf \
-		ABI="" \
-		--with-gmp \
-		--with-zlib \
-		$(use_enable cpu_flags_x86_popcnt popcnt) \
-		$(use_enable memcheck memory-checking) \
-		$(use_enable valgrind) \
-		$(use_with readline) \
+	local myeconfargs=(
+		ABI=""
+		--with-gmp
+		--with-zlib
+		$(use_enable cpu_flags_x86_popcnt popcnt)
+		$(use_enable memcheck memory-checking)
+		$(use_enable valgrind)
+		$(use_with readline)
 		$(use_enable debug)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
