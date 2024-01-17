@@ -15,7 +15,7 @@ SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~pacho/${PN}/${P}-wx32-port.patch"
 
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
