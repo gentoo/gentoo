@@ -10,6 +10,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="GAP documentation structure and tooling"
 SLOT="0"
 SRC_URI="https://github.com/frankluebeck/${MY_PN}/archive/relv${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-relv${PV}"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64"
@@ -20,8 +21,6 @@ IUSE="examples"
 RESTRICT=test
 
 DOCS=( CHANGES README.md )
-
-S="${WORKDIR}/${MY_PN}-relv${PV}"
 
 GAP_PKG_EXTRA_INSTALL=(
 	bibxmlext.dtd
