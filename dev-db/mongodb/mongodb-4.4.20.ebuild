@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	$(python_gen_any_dep '
 		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/requests[${PYTHON_USEDEP}] )
-		>=dev-util/scons-3.1.1[${PYTHON_USEDEP}]
+		>=dev-build/scons-3.1.1[${PYTHON_USEDEP}]
 		dev-python/cheetah3[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -73,7 +73,7 @@ python_check_deps() {
 		python_has_version "dev-python/requests[${PYTHON_USEDEP}]" || return 1
 	fi
 
-	python_has_version ">=dev-util/scons-3.1.1[${PYTHON_USEDEP}]" &&
+	python_has_version ">=dev-build/scons-3.1.1[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/psutil[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
