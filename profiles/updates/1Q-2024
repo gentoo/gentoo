@@ -48,3 +48,4 @@ move dev-util/tup dev-build/tup
 move sys-devel/cons dev-build/cons
 move dev-util/scons dev-build/scons
 move sys-devel/qconf dev-build/qconf
+move dev-util/b2 dev-build/b2
