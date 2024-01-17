@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-01-17)
+# Unmaintained build systems with no reverse dependencies.
+# dev-build/cons was last released in 2001.
+# dev-build/tup was last released in 2021 and has a few bugs reported.
+# Removal on 2024-02-16.  Bug #922329.
+dev-build/cons
+dev-build/tup
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
 # Old version of a Java library, presently without consumer.
 # Blocks removal of dev-java/osgi-core-api
