@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/cucumber/aruba"
 SRC_URI="https://github.com/cucumber/aruba/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~loong ~ppc ~riscv ~s390"
+KEYWORDS="~amd64 ~loong ~ppc ~riscv ~s390 ~x86"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
