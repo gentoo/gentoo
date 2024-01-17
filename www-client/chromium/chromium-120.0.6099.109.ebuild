@@ -195,8 +195,8 @@ BDEPEND="
 		>=dev-util/web_page_replay_go-20220314
 		$(depend_clang_llvm_versions ${LLVM_MIN_SLOT} ${LLVM_MAX_SLOT})
 	)
+	>=dev-build/gn-${GN_MIN_VER}
 	dev-lang/perl
-	>=dev-util/gn-${GN_MIN_VER}
 	>=dev-util/gperf-3.0.3
 	app-alternatives/ninja
 	dev-vcs/git
@@ -326,7 +326,7 @@ pkg_setup() {
 		fi
 		# Users should never hit this, it's purely a development convenience
 		if ver_test $(gn --version || die) -lt ${GN_MIN_VER}; then
-				die "dev-util/gn >= ${GN_MIN_VER} is required to build this Chromium"
+				die "dev-build/gn >= ${GN_MIN_VER} is required to build this Chromium"
 		fi
 	fi
 

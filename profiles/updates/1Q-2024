@@ -41,3 +41,4 @@ move dev-util/xfce4-dev-tools dev-build/xfce4-dev-tools
 move sys-devel/boost-m4 dev-build/boost-m4
 move dev-util/gtk-doc-am dev-build/gtk-doc-am
 move dev-util/bazel dev-build/bazel
+move dev-util/gn dev-build/gn
