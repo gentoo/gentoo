@@ -25,6 +25,9 @@
 			Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image
 			storage
 		</flag>
+		<flag name="nbd">
+			Allow using <pkg>sys-block/nbdkit</pkg> to access network disks
+		</flag>
 		<flag name="nfs">
 			Allow using Network File System mounts as pool for disk image storage
 		</flag>

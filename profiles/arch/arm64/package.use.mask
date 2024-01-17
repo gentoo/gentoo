@@ -464,3 +464,7 @@ sci-libs/linux-gpib firmware
 # Mask flags of calligra and dependencies due to lack of keywords
 app-office/calligra spacenav
 media-gfx/pstoedit emf
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
+# No sys-block/nbdkit on arm, yet
+app-emulation/libvirt nbd

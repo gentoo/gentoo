@@ -239,3 +239,7 @@ sci-libs/opencascade vtk
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
+# No sys-block/nbdkit on riscv, yet
+app-emulation/libvirt nbd
