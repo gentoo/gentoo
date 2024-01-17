@@ -31,7 +31,7 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )
-	extras? ( >=sys-devel/qconf-2.4 )
+	extras? ( >=dev-build/qconf-2.4 )
 "
 DEPEND="
 	app-crypt/qca:2[ssl]
