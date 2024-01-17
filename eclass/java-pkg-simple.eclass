@@ -367,7 +367,8 @@ java-pkg-simple_src_compile() {
 	# gather sources
 	# if target < 9, we need to compile module-info.java separately
 	# as this feature is not supported before Java 9
-	if [[ $(java-pkg_get-target) -lt 9 ]]; then
+	local target="$(java-pkg_get-target)"
+	if [[ ${target#1.} -lt 9 ]]; then
 		find "${JAVA_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${sources}
 		moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
 	else
@@ -382,7 +383,7 @@ java-pkg-simple_src_compile() {
 	java-pkg-simple_getclasspath
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
 
-	if [[ -n ${moduleinfo} ]] || [[ $(java-pkg_get-target) -lt 9 ]]; then
+	if [[ -n ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
 		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
 	else
@@ -528,7 +529,8 @@ java-pkg-simple_src_test() {
 	# gathering sources for testing
 	# if target < 9, we need to compile module-info.java separately
 	# as this feature is not supported before Java 9
-	if [[ $(java-pkg_get-target) -lt 9 ]]; then
+	local target="$(java-pkg_get-target)"
+	if [[ ${target#1.} -lt 9 ]]; then
 		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${test_sources}
 		moduleinfo=$(find "${JAVA_TEST_SRC_DIR[@]}" -name module-info.java)
 	else
@@ -537,7 +539,7 @@ java-pkg-simple_src_test() {
 
 	# compile
 	if [[ -s ${test_sources} ]]; then
-		if [[ -n ${moduleinfo} ]] || [[ $(java-pkg_get-target) -lt 9 ]]; then
+		if [[ -n ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
 			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${test_sources}
 		else
