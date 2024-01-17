@@ -53,7 +53,7 @@ DEPEND="
 "
 BDEPEND="
 	>=dev-lang/yasm-0.6.2
-	>=dev-util/kbuild-0.1.9998.3127
+	>=dev-build/kbuild-0.1.9998.3127
 	sys-devel/bin86
 	sys-power/iasl
 "

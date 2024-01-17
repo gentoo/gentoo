@@ -130,7 +130,7 @@ BDEPEND="
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
 	dev-util/glslang
-	>=dev-util/kbuild-0.1.9998.3592
+	>=dev-build/kbuild-0.1.9998.3592
 	sys-apps/which
 	sys-devel/bin86
 	sys-libs/libcap
