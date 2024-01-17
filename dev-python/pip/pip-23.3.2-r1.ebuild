@@ -59,6 +59,7 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
 		"${FILESDIR}/pip-23.3.1-no-color.patch"
+		"${FILESDIR}/${P}-setuptools-69.0.3.patch"
 	)
 
 	distutils-r1_python_prepare_all
