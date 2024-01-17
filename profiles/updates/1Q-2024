@@ -50,3 +50,4 @@ move dev-util/scons dev-build/scons
 move sys-devel/qconf dev-build/qconf
 move dev-util/b2 dev-build/b2
 move dev-util/kbuild dev-build/kbuild
+move dev-util/ald dev-debug/ald
