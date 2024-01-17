@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,8 +30,8 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
-	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nfs nls numa openvz
-	parted pcap policykit +qemu rbd sasl selinux test +udev
+	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nbd nfs nls numa
+	openvz parted pcap policykit +qemu rbd sasl selinux test +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
 "
 RESTRICT="!test? ( test )"
@@ -90,6 +90,7 @@ RDEPEND="
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
+	nbd? ( sys-block/nbdkit )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -269,6 +270,7 @@ src_configure() {
 		$(meson_feature lvm storage_lvm)
 		$(meson_feature lvm storage_mpath)
 		$(meson_feature lxc driver_lxc)
+		$(meson_feature nbd nbdkit)
 		$(meson_feature nls)
 		$(meson_feature numa numactl)
 		$(meson_feature numa numad)

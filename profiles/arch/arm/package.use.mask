@@ -480,3 +480,7 @@ dev-qt/qtscript -jit
 
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug vcd wavpack
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
+# No sys-block/nbdkit on arm, yet
+app-emulation/libvirt nbd
