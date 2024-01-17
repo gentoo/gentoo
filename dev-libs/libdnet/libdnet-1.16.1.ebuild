@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_10 )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1
 
