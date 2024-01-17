@@ -5,6 +5,7 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">streamlink/streamlink</remote-id>
 		<remote-id type="pypi">streamlink</remote-id>
