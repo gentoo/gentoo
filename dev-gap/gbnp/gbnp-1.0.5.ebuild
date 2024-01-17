@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gap-packages/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64"
-IUSE="examples "
+IUSE="examples"
 
 gap-pkg_enable_tests
 
