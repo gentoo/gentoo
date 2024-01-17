@@ -54,7 +54,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-python-path.patch
-	"${FILESDIR}"/${PN}-1.3.1-xtools-support.patch
 
 	# backport fix for hiding compiler warnings (such as Modern C) in vala and cython
 	"${FILESDIR}"/0001-ninja-backend-don-t-hide-all-compiler-warnings-for-t.patch
