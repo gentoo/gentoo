@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.15-r4 )
 		>=x11-libs/xcb-util-image-0.3.9-r1
 		>=x11-libs/xcb-util-keysyms-0.3.9-r1
 	)"
-BDEPEND="dev-util/netsurf-buildsystem"
+BDEPEND="dev-build/netsurf-buildsystem"
 
 PATCHES=( "${FILESDIR}/${PN}-0.1.0-autodetect.patch" )
 
