@@ -1,0 +1,203 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c6750758f..6df7d2f34 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -95,7 +95,8 @@ IF (BUILD_DOC)
+   ADD_SUBDIRECTORY(doc)
+ ENDIF()
+ 
+-OPTION(EMBREE_TUTORIALS    "Enable to build Embree tutorials" ON)
++OPTION(EMBREE_TUTORIALS "Enable to build Embree tutorials" ON)
++OPTION(EMBREE_TUTORIALS_INSTALL "Enable to include the built tutorials in the Embree package" ON)
+ 
+ ##############################################################
+ # Embree configuration
+diff --git a/common/cmake/package.cmake b/common/cmake/package.cmake
+index f7a182f7f..92ac45de0 100644
+--- a/common/cmake/package.cmake
++++ b/common/cmake/package.cmake
+@@ -145,7 +145,7 @@ ENDIF()
+ # Install Models
+ ##############################################################
+ 
+-IF (EMBREE_TUTORIALS)
++IF (EMBREE_TUTORIALS AND EMBREE_TUTORIALS_INSTALL)
+   INSTALL(DIRECTORY tutorials/models DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
+ ENDIF()
+ 
+diff --git a/common/cmake/tutorial.cmake b/common/cmake/tutorial.cmake
+index 0f23d0204..cba0c4b13 100644
+--- a/common/cmake/tutorial.cmake
++++ b/common/cmake/tutorial.cmake
+@@ -9,7 +9,9 @@ MACRO (ADD_TUTORIAL TUTORIAL_NAME)
+   TARGET_LINK_LIBRARIES(embree_${TUTORIAL_NAME} embree image tutorial noise ${ADDITIONAL_LIBRARIES})
+   SET_PROPERTY(TARGET embree_${TUTORIAL_NAME} PROPERTY FOLDER tutorials/single)
+   SET_PROPERTY(TARGET embree_${TUTORIAL_NAME} APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST}")
+-  INSTALL(TARGETS embree_${TUTORIAL_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++  IF (EMBREE_TUTORIALS_INSTALL)
++    INSTALL(TARGETS embree_${TUTORIAL_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++  ENDIF ()
+   SIGN_TARGET(embree_${TUTORIAL_NAME})
+ ENDMACRO ()
+ 
+@@ -21,7 +23,9 @@ MACRO (ADD_TUTORIAL_SYCL TUTORIAL_NAME)
+     SET_PROPERTY(TARGET embree_${TUTORIAL_NAME}_sycl PROPERTY FOLDER tutorials/sycl)
+     SET_PROPERTY(TARGET embree_${TUTORIAL_NAME}_sycl APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST} ${CMAKE_CXX_FLAGS_SYCL}")
+     SET_PROPERTY(TARGET embree_${TUTORIAL_NAME}_sycl APPEND PROPERTY LINK_FLAGS "${CMAKE_LINK_FLAGS_SYCL}")
+-    INSTALL(TARGETS embree_${TUTORIAL_NAME}_sycl DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT examples)
++    IF (EMBREE_TUTORIALS_INSTALL)
++      INSTALL(TARGETS embree_${TUTORIAL_NAME}_sycl DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT examples)
++    ENDIF ()
+     SIGN_TARGET(embree_${TUTORIAL_NAME}_sycl)
+   ENDIF()
+ ENDMACRO ()
+@@ -32,7 +36,9 @@ MACRO (ADD_TUTORIAL_ISPC TUTORIAL_NAME)
+     TARGET_LINK_LIBRARIES(embree_${TUTORIAL_NAME}_ispc embree image tutorial_ispc noise noise_ispc)
+     SET_PROPERTY(TARGET embree_${TUTORIAL_NAME}_ispc PROPERTY FOLDER tutorials/ispc)
+     SET_PROPERTY(TARGET embree_${TUTORIAL_NAME}_ispc APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST}")
+-    INSTALL(TARGETS embree_${TUTORIAL_NAME}_ispc DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++    IF (EMBREE_TUTORIALS_INSTALL)
++      INSTALL(TARGETS embree_${TUTORIAL_NAME}_ispc DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++    ENDIF ()
+     SIGN_TARGET(embree_${TUTORIAL_NAME}_ispc)
+   ENDIF()
+ ENDMACRO ()
+diff --git a/tutorials/CMakeLists.txt b/tutorials/CMakeLists.txt
+index 122dae2e4..96a69d17e 100644
+--- a/tutorials/CMakeLists.txt
++++ b/tutorials/CMakeLists.txt
+@@ -4,7 +4,9 @@
+ include(CMakeDependentOption)
+ 
+ CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/README.md.in" "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+-INSTALL(FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md" DESTINATION "src" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md" DESTINATION "src" COMPONENT examples)
++ENDIF()
+ 
+ ADD_SUBDIRECTORY(common/image)
+ CMAKE_DEPENDENT_OPTION(EMBREE_TUTORIALS_GLFW "Enables GLFW usage in tutorials. When disabled tutorial can only render to disk." ON "EMBREE_TUTORIALS" OFF)
+diff --git a/tutorials/bvh_access/CMakeLists.txt b/tutorials/bvh_access/CMakeLists.txt
+index 3bc801d24..1b7fa1fb2 100644
+--- a/tutorials/bvh_access/CMakeLists.txt
++++ b/tutorials/bvh_access/CMakeLists.txt
+@@ -8,9 +8,11 @@ TARGET_LINK_LIBRARIES(embree_bvh_access embree math sys tasking tutorial)
+ 
+ SET_PROPERTY(TARGET embree_bvh_access PROPERTY FOLDER tutorials/single)
+ SET_PROPERTY(TARGET embree_bvh_access APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST}")
+-INSTALL(TARGETS embree_bvh_access DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(TARGETS embree_bvh_access DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++ENDIF()
+ SIGN_TARGET(embree_bvh_access)
+ 
+ ENDIF()
+ 
+-ADD_EMBREE_TEST_ECS(bvh_access embree_bvh_access NO_REFERENCE NO_ISPC NO_SYCL)
+\ No newline at end of file
++ADD_EMBREE_TEST_ECS(bvh_access embree_bvh_access NO_REFERENCE NO_ISPC NO_SYCL)
+diff --git a/tutorials/convert/CMakeLists.txt b/tutorials/convert/CMakeLists.txt
+index 5c1b7795d..6730bc96d 100644
+--- a/tutorials/convert/CMakeLists.txt
++++ b/tutorials/convert/CMakeLists.txt
+@@ -5,5 +5,7 @@ ADD_EXECUTABLE(embree_convert ../../kernels/embree.rc convert.cpp distribution1d
+ TARGET_LINK_LIBRARIES(embree_convert scenegraph image tasking)
+ SET_PROPERTY(TARGET embree_convert PROPERTY FOLDER tutorials/single)
+ SET_PROPERTY(TARGET embree_convert APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST}")
+-INSTALL(TARGETS embree_convert DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(TARGETS embree_convert DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++ENDIF()
+ SIGN_TARGET(embree_convert)
+diff --git a/tutorials/embree_info/CMakeLists.txt b/tutorials/embree_info/CMakeLists.txt
+index fa8b74b89..6d10279ff 100644
+--- a/tutorials/embree_info/CMakeLists.txt
++++ b/tutorials/embree_info/CMakeLists.txt
+@@ -18,8 +18,10 @@ ADD_EXECUTABLE(embree_info embree_info.cpp)
+ TARGET_LINK_LIBRARIES(embree_info embree)
+ 
+ SET_PROPERTY(TARGET embree_info PROPERTY FOLDER tutorials/single)
+-INSTALL(TARGETS embree_info DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
+-#INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" DESTINATION "src" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(TARGETS embree_info DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++  #INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" DESTINATION "src" COMPONENT examples)
++ENDIF()
+ 
+ IF (EMBREE_SYCL_SUPPORT)
+   SET_PROPERTY(TARGET embree_info APPEND PROPERTY COMPILE_FLAGS "-fsycl -Xclang -fsycl-allow-func-ptr -fsycl-targets=spir64")
+@@ -31,4 +33,4 @@ IF (COMMAND SIGN_TARGET)
+   SIGN_TARGET(embree_info)
+ ENDIF()
+ 
+-ENDIF()
+\ No newline at end of file
++ENDIF()
+diff --git a/tutorials/embree_tests/CMakeLists.txt b/tutorials/embree_tests/CMakeLists.txt
+index ab62b1954..b3647bc2d 100644
+--- a/tutorials/embree_tests/CMakeLists.txt
++++ b/tutorials/embree_tests/CMakeLists.txt
+@@ -40,8 +40,10 @@ endif()
+ 
+ SET_PROPERTY(TARGET embree_tests PROPERTY FOLDER tutorials)
+ SET_PROPERTY(TARGET embree_tests APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST}")
+-INSTALL(TARGETS embree_tests DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(TARGETS embree_tests DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++ENDIF()
+ SIGN_TARGET(embree_tests)
+ 
+ ADD_EMBREE_TEST_ECS(embree_tests embree_tests NO_REFERENCE NO_ISPC NO_SYCL)
+-SET_EMBREE_TEST_PROPERTIES(embree_tests PROPERTIES TIMEOUT 7000)
+\ No newline at end of file
++SET_EMBREE_TEST_PROPERTIES(embree_tests PROPERTIES TIMEOUT 7000)
+diff --git a/tutorials/minimal/CMakeLists.txt b/tutorials/minimal/CMakeLists.txt
+index 962c2f4e8..4fa642544 100644
+--- a/tutorials/minimal/CMakeLists.txt
++++ b/tutorials/minimal/CMakeLists.txt
+@@ -16,8 +16,10 @@ ADD_EXECUTABLE(embree_minimal minimal.cpp)
+ TARGET_LINK_LIBRARIES(embree_minimal embree)
+ 
+ SET_PROPERTY(TARGET embree_minimal PROPERTY FOLDER tutorials/single)
+-INSTALL(TARGETS embree_minimal DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
+-INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" DESTINATION "src" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(TARGETS embree_minimal DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++  INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" DESTINATION "src" COMPONENT examples)
++ENDIF()
+ IF (COMMAND SIGN_TARGET)
+   SIGN_TARGET(embree_minimal)
+ ENDIF()
+@@ -30,7 +32,9 @@ IF (EMBREE_SYCL_SUPPORT)
+   SET_PROPERTY(TARGET embree_minimal_sycl APPEND PROPERTY LINK_FLAGS    "-fsycl -fsycl-targets=spir64")
+   
+   SET_PROPERTY(TARGET embree_minimal_sycl PROPERTY FOLDER tutorials/sycl)
+-  INSTALL(TARGETS embree_minimal_sycl DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT examples)
++  IF (EMBREE_TUTORIALS_INSTALL)
++    INSTALL(TARGETS embree_minimal_sycl DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT examples)
++  ENDIF()
+   IF (COMMAND SIGN_TARGET)
+     SIGN_TARGET(embree_minimal_sycl)
+   ENDIF()
+diff --git a/tutorials/verify/CMakeLists.txt b/tutorials/verify/CMakeLists.txt
+index c12d9caf8..ec3c928d7 100644
+--- a/tutorials/verify/CMakeLists.txt
++++ b/tutorials/verify/CMakeLists.txt
+@@ -13,7 +13,9 @@ ADD_EXECUTABLE(embree_verify ../../kernels/embree.rc verify.cpp
+ TARGET_LINK_LIBRARIES(embree_verify ${EMBREE_LIBRARIES} sys math scenegraph embree tasking)
+ SET_PROPERTY(TARGET embree_verify PROPERTY FOLDER tutorials)
+ SET_PROPERTY(TARGET embree_verify APPEND PROPERTY COMPILE_FLAGS " ${FLAGS_LOWEST}")
+-INSTALL(TARGETS embree_verify DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++IF (EMBREE_TUTORIALS_INSTALL)
++  INSTALL(TARGETS embree_verify DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
++ENDIF()
+ SIGN_TARGET(embree_verify)
+ 
+ ADD_EMBREE_TEST_ECS(embree_verify           embree_verify NO_REFERENCE NO_ISPC NO_SYCL              ARGS --no-colors)
+@@ -39,4 +41,4 @@ ADD_EMBREE_TEST_ECS(embree_verify_benchmark embree_verify NO_REFERENCE NO_ISPC N
+        --skip .*_120.* --skip .*_1k.* --skip .*_10k.* --skip .*100k.*  # skip all smaller build benchmarks
+        --run .*embree_reported_memory.*
+ )
+-SET_EMBREE_TEST_PROPERTIES(embree_verify_benchmarks PROPERTIES TIMEOUT 10800)
+\ No newline at end of file
++SET_EMBREE_TEST_PROPERTIES(embree_verify_benchmarks PROPERTIES TIMEOUT 10800)
