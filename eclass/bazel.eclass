@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bazel.eclass
@@ -23,8 +23,8 @@ _BAZEL_ECLASS=1
 
 inherit multiprocessing toolchain-funcs
 
-if [[ ${CATEGORY}/${PN} != "dev-util/bazel" ]]; then
-	BDEPEND=">=dev-util/bazel-0.20"
+if [[ ${CATEGORY}/${PN} != "dev-build/bazel" ]]; then
+	BDEPEND=">=dev-build/bazel-0.20"
 fi
 
 # @ECLASS_VARIABLE: BAZEL_BINARY

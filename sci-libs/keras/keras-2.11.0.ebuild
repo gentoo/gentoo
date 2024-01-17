@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,9 +37,10 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="
 	app-arch/unzip
+	>=dev-build/bazel-4.2.2
 	>=dev-libs/protobuf-3.13.0
 	dev-java/java-config
-	>=dev-util/bazel-4.2.2"
+"
 
 # Bazel tests not pytest, also want GPU access
 RESTRICT="test"

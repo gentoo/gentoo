@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -140,9 +140,9 @@ PDEPEND="python? (
 	)"
 BDEPEND="
 	app-arch/unzip
+	=dev-build/bazel-5*
 	>=dev-libs/protobuf-3.8.0
 	dev-java/java-config
-	=dev-util/bazel-5*
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
 	)
