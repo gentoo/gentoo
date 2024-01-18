@@ -521,7 +521,6 @@ dev-ruby/http:4
 # in ::gentoo.
 # Removal on 2024-01-07.  Bug #919467.
 virtual/python-cffi
-virtual/python-greenlet
 
 # Sam James <sam@gentoo.org> (2023-12-08)
 # Broken build system:
