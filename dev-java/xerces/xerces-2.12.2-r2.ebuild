@@ -37,6 +37,7 @@ HTML_DOCS=( {LICENSE.DOM-documentation,LICENSE.DOM-software,LICENSE-SAX,Readme}.
 
 S="${WORKDIR}/${P//./_}"
 
+JAVADOC_ARGS="-source 8" #922332
 JAVA_SRC_DIR="src"
 JAVA_RESOURCE_DIRS="resources"
 
