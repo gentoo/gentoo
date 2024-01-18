@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -10,7 +10,7 @@ PHP_EXT_SAPIS="cli"
 PHP_EXT_NEEDED_USE="cli,sockets?"
 DOCS=( README.md )
 
-USE_PHP="php8-0 php8-1"
+USE_PHP="php8-1"
 
 inherit php-ext-pecl-r3
 
@@ -31,7 +31,6 @@ DEPEND="
 		dev-libs/openssl:0=
 	)
 	mysql? (
-		php_targets_php8-0? ( dev-lang/php:8.0[mysql,mysqli(+)] )
 		php_targets_php8-1? ( dev-lang/php:8.1[mysql,mysqli(+)] )
 	)
 "
