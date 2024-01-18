@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -59,16 +59,6 @@ dev-perl/Type-Tie
 # Obsolete transitional meta package. Switch to media-libs/libpulse
 # which ensures a sound server is installed via PDEPEND.
 media-sound/pulseaudio
-
-# Michał Górny <mgorny@gentoo.org> (2023-05-29)
-# Use the following snippet instead:
-#
-#   $(python_gen_cond_dep '
-#       dev-python/cffi[${PYTHON_USEDEP}]
-#   ' 'python*')
-#
-# Possibly adding version constraints if package declares them.
-virtual/python-cffi
 
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.
