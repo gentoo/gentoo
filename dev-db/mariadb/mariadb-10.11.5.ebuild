@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -81,7 +81,7 @@ COMMON_DEPEND="
 		s3? ( net-misc/curl )
 		systemd? ( sys-apps/systemd:= )
 	)
-	systemtap? ( >=dev-util/systemtap-1.3:0= )
+	systemtap? ( >=dev-debug/systemtap-1.3:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
 	yassl? ( net-libs/gnutls:0= )
 	!yassl? (

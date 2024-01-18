@@ -29,7 +29,7 @@ RDEPEND="
 		dev-libs/openssl:0=
 	)
 	socks5? ( >=net-proxy/dante-1.1.13 )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	tk? (
 		dev-lang/tcl:0=[threads]
 		dev-lang/tk:0=[threads]

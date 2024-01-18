@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit autotools linux-info python-single-r1
 
@@ -13,14 +13,14 @@ SRC_URI="https://www.sourceware.org/ftp/${PN}/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="libvirt selinux sqlite +ssl test zeroconf"
 
 CDEPEND="
 	${PYTHON_DEPS}
 
 	dev-libs/boost:=
-	>=dev-libs/elfutils-0.142[debuginfod]
+	>=dev-libs/elfutils-0.142
 	dev-libs/json-c:=
 	sys-libs/ncurses:=
 	sys-libs/readline:=
@@ -93,7 +93,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--cache-file="${S}"/config.cache
 		--disable-docs
 		--disable-grapher
 		--disable-refdocs

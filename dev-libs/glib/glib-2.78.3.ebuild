@@ -49,7 +49,7 @@ BDEPEND="
 	gtk-doc? ( >=dev-util/gtk-doc-1.33
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5 )
-	systemtap? ( >=dev-util/systemtap-1.3 )
+	systemtap? ( >=dev-debug/systemtap-1.3 )
 	${PYTHON_DEPS}
 	test? ( >=sys-apps/dbus-1.2.14 )
 	virtual/pkgconfig

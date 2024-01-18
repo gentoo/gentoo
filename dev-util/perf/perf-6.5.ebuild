@@ -79,7 +79,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	slang? ( sys-libs/slang )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	tcmalloc? ( dev-util/google-perftools )
 	unwind? ( sys-libs/libunwind:= )
 	zstd? ( app-arch/zstd:= )

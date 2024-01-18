@@ -328,7 +328,7 @@ fi
 
 if tc_has_feature systemtap ; then
 	# gcc needs sys/sdt.h headers on target
-	DEPEND+=" systemtap? ( dev-util/systemtap )"
+	DEPEND+=" systemtap? ( dev-debug/systemtap )"
 fi
 
 if tc_has_feature zstd ; then

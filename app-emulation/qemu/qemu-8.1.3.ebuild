@@ -154,7 +154,7 @@ ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )
 "
 

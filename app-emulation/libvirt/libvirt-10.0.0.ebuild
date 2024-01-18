@@ -80,7 +80,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
-	dtrace? ( dev-util/systemtap )
+	dtrace? ( dev-debug/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( sys-fs/fuse:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )

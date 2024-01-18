@@ -55,7 +55,7 @@
 			Support management of VirtualBox virtualisation (<pkg>app-emulation/virtualbox</pkg>)
 		</flag>
 		<!-- Miscellaneous flags -->
-		<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
+		<flag name="dtrace">Enable dtrace support via <pkg>dev-debug/systemtap</pkg></flag>
 		<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mountpoints</flag>
 		<flag name="numa">
 			Use NUMA for memory segmenting via <pkg>sys-process/numactl</pkg> and

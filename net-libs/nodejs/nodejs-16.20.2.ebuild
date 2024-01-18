@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CONFIG_CHECK="~ADVISE_SYSCALLS"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 flag-o-matic linux-info pax-utils python-any-r1 toolchain-funcs xdg-utils
@@ -43,7 +43,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 BDEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
 	virtual/pkgconfig
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	test? ( net-misc/curl )
 	pax-kernel? ( sys-apps/elfix )"
 DEPEND="${RDEPEND}"
