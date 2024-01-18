@@ -123,7 +123,7 @@ multilib_src_configure() {
 	)
 
 	# Work around cross-endian testing failures with LTO, bug #757681
-	if tc-is-cross-compiler && is-flagq '-flto*' ; then
+	if tc-is-cross-compiler && tc-is-lto ; then
 		myeconfargs+=( --disable-strict )
 	fi
 
