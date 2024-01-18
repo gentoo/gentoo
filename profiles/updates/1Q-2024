@@ -58,3 +58,4 @@ move dev-util/pwndbg dev-debug/pwndbg
 move dev-util/gef dev-debug/gef
 move dev-util/peda dev-debug/peda
 move dev-util/apitrace dev-debug/apitrace
+move dev-util/bpftrace dev-debug/bpftrace
