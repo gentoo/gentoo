@@ -60,6 +60,9 @@ PATCHES=(
 
 	# backport revert for broken rpath changes: https://github.com/mesonbuild/meson/pull/12672
 	"${FILESDIR}"/0001-Revert-clike-Deduplicate-rpath-linker-flags.patch
+
+	# backport macos Prefix fix: https://github.com/mesonbuild/meson/pull/12747
+	"${FILESDIR}"/meson-1.3.1-xtools-support.patch
 )
 
 python_prepare_all() {
