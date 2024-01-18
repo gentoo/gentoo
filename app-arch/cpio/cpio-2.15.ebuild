@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit multiprocessing
+
 DESCRIPTION="File archival tool which can also read and write tar files"
 HOMEPAGE="https://www.gnu.org/software/cpio/cpio.html"
 SRC_URI="mirror://gnu/cpio/${P}.tar.bz2"
@@ -37,6 +39,10 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 pkg_postinst() {
