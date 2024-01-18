@@ -30,7 +30,7 @@ else
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-zackweinberg )"
 fi
 
-inherit toolchain-autoconf
+inherit toolchain-autoconf multiprocessing
 
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
@@ -89,7 +89,7 @@ src_prepare() {
 }
 
 src_test() {
-	emake check
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 src_install() {

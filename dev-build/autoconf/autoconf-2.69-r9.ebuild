@@ -22,7 +22,7 @@ else
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-m4 )"
 fi
 
-inherit toolchain-autoconf
+inherit toolchain-autoconf multiprocessing
 
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
@@ -78,4 +78,8 @@ src_prepare() {
 	# Restore timestamp to avoid makeinfo call
 	# We already have an up to date autoconf.info page at this point.
 	touch -r doc/{old_,}autoconf.texi || die
+}
+
+src_test() {
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
