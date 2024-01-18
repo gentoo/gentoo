@@ -455,11 +455,6 @@ dev-python/ruamel-std-pathlib
 =net-libs/signond-8.61-r100
 ~sys-auth/polkit-qt-0.175.0
 
-# Hans de Graaff <graaff@gentoo.org> (2023-12-17)
-# Subslots added by accident. Please use the normal "7" or "8" slots
-# instead. Masked for removal on 2024-01-17.
-dev-ruby/elasticsearch:7.17.7
-
 # Michał Górny <mgorny@gentoo.org> (2023-12-17)
 # Broken due to invalid use of tzdata.
 # https://github.com/sdispater/pendulum/issues/769
