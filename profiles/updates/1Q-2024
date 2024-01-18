@@ -65,3 +65,4 @@ move dev-util/duma dev-debug/duma
 move dev-util/leaktracer dev-debug/leaktracer
 move dev-util/ltrace dev-debug/ltrace
 move dev-util/strace dev-debug/strace
+move dev-util/sysdig dev-debug/sysdig
