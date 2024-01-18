@@ -62,7 +62,9 @@ RDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-4.18.1-musl-nls.patch
 	"${FILESDIR}"/${PN}-4.19.0-libdir.patch
+	"${FILESDIR}"/${PN}-4.19.1-musl-compat.patch
 )
 
 pkg_pretend() {
