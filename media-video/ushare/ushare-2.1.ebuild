@@ -5,7 +5,6 @@ EAPI=7
 
 inherit readme.gentoo-r1 toolchain-funcs systemd
 
-
 DESCRIPTION="uShare is a UPnP (TM) A/V & DLNA Media Server"
 HOMEPAGE="https://github.com/ddugovic/uShare/"
 SRC_URI="https://github.com/ddugovic/uShare/archive/v${PV}.tar.gz -> ${P}.tar.gz"
