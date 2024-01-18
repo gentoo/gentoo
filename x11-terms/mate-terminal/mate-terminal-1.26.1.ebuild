@@ -14,8 +14,6 @@ DESCRIPTION="The MATE Terminal"
 LICENSE="FDL-1.1+ GPL-3+ LGPL-3+"
 SLOT="0"
 
-IUSE=""
-
 COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
@@ -36,7 +34,6 @@ RDEPEND="${COMMON_DEPEND}
 
 BDEPEND="${COMMON_DEPEND}
 	app-text/rarian
-	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
