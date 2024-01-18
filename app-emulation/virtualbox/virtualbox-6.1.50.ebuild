@@ -243,6 +243,9 @@ src_prepare() {
 			>> LocalConfig.kmk || die
 	fi
 
+	# bug #916002, #488176
+	tc-ld-force-bfd
+
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
 		-i Config.kmk src/libs/xpcom18a4/Config.kmk || die
@@ -271,8 +274,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-ld-disable-gold # bug #488176
-
 	#856811 #864274
 	# cannot filter out only one flag, some combinations of these flags produce buggy executables
 	for i in abm avx avx2 bmi bmi2 fma fma4 popcnt; do
@@ -329,9 +330,6 @@ src_configure() {
 
 	# bug #908814
 	filter-lto
-
-	# bug #916002
-	tc-ld-force-bfd
 
 	# bug #843437
 	cat >> LocalConfig.kmk <<-EOF || die

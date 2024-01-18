@@ -269,6 +269,9 @@ src_prepare() {
 			>> LocalConfig.kmk || die
 	fi
 
+	# bug #916002, #488176
+	tc-ld-force-bfd
+
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
 		-i Config.kmk src/libs/xpcom18a4/Config.kmk || die
@@ -302,9 +305,6 @@ src_prepare() {
 
 	# bug #908814
 	filter-lto
-
-	# bug #916002
-	tc-ld-force-bfd
 
 	# bug #843437
 	cat >> LocalConfig.kmk <<-EOF || die
@@ -363,8 +363,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-ld-disable-gold # bug #488176
-
 	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"
 
