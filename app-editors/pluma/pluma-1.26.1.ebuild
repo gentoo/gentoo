@@ -11,7 +11,7 @@ DESCRIPTION="Pluma text editor for the MATE desktop"
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
