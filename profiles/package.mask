@@ -33,6 +33,25 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2024-01-18)
+# Unmaintained set of packages. Overall, TensorFlow is ill-suited for
+# distro packaging, since it's entangled with tons of googleware and
+# continually breaks on minor dependency updates coupled with a
+# byzantine build system. These 5 packages together have a total of
+# 54 bugs reported against them, with zero activity from the maintainer.
+#
+# Unmasking this requires a sign-off from QA and treecleaners, since
+# these packages require a ton of mental bandwidth to keep up to date
+# and Google's general unwillingness to take community input quickly
+# leads to maintainer burnout.
+# Use sci-libs/pytorch as a modern alternative with better packaging.
+# Removal on 2024-02-17. Bug #922374
+dev-build/bazel
+sci-libs/keras
+sci-libs/tensorflow
+sci-libs/tensorflow-estimator
+sci-visualization/tensorboard
+
 # Michał Górny <mgorny@gentoo.org> (2024-01-17)
 # Unmaintained build systems with no reverse dependencies.
 # dev-build/cons was last released in 2001.
