@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit bash-completion-r1 estack flag-o-matic llvm toolchain-funcs python-r1 linux-info
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
@@ -67,7 +67,7 @@ RDEPEND="audit? ( sys-process/audit )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	slang? ( sys-libs/slang )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	unwind? ( sys-libs/libunwind )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd )

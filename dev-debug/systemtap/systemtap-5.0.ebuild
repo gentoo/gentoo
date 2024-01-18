@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit autotools linux-info python-single-r1
 
@@ -20,7 +20,7 @@ CDEPEND="
 	${PYTHON_DEPS}
 
 	dev-libs/boost:=
-	>=dev-libs/elfutils-0.142
+	>=dev-libs/elfutils-0.142[debuginfod]
 	dev-libs/json-c:=
 	sys-libs/ncurses:=
 	sys-libs/readline:=

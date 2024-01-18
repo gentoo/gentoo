@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pixman
 	pam? ( sys-libs/pam )
-	tracing? ( dev-util/systemtap )
+	tracing? ( dev-debug/systemtap )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

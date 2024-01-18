@@ -100,7 +100,7 @@ X_DEPEND="
 # The Javascript requirement is obsolete; OpenJDK 8+ has Nashorn
 COMMON_DEP="
 	>=dev-libs/glib-2.26:2=
-	>=dev-util/systemtap-1
+	>=dev-debug/systemtap-1
 	media-libs/fontconfig:1.0=
 	>=media-libs/freetype-2.5.3:2=
 	>=sys-libs/zlib-1.2.3
