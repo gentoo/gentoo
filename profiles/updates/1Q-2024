@@ -62,3 +62,4 @@ move dev-util/bpftrace dev-debug/bpftrace
 move dev-util/d-feet dev-debug/d-feet
 move dev-util/d-spy dev-debug/d-spy
 move dev-util/duma dev-debug/duma
+move dev-util/leaktracer dev-debug/leaktracer
