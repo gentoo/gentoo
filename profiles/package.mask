@@ -470,7 +470,6 @@ dev-ruby/elasticsearch:8.8.0
 # Superseded by dev-python/pypy3_10-exe{,-bin}.
 # Removal on 2024-01-14.  Bug #920036.
 dev-python/pypy3-exe
-dev-python/pypy3-exe-bin
 
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
