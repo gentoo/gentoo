@@ -25,7 +25,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtbase:6[dbus?,network?]
-	qml? ( dev-qt/qtdeclarative:6= )
+	qml? (
+		dev-qt/qtbase:6[gui]
+		dev-qt/qtdeclarative:6=
+	)
 	websockets? ( dev-qt/qtwebsockets:6 )
 "
 DEPEND="${RDEPEND}
