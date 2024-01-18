@@ -270,12 +270,6 @@ sys-block/hpacucli
 # Removal on 2024-01-21.  Bug #919050.
 app-containers/go-secbench
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-18)
-# A broken package that used to be a test dependency
-# of dev-python/ruamel-yaml.  No revdeps left.
-# Removal on 2024-01-17.  Bug #920271.
-dev-python/ruamel-std-pathlib
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-10)
 # KDE Plasma 6 RC1 (5.92) and Frameworks 6 RC1 (5.248) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
