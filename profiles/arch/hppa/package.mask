@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2023-03-28)
@@ -8,7 +8,7 @@ dev-python/py-cpuinfo
 # Sam James <sam@gentoo.org> (2023-03-10)
 # Fails to build on HPPA w/ sys-kernel/linux-headers-6.2:
 # https://github.com/strace/strace/issues/241
-=dev-util/strace-6.2
+=dev-debug/strace-6.2
 
 # Quote from <eike@s...l.de>:
 # "Compilation fails with: #error You need to define CycleTimer for
