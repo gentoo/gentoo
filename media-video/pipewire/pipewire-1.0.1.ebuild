@@ -27,7 +27,7 @@ PIPEWIRE_DOCS_VERSION=$(ver_cut 1-2).0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
 PYTHON_COMPAT=( python3_{10..12} )
-inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
+inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]]; then
 	PIPEWIRE_DOCS_PREBUILT=0
@@ -193,9 +193,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# https://bugs.gentoo.org/838301
-	filter-flags -fno-semantic-interposition
-
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 
