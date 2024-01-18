@@ -441,6 +441,7 @@ dev-python/ruamel-std-pathlib
 ~dev-libs/kirigami-addons-0.11.90
 ~dev-libs/ktextaddons-1.5.3
 ~dev-libs/kweathercore-0.8.0
+~gui-apps/xwaylandvideobridge-0.4.0
 ~media-libs/libqaccessibilityclient-0.6.0
 ~media-libs/phonon-4.12.0
 ~media-libs/phonon-vlc-0.12.0
