@@ -1,0 +1,18 @@
+From: Jeremy Bettis <jbettis@google.com>
+
+Fix incorrect error code usage.
+
+Bug: https://github.com/linux-test-project/lcov/issues/259
+Signed-off-by: Jeremy Bettis <jbettis@google.com>
+
+--- lcov-2.0/lib/lcovutil.pm
++++ lcov-2.0-fixed/lib/lcovutil.pm
+@@ -4219,7 +4219,7 @@
+                         } else {
+                             if ($f->end_line() != $func->end_line()) {
+                                 lcovutil::ignorable_error(
+-                                       $lcovutil::ERROR_INCONSISTENT,
++                                       $lcovutil::ERROR_INCONSISTENT_DATA,
+                                        '"' . $func->file() .
+                                            '":' . $first . ': function \'' .
+                                            $func->name() . ' last line is ' .
