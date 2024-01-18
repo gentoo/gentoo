@@ -534,12 +534,6 @@ virtual/python-greenlet
 # Bug #919072.
 =dev-build/meson-1.3.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-11-30)
-# Last commit in 2020.  It was used exclusively by dev-python/ipython,
-# and it is used no more.
-# Removal on 2023-12-30.  Bug #916535.
-dev-python/backcall
-
 # Sam James <sam@gentoo.org> (2023-11-25)
 # Breaks desktop icon rendering, see bug #904468.
 # Upstream bug: https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
