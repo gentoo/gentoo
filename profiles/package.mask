@@ -466,11 +466,6 @@ dev-ruby/elasticsearch:8.8.0
 # https://github.com/sdispater/pendulum/issues/769
 =dev-python/pendulum-3.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-15)
-# Superseded by dev-python/pypy3_10-exe{,-bin}.
-# Removal on 2024-01-14.  Bug #920036.
-dev-python/pypy3-exe
-
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require
