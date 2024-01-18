@@ -30,6 +30,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 DEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
+RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
