@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	virtual/os-headers"
 
 # for now pin the driver to the same ebuild version
-PDEPEND="modules? ( =dev-util/scap-driver-${PV}* )"
+PDEPEND="modules? ( =dev-debug/scap-driver-${PV}* )"
 
 src_prepare() {
 	# manually apply patch to falcosecurity-libs dependency
