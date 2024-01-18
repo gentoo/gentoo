@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake linux-mod-r1
 
-DESCRIPTION="Kernel module for dev-util/sysdig"
+DESCRIPTION="Kernel module for dev-debug/sysdig"
 HOMEPAGE="https://sysdig.com/"
 
 # The driver is part of falcosecurity/libs, but for versioning reasons we cannot (yet)
@@ -20,7 +20,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-RDEPEND="!<dev-util/sysdig-${PV}[modules]"
+RDEPEND="!<dev-debug/sysdig-${PV}[modules]"
 
 CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
