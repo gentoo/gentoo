@@ -472,11 +472,6 @@ dev-ruby/elasticsearch:8.8.0
 dev-python/pypy3-exe
 dev-python/pypy3-exe-bin
 
-# Hans de Graaff <graaff@gentoo.org> (2023-12-15)
-# Last release in 2020. Does not work with current activesupport
-# versions. No reverse dependencies. Masked for removal on 2024-01-15.
-dev-ruby/gh
-
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require
