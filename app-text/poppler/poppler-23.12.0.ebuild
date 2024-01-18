@@ -116,6 +116,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT5_TESTS=$(usex test $(usex qt5))
+		-DBUILD_QT6_TESTS=$(usex test $(usex qt6))
 		-DBUILD_CPP_TESTS=$(usex test)
 		-DBUILD_MANUAL_TESTS=$(usex test)
 		-DTESTDATADIR="${WORKDIR}"/test-${TEST_COMMIT}
