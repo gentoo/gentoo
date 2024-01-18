@@ -38,7 +38,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	cube? ( ~dev-util/volk-${PV} )
+	cube? ( ~dev-util/volk-${PV}:=[${MULTILIB_USEDEP}] )
 	~dev-util/vulkan-headers-${PV}
 "
 
