@@ -25,7 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Need newer Portage for eclean-pkg API, bug #900224
 DEPEND="
-	>=sys-apps/portage-3.0.53[${PYTHON_USEDEP}]
+	>=sys-apps/portage-3.0.57[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
