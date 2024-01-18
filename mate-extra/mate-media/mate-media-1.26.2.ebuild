@@ -13,8 +13,6 @@ DESCRIPTION="Multimedia related programs for the MATE desktop"
 LICENSE="FDL-1.1+ GPL-2+ HPND LGPL-2+"
 SLOT="0"
 
-IUSE=""
-
 COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
 	dev-libs/libxml2:2
