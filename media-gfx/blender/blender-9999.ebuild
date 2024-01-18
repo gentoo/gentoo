@@ -36,13 +36,13 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff )
+	cycles? ( openexr tiff tbb )
 	fluid? ( tbb )
 	hip? ( cycles )
 	nanovdb? ( openvdb )
-	openvdb? ( tbb )
+	openvdb? ( tbb openexr )
 	optix? ( cuda )
-	osl? ( cycles )
+	osl? ( cycles pugixml )
 	test? ( color-management )"
 
 # Library versions for official builds can be found in the blender source directory in:
@@ -254,6 +254,7 @@ src_configure() {
 		-DWITH_ALEMBIC=$(usex alembic)
 		-DWITH_BOOST=yes
 		-DWITH_BULLET=$(usex bullet)
+		-DWITH_CLANG=$(usex osl)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CYCLES=$(usex cycles)
@@ -273,7 +274,6 @@ src_configure() {
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
-		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD=no
 		-DWITH_GHOST_WAYLAND_LIBDECOR=no
 		-DWITH_GHOST_X11=$(usex X)
@@ -288,6 +288,7 @@ src_configure() {
 		-DWITH_INPUT_NDOF=$(usex ndof)
 		-DWITH_INTERNATIONAL=$(usex nls)
 		-DWITH_JACK=$(usex jack)
+		-DWITH_LLVM=$(usex osl)
 		-DWITH_MATERIALX=no
 		-DWITH_MEM_JEMALLOC=$(usex jemalloc)
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
@@ -311,6 +312,7 @@ src_configure() {
 		-DWITH_PYTHON_INSTALL_ZSTANDARD=no
 		-DWITH_SDL=$(usex sdl)
 		-DWITH_STATIC_LIBS=no
+		-DWITH_STRICT_BUILD_OPTIONS=yes
 		-DWITH_SYSTEM_EIGEN3=yes
 		-DWITH_SYSTEM_FREETYPE=yes
 		-DWITH_SYSTEM_LZO=yes
@@ -344,12 +346,6 @@ src_configure() {
 		)
 		# Ease compiling with required gcc similar to cuda_sanitize but for cmake
 		use cuda && use cycles-bin-kernels && mycmakeargs+=( -DCUDA_HOST_COMPILER="$(cuda_gccdir)" )
-	fi
-	if tc-is-clang ; then
-		mycmakeargs+=(
-			-DWITH_CLANG=yes
-			-DWITH_LLVM=yes
-		)
 	fi
 
 	if use test ; then
