@@ -59,3 +59,4 @@ move dev-util/gef dev-debug/gef
 move dev-util/peda dev-debug/peda
 move dev-util/apitrace dev-debug/apitrace
 move dev-util/bpftrace dev-debug/bpftrace
+move dev-util/d-feet dev-debug/d-feet
