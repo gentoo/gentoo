@@ -197,6 +197,10 @@ _DISTUTILS_R1_ECLASS=1
 inherit flag-o-matic
 inherit multibuild multilib multiprocessing ninja-utils toolchain-funcs
 
+if [[ ${DISTUTILS_USE_PEP517} = meson-python ]]; then
+	inherit meson
+fi
+
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit python-r1
 else
@@ -1386,9 +1390,13 @@ distutils_pep517_install() {
 			)
 			;;
 		meson-python)
+			# variables defined by setup_meson_src_configure
+			local MESONARGS=() BOOST_INCLUDEDIR BOOST_LIBRARYDIR
+			setup_meson_src_configure "${DISTUTILS_ARGS[@]}"
+
 			local -x NINJAOPTS=$(get_NINJAOPTS)
 			config_settings=$(
-				"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+				"${EPYTHON}" - "${mesonargs[@]}" <<-EOF || die
 					import json
 					import os
 					import shlex
