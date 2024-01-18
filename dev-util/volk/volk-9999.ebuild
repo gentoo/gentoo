@@ -23,8 +23,10 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="~dev-util/vulkan-headers-${PV}
-	~media-libs/vulkan-loader-${PV}"
+RDEPEND="~media-libs/vulkan-loader-${PV}:=[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}
+	~dev-util/vulkan-headers-${PV}
+"
 
 multilib_src_configure() {
 	local mycmakeargs=(
