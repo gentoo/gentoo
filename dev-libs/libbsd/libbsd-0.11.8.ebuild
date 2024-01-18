@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/guillemjover.asc
-inherit multilib multilib-minimal verify-sig
+inherit flag-o-matic multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -24,6 +24,9 @@ DEPEND="
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
 
 multilib_src_configure() {
+	# bug #911726
+	filter-flags -fno-semantic-interposition
+
 	# The build system will install libbsd-ctor.a despite USE="-static-libs"
 	# which is correct, see:
 	# https://gitlab.freedesktop.org/libbsd/libbsd/commit/c5b959028734ca2281250c85773d9b5e1d259bc8
