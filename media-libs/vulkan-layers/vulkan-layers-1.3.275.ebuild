@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-	S="${WORKDIR}"/${MY_PN}-sdk-${PV}.0
+	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}.0
 fi
 
 DESCRIPTION="Vulkan Validation Layers"
@@ -24,12 +24,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
-RDEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-cpp/robin-hood-hashing-3.11.5
 	~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}]
-	~dev-util/spirv-headers-99999999
+	~dev-util/spirv-headers-${PV}
 	~dev-util/vulkan-headers-${PV}
 	~dev-util/vulkan-utility-libraries-${PV}:=[${MULTILIB_USEDEP}]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
