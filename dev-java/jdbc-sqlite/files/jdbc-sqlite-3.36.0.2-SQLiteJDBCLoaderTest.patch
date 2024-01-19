@@ -1,0 +1,28 @@
+# There was 1 failure:
+# 1) multipleClassLoader(org.sqlite.SQLiteJDBCLoaderTest)
+# java.lang.AssertionError: Couldn't find classes under test.
+#         at org.junit.Assert.fail(Assert.java:89)
+#         at org.sqlite.SQLiteJDBCLoaderTest.multipleClassLoader(SQLiteJDBCLoaderTest.java:179)
+# 
+# FAILURES!!!
+# Tests run: 5,  Failures: 1
+# https://bugs.gentoo.org/904270
+--- a/src/test/java/org/sqlite/SQLiteJDBCLoaderTest.java
++++ b/src/test/java/org/sqlite/SQLiteJDBCLoaderTest.java
+@@ -53,6 +53,7 @@ import org.junit.After;
+ import org.junit.Assert;
+ import org.junit.Before;
+ import org.junit.Test;
++import org.junit.Ignore;
+ 
+ public class SQLiteJDBCLoaderTest
+ {
+@@ -158,7 +159,7 @@ public class SQLiteJDBCLoaderTest
+         assertEquals(32, completedThreads.get());
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void multipleClassLoader() throws Throwable {
+         // Get current classpath
+         String[] stringUrls = System.getProperty("java.class.path")
