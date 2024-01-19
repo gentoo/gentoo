@@ -14,7 +14,7 @@ DESCRIPTION="Applets for the MATE Desktop and Panel"
 LICENSE="CC-BY-SA-3.0 FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+"
 SLOT="0"
 
-IUSE="X +cpupower ipv6 netlink policykit +upower"
+IUSE="X +cpupower netlink policykit +upower"
 
 REQUIRED_USE="policykit? ( cpupower )"
 
@@ -73,7 +73,6 @@ src_configure() {
 		$(use_with X x) \
 		$(use_with upower) \
 		$(use_with netlink nl) \
-		$(use_enable ipv6) \
 		$(use_enable policykit polkit) \
 		"${myconf[@]}"
 }
