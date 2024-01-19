@@ -17,6 +17,8 @@ IUSE="+X +freeimage gif heif icu jpeg png svg test tiff wayland"
 REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
 
+# bug #922496 wrt nsgif, kept for now but USE can be masked if old nsgif
+# removal is wanted (freeimage[gif] still allows non-animated gif display)
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/inih
@@ -29,7 +31,7 @@ RDEPEND="
 		x11-libs/libxcb:=
 	)
 	freeimage? ( media-libs/freeimage )
-	gif? ( media-libs/libnsgif )
+	gif? ( <media-libs/libnsgif-1:= )
 	heif? ( media-libs/libheif:= )
 	icu? ( dev-libs/icu:= )
 	!icu? ( >=dev-libs/libgrapheme-2:= )
