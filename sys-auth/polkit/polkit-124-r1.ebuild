@@ -91,6 +91,7 @@ QA_MULTILIB_PATHS="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-124-systemd.patch
+	"${FILESDIR}"/${PN}-124-systemd-fixup.patch
 )
 
 python_check_deps() {
@@ -139,6 +140,9 @@ src_compile() {
 
 src_install() {
 	meson_src_install
+
+	# acct-user/polkitd installs its own (albeit with a different filename)
+	rm -rf "${ED}"/usr/lib/sysusers.d || die
 
 	if use examples ; then
 		docinto examples
