@@ -20,6 +20,7 @@ IUSE="debug nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
+	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	>=mate-base/caja-1.19.1
