@@ -108,6 +108,11 @@ src_prepare() {
 
 	# Remove src/auto/configure file.
 	rm -v src/auto/configure || die "rm configure failed"
+
+	# bug 908961
+	if use elibc_musl ; then
+		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
+	fi
 }
 
 src_configure() {

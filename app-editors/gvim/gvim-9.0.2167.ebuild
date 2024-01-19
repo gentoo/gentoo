@@ -165,6 +165,11 @@ src_prepare() {
 		sed -i -e \
 			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
 	fi
+
+	# bug 908961
+	if use elibc_musl ; then
+		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
+	fi
 }
 
 src_configure() {
