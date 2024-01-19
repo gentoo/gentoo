@@ -4,7 +4,7 @@
 EAPI=8
 
 MATE_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit mate python-single-r1 virtualx gnome2-utils
 
 DESCRIPTION="Pluma text editor for the MATE desktop"
