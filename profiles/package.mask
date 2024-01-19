@@ -530,10 +530,6 @@ app-containers/go-secbench
 # Performance regression. Bug #916713.
 =dev-db/mydumper-0.15.1.3
 
-# Ulrich Müller <ulm@gentoo.org> (2023-10-19)
-# Pretest versions, masked for testing.
-<app-editors/emacs-29.1.9999:29-vcs
-
 # Sam James <sam@gentoo.org> (2023-10-06)
 # Breaks building scipy: https://github.com/cython/cython/issues/5748
 =dev-python/cython-3.0.3
