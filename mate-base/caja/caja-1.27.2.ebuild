@@ -52,10 +52,7 @@ BDEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
-RDEPEND="
-	app-accessibility/at-spi2-core
-	dev-libs/glib
-"
+RDEPEND="${COMMON_DEPEND}"
 
 PDEPEND="mate? ( >=x11-themes/mate-icon-theme-${MATE_BRANCH} )"
 
