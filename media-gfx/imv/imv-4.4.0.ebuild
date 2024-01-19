@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://sr.ht/~exec64/imv/"
 SRC_URI="https://git.sr.ht/~exec64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
-LICENSE="MIT-with-advertising"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+X +freeimage gif heif icu jpeg png svg test tiff wayland"
