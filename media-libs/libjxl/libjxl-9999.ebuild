@@ -1,9 +1,9 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic git-r3
+inherit cmake-multilib flag-o-matic git-r3 gnome2-utils
 
 DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl"
@@ -19,7 +19,8 @@ SLOT="0"
 IUSE="gdk-pixbuf openexr test"
 RESTRICT="!test? ( test )"
 
-DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
+DEPEND="
+	app-arch/brotli:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/highway-1.0.7[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.13:2[${MULTILIB_USEDEP}]
@@ -31,7 +32,7 @@ DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2
 	)
 	openexr? ( media-libs/openexr:= )
-	test? ( dev-cpp/gtest )
+	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 
@@ -45,7 +46,7 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_SJPEG=OFF
 		-DJPEGXL_WARNINGS_AS_ERRORS=OFF
 
-		-DJPEGXL_ENABLE_SKCMS=ON
+		-DJPEGXL_ENABLE_SKCMS=OFF
 		-DJPEGXL_ENABLE_VIEWERS=OFF
 		-DJPEGXL_FORCE_SYSTEM_BROTLI=ON
 		-DJPEGXL_FORCE_SYSTEM_GTEST=ON
@@ -54,10 +55,17 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_DOXYGEN=OFF
 		-DJPEGXL_ENABLE_MANPAGES=OFF
 		-DJPEGXL_ENABLE_JNI=OFF
+		-DJPEGXL_ENABLE_JPEGLI=OFF
 		-DJPEGXL_ENABLE_JPEGLI_LIBJPEG=OFF
 		-DJPEGXL_ENABLE_TCMALLOC=OFF
 		-DJPEGXL_ENABLE_EXAMPLES=OFF
+		-DBUILD_TESTING=$(usex test ON OFF)
 	)
+
+	use test &&
+		mycmakeargs+=(
+			-DJPEGXL_TEST_DATA_PATH="${WORKDIR}/testdata-${TESTDATA_COMMIT}"
+		)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
@@ -67,14 +75,12 @@ multilib_src_configure() {
 			-DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF=$(usex gdk-pixbuf)
 			-DJPEGXL_ENABLE_PLUGIN_GIMP210=OFF
 			-DJPEGXL_ENABLE_PLUGIN_MIME=OFF
-			-DBUILD_TESTING=$(usex test ON OFF)
 		)
 	else
 		mycmakeargs+=(
 			-DJPEGXL_ENABLE_TOOLS=OFF
 			-DJPEGXL_ENABLE_OPENEXR=OFF
 			-DJPEGXL_ENABLE_PLUGINS=OFF
-			-DBUILD_TESTING=OFF
 		)
 	fi
 
@@ -85,4 +91,16 @@ multilib_src_install() {
 	cmake_src_install
 
 	find "${ED}" -name '*.a' -delete || die
+}
+
+pkg_preinst() {
+	gnome2_gdk_pixbuf_savelist
+}
+
+pkg_postinst() {
+	use gdk-pixbuf && gnome2_gdk_pixbuf_update
+}
+
+pkg_postrm() {
+	use gdk-pixbuf && gnome2_gdk_pixbuf_update
 }
