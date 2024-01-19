@@ -18,7 +18,7 @@ fi
 DESCRIPTION="Library to create desktop components for Wayland using the Layer Shell protocol"
 HOMEPAGE="https://github.com/wmww/gtk-layer-shell"
 
-LICENSE="MIT-with-advertising LGPL-3+"
+LICENSE="MIT LGPL-3+"
 SLOT="0"
 IUSE="examples gtk-doc introspection test vala"
 RESTRICT="!test? ( test )"
