@@ -19,13 +19,13 @@ COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
 	dev-libs/libxml2:2
+	dev-libs/mpc:=
+	>=dev-libs/mpfr-4.0.2:=
 	>=x11-libs/gtk+-3.22:3
-	>=dev-libs/mpfr-4.0.2
 	x11-libs/pango
 "
 
 RDEPEND="${COMMON_DEPEND}
-	dev-libs/mpc
 	virtual/libintl
 "
 
