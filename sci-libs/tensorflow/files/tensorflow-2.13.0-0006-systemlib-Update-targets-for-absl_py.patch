@@ -1,0 +1,27 @@
+From cb0eb12a89b18955c75e305f96069aeabf01a5b2 Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Tue, 30 May 2023 09:33:14 -0700
+Subject: [PATCH 06/12] systemlib: Update targets for absl_py
+
+---
+ third_party/systemlibs/absl_py.absl.flags.BUILD | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/third_party/systemlibs/absl_py.absl.flags.BUILD b/third_party/systemlibs/absl_py.absl.flags.BUILD
+index 4049989ae2f..614938fb8c4 100644
+--- a/third_party/systemlibs/absl_py.absl.flags.BUILD
++++ b/third_party/systemlibs/absl_py.absl.flags.BUILD
+@@ -5,3 +5,10 @@ package(default_visibility = ["//visibility:public"])
+ py_library(
+     name = "flags",
+ )
++
++py_library(
++    name = "argparse_flags",
++    deps = [
++        ":flags",
++    ],
++)
+-- 
+2.41.0
+

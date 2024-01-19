@@ -1,0 +1,25 @@
+From 0264617528e53e6b9c8f298ec9bec4a064ffdf27 Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Wed, 29 Nov 2023 13:35:24 +0800
+Subject: [PATCH 11/12] systemlibs:update targets for google_cloud_cpp
+
+---
+ third_party/systemlibs/google_cloud_cpp.BUILD | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/third_party/systemlibs/google_cloud_cpp.BUILD b/third_party/systemlibs/google_cloud_cpp.BUILD
+index cbe6e10ba5b..fce306a22f1 100644
+--- a/third_party/systemlibs/google_cloud_cpp.BUILD
++++ b/third_party/systemlibs/google_cloud_cpp.BUILD
+@@ -4,3 +4,8 @@ filegroup(
+     name = "LICENSE",
+     visibility = ["//visibility:public"],
+ )
++
++cc_library(
++    name = "storage_client",
++    visibility = ["//visibility:public"],
++)
+-- 
+2.41.0
+
