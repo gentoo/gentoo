@@ -20,7 +20,6 @@ SRC_URI="https://github.com/2ndQuadrant/pglogical/archive/REL${MY_PV}.tar.gz"
 LICENSE="POSTGRESQL"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
