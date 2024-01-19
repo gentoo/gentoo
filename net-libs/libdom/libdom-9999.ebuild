@@ -11,7 +11,6 @@ HOMEPAGE="https://www.netsurf-browser.org/projects/libdom/"
 EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS=""
 IUSE="expat test xml"
 
 RESTRICT="!test? ( test )"
