@@ -11,8 +11,6 @@ HOMEPAGE="https://www.netsurf-browser.org/projects/libnsgif/"
 EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 BDEPEND="
 	dev-build/netsurf-buildsystem
