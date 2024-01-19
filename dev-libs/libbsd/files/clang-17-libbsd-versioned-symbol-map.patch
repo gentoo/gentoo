@@ -1,0 +1,114 @@
+Gentoo bug: 915068
+Upstream patch: https://lists.freedesktop.org/archives/libbsd/2024-January/000378.html
+From cdb219e8c74b364e4011b1acc66665ab2a44fc4b Mon Sep 17 00:00:00 2001
+Message-ID: <cdb219e8c74b364e4011b1acc66665ab2a44fc4b.1704683066.git.nvinson234@gmail.com>
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Sun, 7 Jan 2024 17:22:40 -0500
+Subject: [PATCH] libbsd.map: Add guards for LIBBSD_OVERLAY symbols
+To: libbsd@lists.freedesktop.org
+Cc: nvinson234@gmail.com
+
+When built with the LIBBSD_OVERLAY macro set, the following functions
+are not built which results in undefined symbols in libbsd.map:
+
+    vwarn, vwarnx, warn, warnx, verr, verrx, err, errx
+
+leading to build failures similar to
+
+    ld.lld: error: version script assignment of 'LIBBSD_0.10.0' to
+    symbol 'vwarn' failed: symbol not defined
+
+when linking with ld.lld since ld.lld does not allow undefined symbols
+in the map by default.
+
+Add guards, so these functions are excluded from libbsd.map when not
+built. Thereby, allowing ld.lld-16 and newer to link successfully with
+default options. See
+https://maskray.me/blog/2023-03-19-lld-16-elf-changes for ld.lld-16
+change summary.
+
+Bug: 915068
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+---
+ src/Makefile.am                   | 6 +++++-
+ src/{libbsd.map => libbsd.map.in} | 2 ++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+ rename src/{libbsd.map => libbsd.map.in} (99%)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6f2325c..9492d31 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -26,11 +26,10 @@ libbsd_la_included_sources = \
+ 	getentropy_win.c \
+ 	# EOL
+ 
+ CLEANFILES =
+ EXTRA_DIST = \
+-	libbsd.map \
+ 	libbsd.pc.in \
+ 	libbsd-ctor.pc.in \
+ 	libbsd-overlay.pc.in \
+ 	$(libbsd_la_included_sources) \
+ 	# EOL
+@@ -49,11 +49,11 @@ pkgconfig_DATA += libbsd-ctor.pc
+ lib_LIBRARIES += libbsd-ctor.a
+ endif
+ 
+ EXTRA_libbsd_la_DEPENDENCIES = \
+ 	$(libbsd_la_included_sources) \
+-	libbsd.map \
++	$(top_builddir)/src/libbsd.map \
+ 	# EOL
+ libbsd_la_LIBADD = \
+ 	$(MD5_LIBS) \
+ 	$(LIBBSD_LIBS) \
+ 	# EOL
+@@ -64,8 +64,9 @@ libbsd_la_LDFLAGS = \
+ 	# EOL
+ if HAVE_LINKER_VERSION_SCRIPT
+ libbsd_la_LDFLAGS += \
+-	-Wl,--version-script=$(srcdir)/libbsd.map \
++	-Wl,--version-script=$(top_builddir)/src/libbsd.map \
+ 	# EOL
++EXTRA_libbsd_la_DEPENDENCIES += $(top_builddir)/src/libbsd.map
+ else
+ libbsd_la_LDFLAGS += \
+ 	-export-symbols libbsd.sym \
+@@ -200,6 +201,9 @@ libbsd_ctor_a_SOURCES = \
+ 	setproctitle_ctor.c \
+ 	# EOL
+ 
++$(top_builddir)/src/libbsd.map: libbsd.map.in
++	$(CC) -E $(AM_CPPFLAGS) $(CPPFLAGS) -x assembler-with-cpp -o $@ $<
++
+ # Generate a simple libtool symbol export list to be used as a fallback if
+ # there is no version script support.
+ libbsd.sym: libbsd.map
+diff --git a/src/libbsd.map b/src/libbsd.map.in
+similarity index 99%
+rename from src/libbsd.map
+rename to src/libbsd.map.in
+index 6c61235..f645600 100644
+--- a/src/libbsd.map
++++ b/src/libbsd.map.in
+@@ -174,6 +174,7 @@ LIBBSD_0.9.1 {
+ } LIBBSD_0.9;
+ 
+ LIBBSD_0.10.0 {
++#ifndef LIBBSD_OVERLAY
+     /* These BSD extensions are available on GNU systems, but not on other
+      * systems such as Windows or musl libc based ones. */
+     vwarn;
+@@ -184,6 +185,7 @@ LIBBSD_0.10.0 {
+     verrx;
+     err;
+     errx;
++#endif
+ } LIBBSD_0.9.1;
+ 
+ LIBBSD_0.11.0 {
+-- 
+2.43.0
+

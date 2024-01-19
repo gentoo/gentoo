@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/guillemjover.asc
-inherit flag-o-matic multilib multilib-minimal verify-sig
+inherit autotools flag-o-matic multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -22,6 +22,15 @@ DEPEND="
 	>=sys-kernel/linux-headers-3.17
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
+
+PATCHES=(
+	"${FILESDIR}/clang-17-libbsd-versioned-symbol-map.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	# bug #911726
