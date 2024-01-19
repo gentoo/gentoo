@@ -10,7 +10,9 @@ HOMEPAGE="https://www.netsurf-browser.org/projects/libnsgif/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
+# The soname is $PV, which usually means it can't be trusted, which
+# ironically means that it's the correct subslot.
+SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 BDEPEND="
