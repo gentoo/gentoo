@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,6 +64,9 @@ src_prepare() {
 src_configure() {
 	# bug #264109
 	append-cppflags -D_GNU_SOURCE
+
+	# https://bugs.gentoo.org/922508
+	append-lfs-flags
 
 	# avoid libmd5/libelf
 	export ac_cv_search_MD5Init=no ac_cv_header_md5_h=no
