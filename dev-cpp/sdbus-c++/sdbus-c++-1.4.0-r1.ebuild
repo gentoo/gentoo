@@ -36,6 +36,7 @@ S="${WORKDIR}/sdbus-cpp-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-14.patch
+	"${FILESDIR}"/${P}-fix-pkgconfig.patch
 )
 
 src_configure() {
