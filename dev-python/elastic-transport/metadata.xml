@@ -14,4 +14,5 @@
     <remote-id type="github">elastic/elastic-transport-python</remote-id>
     <remote-id type="pypi">elastic-transport</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
