@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Simple terminal implementation for X"
 HOMEPAGE="https://st.suckless.org/"
 SRC_URI="https://dl.suckless.org/st/${P}.tar.gz"
 
-LICENSE="MIT-with-advertising"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~riscv ~x86"
 IUSE="savedconfig"
