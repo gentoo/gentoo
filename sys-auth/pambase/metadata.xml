@@ -72,8 +72,8 @@
 		</flag>
 		<flag name="pam_krb5">
 			Enable pam_krb5 module on system auth stack, as an alternative
-			to pam_unix. If Kerberos authentication succeed, only pam_unix
-			will be ignore, and all the other modules will proceed as usual,
+			to pam_unix. If Kerberos authentication succeeds, only pam_unix
+			will be ignorde, and all the other modules will proceed as usual,
 			including Gnome Keyring and other session modules. It requires
 			<pkg>sys-libs/pam</pkg> as PAM implementation.
 		</flag>
