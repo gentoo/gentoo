@@ -11,8 +11,6 @@ EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="
 	>=net-libs/libdom-9999[xml]
