@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib flag-o-matic gnome2-utils
 
 # This changes frequently.  Please check the testdata submodule when bumping.
 TESTDATA_COMMIT="ff8d743aaba05b3014f17e5475e576242fa979fc"
@@ -99,4 +99,16 @@ multilib_src_install() {
 	cmake_src_install
 
 	find "${ED}" -name '*.a' -delete || die
+}
+
+pkg_preinst() {
+	gnome2_gdk_pixbuf_savelist
+}
+
+pkg_postinst() {
+	use gdk-pixbuf && gnome2_gdk_pixbuf_update
+}
+
+pkg_postrm() {
+	use gdk-pixbuf && gnome2_gdk_pixbuf_update
 }
