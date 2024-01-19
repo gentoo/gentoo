@@ -1,27 +1,33 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# N.B.: It is no clue in porting to Lua eclasses, as upstream have deviated
-# too far from vanilla Lua, adding their own APIs like lua_enablereadonlytable
+# Redis does NOT build with Lua 5.2 or newer at this time:
+#  - 5.3 and 5.4 give:
+# lua_bit.c:83:2: error: #error "Unknown number type, check LUA_NUMBER_* in luaconf.h"
+#  - 5.2 fails with:
+# scripting.c:(.text+0x1f9b): undefined reference to `lua_open'
+#    because lua_open became lua_newstate in 5.2
+LUA_COMPAT=( lua5-1 luajit )
 
-inherit autotools edo multiprocessing systemd tmpfiles toolchain-funcs
+# Upstream have deviated too far from vanilla Lua, adding their own APIs
+# like lua_enablereadonlytable, but we still need the eclass and such
+# for bug #841422.
+inherit autotools edo flag-o-matic lua-single multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
-HOMEPAGE="
-	https://redis.io
-	https://github.com/redis/redis
-"
+HOMEPAGE="https://redis.io"
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
-LICENSE="BSD Boost-1.0"
-SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+LICENSE="BSD"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	${LUA_DEPS}
 	jemalloc? ( >=dev-libs/jemalloc-5.1:= )
 	ssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd:= )
@@ -48,49 +54,56 @@ DEPEND="
 		ssl? ( dev-tcltk/tls )
 	)"
 
-REQUIRED_USE="?? ( jemalloc tcmalloc )"
+REQUIRED_USE="?? ( jemalloc tcmalloc )
+	${LUA_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.1-config.patch
-	"${FILESDIR}"/${PN}-7.2.0-system-jemalloc.patch
+	"${FILESDIR}"/${PN}-5.0-shared.patch
 	"${FILESDIR}"/${PN}-6.2.3-ppc-atomic.patch
-	"${FILESDIR}"/${PN}-sentinel-7.2.0-config.patch
-	"${FILESDIR}"/${PN}-7.0.4-no-which.patch
+	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
 )
 
 src_prepare() {
 	default
 
-	# Respect user CFLAGS in bundled lua
-	sed -i '/LUA_CFLAGS/s: -O2::g' deps/Makefile || die
+	# Copy lua modules into build dir
+	#cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
+	#cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
+	# Append cflag for lua_cjson
+	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
+	append-cflags "-DENABLE_CJSON_GLOBAL"
 
 	# now we will rewrite present Makefiles
 	local makefiles="" MKF
-	local mysedconf=(
-		-e 's:$(CC):@CC@:g'
-		-e 's:$(CFLAGS):@AM_CFLAGS@:g'
-		-e 's: $(DEBUG)::g'
-
-		-e 's:-Werror ::g'
-		-e 's:-Werror=deprecated-declarations ::g'
-	)
 	for MKF in $(find -name 'Makefile' | cut -b 3-); do
 		mv "${MKF}" "${MKF}.in"
-		sed -i "${mysedconf[@]}" "${MKF}.in" || die "Sed failed for ${MKF}"
+		sed -i	-e 's:$(CC):@CC@:g' \
+			-e 's:$(CFLAGS):@AM_CFLAGS@:g' \
+			-e 's: $(DEBUG)::g' \
+			-e 's:$(OBJARCH)::g' \
+			-e 's:ARCH:TARCH:g' \
+			-e '/^CCOPT=/s:$: $(LDFLAGS):g' \
+			"${MKF}.in" \
+		|| die "Sed failed for ${MKF}"
 		makefiles+=" ${MKF}"
 	done
 	# autodetection of compiler and settings; generates the modified Makefiles
-	cp "${FILESDIR}"/configure.ac-7.0 configure.ac || die
+	cp "${FILESDIR}"/configure.ac-3.2 configure.ac || die
 
-	sed -i \
-		-e "/^AC_INIT/s|, __PV__, |, $PV, |" \
+	# Use the correct pkgconfig name for Lua.
+	# The upstream configure script handles luajit specially, and is not
+	# affected by these changes.
+	sed -i	\
+		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
+		-e "/PKG_CHECK_MODULES.*\<LUA\>/s,lua5.1,${ELUA},g" \
 		configure.ac || die "Sed failed for configure.ac"
 	eautoreconf
 }
 
 src_configure() {
-	econf
+	econf #$(use_with lua_single_target_luajit luajit)
 
 	# Linenoise can't be built with -std=c99, see https://bugs.gentoo.org/451164
 	# also, don't define ANSI/c99 for lua twice
@@ -98,55 +111,37 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR CC RANLIB
-
-	local myconf=(
-		AR="${AR}"
-		CC="${CC}"
-		RANLIB="${RANLIB}"
-
-		V=1 # verbose
-
-		# OPTIMIZATION defaults to -O3. Let's respect user CFLAGS by setting it
-		# to empty value.
-		OPTIMIZATION=''
-		# Disable debug flags in bundled hiredis
-		DEBUG_FLAGS=''
-
-		BUILD_TLS=$(usex ssl)
-		USE_SYSTEMD=$(usex systemd)
-	)
+	local myconf=""
 
 	if use jemalloc; then
-		myconf+=( MALLOC=jemalloc )
+		myconf+="MALLOC=jemalloc"
 	elif use tcmalloc; then
-		myconf+=( MALLOC=tcmalloc )
+		myconf+="MALLOC=tcmalloc"
 	else
-		myconf+=( MALLOC=libc )
+		myconf+="MALLOC=libc"
 	fi
 
-	emake "${myconf[@]}"
+	if use ssl; then
+		myconf+=" BUILD_TLS=yes"
+	fi
+
+	export USE_SYSTEMD=$(usex systemd)
+
+	tc-export AR CC RANLIB
+	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
 }
 
 src_test() {
 	local runtestargs=(
 		--clients "$(makeopts_jobs)" # see bug #649868
-
-		--skiptest "Active defrag eval scripts" # see bug #851654
 	)
 
 	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
-		ewarn "oom-score-adj related tests will be skipped." \
-			"They are known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
+		ewarn "unit/oom-score-adj test will be skipped." \
+			"It is known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
 
-		runtestargs+=(
-			# unit/oom-score-adj was introduced in version 6.2.0
-			--skipunit unit/oom-score-adj # see bug #756382
-
-			# Following test was added in version 7.0.0 to unit/introspection.
-			# It also tries to adjust OOM score.
-			--skiptest "CONFIG SET rollback on apply error"
-		)
+		# unit/oom-score-adj was introduced in version 6.2.0
+		runtestargs+=( --skipunit unit/oom-score-adj ) # see bug #756382
 	fi
 
 	if use ssl; then
@@ -176,7 +171,7 @@ src_install() {
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
-	dodoc 00-RELEASENOTES BUGS CONTRIBUTING.md MANIFESTO README.md
+	dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README.md
 
 	dobin src/redis-cli
 	dosbin src/redis-benchmark src/redis-server src/redis-check-aof src/redis-check-rdb

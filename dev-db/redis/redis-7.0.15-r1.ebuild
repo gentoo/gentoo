@@ -1,33 +1,24 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# Redis does NOT build with Lua 5.2 or newer at this time:
-#  - 5.3 and 5.4 give:
-# lua_bit.c:83:2: error: #error "Unknown number type, check LUA_NUMBER_* in luaconf.h"
-#  - 5.2 fails with:
-# scripting.c:(.text+0x1f9b): undefined reference to `lua_open'
-#    because lua_open became lua_newstate in 5.2
-LUA_COMPAT=( lua5-1 luajit )
+# N.B.: It is no clue in porting to Lua eclasses, as upstream have deviated
+# too far from vanilla Lua, adding their own APIs like lua_enablereadonlytable
 
-# Upstream have deviated too far from vanilla Lua, adding their own APIs
-# like lua_enablereadonlytable, but we still need the eclass and such
-# for bug #841422.
-inherit autotools edo flag-o-matic lua-single multiprocessing systemd tmpfiles toolchain-funcs
+inherit autotools edo flag-o-matic multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
 HOMEPAGE="https://redis.io"
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	${LUA_DEPS}
 	jemalloc? ( >=dev-libs/jemalloc-5.1:= )
 	ssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd:= )
@@ -54,22 +45,19 @@ DEPEND="
 		ssl? ( dev-tcltk/tls )
 	)"
 
-REQUIRED_USE="?? ( jemalloc tcmalloc )
-	${LUA_REQUIRED_USE}"
+REQUIRED_USE="?? ( jemalloc tcmalloc )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.1-config.patch
 	"${FILESDIR}"/${PN}-5.0-shared.patch
 	"${FILESDIR}"/${PN}-6.2.3-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
+	"${FILESDIR}"/${PN}-7.0.4-no-which.patch
 )
 
 src_prepare() {
 	default
 
-	# Copy lua modules into build dir
-	#cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
-	#cp "${S}"/deps/lua/src/{fpconv,strbuf}.h "${S}"/src || die
 	# Append cflag for lua_cjson
 	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
 	append-cflags "-DENABLE_CJSON_GLOBAL"
@@ -89,21 +77,17 @@ src_prepare() {
 		makefiles+=" ${MKF}"
 	done
 	# autodetection of compiler and settings; generates the modified Makefiles
-	cp "${FILESDIR}"/configure.ac-3.2 configure.ac || die
+	cp "${FILESDIR}"/configure.ac-7.0 configure.ac || die
 
-	# Use the correct pkgconfig name for Lua.
-	# The upstream configure script handles luajit specially, and is not
-	# affected by these changes.
 	sed -i	\
-		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
+		-e "/^AC_INIT/s|, __PV__, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
-		-e "/PKG_CHECK_MODULES.*\<LUA\>/s,lua5.1,${ELUA},g" \
 		configure.ac || die "Sed failed for configure.ac"
 	eautoreconf
 }
 
 src_configure() {
-	econf #$(use_with lua_single_target_luajit luajit)
+	econf
 
 	# Linenoise can't be built with -std=c99, see https://bugs.gentoo.org/451164
 	# also, don't define ANSI/c99 for lua twice
@@ -134,14 +118,22 @@ src_compile() {
 src_test() {
 	local runtestargs=(
 		--clients "$(makeopts_jobs)" # see bug #649868
+
+		--skiptest "Active defrag eval scripts" # see bug #851654
 	)
 
 	if has usersandbox ${FEATURES} || ! has userpriv ${FEATURES}; then
-		ewarn "unit/oom-score-adj test will be skipped." \
-			"It is known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
+		ewarn "oom-score-adj related tests will be skipped." \
+			"They are known to fail with FEATURES usersandbox or -userpriv. See bug #756382."
 
-		# unit/oom-score-adj was introduced in version 6.2.0
-		runtestargs+=( --skipunit unit/oom-score-adj ) # see bug #756382
+		runtestargs+=(
+			# unit/oom-score-adj was introduced in version 6.2.0
+			--skipunit unit/oom-score-adj # see bug #756382
+
+			# Following test was added in version 7.0.0 to unit/introspection.
+			# It also tries to adjust OOM score.
+			--skiptest "CONFIG SET rollback on apply error"
+		)
 	fi
 
 	if use ssl; then
@@ -171,7 +163,7 @@ src_install() {
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
-	dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README.md
+	dodoc 00-RELEASENOTES BUGS CONTRIBUTING.md MANIFESTO README.md
 
 	dobin src/redis-cli
 	dosbin src/redis-benchmark src/redis-server src/redis-check-aof src/redis-check-rdb

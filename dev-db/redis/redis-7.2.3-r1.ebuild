@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,14 +6,17 @@ EAPI=8
 # N.B.: It is no clue in porting to Lua eclasses, as upstream have deviated
 # too far from vanilla Lua, adding their own APIs like lua_enablereadonlytable
 
-inherit autotools edo flag-o-matic multiprocessing systemd tmpfiles toolchain-funcs
+inherit autotools edo multiprocessing systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="A persistent caching system, key-value, and data structures database"
-HOMEPAGE="https://redis.io"
+HOMEPAGE="
+	https://redis.io
+	https://github.com/redis/redis
+"
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
-LICENSE="BSD"
-SLOT="0"
+LICENSE="BSD Boost-1.0"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
@@ -49,37 +52,37 @@ REQUIRED_USE="?? ( jemalloc tcmalloc )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2.1-config.patch
-	"${FILESDIR}"/${PN}-5.0-shared.patch
+	"${FILESDIR}"/${PN}-7.2.0-system-jemalloc.patch
 	"${FILESDIR}"/${PN}-6.2.3-ppc-atomic.patch
-	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
+	"${FILESDIR}"/${PN}-sentinel-7.2.0-config.patch
 	"${FILESDIR}"/${PN}-7.0.4-no-which.patch
 )
 
 src_prepare() {
 	default
 
-	# Append cflag for lua_cjson
-	# https://github.com/antirez/redis/commit/4fdcd213#diff-3ba529ae517f6b57803af0502f52a40bL61
-	append-cflags "-DENABLE_CJSON_GLOBAL"
+	# Respect user CFLAGS in bundled lua
+	sed -i '/LUA_CFLAGS/s: -O2::g' deps/Makefile || die
 
 	# now we will rewrite present Makefiles
 	local makefiles="" MKF
+	local mysedconf=(
+		-e 's:$(CC):@CC@:g'
+		-e 's:$(CFLAGS):@AM_CFLAGS@:g'
+		-e 's: $(DEBUG)::g'
+
+		-e 's:-Werror ::g'
+		-e 's:-Werror=deprecated-declarations ::g'
+	)
 	for MKF in $(find -name 'Makefile' | cut -b 3-); do
 		mv "${MKF}" "${MKF}.in"
-		sed -i	-e 's:$(CC):@CC@:g' \
-			-e 's:$(CFLAGS):@AM_CFLAGS@:g' \
-			-e 's: $(DEBUG)::g' \
-			-e 's:$(OBJARCH)::g' \
-			-e 's:ARCH:TARCH:g' \
-			-e '/^CCOPT=/s:$: $(LDFLAGS):g' \
-			"${MKF}.in" \
-		|| die "Sed failed for ${MKF}"
+		sed -i "${mysedconf[@]}" "${MKF}.in" || die "Sed failed for ${MKF}"
 		makefiles+=" ${MKF}"
 	done
 	# autodetection of compiler and settings; generates the modified Makefiles
 	cp "${FILESDIR}"/configure.ac-7.0 configure.ac || die
 
-	sed -i	\
+	sed -i \
 		-e "/^AC_INIT/s|, __PV__, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \
 		configure.ac || die "Sed failed for configure.ac"
@@ -95,24 +98,34 @@ src_configure() {
 }
 
 src_compile() {
-	local myconf=""
+	tc-export AR CC RANLIB
+
+	local myconf=(
+		AR="${AR}"
+		CC="${CC}"
+		RANLIB="${RANLIB}"
+
+		V=1 # verbose
+
+		# OPTIMIZATION defaults to -O3. Let's respect user CFLAGS by setting it
+		# to empty value.
+		OPTIMIZATION=''
+		# Disable debug flags in bundled hiredis
+		DEBUG_FLAGS=''
+
+		BUILD_TLS=$(usex ssl)
+		USE_SYSTEMD=$(usex systemd)
+	)
 
 	if use jemalloc; then
-		myconf+="MALLOC=jemalloc"
+		myconf+=( MALLOC=jemalloc )
 	elif use tcmalloc; then
-		myconf+="MALLOC=tcmalloc"
+		myconf+=( MALLOC=tcmalloc )
 	else
-		myconf+="MALLOC=libc"
+		myconf+=( MALLOC=libc )
 	fi
 
-	if use ssl; then
-		myconf+=" BUILD_TLS=yes"
-	fi
-
-	export USE_SYSTEMD=$(usex systemd)
-
-	tc-export AR CC RANLIB
-	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
+	emake "${myconf[@]}"
 }
 
 src_test() {
