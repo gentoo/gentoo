@@ -24,13 +24,14 @@ LICENSE+=" BSD BSD-2 MIT"
 SLOT="0"
 IUSE="selinux systemd"
 
-RDEPEND="
+COMMON_DEPEND="
 	acct-group/node_exporter
 	acct-user/node_exporter
 	selinux? ( sec-policy/selinux-node_exporter )
 	systemd? ( sys-apps/systemd )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 BDEPEND=">=dev-util/promu-0.3.0"
 PATCHES=(
 	 "${FILESDIR}"/01-default-settings-1.7.0.patch
@@ -65,6 +66,8 @@ src_test() {
 
 src_install() {
 	dosbin "${PN}"
+	dodoc example-rules.yml *.md
+	doman "${PN}".1
 	systemd_newunit "${FILESDIR}"/node_exporter-1.7.0.service node_exporter.service
 	newinitd "${FILESDIR}"/${PN}.initd-1 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
@@ -72,7 +75,4 @@ src_install() {
 	newins "${FILESDIR}"/node_exporter-1.7.0.logrotate "${PN}"
 	keepdir /var/lib/node_exporter /var/log/node_exporter
 	fowners ${PN}:${PN} /var/lib/node_exporter /var/log/node_exporter
-
-	doman "${PN}".1
-	dodoc example-rules.yml *.md
 }
