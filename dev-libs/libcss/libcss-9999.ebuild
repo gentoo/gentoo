@@ -11,7 +11,6 @@ HOMEPAGE="https://www.netsurf-browser.org/projects/libcss/"
 EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS=""
 IUSE="test"
 
 RESTRICT="!test? ( test )"
