@@ -16,11 +16,6 @@ net-analyzer/nagios-plugin-check_raid hpa
 media-gfx/openvdb ax
 sys-devel/sparse llvm
 
-# Sam James <sam@gentoo.org> (2023-12-18)
-# libgrust build is broken for multilib
-# https://gcc.gnu.org/PR113056
->=sys-devel/gcc-14.0.0_pre20231217 rust
-
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # app-crypt/rpm-sequoia is not keyworded on most architectures.
 app-arch/rpm sequoia
