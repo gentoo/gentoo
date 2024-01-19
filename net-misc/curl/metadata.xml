@@ -22,7 +22,7 @@
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
 		<flag name="progress-meter">Enable the progress meter</flag>
-		<flag name="psl">Enable Public Suffix List (PSL) support</flag>
+		<flag name="psl">Enable Public Suffix List (PSL) support. See https://daniel.haxx.se/blog/2024/01/10/psl-in-curl/.</flag>
 		<flag name="rtmp">Enable RTMP Streaming Media support</flag>
 		<flag name="rustls">Enable Rustls ssl backend</flag>
 		<flag name="smtp">Enable Simple Mail Transfer Protocol support</flag>
