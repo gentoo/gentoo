@@ -14,7 +14,6 @@ SRC_URI="https://api.pgxn.org/dist/${PN}/${PV}/${P}.zip"
 LICENSE="POSTGRESQL"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
 
 DEPEND="${POSTGRES_DEP}
 		app-arch/unzip
