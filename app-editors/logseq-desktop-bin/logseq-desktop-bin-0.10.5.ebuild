@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -84,5 +84,6 @@ src_install() {
 
 	make_desktop_entry "/opt/bin/logseq %U" Logseq logseq Office \
 		"StartupWMClass=logseq\nTerminal=false\nMimeType=x-scheme-handler/logseq"
-	doicon resources/app/icons/logseq.png
+	# some releases do not have an icon included, but we dont fail if that happens
+	doicon resources/app/icons/logseq.png || true
 }
