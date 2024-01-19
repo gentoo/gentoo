@@ -11,7 +11,6 @@ HOMEPAGE="https://www.netsurf-browser.org/"
 EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="bmp fbcon truetype +gif +gtk +javascript +jpeg
 	+png +psl rosprite +svg +svgtiny +webp"
 
