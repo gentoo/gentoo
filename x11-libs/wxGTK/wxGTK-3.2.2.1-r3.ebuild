@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-minimal flag-o-matic
 
 WXSUBVERSION="${PV}-gtk3"				# 3.2.1-gtk3
 WXVERSION="$(ver_cut 1-3)"				# 3.2.1
@@ -126,6 +126,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Workaround for bug #915154
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# X independent options
 	local myeconfargs=(
 		--with-zlib=sys
