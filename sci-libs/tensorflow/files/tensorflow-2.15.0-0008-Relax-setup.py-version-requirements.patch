@@ -1,0 +1,86 @@
+From fada9b72dc55a016cc702e50fd688a6e9d53793e Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Fri, 24 Nov 2023 16:54:18 +0800
+Subject: [PATCH 08/13] Relax setup.py version requirements
+
+---
+ tensorflow/tools/pip_package/setup.py | 42 +++++++++++++--------------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/tensorflow/tools/pip_package/setup.py b/tensorflow/tools/pip_package/setup.py
+index b416731380f..a21f566ee4d 100644
+--- a/tensorflow/tools/pip_package/setup.py
++++ b/tensorflow/tools/pip_package/setup.py
+@@ -88,8 +88,8 @@ REQUIRED_PACKAGES = [
+     'gast >=0.2.1,!=0.5.0,!=0.5.1,!=0.5.2',
+     'google_pasta >= 0.1.1',
+     'h5py >= 2.9.0',
+-    'libclang >= 13.0.0',
+-    'ml_dtypes ~= 0.2.0',
++    # 'libclang >= 13.0.0',
++    'ml_dtypes >= 0.2.0',
+     'numpy >= 1.23.5, < 2.0.0',
+     'opt_einsum >= 2.3.2',
+     'packaging',
+@@ -101,8 +101,8 @@ REQUIRED_PACKAGES = [
+     'six >= 1.12.0',
+     'termcolor >= 1.1.0',
+     'typing_extensions >= 3.6.6',
+-    'wrapt >= 1.11.0, < 1.15',
+-    'tensorflow-io-gcs-filesystem >= 0.23.1',
++    'wrapt >= 1.11.0',
++    # 'tensorflow-io-gcs-filesystem >= 0.23.1',
+     # grpcio does not build correctly on big-endian machines due to lack of
+     # BoringSSL support.
+     # See https://github.com/tensorflow/tensorflow/issues/17882.
+@@ -135,8 +135,8 @@ FAKE_REQUIRED_PACKAGES = [
+     _VERSION + ';platform_system=="Windows"',
+ ]
+ 
+-if platform.system() == 'Linux' and platform.machine() == 'x86_64':
+-  REQUIRED_PACKAGES.append(FAKE_REQUIRED_PACKAGES)
++# if platform.system() == 'Linux' and platform.machine() == 'x86_64':
++#   REQUIRED_PACKAGES.append(FAKE_REQUIRED_PACKAGES)
+ 
+ if collaborator_build:
+   # If this is a collaborator build, then build an "installer" wheel and
+@@ -163,21 +163,21 @@ if collaborator_build:
+ EXTRA_PACKAGES = {}
+ EXTRA_PACKAGES['and-cuda'] = [
+     # TODO(nluehr): set nvidia-* versions based on build components.
+-    'nvidia-cublas-cu12 == 12.2.5.6',
+-    'nvidia-cuda-cupti-cu12 == 12.2.142',
+-    'nvidia-cuda-nvcc-cu12 == 12.2.140',
+-    'nvidia-cuda-nvrtc-cu12 == 12.2.140',
+-    'nvidia-cuda-runtime-cu12 == 12.2.140',
+-    'nvidia-cudnn-cu12 == 8.9.4.25',
+-    'nvidia-cufft-cu12 == 11.0.8.103',
+-    'nvidia-curand-cu12 == 10.3.3.141',
+-    'nvidia-cusolver-cu12 == 11.5.2.141',
+-    'nvidia-cusparse-cu12 == 12.1.2.141',
+-    'nvidia-nccl-cu12 == 2.16.5',
+-    'nvidia-nvjitlink-cu12 == 12.2.140',
+-    'tensorrt == 8.6.1.post1',
+-    'tensorrt-bindings == 8.6.1',
+-    'tensorrt-libs == 8.6.1',
++    'nvidia-cublas-cu12 >= 12.2.5.6',
++    'nvidia-cuda-cupti-cu12 >= 12.2.142',
++    'nvidia-cuda-nvcc-cu12 >= 12.2.140',
++    'nvidia-cuda-nvrtc-cu12 >= 12.2.140',
++    'nvidia-cuda-runtime-cu12 >= 12.2.140',
++    'nvidia-cudnn-cu12 >= 8.9.4.25',
++    'nvidia-cufft-cu12 >= 11.0.8.103',
++    'nvidia-curand-cu12 >= 10.3.3.141',
++    'nvidia-cusolver-cu12 >= 11.5.2.141',
++    'nvidia-cusparse-cu12 >= 12.1.2.141',
++    'nvidia-nccl-cu12 >= 2.16.5',
++    'nvidia-nvjitlink-cu12 >= 12.2.140',
++    'tensorrt >= 8.6.1.post1',
++    'tensorrt-bindings >= 8.6.1',
++    'tensorrt-libs >= 8.6.1',
+ ]
+ 
+ DOCLINES = __doc__.split('\n')
+-- 
+2.41.0
+

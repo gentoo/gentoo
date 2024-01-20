@@ -1,0 +1,25 @@
+From c582286b732a820b29f1c03e2fa2c4aa61a4af03 Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Thu, 21 Dec 2023 22:24:24 +0800
+Subject: [PATCH 11/13] systemlib: fix missing `LICENSE` in flatbuffers
+
+---
+ third_party/flatbuffers/BUILD.system | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third_party/flatbuffers/BUILD.system b/third_party/flatbuffers/BUILD.system
+index 8fe4d7a5907..b1d63b4ca0f 100644
+--- a/third_party/flatbuffers/BUILD.system
++++ b/third_party/flatbuffers/BUILD.system
+@@ -1,7 +1,7 @@
+ licenses(["notice"])  # Apache 2.0
+ 
+ filegroup(
+-    name = "LICENSE.txt",
++    name = "LICENSE",
+     visibility = ["//visibility:public"],
+ )
+ 
+-- 
+2.41.0
+
