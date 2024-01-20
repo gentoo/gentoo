@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 inherit php-pear-r2
 
 DESCRIPTION="Swiss-army knife for reading and writing XML files"
@@ -9,6 +9,7 @@ DESCRIPTION="Swiss-army knife for reading and writing XML files"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
