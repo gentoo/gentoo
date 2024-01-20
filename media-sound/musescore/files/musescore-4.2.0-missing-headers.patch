@@ -1,0 +1,41 @@
+--- a/src/framework/ui/uimodule.h
++++ b/src/framework/ui/uimodule.h
+@@ -24,6 +24,7 @@
+ #define MU_UI_UIMODULE_H
+ 
+ #include "modularity/imodulesetup.h"
++#include <QtGlobal>
+ 
+ namespace mu::ui {
+ class UiConfiguration;
+--- a/src/framework/ui/view/interactiveprovider.h
++++ b/src/framework/ui/view/interactiveprovider.h
+@@ -26,6 +26,7 @@
+ #include <QVariant>
+ #include <QMap>
+ #include <QStack>
++#include <QEventLoop>
+ 
+ #include "modularity/ioc.h"
+ #include "../iinteractiveprovider.h"
+--- a/src/importexport/videoexport/internal/videowriter.cpp
++++ b/src/importexport/videoexport/internal/videowriter.cpp
+@@ -32,6 +32,8 @@
+ 
+ #include "log.h"
+ 
++#include <QPainter>
++
+ using namespace mu::iex::videoexport;
+ using namespace mu::project;
+ using namespace mu::notation;
+--- a/src/learn/view/learnpagemodel.h
++++ b/src/learn/view/learnpagemodel.h
+@@ -23,6 +23,7 @@
+ #define MU_LEARN_LEARNPAGEMODEL_H
+ 
+ #include <QObject>
++#include <QVariant>
+ 
+ #include "async/asyncable.h"
+ 

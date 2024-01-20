@@ -17,5 +17,6 @@
 		<flag name="sf3">Enable SoundFont 3 support using  <pkg>media-libs/libvorbis</pkg></flag>
 		<flag name="sfz">Enable experimental SFZ sampler</flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for embedded web browser</flag>
+		<flag name="video">Support exporting scores as videos using the command line</flag>
 	</use>
 </pkgmetadata>
