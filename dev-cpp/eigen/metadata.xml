@@ -25,6 +25,7 @@
 		<flag name="cholmod">Add test support for CHOLMOD (<pkg>sci-libs/cholmod</pkg>)</flag>
 		<flag name="fftw">Add test support for fftw (<pkg>sci-libs/fftw</pkg>)</flag>
 		<flag name="klu">Add test support for KLU (<pkg>sci-libs/klu</pkg>)</flag>
+		<flag name="mathjax">Use MathJax for rendering math in HTML docs (dev-libs/mathjax)</flag>
 		<flag name="opengl">Add test support for OpenGL</flag>
 		<flag name="openmp">Add test support for the OpenMP (support parallel computing)</flag>
 		<flag name="pastix">Add test support for PaStiX (<pkg>sci-libs/pastix</pkg>)</flag>

@@ -58,11 +58,11 @@ X86_CPU_FEATURES=(
 # )
 
 CPU_FEATURES_MAP=(
-	${ARM_CPU_FEATURES[@]/#/cpu_flags_arm_}
-	${PPC_CPU_FEATURES[@]/#/cpu_flags_ppc_}
-	${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}
-	# ${MIPS_CPU_FEATURES[@]/#/cpu_flags_mips_}
-	# ${S390_CPU_FEATURES[@]/#/cpu_flags_s390_}
+	"${ARM_CPU_FEATURES[@]/#/cpu_flags_arm_}"
+	"${PPC_CPU_FEATURES[@]/#/cpu_flags_ppc_}"
+	"${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}"
+	# "${MIPS_CPU_FEATURES[@]/#/cpu_flags_mips_}"
+	# "${S390_CPU_FEATURES[@]/#/cpu_flags_s390_}"
 )
 
 IUSE_TEST_BACKENDS=(
@@ -80,7 +80,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="${CPU_FEATURES_MAP[*]%:*} clang cuda hip debug doc lapack test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="${CPU_FEATURES_MAP[*]%:*} clang cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 # Tests failing again because of compiler issues
 RESTRICT="!test? ( test )"
@@ -93,6 +93,7 @@ BDEPEND="
 		dev-texlive/texlive-fontutils
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
+		mathjax? ( dev-libs/mathjax )
 	)
 	test? ( virtual/pkgconfig )
 "
@@ -186,6 +187,10 @@ cuda_set_CUDAHOSTCXX() {
 	export CUDAHOSTCXX
 }
 
+pkg_setup() {
+	use test && use cuda && use clang && llvm_pkg_setup
+}
+
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
 		git-r3_src_unpack
@@ -202,27 +207,50 @@ src_unpack() {
 src_prepare() {
 	cmake_src_prepare
 
-	cmake_comment_add_subdirectory demos
+	sed \
+		-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
+		-e "/add_subdirectory(demos/s/^/#DONOTCOMPILE /g" \
+		-i CMakeLists.txt || die
 
 	if ! use test; then
-		sed -e "/add_subdirectory(test/s/^/#DONOTCOMPILE /g" \
+		sed \
+			-e "/add_subdirectory(test/s/^/#DONOTCOMPILE /g" \
+			-e "/add_subdirectory(scripts/s/^/#DONOTCOMPILE /g" \
+			-e "/add_subdirectory(failtest/s/^/#DONOTCOMPILE /g" \
 			-e "/add_subdirectory(blas/s/^/#DONOTCOMPILE /g" \
 			-e "/add_subdirectory(lapack/s/^/#DONOTCOMPILE /g" \
 			-i CMakeLists.txt || die
 	fi
-
 }
 
 src_configure() {
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS="yes"
+		-DBUILD_TESTING="$(usex test)"
+
+		-DEIGEN_BUILD_DOC="$(usex doc)" # Enable creation of Eigen documentation
+		-DEIGEN_BUILD_PKGCONFIG="yes" # Build pkg-config .pc file for Eigen
+	)
+	if use doc || use test; then
+		mycmakeargs+=(
+			# needs Qt4
+			-DEIGEN_TEST_NOQT="yes" # Disable Qt support in unit tests
+		)
+	fi
+
+	if use doc; then
+		mycmakeargs+=(
+			-DEIGEN_DOC_USE_MATHJAX="$(usex mathjax)" # Use MathJax for rendering math in HTML docs
+			-DEIGEN_INTERNAL_DOCUMENTATION=no # Build internal documentation
+		)
+	fi
+
 	if use test; then
 		mycmakeargs+=(
 			# the OpenGL testsuite is extremely brittle, bug #712808
 			-DOpenGL_GL_PREFERENCE="GLVND"
 			-DEIGEN_TEST_OPENGL="$(usex opengl)" # Enable OpenGL support in unit tests
 			-DEIGEN_TEST_OPENMP="$(usex openmp)" # Enable/Disable OpenMP in tests/examples
-
-			# needs Qt4
-			-DEIGEN_TEST_NOQT=yes # Disable Qt support in unit tests
 
 			-DCMAKE_DISABLE_FIND_PACKAGE_MPREAL=ON
 
@@ -233,11 +261,6 @@ src_configure() {
 			# -DEIGEN_TEST_BUILD_FLAGS= # Options passed to the build command of unit tests
 
 			# -DEIGEN_BUILD_BTL=yes # Build benchmark suite
-
-			# -DEIGEN_INTERNAL_DOCUMENTATION=no # Build internal documentation
-			# -DEIGEN_BUILD_DOC=yes # Enable creation of Eigen documentation
-			# -DEIGEN_BUILD_PKGCONFIG=yes # Build pkg-config .pc file for Eigen
-			# -DEIGEN_DOC_USE_MATHJAX=yes # Use MathJax for rendering math in HTML docs
 
 			-DEIGEN_TEST_BUILD_DOCUMENTATION="$(usex doc)" # Test building the doxygen documentation
 
@@ -341,12 +364,12 @@ src_configure() {
 
 		if use cuda; then
 			cuda_add_sandbox -w
-			export CUDAFLAGS="${NVCCFLAGS}"
 			if use clang; then
 				local llvm_prefix
 				llvm_prefix="$(get_llvm_prefix -b)"
 				export CC="${llvm_prefix}/bin/clang"
 				export CXX="${llvm_prefix}/bin/clang++"
+				export LIBRARY_PATH="${ESYSROOT}/usr/$(get_libdir)"
 			else
 				cuda_set_CUDAHOSTCXX
 				mycmakeargs+=(
@@ -359,6 +382,8 @@ src_configure() {
 				)
 				NVCCFLAGS+=" -v"
 			fi
+
+			export CUDAFLAGS="${NVCCFLAGS}"
 
 			[[ -z "${CUDAARCHS}" ]] && einfo "trying to determine host CUDAARCHS"
 			: "${CUDAARCHS:=$(__nvcc_device_query)}"
