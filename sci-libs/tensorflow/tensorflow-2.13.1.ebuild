@@ -101,7 +101,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 		#>=dev-cpp/abseil-cpp-20230125.0:=
 RDEPEND="
 	app-arch/snappy
-	=dev-cpp/abseil-cpp-20230125.2:=
+	=dev-cpp/abseil-cpp-20230125.2*:=
 	dev-db/sqlite
 	dev-libs/double-conversion
 	dev-libs/icu:=
