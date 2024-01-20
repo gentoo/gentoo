@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ REQUIRED_USE="opengl? ( javascript )"
 # bug #653298), the best way to ensure that its dependencies are present is to
 # install system's freeglut.
 RDEPEND="
-	dev-libs/gumbo
+	dev-libs/gumbo:=
 	media-libs/freetype:2
 	media-libs/harfbuzz:=[truetype]
 	media-libs/jbig2dec:=

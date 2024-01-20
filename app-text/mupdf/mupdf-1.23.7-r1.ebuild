@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,44 +15,46 @@ S="${WORKDIR}"/${P}-source
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="+drm +javascript opengl ssl X"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="+javascript opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
 # bug #653298), the best way to ensure that its dependencies are present is to
 # install system's freeglut.
 RDEPEND="
-	dev-libs/gumbo
+	dev-libs/gumbo:=
 	media-libs/freetype:2
 	media-libs/harfbuzz:=[truetype]
 	media-libs/jbig2dec:=
 	media-libs/libpng:0=
 	>=media-libs/openjpeg-2.1:2=
 	>=media-libs/libjpeg-turbo-1.5.3-r2:0=
+	net-misc/curl
 	javascript? ( >=dev-lang/mujs-1.2.0:= )
 	opengl? ( >=media-libs/freeglut-3.0.0 )
 	ssl? ( >=dev-libs/openssl-1.1:0= )
 	sys-libs/zlib
 	X? (
+		media-libs/libglvnd[X]
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libXrandr
 	)
 "
-DEPEND="${RDEPEND}"
-BDEPEND="X? ( x11-base/xorg-proto )
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.19.0-Makefile.patch
 	"${FILESDIR}"/${PN}-1.21.0-add-desktop-pc-files.patch
-	"${FILESDIR}"/${PN}-1.19.0-darwin.patch
+	"${FILESDIR}"/${PN}-1.23.3-darwin.patch
 	# See bugs #662352
-	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
+	"${FILESDIR}"/${PN}-1.23.3-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
-	"${FILESDIR}"/${PN}-1.19.0-cross-fixes.patch
-	"${FILESDIR}"/${PN}-1.21.1-no-drm.patch
+	"${FILESDIR}"/${PN}-1.23.3-cross-fixes.patch
 	"${FILESDIR}"/${PN}-1.21.1-fix-aliasing-violation.patch
 )
 
@@ -60,8 +62,6 @@ src_prepare() {
 	default
 
 	use hppa && append-cflags -ffunction-sections
-
-	use drm && append-cflags -DGENTOO_MUPDF_DRM
 
 	append-cflags "-DFZ_ENABLE_JS=$(usex javascript 1 0)"
 
@@ -75,7 +75,7 @@ src_prepare() {
 		-i Makerules || die "Failed adding build variables to Makerules in src_prepare()"
 
 	# Adjust MuPDF version in .pc file created by the
-	# mupdf-1.10a-add-desktop-pc-xpm-files.patch file
+	# mupdf-1.21.0-add-desktop-pc-files.patch file
 	sed -e "s/Version: \(.*\)/Version: ${PV}/" \
 		-i platform/debian/${PN}.pc || die "Failed substituting version in ${PN}.pc"
 }
@@ -153,9 +153,10 @@ src_install() {
 		dosym ${PN}-x11 /usr/bin/${PN}
 	fi
 
-	# Respect libdir (bug #734898)
-	sed -i -e "s:/lib:/$(get_libdir):" platform/debian/${PN}.pc \
-		|| die "Failed to sed pkgconfig file to respect libdir in src_install()"
+	# Respect libdir and EPREFIX (bugs #734898, #911965)
+	sed -i -e "s:/lib:/$(get_libdir):" \
+		-e "s:/usr:${EPREFIX}/usr:" platform/debian/${PN}.pc \
+		|| die "Failed to sed pkgconfig file to respect libdir and EPREFIX in src_install()"
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins platform/debian/${PN}.pc
