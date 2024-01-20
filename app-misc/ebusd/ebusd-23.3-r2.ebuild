@@ -94,7 +94,7 @@ src_test() {
 src_install() {
 	default
 	use doc && dodoc -r docs/html
-	newinitd "${FILESDIR}"/ebusd.initd ebusd
+	newinitd "${FILESDIR}"/ebusd.initd-r1 ebusd
 	newconfd "${FILESDIR}"/ebusd.confd ebusd
 	systemd_newunit "${FILESDIR}"/ebusd.service-r1 ebusd.service
 }
