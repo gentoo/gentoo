@@ -427,6 +427,14 @@ src_test() {
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
+
+		# Reason: fails with stable version of tree-sitter-json due to
+		# ast changes. Bug #922525
+		%src/treesit-tests.log
+
+		# Reason: test is not skipped if tree-sitter-tsx is not installed
+		# Bug #922525
+		%lisp/progmodes/typescript-ts-mode-tests.el
 	)
 	use threads || exclude_tests+=(
 			%lisp/server-tests.el
