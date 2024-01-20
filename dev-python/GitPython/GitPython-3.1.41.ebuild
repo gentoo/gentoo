@@ -38,6 +38,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/ddt-1.1.1[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/sumtypes[${PYTHON_USEDEP}]
 	)
 "
