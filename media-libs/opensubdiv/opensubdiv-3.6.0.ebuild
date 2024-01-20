@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -104,9 +104,9 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	rm -f "${ED}/usr/lib64/libosdCPU.a" || die
+	rm -f "${ED}/usr/$(get_libdir)/libosdCPU.a" || die
 	if use cuda || use opencl ; then
-		rm -f "${ED}/usr/lib64/libosdGPU.a" || die
+		rm -f "${ED}/usr/$(get_libdir)/libosdGPU.a" || die
 	fi
 	if use test; then
 		rm -f \
