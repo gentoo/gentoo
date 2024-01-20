@@ -17,6 +17,7 @@ IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid yearly"
 RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
+# Next release will switch openssl->libmd (https://github.com/systemd-cron/systemd-cron/commit/fe0b10b1ed55122a3cd07a382a951aeb87a3fee2)
 RDEPEND="
 	!sys-process/cronie[anacron]
 	acct-user/_cron-failure
