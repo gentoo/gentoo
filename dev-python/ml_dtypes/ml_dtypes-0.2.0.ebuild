@@ -29,7 +29,7 @@ BDEPEND="
 "
 
 python_prepare_all() {
-	rmdir third_party/eigen
-	cp -r "${WORKDIR}/eigen-${EIGEN_CommitId}" third_party/eigen
+	rmdir third_party/eigen || die
+	cp -r "${WORKDIR}/eigen-${EIGEN_CommitId}" third_party/eigen || die
 	distutils-r1_python_prepare_all
 }
