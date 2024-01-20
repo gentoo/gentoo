@@ -20,7 +20,7 @@ else
 	SRC_URI="https://git.sr.ht/~technomancy/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
