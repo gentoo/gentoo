@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 bazel java-pkg-2 multiprocessing
+inherit bash-completion-r1 bazel java-pkg-2 multiprocessing toolchain-funcs
 
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="https://bazel.build/"
@@ -30,6 +30,12 @@ pkg_setup() {
 		ewarn "${PN} usually fails to compile with ccache, you have been warned"
 	fi
 	java-pkg-2_pkg_setup
+
+	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc && ver_test $(gcc-version) -ge 13 ; then
+		eerror "Bazel 6 needs <=gcc-12 to compile."
+		eerror "Please run 'eselect gcc' and set correct gcc version."
+		die "GCC version is too new to compile Bazel!"
+	fi
 }
 
 src_unpack() {
