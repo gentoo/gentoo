@@ -136,7 +136,7 @@ www-client/chromium
 net-misc/netkit-telnetd
 net-misc/sitecopy
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
 app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
@@ -145,6 +145,7 @@ app-admin/puppetserver
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
+app-benchmarks/geekbench-ml
 app-crypt/rainbowcrack
 app-editors/sublime-text
 app-editors/vscode
