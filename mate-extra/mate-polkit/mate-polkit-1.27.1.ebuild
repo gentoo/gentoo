@@ -23,7 +23,7 @@ COMMON_DEPEND="x11-libs/gdk-pixbuf:2
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.50:2
-	>=sys-auth/polkit-0.102
+	>=sys-auth/polkit-0.102[daemon]
 	accountsservice? ( sys-apps/accountsservice )"
 
 BDEPEND="${COMMON_DEPEND}
