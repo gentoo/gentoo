@@ -83,7 +83,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	optfeature "Colorized output supprt" dev-python/pygments
+	optfeature "Colorized output support" dev-python/pygments
 
 	if has_version "<${CATEGORY}/${PN}-483-r1" ; then
 		elog "The lesspipe.sh symlink has been dropped.  If you are still setting"
