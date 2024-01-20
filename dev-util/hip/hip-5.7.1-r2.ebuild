@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-disable-stack-protector.patch"
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
 	"${FILESDIR}/${PN}-5.7.1-extend-isa-compatibility-check.patch"
+	"${FILESDIR}/${PN}-5.7.1-fix-mmap-oom-check.patch"
 )
 
 S="${WORKDIR}/clr-rocm-${PV}/"
