@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,7 @@ RDEPEND="
 	>=dev-libs/wayland-1.21
 	>=dev-libs/wayland-protocols-1.17
 	=gui-libs/wlroots-0.17*[X,libinput(+)]
+	>=media-libs/libavif-1.0.0:=
 	>=media-libs/libdisplay-info-0.1.1
 	media-libs/libsdl2[video,vulkan]
 	media-libs/vulkan-loader
@@ -35,6 +36,7 @@ RDEPEND="
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXi
 	x11-libs/libxkbcommon
 	x11-libs/libXmu
 	x11-libs/libXrender
