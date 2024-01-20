@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit toolchain-funcs flag-o-matic linux-info
 
@@ -17,11 +17,11 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="show detailed info about what is happening on a block device io queue"
+DESCRIPTION="Show detailed info about what is happening on a block device io queue"
 HOMEPAGE="https://git.kernel.dk/cgit/blktrace/"
 SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.${EXT}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE="doc"
@@ -38,12 +38,6 @@ DEPEND="${RDEPEND}
 
 CONFIG_CHECK="~BLK_DEV_IO_TRACE"
 WARNING_BLK_DEV_IO_TRACE="you need to enable BLK_DEV_IO_TRACE kernel option if you want to gather traces from this machine"
-
-PATCHES=(
-	#"${FILESDIR}"/${P}-overlapping-io-stats.patch
-	#"${FILESDIR}"/${PN}-1.2.0-ldflags.patch #335741
-	#"${FILESDIR}"/${PN}-1.2.0-parallel-build.patch #335741
-)
 
 src_compile() {
 	append-cppflags -DLVM_REMAP_WORKAROUND -W -I"${S}"
