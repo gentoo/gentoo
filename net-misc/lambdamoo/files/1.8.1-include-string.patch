@@ -1,0 +1,90 @@
+diff --git a/db_file.c b/db_file.c
+index 87ce5d6..a6de6de 100644
+--- a/db_file.c
++++ b/db_file.c
+@@ -23,6 +23,8 @@
+ #include "my-stdio.h"
+ #include "my-stdlib.h"
+
++#include <string.h>
++
+ #include "config.h"
+ #include "db.h"
+ #include "db_io.h"
+diff --git a/db_io.c b/db_io.c
+index cce41fd..966051e 100644
+--- a/db_io.c
++++ b/db_io.c
+@@ -25,6 +25,8 @@
+ #include "my-stdio.h"
+ #include "my-stdlib.h"
+
++#include <string.h>
++
+ #include "db_io.h"
+ #include "db_private.h"
+ #include "exceptions.h"
+diff --git a/db_objects.c b/db_objects.c
+index 5f013d1..398d8fd 100644
+--- a/db_objects.c
++++ b/db_objects.c
+@@ -19,6 +19,8 @@
+  * Routines for manipulating DB objects
+  *****************************************************************************/
+
++#include <string.h>
++
+ #include "config.h"
+ #include "db.h"
+ #include "db_private.h"
+diff --git a/functions.c b/functions.c
+index 5c786f9..8094952 100644
+--- a/functions.c
++++ b/functions.c
+@@ -17,6 +17,8 @@
+
+ #include "my-stdarg.h"
+
++#include <string.h>
++
+ #include "bf_register.h"
+ #include "config.h"
+ #include "db_io.h"
+diff --git a/program.c b/program.c
+index b300ead..d5b5437 100644
+--- a/program.c
++++ b/program.c
+@@ -15,6 +15,8 @@
+     Pavel@Xerox.Com
+  *****************************************************************************/
+
++#include <string.h>
++
+ #include "ast.h"
+ #include "exceptions.h"
+ #include "list.h"
+diff --git a/storage.c b/storage.c
+index f3a02a7..d1968d7 100644
+--- a/storage.c
++++ b/storage.c
+@@ -17,6 +17,8 @@
+
+ #include "my-stdlib.h"
+
++#include <string.h>
++
+ #include "config.h"
+ #include "exceptions.h"
+ #include "list.h"
+diff --git a/str_intern.c b/str_intern.c
+index c051a1a..0a8ca7e 100644
+--- a/str_intern.c
++++ b/str_intern.c
+@@ -1,5 +1,7 @@
+ #include "my-stdlib.h"
+
++#include <string.h>
++
+ #include "log.h"
+ #include "storage.h"
+ #include "str_intern.h"

@@ -1,0 +1,16 @@
+diff --git a/Makefile.in b/Makefile.in
+index 76a351f..4229350 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -94,11 +94,6 @@ client_sysv: client_sysv.o
+ restart:
+ 	touch restart
+
+-configure: configure.in
+-	# autoconf
+-	@echo "Not running autoconf; you must do this by hand."
+-	touch configure
+-
+ config.status: configure
+ 	env CC= YACC= ./configure --no-create
+
