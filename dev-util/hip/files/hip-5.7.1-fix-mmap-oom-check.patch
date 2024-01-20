@@ -1,0 +1,41 @@
+Backport of SWDEV-417691 - Error handling for MemoryMap OS calls.
+The issue was fixed in rocclr 6.0.0.
+https://github.com/ROCm/clr/commit/7a10423a44b8b353f67539dc1ae14c0b99c209b8
+--- a/rocclr/os/os_posix.cpp
++++ b/rocclr/os/os_posix.cpp
+@@ -214,7 +214,7 @@ address Os::reserveMemory(address start, size_t size, size_t alignment, MemProt
+                                 MAP_PRIVATE | MAP_NORESERVE | MAP_ANONYMOUS, 0, 0);
+ 
+   // check for out of memory
+-  if (mem == NULL) return NULL;
++  if (mem == MAP_FAILED) return NULL;
+ 
+   address aligned = alignUp(mem, alignment);
+ 
+@@ -842,7 +842,7 @@ bool Os::MemoryMapFileDesc(FileDesc fdesc, size_t fsize, size_t foffset, const v
+   }
+ 
+   *mmap_ptr = mmap(NULL, fsize, PROT_READ, MAP_SHARED, fdesc, foffset);
+-  return true;
++  return (*mmap_ptr == MAP_FAILED) ? false : true;
+ }
+ 
+ bool Os::MemoryUnmapFile(const void* mmap_ptr, size_t mmap_size) {
+@@ -874,7 +874,7 @@ bool Os::MemoryMapFile(const char* fname, const void** mmap_ptr, size_t* mmap_si
+ 
+   close(fd);
+ 
+-  if (*mmap_ptr == nullptr) {
++  if (*mmap_ptr == MAP_FAILED) {
+     return false;
+   }
+ 
+@@ -899,7 +899,7 @@ bool Os::MemoryMapFileTruncated(const char* fname, const void** mmap_ptr, size_t
+ 
+   close(fd);
+ 
+-  if (*mmap_ptr == nullptr) {
++  if (*mmap_ptr == MAP_FAILED) {
+     return false;
+   }
+ 
