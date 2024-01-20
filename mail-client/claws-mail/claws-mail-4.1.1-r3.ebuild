@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools desktop python-any-r1 xdg
 
@@ -15,28 +15,29 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
-	appindicator? ( notification )
 	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
+	oauth? ( gnutls )
 	smime? ( pgp )
 "
 
 COMMONDEPEND="
+	>=dev-libs/glib-2.36:2
 	dev-libs/nettle:=
 	net-mail/ytnef
 	sys-libs/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[jpeg]
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
 	archive? (
@@ -45,6 +46,7 @@ COMMONDEPEND="
 	)
 	bogofilter? ( mail-filter/bogofilter )
 	calendar? (
+		dev-lang/perl:=
 		>=dev-libs/libical-2.0.0:=
 		>=net-misc/curl-7.9.7
 	)
@@ -57,21 +59,23 @@ COMMONDEPEND="
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
-		>=dev-libs/glib-2.36:2
-		>=dev-libs/gumbo-0.10
+		>=dev-libs/gumbo-0.10:=
 		net-misc/curl
 		media-libs/fontconfig
 	)
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
-		dev-libs/glib:2
-		appindicator? ( dev-libs/libindicate:3[gtk] )
-		libcanberra? (  media-libs/libcanberra[gtk2] )
+		libcanberra? (  media-libs/libcanberra[gtk3] )
 		libnotify? ( x11-libs/libnotify )
 	)
+	perl? ( dev-lang/perl:= )
 	pdf? ( app-text/poppler[cairo] )
 	pgp? ( >=app-crypt/gpgme-1.0.0:= )
+	rss? (
+		dev-libs/libxml2
+		net-misc/curl
+	)
 	session? (
 		x11-libs/libICE
 		x11-libs/libSM
@@ -82,6 +86,7 @@ COMMONDEPEND="
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-debug/valgrind )
+	webkit? ( net-libs/webkit-gtk:4 )
 "
 
 DEPEND="${COMMONDEPEND}
@@ -98,16 +103,11 @@ RDEPEND="${COMMONDEPEND}
 	clamav? ( app-antivirus/clamav )
 	networkmanager? ( net-misc/networkmanager )
 	pdf? ( app-text/ghostscript-gpl )
-	perl? ( dev-lang/perl:= )
-	rss? (
-		dev-libs/libxml2
-		net-misc/curl
-	)
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
-	"${FILESDIR}/${PN}-3.19.0-perl-5.36.patch"
+	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
 )
 
 src_prepare() {
@@ -122,15 +122,16 @@ src_configure() {
 	local myeconfargs=(
 		--disable-bsfilter-plugin
 		--disable-dillo-plugin
-		--disable-fancy-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
+		--disable-python-plugin
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
 		--enable-alternate-addressbook
 		--enable-att_remover-plugin
 		--enable-attachwarner-plugin
 		--enable-fetchinfo-plugin
+		--enable-ipv6
 		--enable-mailmbox-plugin
 		--enable-newmail-plugin
 		--enable-tnef_parse-plugin
@@ -144,18 +145,17 @@ src_configure() {
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
-		$(use_enable ipv6)
 		$(use_enable ldap)
 		$(use_enable litehtml litehtml_viewer-plugin)
 		$(use_enable networkmanager)
 		$(use_enable nls)
 		$(use_enable notification notification-plugin)
+		$(use_enable oauth oauth2)
 		$(use_enable pdf pdf_viewer-plugin)
 		$(use_enable perl perl-plugin)
 		$(use_enable pgp pgpcore-plugin)
 		$(use_enable pgp pgpinline-plugin)
 		$(use_enable pgp pgpmime-plugin)
-		--disable-python-plugin
 		$(use_enable rss rssyl-plugin)
 		$(use_enable session libsm)
 		$(use_enable sieve managesieve-plugin)
@@ -166,6 +166,7 @@ src_configure() {
 		$(use_enable startup-notification)
 		$(use_enable svg)
 		$(use_enable valgrind valgrind)
+		$(use_enable webkit fancy-plugin)
 		$(use_enable xface compface)
 	)
 
@@ -210,6 +211,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "When upgrading from version <3.18 please re-load any plugin you use"
+	ewarn "When upgrading from version 3.x please re-load any plugin you use"
 	xdg_pkg_postinst
 }
