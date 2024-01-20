@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools flag-o-matic gnome2-utils
 
@@ -9,26 +9,25 @@ DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) developmen
 HOMEPAGE="https://github.com/scim-im/scim"
 SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="doc gtk3"
 
-RDEPEND="x11-libs/libX11
+RDEPEND="dev-libs/atk
 	dev-libs/glib:2
+	x11-libs/libX11
+	x11-libs/pango
 	gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( x11-libs/gtk+:2 )
-	>=dev-libs/atk-1
-	>=x11-libs/pango-1"
+	!gtk3? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen
-		>=app-text/docbook-xsl-stylesheets-1.73.1 )
 	dev-lang/perl
-	virtual/pkgconfig
-	>=dev-util/intltool-0.33
-	sys-devel/libtool"
+	dev-util/intltool
+	dev-build/libtool
+	doc? ( app-doc/doxygen
+		>=app-text/docbook-xsl-stylesheets-1.73.1 )"
+BDEPEND="virtual/pkgconfig"
 DOCS=(
-	README
 	AUTHORS
 	ChangeLog
 	docs/developers
@@ -47,11 +46,14 @@ src_prepare() {
 src_configure() {
 	# bug #83625
 	filter-flags -fvisibility-inlines-hidden -fvisibility=hidden
-	econf $(use_with doc doxygen) \
-		--enable-ld-version-script \
-		$(usex gtk3 --with-gtk-version={3,2}) \
-		--disable-qt3-immodule \
+	local myeconfargs=(
+		$(use_with doc doxygen)
+		--enable-ld-version-script
+		$(usex gtk3 --with-gtk-version={3,2})
+		--disable-qt3-immodule
 		--disable-qt4-immodule
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -63,7 +65,10 @@ src_install() {
 	use doc && HTML_DOCS=( "${S}/docs/html/" )
 	default
 
-	sed -e "s:@EPREFIX@:${EPREFIX}:" "${FILESDIR}/xinput-${PN}" > "${T}/${PN}.conf" || die
+	# Fix QA issues
+	find "${ED}" -name '*.la' -delete || die
+
+	sed -e "s|@EPREFIX@|${EPREFIX}|" "${FILESDIR}/xinput-${PN}" > "${T}/${PN}.conf" || die
 	insinto /etc/X11/xinit/xinput.d
 	doins "${T}/${PN}.conf"
 }
