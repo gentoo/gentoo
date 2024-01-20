@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2024-01-20)
+# Not required anymore since 4.14 is EOL, handled within the kernel
+# nowadays. Removal on 2024-02-19.
+net-wireless/crda
+
 # David Seifert <soap@gentoo.org> (2024-01-18)
 # Unmaintained set of packages. Overall, TensorFlow is ill-suited for
 # distro packaging, since it's entangled with tons of googleware and
