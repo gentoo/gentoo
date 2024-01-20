@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2024-01-20)
+# Masked for testing. Modifications to USE=savedconfig
+# to only install files from there instead of 
+# deleting them afterwards. 
+# bug #913049.
+=sys-kernel/linux-firmware-20240115-r1
+
 # David Seifert <soap@gentoo.org> (2024-01-18)
 # Unmaintained set of packages. Overall, TensorFlow is ill-suited for
 # distro packaging, since it's entangled with tons of googleware and
