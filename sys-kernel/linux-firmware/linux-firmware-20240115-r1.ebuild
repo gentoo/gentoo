@@ -285,14 +285,14 @@ src_install() {
 
 	if use savedconfig; then
 		if [[ -s "${S}/${PN}.conf" ]]; then
-            files_to_keep="${T}/files_to_keep.lst"
-            grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
-            [[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
-            LINUX_FIRMWARE_SAVED_CONFIG_FILES=$(<${files_to_keep})
-            LINUX_FIRMWARE_SAVED_CONFIG_FILES="${LINUX_FIRMWARE_SAVED_CONFIG_FILES//$'\n'/ }"
-            FW_OPTIONS+=( "--firmware-list" "${LINUX_FIRMWARE_SAVED_CONFIG_FILES[@]}" )
-        fi
-    fi
+			files_to_keep="${T}/files_to_keep.lst"
+			grep -v '^#' "${S}/${PN}.conf" 2>/dev/null > "${files_to_keep}" || die
+			[[ -s "${files_to_keep}" ]] || die "grep failed, empty config file?"
+			LINUX_FIRMWARE_SAVED_CONFIG_FILES=$(<${files_to_keep})
+			LINUX_FIRMWARE_SAVED_CONFIG_FILES="${LINUX_FIRMWARE_SAVED_CONFIG_FILES//$'\n'/ }"
+			FW_OPTIONS+=( "--firmware-list" "${LINUX_FIRMWARE_SAVED_CONFIG_FILES[@]}" )
+		fi
+	fi
 
 	! use deduplicate && FW_OPTIONS+=( "--ignore-duplicates" )
 	FW_OPTIONS+=( "${ED}/lib/firmware" )
