@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-01-20)
+# Not working, bug #890756
+sci-mathematics/why3-for-spark doc
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-12-22)
 # Requires sys-block/hpacucli
 net-analyzer/nagios-plugin-check_raid hpa

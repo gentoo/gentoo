@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
@@ -20,10 +20,6 @@ dev-lang/python-exec -python_targets_python3_12
 # Michał Górny <mgorny@gentoo.org> (2023-06-11)
 # xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
 xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
-
-# Alfredo Tupone <tupone@gentoo.org> (2023-04-02)
-# For doc, dev-python/sphinxcontrib-bibtex is required
-sci-mathematics/why3-for-spark doc
 
 # Daniel Pielmeier <billie@gentoo.org> (2023-03-04)
 # For docs, app-text/pandoc is required. For details see:
