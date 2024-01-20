@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib[minizip]
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	samples? (
 		media-libs/freeglut
 		media-libs/libglvnd
