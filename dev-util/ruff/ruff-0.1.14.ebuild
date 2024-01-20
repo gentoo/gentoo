@@ -5,7 +5,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=maturin
 
 CRATES="
@@ -27,7 +27,7 @@ CRATES="
 	argfile@0.1.6
 	arrayvec@0.7.4
 	ascii-canvas@3.0.0
-	assert_cmd@2.0.12
+	assert_cmd@2.0.13
 	autocfg@1.1.0
 	base64@0.21.3
 	bincode@1.3.3
@@ -134,7 +134,7 @@ CRATES="
 	itertools@0.10.5
 	itertools@0.12.0
 	itoa@1.0.9
-	js-sys@0.3.66
+	js-sys@0.3.67
 	kqueue-sys@1.0.4
 	kqueue@1.0.8
 	lalrpop-util@0.20.0
@@ -226,12 +226,12 @@ CRATES="
 	regex@1.10.2
 	result-like-derive@0.5.0
 	result-like@0.5.0
-	ring@0.16.20
+	ring@0.17.7
 	rust-stemmers@1.2.0
 	rustc-hash@1.1.0
 	rustix@0.38.28
-	rustls-webpki@0.101.4
-	rustls@0.21.7
+	rustls-webpki@0.101.7
+	rustls@0.21.10
 	rustversion@1.0.14
 	ryu@1.0.15
 	same-file@1.0.6
@@ -239,9 +239,9 @@ CRATES="
 	schemars_derive@0.8.16
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
-	sct@0.7.0
+	sct@0.7.1
 	seahash@4.1.0
-	semver@1.0.20
+	semver@1.0.21
 	serde-wasm-bindgen@0.6.3
 	serde@1.0.195
 	serde_derive@1.0.195
@@ -254,10 +254,10 @@ CRATES="
 	sharded-slab@0.1.4
 	shellexpand@3.1.0
 	shlex@1.2.0
-	similar@2.3.0
+	similar@2.4.0
 	siphasher@0.3.11
 	smallvec@1.11.2
-	spin@0.5.2
+	spin@0.9.8
 	static_assertions@1.1.0
 	string_cache@0.8.7
 	strip-ansi-escapes@0.2.0
@@ -307,7 +307,7 @@ CRATES="
 	unicode-xid@0.2.4
 	unicode_names2@1.2.1
 	unicode_names2_generator@1.2.1
-	untrusted@0.7.1
+	untrusted@0.9.0
 	ureq@2.9.1
 	url@2.5.0
 	utf8parse@0.2.1
@@ -321,16 +321,16 @@ CRATES="
 	wait-timeout@0.2.0
 	walkdir@2.4.0
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-backend@0.2.89
+	wasm-bindgen-backend@0.2.90
 	wasm-bindgen-futures@0.4.39
-	wasm-bindgen-macro-support@0.2.89
-	wasm-bindgen-macro@0.2.89
-	wasm-bindgen-shared@0.2.89
+	wasm-bindgen-macro-support@0.2.90
+	wasm-bindgen-macro@0.2.90
+	wasm-bindgen-shared@0.2.90
 	wasm-bindgen-test-macro@0.3.39
 	wasm-bindgen-test@0.3.39
-	wasm-bindgen@0.2.89
+	wasm-bindgen@0.2.90
 	web-sys@0.3.64
-	webpki-roots@0.25.2
+	webpki-roots@0.25.3
 	which@4.4.0
 	wild@2.2.0
 	winapi-i686-pc-windows-gnu@0.4.0
@@ -386,35 +386,37 @@ SRC_URI="
 "
 
 LICENSE="MIT"
+# Dependent crate licenses
+LICENSE+="
+	Apache-2.0 BSD-2 BSD-2 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016
+	WTFPL-2
+"
+# ring
+LICENSE+="
+	ISC SSLeay openssl MIT
+"
+# libcst
+LICENSE+="
+	MIT PSF-2 Apache-2.0
+"
+# libcst_derive
+LICENSE+="
+	MIT PSF-2 Apache-2.0
+"
+
+SLOT="0"
+KEYWORDS="~amd64"
 
 BDEPEND="
 	dev-util/patchelf
 	>=virtual/rust-1.71
 "
 
-# Dependent crate licenses
-LICENSE+="
-	Apache-2.0 BSD-2 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 WTFPL-2
-"
-SLOT="0"
-KEYWORDS="~amd64"
-
-# libcst
-LICENSE+="
-	MIT PSF-2 Apache-2.0
-"
-
-# libcst_derive
-LICENSE+="
-	MIT PSF-2 Apache-2.0
-"
-
-# ring
-LICENSE+="
-	ISC SSLeay openssl MIT
-"
-
 QA_FLAGS_IGNORED="usr/bin/.* usr/lib.*/libruff.*.so"
+
+PATCHES=(
+	"${FILESDIR}/ruff-0.1.14-tests.patch"
+)
 
 DOCS=(
 	BREAKING_CHANGES.md
@@ -429,8 +431,10 @@ src_prepare() {
 	sed -r 's:(strip[[:space:]]*=[[:space:]]*)true:\1false:' \
 		-i pyproject.toml || die
 
-	[[ -n ${PATCHES[*]} ]] && eapply "${PATCHES[@]}"
-	eapply_user
+	default
+
+	# python_copy_sources is called in src_compile after cargo_src_compile
+	# to avoid rebuilding rust code for each python impl
 
 	rm -rf docs/{.overrides,gitignore} || die
 }
@@ -444,11 +448,12 @@ src_compile() {
 	cargo_src_compile
 
 	python_copy_sources
-	distutils-r1_src_configure
 	distutils-r1_src_compile
 
-	local solib
-	for solib in $(find target/$(usex 'debug' 'debug' 'release') -maxdepth 1 -name '*.so'); do
+	local solib releasedir
+	releasedir=target/$(usex 'debug' 'debug' 'release')
+
+	for solib in $(find "${releasedir}" -maxdepth 1 -name '*.so'); do
 		patchelf --set-soname "${solib##*/}" "${solib}" || die
 	done
 }
@@ -466,7 +471,7 @@ src_install() {
 	local releasedir=target/$(usex 'debug' 'debug' 'release')
 
 	dobin ${releasedir}/ruff{,_{dev,python_formatter,shrinking}}
-	dolib.so $(find target/$(usex 'debug' 'debug' 'release') -maxdepth 1 -name '*.so')
+	dolib.so "${releasedir}"/*.so
 
 	dodoc -r "${DOCS[@]}"
 }
