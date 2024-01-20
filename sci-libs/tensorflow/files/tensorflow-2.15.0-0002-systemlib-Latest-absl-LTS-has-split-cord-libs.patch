@@ -1,0 +1,32 @@
+From 79f6530e6beb5ca25fd07245f251897bf60c85e2 Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Sun, 6 Feb 2022 00:13:56 -0800
+Subject: [PATCH 02/13] systemlib: Latest absl LTS has split cord libs
+
+---
+ third_party/absl/system.absl.strings.BUILD | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/third_party/absl/system.absl.strings.BUILD b/third_party/absl/system.absl.strings.BUILD
+index fa9a7a84f67..63bac99d71b 100644
+--- a/third_party/absl/system.absl.strings.BUILD
++++ b/third_party/absl/system.absl.strings.BUILD
+@@ -26,7 +26,14 @@ cc_library(
+ 
+ cc_library(
+     name = "cord",
+-    linkopts = ["-labsl_cord"],
++    linkopts = [
++        "-labsl_cord",
++        "-labsl_cord_internal",
++        "-labsl_cordz_functions",
++        "-labsl_cordz_handle",
++        "-labsl_cordz_info",
++        "-labsl_cordz_sample_token",
++    ],
+     deps = [
+         ":str_format",
+         "//absl/container:compressed_tuple",
+-- 
+2.41.0
+
