@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
 inherit autotools linux-info udev
 
 DESCRIPTION="Firmware for M-Audio/Midiman USB MIDI devices"
-HOMEPAGE="http://usb-midi-fw.sourceforge.net"
-SRC_URI="http://downloads.sourceforge.net/usb-midi-fw/${P}.tar.gz"
+HOMEPAGE="https://usb-midi-fw.sourceforge.net"
+SRC_URI="mirror://sourceforge/usb-midi-fw/${P}.tar.gz"
 
 LICENSE="Midisport"
 SLOT="0"
@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-apps/fxload
 	virtual/udev"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~SND_USB_AUDIO"
 
