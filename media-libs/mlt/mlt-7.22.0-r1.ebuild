@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
-inherit python-single-r1 cmake
+inherit python-single-r1 cmake flag-o-matic
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -110,6 +110,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #919981
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DCLANG_FORMAT=OFF
