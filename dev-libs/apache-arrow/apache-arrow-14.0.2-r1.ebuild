@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,6 @@ RDEPEND="
 	compute? ( dev-libs/libutf8proc:= )
 	dataset? (
 		dev-libs/libutf8proc:=
-		re2? ( dev-libs/re2:= )
 	)
 	lz4? ( app-arch/lz4:= )
 	parquet? (
@@ -41,6 +40,7 @@ RDEPEND="
 		dev-libs/thrift:=
 		ssl? ( dev-libs/openssl:= )
 	)
+	re2? ( dev-libs/re2:= )
 	snappy? ( app-arch/snappy:= )
 	zlib? ( sys-libs/zlib:= )
 	zstd? ( app-arch/zstd:= )
