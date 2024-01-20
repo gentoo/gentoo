@@ -1,0 +1,50 @@
+From 6880ac90a0211095cfea753316e002bd668a4e92 Mon Sep 17 00:00:00 2001
+From: Michael Wyraz <mw@brick4u.de>
+Date: Fri, 19 Jan 2024 19:15:52 +0100
+Subject: [PATCH 1/2] don't free monitor->name twice (fixes #6345)
+
+---
+ gdk/x11/gdkscreen-x11.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/gdk/x11/gdkscreen-x11.c b/gdk/x11/gdkscreen-x11.c
+index f54bf51d04..4ac3167b30 100644
+--- a/gdk/x11/gdkscreen-x11.c
++++ b/gdk/x11/gdkscreen-x11.c
+@@ -922,7 +922,6 @@ init_randr13 (GdkScreen *screen, gboolean *changed)
+           g_object_ref (monitor);
+           g_ptr_array_remove (x11_display->monitors, monitor);
+           gdk_display_monitor_removed (display, GDK_MONITOR (monitor));
+-          free (monitor->name);
+           g_object_unref (monitor);
+           *changed = TRUE;
+         }
+-- 
+2.43.0
+
+
+From ba58b3a23df4213e17a80816c7687a59e104769d Mon Sep 17 00:00:00 2001
+From: Michael Wyraz <mw@brick4u.de>
+Date: Fri, 19 Jan 2024 22:20:02 +0100
+Subject: [PATCH 2/2] Fix for #6342
+
+---
+ gdk/x11/gdkscreen-x11.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdk/x11/gdkscreen-x11.c b/gdk/x11/gdkscreen-x11.c
+index 4ac3167b30..6207b5f443 100644
+--- a/gdk/x11/gdkscreen-x11.c
++++ b/gdk/x11/gdkscreen-x11.c
+@@ -851,7 +851,7 @@ init_randr13 (GdkScreen *screen, gboolean *changed)
+               monitor = g_object_new (gdk_x11_monitor_get_type (),
+                                       "display", display,
+                                       NULL);
+-              monitor->name = g_steal_pointer (&name);
++              monitor->name = g_strdup (name);
+               monitor->output = output;
+               monitor->add = TRUE;
+               g_ptr_array_add (x11_display->monitors, monitor);
+-- 
+2.43.0
+

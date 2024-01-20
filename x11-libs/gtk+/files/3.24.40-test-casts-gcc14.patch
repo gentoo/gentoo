@@ -1,0 +1,82 @@
+From 76bc2a57136fd6cf0374fa3f86a7ba646b779803 Mon Sep 17 00:00:00 2001
+From: David King <amigadave@amigadave.com>
+Date: Fri, 19 Jan 2024 10:41:33 +0000
+Subject: [PATCH 1/2] tests: Add GdkEvent casts in testinput
+
+---
+ tests/testinput.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/testinput.c b/tests/testinput.c
+index b68552a428..3d4d7f6f87 100644
+--- a/tests/testinput.c
++++ b/tests/testinput.c
+@@ -194,7 +194,7 @@ button_press_event (GtkWidget *widget, GdkEventButton *event)
+ 
+       print_axes (event->device, event->axes);
+       gdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+-      draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device (event)),
++      draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device ((GdkEvent *)event)),
+                   event->x, event->y, pressure);
+ 
+       motion_time = event->time;
+@@ -239,10 +239,10 @@ motion_notify_event (GtkWidget *widget, GdkEventMotion *event)
+ 	      gdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_X, &x);
+ 	      gdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_Y, &y);
+ 	      gdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_PRESSURE, &pressure);
+-	      draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device (event)),
++	      draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device ((GdkEvent *)event)),
+                           x, y, pressure);
+ 
+-	      print_axes (gdk_event_get_source_device (event), events[i]->axes);
++	      print_axes (gdk_event_get_source_device ((GdkEvent *)event), events[i]->axes);
+ 	    }
+ 	  gdk_device_free_history (events, n_events);
+ 	}
+@@ -252,7 +252,7 @@ motion_notify_event (GtkWidget *widget, GdkEventMotion *event)
+ 
+ 	  gdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+ 
+-	  draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device (event)),
++	  draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device ((GdkEvent *)event)),
+                       event->x, event->y, pressure);
+ 	}
+       motion_time = event->time;
+-- 
+2.43.0
+
+
+From 05a12b1c5f8eecc621a7135eb313d6bfe6ccdc3b Mon Sep 17 00:00:00 2001
+From: David King <amigadave@amigadave.com>
+Date: Fri, 19 Jan 2024 11:04:37 +0000
+Subject: [PATCH 2/2] testsuite: Fix casts in reftests
+
+---
+ testsuite/reftests/gtk-reftest.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/testsuite/reftests/gtk-reftest.c b/testsuite/reftests/gtk-reftest.c
+index 1a51a9756b..88d8a849ca 100644
+--- a/testsuite/reftests/gtk-reftest.c
++++ b/testsuite/reftests/gtk-reftest.c
+@@ -381,7 +381,7 @@ enforce_default_settings (void)
+ 
+   klass = g_type_class_ref (G_OBJECT_TYPE (settings));
+ 
+-  pspecs = g_object_class_list_properties (klass, &n_pspecs);
++  pspecs = g_object_class_list_properties (G_OBJECT_CLASS (klass), &n_pspecs);
+   for (i = 0; i < n_pspecs; i++)
+     {
+       GParamSpec *pspec = pspecs[i];
+@@ -394,7 +394,7 @@ enforce_default_settings (void)
+         continue;
+ 
+       value = g_param_spec_get_default_value (pspec);
+-      g_object_set_property (settings, pspec->name, value);
++      g_object_set_property (G_OBJECT (settings), pspec->name, value);
+     }
+ 
+   g_free (pspecs);
+-- 
+2.43.0
+
