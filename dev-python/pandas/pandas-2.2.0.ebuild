@@ -178,19 +178,6 @@ python_test() {
 		tests/series/test_api.py::TestSeriesMisc::test_inspect_getmembers
 	)
 
-	case ${EPYTHON} in
-		python3.12)
-			EPYTEST_DESELECT+=(
-				tests/io/pytables/test_select.py::test_select_dtypes
-				tests/io/pytables/test_select.py::test_frame_select
-				# deprecation warnings
-				tests/io/excel/test_writers.py::TestRoundTrip::test_read_excel_parse_dates
-				# some pytest-xdist problem?
-				tests/base/test_unique.py::test_unique_bad_unicode
-			)
-			;;
-	esac
-
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
