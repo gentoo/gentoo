@@ -185,6 +185,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-0011-systemlib-fix-missing-LICENSE-in-flatbuffers.patch"
 	"${FILESDIR}/${P}-0012-build-use-non-hermetic-python.patch"
 	"${FILESDIR}/${P}-0013-installation-remove-cp_local_config_python.patch"
+	"${FILESDIR}/${P}-0014-Fixing-build-issue-with-Clang-16.patch"
 )
 
 get-cpu-flags() {

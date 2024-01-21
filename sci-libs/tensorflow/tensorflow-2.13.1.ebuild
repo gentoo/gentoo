@@ -191,6 +191,7 @@ PATCHES=(
 	"${FILESDIR}/tensorflow-2.13.0-0010-systemlibs-update-targets-for-absl.patch"
 	"${FILESDIR}/tensorflow-2.13.0-0011-systemlibs-update-targets-for-google_cloud_cpp.patch"
 	"${FILESDIR}/tensorflow-2.13.0-0012-bump-cudnn-frontend-to-v0.9.patch"
+	"${FILESDIR}/tensorflow-2.13.0-0013-Fixing-build-issue-with-Clang-16-and-GCC-13.patch"
 )
 
 get-cpu-flags() {

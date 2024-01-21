@@ -200,6 +200,7 @@ src_prepare() {
 	bazel_setup_bazelrc
 
 	eapply "${WORKDIR}"/patches/*.patch
+	eapply "${FILESDIR}/tensorflow-2.13.0-0013-Fixing-build-issue-with-Clang-16-and-GCC-13.patch"
 
 	# Relax version checks in setup.py
 	sed -i "/^    '/s/==/>=/g" tensorflow/tools/pip_package/setup.py || die
