@@ -25,7 +25,7 @@ REQUIRED_USE="|| ( gui webui )"
 
 RDEPEND="
 	>=dev-libs/openssl-1.1.1:=
-	>=net-libs/libtorrent-rasterbar-1.2.19:=
+	>=net-libs/libtorrent-rasterbar-1.2.18:=
 	>=sys-libs/zlib-1.2.11
 	virtual/libiconv
 	gui? (
