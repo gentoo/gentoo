@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux tools vim-syntax"
+IUSE="selinux vim-syntax"
 
 DEPEND="
 	dev-lang/perl
@@ -31,7 +31,7 @@ RDEPEND="
 	${DEPEND}
 	acct-group/git
 	acct-user/git[gitolite]
-	>=dev-perl/Net-SSH-AuthorizedKeysFile-0.17
+	>=dev-perl/Net-SSH-AuthorizedKeysFile-0.180.0-r3
 	dev-perl/JSON
 	!dev-vcs/gitolite
 	vim-syntax? ( app-vim/gitolite-syntax )
@@ -53,10 +53,13 @@ src_install() {
 	insinto $VENDOR_LIB
 	doins -r src/lib/Gitolite
 
-	dodoc README.markdown CHANGELOG
+	dodoc README.Gentoo README.markdown CHANGELOG
 	# These are meant by upstream as examples, you are strongly recommended to
 	# customize them for your needs.
-	dodoc contrib/utils/ipa_groups.pl contrib/utils/ldap_groups.sh
+	docinto utils
+	dodoc -r contrib/utils/*
+	docinto lib
+	dodoc -r contrib/lib/*
 
 	insopts -m0755
 	insinto $uexec
@@ -74,12 +77,11 @@ src_install() {
 		dosym ../libexec/${PN}/${bin} /usr/bin/${bin}
 	done
 
-	if use tools; then
-		dobin check-g2-compat convert-gitosis-conf
-		dobin contrib/utils/rc-format-v3.4
-	fi
-
-	fperms 0644 ${uexec}/VREF/MERGE-CHECK # It's meant as example only
+	# This is meant as an example only, contains code comment "THIS IS DEMO
+	# CODE"; but upstream has it outside of contrib.
+	docinto VREF
+	dodoc src/VREF/MERGE-CHECK
+	rm -f "${D}"/"${uexec}"/VREF/MERGE-CHECK
 }
 
 pkg_postinst() {
