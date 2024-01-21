@@ -120,6 +120,8 @@ src_compile() {
 
 src_test() {
 	my_src_test() {
+		# cmake does not detect tests by default, if you use enable_testing
+		# in a subdirectory instead of the root CMakeLists.txt
 		cd "${BUILD_DIR}"/test || die
 		edo ctest .
 	}
