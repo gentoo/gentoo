@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Whenever the flag name does not correspond to /proc/cpuinfo flags,
@@ -10,8 +10,18 @@
 aes - Enable support for Intel's AES instruction set (AES-NI)
 avx - Adds support for Advanced Vector Extensions instructions
 avx2 - Adds support for Advanced Vector Extensions 2 instructions
+avx512_4fmaps - Use AVX-512 Fused Multiply-Accumulate Packed Single Precision instruction set
+avx512_4vnniw - Use AVX-512 Vector Neural Network Instructions Word Variable Precision
+avx512_bf16 - Use AVX-512 BFloat16 instruction set
+avx512_bitalg - Use AVX-512 Bit Algorithms instruction set
+avx512_fp16 - Use general-purpose numeric operations for 16-bit half-precision instruction set
+avx512_vbmi2 - Use AVX-512 Vector Bit Manipulation Instructions 2
+avx512_vnni - Use vector neural network instructions for 8- and 16-bit multiply-add operations
+avx512_vp2intersect - Use AVX-512 Intersect instruction set
+avx512_vpopcntdq - Use AVX-512 Vector Population Count Doubleword and Quadword instruction set
 avx512dq - Use AVX-512 double- and quad-word instructions
 avx512f - Adds support for AVX-512 Foundation instructions
+avx512ifma - Use AVX-512 Integer Fused Multiply-Add instruction set
 avx512vl - Use AVX-512 vector-length instructions
 f16c - Adds support for F16C instruction set for converting between half-precision and single-precision floats
 fma3 - Use the Fused Multiply Add 3 instruction set ([fma] in cpuinfo)
@@ -30,4 +40,5 @@ sse4_1 - Enable SSE4.1 instruction support
 sse4_2 - Enable SSE4.2 instruction support
 sse4a - Enable SSE4a instruction support
 ssse3 - Use the SSSE3 instruction set (NOT sse3/pni)
+vpclmulqdq - Use Vector Carry-Less Multiplication of Quadwords instruction set
 xop - Enable the XOP instruction set
