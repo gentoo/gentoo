@@ -294,17 +294,21 @@ pkg_setup() {
 	dotnet-pkg_pkg_setup
 
 	if [[ "${MERGE_TYPE}" != binary ]] ; then
-		local locales="$(locale -a)"
+		if use elibc_glibc ; then
+			local locales="$(locale -a)"
 
-		if has en_US.utf8 ${locales} ; then
-			LC_ALL=en_US.utf8
-		elif has en_US.UTF-8 ${locales} ; then
-			LC_ALL=en_US.UTF-8
+			if has en_US.utf8 ${locales} ; then
+				LC_ALL=en_US.utf8
+			elif has en_US.UTF-8 ${locales} ; then
+				LC_ALL=en_US.UTF-8
+			else
+				eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
+				eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
+
+				die "Could not switch to the en_US.UTF-8 locale."
+			fi
 		else
-			eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
-			eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
-
-			die "Could not switch to the en_US.UTF-8 locale."
+			LC_ALL=en_US.UTF-8
 		fi
 
 		export LC_ALL

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Before packaging we have to run "ResGen" and "GetDependencies".
@@ -332,6 +332,28 @@ DOCS=( CHANGELOG CHANGELOG.md CODE_OF_CONDUCT.md README.md docs )
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
+
+	if [[ "${MERGE_TYPE}" != binary ]] ; then
+		if use elibc_glibc ; then
+			local locales="$(locale -a)"
+
+			if has en_US.utf8 ${locales} ; then
+				LC_ALL=en_US.utf8
+			elif has en_US.UTF-8 ${locales} ; then
+				LC_ALL=en_US.UTF-8
+			else
+				eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
+				eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
+
+				die "Could not switch to the en_US.UTF-8 locale."
+			fi
+		else
+			LC_ALL=en_US.UTF-8
+		fi
+
+		export LC_ALL
+		einfo "Successfully switched to the ${LC_ALL} locale."
+	fi
 }
 
 src_unpack() {
