@@ -21,7 +21,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+dbus +gui qt6 systemd test webui"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="|| ( gui webui )"
+REQUIRED_USE="|| ( gui webui )
+	dbus? ( gui )
+"
 
 RDEPEND="
 	>=dev-libs/openssl-1.1.1:=
