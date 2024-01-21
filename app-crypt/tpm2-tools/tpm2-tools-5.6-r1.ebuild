@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.6-test-eventlog-fix-check-eventlog.sh-if-efivar.h-exis.patch"
 	"${WORKDIR}/${PN}-5.6-tpm2_eventlog-Create-raw-and-pretty-print-format-for.patch"
 	"${FILESDIR}/${PN}-5.6-Makefile-am-Dont-require-pandoc-for-tests.patch"
+	"${FILESDIR}/${PN}-5.6-bashism.patch"
 )
 
 python_check_deps() {
