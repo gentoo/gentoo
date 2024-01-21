@@ -62,7 +62,7 @@ PATCHES=(
 )
 
 FILECAPS=(
-	cap_checkpoint_restore usr/sbin/criu
+	-m 0755 cap_checkpoint_restore usr/sbin/criu
 )
 
 criu_arch() {
