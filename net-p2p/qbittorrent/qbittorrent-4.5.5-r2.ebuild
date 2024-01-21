@@ -30,7 +30,6 @@ RDEPEND="
 	>=net-libs/libtorrent-rasterbar-1.2.18:=
 	>=sys-libs/zlib-1.2.11
 	gui? (
-		dev-libs/geoip
 		!qt6? (
 			dev-qt/qtgui:5
 			dev-qt/qtsvg:5
