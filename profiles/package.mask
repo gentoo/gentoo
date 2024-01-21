@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2024-01-21)
+# Not required anymore since 4.14 is EOL, handled within the kernel
+# nowadays. Removal on 2024-02-20.
+net-wireless/crda
+
 # Mike Pagano <mpagano@gentoo.org> (2024-01-20)
 # Masked for testing. Modifications to USE=savedconfig
 # to only install files from there instead of 
