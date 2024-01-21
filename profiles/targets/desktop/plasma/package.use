@@ -80,3 +80,7 @@ kde-plasma/kwin lock
 
 # plasma profile never enabled pulseaudio. We're skipping to pipewire.
 media-video/pipewire sound-server
+
+# Expected to be available by default in Plasma
+kde-frameworks/purpose kaccounts
+kde-plasma/plasma-desktop kaccounts
