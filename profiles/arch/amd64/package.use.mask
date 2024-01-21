@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
+# net-libs/paho-mqtt-c is only available for amd64 and x86
+app-admin/syslog-ng -mqtt
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
 # Refind is only available on a subset of arches
 sys-kernel/installkernel -refind
