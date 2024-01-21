@@ -13,7 +13,7 @@ DESCRIPTION="Library for providing abstractions to get the developer's purposes 
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64"
-IUSE="bluetooth +kaccounts"
+IUSE="bluetooth kaccounts"
 
 # requires running environment
 RESTRICT="test"
