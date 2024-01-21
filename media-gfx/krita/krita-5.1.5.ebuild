@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,7 +70,7 @@ RDEPEND="${PYTHON_DEPS}
 	fftw? ( sci-libs/fftw:3.0= )
 	gif? ( media-libs/giflib )
 	gsl? ( sci-libs/gsl:= )
-	jpegxl? ( >=media-libs/libjxl-0.7.0_pre20220825 )
+	jpegxl? ( >=media-libs/libjxl-0.7.0_pre20220825:= )
 	heif? ( >=media-libs/libheif-1.11:=[x265] )
 	mypaint-brush-engine? ( media-libs/libmypaint:= )
 	openexr? ( media-libs/openexr:= )
@@ -91,6 +91,7 @@ PATCHES=(
 	"${WORKDIR}/${P}-exiv2-0.28.patch" # bug 906472
 	"${FILESDIR}/${P}-ocio-2.3.0.patch" # bug 915107
 	"${FILESDIR}/${P}-sip-6.8.patch" # bug 919139
+	"${FILESDIR}/${P}-libjxl-0.9.patch" # bug 922524
 )
 
 pkg_setup() {
