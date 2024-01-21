@@ -229,6 +229,10 @@ src_prepare() {
 		"release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg" || die
 	mv release/freedesktop/blender.desktop "release/freedesktop/blender-${BV}.desktop" || die
 
+	# Part of bug #918402, https://projects.blender.org/blender/blender/pulls/115127
+	# Not needed after 4.0.1
+	sed -e "s|blender_build_date_text,|blender_build_date_text.decode(),|" -i doc/manpage/blender.1.py || die
+
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
 		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i tests/CMakeLists.txt || die
@@ -267,7 +271,7 @@ src_configure() {
 		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
 		-DWITH_CYCLES_STANDALONE=no
 		-DWITH_CYCLES_STANDALONE_GUI=no
-		-DWITH_DOC_MANPAGE=$(usex man)
+		-DWITH_DOC_MANPAGE=no
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
@@ -398,12 +402,7 @@ src_install() {
 
 	cmake_src_install
 
-	if use man; then
-		# Slot the man page
-		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
-	fi
-
-	if use doc; then
+	if use doc || use man; then
 		# Define custom blender data/script file paths. Otherwise Blender will not be able to find them during doc building.
 		# (Because the data is in the image directory and it will default to look in /usr/share)
 		export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
@@ -413,7 +412,20 @@ src_install() {
 		addpredict /dev/ati
 		addpredict /dev/dri
 		addpredict /dev/nvidiactl
+	fi
 
+	if use man; then
+		# bug #918402: CMake-based generator can't work in sandbox; call fixed command manually
+		cd "${CMAKE_USE_DIR}" || die
+		einfo "Generating Blender man page ..."
+		mkdir -p "${ED}/usr/share/man/man1/" || die
+		MANPAGE_OUT="${ED}/usr/share/man/man1/blender-${BV}.1"
+		"${BUILD_DIR}"/bin/blender --background --factory-startup \
+			--python doc/manpage/blender.1.py -noaudio -- --output ${MANPAGE_OUT} \
+			|| die "manpage generator failed."
+	fi
+
+	if use doc; then
 		einfo "Generating Blender C/C++ API docs ..."
 		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
 		doxygen -u Doxyfile || die
@@ -421,7 +433,9 @@ src_install() {
 
 		cd "${CMAKE_USE_DIR}" || die
 		einfo "Generating (BPY) Blender Python API docs ..."
-		"${BUILD_DIR}"/bin/blender --background --python doc/python_api/sphinx_doc_gen.py -noaudio || die "sphinx failed."
+		"${BUILD_DIR}"/bin/blender --background --factory-startup \
+			--python doc/python_api/sphinx_doc_gen.py -noaudio \
+			|| die "sphinx failed."
 
 		cd "${CMAKE_USE_DIR}"/doc/python_api || die
 		sphinx-build sphinx-in BPY_API || die "sphinx failed."
