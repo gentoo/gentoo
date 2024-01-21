@@ -1,0 +1,10 @@
+Bug: https://bugs.gentoo.org/895052
+--- a/cmake/CompileOptions.cmake
++++ b/cmake/CompileOptions.cmake
+@@ -1,5 +1,5 @@
+ # Set compiler flags
+-set(CMAKE_C_STANDARD 99)
++set(CMAKE_C_STANDARD 11)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ 
+ # analogous to AC_USE_SYSTEM_EXTENSIONS in configure.ac
