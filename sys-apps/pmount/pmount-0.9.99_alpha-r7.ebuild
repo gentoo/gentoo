@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,7 +56,7 @@ src_test() {
 
 	ln -s a "${testdir}/b" &&
 		ln -s d "${testdir}/c" &&
-		ln -s c "${testdir}/e" ||
+		ln -s d "${testdir}/e" ||
 		die "Unable to create fake symlinks required for testsuite"
 
 	emake check
