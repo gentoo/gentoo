@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Alfred Wingate <parona@protonmail.com> (2023-12-25)
@@ -72,6 +72,7 @@ sys-libs/zlib minizip
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
+kde-apps/kio-extras-kf5 phonon
 kde-apps/marble phonon
 
 # Required by kde-plasma/plasma-meta
