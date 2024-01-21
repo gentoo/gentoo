@@ -31,5 +31,5 @@ pkg_setup() {
 }
 
 src_install() {
-	dobin $(usex arm64 'arm/linuxarm_x64/cmdline/' '')arcconf
+	dobin $(usex arm64 'linuxarm_x64/cmdline/' '')arcconf
 }
