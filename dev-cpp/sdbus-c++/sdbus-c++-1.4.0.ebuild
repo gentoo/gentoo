@@ -12,12 +12,13 @@ LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1" # Nothing to do with Qt but exce
 SLOT="0/1"
 KEYWORDS="~amd64"
 IUSE="doc +elogind systemd test tools"
-REQUIRED_USE="^^ ( elogind systemd )"
+REQUIRED_USE="?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	elogind? ( >=sys-auth/elogind-236 )
 	systemd? ( >=sys-apps/systemd-236:= )
+	!elogind? ( !systemd? ( >=sys-libs/basu-0.2.1 ) )
 	tools? ( dev-libs/expat )
 "
 
