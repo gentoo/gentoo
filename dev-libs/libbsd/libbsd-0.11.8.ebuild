@@ -24,6 +24,9 @@ DEPEND="
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
 
 multilib_src_configure() {
+	# Broken (still) with lld-17 (bug #922342, bug #915068)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# bug #911726
 	filter-flags -fno-semantic-interposition
 
