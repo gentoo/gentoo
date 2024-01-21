@@ -5,3 +5,4 @@
 # Fails to compile:
 # https://github.com/c-ares/c-ares/issues/682
 =net-dns/c-ares-1.25.0
+=net-dns/c-ares-1.25.0-r1
