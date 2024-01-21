@@ -12,7 +12,7 @@ DESCRIPTION="A friendly onboarding wizard for Plasma"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="discover +kaccounts telemetry"
+IUSE="discover kaccounts telemetry"
 
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
