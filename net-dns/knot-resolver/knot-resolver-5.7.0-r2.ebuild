@@ -54,7 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
 
 	# Bug #921567
-	"${FILESDIR}"/${PN}-5.7.0-tmpfiles.patch
+	"${FILESDIR}"/${PN}-5.7.0-r2-tmpfiles.patch
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.gpg

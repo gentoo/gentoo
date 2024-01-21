@@ -2,6 +2,19 @@ Always install tmpfiles config.
 
 Bug: https://bugs.gentoo.org/921567
 Bug: https://gitlab.nic.cz/knot/knot-resolver/-/issues/886
+--- a/meson.build
++++ b/meson.build
+@@ -237,9 +237,7 @@ subdir('etc')
+ 
+ 
+ # Systemd unit files
+-if systemd_files != 'disabled'
+-  subdir('systemd')
+-endif
++subdir('systemd')
+ 
+ 
+ # Additional files
 --- a/systemd/meson.build
 +++ b/systemd/meson.build
 @@ -12,6 +12,18 @@ systemd_config.set('etc_dir', etc_dir)
