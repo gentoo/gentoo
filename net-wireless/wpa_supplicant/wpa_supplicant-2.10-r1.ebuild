@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap +crda broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
+IUSE="ap broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls tkip uncommon-eap-types wep wimax wps"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -52,7 +52,6 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-networkmanager )
 	kernel_linux? (
 		net-wireless/wireless-regdb
-		crda? ( net-wireless/crda )
 	)
 "
 BDEPEND="virtual/pkgconfig"
@@ -90,22 +89,15 @@ Kconfig_style_config() {
 pkg_pretend() {
 	CONFIG_CHECK=""
 
-	if use crda ; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~CFG80211_CRDA_SUPPORT"
-		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: please enable CFG80211_CRDA_SUPPORT for proper regulatory domain support"
-	fi
-
 	check_extra_config
 
-	if ! use crda ; then
-		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
-			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
-		then
-			ewarn "REGULATORY DOMAIN PROBLEM:"
-			ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
-			ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
-			ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
-		fi
+	if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
+		[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
+	then
+		ewarn "REGULATORY DOMAIN PROBLEM:"
+		ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
+		ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
+		ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
 	fi
 }
 
