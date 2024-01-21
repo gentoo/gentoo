@@ -17,7 +17,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="ibus +kaccounts scim screencast sdl +semantic-desktop X"
+IUSE="ibus kaccounts scim screencast sdl +semantic-desktop X"
 
 RESTRICT="test" # missing selenium-webdriver-at-spi
 
