@@ -24,8 +24,6 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gui webui )"
 
 RDEPEND="
-	acct-group/qbittorrent
-	acct-user/qbittorrent
 	>=dev-libs/openssl-1.1.1:=
 	>=net-libs/libtorrent-rasterbar-1.2.19:=
 	>=sys-libs/zlib-1.2.11
@@ -47,7 +45,12 @@ RDEPEND="
 			>=dev-qt/qtbase-6.2:6[dbus?,gui,widgets]
 			>=dev-qt/qtsvg-6.2:6
 		)
-	)"
+	)
+	webui? (
+		acct-group/qbittorrent
+		acct-user/qbittorrent
+	)
+"
 DEPEND="
 	${RDEPEND}
 	>=dev-libs/boost-1.71
@@ -126,6 +129,8 @@ src_install() {
 	multibuild_foreach_variant cmake_src_install
 	einstalldocs
 
-	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	if use webui; then
+		newconfd "${FILESDIR}/${PN}.confd" "${PN}"
+		newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	fi
 }
