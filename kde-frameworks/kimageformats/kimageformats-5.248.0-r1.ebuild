@@ -20,7 +20,7 @@ RDEPEND="
 	avif? ( >=media-libs/libavif-0.8.2:= )
 	eps? ( >=dev-qt/qtbase-${QTMIN}:6[widgets] )
 	heif? ( >=media-libs/libheif-1.10.0:= )
-	jpegxl? ( >=media-libs/libjxl-0.7.0 )
+	jpegxl? ( >=media-libs/libjxl-0.7.0:= )
 	openexr? ( >=media-libs/openexr-3:= )
 	raw? ( media-libs/libraw:= )
 "
