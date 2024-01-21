@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 crda +monitor ofono selinux standalone systemd wired"
+IUSE="+client cpu_flags_x86_aes cpu_flags_x86_ssse3 +monitor ofono selinux standalone systemd wired"
 
 DEPEND="
 	sys-apps/dbus
@@ -35,7 +35,6 @@ RDEPEND="
 	${DEPEND}
 	acct-group/netdev
 	net-wireless/wireless-regdb
-	crda? ( net-wireless/crda )
 	selinux? ( sec-policy/selinux-networkmanager )
 	standalone? (
 		systemd? ( sys-apps/systemd )
@@ -73,11 +72,6 @@ pkg_setup() {
 		~RFKILL
 		~X509_CERTIFICATE_PARSER
 	"
-	if use crda;then
-		CONFIG_CHECK="${CONFIG_CHECK} ~CFG80211_CRDA_SUPPORT"
-		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: please enable CFG80211_CRDA_SUPPORT for proper
-	regulatory domain support"
-	fi
 
 	if use amd64;then
 		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_DES3_EDE_X86_64"
@@ -102,21 +96,20 @@ pkg_setup() {
 
 	check_extra_config
 
-	if ! use crda; then
-		if use kernel_linux && kernel_is -lt 4 15; then
-			ewarn "POSSIBLE REGULATORY DOMAIN PROBLEM:"
-			ewarn "Regulatory domain support for kernels older than 4.15 requires crda."
-		fi
-		if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
-			[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
-		then
-			ewarn ""
-			ewarn "REGULATORY DOMAIN PROBLEM:"
-			ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
-			ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
-			ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
-			ewarn ""
-		fi
+	if use kernel_linux && kernel_is -lt 4 15; then
+		ewarn "POSSIBLE REGULATORY DOMAIN PROBLEM:"
+		ewarn "Regulatory domain support for kernels older than 4.15 requires crda, which has been removed."
+		ewarn "Please update to a more recent kernel."
+	fi
+	if linux_config_exists && linux_chkconfig_builtin CFG80211 &&
+		[[ $(linux_chkconfig_string EXTRA_FIRMWARE) != *regulatory.db* ]]
+	then
+		ewarn ""
+		ewarn "REGULATORY DOMAIN PROBLEM:"
+		ewarn "With CONFIG_CFG80211=y (built-in), the driver won't be able to load regulatory.db from"
+		ewarn " /lib/firmware, resulting in broken regulatory domain support.  Please set CONFIG_CFG80211=m"
+		ewarn " or add regulatory.db and regulatory.db.p7s to CONFIG_EXTRA_FIRMWARE."
+		ewarn ""
 	fi
 }
 
