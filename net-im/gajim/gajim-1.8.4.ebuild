@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,9 +16,6 @@ SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-# KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
-# Gajim depends now on omemo-dr. Add KEYWORDS again,
-# when https://bugs.gentoo.org/912285 is fixed.
 
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="+crypt geolocation jingle remote rst +spell upnp +webp"
@@ -34,30 +31,23 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.17-r1"
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/idna[${PYTHON_USEDEP}]
 		>=dev-python/nbxmpp-4.2.2[${PYTHON_USEDEP}]
 		<dev-python/nbxmpp-5.0.0[${PYTHON_USEDEP}]
-		dev-python/precis-i18n[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		x11-libs/libXScrnSaver
 		app-crypt/libsecret[crypt,introspection]
 		dev-python/keyring[${PYTHON_USEDEP}]
-		>=dev-python/secretstorage-3.1.1[${PYTHON_USEDEP}]
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		net-libs/libsoup:3.0[introspection]
 		media-libs/gsound[introspection]
 		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/jaraco-classes[${PYTHON_USEDEP}]
-		dev-python/python-axolotl[${PYTHON_USEDEP}]
 		dev-python/qrcode[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/omemo-dr[${PYTHON_USEDEP}]
 		crypt? (
-			dev-python/pycryptodome[${PYTHON_USEDEP}]
 			>=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )
 		geolocation? ( app-misc/geoclue[introspection] )
 		jingle? (
@@ -68,7 +58,6 @@ RDEPEND="${COMMON_DEPEND}
 			media-plugins/gst-plugins-gtk
 		)
 		remote? (
-			>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
 			sys-apps/dbus[X]
 		)
 		rst? ( dev-python/docutils[${PYTHON_USEDEP}] )
