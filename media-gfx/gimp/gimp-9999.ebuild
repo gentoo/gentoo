@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,6 @@ inherit git-r3 lua-single meson python-single-r1 vala xdg
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-SRC_URI=""
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
@@ -109,7 +108,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( "AUTHORS" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
+DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
