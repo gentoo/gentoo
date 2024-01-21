@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,9 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-docdir.patch
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
+
+	# Bug #921567
+	"${FILESDIR}"/${PN}-5.7.0-tmpfiles.patch
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.gpg
@@ -92,5 +95,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	use systemd && tmpfiles_process knot-resolver.conf
+	tmpfiles_process knot-resolver.conf
 }

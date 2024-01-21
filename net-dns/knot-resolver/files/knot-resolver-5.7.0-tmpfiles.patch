@@ -1,0 +1,47 @@
+Always install tmpfiles config.
+
+Bug: https://bugs.gentoo.org/921567
+Bug: https://gitlab.nic.cz/knot/knot-resolver/-/issues/886
+--- a/systemd/meson.build
++++ b/systemd/meson.build
+@@ -12,6 +12,18 @@ systemd_config.set('etc_dir', etc_dir)
+ systemd_config.set('run_dir', run_dir)
+ systemd_config.set('lib_dir', lib_dir)
+ 
++## tmpfiles
++tmpfiles = configure_file(
++  input: 'tmpfiles.d/knot-resolver.conf.in',
++  output: 'knot-resolver.tmpfiles',
++  configuration: systemd_config,
++)
++install_data(
++  tmpfiles,
++  rename: ['knot-resolver.conf'],
++  install_dir: systemd_tmpfiles_dir,
++)
++
+ if systemd_files == 'enabled'
+   ## unit files
+   kresd_service = configure_file(
+@@ -39,18 +51,6 @@ if systemd_files == 'enabled'
+   )
+   install_man(kresd_systemd_man)
+ 
+-  ## tmpfiles
+-  tmpfiles = configure_file(
+-    input: 'tmpfiles.d/knot-resolver.conf.in',
+-    output: 'knot-resolver.tmpfiles',
+-    configuration: systemd_config,
+-  )
+-  install_data(
+-    tmpfiles,
+-    rename: ['knot-resolver.conf'],
+-    install_dir: systemd_tmpfiles_dir,
+-  )
+-
+   ## sysusers
+   sysusers = configure_file(
+     input: 'sysusers.d/knot-resolver.conf.in',
+-- 
+2.43.0
+
