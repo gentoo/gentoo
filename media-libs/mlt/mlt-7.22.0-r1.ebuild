@@ -56,7 +56,7 @@ DEPEND="
 	)
 	qt6? (
 		dev-qt/qt5compat:6
-		dev-qt/qtbase:6[gui,network,widgets,xml]
+		dev-qt/qtbase:6[gui,network,opengl,widgets,xml]
 		dev-qt/qtsvg:6
 		media-libs/libexif
 		x11-libs/libX11
