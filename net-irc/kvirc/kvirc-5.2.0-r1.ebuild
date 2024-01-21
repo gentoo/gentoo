@@ -66,6 +66,10 @@ RDEPEND="${DEPEND}
 
 DOCS=()
 
+PATCHES=(
+	"${FILESDIR}/kvirc-5.2.0-qtver.patch"
+)
+
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
