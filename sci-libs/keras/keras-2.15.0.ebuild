@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..111} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit bazel distutils-r1
 
 DESCRIPTION="Deep Learning for humans"
