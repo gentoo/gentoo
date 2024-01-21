@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
-DESCRIPTION="quick and easy command line automation tool built on top of expect"
-HOMEPAGE="http://expect-lite.sourceforge.net/"
+DESCRIPTION="Quick and easy command line automation tool built on top of expect"
+HOMEPAGE="https://expect-lite.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
