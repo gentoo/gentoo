@@ -215,6 +215,8 @@ src_install() {
 	#endif
 	EOF
 
+	# TODO: Maybe -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST for
+	# non-hardened?
 	if use hardened ; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
@@ -223,7 +225,7 @@ src_install() {
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
-			-D_LIBCPP_ENABLE_HARDENED_MODE=1
+			-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
