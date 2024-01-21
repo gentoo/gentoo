@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..12} )
 inherit python-any-r1 cmake prefix
 
-CommitId=a30ca3f9509c2cfd28561abbca51328f0bdf9014
+CommitId=c7aeac02222978e7673ee5381bfcaa6b60d5d69c
 
 DESCRIPTION="part of the PyTorch Profiler"
 HOMEPAGE="https://github.com/pytorch/kineto"
@@ -45,7 +45,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIBKINETO_THIRDPARTY_DIR="${EPREFIX}"/usr/include/
 	)
-	eapply $(prefixify_ro "${FILESDIR}"/${P}-gentoo.patch)
+	eapply $(prefixify_ro "${FILESDIR}"/${PN}-0.4.0_p20231031-gentoo.patch)
 
 	cmake_src_configure
 }
