@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	SLOT="0/9999"
 else
 	SRC_URI="https://github.com/WayfireWM/wf-config/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 	SLOT="0/$(ver_cut 1-2)"
 fi
 
