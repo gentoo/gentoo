@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake edo multibuild systemd xdg
+inherit cmake edo multibuild systemd verify-sig xdg
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org"
@@ -12,9 +12,14 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/qbittorrent/qBittorrent.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		mirror://sourceforge/qbittorrent/${P}.tar.xz
+		verify-sig? ( mirror://sourceforge/qbittorrent/${P}.tar.xz.asc )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-	S="${WORKDIR}"/qBittorrent-release-${PV}
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-qbittorrent )"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qBittorrent.asc
 fi
 
 LICENSE="GPL-2"
@@ -59,7 +64,7 @@ DEPEND="
 	test? (
 		!qt6? ( dev-qt/qttest:5 )
 	)"
-BDEPEND="
+BDEPEND+="
 	!qt6? ( dev-qt/linguist-tools:5 )
 	qt6? ( >=dev-qt/qttools-6.2:6[linguist] )
 	virtual/pkgconfig"
