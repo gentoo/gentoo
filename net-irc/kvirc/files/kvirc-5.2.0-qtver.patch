@@ -1,0 +1,25 @@
+From a301aa4998c4f0040d093cd2950b7b2f4ec4dcdc Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <sokolov@google.com>
+Date: Sun, 21 Jan 2024 21:07:37 +0000
+Subject: [PATCH] Fix ability to select Qt5 vs Qt6
+
+https://bugs.gentoo.org/922636
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aabc0988b..9368e81c9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -389,7 +389,9 @@ endif()
+ ############################################################################
+ 
+ # first check if Qt6 or Qt5 has to be used
+-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
++if(NOT DEFINED QT_VERSION_MAJOR)
++	find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
++endif()
+ # second, detect available modules for the specific Qt version
+ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+ if(Qt${QT_VERSION_MAJOR}Widgets_FOUND)
