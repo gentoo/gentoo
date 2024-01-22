@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -54,3 +54,10 @@ LDFLAGS="-Wl,-O1 -Wl,--as-needed"
 # Prevent automagic use of 64-bit time_t.
 # https://bugs.gentoo.org/828001
 enable_year2038="no"
+
+# Sam James <sam@gentoo.org> (2024-01-22)
+# Workaround for sandbox bug which causes this gnulib configure test to take
+# many real hours on slower machines, and certainly a huge amount of CPU hours
+# on others. Spoof the same result as configure gets on a modern glibc system
+# for now. See bug #447970 and bug #922652.
+gl_cv_func_getcwd_path_max="yes"
