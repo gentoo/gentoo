@@ -16,11 +16,9 @@ REQUIRED_USE="?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	|| (
-		elogind? ( >=sys-auth/elogind-236 )
-		systemd? ( >=sys-apps/systemd-236:= )
-		>=sys-libs/basu-0.2.1
-	)
+	elogind? ( >=sys-auth/elogind-236 )
+	systemd? ( >=sys-apps/systemd-236:= )
+	!elogind? ( !systemd? ( >=sys-libs/basu-0.2.1 ) )
 	tools? ( dev-libs/expat )
 "
 
