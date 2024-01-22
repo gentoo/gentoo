@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,12 +15,14 @@ SRC_URI="https://github.com/greenbone/python-gvm/archive/v${PV}.tar.gz -> ${P}.t
 SLOT="0"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-2.7.1[${PYTHON_USEDEP}]
+	test? (
+		>=net-analyzer/pontos-22.7.2[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}"
 
