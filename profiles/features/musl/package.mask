@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Giuseppe Foti  <foti.giuseppe@gmail.com> (2024-01-22)
+# Binary package, which is compiled against glibc
+app-office/drawio-desktop-bin
+
 # Maciej Barć <xgqt@gentoo.org> (2024-01-06)
 # Binary package, which is compiled against glibc
 app-office/joplin-desktop
