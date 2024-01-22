@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse4_2"
 
 DEPEND="
