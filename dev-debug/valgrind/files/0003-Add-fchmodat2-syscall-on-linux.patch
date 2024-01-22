@@ -1,7 +1,7 @@
 From a43e62dddcf51ec6578a90c5988a41e856b44b05 Mon Sep 17 00:00:00 2001
 From: Mark Wielaard <mark@klomp.org>
 Date: Sat, 18 Nov 2023 21:17:02 +0100
-Subject: [PATCH 3/3] Add fchmodat2 syscall on linux
+Subject: [PATCH 3/4] Add fchmodat2 syscall on linux
 
 fchmodat2 is a new syscall on linux 6.6. It is a variant of fchmodat
 that takes an extra flags argument.
