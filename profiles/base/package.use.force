@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-11-22)
@@ -210,11 +210,6 @@ net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
-
-# David Seifert <soap@gentoo.org> (2017-03-07)
-# Only ever use system ffmpeg, allow kodi bundled ffmpeg
-# only for debug pruposes.
-media-tv/kodi system-ffmpeg
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
