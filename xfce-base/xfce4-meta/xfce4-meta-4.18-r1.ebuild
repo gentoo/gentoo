@@ -8,7 +8,7 @@ HOMEPAGE="https://www.xfce.org/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 IUSE="
 	archive calendar cdr editor image media minimal mpd pulseaudio
 	remote-fs search +svg upower
