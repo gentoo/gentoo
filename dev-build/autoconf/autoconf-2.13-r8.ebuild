@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-perl-5.26.patch
 	"${FILESDIR}"/${P}-K-R-decls-clang.patch
 	"${FILESDIR}"/${P}-Clang-16-fixes-for-various-tests.patch
+	"${FILESDIR}"/${P}-skip-AC_FUNC_GETLOADAVG-test.patch
 )
 
 src_configure() {
