@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://common-lisp.net/project/ecl/static/files/release/${P}.tgz"
 
 LICENSE="BSD-2 LGPL-2.1+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~ppc ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode X"
 # test phase only works if ecl already installed #516876
 RESTRICT="test"
