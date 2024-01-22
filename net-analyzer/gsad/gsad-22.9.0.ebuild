@@ -12,7 +12,7 @@ SRC_URI="https://github.com/greenbone/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 SLOT="0"
 LICENSE="AGPL-3+"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE="brotli doc"
 
 DEPEND="
 	acct-user/gvm
@@ -23,6 +23,9 @@ DEPEND="
 	>=net-libs/gnutls-3.2.15:=
 	>=sys-libs/zlib-1.2
 	dev-libs/libgcrypt:0=
+	brotli? (
+		app-arch/brotli
+	)
 "
 
 RDEPEND="
