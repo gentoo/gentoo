@@ -15,7 +15,7 @@ SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0/7"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+af-packet af-xdp bpf control-socket cuda debug +detection geoip hardened hyperscan lua lz4 nflog +nfqueue redis systemd test"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/openinfosecfoundation.org.asc"
 
