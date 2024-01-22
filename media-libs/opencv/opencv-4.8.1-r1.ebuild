@@ -242,10 +242,6 @@ pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
 }
 
-src_unpack() {
-	unpack $(echo "${A}" | tr ' ' '\n' | grep -vP "(ade-0.1.2|NVIDIAOpticalFlowSDK)")
-}
-
 src_prepare() {
 	if use cuda; then
 		export CUDA_VERBOSE="$(usex debug "true" "false")"
