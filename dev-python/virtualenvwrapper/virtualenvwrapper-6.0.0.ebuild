@@ -34,6 +34,9 @@ BDEPEND="
 	')
 	test? (
 		${RDEPEND}
+		$(python_gen_cond_dep '
+			dev-python/pip[${PYTHON_USEDEP}]
+		')
 	)
 "
 
