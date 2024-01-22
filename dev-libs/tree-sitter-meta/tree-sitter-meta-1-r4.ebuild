@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-libs/tree-sitter
