@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info systemd tmpfiles toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Free client for Cisco VPN routing software"
 HOMEPAGE="https://www.unix-ag.uni-kl.de/~massar/vpnc/"
@@ -71,8 +71,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process vpnc-tmpfiles.conf
-
 	elog "You can generate a configuration file from the original Cisco profiles of your"
 	elog "connection by using /usr/bin/pcf2vpnc to convert the .pcf file"
 	elog "A guide is available at https://wiki.gentoo.org/wiki/Vpnc"
