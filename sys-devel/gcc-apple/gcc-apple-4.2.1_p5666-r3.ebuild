@@ -32,7 +32,7 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	)"
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r4
-	>=app-alternatives/yacc-1.875
+	app-alternatives/yacc
 	${CATEGORY}/binutils-apple
 	>=dev-libs/mpfr-2.2.0_p10"
 PDEPEND="sys-libs/csu"
