@@ -24,7 +24,6 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? ( dev-libs/wayland )
 "
-RDEPEND=""
 BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
