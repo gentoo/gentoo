@@ -147,6 +147,7 @@ app-backup/tsm
 app-benchmarks/geekbench
 app-benchmarks/geekbench-ml
 app-crypt/rainbowcrack
+app-crypt/yubioath-flutter-bin
 app-editors/sublime-text
 app-editors/vscode
 app-editors/vscodium
