@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PLOCALES="ca es fr"
 
-inherit desktop flag-o-matic plocale toolchain-funcs xdg
+inherit desktop flag-o-matic plocale toolchain-funcs xdg-utils
 
 MY_COMMIT=42fef565731411a784101de614a54bff79d1858e
 MY_PV=$(ver_cut 3 PV/b/B).$(ver_cut 1-3)_$(ver_cut 5-6)
@@ -79,5 +79,19 @@ src_install() {
 		make_desktop_entry \
 			"${EPREFIX}"/usr/sbin/gtk-lshw \
 			"${DESCRIPTION}"
+	fi
+}
+
+pkg_postinst() {
+	if use gtk ; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
+}
+
+pkg_postrm() {
+	if use gtk ; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
 }
