@@ -5,7 +5,7 @@
  
  moonbridge: moonbridge.c moonbridge_io.h moonbridge_io.o
 -	cc -Wall -Wno-unused-result -O2 -Wl,-E -I $(LUA_INCLUDE) -L $(LUA_LIBDIR) -o moonbridge $(MOONBR_LUA_PATH_DEFINE) $(MOONBR_LUA_CPATH_DEFINE) moonbridge.c -lm -l$(LUA_LIBRARY) $(UTIL_FLAGS) moonbridge_io.o
-+	$(CC) -Wall -Wno-unused-result $(CFLAGS) -Wl,-E -I $(LUA_INCLUDE) -L $(LUA_LIBDIR) -o moonbridge $(MOONBR_LUA_PATH_DEFINE) $(MOONBR_LUA_CPATH_DEFINE) moonbridge.c $(LUA_LIBRARY) $(UTIL_FLAGS) moonbridge_io.o
++	$(CC) -Wall -Wno-unused-result $(CFLAGS) -Wl,-E -I $(LUA_INCLUDE) -L $(LUA_LIBDIR) -o moonbridge $(MOONBR_LUA_PATH_DEFINE) $(MOONBR_LUA_CPATH_DEFINE) moonbridge.c $(LUA_LIBRARY) $(UTIL_FLAGS) moonbridge_io.o $(LDFLAGS)
  
  moonbridge_io.o: moonbridge_io.c moonbridge_io.h
 -	cc -c -Wall -O2 -fPIC -I $(LUA_INCLUDE) -o moonbridge_io.o moonbridge_io.c
