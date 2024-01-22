@@ -168,6 +168,7 @@ media-plugins/grilo-plugins chromaprint
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps

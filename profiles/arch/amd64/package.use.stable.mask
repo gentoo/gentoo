@@ -105,6 +105,7 @@ media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glo
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
+sys-auth/pambase -sssd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc

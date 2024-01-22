@@ -52,6 +52,7 @@ dev-scheme/scm readline
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-auth/sssd is masked on musl
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-libs/libsmbios is masked on musl

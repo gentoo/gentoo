@@ -67,6 +67,10 @@
 			will not be compatible with systems using an earlier glibc
 			version.
 		</flag>
+		<flag name="sssd">
+			Add System Security Services Daemon (<pkg>sys-auth/sssd</pkg>) support
+			via pam_sss.
+		</flag>
 		<flag name="yescrypt">
 			Switch Linux-PAM's pam_unix module to use yescrypt for passwords hashes rather than MD5
 		</flag>

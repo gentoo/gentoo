@@ -123,6 +123,7 @@ app-crypt/pinentry efl
 # Sam James <sam@gentoo.org> (2022-04-24)
 # sssd not keyworded here
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # app-crypt/dieharder and dev-libs/softhsm:2 unkeyworded here

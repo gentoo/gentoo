@@ -16,6 +16,7 @@ dev-lang/php capstone
 # David Seifert <soap@gentoo.org> (2023-12-30)
 # sys-auth/sssd not keyworded here anymore
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Mart Raudsepp <leio@gentoo.org> (2023-12-25)
 # sys-apps/xdg-desktop-portal not keyworded here yet
