@@ -19,7 +19,7 @@ SRC_URI="
 		-> ${PN}-amd64-${PV}.deb )
 	arm64? ( https://github.com/jgraph/drawio-desktop/releases/download/v${PV}/drawio-arm64-${PV}.deb
 		-> ${PN}-arm64-${PV}.deb )
-	https://raw.githubusercontent.com/jgraph/drawio-desktop/626bbfa94ad4e1e9806ef076b5cd5d426bcf4976/build/icon.svg
+	https://raw.githubusercontent.com/jgraph/drawio-desktop/bdf5a4de3331e8dabab2be4c8f7b1a5427118f3f/build/icon.svg
 		-> drawio-${PV}-icon-r1.svg
 "
 S="${WORKDIR}"
@@ -43,6 +43,7 @@ RDEPEND="
 	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/libdrm
