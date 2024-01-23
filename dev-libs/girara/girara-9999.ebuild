@@ -37,15 +37,15 @@ RDEPEND="
 # Tests are run under virtx
 DEPEND="
 	${RDEPEND}
-	test? ( x11-base/xorg-proto )
+	test? (
+		dev-libs/check
+		x11-base/xorg-proto
+		x11-libs/gtk+:3[X]
+	)
 "
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
-	test? (
-		dev-libs/check
-		x11-libs/gtk+:3[X]
-	)
 "
 
 src_configure() {
