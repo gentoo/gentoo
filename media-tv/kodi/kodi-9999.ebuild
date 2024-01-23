@@ -283,6 +283,10 @@ src_unpack() {
 	else
 		unpack ${MY_P}.tar.gz
 	fi
+
+	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
+	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
+	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
 }
 
 src_prepare() {
@@ -399,6 +403,9 @@ src_configure() {
 		-DTARBALL_DIR="${DISTDIR}"
 		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.gz"
 		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.gz"
+		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
+		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
+		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
