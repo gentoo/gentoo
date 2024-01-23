@@ -74,7 +74,7 @@ RDEPEND="
 
 	dev-libs/hyphen
 	jpeg2k? ( >=media-libs/openjpeg-2.2.0:2= )
-	jpegxl? ( >=media-libs/libjxl-0.7.0 )
+	jpegxl? ( >=media-libs/libjxl-0.7.0:= )
 	avif? ( >=media-libs/libavif-0.9.0:= )
 	lcms? ( media-libs/lcms:2 )
 
