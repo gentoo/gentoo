@@ -40,6 +40,7 @@ PATCHES=(
 	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5e-fprintf_format_warnings.patch"
 	"${FILESDIR}/${PN}-3.2.5e-gcc10-fno-common.patch"
 	"${FILESDIR}/${PN}-3.2.5e-clang.patch"
+	"${FILESDIR}/${PN}-3.2.5e-clang-17.patch"
 )
 
 DOCS=( README CHANGES LATEX.AND.XFIG NOTES )
