@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${P
 S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64"
 SLOT="4.30"
 
 BDEPEND="
@@ -29,7 +29,7 @@ COMMON_DEP="app-eselect/eselect-java"
 # ElementsImpl9.java:206: error:
 # method does not override or implement a method from a supertype
 DEPEND="${COMMON_DEP}
-	dev-java/ant-core:0
+	>=dev-java/ant-1.10.14:0
 	>=virtual/jdk-21:*"
 # Parser.java:1095: error:
 # pattern matching in instanceof is not supported in -source 11
@@ -39,7 +39,7 @@ RDEPEND="${COMMON_DEP}
 DOCS=( org/eclipse/jdt/core/README.md )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.eclipse.jdt.core.compiler.batch"
-JAVA_CLASSPATH_EXTRA="ant-core"
+JAVA_CLASSPATH_EXTRA="ant"
 JAVA_JAR_FILENAME="ecj.jar"
 JAVA_LAUNCHER_FILENAME="ecj-${SLOT}"
 JAVA_MAIN_CLASS="org.eclipse.jdt.internal.compiler.batch.Main"
