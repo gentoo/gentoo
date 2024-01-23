@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
+# Uses glibc function getsourcefilter(),
+# which are not available on musl.
+net-misc/mcproxy
+
 # Giuseppe Foti  <foti.giuseppe@gmail.com> (2024-01-22)
 # Binary package, which is compiled against glibc
 app-office/drawio-desktop-bin
