@@ -69,7 +69,10 @@ DEPEND="
 	xz? ( dev-java/xz-java:0 )
 "
 PDEPEND="~dev-java/ant-core-${PV}:0"
-RDEPEND=">=virtual/jre-1.8:*"
+RDEPEND="
+	!<dev-java/ant-core-1.10.14
+	>=virtual/jre-1.8:*
+"
 
 DOCS=( CONTRIBUTORS INSTALL NOTICE README WHATSNEW )
 PATCHES=(
