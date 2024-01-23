@@ -1975,6 +1975,8 @@ toolchain_src_install() {
 		rm "${D}${DATAPATH}"/info/dir || die
 	fi
 
+	docompress "${DATAPATH}"/{info,man}
+
 	# Prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
