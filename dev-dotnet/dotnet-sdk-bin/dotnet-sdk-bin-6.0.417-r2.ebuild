@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ arm64? (
 S="${WORKDIR}"
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.0"
+RUNTIME_SLOT="${SDK_SLOT}.25"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
@@ -36,14 +36,84 @@ RDEPEND="
 	dev-util/lttng-ust:0/2.12
 	sys-libs/zlib:0/1
 "
-IDEPEND="app-eselect/eselect-dotnet"
+BDEPEND="
+	dev-util/patchelf
+"
+IDEPEND="
+	app-eselect/eselect-dotnet
+"
 PDEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
-	~dev-dotnet/dotnet-runtime-nugets-6.0.25
-	~dev-dotnet/dotnet-runtime-nugets-7.0.14
 "
 
 QA_PREBUILT="*"
+
+MUSL_BAD_LINKS=(
+	apphost
+	createdump
+	dotnet
+	libSystem.Globalization.Native.so
+	libSystem.IO.Compression.Native.so
+	libSystem.Native.so
+	libSystem.Net.Security.Native.so
+	libSystem.Security.Cryptography.Native.OpenSsl.so
+	libclrgc.so
+	libclrjit.so
+	libcoreclr.so
+	libcoreclrtraceptprovider.so
+	libdbgshim.so
+	libhostfxr.so
+	libhostpolicy.so
+	libmscordaccore.so
+	libmscordbi.so
+	libnethost.so
+	singlefilehost
+)
+MUSL_BAD_SONAMES=(
+	libc.musl-aarch64.so.1
+	libc.musl-armv7.so.1
+	libc.musl-x86_64.so.1
+)
+
+src_prepare() {
+	default
+
+	# Fix musl libc SONAME links, bug https://bugs.gentoo.org/894760
+	if use elibc_musl ; then
+		local musl_bad_link
+		local musl_bad_link_path
+		local musl_bad_soname
+
+		for musl_bad_link in "${MUSL_BAD_LINKS[@]}" ; do
+			while read -r musl_bad_link_path ; do
+				# Skip if file either does not end with ".so" or is not executable.
+				# Using "case" here for easier matching in case we have to add
+				# a special exception.
+				case "${musl_bad_link_path}" in
+					*.so )
+						:
+						;;
+					* )
+						if [[ ! -x "${musl_bad_link_path}" ]] ; then
+							continue
+						fi
+						;;
+				esac
+
+				einfo "Fixing musl libc link for ${musl_bad_link_path}"
+
+				for musl_bad_soname in "${MUSL_BAD_SONAMES[@]}" ; do
+					patchelf --remove-needed "${musl_bad_soname}" "${musl_bad_link_path}" || die
+				done
+
+				patchelf --add-needed libc.so "${musl_bad_link_path}" || die
+			done < <(find . -type f -name "${musl_bad_link}")
+		done
+	fi
+
+	# Remove static libraries, bug https://bugs.gentoo.org/825774
+	find ./packs -type f -name "libnethost.a" -delete || die
+}
 
 src_install() {
 	local dest="opt/${PN}-${SDK_SLOT}"
