@@ -43,6 +43,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-no-werror.patch
+	"${FILESDIR}"/${PN}-2.1.0-fix-build-with-usb-monitor-disabled.patch
 )
 
 pkg_pretend() {
