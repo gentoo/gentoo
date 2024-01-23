@@ -1,0 +1,13 @@
+--- a/ext/shout_ext.c	2024-01-23 14:02:08.404056464 +0100
++++ b/ext/shout_ext.c	2024-01-23 14:03:47.152700002 +0100
+@@ -91,8 +91,8 @@
+ /* For metadata-related errors, which don't relate to a shout_t, so we can't
+  * use shout_get_errno or shout_get_error on them.
+  */
+-static void raise_nonspecific_shout_error(int errno) {
+-        rb_raise(cShoutError, "%d", errno);
++static void raise_nonspecific_shout_error(int err_no) {
++        rb_raise(cShoutError, "%d", err_no);
+ }
+ 
+ /*
