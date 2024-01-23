@@ -62,7 +62,7 @@ RDEPEND="
 	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-libs/libpulse )
 	sdl? (
-		media-libs/libsdl2
+		media-libs/libsdl2[haptic(+),joystick(+),sound(+),video(+)]
 		media-libs/sdl2-ttf
 	)
 	server? (
