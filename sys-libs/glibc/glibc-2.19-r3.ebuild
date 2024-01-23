@@ -33,7 +33,11 @@ PATCH_VER=9
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps compile-locales debug doc gd headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales +crypt debug doc gd headers-only multilib nscd profile selinux suid systemtap vanilla"
+
+# Yes this is a hack. It's always on here and we want to be able
+# to simplify the dependencies...
+REQUIRED_USE="crypt"
 
 # Minimum kernel version that glibc requires
 # hppa requires 2.6.20
