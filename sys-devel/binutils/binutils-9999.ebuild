@@ -467,6 +467,8 @@ src_install() {
 	# Remove shared info pages
 	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info}
 
+	docompress "${DATAPATH}"/{info,man}
+
 	# Trim all empty dirs
 	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
 }
