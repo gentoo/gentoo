@@ -170,8 +170,12 @@ XFAIL_TEST_LIST=(
 	tst-system
 	tst-strerror
 	tst-strsignal
+
 	# Fails with certain PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
 	tst-sched1
+
+	# Fails regularly, unreliable
+	tst-valgrind-smoke
 )
 
 XFAIL_NSPAWN_TEST_LIST=(
