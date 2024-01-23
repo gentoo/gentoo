@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/thrift/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc64"
 IUSE="libevent lua +ssl test"
 
 RESTRICT="!test? ( test )"
