@@ -100,4 +100,6 @@ src_install() {
 	newenvd - "07automake${idx}" <<-EOF
 	INFOPATH="${MY_INFODIR}"
 	EOF
+
+	docompress "${MY_INFODIR}"
 }
