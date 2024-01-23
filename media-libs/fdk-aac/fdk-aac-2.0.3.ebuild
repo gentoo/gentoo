@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
 else
 	inherit libtool
-	KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv x86 ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86 ~x64-macos"
 	if [[ ${PV%_p*} != ${PV} ]]; then # Gentoo snapshot
 		SRC_URI="mirror://gentoo/${P}.tar.xz"
 	else # Official release
