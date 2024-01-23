@@ -231,8 +231,10 @@ gap-pkg_src_test() {
 	# The "browse" package is however smart enough to figure out when
 	# stdout is not a tty, and avoids breaking it in that case. So by
 	# piping to tee, we encourage it not to do anything too crazy.
+	eshopts_push -o pipefail
 	${gapcmd} | tee test-suite.log \
 		|| die "test suite failed, see test-suite.log"
+	eshopts_pop
 }
 
 # @ECLASS_VARIABLE: GAP_PKG_EXTRA_INSTALL
