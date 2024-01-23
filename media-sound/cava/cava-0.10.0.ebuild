@@ -10,17 +10,19 @@ HOMEPAGE="https://github.com/karlstav/cava/"
 SRC_URI="
 	https://github.com/karlstav/cava/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${P}-jack-support.patch.xz
 "
 
 LICENSE="MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa +ncurses pipewire portaudio pulseaudio sdl sndio"
+IUSE="alsa jack +ncurses pipewire portaudio pulseaudio sdl sndio"
 
 RDEPEND="
 	dev-libs/iniparser:4
 	sci-libs/fftw:3.0=
 	alsa? ( media-libs/alsa-lib )
+	jack? ( virtual/jack )
 	ncurses? ( sys-libs/ncurses:= )
 	pipewire? ( media-video/pipewire:= )
 	portaudio? ( media-libs/portaudio )
@@ -39,6 +41,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.0-gentoo-iniparser4.patch
+	"${WORKDIR}"/${P}-jack-support.patch
 )
 
 src_prepare() {
@@ -51,6 +54,7 @@ src_prepare() {
 src_configure() {
 	local econfargs=(
 		$(use_enable alsa input-alsa)
+		$(use_enable jack input-jack)
 		$(use_enable pipewire input-pipewire)
 		$(use_enable portaudio input-portaudio)
 		$(use_enable pulseaudio input-pulse)
