@@ -29,7 +29,7 @@ SRC_URI+="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~s390 ~sparc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~riscv ~s390 ~sparc"
 
 RDEPEND="
 	dev-vcs/git
