@@ -21,7 +21,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~hppa"
+KEYWORDS="~amd64 ~hppa ~riscv"
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
 
