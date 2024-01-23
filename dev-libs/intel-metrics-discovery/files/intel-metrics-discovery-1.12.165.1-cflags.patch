@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -435,7 +435,7 @@
+     if ("${BUILD_TYPE}" STREQUAL "release")
+         add_definitions(-DNDEBUG)
+         # security compiler flags
+-        add_definitions(-O2 -D_FORTIFY_SOURCE=2 -Wformat)
++        add_definitions(-Wformat)
+     elseif ("${BUILD_TYPE}" STREQUAL "release-internal" OR
+             "${BUILD_TYPE}" STREQUAL "releaseinternal")
+             add_definitions(-D_RELEASE_INTERNAL)

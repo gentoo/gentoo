@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,7 @@ KEYWORDS="amd64"
 DEPEND="x11-libs/libdrm"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	default
-	cmake_src_prepare
-}
+PATCHES=( "${FILESDIR}/${PN}-1.12.165.1-cflags.patch" )
 
 src_configure() {
 	local mycmakeargs=( -DLINUX_DISTRO="Gentoo" )
