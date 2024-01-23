@@ -46,6 +46,7 @@ BDEPEND="
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-locale.patch
 	"${FILESDIR}"/${P}-lua_hpp.patch
 	"${FILESDIR}"/${P}-exiv2-0.28.0.patch
 )
