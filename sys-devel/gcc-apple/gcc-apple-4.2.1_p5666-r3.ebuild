@@ -312,6 +312,8 @@ src_install() {
 	echo "STDCXX_INCDIR=\"g++-v${GCC_VERS/\.*/}\"" >> ${gcc_envd_file}
 	is_crosscompile && echo "CTARGET=${CTARGET}" >> ${gcc_envd_file}
 
+	docompress /usr/share/gcc-data/${CTARGET}/${GCC_VERS}/{man,info}
+
 	# Move <cxxabi.h> to compiler-specific directories
 	[[ -f ${D}${STDCXX_INCDIR}/cxxabi.h ]] && \
 		mv -f "${D}"${STDCXX_INCDIR}/cxxabi.h "${D}"${LIBPATH}/include/
