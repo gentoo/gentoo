@@ -11,7 +11,7 @@ SRC_URI="https://github.com/cbxbiker61/${PN}/archive/refs/tags/${PV}.tar.gz -> $
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="emacs"
 
 DEPEND="
