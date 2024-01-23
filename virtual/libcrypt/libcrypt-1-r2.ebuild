@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ IUSE="static-libs"
 
 RDEPEND="
 	!prefix-guest? (
-		elibc_glibc? ( sys-libs/glibc[crypt(+),static-libs(+)?] )
+		elibc_glibc? ( sys-libs/glibc[crypt(-),static-libs(+)?] )
 		elibc_musl? ( sys-libs/musl )
 	)
 "
