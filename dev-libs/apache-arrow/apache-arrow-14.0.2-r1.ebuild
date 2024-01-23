@@ -23,7 +23,7 @@ S="${WORKDIR}/${P}/cpp"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa"
+KEYWORDS="~amd64 ~hppa ~riscv"
 IUSE="brotli bzip2 compute dataset +json lz4 parquet re2 snappy ssl test zlib zstd"
 RESTRICT="!test? ( test )"
 
