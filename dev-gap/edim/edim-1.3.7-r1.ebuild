@@ -15,4 +15,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.7-user-flags.patch"
+)
+
 gap-pkg_enable_tests
