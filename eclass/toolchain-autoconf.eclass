@@ -115,6 +115,8 @@ toolchain-autoconf_src_install() {
 			ln -s "$f" "${f/./-${PV}.}" || die
 		done
 		popd >/dev/null || die
+
+		docompress "${TC_AUTOCONF_INFOPATH}"
 	fi
 }
 
