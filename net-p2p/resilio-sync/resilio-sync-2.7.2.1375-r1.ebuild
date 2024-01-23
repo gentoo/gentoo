@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ RDEPEND="
 	${DEPEND}
 	|| (
 		sys-libs/libxcrypt[compat]
-		sys-libs/glibc[crypt(+)]
+		sys-libs/glibc[crypt(-)]
 	)"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
