@@ -12,6 +12,7 @@ CODENAME="Omega"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
+FFMPEG_VERSION="6.0.1"
 
 # Java bundles from xbmc/interfaces/swig/CMakeLists.txt
 GROOVY_VERSION="4.0.16"
@@ -48,6 +49,9 @@ SRC_URI="
 		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	)
+	!system-ffmpeg? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
+	)
 "
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
@@ -72,7 +76,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio raspberry-pi samba system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio raspberry-pi samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	^^ ( gbm wayland X )
@@ -374,6 +378,8 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
+		-DWITH_FFMPEG=$(usex system-ffmpeg)
+
 		#To bundle or not
 		-DENABLE_INTERNAL_CEC=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
@@ -398,6 +404,9 @@ src_configure() {
 	# Separated to avoid "Manually-specified variables were not used by the project:"
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
+	use !system-ffmpeg && mycmakeargs+=(
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.gz"
+	)
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
 
