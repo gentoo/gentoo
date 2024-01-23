@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc13.patch
 	"${FILESDIR}"/${P}-unbundling.patch
 	"${FILESDIR}"/${P}-noWerror.patch
+	"${FILESDIR}"/${P}-riscv.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" )
