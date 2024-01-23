@@ -469,7 +469,7 @@ multilib_src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	[[ ${ABI} != x86 ]] && is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	[[ ${ABI} != x86 ]] && tc-is-lto && myconf+=( "--enable-lto" )
 	filter-lto
 
 	# Mandatory configuration

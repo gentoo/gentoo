@@ -476,7 +476,7 @@ multilib_src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	if [[ ${ABI} != x86 ]] && is-flagq "-flto*"; then
+	if [[ ${ABI} != x86 ]] && tc-is-lto; then
 		# Respect -flto value, e.g -flto=thin
 		local v="$(get-flag flto)"
 		[[ -n ${v} ]] && myconf+=( "--enable-lto=${v}" ) || myconf+=( "--enable-lto" )
