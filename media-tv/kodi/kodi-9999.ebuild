@@ -469,6 +469,8 @@ src_test() {
 		# bug #779184
 		# https://github.com/xbmc/xbmc/issues/18594
 		$(usev x86 TestDateTime.SetFromDBTime)
+		# Tries to ping localhost, naturally breaking network-sandbox
+		TestNetwork.PingHost
 	)
 
 	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
