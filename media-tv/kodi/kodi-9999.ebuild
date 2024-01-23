@@ -385,7 +385,6 @@ src_configure() {
 		-DWITH_FFMPEG=$(usex system-ffmpeg)
 
 		#To bundle or not
-		-DENABLE_INTERNAL_CEC=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
@@ -409,6 +408,7 @@ src_configure() {
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
+	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
 	use !system-ffmpeg && mycmakeargs+=(
