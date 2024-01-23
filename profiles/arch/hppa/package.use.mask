@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-23)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is not keyworded here and currently fails tests (bug #919896).
+dev-qt/qtmultimedia:6 qml
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-06)
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
