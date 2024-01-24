@@ -89,6 +89,12 @@ opencv"
 hls"
 	fi
 
+	# soup in gst-plugins-good is split, can't be properly detected
+	if grep -q "option('soup'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+soup"
+	fi
+
 	# See bug #907483
 	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
 		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
