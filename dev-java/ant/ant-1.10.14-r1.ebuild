@@ -71,6 +71,27 @@ DEPEND="
 PDEPEND="~dev-java/ant-core-${PV}:0"
 RDEPEND="
 	!<dev-java/ant-core-1.10.14
+	!dev-java/ant-apache-regexp
+	!dev-java/ant-apache-log4j
+	!dev-java/ant-apache-xalan2
+	!dev-java/ant-commons-logging
+	!dev-java/ant-swing
+	!dev-java/ant-junit4
+	!dev-java/ant-testutil
+	!dev-java/ant-junitlauncher
+	!dev-java/ant-jai
+	!dev-java/ant-commons-net
+	!dev-java/ant-apache-bsf
+	!dev-java/ant-jmf
+	!dev-java/ant-apache-oro
+	!dev-java/ant-javamail
+	!dev-java/ant-junit
+	!dev-java/ant-jdepend
+	!dev-java/ant-antlr
+	!dev-java/ant-apache-bcel
+	!dev-java/ant-apache-resolver
+	!dev-java/ant-jsch
+	!dev-java/ant-xz
 	>=virtual/jre-1.8:*
 "
 
