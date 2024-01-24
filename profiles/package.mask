@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-01-24)
+# Unmaintained, tests fail, requires discontinued dev-python/bsddb3.
+# No commits since 2022.  No reverse dependencies.
+# Removal on 2024-02-23.  Bug #894688.
+dev-python/pymilter
+
 # David Seifert <soap@gentoo.org> (2024-01-21)
 # Not required anymore since 4.14 is EOL, handled within the kernel
 # nowadays. Removal on 2024-02-20.
