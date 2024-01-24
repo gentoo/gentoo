@@ -90,7 +90,7 @@ RDEPEND="${LUA_DEPS}
 	hyphen? ( dev-libs/hyphen )
 	ibus? ( app-i18n/ibus )
 	jpeg2k? ( media-libs/openjpeg:= )
-	jpegxl? ( media-libs/libjxl )
+	jpegxl? ( media-libs/libjxl:= )
 	json? ( >=media-libs/rlottie-0.0.1_pre20200424:= )
 	mono? ( dev-lang/mono )
 	opengl? ( virtual/opengl )
