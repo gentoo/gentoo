@@ -62,17 +62,10 @@ RESTRICT+="
 
 _IDEPEND_BASE="
 	!initramfs? (
-		|| (
-			>=sys-kernel/installkernel-8
-			>=sys-kernel/installkernel-systemd-2-r5
-		)
+		>=sys-kernel/installkernel-14
 	)
 	initramfs? (
-		>=sys-kernel/dracut-059-r4
-		|| (
-			>=sys-kernel/installkernel-8[dracut(-)]
-			>=sys-kernel/installkernel-systemd-2-r5
-		)
+		>=sys-kernel/installkernel-14[dracut(-)]
 	)
 "
 
@@ -199,10 +192,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	"
 	IDEPEND="
 		generic-uki? (
-			|| (
-				>=sys-kernel/installkernel-8[-dracut(-),-ukify(-)]
-				>=sys-kernel/installkernel-systemd-3
-			)
+			>=sys-kernel/installkernel-14[-dracut(-),-ukify(-)]
 		)
 		!generic-uki? (
 			${_IDEPEND_BASE}
