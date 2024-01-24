@@ -145,7 +145,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC CXX LD OBJCOPY OBJDUMP
+	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
 	# latest branches has proper fixes, but legacy have more issues and are

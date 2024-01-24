@@ -167,7 +167,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC CXX LD OBJCOPY OBJDUMP
+	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 
 	local xnvflags=-fPIC #840389
 	# lto static libraries tend to cause problems without fat objects
