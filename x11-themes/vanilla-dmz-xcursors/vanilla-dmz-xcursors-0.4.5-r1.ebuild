@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Style neutral scalable cursor theme (black version)"
+DESCRIPTION="Style neutral scalable cursor theme (white version)"
 HOMEPAGE="https://jimmac.eu/"
 SRC_URI="mirror://debian/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_${PV}.tar.xz"
 S="${WORKDIR}/dmz-cursor-theme-${PV}"
