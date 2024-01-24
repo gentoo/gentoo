@@ -160,6 +160,10 @@ BDEPEND="
 	virtual/rust
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.0-fix-clang-musl.patch
+)
+
 llvm_check_deps() {
 	has_version -b "sys-devel/clang:${LLVM_SLOT}"
 }
