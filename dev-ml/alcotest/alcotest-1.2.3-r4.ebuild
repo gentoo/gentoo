@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="
 	dev-ml/astring:=
 	dev-ml/async_unix:=
 	<dev-ml/cmdliner-1.1.0:=
-	dev-ml/core:=
+	<dev-ml/core-0.15:=
 	dev-ml/core_kernel:=
 	dev-ml/duration:=
 	>=dev-ml/fmt-0.8.9:=
