@@ -1,0 +1,12 @@
+diff --git a/src/plugins/LatencyPlot.cpp b/src/plugins/LatencyPlot.cpp
+index d412917..3597f5d 100644
+--- a/src/plugins/LatencyPlot.cpp
++++ b/src/plugins/LatencyPlot.cpp
+@@ -13,6 +13,7 @@
+ #include <math.h>
+ 
+ // C++
++#include <algorithm>
+ #include <unordered_map>
+ #include <iostream>
+ 
