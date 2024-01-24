@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
+# Cinnamon wayland support is experimental and incomplete.
+# https://github.com/linuxmint/wayland/issues
+gnome-extra/cinnamon wayland
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-01-24)
 # A missing "-o pipefail" in the gap-pkg eclass caused me to
 # miss a few crashes in dev-gap packages when GAP itself is
