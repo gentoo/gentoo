@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,9 +36,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.34:= )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
-	>=dev-libs/gobject-introspection-common-1.34
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
