@@ -13,13 +13,13 @@ GN2="serioussamse"
 
 DESCRIPTION="Linux port of Serious Sam Classic with Vulkan support"
 HOMEPAGE="https://github.com/tx00100xt/SeriousSamClassic-VK"
-SRC_URI="https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/${PV}c.tar.gz -> ${P}c.tar.gz"
-S="${WORKDIR}/SeriousSamClassic-VK-${PV}c"
+SRC_URI="https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/SeriousSamClassic-VK-${PV}"
 
-MY_CONTENT1="${WORKDIR}/SeriousSamClassic-VK-${PV}c/${MY_PN1}"
-MY_CONTENT2="${WORKDIR}/SeriousSamClassic-VK-${PV}c/${MY_PN2}"
+MY_CONTENT1="${WORKDIR}/SeriousSamClassic-VK-${PV}/${MY_PN1}"
+MY_CONTENT2="${WORKDIR}/SeriousSamClassic-VK-${PV}/${MY_PN2}"
 
-LICENSE="GPL-2 BSD ZLIB"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="alsa pipewire vulkan"
