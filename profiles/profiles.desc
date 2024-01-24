@@ -502,6 +502,36 @@ x86		default/linux/x86/17.0/desktop/plasma/systemd/merged-usr	stable
 x86		default/linux/x86/17.0/developer				exp
 x86		default/linux/x86/17.0/systemd					stable
 x86		default/linux/x86/17.0/systemd/merged-usr			stable
+x86		default/linux/x86/23.0/i686					exp
+x86		default/linux/x86/23.0/i686/systemd				exp
+x86		default/linux/x86/23.0/i686/hardened				exp
+x86		default/linux/x86/23.0/i686/hardened/selinux			exp
+x86		default/linux/x86/23.0/i686/desktop				exp
+x86		default/linux/x86/23.0/i686/desktop/gnome			exp
+x86		default/linux/x86/23.0/i686/desktop/gnome/systemd		exp
+x86		default/linux/x86/23.0/i686/desktop/plasma			exp
+x86		default/linux/x86/23.0/i686/desktop/plasma/systemd		exp
+x86		default/linux/x86/23.0/i686/prefix				exp
+x86		default/linux/x86/23.0/i686/prefix/kernel-2.6.32+		exp
+x86		default/linux/x86/23.0/i686/prefix/kernel-2.6.16+		exp
+x86		default/linux/x86/23.0/i686/prefix/kernel-3.2+			exp
+x86		default/linux/x86/23.0/i686/split-usr				exp
+x86		default/linux/x86/23.0/i686/split-usr/hardened			exp
+x86		default/linux/x86/23.0/i686/split-usr/hardened/selinux		exp
+x86		default/linux/x86/23.0/i686/split-usr/desktop			exp
+x86		default/linux/x86/23.0/i686/split-usr/desktop/gnome		exp
+x86		default/linux/x86/23.0/i686/split-usr/desktop/plasma		exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix			exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-2.6.32+	exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-2.6.16+	exp
+x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-3.2+	exp
+x86		default/linux/x86/23.0/i486					exp
+x86		default/linux/x86/23.0/i486/systemd				exp
+x86		default/linux/x86/23.0/i486/hardened				exp
+x86		default/linux/x86/23.0/i486/hardened/selinux			exp
+x86		default/linux/x86/23.0/i486/split-usr				exp
+x86		default/linux/x86/23.0/i486/split-usr/hardened			exp
+x86		default/linux/x86/23.0/i486/split-usr/hardened/selinux		exp
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
@@ -554,6 +584,15 @@ riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		exp
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		exp
 x86		default/linux/x86/17.0/musl					dev
 x86		default/linux/x86/17.0/musl/selinux				exp
+# x86		default/linux/x86/23.0/i686/musl				exp
+# x86		default/linux/x86/23.0/i686/musl/selinux			exp
+# x86		default/linux/x86/23.0/i686/split-usr/musl			exp
+# x86		default/linux/x86/23.0/i686/split-usr/musl/selinux		exp
+# x86		default/linux/x86/23.0/i486/musl				exp
+# x86		default/linux/x86/23.0/i486/musl/selinux			exp
+# x86		default/linux/x86/23.0/i486/split-usr/musl			exp
+# x86		default/linux/x86/23.0/i486/split-usr/musl/selinux		exp
+
 
 # These are Gentoo Prefix profiles, maintained by the Prefix team
 # @MAINTAINER: prefix@gentoo.org
