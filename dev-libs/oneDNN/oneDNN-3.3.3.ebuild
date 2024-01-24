@@ -31,6 +31,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.3.3-include-cstdint.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DDNNL_LIBRARY_TYPE=$(usex static-libs STATIC SHARED)
