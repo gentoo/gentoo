@@ -1,0 +1,79 @@
+From 7d7c0b3ede7d5c30e3cdc7c6fbb33c9d4499516a Mon Sep 17 00:00:00 2001
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Date: Mon, 17 Jan 2022 10:49:58 +0200
+Subject: [PATCH] configure: fix AR/RANLIB/NM detection
+
+Taken from zlib-devel ML:
+https://madler.net/pipermail/zlib-devel_madler.net/2022-January/003322.html
+
+Bug: https://bugs.gentoo.org/831628
+
+Scenarios where ${CROSS_PREFIX}ar & co are set but not desired
+are possible, for example in ChromiumOS we use the GNU binutils
+tools & GCC to build glibc but LLVM/Clang is used for the rest
+of the system.
+
+This allows $AR/$RANLIB/$NM to override default CROSS_PREFIX
+tools so they can be set to llvm-ar/ranlib/nm.
+
+Suggested-by: Manoj Gupta <manojgupta@chromium.org>
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ configure | 38 ++++++++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 16 deletions(-)
+
+diff --git a/configure b/configure
+index c55098a..2535e04 100755
+--- a/configure
++++ b/configure
+@@ -48,25 +48,31 @@ VER3=`echo ${VER}|sed -n -e 's/\([0-9]\{1,\}\(\\.[0-9]\{1,\}\)\{1,2\}\).*/\1/p'`
+ VER1=`echo ${VER}|sed -n -e 's/\([0-9]\{1,\}\)\\..*/\1/p'`
+ 
+ # establish commands for library building
+-if "${CROSS_PREFIX}ar" --version >/dev/null 2>/dev/null || test $? -lt 126; then
+-    AR=${AR-"${CROSS_PREFIX}ar"}
+-    test -n "${CROSS_PREFIX}" && echo Using ${AR} | tee -a configure.log
+-else
+-    AR=${AR-"ar"}
+-    test -n "${CROSS_PREFIX}" && echo Using ${AR} | tee -a configure.log
++if [ -z "$AR" ]; then
++    if "${CROSS_PREFIX}ar" --version >/dev/null 2>/dev/null || test $? -lt 126; then
++        AR=${AR-"${CROSS_PREFIX}ar"}
++        test -n "${CROSS_PREFIX}" && echo Using ${AR} | tee -a configure.log
++    else
++        AR="ar"
++        test -n "${CROSS_PREFIX}" && echo Using ${AR} | tee -a configure.log
++    fi
+ fi
+ ARFLAGS=${ARFLAGS-"rc"}
+-if "${CROSS_PREFIX}ranlib" --version >/dev/null 2>/dev/null || test $? -lt 126; then
+-    RANLIB=${RANLIB-"${CROSS_PREFIX}ranlib"}
+-    test -n "${CROSS_PREFIX}" && echo Using ${RANLIB} | tee -a configure.log
+-else
+-    RANLIB=${RANLIB-"ranlib"}
++if [ -z "$RANLIB" ]; then
++    if "${CROSS_PREFIX}ranlib" --version >/dev/null 2>/dev/null || test $? -lt 126; then
++        RANLIB=${RANLIB-"${CROSS_PREFIX}ranlib"}
++        test -n "${CROSS_PREFIX}" && echo Using ${RANLIB} | tee -a configure.log
++    else
++        RANLIB="ranlib"
++    fi
+ fi
+-if "${CROSS_PREFIX}nm" --version >/dev/null 2>/dev/null || test $? -lt 126; then
+-    NM=${NM-"${CROSS_PREFIX}nm"}
+-    test -n "${CROSS_PREFIX}" && echo Using ${NM} | tee -a configure.log
+-else
+-    NM=${NM-"nm"}
++if [ -z "$NM" ]; then
++    if "${CROSS_PREFIX}nm" --version >/dev/null 2>/dev/null || test $? -lt 126;   then
++        NM=${NM-"${CROSS_PREFIX}nm"}
++        test -n "${CROSS_PREFIX}" && echo Using ${NM} | tee -a configure.log
++    else
++        NM="nm"
++    fi
+ fi
+ 
+ # set defaults before processing command line options
+-- 
+2.43.0
+
