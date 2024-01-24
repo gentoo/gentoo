@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.eclass
@@ -78,7 +78,7 @@ DEPEND="!!sys-devel/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {18..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {19..8} )
 
 # @ECLASS_VARIABLE: LLVM_ECLASS_SKIP_PKG_SETUP
 # @INTERNAL
