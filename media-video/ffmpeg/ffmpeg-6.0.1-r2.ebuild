@@ -345,6 +345,7 @@ PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
 	"${FILESDIR}"/${PN}-5.1.2-get_cabac_inline_x86-32-bit.patch
 	"${FILESDIR}"/${PN}-6.0-libplacebo-remove-deprecated-field.patch
+	"${FILESDIR}"/${PN}-6.0-fix-lto-type-mismatch.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

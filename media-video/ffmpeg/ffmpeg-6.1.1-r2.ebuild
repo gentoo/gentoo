@@ -355,6 +355,7 @@ S=${WORKDIR}/${P/_/-}
 PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
 	"${FILESDIR}"/${PN}-6.1-wint-conversion.patch
+	"${FILESDIR}"/${PN}-6.0-fix-lto-type-mismatch.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
