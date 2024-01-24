@@ -44,6 +44,8 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-util/dejagnu
+		sys-devel/bison
+		sys-devel/flex
 	)
 "
 
@@ -75,6 +77,11 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share/automake-vanilla-${PV} \
 		--program-suffix="-vanilla" \
 		--infodir="${MY_INFODIR}"
+}
+
+src_test() {
+	# Fails with byacc/flex
+	emake YACC="bison -y" LEX="flex" check
 }
 
 src_install() {
