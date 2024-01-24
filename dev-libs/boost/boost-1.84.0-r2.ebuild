@@ -52,7 +52,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	# Boost.MPI's __init__.py doesn't work on Py3
 	"${FILESDIR}"/${PN}-1.79.0-boost-mpi-python-PEP-328.patch
-	"${FILESDIR}"/${PN}-1.81.0-phoenix-multiple-definitions.patch
 	"${FILESDIR}"/${PN}-1.83.0-math-gcc14.patch
 
 	# upstreamed
