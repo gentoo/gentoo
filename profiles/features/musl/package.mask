@@ -389,3 +389,7 @@ sys-block/wait-for-dri-devices-rules
 dev-lang/rust-bin
 mail-client/thunderbird-bin
 www-client/firefox-bin
+
+# >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
+# https://github.com/koverstreet/bcachefs-tools/issues/213
+>=sys-fs/bcachefs-tools-1.4.1

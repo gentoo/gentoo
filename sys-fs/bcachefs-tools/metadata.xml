@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">koverstreet/bcachefs-tools</remote-id>
+		<remote-id type="gitlab">Matt.Jolly/rust-bindgen-bcachefs</remote-id>
 	</upstream>
 </pkgmetadata>
