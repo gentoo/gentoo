@@ -146,5 +146,6 @@ src_configure() {
 src_test() {
 	local myctestargs=()
 	use elibc_musl && myctestargs+=( -E TestBacktrace )
+	has network-sandbox ${FEATURES} && myctestargs+=( -E TestConnect )
 	cmake_src_test
 }
