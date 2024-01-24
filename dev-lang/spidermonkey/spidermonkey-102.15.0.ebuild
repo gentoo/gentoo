@@ -7,7 +7,7 @@ EAPI="8"
 FIREFOX_PATCHSET="firefox-102esr-patches-13.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-102-patches-05j.tar.xz"
 
-LLVM_MAX_SLOT=16
+LLVM_MAX_SLOT=17
 
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="ssl,xml(+)"
@@ -72,6 +72,14 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	|| (
+		(
+			sys-devel/llvm:17
+			clang? (
+				sys-devel/clang:17
+				sys-devel/lld:17
+				virtual/rust:0/llvm-17
+			)
+		)
 		(
 			sys-devel/llvm:16
 			clang? (
