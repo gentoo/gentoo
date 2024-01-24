@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Please do not apply any patches which affect the generated output from
+# `automake`, as this package is used to submit patches upstream.
+
 MY_PN=${PN/-vanilla}
 MY_P=${MY_PN}-${PV}
 
