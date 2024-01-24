@@ -18,8 +18,11 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	if [[ ${PV/_beta} == ${PV} ]]; then
 		MY_P="${P}"
-		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz"
+		SRC_URI="
+			mirror://gnu/${PN}/${P}.tar.xz
+			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz
+			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-1.16.5-tests-c99.patch.xz
+		"
 		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	else
 		MY_PV="$(ver_cut 1).$(($(ver_cut 2)-1))b"
@@ -54,6 +57,8 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-util/dejagnu
+		sys-devel/bison
+		sys-devel/flex
 	)
 "
 
@@ -63,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.16.5-fix-py-compile-basedir.sh-test.patch
 	"${FILESDIR}"/${PN}-1.16.5-apostrophe-in-tests.patch
 	"${FILESDIR}"/${PN}-1.16.5-parallel-build.patch
+	"${WORKDIR}"/${PN}-1.16.5-tests-c99.patch
 )
 
 pkg_setup() {
@@ -90,6 +96,11 @@ src_configure() {
 	# Also used in install.
 	MY_INFODIR="${EPREFIX}/usr/share/automake-${PV}/info"
 	econf --infodir="${MY_INFODIR}"
+}
+
+src_test() {
+	# Fails with byacc/flex
+	emake YACC="bison -y" LEX="flex" check
 }
 
 src_install() {
