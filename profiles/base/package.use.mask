@@ -6,6 +6,17 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-01-24)
+# A missing "-o pipefail" in the gap-pkg eclass caused me to
+# miss a few crashes in dev-gap packages when GAP itself is
+# built with kernel debugging enabled. These may not be the
+# only problems but it's hard to tell because they cascade:
+#
+#  * https://github.com/frankluebeck/EDIM/issues/24
+#  * https://github.com/gap-packages/io/issues/122
+#
+sci-mathematics/gap debug
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-01-20)
 # Not working, bug #890756
 sci-mathematics/why3-for-spark doc
