@@ -58,6 +58,11 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/getmoto/moto/pull/7222
+	"${FILESDIR}/${PN}-4.2.12-32bit-time.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
