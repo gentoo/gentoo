@@ -35,7 +35,6 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/tinyxml2:=
-	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
