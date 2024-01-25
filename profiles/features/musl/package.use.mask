@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Violet Purcell <vimproved@inventati.org> (2024-01-25)
+# f16c support in gtk4 requires the ifunc attribute, which
+# is not available on musl. There is a configure check for
+# this, however it seems to be unreliable, see bug #922897.
+gui-libs/gtk cpu_flags_x86_f16c
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
 # The systemd flag is globally masked on musl. But we need
 # systemd's kernel-install to use systemd-boot which is still
