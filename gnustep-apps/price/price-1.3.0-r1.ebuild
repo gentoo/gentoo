@@ -11,7 +11,7 @@ HOMEPAGE="https://price.sourceforge.net/"
 SRC_URI="mirror://sourceforge/price/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 LICENSE="GPL-2+"
 
