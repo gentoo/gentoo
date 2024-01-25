@@ -180,11 +180,6 @@ src_install() {
 		newinitd "${FILESDIR}"/${f}.initd ${f}
 	done
 
-	# bug #234132
-	sed -i \
-		-e "/^NFS_NEEDED_SERVICES=/s:=.*:=\"${opt_need}\":" \
-		"${ED}"/etc/conf.d/nfs || die
-
 	local systemd_systemunitdir="$(systemd_get_systemunitdir)"
 	sed -i \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
