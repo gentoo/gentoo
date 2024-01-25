@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=sys-apps/dbus-1.10.0
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3
-	x11-libs/gtksourceview
+	x11-libs/gtksourceview:4
 	>=x11-libs/libnotify-0.7
 	x11-libs/libX11
 	>=x11-libs/libwnck-3.0:3
