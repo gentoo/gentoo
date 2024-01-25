@@ -65,7 +65,6 @@ src_configure() {
 	#https://gitlab.kitware.com/cmake/cmake/-/issues/23236
 	#https://github.com/EttusResearch/uhd/pull/560
 	local mycmakeargs=(
-		-DCURSES_NEED_NCURSES=ON
 		-DENABLE_LIBUHD=ON
 		-DENABLE_C_API=ON
 		-DENABLE_MAN_PAGES=ON
