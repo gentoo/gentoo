@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,11 +71,15 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	cp "${FILESDIR}"/ax_gtest.m4 "${S}"/m4macros/ax_gtest.m4 || die 'Replace gtest m4 macro failed'
+	if use test; then
+		cp "${FILESDIR}"/ax_gtest.m4 "${S}"/m4macros/ax_gtest.m4 || die 'Replace gtest m4 macro failed'
+	fi
 
 	# brand the version with Gentoo
 	sed -i \
-		-e "s/AC_INIT(kea,${PV}.*, kea-dev@lists.isc.org)/AC_INIT([kea], [${PVR}-gentoo], [kea-dev@lists.isc.org])/g" \
+		-e 's/KEA_SRCID="tarball"/KEA_SRCID="gentoo"/g' \
+		-e 's/AC_MSG_RESULT("tarball")/AC_MSG_RESULT("gentoo")/g' \
+		-e "s/EXTENDED_VERSION=\"\${EXTENDED_VERSION} (\$KEA_SRCID)\"/EXTENDED_VERSION=\"${PVR} (\$KEA_SRCID)\"/g" \
 		configure.ac || die
 
 	sed -i \
@@ -98,7 +102,6 @@ src_configure() {
 		--with-log4cplus
 		$(use_enable debug)
 		$(use_enable doc generate-docs)
-		$(use_enable test gtest)
 		$(use_enable shell)
 		$(use_with mysql)
 		$(use_with openssl)
@@ -108,7 +111,8 @@ src_configure() {
 }
 
 src_install() {
-	default
+	emake -j1 install DESTDIR="${D}"
+
 	newconfd "${FILESDIR}"/${PN}-confd-r1 ${PN}
 	newinitd "${FILESDIR}"/${PN}-initd-r1 ${PN}
 
