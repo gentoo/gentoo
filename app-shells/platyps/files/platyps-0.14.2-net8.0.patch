@@ -1,0 +1,54 @@
+diff --git a/build.ps1 b/build.ps1
+index e9de3bc..419f392 100644
+--- a/build.ps1
++++ b/build.ps1
+@@ -28,11 +28,7 @@ if (-not $DotnetCli) {
+     Write-Host "Using dotnet from $DotnetCli"
+ }
+ 
+-if (Get-Variable -Name IsCoreClr -ValueOnly -ErrorAction SilentlyContinue) {
+-    $framework = 'netstandard1.6'
+-} else {
+-    $framework = 'net451'
+-}
++$framework = "net8.0"
+ 
+ & $DotnetCli publish ./src/Markdown.MAML -f $framework --output=$pwd/publish /p:Configuration=$Configuration
+ 
+diff --git a/src/Markdown.MAML/Markdown.MAML.csproj b/src/Markdown.MAML/Markdown.MAML.csproj
+index d11d7b2..2c2a4d4 100644
+--- a/src/Markdown.MAML/Markdown.MAML.csproj
++++ b/src/Markdown.MAML/Markdown.MAML.csproj
+@@ -1,6 +1,6 @@
+ ﻿<Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+-    <TargetFrameworks>netstandard1.6;net451</TargetFrameworks>
++    <TargetFrameworks>net8.0</TargetFrameworks>
+   </PropertyGroup>
+   <PropertyGroup>
+     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+diff --git a/src/Markdown.MAML/Transformer/ModelTransformerBase.cs b/src/Markdown.MAML/Transformer/ModelTransformerBase.cs
+index 1e07e69..3800c3d 100644
+--- a/src/Markdown.MAML/Transformer/ModelTransformerBase.cs
++++ b/src/Markdown.MAML/Transformer/ModelTransformerBase.cs
+@@ -197,7 +197,7 @@ namespace Markdown.MAML.Transformer
+             {
+                 Report("Schema exception. This can occur when there are multiple code blocks in one example. " + headingException.Message);
+ 
+-                throw headingException;
++                throw;
+             }
+             
+         }
+diff --git a/test/Markdown.MAML.Test/Markdown.MAML.Test.csproj b/test/Markdown.MAML.Test/Markdown.MAML.Test.csproj
+index 6289a9c..3ac58c8 100644
+--- a/test/Markdown.MAML.Test/Markdown.MAML.Test.csproj
++++ b/test/Markdown.MAML.Test/Markdown.MAML.Test.csproj
+@@ -1,6 +1,6 @@
+ ﻿<Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+-    <TargetFramework>netcoreapp2.0</TargetFramework>
++    <TargetFramework>net8.0</TargetFramework>
+     <IsPackable>false</IsPackable>
+   </PropertyGroup>
+   <PropertyGroup>
