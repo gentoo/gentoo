@@ -262,6 +262,13 @@ src_prepare() {
 
 	# https://github.com/php/php-src/issues/12801
 	rm ext/pcre/tests/gh11374.phpt || die
+
+	# A new test failure appearing in 8.3.2, mentioned on the PR
+	# where it was likely introduced:
+	#
+	#   https://github.com/php/php-src/pull/13017
+	#
+	rm ext/dom/tests/DOMNode_isEqualNode.phpt || die
 }
 
 src_configure() {
@@ -292,6 +299,10 @@ src_configure() {
 		--with-external-libcrypt
 		$(use_enable threads zts)
 	)
+
+	# The slotted man/info pages will be missed by the default list of
+	# docompress paths.
+	docompress "${PHP_DESTDIR}/man" "${PHP_DESTDIR}/info"
 
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
