@@ -537,10 +537,6 @@ app-containers/go-secbench
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
 
-# Sam James <sam@gentoo.org> (2023-11-18)
-# Lots of applications need porting, bug #917537.
->=dev-libs/libxml2-2.12.0
-
 # Sam James <sam@gentoo.org> (2023-11-05)
 # Mask broken versions:
 # - sys-fs/btrfs-progs-6.6(-r0) was respun upstream.
