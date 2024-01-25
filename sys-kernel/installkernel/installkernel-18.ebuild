@@ -4,7 +4,10 @@
 EAPI=8
 
 DESCRIPTION="Gentoo fork of installkernel script from debianutils"
-HOMEPAGE="https://github.com/projg2/installkernel-gentoo"
+HOMEPAGE="
+	https://github.com/projg2/installkernel-gentoo
+	https://wiki.gentoo.org/wiki/Installkernel
+"
 SRC_URI="https://github.com/projg2/installkernel-gentoo/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-gentoo-${PV}"
