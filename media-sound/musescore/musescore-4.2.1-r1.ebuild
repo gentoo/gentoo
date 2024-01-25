@@ -47,7 +47,7 @@ RDEPEND="
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols:5
-	dev-qt/qtquickcontrols2:5
+	dev-qt/qtquickcontrols2:5[widgets]
 	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
 	dev-qt/qtsvg:5
 	dev-qt/qtx11extras:5
