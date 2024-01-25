@@ -19,8 +19,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv3 +nfsv4 sasl selinux tcpd +uuid"
-REQUIRED_USE="|| ( nfsv3 nfsv4 ) kerberos? ( nfsv4 ) nfsdcld? ( nfsv4 )"
+IUSE="caps junction kerberos ldap +libmount +nfsv3 +nfsv4 sasl selinux tcpd +uuid"
+REQUIRED_USE="|| ( nfsv3 nfsv4 ) kerberos? ( nfsv4 )"
 # bug #315573
 RESTRICT="test"
 
@@ -78,10 +78,9 @@ PATCHES=(
 pkg_setup() {
 	linux-info_pkg_setup
 
-	if use nfsv4 && ! use nfsdcld && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
+	if use nfsv4 && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
 		ewarn "Your NFS server will be unable to track clients across server restarts!"
-		ewarn "Please enable the \"${HILITE}nfsdcld${NORMAL}\" USE flag to install the nfsdcltrack usermode"
-		ewarn "helper upcall program, or enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
+		ewarn "Please enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
 		ewarn "support the legacy, in-kernel client tracker."
 	fi
 }
@@ -99,7 +98,7 @@ src_prepare() {
 src_configure() {
 	# Our DEPEND forces this.
 	export libsqlite3_cv_is_recent=yes
-	export ac_cv_header_keyutils_h=$(usex nfsidmap)
+	export ac_cv_header_keyutils_h=$(usex nfsv4)
 
 	# SASL is consumed in a purely automagic way
 	export ac_cv_header_sasl_h=no
@@ -121,9 +120,9 @@ src_configure() {
 		$(use_enable kerberos svcgss)
 		$(use_enable ldap)
 		$(use_enable libmount libmount-mount)
-		$(use_enable nfsdcld)
-		$(use_enable nfsdcld nfsdcltrack)
 		$(use_enable nfsv4)
+		$(use_enable nfsv4 nfsdcld)
+		$(use_enable nfsv4 nfsdcltrack)
 		$(use_enable nfsv4 nfsv41)
 		$(use_enable nfsv4 nfsv4server)
 		$(use_enable uuid)
@@ -157,7 +156,7 @@ src_install() {
 	dodir /sbin
 	mv "${ED}"/usr/sbin/rpc.statd "${ED}"/sbin/ || die
 
-	if use nfsv4 && use nfsidmap ; then
+	if use nfsv4 ; then
 		insinto /etc
 		doins support/nfsidmap/idmapd.conf
 
@@ -179,12 +178,6 @@ src_install() {
 	fi
 	for f in nfs nfsclient rpc.statd "${list[@]}" ; do
 		newinitd "${FILESDIR}"/${f}.initd ${f}
-	done
-
-	# Nuke after 2015/08/01
-	newinitd "${FILESDIR}"/nfsmount.initd-1.3.1 nfsmount
-	for f in nfs nfsclient ; do
-		newconfd "${FILESDIR}"/${f}.confd ${f}
 	done
 
 	# bug #234132
