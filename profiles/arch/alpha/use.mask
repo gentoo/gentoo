@@ -1,8 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-24)
+# sys-apps/flatpak is not keyworded here
+flatpak
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-14)
 # Qt is not keyworded here
