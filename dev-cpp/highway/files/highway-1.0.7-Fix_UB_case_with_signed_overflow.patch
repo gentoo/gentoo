@@ -1,0 +1,29 @@
+https://github.com/google/highway/issues/1549
+https://github.com/google/highway/commit/45eea15b5488f3e7a15c2c94ac77bd9e99703203
+
+From 45eea15b5488f3e7a15c2c94ac77bd9e99703203 Mon Sep 17 00:00:00 2001
+From: Mathieu Malaterre <mathieu.malaterre@gmail.com>
+Date: Thu, 5 Oct 2023 08:00:38 +0200
+Subject: [PATCH] Fix UB case with signed overflow, prefer unsigned
+
+Fixes #1549
+
+Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110643
+Suggested-by: Andrew Pinski <pinskia@gcc.gnu.org>
+---
+ hwy/ops/arm_neon-inl.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hwy/ops/arm_neon-inl.h b/hwy/ops/arm_neon-inl.h
+index 7ac7a10c62..97de46be2e 100644
+--- a/hwy/ops/arm_neon-inl.h
++++ b/hwy/ops/arm_neon-inl.h
+@@ -4592,7 +4592,7 @@ HWY_API Mask128<T, N> IsNaN(const Vec128<T, N> v) {
+ template <typename T, size_t N, HWY_IF_FLOAT(T)>
+ HWY_API Mask128<T, N> IsInf(const Vec128<T, N> v) {
+   const DFromV<decltype(v)> d;
+-  const RebindToSigned<decltype(d)> di;
++  const RebindToUnsigned<decltype(d)> di;
+   const VFromD<decltype(di)> vi = BitCast(di, v);
+   // 'Shift left' to clear the sign bit, check for exponent=max and mantissa=0.
+   return RebindMask(d, Eq(Add(vi, vi), Set(di, hwy::MaxExponentTimes2<T>())));
