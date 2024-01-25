@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64"
 
 RDEPEND="
 	dev-python/license-expression[${PYTHON_USEDEP}]
