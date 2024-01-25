@@ -339,6 +339,10 @@ src_configure() {
 		$(use_enable threads zts)
 	)
 
+	# The slotted man/info pages will be missed by the default list of
+	# docompress paths.
+	docompress "${PHP_DESTDIR}/man" "${PHP_DESTDIR}/info"
+
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
 		$(use_with argon2 password-argon2 "${EPREFIX}/usr")
