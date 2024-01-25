@@ -225,6 +225,9 @@ src_test() {
 		'tests/test_fixture.py::test_leak'
 		'tests/test_fixture.py::test_check'
 		# Fails in portage because of usersandbox; ensure that these pass before bumping!
+		'tests/test_basic.py::test_format'
+		'tests/test_basic.py::test_fsck'
+		'tests/test_basic.py::test_list'
 		'tests/test_basic.py::test_list_inodes'
 		'tests/test_basic.py::test_list_dirent'
 	)
