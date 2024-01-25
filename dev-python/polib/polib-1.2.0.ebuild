@@ -21,17 +21,17 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-distutils_enable_sphinx docs
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.7-BE-test.patch
-)
-
 BDEPEND="
 	test? (
 		<sys-devel/gettext-0.22
 	)
 "
+
+distutils_enable_sphinx docs
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.7-BE-test.patch
+)
 
 python_test() {
 	"${EPYTHON}" tests/tests.py -v || die "Tests failed under ${EPYTHON}"
