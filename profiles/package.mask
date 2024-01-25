@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
+# app-misc/ddcutil-2.1.0 causes core-dump crashes in
+# kde-plasma/powerdevil[brightness-control].
+~app-misc/ddcutil-2.1.0
+~app-misc/ddcui-0.5.0
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
 # The functionality of sys-kernel/installkernel-systemd has been
 # integrated into sys-kernel/installkernel[systemd].
 # Please install sys-kernel/installkernel and remove
