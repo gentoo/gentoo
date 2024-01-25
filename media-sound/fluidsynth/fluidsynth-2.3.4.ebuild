@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib systemd toolchain-funcs
+inherit cmake-multilib multibuild systemd toolchain-funcs
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
 HOMEPAGE="https://www.fluidsynth.org"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1+"
 SLOT="0/3"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
-IUSE="alsa dbus debug examples ipv6 jack ladspa lash network oss pipewire portaudio pulseaudio +readline sdl +sndfile systemd threads"
+IUSE="alsa dbus debug ipv6 jack ladspa lash network oss pipewire portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -106,10 +106,8 @@ src_install() {
 	docinto pdf
 	dodoc doc/*.pdf
 
-	if use examples; then
-		docinto examples
-		dodoc doc/examples/*.c
-	fi
+	docinto examples
+	dodoc doc/examples/*.c
 
 	if use systemd; then
 		multilib_foreach_abi install_systemd_files
