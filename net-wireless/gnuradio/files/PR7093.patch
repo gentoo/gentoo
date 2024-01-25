@@ -1,0 +1,76 @@
+From 677d22b5226a3edb274c252cc3aa727a16de3c68 Mon Sep 17 00:00:00 2001
+From: Clayton Smith <argilo@gmail.com>
+Date: Tue, 23 Jan 2024 18:28:46 -0500
+Subject: [PATCH] filter: Fix undefined behaviour in fir_filter_with_buffer
+
+Signed-off-by: Clayton Smith <argilo@gmail.com>
+---
+ gr-filter/lib/fir_filter_with_buffer.cc    | 9 ++++++---
+ gr-filter/lib/qa_fir_filter_with_buffer.cc | 6 +++---
+ 2 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/gr-filter/lib/fir_filter_with_buffer.cc b/gr-filter/lib/fir_filter_with_buffer.cc
+index 4fc571ec57d..f6cb3b20854 100644
+--- a/gr-filter/lib/fir_filter_with_buffer.cc
++++ b/gr-filter/lib/fir_filter_with_buffer.cc
+@@ -52,7 +52,8 @@ void fir_filter_with_buffer_fff::set_taps(const std::vector<float>& taps)
+     for (int i = 0; i < d_naligned; i++) {
+         d_aligned_taps[i].clear();
+         d_aligned_taps[i].resize(d_ntaps + d_naligned - 1);
+-        std::copy(std::begin(d_taps), std::end(d_taps), &d_aligned_taps[i][i]);
++        std::copy(
++            std::begin(d_taps), std::end(d_taps), std::begin(d_aligned_taps[i]) + i);
+     }
+ 
+     d_idx = 0;
+@@ -157,7 +158,8 @@ void fir_filter_with_buffer_ccc::set_taps(const std::vector<gr_complex>& taps)
+     for (int i = 0; i < d_naligned; i++) {
+         d_aligned_taps[i].clear();
+         d_aligned_taps[i].resize(d_ntaps + d_naligned - 1);
+-        std::copy(std::begin(d_taps), std::end(d_taps), &d_aligned_taps[i][i]);
++        std::copy(
++            std::begin(d_taps), std::end(d_taps), std::begin(d_aligned_taps[i]) + i);
+     }
+ 
+     d_idx = 0;
+@@ -261,7 +263,8 @@ void fir_filter_with_buffer_ccf::set_taps(const std::vector<float>& taps)
+     for (int i = 0; i < d_naligned; i++) {
+         d_aligned_taps[i].clear();
+         d_aligned_taps[i].resize(d_ntaps + d_naligned - 1);
+-        std::copy(std::begin(d_taps), std::end(d_taps), &d_aligned_taps[i][i]);
++        std::copy(
++            std::begin(d_taps), std::end(d_taps), std::begin(d_aligned_taps[i]) + i);
+     }
+ 
+     d_idx = 0;
+diff --git a/gr-filter/lib/qa_fir_filter_with_buffer.cc b/gr-filter/lib/qa_fir_filter_with_buffer.cc
+index 32f5c6780fc..72cdd9fa1c0 100644
+--- a/gr-filter/lib/qa_fir_filter_with_buffer.cc
++++ b/gr-filter/lib/qa_fir_filter_with_buffer.cc
+@@ -107,7 +107,7 @@ void test_decimate(unsigned int decimate)
+             }
+ 
+             // build filter
+-            vector<tap_type> f1_taps(&taps[0], &taps[n]);
++            vector<tap_type> f1_taps(taps.begin(), taps.begin() + n);
+             kernel::fir_filter_with_buffer_fff f1(f1_taps);
+ 
+             // zero the output, then do the filtering
+@@ -198,7 +198,7 @@ void test_decimate(unsigned int decimate)
+             }
+ 
+             // build filter
+-            vector<tap_type> f1_taps(&taps[0], &taps[n]);
++            vector<tap_type> f1_taps(taps.begin(), taps.begin() + n);
+             kernel::fir_filter_with_buffer_ccc f1(f1_taps);
+ 
+             // zero the output, then do the filtering
+@@ -287,7 +287,7 @@ void test_decimate(unsigned int decimate)
+             }
+ 
+             // build filter
+-            vector<tap_type> f1_taps(&taps[0], &taps[n]);
++            vector<tap_type> f1_taps(taps.begin(), taps.begin() + n);
+             kernel::fir_filter_with_buffer_ccf f1(f1_taps);
+ 
+             // zero the output, then do the filtering
