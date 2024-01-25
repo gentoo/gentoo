@@ -93,10 +93,6 @@ multilib_src_install() {
 	find "${ED}" -name '*.a' -delete || die
 }
 
-pkg_preinst() {
-	gnome2_gdk_pixbuf_savelist
-}
-
 pkg_postinst() {
 	use gdk-pixbuf && gnome2_gdk_pixbuf_update
 }
