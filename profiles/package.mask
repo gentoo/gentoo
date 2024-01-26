@@ -35,6 +35,7 @@
 
 # Fabian Groffen <grobian@gentoo.org> (2024-01-26)
 # compilation issues, no reverse dependencies in the tree
+# bugs #885057, #875410, #847211
 # Removal on 2024-02-26
 mail-filter/libsrs_alt
 
