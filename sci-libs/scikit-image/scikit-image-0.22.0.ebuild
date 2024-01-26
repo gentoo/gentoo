@@ -35,6 +35,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
+	test? (
+		dev-python/numpydoc[${PYTHON_USEDEP}]
+	)
 "
 
 DOCS=( CONTRIBUTORS.txt RELEASE.txt )
