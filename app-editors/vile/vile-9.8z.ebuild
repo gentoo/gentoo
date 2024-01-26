@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/lex
 	virtual/pkgconfig
-	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
+	verify-sig? ( >=sec-keys/openpgp-keys-thomasdickey-20240114 )
 "
 IDEPEND="app-eselect/eselect-vi"
 
