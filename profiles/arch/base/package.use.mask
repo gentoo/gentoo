@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is only available on some arches
+app-emulation/libvirt virtiofsd
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel grub
@@ -75,6 +80,10 @@ kde-plasma/discover snap
 # Needs dev-python/py-cpuinfo which is not ported to all of our platforms
 # See bug #894078.
 dev-python/tables cpudetection
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
+media-video/ffmpeg libplacebo
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
@@ -453,11 +462,3 @@ media-video/mplayer cpudetection
 # Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
-media-video/ffmpeg libplacebo
-
-# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
-# virtiofsd is only available on some arches
-app-emulation/libvirt virtiofsd
