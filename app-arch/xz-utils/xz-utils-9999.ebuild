@@ -45,7 +45,7 @@ DESCRIPTION="Utils for managing LZMA compressed files"
 HOMEPAGE="https://tukaani.org/xz/"
 
 # See top-level COPYING file as it outlines the various pieces and their licenses.
-LICENSE="public-domain LGPL-2.1+ GPL-2+"
+LICENSE="public-domain LGPL-2.1+ GPL-2+ doc? ( CC-BY-SA-4.0 )"
 SLOT="0"
 IUSE="doc +extra-filters pgo nls static-libs"
 
