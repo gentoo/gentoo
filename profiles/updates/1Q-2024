@@ -72,3 +72,4 @@ move dev-util/icmake dev-build/icmake
 move sci-libs/scikit-image dev-python/scikit-image
 move dev-python/confusable_homoglyphs dev-python/confusable-homoglyphs
 move dev-python/ml_dtypes dev-python/ml-dtypes
+slotmove =dev-java/commons-imaging-1.0_alpha3-r1 0 1
