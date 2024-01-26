@@ -7,7 +7,7 @@ inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="MTK GPS Datalogger Device Control"
 HOMEPAGE="https://www.bt747.org"
-SRC_URI="mirror://sourceforge/${PN}/Stable/BT747_${PV}_full.zip
+SRC_URI="mirror://sourceforge/project/bt747/Development/BT747_${PV}_full.zip
 	https://www.bt747.org/icon/bt747_128x128.gif -> ${PN}.gif"
 S="${WORKDIR}"
 
