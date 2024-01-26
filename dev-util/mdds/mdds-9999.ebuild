@@ -16,7 +16,7 @@ DESCRIPTION="Collection of multi-dimensional data structure and indexing algorit
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/2.1" # Check API version on version bumps!
+SLOT="1/3.0" # Check API version on version bumps!
 IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
 
