@@ -32,6 +32,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1.1-arc-seal-crash.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	res_ndestroy
+)
+
 src_prepare() {
 	default
 
