@@ -52,6 +52,8 @@ ADDONS_SRC=(
 	"${ADDONS_URI}/frozen-1.1.1.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
 	"${ADDONS_URI}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz"
+	# not packaged in Gentoo, https://github.com/tsyrogit/zxcvbn-c
+	"${ADDONS_URI}/zxcvbn-c-2.5.tar.gz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -108,6 +110,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
+	app-crypt/argon2:=
 	app-crypt/gpgme:=[cxx]
 	app-text/hunspell:=
 	>=app-text/libabw-0.1.0
@@ -235,7 +238,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	java? (
 		dev-java/ant-core
-		>=virtual/jdk-11
+		>=virtual/jdk-17
 	)
 	test? (
 		app-crypt/gnupg
@@ -515,6 +518,7 @@ src_configure() {
 		--without-system-jfreereport
 		--without-system-libfixmath
 		--without-system-sane
+		--without-system-zxcvbn
 		$(use_enable base report-builder)
 		$(use_enable bluetooth sdremote-bluetooth)
 		$(use_enable coinmp)
