@@ -35,9 +35,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	test? (
-		dev-python/numpydoc[${PYTHON_USEDEP}]
-	)
 "
 
 DOCS=( CONTRIBUTORS.txt RELEASE.txt )
@@ -45,6 +42,11 @@ DOCS=( CONTRIBUTORS.txt RELEASE.txt )
 distutils_enable_tests pytest
 # There is a programmable error in your configuration file:
 #distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst-parser
+
+PATCHES=(
+	# https://github.com/scikit-image/scikit-image/pull/7307
+	"${FILESDIR}/${P}-no-numpydoc.patch"
+)
 
 python_test() {
 	rm -rf skimage || die
