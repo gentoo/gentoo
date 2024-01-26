@@ -97,9 +97,6 @@ src_prepare() {
 	sed -i -r \
 		-e 's:[[:space:]]?-(Werror|Os|Oz|falign-(functions|jumps|loops|labels)=1|fomit-frame-pointer)\>::g' \
 		Makefile.flags || die
-	#sed -i '/bbsh/s:^//::' include/applets.h
-	sed -i '/^#error Aborting compilation./d' applets/applets.c || die
-	use elibc_glibc && sed -i 's:-Wl,--gc-sections::' Makefile
 	sed -i \
 		-e "/^CROSS_COMPILE/s:=.*:= ${CHOST}-:" \
 		-e "/^AR\>/s:=.*:= $(tc-getAR):" \
