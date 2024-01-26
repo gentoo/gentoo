@@ -12,11 +12,11 @@ S="${WORKDIR}/OpenDMARC-rel-${PN}-${PV//./-}"
 
 LICENSE="BSD"
 SLOT="0/3"  # 1.4 has API breakage with 1.3, yet uses same soname
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="spf +reports"
 
-DEPEND="reports? ( dev-perl/DBI )
-	|| ( mail-filter/libmilter mail-mta/sendmail )"
+DEPEND="mail-filter/libmilter:=
+	reports? ( dev-perl/DBI )"
 RDEPEND="${DEPEND}
 	acct-user/opendmarc
 	reports? (
@@ -29,6 +29,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1.1-CVE-2021-34555.patch
 	"${FILESDIR}"/${PN}-1.4.1.1-underlinking.patch
+	"${FILESDIR}"/${PN}-1.4.1.1-arc-seal-crash.patch
 )
 
 src_prepare() {
