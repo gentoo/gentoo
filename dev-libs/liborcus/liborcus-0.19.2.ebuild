@@ -10,7 +10,7 @@ DESCRIPTION="Standalone file import filter library for spreadsheet documents"
 HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 
 if [[ ${PV} == *9999* ]]; then
-	MDDS_SLOT="1/2.1"
+	MDDS_SLOT="1/3.0"
 	EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 	inherit git-r3
 else
