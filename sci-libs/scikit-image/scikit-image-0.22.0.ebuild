@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,6 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-
 PROPERTIES="test_network"
 RESTRICT="test"
 
@@ -45,9 +44,8 @@ distutils_enable_tests pytest
 #distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst-parser
 
 python_test() {
-	# This needs to be run in the install dir
-	cd "${WORKDIR}/${PN//-/_}-${PV}-${EPYTHON//./_}/install/usr/lib/${EPYTHON}/site-packages/skimage" || die
-	distutils-r1_python_test
+	rm -rf skimage || die
+	epytest --pyargs skimage
 }
 
 pkg_postinst() {
