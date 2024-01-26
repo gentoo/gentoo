@@ -64,5 +64,5 @@ pkg_postinst() {
 	optfeature "2D triangulations of polygons" dev-python/mapbox_earcut
 	optfeature "loading a number of additional mesh formats" dev-python/meshio
 	optfeature "figuring out how much memory we have" dev-python/psutil
-	optfeature "marching cubes and other nice stuff" sci-libs/scikit-image
+	optfeature "marching cubes and other nice stuff" dev-python/scikit-image
 }
