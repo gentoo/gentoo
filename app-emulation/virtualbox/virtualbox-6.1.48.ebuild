@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	~app-emulation/virtualbox-modules-${PV}
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
-	dev-libs/libxml2
+	<dev-libs/libxml2-2.12.0
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	sys-libs/zlib:=

@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	acct-group/vboxusers
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libtpms
-	dev-libs/libxml2
+	<dev-libs/libxml2-2.12.0
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
