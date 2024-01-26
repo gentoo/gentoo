@@ -51,7 +51,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.1.1.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz"
+	"${ADDONS_URI}/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz"
 	"base? (
 		${ADDONS_URI}/commons-logging-1.2-src.tar.gz
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -295,6 +295,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
+
+	# maybe upstreamable
+	"${FILESDIR}/${PN}-7.5.8.2-icu-74-compatibility.patch"
+
+	# 24.2 branch
+	"${FILESDIR}/${PN}-7.5.9.2-libxml2-2.12.patch" # bug 917691
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
