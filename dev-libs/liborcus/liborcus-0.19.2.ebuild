@@ -47,7 +47,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--without-benchmark
 		--disable-werror
 		$(use_enable python)
 		$(use_enable spreadsheet-model)
