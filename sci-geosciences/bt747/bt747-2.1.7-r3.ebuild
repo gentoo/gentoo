@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit desktop java-pkg-2 java-ant-2
 
@@ -9,11 +9,13 @@ DESCRIPTION="MTK GPS Datalogger Device Control"
 HOMEPAGE="https://www.bt747.org"
 SRC_URI="mirror://sourceforge/${PN}/Stable/BT747_${PV}_full.zip
 	https://www.bt747.org/icon/bt747_128x128.gif -> ${PN}.gif"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="1"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="app-arch/unzip:0"
 CDEPEND="
 	dev-java/commons-imaging:0
 	dev-java/jcalendar:1.2
@@ -28,13 +30,12 @@ CDEPEND="
 RDEPEND="
 	${CDEPEND}
 	dev-libs/glib:2[dbus]
-	>=virtual/jre-1.7
+	>=virtual/jre-1.8:*
 "
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.7
-	app-arch/unzip
+	>=virtual/jdk-1.8:*
 "
 
 EANT_BUILD_TARGET="dist.j2se"
@@ -42,9 +43,8 @@ EANT_EXTRA_ARGS="-Dskip.proguard=yes -Dsvn=true -Dsvnversion=true -Dbuild.curren
 EANT_GENTOO_CLASSPATH="commons-imaging,jcalendar-1.2,jchart2d,jopt-simple,rxtx-2,swing-layout-1,swingx-1.6,swingx-ws-bt747"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 
-S="${WORKDIR}"
-
 src_prepare() {
+	java-pkg-2_src_prepare
 	# Fix for newer jchart2d.
 	eapply "${FILESDIR}/jchart2d-3.2.patch"
 
@@ -54,8 +54,6 @@ src_prepare() {
 	# GraphicsUtilities moved in later SwingX versions.
 	sed -i "s:org\.jdesktop\.swingx\.graphics\.GraphicsUtilities:org.jdesktop.swingx.util.GraphicsUtilities:g" \
 		src_j2se/net/sf/bt747/j2se/app/list/FileListCellRenderer.java || die
-
-	eapply_user
 }
 
 src_install() {
