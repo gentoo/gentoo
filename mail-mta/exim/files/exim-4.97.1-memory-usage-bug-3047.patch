@@ -1,0 +1,56 @@
+https://bugs.exim.org/show_bug.cgi?id=3047
+https://bugs.gentoo.org/922780
+
+diff --git a/src/src/transports/appendfile.c b/src/src/transports/appendfile.c
+index ec41ca035..91b353079 100644
+--- a/src/transports/appendfile.c
++++ b/src/transports/appendfile.c
+@@ -153,6 +153,10 @@ static const char *mailbox_formats[] = {
+   (!ob->quota_warn_threshold_is_percent || ob->quota_value > 0))
+ 
+ 
++/* Free memory allocated by PCRE2 every so often, because a recent version
++is now using 20kB for every match call */
++
++#define RESET_STORE_FILECNT	1000
+ 
+ /*************************************************
+ *              Setup entry point                 *
+@@ -661,13 +665,14 @@ Returns:        the sum of the sizes of the stattable files
+ off_t
+ check_dir_size(const uschar * dirname, int * countptr, const pcre2_code * re)
+ {
+-DIR *dir;
++DIR * dir;
+ off_t sum = 0;
+-int count = *countptr;
++int count = *countptr, lcount = RESET_STORE_FILECNT;
++rmark reset_point = store_mark();
+ 
+ if (!(dir = exim_opendir(dirname))) return 0;
+ 
+-for (struct dirent *ent; ent = readdir(dir); )
++for (struct dirent * ent; ent = readdir(dir); )
+   {
+   uschar * path, * name = US ent->d_name;
+   struct stat statbuf;
+@@ -675,6 +680,11 @@ for (struct dirent *ent; ent = readdir(dir); )
+   if (Ustrcmp(name, ".") == 0 || Ustrcmp(name, "..") == 0) continue;
+ 
+   count++;
++  if (--lcount == 0)
++    {
++    store_reset(reset_point); reset_point = store_mark();
++    lcount = RESET_STORE_FILECNT;
++    }
+ 
+   /* If there's a regex, try to find the size using it */
+ 
+@@ -726,6 +736,7 @@ DEBUG(D_transport)
+   debug_printf("check_dir_size: dir=%s sum=" OFF_T_FMT " count=%d\n", dirname,
+     sum, count);
+ 
++store_reset(reset_point);
+ *countptr = count;
+ return sum;
+ }
