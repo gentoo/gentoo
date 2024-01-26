@@ -16,6 +16,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	# even if these components may not be compiled in
 	EGIT_SUBMODULES=(
 		'-*'
+		3rdparty/cmake-compiler-flags
 		3rdparty/FindPythonInterpreter
 		3rdparty/gsl
 		3rdparty/minhook
