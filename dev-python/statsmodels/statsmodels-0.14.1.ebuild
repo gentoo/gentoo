@@ -65,6 +65,9 @@ python_test() {
 		imputation/tests/test_mice.py::TestMICE::test_combine
 		stats/tests/test_mediation.py::test_mixedlm
 		"stats/tests/test_corrpsd.py::test_corrpsd_threshold[0]"
+
+		# new warning from pandas
+		tsa/base/tests/test_tsa_indexes.py::test_instantiation_valid
 	)
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 
