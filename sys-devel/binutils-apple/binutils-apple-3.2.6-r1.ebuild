@@ -249,6 +249,8 @@ src_install() {
 	install_ld64
 	install_cctools
 
+	docompress /usr/share/binutils-data/${CTARGET}/${PV}/man
+
 	cd "${S}"
 	insinto /etc/env.d/binutils
 	cat <<-EOF > env.d
