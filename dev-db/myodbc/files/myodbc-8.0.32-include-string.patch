@@ -1,0 +1,18 @@
+From https://github.com/mysql/mysql-connector-odbc/commit/60b6dfca71c4deddf877d93ac61a1f133ce70dc6
+https://bugs.gentoo.org/919501
+
+From: Bogdan Degtyariov <bogdan.degtyariov@oracle.com>
+Date: Mon, 18 Dec 2023 16:21:29 +1100
+Subject: [PATCH] Fix compiler error in MacOS by including string.h into dltest
+
+Change-Id: Ifa32ea10ae4190ef0848223a9f35c605ff2cfdfe
+--- a/dltest/dltest.c
++++ b/dltest/dltest.c
+@@ -28,6 +28,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef WIN32
+     #include <windows.h>

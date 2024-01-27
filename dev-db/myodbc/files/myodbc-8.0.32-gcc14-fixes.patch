@@ -1,0 +1,60 @@
+From https://github.com/mysql/mysql-connector-odbc/pull/12/commits/edb8c564d774e163642bc0aa46ab8c282cc2c77d
+
+From: Christopher Fore <csfore@posteo.net>
+Date: Thu, 25 Jan 2024 11:48:39 -0500
+Subject: [PATCH] test: Fix compile errors on GCC 14
+
+Starting in GCC 14, it will begin enforcing C99 so errors regarding
+incompatible pointer types and so on will be more common. There are
+currently three C99 build errors that occur:
+
+1:
+test/odbctap.h:107:18: error: implicit declaration of function `wcslen'
+[-Wimplicit-function-declaration]
+  107 |   for (i= 0; i < wcslen(wstr); ++i)
+
+2:
+test/odbctap.h:601:20: error: initialization of `SQLWCHAR *'
+{aka `short unsigned int *'} from incompatible pointer type
+
+`wchar_t *' {aka `int *'} [-Wincompatible-pointer-types]
+  601 |   SQLWCHAR *val_a= (a), *val_b= (b);
+
+3:
+error: passing argument 6 of `SQLGetData' from incompatible pointer
+type [-Wincompatible-pointer-types]
+ 1172 |   ok_stmt(hstmt, SQLGetData(hstmt, 0, SQL_C_BOOKMARK, abookmark, 255, &outlen));
+
+The first is fixed by importing <wchar.h>, the second by changing
+SQLWCHAR to wchar_t, and the third by setting outlen's type to the
+SQLLEN type.
+--- a/test/my_result2.c
++++ b/test/my_result2.c
+@@ -1104,7 +1104,7 @@ DECLARE_TEST(t_bookmark)
+ {
+   SQLLEN len= 0;
+   SQLINTEGER abookmark[4];
+-  SQLINTEGER outlen;
++  SQLLEN outlen;
+   SQLUSMALLINT rowStatus[4];
+   SQLUINTEGER numRowsFetched;
+   SQLINTEGER nData[4];
+--- a/test/odbctap.h
++++ b/test/odbctap.h
+@@ -55,6 +55,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <wchar.h>
+ 
+ #ifdef _WIN32
+ /* Driver does that - applications should do that too, to have same size of structures */
+@@ -597,7 +598,7 @@ do { \
+ */
+ #define is_wstr(a, b, c) \
+ do { \
+-  SQLWCHAR *val_a= (a), *val_b= (b); \
++  wchar_t *val_a= (a), *val_b= (b); \
+   int val_len= (int)(c); \
+   if (memcmp(val_a, val_b, val_len * sizeof(SQLWCHAR)) != 0) { \
+     printf("# %s ('%*ls') != '%*ls' in %s on line %d\n", \
