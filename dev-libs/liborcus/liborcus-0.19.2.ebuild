@@ -57,6 +57,6 @@ src_configure() {
 
 src_install() {
 	default
-	python_optimize
+	use python && python_optimize
 	find "${D}" -name '*.la' -type f -delete || die
 }
