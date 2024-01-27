@@ -39,6 +39,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 		>=dev-ruby/test-unit-2.4
 		>=dev-ruby/connection_pool-2.2.2
+		dev-ruby/patron
 		dev-ruby/rack
 		>=dev-ruby/rack-test-0.6
 		dev-ruby/webmock
