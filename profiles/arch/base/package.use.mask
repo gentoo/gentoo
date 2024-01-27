@@ -1,6 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-python/PyQt6 and dev-python/pyside6 have very few keywords
+dev-python/QtPy pyqt6 pyside6
 
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is only available on some arches

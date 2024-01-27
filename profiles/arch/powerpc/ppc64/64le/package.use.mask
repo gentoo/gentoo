@@ -1,6 +1,12 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-qt/qtwebengine:6 is not available here, technically does
+# not need to be masked for Qt5 (is keyworded) but would require
+# USE=qt5-webengine or so to make the distinction with Qt6.
+sci-astronomy/stellarium webengine
+
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, which IS available on ppc64le.
 >=sys-apps/fwupd-1.9.10 -amdgpu
