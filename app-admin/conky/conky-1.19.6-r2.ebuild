@@ -17,8 +17,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ppc64 ~riscv sparc x86"
 IUSE="apcupsd bundled-toluapp cmus curl doc extras hddtemp ical iconv imlib
 	intel-backlight iostats irc lua-cairo lua-imlib lua-rsvg math moc mpd
-	mysql ncurses nvidia +portmon pulseaudio rss systemd thinkpad truetype
+	mysql ncurses nvidia +portmon pulseaudio rss systemd test thinkpad truetype
 	wayland webserver wifi X xinerama xmms2"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
@@ -68,6 +69,9 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	test? (
+		dev-cpp/catch
+	)
 	wayland? (
 		dev-libs/wayland-protocols
 	)
@@ -188,6 +192,7 @@ src_configure() {
 		-DBUILD_PORT_MONITORS=$(usex portmon)
 		-DBUILD_PULSEAUDIO=$(usex pulseaudio)
 		-DBUILD_RSS=$(usex rss)
+		-DBUILD_TESTS=$(usex test)
 		-DBUILD_WAYLAND=$(usex wayland)
 		-DBUILD_WLAN=$(usex wifi)
 		-DBUILD_XFT=$(usex truetype)
