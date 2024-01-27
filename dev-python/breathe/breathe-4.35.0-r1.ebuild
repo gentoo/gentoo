@@ -35,3 +35,8 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/breathe-doc/breathe/pull/956
+	"${FILESDIR}/${P}-sphinx-7.2.patch"
+)
