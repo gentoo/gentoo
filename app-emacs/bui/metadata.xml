@@ -11,4 +11,5 @@
     <bugs-to>https://github.com/alezost/bui.el/issues/</bugs-to>
     <remote-id type="github">alezost/bui.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

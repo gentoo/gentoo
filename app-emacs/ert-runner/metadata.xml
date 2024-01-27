@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/rejeep/ert-runner.el/issues/</bugs-to>
     <remote-id type="github">rejeep/ert-runner.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

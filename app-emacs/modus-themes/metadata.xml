@@ -15,4 +15,5 @@
     <bugs-to>https://github.com/protesilaos/modus-themes/issues/</bugs-to>
     <remote-id type="github">protesilaos/modus-themes</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>
