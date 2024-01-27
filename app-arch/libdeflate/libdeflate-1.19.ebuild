@@ -19,6 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="+gzip static-libs +utils +zlib test"
+REQUIRED_USE="test? ( gzip zlib )"
 RESTRICT="!test? ( test )"
 
 src_configure() {
