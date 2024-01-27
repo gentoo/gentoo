@@ -128,6 +128,9 @@ check_distribution_components() {
 					# TableGen lib + deps
 					LLVMDemangle|LLVMSupport|LLVMTableGen)
 						;;
+					# used by lldb
+					LLVMDebuginfod)
+						;;
 					# testing libraries
 					LLVMTestingAnnotations|LLVMTestingSupport)
 						;;
@@ -217,6 +220,9 @@ get_distribution_components() {
 
 	if multilib_is_native_abi; then
 		out+=(
+			# library used by lldb
+			LLVMDebuginfod
+
 			# utilities
 			llvm-tblgen
 			FileCheck
