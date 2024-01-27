@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools
 
 NCMPCPP_COMMIT="9f44edf0b1d74da7cefbd498341d59bc52f6043f"
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ncmpcpp/ncmpcpp/archive/${NCMPCPP_COMMIT}.tar.gz -> 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="clock lto outputs taglib visualizer"
+IUSE="clock outputs taglib visualizer"
 
 RDEPEND="
 	dev-libs/boost:=[icu,nls]
@@ -40,13 +40,12 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-lto
-
+	# --with-lto only appends -flto
 	econf \
 		$(use_enable clock) \
 		$(use_enable outputs) \
 		$(use_enable visualizer) \
-		$(use_with lto) \
+		--without-lto \
 		$(use_with taglib) \
 		$(use_with visualizer fftw)
 }
