@@ -22,6 +22,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.20.9-no-static.patch"
 )
 
+# XXX: Please, don't forget to check this on next version bump.
+# And, maybe remove as non-needed, if version in Makefile will
+# match the release.
+# ref: https://github.com/tree-sitter/tree-sitter/issues/2210
+# see Makefile:1￼
+QA_PKGCONFIG_VERSION="0.20.10"
+
 src_prepare() {
 	default
 	tc-export CC
@@ -35,9 +42,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		  PREFIX="${EPREFIX}/usr" \
-		  LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		  install
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		install
 }
 
 pkg_postinst() {

@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index 6030852e..ea1c4617 100644
+--- a/Makefile
++++ b/Makefile
+@@ -41,7 +41,7 @@ ifneq (,$(filter $(shell uname),FreeBSD NetBSD DragonFly))
+ 	PCLIBDIR := $(PREFIX)/libdata/pkgconfig
+ endif
+ 
+-all: libtree-sitter.a libtree-sitter.$(SOEXTVER)
++all: libtree-sitter.$(SOEXTVER)
+ 
+ libtree-sitter.a: $(OBJ)
+ 	$(AR) rcs $@ $^
+@@ -61,7 +61,6 @@ install: all
+ 	    tree-sitter.pc.in > tree-sitter.pc
+ 
+ 	install -d '$(DESTDIR)$(LIBDIR)'
+-	install -m644 libtree-sitter.a '$(DESTDIR)$(LIBDIR)'/
+ 	install -m755 libtree-sitter.$(SOEXTVER) '$(DESTDIR)$(LIBDIR)'/
+ 	ln -sf libtree-sitter.$(SOEXTVER) '$(DESTDIR)$(LIBDIR)'/libtree-sitter.$(SOEXTVER_MAJOR)
+ 	ln -sf libtree-sitter.$(SOEXTVER) '$(DESTDIR)$(LIBDIR)'/libtree-sitter.$(SOEXT)
