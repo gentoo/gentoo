@@ -3,20 +3,21 @@
 
 EAPI=8
 
-inherit autotools desktop flag-o-matic xdg subversion
+inherit autotools desktop flag-o-matic xdg
 
 DESCRIPTION="An instrument editor for gig files"
 HOMEPAGE="http://www.linuxsampler.org/"
-ESVN_REPO_URI="https://svn.linuxsampler.org/svn/gigedit/trunk"
+SRC_URI="http://download.linuxsampler.org/packages/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-cpp/gtkmm:3.0
 	media-libs/libgig
 	media-libs/libsndfile
-	media-sound/linuxsampler"
+	>=media-sound/linuxsampler-2.3.0"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/gettext
