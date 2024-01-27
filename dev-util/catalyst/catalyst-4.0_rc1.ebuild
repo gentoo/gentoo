@@ -106,6 +106,11 @@ python_install_all() {
 	fi
 }
 
+python_install() {
+	distutils-r1_python_install
+	rm -rv "${D}"$(python_get_sitedir)/usr
+}
+
 src_install() {
 	distutils-r1_src_install
 
