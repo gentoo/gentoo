@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,15 +9,19 @@ inherit lua-single qmake-utils toolchain-funcs verify-sig xdg
 
 DESCRIPTION="Converts source code to formatted text (HTML, LaTeX, etc.) with syntax highlight"
 HOMEPAGE="http://www.andre-simon.de/"
+# This is arbitrary; upstream uses master.  Update when possible.
+TESTSUITE_COMMIT="a3479468672cdbc570a17ae84e047fe8f0b88798"
 SRC_URI="
 	http://www.andre-simon.de/zip/${P}.tar.bz2
+	test? ( https://gitlab.com/tajmone/${PN}-test-suite/-/archive/${TESTSUITE_COMMIT}/${PN}-test-suite-${TESTSUITE_COMMIT}.tar.bz2 )
 	verify-sig? ( http://www.andre-simon.de/zip/${P}.tar.bz2.asc )
 "
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="examples gui"
+IUSE="examples gui test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -95,6 +99,13 @@ src_compile() {
 	if use gui ; then
 		emake -C src/gui-qt
 	fi
+}
+
+src_test() {
+	find "../${PN}-test-suite-${TESTSUITE_COMMIT}" -mindepth 1 -maxdepth 1 -type d | sort | while read line
+	do
+		"${SHELL}" "${line}/regression.sh" || die "Regression tests failed for language $(basename "${line}")"
+	done
 }
 
 src_install() {
