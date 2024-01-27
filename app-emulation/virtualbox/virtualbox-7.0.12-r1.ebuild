@@ -39,6 +39,7 @@ IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl py
 
 unset WATCOM #856769
 
+# <libxml2-2.12.0: bug #922445
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-group/vboxusers

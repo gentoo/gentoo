@@ -31,11 +31,12 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
 
 unset WATCOM #856769
 
+# <libxml2-2.12.0: bug #922445
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-group/vboxusers
@@ -243,6 +244,9 @@ src_prepare() {
 			>> LocalConfig.kmk || die
 	fi
 
+	# bug #916002, #488176
+	tc-ld-force-bfd
+
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
 		-i Config.kmk src/libs/xpcom18a4/Config.kmk || die
@@ -271,8 +275,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-ld-disable-gold # bug #488176
-
 	#856811 #864274
 	# cannot filter out only one flag, some combinations of these flags produce buggy executables
 	for i in abm avx avx2 bmi bmi2 fma fma4 popcnt; do
@@ -326,6 +328,9 @@ src_configure() {
 	if use amd64 && ! has_multilib_profile ; then
 		myconf+=( --disable-vmmraw )
 	fi
+
+	# bug #908814
+	filter-lto
 
 	# bug #843437
 	cat >> LocalConfig.kmk <<-EOF || die
