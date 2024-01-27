@@ -51,6 +51,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/psycopg/psycopg/pull/725
+	"${FILESDIR}/${P}-musl.patch"
+)
+
 python_compile() {
 	# Python code + ctypes backend
 	cd psycopg || die
