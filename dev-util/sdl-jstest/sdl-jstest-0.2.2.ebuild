@@ -41,6 +41,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-appstream-util-nonet.patch
+	"${FILESDIR}"/${P}-cmake-3.5.patch
 	"${FILESDIR}"/${P}-sdl1.patch
 )
 
