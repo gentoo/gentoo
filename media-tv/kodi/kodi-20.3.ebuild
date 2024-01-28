@@ -271,6 +271,7 @@ Please consider enabling IP_MULTICAST under Networking options.
 
 PATCHES=(
 	"${FILESDIR}"/kodi-20.2-binutils-2.41.patch
+	"${FILESDIR}"/kodi-20.3-gcc-14.patch
 )
 
 pkg_setup() {
