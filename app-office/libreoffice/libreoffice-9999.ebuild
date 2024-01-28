@@ -68,7 +68,11 @@ ADDONS_SRC=(
 		${ADDONS_URI}/ace6ab49184e329db254e454a010f56d-libxml-1.1.7.zip
 		${ADDONS_URI}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
 	)"
-	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
+	# Java-WebSocket: not packaged in Gentoo, https://github.com/TooTallNate/Java-WebSocket
+	"java? (
+		${ADDONS_URI}/Java-WebSocket-1.5.4.tar.gz
+		${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
+	)"
 	# no release for 8 years, should we package it?
 	"libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )"
 	# Does not build with 1.6 rhino at all
