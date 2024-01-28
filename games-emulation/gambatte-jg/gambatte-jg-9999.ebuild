@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,32 +15,61 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	SRC_URI="https://gitlab.com/jgemu/${MY_PN}/-/archive/${PV}/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="BSD GPL-2"
+LICENSE="
+	GPL-2
+	examples? ( 0BSD )
+	jgmodule? ( BSD )
+"
 SLOT="1"
+IUSE="examples +jgmodule shared"
+REQUIRED_USE="|| ( examples jgmodule shared )"
 
 DEPEND="
-	media-libs/jg:1=
-	media-libs/soxr
+	examples? (
+		media-libs/libsdl2[opengl,sound,video]
+		media-libs/speexdsp
+	)
+	jgmodule? (
+		media-libs/jg:1=
+		media-libs/soxr
+	)
 "
 RDEPEND="
 	${DEPEND}
-	games-emulation/jgrf
+	jgmodule? ( games-emulation/jgrf )
 "
 BDEPEND="
 	virtual/pkgconfig
 "
 
+pkg_setup() {
+	local makeopts=(
+		DISABLE_MODULE=$(usex jgmodule 0 1)
+		ENABLE_EXAMPLE=$(usex examples 1 0)
+		ENABLE_SHARED=$(usex shared 1 0)
+	)
+	export MY_MAKEOPTS="${makeopts[@]}"
+}
+
 src_compile() {
-	emake CXX="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
+	local mymakeargs=(
+		CXX="$(tc-getCXX)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		${MY_MAKEOPTS}
+	)
+	emake "${mymakeargs[@]}"
 }
 
 src_install() {
-	emake install \
-		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}"/usr \
-		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+	local mymakeargs=(
+		DESTDIR="${D}"
+		PREFIX="${EPREFIX}"/usr
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF}
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		${MY_MAKEOPTS}
+	)
+	emake install "${mymakeargs[@]}"
 }
