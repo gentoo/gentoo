@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs verify-sig
+inherit multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="
@@ -36,8 +36,6 @@ BDEPEND="
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libidn.asc
 
 multilib_src_configure() {
-	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
-
 	local myconf=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		$(use_enable static-libs static)
