@@ -312,6 +312,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
+
+	# not yet upstream, sourced from Mandriva
+	"${FILESDIR}/${PN}-24.2-kf6-buildfix.patch"
+
+	# maybe upstreamable
+	"${FILESDIR}/${PN}-7.5.8.2-icu-74-compatibility.patch"
+
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
