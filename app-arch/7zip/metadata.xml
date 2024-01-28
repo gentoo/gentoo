@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>k2k@narod.ru</email>
+		<name>Evgeny Grin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="7z">Enable 7z binary with all codecs compiled as shared library and with support for external codecs</flag>
+		<flag name="7za">Enable 7za standalone binary which supports only 7z, xz, cab, zip, gzip, bzip2, and tar formats</flag>
+		<flag name="7zdec">Enable 7zdec, a tiny standalone binary which supports only 7z decompression. Use lto to produce even smaller binary.</flag>
+		<flag name="7zr">Enable 7za standalone binary which supports 7z format only</flag>
+		<flag name="7zz">Enable 7zz stanadlone binary with support for all codecs. If 7z binary is not enabled, 7z symlink is installed automatically</flag>
+		<flag name="jwasm">Enable assembler code on x86 and amd64, build with <pkg>dev-lang/jwasm</pkg></flag>
+		<flag name="lto">Build with Link-Time Optimization</flag>
+		<flag name="rar">Enable support of rar archive decoding with unRAR-licensed rar decoder</flag>
+		<flag name="sfx">Enable SelF-eXtract module</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sevenzip</remote-id>
+	</upstream>
+</pkgmetadata>
