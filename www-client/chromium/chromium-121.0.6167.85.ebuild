@@ -1,4 +1,4 @@
-# Copyright 2009-2023 Gentoo Authors
+# Copyright 2009-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -760,10 +760,11 @@ chromium_configure() {
 		myconf_gn+=" is_clang=false"
 	fi
 
+	# https://bugs.gentoo.org/918897#c32
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# 641556: Force lld for lto and pgo builds, otherwise disable
 	if needs_lld || use lto || use pgo; then
-		# https://bugs.gentoo.org/918897#c32
-		append-ldflags -Wl,--undefined-version
 		myconf_gn+=" use_lld=true"
 	else
 		# This doesn't prevent lld from being used, but rather prevents gn from forcing it
