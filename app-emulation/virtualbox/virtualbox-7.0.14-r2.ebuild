@@ -39,13 +39,12 @@ IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl py
 
 unset WATCOM #856769
 
-# <libxml2-2.12.0: bug #922445
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-group/vboxusers
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libtpms
-	<dev-libs/libxml2-2.12.0
+	dev-libs/libxml2
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
@@ -209,6 +208,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.6-fix-libxml2.patch
 	# 913109
 	"${FILESDIR}"/${PN}-7.0.10-fix-binutils-hardened.patch
+	# 922445
+	"${FILESDIR}"/${PN}-7.0.14-libxml2-2.12.patch
 
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.0.8/patches
