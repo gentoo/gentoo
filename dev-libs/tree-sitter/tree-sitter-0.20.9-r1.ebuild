@@ -1,6 +1,8 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bump tree-sitter-cli at the same time.
+
 EAPI=8
 inherit optfeature toolchain-funcs
 
@@ -37,7 +39,8 @@ src_prepare() {
 src_compile() {
 	emake \
 		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		STRIP=""
 }
 
 src_install() {
