@@ -5,10 +5,6 @@
     <email>matthew@gentoo.org</email>
     <name>Matthew Smith</name>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>telans@posteo.de</email>
-    <name>James Beddek</name>
-  </maintainer>
   <maintainer type="person">
     <email>candrews@gentoo.org</email>
     <name>Craig Andrews</name>
