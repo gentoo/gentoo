@@ -6,20 +6,19 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 pypi
 
-DESCRIPTION="Buildbot react based console-view plugin"
+DESCRIPTION="BuildBot react based grid view web interface"
 HOMEPAGE="https://buildbot.net/
 	https://github.com/buildbot/buildbot
-	https://pypi.org/project/buildbot-react-console-view/"
+	https://pypi.org/project/buildbot-react-grid-view/"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
 
-RDEPEND="
+BDEPEND="
 	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
 	~dev-util/buildbot-www-react-${PV}[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}"

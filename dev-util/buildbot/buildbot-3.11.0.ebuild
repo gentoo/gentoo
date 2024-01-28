@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit readme.gentoo-r1 systemd distutils-r1 pypi
 
 DESCRIPTION="BuildBot build automation system"
@@ -19,10 +19,6 @@ KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
 
 IUSE="crypt docker examples irc test"
 RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}/buildbot-${PV}-importlib.resources.patch"
-)
 
 RDEPEND="
 	acct-user/buildbot
@@ -55,7 +51,7 @@ RDEPEND="
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
 	docker? (
-		>=dev-python/docker-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/docker-7.0.0[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
@@ -69,7 +65,7 @@ BDEPEND="
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/ldap3[${PYTHON_USEDEP}]
 		>=dev-python/markdown-3.0.0[${PYTHON_USEDEP}]
-		dev-python/moto[${PYTHON_USEDEP}]
+		>=dev-python/moto-4.2.13[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/pypugjs[${PYTHON_USEDEP}]
 		dev-python/txrequests[${PYTHON_USEDEP}]
