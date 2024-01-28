@@ -18,7 +18,6 @@ else
 fi
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE=""
 
 BDEPEND="
 	sys-apps/texinfo
@@ -33,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.1.5-gentoo-docdir.patch"
 	"${FILESDIR}/${PN}-0.1.9998_pre20120806-qa.patch"
 	"${FILESDIR}/${PN}-0.1.9998_pre20110817-kash-link-pthread.patch"
-	#"${FILESDIR}/${PN}-0.1.9998.3407-gold.patch"
+	"${FILESDIR}/${PN}-0.1.9998.3499-gold.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-bison.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-lto.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3499-implicit-function-declaration.patch"

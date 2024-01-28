@@ -1,0 +1,21 @@
+Fix build with <libxml2-2.12.
+--- a/src/xmlParser.cc
++++ b/src/xmlParser.cc
+@@ -57,7 +57,7 @@ XMLNode *XMLRootNode::parseFile(const std::string &filename, XMLResults* results
+ 
+     doc = xmlParseFile(filename.c_str());
+     if ((doc == NULL) && (results != NULL)) {
+-        const xmlError *error = xmlGetLastError();
++        const xmlError *error = (const xmlError*) xmlGetLastError();
+         results->message = error->message;
+         results->line = error->line;
+         results->code = error->code;
+@@ -72,7 +72,7 @@ XMLNode *XMLRootNode::parseString(const std::string &xml, XMLResults* results)
+ 
+     doc = xmlParseMemory(xml.c_str(), xml.length());
+     if ((doc == NULL) && (results != NULL)) {
+-        const xmlError *error = xmlGetLastError();
++        const xmlError *error = (const xmlError*) xmlGetLastError();
+         results->message = error->message;
+         results->line = error->line;
+         results->code = error->code;

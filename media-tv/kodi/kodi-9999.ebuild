@@ -12,6 +12,7 @@ CODENAME="Omega"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
+FFMPEG_VERSION="6.0.1"
 
 # Java bundles from xbmc/interfaces/swig/CMakeLists.txt
 GROOVY_VERSION="4.0.16"
@@ -48,6 +49,9 @@ SRC_URI="
 		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	)
+	!system-ffmpeg? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
+	)
 "
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
@@ -72,7 +76,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio raspberry-pi samba system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio raspberry-pi samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	^^ ( gbm wayland X )
@@ -279,6 +283,10 @@ src_unpack() {
 	else
 		unpack ${MY_P}.tar.gz
 	fi
+
+	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
+	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
+	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
 }
 
 src_prepare() {
@@ -374,8 +382,9 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
+		-DWITH_FFMPEG=$(usex system-ffmpeg)
+
 		#To bundle or not
-		-DENABLE_INTERNAL_CEC=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
@@ -393,11 +402,18 @@ src_configure() {
 		-DTARBALL_DIR="${DISTDIR}"
 		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.gz"
 		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.gz"
+		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
+		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
+		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
+	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
+	use !system-ffmpeg && mycmakeargs+=(
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.gz"
+	)
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
 
@@ -453,6 +469,8 @@ src_test() {
 		# bug #779184
 		# https://github.com/xbmc/xbmc/issues/18594
 		$(usev x86 TestDateTime.SetFromDBTime)
+		# Tries to ping localhost, naturally breaking network-sandbox
+		TestNetwork.PingHost
 	)
 
 	# see https://github.com/xbmc/xbmc/issues/17860#issuecomment-630120213
