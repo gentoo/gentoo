@@ -6,6 +6,9 @@
     <email>eras@gentoo.org</email>
     <name>Eray Aslan</name>
 </maintainer>
+<upstream>
+    <remote-id type="github">latchset/libverto</remote-id>
+</upstream>
 <use>
     <flag name="glib">Support event loops using <pkg>dev-libs/glib</pkg></flag>
     <flag name="libev">Support event loops using <pkg>dev-libs/libev</pkg></flag>
