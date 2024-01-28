@@ -485,6 +485,16 @@ sparc		default/linux/sparc/17.0/64ul/desktop				stable
 sparc		default/linux/sparc/17.0/64ul/developer				exp
 sparc		default/linux/sparc/17.0/64ul/systemd				stable
 sparc		default/linux/sparc/17.0/64ul/systemd/merged-usr		stable
+sparc		default/linux/sparc/23.0					exp
+sparc		default/linux/sparc/23.0/desktop				exp
+sparc		default/linux/sparc/23.0/systemd				exp
+sparc		default/linux/sparc/23.0/64ul					exp
+sparc		default/linux/sparc/23.0/64ul/desktop				exp
+sparc		default/linux/sparc/23.0/64ul/systemd				exp
+sparc		default/linux/sparc/23.0/split-usr				exp
+sparc		default/linux/sparc/23.0/split-usr/desktop			exp
+sparc		default/linux/sparc/23.0/split-usr/64ul				exp
+sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			exp
 
 # x86 Profiles
 # @MAINTAINER: x86@gentoo.org

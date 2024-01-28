@@ -74,7 +74,7 @@ COMMON_X_DEPEND="
 
 COMMON_SNAPSHOT_DEPEND="
 	system-icu? ( >=dev-libs/icu-71.1:= )
-	>=dev-libs/libxml2-2.9.4-r3:=[icu]
+	<dev-libs/libxml2-2.12.0:=[icu]
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.26:=
 	dev-libs/libxslt:=

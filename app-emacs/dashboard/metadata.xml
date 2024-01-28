@@ -11,4 +11,5 @@
     <bugs-to>https://github.com/emacs-dashboard/emacs-dashboard/issues/</bugs-to>
     <remote-id type="github">emacs-dashboard/emacs-dashboard</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

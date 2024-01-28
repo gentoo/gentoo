@@ -46,7 +46,7 @@ distutils_enable_tests pytest
 # 	dev-python/seaborn \
 # 	dev-python/sphinx-gallery \
 # 	dev-python/sphinx-prompt \
-# 	sci-libs/scikit-image
+# 	dev-python/scikit-image
 
 python_test() {
 	# This needs to be run in the install dir

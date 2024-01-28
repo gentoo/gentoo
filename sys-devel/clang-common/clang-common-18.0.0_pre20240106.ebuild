@@ -11,8 +11,8 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 IUSE="
-	default-compiler-rt default-libcxx default-lld llvm-libunwind
-	hardened
+	default-compiler-rt default-libcxx default-lld
+	bootstrap-prefix hardened llvm-libunwind
 "
 
 PDEPEND="
@@ -73,6 +73,12 @@ _doclang_cfg() {
 			@gentoo-common-ld.cfg
 		EOF
 	done
+
+	if use kernel_Darwin; then
+		cat >> "${ED}/etc/clang/${triple}-clang++.cfg" <<-EOF || die
+			-lc++abi
+		EOF
+	fi
 
 	newins - "${triple}-clang-cpp.cfg" <<-EOF
 		# This configuration file is used by the ${triple}-clang-cpp driver.
@@ -242,6 +248,26 @@ src_install() {
 		local abi_chost=$(get_abi_CHOST "${abi}")
 		doclang_cfg "${abi_chost}"
 	done
+
+	if use kernel_Darwin; then
+		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+			# Gentoo Prefix on Darwin
+			-Wl,-search_paths_first
+			-Wl,-rpath,${EPREFIX}/usr/lib
+			-L ${EPREFIX}/usr/lib
+			-isystem ${EPREFIX}/usr/include
+			-isysroot ${EPREFIX}/MacOSX.sdk
+		EOF
+		if use bootstrap-prefix ; then
+			# bootstrap-prefix is only set during stage2 of bootstrapping
+			# Prefix, where EPREFIX is set to EPREFIX/tmp.
+			# Here we need to point it at the future lib dir of the stage3's
+			# EPREFIX.
+			cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+				-Wl,-rpath,${EPREFIX}/../usr/lib
+			EOF
+		fi
+	fi
 }
 
 pkg_preinst() {

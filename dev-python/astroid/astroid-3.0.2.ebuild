@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,8 @@ python_test() {
 		tests/brain/test_dataclasses.py::test_pydantic_field
 		# requires urllib3 with bundled six (skipped with urllib3>=2)
 		tests/test_modutils.py::test_file_info_from_modpath__SixMetaPathImporter
+		# requires pip, looks fragile
+		tests/test_manager.py::IsolatedAstroidManagerTest::test_no_user_warning
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1

@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,15 +18,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-distutils_enable_tests pytest
-
-BDEPEND="
-	test? (
-		dev-python/pipenv[${PYTHON_USEDEP}]
-	)
-"
-
 # Break circular dependency
 PDEPEND="
 	dev-python/pipenv[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		${PDEPEND}
+	)
+"
+
+distutils_enable_tests pytest

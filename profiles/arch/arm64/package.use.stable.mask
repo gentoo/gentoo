@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-python/PyQt6 and dev-python/pyside6 are not stable here yet
+dev-python/QtPy pyqt6 pyside6
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
 # This is still experimental, prebuilt images may not boot on all systems.
 sys-kernel/gentoo-kernel generic-uki

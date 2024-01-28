@@ -38,6 +38,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/rthalley/dnspython/issues/1035
+	# https://github.com/rthalley/dnspython/commit/1b22985f2d67b6dd43259e3c6b853498f1cff712
+	"${FILESDIR}/${P}-musl-test.patch"
+)
+
 python_install_all() {
 	distutils-r1_python_install_all
 	if use examples; then

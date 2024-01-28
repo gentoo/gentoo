@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2024-01-26)
+# compilation issues, no reverse dependencies in the tree
+# bugs #885057, #875410, #847211
+# Removal on 2024-02-26
+mail-filter/libsrs_alt
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
+# app-misc/ddcutil-2.1.0 causes core-dump crashes in
+# kde-plasma/powerdevil[brightness-control].
+~app-misc/ddcutil-2.1.0
+~app-misc/ddcui-0.5.0
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
 # The functionality of sys-kernel/installkernel-systemd has been
 # integrated into sys-kernel/installkernel[systemd].
@@ -44,14 +56,6 @@
 sys-kernel/installkernel-systemd
 
 # Michał Górny <mgorny@gentoo.org> (2024-01-24)
-# No support for Python 3.11+.  No PEP517.  Tests are not enabled.
-# The current keyworded version is from 2019.  It was bumped in 2022
-# but it has not been keyworded since (pending "testing").
-# Depends on unmaintained dev-python/bsddb3.
-# Removal on 2024-02-23.  Bug #897136.
-net-nds/nsscache
-
-# Michał Górny <mgorny@gentoo.org> (2024-01-24)
 # Unmaintained, tests fail, requires discontinued dev-python/bsddb3.
 # No commits since 2022.  No reverse dependencies.
 # Removal on 2024-02-23.  Bug #894688.
@@ -61,13 +65,6 @@ dev-python/pymilter
 # Not required anymore since 4.14 is EOL, handled within the kernel
 # nowadays. Removal on 2024-02-20.
 net-wireless/crda
-
-# Mike Pagano <mpagano@gentoo.org> (2024-01-20)
-# Masked for testing. Modifications to USE=savedconfig
-# to only install files from there instead of
-# deleting them afterwards.
-# bug #913049.
-=sys-kernel/linux-firmware-20240115-r1
 
 # David Seifert <soap@gentoo.org> (2024-01-18)
 # Unmaintained set of packages. Overall, TensorFlow is ill-suited for
@@ -211,12 +208,6 @@ net-misc/monmotha
 # Unmaintained in Gentoo since 2015.  Use the original package instead.
 # Removal on 2024-01-30.  Bug #920659.
 net-firewall/sanewall
-
-# Petr Vaněk <arkamar@gentoo.org> (2023-12-27)
-# Unmaintained package with multiple open bugs. Upstream seems to be inactive.
-# Version bumps are available for 7 years but nobody seems to care.
-# Removal: 2024-01-26.  Bugs #303339, #712770, #732282, #782907, #870883, #898858.
-www-apache/anyterm
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-27)
 # Broken with all versions of dev-python/snakeoil.  Archived upstream.
@@ -537,10 +528,6 @@ app-containers/go-secbench
 # The lowest supported version of GCC is GCC 11.
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
-
-# Sam James <sam@gentoo.org> (2023-11-18)
-# Lots of applications need porting, bug #917537.
->=dev-libs/libxml2-2.12.0
 
 # Sam James <sam@gentoo.org> (2023-11-05)
 # Mask broken versions:

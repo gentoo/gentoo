@@ -49,7 +49,6 @@ BDEPEND="
 	sys-devel/gnuconfig
 	kernel_Darwin? (
 		<sys-libs/libcxx-${LLVM_VERSION}.9999
-		>=sys-devel/binutils-apple-5.1
 	)
 	doc? ( $(python_gen_any_dep '
 		dev-python/myst-parser[${PYTHON_USEDEP}]

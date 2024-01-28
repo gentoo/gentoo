@@ -243,3 +243,8 @@ sci-libs/opencascade vtk
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
+
+# Ian Jordan <immoloism@gmail.com> (2024-01-24)
+# Dependencies not keyworded yet:
+#  - dev-libs/libisoburn
+dev-util/catalyst iso

@@ -18,4 +18,5 @@
     <bugs-to>https://github.com/fxbois/web-mode/issues/</bugs-to>
     <remote-id type="github">fxbois/web-mode</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

@@ -113,6 +113,8 @@ src_install() {
 	dodir "${DATAPATH}"
 	mv "${ED}"/usr/share/man "${ED}/${DATAPATH}/" || die
 
+	docompress "${DATAPATH}"/man
+
 	cd "${S}"
 	insinto /etc/env.d/binutils
 	cat <<-EOF > env.d

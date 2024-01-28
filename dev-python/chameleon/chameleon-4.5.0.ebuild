@@ -20,9 +20,4 @@ LICENSE="repoze"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-distutils_enable_tests unittest
-
-src_test() {
-	cd src || die
-	distutils-r1_src_test
-}
+distutils_enable_tests pytest

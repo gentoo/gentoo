@@ -16,7 +16,7 @@ else
 		mirror://sourceforge/qbittorrent/${P}.tar.xz
 		verify-sig? ( mirror://sourceforge/qbittorrent/${P}.tar.xz.asc )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-qbittorrent )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qBittorrent.asc

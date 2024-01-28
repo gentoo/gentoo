@@ -9,4 +9,5 @@
   <upstream>
     <bugs-to>https://gitlab.exherbo.org/exherbo-misc/exheres-mode/-/issues/</bugs-to>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>
