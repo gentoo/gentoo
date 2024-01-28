@@ -405,6 +405,7 @@ documentation that is installed alongside this README."
 
 	# MODULE:powerd extras
 	if use amd64; then
+		newinitd "${FILESDIR}"/nvidia-powerd.initd nvidia-powerd #923117
 		systemd_dounit systemd/system/nvidia-powerd.service
 
 		insinto /usr/share/dbus-1/system.d
