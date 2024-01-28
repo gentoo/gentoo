@@ -472,6 +472,12 @@ s390		default/linux/s390/17.0/systemd					stable
 s390		default/linux/s390/17.0/systemd/merged-usr			stable
 s390		default/linux/s390/17.0/s390x/systemd				exp
 s390		default/linux/s390/17.0/s390x/systemd/merged-usr		exp
+s390		default/linux/s390/23.0						exp
+s390		default/linux/s390/23.0/systemd					exp
+s390		default/linux/s390/23.0/split-usr				exp
+s390		default/linux/s390/23.0/split-usr/s390x				exp
+s390		default/linux/s390/23.0/s390x					exp
+s390		default/linux/s390/23.0/s390x/systemd				exp
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
