@@ -5,10 +5,6 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>telans@posteo.de</email>
-		<name>James Beddek</name>
-	</maintainer>
 	<use>
 		<flag name="distributed">Support distributed applications</flag>
 		<flag name="fbgemm">Use FBGEMM</flag>
