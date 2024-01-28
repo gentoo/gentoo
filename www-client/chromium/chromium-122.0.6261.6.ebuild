@@ -285,7 +285,7 @@ needs_clang() {
 needs_lld() {
 	# #641556: Force lld for lto and pgo builds, otherwise disable
 	# #918897: Temporary hack w/ use arm64
-	[[ ${CHROMIUM_FORCE_LLD} == yes ]] || use lto || use pgo || use arm64
+	[[ ${CHROMIUM_FORCE_LLD} == yes ]] || tc-ld-is-lld || use lto || use pgo || use arm64
 }
 
 llvm_check_deps() {

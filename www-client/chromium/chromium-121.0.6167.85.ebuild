@@ -764,7 +764,7 @@ chromium_configure() {
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	# 641556: Force lld for lto and pgo builds, otherwise disable
-	if needs_lld || use lto || use pgo; then
+	if needs_lld || tc-ld-is-lld || use lto || use pgo; then
 		myconf_gn+=" use_lld=true"
 	else
 		# This doesn't prevent lld from being used, but rather prevents gn from forcing it
