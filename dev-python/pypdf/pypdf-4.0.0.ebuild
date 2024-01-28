@@ -31,6 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		>=dev-python/pillow-8.0.0[jpeg,jpeg2k,tiff,${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)
 "
 
