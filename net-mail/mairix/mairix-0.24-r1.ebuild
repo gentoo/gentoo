@@ -15,12 +15,16 @@ KEYWORDS="amd64 ppc x86"
 
 IUSE="zlib bzip2"
 
-RDEPEND="zlib? ( sys-libs/zlib )
-	bzip2? ( app-arch/bzip2 )"
+RDEPEND="
+	dev-libs/openssl:=
+	zlib? ( sys-libs/zlib )
+	bzip2? ( app-arch/bzip2 )
+"
 
 DEPEND="${RDEPEND}
 	app-alternatives/lex
-	app-alternatives/yacc"
+	app-alternatives/yacc
+"
 
 # Fail on various locales
 RESTRICT="test"
