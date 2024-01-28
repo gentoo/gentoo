@@ -21,7 +21,7 @@ RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	libnotify? ( x11-libs/libnotify[introspection] )"
 DEPEND="app-text/asciidoc
 	test? ( dev-python/keyutils[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}])"
+		dev-python/pyyaml[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
