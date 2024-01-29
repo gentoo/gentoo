@@ -314,6 +314,8 @@ src_configure() {
 
 			if use hardened ; then
 				myconf+=(
+					--enable-error-execstack=yes
+					--enable-error-rwx-segments=yes
 					--enable-default-execstack=no
 				)
 			fi
