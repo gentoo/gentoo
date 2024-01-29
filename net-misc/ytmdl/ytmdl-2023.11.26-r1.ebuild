@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,8 @@ RDEPEND="
 	media-libs/mutagen[${PYTHON_USEDEP}]
 	net-misc/downloader-cli[${PYTHON_USEDEP}]
 "
+
+PATCHES=( "${FILESDIR}/${PN}-2023.11.26-data_files.patch"  )
 
 python_compile() {
 	distutils-r1_python_compile
