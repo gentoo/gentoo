@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.2-no-werror.patch
 	"${FILESDIR}"/${PN}-udev-sysctl.patch
 	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-C99-inline.patch
 )
 
 pkg_setup() {
