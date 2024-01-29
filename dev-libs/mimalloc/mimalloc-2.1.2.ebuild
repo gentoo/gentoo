@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="A compact general purpose allocator with excellent performance"
 HOMEPAGE="https://github.com/microsoft/mimalloc"
@@ -18,6 +18,9 @@ RESTRICT="!test? ( test )"
 DEPEND="valgrind? ( dev-debug/valgrind )"
 
 src_configure() {
+	# Bug #923177
+	append-atomic-flags
+
 	local mycmakeargs=(
 		-DMI_SECURE=$(usex hardened)
 		-DMI_INSTALL_TOPLEVEL=ON
