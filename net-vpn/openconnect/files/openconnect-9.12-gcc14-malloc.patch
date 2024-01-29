@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/923173
+--- a/openconnect-internal.h
++++ b/openconnect-internal.h
+@@ -86,6 +86,7 @@
+ 
+ #include <libxml/tree.h>
+ #include <zlib.h>
++#include <stdlib.h>
+ 
+ #ifdef _WIN32
+ #ifndef _Out_cap_c_
