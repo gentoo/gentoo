@@ -31,6 +31,7 @@ CDEPEND="
 
 DEPEND="
 	>=virtual/jdk-1.8:*
+	x11-base/xorg-proto:0
 	test? (
 		dev-java/reflections:0
 	)
