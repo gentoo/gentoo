@@ -223,16 +223,15 @@ src_install() {
 	rm -rf python
 	mkdir -p python/torch/include || die
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
-	mv "${ED}"/usr/include/torch python/torch/include || die
 	if use cuda; then
 		mv "${ED}${S}"/nvfuser python/nvfuser || die
 		mv "${ED}"/usr/$(get_libdir)/nvfuser.so python/nvfuser/_C.so || die
 	fi
-	rm -rf "${ED}${S}"/test
-	rm -rf "${ED}${S}"/third_party
 	cp torch/version.py python/torch/ || die
 	python_domodule python/caffe2
 	python_domodule python/torch
+	ln -s ../../../../../include/torch \
+		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
 	if use cuda; then
 		python_domodule python/nvfuser
 	fi
