@@ -13,19 +13,14 @@ HOMEPAGE="
 	https://github.com/boto/botocore/
 	https://pypi.org/project/botocore/
 "
+SRC_URI="
+	https://github.com/boto/botocore/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
+
 LICENSE="Apache-2.0"
 SLOT="0"
-
-if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://github.com/boto/botocore"
-	inherit git-r3
-else
-	SRC_URI="
-		https://github.com/boto/botocore/archive/${PV}.tar.gz
-			-> ${P}.gh.tar.gz
-	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-fi
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
