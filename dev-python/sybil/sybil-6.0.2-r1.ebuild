@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,3 +32,13 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/simplistix/sybil/pull/108
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
