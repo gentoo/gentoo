@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -145,6 +145,7 @@ src_prepare() {
 	eapply -p1 "${FILESDIR}/${PN}-21-cmake-gentoo.patch"
 	eapply "${FILESDIR}/${PN}-21.1.2-werror.patch"
 	eapply "${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
+	eapply "${FILESDIR}/${PN}-21.1.8-gcc14-fixes.patch"
 
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
