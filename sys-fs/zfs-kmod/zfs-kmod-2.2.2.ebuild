@@ -60,6 +60,7 @@ PDEPEND="dist-kernel? ( ~sys-fs/zfs-${PV}[dist-kernel] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
+	"${FILESDIR}"/${PN}-2.2.2-arm64-neon.patch
 )
 
 pkg_pretend() {
@@ -103,7 +104,7 @@ pkg_setup() {
 			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
 	fi
 
-	linux-mod-r1_pkg_setup
+	#linux-mod-r1_pkg_setup
 }
 
 src_prepare() {
