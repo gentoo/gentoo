@@ -24,7 +24,7 @@ RDEPEND="
 	acct-user/buildbot
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
-	>=dev-python/autobahn-0.16.9[${PYTHON_USEDEP}]
+	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/croniter-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
