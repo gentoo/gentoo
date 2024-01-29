@@ -22,15 +22,9 @@ RDEPEND="
 
 S="${S}/release"
 
-python_prepare_all() {
-	cat > PKG-INFO <<-EOF || die
-	Metadata-Version: 2.1
-	Name: git-filter-repo
-	Version: ${PV}
-	EOF
-
-	distutils-r1_python_prepare_all
-}
+# the git-archive tarball does not have version info; setuptools-scm
+# requires a valid source of version info, this one is for distros
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
 	cd .. || die
