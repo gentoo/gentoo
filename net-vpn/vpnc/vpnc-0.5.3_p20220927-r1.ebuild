@@ -5,8 +5,8 @@ EAPI=8
 
 inherit linux-info systemd toolchain-funcs
 
-DESCRIPTION="Free client for Cisco VPN routing software"
-HOMEPAGE="https://www.unix-ag.uni-kl.de/~massar/vpnc/"
+DESCRIPTION="IPsec (Cisco/Juniper) VPN concentrator client"
+HOMEPAGE="https://github.com/streambinder/vpnc"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
