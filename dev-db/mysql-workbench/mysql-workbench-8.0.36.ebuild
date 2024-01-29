@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
 	"${FILESDIR}/${PN}-8.0.19-mysql-connector-8.patch"
 	"${FILESDIR}/${PN}-8.0.33-gcc13.patch"
+	"${FILESDIR}/${PN}-8.0.36-libxml2-2.12-support.patch"
 )
 
 src_unpack() {
