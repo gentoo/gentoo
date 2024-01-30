@@ -34,10 +34,18 @@ DEPEND="
 	virtual/jdk:17
 "
 BDEPEND="
-	test? ( sys-devel/clang:* )
+	test? (
+		sys-devel/clang:*
+	)
 "
 
 DOCS=( README.md release_notes.md )
+
+src_prepare() {
+	java-pkg-2_src_prepare
+
+	rm -fr tests/sockets || die
+}
 
 src_compile() {
 	emake -j1
@@ -49,13 +57,13 @@ src_test() {
 
 src_install() {
 	# Remove unnecessary files from build directory. bug #893450
-	local torm
-	local torm_path
-	for torm in tests run_tests.{failures,results} ; do
-		torm_path="${S}/build/${torm}"
+	local toremove
+	local toremove_path
+	for toremove in tests run_tests.{failures,results} ; do
+		toremove_path="${S}/build/${toremove}"
 
-		if [[ -e "${torm_path}" ]] ; then
-			rm -r "${torm_path}" || die "failed to remove ${torm_path}"
+		if [[ -e "${toremove_path}" ]] ; then
+			rm -r "${toremove_path}" || die "failed to remove ${toremove_path}"
 		fi
 	done
 
@@ -64,9 +72,9 @@ src_install() {
 	insopts -m755
 	doins -r build/bin
 
-	local bin
-	for bin in fz fzjava ; do
-		dosym -r "/usr/share/${PN}/bin/${bin}" "/usr/bin/${bin}"
+	local exe
+	for exe in fz fzjava ; do
+		dosym -r "/usr/share/${PN}/bin/${exe}" "/usr/bin/${exe}"
 	done
 
 	einstalldocs
