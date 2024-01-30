@@ -54,9 +54,4 @@ EPYTEST_DESELECT=(
 	tests/test_tifffile.py::test_write_6gb
 	tests/test_tifffile.py::test_write_bigtiff
 	'tests/test_tifffile.py::test_write_imagej_raw'
-	# TODO
-	tests/test_tifffile.py::test_issue_imagej_hyperstack_arg
-	tests/test_tifffile.py::test_issue_description_overwrite
-	# missing data again?
-	tests/test_tifffile.py::test_issue_trucated_tileoffsets
 )
