@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,12 @@ DESCRIPTION="commandline tool to sync directory services to local cache"
 HOMEPAGE="https://github.com/google/nsscache"
 SRC_URI="https://github.com/google/nsscache/archive/version/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+# upstream *sources* say "or later", but upstream metadata does not include the
+# 'or later' clause.
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nsscache s3 test"
-
-# testing requires local network (e.g. spin up slapd, httpd)
-#PROPERTIES="test_network"
-#RESTRICT="test"
 
 # Optional extras:
 # TODO: gcs? ( https://pypi.org/project/google-cloud-storage/ )
@@ -27,6 +25,9 @@ IUSE="nsscache s3 test"
 # Testing:
 # *unit* tests do not require networking.
 # *integration* tests require openldap's slapd and networking
+#
+# The ebuild runs the unit testing explicitly, as upstream uses Docker to run
+# the integration tests.
 RDEPEND="
 	nsscache? ( >=sys-auth/libnss-cache-0.10 )
 	>=dev-python/python-ldap-3.4[${PYTHON_USEDEP}]
@@ -35,10 +36,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/packaging[${PYTHON_USEDEP}]
 	test? (
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
 S="${WORKDIR}/${PN}-version-${PV}"
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	# nsscache.conf is example only, and should be installed in docs.
@@ -55,6 +58,7 @@ python_prepare_all() {
 }
 
 python_compile() {
+	# Yes, tell setup.py to be verbose
 	distutils-r1_python_compile --verbose
 }
 
@@ -70,10 +74,8 @@ python_install() {
 			-iname '*_test.py*' \
 			-o -iname '*_test.*.py*' \
 		\) \
-		-delete
-
-	# Ignore any exit code from find.
-	return 0
+		-delete \
+	|| die "find failed"
 }
 
 python_install_all() {
@@ -84,5 +86,3 @@ python_install_all() {
 
 	keepdir /var/lib/nsscache
 }
-
-distutils_enable_tests pytest
