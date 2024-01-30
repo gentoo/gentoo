@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	${PYTHON_DEPS}
 	>=dev-vcs/git-$(ver_cut 1-2)
 "
 BDEPEND="
