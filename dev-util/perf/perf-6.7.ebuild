@@ -56,7 +56,7 @@ BDEPEND="
 
 RDEPEND="
 	audit? ( sys-process/audit )
-	babeltrace? ( dev-util/babeltrace )
+	babeltrace? ( dev-util/babeltrace:0/1 )
 	bpf? (
 		dev-libs/libbpf
 		dev-util/bpftool
@@ -95,20 +95,6 @@ DEPEND="${RDEPEND}
 S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/perf"
 
-CONFIG_CHECK="
-	~DEBUG_INFO
-	~FTRACE
-	~FTRACE_SYSCALLS
-	~FUNCTION_TRACER
-	~KALLSYMS
-	~KALLSYMS_ALL
-	~KPROBES
-	~KPROBE_EVENTS
-	~PERF_EVENTS
-	~UPROBES
-	~UPROBE_EVENTS
-"
-
 QA_FLAGS_IGNORED=(
 	'usr/bin/perf-read-vdso32' # not linked with anything except for libc
 	'usr/libexec/perf-core/dlfilters/.*' # plugins
@@ -123,6 +109,20 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	local CONFIG_CHECK="
+		~DEBUG_INFO
+		~FTRACE
+		~FTRACE_SYSCALLS
+		~FUNCTION_TRACER
+		~KALLSYMS
+		~KALLSYMS_ALL
+		~KPROBES
+		~KPROBE_EVENTS
+		~PERF_EVENTS
+		~UPROBES
+		~UPROBE_EVENTS
+	"
+
 	use bpf && llvm_pkg_setup
 	# We enable python unconditionally as libbpf always generates
 	# API headers using python script
@@ -140,7 +140,7 @@ pkg_setup() {
 src_unpack() {
 	local paths=(
 		kernel/bpf tools/{arch,bpf,build,include,lib,perf,scripts}
-		scripts include lib "arch/*/lib" arch/arm64/tools
+		scripts include lib "arch/*/lib" "arch/*/tools"
 	)
 
 	# We expect the tar implementation to support the -j option (both
@@ -176,6 +176,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	eapply "${FILESDIR}"/perf-6.4-libtracefs.patch
+	eapply "${FILESDIR}"/perf-6.7-expr.patch
 	popd || die
 
 	# Drop some upstream too-developer-oriented flags and fix the
