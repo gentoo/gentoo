@@ -4,7 +4,7 @@
 EAPI=8
 
 # Fails to build with with "lua5-1".
-LUA_COMPAT=( lua5-{3,4} luajit )
+LUA_COMPAT=( lua5-{3,4} )
 
 inherit lua-single
 
