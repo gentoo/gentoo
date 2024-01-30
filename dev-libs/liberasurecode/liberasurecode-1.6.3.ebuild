@@ -16,8 +16,14 @@ IUSE="doc static-libs"
 
 DEPEND="doc? ( app-text/doxygen )"
 
+PATCHES=(
+	# bashism in configure.ac
+	# Patch submitted upstream as https://review.opendev.org/c/openstack/liberasurecode/+/907156
+	"${FILESDIR}"/0001-configure-fix-basic-syntax-errors-in-the-shell-scrip.patch
+)
+
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
