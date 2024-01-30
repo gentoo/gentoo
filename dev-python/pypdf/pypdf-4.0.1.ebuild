@@ -37,13 +37,9 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	tests/test_reader.py::test_decode_permissions
-	tests/test_workflows.py::test_text_extraction_layout_mode
-	# rely on -Werror
-	tests/test_utils.py::test_deprecate_no_replacement
-	tests/test_workflows.py::test_orientations
-	tests/test_writer.py::test_remove_image_per_type
+PATCHES=(
+	# https://github.com/py-pdf/pypdf/pull/2429
+	"${FILESDIR}/${P}-pytest-8.patch"
 )
 
 src_unpack() {
@@ -54,6 +50,15 @@ src_unpack() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		tests/test_reader.py::test_decode_permissions
+		tests/test_workflows.py::test_text_extraction_layout_mode
+		# rely on -Werror
+		tests/test_utils.py::test_deprecate_no_replacement
+		tests/test_workflows.py::test_orientations
+		tests/test_writer.py::test_remove_image_per_type
+	)
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o addopts= -m "not enable_socket"
 }
