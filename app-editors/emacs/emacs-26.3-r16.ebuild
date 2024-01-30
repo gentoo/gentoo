@@ -110,6 +110,9 @@ FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 PATCHES=("${WORKDIR}/patch")
 
+# Suppress false positive QA warnings #898304
+QA_CONFIG_IMPL_DECL_SKIP=( malloc_{set,get}_state MIN )
+
 src_prepare() {
 	default
 

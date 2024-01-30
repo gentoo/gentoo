@@ -171,7 +171,7 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
-# Evade tinderbox bug #898304
+# Suppress false positive QA warnings #898304
 QA_CONFIG_IMPL_DECL_SKIP=( malloc_{set,get}_state MIN static_assert alignof )
 
 src_prepare() {
