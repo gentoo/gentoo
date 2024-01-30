@@ -15,6 +15,7 @@
     </flag>
   </use>
   <upstream>
+    <remote-id type="cpe">cpe:/a:fossies:gawk</remote-id>
     <remote-id type="savannah">gawk</remote-id>
   </upstream>
 </pkgmetadata>
