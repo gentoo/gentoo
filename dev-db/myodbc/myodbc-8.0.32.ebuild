@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake-multilib
 
@@ -31,12 +31,18 @@ DRIVER_NAME="${PN}-${SLOT}"
 PATCHES=(
 	"${FILESDIR}/${MAJOR}-cmake-doc-path.patch"
 	"${FILESDIR}/${PN}-8.0.19-cxxlinkage.patch"
+	"${FILESDIR}/${PN}-8.0.32-gcc14-fixes.patch"
+	"${FILESDIR}/${PN}-8.0.32-include-string.patch"
 )
 
 src_prepare() {
 	# Remove Tests
 	sed -i -e "s/ADD_SUBDIRECTORY(test)//" \
-		"${S}/CMakeLists.txt"
+		"${S}/CMakeLists.txt" || die
+
+	# Remove dltest - Installs to /usr/test
+	sed -i -e "s/INSTALL(TARGETS dltest DESTINATION test COMPONENT tests)//" \
+		"${S}/dltest/CMakeLists.txt" || die
 
 	cmake_src_prepare
 }
