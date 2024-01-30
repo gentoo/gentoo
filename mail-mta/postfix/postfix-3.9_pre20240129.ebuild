@@ -71,6 +71,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #915670
+	unset LD_LIBRARY_PATH
+
 	for name in CDB LDAP LMDB MYSQL PCRE PGSQL SDBM SQLITE
 	do
 		local AUXLIBS_${name}=""
