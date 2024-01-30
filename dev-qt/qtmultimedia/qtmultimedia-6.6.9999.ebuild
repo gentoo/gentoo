@@ -21,10 +21,10 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[eglfs=,gui,network,opengl=,vulkan=,widgets]
+	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? (
-		~dev-qt/qtbase-${PV}:6[X=]
+		~dev-qt/qtbase-${PV}:6[X=,eglfs=]
 		media-video/ffmpeg:=[vaapi?]
 		X? (
 			x11-libs/libX11
