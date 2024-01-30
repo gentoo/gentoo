@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="test"
 
 DEPEND="
-	dev-cpp/jwt-cpp[picojson]
+	<dev-cpp/jwt-cpp-0.7.0[picojson]
 	dev-db/sqlite
 	dev-libs/openssl:0=
 	net-misc/curl:0=
