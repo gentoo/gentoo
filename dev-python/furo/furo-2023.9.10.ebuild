@@ -22,19 +22,13 @@ S=${WORKDIR}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	dev-python/sphinx-basic-ng[${PYTHON_USEDEP}]
 "
-
-src_unpack() {
-	if [[ ${PKGBUMPING} == ${PVR} ]]; then
-		unzip "${DISTDIR}/${A}" || die
-	fi
-}
 
 python_compile() {
 	distutils_wheel_install "${BUILD_DIR}/install" \
