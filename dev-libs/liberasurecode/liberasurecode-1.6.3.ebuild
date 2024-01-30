@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends"
 HOMEPAGE="https://bitbucket.org/tsg-/liberasurecode/overview"
@@ -28,6 +28,11 @@ src_prepare() {
 }
 
 src_configure() {
+
+	# fails with -Werror=lto-type-mismatch
+	# https://bugs.launchpad.net/liberasurecode/+bug/2051613
+	filter-lto
+
 	econf \
 		--htmldir=/usr/share/doc/${PF} \
 		--disable-werror \
