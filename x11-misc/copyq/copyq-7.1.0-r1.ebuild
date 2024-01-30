@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,7 +69,7 @@ PATCHES=(
 	"${FILESDIR}/copyq-7.1.0-fix-qt-6.6.0-build.patch"
 	"${FILESDIR}/copyq-7.1.0-fix-test-failure-due-to-invalid-regex.patch"
 	"${FILESDIR}/copyq-7.1.0-fix-gpg-2.1-support.patch"
-	"${FILESDIR}/copyq-7.1.0-support-plugin-dir-envvar.patch"
+	"${FILESDIR}/copyq-7.1.0-support-plugin-dir-envvar-r1.patch"
 )
 
 src_prepare() {
