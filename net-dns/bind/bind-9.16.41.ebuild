@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re dlz/mysql and threads, needs to be verified..
@@ -100,6 +100,13 @@ src_prepare() {
 
 	# Should be installed by bind-tools
 	sed -i -r -e "s:(nsupdate|dig|delv) ::g" bin/Makefile.in || die
+
+	# Slow tests
+	sed -i "s/{name='mem_test'}/{name='mem_test',timeout=900}/" "lib/isc/tests/Kyuafile" || die
+	sed -i "s/{name='timer_test'}/{name='timer_test',timeout=900}/" "lib/isc/tests/Kyuafile" || die
+
+	# Conditionally broken
+	use sparc && sed -i "/{name='netmgr_test'}/d" "lib/isc/tests/Kyuafile" || die
 
 	# bug #220361
 	rm aclocal.m4 || die
