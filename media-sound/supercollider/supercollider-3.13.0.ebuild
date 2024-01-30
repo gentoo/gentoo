@@ -61,7 +61,10 @@ DEPEND="${RDEPEND}
 	vim? ( app-editors/vim )
 "
 
-PATCHES=( "${FILESDIR}/${P}-boost-1.84.patch" ) # bug 921595
+PATCHES=(
+	"${FILESDIR}/${P}-boost-1.84.patch" # bug 921595
+	"${FILESDIR}/${P}-gcc-13.patch" # bug 905127
+)
 
 src_configure() {
 	local mycmakeargs=(
