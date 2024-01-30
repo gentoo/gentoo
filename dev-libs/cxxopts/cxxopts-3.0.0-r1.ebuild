@@ -27,7 +27,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -a mycmakeopts=(
+	local mycmakeargs=(
 		-DCXXOPTS_BUILD_EXAMPLES:BOOL=OFF
 		-DCXXOPTS_BUILD_TESTS:BOOL=$(usex test)
 		-DCXXOPTS_ENABLE_INSTALL:BOOL=ON
