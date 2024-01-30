@@ -48,7 +48,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Hardcoded assumption of libraries reciding in lib/ bug #730016
+	# Hardcoded assumption of libraries residing in lib/,  bug #730016
 	sed -i -e "s|/lib\"|/$(get_libdir)\"|" configure.ac || die
 
 	eautoreconf
