@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,9 @@ SLOT="0"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
+RDEPEND="
+	<dev-python/pytest-8[${PYTHON_USEDEP}]
+"
 # dev-python/nbformat-5.1.{0..2} did not install package data
 BDEPEND="
 	test? (
