@@ -64,6 +64,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-boost-1.84.patch" # bug 921595
 	"${FILESDIR}/${P}-gcc-13.patch" # bug 905127
+	"${FILESDIR}/${P}-no-ccache.patch" # bug 922095
 )
 
 src_configure() {
@@ -72,6 +73,7 @@ src_configure() {
 		-DINSTALL_HELP=ON
 		-DSYSTEM_BOOST=ON
 		-DSYSTEM_YAMLCPP=ON
+		-DUSE_CCACHE=OFF
 		-DSC_ABLETON_LINK=$(usex ableton-link)
 		-DSSE=$(usex cpu_flags_x86_sse)
 		-DSSE2=$(usex cpu_flags_x86_sse2)
