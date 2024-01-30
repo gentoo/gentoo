@@ -70,3 +70,4 @@ move dev-util/systemtap dev-debug/systemtap
 move dev-util/scap-driver dev-debug/scap-driver
 move dev-util/icmake dev-build/icmake
 move sci-libs/scikit-image dev-python/scikit-image
+move dev-python/confusable_homoglyphs dev-python/confusable-homoglyphs
