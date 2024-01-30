@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2024-01-30)
+# SLOT 25 of app-editors/emacs, corresponding to GNU Emacs version 25.3.
+# This version was released in May 2018. Please upgrade to >=emacs-26
+# and update your Emacs Lisp packages with emacs-updater.
+# Removal on 2024-02-29. Bug #923329.
+app-editors/emacs:25
+
 # Fabian Groffen <grobian@gentoo.org> (2024-01-26)
 # compilation issues, no reverse dependencies in the tree
 # bugs #885057, #875410, #847211
