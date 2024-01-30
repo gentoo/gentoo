@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -317,6 +317,13 @@ src_unpack() {
 
 src_prepare() {
 	rm Fable.Standalone.sln || die
+
+	if use debug ; then
+		DOTNET_PKG_REMOVE_PROJECTS+=(
+			# Seems to hang but in reality it fails with USE=debug, bug #922684
+			tests/Python/Fable.Tests.Python.fsproj
+		)
+	fi
 
 	dotnet-pkg_src_prepare
 	edotnet sln ./Fable.sln remove "${DOTNET_PKG_REMOVE_PROJECTS[@]}"
