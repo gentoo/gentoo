@@ -9,6 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Quickly rewrite git repository history (filter-branch replacement)"
 HOMEPAGE="https://github.com/newren/git-filter-repo/"
 SRC_URI="https://github.com/newren/git-filter-repo/releases/download/v${PV}/${P}.tar.xz"
+S="${S}/release"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,8 +23,6 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
-
-S="${S}/release"
 
 # the git-archive tarball does not have version info; setuptools-scm
 # requires a valid source of version info, this one is for distros
