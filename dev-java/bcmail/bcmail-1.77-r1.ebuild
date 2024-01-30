@@ -26,6 +26,7 @@ CP_DEPEND="
 	dev-java/javax-mail:0
 	"
 DEPEND="${CP_DEPEND}
+	dev-java/jakarta-activation:1
 	>=virtual/jdk-11:*"
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
@@ -34,6 +35,7 @@ DOCS=( ../{README,SECURITY}.md )
 HTML_DOCS=( ../{CONTRIBUTORS,index}.html )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.bouncycastle.mail"
+JAVA_CLASSPATH_EXTRA="jakarta-activation-1"
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR=(
 	"src/main/java"
