@@ -49,6 +49,11 @@ distutils_enable_tests pytest
 # 	dev-python/sphinx-rtd-theme \
 # 	dev-python/towncrier
 
+PATCHES=(
+	# https://github.com/python-trio/trio/pull/2939
+	"${FILESDIR}/${P}-musl.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# Times out on slower arches (ia64 in this case)
