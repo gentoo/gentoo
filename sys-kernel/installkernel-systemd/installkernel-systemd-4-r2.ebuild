@@ -11,11 +11,11 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 
-PDEPEND=">=sys-kernel/installkernel-14[systemd]"
+PDEPEND=">=sys-kernel/installkernel-20[systemd-kernel-install]"
 
 pkg_setup() {
 	elog "The wrapper functionality of ${PN} has been integrated into"
-	elog "sys-kernel/installkernel[systemd]."
+	elog "sys-kernel/installkernel[systemd-kernel-install]."
 	elog "${PN} can be safely removed and replaced:"
 	elog
 	elog "emerge --noreplace sys-kernel/installkernel"
