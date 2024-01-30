@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Provide generic install functions so that modular texlive's texmf ebuild will only have to inherit this eclass
 # @DESCRIPTION:
 # Purpose: Provide generic install functions so that modular texlive's texmf ebuilds will
@@ -72,7 +72,7 @@
 # e.g. for enabling/disabling a feature
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -83,58 +83,32 @@ inherit texlive-common
 
 HOMEPAGE="https://www.tug.org/texlive/"
 
-COMMON_DEPEND=">=app-text/texlive-core-${TL_PV:-${PV}}"
+IUSE="doc source"
 
-IUSE="source"
-
-# Starting from TeX Live 2009, upstream provides .tar.xz modules.
-PKGEXT=tar.xz
-
-# Now where should we get these files?
-TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge sam }
-
+RDEPEND=">=app-text/texlive-core-${TL_PV:-${PV}}"
 # We do not need anything from SYSROOT:
 #   Everything is built from the texlive install in /
 #   Generated files are noarch
-BDEPEND="${COMMON_DEPEND}
-	app-arch/xz-utils"
+BDEPEND="
+	${RDEPEND}
+	app-arch/xz-utils
+"
 
-tl_uri_prefix="https://dev.gentoo.org/~@dev@/distfiles/texlive/tl-"
-tl_uri_suffix="-${PV}.${PKGEXT}"
-
-tl_uri=( ${TEXLIVE_MODULE_CONTENTS} )
-tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
-for tldev in ${TEXLIVE_DEVS}; do
-	SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
-done
+texlive-common_append_to_src_uri TEXLIVE_MODULE_CONTENTS
 
 # Forge doc SRC_URI
 if [[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]]; then
 	SRC_URI+=" doc? ("
-	tl_uri=( ${TEXLIVE_MODULE_DOC_CONTENTS} )
-	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
-	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
-	done
+	texlive-common_append_to_src_uri TEXLIVE_MODULE_DOC_CONTENTS
 	SRC_URI+=" )"
 fi
 
 # Forge source SRC_URI
 if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]]; then
 	SRC_URI+=" source? ("
-	tl_uri=( ${TEXLIVE_MODULE_SRC_CONTENTS} )
-	tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
-	for tldev in ${TEXLIVE_DEVS}; do
-		SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tldev}}}"
-	done
+	texlive-common_append_to_src_uri TEXLIVE_MODULE_SRC_CONTENTS
 	SRC_URI+=" )"
 fi
-
-unset tldev tl_uri tl_uri_prefix tl_uri_suffix
-
-RDEPEND="${COMMON_DEPEND}"
-
-IUSE="${IUSE} doc"
 
 # @ECLASS_VARIABLE: TEXLIVE_MODULE_OPTIONAL_ENGINE
 # @DEFAULT_UNSET
@@ -155,17 +129,16 @@ S="${WORKDIR}"
 # Only for TeX Live 2009 and later.
 # After unpacking, the files that need to be relocated are moved accordingly.
 
-RELOC_TARGET=texmf-dist
-
 texlive-module_src_unpack() {
 	unpack ${A}
+	local RELOC_TARGET=texmf-dist
 
 	sed -n -e 's:\s*RELOC/::p' tlpkg/tlpobj/* > "${T}/reloclist" || die
 	sed -e 's/\/[^/]*$//' -e "s:^:${RELOC_TARGET}/:" "${T}/reloclist" |
 		sort -u |
 		xargs mkdir -p || die
 	local i dir="" files=()
-	while read i; do
+	while read -r i; do
 		if [[ ${RELOC_TARGET}/${i%/*} != "${dir}" ]]; then
 			# new dir, do the previous move
 			[[ -z ${dir} ]] || mv "${files[@]}" "${dir}" || die
@@ -282,7 +255,7 @@ texlive-module_make_language_lua_lines() {
 	fi
 
 	if [[ -n ${luaspecial} ]]; then
-		printf "\t\tspecial = '%s',\n" "$luaspecial"                          >> "${dest}" || die
+		printf "\t\tspecial = '%s',\n" "${luaspecial}"                          >> "${dest}" || die
 	fi
 
 	printf "\t},\n"                                                                >> "${dest}" || die
@@ -310,7 +283,7 @@ texlive-module_src_compile() {
 
 	for i in $(<"${T}/jobs");
 	do
-		j="$(echo $i | tr '#' ' ')"
+		j="$(echo "${i}" | tr '#' ' ')"
 		command=${j%% *}
 		parameter=${j#* }
 		case ${command} in
@@ -325,16 +298,16 @@ texlive-module_src_compile() {
 			addDvipdfmMap)
 				echo "f	${parameter}" >> "${S}/${PN}-config";;
 			AddHyphen)
-				texlive-module_make_language_def_lines ${parameter}
-				texlive-module_make_language_dat_lines ${parameter}
-				texlive-module_make_language_lua_lines ${parameter}
+				texlive-module_make_language_def_lines "${parameter}"
+				texlive-module_make_language_dat_lines "${parameter}"
+				texlive-module_make_language_lua_lines "${parameter}"
 				;;
 			AddFormat)
-				texlive-module_add_format ${parameter};;
+				texlive-module_add_format "${parameter}";;
 			BuildFormat)
 				einfo "Format ${parameter} already built.";;
 			BuildLanguageDat)
-				einfo "Language file $parameter already generated.";;
+				einfo "Language file ${parameter} already generated.";;
 			*)
 				die "No rule to process ${command}. Please file a bug."
 		esac
@@ -355,7 +328,7 @@ texlive-module_src_compile() {
 				mkdir texmf-var/web2c || die
 			fi
 			VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}/texmf:${S}/texmf-dist:${S}/texmf-var"\
-				env -u TEXINPUTS $fmt_call --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
+				env -u TEXINPUTS "${fmt_call}" --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
 				|| die "failed to build format ${i}"
 		fi
 	done
@@ -431,14 +404,14 @@ texlive-module_src_install() {
 
 	[[ -n ${TEXLIVE_MODULE_BINSCRIPTS} ]] && dobin_texmf_scripts ${TEXLIVE_MODULE_BINSCRIPTS}
 	if [[ -n ${TEXLIVE_MODULE_BINLINKS} ]] ; then
+		dodir "/usr/bin"
 		for i in ${TEXLIVE_MODULE_BINLINKS} ; do
-			[[ -f ${ED}/usr/bin/${i%:*} ]] || die "Trying to install an invalid	BINLINK. This should not happen. Please file a bug."
-			dosym ${i%:*} /usr/bin/${i#*:}
+			[[ -f ${ED}/usr/bin/${i%:*} ]] || die "Trying to install an invalid BINLINK ${i%:*}. This should not happen. Please file a bug."
+			dosym "${i%:*}" "/usr/bin/${i#*:}"
 		done
 	fi
 
 	texlive-common_handle_config_files
-	TEXMF_PATH=${TEXMF_DIST_PATH} texlive-common_handle_config_files
 }
 
 # @FUNCTION: texlive-module_pkg_postinst
