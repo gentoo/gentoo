@@ -280,6 +280,7 @@ BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
 	>=dev-build/meson-0.63.0
+	app-alternatives/ninja
 	dev-python/pip[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
