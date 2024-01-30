@@ -30,6 +30,12 @@ RDEPEND="
 	dev-python/sphinx-basic-ng[${PYTHON_USEDEP}]
 "
 
+src_unpack() {
+	if [[ ${PKGBUMPING} == ${PVR} ]]; then
+		unzip "${DISTDIR}/${A}" || die
+	fi
+}
+
 python_compile() {
 	distutils_wheel_install "${BUILD_DIR}/install" \
 		"${DISTDIR}/${P}-py3-none-any.whl"
