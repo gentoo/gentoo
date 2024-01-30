@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
-inherit bash-completion-r1 flag-o-matic linux-info meson-multilib python-single-r1
-inherit secureboot toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info meson-multilib optfeature
+inherit python-single-r1 secureboot toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
@@ -571,5 +571,14 @@ pkg_postinst() {
 		systemd-hwdb --root="${ROOT}" update
 		eend $?
 		udev_reload
+	fi
+
+	if use boot; then
+		optfeature "automatically installing the kernels in systemd-boot's native layout and updating the bootloader configuration" \
+			"sys-kernel/installkernel[systemd-boot]"
+	fi
+	if use ukify; then
+		optfeature "automatically generating an unified kernel image on each kernel installation" \
+			"sys-kernel/installkernel[ukify]"
 	fi
 }
