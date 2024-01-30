@@ -1,9 +1,9 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson toolchain-funcs
+inherit meson
 
 DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="debug +gles +system-wfconfig +system-wlroots test X"
+IUSE="+gles +system-wfconfig +system-wlroots test X"
 RESTRICT="!test? ( test )"
 
 # bundled wlroots has the following dependency string according to included headers.
@@ -125,12 +125,7 @@ src_configure() {
 		$(meson_feature test tests)
 		$(meson_feature X xwayland)
 		$(meson_use gles enable_gles32)
-		$(usex debug --buildtype=debug "")
-		$(usex debug -Db_sanitize=address,undefined "")
 	)
-
-	# Clang will fail to link without this
-	tc-is-clang && emesonargs+=( $(usex debug -Db_lundef=false "") )
 
 	meson_src_configure
 }
