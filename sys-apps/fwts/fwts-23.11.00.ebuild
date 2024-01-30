@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fwts/fwts/archive/refs/tags/V${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-#https://github.com/fwts/fwts/issues/13
+# https://github.com/fwts/fwts/issues/13 (https://bugs.launchpad.net/fwts/+bug/2047906)
 #KEYWORDS="~amd64"
 
 DEPEND="dev-libs/glib:2
