@@ -19,7 +19,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-vcs/git-$(ver_cut 1-2)
 "
-BDEPEND+="
+BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
