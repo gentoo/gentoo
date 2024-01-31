@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit libtool linux-info systemd
+inherit libtool linux-info optfeature systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
@@ -125,4 +125,7 @@ pkg_postinst() {
 		ewarn "in case running system and initramfs do not agree on detected"
 		ewarn "root device name!"
 	fi
+
+	optfeature "automatically updating /etc/kexec.conf on each kernel installation" \
+		"sys-kernel/installkernel[-systemd]"
 }
