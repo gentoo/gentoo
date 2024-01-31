@@ -133,6 +133,15 @@ src_install() {
 	dodoc libs/maildir/AUTHORS libs/maildir/INSTALL \
 		libs/maildir/README*.txt libs/maildir/*.html
 
+	# bugs 61116, 639124
+	if ! use tools ; then
+		for tool in "maildirmake" "maildirwatch"; do
+			rm "${D}/usr/bin/${tool}" || die
+			rm "${D}/usr/share/man/man"[0-9]"/${tool}."[0-9] || die
+		done
+		rm "${D}/usr/share/man/man5/maildir.5" || die
+	fi
+
 	insinto /etc
 	doins "${FILESDIR}"/maildroprc
 
