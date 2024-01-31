@@ -1,9 +1,9 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit go-module verify-sig
+inherit go-module optfeature verify-sig
 
 DESCRIPTION="Secure Boot key manager"
 HOMEPAGE="https://github.com/Foxboron/sbctl"
@@ -30,4 +30,9 @@ src_unpack() {
 
 src_install() {
 	emake PREFIX="${ED}/usr" install
+}
+
+pkg_postinst() {
+	optfeature "automatically signing installed kernels with sbctl keys on each kernel installation" \
+		"sys-kernel/installkernel[systemd]"
 }
