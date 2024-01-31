@@ -13,7 +13,8 @@ LICENSE="BUSL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 
-BDEPEND="dev-go/gox"
+BDEPEND="dev-go/gox
+	>=dev-lang/go-1.21.5"
 
 RESTRICT="test"
 
