@@ -15,13 +15,22 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="cpu_flags_x86_avx512f"
 
 # AVX512 support in yasm is still work in progress
-BDEPEND="amd64? (
-	cpu_flags_x86_avx512f? ( >=dev-lang/nasm-2.13 )
-	!cpu_flags_x86_avx512f? ( || (
-		>=dev-lang/nasm-2.11.01
-		>=dev-lang/yasm-1.2.0
-	) )
-)"
+BDEPEND="
+	amd64? (
+		cpu_flags_x86_avx512f? ( >=dev-lang/nasm-2.13 )
+		!cpu_flags_x86_avx512f? ( || (
+			>=dev-lang/nasm-2.11.01
+			>=dev-lang/yasm-1.2.0
+		) )
+	)
+	x86? (
+		cpu_flags_x86_avx512f? ( >=dev-lang/nasm-2.13 )
+		!cpu_flags_x86_avx512f? ( || (
+			>=dev-lang/nasm-2.11.01
+			>=dev-lang/yasm-1.2.0
+		) )
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.30.0_makefile-no-D.patch
@@ -31,9 +40,11 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# isa-l does not support arbitrary assemblers on amd64 (and presumably x86),
+	# isa-l does not support arbitrary assemblers on amd64 and x86,
 	# it must be either nasm or yasm.
-	use amd64 && unset AS
+	if use amd64 || use x86; then
+		unset AS
+	fi
 
 	eautoreconf
 }
