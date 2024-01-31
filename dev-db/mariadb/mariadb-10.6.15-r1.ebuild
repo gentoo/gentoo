@@ -26,7 +26,8 @@ RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
-	static? ( yassl !pam )"
+	static? ( yassl !pam )
+	test? ( extraengine )"
 
 KEYWORDS="~amd64 ~x86"
 
