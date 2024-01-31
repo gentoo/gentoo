@@ -61,6 +61,7 @@ BDEPEND="
 			dev-python/pyfakefs[${PYTHON_USEDEP}]
 			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 			dev-python/pytest-httpserver[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/selenium[${PYTHON_USEDEP}]
@@ -92,7 +93,7 @@ src_test() {
 		'tests/test_newswrapper.py::TestNewsWrapper'
 		'tests/test_happyeyeballs.py::TestHappyEyeballs'
 		'tests/test_internetspeed.py::TestInternetSpeed'
-		# Doesn't work, complains mocker missing even when pytest-mock installed
+		# Doesn't work, fixture 'fs' not found
 		'tests/test_dirscanner.py::TestDirScanner'
 		# Just plain fails
 		'tests/test_newsunpack.py::TestPar2Repair::test_basic'
@@ -116,8 +117,7 @@ src_test() {
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=tavern._core.pytest
-	epytest -s
+	epytest -s -p pytest_mock -p tavern
 }
 
 src_install() {
