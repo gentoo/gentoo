@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/vagrant/vagrant_ssl/extconf.rb)
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/hashicorp/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
