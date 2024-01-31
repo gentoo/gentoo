@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info
+inherit linux-info optfeature
 
 DESCRIPTION="Dynamic Kernel Module Support"
 HOMEPAGE="https://github.com/dell/dkms"
@@ -48,4 +48,9 @@ src_install() {
 	fi
 	einstalldocs
 	keepdir /var/lib/dkms
+}
+
+pkg_postinst() {
+	optfeature "automatically running \"dkms autoinstall\" on each kernel installation" \
+		"sys-kernel/installkernel[systemd]"
 }
