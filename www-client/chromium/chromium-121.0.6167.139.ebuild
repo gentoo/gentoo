@@ -930,7 +930,7 @@ chromium_configure() {
 	# The sysroot is the oldest debian image that chromium supports, we don't need it
 	myconf_gn+=" use_sysroot=false"
 
-	# This determines whether or not GN uses the bundled
+	# This determines whether or not GN uses the bundled libcxx
 	# default: true
 	if use libcxx || [[ ${CHROMIUM_FORCE_LIBCXX} == yes ]]; then
 		myconf_gn+=" use_custom_libcxx=true"
