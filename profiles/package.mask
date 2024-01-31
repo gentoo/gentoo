@@ -295,7 +295,7 @@ sys-block/hpacucli
 app-containers/go-secbench
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
-# KDE Plasma 6 RC1 (5.92) and Frameworks 6 RC2 (5.249) mask
+# KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
 # Do *not* attempt to mix with live ebuilds from kde overlay.
 # To install alongside KDE Frameworks 5:
@@ -384,6 +384,68 @@ app-containers/go-secbench
 ~kde-frameworks/kxmlgui-5.249.0
 ~kde-frameworks/purpose-5.249.0
 ~kde-frameworks/qqc2-desktop-style-5.249.0
+~kde-plasma/bluedevil-5.93.0
+~kde-plasma/breeze-5.93.0
+~kde-plasma/breeze-grub-5.93.0
+~kde-plasma/breeze-gtk-5.93.0
+~kde-plasma/breeze-plymouth-5.93.0
+~kde-plasma/discover-5.93.0
+~kde-plasma/drkonqi-5.93.0
+~kde-plasma/flatpak-kcm-5.93.0
+~kde-plasma/kactivitymanagerd-5.93.0
+~kde-plasma/kde-cli-tools-5.93.0
+~kde-plasma/kde-gtk-config-5.93.0
+~kde-plasma/kdecoration-5.93.0
+~kde-plasma/kdeplasma-addons-5.93.0
+~kde-plasma/kgamma-5.93.0
+~kde-plasma/kglobalacceld-5.93.0
+~kde-plasma/kinfocenter-5.93.0
+~kde-plasma/kmenuedit-5.93.0
+~kde-plasma/kpipewire-5.93.0
+~kde-plasma/kscreen-5.93.0
+~kde-plasma/kscreenlocker-5.93.0
+~kde-plasma/ksshaskpass-5.93.0
+~kde-plasma/ksystemstats-5.93.0
+~kde-plasma/kwallet-pam-5.93.0
+~kde-plasma/kwayland-5.93.0
+~kde-plasma/kwayland-integration-5.93.0
+~kde-plasma/kwin-5.93.0
+~kde-plasma/kwrited-5.93.0
+~kde-plasma/layer-shell-qt-5.93.0
+~kde-plasma/libkscreen-5.93.0
+~kde-plasma/libksysguard-5.93.0
+~kde-plasma/libplasma-5.93.0
+~kde-plasma/milou-5.93.0
+~kde-plasma/ocean-sound-theme-5.93.0
+~kde-plasma/oxygen-5.93.0
+~kde-plasma/oxygen-sounds-5.93.0
+~kde-plasma/plasma-activities-5.93.0
+~kde-plasma/plasma-activities-stats-5.93.0
+~kde-plasma/plasma-browser-integration-5.93.0
+~kde-plasma/plasma-desktop-5.93.0
+~kde-plasma/plasma-disks-5.93.0
+~kde-plasma/plasma-firewall-5.93.0
+~kde-plasma/plasma-integration-5.93.0
+~kde-plasma/plasma-meta-5.93.0
+~kde-plasma/plasma-nm-5.93.0
+~kde-plasma/plasma-pa-5.93.0
+~kde-plasma/plasma-sdk-5.93.0
+~kde-plasma/plasma-systemmonitor-5.93.0
+~kde-plasma/plasma-thunderbolt-5.93.0
+~kde-plasma/plasma-vault-5.93.0
+~kde-plasma/plasma-welcome-5.93.0
+~kde-plasma/plasma-workspace-5.93.0
+~kde-plasma/plasma-workspace-wallpapers-5.93.0
+~kde-plasma/plasma5support-5.93.0
+~kde-plasma/plymouth-kcm-5.93.0
+~kde-plasma/polkit-kde-agent-5.93.0
+~kde-plasma/powerdevil-5.93.0
+~kde-plasma/print-manager-5.93.0
+=kde-plasma/print-manager-23.08.5-r100
+~kde-plasma/sddm-kcm-5.93.0
+~kde-plasma/systemsettings-5.93.0
+~kde-plasma/wacomtablet-5.93.0
+~kde-plasma/xdg-desktop-portal-kde-5.93.0
 ~kde-plasma/bluedevil-5.92.0
 ~kde-plasma/breeze-5.92.0
 ~kde-plasma/breeze-grub-5.92.0
