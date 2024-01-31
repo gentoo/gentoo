@@ -225,6 +225,7 @@ SRC_URI="
 DEPEND="
 	dev-libs/libinput
 	x11-libs/pango
+	x11-libs/gdk-pixbuf
 "
 
 RDEPEND="${DEPEND}"
