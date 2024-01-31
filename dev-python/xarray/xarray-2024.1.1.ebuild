@@ -40,27 +40,32 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# warning-targeted tests are fragile and not important to end users
-	xarray/tests/test_backends.py::test_no_warning_from_dask_effective_get
-	# TODO: segv in netcdf4-python
-	'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-5-5]'
-	'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-5-None]'
-	'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-None-5]'
-	'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-None-None]'
-	xarray/tests/test_backends.py::TestDask::test_save_mfdataset_compute_false_roundtrip
-	# TODO: broken
-	xarray/tests/test_backends.py::TestNetCDF4Data
-	xarray/tests/test_backends.py::TestNetCDF4ViaDaskData
-	# hangs
-	xarray/tests/test_backends.py::TestDask::test_dask_roundtrip
-	# mismatches when pyarrow is installed
-	# https://github.com/pydata/xarray/issues/8092
-	xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_2D
-	xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_not_daskarray
+PATCHES=(
+	# https://github.com/pydata/xarray/pull/8686
+	"${FILESDIR}/${P}-pytest-8.patch"
 )
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# warning-targeted tests are fragile and not important to end users
+		xarray/tests/test_backends.py::test_no_warning_from_dask_effective_get
+		# TODO: segv in netcdf4-python
+		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-5-5]'
+		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-5-None]'
+		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-None-5]'
+		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-None-None]'
+		xarray/tests/test_backends.py::TestDask::test_save_mfdataset_compute_false_roundtrip
+		# TODO: broken
+		xarray/tests/test_backends.py::TestNetCDF4Data
+		xarray/tests/test_backends.py::TestNetCDF4ViaDaskData
+		# hangs
+		xarray/tests/test_backends.py::TestDask::test_dask_roundtrip
+		# mismatches when pyarrow is installed
+		# https://github.com/pydata/xarray/issues/8092
+		xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_2D
+		xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_not_daskarray
+	)
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 
 	if ! has_version ">=dev-python/scipy-1.4[${PYTHON_USEDEP}]" ; then
