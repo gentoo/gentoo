@@ -1,0 +1,41 @@
+Index: rocprofiler-rocm-5.4.3/bin/build_kernel.sh
+===================================================================
+--- rocprofiler-rocm-5.4.3.orig/bin/build_kernel.sh
++++ rocprofiler-rocm-5.4.3/bin/build_kernel.sh
+@@ -32,33 +32,9 @@ fi
+ 
+ OCL_VER="2.0"
+ 
+-if [ -e $ROCM_DIR/llvm ] ; then
+-  LLVM_DIR=$ROCM_DIR/llvm
+-  LIB_DIR=$ROCM_DIR/lib
+-else
+-  LLVM_DIR=$ROCM_DIR/hcc
+-  LIB_DIR=$LLVM_DIR/lib
+-fi
+-
+-# Determine whether using new or old device-libs layout
+-if [ -e $LIB_DIR/bitcode/opencl.amdgcn.bc ]; then
+-  BC_DIR=$LIB_DIR/bitcode
+-elif [ -e $LIB_DIR/opencl.amdgcn.bc ]; then
+-  BC_DIR=$LIB_DIR
+-elif [ -e $ROCM_DIR/amdgcn/bitcode/opencl.bc ]; then
+-  BC_DIR=$ROCM_DIR/amdgcn/bitcode
+-else
+-  echo "Error: Cannot find amdgcn bitcode directory"
+-  exit 1
+-fi
+-
+-CLANG_ROOT=$LLVM_DIR/lib/clang
+-CLANG_DIR=`ls -d $CLANG_ROOT/* | head -n 1`
+-if [ "$CLANG_DIR" = "" ] ; then
+-  echo "Error: LLVM clang library was not found"
+-  exit 1
+-fi
+-
++BC_DIR=@BC_DIR@
++LLVM_DIR=@LLVM_DIR@
++CLANG_DIR=@CLANG_DIR@
+ BIN_DIR=$LLVM_DIR/bin
+ INC_DIR=$CLANG_DIR/include
+ if [ -e $BC_DIR/opencl.amdgcn.bc ]; then
