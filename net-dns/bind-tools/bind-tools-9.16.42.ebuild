@@ -65,7 +65,7 @@ src_prepare() {
 	sed -i "s/{name='timer_test'}/{name='timer_test',timeout=900}/" "lib/isc/tests/Kyuafile" || die
 
 	# Conditionally broken
-	use sparc && sed -i "/{name='netmgr_test'}/d" "lib/isc/tests/Kyuafile" || die
+	use sparc && ( sed -i "/{name='netmgr_test'}/d" "lib/isc/tests/Kyuafile" || die )
 
 	# bug #220361
 	rm aclocal.m4 || die
