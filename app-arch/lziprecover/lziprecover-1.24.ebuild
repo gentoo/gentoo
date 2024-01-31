@@ -15,8 +15,13 @@ S="${WORKDIR}/${P/_/-}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )"
+BDEPEND="
+	test? ( app-arch/lzip )
+	verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )
+"
 
 src_configure() {
 	# not autotools-based
