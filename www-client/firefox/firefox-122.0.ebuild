@@ -981,6 +981,9 @@ src_configure() {
 		mozconfig_add_options_ac '+x11' --enable-default-toolkit=cairo-gtk3-x11-only
 	fi
 
+	# LTO is handled via configure
+	filter-lto
+
 	if use lto ; then
 		if use clang ; then
 			# Upstream only supports lld or mold when using clang.
@@ -1027,9 +1030,6 @@ src_configure() {
 			fi
 		fi
 	fi
-
-	# LTO flag was handled via configure
-	filter-lto
 
 	mozconfig_use_enable debug
 	if use debug ; then
