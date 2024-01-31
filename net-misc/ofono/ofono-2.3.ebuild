@@ -54,7 +54,6 @@ src_install() {
 	if use tools ; then
 		dobin tools/auto-enable \
 			tools/huawei-audio \
-			tools/lookup-provider-name \
 			tools/lookup-apn \
 			tools/get-location \
 			tools/tty-redirector
