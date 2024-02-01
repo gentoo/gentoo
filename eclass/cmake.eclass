@@ -388,7 +388,7 @@ cmake_src_prepare() {
 	local name
 	for name in "${modules_list[@]}" ; do
 		if [[ ${EAPI} == 7 ]]; then
-			find "${S}" -name ${name}.cmake -exec rm -v {} + || die
+			find "${S}" -name "${name}.cmake" -exec rm -v {} + || die
 		else
 			find -name "${name}.cmake" -exec rm -v {} + || die
 		fi
