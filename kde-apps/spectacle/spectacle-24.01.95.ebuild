@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.248.0
+KFMIN=5.249.0
 QTMIN=6.6.0
 inherit ecm gear.kde.org
 
