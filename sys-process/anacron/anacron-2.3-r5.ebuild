@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
 
 DEPEND="
+	acct-group/cron
 	sys-process/cronbase
 "
 
@@ -21,6 +22,8 @@ RDEPEND="
 	${DEPEND}
 	virtual/mta
 "
+
+BDEPEND="acct-group/cron"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-compile-fix-from-debian.patch
