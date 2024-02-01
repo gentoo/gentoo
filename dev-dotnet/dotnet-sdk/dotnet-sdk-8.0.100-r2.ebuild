@@ -28,7 +28,9 @@ DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
 	https://github.com/dotnet/dotnet/"
 SRC_URI="
-	amd64? ( https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}-prepared-gentoo-amd64.tar.xz )
+amd64? (
+	https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}-prepared-gentoo-amd64.tar.xz
+)
 "
 
 SDK_SLOT="$(ver_cut 1-2)"
@@ -36,14 +38,14 @@ RUNTIME_SLOT="${SDK_SLOT}.0"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 # SDK reports it is version "8.0.100" but the tag .NET SDK team had given
-# it is "8.0.100". I feel that the pattern is to tag based on "RUNTIME_SLOT".
+# it is "8.0.0". I feel that the pattern is to tag based on "RUNTIME_SLOT".
 S="${WORKDIR}/${PN}-${RUNTIME_SLOT}"
 
 LICENSE="MIT"
 KEYWORDS="amd64"
 
-# STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
-# bug https://bugs.gentoo.org/923430
+# STRIP="llvm-strip" corrupts some executables when using the patchelf hack.
+# Be safe and restrict it for source-built too, bug https://bugs.gentoo.org/923430
 RESTRICT="splitdebug strip"
 
 CURRENT_NUGETS_DEPEND="
@@ -87,17 +89,22 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 
 	if [[ "${MERGE_TYPE}" != binary ]] ; then
-		local locales="$(locale -a)"
+		if use elibc_glibc ; then
+			local locales
+			locales="$(locale -a)"
 
-		if has en_US.utf8 ${locales} ; then
-			LC_ALL=en_US.utf8
-		elif has en_US.UTF-8 ${locales} ; then
-			LC_ALL=en_US.UTF-8
+			if has en_US.utf8 ${locales} ; then
+				LC_ALL=en_US.utf8
+			elif has en_US.UTF-8 ${locales} ; then
+				LC_ALL=en_US.UTF-8
+			else
+				eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
+				eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
+
+				die "Could not switch to the en_US.UTF-8 locale."
+			fi
 		else
-			eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
-			eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
-
-			die "Could not switch to the en_US.UTF-8 locale."
+			LC_ALL=en_US.UTF-8
 		fi
 
 		export LC_ALL
@@ -139,10 +146,12 @@ src_compile() {
 	local source_repository="https://github.com/dotnet/dotnet"
 
 	ebegin "Building the .NET SDK ${SDK_SLOT}"
-	bash ./build.sh									\
-		--clean-while-building						\
-		--source-repository "${source_repository}"	\
+	local -a buildopts=(
+		--clean-while-building
+		--source-repository "${source_repository}"
 		--source-version "${COMMIT}"
+	)
+	bash ./build.sh	"${buildopts[@]}"
 	eend ${?} || die "build failed"
 }
 
