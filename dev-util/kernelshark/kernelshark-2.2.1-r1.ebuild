@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="custom-optimization doc"
 
 DEPEND="
-	>=dev-util/trace-cmd-3.0.2
+	|| ( >=dev-libs/libtracecmd-1.1.2 <dev-util/trace-cmd-3.2 )
 	dev-libs/json-c:=
 	dev-qt/qtcore:5=
 	dev-qt/qtnetwork:5=
