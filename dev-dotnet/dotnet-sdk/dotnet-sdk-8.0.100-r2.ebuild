@@ -152,6 +152,10 @@ src_install() {
 
 	fperms 0755 "${dest}"
 	dosym -r "${dest}/dotnet" "/usr/bin/dotnet-${SDK_SLOT}"
+
+	# STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
+	# bug https://bugs.gentoo.org/923430
+	dostrip -x "/${dest}/dotnet"
 }
 
 pkg_postinst() {
