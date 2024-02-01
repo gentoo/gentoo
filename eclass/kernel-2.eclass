@@ -656,9 +656,9 @@ if [[ ${ETYPE} == sources ]]; then
 		app-alternatives/cpio
 		dev-lang/perl
 		app-alternatives/bc
-		app-alternatives/yacc
-		app-alternatives/lex
 		dev-build/make
+		sys-devel/bison
+		sys-devel/flex
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
 		virtual/pkgconfig
