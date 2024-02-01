@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2024-02-01)
+# dev-libs/isa-l is seriously broken on x86 (Bugs #922193, #923425),
+# and upstream seems to have little to no interest in really
+# supporting this arch.
+net-libs/xrootd xrdec
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
