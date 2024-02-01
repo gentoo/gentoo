@@ -11,7 +11,6 @@
 	</upstream>
 	<use>
 		<flag name="conch">include Twisted SSHv2 implementation</flag>
-		<flag name="http2">include http2 support</flag>
 		<flag name="serial">include serial port support</flag>
 	</use>
 	<longdescription>Twisted is an event-based framework for internet
