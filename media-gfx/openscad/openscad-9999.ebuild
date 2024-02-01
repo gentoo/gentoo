@@ -54,7 +54,7 @@ RDEPEND="
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 		x11-libs/libX11
-		x11-libs/qscintilla:=
+		x11-libs/qscintilla:=[qt5(+)]
 		dbus? ( dev-qt/qtdbus:5 )
 		gamepad? ( dev-qt/qtgamepad:5 )
 	)
