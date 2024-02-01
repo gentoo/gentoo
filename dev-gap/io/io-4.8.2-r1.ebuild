@@ -16,6 +16,9 @@ IUSE="examples"
 DEPEND="sci-mathematics/gap:="
 RDEPEND="${DEPEND}"
 
+# backport, merged upstream already
+PATCHES=( "${FILESDIR}/${P}-fix-failed-assertion.patch" )
+
 gap-pkg_enable_tests
 
 src_prepare() {
