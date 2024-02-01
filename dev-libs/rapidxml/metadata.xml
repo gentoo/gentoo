@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>expeditioneer@gentoo.org</email>
+		<name>Dennis Lamm</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/rapidxml/bugs/</bugs-to>
+		<remote-id type="sourceforge">rapidxml</remote-id>
+	</upstream>
+</pkgmetadata>

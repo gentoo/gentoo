@@ -1,0 +1,162 @@
+--- a/tests/test_speed/main.cpp
++++ b/tests/test_speed/main.cpp
+@@ -5,18 +5,17 @@
+ #include <ctime>
+ #include <fstream>
+ #include <iomanip>
++#include <iostream>
+ #include <stdexcept>
+
+ #define RAPIDXML_NO_EXCEPTIONS
+ #include "../../rapidxml.hpp"
+-#include "../other_parsers/pugixml/pugixml.hpp"
+-
+-#include "../other_parsers/tinyxml/tinyxml.h"
++#include <pugixml.hpp>
++#include <tinyxml.h>
+
+ #define PUGAPI_VARIANT 0x58475560
+ #define PUGAPI_VERSION_MAJOR 1
+ #define PUGAPI_VERSION_MINOR 2
+-#include "../other_parsers/pugxml/pugxml.h"
+
+ using namespace std;
+
+@@ -94,17 +93,7 @@
+     pugi::xml_document doc;
+     void parse(char *data)
+     {
+-        doc.parse(data, Flags);
+-    }
+-};
+-
+-template<int Flags>
+-struct pugxml_parser
+-{
+-    pug::xml_parser parser;
+-    void parse(char *data)
+-    {
+-        parser.parse(data, Flags);
++        doc.load_buffer_inplace(data, Flags);
+     }
+ };
+
+@@ -177,8 +166,6 @@
+     printf("    pugixml:\n");
+     test<pugixml_parser<pugi::parse_minimal> >(filename, "mode=fastest");
+     test<pugixml_parser<pugi::parse_default> >(filename, "mode=default");
+-    printf("    pugxml:\n");
+-    test<pugxml_parser<pug::parse_minimal> >(filename, "mode=fastest");
+     printf("    tinyxml:\n");
+     test<tinyxml_parser>(filename, "mode=default");
+ }
+--- a/tests/test_speed/Makefile
++++ b/tests/test_speed/Makefile
+@@ -1,4 +1,4 @@
+ BINARY=test_speed.exe
+-SOURCES=main.cpp ../other_parsers/pugixml/pugixml.cpp ../other_parsers/tinyxml/tinystr.cpp ../other_parsers/tinyxml/tinyxml.cpp ../other_parsers/tinyxml/tinyxmlerror.cpp ../other_parsers/tinyxml/tinyxmlparser.cpp
++SOURCES=main.cpp /usr/lib64/libtinyxml.so /usr/lib64/libpugixml.so
+
+ include ../Makefile-Common
+--- a/tests/test_comparative/Makefile
++++ b/tests/test_comparative/Makefile
+@@ -1,4 +1,4 @@
+ BINARY=test_comparative.exe
+-SOURCES=main.cpp ../other_parsers/tinyxml/tinystr.cpp ../other_parsers/tinyxml/tinyxml.cpp ../other_parsers/tinyxml/tinyxmlerror.cpp ../other_parsers/tinyxml/tinyxmlparser.cpp
++SOURCES=main.cpp /usr/lib64/libtinyxml.so
+
+ include ../Makefile-Common
+--- a/tests/test_comparative/main.cpp
++++ b/tests/test_comparative/main.cpp
+@@ -2,7 +2,7 @@
+ #include "../test_utils.hpp"
+ #include "../../rapidxml.hpp"
+ #include "../../rapidxml_print.hpp"
+-#include "../other_parsers/tinyxml/tinyxml.h"
++#include <tinyxml.h>
+ #include <vector>
+ #include <string>
+ #include <fstream>
+@@ -66,7 +66,7 @@
+         {
+
+         // Declaration
+-        case TiXmlNode::DECLARATION:
++        case TiXmlNode::TINYXML_DECLARATION:
+             if (Flags & parse_declaration_node)
+             {
+                 dest_child = doc->allocate_node(node_declaration);
+@@ -77,7 +77,7 @@
+             break;
+
+         // Element
+-        case TiXmlNode::ELEMENT:
++        case TiXmlNode::TINYXML_ELEMENT:
+             dest_child = doc->allocate_node(node_element);
+             dest_child->name(src_child->Value(), src_child->ValueStr().size());
+             convert_tinyxml_to_rapidxml_attributes<Flags>(src_child->ToElement(), dest_child, doc);
+@@ -85,7 +85,7 @@
+             break;
+
+         // Text
+-        case TiXmlNode::TEXT:
++        case TiXmlNode::TINYXML_TEXT:
+             if (!(Flags & parse_no_data_nodes))
+             {
+                 dest_child = doc->allocate_node(node_data);
+@@ -97,7 +97,7 @@
+             break;
+
+         // Comment
+-        case TiXmlNode::COMMENT:
++        case TiXmlNode::TINYXML_COMMENT:
+             if (Flags & parse_comment_nodes)
+             {
+                 dest_child = doc->allocate_node(node_comment);
+@@ -106,7 +106,7 @@
+             break;
+
+         // Unknown
+-        case TiXmlNode::UNKNOWN:
++        case TiXmlNode::TINYXML_UNKNOWN:
+             break;
+
+         default:
+@@ -259,7 +259,7 @@
+ template<int Flags>
+ void test_xml_file(const string &filename, bool tinyxml_fails)
+ {
+-    auto_ptr<two_xmls> tx(create_two_xmls<Flags>(filename, tinyxml_fails));
++    unique_ptr<two_xmls> tx(create_two_xmls<Flags>(filename, tinyxml_fails));
+     string desc;
+     if (!tx->tinyxml_fails && !compare_nodes(&tx->doc1, &tx->doc2, desc))
+     {
+--- a/tests/test_nodes/main.cpp
++++ b/tests/test_nodes/main.cpp
+@@ -95,13 +95,13 @@
+     CHECK(attr->name_size() == 4);
+     if (Flags & parse_normalize_whitespace)
+     {
+-        CHECK(value<Flags>(attr) == " \r\nfoo  bar\t");  // Whitespace is not normalized in attribute values
+-        CHECK(attr->value_size() == 12);
++        CHECK(value<Flags>(attr) == " \nfoo  bar\t");  // Whitespace is not normalized in attribute values
++        CHECK(attr->value_size() == 11);
+     }
+     else
+     {
+-        CHECK(value<Flags>(attr) == " \r\nfoo  bar\t");
+-        CHECK(attr->value_size() == 12);
++        CHECK(value<Flags>(attr) == " \nfoo  bar\t");
++        CHECK(attr->value_size() == 11);
+     }
+ }
+
+@@ -269,7 +269,7 @@
+         REQUIRE(doctype);
+         CHECK(doctype->type() == node_doctype);
+         CHECK(*doctype->name() == 0);
+-        CHECK(value<Flags>(doctype) == "el1 [\r\n\t<!ELEMENT el1 EMPTY>\r\n]");
++        CHECK(value<Flags>(doctype) == "el1 [\n\t<!ELEMENT el1 EMPTY>\n]");
+     }
+
+ }
