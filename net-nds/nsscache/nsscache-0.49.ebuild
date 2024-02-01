@@ -58,8 +58,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	# Yes, tell setup.py to be verbose
-	distutils-r1_python_compile --verbose
+	distutils-r1_python_compile
 }
 
 python_install() {
@@ -69,13 +68,15 @@ python_install() {
 	python_doexe examples/authorized-keys-command.py
 
 	# Do not install the tests as functional source.
-	find "${D}" \
-		-path '*/site-packages/nss_cache/*' \( \
-			-iname '*_test.py*' \
-			-o -iname '*_test.*.py*' \
-		\) \
-		-delete \
-	|| die "find failed"
+	# Subject to some debate, see bug 923061
+	# To be raised on gentoo-dev 2024/02/01
+	#find "${D}" \
+	#	-path '*/site-packages/nss_cache/*' \( \
+	#		-iname '*_test.py*' \
+	#		-o -iname '*_test.*.py*' \
+	#	\) \
+	#	-delete \
+	#|| die "find failed"
 }
 
 python_install_all() {
