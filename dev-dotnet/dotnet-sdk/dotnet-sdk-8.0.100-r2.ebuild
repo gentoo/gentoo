@@ -42,6 +42,10 @@ S="${WORKDIR}/${PN}-${RUNTIME_SLOT}"
 LICENSE="MIT"
 KEYWORDS="amd64"
 
+# STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
+# bug https://bugs.gentoo.org/923430
+RESTRICT="splitdebug strip"
+
 CURRENT_NUGETS_DEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
 "
@@ -152,10 +156,6 @@ src_install() {
 
 	fperms 0755 "${dest}"
 	dosym -r "${dest}/dotnet" "/usr/bin/dotnet-${SDK_SLOT}"
-
-	# STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
-	# bug https://bugs.gentoo.org/923430
-	dostrip -x "/${dest}/dotnet"
 }
 
 pkg_postinst() {
