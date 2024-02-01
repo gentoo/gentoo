@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 IUSE="curl doc fftw fltk +glpk gnuplot gui hdf5 imagemagick java json opengl portaudio postscript +qhull +qrupdate readline sndfile +sparse ssl sundials X zlib"
-KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 # Although it is listed in INSTALL.OCTAVE as a build tool, Octave runs
 # "makeinfo" from sys-apps/texinfo at runtime to convert its texinfo
@@ -49,7 +49,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		x11-libs/qscintilla:=
+		x11-libs/qscintilla:=[qt5(+)]
 	)
 	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
@@ -164,41 +164,49 @@ src_configure() {
 	# --with-sundials_ida (no-op) with USE="sundials"
 	# --without-sundials_ida (disables it) with USE="-sundials"
 	#
-	econf \
-		--localstatedir="${EPREFIX}/var/state/octave" \
-		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
-		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
-		--disable-64 \
-		--enable-shared \
-		--with-z \
-		--with-bz2 \
-		$(use_enable doc docs) \
-		$(use_enable java) \
-		$(use_enable json rapidjson) \
-		$(use_enable readline) \
-		$(use_with curl) \
-		$(use_with fftw fftw3) \
-		$(use_with fftw fftw3f) \
-		$(use_enable fftw fftw-threads) \
-		$(use_with glpk) \
-		$(use_with hdf5) \
-		$(use_with imagemagick magick GraphicsMagick++) \
-		$(use_with opengl) \
-		$(use_with fltk) \
-		$(use_with ssl openssl) \
-		$(use_with portaudio) \
-		$(use_with qhull qhull_r) \
-		$(use_with qrupdate) \
-		$(use_with gui qt 5) \
-		$(use_with sndfile) \
-		$(use_with sparse arpack) \
-		$(use_with sparse umfpack) \
-		$(use_with sparse colamd) \
-		$(use_with sparse ccolamd) \
-		$(use_with sparse cholmod) \
-		$(use_with sparse cxsparse) \
-		$(use_with sundials sundials_ida) \
+	local myeconfargs=(
+		--localstatedir="${EPREFIX}/var/state/octave"
+		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
+		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
+		--disable-64
+		--enable-shared
+		--with-z
+		--with-bz2
+
+		# bug #901965
+		--without-libiconv-prefix
+		--without-libreadline-prefix
+
+		$(use_enable doc docs)
+		$(use_enable java)
+		$(use_enable json rapidjson)
+		$(use_enable readline)
+		$(use_with curl)
+		$(use_with fftw fftw3)
+		$(use_with fftw fftw3f)
+		$(use_enable fftw fftw-threads)
+		$(use_with glpk)
+		$(use_with hdf5)
+		$(use_with imagemagick magick GraphicsMagick++)
+		$(use_with opengl)
+		$(use_with fltk)
+		$(use_with ssl openssl)
+		$(use_with portaudio)
+		$(use_with qhull qhull_r)
+		$(use_with qrupdate)
+		$(use_with gui qt 5)
+		$(use_with sndfile)
+		$(use_with sparse arpack)
+		$(use_with sparse umfpack)
+		$(use_with sparse colamd)
+		$(use_with sparse ccolamd)
+		$(use_with sparse cholmod)
+		$(use_with sparse cxsparse)
+		$(use_with sundials sundials_ida)
 		$(use_with X x)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

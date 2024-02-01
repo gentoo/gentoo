@@ -31,7 +31,7 @@ RDEPEND="
 	app-arch/zip
 	app-text/ghostscript-gpl
 	sys-apps/texinfo
-	dev-libs/libpcre:=
+	dev-libs/libpcre2
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	virtual/blas
@@ -49,7 +49,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		x11-libs/qscintilla:=
+		x11-libs/qscintilla:=[qt5(+)]
 	)
 	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
@@ -128,10 +128,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
-	"${FILESDIR}"/${PN}-4.2.2-ncurses-pkgconfig.patch
-	"${FILESDIR}"/${PN}-6.4.0-slibtool.patch
 	"${FILESDIR}"/${PN}-6.4.0-omit-qtchooser-qtver.patch
-	"${FILESDIR}"/${P}-docs-texinfo-7.0.patch
 )
 
 src_prepare() {

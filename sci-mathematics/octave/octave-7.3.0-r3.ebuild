@@ -31,7 +31,7 @@ RDEPEND="
 	app-arch/zip
 	app-text/ghostscript-gpl
 	sys-apps/texinfo
-	dev-libs/libpcre2
+	dev-libs/libpcre:=
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	virtual/blas
@@ -49,7 +49,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		x11-libs/qscintilla:=
+		x11-libs/qscintilla:=[qt5(+)]
 	)
 	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
@@ -65,7 +65,7 @@ RDEPEND="
 	postscript? (
 		app-text/epstool
 		media-gfx/pstoedit
-		>=media-gfx/fig2dev-3.2.9-r1
+		media-gfx/transfig
 	)
 	qhull? ( media-libs/qhull:= )
 	qrupdate? ( sci-libs/qrupdate:= )
@@ -128,7 +128,10 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
+	"${FILESDIR}"/${PN}-4.2.2-ncurses-pkgconfig.patch
+	"${FILESDIR}"/${PN}-6.4.0-slibtool.patch
 	"${FILESDIR}"/${PN}-6.4.0-omit-qtchooser-qtver.patch
+	"${FILESDIR}"/${P}-docs-texinfo-7.0.patch
 )
 
 src_prepare() {
@@ -164,49 +167,41 @@ src_configure() {
 	# --with-sundials_ida (no-op) with USE="sundials"
 	# --without-sundials_ida (disables it) with USE="-sundials"
 	#
-	local myeconfargs=(
-		--localstatedir="${EPREFIX}/var/state/octave"
-		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
-		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
-		--disable-64
-		--enable-shared
-		--with-z
-		--with-bz2
-
-		# bug #901965
-		--without-libiconv-prefix
-		--without-libreadline-prefix
-
-		$(use_enable doc docs)
-		$(use_enable java)
-		$(use_enable json rapidjson)
-		$(use_enable readline)
-		$(use_with curl)
-		$(use_with fftw fftw3)
-		$(use_with fftw fftw3f)
-		$(use_enable fftw fftw-threads)
-		$(use_with glpk)
-		$(use_with hdf5)
-		$(use_with imagemagick magick GraphicsMagick++)
-		$(use_with opengl)
-		$(use_with fltk)
-		$(use_with ssl openssl)
-		$(use_with portaudio)
-		$(use_with qhull qhull_r)
-		$(use_with qrupdate)
-		$(use_with gui qt 5)
-		$(use_with sndfile)
-		$(use_with sparse arpack)
-		$(use_with sparse umfpack)
-		$(use_with sparse colamd)
-		$(use_with sparse ccolamd)
-		$(use_with sparse cholmod)
-		$(use_with sparse cxsparse)
-		$(use_with sundials sundials_ida)
+	econf \
+		--localstatedir="${EPREFIX}/var/state/octave" \
+		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
+		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
+		--disable-64 \
+		--enable-shared \
+		--with-z \
+		--with-bz2 \
+		$(use_enable doc docs) \
+		$(use_enable java) \
+		$(use_enable json rapidjson) \
+		$(use_enable readline) \
+		$(use_with curl) \
+		$(use_with fftw fftw3) \
+		$(use_with fftw fftw3f) \
+		$(use_enable fftw fftw-threads) \
+		$(use_with glpk) \
+		$(use_with hdf5) \
+		$(use_with imagemagick magick GraphicsMagick++) \
+		$(use_with opengl) \
+		$(use_with fltk) \
+		$(use_with ssl openssl) \
+		$(use_with portaudio) \
+		$(use_with qhull qhull_r) \
+		$(use_with qrupdate) \
+		$(use_with gui qt 5) \
+		$(use_with sndfile) \
+		$(use_with sparse arpack) \
+		$(use_with sparse umfpack) \
+		$(use_with sparse colamd) \
+		$(use_with sparse ccolamd) \
+		$(use_with sparse cholmod) \
+		$(use_with sparse cxsparse) \
+		$(use_with sundials sundials_ida) \
 		$(use_with X x)
-	)
-
-	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
