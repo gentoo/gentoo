@@ -9,4 +9,7 @@
 		<flag name="alloca">Use alloca(3) instead of malloc(3) for memory management</flag>
 		<flag name="tools">Build command line tools</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">mborgerding/kissfft</remote-id>
+	</upstream>
 </pkgmetadata>
