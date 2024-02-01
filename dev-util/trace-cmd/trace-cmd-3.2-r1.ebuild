@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -61,6 +61,14 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	default
+
+	# Not install libtracecmd library
+	sed -i -e "/^libtracecmd_standalone_build/s/true/false/" \
+		"${S}"/lib/meson.build || die
+}
+
 src_configure() {
 	local emesonargs=(
 		-Dasciidoctor=false
@@ -73,4 +81,12 @@ src_configure() {
 	# was somewhat automagic, so this isn't a huge loss for now, but we should
 	# upstream some build options for these.
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	# TODO: fix bash completion name
+	mv "${D}"/usr/share/bash-completion/completions/${PN}.bash \
+		"${D}"/usr/share/bash-completion/completions/${PN} || die
 }
