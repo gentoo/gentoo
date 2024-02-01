@@ -23,7 +23,7 @@ arm64? (
 S="${WORKDIR}"
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.0"
+RUNTIME_SLOT="${SDK_SLOT}.25"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 
 LICENSE="MIT"
@@ -44,8 +44,6 @@ IDEPEND="
 "
 PDEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
-	~dev-dotnet/dotnet-runtime-nugets-6.0.25
-	~dev-dotnet/dotnet-runtime-nugets-7.0.14
 "
 
 QA_PREBUILT="*"
@@ -133,6 +131,10 @@ src_install() {
 
 	fperms 0755 "/${dest}"
 	dosym "../../${dest}/dotnet" "/usr/bin/dotnet-bin-${SDK_SLOT}"
+
+	# STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
+	# bug https://bugs.gentoo.org/923430
+	dostrip -x "/${dest}/dotnet"
 }
 
 pkg_postinst() {
