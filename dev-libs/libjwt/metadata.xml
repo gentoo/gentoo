@@ -17,6 +17,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="openssl">Use openssl libs for crypto functions</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">benmcollins/libjwt</remote-id>
 	</upstream>

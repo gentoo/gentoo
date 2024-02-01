@@ -5,14 +5,11 @@ default libjwt will default to linking to openssl (if openssl enabled)
 
 
 diff --git a/configure.ac b/configure.ac
-index be848df..3b61e2a 100644
+index 2b28327..183f163 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -6,27 +6,105 @@ LT_INIT([])
- AC_CONFIG_MACRO_DIR([m4])
- AC_CONFIG_HEADERS([libjwt/config.h])
+@@ -8,25 +8,99 @@ AC_CONFIG_HEADERS([libjwt/config.h])
  
-+AC_SUBST([LIBJWT_LTVERSION], [11:0:9])
  AC_SUBST([AM_CFLAGS], [-Wall])
  
 -dnl Prefer OpenSSL unless asked to ignore it
@@ -117,14 +114,11 @@ index be848df..3b61e2a 100644
 +		],
 +	[AC_MSG_ERROR([unable to set default ssl library])]
 +)
-+AM_CONDITIONAL([SSL_DEF_OPENSSL], [test "x$ssl_impl" = "xopenssl"])
-+dnl currently unused, for additional ssl implementations
-+dnl AM_CONDITIONAL([SSL_DEF_GNUTLS], [test "x$ssl_impl" = "xgnutls"])
 +
  PKG_CHECK_MODULES([JANSSON], [jansson >= 2.0])
  PKG_CHECK_MODULES([CHECK], [check >= 0.9.4], [true], [true])
  
-@@ -44,6 +122,13 @@ DX_PDF_FEATURE(OFF)
+@@ -46,6 +120,13 @@ DX_PDF_FEATURE(OFF)
  DX_PS_FEATURE(OFF)
  DX_INIT_DOXYGEN($PACKAGE_NAME, doxygen.cfg)
  
@@ -139,18 +133,10 @@ index be848df..3b61e2a 100644
  	Makefile
  	include/Makefile
 diff --git a/libjwt/Makefile.am b/libjwt/Makefile.am
-index 7621428..b837d53 100644
+index 9600317..c69b424 100644
 --- a/libjwt/Makefile.am
 +++ b/libjwt/Makefile.am
-@@ -4,17 +4,51 @@ lib_LTLIBRARIES = libjwt.la
- 
- libjwt_la_SOURCES = jwt.c base64.c
- 
--if HAVE_OPENSSL
-+if SSL_DEF_OPENSSL
- libjwt_la_SOURCES += jwt-openssl.c
- else
-+## SSL_DEF_GNUTLS
+@@ -8,11 +8,44 @@ else
  libjwt_la_SOURCES += jwt-gnutls.c
  endif
  
@@ -166,23 +152,23 @@ index 7621428..b837d53 100644
 +endif
 +
  # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
--libjwt_la_LDFLAGS = -version-info 11:0:9 $(OPENSSL_LDFLAGS) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
+-libjwt_la_LDFLAGS = -version-info 9:1:8 $(OPENSSL_LDFLAGS) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
 -libjwt_la_CPPFLAGS = -I$(top_srcdir)/include $(OPENSSL_INCLUDES) $(GNUTLS_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
 -libjwt_la_CFLAGS = $(JANSSON_CFLAGS) $(OPENSSL_CFLAGS) $(GNUTLS_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
 -libjwt_la_LIBADD = $(JANSSON_LIBS) $(OPENSSL_LIBS) $(GNUTLS_LIBS) $(CODE_COVERAGE_LDFLAGS)
-+libjwt_la_LDFLAGS = -version-info $(LIBJWT_LTVERSION) $(SSL_DEF_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
++libjwt_la_LDFLAGS = -version-info 9:1:8 $(SSL_DEF_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
 +libjwt_la_CPPFLAGS = -I$(top_srcdir)/include $(SSL_DEF_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
 +libjwt_la_CFLAGS = $(JANSSON_CFLAGS) $(SSL_DEF_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
 +libjwt_la_LIBADD = $(JANSSON_LIBS) $(SSL_DEF_LIBS) $(CODE_COVERAGE_LDFLAGS)
 +if MULTI_SSL
 +if HAVE_OPENSSL
-+libjwt_ossl_la_LDFLAGS = -version-info $(LIBJWT_LTVERSION) $(OPENSSL_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
++libjwt_ossl_la_LDFLAGS = -version-info 9:1:8 $(OPENSSL_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
 +libjwt_ossl_la_CPPFLAGS = -I$(top_srcdir)/include $(OPENSSL_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
 +libjwt_ossl_la_CFLAGS = $(JANSSON_CFLAGS) $(OPENSSL_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
 +libjwt_ossl_la_LIBADD = $(JANSSON_LIBS) $(OPENSSL_LIBS) $(CODE_COVERAGE_LDFLAGS)
 +endif
 +if HAVE_GNUTLS
-+libjwt_gnutls_la_LDFLAGS = -version-info $(LIBJWT_LTVERSION) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
++libjwt_gnutls_la_LDFLAGS = -version-info 9:1:8 $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
 +libjwt_gnutls_la_CPPFLAGS = -I$(top_srcdir)/include $(GNUTLS_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
 +libjwt_gnutls_la_CFLAGS = $(JANSSON_CFLAGS) $(GNUTLS_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
 +libjwt_gnutls_la_LIBADD = $(JANSSON_LIBS) $(GNUTLS_LIBS) $(CODE_COVERAGE_LDFLAGS)
@@ -245,98 +231,3 @@ index 0c81d36..0bb64f4 100644
  Libs: -L${libdir} -ljwt
 -Libs.private: @JANSSON_LIBS@ @OPENSSL_LIBS@
 +Libs.private: @JANSSON_LIBS@ @SSL_DEF_LIBS@
-diff --git a/tests/Makefile.am b/tests/Makefile.am
-index 58860ac..57a6444 100644
---- a/tests/Makefile.am
-+++ b/tests/Makefile.am
-@@ -10,6 +10,14 @@ TESTS =			\
- 	jwt_ec		\
- 	jwt_validate
- 
-+if MULTI_SSL
-+if HAVE_OPENSSL
-+include ossl_tests.mk
-+endif
-+if HAVE_GNUTLS
-+include gnutls_tests.mk
-+endif
-+endif
- check_PROGRAMS = $(TESTS)
- 
- AM_CPPFLAGS = -I$(top_srcdir)/include
-diff --git a/tests/gnutls_tests.mk b/tests/gnutls_tests.mk
-new file mode 100644
-index 0000000..b16b8ef
---- /dev/null
-+++ b/tests/gnutls_tests.mk
-@@ -0,0 +1,32 @@
-+## for jwttest in $(jwttests)
-+## do
-+## TESTS += $(sslimpl)_$(jwttest)
-+## $(sslimpl)_$(jwttest)_SOURCES = $(jwttest).c
-+## $(sslimpl)_$(jwttest)_LDADD = -ljwt-$(sslimpl) $(CHECK_LIBS)
-+## done
-+
-+TESTS += gnutls_jwt_new
-+gnutls_jwt_new_SOURCES = jwt_new.c
-+gnutls_jwt_new_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_grant
-+gnutls_jwt_grant_SOURCES = jwt_grant.c
-+gnutls_jwt_grant_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_header
-+gnutls_jwt_header_SOURCES = jwt_header.c
-+gnutls_jwt_header_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_dump
-+gnutls_jwt_dump_SOURCES = jwt_dump.c
-+gnutls_jwt_dump_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_encode
-+gnutls_jwt_encode_SOURCES = jwt_encode.c
-+gnutls_jwt_encode_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_rsa
-+gnutls_jwt_rsa_SOURCES = jwt_rsa.c
-+gnutls_jwt_rsa_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_ec
-+gnutls_jwt_ec_SOURCES = jwt_ec.c
-+gnutls_jwt_ec_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+TESTS += gnutls_jwt_validate
-+gnutls_jwt_validate_SOURCES = jwt_validate.c
-+gnutls_jwt_validate_LDADD = -ljwt-gnutls $(CHECK_LIBS)
-+
-diff --git a/tests/ossl_tests.mk b/tests/ossl_tests.mk
-new file mode 100644
-index 0000000..5c360c4
---- /dev/null
-+++ b/tests/ossl_tests.mk
-@@ -0,0 +1,32 @@
-+## for jwttest in $(jwttests)
-+## do
-+## TESTS += $(sslimpl)_$(jwttest)
-+## $(sslimpl)_$(jwttest)_SOURCES = $(jwttest).c
-+## $(sslimpl)_$(jwttest)_LDADD = -ljwt-$(sslimpl) $(CHECK_LIBS)
-+## done
-+
-+TESTS += ossl_jwt_new
-+ossl_jwt_new_SOURCES = jwt_new.c
-+ossl_jwt_new_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_grant
-+ossl_jwt_grant_SOURCES = jwt_grant.c
-+ossl_jwt_grant_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_header
-+ossl_jwt_header_SOURCES = jwt_header.c
-+ossl_jwt_header_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_dump
-+ossl_jwt_dump_SOURCES = jwt_dump.c
-+ossl_jwt_dump_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_encode
-+ossl_jwt_encode_SOURCES = jwt_encode.c
-+ossl_jwt_encode_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_rsa
-+ossl_jwt_rsa_SOURCES = jwt_rsa.c
-+ossl_jwt_rsa_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_ec
-+ossl_jwt_ec_SOURCES = jwt_ec.c
-+ossl_jwt_ec_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+TESTS += ossl_jwt_validate
-+ossl_jwt_validate_SOURCES = jwt_validate.c
-+ossl_jwt_validate_LDADD = -ljwt-ossl $(CHECK_LIBS)
-+

@@ -5,14 +5,14 @@ default libjwt will default to linking to openssl (if openssl enabled)
 
 
 diff --git a/configure.ac b/configure.ac
-index be848df..3b61e2a 100644
+index 6061add..447dd10 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -6,27 +6,105 @@ LT_INIT([])
  AC_CONFIG_MACRO_DIR([m4])
  AC_CONFIG_HEADERS([libjwt/config.h])
  
-+AC_SUBST([LIBJWT_LTVERSION], [11:0:9])
++AC_SUBST([LIBJWT_LTVERSION], [11:1:9])
  AC_SUBST([AM_CFLAGS], [-Wall])
  
 -dnl Prefer OpenSSL unless asked to ignore it
@@ -24,7 +24,7 @@ index be848df..3b61e2a 100644
 -	PKG_CHECK_MODULES([OPENSSL], [openssl >= 0.9.8])
 -	AM_CONDITIONAL([HAVE_OPENSSL], [true])
 -], [
--	PKG_CHECK_MODULES([GNUTLS], [gnutls >= 3.5.8])
+-	PKG_CHECK_MODULES([GNUTLS], [gnutls >= 3.6.0])
 -	AM_CONDITIONAL([HAVE_OPENSSL], [false])
 +	AS_HELP_STRING([--with-openssl], [Build using OpenSSL library]),
 +	[with_openssl=$withval],
@@ -64,7 +64,7 @@ index be848df..3b61e2a 100644
 +AM_CONDITIONAL([HAVE_OPENSSL], [test "x$found_openssl" = "xyes"])
 +
 +AS_IF([test "x$with_gnutls" = "xyes"], [
-+	PKG_CHECK_MODULES([GNUTLS], [gnutls >= 3.5.8], [found_gnutls=yes])
++	PKG_CHECK_MODULES([GNUTLS], [gnutls >= 3.6.0], [found_gnutls=yes])
 +])
 +AM_CONDITIONAL([HAVE_GNUTLS], [test "x$found_gnutls" = "xyes"])
 +
@@ -139,7 +139,7 @@ index be848df..3b61e2a 100644
  	Makefile
  	include/Makefile
 diff --git a/libjwt/Makefile.am b/libjwt/Makefile.am
-index 7621428..b837d53 100644
+index 21ea12d..b837d53 100644
 --- a/libjwt/Makefile.am
 +++ b/libjwt/Makefile.am
 @@ -4,17 +4,51 @@ lib_LTLIBRARIES = libjwt.la
@@ -166,7 +166,7 @@ index 7621428..b837d53 100644
 +endif
 +
  # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
--libjwt_la_LDFLAGS = -version-info 11:0:9 $(OPENSSL_LDFLAGS) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
+-libjwt_la_LDFLAGS = -version-info 11:1:9 $(OPENSSL_LDFLAGS) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
 -libjwt_la_CPPFLAGS = -I$(top_srcdir)/include $(OPENSSL_INCLUDES) $(GNUTLS_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
 -libjwt_la_CFLAGS = $(JANSSON_CFLAGS) $(OPENSSL_CFLAGS) $(GNUTLS_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
 -libjwt_la_LIBADD = $(JANSSON_LIBS) $(OPENSSL_LIBS) $(GNUTLS_LIBS) $(CODE_COVERAGE_LDFLAGS)
@@ -246,10 +246,10 @@ index 0c81d36..0bb64f4 100644
 -Libs.private: @JANSSON_LIBS@ @OPENSSL_LIBS@
 +Libs.private: @JANSSON_LIBS@ @SSL_DEF_LIBS@
 diff --git a/tests/Makefile.am b/tests/Makefile.am
-index 58860ac..57a6444 100644
+index 6ca2a46..b64ad20 100644
 --- a/tests/Makefile.am
 +++ b/tests/Makefile.am
-@@ -10,6 +10,14 @@ TESTS =			\
+@@ -11,6 +11,14 @@ TESTS =			\
  	jwt_ec		\
  	jwt_validate
  
@@ -266,10 +266,10 @@ index 58860ac..57a6444 100644
  AM_CPPFLAGS = -I$(top_srcdir)/include
 diff --git a/tests/gnutls_tests.mk b/tests/gnutls_tests.mk
 new file mode 100644
-index 0000000..b16b8ef
+index 0000000..a6b4997
 --- /dev/null
 +++ b/tests/gnutls_tests.mk
-@@ -0,0 +1,32 @@
+@@ -0,0 +1,35 @@
 +## for jwttest in $(jwttests)
 +## do
 +## TESTS += $(sslimpl)_$(jwttest)
@@ -295,6 +295,9 @@ index 0000000..b16b8ef
 +TESTS += gnutls_jwt_rsa
 +gnutls_jwt_rsa_SOURCES = jwt_rsa.c
 +gnutls_jwt_rsa_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_rsa_pss
++gnutls_jwt_rsa_pss_SOURCES = jwt_rsa_pss.c
++gnutls_jwt_rsa_pss_LDADD = -ljwt-gnutls $(CHECK_LIBS)
 +TESTS += gnutls_jwt_ec
 +gnutls_jwt_ec_SOURCES = jwt_ec.c
 +gnutls_jwt_ec_LDADD = -ljwt-gnutls $(CHECK_LIBS)
@@ -304,10 +307,10 @@ index 0000000..b16b8ef
 +
 diff --git a/tests/ossl_tests.mk b/tests/ossl_tests.mk
 new file mode 100644
-index 0000000..5c360c4
+index 0000000..83d0a99
 --- /dev/null
 +++ b/tests/ossl_tests.mk
-@@ -0,0 +1,32 @@
+@@ -0,0 +1,35 @@
 +## for jwttest in $(jwttests)
 +## do
 +## TESTS += $(sslimpl)_$(jwttest)
@@ -333,6 +336,9 @@ index 0000000..5c360c4
 +TESTS += ossl_jwt_rsa
 +ossl_jwt_rsa_SOURCES = jwt_rsa.c
 +ossl_jwt_rsa_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_rsa_pss
++ossl_jwt_rsa_pss_SOURCES = jwt_rsa_pss.c
++ossl_jwt_rsa_pss_LDADD = -ljwt-ossl $(CHECK_LIBS)
 +TESTS += ossl_jwt_ec
 +ossl_jwt_ec_SOURCES = jwt_ec.c
 +ossl_jwt_ec_LDADD = -ljwt-ossl $(CHECK_LIBS)
