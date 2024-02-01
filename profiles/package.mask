@@ -463,12 +463,6 @@ net-misc/openr2
 # GNOME 45 mask
 >=gnome-extra/gnome-logs-45_alpha
 
-# Sam James <sam@gentoo.org> (2023-07-05)
-# Doesn't install all needed files by e.g. kernelshark.
-# Need to either split into libtracecmd for the libraries or revert to Makefiles.
-# See bug #909439.
-=dev-util/trace-cmd-3.2
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled
 # because of dependencies that cannot be satisfied.  All the other
