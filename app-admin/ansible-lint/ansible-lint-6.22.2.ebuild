@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.12.0[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-4.1.10[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-4.1.11[${PYTHON_USEDEP}]
 	>=dev-python/black-22.8.0[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.17.0[${PYTHON_USEDEP}]
@@ -40,9 +40,8 @@ BDEPEND="
 		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/jmespath[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
+		>=dev-python/pytest-plus-0.6[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.5.0[${PYTHON_USEDEP}]
-		>=dev-python/spdx-tools-0.7.1:0/0.7[${PYTHON_USEDEP}]
 	)"
 
 # test_call_from_outside_venv doesn't play nicely with the sandbox
