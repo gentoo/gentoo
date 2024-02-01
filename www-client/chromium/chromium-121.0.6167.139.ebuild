@@ -231,8 +231,8 @@ BDEPEND="
 			$(depend_clang_llvm_versions ${LLVM_MIN_SLOT} ${LLVM_MAX_SLOT})
 		)
 		>=dev-lang/rust-${RUST_MIN_VER}[profiler]
-		>=dev-build/gn-${GN_MIN_VER}
 	)
+	>=dev-build/gn-${GN_MIN_VER}
 	dev-lang/perl
 	>=dev-build/ninja-1.7.2
 	>=dev-util/gperf-3.0.3
