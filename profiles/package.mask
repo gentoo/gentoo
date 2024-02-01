@@ -445,7 +445,7 @@ app-containers/go-secbench
 ~kde-plasma/systemsettings-5.93.0
 ~kde-plasma/wacomtablet-5.93.0
 ~kde-plasma/xdg-desktop-portal-kde-5.93.0
-~kde-apps/kaccounts-integration-24.01.90
+~kde-apps/kaccounts-integration-24.01.95
 ~kde-apps/kdegraphics-mobipocket-24.01.90
 =kde-apps/kio-extras-23.08.5-r100
 ~kde-apps/kio-extras-24.01.90

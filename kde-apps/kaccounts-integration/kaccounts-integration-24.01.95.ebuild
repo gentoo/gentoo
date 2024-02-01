@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_TEST="forceoptional"
 KF5MIN=5.113.0
-KFMIN=5.248.0
+KFMIN=5.249.0
 QT5MIN=5.15.9
 QTMIN=6.6.0
 VIRTUALDBUS_TEST="true"
@@ -16,7 +16,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="LGPL-2.1"
 SLOT="6"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64"
 IUSE="qt5"
 
 # bug #549444
