@@ -25,7 +25,7 @@ SLOT="0"
 RESTRICT="!test? ( test )"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} d3d12 freedreno intel swrast lima nouveau panfrost v3d vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} d3d12 freedreno intel lavapipe lima nouveau panfrost v3d vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -47,9 +47,8 @@ REQUIRED_USE="
 			video_cards_vmware
 		)
 	)
-	osmesa? ( video_cards_swrast )
 	vulkan-overlay? ( vulkan )
-	video_cards_swrast? ( vulkan? ( llvm ) )
+	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	vdpau? ( X )
@@ -341,7 +340,7 @@ multilib_src_configure() {
 		gallium_enable -- kmsro
 	fi
 
-	gallium_enable video_cards_swrast swrast
+	gallium_enable -- swrast
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
 	gallium_enable video_cards_lima lima
@@ -373,7 +372,7 @@ multilib_src_configure() {
 	fi
 
 	if use vulkan; then
-		vulkan_enable video_cards_swrast swrast
+		vulkan_enable video_cards_lavapipe swrast
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_d3d12 microsoft-experimental
