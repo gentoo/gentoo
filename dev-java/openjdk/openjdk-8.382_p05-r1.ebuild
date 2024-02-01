@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,9 +62,7 @@ DEPEND="
 	x11-libs/libXtst
 	|| (
 		dev-java/openjdk-bin:${SLOT}
-		dev-java/icedtea-bin:${SLOT}
 		dev-java/openjdk:${SLOT}
-		dev-java/icedtea:${SLOT}
 	)
 "
 
