@@ -1,0 +1,30 @@
+From f0d959a496cf47482904c62c91312aba5153f423 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@gmail.com>
+Date: Thu, 1 Feb 2024 08:02:44 +0100
+Subject: [PATCH] Remove the undefined SLang_Rline_Quit symbol from the version
+ script
+
+This symbol is not defined and not used anywhere, it was present only
+in the version file, which triggered the following error when linking
+with LLD 17:
+
+  ld.lld: error: version script assignment of 'SLANG2' to symbol 'SLang_Rline_Quit' failed: symbol not defined
+---
+ src/slang.ver | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/slang.ver b/src/slang.ver
+index aa030c9..4b01f9f 100644
+--- a/src/slang.ver
++++ b/src/slang.ver
+@@ -70,7 +70,6 @@ SLANG2 {
+ 		SLang_Last_Key_Char;
+ 		SLang_Load_File_Hook;
+ 		SLang_Num_Function_Args;
+-		SLang_Rline_Quit;
+ 		SLang_TT_Baud_Rate;
+ 		SLang_TT_Read_FD;
+ 		SLang_TT_Write_FD;
+-- 
+2.43.0
+
