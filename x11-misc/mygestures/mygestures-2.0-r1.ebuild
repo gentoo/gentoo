@@ -31,6 +31,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0-gcc14.patch
+)
+
 src_prepare() {
 	default
 
