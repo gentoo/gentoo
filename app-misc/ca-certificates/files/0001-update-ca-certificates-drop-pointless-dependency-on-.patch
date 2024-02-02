@@ -1,4 +1,4 @@
-From 0d5077f59b12bcf64a0489c884e6715cb98ae4b3 Mon Sep 17 00:00:00 2001
+From c33e85bc2fe61e66e2fa5c2ab0efc4277b7cef5e Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz93@gmail.com>
 Date: Mon, 29 Jan 2024 21:54:04 -0500
 Subject: [PATCH] update-ca-certificates: drop pointless dependency on external
@@ -25,22 +25,24 @@ It's very easy to replace with `printf %s\\n *`, so do so. Even if it
 wasn't easy to replace with printf, it would be easy to replace with
 `for x in *; "$x"; done` instead.
 ---
- image/usr/sbin/update-ca-certificates | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ image/usr/sbin/update-ca-certificates | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/image/usr/sbin/update-ca-certificates b/image/usr/sbin/update-ca-certificates
-index bb5aa54..7abffc9 100755
+index bb5aa54..fbf1ee2 100755
 --- a/image/usr/sbin/update-ca-certificates
 +++ b/image/usr/sbin/update-ca-certificates
-@@ -218,7 +218,7 @@ then
+@@ -218,8 +218,9 @@ then
    echo "Running hooks in $HOOKSDIR..."
    VERBOSE_ARG=
    [ "$verbose" = 0 ] || VERBOSE_ARG="--verbose"
 -  eval run-parts "$VERBOSE_ARG" --test -- "$HOOKSDIR" | while read hook
 +  ( LC_ALL=C; printf %s\\n "$HOOKSDIR"/* ) | while read hook
    do
++    [ -f "$hook" ] || continue
      ( cat "$ADDED"
        cat "$REMOVED" ) | "$hook" || echo "E: $hook exited with code $?."
+   done
 -- 
 2.43.0
 
