@@ -8,15 +8,24 @@ kernel-install is not supported by systemd upstream and therefore this
 patch is unlikely to be accepted by dracut upstream.
 
 diff --git a/install.d/50-dracut.install b/install.d/50-dracut.install
-index 441414a..cfd4fe7 100755
+index 441414ac..a98449fe 100755
 --- a/install.d/50-dracut.install
 +++ b/install.d/50-dracut.install
-@@ -30,7 +30,7 @@ if [[ $KERNEL_INSTALL_LAYOUT == "uki" && -n $KERNEL_INSTALL_STAGING_AREA ]]; the
+@@ -38,6 +38,17 @@ elif [[ $KERNEL_INSTALL_LAYOUT == "bls" && -n $KERNEL_INSTALL_STAGING_AREA ]]; t
      else
          exit 0
      fi
--elif [[ $KERNEL_INSTALL_LAYOUT == "bls" && -n $KERNEL_INSTALL_STAGING_AREA ]]; then
-+elif [[ $KERNEL_INSTALL_LAYOUT == "bls" || $KERNEL_INSTALL_LAYOUT == "grub" && -n $KERNEL_INSTALL_STAGING_AREA ]]; then
-     BOOT_DIR_ABS="$KERNEL_INSTALL_STAGING_AREA"
-     if [[ -z $KERNEL_INSTALL_INITRD_GENERATOR || $KERNEL_INSTALL_INITRD_GENERATOR == "dracut" ]]; then
-         IMAGE="initrd"
++elif [[ $KERNEL_INSTALL_LAYOUT == "grub" && -n $KERNEL_INSTALL_STAGING_AREA ]]; then
++    BOOT_DIR_ABS="$KERNEL_INSTALL_STAGING_AREA"
++    if [[ -z $KERNEL_INSTALL_UKI_GENERATOR || $KERNEL_INSTALL_UKI_GENERATOR == "dracut" ]]; then
++        IMAGE="uki.efi"
++        UEFI_OPTS="--uefi"
++    elif [[ -z $KERNEL_INSTALL_INITRD_GENERATOR || $KERNEL_INSTALL_INITRD_GENERATOR == "dracut" ]]; then
++        IMAGE="initrd"
++        UEFI_OPTS="--no-uefi"
++    else
++        exit 0
++    fi
+ else
+     # No layout information, use users --uefi/--no-uefi preference
+     UEFI_OPTS=""
