@@ -14,7 +14,7 @@ HOMEPAGE="https://exiftool.org/ https://exiftool.sourceforge.net"
 SRC_URI="https://exiftool.org/${DIST_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86 ~x64-macos"
 IUSE="doc"
 
 src_install() {
