@@ -29,6 +29,7 @@ RDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/tinyssh-20240101_c99.patch"
 	"${FILESDIR}/tinyssh-20240101_conf_cflags.patch"
 )
 
