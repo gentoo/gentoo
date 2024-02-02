@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,11 +10,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
 
 MY_PN=QScintilla
 MY_P=${MY_PN}_src-${PV/_pre/.dev}
-if [[ ${PV} == *_pre* ]]; then
-	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
-else
-	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
-fi
+SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
