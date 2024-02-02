@@ -348,11 +348,6 @@ x11-libs/snorenotify
 =net-libs/signond-8.61-r100
 ~sys-auth/polkit-qt-0.175.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-17)
-# Broken due to invalid use of tzdata.
-# https://github.com/sdispater/pendulum/issues/769
-=dev-python/pendulum-3.0.0
-
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require

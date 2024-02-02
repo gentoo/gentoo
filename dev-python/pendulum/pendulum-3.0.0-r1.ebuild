@@ -1,11 +1,11 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 CRATES="
 	autocfg@1.1.0
@@ -84,3 +84,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/sdispater/pendulum/pull/801
+	"${FILESDIR}/${P}-system-tzdata.patch"
+)
+
+QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/pendulum/_pendulum.*.so"
