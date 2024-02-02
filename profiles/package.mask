@@ -230,13 +230,6 @@ dev-ruby/rubyzip:1
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-25)
-# libtinynotify-systemwide is not ported to procps-4.  It is only
-# used to implement sw-notify-send which is used as an optional RDEP
-# in sys-apps/uam to send notifications on mount.
-# Removal on 2024-01-24.  Bug #913525.
-x11-libs/libtinynotify-systemwide
-
 # Patrick Lauer <patrick@gentoo.org> (2023-12-23)
 # ROCm-6 builds but has runtime issues for me
 >=dev-libs/roct-thunk-interface-6.0.0
