@@ -137,6 +137,7 @@ MODULE_CRITICAL="
 	authz_host
 	dir
 	mime
+	negotiation
 	unixd
 "
 inherit apache-2 systemd tmpfiles toolchain-funcs
@@ -159,7 +160,7 @@ pkg_setup() {
 	# dependent critical modules which are not allowed in global scope due
 	# to USE flag conditionals (bug #499260)
 	use ssl && MODULE_CRITICAL+=" socache_shmcb"
-	use doc && MODULE_CRITICAL+=" alias negotiation setenvif"
+	use doc && MODULE_CRITICAL+=" alias setenvif"
 	apache-2_pkg_setup
 }
 
