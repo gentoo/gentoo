@@ -201,7 +201,6 @@ media-sound/daudio
 # It has no reverse dependencies.
 # Removal on 2024-01-30.  Bug #917008.
 dev-python/pydocstyle
-dev-python/pylama
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
