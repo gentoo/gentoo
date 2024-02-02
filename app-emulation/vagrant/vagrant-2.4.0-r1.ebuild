@@ -19,7 +19,7 @@ DESCRIPTION="A tool for building and distributing development environments"
 HOMEPAGE="https://vagrantup.com/"
 SRC_URI="https://github.com/hashicorp/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="BUSL-1.1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
