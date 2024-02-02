@@ -17,3 +17,11 @@ VIM_PLUGIN_HELPFILES="${PN}"
 RDEPEND="dev-vcs/git"
 
 DOCS=( README.md Changelog )
+
+src_prepare() {
+	default
+
+	# common is not in _VIM_PLUGIN_ALLOWED_DIRS of vim-plugin.eclass
+	mv common/magit_common.vim plugin/ || die
+	sed -i 's,/common/,/plugin/,g' */*.vim || die
+}
