@@ -249,12 +249,6 @@ x11-misc/sw-notify-send
 >=dev-util/hip-6.0.0
 >=dev-util/rocminfo-6.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Unmaintained.  Last release in 2001.  media-gfx/xfig
-# (that is still maintained) is recommended instead.
-# Removal on 2024-01-21.  Bug #899790.
-media-gfx/figurine
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
