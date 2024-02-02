@@ -172,12 +172,6 @@ app-misc/utimer
 # Removal on 2024-01-30.  Bug #849077.
 sys-block/noflushd
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Buggy code that carries local patches already.  The ebuild installs
-# junk files.  No upstream activity since 2009.
-# Removal on 2024-01-30.  Bug #874087.
-app-admin/newsyslog
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
