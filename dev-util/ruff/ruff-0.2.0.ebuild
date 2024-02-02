@@ -406,7 +406,7 @@ LICENSE+="
 "
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 BDEPEND="
 	dev-util/patchelf
