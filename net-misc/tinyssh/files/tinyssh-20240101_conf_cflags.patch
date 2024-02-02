@@ -1,0 +1,10 @@
+diff --git a/conf-cflags b/conf-cflags
+--- a/conf-cflags
++++ b/conf-cflags
+@@ -15,6 +15,3 @@
+ -fstack-protector-strong
+ -fwrapv
+ -fno-strict-overflow
+--Os
+--fomit-frame-pointer
+--funroll-loops
