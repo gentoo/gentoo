@@ -236,7 +236,6 @@ dev-ruby/rubyzip:1
 # in sys-apps/uam to send notifications on mount.
 # Removal on 2024-01-24.  Bug #913525.
 x11-libs/libtinynotify-systemwide
-x11-misc/sw-notify-send
 
 # Patrick Lauer <patrick@gentoo.org> (2023-12-23)
 # ROCm-6 builds but has runtime issues for me
