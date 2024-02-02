@@ -194,14 +194,6 @@ app-admin/newsyslog
 # Removal on 2024-01-30.  Bug #875152.
 media-sound/daudio
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# dev-python/pydocstyle does not work on Python 3.12 and it has been
-# archived in 2023-11.  dev-python/pylama is its only reverse
-# dependency, and did not have any activity since 2022-08.
-# It has no reverse dependencies.
-# Removal on 2024-01-30.  Bug #917008.
-dev-python/pydocstyle
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
