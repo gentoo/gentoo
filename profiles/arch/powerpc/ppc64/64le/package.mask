@@ -5,11 +5,6 @@
 # Requires media-libs/libva since 29.0.0, which is unmasked here.
 ->=media-video/obs-studio-29.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2022-08-25)
-# Only ppc64le binpkg is provided.
--dev-python/pypy-exe-bin
--dev-python/pypy3-exe-bin
-
 # Sam James <sam@gentoo.org> (2022-01-18)
 # No bootstrap binary available on big endian PPC64 right now, but there is
 # one for ppc64le.
