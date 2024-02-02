@@ -284,11 +284,6 @@ dev-util/difffilter
 # Removal on 2024-01-21.  Bug #918622.
 net-analyzer/lilac
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Unmaintained.  Unfetchable and mirror-restricted.  No revdeps.
-# Removal on 2024-01-21.  Bug #918905.
-sys-block/hpacucli
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
