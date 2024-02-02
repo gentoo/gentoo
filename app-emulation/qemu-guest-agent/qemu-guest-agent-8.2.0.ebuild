@@ -27,6 +27,7 @@ BDEPEND="${PYTHON_DEPS}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	"${FILESDIR}"/qemu-8.1.0-find-sphinx.patch
 )
 
 src_configure() {
