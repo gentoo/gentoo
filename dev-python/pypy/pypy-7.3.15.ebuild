@@ -26,7 +26,7 @@ LICENSE="MIT"
 SLOT="0/73"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 full-stdlib gdbm +jit ncurses sqlite tk"
-RESTRICT="!full-stdlib? ( test )"
+RESTRICT="test"
 
 RDEPEND="
 	|| (
