@@ -166,12 +166,6 @@ net-mail/courier-makedat
 # Removal on 2024-01-30.  Bug #915827.
 app-misc/utimer
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Apparently broken on kernels > 5.15, with data loss potential.
-# Last release in 2010.  sys-apps/hd-idle is a good replacement.
-# Removal on 2024-01-30.  Bug #849077.
-sys-block/noflushd
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
