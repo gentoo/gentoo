@@ -13,7 +13,7 @@ SRC_URI="https://plocate.sesse.net/download/${P}.tar.gz"
 # GPL-2+ for plocate itself
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="+io-uring"
 
 RDEPEND="
