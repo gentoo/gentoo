@@ -255,11 +255,6 @@ x11-misc/sw-notify-send
 # Removal on 2024-01-21.  Bug #899790.
 media-gfx/figurine
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Broken on Python 3.11+.  No revdeps.
-# Removal on 2024-01-21.  Bug #896752.
-dev-python/awxkit
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
