@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/jedit/jedit/${PV}/jedit${PV}source.tar.bz2
 S="${WORKDIR}/jEdit"
 
 LICENSE="BSD GPL-2"
-KEYWORDS="~amd64 ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 SLOT="0"
 
 BDEPEND="
