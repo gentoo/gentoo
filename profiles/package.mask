@@ -203,12 +203,6 @@ media-sound/daudio
 dev-python/pydocstyle
 dev-python/pylama
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Homepage gone.  Last updated in 2005.  There are many alternatives
-# available in net-firewall/*.
-# Removal on 2024-01-30.  Bug #920658.
-net-misc/monmotha
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
