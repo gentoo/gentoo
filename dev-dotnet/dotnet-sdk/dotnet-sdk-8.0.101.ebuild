@@ -1,6 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pre-build (and distribution preparation)
 # Build the tarball:
 #  git clone --depth 1 -b v8.0.1 https://github.com/dotnet/dotnet dotnet-sdk-8.0.1
 #  cd dotnet-sdk-8.0.1
@@ -11,6 +12,11 @@
 #  tar -acf dotnet-sdk-8.0.101-prepared-gentoo-amd64.tar.xz dotnet-sdk-8.0.1
 # Upload dotnet-sdk-8.0.101-prepared-gentoo-amd64.tar.xz
 
+# Build ("src_compile")
+# To learn about arguments that are passed to the "build.sh" script see:
+# https://github.com/dotnet/source-build/discussions/4082
+# User variable: GENTOO_DOTNET_BUILD_VERBOSITY - set other verbosity log level.
+
 EAPI=8
 
 COMMIT=b27976e5a6850466ee5b4ce24f91ee93bef645f7
@@ -20,7 +26,7 @@ RUNTIME_SLOT="${SDK_SLOT}.1"
 LLVM_MAX_SLOT=17
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit check-reqs flag-o-matic llvm python-any-r1
+inherit check-reqs flag-o-matic llvm multiprocessing python-any-r1
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
@@ -140,12 +146,21 @@ src_compile() {
 
 	# The "source_repository" should always be the same.
 	local source_repository="https://github.com/dotnet/dotnet"
+	local verbosity="${GENTOO_DOTNET_BUILD_VERBOSITY:-minimal}"
 
 	ebegin "Building the .NET SDK ${SDK_SLOT}"
 	local -a buildopts=(
 		--clean-while-building
 		--source-repository "${source_repository}"
 		--source-version "${COMMIT}"
+
+		--
+		-maxCpuCount:"$(makeopts_jobs)"
+		-verbosity:"${verbosity}"
+		-p:ContinueOnPrebuiltBaselineError=true
+		-p:LogVerbosity="${verbosity}"
+		-p:MinimalConsoleLogOutput=false
+		-p:verbosity="${verbosity}"
 	)
 	bash ./build.sh	"${buildopts[@]}"
 	eend ${?} || die "build failed"
