@@ -265,12 +265,6 @@ dev-python/awxkit
 # Removal on 2024-01-21.  Bug #907758.
 media-sound/guayadeque
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Abandoned and archived upstream.  Known broken.  No revdeps.
-# dev-go/lichen is the recommended replacement.
-# Removal on 2024-01-21.  Bug #913755.
-dev-go/golicense
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
