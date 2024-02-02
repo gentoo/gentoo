@@ -188,12 +188,6 @@ sys-block/noflushd
 # Removal on 2024-01-30.  Bug #874087.
 app-admin/newsyslog
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Buggy code with a number of local patches already.  Last release
-# in 2003.  media-sound/jack2 should be a good alternative.
-# Removal on 2024-01-30.  Bug #875152.
-media-sound/daudio
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
