@@ -99,7 +99,7 @@ src_compile() {
 		done
 
 		# Verify that CFFI module list is up-to-date
-		local expected_cksum=2d3acf18
+		local expected_cksum=-7df4eab0
 		local local_cksum=$(
 			../pypy-c - <<-EOF
 				import binascii
