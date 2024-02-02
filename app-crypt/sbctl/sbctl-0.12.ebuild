@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module verify-sig
+inherit go-module optfeature verify-sig
 
 DESCRIPTION="Secure Boot key manager"
 HOMEPAGE="https://github.com/Foxboron/sbctl"
