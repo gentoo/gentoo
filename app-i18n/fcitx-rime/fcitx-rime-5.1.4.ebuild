@@ -15,6 +15,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 DEPEND="
+	!app-i18n/fcitx-rime:4
 	>=app-i18n/fcitx-5.1.2:5
 	app-i18n/librime
 	app-i18n/rime-data
