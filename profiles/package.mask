@@ -120,12 +120,6 @@ dev-java/osgi-enterprise-api
 dev-java/osgi-compendium
 dev-java/osgi-foundation
 
-# Michał Górny <mgorny@gentoo.org> (2024-01-12)
-# Breaks data collection for a lot of packages, by attempting to import
-# all modules (not just test files), and therefore failing if they have
-# optional runtime dependencies.
-=dev-python/pytest-asyncio-0.23.3
-
 # Michał Górny <mgorny@gentoo.org> (2024-01-11)
 # These plugins are no longer maintained.  At least
 # dev-python/pytest-virtualenv is broken.  They have no revdeps left.
@@ -134,10 +128,6 @@ dev-python/pytest-fixture-config
 dev-python/pytest-shutil
 dev-python/pytest-verbose-parametrize
 dev-python/pytest-virtualenv
-
-# Michał Górny <mgorny@gentoo.org> (2024-01-11)
-# Breaks random test suites using pytest-xdist.
-=dev-python/pytest-asyncio-0.23.4_alpha1
 
 # Viorel Munteanu <ceamac@gentoo.org> (2024-01-08)
 # Masked for removal due to licensing issues and possible GPL infringement.
