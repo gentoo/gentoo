@@ -260,11 +260,6 @@ media-gfx/figurine
 # Removal on 2024-01-21.  Bug #896752.
 dev-python/awxkit
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Crashes.  Discontinued upstream.  No revdeps.
-# Removal on 2024-01-21.  Bug #907758.
-media-sound/guayadeque
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
