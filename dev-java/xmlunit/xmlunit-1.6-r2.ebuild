@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="1"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND="dev-java/junit:0"
