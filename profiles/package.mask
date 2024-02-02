@@ -209,12 +209,6 @@ dev-python/pylama
 # Removal on 2024-01-30.  Bug #920658.
 net-misc/monmotha
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Discontinued fork of net-firewall/firehol.  Last updated in 2013.
-# Unmaintained in Gentoo since 2015.  Use the original package instead.
-# Removal on 2024-01-30.  Bug #920659.
-net-firewall/sanewall
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
