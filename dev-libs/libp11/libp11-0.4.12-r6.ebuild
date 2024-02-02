@@ -17,15 +17,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/openssl:=[bindist(+)]
+	!~dev-libs/openssl-3.2.0
+	!=dev-libs/openssl-3.2.1-r0
 	|| (
-		(
-			>=dev-libs/openssl-3.1.0
-			<dev-libs/openssl-3.1.4
-		)
-		(
-			>=dev-libs/openssl-3.0.0
-			<dev-libs/openssl-3.0.12
-		)
+		>=dev-libs/openssl-3.1.5-r1
+		<dev-libs/openssl-3.0.12
 	)
 "
 DEPEND="${RDEPEND}
