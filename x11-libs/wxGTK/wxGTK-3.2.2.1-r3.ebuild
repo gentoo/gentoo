@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-wayland-control.patch"
 	"${FILESDIR}/${PN}-3.2.1-prefer-lib64-in-tests.patch"
 	"${FILESDIR}/${PN}-3.2.2.1-dont-break-flags.patch"
+	"${FILESDIR}/${PN}-3.2.2.1-backport-pr24197.patch"
 )
 
 src_prepare() {
