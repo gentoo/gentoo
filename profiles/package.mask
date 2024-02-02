@@ -276,7 +276,6 @@ dev-go/golicense
 # on vulnerable media-gfx/transfig.  Homepage gone.  No other revdeps.
 # Removal on 2024-01-21.  Bug #917248.
 dev-libs/liblist
-dev-libs/libstrl
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
