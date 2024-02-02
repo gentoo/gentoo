@@ -14,7 +14,7 @@ HOMEPAGE="https://tomcat.apache.org"
 SRC_URI="mirror://apache/tomcat/${PN}/v${PV}/source/${P}-src.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 # Common dependencies
 # POM: pom.xml
@@ -23,7 +23,7 @@ KEYWORDS="amd64 ~arm ~arm64"
 # org.apache.commons:commons-compress:1.22 -> !!!suitable-mavenVersion-not-found!!!
 
 CDEPEND="
-	dev-java/ant-core:0
+	>=dev-java/ant-1.10.14-r1:0
 	dev-java/bcel:0
 	dev-java/commons-compress:0
 	dev-java/commons-io:1
@@ -53,7 +53,7 @@ S="${WORKDIR}/${P}"
 
 JAVA_LAUNCHER_FILENAME="${PN}"
 
-JAVA_GENTOO_CLASSPATH="ant-core,bcel,commons-compress,commons-io-1"
+JAVA_GENTOO_CLASSPATH="ant,bcel,commons-compress,commons-io-1"
 JAVA_SRC_DIR="src/main/java"
 JAVA_MAIN_CLASS="org.apache.tomcat.jakartaee.MigrationCLI"
 JAVA_RESOURCE_DIRS=(
