@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/918642
+https://github.com/gentoo/gentoo/pull/35142
+
+commit 6537507d754ad049dbdc324ec6bdea8b30416d48
+Author: matoro <matoro@users.noreply.github.com>
+Date:   Fri Feb 16 12:44:14 2024 -0500
+
+    test: nsgif: make failing tests fatal
+    
+    Right now, failing or erroring tests is not currently considered fatal.
+    This makes any instance of either fatal.
+    
+    See: https://github.com/gentoo/gentoo/pull/35142
+
+diff --git a/test/runtest.sh b/test/runtest.sh
+index fd84847..ef7274c 100755
+--- a/test/runtest.sh
++++ b/test/runtest.sh
+@@ -68,7 +68,7 @@ done
+ echo "Tests:${GIFTESTTOTC} Pass:${GIFTESTPASSC} Fail:${GIFTESTFAILC} Error:${GIFTESTERRC}"
+ 
+ # exit code
+-if [ "${GIFTESTERRC}" -gt 0 ]; then
++if [ "${GIFTESTERRC}" -gt 0 ] || [ "${GIFTESTFAILC}" -gt 0 ]; then
+ 	exit 1
+ fi
+ 
