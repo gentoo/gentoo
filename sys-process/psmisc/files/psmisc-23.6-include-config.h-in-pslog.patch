@@ -1,0 +1,33 @@
+From 88692cd40a3a26c9a8c3b6d0b0615993c407c453 Mon Sep 17 00:00:00 2001
+From: Raul E Rangel <rrangel@chromium.org>
+Date: Thu, 14 Dec 2023 13:05:45 -0700
+Subject: [PATCH] Include config.h in pslog
+
+This makes it so pslog can be compiled with Large File Support. The
+config.h will define _FILE_OFFSET_BITS=64 if it's supported. All the
+other binaries already include config.h.
+
+Fixes: https://gitlab.com/psmisc/psmisc/-/issues/51
+Signed-off-by: Raul E Rangel <rrangel@chromium.org>
+---
+ src/pslog.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/pslog.c b/src/pslog.c
+index cd0c3e2..d723173 100644
+--- a/src/pslog.c
++++ b/src/pslog.c
+@@ -22,6 +22,10 @@
+ #define _GNU_SOURCE
+ #endif
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
+ #include <dirent.h>
+ #include <errno.h>
+ #include <limits.h>
+-- 
+2.43.0.472.g3155946c3a-goog
+
