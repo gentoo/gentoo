@@ -313,11 +313,17 @@ multilib_src_install_all() {
 
 	# Enable required wireplumber alsa and bluez monitors
 	if use sound-server; then
+		# Install sound-server enabler, alsa part, wireplumber 0.4.15 syntax, clean this up with wireplumber dep bump
 		dodir /etc/wireplumber/main.lua.d
 		echo "alsa_monitor.enabled = true" > "${ED}"/etc/wireplumber/main.lua.d/89-gentoo-sound-server-enable-alsa-monitor.lua || die
 
+		# Install sound-server enabler, bluetooth part, wireplumber 0.4.15 syntax, clean this up with wireplumber dep bump
 		dodir /etc/wireplumber/bluetooth.lua.d
 		echo "bluez_monitor.enabled = true" > "${ED}"/etc/wireplumber/bluetooth.lua.d/89-gentoo-sound-server-enable-bluez-monitor.lua || die
+
+		# Install sound-server enabler for wireplumber 0.4.81+ conf syntax
+		insinto /etc/pipewire/wireplumber.conf.d
+		doins "${FILESDIR}"/gentoo-sound-server-enable-audio-bluetooth.conf
 	fi
 
 	if use system-service; then
