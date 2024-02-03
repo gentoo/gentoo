@@ -8,7 +8,7 @@ inherit autotools python-single-r1 systemd
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="https://www.syslog-ng.com/products/open-source-log-management/"
-SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz"
+SRC_URI="https://github.com/syslog-ng/syslog-ng/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
