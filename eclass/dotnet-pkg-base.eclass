@@ -402,8 +402,8 @@ dotnet-pkg-base_restore_tools() {
 # Build is performed in current directory unless a different directory is
 # passed via "args".
 #
-# Additionally any number of "args" maybe be given, they are appended to
-# the "dotnet" command invocation.
+# Any number of "args" maybe be given, they are appended to the "dotnet"
+# command invocation.
 #
 # Used by "dotnet-pkg_src_compile" from the "dotnet-pkg" eclass.
 dotnet-pkg-base_build() {
@@ -434,26 +434,18 @@ dotnet-pkg-base_build() {
 }
 
 # @FUNCTION: dotnet-pkg-base_test
-# @USAGE: [directory] [args] ...
+# @USAGE: [args] ...
 # @DESCRIPTION:
 # Test the package using "dotnet test" in a specified directory.
+# Test is performed in current directory unless a different directory is
+# passed via "args".
 #
-# Optional "directory" argument defaults to the current directory path.
-#
-# Additionally any number of "args" maybe be given, they are appended to
-# the "dotnet" command invocation.
+# Any number of "args" maybe be given, they are appended to the "dotnet"
+# command invocation.
 #
 # Used by "dotnet-pkg_src_test" from the "dotnet-pkg" eclass.
 dotnet-pkg-base_test() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
-
-	local directory
-	if [[ -n "${1}" ]] ; then
-		directory="${1}"
-		shift
-	else
-		directory="$(pwd)"
-	fi
 
 	local -a test_args=(
 		--configuration "${DOTNET_PKG_CONFIGURATION}"
@@ -462,7 +454,7 @@ dotnet-pkg-base_test() {
 		"${@}"
 	)
 
-	edotnet test "${test_args[@]}" "${directory}"
+	edotnet test "${test_args[@]}"
 }
 
 # @FUNCTION: dotnet-pkg-base_install
