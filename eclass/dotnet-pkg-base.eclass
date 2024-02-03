@@ -228,28 +228,27 @@ dotnet-pkg-base_get-runtime() {
 #
 # Used by "dotnet-pkg_pkg_setup" from the "dotnet-pkg" eclass.
 dotnet-pkg-base_setup() {
-	local dotnet_compat_impl
-	local dotnet_compat_impl_path
-	for dotnet_compat_impl in dotnet{,-bin}-${DOTNET_PKG_COMPAT} ; do
-		dotnet_compat_impl_path="$(type -P "${dotnet_compat_impl}")"
+	local -a impl_dirs=(
+		"${EPREFIX}/usr/$(get_libdir)/dotnet-sdk-${DOTNET_PKG_COMPAT}"
+		"${EPREFIX}/opt/dotnet-sdk-bin-${DOTNET_PKG_COMPAT}"
+	)
+	local impl_exe
 
-		if [[ -n ${dotnet_compat_impl_path} ]] ; then
-			DOTNET_PKG_EXECUTABLE="${dotnet_compat_impl}"
+	local impl_dir
+	for impl_dir in "${impl_dirs[@]}" ; do
+		impl_exe="${impl_dir}/dotnet"
+
+		if [[ -d "${impl_dir}" ]] && [[ -x "${impl_exe}" ]] ; then
+			DOTNET_PKG_EXECUTABLE="${impl_exe}"
+			DOTNET_ROOT="${impl_dir}"
+
 			break
 		fi
 	done
 
-	# Link "DOTNET_PKG_EXECUTABLE" to "dotnet" only for the package build.
-	local dotnet_spoof_path="${T}/dotnet_spoof/${DOTNET_PKG_COMPAT}"
-	mkdir -p "${dotnet_spoof_path}" || die
-	ln -s "${dotnet_compat_impl_path}" "${dotnet_spoof_path}/dotnet" || die
-	export PATH="${dotnet_spoof_path}:${PATH}"
-
-	einfo "Using dotnet SDK \"${DOTNET_PKG_EXECUTABLE}\" from \"${dotnet_compat_impl_path}\"."
-
-	# The picked "DOTNET_PKG_EXECUTABLE" should set "DOTNET_ROOT" internally
-	# and not rely upon this environment variable.
-	unset DOTNET_ROOT
+	einfo "Setting .NET SDK \"DOTNET_ROOT\" to \"${DOTNET_ROOT}\""
+	export DOTNET_ROOT
+	export PATH="${DOTNET_ROOT}:${PATH}"
 
 	DOTNET_PKG_RUNTIME="$(dotnet-pkg-base_get-runtime)"
 	DOTNET_PKG_CONFIGURATION="$(dotnet-pkg-base_get-configuration)"
