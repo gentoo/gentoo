@@ -225,11 +225,15 @@ dotnet-pkg_remove-bad() {
 # Default "src_prepare" for the "dotnet-pkg" eclass.
 # Prepare the package sources.
 #
-# Run "dotnet-pkg-base_remove-global-json"
-# and "dotnet-pkg-base_remove-bad" for each found solution file.
+# Run "dotnet-pkg-base_remove-global-json", "dotnet-pkg-base_remove-bad"
+# for each found solution file and prepare for using Nuget.
 dotnet-pkg_src_prepare() {
 	dotnet-pkg-base_remove-global-json
 	dotnet-pkg-base_foreach-solution "$(pwd)" dotnet-pkg_remove-bad
+
+	find "$(pwd)" -maxdepth 1 -iname "nuget.config" -delete ||
+		die "${FUNCNAME[0]}: failed to remove unwanted \"NuGet.config\" config files"
+	nuget_writeconfig "$(pwd)/"
 
 	default
 }
