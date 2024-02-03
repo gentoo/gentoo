@@ -310,6 +310,21 @@ dotnet-pkg-base_info() {
 	fi
 }
 
+# @FUNCTION: dotnet-pkg-base_sln-remove
+# @USAGE: <solution> <project>
+# @DESCRIPTION:
+# Remove a project from a given solution file.
+#
+# Used by "dotnet-pkg_remove-bad" from the "dotnet-pkg" eclass.
+dotnet-pkg-base_sln-remove() {
+	debug-print-function "${FUNCNAME[0]}" "${@}"
+
+	[[ -z ${1} ]] && die "${FUNCNAME[0]}: no solution file specified"
+	[[ -z ${2} ]] && die "${FUNCNAME[0]}: no project file specified"
+
+	edotnet sln "${1}" remove "${2}"
+}
+
 # @FUNCTION: dotnet-pkg-base_foreach-solution
 # @USAGE: <directory> <args> ...
 # @DESCRIPTION:
