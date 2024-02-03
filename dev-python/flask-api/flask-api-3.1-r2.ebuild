@@ -24,12 +24,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
-	<dev-python/flask-3[${PYTHON_USEDEP}]
+	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
-	<dev-python/werkzeug-3[${PYTHON_USEDEP}]
+	dev-python/werkzeug[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/flask-api/flask-api/commit/9c998897f67d8aa959dc3005d7d22f36568b6938
+	"${FILESDIR}/${P}-flask-3.patch"
+)
 
 python_install_all() {
 	local DOCS=( docs/about/release-notes.md docs/api-guide/* docs/index.md )
