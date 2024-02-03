@@ -23,6 +23,7 @@ RESTRICT='test'
 BDEPEND=">=dev-go/go-md2man-2.0.3"
 PATCHES=(
 	"${FILESDIR}"/moving-policy-json-default-yaml.patch
+	"${FILESDIR}"/prevent-downloading-mods-5.29.2.patch
 )
 
 src_compile() {
