@@ -1,0 +1,87 @@
+From 65e397d7332ab87e3b2455ff9dc99af24861b58b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 3 Feb 2024 11:20:00 +0100
+Subject: [PATCH] Support using httpbin without flasgger
+
+Make the dependency on flasgger optional.  The dependency has been added
+relatively recently (i.e. before the original package was abandoned but
+after its last release), and it is only used to provide a more dynamic
+landing page.  This is unnecessary for use of httpbin for testing,
+and it introduces an indirect dependency on Rust that is problematic.
+
+With this change, flasgger is no longer installed by default.  It can be
+enabled via "[flasgger]" extra.  When flasgger is not available, httpbin
+redirects to the "legacy" index page.
+---
+ httpbin/core.py       | 17 +++++++++++++++--
+ pyproject.toml        |  4 +++-
+ tests/test_httpbin.py |  4 +++-
+ 3 files changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/httpbin/core.py b/httpbin/core.py
+index a82c1b8..77576a4 100644
+--- a/httpbin/core.py
++++ b/httpbin/core.py
+@@ -33,7 +33,10 @@ try:
+ except ImportError:  # werkzeug < 2.1
+     from werkzeug.wrappers import BaseResponse as Response
+ 
+-from flasgger import Swagger, NO_SANITIZER
++try:
++    from flasgger import Swagger, NO_SANITIZER
++except ImportError:
++    Swagger = None
+ 
+ from . import filters
+ from .helpers import (
+@@ -165,7 +168,10 @@ swagger_config = {
+     "specs_route": "/",
+ }
+ 
+-swagger = Swagger(app, sanitizer=NO_SANITIZER, template=template, config=swagger_config)
++if Swagger is not None:
++    swagger = Swagger(app, sanitizer=NO_SANITIZER, template=template, config=swagger_config)
++else:
++    app.logger.warning("Swagger not found, legacy index will be used.")
+ 
+ # Set up Bugsnag exception tracking, if desired. To use Bugsnag, install the
+ # Bugsnag Python client with the command "pip install bugsnag", and set the
+@@ -244,6 +250,13 @@ def set_cors_headers(response):
+ # ------
+ 
+ 
++if Swagger is None:
++    @app.route("/")
++    def no_flasgger_index():
++        """Redirect to legacy index if flasgger is not available."""
++        return redirect(url_for("view_landing_page"))
++
++
+ @app.route("/legacy")
+ def view_landing_page():
+     """Generates Landing Page in legacy layout."""
+diff --git a/tests/test_httpbin.py b/tests/test_httpbin.py
+index 6b75124..2ce63a6 100755
+--- a/tests/test_httpbin.py
++++ b/tests/test_httpbin.py
+@@ -10,6 +10,7 @@ from hashlib import md5, sha256, sha512
+ from io import BytesIO
+ 
+ import httpbin
++from httpbin.core import Swagger
+ from httpbin.helpers import parse_multi_value_header
+ 
+ 
+@@ -115,7 +116,8 @@ class HttpbinTestCase(unittest.TestCase):
+ 
+     def test_index(self):   
+         response = self.app.get('/', headers={'User-Agent': 'test'})
+-        self.assertEqual(response.status_code, 200)
++        self.assertEqual(response.status_code,
++                         200 if Swagger is not None else 302)
+  
+     def get_data(self, response):
+         if 'get_data' in dir(response):
+-- 
+2.43.0
+
