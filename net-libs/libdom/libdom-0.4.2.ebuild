@@ -36,6 +36,8 @@ BDEPEND="
 
 REQUIRED_USE="test? ( xml )"
 
+PATCHES=( "${FILESDIR}/libdom-0.4.2-musl.patch" )
+
 _emake() {
 	netsurf_define_makeconf
 	emake "${NETSURF_MAKECONF[@]}" COMPONENT_TYPE=lib-shared \
