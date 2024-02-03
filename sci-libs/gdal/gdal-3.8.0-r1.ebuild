@@ -27,7 +27,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	java? (
-		dev-java/ant-core
+		>=dev-java/ant-1.10.14-r3:0
 		dev-lang/swig
 	)
 	python? (
@@ -99,6 +99,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 PATCHES=(
+	"${FILESDIR}/gdal-3.8.0-java21.patch"
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
 	"${FILESDIR}"/${PN}-3.7.0-zlib-OF.patch
 	"${FILESDIR}"/${P}-libxml2-2.12-{1,2}.patch # bug 917564
