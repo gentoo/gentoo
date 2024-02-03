@@ -48,7 +48,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-libs/stb
+	<dev-libs/stb-20231010
 	dev-util/vulkan-headers
 	<media-libs/glm-1.0.0
 	dev-util/spirv-headers
