@@ -25,7 +25,7 @@ else
 		https://github.com/boto/boto3/archive/${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 RDEPEND="
