@@ -1,0 +1,147 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools flag-o-matic toolchain-funcs
+
+DESCRIPTION="Handles power management and special keys on laptops"
+HOMEPAGE="https://www.berlios.de/software/pbbuttons/"
+SRC_URI="https://downloads.sourceforge.net/project/pbbuttons/${PN}/${PV}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="acpi alsa doc ibam oss"
+
+RDEPEND="
+	dev-libs/glib
+	alsa? ( media-libs/alsa-lib )"
+# USE=macbook requires C++ version of libsmbios, which was dropped by upstream
+# if you are brave enough, you are welcome to fix it
+# See: https://bugs.gentoo.org/881503
+#      https://github.com/dell/libsmbios/issues/27
+# macbooc dependencies:
+#	macbook? (
+#		sys-apps/pciutils
+#		sys-libs/libsmbios
+#	)
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-text/doxygen )"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.1-cpufreq.patch
+	"${FILESDIR}"/${PN}-0.8.1-fnmode.patch
+	"${FILESDIR}"/${PN}-0.8.1-laptopmode.sh.patch
+	"${FILESDIR}"/${PN}-0.8.1-lm.patch
+	"${FILESDIR}"/${PN}-0.8.1-lz.patch
+	"${FILESDIR}"/${P}-fix-multiple-definition-in-alsa-and-oss.patch
+	"${FILESDIR}"/${P}-fix-build-with-dash.patch
+)
+
+src_prepare() {
+	# Don't link with g++ if we don't use ibam
+	use ibam || eapply "${FILESDIR}"/${PN}-0.8.1-g++.patch
+
+	default
+	eautoconf
+}
+
+src_configure() {
+	# Fix crash bug on some systems
+	replace-flags -O? -O1
+
+	local laptop
+#	if use macbook; then
+#		laptop=macbook
+#	elif
+	if use x86 || use amd64; then
+		if use acpi; then
+			laptop=acpi
+		else
+			laptop=i386
+		fi
+	# Default to PowerBook
+	else
+		laptop=powerbook
+	fi
+
+	econf \
+		$(use_with alsa) \
+		$(use_with doc doxygen_docs) \
+		$(use_with ibam) \
+		$(use_with oss) \
+		laptop="${laptop}"
+
+}
+
+src_compile() {
+	# Thanks to Stefan Bruda for this workaround
+	# Using -j1 fixes a parallel build issue with the docs
+	if use doc; then
+		emake -j1 AR="$(tc-getAR)"
+	else
+		emake AR="$(tc-getAR)"
+	fi
+}
+
+src_install() {
+	default
+
+	if use ibam; then
+		keepdir /var/lib/ibam
+	else
+		rmdir "${ED}/var/lib/ibam" || die
+	fi
+
+	keepdir /var/lib/pbbuttons
+
+	rm "${ED}"/usr/$(get_libdir)/libpbb.a || die
+
+	newinitd "${FILESDIR}"/pbbuttonsd.rc6 pbbuttonsd
+	dodoc README
+	use doc && dodoc -r doc/
+
+	dodir /etc/power/resume.d
+	keepdir /etc/power/resume.d
+	dodir /etc/power/suspend.d
+	keepdir /etc/power/suspend.d
+	exeinto /etc/power/scripts.d
+	doexe "${FILESDIR}"/wireless
+	dosym ../scripts.d/wireless /etc/power/resume.d/wireless
+}
+
+pkg_postinst() {
+	if [ -e /etc/pbbuttonsd.conf ]; then
+		ewarn "The pbbuttonsd.cnf file replaces /etc/pbuttonsd.conf with a new"
+		ewarn "file (/etc/pbbuttonsd.conf) and a new format. Please check the"
+		ewarn "manual page with 'man pbbuttonsd.cnf' for details."
+		ewarn
+	fi
+
+#	if use macbook; then
+#		ewarn "Macbook and Macbook Pro users should make sure to have applesmc"
+#		ewarn "loaded before starting pbbuttonsdm otherwise auto-adjustments"
+#		ewarn "will not work and pbbuttonsd may segfault."
+#		ewarn
+#	fi
+
+	ewarn "Ensure that the evdev kernel module is loaded otherwise"
+	ewarn "pbbuttonsd won't work. SysV IPC is also required."
+	ewarn
+	ewarn "If you need extra security, you can tell pbbuttonsd to only accept"
+	ewarn "input from one user. You can set the userallowed option in"
+	ewarn "/etc/pbbuttonsd.cnf to limit access."
+	ewarn
+
+	if use ibam; then
+		elog "To properly initialize the IBaM battery database, you will"
+		elog "need to perform a full discharge/charge cycle. For more"
+		elog "details, please see the pbbuttonsd man page."
+		elog
+	fi
+
+	elog "A script is now available to reset your wirless connection on resume."
+	elog "Simply uncomment the commented command and set the correct device to"
+	elog "use it. You can find the script in /etc/power/resume.d/wireless"
+
+}
