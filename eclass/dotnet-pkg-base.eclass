@@ -360,7 +360,7 @@ dotnet-pkg-base_restore() {
 	edotnet restore "${restore_args[@]}"
 }
 
-# @FUNCTION: dotnet-pkg-base_restore_tools
+# @FUNCTION: dotnet-pkg-base_restore-tools
 # @USAGE: [config-file] [args] ...
 # @DESCRIPTION:
 # Restore dotnet tools for a project in the current directory.
@@ -370,7 +370,7 @@ dotnet-pkg-base_restore() {
 #
 # Additionally any number of "args" maybe be given, they are appended to
 # the "dotnet" command invocation.
-dotnet-pkg-base_restore_tools() {
+dotnet-pkg-base_restore-tools() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
 
 	local -a tool_restore_args=(
@@ -385,6 +385,14 @@ dotnet-pkg-base_restore_tools() {
 	tool_restore_args+=( "${@}" )
 
 	edotnet tool restore "${tool_restore_args[@]}"
+}
+
+# @FUNCTION: dotnet-pkg-base_restore_tools
+# @USAGE: [config-file] [args] ...
+# @DESCRIPTION:
+# DEPRECATED, use "dotnet-pkg-base_restore-tools" instead.
+dotnet-pkg-base_restore_tools() {
+	dotnet-pkg-base_restore-tools "${@}"
 }
 
 # @FUNCTION: dotnet-pkg-base_build
@@ -488,7 +496,7 @@ dotnet-pkg-base_launcherinto() {
 	_DOTNET_PKG_LAUNCHERDEST="${1}"
 }
 
-# @FUNCTION: dotnet-pkg-base_append_launchervar
+# @FUNCTION: dotnet-pkg-base_append-launchervar
 # @USAGE: <variable-setting>
 # @DESCRIPTION:
 # Appends a given variable setting to the "_DOTNET_PKG_LAUNCHERVARS".
@@ -504,12 +512,20 @@ dotnet-pkg-base_launcherinto() {
 # @CODE
 #
 # For more info see the "_DOTNET_PKG_LAUNCHERVARS" variable.
-dotnet-pkg-base_append_launchervar() {
+dotnet-pkg-base_append-launchervar() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
 
 	[[ -z ${1} ]] && die "${FUNCNAME[0]}: no variable setting specified"
 
 	_DOTNET_PKG_LAUNCHERVARS+=( "${1}" )
+}
+
+# @FUNCTION: dotnet-pkg-base_append_launchervar
+# @USAGE: <variable-setting>
+# @DESCRIPTION:
+# DEPRECATED, use "dotnet-pkg-base_append-launchervar" instead.
+dotnet-pkg-base_append_launchervar() {
+	dotnet-pkg-base_append-launchervar "${@}"
 }
 
 # @FUNCTION: dotnet-pkg-base_dolauncher
@@ -579,7 +595,7 @@ dotnet-pkg-base_dolauncher() {
 	doexe "${executable_target}"
 }
 
-# @FUNCTION: dotnet-pkg-base_dolauncher_portable
+# @FUNCTION: dotnet-pkg-base_dolauncher-portable
 # @USAGE: <dll-path> <filename>
 # @DESCRIPTION:
 # Make a wrapper script to launch a .NET DLL file built from a .NET package.
@@ -590,12 +606,12 @@ dotnet-pkg-base_dolauncher() {
 #
 # Example:
 # @CODE
-# dotnet-pkg-base_dolauncher_portable \
+# dotnet-pkg-base_dolauncher-portable \
 #     /usr/share/${P}/GentooDotnetInfo.dll gentoo-dotnet-info
 # @CODE
 #
 # The path is prepended by "EPREFIX".
-dotnet-pkg-base_dolauncher_portable() {
+dotnet-pkg-base_dolauncher-portable() {
 	debug-print-function "${FUNCNAME[0]}" "${@}"
 
 	local dll_path="${1}"
@@ -619,6 +635,14 @@ dotnet-pkg-base_dolauncher_portable() {
 
 	exeinto "${_DOTNET_PKG_LAUNCHERDEST}"
 	doexe "${executable_target}"
+}
+
+# @FUNCTION: dotnet-pkg-base_dolauncher_portable
+# @USAGE: <dll-path> <filename>
+# @DESCRIPTION:
+# DEPRECATED, use "dotnet-pkg-base_dolauncher-portable" instead.
+dotnet-pkg-base_dolauncher_portable() {
+	dotnet-pkg-base_dolauncher-portable "${@}"
 }
 
 fi
