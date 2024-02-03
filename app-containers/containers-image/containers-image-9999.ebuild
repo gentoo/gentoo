@@ -21,6 +21,9 @@ SLOT="0"
 # https://github.com/gentoo/gentoo/pull/35012#discussion_r1473740969
 RESTRICT='test'
 BDEPEND=">=dev-go/go-md2man-2.0.3"
+PATCHES=(
+	"${FILESDIR}"/prevent-downloading-mods-5.29.2.patch
+)
 
 src_compile() {
 	emake docs
