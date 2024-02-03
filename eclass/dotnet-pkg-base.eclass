@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dotnet-pkg-base.eclass
@@ -68,13 +68,19 @@ if [[ ${CATEGORY}/${PN} != dev-dotnet/dotnet-runtime-nugets ]] ; then
 		die "${ECLASS}: DOTNET_PKG_COMPAT not set"
 	fi
 
-	DOTNET_PKG_RDEPS+=" virtual/dotnet-sdk:${DOTNET_PKG_COMPAT} "
-	DOTNET_PKG_BDEPS+=" ${DOTNET_PKG_RDEPS} "
+	DOTNET_PKG_RDEPS+="
+		virtual/dotnet-sdk:${DOTNET_PKG_COMPAT}
+	"
+	DOTNET_PKG_BDEPS+="
+		${DOTNET_PKG_RDEPS}
+	"
 
 	# Special package "dev-dotnet/csharp-gentoodotnetinfo" used for information
 	# gathering, example for usage see the "dotnet-pkg-base_info" function.
 	if [[ ${CATEGORY}/${PN} != dev-dotnet/csharp-gentoodotnetinfo ]] ; then
-		DOTNET_PKG_BDEPS+=" dev-dotnet/csharp-gentoodotnetinfo "
+		DOTNET_PKG_BDEPS+="
+			dev-dotnet/csharp-gentoodotnetinfo
+		"
 	fi
 
 	IUSE+=" debug "
