@@ -1,6 +1,20 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/flasgger
+dev-python/nbclient
+dev-python/nbconvert
+dev-python/nbformat
+dev-python/nbsphinx
+dev-python/sphobjinv
+dev-python/warlock
+net-wireless/gnuradio
+net-wireless/gqrx
+net-wireless/gr-iqbal
+net-wireless/gr-osmosdr
+
 # Various packages requiring Rust.
 app-admin/ansible
 app-admin/ansible-core

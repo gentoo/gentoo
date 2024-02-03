@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/botocore test
+dev-python/ipython nbconvert test
+dev-python/pip-run test
+dev-python/sentry-sdk test
+dev-python/sphinx-autodoc-typehints test
+
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
 # Need dev-python/trio.
 >=dev-python/urllib3-2.2.0 test
