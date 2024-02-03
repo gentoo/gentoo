@@ -1,0 +1,34 @@
+From 39547ecdc051123750dd17a890c0492ac5d5b1a0 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Wed, 20 Dec 2023 13:39:14 +0100
+Subject: [PATCH] Update expected message to match python 3.11.7
+
+https://github.com/python/cpython/issues/111019
+---
+ tests/test_pytest_mock.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_pytest_mock.py b/tests/test_pytest_mock.py
+index c185f2a..01534a4 100644
+--- a/tests/test_pytest_mock.py
++++ b/tests/test_pytest_mock.py
+@@ -25,6 +25,8 @@
+ 
+ # Python 3.8 changed the output formatting (bpo-35500), which has been ported to mock 3.0
+ NEW_FORMATTING = sys.version_info >= (3, 8)
++# Python 3.11.7 changed the output formatting, https://github.com/python/cpython/issues/111019
++NEWEST_FORMATTING = sys.version_info >= (3, 11, 7)
+ 
+ if sys.version_info[:2] >= (3, 8):
+     from unittest.mock import AsyncMock
+@@ -240,7 +242,9 @@ def test_repr_with_name(self, mocker: MockerFixture) -> None:
+ 
+     def __test_failure_message(self, mocker: MockerFixture, **kwargs: Any) -> None:
+         expected_name = kwargs.get("name") or "mock"
+-        if NEW_FORMATTING:
++        if NEWEST_FORMATTING:
++            msg = "expected call not found.\nExpected: {0}()\n  Actual: not called."
++        elif NEW_FORMATTING:
+             msg = "expected call not found.\nExpected: {0}()\nActual: not called."
+         else:
+             msg = "Expected call: {0}()\nNot called"
