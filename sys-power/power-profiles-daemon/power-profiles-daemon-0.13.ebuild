@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit meson python-single-r1 systemd
 
 DESCRIPTION="Makes power profiles handling available over D-Bus"
-HOMEPAGE="https://gitlab.freedesktop.org/hadess/power-profiles-daemon/"
+HOMEPAGE="https://gitlab.freedesktop.org/upower/power-profiles-daemon/"
 SRC_URI="https://gitlab.freedesktop.org/hadess/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
