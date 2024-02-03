@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ SLOT="0"
 # Gajim depends now on omemo-dr. Add KEYWORDS again,
 # when https://bugs.gentoo.org/912285 is fixed.
 
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="+crypt geolocation jingle remote rst +spell upnp +webp"
 
 COMMON_DEPEND="
