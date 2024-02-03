@@ -156,6 +156,29 @@ DOTNET_PKG_BUILD_EXTRA_ARGS=()
 # For more info see the "DOTNET_PROJECT" variable and "dotnet-pkg_src_test".
 DOTNET_PKG_TEST_EXTRA_ARGS=()
 
+# @FUNCTION: dotnet-pkg_force-compat
+# @DESCRIPTION:
+# This function appends special options to all "DOTNET_PKG_*_EXTRA_ARGS"
+# variables in an attempt to force compatibility to the picked
+# "DOTNET_PKG_COMPAT" .NET SDK version.
+#
+# Call this function post-inherit.
+dotnet-pkg_force-compat() {
+	if [[ -z ${DOTNET_PKG_COMPAT} ]] ; then
+		die "DOTNET_PKG_COMPAT is not set"
+	fi
+
+	local -a force_extra_args=(
+		-p:RollForward=Major
+		-p:TargetFramework="net${DOTNET_PKG_COMPAT}"
+		-p:TargetFrameworks="net${DOTNET_PKG_COMPAT}"
+	)
+
+	DOTNET_PKG_RESTORE_EXTRA_ARGS+=( "${force_extra_args[@]}" )
+	DOTNET_PKG_BUILD_EXTRA_ARGS+=( "${force_extra_args[@]}" )
+	DOTNET_PKG_TEST_EXTRA_ARGS+=( "${force_extra_args[@]}" )
+}
+
 # @FUNCTION: dotnet-pkg_pkg_setup
 # @DESCRIPTION:
 # Default "pkg_setup" for the "dotnet-pkg" eclass.
