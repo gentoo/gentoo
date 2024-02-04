@@ -1,0 +1,98 @@
+diff --git a/count_word_hits.rb b/count_word_hits.rb
+index 6e200e2..2ff406e 100644
+--- a/count_word_hits.rb
++++ b/count_word_hits.rb
+@@ -6,9 +6,6 @@
+ 
+ require 'zlib'
+ 
+-# jawiki-itles を取得
+-`wget -N https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz`
+-
+ filename = "jawiki-latest-all-titles-in-ns0.gz"
+ dicname = "jawiki-latest-all-titles-in-ns0.hits"
+ 
+@@ -60,4 +57,4 @@ lines.length.times do |i|
+ 	dicfile.puts "jawiki_hits	0	0	" + c.to_s + "	" + lines[i]
+ end
+ 
+-dicfile.close
+\ No newline at end of file
++dicfile.close
+diff --git a/make.sh b/make.sh
+index 18e9ee1..534c6c3 100644
+--- a/make.sh
++++ b/make.sh
+@@ -3,50 +3,6 @@
+ # Author: UTUMI Hirosi (utuhiro78 at yahoo dot co dot jp)
+ # License: Apache License, Version 2.0
+ 
+-#alt_cannadic="true"
+-#edict="true"
+-jawiki="true"
+-neologd="true"
+-personal_names="true"
+-place_names="true"
+-#skk_jisyo="true"
+-#sudachidict="true"
+-
+-rm -f mozcdic-ut.txt
+-rm -rf mozcdic-ut-*/{*,.git}
+-
+-if [[ $alt_cannadic = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git
+-fi
+-
+-if [[ $edict = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-edict2.git
+-fi
+-
+-if [[ $jawiki = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-jawiki.git
+-fi
+-
+-if [[ $neologd = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-neologd.git
+-fi
+-
+-if [[ $personal_names = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-personal-names.git
+-fi
+-
+-if [[ $place_names = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-place-names.git
+-fi
+-
+-if [[ $skk_jisyo = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git
+-fi
+-
+-if [[ $sudachidict = "true" ]]; then
+-git clone --depth 1 https://github.com/utuhiro78/mozcdic-ut-sudachidict.git
+-fi
+-
+ # UT辞書を展開して結合
+ mv mozcdic-ut-*/mozcdic-ut-*.txt.tar.bz2 .
+ for f in mozcdic-ut-*.txt.tar.bz2; do tar xf "$f"; done
+diff --git a/remove_duplicate_ut_entries.rb b/remove_duplicate_ut_entries.rb
+index cc33fa8..64cd7fe 100644
+--- a/remove_duplicate_ut_entries.rb
++++ b/remove_duplicate_ut_entries.rb
+@@ -4,7 +4,6 @@
+ # Author: UTUMI Hirosi (utuhiro78 at yahoo dot co dot jp)
+ # License: Apache License, Version 2.0
+ 
+-require 'open-uri'
+ require 'nkf'
+ 
+ targetfiles = ARGV
+@@ -14,8 +13,7 @@ if ARGV == []
+ 	exit
+ end
+ 
+-url = "https://raw.githubusercontent.com/google/mozc/master/src/data/dictionary_oss/id.def"
+-id_mozc = URI.open(url).read.split(" 名詞,一般,")[0]
++id_mozc = File.open("id.def").read.split(" 名詞,一般,")[0]
+ id_mozc = id_mozc.split("\n")[-1]
+ 
+ filename = ARGV[0]

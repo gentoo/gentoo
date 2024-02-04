@@ -46,7 +46,7 @@ fi
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
-IUSE="debug emacs fcitx4 +gui ibus renderer test"
+IUSE="debug emacs fcitx4 +gui ibus renderer test ut"
 REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
 
@@ -58,6 +58,7 @@ BDEPEND="
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )
+	ut? ( app-i18n/mozc-ut )
 "
 DEPEND="
 	>=dev-cpp/abseil-cpp-20211102.0-r2:=[cxx17(+)]
@@ -200,6 +201,10 @@ src_prepare() {
 	if [[ -f /mozcdic-ut.txt && -s mozcdic-ut.txt ]]; then
 		einfo "mozcdic-ut.txt found. Adding to mozc dictionary..."
 		cat mozcdic-ut.txt >> "${WORKDIR}/${P}/src/data/dictionary_oss/dictionary00.txt" || die
+	fi
+
+	if use ut; then
+		cat /usr/share/mozc-ut/mozcdic-ut.txt >> "${WORKDIR}/${P}/src/data/dictionary_oss/dictionary00.txt" || die
 	fi
 }
 
