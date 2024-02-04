@@ -74,10 +74,6 @@ app-i18n/fcitx-libpinyin dictionary-manager
 # Moved here from default/linux/...
 sys-devel/gcc -sanitize
 
-# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Requires proprietary binary-only libraries only available for a handful of arches
-sys-cluster/slurm nvml
-
 # Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
 # Unkeyworded dependencies (xen-tools, aws stack), masking to reduce
 # the dependency graph
