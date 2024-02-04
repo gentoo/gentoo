@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Virtual to depend on any Distribution Kernel"
-SLOT="0/${PV}"
+SLOT="0/${PVR}"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
