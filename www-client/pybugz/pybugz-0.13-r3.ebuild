@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="readline(+),ssl(+)"
 
