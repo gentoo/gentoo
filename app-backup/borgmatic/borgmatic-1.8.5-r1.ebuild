@@ -27,7 +27,6 @@ RDEPEND="app-backup/borgbackup
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/ruamel-yaml[${PYTHON_USEDEP}]
-		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	apprise? ( $(python_gen_cond_dep '
 		dev-python/apprise[${PYTHON_USEDEP}]
