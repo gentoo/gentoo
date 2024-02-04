@@ -125,20 +125,21 @@ fi
 # @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Will accept "true", "false", "optional", "forceoptional",
-# "forceoptional-recursive".
+# Will accept "true", "false", "forceoptional", and "forceoptional-recursive".
+# For KF5-based ebuilds, additionally accepts "optional".
 # Default value is "false", except for CATEGORY=kde-frameworks where it is
 # set to "true". If set to "false", do nothing.
-# For any other value, add "test" to IUSE (and for KF5 DEPEND on
-# dev-qt/qttest:5). If set to "optional", build with
-# -DCMAKE_DISABLE_FIND_PACKAGE_Qt${_KFSLOT}Test=ON when USE=!test. If set
-# to "forceoptional", punt Qt${_KFSLOT}Test dependency and ignore "autotests",
-# "test", "tests" subdirs from top-level CMakeLists.txt when USE=!test.
-# If set to "forceoptional-recursive", punt Qt${_KFSLOT}Test dependencies and
-# make autotest(s), unittest(s) and test(s) subdirs from *any* CMakeLists.txt
-# in ${S} and below conditional on BUILD_TESTING when USE=!test. This is always
-# meant as a short-term fix and creates ${T}/${P}-tests-optional.patch to
-# refine and submit upstream.
+# For any other value, add "test" to IUSE. If set to "forceoptional", ignore
+# "autotests", "test", "tests" subdirs from top-level CMakeLists.txt when
+# USE=!test. If set to "forceoptional-recursive", make autotest(s), unittest(s)
+# and test(s) subdirs from *any* CMakeLists.txt in ${S} and below conditional
+# on BUILD_TESTING when USE=!test. This is always meant as a short-term fix and
+# creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
+# For KF5-based ebuilds:
+# Additionally DEPEND on dev-qt/qttest:5 if USE=test, but punt Qt5Test
+# dependency if set to "forceoptional*" with USE=!test.
+# If set to "optional", build with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
+# when USE=!test.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${ECM_TEST:=true}"
 fi
@@ -258,13 +259,13 @@ case ${ECM_QTHELP} in
 esac
 
 case ${ECM_TEST} in
-	true|optional|forceoptional|forceoptional-recursive)
-		IUSE+=" test"
-		if [[ ${_KFSLOT} == 5 ]]; then
-			DEPEND+=" test? ( dev-qt/qttest:${_KFSLOT} )"
+	optional)
+		if [[ ${_KFSLOT} != 5 ]]; then
+			eerror "Banned value for \${ECM_TEST}"
+			die "Value ${ECM_TEST} is only supported in KF5"
 		fi
-		RESTRICT+=" !test? ( test )"
 		;;
+	true|forceoptional|forceoptional-recursive) ;;
 	false) ;;
 	*)
 		eerror "Unknown value for \${ECM_TEST}"
@@ -277,10 +278,17 @@ BDEPEND+="
 	>=kde-frameworks/extra-cmake-modules-${KFMIN}:*
 "
 RDEPEND+=" >=kde-frameworks/kf-env-4"
+if [[ ${ECM_TEST} != false ]]; then
+	IUSE+=" test"
+	RESTRICT+=" !test? ( test )"
+fi
 if [[ ${_KFSLOT} == 6 ]]; then
 	COMMONDEPEND+=" dev-qt/qtbase:${_KFSLOT}"
 else
 	COMMONDEPEND+=" dev-qt/qtcore:${_KFSLOT}"
+	if [[ ${ECM_TEST} != false ]]; then
+		DEPEND+=" test? ( dev-qt/qttest:5 )"
+	fi
 fi
 
 DEPEND+=" ${COMMONDEPEND}"
@@ -498,11 +506,11 @@ ecm_src_prepare() {
 	# only build unit tests when required
 	if ! { in_iuse test && use test; } ; then
 		if [[ ${ECM_TEST} = forceoptional ]] ; then
-			ecm_punt_qt_module Test
+			[[ ${_KFSLOT} = 5 ]] && ecm_punt_qt_module Test
 			# if forceoptional, also cover non-kde categories
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
-			ecm_punt_qt_module Test
+			[[ ${_KFSLOT} = 5 ]] && ecm_punt_qt_module Test
 			local f pf="${T}/${P}"-tests-optional.patch
 			touch ${pf} || die "Failed to touch patch file"
 			for f in $(find . -type f -name "CMakeLists.txt" -exec \
@@ -552,8 +560,8 @@ ecm_src_configure() {
 	if in_iuse test && ! use test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
 
-		if [[ ${ECM_TEST} = optional ]] ; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt${_KFSLOT}Test=ON )
+		if [[ ${_KFSLOT} = 5 && ${ECM_TEST} = optional ]] ; then
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
 		fi
 	fi
 
