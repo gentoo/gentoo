@@ -317,7 +317,7 @@ src_install() {
 
 	if use elibc_musl; then
 		# https://bugs.gentoo.org/900348
-		QA_CONFIG_IMPL_DECL_SKIP=( re_set_syntax re_compile_pattern re_search )
+		QA_CONFIG_IMPL_DECL_SKIP=( re_{compile_pattern,match,search,set_syntax} )
 	fi
 }
 
