@@ -156,11 +156,6 @@ net-dns/totd
 # Removal on 2024-02-06. Bug #918536
 net-nds/tac_plus
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-01-03)
-# Unmaintained upstream, no more revdeps.
-# Removal on 2024-02-03.  Bug #877311
-x11-libs/snorenotify
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0

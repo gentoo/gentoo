@@ -96,10 +96,6 @@ dev-python/python-distutils-extra
 # details. Please migrate to app-admin/rasdaemon instead.
 sys-apps/edac-utils
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-26)
-# Last-rites pending and waiting for revdeps, bug 877311
-x11-libs/snorenotify
-
 # Michał Górny <mgorny@gentoo.org> (2022-12-24)
 # Unmaintained with last release in 2019.  We already patched it to work
 # with Python 3.9+.  The upstream code is also vulnerable
