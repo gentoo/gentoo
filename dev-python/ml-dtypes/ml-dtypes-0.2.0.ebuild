@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PNGH="${PN/-/_}" # pypi is ml-dtypes, github is ml_dtypes
 PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
@@ -13,7 +14,7 @@ EIGEN_CommitId="7bf2968fed5f246c0589e1111004cb420fcd7c71"
 DESCRIPTION="A stand-alone implementation of several NumPy dtype extensions"
 HOMEPAGE="https://github.com/jax-ml/ml_dtypes"
 SRC_URI="
-	https://github.com/jax-ml/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/jax-ml/${PNGH}/archive/refs/tags/v${PV}.tar.gz -> ${PNGH}-${PV}.gh.tar.gz
 	https://gitlab.com/libeigen/eigen/-/archive/${EIGEN_CommitId}/eigen-${EIGEN_CommitId}.tar.bz2
 "
 

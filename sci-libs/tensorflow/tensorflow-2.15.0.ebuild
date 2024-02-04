@@ -128,7 +128,7 @@ RDEPEND="
 		~dev-python/flatbuffers-23.5.26[${PYTHON_USEDEP}]
 		>=dev-python/gast-0.3.3[${PYTHON_USEDEP}]
 		dev-python/h5py[${PYTHON_USEDEP}]
-		>=dev-python/ml_dtypes-0.2.0[${PYTHON_USEDEP}]
+		>=dev-python/ml-dtypes-0.2.0[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
 		>=dev-python/google-pasta-0.1.8[${PYTHON_USEDEP}]
 		>=dev-python/opt-einsum-3.3.0[${PYTHON_USEDEP}]
