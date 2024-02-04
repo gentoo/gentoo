@@ -30,6 +30,7 @@ DEPEND="
 	dev-qt/qtcore:5=
 	dev-qt/qtnetwork:5=
 	dev-qt/qtwidgets:5=
+	dev-util/trace-cmd
 	>=media-libs/freeglut-3.0.0:=
 	x11-libs/libXmu:=
 	x11-libs/libXi:=
