@@ -10,13 +10,13 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="alt_cannadic">Include Mozc UT ALt-Cannadic Dictionary.</flag>
+		<flag name="alt-cannadic">Include Mozc UT ALt-Cannadic Dictionary.</flag>
 		<flag name="edict">Include Mozc UT EDICT2 Dictionary.</flag>
 		<flag name="jawiki">Include Mozc UT Jawiki Dictionary.</flag>
 		<flag name="neologd">Include Mozc UT NEologd Dictionary.</flag>
-		<flag name="personal_names">Include Mozc UT Personal Name Dictionary.</flag>
-		<flag name="place_names">Include Mozc UT Place Name Dictionary.</flag>
-		<flag name="skk_jisyo">Include Mozc UT SKK-JISYO Dictionary.</flag>
+		<flag name="personal-names">Include Mozc UT Personal Name Dictionary.</flag>
+		<flag name="place-names">Include Mozc UT Place Name Dictionary.</flag>
+		<flag name="skk-jisyo">Include Mozc UT SKK-JISYO Dictionary.</flag>
 		<flag name="sudachidict">Include Mozc UT SudachiDict Dictionary.</flag>
 	</use>
 </pkgmetadata>
