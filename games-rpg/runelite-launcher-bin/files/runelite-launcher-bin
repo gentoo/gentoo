@@ -1,0 +1,19 @@
+#!/bin/sh
+
+JAVA_JAR="/usr/share/runelite-launcher-bin/lib/runelite-launcher-bin.jar"
+JAVA_OPTS="$@"
+RUNELITE_OPTS=""
+
+# Find Java
+set -- /usr/lib*/openjdk-11 /opt/openjdk-bin-11.*
+while ! [ -d "${1}" ]; do
+    if [ ${#} -eq 1 ]; then
+        echo "Error: No Java 11 runtime found!"
+        exit 1
+    fi
+    shift
+done
+JAVA_HOME="${1}"
+
+# Launch RuneLite
+"${JAVA_HOME}"/bin/java ${JAVA_OPTS} -jar "${JAVA_JAR}" "${RUNELITE_OPTS}"
