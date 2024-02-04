@@ -27,7 +27,6 @@
 		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
 		<flag name="cudnn">Enable support for nVidia cuDNN library</flag>
 		<flag name="dnnsamples">Enable dnn caffeemodel samples</flag>
-		<flag name="download">Enable download during cmake configure</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="features2d">Enable features2d module</flag>
 		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
