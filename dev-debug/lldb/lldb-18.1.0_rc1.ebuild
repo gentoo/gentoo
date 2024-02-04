@@ -11,17 +11,21 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${LLVM_SOABI}"
-IUSE="+debug +libedit lzma ncurses +python test +xml"
+IUSE="+debug debuginfod +libedit lzma ncurses +python test +xml"
 RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="
+	debuginfod? (
+		net-misc/curl:=
+		dev-cpp/cpp-httplib:=
+	)
 	libedit? ( dev-libs/libedit:0= )
 	lzma? ( app-arch/xz-utils:= )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	xml? ( dev-libs/libxml2:= )
 	~sys-devel/clang-${PV}
-	~sys-devel/llvm-${PV}
+	~sys-devel/llvm-${PV}[debuginfod=]
 "
 RDEPEND="
 	${DEPEND}
