@@ -37,7 +37,7 @@ REQUIRED_USE="initramfs? ( redistributable )
 RESTRICT="binchecks strip test
 	unknown-license? ( bindist )"
 
-BDEPEND="initramfs? ( app-arch/cpio )
+BDEPEND="initramfs? ( app-alternatives/cpio )
 	compress-xz? ( app-arch/xz-utils )
 	compress-zstd? ( app-arch/zstd )
 	deduplicate? ( app-misc/rdfind )"
