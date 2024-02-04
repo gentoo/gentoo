@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils xdg git-r3
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="https://gitlab.com/smart-pattern/valentina"
+HOMEPAGE="https://smart-pattern.com.ua/"
 EGIT_REPO_URI="https://gitlab.com/smart-pattern/valentina.git"
 EGIT_BRANCH="develop"
 

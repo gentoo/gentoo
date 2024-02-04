@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils xdg
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="https://valentinaproject.bitbucket.io/"
+HOMEPAGE="https://smart-pattern.com.ua/"
 SRC_URI="https://gitlab.com/smart-pattern/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
 	https://dev.gentoo.org/~fordfrog/distfiles/valentina-5858.patch.bz2"
 
