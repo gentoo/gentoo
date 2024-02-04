@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="Introspection system for GObject-based libraries"
-HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
+HOMEPAGE="https://gi.readthedocs.io"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
