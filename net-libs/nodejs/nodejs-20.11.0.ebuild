@@ -105,6 +105,9 @@ src_prepare() {
 	# We need to disable mprotect on two files when it builds Bug 694100.
 	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-20.6.0-paxmarking.patch )
 
+	# bug 922725
+	use riscv && PATCHES+=( "${FILESDIR}"/${P}-riscv.patch )
+
 	default
 }
 
