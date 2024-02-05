@@ -4,6 +4,7 @@
 EAPI=8
 
 [[ "${PV}" == *_p20220711 ]] && COMMIT=df129c7ba30aaa9ffffb81a48f53aa7253b0b4e6
+
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
@@ -39,17 +40,12 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.2.0-no-future-795.patch"
+	"${FILESDIR}/${PN}-0.2.0-collections.patch"
 )
 
 EPYTEST_DESELECT=(
-	ffmpeg/tests/test_ffmpeg.py::test__get_filter_complex_input
-	ffmpeg/tests/test_ffmpeg.py::test__input__start_time
-	ffmpeg/tests/test_ffmpeg.py::test__multi_output_edge_label_order
 	ffmpeg/tests/test_ffmpeg.py::test__probe
-	ffmpeg/tests/test_ffmpeg.py::test__probe__extra_args
-	ffmpeg/tests/test_ffmpeg.py::test_fluent_complex_filter
 	ffmpeg/tests/test_ffmpeg.py::test_pipe
-	ffmpeg/tests/test_ffmpeg.py::test_repeated_args
 )
 
 distutils_enable_tests pytest
