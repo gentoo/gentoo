@@ -635,8 +635,9 @@ x86-linux	default/linux/x86/17.0/prefix/kernel-2.6.16+			exp
 arm-linux	default/linux/arm/17.0/armv7a/prefix/kernel-3.2+		exp
 arm64-linux	default/linux/arm64/17.0/prefix/kernel-3.2+			exp
 
-# Mac OS X Profiles
+# macOS Profiles
 ppc-macos	prefix/darwin/macos/10.5/ppc/gcc				exp
+x86-macos	prefix/darwin/macos/10.5/x86/gcc				exp
 x64-macos	prefix/darwin/macos/10.11/x64					exp
 x64-macos	prefix/darwin/macos/10.13/x64					exp
 x64-macos	prefix/darwin/macos/10.13/x64/gcc				exp
