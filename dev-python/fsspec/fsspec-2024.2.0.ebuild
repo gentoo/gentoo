@@ -45,21 +45,26 @@ src_test() {
 	distutils-r1_src_test
 }
 
-EPYTEST_DESELECT=(
-	fsspec/tests/test_spec.py::test_find
-	# requires s3fs
-	fsspec/implementations/tests/test_local.py::test_urlpath_inference_errors
-	fsspec/tests/test_core.py::test_mismatch
-	# requires pyarrow, fastparquet
-	fsspec/implementations/tests/test_reference.py::test_df_single
-	fsspec/implementations/tests/test_reference.py::test_df_multi
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		fsspec/tests/test_spec.py::test_find
+		# requires s3fs
+		fsspec/implementations/tests/test_local.py::test_urlpath_inference_errors
+		fsspec/tests/test_core.py::test_mismatch
+		# requires pyarrow, fastparquet
+		fsspec/implementations/tests/test_reference.py::test_df_single
+		fsspec/implementations/tests/test_reference.py::test_df_multi
+	)
 
-EPYTEST_IGNORE=(
-	# sftp and smb require server started via docker
-	fsspec/implementations/tests/test_dbfs.py
-	fsspec/implementations/tests/test_sftp.py
-	fsspec/implementations/tests/test_smb.py
-	# unhappy about dev-python/fuse-python (?)
-	fsspec/tests/test_fuse.py
-)
+	local EPYTEST_IGNORE=(
+		# sftp and smb require server started via docker
+		fsspec/implementations/tests/test_dbfs.py
+		fsspec/implementations/tests/test_sftp.py
+		fsspec/implementations/tests/test_smb.py
+		# unhappy about dev-python/fuse-python (?)
+		fsspec/tests/test_fuse.py
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p asyncio -p pytest_mock -o tmp_path_retention_policy=all
+}
