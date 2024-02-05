@@ -62,6 +62,8 @@ RDEPEND="${DEPEND}"
 # packages, use package.provided.
 PDEPEND="${REQUIRED_PKGS} !minimal? ( ${AUTOLOADED_PKGS} )"
 
+PATCHES=( "${FILESDIR}/${P}-cc-and-cxx-for-gac.patch" )
+
 pkg_setup() {
 	if use valgrind; then
 		elog "If you enable the use of valgrind during building"
