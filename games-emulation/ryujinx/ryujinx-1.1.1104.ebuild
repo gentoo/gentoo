@@ -336,8 +336,9 @@ RDEPEND="
 "
 
 CHECKREQS_DISK_BUILD="3G"
-DOTNET_PKG_PROJECTS=( "src/${PN^}/${PN^}.csproj" )
-
+DOTNET_PKG_PROJECTS=(
+	"src/${PN^}/${PN^}.csproj"
+)
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.1093-better-defaults.patch"
 	"${FILESDIR}/${PN}-1.1.1093-disable-updates.patch"
@@ -371,7 +372,10 @@ src_test() {
 src_install() {
 	dotnet-pkg-base_install
 
-	fperms +x "/usr/share/${P}/${PN^}.sh"
+	# "Ryujinx.sh" launcher script is only copied for "linux-x64" RID,
+	# let's copy it unconditionally. Bug: https://bugs.gentoo.org/923817
+	exeinto "/usr/share/${P}"
+	doexe "distribution/linux/${PN^}.sh"
 	dotnet-pkg-base_dolauncher "/usr/share/${P}/${PN^}.sh"
 
 	newicon distribution/misc/Logo.svg "${PN^}.svg"
