@@ -72,8 +72,8 @@ PATCHES=(
 src_unpack() {
 	unpack merge-ut-dictionaries-${MERGE_UT_DICTIONARIES_GIT_REVISION}.tar.gz
 
-	cp "${DISTDIR}/id.def" ${S} || die
-	cp "${DISTDIR}/jawiki-latest-all-titles-in-ns0.gz" ${S} || die
+	cp "${DISTDIR}/id.def" "${S}" || die
+	cp "${DISTDIR}/jawiki-latest-all-titles-in-ns0.gz" "${S}" || die
 
 	if use alt-cannadic; then
 		unpack mozcdic-ut-alt-cannadic-${MOZCDIC_UT_ALT_CANNADIC_GIT_REVISION}.tar.gz
