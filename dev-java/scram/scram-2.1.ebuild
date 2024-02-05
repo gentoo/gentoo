@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -81,9 +81,7 @@ src_compile() {
 }
 
 src_test() {
-	einfo "Testing module common"
-	JAVA_TEST_SRC_DIR="common/src/test/java"
-	java-pkg-simple_src_test
+	cp -r {common,client}/src/test/java || die
 
 	einfo "Testing module cwclientcommon"
 	JAVA_TEST_SRC_DIR="client/src/test/java"
