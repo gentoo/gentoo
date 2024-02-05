@@ -3,9 +3,10 @@
 
 EAPI=8
 
+LLVM_COMPAT=( 16 17 )
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit llvm meson python-any-r1
+inherit llvm-r1 meson python-any-r1
 
 MY_PV="${PV/_/-}"
 
@@ -31,6 +32,11 @@ RDEPEND="
 	dev-util/spirv-tools
 	>=sys-libs/zlib-1.2.8:=
 	x11-libs/libdrm
+	$(llvm_gen_dep '
+		dev-util/spirv-llvm-translator:${LLVM_SLOT}
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
@@ -41,53 +47,17 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-# Please keep the LLVM dependency block separate. Since LLVM is slotted,
-# we need to *really* make sure we're not pulling one than more slot
-# simultaneously.
-#
-# How to use it:
-# 1. Specify LLVM_MAX_SLOT (inclusive), e.g. 17.
-# 2. Specify LLVM_MIN_SLOT (inclusive), e.g. 16.
-LLVM_MAX_SLOT="17"
-LLVM_MIN_SLOT="16"
-PER_SLOT_DEPSTR="
-	(
-		dev-util/spirv-llvm-translator:@SLOT@
-		sys-devel/clang:@SLOT@
-		sys-devel/llvm:@SLOT@
-	)
-"
-LLVM_DEPSTR="
-	|| (
-		$(for ((slot=LLVM_MAX_SLOT; slot>=LLVM_MIN_SLOT; slot--)); do
-			echo "${PER_SLOT_DEPSTR//@SLOT@/${slot}}"
-		done)
-	)
-	<sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=
-	<sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=
-"
-RDEPEND="${RDEPEND}
-	${LLVM_DEPSTR}
-"
-unset LLVM_MIN_SLOT {LLVM,PER_SLOT}_DEPSTR
-
-llvm_check_deps() {
-	has_version "dev-util/spirv-llvm-translator:${LLVM_SLOT}" &&
-	has_version "sys-devel/clang:${LLVM_SLOT}" &&
-	has_version "sys-devel/llvm:${LLVM_SLOT}"
-}
-
 python_check_deps() {
 	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	llvm_pkg_setup
+	llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 }
 
 src_configure() {
-	PKG_CONFIG_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/$(get_libdir)/pkgconfig"
+	PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
 
 	local emesonargs=(
 		-Dllvm=enabled
