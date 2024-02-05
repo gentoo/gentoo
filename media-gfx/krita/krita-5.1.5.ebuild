@@ -92,6 +92,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-ocio-2.3.0.patch" # bug 915107
 	"${FILESDIR}/${P}-sip-6.8.patch" # bug 919139
 	"${FILESDIR}/${P}-libjxl-0.9.patch" # bug 922524
+	"${FILESDIR}/${P}-lto.patch" # bug 922520
 )
 
 pkg_setup() {
