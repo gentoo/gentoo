@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
+# app-text/mupdf sparc keyword was dropped in bug #631970
+# and subsequently prevented stabilization in bug #923811
+net-print/cups-filters pdf
+net-print/libcupsfilters pdf
+net-print/cups-meta pdf
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-15)
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
@@ -426,10 +433,6 @@ dev-lang/spidermonkey jit
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-04-20)
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
-
-# Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
-# app-text/mupdf sparc keyword was dropped in bug #631970
-net-print/cups-filters pdf
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
