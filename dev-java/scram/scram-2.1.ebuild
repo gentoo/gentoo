@@ -1,9 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom common/pom.xml --download-uri https://gitlab.com/ongresinc/scram/-/archive/2.1/scram-2.1.tar.gz --slot 0 --keywords "~amd64 ~ppc64 ~x86" --ebuild scram-2.1.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
@@ -14,43 +11,36 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java Implementation of the Salted Challenge Response Authentication Mechanism"
 HOMEPAGE="https://gitlab.com/ongresinc/scram"
-SRC_URI="https://gitlab.com/ongresinc/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/ongresinc/${PN}/-/archive/${PV}/${P}.tar.bz2"
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
 
-# Common dependencies
-# POM: common/pom.xml
-# com.ongres.stringprep:saslprep:1.1 -> >=dev-java/stringprep-2.0:0
+CP_DEPEND="dev-java/saslprep:0"
 
-CP_DEPEND="
-	dev-java/saslprep:0
-"
-
-# Compile dependencies
-# POM: common/pom.xml
-# com.google.code.findbugs:annotations:3.0.1 -> !!!artifactId-not-found!!!
-# com.google.code.findbugs:jsr305:3.0.1 -> >=dev-java/jsr305-3.0.2:0
-# POM: common/pom.xml
-# test? junit:junit:4.12 -> >=dev-java/junit-4.13.2:4
-
-DEPEND="
-	>=virtual/jdk-1.8:*
-	${CP_DEPEND}
+DEPEND="${CP_DEPEND}
 	dev-java/findbugs-annotations:0
 	dev-java/jsr305:0
+	>=virtual/jdk-1.8:*
 	test? ( dev-java/stringprep:0 )
 "
 
-RDEPEND="
+RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*
-	${CP_DEPEND}"
+"
 
 DOCS=( CHANGELOG NOTICE README.md )
 
-S="${WORKDIR}/${P}"
-
+JAVADOC_CLASSPATH="
+	findbugs-annotations
+	saslprep
+"
+JAVADOC_SRC_DIRS=(
+	"common/src/main/java"
+	"client/src/main/java"
+)
 JAVA_CLASSPATH_EXTRA="findbugs-annotations,jsr305"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,stringprep"
 
@@ -69,15 +59,7 @@ src_compile() {
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":client.jar"
 	rm -r target || die
 
-	if use doc; then
-		einfo "Compiling javadocs"
-		JAVA_SRC_DIR=(
-			"common/src/main/java"
-			"client/src/main/java"
-		)
-		JAVA_JAR_FILENAME="ignoreme.jar"
-		java-pkg-simple_src_compile
-	fi
+	use doc && ejavadoc
 }
 
 src_test() {
@@ -89,12 +71,9 @@ src_test() {
 }
 
 src_install() {
-	default
+	JAVA_JAR_FILENAME="client.jar"
+	java-pkg-simple_src_install
 	java-pkg_dojar "common.jar"
-	java-pkg_dojar "client.jar"
-	if use doc; then
-		java-pkg_dojavadoc target/api
-	fi
 	if use source; then
 		java-pkg_dosrc "common/src/main/java/*"
 		java-pkg_dosrc "client/src/main/java/*"
