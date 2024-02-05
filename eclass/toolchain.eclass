@@ -580,7 +580,7 @@ toolchain_src_prepare() {
 	setup_multilib_osdirnames
 
 	local actual_version=$(< "${S}"/gcc/BASE-VER)
-	if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
+	if ! tc_is_live && [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
 		eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
 		die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 	fi
