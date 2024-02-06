@@ -1,0 +1,48 @@
+https://github.com/protocolbuffers/protobuf/commit/e6f8b9d1026996f6463d4f014d7760256b757227
+
+message_lite.h: Use PROTOBUF_EXPORT_TEMPLATE_DECLARE with extern template
+
+Export extern templates in message_lite.h to avoid missing symbols when
+linking protobuf-lite.so.
+
+diff --git a/src/google/protobuf/message_lite.h b/src/google/protobuf/message_lite.h
+index 519aa10..ef7cd3d 100644
+--- a/src/google/protobuf/message_lite.h
++++ b/src/google/protobuf/message_lite.h
+@@ -535,20 +535,20 @@ namespace internal {
+ template <bool alias>
+ bool MergeFromImpl(absl::string_view input, MessageLite* msg,
+                    MessageLite::ParseFlags parse_flags);
+-extern template bool MergeFromImpl<false>(absl::string_view input,
++extern template PROTOBUF_EXPORT_TEMPLATE_DECLARE bool MergeFromImpl<false>(absl::string_view input,
+                                           MessageLite* msg,
+                                           MessageLite::ParseFlags parse_flags);
+-extern template bool MergeFromImpl<true>(absl::string_view input,
++extern template PROTOBUF_EXPORT_TEMPLATE_DECLARE bool MergeFromImpl<true>(absl::string_view input,
+                                          MessageLite* msg,
+                                          MessageLite::ParseFlags parse_flags);
+ 
+ template <bool alias>
+ bool MergeFromImpl(io::ZeroCopyInputStream* input, MessageLite* msg,
+                    MessageLite::ParseFlags parse_flags);
+-extern template bool MergeFromImpl<false>(io::ZeroCopyInputStream* input,
++extern template PROTOBUF_EXPORT_TEMPLATE_DECLARE bool MergeFromImpl<false>(io::ZeroCopyInputStream* input,
+                                           MessageLite* msg,
+                                           MessageLite::ParseFlags parse_flags);
+-extern template bool MergeFromImpl<true>(io::ZeroCopyInputStream* input,
++extern template PROTOBUF_EXPORT_TEMPLATE_DECLARE bool MergeFromImpl<true>(io::ZeroCopyInputStream* input,
+                                          MessageLite* msg,
+                                          MessageLite::ParseFlags parse_flags);
+ 
+@@ -560,9 +560,9 @@ struct BoundedZCIS {
+ template <bool alias>
+ bool MergeFromImpl(BoundedZCIS input, MessageLite* msg,
+                    MessageLite::ParseFlags parse_flags);
+-extern template bool MergeFromImpl<false>(BoundedZCIS input, MessageLite* msg,
++extern template PROTOBUF_EXPORT_TEMPLATE_DECLARE bool MergeFromImpl<false>(BoundedZCIS input, MessageLite* msg,
+                                           MessageLite::ParseFlags parse_flags);
+-extern template bool MergeFromImpl<true>(BoundedZCIS input, MessageLite* msg,
++extern template PROTOBUF_EXPORT_TEMPLATE_DECLARE bool MergeFromImpl<true>(BoundedZCIS input, MessageLite* msg,
+                                          MessageLite::ParseFlags parse_flags);
+ 
+ template <typename T>
