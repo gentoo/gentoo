@@ -128,11 +128,11 @@ CRATES="
 	insta@1.34.0
 	instant@0.1.12
 	is-docker@0.2.0
-	is-macro@0.3.4
+	is-macro@0.3.5
 	is-terminal@0.4.9
 	is-wsl@0.4.0
 	itertools@0.10.5
-	itertools@0.12.0
+	itertools@0.12.1
 	itoa@1.0.9
 	js-sys@0.3.67
 	kqueue-sys@1.0.4
@@ -153,7 +153,7 @@ CRATES="
 	log@0.4.20
 	matchers@0.1.0
 	matches@0.1.10
-	memchr@2.6.4
+	memchr@2.7.1
 	memoffset@0.9.0
 	mimalloc@0.1.39
 	minimal-lexical@0.2.1
@@ -204,7 +204,7 @@ CRATES="
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
 	proc-macro2@1.0.78
-	pyproject-toml@0.8.1
+	pyproject-toml@0.8.2
 	quick-junit@0.3.5
 	quick-xml@0.31.0
 	quote@1.0.35
@@ -286,9 +286,9 @@ CRATES="
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
-	toml@0.8.8
+	toml@0.8.9
 	toml_datetime@0.6.5
-	toml_edit@0.21.0
+	toml_edit@0.21.1
 	tracing-attributes@0.1.27
 	tracing-core@0.1.32
 	tracing-indicatif@0.3.6
