@@ -21,6 +21,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
+RESTRICT="test"             # Just appstream file validation that uses network.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
