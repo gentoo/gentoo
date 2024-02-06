@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Small, safe and fast formatting library"
 HOMEPAGE="https://github.com/fmtlib/fmt"
@@ -23,6 +23,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 src_configure() {
+	append-lfs-flags
 	local mycmakeargs=(
 		-DFMT_CMAKE_DIR="$(get_libdir)/cmake/fmt"
 		-DFMT_LIB_DIR="$(get_libdir)"
