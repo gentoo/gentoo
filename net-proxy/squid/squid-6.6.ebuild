@@ -67,7 +67,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-squid )
 	sqlite? ( dev-perl/DBD-SQLite )
 "
-DEPEND+=" valgrind? ( dev-util/valgrind )"
+DEPEND+=" valgrind? ( dev-debug/valgrind )"
 BDEPEND="
 	dev-lang/perl
 	ecap? ( virtual/pkgconfig )
