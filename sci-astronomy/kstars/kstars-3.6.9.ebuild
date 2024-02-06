@@ -66,6 +66,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/eigen:3
 	>=dev-qt/qtconcurrent-${QTMIN}:5
+	test? ( sci-astronomy/erfa )
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
