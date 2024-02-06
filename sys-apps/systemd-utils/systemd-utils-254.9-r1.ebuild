@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
 inherit bash-completion-r1 flag-o-matic linux-info meson-multilib optfeature
-inherit python-single-r1 secureboot toolchain-funcs udev usr-ldscript
+inherit python-single-r1 secureboot toolchain-funcs udev
 
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
@@ -494,7 +494,6 @@ multilib_src_install() {
 	fi
 	if use udev; then
 		meson_install --no-rebuild --tags libudev
-		gen_usr_ldscript -a udev
 		insinto "/usr/$(get_libdir)/pkgconfig"
 		doins src/libudev/libudev.pc
 	fi
