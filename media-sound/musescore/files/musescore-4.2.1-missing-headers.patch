@@ -18,6 +18,17 @@
  
  #include "modularity/ioc.h"
  #include "../iinteractiveprovider.h"
+--- a/src/importexport/musicxml/internal/musicxml/musicxmlsupport.cpp
++++ b/src/importexport/musicxml/internal/musicxml/musicxmlsupport.cpp
+@@ -34,6 +34,8 @@
+ 
+ #include "log.h"
+ 
++#include <QXmlStreamReader>
++
+ using AccidentalType = mu::engraving::AccidentalType;
+ using SymId = mu::engraving::SymId;
+ const static std::map<mu::String, AccidentalType> smuflAccidentalTypes {
 --- a/src/importexport/videoexport/internal/videowriter.cpp
 +++ b/src/importexport/videoexport/internal/videowriter.cpp
 @@ -32,6 +32,8 @@
@@ -38,4 +49,15 @@
 +#include <QVariant>
  
  #include "async/asyncable.h"
+ 
+--- a/src/project/internal/exporttype.h
++++ b/src/project/internal/exporttype.h
+@@ -23,6 +23,8 @@
+ #define MU_PROJECT_EXPORTTYPE_H
+ 
+ #include <unordered_set>
++#include <QList>
++#include <QVariant>
+ 
+ #include "containers.h"
  
