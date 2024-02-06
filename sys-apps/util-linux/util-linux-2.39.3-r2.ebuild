@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
+inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	pam python-r1 multilib-minimal multiprocessing systemd
 
 MY_PV="${PV/_/-}"
@@ -356,11 +356,6 @@ multilib_src_install() {
 
 	# This needs to be called AFTER python_install call, bug #689190
 	emake DESTDIR="${D}" install
-
-	if multilib_is_native_abi ; then
-		# Need the libs in /
-		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
-	fi
 }
 
 multilib_src_install_all() {
