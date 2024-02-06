@@ -5,7 +5,7 @@ EAPI=8
 
 inherit bash-completion-r1 cmake
 
-COMMIT="32602f565c6cb854d1f2643b51a022991cea2b1b"
+COMMIT="1eb8c20dfa258c549139fae2b21185ac290051c5"
 
 DESCRIPTION="Raspberry Pi userspace utilities"
 HOMEPAGE="https://github.com/raspberrypi/utils"
