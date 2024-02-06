@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd toolchain-funcs autotools flag-o-matic usr-ldscript
+inherit systemd toolchain-funcs autotools flag-o-matic
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://www.netfilter.org/projects/iptables/"
@@ -130,9 +130,6 @@ src_install() {
 	fi
 
 	systemd_dounit "${FILESDIR}"/systemd/ip{,6}tables-{re,}store.service
-
-	# Move important libs to /lib, bug #332175
-	gen_usr_ldscript -a ip{4,6}tc xtables
 
 	find "${ED}" -type f -name "*.la" -delete || die
 }
