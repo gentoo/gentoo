@@ -277,7 +277,7 @@ net-nds/tac_plus
 ~kde-plasma/kglobalacceld-5.93.0
 ~kde-plasma/kinfocenter-5.93.0
 ~kde-plasma/kmenuedit-5.93.0
-~kde-plasma/kpipewire-5.93.0
+~kde-plasma/kpipewire-5.93.1
 ~kde-plasma/kscreen-5.93.0
 ~kde-plasma/kscreenlocker-5.93.0
 ~kde-plasma/ksshaskpass-5.93.0
