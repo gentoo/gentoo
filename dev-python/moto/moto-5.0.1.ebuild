@@ -96,10 +96,15 @@ python_test() {
 		# broken by new urllib3
 		tests/test_moto_api/recorder/test_recorder.py::TestRecorder::test_s3_upload_data
 		tests/test_moto_api/recorder/test_recorder.py::TestRecorder::test_s3_upload_file_using_requests
-		tests/test_s3/test_s3.py::test_upload_from_file_to_presigned_url
-		tests/test_s3/test_s3.py::test_put_chunked_with_v4_signature_in_body
+		tests/test_moto_api/recorder/test_recorder.py::TestThreadedMotoServer::test_server
 		tests/test_s3/test_s3.py::test_presigned_put_url_with_approved_headers
 		tests/test_s3/test_s3.py::test_presigned_put_url_with_custom_headers
+		tests/test_s3/test_s3.py::test_put_chunked_with_v4_signature_in_body
+		tests/test_s3/test_s3.py::test_upload_from_file_to_presigned_url
+		tests/test_s3/test_s3_bucket_policy.py::TestBucketPolicy::test_block_all_actions
+		tests/test_s3/test_s3_bucket_policy.py::TestBucketPolicy::test_block_all_with_different_principal
+		tests/test_s3/test_s3_bucket_policy.py::TestBucketPolicy::test_block_or_allow_get_object
+		tests/test_s3/test_s3_bucket_policy.py::TestBucketPolicy::test_block_put_object
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
