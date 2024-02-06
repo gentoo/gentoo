@@ -6,7 +6,7 @@ EAPI=8
 # Worth keeping an eye on 'develop' branch upstream for possible backports.
 AUTOTOOLS_AUTO_DEPEND="no"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/madler.asc
-inherit autotools edo multilib-minimal flag-o-matic usr-ldscript verify-sig
+inherit autotools edo multilib-minimal flag-o-matic verify-sig
 
 DESCRIPTION="Standard (de)compression library"
 HOMEPAGE="https://zlib.net/"
@@ -142,7 +142,6 @@ multilib_src_install() {
 
 		*)
 			emake install DESTDIR="${D}" LDCONFIG=:
-			gen_usr_ldscript -a z
 
 			;;
 	esac
