@@ -26,6 +26,7 @@ SLOT="0"
 
 BDEPEND="
 	app-text/texi2html
+	dev-texlive/texlive-latexextra
 	virtual/latex-base
 "
 
