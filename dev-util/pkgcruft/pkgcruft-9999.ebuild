@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=" "
-inherit cargo toolchain-funcs
+inherit cargo edo toolchain-funcs
 
 DESCRIPTION="QA library and tools based on pkgcraft"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -26,14 +26,14 @@ LICENSE+="
 	Apache-2.0 BSD-2 BSD CC0-1.0 GPL-3+ ISC MIT MPL-2.0 Unicode-DFS-2016
 "
 SLOT="0"
-# "error[E0432]: unresolved import `pkgcruft::test`"
-# TODO: speak to radhermit
-RESTRICT="test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # clang needed for bindgen
 BDEPEND+="
 	sys-devel/clang
 	>=virtual/rust-1.71
+	test? ( dev-util/cargo-nextest )
 "
 
 QA_FLAGS_IGNORED="usr/bin/pkgcruft"
@@ -52,4 +52,8 @@ src_compile() {
 	tc-export AR CC
 
 	cargo_src_compile
+}
+
+src_test() {
+	edo cargo nextest run $(usev !debug '--release') --color always --all-features --tests
 }
