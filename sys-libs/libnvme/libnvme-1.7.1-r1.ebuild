@@ -37,7 +37,7 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		-Dpython=false
+		-Dpython=disabled
 		$(meson_use test tests)
 		$(meson_feature json json-c)
 		$(meson_feature dbus libdbus)
