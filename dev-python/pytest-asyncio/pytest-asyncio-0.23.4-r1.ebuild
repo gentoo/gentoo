@@ -31,6 +31,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/pytest-dev/pytest-asyncio/pull/776
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# rely on precise warning counts
@@ -41,6 +46,9 @@ python_test() {
 		tests/test_event_loop_fixture_finalizer.py::test_event_loop_fixture_finalizer_raises_warning_when_test_leaves_loop_unclosed
 		tests/test_pytest_min_version_warning.py
 		tests/trio/test_fixtures.py::test_strict_mode_ignores_trio_fixtures
+
+		# TODO
+		tests/test_is_async_test.py::test_returns_false_for_unmarked_coroutine_item_in_strict_mode
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
