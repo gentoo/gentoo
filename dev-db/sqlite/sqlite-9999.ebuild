@@ -318,8 +318,13 @@ multilib_src_configure() {
 		# Skip known-broken test for now
 		# https://sqlite.org/forum/forumpost/d97caf168f
 		# https://sqlite.org/forum/forumpost/50f136d91d
+		# Quoting Fedora's spec:
+		#  "The atof test is failing on the i686 architecture, when binary configured with
+		#  --enable-rtree option. Failing part is text->real conversion and
+		#  text->real->text conversion in lower significant values after decimal point in a number.
+		#  func4 tests fail for i686 on float<->int conversions."
 		if use test ; then
-			rm test/atof1.test || die
+			rm test/atof1.test test/func4.test || die
 		fi
 	fi
 
