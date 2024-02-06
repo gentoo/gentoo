@@ -79,12 +79,6 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-pkg_preinst() {
-	if use gdk-pixbuf ; then
-		gnome2_gdk_pixbuf_savelist
-	fi
-}
-
 pkg_postinst() {
 	if ! use aom && ! use rav1e && ! use svt-av1 ; then
 		ewarn "No AV1 encoder is set,"
