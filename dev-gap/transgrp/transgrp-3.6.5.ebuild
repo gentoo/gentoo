@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 # This is one of the four required packages whose dependencies are all
 # listed explicitly.
-BDEPEND="test? ( dev-gap/gapdoc )"
+BDEPEND="test? ( dev-gap/gapdoc dev-gap/smallgrp )"
 
 # Again, this is one of the four special packages that won't have gapdoc
 # auto-loaded for its test suite.
