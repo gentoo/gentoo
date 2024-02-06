@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit libtool multilib-minimal preserve-libs
+inherit autotools multilib-minimal preserve-libs
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
@@ -54,7 +54,12 @@ src_prepare() {
 	default
 
 	sed -i -e "s:-lpcre ::" libpcrecpp.pc.in || die
-	elibtoolize
+
+	# We do a full autoreconf because:
+	# - the software is end of life and never getting new dist tarballs
+	# - it uses a frankensteined "2.4.6.42-b88ce-dirty" libtool, which
+	#   means elibtoolize can't find patches to apply
+	eautoreconf
 }
 
 multilib_src_configure() {
