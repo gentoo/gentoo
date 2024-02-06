@@ -356,6 +356,7 @@ PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
 	"${FILESDIR}"/${PN}-6.1-wint-conversion.patch
 	"${FILESDIR}"/${PN}-6.0-fix-lto-type-mismatch.patch
+	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

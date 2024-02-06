@@ -348,6 +348,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-wint-conversion-vulkan.patch
 	"${FILESDIR}"/${P}-libplacebo-remove-deprecated-field.patch
 	"${FILESDIR}"/${P}-binutils-2.41.patch
+	"${FILESDIR}"/${PN}-4.4.4-opencl-parallel-gmake-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

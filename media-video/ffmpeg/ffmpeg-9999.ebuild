@@ -354,6 +354,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
+	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

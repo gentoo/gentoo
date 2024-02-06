@@ -359,6 +359,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1-0004-lavc-dvdsubenc-only-check-canvas-size-when-it-is-act.patch
 	"${FILESDIR}"/${PN}-6.1-0005-lavc-Makefile-build-vulkan-decode-code-if-vulkan_av1.patch
 	"${FILESDIR}"/${PN}-6.1-0006-hwcontext_vulkan-guard-unistd.h-include.patch
+	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

@@ -349,6 +349,7 @@ PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
 	"${FILESDIR}"/${PN}-5.1.2-get_cabac_inline_x86-32-bit.patch
 	"${FILESDIR}"/${PN}-6.0-libplacebo-remove-deprecated-field.patch
+	"${FILESDIR}"/${PN}-4.4.4-opencl-parallel-gmake-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
