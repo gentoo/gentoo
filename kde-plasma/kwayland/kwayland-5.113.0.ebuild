@@ -8,7 +8,7 @@ ECM_QTHELP="true"
 ECM_TEST="true"
 KFMIN=$(ver_cut 1-2)
 QTMIN=5.15.9
-inherit ecm frameworks.kde.org
+inherit ecm flag-o-matic frameworks.kde.org
 
 DESCRIPTION="Qt-style client and server library wrapper for Wayland libraries"
 HOMEPAGE="https://invent.kde.org/frameworks/kwayland"
@@ -37,3 +37,8 @@ BDEPEND="
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	>=dev-util/wayland-scanner-1.19.0
 "
+
+src_configure() {
+	filter-lto # bug 866575
+	ecm_src_configure
+}
