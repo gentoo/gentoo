@@ -5,7 +5,7 @@ EAPI=8
 
 KFMIN=5.113.0
 QTMIN=5.15.9
-inherit ecm plasma.kde.org
+inherit ecm flag-o-matic plasma.kde.org
 
 DESCRIPTION="Provides KWindowSystem integration plugin for Wayland"
 HOMEPAGE="https://invent.kde.org/plasma/kwayland-integration"
@@ -41,3 +41,8 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
+
+src_configure() {
+	filter-lto # bug 921430
+	ecm_src_configure
+}
