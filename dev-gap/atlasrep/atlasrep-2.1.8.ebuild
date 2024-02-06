@@ -18,7 +18,7 @@ DESCRIPTION="GAP Interface to the Atlas of Group Representations"
 # has to be writable).
 SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/atlasrep/${P}.tar.gz
 	https://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atlasrepdata.tar.gz
-	https://dev.gentoo.org/~mjo/distfiles/${P}-testdata.tar.xz"
+	https://dev.gentoo.org/~mjo/distfiles/${PN}-2.1.7-testdata.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -35,8 +35,8 @@ BDEPEND="test? (
 gap-pkg_enable_tests
 
 PATCHES=(
-	"${FILESDIR}/${P}-no-remote-access.patch"
-	"${FILESDIR}/${P}-non-writable-data-dir.patch"
+	"${FILESDIR}/${PN}-2.1.7-no-remote-access.patch"
+	"${FILESDIR}/${PN}-2.1.7-non-writable-data-dir.patch"
 )
 
 GAP_PKG_EXTRA_INSTALL=(
