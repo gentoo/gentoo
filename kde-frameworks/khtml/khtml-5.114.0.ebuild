@@ -6,9 +6,10 @@ EAPI=8
 ECM_QTHELP="false"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.9
-inherit ecm frameworks.kde.org
+inherit ecm flag-o-matic frameworks.kde.org
 
 DESCRIPTION="KHTML web rendering engine"
+
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="X"
@@ -62,6 +63,8 @@ BDEPEND="
 "
 
 src_configure() {
+	filter-lto # bug 921686
+
 	local mycmakeargs=(
 		-DWITH_X11=$(usex X)
 	)
