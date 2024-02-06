@@ -43,7 +43,6 @@ src_configure() {
 		$(meson_feature dbus libdbus)
 		$(meson_feature keyutils)
 		$(meson_feature ssl openssl)
-		$(meson_feature python)
 	)
 	meson_src_configure
 }
