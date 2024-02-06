@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/squid.gpg
+inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Full-featured web proxy cache"
 HOMEPAGE="http://www.squid-cache.org/"
@@ -13,7 +14,10 @@ MY_PV_MAJOR=$(ver_cut 1)
 #r=-20181117-r0022167
 r=
 if [[ -z ${r} ]]; then
-	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz"
+	SRC_URI="
+		http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz
+		verify-sig? ( http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz.asc )
+	"
 else
 	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2"
 	S="${S}${r}"
@@ -72,6 +76,7 @@ BDEPEND="
 	dev-lang/perl
 	ecap? ( virtual/pkgconfig )
 	test? ( dev-util/cppunit )
+	verify-sig? ( sec-keys/openpgp-keys-squid )
 "
 
 PATCHES=(
