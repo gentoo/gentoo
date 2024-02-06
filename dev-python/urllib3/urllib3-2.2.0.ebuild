@@ -27,7 +27,7 @@ SRC_URI+="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv"
 IUSE="brotli http2 test zstd"
 RESTRICT="!test? ( test )"
 
