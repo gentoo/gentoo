@@ -26,7 +26,11 @@ SLOT="0"
 
 BDEPEND="
 	app-text/texi2html
+	dev-texlive/texlive-fontsextra
+	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
+	dev-texlive/texlive-mathscience
+	dev-texlive/texlive-plaingeneric
 	virtual/latex-base
 "
 
