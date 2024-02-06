@@ -6,7 +6,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript
+inherit flag-o-matic libtool multilib multilib-minimal preserve-libs toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	# Per tukaani.org, git.tukaani.org is a mirror of github and
@@ -121,12 +121,6 @@ multilib_src_compile() {
 		emake clean
 		emake CFLAGS="${CFLAGS} ${pgo_use_flags}"
 	fi
-}
-
-multilib_src_install() {
-	default
-
-	gen_usr_ldscript -a lzma
 }
 
 multilib_src_install_all() {
