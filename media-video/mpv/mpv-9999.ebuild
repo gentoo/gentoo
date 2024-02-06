@@ -23,9 +23,9 @@ SLOT="0/2" # soname
 IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
-	+lua mmal nvenc openal opengl pipewire pulseaudio raspberry-pi
-	rubberband sdl selinux sixel sndio test tools +uchardet vaapi
-	vdpau vulkan wayland xv zimg zlib
+	+lua nvenc openal opengl pipewire pulseaudio rubberband sdl selinux
+	sixel sndio test tools +uchardet vaapi vdpau vulkan wayland xv zimg
+	zlib
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -44,7 +44,6 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-# raspberry-pi: default to -bin given non-bin is known broken (bug #893422)
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
 	>=media-libs/libplacebo-6.338.2:=[opengl?,vulkan?]
@@ -91,12 +90,6 @@ COMMON_DEPEND="
 	opengl? ( media-libs/libglvnd[X?] )
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
-	raspberry-pi? (
-		|| (
-			media-libs/raspberrypi-userland-bin
-			media-libs/raspberrypi-userland
-		)
-	)
 	rubberband? ( media-libs/rubberband )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	sixel? ( media-libs/libsixel )
@@ -200,13 +193,12 @@ src_configure() {
 		$(meson_feature drm)
 		$(meson_feature jpeg)
 		$(meson_feature libcaca caca)
-		$(meson_feature mmal rpi-mmal)
 		$(meson_feature sdl sdl2-video)
 		$(meson_feature sixel)
 		$(meson_feature wayland)
 		$(meson_feature xv)
 
-		-Dgl=$(use egl || use libmpv || use opengl || use raspberry-pi &&
+		-Dgl=$(use egl || use libmpv || use opengl &&
 			echo enabled || echo disabled)
 		$(meson_feature egl)
 		$(mpv_feature_multi egl X egl-x11)
@@ -216,7 +208,6 @@ src_configure() {
 		$(meson_feature libmpv plain-gl)
 		$(mpv_feature_multi opengl X gl-x11)
 		$(mpv_feature_multi opengl aqua gl-cocoa)
-		$(meson_feature raspberry-pi rpi)
 
 		$(meson_feature vulkan)
 
