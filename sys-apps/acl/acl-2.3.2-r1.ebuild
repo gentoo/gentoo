@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib-minimal usr-ldscript
+inherit flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="Access control list utilities, libraries, and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
@@ -46,13 +46,6 @@ multilib_src_test() {
 	# Tests call native binaries with an LD_PRELOAD wrapper
 	# bug #772356
 	multilib_is_native_abi && default
-}
-
-multilib_src_install() {
-	default
-
-	# Move shared libs to /
-	gen_usr_ldscript -a acl
 }
 
 multilib_src_install_all() {
