@@ -16,7 +16,10 @@ LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="glade +introspection startup-notification system-info vala wayland X"
-REQUIRED_USE="vala? ( introspection )"
+REQUIRED_USE="
+	|| ( wayland X )
+	vala? ( introspection )
+"
 
 DEPEND="
 	>=dev-libs/glib-2.66.0
