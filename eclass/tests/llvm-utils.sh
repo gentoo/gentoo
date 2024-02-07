@@ -98,9 +98,21 @@ ESYSROOT=
 test_prepend_path 17 /usr/bin /usr/bin:/usr/lib/llvm/17/bin
 test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/bin /usr/lib/llvm/17/bin:/usr/bin
 test_prepend_path 17 /usr/bin:/usr/lib/llvm/17/bin /usr/bin:/usr/lib/llvm/17/bin
+test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/17/bin \
+	/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/lib/llvm/17/bin:/usr/bin \
+	/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 17 /usr/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/17/bin \
+	/usr/bin:/usr/lib/llvm/17/bin
 test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/bin \
 	/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/bin
 test_prepend_path 18 /usr/bin:/usr/lib/llvm/17/bin \
 	/usr/bin:/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin
+test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin:/usr/bin \
+	/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin:/usr/bin
+test_prepend_path 18 /usr/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin \
+	/usr/bin:/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin
+test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/16/bin \
+	/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/16/bin
 
 texit
