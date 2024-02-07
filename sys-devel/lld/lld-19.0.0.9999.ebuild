@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
+inherit cmake flag-o-matic llvm.org llvm-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -41,7 +41,6 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
@@ -57,6 +56,8 @@ src_unpack() {
 }
 
 src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
