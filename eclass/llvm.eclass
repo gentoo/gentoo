@@ -212,30 +212,7 @@ llvm_pkg_setup() {
 			llvm_fix_tool_path LLVM_CONFIG
 		fi
 
-		local prefix=${ESYSROOT}
-		local llvm_path=${prefix}/usr/lib/llvm/${LLVM_SLOT}/bin
-		local IFS=:
-		local split_path=( ${PATH} )
-		local new_path=()
-		local x added=
-
-		# prepend new path before first LLVM version found
-		for x in "${split_path[@]}"; do
-			if [[ ${x} == */usr/lib/llvm/*/bin ]]; then
-				if [[ ${x} != ${llvm_path} ]]; then
-					new_path+=( "${llvm_path}" )
-				elif [[ ${added} && ${x} == ${llvm_path} ]]; then
-					# deduplicate
-					continue
-				fi
-				added=1
-			fi
-			new_path+=( "${x}" )
-		done
-		# ...or to the end of PATH
-		[[ ${added} ]] || new_path+=( "${llvm_path}" )
-
-		export PATH=${new_path[*]}
+		llvm_prepend_path "${LLVM_SLOT}"
 	fi
 }
 

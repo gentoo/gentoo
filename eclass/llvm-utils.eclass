@@ -112,4 +112,40 @@ llvm_fix_tool_path() {
 	${shopt_save}
 }
 
+# @FUNCTION: llvm_prepend_path
+# @USAGE: <slot>
+# @DESCRIPTION:
+# Prepend the path to the specified LLVM slot to PATH variable,
+# and reexport it.
+llvm_prepend_path() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <slot>"
+	local slot=${1}
+
+	local llvm_path=${ESYSROOT}/usr/lib/llvm/${slot}/bin
+	local IFS=:
+	local split_path=( ${PATH} )
+	local new_path=()
+	local x added=
+
+	# prepend new path in front of the first LLVM version found
+	for x in "${split_path[@]}"; do
+		if [[ ${x} == */usr/lib/llvm/*/bin ]]; then
+			if [[ ${x} != ${llvm_path} ]]; then
+				new_path+=( "${llvm_path}" )
+			elif [[ ${added} && ${x} == ${llvm_path} ]]; then
+				# deduplicate
+				continue
+			fi
+			added=1
+		fi
+		new_path+=( "${x}" )
+	done
+	# ...or to the end of PATH
+	[[ ${added} ]] || new_path+=( "${llvm_path}" )
+
+	export PATH=${new_path[*]}
+}
+
 fi
