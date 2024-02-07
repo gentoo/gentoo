@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
 	bootstrap-prefix hardened llvm-libunwind
@@ -175,11 +175,18 @@ src_install() {
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
-	newins - gentoo-hardened-ld.cfg <<-EOF
-		# Some of these options are added unconditionally, regardless of
-		# USE=hardened, for parity with sys-devel/gcc.
-		-Wl,-z,relro
-	EOF
+	if use kernel_Darwin; then
+		newins - gentoo-hardened-ld.cfg <<-EOF
+			# There was -Wl,-z,relro here, but it's not supported on Mac
+			# TODO: investigate whether -bind_at_load or -read_only_stubs will do the job
+		EOF
+	else
+		newins - gentoo-hardened-ld.cfg <<-EOF
+			# Some of these options are added unconditionally, regardless of
+			# USE=hardened, for parity with sys-devel/gcc.
+			-Wl,-z,relro
+		EOF
+	fi
 
 	dodir /usr/include/gentoo
 
