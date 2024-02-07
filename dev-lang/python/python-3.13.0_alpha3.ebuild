@@ -43,7 +43,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-crypt/libb2
-	>=dev-libs/expat-2.1:=
+	<dev-libs/expat-2.6:=
 	dev-libs/libffi:=
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=

@@ -61,7 +61,7 @@ RDEPEND="
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( >=dev-libs/expat-2.1:= )
+	xml? ( <dev-libs/expat-2.6:= )
 "
 # bluetooth requires headers from bluez
 DEPEND="
