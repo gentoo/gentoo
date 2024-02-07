@@ -135,11 +135,6 @@ dev-python/pytest-shutil
 dev-python/pytest-verbose-parametrize
 dev-python/pytest-virtualenv
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-01-08)
-# Masked for removal due to licensing issues and possible GPL infringement.
-# Removal: 2024-02-07.  Bug #766129.
-x11-misc/albert
-
 # Michał Górny <mgorny@gentoo.org> (2024-01-07)
 # A Gentoo fork of an abandoned library that was historically used
 # by app-office/libreoffice.  No revdeps left.
