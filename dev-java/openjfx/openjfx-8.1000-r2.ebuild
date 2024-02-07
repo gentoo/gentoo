@@ -29,7 +29,7 @@ RESTRICT="test" # needs junit version we don't have, fragile
 
 DEPEND="
 	app-arch/unzip
-	>=dev-java/ant-core-1.8.2:0
+	>=dev-java/ant-1.10.14:0
 	>=dev-java/antlr-2.7.7-r7:0
 	dev-java/antlr:3
 	dev-java/openjdk:8
@@ -120,8 +120,8 @@ src_prepare() {
 	done
 
 	local swt_file_name="$(java-pkg_getjars swt-4.10)"
-	java-pkg_jar-from --build-only --into "${d}" ant-core ant.jar ant-1.8.2.jar
-	java-pkg_jar-from --build-only --into "${d}" ant-core ant-launcher.jar ant-launcher-1.8.2.jar
+	java-pkg_jar-from --build-only --into "${d}" ant ant.jar ant-1.8.2.jar
+	java-pkg_jar-from --build-only --into "${d}" ant ant-launcher.jar ant-launcher-1.8.2.jar
 	java-pkg_jar-from --build-only --into "${d}" antlr antlr.jar antlr-2.7.7.jar
 	java-pkg_jar-from --build-only --into "${d}" antlr-3 antlr-tool.jar antlr-3.1.3.jar
 	java-pkg_jar-from --build-only --into "${d}" antlr-3 antlr-runtime.jar antlr-runtime-3.1.3.jar
