@@ -29,6 +29,10 @@ DEPEND="
 	vulkan? ( dev-util/vulkan-headers )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
+)
+
 CMAKE_SKIP_TESTS=(
 	# collada support is disabled in system media-libs/assimp (bug #891787)
 	tst_qquick3dassetimport
