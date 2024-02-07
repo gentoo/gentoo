@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-02-07)
+# grpc not stable here
+app-admin/syslog-ng grpc
+
 # Petr Vaněk <arkamar@gentoo.org> (2024-01-10)
 # Destabilize dev-db/redis for ~arm due to a lack of security stabilization
 # almost one year to this this date. bug 915548#c6
