@@ -1,0 +1,27 @@
+Bug: https://bugs.gentoo.org/920523
+diff --git a/src/enchant.c b/src/enchant.c
+index 9f127f4..63b2e81 100644
+--- a/src/enchant.c
++++ b/src/enchant.c
+@@ -988,7 +988,7 @@ enchant_dict_suggest (EnchantDict * dict, const char *const word,
+ 	/* Check for suggestions from personal dictionary */
+ 	if(session->personal)
+ 		{
+-			pwl_suggs = enchant_pwl_suggest(session->personal, word, len, dict_suggs, &n_pwl_suggs);
++			pwl_suggs = enchant_pwl_suggest(session->personal, word, len, (const char *const *)dict_suggs, &n_pwl_suggs);
+ 			if(pwl_suggs)
+ 				{
+ 					suggsT = enchant_dict_get_good_suggestions(dict, pwl_suggs, n_pwl_suggs, &n_suggsT);
+diff --git a/src/pwl.c b/src/pwl.c
+index 3f97e5f..ed4f04e 100644
+--- a/src/pwl.c
++++ b/src/pwl.c
+@@ -736,7 +736,7 @@ char** enchant_pwl_suggest(EnchantPWL *pwl,const char *const word,
+ 	EnchantSuggList sugg_list;
+ 	int max_dist;
+ 
+-	max_dist = suggs? best_distance(suggs, word, len) : ENCHANT_PWL_MAX_ERRORS;
++	max_dist = suggs? best_distance((char **)suggs, word, len) : ENCHANT_PWL_MAX_ERRORS;
+ 	if(max_dist > ENCHANT_PWL_MAX_ERRORS)
+ 		max_dist = ENCHANT_PWL_MAX_ERRORS;
+ 
