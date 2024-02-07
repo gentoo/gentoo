@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="Userspace access to USB devices"
 HOMEPAGE="https://libusb.info/ https://github.com/libusb/libusb"
@@ -22,6 +22,11 @@ DEPEND="
 	!udev? ( virtual/os-headers )
 "
 BDEPEND="doc? ( app-text/doxygen )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
