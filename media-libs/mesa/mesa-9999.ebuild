@@ -3,9 +3,11 @@
 
 EAPI=8
 
+LLVM_COMPAT=( {15..17} )
+LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit llvm meson-multilib python-any-r1 linux-info
+inherit llvm-r1 meson-multilib python-any-r1 linux-info
 
 MY_P="${P/_/-}"
 
@@ -47,6 +49,7 @@ REQUIRED_USE="
 			video_cards_vmware
 		)
 	)
+	llvm? ( ${LLVM_REQUIRED_USE} )
 	vulkan-overlay? ( vulkan )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -64,6 +67,13 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	llvm? (
+		$(llvm_gen_dep "
+			sys-devel/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+			opencl? (
+				dev-util/spirv-llvm-translator:\${LLVM_SLOT}
+				sys-devel/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
+			)
+		")
 		video_cards_radeonsi? (
 			virtual/libelf:0=[${MULTILIB_USEDEP}]
 		)
@@ -109,37 +119,6 @@ RDEPEND="${RDEPEND}
 	video_cards_radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
 "
 
-# Please keep the LLVM dependency block separate. Since LLVM is slotted,
-# we need to *really* make sure we're not pulling one than more slot
-# simultaneously.
-#
-# How to use it:
-# 1. Specify LLVM_MAX_SLOT (inclusive), e.g. 17.
-# 2. Specify LLVM_MIN_SLOT (inclusive), e.g. 15.
-LLVM_MAX_SLOT="17"
-LLVM_MIN_SLOT="15"
-LLVM_USE_DEPS="llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}"
-PER_SLOT_DEPSTR="
-	(
-		!opencl? ( sys-devel/llvm:@SLOT@[${LLVM_USE_DEPS}] )
-		opencl? ( sys-devel/clang:@SLOT@[${LLVM_USE_DEPS}] )
-		opencl? ( dev-util/spirv-llvm-translator:@SLOT@ )
-	)
-"
-LLVM_DEPSTR="
-	|| (
-		$(for ((slot=LLVM_MAX_SLOT; slot>=LLVM_MIN_SLOT; slot--)); do
-			echo "${PER_SLOT_DEPSTR//@SLOT@/${slot}}"
-		done)
-	)
-	!opencl? ( <sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}] )
-	opencl? ( <sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=[${LLVM_USE_DEPS}] )
-"
-RDEPEND="${RDEPEND}
-	llvm? ( ${LLVM_DEPSTR} )
-"
-unset LLVM_MIN_SLOT {LLVM,PER_SLOT}_DEPSTR
-
 DEPEND="${RDEPEND}
 	video_cards_d3d12? ( >=dev-util/directx-headers-1.611.0[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-debug/valgrind )
@@ -184,14 +163,6 @@ x86? (
 	usr/lib/libOSMesa.so.8.0.0
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
-
-llvm_check_deps() {
-	if use opencl; then
-		has_version "sys-devel/clang:${LLVM_SLOT}[${LLVM_USE_DEPS}]" || return 1
-		has_version "dev-util/spirv-llvm-translator:${LLVM_SLOT}" || return 1
-	fi
-	has_version "sys-devel/llvm:${LLVM_SLOT}[${LLVM_USE_DEPS}]"
-}
 
 pkg_pretend() {
 	if use vulkan; then
@@ -268,9 +239,7 @@ pkg_setup() {
 		linux-info_pkg_setup
 	fi
 
-	if use llvm; then
-		llvm_pkg_setup
-	fi
+	use llvm && llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -363,7 +332,7 @@ multilib_src_configure() {
 	fi
 
 	if use llvm && use opencl; then
-		PKG_CONFIG_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/$(get_libdir)/pkgconfig"
+		PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
 		# See https://gitlab.freedesktop.org/mesa/mesa/-/blob/main/docs/rusticl.rst
 		emesonargs+=(
 			$(meson_native_true gallium-rusticl)
