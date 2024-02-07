@@ -3,11 +3,12 @@
 
 EAPI=8
 
-inherit rpm
-
 DESCRIPTION="Epson Inkjet Printer Driver (ESC/P-R)"
 HOMEPAGE="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/57/23/873ff1cc80b160f1f6427dfb729f7a17181d6679/${P}-1.src.rpm"
+
+# https://support.epson.net/linux/Printer/LSB_distribution_pages/en/escpr.php
+# Use the "source package for arm CPU" to get a tarball instead of an srpm.
+SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/57/25/a928e7d08c825ef1cdb892e70318d986720cef8a/epson-inkjet-printer-escpr-1.8.4-1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,10 +22,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.7.7-fnocommon.patch"
 	"${FILESDIR}/${P}-1-missing-include.patch"
 )
-
-src_unpack() {
-	rpm_src_unpack "${A}"
-}
 
 src_configure() {
 	econf --disable-shared
