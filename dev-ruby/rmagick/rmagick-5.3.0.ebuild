@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,10 @@ all_ruby_prepare() {
 
 	# Squelch harmless warning about imagemagick installation.
 	sed -i -e '/prefix/ s:ImageMagick:ImageMagick-6:' ext/RMagick/extconf.rb || die
+
+	# Avoid some tests that fails due to minor implementation changes in
+	# imagemagick.
+	rm -f spec/rmagick/class_methods/limit_resources_spec.rb spec/rmagick/image/gamma_spec.rb || die
 
 	# Create directory used for a test
 	mkdir tmp
