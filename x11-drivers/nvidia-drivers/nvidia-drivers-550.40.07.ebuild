@@ -26,7 +26,7 @@ LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 # not keywording betas
 #KEYWORDS="-* ~amd64 ~arm64"
-IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced +static-libs +tools wayland"
+IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
 REQUIRED_USE="kernel-open? ( modules )"
 
 COMMON_DEPEND="
@@ -59,6 +59,7 @@ RDEPEND="
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
 	)
+	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
 	wayland? (
 		gui-libs/egl-gbm
 		>=gui-libs/egl-wayland-1.1.10
@@ -140,7 +141,7 @@ src_prepare() {
 	sed 's/__USER__/nvpd/' \
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
-	use !amd64 || sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
+	sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
 
 	# use alternative vulkan icd option if USE=-X (bug #909181)
 	use X || sed -i 's/"libGLX/"libEGL/' nvidia_{layers,icd}.json || die
@@ -247,6 +248,7 @@ src_install() {
 	local skip_modules=(
 		$(usev !X "nvfbc vdpau xdriver")
 		$(usev !modules gsp)
+		$(usev !powerd powerd)
 		installer nvpd # handled separately / built from source
 	)
 	local skip_types=(
@@ -392,10 +394,13 @@ documentation that is installed alongside this README."
 	dobin nvidia-bug-report.sh
 
 	# MODULE:powerd extras
-	insinto /usr/share/dbus-1/system.d
-	doins nvidia-dbus.conf
-	newinitd "${FILESDIR}"/nvidia-powerd.initd nvidia-powerd #923117
-	systemd_dounit systemd/system/nvidia-powerd.service
+	if use powerd; then
+		newinitd "${FILESDIR}"/nvidia-powerd.initd nvidia-powerd #923117
+		systemd_dounit systemd/system/nvidia-powerd.service
+
+		insinto /usr/share/dbus-1/system.d
+		doins nvidia-dbus.conf
+	fi
 
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
