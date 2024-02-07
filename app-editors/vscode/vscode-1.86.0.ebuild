@@ -57,7 +57,6 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/libdrm
-	x11-libs/libnotify
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXcomposite
@@ -128,5 +127,6 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "keyring support inside vscode" "virtual/secret-service"
 }
