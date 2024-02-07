@@ -572,6 +572,7 @@ kernel-install_pkg_preinst() {
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local kernel_dir=${ED}/usr/src/linux-${dir_ver}
 	local relfile=${kernel_dir}/include/config/kernel.release
+	local image_path=$(dist-kernel_get_image_path)
 	[[ ! -d ${kernel_dir} ]] &&
 		die "Kernel directory ${kernel_dir} not installed!"
 	[[ ! -f ${relfile} ]] &&
@@ -598,6 +599,12 @@ kernel-install_pkg_preinst() {
 		rm "${ED}/lib/modules/${release}"/{build,source} || die
 		dosym "../../../src/linux-${dir_ver}" "/usr/lib/modules/${release}/build"
 		dosym "../../../src/linux-${dir_ver}" "/usr/lib/modules/${release}/source"
+		for file in vmlinux vmlinuz; do
+			if [[ -L "${ED}/lib/modules/${release}/${file}" ]]; then
+				rm "${ED}/lib/modules/${release}/${file}" || die
+				dosym "../../../src/linux-${dir_ver}/${image_path}" "/usr/lib/modules/${release}/${file}"
+			fi
+		done
 	fi
 }
 
@@ -629,7 +636,7 @@ kernel-install_install_all() {
 	local dir_ver=${1}
 	local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 	local relfile=${kernel_dir}/include/config/kernel.release
-	local image_path=${kernel_dir}/$(dist-kernel_get_image_path)
+	local image_path=$(dist-kernel_get_image_path)
 	local image_dir=${image_path%/*}
 	local module_ver
 	module_ver=$(<"${relfile}") || die
@@ -638,15 +645,22 @@ kernel-install_install_all() {
 		if use generic-uki; then
 			# Populate placeholders
 			kernel-install_extract_from_uki linux \
-				"${image_dir}"/uki.efi \
-				"${image_path}"
+				"${kernel_dir}/${image_dir}"/uki.efi \
+				"${kernel_dir}/${image_path}"
 			kernel-install_extract_from_uki initrd \
-				"${image_dir}"/uki.efi \
-				"${image_dir}"/initrd
+				"${kernel_dir}/${image_dir}"/uki.efi \
+				"${kernel_dir}/${image_dir}"/initrd
+			if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
+				ln -sf "../../../src/linux-${dir_ver}/${image_dir}/initrd" "${EROOT}/usr/lib/modules/${module_ver}/initrd" || die
+				ln -sf "../../../src/linux-${dir_ver}/${image_dir}/uki.efi" "${EROOT}/usr/lib/modules/${module_ver}/uki.efi" || die
+			else
+				ln -sf "../../../usr/src/linux-${dir_ver}/${image_dir}/initrd" "${EROOT}/lib/modules/${module_ver}/initrd" || die
+				ln -sf "../../../usr/src/linux-${dir_ver}/${image_dir}/uki.efi" "${EROOT}/lib/modules/${module_ver}/uki.efi" || die
+			fi
 		else
 			# Remove placeholders, -f because these have already been removed
 			# when doing emerge --config.
-			rm -f "${image_dir}"/{initrd,uki.efi} || die
+			rm -f "${kernel_dir}/${image_dir}"/{initrd,uki.efi} || die
 		fi
 	fi
 
@@ -656,7 +670,7 @@ kernel-install_install_all() {
 		nonfatal mount-boot_check_status || break
 
 		nonfatal dist-kernel_install_kernel "${module_ver}" \
-			"${image_path}" "${kernel_dir}/System.map" || break
+			"${kernel_dir}/${image_path}" "${kernel_dir}/System.map" || break
 
 		success=1
 		break
