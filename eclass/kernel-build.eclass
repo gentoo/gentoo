@@ -385,6 +385,11 @@ kernel-build_src_install() {
 	# fix source tree and build dir symlinks
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
+	if [[ "${image_path}" == *vmlinux* ]]; then
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinux"
+	else
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinuz"
+	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 		secureboot_sign_efi_file "${image}"
