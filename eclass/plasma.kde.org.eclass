@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: plasma.kde.org.eclass
@@ -67,8 +67,8 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-3)/"
 			RESTRICT+=" mirror"
 			;;
-		5.9?.0* )
-			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-3)/"
+		5.9?.[0-9]* )
+			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-2).0/"
 			RESTRICT+=" mirror"
 			;;
 		*) _KDE_SRC_URI+="stable/plasma/$(ver_cut 1-3)/" ;;
