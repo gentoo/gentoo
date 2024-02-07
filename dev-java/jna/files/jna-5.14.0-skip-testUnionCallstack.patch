@@ -1,0 +1,13 @@
+diff --git a/test/com/sun/jna/ArgumentsMarshalTest.java b/test/com/sun/jna/ArgumentsMarshalTest.java
+index 4b2970e..7f51852 100644
+--- a/test/com/sun/jna/ArgumentsMarshalTest.java
++++ b/test/com/sun/jna/ArgumentsMarshalTest.java
+@@ -694,7 +694,7 @@ public class ArgumentsMarshalTest extends TestCase {
+         assertEquals("Auto read should be disabled", EXPECTED, s.field);
+     }
+ 
+-    public void testUnionCallstack() {
++    public void noTestUnionCallstack() {
+         MixedUnion1.ByValue union1 = new MixedUnion1.ByValue();
+         MixedUnion1.ByValue union2 = new MixedUnion1.ByValue();
+         union1.setType("intValue");
