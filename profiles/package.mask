@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2024-02-07)
+# The webpage it was built to scrape isn't online anymore.
+# Removal: 2024-03-08.  Bug #924007.
+net-misc/buka
+
 # Michał Górny <mgorny@gentoo.org> (2024-02-03)
 # Doesn't work with Flask 3, and is abandoned upstream.  It can be
 # trivially replaced by a local function.  No revdeps.
