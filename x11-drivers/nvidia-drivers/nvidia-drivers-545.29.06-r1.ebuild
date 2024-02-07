@@ -104,6 +104,7 @@ pkg_setup() {
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES
+		$(usev powerd '~CPU_FREQ')
 	"
 
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
