@@ -174,11 +174,18 @@ src_install() {
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
-	newins - gentoo-hardened-ld.cfg <<-EOF
-		# Some of these options are added unconditionally, regardless of
-		# USE=hardened, for parity with sys-devel/gcc.
-		-Wl,-z,relro
-	EOF
+	if use kernel_Darwin; then
+		newins - gentoo-hardened-ld.cfg <<-EOF
+			# There was -Wl,-z,relro here, but it's not supported on Mac
+			# TODO: investigate whether -bind_at_load or -read_only_stubs will do the job
+		EOF
+	else
+		newins - gentoo-hardened-ld.cfg <<-EOF
+			# Some of these options are added unconditionally, regardless of
+			# USE=hardened, for parity with sys-devel/gcc.
+			-Wl,-z,relro
+		EOF
+	fi
 
 	dodir /usr/include/gentoo
 
