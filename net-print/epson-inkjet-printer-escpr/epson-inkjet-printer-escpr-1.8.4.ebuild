@@ -8,7 +8,7 @@ HOMEPAGE="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 
 # https://support.epson.net/linux/Printer/LSB_distribution_pages/en/escpr.php
 # Use the "source package for arm CPU" to get a tarball instead of an srpm.
-SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/57/25/a928e7d08c825ef1cdb892e70318d986720cef8a/epson-inkjet-printer-escpr-1.8.4-1.tar.gz"
+SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/57/25/a928e7d08c825ef1cdb892e70318d986720cef8a/${P}-1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
