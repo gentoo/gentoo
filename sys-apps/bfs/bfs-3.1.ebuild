@@ -23,19 +23,24 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_compile() {
-	tc-export CC
-	use debug || append-cppflags -DNDEBUG
-
+bfsmake() {
 	emake \
 		USE_ACL=$(usev acl '1') \
 		USE_ATTR=$(usev xattr '1') \
 		USE_LIBCAP=$(usev caps '1') \
 		USE_LIBURING=$(usev io-uring '1') \
-		USE_ONIGURUMA=$(usev unicode '1')
+		USE_ONIGURUMA=$(usev unicode '1') \
+		"$@"
+}
+
+src_compile() {
+	tc-export CC
+	use debug || append-cppflags -DNDEBUG
+
+	bfsmake
 }
 
 src_test() {
 	# -n check gets confused so need manual src_test definition?
-	emake check
+	bfsmake check
 }
