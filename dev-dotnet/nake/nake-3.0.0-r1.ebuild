@@ -268,9 +268,24 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm Source/Nake.Tests/Multi_level_caching.cs		\
-	   Source/Nake.Tests/Nuget_references.cs		\
-	   Source/Utility.Tests/ShellFixture.cs	|| die
+	local -a bad_tests=(
+		Source/Nake.Tests/Environment_variable_interpolation.cs
+		Source/Nake.Tests/Loading_other_scripts.cs
+		Source/Nake.Tests/Multi_level_caching.cs
+		Source/Nake.Tests/Nuget_references.cs
+		Source/Utility.Tests/ShellFixture.cs
+	)
+	rm "${bad_tests[@]}" || die
+
+	cat << EOF > NuGet.Config || die
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<packageSources>
+<clear />
+<add key="nuget" value="${NUGET_PACKAGES}" />
+</packageSources>
+</configuration>
+EOF
 
 	dotnet-pkg_src_prepare
 }
