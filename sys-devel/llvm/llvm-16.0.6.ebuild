@@ -431,16 +431,6 @@ multilib_src_configure() {
 		-DTerminfo_LIBRARIES=-lncurses
 	)
 
-	# workaround BMI bug in gcc-7 (fixed in 7.4)
-	# https://bugs.gentoo.org/649880
-	# apply only to x86, https://bugs.gentoo.org/650506
-	if tc-is-gcc && [[ ${MULTILIB_ABI_FLAG} == abi_x86* ]] &&
-			[[ $(gcc-major-version) -eq 7 && $(gcc-minor-version) -lt 4 ]]
-	then
-		local CFLAGS="${CFLAGS} -mno-bmi"
-		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
-	fi
-
 	# LLVM can have very high memory consumption while linking,
 	# exhausting the limit on 32-bit linker executable
 	use x86 && local -x LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
