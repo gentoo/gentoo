@@ -157,7 +157,8 @@ multibuild_src_configure() {
 }
 
 src_compile() {
-	multibuild_foreach_variant run_in_build_dir emake
+	# bug #924116 wrt SHELL
+	multibuild_foreach_variant run_in_build_dir emake SHELL="${BASH}"
 }
 
 src_install() {
