@@ -26,7 +26,7 @@ SRC_URI+=" https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.2.0.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="test video"
+IUSE="jack test video"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -60,6 +60,7 @@ RDEPEND="
 	media-libs/opus
 	media-sound/lame
 	sys-libs/zlib:=
+	jack? ( virtual/jack )
 	video? ( media-video/ffmpeg )
 "
 DEPEND="
@@ -111,6 +112,7 @@ src_configure() {
 		-DMUE_COMPILE_USE_CCACHE=OFF
 		-DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
+		-DMUE_ENABLE_AUDIO_JACK=$(usex jack)
 		-DMUSESCORE_BUILD_MODE=release
 	)
 	cmake_src_configure
