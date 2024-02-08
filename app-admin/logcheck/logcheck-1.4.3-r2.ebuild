@@ -6,7 +6,7 @@ EAPI=8
 inherit readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Mails anomalies in the system logfiles to the administrator"
-HOMEPAGE="https://logcheck.org/"
+HOMEPAGE="https://packages.debian.org/sid/logcheck"
 SRC_URI="https://salsa.debian.org/debian/logcheck/-/archive/debian/${PV}/logcheck-debian-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-debian-${PV}"
 
