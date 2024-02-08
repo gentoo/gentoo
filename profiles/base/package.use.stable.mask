@@ -226,11 +226,6 @@ net-libs/gnutls test-full
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
 
-# Pacho Ramos <pacho@gentoo.org> (2015-05-15)
-# Version compatible with current ffmpeg is not ready to be stabilized
-# bug #539212
-app-emulation/vice ffmpeg
-
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
 app-text/qpdfview fitz
