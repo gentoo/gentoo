@@ -23,10 +23,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	dev-python/six[${PYTHON_USEDEP}]
 	<dev-python/jmespath-2[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.25.4[${PYTHON_USEDEP}]
+"
+# unbundled packages
+RDEPEND+="
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
