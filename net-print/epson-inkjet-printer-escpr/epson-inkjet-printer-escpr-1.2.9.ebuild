@@ -12,6 +12,8 @@ SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/33/96/607198a4f064daa9e7
 LICENSE="EPSON LGPL-2.1+"
 KEYWORDS="amd64"
 
+QA_FLAGS_IGNORED="/usr/lib64/libescpr2.so.1.0.0"
+
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
 
