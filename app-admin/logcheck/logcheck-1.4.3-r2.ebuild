@@ -29,7 +29,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-perl/mime-construct
 	virtual/mailx
-	cron? ( app-admin/sudo )
+	cron? ( sys-apps/util-linux )
 "
 
 DOC_CONTENTS="
