@@ -29,6 +29,9 @@ RDEPEND="
 	>=dev-python/asgiref-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/h11-0.8[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/typing-extensions-4.0[${PYTHON_USEDEP}]
+	' 3.10)
 "
 BDEPEND="
 	test? (
