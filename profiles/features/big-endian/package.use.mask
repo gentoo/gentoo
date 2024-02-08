@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
@@ -35,6 +35,7 @@ mail-client/thunderbird system-av1
 gui-libs/gtk wayland
 gnome-base/gnome-control-center wayland
 sys-apps/xdg-desktop-portal-gnome wayland
+x11-misc/sddm wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # media-libs/libldac casualties (#80238)
