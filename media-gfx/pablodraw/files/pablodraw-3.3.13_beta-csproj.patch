@@ -1,0 +1,38 @@
+--- a/Source/PabloDraw/PabloDraw.csproj
++++ b/Source/PabloDraw/PabloDraw.csproj
+@@ -5,17 +5,16 @@
+     <ApplicationIcon>PabloDraw.ico</ApplicationIcon>
+     <AssemblyTitle>PabloDraw</AssemblyTitle>
+     <AssemblyDescription>PabloDraw</AssemblyDescription>
++
++    <TargetFramework>net8.0</TargetFramework>
+   </PropertyGroup>
+ 
+   <PropertyGroup Condition="$(BuildTarget) == 'Generic'">
+-    <TargetFramework>net7.0</TargetFramework>
+     <OutputPath>bin/$(Configuration)/generic</OutputPath>
+   </PropertyGroup>
+ 
+   <PropertyGroup Condition="$(BuildTarget) == 'Windows'">
+-    <TargetFramework>net7.0-windows</TargetFramework>
+     <!-- <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers> -->
+-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+     <!-- <RuntimeIdentifier>win-arm64</RuntimeIdentifier> -->
+     <UseWindowsForms>True</UseWindowsForms>
+     <!-- <PublishReadyToRun>True</PublishReadyToRun> -->
+@@ -25,8 +24,6 @@
+   </PropertyGroup>
+ 
+   <PropertyGroup Condition="$(BuildTarget) == 'Linux'">
+-    <TargetFramework>net7.0</TargetFramework>
+-    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+     <DefineConstants>LINUX</DefineConstants>
+     <TrimMode>Link</TrimMode>
+     <PublishTrimmed>True</PublishTrimmed>
+@@ -118,4 +115,4 @@
+     <UpdatePListEntries TargetFile="$(OutputPListFile)" Entries="@(PListEntry)" />
+   </Target>
+ 
+-</Project>
+\ No newline at end of file
++</Project>
