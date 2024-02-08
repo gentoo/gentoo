@@ -10,7 +10,7 @@ PHP_EXT_S="${S}/ext"
 PHP_EXT_NAME="maxminddb"
 PHP_EXT_OPTIONAL_USE="extension"
 
-USE_PHP="php8-1"
+USE_PHP="php8-1 php8-2 php8-3"
 
 inherit php-ext-source-r3
 
