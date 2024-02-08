@@ -13,6 +13,13 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <use>
+    <flag name="events-handlers-exec">
+      Builds a module which lets user exec command on Caddy events
+      https://caddyserver.com/docs/modules/events.handlers.exec
+      https://caddyserver.com/docs/caddyfile/options#event-options
+    </flag>
+  </use>
   <upstream>
     <remote-id type="github">caddyserver/caddy</remote-id>
     <bugs-to>https://github.com/caddyserver/caddy/issues</bugs-to>
