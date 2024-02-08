@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="github">freeswitch/sofia-sip</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">freeswitch/sofia-sip</remote-id>
+	</upstream>
+	<use>
+		<flag name="glib">
+			Add support to <pkg>dev-libs/glib</pkg>-based mainloop, to allow
+			using Sofia-SIP on glib-based programs.
+		</flag>
+	</use>
 </pkgmetadata>
