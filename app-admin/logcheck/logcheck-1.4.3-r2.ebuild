@@ -68,6 +68,8 @@ src_install() {
 	if use cron; then
 		exeinto /etc/cron.hourly
 		newexe "${FILESDIR}"/${PN}.cron ${PN}
+		insinto /etc/cron.d
+		newins "${FILESDIR}"/${PN}.cron.d ${PN}
 		DOC_CONTENTS="${DOC_CONTENTS}\n
 			\n
 			Read /etc/cron.hourly/logcheck.cron to activate hourly cron-based check!"
