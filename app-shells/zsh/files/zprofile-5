@@ -14,6 +14,8 @@ export PAGER=${PAGER:-/usr/bin/less}
 # 077 would be more secure, but 022 is generally quite realistic
 umask 022
 
+unset ROOTPATH
+
 shopts=$-
 setopt nullglob
 for sh in /etc/profile.d/*.sh ; do
