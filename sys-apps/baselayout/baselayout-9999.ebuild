@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -209,6 +209,7 @@ src_prepare() {
 		hprefixify -w '/PATH=/' etc/env.d/50baselayout
 		hprefixify -w 1 etc/env.d/50baselayout
 		echo PATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host
+		echo ROOTPATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host
 		echo MANPATH=/usr/share/man >> etc/env.d/99host
 
 		# change branding
