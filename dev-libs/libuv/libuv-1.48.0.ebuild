@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libuv.asc
+inherit autotools verify-sig
 
 DESCRIPTION="Cross-platform asychronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
@@ -12,7 +13,10 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/libuv/libuv.git"
 	inherit git-r3
 else
-	SRC_URI="https://dist.libuv.org/dist/v${PV}/libuv-v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://dist.libuv.org/dist/v${PV}/libuv-v${PV}.tar.gz -> ${P}.tar.gz
+		verify-sig? ( https://dist.libuv.org/dist/v${PV}/libuv-v${PV}.tar.gz.sign -> ${P}.tar.gz.sig )
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
@@ -23,6 +27,7 @@ SLOT="0/1"
 BDEPEND="
 	dev-build/libtool
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-libuv )
 "
 
 src_prepare() {
