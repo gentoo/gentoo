@@ -27,6 +27,10 @@ RDEPEND="
 
 S="${WORKDIR}/utils-${COMMIT}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-werror.patch
+)
+
 src_configure() {
 	local mycmakeargs=( -DBUILD_SHARED_LIBS=OFF )
 	cmake_src_configure
