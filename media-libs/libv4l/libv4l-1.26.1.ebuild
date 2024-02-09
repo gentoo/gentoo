@@ -67,6 +67,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.0-meson.patch
+	"${FILESDIR}"/${PN}-1.26.1-libcxx.patch
 )
 
 check_llvm() {
