@@ -203,4 +203,12 @@ pkg_postinst() {
 		ewarn "chromium version. While it is relatively maintained for security, it will"
 		ewarn "cause issues for sites/features designed with a newer version in mind."
 	fi
+
+	if { use qt6 && has_version 'dev-qt/qtwebengine:6[bindist]'; } ||
+		{ use !qt6 && has_version 'dev-qt/qtwebengine:5[bindist]'; }
+	then
+		ewarn
+		ewarn "USE=bindist is set on dev-qt/qtwebengine, be warned that this"
+		ewarn "will prevent playback of proprietary media formats (e.g. h264)."
+	fi
 }
