@@ -19,6 +19,8 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
+RDEPEND="!dev-lang/mercury"
+
 src_prepare() {
 	default
 	sed -i 's/-Werror //' Makefile || die
