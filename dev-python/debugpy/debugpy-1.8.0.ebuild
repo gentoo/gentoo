@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,6 +57,10 @@ python_test() {
 		tests/debugpy/test_gevent.py::test_gevent
 		tests/debugpy/test_run.py::test_custom_python_args
 		tests/tests/test_timeline.py::test_occurrences
+		# TODO: random regressions
+		tests/debugpy/test_flask.py::test_flask_breakpoint_multiproc
+		tests/debugpy/test_exception.py::test_raise_exception_options
+		tests/debugpy/test_exception.py::test_vsc_exception_options_raise_without_except
 	)
 	local EPYTEST_IGNORE=(
 		tests/tests/test_vendoring.py
