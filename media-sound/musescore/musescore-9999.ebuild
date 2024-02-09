@@ -70,9 +70,8 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-uncompressed-man-pages.patch"
-	"${FILESDIR}/${PN}-4.2.0-unbundle-deps.patch"
+	"${FILESDIR}/${PN}-9999-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
-	"${FILESDIR}/${PN}-4.2.1-missing-headers.patch"
 )
 
 src_unpack() {
