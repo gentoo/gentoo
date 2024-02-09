@@ -68,7 +68,7 @@ src_configure() {
 
 src_test() {
 	# Workaround test failures caused by flatpak being installed that adds to XDG_DATA_DIRS
-	gnome_environment_reset
+	gnome2_environment_reset
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share
 
 	meson_src_test
