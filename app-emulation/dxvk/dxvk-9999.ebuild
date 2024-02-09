@@ -128,6 +128,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		--prefix="${EPREFIX}"/usr/lib/${PN}
 		--{bin,lib}dir=x${MULTILIB_ABI_FLAG: -2}
+		--force-fallback-for=libdisplay-info
 		$(meson_use {,enable_}d3d9)
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
