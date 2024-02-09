@@ -6,6 +6,7 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">pgf-tikz/pgf</remote-id>
 		<remote-id type="sourceforge">pgf</remote-id>
 	</upstream>
 </pkgmetadata>
