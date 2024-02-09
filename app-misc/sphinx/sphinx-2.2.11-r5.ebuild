@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,8 @@ inherit autotools flag-o-matic toolchain-funcs
 MY_P=${P}-release
 
 DESCRIPTION="Full-text search engine with support for MySQL and PostgreSQL"
-HOMEPAGE="http://www.sphinxsearch.com/"
-SRC_URI="http://sphinxsearch.com/files/${MY_P}.tar.gz"
+HOMEPAGE="https://sphinxsearch.com/"
+SRC_URI="https://sphinxsearch.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
