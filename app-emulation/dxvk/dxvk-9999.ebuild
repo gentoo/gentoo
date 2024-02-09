@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -128,7 +128,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		--prefix="${EPREFIX}"/usr/lib/${PN}
 		--{bin,lib}dir=x${MULTILIB_ABI_FLAG: -2}
-		--force-fallback-for=libdisplay-info
+		--force-fallback-for=libdisplay-info # system's is ELF (unusable)
 		$(meson_use {,enable_}d3d9)
 		$(meson_use {,enable_}d3d10)
 		$(meson_use {,enable_}d3d11)
