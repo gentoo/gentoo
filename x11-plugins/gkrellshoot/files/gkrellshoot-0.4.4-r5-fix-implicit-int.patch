@@ -1,0 +1,19 @@
+By default clang16 will not allow implicit integer declarations in function parameters.
+
+Bug: https://bugs.gentoo.org/874891
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/gkrellshoot.c
++++ b/gkrellshoot.c
+@@ -436,7 +436,7 @@ double star_screenx[NUM_STARS];
+ double star_screeny[NUM_STARS];
+ 
+ static void
+-draw_starfield ( chart_index )
++draw_starfield ( size_t  chart_index )
+ {
+   gint i;
+   guchar b;
+-- 
+2.38.1
+

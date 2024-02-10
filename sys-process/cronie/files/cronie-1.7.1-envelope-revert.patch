@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/922477
+https://github.com/cronie-crond/cronie/issues/166
+https://github.com/cronie-crond/cronie/issues/170
+https://github.com/cronie-crond/cronie/pull/118
+
+https://github.com/cronie-crond/cronie/commit/aeb3f8a9cbc0da7e6367d41a2b769eb7e90855f3
+https://github.com/cronie-crond/cronie/commit/6181605fafe6aaedc0c19a8bdc85a335403b42d8
+
+From aeb3f8a9cbc0da7e6367d41a2b769eb7e90855f3 Mon Sep 17 00:00:00 2001
+From: Tomas Mraz <tmraz@fedoraproject.org>
+Date: Fri, 19 Jan 2024 11:17:48 +0100
+Subject: [PATCH] Revert "Use empty envelope address with default mailfrom"
+
+This reverts commit c640f4f39e5c20995e960e4b954cd0574a96c028.
+
+This causes more harm than expected and is also strictly speaking
+not RFC compliant.
+--- a/src/do_command.c
++++ b/src/do_command.c
+@@ -471,9 +471,7 @@ static int child_process(entry * e, char **jobenv) {
+ 				if (MailCmd[0] == '\0') {
+ 					int len;
+ 
+-					/* Use empty envelope address with default mailfrom */
+-					len = snprintf(mailcmd, sizeof mailcmd, MAILFMT, MAILARG,
+-							mailfrom == e->pwd->pw_name ? "<>" : mailfrom);
++					len = snprintf(mailcmd, sizeof mailcmd, MAILFMT, MAILARG, mailfrom);
+ 					if (len < 0) {
+ 						fprintf(stderr, "mailcmd snprintf failed\n");
+ 						(void) _exit(ERROR_EXIT);
+
+From 6181605fafe6aaedc0c19a8bdc85a335403b42d8 Mon Sep 17 00:00:00 2001
+From: Tomas Mraz <tmraz@fedoraproject.org>
+Date: Fri, 19 Jan 2024 11:19:32 +0100
+Subject: [PATCH] Inherit MAILFROM from the crond process environment
+
+This allows setting it in /etc/sysconfig/crond or in the systemd unit.
+--- a/man/crontab.5
++++ b/man/crontab.5
+@@ -98,7 +98,8 @@ This option is useful if you decide to use /bin/mail instead of
+ aliasing and UUCP usually does not read its mail.  If
+ .I MAILFROM
+ is defined (and non-empty), it is used as the envelope sender address,
+-otherwise, ``root'' is used.
++otherwise, ``root'' is used. This variable is also inherited from the
++crond process environment.
+ .PP 
+ (Note: Both 
+ .I MAILFROM
+--- a/src/env.c
++++ b/src/env.c
+@@ -138,6 +138,7 @@ int env_set_from_environ(char ***envpp) {
+ 		"LC_ALL",
+ 		"LANGUAGE",
+ 		"RANDOM_DELAY",
++		"MAILFROM",
+ 		NULL
+ 	};
+ 	const char **name;

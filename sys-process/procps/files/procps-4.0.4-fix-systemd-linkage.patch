@@ -1,0 +1,27 @@
+https://gitlab.com/procps-ng/procps/-/commit/ca004d4657d5e8b468a4552ede429be53193a3a9
+
+From ca004d4657d5e8b468a4552ede429be53193a3a9 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Thu, 31 Aug 2023 22:24:23 +1000
+Subject: [PATCH] build-sys: Add systemd/elogind to w
+
+Depending on the compiler flags, w needs to be explictly linked
+to libsystemd or elogind even though libproc2 is linked to it.
+
+Signed-off-by: Craig Small <csmall@dropbear.xyz>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -149,6 +149,13 @@ endif
+ 
+ dist_man_MANS += man/w.1
+ src_w_SOURCES = src/w.c local/fileutils.c
++src_w_LDADD = $(LDADD)
++if WITH_SYSTEMD
++src_w_LDADD += @SYSTEMD_LIBS@
++endif
++if WITH_ELOGIND
++src_w_LDADD += @ELOGIND_LIBS@
++endif
+ else
+   EXTRA_DIST += man/w.1
+ endif

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		Ivy is a powerful dependencies manager with transitive dependencies
+		support and much more features.
+
+		With Ivy you define the dependencies of your module in an xml file,
+		called an ivy file. Then you usually ask ivy to retrieve your dependencies
+		to a local lib dir, and it does it for you by locating the artifacts of
+		your dependencies in repositories, such as ibiblio.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">apache/ant-ivy</remote-id>
+		<doc>https://ant.apache.org/ivy/history/2.5.0</doc>
+		<bugs-to>https://issues.apache.org/jira/browse/IVY </bugs-to>
+	</upstream>
+</pkgmetadata>

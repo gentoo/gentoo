@@ -1,0 +1,11 @@
+#%PAM-1.0
+# For root login to succeed here with pam_securetty, "rsh" must be
+# listed in /etc/securetty.
+auth       required	pam_securetty.so
+
+# Uncomment this and comment the following to use rhosts_auth module
+#auth       required pam_rhosts.so
+auth       include	system-remote-login
+
+account    include	system-remote-login
+session    include	system-remote-login

@@ -1,0 +1,24 @@
+diff -Naur x48-0.6.4.orig/src/debugger.c x48-0.6.4/src/debugger.c
+--- x48-0.6.4.orig/src/debugger.c	2011-11-15 04:03:40.000000000 +0100
++++ x48-0.6.4/src/debugger.c	2020-06-23 21:33:16.071667987 +0200
+@@ -1528,7 +1528,7 @@
+   struct se *se_next;
+ };
+ 
+-char *
++void
+ #ifdef __FunctionProto__
+ get_stack (void)
+ #else
+diff -Naur x48-0.6.4.orig/src/x48_x11.c x48-0.6.4/src/x48_x11.c
+--- x48-0.6.4.orig/src/x48_x11.c	2011-11-15 04:03:40.000000000 +0100
++++ x48-0.6.4/src/x48_x11.c	2020-06-23 21:33:32.132680745 +0200
+@@ -3833,7 +3833,7 @@
+ 
+ int last_button = -1;
+ 
+-extern char *get_stack(void);
++extern void get_stack(void);
+ 
+ int
+ #ifdef __FunctionProto__

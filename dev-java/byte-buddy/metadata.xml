@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">raphw/byte-buddy</remote-id>
+	</upstream>
+	<longdescription>
+		This artifact is a build of Byte Buddy with all ASM dependencies repackaged into its own name space.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="busybox">
+			Symlink to <pkg>sys-apps/busybox</pkg>
+		</flag>
+		<flag name="gawk">
+			Symlink to <pkg>sys-apps/gawk</pkg>
+		</flag>
+		<flag name="mawk">
+			Symlink to <pkg>sys-apps/mawk</pkg> (warning: mawk is
+			not fully POSIX-compliant)
+		</flag>
+		<flag name="nawk">
+			Symlink to <pkg>sys-apps/nawk</pkg>
+		</flag>
+	</use>
+</pkgmetadata>

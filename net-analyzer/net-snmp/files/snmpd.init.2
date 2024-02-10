@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+SNMPD_PIDFILE="${SNMPD_PIDFILE:-/var/run/snmpd.pid}"
+
+extra_started_commands="reload"
+
+command="/usr/sbin/snmpd"
+command_args="-p ${SNMPD_PIDFILE} ${SNMPD_FLAGS}"
+pidfile="${SNMPD_PIDFILE}"
+
+depend() {
+	use logger
+}
+
+checkconfig() {
+	if [ ! -e /etc/snmp/snmpd.conf ] ; then
+		eerror "${SVCNAME} requires an /etc/snmp/snmpd.conf configuration file"
+		return 1
+	fi
+}
+
+start_pre() {
+	checkconfig || return 1
+}
+
+reload() {
+	checkconfig || return 1
+
+	ebegin "Reloading ${SVCNAME} configuration"
+	kill -HUP $(cat ${SNMPD_PIDFILE}) 2>&1 > /dev/null
+	eend $?
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Bazelisk is a wrapper for Bazel written in Go. It automatically picks
+    a good version of Bazel given your current working directory, downloads it
+    from the official server (if required) and then transparently passes
+    through all command-line arguments to the real Bazel binary. You can call
+    it just like you would call Bazel.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/bazelbuild/bazelisk/issues/</bugs-to>
+    <remote-id type="github">bazelbuild/bazelisk</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,7 @@
+Augustus requires you to download the original Caesar 3 resources.
+
+You need to obtain these files from a vendor of the proprietary software.
+You will then need to copy the 'app' directory into '~/.local/share/julius/app'.
+One way to obtain this directory is to download the GOG Caesar 3 edition.
+You can then produce this directory by installing app-arch/innoextract and running:
+    innoextract -m setup_caesar3_2.0.0.9.exe

@@ -1,0 +1,3 @@
+# /etc/conf.d/bumblebee
+
+BUMBLEBEE_EXTRA_OPTS="--use-syslog"

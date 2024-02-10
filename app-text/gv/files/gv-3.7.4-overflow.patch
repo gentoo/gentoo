@@ -1,0 +1,27 @@
+Fix buffer overflows in resource.c
+https://savannah.gnu.org/patch/?10096
+https://src.fedoraproject.org/rpms/gv/blob/rawhide/f/gv-overflow.patch
+
+diff a/src/resource.c b/src/resource.c
+--- a/src/resource.c
++++ b/src/resource.c
+@@ -230,15 +230,15 @@ resource_buildDatabase (
+   s = resource_getResource(db,app_class,app_name, "international",0);
+   if (s == NULL || !strcasecmp(s, "False"))
+   {
+-     sprintf(locale1, "noint:%s%s", loc_lang, loc_terr);
+-     sprintf(locale2, "noint:%s", loc_lang);
++     snprintf(locale1, 100, "noint:%s%s", loc_lang, loc_terr);
++     snprintf(locale2, 100, "noint:%s", loc_lang);
+      strcpy(locale3, "C");
+   }
+   else
+   {
+      strcpy(locale1, locale);
+-     sprintf(locale2, "%s%s%s", loc_lang, loc_terr, loc_cs);
+-     sprintf(locale3, "%s%s", loc_lang, loc_cs);
++     snprintf(locale2, 100, "%s%s%s", loc_lang, loc_terr, loc_cs);
++     snprintf(locale3, 100, "%s%s", loc_lang, loc_cs);
+   }
+ 
+   if (debug_p)

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-util category contains various miscellaneous development
+		utilities.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-util enthält verschiedene Programmierwerkzeuge.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-util contiene varias utilidades de desarrollo mixtas.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-util カテゴリーには多種多様な開発ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-util categorie bevat verschillende hulpmiddelen voor gebruik
+		bij het programmeren.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-util chứa các tiện ích phát triển khác nhau.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-util contiene varie utilità di sviluppo software.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-util contém vários utilitários de
+		desenvolvimento mistos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-util zawiera różne dodatkowe narzędzia związane z
+		rozwijaniem programów.
+	</longdescription>
+	<longdescription lang="ru">
+		Категория dev-util содержит различные утилиты для разработки,
+		не попадающие в другие категории.
+	</longdescription>
+</catmetadata>

@@ -1,0 +1,20 @@
+--- esorex-3.9.6/m4/cpl.m4.orig	2012-06-04 23:47:50.000000000 +0100
++++ esorex-3.9.6/m4/cpl.m4	2012-06-04 23:48:45.000000000 +0100
+@@ -455,7 +455,7 @@
+     AC_MSG_CHECKING([for libcext])
+ 
+     cpl_cext_check_header="cxtypes.h"
+-    cpl_cext_check_lib="libcext.a"
++    cpl_cext_check_lib="libcext.so"
+ 
+     cpl_cext_incdirs=""
+     cpl_cext_libdirs=""
+@@ -1314,7 +1314,7 @@
+     AC_MSG_CHECKING([for CPL])
+ 
+     cpl_check_cpl_header="cpl.h"
+-    cpl_check_cpl_lib="libcplcore.a"
++    cpl_check_cpl_lib="libcplcore.so"
+ 
+     cpl_incdirs=""
+     cpl_libdirs=""

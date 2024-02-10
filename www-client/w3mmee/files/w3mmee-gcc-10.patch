@@ -1,0 +1,17 @@
+--- a/fm.h
++++ b/fm.h
+@@ -1191,12 +1191,12 @@
+ global TextList *mimetypes_list;
+ global char *mailcap_files init("0, " USER_MAILCAP ", 0, " SYS_MAILCAP ", 1, " GLOBAL_MAILCAP);
+ global char *mimetypes_files init(USER_MIMETYPES ", " SYS_MIMETYPES);
+-global TextList mailcap_entries;
++extern TextList mailcap_entries;
+ 
+ global struct mailcap **UserBrowsecap init(NULL);
+ global TextList *browsecap_list;
+ global char *browsecap_files init(USER_BROWSECAP ", " SYS_BROWSECAP);
+-global TextList browsecap_entries;
++extern TextList browsecap_entries;
+ 
+ global TextList *fileToDelete;
+ 

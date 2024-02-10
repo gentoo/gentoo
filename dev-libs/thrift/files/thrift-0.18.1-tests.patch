@@ -1,0 +1,33 @@
+diff --git a/lib/cpp/test/CMakeLists.txt b/lib/cpp/test/CMakeLists.txt
+index 1117cd9f3..5f56aaca8 100644
+--- a/lib/cpp/test/CMakeLists.txt
++++ b/lib/cpp/test/CMakeLists.txt
+@@ -318,28 +318,6 @@ target_link_libraries(OpenSSLManualInitTest
+ target_link_libraries(OpenSSLManualInitTest thrift)
+ add_test(NAME OpenSSLManualInitTest COMMAND OpenSSLManualInitTest)
+ 
+-add_executable(SecurityTest SecurityTest.cpp)
+-target_link_libraries(SecurityTest
+-    testgencpp
+-    ${Boost_LIBRARIES}
+-)
+-target_link_libraries(SecurityTest thrift)
+-if (NOT MSVC AND NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND NOT MINGW)
+-    target_link_libraries(SecurityTest -lrt)
+-endif ()
+-add_test(NAME SecurityTest COMMAND SecurityTest -- "${CMAKE_CURRENT_SOURCE_DIR}/../../../test/keys")
+-
+-add_executable(SecurityFromBufferTest SecurityFromBufferTest.cpp)
+-target_link_libraries(SecurityFromBufferTest
+-    testgencpp
+-    ${Boost_LIBRARIES}
+-)
+-target_link_libraries(SecurityFromBufferTest thrift)
+-if (NOT MSVC AND NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND NOT MINGW)
+-    target_link_libraries(SecurityFromBufferTest -lrt)
+-endif ()
+-add_test(NAME SecurityFromBufferTest COMMAND SecurityFromBufferTest -- "${CMAKE_CURRENT_SOURCE_DIR}/../../../test/keys")
+-
+ endif()
+ 
+ if(WITH_QT5)

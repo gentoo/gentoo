@@ -1,0 +1,13 @@
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=652418
+https://bugs.gentoo.org/599400
+
+--- a/if_info.c
++++ b/if_info.c
+@@ -186,6 +186,7 @@
+         if (newflags & IFF_UP) {
+             switch(info->state) {
+             case ST_DOWN:
++            case ST_DOWNANDOUT:
+                 info->state = ST_INACTIVE;
+                 break;
+ 

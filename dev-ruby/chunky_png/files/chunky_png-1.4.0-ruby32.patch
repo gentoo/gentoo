@@ -1,0 +1,29 @@
+From 8e6f5934541833f15664398f90331f3724e40933 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Tue, 15 Nov 2022 23:22:20 +0900
+Subject: [PATCH] ruby3_2 fix: check if object responds to regex_match op
+
+Object#=~ is already deprecated since ruby2.6 and will be
+removed from ruby3.2. As the result, Array no longer
+respond to =~ from ruby3.2, for example.
+
+Check if the target object really respond to =~ .
+
+Closes #168
+---
+ lib/chunky_png/vector.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/chunky_png/vector.rb b/lib/chunky_png/vector.rb
+index 4ef965f..034104c 100644
+--- a/lib/chunky_png/vector.rb
++++ b/lib/chunky_png/vector.rb
+@@ -166,7 +166,7 @@ def dimension
+     # @return [Array<ChunkyPNG::Point>] The list of points interpreted from the input array.
+     def self.multiple_from_array(source)
+       return [] if source.empty?
+-      if source.first.is_a?(Numeric) || source.first =~ /^\d+$/
++      if source.first.is_a?(Numeric) || ( source.first.respond_to?(:=~) && source.first =~ /^\d+$/ )
+         raise ArgumentError, "The points array is expected to have an even number of items!" if source.length % 2 != 0
+ 
+         points = []

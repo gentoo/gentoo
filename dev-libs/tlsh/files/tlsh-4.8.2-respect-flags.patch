@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -126,7 +126,7 @@ if (CMAKE_BUILD_TYPE STREQUAL Debug)
+     endif()
+ else(CMAKE_BUILD_TYPE STREQUAL Debug)
+     if(CMAKE_COMPILER_IS_GNUCXX)
+-        set(CMAKE_CXX_FLAGS "-O2 -fvisibility=internal")  ## Remove TlshImpl symbols
++        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=internal")  ## Remove TlshImpl symbols
+     endif()
+     if(MSVC)
+         set(CMAKE_CXX_FLAGS "/O2")        ## Optimize
+@@ -142,8 +142,7 @@ endif()
+ 
+ # user can override CXX; make sure tests link and load properly regardless of LD_LIBRARY_PATH
+ if(CMAKE_COMPILER_IS_GNUCXX)
+-    set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc")
+-    set(CMAKE_EXE_LINKER_FLAGS "-static-libstdc++")
++    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libstdc++")
+ endif()
+ 
+ enable_testing()

@@ -1,0 +1,29 @@
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -47,6 +47,7 @@
+ #include "client.h"
+ #include "landvalue.h"
+ #include "gtkhelp_reports.h"
++#include "support.h"
+ 
+ #include "sdlwin.h"
+ #include "utils.h"
+--- a/src/gtkhelp_reports.c
++++ b/src/gtkhelp_reports.c
+@@ -5,6 +5,7 @@
+ #include "player.h"
+ #include "client.h"
+ #include "gtkhelp_reports.h"
++#include "support.h"
+ 
+ /**** HELPERS ****/
+ 
+--- a/src/gtkhelp_reports.h
++++ b/src/gtkhelp_reports.h
+@@ -17,4 +17,6 @@ extern void update_population_report(GtkWidget *window, client_t *client);
+ extern void setup_info_treeview(GtkWidget *window);
+ extern void update_info_report(GtkWidget *window, client_t *client, int mapx, int mapy);
+ 
++extern void update_info_window(GtkWidget *window, client_t *client, int mapx, int mapy);
++
+ #endif /* GTKHELP_REPORTS */

@@ -1,0 +1,26 @@
+diff -ruN snort-2.9.8.3.orig/configure.in snort-2.9.8.3/configure.in
+--- snort-2.9.8.3.orig/configure.in	2016-04-26 10:08:28.000000000 -0000
++++ snort-2.9.8.3/configure.in	2017-09-25 20:21:17.632003858 -0000
+@@ -187,6 +187,22 @@
+ AC_CHECK_LIB(nsl, inet_ntoa)
+ fi
+ 
++AC_ARG_WITH([libtirpc],
++           AS_HELP_STRING([--with-libtirpc], [Use libtirpc as RPC implementation (instead of sunrpc)]),
++           [], [ with_libtirpc=no ])
++
++AS_IF([test "x$with_libtirpc" != xno], 
++      [PKG_CHECK_MODULES([TIRPC], 
++                         [libtirpc], 
++                         [extra_incl="$extra_incl $TIRPC_CFLAGS"; LIBS="$LIBS $TIRPC_LIBS";],
++                        [AC_MSG_ERROR([libtirpc requested, but library not found.])]
++                       )], 
++      [AC_CHECK_HEADER(rpc/rpc.h, 
++                      [],
++                      [AC_MSG_ERROR([sunrpc requested, but headers are not present.])]
++                     )]
++)
++
+ if test -z "$no_libsocket"; then
+ AC_CHECK_LIB(socket, socket)
+ fi

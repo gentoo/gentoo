@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<use>
+		<flag name="dri3">Build with DRI3 support</flag>
+		<flag name="drm">Build with DRM support</flag>
+		<flag name="java">Build TigerVNC Java viewer</flag>
+		<flag name="server">Build TigerVNC server</flag>
+		<flag name="viewer">Build TigerVNC viewer</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">TigerVNC/tigervnc</remote-id>
+	</upstream>
+</pkgmetadata>

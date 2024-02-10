@@ -1,0 +1,22 @@
+From 6461985380814b92aab1caa791bee75d94e68676 Mon Sep 17 00:00:00 2001
+From: Tim Schneider <tim@schneider.engineering>
+Date: Sat, 18 Mar 2023 17:51:38 +0100
+Subject: [PATCH] Fix crash on spiral_vase.
+
+---
+ src/libslic3r/PrintConfig.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libslic3r/PrintConfig.cpp b/src/libslic3r/PrintConfig.cpp
+index 05bc79e53b..8c74880260 100644
+--- a/src/libslic3r/PrintConfig.cpp
++++ b/src/libslic3r/PrintConfig.cpp
+@@ -8055,7 +8055,7 @@ void DynamicPrintConfig::normalize_fdm()
+         {
+             this->opt<ConfigOptionInt>("top_solid_layers", true)->value = 0;
+             this->opt<ConfigOptionPercent>("fill_density", true)->value = 0;
+-            this->opt<ConfigOptionEnum<PerimeterGeneratorType>>("perimeter_generator", true)->value = PerimeterGeneratorType::Classic; 
++            this->option<ConfigOptionEnum<PerimeterGeneratorType>>("perimeter_generator", true)->value = PerimeterGeneratorType::Classic; 
+             this->opt<ConfigOptionBool>("support_material", true)->value = false;
+             this->opt<ConfigOptionInt>("solid_over_perimeters")->value = 0;
+             this->opt<ConfigOptionInt>("support_material_enforce_layers")->value = 0;

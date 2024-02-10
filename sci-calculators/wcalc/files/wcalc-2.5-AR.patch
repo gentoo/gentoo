@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,6 +46,7 @@ AC_PROG_CC
+ AC_PROG_CC_C99
+ AC_PROG_RANLIB
+ AC_PROG_YACC
++AM_PROG_AR
+ AM_PROG_LEX
+ AS_IF([test "x$LEX" == x],
+ 	  [AC_MSG_ERROR([A Lex/Flex program is required in order to compile wcalc.])],

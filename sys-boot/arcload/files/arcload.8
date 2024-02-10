@@ -1,0 +1,65 @@
+.TH "ARCLOAD" "8" "25 November 2007" "" ""
+.SH NAME
+arcload \- bootloader for SGI/ARCS machines
+.SH SYNOPSIS
+
+\fBarcload\fR \fIdevice\fR
+
+.SH "DESCRIPTION"
+.PP
+\fBarcload\fR is a bootloader designed to load any Linux kernel on any
+SGI/ARCS machine. It supports booting the kernel from a variety of
+filesystems; currently, the following filesystems are supported:
+\fBext2\fR (\fBext3\fR), \fBfat\fR, \fBiso9660\fR, \fBjfs\fR,
+\fBminix\fR, \fBufs\fR, \fBxfs\fR and the \fB*arcfs\fR
+pseudo-filesystem.
+
+\fBarcload\fP usually resides in the volume header of a disk with an
+SGI disklabel.
+.SH "USAGE"
+.PP
+\fIdevice\fR is the device name of the disk containing the volume header
+\fBarcload\fR should go into. To use \fBarcload\fR you have to  modify
+the following PROM variables:
+.P
+\fIsetenv OSLoader arcload\fR
+.P
+\fIsetenv SystemPartition dksc(c,d,8)\fR
+.P
+\fIsetenv OSLoadPartition dksc(c,d,p)\fR
+.P
+\fIsetenv OSLoadFilename label(option1,option2,...)\fR
+.P
+where \fIc\fR is the ID of the SCSI controller, \fId\fR the SCSI ID
+of the disk \fBarcload\fR resides on and \fIp\fR the partition number
+of the partition \fBarc.cf\fR and the kernels reside on (counting
+from 0). Note that \fBarc.cf\fR and the directory your kernels are in
+(usually / or /boot) have to be on the same partition.  On boot,
+\fBarcload\fR looks at the \fIOSLoadFilename\fR PROM variable and
+tries to find a label with the same name in \fBarc.cf\fR.
+
+\fBarc.cf\fP can reside either in /etc or at the root of the partition pointed
+to by the \fIOSLoadFilename\fP variable.
+
+.SH "NOTES"
+\fBarcload\fR only loads ELF kernels.
+
+.SH "FILES"
+.BR /arc.cf
+\fBarcload\fR's configuration file
+.P
+.BR /usr/share/doc/arcload/examples
+configuration file examples
+.P
+.BR /usr/share/doc/arcload/README.Debian
+some notes about arcload for Debian
+.PP
+.SH "SEE ALSO"
+.PP
+dvhtool(1)
+
+.SH "AUTHORS"
+ARCLoad was written by Stanislaw Skowronek
+<skylark@linux-mips.org>. This manual page was written by Julien
+BLACHE <jblache@debian.org> for the Debian Project (but may be used by
+others), based on the arcboot(8) manpage.

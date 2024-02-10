@@ -1,0 +1,145 @@
+# Original patch was created by Thomas Deutschmann <whissi@gentoo.org>, but the
+# patch needed to be rebased. Mainly configure.ac instead of configure.in.
+# The only additional included part is secmem patch.
+#
+# Closes: https://bugs.gentoo.org/829285
+From 69c3974670f5a8ee0f2258f10a9228b39025b464 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Wed, 13 Dec 2017 01:02:12 +0100
+Subject: [PATCH] loff_t and __WORDSIZE includes for MUSL
+
+Rewrite of Justin Keogh's patch [Link 1] to fix build problems
+on ARM.
+
+Link 1: https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=5f5abc0f1b036921d6eb5b0f434c960ed280619f
+Fixes: https://bugs.gentoo.org/616364
+--- a/configure.ac
++++ b/configure.ac
+@@ -11,7 +11,7 @@ AC_C_INLINE
+
+ #AC_PROG_INSTALL
+ #CFLAGS="$CFLAGS -DHAVE_CONFIG_H"
+-AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h attr/xattr.h sys/acl.h sys/ioctl.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h sys/random.h malloc.h sched.h sys/statvfs.h sys/resource.h sys/endian.h linux/swab.h])
++AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h attr/xattr.h sys/acl.h sys/ioctl.h sys/reg.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h sys/random.h malloc.h sched.h sys/statvfs.h sys/resource.h sys/endian.h linux/swab.h])
+ AC_CHECK_FUNCS([ffs ffsl basename fallocate64 splice getopt_long open64 pread pread64 lseek64 stat64 posix_fadvise posix_fadvise64 __builtin_prefetch htonl htobe64 feof_unlocked getline getentropy getrandom posix_memalign valloc sched_yield fstatvfs __builtin_cpu_supports getrlimit aligned_alloc])
+ AC_CHECK_LIB(dl,dlsym)
+ AC_CHECK_LIB(fallocate,linux_fallocate64)
+--- a/ddr_ctrl.h
++++ b/ddr_ctrl.h
+@@ -7,6 +7,9 @@
+  *  License: GNU GPLv2 or v3
+  */
+
++#define _GNU_SOURCE
++#include <fcntl.h>
++
+ #ifndef _DDR_CTRL_H
+ #define _DDR_CTRL_H
+
+--- a/ffs.h
++++ b/ffs.h
+@@ -28,6 +28,9 @@
+ #include <endian.h>
+ #endif
+
++#ifdef HAVE_SYS_REG_H
++#include <sys/reg.h>
++#endif
+
+ #ifdef HAVE_FFS
+ # define myffs(x) ffs(x)
+
+--- a/fiemap.h
++++ b/fiemap.h
+@@ -29,5 +29,9 @@
+
+ #endif	/* HAVE_LINUX_FS_H */
+
++#ifdef HAVE_SYS_REG_H
++#include <sys/reg.h>
++#endif
++
+ #endif	/* _FIEMAPH */
+
+--- a/fmt_no.h
++++ b/fmt_no.h
+@@ -1,4 +1,6 @@
+ /** Decl for int to str conversion with highlighting */
++#define _GNU_SOURCE
++#include <fcntl.h>
+
+ #ifndef _FMT_NO_H
+ #define _FMT_NO_H
+
+--- a/fstrim.h
++++ b/fstrim.h
+@@ -1,3 +1,6 @@
++#define _GNU_SOURCE
++#include <fcntl.h>
++
+ #ifndef _FSTRIM_H
+ #define _FSTRIM_H
+
+--- a/libddr_hash.c
++++ b/libddr_hash.c
+@@ -34,6 +34,10 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+
++#ifdef HAVE_SYS_REG_H
++#include <sys/reg.h>
++#endif
++
+ #include <netinet/in.h>	/* For ntohl/htonl */
+ #include <endian.h>
+
+--- a/libddr_lzo.c
++++ b/libddr_lzo.c
+@@ -16,6 +16,9 @@
+ #include "ddr_plugin.h"
+ #include "ddr_ctrl.h"
+
++#ifdef HAVE_SYS_REG_H
++#include <sys/reg.h>
++#endif
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdint.h>
+
+--- a/libddr_null.c
++++ b/libddr_null.c
+@@ -10,6 +10,9 @@
+ #include "ddr_ctrl.h"
+ #include <string.h>
+ #include <stdlib.h>
++#ifdef HAVE_SYS_REG_H
++#include <sys/reg.h>
++#endif
+
+ /* fwd decl */
+ extern ddr_plugin_t ddr_plug;
+
+--- a/sha512.h
++++ b/sha512.h
+@@ -3,6 +3,10 @@
+
+ #include "hash.h"
+
++#ifdef HAVE_SYS_REG_H
++#include <sys/reg.h>
++#endif
++
+ void sha512_init(hash_t *ctx);
+ void sha384_init(hash_t *ctx);
+ void sha512_128(const uint8_t* msg, hash_t* ctx);
+
+--- a/secmem.c
++++ b/secmem.c
+@@ -15,6 +15,7 @@
+ #endif
+ #ifdef HAVE_SYS_RESOURCE_H
+ # include <sys/resource.h>
++# include <stddef.h>
+ #endif
+
+ static unsigned char *optr;

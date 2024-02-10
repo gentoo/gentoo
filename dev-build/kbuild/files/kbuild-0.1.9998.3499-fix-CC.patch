@@ -1,0 +1,23 @@
+A few files are compiled with gcc regardless of setting CC
+
+This file seems to do some guesswork, override it with CC if set
+
+Bug: https://bugs.gentoo.org/734302
+
+--- a/kBuild/tools/GCC3.kmk
++++ b/kBuild/tools/GCC3.kmk
+@@ -84,6 +84,14 @@
+  TOOL_GCC3_CXX += -fmessage-length=0
+ endif
+ 
++ifneq ($(CC),)
++	TOOL_GCC3_CC = $(CC)
++	TOOL_GCC3_LD = $(CC)
++endif
++ifneq ($(AR),)
++	TOOL_GCC3_AR = $(AR)
++endif
++
+ # General Properties used by kBuild
+ TOOL_GCC3_COBJSUFF         ?= .o
+ TOOL_GCC3_CFLAGS           ?=

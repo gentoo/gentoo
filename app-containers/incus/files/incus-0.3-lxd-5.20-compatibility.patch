@@ -1,0 +1,26 @@
+From 8bd2b3b3f889787de515eaea532ff728527a8788 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>
+Date: Tue, 12 Dec 2023 23:12:41 -0500
+Subject: [PATCH] lxd-to-incus: Update for LXD 5.20
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Stéphane Graber <stgraber@stgraber.org>
+---
+ cmd/lxd-to-incus/validate.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmd/lxd-to-incus/validate.go b/cmd/lxd-to-incus/validate.go
+index 8e8020ebf..0078f8793 100644
+--- a/cmd/lxd-to-incus/validate.go
++++ b/cmd/lxd-to-incus/validate.go
+@@ -13,7 +13,7 @@ import (
+ )
+ 
+ var minLXDVersion = &version.DottedVersion{4, 0, 0}
+-var maxLXDVersion = &version.DottedVersion{5, 19, 0}
++var maxLXDVersion = &version.DottedVersion{5, 20, 0}
+ 
+ func (c *cmdMigrate) validate(source Source, target Target) error {
+ 	srcClient, err := source.Connect()

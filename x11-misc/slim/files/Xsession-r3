@@ -1,0 +1,158 @@
+#!/bin/sh
+#
+# Slim login manager Xsession script
+#
+
+command="$@"
+
+# this will go into slim.log along with all other echo's
+# good for debugging where things go wrong
+echo "$0: Beginning session setup..."
+
+# First read /etc/profile and .profile
+test -f /etc/profile && . /etc/profile
+test -f "$HOME/.profile" && . "$HOME/.profile"
+# Second read /etc/xprofile and .xprofile for X specific setup
+test -f /etc/xprofile && . /etc/xprofile
+test -f "$HOME/.xprofile" && . "$HOME/.xprofile"
+
+# wrap possible arguments to determine whether to treat special or not
+if [ "x$command" = "xcustom" ] || [ "x$command" = "xCustom" ] || [ "x$command" = "xdefault" ] || [ "x$command" = "xDefault" ]; then
+  command="Xsession"
+fi
+if [ "x$command" = "x" ]; then
+  # no default specified, check if Xsession will complete
+  # and if not then assign XSESSION to command
+  if [ -x "$HOME/.xsession" ] || [ -x "$HOME/.Xclients" ] || [ -x /etc/X11/xinit/Xclients ] || [ -x /etc/X11/Xclients ]; then
+    command="Xsession"
+  else
+    command=$XSESSION
+  fi
+fi
+
+# most of this is from /etc/X11/chooser.sh
+sessionscript=""
+if [ -n "${command}" ]; then
+  # find a match for $command in /etc/X11/Sessions
+  for x in /etc/X11/Sessions/* ; do
+    if [ "`echo ${x##*/} | awk '{ print toupper($1) }'`" = "`echo ${command} | awk '{ print toupper($1) }'`" ]; then
+      sessionscript=${x}
+      break
+    fi
+  done
+  if [ -n "${sessionscript}" ]; then
+    if [ -x "${sessionscript}" ]; then
+      command="${sessionscript}"
+    else
+      command="/bin/sh ${sessionscript}"
+    fi
+  else
+
+    # find an executable for $command
+    x=""
+    y=""
+
+    for x in "${command}" "`echo ${command} | awk '{ print toupper($1) }'`" "`echo ${command} | awk '{ print tolower($1) }'`"
+    do
+      # Fall through ...
+      if [ -x "`which ${x} 2>/dev/null`" ]; then
+	y="`which ${x} 2>/dev/null`"
+	break
+      fi
+    done
+    # note , if the command could not be found then $command will be empty
+    command="$y"
+    unset x
+    unset y
+  fi
+fi
+
+# call xrdb and xmodmap and such, since $command is not a session script
+if [ -z "${sessionscript}" ]; then
+  userresources="$HOME/.Xresources"
+  usermodmap="$HOME/.Xmodmap"
+  userxkbmap="$HOME/.Xkbmap"
+
+  sysresources=/etc/X11/Xresources 
+  sysmodmap=/etc/X11/Xmodmap 
+  sysxkbmap=/etc/X11/Xkbmap
+
+  rh6sysresources=/etc/X11/xinit/Xresources 
+  rh6sysmodmap=/etc/X11/xinit/Xmodmap 
+
+  # merge in defaults
+  if [ -f "$rh6sysresources" ]; then
+    xrdb -merge "$rh6sysresources"
+  fi
+
+  if [ -f "$sysresources" ]; then
+    xrdb -merge "$sysresources"
+  fi
+
+  if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+  fi
+
+  # merge in keymaps
+  if [ -f "$sysxkbmap" ]; then
+    setxkbmap `cat "$sysxkbmap"`
+    XKB_IN_USE=yes
+  fi
+
+  if [ -f "$userxkbmap" ]; then
+    setxkbmap `cat "$userxkbmap"`
+    XKB_IN_USE=yes
+  fi
+
+  #
+  # Eeek, this seems like too much magic here
+  #
+  if [ -z "$XKB_IN_USE" -a ! -L /etc/X11/X ]; then
+    if grep '^exec.*/Xsun' /etc/X11/X > /dev/null 2>&1 && [ -f /etc/X11/XF86Config ]; then
+      xkbsymbols=`sed -n -e 's/^[     ]*XkbSymbols[   ]*"\(.*\)".*$/\1/p' /etc/X11/XF86Config`
+      if [ -n "$xkbsymbols" ]; then
+        setxkbmap -symbols "$xkbsymbols"
+        XKB_IN_USE=yes
+      fi
+    fi
+  fi
+
+  # xkb and xmodmap don't play nice together
+  if [ -z "$XKB_IN_USE" ]; then
+    if [ -f "$rh6sysmodmap" ]; then
+      xmodmap "$rh6sysmodmap"
+    fi
+
+    if [ -f "$sysmodmap" ]; then
+      xmodmap "$sysmodmap"
+    fi
+
+    if [ -f "$usermodmap" ]; then
+      xmodmap "$usermodmap"
+    fi
+  fi
+
+  unset XKB_IN_USE
+fi
+unset sessionscript
+
+# start failsafe session
+if [ -z "${command}" ]; then
+  echo "$0: Failed to find a command to start the session, so starting a failsafe xterm."
+  exec xterm -geometry 80x24+0+0
+fi
+
+# run all system xinitrc shell scripts which will update command
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for i in /etc/X11/xinit/xinitrc.d/* ; do
+    if [ -x "$i" ]; then
+      . "$i"
+    fi
+  done
+  unset i
+fi
+
+echo "$0: Setup done, will execute: $command"
+exec $command
+
+# vim:ts=4

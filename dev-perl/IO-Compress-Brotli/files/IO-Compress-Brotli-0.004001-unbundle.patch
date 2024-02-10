@@ -1,0 +1,49 @@
+From 59541041bc3b39e8539fd12a8e584a63040ad7a5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 4 Feb 2020 23:17:49 +1300
+Subject: Disable using bundled brotli
+
+---
+ Makefile.PL | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0c59c05..b10234d 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,6 +1,8 @@
+ use 5.014000;
+ use ExtUtils::MakeMaker;
+ 
++my $bundled = $ENV{IO_COMPRESS_BROTLI_BUNDLED} || 0;
++
+ WriteMakefile(
+ 	NAME             => 'IO::Compress::Brotli',
+ 	VERSION_FROM     => 'lib/IO/Compress/Brotli.pm',
+@@ -16,9 +18,13 @@ WriteMakefile(
+ 		'Time::HiRes'   => '0',
+ 	},
+ 	BUILD_REQUIRES   => {},
++  ( $bundled )  ? ( 
+ 	INC              => '-Ibrotli/c/include',
+ 	MYEXTLIB         => 'brotli/libbrotli$(LIB_EXT)',
+ 	clean            => { FILES => 'brotli/libbrotli$(LIB_EXT)' },
++  ) : (
++  LIBS => ['-lbrotlienc -lbrotlidec'],
++  ),
+ 	META_ADD         => {
+ 		dynamic_config => 0,
+ 		resources      => {
+@@ -27,7 +33,9 @@ WriteMakefile(
+ 	}
+ );
+ 
++
+ sub MY::postamble {
++  return '' unless $bundled;
+ '
+ $(MYEXTLIB): brotli/Makefile
+ 	cd brotli && CFLAGS=-fPIC `which gmake || echo $(MAKE)` lib
+-- 
+2.25.0
+

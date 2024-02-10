@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">                                                                                             
+		<email>gyakovlev@gentoo.org</email>                                                                            
+		<name>Georgy Yakovlev</name>                                                                                   
+	</maintainer> 
+	<upstream>
+		<remote-id type="github">docker/cli</remote-id>
+		<remote-id type="cpe">cpe:/a:docker:command_line_interface</remote-id>
+	</upstream>
+</pkgmetadata>

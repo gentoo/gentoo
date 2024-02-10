@@ -1,0 +1,10 @@
+# Config file for /etc/init.d/multiskkserv
+
+# define which SKK-JISYO to use (you may define multiple files)
+#
+# Example:
+#
+# SKKJISYO_CDB="SKK-JISYO.L.cdb SKK-JISYO.JIS2.cdb SKK-JISYO.jinmei.cdb"
+#
+
+SKKJISYO_CDB="SKK-JISYO.L.cdb"

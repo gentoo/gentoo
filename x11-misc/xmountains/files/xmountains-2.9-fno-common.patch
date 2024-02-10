@@ -1,0 +1,20 @@
+--- a/X_graphics.c
++++ b/X_graphics.c
+@@ -10,7 +10,6 @@
+ #include "paint.h"
+ char X_graphics_Id[]="$Id: X_graphics.c,v 1.26 2009/08/28 09:09:17 spb Exp $";
+ 
+-char *display=NULL;       /* name of display to open, NULL for default */
+ char *geom=NULL;          /* geometry of window, NULL for default */
+ 
+ Atom wm_protocols;
+@@ -264,7 +263,8 @@
+   graph_height = gptr->graph_height;
+ /*{{{open display*/
+ 
+-  dpy = XOpenDisplay(display);
++/* display to open, NULL for default */
++  dpy = XOpenDisplay(NULL);
+   
+   if( ! dpy )
+   {

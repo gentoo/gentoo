@@ -1,0 +1,35 @@
+From 4341f243a34dbb8140800337d189345c370dc499 Mon Sep 17 00:00:00 2001
+From: Didier Raboud <odyx@debian.org>
+Date: Fri, 9 Feb 2018 17:23:25 +0100
+Subject: Fix various missing includes
+
+Last-Update: 2016-10-03
+---
+ src/c2espcommon.h | 1 +
+ src/command2esp.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/c2espcommon.h b/src/c2espcommon.h
+index 471f46a..088a2b8 100644
+--- a/src/c2espcommon.h
++++ b/src/c2espcommon.h
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include <cups/sidechannel.h> //FlushBackChannel, and the side channel functions and constants
++#include <stdio.h> // FILE
+ #include <fcntl.h> //files
+ #include <time.h> //time functions used for debugging
+ 
+diff --git a/src/command2esp.c b/src/command2esp.c
+index 529342c..e30357e 100644
+--- a/src/command2esp.c
++++ b/src/command2esp.c
+@@ -44,6 +44,7 @@ Maintenance=003?
+ #include <cups/cups.h>
+ #include <cups/sidechannel.h> //FlushBackChannel, and the side channel functions and constants
+ #include "string.h"
++#include "strings.h" // strncasecmp
+ #include <ctype.h> 
+ #include <fcntl.h> //files
+ #include <time.h> //time functions used for debugging

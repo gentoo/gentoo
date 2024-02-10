@@ -1,0 +1,9 @@
+# Copyright 2007-2022 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of APACHE2_MPMS USE_EXPAND flags.
+
+# Keep it sorted.
+event - An experimental variant of the standard worker MPM
+prefork - Implements a non-threaded, pre-forking web server
+worker - Multi-Processing Module implementing a hybrid multi-threaded multi-process web server

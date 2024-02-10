@@ -1,0 +1,7 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Set to the nice level for daemon
+NICE_LEVEL=1
+
+# vim: filetype=gentoo-conf-d:

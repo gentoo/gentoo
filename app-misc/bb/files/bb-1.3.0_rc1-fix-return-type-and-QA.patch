@@ -1,0 +1,47 @@
+diff --git a/ctrl87.c b/ctrl87.c
+index 05f1e6d..8789d92 100644
+--- a/ctrl87.c
++++ b/ctrl87.c
+@@ -43,8 +43,7 @@ unsigned short _control87(unsigned short newcw, unsigned short mask)
+ 		      : /* registers */ "ax", "bx", "dx"
+ 	);
+     }
+-    return cw;
+ #endif
+ #endif
+-
++return cw;
+ }				/* _control87 */
+diff --git a/main.c b/main.c
+index a9fac57..41b56d1 100644
+--- a/main.c
++++ b/main.c
+@@ -73,8 +73,8 @@ load_song (char *name)
+ 	  sleep (1);
+ 	}
+     }
+-  return 0;
+ #endif
++return 0;
+ }
+ 
+ void
+diff --git a/scene4.c b/scene4.c
+index 12b640c..b2f69f3 100644
+--- a/scene4.c
++++ b/scene4.c
+@@ -231,10 +231,10 @@ void scene4(void)
+     draw();
+     bbflushwait(0.1 * 1000000);
+     for (i = 20; i < aa_imgwidth(context) - 20; i++)
+-	aa_putpixel(context, i, aa_imgheight(context) - 10, 255),
+-	    aa_putpixel(context, i, aa_imgheight(context) - 11, 255),
+-	    aa_putpixel(context, i, aa_imgheight(context) - 12, 255),
+-	    aa_putpixel(context, i, aa_imgheight(context) - 13, 255),
++        aa_putpixel(context, i, aa_imgheight(context) - 10, 255);
++	    aa_putpixel(context, i, aa_imgheight(context) - 11, 255);
++	    aa_putpixel(context, i, aa_imgheight(context) - 12, 255);
++	    aa_putpixel(context, i, aa_imgheight(context) - 13, 255);
+ 	    gentable();
+     timestuff(-25, drawfire, mydraw, 7 * 1000000);
+     free(table);

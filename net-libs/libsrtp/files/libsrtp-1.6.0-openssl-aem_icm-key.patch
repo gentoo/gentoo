@@ -1,0 +1,113 @@
+Backport of https://github.com/cisco/libsrtp/commit/fb954450198c832c96b4191fcef3a1b9e2d15d8b
+
+--- a/crypto/cipher/aes_icm_ossl.c	2018-06-10 20:33:16 UTC
++++ b/crypto/cipher/aes_icm_ossl.c
+@@ -235,6 +235,8 @@ err_status_t aes_icm_openssl_dealloc (cipher_t *c)
+  */
+ err_status_t aes_icm_openssl_context_init (aes_icm_ctx_t *c, const uint8_t *key, int len)
+ {
++    const EVP_CIPHER *evp;
++
+     /*
+      * set counter and initial values to 'offset' value, being careful not to
+      * go past the end of the key buffer
+@@ -252,30 +254,35 @@ err_status_t aes_icm_openssl_context_init (aes_icm_ctx
+     c->offset.v8[SALT_SIZE] = c->offset.v8[SALT_SIZE + 1] = 0;
+     c->counter.v8[SALT_SIZE] = c->counter.v8[SALT_SIZE + 1] = 0;
+ 
+-    /* copy key to be used later when CiscoSSL crypto context is created */
+-    v128_copy_octet_string((v128_t*)&c->key, key);
++    debug_print(mod_aes_icm, "key:  %s", octet_string_hex_string(key, c->key_size));
++    debug_print(mod_aes_icm, "offset: %s", v128_hex_string(&c->offset));
+ 
+-    /* if the key is greater than 16 bytes, copy the second
+-     * half.  Note, we treat AES-192 and AES-256 the same here
+-     * for simplicity.  The storage location receiving the
+-     * key is statically allocated to handle a full 32 byte key
+-     * regardless of the cipher in use.
+-     */
+-    if (c->key_size == AES_256_KEYSIZE
++    EVP_CIPHER_CTX_init(&c->ctx);
++
++    switch (c->key_size) {
++    case AES_256_KEYSIZE:
++        evp = EVP_aes_256_ctr();
++        break;
+ #ifndef SRTP_NO_AES192
+-        || c->key_size == AES_192_KEYSIZE
++    case AES_192_KEYSIZE:
++        evp = EVP_aes_192_ctr();
++        break;
+ #endif
+-        ) {
+-        debug_print(mod_aes_icm, "Copying last 16 bytes of key: %s",
+-                    v128_hex_string((v128_t*)(key + AES_128_KEYSIZE)));
+-        v128_copy_octet_string(((v128_t*)(&c->key.v8)) + 1, key + AES_128_KEYSIZE);
++    case AES_128_KEYSIZE:
++        evp = EVP_aes_128_ctr();
++        break;
++    default:
++        return err_status_bad_param;
++        break;
+     }
+ 
+-    debug_print(mod_aes_icm, "key:  %s", v128_hex_string((v128_t*)&c->key));
+-    debug_print(mod_aes_icm, "offset: %s", v128_hex_string(&c->offset));
++    if (!EVP_EncryptInit_ex(&c->ctx, evp,
++                            NULL, key, NULL)) {
++        return err_status_fail;
++    } else {
++        return err_status_ok;
++    }
+ 
+-    EVP_CIPHER_CTX_cleanup(&c->ctx);
+-
+     return err_status_ok;
+ }
+ 
+@@ -286,7 +293,6 @@ err_status_t aes_icm_openssl_context_init (aes_icm_ctx
+  */
+ err_status_t aes_icm_openssl_set_iv (aes_icm_ctx_t *c, void *iv, int dir)
+ {
+-    const EVP_CIPHER *evp;
+     v128_t nonce;
+ 
+     /* set nonce (for alignment) */
+@@ -298,25 +304,8 @@ err_status_t aes_icm_openssl_set_iv (aes_icm_ctx_t *c,
+ 
+     debug_print(mod_aes_icm, "set_counter: %s", v128_hex_string(&c->counter));
+ 
+-    switch (c->key_size) {
+-    case AES_256_KEYSIZE:
+-        evp = EVP_aes_256_ctr();
+-        break;
+-#ifndef SRTP_NO_AES192
+-    case AES_192_KEYSIZE:
+-        evp = EVP_aes_192_ctr();
+-        break;
+-#endif
+-    case AES_128_KEYSIZE:
+-        evp = EVP_aes_128_ctr();
+-        break;
+-    default:
+-        return err_status_bad_param;
+-        break;
+-    }
+-
+-    if (!EVP_EncryptInit_ex(&c->ctx, evp,
+-                            NULL, c->key.v8, c->counter.v8)) {
++    if (!EVP_EncryptInit_ex(&c->ctx, NULL,
++                            NULL, NULL, c->counter.v8)) {
+         return err_status_fail;
+     } else {
+         return err_status_ok;
+--- a/crypto/include/aes_icm_ossl.h 2017-08-01 11:57:38 UTC
++++ b/crypto/include/aes_icm_ossl.h
+@@ -70,7 +70,6 @@
+ typedef struct {
+     v128_t counter;                /* holds the counter value          */
+     v128_t offset;                 /* initial offset value             */
+-    v256_t key;
+     int key_size;
+     EVP_CIPHER_CTX ctx;
+ } aes_icm_ctx_t;

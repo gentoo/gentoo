@@ -1,0 +1,11 @@
+--- wput/src/Makefile.in
++++ wput/src/Makefile.in
+@@ -23,7 +23,7 @@ ftplib.o: socketlib.h ftplib.h
+ ftp-ls.o: ftp.h wget.h url.h
+ 
+ wput:   $(OBJ)
+-	$(CC) -o $(EXE) $(OBJ) $(LIBS)
++	$(CC) $(LDFLAGS) -o $(EXE) $(OBJ) $(LIBS)
+ clean:
+ 	rm -f *.o *~ *.bak ../wput getopt/*.o
+ win-clean: clean

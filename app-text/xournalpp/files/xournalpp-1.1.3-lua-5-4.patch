@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -148,9 +148,9 @@ if (ENABLE_CPPUNIT)
+ endif (ENABLE_CPPUNIT)
+ 
+ # Plugins / scripting
+-find_package (Lua 5.3 EXACT)
++find_package (Lua ${LUA_VERSION} EXACT)
+ if (NOT Lua_FOUND)
+-	find_package (Lua 5.3) # Lua 5.4 is only supported with cmake >=3.18
++	find_package (Lua ${LUA_VERSION}) # Lua 5.4 is only supported with cmake >=3.18
+ endif()
+ 
+ if (Lua_FOUND)

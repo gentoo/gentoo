@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/871366
+--- a/eval.h
++++ b/eval.h
+@@ -107,4 +107,6 @@ struct action	*eval_end(struct ruleset *, int *, int, int);
+ void		 eval_clear(struct ruleset *, int *, int);
+ void		 free_ruleset(struct ruleset *);
+ 
++int yylex(void);
++
+ #endif

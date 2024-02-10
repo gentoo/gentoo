@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+description="frp server"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+command="/usr/bin/fp-multiuser"
+command_user="fp-multiuser:fp-multiuser"
+command_args="${FP_MULTIUSER_OPTS:-"-f /etc/fp-multiuser/tokens -l 127.0.0.1:7200"}"
+command_background="true"
+logfile=/var/log/fp-multiuser/${RC_SVCNAME}.log
+start_stop_daemon_args="--user ${command_user%:*} --group ${command_user#*:}
+	--stdout ${logfile} --stderr ${logfile}"
+
+: "${supervisor:=supervise-daemon}"
+: "${respawn_delay:=1}"
+: "${respawn_max:=10}"
+: "${respawn_period:=60}"
+
+depend() {
+	need net
+}
+
+start() {
+	checkpath --directory --mode 755 --owner root "${pidfile%/*}"
+	checkpath --directory --mode 755 --owner "${command_user}" "${logfile%/*}"
+	default_start
+}

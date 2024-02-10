@@ -1,0 +1,5 @@
+# /etc/conf.d/heimdal-kcm
+
+# Options to pass to the kcm daemon.  Please see man 8 kcm for details
+#
+# OPTIONS="-c /etc/krb5.conf"

@@ -1,0 +1,61 @@
+#!/bin/sh
+# Copyright © 2020  	Georgy Yakovlev <gyakovlev@gentoo.org>
+#
+# schroot is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# schroot is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+#
+#####################################################################
+
+set -e
+
+. "$SETUP_DATA_DIR/common-data"
+. "$SETUP_DATA_DIR/common-functions"
+. "$SETUP_DATA_DIR/common-config"
+
+if [ "$VERBOSE" = "verbose" ]; then
+	VERBOSE_OPT="true"
+fi
+
+if [ "${PORTAGE_BASE_TMPDIR+set}" = "set" ] ; then
+	if [ "$STAGE" = "setup-start" ]; then
+		if [ ! -d "$PORTAGE_BASE_TMPDIR" ]; then
+			fatal "$PORTAGE_BASE_TMPDIR does not exist or not a directory"
+		fi
+		if [ "x$SESSION_ID" = x ]; then
+			fatal "SESSION_ID is not set"
+		fi
+		if [ ! -d "$PORTAGE_BASE_TMPDIR/schroot-$SESSION_ID" ]; then
+			mkdir ${VERBOSE_OPT+-v} \
+				"$PORTAGE_BASE_TMPDIR/schroot-$SESSION_ID"
+		fi
+		mkdir -p ${VERBOSE_OPT+-v} "$CHROOT_MOUNT_LOCATION/var/tmp/portage"
+		mount --make-private -o bind ${VERBOSE_OPT+-v}\
+			"$PORTAGE_BASE_TMPDIR/schroot-$SESSION_ID" \
+			"$CHROOT_MOUNT_LOCATION/var/tmp/portage"
+
+	elif [ "$STAGE" = "setup-stop" ]; then
+		if [ "$CHROOT_SESSION_PURGE" = true ] || \
+		[ "${CHROOT_NAME/#*_master/m}" = "m" ]; then
+			umount ${VERBOSE_OPT+-v} \
+				"$CHROOT_MOUNT_LOCATION/var/tmp/portage"
+			if [ -d "$PORTAGE_BASE_TMPDIR/schroot-$SESSION_ID" ]; then
+				 if [ "x$SESSION_ID" != x ]; then
+				 	rm -fr ${VERBOSE_OPT+-v} \
+						"$PORTAGE_BASE_TMPDIR/schroot-$SESSION_ID"
+				fi
+			fi
+		fi
+
+	fi
+fi

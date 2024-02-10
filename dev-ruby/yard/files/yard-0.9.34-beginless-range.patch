@@ -1,0 +1,38 @@
+From 8481180b935922f76a36e29e83914ee6fad782cd Mon Sep 17 00:00:00 2001
+From: Brad Feehan <git@bradfeehan.com>
+Date: Tue, 21 Jun 2022 17:05:20 +1000
+Subject: [PATCH] Fix "cannot get the first element of beginless range" error
+
+This implements the fix suggested by @akimd:
+
+See https://github.com/lsegal/yard/issues/1434#issuecomment-1087817139
+
+Fixes lsegal/yard#1434.
+---
+ lib/yard/parser/ruby/ast_node.rb | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/yard/parser/ruby/ast_node.rb b/lib/yard/parser/ruby/ast_node.rb
+index c9deb3ed1..d10bdfa3a 100644
+--- a/lib/yard/parser/ruby/ast_node.rb
++++ b/lib/yard/parser/ruby/ast_node.rb
+@@ -271,7 +271,7 @@ def has_line?
+ 
+         # @return [Fixnum] the starting line number of the node
+         def line
+-          line_range && line_range.first
++          line_range && line_range.begin || 1
+         end
+ 
+         # @return [String] the first line of source represented by the node.
+@@ -345,8 +345,8 @@ def reset_line_info
+           elsif !children.empty?
+             f = children.first
+             l = children.last
+-            self.line_range = Range.new(f.line_range.first, l.line_range.last)
+-            self.source_range = Range.new(f.source_range.first, l.source_range.last)
++            self.line_range = Range.new(f.line_range.begin || 1, l.line_range.last)
++            self.source_range = Range.new(f.source_range.begin || 1, l.source_range.last)
+           elsif @fallback_line || @fallback_source
+             self.line_range = @fallback_line
+             self.source_range = @fallback_source

@@ -1,0 +1,16 @@
+ https://bugs.gentoo.org/423813
+
+
+ device/device.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/device/device.cpp
++++ b/device/device.cpp
+@@ -31,6 +31,7 @@
+ 
+ 
+ // Includes...
++#include <unistd.h>
+ #include "../globaldefs.h"
+ #include "errortext.h"
+ #include "device.h"

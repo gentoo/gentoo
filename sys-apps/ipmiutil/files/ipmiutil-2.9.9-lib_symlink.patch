@@ -1,0 +1,11 @@
+--- ipmiutil-2.9.9/util/Makefile.am
++++ ipmiutil-2.9.9/util/Makefile.am
+@@ -199,7 +199,7 @@
+ 	@INS_LIB@ cp -f $(DEV_LIB)      $(DESTDIR)$(LIBDIR)
+ 	@INS_LIB@ if [ "x$(SHRLINK)" != "x" ]; then \
+ 	   @INS_LIB@ cp -f $(SHRLINK)     $(DESTDIR)$(LIBDIR) ; \
+-	   @INS_LIB@ cd $(DESTDIR); ln -sf $(LIBDIR)/$(SHRLINK) $(DESTDIR)$(LIBDIR)/$(SHR_BLIB);  \
++	   @INS_LIB@ cd $(DESTDIR); ln -sf $(SHRLINK) $(DESTDIR)$(LIBDIR)/$(SHR_BLIB);  \
+ 	@INS_LIB@ fi
+ 
+ clean-generic:   

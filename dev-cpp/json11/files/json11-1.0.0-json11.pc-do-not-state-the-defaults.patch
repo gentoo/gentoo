@@ -1,0 +1,22 @@
+From d98236beaf015f2693589fca1904fb0dd01b2e6d Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Wed, 1 Mar 2023 10:16:49 +0100
+Subject: [PATCH] json11.pc: do not state the defaults
+
+This appearantly breaks multi-arch installations. See
+https://bugs.gentoo.org/863098
+
+Suggested-by: Thomas Scheider <qsx@chaotikum.eu>
+Signed-off-by: Florian Schmaus <flow@gentoo.org>
+--- a/json11.pc.in
++++ b/json11.pc.in
+@@ -5,5 +5,4 @@ includedir=${prefix}/include/@CMAKE_LIBRARY_ARCHITECTURE@
+ Name: @PROJECT_NAME@
+ Description: json11 is a tiny JSON library for C++11, providing JSON parsing and serialization.
+ Version: @PROJECT_VERSION@
+-Libs: -L${libdir} -ljson11
+-Cflags: -I${includedir}
++Libs: -ljson11
+-- 
+2.39.2
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>voron1@gmail.com</email>
+		<name>Michael Corvinus</name>
+	</maintainer>
+	<use>
+		<flag name="minimal">Don't build extra packages from the bigide component</flag>
+		<flag name="gui">Build GUI IDE.</flag>
+		<flag name="gtk2">Use gtk:2 for widgets.</flag>
+		<flag name="extras">Build a lot of extra packages, including lhelp chm viewer program.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">downloads</remote-id>
+	</upstream>
+</pkgmetadata>

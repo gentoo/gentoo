@@ -1,0 +1,30 @@
+From 838843654b9b8e7394da0cad37ab919817a95248 Mon Sep 17 00:00:00 2001
+From: Harri Nieminen <moikkis@gmail.com>
+Date: Sat, 4 Mar 2017 13:53:00 +0200
+Subject: [PATCH 2/3] Don't try to generate man page, Fixes sandbox issue
+
+Fixes following error:
+  make[1]: Entering directory '/var/tmp/portage/media-sound/gmorgan-0.79/work/gmorgan-0.79/man'
+  name="gmorgan a midi processor" ../src/gmorgan -o gmorgan.1
+   * ACCESS DENIED:  open_wr:      /dev/snd/seq
+   * ACCESS DENIED:  open_wr:      /dev/snd/seq
+  ALSA lib /var/tmp/portage/media-libs/alsa-lib-1.1.3/work/alsa-lib-1.1.3/src/seq/seq_hw.c:466:(snd_seq_hw_open) open /dev/snd/seq failed: Permission denied
+  ALSA lib /var/tmp/portage/media-libs/alsa-lib-1.1.3/work/alsa-lib-1.1.3/src/seq/seq_hw.c:466:(snd_seq_hw_open) open /dev/snd/seq failed: Permission denied
+make[1]: [Makefile:526: gmorgan.1] Segmentation fault (ignored)
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 6fd435d..2e739a3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = m4 src data doc man po
++SUBDIRS = m4 src data doc po
+  
+ # Find gnulib headers.
+ ACLOCAL_AMFLAGS = -I m4
+-- 
+2.12.0
+

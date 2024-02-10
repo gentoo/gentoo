@@ -1,0 +1,27 @@
+# The interface to listen on
+# Use only with /etc/init.d/darkstat init script. If you use
+# /etc/init.d/darkstat.if init script, then this option should be ignored.
+#INTERFACE="eth0"
+
+# The port for the embedded webserver
+#PORT="667"
+
+# The address the embedded webserver should bind to
+#ADDRESS="0.0.0.0"
+
+# Set the filter. See tcpdump documentation for details.
+#FILTER=""
+
+# Log  daily traffic statistics into the named file, relative to the
+# chroot directory (see, below).
+#DAYLOGFILE="darkstat.log"
+
+# Other options:
+DARKSTAT_OPTS="--no-promisc --no-dns --user darkstat"
+
+# The directory to which the program chroots after initialization.
+# If you change this, please note the variable below and adjust
+# the permissions accordingly. Note that if you want to use the
+# --daylog option in EXTRAOPTS, the files are logged relative
+# to the chroot-directory; see the man-page for details.
+#CHROOT=__CHROOT__

@@ -1,0 +1,23 @@
+commit e2b63d157fcc5ceb67a2f0eaed202d18baa05a11
+Author: Arun Raghavan <arun@asymptotic.io>
+Date:   Sun Aug 13 07:24:41 2023 -0400
+
+    build-sys: Bump cpp_std to c++17
+    
+    Match it with webrtc-audio-processing, which is what we care about.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/795>
+
+diff --git a/meson.build b/meson.build
+index daa80b573..ba3d01dac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,7 +1,7 @@
+ project('pulseaudio', 'c',
+         version : run_command(find_program('git-version-gen'), join_paths(meson.current_source_dir(), '.tarball-version'), check : false).stdout().strip(),
+         meson_version : '>= 0.50.0',
+-        default_options : [ 'c_std=gnu11', 'cpp_std=c++11' ]
++        default_options : [ 'c_std=gnu11', 'cpp_std=c++17' ]
+         )
+ 
+ if not meson.is_subproject()

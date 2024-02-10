@@ -1,0 +1,42 @@
+From fd31925e40127b2f45518efbcee60ae7f2da30ae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 29 Jun 2018 13:27:51 +0200
+Subject: [PATCH] Remove DB::sub declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Tests fail with Perl 5.28.0:
+
+t/part1.t .. No DB::sub routine defined at t/part1.t line 1.
+BEGIN failed--compilation aborted at t/part1.t line 2.
+
+SmallProf.pm contains DB::sub declaration without a
+corresponding definition with an exaplanation "even if it
+is not used it has to be declared!"
+
+If I remove the declaration, tests pass. Tests pass even on Perl
+5.26.2. It seems the hack is not needed anymore and it is even
+harmfull to Perl 5.28.0.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lib/Devel/SmallProf.pm | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/lib/Devel/SmallProf.pm b/lib/Devel/SmallProf.pm
+index 4fdd66a..63a94a6 100644
+--- a/lib/Devel/SmallProf.pm
++++ b/lib/Devel/SmallProf.pm
+@@ -16,8 +16,6 @@ our ($profile, $drop_zeros, $grep_format, %packages);
+ my ($cdone, $done, $cstart, $start, $prevf, $prevl, $nulltime,
+     %listings, %profiles, %times, %ctimes);
+ 
+-sub sub; # even if it is not used it has to be declared!
+-
+ sub DB {
+   $profile || return;
+ 
+-- 
+2.14.4
+

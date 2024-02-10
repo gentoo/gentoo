@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <use>
+    <flag name="png">Enable PNG output support in qrencode tool</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:qrencode_project:qrencode</remote-id>
+  </upstream>
+</pkgmetadata>

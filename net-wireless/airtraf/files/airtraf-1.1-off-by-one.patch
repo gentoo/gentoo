@@ -1,0 +1,29 @@
+--- a/src/sniffd/autoconfig.c
++++ b/src/sniffd/autoconfig.c
+@@ -68,7 +68,7 @@
+   struct ifreq ifr;
+ 
+   strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
+-  ifr.ifr_name[IFNAMSIZ] = '\0';
++  ifr.ifr_name[IFNAMSIZ -1] = '\0';
+   if (ioctl(skfd, SIOCGIFFLAGS, &ifr) < 0){
+     return (-1);
+   }
+@@ -89,7 +89,7 @@
+   struct ifreq ifr;
+ 
+   strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
+-  ifr.ifr_name[IFNAMSIZ] = '\0';
++  ifr.ifr_name[IFNAMSIZ -1] = '\0';
+   if (ioctl(skfd, SIOCGIFFLAGS, &ifr) < 0){
+     return (-1);
+   }
+@@ -129,7 +129,7 @@
+ {
+   /* Set device name */
+   strncpy(pwrq->ifr_name, ifname, IFNAMSIZ);
+-  pwrq->ifr_name[IFNAMSIZ] = '\0';
++  pwrq->ifr_name[IFNAMSIZ -1] = '\0';
+   
+   /* Do the request */
+   return(ioctl(skfd, request, pwrq));

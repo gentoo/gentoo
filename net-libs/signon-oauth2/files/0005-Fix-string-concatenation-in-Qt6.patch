@@ -1,0 +1,181 @@
+From 47ff5a950e54ae2a570183be21312bcaa5271396 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:04:44 +0200
+Subject: [PATCH 05/10] Fix string concatenation in Qt6
+
+---
+ src/oauth1plugin.cpp | 33 ++++++++++++++++-----------------
+ src/oauth1plugin.h   |  2 +-
+ src/oauth2plugin.cpp |  4 ++--
+ src/oauth2plugin.h   |  2 +-
+ 4 files changed, 20 insertions(+), 21 deletions(-)
+
+diff --git a/src/oauth1plugin.cpp b/src/oauth1plugin.cpp
+index 6c38cbb..3a1bbd5 100644
+--- a/src/oauth1plugin.cpp
++++ b/src/oauth1plugin.cpp
+@@ -60,7 +60,6 @@ const QString TIMESTAMP = QString("timestamp");
+ const QString AUTH_ERROR = QString("error");
+ 
+ const QString EQUAL = QString("=");
+-const QString AMPERSAND = QString("&");
+ const QString EQUAL_WITH_QUOTES = QString("%1=\"%2\"");
+ const QString DELIMITER = QString(", ");
+ const QString SPACE = QString(" ");
+@@ -321,7 +320,7 @@ void OAuth1Plugin::process(const SignOn::SessionData &inData,
+     sendOAuth1PostRequest();
+ }
+ 
+-QString OAuth1Plugin::urlEncode(QString strData)
++QByteArray OAuth1Plugin::urlEncode(QString strData)
+ {
+     return QUrl::toPercentEncoding(strData).constData();
+ }
+@@ -399,7 +398,7 @@ QByteArray OAuth1Plugin::constructSignatureBaseString(const QString &aUrl,
+     bool first = true;
+     for (i = oAuthHeaderMap.begin(); i != oAuthHeaderMap.end(); ++i) {
+         if(!first) {
+-            oAuthHeaderString.append(AMPERSAND);
++            oAuthHeaderString.append(QLatin1Char('&'));
+         } else {
+             first = false;
+         }
+@@ -411,9 +410,9 @@ QByteArray OAuth1Plugin::constructSignatureBaseString(const QString &aUrl,
+ 
+     QByteArray signatureBase;
+     signatureBase.append("POST");
+-    signatureBase.append(AMPERSAND);
++    signatureBase.append('&');
+     signatureBase.append(urlEncode(urlWithHostAndPath));
+-    signatureBase.append(AMPERSAND);
++    signatureBase.append('&');
+     signatureBase.append(urlEncode(oAuthHeaderString));
+     return signatureBase;
+ }
+@@ -427,16 +426,16 @@ QString OAuth1Plugin::createOAuth1Header(const QString &aUrl,
+     QString authHeader = OAUTH + SPACE;
+     if (!inData.Realm().isEmpty()) {
+         authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_REALM)
+-                          .arg(urlEncode(inData.Realm())));
++                          .arg(urlEncode(inData.Realm()).constData()));
+         authHeader.append(DELIMITER);
+     }
+     if (!inData.Callback().isEmpty()) {
+         authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_CALLBACK)
+-                          .arg(urlEncode(inData.Callback())));
++                          .arg(urlEncode(inData.Callback()).constData()));
+         authHeader.append(DELIMITER);
+     }
+     authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_CONSUMERKEY)
+-                      .arg(urlEncode(inData.ConsumerKey())));
++                      .arg(urlEncode(inData.ConsumerKey()).constData()));
+     authHeader.append(DELIMITER);
+     // Nonce
+ #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+@@ -448,32 +447,32 @@ QString OAuth1Plugin::createOAuth1Header(const QString &aUrl,
+ #endif
+     QString oauthNonce = QString("%1%2").arg(nonce1).arg(nonce2);
+     authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_NONCE)
+-                      .arg(urlEncode(oauthNonce)));
++                      .arg(urlEncode(oauthNonce).constData()));
+     authHeader.append(DELIMITER);
+     // Timestamp
+     QString oauthTimestamp =
+         QString("%1").arg(QDateTime::currentDateTime().toSecsSinceEpoch());
+     authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_TIMESTAMP)
+-                      .arg(urlEncode(oauthTimestamp)));
++                      .arg(urlEncode(oauthTimestamp).constData()));
+     authHeader.append(DELIMITER);
+     if (!d->m_oauth1Token.isEmpty()) {
+         authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_TOKEN)
+-                          .arg(urlEncode(d->m_oauth1Token)));
++                          .arg(urlEncode(d->m_oauth1Token).constData()));
+         authHeader.append(DELIMITER);
+     }
+ 
+     authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_SIGNATURE_METHOD)
+-                      .arg(urlEncode(d->m_mechanism)));
++                      .arg(urlEncode(d->m_mechanism).constData()));
+     authHeader.append(DELIMITER);
+     // Creating the signature
+     // PLAINTEXT signature method
+     QByteArray secretKey;
+-    secretKey.append(urlEncode(inData.ConsumerSecret()) + AMPERSAND +
++    secretKey.append(urlEncode(inData.ConsumerSecret()) + '&' +
+                      urlEncode(d->m_oauth1TokenSecret));
+     if (d->m_mechanism == PLAINTEXT) {
+         TRACE() << "Signature = " << secretKey;
+         authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_SIGNATURE)
+-                          .arg(urlEncode(secretKey)));
++                          .arg(urlEncode(secretKey).constData()));
+         authHeader.append(DELIMITER);
+     }
+     // HMAC-SHA1 signature method
+@@ -484,7 +483,7 @@ QString OAuth1Plugin::createOAuth1Header(const QString &aUrl,
+         QByteArray signature = hashHMACSHA1(secretKey, signatureBase);
+         TRACE() << "Signature = " << signature;
+         authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_SIGNATURE)
+-                          .arg(urlEncode(signature.toBase64())));
++                          .arg(urlEncode(signature.toBase64()).constData()));
+         authHeader.append(DELIMITER);
+     }
+     // TODO: RSA-SHA1 signature method should be implemented
+@@ -494,11 +493,11 @@ QString OAuth1Plugin::createOAuth1Header(const QString &aUrl,
+ 
+     if (!d->m_oauth1TokenVerifier.isEmpty()) {
+         authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_VERIFIER)
+-                          .arg(urlEncode(d->m_oauth1TokenVerifier)));
++                          .arg(urlEncode(d->m_oauth1TokenVerifier).constData()));
+         authHeader.append(DELIMITER);
+     }
+     authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_VERSION)
+-                      .arg(urlEncode(OAUTH_VERSION_1)));
++                      .arg(urlEncode(OAUTH_VERSION_1).constData()));
+ 
+     return authHeader;
+ }
+diff --git a/src/oauth1plugin.h b/src/oauth1plugin.h
+index 3ff227a..aa37e26 100644
+--- a/src/oauth1plugin.h
++++ b/src/oauth1plugin.h
+@@ -65,7 +65,7 @@ private:
+                                             const OAuth1PluginData &inData,
+                                             const QString &timestamp,
+                                             const QString &nonce);
+-    QString urlEncode(QString strData);
++    QByteArray urlEncode(QString strData);
+     QString createOAuth1Header(const QString &aUrl, OAuth1PluginData inData);
+     QByteArray hashHMACSHA1(const QByteArray &keyForHash ,const QByteArray &secret);
+     OAuth1PluginTokenData oauth1responseFromMap(const QVariantMap &map);
+diff --git a/src/oauth2plugin.cpp b/src/oauth2plugin.cpp
+index 8763f00..c7f7f84 100644
+--- a/src/oauth2plugin.cpp
++++ b/src/oauth2plugin.cpp
+@@ -393,9 +393,9 @@ void OAuth2Plugin::process(const SignOn::SessionData &inData,
+     }
+ }
+ 
+-QString OAuth2Plugin::urlEncode(QString strData)
++QByteArray OAuth2Plugin::urlEncode(QString strData)
+ {
+-    return QUrl::toPercentEncoding(strData).constData();
++    return QUrl::toPercentEncoding(strData);
+ }
+ 
+ void OAuth2Plugin::userActionFinished(const SignOn::UiSessionData &data)
+diff --git a/src/oauth2plugin.h b/src/oauth2plugin.h
+index a16c316..389d3c3 100644
+--- a/src/oauth2plugin.h
++++ b/src/oauth2plugin.h
+@@ -84,7 +84,7 @@ private:
+     QVariantMap parseJSONReply(const QByteArray &reply);
+     QVariantMap parseTextReply(const QByteArray &reply);
+     void handleOAuth2Error(const QByteArray &reply);
+-    QString urlEncode(QString strData);
++    QByteArray urlEncode(QString strData);
+     QUrl getAuthUrl();
+     QUrl getTokenUrl();
+ 
+-- 
+2.43.0
+

@@ -1,0 +1,11 @@
+--- a/examples/Mri/Makefile.in
++++ b/examples/Mri/Makefile.in
+@@ -219,7 +219,7 @@
+                 -I$(top_builddir)/include @MOTIF_CFLAGS@ @X_CFLAGS@
+ 
+ LDADD = ../../src/libXbae.la \
+-	-lWc $(link_motif) @X_LIBS@ -lXt ${X_PRE_LIBS} -lXext -lX11 ${X_EXTRA_LIBS}
++	-lWc $(link_motif) @X_LIBS@ -lXt ${X_PRE_LIBS} -lXext -lX11 ${X_EXTRA_LIBS} -lXmp
+ 
+ all: all-am
+ 

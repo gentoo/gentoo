@@ -1,0 +1,9 @@
+"fake" flags cause non-gnu linkers to fail, and need a way to pass raw flags.
+https://bugs.gentoo.org/369287
+--- a/Makefile
++++ b/Makefile
+@@ -54,3 +54,3 @@
+ $(INTERMEDIATE)/%.o: $(IMG)/%.pbm
+-	$(LD) -r -b binary -z noexecstack -z really_noexecstack -z pretty_please_noexecstack -o $@ $<
++	$(LD) -r -b binary -z noexecstack $(RAW_LDFLAGS) -o $@ $<
+ 

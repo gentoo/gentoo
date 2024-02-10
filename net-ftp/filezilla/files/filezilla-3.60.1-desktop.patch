@@ -1,0 +1,7 @@
+--- a/data/filezilla.desktop	2020-06-04 13:18:01.000000000 +0300
++++ b/data/filezilla.desktop	2022-06-16 02:16:03.727229995 +0300
+@@ -14,3 +14,4 @@
+ Type=Application
+ Categories=Network;FileTransfer;
+ Version=1.0
++MimeType=x-scheme-handler/ftp;

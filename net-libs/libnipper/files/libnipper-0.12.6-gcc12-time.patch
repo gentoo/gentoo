@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/851666
+--- a/report/report-text.cpp
++++ b/report/report-text.cpp
+@@ -34,6 +34,7 @@
+ #include "../device/general/general.h"
+ #include "report.h"
+ 
++#include <ctime>
+ 
+ int Report::writeText(const char *theText, Device::paragraphStruct *paragraph, bool expandAbbreviations, bool hideMarkup)
+ {

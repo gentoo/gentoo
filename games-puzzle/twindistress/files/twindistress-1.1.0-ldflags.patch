@@ -1,0 +1,41 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,20 +2,20 @@
+ BIN_PREFIX = /usr/local/bin/
+ # if you don't have privileges to install systemwide, comment out both 
+ # lines below and the game will then play from the current directory
+-DATA_PREFIX = /usr/local/share/games/twind/
+-HIGH_SCORE_PREFIX = /var/lib/games/twind/
++DATA_PREFIX = $(EPREFIX)/usr/share/twindistress/
++HIGH_SCORE_PREFIX = $(EPREFIX)/var/lib/twindistress/
+ # uncomment out the EXTENSION if you don't have the png libs on your system
+ #EXTENSION = ".bmp"
+ AUDIOFLAG = AUDIO
+-CC = gcc
+ ifdef EXTENSION
+-CFLAGS = -Wall -g -DDATA_PREFIX=\"$(DATA_PREFIX)\" \
++CPPFLAGS += -DDATA_PREFIX=\"$(DATA_PREFIX)\" \
+ 	-DEXTENSION=\"$(EXTENSION)\" -D$(AUDIOFLAG) -DLINUX \
+ 	-DHIGH_SCORE_PREFIX=\"$(HIGH_SCORE_PREFIX)\"
+ else
+-CFLAGS = -Wall -g -DDATA_PREFIX=\"$(DATA_PREFIX)\" -D$(AUDIOFLAG) -DLINUX \
++CPPFLAGS += -DDATA_PREFIX=\"$(DATA_PREFIX)\" -D$(AUDIOFLAG) -DLINUX \
+ 	-DHIGH_SCORE_PREFIX=\"$(HIGH_SCORE_PREFIX)\"
+ endif
++CFLAGS += -Wall
+ LIBS = -lm
+ SDL_CFLAGS = `sdl-config --cflags`
+ SDL_LIBS = `sdl-config --libs` -lSDL_image
+@@ -50,10 +50,10 @@
+ 	make twind MIXER_LIB= AUDIOFLAG=NOAUDIO
+  	
+ twind: twind.o
+-	$(CC) twind.o $(LIBS) $(SDL_LIBS) $(MIXER_LIB) -o twind
++	$(CC) $(LDFLAGS) twind.o $(LIBS) $(SDL_LIBS) $(MIXER_LIB) -o twind
+ 
+ twind.o: twind.c
+-	$(CC) $(CFLAGS) $(SDL_CFLAGS) -c twind.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(SDL_CFLAGS) -c twind.c
+ 
+ clean:
+ 	rm -f twind *.o

@@ -1,0 +1,13 @@
+--- sysrqd-17/Makefile	2019-04-08 15:37:16.000000000 +0200
++++ sysrqd-17-ng/Makefile	2019-05-20 19:55:15.842841704 +0200
+@@ -5,8 +5,9 @@
+         -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wsign-compare \
+         -Wunused -Winit-self -Wpointer-arith -Wredundant-decls \
+         -Wmissing-prototypes -Wmissing-format-attribute -Wmissing-noreturn \
+-        -std=gnu99 -pipe -DSYSRQD_VERSION="\"$(VERSION)\"" -O3
++        -std=gnu99
+ LDFLAGS+=-lcrypt
++CPPFLAGS+=-DSYSRQD_VERSION="\"$(VERSION)\""
+ 
+ SBINDIR=$(DESTDIR)/usr/sbin
+ #MANDIR=$(DESTDIR)/usr/share/man/man1

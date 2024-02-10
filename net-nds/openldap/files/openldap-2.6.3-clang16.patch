@@ -1,0 +1,185 @@
+From ee4983302d6f052e77ab0332d2a128d169c2eacb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Tue, 15 Nov 2022 21:45:27 +0100
+Subject: [PATCH] Remove default-int/k&r declarations from the configure macros
+
+Recently, Clang tried to switch to having K&R prototypes and other
+non-strictly-conforming prototypes error out, as a result of C2x changes
+to the standard.  These have been located across many packages, and
+range in severity from mild compile errors to runtime misconfiguration
+as a result of broken configure scripts.
+
+This covers all the instances I could find by grepping around the
+codebase, and gets OpenLDAP building on my system.
+
+Bug: https://bugs.gentoo.org/871288
+Bug: https://bugs.gentoo.org/871372
+--- a/build/openldap.m4
++++ b/build/openldap.m4
+@@ -154,6 +154,7 @@ fi
+ if test $ol_cv_header_stdc = yes; then
+   # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <ctype.h>
++#include <stdlib.h>
+ #ifndef HAVE_EBCDIC
+ #	define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ #	define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+@@ -394,9 +395,7 @@ AC_DEFUN([OL_PTHREAD_TEST_FUNCTION],[[
+ AC_DEFUN([OL_PTHREAD_TEST_PROGRAM],
+ [AC_LANG_SOURCE([OL_PTHREAD_TEST_INCLUDES
+ 
+-int main(argc, argv)
+-	int argc;
+-	char **argv;
++int main(int argc, char **argv)
+ {
+ OL_PTHREAD_TEST_FUNCTION
+ }
+@@ -518,7 +517,7 @@ AC_CACHE_CHECK([for compatible POSIX regex],ol_cv_c_posix_regex,[
+ #include <sys/types.h>
+ #include <regex.h>
+ static char *pattern, *string;
+-main()
++int main(void)
+ {
+ 	int rc;
+ 	regex_t re;
+@@ -545,7 +544,8 @@ AC_DEFUN([OL_C_UPPER_LOWER],
+ [AC_CACHE_CHECK([if toupper() requires islower()],ol_cv_c_upper_lower,[
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <ctype.h>
+-main()
++#include <stdlib.h>
++int main(void)
+ {
+ 	if ('C' == toupper('C'))
+ 		exit(0);
+@@ -603,7 +603,7 @@ AC_DEFUN([OL_NONPOSIX_STRERROR_R],
+ 			]])],[ol_cv_nonposix_strerror_r=yes],[ol_cv_nonposix_strerror_r=no])
+ 	else
+ 		AC_RUN_IFELSE([AC_LANG_SOURCE([[
+-			main() {
++			int main(void) {
+ 				char buf[100];
+ 				buf[0] = 0;
+ 				strerror_r( 1, buf, sizeof buf );
+--- a/configure.ac
++++ b/configure.ac
+@@ -1031,7 +1031,11 @@ dnl ----------------------------------------------------------------
+ AC_CHECK_HEADERS( sys/epoll.h )
+ if test "${ac_cv_header_sys_epoll_h}" = yes; then
+ 	AC_MSG_CHECKING(for epoll system call)
+-	AC_RUN_IFELSE([AC_LANG_SOURCE([[int main(int argc, char **argv)
++	AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <stdlib.h>
++#ifdef HAVE_SYS_POLL_H
++#include <sys/epoll.h>
++#endif
++int main(int argc, char **argv)
+ {
+ 	int epfd = epoll_create(256);
+ 	exit (epfd == -1 ? 1 : 0);
+@@ -1493,10 +1497,8 @@ pthread_rwlock_t rwlock;
+ 				dnl save the flags
+ 				AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ #include <pthread.h>
+-#ifndef NULL
+-#define NULL (void*)0
+-#endif
+-]], [[pthread_detach(NULL);]])],[ol_cv_func_pthread_detach=yes],[ol_cv_func_pthread_detach=no])
++pthread_t thread;
++]], [[pthread_detach(thread);]])],[ol_cv_func_pthread_detach=yes],[ol_cv_func_pthread_detach=no])
+ 			])
+ 
+ 			if test $ol_cv_func_pthread_detach = no ; then
+@@ -1551,6 +1553,9 @@ dnl			esac
+ 				AC_CACHE_CHECK([if select yields when using pthreads],
+ 					ol_cv_pthread_select_yields,[
+ 				AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#define _XOPEN_SOURCE 500               /* For pthread_setconcurrency() on glibc */
++#include <stdlib.h>
++#include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+@@ -1561,8 +1566,7 @@ dnl			esac
+ 
+ static int fildes[2];
+ 
+-static void *task(p)
+-	void *p;
++static void *task(void *p)
+ {
+ 	int i;
+ 	struct timeval tv;
+@@ -1586,9 +1590,7 @@ static void *task(p)
+ 	exit(0); /* if we exit here, the select blocked the whole process */
+ }
+ 
+-int main(argc, argv)
+-	int argc;
+-	char **argv;
++int main(int argc, char **argv)
+ {
+ 	pthread_t t;
+ 
+--- a/contrib/ldaptcl/tclAppInit.c
++++ b/contrib/ldaptcl/tclAppInit.c
+@@ -45,9 +45,7 @@ EXTERN int		Tcltest_Init _ANSI_ARGS_((Tcl_Interp *interp));
+  */
+ 
+ int
+-main(argc, argv)
+-    int argc;			/* Number of command-line arguments. */
+-    char **argv;		/* Values of command-line arguments. */
++main(int argc, char **argv)
+ {
+ #ifdef USE_TCLX
+     TclX_Main(argc, argv, Tcl_AppInit);
+--- a/contrib/ldaptcl/tkAppInit.c
++++ b/contrib/ldaptcl/tkAppInit.c
+@@ -37,16 +37,9 @@ int (*tclDummyMathPtr)() = matherr;
+  * This is the main program for the application.
+  *-----------------------------------------------------------------------------
+  */
+-#ifdef __cplusplus
+ int
+ main (int    argc,
+       char **argv)
+-#else
+-int
+-main (argc, argv)
+-    int    argc;
+-    char **argv;
+-#endif
+ {
+ #ifdef USE_TCLX
+     TkX_Main(argc, argv, Tcl_AppInit);
+@@ -68,14 +61,8 @@ main (argc, argv)
+  * interp->result if an error occurs.
+  *-----------------------------------------------------------------------------
+  */
+-#ifdef __cplusplus
+ int
+ Tcl_AppInit (Tcl_Interp *interp)
+-#else
+-int
+-Tcl_AppInit (interp)
+-    Tcl_Interp *interp;
+-#endif
+ {
+     if (Tcl_Init (interp) == TCL_ERROR) {
+         return TCL_ERROR;
+--- a/servers/slapd/syslog.c
++++ b/servers/slapd/syslog.c
+@@ -209,7 +209,7 @@ openlog(const char *ident, int logstat, int logfac)
+ }
+ 
+ void
+-closelog()
++closelog(void)
+ {
+ 	(void)close(LogFile);
+ 	LogFile = -1;
+-- 
+2.38.1
+

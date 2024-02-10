@@ -1,0 +1,89 @@
+diff --git a/cpio/cpio.c b/cpio/cpio.c
+index 89c5cbc..210287b 100644
+--- a/cpio/cpio.c
++++ b/cpio/cpio.c
+@@ -91,11 +91,12 @@
+ #include <sfile.h>
+ #include <atoll.h>
+ 
+-#ifdef	_AIX
++#if defined (_AIX) || defined (__GLIBC__)
+ #include <sys/sysmacros.h>
+-#endif	/* _AIX */
++#endif	/* _AIX || __GLIBC__ */
+ 
+-#ifndef	major
++#include <sys/sysmacros.h>
++#if 0
+ #include <sys/mkdev.h>
+ #endif	/* !major */
+ 
+diff --git a/file/file.c b/file/file.c
+index 6609734..d90af86 100644
+--- a/file/file.c
++++ b/file/file.c
+@@ -66,7 +66,8 @@ static const char sccsid[] USED = "@(#)file.sl	1.33 (gritter) 4/14/06";
+ #include <fcntl.h>
+ #include <libgen.h>
+ #include <inttypes.h>
+-#ifndef	major
++#include <sys/sysmacros.h>
++#if 0
+ #include <sys/mkdev.h>
+ #endif
+ #include "iblok.h"
+diff --git a/find/find.c b/find/find.c
+index fac70f0..28e1b7f 100644
+--- a/find/find.c
++++ b/find/find.c
+@@ -83,7 +83,8 @@ static const char sccsid[] USED = "@(#)find.sl	1.45 (gritter) 5/8/06";
+ #ifdef	_AIX
+ #include <sys/sysmacros.h>
+ #endif
+-#ifndef	major
++#include <sys/sysmacros.h>
++#if 0
+ #include <sys/mkdev.h>
+ #endif
+ #if __NetBSD_Version__>= 300000000
+diff --git a/ls/ls.c b/ls/ls.c
+index e4480d0..17186ba 100644
+--- a/ls/ls.c
++++ b/ls/ls.c
+@@ -119,7 +119,7 @@ static char ifmt_c[] = "-pc-d-b--nl-SD--";
+ #include <termcap.h>
+ #endif	/* USE_TERMCAP */
+ 
+-#ifdef	_AIX
++#if defined (_AIX) || defined (__GLIBC__)
+ #include <sys/sysmacros.h>
+ #endif
+ 
+diff --git a/mknod/mknod.c b/mknod/mknod.c
+index b772b88..f465883 100644
+--- a/mknod/mknod.c
++++ b/mknod/mknod.c
+@@ -45,7 +45,8 @@ static const char sccsid[] USED = "@(#)mknod.sl	1.8 (gritter) 5/29/05";
+ #include	<string.h>
+ #include	<limits.h>
+ #include	<unistd.h>
+-#ifndef	major
++#include <sys/sysmacros.h>
++#if 0
+ #include	<sys/mkdev.h>
+ #endif	/* !major */
+ 
+diff --git a/tar/tar.c b/tar/tar.c
+index 2d3dada..a8f1ccb 100644
+--- a/tar/tar.c
++++ b/tar/tar.c
+@@ -98,7 +98,8 @@ static const char sccsid[] USED = "@(#)tar.sl	1.177 (gritter) 4/14/07";
+ #include <sys/sysmacros.h>
+ #endif
+ 
+-#ifndef	major
++#include <sys/sysmacros.h>
++#if 0
+ #include <sys/mkdev.h>
+ #endif	/* !major */
+ 

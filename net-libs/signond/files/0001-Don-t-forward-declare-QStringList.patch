@@ -1,0 +1,35 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From 65a9af6663738c5e169a1779b8d0106c6223e96e Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 5 Jul 2022 17:36:19 +0200
+Subject: [PATCH 01/11] Don't forward-declare QStringList
+
+It doesn't work with Qt6
+---
+ lib/plugins/SignOn/authpluginif.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/plugins/SignOn/authpluginif.h b/lib/plugins/SignOn/authpluginif.h
+index 7b3243c..9cfc527 100644
+--- a/lib/plugins/SignOn/authpluginif.h
++++ b/lib/plugins/SignOn/authpluginif.h
+@@ -31,6 +31,7 @@
+ #include <QtCore/qobject.h>
+ #include <QtCore/qpointer.h>
+ #include <QtCore/qplugin.h>
++#include <QtCore/qstringlist.h>
+ 
+ #include <QVariantMap>
+ #include <SignOn/sessiondata.h>
+@@ -39,7 +40,6 @@
+ 
+ QT_BEGIN_NAMESPACE
+ class QString;
+-class QStringList;
+ class QByteArray;
+ class QVariant;
+ QT_END_NAMESPACE
+-- 
+2.43.0
+

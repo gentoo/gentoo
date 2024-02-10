@@ -1,0 +1,22 @@
+From f3afed3b06c34c588a7c67cb83064e16255f54b4 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 6 Apr 2010 15:11:46 +0200
+Subject: [PATCH 1/2] gentoo: do not build tests if not required
+
+---
+ Makefile.am |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index aec6c5d..95952da 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-noinst_PROGRAMS = testart testuta
++check_PROGRAMS = testart testuta
+ 
+ bin_SCRIPTS = \
+ 	libart2-config
+-- 
+1.7.0.4
+

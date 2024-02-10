@@ -1,0 +1,63 @@
+https://bugs.gentoo.org/914565
+--- a/gcc/gcc/system.h
++++ b/gcc/gcc/system.h
+@@ -201,6 +201,9 @@ extern int fprintf_unlocked (FILE *, con
+ #ifdef INCLUDE_STRING
+ # include <string>
+ #endif
++#ifdef INCLUDE_VECTOR
++# include <vector>
++#endif
+ #endif
+ 
+ /* There are an extraordinary number of issues with <ctype.h>.
+@@ -229,9 +232,6 @@ extern int errno;
+ #ifdef INCLUDE_SET
+ # include <set>
+ #endif
+-#ifdef INCLUDE_VECTOR
+-# include <vector>
+-#endif
+ #ifdef INCLUDE_ARRAY
+ # include <array>
+ #endif
+--- a/gcc/libcc1/libcc1plugin.cc
++++ b/gcc/libcc1/libcc1plugin.cc
+@@ -19,6 +19,8 @@
+ 
+ #include <cc1plugin-config.h>
+ 
++#include <vector>
++
+ #undef PACKAGE_NAME
+ #undef PACKAGE_STRING
+ #undef PACKAGE_TARNAME
+@@ -69,8 +71,6 @@
+ #include "gcc-c-interface.h"
+ #include "context.hh"
+ 
+-#include <vector>
+-
+ using namespace cc1_plugin;
+ 
+ 
+--- a/gcc/libcc1/libcp1plugin.cc
++++ b/gcc/libcc1/libcp1plugin.cc
+@@ -20,6 +20,8 @@
+ 
+ #include <cc1plugin-config.h>
+ 
++#include <vector>
++
+ #undef PACKAGE_NAME
+ #undef PACKAGE_STRING
+ #undef PACKAGE_TARNAME
+@@ -71,8 +73,6 @@
+ #include "rpc.hh"
+ #include "context.hh"
+ 
+-#include <vector>
+-
+ using namespace cc1_plugin;
+ 
+ 

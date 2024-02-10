@@ -1,0 +1,35 @@
+From 5ca1bc18272c0ddbb3496fa29076ac2d65c034cf Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 27 Aug 2023 21:55:17 +0200
+Subject: [PATCH] Search for KF5DocTools individually
+
+Makes our ECM_HANDBOOK=forceoptional facility work while upstream is against it.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 17203b22f..3c914f178 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -93,7 +93,6 @@ if( BUILD_DESKTOPPROGRAM )
+     list(APPEND ADDITIONAL_REQUIRED_KF_COMPONENTS
+         Crash
+         DBusAddons
+-        DocTools
+     )
+ endif()
+ find_package(KF5 ${REQUIRED_KF_VERSION} REQUIRED
+@@ -117,6 +116,7 @@ ecm_set_disabled_deprecation_versions(
+ # helper libs
+ add_subdirectory( libs )
+ if( BUILD_DESKTOPPROGRAM )
++    find_package(KF5DocTools ${REQUIRED_KF_VERSION} REQUIRED)
+     add_subdirectory( doc )
+ endif()
+ 
+-- 
+2.42.0
+

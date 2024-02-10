@@ -1,0 +1,29 @@
+--- a/rlogind/auth.c
++++ b/rlogind/auth.c
+@@ -37,6 +37,7 @@
+ #include "rlogind.h"
+ 
+ #ifdef USE_PAM
++#include <grp.h>
+ 
+ /*
+  * Modifications for Linux-PAM: Al Longyear <longyear@netcom.com>
+@@ -158,18 +159,14 @@
+     pwd = getpwnam(localuser);
+     if (pwd==NULL) {
+         syslog(LOG_ERR, "user returned by PAM does not exist\n");
+-	/* don't print this - it tells people which accounts exist */
+-	/*fprintf(stderr, "rlogind: internal error\n");*/
+ 	return -1;
+     }
+     if (setgid(pwd->pw_gid) != 0) {
+         syslog(LOG_ERR, "cannot assume gid for user returned by PAM\n");
+-	fprintf(stderr, "rlogind: internal error\n");
+ 	return -1;
+     }
+     if (initgroups(localuser, pwd->pw_gid) != 0) {
+         syslog(LOG_ERR, "initgroups failed for user returned by PAM\n");
+-	fprintf(stderr, "rlogind: internal error\n");
+ 	return -1;
+     }
+     retval = pam_setcred(pamh, PAM_ESTABLISH_CRED);

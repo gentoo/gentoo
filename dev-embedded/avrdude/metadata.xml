@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<use>
+		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>
+	</use>
+	<slots>
+		<subslots>reflect soname of libavrdude</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="github">avrdudes/avrdude</remote-id>
+	</upstream>
+</pkgmetadata>

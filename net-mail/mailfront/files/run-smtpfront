@@ -1,0 +1,14 @@
+#!/bin/sh
+
+QMAILDUID=`id -u qmaild`
+NOFILESGID=`id -g qmaild`
+
+#set CVM_SASL_LOGIN and CVM_SSASL_PLAIN to the path of cvm-vmailmgr socket (/etc/vmailmgr/cvm-vmailmgr-socket
+SOCKET=`head -n1 /etc/vmailmgr/cvm-vmailmgr-socket`
+
+export CVM_SASL_LOGIN=$SOCKET
+export CVM_SASL_PLAIN=$SOCKET
+
+exec /usr/bin/softlimit -m 2000000 \
+	/usr/bin/tcpserver -H -R -v -p -x /etc/tcp.smtp.cdb \
+	-u $QMAILDUID -g $NOFILESGID 0 smtp rblsmtpd /var/qmail/bin/smtpfront-qmail 2>&1

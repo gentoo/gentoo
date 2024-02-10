@@ -1,0 +1,61 @@
+From 127bacf86b7ef639c37dd07afc0bf848c005c3c2 Mon Sep 17 00:00:00 2001
+From: Mohammed Anas <triallax@tutanota.com>
+Date: Sun, 14 Jan 2024 03:27:31 +0000
+Subject: [PATCH] build: add missing API declaration -include to dummy and EDS
+ backends
+
+In 7a9c8133468c1f8eb7fbb0e68a6a7e061b9452fb, the original
+`-include redeclare-internal-api.h` was added for autotools. It is
+necessary due to vala internals that require guaranteeing a private
+ABI's prototype is available when compiling folks, even though vala
+doesn't generate that prototype.
+
+During the port to meson, this `-include` was dropped.
+
+Without it, `-Werror=implicit-function-declaration` will cause folks to
+fail to compile. Implicit function declarations are a terrible feature
+-- they were part of c89, but c99 removed them without a deprecation
+because they were too dangerous to use, notable in a language that
+doesn't like to remove features even *with* a deprecation.
+
+For over two decades, compilers have, by default, allowed this invalid C
+anyways, on the grounds that it commonly existed, but modern compilers
+are finally starting to enforce this. It will become a fatal error by
+default in gcc 14, and clang 16.
+
+Folks got this right all the way back in 2013; it disappeared by
+accident. Let's restore it as originally intended.
+---
+Upstream: https://gitlab.gnome.org/GNOME/folks/-/merge_requests/68
+
+ backends/dummy/lib/meson.build | 1 +
+ backends/eds/lib/meson.build   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/backends/dummy/lib/meson.build b/backends/dummy/lib/meson.build
+index 32448f35..eacc0e7a 100644
+--- a/backends/dummy/lib/meson.build
++++ b/backends/dummy/lib/meson.build
+@@ -23,6 +23,7 @@ dummy_backendlib_vala_flags = [
+ 
+ dummy_backendlib_c_flags = [
+   '-include', 'config.h',
++  '-include', 'folks/redeclare-internal-api.h',
+   '-DBACKEND_NAME="@0@"'.format(dummy_backend_name),
+   '-DG_LOG_DOMAIN="@0@"'.format(dummy_backend_name),
+ ]
+diff --git a/backends/eds/lib/meson.build b/backends/eds/lib/meson.build
+index 3e3db84c..68d803b3 100644
+--- a/backends/eds/lib/meson.build
++++ b/backends/eds/lib/meson.build
+@@ -40,6 +40,7 @@ endif
+ 
+ eds_backendlib_c_flags = [
+   '-include', 'config.h',
++  '-include', 'folks/redeclare-internal-api.h',
+   '-DBACKEND_NAME="@0@"'.format(eds_backend_name),
+   '-DG_LOG_DOMAIN="@0@"'.format(eds_backend_name),
+ ]
+-- 
+GitLab
+

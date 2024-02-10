@@ -1,0 +1,50 @@
+--- a/qelectrotech.pro	2021-02-21 10:15:38.000000000 +0100
++++ b/qelectrotech.pro	2021-02-28 21:12:15.934876464 +0100
+@@ -5,21 +5,21 @@
+ # Chemins utilises pour la compilation et l'installation de QET
+ unix {
+         # Chemins UNIX
+-        COMPIL_PREFIX              = '/usr/local/'
+-        INSTALL_PREFIX             = '/usr/local/'
++        COMPIL_PREFIX              = '/usr/'
++        INSTALL_PREFIX             = '/usr/'
+         QET_BINARY_PATH            = 'bin/'
+         QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
+         QET_COMMON_TBT_PATH        = 'share/qelectrotech/titleblocks/'
+         QET_LANG_PATH              = 'share/qelectrotech/lang/'
+         QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
+         QET_LICENSE_PATH           = 'doc/qelectrotech/'
+-        QET_MIME_XML_PATH          = '../share/mime/application/'
+-        QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
+-        QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
++        QET_MIME_XML_PATH          = 'share/mime/application/'
++        QET_MIME_DESKTOP_PATH      = 'share/mimelnk/application/'
++        QET_MIME_PACKAGE_PATH      = 'share/mime/packages/'
+         QET_DESKTOP_PATH           = 'share/applications/'
+         QET_ICONS_PATH             = 'share/icons/hicolor/'
+-        QET_MAN_PATH               = 'man/'
+-        QET_APPDATA_PATH           = 'share/appdata'
++        QET_MAN_PATH               = 'share/man/'
++        QET_APPDATA_PATH           = 'share/metainfo'
+ }
+ win32 {
+         # Chemins Windows
+@@ -252,9 +252,6 @@
+ examples.path      = $$join(INSTALL_PREFIX,,,$${QET_EXAMPLES_PATH})
+ examples.files     = examples/*
+ 
+-copyright.path     = $$join(INSTALL_PREFIX,,,$${QET_LICENSE_PATH})
+-copyright.files    = LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog
+-
+ mime_xml.path      = $$join(INSTALL_PREFIX,,,$${QET_MIME_XML_PATH})
+ mime_xml.files     = misc/x-qet-*.xml
+ 
+@@ -284,7 +281,7 @@
+ man.extra          = sh man/compress_man_pages.sh
+ 
+ # L'installation comprend la copie du binaire, des elements, des fichiers de langue et du fichier LICENSE
+-INSTALLS += target elements tbt lang copyright
++INSTALLS += target elements tbt lang
+ # Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
+ unix {
+         INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata

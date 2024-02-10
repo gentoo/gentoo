@@ -1,0 +1,20 @@
+--- a/src/bwmon.c
++++ b/src/bwmon.c
+@@ -408,7 +408,7 @@ bool_t
+ print_uptime(float * uptime) 
+ {
+ 	unsigned int tmp = 0, hour = 0, min = 0, sec = 0;
+-	char hostname[30];
++	char hostname[50];
+ 
+ 	tmp = (uint)(*uptime);
+ 	sec = tmp % 60;
+@@ -418,7 +418,7 @@ print_uptime(float * uptime)
+ 	hour = tmp % 24;
+ 	tmp = (tmp - hour) / 24;
+ 
+-	if (gethostname(hostname, strlen(hostname)) != 0)
++	if (gethostname(hostname, sizeof(hostname)) != 0)
+ 		strcpy(hostname, "System");
+ 
+ 	printw("\n%s uptime: %u day%c %u hour%c %u minutes and %u seconds\n", 

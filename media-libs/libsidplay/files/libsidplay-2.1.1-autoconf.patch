@@ -1,0 +1,172 @@
+From 426bebc250c24cb4482c85131927303cbf7c606d Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 7 May 2022 13:47:57 -0700
+Subject: [PATCH 1/2] build: Fix autoreconf
+
+---
+ builders/hardsid-builder/configure.ac |   1 +
+ builders/resid-builder/configure.ac   |   1 +
+ configure.ac                          |  75 ++----
+ libsidplay/configure.ac               |   1 +
+ libsidutils/configure.ac              |   1 +
+ resid/{configure.in => configure.ac}  |   0
+ 6 files changed, 30 insertions(+), 49 deletions(-)
+ rename resid/{configure.in => configure.ac} (100%)
+ create mode 100644 unix/ax_subdirs_configure.m4
+
+diff --git a/builders/hardsid-builder/configure.ac b/builders/hardsid-builder/configure.ac
+index a54cf26..bdc2bd0 100644
+--- a/builders/hardsid-builder/configure.ac
++++ b/builders/hardsid-builder/configure.ac
+@@ -2,6 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(Makefile.am)
+ AC_CONFIG_AUX_DIR(unix)
+ AM_CONFIG_HEADER(unix/config.h)
++AC_CONFIG_MACRO_DIR([unix])
+ 
+ dnl Setup library CURRENT, REVISION and AGE
+ LIBCUR=0
+diff --git a/builders/resid-builder/configure.ac b/builders/resid-builder/configure.ac
+index 4a98801..5f5561b 100644
+--- a/builders/resid-builder/configure.ac
++++ b/builders/resid-builder/configure.ac
+@@ -2,6 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(Makefile.am)
+ AC_CONFIG_AUX_DIR(unix)
+ AM_CONFIG_HEADER(unix/config.h)
++AC_CONFIG_MACRO_DIR([unix])
+ 
+ dnl Setup library CURRENT, REVISION and AGE
+ LIBCUR=0
+diff --git a/configure.ac b/configure.ac
+index 5724156..d622982 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,70 +3,47 @@ AC_INIT(Makefile.am)
+ #Variables
+ pwd=`pwd`
+ builders='${libdir}'/sidplay/builders
+-ac_configure_args="$ac_configure_args --disable-library-checks"
+ 
+ AC_CONFIG_AUX_DIR(unix)
++AC_CONFIG_MACRO_DIR([unix])
+ AM_INIT_AUTOMAKE(sidplay-libs,2.1.1)
+ AC_CANONICAL_HOST
+ 
+ hardsid=false
+ case "$host" in
+-    *linux*) hardsid=true
+-        ;;
++    *linux*) hardsid=true ;;
+ esac
+-AM_CONDITIONAL(HARDSID, test x$hardsid = xtrue)
+ 
+-echo; echo "Configuring libsidplay..."
+-cd $pwd/libsidplay
+-if ! eval ./configure $ac_configure_args \
+---with-sidbuilders=$builders;
+-then
+-exit
+-fi
++AX_SUBDIRS_CONFIGURE([libsidplay], [
++        [--disable-library-checks],
++        [--with-sidbuilders=$builders]])
+ 
+-echo; echo "Configuring resid..."
+-cd "$pwd/resid"
+-if ! eval ./configure $ac_configure_args \
+---disable-resid-install;
+-then
+-exit
+-fi
++AX_SUBDIRS_CONFIGURE([resid], [
++       [--disable-library-checks],
++       [--disable-resid-install]])
+ 
+-echo; echo "Configuring resid-builder..."
+-cd $pwd/builders/resid-builder
+-if ! eval ./configure $ac_configure_args \
+---with-sidplay2-includes=$pwd/libsidplay/include \
+---with-sidplay2-library=$pwd/libsidplay/src \
+---with-resid-includes=$pwd/resid \
+---with-resid-library=$pwd/resid \
+---libdir=$builders;
+-then
+-exit
+-fi
++AX_SUBDIRS_CONFIGURE([builders/resid-builder], [
++        [--disable-library-checks],
++        [--with-sidplay2-includes=$pwd/libsidplay/include],
++        [--with-sidplay2-library=$pwd/libsidplay/src],
++        [--with-resid-includes=$pwd/resid],
++        [--with-resid-library=$pwd/resid],
++        [--libdir=$builders]])
+ 
+-if test x$hardsid = xtrue; then
+-    echo; echo "Configuring hardsid-builder..."
+-    cd $pwd/builders/hardsid-builder
+-    if ! eval ./configure $ac_configure_args \
+-        --with-sidplay2-includes=$pwd/libsidplay/include \
+-        --with-sidplay2-library=$pwd/libsidplay/src \
+-        --libdir=$builders;
+-    then
+-    exit
+-    fi
+-fi
++AM_CONDITIONAL(HARDSID, test x$hardsid = xtrue)
+ 
+-echo; echo "Configuring libsidutils..."
+-cd $pwd/libsidutils
+-if ! eval ./configure $ac_configure_args \
+---with-sidplay2-includes=$pwd/libsidplay/include \
+---with-sidplay2-library=$pwd/libsidplay/src;
+-then
+-exit
++if test x$hardsid = xtrue; then
++    AX_SUBDIRS_CONFIGURE([builders/hardsid-builder], [
++            [--disable-library-checks],
++            [--with-sidplay2-includes=$pwd/libsidplay/include],
++            [--with-sidplay2-library=$pwd/libsidplay/src],
++            [--libdir=$builders]])
+ fi
+ 
+-echo
+-cd $pwd
++AX_SUBDIRS_CONFIGURE([libsidutils], [
++        [--disable-library-checks],
++        [--with-sidplay2-includes=$pwd/libsidplay/include],
++        [--with-sidplay2-library=$pwd/libsidplay/src]])
+ 
+ AC_OUTPUT(
+ Makefile \
+diff --git a/libsidplay/configure.ac b/libsidplay/configure.ac
+index 1946508..9c9d808 100644
+--- a/libsidplay/configure.ac
++++ b/libsidplay/configure.ac
+@@ -8,6 +8,7 @@ AC_INIT(libsidplay,2.LIBCUR.LIBREV)
+ AC_CONFIG_HEADER(unix/config.h)
+ AC_CONFIG_SRCDIR(Makefile.am)
+ AC_CONFIG_AUX_DIR(unix)
++AC_CONFIG_MACRO_DIR([unix])
+ AM_INIT_AUTOMAKE(no-define)
+ 
+ dnl libtool-style version-info number
+diff --git a/libsidutils/configure.ac b/libsidutils/configure.ac
+index 1e38d14..4461aa1 100644
+--- a/libsidutils/configure.ac
++++ b/libsidutils/configure.ac
+@@ -2,6 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(Makefile.am)
+ AC_CONFIG_AUX_DIR(unix)
+ AM_CONFIG_HEADER(unix/config.h)
++AC_CONFIG_MACRO_DIR([unix])
+ 
+ dnl Setup library CURRENT, REVISION and AGE
+ LIBCUR=0
+diff --git a/resid/configure.in b/resid/configure.ac
+similarity index 100%
+rename from resid/configure.in
+rename to resid/configure.ac
+-- 
+2.35.1
+

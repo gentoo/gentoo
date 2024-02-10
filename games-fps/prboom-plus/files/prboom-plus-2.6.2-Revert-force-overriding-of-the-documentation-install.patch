@@ -1,0 +1,27 @@
+From 395fd2519f9f855b872fc59884cf88f643386a73 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Fri, 18 Feb 2022 13:54:35 +0900
+Subject: [PATCH] Revert "force overriding of the documentation installation
+ directory"
+
+This reverts commit daa454465c80231762f66aa2fa2794b547bbaa55.
+---
+ prboom2/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/prboom2/CMakeLists.txt b/prboom2/CMakeLists.txt
+index b5f92c87..18152ea0 100644
+--- a/prboom2/CMakeLists.txt
++++ b/prboom2/CMakeLists.txt
+@@ -38,7 +38,7 @@ set(PACKAGE_TARNAME "prboom-plus")
+ set(PACKAGE_VERSION "${PROJECT_VERSION}")
+ set(PACKAGE_HOMEPAGE "${PROJECT_HOMEPAGE_URL}")
+ set(PACKAGE_STRING "${PROJECT_NAME} ${PROJECT_VERSION}")
+-set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PACKAGE_TARNAME}" CACHE PATH "" FORCE)
++set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PACKAGE_TARNAME}" CACHE PATH "")
+ 
+ include(CheckSymbolExists)
+ 
+-- 
+2.35.1
+

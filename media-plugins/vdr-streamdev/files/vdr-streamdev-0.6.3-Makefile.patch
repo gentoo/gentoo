@@ -1,0 +1,36 @@
+diff -Naur vdr-plugin-streamdev-0.6.3.orig/libdvbmpeg/Makefile vdr-plugin-streamdev-0.6.3/libdvbmpeg/Makefile
+--- vdr-plugin-streamdev-0.6.3.orig/libdvbmpeg/Makefile	2022-01-22 17:07:53.000000000 +0100
++++ vdr-plugin-streamdev-0.6.3/libdvbmpeg/Makefile	2022-06-30 23:15:50.274114529 +0200
+@@ -15,7 +15,7 @@
+ 
+ .PHONY: clean
+ libdvbmpegtools.a: $(OBJS)
+-	ar -rcs libdvbmpegtools.a $(OBJS) 
++	$(AR) -rcs libdvbmpegtools.a $(OBJS)
+ 
+ ### Implicit rules:
+ 
+diff -Naur vdr-plugin-streamdev-0.6.3.orig/remux/Makefile vdr-plugin-streamdev-0.6.3/remux/Makefile
+--- vdr-plugin-streamdev-0.6.3.orig/remux/Makefile	2022-01-22 17:07:53.000000000 +0100
++++ vdr-plugin-streamdev-0.6.3/remux/Makefile	2022-06-30 23:15:18.845454583 +0200
+@@ -11,7 +11,7 @@
+ 
+ .PHONY: clean
+ remux.a: $(OBJS)
+-	ar -rcs remux.a $^
++	$(AR) -rcs remux.a $^
+ 
+ ### Implicit rules:
+ 
+diff -Naur vdr-plugin-streamdev-0.6.3.orig/tools/Makefile vdr-plugin-streamdev-0.6.3/tools/Makefile
+--- vdr-plugin-streamdev-0.6.3.orig/tools/Makefile	2022-01-22 17:07:53.000000000 +0100
++++ vdr-plugin-streamdev-0.6.3/tools/Makefile	2022-06-30 23:16:14.494623068 +0200
+@@ -11,7 +11,7 @@
+ 
+ .PHONY: clean
+ sockettools.a: $(OBJS)
+-	ar -rcs sockettools.a $(OBJS) 
++	$(AR) -rcs sockettools.a $(OBJS)
+ 
+ ### Implicit rules:
+ 

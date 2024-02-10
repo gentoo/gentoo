@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4cc6260..d4518fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -319,7 +319,7 @@ SET(libnipper_SRC
+ ADD_LIBRARY(nipper SHARED ${libnipper_SRC})
+ 
+ # Install...
+-INSTALL(TARGETS nipper LIBRARY DESTINATION /usr/lib)
++INSTALL(TARGETS nipper LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ INSTALL(FILES nipper.conf DESTINATION /etc)
+ INSTALL(FILES libnipper.h config.h DESTINATION /usr/include/libnipper/)
+ INSTALL(FILES man/nipper.conf.5 DESTINATION /usr/share/man/man5)

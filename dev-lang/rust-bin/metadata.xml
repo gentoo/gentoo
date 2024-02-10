@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>randy@electronsweatshop.com</email>
+		<name>Randy Barlow</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>navi@vlhl.dev</email>
+		<name>Anna Figueiredo Gomes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>rust@gentoo.org</email>
+		<name>Rust Project</name>
+	</maintainer>
+	<use>
+		<flag name="clippy">Install clippy, Rust code linter</flag>
+		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
+		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
+		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rust-lang/rust</remote-id>
+	</upstream>
+</pkgmetadata>

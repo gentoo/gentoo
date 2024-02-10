@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/870928
+--- a/colormap.c
++++ b/colormap.c
+@@ -28,2 +28,3 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>

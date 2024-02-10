@@ -1,0 +1,78 @@
+--- a/bits.h
++++ b/bits.h
+@@ -15,4 +15,4 @@
+ int seek_sync(unsigned int sync, int N);
+ unsigned int look_ahead(int N);
+ 
+-
++#define strlwr(x)
+--- a/bbainfo.cpp
++++ b/bbainfo.cpp
+@@ -97,8 +97,8 @@
+ {
+   int i, framesize, skip;
+ 
+-  framesize = bitrate_index[3 - layer][bit_rate] /
+-              frequency[freq] * slots[3 - layer];
++  framesize = (int) (bitrate_index[3 - layer][bit_rate] /
++              frequency[freq] * slots[3 - layer]);
+ 
+   if (padding_bit)
+     framesize++;
+--- a/bbinfo.cpp
++++ b/bbinfo.cpp
+@@ -984,7 +984,7 @@
+                           bit_rate = (k & 0xF0) >> 4;
+                           freq = (k & 0x0C) >> 2;
+                           padding_bit = (k & 0x02) >> 1;
+-                          audio_sync[i] = ((bitrate_index[3 - layer][bit_rate] /
++                          audio_sync[i] = (int) ((bitrate_index[3 - layer][bit_rate] /
+                                             frequency[freq]) * slots[3 - layer]) - 4;
+                           if (padding_bit)
+                             audio_sync[i] += 1;
+@@ -1274,7 +1274,7 @@
+                           bit_rate = (k & 0xF0) >> 4;
+                           freq = (k & 0x0C) >> 2;
+                           padding_bit = (k & 0x02) >> 1;
+-                          audio_sync[i] = ((bitrate_index[3 - layer][bit_rate] /
++                          audio_sync[i] = (int) ((bitrate_index[3 - layer][bit_rate] /
+                                             frequency[freq]) * slots[3 - layer]) - 4;
+ 
+                           if (padding_bit)
+@@ -2198,7 +2198,7 @@
+                     bit_rate = (k & 0xF0) >> 4;
+                     freq = (k & 0x0C) >> 2;
+                     padding_bit = (k & 0x02) >> 1;
+-                    streams[PID]->audio_sync = ((bitrate_index[3 - layer][bit_rate] /
++                    streams[PID]->audio_sync = (int) ((bitrate_index[3 - layer][bit_rate] /
+                                       frequency[freq]) * slots[3 - layer]) - 4;
+                     if (padding_bit)
+                       streams[PID]->audio_sync += 1;
+--- a/Makefile
++++ b/Makefile
+@@ -0,0 +1,25 @@
++all: bbainfo bbdmux bbinfo bbvinfo
++
++bbdmux: bits.o bbdmux.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -lm -o $@ 
++
++bbinfo: bits.o bbinfo.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -lm -o $@ 
++
++bbvinfo: bits.o bbvinfo.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -lm -o $@ 
++
++bbainfo: bits.o bbainfo.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -lm -o $@ 
++
++%.o: %.c
++	$(CXX) $(CXXFLAGS) -c -o $@ $<
++
++clean:
++	rm -f bbainfo bbdmux bbinfo bbvinfo core *.o
++
++bbainfo.o: bbainfo.cpp bits.h
++bbdmux.o: bbdmux.cpp bits.h
++bbinfo.o: bbinfo.cpp bits.h
++bbvinfo.o: bbvinfo.cpp bits.h
++bits.o: bits.cpp bits.h

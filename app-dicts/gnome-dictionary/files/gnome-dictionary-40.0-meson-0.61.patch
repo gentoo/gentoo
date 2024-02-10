@@ -1,0 +1,100 @@
+https://gitlab.gnome.org/GNOME/gnome-dictionary/-/commit/87c026cfe4acbcfc62d15950f88a71d8d9678c7e.patch
+https://gitlab.gnome.org/GNOME/gnome-dictionary/-/merge_requests/18.patch
+https://bugs.gentoo.org/831555
+
+From 87c026cfe4acbcfc62d15950f88a71d8d9678c7e Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Thu, 22 Apr 2021 15:11:59 +0100
+Subject: [PATCH] build: Fix test dependencies with Meson 0.57
+
+We need to explicitly depend on the generated files.
+---
+ data/appdata/meson.build | 3 ++-
+ data/meson.build         | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/data/appdata/meson.build b/data/appdata/meson.build
+index 1dc4ed7..ef95c85 100644
+--- a/data/appdata/meson.build
++++ b/data/appdata/meson.build
+@@ -1,6 +1,6 @@
+ appdata_conf = configuration_data()
+ appdata_conf.set('application_id', application_id)
+-i18n.merge_file('appdata',
++appdata_file = i18n.merge_file('appdata',
+   input: configure_file(
+     input: 'org.gnome.Dictionary.appdata.xml.in.in',
+     output: 'org.gnome.Dictionary.appdata.xml.in',
+@@ -18,6 +18,7 @@ if appstream_util.found()
+     appstream_util,
+     args: [ 'validate', '--nonet', application_id + '.appdata.xml' ],
+     workdir: meson.current_build_dir(),
++    depends: appdata_file,
+   )
+ endif
+ 
+diff --git a/data/meson.build b/data/meson.build
+index 660e6b8..1723c8f 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -3,7 +3,7 @@ subdir('appdata')
+ desktop_conf = configuration_data()
+ desktop_conf.set('icon', application_id)
+ desktop_conf.set('application_id', application_id)
+-i18n.merge_file('desktop',
++desktop_file = i18n.merge_file('desktop',
+   input: configure_file(
+     input: 'org.gnome.Dictionary.desktop.in.in',
+     output: 'org.gnome.Dictionary.desktop.in',
+@@ -22,6 +22,7 @@ if desktop_file_validate.found()
+     desktop_file_validate,
+     args: application_id + '.desktop',
+     workdir: meson.current_build_dir(),
++    depends: desktop_file,
+   )
+ endif
+ 
+-- 
+GitLab
+
+From cf3f8a67cd6f3059c555ed9cf0f5fba10abb7f68 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Mon, 24 Jan 2022 11:13:54 +0000
+Subject: [PATCH] meson: drop unused argument for i18n.merge_file()
+
+Ignored in Meson < 0.60.0, deprecated since 0.60.1 and fatal since 0.61.0.
+
+data/appdata/meson.build:3:5: ERROR: Function does not take positional arguments.
+data/meson.build:6:5: ERROR: Function does not take positional arguments.
+data/meson.build:49:5: ERROR: Function does not take positional arguments.
+--- a/data/appdata/meson.build
++++ b/data/appdata/meson.build
+@@ -1,6 +1,6 @@
+ appdata_conf = configuration_data()
+ appdata_conf.set('application_id', application_id)
+-appdata_file = i18n.merge_file('appdata',
++appdata_file = i18n.merge_file(
+   input: configure_file(
+     input: 'org.gnome.Dictionary.appdata.xml.in.in',
+     output: 'org.gnome.Dictionary.appdata.xml.in',
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -3,7 +3,7 @@ subdir('appdata')
+ desktop_conf = configuration_data()
+ desktop_conf.set('icon', application_id)
+ desktop_conf.set('application_id', application_id)
+-desktop_file = i18n.merge_file('desktop',
++desktop_file = i18n.merge_file(
+   input: configure_file(
+     input: 'org.gnome.Dictionary.desktop.in.in',
+     output: 'org.gnome.Dictionary.desktop.in',
+@@ -46,7 +46,7 @@ sources = [
+ ]
+ 
+ foreach s: sources
+-  i18n.merge_file('sources',
++  i18n.merge_file(
+     input: '@0@.in'.format(s),
+     output: s,
+     install: true,
+GitLab

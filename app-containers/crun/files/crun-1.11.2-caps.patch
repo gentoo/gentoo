@@ -1,0 +1,32 @@
+From 767ba88ef363115e80e077ce312f89f20488da01 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert=20G=C3=BCnzler?= <r@gnzler.io>
+Date: Thu, 9 Nov 2023 14:16:08 +0100
+Subject: [PATCH] Fix build without libcap
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The work to support features introduced another point of dependency on
+libcap that previously wasn't guarded by ifdefs
+
+Refs: https://github.com/containers/crun/pull/1237
+Signed-off-by: Robert Günzler <r@gnzler.io>
+---
+ src/libcrun/container.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/libcrun/container.c b/src/libcrun/container.c
+index ed0fa29bb..7be1713ab 100644
+--- a/src/libcrun/container.c
++++ b/src/libcrun/container.c
+@@ -3925,8 +3925,10 @@ libcrun_container_get_features (libcrun_context_t *context, struct features_info
+   // Populate namespaces
+   populate_array_field (&((*info)->linux.namespaces), namespaces, num_namspaces);
+ 
++#ifdef HAVE_CAP
+   // Populate capabilities
+   populate_capabilities (*info, &capabilities, &num_capabilities);
++#endif
+ 
+   // Hardcode the values for cgroup
+   (*info)->linux.cgroup.v1 = true;

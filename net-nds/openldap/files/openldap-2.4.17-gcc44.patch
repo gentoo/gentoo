@@ -1,0 +1,10 @@
+--- a/contrib/ldapc++/src/SaslInteractionHandler.cpp
++++ b/contrib/ldapc++/src/SaslInteractionHandler.cpp
+@@ -13,6 +13,7 @@
+ #include <termios.h>
+ #endif
+ 
++#include <stdio.h>
+ #include <string.h>
+ #include "SaslInteractionHandler.h"
+ #include "SaslInteraction.h"

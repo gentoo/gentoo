@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    This system provides CryptoMiniSat, an advanced incremental SAT solver.
+    The system has 3 interfaces: command-line, C++ library and python.
+    The command-line interface takes a cnf as an input in the DIMACS format
+    with the extension of XOR clauses. The C++ and python interface mimics this
+    and also allows for incremental use: assumptions and multiple solve calls.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/msoos/cryptominisat/issues/</bugs-to>
+    <remote-id type="github">msoos/cryptominisat</remote-id>
+  </upstream>
+</pkgmetadata>

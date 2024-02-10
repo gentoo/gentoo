@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
+	<use>
+		<flag name="bogofilter">Install <pkg>mail-filter/bogofilter</pkg> for spam filter support in <pkg>kde-apps/kmail</pkg></flag>
+		<flag name="clamav">Install <pkg>app-antivirus/clamav</pkg> for virus detection support in <pkg>kde-apps/kmail</pkg></flag>
+		<flag name="spamassassin">Install <pkg>mail-filter/spamassassin</pkg> for spam filter support in <pkg>kde-apps/kmail</pkg></flag>
+	</use>
+</pkgmetadata>

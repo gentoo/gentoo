@@ -1,0 +1,32 @@
+--- a/rexecd/rexecd.c
++++ b/rexecd/rexecd.c
+@@ -300,6 +300,7 @@
+        PAM_password = pass;
+        pam_error = pam_start("rexec", PAM_username, &PAM_conversation,&pamh);
+        PAM_BAIL;
++       (void) pam_set_item (pamh, PAM_TTY, "rexec");   /* we don't have a tty yet! */
+        pam_error = pam_authenticate(pamh, 0);
+        PAM_BAIL;
+        pam_error = pam_acct_mgmt(pamh, 0);
+--- a/rlogind/auth.c
++++ b/rlogind/auth.c
+@@ -123,7 +123,7 @@
+     pam_set_item(pamh, PAM_USER, localuser);
+     pam_set_item(pamh, PAM_RUSER, remoteuser);
+     pam_set_item(pamh, PAM_RHOST, host);
+-    pam_set_item(pamh, PAM_TTY, "tty");   /* ? */
++    pam_set_item(pamh, PAM_TTY, "rlogin");   /* we don't have a tty yet! */
+ 	
+     network_confirm();
+     retval = attempt_auth();
+--- a/rshd/rshd.c
++++ b/rshd/rshd.c
+@@ -243,7 +243,7 @@
+     }
+     pam_set_item (pamh, PAM_RUSER, remuser);
+     pam_set_item (pamh, PAM_RHOST, hostname);
+-    pam_set_item (pamh, PAM_TTY, "tty");
++    pam_set_item (pamh, PAM_TTY, "rsh");  /* we don't use a tty, so punt */
+     
+     retcode = pam_authenticate(pamh, 0);
+     if (retcode == PAM_SUCCESS) {

@@ -1,0 +1,29 @@
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -1,24 +1,14 @@
+ # suitename
+ 
+-ifeq ($(MAKECMDGOALS),debug)
+-CFLAGS = -g
+-else
+-CFLAGS =
+-endif
+-
+-LIBS = -lm 
++LDLIBS = -lm 
+ 
+ # ---------------------------------------------------------------------
+ 
+-OBJS = suitename.o suitenscrt.o suiteninit.o suiteninpt.o suitenout.o suitenutil.o
++OBJS = suitenscrt.o suiteninit.o suiteninpt.o suitenout.o suitenutil.o
+ 
+ # ---------------------------------------------------------------------
+ HEADERS = suitename.h suitenscrt.h suitenutil.h suiteninit.h suiteninpt.h suitenout.h
+ suitename: $(OBJS)
+-	cc -o suitename $(CFLAGS) $(OBJS) $(LIBS)
+-
+-debug:     $(OBJS)
+-	cc -o suitename $(CFLAGS) $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o

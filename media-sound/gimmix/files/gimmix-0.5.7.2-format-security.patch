@@ -1,0 +1,13 @@
+diff --git a/src/gimmix-config.c b/src/gimmix-config.c
+index 3ef4e48..821a427 100644
+--- a/src/gimmix-config.c
++++ b/src/gimmix-config.c
+@@ -146,7 +146,7 @@ gimmix_config_get_proxy_string (void)
+ 		}
+ 		else
+ 		{
+-			ret = g_strdup_printf (host);
++			ret = g_strdup (host);
+ 		}
+ 	}
+ 

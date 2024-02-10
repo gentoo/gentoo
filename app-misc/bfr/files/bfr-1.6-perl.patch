@@ -1,0 +1,28 @@
+--- old/bfr.pod	2004-03-03 15:38:53.000000000 +0100
++++ new/bfr.pod	2014-10-12 06:53:49.011697801 +0200
+@@ -176,8 +176,12 @@
+
+ =back
+
++=back
++
+ =head2 BUFPLAY SPECIFIC OPTIONS
+
++=over 2
++
+ =item
+
+ B<-s> | B<--speed>
+@@ -226,8 +230,12 @@
+
+ =back
+
++=back
++
+ =head2 DEBUG SPECIFIC OPTIONS
+
++=over 2
++
+ =item
+
+ B<-d> | B<--debug>

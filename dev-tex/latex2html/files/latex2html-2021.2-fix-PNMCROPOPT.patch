@@ -1,0 +1,31 @@
+From ea0ae1cf6789cf8f29bf07406ef6e91918b6bfc3 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Wed, 10 Nov 2021 00:32:14 +0000
+Subject: [PATCH] fix pnmcrop duplicated -sides option (aka PNMCROPOPT)
+
+If the variable PNMCROPOPT is defined as "-sides" via config/config.pl
+in pstoimg.bin, calling `pnmcrop -bot -sides $PNMCROPOPT` will give an
+error, due to the duplicated option.
+---
+ pstoimg.pin | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pstoimg.pin b/pstoimg.pin
+index 2c4f3e4..588b987 100755
+--- a/pstoimg.pin
++++ b/pstoimg.pin
+@@ -1300,9 +1300,9 @@ sub crop_scale_etc {
+     my $edge = $1;
+     my $croparg = '';
+     if($edge =~ /b/i) {
+-      $croparg = "-bot -sides $PNMCROPOPT ";
++      $croparg = "-bot -sides ";
+     } elsif($edge =~ /[tlr]/i) {
+-      $croparg = "-$edge -sides $PNMCROPOPT ";
++      $croparg = "-$edge -sides ";
+     } elsif($edge =~ /s/i) {
+       #RRM: shave at most 1-2 rows of white from the bottom
+ #if @pipes@
+-- 
+2.32.0
+

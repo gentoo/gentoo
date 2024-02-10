@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alex.miller@gmx.de</email>
+		<name>Alexander Miller</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+
+	<longdescription>
+		Torrentzip converts zip archives to a standard format with some 
+		pre-defined values, sorting the files, and using particular 
+		compression settings so that running it on zip archives created 
+		by other tools will always result in the same output. This helps 
+		e.g. with sharing zip archives using BitTorrent (which is where 
+		the name comes from).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">0-wiz-0/trrntzip</remote-id>
+		<remote-id type="sourceforge">trrntzip</remote-id>
+	</upstream>
+</pkgmetadata>

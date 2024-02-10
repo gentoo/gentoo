@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		mGBA is an emulator for running Game Boy Advance games.
+		It aims to be faster and more accurate than many
+		existing Game Boy Advance emulators.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/mgba/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/mgba</remote-id>
+	</upstream>
+</pkgmetadata>

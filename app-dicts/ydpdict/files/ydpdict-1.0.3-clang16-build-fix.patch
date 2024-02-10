@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/894364
+Upstream PR: https://github.com/wojtekka/ydpdict/pull/4
+--- a/src/ydpdict.c
++++ b/src/ydpdict.c
+@@ -55,6 +55,7 @@
+ 
+ #ifdef HAVE_LOCALE_H
+ #include <locale.h>
++#include <libintl.h>
+ #endif
+ 
+ #ifdef HAVE_LIBAO

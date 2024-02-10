@@ -1,0 +1,8 @@
+--- a/src/lib/fileutils/dune
++++ b/src/lib/fileutils/dune
+@@ -30,4 +30,4 @@
+     fileUtilWHICH
+     unixPath
+     win32Path)
+-  (libraries unix seq stdlib-shims))
++  (libraries unix stdlib-shims))

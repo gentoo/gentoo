@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="boost">Use <pkg>dev-libs/boost</pkg></flag>
+		<flag name="tools">Install optional tools for e.g. hashing</flag>
+	</use>
+	<slots>
+		<subslots>botan soname version</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:botan_project:botan</remote-id>
+		<remote-id type="github">randombit/botan</remote-id>
+	</upstream>
+</pkgmetadata>

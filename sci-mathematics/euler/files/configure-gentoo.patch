@@ -1,0 +1,35 @@
+--- a/configure.in
++++ b/configure.in
+@@ -8,8 +8,6 @@
+ AM_CONFIG_HEADER(config.h)
+ 
+ AC_ISC_POSIX
+-CFLAGS=""
+-AC_SUBST(CFLAGS)
+ AC_PROG_CC
+ AM_PROG_CC_STDC
+ AC_HEADER_STDC
+@@ -21,6 +19,10 @@
+ 
+ 
+ dnl Checks for libraries.
++dnl Check for libm for fmod()
++AC_SEARCH_LIBS([fmod], [m], [], [
++	AC_MSG_ERROR([unable to find the fmod() function])
++])
+ 
+ 
+ dnl Checks for header files.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,10 +7,6 @@
+ INCLUDES = \
+ 	$(GTK_CFLAGS)
+ 
+-AM_CFLAGS =\
+-	 -Wall\
+-	 -O3
+-
+ bin_PROGRAMS = euler
+ 
+ euler_SOURCES = \

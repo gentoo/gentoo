@@ -1,0 +1,21 @@
+# @GENTOO_PORTAGE_EPREFIX@/etc/mysql/50-distro-client.cnf: The global mysql configuration file.
+
+# The following options will be passed to all MySQL clients
+[client]
+socket						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
+character-sets-dir				= @GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+loose-default-character-set=utf8
+
+[mysql]
+# uncomment the next directive if you are not familiar with SQL
+#safe-updates
+
+[mysqldump]
+quick
+max_allowed_packet			= 16M
+
+[myisamchk]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+
+[myisampack]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets

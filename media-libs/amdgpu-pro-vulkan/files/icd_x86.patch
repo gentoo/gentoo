@@ -1,0 +1,8 @@
+--- a/amd_icd32.json
++++ b/amd_icd32.json
+@@ -4 +4 @@
+-        "library_path": "/opt/amdgpu-pro/lib/i386-linux-gnu/amdvlk32.so",
++        "library_path": "/usr/lib/amdvlkpro32.so",
+@@ -10 +10 @@
+-        "library_path": "/opt/amdgpu-pro/lib/i386-linux-gnu/amdvlk32.so",
++        "library_path": "/usr/lib/amdvlkpro32.so",

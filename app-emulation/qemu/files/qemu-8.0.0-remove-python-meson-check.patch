@@ -1,0 +1,40 @@
+diff --git a/configure b/configure
+index 4369fa5..7807ad5 100755
+--- a/configure
++++ b/configure
+@@ -1095,34 +1095,7 @@ has_meson() {
+   fi
+ }
+ 
+-if test -z "$meson"; then
+-    if test "$explicit_python" = no && has_meson && version_ge "$(meson --version)" 0.61.5; then
+-        meson=meson
+-    elif test "$git_submodules_action" != 'ignore' ; then
+-        meson=git
+-    elif test -e "${source_path}/meson/meson.py" ; then
+-        meson=internal
+-    else
+-        if test "$explicit_python" = yes; then
+-            error_exit "--python requires using QEMU's embedded Meson distribution, but it was not found."
+-        else
+-            error_exit "Meson not found.  Use --meson=/path/to/meson"
+-        fi
+-    fi
+-else
+-    # Meson uses its own Python interpreter to invoke other Python scripts,
+-    # but the user wants to use the one they specified with --python.
+-    #
+-    # We do not want to override the distro Python interpreter (and sometimes
+-    # cannot: for example in Homebrew /usr/bin/meson is a bash script), so
+-    # just require --meson=git|internal together with --python.
+-    if test "$explicit_python" = yes; then
+-        case "$meson" in
+-            git | internal) ;;
+-            *) error_exit "--python requires using QEMU's embedded Meson distribution." ;;
+-        esac
+-    fi
+-fi
++meson=meson
+ 
+ if test "$meson" = git; then
+     git_submodules="${git_submodules} meson"

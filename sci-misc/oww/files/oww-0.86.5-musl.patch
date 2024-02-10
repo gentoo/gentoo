@@ -1,0 +1,20 @@
+--- a/src/applctn.h
++++ b/src/applctn.h
+@@ -1,3 +1,5 @@
++#include <stdint.h>
++
+ void applctn_pre_init(int *argc, char ***argv) ;
+ void applctn_init(int *argc, char ***argv) ;
+ int applctn_startup_finished(void) ; /* Function to call in state_startup */
+--- a/src/ownet.h
++++ b/src/ownet.h
+@@ -42,9 +42,7 @@
+ //--------------------------------------------------------------//
+ #include <stdlib.h>
+ #include <stdio.h>
+-#ifdef __FreeBSD__
+ #include <sys/types.h>
+-#endif
+ //#include <windows.h>
+ 
+ //--------------------------------------------------------------//

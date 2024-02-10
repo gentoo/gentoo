@@ -1,0 +1,42 @@
+https://github.com/canonical/lightdm/pull/261
+
+# Fix LC_IDENTIFICATION undeclared on musl or other libc that doesn't have it defined
+# Patch is taken from Alpine linux [1]
+# [1]: https://git.alpinelinux.org/aports/tree/community/lightdm/musl-language.patch
+# Closes: https://bugs.gentoo.org/766866
+diff --git a/liblightdm-gobject/language.c b/liblightdm-gobject/language.c
+index 3d4fa96..e38f5ce 100644
+--- a/liblightdm-gobject/language.c
++++ b/liblightdm-gobject/language.c
+@@ -210,6 +210,7 @@ lightdm_language_get_name (LightDMLanguage *language)
+
+     if (!priv->name)
+     {
++#if HAVE_LC_IDENTIFICATION
+         g_autofree gchar *locale = get_locale_name (priv->code);
+         if (locale)
+         {
+@@ -223,6 +224,7 @@ lightdm_language_get_name (LightDMLanguage *language)
+
+             setlocale (LC_ALL, current);
+         }
++#endif
+         if (!priv->name)
+         {
+             g_auto(GStrv) tokens = g_strsplit_set (priv->code, "_.@", 2);
+@@ -250,6 +252,7 @@ lightdm_language_get_territory (LightDMLanguage *language)
+
+     if (!priv->territory && strchr (priv->code, '_'))
+     {
++#if HAVE_LC_IDENTIFICATION
+         g_autofree gchar *locale = get_locale_name (priv->code);
+         if (locale)
+         {
+@@ -263,6 +266,7 @@ lightdm_language_get_territory (LightDMLanguage *language)
+
+             setlocale (LC_ALL, current);
+         }
++#endif
+         if (!priv->territory)
+         {
+             g_auto(GStrv) tokens = g_strsplit_set (priv->code, "_.@", 3);

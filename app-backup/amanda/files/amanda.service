@@ -1,0 +1,10 @@
+[Unit]
+Description=Amanda Backup System
+After=local-fs.target
+
+[Service]
+User=amanda
+Group=amanda
+ExecStart=/usr/libexec/amanda/amandad -auth=bsdtcp amdump
+StandardInput=socket
+StandardOutput=socket

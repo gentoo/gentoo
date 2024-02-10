@@ -1,0 +1,32 @@
+respect env build settings
+
+--- a/Makefile.rules.in
++++ b/Makefile.rules.in
+@@ -1,9 +1,9 @@
+ CC	= @CC@
+-CFLAGS	= -Wall -fomit-frame-pointer @CFLAGS@ -I$(TOPSRCDIR)
++CFLAGS	= -Wall @CPPFLAGS@ @CFLAGS@ -I$(TOPSRCDIR)
+ LIBS	= @LIBS@
+ LD_R	= ld -r
+ RM	= rm -f
+-LDFLAGS = 
++LDFLAGS = @LDFLAGS@
+ 
+ 
+ prefix          = @prefix@
+
+fix parallel build problems ... objs need generated tracer, and coldfire
+needs subdir objs
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -22,7 +22,8 @@
+ #Force version to be made before subdirectories
+ subdirs-all: version.h
+ 
+-coldfire: $(OBJS) force
++$(OBJS): | subdirs-all
++coldfire: $(OBJS) force | subdirs-all
+ 	$(CC) $(LDFLAGS) $(OBJS) $(SUBDIR_OBJS) -o $@ $(LIBS)
+ 	
+ 	

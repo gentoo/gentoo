@@ -1,0 +1,221 @@
+https://bugs.gentoo.org/874546
+https://bugs.gentoo.org/882245
+
+https://github.com/TeX-Live/texlive-source/commit/3b1470c8911cd4bc9e4a02bfb5cac0f3bebcab3a
+https://github.com/TeX-Live/texlive-source/commit/60b60503b21ea43c68d1ffbe214141a79a36190b
+https://github.com/TeX-Live/texlive-source/commit/bb307f8bd91c5ea4f191b9c788056470626893b7
+
+From 3b1470c8911cd4bc9e4a02bfb5cac0f3bebcab3a Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Sat, 5 Nov 2022 15:43:53 +0000
+Subject: [PATCH] stdlib.h to placate clang16
+
+git-svn-id: svn://tug.org/texlive/trunk/Build/source@64941 c570f23f-e606-0410-a88d-b1316a301751
+--- a/texk/dvisvgm/configure
++++ b/texk/dvisvgm/configure
+@@ -23415,6 +23415,7 @@ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <stdio.h>
++		#include <stdlib.h>
+ 		#include <ghostscript/iapi.h>
+ 		int main () {
+ 			gsapi_revision_t r;
+--- a/texk/dvisvgm/configure.ac
++++ b/texk/dvisvgm/configure.ac
+@@ -94,6 +94,7 @@ else
+ 	# query Ghostscript version
+ 	AC_MSG_CHECKING([Ghostscript version])
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([#include <stdio.h>
++		#include <stdlib.h>
+ 		#include <ghostscript/iapi.h>
+ 		int main () {
+ 			gsapi_revision_t r;
+--- a/texk/kpathsea/configure
++++ b/texk/kpathsea/configure
+@@ -14633,7 +14633,8 @@ then :
+ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-int fork() { exit(1); }
++#include <stdlib.h>
++                                                 int fork() { exit(1); }
+                                                  int vfork() { exit(1); }
+                                                  extern char *getcwd();
+                                                  char path[100];
+--- a/texk/kpathsea/configure.ac
++++ b/texk/kpathsea/configure.ac
+@@ -45,7 +45,8 @@ if test "x$ac_cv_func_getcwd" = xyes; then
+ # We only need to run this if we have getcwd.
+ AC_CACHE_CHECK([whether getcwd uses fork or vfork],
+                [kb_cv_func_getcwd_forks],
+-               [AC_RUN_IFELSE([AC_LANG_PROGRAM([[int fork() { exit(1); }
++               [AC_RUN_IFELSE([AC_LANG_PROGRAM([[#include <stdlib.h>
++                                                 int fork() { exit(1); }
+                                                  int vfork() { exit(1); }
+                                                  extern char *getcwd();
+                                                  char path[100];]],
+
+From 60b60503b21ea43c68d1ffbe214141a79a36190b Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Sun, 6 Nov 2022 22:15:26 +0000
+Subject: [PATCH] void main, void args, more clang16 from sam
+
+git-svn-id: svn://tug.org/texlive/trunk/Build/source@64953 c570f23f-e606-0410-a88d-b1316a301751
+--- /dev/null
++++ b/libs/freetype2/TLpatches/patch-04-void-main
+@@ -0,0 +1,13 @@
++diff --git a/libs/freetype2/freetype-src/builds/unix/freetype2.m4 b/libs/freetype2/freetype-src/builds/unix/freetype2.m4
++index 0cafc8e8c..51843f5fa 100644
++--- a/libs/freetype2/freetype-src/builds/unix/freetype2.m4
+++++ b/libs/freetype2/freetype-src/builds/unix/freetype2.m4
++@@ -121,7 +121,7 @@ AC_DEFUN([AC_CHECK_FT2],
++ #include <stdlib.h>
++ 
++ int
++-main()
+++main(void)
++ {
++   FT_Library library;
++   FT_Error  error;
+--- a/libs/freetype2/freetype-src/builds/unix/freetype2.m4
++++ b/libs/freetype2/freetype-src/builds/unix/freetype2.m4
+@@ -121,7 +121,7 @@ AC_DEFUN([AC_CHECK_FT2],
+ #include <stdlib.h>
+ 
+ int
+-main()
++main(void)
+ {
+   FT_Library library;
+   FT_Error  error;
+--- /dev/null
++++ b/libs/gd/TLpatches/patch-03-void-main
+@@ -0,0 +1,13 @@
++diff --git a/libs/gd/libgd-src/tests/xpm/bug00185.c b/libs/gd/libgd-src/tests/xpm/bug00185.c
++index 3056ed950..37659d6a4 100644
++--- a/libs/gd/libgd-src/tests/xpm/bug00185.c
+++++ b/libs/gd/libgd-src/tests/xpm/bug00185.c
++@@ -5,7 +5,7 @@
++ 
++ /* To check memory leaks, run such as 'valgrind --leak-check=full ./bug00185' */
++ int
++-main()
+++main(void)
++ {
++ 	gdImagePtr im;
++ 	char *path;
+--- a/libs/gd/libgd-src/tests/xpm/bug00185.c
++++ b/libs/gd/libgd-src/tests/xpm/bug00185.c
+@@ -5,7 +5,7 @@
+ 
+ /* To check memory leaks, run such as 'valgrind --leak-check=full ./bug00185' */
+ int
+-main()
++main(void)
+ {
+ 	gdImagePtr im;
+ 	char *path;
+--- a/texk/ps2pk/basename.c
++++ b/texk/ps2pk/basename.c
+@@ -6,11 +6,12 @@
+  * AUTHOR:  Piet Tutelaers
+  * VERSION: 1.0 (Sept. 1995)
+  */
++#include <stdlib.h>     /* exit() */
+ #include <stdio.h>	/* printf() */
+ #include "basics.h"	/* fatal() */
+ #include "filenames.h"	/* basename() */
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+    if (argc < 2 || argc > 3) 
+       fatal("Usage: basename string [suffix]\n");
+--- a/utils/m-tx/mtx-src/prepmx.c
++++ b/utils/m-tx/mtx-src/prepmx.c
+@@ -769,7 +769,7 @@ Static void topOfPMXfile(void)
+ }
+ 
+ 
+-main(int argc, Char *argv[])
++int main(int argc, Char *argv[])
+ {  /* ---- Main program ------------------------ */
+   PASCAL_MAIN(argc, argv);
+   strcpy(this_version, version);
+--- /dev/null
++++ b/utils/pmx/TLpatches/patch-01-main-ret
+@@ -0,0 +1,13 @@
++diff --git a/utils/pmx/pmx-src/libf2c/main.c b/utils/pmx/pmx-src/libf2c/main.c
++index 453974904..f485a0cd0 100644
++--- a/utils/pmx/pmx-src/libf2c/main.c
+++++ b/utils/pmx/pmx-src/libf2c/main.c
++@@ -106,7 +106,7 @@ char **xargv;
++ #ifdef KR_headers
++ main(argc, argv) int argc; char **argv;
++ #else
++-main(int argc, char **argv)
+++int main(int argc, char **argv)
++ #endif
++ {
++ xargc = argc;
+--- a/utils/pmx/pmx-src/libf2c/main.c
++++ b/utils/pmx/pmx-src/libf2c/main.c
+@@ -106,7 +106,7 @@ char **xargv;
+ #ifdef KR_headers
+ main(argc, argv) int argc; char **argv;
+ #else
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ #endif
+ {
+ xargc = argc;
+
+From bb307f8bd91c5ea4f191b9c788056470626893b7 Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Thu, 2 Feb 2023 22:57:47 +0000
+Subject: [PATCH] avoid implicit wait and exit declarations for C99
+
+git-svn-id: svn://tug.org/texlive/trunk/Build/source@65717 c570f23f-e606-0410-a88d-b1316a301751
+--- a/texk/xdvik/configure
++++ b/texk/xdvik/configure
+@@ -15455,6 +15455,9 @@ else
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_SYS_WAIT_H
++#include <sys/wait.h>
++#endif
+ #ifdef HAVE_VFORK_H
+ #include <vfork.h>
+ #endif
+@@ -15476,7 +15479,7 @@ main ()
+ 
+     while (wait(&status) != child)
+       ;
+-    exit(
++    _exit(
+ 	 /* Was there some problem with vforking?  */
+ 	 child < 0
+ 
+--- a/texk/xdvik/m4/xdvi-func-setsid-in-fork.m4
++++ b/texk/xdvik/m4/xdvi-func-setsid-in-fork.m4
+@@ -22,6 +22,9 @@ AC_DEFUN([XDVI_FUNC_SETSID_IN_VFORK],
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
++#ifdef HAVE_SYS_WAIT_H
++#include <sys/wait.h>
++#endif
+ #ifdef HAVE_VFORK_H
+ #include <vfork.h>
+ #endif]],
+@@ -40,7 +43,7 @@ AC_DEFUN([XDVI_FUNC_SETSID_IN_VFORK],
+ 
+     while (wait(&status) != child)
+       ;
+-    exit(
++    _exit(
+ 	 /* Was there some problem with vforking?  */
+ 	 child < 0
+ 

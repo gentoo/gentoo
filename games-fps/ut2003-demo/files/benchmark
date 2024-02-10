@@ -1,0 +1,37 @@
+#!/bin/sh
+# Originally from linuxforen.de
+# Modified by phoen][x <phoenix@gentoo.org>, Sep/19/2002
+# Modifications, enhancements or bugs? Mail me.
+
+# Tweaks by Daniel Robbins <drobbins@gentoo.org> 25 Feb 2003
+
+STUFF=GAMES_PREFIX_OPT/ut2003-demo/Benchmark/Stuff
+MYPATH=${HOME}/.ut2003/Benchmark
+TEMPLOG=${MYPATH}/benchmark.log
+LOG=${MYPATH}/bench.log
+
+[ -d ${MYPATH} ] || mkdir -p ${MYPATH}
+
+rm -f ${TEMPLOG} ${LOG}
+touch ${TEMPLOG} ${LOG}
+
+date > $LOG
+
+echo ">> Starting benchmark"
+cd GAMES_PREFIX_OPT//ut2003-demo/System
+for BENCH in GAMES_PREFIX_OPT//ut2003-demo/Benchmark/*-*.sh
+do
+	echo "Running ${BENCH} with MinDetail" 
+	${BENCH} -ini=${STUFF}/MinDetail.ini -userini=${STUFF}/MinDetailUser.ini &> /dev/null
+	echo -n "${BENCH} / MinDetail / " >> ${LOG}
+	cat ${TEMPLOG} | tail -n1 >> ${LOG}
+
+	echo "Running ${BENCH} with MaxDetail" 
+	${BENCH} -ini=${STUFF}/MaxDetail.ini -userini=${STUFF}/MaxDetailUser.ini &> /dev/null
+	echo -n "${BENCH} / MaxDetail / " >> ${LOG}
+	cat ${TEMPLOG} | tail -n1 >> ${LOG}
+done
+
+echo ">> Benchmark complete"
+GAMES_PREFIX_OPT/ut2003-demo/Benchmark/results.sh
+echo ">> Use 'ut2003-demo --results' to show these results again (without benchmarking)"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+    A proxy DNS server with permanent caching (the cache contents are
+    written to hard disk on exit) that is designed to cope with
+    unreachable or down DNS servers (for example in dial-in
+    networking).
+  </longdescription>
+  <use>
+    <flag name="urandom">
+      Linux-only: use /dev/urandom (pseudo-random number generation)
+      instead of the default use of random() PRNG.
+    </flag>
+  </use>
+</pkgmetadata>

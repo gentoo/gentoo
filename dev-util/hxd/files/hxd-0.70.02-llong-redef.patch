@@ -1,0 +1,25 @@
+ general.h |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/general.h b/general.h
+index 0a2ebe7..b749945 100644
+--- a/general.h
++++ b/general.h
+@@ -56,7 +56,7 @@
+ 
+ #ifdef	HAVE_LONGLONG
+ loff_t	lseek64( int fd, loff_t offset, int whence );
+-#define	LLONG_MAX	0x7fffffffffffffffll
++#define	L_LONG_MAX	0x7fffffffffffffffll
+ #undef	LSEEK
+ #define	LSEEK(A,B,C)	lseek64((A),(B),(C))
+ #undef  STRTOL
+@@ -64,7 +64,7 @@ loff_t	lseek64( int fd, loff_t offset, int whence );
+ #undef	SIZE_MIN
+ #define	SIZE_MIN	( (loff_t) 0 )
+ #undef	SIZE_MAX
+-#define	SIZE_MAX	( LLONG_MAX - 1 )
++#define	SIZE_MAX	( L_LONG_MAX - 1 )
+ #undef	OFF_T
+ #define	OFF_T		loff_t
+ #endif

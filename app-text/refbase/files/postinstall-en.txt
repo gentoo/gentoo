@@ -1,0 +1,22 @@
+You are almost done!
+
+  1. Restart your webserver
+
+  2. Open the file '${MY_INSTALLDIR}/initialize/db.inc.php'
+     in a text editor and edit the values of the variables '\$databaseName', 
+	 '\$username' and '\$password' to fit your needs.
+	 (Note that you'll be able to use the refbase package without modifying
+	 these variables, but we highly recommend not to use the default
+	 values!)
+
+  3. Now, open a web browser and access the 'install.php' script by typing:
+
+     <http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/install.php>
+
+     This should bring up the install form.  Edit the contents of all text 
+	 entry fields to match your server setup and supply the MySQL admin
+     password, then click the 'Install' button to install the database.
+
+  4. For further instructions, see /usr/share/doc/refbase-0.8.0/INSTALL.gz
+				 
+  Enjoy!

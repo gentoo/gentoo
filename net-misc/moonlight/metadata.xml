@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">moonlight-stream/moonlight-qt</remote-id>
+	</upstream>
+	<use>
+		<flag name="cuda">Enable accelerated video rendering on NVIDIA hardware</flag>
+		<flag name="embedded">Optimize UI for fullscreen non-desktop usage</flag>
+		<flag name="glslow">Prefer direct KMS/DRM rendering over EGL/GLES rendering for better performance on some weaker GPUs</flag>
+		<flag name="libdrm">Enable video rendering via <pkg>x11-libs/libdrm</pkg></flag>
+		<flag name="mmal">Enable accelerated video rendering on the Raspberry Pi</flag>
+		<flag name="soundio">Enable sound output via <pkg>media-libs/libsoundio</pkg> instead of <pkg>media-libs/libsdl2</pkg></flag>
+	</use>
+</pkgmetadata>

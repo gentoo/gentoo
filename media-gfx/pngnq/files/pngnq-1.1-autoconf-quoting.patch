@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/921125
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,7 +1,7 @@
+ # Autoconf for pngnq
+ 
+ AC_INIT([pngnq],[1.1], [stuart.coyle@gmail.com])
+-AM_INIT_AUTOMAKE[-Wall -Werror]
++AM_INIT_AUTOMAKE([-Wall -Werror])
+ AC_COPYRIGHT([Copyright 2008-2011, Stuart Coyle])
+ 
+ # check for progs

@@ -1,0 +1,11 @@
+[Unit]
+Description=sync the Greenbone Community Feed
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/greenbone-feed-sync --quiet --type all
+SyslogIdentifier=greenbone-feed-sync
+User=gvm
+
+[Install]
+WantedBy=multi-user.target

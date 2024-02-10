@@ -1,0 +1,128 @@
+--- src/gdb/macosx/macosx-nat-inferior.c
++++ src/gdb/macosx/macosx-nat-inferior.c
+@@ -60,13 +60,17 @@
+ #include <sys/sysctl.h>
+ #include <sys/proc.h>
+ #include <mach/mach_error.h>
++#if defined(TARGET_ARM)
+ #include <spawn.h>
++#endif
+ 
+ #include <semaphore.h>
+ 
+ #include <dlfcn.h>
++#if 0
+ #include <libproc.h>
+ #include <sys/proc_info.h>
++#endif
+ 
+ #include "macosx-nat-dyld.h"
+ #include "macosx-nat-inferior.h"
+--- src/gdb/macosx/macosx-nat-info.c
++++ src/gdb/macosx/macosx-nat-info.c
+@@ -45,6 +45,22 @@
+ #include "macosx-nat-inferior.h"
+ #include "macosx-nat-inferior-debug.h"
+ 
++#ifdef __ppc__
++#ifndef __darwin_ppc_thread_state
++#define __darwin_ppc_thread_state ppc_thread_state
++#define __r0       r0
++#define __srr0     srr0
++#define __srr1     srr1
++#define __cr       cr
++#define __xer      xer
++#define __lr       lr
++#define __ctr      ctr
++#endif
++#ifndef __darwin_ppc_exception_state
++#define __darwin_ppc_exception_state ppc_exception_state
++#endif
++#endif
++
+ extern macosx_inferior_status *macosx_status;
+ 
+ #define CHECK_ARGS(what, args) \
+--- src/gdb/macosx/macosx-nat-infthread.c
++++ src/gdb/macosx/macosx-nat-infthread.c
+@@ -36,8 +36,10 @@
+ #include <sys/dir.h>
+ #include <inttypes.h>
+ 
++#if 0
+ #include <libproc.h>
+ #include <sys/proc_info.h>
++#endif
+ 
+ #include "macosx-nat-inferior.h"
+ #include "macosx-nat-inferior-util.h"
+--- src/gdb/macosx/macosx-tdep.c
++++ src/gdb/macosx/macosx-tdep.c
+@@ -64,7 +64,6 @@
+ #include "gdbcore.h"
+ 
+ #include <dirent.h>
+-#include <libgen.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/param.h>
+--- src/gdb/remote.c
++++ src/gdb/remote.c
+@@ -63,7 +63,6 @@
+ #include "macosx-nat-dyld.h"
+ #include "macosx-nat-dyld-process.h"
+ #endif
+-#include <execinfo.h>
+ 
+ /* Prototypes for local functions.  */
+ static void cleanup_sigint_signal_handler (void *dummy);
+@@ -475,11 +474,13 @@
+ static void
+ remote_backtrace_self (const char *message)
+ {
++#if 0
+   void *bt_buffer[100];
+   int count = backtrace (bt_buffer, 100);
+   if (message && message[0])
+     fprintf_filtered (gdb_stderr, "%s", message);
+   backtrace_symbols_fd (bt_buffer, count, STDERR_FILENO);
++#endif
+ }
+ 
+ static void
+--- src/gdb/symfile.c
++++ src/gdb/symfile.c
+@@ -67,7 +67,6 @@
+ #include <ctype.h>
+ #include <time.h>
+ #include <sys/time.h>
+-#include <libgen.h>
+ 
+ #include <sys/mman.h>
+ 
+--- src/gdb/utils.c
++++ src/gdb/utils.c
+@@ -28,7 +28,6 @@
+ #include "event-top.h"
+ #include "exceptions.h"
+ #include "bfd.h"
+-#include <execinfo.h>
+ #include <sys/resource.h>
+ #include <uuid/uuid.h>
+ 
+@@ -879,6 +878,7 @@
+   target_terminal_ours ();
+   begin_line ();
+ 
++#if 0
+   /* APPLE LOCAL: Do a stack crawl of how we got here so we're more likely
+      to get useful bug reports.  */
+   {
+@@ -887,6 +887,7 @@
+     fprintf (stderr, "gdb stack crawl at point of internal error:\n");
+     backtrace_symbols_fd (bt_buffer, count, STDERR_FILENO);
+   }
++#endif
+ 
+   /* Create a string containing the full error/warning message.  Need
+      to call query with this full string, as otherwize the reason

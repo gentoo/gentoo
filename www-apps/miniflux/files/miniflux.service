@@ -1,0 +1,22 @@
+[Unit]
+Description=Miniflux Web Server
+Documentation=https://miniflux.app/
+
+After=network.target
+Requires=network.target
+After=postgresql-9.5.service
+After=postgresql-9.6.service
+After=postgresql-10.service
+After=postgresql-11.service
+After=postgresql-12.service
+After=postgresql-13.service
+After=postgresql-14.service
+
+[Service]
+User=miniflux
+ExecStart=/usr/bin/miniflux -c /etc/miniflux.conf
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

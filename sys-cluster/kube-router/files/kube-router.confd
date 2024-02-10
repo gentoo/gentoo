@@ -1,0 +1,15 @@
+# K8S_APISERVER='https://127.0.0.1:6443'
+# KUBECONFIG=/etc/kubernetes/kube-router.kubeconfig
+
+# Leave empty to autodetect:
+# HOSTNAME is a bashism, so change to HOSTNAME_OVERRIDE
+# HOSTNAME_OVERRIDE=
+
+# RUN_PROXY=true
+# RUN_FIREWALL=true
+# RUN_ROUTER=false
+
+EXTRA_ARGS=''
+
+# Uncomment to enable health checks by supervise-daemon
+# KUBE_ROUTER_HEALTHCHECK_URI="localhost:20244/healthz"

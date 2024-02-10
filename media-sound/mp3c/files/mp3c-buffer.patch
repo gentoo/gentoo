@@ -1,0 +1,11 @@
+--- mp3c-0.31/src/options.c.old	2006-11-10 08:24:15.000000000 +0100
++++ mp3c-0.31/src/options.c	2006-11-10 08:24:27.000000000 +0100
+@@ -1117,7 +1117,7 @@
+   field_select_typ *new, *anchor;
+   song_typ song_chg_fields, *song_curr;
+   char *pointer;
+-  char mini_str[35];
++  char mini_str[200];
+   int i;
+   BOOL use_old;
+   BOOL loaded_def;

@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2023-09-01 12:19:40.772172388 +0200
++++ b/CMakeLists.txt	2023-09-01 12:19:53.422188861 +0200
+@@ -58,7 +58,7 @@
+ # Required to use /std:c++17 or higher on Windows
+ # For other platforms, set C++11 as standard for the whole project
+ if(NOT MSVC)
+-  set(CMAKE_CXX_STANDARD 11)
++  set(CMAKE_CXX_STANDARD 14)
+ else()
+   string(APPEND CMAKE_CXX_FLAGS " /std:c++17")
+ endif()

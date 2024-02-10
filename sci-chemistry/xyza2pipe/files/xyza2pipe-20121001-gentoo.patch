@@ -1,0 +1,168 @@
+ Makefile | 106 +++++++++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 63 insertions(+), 43 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 15d4bd3..e738ec2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ #  Last modified: Feb/22/2012
+ #
+ 
+-CFLAGS		= -O3
++CFLAGS		?= -O3
+ MFLAGS		= -lm
+ 
+ TARGETS		= xyza2pipe ucsf2pipe nv2pipe xeasy2pipe azara2pipe vnmr2pipe xwnmr2pipe\
+@@ -62,89 +62,109 @@ clean:
+ 	rm -f $(TARGETS) addxyza2pipe
+ 
+ $(OBJECTS_MATH):
+-	$(CC) $*.c -c -o $@ $(CFLAGS) -D__XYZA2PIPE__
++	$(CC) $(CPPFLAGS) -D__XYZA2PIPE__ $(CFLAGS) $*.c -c -o $@
+ 
+ .o:
+-	$(CC) $< -c -o $@ $(CFLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $< -c -o $@
+ 
+ xyza2pipe: $(OBJECTS_C) $(OBJECTS_XP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ pipe2xyza: $(OBJECTS_C) $(OBJECTS_PX)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ ucsf2pipe: $(OBJECTS_C) $(OBJECTS_UP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ pipe2ucsf: $(OBJECTS_C) $(OBJECTS_PU)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ nv2pipe: $(OBJECTS_C) $(OBJECTS_NP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ pipe2nv: $(OBJECTS_C) $(OBJECTS_PN)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ xeasy2pipe: $(OBJECTS_C) $(OBJECTS_EP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ pipe2xeasy: $(OBJECTS_C) $(OBJECTS_PE)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ azara2pipe: $(OBJECTS_C) $(OBJECTS_AP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ pipe2azara: $(OBJECTS_C) $(OBJECTS_PA)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ vnmr2pipe: $(OBJECTS_C) $(OBJECTS_VP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ xwnmr2pipe: $(OBJECTS_C) $(OBJECTS_BP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ pipe2proj: $(OBJECTS_C) $(OBJECTS_PJ)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ add2pipe: $(OBJECTS_C) $(OBJECTS_DXP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 	rm -f addxyza2pipe
+ 	ln -s add2pipe addxyza2pipe
+ 
+ adducsf2pipe: $(OBJECTS_C) $(OBJECTS_DUP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ addnv2pipe: $(OBJECTS_C) $(OBJECTS_DNP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ addxeasy2pipe: $(OBJECTS_C) $(OBJECTS_DEP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ addazara2pipe: $(OBJECTS_C) $(OBJECTS_DAP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ addvnmr2pipe: $(OBJECTS_C) $(OBJECTS_DVP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/
+ 
+ addxwnmr2pipe: $(OBJECTS_C) $(OBJECTS_DBP)
+-	$(CC) $@.c $^ -o $@ \
+-	$(CFLAGS) $(MFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $@.c $^ -o $@ \
++	$(MFLAGS)
++	mv -v $@ bin/

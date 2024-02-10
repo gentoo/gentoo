@@ -1,0 +1,13 @@
+https://code.google.com/p/yaffs2utils/issues/detail?id=42
+
+--- a/unyaffs2.c
++++ b/unyaffs2.c
+@@ -1102,7 +1102,7 @@ unyaffs2_extract_hardlink (const char *fpath, struct unyaffs2_obj *obj)
+ 	char *lnkfile;
+ 
+ 	struct unyaffs2_obj *equiv;
+-	union unyaffs2_file_variant *variant;
++	union unyaffs2_file_variant variant;
+ 
+ 	equiv = unyaffs2_follow_hardlink(obj);
+ 	if (equiv == NULL) {

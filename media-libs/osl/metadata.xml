@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		A small but rich language for programmable shading in advanced
+		renderers and other applications, ideal for describing materials,
+		lights, displacement, and pattern generation.
+	</longdescription>
+	<use>
+		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>
+		<flag name="gui">Build the osltoy binary (with Qt5)</flag>
+		<flag name="qt6">Build the osltoy binary (with Qt6)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">AcademySoftwareFoundation/OpenShadingLanguage</remote-id>
+	</upstream>
+</pkgmetadata>

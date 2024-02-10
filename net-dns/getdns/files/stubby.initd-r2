@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+stubby_opts="-C ${STUBBY_CONFIG_FILE:-/etc/stubby/stubby.yml} -v ${STUBBY_LOGLEVEL:-5}"
+command="capsh"
+command_args="--inh=cap_net_bind_service --user=stubby -- -c '/usr/bin/stubby -g ${stubby_opts} >>/var/log/stubby.log 2>&1'"
+pidfile="/run/stubby/stubby.pid"
+name="DNS Privacy Daemon"
+
+depend()
+{
+	provide dns
+	need localmount net
+	after bootmisc
+	use logger
+}
+
+start_pre()
+{
+	checkpath -d -m 0755 -o stubby:stubby /run/stubby
+	checkpath -f -m 0644 -o stubby:stubby /var/log/stubby.log
+}

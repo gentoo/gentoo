@@ -1,0 +1,11 @@
+--- a/cmake/modules/summary.cmake
++++ b/cmake/modules/summary.cmake
+@@ -30,7 +30,7 @@ WATCOM:				${WATCOM}
+ 
+ CMAKE_BUILD_TYPE:		${CMAKE_BUILD_TYPE}
+ CMAKE_CXX_COMPILER:		${CMAKE_CXX_COMPILER}")
+-if(NOT CMAKE_BUILD_TYPE)
++if(NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "None")
+ set(_output_results
+ "${_output_results}
+ CMAKE_CXX_FLAGS:		${CMAKE_CXX_FLAGS}")

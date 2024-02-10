@@ -1,0 +1,12 @@
+diff -Naur wmsystray-0.1.1.orig/wmsystray/systray.c wmsystray-0.1.1/wmsystray/systray.c
+--- wmsystray-0.1.1.orig/wmsystray/systray.c	2004-03-01 04:54:50.000000000 +0100
++++ wmsystray-0.1.1/wmsystray/systray.c	2020-12-03 11:30:36.661776579 +0100
+@@ -338,7 +338,7 @@
+ 		XReparentWindow (main_disp, embed_wind,
+ 				DefaultRootWindow(main_disp), 0, 0);
+ 		TRACE((stderr, "REJECTED!\n"));
+-		return;
++		return 1;
+ 	}
+ 
+ 	XSelectInput (main_disp, embed_wind, StructureNotifyMask |

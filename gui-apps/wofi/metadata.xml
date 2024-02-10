@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <name>John Helmert III</name>
+        <email>ajak@gentoo.org</email>
+    </maintainer>
+    <upstream>
+        <remote-id type="sourcehut">~scoopta/wofi</remote-id>
+        <bugs-to>https://todo.sr.ht/~scoopta/wofi</bugs-to>
+        <doc>https://cloudninja.pw/docs/wofi.html</doc>
+    </upstream>
+</pkgmetadata>

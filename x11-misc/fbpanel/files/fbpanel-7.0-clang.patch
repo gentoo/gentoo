@@ -1,0 +1,57 @@
+diff -u -r fbpanel-7.0/plugins/battery/power_supply.c fbpanel-7.0-3/plugins/battery/power_supply.c
+--- fbpanel-7.0/plugins/battery/power_supply.c	2015-12-05 08:34:19.000000000 +0200
++++ fbpanel-7.0-3/plugins/battery/power_supply.c	2017-02-25 14:52:55.431202738 +0200
+@@ -154,7 +154,7 @@
+     tmp->path = path;
+     tmp->name = NULL;
+     tmp->status = NULL;
+-    tmp->capacity = -1.0d;
++    tmp->capacity = -1.0f;
+     return tmp;
+ }
+ 
+@@ -206,12 +206,12 @@
+                 bat->capacity = g_ascii_strtod(tmp_value, NULL);
+             } else { // for older kernels
+                 tmp_value = (gchar*) g_hash_table_lookup(hash, SYS_ACPI_UEVENT_BAT_ENERGY_NOW_KEY);
+-                gdouble tmp = -1.0d;
++                gdouble tmp = -1.0f;
+                 if (tmp_value != NULL) { // ac off
+                     tmp = g_ascii_strtod(tmp_value, NULL);
+                     tmp_value = (gchar*) g_hash_table_lookup(hash, SYS_ACPI_UEVENT_BAT_ENERGY_FULL_KEY);
+-                    if (tmp_value != NULL && tmp > 0.0d) {
+-                        tmp = tmp / g_ascii_strtod(tmp_value, NULL) * 100.0d;
++                    if (tmp_value != NULL && tmp > 0.0f) {
++                        tmp = tmp / g_ascii_strtod(tmp_value, NULL) * 100.0f;
+                         bat->capacity = tmp;
+                     }
+                 } else {
+@@ -219,8 +219,8 @@
+                     if (tmp_value != NULL) { // ac on
+                         tmp = g_ascii_strtod(tmp_value, NULL);
+                         tmp_value = (gchar*) g_hash_table_lookup(hash, SYS_ACPI_UEVENT_BAT_CHARGE_FULL_KEY);
+-                        if (tmp_value != NULL && tmp > 0.0d) {
+-                            tmp = tmp / g_ascii_strtod(tmp_value, NULL) * 100.0d;
++                        if (tmp_value != NULL && tmp > 0.0f) {
++                            tmp = tmp / g_ascii_strtod(tmp_value, NULL) * 100.0f;
+                             bat->capacity = tmp;
+                         }
+                     }
+@@ -327,7 +327,7 @@
+ extern gdouble
+ power_supply_get_bat_capacity(power_supply* ps)
+ {
+-    gdouble total_bat_capacity = 0.0d;
++    gdouble total_bat_capacity = 0.0f;
+     guint bat_count = 0;
+     GSequenceIter* it;
+     bat* battery;
+@@ -335,7 +335,7 @@
+         it = g_sequence_get_begin_iter(ps->bat_list);
+         while (!g_sequence_iter_is_end(it)) {
+             battery = (bat*) g_sequence_get(it);
+-            if (battery->capacity > 0.0d) {
++            if (battery->capacity > 0.0f) {
+                 total_bat_capacity = total_bat_capacity + battery->capacity;
+             }
+             bat_count++;

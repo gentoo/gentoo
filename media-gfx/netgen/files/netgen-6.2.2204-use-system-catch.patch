@@ -1,0 +1,40 @@
+From 6eaa13cc02ccd5f1bfa448fbcff3a1d9af8ba90a Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 14 Dec 2022 07:04:29 +0100
+Subject: [PATCH] use system catch
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -474,7 +474,7 @@ enable_testing()
+ include(CTest)
+ 
+ if(ENABLE_UNIT_TESTS)
+-  include(${CMAKE_CURRENT_LIST_DIR}/cmake/external_projects/catch.cmake)
++  find_package(Catch2 REQUIRED)
+ endif(ENABLE_UNIT_TESTS)
+ 
+ 
+--- a/tests/catch/CMakeLists.txt
++++ b/tests/catch/CMakeLists.txt
+@@ -3,11 +3,15 @@ if(ENABLE_UNIT_TESTS)
+ add_custom_target(unit_tests)
+ 
+ # Build catch_main test object
+-include_directories(${CATCH_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../../libsrc/include ${SPDLOG_INCLUDE_DIR})
++if(TARGET Catch2::Catch2)
++  get_target_property(CATCH_INCLUDE_DIR Catch2::Catch2 INTERFACE_INCLUDE_DIRECTORIES)
++  include_directories(${CATCH_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../../libsrc/include ${SPDLOG_INCLUDE_DIR})
++else()
++  message(SEND_ERROR "Catch header files couldn't be found.")
++endif()
+ add_library(catch_main STATIC main.cpp)
+ set_target_properties(catch_main PROPERTIES CXX_STANDARD 17)
+ add_dependencies(unit_tests catch_main)
+-add_dependencies(catch_main project_catch)
+ 
+ # ensure the test targets are built before testing
+ add_test(NAME unit_tests_built COMMAND ${CMAKE_COMMAND} --build . --target unit_tests --config ${CMAKE_BUILD_TYPE} WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/../.. )
+-- 
+2.38.1
+

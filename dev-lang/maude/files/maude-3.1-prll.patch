@@ -1,0 +1,22 @@
+--- a/src/Mixfix/Makefile.am
++++ b/src/Mixfix/Makefile.am
+@@ -82,7 +82,7 @@
+ EXTRA_libmixfix_a_SOURCES = \
+ 	compiler.cc
+ 
+-BUILT_SOURCES = surface.yy surface.cc surface.h lexer.cc tokenizer.cc
++BUILT_SOURCES = surface.cc lexer.cc tokenizer.cc
+ CLEANFILES = surface.yy surface.cc surface.h lexer.cc tokenizer.cc
+ 
+ surface.yy: \
+@@ -97,7 +97,9 @@
+ 	$(srcdir)/bottom.yy \
+ 	> surface.yy
+ 
+-surface.cc surface.h: surface.yy
++surface.h: surface.yy
++
++surface.cc: surface.h
+ 	$(BISON) -dv surface.yy -o surface.c
+ 	mv surface.c surface.cc
+ 

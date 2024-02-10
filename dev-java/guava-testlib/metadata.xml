@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">google/guava</remote-id>
+	</upstream>
+	<longdescription>
+		Guava testlib is a set of java classes used for more convenient unit testing - particularly to assist the tests for Guava itself.
+	</longdescription>
+</pkgmetadata>

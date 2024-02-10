@@ -1,0 +1,23 @@
+--- a/Makefile	2023-01-24 08:35:02.515456277 +0100
++++ b/Makefile	2023-01-24 08:35:45.459755298 +0100
+@@ -161,7 +161,9 @@
+                    $(INSTALL_HEADERS) \
+                    $(if $(filter yes,$($(PROJECT).install_native_objects)),$(NATIVE_OBJECTS)))
+ 
++$(PROJECTS:%=install-%): META-install
++
+ install: META-install $(PROJECTS:%=install-%)
+ 
+ uninstall:
+ 	$(OCAMLFIND) remove ctypes
+--- a/Makefile.rules	2023-01-24 22:19:00.571780005 +0100
++++ b/Makefile.rules	2023-01-24 22:18:06.710631483 +0100
+@@ -99,7 +99,7 @@
+ $(BUILDDIR)/dll%_stubs_xen$(EXTDLL): $$(XEN_OBJECTS)
+ 	$(OCAMLMKLIB) -o $(BUILDDIR)/$*_stubs_xen $^ $(OCAMLMKLIB_FLAGS) $(OCAMLMKLIB_EXTRA_FLAGS)
+ 
+-$(BUILDDIR)/%.cmxs : $$(NATIVE_OBJECTS)
++$(BUILDDIR)/%.cmxs : $$(NATIVE_OBJECTS) $(C_OBJECTS)
+ 	$(OCAMLFIND) opt -shared -linkall $(OCAMLFLAGS) $(THREAD_FLAG) $(OCAMLFIND_PACKAGE_FLAGS) -o $@ $(NATIVE_OBJECTS) $(C_OBJECTS) $(OCAML_LINK_FLAGS)
+ 
+ $(BUILDDIR)/%.cma: $$(BYTE_OBJECTS)

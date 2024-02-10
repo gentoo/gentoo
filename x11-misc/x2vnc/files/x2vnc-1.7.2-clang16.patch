@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/870652
+--- a/rfbproto.c
++++ b/rfbproto.c
+@@ -25,2 +25,4 @@
+ 
++#include <ctype.h>
++#include <time.h>
+ #include <unistd.h>
+--- a/sockets.c
++++ b/sockets.c
+@@ -33,2 +33,3 @@
+ void PrintInHex(char *buf, int len);
++int tunnel(char *gatewayhost, char *remotehost, int remoteport);
+ 
+--- a/vncauth.c
++++ b/vncauth.c
+@@ -28,2 +28,4 @@
+ #include <sys/stat.h>
++#include <time.h>
++#include <unistd.h>
+ #include <vncauth.h>
+--- a/x.c
++++ b/x.c
+@@ -26,2 +26,3 @@
+ #include <sys/types.h>
++#include <time.h>
+ #include <unistd.h>
+--- a/x2vnc.c
++++ b/x2vnc.c
+@@ -25,2 +25,3 @@
+ 
++#include <time.h>
+ #include <unistd.h>

@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting deadwood"
+	start-stop-daemon --start --quiet --name deadwood --wait 1000 \
+		--exec /usr/bin/duende /usr/sbin/Deadwood -- -f /etc/maradns/dwood3rc
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping deadwood"
+	start-stop-daemon --stop --quiet --name deadwood --wait 1000 \
+		--exec /usr/bin/duende
+	eend $?
+}

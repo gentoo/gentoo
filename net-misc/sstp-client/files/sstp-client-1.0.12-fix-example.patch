@@ -1,0 +1,16 @@
+--- a/Makefile.am	2018-02-07 21:51:10.451717813 +0100
++++ b/Makefile.am	2018-02-07 21:54:43.811708840 +0100
+@@ -7,11 +7,11 @@
+           include           \
+           src
+ 
+-docdir         = $(datadir)/doc/@PACKAGE@
+ pkgconfigdir   = $(libdir)/pkgconfig
+ pkgconfig_DATA = sstp-client-1.0.pc
+ 
+-doc_DATA       = \
++examplesdir = $(docdir)/examples
++examples_DATA = \
+ 	sstp-test.example \
+ 	sstp-test-nopty.example
+ 

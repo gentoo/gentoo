@@ -1,0 +1,11 @@
+--- a/test/test_reader.h	2023-11-14 22:21:10.528641740 +0100
++++ b/test/test_reader.h	2023-11-14 22:21:23.195431970 +0100
+@@ -57,7 +57,7 @@
+     if (length_bytes > (data_.size() - index_))
+       return ErrorStatus::ReadLimitReached;
+ 
+-    std::copy(&data_[index_], &data_[index_ + length_bytes], begin_byte);
++    std::copy(&data_[index_], &data_[index_] + length_bytes, begin_byte);
+     index_ += length_bytes;
+     return {};
+   }

@@ -1,0 +1,14 @@
+Index: DVDStyler-3.2.1/wxVillaLib/PropDlg.cpp
+===================================================================
+--- DVDStyler-3.2.1.orig/wxVillaLib/PropDlg.cpp
++++ DVDStyler-3.2.1/wxVillaLib/PropDlg.cpp
+@@ -760,7 +760,9 @@ void wxPropDlg::OnSelectColour(wxCommand
+ 	((wxButton*) event.GetEventObject())->GetName().Mid(12).ToLong(&index);
+ 	ColourPanel* panel = ((ColourPanel*) m_controls[index]);
+ 	m_colourData.SetColour(panel->GetColour());
++#if wxMAJOR_VERSION >= 3 && wxMINOR_VERSION >= 1
+ 	m_colourData.SetChooseAlpha(true);
++#endif
+ #ifdef __WXMSW__
+ 	wxGenericColourDialog dialog(propWindow, &m_colourData);
+ #else

@@ -1,0 +1,15 @@
+--- a/src/tests/Makefile.am
++++ b/src/tests/Makefile.am
+@@ -1,11 +1,9 @@
+ ##	Process this file with automake run in the top directory to yield Makefile.in
+ 
+ TESTS=hard_zero_data_test				\
+-	intr_test					\
+-	legal_data_test long_data_test long_strm_test	\
++	legal_data_test long_data_test 	\
+ 	random_data_test				\
+ 	soft_zero_data_test				\
+-	syn2_test 					\
+ 	vogon_test 					\
+ 	shutdown_test
+ 

@@ -1,0 +1,33 @@
+Index: gpac-1.0.0/src/utils/gzio.c
+===================================================================
+--- gpac-1.0.0.orig/src/utils/gzio.c
++++ gpac-1.0.0/src/utils/gzio.c
+@@ -93,10 +93,10 @@ typedef struct gz_stream {
+ //local gzFile gz_open      OF((const char *path, const char *mode, int  fd));
+ //local int do_flush        OF((gzFile file, int flush));
+ //local int    get_byte     OF((gz_stream *s));
+-local void   check_header OF((gz_stream *s));
+-local int    destroy      OF((gz_stream *s));
++local void   check_header _Z_OF((gz_stream *s));
++local int    destroy      _Z_OF((gz_stream *s));
+ //local void   putLong      OF((FILE *file, uLong x));
+-local uLong  getLong      OF((gz_stream *s));
++local uLong  getLong      _Z_OF((gz_stream *s));
+ 
+ /* ===========================================================================
+      Opens a gzip (.gz) file for reading or writing. The mode parameter
+Index: gpac-1.0.0/src/utils/zutil.h
+===================================================================
+--- gpac-1.0.0.orig/src/utils/zutil.h
++++ gpac-1.0.0/src/utils/zutil.h
+@@ -262,8 +262,8 @@ extern void z_error    OF((char *m));
+ #endif
+ 
+ 
+-voidpf zcalloc OF((voidpf opaque, unsigned items, unsigned size));
+-void   zcfree  OF((voidpf opaque, voidpf ptr));
++voidpf zcalloc _Z_OF((voidpf opaque, unsigned items, unsigned size));
++void   zcfree  _Z_OF((voidpf opaque, voidpf ptr));
+ 
+ #define ZALLOC(strm, items, size) \
+            (*((strm)->zalloc))((strm)->opaque, (items), (size))

@@ -1,0 +1,75 @@
+Clang 16 will not allow implicit int function defitions by default.
+This patch gives all functions a proper definitons.
+
+See also: https://wiki.gentoo.org/wiki/Modern_C_porting
+
+Bug: https://bugs.gentoo.org/878611
+Upstream PR: https://github.com/jduerstock/zoo/pull/1
+
+--- a/fiz.c
++++ b/fiz.c
+@@ -24,6 +24,7 @@ file by supplying the offset of the file.
+ void prtctrl ();
+ void prtch ();
+ 
++int
+ main(argc,argv)
+ register int argc;
+ register char **argv;
+--- a/mstime.i
++++ b/mstime.i
+@@ -12,6 +12,7 @@ static char mstimeid[]="@(#) mstime.i 2.2 88/01/24 12:47:58";
+ Function mstime() converts time in seconds since January 1 of BASEYEAR
+ to MS-DOS format date and time.
+ */
++void
+ mstime(longtime, date, time)
+ long longtime;       /* input:  seconds since Jan 1, BASEYEAR   */
+ int *date, *time;    /* output: MS-DOS format date and time */
+--- a/zoo.c
++++ b/zoo.c
+@@ -44,6 +44,7 @@ int next_arg = FIRST_ARG; /* filenames start at this position */
+ int arg_count;          /* count of arguments supplied to program */
+ char **arg_vector;      /* vector of arguments supplied to program */
+ 
++int
+ main(argc,argv)
+ register int argc;
+ register char **argv;
+--- a/zoofilt.c
++++ b/zoofilt.c
+@@ -41,8 +41,10 @@ char *option;
+ 	unsigned int filetag;							/* tag stored in input */
+ 	int stat1, stat2, stat3;						/* status codes */
+ 	int use_lzh = 0;									/* use lzh instead */
+-	extern lzc(), lzh_encode();					/* possible encoders */
+-	extern lzd(), lzh_decode();					/* and decoders */
++	extern int lzc();					/* possible encoders */
++	extern int lzh_encode();
++	extern int lzd();					/* and decoders */
++	extern int lzh_decode();
+ 
+ 	while (*++option) {
+ 		switch (*option) {
+--- a/nixtime.i
++++ b/nixtime.i
+@@ -20,7 +20,7 @@
+ Function gettime() gets the date and time of the file handle supplied.
+ Date and time is in MSDOS format.
+ */
+-int gettime (file, date, time)
++void gettime (file, date, time)
+ ZOOFILE file;
+ unsigned *date, *time;
+ {
+--- a/zoofns.h
++++ b/zoofns.h
+@@ -46,7 +46,7 @@
+ int exists PARMS ((char *));
+ int getfile PARMS ((ZOOFILE, ZOOFILE, long, int));
+ int getutime PARMS ((char *, unsigned *, unsigned *));
+-int gettime PARMS ((ZOOFILE, unsigned *, unsigned *));
++void gettime PARMS ((ZOOFILE, unsigned *, unsigned *));
+ T_SIGNAL handle_break PARMS ((int));
+ 
+ #ifdef USE_ASCII

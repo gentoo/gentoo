@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile=/run/${RC_SVCNAME}.pid
+LOGPATH=/var/log/${RC_SVCNAME}
+command_user=${RC_SVCNAME}
+command=/usr/bin/etcd
+command_args="${ETCD_OPTS}"
+command_background=true
+start_stop_daemon_args="
+	-1 ${LOGPATH}/${RC_SVCNAME}.log
+	-2 ${LOGPATH}/${RC_SVCNAME}.err"
+
+depend() {
+	need net
+	need localmount
+	after bootmisc
+}
+
+start() {
+	if [ ! -d "${LOGPATH}" ] ; then
+		mkdir -p "${LOGPATH}"
+		chown "${command_user}:${command_user}" "${LOGPATH}"
+	fi
+	default_start
+}

@@ -1,0 +1,61 @@
+From f61b5859d69c2d99264182f60f5ae1e430812b59 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20=C5=A0abata?= <contyk@redhat.com>
+Date: Fri, 10 Feb 2012 13:55:46 +0100
+Subject: [PATCH] Fix build with PCRE-8.30+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This patch fixes build with the latest PCRE release which removes some
+obsolete code tinyfugue still uses, namely pcre_info().
+
+Signed-off-by: Petr Šabata <contyk@redhat.com>
+---
+ src/macro.c   |    3 ++-
+ src/pattern.c |    2 +-
+ src/pattern.h |    2 +-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/macro.c b/src/macro.c
+index ac28fc9..b492717 100644
+--- a/src/macro.c
++++ b/src/macro.c
+@@ -893,7 +893,8 @@ static int complete_macro(Macro *spec, unsigned int hash, int num,
+     }
+     spec->attr &= ~F_NONE;
+     if (spec->nsubattr) {
+-	int n = pcre_info(spec->trig.ri->re, NULL, NULL);
++	int n;
++	pcre_fullinfo(spec->trig.ri->re, NULL, PCRE_INFO_CAPTURECOUNT, &n);
+ 	for (i = 0; i < spec->nsubattr; i++) {
+ 	    spec->subattr[i].attr &= ~F_NONE;
+ 	    if (spec->subattr[i].subexp > n) {
+diff --git a/src/pattern.c b/src/pattern.c
+index 047a44a..a7228ff 100644
+--- a/src/pattern.c
++++ b/src/pattern.c
+@@ -151,7 +151,7 @@ static RegInfo *tf_reg_compile_fl(const char *pattern, int optimize,
+ 	    emsg ? emsg : "unknown error");
+ 	goto tf_reg_compile_error;
+     }
+-    n = pcre_info(ri->re, NULL, NULL);
++    pcre_fullinfo(ri->re, NULL, PCRE_INFO_CAPTURECOUNT, &n);
+     if (n < 0) goto tf_reg_compile_error;
+     ri->ovecsize = 3 * (n + 1);
+     ri->ovector = dmalloc(NULL, sizeof(int) * ri->ovecsize, file, line);
+diff --git a/src/pattern.h b/src/pattern.h
+index 1eec0f9..cbe9af9 100644
+--- a/src/pattern.h
++++ b/src/pattern.h
+@@ -10,7 +10,7 @@
+ #ifndef PATTERN_H
+ #define PATTERN_H
+ 
+-#include "pcre-2.08/pcre.h"
++#include <pcre.h>
+ 
+ typedef struct RegInfo {
+     pcre *re;
+-- 
+1.7.7.6
+

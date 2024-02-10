@@ -1,0 +1,39 @@
+--- a/src/jtag2usb.cc
++++ b/src/jtag2usb.cc
+@@ -739,7 +739,7 @@
+ 
+ #ifdef HAVE_LIBUSB_2_0
+ /* USB thread */
+-static void *usb_thread(void * data __unused)
++static void *usb_thread(void * data)
+ {
+   struct pollfd fds[2];
+ 
+--- a/src/jtag3io.cc
++++ b/src/jtag3io.cc
+@@ -350,12 +350,12 @@
+     throw jtag_exception("doSimpleJtagCommand(): too many failures");
+ }
+ 
+-void jtag3::changeBitRate(int newBitRate __unused)
++void jtag3::changeBitRate(int newBitRate)
+ {
+   throw;
+ }
+ 
+-bool jtag3::synchroniseAt(int bitrate __unused)
++bool jtag3::synchroniseAt(int bitrate)
+ {
+   throw;
+ }
+--- a/src/jtag3prog.cc
++++ b/src/jtag3prog.cc
+@@ -106,7 +106,7 @@
+ }
+ 
+ 
+-void jtag3::downloadToTarget(const char* filename __unused, bool program __unused, bool verify __unused)
++void jtag3::downloadToTarget(const char* filename, bool program, bool verify)
+ {
+     statusOut("\nDownload not done.\n");
+     throw jtag_exception("Target programming not implemented for JTAGICE3");

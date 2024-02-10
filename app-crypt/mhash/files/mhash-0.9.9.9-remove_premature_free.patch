@@ -1,0 +1,11 @@
+--- a/src/keygen_test.c
++++ b/src/keygen_test.c
+@@ -121,8 +121,6 @@
+ 	
+ 	mhash_keygen_ext(KEYGEN_S2K_SALTED, data, key, keysize, password, passlen);
+ 
+-	mutils_memset(tmp, 0, keysize * 2);
+-
+ 	tmp = mutils_asciify(key, keysize);
+ 
+ 	result = mutils_strcmp((mutils_word8 *) KEY2, tmp);

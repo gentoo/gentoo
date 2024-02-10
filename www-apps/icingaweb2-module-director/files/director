@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+
+description="Icinga2 Director Daemon"
+supervisor=supervise-daemon
+respawn_period="${respawn_period:-30}"
+term_type="${term_type:-linux}"
+command=/usr/share/icingaweb2/bin/icinga-director.sh
+pidfile="/run/${RC_SVCNAME}.pid"
+command_user="nobody:icingaweb2"
+
+depend() {
+        need apache2 mysql php-fpm icinga2
+}
+
+start_pre() {
+        chgrp icingaweb2 /usr/share/icingaweb2/bin/icingacli
+        export EINFO_QUIET="${quiet:-yes}"
+}
+
+stop_pre()
+{
+        export EINFO_QUIET="${quiet:-yes}"
+}

@@ -1,0 +1,29 @@
+# Based on upstream patches:
+# https://gitlab.onelab.info/gmsh/gmsh/-/commit/fb81a9c90
+# https://gitlab.onelab.info/gmsh/gmsh/-/commit/aceb09c80
+#
+# Upstream issue: https://gitlab.onelab.info/gmsh/gmsh/-/issues/2416
+# Gentoo issue: https://bugs.gentoo.org/905445
+
+diff -Naur a/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h b/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h
+--- a/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h
++++ b/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h
+@@ -8,6 +8,7 @@
+ #pragma once
+ 
+ #include <float.h>
++#include <cstdint>
+ #include "qmtMeshUtils.h"
+ 
+ class SurfaceProjector;
+diff -Naur a/src/mesh/meshGFacePack.cpp b/src/mesh/meshGFacePack.cpp
+--- a/src/mesh/meshGFacePack.cpp
++++ b/src/mesh/meshGFacePack.cpp
+@@ -8,6 +8,7 @@
+ #include <queue>
+ #include <map>
+ #include <vector>
++#include <cstdint>
+ #include "gmsh.h"
+ #include "SPoint2.h"
+ #include "SVector3.h"

@@ -1,0 +1,19 @@
+--- midentd.orig	2004-05-13 21:57:43.642441512 -0400
++++ midentd	2004-05-13 22:01:10.165045304 -0400
+@@ -74,6 +75,7 @@
+ 	close STDIN; open STDIN, "/dev/null";
+ 	close STDOUT; open STDOUT, ">/dev/null";
+ 	close STDERR; open STDERR, ">/dev/null";
++	open PIDFILE, ">/var/run/midentd.pid";
+ 	umask 0466;
+ 	&logger ("Daemon started, listening.");
+ 	# FIXME, maximum number of connections should be limited
+@@ -87,6 +89,8 @@
+ 	if ($< != $uid || $> != $uid) {
+ 		die "Can't change UID\n";
+ 	}
++    print PIDFILE $$;
++    close PIDFILE;
+ 	while (accept (SOCKET, SERVER)) {
+ 		$in = *SOCKET;
+ 		$out = *SOCKET;

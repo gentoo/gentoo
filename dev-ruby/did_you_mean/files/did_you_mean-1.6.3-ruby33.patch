@@ -1,0 +1,33 @@
+From ef0c37a35ae1216f3c804daf436254c7dee710bc Mon Sep 17 00:00:00 2001
+From: Yusuke Endoh <mame@ruby-lang.org>
+Date: Sun, 19 Feb 2023 16:10:30 +0900
+Subject: [PATCH] Support the new message format of NameError in Ruby 3.3
+ (#184)
+
+This change accepts the following change of the message of NameError in
+a test.
+
+https://bugs.ruby-lang.org/issues/18285#note-37
+
+```
+old: undefined method `sizee' for #<File:...>
+new: undefined method `sizee' for an instance of File
+```
+---
+ test/core_ext/test_name_error_extension.rb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/core_ext/test_name_error_extension.rb b/test/core_ext/test_name_error_extension.rb
+index 1fdbd45..c58b784 100644
+--- a/test/core_ext/test_name_error_extension.rb
++++ b/test/core_ext/test_name_error_extension.rb
+@@ -49,7 +49,7 @@ def test_correctable_error_objects_are_dumpable
+ 
+     get_message(error)
+ 
+-    assert_equal "undefined method `sizee' for #<File:test_name_error_extension.rb (closed)>",
+-                 Marshal.load(Marshal.dump(error)).original_message
++    assert_match(/^undefined method `sizee' for /,
++                 Marshal.load(Marshal.dump(error)).original_message)
+   end
+ end

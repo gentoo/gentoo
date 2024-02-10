@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/706448
+--- a/init_quit.h
++++ b/init_quit.h
+@@ -36,7 +36,6 @@ extern int joyXCenter;
+ extern int videoFlags;
+ extern int lightCol;
+ extern int lightRow;
+-int hello;
+ extern GLint textures[2];
+ extern GLuint base;
+ 

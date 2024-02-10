@@ -1,0 +1,11 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -264,7 +264,7 @@
+ 	$(GTK_CFLAGS) \
+ 	-I$(includedir)
+ 
+-ripperX_LDADD = \
++ripperX_LDADD = -lm \
+ 	$(INTLLIBS) \
+ 	$(GTK_LIBS)
+ 

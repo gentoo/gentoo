@@ -1,0 +1,61 @@
+--- a/arc4random.c
++++ b/arc4random.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <stdlib.h>
++#include <time.h>
+ 
+ #include "config.h"
+ 
+--- a/interface.c
++++ b/interface.c
+@@ -56,6 +56,13 @@
+ 
+ #include "interface.h"
+ 
++#ifndef HAVE_STRLCPY
++    size_t strlcpy(char *, const char *, size_t);
++#endif
++#ifndef HAVE_STRLCAT
++    size_t strlcat(char *, const char *, size_t);
++#endif
++
+ /* Prototypes */
+ static int pcap_dloff(pcap_t *);
+ 
+--- a/md5.c
++++ b/md5.c
+@@ -23,6 +23,7 @@
+    copyright in any changes I have made; this code remains in the
+    public domain.  */
+ 
++#include <string.h>
+ #include <sys/types.h>
+ 
+ #ifdef HAVE_CONFIG_H
+--- a/scanssh.c
++++ b/scanssh.c
+@@ -78,6 +78,10 @@
+ #define DNFPRINTF(y, x)
+ #endif
+ 
++#ifndef HAVE_STRLCPY
++    size_t strlcpy(char *, const char *, size_t);
++#endif
++
+ struct address_node {
+ 	TAILQ_ENTRY (address_node) an_next;
+ 
+--- a/xmalloc.c
++++ b/xmalloc.c
+@@ -20,6 +20,10 @@
+ 
+ #include "config.h"
+ 
++#ifndef HAVE_STRLCPY
++    size_t strlcpy(char *, const char *, size_t);
++#endif
++
+ void *
+ xmalloc(size_t size)
+ {

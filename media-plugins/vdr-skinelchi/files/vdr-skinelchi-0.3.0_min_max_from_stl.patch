@@ -1,0 +1,18 @@
+taken from debian vdr repo
+this will fix
+https://bugs.gentoo.org/703994
+
+Reviewed-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 2020 Jan 05 )
+Index: b/DisplayChannel.c
+===================================================================
+--- a/DisplayChannel.c
++++ b/DisplayChannel.c
+@@ -724,7 +724,7 @@
+       }
+       else {
+          time_t t = time(NULL);
+-         int seen = max(0, min(y9 - y6a - 1, int((y9 - y6a) * double(t - Present->StartTime()) / Present->Duration())));
++         int seen = std::max(0, std::min(y9 - y6a - 1, int((y9 - y6a) * double(t - Present->StartTime()) / Present->Duration())));
+          osd->DrawRectangle(x4 + Gap, y6a + seen, x4 + Gap + ScrollWidth - 1, y9 - 1, Theme.Color(clrChannelTimebarRest));
+          osd->DrawRectangle(x4 + Gap, y6a, x4 + Gap + ScrollWidth - 1, y6a + seen - 1, Theme.Color(clrChannelTimebarSeen));
+          changed = true;

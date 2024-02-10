@@ -1,0 +1,37 @@
+https://github.com/podofo/podofo/commit/da91101b7afafa958669e11d0cabaeee3ff50b39
+
+From da91101b7afafa958669e11d0cabaeee3ff50b39 Mon Sep 17 00:00:00 2001
+From: Francesco Pretto <ceztko@gmail.com>
+Date: Fri, 27 Oct 2023 23:41:22 +0200
+Subject: [PATCH] [FIX] ColorTest: Fixed test under linux when compiled with
+ -march=x86-64-v3
+
+Floating point contractions may cause some level of non determinsm when comparing the result of fp operations . See
+https://stackoverflow.com/questions/62353629/does-the-same-floating-point-calculation-producing-different-results-when-perfor
+
+Fixes #103
+---
+ test/unit/ColorTest.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/test/unit/ColorTest.cpp b/test/unit/ColorTest.cpp
+index 419052a7..81f99c5b 100644
+--- a/test/unit/ColorTest.cpp
++++ b/test/unit/ColorTest.cpp
+@@ -426,7 +426,12 @@ TEST_CASE("testCMYKConstructor")
+         double dGreen = M_VALUE * (1.0 - B_VALUE) + B_VALUE;
+         double dBlue = Y_VALUE * (1.0 - B_VALUE) + B_VALUE;
+ 
+-        REQUIRE(color.ConvertToRGB() == PdfColor(1.0 - dRed, 1.0 - dGreen, 1.0 - dBlue));
++        auto rgb1 = color.ConvertToRGB();
++        PdfColor rgb2(1.0 - dRed, 1.0 - dGreen, 1.0 - dBlue);
++
++        ASSERT_EQUAL(rgb1.GetRed(), rgb2.GetRed());
++        ASSERT_EQUAL(rgb1.GetGreen(), rgb2.GetGreen());
++        ASSERT_EQUAL(rgb1.GetBlue(), rgb2.GetBlue());
+     }
+ 
+     REQUIRE(color.ConvertToCMYK() == PdfColor(C_VALUE, M_VALUE, Y_VALUE, B_VALUE));
+-- 
+2.41.0
+

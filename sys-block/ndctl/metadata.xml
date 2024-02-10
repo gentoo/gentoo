@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="libtracefs">Use <pkg>dev-libs/libtracefs</pkg> to build cxl-monitor binary</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pmem/ndctl</remote-id>
+	</upstream>
+</pkgmetadata>

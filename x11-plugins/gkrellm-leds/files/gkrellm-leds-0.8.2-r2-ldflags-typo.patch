@@ -1,0 +1,12 @@
+src/Makefile.am: fix type GK_FLAGS -> GKM_FLAGS
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -10,7 +10,7 @@ gkleds_la_CFLAGS = -Wall -O2 -I../pixmaps @X_CFLAGS@ @GTK_CFLAGS@ @GKM_CFLAGS@
+ gkleds_la_LIBADD = @X_PRE_LIBS@ @X_LIBS@ @X_EXTRA_LIBS@ @GTK_LIBS@ @GKM_EXTRA_SRCS@
+ 
+ ## linker flags, we are building a plugin so skip lib prefix and lib versions
+-gkleds_la_LDFLAGS = -module -avoid-version @GK_LDFLAGS@
++gkleds_la_LDFLAGS = -module -avoid-version @GKM_LDFLAGS@
+ 
+ ## gkleds.la sources
+ gkleds_la_SOURCES = gkleds.c gkleds.h

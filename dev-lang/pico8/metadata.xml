@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<longdescription>
+		PICO-8 is a fantasy console for making, sharing and playing tiny games
+		and other computer programs. When you turn it on, the machine greets you
+		with a shell for typing in Lua programs and provides simple built-in
+		tools for creating sprites, maps and sound.
+
+		The harsh limitations of PICO-8 are carefully chosen to be fun to work
+		with, encourage small but expressive designs and hopefully to give
+		PICO-8 cartridges their own particular look and feel.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,92 @@
+--- a/dnscrypt-proxy/example-dnscrypt-proxy.toml
++++ b/dnscrypt-proxy/example-dnscrypt-proxy.toml
+@@ -348,7 +348,7 @@ reject_ttl = 10
+ 
+ ## See the `example-forwarding-rules.txt` file for an example
+ 
+-# forwarding_rules = 'forwarding-rules.txt'
++# forwarding_rules = '/etc/dnscrypt-proxy/forwarding-rules.txt'
+ 
+ 
+ 
+@@ -364,7 +364,7 @@ reject_ttl = 10
+ ##
+ ## See the `example-cloaking-rules.txt` file for an example
+ 
+-# cloaking_rules = 'cloaking-rules.txt'
++# cloaking_rules = '/etc/dnscrypt-proxy/cloaking-rules.txt'
+ 
+ ## TTL used when serving entries in cloaking-rules.txt
+ 
+@@ -418,7 +418,7 @@ cache_neg_max_ttl = 600
+ ## check for connectivity and captive portals, along with hard-coded
+ ## IP addresses to return.
+ 
+-# map_file = 'example-captive-portals.txt'
++# map_file = '/etc/dnscrypt-proxy/example-captive-portals.txt'
+ 
+ 
+ 
+@@ -448,8 +448,8 @@ cache_neg_max_ttl = 600
+ ## Certificate file and key - Note that the certificate has to be trusted.
+ ## See the documentation (wiki) for more information.
+ 
+-# cert_file = 'localhost.pem'
+-# cert_key_file = 'localhost.pem'
++# cert_file = '/etc/dnscrypt-proxy/localhost.pem'
++# cert_key_file = '/etc/dnscrypt-proxy/localhost.pem'
+ 
+ 
+ 
+@@ -680,7 +680,7 @@ format = 'tsv'
+ 
+   [sources.public-resolvers]
+     urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
+-    cache_file = 'public-resolvers.md'
++    cache_file = '/var/cache/dnscrypt-proxy/public-resolvers.md'
+     minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+     refresh_delay = 72
+     prefix = ''
+@@ -689,7 +689,7 @@ format = 'tsv'
+ 
+   [sources.relays]
+     urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/relays.md']
+-    cache_file = 'relays.md'
++    cache_file = '/var/cache/dnscrypt-proxy/relays.md'
+     minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+     refresh_delay = 72
+     prefix = ''
+@@ -698,13 +698,13 @@ format = 'tsv'
+ 
+   # [sources.odoh-servers]
+   #   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-servers.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-servers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/odoh-servers.md']
+-  #   cache_file = 'odoh-servers.md'
++  #   cache_file = '/var/cache/dnscrypt-proxy/odoh-servers.md'
+   #   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+   #   refresh_delay = 24
+   #   prefix = ''
+   # [sources.odoh-relays]
+   #   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/odoh-relays.md']
+-  #   cache_file = 'odoh-relays.md'
++  #   cache_file = '/var/cache/dnscrypt-proxy/odoh-relays.md'
+   #   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+   #   refresh_delay = 24
+   #   prefix = ''
+@@ -714,7 +714,7 @@ format = 'tsv'
+   # [sources.quad9-resolvers]
+   #   urls = ['https://www.quad9.net/quad9-resolvers.md']
+   #   minisign_key = 'RWQBphd2+f6eiAqBsvDZEBXBGHQBJfeG6G+wJPPKxCZMoEQYpmoysKUN'
+-  #   cache_file = 'quad9-resolvers.md'
++  #   cache_file = '/var/cache/dnscrypt-proxy/quad9-resolvers.md'
+   #   prefix = 'quad9-'
+ 
+   ### Another example source, with resolvers censoring some websites not appropriate for children
+@@ -722,7 +722,7 @@ format = 'tsv'
+ 
+   # [sources.parental-control]
+   #   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/parental-control.md', 'https://download.dnscrypt.info/resolvers-list/v3/parental-control.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/parental-control.md']
+-  #   cache_file = 'parental-control.md'
++  #   cache_file = '/var/cache/dnscrypt-proxy/parental-control.md'
+   #   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+ 
+ 

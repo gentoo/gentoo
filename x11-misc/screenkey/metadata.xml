@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>xgqt@gentoo.org</email>
+        <name>Maciej Barć</name>
+    </maintainer>
+    <longdescription>
+        A screencast tool to display your keys, inspired by Screenflick.
+        Featuring:
+        several keyboard translation methods,
+        key composition/input method support,
+        configurable font/size/position,
+        highlighting of recent keystrokes,
+        improved backspace processing,
+        normal/Emacs/Mac caps modes,
+        multi-monitor support,
+        dynamic recording control,
+        switch for visible shift and modifier sequences only,
+        repeats compression,
+        countless bug fixes,
+        mouse buttons support.
+    </longdescription>
+    <upstream>
+        <bugs-to>https://gitlab.com/screenkey/screenkey/-/issues</bugs-to>
+        <remote-id type="gitlab">screenkey/screenkey</remote-id>
+    </upstream>
+</pkgmetadata>

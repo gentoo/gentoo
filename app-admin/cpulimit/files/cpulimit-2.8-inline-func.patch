@@ -1,0 +1,11 @@
+--- a/cpulimit.c	2023-02-06 19:07:19.450894524 +0300
++++ b/cpulimit.c	2023-02-06 19:07:28.834337797 +0300
+@@ -125,7 +125,7 @@
+ 
+ 
+ //return ta-tb in microseconds (no overflow checks!)
+-inline long timediff(const struct timespec *ta,const struct timespec *tb) {
++static long timediff(const struct timespec *ta,const struct timespec *tb) {
+     unsigned long us = (ta->tv_sec-tb->tv_sec)*1000000 + (ta->tv_nsec/1000 - tb->tv_nsec/1000);
+     return us;
+ }

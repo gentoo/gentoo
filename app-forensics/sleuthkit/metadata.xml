@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gokturk@gentoo.org</email>
+    <name>Göktürk Yüksek</name>
+  </maintainer>
+  <use>
+    <flag name="aff">Enable extra aff formats</flag>
+    <flag name="ewf">Enable libewf support</flag>
+  </use>
+  <slots>
+    <subslots>Reflect ABI compatibility for libtsk.so</subslots>
+  </slots>
+  <upstream>
+    <remote-id type="sourceforge">sleuthkit</remote-id>
+    <remote-id type="github">sleuthkit/sleuthkit</remote-id>
+  </upstream>
+</pkgmetadata>

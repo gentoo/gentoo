@@ -1,0 +1,515 @@
+diff --git a/arith.c b/arith.c
+index 784946f..a4dd9df 100644
+--- a/arith.c
++++ b/arith.c
+@@ -20,8 +20,7 @@
+ #include "compface.h"
+ 
+ void
+-RevPush(p)
+-Prob *p;
++RevPush(Prob *p)
+ {
+ 	if (NumProbs >= PIXELS * 2 - 1)
+ 		longjmp(comp_env, ERR_INTERNAL);
+@@ -29,8 +28,7 @@ Prob *p;
+ }
+  
+ void
+-BigPush(p)
+-Prob *p;
++BigPush(Prob *p)
+ {
+ 	static WORD tmp;
+ 
+@@ -40,11 +38,10 @@ Prob *p;
+ }
+ 
+ int
+-BigPop(p)
+-register Prob *p; 
++BigPop(Prob *p)
+ {
+ 	static WORD tmp;
+-	register int i;
++	int i;
+ 
+ 	BigDiv(0, &tmp);
+ 	i = 0;
+@@ -61,11 +58,11 @@ register Prob *p;
+ #ifdef DEBUG
+ /* Print a BigInt in HexaDecimal
+  */
+-void
+-BigPrint()
++void 
++BigPrint (void)
+ {
+-	register int i, c, count;
+-	register WORD *w;
++	int i, c, count;
++	WORD *w;
+ 
+ 	count = 0;
+ 	w = B.b_word + (i = B.b_words);
+@@ -91,12 +88,11 @@ BigPrint()
+  * pointer to by r
+  */
+ void
+-BigDiv(a, r)
+-register WORD a, *r;
++BigDiv(WORD a, WORD *r)
+ {
+-	register int i;
+-	register WORD *w;
+-	register COMP c, d;
++	int i;
++	WORD *w;
++	COMP c, d;
+ 
+ 	a &= WORDMASK;
+ 	if ((a == 1) || (B.b_words == 0))
+@@ -135,12 +131,11 @@ register WORD a, *r;
+ /* Multiply a by B storing the result in B
+  */
+ void
+-BigMul(a)
+-register WORD a;
++BigMul(WORD a)
+ {
+-	register int i;
+-	register WORD *w;
+-	register COMP c;
++	int i;
++	WORD *w;
++	COMP c;
+ 
+ 	a &= WORDMASK;
+ 	if ((a == 1) || (B.b_words == 0))
+@@ -179,12 +174,11 @@ register WORD a;
+ /* Subtract a from B storing the result in B
+  */
+ void
+-BigSub(a)
+-WORD a;
++BigSub(WORD a)
+ {
+-	register int i;
+-	register WORD *w;
+-	register COMP c;
++	int i;
++	WORD *w;
++	COMP c;
+ 
+ 	a &= WORDMASK;
+ 	if (a == 0)
+@@ -209,12 +203,11 @@ WORD a;
+ /* Add to a to B storing the result in B
+  */
+ void
+-BigAdd(a)
+-WORD a;
++BigAdd(WORD a)
+ {
+-	register int i;
+-	register WORD *w;
+-	register COMP c;
++	int i;
++	WORD *w;
++	COMP c;
+ 
+ 	a &= WORDMASK;
+ 	if (a == 0)
+@@ -237,8 +230,8 @@ WORD a;
+ 	}
+ }
+ 
+-void
+-BigClear()
++void 
++BigClear (void)
+ {
+ 	B.b_words = 0;
+ }
+diff --git a/cmain.c b/cmain.c
+index ec0558d..2a95bc2 100644
+--- a/cmain.c
++++ b/cmain.c
+@@ -61,9 +61,7 @@ char *strerrorwrap();
+ #define WARN {(void)strcat(fbuf, "\n"); (void)write(2, fbuf, strlen(fbuf));}
+ 
+ int
+-main(argc, argv)
+-int argc;
+-char *argv[];
++main(int argc, char **argv)
+ {
+   cmdname = *argv;
+   while (**argv)
+@@ -121,11 +119,11 @@ char *argv[];
+ }
+ 
+ 
+-int
+-WriteBuf()
++int 
++WriteBuf (void)
+ {
+-	register char *s, *t;
+-	register int len;
++	char *s, *t;
++	int len;
+ 
+ 	s = fbuf;
+ 	t = s + strlen(s);
+@@ -144,15 +142,15 @@ WriteBuf()
+ }
+ 
+ 
+-int
+-ReadBuf()
++int 
++ReadBuf (void)
+ {
+-	register int count, len;
+-	register char *t;
++	int count, len;
++	char *t;
+ 
+ 	count = 0;
+ 	t = fbuf;
+-	while (len = read(infile, t, FACEBUFLEN - count))
++	while ((len = read(infile, t, FACEBUFLEN - count)))
+ 	{
+ 		if (len == -1)
+ 		{
+@@ -175,8 +173,7 @@ ReadBuf()
+ }
+ 
+ #ifdef HAVE_STRERROR
+-char *strerrorwrap(err)
+-int err;
++char *strerrorwrap(int err)
+ {
+ 	char *c = strerror(err);
+ 	return ((c) ? (c) : "" );
+diff --git a/compface.c b/compface.c
+index 90664c4..b1b00a8 100644
+--- a/compface.c
++++ b/compface.c
+@@ -22,8 +22,7 @@
+ #include "compface_private.h"
+ 
+ int
+-compface(fbuf)
+-char *fbuf;
++compface(char *fbuf)
+ {
+ 	if (!(status = setjmp(comp_env)))
+ 	{
+diff --git a/compface.h b/compface.h
+index fc4f486..23ae426 100644
+--- a/compface.h
++++ b/compface.h
+@@ -17,6 +17,7 @@
+ #define COMPFACE_H
+ 
+ #include <setjmp.h>
++#include <unistd.h>
+ 
+ /* For all function declarations, if ANSI then use a prototype. */
+ 
+diff --git a/compress.c b/compress.c
+index 3c97806..6f22e17 100644
+--- a/compress.c
++++ b/compress.c
+@@ -21,12 +21,10 @@
+ #include "compface.h"
+ 
+ int
+-Same(f, wid, hei)
+-register char *f;
+-register int wid, hei;
++Same(char *f, int wid, int hei)
+ {
+-	register char val, *row;
+-	register int x;
++	char val, *row;
++	int x;
+ 
+ 	val = *f;
+ 	while (hei--)
+@@ -42,9 +40,7 @@ register int wid, hei;
+ }
+ 
+ int
+-AllBlack(f, wid, hei)
+-char *f;
+-int wid, hei;
++AllBlack(char *f, int wid, int hei)
+ {
+ 	if (wid > 3)
+ 	{
+@@ -59,17 +55,13 @@ int wid, hei;
+ }
+ 
+ int
+-AllWhite(f, wid, hei)
+-char *f;
+-int wid, hei;
++AllWhite(char *f, int wid, int hei)
+ {
+ 	return ((*f == 0) && Same(f, wid, hei));
+ }
+ 
+ void
+-PopGreys(f, wid, hei)
+-char *f;
+-int wid, hei;
++PopGreys(char *f, int wid, int hei)
+ {
+ 	if (wid > 3)
+ 	{
+@@ -95,9 +87,7 @@ int wid, hei;
+ }
+ 
+ void
+-PushGreys(f, wid, hei)
+-char *f;
+-int wid, hei;
++PushGreys(char *f, int wid, int hei)
+ {
+ 	if (wid > 3)
+ 	{
+@@ -114,9 +104,7 @@ int wid, hei;
+ }
+ 
+ void
+-UnCompress(f, wid, hei, lev)
+-register char *f;
+-register int wid, hei, lev;
++UnCompress(char *f, int wid, int hei, int lev)
+ {
+ 	switch (BigPop(&levels[lev][0]))
+ 	{
+@@ -138,9 +126,7 @@ register int wid, hei, lev;
+ }
+ 
+ void
+-Compress(f, wid, hei, lev)
+-register char *f;
+-register int wid, hei, lev;
++Compress(char *f, int wid, int hei, int lev)
+ {
+ 	if (AllWhite(f, wid, hei))
+ 	{
+@@ -164,10 +150,9 @@ register int wid, hei, lev;
+ }
+ 
+ void
+-UnCompAll(fbuf)
+-char *fbuf;
++UnCompAll(char *fbuf)
+ {
+-	register char *p;
++	char *p;
+ 
+ 	BigClear();
+ 	BigRead(fbuf);
+@@ -186,8 +171,7 @@ char *fbuf;
+ }
+ 
+ void
+-CompAll(fbuf)
+-char *fbuf;
++CompAll(char *fbuf)
+ {
+ 	Compress(F, 16, 16, 0);
+ 	Compress(F + 16, 16, 16, 0);
+diff --git a/file.c b/file.c
+index 3a3809e..c69f5b5 100644
+--- a/file.c
++++ b/file.c
+@@ -23,10 +23,9 @@
+ int compface_xbitmap=0;
+ 
+ void
+-BigRead(fbuf)
+-register char *fbuf;
++BigRead(char *fbuf)
+ {
+-	register int c;
++	int c;
+ 
+ 	while (*fbuf != '\0')
+ 	{
+@@ -39,13 +38,12 @@ register char *fbuf;
+ }
+ 
+ void
+-BigWrite(fbuf)
+-register char *fbuf;
++BigWrite(char *fbuf)
+ {
+ 	static WORD tmp;
+ 	static char buf[DIGITS];
+-	register char *s;
+-	register int i;
++	char *s;
++	int i;
+ 
+ 	s = buf;
+ 	while (B.b_words > 0)
+@@ -72,11 +70,10 @@ register char *fbuf;
+ }
+ 
+ void
+-ReadFace(fbuf)
+-char *fbuf;
++ReadFace(char *fbuf)
+ {
+-	register int c, i;
+-	register char *s, *t;
++	int c, i;
++	char *s, *t;
+ 
+ 	t = s = fbuf;
+ 	for(i = strlen(s); i > 0; i--)
+@@ -129,11 +126,10 @@ char *fbuf;
+ }
+ 
+ void
+-WriteFace(fbuf)
+-char *fbuf;
++WriteFace(char *fbuf)
+ {
+-	register char *s, *t;
+-	register int i, bits, digits, words;
++	char *s, *t;
++	int i, bits, digits, words;
+ 	int digsperword = DIGSPERWORD;
+ 	int wordsperline = WORDSPERLINE;
+ 
+diff --git a/gen.c b/gen.c
+index 4dedc09..1b99536 100644
+--- a/gen.c
++++ b/gen.c
+@@ -25,10 +25,9 @@
+ static void Gen P((char *)) ;
+ 
+ static void
+-Gen(f)
+-register char *f;
++Gen(char *f)
+ {
+-	register int m, l, k, j, i, h;
++	int m, l, k, j, i, h;
+ 
+ 	for (j = 0; j < HEIGHT;  j++)
+ 	{
+@@ -91,13 +90,13 @@ register char *f;
+ 	}
+ }
+ 
+-void
+-GenFace()
++void 
++GenFace (void)
+ {
+ 	static char new[PIXELS];
+-	register char *f1;
+-	register char *f2;
+-	register int i;
++	char *f1;
++	char *f2;
++	int i;
+ 
+ 	f1 = new;
+ 	f2 = F;
+@@ -107,8 +106,8 @@ GenFace()
+ 	Gen(new);
+ }
+ 
+-void
+-UnGenFace()
++void 
++UnGenFace (void)
+ {
+ 	Gen(F);
+ }
+diff --git a/uncmain.c b/uncmain.c
+index a94279d..52d3173 100644
+--- a/uncmain.c
++++ b/uncmain.c
+@@ -57,9 +57,7 @@ char *strerrorwrap(int err);
+ #define WARN {(void)strcat(fbuf, "\n"); (void)write(2, fbuf, strlen(fbuf));}
+ 
+ int
+-main(argc, argv)
+-int argc;
+-char *argv[];
++main(int argc, char **argv)
+ {
+   cmdname = *argv;
+   while (**argv)
+@@ -124,11 +122,11 @@ char *argv[];
+ }
+ 
+ 
+-int
+-WriteBuf()
++int 
++WriteBuf (void)
+ {
+-	register char *s, *t;
+-	register int len;
++	char *s, *t;
++	int len;
+ 
+ 	s = fbuf;
+ 	t = s + strlen(s);
+@@ -147,15 +145,15 @@ WriteBuf()
+ }
+ 
+ 
+-int
+-ReadBuf()
++int 
++ReadBuf (void)
+ {
+-	register int count, len;
+-	register char *t;
++	int count, len;
++	char *t;
+ 
+ 	count = 0;
+ 	t = fbuf;
+-	while (len = read(infile, t, FACEBUFLEN - count))
++	while ((len = read(infile, t, FACEBUFLEN - count)))
+ 	{
+ 		if (len == -1)
+ 		{
+@@ -178,8 +176,7 @@ ReadBuf()
+ }
+ 
+ #ifdef HAVE_STRERROR
+-char *strerrorwrap(err)
+-int err;
++char *strerrorwrap(int err)
+ {
+    char *c = strerror(err);
+    return ((c) ? (c) : "" );
+diff --git a/uncompface.c b/uncompface.c
+index 1a61eb5..d41f9bc 100644
+--- a/uncompface.c
++++ b/uncompface.c
+@@ -23,8 +23,7 @@
+ #include "compface_private.h"
+ 
+ int
+-uncompface(fbuf)
+-char *fbuf;
++uncompface(char *fbuf)
+ {
+ 	if (!(status = setjmp(comp_env)))
+ 	{

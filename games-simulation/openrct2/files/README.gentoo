@@ -1,0 +1,15 @@
+OpenRCT2 needs the original RollerCoaster Tycoon 2 data files."
+
+You need the folders 'Data', 'ObjData', 'Scenarios' and 'Tracks'"
+from the original release and copy them into '/usr/share/openrct2/rct2_data'."
+
+For additional content, you can install the RollerCoaster Tycoon 1 data files."
+
+You need the folders 'Data', 'Scenarios' and 'Tracks'"
+from the original release and copy them into '/usr/share/openrct2/rct1_data'."
+
+Optionally, the paths can be overwritten by the parameters"
+'game_path' and 'rct1_path' in your local ~/.config/OpenRCT2/config.ini file."
+
+See: https://github.com/OpenRCT2/OpenRCT2/wiki/Required-RCT2-files"
+See: https://github.com/OpenRCT2/OpenRCT2/wiki/Loading-RCT1-scenarios-and-data"

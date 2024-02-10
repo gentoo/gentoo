@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use cups
+}
+
+start() {
+	ebegin "Starting mtinkd"
+	/usr/sbin/mtinkd start ${DEV_FILE} ${SPEC}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping mtinkd"
+	/usr/sbin/mtinkd stop ${DEV_FILE} ${SPEC}
+	eend $?
+}

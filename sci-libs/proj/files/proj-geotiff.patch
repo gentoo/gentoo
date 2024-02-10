@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/917393
+https://github.com/OSGeo/PROJ/pull/3970
+
+From afccfb609db16524b602216d9dc2b55c154403bb Mon Sep 17 00:00:00 2001
+From: Marco Genasci <fedeliallalinea@gmail.com>
+Date: Sun, 26 Nov 2023 08:40:45 +0100
+Subject: [PATCH] Database: added ability to install *.tif if present in data
+
+---
+ data/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/data/CMakeLists.txt b/data/CMakeLists.txt
+index 4cb89e7849..85ed6ba8d4 100644
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -38,6 +38,8 @@ set(GRIDSHIFT_FILES ${GSB_FILES} ${GTX_FILES})
+ 
+ file(GLOB SCHEMA_FILES *.json)
+ 
++file(GLOB GEOTIFF_FILES *.tif)
++
+ set(ALL_SQL_IN "${CMAKE_CURRENT_BINARY_DIR}/all.sql.in")
+ set(PROJ_DB "${CMAKE_CURRENT_BINARY_DIR}/proj.db")
+ include(sql_filelist.cmake)
+@@ -107,6 +109,7 @@ set(ALL_DATA_FILE
+   ${GRIDSHIFT_FILES}
+   ${PROJ_DB}
+   ${SCHEMA_FILES}
++  ${GEOTIFF_FILES}
+ )
+ install(
+   FILES ${ALL_DATA_FILE}

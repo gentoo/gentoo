@@ -1,0 +1,18 @@
+--- a/make-makelib.sh
++++ b/make-makelib.sh
+@@ -1,6 +1,6 @@
+ echo 'main="$1"; shift'
+ echo 'rm -f "$main"'
+-echo 'ar cr "$main" ${1+"$@"}'
++echo '${AR} cr "$main" ${1+"$@"}'
+ 
+ case "$1" in
+ sunos-5.*) ;;
+@@ -11,6 +11,6 @@
+ hp-ux-*) ;;
+ sco*) ;;
+ *)
+-  echo 'ranlib "$main"'
++  echo '${RANLIB} "$main"'
+   ;;
+ esac

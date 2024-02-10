@@ -1,0 +1,13 @@
+https://gitlab.com/fweimer-rh/fedora-modernc/-/commit/1dfd7bb468b91abb93f6b3c54c8b1dcdaf8ccdff
+https://rt.cpan.org/Public/Bug/Display.html?id=145461
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -6,6 +6,7 @@ use ExtUtils::MakeMaker;
+ 
+ ($stdint = <<"TEST") =~ s/^\| {0,3}//gm;
+ |   #include <stdint.h>
++|   #include <stdio.h>
+ |   int main(void) {
+ |       printf("%d%d", sizeof(uint16_t), sizeof(uint32_t));
+ |       return 0;
+

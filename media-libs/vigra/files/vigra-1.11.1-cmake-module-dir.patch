@@ -1,0 +1,17 @@
+CMake modules must be in cmake subdir.
+
+--- a/CMakeLists.txt	2017-05-19 17:01:08.000000000 +0200
++++ b/CMakeLists.txt	2019-11-26 23:50:40.660462479 +0100
+@@ -368,10 +368,10 @@
+ 
+ # export targets:
+ INSTALL(EXPORT vigra-targets
+-        DESTINATION lib${LIB_SUFFIX}/vigra)
++        DESTINATION lib${LIB_SUFFIX}/cmake/vigra)
+ INSTALL(FILES ${PROJECT_BINARY_DIR}/lib/vigra/CMake/VigraConfig.cmake
+             ${PROJECT_BINARY_DIR}/lib/vigra/CMake/VigraConfigVersion.cmake
+-        DESTINATION lib${LIB_SUFFIX}/vigra)
++        DESTINATION lib${LIB_SUFFIX}/cmake/vigra)
+ EXPORT(TARGETS vigraimpex FILE vigra-targets.cmake)
+ 
+ ##################################################

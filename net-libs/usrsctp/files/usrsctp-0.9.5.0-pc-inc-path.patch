@@ -1,0 +1,22 @@
+From 70d42ae95a1de83bd317c8cc9503f894671d1392 Mon Sep 17 00:00:00 2001
+From: Michael Tuexen <tuexen@fh-muenster.de>
+Date: Mon, 29 Mar 2021 13:36:32 +0200
+Subject: [PATCH] Fix https://github.com/sctplab/usrsctp/issues/574
+
+---
+ usrsctplib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usrsctplib/CMakeLists.txt b/usrsctplib/CMakeLists.txt
+index aa99cf2f..84bdee2e 100644
+--- a/usrsctplib/CMakeLists.txt
++++ b/usrsctplib/CMakeLists.txt
+@@ -45,7 +45,7 @@ include(GNUInstallDirs)
+ set(prefix ${CMAKE_INSTALL_PREFIX})
+ set(exec_prefix ${prefix})
+ set(libdir ${exec_prefix}/${CMAKE_INSTALL_LIBDIR})
+-set(includedir ${prefix}/${CMAKE_INSTALL_INCLUDEDIR}/usrsctp)
++set(includedir ${prefix}/${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ set(CMAKE_REQUIRED_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR})
+ set(CMAKE_MACOSX_RPATH 1)

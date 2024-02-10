@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <upstream>
+    <doc>https://learn.microsoft.com/en-us/dotnet/</doc>
+    <bugs-to>https://github.com/dotnet/sdk/issues/</bugs-to>
+    <remote-id type="github">dotnet/installer</remote-id>
+    <remote-id type="github">dotnet/sdk</remote-id>
+  </upstream>
+</pkgmetadata>

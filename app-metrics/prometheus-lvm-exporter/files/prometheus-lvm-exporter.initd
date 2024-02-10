@@ -1,0 +1,49 @@
+#!/sbin/openrc-run
+# Copyright 2016-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus exporter for LVM metrics"
+
+EXPORTER_FLAGS=${EXPORTER_FLAGS:-""}
+#EXPORTER_USER=${EXPORTER_USER:-"prometheus-lvm-exporter"}
+#EXPORTER_GROUP=${EXPORTER_GROUP:-"prometheus-lvm-exporter"}
+EXPORTER_PIDFILE=${EXPORTER_PIDFILE:-"/run/${RC_SVCNAME}.pid"}
+EXPORTER_SSDARGS=${EXPORTER_SSDARGS:-"--wait 1000"}
+EXPORTER_TERMTIMEOUT=${EXPORTER_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+command="/usr/bin/prometheus-lvm-exporter"
+command_args="${EXPORTER_FLAGS}"
+command_background="true"
+start_stop_daemon_args="${EXPORTER_SSDARGS}"
+start_stop_daemon_args="${start_stop_daemon_args} ${EXPORTER_USER:+--user }${EXPORTER_USER}"
+start_stop_daemon_args="${start_stop_daemon_args} ${EXPORTER_GROUP:+--group }${EXPORTER_GROUP}"
+
+getconfig() {
+	local key="$1"
+	local value_default="$2"
+	local value=
+
+	if service_started; then
+		value="$(service_get_value "${key}")"
+	fi
+
+	if [ -z "${value}" ]; then
+		# Value not explicitly set
+		echo "${value_default}"
+	else
+		echo "${value}"
+	fi
+
+	return 0
+}
+
+pidfile="$(getconfig pidfile ${EXPORTER_PIDFILE})"
+retry="$(getconfig retry ${EXPORTER_TERMTIMEOUT})"
+
+depend() {
+	after net lvm lvm-monitoring
+}
+
+start_post() {
+	service_set_value retry "${EXPORTER_TERMTIMEOUT}"
+}

@@ -1,0 +1,13 @@
+diff --git a/libshaderc_util/src/compiler.cc b/libshaderc_util/src/compiler.cc
+index c5ce37e..4703634 100644
+--- a/libshaderc_util/src/compiler.cc
++++ b/libshaderc_util/src/compiler.cc
+@@ -20,7 +20,7 @@
+ #include <thread>
+ #include <tuple>
+ 
+-#include "SPIRV/GlslangToSpv.h"
++#include "glslang/SPIRV/GlslangToSpv.h"
+ #include "libshaderc_util/format.h"
+ #include "libshaderc_util/io.h"
+ #include "libshaderc_util/message.h"

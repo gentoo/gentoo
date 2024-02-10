@@ -1,0 +1,10 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+
+# Jeroen Roovers <jer@gentoo.org> (2011-09-01)
+# No hardware support for NUMA (bug #381313)
+sys-apps/hwloc numa
+
+# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.

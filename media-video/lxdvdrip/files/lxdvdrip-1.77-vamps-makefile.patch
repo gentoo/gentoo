@@ -1,0 +1,16 @@
+--- a/vamps/Makefile
++++ b/vamps/Makefile
+@@ -17,11 +17,11 @@
+ 
+ PREFIX    ?= /usr/local
+ 
+-CC         = gcc
++CC        ?= gcc
+ CFLAGS    ?= -O2  -g -D_LARGEFILE_SOURCE -DLARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 \
+ 	       -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -D_REENTRANT
+ CFLAGS    += -Wall
+-LDFLAGS   += -s
++LDFLAGS   +=
+ LOADLIBES += -lm -pthread -ldvdread
+ 
+ INSTALL   ?= install

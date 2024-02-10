@@ -1,0 +1,253 @@
+Introduction
+============
+
+This ebuild enables kernel-space support for Alcatel/Thomson SpeedTouch
+USB modems, which first appeared in kernel 2.6.10.
+
+Configuration
+=============
+
+Most SpeedTouch USB modems are connected via the ATM protocol, rather
+than Ethernet. For ATM, run the following:
+   euse -E atm && emerge net-dialup/ppp net-dialup/speedtouch-usb
+
+It is necessary to choose an interface number for the connection. This
+is arbitrary - the only requirement is that the connection number is
+not already in use. The first available number is 0, and it is usual to
+choose the lowest unused number. For the purposes of this document, 0
+will be chosen.
+
+Add the following lines from the appropriate section below to
+/etc/conf.d/net, then customize them as per the inline comments.
+
+
+a) PPPoATM configuration:
+
+config_ppp0='ppp'  # Runs /lib/rcscripts/net/pppd.sh
+# The 2 numbers represent the VPI & VCI of your ISP, and they are separated
+# by a dot. Choose here, or ask your ISP:
+#   http://www.linux-usb.org/SpeedTouch/faq/index.html#q12
+link_ppp0='0.38'
+plugins_ppp0='pppoa' 
+# 'man pppd' shows other options. Compression is disabled because it is
+# rarely taken advantage of, and may interfere with the connection.
+# Add option 'usepeerdns' to populate /etc/resolv.conf
+pppd_ppp0='updetach noauth debug defaultroute noaccomp nobsdcomp noccp
+	nodeflate nopcomp novj novjccomp child-timeout 60'
+username_ppp0='username@isp.com'  # ADSL login, assigned by your ISP
+password_ppp0='password'  # ADSL password, assigned by your ISP
+
+# If the kernel modules are not built-in, then they must be loaded
+# before starting the PPP daemon:
+function preup() {
+	if [[ "$1" = "ppp0" ]] ; then
+		modprobe -q speedtch
+		return 0
+	fi
+}
+
+
+b) PPPoE configuration:
+
+# Configure first the RFC2684 bridge interface 
+config_nas0='null'
+# Use "-e 0" for LLC mux or "-e 1" for VC mux.
+# The 2 numbers after "-a" represent the VPI & VCI of your ISP, and
+# they are separated by a dot. Ask your ISP about those numbers.
+br2684ctl_nas0='-e 0 -a 0.38'
+
+config_ppp0='ppp'  # Runs /lib/rcscripts/net/pppd.sh
+link_ppp0='nas0' # The name of the RFC2684 bridge interface
+plugins_ppp0='pppoe'
+# 'man pppd' shows other options. Compression is disabled because it is
+# rarely taken advantage of, and may interfere with the connection.
+# Add option 'usepeerdns' to populate /etc/resolv.conf
+pppd_ppp0='updetach noauth debug defaultroute noaccomp nobsdcomp noccp
+	nodeflate nopcomp novj novjccomp child-timeout 60'
+username_ppp0='username@isp.com'  # ADSL login, assigned by your ISP
+password_ppp0='password'  # ADSL password, assigned by your ISP
+
+depend_ppp0() {
+    need net.nas0
+}
+
+# If the kernel modules are not built-in, then they must be loaded
+# before starting the RFC2684 bridge:
+function preup() {
+	if [[ "$1" = "nas0" ]] ; then
+		modprobe -q speedtch
+		return 0
+	fi
+}
+
+
+
+Configuration continued
+=======================
+
+Create a symlink for the new network interface, for it to be enabled by
+baselayout:
+  cd /etc/init.d && ln -sfn net.lo net.ppp0
+If you use PPPoE, you should also create the symlink for the RFC2684
+bridge interface:
+  cd /etc/init.d && ln -sfn net.lo net.nas0
+
+The "debug" option adds some extra commentary from pppd regarding the
+connection to /var/log/messages, e.g.:
+"sent [LCP ConfReq id=0x1 <magic 0x7bea6ef1>]". It is wise to keep the
+option on permanently, due to its usefulness when debugging.
+
+Set RC_NET_STRICT_CHECKING="yes" in /etc/conf.d/rc, to prevent Internet
+services in /etc/init.d/ from starting before the Internet connection
+is established. Other options are to start/stop programs in
+/etc/ppp/ip-{up,down}.local, and to customize initscript dependencies
+as described in:
+  http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=2&chap=4
+
+
+Starting the Connection
+=======================
+
+To start manually, with the modem connected:
+  /etc/init.d/net.ppp0 start
+
+To start automatically when the PC boots:
+  rc-update add net.ppp0 default
+
+
+Kernel Configuration
+====================
+
+The ebuild, during an emerge, checks that the required kernel modules
+are present.
+
+Note that in the list below, "[*]" means that the option is compiled
+into the kernel, whereas "[M]" means that the option can either be
+compiled into the kernel, or as a module. Compiling them into the
+kernel is recommended, to guarantee that the modules are already loaded
+when they are needed, and it will improve the bootup time by a couple
+of seconds.
+
+In "make menuconfig", you can press "/" and search on e.g. "speedtouch"
+to see exactly where an option is - the location of an option and its
+dependencies can change between kernel versions.
+
+Check that the following kernel options are configured as shown (this
+list includes the prerequisites, e.g. USB_SPEEDTOUCH depends on USB):
+
+ Code maturity level options  --->
+  [*] Prompt for development and/or incomplete code/drivers
+        - CONFIG_EXPERIMENTAL
+
+ General setup  --->
+  [*] Kernel Userspace Events - CONFIG_KOBJECT_UEVENT
+        (for kernels < 2.6.16 *ONLY*)
+
+ Device Drivers  --->
+  Generic Driver Options  --->
+   [ ] Select only drivers that don't need compile-time external
+        firmware (*unselected*) - CONFIG_STANDALONE
+   [*] Hotplug firmware loading support - CONFIG_FW_LOADER
+
+ Networking  --->
+   [*] Networking support - CONFIG_NET
+   Networking options  --->
+    [*] Packet socket - CONFIG_PACKET
+    [M] Asynchronous Transfer Mode (ATM) - CONFIG_ATM
+    [M] RFC1483/2684 Bridged protocols - CONFIG_ATM_BR2684 (only needed for PPPoE)
+   
+ Device Drivers  --->
+  Network device support  --->
+   [*] Network device support - CONFIG_NETDEVICES
+   [*] PPP (point-to-point protocol) support - CONFIG_PPP
+   [M] PPP Deflate compression - CONFIG_PPP_DEFLATE (only useful if
+        compression is supported - rare)
+   [M] PPP BSD-Compress compression - CONFIG_PPP_BSDCOMP (only useful
+        if compression is supported - rare)
+   [M] PPP over Ethernet - CONFIG_PPPOE (only needed for PPPoE)
+   [M] PPP over ATM - CONFIG_PPPOATM (only needed for PPPoATM)
+  USB support  --->
+   [*] Support for Host-side USB - CONFIG_USB
+   [*] USB device filesystem - CONFIG_USB_DEVICEFS
+   [M] (O or U)HCI HCD support
+   USB DSL modem support  ---> 
+    [M] USB DSL modem support - CONFIG_USB_ATM
+    [M] Speedtouch USB support - CONFIG_USB_SPEEDTOUCH
+
+
+
+Troubleshooting
+===============
+
+Try "emerge speedtouch-usb" again, because the ebuild checks that the
+required kernel modules are present (showing a warning message if
+appropriate), and creates the firmware files and symlinks in
+/lib/firmware/
+
+If the modem is unresponsive, then run "/etc/init.d/net.ppp0 stop" and
+unplug the modem for 30 seconds, to drain its memory. Then reconnect
+the modem to the PC and run "/etc/init.d/net.ppp0 start"
+
+To check the modem's connection progress, run:
+  tail -f /var/log/messages
+/var/log/messages should show e.g.:
+
+usb n-n: new full speed USB device using xxxx_hcd and address n
+usb n-n: found stage 1 firmware speedtch-1.bin
+usb n-n: found stage 2 firmware speedtch-2.bin
+pppd[nnn]: Plugin pppoatm.so loaded.
+pppd[nnn]: pppd n.n.n started by root, uid 0
+pppd[nnn]: Using interface ppp0
+pppd[nnn]: Connect: ppp0 <--> n.nn
+ADSL line is synchronising
+DSL line goes up
+ADSL line is up (nnn Kib/s down | nnn Kib/s up)
+pppd[nnn]: CHAP authentication succeeded
+pppd[nnn]: local  IP address nnn.nnn.nnn.nnn
+pppd[nnn]: remote IP address nnn.nnn.nnn.nnn
+
+
+If the authentification fails, then check username_ppp0 and
+password_ppp0.
+
+If the ADSL connection is not established, then check the options in
+pppd_ppp0. "man pppd" explains all the options in that file.
+
+If the ADSL connection seems to have worked, but no websites can be
+contacted, then check that /etc/resolv.conf is populated, and possibly
+add the "usepeerdns" option (to use the ISP's DNS) to pppd_ppp0 in
+/etc/conf.d/net .
+
+If the problem is still not resolved, post to the Gentoo Forums
+at http://forums.gentoo.org/. If there is no answer, then
+file a bug at http://bugs.gentoo.org/ .
+
+
+Compression
+===========
+
+Some ISPs require compression to be disabled in order for the
+connection to work, so the default configuration described above
+disables compression. Few ISPs support ADSL compression anyway. If you
+are lucky enough to have an ISP which *does* support compression
+(Google is your best friend for determining this), then compression can
+be enabled by following these steps:
+
+* Compile the kernel modules CONFIG_PPP_DEFLATE and CONFIG_PPP_BSDCOMP
+(only one is strictly necessary - pppd prefers "deflate" compression).
+Add them to /etc/modules.autoload.d/kernel-2.6 or /etc/conf.d/net above
+the "pppoatm" line, if they are not built-in.
+* Remove the following options in pppd_ppp0:
+  noaccomp nobsdcomp noccp nodeflate nopcomp novj novjccomp
+* Ensure that "debug" is in the pppd_ppp0 options, to check that
+compression is being utilized. Note that "module registered" in
+/var/log/messages only confirms that the kernel module is loaded - 
+it does not indicate that the connection is compressed.
+
+
+Links
+=====
+
+SpeedTouch ebuilds:   https://packages.gentoo.org/packages/search?q=speedtouch
+SpeedTouch hardware:  http://www.speedtouch.com/support.htm
+SpeedTouch firmware:  http://www.speedtouch.com/driver_upgrade_lx_3.0.1.2.htm

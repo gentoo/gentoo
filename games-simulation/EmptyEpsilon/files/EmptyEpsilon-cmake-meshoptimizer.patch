@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,9 +133,9 @@ else()
+ endif()
+ 
+ if(NOT meshoptimizer_POPULATED)
+-  if(COMMAND FetchContent_Populate)
+-    FetchContent_Populate(meshoptimizer)
+-  endif()
++  set(meshoptimizer_SOURCE_DIR "${EXTERNALS_DIR}/meshoptimizer")
++  set(meshoptimizer_BINARY_DIR "${PROJECT_BINARY_DIR}/externals/meshoptimizer")
++
+   add_subdirectory(${meshoptimizer_SOURCE_DIR} ${meshoptimizer_BINARY_DIR} EXCLUDE_FROM_ALL)
+ endif()
+ 

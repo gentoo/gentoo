@@ -1,0 +1,13 @@
+diff --git a/internal b/internal
+index 432179d..6898173 100755
+--- a/internal
++++ b/internal
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python3
+ 'Command line program to exercise/test/debug the _internal command.'
+ # Mark Blakeney, Oct 2019
+-import sys, importlib, argparse
++import sys, importlib.util, importlib.machinery, argparse
+ from pathlib import Path
+ 
+ CMD = '_internal'

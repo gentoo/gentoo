@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/875059
+--- a/xbattbar.c
++++ b/xbattbar.c
+@@ -234,3 +234,3 @@
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {

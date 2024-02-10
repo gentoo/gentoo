@@ -1,0 +1,45 @@
+compilefix for vdr-2.4
+Suggested-by: MatthiasK @ vdr-portal.de
+
+fixed invalid suffix on literal; C++11 space issues
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 25 Dec 2019 )
+diff -Naur lcdproc-0.0.10-jw9.orig/lcd.c lcdproc-0.0.10-jw9/lcd.c
+--- lcdproc-0.0.10-jw9.orig/lcd.c	2019-12-25 22:53:55.187492713 +0100
++++ lcdproc-0.0.10-jw9/lcd.c	2019-12-25 22:54:33.075492713 +0100
+@@ -808,7 +808,7 @@
+ 	  cLcd::Write(LcdSetup.ShowTime?1:4," Welcome  to  V D R\0");
+ 	  cLcd::Write(LcdSetup.ShowTime?2:3,"--------------------\0");
+ 	  cLcd::Write(LcdSetup.ShowTime?3:1,"Video Disk Recorder\0");
+-	  cLcd::Write(LcdSetup.ShowTime?4:2,"Version: "VDRVERSION"\0");
++	  cLcd::Write(LcdSetup.ShowTime?4:2,"Version: " VDRVERSION "\0");
+ 
+ 	  // Output init
+ 	  if (LcdSetup.OutputNumber > 0){
+@@ -850,11 +850,15 @@
+ 		  }
+ 
+ 		  if ( time(NULL) > nextLcdUpdate ) {
+-			  cChannel *channel = Channels.GetByNumber(primaryDvbApi->CurrentChannel());
++//			  cChannel *channel = Channels.GetByNumber(primaryDvbApi->CurrentChannel());
++			  LOCK_CHANNELS_READ;
++			  const cChannel *channel = Channels->GetByNumber(primaryDvbApi->CurrentChannel());
+ 			  const cEvent *Present = NULL;
+-			  cSchedulesLock schedulesLock;
++/*			  cSchedulesLock schedulesLock;
+ 			  const cSchedules *Schedules = cSchedules::Schedules(schedulesLock);
+ 			  if (Schedules) {
++				  const cSchedule *Schedule = Schedules->GetSchedule(channel->GetChannelID()); */
++				  LOCK_SCHEDULES_READ;
+ 				  const cSchedule *Schedule = Schedules->GetSchedule(channel->GetChannelID());
+ 				  if (Schedule) {
+ 					  const char *PresentTitle, *PresentSubtitle;
+@@ -873,7 +877,7 @@
+ 						  rtcycle = 10; // RT
+ 						  lcrCycle = 10; // LCR
+ 				  }
+-			  }
++//			  }
+ 			  if ( nextLcdUpdate <= time(NULL) )
+ 				  nextLcdUpdate=(time(NULL)/60)*60+60;
+ 		  }

@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 573f2bd..aa565f4 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -21,7 +21,7 @@ leonconv: desauto
+ 	cd ./src; $(MAKE) CC="$(CC)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)";
+ 
+ desauto: 
+-	cd $(SRCDIR); autoreconf --install --force ; ./configure; $(MAKE) CC="$(CC)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)";
++	cd $(SRCDIR); $(MAKE) CC="$(CC)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)";
+ 
+ minimum-weight.o: $(CJSRCDIR)/minimum-weight.c $(CJSRCDIR)/minimum-weight-gf2.h $(CJSRCDIR)/minimum-weight-gf3.h $(CJSRCDIR)/popcount.h $(CJSRCDIR)/config.h $(CJSRCDIR)/types.h
+ 	$(CC) -c -O3 -Wall -I $(CJSRCDIR) $(CJSRCDIR)/minimum-weight.c

@@ -1,0 +1,11 @@
+[Unit]
+Description=Munin Node Service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/munin-node.pid
+ExecStart=/usr/sbin/munin-node
+
+[Install]
+WantedBy=multi-user.target

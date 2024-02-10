@@ -1,0 +1,6 @@
+INCLUDEPATH *= $$[QT_INSTALL_HEADERS]/QtSolutions
+greaterThan(QT_MAJOR_VERSION, 4) {
+LIBS *= -lQt$${QT_MAJOR_VERSION}Solutions_LockedFile-2.4
+} else {
+LIBS *= -lQtSolutions_LockedFile-2.4
+}

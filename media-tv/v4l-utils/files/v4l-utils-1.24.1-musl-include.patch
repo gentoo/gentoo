@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/908380
+--- a/utils/common/media-info.h
++++ b/utils/common/media-info.h
+@@ -5,6 +5,7 @@
+ 
+ #ifndef _MEDIA_INFO_H
+ #define _MEDIA_INFO_H
++#include <sys/types.h>
+ 
+ enum media_type {
+ 	MEDIA_TYPE_CANT_STAT,

@@ -1,0 +1,29 @@
+# HG changeset patch
+# User kristianf
+# Date 1382917429 -3600
+#      Mon Oct 28 00:43:49 2013 +0100
+# Node ID 724cf5abf164dd5889a7c72916aa524c3822b8bd
+# Parent  902b9c6908618864319835d69981f9ea902be324
+Makefile
+
+diff -r 902b9c690861 -r 724cf5abf164 host/Makefile
+--- a/host/Makefile	Mon Oct 28 00:41:59 2013 +0100
++++ b/host/Makefile	Mon Oct 28 00:43:49 2013 +0100
+@@ -107,7 +107,7 @@
+ CFLAGS += $(INCLUDES)
+ CFLAGS += -g -Wall $(OPT)
+ CFLAGS += -fno-strict-aliasing
+-CFLAGS += -std=c99 -Wall -pedantic -Wshadow -Werror -D_GNU_SOURCE
++CFLAGS += -std=c99 -Wall -pedantic -Wshadow -D_GNU_SOURCE
+ CFLAGS += '-DCONFIGFILE="$(SYSCONFPREFIX)/ekeyd.conf"'
+ CFLAGS += '-DPIDFILE="$(RUNTIMEPREFIX)/ekeyd.pid"'
+ CFLAGS += '-DKEYRINGFILE="$(SYSCONFPREFIX)/keyring"'
+@@ -148,7 +148,7 @@
+ 	$(COMPILE.c) $(OUTPUT_OPTION) $(PTHFLAGS) $^
+ 
+ egd-linux: egd-linux.o daemonise.o
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ ekeyd: ekeyd.o daemonise.o lstate.o connection.o stream.o frame.o packet.o keydb.o util.o fds.o krnlop.o foldback.o stats.o nonce.o ../device/frames/pem.o ../device/skeinwrap.o ../device/skein/skein.o ../device/skein/skein_block.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)

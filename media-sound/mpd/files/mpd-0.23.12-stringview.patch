@@ -1,0 +1,235 @@
+Backport of upstream commit ec66ee3bfb, which is a prerequisite to
+backport the fix for dev-libs/libfmt-10.
+
+--- a/src/command/FileCommands.cxx
++++ b/src/command/FileCommands.cxx
+@@ -106,7 +106,7 @@ handle_listfiles_local(Response &r, Path path_fs)
+ 
+ gcc_pure
+ static bool
+-IsValidName(const StringView s) noexcept
++IsValidName(const std::string_view s) noexcept
+ {
+ 	if (s.empty() || !IsAlphaASCII(s.front()))
+ 		return false;
+@@ -118,7 +118,7 @@ IsValidName(const StringView s) noexcept
+ 
+ gcc_pure
+ static bool
+-IsValidValue(const StringView s) noexcept
++IsValidValue(const std::string_view s) noexcept
+ {
+ 	return std::none_of(s.begin(), s.end(), [](const auto &ch) { return (unsigned char)ch < 0x20; });
+ }
+@@ -130,7 +130,7 @@ public:
+ 	explicit PrintCommentHandler(Response &_response) noexcept
+ 		:NullTagHandler(WANT_PAIR), response(_response) {}
+ 
+-	void OnPair(StringView key, StringView value) noexcept override {
++	void OnPair(std::string_view key, std::string_view value) noexcept override {
+ 		if (IsValidName(key) && IsValidValue(value))
+ 			response.Fmt(FMT_STRING("{}: {}\n"), key, value);
+ 	}
+--- a/src/command/OtherCommands.cxx
++++ b/src/command/OtherCommands.cxx
+@@ -147,7 +147,7 @@ public:
+ 	explicit PrintTagHandler(Response &_response) noexcept
+ 		:NullTagHandler(WANT_TAG), response(_response) {}
+ 
+-	void OnTag(TagType type, StringView value) noexcept override {
++	void OnTag(TagType type, std::string_view value) noexcept override {
+ 		if (response.GetClient().tag_mask.Test(type))
+ 			tag_print(response, type, value);
+ 	}
+--- a/src/decoder/plugins/AdPlugDecoderPlugin.cxx
++++ b/src/decoder/plugins/AdPlugDecoderPlugin.cxx
+@@ -81,11 +81,11 @@ adplug_file_decode(DecoderClient &client, Path path_fs)
+ }
+ 
+ static void
+-adplug_scan_tag(TagType type, const std::string &value,
++adplug_scan_tag(TagType type, const std::string_view value,
+ 		TagHandler &handler) noexcept
+ {
+ 	if (!value.empty())
+-		handler.OnTag(type, {value.data(), value.size()});
++		handler.OnTag(type, value);
+ }
+ 
+ static bool
+--- a/src/playlist/plugins/EmbeddedCuePlaylistPlugin.cxx
++++ b/src/playlist/plugins/EmbeddedCuePlaylistPlugin.cxx
+@@ -39,6 +39,8 @@
+ 
+ #include <string.h>
+ 
++using std::string_view_literals::operator""sv;
++
+ class EmbeddedCuePlaylist final : public SongEnumerator {
+ public:
+ 	/**
+@@ -69,14 +71,15 @@ public:
+ 
+ 	ExtractCuesheetTagHandler() noexcept:NullTagHandler(WANT_PAIR) {}
+ 
+-	void OnPair(StringView key, StringView value) noexcept override;
++	void OnPair(std::string_view key, std::string_view value) noexcept override;
+ };
+ 
+ void
+-ExtractCuesheetTagHandler::OnPair(StringView name, StringView value) noexcept
++ExtractCuesheetTagHandler::OnPair(std::string_view name, std::string_view value) noexcept
+ {
+-	if (cuesheet.empty() && name.EqualsIgnoreCase("cuesheet"))
+-		cuesheet = {value.data, value.size};
++	if (cuesheet.empty() &&
++	    StringView{name}.EqualsIgnoreCase("cuesheet"sv))
++		cuesheet = value;
+ }
+ 
+ static std::unique_ptr<SongEnumerator>
+--- a/src/tag/Handler.cxx
++++ b/src/tag/Handler.cxx
+@@ -25,13 +25,15 @@
+ 
+ #include <algorithm>
+ 
++using std::string_view_literals::operator""sv;
++
+ void
+-NullTagHandler::OnTag(TagType, StringView) noexcept
++NullTagHandler::OnTag(TagType, std::string_view) noexcept
+ {
+ }
+ 
+ void
+-NullTagHandler::OnPair(StringView, StringView) noexcept
++NullTagHandler::OnPair(std::string_view, std::string_view) noexcept
+ {
+ }
+ 
+@@ -54,18 +56,18 @@ AddTagHandler::OnDuration(SongTime duration) noexcept
+ /**
+  * Skip leading zeroes and a non-decimal suffix.
+  */
+-static StringView
+-NormalizeDecimal(StringView s)
++static std::string_view
++NormalizeDecimal(std::string_view s)
+ {
+ 	auto start = std::find_if(s.begin(), s.end(),
+ 				  [](char ch){ return ch != '0'; });
+ 	auto end = std::find_if(start, s.end(),
+ 				[](char ch){ return !IsDigitASCII(ch); });
+-	return {start, end};
++	return StringView{start, end};
+ }
+ 
+ void
+-AddTagHandler::OnTag(TagType type, StringView value) noexcept
++AddTagHandler::OnTag(TagType type, std::string_view value) noexcept
+ {
+ 	if (type == TAG_TRACK || type == TAG_DISC) {
+ 		/* filter out this extra data and leading zeroes */
+@@ -77,9 +79,9 @@ AddTagHandler::OnTag(TagType type, StringView value) noexcept
+ }
+ 
+ void
+-FullTagHandler::OnPair(StringView name, StringView) noexcept
++FullTagHandler::OnPair(std::string_view name, std::string_view) noexcept
+ {
+-	if (name.EqualsIgnoreCase("cuesheet"))
++	if (StringView{name}.EqualsIgnoreCase("cuesheet"sv))
+ 		tag.SetHasPlaylist(true);
+ }
+ 
+--- a/src/tag/Handler.hxx
++++ b/src/tag/Handler.hxx
+@@ -24,8 +24,11 @@
+ #include "Chrono.hxx"
+ #include "util/Compiler.h"
+ 
++#include <cstddef>
++#include <span>
++#include <string_view>
++
+ template<typename T> struct ConstBuffer;
+-struct StringView;
+ struct AudioFormat;
+ class TagBuilder;
+ 
+@@ -81,13 +84,14 @@ public:
+ 	 * @param the value of the tag; the pointer will become
+ 	 * invalid after returning
+ 	 */
+-	virtual void OnTag(TagType type, StringView value) noexcept = 0;
++	virtual void OnTag(TagType type, std::string_view value) noexcept = 0;
+ 
+ 	/**
+ 	 * A name-value pair has been read.  It is the codec specific
+ 	 * representation of tags.
+ 	 */
+-	virtual void OnPair(StringView key, StringView value) noexcept = 0;
++	virtual void OnPair(std::string_view key,
++			    std::string_view value) noexcept = 0;
+ 
+ 	/**
+ 	 * Declare the audio format of a song.
+@@ -125,8 +129,9 @@ public:
+ 		:TagHandler(_want_mask) {}
+ 
+ 	void OnDuration([[maybe_unused]] SongTime duration) noexcept override {}
+-	void OnTag(TagType type, StringView value) noexcept override;
+-	void OnPair(StringView key, StringView value) noexcept override;
++	void OnTag(TagType type, std::string_view value) noexcept override;
++	void OnPair(std::string_view key,
++		    std::string_view value) noexcept override;
+ 	void OnAudioFormat(AudioFormat af) noexcept override;
+ 	void OnPicture(const char *mime_type,
+ 		       ConstBuffer<void> buffer) noexcept override;
+@@ -149,7 +154,7 @@ public:
+ 		:AddTagHandler(0, _builder) {}
+ 
+ 	void OnDuration(SongTime duration) noexcept override;
+-	void OnTag(TagType type, StringView value) noexcept override;
++	void OnTag(TagType type, std::string_view value) noexcept override;
+ };
+ 
+ /**
+@@ -173,7 +178,8 @@ public:
+ 				AudioFormat *_audio_format=nullptr) noexcept
+ 		:FullTagHandler(0, _builder, _audio_format) {}
+ 
+-	void OnPair(StringView key, StringView value) noexcept override;
++	void OnPair(std::string_view key,
++		    std::string_view value) noexcept override;
+ 	void OnAudioFormat(AudioFormat af) noexcept override;
+ };
+ 
+--- a/test/read_tags.cxx
++++ b/test/read_tags.cxx
+@@ -60,16 +60,16 @@ public:
+ 		printf("duration=%f\n", duration.ToDoubleS());
+ 	}
+ 
+-	void OnTag(TagType type, StringView value) noexcept override {
++	void OnTag(TagType type, std::string_view value) noexcept override {
+ 		printf("[%s]=%.*s\n", tag_item_names[type],
+-		       int(value.size), value.data);
++		       int(value.size()), value.data());
+ 		empty = false;
+ 	}
+ 
+-	void OnPair(StringView key, StringView value) noexcept override {
++	void OnPair(std::string_view key, std::string_view value) noexcept override {
+ 		printf("\"%.*s\"=%.*s\n",
+-		       int(key.size), key.data,
+-		       int(value.size), value.data);
++		       int(key.size()), key.data(),
++		       int(value.size()), value.data());
+ 	}
+ 
+ 	void OnAudioFormat(AudioFormat af) noexcept override {
+-- 
+2.39.2
+

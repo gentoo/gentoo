@@ -1,0 +1,149 @@
+https://bugs.gentoo.org/879041
+
+--- teco/te_defs.h
++++ teco/te_defs.h
+@@ -320,7 +320,72 @@
+ extern char mapch[], mapch_l[];         /* char mapping tables              */
+ extern unsigned char spec_chars[];      /* special character table          */
+ 
+-extern char skipto(), getcmdc(), getcmdc0();    /* routines that return chars */
++extern void block_inter(int func);
++extern void crlf(void);
++extern void delete1(int nchars);
++extern void dly_free_blist(struct buffcell *p);
++extern void do_ctlp(void);
++extern void do_e(void);
++extern void do_f(void);
++extern void do_o(void);
++extern void do_window(int ref_flag);
++extern void exec_cmds1(void);
++extern void exec_cmdstr(void);
++extern void find_enditer(void);
++extern void free_blist(struct buffcell *p);
++extern void insert1(void);
++extern void insert2(int count);
++extern void kill_output(struct outfiledata *outptr);
++extern void make_buffer(struct qh *p);
++extern void movenchars(struct qp *from, struct qp *to, int n);
++extern void moveuntil(struct qp *from, struct qp *to, char c,
++		      int *n, int max, int trace);
++extern void panic(void);
++extern void pop_iteration(int arg);
++extern void retype_cmdstr(char c);
++extern void set_pointer(int pos, struct qp *ptr);
++extern void set_term_par(int lines, int cols);
++extern void set_var(int *arg);
++extern void setup_tty(int arg);
++extern void te_fx(void);
++extern void type_char(char c);
++extern void vt(int func);
++extern void window(int arg);
++extern void write_file(struct qp *wbuff, int nchars, int ffsw);
++extern char getcmdc(int trace);
++extern char getcmdc0(int trace);
++extern char gettty(void);
++extern char skipto(int arg);
++extern int backc(struct qp *arg);
++extern int build_string(struct qh *sbuff);
++extern int do_en(void);
++extern int do_eq(void);
++extern int do_eq1(char *shell);
++extern int do_fb(void);
++extern int do_glob(struct qh *gbuff);
++extern int do_nsearch(char arg);
++extern int do_search(int count);
++extern int end_search(int result);
++extern int fwdc(struct qp *arg);
++extern int fwdcx(struct qp *arg);
++extern int get_value(int d);
++extern int getqspec(int fors, char c);
++extern int gettty_nowait(void);
++extern int line_args(int d, struct qp *p);
++extern int lines(int arg);
++extern int peekcmdc(char arg);
++extern int read_cmdstr(void);
++extern int read_file(struct qp *rbuff, int *nchars, int endsw);
++extern int read_filename(int flag, char func);
++extern int read_stream(FILE *file, int *ff_found, struct qp *rbuff,
++		       int *nchars, int endsw, int crlf_sw, int ff_sw);
++extern int setup_search(void);
++extern int srch_cmp(void);
++extern int tgetent(char *bp, const char *name);
++extern int tgetnum(const char *id);
++extern int w_lines(int n, struct qp *ps, struct qp *pd);
++extern int w_setptr(int loc, struct qp *pp);
++extern int w_overflow(int wd);
+ 
+ extern FILE *eisw;                      /* indirect command file pointer    */
+ extern FILE *fopen();
+--- teco/te_exec2.c
++++ teco/te_exec2.c
+@@ -8,10 +8,15 @@
+ /* version for multiple buffers  04/19/89 11.29 */
+ 
+ #include "te_defs.h"
++#include <unistd.h>
+ #include <sys/wait.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
++/* these shouldn't be necessary, since we include unistd.h and sys/stat.h */
++extern int fchmod(int fd, mode_t mode);
++extern pid_t vfork(void);
++
+ void do_en_next(), set_var(), write_file(), write_stream();
+ void kill_output(), pop_iteration(), find_enditer(), find_endcond();
+ 
+--- teco/te_fxstub.c
++++ teco/te_fxstub.c
+@@ -10,7 +10,7 @@
+ 
+ #include "te_defs.h"
+ 
+-te_fx()
++void te_fx()
+ {
+     ERROR(E_IFC);
+ }
+--- teco/te_main.c
++++ teco/te_main.c
+@@ -46,6 +46,7 @@
+ 
+ void cleanup(), print_string(), save_args(), read_startup(), get_term_par();
+ 
++int
+ main(argc, argv)
+     int argc;           /* arg count */
+     char *argv[];       /* array of string pointers */
+--- teco/te_rdcmd.c
++++ teco/te_rdcmd.c
+@@ -7,6 +7,7 @@
+ #include "te_defs.h"
+ 
+ void retype_cmdstr(char c);
++int find_lasteol(void);
+ int ccount;             /* count of chars read in */
+ 
+ int read_cmdstr()
+--- teco/te_srch.c
++++ teco/te_srch.c
+@@ -156,7 +156,7 @@
+ /* routine to do N, _, E_ searches:  search, if search fails, then get  */
+ /* next page and continue                                               */
+ 
+-do_nsearch(arg)
++int do_nsearch(arg)
+     char arg;       /* arg is 'n', '_', or 'e' to define which search */
+     {
+     int scount;     /* search count */
+--- teco/te_utils.c
++++ teco/te_utils.c
+@@ -144,7 +144,7 @@
+     return(1);
+     }
+ 
+-fwdcx(arg)
++int fwdcx(arg)
+     struct qp *arg;
+     {
+     if ((*arg).c >= CELLSIZE-1)     /* test char count for max */

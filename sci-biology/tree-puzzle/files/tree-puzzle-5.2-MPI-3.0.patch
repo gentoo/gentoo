@@ -1,0 +1,362 @@
+https://bugs.gentoo.org/690900
+rename MPI 1.0 to 3.0+ functions:
+- MPI_Address -> MPI_Get_address
+- MPI_Type_struct -> MPI_Type_create_struct
+
+--- a/src/ppuzzle.c
++++ b/src/ppuzzle.c
+@@ -297,13 +297,13 @@
+ 	else	MPI_Recv(&dummy, 0, MPI_INT, PP_MyMaster, PP_UPDATEEEI, PP_Comm, &stat);
+ 
+ 	Dtypes[0] = MPI_DOUBLE; Dtypelens[0] = tpmradix;
+-	MPI_Address(&(Eval[0]), &(Dtypeaddr[0]));
++	MPI_Get_address(&(Eval[0]), &(Dtypeaddr[0]));
+ 	Dtypes[1] = MPI_DOUBLE; Dtypelens[1] = tpmradix * tpmradix;
+-	MPI_Address(&(Evec[0][0]), &(Dtypeaddr[1]));
++	MPI_Get_address(&(Evec[0][0]), &(Dtypeaddr[1]));
+ 	Dtypes[2] = MPI_DOUBLE; Dtypelens[2] = tpmradix * tpmradix;
+-	MPI_Address(&(Ievc[0][0]), &(Dtypeaddr[2]));
++	MPI_Get_address(&(Ievc[0][0]), &(Dtypeaddr[2]));
+ 
+-	MPI_Type_struct(3, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
++	MPI_Type_create_struct(3, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
+ 	MPI_Type_commit(&PP_Data);
+ 
+ 	MPI_Bcast (MPI_BOTTOM, 1, PP_Data, PP_MyMaster, PP_Comm);
+@@ -341,19 +341,19 @@
+ 	double*      DMVector = new_dvector(jobs);
+ 
+ 	Dtypes[0] = MPI_DOUBLE; Dtypelens[0] = jobs;
+-	MPI_Address(&(DMVector[0]), &(Dtypeaddr[0]));
++	MPI_Get_address(&(DMVector[0]), &(Dtypeaddr[0]));
+ 	Dtypes[1] = MPI_DOUBLE; Dtypelens[1] = numcats;
+-	MPI_Address(&(Rates[0]), &(Dtypeaddr[1]));
++	MPI_Get_address(&(Rates[0]), &(Dtypeaddr[1]));
+ 	Dtypes[2] = MPI_DOUBLE; Dtypelens[2] = 1;
+-	MPI_Address(&(fracinv), &(Dtypeaddr[2]));
++	MPI_Get_address(&(fracinv), &(Dtypeaddr[2]));
+ 	Dtypes[3] = MPI_DOUBLE; Dtypelens[3] = tpmradix;
+-	MPI_Address(&(Eval[0]), &(Dtypeaddr[3]));
++	MPI_Get_address(&(Eval[0]), &(Dtypeaddr[3]));
+ 	Dtypes[4] = MPI_DOUBLE; Dtypelens[4] = tpmradix * tpmradix;
+-	MPI_Address(&(Evec[0][0]), &(Dtypeaddr[4]));
++	MPI_Get_address(&(Evec[0][0]), &(Dtypeaddr[4]));
+ 	Dtypes[5] = MPI_DOUBLE; Dtypelens[5] = tpmradix * tpmradix;
+-	MPI_Address(&(Ievc[0][0]), &(Dtypeaddr[5]));
++	MPI_Get_address(&(Ievc[0][0]), &(Dtypeaddr[5]));
+ 
+-	MPI_Type_struct(6, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
++	MPI_Type_create_struct(6, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
+ 	MPI_Type_commit(&PP_Data);
+ 
+ 	if (PP_IamMaster) {
+@@ -719,10 +719,10 @@
+ #endif
+   doubles[0] = frconst;
+ 
+-  MPI_Address(ints,     Dtypeaddr);
+-  MPI_Address(doubles, (Dtypeaddr+1));
++  MPI_Get_address(ints,     Dtypeaddr);
++  MPI_Get_address(doubles, (Dtypeaddr+1));
+   
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Sizes);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Sizes);
+   MPI_Type_commit(&PP_Sizes);
+ 
+   for (dest=1; dest<PP_NumProcs; dest++) {
+@@ -797,10 +797,10 @@
+     fprintf(STDOUT, "(%2d) Receiving Sizes ...\n", PP_Myid);
+ # endif /* PVERBOSE3 */
+ 
+-  MPI_Address(ints,     Dtypeaddr);
+-  MPI_Address(doubles, (Dtypeaddr+1));
++  MPI_Get_address(ints,     Dtypeaddr);
++  MPI_Get_address(doubles, (Dtypeaddr+1));
+ 
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Sizes);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Sizes);
+   MPI_Type_commit(&PP_Sizes);
+  
+   error = MPI_Probe(PP_MyMaster, MPI_ANY_TAG, PP_Comm, &stat);
+@@ -889,31 +889,31 @@
+ # endif /* PVERBOSE2 */
+ 
+   Dtypes  [0] = MPI_CHAR; Dtypelens [0] = Maxspc * Numptrn;
+-  MPI_Address(&(Seqpat[0][0]), &(Dtypeaddr[0]));
++  MPI_Get_address(&(Seqpat[0][0]), &(Dtypeaddr[0]));
+   Dtypes  [1] = MPI_INT; Dtypelens  [1] = Maxsite ;
+-  MPI_Address(&(Alias[0]), &(Dtypeaddr[1]));
++  MPI_Get_address(&(Alias[0]), &(Dtypeaddr[1]));
+   Dtypes  [2] = MPI_INT; Dtypelens  [2] = Numptrn ;
+-  MPI_Address(&(Weight[0]), &(Dtypeaddr[2]));
++  MPI_Get_address(&(Weight[0]), &(Dtypeaddr[2]));
+   Dtypes  [3] = MPI_INT; Dtypelens  [3] = Numptrn ;
+-  MPI_Address(&(constpat[0]), &(Dtypeaddr[3]));
++  MPI_Get_address(&(constpat[0]), &(Dtypeaddr[3]));
+   Dtypes  [4] = MPI_DOUBLE; Dtypelens  [4] = numcats ;
+-  MPI_Address(&(Rates[0]), &(Dtypeaddr[4]));
++  MPI_Get_address(&(Rates[0]), &(Dtypeaddr[4]));
+   Dtypes  [5] = MPI_DOUBLE; Dtypelens  [5] = tpmradix ;
+-  MPI_Address(&(Eval[0]), &(Dtypeaddr[5]));
++  MPI_Get_address(&(Eval[0]), &(Dtypeaddr[5]));
+   Dtypes  [6] = MPI_DOUBLE; Dtypelens  [6] = tpmradix ;
+-  MPI_Address(&(Freqtpm[0]), &(Dtypeaddr[6]));
++  MPI_Get_address(&(Freqtpm[0]), &(Dtypeaddr[6]));
+   Dtypes  [7] = MPI_DOUBLE; Dtypelens  [7] = tpmradix * tpmradix ;
+-  MPI_Address(&(Evec[0][0]), &(Dtypeaddr[7]));
++  MPI_Get_address(&(Evec[0][0]), &(Dtypeaddr[7]));
+   Dtypes  [8] = MPI_DOUBLE; Dtypelens  [8] = tpmradix * tpmradix ;
+-  MPI_Address(&(Ievc[0][0]), &(Dtypeaddr[8]));
++  MPI_Get_address(&(Ievc[0][0]), &(Dtypeaddr[8]));
+   Dtypes  [9] = MPI_DOUBLE; Dtypelens [9] = tpmradix * tpmradix ;
+-  MPI_Address(&(iexp[0][0]), &(Dtypeaddr[9]));
++  MPI_Get_address(&(iexp[0][0]), &(Dtypeaddr[9]));
+   Dtypes [10] = MPI_DOUBLE; Dtypelens [10] = Maxspc * Maxspc ;
+-  MPI_Address(&(Distanmat[0][0]), &(Dtypeaddr[10]));
++  MPI_Get_address(&(Distanmat[0][0]), &(Dtypeaddr[10]));
+   Dtypes [11] = MPI_DOUBLE; Dtypelens [11] = numcats * tpmradix * tpmradix ;
+-  MPI_Address(&(ltprobr[0][0][0]), &(Dtypeaddr[11]));
++  MPI_Get_address(&(ltprobr[0][0][0]), &(Dtypeaddr[11]));
+  
+-  MPI_Type_struct(12, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
++  MPI_Type_create_struct(12, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
+   MPI_Type_commit(&PP_Data);
+  
+ 
+@@ -984,31 +984,31 @@
+ # endif /* PVERBOSE2 */
+  
+   Dtypes  [0] = MPI_CHAR; Dtypelens [0] = Maxspc * Numptrn;
+-  MPI_Address(&(Seqpat[0][0]), &(Dtypeaddr[0]));
++  MPI_Get_address(&(Seqpat[0][0]), &(Dtypeaddr[0]));
+   Dtypes  [1] = MPI_INT; Dtypelens  [1] = Maxsite ;
+-  MPI_Address(&(Alias[0]), &(Dtypeaddr[1]));
++  MPI_Get_address(&(Alias[0]), &(Dtypeaddr[1]));
+   Dtypes  [2] = MPI_INT; Dtypelens  [2] = Numptrn ;
+-  MPI_Address(&(Weight[0]), &(Dtypeaddr[2]));
++  MPI_Get_address(&(Weight[0]), &(Dtypeaddr[2]));
+   Dtypes  [3] = MPI_INT; Dtypelens  [3] = Numptrn ;
+-  MPI_Address(&(constpat[0]), &(Dtypeaddr[3]));
++  MPI_Get_address(&(constpat[0]), &(Dtypeaddr[3]));
+   Dtypes  [4] = MPI_DOUBLE; Dtypelens  [4] = numcats ;
+-  MPI_Address(&(Rates[0]), &(Dtypeaddr[4]));
++  MPI_Get_address(&(Rates[0]), &(Dtypeaddr[4]));
+   Dtypes  [5] = MPI_DOUBLE; Dtypelens  [5] = tpmradix ;
+-  MPI_Address(&(Eval[0]), &(Dtypeaddr[5]));
++  MPI_Get_address(&(Eval[0]), &(Dtypeaddr[5]));
+   Dtypes  [6] = MPI_DOUBLE; Dtypelens  [6] = tpmradix ;
+-  MPI_Address(&(Freqtpm[0]), &(Dtypeaddr[6]));
++  MPI_Get_address(&(Freqtpm[0]), &(Dtypeaddr[6]));
+   Dtypes  [7] = MPI_DOUBLE; Dtypelens  [7] = tpmradix * tpmradix ;
+-  MPI_Address(&(Evec[0][0]), &(Dtypeaddr[7]));
++  MPI_Get_address(&(Evec[0][0]), &(Dtypeaddr[7]));
+   Dtypes  [8] = MPI_DOUBLE; Dtypelens  [8] = tpmradix * tpmradix ;
+-  MPI_Address(&(Ievc[0][0]), &(Dtypeaddr[8]));
++  MPI_Get_address(&(Ievc[0][0]), &(Dtypeaddr[8]));
+   Dtypes  [9] = MPI_DOUBLE; Dtypelens  [9] = tpmradix * tpmradix ;
+-  MPI_Address(&(iexp[0][0]), &(Dtypeaddr [9]));
++  MPI_Get_address(&(iexp[0][0]), &(Dtypeaddr [9]));
+   Dtypes [10] = MPI_DOUBLE; Dtypelens [10] = Maxspc * Maxspc ;
+-  MPI_Address(&(Distanmat[0][0]), &(Dtypeaddr[10]));
++  MPI_Get_address(&(Distanmat[0][0]), &(Dtypeaddr[10]));
+   Dtypes [11] = MPI_DOUBLE; Dtypelens [11] = numcats * tpmradix * tpmradix ;
+-  MPI_Address(&(ltprobr[0][0][0]), &(Dtypeaddr[11]));
++  MPI_Get_address(&(ltprobr[0][0][0]), &(Dtypeaddr[11]));
+  
+-  MPI_Type_struct(12, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
++  MPI_Type_create_struct(12, Dtypelens, Dtypeaddr, Dtypes, &PP_Data);
+   MPI_Type_commit(&PP_Data);
+  
+   for (dest=1; dest<PP_NumProcs; dest++) {
+@@ -1150,10 +1150,10 @@
+   ints[4] = usebestq;
+   ints[5] = approx;
+  
+-  MPI_Address(ints,     Dtypeaddr);
+-  MPI_Address(doubles, (Dtypeaddr+1));
++  MPI_Get_address(ints,     Dtypeaddr);
++  MPI_Get_address(doubles, (Dtypeaddr+1));
+   
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Quart);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Quart);
+   MPI_Type_commit(&PP_Quart);
+  
+ # ifdef PVERBOSE2
+@@ -1201,10 +1201,10 @@
+  
+   PP_quartrecved++;
+   PP_quartrecvedn++;
+-  MPI_Address(ints,     Dtypeaddr);
+-  MPI_Address(doubles, (Dtypeaddr+1));
++  MPI_Get_address(ints,     Dtypeaddr);
++  MPI_Get_address(doubles, (Dtypeaddr+1));
+   
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Quart);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Quart);
+   MPI_Type_commit(&PP_Quart);
+  
+   error = MPI_Recv(MPI_BOTTOM, 1, PP_Quart, MPI_ANY_SOURCE, PP_QUART, PP_Comm, &stat);
+@@ -1368,10 +1368,10 @@
+   ulis[5] = fullresqs; /* number of fully resolved quartets */
+   ulis[6] = missingqs; /* number of missing quartets */
+ 
+-  MPI_Address(ulis,  Dtypeaddr);
+-  MPI_Address(ints, (Dtypeaddr+1));
++  MPI_Get_address(ulis,  Dtypeaddr);
++  MPI_Get_address(ints, (Dtypeaddr+1));
+   
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_QBlockSpecs);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_QBlockSpecs);
+   MPI_Type_commit(&PP_QBlockSpecs);
+  
+ # ifdef PVERBOSE2
+@@ -1384,12 +1384,12 @@
+     fprintf(STDOUT, "(%2d) ... Sent QuartBlockSpecs (%ld, %ld, %ld, %d)\n", PP_Myid, ulis[0], ulis[1], ulis[2], ints[0]);
+ # endif /* PVERBOSE3 */
+ 
+-  MPI_Address(trueaddr, DtypeaddrRes);
++  MPI_Get_address(trueaddr, DtypeaddrRes);
+   DtypelensRes[0] = truenum;
+ 
+-  MPI_Address(bq, (DtypeaddrRes + 1));
++  MPI_Get_address(bq, (DtypeaddrRes + 1));
+   DtypelensRes[1] = numofbq;
+-  MPI_Type_struct(2, DtypelensRes, DtypeaddrRes, DtypesRes, &PP_QBlockRes);
++  MPI_Type_create_struct(2, DtypelensRes, DtypeaddrRes, DtypesRes, &PP_QBlockRes);
+   MPI_Type_commit(&PP_QBlockRes);
+ 
+   error = MPI_Ssend(MPI_BOTTOM, 1, PP_QBlockRes, PP_MyMaster, PP_QUARTBLOCK, PP_Comm);
+@@ -1455,10 +1455,10 @@
+ #	ifdef PVERBOSE3
+ 	    fprintf(STDOUT, "(%2d) Receiving QuartBlock ...\n", PP_Myid);
+ #	endif /* PVERBOSE3 */
+-	MPI_Address(ulis,  Dtypeaddr);
+-	MPI_Address(ints, (Dtypeaddr+1));
++	MPI_Get_address(ulis,  Dtypeaddr);
++	MPI_Get_address(ints, (Dtypeaddr+1));
+  
+-	MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_QBlockSpecs);
++	MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_QBlockSpecs);
+ 	MPI_Type_commit(&PP_QBlockSpecs);
+  
+ 	MPI_Probe(MPI_ANY_SOURCE, PP_QUARTBLOCKSPECS, PP_Comm, &stat);
+@@ -1486,13 +1486,13 @@
+ #       endif /* PVERBOSE3 */
+ 
+ 	DtypelensRes[0] =  truenum;
+-	MPI_Address(trueaddr,  DtypeaddrRes);
++	MPI_Get_address(trueaddr,  DtypeaddrRes);
+ 
+ 	bq = calloc((size_t) *numofbq, sizeof(uli));
+ 
+ 	DtypelensRes[1] = *numofbq;
+-	MPI_Address(bq, (DtypeaddrRes+1));
+-	MPI_Type_struct(2, DtypelensRes, DtypeaddrRes, DtypesRes, &PP_QBlockRes);
++	MPI_Get_address(bq, (DtypeaddrRes+1));
++	MPI_Type_create_struct(2, DtypelensRes, DtypeaddrRes, DtypesRes, &PP_QBlockRes);
+ 	MPI_Type_commit(&PP_QBlockRes);
+  
+ 	error = MPI_Recv(MPI_BOTTOM, 1, PP_QBlockRes, dest, PP_QUARTBLOCK, PP_Comm, &stat);
+@@ -1637,8 +1637,8 @@
+      Dtypelens[0] = (Numquartets + 1)/2;
+   }
+ 
+-  MPI_Address(&(quartetinfo[0]), Dtypeaddr);
+-  MPI_Type_struct(1, Dtypelens, Dtypeaddr, Dtypes, &PP_AllQuarts);
++  MPI_Get_address(&(quartetinfo[0]), Dtypeaddr);
++  MPI_Type_create_struct(1, Dtypelens, Dtypeaddr, Dtypes, &PP_AllQuarts);
+   MPI_Type_commit(&PP_AllQuarts);
+  
+   for (dest=1; dest<PP_NumProcs; dest++) {
+@@ -1686,8 +1686,8 @@
+     Dtypelens[0] = (*Numquartets + 1)/2;
+   }
+  
+-  MPI_Address(&(quartetinfo[0]), Dtypeaddr);
+-  MPI_Type_struct(1, Dtypelens, Dtypeaddr, Dtypes, &PP_AllQuarts);
++  MPI_Get_address(&(quartetinfo[0]), Dtypeaddr);
++  MPI_Type_create_struct(1, Dtypelens, Dtypeaddr, Dtypes, &PP_AllQuarts);
+   MPI_Type_commit(&PP_AllQuarts);
+  
+   error = MPI_Recv(MPI_BOTTOM, 1, PP_AllQuarts, PP_MyMaster, PP_ALLQUARTS, PP_Comm, &stat);
+@@ -1748,13 +1748,13 @@
+   for (n=0; n<(int)blocksize; n++) {
+     Dtypes[n]    = MPI_CHAR;
+     Dtypelens[n] = (taxa - 3) * taxa;
+-    MPI_Address(&(biparts[n][0][0]), &(Dtypeaddr[n]));
++    MPI_Get_address(&(biparts[n][0][0]), &(Dtypeaddr[n]));
+   }
+   pstptr = pstlist;
+   for (n=0; n<pstnum; n++) {
+     Dtypes[(int)blocksize + n]    = MPI_CHAR;
+     Dtypelens[(int)blocksize + n] = psteptreestrlen;
+-    MPI_Address((*pstptr).tree, &(Dtypeaddr[(int)blocksize + n]));
++    MPI_Get_address((*pstptr).tree, &(Dtypeaddr[(int)blocksize + n]));
+     pstnumarr[n] = (*pstptr).count;
+ #   ifdef PVERBOSE3
+        fprintf(STDOUT, "(%2d) Sent tree item ->%d: [%d/%d] #=%d  \"%s\"\n",
+@@ -1764,9 +1764,9 @@
+   }
+   Dtypes[((int)blocksize + pstnum)]    = MPI_INT;
+   Dtypelens[((int)blocksize + pstnum)] = pstnum;
+-  MPI_Address(&(pstnumarr[0]), &(Dtypeaddr[((int)blocksize + pstnum)]));
++  MPI_Get_address(&(pstnumarr[0]), &(Dtypeaddr[((int)blocksize + pstnum)]));
+ 
+-  MPI_Type_struct(((int)blocksize + pstnum + 1), Dtypelens, Dtypeaddr, Dtypes, &PP_Biparts);
++  MPI_Type_create_struct(((int)blocksize + pstnum + 1), Dtypelens, Dtypeaddr, Dtypes, &PP_Biparts);
+   MPI_Type_commit(&PP_Biparts);
+  
+   error = MPI_Ssend(MPI_BOTTOM, 1, PP_Biparts, PP_MyMaster, PP_PUZZLEBLOCK, PP_Comm);
+@@ -1843,20 +1843,20 @@
+     (*bip)[n]        = new_cmatrix(*taxa - 3, *taxa);
+     Dtypes[n]    = MPI_CHAR;
+     Dtypelens[n] = (*taxa - 3) * *taxa;
+-    MPI_Address(&((*bip)[n][0][0]), &(Dtypeaddr[n]));
++    MPI_Get_address(&((*bip)[n][0][0]), &(Dtypeaddr[n]));
+   }
+   for (n=0; n<pstlistnum; n++) {
+     pstarr[n]        = (char *)calloc((size_t) psteptreestrlen, sizeof(char)); 
+     Dtypes[(int)*blocksize + n]    = MPI_CHAR;
+     Dtypelens[(int)*blocksize + n] = psteptreestrlen;
+-    MPI_Address(&(pstarr[n][0]), &(Dtypeaddr[(int)*blocksize + n]));
++    MPI_Get_address(&(pstarr[n][0]), &(Dtypeaddr[(int)*blocksize + n]));
+   }
+   
+   Dtypes[(int)*blocksize + pstlistnum]    = MPI_INT;
+   Dtypelens[(int)*blocksize + pstlistnum] = pstlistnum;
+-  MPI_Address(&(pstnumarr[0]), &(Dtypeaddr[(int)*blocksize + pstlistnum]));
++  MPI_Get_address(&(pstnumarr[0]), &(Dtypeaddr[(int)*blocksize + pstlistnum]));
+ 
+-  MPI_Type_struct(((int)*blocksize + pstlistnum + 1), Dtypelens, Dtypeaddr, Dtypes, &PP_Biparts);
++  MPI_Type_create_struct(((int)*blocksize + pstlistnum + 1), Dtypelens, Dtypeaddr, Dtypes, &PP_Biparts);
+   MPI_Type_commit(&PP_Biparts);
+  
+   error = MPI_Recv(MPI_BOTTOM, 1, PP_Biparts, dest, PP_PUZZLEBLOCK, PP_Comm, &stat);
+@@ -2053,10 +2053,10 @@
+     fprintf(STDOUT, "(%2d) ... Sent DONE Signal\n", PP_Myid);
+ # endif /* PVERBOSE3 */
+  
+-  MPI_Address(ints,     Dtypeaddr);
+-  MPI_Address(doubles, (Dtypeaddr+1));
++  MPI_Get_address(ints,     Dtypeaddr);
++  MPI_Get_address(doubles, (Dtypeaddr+1));
+ 
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Stats);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Stats);
+   MPI_Type_commit(&PP_Stats);
+ 
+   doquartrecved[0]  = 0;
+@@ -2173,10 +2173,10 @@
+   doubles[4] = tarr.cpu;
+   doubles[5] = tarr.time;
+ 
+-  MPI_Address(ints,     Dtypeaddr);
+-  MPI_Address(doubles, (Dtypeaddr+1));
++  MPI_Get_address(ints,     Dtypeaddr);
++  MPI_Get_address(doubles, (Dtypeaddr+1));
+ 
+-  MPI_Type_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Stats);
++  MPI_Type_create_struct(2, Dtypelens, Dtypeaddr, Dtypes, &PP_Stats);
+   MPI_Type_commit(&PP_Stats);
+ 
+   error = MPI_Ssend(MPI_BOTTOM, 1, PP_Stats, PP_MyMaster, PP_STATS, PP_Comm);

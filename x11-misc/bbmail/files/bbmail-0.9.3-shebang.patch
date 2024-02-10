@@ -1,0 +1,8 @@
+--- a/scripts/bbmailparsefm.pl	2002-10-17 21:33:21.000000000 +0300
++++ b/scripts/bbmailparsefm.pl	2017-02-14 19:49:11.371106962 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl 
++#!/usr/bin/env perl
+ # 
+ # Quickie script to parse fetchmail -c output
+ # (IMAP proto) for use with bbmail

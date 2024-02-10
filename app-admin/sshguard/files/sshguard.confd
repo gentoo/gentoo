@@ -1,0 +1,21 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Config file for /etc/init.d/sshguard
+#   See sshguard(8) for details.
+
+# Initial (empty) options.
+SSHGUARD_OPTS=""
+
+# Files to monitor
+#   -l <source>
+SSHGUARD_OPTS="${SSHGUARD_OPTS} -l /var/log/auth.log"
+
+# White listing
+#   -w <addr/host/block/file>
+#SSHGUARD_OPTS="${SSHGUARD_OPTS} -w 192.168.0.0/24"
+
+# Define how long in milliseconds start-stop-daemon waits to check that
+# sshguard is still running before calling success or failure.
+# Values lower than the default of 999 are probably not useful.
+SSHGUARD_WAIT="999"

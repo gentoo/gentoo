@@ -1,0 +1,38 @@
+--- a/src/unzip/ioapi.h	2004-12-19 14:51:32.000000000 +0100
++++ b/src/unzip/ioapi.h	2012-01-11 18:07:59.570768250 +0100
+@@ -35,6 +35,16 @@
+ extern "C" {
+ #endif
+ 
++/* Work-around for NetBSD. Its zconf.h doesn't define OF(x) */
++#ifndef OF
++#ifdef __STDC__
++#define OF(x) x
++#else
++#define OF(x) ()
++#endif
++#endif
++
++
+ typedef voidpf (ZCALLBACK *open_file_func) OF((voidpf opaque, const char* filename, int mode));
+ typedef uLong  (ZCALLBACK *read_file_func) OF((voidpf opaque, voidpf stream, void* buf, uLong size));
+ typedef uLong  (ZCALLBACK *write_file_func) OF((voidpf opaque, voidpf stream, const void* buf, uLong size));
+--- a/src/unzip/unzip.h 2004-12-19 14:51:32.000000000 +0100
++++ b/src/unzip/unzip.h 2012-01-11 18:00:25.988120225 +0100
+@@ -47,6 +47,15 @@
+ extern "C" {
+ #endif
+ 
++/* Work-around for NetBSD. Its zconf.h doesn't define OF(x) */
++#ifndef OF
++#ifdef __STDC__
++#define OF(x) x
++#else
++#define OF(x) ()
++#endif
++#endif
++
+ #ifndef _ZLIB_H
+ #include "../zlib/zlib.h"
+ #endif
+

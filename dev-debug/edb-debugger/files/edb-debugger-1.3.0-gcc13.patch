@@ -1,0 +1,26 @@
+https://github.com/eteran/edb-debugger/pull/837
+
+From 934de81a7799f3e1d210366e0eb5ea86d172ead4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 15 Apr 2023 10:05:11 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes so some
+are no longer transitively included.
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/897890
+--- a/plugins/DebuggerCore/unix/linux/FeatureDetect.cpp
++++ b/plugins/DebuggerCore/unix/linux/FeatureDetect.cpp
+@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "FeatureDetect.h"
+ #include "edb.h"
+ 
++#include <cstdint>
+ #include <fcntl.h>
+ #include <iomanip>
+ #include <iostream>
+-- 
+2.40.0
+

@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/show_bug.cgi?id=917062
+https://github.com/matoro/abseil-cpp/commit/cc37c61553fa2a186d4abf48e97ad9df4e5d62e3
+
+From cc37c61553fa2a186d4abf48e97ad9df4e5d62e3 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Tue, 14 Nov 2023 10:39:34 -0500
+Subject: [PATCH] symbolize_test: account for platforms with ".sdata" small
+ data sections
+
+A handful of ELF targets use a ".sdata" section for small data.  The
+default maximum size of symbols in this section as well as the gcc flag
+to change that maximum size differ between two targets.  On such
+platforms, if there is no data large enough to exceed the small data
+limit then the ".data" section will be excluded entirely.  This changes
+the check to ensure that at least one of a ".sdata" section OR a ".data"
+section is present.
+---
+ absl/debugging/symbolize_test.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/absl/debugging/symbolize_test.cc b/absl/debugging/symbolize_test.cc
+index d0feab2ffa6..1e4b5ba6105 100644
+--- a/absl/debugging/symbolize_test.cc
++++ b/absl/debugging/symbolize_test.cc
+@@ -44,6 +44,7 @@
+ #define MAP_ANONYMOUS MAP_ANON
+ #endif
+ 
++using testing::AnyOf;
+ using testing::Contains;
+ 
+ #ifdef _WIN32
+@@ -456,7 +457,7 @@ TEST(Symbolize, ForEachSection) {
+   EXPECT_THAT(sections, Contains(".rodata"));
+   EXPECT_THAT(sections, Contains(".bss"));
+   ++in_data_section;
+-  EXPECT_THAT(sections, Contains(".data"));
++  EXPECT_THAT(sections, AnyOf(Contains(".data"), Contains(".sdata")));
+ 
+   close(fd);
+ }

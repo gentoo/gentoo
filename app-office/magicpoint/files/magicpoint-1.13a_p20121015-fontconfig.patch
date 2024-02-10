@@ -1,0 +1,33 @@
+# Bug #572658
+--- a/configure.in
++++ b/configure.in
+@@ -16,6 +16,7 @@
+ AC_PROG_AWK
+ AC_PROG_YACC
+ AC_PROG_LEX
++PKG_PROG_PKG_CONFIG([0.22])
+ AC_PATH_PROGS(mgp_cv_path_perl, perl5 perl, no)
+ AC_SUBST(mgp_cv_path_perl)
+ AC_PATH_PROGS(mgp_cv_path_uuencode, uuencode, no)
+@@ -385,9 +386,9 @@
+     if test "$mgp_use_xft2" = "yes"; then
+   	  AC_MSG_CHECKING(for xft2 library..)
+ 	  AC_CHECK_LIB(Xft, XftFontOpen, 
+-		[LIBS="$LIBS -lXft -lfontconfig"
++		[LIBS="$LIBS -lXft `${PKG_CONFIG} --libs fontconfig`"
+ 		 AC_DEFINE(USE_XFT2) 
+-		 mgp_xft2_found=yes], [], [-lfontconfig])
++		 mgp_xft2_found=yes], [], [`${PKG_CONFIG} --libs fontconfig`])
+     fi
+   fi
+ fi
+@@ -507,6 +508,9 @@
+ 		AC_DEFINE(USE_M17N)
+ 		OPTFLAGS="$OPTFLAGS `m17n-config X --cflags`"
+ 		LIBS="$LIBS `m17n-config X --libs` -lm17n-core"
++		if test "x$ac_cv_header_fontconfig_fontconfig_h" = "xyes"; then
++			LIBS="$LIBS `${PKG_CONFIG} --libs fontconfig`"
++		fi
+ 	fi
+ fi
+ 

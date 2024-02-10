@@ -1,0 +1,23 @@
+Let perf find libtraceevent headers when detecting libtracefs
+
+--- a/tools/build/feature/test-libtracefs.c
++++ b/tools/build/feature/test-libtracefs.c
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0
+-#include <tracefs/tracefs.h>
++#include <tracefs.h>
+ 
+ int main(void)
+ {
+--- a/tools/perf/Makefile.config
++++ b/tools/perf/Makefile.config
+@@ -185,6 +185,9 @@ endif
+ FEATURE_CHECK_CFLAGS-libbabeltrace := $(LIBBABELTRACE_CFLAGS)
+ FEATURE_CHECK_LDFLAGS-libbabeltrace := $(LIBBABELTRACE_LDFLAGS) -lbabeltrace-ctf
+ 
++FEATURE_CHECK_CFLAGS-libtracefs := $(shell $(PKG_CONFIG) --cflags libtracefs)
++FEATURE_CHECK_LDFLAGS-libtracefs := $(shell $(PKG_CONFIG) --libs libtracefs)
++
+ ifdef LIBZSTD_DIR
+   LIBZSTD_CFLAGS  := -I$(LIBZSTD_DIR)/lib
+   LIBZSTD_LDFLAGS := -L$(LIBZSTD_DIR)/lib

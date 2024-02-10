@@ -1,0 +1,13 @@
+https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/gloox/patches/gloox-musl.patch
+https://bugs.gentoo.org/713224
+--- a/src/connectiontcpserver.cpp
++++ b/src/connectiontcpserver.cpp
+@@ -51,7 +51,7 @@
+ #endif
+ 
+ #include <cstdlib>
+-#include <string>
++#include <string.h>
+ 
+ #ifndef _WIN32_WCE
+ # include <sys/types.h>

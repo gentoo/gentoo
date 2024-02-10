@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<use>
+		<flag name="crossdev-mingw">
+			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
+			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
+		</flag>
+		<flag name="extras">Install extra tools and demos in /usr/lib/vkd3d-proton</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">HansKristian-Work/vkd3d-proton</remote-id>
+	</upstream>
+</pkgmetadata>

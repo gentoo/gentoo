@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/871036
+--- a/sgrep.h
++++ b/sgrep.h
+@@ -20,2 +20,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include <assert.h>
+@@ -616,2 +617,3 @@
+ int create_index(const IndexOptions *options);
++int index_query(IndexOptions *options, int argc, char *argv[]);
+ int add_region_to_index(struct IndexWriterStruct *writer,

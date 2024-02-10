@@ -1,0 +1,13 @@
+--- a/xosd_plugin/xosdctrl.cpp
++++ b/xosd_plugin/xosdctrl.cpp
+@@ -21,6 +21,8 @@
+ #include <lineak/lconfig.h>
+ #include <lineak/lineak_core_functions.h>
+ 
++#include <cstdlib>
++#include <cstring>
+ 
+ using namespace lineak_core_functions;
+ using namespace std;
+
+

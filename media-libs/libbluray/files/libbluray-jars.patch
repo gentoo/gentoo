@@ -1,0 +1,46 @@
+diff -Naur a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2019-04-05 09:34:16.000000000 +0100
++++ b/Makefile.am	2019-04-14 20:30:19.570385252 +0100
+@@ -239,10 +239,10 @@
+ awt_src = java-$(BDJ_TYPE)
+ endif
+ 
+-jardir=$(datadir)/java/
++jardir=$(datadir)/libbluray/lib/
+ jar_DATA = \
+-	$(top_builddir)/.libs/libbluray-$(BDJ_TYPE)-$(VERSION).jar \
+-	$(top_builddir)/.libs/libbluray-awt-$(BDJ_TYPE)-$(VERSION).jar
++	$(top_builddir)/.libs/libbluray-$(BDJ_TYPE)-gentoo.jar \
++	$(top_builddir)/.libs/libbluray-awt-$(BDJ_TYPE)-gentoo.jar
+ 
+ $(jar_DATA): all-local
+ 
+@@ -253,13 +253,13 @@
+ 	    -Dsrc_awt=:$(awt_src) \
+ 	    $(java_versions) \
+ 	    -Dbootclasspath="$(BDJ_BOOTCLASSPATH)" \
+-	    -Dversion='$(BDJ_TYPE)-$(VERSION)'
++	    -Dversion='$(BDJ_TYPE)-gentoo'
+ 
+ clean-local:
+ 	ant -f $(top_srcdir)/src/libbluray/bdj/build.xml \
+ 	    -Dbuild='$(abs_builddir)/src/libbluray/bdj/build' \
+ 	    -Ddist='$(abs_builddir)/.libs' \
+-	    -Dversion='$(BDJ_TYPE)-$(VERSION)' \
++	    -Dversion='$(BDJ_TYPE)-gentoo' \
+ 	    clean
+ endif
+ 
+diff -Naur a/src/libbluray/bdj/bdj.c b/src/libbluray/bdj/bdj.c
+--- a/src/libbluray/bdj/bdj.c	2019-04-05 09:34:16.000000000 +0100
++++ b/src/libbluray/bdj/bdj.c	2019-04-14 20:21:01.927193454 +0100
+@@ -22,6 +22,9 @@
+ #include "config.h"
+ #endif
+ 
++#undef VERSION
++#define VERSION "gentoo"
++
+ #include "bdj.h"
+ 
+ #include "native/register_native.h"

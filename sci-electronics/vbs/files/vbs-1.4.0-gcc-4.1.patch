@@ -1,0 +1,105 @@
+--- a/common/bvector.h
++++ b/common/bvector.h
+@@ -90,9 +90,9 @@
+ 		size_type _size; // Size of this sub-bit vector.
+ 
+ 		// Only bit_vector can create a sub_bit_vector object.
++	public:
+ 		sub_bit_vector(bit_vector &, const position_type, const position_type);
+ 		sub_bit_vector(const sub_bit_vector &);
+-	public:
+ 		sub_bit_vector &operator=(const sub_bit_vector &);
+ 		sub_bit_vector &operator=(const const_sub_bit_vector &);
+ 		sub_bit_vector &operator=(const bit_vector &);
+@@ -116,8 +116,8 @@
+ 
+ 		// Only bit_vector can create a sub_bit_vector object.
+ 		const_sub_bit_vector(const bit_vector &, const position_type, const position_type);
+-		const_sub_bit_vector(const const_sub_bit_vector &);
+ 	public:
++		const_sub_bit_vector(const const_sub_bit_vector &);
+ 		size_type size() const
+ 			{ return _size; }
+ 		ostream_type &info(ostream_type &) const;
+--- a/common/logic.h
++++ b/common/logic.h
+@@ -44,6 +44,10 @@
+ 		{ return (_state == HI) ? true : false; }
+ 	operator int() const
+ 		{ return _state; }
++
++	operator long int() const
++		{ return _state; }
++
+ 	operator char() const
+ 		{
+ 		switch (_state)
+--- a/common/st_net.h
++++ b/common/st_net.h
+@@ -133,4 +133,7 @@
+ 	const st_net &_net;
+ 	};
+ 
++void entry_iovars(st_net::io_list &, st_net::arg_list &);
++void exit_iovars(st_net::io_list &, st_net::arg_list &);
++
+ #endif // _ST_NET_H
+--- a/expr/erdwr.cc
++++ b/expr/erdwr.cc
+@@ -25,8 +25,9 @@
+ expr_base *
+ read_expr::operator()() const
+ 	{
+-	VBSOBJ_EXPR_TYPE type;
+-	_in >> (int &) type;
++	int type_num = 0;
++	_in >> type_num;
++	VBSOBJ_EXPR_TYPE type = VBSOBJ_EXPR_TYPE(type_num);
+ 	long ln;
+ 	_in >> ln;
+ 	expr_base *expr = 0;
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -329,13 +329,15 @@
+ 	rm -f *.o
+ 	rm -f *.a
+ 	rm -f *.so
++	rm -f vbs
+ 
+ clean-repo:
+ 	if test -d ptrepository; then rm -rf ptrepository; fi
+ 	rm -f *.rpo
+ 
+ install:
+-	$(INSTALL) vbs $(bindir)
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) vbs $(DESTDIR)$(bindir)
+ 
+ tarball:
+ 	@echo "===== Tar ball ======"
+--- a/misc/mrdwr.cc
++++ b/misc/mrdwr.cc
+@@ -21,8 +21,9 @@
+ module *
+ read_module::operator()() const
+ 	{
+-	VBSOBJ_MISC_TYPE type;
+-	_in >> (int &) type;
++	int type_num = 0;
++	_in >> type_num;
++	VBSOBJ_MISC_TYPE type = VBSOBJ_MISC_TYPE(type_num);
+ 	if (type != VBSOBJ_MISC_MODULE)
+ 		{
+ 		vbs_err.set_data(vbs_error::SE_VBSOBJ, -1);
+@@ -129,8 +130,9 @@
+ port *
+ read_port::operator()() const
+ 	{
+-	VBSOBJ_MISC_TYPE type;
+-	_in >> (int &) type;
++	int type_num = 0;
++	_in >> type_num;
++	VBSOBJ_MISC_TYPE type = VBSOBJ_MISC_TYPE(type_num);
+ 	if (type != VBSOBJ_MISC_PORT)
+ 		{
+ 		vbs_err.set_data(vbs_error::SE_VBSOBJ, -1);

@@ -1,0 +1,45 @@
+# Copyright 2014-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-lang/ocaml and dev-ml/* not marked stable here
+ocaml
+ocamlopt
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No kerberos provider is marked stable here
+gssapi
+kerberos
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No MPI provider is marked stable here
+mpi
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# dev-libs/cyrus-sasl is not marked stable here
+sasl
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap is not marked stable here
+ldap
+
+# Sam James <sam@gentoo.org> (2022-02-03)
+# sys-libs/llvm-libunwind isn't marked stable here
+llvm-libunwind
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-08-13)
+# media-gfx/gimp is not stable
+gimp
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-04-24)
+# no stable net-misc/aria2 on ppc
+aria2
+
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
+# no stable versions on ppc
+ecl
+sbcl
+
+# Chí-Thanh Christopher Nguyễn (2014-03-25)
+# appears to not work correctly since mesa-10
+opencl

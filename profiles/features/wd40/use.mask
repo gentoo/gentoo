@@ -1,0 +1,16 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+rust
+
+# Michał Górny <mgorny@gentoo.org> (2022-10-09)
+# Disable tests requiring Rust.
+test-rust
+
+# Sam James <sam@gentoo.org> (2022-08-26)
+# >=media-gfx/libimagequant-4 requires Rust.
+imagequant
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
+# gnome-shell requires rustified librsvg.
+gnome-shell

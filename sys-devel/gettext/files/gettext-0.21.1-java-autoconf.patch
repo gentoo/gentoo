@@ -1,0 +1,100 @@
+From b8fc039e4266570f5af5ee1c2cd201369a766f1e Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Tue, 11 Oct 2022 01:54:44 +0200
+Subject: [PATCH] Avoid warnings during configure execution with
+ --disable-java.
+
+Reported by Sam James <sam@cmpct.info>
+in <https://savannah.gnu.org/bugs/?63193>.
+
+* gettext-runtime/configure.ac: Expand gt_JAVACOMP_DISABLED inline.
+* gettext-tools/configure.ac: Expand gt_JAVAEXEC_DISABLED and
+gt_JAVACOMP_DISABLED inline.
+--- a/gettext-runtime/configure.ac
++++ b/gettext-runtime/configure.ac
+@@ -42,7 +42,16 @@ AS_IF([test "$JAVA_CHOICE" != no], [
+     BUILDJAVA=no
+   fi
+ ], [
+-  gt_JAVACOMP_DISABLED
++  CONF_JAVAC=
++  HAVE_JAVAC_ENVVAR=
++  HAVE_GCJ_C=
++  HAVE_JAVAC=
++  HAVE_JIKES=
++  AC_SUBST([CONF_JAVAC])
++  AC_SUBST([HAVE_JAVAC_ENVVAR])
++  AC_SUBST([HAVE_GCJ_C])
++  AC_SUBST([HAVE_JAVAC])
++  AC_SUBST([HAVE_JIKES])
+   JAR=
+   BUILDJAVA=no
+ ])
+--- a/gettext-tools/configure.ac
++++ b/gettext-tools/configure.ac
+@@ -43,8 +43,28 @@ AS_IF([test "$JAVA_CHOICE" != no], [
+     BUILDJAVA=no
+   fi
+ ], [
+-  gt_JAVAEXEC_DISABLED
+-  gt_JAVACOMP_DISABLED
++  CONF_JAVA=
++  HAVE_JAVA_ENVVAR=
++  HAVE_GIJ=
++  HAVE_JAVA=
++  HAVE_JRE=
++  HAVE_JVIEW=
++  AC_SUBST([CONF_JAVA])
++  AC_SUBST([HAVE_JAVA_ENVVAR])
++  AC_SUBST([HAVE_GIJ])
++  AC_SUBST([HAVE_JAVA])
++  AC_SUBST([HAVE_JRE])
++  AC_SUBST([HAVE_JVIEW])
++  CONF_JAVAC=
++  HAVE_JAVAC_ENVVAR=
++  HAVE_GCJ_C=
++  HAVE_JAVAC=
++  HAVE_JIKES=
++  AC_SUBST([CONF_JAVAC])
++  AC_SUBST([HAVE_JAVAC_ENVVAR])
++  AC_SUBST([HAVE_GCJ_C])
++  AC_SUBST([HAVE_JAVAC])
++  AC_SUBST([HAVE_JIKES])
+   JAR=
+   BUILDJAVA=no
+ ])
+diff --git a/gettext-runtime/configure b/gettext-runtime/configure
+index 5e2d593..cf579ff 100755
+--- a/gettext-runtime/configure
++++ b/gettext-runtime/configure
+@@ -7070,7 +7070,11 @@ fi
+ 
+ else $as_nop
+ 
+-  gt_JAVACOMP_DISABLED
++  CONF_JAVAC=
++  HAVE_JAVAC_ENVVAR=
++  HAVE_GCJ_C=
++  HAVE_JAVAC=
++  HAVE_JIKES=
+   JAR=
+   BUILDJAVA=no
+ 
+diff --git a/gettext-tools/configure b/gettext-tools/configure
+index f897bc3..3af54cd 100755
+--- a/gettext-tools/configure
++++ b/gettext-tools/configure
+@@ -8718,8 +8718,11 @@ fi
+ 
+ else $as_nop
+ 
+-  gt_JAVAEXEC_DISABLED
+-  gt_JAVACOMP_DISABLED
++  CONF_JAVAC=
++  HAVE_JAVAC_ENVVAR=
++  HAVE_GCJ_C=
++  HAVE_JAVAC=
++  HAVE_JIKES=
+   JAR=
+   BUILDJAVA=no
+ 

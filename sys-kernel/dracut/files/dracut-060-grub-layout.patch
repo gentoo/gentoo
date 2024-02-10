@@ -1,0 +1,31 @@
+Ensures that the generated initrd is installed in the "new" way via the
+staging area in the grub layout. This prevents accidentally creating
+an UKI named initrd, and also ensures that BOOT_ROOT and
+KERNEL_INSTALL_INITRD_GENERATOR are respected when the layout is set to grub.
+
+Downstream only since the grub layout for using grub with systemd's
+kernel-install is not supported by systemd upstream and therefore this
+patch is unlikely to be accepted by dracut upstream.
+
+diff --git a/install.d/50-dracut.install b/install.d/50-dracut.install
+index 441414ac..a98449fe 100755
+--- a/install.d/50-dracut.install
++++ b/install.d/50-dracut.install
+@@ -38,6 +38,17 @@ elif [[ $KERNEL_INSTALL_LAYOUT == "bls" && -n $KERNEL_INSTALL_STAGING_AREA ]]; t
+     else
+         exit 0
+     fi
++elif [[ $KERNEL_INSTALL_LAYOUT == "grub" || $KERNEL_INSTALL_LAYOUT == "compat" ]]; then
++    BOOT_DIR_ABS="$KERNEL_INSTALL_STAGING_AREA"
++    if [[ -z $KERNEL_INSTALL_UKI_GENERATOR || $KERNEL_INSTALL_UKI_GENERATOR == "dracut" ]]; then
++        IMAGE="uki.efi"
++        UEFI_OPTS="--uefi"
++    elif [[ -z $KERNEL_INSTALL_INITRD_GENERATOR || $KERNEL_INSTALL_INITRD_GENERATOR == "dracut" ]]; then
++        IMAGE="initrd"
++        UEFI_OPTS="--no-uefi"
++    else
++        exit 0
++    fi
+ else
+     # No layout information, use users --uefi/--no-uefi preference
+     UEFI_OPTS=""

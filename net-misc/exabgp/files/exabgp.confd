@@ -1,0 +1,10 @@
+# /etc/conf.d/exabgp
+
+# arguments to pass to exabgp
+#EXABGP_ARGS="/etc/exabgp/exabgp.conf"
+
+# user to run exabgp as
+#EXABGP_USER=exabgp
+
+# group to run exabgp as
+#EXABGP_GROUP=exabgp

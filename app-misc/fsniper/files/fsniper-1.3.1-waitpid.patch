@@ -1,0 +1,15 @@
+Replace obsolete wait3 by waitpid
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -193,8 +193,8 @@
+ /* handler for reaping children after the fork is done. */
+ void handle_child_signal()
+ {
+-    union wait status;
+-    while (wait3(&status, WNOHANG, 0) > 0) {} 
++    int status;
++    while (waitpid(-1, &status, WNOHANG) > 0) {} 
+ }
+ 
+ /* handler for HUP. reloads the config file. */

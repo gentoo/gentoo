@@ -1,0 +1,53 @@
+https://github.com/tomac/yersinia/pull/76
+
+From ec9d31932fca39e3160b0d0bfd0383db82ff5bcf Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 16 Nov 2022 23:10:45 +0000
+Subject: [PATCH] configure: fix -Wimplicit-function-declaration,
+ -Wstrict-prototypes
+
+Clang 16 makes -Wimplicit-function-declaration an error by default. Unfortunately,
+this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.in
++++ b/configure.in
+@@ -233,12 +233,13 @@ dnl fi
+ 
+ AC_MSG_CHECKING(if libnet is at least version 1.1.2)
+ AC_TRY_RUN([
+-#include<stdio.h>
+-#include<libnet.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <libnet.h>
+ #define HOPE_MAJOR  1
+ #define HOPE_MEDIUM 1
+ #define HOPE_MINOR  2
+-int main()
++int main(void)
+ {
+   unsigned int major,medium,minor,current, desired;
+   desired = HOPE_MAJOR*10000 + HOPE_MEDIUM*100 + HOPE_MINOR;
+@@ -419,9 +420,9 @@ AC_CHECK_FUNCS(strerror_r, have_strerror_r=yes,have_strerror_r=no)
+ if test $have_strerror_r = yes; then
+ AC_MSG_CHECKING(if strerror_r is on glibc version >= 2.0)
+ AC_TRY_RUN([
+-#include <stdio.h>
++#include <stdlib.h>
+ #include <features.h>
+-int main()
++int main(void)
+ {
+ #if defined(__GLIBC__) && __GLIBC__ >= 2 && __GLIBC_MINOR__ >= 0
+    exit(0);
+

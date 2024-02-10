@@ -1,0 +1,34 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,7 +29,7 @@
+             [Force GTK2 GUI, even if GTK3 is available @<:@default=check@:>@])],
+             [], [with_gtk2=no])
+ 
+-if [ test "x$with_gtk2" == xno ]; then
++if [ test "x$with_gtk2" = xno ]; then
+     PKG_CHECK_MODULES([GTK],[gtk+-3.0],foundgtk3=true,foundgtk3=false)
+ else
+     echo "Using GTK2..."
+@@ -37,18 +37,13 @@
+ fi
+ 
+ if [ $foundgtk3 ]; then
+-	XSENSORS_CFLAGS="`pkg-config --cflags gtk+-3.0` -Werror -Wall"
+-	XSENSORS_LIBS="`pkg-config --libs gtk+-3.0`"
++	XSENSORS_CFLAGS="`${PKG_CONFIG} --cflags gtk+-3.0` -Wall -Wall"
++	XSENSORS_LIBS="`${PKG_CONFIG} --libs gtk+-3.0`"
+ else
+-    if [ test "x$with_gtk2" == xno ]; then
+-        echo "GTK3 is not installed, checking for GTK2 instead..."
+-    fi
+-	AM_PATH_GTK_2_0(2.8.0,,AC_MSG_ERROR([
++    AC_MSG_ERROR([
+ *** GTK+ is required to build xsensors; please make sure you have the GTK+
+ *** development headers installed. The latest version of GTK+ is
+-*** always available at http://www.gtk.org/.]))
+-	XSENSORS_CFLAGS="`pkg-config --cflags gtk+-2.0` -Werror -Wall"
+-	XSENSORS_LIBS="`pkg-config --libs gtk+-2.0`"
++*** always available at http://www.gtk.org/.])
+ fi
+ 
+ AC_SUBST(XSENSORS_CFLAGS)

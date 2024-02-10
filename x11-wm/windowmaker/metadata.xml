@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
+	<use>
+		<flag name="modelock">Enable XKB language status lock support. README
+			says: "If you don't know what it is you probably don't need
+			it."</flag>
+		<flag name="xrandr">Enable XRandR window extension support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">window-maker/wmaker</remote-id>
+	</upstream>
+</pkgmetadata>

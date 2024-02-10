@@ -1,0 +1,123 @@
+From 9cd74df24dbeee81b408e12ac10a98a088008d07 Mon Sep 17 00:00:00 2001
+From: Juergen Repp <juergen_repp@web.de>
+Date: Mon, 20 Nov 2023 13:55:36 +0100
+Subject: [PATCH] test eventlog: fix check eventlog.sh if efivar.h exists
+
+If efivar.h exist a pretty print function for the DevicePath
+is executed. Therefore two yaml test files are needed for
+the bin test file uefiservices.
+Fixes #3302.
+
+Signed-off-by: Juergen Repp <juergen_repp@web.de>
+---
+ Makefile.am                                   | 13 ++++++
+ configure.ac                                  |  3 ++
+ .../event-uefiservices.bin.yaml.pretty        | 45 +++++++++++++++++++
+ ...n.yaml => event-uefiservices.bin.yaml.raw} |  0
+ 4 files changed, 61 insertions(+)
+ create mode 100644 test/integration/fixtures/event-uefiservices.bin.yaml.pretty
+ rename test/integration/fixtures/{event-uefiservices.bin.yaml => event-uefiservices.bin.yaml.raw} (100%)
+
+diff --git a/Makefile.am b/Makefile.am
+index 413345cd..ef76dca8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -352,6 +352,7 @@ TEST_EXTENSIONS = .sh
+ 
+ check-hook:
+ 	rm -rf .lock_file
++	rm -f  $(abs_top_srcdir)/test/integration/fixtures/event-uefiservices.bin.yaml
+ 
+ EXTRA_DIST_IGNORE = \
+     .gitignore \
+@@ -647,6 +648,18 @@ dist-hook:
+ 	for f in $(EXTRA_DIST_IGNORE); do \
+ 		rm -rf `find $(distdir) -name $$f`; \
+ 	done;
++
++prepare-check:
++if HAVE_EFIVAR_H
++	cp  $(abs_top_srcdir)/test/integration/fixtures/event-uefiservices.bin.yaml.pretty \
++	    $(abs_top_srcdir)/test/integration/fixtures/event-uefiservices.bin.yaml
++else
++	cp  $(abs_top_srcdir)/test/integration/fixtures/event-uefiservices.bin.yaml.raw \
++	    $(abs_top_srcdir)/test/integration/fixtures/event-uefiservices.bin.yaml
++endif
++
++check: prepare-check
++
+ if !HAVE_PANDOC
+ # If pandoc is not enabled, we want to complain that you need pandoc for make dist,
+ # so hook the target and complain.
+diff --git a/configure.ac b/configure.ac
+index 362ae0aa..54224048 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,6 +97,9 @@ AS_IF([test "x$with_efivar" == "xauto"],
+   [PKG_CHECK_MODULES([EFIVAR], [efivar], [AC_CHECK_HEADERS([efivar/efivar.h])])],
+ )
+ 
++AC_CHECK_HEADERS([efivar/efivar.h],[efivar_h=yes ], [efivar = no ])
++AM_CONDITIONAL([HAVE_EFIVAR_H], [test "$efivar_h" = yes])
++
+ # backwards compat with older pkg-config
+ # - pull in AC_DEFUN from pkg.m4
+ m4_ifndef([PKG_CHECK_VAR], [
+diff --git a/test/integration/fixtures/event-uefiservices.bin.yaml.pretty b/test/integration/fixtures/event-uefiservices.bin.yaml.pretty
+new file mode 100644
+index 00000000..f0819f70
+--- /dev/null
++++ b/test/integration/fixtures/event-uefiservices.bin.yaml.pretty
+@@ -0,0 +1,45 @@
++---
++version: 1
++events:
++- EventNum: 0
++  PCRIndex: 0
++  EventType: EV_NO_ACTION
++  Digest: "0000000000000000000000000000000000000000"
++  EventSize: 37
++  SpecID:
++  - Signature: Spec ID Event03
++    platformClass: 0
++    specVersionMinor: 0
++    specVersionMajor: 2
++    specErrata: 0
++    uintnSize: 2
++    numberOfAlgorithms: 2
++    Algorithms:
++    - Algorithm[0]:
++      algorithmId: sha1
++      digestSize: 20
++    - Algorithm[1]:
++      algorithmId: sha256
++      digestSize: 32
++    vendorInfoSize: 0
++- EventNum: 1
++  PCRIndex: 2
++  EventType: EV_EFI_BOOT_SERVICES_DRIVER
++  DigestCount: 2
++  Digests:
++  - AlgorithmId: sha1
++    Digest: "855685b4dbd4b67d50e0594571055054cfe2b1e9"
++  - AlgorithmId: sha256
++    Digest: "dd8576b4ff346c19c56c3e4f97ce55c5afa646f9c669be0a7cdd05057a0ecdf3"
++  EventSize: 84
++  Event:
++    ImageLocationInMemory: 0x7dcf6018
++    ImageLengthInMemory: 171464
++    ImageLinkTimeAddress: 0x0
++    LengthOfDevicePath: 52
++    DevicePath1: 'PciRoot(0x0)/Pci(0x2,0x0)/Pci(0x0,0x0)/Offset(0x12600,0x3c3ff)'
++pcrs:
++  sha1:
++    2  : 0x5b5f4d5c31664f01670a98a5796a36473671befc
++  sha256:
++    2  : 0x35fcf9d737c52c971f7c74058d36937dbd7824177fa0f1de3eba3934fcb83b9d
+diff --git a/test/integration/fixtures/event-uefiservices.bin.yaml b/test/integration/fixtures/event-uefiservices.bin.yaml.raw
+similarity index 100%
+rename from test/integration/fixtures/event-uefiservices.bin.yaml
+rename to test/integration/fixtures/event-uefiservices.bin.yaml.raw
+-- 
+2.41.0
+

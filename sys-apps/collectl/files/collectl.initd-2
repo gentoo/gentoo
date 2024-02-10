@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="flush"
+
+pidfile="/var/run/collectl.pid"
+command="/usr/bin/collectl"
+command_args="-D"
+
+flush() {
+	einfo "Flushing collectl buffers"
+	start-stop-daemon --signal USR1 --pidfile ${pidfile}
+	eend $?
+}

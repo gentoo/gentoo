@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net mpd
+}
+
+start() {
+	ebegin "Starting mpdas"
+	start-stop-daemon --background --start --exec /usr/bin/mpdas \
+		--make-pidfile --pidfile /run/mpdas.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping mpdas"
+	start-stop-daemon --stop --exec /usr/bin/mpdas \
+		--pidfile /run/mpdas.pid
+	eend $?
+}

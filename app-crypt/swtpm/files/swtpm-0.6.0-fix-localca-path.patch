@@ -1,0 +1,31 @@
+diff --git a/samples/Makefile.am b/samples/Makefile.am
+index dcbc9b6..68c8adb 100644
+--- a/samples/Makefile.am
++++ b/samples/Makefile.am
+@@ -48,10 +48,10 @@ swtpm_localca_CFLAGS = \
+ 	$(GLIB_CFLAGS)
+ 
+ install-data-local:
+-	$(MKDIR_P) $(DESTDIR)$(localstatedir)/lib/swtpm-localca
++	$(MKDIR_P) $(DESTDIR)$(localstatedir)/swtpm-localca
+ 	if test -z $(DESTDIR); then \
+-		chown -R @TSS_USER@:root $(DESTDIR)$(localstatedir)/lib/swtpm-localca || true; \
+-		chmod 0750 $(DESTDIR)$(localstatedir)/lib/swtpm-localca || true; \
++		chown -R @TSS_USER@:root $(DESTDIR)$(localstatedir)/swtpm-localca || true; \
++		chmod 0750 $(DESTDIR)$(localstatedir)/swtpm-localca || true; \
+ 	fi
+ 
+ EXTRA_DIST= \
+diff --git a/samples/swtpm-localca.conf.in b/samples/swtpm-localca.conf.in
+index 1f0b48d..63f1fed 100644
+--- a/samples/swtpm-localca.conf.in
++++ b/samples/swtpm-localca.conf.in
+@@ -1,4 +1,4 @@
+-statedir = @LOCALSTATEDIR@/lib/swtpm-localca
+-signingkey = @LOCALSTATEDIR@/lib/swtpm-localca/signkey.pem
+-issuercert = @LOCALSTATEDIR@/lib/swtpm-localca/issuercert.pem
+-certserial = @LOCALSTATEDIR@/lib/swtpm-localca/certserial
++statedir = @LOCALSTATEDIR@/swtpm-localca
++signingkey = @LOCALSTATEDIR@/swtpm-localca/signkey.pem
++issuercert = @LOCALSTATEDIR@/swtpm-localca/issuercert.pem
++certserial = @LOCALSTATEDIR@/swtpm-localca/certserial

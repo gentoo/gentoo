@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: CFGFILE=${CFGFILE:=/etc/mpd.conf}
+
+depend() {
+	need localmount
+	use net netmount nfsmount alsasound esound pulseaudio
+	config ${CFGFILE}
+}
+
+get_config() {
+	x=$1
+	test -e ${CFGFILE} || return 1
+	sed -n \
+	  -e '/^[ \t]*'${x}'/{s:^[ \t]*'${x}'[ \t]\+"\?\([^#"]\+\)[^"]*"\?$:\1: ; p }' \
+	  ${CFGFILE}
+}
+
+extra_started_commands='reload'
+# Required by io_uring
+rc_ulimit="-l 65535"
+command=/usr/bin/mpd
+command_args=${CFGFILE}
+required_files=${CFGFILE}
+pidfile=$(get_config pid_file)
+description="Music Player Daemon"
+
+reload() {
+      ebegin "Reloading ${RC_SVCNAME}"
+      start-stop-daemon --pidfile ${pidfile} --signal HUP
+      eend $?
+  }

@@ -1,0 +1,88 @@
+https://salsa.debian.org/debian/keychain/-/blob/debian/master/debian/patches/typos.patch
+
+Description: Correct some typographical and grammatical errors.
+Forwarded: https://github.com/funtoo/keychain/pull/112
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2020-05-07
+
+--- a/keychain.pod
++++ b/keychain.pod
+@@ -43,7 +43,7 @@
+ 
+ As an additional feature, if a private key has an extension ".ext", keychain
+ will look for privkey.ext.pub first, and if not found, will look for
+-privkeyname.pub.
++privkey.pub.
+ 
+ Keychain also supports gpg-agent in the same ways that ssh-agent is
+ supported.  By default keychain attempts to start ssh-agent only. 
+@@ -227,7 +227,7 @@
+ 
+ =item others
+ 
+-Kill agent processes other than the one keychain is providing.  Prior
++Kill agent processes other than the ones keychain is providing.  Prior
+ to keychain-2.5.0, keychain would do this automatically.  The new
+ behavior requires that you specify it explicitly if you want it.
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,7 @@
+ keychain.1.gz: keychain.1
+ 	gzip -9 keychain.1
+ 
+-GENKEYCHAINPL = open P, "keychain.txt" or die "cant open keychain.txt"; \
++GENKEYCHAINPL = open P, "keychain.txt" or die "cannot open keychain.txt"; \
+ 			while (<P>) { \
+ 				$$printing = 0 if /^\w/; \
+ 				$$printing = 1 if /^(SYNOPSIS|OPTIONS)/; \
+@@ -39,7 +39,7 @@
+ 				s/(^|\s)(-+[-\w]+)/$$1\$${GREEN}$$2\$${OFF}/g; \
+ 				$$pod .= $$_; \
+ 			}; \
+-		open B, "keychain.sh" or die "cant open keychain.sh"; \
++		open B, "keychain.sh" or die "cannot open keychain.sh"; \
+ 			$$/ = undef; \
+ 			$$_ = <B>; \
+ 			s/INSERT_POD_OUTPUT_HERE[\r\n]/$$pod/ || die; \
+--- a/README.md
++++ b/README.md
+@@ -3,12 +3,12 @@
+ 
+ Please apply your patches to `keychain.sh`, *not* the generated `keychain`
+ script, which we are now including in the git repo to facilitate the
+-distribution of release archives direct from GitHub. All development work will 
+-be done on the 'devel' branch and will only be merged with the master branch when 
++distribution of release archives directly from GitHub. All development work will 
++be done on the 'devel' branch and will only be merged into the master branch when 
+ a new release is made. This should allow the generated files (keychain, man pages,
+-spec file)to remain in sync on the master branch but no guarantees are made except
++spec file) to remain in sync on the master branch but no guarantees are made except
+ for the tagged release. They will be regenerated for official release archives 
+-only (those tagged with the release version.). Anyone using or contributing to the
++only (those tagged with the release version). Anyone using or contributing to the
+ 'devel' branch should assume the generated files are out of date and regenerate 
+ locally if needed.
+ Thanks!
+--- a/keychain
++++ b/keychain
+@@ -354,7 +354,7 @@
+ 	# This function originates from Parallels Inc.'s OpenVZ vpsreboot script
+ 
+ 	# Description: This function attempts to acquire the lock. If it succeeds,
+-	# it returns 0. If it fails, it returns 1. This function retuns immediately
++	# it returns 0. If it fails, it returns 1. This function returns immediately
+ 	# and only tries to acquire the lock once.
+ 
+ 		tmpfile="$lockf.$$"
+--- a/keychain.sh
++++ b/keychain.sh
+@@ -173,7 +173,7 @@
+ 	# This function originates from Parallels Inc.'s OpenVZ vpsreboot script
+ 
+ 	# Description: This function attempts to acquire the lock. If it succeeds,
+-	# it returns 0. If it fails, it returns 1. This function retuns immediately
++	# it returns 0. If it fails, it returns 1. This function returns immediately
+ 	# and only tries to acquire the lock once.
+ 
+ 		tmpfile="$lockf.$$"

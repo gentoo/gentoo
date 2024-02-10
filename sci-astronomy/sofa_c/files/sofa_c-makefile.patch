@@ -1,0 +1,105 @@
+--- src/makefile.orig
++++ src/makefile
+@@ -49,7 +49,7 @@
+ 
+ # Specify the installation home directory.
+ 
+-INSTALL_DIR = $(HOME)
++INSTALL_DIR = $(DESTDIR)/usr
+ 
+ # Specify the installation directory for the library.
+ 
+@@ -63,9 +63,9 @@
+ # of your preferred C compiler (CCOMPC) and compilation flags (CFLAGF
+ # for functions, CFLAGX for executables) here.
+ 
+-CCOMPC = gcc
+-CFLAGF = -c -pedantic -Wall -W -O
+-CFLAGX = -pedantic -Wall -W -O
++CCOMPC = $(CC)
++CFLAGF = $(CPPFLAGS) -I. -c -fPIC $(CFLAGS)
++CFLAGX = $(CPPFLAGS) -I. $(CFLAGS)
+ 
+ #----YOU SHOULDN'T HAVE TO MODIFY ANYTHING BELOW THIS LINE---------
+ 
+@@ -80,6 +80,11 @@
+ SOFA_LIB_NAME = libsofa_c.a
+ SOFA_LIB = $(SOFA_LIB_DIR)$(SOFA_LIB_NAME)
+ 
++# Name the SOFA/C library in its source and target locations.
++
++SOFA_SHLIB_NAME = libsofa_c.so
++SOFA_SHLIB = $(SOFA_LIB_DIR)$(SOFA_SHLIB_NAME)
++
+ # Name the SOFA/C testbed in its source and target locations.
+ 
+ SOFA_TEST_NAME = t_sofa_c.c
+@@ -88,7 +93,7 @@
+ # Name the SOFA/C includes in their source and target locations.
+ 
+ SOFA_INC_NAMES = sofa.h sofam.h
+-SOFA_INC = $(SOFA_INC_DIR)sofa.h $(SOFA_INC_DIR)sofam.h
++SOFA_INC = $(SOFA_INC_NAMES:%=$(SOFA_INC_DIR)%)
+ 
+ # The list of SOFA/C library object files.
+ 
+@@ -321,28 +326,31 @@
+ #-----------------------------------------------------------------------
+ 
+ # Build (but do not install) the library.
+-all : $(SOFA_LIB_NAME)
++all : $(SOFA_SHLIB_NAME)
+ 	-@ echo ""
+ 	-@ echo "*** Now type 'make test'" \
+                 " to install the library and run tests ***"
+ 	-@ echo ""
+ 
+ # Install the library and header files.
+-install $(SOFA_LIB) : $(INSTALL_DIRS) $(SOFA_LIB_NAME) $(SOFA_INC)
+-	cp $(SOFA_LIB_NAME) $(SOFA_LIB_DIR)
++install: $(INSTALL_DIRS) $(SOFA_SHLIB_NAME) $(SOFA_INC)
++	cp $(SOFA_SHLIB_NAME).0.0 $(SOFA_LIB_DIR)
++	ln -s $(SOFA_SHLIB_NAME).0.0 $(SOFA_SHLIB).0
++	ln -s $(SOFA_SHLIB_NAME).0 $(SOFA_SHLIB)
++
+ 
+ # Deinstall the library and header files.
+ uninstall:
+-	- $(RM) $(SOFA_LIB) $(SOFA_INC)
++	- $(RM) $(SOFA_LIB) $(SOFA_SHLIB)* $(SOFA_INC)
+ 
+ # Test the build.
+-check: $(SOFA_TEST_NAME) $(SOFA_INC_NAMES) $(SOFA_LIB_NAME)
+-	$(CCOMPC) $(CFLAGX) $(SOFA_TEST_NAME) $(SOFA_LIB_NAME) \
++check: $(SOFA_TEST_NAME) $(SOFA_INC_NAMES) $(SOFA_SHLIB_NAME)
++	$(CCOMPC) $(CFLAGX) $(SOFA_TEST_NAME) $(SOFA_SHLIB_NAME).0.0 \
+         -lm -o $(SOFA_TEST)
+-	./$(SOFA_TEST)
++	LD_LIBRARY_PATH="$${LD_LIBRARY_PATH}:." ./$(SOFA_TEST)
+ 
+ # Test the installed library.
+-installcheck test: $(SOFA_TEST_NAME) $(SOFA_INC) $(SOFA_LIB)
++installcheck: $(SOFA_TEST_NAME) $(SOFA_INC) $(SOFA_LIB)
+ 	$(CCOMPC) $(CFLAGX) $(SOFA_TEST_NAME) -I$(SOFA_INC_DIR) \
+         -L$(SOFA_LIB_DIR) -lsofa_c -lm -o $(SOFA_TEST)
+ 	./$(SOFA_TEST)
+@@ -353,7 +361,7 @@
+ 
+ # Delete all generated binaries in the current directory.
+ realclean distclean : clean
+-	- $(RM) $(SOFA_LIB_NAME) $(SOFA_TEST)
++	- $(RM) $(SOFA_LIB_NAME) $(SOFA_SHLIB_NAME)* $(SOFA_TEST)
+ 
+ # Create the installation directories if not already present.
+ $(INSTALL_DIRS):
+@@ -363,6 +371,10 @@
+ $(SOFA_LIB_NAME): $(SOFA_OBS)
+ 	ar ru $(SOFA_LIB_NAME) $?
+ 
++$(SOFA_SHLIB_NAME): $(SOFA_OBS)
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(SOFA_SHLIB_NAME).0 $? -lm -o $(SOFA_SHLIB_NAME).0.0
++	ln -sfn $(SOFA_SHLIB_NAME).0.0 $(SOFA_SHLIB_NAME).0
++
+ # Install the header files.
+ $(SOFA_INC) : $(INSTALL_DIRS) $(SOFA_INC_NAMES)
+ 	cp $(SOFA_INC_NAMES) $(SOFA_INC_DIR)

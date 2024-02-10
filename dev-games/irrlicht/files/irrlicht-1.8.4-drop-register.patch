@@ -1,0 +1,33 @@
+Bug: https://bugs.gentoo.org/894764
+
+--- a/source/Irrlicht/CColorConverter.cpp
++++ b/source/Irrlicht/CColorConverter.cpp
+@@ -165,7 +165,7 @@
+ 		out += lineWidth * height;
+ 
+ 	u32 x;
+-	register u32 c;
++	u32 c;
+ 	for (u32 y=0; y < (u32) height; ++y)
+ 	{
+ 		if (flip)
+--- a/source/Irrlicht/CMY3DHelper.h
++++ b/source/Irrlicht/CMY3DHelper.h
+@@ -269,7 +269,7 @@
+     unsigned char *out_buf, int out_buf_size)
+ {
+      // we start out with 3 repeating bytes
+-     register int len = 3;
++     int len = 3;
+ 
+      unsigned char ch;
+ 
+@@ -328,7 +328,7 @@
+ //-----------------------------------------------------------
+ void flush_outbuf(unsigned char *out_buf, int out_buf_size)
+ {
+-    register int pos=0;
++    int pos=0;
+ 
+     if(!outbuf_cnt)
+        return;        // nothing to do */

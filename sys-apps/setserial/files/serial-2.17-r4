@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	[ ! -e /etc/serial.conf ] && return 0
+
+	grep -v "^#\|^ \|^$\|^stty" /etc/serial.conf | while read device args
+	do
+		ebegin "Setting ${device} to $args"
+		setserial -b ${device} ${args}
+		eend $?
+	done
+	grep  "^stty" /etc/serial.conf | while read x device args
+	do
+		ebegin "Setting (stty) ${device} to $args"
+		stty -F ${device} ${args}
+		eend $?
+	done
+
+	return 0
+}

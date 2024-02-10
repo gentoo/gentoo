@@ -1,0 +1,24 @@
+Fix buiding with gcc 4.5
+
+http://bugs.gentoo.org/show_bug.cgi?id=318411
+
+--- a/src/njamedit.cpp
++++ b/src/njamedit.cpp
+@@ -114,7 +114,7 @@
+ 				key = SDLK_a;
+ 			else if (CheckForSave())
+ 			{
+-				LogFile::LogFile("Saving maps");
++				LogFile("Saving maps");
+ 				m_Maps.Save(filename);
+ 				level_type_was = level_type;
+ 				changed = false;
+@@ -131,7 +131,7 @@
+ 					char types[2][5] = { "COOP", "DUEL" };
+ 					sprintf(buf, "levels/%s.%s\0", filename, types[level_type]);
+ 					sprintf(filename, "%s\0", buf);
+-					LogFile::LogFile("Saving maps");
++					LogFile("Saving maps");
+ 					m_Maps.Save(filename);
+ 					level_type_was = level_type;
+ 					changed = false;

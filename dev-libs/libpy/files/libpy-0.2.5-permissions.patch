@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 61bc3da..a00b565 100644
+--- a/setup.py
++++ b/setup.py
+@@ -43,7 +43,7 @@ class build_py(_build_py):
+         )
+ 
+         p = pathlib.Path(self.build_lib) / 'libpy/_build-and-run'
+-        p.chmod(p.stat().st_mode | stat.S_IEXEC)
++        p.chmod(p.stat().st_mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
+ 
+ 
+ setup(

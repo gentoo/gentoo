@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before cron portmap
+	after net
+	use dns logger
+}
+
+checkconfig() {
+	if ! type "${NTPCLIENT_CMD}" >/dev/null 2>&1 ; then
+		eerror "Please edit /etc/conf.d/ntp-client"
+		eerror "Unable to locate the client command ${NTPCLIENT_CMD}!"
+		return 1
+	fi
+	if [ -z "${NTPCLIENT_OPTS}" ] ; then
+		eerror "Please edit /etc/conf.d/ntp-client"
+		eerror "I need to know what server/options to use!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Setting clock via the NTP client '${NTPCLIENT_CMD}'"
+	"${NTPCLIENT_CMD}" ${NTPCLIENT_OPTS}
+	eend $? "Failed to set clock"
+}

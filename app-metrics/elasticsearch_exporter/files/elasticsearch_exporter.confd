@@ -1,0 +1,2 @@
+# arguments for prometheus elasticsearch exporter
+command_args="--es.uri=http://localhost:9200"

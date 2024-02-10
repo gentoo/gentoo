@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://invisible-island.net/reflex/NEWS.html</changelog>
+		<remote-id type="github">ThomasDickey/reflex-snapshots</remote-id>
+	</upstream>
+</pkgmetadata>

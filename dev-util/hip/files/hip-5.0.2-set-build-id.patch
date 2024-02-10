@@ -1,0 +1,20 @@
+If git is not found, HIP_VERSION_BUILD_ID will not be set, causing bug 853718
+===================================================================
+--- hipamd-rocm-5.0.2.orig/CMakeLists.txt
++++ hipamd-rocm-5.0.2/CMakeLists.txt
+@@ -89,6 +89,7 @@ list(GET VERSION_LIST 2 HIP_VERSION_PATC
+ string(REPLACE "-" ";" VERSION_LIST ${HIP_VERSION_PATCH_GITHASH})
+ list(GET VERSION_LIST 0 HIP_VERSION_PATCH)
+ set(HIP_VERSION_GITDATE 0)
++set(HIP_VERSION_BUILD_ID 0)
+ 
+ find_package(Git)
+ 
+@@ -126,7 +127,6 @@ if(GIT_FOUND)
+     set(HIP_VERSION_GITHASH ${git_output})
+   endif()
+ 
+-  set(HIP_VERSION_BUILD_ID 0)
+   set(HIP_VERSION_BUILD_NAME "")
+   if(NOT DEFINED ENV{HIP_OFFICIAL_BUILD} AND NOT HIP_OFFICIAL_BUILD)
+     # FIXME: Disabling it for ROCm 5.0

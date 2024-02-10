@@ -1,0 +1,201 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/botocore test
+dev-python/ipython nbconvert test
+dev-python/pip-run test
+dev-python/sentry-sdk test
+dev-python/sphinx-autodoc-typehints test
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-01)
+# Need dev-python/trio.
+>=dev-python/urllib3-2.2.0 test
+
+# Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
+# Need app-crypt/rpm-sequoia.
+app-arch/rpm sequoia
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-15)
+# Need dev-python/jupyter-server.
+dev-python/ipykernel test
+dev-python/ipython smp
+dev-python/jupyter-client test
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-15)
+# Need dev-python/notebook.
+dev-python/ipython notebook
+dev-python/nbclient test
+dev-python/nbconvert test
+
+# Sam James <sam@gentoo.org> (2023-09-06)
+# sys-block/thin-provisioning-tools now needs Rust.
+>=sys-fs/lvm2-2.03.22-r2 thin
+
+# Hans de Graaff <graaff@gentoo.org> (2023-09-03)
+# selenium-webdriver is needed for these tests but that requires
+# selenium-manager which requires rust (#912999)
+dev-ruby/actionpack test
+dev-ruby/capybara test
+
+# Alfred Wingate <parona@protonmail.com> (2023-07-22)
+# SSO feature in ZeroTier requires rust.
+net-misc/zerotier sso
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-06)
+# Packages needing dev-python/pydantic.
+dev-python/jaraco-itertools test
+dev-python/versioningit test
+dev-python/zipp test
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-09)
+# Deps on several mkdocs plugins (#882593)
+dev-python/bracex doc
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-12)
+# The Rusticl OpenCL state tracker requires rust
+>=media-libs/mesa-23.1 opencl
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-09)
+# Packages needing dev-python/selenium.
+dev-python/aiohttp-cors test
+dev-python/django test
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-04)
+# The JIT compiler in ruby requires rust
+dev-lang/ruby jit
+
+# Sam James <sam@gentoo.org> (2022-12-26)
+# Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
+dev-debug/gef doc
+
+# Sam James <sam@gentoo.org> (2022-12-11)
+# net-libs/rustls-ffi needs Rust.
+net-misc/curl rustls curl_ssl_rustls
+www-servers/apache apache2_modules_tls
+
+# matoro <matoro_gentoo@matoro.tk> (2022-12-01)
+# tree-sitter-grammar.eclass adds dev-util/tree-sitter-cli as test dep
+dev-libs/tree-sitter-bash test
+dev-libs/tree-sitter-c test
+dev-libs/tree-sitter-c-sharp test
+dev-libs/tree-sitter-cpp test
+dev-libs/tree-sitter-css test
+dev-libs/tree-sitter-embedded-template test
+dev-libs/tree-sitter-go test
+dev-libs/tree-sitter-haskell test
+dev-libs/tree-sitter-html test
+dev-libs/tree-sitter-java test
+dev-libs/tree-sitter-javascript test
+dev-libs/tree-sitter-jsdoc test
+dev-libs/tree-sitter-json test
+dev-libs/tree-sitter-julia test
+dev-libs/tree-sitter-ocaml test
+dev-libs/tree-sitter-php test
+dev-libs/tree-sitter-python test
+dev-libs/tree-sitter-ql test
+dev-libs/tree-sitter-ruby test
+dev-libs/tree-sitter-rust test
+dev-libs/tree-sitter-scala test
+dev-libs/tree-sitter-tsq test
+dev-libs/tree-sitter-typescript test
+
+# Sam James <sam@gentoo.org> (2022-11-19)
+# GNOME packages pulling in e.g. gjs which then needs Rust.
+dev-util/glade gjs
+gnome-base/gnome-menus test
+gnome-base/gnome-settings-daemon modemmanager
+gnome-base/nautilus previewer
+net-vpn/networkmanager-openconnect gtk
+net-vpn/networkmanager-openvpn gtk
+net-vpn/networkmanager-pptp gtk
+net-vpn/networkmanager-vpnc gtk
+
+# Michał Górny <mgorny@gentoo.org> (2022-07-29)
+# More packages requiring dev-python/cryptography or its revdeps.
+app-admin/salt keyring neutron
+dev-python/boto test
+dev-python/dask test
+dev-python/docker test
+dev-python/google-api-python-client test
+dev-python/httpx-socks test
+dev-python/hypercorn test
+dev-python/keystoneauth1 test
+dev-python/libtmux test
+dev-python/locket test
+dev-python/pyjwt test
+dev-python/python-keystoneclient test
+dev-python/python-socks test
+dev-python/starlette test
+dev-python/tiny-proxy test
+dev-python/twisted test
+net-misc/stunnel test
+
+# Michał Górny <mgorny@gentoo.org> (2022-07-29)
+# More packages requiring dev-python/pyopenssl or its revdeps.
+app-admin/salt libcloud openssl test
+dev-python/aiohttp test
+dev-python/cheroot test
+dev-python/cherrypy ssl
+dev-python/google-auth test
+dev-python/pyftpdlib ssl test
+dev-python/python-novaclient test
+dev-python/requests test
+dev-python/uvloop test
+mate-extra/caja-extensions gajim
+www-apps/roundup ssl
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-26)
+# dev-python/trustme requires dev-python/cryptography.
+dev-python/anyio test
+dev-python/httpcore test
+dev-python/httpx test
+dev-python/aiohttp-socks test
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
+# dev-lang/rust is not available on ${arch} yet.
+media-gfx/imv svg
+media-libs/libavif rav1e
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Needs Rustified librsvg
+>=media-libs/freetype-2.12.0 svg
+media-libs/imlib2 svg
+
+# Michał Górny <mgorny@gentoo.org> (2021-11-26)
+# These package flags require dev-python/cryptography which -- due
+# to the dependency on Rust -- is no longer portable to ${arch}.
+dev-python/dnspython dnssec test
+dev-python/twisted conch ssl
+dev-python/urllib3 test
+net-fs/samba addc ads
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
+# gdm requires gnome-shell requires rustified librsvg.
+x11-misc/xscreensaver gdm
+
+# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
+# Depends on media-video/rav1e which needs Rust
+>=media-libs/libheif-1.10.0 rav1e
+
+# Cédric Krier <cedk@gentoo.org> (2020-11-10)
+# virtual/rust has no ${arch} keyword
+dev-vcs/mercurial rust
+
+# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Sam James <sam@gentoo.org> (2021-03-11)
+# Dependency only keyworded on specific ${arch} profiles.
+dev-libs/efl avif
+kde-frameworks/kimageformats avif
+media-libs/gd avif
+net-libs/webkit-gtk avif
+
+# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
+# ${arch} has no virtual/rust support, needed by newer gnome-base/librsvg, et al
+>=media-gfx/eog-3.33.1 svg
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
+# Requires www-client/firefox which isn't available on ${arch} yet
+# due to dev-lang/rust requirement
+dev-ruby/capybara test

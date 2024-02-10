@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">lecram/rover</remote-id>
+	</upstream>
+</pkgmetadata>

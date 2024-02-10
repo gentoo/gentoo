@@ -1,0 +1,9 @@
+XIM=SCIM
+XIM_PROGRAM="@EPREFIX@/usr/bin/scim"
+XIM_ARGS="-d --no-socket"
+GTK_IM_MODULE=scim
+QT_IM_MODULE=scim
+PREFERENCE_PROGRAM="@EPREFIX@/usr/bin/scim-setup"
+SHORT_DESC="SCIM"
+LONG_DESC="Smart Common Input Method platform"
+ICON=scim-setup

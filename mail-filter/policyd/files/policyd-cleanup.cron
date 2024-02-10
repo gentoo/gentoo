@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/sbin/policyd_cleanup -c /etc/policyd.conf

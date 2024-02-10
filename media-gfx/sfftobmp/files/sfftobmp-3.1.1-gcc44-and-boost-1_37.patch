@@ -1,0 +1,28 @@
+--- a/src/cmdline.cpp
++++ b/src/cmdline.cpp
+@@ -35,6 +35,7 @@
+ 
+ ---RCS-Info--------------------------------------------------*/
+ 
++#include <cstdio>
+ #include <vector>
+ #include <cassert>
+ #include <iostream>
+--- a/src/common.cpp
++++ b/src/common.cpp
+@@ -49,6 +49,7 @@
+ #include <sys/utime.h>
+ #endif
+ 
++#include <cstdio>
+ #include <cassert>
+ #include <iostream>
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,4 +3,4 @@
+ INCLUDES            =  -I$(top_builddir) -I$(top_srcdir)
+ bin_PROGRAMS = sfftobmp
+ sfftobmp_SOURCES = my_getopt.c cmdline.cpp codes.cpp common.cpp decoder.cpp input.cpp main.cpp output.cpp
+-sfftobmp_LDADD = @TIFF_LIB@ @JPEG_LIB@ -lboost_filesystem
++sfftobmp_LDADD = @TIFF_LIB@ @JPEG_LIB@ -lboost_filesystem -lboost_system

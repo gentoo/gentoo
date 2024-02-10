@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <bugs-to>https://github.com/ninja-build/ninja/issues/</bugs-to>
+    <remote-id type="github">ninja-build/ninja</remote-id>
+  </upstream>
+</pkgmetadata>

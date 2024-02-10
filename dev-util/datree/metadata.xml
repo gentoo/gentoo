@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Datree provides an E2E policy enforcement solution to run automatic checks
+    for rule violations. Datree can be used on the command line, admission
+    webhook, or even as a kubectl plugin to run policies against Kubernetes
+    objects.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/datreeio/datree/issues</bugs-to>
+    <remote-id type="github">datreeio/datree</remote-id>
+  </upstream>
+</pkgmetadata>

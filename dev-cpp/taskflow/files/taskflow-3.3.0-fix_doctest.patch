@@ -1,0 +1,377 @@
+diff --git a/unittests/CMakeLists.txt b/unittests/CMakeLists.txt
+index cf881d4..ff6618a 100644
+--- a/unittests/CMakeLists.txt
++++ b/unittests/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ enable_testing()
+ 
+-include(${TF_3RD_PARTY_DIR}/doctest/doctest.cmake)
++find_package(doctest REQUIRED)
++include(doctest)
+ 
+ list(APPEND TF_UNITTESTS 
+   utility 
+@@ -22,8 +23,7 @@ list(APPEND TF_UNITTESTS
+ 
+ foreach(unittest IN LISTS TF_UNITTESTS)
+   add_executable(${unittest} ${unittest}.cpp)
+-  target_link_libraries(${unittest} ${PROJECT_NAME} tf::default_settings)
+-  target_include_directories(${unittest} PRIVATE ${TF_3RD_PARTY_DIR}/doctest)
++  target_link_libraries(${unittest} ${PROJECT_NAME} tf::default_settings doctest::doctest)
+   doctest_discover_tests(${unittest})
+ endforeach()
+ 
+diff --git a/unittests/algorithms.cpp b/unittests/algorithms.cpp
+index 5ae7ac6..efffdd9 100644
+--- a/unittests/algorithms.cpp
++++ b/unittests/algorithms.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/reduce.hpp>
+ #include <taskflow/algorithm/sort.hpp>
+diff --git a/unittests/asyncs.cpp b/unittests/asyncs.cpp
+index cd6985c..4e7b80f 100644
+--- a/unittests/asyncs.cpp
++++ b/unittests/asyncs.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // --------------------------------------------------------
+diff --git a/unittests/basics.cpp b/unittests/basics.cpp
+index 2784fa4..ac1ab20 100644
+--- a/unittests/basics.cpp
++++ b/unittests/basics.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/reduce.hpp>
+ 
+diff --git a/unittests/cancellation.cpp b/unittests/cancellation.cpp
+index 3273af3..ff17ad4 100644
+--- a/unittests/cancellation.cpp
++++ b/unittests/cancellation.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // EmptyFuture
+diff --git a/unittests/compositions.cpp b/unittests/compositions.cpp
+index 0d330ae..e2784a5 100644
+--- a/unittests/compositions.cpp
++++ b/unittests/compositions.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // --------------------------------------------------------
+diff --git a/unittests/control_flow.cpp b/unittests/control_flow.cpp
+index 086a8a9..f2da83e 100644
+--- a/unittests/control_flow.cpp
++++ b/unittests/control_flow.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // --------------------------------------------------------
+diff --git a/unittests/cuda/CMakeLists.txt b/unittests/cuda/CMakeLists.txt
+index 7c76523..be2757c 100644
+--- a/unittests/cuda/CMakeLists.txt
++++ b/unittests/cuda/CMakeLists.txt
+@@ -12,15 +12,14 @@ list(APPEND TF_CUDA_UNITTESTS
+ 
+ foreach(cudatest IN LISTS TF_CUDA_UNITTESTS)
+   add_executable(${cudatest} ${cudatest}.cu)
+-  target_link_libraries(${cudatest} ${PROJECT_NAME} tf::default_settings)
+-  target_include_directories(${cudatest} PRIVATE ${TF_3RD_PARTY_DIR}/doctest)
+-  
++  target_link_libraries(${cudatest} ${PROJECT_NAME} tf::default_settings doctest::doctest)
++
+   # avoid cmake 3.18+ warning
+   # we let nvcc to decide the flag if the architecture is not given
+   if(NOT CUDA_ARCHITECTURES)
+     set_property(TARGET ${cudatest} PROPERTY CUDA_ARCHITECTURES OFF)
+   endif()
+-  
++
+   doctest_discover_tests(${cudatest})
+ endforeach()
+ 
+diff --git a/unittests/cuda/cuda_algorithms.cu b/unittests/cuda/cuda_algorithms.cu
+index d97289e..5185cd9 100644
+--- a/unittests/cuda/cuda_algorithms.cu
++++ b/unittests/cuda/cuda_algorithms.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+ #include <taskflow/cuda/algorithm/for_each.hpp>
+diff --git a/unittests/cuda/cuda_basics.cu b/unittests/cuda/cuda_basics.cu
+index 8e0fdff..f97c782 100644
+--- a/unittests/cuda/cuda_basics.cu
++++ b/unittests/cuda/cuda_basics.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+ 
+diff --git a/unittests/cuda/cuda_capturer_optimizer.cu b/unittests/cuda/cuda_capturer_optimizer.cu
+index 86fcfb7..7cbcf0a 100644
+--- a/unittests/cuda/cuda_capturer_optimizer.cu
++++ b/unittests/cuda/cuda_capturer_optimizer.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+ #include <taskflow/cuda/algorithm/for_each.hpp>
+diff --git a/unittests/cuda/cuda_device.cu b/unittests/cuda/cuda_device.cu
+index b3d316d..241cc93 100644
+--- a/unittests/cuda/cuda_device.cu
++++ b/unittests/cuda/cuda_device.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+ 
+diff --git a/unittests/cuda/cuda_kmeans.cu b/unittests/cuda/cuda_kmeans.cu
+index 91495b5..c14d250 100644
+--- a/unittests/cuda/cuda_kmeans.cu
++++ b/unittests/cuda/cuda_kmeans.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+ #include <taskflow/cuda/algorithm/for_each.hpp>
+diff --git a/unittests/cuda/cuda_matrix.cu b/unittests/cuda/cuda_matrix.cu
+index 8e9f242..ec5386f 100644
+--- a/unittests/cuda/cuda_matrix.cu
++++ b/unittests/cuda/cuda_matrix.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+ 
+diff --git a/unittests/cuda/cuda_rebinds.cu b/unittests/cuda/cuda_rebinds.cu
+index eb9218f..92798df 100644
+--- a/unittests/cuda/cuda_rebinds.cu
++++ b/unittests/cuda/cuda_rebinds.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ 
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+diff --git a/unittests/cuda/cuda_updates.cu b/unittests/cuda/cuda_updates.cu
+index bdda539..d8b52dc 100644
+--- a/unittests/cuda/cuda_updates.cu
++++ b/unittests/cuda/cuda_updates.cu
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ 
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/cuda/cudaflow.hpp>
+diff --git a/unittests/movable.cpp b/unittests/movable.cpp
+index 58be4fc..c4b3f1a 100644
+--- a/unittests/movable.cpp
++++ b/unittests/movable.cpp
+@@ -1,5 +1,5 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // increments a counter only on destruction
+diff --git a/unittests/pipelines.cpp b/unittests/pipelines.cpp
+index 6527b34..c925e67 100644
+--- a/unittests/pipelines.cpp
++++ b/unittests/pipelines.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ 
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/pipeline.hpp>
+diff --git a/unittests/semaphores.cpp b/unittests/semaphores.cpp
+index d4713f8..c537702 100644
+--- a/unittests/semaphores.cpp
++++ b/unittests/semaphores.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // --------------------------------------------------------
+diff --git a/unittests/serializer.cpp b/unittests/serializer.cpp
+index 20edef3..5b9870f 100644
+--- a/unittests/serializer.cpp
++++ b/unittests/serializer.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/utility/serializer.hpp>
+ #include <random>
+ 
+diff --git a/unittests/sorting.cpp b/unittests/sorting.cpp
+index 00a616c..005eaf2 100644
+--- a/unittests/sorting.cpp
++++ b/unittests/sorting.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/sort.hpp>
+ 
+diff --git a/unittests/subflows.cpp b/unittests/subflows.cpp
+index b1de5d1..11fd97a 100644
+--- a/unittests/subflows.cpp
++++ b/unittests/subflows.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/reduce.hpp>
+ 
+diff --git a/unittests/sycl/CMakeLists.txt b/unittests/sycl/CMakeLists.txt
+index 492c941..3ef1dd7 100644
+--- a/unittests/sycl/CMakeLists.txt
++++ b/unittests/sycl/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-list(APPEND TF_SYCL_TESTS 
++list(APPEND TF_SYCL_TESTS
+   sycl_basics
+   sycl_algorithms
+   sycl_rebinds
+@@ -12,9 +12,8 @@ foreach(sycl_test IN LISTS TF_SYCL_TESTS)
+   target_compile_options(${sycl_test} PRIVATE ${TF_SYCL_OPTIONS})
+   target_link_options(${sycl_test} PRIVATE ${TF_SYCL_OPTIONS})
+   target_link_libraries(${sycl_test}
+-    ${PROJECT_NAME} Threads::Threads tf::default_settings
++    ${PROJECT_NAME} Threads::Threads tf::default_settings doctest::doctest
+   )
+-  target_include_directories(${sycl_test} PRIVATE ${TF_3RD_PARTY_DIR}/doctest)
+-  
++
+   doctest_discover_tests(${sycl_test})
+ endforeach()
+diff --git a/unittests/sycl/sycl_algorithms.cpp b/unittests/sycl/sycl_algorithms.cpp
+index cde9666..93973dc 100644
+--- a/unittests/sycl/sycl_algorithms.cpp
++++ b/unittests/sycl/sycl_algorithms.cpp
+@@ -1,5 +1,5 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/syclflow.hpp>
+ 
+ constexpr float eps = 0.0001f;
+diff --git a/unittests/sycl/sycl_basics.cpp b/unittests/sycl/sycl_basics.cpp
+index 7ed5e16..274b9ce 100644
+--- a/unittests/sycl/sycl_basics.cpp
++++ b/unittests/sycl/sycl_basics.cpp
+@@ -1,5 +1,5 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/syclflow.hpp>
+ 
+ // task creation
+diff --git a/unittests/sycl/sycl_rebinds.cpp b/unittests/sycl/sycl_rebinds.cpp
+index 5a00bf8..8854ef9 100644
+--- a/unittests/sycl/sycl_rebinds.cpp
++++ b/unittests/sycl/sycl_rebinds.cpp
+@@ -1,5 +1,5 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/syclflow.hpp>
+ 
+ // ----------------------------------------------------------------------------
+diff --git a/unittests/traversals.cpp b/unittests/traversals.cpp
+index b7cac8a..474df49 100644
+--- a/unittests/traversals.cpp
++++ b/unittests/traversals.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ 
+ #include <taskflow/taskflow.hpp>
+ 
+diff --git a/unittests/tsq.cpp b/unittests/tsq.cpp
+index 097f96d..d3c5f99 100644
+--- a/unittests/tsq.cpp
++++ b/unittests/tsq.cpp
+@@ -49,7 +49,7 @@
+ 
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ 
+ // ============================================================================
+diff --git a/unittests/utility.cpp b/unittests/utility.cpp
+index 9822cfe..95a253d 100644
+--- a/unittests/utility.cpp
++++ b/unittests/utility.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ 
+ #include <taskflow/utility/traits.hpp>
+ #include <taskflow/utility/object_pool.hpp>

@@ -1,0 +1,65 @@
+.TH "ESELECT" "5" "June 2006" "Gentoo Linux" "eselect"
+.SH "NAME"
+cblas.eselect \- The CBLAS management module for Gentoo's eselect
+.SH "SYNOPSIS"
+\fBeselect cblas\fR [\fBhelp\fR|\fBusage\fR]
+.br 
+\fBeselect cblas\fR \fBlist\fR [\fIoptions\fR]
+.br 
+\fBeselect cblas\fR \fBadd\fR
+.br 
+\fBeselect cblas\fR \fBset\fR \fIimplementation\fR [\fIoptions\fR]
+.br 
+\fBeselect cblas\fR \fBshow\fR [\fIoptions\fR]
+
+.SH "DESCRIPTION"
+\fBeselect\fR is Gentoo's configuration and management tool. It features
+modules that care for the individual administrative tasks.
+.SH "ACTION: LIST"
+\fBeselect cblas list\fR [\fIoptions\fR]
+.br 
+Displays an ordered list of installed CBLAS implementations. It distinguishes between versions with different
+Application Binary Interfaces (e.g. x86/AMD64). Furthermore, it also distinguishes
+between interfaces to high-level programming languages. Each line holds
+a number and the implementation's name. An asterisk next to one of the list
+elements denotes an active implementation.
+
+phi / # eselect cblas list
+.br 
+Installed CBLAS for libdir \fBlib\fR
+.br 
+  [1]   atlas *
+  [2]   reference
+
+Possible \fIoptions\fR to the \fBlist\fR action are restrictions to
+handle only certain ABI\-specific library directories. For example,
+ 
+\fBeselect cblas list lib64\fR
+
+lists only CBLAS implementations found in \fB/usr/lib64\fR.
+
+.SH "ACTION: SHOW"
+\fBeselect cblas show\fR [\fIoptions\fR]
+.br 
+Shows your system's currently active CBLAS implementations.
+
+phi / # eselect cblas show
+.br 
+lib: atlas
+.br
+lib64: reference
+
+The same \fIoptions\fR that apply to the \fBlist\fR action can be used
+with the \fBshow\fR action to restrict it to given ABIs.
+.SH "ACTION: SET"
+\fBeselect cblas set\fR \fIimplementation\fR [\fIoptions\fR]
+.br 
+Sets your system's currently active CBLAS implementations to \fIimplementation\fR. 
+The same \fIoptions\fR that apply to the \fBlist\fR action can be used
+with the \fBset\fR action to restrict it to given ABIs.
+
+phi / # eselect cblas set atlas
+.SH "AUTHOR"
+Danny van Dyk <kugelfang@gentoo.org>
+.br
+Donnie Berkholz <spyderous@gentoo.org>

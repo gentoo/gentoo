@@ -1,0 +1,24 @@
+diff --git a/src/flipbinpdb.c b/src/flipbinpdb.c
+index 94b71ba..01a2529 100644
+--- a/src/flipbinpdb.c
++++ b/src/flipbinpdb.c
+@@ -9,6 +9,7 @@
+ #include <sys/mman.h>
+ #include <fcntl.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #ifndef MAP_FILE
+ #define MAP_FILE 0
+diff --git a/src/flipdcd.c b/src/flipdcd.c
+index 8ec85b7..1c23433 100644
+--- a/src/flipdcd.c
++++ b/src/flipdcd.c
+@@ -13,6 +13,7 @@
+ #include <sys/mman.h>
+ #include <fcntl.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #ifndef MAP_FILE
+ #define MAP_FILE 0

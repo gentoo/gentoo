@@ -1,0 +1,22 @@
+diff --git a/skopt/space/transformers.py b/skopt/space/transformers.py
+index 68892952..87cc3b68 100644
+--- a/skopt/space/transformers.py
++++ b/skopt/space/transformers.py
+@@ -259,7 +259,7 @@ def transform(self, X):
+         if (self.high - self.low) == 0.:
+             return X * 0.
+         if self.is_int:
+-            return (np.round(X).astype(np.int) - self.low) /\
++            return (np.round(X).astype(np.int64) - self.low) /\
+                    (self.high - self.low)
+         else:
+             return (X - self.low) / (self.high - self.low)
+@@ -272,7 +272,7 @@ def inverse_transform(self, X):
+             raise ValueError("All values should be greater than 0.0")
+         X_orig = X * (self.high - self.low) + self.low
+         if self.is_int:
+-            return np.round(X_orig).astype(np.int)
++            return np.round(X_orig).astype(np.int64)
+         return X_orig
+ 
+ 

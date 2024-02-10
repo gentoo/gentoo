@@ -1,0 +1,101 @@
+From a0b372dfb6d37d0a81a545239128fec5ee94283c Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 18:51:29 +0200
+Subject: [PATCH 02/10] Port to new connection syntax
+
+---
+ example/oauthclient.cpp    |  8 ++++----
+ src/base-plugin.cpp        | 12 ++++++------
+ src/plugin.cpp             | 18 ++++++------------
+ tests/oauth2plugintest.cpp |  4 ++--
+ 4 files changed, 18 insertions(+), 24 deletions(-)
+
+diff --git a/example/oauthclient.cpp b/example/oauthclient.cpp
+index adfcabf..328e8b7 100644
+--- a/example/oauthclient.cpp
++++ b/example/oauthclient.cpp
+@@ -47,10 +47,10 @@ OAuthClient::~OAuthClient()
+ void OAuthClient::authenticate()
+ {
+     SignOn::AuthSession *m_session = m_identity->createSession("oauth2");
+-    QObject::connect(m_session, SIGNAL(response(const SignOn::SessionData &)),
+-                     this, SLOT(onResponse(const SignOn::SessionData &)));
+-    QObject::connect(m_session, SIGNAL(error(const SignOn::Error &)),
+-                     this, SLOT(onError(const SignOn::Error &)));
++    QObject::connect(m_session, &SignOn::AuthSession::response,
++                     this, &OAuthClient::onResponse);
++    QObject::connect(m_session, &SignOn::AuthSession::error,
++                     this, &OAuthClient::onError);
+ 
+     OAuth2PluginData data;
+     data.setHost("www.facebook.com");
+diff --git a/src/base-plugin.cpp b/src/base-plugin.cpp
+index aa2d639..d5ce81c 100644
+--- a/src/base-plugin.cpp
++++ b/src/base-plugin.cpp
+@@ -124,12 +124,12 @@ void BasePlugin::postRequest(const QNetworkRequest &request,
+     Q_D(BasePlugin);
+ 
+     d->m_reply = d->m_networkAccessManager->post(request, data);
+-    connect(d->m_reply, SIGNAL(finished()),
+-            this, SLOT(onPostFinished()));
+-    connect(d->m_reply, SIGNAL(error(QNetworkReply::NetworkError)),
+-            this, SLOT(onNetworkError(QNetworkReply::NetworkError)));
+-    connect(d->m_reply, SIGNAL(sslErrors(QList<QSslError>)),
+-            this, SLOT(handleSslErrors(QList<QSslError>)));
++    connect(d->m_reply, &QNetworkReply::finished,
++            this, &BasePlugin::onPostFinished);
++    connect(d->m_reply, &QNetworkReply::error,
++            this, &BasePlugin::onNetworkError);
++    connect(d->m_reply, &QNetworkReply::sslErrors,
++            this, &BasePlugin::handleSslErrors);
+ }
+ 
+ void BasePlugin::serverReply(QNetworkReply *reply)
+diff --git a/src/plugin.cpp b/src/plugin.cpp
+index e6af807..c764609 100644
+--- a/src/plugin.cpp
++++ b/src/plugin.cpp
+@@ -107,18 +107,12 @@ void Plugin::process(const SignOn::SessionData &inData,
+     impl->setNetworkAccessManager(m_networkAccessManager);
+ 
+     // Forward the signals from the implementation
+-    connect(impl, SIGNAL(result(const SignOn::SessionData &)),
+-            SIGNAL(result(const SignOn::SessionData &)));
+-    connect(impl, SIGNAL(store(const SignOn::SessionData &)),
+-            SIGNAL(store(const SignOn::SessionData &)));
+-    connect(impl, SIGNAL(error(const SignOn::Error &)),
+-            SIGNAL(error(const SignOn::Error &)));
+-    connect(impl, SIGNAL(userActionRequired(const SignOn::UiSessionData &)),
+-            SIGNAL(userActionRequired(const SignOn::UiSessionData &)));
+-    connect(impl, SIGNAL(refreshed(const SignOn::UiSessionData &)),
+-            SIGNAL(refreshed(const SignOn::UiSessionData &)));
+-    connect(impl, SIGNAL(statusChanged(const AuthPluginState, const QString&)),
+-            SIGNAL(statusChanged(const AuthPluginState, const QString&)));
++    connect(impl, &BasePlugin::result, this, &Plugin::result);
++    connect(impl, &BasePlugin::store, this, &Plugin::store);
++    connect(impl, &BasePlugin::error, this, &Plugin::error);
++    connect(impl, &BasePlugin::userActionRequired, this, &Plugin::userActionRequired);
++    connect(impl, &BasePlugin::refreshed, this, &Plugin::refreshed);
++    connect(impl, &BasePlugin::statusChanged, this, &Plugin::statusChanged);
+ 
+     impl->process(inData, mechanism);
+ }
+diff --git a/tests/oauth2plugintest.cpp b/tests/oauth2plugintest.cpp
+index b257dc7..9e16950 100644
+--- a/tests/oauth2plugintest.cpp
++++ b/tests/oauth2plugintest.cpp
+@@ -142,8 +142,8 @@ public:
+         open(ReadOnly | Unbuffered);
+         setHeader(QNetworkRequest::ContentLengthHeader, QVariant(content.size()));
+ 
+-        QTimer::singleShot(0, this, SIGNAL(readyRead()));
+-        QTimer::singleShot(10, this, SLOT(finish()));
++        QTimer::singleShot(0, this, &TestNetworkReply::readyRead);
++        QTimer::singleShot(10, this, &TestNetworkReply::finish);
+     }
+ 
+ public Q_SLOTS:
+-- 
+2.43.0
+

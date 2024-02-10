@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>freedesktop-bugs@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="mbim">Enable MBIM modem protocol</flag>
+    <flag name="qmi">Enable support for the QMI modem protocol used by devices with Qualcomm chipsets</flag>
+    <flag name="qrtr">Enable support for the QMI over IPC Router bus (QRTR) protocol</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">mobile-broadband/ModemManager</remote-id>
+  </upstream>
+</pkgmetadata>

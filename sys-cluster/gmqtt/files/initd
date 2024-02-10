@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+description="Gmqtt Broker Service"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+command="/usr/bin/gmqttd"
+command_user="${command_user:-"nobody:nobody"}"
+command_args="${GMQTTD_OPTS:-"-c /etc/gmqtt/gmqttd.yml start"}"
+command_background="true"
+logfile=/var/log/gmqtt/${RC_SVCNAME}.log
+start_stop_daemon_args="--user ${command_user%:*} --group ${command_user#*:}
+	--stdout ${logfile} --stderr ${logfile}"
+
+: "${supervisor:=supervise-daemon}"
+: "${respawn_delay:=5}"
+: "${respawn_max:=10}"
+: "${respawn_period:=60}"
+
+depend() {
+	need net
+}
+
+start() {
+	checkpath --directory --mode 755 --owner root "${pidfile%/*}"
+	checkpath --directory --mode 755 --owner "${command_user}" "${logfile%/*}"
+	default_start
+}

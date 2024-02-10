@@ -1,0 +1,31 @@
+From: Sam James <sam@gentoo.org>
+Date: Wed, 21 Apr 2021 06:20:13 +0100
+Subject: Use more modern autoconf archive macro for readline
+
+The previous macro used was pretty obsolete and certainly didn't work
+on Gentoo Prefix on Darwin anyway.
+--- a/configure.ac
++++ b/configure.ac
+@@ -86,19 +86,9 @@ dnl ------------------
+ dnl readline detection
+ dnl ------------------
+ 
+-abook_cv_readline=/usr
+-AC_ARG_WITH(readline, [  --with-readline=DIR     Where readline is installed ],
+-	[if test $withval != yes; then
+-		abook_cv_readline=$withval
+-	fi
+-	if test x$abook_cv_readline != x/usr; then
+-		LDFLAGS="-L${abook_cv_readline}/lib $LDFLAGS"
+-		CPPFLAGS="$CPPFLAGS -I${abook_cv_readline}/include"
+-	fi])
+-
+-AC_LIB_READLINE
+-
+-if test x$ac_cv_lib_readline = xno -o x$ac_cv_lib_readline_history = xno; then
++AX_LIB_READLINE
++
++if test x$ax_cv_lib_readline = xno -o x$ax_cv_lib_readline_history = xno; then
+ 	AC_MSG_ERROR([*** readline library not found or it doesn't support history ***])
+ fi
+ 

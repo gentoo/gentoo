@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    With this command line interface you can configure your Razer peripherals,
+    such as keyboard and mouse, set their colors and effects, etc. The most
+    simple use case (for which this tool was originally developed) is to use it
+    in symbiosis with pywal. Then this tool will set your Razer colors to
+    Pywal's colors.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/LoLei/razer-cli/-/issues/</bugs-to>
+    <remote-id type="github">LoLei/razer-cli</remote-id>
+  </upstream>
+</pkgmetadata>

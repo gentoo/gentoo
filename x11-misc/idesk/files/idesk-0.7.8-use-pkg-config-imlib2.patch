@@ -1,0 +1,40 @@
+https://github.com/antonialoytorrens/idesk/pull/1
+https://github.com/neagix/idesk/pull/9
+https://github.com/neagix/idesk/issues/7
+
+From b13626bbe2669b8a267ad53df93f1060379a462e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 15 Jul 2022 08:22:12 +0100
+Subject: [PATCH] build: use pkg-config to find imlib2
+
+imlib2 1.7.5+ drops imlib2-config, hence pkg-config
+must now be used to find it.
+
+Bug: https://bugs.gentoo.org/828962
+--- a/configure.in
++++ b/configure.in
+@@ -94,19 +94,10 @@ LIBS="$LIBS $Xext_lib"
+ 
+ dnl Imlib2 detection
+ 
+-AC_PATH_GENERIC(imlib2, , [
+-    AC_SUBST(IMLIB_LIBS)
+-   AC_SUBST(IMLIB_CXXFLAGS) ],
+-  AC_MSG_ERROR(Cannot find imlib2: Is imlib2-config in the path?
+-               You need Imlib2 to build Idesk.  Verify that you have Imlib2-dev))
+-
+-dnl the above doesn't work for some reason :/
+-IMLIB_LIBS=`imlib2-config --libs`
+-IMLIB_CFLAGS=`imlib2-config --cflags`
+-AC_SUBST(IMLIB_LIBS)
+-AC_SUBST(IMLIB_CXXFLAGS)
+-
+-CXXFLAGS="$CXXFLAGS $IMLIB_CXXFLAGS"
++PKG_PROG_PKG_CONFIG
++PKG_CHECK_MODULES([IMLIB], [imlib2 > 1.0])
++
++CXXFLAGS="$CXXFLAGS $IMLIB_CFLAGS"
+ LIBS="$LIBS $IMLIB_LIBS"
+ 
+ 
+

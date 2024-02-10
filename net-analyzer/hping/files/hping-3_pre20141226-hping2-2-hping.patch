@@ -1,0 +1,240 @@
+--- a/docs/hping3.8
++++ b/docs/hping3.8
+@@ -1,8 +1,8 @@
+-.TH HPING2 8 "2001 Aug 14"
++.TH HPING 8 "2001 Aug 14"
+ .SH NAME
+-hping2 \- send (almost) arbitrary TCP/IP packets to network hosts
++hping \- send (almost) arbitrary TCP/IP packets to network hosts
+ .SH SYNOPSIS
+-.B hping2
++.B hping
+ [
+ .B \-hvnqVDzZ012WrfxykQbFSRPAUXYjJBuTG
+ ] [
+@@ -116,11 +116,11 @@
+ .br
+ .ad
+ .SH DESCRIPTION
+-hping2 is a network tool able to send custom TCP/IP packets and to
+-display target replies like ping program does with ICMP replies. hping2
++hping is a network tool able to send custom TCP/IP packets and to
++display target replies like ping program does with ICMP replies. hping
+ handle fragmentation, arbitrary packets body and size and can be used in
+ order to transfer files encapsulated under supported protocols. Using
+-hping2 you are able to perform at least the following stuff:
++hping you are able to perform at least the following stuff:
+ 
+  - Test firewall rules
+  - Advanced port scanning
+@@ -136,7 +136,7 @@
+  - A lot of others.
+ 
+ .IR "It's also a good didactic tool to learn TCP/IP" .
+-hping2 is developed and maintained by antirez@invece.org and is
++hping is developed and maintained by antirez@invece.org and is
+ licensed under GPL version 2. Development is open so you can send
+ me patches, suggestion and affronts without inhibitions.
+ .SH HPING SITE
+@@ -158,9 +158,9 @@
+ .I -c --count count
+ Stop after sending (and receiving)
+ .I count
+-response packets. After last packet was send hping2 wait COUNTREACHED_TIMEOUT
++response packets. After last packet was send hping wait COUNTREACHED_TIMEOUT
+ seconds target host replies. You are able to tune COUNTREACHED_TIMEOUT editing
+-hping2.h
++hping.h
+ .TP
+ .I -i --interval
+ Wait
+@@ -171,10 +171,10 @@
+ .I wait
+ to X micro seconds.
+ The default is to wait
+-one second between each packet. Using hping2 to transfer files tune this
++one second between each packet. Using hping to transfer files tune this
+ option is really important in order to increase transfer rate. Even using
+-hping2 to perform idle/spoofing scanning you should tune this option, see
+-.B HPING2-HOWTO
++hping to perform idle/spoofing scanning you should tune this option, see
++.B HPING-HOWTO
+ for more information.
+ .TP
+ .I --fast
+@@ -195,13 +195,13 @@
+ startup time and when finished.
+ .TP
+ .I -I --interface interface name
+-By default on linux and BSD systems hping2 uses default routing interface.
++By default on linux and BSD systems hping uses default routing interface.
+ In other systems or when there is no default route
+-hping2 uses the first non-loopback interface.
+-However you are able to force hping2 to use the interface you need using
++hping uses the first non-loopback interface.
++However you are able to force hping to use the interface you need using
+ this option. Note: you don't need to specify the whole name, for
+ example -I et will match eth0 ethernet0 myet1 et cetera. If no interfaces
+-match hping2 will try to use lo.
++match hping will try to use lo.
+ .TP
+ .I -V --verbose
+ Enable verbose output. TCP replies will be shown as follows:
+@@ -211,7 +211,7 @@
+ .TP
+ .I -D --debug
+ Enable debug mode, it's useful when you experience some problem with
+-hping2. When debug mode is enabled you will get more information about
++hping. When debug mode is enabled you will get more information about
+ .B interface detection, data link layer access, interface settings, options
+ .B parsing, fragmentation, HCMP protocol
+ and other stuff.
+@@ -223,30 +223,30 @@
+ CTRL+Z once or twice.
+ .TP
+ .I -Z --unbind
+-Unbind CTRL+Z so you will able to stop hping2.
++Unbind CTRL+Z so you will able to stop hping.
+ .TP
+ .I --beep
+ Beep for every matching received packet (but not for ICMP errors).
+ .SH PROTOCOL SELECTION
+-Default protocol is TCP, by default hping2 will send tcp headers to target
++Default protocol is TCP, by default hping will send tcp headers to target
+ host's port 0 with a winsize of 64 without any tcp flag on. Often this
+ is the best way to do an 'hide ping', useful when target is behind
+ a firewall that drop ICMP. Moreover a tcp null-flag to port 0 has a good
+ probability of not being logged.
+ .TP
+ .I -0 --rawip
+-RAW IP mode, in this mode hping2 will send IP header with data
++RAW IP mode, in this mode hping will send IP header with data
+ appended with --signature and/or --file, see also --ipproto that
+ allows you to set the ip protocol field.
+ .TP
+ .I -1 --icmp
+-ICMP mode, by default hping2 will send ICMP echo-request, you can set
++ICMP mode, by default hping will send ICMP echo-request, you can set
+ other ICMP type/code using
+ .B --icmptype --icmpcode
+ options.
+ .TP
+ .I -2 --udp
+-UDP mode, by default hping2 will send udp to target host's port 0.
++UDP mode, by default hping will send udp to target host's port 0.
+ UDP header tunable options are the following:
+ .B --baseport, --destport, --keep.
+ .TP
+@@ -288,11 +288,11 @@
+ shows interesting details.
+ .TP
+ .I -9 --listen signature
+-HPING2 listen mode, using this option hping2 waits for packet that contain
++HPING listen mode, using this option hping waits for packet that contain
+ .I signature
+ and dump from
+ .I signature
+-end to packet's end. For example if hping2 --listen TEST reads a packet
++end to packet's end. For example if hping --listen TEST reads a packet
+ that contain
+ .B 234-09sdflkjs45-TESThello_world
+ it will display
+@@ -304,7 +304,7 @@
+ ensures that target will not gain your real address. However replies
+ will be sent to spoofed address, so you will can't see them. In order
+ to see how it's possible to perform spoofed/idle scanning see the
+-.BR HPING2-HOWTO .
++.BR HPING-HOWTO .
+ .TP
+ .I --rand-source
+ This option enables the
+@@ -347,7 +347,7 @@
+ or
+ .B --bind
+ options. If in doubt try
+-.BR "" "`" "hping2 some.host.com -t 1 --traceroute" "'."
++.BR "" "`" "hping some.host.com -t 1 --traceroute" "'."
+ .TP
+ .I -N --id
+ Set ip->id field. Default id is random but if fragmentation is turned on
+@@ -361,11 +361,11 @@
+ .I -W --winid
+ id from Windows* systems before Win2k has different byte ordering, if this
+ option is enable
+-hping2 will properly display id replies from those Windows.
++hping will properly display id replies from those Windows.
+ .TP
+ .I -r --rel
+ Display id increments instead of id. See the
+-.B HPING2-HOWTO
++.B HPING-HOWTO
+ for more information. Increments aren't computed as id[N]-id[N-1] but
+ using packet loss compensation. See relid.c for more information.
+ .TP
+@@ -445,7 +445,7 @@
+ .SH TCP/UDP RELATED OPTIONS
+ .TP
+ .I -s --baseport source port
+-hping2 uses source port in order to guess replies sequence number. It
++hping uses source port in order to guess replies sequence number. It
+ starts with a base source port number, and increase this number for each
+ packet sent. When packet is received sequence number can be computed as
+ .IR "replies.dest.port - base.source.port" .
+@@ -485,7 +485,7 @@
+ by target host. This can be useful when you need to analyze whether
+ TCP sequence number is predictable. Output example:
+ 
+-.B #hping2 win98 --seqnum -p 139 -S -i u1 -I eth0
++.B #hping win98 --seqnum -p 139 -S -i u1 -I eth0
+ .nf
+ HPING uaz (eth0 192.168.4.41): S set, 40 headers + 0 data bytes
+ 2361294848 +2361294848
+@@ -540,8 +540,8 @@
+ .SH COMMON OPTIONS
+ .TP
+ .I -d --data data size
+-Set packet body size. Warning, using --data 40 hping2 will not generate
+-0 byte packets but protocol_header+40 bytes. hping2 will display
++Set packet body size. Warning, using --data 40 hping will not generate
++0 byte packets but protocol_header+40 bytes. hping will display
+ packet size information as first line output, like this:
+ .B HPING www.yahoo.com (ppp0 204.71.200.67): NO FLAGS are set, 40 headers + 40 data bytes
+ .TP
+@@ -577,9 +577,9 @@
+ A to host B you may use the following:
+ .nf
+ .I [host_a]
+-.B # hping2 host_b --udp -p 53 -d 100 --sign signature --safe --file /etc/passwd
++.B # hping host_b --udp -p 53 -d 100 --sign signature --safe --file /etc/passwd
+ .I [host_b]
+-.B # hping2 host_a --listen signature --safe --icmp
++.B # hping host_a --listen signature --safe --icmp
+ .fi
+ .TP
+ .I -u --end
+@@ -587,13 +587,13 @@
+ .I --file filename
+ option, tell you when EOF has been reached. Moreover prevent that other end
+ accept more packets. Please, for more information see the
+-.BR HPING2-HOWTO .
++.BR HPING-HOWTO .
+ .TP
+ .I -T --traceroute
+-Traceroute mode. Using this option hping2 will increase ttl for each
++Traceroute mode. Using this option hping will increase ttl for each
+ .B ICMP time to live 0 during transit
+ received. Try
+-.BR "hping2 host --traceroute" .
++.BR "hping host --traceroute" .
+ This option implies --bind and --ttl 1. You can override the ttl of 1
+ using the --ttl option. Since 2.0.0 stable it prints RTT information.
+ .TP
+@@ -601,7 +601,7 @@
+ Keep the TTL fixed in traceroute mode, so you can monitor just one hop
+ in the route. For example, to monitor how the 5th hop changes or
+ how its RTT changes you can try
+-.BR "hping2 host --traceroute --ttl 5 --tr-keep-ttl" .
++.BR "hping host --traceroute --ttl 5 --tr-keep-ttl" .
+ .TP
+ .I --tr-stop
+ If this option is specified hping will exit once the first packet

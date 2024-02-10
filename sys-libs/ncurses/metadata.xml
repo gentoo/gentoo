@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="ada">Add bindings for the ADA programming language</flag>
+		<flag name="tinfo">
+			Build curses library (libncurses) sep from the low-level terminfo
+			library (libtinfo) -- usually needed only for binary packages -- but
+			it is binary compatible in either mode
+		</flag>
+		<flag name="stack-realign">
+			Realign the stack in the 32-bit build for compatibility with older binaries at some performance cost.
+			Avoids crashes in older 32-bit binaries. Only affects x86/32-bit multilib builds on amd64.
+		</flag>
+		<flag name="trace">Enable test trace() support in ncurses calls</flag>
+	</use>
+	<upstream>
+		<changelog>https://invisible-island.net/ncurses/NEWS.html</changelog>
+		<remote-id type="cpe">cpe:/a:gnu:ncurses</remote-id>
+		<remote-id type="github">ThomasDickey/ncurses-snapshots</remote-id>
+	</upstream>
+</pkgmetadata>

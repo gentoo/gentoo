@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/820473
+From bdb22d3542099d7e1933aaffa80e044375466914 Mon Sep 17 00:00:00 2001
+From: Huang Rui <vowstar@gmail.com>
+Date: Sat, 7 May 2022 14:49:35 +0800
+Subject: [PATCH] setup.py: fix pyqt_sip_dir on modern Linux distributions
+
+QtCore/QtCoremod.sip may be installed to:
+/usr/lib/python3.9/site-packages/PyQt5/bindings/QtCore/QtCoremod.sip
+See also: https://github.com/qgis/QGIS/blob/master/cmake/FindPyQt5.py
+
+Closes: https://bugs.gentoo.org/820473
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+---
+ setup.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/setup.py b/setup.py
+index 1a0d912..1906a07 100644
+--- a/setup.py
++++ b/setup.py
+@@ -10,6 +10,14 @@
+ 
+ cfg = sipconfig.Configuration()
+ pyqt_sip_dir = cfg.default_sip_dir
++for p in (os.path.join(pyqt_sip_dir, "PyQt5"),
++          os.path.join(pyqt_sip_dir, "PyQt5-3"),
++          os.path.join(pyqt_sip_dir, "PyQt4"),
++          pyqt_sip_dir,
++          os.path.join(cfg.default_mod_dir, "PyQt5", "bindings")):
++    if os.path.exists(os.path.join(p, "QtCore", "QtCoremod.sip")):
++        pyqt_sip_dir = p
++        break
+ 
+ try:
+     import PyQt5

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription lang="en">
+		Logrotate allows for the automatic rotation compression, removal
+		and mailing of log files. Logrotate can be set to handle a log
+		file daily, weekly, monthly or when the log file gets to a certain
+		size. 
+	</longdescription>
+	<longdescription lang="es">
+		Logrotate permite la rotación, compresión, eliminación y
+		notificación por correo electrónico de forma automática de ficheros
+		de registro (logs). Logrotate se puede configurar para gestionar
+		estos ficheros diariamente, semanalmente, mensualmente o cuando
+		su tamaño alcanza cierto valor.
+	</longdescription>
+	<use>
+		<flag name="acl">Installs acl support</flag>
+		<flag name="cron">Installs cron file</flag>
+		<flag name="selinux">Installs Security Enhanced Linux support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">logrotate/logrotate</remote-id>
+		<remote-id type="cpe">cpe:/a:logrotate_project:logrotate</remote-id>
+	</upstream>
+</pkgmetadata>

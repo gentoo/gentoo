@@ -1,0 +1,78 @@
+From 26d6f87b667e9087694633b38750c8ef230fefca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Mon, 22 May 2017 15:18:01 +0200
+Subject: Use File::Temp::tempfile instead of POSIX::tmpnam
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Perl 5.26.0 removed POSIX::tmpnam().
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=115089
+Bug: https://bugs.gentoo.org/617052
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ Makefile.PL |  5 ++++-
+ test.pl     | 10 +++++-----
+ 2 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 9ff3e55..01f41a9 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -4,5 +4,8 @@ use ExtUtils::MakeMaker;
+ WriteMakefile(
+     'NAME'	   => 'Log::TraceMessages',
+     'VERSION_FROM' => 'TraceMessages.pm', # finds $VERSION
+-    'PREREQ_PM'    => { 'HTML::FromText' => '1.004' },
++    'PREREQ_PM'    => {
++        'File::Temp' => '0',
++        'HTML::FromText' => '1.004',
++    },
+ );
+diff --git a/test.pl b/test.pl
+index d1afa67..c8635a7 100644
+--- a/test.pl
++++ b/test.pl
+@@ -21,7 +21,7 @@ print "ok 1\n";
+ ######################### End of black magic.
+ 
+ use strict;
+-use POSIX qw(tmpnam);
++use File::Temp qw(tempfile);
+ my $test_str = 'test < > &';
+ my $debug = 0;
+ my $out;
+@@ -50,7 +50,7 @@ print "ok 4\n";
+ # Test 5 - t() with $CGI == 0 after setting a logfile
+ ${Log::TraceMessages::On} = 1;
+ ${Log::TraceMessages::CGI} = 0;
+-my $tmp = tmpnam();
++my ($fd, $tmp) = tempfile();
+ ${Log::TraceMessages::Logfile} = $tmp;
+ $out = grab_output("t('$test_str')");
+ ${Log::TraceMessages::Logfile} = undef;
+@@ -68,7 +68,7 @@ unlink $tmp or die "cannot unlink $tmp: $!";
+ # Test 6 - t() with $CGI == 1 after setting a different logfile
+ ${Log::TraceMessages::On} = 1;
+ ${Log::TraceMessages::CGI} = 1;
+-my $tmp = tmpnam();
++my ($fd, $tmp) = tempfile();
+ ${Log::TraceMessages::Logfile} = $tmp;
+ $out = grab_output("t('$test_str')");
+ ${Log::TraceMessages::Logfile} = undef;
+@@ -124,8 +124,8 @@ print "ok 11\n";
+ sub grab_output($) {
+     die 'usage: grab_stderr(string to eval)' if @_ != 1;
+     my $code = shift;
+-    require POSIX;
+-    my $tmp_o = POSIX::tmpnam(); my $tmp_e = POSIX::tmpnam();
++    my ($fd_o, $tmp_o) = File::Temp::tempfile();
++    my ($fd_e, $tmp_e) = File::Temp::tempfile();
+     local *OLDOUT, *OLDERR;
+ 
+     print "running code: $code\n" if $debug;
+-- 
+2.14.3
+

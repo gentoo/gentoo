@@ -1,0 +1,9 @@
+# Path to config directory
+ERR_CONFIG_PATH=/etc/err
+
+# Path to pid file
+ERR_PID_FILE=/var/run/err/err.pid
+
+# User and group to run bot with
+ERR_USER=err
+ERR_GROUP=err

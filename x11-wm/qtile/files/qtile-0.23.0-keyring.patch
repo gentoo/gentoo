@@ -1,0 +1,52 @@
+From 84eaf6b70f9569c88534dc8054e19f05fa3137e2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 2 Dec 2023 17:40:50 +0100
+Subject: [PATCH] imapwidget: Do not pass None as username to
+ keyring.get_password()
+
+Ensure not to pass `None` as the username to `keyring.get_password()`,
+as the API requires it to always be a `str` and some backends
+(particularly `keyrings-alt`) crash on `None`.
+
+Fixes #4609
+---
+ libqtile/widget/imapwidget.py              | 3 +++
+ test/widgets/test_widget_init_configure.py | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/libqtile/widget/imapwidget.py b/libqtile/widget/imapwidget.py
+index 3f84d9e7..c8a6ec0e 100644
+--- a/libqtile/widget/imapwidget.py
++++ b/libqtile/widget/imapwidget.py
+@@ -24,6 +24,7 @@ import re
+ 
+ import keyring
+ 
++from libqtile.confreader import ConfigError
+ from libqtile.log_utils import logger
+ from libqtile.widget import base
+ 
+@@ -75,6 +76,8 @@ class ImapWidget(base.ThreadPoolText):
+     def __init__(self, **config):
+         base.ThreadPoolText.__init__(self, "", **config)
+         self.add_defaults(ImapWidget.defaults)
++        if self.user is None:
++            raise ConfigError("You must set the 'user' parameter for the IMAP widget.")
+         password = keyring.get_password("imapwidget", self.user)
+         if password is not None:
+             self.password = password
+diff --git a/test/widgets/test_widget_init_configure.py b/test/widgets/test_widget_init_configure.py
+index 83a9cb9a..aa7a1f9b 100644
+--- a/test/widgets/test_widget_init_configure.py
++++ b/test/widgets/test_widget_init_configure.py
+@@ -58,6 +58,7 @@ extras = [
+ 
+ # To skip a test entirely, list the widget class here
+ no_test = [widgets.Mirror, widgets.PulseVolume]  # Mirror requires a reflection object
++no_test += [widgets.ImapWidget]  # Requires a configured username
+ 
+ # To test a widget only under one backend, list the widget class here
+ exclusive_backend = {
+-- 
+2.43.0
+

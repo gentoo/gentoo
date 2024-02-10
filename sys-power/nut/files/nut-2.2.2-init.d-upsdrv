@@ -1,0 +1,43 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="stopall startall"
+
+UPSNAME=${SVCNAME#*.}
+msgtext="drivers"
+[ "${UPSNAME}" = "${SVCNAME}" ] && UPSNAME=''
+[ -n "$UPSNAME" ] && msgtext="driver for $UPSNAME"
+
+depend() {
+	before upsd
+	[ "${UPSNAME}" != '' ] && provide upsdrv
+}
+
+start() {
+	_dostart "$UPSNAME" "$msgtext"
+}
+stop() {
+	_dostop "$UPSNAME" "$msgtext"
+}
+
+startall() {
+	_dostart "" "$msgtext"
+}
+stopall() {
+	_dostop "" "$msgtext"
+}
+
+_dostart() {
+	ebegin "Starting UPS $msgtext"
+	/usr/sbin/upsdrvctl start $UPSNAME
+	eend $? "Failed to start UPS $msgtext!"
+}
+
+_dostop() {
+	# The pidfile names depend on the actual UPS name
+	# Not in our control at all
+	ebegin "Stopping UPS $msgtext"
+	/usr/sbin/upsdrvctl stop $UPSNAME
+	eend $? "Failed to stop UPS $msgtext!"
+}

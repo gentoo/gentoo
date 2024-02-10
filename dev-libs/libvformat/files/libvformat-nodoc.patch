@@ -1,0 +1,8 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = src vformat test doc
++SUBDIRS = src vformat 
+ 
+ EXTRA_DIST = common/types.h vf_iface.h
+ 

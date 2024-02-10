@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    The websearch package allows You to query predefined search engines
+    (websearch-custom-engines) with interactive selection. The query terms can
+    either be extracted form selection, kill-ring or typed on demand.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <maintainer status="active">
+      <email>xgqt@riseup.net</email>
+      <name>Maciej Barć</name>
+    </maintainer>
+    <bugs-to>https://gitlab.com/xgqt/emacs-websearch/-/issues/</bugs-to>
+    <remote-id type="gitlab">xgqt/emacs-websearch</remote-id>
+  </upstream>
+</pkgmetadata>

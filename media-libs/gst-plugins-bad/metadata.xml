@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gstreamer@gentoo.org</email>
+		<name>GStreamer package maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="bzip2">Enable bzip2 encoder/decoder plugin</flag>
+		<flag name="qsv">Enable Intel Quick Sync Video using the <pkg>media-libs/oneVPL</pkg> dispatcher</flag>
+	</use>
+</pkgmetadata>

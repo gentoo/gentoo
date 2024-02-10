@@ -1,0 +1,19 @@
+https://github.com/boostorg/signals2/issues/70
+
+From 4d994bbed820882059c7842ba5e230a26d68f2f0 Mon Sep 17 00:00:00 2001
+From: Frank Mori Hess <fmh6jj@gmail.com>
+Date: Sat, 30 Dec 2023 14:51:49 -0500
+Subject: [PATCH] Fix disconnect by slot when slot is wrapped in a
+ boost::reference_wrapper
+
+--- a/boost/signals2/detail/signal_template.hpp
++++ b/boost/signals2/detail/signal_template.hpp
+@@ -223,7 +223,7 @@ namespace boost
+         void disconnect(const T &slot)
+         {
+           typedef mpl::bool_<(is_convertible<T, group_type>::value)> is_group;
+-          do_disconnect(slot, is_group());
++          do_disconnect(unwrap_ref(slot), is_group());
+         }
+         // emit signal
+         result_type operator ()(BOOST_SIGNALS2_SIGNATURE_FULL_ARGS(BOOST_SIGNALS2_NUM_ARGS))

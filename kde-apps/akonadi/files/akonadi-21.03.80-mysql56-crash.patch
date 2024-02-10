@@ -1,0 +1,51 @@
+From ca023c075e5e239dd6d254722c8866b17a524a3c Mon Sep 17 00:00:00 2001
+From: Manuel Nickschas <sputnick@quassel-irc.org>
+Date: Wed, 10 Feb 2021 09:40:44 +0100
+Subject: [PATCH] Find mysql_install_db and add required option
+
+Rebase patch onto 21.03.80
+Gentoo-bug: 530012
+---
+ src/server/storage/dbconfigmysql.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/server/storage/dbconfigmysql.cpp b/src/server/storage/dbconfigmysql.cpp
+index fd057670e..c19cff0e0 100644
+--- a/src/server/storage/dbconfigmysql.cpp
++++ b/src/server/storage/dbconfigmysql.cpp
+@@ -53,6 +53,7 @@ static QString findExecutable(const QString &bin)
+         QStringLiteral("/usr/local/sbin"),
+         QStringLiteral("/usr/local/libexec"),
+         QStringLiteral("/usr/libexec"),
++        QStringLiteral("/usr/share/mysql/scripts"),
+         QStringLiteral("/opt/mysql/libexec"),
+         QStringLiteral("/opt/local/lib/mysql5/bin"),
+         QStringLiteral("/opt/mysql/sbin"),
+@@ -597,7 +598,7 @@ bool DbConfigMysql::initializeMariaDBDatabase(const QString &confFile, const QSt
+         == execute(mMysqlInstallDbPath,
+                    {QStringLiteral("--defaults-file=%1").arg(confFile),
+                     QStringLiteral("--force"),
+-                    QStringLiteral("--basedir=%1").arg(baseDir),
++                    QStringLiteral("--basedir=/usr"),
+                     QStringLiteral("--datadir=%1/").arg(dataDir)});
+ }
+ 
+@@ -609,7 +610,7 @@ bool DbConfigMysql::initializeMySQL5_7_6Database(const QString &confFile, const
+ {
+     return 0
+         == execute(mMysqldPath,
+-                   {QStringLiteral("--defaults-file=%1").arg(confFile), QStringLiteral("--initialize"), QStringLiteral("--datadir=%1/").arg(dataDir)});
++                   {QStringLiteral("--defaults-file=%1").arg(confFile), QStringLiteral("--initialize"), QStringLiteral("--basedir=/usr"), QStringLiteral("--datadir=%1/").arg(dataDir)});
+ }
+ 
+ bool DbConfigMysql::initializeMySQLDatabase(const QString &confFile, const QString &dataDir) const
+@@ -629,5 +630,5 @@ bool DbConfigMysql::initializeMySQLDatabase(const QString &confFile, const QStri
+     return 0
+         == execute(
+                mMysqlInstallDbPath,
+-               {QStringLiteral("--defaults-file=%1").arg(confFile), QStringLiteral("--basedir=%1").arg(baseDir), QStringLiteral("--datadir=%1/").arg(dataDir)});
++               {QStringLiteral("--defaults-file=%1").arg(confFile), QStringLiteral("--basedir=/usr"), QStringLiteral("--datadir=%1/").arg(dataDir)});
+ }
+-- 
+2.30.0
+

@@ -1,0 +1,49 @@
+diff --git a/Makefile.inc b/Makefile.inc
+index 6b45430..c47f82f 100644
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -96,7 +96,7 @@ MODPROBE_UNIT := $(shell test "0$(SYSTEMD)" -lt 245 2>/dev/null || \
+ 			echo "modprobe@dm_multipath.service")
+ 
+ OPTFLAGS	:= -O2 -g $(STACKPROT) --param=ssp-buffer-size=4
+-WARNFLAGS	:= -Werror -Wall -Wextra -Wformat=2 $(WFORMATOVERFLOW) -Werror=implicit-int \
++WARNFLAGS	:= -Wall -Wextra -Wformat=2 $(WFORMATOVERFLOW) -Werror=implicit-int \
+ 		  -Werror=implicit-function-declaration -Werror=format-security \
+ 		  $(WNOCLOBBERED) -Werror=cast-qual $(ERROR_DISCARDED_QUALIFIERS) $(W_URCU_TYPE_LIMITS)
+ CPPFLAGS	:= $(FORTIFY_OPT) $(CPPFLAGS) $(D_URCU_VERSION) \
+diff --git a/create-config.mk b/create-config.mk
+index 4d318b9..1d4ff2d 100644
+--- a/create-config.mk
++++ b/create-config.mk
+@@ -64,7 +64,7 @@ check_var = $(shell \
+ # gcc 4.8 compiles blacklist.c only with -Wno-missing-field-initializers
+ TEST_MISSING_INITIALIZERS = $(shell \
+ 	echo 'struct A {int a, b;}; struct B {struct A a; int b;} b = {.a.a=1};' | \
+-		$(CC) -c -Werror -Wmissing-field-initializers -o /dev/null -xc - >/dev/null 2>&1 \
++		$(CC) -c -Wmissing-field-initializers -o /dev/null -xc - >/dev/null 2>&1 \
+ 	|| echo -Wno-missing-field-initializers)
+ 
+ # gcc 4.8.4 and certain versions of liburcu fail to compile this with -Werror=type-limits
+@@ -136,7 +136,7 @@ SYSTEMD := $(strip $(or $(shell $(PKG_CONFIG) --modversion libsystemd 2>/dev/nul
+ # Evaluates to "option" if yes, and "fallback" otherwise.
+ TEST_CC_OPTION = $(shell \
+ 	if echo 'int main(void){return 0;}' | \
+-		$(CC) -o /dev/null -c -Werror "$(1)" -xc - >/dev/null 2>&1; \
++		$(CC) -o /dev/null -c "$(1)" -xc - >/dev/null 2>&1; \
+ 	then \
+ 		echo "$(1)"; \
+ 	else \
+@@ -148,11 +148,11 @@ TEST_CC_OPTION = $(shell \
+ # but it doesn't seem to make a difference wrt the compilation result.
+ FORTIFY_OPT := $(shell \
+ 	if /bin/echo -e '$(__HASH__)include <string.h>\nint main(void) { return 0; }' | \
+-		$(CC) -o /dev/null $(OPTFLAGS) -c -Werror -D_FORTIFY_SOURCE=3 -xc - 2>/dev/null; \
++		$(CC) -o /dev/null $(OPTFLAGS) -c -D_FORTIFY_SOURCE=3 -xc - 2>/dev/null; \
+ 	then \
+ 		echo "-D_FORTIFY_SOURCE=3"; \
+ 	elif /bin/echo -e '$(__HASH__)include <string.h>\nint main(void) { return 0; }' | \
+-		$(CC) -o /dev/null $(OPTFLAGS) -c -Werror -D_FORTIFY_SOURCE=2 -xc - 2>/dev/null; \
++		$(CC) -o /dev/null $(OPTFLAGS) -c -D_FORTIFY_SOURCE=2 -xc - 2>/dev/null; \
+ 	then \
+ 		echo "-D_FORTIFY_SOURCE=2"; \
+ 	fi)

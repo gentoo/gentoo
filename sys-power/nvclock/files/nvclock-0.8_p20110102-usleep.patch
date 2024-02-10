@@ -1,0 +1,14 @@
+fix warning:
+libc_wrapper.c:54: warning: implicit declaration of function usleep
+
+--- a/src/backend/libc_wrapper.c
++++ b/src/backend/libc_wrapper.c
+@@ -27,6 +27,8 @@
+ 
++#define _BSD_SOURCE
+ #include <stdio.h>
+ #include "xfree.h"
++#include "config.h"
+ 
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>

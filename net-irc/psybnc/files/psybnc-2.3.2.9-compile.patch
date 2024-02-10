@@ -1,0 +1,79 @@
+diff -Naurp a/src/p_blowfish.c b/src/p_blowfish.c
+--- a/src/p_blowfish.c	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_blowfish.c	2007-02-26 12:17:11.000000000 +0000
+@@ -31,7 +31,7 @@ static char rcsid[] = "@(#)# $Id$
+ #include <string.h>
+ #include <config.h>
+ 
+-char *strmncpy(char *dest, char *source, size_t len);
++char *strmncpy(char *dest, const char *source, size_t len);
+ char *lngtxt(int msgnum);
+ 
+ #define pcontext { strmncpy(ctxt,__FILE__,sizeof(ctxt));strmncpy(cfunc,__FUNCTION__,sizeof(cfunc)); cline=__LINE__; }
+diff -Naurp a/src/p_global.h b/src/p_global.h
+--- a/src/p_global.h	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_global.h	2007-02-26 12:17:11.000000000 +0000
+@@ -972,8 +972,8 @@ int checklogging(int usern);
+ #endif
+ 
+ #ifndef P_MEMORY
+-unsigned long *__pmalloc(unsigned long size,char *module,char *function,int line);
+-void _pfree(void * pointer,char *module, char *function, int line);
++unsigned long *__pmalloc(unsigned long size,const char *module,const char *function,int line);
++void _pfree(void * pointer,char *module, const char *function, int line);
+ struct usert *user(int usern);
+ struct newpeert *newpeer(int usern);
+ struct datalinkt *datalink(int usern);
+@@ -1092,7 +1092,7 @@ int replace(char *rps, char whatc, char 
+ char *nobreak(char *tobreak);
+ char *randstring(int length);
+ char *strmcat(char *first,char *second);
+-char *strmncpy(char *dest, char *source, unsigned int len);
++char *strmncpy(char *dest, const char *source, unsigned int len);
+ int strmncasecmp(char *one, char *two);
+ int strmcmp(char *one, char *two);
+ int strmwildcmp(char *line, char *wildcard);
+diff -Naurp a/src/p_memory.c b/src/p_memory.c
+--- a/src/p_memory.c	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_memory.c	2007-02-26 12:17:11.000000000 +0000
+@@ -32,7 +32,7 @@ FILE *logm=NULL;
+ 
+ /* malloc-wrapper. No memory will log an error entry and kill the bouncer */
+ 
+-unsigned long *__pmalloc(unsigned long size,char *module,char *function, int line)
++unsigned long *__pmalloc(unsigned long size,const char *module,const char *function, int line)
+ {
+     unsigned long *rc;
+     if (!(rc=(unsigned long *)malloc(size)))
+@@ -53,7 +53,7 @@ unsigned long *__pmalloc(unsigned long s
+     return rc;
+ }
+ 
+-void _pfree(unsigned long *pointer, char *module, char *function, int line)
++void _pfree(unsigned long *pointer, char *module, const char *function, int line)
+ {
+ #ifdef LOGALLOC
+     if(logm==NULL)
+diff -Naurp a/src/p_string.c b/src/p_string.c
+--- a/src/p_string.c	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_string.c	2007-02-26 12:17:11.000000000 +0000
+@@ -51,7 +51,7 @@ char *lngtxt(unsigned int msgnum)
+ 
+ /* string copy with len and zero delimit */
+ 
+-char *strmncpy(char *dest, char *source, unsigned int len)
++char *strmncpy(char *dest, const char *source, unsigned int len)
+ {
+     char bf[strlen(source)+2];
+     char *pt;
+diff -Naurp a/src/match.c b/src/match.c
+--- a/src/match.c	2007-02-26 12:26:10.000000000 +0000
++++ b/src/match.c	2007-02-26 12:26:17.000000000 +0000
+@@ -36,6 +36,7 @@
+ /* Remove the next line to use this in IrcII */
+ #define EGGDROP
+ 
++#include <p_global.h>
+ 
+ /* ===================================================================
+  * Best to leave stuff after this point alone, but go on and change

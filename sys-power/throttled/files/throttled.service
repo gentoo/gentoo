@@ -1,0 +1,11 @@
+[Unit]
+Description=Stop Intel throttling
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/throttled
+# Setting PYTHONUNBUFFERED is necessary to see the output of this service in the journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

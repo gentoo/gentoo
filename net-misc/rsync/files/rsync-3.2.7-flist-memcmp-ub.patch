@@ -1,0 +1,21 @@
+https://github.com/WayneD/rsync/issues/427
+https://github.com/WayneD/rsync/issues/429
+https://github.com/WayneD/rsync/commit/90df93e446f9ebbfd4ce97d6755c5fe1f45f9fd0
+
+From 90df93e446f9ebbfd4ce97d6755c5fe1f45f9fd0 Mon Sep 17 00:00:00 2001
+From: Wayne Davison <wayne@opencoder.net>
+Date: Sun, 8 Jan 2023 21:35:39 -0800
+Subject: [PATCH] Don't call memcmp() on an empty lastdir.
+
+--- a/flist.c
++++ b/flist.c
+@@ -2367,7 +2367,7 @@ struct file_list *send_file_list(int f, int argc, char *argv[])
+ 		}
+ 
+ 		dirlen = dir ? strlen(dir) : 0;
+-		if (dirlen != lastdir_len || memcmp(lastdir, dir, dirlen) != 0) {
++		if (dirlen != lastdir_len || (dirlen && memcmp(lastdir, dir, dirlen) != 0)) {
+ 			if (!change_pathname(NULL, dir, -dirlen))
+ 				goto bad_path;
+ 			lastdir = pathname;
+

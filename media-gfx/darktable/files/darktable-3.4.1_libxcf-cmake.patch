@@ -1,0 +1,20 @@
+--- a/src/external/CMakeLists.txt
++++ b/src/external/CMakeLists.txt
+@@ -1,5 +1,16 @@
+ if(USE_XCF)
+-  add_subdirectory(libxcf)
++#  find_package(ZLIB REQUIRED)
++  add_library(xcf STATIC
++    "${CMAKE_CURRENT_SOURCE_DIR}/libxcf/xcf.c"
++    "${CMAKE_CURRENT_SOURCE_DIR}/libxcf/xcf.h"
++    "${CMAKE_CURRENT_SOURCE_DIR}/libxcf/xcf_names.c"
++    "${CMAKE_CURRENT_SOURCE_DIR}/libxcf/xcf_names.h"
++  )
++  set_property(TARGET xcf PROPERTY C_STANDARD 99)
++  target_compile_definitions(xcf PRIVATE _DEFAULT_SOURCE) # needed for htobe*()
++  target_include_directories(xcf PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libxcf")
++#  target_link_libraries(xcf PUBLIC ZLIB::ZLIB)
++#  target_link_libraries(xcf PUBLIC m)
+ endif()
+ 
+ add_library(whereami STATIC "${CMAKE_CURRENT_SOURCE_DIR}/whereami/src/whereami.c")

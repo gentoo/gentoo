@@ -1,0 +1,43 @@
+From 16847a70cf05484a668d8f79aba4ccec7e16c025 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 6 Mar 2021 22:59:17 +0100
+Subject: [PATCH] fix to find lib3mf-2
+
+The pkgconfig file for lib3mf has been renamed in case
+for lib3mf-2 versions.
+This patch uses the news names.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ features/lib3mf.prf | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/features/lib3mf.prf b/features/lib3mf.prf
+index 2c512da..47be364 100644
+--- a/features/lib3mf.prf
++++ b/features/lib3mf.prf
+@@ -15,8 +15,8 @@ isEmpty(LIB3MF_LIBPATH) {
+ }
+ 
+ isEmpty(LIB3MF_INCLUDEPATH) {
+-  LIB3MF_CFLAGS = $$system("$$PKG_CONFIG --cflags lib3MF")
+-  LIB3MF_INCLUDEPATH = $$system("$$PKG_CONFIG --variable=includedir lib3MF")
++  LIB3MF_CFLAGS = $$system("$$PKG_CONFIG --cflags lib3mf")
++  LIB3MF_INCLUDEPATH = $$system("$$PKG_CONFIG --variable=includedir lib3mf")
+   !isEmpty(LIB3MF_CFLAGS) {
+     ENABLE_LIB3MF=yes
+   }
+@@ -25,8 +25,8 @@ isEmpty(LIB3MF_INCLUDEPATH) {
+ }
+ 
+ isEmpty(LIB3MF_LIBPATH) {
+-  LIB3MF_LIBS = $$system("$$PKG_CONFIG --libs lib3MF")
+-  LIB3MF_LIBPATH = $$system("$$PKG_CONFIG --variable=libdir lib3MF")
++  LIB3MF_LIBS = $$system("$$PKG_CONFIG --libs lib3mf")
++  LIB3MF_LIBPATH = $$system("$$PKG_CONFIG --variable=libdir lib3mf")
+   !isEmpty(LIB3MF_LIBS) {
+     ENABLE_LIB3MF=yes
+   }
+-- 
+2.30.1
+

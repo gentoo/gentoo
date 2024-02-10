@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Emacs package to quickly find and act on bibliographic references, and edit
+    org, markdown, and latex academic documents. This package provides a
+    completing-read front-end to browse and act on BibTeX, BibLaTeX, and CSL
+    JSON bibliographic data, and LaTeX, markdown, and org-cite editing support.
+    When used with vertico, embark, and marginalia, it provides similar
+    functionality to helm-bibtex and ivy-bibtex: quick filtering and selecting
+    of bibliographic entries from the minibuffer, and the option to run
+    different commands against them.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/emacs-citar/citar/issues/</bugs-to>
+    <remote-id type="github">emacs-citar/citar</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/870514
+--- a/draw.c
++++ b/draw.c
+@@ -63,2 +63,3 @@
+ 
++void
+ set_bits(int b)
+@@ -70,2 +71,3 @@
+ 
++void
+ set_string(char *s)
+--- a/hcalc.h
++++ b/hcalc.h
+@@ -37 +37,12 @@
+ #define HEIGHT 294
++
++void button(int b, int x, int y);
++void complete_paste(char *s, int n);
++void key(char c);
++void load_pixmaps(void);
++void process_input(void);
++void redraw(void);
++void send_current_display(void);
++void set_bits(int b);
++void set_string(char *s);
++void setup_x(int argc, char **argv);

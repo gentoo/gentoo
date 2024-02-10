@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1265,7 +1265,7 @@
+ 	if test "x$with_optim" != x; then
+ 	    OPTIM="$with_optim $OPTIM"
+ 	else
+-	    OPTIM="-Os $OPTIM"
++	    OPTIM=" $OPTIM"
+ 	fi
+     fi
+ 

@@ -1,0 +1,6 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Go is not supported for this ABI.
+dev-lang/go
+dev-lang/go-bootstrap

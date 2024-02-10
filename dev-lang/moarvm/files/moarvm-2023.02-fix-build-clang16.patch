@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/881335
+Upstream PR: https://github.com/MoarVM/MoarVM/pull/1764
+--- a/src/6model/containers.c
++++ b/src/6model/containers.c
+@@ -114,7 +114,7 @@ static const MVMContainerSpec code_pair_spec = {
+     code_pair_fetch_s,
+     code_pair_store,
+     code_pair_store_i,
+-    code_pair_store_i, /* FIXME need a code_pair_store_u but lacking tests showing this need */
++    (void *)code_pair_store_i, /* FIXME need a code_pair_store_u but lacking tests showing this need */
+     code_pair_store_n,
+     code_pair_store_s,
+     code_pair_store,
+@@ -371,7 +371,7 @@ static const MVMContainerSpec value_desc_cont_spec = {
+     value_desc_cont_fetch_s,
+     value_desc_cont_store,
+     value_desc_cont_store_i,
+-    value_desc_cont_store_i, /* FIXME need a value_desc_cont_store_u but lacking tests showing this need */
++    (void *)value_desc_cont_store_i, /* FIXME need a value_desc_cont_store_u but lacking tests showing this need */
+     value_desc_cont_store_n,
+     value_desc_cont_store_s,
+     value_desc_cont_store_unchecked,

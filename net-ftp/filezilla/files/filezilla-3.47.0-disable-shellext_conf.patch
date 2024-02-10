@@ -1,0 +1,13 @@
+diff -Naur filezilla-3.47.2.1.orig/configure.ac filezilla-3.47.2.1/configure.ac
+--- filezilla-3.47.2.1.orig/configure.ac	2020-03-11 12:24:12.000000000 +0100
++++ filezilla-3.47.2.1/configure.ac	2020-05-09 16:09:23.832476049 +0200
+@@ -130,9 +130,6 @@
+   "$ac_abs_confdir/src/fzshellext/configure" --prefix="$prefix" --exec-prefix="$exec_prefix" --host=i686-w64-mingw32 || exit 1
+   cd "$OLD_DIR/src/fzshellext/64" || exit 1
+   "$ac_abs_confdir/src/fzshellext/configure" --prefix="$prefix" --exec-prefix="$exec_prefix" --host=x86_64-w64-mingw32 || exit 1
+-else
+-  cd "$OLD_DIR/src/fzshellext/64" || exit 1
+-  "$ac_abs_confdir/src/fzshellext/configure" --disable-shellext || exit 1
+ fi
+ cd "$OLD_DIR"
+ 

@@ -1,0 +1,43 @@
+move dev-python/python-varlink dev-python/varlink
+move dev-python/python-musicbrainzngs dev-python/musicbrainzngs
+move dev-python/python-libevdev dev-python/libevdev
+move dev-python/sphinx_lv2_theme dev-python/sphinx-lv2-theme
+move dev-python/jschema_to_python dev-python/jschema-to-python
+move dev-python/sarif_om dev-python/sarif-om
+move dev-python/memory_allocator dev-python/memory-allocator
+move media-libs/OpenImageIO media-libs/openimageio
+move media-libs/OpenColorIO media-libs/opencolorio
+move media-libs/OpenShadingLanguage media-libs/osl
+move dev-libs/Imath dev-libs/imath
+move dev-python/cli_helpers dev-python/cli-helpers
+move dev-python/python-cstruct dev-python/cstruct
+move dev-python/swagger_spec_validator dev-python/swagger-spec-validator
+move dev-python/pslab-python dev-python/pslab
+move dev-python/python-discid dev-python/discid
+move dev-python/py-amqp dev-python/amqp
+move dev-python/pyre2 dev-python/fb-re2
+move dev-python/python-sshpubkeys dev-python/sshpubkeys
+move sys-kernel/installkernel-systemd-boot sys-kernel/installkernel-systemd
+move app-office/kalendar app-office/merkuro
+move kde-misc/wacomtablet kde-plasma/wacomtablet
+move kde-apps/print-manager kde-plasma/print-manager
+move dev-libs/kuserfeedback kde-frameworks/kuserfeedback
+move dev-python/pure_eval dev-python/pure-eval
+slotmove dev-haskell/extra 2 0
+slotmove dev-haskell/hdbc-postgresql 2 0
+slotmove dev-haskell/hdbc 2 0
+slotmove dev-haskell/parallel 3 0
+slotmove dev-haskell/quickcheck 2 0
+move kde-frameworks/plasma kde-plasma/libplasma
+move kde-frameworks/kactivities-stats kde-plasma/plasma-activities-stats
+move kde-frameworks/kactivities kde-plasma/plasma-activities
+slotmove kde-frameworks/extra-cmake-modules 5 0
+move kde-frameworks/kwayland kde-plasma/kwayland
+move dev-java/aqute-bnd-annotation dev-java/bnd-annotation
+move dev-python/pycson dev-python/cson
+move dev-python/blake3-py dev-python/blake3
+move games-action/minetest games-engines/minetest
+move app-laptop/tuxedo-keyboard app-laptop/tuxedo-drivers
+move dev-libs/clhpp dev-cpp/clhpp
+move games-puzzle/ksokoban games-puzzle/skladnik
+move dev-python/python-sense-hat dev-python/sense-hat

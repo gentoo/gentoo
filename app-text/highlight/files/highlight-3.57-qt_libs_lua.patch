@@ -1,0 +1,13 @@
+Unnecessary (the linker gets the right library from pkgconfig anyway)
+and breaks slotted Lua. See Bug #761511 for details.
+
+--- a/src/gui-qt/highlight.pro
++++ b/src/gui-qt/highlight.pro
+@@ -39,7 +39,6 @@
+ unix {
+     DESTDIR = ../
+     LIBS += -L.. -lhighlight
+-    LIBS += -llua
+     CONFIG += link_pkgconfig
+     PKGCONFIG += lua
+ 

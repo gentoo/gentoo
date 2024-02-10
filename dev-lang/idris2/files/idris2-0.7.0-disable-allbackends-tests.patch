@@ -1,0 +1,10 @@
+--- a/tests/Main.idr
++++ b/tests/Main.idr
+@@ -233,7 +233,6 @@ main = runner $
+   , !codegenTests
+   ]
+   ++ !(traverse idrisTestsAllSchemes [Chez, Racket])
+-  ++ map (testPaths "allbackends" . idrisTestsAllBackends) [Chez, Node, Racket, C]
+ 
+ 
+     where

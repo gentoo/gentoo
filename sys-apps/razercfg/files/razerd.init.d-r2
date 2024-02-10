@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use logger
+}
+
+PIDFILE=/run/razerd/razerd.pid
+
+start() {
+	ebegin "Starting razerd"
+	start-stop-daemon --start \
+		--pidfile ${PIDFILE} \
+		--exec /usr/bin/razerd \
+		-- --background --pidfile ${PIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping razerd"
+	start-stop-daemon --stop --pidfile ${PIDFILE}
+	eend $?
+}
+

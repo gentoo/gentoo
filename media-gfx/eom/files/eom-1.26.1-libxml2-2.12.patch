@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/917514
+https://github.com/mate-desktop/eom/commit/ace46747000807d975b58101353302f34c75ef49
+https://github.com/mate-desktop/eom/commit/d00fc0b68e9419ccdefbf2831ad2537bed8f35f4
+
+From ace46747000807d975b58101353302f34c75ef49 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20K=C5=82oczko?=
+ <31284574+kloczek@users.noreply.github.com>
+Date: Sat, 25 Nov 2023 20:25:29 +0000
+Subject: [PATCH] fix building with new libxml 2.12.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Added include <libxml/xmlsave.h> to allow build with libxml 2.12.0.
+
+Signed-off-by: Tomasz Kłoczko <kloczek@github.com>
+
+* fix building with libxml 2.12.0
+
+Co-authored-by: Colomban Wendling <hypra@ban.netlib.re>
+
+---------
+
+Signed-off-by: Tomasz Kłoczko <kloczek@github.com>
+Co-authored-by: raveit65 <mate@raveit.de>
+Co-authored-by: Colomban Wendling <hypra@ban.netlib.re>
+--- a/cut-n-paste/toolbar-editor/egg-toolbars-model.c
++++ b/cut-n-paste/toolbar-editor/egg-toolbars-model.c
+@@ -27,6 +27,8 @@
+ 
+ #include <unistd.h>
+ #include <string.h>
++#include <libxml/globals.h>
++#include <libxml/parser.h>
+ #include <libxml/tree.h>
+ #include <gdk/gdk.h>
+ 
+

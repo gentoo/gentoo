@@ -1,0 +1,117 @@
+From b7f00d9fc5f4c948b3b412fa22488517e71a2987 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gmail.com>
+Date: Sun, 27 Mar 2016 17:11:59 +0200
+Subject: [PATCH] Enable compatibility with traditional man (#648854)
+
+As of commit 46a82ade3e6f0fac8f08b18e7fc23d8665f6f728, Yelp runs
+"man -Z -Tutf8 -EUTF-8 [FILE]" to obtain the groff intermediate format
+of the man page. However, the only implementation of man that accepts
+these options is man-db (used by Debian, Fedora, SUSE & Ubuntu).
+The traditional Linux man used by other distros and man implementations
+on non-Linux Unixes (FreeBSD, Solaris) do not have command-line options
+for outputting groff intermediate format.
+Therefore, on systems that do not use man-db, we need to manually
+uncompress the nroff source file and feed it to groff. This is best done
+using a small shell script (/usr/libexec/yelp-groff), both for for
+clarity and for ease of modification on systems with weird man setups.
+
+Signed-off-by: Alexandre Rostovtsev <tetromino@gmail.com>
+Signed-off-by: Ole Reifschneider <tranquility@gentoo.org>
+---
+ Makefile.am               |  2 ++
+ libyelp/yelp-groff        | 49 +++++++++++++++++++++++++++++++++++++++++++++++
+ libyelp/yelp-man-parser.c |  2 +-
+ 3 files changed, 52 insertions(+), 1 deletion(-)
+ create mode 100755 libyelp/yelp-groff
+
+diff --git a/Makefile.am b/Makefile.am
+index 30eba2c..b87f2b2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,6 +6,7 @@ BUILT_SOURCES = \
+ 	$(nodist_libyelp_libyelp_la_SOURCES)
+
+ lib_LTLIBRARIES = libyelp/libyelp.la
++libexec_SCRIPTS = libyelp/yelp-groff
+
+ libyelp_libyelp_la_SOURCES = \
+ 	libyelp/yelp-bookmarks.c \
+@@ -58,6 +59,7 @@ libyelp_libyelp_la_CFLAGS = \
+
+ libyelp_libyelp_la_CPPFLAGS = \
+ 	-DDATADIR=\""$(datadir)"\" \
++	-DLIBEXECDIR=\"$(libexecdir)\" \
+ 	-DYELP_ICON_PATH=\"$(YELP_ICON_PATH)\" \
+ 	-DYELP_WEB_EXTENSIONS_DIR=\""$(pkglibdir)/"web-extensions\" \
+ 	-I$(top_builddir)/libyelp
+diff --git a/libyelp/yelp-groff b/libyelp/yelp-groff
+new file mode 100755
+index 0000000..5348024
+--- /dev/null
++++ b/libyelp/yelp-groff
+@@ -0,0 +1,49 @@
++#!/bin/sh
++#
++# Copyright (c) 2011 Alexandre Rostovtsev <tetromino@gmail.com>
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License as
++# published by the Free Software Foundation; either version 2 of the
++# License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# General Public License for more details.
++#
++# You should have received a copy of the GNU General Public
++# License along with this program; if not, write to the
++# Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++# Boston, MA 02110-1301, USA.
++#
++###
++#
++# Process the requested compressed source nroff file and output groff
++# intermediate format.
++#
++
++filename=$1
++
++if [ -z ${filename} ] ; then
++    echo "Usage: yelp-groff [FILE]" >&2
++    echo "Process a man FILE and output groff intermediate format."
++    exit 1
++fi
++
++# If "man -Z -Tutf8 -EUTF-8" works (i.e. if man is man-db), use that.
++man -Z -Tutf8 -EUTF-8 ${filename} 2>/dev/null && exit 0
++
++# Otherwise, manually uncompress the file ...
++cat="cat"
++case ${filename} in
++    *.bz2)      cat="bzip2 -c -d" ;;
++    *.gz)       cat="gunzip -c" ;;
++    *.lzma)     cat="unlzma -c -d" ;;
++    *.xz)       cat="unxz -c" ;;
++    *.Z)        cat="zcat" ;;
++esac
++
++# ... and run groff to get the intermediate format; preprocess with tbl
++# unless MANROFFSEQ is defined.
++${cat} ${filename} | groff -${MANROFFSEQ:-t} -man -Z -Tutf8
+diff --git a/libyelp/yelp-man-parser.c b/libyelp/yelp-man-parser.c
+index 46073a2..792e695 100644
+--- a/libyelp/yelp-man-parser.c
++++ b/libyelp/yelp-man-parser.c
+@@ -369,7 +369,7 @@ get_troff (gchar *path, GError **error)
+ {
+     gint ystdout;
+     GError *err = NULL;
+-    const gchar *argv[] = { "man", "-Z", "-Tutf8", "-EUTF-8", path, NULL };
++    const gchar *argv[] = { LIBEXECDIR "/yelp-groff", path, NULL };
+     gchar **my_argv;
+
+     /* g_strdupv() should accept a "const gchar **". */
+--
+2.7.4
+

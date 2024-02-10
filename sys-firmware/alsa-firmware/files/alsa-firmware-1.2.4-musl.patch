@@ -1,0 +1,91 @@
+https://github.com/alsa-project/alsa-firmware/pull/10
+
+From 09da9c869fa177acca17d63ac5fc3b3217683918 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 15 Oct 2023 13:28:36 +0100
+Subject: [PATCH] Use stdint.h types
+
+u_int_* aren't standard, but uint* are. Use those instead for musl compat.
+
+Bug: https://bugs.gentoo.org/832969
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ hdsploader/digiface_firmware.dat        | 4 +++-
+ hdsploader/digiface_firmware_rev11.dat  | 4 +++-
+ hdsploader/multiface_firmware.dat       | 4 +++-
+ hdsploader/multiface_firmware_rev11.dat | 4 +++-
+ hdsploader/tobin.c                      | 3 ++-
+ 5 files changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/hdsploader/digiface_firmware.dat b/hdsploader/digiface_firmware.dat
+index 9ac946a..9643e8e 100644
+--- a/hdsploader/digiface_firmware.dat
++++ b/hdsploader/digiface_firmware.dat
+@@ -1,5 +1,7 @@
++#include <stdint.h>
++
+ /* stored in little-endian */
+-static u_int32_t digiface_firmware[24413] = {
++static uint32_t digiface_firmware[24413] = {
+ 0xffffffff, 0x66aa9955, 0x8001000c, 0xe0000000, 0x8006800c, 0xb0000000,
+ 0x8004800c, 0xb4fc0100, 0x8003000c, 0x00000000, 0x8001000c, 0x90000000,
+ 0x8004000c, 0x00000000, 0x8001000c, 0x80000000, 0x0002000c, 0x581a000a,
+diff --git a/hdsploader/digiface_firmware_rev11.dat b/hdsploader/digiface_firmware_rev11.dat
+index 2930017..adffd82 100644
+--- a/hdsploader/digiface_firmware_rev11.dat
++++ b/hdsploader/digiface_firmware_rev11.dat
+@@ -1,5 +1,7 @@
++#include <stdint.h>
++
+ /* stored in little-endian */
+-static u_int32_t digiface_firmware_rev11[24413] = {
++static uint32_t digiface_firmware_rev11[24413] = {
+ 0xffffffff, 0x66aa9955, 0x8001000c, 0xe0000000, 0x8006800c, 0xb0000000,
+ 0x8004800c, 0xb4fc0100, 0x8003000c, 0x00000000, 0x8001000c, 0x90000000,
+ 0x8004000c, 0x00000000, 0x8001000c, 0x80000000, 0x0002000c, 0x581a000a,
+diff --git a/hdsploader/multiface_firmware.dat b/hdsploader/multiface_firmware.dat
+index 6c4813d..f95c1b3 100644
+--- a/hdsploader/multiface_firmware.dat
++++ b/hdsploader/multiface_firmware.dat
+@@ -1,5 +1,7 @@
++#include <stdint.h>
++
+ /* stored in little-endian */
+-static u_int32_t multiface_firmware[24413] = {
++static uint32_t multiface_firmware[24413] = {
+ 0xffffffff, 0x66aa9955, 0x8001000c, 0xe0000000, 0x8006800c, 0xb0000000,
+ 0x8004800c, 0xb4fc0100, 0x8003000c, 0x00000000, 0x8001000c, 0x90000000,
+ 0x8004000c, 0x00000000, 0x8001000c, 0x80000000, 0x0002000c, 0x581a000a,
+diff --git a/hdsploader/multiface_firmware_rev11.dat b/hdsploader/multiface_firmware_rev11.dat
+index 057f53e..16de278 100644
+--- a/hdsploader/multiface_firmware_rev11.dat
++++ b/hdsploader/multiface_firmware_rev11.dat
+@@ -1,5 +1,7 @@
++#include <stdint.h>
++
+ /* stored in little-endian */
+-static u_int32_t multiface_firmware_rev11[24413] = {
++static uint32_t multiface_firmware_rev11[24413] = {
+ 0xffffffff, 0x66aa9955, 0x8001000c, 0xe0000000, 0x8006800c, 0xb0000000,
+ 0x8004800c, 0xb4fc0100, 0x8003000c, 0x00000000, 0x8001000c, 0x90000000,
+ 0x8004000c, 0x00000000, 0x8001000c, 0x80000000, 0x0002000c, 0x581a000a,
+diff --git a/hdsploader/tobin.c b/hdsploader/tobin.c
+index 2d76220..8d67b2b 100644
+--- a/hdsploader/tobin.c
++++ b/hdsploader/tobin.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <unistd.h>
+ #include <endian.h>
+ 
+@@ -8,7 +9,7 @@
+ #include "multiface_firmware.dat"
+ #include "multiface_firmware_rev11.dat"
+ 
+-int write_bin_file(u_int32_t *array, const char *filename)
++int write_bin_file(uint32_t *array, const char *filename)
+ {
+ 	FILE *out;
+ 	

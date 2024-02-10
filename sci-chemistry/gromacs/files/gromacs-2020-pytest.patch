@@ -1,0 +1,35 @@
+From e4e1263776844d660c471e3d1203acf54cdc855f Mon Sep 17 00:00:00 2001
+From: Alexey Shvetsov <alexxyum@gmail.com>
+Date: Fri, 23 Apr 2021 13:21:24 +0300
+Subject: [PATCH 2/2] Allow to build python part without build testing enabled
+
+Signed-off-by: Alexey Shvetsov <alexxyum@gmail.com>
+---
+ python_packaging/src/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/python_packaging/src/CMakeLists.txt b/python_packaging/src/CMakeLists.txt
+index c75549fc82..4f983fdd5f 100644
+--- a/python_packaging/src/CMakeLists.txt
++++ b/python_packaging/src/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ #
+ # This file is part of the GROMACS molecular simulation package.
+ #
+-# Copyright (c) 2019,2020, by the GROMACS development team, led by
++# Copyright (c) 2019,2020,2021, by the GROMACS development team, led by
+ # Mark Abraham, David van der Spoel, Berk Hess, and Erik Lindahl,
+ # and including many others, as listed in the AUTHORS file in the
+ # top-level source directory and at http://www.gromacs.org.
+@@ -252,5 +252,7 @@ endif()
+ # to the `check` target. Normal usage is to first install the Python package,
+ # then run `pytest` on the `tests` directory. Refer to gmxapi package documentation.
+ if(NOT GMXAPI_MASTER_PROJECT)
+-    add_subdirectory(test)
++	if (BUILD_TESTING)
++		add_subdirectory(test)
++	endif()
+ endif()
+-- 
+2.31.1
+

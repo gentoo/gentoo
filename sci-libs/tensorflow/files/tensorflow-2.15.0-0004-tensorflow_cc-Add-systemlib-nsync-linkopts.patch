@@ -1,0 +1,35 @@
+From e9d513bbb40004ff25a9809eb99e32958e8e3b82 Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Fri, 24 Nov 2023 16:42:48 +0800
+Subject: [PATCH 04/13] tensorflow_cc: Add systemlib nsync linkopts
+
+Linkopts dont get propagated up to the shared library correctly so
+workaround by applying them directly
+---
+ tensorflow/BUILD | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tensorflow/BUILD b/tensorflow/BUILD
+index f72931217b3..ffbe65fdc61 100644
+--- a/tensorflow/BUILD
++++ b/tensorflow/BUILD
+@@ -6,6 +6,7 @@ load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+ load("@bazel_skylib//lib:selects.bzl", "selects")
+ load("@bazel_skylib//rules:common_settings.bzl", "bool_flag", "bool_setting")
+ load("@local_config_cuda//cuda:build_defs.bzl", "if_cuda")
++load("@local_config_syslibs//:build_defs.bzl", "if_system_lib")
+ load(
+     "//tensorflow:tensorflow.bzl",
+     "VERSION",
+@@ -1324,7 +1325,7 @@ tf_cc_shared_library(
+             "-z defs",
+             "-Wl,--version-script,$(location //tensorflow:tf_version_script.lds)",
+         ],
+-    }),
++    }) + if_system_lib("nsync", ["-lnsync_cpp"]),
+     per_os_targets = True,
+     roots = [
+         "//tensorflow/c:c_api",
+-- 
+2.41.0
+

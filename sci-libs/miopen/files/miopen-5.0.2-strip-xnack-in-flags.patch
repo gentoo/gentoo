@@ -1,0 +1,20 @@
+if options like :xnack- exists in ${AMDGPU_TARGETS}, CMakeLists cannot handle HIP_COMPILER_FLAGS well
+
+the original regex replace should include :+- so xnack- is stripped as well. Otherwise clang complation at MIOpen runtime will fail.
+
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Index: MIOpen-rocm-5.0.2/CMakeLists.txt
+===================================================================
+--- MIOpen-rocm-5.0.2.orig/CMakeLists.txt
++++ MIOpen-rocm-5.0.2/CMakeLists.txt
+@@ -198,8 +198,8 @@ find_package(hip REQUIRED PATHS /opt/roc
+ message(STATUS "Build with HIP ${hip_VERSION}")
+ target_flags(HIP_COMPILER_FLAGS hip::device)
+ # Remove cuda arch flags
+-string(REGEX REPLACE --cuda-gpu-arch=[a-z0-9]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
+-string(REGEX REPLACE --offload-arch=[a-z0-9]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
++string(REGEX REPLACE --cuda-gpu-arch=[a-z0-9:+-]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
++string(REGEX REPLACE --offload-arch=[a-z0-9:+-]+ "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
+ string(REPLACE "$<LINK_LANGUAGE:CXX>" "1" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
+ string(REPLACE "SHELL:" "" HIP_COMPILER_FLAGS "${HIP_COMPILER_FLAGS}")
+ 

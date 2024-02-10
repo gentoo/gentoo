@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mail@evilscientress.at</email>
+		<name>Jenny Danzmayr</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="idle">Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ario-player</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,10 @@
+--- a/KXL.m4
++++ b/KXL.m4
+@@ -29,7 +29,6 @@
+ 
+ dnl add the KXL library
+ KXL_LIBS="$KXL_LIBS -lKXL"
+-LDFLAGS="$KXL_LIBS"
+ AC_MSG_RESULT($KXL_LIBS)
+ 
+ AC_PATH_XTRA

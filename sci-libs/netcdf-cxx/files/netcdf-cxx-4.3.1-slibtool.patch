@@ -1,0 +1,42 @@
+https://github.com/Unidata/netcdf-cxx4/pull/103
+https://bugs.gentoo.org/778200
+
+From: orbea <orbea@riseup.net>
+Date: Thu, 25 Mar 2021 12:24:57 -0700
+Subject: [PATCH 1/2] cxx4: Move -lnetcdf to LIBADD so its used.
+
+--- a/cxx4/Makefile.am
++++ b/cxx4/Makefile.am
+@@ -3,15 +3,13 @@
+ 
+ # This file builds the new C++-4 interface.
+ 
+-# Point pre-preprocessor to netcdf-4 directory (libsrc4).
+-LDADD = $(top_builddir)/cxx4/libnetcdf_c++4.la  -lnetcdf
+-
+ # This is our output library.
+ lib_LTLIBRARIES = libnetcdf_c++4.la
+ 
+ # For rules updating the version info, see
+ # http://www.gnu.org/s/libtool/manual/html_node/Updating-version-info.html
+ libnetcdf_c__4_la_LDFLAGS = -version-info 2:0:1 -no-undefined
++libnetcdf_c__4_la_LIBADD = -lnetcdf
+ 
+ # These headers will be installed in the users header directory.
+ include_HEADERS = netcdf ncAtt.h ncCheck.h ncDim.h ncException.h	\
+
+From a6dd5eb862d9a845b8458591b957b07c527e0d20 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 25 Mar 2021 12:25:33 -0700
+Subject: [PATCH 2/2] plugins: Add a missing -lhdf5 linker flag.
+
+--- a/plugins/Makefile.am
++++ b/plugins/Makefile.am
+@@ -20,6 +20,7 @@ lib_LTLIBRARIES = libh5bzip2.la
+ 
+ libh5bzip2_la_SOURCES = ${HDF5PLUGINSRC}
+ libh5bzip2_la_LDFLAGS = -module -avoid-version -shared -export-dynamic -no-undefined
++libh5bzip2_la_LIBADD = -lhdf5
+ 
+ libmisc_la_SOURCES = H5Zmisc.c H5Zutil.c h5misc.h
+ libmisc_la_LDFLAGS = -module -avoid-version -shared -export-dynamic -no-undefined -rpath ${abs_builddir}

@@ -1,0 +1,15 @@
+To run znc as a user, run 'znc --makeconf' to create a configuration file.
+
+To configure the system-wide daemon, you may run 'emerge --config net-irc/znc'.
+
+If migrating from a user-based install, you can copy the existing
+configuration files:
+
+  # mv /home/$USER/.znc/* /var/lib/znc
+  # rm -rf /home/$USER/.znc
+  # chown -R znc:znc /var/lib/znc
+
+OpenRC users may also adjust the location of the files and the user running
+znc in /etc/conf.d/znc instead.
+The same thing can be achieved for systemd by overriding the existing
+unit file (systemctl edit znc.service).

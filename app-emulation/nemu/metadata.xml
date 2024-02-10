@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>mail@void.so</email>
+		<name>Pavel Balaev</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="ovf">Adds support for OVA/OVF import</flag>
+		<flag name="network-map">Adds possibility of exporting network map to SVG</flag>
+		<flag name="remote-api">Adds API for remote control</flag>
+		<flag name="spice">Adds Spice protocol support</flag>
+		<flag name="vnc-client">Adds support for external VNC client</flag>
+	</use>
+</pkgmetadata>

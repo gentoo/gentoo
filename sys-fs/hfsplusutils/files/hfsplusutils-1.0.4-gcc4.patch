@@ -1,0 +1,132 @@
+--- a/libhfsp/src/btree.c
++++ b/libhfsp/src/btree.c
+@@ -393,7 +393,7 @@ static int btree_init(btree* bt, volume*
+ 	{
+ 	    p = volume_readfromfork(vol, nodebuf, fork, 0, bt->blkpernode,
+ 		 HFSP_EXTENT_DATA, bt->cnid);
+-	    ((char*) p) += HEADER_RESERVEDOFFSET; // skip header
++	    p += HEADER_RESERVEDOFFSET; // skip header
+ 	}
+ 	
+ 	bt->alloc_bits = malloc(alloc_size);
+--- a/libhfsp/src/swab.h
++++ b/libhfsp/src/swab.h
+@@ -36,28 +36,28 @@
+ 
+ #define bswabU16(val) bswap_16(val)
+ 
+-#define bswabU16_inc(ptr) bswap_16(*((UInt16*) (ptr))++)
+-#define bswabU32_inc(ptr) bswap_32(*((UInt32*) (ptr))++)
+-#define bswabU64_inc(ptr) bswap_64(*((UInt64*) (ptr))++)
+-
+-#define bstoreU16_inc(ptr, val) (*((UInt16*) (ptr))++) = bswap_16(val)
+-#define bstoreU32_inc(ptr, val) (*((UInt32*) (ptr))++) = bswap_32(val)
+-#define bstoreU64_inc(ptr, val) (*((UInt64*) (ptr))++) = bswap_64(val)
++#define bswabU16_inc(ptr) bswap_16(*(*((UInt16**) (void *)(&ptr)))++)
++#define bswabU32_inc(ptr) bswap_32(*(*((UInt32**) (void *)(&ptr)))++)
++#define bswabU64_inc(ptr) bswap_64(*(*((UInt64**) (void *)(&ptr)))++)
++
++#define bstoreU16_inc(ptr, val) (*(*((UInt16**) (void *)(&ptr)))++) = bswap_16(val)
++#define bstoreU32_inc(ptr, val) (*(*((UInt32**) (void *)(&ptr)))++) = bswap_32(val)
++#define bstoreU64_inc(ptr, val) (*(*((UInt64**) (void *)(&ptr)))++) = bswap_64(val)
+ 
+ #else // BYTE_ORDER == BIG_ENDIAN
+ 
+ #define bswabU16(val) val
+ 
+-#define bswabU16_inc(ptr) (*((UInt16*) (ptr))++)
+-#define bswabU32_inc(ptr) (*((UInt32*) (ptr))++)
+-#define bswabU64_inc(ptr) (*((UInt64*) (ptr))++)
+-
+-#define bstoreU16_inc(ptr, val) (*((UInt16*) (ptr))++) = val
+-#define bstoreU32_inc(ptr, val) (*((UInt32*) (ptr))++) = val
+-#define bstoreU64_inc(ptr, val) (*((UInt64*) (ptr))++) = val
++#define bswabU16_inc(ptr) (*(*((UInt16**) (void *)(&ptr)))++)
++#define bswabU32_inc(ptr) (*(*((UInt32**) (void *)(&ptr)))++)
++#define bswabU64_inc(ptr) (*(*((UInt64**) (void *)(&ptr)))++)
++
++#define bstoreU16_inc(ptr, val) (*(*((UInt16**) (void *)(&ptr)))++) = val
++#define bstoreU32_inc(ptr, val) (*(*((UInt32**) (void *)(&ptr)))++) = val
++#define bstoreU64_inc(ptr, val) (*(*((UInt64**) (void *)(&ptr)))++) = val
+ 
+ #endif
+ 
+ /* for the sake of compleetness and readability */
+-#define bswabU8_inc(ptr)	(*((UInt8*) (ptr))++)
+-#define bstoreU8_inc(ptr,val)	(*((UInt8*) (ptr))++) = val
++#define bswabU8_inc(ptr)	(*(*((UInt8**) (void *)(&ptr)))++)
++#define bstoreU8_inc(ptr,val)	(*(*((UInt8**) (void *)(&ptr)))++) = val
+--- a/libhfsp/src/btreecheck.c
++++ b/libhfsp/src/btreecheck.c
+@@ -264,7 +264,7 @@ static int fscheck_btree_init(btree* bt,
+ 	{
+ 	    p = volume_readfromfork(vol, nodebuf, fork, 0, bt->blkpernode,
+ 		 HFSP_EXTENT_DATA, bt->cnid);
+-	    ((char*) p) += HEADER_RESERVEDOFFSET; // skip header
++	    p += HEADER_RESERVEDOFFSET; // skip header
+ 	}
+ 	
+ 	bt->alloc_bits = malloc(alloc_size);
+--- a/libhfsp/src/fscheck.c
++++ b/libhfsp/src/fscheck.c
+@@ -230,7 +230,7 @@ static int fscheck_volume_readbuf(volume
+     vh->write_count	= bswabU32_inc(p);
+     vh->encodings_bmp	= bswabU64_inc(p);
+     memcpy(vh->finder_info, p, 32); 
+-    ((char*) p) += 32; // So finderinfo must be swapped later, ***
++    p += 32; // So finderinfo must be swapped later, ***
+     p = volume_readfork(p, &vh->alloc_file );
+     p = volume_readfork(p, &vh->ext_file   );
+     p = volume_readfork(p, &vh->cat_file   );
+@@ -277,12 +277,12 @@ static int fscheck_read_wrapper(volume *
+ 	    printf("Volume is wrapped in HFS volume "
+ 		   " (use hfsck to check this)\n");
+ 
+-	((char*) p) += 0x12;		/* skip unneded HFS vol fields */
++	p += 0x12;		/* skip unneded HFS vol fields */
+ 	drAlBlkSiz = bswabU32_inc(p);	/* offset 0x14 */
+-	((char*) p) += 0x4;		/* skip unneded HFS vol fields */
++	p += 0x4;		/* skip unneded HFS vol fields */
+ 	drAlBlSt    = bswabU16_inc(p);	/* offset 0x1C */
+ 	
+-	((char*) p) += 0x5E;		/* skip unneded HFS vol fields */
++	p += 0x5E;		/* skip unneded HFS vol fields */
+ 	signature = bswabU16_inc(p);	/* offset 0x7C, drEmbedSigWord */
+ 	if (signature != HFSP_VOLHEAD_SIG)
+ 	    HFSP_ERROR(-1, "This looks like a normal HFS volume");
+--- a/libhfsp/src/volume.c
++++ b/libhfsp/src/volume.c
+@@ -345,7 +345,7 @@ static int volume_readbuf(hfsp_vh* vh, v
+     vh->write_count	= bswabU32_inc(p);
+     vh->encodings_bmp	= bswabU64_inc(p);
+     memcpy(vh->finder_info, p, 32); 
+-    ((char*) p) += 32; // finderinfo is not used by now
++    p += 32; // finderinfo is not used by now
+     p = volume_readfork(p, &vh->alloc_file );
+     p = volume_readfork(p, &vh->ext_file   );
+     p = volume_readfork(p, &vh->cat_file   );
+@@ -381,7 +381,7 @@ static int volume_writebuf(hfsp_vh* vh, 
+     bstoreU32_inc(p, vh->write_count	);
+     bstoreU64_inc(p, vh->encodings_bmp	);
+     memcpy(p, vh->finder_info, 32); 
+-    ((char*) p) += 32; // finderinfo is not used by now
++    p += 32; // finderinfo is not used by now
+     p = volume_writefork(p, &vh->alloc_file );
+     p = volume_writefork(p, &vh->ext_file   );
+     p = volume_writefork(p, &vh->cat_file   );
+@@ -417,12 +417,12 @@ static int volume_read_wrapper(volume * 
+   
+ 	UInt16	embeds, embedl;		/* Start/lenght of embedded area in blocks */
+ 	
+-	((char*) p) += 0x12;		/* skip unneeded HFS vol fields */
++	p += 0x12;		/* skip unneeded HFS vol fields */
+ 	drAlBlkSiz = bswabU32_inc(p);	/* offset 0x14 */
+-	((char*) p) += 0x4;		/* skip unneeded HFS vol fields */
++	p += 0x4;		/* skip unneeded HFS vol fields */
+ 	drAlBlSt    = bswabU16_inc(p);	/* offset 0x1C */
+ 	
+-	((char*) p) += 0x5E;		/* skip unneeded HFS vol fields */
++	p += 0x5E;		/* skip unneeded HFS vol fields */
+ 	signature = bswabU16_inc(p);	/* offset 0x7C, drEmbedSigWord */
+ 	if (signature != HFSP_VOLHEAD_SIG)
+ 	    HFSP_ERROR(-1, "This looks like a normal HFS volume");

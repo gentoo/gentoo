@@ -1,0 +1,7 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-04)
+# We need it for ieee-long-double.
+>=sys-devel/clang-15.0.5 -ieee-long-double
+>=sys-devel/gcc-12 -ieee-long-double

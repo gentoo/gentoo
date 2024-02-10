@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">getsentry/sentry-native</remote-id>
+	</upstream>
+	<use>
+		<flag name="breakpad">Use <pkg>dev-util/breakpad</pkg> as the crash handler</flag>
+		<flag name="curl">Enable support for automated uploading of crash reports</flag>
+	</use>
+</pkgmetadata>

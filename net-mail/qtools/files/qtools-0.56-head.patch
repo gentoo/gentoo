@@ -1,0 +1,76 @@
+diff -ur qtools-0.56/Makefile qtools-0.56.patched/Makefile
+--- qtools-0.56/Makefile	2001-11-08 14:07:57.000000000 +0100
++++ qtools-0.56.patched/Makefile	2005-06-29 00:44:05.000000000 +0200
+@@ -13,7 +13,7 @@
+ load: warn-auto.sh conf-ld
+ 	( cat warn-auto.sh; \
+ 	echo 'main="$$1"; shift'; \
+-	echo exec "`head -1 conf-ld`" \
++	echo exec "`head -n 1 conf-ld`" \
+ 	'-o "$$main" "$$main".o $${1+"$$@"}' \
+ 	) > load
+ 	chmod 755 load
+@@ -27,7 +27,7 @@
+ 
+ compile: warn-auto.sh conf-cc
+ 	( cat warn-auto.sh; \
+-	echo exec "`head -1 conf-cc`" '-c $${1+"$$@"}' \
++	echo exec "`head -n 1 conf-cc`" '-c $${1+"$$@"}' \
+ 	) > compile
+ 	chmod 755 compile
+ 
+@@ -57,8 +57,8 @@
+ 
+ systype: find-systype.sh conf-cc conf-ld trycpp.c x86cpuid.c
+ 	( cat warn-auto.sh; \
+-	echo CC=\'`head -1 conf-cc`\'; \
+-	echo LD=\'`head -1 conf-ld`\'; \
++	echo CC=\'`head -n 1 conf-cc`\'; \
++	echo LD=\'`head -n 1 conf-ld`\'; \
+ 	cat find-systype.sh; \
+ 	) | sh > systype
+ 
+@@ -379,7 +379,7 @@
+ 
+ choose: warn-auto.sh choose.sh conf-home
+ 	cat warn-auto.sh choose.sh \
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+ 	> choose
+ 	chmod 755 choose
+ 
+@@ -529,7 +529,7 @@
+ 	./compile checkdomain.c
+ 
+ auto_qmail.c: auto-str conf-qmail
+-	./auto-str auto_qmail `head -1 conf-qmail` > auto_qmail.c
++	./auto-str auto_qmail `head -n 1 conf-qmail` > auto_qmail.c
+ 
+ filterto.o: compile \
+ filterto.c \
+@@ -660,7 +660,7 @@
+ 
+ rts: warn-auto.sh rts.sh conf-home
+ 	cat warn-auto.sh rts.sh \
+-	| sed s}HOME}"`head -1 conf-home`"}g \
++	| sed s}HOME}"`head -n 1 conf-home`"}g \
+ 	> rts
+ 	chmod 755 rts
+ 
+@@ -715,14 +715,14 @@
+ 	./compile auto_ezmlm.c
+ 
+ auto_ezmlm.c: auto-str conf-ezmlm
+-	./auto-str auto_ezmlm `head -1 conf-ezmlm` > auto_ezmlm.c
++	./auto-str auto_ezmlm `head -n 1 conf-ezmlm` > auto_ezmlm.c
+ 
+ auto_home.o: compile \
+ auto_home.c
+ 	./compile auto_home.c
+ 
+ auto_home.c: auto-str conf-home
+-	./auto-str auto_home `head -1 conf-home` > auto_home.c
++	./auto-str auto_home `head -n 1 conf-home` > auto_home.c
+ 
+ install: load install.o hier.o auto_home.o stralloc.a alloc.a strerr.a \
+ buffer.a open.a error.a str.a

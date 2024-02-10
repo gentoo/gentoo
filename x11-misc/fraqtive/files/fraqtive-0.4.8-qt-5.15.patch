@@ -1,0 +1,39 @@
+From 34963f986f64d98b6ef82757ca07159a6a059763 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 21 Jun 2020 13:21:15 +0200
+Subject: [PATCH] Fix build with Qt 5.15 (missing QPainterPath include)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/datafunctions.cpp | 2 ++
+ src/shadewidget.cpp   | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/datafunctions.cpp b/src/datafunctions.cpp
+index 3ec1af9..9369299 100644
+--- a/src/datafunctions.cpp
++++ b/src/datafunctions.cpp
+@@ -19,6 +19,8 @@
+ #include "datafunctions.h"
+ #include "fractaldata.h"
+ 
++#include <QPainterPath>
++
+ namespace DataFunctions
+ {
+ 
+diff --git a/src/shadewidget.cpp b/src/shadewidget.cpp
+index 1494b37..3da5c05 100644
+--- a/src/shadewidget.cpp
++++ b/src/shadewidget.cpp
+@@ -19,6 +19,7 @@
+ #include "shadewidget.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QToolTip>
+ 
+-- 
+2.27.0
+

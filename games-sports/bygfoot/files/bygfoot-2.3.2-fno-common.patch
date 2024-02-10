@@ -1,0 +1,496 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -61,6 +61,42 @@
+ #include "window.h"
+ #include "xml_strategy.h"
+ 
++// Global vars (-fno-common)
++Country country;
++GArray *users;
++gint season, week, week_round;
++OptionList options;
++OptionList constants;
++OptionList constants_app;
++OptionList settings;
++OptionList tokens;
++GArray *lg_commentary[LIVE_GAME_EVENT_END];
++GArray *news[NEWS_ARTICLE_TYPE_END];
++NewsPaper newspaper;
++GArray *transfer_list;
++GArray *season_stats;
++GArray *strategies;
++GArray *bets[2];
++gfloat current_interest;
++GArray *jobs, *job_teams;
++gint counters[COUNT_END];
++gint status[6];
++gpointer statp;
++gint selected_row;
++GArray *name_lists;
++Windows window;
++GArray *live_games;
++gint cur_user;
++gint timeout_id;
++GRand *rand_generator;
++gint debug_level, debug_output;
++GList *support_directories;
++GList *root_definitions_directories;
++GList *definitions_directories;
++gchar *save_file;
++gboolean os_is_unix;
++OptionList hints;
++
+ #define DEBUG_LEVEL_DEFAULT 0
+ 
+ #if defined(MAC_BUILD) || defined(G_OS_WIN32)
+--- a/src/variables.h
++++ b/src/variables.h
+@@ -33,89 +33,89 @@
+  * The main variable of the game.
+  * @see Country
+  */
+-Country country;
++extern Country country;
+ 
+ /** The array of human players. @see #User */
+-GArray *users;
++extern GArray *users;
+ 
+ /** The season, week and week round numbers. 
+     We keep track of the time in the game with these variables. */
+-gint season, week, week_round;
++extern gint season, week, week_round;
+ 
+ /** Array of options that get read from
+     bygfoot.conf. */
+-OptionList options;
++extern OptionList options;
+ /** Array of constants that get read from the constants
+     file specified in bygfoot.conf. */
+-OptionList constants;
++extern OptionList constants;
+ /** Array of constants affecting game appearance rather than
+     behaviour. */
+-OptionList constants_app;
++extern OptionList constants_app;
+ /** Array with internal settings. */
+-OptionList settings;
++extern OptionList settings;
+ /* Array holding string replacement tokens. */
+-OptionList tokens;
++extern OptionList tokens;
+ 
+ /** The array containing the live game commentary strings. */
+-GArray *lg_commentary[LIVE_GAME_EVENT_END];
++extern GArray *lg_commentary[LIVE_GAME_EVENT_END];
+ 
+ /** The array containing the news article strings. */
+-GArray *news[NEWS_ARTICLE_TYPE_END];
++extern GArray *news[NEWS_ARTICLE_TYPE_END];
+ 
+ /** Newspaper containing the news articles. */
+-NewsPaper newspaper;
++extern NewsPaper newspaper;
+ 
+ /** The array containing players to be transfered.
+     @see TransferPlayer */
+-GArray *transfer_list;
++extern GArray *transfer_list;
+ 
+ /** Array with season statistics (updated at the
+     end of each season. */
+-GArray *season_stats;
++extern GArray *season_stats;
+ 
+ /** Array of available CPU strategies. */
+-GArray *strategies;
++extern GArray *strategies;
+ 
+ /** Array of current and recent bets. */
+-GArray *bets[2];
++extern GArray *bets[2];
+ 
+ /** Loan interest for the current week. */
+-gfloat current_interest;
++extern gfloat current_interest;
+ 
+ /** Array of jobs in the job exchange and
+     teams going with the international jobs. */
+-GArray *jobs, *job_teams;
++extern GArray *jobs, *job_teams;
+ 
+ /** Some counters we use. */
+-gint counters[COUNT_END];
++extern gint counters[COUNT_END];
+ 
+ /** These help us keep track of what's happening. */
+-gint status[6];
++extern gint status[6];
+ 
+ /** A pointer we store temporary stuff in. */
+-gpointer statp;
++extern gpointer statp;
+ 
+ /** The currently selected row in the treeview. */
+-gint selected_row;
++extern gint selected_row;
+ 
+ /** An array of name lists. */
+-GArray *name_lists;
++extern GArray *name_lists;
+ 
+ /** The struct containing the window pointers. */
+-Windows window;
++extern Windows window;
+ 
+ /** The variables for non-user live games (which aren't shown). */
+-GArray *live_games;
++extern GArray *live_games;
+ 
+ /** The index of the current user in the #users array. */
+-gint cur_user;
++extern gint cur_user;
+ 
+-gint timeout_id;
++extern gint timeout_id;
+ 
+-GRand *rand_generator;
++extern GRand *rand_generator;
+ 
+ /** Debug information. */
+-gint debug_level, debug_output;
++extern gint debug_level, debug_output;
+ 
+ /**
+    The list of directories the file_find_support_file() function
+@@ -123,24 +123,24 @@
+    @see file_find_support_file()
+    @see file_add_support_directory_recursive()
+ */
+-GList *support_directories;
++extern GList *support_directories;
+ 
+ /**
+  * The list of root defintions directories found (ending in definitions)
+  */ 
+-GList *root_definitions_directories;
++extern GList *root_definitions_directories;
+ 
+ /**
+  * The list of defintions directories found
+  */ 
+-GList *definitions_directories;
++extern GList *definitions_directories;
+ 
+ /** The name of the current save file (gets updated when a game is
+     saved or loaded).  */
+-gchar *save_file;
++extern gchar *save_file;
+ 
+ /** Whether we are using a Unix system or Windows. */
+-gboolean os_is_unix;
++extern gboolean os_is_unix;
+ 
+ /** The hints displayed in the splash screen. */
+-OptionList hints;
++extern OptionList hints;
+--- a/src/xml_country.c
++++ b/src/xml_country.c
+@@ -65,7 +65,7 @@
+ /**
+  * The state variable used in the XML parsing functions.
+  */
+-gint state;
++extern gint state;
+ Country *cntry;
+ 
+ /**
+--- a/src/xml_cup.c
++++ b/src/xml_cup.c
+@@ -129,7 +129,7 @@
+ /**
+  * The state variable used in the XML parsing functions.
+  */
+-gint state;
++extern gint state;
+ 
+ /** The variable we will fill and append to an array. */
+ Cup new_cup;
+--- a/src/xml_league.c
++++ b/src/xml_league.c
+@@ -123,7 +123,7 @@
+ /**
+  * The state variable used in the XML parsing functions.
+  */
+-gint state;
++extern gint state;
+ 
+ /** The new league we create and append to an array. */
+ League new_league;
+--- a/src/xml_lg_commentary.c
++++ b/src/xml_lg_commentary.c
+@@ -80,7 +80,8 @@
+     STATE_END
+ };
+ 
+-gint state, commentary_idx, priority;
++extern gint state;
++gint commentary_idx, priority;
+ gchar *condition;
+ 
+ /** Return the appropriate enum integer going with the event string. */
+--- a/src/xml_loadsave_cup.c
++++ b/src/xml_loadsave_cup.c
+@@ -80,13 +80,13 @@
+     TAG_END
+ };
+ 
+-gint state;
+-Cup *new_cup;
+-CupChooseTeam new_choose_team;
+-CupRound new_round;
+-gchar *dirname;
+-WeekBreak new_week_break;
+-CupRoundWait new_wait;
++extern gint state;
++extern Cup *new_cup;
++extern CupChooseTeam new_choose_team;
++extern CupRound new_round;
++extern gchar *dirname;
++extern WeekBreak new_week_break;
++extern CupRoundWait new_wait;
+ 
+ void
+ xml_loadsave_cup_start_element (GMarkupParseContext *context,
+--- a/src/xml_loadsave_fixtures.c
++++ b/src/xml_loadsave_fixtures.c
+@@ -47,7 +47,8 @@
+     TAG_END
+ };
+ 
+-gint state, residx1, residx2, teamidx, nameidx;
++extern gint state;
++gint residx1, residx2, teamidx, nameidx;
+ Fixture new_fixture;
+ GArray *fixtures_array;
+ 
+--- a/src/xml_loadsave_jobs.c
++++ b/src/xml_loadsave_jobs.c
+@@ -48,7 +48,7 @@
+     TAG_END
+ };
+ 
+-gint state;
++extern gint state;
+ Job new_job;
+ 
+ void
+--- a/src/xml_loadsave_league.c
++++ b/src/xml_loadsave_league.c
+@@ -67,12 +67,13 @@
+     TAG_END
+ };
+ 
+-gint promrankidx, state;
++gint promrankidx;
++extern gint state;
+ PromRelElement new_element;
+ PromGames new_prom_games;
+-WeekBreak new_week_break;
+-League *new_league;
+-gchar *dirname;
++extern WeekBreak new_week_break;
++extern League *new_league;
++extern gchar *dirname;
+ 
+ void
+ xml_loadsave_league_start_element (GMarkupParseContext *context,
+--- a/src/xml_loadsave_leagues_cups.c
++++ b/src/xml_loadsave_leagues_cups.c
+@@ -44,7 +44,7 @@
+     TAG_END
+ };
+ 
+-gint state;
++extern gint state;
+ const gchar *dir;
+ 
+ void
+--- a/src/xml_loadsave_league_stat.c
++++ b/src/xml_loadsave_league_stat.c
+@@ -46,7 +46,8 @@
+     TAG_END
+ };
+ 
+-gint state, in_state, valueidx;
++extern gint state;
++gint in_state, valueidx;
+ Stat new_stat;
+ LeagueStat *lig_stat;
+ 
+--- a/src/xml_loadsave_live_game.c
++++ b/src/xml_loadsave_live_game.c
+@@ -63,7 +63,8 @@
+     TAG_END
+ };
+ 
+-gint state, unitidx,
++extern gint state;
++gint unitidx,
+     statvalidx, statvalidx2, statplidx, statplidx2,
+     team_name_idx;
+ LiveGameUnit new_unit;
+--- a/src/xml_loadsave_misc.c
++++ b/src/xml_loadsave_misc.c
+@@ -53,8 +53,9 @@
+     TAG_END
+ };
+ 
+-gint state, countidx, oddidx, betidx;
+-BetMatch new_bet;
++extern gint state;
++gint countidx, oddidx, betidx;
++extern BetMatch new_bet;
+ 
+ void
+ xml_loadsave_misc_start_element (GMarkupParseContext *context,
+--- a/src/xml_loadsave_newspaper.c
++++ b/src/xml_loadsave_newspaper.c
+@@ -49,8 +49,8 @@
+     TAG_END
+ };
+ 
+-gint state;
+-NewsPaperArticle new_article;
++extern gint state;
++extern NewsPaperArticle new_article;
+ 
+ void
+ xml_loadsave_newspaper_start_element (GMarkupParseContext *context,
+--- a/src/xml_loadsave_players.c
++++ b/src/xml_loadsave_players.c
+@@ -69,8 +69,9 @@
+     TAG_END
+ };
+ 
+-gint state, etalidx, careeridx;
+-Player new_player;
++extern gint state;
++gint etalidx, careeridx;
++extern Player new_player;
+ PlayerGamesGoals new_games_goals;
+ PlayerCard new_card;
+ 
+--- a/src/xml_loadsave_season_stats.c
++++ b/src/xml_loadsave_season_stats.c
+@@ -46,7 +46,7 @@
+     TAG_END
+ };
+ 
+-gint state, in_state;
++extern gint state, in_state;
+ ChampStat new_champ_stat;
+ SeasonStat new_season_stat;
+ const gchar *dirname2;
+--- a/src/xml_loadsave_table.c
++++ b/src/xml_loadsave_table.c
+@@ -38,8 +38,8 @@
+     TAG_END
+ };
+ 
+-gint state, valueidx;
+-TableElement new_element;
++extern gint state, valueidx;
++extern TableElement new_element;
+ Table *new_table;
+ 
+ void
+--- a/src/xml_loadsave_teams.c
++++ b/src/xml_loadsave_teams.c
+@@ -53,12 +53,9 @@
+     TAG_END
+ };
+ 
+-gint state, etalidx, careeridx;
++extern gint state;
+ GArray *teams_array;
+ Team new_team;
+-Player new_player;
+-PlayerGamesGoals new_games_goals;
+-PlayerCard new_card;
+ 
+ void
+ xml_loadsave_teams_start_element (GMarkupParseContext *context,
+--- a/src/xml_loadsave_transfers.c
++++ b/src/xml_loadsave_transfers.c
+@@ -46,7 +46,8 @@
+     TAG_END
+ };
+ 
+-gint state, feeidx, wageidx;
++extern gint state;
++gint feeidx, wageidx;
+ Transfer new_transfer;
+ TransferOffer new_offer;
+ 
+--- a/src/xml_loadsave_users.c
++++ b/src/xml_loadsave_users.c
+@@ -79,7 +79,8 @@
+     TAG_END
+ };
+ 
+-gint state, idx_mon_in, idx_mon_out, idx,
++extern gint state;
++gint idx_mon_in, idx_mon_out, idx,
+     idx_bet, idx_cnt;
+ User new_user;
+ UserHistory new_history;
+--- a/src/xml_mmatches.c
++++ b/src/xml_mmatches.c
+@@ -47,7 +47,7 @@
+ /**
+  * The state variable used in the XML parsing functions.
+  */
+-gint state;
++extern gint state;
+ MemMatch new_match;
+ gchar *dirname;
+ GArray *mm_array;
+--- a/src/xml_news.c
++++ b/src/xml_news.c
+@@ -59,8 +59,9 @@
+     STATE_END
+ };
+ 
+-gint state, article_idx, priority;
+-gchar *condition;
++extern gint state, priority;
++gint article_idx;
++extern gchar *condition;
+ NewsArticle new_article;
+ NewsText new_title, new_subtitle;
+ 
+--- a/src/xml_strategy.c
++++ b/src/xml_strategy.c
+@@ -91,7 +91,8 @@
+     STATE_STRATEGY_MATCH_ACTION_SUB_OUT_POS,
+ };
+ 
+-gint state, action_id;
++extern gint state;
++gint action_id;
+ 
+ #define curstrat g_array_index(strategies, Strategy, strategies->len - 1)
+ #define curprematch g_array_index(curstrat.prematch, StrategyPrematch, curstrat.prematch->len - 1)
+--- a/src/xml_team.c
++++ b/src/xml_team.c
+@@ -70,7 +70,8 @@
+     STATE_END
+ };
+ 
+-gint state, birth_year;
++extern gint state;
++gint birth_year;
+ Player new_player;
+ Team *team;
+ const gchar *d_file;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<use>
+		<flag name="xla">XLA (Accelerated Linear Algebra) Optimizing Compiler for TensorFlow</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tensorflow/tensorflow</remote-id>
+		<remote-id type="cpe">cpe:/a:google:tensorflow</remote-id>
+	</upstream>
+</pkgmetadata>

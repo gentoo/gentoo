@@ -1,0 +1,11 @@
+--- a/setserial.c
++++ b/setserial.c
+@@ -738,7 +738,7 @@ fprintf(stderr, "\t* port\t\tset the I/O port\n");
+ 	exit(1);
+ }
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+ 	int	get_flag = 0, wild_intr_flag = 0;
+ 	int	c;

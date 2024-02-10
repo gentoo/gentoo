@@ -1,0 +1,21 @@
+# The input plugins and options:
+# uvc
+# testpicture
+# file
+#ex. INPUT_PLUGIN="uvc"
+INPUT_PLUGIN=""
+INPUT_PLUGIN_OPTS=""
+
+# The output plugins and options:
+# autofocus
+# file
+# http
+# udp
+# rtsp
+#ex. OUTPUT_PLUGIN="http"
+OUTPUT_PLUGIN=""
+OUTPUT_PLUGIN_OPTS=""
+
+# Deamon runing as user/group
+MJPG_STREAMER_USER="nobody"
+MJPG_STREAMER_GROUP="video"

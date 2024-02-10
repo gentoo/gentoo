@@ -1,0 +1,51 @@
+From 7613e00fe0299d6584d3ee67e5d4010e7fc0866a Mon Sep 17 00:00:00 2001
+From: ROCm CI Service Account <66695075+rocm-ci@users.noreply.github.com>
+Date: Fri, 14 Oct 2022 16:02:40 +0530
+Subject: [PATCH 2/3] SWDEV-355608 - Remove clang include path (#2996)
+
+Clang doesn't need to be told where to find the clang headers
+
+Change-Id: I175781731c43647676d91eedc8a915124f2479ab
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+---
+ bin/hipcc.pl | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/bin/hipcc.pl b/bin/hipcc.pl
+index 2a01dcc3..7e82cad8 100755
+--- a/bin/hipcc.pl
++++ b/bin/hipcc.pl
+@@ -162,9 +162,6 @@ if ($HIP_PLATFORM eq "amd") {
+     $HIP_CLANG_RT_LIB = `$HIPCC --print-runtime-dir`;
+     chomp($HIP_CLANG_RT_LIB);
+ 
+-    if (! defined $HIP_CLANG_INCLUDE_PATH) {
+-        $HIP_CLANG_INCLUDE_PATH = abs_path("$HIP_CLANG_PATH/../lib/clang/$HIP_CLANG_VERSION/include");
+-    }
+     if (! defined $HIP_INCLUDE_PATH) {
+         $HIP_INCLUDE_PATH = "$HIP_PATH/include";
+     }
+@@ -177,20 +174,12 @@ if ($HIP_PLATFORM eq "amd") {
+             print ("HIP_ROCCLR_HOME=$HIP_ROCCLR_HOME\n");
+         }
+         print ("HIP_CLANG_PATH=$HIP_CLANG_PATH\n");
+-        print ("HIP_CLANG_INCLUDE_PATH=$HIP_CLANG_INCLUDE_PATH\n");
+         print ("HIP_INCLUDE_PATH=$HIP_INCLUDE_PATH\n");
+         print ("HIP_LIB_PATH=$HIP_LIB_PATH\n");
+         print ("DEVICE_LIB_PATH=$DEVICE_LIB_PATH\n");
+         print ("HIP_CLANG_RT_LIB=$HIP_CLANG_RT_LIB\n");
+     }
+ 
+-    if ($isWindows) {
+-      $HIPCXXFLAGS .= " -std=c++14 -fms-extensions -fms-compatibility";
+-    } else {
+-      $HIPCXXFLAGS .= " -std=c++11";
+-    }
+-    $HIPCXXFLAGS .= " -isystem \"$HIP_CLANG_INCLUDE_PATH/..\"";
+-    $HIPCFLAGS .= " -isystem \"$HIP_CLANG_INCLUDE_PATH/..\"";
+     $HIPLDFLAGS .= " -L\"$HIP_LIB_PATH\"";
+     if ($isWindows) {
+       $HIPLDFLAGS .= " -lamdhip64";
+-- 
+2.38.1
+

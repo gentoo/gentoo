@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<maintainer>
+			<email>bugs@portagefilelist.de</email>
+			<name>Johannes Keßler</name>
+		</maintainer>
+		<remote-id type="github">portagefilelist/client</remote-id>
+	</upstream>
+	<use>
+		<flag name="network-cron">Adds a cron job which does a weekly submit of the package database</flag>
+	</use>
+</pkgmetadata>

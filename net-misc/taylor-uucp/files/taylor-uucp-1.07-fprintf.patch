@@ -1,0 +1,11 @@
+--- a/uuconv.c
++++ b/uuconv.c
+@@ -676,7 +676,7 @@
+     {
+       if ((*pz)[0] != '-' && pz != pzarg)
+ 	fprintf (e, " ");
+-      fprintf (e, *pz);
++      fprintf (e, "%s", *pz);
+     }
+ }
+ 

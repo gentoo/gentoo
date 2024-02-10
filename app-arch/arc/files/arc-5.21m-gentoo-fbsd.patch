@@ -1,0 +1,12 @@
+--- a/tmclock.c
++++ b/tmclock.c
+@@ -18,8 +18,10 @@
+ #include <sys/time.h>
+ #else
+ #include <time.h>
++#ifdef timezone
+ extern long	timezone;	/* should be in <time.h>, but isn't on Sun */
+ #endif
++#endif
+ 
+ long	tzone;

@@ -1,0 +1,14 @@
+diff -Naur a/32emu/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2022-03-06 14:47:08.000000000 +0000
++++ b/CMakeLists.txt	2022-03-15 23:26:06.230301579 +0000
+@@ -377,8 +377,8 @@
+ endif()
+
+ install(FILES
+-  AUTHORS.txt COPYING.txt COPYING.LESSER.txt NEWS.txt README.md TODO.txt
+-  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/doc/munt/${PROJECT_NAME}
++  AUTHORS.txt NEWS.txt README.md TODO.txt
++  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/doc/$ENV{PF}
+ )
+
+ # Facilitates usage of the library in another project either through

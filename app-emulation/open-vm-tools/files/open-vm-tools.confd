@@ -1,0 +1,2 @@
+# Set this to no to disable drag and drop (and vmblock) loading.
+VM_DRAG_AND_DROP="yes"

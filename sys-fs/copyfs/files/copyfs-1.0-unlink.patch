@@ -1,0 +1,158 @@
+diff -u --recursive copyfs-1.0-orig/cache.c copyfs-1.0/cache.c
+--- copyfs-1.0-orig/cache.c	2004-12-10 13:34:08.000000000 +0000
++++ copyfs-1.0/cache.c	2004-12-18 20:30:17.945445677 +0000
+@@ -94,6 +94,61 @@
+ }
+ 
+ /*
++ * Remove metadata from the cache
++ */
++void cache_remove_metadata(metadata_t *metadata)
++{
++  version_t * version;
++
++  int atHead = 1;
++  int atTail = 1;
++
++  if (NULL == metadata)
++    return ;
++
++  /* Disconnect it from the list */
++  if (metadata->md_previous)
++  {
++      metadata->md_previous->md_next = metadata->md_next;
++      atHead = 0;
++  }
++
++  if (metadata->md_next)
++  {
++      metadata->md_next->md_previous = metadata->md_previous;
++      atTail = 0;
++  }
++
++  if (atHead)
++  {
++      metadata->md_bucket->b_contents = metadata->md_next;
++      if (metadata->md_next != NULL)
++          metadata->md_next->md_previous = NULL;
++  }
++
++  metadata->md_bucket->b_count--;
++  if (metadata->md_bucket->b_count == 0)
++      metadata->md_bucket->b_contents = NULL;
++
++  version = metadata->md_versions;
++
++  while (NULL != version)
++  {
++	metadata->md_versions = version->v_next;
++	free(version);
++	version = metadata->md_versions;
++  }
++
++  if (metadata->md_vfile != NULL)
++      free (metadata->md_vfile);
++
++  if (metadata->md_vpath != NULL)
++      free (metadata->md_vpath);
++
++  free(metadata);
++}
++
++/*
+  * Clean the older items out of the cache to free space. The goal is to
+  * half the number of items, so that we don't get called constantly.
+  */
+@@ -122,6 +177,7 @@
+   bucket = &cache_hash_table[CACHE_HASH(metadata->md_vfile)];
+   metadata->md_previous = NULL;
+   metadata->md_next = bucket->b_contents;
++  metadata->md_bucket = bucket;
+   if (bucket->b_contents)
+     bucket->b_contents->md_previous = metadata;
+   bucket->b_contents = metadata;
+diff -u --recursive copyfs-1.0-orig/cache.h copyfs-1.0/cache.h
+--- copyfs-1.0-orig/cache.h	2004-12-10 13:34:08.000000000 +0000
++++ copyfs-1.0/cache.h	2004-12-18 20:04:32.072307652 +0000
+@@ -11,6 +11,7 @@
+ void		cache_initialize(void);
+ void		cache_finalize(void);
+ metadata_t	*cache_get_metadata(const char *vpath);
++void		cache_remove_metadata(metadata_t *metadata);
+ void		cache_add_metadata(metadata_t *metadata);
+ int		cache_find_maximal_match(char **array, metadata_t **result);
+ 
+diff -u --recursive copyfs-1.0-orig/interface.c copyfs-1.0/interface.c
+--- copyfs-1.0-orig/interface.c	2004-12-18 20:04:21.560474299 +0000
++++ copyfs-1.0/interface.c	2004-12-18 20:17:22.367357210 +0000
+@@ -137,6 +137,7 @@
+ 		file = helper_build_composite("-S", "/", entry->d_name +
+ 					      strlen(METADATA_PREFIX));
+ 	      metadata = rcs_translate_to_metadata(file, rcs_version_path);
++
+ 	      free(file);
+ 	      if (metadata && !metadata->md_deleted)
+ 		{
+@@ -176,18 +177,42 @@
+   metadata = rcs_translate_to_metadata(path, rcs_version_path);
+   if (!metadata || metadata->md_deleted)
+     return -ENOENT;
+-  version = rcs_find_version(metadata, LATEST, LATEST);
+-  if (lstat(version->v_rfile, &st_rfile) == -1)
+-    return -errno;
+-  if (S_ISDIR(st_rfile.st_mode))
+-    return -EISDIR;
++
++  /* remove all of the versions that we know about */
++
++  version = metadata->md_versions;
++
++  while (NULL != version)
++  {
++    /* if we can't stat the file, we assume it's already toast */
++
++    if (lstat(version->v_rfile, &st_rfile) == 0)
++    {
++      if (S_ISDIR(st_rfile.st_mode))
++      {
++        return -EISDIR;
++      }
++
++      if (unlink(version->v_rfile) == -1)
++        return -errno;
++    }
++
++    /* move on to the next version */
++    metadata->md_versions = version->v_next;
++    free(version);
++
++    version = metadata->md_versions;
++  } 
++
++  /* if we get to here, we've released all the versions */
+   metadata->md_deleted = 1;
+   metafile = create_meta_name(metadata->md_vfile, "metadata");
+-  if (write_metadata_file(metafile, metadata) == -1) {
+-    free(metafile);
++  if (unlink(metafile) == -1)
+     return -errno;
+-  }
+   free(metafile);
++
++  cache_remove_metadata(metadata);
++
+   return 0;
+ }
+ 
+diff -u --recursive copyfs-1.0-orig/structs.h copyfs-1.0/structs.h
+--- copyfs-1.0-orig/structs.h	2004-12-10 13:34:08.000000000 +0000
++++ copyfs-1.0/structs.h	2004-12-18 20:04:32.073307446 +0000
+@@ -38,6 +38,8 @@
+ 
+   metadata_t			*md_next;	/* Next file in bucket	*/
+   metadata_t			*md_previous;	/* Previous "		*/
++
++  bucket_t			*md_bucket;	/* Our container	*/
+ };
+ 
+ struct				bucket_t

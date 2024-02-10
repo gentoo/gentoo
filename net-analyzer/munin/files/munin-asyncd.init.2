@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/libexec/munin/munin-asyncd
+command_args="--fork"
+pidfile="/run/munin-asyncd.pid"
+command_background="yes"
+command_user="munin-async"
+
+depend() {
+	need munin-node
+	before cron
+}
+
+start_pre() {
+	checkpath -d -o munin-async:munin -m 0750 /var/spool/munin-async
+}
+
+# vim: filetype=gentoo-init-d:

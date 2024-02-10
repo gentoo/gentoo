@@ -1,0 +1,51 @@
+https://github.com/urcu/userspace-rcu/commit/106ed13754b1b836f4b59405f4e02aea4bf5eef0
+
+From 106ed13754b1b836f4b59405f4e02aea4bf5eef0 Mon Sep 17 00:00:00 2001
+From: Michael Jeanson <mjeanson@efficios.com>
+Date: Thu, 23 Mar 2023 14:23:55 -0400
+Subject: [PATCH] fix: warning 'noreturn' function does return on ppc
+
+On a ppc64 system with gcc 9.5.0 I get the following error when building
+with -O0 :
+
+/usr/include/urcu/uatomic/generic.h: In function 'void _uatomic_link_error()':
+/usr/include/urcu/uatomic/generic.h:53:1: warning: 'noreturn' function does return
+   53 | }
+      | ^
+
+Split the inline function in 2 variants and apply the noreturn attribute
+only on the builtin_trap one.
+
+Change-Id: I5ae8e764c4cc27af0463924a653b9eaa9f698c34
+Signed-off-by: Michael Jeanson <mjeanson@efficios.com>
+Signed-off-by: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+--- a/include/urcu/uatomic/generic.h
++++ b/include/urcu/uatomic/generic.h
+@@ -38,19 +38,23 @@ extern "C" {
+ #endif
+ 
+ #if !defined __OPTIMIZE__  || defined UATOMIC_NO_LINK_ERROR
+-static inline __attribute__((always_inline, __noreturn__))
++#ifdef ILLEGAL_INSTR
++static inline __attribute__((always_inline))
+ void _uatomic_link_error(void)
+ {
+-#ifdef ILLEGAL_INSTR
+ 	/*
+ 	 * generate an illegal instruction. Cannot catch this with
+ 	 * linker tricks when optimizations are disabled.
+ 	 */
+ 	__asm__ __volatile__(ILLEGAL_INSTR);
++}
+ #else
++static inline __attribute__((always_inline, __noreturn__))
++void _uatomic_link_error(void)
++{
+ 	__builtin_trap();
+-#endif
+ }
++#endif
+ 
+ #else /* #if !defined __OPTIMIZE__  || defined UATOMIC_NO_LINK_ERROR */
+ extern void _uatomic_link_error(void);
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		DeuTex can do many things with Doom, Freedoom, Heretic, Hexen,
+		and Strife “WAD” files, such as extracting and inserting
+		graphics, sounds, levels, and other resources. It can be used
+		for creating and modifying IWAD (“Internal WAD”) and PWAD
+		(“Patch WAD”) files both.
+
+		It is a command-line driven program and as such, is suitable for
+		scripting such as from a shell script or Makefile.
+	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/Doom-Utils/deutex/issues</bugs-to>
+		<doc lang="en">https://github.com/Doom-Utils/deutex</doc>
+		<remote-id type="github">Doom-Utils/deutex</remote-id>
+	</upstream>
+</pkgmetadata>

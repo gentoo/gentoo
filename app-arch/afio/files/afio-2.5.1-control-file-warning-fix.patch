@@ -1,0 +1,29 @@
+Only in b: 1
+diff -ubBr a/afio.c b/afio.c
+--- a/afio.c	2018-03-23 09:16:07.230401966 -0400
++++ b/afio.c	2018-03-23 09:20:05.614421756 -0400
+@@ -3724,7 +3724,8 @@
+ 	
+ 	/* ASX check if file changed between the begining 
+ 	   and end of the backup */
+-	if (*fsname)
++        /* if *fsname==0, it was a control file, so do not check then */
++	if (*fsname!=0)
+ 	{
+ 	    struct stat st;
+ 	    /* I must check fsname ! 
+@@ -3739,13 +3740,10 @@
+ 	        if (st.st_mtime!=sb.sb_mtime)
+ 	        {
+ 	            warn (fsname, "File was modified during its backup");
++		    if(index(ignorewarnings,(int)'d')) warnings--;
+ 	        }
+ 	    }
+ 	}
+-	else
+-	{
+-	    warn (name, "ASX no fsname for this name ??");
+-        }
+ 	
+ 	if(aflag && *fsname && ((sb.sb_mode & S_IFMT)==S_IFREG))
+ 	{

@@ -1,0 +1,14 @@
+Use `mode-line' instead of `modeline' for Emacs 24 compat.
+Patch taken from upstream repo.
+
+--- a/volume.el
++++ b/volume.el
+@@ -973,7 +973,7 @@
+              (select-window
+               (split-window-vertically
+                (if (and (fboundp 'face-attr-construct)
+-                        (plist-get (face-attr-construct 'modeline) :box))
++                        (plist-get (face-attr-construct 'mode-line) :box))
+                    -3 -2)))
+              (switch-to-buffer volume-buffer)))
+           ((not (eq (current-buffer) volume-buffer))

@@ -1,0 +1,12 @@
+diff -uNr lilo-24.1.ORIG/make.vars lilo-24.1/make.vars
+--- lilo-24.1.ORIG/make.vars	2015-01-22 10:36:54.656904227 +0000
++++ lilo-24.1/make.vars	2015-01-22 10:37:16.516903935 +0000
+@@ -71,7 +71,7 @@
+ 
+ CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DNOKEYBOARD -DONE_SHOT \
+     -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVERSION -DVIRTUAL \
+-    -DMDPRAID -DDEVMAPPER
++    -DMDPRAID -DDEVMAPPER -DNOVGA
+    
+ # set the following if you wish LILO.COM to be installed
+ DOS_DIR=/dosC/boot

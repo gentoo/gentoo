@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 2022 Gentoo Authors
+# Released under the 2-clause BSD license.
+
+description="Create Volatile Files and Directories"
+
+depend()
+{
+	provide tmpfiles-setup tmpfiles.setup
+	need localmount
+}
+
+start()
+{
+	ebegin "${description}"
+	systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev
+	eend $?
+}

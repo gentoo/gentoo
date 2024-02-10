@@ -1,0 +1,11 @@
+diff --git a/lib/Makefile b/lib/Makefile
+index 9104f27..0c8b197 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -6,5 +6,5 @@ clean:
+ 
+ openclit.a: litatom.o litdrm.o litlib.o litembiggen.o littags.o litmetatags.o litmanifest.o litdirectory.o litsections.o litheaders.o litutil.o sha/mssha1.o des/des.o newlzx/lzxglue.o newlzx/lzxd.o
+ 	-rm -f openclit.a
+-	ar rv openclit.a $^
++	$(AR) rv openclit.a $^
+ 

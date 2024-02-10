@@ -1,0 +1,59 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,6 +12,8 @@
+ AC_PROG_CXX
+ LT_INIT([disable-static])
+ 
++PKG_PROG_PKG_CONFIG
++
+ AC_CHECK_TYPE(u_int32_t, uint32_t)
+ AC_CHECK_TYPE(u_int64_t, uint64_t)
+ AC_CHECK_TYPE(u_int16_t, uint16_t)
+@@ -20,46 +22,7 @@
+ AC_CANONICAL_HOST
+ 
+ ## Checks for libpcap
+-AC_MSG_CHECKING(for libpcap)
+-AC_ARG_WITH(libpcap,
+-[  --with-libpcap=DIR      use libpcap in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/pcap.h -a -f $withval/libpcap.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-	PCAPINC="-I$withval -I$withval/bpf"
+-	PCAPLIB="-L$withval -lpcap"
+-     elif test -f $withval/include/pcap.h -a \
+-	       -f $withval/include/net/bpf.h -a \
+-	       -f $withval/lib/libpcap.a; then
+-	owd=`pwd`
+-	if cd $withval; then withval=`pwd`; cd $owd; fi
+-	PCAPINC="-I$withval/include"
+-	PCAPLIB="-L$withval/lib -lpcap"
+-     else
+-        AC_ERROR(pcap.h, net/bpf.h, or libpcap.a not found in $withval)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -f ${prefix}/include/pcap.h; then
+-     PCAPINC="-I${prefix}/include"
+-     PCAPLIB="-L${prefix}/lib -lpcap"
+-  elif test -f /usr/include/pcap/pcap.h; then
+-     PCAPINC="-I/usr/include/pcap"
+-     PCAPLIB="-lpcap"
+-  elif test -f /usr/include/pcap.h; then
+-     PCAPLIB="-lpcap"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_ERROR(libpcap not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
++PKG_CHECK_MODULES([PCAP], [libpcap], [PCAPINC="${PCAP_CFLAGS}"; PCAPLIB="${PCAP_LIBS}"],AC_MSG_ERROR([libpcap is required]))
+ AC_SUBST(PCAPINC)
+ AC_SUBST(PCAPLIB)
+ AC_CHECK_LIB([pcap], [pcap_set_immediate_mode],

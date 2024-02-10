@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/815700
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,7 +22,6 @@ AC_PROG_CC
+ AC_PROG_CXX
+ AX_PROG_CC_FOR_BUILD
+ 
+-AX_CC_MAXOPT
+ AX_GCC_WARN_UNUSED_RESULT
+ AX_C___ATTRIBUTE__
+ 
+-- 
+

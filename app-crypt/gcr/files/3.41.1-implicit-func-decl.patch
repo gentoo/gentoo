@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/900152
+
+It doesn't make sense to default XOPEN_SOURCE and subsequently DEFAULT_SOURCE
+as DEFAULT_SOURCE is asking for no extensions. Anyway, just ask for GNU_SOURCE
+as it'll placate both musl and glibc for all of strptime/timegm/getpass and
+gcr-3 is obsolete anyway.
+--- a/gck/meson.build
++++ b/gck/meson.build
+@@ -77,8 +77,7 @@ gck_cflags = [
+   '-DGCK_API_SUBJECT_TO_CHANGE',
+   '-DP11_KIT_API_SUBJECT_TO_CHANGE',
+   '-DPKCS11_REGISTRY_DIR="@0@"'.format(get_option('prefix') / get_option('libdir') / 'pkcs11'),
+-  '-D_XOPEN_SOURCE',   # Needed for strptime()
+-  '-D_DEFAULT_SOURCE', # Needed for timegm
++  '-D_GNU_SOURCE',   # Needed for strptime(), timegm, getpass
+ ]
+ 
+ gck_symbolmap = meson.current_source_dir() / 'libgck.map'
+--- a/gcr/meson.build
++++ b/gcr/meson.build
+@@ -146,7 +146,7 @@ gcr_base_cflags = [
+   '-DGCR_API_SUBJECT_TO_CHANGE',
+   '-DGCK_API_SUBJECT_TO_CHANGE',
+   '-DP11_KIT_API_SUBJECT_TO_CHANGE',
+-  '-D_XOPEN_SOURCE',   # Needed for strptime()
++  '-D_GNU_SOURCE',   # Needed for strptime(), timegm, getpass
+ ]
+ 
+ gcr_base_symbolmap = meson.current_source_dir() / 'libgcr-base.map'
+

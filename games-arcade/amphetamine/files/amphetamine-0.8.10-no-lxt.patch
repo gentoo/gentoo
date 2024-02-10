@@ -1,0 +1,14 @@
+description: don't link against Xt
+Index: amphetamine-0.8.10/Makefile
+===================================================================
+--- amphetamine-0.8.10.orig/Makefile	2006-11-08 11:05:57.000000000 +0100
++++ amphetamine-0.8.10/Makefile	2006-11-08 11:06:01.000000000 +0100
+@@ -69,7 +69,7 @@
+ LOADLIBES := -lm $(SDL_LIBS)
+ 
+ ifeq ($(USE_LIB_XPM),TRUE)
+-    LOADLIBES := $(LOADLIBES) -lXpm -lXt
++    LOADLIBES := $(LOADLIBES) -lXpm
+ endif
+ 
+ LDFLAGS   = -L/usr/lib -L/usr/local/lib -L/usr/X11R6/lib 

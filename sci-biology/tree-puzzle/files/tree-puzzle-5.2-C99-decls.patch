@@ -1,0 +1,360 @@
+--- a/src/consensus.c
++++ b/src/consensus.c
+@@ -32,7 +32,7 @@
+ /******************************************************************************/
+ 
+ /* prepare for consensus tree analysis */
+-void initconsensus()
++void initconsensus(void)
+ {
+ #	if ! PARALLEL
+ 		biparts = new_cmatrix(Maxspc-3, Maxspc);
+--- a/src/consensus.h
++++ b/src/consensus.h
+@@ -65,7 +65,7 @@
+ /******************************************************************************/
+ 
+ /* prepare for consensus tree analysis */
+-void initconsensus();
++void initconsensus(void);
+ 
+ /* recursive function to get bipartitions */
+ /* traversal should be optimazable (HAS) */
+--- a/src/ml1.c
++++ b/src/ml1.c
+@@ -244,7 +244,7 @@
+ /***************************** exported functions *****************************/
+ 
+ 
+-void evaluateseqs()
++void evaluateseqs(void)
+ {	
+ 	ivector ali;
+ 
+@@ -1018,7 +1018,7 @@
+ 
+ 
+ /* compute 1 PAM rate matrix, its eigensystem, and the inverse matrix thereof */
+-void tranprobmat()
++void tranprobmat(void)
+ {
+ 	eigensystem(Eval, Evec); /* eigensystem of 1 PAM rate matrix */
+ 	luinverse(Evec, Ievc, tpmradix); /* inverse eigenvectors are in Ievc */
+@@ -1324,7 +1324,7 @@
+ 
+ 
+ /* initialize distance matrix */
+-void initdistan()
++void initdistan(void)
+ {
+ 	int i, j, k, diff, x, y;
+ 	double obs, temp;
+@@ -1478,7 +1478,7 @@
+ 
+ #else /* not PARALLEL */
+ 
+-void computedistan()
++void computedistan(void)
+ {
+ 	int i, j;
+ 
+--- a/src/ml2.c
++++ b/src/ml2.c
+@@ -1036,7 +1036,7 @@
+ 
+ 
+ /* preparation for ML analysis */
+-void mlstart()
++void mlstart(void)
+ {
+ 	/* number of states and code length */
+ 	tpmradix = gettpmradix();
+@@ -1098,7 +1098,7 @@
+ 
+ 
+ /* cleanup after ML analysis */
+-void mlfinish()
++void mlfinish(void)
+ {
+ 	if (Ctree != NULL)
+ 		free_tree(Ctree, Numspc);
+@@ -1566,7 +1566,7 @@
+                              int bestratefound,
+                              int ncats)    /* numcats */
+ #endif
+-void findbestratecombination()
++void findbestratecombination(void)
+ {
+ 	int k, u;
+ 	double bestvalue, fv2;
+@@ -2147,7 +2147,7 @@
+ } /* clock_lklhd */
+ 
+ /* find out the edge containing the root */
+-int findrootedge()
++int findrootedge(void)
+ {
+ 	int e, ebest;
+ 	double logbest, logtest;
+--- a/src/mlparam.c
++++ b/src/mlparam.c
+@@ -70,7 +70,7 @@
+ }
+ 
+ /* compute rates of each category when rates are Gamma-distributed */
+-void updaterates()
++void updaterates(void)
+ {
+ 	int i;
+ 	double alpha;
+@@ -190,7 +190,7 @@
+ }
+ 
+ /* estimate substitution process parameters - random quartets */
+-void optimseqevolparamsquart()
++void optimseqevolparamsquart(void)
+ {
+ 	double tsmeanold, yrmeanold;
+ 	dvector tslist, yrlist;
+@@ -320,7 +320,7 @@
+ 
+ 
+ /* optimize substitution process parameters - tree */
+-void optimseqevolparamstree()
++void optimseqevolparamstree(void)
+ {
+ 	twodimenmin(EPSILON_SUBSTPARAM,
+ 		(SH_optn || nuc_optn) && optim_optn && (data_optn == 0),
+@@ -379,7 +379,7 @@
+ 
+ 
+ /* optimize rate heterogeneity parameters */
+-void optimrateparams()
++void optimrateparams(void)
+ {	
+ 	twodimenmin(EPSILON_RATEPARAM,
+ 		fracinv_optim,
+@@ -396,7 +396,7 @@
+ 
+ /* estimate parameters of substitution process and rate heterogeneity - no tree
+    n-taxon tree is not needed because of quartet method or NJ tree topology */
+-void estimateparametersnotree()
++void estimateparametersnotree(void)
+ {
+ 	int it, nump, change;
+ 	double TSold, YRold, FIold, GEold;
+@@ -495,7 +495,7 @@
+ 
+ /* estimate parameters of substitution process and rate heterogeneity - tree
+    same as above but here the n-taxon tree is already in memory */
+-void estimateparameterstree()
++void estimateparameterstree(void)
+ {
+ 	int it, nump, change;
+ 	double TSold, YRold, FIold, GEold;
+--- a/src/model1.c
++++ b/src/model1.c
+@@ -31,7 +31,7 @@
+ #include "ml.h"
+ 
+ /* number of states of the selected model */ 
+-int gettpmradix()
++int gettpmradix(void)
+ {
+ 	if (data_optn == 0) { /* nucleotides */
+ 		if (nuc_optn) return 4;
+--- a/src/puzzle1.c
++++ b/src/puzzle1.c
+@@ -345,7 +345,7 @@
+ /******************************************************************************/
+ 
+ /* compute TN parameters according to F84 Ts/Tv ratio */
+-void makeF84model()
++void makeF84model(void)
+ {
+ 	double rho, piA, piC, piG, piT, piR, piY, ts, yr;
+ 	
+@@ -390,7 +390,7 @@
+ } /* makeF84model */
+ 
+ /* compute number of quartets used in LM analysis */
+-void compnumqts()
++void compnumqts(void)
+ {
+ 	if (lmqts == 0) {
+ 		if (numclust == 4)
+@@ -407,7 +407,7 @@
+ } /* compnumqts */
+ 
+ /* set options interactively */
+-void setoptions()
++void setoptions(void)
+ {	
+ 	int i, valid;
+ 	double sumfreq;
+@@ -1718,7 +1718,7 @@
+ } /* closefile */
+ 
+ /* symmetrize doublet frequencies */
+-void symdoublets()
++void symdoublets(void)
+ {
+ 	int i, imean;
+ 	double mean;
+@@ -1769,7 +1769,7 @@
+ } /* symdoublets */
+ 
+ /* show Ts/Tv ratio and Ts Y/R ratio */
+-void computeexpectations()
++void computeexpectations(void)
+ {
+ 	double AlphaYBeta, AlphaRBeta, piR, piY, num, denom, pyr, pur;
+ 	
+@@ -4604,7 +4604,7 @@
+ /* Reconstruct a tree with QP */
+ /* (parameter estimation already done) */
+ 
+-void recon_tree()
++void recon_tree(void)
+ {
+ 	int i;
+ 	unsigned char tmpweight;
+@@ -4848,7 +4848,7 @@
+ 
+ /***************************************************************/ 
+ 
+-void map_lklhd()
++void map_lklhd(void)
+ {	
+ 	int i, a, a1, a2, b, b1, b2, c, c1, c2, d;
+ 	uli nq;
+@@ -5101,7 +5101,7 @@
+ 
+ /***************************************************************/ 
+ 
+-void setdefaults() {
++void setdefaults(void) {
+ 
+   strcpy(INFILE,     INFILEDEFAULT);
+   strcpy(OUTFILE,    OUTFILEDEFAULT);
+@@ -6027,7 +6027,7 @@
+ 
+ /***************************************************************/ 
+ 
+-void memcleanup() { 
++void memcleanup(void) { 
+ 	if (puzzlemode == QUARTPUZ && typ_optn == TREERECON_OPTN) {
+ 		free(splitfreqs);
+ 		free(splitpatterns);
+--- a/src/puzzle2.c
++++ b/src/puzzle2.c
+@@ -860,7 +860,7 @@
+ 
+ 
+ /* estimate mean base frequencies from translated data set */
+-void estimatebasefreqs()
++void estimatebasefreqs(void)
+ {
+ 	int tpmradix, i, j;
+ 	uli all, *gene;
+@@ -903,7 +903,7 @@
+ 
+ 
+ /* guess model of substitution */
+-void guessmodel()
++void guessmodel(void)
+ {
+ 	double c1, c2, c3, c4, c5, c6;
+ 	dvector f;
+@@ -1160,7 +1160,7 @@
+ } /* callocquartets */
+ 
+ /* free quartet memory */
+-void freequartets()
++void freequartets(void)
+ {	
+ 	free(quartetinfo);
+ } /* freequartets */
+@@ -1357,7 +1357,7 @@
+ /*************************/
+ 
+ /* checks out all possible quartets */
+-void computeallquartets()
++void computeallquartets(void)
+ {	
+ 	double onethird;
+ 	uli nq;
+--- a/src/sprng/makeseed.c
++++ b/src/sprng/makeseed.c
+@@ -1,10 +1,6 @@
+ #include <time.h>
+ 
+-#ifdef __STDC__
+-int make_new_seed()
+-#else
+-int make_new_seed()
+-#endif
++int make_new_seed(void)
+ {
+   time_t tp;
+   struct tm *temp;
+--- a/src/sprng/primes-lcg64.c
++++ b/src/sprng/primes-lcg64.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "primes-lcg64.h"
+ #include "primelist-lcg64.h"
+ 
+--- a/src/treesort.c
++++ b/src/treesort.c
+@@ -487,7 +487,7 @@
+ /**********/
+ 
+ /* malloc new tree list item */
+-treelistitemtype *gettreelistitem()
++treelistitemtype *gettreelistitem(void)
+ {
+ 	treelistitemtype *tmpptr;
+ 	tmpptr = (treelistitemtype *)calloc((size_t) 1, sizeof(treelistitemtype));
+--- a/src/treesort.h
++++ b/src/treesort.h
+@@ -84,7 +84,7 @@
+ /**********/
+ 
+ /* allocate memory for ctree 3 ints pointer plus 1 check byte */
+-int *initctree();
++int *initctree(void);
+ 
+ /**********/
+ 
+@@ -174,7 +174,7 @@
+ /**********/
+ 
+ /* malloc new tree list item */
+-treelistitemtype *gettreelistitem();
++treelistitemtype *gettreelistitem(void);
+ 
+ /**********/
+ 
+--- a/src/util.c
++++ b/src/util.c
+@@ -507,7 +507,7 @@
+ #define EPS 1.2e-7
+ #define RNMX (1.0-EPS)
+ 
+-double randomunitintervall()
++double randomunitintervall(void)
+ /* Long period (> 2e18) random number generator. Returns a uniform random
+    deviate between 0.0 and 1.0 (exclusive of endpoint values).
+ 
+@@ -734,7 +734,7 @@
+ /* Reads characters from stdin until a newline character or EOF
+    is received.  The newline is not made part of the string.
+    If an error occurs a null string \0 is returned */
+-cvector mygets()
++cvector mygets(void)
+ {
+ 	int c, n;
+ 	cvector str;

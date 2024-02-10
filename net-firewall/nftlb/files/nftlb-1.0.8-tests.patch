@@ -1,0 +1,45 @@
+diff --git a/tests/config_exec/exec_tests.sh b/tests/config_exec/exec_tests.sh
+index f63950e..a55b467 100755
+--- a/tests/config_exec/exec_tests.sh
++++ b/tests/config_exec/exec_tests.sh
+@@ -36,6 +36,8 @@ fi
+ 
+ echo "-- Executing configuration tests"
+ 
++retval=0
++
+ for test in `ls -d ${TESTS}`; do
+ 	if [[ ! ${test} =~ ^..._ ]]; then
+ 		continue;
+@@ -58,6 +60,7 @@ for test in `ls -d ${TESTS}`; do
+ 
+ 	if [ $statusexec -ne 0 ]; then
+ 		echo -e "\e[31mNFT EXEC ERROR\e[0m"
++		retval=1
+ 		continue;
+ 	fi
+ 
+@@ -65,6 +68,7 @@ for test in `ls -d ${TESTS}`; do
+ 
+ 	if [ ! -f ${outputfile} ]; then
+ 		echo "Dump file doesn't exist"
++		retval=1
+ 		continue;
+ 	fi
+ 
+@@ -76,6 +80,7 @@ for test in `ls -d ${TESTS}`; do
+ 		rm -f ${reportfile}
+ 	else
+ 		echo -e "\e[31mNFT DUMP ERROR\e[0m"
++		retval=1
+ 		if [ $APPLY_REPORTS -eq 1 ]; then
+ 			cat ${reportfile} > ${outputfile}
+ 			echo -e "APPLIED"
+@@ -89,4 +94,7 @@ fi
+ 
+ if [ "`grep 'nft command error' /var/log/syslog`" != "" ]; then
+ 	echo -e "\e[33m* command errors found, please check syslog\e[0m"
++	retval=1
+ fi
++
++exit ${retval}

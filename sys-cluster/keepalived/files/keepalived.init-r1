@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use logger
+	# The interfaces do not actually need to exist to start, it handles them gracefully.
+	use net
+}
+
+command="/usr/sbin/keepalived"
+command_args="${KEEPALIVED_OPTS}"
+extra_started_commands="reload"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="/etc/keepalived/keepalived.conf"
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

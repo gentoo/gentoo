@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<use>
+		<flag name="hamlib">Enables support by the Hamlib amateur radio 
+			rig control library to get/set frequency and mode of the 
+			ham radio in use</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">fldigi</remote-id>
+		<remote-id type="github">w1hkj/fldigi</remote-id>
+	</upstream>
+</pkgmetadata>

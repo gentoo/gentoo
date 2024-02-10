@@ -1,0 +1,13 @@
+diff -ur a/visual_regexp.tcl b/visual_regexp.tcl
+--- a/visual_regexp.tcl	2013-10-29 03:42:43.443932232 +0100
++++ b/visual_regexp.tcl	2013-10-29 03:35:35.441951822 +0100
+@@ -1,7 +1,6 @@
+-package require starkit
+-starkit::startup
++#!/usr/bin/wish
+ 
+-set version 3.0
++set version 3.1
+ 
+ ###############################################################################################
+ #

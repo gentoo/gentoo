@@ -1,0 +1,10 @@
+[Unit]
+Description=LCDProc (LCDd)
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/LCDd -c /etc/LCDd.conf
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

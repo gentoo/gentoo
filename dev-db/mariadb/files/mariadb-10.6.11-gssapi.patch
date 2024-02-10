@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/885829
+https://github.com/mariadb-corporation/mariadb-connector-c/pull/210
+
+From 31f78bb28927b7897b282bb1b270e772a0741d72 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Fri, 25 Nov 2022 15:05:33 +0100
+Subject: [PATCH] Use find_package(GSSAPI) instead including the module
+
+When including it, CMAKE_DISABLE_FIND_PACKAGE doesn't have the desired
+effect. This can cause a CMake error when building mariadb:
+
+"CMake Error at libmariadb/plugins/auth/CMakeLists.txt:123 (SET_TARGET_PROPERTIES):
+  SET_TARGET_PROPERTIES Can not find target to add properties to:
+  auth_gssapi_client"
+--- a/libmariadb/CMakeLists.txt
++++ b/libmariadb/CMakeLists.txt
+@@ -4,6 +4,7 @@
+ 
+ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
+ INCLUDE(CheckFunctionExists)
++INCLUDE(FeatureSummary)
+ IF(COMMAND CMAKE_POLICY)
+   SET(NEW_POLICIES CMP0003 CMP0022 CMP0023 CMP0057 CMP0077 CMP0069 CMP0075)
+   FOREACH(TYPE OLD NEW)
+@@ -410,7 +411,8 @@ IF(NOT REMOTEIO_PLUGIN_TYPE MATCHES "OFF")
+ ENDIF()
+ IF(NOT WIN32)
+   IF(NOT AUTH_GSSAPI_PLUGIN_TYPE MATCHES "OFF")
+-    INCLUDE(${CC_SOURCE_DIR}/cmake/FindGSSAPI.cmake)
++    FIND_PACKAGE(GSSAPI)
++    SET_PACKAGE_PROPERTIES(GSSAPI PROPERTIES TYPE OPTIONAL)
+     IF(GSSAPI_FOUND)
+       INCLUDE_DIRECTORIES(${GSSAPI_INCS})
+       IF(AUTH_GSSAPI_PLUGIN_TYPE MATCHES "STATIC")
+--- a/libmariadb/plugins/auth/CMakeLists.txt
++++ b/libmariadb/plugins/auth/CMakeLists.txt
+@@ -96,7 +96,8 @@ ENDIF()
+ 
+ #GSSAPI client authentication plugin
+ IF(NOT WIN32)
+-  INCLUDE(${CC_SOURCE_DIR}/cmake/FindGSSAPI.cmake)
++  FIND_PACKAGE(GSSAPI)
++  SET_PACKAGE_PROPERTIES(GSSAPI PROPERTIES TYPE OPTIONAL)
+   IF(GSSAPI_FOUND)
+     SET(GSSAPI_SOURCES ${AUTH_DIR}/auth_gssapi_client.c ${AUTH_DIR}/gssapi_client.c ${AUTH_DIR}/gssapi_errmsg.c)
+     IF (CMAKE_VERSION VERSION_GREATER 3.18)
+

@@ -1,0 +1,13 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Avoid creation of an empty directory "/usr/share/esorex/config"
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -51,8 +51,6 @@
+ 
+ bin_PROGRAMS = esorex
+ 
+-config_DATA =
+-
+ esorex_LDFLAGS = $(CPL_LDFLAGS) $(LIBLTDL)
+ esorex_LDADD = @GETOPT@ $(LIBCPLDFS) $(LIBCPLUI) $(LIBCPLCORE) $(LIBCEXT) $(LIBLTDL)
+ esorex_DEPENDENCIES = @GETOPT@ $(LIBLTDL)

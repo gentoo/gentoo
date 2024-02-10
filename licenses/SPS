@@ -1,0 +1,319 @@
+The Software Preservation Society ("SPS")
+Licence Agreement (Licence, Copyright and Terms of Use)
+
+SPS technology is exclusively represented and licensed by
+KryoFlux Products & Services Limited, 80 Allington Way, Maidstone,
+ME16 0HN, United Kingdom
+
+
+ATTENTION: READ CAREFULLY: By using, copying, or distributing the
+accompanying software you indicate your acceptance of the following
+SPS Licence Agreement ("Agreement").
+
+
+PREAMBLE
+
+The SPS philosophy dictates that the technology associated with capturing
+floppy disk based software should be provided to "the community" for free
+(free as in "free beer") to the greatest extent possible in order to
+facilitate digital preservation efforts.
+
+This licence enforces that philosophy. It protects against misuse of
+a technology that has been a long time in development and is provided
+to the community or anyone else who would like to use it. It also
+intends to protect SPS itself from possible legal liability.
+
+
+SPS technology covered by this license can be divided into two categories:
+
+KRYOFLUX HIGH DEFINITION FLUX SAMPLER FOR USB: Preservation starts at
+the ingestion level. SPS therefore has developed a combination of hard
+and software targeted at software preservation called KryoFlux. KryoFlux
+software may be used for private, non-commercial purposes only. KryoFlux
+hardware schematics are provided for private, non-commercial use as well.
+Therefore private users can decide to build a KryoFlux board on their own,
+as long as the board is used for private purposes only and as long as such
+boards are not being sold to others (this includes boards given away for
+any kind of compensation). Licenses for commercial, government or academic
+use of KryoFlux can be applied for by contacting us at the email at the
+bottom of this license.
+
+CTA SOFTWARE PRESERVATION ANALYSER: This product is the core of SPS
+technology and is under constant development since 2001. The Analyser
+is used by SPS internally and also available as a commercial product for
+institutes, libraries, archives and museums. The Analyser is not free, it
+is commercial software. This means that possession or distribution without
+a proper licence is breach of international copyright treaties.
+
+
+The IPF support library is covered by a separate license and is
+specifically excluded from the terms laid out in this license, available
+in the IPF support library distribution.
+
+
+You may notice that this licence is very strict in pursuit of getting
+the software into the hands of people who wish to use it for free. You
+can not distribute it without written permission, charge to give it to
+somebody, not even for media costs. You cannot have it on a CD ROM that is
+distributed for payment. You cannot use it as part of providing a service
+that receives payment in any form.
+
+Any source provided (if any) is for inspection, understanding and
+safe keeping only. This will ensure that data capture or stored with
+SPS technology can still be accessed in the future even if there is
+no successor or representative of SPS available.
+
+Infringement of any of the terms of this licence is breaching
+international copyright laws, but it also hurts the communities
+benefiting from the technology by risking its future improvement
+and availability.
+
+This licence was not produced for the fun of it, you should note that
+only those who could possibly benefit financially are being restricted.
+Those people should negotiate an alternative license, which helps fund
+future development and our preservation activities.
+
+If you do not agree with any of the terms in this licence for the
+Technology then you are obviously free to choose not to use it.
+
+The latest version of this licence, libraries and imaging software can be
+found on the following sites:
+
+  http://www.softpres.org
+
+  http://www.kryoflux.com
+
+
+It is very easy to comply with this licence: Do not sell, modify or
+abuse the software and don't steal code from source provided. Learn,
+understand and write your own if you need to. Feel free to ask if you
+want to use something you can not create on your own. That's it.
+Everything else mentioned is here for those who may not understand
+these simple rules.
+
+
+1. CLARIFICATION. The software product and accompanying documentation
+   (the program's object code, source code and documentation, explicitly
+   excluding the file format definitions (e.g. but not limited to IPF,
+   STREAM, DRAFT) included within, are collectively referred to as the
+   "Technology") is a technology and does not imply any restrictions,
+   warranty, licence, obligation or any other link or association with
+   what it may contain (the data ingested or encapsulated by the
+   Technology is referred to as the "Content").
+
+   Unless otherwise noted, The Software Preservation Society ("SPS")
+   does not hold the copyright of the Content, the data being ingested,
+   reproduced, preserved, represented using the Technology. All copyright
+   of Content provided using the Technology is held by its respective
+   owners. Terms and conditions may apply to the Content that do not
+   affect whatsoever the licence agreement provided with the Technology.
+
+
+2. LICENCE.
+
+   I. LICENCE for KRYOFLUX HIGH DEFINITION FLUX SAMPLER software
+
+      SPS hereby grants you a non-exclusive, non-transferable licence to
+      use the Technology on the following terms and only for private,
+      non-profit purposes (see Section 3 below) unless explicitly sold by
+      SPS or its affiliates as a governmental, academic or commercial
+      edition.
+
+      You may:
+
+         a. use the Technology on any computer in your possession;
+
+         b. make copies of the Technology for backup purposes;
+
+         c. inspect ("understand") the source code (if provided).
+
+    SPS explicitly does not claim any ownership in the Content (the
+    data) ingested by the user with the KRYOFLUX device.
+
+
+   II. LICENCE for CTA SOFTWARE PRESERVATION ANALYSER
+
+      SPS hereby grants you a non-exclusive, non-transferable licence to
+      use the Technology on the following terms (see Section 3 below).
+
+      You may:
+
+         a. use the Technology on only one computer in your possession at
+         the same time;
+
+         b. make up to three copies of the Technology for backup purposes.
+
+    You explicitly MUST NOT distribute CTA's licensing device or the
+    data stored therein.
+
+    SPS explicitly does not claim any ownership in the Content (the
+    data) processed by the user with the CTA software.
+
+
+3. LIMITATIONS ON LICENCE. The licence granted in Section 2 is subject
+   to the following restrictions:
+
+   a. The Technology is to be used only for non-profit purposes unless
+   you obtain prior written consent from SPS. Prohibited for-profit
+   and commercial purposes include, but are not limited to:
+
+     (i) Selling, licensing or renting the Technology to third parties
+     for a fee (by payment of money or otherwise, whether direct or
+     indirect);
+
+     (ii) Using the Technology to provide services or products to others
+     for which you are compensated in any manner (by payment of money
+     or otherwise, whether direct or indirect), including, without
+     limitation, providing support or maintenance for the Technology;
+
+     (iii) Distribution or use from which any form of income is received
+     regardless of profits therefrom, or from which any revenue or
+     promotional value is received, as well as any distribution to, or
+     use in, a corporate environment.  Use of the Technology to promote
+     or support a commercial venture is included in this restriction;
+
+     (iv) Using the Technology in a governmental and / or educational
+     institution or whole subsidiaries thereof;
+
+   b. Media costs associated with the distribution of the Technology may
+   not be recovered. You shall use your best efforts to promptly notify
+   SPS upon learning of any violation of the above commercial
+   restrictions.
+
+   c. On each copy of the Technology you must conspicuously and
+   appropriately reproduce this license, copyright notice, and
+   disclaimer of warranty; keep intact this Agreement and all notices
+   that refer to this Agreement or any absence of warranty (whether
+   written or interactively displayed); and give any other recipients
+   of the Technology a copy of this Agreement.
+
+   d. No distribution may include the totality or part of the
+   Technology changed, unchanged, encrypted, archived, in whatever form,
+   unless according to the Licence or special agreement with SPS.
+
+
+4. DISTRIBUTION: As used in this Agreement, the term "distribute" (and
+   its variants) includes making the Technology available (either
+   intentionally or unintentionally) to third parties for copying or
+   use, including providing timeshare access. Each time you distribute
+   the Technology, the recipient must expressly agree to comply with
+   these terms and conditions. The recipient automatically receives
+   this licence to use, copy, or distribute the Technology subject to
+   these terms and conditions. You may not impose any further
+   restrictions on the recipients' exercise of the rights granted
+   herein. You are not responsible for enforcing compliance with this
+   Agreement by recipients.
+
+
+5. TITLE. Title, ownership rights, and intellectual property rights in
+   and to the Technology, and each copy thereof (including all
+   copyrights therein), shall remain in SPS. The Technology is
+   protected by international copyright treaties.
+
+
+6. NO SPS OBLIGATION. You are solely responsible for all of your
+   costs and expenses incurred in connection with the distribution of
+   the Technology, and SPS shall have no liability, obligation or
+   responsibility therefor. SPS shall have no obligation to provide
+   maintenance, support, upgrades or new releases to you or to any
+   distributee of the Technology.
+
+
+7. NO WARRANTY. THE SOFTWARE IS LICENSED FREE OF CHARGE, AND THERE IS
+   NO WARRANTY FOR THE TECHNOLOGY. SPS PROVIDES THE TECHNOLOGY
+   "AS IS," AND SPS, AND ALL OTHER PERSONS WHO HAVE BEEN INVOLVED
+   IN THE CREATION, PRODUCTION, OR DELIVERY OF THE TECHNOLOGY, DISCLAIM
+   ALL CONDITIONS AND WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED,
+   STATUTORY, OR OTHERWISE, INCLUDING, BUT NOT LIMITED TO, ANY
+   CONDITIONS OR IMPLIED WARRANTIES OF MERCHANTABILITY, SATISFACTORY
+   QUALITY, AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO
+   THE RESULTS, QUALITY AND PERFORMANCE OF THE TECHNOLOGY IS WITH YOU
+   AND YOUR DISTRIBUTEES. SHOULD THE TECHNOLOGY PROVE DEFECTIVE, YOU
+   AND YOUR DISTRIBUTEES (AND NOT SPS) ASSUME THE COST OF ALL
+   NECESSARY SERVICING, REPAIR OR CORRECTION. SPS MAKES NO
+   WARRANTY OF NONINFRINGEMENT OF THE INTELLECTUAL PROPERTY RIGHTS OF
+   THIRD PARTIES.
+
+
+8. LIMITATION OF LIABILITY. UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL
+   THEORY, TORT, CONTRACT, OR OTHERWISE, SHALL SPS, OR ANY OTHER
+   PERSON WHO HAS BEEN INVOLVED IN THE CREATION, PRODUCTION, OR
+   DELIVERY OF THE TECHNOLOGY BE LIABLE TO YOU OR ANY OTHER PERSON FOR
+   ANY GENERAL, DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL,
+   OR OTHER DAMAGES OF ANY CHARACTER ARISING OUT OF THIS AGREEMENT OR
+   THE USE OF OR INABILITY TO USE THE TECHNOLOGY, INCLUDING BUT NOT
+   LIMITED TO PERSONAL INJURY, LOSS OF PROFITS, LOSS OF DATA, OUTPUT
+   FROM THE TECHNOLOGY OR DATA BEING RENDERED INACCURATE, FAILURE OF
+   THE TECHNOLOGY TO OPERATE WITH ANY OTHER PROGRAMS, DAMAGES FOR LOSS
+   OF GOODWILL, BUSINESS INTERRUPTION, COMPUTER FAILURE OR MALFUNCTION,
+   OR ANY AND ALL OTHER DAMAGES OR LOSSES OF WHATEVER NATURE, EVEN IF
+   SPS HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+9. INDEMNIFICATION. You and your distributees shall defend, indemnify
+   and hold harmless SPS, and all other persons who have been
+   involved in the creation, production, or delivery of the Technology,
+   from any claim, demand, liability, damage award, suit, judgement, or
+   other legal action (including reasonable attorney's fees) arising
+   out of your use, distribution, modification, or duplication of the
+   Technology.
+
+
+10. TERMINATION. The licence granted hereunder is effective until
+    terminated by SPS. You may terminate it at any time by
+    destroying the Technology. This licence will terminate automatically
+    if you fail to comply with the limitations described above. On
+    termination, you must destroy all copies of the Technology. The
+    termination of your licence will not result in the termination of
+    the licences of any distributees who have received rights to the
+    Technology through you so long as they are in compliance with the
+    provisions of this Agreement.
+
+
+11. MISCELLANEOUS. This Agreement represents the complete agreement
+    concerning this licence between the parties and supersedes all
+    prior agreements and representations between them. It may not be
+    amended. If any provision of this Agreement is held to be
+    unenforceable for any reason, this Agreement shall terminate.
+
+    The most current version of this licence is kept on the SPS
+    web site. Due notice shall be given if ever the licence changes,
+    then all versions of the Technology will be constrained by the
+    newer licence.
+
+    Any term of this Agreement which is, or is deemed to be, unlawful
+    shall be ineffective only to the extent of such invalidity without
+    rendering invalid the remaining terms hereof. This Agreement shall
+    be construed and enforced with the same force and effect as if
+    entered into and performed in England and Wales and shall, in all
+    respects, be interpreted in accordance with, and governed by the
+    laws of this country.
+
+    Anything else not covered by this agreement must be agreed with
+    us before any action can be taken by any party.
+
+    Address all correspondence regarding this licence to:
+
+    licensing@kryoflux.com
+
+
+Copyright and Trademark Notices:
+--------------------------------
+The Technology is Copyright (c) 2001-2014 SPS and István Fábián under
+exclusive licence to KryoFlux Products & Services Limited. All rights
+reserved. The documentation and all computer files are also Copyright
+(c) 2001-2014 SPS and István Fábián under exclusive licence to KryoFlux
+Products & Services Limited. All rights reserved. These rights include
+but are not limited to any foreign language translations of the
+documentation or the Technology, and all derivative works of both.
+All other trademarks are the property of their respective owners.
+
+
+SPS - The Software Preservation Society
+http://www.softpres.org
+
+KryoFlux Products & Services Limited
+http://www.kryoflux.com
+
+
+rev. 1.11 - 2014-02-04

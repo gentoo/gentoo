@@ -1,0 +1,8 @@
+[Unit]
+Description=APC UPS Monitor
+
+[Service]
+ExecStart=/sbin/apcupsd -b
+
+[Install]
+WantedBy=multi-user.target

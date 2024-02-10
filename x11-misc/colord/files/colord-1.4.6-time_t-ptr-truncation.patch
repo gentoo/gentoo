@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/918990
+https://github.com/hughsie/colord/issues/157
+https://github.com/hughsie/colord/commit/ce9732a87bc2a0ddca841b49b9b9e24351ea78c8
+
+From ce9732a87bc2a0ddca841b49b9b9e24351ea78c8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 1 Dec 2023 22:20:17 +0000
+Subject: [PATCH] meson.build: use 64-bit time_t
+
+We call `gmtime_r` (which expects `time_t`) with a 64-bit pointer (`gint64*`).
+
+On 32-bit systems, `time_t` is 32-bit unless you opt-in to a 64-bit wide version
+(at least on glibc). To avoid truncation and -Wincompatible-pointer-types,
+opt-in to 64-bit `time_t` for glibc with `-D_TIME_BITS=64` in meson.
+
+This should be fine ABI wise because the time is only passed down into lcms2
+into `_cmsEncodeDateTimeNumber` where it seems to decompose it and it worked already
+for 64-bit systems. Plus, they use their own types like `cmsUInt16Number` to ensure
+they're wide enough.
+
+Fixes: https://github.com/hughsie/colord/issues/157
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/meson.build
++++ b/meson.build
+@@ -214,6 +214,9 @@ add_project_arguments('-DCD_COMPILATION', language: 'c')
+ 
+ # Needed for realpath() and PATH_MAX
+ add_project_arguments('-D_XOPEN_SOURCE=700', language : 'c')
++# Needed to opt-in to 64-bit time_t on glibc. We pass 64-bit pointers into
++# gmtime_r.
++add_project_arguments('-D_TIME_BITS=64', language : 'c')
+ 
+ prefix = get_option('prefix')
+ 
+

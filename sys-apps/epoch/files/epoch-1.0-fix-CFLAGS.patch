@@ -1,0 +1,10 @@
+--- a/buildepoch.sh
++++ b/buildepoch.sh
+@@ -53,6 +53,6 @@
+ }
+ 
+-NEED_EMPTY_CFLAGS="0"
++NEED_EMPTY_CFLAGS="1"
+ outdir="../built"
+ 
+ if [ "$CC" == "" ]; then

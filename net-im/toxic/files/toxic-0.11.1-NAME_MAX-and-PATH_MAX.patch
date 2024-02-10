@@ -1,0 +1,48 @@
+diff -ruN src/autocomplete.c src/autocomplete.c
+--- src/autocomplete.c	2021-08-09 18:52:27.090248882 -0400
++++ src/autocomplete.c	2021-08-11 14:57:39.029828530 -0400
+@@ -25,10 +25,12 @@
+ #include <string.h>
+ 
+ #ifdef __APPLE__
+-#include <sys/types.h>
+ #include <sys/dir.h>
++#include <sys/types.h>
++#include <sys/sysinfo.h>//This should contain PATH_MAX and NAME_MAX
+ #else
+ #include <dirent.h>
++#include <linux/limits.h>
+ #endif /* __APPLE__ */
+ 
+ #include "configdir.h"
+diff -ruN src/file_transfers.h src/file_transfers.h
+--- src/file_transfers.h	2021-07-26 15:39:36.765990567 -0400
++++ src/file_transfers.h	2021-08-11 14:59:41.223159195 -0400
+@@ -24,6 +24,12 @@
+ #define FILE_TRANSFERS_H
+ 
+ #include <limits.h>
++//This should include NAME_MAX and PATH_MAX
++#ifdef __APPLE__
++#include <sys/sysinfo.h>
++#elif __linux__
++#include <linux/limits.h>
++#endif
+ 
+ #include "notify.h"
+ #include "toxic.h"
+diff -ruN src/settings.h src/settings.h
+--- src/settings.h	2021-08-09 18:52:27.093582216 -0400
++++ src/settings.h	2021-08-11 15:00:46.889824433 -0400
+@@ -24,6 +24,12 @@
+ #define SETTINGS_H
+ 
+ #include <limits.h>
++//This should include NAME_MAX and PATH_MAX
++#ifdef __APPLE__
++#include <sys/sysinfo.h>
++#elif __linux__
++#include <linux/limits.h>
++#endif
+ 
+ #include <tox/tox.h>

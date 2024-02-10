@@ -1,0 +1,14 @@
+--- a/build.xml.orig	2008-11-24 20:24:55.000000000 +1300
++++ b/build.xml	2008-11-24 20:25:33.000000000 +1300
+@@ -88,11 +88,6 @@
+              basedir="build/classes/"
+              includes="pauker/**,tools/**"
+              excludes="pauker/Changes.txt,pauker/TODO.txt,**/*BeanInfo*,**/GraphicalStatisticPanel.gif">
+-            <zipfileset src="${libs.swing-layout.classpath}"/>
+-            <zipfileset src="libs/jhall.jar" excludes="META-INF/**"/>
+-            <zipfileset src="libs/lucene-core-2.4.0.jar" excludes="META-INF/**"/>
+-            <zipfileset src="libs/BrowserLauncher2-1_3.jar"
+-                        excludes="META-INF/**,classes/,source/,package?cache/,.**,*.txt,build.xml"/>
+             <manifest>
+                 <attribute name="Main-Class" value="pauker.program.gui.swing.PaukerFrame"/>
+                 <attribute name="SplashScreen-Image" value="pauker/icons/Splash.png"/>

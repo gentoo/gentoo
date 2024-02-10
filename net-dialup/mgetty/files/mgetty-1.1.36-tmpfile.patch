@@ -1,0 +1,33 @@
+diff -Nru mgetty-1.1.36.orig/fax/faxspool.in mgetty-1.1.36/fax/faxspool.in
+--- mgetty-1.1.36.orig/fax/faxspool.in	2008-12-09 23:12:31.000000000 +0000
++++ mgetty-1.1.36/fax/faxspool.in	2008-12-09 23:13:28.000000000 +0000
+@@ -675,9 +675,8 @@
+     if [ x$file = x- ]
+     then
+ 	$echo "spooling $file (stdin)..."
+-	trap "rm /tmp/faxsp.$$" 0
+-        cat - >/tmp/faxsp.$$
+-	file=/tmp/faxsp.$$
++	file=$spooldir/faxsp
++	cat - > $file
+     else
+ 	$echo "spooling $file..."
+     fi
+@@ -924,7 +923,7 @@
+ then
+     $echo "\nnothing to do (no cover page, no data)." >&2
+     cd $FAX_SPOOL_OUT
+-    rmdir $spooldir
++    rm -rf $spooldir
+     exit 52
+ fi
+ 
+@@ -965,7 +964,7 @@
+ # clean up
+ rm $job.q
+ cd ..
+-rmdir $spooldir
++rm -rf $spooldir
+ 
+ if [ -z "`find $LAST_RUN -ctime -1 -print 2>/dev/null`" ]
+ then

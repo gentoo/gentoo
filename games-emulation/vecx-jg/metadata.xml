@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		Vecx JG is an emulator for the Vectrex. This is a fork
+		of the original, unmodified vecx sources made available
+		by Valavan Manohararajah. Many new features have been
+		added since the fork was created. The emulator now
+		contains a new renderer, save states, and support for
+		PSG and DAC based audio.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/vecx/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/vecx</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,52 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,8 +50,7 @@
+ FTGL_CHECK_GLUT
+ FTGL_CHECK_FONT
+
+-PKG_CHECK_MODULES(CPPUNIT, cppunit, [CPPUNIT="yes"], [CPPUNIT="no"])
+-AC_MSG_RESULT($CPPUNIT)
++CPPUNIT="no"
+ AM_CONDITIONAL(HAVE_CPPUNIT, test "x$CPPUNIT" != "xno")
+
+ dnl search the include directory (required for non-srcdir builds).
+@@ -64,19 +63,11 @@
+ CFLAGS="${CFLAGS} -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs"
+ 
+ # Build HTML documentatin?
+-AC_PATH_PROG(DOXYGEN, doxygen, no)
++DOXYGEN="no"
+ AM_CONDITIONAL(HAVE_DOXYGEN, test "x$DOXYGEN" != "xno")
+ 
+ # Build PDF documentation?
+-AC_PATH_PROG(LATEX, pdflatex, no)
+-AC_PATH_PROG(KPSEWHICH, kpsewhich, no)
+-AC_PATH_PROG(DVIPS, dvips, no)
+-AC_PATH_PROG(CONVERT, convert, no)
+-AC_PATH_PROG(EPSTOPDF, epstopdf, no)
+-if test "${DVIPS}" = "no" -o "${KPSEWHICH}" = "no" -o "${EPSTOPDF}" = "no" \
+-     -o "${CONVERT}" = "no"; then
+   LATEX="no"
+-fi
+ if test "x${LATEX}" != "xno"; then
+   AC_MSG_CHECKING(for a4.sty and a4wide.sty)
+   if "${KPSEWHICH}" a4.sty >/dev/null 2>&1; then
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,16 +24,6 @@
+ 	m4 \
+ 	$(NULL)
+ 
+-# Print out an informative summary.
+-all-local:
+-	@$(ECHO) "Done."
+-	@$(ECHO)
+-	@if test "x$(MAKECMDGOALS)" = "xall-am" -o "x$(.TARGETS)" = "xall-am" -o "x$(MAKECMDGOALS)" = "x" -o "x$(.TARGETS)" = "x" ; then \
+-	  $(ECHO) "---" ;\
+-	  $(ECHO) "Run 'make install' to begin installation into $(prefix)" ;\
+-	fi
+-	@$(ECHO)
+-
+ # Upload documentation
+ DOC = docs/html docs/latex/ftgl.pdf
+ HOST = ftgl.sf.net

@@ -1,0 +1,10 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mike Frysinger <vapier@gentoo.org> (2016-05-08)
+# This target supports VTV #547040.
+>=sys-devel/gcc-6 -vtv
+
+# Mike Frysinger <vapier@gentoo.org> (2016-03-22)
+# This target supports ASAN/etc... #504200.
+>=sys-devel/gcc-5 -sanitize

@@ -1,0 +1,31 @@
+https://lore.kernel.org/linux-xfs/20240205232343.2162947-1-sam@gentoo.org/
+
+From 98e6a32ebe3b1b0e643c27f1bbee0058c9edc047 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 11 Nov 2023 08:22:22 +0000
+Subject: [PATCH 3/3] build: Request 64-bit time_t where possible
+
+Suggested by Darrick during LFS review. We take the same approach as in
+5c0599b721d1d232d2e400f357abdf2736f24a97 ('Fix building xfsprogs on 32-bit platforms')
+to avoid autoconf hell - just take the tried & tested approach which is working
+fine for us with LFS already.
+
+Reviewed-by: Darrick J. Wong <djwong@kernel.org>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -13,8 +13,8 @@ OPTIMIZER = @opt_build@
+ MALLOCLIB = @malloc_lib@
+ LOADERFLAGS = @LDFLAGS@
+ LTLDFLAGS = @LDFLAGS@
+-CFLAGS = @CFLAGS@ -D_FILE_OFFSET_BITS=64 -Wno-address-of-packed-member
+-BUILD_CFLAGS = @BUILD_CFLAGS@ -D_FILE_OFFSET_BITS=64
++CFLAGS = @CFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64 -Wno-address-of-packed-member
++BUILD_CFLAGS = @BUILD_CFLAGS@ -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64
+ 
+ # make sure we don't pick up whacky LDFLAGS from the make environment and
+ # only use what we calculate from the configured options above.
+-- 
+2.43.0
+

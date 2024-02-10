@@ -1,0 +1,28 @@
+Patch taken from Debian[1], largely broken on HPPA without and several
+tests give segmentation faults[2].
+
+Needs upstreaming if someone familiar with HPPA wants to give this
+attention. Note forkfd is essentially maintained in qtbase's repo[3]
+rather than truly third party.
+
+[1] https://bugs.debian.org/1042018
+[2] https://bugs.gentoo.org/914371
+[3] https://code.qt.io/cgit/qt/qtbase.git/tree/src/3rdparty/forkfd
+
+Description: Change how stack grows on HPPA.
+ On HPPA stack grows upwards. This patch introduces this change for
+ this 3rd party code.
+Author: John David Anglin <dave.anglin@bell.net>
+--- a/src/3rdparty/forkfd/forkfd_linux.c
++++ b/src/3rdparty/forkfd/forkfd_linux.c
+@@ -170,5 +170,10 @@
+     *system = 1;
+ 
++#if defined(__hppa__)
++    /* Stack grows up */
++    pid = clone(childFn, childStack, cloneflags, token, &pidfd, NULL, NULL);
++#else
+     pid = clone(childFn, childStack + sizeof(childStack), cloneflags, token, &pidfd, NULL, NULL);
++#endif
+     if (pid < 0)
+         return pid;

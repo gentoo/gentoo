@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use dns
+}
+
+start_pre() {
+	checkpath --directory --owner root:root --mode 00755 /run/bareos
+}
+
+command="/usr/sbin/bareos-sd"
+command_args="-f ${DIR_OPTIONS}"
+command_background="true"
+pidfile="/run/bareos/bareos-sd.9103.pid"

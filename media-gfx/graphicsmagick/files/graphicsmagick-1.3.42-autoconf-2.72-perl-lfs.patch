@@ -1,0 +1,25 @@
+Sent upstream by mail.
+
+https://bugs.gentoo.org/920788
+https://github.com/ImageMagick/ImageMagick/pull/6978
+
+configure.ac: fixup LFS check for autoconf-2.72
+
+For the 'other' case, we were using the value of ac_cv_sys_file_offset_bits for
+-D_FILE_OFFSET_BITS to pass down into the Perl module build, but autoconf-2.72
+drops the use of ac_cv_sys_file_offset_bits in cf09f48841b66fe76f606dd6018bb3a93242a7c9,
+so this ends up defining '-D_FILE_OFFSET_BITS=' which then breaks the build.
+
+I've just added a hack to preserve the old behaviour to avoid passing a blank
+value.
+--- a/configure.ac
++++ b/configure.ac
+@@ -386,7 +386,7 @@ AC_FUNC_FSEEKO
+ LFS_CPPFLAGS=''
+ if test "$enable_largefile" != no
+ then
+-  if test "$ac_cv_sys_file_offset_bits" != 'no'
++  if test "$ac_cv_sys_file_offset_bits" != 'no' && test -n "$ac_cv_sys_file_offset_bits"
+   then
+     LFS_CPPFLAGS="$LFS_CPPFLAGS -D_FILE_OFFSET_BITS=$ac_cv_sys_file_offset_bits"
+   fi

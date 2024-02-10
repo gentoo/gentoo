@@ -1,0 +1,11 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -39,7 +39,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+-GdkPixbuf* gdkTreeSize;
++extern GdkPixbuf* gdkTreeSize;
+ GtkMenu *TreeSizeMenuGlobal;
+ GtkWidget *mainWindow;
+ 

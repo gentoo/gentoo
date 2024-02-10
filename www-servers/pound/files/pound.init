@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Pound daemon"
+description=""
+command="/usr/sbin/pound"
+pidfile="/var/run/pound.pid"
+command_args="-f /etc/pound.cfg -p ${pidfile}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath --file /etc/pound.cfg
+}
+

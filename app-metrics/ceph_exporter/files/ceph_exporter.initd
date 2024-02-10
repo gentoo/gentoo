@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 2016-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus ceph metrics exporter"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-ceph}
+group=${group:-ceph}
+
+command="/usr/bin/ceph_exporter"
+command_background="true"
+output_log="/var/log/ceph_exporter/${RC_SVCNAME}.log"
+error_log="/var/log/ceph_exporter/${RC_SVCNAME}.log"
+start_stop_daemon_args="--user ${user} --group ${group}"
+
+depend() {
+	after net
+}

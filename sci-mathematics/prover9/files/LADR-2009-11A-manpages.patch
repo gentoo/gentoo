@@ -1,0 +1,466 @@
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/clausefilter.1	2012-01-07 19:30:44.311801364 +1100
+@@ -0,0 +1,43 @@
++.TH CLAUSEFILTER 1 "January 20, 2007"
++.SH NAME
++clausefilter - filter formulas with models
++.SH SYNOPSIS
++.B clausefilter
++.RI < interpretations-file >
++.RI < test >
++<
++.RI < formulas-file >
++>
++.RI < passing-formulas-file >
++.SH DESCRIPTION
++This manual page documents briefly the
++.B clausefilter
++command.
++.PP
++Given a set of \fIinterpretations\fP, a \fItest\fP to perform, and a
++stream of \fIformulas\fP, \fBclausefilter\fP outputs the formulas
++that pass the test.
++.SH TESTS
++The following tests are available.
++.TP
++.B true_in_all
++Formula true in all interpretations.
++.TP
++.B true_in_some
++Formula true in some interpretation.
++.TP
++.B false_in_all
++Formula false in all interpretations.
++.TP
++.B false_in_some
++Formula false in some interpretation.
++.SH SEE ALSO
++.BR prover9 (1),
++.BR mace4 (1).
++.br
++Full documentation for \fBclausefilter\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBclausefilter\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/clausetester.1	2012-01-07 19:30:44.312801386 +1100
+@@ -0,0 +1,29 @@
++.TH CLAUSETESTER 1 "January 20, 2007"
++.SH NAME
++clausetester - check formulas in models
++.SH SYNOPSIS
++.B clausetester
++.RI < interpretations-file >
++<
++.RI < formulas-file >
++>
++.RI < annotated-formulas-file >
++.SH DESCRIPTION
++This manual page documents briefly the
++.B clausetester
++command.
++.PP
++This program takes a set of \fIinterpretations\fP and stream of
++\fIformulas\fP. For each formula, the interpretations in which the
++formula is true are shown, and at the end the number of formulas true
++in each interpretation is shown.
++.SH SEE ALSO
++.BR prover9 (1),
++.BR mace4 (1).
++.br
++Full documentation for \fBclausetester\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBclausetester\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/interpfilter.1	2012-01-07 19:30:44.312801386 +1100
+@@ -0,0 +1,43 @@
++.TH INTERPFILTER 1 "January 20, 2007"
++.SH NAME
++interpfilter - filter models with formulas
++.SH SYNOPSIS
++.B interpfilter
++.RI < formulas-file >
++.RI < test >
++<
++.RI < interpretations-file >
++>
++.RI < passing-interpretations-file >
++.SH DESCRIPTION
++This manual page documents briefly the
++.B interpfilter
++command.
++.PP
++Given a set of \fIformulas\fP, a \fItest\fP to perform, and a
++stream of \fIinterpretations\fP, \fBinterpfilter\fP outputs the interpretations
++that pass the test.
++.SH TESTS
++The following tests are available.
++.TP
++.B all_true
++All formulas true in given interpretation.
++.TP
++.B some_true
++Some formula true in given interpretation.
++.TP
++.B all_false
++All formulas false in given interpretation.
++.TP
++.B some_false
++Some formula false in given interpretation.
++.SH SEE ALSO
++.BR prover9 (1),
++.BR mace4 (1).
++.br
++Full documentation for \fBinterpfilter\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBinterpfilter\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/interpformat.1	2012-01-07 19:30:44.313801403 +1100
+@@ -0,0 +1,65 @@
++.TH INTERPFORMAT 1 "January 20, 2007"
++.SH NAME
++interpformat \- tool for transforming
++.BR mace4 (1)
++models
++.SH SYNOPSIS
++.B interpformat
++.RI [ options ]
++.RI < transformation >
++\-f
++.I input-file
++>
++.I output-file
++.br
++.B interpformat
++.RI [ options ]
++.RI < transformation >
++<
++.I input-file
++>
++.I output-file
++.SH DESCRIPTION
++The models (structures) in
++.BR mace4 (1)
++output files can be transformed in various ways with the program \fBinterpformat\fP.
++.SH TRANSFORMATIONS
++The transformations are listed here.
++.TP
++.B standard
++one line per operation
++.TP
++.B standard2
++standard, with binary operations in a square (default)
++.TP
++.B portable
++list of lists, suitable for parsing by Python, GAP, etc.
++.TP
++.B tabular
++as nice tables
++.TP
++.B raw
++similar to standard, but without punctuation
++.TP
++.B cooked
++as terms, e.g., f(0,1)=2
++.TP
++.B tex
++formatted for LaTeX
++.TP
++.B xml
++XML
++.SH OPTIONS
++A summary of options is included below.
++.TP
++.B output \fI<operations>
++Output only the listed \fIoperations\fP.
++.SH SEE ALSO
++.BR mace4 (1).
++.br
++Full documentation for \fBinterpformat\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBinterpformat\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/isofilter.1	2012-01-07 19:30:44.313801403 +1100
+@@ -0,0 +1,65 @@
++.TH ISOFILTER 1 "January 20, 2007"
++.SH NAME
++isofilter - removes isomorphic structures from
++.BR mace4 (1)
++models
++.SH SYNOPSIS
++.B isofilter
++.RI [ options ]
++<
++.I input-file
++>
++.I output-file
++.br
++.B isofilter0
++.RI [ options ]
++<
++.I input-file
++>
++.I output-file
++.br
++.B isofilter2
++.RI [ options ]
++<
++.I input-file
++>
++.I output-file
++.SH DESCRIPTION
++This manual page documents briefly the \fBisofilter\fP, \fBisofilter0\fP and \fBisofilter2\fP commands.
++.PP
++If
++.BR mace4 (1)
++produces more than one structure, some of them are very likely to be
++isomorphic to others. The program \fBisofilter\fP can be used to remove isomorphic
++structures.
++.SH ALGORITHM
++There are multiple \fBisofilter\fP variants providing alternative algorithms.
++.TP
++.B isofilter
++Uses Occurrence Profiles algorithm.
++.TP
++.B isofilter2
++Uses Canonical Forms algorithm.
++.SH OPTIONS
++A summary of options is included below.
++.TP
++.B ignore_constants
++Ignore all constants during the isomorphism tests.
++.TP
++.B check \fI<operations>
++Consider only the listed \fIoperations\fP in the isomorphism tests.
++.TP
++.B output \fI<operations>
++Output only the listed \fIoperations\fP.
++.TP
++.B wrap
++Enclose the resulting structures in \fBlist(interpretations). ... end_of_list.\fP
++.SH SEE ALSO
++.BR mace4 (1).
++.br
++Full documentation for \fBisofilter\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBisofilter\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).
+--- LADR-2009-11A-orig/manpages/mace4.1	2007-12-31 15:43:54.000000000 +1100
++++ LADR-2009-11A/manpages/mace4.1	2012-01-07 19:55:18.746508266 +1100
+@@ -76,11 +76,11 @@
+ .SH SEE ALSO
+ .BR prover9 (1).
+ .br
+-Full documentation for \fBmace4\fP is found in the \fBprover9\fP manual, available on Debian systems in the \fIprover9-doc\fP package at \fI/usr/share/doc/prover9-doc/manual/index.html\fP.
++Full documentation for \fBmace4\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
+ .br
+ The original \fBmace4\fP manual, which can be downloaded at http://www.cs.unm.edu/~mccune/prover9/mace4.pdf
+ .SH AUTHOR
+-\fBmace4\fP ws written by William McCune <mccune@cs.unm.edu>
++\fBmace4\fP was written by William McCune <mccune@cs.unm.edu>
+ .PP
+ This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
+ for the Debian project (but may be used by others).
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/prooftrans.1	2012-01-07 19:30:44.314801424 +1100
+@@ -0,0 +1,73 @@
++.TH PROOFTRANS 1 "January 20, 2007"
++.SH NAME
++prooftrans - tool for transforming Prover9 proofs
++.SH SYNOPSIS
++.B prooftrans
++.RI [ parents_only ]
++.RI [ expand ]
++.RI [ renumber ]
++.RI [ striplabels ]
++[\fI-f file\fP]
++.br
++.B prooftrans
++xml
++.RI [ expand ]
++.RI [ renumber ]
++.RI [ striplabels ]
++[\fI-f file\fP]
++.br
++.B prooftrans
++ivy
++.RI [ renumber ]
++[\fI-f file\fP]
++.br
++.B prooftrans
++hints
++[\fI-label label\fP]
++.RI [ expand ]
++.RI [ striplabels ]
++[\fI-f file\fP]
++.SH DESCRIPTION
++This manual page documents briefly the
++.B prooftrans
++command.
++.PP
++\fBprooftrans\fP can extract proofs from
++.BR prover9 (1)
++output files and transform them in various ways.
++
++.SH OPTIONS
++A summary of options is included below.
++.TP
++.B renumber
++Renumber steps.
++.TP
++.B parents_only
++Simplify justifications by listing only parents.
++.TP
++.B expand
++Expand all steps, turning secondary justifications into explicit steps.
++.TP
++.B xml
++Produce proofs in XML.
++.TP
++.B ivy
++Produce proofs for checking by the IVY proof checker.
++.TP
++.B hints
++Produce hints for guiding subsequent searches.
++.TP
++.B \-label \fIlabel\fP
++Attach label attributes to the hint clauses consisting of the string \fIlabel\fP and a sequence number generated by prooftrans.
++.TP
++.B \-f \fIfile
++Take input from \fIfile\fP instead of from standard input.
++.SH SEE ALSO
++.BR prover9 (1).
++.br
++Full documentation for \fBprooftrans\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBprooftrans\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).
+--- LADR-2009-11A-orig/manpages/prover9.1	2007-12-31 15:43:54.000000000 +1100
++++ LADR-2009-11A/manpages/prover9.1	2012-01-07 19:54:30.928968388 +1100
+@@ -11,7 +11,7 @@
+ .br
+ .B prover9
+ .RI [ options ]
+--f
++\-f
+ .I input-file
+ >
+ .I output-file
+@@ -38,15 +38,15 @@
+ .B \-t \fIn
+ Constrain the search to last about \fIn\fP seconds.  For UNIX-like systems, the `user CPU' time is used.
+ .TP
+-.B \-f \fIfiles
+-Take input from \fIfiles\fP instead of from standard input.
++.B \-f \fIfile
++Take input from \fIfile\fP instead of from standard input.
+ .SH SEE ALSO
+ .BR mace4 (1),
+ .BR otter (1).
+ .br
+-On Debian systems, the manual is found in the \fIprover9-doc\fP package, at \fI/usr/share/doc/prover9-doc/manual/index.html\fP.
++On Gentoo systems, the manual is found at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
+ .SH AUTHOR
+-\fBprover9\fP ws written by William McCune <mccune@cs.unm.edu>
++\fBprover9\fP was written by William McCune <mccune@cs.unm.edu>
+ .PP
+ This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
+ for the Debian project (but may be used by others).
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/prover9-apps.1	2012-01-07 19:30:44.315801449 +1100
+@@ -0,0 +1,17 @@
++.TH PROVER9-APPS 1 "June 18, 2008"
++.SH NAME
++prover9-apps \- undocumented Prover9 applications
++.SH DESCRIPTION
++Some programs in the \fBprover9-apps\fP package currently have no manual
++pages.  You can obtain documentation on some of these applications via the
++\fBprover9\fP manual, which is available
++at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++Alternatively invoking the application with the \fB-help\fP option may
++produce documentation.  Patches to add manual pages are welcome, and may
++be sent to the Debian package maintainer, whose details are listed below.
++.SH AUTHOR
++The applications were written by William McCune <mccune@cs.unm.edu>.
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others) and modified for Fedora
++by Tim Colles <timc@inf.ed.ac.uk>.
+--- /dev/null	2012-01-07 09:10:22.797165727 +1100
++++ LADR-2009-11A/manpages/rewriter.1	2012-01-07 19:30:44.315801449 +1100
+@@ -0,0 +1,60 @@
++.de Sp \" Vertical space (when we can't use .PP)
++.if t .sp .5v
++.if n .sp
++..
++.de Vb \" Begin verbatim text
++.ft CW
++.nf
++.ne \\$1
++..
++.de Ve \" End verbatim text
++.ft R
++.fi
++..
++.TH REWRITER 1 "January 20, 2007"
++.SH NAME
++rewriter - demodulate terms
++.SH SYNOPSIS
++.B rewriter
++.RI < demodulators-file >
++<
++.RI < terms-file >
++>
++.RI < rewritten-terms-file >
++.SH DESCRIPTION
++This manual page documents briefly the
++.B rewriter
++command.
++.PP
++Rewrite a stream of \fIterms\fP with a list of \fIdemodulators\fP. The
++demodulators are used left-to-right as given, and they are not checked
++for termination.
++.SH SYNTAX
++The file of demodulators contains optional commands
++then a list of demodulators.  The commands can be used to
++declare infix operations and associativity/commutativity.
++Example file of demodulators:
++.Sp
++.Vb 10
++\&    op(400, infix, ^).
++\&    op(400, infix, v).
++\&    assoc_comm(^).
++\&    assoc_comm(v).
++\&    formulas(demodulators).
++\&    x ^ x = x.
++\&    x ^ (x v y) = x.
++\&    x v x = x.
++\&    x v (x ^ y) = x.
++\&    end_of_list.
++.Ve
++.Sp
++.SH SEE ALSO
++.BR prover9 (1),
++.BR mace4 (1).
++.br
++Full documentation for \fBrewriter\fP is found in the \fBprover9\fP manual, available on Gentoo systems at \fI/usr/share/doc/prover9-2009.11a/html/index.html\fP.
++.SH AUTHOR
++\fBrewriter\fP was written by William McCune <mccune@cs.unm.edu>
++.PP
++This manual page was written by Peter Collingbourne <pcc03@doc.ic.ac.uk>,
++for the Debian project (but may be used by others).

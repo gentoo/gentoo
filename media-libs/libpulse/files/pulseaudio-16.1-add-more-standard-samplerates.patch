@@ -1,0 +1,35 @@
+commit 86c5fbab5778685e19b5a4a9b8eb04ca90dff780
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sun Feb 5 19:49:10 2023 +0300
+
+    alsa-util: Add more standard sample rates.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/776>
+
+diff --git a/src/modules/alsa/alsa-util.c b/src/modules/alsa/alsa-util.c
+index 9f35cb20f..fd30f18bd 100644
+--- a/src/modules/alsa/alsa-util.c
++++ b/src/modules/alsa/alsa-util.c
+@@ -1430,7 +1430,8 @@ unsigned int *pa_alsa_get_supported_rates(snd_pcm_t *pcm, unsigned int fallback_
+                                         32000, 44100, 48000,
+                                         64000, 88200, 96000,
+                                         128000, 176400, 192000,
+-                                        384000 };
++                                        352800, 384000,
++                                        705600, 768000 };
+     bool supported[PA_ELEMENTSOF(all_rates)] = { false, };
+     snd_pcm_hw_params_t *hwparams;
+     unsigned int i, j, n, *rates = NULL;
+diff --git a/src/pulse/sample.h b/src/pulse/sample.h
+index 35346a865..65c0c5d6b 100644
+--- a/src/pulse/sample.h
++++ b/src/pulse/sample.h
+@@ -128,7 +128,7 @@ PA_C_DECL_BEGIN
+ #define PA_CHANNELS_MAX 32U
+ 
+ /** Maximum allowed sample rate */
+-#define PA_RATE_MAX (48000U*8U)
++#define PA_RATE_MAX (48000U*16U)
+ 
+ /** Sample format */
+ typedef enum pa_sample_format {

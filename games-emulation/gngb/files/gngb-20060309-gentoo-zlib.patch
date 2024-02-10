@@ -1,0 +1,12 @@
+Gentoo's zlib.h does s/OF/_Z_OF/, so define OF if missing.
+https://bugs.gentoo.org/383179
+--- a/src/unzip.h
++++ b/src/unzip.h
+@@ -59,4 +59,7 @@
+ #endif
+ 
++#ifndef OF
++#define OF(x) x
++#endif
+ 
+ #define UNZ_OK                                  (0)

@@ -1,0 +1,43 @@
+From c5b02df4598c5fbe7a034b67ee06c506abeb3828 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 18 Oct 2021 10:22:09 +0100
+Subject: [PATCH] Don't assume RTLD_DEEPBIND is always present on Linux
+
+It's not supported by musl.
+---
+ configure.ac   | 5 +++++
+ src/dlopen.cpp | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6e41d68e..2cac2dac 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -655,6 +655,11 @@ AC_CHECK_FUNCS([gettimeofday])
+ AC_CHECK_DECLS([CLOCK_MONOTONIC], [], [], [#include <time.h>])
+ 
+ 
++# RTLD_DEEPBIND is not supported by all C libraries.
++
++AC_CHECK_DECLS([RTLD_DEEPBIND], [], [], [#include <dlfcn.h>])
++
++
+ # Check for POSIX support.
+ 
+ AS_CASE([$host_os],
+diff --git a/src/dlopen.cpp b/src/dlopen.cpp
+index f79c401b..14edbc02 100644
+--- a/src/dlopen.cpp
++++ b/src/dlopen.cpp
+@@ -22,7 +22,7 @@ UAE_DLHANDLE uae_dlopen(const TCHAR *path)
+ 	}
+ #ifdef _WIN32
+ 	result = LoadLibrary(path);
+-#elif defined(LINUX)
++#elif HAVE_DECL_RTLD_DEEPBIND == 1
+ 	result = dlopen(path, RTLD_NOW | RTLD_DEEPBIND);
+ #else
+ 	result = dlopen(path, RTLD_NOW);
+-- 
+2.32.0
+

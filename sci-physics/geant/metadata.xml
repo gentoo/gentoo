@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <longdescription lang="en">
+  Geant simulates the passage of subatomic particles through matter, for
+  instance, particle detectors. Geant 3 simulations are performed by
+  linking Fortran code supplied by the user with the Geant libraries,
+  then running the resulting executable. This package includes gxint,
+  the script used to perform this linking step.
+  Geant 4 is a complete rewrite in C++ with addition of other modern
+  features and detectors.
+  </longdescription>
+  <use>
+    <flag name="data">Add a lot of standard physics data files for geant4</flag>
+    <flag name="freetype">Add support for <pkg>media-libs/freetype</pkg></flag>
+    <flag name="gdml">Enable geometry markup language for xml</flag>
+    <flag name="geant3">Add compatibility for geant321 to geant4</flag>
+    <flag name="inventor">Add support for Open Inventor SGI toolkit via Coin3D</flag>
+    <flag name="raytracerx">Enable raytracing for physics events</flag>
+    <flag name="tbb">Enable support for <pkg>dev-cpp/tbb</pkg></flag>
+    <flag name="trajectories">Enable display of particle trajectories</flag>
+    <flag name="vtk">Use <pkg>sci-libs/vtk</pkg> for visualization (experimental)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Geant4/geant4</remote-id>
+  </upstream>
+</pkgmetadata>

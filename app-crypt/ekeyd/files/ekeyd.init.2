@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+INSTANCE="${SVCNAME#*.}"
+if [ -z "${INSTANCE}" -o "${SVCNAME}" = "ekeyd" ]; then
+	INSTANCE="ekeyd"
+fi
+
+description="EntropyKey daemon"
+
+pidfile=/var/run/$SVCNAME.pid
+cfgfile=/etc/entropykey/${INSTANCE}.conf
+
+command=/usr/libexec/ekeyd
+command_args="-f ${cfgfile} -p ${pidfile}"
+
+depend() {
+	 config $cfgfile
+
+	 use udev ekey-ulusbd
+	 need localmount
+
+	 # quickly parse the configuration file; we only provide entropy
+	 # if we're not using the egd server/client split method.
+	 if sed -e 's:--.*::' "${cfgfile}" | grep -q SetOutputToKernel; then
+		 provide entropy
+	 fi
+}

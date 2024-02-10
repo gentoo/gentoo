@@ -1,0 +1,12 @@
+diff --git a/cluster.cpp b/cluster.cpp
+index 0a8c3c1..1384949 100644
+--- a/cluster.cpp
++++ b/cluster.cpp
+@@ -24,6 +24,7 @@
+ #include <iostream>
+ #include <vector>
+ #include <string>
++#include <cstring>
+ 
+ #include <iostream>
+ #include <fstream>

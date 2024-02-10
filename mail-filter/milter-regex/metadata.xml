@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		milter-regex is a very simple milter-based plugin that rejects or
+		discards messages matching regular expressions. It doesn't add much
+		processing overhead, so even a busy mail server can afford to run it.
+	</longdescription>
+	<upstream>
+		<doc>https://www.benzedrine.ch/milter-regex.html</doc>
+	</upstream>
+</pkgmetadata>

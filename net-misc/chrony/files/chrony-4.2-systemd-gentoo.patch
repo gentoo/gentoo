@@ -1,0 +1,13 @@
+diff --git a/examples/chronyd.service b/examples/chronyd.service
+index 4fb930e..8df627a 100644
+--- a/examples/chronyd.service
++++ b/examples/chronyd.service
+@@ -9,7 +9,7 @@ ConditionCapability=CAP_SYS_TIME
+ Type=forking
+ PIDFile=/run/chrony/chronyd.pid
+ EnvironmentFile=-/etc/sysconfig/chronyd
+-ExecStart=/usr/sbin/chronyd $OPTIONS
++ExecStart=/usr/sbin/chronyd $OPTIONS -u ntp -F 2
+ 
+ CapabilityBoundingSet=~CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE
+ CapabilityBoundingSet=~CAP_BLOCK_SUSPEND CAP_KILL CAP_LEASE CAP_LINUX_IMMUTABLE

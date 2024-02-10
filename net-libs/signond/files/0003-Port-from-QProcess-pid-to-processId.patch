@@ -1,0 +1,32 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From a089361356e73bcd721f14314ec9745bbf28c5be Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 5 Jul 2022 17:37:34 +0200
+Subject: [PATCH 03/11] Port from QProcess::pid to ::processId
+
+The former is deprecated
+---
+ src/signond/pluginproxy.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/signond/pluginproxy.cpp b/src/signond/pluginproxy.cpp
+index d31c712..582aef4 100644
+--- a/src/signond/pluginproxy.cpp
++++ b/src/signond/pluginproxy.cpp
+@@ -125,10 +125,10 @@ PluginProxy::~PluginProxy()
+ 
+             if (!m_process->waitForFinished(PLUGINPROCESS_STOP_TIMEOUT))
+             {
+-                if (m_process->pid()) {
++                if (m_process->processId()) {
+                     qCritical() << "The signon plugin seems to ignore kill(), "
+                         "killing it from command line";
+-                    QString killProcessCommand(QString::fromLatin1("kill -9 %1").arg(m_process->pid()));
++                    QString killProcessCommand(QString::fromLatin1("kill -9 %1").arg(m_process->processId()));
+                     QProcess::execute(killProcessCommand);
+                 }
+             }
+-- 
+2.43.0
+

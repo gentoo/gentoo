@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
+	<use>
+		<flag name="browser-integration">Enable integration with Chrome/Firefox with browser extensions</flag>
+		<flag name="colord">Enable <pkg>kde-plasma/kwin</pkg> color management via <pkg>x11-misc/colord</pkg></flag>
+		<flag name="crash-handler">Pull in <pkg>kde-plasma/drkonqi</pkg> for assisted upstream crash reports</flag>
+		<flag name="crypt">Pull in <pkg>kde-plasma/plasma-vault</pkg> for encrypted vaults integration</flag>
+		<flag name="desktop-portal">Enable <pkg>sys-apps/xdg-desktop-portal</pkg> backend implementation for Plasma</flag>
+		<flag name="discover">Pull in resources management GUI; a centralised GHNS alternative and optional <pkg>sys-apps/fwupd</pkg> frontend</flag>
+		<flag name="display-manager">Pull in a graphical display manager</flag>
+		<flag name="firewall">Pull in <pkg>kde-plasma/plasma-firewall</pkg> for system firewall administration</flag>
+		<flag name="flatpak">Pull in <pkg>kde-plasma/flatpak-kcm</pkg> for flatpak permissions administration</flag>
+		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
+		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
+		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
+		<flag name="legacy-systray">Add support for legacy applications using <pkg>kde-plasma/xembed-sni-proxy</pkg></flag>
+		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
+		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
+		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
+		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
+		<flag name="smart">Pull in <pkg>kde-plasma/plasma-disks</pkg> for disk health monitoring</flag>
+		<flag name="thunderbolt">Pull in <pkg>kde-plasma/plasma-thunderbolt</pkg> control center module</flag>
+		<flag name="wacom">Pull in <pkg>kde-plasma/wacomtablet</pkg> control center module</flag>
+		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
+	</use>
+</pkgmetadata>

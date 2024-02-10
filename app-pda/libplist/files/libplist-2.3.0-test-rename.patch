@@ -1,0 +1,471 @@
+From 2cd858c679d25633077ca78b67182a9b77653816 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Tue, 3 Oct 2023 10:41:32 +0100
+Subject: [PATCH] test: use unique output file names across tests
+
+Without the change tests ran in parallel occasionally clobber outputs of
+one another and fail as:
+
+    $ make check -j16 VERBOSE=y
+    ...
+    FAIL: huge
+    ==========
+    Converting
+    File ../test/data/5.plist is open
+    PList XML parsing succeeded
+    PList BIN writing succeeded
+    PList BIN parsing succeeded
+    PList XML writing succeeded
+    Size of input and output is different
+    Input size : 4292380
+    Output size : 4305301
+    Comparing
+    PList parsing failed
+    FAIL huge.test (exit status: 3)
+
+Closes: https://github.com/libimobiledevice/libplist/issues/234#issuecomment-1743820556
+--- a/test/amp.test
++++ b/test/amp.test
+@@ -3,7 +3,7 @@
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=amp.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.out
++DATAOUT0=$top_builddir/test/data/amp.test.out
+ 
+ rm -rf $DATAOUT0
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+--- a/test/bigarray++.test
++++ b/test/bigarray++.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/bigarray++.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/bigarray++.test.out
+--- a/test/bigarray.test
++++ b/test/bigarray.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/bigarray.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/bigarray.test.out
+--- a/test/cdata.test
++++ b/test/cdata.test
+@@ -5,7 +5,7 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=cdata.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.bin
++DATAOUT0=$top_builddir/test/data/cdata.test.bin
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/dates.test
++++ b/test/dates.test
+@@ -5,8 +5,8 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=7.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.bin
+-DATAOUT1=$top_builddir/test/data/$TESTFILE.xml
++DATAOUT0=$top_builddir/test/data/dates.test.bin
++DATAOUT1=$top_builddir/test/data/dates.test.xml
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ $top_builddir/tools/plistutil -i $DATAOUT0 -o $DATAOUT1
+--- a/test/empty++.test
++++ b/test/empty++.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/empty++.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/empty++.test.out
+--- a/test/empty.test
++++ b/test/empty.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/empty.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/empty.test.out
+--- a/test/empty_keys.test
++++ b/test/empty_keys.test
+@@ -5,7 +5,7 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=empty_keys.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.bin
++DATAOUT0=$top_builddir/test/data/empty_keys.test.bin
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/entities.test
++++ b/test/entities.test
+@@ -5,7 +5,7 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=entities.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.bin
++DATAOUT0=$top_builddir/test/data/entities.test.bin
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/hex.test
++++ b/test/hex.test
+@@ -5,7 +5,7 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=hex.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.bin
++DATAOUT0=$top_builddir/test/data/hex.test.bin
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/huge++.test
++++ b/test/huge++.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/huge++.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/huge++.test.out
+--- a/test/huge.test
++++ b/test/huge.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/huge.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/huge.test.out
+--- a/test/invalid_tag.test
++++ b/test/invalid_tag.test
+@@ -3,7 +3,7 @@
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=invalid_tag.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.out
++DATAOUT0=$top_builddir/test/data/invalid_tag.test.out
+ 
+ rm -rf $DATAOUT0
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+--- a/test/json-int64-min-max.test
++++ b/test/json-int64-min-max.test
+@@ -13,7 +13,7 @@ fi
+ export PLIST_JSON_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_jtest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_jtest $DATASRC/$TESTFILE $DATAOUT/json-int64-min-max.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/json-int64-min-max.test.out
+--- a/test/json1.test
++++ b/test/json1.test
+@@ -13,7 +13,7 @@ fi
+ export PLIST_JSON_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_jtest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_jtest $DATASRC/$TESTFILE $DATAOUT/json1.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/json1.test.out
+--- a/test/json2.test
++++ b/test/json2.test
+@@ -13,7 +13,7 @@ fi
+ export PLIST_JSON_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_jtest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_jtest $DATASRC/$TESTFILE $DATAOUT/json2.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/json2.test.out
+--- a/test/json3.test
++++ b/test/json3.test
+@@ -13,12 +13,12 @@ fi
+ export PLIST_JSON_DEBUG=1
+ 
+ echo "Converting input file to JSON"
+-$top_builddir/tools/plistutil -f json -i $DATASRC/$TESTFILE -o $DATAOUT/$TESTFILE.json
++$top_builddir/tools/plistutil -f json -i $DATASRC/$TESTFILE -o $DATAOUT/json3.test.json
+ 
+ echo "Converting to binary and back to JSON"
+-$top_builddir/test/plist_jtest $DATAOUT/$TESTFILE.json $DATAOUT/$TESTFILE.json.out
++$top_builddir/test/plist_jtest $DATAOUT/json3.test.json $DATAOUT/json3.test.json.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.json.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/json3.test.json.out
+ 
+-rm -f $DATAOUT/$TESTFILE.json
++rm -f $DATAOUT/json3.test.json
+--- a/test/large++.test
++++ b/test/large++.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/large++.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/large++.test.out
+--- a/test/large.test
++++ b/test/large.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/large.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/large.test.out
+--- a/test/malformed_dict.test
++++ b/test/malformed_dict.test
+@@ -3,7 +3,7 @@
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=malformed_dict.bplist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.out
++DATAOUT0=$top_builddir/test/data/malformed_dict.test.out
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/medium++.test
++++ b/test/medium++.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/medium++.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/medium++.test.out
+--- a/test/medium.test
++++ b/test/medium.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/medium.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/medium.test.out
+--- a/test/order.test
++++ b/test/order.test
+@@ -6,7 +6,7 @@ DATASRC=$top_srcdir/test/data
+ TESTFILE=order.bplist
+ DATAIN0=$DATASRC/$TESTFILE
+ DATAIN1=$DATASRC/order.plist
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.out
++DATAOUT0=$top_builddir/test/data/order.test.out
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/ostep-comments.test
++++ b/test/ostep-comments.test
+@@ -13,8 +13,8 @@ fi
+ export PLIST_OSTEP_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/ostep-comments.test.out
+ 
+ echo "Comparing"
+ export PLIST_OSTEP_DEBUG=1
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/ostep-comments.test.out
+--- a/test/ostep-strings.test
++++ b/test/ostep-strings.test
+@@ -13,8 +13,8 @@ fi
+ export PLIST_OSTEP_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/ostep-strings.test.out
+ 
+ echo "Comparing"
+ export PLIST_OSTEP_DEBUG=1
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/ostep-strings.test.out
+--- a/test/ostep1.test
++++ b/test/ostep1.test
+@@ -13,8 +13,8 @@ fi
+ export PLIST_OSTEP_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/ostep1.test.out
+ 
+ echo "Comparing"
+ export PLIST_OSTEP_DEBUG=1
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/ostep1.test.out
+--- a/test/ostep2.test
++++ b/test/ostep2.test
+@@ -13,7 +13,7 @@ fi
+ export PLIST_OTEST_DEBUG=1
+ 
+ echo "Converting"
+-$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_otest $DATASRC/$TESTFILE $DATAOUT/ostep2.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/ostep2.test.out
+--- a/test/recursion.test
++++ b/test/recursion.test
+@@ -3,7 +3,7 @@
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=recursion.bplist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.out
++DATAOUT0=$top_builddir/test/data/recursion.test.out
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/signedunsigned1.test
++++ b/test/signedunsigned1.test
+@@ -13,8 +13,8 @@ CMPFILE1=unsigned.bplist
+ DATACMP0=$DATASRC/$CMPFILE0
+ DATACMP1=$DATASRC/$CMPFILE1
+ 
+-DATAOUT0=$top_builddir/test/data/$TESTFILE0.bin
+-DATAOUT1=$top_builddir/test/data/$TESTFILE1.bin
++DATAOUT0=$top_builddir/test/data/signedunsigned1.test.signed.bin
++DATAOUT1=$top_builddir/test/data/signedunsigned1.test.unsigned.bin
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ $top_builddir/tools/plistutil -i $DATAIN1 -o $DATAOUT1
+--- a/test/signedunsigned2.test
++++ b/test/signedunsigned2.test
+@@ -13,8 +13,8 @@ CMPFILE1=unsigned.plist
+ DATACMP0=$DATASRC/$CMPFILE0
+ DATACMP1=$DATASRC/$CMPFILE1
+ 
+-DATAOUT0=$top_builddir/test/data/$TESTFILE0.bin
+-DATAOUT1=$top_builddir/test/data/$TESTFILE1.bin
++DATAOUT0=$top_builddir/test/data/signedunsigned2.test.signed.bin
++DATAOUT1=$top_builddir/test/data/signedunsigned2.test.unsigned.bin
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ $top_builddir/tools/plistutil -i $DATAIN1 -o $DATAOUT1
+--- a/test/signedunsigned3.test
++++ b/test/signedunsigned3.test
+@@ -13,8 +13,8 @@ CMPFILE1=signedunsigned.plist
+ DATACMP0=$DATASRC/$CMPFILE0
+ DATACMP1=$DATASRC/$CMPFILE1
+ 
+-DATAOUT0=$top_builddir/test/data/$TESTFILE0.bin
+-DATAOUT1=$top_builddir/test/data/$TESTFILE1.xml
++DATAOUT0=$top_builddir/test/data/signedunsigned3.test.signed.bin
++DATAOUT1=$top_builddir/test/data/signedunsigned3.test.unsigned.xml
+ 
+ $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ $top_builddir/tools/plistutil -i $DATAIN1 -o $DATAOUT1
+--- a/test/small++.test
++++ b/test/small++.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test++ $DATASRC/$TESTFILE $DATAOUT/small++.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/small++.test.out
+--- a/test/small.test
++++ b/test/small.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_test $DATASRC/$TESTFILE $DATAOUT/small.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/small.test.out
+--- a/test/timezone1.test
++++ b/test/timezone1.test
+@@ -5,9 +5,9 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=7.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.tz0.bin
+-DATAOUT1=$top_builddir/test/data/$TESTFILE.tz1.bin
+-DATAOUT2=$top_builddir/test/data/$TESTFILE.tz2.bin
++DATAOUT0=$top_builddir/test/data/timezone1.test.tz0.bin
++DATAOUT1=$top_builddir/test/data/timezone1.test.tz1.bin
++DATAOUT2=$top_builddir/test/data/timezone1.test.tz2.bin
+ 
+ TZ=UTC $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ TZ=Asia/Singapore $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT1
+--- a/test/timezone2.test
++++ b/test/timezone2.test
+@@ -5,10 +5,10 @@ set -e
+ DATASRC=$top_srcdir/test/data
+ TESTFILE=7.plist
+ DATAIN0=$DATASRC/$TESTFILE
+-DATAOUT0=$top_builddir/test/data/$TESTFILE.bin
+-DATAOUT1=$top_builddir/test/data/$TESTFILE.tz0.xml
+-DATAOUT2=$top_builddir/test/data/$TESTFILE.tz1.xml
+-DATAOUT3=$top_builddir/test/data/$TESTFILE.tz2.xml
++DATAOUT0=$top_builddir/test/data/timezone2.test.bin
++DATAOUT1=$top_builddir/test/data/timezone2.test.tz0.xml
++DATAOUT2=$top_builddir/test/data/timezone2.test.tz1.xml
++DATAOUT3=$top_builddir/test/data/timezone2.test.tz2.xml
+ 
+ TZ=UTC $top_builddir/tools/plistutil -i $DATAIN0 -o $DATAOUT0
+ 
+--- a/test/uid.test
++++ b/test/uid.test
+@@ -9,7 +9,7 @@ if ! test -d "$DATAOUT"; then
+ fi
+ 
+ echo "Converting"
+-$top_builddir/test/plist_btest $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_btest $DATASRC/$TESTFILE $DATAOUT/uid.test.out
+ 
+ echo "Comparing"
+-$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/$TESTFILE.out
++$top_builddir/test/plist_cmp $DATASRC/$TESTFILE $DATAOUT/uid.test.out

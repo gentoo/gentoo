@@ -1,0 +1,234 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-15)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
+# dracut is not keyworded here
+sys-kernel/installkernel dracut
+
+# Sam James <sam@gentoo.org> (2024-01-02)
+# dev-libs/capstone not keyworded here
+dev-lang/php capstone
+
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
+
+# James Le Cuirot (2023-12-12)
+# USE=bpf depends on sys-devel/clang which is not keyworded on s390
+media-libs/libv4l bpf
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-15)
+# Need dev-python/notebook (that indirectly requires net-libs/nodejs).
+dev-python/ipython notebook
+dev-python/nbclient test
+dev-python/nbconvert test
+
+# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# dev-build/samurai is not keyworded here.
+app-alternatives/ninja samurai
+
+# Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
+# sys-apps/s6-linux-init has not been tested on this arch
+sys-apps/openrc s6
+
+# Sam James <sam@gentoo.org> (2023-09-24)
+# Qt not keyworded here.
+app-text/doxygen gui
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-build/cmake gui
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-01)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+media-gfx/graphicsmagick jpegxl
+media-gfx/imagemagick jpegxl
+media-libs/imlib2 jpegxl
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not keyworded
+dev-python/nbval test
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-14)
+# Requires virtual/pandoc.
+dev-python/nbclassic doc
+dev-python/nbval doc
+
+# Florian Schmaus <flow@gentoo.org> (2022-11-23)
+# avoid larger deptree, bug #882593
+dev-python/bracex doc
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Unkeyworded dependencies
+app-text/htmltidy test
+dev-ruby/activerecord mysql postgres sqlite test
+dev-ruby/stringex test
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# eps: app-text/libspectre not keyworded here
+media-libs/imlib2 eps
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded dependencies
+app-text/enchant hunspell nuspell voikko
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Needs unkeyworded virtual/szip provider
+sci-libs/hdf5 szip
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Needs unkeyworded dev-libs/librdkafka
+# dev-libs/boxfort does not support s390 either
+app-admin/syslog-ng kafka test
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Large number of unkeyworded sci testdeps
+dev-cpp/eigen test
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded media-gfx/libimagequant
+dev-python/pillow imagequant
+
+# Sam James <sam@gentoo.org> (2022-04-26)
+# Avoid unkeyworded media-gfx/inkscape
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2022-04-25)
+# Needs unkeyworded dev-python/commonmark, dev-python/recommonmark
+dev-libs/libinput doc
+
+# Sam James <sam@gentoo.org> (2022-04-25)
+# Needs unkeyworded dev-python/markdown
+dev-libs/gobject-introspection doctool
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# dev-libs/efl not keyworded here and is a desktop application mainly
+app-crypt/pinentry efl
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# sssd not keyworded here
+app-admin/sudo sssd
+sys-auth/pambase sssd
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# app-crypt/dieharder and dev-libs/softhsm:2 unkeyworded here
+net-libs/gnutls test-full
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# net-fs/samba unkeyworded here
+net-fs/cifs-utils acl
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# x11-themes/sound-theme-freedesktop unkeyworded here
+media-libs/libcanberra sound
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif
+www-client/links avif
+dev-lang/php avif
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# Unkeyworded dev-tcltk/* dependencies
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+
+# Sam James <sam@gentoo.org> (2022-04-24)
+# dev-libs/libzip not keyworded on s390
+media-gfx/imagemagick zip
+dev-lang/php zip
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# sys-apps/hwloc is not keyworded on s390
+sys-process/htop hwloc
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# Needs Ruby (dev-ruby/asciidoctor)
+dev-util/ccache doc
+
+# Sam James <sam@gentoo.org> (2022-04-20)
+# Requires dev-python/networkx.
+app-portage/nattka depgraph-order
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# Sam James <sam@gentoo.org> (2021-11-05)
+# Avoid keywording unnecessary depenencies for now, bug #804115
+dev-python/scipy fortran
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Matt Turner <mattst88@gentoo.org> (2020-08-11)
+# No drivers on this architecture support Vulkan
+media-libs/mesa vulkan vulkan-overlay zink
+
+# Hans de Graaff <graaff@gentoo.org> (2019-04-08)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-06-03)
+# Not tested
+dev-python/cssselect doc
+dev-python/setuptools-scm test
+# no lua support for vim
+app-editors/vim lua
+# not keyworded yet
+media-gfx/imagemagick raw
+dev-db/mariadb numa
+# not tested yet
+app-arch/rpm test
+# no ceph keyworded
+net-analyzer/rrdtool rados
+
+# Lars Wendler <polynomial-c@gentoo.org> (2016-11-17)
+# jit not supported on s390
+dev-libs/libpcre2 jit
+
+# Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
+# Not tested
+net-mail/dovecot lz4
+
+# Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
+# too much unkeyworded dependencies (bug #497068)
+dev-vcs/git mediawiki
+
+# Agostino Sarubbo <ago@gentoo.org> (2013-04-10)
+# It requires too much unstable dep.
+x11-libs/gtk+ colord
+
+# Justin Lecher <jlec@gentoo.org> (2013-01-09)
+# x11-base/xorg-server[xvfb] is not keyworded
+dev-lang/tk test
+
+# Raúl Porcel <armin76@gentoo.org> (2011-11-05)
+# jit not supported on s390
+dev-libs/libpcre jit
+
+# Sebastian Pipping <sping@gentoo.org> (2011-02-22)
+# No media-sound/lilypond here, yet (bug #356069)
+app-text/asciidoc test
+
+# Raúl Porcel <armin76@gentoo.org> (2008-03-27)
+# Needs gtk USE-flag
+net-dns/avahi python
+
+# missing keyword for sys-cluster/openmpi sys-cluster/mpich2
+dev-libs/boost mpi

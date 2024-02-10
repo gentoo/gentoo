@@ -1,0 +1,27 @@
+--- a/suricata.yaml.in
++++ b/suricata.yaml.in
+@@ -209,8 +209,9 @@
+             # https://suricata.readthedocs.io/en/latest/output/eve/eve-json-output.html#dns-v1-format
+ 
+             # As of Suricata 5.0, version 2 of the eve dns output
+-            # format is the default.
+-            #version: 2
++            # format is the default - but the daemon produces a warning to that effect
++            # at start-up if this isn't explicitly set.
++            version: 2
+ 
+             # Enable/disable this logger. Default: enabled.
+             #enabled: yes
+@@ -988,9 +989,9 @@
+ ##
+ 
+ # Run Suricata with a specific user-id and group-id:
+-#run-as:
+-#  user: suri
+-#  group: suri
++run-as:
++  user: suricata
++  group: suricata
+ 
+ # Some logging modules will use that name in event as identifier. The default
+ # value is the hostname

@@ -1,0 +1,84 @@
+From 9c998897f67d8aa959dc3005d7d22f36568b6938 Mon Sep 17 00:00:00 2001
+From: Arthur Taylor <arthur@codders.de>
+Date: Sat, 21 Oct 2023 09:53:02 +0200
+Subject: [PATCH] Add compatibility code to deal with Flask and Werkzeug
+ deprecations
+
+---
+ flask_api/helpers.py   |  5 +++++
+ flask_api/parsers.py   |  2 +-
+ flask_api/renderers.py | 11 +++++++++--
+ flask_api/request.py   |  2 +-
+ 4 files changed, 16 insertions(+), 4 deletions(-)
+ create mode 100644 flask_api/helpers.py
+
+diff --git a/flask_api/helpers.py b/flask_api/helpers.py
+new file mode 100644
+index 0000000..f83dd31
+--- /dev/null
++++ b/flask_api/helpers.py
+@@ -0,0 +1,5 @@
++def url_decode_stream(stream):
++    import urllib
++    body = stream.read()
++    body_str = body.decode()
++    return dict(urllib.parse.parse_qsl(body_str))
+diff --git a/flask_api/parsers.py b/flask_api/parsers.py
+index 56f45f6..d056210 100644
+--- a/flask_api/parsers.py
++++ b/flask_api/parsers.py
+@@ -2,8 +2,8 @@
+ 
+ from werkzeug.formparser import MultiPartParser as WerkzeugMultiPartParser
+ from werkzeug.formparser import default_stream_factory
+-from werkzeug.urls import url_decode_stream
+ 
++from flask_api.helpers import url_decode_stream
+ from flask_api import exceptions
+ 
+ 
+diff --git a/flask_api/renderers.py b/flask_api/renderers.py
+index a9aed23..b5951a2 100644
+--- a/flask_api/renderers.py
++++ b/flask_api/renderers.py
+@@ -1,8 +1,8 @@
+ import pydoc
+ import re
+ 
++import flask
+ from flask import current_app, render_template, request
+-from flask.globals import _request_ctx_stack
+ 
+ from flask_api.compat import apply_markdown
+ from flask_api.mediatypes import MediaType
+@@ -95,7 +95,14 @@ def render(self, data, media_type, **options):
+             mock_content = self._html_escape(text)
+ 
+         # Determine the allowed methods on this view.
+-        adapter = _request_ctx_stack.top.url_adapter
++        if hasattr(flask, 'globals') and \
++            hasattr(flask.globals, 'request_ctx'):
++            # update session for Flask >= 2.2
++            ctx = flask.globals.request_ctx._get_current_object()
++        else:  # pragma: no cover
++            # update session for Flask < 2.2
++            ctx = flask._request_ctx_stack.top
++        adapter = ctx.url_adapter
+         allowed_methods = adapter.allowed_methods()
+ 
+         endpoint = request.url_rule.endpoint
+diff --git a/flask_api/request.py b/flask_api/request.py
+index 33c3eaa..647dfc6 100644
+--- a/flask_api/request.py
++++ b/flask_api/request.py
+@@ -2,9 +2,9 @@
+ 
+ from flask import Request
+ from werkzeug.datastructures import MultiDict
+-from werkzeug.urls import url_decode_stream
+ from werkzeug.wsgi import get_content_length
+ 
++from flask_api.helpers import url_decode_stream
+ from flask_api.negotiation import DefaultNegotiation
+ from flask_api.settings import default_settings
+ 

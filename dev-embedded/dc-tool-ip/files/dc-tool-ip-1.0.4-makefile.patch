@@ -1,0 +1,45 @@
+--- a/host-src/tool/Makefile
++++ b/host-src/tool/Makefile
+@@ -1,18 +1,13 @@
+ include ../../Makefile.cfg
+ 
+-CC	= $(HOSTCC)
+-CFLAGS	= $(HOSTCFLAGS) -DDREAMCAST_IP=\"$(DREAMCAST_IP)\" -DHAVE_GETOPT
+-INCLUDE	= -I$(BFDINCLUDE)
++CPPFLAGS += -DDREAMCAST_IP=\"$(DREAMCAST_IP)\" -DHAVE_GETOPT
+ 
+ OBJECTS	= dc-tool.o syscalls.o
+ 
+-.c.o:
+-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $< 
+-
+ all: dc-tool
+ 
+ dc-tool: $(OBJECTS)
+-	$(CC) -o $@ $(OBJECTS) $(BFDLIB)
++	$(CC) $(LDFLAGS) -o $@ $(OBJECTS) $(BFDLIB)
+ 
+ .PHONY : install
+ install: dc-tool
+--- a/Makefile.cfg
++++ b/Makefile.cfg
+@@ -8,8 +8,8 @@
+ # the ones in your system
+ 
+ # these must point to your sh-elf bfd, not the system one
+-BFDLIB		= -L/usr/local/dcdev/lib -lbfd -liberty
+-BFDINCLUDE	= /usr/local/dcdev/include
++BFDLIB		= -lbfd -liberty
++BFDINCLUDE	= 
+ 
+ # cygwin
+ # these must point to your sh-elf bfd, not the system one
+@@ -24,7 +24,7 @@
+ 
+ # you generally shouldn't change this unless you are making forked
+ # versions (or test versions)
+-VERFLAGS	= -DDCLOAD_VERSION=\"1.0.4\"
++CPPFLAGS += -DDCLOAD_VERSION=\"1.0.4\"
+ TARGETCFLAGS	+= $(VERFLAGS)
+ HOSTCFLAGS	+= $(VERFLAGS)
+ 

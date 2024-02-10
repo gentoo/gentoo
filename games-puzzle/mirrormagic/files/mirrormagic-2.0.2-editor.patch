@@ -1,0 +1,20 @@
+--- mirrormagic-2.0.2/src/editor.c.orig
++++ mirrormagic-2.0.2/src/editor.c
+@@ -2751,7 +2751,7 @@
+ 	break;
+       }
+ 
+-      if (!LevelContainsPlayer)
++      if (!LevelContainsPlayer())
+ 	Request("No Level without Gregor Mc Duffin please !", REQ_CONFIRM);
+       else
+       {
+@@ -2766,7 +2766,7 @@
+       break;
+ 
+     case GADGET_ID_TEST:
+-      if (!LevelContainsPlayer)
++      if (!LevelContainsPlayer())
+ 	Request("No Level without Gregor Mc Duffin please !", REQ_CONFIRM);
+       else
+       {

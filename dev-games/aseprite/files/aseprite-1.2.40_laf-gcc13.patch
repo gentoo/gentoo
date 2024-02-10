@@ -1,0 +1,47 @@
+From 59c6af303dea4c6dc0c9da687ec73612929eacfc Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 21 Feb 2023 17:01:04 +0300
+Subject: [PATCH] Fix compilation on GCC13
+
+GCC-13 changes internal cstdint includes, and now files that uses
+standard integer types should directly include cstdint header.
+
+See: https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+See: https://github.com/aseprite/laf/pull/55
+Bug: https://bugs.gentoo.org/865117
+Bug: https://bugs.gentoo.org/895616
+--- a/laf/base/file_content.h
++++ b/laf/base/file_content.h
+@@ -9,6 +9,7 @@
+ #pragma once
+ 
+ #include "base/buffer.h"
++#include "base/ints.h"
+ 
+ #include <cstdio>
+ #include <string>
+--- a/laf/base/sha1.h
++++ b/laf/base/sha1.h
+@@ -11,6 +11,8 @@
+ #include <vector>
+ #include <string>
+ 
++#include "base/ints.h"
++
+ extern "C" struct SHA1Context;
+ 
+ namespace base {
+--- a/laf/base/sha1_rfc3174.h
++++ b/laf/base/sha1_rfc3174.h
+@@ -18,6 +18,8 @@
+ #define BASE_SHA1_RFC3174_H_INCLUDED
+ #pragma once
+ 
++#include "base/ints.h"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+-- 
+2.39.2
+

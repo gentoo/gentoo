@@ -1,0 +1,24 @@
+In Gentoo Prefix we go by Apple's convention to give modules the .bundle
+extension.
+http://developer.apple.com/documentation/DeveloperTools/Conceptual/XcodeBuildSystem/500-Linking/bs_linking.html
+(Above link was removed by Apple, the link below contains a copy:
+http://disanji.net/iOS_Doc/#documentation/DeveloperTools/Conceptual/XcodeBuildSystem/500-Linking/bs_linking.html,
+in case it disappears also, the relevant quote:
+
+Bundle. Bundles are executable files that can be loaded at runtime by
+other products. Plug-ins are implemented using bundles. The term bundle
+in this context refers to the binary itself, not to a structured
+hierarchy. Bundles have the .bundle extension; for example,
+MyBundle.bundle.)
+
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -2645,7 +2645,7 @@
+   soname_spec='$libname$release$major$shared_ext'
+   shlibpath_overrides_runpath=yes
+   shlibpath_var=DYLD_LIBRARY_PATH
+-  shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
++  shrext_cmds='`test .$module = .yes && echo .bundle || echo .dylib`'
+ m4_if([$1], [],[
+   sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/local/lib"])
+   sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'

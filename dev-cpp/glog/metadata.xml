@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
+		<flag name="libunwind">Use libunwind library (<pkg>sys-libs/libunwind</pkg> or <pkg>sys-libs/llvm-libunwind</pkg>) instead of built-in fallback implementation for stack unwinding</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">google/glog</remote-id>
+	</upstream>
+</pkgmetadata>

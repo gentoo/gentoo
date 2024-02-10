@@ -1,0 +1,18 @@
+diff --git a/source/html/epub-doc.c b/source/html/epub-doc.c
+index f764242..83888dc 100644
+--- a/source/html/epub-doc.c
++++ b/source/html/epub-doc.c
+@@ -692,10 +692,12 @@ epub_parse_header(fz_context *ctx, epub_document *doc)
+ 	epub_chapter **tailp;
+ 	int i;
+ 
++	#ifdef GENTOO_MUPDF_DRM
+	if (fz_has_archive_entry(ctx, zip, "META-INF/rights.xml"))
+ 		fz_throw(ctx, FZ_ERROR_GENERIC, "EPUB is locked by DRM");
+ 	if (fz_has_archive_entry(ctx, zip, "META-INF/encryption.xml"))
+ 		fz_throw(ctx, FZ_ERROR_GENERIC, "EPUB is locked by DRM");
++	#endif
+ 
+ 	fz_var(buf);
+ 	fz_var(container_xml);
+

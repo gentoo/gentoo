@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">cifsd-team/ksmbd-tools</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		KSMBD is a linux kernel server which implements SMB3 protocol in kernel space for sharing files over network.
+		ksmbd.mountd is userspace process to transfer user account and password that are registered using ksmbd.adduser (part of this package).
+		Further it allows sharing information parameters that parsed from smb.conf to ksmbd in kernel.
+	</longdescription>
+</pkgmetadata>

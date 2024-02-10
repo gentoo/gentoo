@@ -1,0 +1,4 @@
+SKS_DIR="/var/lib/sks"
+
+# Set common options for sks db and sks recon here.
+SKS_ARGS=""

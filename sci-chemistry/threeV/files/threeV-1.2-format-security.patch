@@ -1,0 +1,198 @@
+ cavities.cpp |  8 ++++----
+ channel.cpp  | 10 +++++-----
+ fsv_calc.cpp |  8 ++++----
+ solvent.cpp  |  8 ++++----
+ tunnel.cpp   |  8 ++++----
+ vdw.cpp      |  8 ++++----
+ volume.cpp   |  8 ++++----
+ 7 files changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/cavities.cpp b/cavities.cpp
+index 418a1a7..96b6a15 100644
+--- a/cavities.cpp
++++ b/cavities.cpp
+@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
+ 
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 's') {
+@@ -45,11 +45,11 @@ int main(int argc, char *argv[]) {
+     } else if(argv[1][1] == 't') {
+       trim_rad = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'h') {
+       cerr << "./Cavities.exe -i <file> -g <grid spacing> -s <shell radius> " << endl
+         << "\t-p <probe radius> -t <trim_probe_rad>  " << endl
+diff --git a/channel.cpp b/channel.cpp
+index c5acd20..9040631 100644
+--- a/channel.cpp
++++ b/channel.cpp
+@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
+ 
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'b') {
+       BIGPROBE = atof(&argv[2][0]);
+     } else if(argv[1][1] == 's') {
+@@ -49,13 +49,13 @@ int main(int argc, char *argv[]) {
+     } else if(argv[1][1] == 'z') {
+       z = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'h') {
+diff --git a/fsv_calc.cpp b/fsv_calc.cpp
+index 9f81347..ef765b8 100644
+--- a/fsv_calc.cpp
++++ b/fsv_calc.cpp
+@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
+ 
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 's') {
+       SMPROBE = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'b') {
+@@ -44,11 +44,11 @@ int main(int argc, char *argv[]) {
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'h') {
+       cerr << "./FsvCalc.exe -i <file> -b <big_probe> -s <small_probe> " << endl
+         << "\t-t <trim probe> -g <gridspace> " << endl
+diff --git a/solvent.cpp b/solvent.cpp
+index d857696..bc9d67f 100644
+--- a/solvent.cpp
++++ b/solvent.cpp
+@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
+  
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);   
++      sprintf(file,"%s",&argv[2][0]);   
+     } else if(argv[1][1] == 's') {
+       SMPROBE = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'b') {
+@@ -42,11 +42,11 @@ int main(int argc, char *argv[]) {
+     } else if(argv[1][1] == 't') {
+       TRIMPROBE = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'h') {
+diff --git a/tunnel.cpp b/tunnel.cpp
+index 0094d05..7472aaa 100644
+--- a/tunnel.cpp
++++ b/tunnel.cpp
+@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
+ 
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 's') {
+@@ -50,11 +50,11 @@ int main(int argc, char *argv[]) {
+     } else if(argv[1][1] == 't') {
+       trim_prb = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'h') {
+       cerr << "./Tunnel.exe -i <file> -g <grid spacing> -p <tunnel probe radius>" << endl
+         << "\t-e <EZD outfile> -o <PDB outfile> -m <MRC outfile>" << endl
+diff --git a/vdw.cpp b/vdw.cpp
+index 4df73f5..0e26edc 100644
+--- a/vdw.cpp
++++ b/vdw.cpp
+@@ -32,13 +32,13 @@ int main(int argc, char *argv[]) {
+ 
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'h') {
+diff --git a/volume.cpp b/volume.cpp
+index a2ca9ad..c304b94 100644
+--- a/volume.cpp
++++ b/volume.cpp
+@@ -32,15 +32,15 @@ int main(int argc, char *argv[]) {
+ 
+   while(argc > 1 && argv[1][0] == '-') {
+     if(argv[1][1] == 'i') {
+-      sprintf(file,&argv[2][0]);
++      sprintf(file,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'p') {
+       PROBE = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'o') {
+-      sprintf(pdbfile,&argv[2][0]);
++      sprintf(pdbfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'e') {
+-      sprintf(ezdfile,&argv[2][0]);
++      sprintf(ezdfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'm') {
+-      sprintf(mrcfile,&argv[2][0]);
++      sprintf(mrcfile,"%s",&argv[2][0]);
+     } else if(argv[1][1] == 'g') {
+       GRID = atof(&argv[2][0]);
+     } else if(argv[1][1] == 'h') {

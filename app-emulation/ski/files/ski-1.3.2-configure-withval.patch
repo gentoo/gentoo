@@ -1,0 +1,22 @@
+fix handling of 3rd/4th args to AC_ARG_WITH()
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -130,7 +130,7 @@ dnl See if we build X11
+ AC_ARG_WITH(x11,
+ AC_HELP_STRING([--with-x11],
+     [Enable the Motif based X11 interface default=no]),
+-    [with_x11=yes],[with_x11=no])
++    [with_x11=$withval])
+   
+ if test "x$with_x11" = "xyes"; then
+   dnl Check for motif, error out if not found
+@@ -144,7 +144,7 @@ dnl See if we build GTK
+ AC_ARG_WITH(gtk,
+ AC_HELP_STRING([--with-gtk],
+     [Enable building the GTK Ski interface default=no]),
+-    [with_gtk=yes],[with_gtk=no]
++    [with_gtk=$withval]
+ )
+ 
+ if test "x$with_gtk" = "xyes"; then

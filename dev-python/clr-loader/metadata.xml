@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    clr_loader provides a unified way to load one of the CLR (.NET) runtime
+    implementations (.NET Framework, .NET (Core) or Mono), load assemblies, and
+    call very simple functions.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/pythonnet/clr-loader/issues/</bugs-to>
+    <remote-id type="github">pythonnet/clr-loader</remote-id>
+    <remote-id type="pypi">clr-loader</remote-id>
+  </upstream>
+</pkgmetadata>

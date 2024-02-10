@@ -1,0 +1,75 @@
+// This quick guide is for mysql authentication support base on the Gentoo Virtual Mailhosting Guide
+// turn ON mysql USE flag for courier-authlib. Need to authenticate against mysql database backend.
+localhost ~ # nano -w /etc/portage/package.use
+net-libs/courier-authlib mysql
+net-mail/courier-imap mysql
+localhost ~ # emerge courier-imap
+// limit to mysql module only, instead load all of them.
+localhost ~ # nano -w /etc/courier/authlib/authdaemonrc
+authmodulelist="authmysql"
+
+// set variables to match your setup.
+localhost ~ # nano -w /etc/courier/authlib/authmysqlrc
+MYSQL_SERVER            localhost
+MYSQL_USERNAME          mailsql_admin_username
+MYSQL_PASSWORD          password
+MYSQL_DATABASE          mailsql_database
+MYSQL_USER_TABLE        users
+# MYSQL_CRYPT_PWFIELD   crypt (commented this out if you want CRAM-MD5)
+MYSQL_CLEAR_PWFIELD     clear
+MYSQL_LOGIN_FIELD       email
+MYSQL_HOME_FIELD        homedir
+MYSQL_MAILDIR_FIELD     maildir
+
+// Start authdaemond
+localhost ~ # etc/init.d/courier-authlib start
+* Starting courier-authlib: authdaemond ...                                               [ ok ]
+
+### Courier-IMAP' ssl certificate setup
+localhost ~ # nano -w /etc/courier-imap/imapd.cnf
+localhost ~ # nano -w /etc/courier-imap/pop3.cnf
+// change to match your site.
+[ req_dn ]
+C=US
+ST=NY
+L=New York
+O=Courier Mail Server
+OU=Automatically-generated IMAP SSL key
+CN=mailhost.example.com
+emailAddress=postmaster@example.com
+
+// Generate Certificate
+localhost ~ # mkimapdcert
+...
+writing new private key to '/etc/courier-imap/imapd.pem'
+...
+localhost ~ # mkpop3dcert
+...
+writing new private key to '/etc/courier-imap/pop3d.pem'
+...
+
+### Secure Authentication Setup (CRAM-MD5)
+localhost ~ # nano -w /etc/courier-imap/imapd
+IMAP_CAPABILITY="IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE AUTH=CRAM-MD5"
+
+### Start Courier-imap daemons.
+localhost ~ # /etc/init.d/courier-pop3d start
+localhost ~ # /etc/init.d/courier-pop3d-ssl start
+localhost ~ # /etc/init.d/courier-imapd start
+localhost ~ # /etc/init.d/courier-imapd-ssl start
+
+### Checking authentication.
+// From your favorite client send an email to user@your_domain.com
+// so your mail user's maildir created by your MTA.
+// you can not login unless user maildir has been created.
+localhost ~ $ telnet mailexample.com 143
+Trying xxx.xxx.xxx.xxx...
+Connected to mail.example.com (xxx.xxx.xxx.xxx).
+Escape character is '^]'.
+* OK [CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE AUTH=CRAM-MD5 ACL ACL2=UNION STARTTLS] Courier-IMAP ready. Copyright 1998-2004 Double Precision, Inc.  See COPYING for distribution information.
+a login user@example.com password
+a OK LOGIN Ok.
+ OK LOGOUT completed
+Connection closed by foreign host.
+
+### That's all folks.

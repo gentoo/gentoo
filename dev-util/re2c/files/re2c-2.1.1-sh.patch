@@ -1,0 +1,48 @@
+Matt noticed errors when running ./configure on dash:
+    ./configure: 5339: test: x: unexpected operator
+    ./configure: 5386: test: x: unexpected operator
+
+The change is to use POSIX '=' comparison instead of bash-specific ==.
+
+Patch-by: Matt Whitlock
+https://bugs.gentoo.org/779187
+--- a/configure.ac	2021-03-27 18:25:24.000000000 +0000
++++ b/configure.ac	2021-03-30 01:34:01.993467424 +0000
+@@ -65,7 +65,7 @@
+ # --enable-benchmarks
+ AC_ARG_ENABLE([benchmarks], [AS_HELP_STRING([--enable-benchmarks],
+     [build benchmarks])])
+-AM_CONDITIONAL([WITH_BENCHMARKS], [test "x$enable_benchmarks" == "xyes"])
++AM_CONDITIONAL([WITH_BENCHMARKS], [test "x$enable_benchmarks" = "xyes"])
+ AM_COND_IF([WITH_BENCHMARKS], [
+     AC_LANG_PUSH([C++])
+     AC_CHECK_HEADERS([benchmark/benchmark.h], [],
+@@ -79,7 +79,7 @@
+     [AS_HELP_STRING([--enable-benchmarks-regenerate],
+     [regenerate C code for benchmarks])])
+ AM_CONDITIONAL([REGEN_BENCHMARKS],
+-    [test "x$enable_benchmarks_regenerate" == "xyes"])
++    [test "x$enable_benchmarks_regenerate" = "xyes"])
+ 
+ 
+ # checks for programs
+--- a/configure
++++ b/configure
+@@ -5336,7 +5336,7 @@ if test "${enable_benchmarks+set}" = set; then :
+   enableval=$enable_benchmarks;
+ fi
+ 
+- if test "x$enable_benchmarks" == "xyes"; then
++ if test "x$enable_benchmarks" = "xyes"; then
+   WITH_BENCHMARKS_TRUE=
+   WITH_BENCHMARKS_FALSE='#'
+ else
+@@ -5383,7 +5383,7 @@ if test "${enable_benchmarks_regenerate+set}" = set; then :
+   enableval=$enable_benchmarks_regenerate;
+ fi
+ 
+- if test "x$enable_benchmarks_regenerate" == "xyes"; then
++ if test "x$enable_benchmarks_regenerate" = "xyes"; then
+   REGEN_BENCHMARKS_TRUE=
+   REGEN_BENCHMARKS_FALSE='#'
+ else

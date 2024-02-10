@@ -1,0 +1,78 @@
+ Makefile.am  |    6 ++++--
+ configure.ac |   24 ++++--------------------
+ 2 files changed, 8 insertions(+), 22 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 99dbf8c..931ba16 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,10 +22,12 @@ localedir = $(datadir)/locale
+ DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+ 
+ # Make sure the gettext.h include file is found.
+-AM_CPPFLAGS = -I. -I$(srcdir) @GTK_CFLAGS@
++AM_CPPFLAGS = -I. -I$(srcdir) @GTK_CFLAGS@ @EMFINCL@
+ 
+ # Link time dependencies.
+-LDADD = @LIBINTL@ @GTK_LIBS@ @EMFLIBS@ 
++LDADD = @LIBINTL@ @GTK_LIBS@ @EMFLIBS@ -lX11
++
++AM_CFLAGS = -DGTK2
+ 
+ # Additional files to be distributed.
+ EXTRA_DIST = autogen.sh autoclean.sh
+diff --git a/configure.ac b/configure.ac
+index 6d8c45a..c5fab42 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,32 +32,14 @@ AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+ 
+ AC_MSG_CHECKING([for GTK version and compile options ])
+ 
+-if test x$PKG_CONFIG = xno -o x$enable_gtk1 = xyes ; then
+-AM_PATH_GTK(1.0.2, , exit 1)
+-else
+-if $PKG_CONFIG gtk+-2.0 --cflags ; then
+-       GTK_CFLAGS="-DGTK2 `$PKG_CONFIG gtk+-2.0 --cflags` "
+-       GTK_LIBS=`$PKG_CONFIG gtk+-2.0 --libs`
+-dnl    use_gtk2=yes
+-       AC_DEFINE([GTK2], [1], [the GTK2 library])
+-       enable_stockgtk=yes
+-else
+-if $PKG_CONFIG --cflags gtk+ ; then
+-	GTK_CFLAGS=`$PKG_CONFIG gtk+ --cflags`       
+-	GTK_LIBS=`$PKG_CONFIG gtk+ --libs`
+-dnl    use_gtk2=no
+-fi
+-fi
+-fi
+-
+-dnl AC_MSG_RESULT using GTK2 : $use_gtk2
++PKG_CHECK_MODULES([GTK],[gtk+-2.0])
+ 
+ dnl Checks for header files.
+ AC_PATH_XTRA
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+ 
+-LDFLAGS="$X_LIBS"
++LDFLAGS+="$X_LIBS"
+ AC_CHECK_LIB([X11],[XOpenDisplay])
+ dnl just an ugly hack to work around the more aggressive header checks
+ dnl in recent autoconf. Not sure if we should really rely on include
+@@ -184,6 +166,7 @@ if test x$enable_emf = xyes; then
+ 	AC_MSG_RESULT(yes)
+ 	AC_DEFINE([EMF], [1], [use optional libEMF instead of fig2dev for EMF output])
+ 	EMFLIBS="-lEMF -lstdc++"
++	EMFINCL="-I${includedir}libEMF"
+ else
+ 	AC_MSG_RESULT(no)
+ 	EMFLIBS=""
+@@ -221,6 +204,7 @@ AC_SUBST(localedir)
+ AC_SUBST(kdemimedir)
+ AC_SUBST(gnomemimedir)
+ AC_SUBST(EMFLIBS)
++AC_SUBST(EMFINCL)
+ AC_SUBST(MYGTKSRCS)
+ AC_SUBST(MYGTKOBJS)
+ AC_SUBST(GTK_CFLAGS)

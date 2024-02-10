@@ -1,0 +1,35 @@
+From 1e69041e86947e360f30b8ee5ee0993ddd68469c Mon Sep 17 00:00:00 2001
+From: Vilnis Termanis <vilnis.termanis@iotics.com>
+Date: Fri, 20 Oct 2023 17:10:10 +0200
+Subject: [PATCH] Fix recursion test case for Python 3.12
+
+---
+ test/test.py | 6 +++---
+ 3 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/test/test.py b/test/test.py
+index c3920c4..d685194 100644
+--- a/test/test.py
++++ b/test/test.py
+@@ -465,10 +465,10 @@ def assert_raises_regex(self, *args, **kwargs):
+ 
+     def test_recursion(self):
+         old_limit = getrecursionlimit()
+-        setrecursionlimit(200)
++        setrecursionlimit(100)
+         try:
+             obj = current = []
+-            for _ in range(getrecursionlimit() * 2):
++            for _ in range(getrecursionlimit() * 30):
+                 new_list = []
+                 current.append(new_list)
+                 current = new_list
+@@ -476,7 +476,7 @@ def test_recursion(self):
+             with self.assert_raises_regex(RuntimeError, 'recursion'):
+                 self.ubjdumpb(obj)
+ 
+-            raw = ARRAY_START * (getrecursionlimit() * 2)
++            raw = ARRAY_START * (getrecursionlimit() * 30)
+             with self.assert_raises_regex(RuntimeError, 'recursion'):
+                 self.ubjloadb(raw)
+         finally:

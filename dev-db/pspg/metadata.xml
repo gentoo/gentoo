@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>pgsql-bugs@gentoo.org</email>
+        <name>PostgreSQL and Related Package Development</name>
+    </maintainer>
+    <longdescription>
+      Unix pager (with very rich functionality) designed for work with
+      tables. Designed for PostgreSQL, but MySQL is supported too. Works
+      well with pgcli too. Can be used as CSV or TSV viewer too. It
+      supports searching, selecting rows, columns, or block and export
+      selected area to clipboard.
+    </longdescription>
+</pkgmetadata>

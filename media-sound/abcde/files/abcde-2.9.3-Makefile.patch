@@ -1,0 +1,11 @@
+--- a/Makefile	2019-02-05 11:19:03.000000000 +0100
++++ b/Makefile	2019-06-04 23:14:03.410131738 +0200
+@@ -19,8 +19,6 @@
+ 	$(INSTALL) -m 755 abcde cddb-tool abcde-musicbrainz-tool $(DESTDIR)$(bindir)
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(sysconfdir)
+ 	$(INSTALL) -m 644 abcde.conf $(DESTDIR)$(sysconfdir)
+-	$(INSTALL) -d -m 755 $(DESTDIR)$(docdir)
+-	$(INSTALL) -m 644 changelog COPYING FAQ README $(DESTDIR)$(docdir)
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) -m 644 abcde.1 cddb-tool.1 $(DESTDIR)$(mandir)/man1
+ 

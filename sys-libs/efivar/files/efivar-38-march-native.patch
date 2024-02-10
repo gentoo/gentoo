@@ -1,0 +1,37 @@
+From 43d19f297548208ce549fd87faa41e6bb86bf9c3 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 17 Jan 2022 10:13:31 -0500
+Subject: [PATCH] Drop "-march=native" from HOST flags
+
+GCC does not support -march=native on some targets (ia64, riscv).
+The performance enhancement for makeguids isn't worth the trouble it
+causes.
+
+Bug: https://bugs.gentoo.org/831334
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/include/defaults.mk | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/include/defaults.mk b/src/include/defaults.mk
+index 632b1551..9024a3a1 100644
+--- a/src/include/defaults.mk
++++ b/src/include/defaults.mk
+@@ -71,16 +71,10 @@ override SOFLAGS = $(_SOFLAGS) \
+ 		   -Wl,--version-script=$(MAP) \
+ 		   $(call family,SOFLAGS)
+ 
+-HOST_ARCH=$(shell uname -m)
+-ifneq ($(HOST_ARCH),ia64)
+-	HOST_MARCH=-march=native
+-else
+-	HOST_MARCH=
+-endif
+ HOST_CPPFLAGS ?= $(CPPFLAGS)
+ override _HOST_CPPFLAGS := $(HOST_CPPFLAGS)
+ override HOST_CPPFLAGS = $(_HOST_CPPFLAGS) \
+-			 -DEFIVAR_BUILD_ENVIRONMENT $(HOST_MARCH)
++			 -DEFIVAR_BUILD_ENVIRONMENT
+ HOST_CFLAGS_GCC ?=
+ HOST_CFLAGS_CLANG ?=
+ HOST_CFLAGS ?= $(CFLAGS) $(call family,HOST_CFLAGS)

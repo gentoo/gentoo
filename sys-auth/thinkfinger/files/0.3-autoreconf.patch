@@ -1,0 +1,25 @@
+From 922e00d123092da33f3237071236e28b0f120766 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 28 Mar 2021 11:04:26 -0700
+Subject: [PATCH 1/2] build: Fix autoreconf.
+
+---
+ configure.in | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 2bdd150..4b277b9 100644
+--- a/configure.in
++++ b/configure.in
+@@ -179,8 +179,6 @@ AM_CONDITIONAL(HAVE_OLD_PAM, test "x$HAVE_OLD_PAM" = "xyes")
+ 
+ # AC_CONFIG_FILES
+ AC_CONFIG_FILES([Makefile
+-		README
+-		INSTALL
+ 		docs/Makefile
+ 		docs/autodocs/Makefile
+ 		libthinkfinger/Makefile
+-- 
+2.26.3
+

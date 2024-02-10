@@ -1,0 +1,12 @@
+diff --git a/crates/ruff_dev/src/generate_json_schema.rs b/crates/ruff_dev/src/generate_json_schema.rs
+index c82843eef..a73d1db12 100644
+--- a/crates/ruff_dev/src/generate_json_schema.rs
++++ b/crates/ruff_dev/src/generate_json_schema.rs
+@@ -61,6 +61,7 @@ mod tests {
+     use super::{main, Args};
+ 
+     #[test]
++    #[ignore]
+     fn test_generate_json_schema() -> Result<()> {
+         let mode = if env::var("RUFF_UPDATE_SCHEMA").as_deref() == Ok("1") {
+             Mode::Write

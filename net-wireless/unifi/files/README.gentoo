@@ -1,0 +1,11 @@
+System MongoDB
+==============
+
+If you want using the system-mongodb systemd service instead of the started
+mongodb from the unifi service please add to
+"var/lib/unifi/data/system.properties" the following properties:
+
+db.mongo.local=false
+db.mongo.uri=mongodb\://127.0.0.1\:27017/ace
+statdb.mongo.uri=mongodb\://127.0.0.1\:27017/ace_stat
+unifi.db.name=ace

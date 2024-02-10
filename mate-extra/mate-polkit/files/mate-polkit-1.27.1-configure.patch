@@ -1,0 +1,54 @@
+--- a/configure	2023-12-18 23:51:41.786478480 -0000
++++ b/configure	2023-12-18 23:52:15.509810347 -0000
+@@ -14654,16 +14654,16 @@
+ 
+ 
+ 
+-if  test "x$enable_appindicator" == "xauto" &&
+-   (test "x$have_appindicator_ayatana" == "xyes" ||
+-    test "x$have_appindicator_ubuntu" == "xyes"); then
++if  test "x$enable_appindicator" = "xauto" &&
++   (test "x$have_appindicator_ayatana" = "xyes" ||
++    test "x$have_appindicator_ubuntu" = "xyes"); then
+ 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: Enabling AppIndicator support (as --enable-appindicator=auto was used)." >&5
+ printf "%s\n" "$as_me: Enabling AppIndicator support (as --enable-appindicator=auto was used)." >&6;}
+ 	enable_appindicator="yes"
+ fi
+ 
+-if test "x$enable_appindicator" == "xyes"; then
+-	if test "x$have_appindicator_ayatana" == "xyes"; then
++if test "x$enable_appindicator" = "xyes"; then
++	if test "x$have_appindicator_ayatana" = "xyes"; then
+ 		{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: Buidling against Ayatana AppIndicator." >&5
+ printf "%s\n" "$as_me: Buidling against Ayatana AppIndicator." >&6;}
+ 
+--- a/configure.ac	2023-12-18 23:56:44.346465318 -0000
++++ b/configure.ac	2023-12-18 23:57:21.129797051 -0000
+@@ -129,14 +129,14 @@
+ 	      [enable_appindicator="auto"])
+ 
+ 
+-if  test "x$enable_appindicator" == "xauto" &&
+-   (test "x$have_appindicator_ayatana" == "xyes" ||
+-    test "x$have_appindicator_ubuntu" == "xyes"); then
++if  test "x$enable_appindicator" = "xauto" &&
++   (test "x$have_appindicator_ayatana" = "xyes" ||
++    test "x$have_appindicator_ubuntu" = "xyes"); then
+ 	AC_MSG_NOTICE([Enabling AppIndicator support (as --enable-appindicator=auto was used).])
+ 	enable_appindicator="yes"
+ fi
+ 
+-if test "x$enable_appindicator" == "xyes"; then
++if test "x$enable_appindicator" = "xyes"; then
+ 	if test "x$have_appindicator_ayatana" == "xyes"; then
+ 		AC_MSG_NOTICE([Buidling against Ayatana AppIndicator.])
+ 		PKG_CHECK_MODULES(AYATANA_APPINDICATOR,
+@@ -144,7 +144,7 @@
+ 				  [AC_DEFINE(HAVE_AYATANA_APPINDICATOR, 1, [Have Ayatana AppIndicator])])
+ 		AC_SUBST(AYATANA_APPINDICATOR_CFLAGS)
+ 		AC_SUBST(AYATANA_APPINDICATOR_LIBS)
+-	elif test "x$have_appindicator_ubuntu" == "xyes"; then
++	elif test "x$have_appindicator_ubuntu" = "xyes"; then
+ 		AC_MSG_NOTICE([Buidling against Ubuntu AppIndicator.])
+ 		PKG_CHECK_MODULES(UBUNTU_APPINDICATOR,
+ 				  [$UBUNTU_APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],

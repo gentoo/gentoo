@@ -1,0 +1,14 @@
+--- dbus-1.2.27-orig/lib/DBus/Generation.hs	2022-07-13 00:32:15.000000000 +1000
++++ dbus-1.2.27/lib/DBus/Generation.hs	2022-11-15 11:11:32.291154128 +1100
+@@ -148,7 +148,11 @@
+ makeFromVariantApp name = AppE (VarE 'T.fromVariant) $ VarE name
+ 
+ makeJustPattern :: Name -> Pat
++#if MIN_VERSION_template_haskell(2,18,0)
+ makeJustPattern name = ConP 'Just [] [VarP name]
++#else
++makeJustPattern name = ConP 'Just [VarP name]
++#endif
+ 
+ mapOrHead ::
+   (Num a, Eq a) => a -> (t -> b) -> [t] -> ([b] -> b) -> b

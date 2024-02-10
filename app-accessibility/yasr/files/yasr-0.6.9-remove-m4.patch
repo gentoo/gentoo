@@ -1,0 +1,27 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,7 +7,6 @@
+ 
+ SUBDIRS = \
+ 	$(yasr_DDIRS) \
+-m4 \
+ 	po
+ 
+ pkgdata_DATA = \
+@@ -25,4 +24,3 @@
+ 	README-fr \
+ 	README-ru
+ 
+-ACLOCAL_AMFLAGS = -I m4
+--- a/configure.in
++++ b/configure.in
+@@ -59,8 +59,7 @@
+ AM_GNU_GETTEXT(external)
+ AM_GNU_GETTEXT_VERSION([0.17])
+ 
+-AC_OUTPUT([ m4/Makefile 
+-Makefile
++AC_OUTPUT([ Makefile 
+ yasr/Makefile
+ acclogin/Makefile
+ po/Makefile.in

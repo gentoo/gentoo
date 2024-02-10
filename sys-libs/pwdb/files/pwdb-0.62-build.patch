@@ -1,0 +1,114 @@
+ - drop ldconfig junk
+ - fix types used in socket functions (socklen_t, not int)
+
+http://bugs.gentoo.org/126977
+ - respect user LDFLAGS
+
+http://bugs.gentoo.org/126695
+ - add missing headers
+ - add missing comma to supp_entry
+
+http://bugs.gentoo.org/137134
+ - don't show traditional warnings
+
+--- a/Makefile
++++ b/Makefile
+@@ -71,7 +71,7 @@
+ 
+ WARNINGS += -ansi -D_POSIX_SOURCE -Wall -Wwrite-strings \
+ 	-Wcast-qual -Wcast-align \
+-	-Wtraditional -Wstrict-prototypes -Wmissing-prototypes \
++	-Wstrict-prototypes -Wmissing-prototypes \
+ 	-Wnested-externs -Winline -Wshadow 
+ INCLUDEDIR=-I$(CRTDIR)/include
+ 
+--- a/libpwdb/Makefile
++++ b/libpwdb/Makefile
+@@ -50,7 +50,7 @@
+ 
+ 
+ $(LIBDYNAME): $(LIBOBJ)
+-	$(LD) -soname $(LIBSONAME) -x -shared -o $(LIBFILENAME) $(LIBOBJ) -lcrypt -lnsl -lc
++	$(CC) $(LDFLAGS) -shared -Wl,-soname -Wl,$(LIBSONAME) -Wl,-x -o $(LIBFILENAME) $(LIBOBJ)  -lcrypt -lnsl $(LDLIBS)
+ 	@ln -sf $(LIBFILENAME) $@
+ 
+ $(LIBSTATIC): $(LIBOBJ)
+@@ -68,7 +68,7 @@
+ 	$(INSTALL) -m 644 radius.h $(INCLUDED)/radius.h
+ 	$(INSTALL) -m 644 _pwdb_macros.h $(INCLUDED)/_pwdb_macros.h
+ 	$(INSTALL) -m 755 $(LIBFILENAME) $(LIBDIR)
+-	$(LDCONFIG)
++	ln -sf $(LIBFILENAME) $(LIBDIR)/$(LIBSONAME)
+ 	ln -sf $(LIBFILENAME) $(LIBDIR)/$(LIBDYNAME)
+ 	$(INSTALL) -m 644 $(LIBSTATIC) $(LIBDIR)
+ 
+--- a/libpwdb/posix/pwd.c
++++ b/libpwdb/posix/pwd.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ #define PWDB_HARD_CORE 1
+ #include <pwdb/pwdb_public.h>
+--- a/libpwdb/posix/undefined.c
++++ b/libpwdb/posix/undefined.c
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #define PWDB_HARD_CORE 1
+ #include <pwdb/pwdb_public.h>
+--- a/libpwdb/pwdb/pwdb_helper.c
++++ b/libpwdb/pwdb/pwdb_helper.c
+@@ -18,6 +18,7 @@
+  *
+  */
+ 
++#include <string.h>
+ #include "pwdb_public.h"
+ #include "pwdb_module.h"
+ 
+--- a/libpwdb/pwdb/interface/shadow/group.c
++++ b/libpwdb/pwdb/interface/shadow/group.c
+@@ -533,7 +533,7 @@
+ 
+     static const char *supp_entry[] = {
+     "group", "passwd",
+-    "users", "admins"       /* these are from /etc/group */
++    "users", "admins",      /* these are from /etc/group */
+     "groups",               /* these are serviced by requests */
+     NULL
+     };
+--- a/libpwdb/radius/radius.c
++++ b/libpwdb/radius/radius.c
+@@ -145,7 +145,7 @@
+ 		      const char* password,
+ 		      RADIUS_RESULT *rad_result)
+ {
+-    int                salen;
++    socklen_t          salen;
+     int                sockfd;
+     struct sockaddr    saremote;
+     struct sockaddr_in *s_in;
+@@ -333,7 +333,7 @@
+                        const char* new_password,
+ 		       RADIUS_RESULT *rad_result)
+ {
+-    int salen;
++    socklen_t salen;
+     int sockfd;
+     struct sockaddr saremote;
+     struct sockaddr_in *s_in;
+@@ -535,7 +535,7 @@
+                       int sense,
+                       int session_time)
+ {
+-    int salen;
++    socklen_t salen;
+     int sockfd;
+     struct sockaddr saremote;
+     struct sockaddr_in *s_in;

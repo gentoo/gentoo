@@ -1,0 +1,44 @@
+From 5cb3535b911c78adb9c8a908104fc4be3ffbfe51 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 23 Dec 2023 14:38:46 -0500
+Subject: [PATCH 1/1] CMake/FindCBLAS.cmake: search only for cblas
+
+On Gentoo, users can "eselect cblas" to choose a cblas implementation
+at runtime. Packages build against the reference cblas, but the others
+are (by design) compatible, so we can force one to take precedence at
+runtime with an ld.so.conf entry. But that only works when consumers
+link to libcblas.so. If they link directly to (say) openblas, then
+changing how libcblas.so resolves won't help.
+
+When Flint tries to find "cblas," it looks for accelerate and openblas
+before plain cblas. That runs afoul of the scheme described above. To
+remedy it, we patch the search function so that only "cblas" is
+considered. Since virtual/cblas always pulls in the reference
+implementation, there'd be no point in altering the search order to
+consider e.g. openblas after cblas.
+---
+ CMake/FindCBLAS.cmake | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMake/FindCBLAS.cmake b/CMake/FindCBLAS.cmake
+index f5b5b1c..f4919f4 100644
+--- a/CMake/FindCBLAS.cmake
++++ b/CMake/FindCBLAS.cmake
+@@ -11,13 +11,11 @@
+ find_path(CBLAS_INCLUDE_DIRS NAMES cblas.h
+   HINTS CBLAS_ROOT ENV CBLAS_ROOT
+   PATHS ${INCLUDE_INSTALL_DIR} ${CMAKE_INSTALL_PREFIX}/include
+-  PATH_SUFFIXES openblas cblas blis flexiblas
+   )
+ 
+-find_library(CBLAS_LIBRARIES NAMES accelerate openblas cblas blas blis flexiblas
++find_library(CBLAS_LIBRARIES NAMES cblas
+   HINTS CBLAS_ROOT ENV CBLAS_ROOT
+   PATHS ${LIB_INSTALL_DIR} ${CMAKE_INSTALL_PREFIX}/lib
+-  PATH_SUFFIXES openblas cblas blis flexiblas
+   )
+ 
+ include(FindPackageHandleStandardArgs)
+-- 
+2.41.0
+

@@ -1,0 +1,41 @@
+From 9cf7c9dcd012656df949d06f2986b57db3a72bdc Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 9 Jun 2020 01:25:04 +0300
+Subject: [PATCH] Fix compilation with GCC 10
+
+Fixed compilation with -fno-common, which enabled in GCC 10 by default.
+See https://bugs.gentoo.org/706762.
+---
+ include/hex.h  | 2 +-
+ src/hexcurse.c | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/include/hex.h b/include/hex.h
+index 57845c0..845bac0 100644
+--- a/include/hex.h
++++ b/include/hex.h
+@@ -126,7 +126,7 @@ extern bool color_enabled;
+ #define max(a,b) ((a) >(b) ? (a) : (b))
+ #endif
+ 
+-FILE *fpIN;		        		/* global file ptr           */
++extern FILE *fpIN;	        		/* global file ptr           */
+ 
+ /* function prototypes */
+ 
+diff --git a/src/hexcurse.c b/src/hexcurse.c
+index e723ddc..3c167b6 100644
+--- a/src/hexcurse.c
++++ b/src/hexcurse.c
+@@ -27,6 +27,8 @@
+ /*#define DEBUG_LLIST*/
+ /*#define DEBUG_GOTO*/
+ 
++FILE *fpIN;
++
+ int     BASE, MAXY, resize = 0;
+ int     MIN_ADDR_LENGTH;
+ hexList *head;						/* linked list struct */
+-- 
+2.26.2
+

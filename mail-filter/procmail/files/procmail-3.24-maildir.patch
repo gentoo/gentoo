@@ -1,0 +1,16 @@
+diff --git a/src/authenticate.c b/src/authenticate.c
+index 1f6cd6f..d92b6de 100644
+--- a/src/authenticate.c
++++ b/src/authenticate.c
+@@ -39,7 +39,7 @@ static /*const*/char rcsid[]=
+ #include "authenticate.h"
+ 
+ #ifndef MAILSPOOLDIR
+-#define MAILSPOOLDIR	"/var/mail/"		     /* watch the trailing / */
++#define MAILSPOOLDIR	""	     /* watch the trailing / */
+ #endif
+ #ifndef MAILSPOOLSUFFIX
+ #define MAILSPOOLSUFFIX ""	      /* suffix to force maildir or MH style */
+-- 
+2.42.0
+

@@ -1,0 +1,10 @@
+--- a/src/gettext.h
++++ b/src/gettext.h
+@@ -24,6 +24,7 @@
+ 
+ /* Get declarations of GNU message catalog functions.  */
+ # include <libintl.h>
++# include <locale.h>
+ 
+ #else
+ 

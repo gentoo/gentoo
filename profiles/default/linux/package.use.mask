@@ -1,0 +1,52 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Matt Turner <mattst88@gentoo.org> (2024-01-29)
+# Causes various issues. See bugs #919858, #923054
+media-libs/mesa zink
+
+# Sam James <sam@gentoo.org> (2023-06-06)
+# Needs linux-only dev-libs/libaio.
+app-emulation/qemu -aio
+
+# Peter Levine <plevine457@gmail.com> (2019-10-01)
+# Native inotify support is preferred on linux.
+# bug #697476
+net-fs/samba fam
+
+# Patrick McLean <chutzpah@gentoo.org> (2019-09-17)
+# Masked due to upstream build failures (bug #693018)
+# One example: https://tracker.ceph.com/issues/41523
+>=sys-cluster/ceph-14.2 dpdk
+
+# Michael Palimaka <kensington@gentoo.org> (2015-09-03)
+# Native inotify support is preferred on linux.
+kde-frameworks/kcoreaddons fam
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
+# The libpci access is only used for linux.
+net-analyzer/net-snmp -pci
+
+# Richard Yao <ryao@gentoo.org> (2012-08-22)
+# USE=kernel-builtin is dangerous. Only those that know what they are doing
+# should use it until documentation improves.
+sys-fs/zfs kernel-builtin
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-20)
+# The prevent-removal USE flag is only implemented for Linux.
+sys-auth/pam_mktemp -prevent-removal
+
+# Samuli Suominen <ssuominen@gentoo.org> (2012-01-10)
+# Masked in base/package.use.mask as Linux -only feature
+app-arch/libarchive -e2fsprogs
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
+#
+# Unmask pdnsd's Linux-specific USE flags.
+net-dns/pdnsd -urandom
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (2009-08-20)
+# Mask oss USE flag for PulseAudio; it's present for compatibility
+# with FreeBSD and other operating systems that have no better
+# interfaces, but people would probably abuse it with Linux as well.
+media-sound/pulseaudio-daemon oss

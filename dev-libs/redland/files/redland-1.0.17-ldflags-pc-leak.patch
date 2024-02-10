@@ -1,0 +1,24 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu May  2 14:25:04 UTC 2013
+Subject: ldflags have no place in pkgconfig files
+
+--- a/redland.pc.in
++++ b/redland.pc.in
+@@ -14,5 +14,5 @@
+ Requires.private: raptor2 >= @RAPTOR_MIN_VERSION@, rasqal >= @RASQAL_MIN_VERSION@, rasqal <= @RASQAL_MAX_VERSION@
+ Version: @VERSION@
+ Libs: -L${libdir} -lrdf
+-Libs.private: @LIBRDF_LDFLAGS@ @LIBRDF_PKGCONFIG_PRIVATE_LIBS@
++Libs.private: @LIBRDF_PKGCONFIG_PRIVATE_LIBS@
+ Cflags: -I${includedir}
+--- a/configure.ac
++++ b/configure.ac
+@@ -366,7 +366,7 @@
+   AC_MSG_RESULT($bdb_include_dir)
+ 
+   if test "$bdb_prefix" != no; then
+-    nLDFLAGS=$LDFLAGS
++    nLDFLAGS=
+     nCPPFLAGS=
+ 
+     if test "$bdb_lib_dir" != /usr/lib; then

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<use>
+		<flag name="extra">Install full upstream font set including condensed, semi-bold, extra-light variants</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">notofonts/notofonts.github.io</remote-id>
+	</upstream>
+</pkgmetadata>

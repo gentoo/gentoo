@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net dns
+}
+
+INSTANCE=${SVCNAME#*.}
+if [ -n "${INSTANCE}" ] && [ ${SVCNAME} != "omnisync" ]; then
+    pidfile="/var/run/omnisync.${INSTANCE}.pid"
+else
+    pidfile="/var/run/omnisync.pid"
+fi
+
+command="/usr/sbin/omnisync"
+command_args="-P ${pidfile} -M ${OMNISYNC_MODE} ${OMNISYNC_ARGS}"
+
+start_pre() {
+	if [ -z "${OMNISYNC_MODE}" ] ; then
+		eerror 'Configuration incomplete! OMNISYNC_MODE not set'
+		return 1
+	fi
+	return 0
+}
+
+# vim: filetype=gentoo-init-d sw=2 ts=2 sts=2 noet:

@@ -1,0 +1,92 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="configtest"
+extra_started_commands="upgrade reload"
+
+description="Robust, small and high performance http and reverse proxy server"
+description_configtest="Run nginx' internal config check."
+description_upgrade="Upgrade the nginx binary without losing connections."
+description_reload="Reload the nginx configuration without losing connections."
+
+NGINX_CONFIGFILE=${NGINX_CONFIGFILE:-/etc/nginx/nginx.conf}
+
+command="/usr/sbin/nginx"
+command_args="-c \"${NGINX_CONFIGFILE}\""
+start_stop_daemon_args=${NGINX_SSDARGS:-"--wait 1000"}
+pidfile=${NGINX_PIDFILE:-/run/nginx.pid}
+user=${NGINX_USER:-nginx}
+group=${NGINX_GROUP:-nginx}
+retry=${NGINX_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+depend() {
+	need net
+	use dns logger netmount
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_post() {
+	rm -f ${pidfile}
+}
+
+reload() {
+	configtest || return 1
+	ebegin "Refreshing nginx' configuration"
+	start-stop-daemon --signal SIGHUP --pidfile "${pidfile}"
+	eend $? "Failed to reload nginx"
+}
+
+upgrade() {
+	configtest || return 1
+	ebegin "Upgrading nginx"
+
+	einfo "Sending USR2 to old binary"
+	start-stop-daemon --signal SIGUSR2 --pidfile "${pidfile}"
+
+	einfo "Sleeping 3 seconds before pid-files checking"
+	sleep 3
+
+	if [ ! -f "${pidfile}.oldbin" ]; then
+		eerror "File with old pid not found"
+		return 1
+	fi
+
+	if [ ! -f "${pidfile}" ]; then
+		eerror "New binary failed to start"
+		return 1
+	fi
+
+	einfo "Sleeping 3 seconds before WINCH"
+	sleep 3
+	# Cannot send "WINCH" using start-stop-daemon yet, https://bugs.gentoo.org/604986
+	kill -WINCH $(cat "${pidfile}.oldbin")
+
+	einfo "Sending QUIT to old binary"
+	start-stop-daemon --signal SIGQUIT --pidfile "${pidfile}.oldbin"
+
+	einfo "Upgrade completed"
+	eend $? "Upgrade failed"
+}
+
+configtest() {
+	ebegin "Checking nginx' configuration"
+	${command} -c "${NGINX_CONFIGFILE}" -t -q
+
+	if [ $? -ne 0 ]; then
+		${command} -c "${NGINX_CONFIGFILE}" -t
+	fi
+
+	eend $? "failed, please correct errors above"
+}

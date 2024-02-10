@@ -1,0 +1,13 @@
+--- a/test.scm
++++ b/test.scm
+@@ -32,8 +32,8 @@
+ (test* "qdbm-dpclosed?" #t (qdbm-dpclosed? qdbm))
+ (test* "qdbm-dpremove" #t (qdbm-dpremove "test.dbm"))
+ 
+-(test* "qdbm-innerhash" -468784272 (qdbm-dpinnerhash "key"))
+-(test* "qdbm-outerhash" -448645494 (qdbm-dpouterhash "key"))
++(test* "qdbm-innerhash" 604957552 (qdbm-dpinnerhash "key"))
++(test* "qdbm-outerhash" 625096330 (qdbm-dpouterhash "key"))
+ (test* "qdbm-primenum" 10223 (qdbm-dpprimenum 10000))
+ 
+ ;; The following is taken from ext/dbm/test.scm.

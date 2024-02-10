@@ -1,0 +1,129 @@
+# Copyright 2023-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-09)
+# Test failures on BE (#920353, #902191)
+net-misc/nextcloud-client
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-01)
+# Known broken on BE (#906100)
+games-simulation/openrct2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-18)
+# Using boringssl which is explicit no-support for BE (#733080)
+net-libs/quiche
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-17)
+# media-libs/libvpx casualties (#700902)
+media-plugins/gst-plugins-vpx
+dev-qt/qtwebengine
+www-client/falkon
+www-client/otter
+net-libs/signon-ui
+media-video/cheese
+kde-apps/messagelib
+kde-apps/kmail
+kde-apps/libksieve
+kde-apps/kdepim-runtime
+kde-apps/kontact
+kde-apps/kimagemapeditor
+kde-apps/grantlee-editor
+kde-apps/akregator
+dev-util/kdevelop
+dev-qt/qtwebview
+dev-python/PyQtWebEngine
+app-text/kchmviewer
+app-office/merkuro
+app-editors/ghostwriter
+kde-misc/zanshin
+kde-apps/mailcommon
+kde-apps/pim-sieve-editor
+kde-apps/korganizer
+kde-apps/knotes
+kde-apps/kdepim-meta
+kde-apps/kdepim-addons
+kde-apps/kaddressbook
+kde-apps/kaccounts-providers
+kde-apps/akonadiconsole
+kde-apps/akonadi-calendar
+kde-apps/akonadi-import-wizard
+gnome-base/gnome-extra-apps
+kde-misc/kio-gdrive
+kde-apps/pim-data-exporter
+kde-apps/mbox-importer
+kde-apps/konsolekalendar
+kde-apps/incidenceeditor
+kde-apps/eventviews
+kde-apps/calendarsupport
+kde-apps/calendarjanitor
+net-im/telegram-desktop
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# Test failures on BE (#700902)
+media-libs/libvpx
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-07)
+# Explicit no-support for BE (#891517)
+media-sound/audacity
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-28)
+# Explicit no-support for BE (#884295)
+media-gfx/alembic
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-28)
+# Tested on LE only (#849866)
+games-fps/freedoom
+games-engines/odamex
+games-fps/chocolate-doom
+games-fps/doomsday
+games-fps/gzdoom
+games-fps/prboom-plus
+games-fps/freedoom-data
+media-libs/zmusic
+games-util/deutex
+games-fps/doom-data
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# Test failures on BE
+# https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
+media-libs/libaom
+
+# matoro <matoro_gentoo@matoro.tk> (2023-10-09)
+# Tested on LE only (#889996, #908893)
+dev-games/mygui
+dev-games/ois
+dev-games/openscenegraph-openmw
+dev-games/recastnavigation
+games-engines/fheroes2
+games-engines/openmw
+games-strategy/homm2-gold-gog
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-30)
+# Test failures on BE
+# https://github.com/libjxl/libjxl/issues/2433
+media-libs/libjxl
+
+# James Le Cuirot <chewi@gentoo.org> (2023-06-24)
+# Test failures on BE (#901391).
+# https://github.com/any1/neatvnc/issues/85
+gui-libs/neatvnc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-05-05)
+# Test failures on BE (https://github.com/sekrit-twc/zimg/pull/156)
+media-libs/zimg
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-11)
+# Test failures on BE (#833010).  Supported by Debian CI.
+# https://gitlab.freedesktop.org/wayland/weston/-/issues/739
+dev-libs/weston
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-10)
+# Explicit no-support for BE (#801238)
+media-libs/libldac
+media-plugins/gst-plugins-ldac
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-07)
+# Fails tests on BE (#896138)
+# https://github.com/cisco/openh264/issues/3634
+media-libs/openh264
+media-libs/tg_owt

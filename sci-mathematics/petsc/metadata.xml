@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<use>
+		<flag name="afterimage">Use Afterstep image library (<pkg>media-libs/libafterimage</pkg>)</flag>
+		<flag name="boost">Use boost (<pkg>dev-libs/boost</pkg>)</flag>
+		<flag name="complex-scalars">Make scalars complex</flag>
+		<flag name="hypre">Use HYPRE (sci-mathematics/hypre) and for preconditioning</flag>
+		<flag name="int64">Use 64 bit indexes</flag>
+		<flag name="metis">Add support for metis (<pkg>sci-libs/parmetis</pkg>)</flag>
+		<flag name="mumps">Add support for mumps (<pkg>sci-libs/mumps</pkg>)</flag>
+		<flag name="scotch">Add support for scotch (<pkg>sci-libs/scotch</pkg>)</flag>
+		<flag name="sparse">Use suitesparse (<pkg>sci-libs/suitesparse</pkg>) including cholmod (<pkg>sci-libs/cholmod</pkg>) for sparse factorization</flag>
+		<flag name="superlu">Use superlu (<pkg>sci-libs/superlu</pkg>) for preconditioning</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,10 @@
+[Unit]
+Description=Dictd Dictionary Server Daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/dictd --listen-to 127.0.0.1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,78 @@
+From ec0b1fd3853df6cb577a99382cbcfd7ecc85d372 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 28 Feb 2018 09:50:13 +1300
+Subject: Use file for input data instead of STDIN ( non-interactive testing )
+
+test.pl as-is is useless because it executes no readline code when in
+automated testing conditions.
+
+Additionally, attempting to use the built-in file redirection
+mechanisms is useless, as there's no way to set those parts from
+
+    make test
+
+And 'preput' support causes readline to barf when the input stream
+is not a real TTY.
+
+Subsequently, the pre-inserted "exit" also has to be removed.
+
+Bug: https://bugs.gentoo.org/624044
+---
+ t/input.txt |  2 ++
+ test.pl     | 23 +++--------------------
+ 2 files changed, 5 insertions(+), 20 deletions(-)
+ create mode 100644 t/input.txt
+
+diff --git a/t/input.txt b/t/input.txt
+new file mode 100644
+index 0000000..6077553
+--- /dev/null
++++ b/t/input.txt
+@@ -0,0 +1,2 @@
++printf "input ok: sqrt(42)^2 == %20.20f", sqrt(42) * sqrt(42);
++exit 0
+diff --git a/test.pl b/test.pl
+index fe99e2f..1f87749 100644
+--- a/test.pl
++++ b/test.pl
+@@ -10,26 +10,9 @@ use Term::ReadLine;
+ use Carp;
+ $SIG{__WARN__} = sub { warn Carp::longmess(@_) };
+ 
+-my $ev;
+-if ($ENV{$ev = 'AUTOMATED_TESTING'} or $ENV{$ev = 'PERL_MM_NONINTERACTIVE'}) {
+-  print "1..0 # skip: \$ENV{$ev} is TRUE\n";
+-  exit;
+-}
++open(IN, '<', './t/input.txt') or die "Can't open input.txt, $@, $!";
++$term = Term::ReadLine->new('Simple Perl calc', \*IN, \*STDOUT);
+ 
+-if (!@ARGV) {
+-  $term = new Term::ReadLine 'Simple Perl calc';
+-} elsif (@ARGV == 2) {
+-  open(IN,"<$ARGV[0]");
+-  open(OUT,">$ARGV[1]");
+-  $term = new Term::ReadLine 'Simple Perl calc', \*IN, \*OUT;
+-} elsif ($ARGV[0] =~ m|^/dev|) {
+-  open(IN,"<$ARGV[0]");
+-  open(OUT,">$ARGV[0]");
+-  $term = new Term::ReadLine 'Simple Perl calc', \*IN, \*OUT;
+-} else {
+-  $term = new Term::ReadLine 'Simple Perl calc', \*STDIN, \*STDOUT;
+-  $no_print = $ARGV[0] eq '--no-print';
+-}
+ $prompt = "Enter arithmetic or Perl expression: ";
+ if ((my $l = $ENV{PERL_RL_TEST_PROMPT_MINLEN} || 0) > length $prompt) {
+   $prompt =~ s/(?=:)/ ' ' x ($l - length $prompt)/e;
+@@ -60,7 +43,7 @@ print $OUT <<EOP;
+ 	this word should be already entered.)
+ 
+ EOP
+-while ( defined ($_ = $term->readline($prompt, "exit")) ) {
++while ( defined ($_ = $term->readline($prompt)) ) {
+   $res = eval($_);
+   warn $@ if $@;
+   print $OUT $res, "\n" unless $@ or $no_print;
+-- 
+2.15.1
+

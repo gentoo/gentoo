@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+depend() {
+	need display-manager
+}
+
+start() {
+	ebegin "Setting nvidia card overclock speed"
+	nvclock ${CLOCKOPTS} >/dev/null
+	eend $?
+}
+

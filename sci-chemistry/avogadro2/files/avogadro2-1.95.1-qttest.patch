@@ -1,0 +1,15 @@
+diff --git a/avogadro/CMakeLists.txt b/avogadro/CMakeLists.txt
+index d2245ff..fe1857c 100644
+--- a/avogadro/CMakeLists.txt
++++ b/avogadro/CMakeLists.txt
+@@ -80,8 +80,8 @@ endif()
+ 
+ if(ENABLE_TESTING)
+   find_package(Qt5 COMPONENTS Test REQUIRED)
+-  find_package(QtTesting REQUIRED NO_MODULE)
+-  include_directories(${QtTesting_INCLUDE_DIRS})
++  find_package(Qt5Test REQUIRED NO_MODULE)
++  include_directories(${Qt5Test_INCLUDE_DIRS})
+   link_directories(${QtTesting_LIBRARY_DIR})
+   add_definitions(-DQTTESTING)
+ endif()

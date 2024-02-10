@@ -1,0 +1,11 @@
+diff -rup a/src/SDL_Pango.c b/src/SDL_Pango.c
+--- a/src/SDL_Pango.c	2023-03-17 22:17:20.000000000 -0400
++++ b/src/SDL_Pango.c	2023-03-17 22:33:20.603873355 -0400
+@@ -229,6 +229,7 @@
+ #include <pango/pango.h>
+ #include <pango/pangoft2.h>
+ 
++#define __FT2_BUILD_UNIX_H__
+ #include "SDL_Pango.h"
+ 
+ //! non-zero if initialized

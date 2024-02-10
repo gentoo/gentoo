@@ -1,0 +1,330 @@
+From 983bc81ccfb981a07945344affbe7e1116061dc1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 5 Oct 2022 16:12:55 +0100
+Subject: [PATCH] Fix function prototypes & inline link issue
+
+--- a/src/ShiftyEngine.c
++++ b/src/ShiftyEngine.c
+@@ -49,7 +49,7 @@ struct SE_Button * se_buttonList = 0;
+ int se_true = 0;
+ int se_false = 1;
+ 
+-extern void SE_CheckEvents();
++extern void SE_CheckEvents(void);
+ 
+ int SOUND_X = 0;
+ int SOUND_Y = 0;
+@@ -72,7 +72,7 @@ void SE_SetName(char * name)
+ 
+ /*****************************************************
+  ****************************************************/
+-void SE_Quit()
++void SE_Quit(void)
+ {
+         SDL_FreeSurface(screen);
+         SDL_FreeSurface(background);
+@@ -98,7 +98,7 @@ void SE_SetBackground(char * name)
+ 
+ /*****************************************************
+  ****************************************************/
+-int SE_Init()
++int SE_Init(void)
+ {
+ 	putenv("SDL_VIDEO_CENTERED=1");
+ 
+@@ -158,7 +158,7 @@ void SE_Error(char * fmt, ...)
+ 
+ /*****************************************************
+  ****************************************************/
+-void SE_GameLoop() 
++void SE_GameLoop(void) 
+ {
+ 	while(1) 
+ 		SE_CheckEvents();
+@@ -167,7 +167,7 @@ void SE_GameLoop()
+ 
+ /*****************************************************
+  ****************************************************/
+-void SE_RegisterButton(char * name, int x, int y, int w, int h, int * cond, void (*handle)())
++void SE_RegisterButton(char * name, int x, int y, int w, int h, int * cond, void (*handle)(void))
+ {
+ 	struct SE_Button * ph, * head, * t = (struct SE_Button *)malloc(sizeof(struct SE_Button));
+ 	if(t == NULL) {
+@@ -201,7 +201,7 @@ void SE_RegisterButton(char * name, int x, int y, int w, int h, int * cond, void
+ 
+ /*****************************************************
+  ****************************************************/
+-void SE_AdjustSoundLevel()
++void SE_AdjustSoundLevel(void)
+ {
+ 	SDL_FreeSurface(soundControl);
+ 
+@@ -226,7 +226,7 @@ void SE_AdjustSoundLevel()
+ 
+ /*****************************************************
+  ****************************************************/
+-void SE_ShowSoundIcon() 
++void SE_ShowSoundIcon(void) 
+ {
+ 	SDL_Rect dest;
+ 
+--- a/src/ShiftyEngine.h
++++ b/src/ShiftyEngine.h
+@@ -50,7 +50,7 @@ extern SDL_Surface * background;
+ struct SE_Button {
+ 	char name[16];
+ 	int x, y, w, h;
+-	void (*handle)();
++	void (*handle)(void);
+ 	char over;
+ 	int * cond;
+ 	struct SE_Button * next;
+@@ -62,19 +62,19 @@ extern int volume;
+ extern int SOUND_X;
+ extern int SOUND_Y;
+ 
+-int  SE_Init             ();
++int  SE_Init             (void);
+ void SE_SetBackground       (char * filename);
+ //void SE_CheckEvents      ();
+-void SE_GameLoop         ();
++void SE_GameLoop         (void);
+ void SE_SetFont          (char * filename, int size);
+ void SE_SetName          (char * name);
+ //void SE_Print            (int x, int y, char * text, SDL_Color color, TTF_Font * font);
+-void SE_RegisterButton   (char * name, int x, int y, int w, int h, int * cond, void (*handler)());
++void SE_RegisterButton   (char * name, int x, int y, int w, int h, int * cond, void (*handler)(void));
+ //void SE_UnregisterButton (char * name);
+-void SE_Quit             ();
++void SE_Quit             (void);
+ void SE_Error            (char * fmt, ...);
+-void SE_AdjustSoundLevel ();
+-void SE_ShowSoundIcon    ();
++void SE_AdjustSoundLevel (void);
++void SE_ShowSoundIcon    (void);
+ 
+ #endif
+ 
+--- a/src/logo.c
++++ b/src/logo.c
+@@ -22,7 +22,7 @@
+ 
+ #include "ShiftyEngine.h"
+ 
+-extern void SE_Redraw();
++extern void SE_Redraw(void);
+ 
+ static SDL_Surface * mainScreen = 0;
+ static SDL_Surface * logo       = 0;
+@@ -38,7 +38,7 @@ Sint32 ICON_H = 0;
+ 
+ /*****************************************************
+  ****************************************************/
+-void showIcon()
++void showIcon(void)
+ {
+ 	SDL_Rect dest;
+ 
+@@ -55,7 +55,7 @@ void showIcon()
+ 
+ /*****************************************************
+  ****************************************************/
+-static void showLogo()
++static void showLogo(void)
+ {
+ 	SDL_Rect dest;
+ 
+@@ -69,14 +69,14 @@ static void showLogo()
+ 
+ /*****************************************************
+  ****************************************************/
+-static void hideLogo()
++static void hideLogo(void)
+ {
+ 	logoShowing = 0;
+ }
+ 
+ /*****************************************************
+  ****************************************************/
+-void logoClicked()
++void logoClicked(void)
+ {
+ 	if(!init) {
+ 		SE_Error("Logo module has not been initialized yet.");
+--- a/src/logo.h
++++ b/src/logo.h
+@@ -30,8 +30,8 @@ extern Sint32 ICON_Y;
+ extern Sint32 ICON_W;
+ extern Sint32 ICON_H;
+ 
+-void showIcon    ();
+-void logoClicked ();
++void showIcon    (void);
++void logoClicked (void);
+ void initLogo    (SDL_Surface * surface);
+ 
+ extern Uint32 logoShowing;
+--- a/src/pointer.c
++++ b/src/pointer.c
+@@ -150,7 +150,7 @@ SDL_Cursor * initCursor(const char * image[])
+ 
+ /*****************************************************
+  ****************************************************/
+-SDL_Cursor * getHandCursor()
++SDL_Cursor * getHandCursor(void)
+ {
+ 	if(!handCursor)
+ 		handCursor = initCursor(hand);
+@@ -159,7 +159,7 @@ SDL_Cursor * getHandCursor()
+ 
+ /*****************************************************
+  ****************************************************/
+-SDL_Cursor * getArrowCursor()
++SDL_Cursor * getArrowCursor(void)
+ {
+ 	if(!arrowCursor)
+ 		arrowCursor = initCursor(arrow);
+--- a/src/pointer.h
++++ b/src/pointer.h
+@@ -25,8 +25,8 @@
+ 
+ #include "SDL.h"
+ 
+-SDL_Cursor * getHandCursor   ();
+-SDL_Cursor * getArrowCursor  ();
++SDL_Cursor * getHandCursor   (void);
++SDL_Cursor * getArrowCursor  (void);
+ SDL_Cursor * surfaceToCursor (SDL_Surface * image, int hx, int hy);
+ SDL_Cursor * initCursor      (const char * image[]);
+ 
+--- a/src/sound.c
++++ b/src/sound.c
+@@ -79,7 +79,7 @@ void setVolume(const int v)
+ 
+ /*****************************************************
+  ****************************************************/
+-void initMixer()
++void initMixer(void)
+ {
+ 	channel = 0;
+ 
+--- a/src/sound.h
++++ b/src/sound.h
+@@ -28,6 +28,6 @@
+ void        playSound (Mix_Chunk * e);
+ Mix_Chunk * loadSound (const char * name);
+ void        setVolume (const int v);
+-void        initMixer ();
++void        initMixer (void);
+ 
+ #endif
+--- a/src/torrent.c
++++ b/src/torrent.c
+@@ -28,7 +28,7 @@
+ #include "ShiftyEngine.h"
+ 
+ /* Forward References */
+-void SE_Redraw();
++void SE_Redraw(void);
+ 
+ enum Color { BLUE = 0, BLUE_BOMB, RED, RED_BOMB, GREEN, GREEN_BOMB, 
+ 	     PURPLE, PURPLE_BOMB, GOLD, GOLD_BOMB, BLANK };
+@@ -179,7 +179,7 @@ char * helpText[] = {
+ 
+ /*****************************************************
+  ****************************************************/
+-void quit()
++void quit(void)
+ {
+ 	SE_Quit();
+ }
+@@ -250,7 +250,7 @@ void setTile(struct Tile * tile, const int bomb, const int color)
+ 
+ /*****************************************************
+  ****************************************************/
+-void game_over()
++void game_over(void)
+ {
+ 	int x, y, i, cont = 1;
+ 	SDL_Rect dest;
+@@ -295,7 +295,7 @@ void game_over()
+ 	stateChanged = 1;
+ }
+ 
+-void jiggleBoard()
++void jiggleBoard(void)
+ {
+ 
+ 	int i, x, y;
+@@ -403,7 +403,7 @@ Uint32 mytimer(Uint32 interval, void * param)
+ 
+ /*****************************************************
+  ****************************************************/
+-void newBoard()
++void newBoard(void)
+ {
+ 	int x, y;
+ 
+@@ -466,7 +466,7 @@ void newBoard()
+ 
+ /*****************************************************
+  ****************************************************/
+-void start()
++void start(void)
+ {
+ 	if(running)
+ 		return;
+@@ -570,7 +570,7 @@ void drawText(int x, int y, char * str, TTF_Font * font, int over)
+ 
+ /*****************************************************
+  ****************************************************/
+-void help()
++void help(void)
+ {
+ 	SDL_Event event;
+ 	SDL_Rect src;
+@@ -742,7 +742,7 @@ Uint32 updateScore(Uint32 interval, void * param)
+ 
+ /*****************************************************
+  ****************************************************/
+-void empty()
++void empty(void)
+ {
+ 	if(!scoreTexts) {
+ 		struct scoreText * t;
+@@ -765,7 +765,7 @@ void empty()
+ 
+ /*****************************************************
+  ****************************************************/
+-void SE_Redraw()
++void SE_Redraw(void)
+ {
+ 	int x, y;
+ 	SDL_Rect dest;
+@@ -912,7 +912,7 @@ int rec_clicked(const int y, const int x, const enum Color orig, const enum Colo
+ 
+ /*****************************************************
+  ****************************************************/
+-void slide_over()
++void slide_over(void)
+ {
+ 	int x, y, i;
+ 	for(x = 0; x < xBSize - 1; x++) {
+@@ -940,7 +940,7 @@ void slide_over()
+ 
+ /*****************************************************
+  ****************************************************/
+-void drop_down()
++void drop_down(void)
+ {
+ 	int x, y, i;
+ 	for(y = 0; y < yBSize; y++) {
+@@ -1045,7 +1045,7 @@ void tileClick(const int x, const int y)
+ 
+ /*****************************************************
+  ****************************************************/
+-inline void SE_CheckEvents()
++void SE_CheckEvents(void)
+ {
+ 	SDL_Event event;
+ 	int x, y;

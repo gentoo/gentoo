@@ -1,0 +1,8 @@
+Without Steam there is no launcher by default, users with more custom
+setups may not need this but others will want access to desktop entries.
+--- a/loader/wine.inf.in
++++ b/loader/wine.inf.in
+@@ -5630,2 +5630,3 @@
+ [Services]
++HKLM,%CurrentVersion%\RunServices,"winemenubuilder",2,"%11%\winemenubuilder.exe -a -r"
+ HKLM,"System\CurrentControlSet\Services\Eventlog\Application",,16

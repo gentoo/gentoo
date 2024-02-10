@@ -1,0 +1,35 @@
+diff --git a/Makefile b/Makefile
+index b6e1323..b11a453 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,10 +23,9 @@ BINMODE=755
+ LOGDIRMODE=700
+ 
+ # Compiler to use
+-CC=gcc
+ 
+ # Compiler warnings
+-WARNINGS= -pedantic -Wall
++CFLAGS += -pedantic -Wall
+ 
+ # Compiler flags
+ CCOPTS = -O2 -fomit-frame-pointer
+@@ -58,7 +57,7 @@ PROGRAM = iso3166
+ all: $(PROGRAM)
+ 
+ $(PROGRAM): $(ISO3166OBJ)
+-	$(CC) $(CCOPTS) $(ISO3166OBJ) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(ISO3166OBJ) -o $@
+ 
+ clean:
+ 	$(RM) $(ISO3166OBJ) core defines.h $(PROGRAM)
+@@ -79,9 +78,6 @@ uninstall:
+ 	$(RM) ${bindir}/$(PROGRAM)
+ 	$(RM) ${mandir}/iso3166.1
+ 
+-.c.o:
+-	$(CC) $(CCOPTS) $(WARNINGS) -c $<
+-
+ $(ISO3166OBJ): common.h defines.h protos.h tables.h
+ 
+ defines.h:

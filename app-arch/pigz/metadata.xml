@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		pigz, which stands for parallel implementation of gzip,
+		is a fully functional replacement for gzip that exploits
+		multiple processors and multiple cores to the hilt when compressing data.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:zlib:pigz</remote-id>
+		<remote-id type="github">madler/pigz</remote-id>
+	</upstream>
+</pkgmetadata>

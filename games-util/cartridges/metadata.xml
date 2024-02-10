@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Cartridges is a simple game launcher for all of your games. It has support
+    for importing games from Steam, Lutris, Heroic and more with no login
+    necessary. You can sort and hide games or download cover art from
+    SteamGridDB.
+  </longdescription>
+  <upstream>
+    <changelog>https://github.com/kra-mo/cartridges/releases/</changelog>
+    <bugs-to>https://github.com/kra-mo/cartridges/issues/</bugs-to>
+    <remote-id type="github">kra-mo/cartridges</remote-id>
+  </upstream>
+</pkgmetadata>

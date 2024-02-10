@@ -1,0 +1,72 @@
+https://gitlab.gnome.org/GNOME/gnome-screenshot/-/merge_requests/67
+
+From a25d8f7da4d4dd5b94549362f9a439351495edff Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 23 Aug 2022 21:10:09 -0400
+Subject: [PATCH] build: Use GNOME module post_install()
+
+---
+ build-aux/postinstall.py | 27 ---------------------------
+ meson.build              |  8 ++++++--
+ 2 files changed, 6 insertions(+), 29 deletions(-)
+ delete mode 100755 build-aux/postinstall.py
+
+diff --git a/build-aux/postinstall.py b/build-aux/postinstall.py
+deleted file mode 100755
+index 81afb18..0000000
+--- a/build-aux/postinstall.py
++++ /dev/null
+@@ -1,27 +0,0 @@
+-#!/usr/bin/env python3
+-
+-import os
+-import subprocess
+-
+-prefix = os.environ.get('MESON_INSTALL_PREFIX', '/usr/local')
+-datadir = os.path.join(prefix, 'share')
+-
+-# Packaging tools define DESTDIR and this isn't needed for them
+-if 'DESTDIR' not in os.environ:
+-    print('Updating icon cache...')
+-    icon_cache_dir = os.path.join(datadir, 'icons', 'hicolor')
+-    if not os.path.exists(icon_cache_dir):
+-        os.makedirs(icon_cache_dir)
+-    subprocess.call(['gtk-update-icon-cache', '-qtf', icon_cache_dir])
+-
+-    print('Updating desktop database...')
+-    desktop_database_dir = os.path.join(datadir, 'applications')
+-    if not os.path.exists(desktop_database_dir):
+-        os.makedirs(desktop_database_dir)
+-    subprocess.call(['update-desktop-database', '-q', desktop_database_dir])
+-
+-    print('Compiling GSettings schemas...')
+-    schemas_dir = os.path.join(datadir, 'glib-2.0', 'schemas')
+-    if not os.path.exists(schemas_dir):
+-        os.makedirs(schemas_dir)
+-    subprocess.call(['glib-compile-schemas', schemas_dir])
+diff --git a/meson.build b/meson.build
+index 3f2f393..dcb0b46 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3,7 +3,7 @@ project(
+   'c',
+   version: '41.0',
+   license: 'GPLv2+',
+-  meson_version: '>= 0.50.0',
++  meson_version: '>= 0.59.0',
+   default_options: [
+     'buildtype=debugoptimized',
+     'warning_level=1',
+@@ -63,4 +63,8 @@ subdir('data')
+ subdir('src')
+ subdir('po')
+ 
+-meson.add_install_script('build-aux/postinstall.py')
++gnome.post_install(
++  glib_compile_schemas: true,
++  gtk_update_icon_cache: true,
++  update_desktop_database: true,
++)
+-- 
+2.39.2
+

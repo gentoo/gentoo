@@ -1,0 +1,33 @@
+From 99423a825027c862bbfd50e112a1846a013b01a7 Mon Sep 17 00:00:00 2001
+From: "Francisco Blas (klondike) Izquierdo Riera" <klondike@klondike.es>
+Date: Tue, 4 Oct 2022 10:03:44 +0200
+Subject: [PATCH] Enable -mpopcnt and -mlzcnt on AVX2
+
+When -mpopcnt or -mlzcnt are explicitly enabled or disabled
+(when using -march=native for example), kvazaar builds fail
+on older CPUs without support for these flags (see
+https://github.com/ultravideo/kvazaar/issues/228 and
+https://bugs.gentoo.org/739776 ).
+
+Ensuring these flags are on as done with the rest of AVX2 flags
+solves the compilation issues, although it may be a better
+approach to provide a configuration option so that only the
+specific version matching the build system supported flags is
+created in such cases.
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 79880a98..c972c5be 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -226,7 +226,7 @@ endif #HAVE_PPC
+ if HAVE_X86
+ 
+ if HAVE_AVX2_GCC
+-libavx2_la_CFLAGS = -mavx2 -mbmi -mabm -mbmi2
++libavx2_la_CFLAGS = -mavx2 -mbmi -mabm -mpopcnt -mlzcnt -mbmi2
+ endif
+ if HAVE_AVX2_CLANG
+ libavx2_la_CFLAGS = -mavx2 -mbmi -mpopcnt -mlzcnt -mbmi2

@@ -1,0 +1,50 @@
+--- a/configure.in
++++ b/configure.in
+@@ -6,7 +6,12 @@
+ AC_DEFINE(_GORD_LIBS)
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -lncurses:
+-AC_CHECK_LIB(ncurses, mvchgat)
++PKG_CHECK_MODULES(ncurses, ncurses,[
++  LIBS="$LIBS $ncurses_LIBS"
++  XCFLAGS="$XCFLAGS $ncurses_CFLAGS"
++  ],
++  AC_DEFINE(NEWCURSES_SUPP)
++  AC_MSG_ERROR([ncurses not found]))
+ AC_CHECK_LIB(pthread, pthread_create)
+ 
+ dnl Checks for header files.
+@@ -24,11 +29,8 @@
+ AC_CHECK_HEADERS(netinet/socket.h)
+ AC_CHECK_HEADERS(net/if.h)
+ AC_CHECK_HEADERS(net/if_ppp.h)
+-AC_CHECK_HEADERS(netinet/if_ether.h netinet/in.h ncurses.h ncurses/curses.h)
+-AC_CHECK_HEADERS(ncurses.h)
++AC_CHECK_HEADERS(netinet/if_ether.h netinet/in.h)
+ AC_CHECK_HEADERS(pthread.h)
+-AC_CHECK_HEADERS(ncurses/curses.h)
+-AC_CHECK_HEADERS(curses.h)
+ AC_CHECK_HEADERS(sys/if_packet.h)
+ AC_CHECK_HEADERS(linux/if_packet.h)
+ AC_CHECK_HEADERS(net/if_packet.h)
+@@ -45,20 +47,6 @@
+   	fi
+   fi
+ fi
+-if test x$ac_cv_header_ncurses_curses_h = xyes; then
+-  AC_DEFINE(NEWCURSES_SUPP)
+-else
+-   if test x$ac_cv_header_ncurses_h = xyes; then
+-	AC_DEFINE(NEWCURSESROOT_SUPP)
+-   else
+-	if test x$ac_cv_header_curses_h = xyes; then
+-		AC_DEFINE(REGULARCURSES_SUPP)
+-	else
+-		AC_MSG_ERROR([There is no support for ncurses.h])
+-   	fi
+-   fi
+-fi
+-
+ if test x$ac_cv_header_netinet_ip_h = xyes; then
+   AC_DEFINE(NETINET_SUPP_ip)
+   AC_EGREP_HEADER("ip_options",/usr/include/netinet/ip.h,is_opt=1,is_opt=0)

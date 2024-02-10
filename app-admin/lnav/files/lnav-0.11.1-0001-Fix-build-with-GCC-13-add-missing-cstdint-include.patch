@@ -1,0 +1,26 @@
+https://github.com/tstack/lnav/pull/1112
+
+From e25d3e3c69fcf57bbaec2333846b9a43c4d1fc90 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 21 Jan 2023 18:11:20 +0000
+Subject: [PATCH] Fix build with GCC 13 (add missing <cstdint> include)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> is no longer transitively included.
+
+Explicitly include <cstdint> for uint32_t.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/base/lnav_log.hh
++++ b/src/base/lnav_log.hh
+@@ -32,6 +32,7 @@
+ #ifndef lnav_log_hh
+ #define lnav_log_hh
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include <stdio.h>
+-- 
+2.39.1
+

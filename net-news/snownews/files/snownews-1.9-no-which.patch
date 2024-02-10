@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/844901
+--- a/configure
++++ b/configure
+@@ -164,7 +164,7 @@ s/@builddir@/\$\{TMPDIR\}\/make/g"
+ 
+ #### Find programs and libs ##########################################
+ 
+-# Programs found using which
++# Programs found using command -v
+ for i in $progs; do
+     pname=$(expr $i : '\([^=]*\)')
+     pcall=$(expr $i : '[^=]*=\([^=]*\)')
+@@ -172,7 +172,7 @@ for i in $progs; do
+     # First check if an environment variable is set
+     [ -n "$ppath" ] && sub "s/@$pname@/$ppath/g"
+     # Check if the program exists
+-    ppath=$(which $pcall 2>/dev/null)
++    ppath=$(command -v $pcall 2>/dev/null)
+     [ -n "$ppath" ] && [ -x "$ppath" ] && sub "s/@$pname@/$pcall/g"
+ done
+ # If nothing found in first loop, set the first pair anyway
+@@ -183,7 +183,7 @@ for i in $progs; do
+ done
+ 
+ # Packages found using pkg-config
+-pkgconfig=$(which pkg-config 2>/dev/null)
++pkgconfig=$(command -v pkg-config 2>/dev/null)
+ if [ -n "$pkgconfig" ] && [ -x "$pkgconfig" ]; then
+     faildeps=""
+     for i in $pkgs; do

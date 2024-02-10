@@ -1,0 +1,22 @@
+From b3a1f6e778c0dad12ce65f9f1fb25354e2667ef6 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Fri, 29 May 2020 21:18:55 -0400
+Subject: [PATCH] Remove erroneous declaration of editline_history_file
+
+An extern qualified forward declaration of editline_history_file is supplied in editline.h and its definition/initialization is supplied in siodeditline.c.
+---
+ siod/editline.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/siod/editline.c b/siod/editline.c
+index f6eb5c6..138f476 100644
+--- a/siod/editline.c
++++ b/siod/editline.c
+@@ -73,7 +73,6 @@
+ /* modified by awb to allow specifcation of history size at run time  */
+ /* (though only once)                                                 */
+ int editline_histsize=256;
+-char *editline_history_file;
+ /* If this is defined it'll be called for completion first, before the */
+ /* internal file name completion will be                               */
+ EL_USER_COMPLETION_FUNCTION_TYPE*el_user_completion_function = NULL;

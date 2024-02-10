@@ -1,0 +1,18 @@
+--- a/Source/Directory.Build.props
++++ b/Source/Directory.Build.props
+@@ -16,13 +16,13 @@
+   </ItemGroup>
+ 
+   <!-- Use StyleCop to check for consistent code formatting -->
+-  <ItemGroup Condition="'$(Configuration)' != 'Release'">
++  <ItemGroup Condition="'$(Configuration)' == 'Disable'">
+     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" />
+     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
+   </ItemGroup>
+ 
+   <!-- Configure StyleCop analysis rules -->
+-  <PropertyGroup Condition="'$(Configuration)' != 'Release'">
++  <PropertyGroup Condition="'$(Configuration)' == 'Disable'">
+     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)StyleCop.ruleset</CodeAnalysisRuleSet>
+   </PropertyGroup>
+ 

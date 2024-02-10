@@ -1,0 +1,46 @@
+https://sourceforge.net/p/xmlrpc-c/code/3152
+https://bugs.gentoo.org/870253
+--- a/configure
++++ b/configure
+@@ -5974,11 +5974,11 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for OpenSSL library" >&5
+ $as_echo_n "checking for OpenSSL library... " >&6; }
+
+-if pkg-config openssl; then
+-  HAVE_OPENSSL=yes
+-  OPENSSL_LDADD=$(pkg-config openssl --libs)
+-
+-  OPENSSL_CFLAGS=$(pkg-config openssl --cflags)
++if ${PKG_CONFIG} openssl; then
++  HAVE_OPENSSL=yes
++  OPENSSL_LDADD=$(${PKG_CONFIG} openssl --libs)
++ 
++  OPENSSL_CFLAGS=$(${PKG_CONFIG} openssl --cflags)
+
+ else
+   HAVE_OPENSSL=no
+
+--- a/config.mk.in
++++ b/config.mk.in
+@@ -59,6 +59,8 @@
+ C_COMPILER_GNU = @C_COMPILER_GNU@
+ CXX_COMPILER_GNU = @CXX_COMPILER_GNU@
+ 
++PKG_CONFIG ?= pkg-config
++
+ # Stuff 'configure' figured out via AC_CANONICAL_HOST macro in configure.in
+ # and config.guess program and 'configure' command options:
+
+--- a/lib/openssl/Makefile
++++ b/lib/openssl/Makefile
+@@ -25,8 +25,8 @@
+ 
+ MAJ := 1
+ 
+-OPENSSL_INCLUDES := $(shell pkg-config openssl --cflags)
+-OPENSSL_LIBS     := $(shell pkg-config openssl --libs)
++OPENSSL_INCLUDES := $(shell $(PKG_CONFIG) openssl --cflags)
++OPENSSL_LIBS     := $(shell $(PKG_CONFIG) openssl --libs)
+ 
+ include $(SRCDIR)/common.mk
+ 

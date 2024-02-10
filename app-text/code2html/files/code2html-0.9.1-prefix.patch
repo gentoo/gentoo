@@ -1,0 +1,30 @@
+--- a/code2html
++++ b/code2html
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!@GENTOO_PORTAGE_EPREFIX@/usr/bin/perl -w
+ use locale;
+ my $vernr = "0.9.1";
+ my $monthshort = "Jan";
+@@ -45,9 +45,9 @@
+ # PP: A hash would be nicer but then it would not possible to get the keys in this very order (AFAIK)
+ # PP: If names contain meta characters, then those must be metaquoted (if you don't want the meta chars to be meta chars of course)
+ my @CGI_ENCODING = (
+-		    ['bzip2'     , '/usr/bin/bzip2'    , '--stdout' ],
+-		    ['gzip'      , '/bin/gzip'         , '--stdout' ],
+-		    ['compress'  , '/usr/bin/compress' , '-c' ]
++		    ['bzip2'     , '@GENTOO_PORTAGE_EPREFIX@/usr/bin/bzip2'    , '--stdout' ],
++		    ['gzip'      , '@GENTOO_PORTAGE_EPREFIX@/bin/gzip'         , '--stdout' ],
++		    ['compress'  , '@GENTOO_PORTAGE_EPREFIX@/usr/bin/compress' , '-c' ]
+ 		   );
+ 
+ 
+@@ -147,7 +147,7 @@
+       # building up the database
+       # newer entries overwrite old ones
+       my @CONFIG_FILES;
+-      push @CONFIG_FILES, "/etc/code2html.config";
++      push @CONFIG_FILES, "@GENTOO_PORTAGE_EPREFIX@/etc/code2html.config";
+       push @CONFIG_FILES, $ENV{'HOME'}."/.code2html.config"   if (defined($ENV{'HOME'}));
+       push @CONFIG_FILES, split(/:/,$ENV{'CODE2HTML_CONFIG'}) if ($ENV{'CODE2HTML_CONFIG'});
+       push @CONFIG_FILES, split(/:/,$params{'langfile'})      if defined($params{'langfile'});

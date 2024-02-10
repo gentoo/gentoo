@@ -1,0 +1,4 @@
+/var/log/tsm/*.log {
+	create 0660 root tsm
+	delaycompress
+}

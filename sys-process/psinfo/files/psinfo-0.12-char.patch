@@ -1,0 +1,65 @@
+Subject: [PATCH] fix 'char' issue in RISC-V (also Arm64) platform
+
+According to RISC-V psAbi manual[1], "char" is equivalent to "unsigned char",
+so in RISC-V/ARM64 the following code will always print out 'false',
+while in X86_64 it will print out 'true'
+
+test() {
+  char val = EOF;
+  printf("%s", val == EOF ? "true" : "false");
+}
+
+According to man page, the following two function return value is 'int':
+       int getopt(int argc, char *const argv[],
+                  const char *optstring);
+       int fgetc(FILE *stream);
+
+so, we use 'int' variable and then convert to 'char' if nencessary
+
+[1] https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc
+snip of description:
+   C/C++ type representations
+   char is unsigned.
+
+Bug: https://bugs.gentoo.org/872821
+
+Signed-off-by: Yixun Lan <dlan@gentoo.org>
+---
+ psinfo.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/psinfo.c b/psinfo.c
+index 90a6d8f..05acedf 100644
+--- a/psinfo.c
++++ b/psinfo.c
+@@ -172,14 +172,15 @@ int parse_proc_wchan(FILE * f, struct process_info *p)
+ int parse_proc_arrayfile(char *name, char ***s)
+ {
+ 	FILE *f;
+-	int res = 1;
++	int ret, res = 1;
+ 
+ 	if ((f = fopen(name, "r")) != NULL) {
+ 		char *buf;
+ 		int len = 0, bufsize = 1024, count = 0;
+ 
+ 		buf = malloc(bufsize);
+-		while ((buf[len++] = fgetc(f)) != EOF) {
++		while ((ret = fgetc(f)) != EOF) {
++			buf[len++] = ret & 0xFF;
+ 			if (buf[len - 1] == 0) {
+ 				*s = realloc(*s, (count + 2) * sizeof(char *));
+ 				(*s)[count] = malloc(len);
+@@ -673,8 +674,7 @@ void print_help()
+ int main(int argc, char **argv)
+ {
+ 	struct process_info *p;
+-	int pid, output_general = 0, output_cpu = 0, output_io = 0, output_memory = 0, output_privilege = 0, output_signal = 0, result = 0;
+-	char c;
++	int c, pid, output_general = 0, output_cpu = 0, output_io = 0, output_memory = 0, output_privilege = 0, output_signal = 0, result = 0;
+ 
+ 	opterr = 0;
+ 	if (argc <= 1) {
+-- 
+2.37.3
+

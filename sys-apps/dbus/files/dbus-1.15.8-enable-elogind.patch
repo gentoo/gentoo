@@ -1,0 +1,65 @@
+https://gitlab.freedesktop.org/dbus/dbus/-/merge_requests/53
+https://bugs.gentoo.org/599494
+
+Especially see https://bugs.gentoo.org/599494#c21 - this functionality isn't
+particularly required. The only known consumer at the moment is hplip.
+--- a/dbus/dbus-userdb-util.c
++++ b/dbus/dbus-userdb-util.c
+@@ -41,6 +41,9 @@
+ #ifdef HAVE_SYSTEMD
+ #include <systemd/sd-login.h>
+ #endif
++#ifdef HAVE_ELOGIND
++#include <elogind/sd-login.h>
++#endif
+ 
+ /**
+  * @addtogroup DBusInternalsUtils
+@@ -67,7 +70,7 @@ dbus_bool_t
+ _dbus_is_console_user (dbus_uid_t uid,
+ 		       DBusError *error)
+ {
+-#ifdef HAVE_SYSTEMD
++#if defined(HAVE_SYSTEMD) || defined(HAVE_ELOGIND)
+   /* check if we have logind */
+   if (access ("/run/systemd/seats/", F_OK) >= 0)
+     {
+--- a/dbus/meson.build
++++ b/dbus/meson.build
+@@ -23,6 +23,7 @@ dbus_dependencies = [
+     threads,
+     network_libs,
+     systemd,
++    elogind,
+     valgrind.partial_dependency(compile_args: true),
+ ]
+ 
+--- a/meson.build
++++ b/meson.build
+@@ -478,6 +478,10 @@ if use_launchd
+     endif
+ endif
+ 
++elogind = dependency('libelogind', version: '>=209', required: get_option('elogind'))
++use_elogind = elogind.found()
++config.set('HAVE_ELOGIND', use_elogind)
++
+ systemd = dependency('libsystemd', version: '>=209', required: get_option('systemd'))
+ use_systemd = systemd.found()
+ config.set('HAVE_SYSTEMD', use_systemd)
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -244,6 +244,13 @@ option(
+   description: 'Systemd at_console support'
+ )
+ 
++option(
++  'elogind',
++  type: 'feature',
++  value: 'auto',
++  description: 'elogind at_console support'
++)
++
+ option(
+   'test_socket_dir',
+   type: 'string',

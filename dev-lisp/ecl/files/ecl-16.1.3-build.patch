@@ -1,0 +1,10 @@
+diff -r -U2 ecl-16.1.3.orig/src/c/printer/write_sse.d ecl-16.1.3/src/c/printer/write_sse.d
+--- ecl-16.1.3.orig/src/c/printer/write_sse.d	2016-12-19 17:25:00.000000000 +0700
++++ ecl-16.1.3/src/c/printer/write_sse.d	2016-12-19 19:20:01.863563607 +0700
+@@ -13,4 +13,6 @@
+  */
+ 
++#include <ecl/config.h>
++
+ #ifdef ECL_SSE2
+ #include <ecl/ecl.h>

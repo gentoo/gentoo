@@ -1,0 +1,17 @@
+===================================================================
+RCS file: /cvsroot/heroes/heroes/src/menus.c,v
+retrieving revision 1.108.2.1
+retrieving revision 1.108.2.2
+diff -u -r1.108.2.1 -r1.108.2.2
+--- a/src/menus.c	2002/06/16 19:16:09	1.108.2.1
++++ b/src/menus.c	2002/08/22 11:45:51	1.108.2.2
+@@ -219,7 +219,8 @@
+   { N_("NEW LEVEL"),	editor_menu },
+   /* TRANS: Load an existing level for edition.  */
+   { N_("LOAD LEVEL"),	editor_selector },
+-  { N_("GO BACK"),	0 }
++  { N_("GO BACK"),	0 },
++  { 0,			0 }
+ };
+ 
+ a_menu *editor_menu_data;

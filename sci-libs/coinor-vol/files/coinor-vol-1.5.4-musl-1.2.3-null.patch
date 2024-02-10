@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/841746
+https://github.com/coin-or/Vol/commit/7b65983cfbf66f9a615c1babcc28a7cd87eee3c4
+
+From: Stefan Vigerske <svigerske@gams.com>
+Date: Sat, 1 Feb 2020 17:45:41 +0000
+Subject: [PATCH] there should be no need to cast NULL, closes #1
+
+--- a/src/OsiVol/OsiVolSolverInterfaceIO.cpp
++++ b/src/OsiVol/OsiVolSolverInterfaceIO.cpp
+@@ -423,10 +423,10 @@ OsiVolSolverInterface::writeMps(const char *filename,
+    writer.setMpsData(*getMatrixByCol(), getInfinity(),
+ 		     getColLower(), getColUpper(),
+ 		     getObjCoefficients(), 
+-		     reinterpret_cast<const char *> (NULL) /*integrality*/,
++		     NULL /*integrality*/,
+ 		     getRowLower(), getRowUpper(),
+-		     reinterpret_cast<const char **> (NULL) /*colnam*/, 
+-		     reinterpret_cast<const char **> (NULL) /*rownam*/);
++		     NULL /*colnam*/, 
++		     NULL /*rownam*/);
+    std::string fname = filename;
+    if (extension)
+    { if (extension[0] != '\0' && extension[0] != '.')
+

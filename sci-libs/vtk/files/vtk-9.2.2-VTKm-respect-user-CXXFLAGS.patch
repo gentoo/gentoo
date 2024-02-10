@@ -1,0 +1,81 @@
+From 225a077898eb714e5ecb80255796aa70625e6cea Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 12 Nov 2022 02:01:35 +0100
+Subject: [PATCH] VTKm respect user CXXFLAGS
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/Accelerators/Vtkm/Core/CMakeLists.txt
++++ b/Accelerators/Vtkm/Core/CMakeLists.txt
+@@ -79,6 +79,16 @@ if (TARGET vtkm::cuda)
+   vtk_module_set_properties(VTK::AcceleratorsVTKmCore
+     LANGUAGE CUDA
+     CUDA_SEPARABLE_COMPILATION ON)
++
++  string(STRIP ${CMAKE_CXX_FLAGS} _cmake_cxx_flags)
++  string(REPLACE " " ";" cmake_cxx_flags_list ${_cmake_cxx_flags})
++  set(cxx_flags -Wall)
++  foreach(cmake_cxx_flag ${cmake_cxx_flags_list})
++    list(APPEND cxx_flags $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=${cmake_cxx_flag}>)
++  endforeach()
++  vtk_module_compile_options(VTK::AcceleratorsVTKmCore
++    PUBLIC
++      ${cxx_flags})
+ endif()
+ 
+ if (MSVC)
+--- a/Accelerators/Vtkm/DataModel/CMakeLists.txt
++++ b/Accelerators/Vtkm/DataModel/CMakeLists.txt
+@@ -89,6 +89,16 @@ if (TARGET vtkm::cuda)
+ 
+   vtk_module_compile_options(VTK::AcceleratorsVTKmDataModel
+     PUBLIC $<$<COMPILE_LANGUAGE:CUDA>:-Xcudafe --diag_suppress=extra_semicolon>)
++
++  string(STRIP ${CMAKE_CXX_FLAGS} _cmake_cxx_flags)
++  string(REPLACE " " ";" cmake_cxx_flags_list ${_cmake_cxx_flags})
++  set(cxx_flags -Wall)
++  foreach(cmake_cxx_flag ${cmake_cxx_flags_list})
++    list(APPEND cxx_flags $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=${cmake_cxx_flag}>)
++  endforeach()
++  vtk_module_compile_options(VTK::AcceleratorsVTKmDataModel
++    PUBLIC
++      ${cxx_flags})
+ endif ()
+ 
+ if (MSVC)
+--- a/Accelerators/Vtkm/Filters/CMakeLists.txt
++++ b/Accelerators/Vtkm/Filters/CMakeLists.txt
+@@ -138,6 +138,16 @@ if (TARGET vtkm::cuda)
+ 
+   vtk_module_compile_options(VTK::AcceleratorsVTKmFilters
+     PUBLIC $<$<COMPILE_LANGUAGE:CUDA>:-Xcudafe --diag_suppress=extra_semicolon>)
++
++  string(STRIP ${CMAKE_CXX_FLAGS} _cmake_cxx_flags)
++  string(REPLACE " " ";" cmake_cxx_flags_list ${_cmake_cxx_flags})
++  set(cxx_flags -Wall)
++  foreach(cmake_cxx_flag ${cmake_cxx_flags_list})
++    list(APPEND cxx_flags $<$<COMPILE_LANGUAGE:CUDA>:-Xcompiler=${cmake_cxx_flag}>)
++  endforeach()
++  vtk_module_compile_options(VTK::AcceleratorsVTKmFilters
++    PUBLIC
++      ${cxx_flags})
+ endif ()
+ 
+ if (MSVC)
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmCompilerFlags.cmake
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmCompilerFlags.cmake
+@@ -126,6 +126,12 @@ elseif(VTKM_COMPILER_IS_ICC)
+ elseif(VTKM_COMPILER_IS_GNU OR VTKM_COMPILER_IS_CLANG)
+   set(cxx_flags -Wall -Wcast-align -Wextra -Wpointer-arith -Wformat -Wformat-security -Wshadow -Wunused -fno-common -Wno-unused-function)
+   set(cuda_flags -Xcompiler=-Wall,-Wcast-align,-Wpointer-arith,-Wformat,-Wformat-security,-Wshadow,-fno-common,-Wunused,-Wno-unknown-pragmas,-Wno-unused-local-typedefs,-Wno-unused-function)
++  string(STRIP ${CMAKE_CXX_FLAGS} _cmake_cxx_flags)
++  string(REPLACE " " ";" cmake_cxx_flags_list ${_cmake_cxx_flags})
++  foreach(elem ${cmake_cxx_flags_list})
++    list(PREPEND cxx_flags ${elem})
++    list(PREPEND cuda_flags -Xcompiler=${elem})
++  endforeach()
+ 
+   #Clang does not support the -Wchar-subscripts flag for warning if an array
+   #subscript has a char type.
+-- 
+2.38.1
+

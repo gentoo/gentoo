@@ -1,0 +1,27 @@
+Even though xscreensaver now uses GTK+3 instead of GTK+2 since version 6.05
+it still gets its directories from GTK+2 which results in an empty prefix
+when GTK+2 is not installed.
+
+Bug: https://bugs.gentoo.org/878875
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -2822,7 +2822,7 @@ if test "$with_gtk" = yes; then
+
+   GTK_DATADIR=""
+   if test "$have_gtk" = yes; then
+-    GTK_DATADIR=`$pkg_config --variable=prefix gtk+-2.0`
++    GTK_DATADIR=`$pkg_config --variable=prefix gtk+-3.0`
+     GTK_DATADIR="$GTK_DATADIR/share"
+   fi
+
+@@ -4282,6 +4282,6 @@ AC_MSG_CHECKING([for locale directory])
+ if test -n "$GTK_DATADIR" ; then
+   PO_DATADIR="$GTK_DATADIR"
+ elif test "$have_gtk" = yes; then
+-  PO_DATADIR=`$pkg_config --variable=prefix gtk+-2.0`
++  PO_DATADIR=`$pkg_config --variable=prefix gtk+-3.0`
+   PO_DATADIR="$PO_DATADIR/share"
+ fi

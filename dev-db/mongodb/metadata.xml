@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
+	</maintainer>
+	<longdescription lang="en">
+	MongoDB (from "humongous") is a scalable, high-performance, open source,
+	schema-free, document-oriented database. Written in C++, MongoDB features:
+
+	MongoDB bridges the gap between key-value stores (which are fast and highly
+	scalable) and traditional RDBMS systems (which provide structured schemas
+	and powerful queries).
+	</longdescription>
+	<use>
+		<flag name="mongosh">Install the MongoDB shell from <pkg>app-admin/mongosh-bin</pkg></flag>
+		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) from <pkg>app-admin/mongo-tools</pkg></flag>
+	</use>
+</pkgmetadata>

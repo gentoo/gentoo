@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grozin@gentoo.org</email>
+		<name>Andrey Grozin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
+	</maintainer>
+	<longdescription>Steel Bank Common Lisp is an open source Common
+	Lisp implementation. It provides an integrated native compiler,
+	interpreter, and debugger. SBCL is a fork off of the main branch
+	of CMUCL. SBCL is distinguished from CMUCL by a greater emphasis
+	on maintainability. In particular, the SBCL system can be built
+	directly from its source code, so that the output corresponds to
+	the source code in a controlled, verifiable way, and arbitrary
+	changes can be made to the system without causing bootstrapping
+	problems. SBCL also places less emphasis than CMU CL does on new
+	non-ANSI extensions, or on backward compatibility with old
+	non-ANSI features. Support for native threading on GNU/Linux is
+	available for the x86 and amd64 platforms using an NPTL enabled
+	GLIBC. SBCL 0.8.17 and later support Unicode.
+	</longdescription>
+	<use>
+		<flag name="system-bootstrap">Bootstrap SBCL using either system SBCL installation or <pkg>dev-lisp/clisp</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sbcl</remote-id>
+	</upstream>
+</pkgmetadata>

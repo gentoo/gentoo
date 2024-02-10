@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://codeberg.org/tenacityteam/portsmf/releases/</changelog>
+    <bugs-to>https://codeberg.org/tenacityteam/portsmf/issues/</bugs-to>
+  </upstream>
+</pkgmetadata>

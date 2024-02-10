@@ -1,0 +1,23 @@
+Index: OpenNI-9999/Platform/Linux/Build/Modules/nimCodecs/Makefile
+===================================================================
+--- OpenNI-9999.orig/Platform/Linux/Build/Modules/nimCodecs/Makefile
++++ OpenNI-9999/Platform/Linux/Build/Modules/nimCodecs/Makefile
+@@ -2,15 +2,13 @@ BIN_DIR = ../../../Bin
+ 
+ INC_DIRS = \
+ 	../../../../../Include \
+-	../../../../../Source \
+-	../../../../../Externals/LibJPEG
++	../../../../../Source
+ 
+ SRC_FILES = \
+-	../../../../../Source/Modules/nimCodecs/*.cpp \
+-	../../../../../Externals/LibJPEG/*.c
++	../../../../../Source/Modules/nimCodecs/*.cpp
+ 
+ LIB_NAME = nimCodecs
+-USED_LIBS = OpenNI
++USED_LIBS = OpenNI jpeg
+ 
+ include ../../Common/CommonCppMakefile
+ 

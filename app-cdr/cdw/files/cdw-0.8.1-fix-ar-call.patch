@@ -1,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -119,7 +119,7 @@ AC_TYPE_UINT16_T
+ AC_TYPE_UINT32_T
+ AC_TYPE_UINT8_T
+ AC_CHECK_TYPES([ptrdiff_t])
+-
++AC_CHECK_TOOL(AR, ar, false)
+ 
+ 
+ 
+--- a/src/user_interface/Makefile.in
++++ b/src/user_interface/Makefile.in
+@@ -88,7 +88,7 @@ CONFIG_HEADER = $(top_builddir)/config_cdw.h
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ AM_V_AR = $(am__v_AR_@AM_V@)
+ am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)

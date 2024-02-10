@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>devmanual@gentoo.org</email>
+  <description>
+    Bugs for the devmanual documentation itself must be filed under
+    product "Documentation", component "Devmanual"
+  </description>
+</maintainer>
+<stabilize-allarches/>
+<use>
+  <flag name="offline">
+    Use alternative minimal stylesheet instead of Tyrian theme
+  </flag>
+</use>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="gentoo">proj/devmanual</remote-id>
+</upstream>
+</pkgmetadata>

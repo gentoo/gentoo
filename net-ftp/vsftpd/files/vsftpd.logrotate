@@ -1,0 +1,4 @@
+/var/log/vsftpd*.log {
+    missingok
+    notifempty
+}

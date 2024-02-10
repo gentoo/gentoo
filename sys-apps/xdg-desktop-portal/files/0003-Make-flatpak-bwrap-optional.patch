@@ -1,0 +1,57 @@
+From 5b4ad3e7a9828df2cd06d663d89800c346f5051f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 22 Sep 2023 17:35:21 +0100
+Subject: [PATCH] Make flatpak, bwrap optional
+
+See https://github.com/flatpak/xdg-desktop-portal/pull/1100
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ meson.build       | 4 ++--
+ meson_options.txt | 8 ++++++++
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index ad7faae..933eb54 100644
+--- a/meson.build
++++ b/meson.build
+@@ -21,7 +21,7 @@ endif
+ 
+ flatpak_intf_dir = get_option('flatpak-interfaces-dir')
+ if flatpak_intf_dir == ''
+-    flatpak_dep = dependency('flatpak', version: '>= 1.5.0', required : false)
++    flatpak_dep = dependency('flatpak', version: '>= 1.5.0', required : get_option('flatpak'))
+     if flatpak_dep.found()
+       flatpak_intf_dir = flatpak_dep.get_variable(pkgconfig: 'interfaces_dir')
+     endif
+@@ -112,7 +112,7 @@ libportal_dep = dependency('libportal',
+ pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.2.90')
+ libsystemd_dep = dependency('libsystemd', required: get_option('systemd'))
+ 
+-bwrap = find_program('bwrap', required: false)
++bwrap = find_program('bwrap', required: get_option('bwrap'))
+ 
+ have_libportal = libportal_dep.found()
+ if have_libportal
+diff --git a/meson_options.txt b/meson_options.txt
+index edcbcd8..d1914ce 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -2,6 +2,14 @@ option('dbus-service-dir',
+        type: 'string',
+        value: '',
+        description: 'directory for dbus service files (default: PREFIX/share/dbus-1/services)')
++option('bwrap',
++       type: 'feature',
++       value: 'enabled',
++       description: 'Use bwrap (requires seccomp) for sandboxing for e.g. icon validation. Recommended.')
++option('flatpak',
++       type: 'feature',
++       value: 'enabled',
++       description: 'Enable flatpak integration')
+ option('flatpak-interfaces-dir',
+        type: 'string',
+        value: '',
+-- 
+2.42.0
+

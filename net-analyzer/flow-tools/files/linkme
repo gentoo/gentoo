@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+$base = "/var/lib/flows";
+if ($ARGV[0] =~ /.*[\/]*(ft-v05[^\/]*$)/) {
+$fileName = $1;
+} else {
+print "Must specify file\n";
+exit 1;
+}
+
+unless ( symlink("$base/ft/$fileName","$base/$fileName") ) {
+print "Unable to create symbolic link: $base/$fileName\n";
+exit 1;
+}
+

@@ -1,0 +1,69 @@
+--- a/builders/resid-builder/src/resid.cpp
++++ b/builders/resid-builder/src/resid.cpp
+@@ -16,6 +16,8 @@
+  *                                                                         *
+  ***************************************************************************/
+ 
++#include <cstring>
++
+ #include "config.h"
+ 
+ #ifdef HAVE_EXCEPTIONS
+--- a/builders/resid-builder/src/resid-builder.cpp
++++ b/builders/resid-builder/src/resid-builder.cpp
+@@ -37,6 +37,7 @@
+  ***************************************************************************/
+ 
+ #include <stdio.h>
++#include <cstring>
+ 
+ #include "config.h"
+ #ifdef HAVE_EXCEPTIONS
+--- a/builders/hardsid-builder/src/hardsid-builder.cpp
++++ b/builders/hardsid-builder/src/hardsid-builder.cpp
+@@ -47,6 +47,7 @@
+  ***************************************************************************/
+ 
+ #include <stdio.h>
++#include <cstring>
+ #include "config.h"
+ 
+ #ifdef HAVE_EXCEPTIONS
+--- a/libsidplay/src/sidtune/SidTune.cpp
++++ b/libsidplay/src/sidtune/SidTune.cpp
+@@ -283,7 +283,7 @@
+     uint_least32_t fileLen = 0;
+ 
+     // This sucks big time
+-    openmode createAtrr = std::ios::in;
++    std::_Ios_Openmode createAtrr = std::ios::in;
+ #ifdef HAVE_IOS_NOCREATE
+     createAtrr |= std::ios::nocreate;
+ #endif
+@@ -952,7 +952,7 @@
+     if ( status )
+     {
+         // Open binary output file stream.
+-        openmode createAttr = std::ios::out;
++        std::_Ios_Openmode createAttr = std::ios::out;
+ #if defined(HAVE_IOS_BIN)
+         createAttr |= std::ios::bin;
+ #else
+@@ -1002,7 +1002,7 @@
+     if ( status )
+     {
+         // Open ASCII output file stream.
+-        openmode createAttr = std::ios::out;
++        std::_Ios_Openmode createAttr = std::ios::out;
+         if ( overWriteFlag )
+             createAttr |= std::ios::trunc;
+         else
+@@ -1036,7 +1036,7 @@
+     if ( status )
+     {
+         // Open binary output file stream.
+-        openmode createAttr = std::ios::out;
++        std::_Ios_Openmode createAttr = std::ios::out;
+ #if defined(HAVE_IOS_BIN)
+         createAttr |= std::ios::bin;
+ #else

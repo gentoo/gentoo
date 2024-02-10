@@ -1,0 +1,10 @@
+prefix=@PREFIX@
+exec_prefix=${prefix}
+includedir=${prefix}/include/mkl
+
+Name: mkl-dynamic-lp64-iomp
+Description: Intel(R) Math Kernel Library
+Version: Gentoo
+URL: https://software.intel.com/en-us/mkl
+Libs: -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl
+Cflags: -I${includedir}

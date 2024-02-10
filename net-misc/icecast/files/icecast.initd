@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+pidfile="/var/run/icecast.pid"
+command="/usr/bin/icecast"
+command_args="-c /etc/icecast2/icecast.xml"
+command_background="true"
+
+depend() {
+	need net
+}
+
+reload() {
+	ebegin "Reloading Icecast2 configuration"
+	start-stop-daemon --signal HUP --pidfile ${pidfile}
+	eend $?
+}

@@ -1,0 +1,10 @@
+diff -r -U2 sbcl-2.1.0.orig/src/runtime/GNUmakefile sbcl-2.1.0/src/runtime/GNUmakefile
+--- sbcl-2.1.0.orig/src/runtime/GNUmakefile	2020-12-29 17:05:25.000000000 +0700
++++ sbcl-2.1.0/src/runtime/GNUmakefile	2021-01-28 18:02:57.682523052 +0700
+@@ -12,5 +12,5 @@
+ .PHONY: all clean TAGS tags targets
+ 
+-all: targets tags
++all: targets
+ TARGET=sbcl
+ 

@@ -1,0 +1,153 @@
+https://bugs.gentoo.org/881325
+https://bugzilla.redhat.com/show_bug.cgi?id=2148487
+https://src.fedoraproject.org/rpms/tgif/blob/ba3fa76ca8fde5c83569a703b849c8921923712f/f/tgif-c99.patch
+--- a/exec.c
++++ b/exec.c
+@@ -518,6 +518,7 @@ int AppendToTmpStr(psz)
+ 
+ int AppendToTmpStr2(psz1, psz2, tg2)
+    char *psz1, *psz2;
++   int tg2;
+ {
+    int len1=strlen(psz1), len2=strlen(psz2), rc=0;
+    char *psz=(char*)malloc((len1+len2+1)*sizeof(char));
+--- a/file.c
++++ b/file.c
+@@ -4725,6 +4725,7 @@ int LoadFile(FullName, ObjFile, GzippedObjFile)
+    int ObjFile; /* equals TRUE if the file is an OBJ file */
+                 /* equals FALSE if the file is a SYM or PIN file */
+                 /* equals -1 if the file is an temporary OBJ file */
++   int GzippedObjFile;
+ {
+    struct ObjRec *obj_ptr=NULL;
+    char tmp_filename[MAXPATHLENGTH+1], tmp_filefullpath[MAXPATHLENGTH+1];
+--- a/import.c
++++ b/import.c
+@@ -1373,7 +1373,7 @@ int ConvertGifToPpm6(pszGifPath, pszPpm6Path, ppm6_path_sz)
+ static
+ int FinishImport(remote_file, remote_tmp_fname, local_fname, which, pn_image_w,
+       pn_image_h)
+-   int remote_file, *pn_image_w, *pn_image_h;
++   int remote_file, which, *pn_image_w, *pn_image_h;
+    char *remote_tmp_fname, *local_fname;
+ {
+    char xpm_fname[MAXPATHLENGTH+1], *rest=NULL, *psz_format=NULL;
+--- a/polygon.c
++++ b/polygon.c
+@@ -1007,7 +1007,7 @@ void ContinueForStructSplinePolygonControlPoints(OrigX, OrigY, LastX, LastY,
+ static
+ void EraseStructSplineLinesForContAndUpdateSvs(OrigX, OrigY, grid_x, grid_y,
+       pev, num_pts, psv, sn, psv2, sn2, pipt_prev, pipt_first)
+-   int OrigX, OrigY, grid_x, grid_y, sn, sn2;
++   int OrigX, OrigY, grid_x, grid_y, num_pts, sn, sn2;
+    XEvent *pev;
+    XPoint **psv, **psv2;
+    IntPointTriplet *pipt_prev, *pipt_first;
+--- a/rect.c
++++ b/rect.c
+@@ -37,7 +37,7 @@
+ 
+ void DumpRectPath(FP, LtX, LtY, RbX, RbY, Indent, LastLF)
+    FILE *FP;
+-   int LtX, LtY, RbX, RbY, Indent;
++   int LtX, LtY, RbX, RbY, Indent, LastLF;
+ {
+    register int i;
+ 
+--- a/ruler.c
++++ b/ruler.c
+@@ -510,6 +510,7 @@ void DrawHRuleTick(XOff)
+ 
+ static
+ void DrawVRuleTick(YOff)
++    int YOff;
+ {
+    XDrawLine(mainDisplay, vRuleWindow, revDefaultGC, 0, YOff, rulerLen, YOff);
+ }
+--- a/scroll.c
++++ b/scroll.c
+@@ -153,7 +153,8 @@ int TgPressButtonLoop(dpy, win, pbbox, psbci)
+ 
+ int TgGetScrollHit(x, y, orientation, scroll_area_w, scroll_area_h,
+       start_frac, length, total, pn_btn_offset)
+-   int x, y, scroll_area_w, scroll_area_h, length, total, *pn_btn_offset;
++   int x, y, orientation, scroll_area_w, scroll_area_h, length, total,
++   	*pn_btn_offset;
+    double start_frac;
+ {
+    int block_start=0, block_size=0, min_block_size=1+(windowPadding<<1);
+@@ -211,7 +212,7 @@ void TgDrawScrollBar(dpy, win, orientation, x_off, y_off, scroll_area_w,
+       scroll_area_h, start_frac, length, total)
+    Display *dpy;
+    Window win;
+-   int x_off, y_off, scroll_area_w, scroll_area_h, length, total;
++   int orientation, x_off, y_off, scroll_area_w, scroll_area_h, length, total;
+    double start_frac;
+ {
+    int block_start=0, block_size=0, min_block_size=1+(windowPadding<<1);
+--- a/spline.c
++++ b/spline.c
+@@ -795,7 +795,7 @@ typedef struct MultiSplineRec {
+ } *MultiSplineRecPtr;
+ 
+ XPoint *MakeMultiSplinePolyVertex(Curved, N, Smooth, XOff, YOff, NumVs, Vs)
+-   int *N, XOff, YOff, NumVs;
++   int Curved, *N, XOff, YOff, NumVs;
+    char *Smooth;
+    IntPoint *Vs;
+ {
+--- a/stretch.c
++++ b/stretch.c
+@@ -4247,7 +4247,7 @@ void SizeAnObj(ObjPtr, TopOwner, AbsW, AbsH)
+ 
+ static
+ void DoSizeAllSelToGivenWidthHeight(abs_w, abs_h, do_width, do_height)
+-   int abs_h, do_width, do_height;
++   int abs_w, abs_h, do_width, do_height;
+ {
+    struct SelRec *saved_top_sel=topSel, *saved_bot_sel=botSel, *sel_ptr=NULL;
+    int saved_h_align=horiAlign, saved_v_align=vertAlign, num_to_resize=0;
+--- a/tdgtbtn.c
++++ b/tdgtbtn.c
+@@ -491,7 +491,7 @@ TdgtBtn *CreateTdgtBtn(parent_win, parent_tidgetinfo, ctl_id, x, y, w, h, h_pad,
+       v_pad, btn_type, btn_style, state, font_style, str, pmosi)
+    Window parent_win;
+    TidgetInfo *parent_tidgetinfo;
+-   int ctl_id, x, y, w, h, h_pad, v_pad, state, font_style;
++   int ctl_id, x, y, w, h, h_pad, v_pad, btn_type, btn_style, state, font_style;
+    char *str;
+    MouseOverStatusInfo *pmosi;
+ {
+--- a/tdgtlist.c
++++ b/tdgtlist.c
+@@ -1039,7 +1039,8 @@ TdgtList *CreateTdgtList(parent_win, parent_tidgetinfo, ctl_id, x, y, w, h_pad,
+       v_pad, num_visible_lines, can_select, multicolor, auto_scroll_on_insert)
+    Window parent_win;
+    TidgetInfo *parent_tidgetinfo;
+-   int ctl_id, x, y, w, h_pad, v_pad, num_visible_lines, auto_scroll_on_insert;
++   int ctl_id, x, y, w, h_pad, v_pad, num_visible_lines, can_select,
++   	multicolor, auto_scroll_on_insert;
+ {
+    int bg_pixel=(threeDLook ? myLtGryPixel : myBgPixel), h=0, content_h=0;
+    TdgtList *pTdgtList=NULL;
+--- a/text.c
++++ b/text.c
+@@ -2059,7 +2059,7 @@ void HandleClickOnText(drag, from_cursor_keys, x_off, y_off,
+       pressed_in_same_text, obj_ptr, double_clicked, saved_text_highlight,
+       skip_post_processing, click_time)
+    int drag, from_cursor_keys, x_off, y_off, pressed_in_same_text;
+-   int double_clicked, saved_text_highlight;
++   int double_clicked, saved_text_highlight, skip_post_processing;
+    struct ObjRec *obj_ptr;
+    Time click_time;
+ {
+@@ -4760,7 +4760,7 @@ int ReadTextLines(FP, ObjPtr, text_ptr, color_str, num_lines, has_ps_bitmap,
+    char *color_str;
+    int num_lines, has_ps_bitmap, cur_sb_font, cur_db_font;
+    int double_byte, db_mod_bytes, db_vertical, direction;
+-   int x, baseline_y, *pn_max_len, *pn_max_h;
++   int x, baseline_y, text_w, *pn_max_len, *pn_max_h;
+    /*
+     * (Note: text_w is only used for fileVersion <= 36)
+     */
+

@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/871159
+--- a/cvoicecontrol/mixer.h
++++ b/cvoicecontrol/mixer.h
+@@ -29,2 +29,3 @@
+ int  mixerOK();
++int  mixerHasIGain();
+ const char *getMixer();

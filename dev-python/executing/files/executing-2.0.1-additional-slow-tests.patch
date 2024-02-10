@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/show_bug.cgi?id=909738
+https://github.com/alexmojaki/executing/pull/78
+
+From 9990d20a28d46e8a911c370a019f9231cad977f0 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Sun, 5 Nov 2023 19:54:34 -0500
+Subject: [PATCH] Add many_calls tests to EXECUTING_SLOW_TESTS
+
+---
+ tests/test_main.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/tests/test_main.py b/tests/test_main.py
+index 7e33247..bc015cd 100644
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -279,6 +279,10 @@ def test_future_import(self):
+         print(1 / 2)
+         tester(4)
+ 
++    @pytest.mark.skipif(
++        not os.getenv("EXECUTING_SLOW_TESTS"),
++        reason="These tests are very slow, enable them explicitly",
++    )
+     def test_many_calls(self):
+         node = None
+         start = time.time()
+@@ -290,6 +294,10 @@ def test_many_calls(self):
+                 self.assertIs(node, new_node)
+         self.assertLess(time.time() - start, 1)
+ 
++    @pytest.mark.skipif(
++        not os.getenv("EXECUTING_SLOW_TESTS"),
++        reason="These tests are very slow, enable them explicitly",
++    )
+     def test_many_source_for_filename_calls(self):
+         source = None
+         start = time.time()

@@ -1,0 +1,11 @@
+--- mpqc-2.3.1.orig/src/bin/mpqc/validate/Makefile	2006-03-22 19:03:51.000000000 +0100
++++ mpqc-2.3.1/src/bin/mpqc/validate/Makefile	2010-02-13 20:26:12.496370219 +0100
+@@ -52,7 +52,7 @@
+ # Also need to see if --mpqc was specified.  If not, then add
+ # --mpqc ../../mpqc.
+ ifeq ($(filter --mpqc%, $(ALL_MPQCRUN_ARGS)),)
+-ALL_MPQCRUN_ARGS:=--mpqc ../../mpqc $(ALL_MPQCRUN_ARGS)
++ALL_MPQCRUN_ARGS:=--mpqc "LD_LIBRARY_PATH=\"../../../../../lib/.libs/\" ../../mpqc" $(ALL_MPQCRUN_ARGS)
+ endif
+ 
+ ifeq ($(HAVE_SC_SRC_LIB_CHEMISTRY_QC_MBPTR12),yes)

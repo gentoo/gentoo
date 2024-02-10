@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Heroic is an Open Source Game Launcher for Linux, Windows and macOS. Right
+    now it supports launching games from the Epic Games Store using Legendary
+    and GOG Games using our custom implementation with gogdl.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/issues/</bugs-to>
+    <remote-id type="github">Heroic-Games-Launcher/HeroicGamesLauncher</remote-id>
+  </upstream>
+</pkgmetadata>

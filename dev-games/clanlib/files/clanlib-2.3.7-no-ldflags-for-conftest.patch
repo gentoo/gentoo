@@ -1,0 +1,19 @@
+diff -up ClanLib-2.3.7/acinclude.m4~ ClanLib-2.3.7/acinclude.m4
+--- ClanLib-2.3.7/acinclude.m4~	2011-11-24 11:57:30.000000000 +0100
++++ ClanLib-2.3.7/acinclude.m4	2015-04-02 15:22:52.060631122 +0200
+@@ -5,6 +5,7 @@ dnl CLANLIB_CHECK_LIB(lib, testprog, mod
+ define([CLANLIB_CHECK_LIB],[if test "$enable_$3" != "no"; then
+     OLDLIBS="$LIBS"; LIBS="$5"; AC_MSG_CHECKING(for $1)
+     OLD_CXXFLAGS="$CXXFLAGS"; CXXFLAGS="$6";
++    OLD_LDFLAGS="$LDFLAGS"; LDFLAGS=;
+     AC_RUN_IFELSE([AC_LANG_SOURCE($2)], [CL_RESULT=yes], [CL_RESULT=no], [AC_LINK_IFELSE([AC_LANG_SOURCE($2)], [CL_RESULT="yes, linked"],[CL_RESULT=no])])
+     AC_MSG_RESULT([$CL_RESULT])
+     if test "$CL_RESULT" = "no"; then
+@@ -14,6 +15,7 @@ define([CLANLIB_CHECK_LIB],[if test "$en
+         extra_LIBS_$3=" $extra_LIBS_$3 $LIBS "
+     fi
+     CXXFLAGS="$OLD_CXXFLAGS"
++    LDFLAGS="$OLD_LDFLAGS"
+     LIBS="$OLDLIBS"
+ fi])
+ 

@@ -1,0 +1,15 @@
+--- uemacs-orig/epath.h
++++ uemacs/epath.h
+@@ -25,10 +25,8 @@
+ #if	V7 | BSD | USG
+ {
+ 	".emacsrc", "emacs.hlp",
+-#if	PKCODE
+-	    "/usr/global/lib/", "/usr/local/bin/", "/usr/local/lib/",
+-#endif
+-"/usr/local/", "/usr/lib/", ""};
++	"/etc/uemacs-pk/", "/usr/share/uemacs-pk/", ""
++};
+ #endif
+ 
+ #if	VMS

@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/805188
+https://github.com/libyal/libewf/commit/033ea5b4e5f8f1248f74a2ec61fc1be183c6c46b
+--- a/ewftools/ewftools_output.c
++++ b/ewftools/ewftools_output.c
+@@ -238,12 +238,20 @@ void ewfoutput_version_detailed_fprint(
+ 	 LIBHMAC_VERSION_STRING );
+ 
+ #if defined( HAVE_LIBCRYPTO )
++#if defined( SHLIB_VERSION_NUMBER )
+ 	fprintf(
+ 	 stream,
+ 	 " (libcrypto %s)",
+ 	 SHLIB_VERSION_NUMBER );
+-#endif
+-#endif
++#elif defined( OPENSSL_VERSION_MAJOR ) && defined( OPENSSL_VERSION_MINOR )
++	fprintf(
++	 stream,
++	 " (libcrypto %d.%d)",
++	 OPENSSL_VERSION_MAJOR,
++	 OPENSSL_VERSION_MINOR );
++#endif
++#endif
++#endif
+ 
+ #if defined( HAVE_LIBODRAW ) || defined( HAVE_LOCAL_LIBODRAW )
+ 	fprintf(

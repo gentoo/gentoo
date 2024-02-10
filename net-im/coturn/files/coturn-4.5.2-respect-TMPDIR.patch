@@ -1,0 +1,24 @@
+diff --git a/configure b/configure
+index caf11f5..003da8d 100755
+--- a/configure
++++ b/configure
+@@ -513,12 +513,13 @@ fi
+ # Temporary DIR location:
+ #########################
+ 
+-TMPDIR="."
+-
+-if [ -d /var/tmp ] ; then
+-  TMPDIR="/var/tmp"
+-elif [ -d /tmp ] ; then
+-  TMPDIR=/tmp
++TMPDIR=${TMPDIR:-.}
++if test x"${TMPDIR}" = "." ; then
++  if [ -d /var/tmp ] ; then
++    TMPDIR="/var/tmp"
++  elif [ -d /tmp ] ; then
++    TMPDIR=/tmp
++  fi
+ fi
+ 
+ ${ECHO_CMD} Use TMP dir ${TMPDIR}

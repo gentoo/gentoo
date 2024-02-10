@@ -1,0 +1,37 @@
+From 48edd05f32241c537cedf2831efc5eb91a112291 Mon Sep 17 00:00:00 2001
+From: killy |0veufOrever <80536642@qq.com>
+Date: Tue, 19 Sep 2023 02:18:54 +0000
+Subject: [PATCH] Update OCIO to version 2.3.0
+
+---
+ 3rdparty/ext_ocio/CMakeLists.txt                    | 4 ++--
+ plugins/dockers/lut/ocio_display_filter_vfx2021.cpp | 3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+From 21d384fe9fafde2f45f7339a2234f4022c53152f Mon Sep 17 00:00:00 2001
+From: killy |0veufOrever <80536642@qq.com>
+Date: Tue, 19 Sep 2023 03:17:17 +0000
+Subject: [PATCH] Dimensions are not required when the OCIO version is less
+ than 2.3.0
+
+---
+ plugins/dockers/lut/ocio_display_filter_vfx2021.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+ 
+diff --git a/plugins/dockers/lut/ocio_display_filter_vfx2021.cpp b/plugins/dockers/lut/ocio_display_filter_vfx2021.cpp
+--- a/plugins/dockers/lut/ocio_display_filter_vfx2021.cpp
++++ b/plugins/dockers/lut/ocio_display_filter_vfx2021.cpp
+@@ -507,7 +507,13 @@
+         unsigned height = 0;
+         OCIO::GpuShaderDesc::TextureType channel = OCIO::GpuShaderDesc::TEXTURE_RGB_CHANNEL;
+         OCIO::Interpolation interpolation = OCIO::INTERP_LINEAR;
++
++#if OCIO_VERSION_HEX >= 0x2030000
++        OCIO::GpuShaderCreator::TextureDimensions dimensions;
++        shaderDesc->getTexture(idx, textureName, samplerName, width, height, channel, dimensions, interpolation);
++#else
+         shaderDesc->getTexture(idx, textureName, samplerName, width, height, channel, interpolation);
++#endif
+ 
+         if (!textureName || !*textureName || !samplerName || !*samplerName || width == 0) {
+             errOpenGL << "The texture data is corrupted";

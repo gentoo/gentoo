@@ -1,0 +1,408 @@
+commit 605f9ed36f2c9a514120d1b1b963b48ea3062280
+Author: Wez Furlong <wez@wezfurlong.org>
+Date:   Sat May 7 14:12:02 2022 -0700
+
+    Update for xcb 1.1
+    
+    The API changed quite substantially (and for the better!).
+    This commit is adjusting for that.
+    
+    There's a wart that I hope will be tackled upstream in
+    https://github.com/rust-x-bindings/rust-xcb/issues/188
+
+diff --git a/examples/example.rs b/examples/example.rs
+index 5262247..3feea8c 100644
+--- a/examples/example.rs
++++ b/examples/example.rs
+@@ -1,36 +1,31 @@
+ use std::sync::Arc;
++use xcb::x::{Cw, EventMask, Window};
++use xcb::Event;
+ use xcb_imdkit::{ImeClient, InputStyle};
+ 
+-fn create_window(connection: Arc<xcb::Connection>, screen: &xcb::Screen) -> u32 {
+-    let w = connection.generate_id();
+-    let mask = xcb::EVENT_MASK_KEY_PRESS
+-        | xcb::EVENT_MASK_KEY_RELEASE
+-        | xcb::EVENT_MASK_FOCUS_CHANGE
+-        | xcb::EVENT_MASK_VISIBILITY_CHANGE
+-        | xcb::EVENT_MASK_STRUCTURE_NOTIFY;
+-    let values = [
+-        (xcb::CW_BACK_PIXEL, screen.white_pixel()),
+-        (xcb::CW_EVENT_MASK, mask),
+-    ];
+-    xcb::create_window(
+-        &connection,
+-        xcb::COPY_FROM_PARENT as u8,
+-        w,
+-        screen.root(),
+-        0,
+-        0,
+-        400,
+-        400,
+-        10,
+-        xcb::WINDOW_CLASS_INPUT_OUTPUT as u16,
+-        screen.root_visual(),
+-        &values,
+-    );
+-    xcb::map_window(&connection, w);
+-    unsafe {
+-        xcb::ffi::xcb_flush(connection.get_raw_conn());
+-    }
+-    w
++fn create_window(connection: Arc<xcb::Connection>, screen: &xcb::x::Screen) -> Window {
++    let wid = connection.generate_id();
++    let mask = EventMask::KEY_PRESS
++        | EventMask::KEY_RELEASE
++        | EventMask::FOCUS_CHANGE
++        | EventMask::VISIBILITY_CHANGE
++        | EventMask::STRUCTURE_NOTIFY;
++    connection.send_request(&xcb::x::CreateWindow {
++        depth: xcb::x::COPY_FROM_PARENT as u8,
++        wid,
++        parent: screen.root(),
++        x: 0,
++        y: 0,
++        width: 400,
++        height: 400,
++        border_width: 10,
++        class: xcb::x::WindowClass::InputOutput,
++        visual: screen.root_visual(),
++        value_list: &[Cw::BackPixel(screen.white_pixel()), Cw::EventMask(mask)],
++    });
++    connection.send_request(&xcb::x::MapWindow { window: wid });
++    connection.flush().unwrap();
++    wid
+ }
+ 
+ fn main() {
+@@ -49,23 +44,9 @@ fn main() {
+         InputStyle::PREEDIT_CALLBACKS,
+         None,
+     );
+-    ime.set_commit_string_cb(|win, input| println!("Win {}, got: {}", win, input));
++    ime.set_commit_string_cb(|win, input| println!("Win {:?}, got: {}", win, input));
+     ime.set_forward_event_cb(|win, e| {
+-        dbg!(
+-            win,
+-            e.response_type(),
+-            e.detail(),
+-            e.time(),
+-            e.root(),
+-            e.event(),
+-            e.child(),
+-            e.root_x(),
+-            e.root_y(),
+-            e.event_x(),
+-            e.event_y(),
+-            e.state(),
+-            e.same_screen(),
+-        );
++        eprintln!("win={:?} {:?}", win, e);
+     });
+     ime.set_preedit_draw_cb(|win, info| {
+         dbg!(win, info);
+@@ -79,22 +60,16 @@ fn main() {
+     let mut focus_win = wins[0];
+     let mut n = 0;
+     loop {
+-        let event = connection.wait_for_event();
+-        if event.is_none() {
+-            break;
+-        }
+-        let event = event.unwrap();
+-        dbg!(event.response_type());
+-
+-        let event_type = event.response_type() & !0x80;
+-        if xcb::FOCUS_IN == event_type {
+-            let event: &xcb::FocusInEvent = unsafe { xcb::cast_event(&event) };
+-            focus_win = event.event();
+-            ime.update_pos(focus_win, 0, 0);
+-        }
+-
+-        if xcb::CONFIGURE_NOTIFY == event_type {
+-            ime.update_pos(focus_win, 0, 0);
++        let event = dbg!(connection.wait_for_event().unwrap());
++        match &event {
++            Event::X(xcb::x::Event::FocusIn(event)) => {
++                focus_win = event.event();
++                ime.update_pos(focus_win, 0, 0);
++            }
++            Event::X(xcb::x::Event::ConfigureNotify(_)) => {
++                ime.update_pos(focus_win, 0, 0);
++            }
++            _ => {}
+         }
+ 
+         println!(">>>>{}>>>>", n);
+diff --git a/src/clib.rs b/src/clib.rs
+index 6996380..55dbde0 100644
+--- a/src/clib.rs
++++ b/src/clib.rs
+@@ -26,4 +26,3 @@ impl Default for xcb_xim_im_callback {
+         }
+     }
+ }
+-
+diff --git a/src/lib.rs b/src/lib.rs
+index f9b56c8..b966a38 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -15,6 +15,8 @@ extern crate lazy_static;
+ use std::os::raw::{c_char, c_void};
+ use std::pin::Pin;
+ use std::sync::{Arc, Mutex};
++use xcb::x::Window;
++use xcb::{Event, Raw, Xid, XidNew};
+ 
+ use bitflags::bitflags;
+ 
+@@ -49,6 +51,60 @@ extern "C" fn create_ic_callback(im: *mut xcb_xim_t, new_ic: xcb_xic_t, user_dat
+     }
+ }
+ 
++fn raw_event(event: &Event) -> Option<*mut xcb::ffi::xcb_generic_event_t> {
++    match event {
++        Event::X(xcb::x::Event::KeyPress(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::KeyRelease(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ButtonPress(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ButtonRelease(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::MotionNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::EnterNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::LeaveNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::FocusIn(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::FocusOut(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::KeymapNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::Expose(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::GraphicsExposure(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::NoExposure(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::VisibilityNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::CreateNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::DestroyNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::UnmapNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::MapNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::MapRequest(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ReparentNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ConfigureNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ConfigureRequest(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::GravityNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ResizeRequest(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::CirculateNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::CirculateRequest(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::PropertyNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::SelectionClear(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::SelectionRequest(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::SelectionNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ColormapNotify(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::ClientMessage(e)) => Some(e.as_raw()),
++        Event::X(xcb::x::Event::MappingNotify(e)) => Some(e.as_raw()),
++        Event::Unknown(e) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::NewKeyboardNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::MapNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::StateNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::ControlsNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::IndicatorStateNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::IndicatorMapNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::NamesNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::CompatMapNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::BellNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::ActionMessage(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::AccessXNotify(e)) => Some(e.as_raw()),
++        Event::Xkb(xcb::xkb::Event::ExtensionDeviceNotify(e)) => Some(e.as_raw()),
++        // https://github.com/rust-x-bindings/rust-xcb/issues/188
++        #[allow(unreachable_patterns)]
++        _ => None,
++    }
++}
++
+ extern "C" fn open_callback(im: *mut xcb_xim_t, user_data: *mut c_void) {
+     let ime = unsafe { ime_from_user_data(user_data) };
+     let input_style = ime.input_style.bits();
+@@ -121,7 +177,7 @@ extern "C" fn commit_string_callback(
+ ) {
+     let input = unsafe { xim_encoding_to_utf8(im, input, length as usize) };
+     let ime = unsafe { ime_from_user_data(user_data) };
+-    let win = ime.pos_req.win;
++    let win = unsafe { Window::new(ime.pos_req.win) };
+     ime.callbacks.commit_string.as_mut().map(|f| f(win, &input));
+ }
+ 
+@@ -135,16 +191,30 @@ extern "C" fn update_pos_callback(_im: *mut xcb_xim_t, ic: xcb_xic_t, user_data:
+     }
+ }
+ 
++const XCB_KEY_PRESS: u8 = 2;
++const XCB_KEY_RELEASE: u8 = 3;
++
+ extern "C" fn forward_event_callback(
+     _im: *mut xcb_xim_t,
+     _ic: xcb_xic_t,
+     event: *mut xcb_key_press_event_t,
+     user_data: *mut c_void,
+ ) {
+-    let ptr = event as *const xcb::ffi::xcb_key_press_event_t;
+-    let event = xcb::KeyPressEvent { ptr: ptr as _ };
++    let pressed = unsafe { ((*event).response_type & 0x7f) == XCB_KEY_PRESS };
++    let ptr = event as *const xcb::ffi::xcb_generic_event_t;
++    let event = unsafe {
++        if pressed {
++            xcb::Event::X(xcb::x::Event::KeyPress(xcb::x::KeyPressEvent::from_raw(
++                ptr as _,
++            )))
++        } else {
++            xcb::Event::X(xcb::x::Event::KeyRelease(
++                xcb::x::KeyReleaseEvent::from_raw(ptr as _),
++            ))
++        }
++    };
+     let ime = unsafe { ime_from_user_data(user_data) };
+-    let win = ime.pos_req.win;
++    let win = unsafe { Window::new(ime.pos_req.win) };
+     ime.callbacks.forward_event.as_mut().map(|f| f(win, &event));
+ 
+     // xcb::KeyPressEvent has a Drop impl that will free `event`, but since we don't own it, we
+@@ -154,7 +224,7 @@ extern "C" fn forward_event_callback(
+ 
+ extern "C" fn preedit_start_callback(_im: *mut xcb_xim_t, _ic: xcb_xic_t, user_data: *mut c_void) {
+     let ime = unsafe { ime_from_user_data(user_data) };
+-    let win = ime.pos_req.win;
++    let win = unsafe { Window::new(ime.pos_req.win) };
+     ime.callbacks.preedit_start.as_mut().map(|f| f(win));
+ }
+ 
+@@ -167,7 +237,7 @@ extern "C" fn preedit_draw_callback(
+     let frame = unsafe { &*frame };
+     let preedit_info = PreeditInfo { inner: frame, im };
+     let ime = unsafe { ime_from_user_data(user_data) };
+-    let win = ime.pos_req.win;
++    let win = unsafe { Window::new(ime.pos_req.win) };
+     ime.callbacks
+         .preedit_draw
+         .as_mut()
+@@ -176,7 +246,7 @@ extern "C" fn preedit_draw_callback(
+ 
+ extern "C" fn preedit_done_callback(_im: *mut xcb_xim_t, _ic: xcb_xic_t, user_data: *mut c_void) {
+     let ime = unsafe { ime_from_user_data(user_data) };
+-    let win = ime.pos_req.win;
++    let win = unsafe { Window::new(ime.pos_req.win) };
+     ime.callbacks.preedit_done.as_mut().map(|f| f(win));
+ }
+ 
+@@ -195,10 +265,10 @@ bitflags! {
+     }
+ }
+ 
+-type StringCB = dyn for<'a> FnMut(u32, &'a str);
+-type KeyPressCB = dyn for<'a> FnMut(u32, &'a xcb::KeyPressEvent);
+-type PreeditDrawCB = dyn for<'a> FnMut(u32, PreeditInfo<'a>);
+-type NotifyCB = dyn FnMut(u32);
++type StringCB = dyn for<'a> FnMut(Window, &'a str);
++type KeyPressCB = dyn for<'a> FnMut(Window, &'a xcb::Event);
++type PreeditDrawCB = dyn for<'a> FnMut(Window, PreeditInfo<'a>);
++type NotifyCB = dyn FnMut(Window);
+ 
+ #[derive(Default)]
+ struct Callbacks {
+@@ -403,24 +473,29 @@ impl ImeClient {
+     /// [`set_forward_event_cb`]: ImeClient::set_forward_event_cb
+     /// [`set_commit_string_cb`]: ImeClient::set_commit_string_cb
+     /// [`set_preedit_draw_cb`]: ImeClient::set_preedit_draw_cb
+-    pub fn process_event(&mut self, event: &xcb::GenericEvent) -> bool {
+-        if !unsafe { xcb_xim_filter_event(self.im, event.ptr as _) } {
+-            let mask = event.response_type() & !0x80;
+-            if (mask == xcb::ffi::XCB_KEY_PRESS) || (mask == xcb::ffi::XCB_KEY_RELEASE) {
+-                match self.ic {
+-                    Some(ic) => {
+-                        unsafe {
+-                            xcb_xim_forward_event(self.im, ic, event.ptr as _);
++    pub fn process_event(&mut self, event: &xcb::Event) -> bool {
++        match raw_event(event) {
++            None => false,
++            Some(raw) => {
++                if !unsafe { xcb_xim_filter_event(self.im, raw as _) } {
++                    let mask = unsafe { (*raw).response_type & !0x80 };
++                    if (mask == XCB_KEY_PRESS) || (mask == XCB_KEY_RELEASE) {
++                        match self.ic {
++                            Some(ic) => {
++                                unsafe {
++                                    xcb_xim_forward_event(self.im, ic, raw as _);
++                                }
++                                return true;
++                            }
++                            _ => {
++                                self.try_open_ic();
++                            }
+                         }
+-                        return true;
+-                    }
+-                    _ => {
+-                        self.try_open_ic();
+                     }
+                 }
++                false
+             }
+         }
+-        false
+     }
+ 
+     /// Set the position at which to place the IME window.
+@@ -431,8 +506,12 @@ impl ImeClient {
+     /// Return `true` if an update for the IME window position has been sent to the IME, `false` if
+     /// the update has been queued. If there is still an update request queued and this method is
+     /// called, the previously queued request is discarded in favor of the new one.
+-    pub fn update_pos(&mut self, win: u32, x: i16, y: i16) -> bool {
+-        self.pos_req = ImePos { win, x, y };
++    pub fn update_pos(&mut self, win: Window, x: i16, y: i16) -> bool {
++        self.pos_req = ImePos {
++            win: win.resource_id(),
++            x,
++            y,
++        };
+         match self.ic {
+             Some(ic) => {
+                 if self.is_processing_pos_update {
+@@ -504,7 +583,7 @@ impl ImeClient {
+     /// [`update_pos`]: ImeClient::update_pos
+     pub fn set_commit_string_cb<F>(&mut self, f: F)
+     where
+-        F: for<'a> FnMut(u32, &'a str) + 'static,
++        F: for<'a> FnMut(Window, &'a str) + 'static,
+     {
+         self.callbacks.commit_string = Some(Box::new(f));
+     }
+@@ -520,7 +599,7 @@ impl ImeClient {
+     /// [`update_pos`]: ImeClient::update_pos
+     pub fn set_forward_event_cb<F>(&mut self, f: F)
+     where
+-        F: for<'a> FnMut(u32, &'a xcb::KeyPressEvent) + 'static,
++        F: for<'a> FnMut(Window, &'a xcb::Event) + 'static,
+     {
+         self.callbacks.forward_event = Some(Box::new(f));
+     }
+@@ -533,7 +612,7 @@ impl ImeClient {
+     /// [`update_pos`]: ImeClient::update_pos
+     pub fn set_preedit_start_cb<F>(&mut self, f: F)
+     where
+-        F: FnMut(u32) + 'static,
++        F: FnMut(Window) + 'static,
+     {
+         self.callbacks.preedit_start = Some(Box::new(f));
+     }
+@@ -547,7 +626,7 @@ impl ImeClient {
+     /// [`update_pos`]: ImeClient::update_pos
+     pub fn set_preedit_draw_cb<F>(&mut self, f: F)
+     where
+-        F: for<'a> FnMut(u32, PreeditInfo<'a>) + 'static,
++        F: for<'a> FnMut(Window, PreeditInfo<'a>) + 'static,
+     {
+         self.callbacks.preedit_draw = Some(Box::new(f));
+     }
+@@ -560,7 +639,7 @@ impl ImeClient {
+     /// [`update_pos`]: ImeClient::update_pos
+     pub fn set_preedit_done_cb<F>(&mut self, f: F)
+     where
+-        F: FnMut(u32) + 'static,
++        F: FnMut(Window) + 'static,
+     {
+         self.callbacks.preedit_done = Some(Box::new(f));
+     }

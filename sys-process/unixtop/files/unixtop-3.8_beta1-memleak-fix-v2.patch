@@ -1,0 +1,28 @@
+https://hg.openindiana.org/upstream/oracle/userland-gate/raw-file/23c55a2f8a8e/components/top/patches/03.sunos5.patch
+
+--- a/machine/m_sunos5.c
++++ b/machine/m_sunos5.c
+@@ -2064,7 +2064,13 @@ getptable (struct prpsinfo *baseptr)
+ 
+ 	    /* read the whole file */
+ 	    p = malloc(st.st_size);
+-	    (void)pread(fd, p, st.st_size, 0);
++	    if (pread(fd, p, st.st_size, 0) != st.st_size)
++	    {
++		(void) close(fd);
++		op->fd_lpsinfo = -1;
++		free(p);
++		continue;
++	    }
+ 
+ 	    /* cache the file descriptor if we can */
+ 	    if (fd < maxfiles)
+@@ -2148,7 +2154,7 @@ getptable (struct prpsinfo *baseptr)
+ 		op->oldtime = TIMESPEC_TO_DOUBLE(lwpp->pr_time);
+ 		op->seen = 1;
+ 	    }
+-	    free(p);
++	    free(prp);
+ 	}
+ #endif
+ 

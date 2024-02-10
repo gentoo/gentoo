@@ -1,0 +1,34 @@
+there's no need to set LD_LIBRARY_PATH in order to perform link tests, and
+it's actually undesirable as it'll cause the toolchain to search a different
+path than the ones it's configured to (host lib wise).
+
+https://bugs.gentoo.org/564350
+
+--- a/macros/db3-check.m4
++++ b/macros/db3-check.m4
+@@ -142,15 +142,7 @@ if test "x$bdb_required" = "xyes"; then
+                         CPPFLAGS="-I${bdbdir}/include${subdir} $CPPFLAGS"
+                         LDFLAGS="-L$bdblibdir $LDFLAGS"
+ 
+-                        dnl -- Uses version set by NETATALK_BDB_HEADER to try to run
+-                        dnl -- a conftest that checks that header/lib version match
+-                        dnl -- $shlibpath_var is set by LIBTOOL, its value is
+-                        dnl -- LD_LIBRARY_PATH on many platforms. This will be fairly
+-                        dnl -- portable hopefully. Reference:
+-                        dnl -- http://lists.gnu.org/archive/html/autoconf/2009-03/msg00040.html
+-                        test "$cross_compiling" = yes || eval export $shlibpath_var=$bdblibdir
+                         NETATALK_BDB_TRY_LINK
+-                        eval export $shlibpath_var=$saved_shlibpath_var
+ 
+                         if test x"${atalk_cv_bdb_version}" = x"yes"; then
+                             BDB_CFLAGS="-I${bdbdir}/include${subdir}"
+@@ -174,9 +166,7 @@ if test "x$bdb_required" = "xyes"; then
+                            CPPFLAGS="-I${bdbdir}/include${subdir} $CPPFLAGS"
+                            LDFLAGS="-L$bdblibdir $LDFLAGS"
+ 
+-                           test "$cross_compiling" = yes || eval export $shlibpath_var=$bdblibdir
+                            NETATALK_BDB_TRY_LINK
+-                           eval export $shlibpath_var=$saved_shlibpath_var
+ 
+                            if test x"${atalk_cv_bdb_version}" = x"yes"; then
+                               BDB_CFLAGS="-I${bdbdir}/include${subdir}"

@@ -1,0 +1,64 @@
+Skip tests known to fail when running under Gentoo sandbox.
+
+--- a/tests/du/long-from-unreadable.sh
++++ b/tests/du/long-from-unreadable.sh
+@@ -29,6 +29,9 @@
+ # unnecessarily to using FTS_NOCHDIR mode in this corner case.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ du
+ 
+ require_perl_
+--- a/tests/ls/removed-directory.sh
++++ b/tests/ls/removed-directory.sh
+@@ -19,6 +19,9 @@
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ ls
+ 
+ case $host_triplet in
+--- a/tests/ls/stat-free-symlinks.sh
++++ b/tests/ls/stat-free-symlinks.sh
+@@ -17,6 +17,9 @@
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ ls
+ require_strace_ stat
+ 
+--- a/tests/misc/env-S.pl
++++ b/tests/misc/env-S.pl
+@@ -30,6 +30,11 @@ $env = $1;
+ # Turn off localization of executable's output.
+ @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
+ 
++# Skip if sandbox is enabled
++if ($ENV{SANDBOX_ACTIVE}) {
++     CuSkip::skip "Gentoo: Test known bad under sandbox (#675802)\n";
++}
++
+ my @Tests =
+     (
+      # Test combination of -S and regular arguments
+--- a/tests/rm/deep-2.sh
++++ b/tests/rm/deep-2.sh
+@@ -17,6 +17,9 @@
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ . "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
++# Avoid #413621 until #548250 is resolved
++test -n "$SANDBOX_ACTIVE" && skip_ "Gentoo: Test known bad under sandbox (#413621)"
++
+ print_ver_ rm
+ require_perl_
+ 

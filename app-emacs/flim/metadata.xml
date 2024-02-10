@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<stabilize-allarches/>
+<use>
+  <flag name="oauth2">
+    Support OAuth2 authentication (<pkg>app-emacs/oauth2</pkg>)
+  </flag>
+</use>
+<upstream>
+  <remote-id type="github">wanderlust/flim</remote-id>
+</upstream>
+</pkgmetadata>

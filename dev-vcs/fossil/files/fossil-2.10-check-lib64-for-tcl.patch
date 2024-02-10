@@ -1,0 +1,11 @@
+--- a/autosetup/local.tcl
++++ b/autosetup/local.tcl
+@@ -12,7 +12,7 @@
+ 			return [parse-tclconfig-sh-file $p/tclConfig.sh]
+ 		}
+ 		# Some systems allow for multiple versions
+-		foreach libpath {lib/tcl8.6 lib/tcl8.5 lib/tcl8.4 lib/tcl tcl lib}  {
++		foreach libpath {lib/tcl8.6 lib/tcl8.5 lib/tcl8.4 lib/tcl tcl lib lib64}  {
+ 			if {[file exists $p/$libpath/tclConfig.sh]} {
+ 				return [parse-tclconfig-sh-file $p/$libpath/tclConfig.sh]
+ 			}

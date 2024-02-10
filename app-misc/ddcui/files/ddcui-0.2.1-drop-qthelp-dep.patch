@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt	2022-08-01 15:19:36.000000000 +0200
++++ b/CMakeLists.txt	2022-10-16 14:08:37.422550810 +0200
+@@ -93,12 +93,11 @@
+ 
+ set(QT5_LIBRARIES Qt5::Widgets )
+ # Ensures all Qt componenets have same version: 
+-find_package(Qt5 ${ddcui_qt_version} COMPONENTS Core Widgets Gui Help REQUIRED)
++find_package(Qt5 ${ddcui_qt_version} COMPONENTS Core Widgets Gui REQUIRED)
+ message( ${VERBOSE} "Qt directories:")
+ message( ${VERBOSE} "  Qt5Widgets_INCLUDE_DIRS:  ${Qt5Widgets_INCLUDE_DIRS}" )
+ message( ${VERBOSE} "  Qt5Core_INCLUDE_DIRS:     ${Qt5Core_INCLUDE_DIRS}"    )
+ message( ${VERBOSE} "  Qt5Gui_INCLUDE_DIRS:      ${Qt5Gui_INCLUDE_DIRS}"     )
+-message( ${VERBOSE} "  Qt5Help_INCLUDE_DIRS:     ${Qt5Help_INCLUDE_DIRS}"    )
+ 
+ find_package (PkgConfig REQUIRED )
+ pkg_check_modules(GLIB2 REQUIRED glib-2.0>=${ddcui_glib_version})
+@@ -215,9 +214,9 @@
+ # add_compile_options(-Og -H V=1)
+ 
+ # redundant: ${Qt5Gui_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS}. 
+-#            ${Qt5Help_INCLUDE_DIRS} is a superset of them all 
+ target_include_directories(ddcui SYSTEM PRIVATE 
+-                                 ${Qt5Help_INCLUDE_DIRS}
++                                 ${Qt5Gui_INCLUDE_DIRS}
++                                 ${Qt5Widgets_INCLUDE_DIRS}
+                                  ${GLIB2_INCLUDE_DIRS} 
+                                  ${DDCUTIL_INCLUDE_DIRS})
+ 

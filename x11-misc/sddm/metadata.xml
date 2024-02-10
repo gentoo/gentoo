@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>lxqt@gentoo.org</email>
+		<name>LXQt</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		SDDM is a modern display manager aiming to be fast, simple
+		and beautiful. It uses modern technologies like QtQuick, which
+		gives the designer the ability to create smooth, animated UIs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sddm/sddm</remote-id>
+		<remote-id type="cpe">cpe:/a:sddm_project:sddm</remote-id>
+	</upstream>
+</pkgmetadata>

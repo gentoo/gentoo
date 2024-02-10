@@ -1,0 +1,11 @@
+--- a/setup.py    2022-02-27 15:57:35.035889587 +0100
++++ b/setup.py    2022-02-27 15:58:04.049889476 +0100
+@@ -70,7 +70,7 @@
+     keywords="csp constraint solving problems problem solver",
+     # You can just specify the packages manually here if your project is
+     # simple. Or you can use find_packages().
+-    packages=find_packages(exclude=["contrib", "docs", "tests*"]),
++    packages=find_packages(exclude=["contrib", "docs", "tests*", "examples*"]),
+     # List run-time dependencies here.  These will be installed by pip when your
+     # project is installed. For an analysis of "install_requires" vs pip's
+     # requirements files see:

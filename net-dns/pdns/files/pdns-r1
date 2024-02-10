@@ -1,0 +1,112 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+get_config_option() {
+	awk -v option="${1}" -F = '$1 == option { print $2 }' "${PDNS_CONFIG}"
+}
+
+PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
+PDNS_STOP_TIMEOUT="${PDNS_STOP_TIMEOUT:-10}"
+
+[ "${RC_SVCNAME}" != "pdns" ] && PDNS_INSTANCE="${RC_SVCNAME#pdns[.-]}" || PDNS_INSTANCE=""
+
+PDNS_CONFIG="${PDNS_CONFIGDIR}/pdns${PDNS_INSTANCE:+-${PDNS_INSTANCE}}.conf"
+PDNS_CHROOTDIR="$( get_config_option chroot )"
+PDNS_SOCKETDIR="$( get_config_option socket-dir )"
+PDNS_SETUID="$( get_config_option setuid )"
+PDNS_SETGID="$( get_config_option setgid )"
+[ -z "${PDNS_SOCKETDIR}" -a -z "${PDNS_CHROOTDIR}" ] && PDNS_SOCKETDIR="/var/run/pdns"
+
+name="PowerDNS Authoritative Server${PDNS_INSTANCE:+ (${PDNS_INSTANCE})}"
+description="Authoritative name server"
+
+extra_started_commands="dump ping"
+extra_stopped_commands="monitor"
+description_dump="Dumps all statistic variables"
+description_ping="Ping the PowerDNS instance"
+description_monitor="Starts in foreground with logging and console enabled"
+
+command="/usr/sbin/pdns_server"
+command_args="--config-dir=${PDNS_CONFIGDIR}${PDNS_INSTANCE:+ --config-name=${PDNS_INSTANCE}} --write-pid=yes"
+command_args_foreground="--daemon=no"
+command_args_background="--daemon=yes"
+yesno ${rc_verbose} || command_args_background="${command_args_background} >/dev/null 2>&1"
+
+pidfile="${PDNS_CHROOTDIR}/${PDNS_SOCKETDIR}/pdns${PDNS_INSTANCE:+-${PDNS_INSTANCE}}.pid"
+
+control_command="/usr/bin/pdns_control"
+control_command_args="${command_args}"
+
+depend() {
+	need net
+	use mysql postgresql
+}
+
+status() {
+	default_status || return
+	_ping || return 32
+}
+
+start_pre() {
+	checkpath --directory --owner "${PDNS_SETUID:-root}:${PDNS_SETGID:-root}" --mode 750 "${PDNS_CHROOTDIR}/${PDNS_SOCKETDIR}"
+}
+
+stop() {
+	default_stop || return
+	_ping || return 0
+	wait_for_stop
+}
+
+wait_for_stop() {
+	einfon "Waiting for ${name} to stop"
+
+	local timeout="${PDNS_STOP_TIMEOUT}"
+	while [ "${timeout}" -gt 0 ]; do
+		sleep 1
+		if ! _ping; then
+			echo
+			return 0
+		fi
+		: $(( timeout -= 1 ))
+		printf .
+	done
+
+	echo
+	return 1
+}
+
+dump() {
+	einfo "Dumping ${name} variables"
+	${control_command} ${control_command_args} list
+}
+
+_ping() {
+	${control_command} ${control_command_args} rping >/dev/null 2>&1
+}
+
+ping() {
+	ebegin "Pinging ${name}"
+	_ping
+	eend $?
+}
+
+monitor() {
+	einfo "Starting ${name} in monitor mode"
+
+	echo
+	echo '************************************************'
+	echo '* Use "QUIT" or Ctrl-C to end monitoring mode! *'
+	echo '************************************************'
+	echo
+
+	${command} \
+		${command_args} \
+		${command_args_foreground} \
+		--guardian=no \
+		--control-console=yes \
+		--loglevel=9 \
+		--log-dns-details=yes \
+		--query-logging=yes
+	return 0
+}

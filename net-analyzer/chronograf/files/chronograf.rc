@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+command=/usr/bin/chronograf
+command_args="${chronograf_opts}"
+command_background=yes
+command_user=chronograf:chronograf
+make_pidfile=yes
+pidfile=/var/run/chronografd.pid
+
+# Logging
+error_log="${error_log:-/var/log/chronograf/chronograf.log}"
+output_log="${output_log:-/dev/null}"
+
+start_pre() {
+	export HOST=127.0.0.1
+	export PORT=8888
+	export BOLT_PATH=/var/lib/chronograf/chronograf-v1.db
+	export CANNED_PATH=/usr/share/chronograf/canned
+	export RESOURCES_PATH=/usr/share/chronograf/RESOURCES
+	yesno "${report_usage_stats:-no}" || export REPORTING_DISABLED=yes
+	return 0
+}

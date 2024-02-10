@@ -1,0 +1,30 @@
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sat Aug 4 12:15:53 2012 +0200
+
+    respect CXX, CFLAGS and LDFLAGS
+
+--- src/Makefile
++++ src/Makefile
+@@ -1,10 +1,10 @@
+-CFLAGS =	`sdl-config --cflags` -g -Wall -I. -DENABLE_BINRELOC
+-CPPFLAGS =	$(CFLAGS)
++CXXFLAGS +=	$(shell sdl-config --cflags) -I. 
++CPPFLAGS +=	-DENABLE_BINRELOC
+ 
+ # Uncomment the first LIBS line and comment out the other LIBS line to
+ # compile without SDL_Mixer
+ #LIBS =		`sdl-config --libs`
+-LIBS =		`sdl-config --libs` -lSDL_mixer
++LIBS =		$(shell sdl-config --libs) -lSDL_mixer
+ 
+ RETROINSTALLDIR ?= /opt
+ 
+@@ -25,7 +25,7 @@
+ 
+ 
+ retrobattle:	$(RETRO)
+-		g++ -o $@ $^ $(LIBS)
++		$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 		mv $@ ..
+ 
+ clean:

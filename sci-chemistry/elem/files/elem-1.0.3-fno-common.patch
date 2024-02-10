@@ -1,0 +1,24 @@
+--- a/elem.c
++++ b/elem.c
+@@ -11,6 +11,9 @@
+ #include "deutsch.h"
+ #endif
+ 
++double amsumme;
++FL_OBJECT *massensumme;
++
+ 
+ 
+ FD_Periodensystem *create_form_Periodensystem(void)
+--- a/elem.h
++++ b/elem.h
+@@ -154,7 +154,7 @@ typedef struct {
+   void *vdata;
+   long ldata;
+ } FD_Periodensystem;
+-double amsumme;
++extern double amsumme;
+ extern FD_Periodensystem * create_form_Periodensystem(void);
+-        FL_OBJECT *massensumme;
++extern FL_OBJECT *massensumme;
+ #endif /* FD_Periodensystem_h_ */

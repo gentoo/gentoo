@@ -1,0 +1,34 @@
+--- a/doc/c-wrapper-ref.texi
++++ b/doc/c-wrapper-ref.texi
+@@ -14,7 +14,7 @@
+ @direntry
+ * c-wrapper reference: (c-wrapper-refj.info).	A generic wrapper for C libraries.
+ @end direntry
+-@documentencoding euc-jp
++@documentencoding UTF-8
+ @c COMMON
+ @comment %**end of header
+ 
+--- a/doc/extract
++++ b/doc/extract
+@@ -138,8 +138,6 @@
+         ((en) (filter #/^@c EN$/ #/^@c JP$/))
+         ((jp) (filter #/^@c JP$/ #/^@c EN$/))))
+ 
+-    (define outenc (if (eq? *lang* 'jp) 'euc-jp 'utf8))
+-    
+     (unless (= (length a) 1) (usage))
+ 
+     (when (eq? *lang* 'jp)
+@@ -148,9 +146,9 @@
+     (with-input-from-file (car a)
+       (lambda ()
+         (if *outfile*
+-          (with-output-to-file *outfile* do-it :encoding outenc)
++          (with-output-to-file *outfile* do-it :encoding 'utf8)
+           (let1 out (open-output-conversion-port
+-                     (current-output-port) outenc)
++                     (current-output-port) 'utf8)
+             (with-output-to-port out do-it)
+             (close-output-port out))))
+       :encoding 'euc-jp)

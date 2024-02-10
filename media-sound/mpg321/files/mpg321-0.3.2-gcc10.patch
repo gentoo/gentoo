@@ -1,0 +1,83 @@
+From f930c3b81bdf9c05152fb005562b3869f6e36f34 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 4 Jun 2020 20:41:25 +0300
+Subject: [PATCH] Fix GCC10 compilation
+
+---
+ mpg321.c |  8 ++++++++
+ mpg321.h | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/mpg321.c b/mpg321.c
+index 19282bb..663882e 100644
+--- a/mpg321.c
++++ b/mpg321.c
+@@ -63,6 +63,14 @@
+ #include <pthread.h>
+ #include <semaphore.h>
+ 
++output_frame *Output_Queue;
++decoded_frames *Decoded_Frames;
++int semarray;
++int mad_decoder_position;
++int output_buffer_position;
++double real[FFT_BUFFER_SIZE];
++double imag[FFT_BUFFER_SIZE];
++int loop_remaining;
+ 
+ int pflag = 0;
+ int volume = 0;
+diff --git a/mpg321.h b/mpg321.h
+index 798bff0..235cf4a 100644
+--- a/mpg321.h
++++ b/mpg321.h
+@@ -116,7 +116,7 @@ extern char *playlist_file;
+ extern int quit_now;
+ extern char remote_input_buf[PATH_MAX + 5];
+ extern int file_change;
+-int loop_remaining;
++extern int loop_remaining;
+ 
+ extern int status;
+ extern int scrobbler_time;
+@@ -233,8 +233,8 @@ RETSIGTYPE handle_sigchld(int sig);
+ #define FFT_BUFFER_SIZE_LOG 9
+ #define FFT_BUFFER_SIZE (1 << FFT_BUFFER_SIZE_LOG) /* 512 */
+ /*Temporary data stores to perform FFT in */
+-double real[FFT_BUFFER_SIZE];
+-double imag[FFT_BUFFER_SIZE];
++extern double real[FFT_BUFFER_SIZE];
++extern double imag[FFT_BUFFER_SIZE];
+ 
+ typedef struct {
+ 	double real[FFT_BUFFER_SIZE];
+@@ -258,10 +258,10 @@ fft_state *fft_init(void);
+ /* Output buffer process */
+ void frame_buffer_p();
+ /* Semaphore array */
+-int semarray;
++extern int semarray;
+ /* Input/Output buffer position */
+-int mad_decoder_position;
+-int output_buffer_position;
++extern int mad_decoder_position;
++extern int output_buffer_position;
+ /* Output Frame including needed information */
+ typedef struct {
+ 	unsigned char data[4*1152];
+@@ -285,10 +285,10 @@ typedef struct {
+ } decoded_frames;
+ 
+ /* Output frame queue pointer */
+-output_frame *Output_Queue;
++extern output_frame *Output_Queue;
+ 
+ /* Shared total decoded frames */
+-decoded_frames *Decoded_Frames;
++extern decoded_frames *Decoded_Frames;
+ 
+ #if defined(__GNU_LIBRARY__) && !defined(_SEM_SEMUN_UNDEFINED)
+ /* */
+-- 
+2.26.2
+

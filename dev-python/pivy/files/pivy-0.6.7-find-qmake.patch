@@ -1,0 +1,29 @@
+https://github.com/gentoo/gentoo/pull/25823#issuecomment-1150748775
+
+From 2d654ef2837f2ca934f636fc8a63de47a9d5853d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 9 Jun 2022 18:26:29 +0200
+Subject: [PATCH] find qmake
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/qtinfo.py
++++ b/qtinfo.py
+@@ -7,7 +7,7 @@ class QtInfo(object):
+         if qmake_command:
+             self._qmake_command = qmake_command
+         else:
+-            self._qmake_command = [find_executable("qmake"),]
++            self._qmake_command = [find_executable("qmake5"),]
+         self._dict = {}
+         # bind all variables early at __init__ time.
+         for thing in self.__class__.__dict__:
+@@ -79,4 +79,4 @@ class QtInfo(object):
+     translations_dir = property(getTranslationsPath)
+     headers_dir = property(getHeadersPath)
+     docs_dir = property(getDocsPath)
+-    qml_dir = property(getQmlPath)
+\ No newline at end of file
++    qml_dir = property(getQmlPath)
+-- 
+2.35.1
+

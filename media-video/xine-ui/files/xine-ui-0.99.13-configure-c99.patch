@@ -1,0 +1,77 @@
+https://sourceforge.net/p/xine/tickets/22/
+https://bugs.gentoo.org/899872
+
+Fix C compatibility issues in the configure script
+
+This is necessary to avoid incorrectly failing probes due to expected
+compiler errors.
+
+Include <stdlib.h> for the exit function, and <string.h> for the
+strdup function.
+
+Use fake prototypes to avoid implicit function declarations in the
+xine_* function probes.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -198,6 +198,7 @@
+   if test "$ac_cv_header_sys_shm_h" = "yes"; then
+     AC_MSG_CHECKING(whether shmctl IPC_RMID allowes subsequent attaches)
+     AC_TRY_RUN([
++	  #include <stdlib.h>
+           #include <sys/types.h>
+           #include <sys/ipc.h>
+           #include <sys/shm.h>
+--- a/m4/aa.m4
++++ b/m4/aa.m4
+@@ -52,6 +52,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <aalib.h>
++#include <string.h>
+ 
+ int main () {
+   int major, minor;
+--- a/m4/_xine.m4
++++ b/m4/_xine.m4
+@@ -218,7 +218,7 @@
+      CFLAGS="$CFLAGS $XINE_CFLAGS"
+      LIBS="$LIBS $XINE_LIBS"
+      AC_LINK_IFELSE(
+-         [AC_LANG_PROGRAM([],[xine_open_cloexec();])],
++         [AC_LANG_PROGRAM([char xine_open_cloexec(void);],[xine_open_cloexec();])],
+          [AC_DEFINE([HAVE_XINE_OPEN_CLOEXEC], [1], [Define if xine-lib supports xine_open_cloexec])
+           AC_MSG_RESULT([yes])],
+          [AC_MSG_RESULT([no])])
+@@ -234,7 +234,7 @@
+      CFLAGS="$CFLAGS $XINE_CFLAGS"
+      LIBS="$LIBS $XINE_LIBS"
+      AC_LINK_IFELSE(
+-         [AC_LANG_PROGRAM([],[xine_socket_cloexec();])],
++         [AC_LANG_PROGRAM([char xine_socket_cloexec(void);],[xine_socket_cloexec();])],
+          [AC_DEFINE([HAVE_XINE_SOCKET_CLOEXEC], [1], [Define if xine-lib supports xine_socket_cloexec])
+           AC_MSG_RESULT([yes])],
+          [AC_MSG_RESULT([no])])
+@@ -250,7 +250,7 @@
+      CFLAGS="$CFLAGS $XINE_CFLAGS"
+      LIBS="$LIBS $XINE_LIBS"
+      AC_LINK_IFELSE(
+-         [AC_LANG_PROGRAM([
++         [AC_LANG_PROGRAM([char xine_list_next_value(void);
+          ],[
+ xine_list_next_value ();
+          ])],
+diff --git a/configure.ac b/configure.ac
+index 5b4fb04..8bcbfea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -634,7 +634,8 @@ dnl
+ AC_MSG_CHECKING(whether librt is needed)
+ AC_TRY_COMPILE(
+ 	[#include <unistd.h>
+-	 #include <sys/time.h>],
++	 #include <sys/time.h>
++         #include <time.h>],
+ 	[#if _POSIX_TIMERS > 0
+ 	 struct timespec ts;
+ 	 clock_gettime(CLOCK_REALTIME, &ts);

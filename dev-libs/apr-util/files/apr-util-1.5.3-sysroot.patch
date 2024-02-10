@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/385775
+
+utilize $SYSROOT to find the right includedir tree
+
+drop the -L/-R paths since we know our libdir is the standard path which
+the compiler already knows how to locate
+
+--- a/apu-config.in
++++ b/apu-config.in
+@@ -25,7 +25,7 @@ prefix="@prefix@"
+ exec_prefix="@exec_prefix@"
+ bindir="@bindir@"
+ libdir="@libdir@"
+-includedir="@includedir@"
++includedir="${SYSROOT}@includedir@"
+ 
+ LIBS="@APRUTIL_EXPORT_LIBS@"
+ INCLUDES="@APRUTIL_INCLUDES@"
+@@ -166,7 +166,7 @@ while test $# -gt 0; do
+     --link-ld)
+     if test "$location" = "installed"; then
+         ### avoid using -L if libdir is a "standard" location like /usr/lib
+-        flags="$flags -L$libdir -l$APRUTIL_LIBNAME"
++        flags="$flags -l$APRUTIL_LIBNAME"
+     else
+         flags="$flags -L$APU_BUILD_DIR -l$APRUTIL_LIBNAME"
+     fi
+@@ -182,7 +182,7 @@ while test $# -gt 0; do
+         ### avoid using -L if libdir is a "standard" location like /usr/lib
+         # Since the user is specifying they are linking with libtool, we
+         # *know* that -R will be recognized by libtool.
+-        flags="$flags -L$libdir -R$libdir -l$APRUTIL_LIBNAME"
++        flags="$flags -l$APRUTIL_LIBNAME"
+     else
+         flags="$flags $LA_FILE"
+     fi

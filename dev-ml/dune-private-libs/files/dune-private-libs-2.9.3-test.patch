@@ -1,0 +1,32 @@
+From 4a8fa5757277be6e9bbd3698fd4d4336dadae520 Mon Sep 17 00:00:00 2001
+From: Rudi Grinberg <me@rgrinberg.com>
+Date: Sat, 26 Jun 2021 21:54:55 -0700
+Subject: [PATCH] Fix test bug_4219.t
+
+It was missing EOF end markers
+
+Signed-off-by: Rudi Grinberg <me@rgrinberg.com>
+---
+ otherlibs/site/test/bug_4219.t | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/otherlibs/site/test/bug_4219.t b/otherlibs/site/test/bug_4219.t
+index 96d4794f43..eab868d676 100644
+--- a/otherlibs/site/test/bug_4219.t
++++ b/otherlibs/site/test/bug_4219.t
+@@ -7,6 +7,7 @@ Test when sites name which are ocaml keyword
+   > (package
+   >  (name my-package)
+   >  (sites (lib include)))
++  > EOF
+ 
+   $ cat >dune <<EOF
+   > (library (name lib) (libraries dune-site dune-site.plugins))
+@@ -14,6 +15,6 @@ Test when sites name which are ocaml keyword
+   > (generate_sites_module
+   >  (module sites)
+   >  (plugins (my-package include)))
+-
++  > EOF
+ 
+   $ dune build

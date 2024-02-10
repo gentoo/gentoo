@@ -1,0 +1,8 @@
+--- pdfcrack-0.14/Makefile
++++ pdfcrack-0.14/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS += -Wall -Wextra -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -O3 -g
++CFLAGS += -Wall -Wextra -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ 
+ all: pdfcrack
+ 

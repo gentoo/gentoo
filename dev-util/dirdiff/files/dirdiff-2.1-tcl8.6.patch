@@ -1,0 +1,16 @@
+ filecmp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/filecmp.c b/filecmp.c
+index 673c1a8..fd4c6e5 100644
+--- a/filecmp.c
++++ b/filecmp.c
+@@ -341,7 +341,7 @@ FileCmpCmd(clientData, interp, argc, argv)
+     if (n1 < 0 || n2 < 0)
+ 	return TCL_ERROR;
+ 
+-    sprintf(interp->result, "%d", same);
++    sprintf(Tcl_GetStringResult(interp), "%d", same);
+     return TCL_OK;
+ }
+ 

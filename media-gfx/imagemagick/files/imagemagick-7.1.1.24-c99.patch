@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/920788
+
+From f6e90ad1a649c4032b957fa101d30c14de3b7e5d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 27 Dec 2023 22:37:42 +0000
+Subject: [PATCH] configure.ac: fixup LFS check for autoconf-2.72
+
+There are two problems with the check:
+1) The 'unknown' case has a problem which is rejected by stricter C compilers
+because it has -Wimplicit-int and -Wimplicit-function-declaration warnings. Fix that.
+
+2) For the 'other' case, we were using the value of ac_cv_sys_file_offset_bits for
+-D_FILE_OFFSET_BITS to pass down into the Perl module build, but autoconf-2.72
+drops the use of ac_cv_sys_file_offset_bits in cf09f48841b66fe76f606dd6018bb3a93242a7c9,
+so this ends up defining '-D_FILE_OFFSET_BITS=' which then breaks the build.
+
+I've added a hack for 2) to preserve the old behavior.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 57c21edb77..99aa9c21af 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -503,7 +503,8 @@ if test "$enable_largefile" != no; then
+     unknown)
+         AC_MSG_CHECKING([for native large file support])
+         AC_RUN_IFELSE([AC_LANG_PROGRAM([#include <unistd.h>
+-          main () {
++          #include <stdlib.h>
++          int main () {
+           exit(!(sizeof(off_t) == 8));
+         }])],
+         [ac_cv_sys_file_offset_bits=64; AC_DEFINE(_FILE_OFFSET_BITS,64)
+@@ -511,6 +512,9 @@ if test "$enable_largefile" != no; then
+         [AC_MSG_RESULT([no])])
+         ;;
+     *)
++        if test "$ac_cv_sys_file_offset_bits" = ''; then
++            ac_cv_sys_file_offset_bits=64;
++        fi
+         LFS_CPPFLAGS="$LFS_CPPFLAGS -D_FILE_OFFSET_BITS=$ac_cv_sys_file_offset_bits"
+         ;;
+     esac

@@ -1,0 +1,38 @@
+This code is broken with the newer libtool. Just dropping it is more or less
+safe as in any case if libtool does not supports shared libraries it'll issue
+an error...
+
+Adding include is necessary for gcc-4.3.
+
+--- a/configure.in	2008-07-16 09:18:35 +0000
++++ b/configure.in	2008-07-16 09:18:43 +0000
+@@ -61,6 +61,7 @@
+   AC_TRY_RUN([
+ #include <glib.h>
+ #include <gmodule.h>
++#include <stdlib.h>
+ main ()
+ {
+     if (g_module_supported ())
+@@ -74,21 +74,6 @@
+   CFLAGS="$oCFLAGS"
+ fi
+ 
+-dnl Now we check to see if our libtool supports shared lib deps
+-dnl (in a rather ugly way even)
+-builddir=`pwd`
+-if $dynworks; then
+-   imlib_libtool_config="$builddir/libtool --config"
+-   imlib_deplibs_check=`$imlib_libtool_config | \
+-      grep '^[[a-z_]]*check[[a-z_]]*_method=[['\''"]]' | \
+-      sed 's/.*[['\''"]]\(.*\)[['\''"]]$/\1/'`
+-   if test "x$imlib_deplibs_check" = "xnone" || \
+-      test "x$imlib_deplibs_check" = "xunknown" || \
+-      test "x$imlib_deplibs_check" = "x"; then
+-      dynworks=false
+-   fi
+-fi
+-
+ if $dynworks; then
+    AC_DEFINE(USE_GMODULE, 1, [ ])
+    GMODULE_LIBS="`glib-config --libs gmodule`"

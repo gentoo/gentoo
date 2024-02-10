@@ -1,0 +1,8 @@
+--- a/src/Makefile.defs
++++ b/src/Makefile.defs
+@@ -25,4 +25,4 @@
+ 
+ CFLAGS   = ${OPT} 
+ CPPFLAGS = ${INCLDIR} ${DEFS}
+-LDFLAGS  = ${LIBDIR} ${LIBS}
++LDFLAGS  = ${LIBDIR} ${LIBS} ${LDOPT}

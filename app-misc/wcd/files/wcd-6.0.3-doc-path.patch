@@ -1,0 +1,15 @@
+Install docs into /usr/share/doc/wcd-${PVR}.
+
+Bug: https://bugs.gentoo.org/802696
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -61,7 +61,7 @@
+ datarootdir     = $(prefix)/share
+ datadir         = $(datarootdir)
+ 
+-docsubdir       = $(PACKAGE)-$(VERSION)
++docsubdir       = $(PACKAGE)-$(PVR)
+ docdir          = $(datarootdir)/doc/$(docsubdir)
+ localedir       = $(datarootdir)/locale
+ sysconfdir      = /etc

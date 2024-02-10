@@ -1,0 +1,12 @@
+index 494ea0d..1ae6ebb 100644
+--- a/dashboard-widgets.el
++++ b/dashboard-widgets.el
+@@ -136,7 +136,7 @@ preserved."
+   :group 'dashboard)
+ 
+ (defconst dashboard-banners-directory
+-  (concat (file-name-directory (locate-library "dashboard")) "banners/")
++  "@SITEETC@/banners/"
+   "Default banner directory.")
+ 
+ (defconst dashboard-banner-official-png

@@ -1,0 +1,9 @@
+index 3ec5810..b2d8d6d 100644
+--- a/src_test/ppx_deriving/dune
++++ b/src_test/ppx_deriving/dune
+@@ -2,4 +2,4 @@
+  (name test_ppx_import)
+  (preprocess
+   (staged_pps ppx_import ppx_deriving.show))
+- (libraries compiler-libs.common oUnit))
++ (libraries compiler-libs.common ounit2))

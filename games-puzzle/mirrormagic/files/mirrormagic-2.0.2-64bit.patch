@@ -1,0 +1,43 @@
+From Debian:
+
+In src/libgame/gadgets.c, check for 64bit when handling
+GDI_TYPE,GDI_STATE in HandleGadgetTags() and use int instead of
+unsigned long.  Should probably really be uint32_t but I'll leave
+that decision to upstream. Thanks Pelle Nilsson (and son).
+64bit check borrowed from bug #496863.  Closes: #498912.
+
+--- a/src/libgame/gadgets.c
++++ b/src/libgame/gadgets.c
+@@ -18,6 +18,12 @@
+ #include "text.h"
+ #include "misc.h"
+ 
++/* check for 64bit */
++#ifdef _LP64
++#ifndef L64
++#define L64 1
++#endif
++#endif
+ 
+ /* values for DrawGadget() */
+ #define DG_UNPRESSED		0
+@@ -301,11 +307,19 @@
+ 	break;
+ 
+       case GDI_TYPE:
++#ifdef L64
++	gi->type = va_arg(ap, int);
++#else
+ 	gi->type = va_arg(ap, unsigned long);
++#endif
+ 	break;
+ 
+       case GDI_STATE:
++#ifdef L64
++	gi->state = va_arg(ap, int);
++#else
+ 	gi->state = va_arg(ap, unsigned long);
++#endif
+ 	break;
+ 
+       case GDI_CHECKED:

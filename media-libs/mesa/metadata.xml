@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
+    <flag name="gles1">Enable GLESv1 support.</flag>
+    <flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
+    <flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
+    <flag name="opencl">Enable the Rusticl Gallium OpenCL state tracker.</flag>
+    <flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
+    <flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+    <flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
+    <flag name="vulkan-overlay">Build vulkan-overlay-layer which displays Frames Per Second and other statistics</flag>
+    <flag name="wayland">Enable support for <pkg>dev-libs/wayland</pkg></flag>
+    <flag name="xa">Enable the XA (X Acceleration) API for Gallium3D.</flag>
+    <flag name="zink">Enable the Zink OpenGL-over-Vulkan Gallium driver</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:mesa3d:mesa</remote-id>
+    <remote-id type="freedesktop-gitlab">mesa/mesa</remote-id>
+  </upstream>
+</pkgmetadata>

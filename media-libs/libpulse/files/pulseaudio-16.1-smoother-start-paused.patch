@@ -1,0 +1,26 @@
+commit 8fe50bbc31e11abf2f30864f1e2dbdaa16d0e1c3
+Author: Georg Chini <georg@chini.tk>
+Date:   Thu Aug 25 08:11:04 2022 +0200
+
+    time-smoother-2: Fix stream time when stream starts paused
+    
+    When a stream is started but has not yet called smoother_2_put(), pa_smoother_2_get()
+    returns the time since the start of the stream even if the stream was started paused.
+    When the stream is started paused, pa_smoother_2_get() should return 0 instead. This
+    patch fixes the problem.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/745>
+
+diff --git a/src/pulsecore/time-smoother_2.c b/src/pulsecore/time-smoother_2.c
+index e14b52f72..ea7ec1b36 100644
+--- a/src/pulsecore/time-smoother_2.c
++++ b/src/pulsecore/time-smoother_2.c
+@@ -295,7 +295,7 @@ pa_usec_t pa_smoother_2_get(pa_smoother_2 *s, pa_usec_t time_stamp) {
+ 
+     /* If the smoother has not started, just return system time since resume */
+     if (!s->start_time) {
+-        if (time_stamp >= s->resume_time)
++        if (time_stamp >= s->resume_time && !s->paused)
+             current_time = time_stamp - s->resume_time;
+         else
+             current_time = 0;

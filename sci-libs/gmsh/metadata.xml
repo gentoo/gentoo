@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<use>
+		<flag name="alglib">Enable alglib support for mesh optimizers</flag>
+		<flag name="cgns">Enables cgns output support</flag>
+		<flag name="eigen">Build matrix manipulation with <pkg>dev-cpp/eigen</pkg></flag>
+		<flag name="gmm">A simple alternative to petsc based on <pkg>sci-mathematics/gmm</pkg></flag>
+		<flag name="metis">Enables metis support</flag>
+		<flag name="med">Enables med support</flag>
+		<flag name="mumps">Enables mumps solver support</flag>
+		<flag name="netgen">Enable 3D Frontal triangulation using netgen lib</flag>
+		<flag name="petsc">Enable <pkg>sci-mathematics/petsc</pkg> support</flag>
+		<flag name="opencascade">Enable OpenCASCADE support</flag>
+		<flag name="shared">Install shared library and headers</flag>
+		<flag name="slepc">Enable <pkg>sci-mathematics/slepc</pkg> support</flag>
+		<flag name="voro">Enable support to <pkg>sci-libs/voro++</pkg> meshing</flag>
+	</use>
+</pkgmetadata>

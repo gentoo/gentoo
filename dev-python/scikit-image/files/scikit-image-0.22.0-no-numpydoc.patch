@@ -1,0 +1,42 @@
+From 9b27f8e802c9513952c8a42450a4459fa357b89c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 26 Jan 2024 20:25:16 +0100
+Subject: [PATCH] Make it possible to run tests without numpydoc
+
+Skip the three tests requiring numpydoc when it is not installed.
+For `skimage/_shared/tests/test_utils.py`, use the existing
+`have_numpydoc` constant.
+For `skimage/measure/tests/test_regionprops.py`, use the standard
+`pytest.importorskip()` function.
+
+This makes it possible to successfully run the test suite when
+`numpydoc` is not installed.  This would be convenient for Gentoo
+since numpydoc is facing neverending test regressions (in its own test
+suite).
+---
+ skimage/measure/tests/test_regionprops.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/skimage/measure/tests/test_regionprops.py b/skimage/measure/tests/test_regionprops.py
+index 01a59dfbf..0b74d30a4 100644
+--- a/skimage/measure/tests/test_regionprops.py
++++ b/skimage/measure/tests/test_regionprops.py
+@@ -4,7 +4,6 @@ import re
+ import numpy as np
+ import pytest
+ import scipy.ndimage as ndi
+-import numpydoc
+ from numpy.testing import (assert_allclose, assert_almost_equal,
+                            assert_array_almost_equal, assert_array_equal,
+                            assert_equal)
+@@ -1261,6 +1260,7 @@ def test_column_dtypes_correct():
+ 
+ 
+ def test_all_documented_items_in_col_dtypes():
++    numpydoc = pytest.importorskip("numpydoc")
+     docstring = numpydoc.docscrape.FunctionDoc(regionprops)
+     notes_lines = docstring['Notes']
+     property_lines = filter(lambda line: line.startswith('**'), notes_lines)
+-- 
+2.43.0
+

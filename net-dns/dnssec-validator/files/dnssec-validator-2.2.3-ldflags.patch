@@ -1,0 +1,33 @@
+--- a/libsres/Makefile.in	2018-08-30 00:25:30.000000000 +0200
++++ b/libsres/Makefile.in	2018-12-09 02:32:05.000000000 +0100
+@@ -63,7 +63,7 @@
+ 	$(RM) -rf $(LT_DIR)
+ 
+ $(LIBRES): $(LOBJ)
+-	$(LIBTOOLLD) -o $@ $(LOBJ) 
++	$(LIBTOOLLD) -o $@ $(LOBJ) $(LDFLAGS)
+ 
+ install:
+ 	$(MKPATH) $(DESTDIR)$(libdir)
+--- a/libval_shim/Makefile.in	2018-08-30 00:25:30.000000000 +0200
++++ b/libval_shim/Makefile.in	2018-12-09 02:34:56.000000000 +0100
+@@ -21,7 +21,7 @@
+ 	$(RM) -rf $(LT_DIR)
+ 
+ $(LIBVAL_SHIM): $(LOBJ)
+-	$(LIBTOOLLD) -o $@ $(LOBJ) $(EXTRA_LIBS)
++	$(LIBTOOLLD) -o $@ $(LOBJ) $(EXTRA_LIBS) $(LDFLAGS)
+ 
+ install:
+ 	$(MKPATH) $(DESTDIR)$(libdir)
+--- a/libval/Makefile.in	2018-08-30 00:25:30.000000000 +0200
++++ b/libval/Makefile.in	2018-12-09 02:37:32.000000000 +0100
+@@ -65,7 +65,7 @@
+ 	$(RM) -rf $(LT_DIR)
+ 
+ $(LIBVAL): $(LOBJ)
+-	$(LIBTOOLLD) -o $@ $(LOBJ) $(LSRES)
++	$(LIBTOOLLD) -o $@ $(LOBJ) $(LSRES) $(LDFLAGS)
+ 
+ install:
+ 	$(MKPATH) $(DESTDIR)$(libdir)

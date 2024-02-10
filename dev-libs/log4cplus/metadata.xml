@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="explicit-initialization">Require explicit initialization</flag>
+		<flag name="iconv">Use inconv for wchar_t &lt;-&gt; char conversions. See also log4cplus's unicode.txt documentation</flag>
+		<flag name="server">Build the logging server</flag>
+	</use>
+	<slots>
+		<subslots>soname major version number</subslots>
+	</slots>
+	<upstream>
+		<bugs-to>https://github.com/log4cplus/log4cplus/issues</bugs-to>
+		<remote-id type="github">log4cplus/log4cplus</remote-id>
+		<remote-id type="sourceforge">log4cplus</remote-id>
+	</upstream>
+</pkgmetadata>

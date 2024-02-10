@@ -1,0 +1,170 @@
+#!/bin/sh
+
+DFU_MODE=0
+CPLD=0
+
+get_dfu() {
+  if [ -r "/usr/share/hackrf/hackrf_one_usb.dfu" ]; then
+    ram_firmware="/usr/share/hackrf/hackrf_one_usb.dfu"
+  else
+    printf "Unable to find hackrf_one_usb.dfu in the search path\n"
+    exit 1
+  fi
+  export ram_firmware
+}
+
+get_cpld() {
+  if [ -r "/usr/share/hackrf/hackrf_cpld_default.xsvf" ]; then
+    cpld="/usr/share/hackrf/hackrf_cpld_default.xsvf"
+  else
+    printf "Unable to find default.xsvf in the search path\n"
+    exit 1
+  fi
+  export cpld
+}
+
+usage() {
+  printf "hackrf_easy_flash list\n"
+  printf "hackrf_easy_flash upgrade\n"
+}
+
+if [ -z "${1}" ]; then
+  usage
+  exit 0
+fi
+
+list_firmware() {
+  if [ ${DFU_MODE} = 1 ]; then
+    if [ -z "${ram_firmware}" ]; then
+      get_dfu
+    fi
+    printf "Best DFU found: ${ram_firmware}\n"
+  fi
+  printf "Available firmware options:\n"
+  if [ -r "/usr/share/hackrf/hackrf_one_usb.bin" ]; then
+    printf "hackrf (default)\n"
+  fi
+  if [ -r "/usr/share/hackrf/portapack-h1-firmware.bin" ]; then
+    printf "portapack (--portapack)\n"
+  fi
+  if [ -r "/usr/share/hackrf/portapack-h1-havoc.bin" ]; then
+    printf "portapack-havoc (--havoc)\n"
+  fi
+  if [ -r "/usr/share/hackrf/portapack-h1_h2-mayhem.bin" ]; then
+    printf "portapack-mayhem (--mayhem)\n"
+  fi
+}
+
+#parse args
+while [ -n "${1}" ]; do
+  case $1 in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    list|--list)
+      list_firmware
+      exit 0
+      ;;
+    update|--update|upgrade|--upgrade|hackrf|--hackrf)
+      firmware="/usr/share/hackrf/hackrf_one_usb.bin"
+      TARGET=hackrf
+      shift
+      ;;
+    portapack|--portapack)
+      firmware="/usr/share/hackrf/portapack-h1-firmware.bin"
+      TARGET=portapack
+      shift
+      ;;
+    havoc|--havoc)
+      firmware="/usr/share/hackrf/portapack-h1-havoc.bin"
+      TARGET=havoc
+      shift
+      ;;
+    mayhem|--mayhem)
+      firmware="/usr/share/hackrf/portapack-h1_h2-mayhem.bin"
+      TARGET=mayhem
+      shift
+      ;;
+    cpld|--cpld)
+      CPLD=1
+      get_cpld
+      shift
+      ;;
+    dfu|--dfu)
+      DFU_MODE=1
+      get_dfu
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+if [ -z "${firmware}" ]; then
+    firmware="/usr/share/hackrf/hackrf_one_usb.bin"
+    TARGET="hackrf"
+fi
+
+if [ ! -r "${firmware}" ]; then
+  printf "Unable to find or read ${firmware}\n"
+  printf "Please ensure the requested firmware is installed and readable\n"
+  exit 1
+fi
+
+if [ "${CPLD}" = 1 ] && [ "${TARGET}" != "hackrf" ]; then
+  printf "To update the CPLD you must use the stock hackrf firmware or do this update manually\n"
+  printf "Try \"$(basename $0) --cpld && $(basename $0) ${TARGET}\"\n"
+  exit 1
+fi
+
+printf "This tool is provided by Gentoo, please report bugs on https://bugs.gentoo.org/\n\n"
+if [ ${DFU_MODE} = 1 ]; then
+  printf "Preparing to reset hackrf with DFU ${ram_firmware}\n"
+  printf "Then flashing with ${firmware}\n\n"
+  printf "Hold down the HackRF's DFU button (the button closest to the antenna jack)\n"
+  printf "then plug the HackRF into a USB port on your computer.\n"
+  printf "After the HackRF is plugged in, you may release the DFU button.\n"
+  printf "Press any key to continue or ^c to abort\n"
+  read
+  if ! dfu-util --device 1fc9:000c --download "${ram_firmware}" --reset; then
+    printf "dfu-util reported failure, quitting\n"
+    exit 1
+  fi
+  sleep 2s
+else
+  if hackrf_info | grep -q 'No HackRF boards found.'; then
+    printf "No hackrf found, please ensure you are in hackrf mode or try --dfu\n"
+    exit 1
+  fi
+fi
+if hackrf_spiflash -w "${firmware}"; then
+  sleep 3s
+  hackrf_spiflash -R
+  sleep 3s
+else
+  printf "hackrf_spiflash reported failure, quitting\n"
+  exit 1
+fi
+if [ "${CPLD}" = 1 ]; then
+  #printf "To update the cpld, please reset your hackrf into it's new firmware before updating the cpld\n"
+  #printf "Please reset your hackrf by pressing the button furthest from the antenna or power cycling it.\n"
+  #printf "Press any key to continue or ^c to abort\n"
+  #read
+  if hackrf_cpldjtag -x "${cpld}"; then
+    sleep 3s
+    hackrf_spiflash -R
+  else
+    printf "hackrf_cpldjtag reported failure\n"
+    exit 1
+  fi
+fi
+if [ "${TARGET}" = "hackrf" ]; then
+  hackrf_info
+fi
+printf "If you saw no errors, you are up to date with the requested firmware\n"

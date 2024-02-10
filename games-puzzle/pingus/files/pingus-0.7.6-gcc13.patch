@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/899574
+--- a/src/engine/display/font_description.hpp
++++ b/src/engine/display/font_description.hpp
+@@ -19,2 +19,3 @@
+ 
++#include <cstdint>
+ #include <vector>
+--- a/src/util/pathname.hpp
++++ b/src/util/pathname.hpp
+@@ -19,2 +19,3 @@
+ 
++#include <cstdint>
+ #include <string>

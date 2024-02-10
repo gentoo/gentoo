@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/vrothberg/vgrep/issues</bugs-to>
+		<remote-id type="github">vrothberg/vgrep</remote-id>
+	</upstream>
+</pkgmetadata>

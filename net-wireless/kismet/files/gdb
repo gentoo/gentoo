@@ -1,0 +1,14 @@
+set pagination off
+handle SIGPIPE nostop noprint pass
+handle SIGINT nostop noprint pass
+set logging file kismet-gdb.txt
+set logging on
+
+run --debug --no-ncurses
+
+catch throw
+  bt
+  info threads
+  thread apply all bt full
+  quit
+end

@@ -1,0 +1,52 @@
+From: Andreas Henriksson <andreas@fatal.se>
+Subject: Preserve storage files it SIGINT (Ctrl+C) is sent
+
+--- sitecopy-0.16.3/src/sitestore.c	2006-02-04 11:18:08.000000000 +0100
++++ sitecopy-0.16.3-pending/src/sitestore.c	2008-06-08 21:56:23.000000000 +0200
+@@ -60,17 +60,42 @@
+ /* Opens the storage file for writing */
+ FILE *site_open_storage_file(struct site *site) 
+ {
++    char filebuf[PATH_MAX];
++
++    /* open a temporary "pending" file, to not corrupt the site file in case
++     * the program aborts while we are updating it.
++     * The site_close_storage_file() function will rename it to it's proper
++     * name.
++     * FIXME: something should clean up old *.pending files,
++     * which never got properly closed.
++     */
++    snprintf(filebuf, sizeof(filebuf), "%s.pending", site->infofile);
++
+     if (site->storage_file == NULL) {
+-	site->storage_file = fopen(site->infofile, "w" FOPEN_BINARY_FLAGS);
++	site->storage_file = fopen(filebuf, "w" FOPEN_BINARY_FLAGS);
+     }
+     return site->storage_file;
+ }
+ 
+ int site_close_storage_file(struct site *site)
+ {
+-    int ret = fclose(site->storage_file);
++    char filebuf[PATH_MAX];
++    int err;
++
++    /* close filehandle */
++    err = fclose(site->storage_file);
+     site->storage_file = NULL;
+-    return ret;
++    if (err) {
++      perror("fclose");
++      return err;
++    }
++
++    /* rename pending file to real filename (overwriting existing file). */
++    snprintf(filebuf, sizeof(filebuf), "%s.pending", site->infofile);
++    err = rename(filebuf, site->infofile);
++    if (err)
++	    perror("rename");
++    return err;
+ }
+ 
+ /* Return escaped form of 'filename'; any XML-unsafe characters are
+

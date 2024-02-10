@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/906920
+https://gitlab.exherbo.org/exherbo/arbor/-/commit/7b517ba0068adc471fe7b2ed8cfbb191a197ca17
+
+From 6d713aa98b36ee8219294515142c0225fbd09dfc Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 25 May 2023 10:52:29 +0200
+Subject: [PATCH] Apply upstream fix for spdlog
+
+Fixes the build with musl >= 1.2.4, see
+https://github.com/gabime/spdlog/commit/287a00d364990edbb621fe5e392aeb550135fb96
+for details.
+--- a/deps/spdlog/include/spdlog/details/os-inl.h
++++ b/deps/spdlog/include/spdlog/details/os-inl.h
+@@ -236,8 +236,8 @@ SPDLOG_INLINE size_t filesize(FILE *f)
+ #    else
+     int fd = ::fileno(f);
+ #    endif
+-// 64 bits(but not in osx or cygwin, where fstat64 is deprecated)
+-#    if (defined(__linux__) || defined(__sun) || defined(_AIX)) && (defined(__LP64__) || defined(_LP64))
++// 64 bits(but not in osx, linux/musl or cygwin, where fstat64 is deprecated)
++#    if ((defined(__linux__) && defined(__GLIBC__)) || defined(__sun) || defined(_AIX)) && (defined(__LP64__) || defined(_LP64))
+     struct stat64 st;
+     if (::fstat64(fd, &st) == 0)
+     {
+-- 
+2.41.0.rc2

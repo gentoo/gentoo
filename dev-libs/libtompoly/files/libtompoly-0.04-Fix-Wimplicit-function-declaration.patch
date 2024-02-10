@@ -1,0 +1,127 @@
+https://github.com/libtom/libtompoly/commit/2803e69dcc7cac9b470360c984b62198a3774882
+
+From 2803e69dcc7cac9b470360c984b62198a3774882 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 19 Oct 2022 02:21:00 +0100
+Subject: [PATCH] Fix -Wimplicit-function-declaration
+
+Clang 16 will make -Wimplicit-function-declaration error by default.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], gentoo-dev@ [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://archives.gentoo.org/gentoo-dev/message/dd9f2d3082b8b6f8dfbccb0639e6e240
+[3] hosted at lists.linux.dev.
+
+Bug: https://bugs.gentoo.org/875527
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/pb_add.c
++++ b/pb_add.c
+@@ -17,7 +17,7 @@ int pb_add(pb_poly *a, pb_poly *b, pb_poly *c)
+    pb_poly *tmp;
+ 
+    /* grow c to be the max size */
+-   y = MAX(a->used, b->used);
++   y = PB_MAX(a->used, b->used);
+    if (c->alloc < y) {
+       if ((err = pb_grow(c, y)) != MP_OKAY) {
+          return err;
+@@ -28,7 +28,7 @@ int pb_add(pb_poly *a, pb_poly *b, pb_poly *c)
+    characteristic = mp_iszero(&(c->characteristic));
+ 
+    /* add the terms */
+-   z = MIN(a->used, b->used);
++   z = PB_MIN(a->used, b->used);
+    for (x = 0; x < z; x++) {
+        if ((err = mp_add(&(a->terms[x]), &(b->terms[x]), &(c->terms[x]))) != MP_OKAY) {
+           return err;
+--- a/pb_clear.c
++++ b/pb_clear.c
+@@ -10,6 +10,7 @@
+  * Tom St Denis, tomstdenis@iahu.ca, http://poly.libtomcrypt.org
+  */
+ #include <tompoly.h>
++#include <stdlib.h>
+ 
+ void pb_clear(pb_poly *a)
+ {
+--- a/pb_grow.c
++++ b/pb_grow.c
+@@ -10,6 +10,8 @@
+  * Tom St Denis, tomstdenis@iahu.ca, http://poly.libtomcrypt.org
+  */
+ #include <tompoly.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ int pb_grow(pb_poly *a, int size)
+ {
+--- a/pb_init.c
++++ b/pb_init.c
+@@ -10,6 +10,7 @@
+  * Tom St Denis, tomstdenis@iahu.ca, http://poly.libtomcrypt.org
+  */
+ #include <tompoly.h>
++#include <stdlib.h>
+ 
+ /* initialize a */
+ int pb_init(pb_poly *a, mp_int *characteristic)
+--- a/pb_init_size.c
++++ b/pb_init_size.c
+@@ -10,6 +10,7 @@
+  * Tom St Denis, tomstdenis@iahu.ca, http://poly.libtomcrypt.org
+  */
+ #include <tompoly.h>
++#include <stdlib.h>
+ 
+ /* initialize a */
+ int pb_init_size(pb_poly *a, mp_int *characteristic, int size)
+--- a/pb_shrink.c
++++ b/pb_shrink.c
+@@ -10,6 +10,7 @@
+  * Tom St Denis, tomstdenis@iahu.ca, http://poly.libtomcrypt.org
+  */
+ #include <tompoly.h>
++#include <stdlib.h>
+ 
+ int pb_shrink(pb_poly *a)
+ {
+--- a/pb_sub.c
++++ b/pb_sub.c
+@@ -17,7 +17,7 @@ int pb_sub(pb_poly *a, pb_poly *b, pb_poly *c)
+    pb_poly *tmp;
+ 
+    /* grow c to be the max size */
+-   y = MAX(a->used, b->used);
++   y = PB_MAX(a->used, b->used);
+    if (c->alloc < y) {
+       if ((err = pb_grow(c, y)) != MP_OKAY) {
+          return err;
+@@ -28,7 +28,7 @@ int pb_sub(pb_poly *a, pb_poly *b, pb_poly *c)
+    characteristic = mp_iszero(&(c->characteristic));
+ 
+    /* sub the terms */
+-   z = MIN(a->used, b->used);
++   z = PB_MIN(a->used, b->used);
+    for (x = 0; x < z; x++) {
+        if ((err = mp_sub(&(a->terms[x]), &(b->terms[x]), &(c->terms[x]))) != MP_OKAY) {
+           return err;
+--- a/tompoly.h
++++ b/tompoly.h
+@@ -112,4 +112,13 @@ int pb_rawsize(pb_poly *a);
+ int pb_toraw(pb_poly *a, unsigned char *dst);
+ int pb_readraw(pb_poly *a, unsigned char *buf, int len);
+ 
++/* What follows should be in a private header, but it's fine for now like that. */
++
++#ifndef PB_MIN
++#define PB_MIN(x, y) (((x) < (y)) ? (x) : (y))
++#endif
++#ifndef PB_MAX
++#define PB_MAX(x, y) (((x) > (y)) ? (x) : (y))
++#endif
++
+ #endif
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">keep</remote-id>
+		<remote-id type="github">orkohunter/keep</remote-id>
+	</upstream>
+</pkgmetadata>

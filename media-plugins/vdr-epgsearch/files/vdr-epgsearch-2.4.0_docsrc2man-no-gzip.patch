@@ -1,0 +1,12 @@
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net> ( 2020 Jan 03 )
+--- vdr-plugin-epgsearch-2.4.0/docsrc2man.sh.orig	2018-04-16 21:49:48.000000000 +0200
++++ vdr-plugin-epgsearch-2.4.0/docsrc2man.sh	2019-03-14 12:46:58.515844269 +0100
+@@ -55,7 +55,7 @@
+ function man_gz () {
+ 	if [ $PRINT_DEPS -eq 0 ]; then
+ 		rm "$DOCSRC"/$1/*~ 2>/dev/null
+-		gzip -f man/$1/*.[0-9]
++# do nothing // gzip -f man/$1/*.[0-9]
+ 	fi
+ }
+ 

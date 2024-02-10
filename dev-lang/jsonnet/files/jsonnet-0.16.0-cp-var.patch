@@ -1,0 +1,31 @@
+From 47dfe49281d083951aa0e420686c3f683ffd6352 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sun, 25 Oct 2020 18:12:05 -0700
+Subject: [PATCH] use CP var
+
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ffcd666..8eb31aa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -128,11 +128,11 @@ default: jsonnet jsonnetfmt
+ 
+ install: bins libs
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+-	cp $(BINS) $(DESTDIR)$(PREFIX)/bin/
++	$(CP) $(BINS) $(DESTDIR)$(PREFIX)/bin/
+ 	mkdir -p $(DESTDIR)$(PREFIX)/$(LIBDIR)
+-	cp $(LIBS) $(DESTDIR)$(PREFIX)/$(LIBDIR)/
++	$(CP) $(LIBS) $(DESTDIR)$(PREFIX)/$(LIBDIR)/
+ 	mkdir -p $(DESTDIR)$(PREFIX)/include
+-	cp $(INCS) $(DESTDIR)$(PREFIX)/include/
++	$(CP) $(INCS) $(DESTDIR)$(PREFIX)/include/
+ 
+ all: $(ALL)
+ 
+-- 
+2.29.1
+

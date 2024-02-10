@@ -1,0 +1,34 @@
+https://github.com/protocolbuffers/protobuf/issues/8460
+--- a/src/google/protobuf/any_test.cc
++++ b/src/google/protobuf/any_test.cc
+@@ -63,6 +63,8 @@ TEST(AnyTest, TestPackAndUnpack) {
+ }
+ 
+ TEST(AnyTest, TestPackFromSerializationExceedsSizeLimit) {
++  // Filter out this test on 32-bit architectures.
++  if(sizeof(void*) < 8) return;
+   protobuf_unittest::TestAny submessage;
+   submessage.mutable_text()->resize(INT_MAX, 'a');
+   protobuf_unittest::TestAny message;
+
+https://github.com/protocolbuffers/protobuf/issues/8459
+--- a/src/google/protobuf/arena_unittest.cc
++++ b/src/google/protobuf/arena_unittest.cc
+@@ -1373,6 +1373,8 @@ TEST(ArenaTest, MessageLiteOnArena) {
+ uint64_t Align8(uint64_t n) { return (n + 7) & -8; }
+ 
+ TEST(ArenaTest, SpaceAllocated_and_Used) {
++  // Filter out this test on 32-bit architectures.
++  if(sizeof(void*) < 8) return;
+   Arena arena_1;
+   EXPECT_EQ(0, arena_1.SpaceAllocated());
+   EXPECT_EQ(0, arena_1.SpaceUsed());
+@@ -1453,6 +1455,8 @@ TEST(ArenaTest, Alignment) {
+ }
+ 
+ TEST(ArenaTest, BlockSizeSmallerThanAllocation) {
++  // Filter out this test on 32-bit architectures.
++  if(sizeof(void*) < 8) return;
+   for (size_t i = 0; i <= 8; ++i) {
+     ArenaOptions opt;
+     opt.start_block_size = opt.max_block_size = i;

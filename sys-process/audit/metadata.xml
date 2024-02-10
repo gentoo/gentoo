@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="gssapi">Enable GSSAPI support</flag>
+		<flag name="io-uring">Enable support for io-uring. Doesn't need the library but needs at least kernel 5.1.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">linux-audit/audit-userspace</remote-id>
+		<remote-id type="cpe">cpe:/a:linux:audit</remote-id>
+	</upstream>
+</pkgmetadata>

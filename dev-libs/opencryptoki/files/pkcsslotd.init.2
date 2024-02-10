@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+
+	# Optional services (see ebuild)
+	use tcsd
+}
+
+start() {
+	# detect available tokens and set up
+	# /var/lib/opencryptoki/pk_config_data
+	ebegin "Preparing pkcs configuration"
+	/usr/sbin/pkcs11_startup
+
+	ebegin "Starting pkcsslotd"
+	start-stop-daemon --start --exec /usr/sbin/pkcsslotd --pidfile /var/run/pkcsslotd.pid
+	eend $? "Check your logs to see why startup failed"
+}
+
+stop() {
+	ebegin "Stopping pkcsslotd"
+	start-stop-daemon --stop --exec /usr/sbin/pkcsslotd --pidfile /var/run/pkcsslotd.pid
+	eend $?
+}

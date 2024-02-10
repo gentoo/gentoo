@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@
+ EDTOB = editor
+ EDWOB = editworld
+ 
+-LINLIBS=$(LDLIBS) -lGL
++LINLIBS=$(LDLIBS) -lGL -ldl
+ LINEXE = ../lin/moleinvasion
+ LINEDT = ../lin/editor
+ LINEDW = ../lin/editworld

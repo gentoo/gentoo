@@ -1,0 +1,13 @@
+--- lazarus/ide/include/unix/lazbaseconf.inc
++++ lazarus/ide/include/unix/lazbaseconf.inc
+@@ -24,8 +24,9 @@
+ }
+ 
+ const
+-  DefaultFPCSrcDirs: array[1..15] of string = (
++  DefaultFPCSrcDirs: array[1..16] of string = (
+     // search first for sources with right version
++    '/usr/lib/fpc/$(FPCVer)/source',
+     '/usr/share/fpcsrc/$(FPCVer)',
+     // then search for global paths
+     '/usr/share/fpcsrc',

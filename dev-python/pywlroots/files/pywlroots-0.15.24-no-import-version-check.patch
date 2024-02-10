@@ -1,0 +1,13 @@
+https://github.com/flacjacket/gentoo-overlay/blob/master/dev-python/pywlroots/files/pywlroots-no_version_check.patch
+
+This causes sandbox failures in e.g. qtile on importing pywlroots.
+--- a/wlroots/ffi_build.py
++++ b/wlroots/ffi_build.py
+@@ -44,6 +44,7 @@ def load_wlroots_version():
+ 
+ def check_version():
+     """Check for wlroots version compatibility"""
++    return
+     # When importing a system-level installed package, we may not be able to
+     # create neighboring files, which is done by the `.verify` step.  If this
+     # error is hit, we check with the compiled `wlroots.lib`.

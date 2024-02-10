@@ -1,0 +1,7 @@
+Before CacheFiles can be used, a directory for local storage
+must be created.  The default configuration of /etc/cachefilesd.conf
+uses /var/cache/fscache.  The filesystem mounted there must support
+extended attributes (mount -o user_xattr).
+
+Once that is taken care of, start the daemon, add -o ...,fsc
+to the mount options of your network mounts, and let it fly!

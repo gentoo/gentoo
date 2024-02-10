@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/tpop3d/tpop3d.conf ] ; then
+		eerror "You need an /etc/tpop3d/tpop3d.conf file to run tpop3d"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting tpop3d"
+	start-stop-daemon --start --quiet --background \
+		--exec /usr/sbin/tpop3d -- -f /etc/tpop3d/tpop3d.conf \
+			-p /var/run/tpop3d.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tpop3d"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/tpop3d
+	eend $?
+}

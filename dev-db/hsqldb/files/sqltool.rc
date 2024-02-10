@@ -1,0 +1,18 @@
+# This is a sample SqlTool configuration file, a.k.a. rc file.
+
+# This is for a hsqldb Server running with default settings on your local
+# computer (and for which you have not changed the password for "sa").
+urlid localhost
+url jdbc:hsqldb:hsql://localhost
+username sa
+password 
+
+# Each urlid section in this file corresponds to one of the
+# server.urlid.X entries in the 'server.properties' file.
+# This is required by the hsqldb init script.
+
+# An example of additional database.
+#urlid newdb
+#url jdbc:hsqldb:hsql://localhost/newdb
+#username sa
+#password 

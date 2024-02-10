@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/775878
+
+commit efbee1f631981bd454051d20796f1cd52fe16f00
+Author: orbea <orbea@riseup.net>
+Date:   Fri Mar 19 09:01:22 2021 -0700
+
+    build: Fix the pgsql linker path.
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 8e89af8..7504d63 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -191,7 +191,7 @@ if test "$ac_pgsql" = "yes"; then
+ 		PGSQL_INCLUDE=-I$ac_pgsql_incdir
+ 	fi
+ 	if test "$ac_pgsql_libdir" = "no"; then
+-		PGSQL_LDFLAGS=`pg_config --libdir`
++		PGSQL_LDFLAGS=-L`pg_config --libdir`
+ 	else
+ 		PGSQL_LDFLAGS=-L$ac_pgsql_libdir
+ 	fi

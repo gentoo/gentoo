@@ -1,0 +1,20 @@
+--- a/gnushogi/cursesdsp.c
++++ b/gnushogi/cursesdsp.c
+@@ -71,7 +71,6 @@
+ 
+ unsigned short MV[MAXDEPTH];
+ int MSCORE;
+-char *DRAW;
+ 
+ /* Forward declarations. */
+ /* FIXME: change this name, puh-leeze! */
+--- a/gnushogi/rawdsp.c
++++ b/gnushogi/rawdsp.c
+@@ -48,7 +48,6 @@
+ int MSCORE;
+ 
+ int mycnt1, mycnt2;
+-char *DRAW;
+ extern char *InPtr;
+ extern short pscore[];
+ 

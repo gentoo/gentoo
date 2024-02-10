@@ -1,0 +1,25 @@
+jsonschema is only used at install time to validate a file that release
+tarballs already include, treat running it as a late part of tests.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -350,6 +350,9 @@
+ endif()
+ 
+ # we need jsonschema to check noiseprofiles.json
++# In case of Git clones this file is generated at build time, for releases
++# it is included in the tarball.
++if (WANT_JSON_VALIDATION)
+ find_program(jsonschema_BIN jsonschema)
+ if(${jsonschema_BIN} STREQUAL "jsonschema_BIN-NOTFOUND")
+   message(STATUS "Missing jsonschema, problems in noiseprofiles.json might go unnoticed")
+@@ -358,6 +361,9 @@
+   message(STATUS "Found jsonschema")
+   set(VALIDATE_JSON 1)
+ endif(${jsonschema_BIN} STREQUAL "jsonschema_BIN-NOTFOUND")
++else()
++  set(VALIDATE_JSON 0)
++endif()
+ 
+ # we need an XSLT interpreter to generate preferences_gen.h and darktablerc
+ find_program(Xsltproc_BIN xsltproc)

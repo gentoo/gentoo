@@ -1,0 +1,29 @@
+--- a/OgreMain/src/OgreConfigFile.cpp	2018-07-27 07:52:31.121337386 +0200
++++ b/OgreMain/src/OgreConfigFile.cpp	2018-07-27 07:59:51.301317661 +0200
+@@ -62,8 +62,25 @@
+     //-----------------------------------------------------------------------
+     void ConfigFile::load(const String& filename, const String& separators, bool trimWhitespace)
+     {
+-        loadDirect(filename, separators, trimWhitespace);
++        // Try automatic loading first
++        try {
++            loadDirect(filename, separators, trimWhitespace);
++        } catch (Exception &e) {
++            // Try /etc/OGRE/<file> next
++            try {
++                loadDirect("/etc/OGRE/" + filename, separators, trimWhitespace);
++                return;
++            } catch (...) { /* was just a test */ }
++            // Try /usr/share/OGRE/<file> last
++            try {
++                loadDirect("/usr/share/OGRE/" + filename, separators, trimWhitespace);
++                return;
++            } catch (...) { /* was just a test */ }
++            /* dammit... */
++            throw e;
++        }
+     }
++
+     //-----------------------------------------------------------------------
+     void ConfigFile::load(const String& filename, const String& resourceGroup, 
+         const String& separators, bool trimWhitespace)

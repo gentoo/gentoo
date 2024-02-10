@@ -1,0 +1,32 @@
+Gentoo installs sysctl in /usr/sbin
+
+https://bugs.gentoo.org/907688
+
+--- a/systemd/60-nfs.rules
++++ b/systemd/60-nfs.rules
+@@ -2,20 +2,20 @@
+ 
+ # sunrpc module supports "sunrpc.*" sysctls
+ ACTION=="add", SUBSYSTEM=="module", KERNEL=="sunrpc", \
+-  RUN+="/sbin/sysctl -q --pattern ^sunrpc --system"
++  RUN+="/usr/sbin/sysctl -q --pattern ^sunrpc --system"
+ 
+ # rpcrdma module supports sunrpc.svc_rdma.*
+ ACTION=="add", SUBSYSTEM=="module", KERNEL=="rpcrdma", \
+-  RUN+="/sbin/sysctl -q --pattern ^sunrpc.svc_rdma --system"
++  RUN+="/usr/sbin/sysctl -q --pattern ^sunrpc.svc_rdma --system"
+ 
+ # lockd module supports "fs.nfs.nlm*" and "fs.nfs.nsm*" sysctls
+ ACTION=="add", SUBSYSTEM=="module", KERNEL=="lockd", \
+-  RUN+="/sbin/sysctl -q --pattern ^fs.nfs.n[sl]m --system"
++  RUN+="/usr/sbin/sysctl -q --pattern ^fs.nfs.n[sl]m --system"
+ 
+ # nfsv4 module supports "fs.nfs.*" sysctls (nfs_callback_tcpport and idmap_cache_timeout)
+ ACTION=="add", SUBSYSTEM=="module", KERNEL=="nfsv4", \
+-  RUN+="/sbin/sysctl -q --pattern ^fs.nfs.(nfs_callback_tcpport|idmap_cache_timeout) --system"
++  RUN+="/usr/sbin/sysctl -q --pattern ^fs.nfs.(nfs_callback_tcpport|idmap_cache_timeout) --system"
+ 
+ # nfs module supports "fs.nfs.*" sysctls
+ ACTION=="add", SUBSYSTEM=="module", KERNEL=="nfs", \
+-  RUN+="/sbin/sysctl -q --pattern ^fs.nfs --system"
++  RUN+="/usr/sbin/sysctl -q --pattern ^fs.nfs --system"

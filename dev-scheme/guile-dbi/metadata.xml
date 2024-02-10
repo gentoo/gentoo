@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    guile-dbi is a library for Guile that provides a convenient interface to
+    SQL databases. Database programming with guile-dbi is generic in that the
+    same programming interface is presented regardless of which database system
+    is used.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/opencog/guile-dbi/issues/</bugs-to>
+    <remote-id type="github">opencog/guile-dbi</remote-id>
+  </upstream>
+</pkgmetadata>

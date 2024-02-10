@@ -1,0 +1,49 @@
+From 39872d8ff354c40d881f416e3b8b6df911379d37 Mon Sep 17 00:00:00 2001
+From: "W. Trevor King" <wking@tremily.us>
+Date: Sun, 23 Aug 2015 12:05:35 -0700
+Subject: [PATCH 1/7] Use GMutex instead of GStaticMutex
+
+The static version was deprecated in GLib 2.32 [1], which was released
+on 2012-03-24 [2].  The difference between the two was that before
+2.32, GMutex could not be statically allocated.  Since 2.32, GMutex
+can be statically allocated, so there's no reason to use GStaticMutex
+anymore.
+
+[1]: https://developer.gnome.org/glib/unstable/glib-Deprecated-Thread-APIs.html#GStaticMutex
+[2]: https://git.gnome.org/browse/glib/tag/?h=glib-2-32&id=2.32.0
+---
+ mtpfs.c | 4 ++--
+ mtpfs.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/mtpfs.c b/mtpfs.c
+index 553d282..286cd24 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -28,8 +28,8 @@ static void dump_mtp_error()
+ #define dump_mtp_error()
+ #endif
+ 
+-#define enter_lock(a...)       do { DBG("lock"); DBG(a); g_static_mutex_lock(&device_lock); } while(0)
+-#define return_unlock(a)       do { DBG("return unlock"); g_static_mutex_unlock(&device_lock); return a; } while(0)
++#define enter_lock(a...)       do { DBG("lock"); DBG(a); g_mutex_lock(&device_lock); } while(0)
++#define return_unlock(a)       do { DBG("return unlock"); g_mutex_unlock(&device_lock); return a; } while(0)
+ 
+ void
+ free_files(LIBMTP_file_t *filelist)
+diff --git a/mtpfs.h b/mtpfs.h
+index 789eccb..f812ea6 100644
+--- a/mtpfs.h
++++ b/mtpfs.h
+@@ -73,7 +73,7 @@ static GSList *lostfiles = NULL;
+ static GSList *myfiles = NULL;
+ static LIBMTP_playlist_t *playlists = NULL;
+ static gboolean playlists_changed = FALSE;
+-static GStaticMutex device_lock = G_STATIC_MUTEX_INIT;
++static GMutex device_lock = G_STATIC_MUTEX_INIT;
+ 
+ 
+ #endif /* _MTPFS_H_ */
+-- 
+2.5.3
+

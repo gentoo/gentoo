@@ -1,0 +1,209 @@
+From 09e34bcb43b3c0fb3bf139f218ebc75e9e9f9a39 Mon Sep 17 00:00:00 2001
+Message-Id: <09e34bcb43b3c0fb3bf139f218ebc75e9e9f9a39.1683631803.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Wed, 2 Mar 2022 10:01:04 +0100
+Subject: [PATCH] libvirt-8.2.0-do-not-use-sysconfig.patch
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/interface/virtinterfaced.service.in | 1 -
+ src/libxl/virtxend.service.in           | 1 -
+ src/locking/virtlockd.service.in        | 1 -
+ src/logging/virtlogd.service.in         | 1 -
+ src/lxc/virtlxcd.service.in             | 1 -
+ src/network/virtnetworkd.service.in     | 1 -
+ src/node_device/virtnodedevd.service.in | 1 -
+ src/nwfilter/virtnwfilterd.service.in   | 1 -
+ src/qemu/virtqemud.service.in           | 1 -
+ src/remote/libvirtd.service.in          | 1 -
+ src/remote/virtproxyd.service.in        | 1 -
+ src/secret/virtsecretd.service.in       | 1 -
+ src/storage/virtstoraged.service.in     | 1 -
+ src/vbox/virtvboxd.service.in           | 1 -
+ tools/libvirt-guests.service.in         | 2 +-
+ 15 files changed, 1 insertion(+), 15 deletions(-)
+
+diff --git a/src/interface/virtinterfaced.service.in b/src/interface/virtinterfaced.service.in
+index 1be3ab32dc..090b198ac7 100644
+--- a/src/interface/virtinterfaced.service.in
++++ b/src/interface/virtinterfaced.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTINTERFACED_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtinterfaced
+ ExecStart=@sbindir@/virtinterfaced $VIRTINTERFACED_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/libxl/virtxend.service.in b/src/libxl/virtxend.service.in
+index abb1972777..dbbc2ab5b7 100644
+--- a/src/libxl/virtxend.service.in
++++ b/src/libxl/virtxend.service.in
+@@ -19,7 +19,6 @@ ConditionPathExists=/proc/xen/capabilities
+ [Service]
+ Type=notify
+ Environment=VIRTXEND_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtxend
+ ExecStart=@sbindir@/virtxend $VIRTXEND_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/locking/virtlockd.service.in b/src/locking/virtlockd.service.in
+index 23054369d5..87193952cb 100644
+--- a/src/locking/virtlockd.service.in
++++ b/src/locking/virtlockd.service.in
+@@ -8,7 +8,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Environment=VIRTLOCKD_ARGS=
+-EnvironmentFile=-@initconfdir@/virtlockd
+ ExecStart=@sbindir@/virtlockd $VIRTLOCKD_ARGS
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Losing the locks is a really bad thing that will
+diff --git a/src/logging/virtlogd.service.in b/src/logging/virtlogd.service.in
+index e4aecd46a7..d97a98e856 100644
+--- a/src/logging/virtlogd.service.in
++++ b/src/logging/virtlogd.service.in
+@@ -8,7 +8,6 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Environment=VIRTLOGD_ARGS=
+-EnvironmentFile=-@initconfdir@/virtlogd
+ ExecStart=@sbindir@/virtlogd $VIRTLOGD_ARGS
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Losing the logs is a really bad thing that will
+diff --git a/src/lxc/virtlxcd.service.in b/src/lxc/virtlxcd.service.in
+index 2623f7375a..b48ce6958a 100644
+--- a/src/lxc/virtlxcd.service.in
++++ b/src/lxc/virtlxcd.service.in
+@@ -18,7 +18,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTLXCD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtlxcd
+ ExecStart=@sbindir@/virtlxcd $VIRTLXCD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+diff --git a/src/network/virtnetworkd.service.in b/src/network/virtnetworkd.service.in
+index 48423e777d..ee4cd9bca1 100644
+--- a/src/network/virtnetworkd.service.in
++++ b/src/network/virtnetworkd.service.in
+@@ -17,7 +17,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTNETWORKD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtnetworkd
+ ExecStart=@sbindir@/virtnetworkd $VIRTNETWORKD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/node_device/virtnodedevd.service.in b/src/node_device/virtnodedevd.service.in
+index 3ceed30f29..7693aa52c4 100644
+--- a/src/node_device/virtnodedevd.service.in
++++ b/src/node_device/virtnodedevd.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTNODEDEVD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtnodedevd
+ ExecStart=@sbindir@/virtnodedevd $VIRTNODEDEVD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/nwfilter/virtnwfilterd.service.in b/src/nwfilter/virtnwfilterd.service.in
+index 37fa54d684..16d8b377b0 100644
+--- a/src/nwfilter/virtnwfilterd.service.in
++++ b/src/nwfilter/virtnwfilterd.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTNWFILTERD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtnwfilterd
+ ExecStart=@sbindir@/virtnwfilterd $VIRTNWFILTERD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/qemu/virtqemud.service.in b/src/qemu/virtqemud.service.in
+index 032cbcbbf0..85a1049567 100644
+--- a/src/qemu/virtqemud.service.in
++++ b/src/qemu/virtqemud.service.in
+@@ -20,7 +20,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTQEMUD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtqemud
+ ExecStart=@sbindir@/virtqemud $VIRTQEMUD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+diff --git a/src/remote/libvirtd.service.in b/src/remote/libvirtd.service.in
+index 11507207a1..9cda330e0b 100644
+--- a/src/remote/libvirtd.service.in
++++ b/src/remote/libvirtd.service.in
+@@ -28,7 +28,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=LIBVIRTD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/libvirtd
+ ExecStart=@sbindir@/libvirtd $LIBVIRTD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+diff --git a/src/remote/virtproxyd.service.in b/src/remote/virtproxyd.service.in
+index dd3bdf3429..0eddf5ee93 100644
+--- a/src/remote/virtproxyd.service.in
++++ b/src/remote/virtproxyd.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTPROXYD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtproxyd
+ ExecStart=@sbindir@/virtproxyd $VIRTPROXYD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/secret/virtsecretd.service.in b/src/secret/virtsecretd.service.in
+index 774cfc3ecd..92e54f175f 100644
+--- a/src/secret/virtsecretd.service.in
++++ b/src/secret/virtsecretd.service.in
+@@ -14,7 +14,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTSECRETD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtsecretd
+ ExecStart=@sbindir@/virtsecretd $VIRTSECRETD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/storage/virtstoraged.service.in b/src/storage/virtstoraged.service.in
+index e1a1ea6820..abe91e3d80 100644
+--- a/src/storage/virtstoraged.service.in
++++ b/src/storage/virtstoraged.service.in
+@@ -16,7 +16,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTSTORAGED_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtstoraged
+ ExecStart=@sbindir@/virtstoraged $VIRTSTORAGED_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/src/vbox/virtvboxd.service.in b/src/vbox/virtvboxd.service.in
+index e73206591a..54fbd0be4a 100644
+--- a/src/vbox/virtvboxd.service.in
++++ b/src/vbox/virtvboxd.service.in
+@@ -15,7 +15,6 @@ Documentation=https://libvirt.org
+ [Service]
+ Type=notify
+ Environment=VIRTVBOXD_ARGS="--timeout 120"
+-EnvironmentFile=-@initconfdir@/virtvboxd
+ ExecStart=@sbindir@/virtvboxd $VIRTVBOXD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+diff --git a/tools/libvirt-guests.service.in b/tools/libvirt-guests.service.in
+index c547218f2a..f5a1a60abe 100644
+--- a/tools/libvirt-guests.service.in
++++ b/tools/libvirt-guests.service.in
+@@ -14,7 +14,7 @@ Documentation=man:libvirt-guests(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@initconfdir@/libvirt-guests
++EnvironmentFile=-/etc/libvirt/libvirt-guests.conf
+ # Hack just call traditional service until we factor
+ # out the code
+ ExecStart=@libexecdir@/libvirt-guests.sh start
+-- 
+2.39.3
+

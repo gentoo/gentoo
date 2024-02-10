@@ -1,0 +1,70 @@
+--- a/bindings/ruby/main.c
++++ b/bindings/ruby/main.c
+@@ -216,13 +216,14 @@
+     return rb_rrd_infocall(rrd_update_v, args);
+ }
+ 
++#ifdef HAVE_RRD_GRAPH
+ VALUE rb_rrd_graphv(
+     VALUE self,
+     VALUE args)
+ {
+     return rb_rrd_infocall(rrd_graph_v, args);
+ }
+-
++#endif /* HAVE_RRD_GRAPH */
+ 
+ /* Other Calls */
+ 
+@@ -273,6 +274,7 @@
+     return result;
+ }
+ 
++#ifdef HAVE_RRD_GRAPH
+ VALUE rb_rrd_graph(
+     VALUE self,
+     VALUE args)
+@@ -302,7 +304,7 @@
+     rb_ary_store(result, 2, INT2FIX(ysize));
+     return result;
+ }
+-
++#endif /* HAVE_RRD_GRAPH */
+ 
+ VALUE rb_rrd_last(
+     VALUE self,
+@@ -320,6 +322,7 @@
+         return rb_funcall(rb_cTime, rb_intern("at"), 1, UINT2NUM(last));
+ }
+ 
++#ifdef HAVE_RRD_GRAPH
+ VALUE rb_rrd_xport(
+     VALUE self,
+     VALUE args)
+@@ -367,6 +370,7 @@
+     rb_ary_store(result, 5, rdata);
+     return result;
+ }
++#endif /* HAVE_RRD_GRAPH */
+ 
+ void Init_RRD(
+     )
+@@ -377,7 +381,9 @@
+     rb_define_module_function(mRRD, "create", rb_rrd_create, -2);
+     rb_define_module_function(mRRD, "dump", rb_rrd_dump, -2);
+     rb_define_module_function(mRRD, "fetch", rb_rrd_fetch, -2);
++#ifdef HAVE_RRD_GRAPH
+     rb_define_module_function(mRRD, "graph", rb_rrd_graph, -2);
++#endif /* HAVE_RRD_GRAPH */
+     rb_define_module_function(mRRD, "last", rb_rrd_last, -2);
+     rb_define_module_function(mRRD, "resize", rb_rrd_resize, -2);
+     rb_define_module_function(mRRD, "restore", rb_rrd_restore, -2);
+@@ -386,6 +392,8 @@
+     rb_define_module_function(mRRD, "flushcached", rb_rrd_flushcached, -2);
+     rb_define_module_function(mRRD, "info", rb_rrd_info, -2);
+     rb_define_module_function(mRRD, "updatev", rb_rrd_updatev, -2);
++#ifdef HAVE_RRD_GRAPH
+     rb_define_module_function(mRRD, "graphv", rb_rrd_graphv, -2);
+     rb_define_module_function(mRRD, "xport", rb_rrd_xport, -2);
++#endif /* HAVE_RRD_GRAPH */
+ }

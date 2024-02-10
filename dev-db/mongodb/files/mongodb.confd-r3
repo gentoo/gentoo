@@ -1,0 +1,11 @@
+# !! IMPORTANT !!
+#
+# This file is ONLY used to override some of the init script configuration.
+#
+# You should NOT use this file to configure your mongodb instance,
+# see the /etc/mongodb.conf file instead.
+#
+# Available init script modifiers :
+# - config_file : the configuration file to use (default : /etc/mongodb.conf)
+# - user : the user used to run your mongodb instance (default : mongodb)
+# - group : the group used to run your mongodb instance (default : mongodb)

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting geneweb server"
+	start-stop-daemon -S -u geneweb -x /usr/bin/geneweb.gwd -- -bd /var/lib/geneweb -lang $LANG -log /var/log/geneweb.log -daemon
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping geneweb server"
+	start-stop-daemon -K -u geneweb -x /usr/bin/geneweb.gwd
+	eend $?
+}

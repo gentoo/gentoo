@@ -1,0 +1,59 @@
+From 0376453849ca2e7ba5ab1ff7feb7a527ec0b1045 Mon Sep 17 00:00:00 2001
+From: Kevin Locke <kevin@kevinlocke.name>
+Date: Tue, 22 Feb 2022 18:43:11 -0700
+Subject: [PATCH] Support Ayatana AppIndicators
+
+Ubuntu AppIndicator ([libappindicator]) was [removed in Debian Bullseye]
+and has been superseded by Ayatana AppIndicator
+([libayatana-appindicator]) for both [Debian] and [Ubuntu].
+
+Add support for building with libayatana-appindicator instead of
+libappindicator.
+
+[libappindicator]: https://launchpad.net/libappindicator
+[libayatana-appindicator]: https://github.com/AyatanaIndicators/libayatana-appindicator
+[Debian]: https://lists.debian.org/debian-devel/2018/03/msg00506.html
+[Ubuntu]: https://bugs.launchpad.net/ubuntu/+source/libayatana-appindicator/+bug/1915695
+[removed in Debian Bullseye]: https://www.debian.org/releases/bullseye/amd64/release-notes/ch-information.en.html#noteworthy-obsolete-packages
+
+Signed-off-by: Kevin Locke <kevin@kevinlocke.name>
+---
+ configure.ac           | 6 +++++-
+ debian/control         | 2 +-
+ src/pidgin-indicator.c | 6 +++++-
+ 3 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index fefd90d..195651e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,7 +96,11 @@ PKG_CHECK_MODULES(GTK, [gtk+-2.0])
+ AC_SUBST(GTK_LIBS)
+ AC_SUBST(GTK_CFLAGS)
+ 
+-PKG_CHECK_MODULES(INDICATOR, [appindicator3-0.1])
++PKG_CHECK_MODULES(
++	[INDICATOR],
++	[ayatana-appindicator3-0.1],
++	[AC_DEFINE([HAVE_AYATANA_INDICATOR], [1], [Have Ayatana AppIndicator])],
++	[PKG_CHECK_MODULES([INDICATOR], [appindicator3-0.1])])
+ AC_SUBST(INDICATOR_LIBS)
+ AC_SUBST(INDICATOR_CFLAGS)
+ 
+diff --git a/src/pidgin-indicator.c b/src/pidgin-indicator.c
+index 9eeb8a4..9382a95 100644
+--- a/src/pidgin-indicator.c
++++ b/src/pidgin-indicator.c
+@@ -41,7 +41,11 @@
+ #include <savedstatuses.h>
+ #include <version.h>
+ 
+-#include <libappindicator/app-indicator.h>
++#ifdef HAVE_AYATANA_INDICATOR
++# include <libayatana-appindicator/app-indicator.h>
++#else
++# include <libappindicator/app-indicator.h>
++#endif
+ 
+ #include "docklet.h"
+ 

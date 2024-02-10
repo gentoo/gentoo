@@ -1,0 +1,123 @@
+diff -ru --minimal linux/arch/alpha/kernel/process.c linux/arch/alpha/kernel/process.c
+--- linux/arch/alpha/kernel/process.c	2001-03-25 17:37:29.000000000 +0100
++++ linux/arch/alpha/kernel/process.c	2003-06-02 20:20:19.000000000 +0100
+@@ -57,7 +57,7 @@
+ static struct fs_struct init_fs = INIT_FS;
+ static struct files_struct init_files = INIT_FILES;
+ static struct signal_struct init_signals = INIT_SIGNALS;
+-struct mm_struct init_mm = INIT_MM;
++struct mm_struct init_mm;
+ 
+ union task_union init_task_union __attribute__((section("init_task")))
+ 	 = { task: INIT_TASK };
+diff -ru --minimal linux/drivers/char/tty_io.c linux/drivers/char/tty_io.c
+--- linux/drivers/char/tty_io.c	2002-05-21 00:32:34.000000000 +0100
++++ linux/drivers/char/tty_io.c	2003-06-02 20:05:08.000000000 +0100
+@@ -756,15 +756,17 @@
+ }
+ 
+ /* Semaphore to protect creating and releasing a tty */
+-static struct semaphore tty_sem = MUTEX;
++static struct semaphore tty_sem;
+ 
+ static void down_tty_sem(int index)
+ {
++	tty_sem = MUTEX;
+ 	down(&tty_sem);
+ }
+ 
+ static void up_tty_sem(int index)
+ {
++	tty_sem = MUTEX;
+ 	up(&tty_sem);
+ }
+ 
+@@ -785,6 +787,7 @@
+ 	int retval=0;
+ 	int idx;
+ 
++	tty_sem = MUTEX;
+ 	driver = get_tty_driver(device);
+ 	if (!driver)
+ 		return -ENODEV;
+diff -ru --minimal linux/fs/super.c linux/fs/super.c
+--- linux/fs/super.c	2001-11-02 16:39:08.000000000 +0000
++++ linux/fs/super.c	2003-06-02 20:13:53.000000000 +0100
+@@ -42,7 +42,7 @@
+  * unmounting a filesystem and re-mounting it (or something
+  * else).
+  */
+-static struct semaphore mount_sem = MUTEX;
++static struct semaphore mount_sem;
+ 
+ extern void wait_for_keypress(void);
+ extern struct file_operations * get_blkfops(unsigned int major);
+@@ -730,6 +730,7 @@
+ 	int retval;
+ 	struct inode * inode = get_empty_inode();
+ 
++	mount_sem = MUTEX;
+ 	retval = -ENOMEM;
+ 	if (!inode)
+ 		goto out;
+@@ -859,6 +860,7 @@
+ 	struct vfsmount *vfsmnt;
+ 	int error;
+ 
++	mount_sem = MUTEX;
+ 	error = -EACCES;
+ 	if (!(flags & MS_RDONLY) && dev && is_read_only(dev))
+ 		goto out;
+diff -ru --minimal linux/kernel/sys.c linux/kernel/sys.c
+--- linux/kernel/sys.c	2002-09-16 17:26:33.000000000 +0100
++++ linux/kernel/sys.c	2003-06-02 20:00:20.000000000 +0100
+@@ -866,12 +866,13 @@
+  * rather than a semaphore. Anybody want to implement
+  * one?
+  */
+-struct semaphore uts_sem = MUTEX;
++struct semaphore uts_sem;
+ 
+ asmlinkage int sys_newuname(struct new_utsname * name)
+ {
+ 	int errno = 0;
+ 
++	uts_sem = MUTEX;
+ 	down(&uts_sem);
+ 	if (copy_to_user(name,&system_utsname,sizeof *name))
+ 		errno = -EFAULT;
+@@ -883,6 +884,7 @@
+ {
+ 	int errno;
+ 
++	uts_sem = MUTEX;
+ 	if (!capable(CAP_SYS_ADMIN))
+ 		return -EPERM;
+ 	if (len < 0 || len > __NEW_UTS_LEN)
+@@ -901,6 +903,7 @@
+ {
+ 	int i, errno;
+ 
++	uts_sem = MUTEX;
+ 	if (len < 0)
+ 		return -EINVAL;
+ 	down(&uts_sem);
+@@ -922,6 +925,7 @@
+ {
+ 	int errno;
+ 
++	uts_sem = MUTEX;
+ 	if (!capable(CAP_SYS_ADMIN))
+ 		return -EPERM;
+ 	if (len < 0 || len > __NEW_UTS_LEN)
+diff -ru --minimal linux/include/asm-alpha/errno.h linux/include/asm-alpha/errno.h
+--- linux/include/asm-alpha/errno.h	2001-03-25 17:31:06.000000000 +0100
++++ linux/include/asm-alpha/errno.h	2003-06-02 23:48:45.000000000 +0100
+@@ -134,6 +134,7 @@
+ #define	ELIBMAX		125	/* Attempting to link in too many shared libraries */
+ #define	ELIBEXEC	126	/* Cannot exec a shared library directly */
+ #define	ERESTART	127	/* Interrupted system call should be restarted */
++#define EHASHCOLLISION	127	/* reiserfs hash collision */
+ #define	ESTRPIPE	128	/* Streams pipe error */
+ 
+ #define ENOMEDIUM	129	/* No medium found */

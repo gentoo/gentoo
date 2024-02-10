@@ -1,0 +1,32 @@
+https://github.com/msharov/bsd-games/commit/b3d60ff0f7aa377594e6b9a2e1d1d8a509501beb
+
+From: Mike Sharov <msharov@users.sourceforge.net>
+Date: Sun, 3 Apr 2022 09:16:27 -0400
+Subject: [PATCH] Remove -s arg to install program
+
+If configure was not called with --with-debug, executables are already
+built stripped. Additional stripping during installation is not needed.
+--- a/Config.mk.in
++++ b/Config.mk.in
+@@ -7,7 +7,7 @@ AR		:= @AR@
+ RANLIB		:= @RANLIB@
+ INSTALL		:= @INSTALL@
+ INSTALL_DATA	:= ${INSTALL} -m 644
+-INSTALL_PROGRAM	:= ${INSTALL} -m 755 -s
++INSTALL_PROGRAM	:= ${INSTALL} -m 755
+ INSTALL_SCORE	:= ${INSTALL} -m 664 -g users /dev/null
+ 
+ ################ Destination #########################################
+
+diff --git a/Config.mk.in b/Config.mk.in
+index e069054..d9ee2cb 100644
+--- a/Config.mk.in
++++ b/Config.mk.in
+@@ -30,7 +30,6 @@ ifdef debug
+     ldflags	:= -g -rdynamic
+ else
+     cflags	:= -Os -g0 -DNDEBUG=1
+-    ldflags	:= -s
+ endif
+ CFLAGS		:= -Wall -Wextra -Wstrict-prototypes -Wshadow
+ cflags		+= -std=c11 @pkg_cflags@ ${CFLAGS}

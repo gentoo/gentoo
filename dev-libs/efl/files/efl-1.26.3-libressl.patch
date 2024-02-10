@@ -1,0 +1,191 @@
+https://bugs.gentoo.org/903001
+https://git.enlightenment.org/enlightenment/efl/pulls/10
+https://git.enlightenment.org/enlightenment/efl/commit/bdd5b244e6a6161228f4a98210cefd9ef8a12e85
+https://git.enlightenment.org/enlightenment/efl/commit/0e22417f4579333a967fb5ce65ab339dfc066753
+
+From bdd5b244e6a6161228f4a98210cefd9ef8a12e85 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 4 Jul 2022 09:05:38 -0700
+Subject: [PATCH] Support LibreSSL 3.5.x
+
+LibreSSL 3.5.x now works with the standard OpenSSL code paths.
+---
+ src/lib/ecore_con/efl_net_ssl_conn-openssl.c | 12 ++++++------
+ src/lib/eet/eet_cipher.c                     |  8 ++++----
+ src/lib/emile/emile_cipher_openssl.c         | 14 +++++++-------
+ 3 files changed, 17 insertions(+), 17 deletions(-)
+
+From 0e22417f4579333a967fb5ce65ab339dfc066753 Mon Sep 17 00:00:00 2001
+From: "Carsten Haitzler (Rasterman)" <raster@rasterman.com>
+Date: Mon, 1 Aug 2022 17:35:52 +0100
+Subject: [PATCH] eet emile - cipher - add braces for if defines to be clear on
+ order of op
+
+---
+ src/lib/ecore_con/efl_net_ssl_conn-openssl.c | 12 ++++++------
+ src/lib/eet/eet_cipher.c                     |  8 ++++----
+ src/lib/emile/emile_cipher_openssl.c         | 10 +++++-----
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/src/lib/ecore_con/efl_net_ssl_conn-openssl.c b/src/lib/ecore_con/efl_net_ssl_conn-openssl.c
+index e59c6811c9..56c8a595eb 100644
+--- a/src/lib/ecore_con/efl_net_ssl_conn-openssl.c
++++ b/src/lib/ecore_con/efl_net_ssl_conn-openssl.c
+@@ -27,7 +27,7 @@
+ static int
+ efl_net_socket_bio_create(BIO *b)
+ {
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    BIO_set_init(b, 1);
+    BIO_set_data(b, NULL);
+    BIO_set_flags(b, 0);
+@@ -44,7 +44,7 @@ static int
+ efl_net_socket_bio_destroy(BIO *b)
+ {
+    if (!b) return 0;
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    BIO_set_init(b, 0);
+    BIO_set_data(b, NULL);
+    BIO_set_flags(b, 0);
+@@ -63,7 +63,7 @@ efl_net_socket_bio_read(BIO *b, char *buf, int len)
+      .mem = buf,
+      .len = len
+    };
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    Eo *sock = BIO_get_data(b);
+ #else
+    Eo *sock = b->ptr;
+@@ -99,7 +99,7 @@ efl_net_socket_bio_write(BIO *b, const char *buf, int len)
+      .mem = buf,
+      .len = len
+    };
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    Eo *sock = BIO_get_data(b);
+ #else
+    Eo *sock = b->ptr;
+@@ -146,7 +146,7 @@ efl_net_socket_bio_puts(BIO *b, const char *str)
+ static BIO_METHOD *
+ __efl_net_socket_bio_get(void)
+ {
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    static BIO_METHOD *efl_net_socket_bio = NULL;
+ 
+    if (efl_net_socket_bio) return efl_net_socket_bio;
+@@ -359,7 +359,7 @@ efl_net_ssl_conn_setup(Efl_Net_Ssl_Conn *conn, Eina_Bool is_dialer, Efl_Net_Sock
+    conn->bio = BIO_new(__efl_net_socket_bio_get());
+    EINA_SAFETY_ON_NULL_GOTO(conn->bio, error_bio);
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    BIO_set_data(conn->bio, sock);
+ #else
+    conn->bio->ptr = sock;
+diff --git a/src/lib/eet/eet_cipher.c b/src/lib/eet/eet_cipher.c
+index 025750cc98..30501b99e1 100644
+--- a/src/lib/eet/eet_cipher.c
++++ b/src/lib/eet/eet_cipher.c
+@@ -472,7 +472,7 @@ eet_identity_sign(FILE    *fp,
+    gnutls_datum_t signum = { NULL, 0 };
+    gnutls_privkey_t privkey;
+ # else /* ifdef HAVE_GNUTLS */
+-#  if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#  if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    EVP_MD_CTX *md_ctx;
+ #  else
+    EVP_MD_CTX md_ctx;
+@@ -562,7 +562,7 @@ eet_identity_sign(FILE    *fp,
+      }
+ 
+    /* Do the signature. */
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && (!defined(LIBRESSL_VERSION_NUMBER)))
+    md_ctx = EVP_MD_CTX_new();
+    if (!md_ctx)
+      {
+@@ -756,7 +756,7 @@ eet_identity_check(const void   *data_base,
+    const unsigned char *tmp;
+    EVP_PKEY *pkey;
+    X509 *x509;
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    EVP_MD_CTX *md_ctx;
+ #else
+    EVP_MD_CTX md_ctx;
+@@ -779,7 +779,7 @@ eet_identity_check(const void   *data_base,
+      }
+ 
+    /* Verify the signature */
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    md_ctx = EVP_MD_CTX_new();
+    if (!md_ctx)
+      {
+diff --git a/src/lib/emile/emile_cipher_openssl.c b/src/lib/emile/emile_cipher_openssl.c
+index e5a1ed4135..7fed417d3f 100644
+--- a/src/lib/emile/emile_cipher_openssl.c
++++ b/src/lib/emile/emile_cipher_openssl.c
+@@ -45,12 +45,12 @@ struct _Emile_SSL
+ Eina_Bool
+ _emile_cipher_init(void)
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || (LIBRESSL_VERSION_NUMBER < 0x3050000fL)
+    ERR_load_crypto_strings();
+    SSL_library_init();
+    SSL_load_error_strings();
+    OpenSSL_add_all_algorithms();
+-#endif /* if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER) */
++#endif /* if OPENSSL_VERSION_NUMBER < 0x10100000L || LIBRESSL_VERSION_NUMBER < 0x3050000fL */
+ 
+    return EINA_TRUE;
+ }
+@@ -73,7 +73,7 @@ emile_binbuf_sha1(const Eina_Binbuf * data, unsigned char digest[20])
+ {
+    const EVP_MD *md = EVP_sha1();
+    Eina_Slice slice = eina_binbuf_slice_get(data);
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if (LIBRESSL_VERSION_NUMBER >= 0x3050000fL) || ((OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER))
+    EVP_MD_CTX *ctx = EVP_MD_CTX_new();
+    if (!ctx) return EINA_FALSE;
+ 
+@@ -196,7 +196,7 @@ on_error:
+    memset(ik, 0, sizeof (ik));
+ 
+    /* Openssl error */
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || (LIBRESSL_VERSION_NUMBER < 0x3050000fL)
+    if (ctx)
+      EVP_CIPHER_CTX_cleanup(ctx);
+ #else
+@@ -204,7 +204,7 @@ on_error:
+      EVP_CIPHER_CTX_cleanup(ctx);
+      EVP_CIPHER_CTX_free(ctx);
+    }
+-#endif /* if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER) */
++#endif /* if OPENSSL_VERSION_NUMBER < 0x10100000L || LIBRESSL_VERSION_NUMBER < 0x3050000fL */
+ 
+ 
+    free(buffer);
+@@ -331,7 +331,7 @@ emile_cipher_server_listen(Emile_Cipher_Type t)
+          SSL_CTX_set_options(r->ssl_ctx,
+                              options | SSL_OP_NO_SSLv2 | SSL_OP_SINGLE_DH_USE);
+          break;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || (LIBRESSL_VERSION_NUMBER < 0x3050000fL)
+       case EMILE_TLSv1:
+          r->ssl_ctx = SSL_CTX_new(TLSv1_server_method());
+          break;
+@@ -780,7 +780,7 @@ emile_cipher_server_connect(Emile_Cipher_Type t)
+                              options | SSL_OP_NO_SSLv2 | SSL_OP_SINGLE_DH_USE);
+          break;
+       case EMILE_TLSv1:
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || (LIBRESSL_VERSION_NUMBER < 0x3050000fL)
+          r->ssl_ctx = SSL_CTX_new(TLSv1_client_method());
+          break;
+ #endif

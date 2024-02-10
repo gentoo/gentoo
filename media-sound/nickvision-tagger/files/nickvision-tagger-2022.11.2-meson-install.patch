@@ -1,0 +1,12 @@
+--- a/meson.build
++++ b/meson.build
+@@ -12,8 +12,7 @@ taglib = dependency('taglib')
+ subdir('src')
+ subdir('po')
+ 
+-executable('org.nickvision.tagger', sources, dependencies: [threads, adwaita, jsoncpp, curlpp, taglib], install: true, install_mode: 'rwxrwxrwx')
+-install_data('fpcalc', install_dir: 'bin', install_mode: 'rwxrwxrwx')
++executable('org.nickvision.tagger', sources, dependencies: [threads, adwaita, jsoncpp, curlpp, taglib], install: true, install_mode: 'rwxr-xr-x')
+ install_data(resources, install_dir: 'share/icons/hicolor/scalable/apps')
+ install_data(resources_symbolic, install_dir: 'share/icons/hicolor/symbolic/apps')
+ install_data(resources_actions, install_dir: 'share/icons/hicolor/scalable/actions')

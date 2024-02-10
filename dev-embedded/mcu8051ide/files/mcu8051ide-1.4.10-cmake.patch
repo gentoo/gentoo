@@ -1,0 +1,36 @@
+From: Carlos Henrique Lima Melara <charlesmelara@outlook.com>
+Subject: Remove unneeded files installation and update appstream location
+Last-Update: 2020-06-27
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,10 +53,6 @@
+ 	ENDFOREACH(ext)
+ ENDFOREACH(subdir)
+ 
+-# Install manual page(s)
+-FILE(GLOB man doc/man/*)
+-INSTALL(FILES ${man} DESTINATION share/man/man1)
+-
+ # Install demonstration project files
+ FILE(GLOB demo demo/*)
+ INSTALL(FILES ${demo} DESTINATION ${target_installation_directory}/demo)
+@@ -72,7 +68,7 @@ INSTALL(FILES ${translations} DESTINATIO
+ # Install .desktop spec and application icon
+ INSTALL(FILES mcu8051ide.png DESTINATION share/pixmaps/)
+ INSTALL(FILES mcu8051ide.desktop DESTINATION share/applications/)
+-INSTALL(FILES mcu8051ide.appdata.xml DESTINATION share/appdata/)
++INSTALL(FILES mcu8051ide.appdata.xml DESTINATION share/metainfo/)
+ INSTALL(FILES application-x-mcu8051ide.xml DESTINATION share/mime/packages/)
+ 
+ # Install launcher
+@@ -84,9 +80,3 @@ INSTALL(
+ 		OWNER_WRITE OWNER_READ OWNER_EXECUTE
+ 		GROUP_EXECUTE GROUP_READ
+ )
+-
+-# Install misc. files
+-INSTALL(
+-	FILES ChangeLog LICENSE
+-	DESTINATION ${target_installation_directory}
+-)

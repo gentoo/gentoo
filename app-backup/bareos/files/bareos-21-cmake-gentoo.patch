@@ -1,0 +1,12 @@
+diff -ur bareos-Release-21.0.0.orig/core/platforms/CMakeLists.txt bareos-Release-21.0.0/core/platforms/CMakeLists.txt
+--- bareos-Release-21.0.0.orig/core/platforms/CMakeLists.txt	2021-12-21 01:00:49.000000000 -1000
++++ bareos-Release-21.0.0/core/platforms/CMakeLists.txt	2022-01-30 15:09:41.949529813 -1000
+@@ -30,6 +30,8 @@
+     message(STATUS "adding subdirectories debian and univention")
+     add_subdirectory(debian)
+     add_subdirectory(univention)
++  elseif(${PLATFORM} STREQUAL gentoo)
++    message(STATUS "PLATFORM: " ${PLATFORM})
+   elseif(${BAREOS_PLATFORM} STREQUAL hpux)
+     message(STATUS "BAREOS_PLATFORM: " ${BAREOS_PLATFORM})
+   elseif(${BAREOS_PLATFORM} STREQUAL archlinux)

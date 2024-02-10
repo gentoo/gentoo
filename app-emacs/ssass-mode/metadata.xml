@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This mode is a clean-room clone of Natalie Weizenbaum's sass-mode, with a
+    few compromises to support mmm-mode. If sass-mode doesn't break for you,
+    use that.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/AdamNiederer/ssass-mode/issues/</bugs-to>
+    <remote-id type="github">AdamNiederer/ssass-mode</remote-id>
+  </upstream>
+</pkgmetadata>

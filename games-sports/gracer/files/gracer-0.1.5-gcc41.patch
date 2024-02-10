@@ -1,0 +1,11 @@
+--- a/common/gr_memory.h	2006-05-23 09:16:21.000000000 +0200
++++ b/common/gr_memory.h	2006-05-23 09:16:40.000000000 +0200
+@@ -64,7 +64,7 @@
+ void	gr_dlist_free			(GrDList *list);
+ 
+ #define gr_FOREACH(l,p) \
+-  for (; (l) != NULL && ((void *)(p) = (l)->data, 1); (l) = (l)->next) 
++  for (; (l) != NULL && (p = (l)->data, 1); (l) = (l)->next) 
+ 
+ void	gr_ref_incr			(GrRef *ref);
+ void	gr_ref_decr			(GrRef *ref);

@@ -1,0 +1,22 @@
+diff --git a/setup.cfg b/setup.cfg
+index 7e75a81..7f38a46 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -9,7 +9,8 @@ download_url =
+ description = Terminal session recorder
+ description_file = README.md
+ license = GNU GPLv3
+-license_file = LICENSE
++license_files =
++	LICENSE
+ long_description = file: README.md
+ long_description_content_type = text/markdown; charset=UTF-8
+ classifiers =
+@@ -35,6 +36,7 @@ packages =
+     asciinema
+     asciinema.asciicast
+     asciinema.commands
++    asciinema.data
+ install_requires =
+ 
+ [options.package_data]

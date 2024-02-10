@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index ca75e34c..e9cc49e0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -616,7 +616,7 @@ AC_SUBST(SYS_LD_LIB_PATH)
+ SYS_LD_LIB_PATH=$LD_LIBRARY_PATH
+ 
+ AC_SUBST(SYS_LD_PRELOAD)
+-SYS_LD_PRELOAD=$LD_PRELOAD
++SYS_LD_PRELOAD=$(printf %s\\n $LD_PRELOAD | sed -e "s/libsandbox.so//g")
+ 
+ AC_SUBST(PATH_TO_SRC)
+ SRCDIR=$( cd $srcdir; pwd)

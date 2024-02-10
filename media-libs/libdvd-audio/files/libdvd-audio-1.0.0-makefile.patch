@@ -1,0 +1,53 @@
+Respect CFLAGS/LDFLAGS and use DESTDIR for install targets.
+
+--- libdvd-audio-1.0.0/Makefile
++++ libdvd-audio-1.0.0/Makefile
+@@ -1,8 +1,9 @@
+-FLAGS = -Wall -O2 -g -fPIC
+-LIB_DIR = /usr/local/lib
+-INCLUDE_DIR = /usr/local/include
+-BIN_DIR = /usr/local/bin
+-PKG_CONFIG_DIR = /usr/lib/pkgconfig
++FLAGS = -Wall -fPIC $(CFLAGS)
++PREFIX = /usr/local
++LIB_DIR = $(PREFIX)/lib
++INCLUDE_DIR = $(PREFIX)/include
++BIN_DIR = $(PREFIX)/bin
++PKG_CONFIG_DIR = $(LIB_DIR)/pkgconfig
+ 
+ BITSTREAM_OBJS = bitstream.o \
+ huffman.o \
+@@ -56,13 +57,17 @@
+ all: $(STATIC_LIBRARY) $(SHARED_LIBRARIES) $(BINARIES) $(PKG_CONFIG_METADATA)
+ 
+ install: $(STATIC_LIBRARY) $(SHARED_LIBRARIES) $(BINARIES) $(PKG_CONFIG_METADATA)
+-	install -m 644 $(SHARED_LIBRARY) $(LIB_DIR)
+-	cp -Pp $(SHARED_LIBRARY_LINK_1) $(LIB_DIR)
+-	cp -Pp $(SHARED_LIBRARY_LINK_2) $(LIB_DIR)
+-	install -m 644 $(STATIC_LIBRARY) $(LIB_DIR)
+-	install -m 644 include/dvd-audio.h $(INCLUDE_DIR)
+-	install -m 755 $(BINARIES) $(BIN_DIR)
+-	install -m 644 $(PKG_CONFIG_METADATA) $(PKG_CONFIG_DIR)
++	mkdir -p $(DESTDIR)$(LIB_DIR)
++	install -m 755 $(SHARED_LIBRARY) $(DESTDIR)$(LIB_DIR)
++	cp -Pp $(SHARED_LIBRARY_LINK_1) $(DESTDIR)$(LIB_DIR)
++	cp -Pp $(SHARED_LIBRARY_LINK_2) $(DESTDIR)$(LIB_DIR)
++	install -m 644 $(STATIC_LIBRARY) $(DESTDIR)$(LIB_DIR)
++	mkdir -p $(DESTDIR)$(INCLUDE_DIR)
++	install -m 644 include/dvd-audio.h $(DESTDIR)$(INCLUDE_DIR)
++	mkdir -p $(DESTDIR)$(BIN_DIR)
++	install -m 755 $(BINARIES) $(DESTDIR)$(BIN_DIR)
++	mkdir -p $(DESTDIR)$(PKG_CONFIG_DIR)
++	install -m 644 $(PKG_CONFIG_METADATA) $(DESTDIR)$(PKG_CONFIG_DIR)
+ 
+ clean:
+ 	rm -f $(BINARIES) $(CODEBOOKS) $(BINARIES) $(PKG_CONFIG_METADATA) huffman *.o *.a *.so*
+@@ -71,7 +76,7 @@
+ 	$(AR) -r $@ $(DVDA_OBJS)
+ 
+ $(SHARED_LIBRARY): $(DVDA_OBJS)
+-	$(CC) $(FLAGS) -Wl,-soname,libdvd-audio.so.$(MAJOR_VERSION) -shared -o $@ $(DVDA_OBJS)
++	$(CC) $(FLAGS) $(LDFLAGS) -Wl,-soname,libdvd-audio.so.$(MAJOR_VERSION) -shared -o $@ $(DVDA_OBJS)
+ 
+ $(SHARED_LIBRARY_LINK_1): $(SHARED_LIBRARY)
+ 	ln -sf $< $@

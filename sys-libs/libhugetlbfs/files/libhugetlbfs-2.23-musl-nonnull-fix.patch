@@ -1,0 +1,31 @@
+# Use __nonnull only on glibc system
+# Closes: https://bugs.gentoo.org/832980
+--- a/shm.c
++++ b/shm.c
+@@ -35,6 +35,12 @@
+ #endif
+
+ #ifdef HAVE_SHMGET_SYSCALL
++
++/* define __THROW to avoid build issue when it's not available from the libc */
++#ifndef __THROW
++#define __THROW
++#endif
++
+ /*
+  * The calls to dlsym() and dlerror() in the shmget() wrapper below force
+  * a dependency on libdl.so.  This does not work for static executables
+@@ -48,8 +54,13 @@
+  * system shmget() may be performed without worry as there is no dynamic
+  * call chain.
+  */
++#ifdef __GLIBC__
+ extern void *dlsym (void *__restrict __handle, __const char *__restrict __name)
+ 		__attribute__((weak)) __THROW __nonnull ((2));
++#else
++extern void *dlsym (void *__restrict __handle, __const char *__restrict __name)
++		__attribute__((weak)) __THROW __attribute__((nonnull((2))));
++#endif // __GLIBC__
+ extern char *dlerror (void) __attribute__((weak)) __THROW;
+
+

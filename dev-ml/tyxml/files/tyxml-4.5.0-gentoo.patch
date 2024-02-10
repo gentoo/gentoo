@@ -1,0 +1,11 @@
+--- a/lib/dune	2022-12-20 22:46:07.612173538 +0100
++++ b/lib/dune	2022-12-20 22:46:17.811016202 +0100
+@@ -5,7 +5,7 @@
+  (modules_without_implementation
+   Xml_sigs Html_sigs Svg_sigs Html_types Svg_types)
+  (synopsis "Statically correct HTML and SVG documents (Functor version)")
+- (libraries uutf re seq)
++ (libraries uutf re)
+  (flags (:standard
+          -safe-string))
+ )

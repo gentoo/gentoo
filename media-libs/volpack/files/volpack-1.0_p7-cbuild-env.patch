@@ -1,0 +1,15 @@
+Gentoo specific to go with `tc-export_build_env BUILD_CC` + respect flags.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -96,3 +96,3 @@
+ makeopts: makeopts.c
+-	$(CC) -o makeopts makeopts.c
++	$(BUILD_CC) $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -o makeopts makeopts.c
+ 
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -643,3 +643,3 @@
+ makeopts: makeopts.c
+-	$(CC) -o makeopts makeopts.c
++	$(BUILD_CC) $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -o makeopts makeopts.c
+ 

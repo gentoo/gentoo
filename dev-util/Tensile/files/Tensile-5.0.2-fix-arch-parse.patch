@@ -1,0 +1,12 @@
+Index: Tensile-rocm-5.0.1/Tensile/Tensile.py
+===================================================================
+--- Tensile-rocm-5.0.1.orig/Tensile/Tensile.py
++++ Tensile-rocm-5.0.1/Tensile/Tensile.py
+@@ -97,7 +97,6 @@ def addCommonArguments(argParser):
+     """
+ 
+     (key, value) = par.split("=")
+-    value = eval(value)
+     return (key, value)
+ 
+   argParser.add_argument("-d", "--device", dest="device", type=int, \

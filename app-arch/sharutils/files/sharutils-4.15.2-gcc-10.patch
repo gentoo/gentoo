@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/706256
+
+Fix build failure on gcc-10/-fno-common.
+
+--- a/src/shar-opts.h
++++ b/src/shar-opts.h
+@@ -352,7 +352,7 @@ extern "C" {
+  *  global exported definitions
+  */
+ #include "local.h"
+-char const * const program_name;
++extern char const * const program_name;
+ 
+ extern bool initialization_done;
+ extern int optidx;
+--- a/src/unshar-opts.h
++++ b/src/unshar-opts.h
+@@ -192,7 +192,7 @@ extern "C" {
+ extern size_t       separator_str_len;
+ 
+ #include "local.h"
+-char const * const program_name;
++extern char const * const program_name;
+ 
+ 
+ /* * * * * *
+--- a/src/uudecode-opts.h
++++ b/src/uudecode-opts.h
+@@ -170,7 +170,7 @@ extern "C" {
+  *  global exported definitions
+  */
+ #include "local.h"
+-char const * const program_name;
++extern char const * const program_name;
+ 
+ 
+ /* * * * * *
+--- a/src/uuencode-opts.h
++++ b/src/uuencode-opts.h
+@@ -166,7 +166,7 @@ extern "C" {
+  *  global exported definitions
+  */
+ #include "local.h"
+-char const * const program_name;
++extern char const * const program_name;
+ 
+ 
+ /* * * * * *

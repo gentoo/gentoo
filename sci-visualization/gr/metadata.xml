@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dilfridge@gentoo.org</email>
+    <name>Andreas K. Huettel</name>
+  </maintainer>
+  <use>
+    <flag name="agg">Enable the libagg anti-grain rendering engine</flag>
+  </use>
+</pkgmetadata>

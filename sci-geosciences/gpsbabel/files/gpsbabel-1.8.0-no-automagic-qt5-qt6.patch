@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2a7d805..65bd4db 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,7 +26,11 @@ set(CMAKE_AUTORCC ON)
+ add_executable(gpsbabel)
+ 
+ # Find the QtCore library
+-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
++if(USE_QT6)
++  find_package(QT NAMES Qt6 COMPONENTS Core REQUIRED)
++else()
++  find_package(QT NAMES Qt5 COMPONENTS Core REQUIRED)
++endif()
+ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
+ list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::Core)
+ if(${Qt${QT_VERSION_MAJOR}Core_VERSION} VERSION_LESS 5.12)
+diff --git a/gui/CMakeLists.txt b/gui/CMakeLists.txt
+index 4c839c2..ac329dd 100644
+--- a/gui/CMakeLists.txt
++++ b/gui/CMakeLists.txt
+@@ -23,7 +23,11 @@ endif()
+ add_executable(${TARGET} WIN32 MACOSX_BUNDLE)
+ 
+ # Find the QtCore library
+-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
++if(USE_QT6)
++  find_package(QT NAMES Qt6 COMPONENTS Core REQUIRED)
++else()
++  find_package(QT NAMES Qt5 COMPONENTS Core REQUIRED)
++endif()
+ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Network SerialPort Widgets Xml REQUIRED)
+ list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Xml)
+ if(${Qt${QT_VERSION_MAJOR}Core_VERSION} VERSION_LESS 5.12)

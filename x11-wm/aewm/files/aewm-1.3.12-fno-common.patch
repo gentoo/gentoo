@@ -1,0 +1,25 @@
+--- a/aedesk.c
++++ b/aedesk.c
+@@ -11,10 +11,6 @@
+ 
+ #define UMOD(x, y) ((((long)(x) % (long)(y)) + (y)) % (y))
+ 
+-Display *dpy;
+-Window root;
+-Atom net_cur_desk, net_num_desks;
+-
+ static unsigned long parse_desk(char *spec);
+ 
+ int main(int argc, char **argv)
+--- a/aepanel.c
++++ b/aepanel.c
+@@ -36,9 +36,6 @@
+ void sig_handler(int);
+ void set_strut(Window, strut_t *);
+ 
+-Atom net_wm_strut;
+-Atom net_wm_strut_partial;
+-Atom net_wm_wintype;
+ Atom net_wm_wintype_dock;
+ 
+ #define NAME_SIZE 48

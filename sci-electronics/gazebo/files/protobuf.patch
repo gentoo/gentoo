@@ -1,0 +1,226 @@
+From 92a44c60e4b38d147fd92ed480e33e61cc68c928 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Tue, 6 Jun 2023 13:50:07 +0200
+Subject: [PATCH 1/6] Support for protobuf >= 22 by using find_package(Protobuf
+ CONFIG)
+
+---
+ cmake/SearchForStuff.cmake   | 49 +++++++++++++++++++++++++-----------
+ cmake/gazebo-config.cmake.in | 15 ++++++++---
+ 2 files changed, 46 insertions(+), 18 deletions(-)
+
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index b1cb3f37b3..e0fbd68274 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -25,29 +25,48 @@ if (CMAKE_BUILD_TYPE)
+ endif()
+ 
+ ########################################
+-if (PROTOBUF_VERSION LESS 2.3.0)
++if (DEFINED PROTOBUF_VERSION AND PROTOBUF_VERSION GREATER_EQUAL 22.0)
+   BUILD_ERROR("Incorrect version: Gazebo requires protobuf version 2.3.0 or greater")
+ endif()
+ 
+ ########################################
+ # The Google Protobuf library for message generation + serialization
+-find_package(Protobuf REQUIRED)
+-if (NOT PROTOBUF_FOUND)
+-  BUILD_ERROR ("Missing: Google Protobuf (libprotobuf-dev)")
+-endif()
+-if (NOT PROTOBUF_PROTOC_EXECUTABLE)
+-  BUILD_ERROR ("Missing: Google Protobuf Compiler (protobuf-compiler)")
+-endif()
+-if (NOT PROTOBUF_PROTOC_LIBRARY)
+-  BUILD_ERROR ("Missing: Google Protobuf Compiler Library (libprotoc-dev)")
++
++# Protobuf >= 22 requires to link abseil, so we are constrained to use 
++# find_package(Protobuf) and link to protobuf::libprotobuf,
++# see https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/4075#issuecomment-1569242816
++if (DEFINED PROTOBUF_VERSION AND PROTOBUF_VERSION GREATER_EQUAL 22.0)
++  set(GZ_PROTOBUF_USE_CMAKE_CONFIG_DEFAULT ON)
++else()
++  set(GZ_PROTOBUF_USE_CMAKE_CONFIG_DEFAULT OFF)
+ endif()
++option(GZ_PROTOBUF_USE_CMAKE_CONFIG "If true use protobuf-config.cmake to find protobuf" ${GZ_PROTOBUF_USE_CMAKE_CONFIG_DEFAULT})
++mark_as_advanced(GZ_PROTOBUF_USE_CMAKE_CONFIG)
+ 
+-if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+-  set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY_DEBUG})
+-  set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY_DEBUG})
++if(NOT GZ_PROTOBUF_USE_CMAKE_CONFIG)
++  find_package(Protobuf REQUIRED)
++  if (NOT PROTOBUF_FOUND)
++    BUILD_ERROR ("Missing: Google Protobuf (libprotobuf-dev)")
++  endif()
++  if (NOT PROTOBUF_PROTOC_EXECUTABLE)
++    BUILD_ERROR ("Missing: Google Protobuf Compiler (protobuf-compiler)")
++  endif()
++  if (NOT PROTOBUF_PROTOC_LIBRARY)
++    BUILD_ERROR ("Missing: Google Protobuf Compiler Library (libprotoc-dev)")
++  endif()
++  if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
++    set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY_DEBUG})
++    set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY_DEBUG})
++  else()
++    set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY})
++    set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY})
++  endif()
+ else()
+-  set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY})
+-  set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY})
++  set (GZ_PROTOBUF_LIBRARY protobuf::libprotobuf)
++  set (GZ_PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
++  if(NOT DEFINED PROTOBUF_PROTOC_LIBRARY)
++    get_target_property(PROTOBUF_PROTOC_LIBRARY protobuf::protoc LOCATION)
++  endif()
+ endif()
+ 
+ ########################################
+diff --git a/cmake/gazebo-config.cmake.in b/cmake/gazebo-config.cmake.in
+index 96993f93fa..ac1de2c061 100644
+--- a/cmake/gazebo-config.cmake.in
++++ b/cmake/gazebo-config.cmake.in
+@@ -166,9 +166,18 @@ list(APPEND @PKG_NAME@_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
+ list(APPEND @PKG_NAME@_LIBRARIES ${Boost_LIBRARIES})
+ 
+ # Find protobuf
+-find_package(Protobuf REQUIRED)
+-list(APPEND @PKG_NAME@_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
+-list(APPEND @PKG_NAME@_LIBRARIES ${PROTOBUF_LIBRARIES})
++set(GZ_PROTOBUF_USE_CMAKE_CONFIG @GZ_PROTOBUF_USE_CMAKE_CONFIG@)
++
++if(NOT GZ_PROTOBUF_USE_CMAKE_CONFIG)
++  find_package(Protobuf REQUIRED)
++  list(APPEND @PKG_NAME@_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
++  list(APPEND @PKG_NAME@_LIBRARIES ${PROTOBUF_LIBRARIES})
++else()
++  find_package(Protobuf CONFIG REQUIRED)
++  list(APPEND @PKG_NAME@_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
++  list(APPEND @PKG_NAME@_LIBRARIES protobuf::libprotoc)
++  list(APPEND @PKG_NAME@_LIBRARIES protobuf::libprotobuf)
++endif()
+ 
+ # Find SDFormat
+ find_package(sdformat9 REQUIRED VERSION 9.8)
+
+From 83f05b7778ff2933d8bd3b9149207dd17a20b9b4 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Tue, 6 Jun 2023 14:18:48 +0200
+Subject: [PATCH 2/6] Update SearchForStuff.cmake
+
+---
+ cmake/SearchForStuff.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index e0fbd68274..d25b7a4a63 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -25,7 +25,7 @@ if (CMAKE_BUILD_TYPE)
+ endif()
+ 
+ ########################################
+-if (DEFINED PROTOBUF_VERSION AND PROTOBUF_VERSION GREATER_EQUAL 22.0)
++if (PROTOBUF_VERSION LESS 2.3.0)
+   BUILD_ERROR("Incorrect version: Gazebo requires protobuf version 2.3.0 or greater")
+ endif()
+ 
+
+From 398e832301429b2f406a5a0e35187ca8fabd50ad Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Tue, 6 Jun 2023 23:25:06 +0200
+Subject: [PATCH 3/6] Update SearchForStuff.cmake
+
+---
+ cmake/SearchForStuff.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index d25b7a4a63..2f0b53358f 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -62,6 +62,7 @@ if(NOT GZ_PROTOBUF_USE_CMAKE_CONFIG)
+     set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY})
+   endif()
+ else()
++  find_package(Protobuf CONFIG REQUIRED)
+   set (GZ_PROTOBUF_LIBRARY protobuf::libprotobuf)
+   set (GZ_PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
+   if(NOT DEFINED PROTOBUF_PROTOC_LIBRARY)
+
+From d46bf2353a25b38b9613b67f2567f729e133d2b7 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Tue, 6 Jun 2023 23:55:22 +0200
+Subject: [PATCH 4/6] Update SearchForStuff.cmake
+
+---
+ cmake/SearchForStuff.cmake | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index 2f0b53358f..1bbadd3c29 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -66,7 +66,9 @@ else()
+   set (GZ_PROTOBUF_LIBRARY protobuf::libprotobuf)
+   set (GZ_PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
+   if(NOT DEFINED PROTOBUF_PROTOC_LIBRARY)
+-    get_target_property(PROTOBUF_PROTOC_LIBRARY protobuf::protoc LOCATION)
++    get_target_property(PROTOBUF_PROTOC_LIBRARY_VAR protobuf::protoc LOCATION)
++    set(PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY_VAR} CACHE STRING "")
++    mark_as_advanced(PROTOBUF_PROTOC_LIBRARY)
+   endif()
+ endif()
+ 
+
+From f372ef83b99bf2dc2f4a456ab74c7831c347ec89 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Wed, 7 Jun 2023 00:39:40 +0200
+Subject: [PATCH 5/6] Update SearchForStuff.cmake
+
+---
+ cmake/SearchForStuff.cmake | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index 1bbadd3c29..c400bee0e3 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -65,10 +65,8 @@ else()
+   find_package(Protobuf CONFIG REQUIRED)
+   set (GZ_PROTOBUF_LIBRARY protobuf::libprotobuf)
+   set (GZ_PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
+-  if(NOT DEFINED PROTOBUF_PROTOC_LIBRARY)
+-    get_target_property(PROTOBUF_PROTOC_LIBRARY_VAR protobuf::protoc LOCATION)
+-    set(PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY_VAR} CACHE STRING "")
+-    mark_as_advanced(PROTOBUF_PROTOC_LIBRARY)
++  if(NOT DEFINED PROTOBUF_PROTOC_EXECUTABLE)
++    get_target_property(PROTOBUF_PROTOC_EXECUTABLE protobuf::protoc LOCATION)
+   endif()
+ endif()
+ 
+
+From c4674eee1ad234d4a74bafc1d3ec401b595d3d63 Mon Sep 17 00:00:00 2001
+From: Steve Peters <computersthatmove@gmail.com>
+Date: Wed, 14 Jun 2023 09:27:16 -0700
+Subject: [PATCH 6/6] Fix whitespace
+
+Signed-off-by: Steve Peters <scpeters@openrobotics.org>
+---
+ cmake/SearchForStuff.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index c400bee0e3..948cf0a8a1 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -32,7 +32,7 @@ endif()
+ ########################################
+ # The Google Protobuf library for message generation + serialization
+ 
+-# Protobuf >= 22 requires to link abseil, so we are constrained to use 
++# Protobuf >= 22 requires to link abseil, so we are constrained to use
+ # find_package(Protobuf) and link to protobuf::libprotobuf,
+ # see https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/4075#issuecomment-1569242816
+ if (DEFINED PROTOBUF_VERSION AND PROTOBUF_VERSION GREATER_EQUAL 22.0)

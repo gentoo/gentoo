@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,6 +29,7 @@
+ 
+ AC_CHECK_LIB([c], [main], [], AC_MSG_ERROR(requires libc))
+ AC_CHECK_LIB([ncurses], [main], [], AC_MSG_ERROR(requires libncurses))
++AC_SEARCH_LIBS([acs_map],[tinfo], [], AC_MSG_ERROR(requires a library providing acs_map))
+ AC_CHECK_LIB([form], [main], [], AC_MSG_ERROR(requires libform))
+ AC_CHECK_LIB([kpass], [main], [], AC_MSG_ERROR(requires libkpass))
+ 

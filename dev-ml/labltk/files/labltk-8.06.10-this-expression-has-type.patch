@@ -1,0 +1,12 @@
+diff -urNp labltk-8.06.10-orig/browser/typecheck.ml labltk-8.06.10-dwok/browser/typecheck.ml
+--- labltk-8.06.10-orig/browser/typecheck.ml	2020-08-25 07:50:47.000000000 +0200
++++ labltk-8.06.10-dwok/browser/typecheck.ml	2021-02-26 01:55:00.000000000 +0100
+@@ -116,7 +116,7 @@ let f txt =
+     List.iter psl ~f:
+     begin function
+       Ptop_def pstr ->
+-        let str, sign, _names, env' = Typemod.type_structure !env pstr in
++        let str, sign, _names, env' = Typemod.type_structure !env pstr Location.none in
+         txt.structure <- txt.structure @ str.str_items;
+         txt.signature <- txt.signature @ sign;
+         env := env'

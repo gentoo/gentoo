@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,15 +1,15 @@
+ VERSION=0.1
+ 
+ DEBUG=-g -pedantic #-pg #-fprofile-arcs
+-LDFLAGS=-lncurses $(DEBUG)
+-CFLAGS+=-O2 -Wall -DVERSION=\"$(VERSION)\" $(DEBUG)
++LDLIBS=$(shell ${PKG_CONFIG} --libs ncurses)
++CFLAGS+=-Wall -DVERSION=\"$(VERSION)\"
+ 
+ OBJS=bsod.o
+ 
+ all: bsod
+ 
+ bsod: $(OBJS)
+-	$(CC) -Wall $(OBJS) $(LDFLAGS) -o bsod
++	$(CC) $(LDFLAGS) $(CFLAGS) $(OBJS) $(LDLIBS) -o bsod
+ 
+ install: bsod
+ 	cp bsod $(DESTDIR)/usr/local/bin

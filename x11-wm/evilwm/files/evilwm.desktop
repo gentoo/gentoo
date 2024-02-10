@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=evilwm
+Comment=A minimalist window manager
+Exec=evilwm
+TryExec=evilwm
+# no icon yet, only the top three are currently used
+Icon=
+Type=Application

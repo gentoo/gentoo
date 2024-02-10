@@ -1,0 +1,13 @@
+Instead of producing a static binary, this causes libtool to inject one
+of the build directories into RPATH.
+
+--- a/src/bin/Makefile.am
++++ b/src/bin/Makefile.am
+@@ -65,7 +65,6 @@
+ sbin_PROGRAMS += out/smbios-sys-info-lite
+ out_smbios_sys_info_lite_SOURCES = src/bin/smbios-sys-info-lite.c
+ out_smbios_sys_info_lite_LDADD = out/libsmbios_c.la out/libgetopt.la $(AM_LDADD)
+-out_smbios_sys_info_lite_LDFLAGS = $(AM_LDFLAGS) -static
+ 
+ sbin_PROGRAMS += out/smbios-get-ut-data
+ out_smbios_get_ut_data_SOURCES = src/bin/smbios-get-ut-data.c

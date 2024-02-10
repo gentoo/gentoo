@@ -1,0 +1,37 @@
+--- a/webfuzzer.h
++++ b/webfuzzer.h
+@@ -30,11 +30,11 @@
+ /**
+  **     GLOBAL HASHTABLES
+  **/
+-struct node * HTlinks[ HT_SIZE ];
+-struct node * HTforms[ HT_SIZE ];
+-struct node * HTusers[ HT_SIZE ];
+-struct node * HTtools[ HT_SIZE ];
+-struct node * HTcookies[ HT_SIZE ];
++extern struct node * HTlinks[ HT_SIZE ];
++extern struct node * HTforms[ HT_SIZE ];
++extern struct node * HTusers[ HT_SIZE ];
++extern struct node * HTtools[ HT_SIZE ];
++extern struct node * HTcookies[ HT_SIZE ];
+ 
+ #define	VERSION	"0.2.0"
+ #define	BANNER	GREEN "Webfuzzer " DEF VERSION " (c) gunzip"
+--- a/webfuzzer.c
++++ b/webfuzzer.c
+@@ -29,6 +29,15 @@
+ #include "technic.h"
+ 
+ /**
++ **     GLOBAL HASHTABLES
++ **/
++struct node * HTlinks[ HT_SIZE ];
++struct node * HTforms[ HT_SIZE ];
++struct node * HTusers[ HT_SIZE ];
++struct node * HTtools[ HT_SIZE ];
++struct node * HTcookies[ HT_SIZE ];
++
++/**
+  **	PROTOTYPES
+  **/
+ 

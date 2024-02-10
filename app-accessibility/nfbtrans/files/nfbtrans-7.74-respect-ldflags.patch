@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -28,10 +28,10 @@
+ djgppall: nfbtrans.exe
+ 
+ nfbtrans: $(OBJFILES)
+-	$(CC) $(CFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
+ 
+ nfbtrans.exe:$(OBJFILES)
+-	$(CC)  $(CFLAGS) $(OBJFILES) -o nfbtrans.exe
++	$(CC)  $(CFLAGS) $(LDFLAGS) $(OBJFILES) -o nfbtrans.exe
+ 
+ ultrix:
+ 	$(MAKE) CFLAGS=-O
+@@ -44,7 +44,7 @@
+ 
+ insight:
+ 	insight -fno-builtin -fwritable-strings \
+-	$(CFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
++	$(CFLAGS) $(LDFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
+ 
+ aix:
+ 	$(MAKE) all CC=cc CFLAGS="-o -Dunix -Daix"

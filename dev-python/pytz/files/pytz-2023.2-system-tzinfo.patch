@@ -1,0 +1,52 @@
+Inspired by the Fedora patch:
+https://src.fedoraproject.org/rpms/pytz/blob/rawhide/f/pytz-zoneinfo.patch
+
+_allzones() is based on code in gen_tzinfo.py in upstream repo.
+
+diff --git a/pytz/__init__.py b/pytz/__init__.py
+index f89d0eb..d00f3bb 100644
+--- a/pytz/__init__.py
++++ b/pytz/__init__.py
+@@ -75,6 +75,21 @@ else:  # Python 2.x
+         return s.encode('ASCII')
+ 
+ 
++def _allzones():
++    for dirpath, dirnames, filenames in os.walk(_PYTZ_TZDATADIR):
++        for f in filenames:
++            p = os.path.join(dirpath, f)
++            with open(p, 'rb') as tzfile:
++                if tzfile.read(4) == b'TZif':
++                    yield os.path.relpath(p, _PYTZ_TZDATADIR)
++
++
++_PYTZ_TZDATADIR = os.environ.get('PYTZ_TZDATADIR', '/usr/share/zoneinfo')
++_all_timezones_unchecked = LazyList(x for x in _allzones())
++all_timezones = _all_timezones_unchecked
++all_timezones_set = LazySet(all_timezones)
++
++
+ def open_resource(name):
+     """Open a resource from the zoneinfo subdir for reading.
+ 
+@@ -88,7 +102,7 @@ def open_resource(name):
+     for part in name_parts:
+         if part == os.path.pardir or os.sep in part:
+             raise ValueError('Bad path segment: %r' % part)
+-    zoneinfo_dir = os.environ.get('PYTZ_TZDATADIR', None)
++    zoneinfo_dir = _PYTZ_TZDATADIR
+     if zoneinfo_dir is not None:
+         filename = os.path.join(zoneinfo_dir, *name_parts)
+     else:
+diff --git a/setup.py b/setup.py
+index 24f7f37..b03592c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -21,7 +21,6 @@ for dirpath, dirnames, filenames in os.walk(os.path.join('pytz', 'zoneinfo')):
+     resources.extend([os.path.join(basepath, filename) for filename in filenames])
+ package_data = {'pytz': resources}
+ 
+-assert len(resources) > 10, 'zoneinfo files not found!'
+ 
+ setup(
+     name='pytz',

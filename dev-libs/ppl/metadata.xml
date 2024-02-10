@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="cdd">
+      Build the ppl_lcdd program for vertex/facet enumeration
+      accepting the same input format as the programs shipped with
+      <pkg>sci-libs/cddlib</pkg> and <pkg>sci-libs/lrslib</pkg>
+    </flag>
+    <flag name="lpsol">
+      Build the ppl_lpsol linear program solver that uses
+      <pkg>sci-mathematics/glpk</pkg> for its input routines
+    </flag>
+  </use>
+</pkgmetadata>

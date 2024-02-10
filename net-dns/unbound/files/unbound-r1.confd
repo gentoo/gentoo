@@ -1,0 +1,36 @@
+# /etc/conf.d/unbound
+
+# Configuration file
+#UNBOUND_CONFFILE="/etc/unbound/unbound.conf"
+
+# PID file
+# This is a fallback value which should NOT be changed. If you ever need
+# to change PID file, please change value in configuration file instead!
+#UNBOUND_PIDFILE="/run/unbound.pid"
+
+# You can use this configuration option to pass additional options to the
+# start-stop-daemon, see start-stop-daemon(8) for more details.
+# Per default we wait 1000ms after we have started the service to ensure
+# that the daemon is really up and running.
+#UNBOUND_SSDARGS="--wait 1000"
+
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (25 + 5 seconds
+# per default) when you are stopping the service.
+#UNBOUND_TERMTIMEOUT="TERM/25/KILL/5"
+
+# Options to unbound
+# See unbound(8) for more details
+# Notes:
+# * Do not specify another CONFIGFILE but use the variable above to change the location
+#UNBOUND_OPTS=""
+
+# If you want to preserve unbound's cache, set the following variable to
+# a non-zero value. In this case unbound's cache will be dumped to disk
+# before shutdown and loaded right after start.
+# To be able to dump and load cache you have to set up keys (use `unbound-control-setup`)
+# and need to set 'control-enable: yes' in your configuration!
+# WARNING: If you don't know what you are doing you should NOT use this
+#          feature. Loading the cache with old or wrong data can result in
+#          old or wrong data being returned to clients.
+#UNBOUND_PRESERVE_CACHE=""

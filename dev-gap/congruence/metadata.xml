@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The GAP package Congruence provides functions to construct several
+    types of canonical congruence subgroups in SL_2(Z), and also
+    intersections of a finite number of such subgroups. Furthermore, it
+    implements the algorithm for generating Farey symbols for congruence
+    subgroups and using them to produce a system of independent
+    generators for these subgroups.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/congruence</remote-id>
+  </upstream>
+</pkgmetadata>

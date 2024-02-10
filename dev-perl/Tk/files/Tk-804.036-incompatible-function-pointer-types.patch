@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/883391
+https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=271521
+https://cgit.freebsd.org/ports/commit/?id=ecedf2f3cd2c933fb5df179f174c704c89cf1f31
+--- a/pTk/Xlib.t
++++ b/pTk/Xlib.t
+@@ -331,7 +331,7 @@ VFUNC(int,XIntersectRegion,V_XIntersectRegion,_ANSI_AR
+ #endif /* !DO_X_EXCLUDE */
+ 
+ #ifndef XKeycodeToKeysym
+-VFUNC(KeySym,XKeycodeToKeysym,V_XKeycodeToKeysym,_ANSI_ARGS_((Display *, unsigned int, int)))
++VFUNC(KeySym,XKeycodeToKeysym,V_XKeycodeToKeysym,_ANSI_ARGS_((Display *, KeyCode, int)))
+ #endif /* #ifndef XKeycodeToKeysym */
+ 
+ #ifndef XKeysymToString

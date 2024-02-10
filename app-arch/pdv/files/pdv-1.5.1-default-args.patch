@@ -1,0 +1,16 @@
+diff -ur pdv-1.5.1.orig/pdv.h pdv-1.5.1/pdv.h
+--- pdv-1.5.1.orig/pdv.h	2001-09-01 12:09:28.000000000 -0700
++++ pdv-1.5.1/pdv.h	2006-07-22 22:20:43.000000000 -0700
+@@ -47,9 +47,9 @@
+ 	char   *cmd;           /* command to execute after delivery */
+ 	char   *hlpmsg;        /* user help message */
+ 	char   *agrmsg;        /* optional agreement message */
+-	char   iscompressed;   /* filter payload through uncompress */ 
+-	char   isatar;         /* filter payload through tar */
+-	char   iszipped;       /* use internal compression library */
++	signed char   iscompressed;    /* filter payload through uncompress */ 
++	signed char   isatar;          /* filter payload through tar */
++	signed char   iszipped;        /* use internal compression library */
+ 	off_t  payloadstart;   /* start of payload (after pdv stub) */
+ 	off_t  metadatastart;  /* start of payload data (at end of file) */
+ };

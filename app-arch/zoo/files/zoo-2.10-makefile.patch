@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/726376
+https://bugs.gentoo.org/721888
+https://bugs.gentoo.org/729126
+--- a/makefile
++++ b/makefile
+@@ -18,15 +18,12 @@
+ 
+ MAKE = make	      # needed for some systems e.g. older BSD
+ 
+-CC = cc
+-CFLAGS =
+ MODEL =
+ EXTRA = -DBIG_MEM -DNDEBUG
+ LINTFLAGS = -DLINT
+-OPTIM = `dpkg-buildflags --get CFLAGS`
++OPTIM = $(CFLAGS)
+ OPTIM += -Wall
+-OPTIM += `dpkg-buildflags --get CPPFLAGS`
+-LDFLAGS = `dpkg-buildflags --get LDFLAGS`
++OPTIM += $(CPPFLAGS)
+ 
+ DESTDIR = /usr/local/bin
+ 
+@@ -102,7 +99,7 @@ bsd:
+ 
+ # Linux
+ linux:
+-	$(MAKE) CC="gcc" CFLAGS="-c $(OPTIM) $(LINTFLAGS) -DLINUX -DANSI_HDRS" LDFLAGS="$(LDFLAGS)" $(TARGETS)
++	$(MAKE) CC="$(CC)" CFLAGS="-c $(OPTIM) $(LINTFLAGS) -DLINUX -DANSI_HDRS" LDFLAGS="$(LDFLAGS)" $(TARGETS)
+ 
+ # Linux64
+ linux64:

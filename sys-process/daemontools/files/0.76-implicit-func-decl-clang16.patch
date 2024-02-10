@@ -1,0 +1,13 @@
+diff --git a/sig_pause.c b/sig_pause.c
+index 3d1a793..5280934 100644
+--- a/sig_pause.c
++++ b/sig_pause.c
+@@ -1,5 +1,7 @@
+ /* Public domain. */
+-
++#ifndef _XOPEN_SOURCE
++#define _XOPEN_SOURCE 500
++#endif
+ #include <signal.h>
+ #include "sig.h"
+ #include "hassgprm.h"

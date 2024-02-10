@@ -1,0 +1,29 @@
+From 5443396f3cb591f2589888b25e07f21f03989057 Mon Sep 17 00:00:00 2001
+From: Laszlo Gombos <laszlo.gombos@gmail.com>
+Date: Sat, 24 Dec 2022 01:48:04 +0000
+Subject: [PATCH] When no systemd then only network-legacy is supported
+
+Bug: https://github.com/dracutdevs/dracut/issues/1756
+---
+ modules.d/40network/module-setup.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/modules.d/40network/module-setup.sh b/modules.d/40network/module-setup.sh
+index 1ab13ef..da49947 100755
+--- a/modules.d/40network/module-setup.sh
++++ b/modules.d/40network/module-setup.sh
+@@ -16,6 +16,11 @@ depends() {
+         fi
+     done
+ 
++    # When systemd is not available only network-legacy is supported
++    if [ -z "$network_handler" ] && ! find_binary systemctl > /dev/null; then
++        network_handler="network-legacy"
++    fi
++
+     if [ -z "$network_handler" ]; then
+         if [[ -e $dracutsysrootdir$systemdsystemunitdir/wicked.service ]]; then
+             network_handler="network-wicked"
+-- 
+2.34.1
+

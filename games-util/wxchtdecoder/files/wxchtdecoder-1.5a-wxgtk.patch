@@ -1,0 +1,37 @@
+--- wxchtdecoder-1.5a.orig/source/chtdecoder.cc
++++ wxchtdecoder-1.5a/source/chtdecoder.cc
+@@ -64,26 +64,26 @@
+ const wxSize *CHTDecoder::APP_SIZE = new wxSize(640, 480);
+ 
+ namespace {
+-    const wxCmdLineEntryDesc CMDLINE_DESC[] = {
++    wxCmdLineEntryDesc CMDLINE_DESC[] = {
+         { 
+-            wxCMD_LINE_SWITCH, wxT("h"), wxT("help"),
+-            wxT("display usage information"), wxCMD_LINE_VAL_STRING,
++            wxCMD_LINE_SWITCH, "h", "help",
++            "display usage information", wxCMD_LINE_VAL_STRING,
+             wxCMD_LINE_OPTION_HELP
+         },
+           
+         { 
+-            wxCMD_LINE_SWITCH, wxT("v"), wxT("version"),
+-            wxT("display version information"), wxCMD_LINE_VAL_STRING,
++            wxCMD_LINE_SWITCH, "v", "version",
++            "display version information", wxCMD_LINE_VAL_STRING,
+             wxCMD_LINE_OPTION_HELP 
+         },
+           
+         {
+-            wxCMD_LINE_SWITCH, wxT("f"), wxT("force-open"),
+-            wxT("force opening of possibly invalid .CHT files")
++            wxCMD_LINE_SWITCH, "f", "force-open",
++            "force opening of possibly invalid .CHT files"
+         },
+         
+         {
+-            wxCMD_LINE_PARAM, 0, 0, wxT(".CHT file(s)"),
++            wxCMD_LINE_PARAM, 0, 0, ".CHT file(s)",
+             wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_MULTIPLE
+         },
+         

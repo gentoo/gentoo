@@ -1,0 +1,14 @@
+From: Hannu Lounento <hannu.lounento@vaisala.com>
+Bug: https://github.com/Thalhammer/jwt-cpp/pull/287
+
+Fix build with GCC 13.
+
+--- a/include/jwt-cpp/base.h
++++ b/include/jwt-cpp/base.h
+@@ -3,6 +3,7 @@
+ 
+ #include <array>
++#include <cstdint>
+ #include <stdexcept>
+ #include <string>
+ 

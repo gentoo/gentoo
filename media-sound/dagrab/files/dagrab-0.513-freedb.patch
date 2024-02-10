@@ -1,0 +1,25 @@
+--- dagrab-S0.513/dagrab.1
++++ dagrab-S0.513/dagrab.1
+@@ -209,7 +209,7 @@
+ .B -H
+ .I [host][:port]
+ .RS 3
+-sets the remote cddb server and/or port, defaults to de.freedb.org:888.
++sets the remote cddb server and/or port, defaults to freedb.org:8880.
+ .RE
+ 
+ .B -D
+--- dagrab-S0.513/const.h
++++ dagrab-S0.513/const.h
+@@ -18,9 +18,9 @@
+ #define BLEN		1024	/* length in chars of command/trackname */
+ #define OVERLAP		1	/* minimum number of sectors for overlapping */
+ 
+-#define CDDB_PORT	888
++#define CDDB_PORT	8880
+ #define CDDB_PATH	"/usr/lib/X11/xmcd/cddb"
+-#define CDDB_HOST	"de.freedb.org"
++#define CDDB_HOST	"freedb.org"
+ #define CDDB_MAX	65535
+ 
+ #define KEYLEN		16	/* number of samples for overlap checking */

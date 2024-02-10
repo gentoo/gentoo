@@ -1,0 +1,52 @@
+From: Antti Järvinen <antti.jarvinen@katiska.org>
+Bug: https://bugs.gentoo.org/809464
+
+Installs example TCL programs into correct path. Upon startup binary
+will check example files from path, this why this touches not only
+makefile but also the c++ code. Changes are possible to incorporate
+into next upstream release so this patch will become obsolete.
+
+diff -u -r classified-ads-0.13.orig/classified-ads.pro classified-ads-0.13/classified-ads.pro
+--- classified-ads-0.13.orig/classified-ads.pro	2018-07-03 17:16:11.000000000 +0300
++++ classified-ads-0.13/classified-ads.pro	2021-10-17 19:13:22.049743665 +0300
+@@ -186,7 +186,9 @@
+ manpages.path = /usr/share/man/man1
+ manpages.files = classified-ads.1
+ # note this example file path appears also in file tclmodel.cpp
+-examplefiles.path = /usr/share/doc/classified-ads/examples
++isEmpty(examplefiles.path){
++  examplefiles.path = /usr/share/doc/classified-ads/examples
++} 
+ examplefiles.files = doc/sysinfo.tcl doc/luikero.tcl doc/calendar.tcl
+ INSTALLS += target \
+         desktopfiles \
+diff -u -r classified-ads-0.13.orig/datamodel/tclmodel.cpp classified-ads-0.13/datamodel/tclmodel.cpp
+--- classified-ads-0.13.orig/datamodel/tclmodel.cpp	2018-07-03 17:16:11.000000000 +0300
++++ classified-ads-0.13/datamodel/tclmodel.cpp	2021-10-17 19:28:39.084875578 +0300
+@@ -292,7 +292,13 @@
+ #else
+         // in unix this path appears in classified-ads.pro and 
+         // is used by "make install" phase.
+-        QDir examplesDir ("/usr/share/doc/classified-ads/examples") ; 
++        QDir examplesDir ("/usr/share/doc/classified-ads/examples") ;
++        if ( !examplesDir.exists() ) {
++	  // some linux distributions want version number inside path:
++	  examplesDir.setPath("/usr/share/doc/classified-ads-"+
++			      QString(CLASSIFIED_ADS_VERSION)+
++			      "/examples") ;	  
++        }
+ #endif
+         if ( !examplesDir.exists() ) {
+             return ; // no examples, obviously
+diff -u -r classified-ads-0.13.orig/mcontroller.h classified-ads-0.13/mcontroller.h
+--- classified-ads-0.13.orig/mcontroller.h	2018-07-03 17:16:11.000000000 +0300
++++ classified-ads-0.13/mcontroller.h	2021-10-18 20:38:39.495032595 +0300
+@@ -25,7 +25,7 @@
+ #include "datamodel/netrequestexecutor.h"
+ #include "datamodel/cadbrecord.h" // for CaDbRecord::SearchTerms
+ 
+-#define CLASSIFIED_ADS_VERSION "0.13"
++#define CLASSIFIED_ADS_VERSION "0.13-r2"
+ 
+ class Node ;
+ class Model ;

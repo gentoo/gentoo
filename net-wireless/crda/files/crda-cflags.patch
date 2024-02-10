@@ -1,0 +1,33 @@
+From c5b0741ea7fc12e9f6a2a309296ed412a999d0f7 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Wed, 4 Mar 2015 14:09:50 -0500
+Subject: [PATCH] clean up CFLAGS handling
+
+Rather than append -O2 -g all the time to the user's CFLAGS (and thus
+clobbering whatever they have set up), initialize the default value to
+that and let the user override it entirely.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5f988f4..8e345a1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,9 +26,9 @@ PUBKEY_DIR?=pubkeys
+ RUNTIME_PUBKEY_DIR?=/etc/wireless-regdb/pubkeys
+ 
+ WERROR = -Werror
+-CFLAGS += -O2 -fpic
++CFLAGS ?= -O2 -g
++CFLAGS += -fpic
+ CFLAGS += -std=gnu99 -Wall $(WERROR) -pedantic
+-CFLAGS += -Wall -g
+ LDLIBREG += -lreg
+ LDLIBS += $(LDLIBREG)
+ LDLIBS += -lm
+-- 
+2.3.1
+

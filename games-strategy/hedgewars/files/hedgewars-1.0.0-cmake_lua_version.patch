@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -202,7 +202,7 @@
+ #lua discovery
+ if(LUA_SYSTEM)
+     if(NOT LUA_LIBRARY OR NOT LUA_INCLUDE_DIR)
+-        find_package(Lua)
++        find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+     endif()
+ 
+     if(LUA_LIBRARY AND LUA_INCLUDE_DIR)

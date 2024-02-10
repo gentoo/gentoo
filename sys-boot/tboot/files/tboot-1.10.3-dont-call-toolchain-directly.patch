@@ -1,0 +1,24 @@
+diff -r 5a30b6b09e77 safestringlib/makefile
+--- a/safestringlib/makefile	Fri Dec 10 15:35:42 2021 +0100
++++ b/safestringlib/makefile	Tue Dec 21 12:40:01 2021 -0600
+@@ -29,7 +29,7 @@
+ 	$(CC) $(LDFLAGS) -c -o $@ $< $(CFLAGS)
+ 
+ libsafestring.a: $(OBJ)
+-	ar rcs $@ $^ 
++	$(AR) rcs $@ $^ 
+ 
+ 
+ _TESTFUNCS = Safe_String_UnitTestMain.c test_strcmp_s.c test_strnlen_s.c test_memcmp16_s.c test_strcpyfldin_s.c test_strnterminate_s.c test_memcmp32_s.c test_strcpyfldout_s.c  test_strpbrk_s.c test_memcmp_s.c test_strcpyfld_s.c test_strprefix_s.c test_memcpy16_s.c test_strcpy_s.c test_strremovews_s.c test_memcpy32_s.c  test_strcspn_s.c test_strspn_s.c test_memcpy_s.c test_strfirstchar_s.c test_strstr_s.c test_memmove16_s.c test_strfirstdiff_s.c test_strtok_s.c test_memmove32_s.c test_strfirstsame_s.c test_strtolowercase_s.c test_memmove_s.c test_strisalphanumeric_s.c test_strtouppercase_s.c test_memset16_s.c test_strisascii_s.c test_strzero_s.c test_memset32_s.c test_strisdigit_s.c test_wcpcpy_s.c test_memset_s.c test_strishex_s.c test_wcscat_s.c test_memzero16_s.c test_strislowercase_s.c  test_wcscpy_s.c test_memzero32_s.c test_strismixed_s.c test_wcsncat_s.c test_memzero_s.c test_strispassword_s.c test_wcsncpy_s.c test_strisuppercase_s.c test_wcsnlen_s.c test_stpcpy_s.c test_strlastchar_s.c test_wmemcmp_s.c test_stpncpy_s.c test_strlastdiff_s.c test_wmemcpy_s.c test_strcasecmp_s.c test_strlastsame_s.c test_wmemmove_s.c test_strcasestr_s.c test_strljustify_s.c test_wmemset_s.c test_strcat_s.c test_strncat_s.c test_strcmpfld_s.c test_strncpy_s.c
+diff -r 5a30b6b09e77 tboot/Makefile
+--- a/tboot/Makefile	Fri Dec 10 15:35:42 2021 +0100
++++ b/tboot/Makefile	Tue Dec 21 12:40:01 2021 -0600
+@@ -34,7 +34,7 @@
+ TARGET_LDS := $(CURDIR)/common/tboot.lds
+ 
+ $(TARGET).strip : $(TARGET)
+-	strip $< -o $@
++	$(STRIP) $< -o $@
+ 
+ $(TARGET).gz : $(TARGET).strip
+ 	gzip -n -f -9 < $< > $@

@@ -1,0 +1,12 @@
+diff --git a/Telegram/lib_base/base/qt/qt_compare.h b/Telegram/lib_base/base/qt/qt_compare.h
+index ca03fa2..d1eb6ab 100644
+--- a/Telegram/lib_base/base/qt/qt_compare.h
++++ b/Telegram/lib_base/base/qt/qt_compare.h
+@@ -10,6 +10,7 @@
+ #include <gsl/pointers>
+ 
+ #include <QString>
++#include <variant>
+ 
+ #if !defined(__apple_build_version__) || (__apple_build_version__ > 12000032)
+ 

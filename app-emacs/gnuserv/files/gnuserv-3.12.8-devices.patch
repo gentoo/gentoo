@@ -1,0 +1,64 @@
+Function device-class from devices.el is not used, but collides with
+a function of the same name in frame.el of Emacs 29. So, inline what
+we need, and drop devices.el altogether.
+
+Define delete-device-hook as an alias of delete-frame-functions, so we
+need no advice for delete-frame.
+
+--- gnuserv-3.12.8/gnuserv-compat.el
++++ gnuserv-3.12.8/gnuserv-compat.el
+@@ -125,16 +125,6 @@
+ 	  (setq ad-return-value device))
+       ad-do-it))
+ 
+-  ;; Advise `delete-frame' to run `delete-device-hook'.  This might be a
+-  ;; little too hacky, but it seems to work!  If someone actually tries
+-  ;; to do something device specific then it will probably blow up!
+-  (defadvice delete-frame (before
+-			   gnuserv-compat-delete-frame
+-			   first
+-			   nil
+-			   activate)
+-    (run-hook-with-args 'delete-device-hook frame))
+-
+   ;; Advise `filtered-frame-list' to ignore the optional device
+   ;; argument.  Here we don't follow the mapping of devices to frames.
+   ;; We just assume that any frame satisfying the predicate will do.
+@@ -153,9 +143,36 @@
+ (if (string-match "XEmacs" (emacs-version))
+     nil
+ 
+-  (require 'devices)
+   (defalias 'device-list 'frame-list)
+   (defalias 'selected-device 'selected-frame)
++  (defalias 'device-live-p 'frame-live-p)
++  (defalias 'frame-device 'identity)
++  (defalias 'make-tty-device 'ignore)
++  (defvaralias 'delete-device-hook 'delete-frame-functions)
++
++  (defun make-x-device (&optional display)
++    (if display
++	(make-frame-on-display display)
++      (make-frame)))
++
++  (defun device-on-window-system-p (&optional device)
++    "Return non-nil if DEVICE is on a window system.
++This generally means that there is support for the mouse, the menubar,
++the toolbar, glyphs, etc."
++    (and (cdr-safe (assq 'display (frame-parameters device))) t))
++
++  (defun delete-device (device &optional force)
++    "Delete DEVICE, permanently eliminating it from use.
++Normally, you cannot delete the last non-minibuffer-only frame (you must
++use `save-buffers-kill-emacs' or `kill-emacs').  However, if optional
++second argument FORCE is non-nil, you can delete the last frame. (This
++will automatically call `save-buffers-kill-emacs'.)"
++    (let ((frames (device-frame-list device)))
++      (run-hook-with-args 'delete-device-hook device)
++      (while frames
++	(delete-frame (car frames) force)
++	(setq frames (cdr frames)))))
++
+   (defun device-frame-list (&optional device)
+     (list
+      (if device

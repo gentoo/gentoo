@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,8 +18,9 @@
+ AC_HEADER_STDC
+ 
+ dnl check for ncurses
++AC_CHECK_LIB(tinfo, tparm)
+ AC_CHECK_LIB(ncursesw,
+-	     tparm,
++	     printw,
+ 	     [NCURSES="yes"],
+ 	     AC_MSG_ERROR([ncursesw is absolutely required!]))
+ 

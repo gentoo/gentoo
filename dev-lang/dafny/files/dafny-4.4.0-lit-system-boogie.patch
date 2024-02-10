@@ -1,0 +1,11 @@
+--- a/Source/IntegrationTests/TestFiles/LitTests/LitTest/lit.site.cfg
++++ b/Source/IntegrationTests/TestFiles/LitTests/LitTest/lit.site.cfg
+@@ -107,7 +107,7 @@ testDafnyExecutable = 'dotnet-bin-6.0 exec /var/tmp/portage/dev-lang/dafny-4.2.0
+ defaultServerExecutable = 'dotnet-bin-6.0 exec /var/tmp/portage/dev-lang/dafny-4.2.0/work/dafny-4.2.0_net6.0_Release/DafnyServer.dll'
+ serverExecutable = 'dotnet-bin-6.0 exec /var/tmp/portage/dev-lang/dafny-4.2.0/work/dafny-4.2.0_net6.0_Release/DafnyServer.dll'
+ 
+-boogieExecutable = 'dotnet tool run boogie'
++boogieExecutable = 'boogie'
+ 
+ config.suffixes.append('.transcript')
+ 

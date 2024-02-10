@@ -1,0 +1,25 @@
+# Copyright 1999-2023 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Violet Purcell <vimproved@inventati.org> (2023-04-25)
+# SBCL Upstream does not provide musl binaries for bootstrap, use CLisp.
+dev-lisp/sbcl system-bootstrap
+
+# Sam James <sam@gentoo.org> (2022-11-02)
+# The libxcrypt migration is optional for musl.
+sys-libs/libxcrypt -system -compat
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# net-misc/netkit-rsh is masked on musl and USE=-crypt depends on it
+sys-cluster/torque crypt
+
+# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
+# The musl allocator works well with telegram
+net-im/telegram-desktop -jemalloc
+
+# Force system-libevent use flag on mozilla packages, since the building of
+# bundled libevent cannot accomodate a system without sysctl.h
+# See bug 574830 for more info.
+>=www-client/firefox-45.0 system-libevent
+>=www-client/seamonkey-2.40 system-libevent
+>=mail-client/thunderbird-45.0 system-libevent

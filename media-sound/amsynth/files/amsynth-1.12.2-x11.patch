@@ -1,0 +1,22 @@
+diff --git a/Makefile.in b/Makefile.in
+index e0dd2a6..4449599 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1297,7 +1297,7 @@ amsynth_SOURCES = $(libcore_sources) $(libdsp_sources) \
+ 	$(am__append_1) $(am__append_3) $(am__append_4)
+ amsynth_CPPFLAGS = $(AM_CPPFLAGS) @ALSA_CFLAGS@ @JACK_CFLAGS@ @LASH_CFLAGS@ @LIBLO_CFLAGS@ @GTK_CFLAGS@
+ amsynth_LDADD = @ALSA_LIBS@ @JACK_LIBS@ @LASH_LIBS@ @LIBLO_LIBS@ \
+-	@LIBS@ -lX11 $(am__append_2)
++	@LIBS@ $(am__append_2)
+ @DARWIN_TRUE@amsynth_LDFLAGS = $(AM_LDFLAGS) -framework CoreFoundation -framework CoreAudio -framework CoreMIDI
+ 
+ #
+@@ -1317,7 +1317,7 @@ noinst_LTLIBRARIES = $(am__append_5) $(am__append_6) $(am__append_7)
+ @BUILD_DSSI_TRUE@amsynth_dssi_la_LDFLAGS = -rpath $(dssidir) -avoid-version -module -export-symbols-regex "dssi_descriptor" -disable-static
+ @BUILD_DSSI_GUI_TRUE@amsynth_dssi_gtk_SOURCES = src/amsynth_dssi_gtk.cpp $(libcore_sources) $(libgui_sources)
+ @BUILD_DSSI_GUI_TRUE@amsynth_dssi_gtk_CPPFLAGS = $(AM_CPPFLAGS) @DSSI_CFLAGS@ @GTK_CFLAGS@ @LIBLO_CFLAGS@
+-@BUILD_DSSI_GUI_TRUE@amsynth_dssi_gtk_LDADD = @DSSI_LIBS@ @GTK_LIBS@ @LIBLO_LIBS@ -lstdc++ -lX11
++@BUILD_DSSI_GUI_TRUE@amsynth_dssi_gtk_LDADD = @DSSI_LIBS@ @GTK_LIBS@ @LIBLO_LIBS@ -lstdc++
+ 
+ #
+ # LV2

@@ -1,0 +1,10 @@
+--- a/src/http-client.c
++++ b/src/http-client.c
+@@ -516,7 +516,6 @@
+   SSL_shutdown(ssl);
+   SSL_free(ssl);
+   SSL_CTX_free(ctx);
+-  ERR_free_strings();
+   
+   close(command_socket);
+ 

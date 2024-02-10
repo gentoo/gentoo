@@ -1,0 +1,28 @@
+From 9264fbecf8c7e910fa038ab372376ecc9b8c403c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 12 Dec 2020 17:09:58 +0100
+Subject: [PATCH] Add missing -DBUILD_TESTS dependency Qt5Test
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d4fd670..bb5a895 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,6 +37,10 @@ if(NOT BUILD_WITH_QT4)
+         find_package(Qt5Sql REQUIRED CONFIG)
+     endif()
+ 
++    if(BUILD_TESTS)
++        find_package(Qt5Test CONFIG REQUIRED)
++    endif()
++
+     set(LASTFM_LIB_VERSION_SUFFIX 5)
+     if(UNIX AND NOT APPLE)
+         find_package(Qt5DBus REQUIRED CONFIG)
+-- 
+2.29.2
+

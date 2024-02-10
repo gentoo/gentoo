@@ -1,0 +1,10 @@
+[Unit]
+Description=Privoxy Web Proxy With Advanced Filtering Capabilities
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/privoxy --no-daemon --user privoxy.privoxy /etc/privoxy/config
+SuccessExitStatus=15
+
+[Install]
+WantedBy=multi-user.target

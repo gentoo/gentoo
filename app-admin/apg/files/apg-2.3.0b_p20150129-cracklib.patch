@@ -1,0 +1,47 @@
+commit 8c3976544af138aa5d8bc21aa5bc80ba91babc92
+Author: Andrew Savchenko <bircoph@gentoo.org>
+Date:   Wed Sep 30 17:12:18 2020 +0300
+
+    add cracklib support to the new build system
+
+diff --git a/Makefile.am b/Makefile.am
+index 42068bf..3871295 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,9 +19,15 @@ common_apg_sources = \
+         convert.c
+ 
+ apg_SOURCES = $(common_apg_sources)
++if HAVE_CRACKLIB
++apg_LDFLAGS = -lcrack
++apg_CPPFLAGS = -DAPG_USE_CRACKLIB -DCRACKLIB_DICTPATH=\"/usr/lib/cracklib_dict\"
++endif
+ 
+ apgd_SOURCES = $(common_apg_sources)
+ apgd_CPPFLAGS = -DCLISERV
++apgd_CPPFLAGS += $(apg_CPPFLAGS)
++apgd_LDFLAGS = $(apg_LDFLAGS)
+ 
+ apgbfm_SOURCES = apgbfm.c bloom.c sha/sha.c errors.c getopt.c convert.c
+ apgbfm_CPPFLAGS = -DAPGBFM
+diff --git a/configure.ac b/configure.ac
+index d8fd056..75483d1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,8 +43,16 @@ AC_SEARCH_LIBS([strerror], [cposix])
+ AC_CHECK_FUNCS([getpass gettimeofday inet_ntoa memset strchr strerror])
+ AC_CHECK_FUNCS([crypt])
+ 
++AC_ARG_WITH([cracklib],
++    AC_HELP_STRING([--with-cracklib], [Use cracklib for strong password checking [default=no]]))
++AS_IF([test "x$with_cracklib" = "xyes"],[
++    AC_SEARCH_LIBS([FascistCheck],[crack],[HAVE_CRACKLIB=1],
++        AC_MSG_ERROR([cracklib requested but not found]))
++])
++
+ LT_PREREQ([2.4.2])
+ LT_INIT([win32-dll disable-static pic-only])
+ 
++AM_CONDITIONAL([HAVE_CRACKLIB],[test "x$HAVE_CRACKLIB" != "x"])
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

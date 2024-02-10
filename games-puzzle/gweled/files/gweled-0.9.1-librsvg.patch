@@ -1,0 +1,45 @@
+Fix startup issues with >=librsvg-2.42.3
+https://bugs.gentoo.org/697514
+https://bugs.launchpad.net/gweled/+bug/1869038
+--- a/src/sge_utils.c
++++ b/src/sge_utils.c
+@@ -19,4 +19,5 @@
+  */
+ 
++#include <gio/gio.h>
+ #include <gtk/gtk.h>
+ #include <librsvg/rsvg.h>
+@@ -30,5 +31,6 @@
+ 	gchar *full_pathname;
+ 	GdkPixbuf *pixbuf = NULL;
+-	GError *error;
++	GError *error = NULL;
++	GFile *file;
+ 
+ 	full_pathname = g_strconcat(DATADIR "/pixmaps/",
+@@ -38,11 +40,23 @@
+ 		pixbuf = rsvg_pixbuf_from_file_at_size (full_pathname, width,
+ 						   height, &error);
+-		g_free (full_pathname);
++		if (pixbuf == NULL) {
++			// Some versions of librsvg need URI instead of path.
++			// https://gitlab.gnome.org/GNOME/librsvg/issues/198
++			g_clear_error (&error);
++			file = g_file_new_for_path (full_pathname);
++			g_free (full_pathname);
++			full_pathname = g_file_get_uri (file);
++			g_object_unref (file);
++			pixbuf = rsvg_pixbuf_from_file_at_size (full_pathname, width,
++							   height, &error);
++		}
+ 		if (pixbuf == NULL)
+-			g_free (error);
++			g_error_free (error);
+ 
+ 	} else
+ 		g_warning ("%s not found", filename);
+ 
++	g_free (full_pathname);
++
+ 	return pixbuf;
+ }

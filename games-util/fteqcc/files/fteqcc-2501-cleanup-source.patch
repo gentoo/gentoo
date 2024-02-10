@@ -1,0 +1,218 @@
+--- a/hash.c
++++ b/hash.c
+@@ -68,7 +68,7 @@
+ 	}
+ 	return NULL;
+ }
+-void *Hash_GetKey(hashtable_t *table, int key)
++void *Hash_GetKey(hashtable_t *table, long key)
+ {
+ 	int bucknum = key%table->numbuckets;
+ 	bucket_t *buck;
+@@ -77,7 +77,7 @@
+ 
+ 	while(buck)
+ 	{
+-		if ((int)buck->keystring == key)
++		if ((long)buck->keystring == key)
+ 			return buck->data;
+ 
+ 		buck = buck->next;
+@@ -168,7 +168,7 @@
+ 
+ 	return buck;
+ }
+-void *Hash_AddKey(hashtable_t *table, int key, void *data, bucket_t *buck)
++void *Hash_AddKey(hashtable_t *table, long key, void *data, bucket_t *buck)
+ {
+ 	int bucknum = key%table->numbuckets;
+ 
+@@ -237,14 +237,14 @@
+ }
+ 
+ 
+-void Hash_RemoveKey(hashtable_t *table, int key)
++void Hash_RemoveKey(hashtable_t *table, long key)
+ {
+ 	int bucknum = key%table->numbuckets;
+ 	bucket_t *buck;	
+ 
+ 	buck = table->bucket[bucknum];
+ 
+-	if ((int)buck->keystring == key)
++	if ((long)buck->keystring == key)
+ 	{
+ 		table->bucket[bucknum] = buck->next;
+ 		return;
+@@ -253,7 +253,7 @@
+ 
+ 	while(buck->next)
+ 	{
+-		if ((int)buck->next->keystring == key)
++		if ((long)buck->next->keystring == key)
+ 		{
+ 			buck->next = buck->next->next;
+ 			return;
+--- a/hash.h
++++ b/hash.h
+@@ -19,12 +19,12 @@
+ int Hash_Key(char *name, int modulus);
+ void *Hash_Get(hashtable_t *table, char *name);
+ void *Hash_GetInsensative(hashtable_t *table, char *name);
+-void *Hash_GetKey(hashtable_t *table, int key);
++void *Hash_GetKey(hashtable_t *table, long key);
+ void *Hash_GetNext(hashtable_t *table, char *name, void *old);
+ void *Hash_GetNextInsensative(hashtable_t *table, char *name, void *old);
+ void *Hash_Add(hashtable_t *table, char *name, void *data, bucket_t *buck);
+ void *Hash_AddInsensative(hashtable_t *table, char *name, void *data, bucket_t *buck);
+ void Hash_Remove(hashtable_t *table, char *name);
+ void Hash_RemoveData(hashtable_t *table, char *name, void *data);
+-void Hash_RemoveKey(hashtable_t *table, int key);
+-void *Hash_AddKey(hashtable_t *table, int key, void *data, bucket_t *buck);
++void Hash_RemoveKey(hashtable_t *table, long key);
++void *Hash_AddKey(hashtable_t *table, long key, void *data, bucket_t *buck);
+--- a/qcc.h
++++ b/qcc.h
+@@ -286,7 +286,7 @@
+ #endif
+ 
+ #ifdef WRITEASM
+-FILE *asmfile;
++extern FILE *asmfile;
+ #endif
+ //=============================================================================
+ 
+@@ -830,23 +830,23 @@
+ 
+ typedef char PATHSTRING[MAX_DATA_PATH];
+ 
+-PATHSTRING		*precache_sounds;
+-int			*precache_sounds_block;
+-int			*precache_sounds_used;
+-int			numsounds;
+-
+-PATHSTRING		*precache_textures;
+-int			*precache_textures_block;
+-int			numtextures;
+-
+-PATHSTRING		*precache_models;
+-int			*precache_models_block;
+-int			*precache_models_used;
+-int			nummodels;
+-
+-PATHSTRING		*precache_files;
+-int			*precache_files_block;
+-int			numfiles;
++extern PATHSTRING		*precache_sounds;
++extern int			*precache_sounds_block;
++extern int			*precache_sounds_used;
++extern int			numsounds;
++
++extern PATHSTRING		*precache_textures;
++extern int			*precache_textures_block;
++extern int			numtextures;
++
++extern PATHSTRING		*precache_models;
++extern int			*precache_models_block;
++extern int			*precache_models_used;
++extern int			nummodels;
++
++extern PATHSTRING		*precache_files;
++extern int			*precache_files_block;
++extern int			numfiles;
+ 
+ int	QCC_CopyString (char *str);
+ 
+--- a/qccmain.c
++++ b/qccmain.c
+@@ -2,6 +2,14 @@
+ 
+ #define PROGSUSED
+ #include "qcc.h"
++
++#ifdef WRITEASM
++FILE *asmfile;
++#endif
++
++int			*precache_sounds_used;
++int			*precache_models_used;
++
+ int mkdir(const char *path);
+ 
+ char QCC_copyright[1024];
+@@ -22,7 +30,7 @@
+ void *FS_ReadToMem(char *fname, void *membuf, int *len);
+ void FS_CloseFromMem(void *mem);
+ 
+-struct qcc_includechunk_s *currentchunk;
++extern struct qcc_includechunk_s *currentchunk;
+ 
+ unsigned int MAX_REGS;
+ 
+@@ -84,8 +92,8 @@
+ hashtable_t compconstantstable;
+ hashtable_t globalstable;
+ hashtable_t localstable;
+-hashtable_t floatconstdefstable;
+-hashtable_t stringconstdefstable;
++extern hashtable_t floatconstdefstable;
++extern hashtable_t stringconstdefstable;
+ 
+ pbool qccwarningdisabled[WARN_MAX];
+ 
+@@ -1627,7 +1635,7 @@
+ 
+ #define PROGDEFS_MAX_SIZE 16384
+ //write (to file buf) and add to the crc
+-void inline Add(char *p, unsigned short *crc, char *file)
++void Add(char *p, unsigned short *crc, char *file)
+ {
+ 	char *s;
+ 	int i = strlen(file);
+@@ -1643,7 +1651,7 @@
+ #define ADD(p) Add(p, &crc, file)
+ //#define ADD(p) {char *s;int i = strlen(p);for(s=p;*s;s++,i++){QCC_CRC_ProcessByte(&crc, *s);file[i] = *s;}file[i]='\0';}
+ 
+-void inline Add3(char *p, unsigned short *crc, char *file)
++void Add3(char *p, unsigned short *crc, char *file)
+ {
+ 	char *s;
+ 	for(s=p;*s;s++)
+@@ -3283,7 +3291,7 @@
+ 
+ 
+ #ifdef QCCONLY
+-progfuncs_t *progfuncs;
++extern progfuncs_t *progfuncs;
+ 
+ /*
+ ==============
+--- a/qcc_pr_comp.c
++++ b/qcc_pr_comp.c
+@@ -733,7 +733,7 @@
+ ============
+ */
+ QCC_def_t *QCC_PR_Statement ( QCC_opcode_t *op, QCC_def_t *var_a, QCC_def_t *var_b, QCC_dstatement_t **outstatement);
+-int inline QCC_ShouldConvert(QCC_def_t *var, etype_t wanted)
++int QCC_ShouldConvert(QCC_def_t *var, etype_t wanted)
+ {
+ 	if (var->type->type == ev_integer && wanted == ev_function)
+ 		return 0;
+@@ -7322,7 +7322,7 @@
+ 	QCC_def_t		*def, *d;
+ 	QCC_function_t	*f;
+ 	QCC_dfunction_t	*df;
+-	int			i;
++	int			i = 0;
+ 	pbool shared=false;
+ 	pbool externfnc=false;
+ 	pbool isconstant = false;
+@@ -8541,8 +8541,6 @@
+ 	struct qcc_includechunk_s *oldcurrentchunk;
+ 	extern struct qcc_includechunk_s *currentchunk;
+ 
+-	extern char qccmsourcedir[];
+-
+ 	ocompilingfile = compilingfile;
+ 	os_file = s_file;
+ 	os_file2 = s_file2;

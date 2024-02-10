@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arkamar@gentoo.org</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pymacaroons</remote-id>
+		<remote-id type="github">ecordell/pymacaroons</remote-id>
+	</upstream>
+</pkgmetadata>

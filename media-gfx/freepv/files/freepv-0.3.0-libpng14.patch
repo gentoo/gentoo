@@ -1,0 +1,20 @@
+--- freepv-0.3.0.orig/src/libfreepv/pngReader.cpp
++++ freepv-0.3.0/src/libfreepv/pngReader.cpp
+@@ -135,7 +135,7 @@
+     //Transfor grayscale images with less
+     //than 8 bits to 8 bits
+     if(color_t == PNG_COLOR_TYPE_GRAY && depth<8)
+-      png_set_gray_1_2_4_to_8(p_png_struct);
++      png_set_expand_gray_1_2_4_to_8(p_png_struct);
+ 
+     //Add a full alpha channel if there is
+     //transparency information in the tRNS chunk
+@@ -283,7 +283,7 @@
+     //Transfor grayscale images with less
+     //than 8 bits to 8 bits.
+     if(color_t == PNG_COLOR_TYPE_GRAY && depth<8)
+-      png_set_gray_1_2_4_to_8(p_png_struct);
++      png_set_expand_gray_1_2_4_to_8(p_png_struct);
+ 
+     //Add a full alpha channel if there is
+     //transparency information in the tRNS chunk

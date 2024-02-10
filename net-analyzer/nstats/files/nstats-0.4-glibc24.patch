@@ -1,0 +1,102 @@
+--- a/src/packet.c
++++ b/src/packet.c
+@@ -148,9 +148,9 @@
+                     stats.ip.ipv6.icmp.dst_unreach.s_admin += hdr->len;
+                     break;
+ 
+-                case ICMP6_DST_UNREACH_NOTNEIGHBOR:
+-                    stats.ip.ipv6.icmp.dst_unreach.notneighbor++;
+-                    stats.ip.ipv6.icmp.dst_unreach.s_notneighbor += hdr->len;
++                case ICMP6_DST_UNREACH_BEYONDSCOPE:
++                    stats.ip.ipv6.icmp.dst_unreach.beyondscope++;
++                    stats.ip.ipv6.icmp.dst_unreach.s_beyondscope += hdr->len;
+                     break;
+ 
+                 case ICMP6_DST_UNREACH_ADDR:
+@@ -219,21 +219,6 @@
+             stats.ip.ipv6.icmp.s_echo_reply += hdr->len;
+             break;
+ 
+-        case ICMP6_MEMBERSHIP_QUERY:
+-            stats.ip.ipv6.icmp.mbrship_query++;
+-            stats.ip.ipv6.icmp.s_mbrship_query += hdr->len;
+-            break;
+-
+-        case ICMP6_MEMBERSHIP_REPORT:
+-            stats.ip.ipv6.icmp.mbrship_report++;
+-            stats.ip.ipv6.icmp.s_mbrship_report += hdr->len;
+-            break;
+-
+-        case ICMP6_MEMBERSHIP_REDUCTION:
+-            stats.ip.ipv6.icmp.mbrship_reduction++;
+-            stats.ip.ipv6.icmp.s_mbrship_reduction += hdr->len;
+-            break;
+-
+         case ND_ROUTER_SOLICIT:
+             stats.ip.ipv6.icmp.nd_router_solicit++;
+             stats.ip.ipv6.icmp.s_nd_router_solicit += hdr->len;
+--- a/src/stats.c
++++ b/src/stats.c
+@@ -316,15 +316,6 @@
+     print_line("Echo Reply:", ICMP6.echo_reply, ICMP6.cnt,
+             ICMP6.s_echo_reply, ICMP6.bs, .0);
+     NEXT_ROW;
+-    print_line("MbrShip Query:", ICMP6.mbrship_query, ICMP6.cnt,
+-            ICMP6.s_mbrship_query, ICMP6.bs, .0);
+-    NEXT_ROW;
+-    print_line("MbrShip Report:", ICMP6.mbrship_report, ICMP6.cnt,
+-            ICMP6.s_mbrship_report, ICMP6.bs, .0);
+-    NEXT_ROW;
+-    print_line("MbrShip Reduct.:", ICMP6.mbrship_reduction, ICMP6.cnt,
+-            ICMP6.s_mbrship_reduction, ICMP6.bs, .0);
+-    NEXT_ROW;
+     print_line("ND Rtr Solicit:", ICMP6.nd_router_solicit, ICMP6.cnt,
+             ICMP6.s_nd_router_solicit, ICMP6.bs, .0);
+     NEXT_ROW;
+--- a/src/stats.h
++++ b/src/stats.h
+@@ -233,7 +233,7 @@
+ 
+                     cnt_t noroute;     cnt_t s_noroute;
+                     cnt_t admin;       cnt_t s_admin;
+-                    cnt_t notneighbor; cnt_t s_notneighbor;
++                    cnt_t beyondscope; cnt_t s_beyondscope;
+                     cnt_t addr;        cnt_t s_addr;
+                     cnt_t noport;      cnt_t s_noport;
+ 
+@@ -265,9 +265,6 @@
+                 cnt_t pkt_too_big;         cnt_t s_pkt_too_big;
+                 cnt_t echo_request;        cnt_t s_echo_request;
+                 cnt_t echo_reply;          cnt_t s_echo_reply;
+-                cnt_t mbrship_query;       cnt_t s_mbrship_query;
+-                cnt_t mbrship_report;      cnt_t s_mbrship_report;
+-                cnt_t mbrship_reduction;   cnt_t s_mbrship_reduction;
+                 cnt_t nd_router_solicit;   cnt_t s_nd_router_solicit;
+                 cnt_t nd_router_advert;    cnt_t s_nd_router_advert;
+                 cnt_t nd_neighbor_solicit; cnt_t s_nd_neighbor_solicit;
+--- a/src/nstats.c
++++ b/src/nstats.c
+@@ -528,12 +528,6 @@
+                 ICMP6.s_echo_request, ICMP6.bs);
+         print_line("Echo Reply:", ICMP6.echo_reply, ICMP6.cnt,
+                 ICMP6.s_echo_reply, ICMP6.bs);
+-        print_line("MbrShip Query:", ICMP6.mbrship_query, ICMP6.cnt,
+-                ICMP6.s_mbrship_query, ICMP6.bs);
+-        print_line("MbrShip Report:", ICMP6.mbrship_report, ICMP6.cnt,
+-                ICMP6.s_mbrship_report, ICMP6.bs);
+-        print_line("MbrShip Reduct.:", ICMP6.mbrship_reduction, ICMP6.cnt,
+-                ICMP6.s_mbrship_reduction, ICMP6.bs);
+         print_line("ND Rtr Solicit:", ICMP6.nd_router_solicit, ICMP6.cnt,
+                 ICMP6.s_nd_router_solicit, ICMP6.bs);
+         print_line("ND Rtr Advert:", ICMP6.nd_router_advert, ICMP6.cnt,
+@@ -553,8 +547,8 @@
+                 DESTU6.s_noroute, DESTU6.bs);
+         print_line("Admin:", DESTU6.admin, DESTU6.cnt,
+                 DESTU6.s_admin, DESTU6.bs);
+-        print_line("Not Neighbor:", DESTU6.notneighbor, DESTU6.cnt,
+-                DESTU6.s_notneighbor, DESTU6.bs);
++        print_line("Beyond Scope:", DESTU6.beyondscope, DESTU6.cnt,
++                DESTU6.s_beyondscope, DESTU6.bs);
+         print_line("Addr:", DESTU6.addr, DESTU6.cnt,
+                 DESTU6.s_addr, DESTU6.bs);
+         print_line("No Port:", DESTU6.noport, DESTU6.cnt,

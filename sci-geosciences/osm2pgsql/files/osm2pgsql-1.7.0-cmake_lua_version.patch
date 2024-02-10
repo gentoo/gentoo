@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -193,7 +193,7 @@
+         add_definitions(-DHAVE_LUAJIT=1)
+     else()
+         message(STATUS "Building with Lua support")
+-        find_package(Lua REQUIRED)
++        find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+         include_directories(SYSTEM ${LUA_INCLUDE_DIR})
+     endif()
+     add_definitions(-DHAVE_LUA=1)

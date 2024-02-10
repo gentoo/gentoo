@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Algol 68 Genie is free software distributed under the GNU General Public
+    License; it is a fast compiler-interpreter which ranks among the most
+    complete implementations of the language.
+  </longdescription>
+  <use>
+    <flag name="mpfr">Add support for multiprecision floating point rouding</flag>
+  </use>
+  <upstream>
+    <bugs-to>mailto:algol68g@xs4all.nl</bugs-to>
+  </upstream>
+</pkgmetadata>

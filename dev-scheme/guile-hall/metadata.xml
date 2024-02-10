@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    Hall is a command-line application and a set of Guile libraries that allow
+    you to quickly create and publish Guile projects. It allows you to
+    transparently support the GNU build system, manage a project hierarchy and
+    provides tight coupling to Guix.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.com/a-sassmannshausen/guile-hall/-/issues/</bugs-to>
+    <remote-id type="gitlab">a-sassmannshausen/guile-hall</remote-id>
+  </upstream>
+</pkgmetadata>

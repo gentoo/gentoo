@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>rndxelement@protonmail.com</email>
+		<name>Philipp Rösner</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>mlq@pwmt.org</email>
+			<name>Moritz Lipp</name>
+		</maintainer>
+			<maintainer status="active">
+			<email>sebastian+dev@ramacher.at</email>
+		<name>Sebastian Ramacher</name>
+		</maintainer>
+		<doc lang="en">https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/blob/master/README.md</doc>
+		<bugs-to>https://git.pwmt.org/pwmt/zathura-pdf-mupdf/-/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

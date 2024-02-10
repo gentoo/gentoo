@@ -1,0 +1,31 @@
+From 4fae9155a19aca601072f361768e0bf8ed556b1e Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 11 Jan 2022 22:05:11 +0100
+Subject: [PATCH] Fix build with meson >= 0.61.0
+
+Otherwise it fails with "docs/reference/meson.build:21:6: ERROR:
+gnome.gtkdoc keyword argument 'expand_content_files' was of type
+array[File] but should have been array[str]".
+---
+ docs/reference/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/docs/reference/meson.build b/docs/reference/meson.build
+index 654404b..3927109 100644
+--- a/docs/reference/meson.build
++++ b/docs/reference/meson.build
+@@ -47,9 +47,9 @@ gnome.gtkdoc(
+         'libsignon-glib.types',
+     ],
+     content_files: doc_content_files,
+-    expand_content_files: files(
++    expand_content_files: [
+         'migrating-1to2.xml'
+-    ),
++    ],
+     fixxref_args: [
+         '--extra-dir=@0@'.format(join_paths(glib_docpath, 'glib')),
+         '--extra-dir=@0@'.format(join_paths(glib_docpath, 'gobject')),
+-- 
+GitLab
+

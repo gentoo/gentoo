@@ -1,0 +1,18 @@
+diff -ruN g15mpd-1.0.0/Makefile.am g15mpd-1.0.0-patched/Makefile.am
+--- g15mpd-1.0.0/Makefile.am	2014-01-17 13:43:28.536056492 -0500
++++ g15mpd-1.0.0-patched/Makefile.am	2014-01-17 13:43:31.596056410 -0500
+@@ -1,12 +1,12 @@
+ AM_CPPFLAGS = @libmpd_CFLAGS@
+-AM_CFLAGS = -O3 -Wall @CFLAGS@ -I$(top_builddir) -I$(top_srcdir) 
++AM_CFLAGS = @CFLAGS@ -I$(top_builddir) -I$(top_srcdir) 
+ METASOURCES = AUTO
+ bin_PROGRAMS = g15mpd
+ 
+ docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
+ doc_DATA = README ChangeLog AUTHORS NEWS COPYING
+ 
+-LIBS = -lg15daemon_client -lg15render -lX11 -lXtst @libmpd_LIBS@
++LIBS = -lpthread -lg15daemon_client -lg15render -lX11 -lXtst @libmpd_LIBS@
+ IMCLUDES = -I
+ g15mpd_LDFLAGS = -avoid-version
+ g15mpd_SOURCES =  g15mpd.c

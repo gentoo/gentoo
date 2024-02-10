@@ -1,0 +1,32 @@
+From 9415a9da443c9a566dd2220551928c16602fa284 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 17 Jul 2022 12:45:25 +0200
+Subject: [PATCH] Python3 must be found first
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a847838be..1b5b38bbc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,12 +134,12 @@ endif()
+ # Optional: PySide2
+ option(BUILD_PYTHON_SUPPORT "Support for Python plugins" ON)
+ if (BUILD_PYTHON_SUPPORT)
++    find_package(Python3 COMPONENTS Development)
+     find_package(PySide2 "2.0.0")
+     find_package(Shiboken2 "2.0.0")
+-    find_package(Python3 COMPONENTS Development)
++    set_package_properties(Python3 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+     set_package_properties(PySide2 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+     set_package_properties(Shiboken2 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+-    set_package_properties(Python3 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+     if (PySide2_FOUND AND Shiboken2_FOUND AND Python3_FOUND)
+         set(ENABLE_PYTHON_PLUGINS TRUE)
+     endif()
+-- 
+2.41.0
+

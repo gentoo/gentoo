@@ -1,0 +1,34 @@
+# Load kexec kernel image into memory during shutdown instead of bootup
+# (default: yes)
+#LOAD_DURING_SHUTDOWN="yes"
+
+# Additional arguments passed to kexec (8)
+#KEXEC_OPT_ARGS=""
+
+# Kernel image partition. Mounted automatically if not.
+# (default: /boot)
+#BOOTPART="/boot"
+
+# Root partition (should be autodetected)
+#ROOTPART="/dev/hda3"
+
+# Kernel image pathname, relative from BOOTPART.
+# If it's one of 
+# {kernel-genkernel,bzImage,vmlinuz,kernel}-<currently running kernel version>,
+# or bzImage, vmlinuz (without suffix),
+# then it's automaticaly detected.
+# Setting it to "-" will disable kexec.
+#KNAME="vmlinuz-3.9.0"
+
+# Initrd
+# Same automatic detection restriction as for KNAME apply.
+# initramfs-genkernel-<currently running kernel version>,
+# initrd{,.img}-<currently running kernel version>{,.img}
+# will be detected.
+#INITRD="/boot/fbsplash-emergence-1024x768"
+
+# Kernel parameters (should be autodetected)
+#KPARAM="splash=silent,theme:emergence"
+
+# Do not try to mount /boot
+# DONT_MOUNT_BOOT="yes"

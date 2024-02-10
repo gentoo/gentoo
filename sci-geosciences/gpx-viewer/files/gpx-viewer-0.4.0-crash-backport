@@ -1,0 +1,22 @@
+--- a/data/gpx-viewer-file-chooser.ui
++++ b/data/gpx-viewer-file-chooser.ui
+@@ -7,7 +7,6 @@
+     <property name="title" translatable="yes">Choose gpx file(s)</property>
+     <property name="icon_name">gpx-viewer</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <property name="select_multiple">True</property>
+     <property name="filter">gpx_viewer_file_chooser_filter</property>
+     <property name="local_only">False</property>
+
+--- a/data/gpx-viewer-preferences.ui
++++ b/data/gpx-viewer-preferences.ui
+@@ -5,7 +5,6 @@
+   <object class="GtkDialog" id="preferences_dialog">
+     <property name="border_width">5</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <signal name="response" handler="gpx_viewer_preferences_close"/>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+

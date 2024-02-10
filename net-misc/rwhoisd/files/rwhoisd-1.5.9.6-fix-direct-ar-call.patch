@@ -1,0 +1,33 @@
+Date: Wed, 1 Mar 2023 22:04:45 +0100
+Subject: [PATCH] fix direct ar call
+
+Prevent build to directly call ar and use a variable instead.
+
+Bug: https://bugs.gentoo.org/725194
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/common/Makefile.in
++++ b/common/Makefile.in
+@@ -1,7 +1,7 @@
+
+ # programs
+ CC      = @CC@
+-AR      = ar
++AR      = @AR@
+ RANLIB  = @RANLIB@
+ SHELL   = /bin/sh
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,6 +4,8 @@ dnl This has been updated to use autoconf-2.52.
+ AC_INIT
+ AC_CONFIG_SRCDIR([common/attributes.c])
+
++AC_CHECK_TOOL(AR, ar, false)
++
+ dnl Random substitution variables
+ if test -f VERSION; then
+ 	RWHOIS_VERSION=`cat VERSION`
+--
+2.39.2

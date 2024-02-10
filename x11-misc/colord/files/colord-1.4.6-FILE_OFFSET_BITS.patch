@@ -1,0 +1,38 @@
+https://github.com/hughsie/colord/pull/159
+
+From 72cc7bb299de09ec53aa4ce125af370158127d0e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 2 Dec 2023 05:07:46 +0000
+Subject: [PATCH] meson.build: set FILE_OFFSET_BITS explicitly
+
+This is needed if building introspection because:
+a) Meson's own setting of FILE_OFFSET_BITS (which it does by default) doesn't
+affect the introspection tooling;
+
+b) glibc's headers seem to react poorly to _just_ _TIME_BITS being set, even
+though in this cas, the failure was for a 64-bit ABI anyway.
+
+Fixes: ce9732a87bc2a0ddca841b49b9b9e24351ea78c8
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ meson.build | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 072a612..b0b1af8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -215,7 +215,9 @@ add_project_arguments('-DCD_COMPILATION', language: 'c')
+ # Needed for realpath() and PATH_MAX
+ add_project_arguments('-D_XOPEN_SOURCE=700', language : 'c')
+ # Needed to opt-in to 64-bit time_t on glibc. We pass 64-bit pointers into
+-# gmtime_r.
++# gmtime_r. We have to set F_O_B here despite Meson defaulting to it because
++# it doesn't get passed down to introspection otherwise.
++add_project_arguments('-D_FILE_OFFSET_BITS=64', language : 'c')
+ add_project_arguments('-D_TIME_BITS=64', language : 'c')
+ 
+ prefix = get_option('prefix')
+-- 
+2.43.0
+

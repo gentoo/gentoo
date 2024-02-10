@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>waebbl-gentoo@posteo.net</email>
+    <name>Bernd Waibel</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>mathy@vanvoorden.be</email>
+    <name>Mathy Vanvoorden</name>
+  </maintainer>
+  <maintainer type="person" proxied="proxy">
+    <email>ionen@gentoo.org</email>
+    <name>Ionen Wolkens</name>
+  </maintainer>
+  <longdescription>
+    Application framework from NVIDIA for achieving optimal ray tracing
+    performance on the GPU. Provides a simple, recursive and flexible
+    pipeline for accelerating ray tracing algorithms.
+  </longdescription>
+  <use>
+    <flag name="headers-only">Download and install only the header files</flag>
+  </use>
+</pkgmetadata>

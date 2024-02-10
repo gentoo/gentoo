@@ -1,0 +1,19 @@
+https://invent.kde.org/office/calligra/-/merge_requests/81
+https://invent.kde.org/office/calligra/-/commit/30c905a6a34ad656446839c844abb78a2aa3f586
+
+From 30c905a6a34ad656446839c844abb78a2aa3f586 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 19 Apr 2023 10:34:25 +0200
+Subject: [PATCH] Avoid implicit declaration of atoi in CMake check
+
+Future compilers will not support implicit function declarations by
+default, so include <stdlib.h> for a declaration of atoi.
+--- a/cmake/TestModernZlib.c
++++ b/cmake/TestModernZlib.c
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include <string.h>
+ #include <zlib.h>
+ 
+-- 
+GitLab

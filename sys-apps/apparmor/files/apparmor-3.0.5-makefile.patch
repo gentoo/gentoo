@@ -1,0 +1,18 @@
+* Avoid installing empty /var/lib/apparmor
+* Install rc.apparmor.functions to Gentoo-appropriate location
+
+--- a/Makefile
++++ b/Makefile
+@@ -407,10 +407,10 @@
+ .PHONY: install-indep
+ install-indep: indep
+ 	install -m 755 -d $(INSTALL_CONFDIR)
++	install -m 755 -d ${DESTDIR}/usr/libexec
+ 	install -m 644 parser.conf $(INSTALL_CONFDIR)
+-	install -m 755 -d ${DESTDIR}/var/lib/apparmor
+ 	install -m 755 -d $(APPARMOR_BIN_PREFIX)
+-	install -m 755 rc.apparmor.functions $(APPARMOR_BIN_PREFIX)
++	install -m 755 rc.apparmor.functions ${DESTDIR}/usr/libexec
+ 	install -m 755 profile-load $(APPARMOR_BIN_PREFIX)
+ 	$(MAKE) -C po install NAME=${NAME} DESTDIR=${DESTDIR}
+ 

@@ -1,0 +1,39 @@
+diff --git a/Makefile b/Makefile
+index ded74ce..6f2afd1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -16,8 +16,8 @@ lib += -L/usr/local/mysql
+ 
+ 
+ CC       := gcc
+-CPPFLAGS := -O $(inc)
+-CFLAGS   := -g -W -Wall -DMAXFDS=4096
++CPPFLAGS := $(inc) ${CPPFLAGS}
++CFLAGS   := -g -W -Wall -DMAXFDS=`ulimit -n` ${CFLAGS}
+ OS_NAME  := $(shell uname | tr [A-Z] [a-z])
+ LDLIBS    = $(lib) -lmysqlclient -lz
+ 
+@@ -50,20 +50,20 @@ policyd: syslog.o policyd.o generic.o mysql.o greylist.o throttle.o sockets.o ci
+ 	whitelist.o throttle_host.o throttle_sasl.o throttle_from.o throttle_rcpt.o helo.o
+ 	@echo ""
+ 	@echo "[*] Linking policyd*"
+-	@$(CC) $(CFLAGS) $(CPPFLAGS) \
++	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+ 	syslog.o policyd.o generic.o mysql.o greylist.o throttle.o sockets.o cidr.o spamtrap.o blacklist.o blacklist_helo.o \
+ 	whitelist.o throttle_host.o throttle_sasl.o throttle_from.o throttle_rcpt.o helo.o \
+ 	$(LDLIBS) -o policyd
+ 
+ cleanup: syslog.o cidr.o cleanup.o generic.o sockets.o mysql.o
+ 	@echo "[*] Linking cleanup*"
+-	@$(CC) $(CFLAGS) $(CPPFLAGS) \
++	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+ 	syslog.o cidr.o cleanup.o generic.o sockets.o mysql.o \
+ 	$(LDLIBS) -o cleanup
+ 
+ stats: cidr.o syslog.o stats.o generic.o sockets.o mysql.o
+ 	@echo "[*] Linking stats*"
+-	@$(CC) $(CFLAGS) $(CPPFLAGS) \
++	@$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+ 	cidr.o syslog.o stats.o generic.o sockets.o mysql.o \
+ 	$(LDLIBS) -o stats
+ 	@echo ""

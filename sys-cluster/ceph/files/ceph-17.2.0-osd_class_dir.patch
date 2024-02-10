@@ -1,0 +1,13 @@
+diff --git a/src/common/options/osd.yaml.in b/src/common/options/osd.yaml.in
+index 8360e4a9223..e176fd37e06 100644
+--- a/src/common/options/osd.yaml.in
++++ b/src/common/options/osd.yaml.in
+@@ -451,7 +451,7 @@ options:
+ - name: osd_class_dir
+   type: str
+   level: advanced
+-  default: @CMAKE_INSTALL_LIBDIR@/rados-classes
++  default: @CMAKE_INSTALL_FULL_LIBDIR@/rados-classes
+   fmt_desc: The class path for RADOS class plug-ins.
+   with_legacy: true
+ - name: osd_open_classes_on_start

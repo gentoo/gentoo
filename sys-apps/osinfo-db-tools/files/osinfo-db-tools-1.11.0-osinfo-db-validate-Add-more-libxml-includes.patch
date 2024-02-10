@@ -1,0 +1,35 @@
+From 019487cbc79925e49988789bf533c78dab7e1842 Mon Sep 17 00:00:00 2001
+Message-ID: <019487cbc79925e49988789bf533c78dab7e1842.1701158114.git.mprivozn@redhat.com>
+In-Reply-To: <34378a4ac257f2f5fcf364786d1634a8c36b304f.1701158114.git.mprivozn@redhat.com>
+References: <34378a4ac257f2f5fcf364786d1634a8c36b304f.1701158114.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Mon, 27 Nov 2023 15:06:04 +0100
+Subject: [PATCH 2/2] osinfo-db-validate: Add more libxml/ includes
+
+In its 2.12.0 release, libxml reworked their header files (some
+might even call it cleaning up, I call it API incompatible
+change) and now  we don't get all declarations we need by just
+including one file. Add missing includes.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ tools/osinfo-db-validate.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/osinfo-db-validate.c b/tools/osinfo-db-validate.c
+index b1434a6..f3275db 100644
+--- a/tools/osinfo-db-validate.c
++++ b/tools/osinfo-db-validate.c
+@@ -20,7 +20,9 @@
+  *   Daniel P. Berrange <berrange@redhat.com>
+  */
+ 
++#include <libxml/parser.h>
+ #include <libxml/relaxng.h>
++#include <libxml/tree.h>
+ #include <locale.h>
+ #include <glib/gi18n.h>
+ 
+-- 
+2.41.0
+

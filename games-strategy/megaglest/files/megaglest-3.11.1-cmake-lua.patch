@@ -1,0 +1,25 @@
+Use the standard FindLua.cmake instead of the modified bundled FindLUA.cmake,
+and force the use of an exact Lua version.
+
+--- a/source/glest_game/CMakeLists.txt
++++ b/source/glest_game/CMakeLists.txt
+@@ -64,7 +64,7 @@
+ 		ENDIF()
+ 	ENDIF()
+ 
+-	FIND_PACKAGE(LUA REQUIRED)
++	FIND_PACKAGE(Lua ${FORCE_LUA_VERSION} EXACT REQUIRED)
+ 	INCLUDE_DIRECTORIES(${LUA_INCLUDE_DIR})
+ 	IF(UNIX)
+ 		SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${LUA_LIBRARIES})
+--- a/source/shared_lib/CMakeLists.txt
++++ b/source/shared_lib/CMakeLists.txt
+@@ -132,7 +132,7 @@
+ 		SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${OPENAL_LIBRARY})
+ 	ENDIF()
+ 
+-        FIND_PACKAGE(LUA REQUIRED)
++        FIND_PACKAGE(Lua ${FORCE_LUA_VERSION} EXACT REQUIRED)
+         INCLUDE_DIRECTORIES(${LUA_INCLUDE_DIR})
+         IF(UNIX)
+ 	        SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${LUA_LIBRARIES} ${CMAKE_DL_LIBS})

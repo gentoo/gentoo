@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    eless provides a combination of Bash script and a minimal Emacs view-mode.
+    Features: independent of a user’s Emacs config, customizable via the
+    (locate-user-emacs-file "elesscfg") config, not require an Emacs server to
+    be already running, syntax highlighting, Org-mode file rendering, man page
+    viewer, info viewer, dired, wdired, (batch edit symbolic links), colored
+    diffs, git diff, git log, ls with auto ANSI detection, filter log files
+    lines matching a regexp, auto-revert log files similar to tail -f, quickly
+    change frame and font sizes.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/kaushalmodi/eless/issues/</bugs-to>
+    <remote-id type="github">kaushalmodi/eless</remote-id>
+  </upstream>
+</pkgmetadata>

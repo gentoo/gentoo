@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -8,7 +8,6 @@
+ AC_CONFIG_HEADER([config.h])
+  
+ AC_PROG_CC
+-AC_PROG_LIBTOOL
+ AC_PROG_RANLIB
+ 
+ AC_CHECK_LIB([g15daemon_client], [g15daemon_version],,AC_MSG_ERROR(["libg15daemon_client (or its devel package) not found. please install it"]))

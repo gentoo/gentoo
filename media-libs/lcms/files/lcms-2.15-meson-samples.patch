@@ -1,0 +1,26 @@
+https://github.com/mm2/Little-CMS/pull/362
+
+From 8849dd87ae44216b56c48db2b441f3906e085596 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Thu, 2 Mar 2023 11:54:46 +0000
+Subject: [PATCH] Fix compiling the samples using meson
+
+--- a/utils/samples/meson.build
++++ b/utils/samples/meson.build
+@@ -5,7 +5,7 @@ wtpt_srcs = files(
+ wtpt_exe = executable(
+   'wtpt',
+   wtpt_srcs,
+-  dependencies: [liblcms2_dep, common_dep],
++  dependencies: [liblcms2_dep, common_dep, m_dep],
+ )
+ 
+ wtpt_man = files(
+@@ -28,6 +28,6 @@ foreach exe, srcs : examples
+   executable(
+     exe,
+     srcs,
+-    dependencies: [liblcms2_dep],
++    dependencies: [liblcms2_dep, m_dep],
+   )
+ endforeach

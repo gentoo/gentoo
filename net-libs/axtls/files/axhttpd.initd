@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+AXHTTPD_USER="axtls"
+AXHTTPD_GROUP="axtls"
+AXHTTPD_DAEMON="/usr/bin/axhttpd"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting axhttpd"
+	start-stop-daemon --quiet --start "${AXHTTPD_DAEMON}" \
+		--user "${AXHTTPD_USER}":"${AXHTTPD_GROUP}" \
+		-- ${AXHTTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping axhttpd"
+	start-stop-daemon --quiet --stop "${AXHTTPD_DAEMON}"
+	eend $?
+}

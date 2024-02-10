@@ -1,0 +1,14 @@
+diff -Naur a/cmake/FindCUDA.cmake b/cmake/FindCUDA.cmake
+--- a/cmake/FindCUDA.cmake	2018-05-26 12:57:45.698858052 +0100
++++ b/cmake/FindCUDA.cmake	2018-05-26 16:49:01.196390803 +0100
+@@ -447,8 +447,8 @@
+ # Parse HOST_COMPILATION mode.
+ option(CUDA_HOST_COMPILATION_CPP "Generated file extension" ON)
+ 
+-# Extra user settable flags
+-set(CUDA_NVCC_FLAGS "" CACHE STRING "Semi-colon delimit multiple arguments.")
++ #Extra user settable flags
++set(CUDA_NVCC_FLAGS "--expt-relaxed-constexpr;" CACHE STRING "Semi-colon delimit multiple arguments.")
+ 
+ if(CMAKE_GENERATOR MATCHES "Visual Studio")
+   set(_CUDA_MSVC_HOST_COMPILER "$(VCInstallDir)Tools/MSVC/$(VCToolsVersion)/bin/Host$(Platform)/$(PlatformTarget)")

@@ -1,0 +1,109 @@
+From b9a8a5b0b8249ca63a785f092bdbb0e0402119fb Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 29 Jan 2024 17:57:06 -0500
+Subject: [PATCH] configure: fix basic syntax errors in the shell script
+ programming language
+
+Fixes regression in commit f3a99e81e997cf0d8db47056b36ca2c2e3beee8f
+which prevented successfully running on non-bash shells.
+
+Bash provides the standard `test XXX = YYY` or `[ XXX = YYY ]`
+utilities. It also provides the ability to spell the equals sign as a
+double equals. This does nothing whatsoever -- it adds no new
+functionality to bash, it forbids nothing, it is *literally* an exact
+alias.
+
+It should never be used under any circumstances. All developers must
+immediately forget that it exists. Using it is non-portable and does not
+work in /bin/sh scripts such as configure scripts, and it results in
+dangerous muscle memory when used in bash scripts because it makes
+people unthinkingly use the double equals even in /bin/sh scripts. To
+add insult to injury, it makes scripts take up more disk space (by a
+whole byte! and sometimes even a few bytes...)
+
+Delete this accidental bashism, and restore the ability to get correct
+./configure behavior on systems where /bin/sh is something other than a
+symlink to GNU bash.
+
+Change-Id: I38ee6d19d12cf8702ef394f3ee40f353f749b2c6
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ configure.ac | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 16d4dc4..5497a89 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ ################################################################################
+ 
+ AC_PREREQ([2.61])
+-AC_INIT(liberasurecode, [-], 
++AC_INIT(liberasurecode, [-],
+         [tusharsg AT gmail DOT com, kmgreen2 AT gmail DOT com],
+         [], [https://github.com/openstack/liberasurecode])
+ AM_MAINTAINER_MODE([disable])
+@@ -164,42 +164,42 @@ if test x$mmi = xtrue ; then
+ 
+     SUPPORTED_FLAGS=""
+     $CC - -E -mmmx </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="-mmmx"
+       AC_MSG_RESULT([$CC supports -mmmx])
+     fi
+     $CC - -E -msse </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -msse"
+       AC_MSG_RESULT([$CC supports -msse])
+     fi
+     $CC - -E -msse2 </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -msse2"
+       AC_MSG_RESULT([$CC supports -msse2])
+     fi
+     $CC - -E -msse3 </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -msse3"
+       AC_MSG_RESULT([$CC supports -msse3])
+     fi
+     $CC - -E -mssse3 </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -mssse3"
+       AC_MSG_RESULT([$CC supports -mssse3])
+     fi
+     $CC - -E -msse4.1 </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -msse4.1"
+       AC_MSG_RESULT([$CC supports -msse4.1])
+     fi
+     $CC - -E -msse4.2 </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -msse4.2"
+       AC_MSG_RESULT([$CC supports -msse4.2])
+     fi
+     $CC - -E -mavx </dev/null >/dev/null 2>&1
+-    if [[ $? == "0" ]]; then
++    if [[ $? = 0 ]]; then
+       SUPPORTED_FLAGS="$SUPPORTED_FLAGS -mavx"
+       AC_MSG_RESULT([$CC supports -mavx])
+     fi
+@@ -227,7 +227,7 @@ if test x$mmi = xtrue ; then
+     CFLAGS="$CFLAGS $SIMD_FLAGS"
+ fi
+ 
+-# Certain code may be dependent on 32 vs. 64-bit arch, so add a 
++# Certain code may be dependent on 32 vs. 64-bit arch, so add a
+ # flag for 64-bit
+ AC_CHECK_SIZEOF([long])
+ if test "$ac_cv_sizeof_long" -eq 8; then
+-- 
+2.43.0
+

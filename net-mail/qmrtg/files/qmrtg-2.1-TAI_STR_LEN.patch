@@ -1,0 +1,11 @@
+--- a/filters/qtaif.c
++++ b/filters/qtaif.c
+@@ -28,7 +28,7 @@
+             return 3;
+         }
+     }
+-    taibuf[TAI_STR_LEN] =  '\0';
++    taibuf[TAI_STR_LEN -1] =  '\0';
+     
+     printf("%s\n", taibuf);
+     

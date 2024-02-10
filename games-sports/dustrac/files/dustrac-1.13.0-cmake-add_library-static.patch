@@ -1,0 +1,31 @@
+Fix linking with BUILD_SHARED_LIBS=ON default in EAPI-7.
+
+--- a/src/game/STFH/CMakeLists.txt	2017-08-28 21:43:54.000000000 +0200
++++ b/src/game/STFH/CMakeLists.txt	2021-02-27 20:58:35.523503983 +0100
+@@ -10,5 +10,5 @@
+     source.cpp
+ )
+ 
+-add_library(STFH ${STFHSRC})
++add_library(STFH STATIC ${STFHSRC})
+ 
+--- a/src/game/MTFH/CMakeLists.txt	2017-08-28 21:43:54.000000000 +0200
++++ b/src/game/MTFH/CMakeLists.txt	2021-02-27 20:58:48.451565823 +0100
+@@ -9,5 +9,5 @@
+     menumanager.cpp
+     menuitemview.cpp)
+ 
+-add_library(MTFH ${MTFHSRC})
++add_library(MTFH STATIC ${MTFHSRC})
+ 
+--- a/src/game/MiniCore/CMakeLists.txt	2017-08-28 21:43:54.000000000 +0200
++++ b/src/game/MiniCore/CMakeLists.txt	2021-02-27 20:59:01.267627130 +0100
+@@ -82,7 +82,7 @@
+ set(MiniCoreSRC ${MiniCoreSRC} Graphics/contrib/glew/glew.c)
+ endif()
+ 
+-add_library(MiniCore ${MiniCoreSRC})
++add_library(MiniCore STATIC ${MiniCoreSRC})
+ 
+ target_link_libraries(MiniCore Qt5::Core Qt5::OpenGL Qt5::Xml OpenGL::GL)
+ 

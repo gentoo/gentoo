@@ -1,0 +1,39 @@
+From e0f53949d35f32d251ab003d6e9e70a7f8c0e69a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <mjo@gentoo.org>
+Date: Tue, 21 Oct 2014 19:48:37 -0400
+Subject: [PATCH 1/1] Update bash completion script for new
+ bash-completion-2.1 (Gentoo bug #526222).
+
+* Don't use `which drush ...` to detect the presence of drush in the
+  bash-completion script (https://github.com/drush-ops/drush/issues/521).
+
+* Don't install completions for commands that we don't "own"
+  (https://github.com/drush-ops/drush/issues/915).
+
+---
+ drush.complete.sh | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drush.complete.sh b/drush.complete.sh
+index 067a67c..2f97317 100644
+--- a/drush.complete.sh
++++ b/drush.complete.sh
+@@ -5,9 +5,6 @@
+ # examples/example.bashrc instead, as it will automatically find and source
+ # this file.
+ 
+-# Ensure drush is available.
+-which drush > /dev/null || alias drush &> /dev/null || return
+-
+ __drush_ps1() {
+   f="${TMPDIR:-/tmp/}/drush-env/drush-drupal-site-$$"
+   if [ -f $f ]
+@@ -31,4 +28,4 @@ _drush_completion() {
+ }
+ 
+ # Register our completion function. We include common short aliases for Drush.
+-complete -o bashdefault -o default -o nospace -F _drush_completion d dr drush drush5 drush6 drush7 drush.php
++complete -o bashdefault -o default -o nospace -F _drush_completion drush
+-- 
+2.0.4
+

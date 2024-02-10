@@ -1,0 +1,15 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -73,9 +73,9 @@
+ 	@echo 'char compiled[] = "$(CC) $(CFLAGS) $(LIBS)";' >> $@
+ 
+ install:
+-	./install-sh -c -s -m 555 -o bin -g bin $(PROG) $(BINDEST)/$(PROG)
+-	./install-sh -c -m 444 -o bin -g bin $(PROG).1 $(MANDEST)/man1/$(PROG).1
+-	[ -f /etc/$(PROG) ] || ./install-sh -c -m 444 .trafshow /etc/$(PROG)
++	./install-sh -c -m 755 -o root -g root $(PROG) $(DESTDIR)$(BINDEST)/$(PROG)
++	./install-sh -c -m 644 -o root -g root $(PROG).1 $(DESTDIR)$(MANDEST)/man1/$(PROG).1
++	[ -f $(DESTDIR)/etc/$(PROG) ] || ./install-sh -c -o root -m 644 .trafshow $(DESTDIR)/etc/$(PROG)
+ 
+ clean:
+ 	rm -f $(CLEANFILES)

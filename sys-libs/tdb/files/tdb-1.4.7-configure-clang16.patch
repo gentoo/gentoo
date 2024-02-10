@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/870043
+https://gitlab.com/samba-team/samba/-/merge_requests/2807
+https://src.fedoraproject.org/rpms/libtdb/blob/rawhide/f/libtdb-waf18-c99.patch
+
+Avoid calling lib_func without a prototype.
+
+This commit mirrors the change in commit f4c0a750d4adebcf2342a44e85f04526c34
+("WAF: Fix detection of linker features")
+to buildtools/wafsamba/samba_conftests.py.  It fixes the check for rpath
+support with compilers in strict C99 mode.
+
+Submitted upstream: <https://gitlab.com/samba-team/samba/-/merge_requests/2807>
+
+--- a/buildtools/wafsamba/samba_waf18.py
++++ b/buildtools/wafsamba/samba_waf18.py
+@@ -209,7 +209,8 @@ def CHECK_LIBRARY_SUPPORT(conf, rpath=False, version_script=False, msg=None):
+         lib_node.parent.mkdir()
+         lib_node.write('int lib_func(void) { return 42; }\n', 'w')
+         main_node = bld.srcnode.make_node('main.c')
+-        main_node.write('int main(void) {return !(lib_func() == 42);}', 'w')
++        main_node.write('int lib_func(void);\n'
++                        'int main(void) {return !(lib_func() == 42);}', 'w')
+         linkflags = []
+         if version_script:
+             script = bld.srcnode.make_node('ldscript')
+

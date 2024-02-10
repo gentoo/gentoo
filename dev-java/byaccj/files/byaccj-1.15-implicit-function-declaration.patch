@@ -1,0 +1,17 @@
+https://sourceforge.net/p/byaccj/patches/5/
+
+main.c: In function ‘done’:
+main.c:88:43: error: implicit declaration of function -Werror=implicit-function-declaration
+   88 |   if (action_file) { fclose(action_file); unlink(action_file_name); }
+      |                                           ^~~~~~
+--- a/src/main.c
++++ b/src/main.c
+@@ -2,6 +2,8 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#include <unistd.h>
++
+ #ifndef __WIN32__  /*rwj  --  make portable*/
+ #include <signal.h>
+ #else

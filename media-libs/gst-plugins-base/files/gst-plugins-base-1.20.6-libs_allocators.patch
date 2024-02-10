@@ -1,0 +1,75 @@
+https://bugs.gentoo.org/907415
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2487
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2480
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/4422
+
+From a299399f5c93737bf963e34543578dba098b2f50 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Mon, 10 Apr 2023 16:06:19 +0200
+Subject: [PATCH] tests: allocators: Fix fdmem test with recent GLib
+
+The test failed with recent GLib, where `g_close` emits a critical
+warning on EBADF. Remove the `g_close` check from `test_fdmem` and add
+another version that tests `GST_FD_MEMORY_FLAG_DONT_CLOSE`.
+
+We will depend on the Valgrind test run to warn us about leaked FDs.
+
+Fixes: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2480
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/4422>
+--- a/tests/check/libs/allocators.c
++++ b/tests/check/libs/allocators.c
+@@ -95,7 +95,43 @@ GST_START_TEST (test_fdmem)
+   gst_memory_unmap (mem, &info);
+ 
+   gst_memory_unref (mem);
+-  fail_unless (g_close (fd, NULL) == 0);
++  gst_object_unref (alloc);
++}
++
++GST_END_TEST;
++
++GST_START_TEST (test_fdmem_dont_close)
++{
++  GstAllocator *alloc;
++  GstMemory *mem;
++  GstMapInfo info;
++  GError *error = NULL;
++  int fd;
++  const char *data = "0123456789";
++
++  fd = g_file_open_tmp (NULL, NULL, &error);
++  fail_if (error);
++  fail_unless (write (fd, data, 10) == 10);
++
++  alloc = gst_fd_allocator_new ();
++  fail_unless (alloc);
++  mem = gst_fd_allocator_alloc (alloc, fd, 10,
++      GST_FD_MEMORY_FLAG_KEEP_MAPPED | GST_FD_MEMORY_FLAG_DONT_CLOSE);
++
++  fail_unless (gst_memory_map (mem, &info, GST_MAP_READ));
++  fail_unless (info.data[5] == '5');
++  gst_memory_unmap (mem, &info);
++
++  fail_unless (gst_memory_map (mem, &info, GST_MAP_WRITE));
++  info.data[5] = 'X';
++  gst_memory_unmap (mem, &info);
++
++  fail_unless (gst_memory_map (mem, &info, GST_MAP_READ));
++  fail_unless (info.data[5] == 'X');
++  gst_memory_unmap (mem, &info);
++
++  gst_memory_unref (mem);
++  fail_unless (g_close (fd, NULL));
+   gst_object_unref (alloc);
+ }
+ 
+@@ -110,6 +146,7 @@ allocators_suite (void)
+   suite_add_tcase (s, tc_chain);
+   tcase_add_test (tc_chain, test_dmabuf);
+   tcase_add_test (tc_chain, test_fdmem);
++  tcase_add_test (tc_chain, test_fdmem_dont_close);
+ 
+   return s;
+ }
+-- 
+GitLab

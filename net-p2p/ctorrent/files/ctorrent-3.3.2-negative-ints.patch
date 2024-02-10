@@ -1,0 +1,17 @@
+allow negative integers ... should fix random "error, initial meta info failed"
+
+https://sourceforge.net/tracker/?func=detail&aid=3159066&group_id=202532&atid=981959
+
+--- ctorrent-dnh3.3.2/bencode.cpp
++++ ctorrent-dnh3.3.2/bencode.cpp
+@@ -44,6 +44,10 @@
+     p++; len--;
+   }
+ 
++  if( *p == '-'){
++    p++; len--;
++  }
++
+   for(psave = p; len && isdigit(*p); p++,len--) ;
+ 
+   if(!len || MAX_INT_SIZ < (p - psave) || *p != endchar) return 0;

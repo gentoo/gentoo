@@ -1,0 +1,54 @@
+--- a/pbm2png.c
++++ b/pbm2png.c
+@@ -145,15 +145,13 @@
+  sprintf(string,"%s%d.html",basename,index);
+  f=fopen(string,"w");
+ 
+- fprintf(f,"<html><head><title>%s</title></head><body bgcolor=\"#000000\" text=\"#00ff00\" link=\"#ffff00\" vlink=\"#00ffff\"
+-alink=\"#ffff00\">\n",titlestring);
++ fprintf(f,"<html><head><title>%s</title></head><body bgcolor=\"#000000\" text=\"#00ff00\" link=\"#ffff00\" vlink=\"#00ffff\" alink=\"#ffff00\">\n",titlestring);
+  fprintf(f,"<h1>%s, Page %d</h1>\n",titlestring,index+pageoffset);
+  fprintf(f,"<p><table border=0 cellspacing=0 cellpadding=2><tr>");
+  fprintf(f,"<td valign=\"top\"><table border=0 cellpadding=0 cellspacing=0><tr><td>");
+  if (index)
+  {
+-  fprintf(f,"<a href=\"%s%d.html\"><img src=\"left.png\" border=0
+-></a>\n",basename,index-1);
++  fprintf(f,"<a href=\"%s%d.html\"><img src=\"left.png\" border=0></a>\n",basename,index-1);
+  }
+  else
+  {
+@@ -162,18 +160,15 @@
+  fprintf(f,"</td><td>");
+  if (index<filenumber-1)
+  {
+-  fprintf(f,"<a href=\"%s%d.html\">
+-<img src=\"right.png\" border=0></a>\n",basename,index+1);
++  fprintf(f,"<a href=\"%s%d.html\"> <img src=\"right.png\" border=0></a>\n",basename,index+1);
+  }
+  else
+  {
+   fprintf(f,"<img src=\"right.png\" border=0>\n");
+  }
+- fprintf(f,"</td></tr><tr><td colspan=2><a href=\"index.html\">
+-<img src=\"idx.png\" border=0 ></a></td>");
++ fprintf(f,"</td></tr><tr><td colspan=2><a href=\"index.html\"><img src=\"idx.png\" border=0 ></a></td>");
+  fprintf(f,"</tr></table>");
+- fprintf(f,"</td><td><img src=\"%s%d.png\" border=\"0\"
+-></td>\n</tr></table>",basename,index);
++ fprintf(f,"</td><td><img src=\"%s%d.png\" border=\"0\"></td>\n</tr></table>",basename,index);
+  fprintf(f,"</body></html>");
+  fclose(f);
+ }
+@@ -438,9 +433,8 @@
+         int a,z;
+  
+         if (argc<7){
+-                fprintf(stderr,"Usage: pbm2png <dpi> <basename> <titlestring>
+-<bottom_html_code> <pageoffset> <ifname> [starting_filenumber [invert]]\n");
+-        return 0;
++                fprintf(stderr,"Usage: pbm2png <dpi> <basename> <titlestring> <bottom_html_code> <pageoffset> <ifname> [starting_filenumber [invert]]\n");
++		return 0;
+         }
+         dpi=atol(argv[1]);
+         ppm=dpi*1000/25.4;

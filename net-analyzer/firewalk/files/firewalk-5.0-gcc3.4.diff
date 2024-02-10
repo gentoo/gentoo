@@ -1,0 +1,11 @@
+--- a/src/firewalk.c
++++ b/src/firewalk.c
+@@ -188,8 +188,6 @@
+                     case FW_SERIOUS_ERROR:
+                         /* err msg set in fw_packet_capture() */
+                         return (FW_SERIOUS_ERROR);
+-                    default:
+-                        /* empty */
+                 }
+             }
+         }

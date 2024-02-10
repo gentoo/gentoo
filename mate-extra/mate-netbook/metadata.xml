@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+		<maintainer type="person" proxied="yes">
+			<email>immoloism@gmail.com</email>
+			<name>Ian Jordan</name>
+		</maintainer>
+		<maintainer type="project" proxied="proxy">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Proxy Maintainers</name>
+		</maintainer>
+	<longdescription>
+		MATE utilities for netbooks are an applet and a daemon to
+		maximize windows and move their titles on the panel.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mate-desktop/mate-netbook</remote-id>
+	</upstream>
+</pkgmetadata>

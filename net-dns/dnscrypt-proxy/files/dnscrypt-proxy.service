@@ -1,0 +1,38 @@
+[Unit]
+Description=DNSCrypt-proxy client
+Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki
+
+## systemd sockets - Do not enable unless you are very familiar with the systemd socket activation mechanism.
+## Always try without systemd sockets before reporting any issues related to speed, latency or reliability.
+## If you enable this, the `listen_addresses` list in the main configuration file can be empty.
+## Or, at least, the addresses it contains should not overlap with the systemd socket addresses.
+
+#Requires=dnscrypt-proxy.socket
+Before=nss-lookup.target
+After=network.target
+Wants=network.target nss-lookup.target
+
+
+[Service]
+ExecStart=/usr/bin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+NonBlocking=true
+
+DynamicUser=yes
+
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+
+CacheDirectory=dnscrypt-proxy
+ConfigurationDirectory=dnscrypt-proxy
+LogsDirectory=dnscrypt-proxy
+RuntimeDirectory=dnscrypt-proxy
+
+## Allow binding to 127.0.0.1:53 as non-root user
+## without the .socket unit
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+#Also=dnscrypt-proxy.socket
+WantedBy=multi-user.target

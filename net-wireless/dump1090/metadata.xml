@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="bladerf">Build with Nuand BladeRF support</flag>
+		<flag name="hackrf">Build with Great Scott Gadgets HackRF support</flag>
+		<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
+		<flag name="minimal">Exclude all HTML/webserver extras for a tiny build, e.g. to export data only</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">flightaware/dump1090</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,100 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+FCRON_INSTANCE="${SVCNAME##*.}"
+FCRON_OPTS=${FCRON_OPTS:-""}
+
+if [ -n "${FCRON_INSTANCE}" ] && [ "${SVCNAME}" != "fcron" ]; then
+	FCRON_CONFIGFILE="/etc/fcron/fcron.${FCRON_INSTANCE}.conf"
+else
+	FCRON_CONFIGFILE="/etc/fcron/fcron.conf"
+fi
+
+getconfig() {
+	local key="$1"
+	local value_default="$2"
+	local value=
+
+	if service_started; then
+		value="$(service_get_value "${key}")"
+	fi
+
+	if [ -z "${value}" ] && [ -r "${FCRON_CONFIGFILE}" ]; then
+		value="$(sed -n -e 's:^'"${key}"'[ \t]*=[ \t]*::p' "${FCRON_CONFIGFILE}")"
+	fi
+
+	if [ -z "${value}" ]; then
+		# Value not explicitly set in the configfile or configfile does not exist
+		# or is not readable
+		echo "${value_default}"
+	else
+		echo "${value}"
+	fi
+
+	return 0
+}
+
+depend() {
+	config "${FCRON_CONFIGFILE}"
+
+	use clock logger
+	need hostname
+
+	# provide the cron service if we are the main instance
+	[ "${SVCNAME}" = "fcron" ] && provide cron
+}
+
+
+command="/usr/libexec/fcron"
+command_args="${FCRON_OPTS} -c \"${FCRON_CONFIGFILE}\""
+start_stop_daemon_args=${FCRON_SSDARGS:-"--wait 1000"}
+pidfile="$(getconfig pidfile /run/fcron.pid)"
+fcrontabs="$(getconfig fcrontabs /var/spool/fcron)"
+fifofile="$(getconfig fifofile /run/fcron.fifo)"
+required_files="${FCRON_CONFIGFILE}"
+
+extra_started_commands="reload"
+
+reload() {
+	 start-stop-daemon --signal HUP --pidfile "${pidfile}"
+}
+
+start_pre() {
+	if [ "${SVCNAME}" != "fcron" ]; then
+		local _has_invalid_instance_cfg=0
+
+		if [ "${pidfile}" = "/run/fcron.pid" ]; then
+			eerror "You cannot use the same pidfile like the default instance!"
+			eerror "Please adjust your 'pidfile' setting in '${FCRON_CONFIGFILE}'."
+			_has_invalid_instance_cfg=1
+		fi
+
+		if [ "${fcrontabs}" = "/var/spool/fcron" ]; then
+			eerror "You cannot use the same fcrontabs location like the default instance!"
+			eerror "Please adjust your 'fcrontabs' setting in '${FCRON_CONFIGFILE}'."
+			_has_invalid_instance_cfg=1
+		fi
+
+		if [ "${fifofile}" = "/run/fcron.fifo" ]; then
+			eerror "You cannot use the same fifo file like the default instance!"
+			eerror "Please adjust your 'fifofile' setting in '${FCRON_CONFIGFILE}'."
+			_has_invalid_instance_cfg=1
+		fi
+
+		[ ${_has_invalid_instance_cfg} -ne 0 ] && return 1
+	fi
+
+	checkpath --file "${FCRON_CONFIGFILE}" --owner root:fcron --mode 0640
+
+	if [ ! -d "${fcrontabs}" ]; then
+		ebegin "Creating missing spooldir '${fcrontabs}'"
+		${command} --newspooldir "${fcrontabs}"
+		eend $?
+	fi
+}
+
+start_post() {
+	service_set_value fcrontabs "${fcrontabs}"
+	service_set_value fifofile "${fifofile}"
+}

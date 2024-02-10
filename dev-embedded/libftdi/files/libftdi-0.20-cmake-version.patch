@@ -1,0 +1,38 @@
+From e18b700743217e8c505e97762e0f66a4f6a90425 Mon Sep 17 00:00:00 2001
+From: Maciej Grela <maciej.grela@gmail.com>
+Date: Wed, 20 Jun 2012 23:08:50 +0200
+Subject: [PATCH] Fix libftdi.pc file generation when building with
+ -DDOCUMENTATION=OFF
+
+---
+ CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4c43a48..07f8bb9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,9 @@
+ project(libftdi)
+ set(MAJOR_VERSION 0)
+ set(MINOR_VERSION 20)
++set(PACKAGE libftdi)
+ set(VERSION_STRING ${MAJOR_VERSION}.${MINOR_VERSION})
++set(VERSION ${VERSION_STRING})
+ SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
+ 
+ # CMake
+@@ -116,12 +118,11 @@ add_custom_target(dist
+ 
+ option(DOCUMENTATION "Generate API documentation with Doxygen" ON)
+ 
++
+ find_package(Doxygen)
+ if(DOCUMENTATION AND DOXYGEN_FOUND)
+ 
+    # Set variables
+-   set(PACKAGE libftdi)
+-   set(VERSION ${VERSION_STRING})
+    set(top_srcdir ${CMAKE_SOURCE_DIR})
+ 
+    # Find doxy config

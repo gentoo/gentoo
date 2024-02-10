@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="async">Add async support</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">zeep</remote-id>
+		<remote-id type="github">mvantellingen/python-zeep</remote-id>
+		<bugs-to>https://github.com/mvantellingen/python-zeep/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

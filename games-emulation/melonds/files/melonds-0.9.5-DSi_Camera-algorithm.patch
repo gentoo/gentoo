@@ -1,0 +1,24 @@
+From e63e29ca91ba5fc1630634fbb9f064b9cce6cc1f Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 11 Nov 2023 10:31:10 -0800
+Subject: [PATCH] DSi_Camera: fix gcc-14 build issue
+
+melonDS/src/DSi_Camera.cpp:190:23: error: 'clamp' is not a member of 'std'
+  190 |             r1 = std::clamp(r1, 0, 255); g1 = std::clamp(g1, 0, 255); b1 = std::clamp(b1, 0, 255);
+      |                       ^~~~~
+---
+ src/DSi_Camera.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/DSi_Camera.cpp b/src/DSi_Camera.cpp
+index 749162932..2b259c590 100644
+--- a/src/DSi_Camera.cpp
++++ b/src/DSi_Camera.cpp
+@@ -16,6 +16,7 @@
+     with melonDS. If not, see http://www.gnu.org/licenses/.
+ */
+ 
++#include <algorithm>
+ #include <stdio.h>
+ #include <string.h>
+ #include "DSi.h"

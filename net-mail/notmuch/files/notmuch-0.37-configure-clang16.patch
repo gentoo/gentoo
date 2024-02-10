@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/879739
+https://nmbug.notmuchmail.org/nmweb/show/20221202191908.848227-1-qsx%40chaotikum.eu
+
+Probe for strcasestr using the C++ compiler
+
+The C++ compiler may define _GNU_SOURCE, causing <string.h> to
+declare strcasestr, while the C compiler does not.  As a result,
+the probe may fail, resulting in an incompatible declaration
+of strcasestr in compat/compat.h.
+
+Upstream discussion:
+
+  [PATCH] compat/strcasestr: Include correct header file
+  <https://nmbug.notmuchmail.org/nmweb/show/20221202191908.848227-1-qsx%40chaotikum.eu>
+
+--- a/compat/have_strcasestr.c
++++ b/compat/have_strcasestr.c
+@@ -1,4 +1,5 @@
+ #define _GNU_SOURCE
++#include <string.h>
+ #include <strings.h>
+ 
+ int
+

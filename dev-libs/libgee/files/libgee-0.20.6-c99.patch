@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/894376
+https://gitlab.gnome.org/GNOME/libgee/-/commit/b33a6627f4fc96938b6015e05849867c472160a8
+
+From b33a6627f4fc96938b6015e05849867c472160a8 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Sat, 8 Apr 2023 22:39:35 +0200
+Subject: [PATCH] Add more missing generic type arguments
+
+--- a/gee/hashmap.vala
++++ b/gee/hashmap.vala
+@@ -253,7 +253,7 @@ public class Gee.HashMap<K,V> : Gee.AbstractMap<K,V> {
+ 		for (int i = 0; i < _array_size; i++) {
+ 			Node<K,V> node = (owned) _nodes[i];
+ 			while (node != null) {
+-				Node next = (owned) node.next;
++				Node<K,V> next = (owned) node.next;
+ 				node.key = null;
+ 				node.value = null;
+ 				node = (owned) next;
+--- a/gee/hashset.vala
++++ b/gee/hashset.vala
+@@ -210,7 +210,7 @@ public class Gee.HashSet<G> : AbstractSet<G> {
+ 		for (int i = 0; i < _array_size; i++) {
+ 			Node<G> node = (owned) _nodes[i];
+ 			while (node != null) {
+-				Node next = (owned) node.next;
++				Node<G> next = (owned) node.next;
+ 				node.key = null;
+ 				node = (owned) next;
+ 			}
+--- a/gee/linkedlist.vala
++++ b/gee/linkedlist.vala
+@@ -233,7 +233,7 @@ public class Gee.LinkedList<G> : AbstractBidirList<G>, Queue<G>, Deque<G> {
+ 				n.next.prev = n;
+ 				this._head = (owned)n;
+ 			} else {
+-				weak Node prev = this._head;
++				weak Node<G> prev = this._head;
+ 				for (int i = 0; i < index - 1; i++) {
+ 					prev = prev.next;
+ 				}
+-- 
+GitLab

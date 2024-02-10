@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="random-initial-seed">
+		Randomly initialize the seed on every executable invocation. This
+		is not a security feature and is intended only for testing (it
+		can affect legitimate use cases).
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">hashable</remote-id>
+		<remote-id type="github">haskell-unordered-containers/hashable</remote-id>
+	</upstream>
+</pkgmetadata>

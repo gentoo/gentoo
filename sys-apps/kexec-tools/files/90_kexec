@@ -1,0 +1,9 @@
+#!/bin/sh
+
+version="$1" ; shift
+image="$1" ; shift
+
+exec sed \
+	-e "s:\"vmlinuz-.*\":\"vmlinuz-${version}\":" \
+	-e "s:/boot/initramfs-.*\.img:/boot/initramfs-${version}\.img:" \
+	-i /etc/kexec.conf

@@ -1,0 +1,33 @@
+--- a/filesystems/ftpfs/ftplib.cpp
++++ b/filesystems/ftpfs/ftplib.cpp
+@@ -20,6 +20,7 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include <cstring>
+ #include <unistd.h>
+ #include <netdb.h>
+ #include <stdio.h>
+--- a/filesystems/ftpfs/ftpfs.h
++++ b/filesystems/ftpfs/ftpfs.h
+@@ -23,6 +23,8 @@
+ #ifndef _FTPFS_H_
+ #define _FTPFS_H_
+ 
++#include <cstdlib>
++#include <cstring>
+ using namespace std;
+ 
+ struct directory;
+--- a/filesystems/sshfs/sftplib.h
++++ b/filesystems/sshfs/sftplib.h
+@@ -28,6 +28,9 @@
+ 
+ #include <string>
+ 
++#include <cstring>
++#include <cstdlib>
++
+ using namespace std;
+ 
+ #define MAXDATA		32768

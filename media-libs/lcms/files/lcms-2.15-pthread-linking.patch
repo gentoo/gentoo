@@ -1,0 +1,25 @@
+https://github.com/mm2/Little-CMS/commit/1cb1e12fc298b86168ff5606d4ae8d5adb478021
+
+From 1cb1e12fc298b86168ff5606d4ae8d5adb478021 Mon Sep 17 00:00:00 2001
+From: Daniel Engberg <daniel.engberg.lists@pyret.net>
+Date: Sun, 19 Mar 2023 13:19:14 +0100
+Subject: [PATCH] meson: Link pthread library to threaded plugin
+
+Fixes
+```
+cc  -o plugins/threaded/src/liblcms2_threaded.so plugins/threaded/src/liblcms2_threaded.so.p/threaded_core.c.o plugins/threaded/src/liblcms2_threaded.so.p/threaded_main.c.o plugins/threaded/src/liblcms2_threaded.so.p/threaded_scheduler.c.o plugins/threaded/src/liblcms2_threaded.so.p/threaded_split.c.o -Wl,--as-needed -Wl,--no-undefined -Wl,-O1 -shared -fPIC -Wl,--start-group -Wl,-soname,liblcms2_threaded.so -fstack-protector-strong -O2 -pipe -fstack-protector-strong -fno-strict-aliasing '-Wl,-rpath,$ORIGIN/../../../src' -Wl,-rpath-link,/usr/ports/graphics/lcms2/work/lcms2-2.15/_build/src src/liblcms2.so.2.0.15 -Wl,--end-group
+ld: error: undefined symbol: pthread_create
+```
+OS: FreeBSD 13.2-BETA1 (amd64)
+--- a/plugins/threaded/src/meson.build
++++ b/plugins/threaded/src/meson.build
+@@ -21,7 +21,7 @@ liblcms2_threaded = library(
+   'lcms2_threaded',
+   liblcms2_threaded_sources,
+   include_directories: lcms2_threaded_incdir,
+-  dependencies: liblcms2_dep,
++  dependencies: [ liblcms2_dep, threads_dep ],
+   c_args: cargs,
+   install: true,
+ )
+

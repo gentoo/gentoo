@@ -1,0 +1,118 @@
+--- a/Makefile.am	2003-05-30 00:10:23.000000000 +0000
++++ b/Makefile.am	2009-03-06 18:41:48.000000000 +0000
+@@ -78,12 +78,12 @@
+ 
+ install-exec-hook:
+ 	for f in uucico uuxqt; do \
+-	  chown $(OWNER) $(DESTDIR)$(sbindir)/$${f}; \
+-	  chmod 4555 $(DESTDIR)$(sbindir)/$${f}; \
++	  chown $(OWNER):uucp $(DESTDIR)$(sbindir)/$${f}; \
++	  chmod 6555 $(DESTDIR)$(sbindir)/$${f}; \
+ 	done
+ 	for f in uux uucp uustat uuname cu; do \
+-	  chown $(OWNER) $(DESTDIR)$(bindir)/$${f}; \
+-	  chmod 4555 $(DESTDIR)$(bindir)/$${f}; \
++	  chown $(OWNER):uucp $(DESTDIR)$(bindir)/$${f}; \
++	  chmod 6555 $(DESTDIR)$(bindir)/$${f}; \
+ 	done
+ if HAVE_MKDIR
+ else
+--- a/policy.h	2003-05-29 06:08:45.000000000 +0000
++++ b/policy.h	2009-03-06 18:41:48.000000000 +0000
+@@ -302,8 +302,7 @@
+ /* #define LOCKDIR "/usr/spool/locks" */
+ /* #define LOCKDIR "/usr/spool/uucp/LCK" */
+ /* #define LOCKDIR "/var/spool/lock" */
+-/* #define LOCKDIR "/var/lock" */
+-
++#define LOCKDIR "/var/lock"
+ /* You must also specify the format of the lock files by setting
+    exactly one of the following macros to 1.  Check an existing lock
+    file to decide which of these choices is more appropriate.
+@@ -572,16 +571,14 @@
+ /* The name of the default spool directory.  If HAVE_TAYLOR_CONFIG is
+    set to 1, this may be overridden by the ``spool'' command in the
+    configuration file.  */
+-#define SPOOLDIR "/usr/spool/uucp"
+-/* #define SPOOLDIR "/var/spool/uucp" */
++#define SPOOLDIR "/var/spool/uucp"
+ 
+ /* The name of the default public directory.  If HAVE_TAYLOR_CONFIG is
+    set to 1, this may be overridden by the ``pubdir'' command in the
+    configuration file.  Also, a particular system may be given a
+    specific public directory by using the ``pubdir'' command in the
+    system file.  */
+-#define PUBDIR "/usr/spool/uucppublic"
+-/* #define PUBDIR "/var/spool/uucppublic" */
++#define PUBDIR "/var/spool/uucppublic" 
+ 
+ /* The default command path.  This is a space separated list of
+    directories.  Remote command executions requested by uux are looked
+@@ -644,23 +641,17 @@
+ /* The default log file when using HAVE_TAYLOR_LOGGING.  When using
+    HAVE_TAYLOR_CONFIG, this may be overridden by the ``logfile''
+    command in the configuration file.  */
+-#define LOGFILE "/usr/spool/uucp/Log"
+-/* #define LOGFILE "/var/spool/uucp/Log" */
+-/* #define LOGFILE "/var/log/uucp/Log" */
++#define LOGFILE "/var/log/uucp/Log" 
+ 
+ /* The default statistics file when using HAVE_TAYLOR_LOGGING.  When
+    using HAVE_TAYLOR_CONFIG, this may be overridden by the
+    ``statfile'' command in the configuration file.  */
+-#define STATFILE "/usr/spool/uucp/Stats"
+-/* #define STATFILE "/var/spool/uucp/Stats" */
+-/* #define STATFILE "/var/log/uucp/Stats" */
++#define STATFILE "/var/log/uucp/Stats" 
+ 
+ /* The default debugging file when using HAVE_TAYLOR_LOGGING.  When
+    using HAVE_TAYLOR_CONFIG, this may be overridden by the
+    ``debugfile'' command in the configuration file.  */
+-#define DEBUGFILE "/usr/spool/uucp/Debug"
+-/* #define DEBUGFILE "/var/spool/uucp/Debug" */
+-/* #define DEBUGFILE "/var/log/uucp/Debug" */
++#define DEBUGFILE "/var/log/uucp/Debug" 
+ 
+ #endif /* HAVE_TAYLOR_LOGGING */
+ 
+@@ -669,17 +660,17 @@
+ /* The default log file when using HAVE_V2_LOGGING.  When using
+    HAVE_TAYLOR_CONFIG, this may be overridden by the ``logfile''
+    command in the configuration file.  */
+-#define LOGFILE "/usr/spool/uucp/LOGFILE"
++#define LOGFILE "/var/log/uucp/LOGFILE"
+ 
+ /* The default statistics file when using HAVE_V2_LOGGING.  When using
+    HAVE_TAYLOR_CONFIG, this may be overridden by the ``statfile''
+    command in the configuration file.  */
+-#define STATFILE "/usr/spool/uucp/SYSLOG"
++#define STATFILE "/var/log/uucp/SYSLOG"
+ 
+ /* The default debugging file when using HAVE_V2_LOGGING.  When using
+    HAVE_TAYLOR_CONFIG, this may be overridden by the ``debugfile''
+    command in the configuration file.  */
+-#define DEBUGFILE "/usr/spool/uucp/DEBUG"
++#define DEBUGFILE "/var/log/uucp/DEBUG"
+ 
+ #endif /* HAVE_V2_LOGGING */
+ 
+@@ -692,16 +683,16 @@
+    be replaced by the system name (if there is no appropriate system,
+    "ANY" will be used).  No other '%' character may appear in the
+    string.  */
+-#define LOGFILE "/usr/spool/uucp/.Log/%s/%s"
++#define LOGFILE "/var/log/uucp/.Log/%s/%s"
+ 
+ /* The default statistics file when using HAVE_HDB_LOGGING.  When using
+    HAVE_TAYLOR_CONFIG, this may be overridden by the ``statfile''
+    command in the configuration file.  */
+-#define STATFILE "/usr/spool/uucp/.Admin/xferstats"
++#define STATFILE "/var/log/uucp/.Admin/xferstats"
+ 
+ /* The default debugging file when using HAVE_HDB_LOGGING.  When using
+    HAVE_TAYLOR_CONFIG, this may be overridden by the ``debugfile''
+    command in the configuration file.  */
+-#define DEBUGFILE "/usr/spool/uucp/.Admin/audit.local"
++#define DEBUGFILE "/var/log/uucp/.Admin/audit.local"
+ 
+ #endif /* HAVE_HDB_LOGGING */

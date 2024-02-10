@@ -1,0 +1,11 @@
+These __PLACEHOLDER__ are replaced by nvidia-installer which we don't use.
+--- a/nvidia-settings/doc/nvidia-settings.desktop
++++ b/nvidia-settings/doc/nvidia-settings.desktop
+@@ -5,5 +5,5 @@
+ Comment=Configure NVIDIA X Server Settings
+-Exec=__UTILS_PATH__/nvidia-settings
++Exec=nvidia-settings
+ Icon=nvidia-settings
+-Categories=__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__
++Categories=System;HardwareSettings;
+ 

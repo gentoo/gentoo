@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jnsh/arc-theme</remote-id>
+	</upstream>
+	<use>
+		<flag name="cinnamon">Install theme for <pkg>gnome-extra/cinnamon</pkg></flag>
+		<flag name="gtk2">Install GTK+2 theme</flag>
+		<flag name="gtk3">Install GTK+3 theme</flag>
+		<flag name="gtk4">Install GTK+4 theme</flag>
+		<flag name="mate">Install Metacity theme for <pkg>mate-base/mate</pkg></flag>
+		<flag name="gnome-shell">Install theme for <pkg>gnome-base/gnome-shell</pkg></flag>
+		<flag name="pre-rendered" restrict="&lt;x11-themes/arc-theme-20220105">Avoid <pkg>media-gfx/inkscape</pkg> and <pkg>media-gfx/optipng</pkg> dependencies by using pre-rendered PNGs</flag>
+		<flag name="transparency" restrict="&gt;=x11-themes/arc-theme-20220105">Enable transparency</flag>
+		<flag name="xfce">Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
+	</use>
+</pkgmetadata>

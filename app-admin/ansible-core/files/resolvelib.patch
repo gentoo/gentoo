@@ -1,0 +1,124 @@
+From e30959723a9603ff94bc18ba58ee3adbf305a6b6 Mon Sep 17 00:00:00 2001
+From: Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+Date: Sun, 12 Mar 2023 23:27:41 +0800
+Subject: [PATCH] ansible-galaxy - support `resolvelib >= 0.5.3, < 1.1.0`
+
+<https://pypi.org/project/resolvelib/1.0.1> released on 2023-03-09:
+
+-   <https://github.com/sarugaku/resolvelib/blob/main/CHANGELOG.rst#101-2023-03-09>
+-   <https://github.com/sarugaku/resolvelib/releases/tag/1.0.1>
+
+Signed-off-by: Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+---
+ changelogs/fragments/80196-resolvelib_lt_1_1_0.yml    | 2 ++
+ lib/ansible/galaxy/dependency_resolution/providers.py | 4 ++--
+ requirements.txt                                      | 2 +-
+ test/lib/ansible_test/_data/requirements/ansible.txt  | 2 +-
+ test/sanity/code-smell/docs-build.requirements.in     | 2 +-
+ test/sanity/code-smell/docs-build.requirements.txt    | 2 +-
+ test/sanity/code-smell/package-data.requirements.in   | 2 +-
+ test/sanity/code-smell/package-data.requirements.txt  | 2 +-
+ 8 files changed, 10 insertions(+), 8 deletions(-)
+ create mode 100644 changelogs/fragments/80196-resolvelib_lt_1_1_0.yml
+
+diff --git a/changelogs/fragments/80196-resolvelib_lt_1_1_0.yml b/changelogs/fragments/80196-resolvelib_lt_1_1_0.yml
+new file mode 100644
+index 00000000000000..6fd419f0d4f929
+--- /dev/null
++++ b/changelogs/fragments/80196-resolvelib_lt_1_1_0.yml
+@@ -0,0 +1,2 @@
++minor_changes:
++  - ansible-galaxy - support ``resolvelib >= 0.5.3, < 1.1.0``.
+diff --git a/lib/ansible/galaxy/dependency_resolution/providers.py b/lib/ansible/galaxy/dependency_resolution/providers.py
+index d52006b24d7a77..1dcaf1c8d2cff1 100644
+--- a/lib/ansible/galaxy/dependency_resolution/providers.py
++++ b/lib/ansible/galaxy/dependency_resolution/providers.py
+@@ -42,7 +42,7 @@ class AbstractProvider:  # type: ignore[no-redef]
+ 
+ # TODO: add python requirements to ansible-test's ansible-core distribution info and remove the hardcoded lowerbound/upperbound fallback
+ RESOLVELIB_LOWERBOUND = SemanticVersion("0.5.3")
+-RESOLVELIB_UPPERBOUND = SemanticVersion("0.9.0")
++RESOLVELIB_UPPERBOUND = SemanticVersion("1.1.0")
+ RESOLVELIB_VERSION = SemanticVersion.from_loose_version(LooseVersion(resolvelib_version))
+ 
+ 
+@@ -220,7 +220,7 @@ def get_preference(self, *args, **kwargs):
+             Mapping of identifier, list of named tuple pairs.
+             The named tuples have the entries ``requirement`` and ``parent``.
+ 
+-        resolvelib >=0.8.0, <= 0.8.1
++        resolvelib >=0.8.0, <= 1.0.1
+ 
+         :param identifier: The value returned by ``identify()``.
+ 
+diff --git a/requirements.txt b/requirements.txt
+index d096901ec2bcdb..a07aa985063b6a 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -15,4 +15,4 @@ importlib_resources >= 5.0, < 5.1; python_version < '3.10'
+ # NOTE: Ref: https://github.com/sarugaku/resolvelib/issues/69
+ # NOTE: When updating the upper bound, also update the latest version used
+ # NOTE: in the ansible-galaxy-collection test suite.
+-resolvelib >= 0.5.3, < 0.9.0  # dependency resolver used by ansible-galaxy
++resolvelib >= 0.5.3, < 1.1.0  # dependency resolver used by ansible-galaxy
+diff --git a/test/lib/ansible_test/_data/requirements/ansible.txt b/test/lib/ansible_test/_data/requirements/ansible.txt
+index d096901ec2bcdb..a07aa985063b6a 100644
+--- a/test/lib/ansible_test/_data/requirements/ansible.txt
++++ b/test/lib/ansible_test/_data/requirements/ansible.txt
+@@ -15,4 +15,4 @@ importlib_resources >= 5.0, < 5.1; python_version < '3.10'
+ # NOTE: Ref: https://github.com/sarugaku/resolvelib/issues/69
+ # NOTE: When updating the upper bound, also update the latest version used
+ # NOTE: in the ansible-galaxy-collection test suite.
+-resolvelib >= 0.5.3, < 0.9.0  # dependency resolver used by ansible-galaxy
++resolvelib >= 0.5.3, < 1.1.0  # dependency resolver used by ansible-galaxy
+diff --git a/test/sanity/code-smell/docs-build.requirements.in b/test/sanity/code-smell/docs-build.requirements.in
+index 80e8f66bc7f6fb..9209dd34ebecdf 100644
+--- a/test/sanity/code-smell/docs-build.requirements.in
++++ b/test/sanity/code-smell/docs-build.requirements.in
+@@ -1,6 +1,6 @@
+ jinja2
+ pyyaml
+-resolvelib < 0.9.0
++resolvelib < 1.1.0
+ sphinx == 4.2.0
+ sphinx-notfound-page
+ sphinx-ansible-theme
+diff --git a/test/sanity/code-smell/docs-build.requirements.txt b/test/sanity/code-smell/docs-build.requirements.txt
+index 663e2c6c53d28a..7b4d563574c595 100644
+--- a/test/sanity/code-smell/docs-build.requirements.txt
++++ b/test/sanity/code-smell/docs-build.requirements.txt
+@@ -27,7 +27,7 @@ Pygments==2.14.0
+ pytz==2022.2.1
+ PyYAML==6.0
+ requests==2.28.1
+-resolvelib==0.8.1
++resolvelib==1.0.1
+ rstcheck==3.5.0
+ semantic-version==2.10.0
+ sh==1.14.3
+diff --git a/test/sanity/code-smell/package-data.requirements.in b/test/sanity/code-smell/package-data.requirements.in
+index acec62eff91ff8..50e8568c5cf8bc 100644
+--- a/test/sanity/code-smell/package-data.requirements.in
++++ b/test/sanity/code-smell/package-data.requirements.in
+@@ -1,6 +1,6 @@
+ docutils < 0.18  # match version required by sphinx in the docs-build sanity test
+ jinja2
+ pyyaml  # ansible-core requirement
+-resolvelib < 0.9.0
++resolvelib < 1.1.0
+ rstcheck < 4  # match version used in other sanity tests
+ antsibull-changelog
+diff --git a/test/sanity/code-smell/package-data.requirements.txt b/test/sanity/code-smell/package-data.requirements.txt
+index 6411020e47c67b..afc3cd6418e84d 100644
+--- a/test/sanity/code-smell/package-data.requirements.txt
++++ b/test/sanity/code-smell/package-data.requirements.txt
+@@ -5,7 +5,7 @@ Jinja2==3.1.2
+ MarkupSafe==2.1.1
+ packaging==21.3
+ pyparsing==3.0.9
+ PyYAML==6.0
+-resolvelib==0.8.1
++resolvelib==1.0.1
+ rstcheck==3.5.0
+ semantic-version==2.10.0
+ types-docutils==1.5.0

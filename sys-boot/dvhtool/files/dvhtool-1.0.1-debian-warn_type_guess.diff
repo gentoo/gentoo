@@ -1,0 +1,12 @@
+--- a/dvhlib.h
++++ b/dvhlib.h
+@@ -3,7 +3,8 @@ #include "config.h"
+ #ifdef HAVE_INTTYPES_H
+ #include <inttypes.h>
+ #else
+-typedef unsigned int uint32_t;		/* A guess ...  */
++    #warning Guessing type of uint32_t
++    typedef unsigned int uint32_t;		/* A guess ...  */
+ #endif
+ 
+ #include "dvh.h"

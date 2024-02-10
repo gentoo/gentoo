@@ -1,0 +1,11 @@
+--- a/mylvmbackup.conf
++++ b/mylvmbackup.conf
+@@ -18,7 +18,7 @@
+ host=
+ port=
+ socket=
+-mycnf=/etc/my.cnf
++mycnf=/etc/mysql/my.cnf
+ 
+ #
+ # LVM-specific options

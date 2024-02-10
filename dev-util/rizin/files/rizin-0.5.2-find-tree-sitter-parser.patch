@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/913343
+
+>=tree-sitter-0.20.8-r1 doesn't install parser.h anymore because it may be
+mismatched with the version used to build the parser. Use one bundled with
+rizin-shell-parser instead.
+
+This should propagate into rizin-shell-parser when they regenerate
+with a newer tree-sitter release (once one is made).
+
+See also:
+* https://bugs.gentoo.org/912716
+* https://bugs.gentoo.org/913343
+* https://github.com/tree-sitter/tree-sitter/pull/2573
+* https://github.com/tree-sitter/tree-sitter/pull/2574
+--- a/subprojects/rizin-shell-parser/src/parser.c
++++ b/subprojects/rizin-shell-parser/src/parser.c
+@@ -1,4 +1,4 @@
+-#include <tree_sitter/parser.h>
++#include "tree_sitter/parser.h"
+ 
+ #if defined(__GNUC__) || defined(__clang__)
+ #pragma GCC diagnostic push
+--- a/subprojects/rizin-shell-parser/src/scanner.c
++++ b/subprojects/rizin-shell-parser/src/scanner.c
+@@ -1,7 +1,7 @@
+ // SPDX-FileCopyrightText: 2020 ret2libc <sirmy15@gmail.com>
+ // SPDX-License-Identifier: LGPL-3.0-only
+ 
+-#include <tree_sitter/parser.h>
++#include "tree_sitter/parser.h"
+ #include <ctype.h>
+ #include <wctype.h>
+ #include <stdio.h>

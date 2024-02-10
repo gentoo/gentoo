@@ -1,0 +1,65 @@
+From 412166e185c00d6eacbe67dfcb0326f622ec4020 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Fri, 30 Sep 2022 11:36:03 -0400
+Subject: [PATCH] Fix testsuite failures with bash 5.2.
+
+Bash v5.2 includes several new optimizations to the number of
+subshells used for various constructs; as a side effect, the value of
+SHLVL is less stable than it used to be.  Add SHLVL to the list of
+built-in shell variables with unstable values, to be ignored when
+checking for inappropriate differences to the shell environment
+before and after a macro invocation / between two configure runs.
+
+Problem and solution reported by Xi Ruoyao in
+https://lists.gnu.org/archive/html/autoconf/2022-09/msg00015.html
+Problem also reported by Bruce Dubbs in
+https://lists.gnu.org/archive/html/bug-autoconf/2022-09/msg00010.html
+
+* tests/local.at (_AT_CHECK_ENV, AT_CONFIG_CMP): Ignore changes in
+  value of SHLVL.
+Copyright-paperwork-exempt: yes
+---
+ tests/local.at | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tests/local.at b/tests/local.at
+index 193fd118..a9cf4050 100644
+--- a/tests/local.at
++++ b/tests/local.at
+@@ -352,7 +352,7 @@ m4_define([AT_CHECK_CONFIGURE],
+ # - AC_SUBST'ed variables
+ #   (FIXME: Generate a list of these automatically.)
+ # - _|@|.[*#?$].|argv|ARGC|LINENO|OLDPWD|PIPESTATUS|RANDOM|SECONDS
+-#   |START_TIME|ToD|_AST_FEATURES
++#   |SHLVL|START_TIME|ToD|_AST_FEATURES
+ #   Some variables some shells use and change.
+ #   '.[*#?$].' catches '$#' etc. which are displayed like this:
+ #      | '!'=18186
+@@ -404,7 +404,7 @@ if test -f state-env.before && test -f state-env.after; then
+       [GREP|[EF]GREP|SED],
+       [[_@]|.[*@%:@?$].],
+       [argv|ARGC|LINENO|BASH_ARGC|BASH_ARGV|OLDPWD|PIPESTATUS|RANDOM],
+-      [SECONDS|START_TIME|ToD|_AST_FEATURES]))=' \
++      [SECONDS|SHLVL|START_TIME|ToD|_AST_FEATURES]))=' \
+      $act_file ||
+        test $? -eq 1 || echo failed >&2
+     ) 2>stderr-$act_file |
+@@ -435,6 +435,7 @@ fi
+ #   - PPID [bash, zsh]
+ #   - RANDOM [bash, zsh]
+ #   - SECONDS [bash, zsh]
++#   - SHLVL [bash]
+ #   - START_TIME [NetBSD sh]
+ #   - ToD [NetBSD sh]
+ #   - '$' [zsh]
+@@ -483,6 +484,7 @@ do
+ 	/^PPID=/ d
+ 	/^RANDOM=/ d
+ 	/^SECONDS=/ d
++	/^SHLVL=/ d
+ 	/^START_TIME=/ d
+ 	/^ToD=/ d
+ 	/'\'\\\$\''=/ d
+-- 
+2.39.3
+

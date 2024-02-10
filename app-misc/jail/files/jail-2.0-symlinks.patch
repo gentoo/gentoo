@@ -1,0 +1,11 @@
+--- a/lib/arch/generic/functions~	2014-07-03 11:37:33.000000000 +0200
++++ b/lib/arch/generic/functions	2018-07-01 10:02:57.101547309 +0200
+@@ -687,7 +687,7 @@
+     return();
+   }
+   
+-  local $query = "$file_cmd $p_name";
++  local $query = "$file_cmd -L $p_name";
+   local $res = `$query`;
+   local $line;
+ 

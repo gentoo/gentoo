@@ -1,0 +1,60 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Alfred Wingate <parona@protonmail.com> (2023-12-25)
+# Default to gbm on non-desktop with REQUIRED_USE: ^^ ( gbm wayland X )
+>=media-tv/kodi-20.2 gbm udev
+
+# Yongxiang Liang <tanekliang@gmail.com> (2023-12-12)
+# Default to lua 5.4 (upstream requires 5.3 or higher)
+app-i18n/fcitx-lua lua_single_target_lua5-4
+
+# Pacho Ramos <pacho@gentoo.org> (2022-04-19)
+# Default to lua 5.4 (upstream requires 5.3 or higher)
+>=app-text/xournalpp-1.1.3-r1 lua_single_target_lua5-4
+
+# Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2022-08-07)
+# Default to lua 5.4 (upstream requires 5.2 or higher)
+>=app-editors/vis-0.7-r1 lua_single_target_lua5-4
+
+# Patrick McLean <chutzpah@gentoo.org> (2022-05-04)
+# Default to lua 5.4 (upstream requires 5.3 or higher)
+>=sys-cluster/ceph-17.2.0 lua_single_target_lua5-4
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-31)
+# Default to luajit, since that is what upstream recommends. Bug #795768.
+# See https://github.com/neovim/neovim/wiki/Building-Neovim#third-party-dependencies
+app-editors/neovim lua_single_target_luajit -lua_single_target_lua5-1
+dev-lua/luv        lua_single_target_luajit -lua_single_target_lua5-1
+dev-lua/lpeg       lua_targets_luajit
+dev-lua/mpack      lua_targets_luajit
+
+# Sam James <sam@gentoo.org> (2021-10-14)
+# Unconditional dependency on >= Lua 5.3, so let's just pick 5.4
+>=app-arch/rpm-4.17.0 lua_single_target_lua5-4
+
+# Niklāvs Koļesņikovs <89q1r14hd@relay.firefox.com> (2021-09-13)
+# WirePlumber obligatory links and embeds either Lua 5.3 or 5.4
+# interpreter with the later being the upstream default.
+media-video/wireplumber lua_single_target_lua5-4
+
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
+# Enable the BPF target by default
+dev-ml/llvm-ocaml llvm_targets_BPF
+sys-devel/clang llvm_targets_BPF
+sys-devel/llvm llvm_targets_BPF
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2012-07-27)
+# Modular X: Build the Xorg X server by default
+x11-base/xorg-server xorg
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2011-04-11)
+# Disable ldap support by default in sudo, as it seem to lack
+# developers maintaining that particular support and is, thus, vastly
+# untested.
+app-admin/sudo -ldap
+
+# Zac Medico <zmedico@gentoo.org> (2009-12-04)
+# Bug #295615 - Disable cxx by default, in order to avoid a die
+# in pkg_setup with default USE settings (cxx requires sasl).
+net-nds/openldap -cxx

@@ -1,0 +1,200 @@
+From d3ba6d4c19ca0b1081fbafc757d3c496cc21ada2 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 18:34:07 +0200
+Subject: [PATCH 01/10] Port QSignalSpys to PMF syntax
+
+---
+ tests/oauth2plugintest.cpp | 86 ++++++++++++++++----------------------
+ 1 file changed, 37 insertions(+), 49 deletions(-)
+
+diff --git a/tests/oauth2plugintest.cpp b/tests/oauth2plugintest.cpp
+index 94e5c43..b257dc7 100644
+--- a/tests/oauth2plugintest.cpp
++++ b/tests/oauth2plugintest.cpp
+@@ -244,7 +244,7 @@ void OAuth2PluginTest::testPluginCancel()
+     m_testPlugin->cancel();
+ 
+     //then real cancel
+-    QSignalSpy pluginError(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
++    QSignalSpy pluginError(m_testPlugin, &Plugin::error);
+ 
+     OAuth2PluginData userAgentData;
+     userAgentData.setHost("https://localhost");
+@@ -435,11 +435,10 @@ void OAuth2PluginTest::testPluginProcess()
+     QFETCH(QVariantMap, response);
+     QFETCH(QVariantMap, stored);
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
+-    QSignalSpy store(m_testPlugin, SIGNAL(store(const SignOn::SessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
++    QSignalSpy store(m_testPlugin, &Plugin::store);
+ 
+     m_testPlugin->process(sessionData, mechanism);
+     if (errorCode < 0) {
+@@ -696,11 +695,10 @@ void OAuth2PluginTest::testPluginHmacSha1Process()
+     QFETCH(QVariantMap, response);
+     QFETCH(QVariantMap, stored);
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
+-    QSignalSpy store(m_testPlugin, SIGNAL(store(const SignOn::SessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
++    QSignalSpy store(m_testPlugin, &Plugin::store);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -777,11 +775,10 @@ void OAuth2PluginTest::testPluginUseragentUserActionFinished()
+     QStringList scopes = QStringList() << "scope1" << "scope2";
+     data.setScope(scopes);
+ 
+-    QSignalSpy resultSpy(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
+-    QSignalSpy store(m_testPlugin, SIGNAL(store(const SignOn::SessionData&)));
++    QSignalSpy resultSpy(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
++    QSignalSpy store(m_testPlugin, &Plugin::store);
+ 
+     m_testPlugin->process(data, QString("user_agent"));
+ 
+@@ -1286,10 +1283,9 @@ void OAuth2PluginTest::testPluginWebserverUserActionFinished()
+     data.setScope(QStringList() << "one" << "two" << "three");
+     data.setDisableStateParameter(disableStateParameter);
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1362,9 +1358,8 @@ void OAuth2PluginTest::testUserActionFinishedErrors()
+     data.setClientSecret("fa28f40b5a1f8c1d5628963d880636fbkjkjkj");
+     data.setRedirectUri("http://localhost/resp.html");
+ 
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     m_testPlugin->process(data, QString("web_server"));
+     QTRY_COMPARE(userActionRequired.count(), 1);
+@@ -1486,10 +1481,9 @@ void OAuth2PluginTest::testOauth1UserActionFinished()
+     data.setConsumerSecret("fa28f40b5a1f8c1d5628963d880636fbkjkjkj");
+     data.setRealm("MyHost");
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1610,9 +1604,8 @@ void OAuth2PluginTest::testOAuth2Errors()
+     data.setClientSecret("fa28f40b5a1f8c1d5628963d880636fbkjkjkj");
+     data.setRedirectUri("http://localhost/resp.html");
+ 
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1683,8 +1676,8 @@ void OAuth2PluginTest::testRefreshToken()
+ 
+     SignOn::UiSessionData info;
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1766,9 +1759,8 @@ void OAuth2PluginTest::testRefreshTokenError()
+ 
+     SignOn::UiSessionData info;
+ 
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1842,10 +1834,9 @@ void OAuth2PluginTest::testClientAuthentication()
+     data.setRedirectUri("http://localhost/resp.html");
+     data.setForceClientAuthViaRequestBody(forceAuthViaRequestBody);
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1908,10 +1899,9 @@ void OAuth2PluginTest::testTokenPath()
+     data.setClientId("104660106251471");
+     data.setRedirectUri("http://localhost/resp.html");
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     TestNetworkAccessManager *nam = new TestNetworkAccessManager;
+     m_testPlugin->m_networkAccessManager = nam;
+@@ -1995,10 +1985,9 @@ void OAuth2PluginTest::testTokenQuery()
+     data.setClientId("104660106251471");
+     data.setRedirectUri("http://localhost/resp.html");
+ 
+-    QSignalSpy result(m_testPlugin, SIGNAL(result(const SignOn::SessionData&)));
+-    QSignalSpy error(m_testPlugin, SIGNAL(error(const SignOn::Error &)));
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy result(m_testPlugin, &Plugin::result);
++    QSignalSpy error(m_testPlugin, &Plugin::error);
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     QScopedPointer<TestNetworkAccessManager> nam(new TestNetworkAccessManager);
+     m_testPlugin->m_networkAccessManager = nam.data();
+@@ -2062,8 +2051,7 @@ void OAuth2PluginTest::testOAuth2AuthRequestUri()
+     QFETCH(QVariantMap, sessionData);
+     QFETCH(QString, expectedUri);
+ 
+-    QSignalSpy userActionRequired(m_testPlugin,
+-                                  SIGNAL(userActionRequired(const SignOn::UiSessionData&)));
++    QSignalSpy userActionRequired(m_testPlugin, &Plugin::userActionRequired);
+ 
+     m_testPlugin->process(sessionData, mechanism);
+     QCOMPARE(userActionRequired.count(), 1);
+-- 
+2.43.0
+

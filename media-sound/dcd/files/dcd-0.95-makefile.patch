@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -114,7 +114,7 @@ all: ${PROGS}
+ 	$(CC) -c $(CFLAGS) ${EXTRA_CFLAGS} $< -o $@
+  
+ ${PROGS}: ${OBJECTS}
+-	${CC} ${CFLAGS} ${EXTRA_CFLAGS} ${OBJECTS} -o $@
++	${CC} ${CFLAGS} ${LDFLAGS} ${EXTRA_CFLAGS} ${OBJECTS} -o $@
+ 
+ clean:;
+ 	-${RM} *.o ${PROGS}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    ELPI implements a variant of λProlog enriched with Constraint Handling
+    Rules, a programming language well suited to manipulate syntax trees with
+    binders. ELPI is designed to be embedded into larger applications written
+    in OCaml as an extension language. It comes with an API to drive the
+    interpreter and with an FFI for defining built-in predicates and data
+    types, as well as quotations and similar goodies that are handy to adapt
+    the language to the host application.
+  </longdescription>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/LPCIC/elpi/master/CHANGES.md</changelog>
+    <bugs-to>https://github.com/LPCIC/elpi/issues/</bugs-to>
+    <remote-id type="github">LPCIC/elpi</remote-id>
+  </upstream>
+</pkgmetadata>

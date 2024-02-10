@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    LiteDB is a serverless database delivered in a single small DLL fully
+    written in .NET C# managed code.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/mbdavid/LiteDB/issues/</bugs-to>
+    <remote-id type="github">mbdavid/LiteDB</remote-id>
+  </upstream>
+</pkgmetadata>

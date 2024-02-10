@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">jupyterlab/jupyterlab-desktop</remote-id>
+		<bugs-to>https://github.com/jupyterlab/jupyterlab-desktop/issues</bugs-to>
+	</upstream>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+</pkgmetadata>

@@ -1,0 +1,154 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +1 @@
+-LDFLAGS= -lSDL -lpthread -s
+ CFLAGS= -Wall # -DDEBUG
+@@ -11,4 +10,4 @@
+ main: 	src/main.c
+-	g++ -c -o src/main.o `sdl-config --cflags` src/main.c
+-	g++ -o balloonchase src/main.o `sdl-config --libs`
++	$(CXX) $(CXXFLAGS) -c -o src/main.o `$(PKG_CONFIG) --cflags sdl` src/main.c
++	$(CXX) $(LDFLAGS) -o balloonchase src/main.o `$(PKG_CONFIG) --libs sdl`
+ pkg:
+--- a/src/main.c
++++ b/src/main.c
+@@ -335,35 +335,35 @@
+ {
+-	back = SDL_LoadBMP("images/back.bmp");
++	back = SDL_LoadBMP("GENTOODIR/images/back.bmp");
+ 
+-	num3 = SDL_LoadBMP("images/num3.bmp");
++	num3 = SDL_LoadBMP("GENTOODIR/images/num3.bmp");
+ 	SDL_SetColorKey(num3, SDL_SRCCOLORKEY, SDL_MapRGB(num3->format, 0xFF, 0xFF, 0xFF));
+-	num2 = SDL_LoadBMP("images/num2.bmp");
++	num2 = SDL_LoadBMP("GENTOODIR/images/num2.bmp");
+ 	SDL_SetColorKey(num2, SDL_SRCCOLORKEY, SDL_MapRGB(num2->format, 0xFF, 0xFF, 0xFF));
+-	num1 = SDL_LoadBMP("images/num1.bmp");
++	num1 = SDL_LoadBMP("GENTOODIR/images/num1.bmp");
+ 	SDL_SetColorKey(num1, SDL_SRCCOLORKEY, SDL_MapRGB(num1->format, 0xFF, 0xFF, 0xFF));
+-	num0 = SDL_LoadBMP("images/num0.bmp");
++	num0 = SDL_LoadBMP("GENTOODIR/images/num0.bmp");
+ 	SDL_SetColorKey(num0, SDL_SRCCOLORKEY, SDL_MapRGB(num0->format, 0xFF, 0xFF, 0xFF));
+-	numv = SDL_LoadBMP("images/num-.bmp");
++	numv = SDL_LoadBMP("GENTOODIR/images/num-.bmp");
+ 	SDL_SetColorKey(numv, SDL_SRCCOLORKEY, SDL_MapRGB(numv->format, 0xFF, 0xFF, 0xFF));
+ 
+-	menu = SDL_LoadBMP("images/menu.bmp");
+-	menu_onoff = SDL_LoadBMP("images/menu_onoff.bmp");
++	menu = SDL_LoadBMP("GENTOODIR/images/menu.bmp");
++	menu_onoff = SDL_LoadBMP("GENTOODIR/images/menu_onoff.bmp");
+ 
+ 
+-//	arrow[0] = SDL_LoadBMP("images/down.bmp");
++//	arrow[0] = SDL_LoadBMP("GENTOODIR/images/down.bmp");
+ //	SDL_SetColorKey(arrow[0], SDL_SRCCOLORKEY, SDL_MapRGB(arrow[0]->format, 0x00, 0x00, 0x00));
+-//	arrow[1] = SDL_LoadBMP("images/down.bmp");
++//	arrow[1] = SDL_LoadBMP("GENTOODIR/images/down.bmp");
+ //	SDL_SetColorKey(arrow[1], SDL_SRCCOLORKEY, SDL_MapRGB(arrow[1]->format, 0x00, 0x00, 0x00));
+ 
+-	kp1 = SDL_LoadBMP("images/kp1.bmp");
++	kp1 = SDL_LoadBMP("GENTOODIR/images/kp1.bmp");
+ 	SDL_SetColorKey(kp1, SDL_SRCCOLORKEY, SDL_MapRGB(kp1->format, 0xFF, 0xFF, 0xFF));
+-	kp1b = SDL_LoadBMP("images/kp1b.bmp");
++	kp1b = SDL_LoadBMP("GENTOODIR/images/kp1b.bmp");
+ 	SDL_SetColorKey(kp1b, SDL_SRCCOLORKEY, SDL_MapRGB(kp1b->format, 0xFF, 0xFF, 0xFF));
+ 
+-	kp2 = SDL_LoadBMP("images/kp2.bmp");
++	kp2 = SDL_LoadBMP("GENTOODIR/images/kp2.bmp");
+ 	SDL_SetColorKey(kp2, SDL_SRCCOLORKEY, SDL_MapRGB(kp2->format, 0xFF, 0xFF, 0xFF));
+-	kp2b = SDL_LoadBMP("images/kp2b.bmp");
++	kp2b = SDL_LoadBMP("GENTOODIR/images/kp2b.bmp");
+ 	SDL_SetColorKey(kp2b, SDL_SRCCOLORKEY, SDL_MapRGB(kp2b->format, 0xFF, 0xFF, 0xFF));
+ 
+-	font2 = SDL_LoadBMP("images/font.bmp");
++	font2 = SDL_LoadBMP("GENTOODIR/images/font.bmp");
+ 	font = SDL_CreateRGBSurface(SDL_SWSURFACE, 1288, 100, 32, 0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF);
+@@ -372,6 +372,6 @@
+ 
+-	blobtrox = SDL_LoadBMP("images/blobtrox.bmp");
++	blobtrox = SDL_LoadBMP("GENTOODIR/images/blobtrox.bmp");
+ 	//SDL_SetColorKey(blobtrox, SDL_SRCCOLORKEY, SDL_MapRGB(blobtrox->format, 0x01, 0x01, 0x01));
+ 
+-	balloonchase = SDL_LoadBMP("images/balloonchase.bmp");
++	balloonchase = SDL_LoadBMP("GENTOODIR/images/balloonchase.bmp");
+ 
+@@ -580,3 +580,3 @@
+ {
+-  FILE *OPTFILE=fopen ("balloonchase.dat", "w+");
++  FILE *OPTFILE=fopen (".balloonchaserc", "w+");
+   char datmsg[60];
+@@ -590,3 +590,3 @@
+   fputc (option_wave_effect+2, OPTFILE);
+-  fprintf (stderr, "Saved configuration to balloonchase.dat\n");
++  fprintf (stderr, "Saved configuration to .balloonchaserc\n");
+   fclose (OPTFILE);
+@@ -596,42 +596,22 @@
+ {
+-  char found=0;
+-  #ifdef WIN32
+-	WIN32_FIND_DATA  fileinfo;
+-	BOOL rc = 0;
+-	HANDLE hFile;
+-	hFile = FindFirstFile("*", &fileinfo);
+-	while(rc)
+-		{
+-			rc = FindNextFile(hFile, &fileinfo);
+-			if (strcmp (fileinfo.cFileName, "balloonchase.dat")==0)
+-		{
+-	fprintf(stderr, "Found balloonchase.dat\n"); 
+-	found = 1;
+-	_findclose(hFile);
+-  #endif
+-  #ifndef WIN32
+-	struct dirent *filelist[255];
+-	int i=0;
+-	int j=0;
+ 	DIR *dp;
+-	dp=opendir("./");
+-	int filenum=0;
+-	while( filelist[filenum]=readdir(dp) )
+- 	 	filenum++;
+-	closedir(dp);
+-	if (filenum>=2)
+-		for (i=0;i<filenum;i++)
+-			{
+-				if (strcmp(filelist[i]->d_name,"balloonchase.dat")==0)
+-						{
+-							fprintf (stderr, "Found balloonchase.dat\n");
+-							found=1;
+-						}
++
++	if (getenv("HOME")) {
++		chdir(getenv("HOME"));
++	}
++	if ((dp = opendir("./"))) {
++		struct dirent *f;
++
++		while(f=readdir(dp)) {
++			if (strcmp(f->d_name, ".balloonchaserc") == 0) {
++				fprintf (stderr, "Found .balloonchaserc\n");
++				closedir(dp);
++				return;
+ 			}
+-  #endif 
+-	if (found==0)
+-		{
+-			fprintf (stderr, "Balloonchase.dat not found!\nCreating new...\n");
+-			if (found==0) createdat(2, 1);
+ 		}
++		closedir(dp);
++		fprintf (stderr,
++			"Balloonchase.dat not found!\nCreating new...\n");
++		createdat(2, 1);
++	}
+ }
+@@ -1259,3 +1239,3 @@
+ 
+-  FILE *OPTFILE=fopen ("balloonchase.dat", "r");
++  FILE *OPTFILE=fopen (".balloonchaserc", "r");
+   char datmsg[60];
+@@ -1277,3 +1257,3 @@
+ 		option_wave_effect=fgetc(OPTFILE)-2;
+-		fprintf (stderr, "Successfully loaded balloonchase.dat\n");
++		fprintf (stderr, "Successfully loaded .balloonchaserc\n");
+ 	}

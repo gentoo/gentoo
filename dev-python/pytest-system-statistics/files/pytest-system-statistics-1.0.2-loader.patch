@@ -1,0 +1,43 @@
+diff --git a/src/pytestsysstats/plugin.py b/src/pytestsysstats/plugin.py
+index 4009858..3067f73 100644
+--- a/src/pytestsysstats/plugin.py
++++ b/src/pytestsysstats/plugin.py
+@@ -231,20 +231,17 @@ def pytest_sessionstart(session: "Session") -> None:
+     ):
+         stats_processes_instance = StatsProcesses()
+         stats_processes_instance.add("Test Suite Run", os.getpid())
+-    else:
+-        stats_processes_instance = None
++        session.config.pluginmanager.register(stats_processes_instance, "sysstats-processes")
+ 
+-    session.config.pluginmanager.register(stats_processes_instance, "sysstats-processes")
+-
+-    terminalreporter = session.config.pluginmanager.getplugin(
+-        "terminalreporter"
+-    )  # type: "TerminalReporter"
+-    sys_stats_reporter = SystemStatsReporter(
+-        config=session.config,
+-        stats_processes=stats_processes_instance,
+-        terminalreporter=terminalreporter,
+-    )
+-    session.config.pluginmanager.register(sys_stats_reporter, "sysstats-reporter")
++        terminalreporter = session.config.pluginmanager.getplugin(
++            "terminalreporter"
++        )  # type: "TerminalReporter"
++        sys_stats_reporter = SystemStatsReporter(
++            config=session.config,
++            stats_processes=stats_processes_instance,
++            terminalreporter=terminalreporter,
++        )
++        session.config.pluginmanager.register(sys_stats_reporter, "sysstats-reporter")
+ 
+ 
+ @pytest.fixture(scope="session")  # type: ignore[misc]
+@@ -252,5 +249,5 @@ def stats_processes(request: "SubRequest") -> StatsProcesses:
+     """
+     Session scoped process statistics tracker.
+     """
+-    plugin = request.config.pluginmanager.get_plugin("sysstats-processes")  # type: StatsProcesses
+-    return plugin
++    if request.config.pluginmanager.has_plugin("sysstats-processes"):
++        return request.config.pluginmanager.get_plugin("sysstats-processes")  # type: StatsProcesses

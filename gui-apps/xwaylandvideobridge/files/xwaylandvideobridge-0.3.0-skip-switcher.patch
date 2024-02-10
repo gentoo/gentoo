@@ -1,0 +1,29 @@
+From 9ee3d7a21ee3069e37a205318914f48b2b597eaa Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Wed, 15 Nov 2023 11:24:10 +0100
+Subject: [PATCH] Also skip the switcher
+
+BUG:477025
+---
+ src/contentswindow.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/contentswindow.cpp b/src/contentswindow.cpp
+index addae88..b6d4846 100644
+--- a/src/contentswindow.cpp
++++ b/src/contentswindow.cpp
+@@ -54,9 +54,9 @@ ContentsWindow::ContentsWindow()
+     setFlag(Qt::WindowDoesNotAcceptFocus);
+     setFlag(Qt::WindowTransparentForInput);
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+-    KX11Extras::setState(winId(), NET::SkipTaskbar | NET::SkipPager);
++    KX11Extras::setState(winId(), NET::SkipTaskbar | NET::SkipPager | NET::SkipSwitcher);
+ #else
+-    KWindowSystem::setState(winId(), NET::SkipTaskbar | NET::SkipPager);
++    KWindowSystem::setState(winId(), NET::SkipTaskbar | NET::SkipPager | NET::SkipSwitcher);
+ #endif
+ 
+     // remove decoration. We can't use the Qt helper as we need our window type to remain something
+-- 
+GitLab
+

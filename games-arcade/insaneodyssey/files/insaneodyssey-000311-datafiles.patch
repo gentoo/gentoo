@@ -1,0 +1,55 @@
+--- a/insaneodyssey/io.cpp
++++ b/insaneodyssey/io.cpp
+@@ -42,7 +42,11 @@
+ {
+ 	SDL_Surface *image, *surface;
+ 
+-	image = IMG_Load(datafile);
++	char data_path[100];
++	strcpy(data_path, "/usr/share/games/insaneodyssey/");
++	strcat(data_path, datafile);
++
++	image = IMG_Load(data_path);
+ 	if ( image == NULL ) {
+ 		fprintf(stderr, "Couldn't load image %s\n",
+ 					datafile);
+@@ -67,7 +71,11 @@
+ {
+ 	SDL_Surface *image, *surface;
+ 
+-	image = IMG_Load(datafile);
++	char data_path[100];
++	strcpy(data_path, "/usr/share/games/insaneodyssey/");
++	strcat(data_path, datafile);
++
++	image = IMG_Load(data_path);
+ 	if ( image == NULL ) {
+ 		fprintf(stderr, "Couldn't load image %s\n", datafile);
+ 		return(NULL);
+@@ -87,8 +95,12 @@
+ {
+         SDL_Surface *image;
+ 
++	char data_path[100];
++	strcpy(data_path, "/usr/share/games/insaneodyssey/");
++	strcat(data_path, datafile);
++
+         /* Load the BMP file into a surface */
+-        image = IMG_Load(datafile);
++        image = IMG_Load(data_path);
+         if ( image == NULL ) {
+                 fprintf(stderr, "Couldn't load %s: %s\n", datafile,
+                                                         SDL_GetError());
+@@ -493,7 +493,11 @@
+  if ( fp != NULL )
+     while( !feof(fp) && j < MAXTILES )
+     {
+-    	fscanf ( fp, "%d %d %d\n", &tileatt[j].nexttile, &tileatt[j].bits, &tileatt[j].wait );
++	int nexttile, bits, wait;
++    	fscanf(fp, "%d %d %d\n", &nexttile, &bits, &wait);
++    	tileatt[j].nexttile = nexttile;
++	tileatt[j].bits     = bits;
++	tileatt[j].wait     = wait;
+        	j++;
+     }
+  else

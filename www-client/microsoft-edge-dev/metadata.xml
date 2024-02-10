@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<longdescription>
+		Microsoft Edge is a browser that combines a minimal design with
+		sophisticated technology to make the web faster, safer, and easier.
+	</longdescription>
+	<use>
+		<flag name="mip">Install Microsoft Information Protection plugin.</flag>
+	</use>
+</pkgmetadata>

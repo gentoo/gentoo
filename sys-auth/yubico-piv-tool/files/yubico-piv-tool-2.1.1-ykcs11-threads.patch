@@ -1,0 +1,29 @@
+--- a/ykcs11/CMakeLists.txt
++++ b/ykcs11/CMakeLists.txt
+@@ -30,7 +30,7 @@
+ link_directories(${PCSC_LIBRARY_DIRS})
+ add_definitions(-DCRYPTOKI_EXPORTS)
+ if(NOT WIN32)
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden -pthread")
+ endif(NOT WIN32)
+ 
+ set(
+@@ -63,7 +63,7 @@
+ # static library
+ if(BUILD_STATIC_LIB)
+     add_library(ykcs11 STATIC ${SOURCE})
+-    target_link_libraries(ykcs11 ${LIBCRYPTO_LDFLAGS} ykpiv_static)
++    target_link_libraries(ykcs11 ${LIBCRYPTO_LDFLAGS} -pthread ykpiv_static)
+     set_target_properties (ykcs11 PROPERTIES COMPILE_FLAGS "-DSTATIC ")
+     if(WIN32)
+         set_target_properties(ykcs11 PROPERTIES OUTPUT_NAME ykcs11_static)
+@@ -73,7 +73,7 @@
+ 
+ # dynamic library
+ add_library(ykcs11_shared SHARED ${SOURCE})
+-target_link_libraries(ykcs11_shared ${LIBCRYPTO_LDFLAGS} ykpiv_shared)
++target_link_libraries(ykcs11_shared ${LIBCRYPTO_LDFLAGS} -pthread ykpiv_shared)
+ set_target_properties(ykcs11_shared PROPERTIES SOVERSION ${SO_VERSION} VERSION ${VERSION})
+ set_target_properties(ykcs11_shared PROPERTIES INSTALL_RPATH "${YKPIV_INSTALL_LIB_DIR}")
+ if(WIN32)

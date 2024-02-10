@@ -1,0 +1,39 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Joonas Niilola <juippis@gentoo.org> (2023-03-16)
+# Fails with -jit, #901463.
+>=dev-lang/spidermonkey-102.6.0 jit
+
+# Joonas Niilola <juippis@gentoo.org> (2022-05-19)
+# Bundled libvpx results in a failure, force the system-libvpx to be
+# used. bmo#1768145. Confirmed on firefox-91 and firefox-100.0.
+# (And on thunderbird-91)
+mail-client/thunderbird system-libvpx
+www-client/firefox system-libvpx
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-01-16)
+# Bootstrapping is possible using our build snapshot, so don't force
+# system bootstrap
+dev-java/openjdk:11 -system-bootstrap
+dev-java/openjdk:17 -system-bootstrap
+dev-java/openjdk:21 -system-bootstrap
+
+# Michał Górny <mgorny@gentoo.org> (2017-12-30)
+# We have ready-to-use configs here.
+sys-kernel/gentoo-kernel -savedconfig
+sys-kernel/vanilla-kernel -savedconfig
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-11-21)
+# iasl is stable on x86
+sys-firmware/seabios -binary
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2018-05-14)
+# Force the host target to avoid dependency hell
+dev-lang/rust llvm_targets_X86
+
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
+# Force the host target to avoid dependency hell
+dev-ml/llvm-ocaml llvm_targets_X86
+sys-devel/clang llvm_targets_X86
+sys-devel/llvm llvm_targets_X86

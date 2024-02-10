@@ -1,0 +1,64 @@
+--- a/src/readjpeg.c	Sun Oct 31 14:54:26 2004
++++ b/src/readjpeg.c	Wed Sep 21 21:03:22 2005
+@@ -92,11 +92,13 @@
+ 	int *real_width,int *real_height)
+ {
+ static FILE *in;
++static int cmyk;
+ struct my_error_mgr jerr;
+ int row_stride;		/* physical row width in output buffer */
+ int tmp,f;
+-unsigned char *ptr;
++unsigned char *ptr,*ptr2;
+ 
++cmyk=0;
+ use_errmsg=0;
+ theimage=NULL;
+ howfar=howfarfunc;
+@@ -161,6 +163,15 @@
+     pal[f]=pal[256+f]=pal[512+f]=f;
+   }
+ 
++if(cinfo.jpeg_color_space==JCS_CMYK)
++  cmyk=1;
++
++if(cinfo.jpeg_color_space==JCS_YCCK)
++  {
++  cmyk=1;
++  cinfo.out_color_space=JCS_CMYK;
++  }
++  
+ width=cinfo.image_width;
+ height=cinfo.image_height;
+ 
+@@ -191,7 +202,7 @@
+   }
+ 
+ if(WH_BAD(width,height) ||
+-   (theimage=(byte *)malloc(pixelsize*width*height))==NULL)
++   (theimage=(byte *)malloc(pixelsize*width*(height+cmyk)))==NULL)
+   {
+   jpegerr("Out of memory");	/* XXX misleading if width/height are bad */
+   longjmp(jerr.setjmp_buffer,1);
+@@ -222,7 +233,20 @@
+   while(cinfo.output_scanline<height)
+     {
+     jpeg_read_scanlines(&cinfo,&ptr,1);
+-    for(f=0;f<width;f++) { tmp=*ptr; *ptr=ptr[2]; ptr[2]=tmp; ptr+=3; }
++    if(!cmyk)
++      for(f=0;f<width;f++) { tmp=*ptr; *ptr=ptr[2]; ptr[2]=tmp; ptr+=3; }
++    else
++      {
++      ptr2=ptr;
++      for(f=0;f<width;f++,ptr+=3,ptr2+=4)
++        {
++        tmp=ptr2[3];
++        ptr[0]=(tmp*ptr2[2])/255;
++        ptr[1]=(tmp*ptr2[1])/255;
++        ptr[2]=(tmp*ptr2[0])/255;
++        }
++      }
++    
+     if(howfar!=NULL) howfar(cinfo.output_scanline,height);
+     }
+ 

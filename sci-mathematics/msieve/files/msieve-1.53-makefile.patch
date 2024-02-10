@@ -1,0 +1,108 @@
+--- a/Makefile
++++ b/Makefile
+@@ -18,10 +18,8 @@
+ 
+ # gcc with basic optimization (-march flag could
+ # get overridden by architecture-specific builds)
+-CC = gcc
+-WARN_FLAGS = -Wall -W
+-OPT_FLAGS = -O3 -fomit-frame-pointer -march=native \
+-	    -D_FILE_OFFSET_BITS=64 -DNDEBUG -D_LARGEFILE64_SOURCE
++CFLAGS += -Wall -W
++CPPFLAGS += -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ 
+ # use := instead of = so we only run the following once
+ SVN_VERSION := $(shell svnversion .)
+@@ -29,15 +27,14 @@
+ 	SVN_VERSION := unknown
+ endif
+ 
+-CFLAGS = $(OPT_FLAGS) $(MACHINE_FLAGS) $(WARN_FLAGS) \
+-	 	-DMSIEVE_SVN_VERSION="\"$(SVN_VERSION)\"" \
+-		-I. -Iaprcl -Iinclude -Ignfs -Ignfs/poly -Ignfs/poly/stage1
++CPPFLAGS += -DMSIEVE_SVN_VERSION="\"$(SVN_VERSION)\"" \
++	-I. -Iaprcl -Iinclude -Ignfs -Ignfs/poly -Ignfs/poly/stage1
+ 
+ # tweak the compile flags
+ 
+ ifeq ($(ECM),1)
+-	CFLAGS += -DHAVE_GMP_ECM
+-	LIBS += -lecm
++	CPPFLAGS += -DHAVE_GMP_ECM
++	LIBS += -lecm -lgomp
+ endif
+ ifeq ($(WIN),1)
+ 
+@@ -61,22 +58,21 @@
+ 	CUDA_ROOT = $(shell dirname $(NVCC))/../
+ 	CUDA_LIBS = -lcuda
+ endif
+-	CFLAGS += -I"$(CUDA_ROOT)/include" -Icub -DHAVE_CUDA
++	CPPFLAGS += -I"$(CUDA_ROOT)/include" -Icub -DHAVE_CUDA
+ 	LIBS += $(CUDA_LIBS)
+ endif
+ ifeq ($(MPI),1)
+-	CC = mpicc
+-	CFLAGS += -DHAVE_MPI
++	CPPFLAGS += -DHAVE_MPI
+ endif
+ ifeq ($(BOINC),1)
+ 	# fill in as appropriate
+ 	BOINC_INC_DIR = .
+ 	BOINC_LIB_DIR = .
+-	CFLAGS += -I$(BOINC_INC_DIR) -DHAVE_BOINC
++	CPPFLAGS += -I$(BOINC_INC_DIR) -DHAVE_BOINC
+ 	LIBS += -L$(BOINC_LIB_DIR) -lboinc_api -lboinc
+ endif
+ ifeq ($(NO_ZLIB),1)
+-	CFLAGS += -DNO_ZLIB
++	CPPFLAGS += -DNO_ZLIB
+ else
+ 	LIBS += -lz
+ endif
+@@ -272,9 +268,9 @@
+ 
+ all: $(COMMON_OBJS) $(QS_OBJS) $(NFS_OBJS) $(GPU_OBJS)
+ 	rm -f libmsieve.a
+-	ar r libmsieve.a $(COMMON_OBJS) $(QS_OBJS) $(NFS_OBJS)
+-	ranlib libmsieve.a
+-	$(CC) $(CFLAGS) demo.c -o msieve $(LDFLAGS) \
++	$(AR) r libmsieve.a $(COMMON_OBJS) $(QS_OBJS) $(NFS_OBJS)
++	$(RANLIB) libmsieve.a
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) demo.c -o msieve \
+ 			libmsieve.a $(LIBS)
+ 
+ clean:
+@@ -287,27 +283,27 @@
+ # common file build rules
+ 
+ %.o: %.c $(COMMON_HDR)
+-	$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ # QS build rules
+ 
+ mpqs/sieve_core_generic_32k.qo: mpqs/sieve_core.c $(COMMON_HDR) $(QS_HDR)
+-	$(CC) $(CFLAGS) -DBLOCK_KB=32 -DHAS_SSE2 \
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DBLOCK_KB=32 -DHAS_SSE2 \
+ 		-DROUTINE_NAME=qs_core_sieve_generic_32k \
+ 		-c -o $@ mpqs/sieve_core.c
+ 
+ mpqs/sieve_core_generic_64k.qo: mpqs/sieve_core.c $(COMMON_HDR) $(QS_HDR)
+-	$(CC) $(CFLAGS) -DBLOCK_KB=64 -DHAS_SSE2 \
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DBLOCK_KB=64 -DHAS_SSE2 \
+ 		-DROUTINE_NAME=qs_core_sieve_generic_64k \
+ 		-c -o $@ mpqs/sieve_core.c
+ 
+ %.qo: %.c $(COMMON_HDR) $(QS_HDR)
+-	$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ # NFS build rules
+ 
+ %.no: %.c $(COMMON_HDR) $(NFS_HDR)
+-	$(CC) $(CFLAGS) -Ignfs -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -Ignfs -c -o $@ $<
+ 
+ # GPU build rules
+ 

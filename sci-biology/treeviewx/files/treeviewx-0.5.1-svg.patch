@@ -1,0 +1,30 @@
+Author: Olly Betts <olly@survex.com>
+Description: Update configure.in to match what it must have said when configure was generated.
+ One thing I should probably explain about the patch as my change may
+ seem odd otherwise - upstream's configure.in says "USE_SVG=0" but the
+ generated configure says "USE_SVG=1", so I've simply updated
+ configure.in to match what it must have said when configure was
+ generated.
+Forwarded: no
+--- tv-0.5.orig/configure.in
++++ tv-0.5/configure.in
+@@ -66,7 +66,9 @@
+   case "$wx_version" in
+      2.4.*) WX_SVG_LIB=[`$WX_CONFIG --basename`_dcsvg-`echo ${wx_version} | sed -e "s:\.[0-9]\{1,\}$::"`]
+            ;;
+-     *)    WX_SVG_LIB=[`$WX_CONFIG --basename`_svg-`echo ${wx_version} | sed -e "s:\.[0-9]\{1,\}$::"`]
++     2.*)   WX_SVG_LIB=[`$WX_CONFIG --basename`_svg-`echo ${wx_version} | sed -e "s:\.[0-9]\{1,\}$::"`]
++           ;;
++     *)     WX_SVG_LIB=
+            ;;
+   esac
+ 
+@@ -76,7 +78,7 @@
+ 
+ if test "$USE_SVG" = 1 ; then
+    CXXFLAGS="$CXXFLAGS -DUSE_SVG"
+-   LIBS="$LIBS -l$WX_SVG_LIB"
++   test -n "$WX_SVG_LIB" && LIBS="$LIBS -l$WX_SVG_LIB"
+ fi
+ 
+ AC_OUTPUT(Makefile ncl-2.0/Makefile ncl-2.0/src/Makefile TreeLib/Makefile tv.spec)

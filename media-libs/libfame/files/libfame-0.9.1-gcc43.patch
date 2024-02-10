@@ -1,0 +1,33 @@
+diff -rupN libfame-0.9.1b/src/fame_motion_pmvfast.c libfame-0.9.1/src/fame_motion_pmvfast.c
+--- libfame-0.9.1b/src/fame_motion_pmvfast.c	2009-02-03 01:30:26.000000000 -0400
++++ libfame-0.9.1/src/fame_motion_pmvfast.c	2009-02-03 01:31:33.000000000 -0400
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "fame.h"
+ #include "fame_malloc.h"
+ #include "fame_motion.h"
+diff -rupN libfame-0.9.1b/src/fame_rate_1param.c libfame-0.9.1/src/fame_rate_1param.c
+--- libfame-0.9.1b/src/fame_rate_1param.c	2009-02-03 01:30:26.000000000 -0400
++++ libfame-0.9.1/src/fame_rate_1param.c	2009-02-03 01:31:15.000000000 -0400
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+ #include "fame.h"
+ #include "fame_rate_1param.h"
+diff -rupN libfame-0.9.1b/src/fame_rate_simple.c libfame-0.9.1/src/fame_rate_simple.c
+--- libfame-0.9.1b/src/fame_rate_simple.c	2009-02-03 01:30:26.000000000 -0400
++++ libfame-0.9.1/src/fame_rate_simple.c	2009-02-03 01:30:57.000000000 -0400
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+ #include "fame.h"
+ #include "fame_rate_simple.h"

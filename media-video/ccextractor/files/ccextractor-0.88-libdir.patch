@@ -1,0 +1,12 @@
+diff --git a/lib_ccx/CMakeLists.txt b/lib_ccx/CMakeLists.txt
+index 5a784a9..172ef42 100644
+--- a/lib_ccx/CMakeLists.txt
++++ b/lib_ccx/CMakeLists.txt
+@@ -107,6 +107,6 @@ file (WRITE ccx.pc "prefix=${CMAKE_INSTALL_PREFIX}\n"
+                   "Libs.private: -lpng\n"
+                   )
+ 
+-install (TARGETS ccx DESTINATION lib)
++install (TARGETS ccx DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install (FILES ${HeaderFiles} DESTINATION include)
+ install (FILES ccx.pc DESTINATION lib/pkgconfig)

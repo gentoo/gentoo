@@ -1,0 +1,19 @@
+Since version 1.2.4 musl no longer enables legacy LFS interfaces as part
+of _GNU_SOURCE, and will remove them altogether in a future release [1].
+Just switch to the standard interfaces.
+
+[1] https://musl.libc.org/releases.html
+
+--- a/sock.c
++++ b/sock.c
+@@ -54,8 +54,8 @@
+ static int
+ isfdtype(int fd, int fdtype)
+ {
+-	struct stat64 st;
+-	if (fstat64(fd, &st) != 0)
++	struct stat st;
++	if (fstat(fd, &st) != 0)
+ 		return -1;
+ 	return ((st.st_mode & S_IFMT) == (mode_t)fdtype);
+ }

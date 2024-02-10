@@ -1,0 +1,43 @@
+From f1ef6b4b11080a98d622b6a6c657be5a3a9aae2f Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Tue, 15 Jun 2021 08:41:08 +0200
+Subject: [PATCH] configure.ac: Put sndio and OSS behind AC_ARG_ENABLE
+
+This allows to avoid automagic dependencies
+---
+ configure.ac | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0e53752..2f34123 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -266,8 +266,11 @@ AM_CONDITIONAL(HAVE_ESD,test "x$have_esd" = xyes)
+ dnl Check for OSS
+ 
+ have_oss="no";
+-AC_CHECK_HEADERS(sys/soundcard.h, have_oss=yes)
+-AC_CHECK_HEADERS(machine/soundcard.h, have_oss=yes)
++AC_ARG_ENABLE(oss, [  --disable-oss          disable OSS output plugin ])
++if test "x$enable_oss" != "xno"; then
++  AC_CHECK_HEADERS(sys/soundcard.h, have_oss=yes)
++  AC_CHECK_HEADERS(machine/soundcard.h, have_oss=yes)
++fi
+ AM_CONDITIONAL(HAVE_OSS,test "${have_oss}" = "yes")
+ 
+ 
+@@ -321,7 +324,10 @@ AM_CONDITIONAL(HAVE_SUN_AUDIO,test "${have_sun}" = yes)
+ dnl Check for libsndio audio
+ 
+ have_sndio="no";
+-AC_CHECK_HEADERS(sndio.h, have_sndio=yes)
++AC_ARG_ENABLE(sndio, [  --disable-sndio        disable sndio output plugin ])
++if test "x$enable_sndio" != "xno"; then
++  AC_CHECK_HEADERS(sndio.h, have_sndio=yes)
++fi
+ AM_CONDITIONAL(HAVE_SNDIO_AUDIO,test "${have_sndio}" = yes)
+ 
+ dnl Check for roaraudio
+-- 
+2.31.1
+

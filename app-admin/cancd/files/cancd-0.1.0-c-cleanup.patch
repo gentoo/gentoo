@@ -1,0 +1,65 @@
+diff -Nuar --exclude '*~' --exclude '*.orig' --exclude Makefile cancd-0.1.0/cancd.c cancd-0.1.0.new/cancd.c
+--- cancd-0.1.0/cancd.c	2005-08-18 11:47:48.000000000 -0700
++++ cancd-0.1.0.new/cancd.c	2006-03-17 17:09:46.402025517 -0800
+@@ -199,7 +199,7 @@
+     char *path;
+ };
+ 
+-static int make_tree(const char *path, int mode)
++static int make_tree(const char *path, mode_t mode)
+ {
+     struct stat stat_buf;
+     char *ptr, *tmp;
+@@ -319,7 +319,7 @@
+ static int open_socket()
+ {
+     int rc;
+-    struct sockaddr_in servaddr = {0, };
++    struct sockaddr_in servaddr;
+ 
+     sock_fd = socket(PF_INET, SOCK_DGRAM, 0);
+     if (sock_fd < 0)
+@@ -438,7 +438,7 @@
+     int rc;
+     static int block = 1;
+ 
+-    rc = recvfrom(sock_fd, buf, bufsize, 0,
++    rc = recvfrom(fd, buf, bufsize, 0,
+                   (struct sockaddr *)from, fromlen);
+     if (rc < 0)
+     {
+@@ -569,7 +569,7 @@
+ 
+ static int valid_format()
+ {
+-    struct in_addr addr = {0, };
++    struct in_addr addr;
+     char *name;
+     int rc;
+ 
+@@ -599,9 +599,11 @@
+     exit(rc);
+ }
+ 
++/*
+ extern char *optarg;
+ extern int optopt;
+ extern int opterr;
++*/
+ static int parse_options(int argc, char *argv[])
+ {
+     int c;
+@@ -641,11 +643,11 @@
+                             optarg);
+                     print_usage(-EINVAL);
+                 }
+-                log_prefix = optarg;
++                log_prefix = strdup(optarg);
+                 break;
+ 
+             case 'o':
+-                log_format = optarg;
++                log_format = strdup(optarg);
+                 if (!log_format || !*log_format || !valid_format())
+                 {
+                     fprintf(stderr,

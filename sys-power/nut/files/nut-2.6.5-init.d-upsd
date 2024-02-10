@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+pidfile=/var/lib/nut/upsd.pid
+bin=/usr/sbin/upsd
+
+depend() {
+	use net
+	before upsmon
+	after upsdrv
+}
+
+start() {
+	ebegin "Starting upsd"
+	# clean up first
+	pkill -u root,nut -x ${bin}
+	sleep 1
+	rm -f ${pidfile}
+	# now start up
+	start-stop-daemon --start --quiet --exec ${bin}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping upsd"
+	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading upsd"
+	start-stop-daemon --stop --signal HUP --oknodo --quiet --pidfile ${pidfile}
+	eend $?
+}

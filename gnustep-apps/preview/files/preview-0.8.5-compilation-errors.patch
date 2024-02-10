@@ -1,0 +1,30 @@
+2010-05-18  Federico Gimenez Nieto  <fgimenez@coit.es>
+
+	* Document.m: Import <AppKit/AppKit.h>.
+
+Index: preview.app-0.8.5/Document.m
+===================================================================
+--- preview.app-0.8.5.orig/Document.m	2010-05-18 19:18:11.000000000 +0200
++++ preview.app-0.8.5/Document.m	2010-05-18 19:18:23.000000000 +0200
+@@ -35,20 +35,7 @@
+ 
+ #include <Foundation/NSNotification.h>
+ 
+-#include <AppKit/NSApplication.h>
+-#include <AppKit/NSAffineTransform.h>
+-#include <AppKit/NSClipView.h>
+-#include <AppKit/NSCursor.h>
+-#include <AppKit/NSImage.h>
+-#include <AppKit/NSImageView.h>
+-#include <AppKit/NSMatrix.h>
+-#include <AppKit/NSPasteboard.h>
+-#include <AppKit/NSPopUpButton.h>
+-#include <AppKit/NSScreen.h>
+-#include <AppKit/NSScrollView.h>
+-#include <AppKit/NSWindow.h>
+-#include <AppKit/NSWindowController.h>
+-#include <AppKit/NSScroller.h>
++#include <AppKit/AppKit.h>
+ 
+ /*********************************************************************/
+ /**************** NSDocument Private methods *************************/

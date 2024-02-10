@@ -1,0 +1,12 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -64,8 +64,7 @@
+ endif
+ 
+ if CPU_X86_32
+-libisal_la_SOURCES += ${lsrc_x86_32}
+-other_tests += ${other_tests_x86_32}
++libisal_la_SOURCES += ${lsrc_base_aliases}
+ endif
+ 
+ if CPU_AARCH64

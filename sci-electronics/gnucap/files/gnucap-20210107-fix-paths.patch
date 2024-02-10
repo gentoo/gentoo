@@ -1,0 +1,68 @@
+diff --git a/apps/Make1 b/apps/Make1
+index 43a2266..a29b29f 100644
+--- a/apps/Make1
++++ b/apps/Make1
+@@ -23,7 +23,7 @@ TARGET = gnucap-default-plugins
+ #------------------------------------------------------------------------
+ INSTALL_FILES = $(TARGET)$(TARGET_EXT)
+ #------------------------------------------------------------------------
+-INSTALL_DIR = $(PREFIX)/lib/gnucap
++INSTALL_DIR = $(PREFIX)/lib64/gnucap
+ #------------------------------------------------------------------------
+ DELETED =
+ #------------------------------------------------------------------------
+diff --git a/lib/Make1 b/lib/Make1
+index 27f839f..bd9fbfb 100644
+--- a/lib/Make1
++++ b/lib/Make1
+@@ -23,7 +23,7 @@ TARGET = libgnucap
+ #------------------------------------------------------------------------
+ INSTALL_FILES = $(TARGET)$(TARGET_EXT)
+ #------------------------------------------------------------------------
+-INSTALL_DIR = $(PREFIX)/lib
++INSTALL_DIR = $(PREFIX)/lib64
+ #------------------------------------------------------------------------
+ DELETED =
+ #------------------------------------------------------------------------
+diff --git a/main/Make1 b/main/Make1
+index 14d44c7..2d92c1f 100644
+--- a/main/Make1
++++ b/main/Make1
+@@ -24,7 +24,7 @@ TARGET = gnucap
+ INSTALL_DIR = $(PREFIX)/bin
+ INSTALL_FILES = $(TARGET)$(TARGET_EXT) ../gnucap-conf
+ #------------------------------------------------------------------------
+-INSTALL_SYSCONF_DIR = $(PREFIX)/etc
++INSTALL_SYSCONF_DIR = $(PREFIX)/../etc
+ INSTALL_SYSCONF_FILES = ../gnucap.conf
+ #------------------------------------------------------------------------
+ DELETED =
+diff --git a/main/configure b/main/configure
+index b68d06a..47e43a2 100755
+--- a/main/configure
++++ b/main/configure
+@@ -23,8 +23,8 @@ fi
+ 
+ sed -e "s#/usr/local#$prefix#" ../Makefile.template > Makefile
+ #----------------------------------------------------------------
+-pkglibdir='${prefix}/lib/gnucap'
+-pkglibdir_expanded="${prefix}/lib/gnucap"
++pkglibdir='${prefix}/lib64/gnucap'
++pkglibdir_expanded="${prefix}/lib64/gnucap"
+ 
+ # bug. this is not implemented consistently.
+ CXX=${CXX-c++}
+@@ -32,11 +32,11 @@ CXX=${CXX-c++}
+ fill_template() {
+ sed -e "s#@prefix@#$prefix#" \
+     -e "s#@exec_prefix@#$prefix#" \
+-    -e "s#@libdir@#$prefix/lib#" \
++    -e "s#@libdir@#$prefix/lib64#" \
+     -e "s#@includedir@#$\{prefix\}/include#" \
+     -e "s#@datarootdir@#$\{prefix\}/share/gnucap#" \
+     -e "s#@docdir@#$\{prefix\}/share/doc/gnucap#" \
+-    -e "s#@sysconfdir@#$\{prefix\}/etc#" \
++    -e "s#@sysconfdir@#$\{prefix\}/../etc#" \
+     -e "s#@pkglibdir@#$pkglibdir#" \
+     -e "s#@pkglibdir_expanded@#$pkglibdir_expanded#" \
+     -e "s#@CXXFLAGS@#$CCFLAGS#" \

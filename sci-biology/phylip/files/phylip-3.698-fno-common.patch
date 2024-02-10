@@ -1,0 +1,70 @@
+--- a/src/draw.c
++++ b/src/draw.c
+@@ -34,6 +34,11 @@
+ 
+ char fontname[LARGE_BUF_LENGTH];
+ 
++long treecolor, namecolor, backcolor, bottomcolor, vrmlskycolornear, vrmlskycolorfar,
++     vrmlgroundcolornear, vrmlgroundcolorfar, vrmlplotcolor;
++
++char afmfile[FNMLNGTH];
++
+ /* format of matrix: capheight,  length[32],length[33],..length[256]*/
+ 
+ byte *full_pic ;
+--- a/src/draw.h
++++ b/src/draw.h
+@@ -52,10 +52,10 @@
+   double intensity, x, y, z;
+ } vrmllighttype;
+ 
+-long treecolor, namecolor, backcolor, bottomcolor, vrmlskycolornear, vrmlskycolorfar,
++extern long treecolor, namecolor, backcolor, bottomcolor, vrmlskycolornear, vrmlskycolorfar,
+      vrmlgroundcolornear, vrmlgroundcolorfar, vrmlplotcolor;
+      
+-char afmfile[FNMLNGTH];
++extern char afmfile[FNMLNGTH];
+ 
+ double lengthtext(char *, long, char *, fonttype);
+ double heighttext(fonttype, char *);
+--- a/src/drawtree.c
++++ b/src/drawtree.c
+@@ -69,7 +69,7 @@
+              uselengths, regular, rotate, empty, rescaled,
+              notfirst, improve, nbody, firstscreens, labelavoid;
+ boolean     pictbold,pictitalic,pictshadow,pictoutline;
+-boolean javarun;
++extern boolean javarun;
+ 
+ striptype stripe;
+ plottertype plotter, oldplotter;
+--- a/src/phylip.c
++++ b/src/phylip.c
+@@ -34,6 +34,8 @@
+ 
+ #include "phylip.h"
+ 
++boolean javarun;
++
+ #ifdef WIN32
+ #include <windows.h>
+ /* for console code (clear screen, text color settings) */
+--- a/src/phylip.h
++++ b/src/phylip.h
+@@ -331,7 +331,7 @@
+ /* Lower-triangular format. */
+ #define MAT_LOWERTRI    (MAT_LOWER | MAT_MACHINE)
+ 
+-boolean javarun;
++extern boolean javarun;
+ 
+ typedef long *steptr;
+ typedef long longer[6];
+@@ -351,7 +351,6 @@
+ extern long spp, words, bits;
+ extern boolean ibmpc, ansi, tranvsp;
+ extern naym *nayme;                     /* names of species */
+-boolean firstplotblock; // for debugging BMP output
+ 
+ #define ebcdic          EBCDIC
+ 

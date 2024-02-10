@@ -1,0 +1,101 @@
+Bug: https://bugs.gentoo.org/922336
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31256
+
+From https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=0068bd6fb3579dd8df7561e038cb3fe27f122b0e
+From: Guinevere Larsen <blarsen@redhat.com>
+To: gdb-patches@sourceware.org
+Cc: Guinevere Larsen <blarsen@redhat.com>
+Subject: [PATCH] gdb: fix "list ." related crash
+Date: Tue, 23 Jan 2024 11:50:43 +0100
+
+When a user attempts to use the "list ." command with an inferior that
+doesn't have debug symbols, GDB would crash. This was reported as PR
+gdb/31256.
+
+The crash would happen when attempting to get the current symtab_and_line
+for the stop location, because the symtab would return a null pointer
+and we'd attempt to dereference it to print the line.
+
+This commit fixes that by checking for an empty symtab and erroring out
+of the function if it happens.
+
+Bug: https://sourceware.org/PR31256
+--- a/gdb/cli/cli-cmds.c
++++ b/gdb/cli/cli-cmds.c
+@@ -1291,6 +1291,8 @@ list_command (const char *arg, int from_tty)
+ 	      set_default_source_symtab_and_line ();
+ 	      cursal = get_current_source_symtab_and_line ();
+ 	    }
++	  if (cursal.symtab == nullptr)
++	    error (_("No debug information available to print source lines."));
+ 	  list_around_line (arg, cursal);
+ 	  /* Set the repeat args so just pressing "enter" after using "list ."
+ 	     will print the following lines instead of the same lines again. */
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/list-nodebug.c
+@@ -0,0 +1,21 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2024 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++int main ()
++{
++    return 0;
++}
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/list-nodebug.exp
+@@ -0,0 +1,37 @@
++# Copyright 2024 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Test that using the command "list" in a file with no debug information
++# will not crash GDB and will give reasonable output.
++
++standard_testfile .c
++
++if {[prepare_for_testing "failed to prepare" ${testfile} ${srcfile} \
++    {nodebug}]} {
++    return -1
++}
++
++if {![runto_main]} {
++    untested "couldn't run to main"
++    return
++}
++
++# Check that GDB doesn't crash when we use list . on an inferior with
++# no debug information
++gdb_test "list ." "No debug.*" "first 'list .'"
++# This should be called twice because the first list invocation since
++# printing a frame may take a different codepath, which wouldn't
++# trigger the crash.
++gdb_test "list ." "No debug.*" "second 'list .'"
+-- 
+2.43.0
+
+

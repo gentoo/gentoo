@@ -1,0 +1,229 @@
+From 414ab9e13fc9e9fa79f7f0a8e1b4a46cd3bd92fd Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sun, 27 Feb 2022 11:06:42 +0100
+Subject: [PATCH] Use the system installation of catch2 if possible
+
+---
+ CMakeLists.txt         | 41 ++++++++++++++++++++++++-----------------
+ tests/colors.cpp       |  2 +-
+ tests/config.cpp       |  2 +-
+ tests/database.cpp     |  2 +-
+ tests/encoding.cpp     |  2 +-
+ tests/iid.cpp          |  2 +-
+ tests/io_tester.cpp    |  2 +-
+ tests/irc.cpp          |  2 +-
+ tests/jid.cpp          |  2 +-
+ tests/logger.cpp       |  2 +-
+ tests/network.cpp      |  2 +-
+ tests/test.cpp         |  2 +-
+ tests/timed_events.cpp |  2 +-
+ tests/utils.cpp        |  2 +-
+ tests/uuid.cpp         |  2 +-
+ tests/xmpp.cpp         |  2 +-
+ 16 files changed, 39 insertions(+), 32 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f07b97feb57b..8175012fe070 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -288,24 +288,31 @@ foreach(file ${source_all})
+ endforeach()
+ 
+ #
+-## Add a rule to download the catch unit test framework
++## Catch unit test framework
+ #
+-include(ExternalProject)
+-ExternalProject_Add(catch
+-  GIT_REPOSITORY "https://lab.louiz.org/louiz/Catch.git"
+-  PREFIX "external"
+-  UPDATE_COMMAND ""
+-  CONFIGURE_COMMAND ""
+-  BUILD_COMMAND ""
+-  INSTALL_COMMAND ""
+-  )
+-set_target_properties(catch PROPERTIES EXCLUDE_FROM_ALL TRUE)
+-ExternalProject_Get_Property(catch SOURCE_DIR)
+-if(NOT EXISTS ${CMAKE_SOURCE_DIR}/tests/catch.hpp)
+-  target_include_directories(test_suite
+-    PUBLIC "${SOURCE_DIR}/single_include/"
+-    )
+-  add_dependencies(test_suite catch)
++find_package(Catch2 2.2.1)
++if(Catch2_FOUND)
++  target_link_libraries(test_suite Catch2::Catch2)
++else()
++  # No system-wide installation of the catch unit test framework was
++  # found, download it.
++  include(ExternalProject)
++  ExternalProject_Add(catch
++	GIT_REPOSITORY "https://lab.louiz.org/louiz/Catch.git"
++	PREFIX "external"
++	UPDATE_COMMAND ""
++	CONFIGURE_COMMAND ""
++	BUILD_COMMAND ""
++	INSTALL_COMMAND ""
++	)
++  set_target_properties(catch PROPERTIES EXCLUDE_FROM_ALL TRUE)
++  ExternalProject_Get_Property(catch SOURCE_DIR)
++  if(NOT EXISTS ${CMAKE_SOURCE_DIR}/tests/catch.hpp)
++	target_include_directories(test_suite
++      PUBLIC "${SOURCE_DIR}/single_include/"
++      )
++	add_dependencies(test_suite catch)
++  endif()
+ endif()
+ 
+ #
+diff --git a/tests/colors.cpp b/tests/colors.cpp
+index bf529896dce7..a9761dfff648 100644
+--- a/tests/colors.cpp
++++ b/tests/colors.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <bridge/colors.hpp>
+ #include <xmpp/xmpp_stanza.hpp>
+diff --git a/tests/config.cpp b/tests/config.cpp
+index ec9844fbd5f6..76cfe92e3e51 100644
+--- a/tests/config.cpp
++++ b/tests/config.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ #include "io_tester.hpp"
+ 
+ #include <iostream>
+diff --git a/tests/database.cpp b/tests/database.cpp
+index 070a46013997..bf6bc20324cb 100644
+--- a/tests/database.cpp
++++ b/tests/database.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <biboumi.h>
+ 
+diff --git a/tests/encoding.cpp b/tests/encoding.cpp
+index b5192ffbdb8d..8129abc9230e 100644
+--- a/tests/encoding.cpp
++++ b/tests/encoding.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <utils/encoding.hpp>
+ 
+diff --git a/tests/iid.cpp b/tests/iid.cpp
+index 63b2ba38ca55..7e61f35e348b 100644
+--- a/tests/iid.cpp
++++ b/tests/iid.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <irc/iid.hpp>
+ #include <irc/irc_user.hpp>
+diff --git a/tests/io_tester.cpp b/tests/io_tester.cpp
+index 19c97c91aff8..34f89fdac603 100644
+--- a/tests/io_tester.cpp
++++ b/tests/io_tester.cpp
+@@ -1,5 +1,5 @@
+ #include "io_tester.hpp"
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ #include <iostream>
+ 
+ /**
+diff --git a/tests/irc.cpp b/tests/irc.cpp
+index 0f30f15e2fdf..cb53e3f226ff 100644
+--- a/tests/irc.cpp
++++ b/tests/irc.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <irc/irc_message.hpp>
+ 
+diff --git a/tests/jid.cpp b/tests/jid.cpp
+index 592d6f3d0b78..516f961fabbb 100644
+--- a/tests/jid.cpp
++++ b/tests/jid.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <xmpp/jid.hpp>
+ #include <biboumi.h>
+diff --git a/tests/logger.cpp b/tests/logger.cpp
+index 1e3392a4bd43..b4736da3648d 100644
+--- a/tests/logger.cpp
++++ b/tests/logger.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <logger/logger.hpp>
+ #include <config/config.hpp>
+diff --git a/tests/network.cpp b/tests/network.cpp
+index a52eb6acfef8..790190f8d0bf 100644
+--- a/tests/network.cpp
++++ b/tests/network.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ #include <network/tls_policy.hpp>
+ #include <sstream>
+ 
+diff --git a/tests/test.cpp b/tests/test.cpp
+index 0c7c351f437f..62bf7476a189 100644
+--- a/tests/test.cpp
++++ b/tests/test.cpp
+@@ -1,2 +1,2 @@
+ #define CATCH_CONFIG_MAIN
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+diff --git a/tests/timed_events.cpp b/tests/timed_events.cpp
+index fece422e99d5..6eaf99b3e1b9 100644
+--- a/tests/timed_events.cpp
++++ b/tests/timed_events.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <utils/timed_events.hpp>
+ 
+diff --git a/tests/utils.cpp b/tests/utils.cpp
+index 6151733e7cf4..22b45cf3113b 100644
+--- a/tests/utils.cpp
++++ b/tests/utils.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <utils/tolower.hpp>
+ #include <utils/revstr.hpp>
+diff --git a/tests/uuid.cpp b/tests/uuid.cpp
+index 12c6c32adbeb..7720e3aaee30 100644
+--- a/tests/uuid.cpp
++++ b/tests/uuid.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <xmpp/xmpp_component.hpp>
+ 
+diff --git a/tests/xmpp.cpp b/tests/xmpp.cpp
+index 14c51daa460f..01508a63481d 100644
+--- a/tests/xmpp.cpp
++++ b/tests/xmpp.cpp
+@@ -1,4 +1,4 @@
+-#include "catch.hpp"
++#include "catch2/catch.hpp"
+ 
+ #include <xmpp/xmpp_parser.hpp>
+ #include <xmpp/auth.hpp>
+-- 
+2.34.1
+

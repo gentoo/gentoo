@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,6 +39,7 @@
+ AC_PROG_MKDIR_P
+ AC_PROG_YACC
+ AC_PROG_LIBTOOL
++AM_ICONV
+ 
+ 
+ # -----------------------------------------------------------------------

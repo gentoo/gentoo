@@ -1,0 +1,14 @@
+--- netgen-1.4.40/tcltk/Makefile
++++ netgen-1.4.40/tcltk/Makefile
+@@ -42,8 +42,8 @@
+ 	${CP} $* $(DESTDIR)${TCLDIR}/$*
+ 
+ $(DESTDIR)${BINDIR}/netgen.sh: netgen.sh
+-	${RM} $(DESTDIR)${BINDIR}/netgen.sh $(DESTDIR)${BINDIR}/netgen
+-	${CP} netgen.sh $(DESTDIR)${BINDIR}/netgen
+-	(cd $(DESTDIR)${BINDIR}; chmod 0755 netgen)
++	${RM} $(DESTDIR)${BINDIR}/netgen.sh $(DESTDIR)${BINDIR}/netgen-tcl
++	${CP} netgen.sh $(DESTDIR)${BINDIR}/netgen-tcl
++	(cd $(DESTDIR)${BINDIR}; chmod 0755 netgen-tcl)
+ 
+ include ${NETGENDIR}/rules.mak

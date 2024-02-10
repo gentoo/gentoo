@@ -1,0 +1,5 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Optionally depend on started Pure-Certd
+# RC_NEED="pure-certd"

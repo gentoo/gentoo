@@ -1,0 +1,19 @@
+--- ultimatestunts-srcdata-0771.orig/data/Makefile.in
++++ ultimatestunts-srcdata-0771/data/Makefile.in
+@@ -358,11 +358,11 @@
+ 
+ 
+ install:
+-	$(mkinstalldirs) ${usdatadir}
+-	cp -r cars environment lang misc music textures textures.dat tiles tracks ${usdatadir}
+-	chmod 644 ${usdatadir}/*.*
+-	chmod 644 ${usdatadir}/*/*.*
+-	chmod 644 ${usdatadir}/*/*/*.*
++	$(mkinstalldirs) $(DESTDIR)${usdatadir}
++	cp -r cars environment lang misc music textures textures.dat tiles tracks $(DESTDIR)${usdatadir}
++	chmod 644 $(DESTDIR)${usdatadir}/*.*
++	chmod 644 $(DESTDIR)${usdatadir}/*/*.*
++	chmod 644 $(DESTDIR)${usdatadir}/*/*/*.*
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

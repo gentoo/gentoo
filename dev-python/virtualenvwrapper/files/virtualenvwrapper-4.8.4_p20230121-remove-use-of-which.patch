@@ -1,0 +1,116 @@
+https://bugs.gentoo.org/646588
+https://github.com/parona-source/virtualenvwrapper/commit/d7dd99ca8e4ebdf5668708634cf793acee5d35b3
+
+From d7dd99ca8e4ebdf5668708634cf793acee5d35b3 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 21 Jun 2023 11:35:04 +0300
+Subject: [PATCH] Remove use of which, use command -v or built-ins instead
+
+* which isn't a POSIX tool and some distributions have or are still
+  considering dropping it in favour of using commands included by
+  POSIX or shell built-ins.
+* Used command built-in where applicable, but type and whence for bash
+  and zsh respectively in virtualenvwrapper_verify_resource to preserve
+  previous behaviour with which when programs also have built-ins
+  with the same name. command -v outputs just the name and not the path
+  in those cases.
+
+https://lwn.net/Articles/874049/
+https://bugs.gentoo.org/646588
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ tests/run_tests            |  2 +-
+ tests/test_cp.sh           |  2 +-
+ tests/test_mkvirtualenv.sh |  4 +---
+ virtualenvwrapper.sh       | 10 ++++++++--
+ virtualenvwrapper_lazy.sh  |  2 +-
+ 5 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/tests/run_tests b/tests/run_tests
+index 68cb362..c9a81d6 100755
+--- a/tests/run_tests
++++ b/tests/run_tests
+@@ -62,7 +62,7 @@ do
+     echo "  BASH_VERSION=$BASH_VERSION"
+     echo "  ZSH_VERSION=$ZSH_VERSION"
+     echo "  KSH_VERSION=$KSH_VERSION"
+-    echo "  virtualenv=$(which virtualenv)"
++    echo "  virtualenv=$(command -v virtualenv)"
+     echo "  test_shell_opts=$test_shell_opts"
+     echo "  ZSH=$ZSH_NAME $ZSH_EVAL_CONTEXT"
+     echo "  TMPDIR=$TMPDIR"
+diff --git a/tests/test_cp.sh b/tests/test_cp.sh
+index 3bd9196..3227c7a 100755
+--- a/tests/test_cp.sh
++++ b/tests/test_cp.sh
+@@ -26,7 +26,7 @@ test_new_env_activated () {
+     (cd tests/testpackage && python setup.py install) >/dev/null 2>&1
+     cpvirtualenv "source" "destination" >/dev/null 2>&1
+     rmvirtualenv "source" >/dev/null 2>&1
+-    testscript="$(which testscript.py)"
++    testscript="$(command -v testscript.py)"
+     assertTrue "Environment test script not found in path" "[ $WORKON_HOME/destination/bin/testscript.py -ef $testscript ]"
+     testscriptcontent="$(cat $testscript)"
+     assertTrue "No cpvirtualenvtest in $testscriptcontent" "echo $testscriptcontent | grep cpvirtualenvtest"
+diff --git a/tests/test_mkvirtualenv.sh b/tests/test_mkvirtualenv.sh
+index 3c37dfe..47b603a 100755
+--- a/tests/test_mkvirtualenv.sh
++++ b/tests/test_mkvirtualenv.sh
+@@ -68,11 +68,9 @@ GLOBAL postmkvirtualenv"
+ }
+ 
+ test_no_virtualenv () {
+-	# Find "which" before we change the path
+-	which=$(which which)
+     old_path="$PATH"
+     PATH="/bin:/usr/sbin:/sbin"
+-    venv=$($which virtualenv 2>/dev/null)
++    venv=$(command -v virtualenv)
+ 	if [ ! -z "$venv" ]
+ 	then
+         echo "FOUND \"$venv\" in PATH so skipping this test"
+diff --git a/virtualenvwrapper.sh b/virtualenvwrapper.sh
+index b8e4a42..469fa35 100644
+--- a/virtualenvwrapper.sh
++++ b/virtualenvwrapper.sh
+@@ -47,7 +47,7 @@
+ # Locate the global Python where virtualenvwrapper is installed.
+ if [ "${VIRTUALENVWRAPPER_PYTHON:-}" = "" ]
+ then
+-    _virtualenvwrapper_python_executable="$(which python3 2>/dev/null)"
++    _virtualenvwrapper_python_executable="$(command -v python3)"
+     if [ -n "$_virtualenvwrapper_python_executable" ] && $_virtualenvwrapper_python_executable -m 'virtualenvwrapper.hook_loader' --help >/dev/null 2>&1
+     then
+         VIRTUALENVWRAPPER_PYTHON=$_virtualenvwrapper_python_executable
+@@ -330,7 +330,13 @@ function virtualenvwrapper_initialize {
+ 
+ # Verify that the passed resource is in path and exists
+ function virtualenvwrapper_verify_resource {
+-    typeset exe_path="$(command \which "$1" | (unset GREP_OPTIONS; command \grep -v "not found"))"
++    if [ -n "${ZSH_VERSION}" ]
++    then
++        typeset exe_path="$(whence -p "${1}")"
++    else
++        typeset exe_path="$(type -P "${1}")"
++    fi
++
+     if [ "$exe_path" = "" ]
+     then
+         echo "ERROR: virtualenvwrapper could not find $1 in your path" >&2
+diff --git a/virtualenvwrapper_lazy.sh b/virtualenvwrapper_lazy.sh
+index 3902d08..9016b6c 100644
+--- a/virtualenvwrapper_lazy.sh
++++ b/virtualenvwrapper_lazy.sh
+@@ -5,7 +5,7 @@ export _VIRTUALENVWRAPPER_API="$_VIRTUALENVWRAPPER_API mkvirtualenv rmvirtualenv
+ 
+ if [ -z "$VIRTUALENVWRAPPER_SCRIPT" ]
+ then
+-    export VIRTUALENVWRAPPER_SCRIPT="$(command \which virtualenvwrapper.sh)"
++    export VIRTUALENVWRAPPER_SCRIPT="$(command -v virtualenvwrapper.sh)"
+ fi
+ if [ -z "$VIRTUALENVWRAPPER_SCRIPT" ]
+ then
+-- 
+2.41.0
+

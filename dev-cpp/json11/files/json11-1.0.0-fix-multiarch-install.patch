@@ -1,0 +1,14 @@
+diff -Naur before/CMakeLists.txt after/CMakeLists.txt
+--- before/CMakeLists.txt	2019-05-12 16:45:39.995871663 +0200
++++ after/CMakeLists.txt	2019-05-12 16:44:56.154872666 +0200
+@@ -52,6 +52,7 @@
+   target_link_libraries(json11_test json11)
+ endif()
+ 
+-install(TARGETS json11 DESTINATION lib/${CMAKE_LIBRARY_ARCHITECTURE})
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/json11.hpp" DESTINATION include/${CMAKE_LIBRARY_ARCHITECTURE})
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/json11.pc" DESTINATION lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig)
++install(TARGETS json11 DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/json11.hpp" DESTINATION include)
++install(FILES "${CMAKE_CURRENT_BINARY_DIR}/json11.pc" DESTINATION
++    ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

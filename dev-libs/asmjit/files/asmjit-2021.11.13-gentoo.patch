@@ -1,0 +1,45 @@
+diff --git a/src/asmjit/core/support.h b/src/asmjit/core/support.h
+index f98ffaa..2329cb2 100644
+--- a/src/asmjit/core/support.h
++++ b/src/asmjit/core/support.h
+@@ -33,33 +33,40 @@
+ ASMJIT_BEGIN_NAMESPACE
+ 
+ //! \addtogroup asmjit_utilities
+ //! \{
+ 
+ //! Contains support classes and functions that may be used by AsmJit source
+ //! and header files. Anything defined here is considered internal and should
+ //! not be used outside of AsmJit and related projects like AsmTK.
+ namespace Support {
+ 
+ // ============================================================================
+ // [asmjit::Support - Architecture Features & Constraints]
+ // ============================================================================
+ 
+ //! \cond INTERNAL
++#if defined(__GNUC__) && !defined(__clang__) && __GNUC__ >= 11
++// There is a bug in GCC11+ that makes it unusable to use annotated unaligned loads/stores.
++static constexpr bool kUnalignedAccess16 = false;
++static constexpr bool kUnalignedAccess32 = false;
++static constexpr bool kUnalignedAccess64 = false;
++#else
+ static constexpr bool kUnalignedAccess16 = ASMJIT_ARCH_X86 != 0;
+ static constexpr bool kUnalignedAccess32 = ASMJIT_ARCH_X86 != 0;
+ static constexpr bool kUnalignedAccess64 = ASMJIT_ARCH_X86 != 0;
++#endif
+ //! \endcond
+ 
+ // ============================================================================
+ // [asmjit::Support - Internal]
+ // ============================================================================
+ 
+ //! \cond INTERNAL
+ namespace Internal {
+   template<typename T, size_t Alignment>
+   struct AlignedInt {};
+ 
+   template<> struct AlignedInt<uint16_t, 1> { typedef uint16_t ASMJIT_ALIGN_TYPE(T, 1); };
+   template<> struct AlignedInt<uint16_t, 2> { typedef uint16_t T; };
+   template<> struct AlignedInt<uint32_t, 1> { typedef uint32_t ASMJIT_ALIGN_TYPE(T, 1); };
+   template<> struct AlignedInt<uint32_t, 2> { typedef uint32_t ASMJIT_ALIGN_TYPE(T, 2); };

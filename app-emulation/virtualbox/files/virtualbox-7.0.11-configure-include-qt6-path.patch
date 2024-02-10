@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 5d653d97..f6953d88 100755
+--- a/configure
++++ b/configure
+@@ -1695,6 +1695,8 @@ EOF
+         else
+           # Strip .../QtCore as we add components ourself:
+           INCQT6=`echo "$INCQT6"|$KBUILD_SED 's|\([^ ]*\)/QtCore|\1|g; s| $||g'`
++          # Strip .../QtGui as we add components ourself:
++          INCQT6=`echo "$INCQT6"|$KBUILD_SED 's|\([^ ]*\)/QtGui|\1|g; s| $||g'`
+           # store only the first path, remove all other paths
+           # most likely pkg-config gave us -I/usr/include/qt6 -I/usr/include/qt6/QtCore
+           INCQT6=`echo "$INCQT6"|$KBUILD_SED 's|\([^ ]*\) .*|\1|'`

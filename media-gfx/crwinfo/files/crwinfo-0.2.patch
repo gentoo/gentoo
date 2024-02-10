@@ -1,0 +1,22 @@
+--- a/crwinfo.c
++++ b/crwinfo.c
+@@ -95,10 +95,10 @@
+    fprintf( stderr, "-m        show misc. information (whitepoint, AF mode etc)\n" );
+    fprintf( stderr, "-f        show flash information (flash mode etc)\n" );
+    fprintf( stderr, "-cf       show custom function settings\n" );
+-   fprintf( stderr, "-t        extract the thumbnail to the optional filename.
+-	                       If no filename for the thumbnail is given, the
+-			       name of the CRW-file is used with a .jpg
+-			       extension\n" );
++   fprintf( stderr, "-t        extract the thumbnail to the optional filename. \n" );
++   fprintf( stderr, "          If no filename for the thumbnail is given, the\n" );
++   fprintf( stderr, "          name of the CRW-file is used with a .jpg\n" );
++   fprintf( stderr, "          extension\n" );
+    fprintf( stderr, "-x        show experimental information (don't rely on it)\n" );
+    exit(0);
+ }
+--- a/Makefile
++++ b/Makefile
+@@ -1,2 +0,0 @@
+-all:
+-	gcc -o crwinfo -W -Wall -g crwinfo.c

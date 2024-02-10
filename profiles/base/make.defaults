@@ -1,0 +1,183 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# System-wide defaults for the Portage system
+# See portage(5) manpage
+
+# Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
+IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
+USE_EXPAND_IMPLICIT="ELIBC KERNEL"
+USE_EXPAND_VALUES_ELIBC="bionic Darwin glibc mingw musl SunOS"
+USE_EXPAND_VALUES_KERNEL="Darwin linux SunOS"
+
+# Env vars to expand into USE vars.  Modifying this requires prior
+# discussion on gentoo-dev@lists.gentoo.org.
+USE_EXPAND="ABI_MIPS ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS AMDGPU_TARGETS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL ELIBC FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LLVM_SLOT LLVM_TARGETS LUA_SINGLE_TARGET LUA_TARGETS MONKEYD_PLUGINS NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS RUBY_TARGETS SANE_BACKENDS UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XTABLES_ADDONS"
+
+# USE_EXPAND variables whose contents are not shown in package manager
+# output. Changes need discussion on gentoo-dev.
+USE_EXPAND_HIDDEN="KERNEL ELIBC ABI_MIPS ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86"
+
+CONFIG_PROTECT="/etc"
+CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
+
+# EAPI 7 environment variable blacklist.
+#
+# DBUS_SESSION_BUS_ADDRESS to avoid trying to access the user's session
+# bus.
+#
+# DISPLAY and XAUTHORITY to avoid trying to access the user's X11.
+#
+# CARGO_HOME may leak to build env if package is not using cargo.eclass
+# such leak will result in sandbox violations
+#
+# XDG_* since the values coming from user environment can collide with
+# ebuild-set ${HOME} (e.g. by referring to user's home directory).
+# We exclude XDG_DATA_DIRS & XDG_CONFIG_DIRS as those are set in env.d.
+#
+# PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX:
+# These are guaranteed to confuse perl module installation. Pre-EAPI7
+# the Perl eclasses bail out if they are set. Now we declare them here.
+#
+# GOBIN needs to be cleaned as random values in GOBIN can affect the
+# building of some packages:
+# https://archives.gentoo.org/gentoo-dev/message/163010f83ae7819d80c0cfdf797cbfe0
+ENV_UNSET="DBUS_SESSION_BUS_ADDRESS DISPLAY CARGO_HOME GDK_PIXBUF_MODULE_FILE XAUTHORITY XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME XDG_RUNTIME_DIR PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX GOBIN GOPATH"
+
+# Variables that are set exclusively by the profile
+# and not by user configuration files.
+PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL"
+
+# 'Sane' defaults
+ELIBC="glibc"
+KERNEL="linux"
+INPUT_DEVICES="libinput"
+
+# Accept only licenses in the FREE license group, i.e., with
+# the freedom to use, share, modify and share modifications
+ACCEPT_LICENSE="-* @FREE"
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (2013-03-23)
+# By default enable libreoffice implementation only.
+OFFICE_IMPLEMENTATION="libreoffice"
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (2011-08-12)
+# By default do not build any grub platform and let it guess.
+GRUB_PLATFORMS=""
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2011-08-19, 2012-03-25)
+# Johannes Huber <johu@gentoo.org> (2018-04-15)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-01-01)
+# By default build all calligra features (except unmaintained: stage).
+CALLIGRA_FEATURES="karbon sheets words"
+
+# Andreas K. Huettel <dilfridge@gentoo.org> (2010-09-28)
+# Small default list of enabled plugins for collectd
+COLLECTD_PLUGINS="df interface irq load memory rrdtool swap syslog"
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (2010-10-26)
+# By default enable all protocols for average GPS user
+GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax mtk3301 ntrip navcom oceanserver oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 tsip tripmate tnt ublox"
+
+# Benedikt Böhm <hollow@gentoo.org> (2007-11-27)
+# Sane defaults for built-in apache modules
+# Patrick Lauer <patrick@gentoo.org> (2012-10-12)
+# extend for apache 2.4
+APACHE2_MODULES="authn_core authz_core socache_shmcb unixd actions alias auth_basic authn_anon authn_dbm authn_file authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir env expires ext_filter file_cache filter headers include info log_config logio mime mime_magic negotiation rewrite setenvif speling status unique_id userdir usertrack vhost_alias"
+
+# Peter Volkov <pva@gentoo.org> (2010-04-29)
+# Set some defaults or package will fail to build (Check mconfig in package sources)
+XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipp2p iface geoip fuzzy condition tarpit sysrq proto logmark ipmark dhcpmac delude chaos account"
+
+# Robert Buchholz <rbu@gentoo.org> (2006-01-17)
+# Some common lcd devices
+LCD_DEVICES="bayrad cfontz glk hd44780 lb216 lcdm001 mtxorb text"
+
+# Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
+# Default Ruby build target(s)
+# Updated to add ruby31 on 2023-05-29 and to drop ruby30 on 2023-06-17
+RUBY_TARGETS="ruby31"
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
+# These USE flags are what is common between the various sub-profiles. Stages 2
+# and 3 are built against these, so be careful what you add.
+# Moved here from releases/
+USE="acl bzip2 gdbm unicode"
+
+# Enable extended filesystem attribute support by default.
+# https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
+USE="${USE} xattr"
+
+# Mike Gilbert <floppym@gentoo.org> (2019-07-14)
+# Enable split-usr by default to keep existing installs as-is.
+USE="${USE} split-usr"
+
+# Tiziano Müller <dev-zero@gentoo.org> (2010-01-24)
+# We usually don't want python to (re)write .py[co] files during phase runs
+# since it could cause sandbox violations
+PYTHONDONTWRITEBYTECODE="1"
+
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2011-11-16)
+# Add default USE value for bootstrap and rename it from STAGE1_USE to BOOTSTRAP_USE
+# Add in expanded PYTHON_TARGETS or stage1 builds break because of USE="-* ${BOOTSTRAP_USE}"
+# This MUST be kept in sync with the PYTHON_TARGETS below
+# Mike Gilbert <floppym@gentoo.org> (2018-05-23)
+# sys-apps/baselayout-2.5 needs split-usr enabled.
+BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr xml python_targets_python3_11 python_single_target_python3_11"
+
+# Mike Gilbert <floppym@gentoo.org> (2012-05-15)
+# Default target(s) for python-r1.eclass
+PYTHON_TARGETS="python3_11"
+PYTHON_SINGLE_TARGET="python3_11"
+
+# Michał Górny <mgorny@gentoo.org> (2013-08-10)
+# Moved from portage's make.globals.
+# 1) do not uninstall kernel modules/dtbs and therefore allow replacing them,
+# 2,3) removed wrt bug #663170,
+# 4) protect /var/{run,lock} symlinks for bug 519620
+COLLISION_IGNORE="/boot/dtbs/* /lib/modules/*"
+UNINSTALL_IGNORE="/boot/dtbs/* /lib/modules/* /var/run /var/lock"
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
+# Make emerge messages default to English as per Council decision
+LC_MESSAGES="C"
+
+# Brian Dolbec <dolsen@gentoo.org> (2017-06-16)
+# disable twisted's plugin cache update to prevent access violations
+# call /usr/bin/twisted-regen-cache in pkg_postinst()
+TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
+
+# Aaron W. Swenson <titanofold@gentoo.org> (2017-07-09)
+# Default target(s) for postgres{,-multi}.eclass
+POSTGRES_TARGETS="postgres15"
+
+# Michael Orlitzky <mjo@gentoo.org> (2017-11-17)
+#
+# Default PHP targets, used only for extensions at the moment.
+#
+# The value of this variable should be chosen to be "least annoying by
+# default." For example, some packages support only php-5.x and some
+# only php-7.x. By having both "php5-6" and php7-0" in PHP_TARGETS, we
+# ensure that users who don't care one way or the other don't have to
+# mess with this variable in order to install those packages.
+#
+# Moreover, it should only contain targets that have a stable version
+# of PHP, to avoid pulling in an unstable PHP on stable systems.
+#
+PHP_TARGETS="php8-1"
+
+# Alfredo Tupone <tupone@gentoo.org> (2022-11-16)
+#
+# Default ADA target
+ADA_TARGET="gnat_2021"
+
+# Marek Szuba <marecki@gentoo.org> (2020-10-15)
+# Default targets for lua{,-single}.eclass
+LUA_SINGLE_TARGET="lua5-1"
+LUA_TARGETS="lua5-1"
+
+# Sam James <sam@gentoo.org> (2023-02-28)
+# Reduce -Wimplicit-function-declaration noise from autoconf. Any compilers
+# we care about should match these anyway. See https://wiki.gentoo.org/wiki/Modern_C_porting.
+ac_cv_c_undeclared_builtin_options="none needed"
+gl_cv_compiler_check_decl_option="-Werror=implicit-function-declaration"

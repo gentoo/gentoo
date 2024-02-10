@@ -1,0 +1,21 @@
+Description: fix buffer overflow
+ based on 101_fix_buf_overflow from Leo Iannacone <l3on@ubuntu.com> 
+Author: Jörg Frings-Fürst <debian@jff-webhosting.net>
+Bug: TSOL buffer overflow
+Bug-ubuntu: https://bugs.launchpad.net/ubuntu/+source/ipmitool/+bug/633054
+Forwarded: https://sourceforge.net/p/ipmitool/patches/100/
+Last-Update: 2020-20-21
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+diff -Nuar --exclude '*.orig' ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f.orig/lib/ipmi_tsol.c ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f/lib/ipmi_tsol.c
+--- ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f.orig/lib/ipmi_tsol.c	2020-08-07 00:53:06.000000000 -0700
++++ ipmitool-50d8c36edf9657720e25445a435dabc44572cf5f/lib/ipmi_tsol.c	2020-10-21 13:55:58.571536858 -0700
+@@ -374,7 +374,7 @@
+ 	char *recvip = NULL;
+ 	char in_buff[IPMI_BUF_SIZE];
+ 	char out_buff[IPMI_BUF_SIZE * 8];
+-	char buff[IPMI_BUF_SIZE + 4];
++	char buff[IPMI_BUF_SIZE * 8 + 4];
+ 	int fd_socket, result, i;
+ 	int out_buff_fill, in_buff_fill;
+ 	int ip1, ip2, ip3, ip4;

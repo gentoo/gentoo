@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>hardened@gentoo.org</email>
+		<name>Gentoo Hardened</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="launchpad">apparmor</remote-id>
+		<remote-id type="gitlab">apparmor/apparmor</remote-id>
+	</upstream>
+</pkgmetadata>

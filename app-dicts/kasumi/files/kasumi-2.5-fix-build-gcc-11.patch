@@ -1,0 +1,207 @@
+https://bugs.gentoo.org/786738
+
+From 84c34bc1b09ba85a66924ba50a6a33fa59d159f3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 11 Aug 2021 20:32:40 +0100
+Subject: [PATCH] Drop dynamic exceptions for C++17
+
+---
+ KasumiConfiguration.cxx | 17 ++++++-----------
+ KasumiConfiguration.hxx | 13 ++++++-------
+ KasumiDic.cxx           |  7 ++-----
+ KasumiDic.hxx           |  9 ++++-----
+ KasumiWord.cxx          |  6 ++----
+ KasumiWord.hxx          |  6 ++----
+ 6 files changed, 22 insertions(+), 36 deletions(-)
+
+diff --git a/KasumiConfiguration.cxx b/KasumiConfiguration.cxx
+index 98a857b..543ea7c 100644
+--- a/KasumiConfiguration.cxx
++++ b/KasumiConfiguration.cxx
+@@ -57,8 +57,7 @@ using namespace std;
+ //  3. If the setting may be set by command line arguments, add some routines
+ //     to loadConfigurationFromArgument method
+ 
+-KasumiConfiguration::KasumiConfiguration(int argc, char *argv[])
+-  throw(KasumiException){
++KasumiConfiguration::KasumiConfiguration(int argc, char *argv[]){
+ 
+   try{  
+     loadDefaultProperties();
+@@ -87,7 +86,7 @@ KasumiConfiguration::~KasumiConfiguration(){
+   saveConfiguration();
+ }
+ 
+-void KasumiConfiguration::loadDefaultProperties() throw(KasumiException){
++void KasumiConfiguration::loadDefaultProperties(){
+   char *home = getenv("HOME");
+   if(home == NULL){
+       throw KasumiException(string("Cannot find $HOME environment variable."),
+@@ -123,8 +122,7 @@ void KasumiConfiguration::loadDefaultProperties() throw(KasumiException){
+ #endif // HAS_ANTHY_DICUTIL_SET_ENCODING
+ }
+ 
+-void KasumiConfiguration::loadConfigurationFromArgument(int argc, char *argv[])
+-  throw(KasumiException){
++void KasumiConfiguration::loadConfigurationFromArgument(int argc, char *argv[]){
+   int option_index = 0;
+   static struct option long_options[] = {
+     {"help", no_argument, NULL, 'h'},
+@@ -214,8 +212,7 @@ void KasumiConfiguration::loadConfigurationFromArgument(int argc, char *argv[])
+ }
+ 
+ 
+-void KasumiConfiguration::loadConfigurationFile()
+-  throw(KasumiException){
++void KasumiConfiguration::loadConfigurationFile(){
+ 
+   int line = 0;
+   string Contents = string();
+@@ -247,13 +244,11 @@ void KasumiConfiguration::loadConfigurationFile()
+ }
+ 
+ // ToDo: implement saveConfiguration method
+-void KasumiConfiguration::saveConfiguration()
+-  throw(KasumiException){
++void KasumiConfiguration::saveConfiguration(){
+ 
+ }
+ 
+-void KasumiConfiguration::checkValidity()
+-  throw(KasumiException){
++void KasumiConfiguration::checkValidity(){
+   
+   if(config[string("StartupMode")] != string("MANAGE") &&
+      config[string("StartupMode")] != string("ADD") &&
+diff --git a/KasumiConfiguration.hxx b/KasumiConfiguration.hxx
+index b42c5f6..2dc7524 100644
+--- a/KasumiConfiguration.hxx
++++ b/KasumiConfiguration.hxx
+@@ -38,16 +38,15 @@ private:
+   map<string, string> config;
+   string ConfFileName;
+   
+-  void loadDefaultProperties() throw(KasumiException);
+-  void loadConfigurationFile() throw (KasumiException);
+-  void loadConfigurationFromArgument(int argc, char *argv[])
+-    throw(KasumiException);
+-  void saveConfiguration() throw (KasumiException);
++  void loadDefaultProperties();
++  void loadConfigurationFile();
++  void loadConfigurationFromArgument(int argc, char *argv[]);
++  void saveConfiguration();
+ 
+   void setPropertyValue(const string &name, const string &value);
+-  void checkValidity() throw(KasumiException);
++  void checkValidity();
+ public:
+-  KasumiConfiguration(int argc, char *argv[]) throw (KasumiException);
++  KasumiConfiguration(int argc, char *argv[]);
+   ~KasumiConfiguration();
+   string getPropertyValue(const string &name);
+   int getPropertyValueByInt(const string &name);  
+diff --git a/KasumiDic.cxx b/KasumiDic.cxx
+index 291123b..19e88b4 100644
+--- a/KasumiDic.cxx
++++ b/KasumiDic.cxx
+@@ -46,8 +46,7 @@ using namespace std;
+ #define OptionOutput( Word, OptionName ) (string(OptionName) + " = " + (Word->getOption(OptionName) ? "y" : "n"))
+ #define BUFFER_SIZE (255)
+ 
+-KasumiDic::KasumiDic(KasumiConfiguration *conf)
+-  throw(KasumiException){
++KasumiDic::KasumiDic(KasumiConfiguration *conf){
+ 
+   try{
+     load(conf);
+@@ -68,8 +67,7 @@ KasumiDic::~KasumiDic()
+     }
+ }
+ 
+-void KasumiDic::load(KasumiConfiguration *conf)
+-    throw(KasumiException){
++void KasumiDic::load(KasumiConfiguration *conf){
+ 
+   const int FREQ_LBOUND = conf->getPropertyValueByInt("MinFrequency");  
+   const int FREQ_UBOUND = conf->getPropertyValueByInt("MaxFrequency");
+@@ -176,7 +174,6 @@ void KasumiDic::removeWord(unsigned int id)
+ }
+ 
+ void KasumiDic::store()
+-    throw(KasumiException)
+ {
+     list<KasumiWord*>::iterator p = mWordList.begin();
+ 
+diff --git a/KasumiDic.hxx b/KasumiDic.hxx
+index 20cc6b8..e487dca 100644
+--- a/KasumiDic.hxx
++++ b/KasumiDic.hxx
+@@ -49,12 +49,11 @@ private:
+   list<KasumiWord*> mWordList;
+   vector<KasumiDicEventListener*> EventListeners;
+   
+-  void load(KasumiConfiguration *conf) throw (KasumiException);
++  void load(KasumiConfiguration *conf);
+ public:
+-    KasumiDic(KasumiConfiguration *conf)
+-	throw(KasumiException);
++    KasumiDic(KasumiConfiguration *conf);
+     ~KasumiDic();
+-    void store() throw(KasumiException);
++    void store();
+     void appendWord(KasumiWord *word); // returns this word's ID
+     void removeWord(unsigned int id);
+ 
+@@ -69,7 +68,7 @@ public:
+     void changedSound(KasumiWord *word);
+     void changedWordType(KasumiWord *word);
+ 
+-//  KasumiWord *getWordWithID(unsigned int id) throw(KasumiException);
++//  KasumiWord *getWordWithID(unsigned int id);
+ //  int getUpperBoundOfWordID();
+ };
+ 
+diff --git a/KasumiWord.cxx b/KasumiWord.cxx
+index 650f97d..18e53f2 100644
+--- a/KasumiWord.cxx
++++ b/KasumiWord.cxx
+@@ -177,8 +177,7 @@ KasumiWord* KasumiWord::createNewWord(KasumiConfiguration *conf)
+     return word;
+ }
+ 
+-void KasumiWord::setSound(const string &aSound)
+-    throw(KasumiException){
++void KasumiWord::setSound(const string &aSound){
+ 
+     if(aSound == Sound)
+ 	return;
+@@ -201,8 +200,7 @@ void KasumiWord::setSound(const string &aSound)
+     }
+ }
+ 
+-void KasumiWord::setSoundByUTF8(const string &aSound)
+-    throw(KasumiException){
++void KasumiWord::setSoundByUTF8(const string &aSound){
+ 
+     if(aSound == Sound_UTF8)
+ 	return;
+diff --git a/KasumiWord.hxx b/KasumiWord.hxx
+index 25c6f8c..a54829d 100644
+--- a/KasumiWord.hxx
++++ b/KasumiWord.hxx
+@@ -69,10 +69,8 @@ public:
+     static KasumiWord* createNewWord(KasumiConfiguration *conf);
+ 
+     // property functions
+-    void setSound(const string &aSound)
+-      throw(KasumiException);
+-    void setSoundByUTF8(const string &aSound)
+-      throw(KasumiException);
++    void setSound(const string &aSound);
++    void setSoundByUTF8(const string &aSound);
+     string getSound(){ return Sound; };
+     string getSoundByUTF8(){ return Sound_UTF8; };
+ 
+-- 
+2.32.0
+

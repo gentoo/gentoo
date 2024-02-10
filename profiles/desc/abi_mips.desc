@@ -1,0 +1,10 @@
+# Copyright 1999-2013 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of ABI_MIPS USE_EXPAND flags.
+
+# Keep it sorted. Please do not add anything without prior discussion
+# on gentoo-dev.
+n32 - 64-bit (32-bit pointer) libraries
+n64 - 64-bit libraries
+o32 - 32-bit libraries

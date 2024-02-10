@@ -1,0 +1,29 @@
+From 205a70fdbd69d7877994e7aea5cec6eab79236b2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 26 Feb 2022 19:38:20 +0100
+Subject: [PATCH] Fix build with musl libc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ lib/gks/io.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/gks/io.c b/lib/gks/io.c
+index 669dd81f..50fde2c4 100644
+--- a/lib/gks/io.c
++++ b/lib/gks/io.c
+@@ -11,7 +11,7 @@
+ #include <io.h>
+ #endif
+ 
+-#if defined(cray) || defined(__SVR4) || defined(_WIN32)
++#if defined(cray) || defined(__SVR4) || defined(_WIN32) || !defined(__GLIBC__)
+ #include <fcntl.h>
+ #else
+ #include <sys/file.h>
+-- 
+2.34.1
+

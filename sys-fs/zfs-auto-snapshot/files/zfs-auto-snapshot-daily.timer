@@ -1,0 +1,8 @@
+[Unit]
+Description=ZFS daily snapshot timer
+Documentation=man:zfs-auto-snapshot(8)
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=600

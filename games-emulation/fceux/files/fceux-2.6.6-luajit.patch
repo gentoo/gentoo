@@ -1,0 +1,23 @@
+LuaJIT is 5.1-compatible and is maintained unlike lua5.1 itself, so
+try to allow it.
+
+Use the eclass' created unversioned lua.pc, and define the compat
+macro that is normally defined in 5.1's lauxlib.h but not luajit.
+
+TODO: an upstreamable fix involve find_package for lua (can manipulate
+preferences with cmake args), and no longer using luaL_reg at all.
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -186,3 +186,3 @@
+   # Check for LUA
+-  pkg_search_module( LUA lua5.1 lua-5.1 )
++  pkg_search_module( LUA lua )
+ 
+--- a/src/lua-engine.cpp
++++ b/src/lua-engine.cpp
+@@ -124,2 +124,5 @@
+ #include <lauxlib.h>
++#ifndef luaL_reg
++#define luaL_reg luaL_Reg
++#endif
+ #include <lualib.h>

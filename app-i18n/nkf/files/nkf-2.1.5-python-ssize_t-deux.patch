@@ -1,0 +1,45 @@
+https://github.com/fumiyas/python-nkf/pull/7
+
+From abdebb9d49619d9b9cafa172d2ad7c171f3977d4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 4 Oct 2022 05:56:12 +0100
+Subject: [PATCH] Use designated initialiser syntax for PyModuleDef
+
+Fixes build with Clang. Switch to the more readable designated
+initialiser syntax to avoid having to lookup member order.
+
+Before, Clang would complain:
+```
+nkf.c:205:3: error: incompatible pointer to integer conversion initializing 'Py_ssize_t' (aka 'long') with an expression of type 'void *' [-Wint-conversion]
+  NULL,
+  ^~~~
+/usr/lib/llvm/16/bin/../../../../lib/clang/16.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'
+               ^~~~~~~~~~
+2 warnings and 1 error generated.
+```
+
+This is because some of PyModuleDef's members are actually
+Py_ssize_t so chucking a NULL in looks like a codesmell to Clang.
+
+Bug: https://bugs.gentoo.org/874303
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/NKF.python/nkf.c
++++ b/NKF.python/nkf.c
+@@ -200,14 +200,8 @@ nkfmethods[] = {
+ static struct PyModuleDef
+ moduledef = {
+   PyModuleDef_HEAD_INIT,
+-  "nkf",
+-  NULL,
+-  NULL,
+-  nkfmethods,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL
++  .m_name = "nkf",
++  .m_methods = nkfmethods
+ };
+ 
+ /* Module initialization function */
+

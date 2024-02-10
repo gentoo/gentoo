@@ -1,0 +1,52 @@
+Bug: https://bugs.gentoo.org/858671
+Upstream-PR: https://github.com/stefanberger/libtpms/pull/344
+Upstream-Commit: https://github.com/stefanberger/libtpms/commit/0c2bc32a21e2c7218faa8cd6d5cf31b13835e6d5
+
+From 343f1b21b36fe98daf31c355ebc12902ba7e162a Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 15 Jul 2022 17:02:43 -0700
+Subject: [PATCH] tests: Fix the build with slibtool
+
+When building the tests with `make check` and slibtool the tests will
+then all fail to load libtpms.so.0.
+
+  $ ./base64decode
+  /tmp/libtpms/tests/.libs/base64decode: error while loading shared libraries: libtpms.so.0: cannot open shared object file: No such file or directory
+
+This happens because they are linked with -ltpms rather than the
+libtpms.la file which has unexpected results with slibtool. GNU libtool
+does some magic to make this work while slibtool fails to link the
+dependency.
+
+The correct way to link internal dependencies is directly with the
+libtool archive (.la) files where the -lfoo linker flags should be only
+used with external dependencies. Additionally -no-undefined is added to
+the LDFLAGS to ensure there aren't undefined references in the future.
+
+Note:
+
+* This doesn't happen if libtpms is installed to the system and the tests
+  find the already installs libtpms rather than the newly built library.
+
+* GNU libtool silently ignores -no-undefined, but slibtool will respect
+  it.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ tests/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index eb23c59a4..d3d831938 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -10,7 +10,8 @@ TESTS_ENVIRONMENT = \
+   abs_top_srcdir=`cd '$(top_srcdir)'; pwd`
+ 
+ AM_CFLAGS = -I$(top_srcdir)/include $(SANITIZERS)
+-AM_LDFLAGS = -ltpms -L$(top_builddir)/src/.libs $(SANITIZERS)
++AM_LDFLAGS = -no-undefined $(SANITIZERS)
++LDADD = $(top_builddir)/src/libtpms.la
+ 
+ check_PROGRAMS = \
+ 	base64decode

@@ -1,0 +1,33 @@
+diff --git a/cmake/install.cmake b/cmake/install.cmake
+index f093fa9..c281f66 100644
+--- a/cmake/install.cmake
++++ b/cmake/install.cmake
+@@ -14,13 +14,13 @@ COMPATIBILITY SameMajorVersion
+ 
+ install(EXPORT ${PROJECT_NAME}-targets
+ NAMESPACE ${PROJECT_NAME}::
+-DESTINATION cmake
++DESTINATION ${library_reldir}/cmake/SC
+ )
+ 
+ install(FILES
+ ${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}Config.cmake
+ ${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}ConfigVersion.cmake
+-DESTINATION cmake
++DESTINATION ${library_reldir}/cmake/SC
+ )
+ 
+ export(EXPORT ${PROJECT_NAME}-targets
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 800937f..9de0cfe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -75,7 +75,7 @@ endif(BUILD_TESTING)
+ 
+ install(FILES
+ ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindSC.cmake
+-DESTINATION cmake)
++DESTINATION ${library_reldir}/cmake/SC)
+ 
+ include(cmake/pkgconf.cmake)
+ include(cmake/install.cmake)

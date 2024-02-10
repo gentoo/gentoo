@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/823458
+
+From: Sam James <sam@gentoo.org>
+Date: Sun, 14 Nov 2021 08:34:15 +0000
+Subject: [PATCH] Crank up test timeouts
+
+--- a/ipyparallel/tests/__init__.py
++++ b/ipyparallel/tests/__init__.py
+@@ -74,7 +74,7 @@ def setup():
+     while not os.path.exists(engine_json) or not os.path.exists(client_json):
+         if cp.poll() is not None:
+             raise RuntimeError("The test controller exited with status %s" % cp.poll())
+-        elif time.time() - tic > 15:
++        elif time.time() - tic > 60:
+             raise RuntimeError("Timeout waiting for the test controller to start.")
+         time.sleep(0.1)
+     add_engines(1)
+@@ -107,7 +107,7 @@ def add_engines(n=1, profile='iptest', total=False):
+     while len(rc) < base + n:
+         if any([ep.poll() is not None for ep in eps]):
+             raise RuntimeError("A test engine failed to start.")
+-        elif time.time() - tic > 15:
++        elif time.time() - tic > 60:
+             raise RuntimeError("Timeout waiting for engines to connect.")
+         time.sleep(0.1)
+     rc.close()
+--- a/ipyparallel/tests/test_lbview.py
++++ b/ipyparallel/tests/test_lbview.py
+@@ -21,7 +21,7 @@ class TestLoadBalancedView(ClusterTestCase):
+         self.assertRaisesRemote(error.EngineError, ar.get, 10)
+         eid = ar.engine_id
+         tic = time.time()
+-        while eid in self.client.ids and time.time() - tic < 5:
++        while eid in self.client.ids and time.time() - tic < 30:
+             time.sleep(0.01)
+         assert eid not in self.client.ids
+ 
+--- a/ipyparallel/tests/test_view.py
++++ b/ipyparallel/tests/test_view.py
+@@ -47,7 +47,7 @@ class TestView(ClusterTestCase):
+         ar = view.apply_async(conditional_crash, ipp.Reference("should_crash"))
+         self.assertRaisesRemote(error.EngineError, ar.get, 10)
+         tic = time.perf_counter()
+-        while eid in self.client.ids and time.perf_counter() - tic < 5:
++        while eid in self.client.ids and time.perf_counter() - tic < 30:
+             time.sleep(0.05)
+         assert eid not in self.client.ids
+ 

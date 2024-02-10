@@ -1,0 +1,102 @@
+Prevent overriding of user-define CFLAGS, including -march flag.
+The flag -msse4.1 is required otherwise compile will not be able to inline sse4.1 code.
+Note: code should detect CPU features at runtime and use sse4.1 paths only if supported by CPU.
+
+--- a/Source/GmmLib/CMakeLists.txt
++++ b/Source/GmmLib/CMakeLists.txt
+@@ -74,6 +74,10 @@
+     endif()
+ endif()
+ 
++if(NOT DEFINED OVERRIDE_COMPILER_FLAGS)
++    option(OVERRIDE_COMPILER_FLAGS "Override user compiler FLAGS and use lib defaults" ON)
++endif()
++
+ # begin -- label bldsys file prologue
+ # WARNING: The "project" statement triggers reading of CMAKE_TOOLCHAIN_FILE
+ #   and so must precede the inclusion below of bs_init.cmake .
+--- a/Source/GmmLib/Linux.cmake
++++ b/Source/GmmLib/Linux.cmake
+@@ -76,7 +76,10 @@
+     -Werror=format-security
+     -Werror=non-virtual-dtor
+     -Werror=return-type
++    )
+ 
++if (OVERRIDE_COMPILER_FLAGS)
++    list (APPEND GMMLIB_COMPILER_FLAGS_COMMON
+     # General optimization options
+     -march=${GMMLIB_MARCH}
+     -mpopcnt
+@@ -85,19 +88,31 @@
+     -msse3
+     -mssse3
+     -msse4
+-    -msse4.1
+     -msse4.2
++    )
++endif()
++
++list (APPEND GMMLIB_COMPILER_FLAGS_COMMON
++    -msse4.1 # SSE4.1 compiler support is required to build
+     -mfpmath=sse
+     -finline-functions
+     -fno-short-enums
+     -Wa,--noexecstack
+     -fno-strict-aliasing
++    )
++
++if (OVERRIDE_COMPILER_FLAGS)
++    list (APPEND GMMLIB_COMPILER_FLAGS_COMMON
+     # Common defines
+     -DUSE_MMX
+     -DUSE_SSE
+     -DUSE_SSE2
+     -DUSE_SSE3
+     -DUSE_SSSE3
++    )
++endif()
++
++list (APPEND GMMLIB_COMPILER_FLAGS_COMMON
+     # Other common flags
+     -fstack-protector
+     -fdata-sections
+@@ -105,11 +120,16 @@
+     -fmessage-length=0
+     -fvisibility=hidden
+     -fPIC
++    )
++
++if (OVERRIDE_COMPILER_FLAGS)
++    list (APPEND GMMLIB_COMPILER_FLAGS_COMMON
+     -g
+     # -m32 or -m64
+     -m${GMMLIB_ARCH}
+     )
+ endif()
++endif()
+ 
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+ #Gcc only flags
+@@ -167,10 +187,12 @@
+ 
+ #set predefined compiler flags set
+ add_compile_options("${GMMLIB_COMPILER_FLAGS_COMMON}")
++if (OVERRIDE_COMPILER_FLAGS)
+ add_compile_options("$<$<CONFIG:Debug>:${GMMLIB_COMPILER_FLAGS_DEBUG}>")
+ add_compile_options("$<$<CONFIG:Release>:${GMMLIB_COMPILER_FLAGS_RELEASE}>")
+ add_compile_options("$<$<CONFIG:ReleaseInternal>:${GMMLIB_COMPILER_FLAGS_RELEASEINTERNAL}>")
+ #cmake 3.3+, add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:${GMMLIB_COMPILER_CXX_FLAGS_COMMON}>")
++endif()
+ foreach (flag ${GMMLIB_COMPILER_CXX_FLAGS_COMMON})
+     SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
+ endforeach()
+@@ -179,6 +201,8 @@
+     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+     SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
+ else()
++    if (OVERRIDE_COMPILER_FLAGS)
+     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -m${GMMLIB_ARCH}")
+     SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -m${GMMLIB_ARCH}")
++    endif()
+ endif()

@@ -1,0 +1,15 @@
+Make sure that during runtime we'll use the same libgfortran as during linking
+
+https://bugs.gentoo.org/show_bug.cgi?id=419991
+https://bugs.gentoo.org/show_bug.cgi?id=419895
+
+--- a/fortran/src/Makefile.am
++++ b/fortran/src/Makefile.am
+@@ -181,6 +181,7 @@
+ else
+   H5test_kind_SOURCES = $(srcdir)/H5test_kind.f90
+ endif
++H5test_kind_LDFLAGS=-static-libgfortran
+ 
+ # Mark this directory as part of the Fortran API
+ FORTRAN_API=yes

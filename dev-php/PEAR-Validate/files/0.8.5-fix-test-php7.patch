@@ -1,0 +1,19 @@
+From a22b5cf2c7e4b4cf366c311150721961d9b456ea Mon Sep 17 00:00:00 2001
+From: Christian Weiske <cweiske@cweiske.de>
+Date: Thu, 16 Jul 2015 00:38:55 +0200
+Subject: [PATCH] Make tests run on PHP 7
+
+diff --git a/Validate.php b/Validate.php
+index a8f621c..ea6cfa7 100644
+--- a/Validate.php
++++ b/Validate.php
+@@ -583,7 +583,8 @@ function email($email, $options = null)
+         if ($use_rfc822? Validate::__emailRFC822($email, $options) :
+                 preg_match($regex, $email)) {
+             if ($check_domain && function_exists('checkdnsrr')) {
+-                $domain = preg_replace('/[^-a-z.0-9]/i', '', array_pop(explode('@', $email)));
++                $parts = explode('@', $email);
++                $domain = preg_replace('/[^-a-z.0-9]/i', '', array_pop($parts));
+                 if (checkdnsrr($domain, 'MX') || checkdnsrr($domain, 'A')) {
+                     return true;
+                 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Gavin D. Howard</name>
+		<email>gavin@gavinhoward.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<name>Gavin D. Howard</name>
+			<email>gavin@gavinhoward.com</email>
+		</maintainer>
+		<bugs-to>https://git.gavinhoward.com/gavin/bc</bugs-to>
+		<doc>https://git.gavinhoward.com/gavin/bc/src/branch/master/manuals</doc>
+		<remote-id type="github">gavinhoward/bc</remote-id>
+	</upstream>
+	<longdescription lang="en">
+	An implementation of POSIX bc and Unix dc with GNU extensions and some of
+	their own extensions. It also removes the dangerous '!' dc command.
+	This bc/dc is especially useful for programmers, with extra math and a
+	larger builtin library with some hardware-oriented print functions.
+	</longdescription>
+</pkgmetadata>

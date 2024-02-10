@@ -1,0 +1,45 @@
+From be3fda8863a84d6380ce08f8c17f9eae34260a1e Mon Sep 17 00:00:00 2001
+From: Akio Tajima <akio.tajima@robotfund.co.jp>
+Date: Wed, 17 Jan 2018 08:41:35 +0000
+Subject: [PATCH] test/fixtures/multipart: fix long boundary and
+ delimiter\ntest/multipart_parser/parser_test: fix require path as reader_test
+
+---
+ test/fixtures/multipart.rb           | 10 +++++-----
+ test/multipart_parser/parser_test.rb |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/test/fixtures/multipart.rb b/test/fixtures/multipart.rb
+index 89b1bc6..acb737a 100644
+--- a/test/fixtures/multipart.rb
++++ b/test/fixtures/multipart.rb
+@@ -96,11 +96,11 @@ def parts
+     end
+ 
+     def raw
+-      ['----------------------------5c4dc587f69f',
+-        'content-disposition: form-data; name="field1"',
+-        '',
+-        "Joe Blow\r\nalmost tricked you!",
+-        '----------------------------5c4dc587f69f--'
++      ['------------------------------5c4dc587f69f',
++       'content-disposition: form-data; name="field1"',
++       '',
++       "Joe Blow\r\nalmost tricked you!",
++       '------------------------------5c4dc587f69f--'
+       ].join("\r\n")
+     end
+   end
+diff --git a/test/multipart_parser/parser_test.rb b/test/multipart_parser/parser_test.rb
+index f477031..27455ec 100644
+--- a/test/multipart_parser/parser_test.rb
++++ b/test/multipart_parser/parser_test.rb
+@@ -1,6 +1,6 @@
+ require 'test/unit'
+-require "multipart_parser/parser"
+-require "fixtures/multipart"
++require File.dirname(__FILE__) + "/../../lib/multipart_parser/parser"
++require File.dirname(__FILE__) + "/../fixtures/multipart"
+ 
+ module MultipartParser
+   class ParserTest < Test::Unit::TestCase

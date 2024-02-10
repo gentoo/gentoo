@@ -1,0 +1,25 @@
+SSP doesn't make sense for BPF.
+
+https://bugs.gentoo.org/889561
+--- a/utils/keytable/Makefile.am
++++ b/utils/keytable/Makefile.am
+@@ -22,7 +22,7 @@ ir_keytable_LDFLAGS = $(ARGP_LIBS)
+ 
+ if WITH_BPF
+ ir_keytable_LDFLAGS += $(LIBELF_LIBS) $(LIBBPF_LIBS)
+-ir_keytable_CFLAGS = $(LIBBPF_CFLAGS)
++ir_keytable_CFLAGS = $(LIBBPF_CFLAGS) -fno-stack-protector
+ SUBDIRS = bpf_protocols
+ endif
+ 
+--- a/utils/keytable/bpf_protocols/Makefile.am
++++ b/utils/keytable/bpf_protocols/Makefile.am
+@@ -8,7 +8,7 @@ CLANG_SYS_INCLUDES := $(shell $(CLANG) -v -E - </dev/null 2>&1 \
+         | sed -n '/<...> search starts here:/,/End of search list./{ s| \(/.*\)|-idirafter \1|p }')
+ 
+ %.o: %.c bpf_helpers.h
+-	$(CLANG) $(CLANG_SYS_INCLUDES) -D__linux__ -I$(top_srcdir)/include -target bpf -O2 -c $<
++	$(CLANG) $(CLANG_SYS_INCLUDES) -D__linux__ -I$(top_srcdir)/include -target bpf -O2 -fno-stack-protector -c $<
+ 
+ PROTOCOLS = grundig.o pulse_distance.o pulse_length.o rc_mm.o manchester.o xbox-dvd.o imon_rsc.o raw.o samsung36.o
+ 

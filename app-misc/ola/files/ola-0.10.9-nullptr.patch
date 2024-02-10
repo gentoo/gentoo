@@ -1,0 +1,214 @@
+--- a/common/web/JsonTest.cpp
++++ b/common/web/JsonTest.cpp
+@@ -560,7 +560,7 @@
+ #ifdef __FreeBSD__
+   OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(0),
+ #else
+-  OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(NULL),
++  OLA_ASSERT_EQ(static_cast<JsonValue*>(NULL),
+ #endif  // __FreeBSD__
+                 string1.LookupElement(invalid_pointer));
+ 
+@@ -580,7 +580,7 @@
+ #ifdef __FreeBSD__
+   OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(0),
+ #else
+-  OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(NULL),
++  OLA_ASSERT_EQ(static_cast<JsonValue*>(NULL),
+ #endif  // __FreeBSD__
+                 object.LookupElement(invalid_pointer));
+ 
+@@ -605,7 +605,7 @@
+ #ifdef __FreeBSD__
+   OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(0),
+ #else
+-  OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(NULL),
++  OLA_ASSERT_EQ(static_cast<JsonValue*>(NULL),
+ #endif  // __FreeBSD__
+                 array->LookupElement(invalid_pointer));
+ 
+@@ -619,14 +619,14 @@
+ #ifdef __FreeBSD__
+   OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(0),
+ #else
+-  OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(NULL),
++  OLA_ASSERT_EQ(static_cast<JsonValue*>(NULL),
+ #endif  // __FreeBSD__
+                 array->LookupElement(one_past_last));
+ 
+ #ifdef __FreeBSD__
+   OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(0),
+ #else
+-  OLA_ASSERT_EQ(reinterpret_cast<JsonValue*>(NULL),
++  OLA_ASSERT_EQ(static_cast<JsonValue*>(NULL),
+ #endif  // __FreeBSD__
+                 array->LookupElement(invalid));
+ 
+--- a/ola/AutoStart.cpp
++++ b/ola/AutoStart.cpp
+@@ -113,7 +113,7 @@
+ #ifdef __FreeBSD__
+            reinterpret_cast<char*>(0));
+ #else
+-           reinterpret_cast<char*>(NULL));
++           static_cast<char*>(NULL));
+ #endif  // __FreeBSD__
+     OLA_WARN << "Failed to exec: " << strerror(errno);
+     _exit(1);
+--- a/olad/plugin_api/UniverseTest.cpp
++++ b/olad/plugin_api/UniverseTest.cpp
+@@ -635,7 +635,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // ok, now try something that returns a response from the port
+@@ -661,7 +661,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // now try a broadcast fan out
+@@ -694,7 +694,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // now confirm that if one of the ports fails to send, we see this response
+@@ -722,7 +722,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // DUB responses are slightly different
+@@ -746,7 +746,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // now check that we still get a RDM_DUB_RESPONSE even if one port returns an
+@@ -767,7 +767,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // and the same again but the second port returns
+@@ -788,7 +788,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // now the first port returns a RDM_TIMEOUT
+@@ -808,7 +808,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   // finally if neither ports support the DUB, we should return that
+@@ -828,7 +828,7 @@
+ #ifdef __FreeBSD__
+                         reinterpret_cast<const RDMResponse*>(0)));
+ #else
+-                        reinterpret_cast<const RDMResponse*>(NULL)));
++                        static_cast<const RDMResponse*>(NULL)));
+ #endif  // __FreeBSD__
+ 
+   universe->RemovePort(&port1);
+--- a/plugins/spi/SPIOutputTest.cpp
++++ b/plugins/spi/SPIOutputTest.cpp
+@@ -160,7 +160,7 @@
+   OLA_ASSERT_EQ(5u, backend.Writes(0));
+ 
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ }
+@@ -210,7 +210,7 @@
+   OLA_ASSERT_EQ(3u, backend.Writes(0));
+ 
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ }
+@@ -265,7 +265,7 @@
+   OLA_ASSERT_EQ(4u, backend.Writes(0));
+ 
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ }
+@@ -312,7 +312,7 @@
+   OLA_ASSERT_DATA_EQUALS(EXPECTED4, arraysize(EXPECTED4), data, length);
+ 
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ }
+@@ -371,7 +371,7 @@
+   OLA_ASSERT_EQ(4u, backend.Writes(0));
+ 
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ }
+@@ -421,7 +421,7 @@
+   OLA_ASSERT_DATA_EQUALS(EXPECTED4, arraysize(EXPECTED4), data, length);
+ 
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ }
+@@ -517,7 +517,7 @@
+ 
+   // test6
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ 
+@@ -707,7 +707,7 @@
+ 
+   // test6
+   // Check nothing changed on the other output.
+-  OLA_ASSERT_EQ(reinterpret_cast<const uint8_t*>(NULL),
++  OLA_ASSERT_EQ(static_cast<const uint8_t*>(NULL),
+                 backend.GetData(1, &length));
+   OLA_ASSERT_EQ(0u, backend.Writes(1));
+ 

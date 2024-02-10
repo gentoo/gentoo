@@ -1,0 +1,28 @@
+--- loop-AES-v3.7v.orig/build-initrd.sh	2012-11-12 09:42:58.000000000 -0700
++++ loop-AES-v3.7v/build-initrd.sh	2022-01-05 18:27:49.410016729 -0700
+@@ -884,7 +884,8 @@
+ 
+     dd if=/dev/zero of=tmp-i-$$ bs=1024 count=${y}
+     /sbin/mkfs -t minix -i 32 tmp-i-$$ ${y}
+-    mount -t minix tmp-i-$$ tmp-d-$$ -o loop=/dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
++    losetup /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-i-$$
++    mount -t minix /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX} tmp-d-$$
+ fi
+ cd tmp-d-$$
+ 
+@@ -978,6 +979,7 @@
+         if [ ${USEPIVOT} != 2 ] ; then
+             umount tmp-d-$$
+             rmdir tmp-d-$$
++            losetup -d /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
+             rm tmp-i-$$
+         else
+             rm -rf tmp-d-$$
+@@ -1002,6 +1004,7 @@
+     cd ..
+     df tmp-d-$$
+     umount tmp-d-$$
++    losetup -d /dev/loop${DEVFSSLASH2}${TEMPLOOPINDEX}
+     rmdir tmp-d-$$
+     sync ; sync ; sync
+     gzip -9 tmp-i-$$

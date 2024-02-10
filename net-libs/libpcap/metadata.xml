@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg> to put wireless interfaces in monitor mode.</flag>
+		<flag name="rdma">Enable RDMA capture support using <pkg>sys-cluster/rdma-core</pkg></flag>
+		<flag name="remote">Enable remote packet capture which may expose libpcap-based applications to attacks by malicious remote capture servers!</flag>
+		<flag name="yydebug">Enable parser debugging code</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:tcpdump:libpcap</remote-id>
+		<remote-id type="github">the-tcpdump-group/libpcap</remote-id>
+	</upstream>
+</pkgmetadata>

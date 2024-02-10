@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/898908
+https://github.com/openMSX/openMSX/commit/b50d02069c09f11c687637c64ca1b459a5def28c
+
+From b50d02069c09f11c687637c64ca1b459a5def28c Mon Sep 17 00:00:00 2001
+From: m9710797 <vermaelen.wouter@gmail.com>
+Date: Sat, 4 Feb 2023 16:37:39 +0100
+Subject: [PATCH] Added missing #include
+
+Thanks to 'musuruan' for reporting.
+https://github.com/openMSX/openMSX/issues/1487
+--- a/src/utils/hash_set.hh
++++ b/src/utils/hash_set.hh
+@@ -11,6 +11,7 @@
+ #include "unreachable.hh"
+ #include "xrange.hh"
+ #include <cassert>
++#include <cstdint>
+ #include <cstdlib>
+ #include <functional>
+ #include <initializer_list>

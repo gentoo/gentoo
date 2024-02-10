@@ -1,0 +1,110 @@
+--- a/configure.in
++++ b/configure.in
+@@ -8,6 +8,7 @@
+ m4_define([ncview_release_date],[15 Feb 2010])
+ 
+ AC_INIT([ncview],[ncview_version],[dpierce@ucsd.edu])
++AC_CONFIG_MACRO_DIR([m4macros])
+ 
+ # Handle netcdf
+ AC_PATH_NETCDF
+@@ -30,13 +31,11 @@
+ # we have to specifically check if the same compiler used to compile the
+ # netcdf library exists.
+ #------------------------------------------------------------------------
+-AC_PROG_CC( $NETCDF_CC )
+-AC_ISC_POSIX
+-AC_HEADER_STDC
++AC_PROG_CC
+ 
+ 
+-AC_CONFIG_HEADER(config.h)
+-AM_INIT_AUTOMAKE([ncview],[ncview_version])
++AC_CONFIG_HEADERS(config.h)
++AM_INIT_AUTOMAKE
+ 
+ AC_PATH_X
+ if test "x$no_x" == "xyes"; then
+@@ -206,82 +205,6 @@
+ AC_SUBST(X_INCLUDES)
+ 
+ 
+-#----------------------------------------------------------------------------
+-# We want to test if the same compiler was used for the netcdf library as for
+-# ncview.  This might be complicated by the fact that often "gcc" and "cc"
+-# end up invoking the same compiler.  Use an ugly hack that I have no idea
+-# if it generally works or not.  Probably not.
+-#----------------------------------------------------------------------------
+-CC_TEST_SAME=$CC
+-#-----------------------------------------------------------------------
+-# Point of following obscure manipulations is that $CC can have multiple
+-# words, for example, it could be "gcc -fPIC -lm". We want to keep only
+-# the first word, so use 'set' and then take the first arg ($1).
+-#-----------------------------------------------------------------------
+-set $CC_TEST_SAME
+-CC_TEST_SAME=$1
+-if test x$CC_TEST_SAME = xcc; then
+-	CC_TEST_SAME=gcc			
+-fi
+-NETCDF_CC_TEST_SAME=$NETCDF_CC
+-set $NETCDF_CC_TEST_SAME
+-NETCDF_CC_TEST_SAME=$1
+-if test x$NETCDF_CC_TEST_SAME = xcc; then
+-	NETCDF_CC_TEST_SAME=gcc
+-fi
+-if test x$CC_TEST_SAME != x$NETCDF_CC_TEST_SAME; then
+-	echo "======================================================================"
+-	echo "Configuration error: You specified that the \"$CC\" C compiler should be"
+-	echo "used to build ncview, but the netcdf library was compiled with the \"$NETCDF_CC\""
+-	echo "compiler.  Here is the path where I found the netcdf library:"
+-	echo "     $NETCDF_LDFLAGS"
+-	echo "You must use the same compiler for ncview as was used to build the netcdf library!"
+-	echo " "
+-	echo "There are two possible ways to fix this."
+-	echo " "
+-	echo "1) Download the netcdf library and compile it with the $CC compiler,"
+-	echo "install it, and try again to build ncview.  NOTE that if you do this,"
+-	echo "you might have more than one version of the netcdf library on your system,"
+-	echo "built with differnt compilers, which can get confusing.  If you do this,"
+-	echo "you will have to specify the path to the (new) version of nc-config"
+-	echo "that was compiled using the $CC compiler by configuring ncview in a "
+-	echo "way similar to this:"
+-	echo " "
+-	echo "   ./configure --with-nc-config=/path/to/newly/compiled/nc-config"
+-	echo " "
+-	echo "2) Configure ncview to use the $NETCDF_CC compiler."
+-	echo "To do this, set environmental variable CC to $NETCDF_CC"
+-	echo "and run ./configure again"
+-	echo "==================================================================="
+-	exit -1
+-fi
+-
+-#----------------------------------------------------------------------------------
+-# Construct our RPATH flags.  Idea here is that we have LDFLAGS that might look,
+-# for example, something like this:
+-#	LIBS="-L/usr/local/lib -lnetcdf -L/home/pierce/lib -ludunits"
+-# We want to convert this to -rpath flags suitable for the compiler, which would
+-# have this format:
+-#	"-Wl,-rpath,/usr/local/lib -Wl,-rpath,/home/pierce/lib"
+-#
+-# As a safety check, I only do this for the GNU compiler, as I don't know if this
+-# is anything like correct syntax for other compilers.  Note that this *does* work
+-# for the Intel icc compiler, but also that the icc compiler sets $ac_compiler_gnu
+-# to "yes".  Go figure.
+-#----------------------------------------------------------------------------------
+-echo "ac_computer_gnu: $ac_compiler_gnu"
+-if test x$ac_compiler_gnu = xyes; then
+-	RPATH_FLAGS=""
+-	for word in $UDUNITS2_LDFLAGS $NETCDF_LDFLAGS; do
+-		if test `expr $word : -L/` -eq 3; then
+-			#RPDIR=`expr substr $word 3 999`;
+-			RPDIR=${word:2}
+-			RPATH_FLAGS="$RPATH_FLAGS -Wl,-rpath,$RPDIR"
+-		fi
+-	done
+-	AC_SUBST(RPATH_FLAGS)
+-fi
+-
+ AC_CONFIG_FILES([Makefile src/Makefile])
+ AC_OUTPUT
+ 

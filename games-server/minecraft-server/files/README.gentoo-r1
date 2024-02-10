@@ -1,0 +1,26 @@
+This package provides an init script and a conf file.
+You don't have to modify those files directly,
+but instead you can make a symlink of that init script
+and a copy of that conf file.
+You would do this for every server, you want to setup.
+
+For example, you wan't to setup an world called 'gentoo',
+you would do:
+
+cd /etc/init.d
+ln -s minecraft-server minecraft-server.gentoo
+
+cd /etc/conf.d
+cp minecraft-server minecraft-server.gentoo
+
+After that, make your settings in
+/etc/conf.d/minecraft-server.gentoo.
+
+If you don't make a symlink, but use the default scripts,
+your world will be called 'main'.
+
+To interact with the console of the corresponding world,
+you can use the extra command attach:
+
+rc-service minecraft-server attach
+rc-service minecraft-server.gentoo attach

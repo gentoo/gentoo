@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		Cega is a cycle accurate emulator for the Sega SG-1000,
+		Master System, and Game Gear written specifically for
+		The Jolly Good API.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/cega/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/cega</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,33 @@
+diff -ur dog-1.7/dog.c dog-1.7-64bit/dog.c
+--- a/dog.c	2000-06-21 18:04:43.000000000 +0200
++++ b/dog.c	2005-05-23 10:40:58.613766328 +0200
+@@ -38,22 +38,13 @@
+ #include <limits.h>
+ #include <netdb.h>
+ 
+-// this is fun
+-#if defined(__alpha)
+-#define uint16	unsigned short
+-#define int16	short
+-#define uint32	unsigned int
+-#define int32	int
+-#define uint64	unsigned long
+-#define int64	long
+-#else
+-#define uint16	unsigned short
+-#define int16	short
+-#define uint32	unsigned long
+-#define int32	long
+-#define uint64	unsigned long long
+-#define int64	long long
+-#endif
++#define uint16	uint16_t
++#define int16	int16_t
++#define uint32	uint32_t
++#define int32	int32_t
++#define uint64	uint64_t
++#define int64	int64_t
++
+ #if defined(__STDC__)
+ #define __dog_signed		signed
+ #else

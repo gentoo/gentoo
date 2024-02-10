@@ -1,0 +1,20 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 30cf3605468..902e2123d04 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -430,9 +430,12 @@ add_dependencies(common-objs legacy-option-headers)
+ 
+ if(WITH_JAEGER)
+   find_package(thrift 0.13.0 REQUIRED)
+-  include(BuildOpentelemetry)
+-  build_opentelemetry()
+-  set(jaeger_base opentelemetry::libopentelemetry thrift::libthrift)
++  find_package(opentelemetry-cpp REQUIRED)
++  set(jaeger_base
++	  opentelemetry-cpp::common
++	  opentelemetry-cpp::trace
++	  opentelemetry-cpp::jaeger_trace_exporter
++	  thrift::libthrift)
+   add_dependencies(common-objs ${jaeger_base})
+   target_link_libraries(common-objs ${jaeger_base})
+ endif()

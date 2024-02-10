@@ -1,0 +1,35 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -44,20 +44,8 @@
+ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 configure src/config-h.in \
+                        src/stamp-h.in $(AUX_DIST)
+ 
+-install_aux_files    = AUTHORS COPYING INSTALL CHANGES CHANGES.old TODO \
++dist_doc_DATA    = AUTHORS CHANGES CHANGES.old TODO \
+                        ChangeLog ChangeLog-2003 ChangeLog-2002
+ 
+-DOC_INST_DIR         = $(DESTDIR)$(datadir)/doc/uisp-$(VERSION)
+-
+-install-data-local:
+-	$(mkinstalldirs) $(DOC_INST_DIR)
+-	for file in $(install_aux_files) ; do \
+-	  echo " $(INSTALL_DATA) $$file $(DOC_INST_DIR)/$$file"; \
+-	  $(INSTALL_DATA) $(srcdir)/$$file $(DOC_INST_DIR)/$$file; \
+-	done
+-
+-uninstall-local:
+-	rm -rf $(DOC_INST_DIR)
+-
+ dist-hook: uisp.spec
+ 	cp uisp.spec $(distdir)/uisp.spec
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -31,7 +31,7 @@
+ # Turn on all warnings and consider them errors. This kinda forces you to have
+ # to use gcc, but I'd rather have all warnings eliminated.
+ 
+-AM_CXXFLAGS          = -Wall -Werror
++AM_CXXFLAGS          = -Wall
+ 
+ bin_PROGRAMS         = uisp
+ uisp_SOURCES         = \

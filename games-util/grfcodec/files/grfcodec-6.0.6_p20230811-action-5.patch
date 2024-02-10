@@ -1,0 +1,30 @@
+Bug: https://bugs.gentoo.org/912189
+Upstream: https://github.com/OpenTTD/grfcodec/pull/23
+
+From de32367a6896c9f310fa48929e29643beaa08af4 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sun, 13 Aug 2023 09:30:01 +0100
+Subject: [PATCH] data: Fix Action5 table
+
+The alternative sprite counts were added into the action 5 table, but
+the counts were not updated. This caused all of the types defined after
+type 0x09 to be mis-read.
+
+Fixes: d5a7b850bcef30c0bfd17ceeb4a18c431770f468
+--- a/src/data.cpp
++++ b/src/data.cpp
+@@ -170,9 +170,9 @@ NDF_HEADER(0x04, 17),
+ /*06*/ OFFSET,          OPTIONS(2), 0x4A, 0x5A,
+ /*07*/                  OPTIONS(1), 0x5D,
+ /*08*/ OFFSET,          OPTIONS(1), 0x41,
+-/*09*/ OFFSET,          OPTIONS(1), 0x06, 0x12,
++/*09*/ OFFSET,          OPTIONS(2), 0x06, 0x12,
+ /*0A*/ OFFSET | RECOLOUR | WORD, OPTIONS(1), W(0x100),
+-/*0B*/ OFFSET,          OPTIONS(1), 0x71, 0x77,
++/*0B*/ OFFSET,          OPTIONS(2), 0x71, 0x77,
+ /*0C*/                  OPTIONS(1), 0x85,
+ /*0D*/                  OPTIONS(2), 0x10, 0x12,
+ /*0E*/ MIXED,           OPTIONS(1), 0x00,
+-- 
+2.41.0
+

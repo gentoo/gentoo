@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/astrada/google-drive-ocamlfuse/issues</bugs-to>
+    <remote-id type="github">astrada/google-drive-ocamlfuse</remote-id>
+    <maintainer>
+      <name>Alessandro Strada</name>
+      <email>alessandro.strada@gmail.com</email>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

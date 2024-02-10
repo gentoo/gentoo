@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">dino/libomemo-c</remote-id>
+		<bugs-to>https://github.com/dino/libomemo-c/issues</bugs-to>
+		<doc>https://github.com/dino/libomemo-c/blob/master/README.md</doc>
+	</upstream>
+</pkgmetadata>

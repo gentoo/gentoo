@@ -1,0 +1,24 @@
+Make build system respect user flags
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,4 @@
+-CC=gcc
+ RM=rm -f
+-CFLAGS=-ggdb -O3 -W -Wall
+ 
+ C_SOURCES=alac.c \
+           demux.c \
+@@ -11,10 +9,10 @@
+ OBJECTS=$(C_SOURCES:.c=.o)
+ 
+ alac: $(OBJECTS)
+-	$(CC) -o alac $(OBJECTS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o alac $(OBJECTS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ clean:
+ 	rm -f $(OBJECTS) *.*~ alac

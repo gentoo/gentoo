@@ -1,0 +1,9 @@
+[Unit]
+Description=Inotify System Scheduler
+
+[Service]
+ExecStart=/usr/sbin/incrond --foreground -f /etc/incron.conf
+
+[Install]
+WantedBy=multi-user.target
+

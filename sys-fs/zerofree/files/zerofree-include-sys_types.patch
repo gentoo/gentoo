@@ -1,0 +1,10 @@
+--- zerofree-1.1.1/zerofree.c.orig	2019-05-05 19:22:49.000000000 -0500
++++ zerofree-1.1.1/zerofree.c	2019-05-05 19:21:50.000000000 -0500
+@@ -17,6 +17,7 @@
+  *             Jan Krämer.
+  */
+ 
++#include <sys/types.h>
+ #include <ext2fs/ext2fs.h>
+ #include <stdio.h>
+ #include <unistd.h>

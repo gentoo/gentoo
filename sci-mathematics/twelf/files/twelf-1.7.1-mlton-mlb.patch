@@ -1,0 +1,409 @@
+commit 35216e78de99558a39b147bf06fef85e1aabb2c6
+Author: Rob Simmons <robsimmons@gmail.com>
+Date:   Mon Aug 19 11:49:04 2013 -0400
+
+    Transfer Mlton build over to mlb files, as they've been asking us to do for years and now insist on.
+
+diff --git a/Makefile b/Makefile
+index 9d7d422..2422f36 100644
+--- a/Makefile
++++ b/Makefile
+@@ -46,9 +46,9 @@ twelf-server-announce:
+ twelf-server-mlton:
+ 	mltonversion=`$(mlton) 2>&1 | awk 'NR==1 { print 0+$$2 }'`;	\
+ 	if   [ $$mltonversion -ge 20041109 ]; then			\
+-		cmfileid="twelf-server-mlton.cm";			\
++		cmfileid="twelf-server-mlton.mlb";			\
+ 	elif [ $$mltonversion="MLTONVERSION" ]; then			\
+-		cmfileid="twelf-server-mlton.cm";			\
++		cmfileid="twelf-server-mlton.mlb";			\
+ 	else								\
+ 		echo; echo "Error: MLton >= 20041109 required";	echo;	\
+ 		exit 1;							\
+@@ -84,7 +84,7 @@ mlton : twelf-server-announce buildid twelf-server-mlton twelf-emacs
+ 
+ .PHONY: twelf-regression check
+ twelf-regression: buildid
+-	$(mlton) -output bin/twelf-regression TEST/mlton-regression.cm
++	$(mlton) -output bin/twelf-regression TEST/mlton-regression.mlb
+ 
+ check : twelf-regression
+ 	$(make) -C TEST check
+diff --git a/TEST/mlton-regression.mlb b/TEST/mlton-regression.mlb
+new file mode 100644
+index 0000000..b77a9ee
+--- /dev/null
++++ b/TEST/mlton-regression.mlb
+@@ -0,0 +1,7 @@
++(* MLton version *)
++
++../build/twelf-core-mlton.mlb
++
++regression.sml
++runquiet.sml
++
+diff --git a/build/twelf-core-mlton.mlb b/build/twelf-core-mlton.mlb
+new file mode 100644
+index 0000000..26843cd
+--- /dev/null
++++ b/build/twelf-core-mlton.mlb
+@@ -0,0 +1,348 @@
++(* Common MLton version *)
++
++$(SML_LIB)/basis/basis.mlb
++$(SML_LIB)/basis/mlton.mlb
++$(SML_LIB)/basis/sml-nj.mlb
++
++../src/compat/array.sig
++../src/compat/vector.sig
++../src/compat/path.sig
++../src/compat/substring.sig
++../src/compat/text-io.sig
++../src/compat/timer.sig
++../src/compat/socket.sig
++../src/compat/compat.sig
++../src/compat/socket.sml
++../src/compat/compat.fun
++../src/compat/compat.sml
++../src/timing/timing.sml
++../src/timing/timers.sig
++../src/timing/timers.fun
++../src/timing/timers.sml
++../src/global/global.sig
++../src/global/global.sml
++../src/lambda/fgnopn.sig
++../src/lambda/fgnopntable.fun
++../src/lambda/intsyn.sig
++../src/lambda/intsyn.fun
++../src/lambda/whnf.sig
++../src/lambda/whnf.fun
++../src/lambda/conv.sig
++../src/lambda/conv.fun
++
++../src/table/table.sig
++../src/table/hash-table.sml
++../src/table/string-hash.sig
++../src/table/string-hash.sml
++../src/table/red-black-tree.fun
++../src/table/sparse-array.sig
++../src/table/sparse-array.fun
++../src/table/sparse-array2.sig
++../src/table/sparse-array2.fun
++../src/table/table.sml
++
++../src/order/order.sig
++../src/order/order.fun
++../src/order/order.sml
++
++../src/lambda/tomega.sig
++../src/lambda/tomega.fun
++../src/lambda/tomega.sml
++../src/paths/paths.sig
++../src/paths/paths.fun
++../src/paths/origins.sig
++../src/paths/origins.fun
++../src/paths/paths.sml
++../src/table/queue.sig
++../src/table/queue.sml
++../src/index/index.sig
++../src/index/index.fun
++../src/index/index-skolem.fun
++../src/index/index.sml
++../src/trail/trail.sig
++../src/trail/notrail.sml
++../src/trail/trail.sml
++../src/lambda/constraints.sig
++../src/lambda/constraints.fun
++../src/lambda/unify.sig
++../src/lambda/unify.fun
++../src/lambda/match.sig
++../src/lambda/match.fun
++../src/lambda/abstract.sig
++../src/lambda/abstract.fun
++../src/lambda/approx.sig
++../src/lambda/approx.fun
++../src/lambda/lambda.sml
++../src/names/names.sig
++../src/names/names.fun
++../src/names/names.sml
++../src/style/style.sig
++../src/style/style.fun
++../src/style/style.sml
++../src/stream/stream.sml
++../src/frontend/lexer.sig
++../src/frontend/lexer.fun
++../src/frontend/twelf.sig
++../src/formatter/formatter.sig
++../src/formatter/formatter.fun
++../src/formatter/formatter.sml
++../src/print/print-omdoc.sig
++../src/print/print-xml.sig
++../src/print/print-omdoc.fun
++../src/print/print-xml.fun
++../src/print/print-twega.sig
++../src/print/print-twega.fun
++../src/print/symbol.sig
++../src/print/symbol.fun
++../src/print/print.sig
++../src/print/print.fun
++../src/print/clause-print.sig
++../src/print/clause-print.fun
++../src/print/print.sml
++../src/typecheck/strict.sig
++../src/typecheck/strict.fun
++../src/typecheck/typecheck.sig
++../src/typecheck/typecheck.fun
++../src/typecheck/typecheck.sml
++../src/modes/modesyn.sml
++../src/modes/modetable.sig
++../src/modes/modetable.fun
++../src/modes/modedec.sig
++../src/modes/modedec.fun
++../src/modes/modecheck.sig
++../src/modes/modecheck.fun
++../src/modes/modeprint.sig
++../src/modes/modeprint.fun
++../src/modes/modes.sml
++../src/tabling/tabledsyn.sig
++../src/tabling/tabledsyn.fun
++../src/tabling/tabled.sml
++../src/subordinate/intset.sml
++../src/subordinate/subordinate.sig
++../src/subordinate/subordinate.fun
++../src/subordinate/subordinate.sml
++../src/solvers/cs-manager.sig
++../src/solvers/cs-manager.fun
++../src/domains/integers.sig
++../src/domains/integers.fun
++../src/domains/field.sig
++../src/domains/ordered-field.sig
++../src/domains/rationals.sig
++../src/domains/rationals.fun
++../src/domains/integers-mod.fun
++../src/domains/domains.sml
++../src/solvers/cs.sig
++../src/solvers/cs-eq-field.sig
++../src/solvers/cs-eq-field.fun
++../src/solvers/cs-ineq-field.fun
++../src/solvers/cs-eq-strings.fun
++../src/solvers/cs-eq-bools.fun
++../src/solvers/cs-eq-integers.sig
++../src/solvers/cs-eq-integers.fun
++../src/solvers/cs-ineq-integers.fun
++../src/solvers/cs-integers-word.fun
++../src/solvers/solvers.sml
++../src/terminate/checking.sig
++../src/terminate/checking.fun
++../src/terminate/reduces.sig
++../src/terminate/reduces.fun
++../src/terminate/terminate.sml
++../src/thm/thmsyn.sig
++../src/thm/thmsyn.fun
++../src/thm/thmprint.sig
++../src/thm/thmprint.fun
++../src/thm/thm.sig
++../src/thm/thm.fun
++../src/thm/thm.sml
++../src/table/red-black-set.sig
++../src/table/red-black-set.sml
++../src/compile/compsyn.sig
++../src/compile/compsyn.fun
++../src/compile/cprint.sig
++../src/compile/cprint.fun
++../src/compile/subtree.sig
++../src/compile/subtree.fun
++../src/compile/compile.sig
++../src/compile/compile.fun
++../src/compile/assign.sig
++../src/compile/assign.fun
++../src/compile/compile.sml
++../src/opsem/absmachine.sig
++../src/opsem/absmachine.fun
++../src/opsem/table-param.sig
++../src/opsem/table-param.fun
++../src/opsem/table-param.sml
++../src/opsem/abstract.sig
++../src/opsem/abstract.fun
++../src/opsem/sw-subtree.sig
++../src/opsem/subtree.fun
++../src/opsem/subtree-inst.fun
++../src/opsem/sw-subtree.fun
++../src/opsem/tabled.sig
++../src/opsem/tabled.fun
++../src/opsem/ptrecon.sig
++../src/opsem/ptrecon.fun
++../src/opsem/trace.sig
++../src/opsem/trace.fun
++../src/opsem/absmachine-sbt.sig
++../src/opsem/absmachine-sbt.fun
++../src/opsem/tmachine.fun
++../src/opsem/swmachine.fun
++../src/opsem/opsem.sml
++../src/m2/meta-global.sig
++../src/m2/meta-global.sml
++../src/table/ring.sig
++../src/table/ring.sml
++../src/m2/metasyn.sig
++../src/m2/metasyn.fun
++../src/m2/meta-abstract.sig
++../src/m2/meta-abstract.fun
++../src/m2/meta-print.sig
++../src/m2/meta-print.fun
++../src/m2/init.sig
++../src/m2/init.fun
++../src/m2/search.sig
++../src/m2/search.fun
++../src/m2/lemma.sig
++../src/m2/lemma.fun
++../src/m2/splitting.sig
++../src/m2/splitting.fun
++../src/m2/filling.sig
++../src/m2/filling.fun
++../src/m2/recursion.sig
++../src/m2/recursion.fun
++../src/m2/qed.sig
++../src/m2/qed.fun
++../src/compat/time-limit.sig
++../src/compat/time-limit.sml
++../src/m2/strategy.sig
++../src/m2/strategy.fun
++../src/m2/prover.sig
++../src/m2/prover.fun
++../src/m2/mpi.sig
++../src/m2/mpi.fun
++../src/m2/skolem.sig
++../src/m2/skolem.fun
++../src/m2/m2.sml
++../src/modules/modsyn.sig
++../src/modules/modsyn.fun
++../src/modules/modules.sml
++../src/heuristic/heuristic.sig
++../src/heuristic/heuristic.sum.fun
++../src/meta/global.sig
++../src/meta/funsyn.sig
++../src/meta/funsyn.fun
++../src/meta/statesyn.sig
++../src/meta/init.sig
++../src/meta/strategy.sig
++../src/meta/relfun.sig
++../src/meta/prover.fun
++../src/meta/funprint.sig
++../src/meta/print.sig
++../src/meta/print.fun
++../src/meta/filling.sig
++../src/meta/data.sig
++../src/meta/splitting.sig
++../src/meta/recursion.sig
++../src/meta/inference.sig
++../src/meta/strategy.fun
++../src/meta/statesyn.fun
++../src/meta/funtypecheck.sig
++../src/meta/uniquesearch.sig
++../src/meta/inference.fun
++../src/meta/abstract.sig
++../src/meta/splitting.fun
++../src/meta/uniquesearch.fun
++../src/meta/search.sig
++../src/meta/search.fun
++../src/meta/recursion.fun
++../src/meta/mpi.sig
++../src/meta/mpi.fun
++../src/meta/data.fun
++../src/meta/global.fun
++../src/meta/filling.fun
++../src/meta/init.fun
++../src/meta/abstract.fun
++../src/meta/funnames.sig
++../src/meta/funnames.fun
++../src/meta/funprint.fun
++../src/meta/weaken.sig
++../src/meta/weaken.fun
++../src/meta/funweaken.sig
++../src/meta/funweaken.fun
++../src/meta/funtypecheck.fun
++../src/meta/relfun.fun
++../src/meta/meta.sml
++../src/worldcheck/worldsyn.sig
++../src/worldcheck/worldsyn.fun
++../src/worldcheck/worldify.sig
++../src/worldcheck/worldify.fun
++../src/worldcheck/worldcheck.sml
++../src/unique/unique.sig
++../src/unique/unique.fun
++../src/unique/unique.sml
++../src/cover/cover.sig
++../src/cover/cover.fun
++../src/cover/total.sig
++../src/cover/total.fun
++../src/cover/cover.sml
++../src/tomega/abstract.sig
++../src/tomega/abstract.fun
++../src/tomega/tomegaprint.sig
++../src/tomega/tomegaprint.fun
++../src/tomega/typecheck.sig
++../src/tomega/typecheck.fun
++../src/tomega/opsem.sig
++../src/tomega/opsem.fun
++../src/tomega/redundant.sig
++../src/tomega/redundant.fun
++../src/tomega/converter.sig
++../src/tomega/converter.fun
++../src/tomega/coverage.sig
++../src/tomega/coverage.fun
++../src/tomega/tomega.sml
++../src/msg/msg.sml
++../src/frontend/recon-term.sig
++../src/frontend/recon-term.fun
++../src/frontend/recon-condec.sig
++../src/frontend/recon-condec.fun
++../src/frontend/recon-query.sig
++../src/frontend/recon-query.fun
++../src/frontend/recon-mode.sig
++../src/frontend/recon-mode.fun
++../src/frontend/recon-thm.sig
++../src/frontend/recon-thm.fun
++../src/frontend/recon-module.sig
++../src/frontend/recon-module.fun
++../src/frontend/parsing.sig
++../src/frontend/parsing.fun
++../src/frontend/parse-term.sig
++../src/frontend/parse-term.fun
++../src/frontend/parse-condec.sig
++../src/frontend/parse-condec.fun
++../src/frontend/parse-query.sig
++../src/frontend/parse-query.fun
++../src/frontend/parse-fixity.sig
++../src/frontend/parse-fixity.fun
++../src/frontend/parse-mode.sig
++../src/frontend/parse-mode.fun
++../src/frontend/parse-thm.sig
++../src/frontend/parse-thm.fun
++../src/frontend/parse-module.sig
++../src/frontend/parse-module.fun
++../src/frontend/parser.sig
++../src/frontend/parser.fun
++../src/frontend/solve.sig
++../src/frontend/solve.fun
++../src/frontend/fquery.sig
++../src/frontend/fquery.fun
++../src/frontend/unknownexn.sig
++../src/frontend/buildid.sml
++../src/frontend/version.sml
++../src/frontend/twelf.fun
++../src/frontend/unknownexn.fun
++../src/frontend/unknownexn-smlnj.sml
++../src/frontend/frontend.sml
++../src/server/sigint.sig
++../src/server/sigint-mlton.sml
++../src/server/server.sml
+diff --git a/build/twelf-server-mlton.mlb b/build/twelf-server-mlton.mlb
+new file mode 100644
+index 0000000..fa4332f
+--- /dev/null
++++ b/build/twelf-server-mlton.mlb
+@@ -0,0 +1,4 @@
++
++twelf-core-mlton.mlb
++twelf-server-mlton.sml
++
+

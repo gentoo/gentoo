@@ -1,0 +1,26 @@
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -1,6 +1,7 @@
+ generate_sbat = find_program('generate_sbat.py', native: true)
+ generate_binary = find_program('generate_binary.py', native: true)
+ 
++efi_ld = get_option('efi-ld')
+ efi_ldsdir = get_option('efi-ldsdir')
+ efi_incdir = get_option('efi-includedir')
+ 
+@@ -226,7 +227,7 @@
+ so = custom_target('fwup.so',
+                    input : [o_file1, o_file2, o_file3, o_file4, o_file5],
+                    output : 'fwup.so',
+-                   command : [ld, '-o', '@OUTPUT@'] +
++                   command : [efi_ld, '-o', '@OUTPUT@'] +
+                              efi_ldflags + ['@INPUT@'] +
+                              ['-lefi', '-lgnuefi', libgcc_file_name],
+                    depends: fwupd_so_deps)
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,4 @@
++option('efi-ld', type : 'string', value : 'ld', description : 'the linker to use for EFI modules')
+ option('efi-libdir', type : 'string', description : 'path to the EFI lib directory')
+ option('efi-ldsdir', type : 'string', description : 'path to the EFI lds directory')
+ option('efi-includedir', type : 'string', value : '/usr/include/efi', description : 'path to the EFI header directory')

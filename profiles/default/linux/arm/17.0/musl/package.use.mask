@@ -1,0 +1,9 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-02-08)
+# libsanitizer needs porting to arm on musl:
+# - https://archives.gentoo.org/gentoo-releng-autobuilds/message/c59c5775309deef44162d1337e6fb650
+# - https://archives.gentoo.org/gentoo-releng-autobuilds/message/e94e893c954fa50b84b84086a40c359f
+# - bug #893654
+<sys-devel/gcc-13 sanitize

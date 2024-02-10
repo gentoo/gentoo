@@ -1,0 +1,10 @@
+--- a/filecmp.c	2005-04-19 12:22:01.000000000 +0200
++++ b/filecmp.c	2010-12-30 20:23:24.000000000 +0100
+@@ -11,6 +11,7 @@
+ #include <ctype.h>
+ #include <tcl.h>
+ #include <sys/fcntl.h>
++#include <unistd.h> /* close() read() */
+ 
+ #define BSIZE		32768
+ #define MAXTAGLEN	512	/* max tag length for sanity, < BSIZE */

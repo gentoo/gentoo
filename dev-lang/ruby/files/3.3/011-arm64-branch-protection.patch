@@ -1,0 +1,28 @@
+From a8af871e29c6c922c4c3aeb94697ab958fc12e9b Mon Sep 17 00:00:00 2001
+From: Yuta Saito <kateinoigakukun@gmail.com>
+Date: Wed, 27 Dec 2023 06:22:45 +0000
+Subject: [PATCH] [Bug #20085] Use consistent default options for
+ `-mbranch-protection`
+
+We need to use the same options for both C compiler and assembler
+when `-mbranch-protection` is guessed by configure. Otherwise,
+`coroutine/arm64/Context.{h,S}` will use incompatible PAC strategies.
+---
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 9286946fc15f4..18b4247991d42 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -830,7 +830,10 @@ AS_IF([test "$GCC" = yes], [
+ 	AS_FOR(option, opt, [-mbranch-protection=pac-ret -msign-return-address=all], [
+             RUBY_TRY_CFLAGS(option, [branch_protection=yes], [branch_protection=no])
+             AS_IF([test "x$branch_protection" = xyes], [
++                # C compiler and assembler must be consistent for -mbranch-protection
++                # since they both check `__ARM_FEATURE_PAC_DEFAULT` definition.
+                 RUBY_APPEND_OPTION(XCFLAGS, option)
++                RUBY_APPEND_OPTION(ASFLAGS, option)
+                 break
+             ])
+         ])

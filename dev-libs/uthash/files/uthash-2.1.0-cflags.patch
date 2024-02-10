@@ -1,0 +1,11 @@
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -18,7 +18,7 @@
+ CFLAGS += -I$(HASHDIR)
+ #CFLAGS += -DHASH_BLOOM=16
+ #CFLAGS += -O2
+-CFLAGS += -g
++#CFLAGS += -g
+ #CFLAGS += -Wstrict-aliasing=2
+ CFLAGS += -Wall 
+ #CFLAGS += -Wextra 

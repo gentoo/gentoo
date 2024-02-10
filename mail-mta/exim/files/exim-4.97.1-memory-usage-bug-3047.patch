@@ -1,0 +1,226 @@
+From b4e7527561f1c68b821d5cf25efe29ae63d1d434 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Thu, 25 Jan 2024 17:48:43 +0000
+Subject: [PATCH] Appendfile: release regex-match store every thousand files. 
+ Bug 3047
+
+From 35aacb69f5c839a4b77158464e401d86eb422ed6 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Fri, 26 Jan 2024 21:58:59 +0000
+Subject: [PATCH] ACL: in "regex" condition, release store every thousand
+ lines.  Bug 3047
+
+
+diff --git a/src/src/exim.c b/src/src/exim.c
+--- a/src/exim.c
++++ b/src/exim.c
+@@ -49,6 +49,8 @@ optimize out the tail recursion and so not make them too expensive. */
+ static void *
+ function_store_malloc(PCRE2_SIZE size, void * tag)
+ {
++if (size > INT_MAX)
++  log_write(0, LOG_MAIN|LOG_PANIC_DIE, "excessive memory alloc request");
+ return store_malloc((int)size);
+ }
+ 
+@@ -63,12 +65,15 @@ if (block) store_free(block);
+ static void *
+ function_store_get(PCRE2_SIZE size, void * tag)
+ {
++if (size > INT_MAX)
++  log_write(0, LOG_MAIN|LOG_PANIC_DIE, "excessive memory alloc request");
+ return store_get((int)size, GET_UNTAINTED);	/* loses track of taint */
+ }
+ 
+ static void
+ function_store_nullfree(void * block, void * tag)
+ {
++/* We cannot free memory allocated using store_get() */
+ }
+ 
+ 
+diff --git a/src/src/transports/appendfile.c b/src/src/transports/appendfile.c
+--- a/src/transports/appendfile.c
++++ b/src/transports/appendfile.c
+@@ -661,13 +665,14 @@ Returns:        the sum of the sizes of the stattable files
+ off_t
+ check_dir_size(const uschar * dirname, int * countptr, const pcre2_code * re)
+ {
+ DIR *dir;
+ off_t sum = 0;
+-int count = *countptr;
++int count = *countptr, lcount = REGEX_LOOPCOUNT_STORE_RESET;
++rmark reset_point = store_mark();
+ 
+ if (!(dir = exim_opendir(dirname))) return 0;
+ 
+ for (struct dirent *ent; ent = readdir(dir); )
+   {
+   uschar * path, * name = US ent->d_name;
+   struct stat statbuf;
+@@ -675,6 +680,11 @@ for (struct dirent *ent; ent = readdir(dir); )
+   if (Ustrcmp(name, ".") == 0 || Ustrcmp(name, "..") == 0) continue;
+ 
+   count++;
++  if (--lcount == 0)
++    {
++    store_reset(reset_point); reset_point = store_mark();
++    lcount = REGEX_LOOPCOUNT_STORE_RESET;
++    }
+ 
+   /* If there's a regex, try to find the size using it */
+ 
+@@ -726,6 +736,7 @@ DEBUG(D_transport)
+   debug_printf("check_dir_size: dir=%s sum=" OFF_T_FMT " count=%d\n", dirname,
+     sum, count);
+ 
++store_reset(reset_point);
+ *countptr = count;
+ return sum;
+ }
+diff --git a/src/src/macros.h b/src/src/macros.h
+--- a/src/macros.h
++++ b/src/macros.h
+@@ -1185,4 +1185,9 @@ typedef enum {
+   sw_mrc_tx_fail,		/* transmit failed */
+ } sw_mrc_t;
+ 
++/* Recent versions of PCRE2 are allocating 20kB per match, rather than the previous 112 B.
++When doing en extended loop of matching, release store periodically. */
++
++#define	REGEX_LOOPCOUNT_STORE_RESET	1000
++
+ /* End of macros.h */
+diff --git a/src/src/regex.c b/src/src/regex.c
+--- a/src/regex.c
++++ b/src/regex.c
+@@ -31,12 +31,11 @@ extern uschar *mime_current_boundary;
+ 
+ 
+ static pcre_list *
+-compile(const uschar * list, BOOL cacheable)
++compile(const uschar * list, BOOL cacheable, int * cntp)
+ {
+-int sep = 0;
++int sep = 0, cnt = 0;
+ uschar * regex_string;
+-pcre_list * re_list_head = NULL;
+-pcre_list * ri;
++pcre_list * re_list_head = NULL, * ri;
+ 
+ /* precompile our regexes */
+ while ((regex_string = string_nextinlist(&list, &sep, NULL, 0)))
+@@ -58,7 +57,9 @@ while ((regex_string = string_nextinlist(&list, &sep, NULL, 0)))
+     ri->pcre_text = regex_string;
+     ri->next = re_list_head;
+     re_list_head = ri;
++    cnt++;
+     }
++if (cntp) *cntp = cnt;
+ return re_list_head;
+ }
+ 
+@@ -112,7 +113,8 @@ FILE * mbox_file;
+ pcre_list * re_list_head;
+ uschar * linebuffer;
+ long f_pos = 0;
+-int ret = FAIL;
++int ret = FAIL, cnt, lcount = REGEX_LOOPCOUNT_STORE_RESET;
++rmark reset_point;
+ 
+ regex_vars_clear();
+ 
+@@ -136,26 +138,34 @@ else
+   mbox_file = mime_stream;
+   }
+ 
+-/* precompile our regexes */
+-if (!(re_list_head = compile(*listptr, cacheable)))
+-  return FAIL;			/* no regexes -> nothing to do */
+-
+-/* match each line against all regexes */
+-linebuffer = store_get(32767, GET_TAINTED);
+-while (fgets(CS linebuffer, 32767, mbox_file))
++reset_point = store_mark();
+   {
+-  if (  mime_stream && mime_current_boundary		/* check boundary */
+-     && Ustrncmp(linebuffer, "--", 2) == 0
+-     && Ustrncmp((linebuffer+2), mime_current_boundary,
+-		  Ustrlen(mime_current_boundary)) == 0)
+-      break;						/* found boundary */
+-
+-  if ((ret = matcher(re_list_head, linebuffer, (int)Ustrlen(linebuffer))) == OK)
+-    goto done;
++  /* precompile our regexes */
++  if ((re_list_head = compile(*listptr, cacheable, &cnt)))
++    {
++    /* match each line against all regexes */
++    linebuffer = store_get(32767, GET_TAINTED);
++    while (fgets(CS linebuffer, 32767, mbox_file))
++      {
++      if (  mime_stream && mime_current_boundary		/* check boundary */
++	 && Ustrncmp(linebuffer, "--", 2) == 0
++	 && Ustrncmp((linebuffer+2), mime_current_boundary,
++		      Ustrlen(mime_current_boundary)) == 0)
++	break;						/* found boundary */
++
++      if ((ret = matcher(re_list_head, linebuffer, (int)Ustrlen(linebuffer))) == OK)
++	break;
++
++      if ((lcount -= cnt) <= 0)
++	{
++	store_reset(reset_point); reset_point = store_mark();
++	lcount = REGEX_LOOPCOUNT_STORE_RESET;
++	}
++      }
++    }
+   }
+-/* no matches ... */
++store_reset(reset_point);
+ 
+-done:
+ if (!mime_stream)
+   (void)fclose(mbox_file);
+ else
+@@ -180,14 +190,11 @@ pcre_list * re_list_head = NULL;
+ FILE * f;
+ uschar * mime_subject = NULL;
+ int mime_subject_len = 0;
+-int ret;
++int ret = FAIL;
++rmark reset_point;
+ 
+ regex_vars_clear();
+ 
+-/* precompile our regexes */
+-if (!(re_list_head = compile(*listptr, cacheable)))
+-  return FAIL;			/* no regexes -> nothing to do */
+-
+ /* check if the file is already decoded */
+ if (!mime_decoded_filename)
+   {				/* no, decode it first */
+@@ -210,12 +217,20 @@ if (!(f = fopen(CS mime_decoded_filename, "rb")))
+   return DEFER;
+   }
+ 
+-/* get 32k memory, tainted */
+-mime_subject = store_get(32767, GET_TAINTED);
++reset_point = store_mark();
++  {
++  /* precompile our regexes */
++  if ((re_list_head = compile(*listptr, cacheable, NULL)))
++    {
++    /* get 32k memory, tainted */
++    mime_subject = store_get(32767, GET_TAINTED);
+ 
+-mime_subject_len = fread(mime_subject, 1, 32766, f);
++    mime_subject_len = fread(mime_subject, 1, 32766, f);
+ 
+-ret = matcher(re_list_head, mime_subject, mime_subject_len);
++    ret = matcher(re_list_head, mime_subject, mime_subject_len);
++    }
++  }
++store_reset(reset_point);
+ (void)fclose(f);
+ return ret;
+ }

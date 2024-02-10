@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+
+config=/etc/kapacitor/kapacitor.conf
+pidfile=/var/run/kapacitord.pid
+command=/usr/bin/kapacitord
+command_args="-config ${config} ${kapacitor_opts}"
+command_background=yes
+make_pidfile=yes
+command_user="kapacitor:kapacitor"
+
+# Logging
+error_log="${error_log:-/var/log/kapacitor/kapacitor.err}"
+output_log="${output_log:-/dev/null}"
+
+# Max open files
+rc_ulimit="-n 65536"
+
+depend() {
+	after net
+}
+
+start_pre() {
+	# Check if config file exist
+	if [ ! -r ${config} ]; then
+		eerror "config file ${config} doesn't exist"
+	    return 1
+	fi
+	if [ ! -f "$error_log" ]; then
+		mkdir -p "$(dirname $error_log)"
+	fi
+	if [ ! -f "$output_log" ]; then
+		mkdir -p "$(dirname $output_log)"
+	fi
+	return 0
+}

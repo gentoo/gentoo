@@ -1,0 +1,23 @@
+--- rt-8u202-b07/buildSrc/linux.gradle
++++ rt-8u202-b07-patched/buildSrc/linux.gradle
+@@ -54,7 +54,7 @@
+ def ccFlags = [
+         commonFlags, "-I$JDK_HOME/include", "-I$JDK_HOME/include/linux", "-c",
+         "-ffunction-sections", "-fdata-sections",
+-        IS_DEBUG_NATIVE ? ["-ggdb", "-DVERBOSE"] : ["-O2", "-DNDEBUG"]].flatten()
++        IS_DEBUG_NATIVE ? ["-ggdb", "-DNDEBUG"] : ["-O2", "-DNDEBUG"]].flatten()
+ def ccFlagsGTK3 = ccFlags
+ //ccFlags.addAll(["-Wnon-virtual-dtor", "-Woverloaded-virtual", "-std=c++0x"])
+ def linkFlags = ["-static-libgcc", "-static-libstdc++", "-shared", commonFlags,
+
+--- rt-8u202-b07/buildSrc/x86egl.gradle
++++ rt-8u202-b07-patched/buildSrc/x86egl.gradle
+@@ -99,7 +99,7 @@
+ def ccFlags = [
+         commonFlags,
+         "-I$JDK_HOME/include", "-I$JDK_HOME/include/${jniPlatform}", "-c",
+-        IS_DEBUG_NATIVE ? ["-ggdb", "-DVERBOSE"] : ["-O2", "-DNDEBUG"]].flatten()
++        IS_DEBUG_NATIVE ? ["-ggdb", "-DNDEBUG"] : ["-O2", "-DNDEBUG"]].flatten()
+ //ccFlags.addAll(["-Wnon-virtual-dtor", "-Woverloaded-virtual", "-std=c++0x"])
+ def linkFlags = ["-shared", commonFlags].flatten()
+ 

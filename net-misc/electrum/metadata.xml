@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>luke-jr+gentoobugs@utopios.org</email>
+		<name>Luke Dashjr</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="cli">Enables the CLI interface</flag>
+		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">spesmilo/electrum</remote-id>
+	</upstream>
+</pkgmetadata>

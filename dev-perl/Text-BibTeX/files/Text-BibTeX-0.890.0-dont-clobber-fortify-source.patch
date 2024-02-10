@@ -1,0 +1,13 @@
+Don't override our compiler defaults.
+
+https://bugs.gentoo.org/893592
+--- a/inc/MyBuilder.pm
++++ b/inc/MyBuilder.pm
+@@ -208,7 +208,6 @@ sub ACTION_create_objects {
+         $object =~ s/\.c/.o/;
+         next if $self->up_to_date($file, $object);
+         $cbuilder->compile(object_file  => $object,
+-                           extra_compiler_flags=>["-D_FORTIFY_SOURCE=1",@EXTRA_FLAGS],
+                            source       => $file,
+                            include_dirs => ["btparse/src"]);
+     }

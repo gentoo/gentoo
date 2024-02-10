@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="pypi">insipid-sphinx-theme</remote-id>
+		<remote-id type="github">mgeier/insipid-sphinx-theme</remote-id>
+		<doc>https://insipid-sphinx-theme.readthedocs.io/</doc>
+		<bugs-to>https://github.com/mgeier/insipid-sphinx-theme/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

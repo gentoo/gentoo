@@ -1,0 +1,24 @@
+https://github.com/mtsuszycki/whowatch/pull/12
+
+From 62688e7316de7d4c80591f83afc97d55d73ad272 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sat, 26 Nov 2022 17:45:23 +0100
+Subject: [PATCH] configure.ac: Do not call undeclared exit function
+
+Implicit function declarations were removed from the C language in
+1999, and future compilers are likely to treat them as errors by
+default.
+--- a/configure.ac
++++ b/configure.ac
+@@ -120,8 +120,8 @@ fd_set rfds;
+ struct timeval tv = {1, 0};
+ FD_ZERO(&rfds); FD_SET(0,&rfds);
+ select(1,&rfds,0,0,&tv);
+-if(tv.tv_sec == 0) exit(0);
+-else exit(1);
++if(tv.tv_sec == 0) return 0;
++else return 1;
+ }
+ ]])],[AC_MSG_RESULT(yes); AC_DEFINE([RETURN_TV_IN_SELECT],[1],[define if select() modifies the time value])],[AC_MSG_RESULT(no)],[AC_MSG_RESULT(no)])
+ 
+

@@ -1,0 +1,29 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,3 +13,3 @@
+ 
+-CFLAGS+=-I. -Wall -W -Wno-implicit-fallthrough -O3 -fsigned-char
++CFLAGS+=-I. -Wall -W -Wno-implicit-fallthrough -fsigned-char
+ ifneq ($(findstring clang,$(CC)),clang)
+@@ -21,3 +21,2 @@
+ # ld: warning: option -s is obsolete and being ignored
+-LDFLAGS+=-s
+ endif
+--- a/backup/libcd64/Makefile
++++ b/backup/libcd64/Makefile
+@@ -1,3 +1,2 @@
+ ifeq ($(CC),cc)
+-CC=gcc
+ endif
+@@ -12,5 +11,3 @@
+ else
+-CFLAGS+=-O3 -funroll-loops
+ ifneq ($(findstring clang,$(CC)),clang)
+-CFLAGS+=-fexpensive-optimizations
+ endif
+--- a/libdiscmage/Makefile.in
++++ b/libdiscmage/Makefile.in
+@@ -37,3 +37,2 @@
+ # /usr/bin/libtool: -static not specified, -s invalid
+-LDFLAGS+=-s
+ endif

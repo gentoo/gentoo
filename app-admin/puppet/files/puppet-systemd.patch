@@ -1,0 +1,10 @@
+--- ext/systemd/puppet.service	2017-02-02 18:28:58.000000000 -0600
++++ ext/systemd/puppet.service	2017-03-09 10:56:59.091489324 -0600
+@@ -17,7 +17,7 @@
+ EnvironmentFile=-/etc/sysconfig/puppetagent
+ EnvironmentFile=-/etc/sysconfig/puppet
+ EnvironmentFile=-/etc/default/puppet
+-ExecStart=/opt/puppetlabs/puppet/bin/puppet agent $PUPPET_EXTRA_OPTS --no-daemonize
++ExecStart=/usr/bin/puppet agent $PUPPET_EXTRA_OPTS --no-daemonize
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process

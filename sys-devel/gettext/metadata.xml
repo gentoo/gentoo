@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="git">When running `autopoint`, use git to store the internal development files; this requires git at runtime, but will be faster/smaller than raw archives</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:gettext</remote-id>
+	</upstream>
+</pkgmetadata>

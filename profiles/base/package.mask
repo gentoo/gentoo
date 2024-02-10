@@ -1,0 +1,27 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2023-06-15)
+# Conflicts with glibc.
+sys-apps/musl-locales
+
+# Sam James <sam@gentoo.org> (2023-06-06)
+# Only available on Linux.
+dev-libs/libaio
+sys-libs/libcap-ng
+sys-libs/libseccomp
+
+# Sam James <sam@gentoo.org> (2022-09-10)
+# Mask in general and unmask on specific profiles
+sys-libs/musl
+sys-libs/libucontext
+
+# Sam James <sam@gentoo.org> (2021-11-22)
+# Mask the older libcrypt virtual (which accepted glibc[crypt]) to ease
+# dependency resolution. In a fair number of cases, this has helped
+# upgrades go through cleanly.
+# Read the news item if you need help!
+# (This mask is undone in musl profiles where the transition is not yet being
+# made.)
+# bug #699422.
+virtual/libcrypt:0/1

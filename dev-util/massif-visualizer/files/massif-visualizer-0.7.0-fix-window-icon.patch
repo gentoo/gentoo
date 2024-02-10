@@ -1,0 +1,25 @@
+From 51788c6f295651fecd3bb498236bbcf3c263ee84 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Sun, 20 Jan 2019 09:37:43 +0100
+Subject: Fix window icon for non-desktopfile WM to own icon
+ "massif-visualizer"
+
+---
+ app/main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/main.cpp b/app/main.cpp
+index c4526ba..21865e0 100644
+--- a/app/main.cpp
++++ b/app/main.cpp
+@@ -50,7 +50,7 @@ int main( int argc, char *argv[] )
+     aboutData.setOrganizationDomain("kde.org");
+ 
+     KAboutData::setApplicationData(aboutData);
+-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("office-chart-area")));
++    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("massif-visualizer")));
+ 
+     QCommandLineParser parser;
+     parser.addVersionOption();
+-- 
+cgit v1.1

@@ -1,0 +1,18 @@
+diff --git a/pkg/vpn/bonafide/eip_service.go b/pkg/vpn/bonafide/eip_service.go
+index 71c9b82..c6caf37 100644
+--- a/pkg/vpn/bonafide/eip_service.go
++++ b/pkg/vpn/bonafide/eip_service.go
+@@ -238,13 +238,6 @@ func (eip eipService) getOpenvpnArgs() []string {
+ 	for arg, value := range cfg {
+ 		switch v := value.(type) {
+ 		case string:
+-			// this is a transitioning hack for the transition to float deployment,
+-			// assuming we're using openvpn 2.5. We're treating the "cipher"
+-			// string that the platform sends us as the newer data-cipher
+-			// which includes colon-separated ciphers.
+-			if arg == "cipher" {
+-				arg = "data-ciphers"
+-			}
+ 			args = append(args, "--"+arg)
+ 			args = append(args, strings.Split(v, " ")...)
+ 		case bool:

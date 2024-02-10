@@ -1,0 +1,20 @@
+--- a/test/zzone.c
++++ b/test/zzone.c
+@@ -64,14 +64,14 @@
+             last++;
+     }
+ 
+-    free(buf);
+-    free(tmp);
+-
+     size_t total = 0;
+     for (size_t i = last; i < size; i++)
+         total += countzeroes(buf[i]);
+     printf("%li\n", (long)total);
+ 
++    free(buf);
++    free(tmp);
++
+     return EXIT_SUCCESS;
+ }
+ 

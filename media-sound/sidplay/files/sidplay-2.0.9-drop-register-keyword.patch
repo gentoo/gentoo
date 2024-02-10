@@ -1,0 +1,16 @@
+Bug; https://bugs.gentoo.org/897796
+--- a/src/keyboard.cpp
++++ b/src/keyboard.cpp
+@@ -129,9 +129,9 @@ static char keytable[] =
+  */
+ static int keyboard_search (char *cmd)
+ {
+-    register char *p;
+-    register char *q;
+-    register int   a;
++    char *p;
++    char *q;
++    int   a;
+ 
+     for (p = keytable, q = cmd;;  p++, q++)
+     {

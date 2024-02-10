@@ -1,0 +1,11 @@
+--- xv-3.10a/vdcomp.c~	2007-06-24 14:30:42 -0600
++++ xv-3.10a/vdcomp.c	2007-06-24 14:48:12 -0600
+@@ -123,6 +123,8 @@
+ 
+ #    if defined(hp300) || defined(hp800) || defined(NeXT)
+ #      include <sys/malloc.h>    /* it's in "sys" on HPs and NeXT */
++#    elif defined(__APPLE__)
++#      include <malloc/malloc.h>
+ #    else
+ #      include <malloc.h>        /* FIXME: should explicitly list systems that NEED this, not everyone that doesn't */
+ #    endif

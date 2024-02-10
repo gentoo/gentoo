@@ -1,0 +1,24 @@
+commit 421cf15486eea1b52f10e2b0be305018fee8c285
+Author: Rudi Heitbaum <rudi@heitbaum.com>
+Date:   Sun Aug 13 09:37:32 2023 +0000
+
+    shm: allow for older versions of Linux without MFD_NOEXEC_SEAL
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/794>
+
+diff --git a/src/pulsecore/shm.c b/src/pulsecore/shm.c
+index 4247b0921..694f971b4 100644
+--- a/src/pulsecore/shm.c
++++ b/src/pulsecore/shm.c
+@@ -164,7 +164,11 @@ static int sharedmem_create(pa_shm *m, pa_mem_type_t type, size_t size, mode_t m
+ #endif
+ #ifdef HAVE_MEMFD
+     case PA_MEM_TYPE_SHARED_MEMFD:
++        /* For linux >= 6.3 create fd with MFD_NOEXEC_SEAL flag */
+         fd = memfd_create("pulseaudio", MFD_ALLOW_SEALING|MFD_CLOEXEC|MFD_NOEXEC_SEAL);
++        /* Retry creating fd without MFD_NOEXEC_SEAL to support linux < 6.3 */
++        if (fd < 0)
++            fd = memfd_create("pulseaudio", MFD_ALLOW_SEALING|MFD_CLOEXEC);
+         break;
+ #endif
+     default:

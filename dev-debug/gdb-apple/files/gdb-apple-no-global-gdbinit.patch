@@ -1,0 +1,23 @@
+Sourcing /etc/gdb.conf is annoying mainly because Apple put
+  set history save on
+in there, which means everywhere you run it, you end up with a
+.gdb_history file.
+
+--- src/gdb/main.c
++++ src/gdb/main.c
+@@ -675,6 +675,7 @@
+   memset (&cwdbuf, 0, sizeof (struct stat));
+   /* APPLE LOCAL end move inits up */
+   /* APPLE LOCAL begin global gdbinit */
++#ifdef WANT_GLOBAL_GDBINIT
+   memset (&globalbuf, 0, sizeof (struct stat));
+   stat (gdbinit_global, &globalbuf);
+   if (!inhibit_gdbinit)
+@@ -683,6 +684,7 @@
+ 	 source_file (gdbinit_global, 0);
+     }
+   do_cleanups (ALL_CLEANUPS);
++#endif
+   /* APPLE LOCAL end global gdbinit */
+  
+   /* APPLE LOCAL: Set the $_Xcode convenience variable at '0' before sourcing

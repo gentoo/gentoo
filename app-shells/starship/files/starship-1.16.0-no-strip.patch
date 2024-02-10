@@ -1,0 +1,28 @@
+From 33abb516432e24e3f2b53f5c25b4e0984252a034 Mon Sep 17 00:00:00 2001
+From: Randy Barlow <randy@electronsweatshop.com>
+Date: Wed, 12 Jul 2023 20:20:45 -0400
+Subject: [PATCH] Do not strip executable
+
+This should be a choice for the user.
+
+Signed-off-by: Randy Barlow <randy@electronsweatshop.com>
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index ff0769e..c09c066 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -130,7 +130,7 @@ tempfile = "3.7.0"
+ [profile.release]
+ codegen-units = 1
+ lto = true
+-strip = true
++strip = false
+ 
+ [[bin]]
+ name = "starship"
+-- 
+2.41.0
+

@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/898106
+bsd/string.h is available on most libc's
+--- a/palDfltin.c
++++ b/palDfltin.c
+@@ -121,6 +121,9 @@ static int ISBLANK( int c ) {
+ 
+ #ifdef HAVE_BSD_STRING_H
+ #include <bsd/string.h>
++#else
++#define _GNU_SOURCE
++#define __USE_MISC
+ #endif
+ 
+ /* System include files */

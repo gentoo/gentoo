@@ -1,0 +1,16 @@
+From c0af543fc3b6047f66bfe820e7ce75abd3ed2049 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 10 Dec 2021 12:36:45 +0100
+Subject: [PATCH] Adjust ejabberd.service.template to Gentoo
+
+--- a/ejabberd.service.template
++++ b/ejabberd.service.template
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=XMPP Server
+-After=network.target
++After=epmd.service network.target
++Requires=epmd.service
+ 
+ [Service]
+ Type=notify

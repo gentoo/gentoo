@@ -1,0 +1,18 @@
+--- a/Makefile	2021-04-17 13:46:36.321270501 +0200
++++ b/Makefile	2021-04-17 13:47:26.019424556 +0200
+@@ -2,10 +2,10 @@
+ 
+ all::
+-	make documentation
+-	make accelerator
+-	make libraries
+-	make symlinks
+-	make precompile
++	$(MAKE) documentation
++	$(MAKE) accelerator
++	$(MAKE) libraries
++	$(MAKE) symlinks
++	$(MAKE) precompile
+ 
+ documentation::
+ 	rm -f doc/autodoc.tmp

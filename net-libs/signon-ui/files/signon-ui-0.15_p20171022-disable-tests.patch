@@ -1,0 +1,24 @@
+From 468e47402334ce1a0eee9ce30c2e55951877d668 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 25 Oct 2020 00:11:12 +0200
+Subject: [PATCH] Disable unit tests
+
+---
+ tests/tests.pro | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/tests/tests.pro b/tests/tests.pro
+index 6b37001..c711f56 100644
+--- a/tests/tests.pro
++++ b/tests/tests.pro
+@@ -1,7 +1,5 @@
+ TEMPLATE = subdirs
+ CONFIG += ordered
+-SUBDIRS = \
+-    unit
+ 
+ CONFIG(medium-tests) {
+     SUBDIRS += functional
+-- 
+2.29.1
+

@@ -1,0 +1,11 @@
+Testsuite uses CXX to trace mangled symbols.
+--- a/configure.ac
++++ b/configure.ac
+@@ -53,6 +53,7 @@ AC_SUBST(HOST_CPU)
+ 
+ # Checks for programs.
+ AC_PROG_CC
++AC_PROG_CXX
+ LT_INIT
+ # libtool-2:  LT_INIT()
+ AM_INIT_AUTOMAKE([foreign no-exeext dist-bzip2])

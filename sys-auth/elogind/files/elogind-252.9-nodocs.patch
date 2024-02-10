@@ -1,0 +1,28 @@
+diff --git a/meson.build b/meson.build
+index 694a2fd97..9b97cafef 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4528,15 +4528,11 @@ subdir('shell-completion/zsh')
+ #                      install_dir : xinitrcdir)
+ # endif
+ #endif // 0
+-install_data('LICENSE.GPL2',
+-             'LICENSE.LGPL2.1',
+ #if 0 /// elogind has upgraded to markdown, and the NEWS file is useless
+ #              'NEWS',
+ #              'README',
+ #else // 0
+-             'README.md',
+ #endif // 0
+-             'docs/CODING_STYLE.md',
+ #if 0 /// irrelevant for elogind
+ #              'docs/DISTRO_PORTING.md',
+ #              'docs/ENVIRONMENT.md',
+@@ -4545,7 +4541,6 @@ install_data('LICENSE.GPL2',
+ #              'docs/TRANSLATORS.md',
+ #              'docs/UIDS-GIDS.md',
+ #endif // 0
+-             install_dir : docdir)
+ 
+ #if 0 /// irrelevant for elogind
+ # install_subdir('LICENSES',

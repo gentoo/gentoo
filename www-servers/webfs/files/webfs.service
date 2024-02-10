@@ -1,0 +1,10 @@
+[Unit]
+Description=Simple and instant http server.
+Documentation=man:webfsd(1)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/webfsd -p ${WEBFS_PORT:-80} -f ${WEBFS_INDEX:-index.html} ${WEBFS_OPTS} -F
+
+[Install]
+WantedBy=multi-user.target

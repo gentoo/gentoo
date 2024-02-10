@@ -1,0 +1,22 @@
+From 17fb0cc429213fa3c2dd3d2bdec3b87e6b779be9 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 17 Dec 2023 14:49:28 +0200
+Subject: [PATCH 5/5] Fix CXX check
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,8 +63,8 @@ AC_PROG_CC
+ AC_PROG_CXX
+ 
+ # see if we actually have a CXX program
+-if test "$ac_cv_prog_CXX" = "" -o ! -x "$ac_cv_prog_CXX"; then
+-    AC_MSG_WARN(could not find C++ compiler $ac_cv_prog_CXX)
++if test "x$CXX" = "x" -o -x "$CXX"; then
++    AC_MSG_WARN(could not find C++ compiler $CXX)
+     enable_cxx=no
+ fi
+ 
+-- 
+2.43.0
+

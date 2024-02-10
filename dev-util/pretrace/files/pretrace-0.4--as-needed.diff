@@ -1,0 +1,12 @@
+diff -uNr libpretrace-0.4/Makefile libpretrace-0.4.new/Makefile
+--- libpretrace-0.4/Makefile	2005-12-15 12:50:06.000000000 +0000
++++ libpretrace-0.4.new/Makefile	2006-04-01 23:53:00.000000000 +0100
+@@ -14,7 +14,7 @@
+ 	@echo 'type `make install` to install to $(PREFIX)'
+ 
+ ptgenmap: libpretrace.so ptgenmap.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) -g -L. -lpretrace ptgenmap.o -o ptgenmap
++	$(CC) $(CFLAGS) $(LDFLAGS) -g -L. ptgenmap.o -lpretrace -o ptgenmap
+ 
+ ptgenmap.o:
+ 	$(CC) $(CFLAGS) -Wall -g -fPIC -c ptgenmap.c

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting blinkserver"
+	start-stop-daemon -o --background --quiet --start --exec /usr/bin/blinkserver.pl --pidfile /var/run/blinkserver.pid -- --port=${BLINKPORT}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping blinkserver"
+	start-stop-daemon -o --quiet --stop --name blinkserver.pl
+	eend $?
+}

@@ -1,0 +1,13 @@
+--- kBuild-0.1.9998-pre20120806/src/sed/lib/utils.c
++++ kBuild-0.1.9998-pre20120806/src/sed/lib/utils.c
+@@ -35,6 +35,10 @@
+ # include <stdlib.h>
+ #endif /* HAVE_STDLIB_H */
+ 
++#ifdef HAVE_UNISTD_H
++# include <unistd.h>
++#endif /* HAVE_UNISTD_H */
++
+ #include "utils.h"
+ 
+ const char *myname;

@@ -1,0 +1,70 @@
+'''
+This is a sample buildbot.tac file to initalize
+a buildbot worker complete with logging.
+'''
+
+import os.path
+import socket
+
+from twisted.application import service
+from twisted.python.logfile import LogFile
+from twisted.python.log import ILogObserver, FileLogObserver
+
+from buildbot_worker.bot import Worker
+
+################################
+# Set the following variables
+# to your desired values
+#################################
+
+# use the current directory or
+# set to an absolute value
+basedir = '.'
+
+# logging
+rotateLength = 10000000
+maxRotatedFiles = 10
+
+# buildbot communication port
+port = 9989
+
+# worker settings
+worker_name = 'example-worker'
+passwd = 'pass'
+buildmaster_host = 'localhost'
+keepalive = 600
+umask = None
+maxdelay = 300
+numcpus = None
+allow_shutdown = None
+
+
+# Begin starting up the worker
+# if this is a relocatable tac file, get the directory containing the TAC
+if basedir == '.':
+    basedir = os.path.abspath(os.path.dirname(__file__))
+
+# note: this line is matched against to check that this is
+# a buildbot-worker directory; do not edit it.
+application = service.Application('buildbot-worker')
+
+# set up logging
+logfile = LogFile.fromFullPath(os.path.join(basedir, "twistd.log"),
+                               rotateLength=rotateLength,
+                               maxRotatedFiles=maxRotatedFiles
+                               )
+application.setComponent(ILogObserver, FileLogObserver(logfile).emit)
+
+worker = Worker(buildmaster_host,
+                port,
+                worker_name,
+                passwd,
+                basedir,
+                keepalive,
+                umask=umask,
+                maxdelay=maxdelay,
+                numcpus=numcpus,
+                allow_shutdown=allow_shutdown
+                )
+
+worker.setServiceParent(application)

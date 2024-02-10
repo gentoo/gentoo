@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<stabilize-allarches />
+	<upstream>
+		<doc lang="fr">https://grammalecte.net/documentation.php?prj=fr</doc>
+		<bugs-to>https://grammalecte.net/forum.php?prj=fr</bugs-to>
+	</upstream>
+</pkgmetadata>

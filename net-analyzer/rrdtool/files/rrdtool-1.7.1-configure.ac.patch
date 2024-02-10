@@ -1,0 +1,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -241,9 +241,6 @@
+ 
+ 
+ 
+-dnl add pic flag in any case this makes sure all our code is relocatable
+-dnl eval `./libtool --config | grep pic_flag=`
+-dnl CFLAGS="$CFLAGS $pic_flag"
+ 
+ 
+ dnl Checks for library functions.

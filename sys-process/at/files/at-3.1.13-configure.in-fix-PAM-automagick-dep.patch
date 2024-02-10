@@ -1,0 +1,22 @@
+--- at-3.1.13/configure.ac
++++ at-3.1.13/configure.ac
+@@ -82,10 +82,15 @@
+ AC_FUNC_VPRINTF
+ AC_FUNC_GETLOADAVG
+ AC_CHECK_FUNCS(getcwd mktime strftime setreuid setresuid sigaction waitpid)
+-AC_CHECK_HEADERS(security/pam_appl.h, [
+-  PAMLIB="-lpam"
+-  AC_DEFINE(HAVE_PAM, 1, [Define to 1 for PAM support])
+-])
++AC_ARG_WITH([pam], AS_HELP_STRING([--without-pam], 
++  [Build without PAM support(default: enabled)]))
++
++if test "x$with_pam" != "xno"; then
++  AC_CHECK_HEADERS(security/pam_appl.h, [
++    PAMLIB="-lpam"
++    AC_DEFINE(HAVE_PAM, 1, [Define to 1 for PAM support])
++  ])
++fi
+ 
+ dnl Checking for programs
+ 

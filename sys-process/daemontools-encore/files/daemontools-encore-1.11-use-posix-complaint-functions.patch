@@ -1,0 +1,49 @@
+https://github.com/bruceg/daemontools-encore/pull/66
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 13 Jun 2023 04:27:36 +0000
+Subject: [PATCH] sig_block.c: use posix complaint functions on non glibc
+ systems
+
+This build error came while building on musl /w clang-16.
+In contrast to glibc, musl is not having the "legacy" BSD functions and only POSIX sigprocmask.
+
+The exact error was:
+sig_block.c:15:3: error: call to undeclared function 'sigblock'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+  sigblock(1 << (sig - 1));
+  ^
+sig_block.c:15:3: note: did you mean 'sig_block'?
+sig_block.c:7:6: note: 'sig_block' declared here
+void sig_block(int sig)
+     ^
+1 warning generated.
+sig_block.c:27:3: error: call to undeclared function 'sigsetmask'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+  sigsetmask(sigsetmask(~0) & ~(1 << (sig - 1)));
+  ^
+sig_block.c:38:3: error: call to undeclared function 'sigsetmask'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+  sigsetmask(0);
+  ^
+
+This patch should fix the error
+
+Bug: https://bugs.gentoo.org/898852
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/sig_block.c
++++ b/sig_block.c
+@@ -4,6 +4,11 @@
+ #include "sig.h"
+ #include "hassgprm.h"
+ 
++// Use POSIX complaint functions when using non-Glibc system
++#ifndef __GLIBC__
++#define HASSIGPROCMASK 0
++#endif
++
+ void sig_block(int sig)
+ {
+ #ifdef HASSIGPROCMASK
+-- 
+2.41.0
+

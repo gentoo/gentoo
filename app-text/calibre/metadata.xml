@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>zmedico@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>eschwartz93@gmail.com</email>
+    <name>Eli Schwartz</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">calibre</remote-id>
+    <remote-id type="github">kovidgoyal/calibre</remote-id>
+  </upstream>
+  <use>
+    <flag name="font-subsetting">Enable font subsetting support</flag>
+    <flag name="system-mathjax">Use a system copy of mathjax</flag>
+    <flag name="unrar">Enable support for comic books compressed with the non-free Rar format</flag>
+  </use>
+</pkgmetadata>

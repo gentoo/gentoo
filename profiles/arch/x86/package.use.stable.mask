@@ -1,0 +1,134 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# This is still experimental, prebuilt images may not boot on all systems.
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
+# Destabilizing x86 keywords on sci-*/* packages
+app-metrics/collectd collectd_plugins_gps collectd_plugins_sigrok
+dev-games/openscenegraph las
+dev-libs/efl physics
+dev-ml/zarith mpir
+media-libs/a52dec djbfft
+dev-python/graphviz test
+kde-apps/cantor R
+dev-python/sympy symengine
+kde-apps/gwenview fits
+kde-apps/marble gps
+kde-plasma/plasma-workspace gps
+media-gfx/graphviz gts
+media-libs/libpano13 suitesparse
+media-libs/opencv gdal lapack
+media-libs/openimageio dicom
+sci-libs/cholmod partition
+sci-libs/gdal armadillo fits geos hdf5 netcdf ogdi
+sci-libs/gsl cblas-external
+sci-libs/hdf szip test
+sci-libs/hdf5 szip
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
+# sci-libs/vtk is not stable on x86 and we don't want to complicate
+# newer maxima and geant stabilisation, bug #867547, #886975
+sci-mathematics/maxima vtk
+sci-physics/geant vtk
+
+# Sam James <sam@gentoo.org> (2022-07-06)
+# sci-libs/sundials is not marked stable on x86
+sci-mathematics/octave sundials
+
+# Sam James <sam@gentoo.org> (2022-02-02)
+# sys-cluster/ucx is not marked stable on x86
+sys-cluster/slurm ucx
+
+# Marek Szuba <marecki@gentoo.org> (2022-01-03)
+# no stable media-libs/rnnoise on this arch yet
+media-sound/pulseeffects rnnoise
+
+# Marek Szuba <marecki@gentoo.org> (2022-01-03)
+# no stable dev-ruby/tty-editor on this arch yet
+app-text/htmltidy test
+
+# Joonas Niilola <juippis@gentoo.org> (2021-08-13)
+# dev-libs/efl is stabilized on x86.
+app-crypt/pinentry -efl
+
+# Sam James <sam@gentoo.org> (2021-07-17)
+# Haskell isn't stable on amd64 (or anywhere)
+# bug #801652
+dev-util/diffoscope haskell
+
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
+# sys-cluster/slurm has no stable keywords
+app-metrics/collectd collectd_plugins_slurm
+
+# Amy Liffey <amynka@gentoo.org> (2019-01-15)
+# Mask experimental contrib repo
+# (except what's needed by digikam, dilfridge)
+media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glog tesseract
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
+# unmask sssd for sudo
+app-admin/sudo -sssd
+sys-auth/pambase -sssd
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
+net-analyzer/wireshark -doc
+
+# Thomas Deutschmann <whissi@gentoo.org> (2017-10-01)
+# Stable mask dev-ruby/haml test till rails is stabilized.
+dev-ruby/haml test
+
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
+# patchset variants are not stable
+virtual/wine proton staging
+
+# Christoph Junghans <junghans@gentoo.org> (2017-02-26)
+# Stable mask some fabrics (bug #525534)
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+
+# Brian Evans <grknight@gentoo.org> (2017-01-17)
+# Stable mask groonga on mariadb as I don't know how stable
+# the dependencies really are
+dev-db/mariadb mroonga
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2017-01-09)
+# Requires more testing
+# and additional unstable dependencies
+gnustep-base/gnustep-make libobjc2
+
+# Michael Palimaka <kensington@gentoo.org> (2016-05-26)
+# Dependencies not yet stable
+dev-cpp/eigen test
+
+# Michał Górny <mgorny@gentoo.org> (2014-03-30)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3

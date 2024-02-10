@@ -1,0 +1,17 @@
+Fixes unescaped left brace in regex to pass test 010dependencies.t
+
+Fix by David Denoncin, based on the 5.0.3 patch
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=228444
+
+--- a/t/010dependencies.t	2020-06-09 21:21:28.049161109 -0000
++++ b/t/010dependencies.t	2020-06-09 21:21:07.059161235 -0000
+@@ -71,7 +71,7 @@
+         $used =~ s#/#::#g;
+         $used =~ s#\.pm$##;
+         $used =~ s#\$module#[^:]+#;
+-        $used =~ s#\${[^}]+}#[^:]+#;
++        $used =~ s#\$\{[^}]+}#[^:]+#;
+         $used =~ s#[" ]##g;
+         push(@use, grep(/^\Q$used\E$/, keys %mods));
+       }

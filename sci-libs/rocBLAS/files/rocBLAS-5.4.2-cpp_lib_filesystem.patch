@@ -1,0 +1,24 @@
+Index: rocBLAS-rocm-5.4.2/clients/common/utility.cpp
+===================================================================
+--- rocBLAS-rocm-5.4.2.orig/clients/common/utility.cpp
++++ rocBLAS-rocm-5.4.2/clients/common/utility.cpp
+@@ -38,6 +38,7 @@
+ #ifdef WIN32
+ #define strcasecmp(A, B) _stricmp(A, B)
+ 
++#include <version>
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
+ namespace fs = std::filesystem;
+Index: rocBLAS-rocm-5.4.2/clients/include/singletons.hpp
+===================================================================
+--- rocBLAS-rocm-5.4.2.orig/clients/include/singletons.hpp
++++ rocBLAS-rocm-5.4.2/clients/include/singletons.hpp
+@@ -21,6 +21,6 @@
+  * ************************************************************************ */
+ 
+ // global for device memory padding see d_vector.hpp
+-
++#include<cstddef>
+ extern size_t g_DVEC_PAD;
+ void          d_vector_set_pad_length(size_t pad);

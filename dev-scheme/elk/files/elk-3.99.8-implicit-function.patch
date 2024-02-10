@@ -1,0 +1,22 @@
+From 4fef651e27a4ea5bca02edfda4dc42201ab0985d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Sat, 23 Dec 2023 23:30:30 +0100
+Subject: [PATCH] add missing header file
+
+This fixes implicit-function-declaration error with modern compilers.
+
+diff --git a/src/proc.c b/src/proc.c
+index c78134a..fed0978 100644
+--- a/src/proc.c
++++ b/src/proc.c
+@@ -28,6 +28,7 @@
+  *
+  * THERE IS ABSOLUTELY NO WARRANTY FOR THIS SOFTWARE.
+  */
++#include <string.h>
+ 
+ #include "config.h"
+ 
+-- 
+2.43.0
+

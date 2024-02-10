@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>igor.v.kovalenko@gmail.com</email>
+    <name>Igor V. Kovalenko</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>sam@gentoo.org</email>
+    <name>Sam James</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
+  </maintainer>
+  <use>
+    <flag name="daemon">Build the pulseaudio binary (not-needed for pipewire-pulse)</flag>
+    <flag name="glib">
+      Add support to <pkg>dev-libs/glib</pkg>-based mainloop for the
+      libpulse client library, to allow using libpulse on glib-based
+      programs. Build the GSettings PA module.
+    </flag>
+    <flag name="ofono-headset">
+      Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
+    </flag>
+  </use>
+</pkgmetadata>

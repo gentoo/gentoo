@@ -1,0 +1,10 @@
+--- a/src/fromdevice.cc
++++ b/src/fromdevice.cc
+@@ -47,6 +47,7 @@
+ 
+ #if FROMDEVICE_ALLOW_LINUX
+ # include <sys/socket.h>
++# include <linux/sockios.h>
+ # include <net/if.h>
+ # include <features.h>
+ # include <linux/if_packet.h>

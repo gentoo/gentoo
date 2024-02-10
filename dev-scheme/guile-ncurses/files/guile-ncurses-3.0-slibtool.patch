@@ -1,0 +1,38 @@
+commit 8c8327c8518508380bd68f52db19432b776833e5
+Author: orbea <orbea@riseup.net>
+Date:   Mon May 9 09:06:04 2022 -0700
+
+    build: Link with -ltinfow/-ltinfow to fix undefined references
+
+diff --git a/configure.ac b/configure.ac
+index f194166..954d9b2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -200,6 +200,13 @@ AS_IF([test "$with_ncursesw" = check],
+                        with_ncursesw=yes],
+                       [AC_MSG_FAILURE([--with-ncursesw was given, but, test for ncursesw failed])])])
+ 
++AS_IF([test "$with_ncursesw" = yes],
++      [AC_SEARCH_LIBS([LINES], [tinfow],
++                      [AC_DEFINE([HAVE_TINFOW],
++                                 [1],
++                                 [Define if you have libtinfow])],
++                      [AC_MSG_FAILURE([--with-ncursesw was given, but, test for tinfow failed])])])
++
+ AS_IF([test "$with_ncursesw" = no],
+       [AC_SEARCH_LIBS([initscr], [ncurses],
+                       [AC_DEFINE([HAVE_NCURSES],
+@@ -207,6 +214,13 @@ AS_IF([test "$with_ncursesw" = no],
+                                  [Define if you have libncurses])],
+                       [AC_MSG_FAILURE([the ncurses library was not found])])])
+ 
++AS_IF([test "$with_ncursesw" = no],
++      [AC_SEARCH_LIBS([LINES], [tinfo],
++                      [AC_DEFINE([HAVE_TINFO],
++                                 [1],
++                                 [Define if you have libntinfo])],
++                      [AC_MSG_FAILURE([the tinfo library was not found])])])
++
+ AM_CONDITIONAL([WIDE], [test "$with_ncursesw" = yes])
+ 
+ AC_MSG_NOTICE([checking for term.h])

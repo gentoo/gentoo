@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>naota@gentoo.org</email>
+    <name>Naohiro Aota</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <use>
+    <flag name="bpf">Enable support for eBPF features with <pkg>dev-libs/libbpf</pkg></flag>
+    <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
+    <flag name="clang">Enable builtin clang and LLVM support</flag>
+    <flag name="doc">
+      Build documentation and man pages. With this USE flag disabled,
+      the --help parameter for perf and its sub-tools will not be
+      available. This is optional because it depends on a few
+      documentation handling tools that are not always welcome on user
+      systems.
+    </flag>
+    <flag name="libpfm">Enable <pkg>dev-libs/libpfm</pkg> support</flag>
+    <flag name="libtraceevent">Enable <pkg>dev-libs/libtraceevent</pkg> support</flag>
+    <flag name="libtracefs">Enable <pkg>dev-libs/libtracefs</pkg> support</flag>
+    <flag name="numa">Enable NUMA support</flag>
+    <flag name="perl">
+      Add support for Perl as a scripting language for perf tools.
+    </flag>
+    <flag name="systemtap">
+      Add support to define SDT event in perf tools.
+    </flag>
+    <flag name="unwind">
+      Use <pkg>sys-libs/libunwind</pkg> for frame unwinding support.
+    </flag>
+  </use>
+</pkgmetadata>

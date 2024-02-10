@@ -1,0 +1,7 @@
+# MPD client connection settings. You don't need to set these if using the mpd
+# service locally. See https://mpd.readthedocs.io/en/latest/client.html for
+# details.
+
+# MPD_HOST=localhost
+# MPD_PORT=6600
+# MPD_TIMEOUT=30

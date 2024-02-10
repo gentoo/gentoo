@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		86Box is a low level x86 emulator that runs older operating systems and software
+		designed for IBM PC systems and compatibles from 1981 through
+		fairly recent system designs based on the PCI bus.
+	</longdescription>
+	<use>
+		<flag name="dinput">Enable legacy Dinput mode instead of Xinput for older controllers.</flag>
+		<flag name="experimental">Enable hardware from devbranch, which may be unstable or unusable.</flag>
+		<flag name="fluidsynth">Enable MIDI support through <pkg>media-sound/fluidsynth</pkg>.</flag>
+		<flag name="munt">Enable MIDI MT-32 support through <pkg>media-libs/munt-mt32emu</pkg>.</flag>
+		<flag name="new-dynarec">Enable new dynamic recompiler from PCem 15, which should provide an even better emulation speed.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/86Box/86Box/issues</bugs-to>
+		<remote-id type="github">86Box/86Box</remote-id>
+	</upstream>
+</pkgmetadata>

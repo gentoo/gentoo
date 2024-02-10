@@ -1,0 +1,21 @@
+https://github.com/FirebirdSQL/firebird/commit/3fe8f6510de79689a26868e244840b24dcb19567
+
+From 3fe8f6510de79689a26868e244840b24dcb19567 Mon Sep 17 00:00:00 2001
+From: AlexPeshkoff <alexander.peshkoff@gmail.com>
+Date: Wed, 23 Nov 2022 20:30:03 +0300
+Subject: [PATCH] Fixed #7394: autoconf 2.72 support
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -696,8 +696,9 @@ if test "$STD_EDITLINE" = "true"; then
+       AC_CHECK_LIB(readline, readline, [READLINE=readline EDITLINE_FLG=Y],
+         [STD_EDITLINE=false
+          if test "$EDITLINE_FLG" = "Y"; then
+-           AC_MSG_WARN([[[--with-system-editline specified, not found. Using bundled editline]]])])))
++           AC_MSG_WARN([[[--with-system-editline specified, not found. Using bundled editline]]])
+ 		 fi
++           ])))
+ fi
+ XE_RESTORE_ENV()
+ 
+

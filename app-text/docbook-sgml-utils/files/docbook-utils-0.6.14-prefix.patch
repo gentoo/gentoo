@@ -1,0 +1,90 @@
+--- a/doc/HTML/Makefile.am
++++ b/doc/HTML/Makefile.am
+@@ -23,7 +23,7 @@
+ 		$(top_srcdir)/doc/refentry/docbook2texi-spec.pl.sgml \
+ 		$(top_srcdir)/doc/refentry/frontend-spec.sgml \
+ 		$(top_srcdir)/doc/refentry/sgmldiff.sgml
+-	SGML_CATALOG_FILES=/etc/sgml/catalog \
++	SGML_CATALOG_FILES=@GENTOO_PORTAGE_EPREFIX@/etc/sgml/catalog \
+ 	SGML_SEARCH_PATH=$(top_srcdir):$(top_srcdir)/doc:.. \
+ 		jade -t sgml -i html -d $(top_srcdir)/docbook-utils.dsl\#html \
+ 			-V '%use-id-as-filename%' $<
+--- a/doc/man/Makefile.am
++++ b/doc/man/Makefile.am
+@@ -10,7 +10,7 @@
+ 
+ $(man1_MANS) $(man7_MANS): $(top_srcdir)/doc/docbook-utils.sgml \
+ 		$(top_srcdir)/helpers/docbook2man-spec.pl
+-	SGML_CATALOG_FILES=/etc/sgml/catalog \
++	SGML_CATALOG_FILES=@GENTOO_PORTAGE_EPREFIX@/etc/sgml/catalog \
+ 	SGML_SEARCH_PATH=$(top_srcdir)/doc:.. \
+ 		nsgmls $< | \
+ 		sgmlspl $(top_srcdir)/helpers/docbook2man-spec.pl
+--- a/bin/jw.in
++++ b/bin/jw.in
+@@ -63,7 +63,7 @@
+ then
+   SGML_CONF=`sgmlwhich`
+ else
+-  SGML_CONF="/etc/sgml/sgml.conf"
++  SGML_CONF="@GENTOO_PORTAGE_EPREFIX@/etc/sgml/sgml.conf"
+ fi
+ 
+ # Set version message
+@@ -77,7 +77,7 @@
+ 
+ # Set SGML base directory and centralized catalogs directory
+ SGML_BASE_DIR="@prefix@/share/sgml"
+-SGML_CATALOGS_DIR="/etc/sgml"
++SGML_CATALOGS_DIR="@GENTOO_PORTAGE_EPREFIX@/etc/sgml"
+ if [ -f "$SGML_CONF" ]
+ then
+   RE='^[:space:]*SGML_BASE_DIR[:space:]*=[:space:]*'
+--- a/backends/txt
++++ b/backends/txt
+@@ -2,21 +2,21 @@
+ # Send any comments to Eric Bischoff <eric@caldera.de>
+ # This program is under GPL license. See LICENSE file for details.
+ 
+-if [ -x /usr/bin/lynx ]
++if [ -x "@GENTOO_PORTAGE_EPREFIX@"/usr/bin/lynx ]
+ then
+-  CONVERT=/usr/bin/lynx
++  CONVERT="@GENTOO_PORTAGE_EPREFIX@"/usr/bin/lynx
+   ARGS="-force_html -dump -nolist -width=72"
+-elif [ -x /usr/bin/links ]
++elif [ -x "@GENTOO_PORTAGE_EPREFIX@"/usr/bin/links ]
+ then
+-  CONVERT=/usr/bin/links
++  CONVERT="@GENTOO_PORTAGE_EPREFIX@"/usr/bin/links
+   ARGS="-dump"
+-elif [ -x /usr/bin/elinks ]
++elif [ -x "@GENTOO_PORTAGE_EPREFIX@"/usr/bin/elinks ]
+ then
+-  CONVERT=/usr/bin/elinks
++  CONVERT="@GENTOO_PORTAGE_EPREFIX@"/usr/bin/elinks
+   ARGS="-dump"
+-elif [ -x /usr/bin/w3m ]
++elif [ -x "@GENTOO_PORTAGE_EPREFIX@"/usr/bin/w3m ]
+ then
+-  CONVERT=/usr/bin/w3m
++  CONVERT="@GENTOO_PORTAGE_EPREFIX@"/usr/bin/w3m
+   ARGS="-dump"
+ else
+   echo >&2 "No way to convert HTML to text found."
+--- a/configure.in
++++ b/configure.in
+@@ -20,11 +20,11 @@
+ AC_SUBST(docdir)
+ 
+ dnl Checks for programs.
+-jade_bindirs="/usr/bin /usr/local/bin"
++jade_bindirs="@GENTOO_PORTAGE_EPREFIX@/usr/bin"
+ AC_FIND_PROGRAM(nsgmls, $jade_bindirs, jade_bindir)
+ AC_SUBST(jade_bindir)
+ 
+-perl_bindirs="/usr/bin /usr/local/bin"
++perl_bindirs="@GENTOO_PORTAGE_EPREFIX@/usr/bin"
+ AC_FIND_PROGRAM(perl, $perl_bindirs, perl_bindir)
+ AC_SUBST(perl_bindir)
+ 

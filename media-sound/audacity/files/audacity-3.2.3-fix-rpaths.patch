@@ -1,0 +1,144 @@
+From: Benjamin Drung <benjamin.drung@canonical.com>
+Date: Thu, 22 Sep 2022 19:52:43 +0200
+Subject: Fix rpath for private libraries on Linux
+
+Installing audacity on Linux will produce private libraries that have
+`RUNPATH` set to the build directory instead of the installation
+directory.
+
+The root cause is that the library directory is copied to the
+installation directory without touching the libraries. The cmake wiki
+says in RPATH handling caveats [1]: "Since install-side RPATH tweaking
+is an operation that is done by target-specific installation handling,
+any target that should have its install RPATH changed (e.g. to
+`CMAKE_INSTALL_RPATH`) needs to end up in the installation via an
+`install(TARGETS ...)` signature and not via directory-based copying."
+
+So replace `install(DIRECTORY ...)` by individual `install(TARGETS ...)`
+for the libraries and modules. Then cmake will replace the `RUNPATH` to
+`$ORIGIN/../lib/audacity`, which is still incorrect. Therefore set
+`INSTALL_RPATH` explicitly.
+
+Fixes: https://github.com/audacity/audacity/issues/3289
+Forwarded: https://github.com/audacity/audacity/pull/3671
+[1] https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling#caveats
+Signed-off-by: Benjamin Drung <benjamin.drung@canonical.com>
+---
+ CMakeLists.txt                                      |  1 +
+ cmake-proxies/cmake-modules/AudacityFunctions.cmake | 19 +++++++++++++++++++
+ modules/CMakeLists.txt                              |  7 -------
+ modules/mod-script-pipe/CMakeLists.txt              |  1 +
+ src/CMakeLists.txt                                  | 10 ----------
+ 5 files changed, 21 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8428c8c..b9ff631 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -389,6 +389,7 @@ set( INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}" )
+ set( _LIBDIR "${CMAKE_INSTALL_LIBDIR}" )
+ set( _DATADIR "${CMAKE_INSTALL_DATADIR}" )
+ set( _PKGLIB "${_LIBDIR}/audacity" )
++set( _PKGMODULE "${_PKGLIB}/modules" )
+ set( _PKGDATA "${_DATADIR}/audacity/" )
+ set( _MANDIR "${CMAKE_INSTALL_MANDIR}" )
+ set( _MODDIR "${_DEST}/modules" )
+diff --git a/cmake-proxies/cmake-modules/AudacityFunctions.cmake b/cmake-proxies/cmake-modules/AudacityFunctions.cmake
+index 47682eb..a8f144f 100644
+--- a/cmake-proxies/cmake-modules/AudacityFunctions.cmake
++++ b/cmake-proxies/cmake-modules/AudacityFunctions.cmake
+@@ -338,6 +338,17 @@ function( canonicalize_node_name var node )
+    set( "${var}" "${node}" PARENT_SCOPE )
+ endfunction()
+ 
++# Call install(TARGETS...) only on Linux systems (i.e. exclude MacOS and Windows)
++macro( install_target_linux target destination )
++   if( NOT "${CMAKE_GENERATOR}" MATCHES "Xcode|Visual Studio*" AND NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" )
++      install( TARGETS "${target}" DESTINATION "${destination}" )
++   endif()
++endmacro()
++
++macro( install_audacity_module target )
++   install_target_linux( "${target}" "${_PKGMODULE}" )
++endmacro()
++
+ function( audacity_module_fn NAME SOURCES IMPORT_TARGETS
+    ADDITIONAL_DEFINES ADDITIONAL_LIBRARIES LIBTYPE )
+ 
+@@ -382,6 +393,7 @@ function( audacity_module_fn NAME SOURCES IMPORT_TARGETS
+          PROPERTIES
+             PREFIX ""
+             FOLDER "modules" # for IDE organization
++            INSTALL_RPATH "$ORIGIN/.."
+       )
+       if( CMAKE_HOST_SYSTEM_NAME MATCHES "Darwin" )
+          add_custom_command(
+@@ -423,6 +435,7 @@ function( audacity_module_fn NAME SOURCES IMPORT_TARGETS
+             PREFIX ""
+             FOLDER "libraries" # for IDE organization
+             INSTALL_NAME_DIR ""
++            INSTALL_RPATH "$ORIGIN"
+             BUILD_WITH_INSTALL_NAME_DIR YES
+       )
+    endif()
+@@ -525,6 +538,12 @@ function( audacity_module_fn NAME SOURCES IMPORT_TARGETS
+    endforeach()
+    set( GRAPH_EDGES "${GRAPH_EDGES}" PARENT_SCOPE )
+ 
++   # Note: Some modules set EXCLUDE_FROM_ALL afterwards to not be installed.
++   # Therefore only install libraries, but not modules here.
++   if( NOT REAL_LIBTYPE STREQUAL "MODULE" )
++      install_target_linux( "${TARGET}" "${_PKGLIB}" )
++   endif()
++
+    # collect unit test targets if they are present
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests")
+       add_subdirectory(tests)
+diff --git a/modules/CMakeLists.txt b/modules/CMakeLists.txt
+index d464383..15dead4 100644
+--- a/modules/CMakeLists.txt
++++ b/modules/CMakeLists.txt
+@@ -16,12 +16,5 @@ foreach( MODULE ${MODULES} )
+    add_subdirectory("${MODULE}")
+ endforeach()
+ 
+-if( NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" )
+-   if( NOT "${CMAKE_GENERATOR}" MATCHES "Visual Studio*")
+-      install( DIRECTORY "${_DEST}/modules"
+-               DESTINATION "${_PKGLIB}" )
+-   endif()
+-endif()
+-
+ #propagate collected edges up to root CMakeLists.txt
+ set( GRAPH_EDGES "${GRAPH_EDGES}" PARENT_SCOPE )
+diff --git a/modules/mod-script-pipe/CMakeLists.txt b/modules/mod-script-pipe/CMakeLists.txt
+index 5ee1862..ccfd50f 100644
+--- a/modules/mod-script-pipe/CMakeLists.txt
++++ b/modules/mod-script-pipe/CMakeLists.txt
+@@ -15,3 +15,4 @@ set( DEFINES
+ )
+ audacity_module( mod-script-pipe "${SOURCES}" "Audacity"
+    "${DEFINES}" "" )
++install_audacity_module( mod-script-pipe )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7b90c1b..c5f30ad 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1621,17 +1621,7 @@ else()
+                DESTINATION "."
+                RESOURCE DESTINATION "${_APPDIR}/Resources" )
+    else()
+-
+       install( TARGETS ${TARGET} RUNTIME )
+-
+-      install( DIRECTORY "${_DEST}/${_LIBDIR}/"
+-               DESTINATION "${_LIBDIR}"
+-               USE_SOURCE_PERMISSIONS
+-               FILES_MATCHING PATTERN "*.so*" )
+-
+-      install( CODE "set( _LIBDIR \"${_LIBDIR}\")" )
+-      install( SCRIPT "${CMAKE_SOURCE_DIR}/scripts/build/linux/fix_rpath.cmake" )
+-
+       install( FILES "${_INTDIR}/audacity.desktop"
+                DESTINATION "${_DATADIR}/applications" )
+       install( FILES "${topdir}/LICENSE.txt" "${topdir}/README.txt"

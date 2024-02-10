@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,14 +3,13 @@
+ all:
+ 	make clean
+ 	make psmark
+ 
+ psmark:
+-	gcc $(CFLAGS) -o psmark psmark.c
+-	strip psmark
++	$(CC) $(CFLAGS) $(LDFLAGS) -o psmark psmark.c
+ 
+ clean:
+ 	rm -f *.o psmark
+ 
+ install:
+-	install -s psmark /usr/bin/
++	install psmark /usr/bin/
+ 	install psmark.1 /usr/man/man1/

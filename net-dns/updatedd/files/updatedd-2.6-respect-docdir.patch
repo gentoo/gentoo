@@ -1,0 +1,25 @@
+From 8e484c4b0ceac8e7c37492fdf5e5b89f18451277 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 14 Jan 2017 01:06:48 -0500
+Subject: [PATCH 1/1] Use the autotools "docdir" in Documentation/Makefile.am.
+
+--- a/Documentation/Makefile.am
++++ b/Documentation/Makefile.am
+@@ -2,12 +2,12 @@
+ 
+ ## install documentation
+ install-data-local:
+-	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/updatedd
+-	$(INSTALL) $(srcdir)/updatedd-*.pdf $(DESTDIR)$(datadir)/doc/updatedd
+-	$(INSTALL) $(srcdir)/updatedd-pppd-rc $(DESTDIR)$(datadir)/doc/updatedd
++	$(INSTALL) -d $(DESTDIR)$(docdir)
++	$(INSTALL) $(srcdir)/updatedd-*.pdf $(DESTDIR)$(docdir)
++	$(INSTALL) $(srcdir)/updatedd-pppd-rc $(DESTDIR)$(docdir)
+ 
+-uninstall-local:
+-	$(RM) -r $(DESTDIR)$(datadir)/doc/updatedd
++uninstall-local:/
++	$(RM) -r $(DESTDIR)$(datadir)/updatedd
+ 
+ ## include debian files
+ EXTRA_DIST = updatedd-2.4-english.pdf updatedd-2.4-german.pdf updatedd-pppd-rc COPYING

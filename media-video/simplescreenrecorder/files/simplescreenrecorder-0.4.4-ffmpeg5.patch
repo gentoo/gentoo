@@ -1,0 +1,54 @@
+https://github.com/MaartenBaert/ssr/commit/768957a8de1534f0aa91bfc5d7af3c32f222beb8
+https://bugs.gentoo.org/834415
+
+From: Maarten Baert <maarten-baert@hotmail.com>
+Date: Sun, 20 Mar 2022 22:52:43 +0100
+Subject: [PATCH] Fix for compatibility with newer FFmpeg versions
+
+--- a/src/AV/Output/AudioEncoder.cpp
++++ b/src/AV/Output/AudioEncoder.cpp
+@@ -77,7 +77,8 @@ unsigned int AudioEncoder::GetSampleRate() {
+ }
+ 
+ bool AudioEncoder::AVCodecIsSupported(const QString& codec_name) {
+-	AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
++	// we have to break const correctness for compatibility with older ffmpeg versions
++	AVCodec *codec = (AVCodec*) avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
+ 	if(codec == NULL)
+ 		return false;
+ 	if(!av_codec_is_encoder(codec))
+--- a/src/AV/Output/Muxer.cpp
++++ b/src/AV/Output/Muxer.cpp
+@@ -194,7 +194,8 @@ unsigned int Muxer::GetQueuedPacketCount(unsigned int stream_index) {
+ void Muxer::Init() {
+ 
+ 	// get the format we want (this is just a pointer, we don't have to free this)
+-	AVOutputFormat *format = av_guess_format(m_container_name.toUtf8().constData(), NULL, NULL);
++	// we have to break const correctness for compatibility with older ffmpeg versions
++	AVOutputFormat *format = (AVOutputFormat*) av_guess_format(m_container_name.toUtf8().constData(), NULL, NULL);
+ 	if(format == NULL) {
+ 		Logger::LogError("[Muxer::Init] " + Logger::tr("Error: Can't find chosen output format!"));
+ 		throw LibavException();
+@@ -262,7 +263,8 @@ void Muxer::Free() {
+ }
+ 
+ AVCodec* Muxer::FindCodec(const QString& codec_name) {
+-	AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
++	// we have to break const correctness for compatibility with older ffmpeg versions
++	AVCodec *codec = (AVCodec*) avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
+ 	if(codec == NULL) {
+ 		Logger::LogError("[Muxer::FindCodec] " + Logger::tr("Error: Can't find codec!"));
+ 		throw LibavException();
+--- a/src/AV/Output/VideoEncoder.cpp
++++ b/src/AV/Output/VideoEncoder.cpp
+@@ -95,7 +95,8 @@ unsigned int VideoEncoder::GetFrameRate() {
+ }
+ 
+ bool VideoEncoder::AVCodecIsSupported(const QString& codec_name) {
+-	AVCodec *codec = avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
++	// we have to break const correctness for compatibility with older ffmpeg versions
++	AVCodec *codec = (AVCodec*) avcodec_find_encoder_by_name(codec_name.toUtf8().constData());
+ 	if(codec == NULL)
+ 		return false;
+ 	if(!av_codec_is_encoder(codec))
+

@@ -1,0 +1,14 @@
+--- a/src/bomns.cpp
++++ b/src/bomns.cpp
+@@ -432,7 +432,10 @@
+       if(g_bShowFps)
+       {
+         dwFpsTimer = SDL_GetTicks() - dwFpsTimer;
+-        nFps = 1000l / dwFpsTimer;
++	if (dwFpsTimer)
++	  nFps = 1000l / dwFpsTimer;
++	else
++	  nFps = 1000l;
+       }
+       
+       

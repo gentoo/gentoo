@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	provide dns
+}
+
+start() {
+	ebegin "Starting maradns"
+	start-stop-daemon --start --quiet --name maradns --wait 1000 \
+		--exec /usr/bin/duende /usr/sbin/maradns -- -f /etc/maradns/mararc
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping maradns"
+	start-stop-daemon --stop --quiet --name maradns --wait 1000 \
+		--exec /usr/bin/duende
+	eend $?
+}

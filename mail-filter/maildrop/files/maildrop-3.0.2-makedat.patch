@@ -1,0 +1,67 @@
+--- a/Makefile.am	2023-01-23 22:21:20.376505977 +0100
++++ b/Makefile.am	2023-01-23 22:22:18.655565802 +0100
+@@ -10,9 +10,9 @@
+ 
+ HTML2TXT=`which lynx 2>/dev/null && echo "lynx -dump -nolist" && exit; echo "links -dump -no-numbering -no-references"`
+ 
+-SUBDIRS=libs/numlib libs/liblock libs/rfc822 libs/rfc2045 @DBSUBDIR@ libs/makedat libs/maildir libs/maildrop
++SUBDIRS=libs/numlib libs/liblock libs/rfc822 libs/rfc2045 @DBSUBDIR@ libs/maildir libs/maildrop
+ 
+-DIST_SUBDIRS=libs/numlib libs/liblock libs/rfc822 libs/rfc2045 libs/gdbmobj libs/bdbobj libs/makedat libs/maildir libs/maildrop
++DIST_SUBDIRS=libs/numlib libs/liblock libs/rfc822 libs/rfc2045 libs/gdbmobj libs/bdbobj libs/maildir libs/maildrop
+ 
+ HTMLWWW=index.html documentation.html download.html links.html
+ EXTRA_DIST=README.html INSTALL.html UPGRADE.html README.postfix\
+@@ -58,7 +58,6 @@
+ 	makemime.html reformail.html reformime.html
+ 
+ if HAVE_DBLIBRARY
+-MAILDROPHTML += makedat.html
+ endif
+ 
+ MAILDROPMAN=lockmail.1 maildirmake.1 maildrop.1 mailbot.1 maildropex.7 \
+@@ -66,7 +65,6 @@
+ 	maildropfilter.7 maildropgdbm.7 makemime.1 reformail.1 reformime.1
+ 
+ if HAVE_DBLIBRARY
+-MAILDROPMAN += makedat.1
+ endif
+ 
+ EXTRA_LTLIBRARIES=librfc822.la librfc2045.la
+@@ -86,14 +84,12 @@
+ html_DATA=$(htmldataclean) manpage.css
+ 
+ if !HAVE_DBLIBRARY
+-html_DATA += makedat.html
+ endif
+ 
+ man_MANS=$(DELIVERQUOTAMAN) \
+ 	$(MAILDROPMAN) $(DEVEL_MAN)
+ 
+ if !HAVE_DBLIBRARY
+-man_MANS += makedat.1
+ endif
+ 
+ DISTCLEANFILES=$(htmldataclean) $(man_MANS)
+@@ -135,10 +135,6 @@
+ 	$(INSTALL_PROGRAM) libs/maildir/maildirmake $(DESTDIR)$(bindir)/maildirmake
+ 	$(INSTALL_PROGRAM) libs/rfc2045/reformime $(DESTDIR)$(bindir)/reformime
+ 	$(INSTALL_PROGRAM) libs/rfc2045/makemime $(DESTDIR)$(bindir)/makemime
+-	test "@USE_DB@@USE_GDBM@" = "00" && exit 0; \
+-		$(INSTALL_PROGRAM) libs/makedat/makedatprog $(DESTDIR)$(bindir)/makedatprog
+-	test "@USE_DB@@USE_GDBM@" = "00" && exit 0; \
+-		$(INSTALL_SCRIPT)  libs/makedat/makedat     $(DESTDIR)$(bindir)/makedat
+ 	. libs/maildrop/uidgid ; test -z "$$gid" && exit 0; test -w /etc || exit 0; cd $(DESTDIR)$(bindir) && chgrp $$gid maildrop lockmail
+ 	. libs/maildrop/uidgid ; test -z "$$uid" && exit 0; test -w /etc || exit 0; cd $(DESTDIR)$(bindir) && chown $$uid maildrop lockmail && chmod 755 maildrop lockmail
+ 
+--- a/configure.ac	2023-01-23 22:19:39.236136459 +0100
++++ b/configure.ac	2023-01-23 22:22:33.810321247 +0100
+@@ -192,7 +192,7 @@
+ 
+ AC_SUBST(REPOSITORY)
+ 
+-AC_CONFIG_SUBDIRS(libs/numlib libs/liblock libs/rfc822 libs/rfc2045 libs/gdbmobj libs/bdbobj libs/makedat libs/maildir libs/maildrop)
++AC_CONFIG_SUBDIRS(libs/numlib libs/liblock libs/rfc822 libs/rfc2045 libs/gdbmobj libs/bdbobj libs/maildir libs/maildrop)
+ 
+ AC_OUTPUT(Makefile dbobj.h dbobj.config maildrop.spec maildrop.lpspec
+ 		    README.html INSTALL.html)

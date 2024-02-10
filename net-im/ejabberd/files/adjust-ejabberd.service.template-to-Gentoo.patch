@@ -1,0 +1,39 @@
+From c0af543fc3b6047f66bfe820e7ce75abd3ed2049 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 10 Dec 2021 12:36:45 +0100
+Subject: [PATCH] Adjust ejabberd.service.template to Gentoo
+
+---
+ Makefile.in               | 2 +-
+ ejabberd.service.template | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index ab0e9d96702e..4d97570733aa 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -300,7 +300,7 @@ install: copy-files
+ 	chmod 755 ejabberd.init
+ 	#
+ 	# Service script
+-	$(SED) -e "s*@ctlscriptpath@*$(SBINDIR)*g" \
++	$(SED) -e "s*@ctlscriptpath@*/usr/sbin*g" \
+ 		-e "s*@installuser@*$(INIT_USER)*g" ejabberd.service.template \
+ 		> ejabberd.service
+ 	chmod 644 ejabberd.service
+diff --git a/ejabberd.service.template b/ejabberd.service.template
+index 685a104d00ae..e384e920280b 100644
+--- a/ejabberd.service.template
++++ b/ejabberd.service.template
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=XMPP Server
+-After=network.target
++After=epmd.service network.target
++Requires=epmd.service
+ 
+ [Service]
+ Type=notify
+-- 
+2.33.1
+

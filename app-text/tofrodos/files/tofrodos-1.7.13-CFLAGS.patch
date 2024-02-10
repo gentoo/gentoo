@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -56,10 +56,6 @@ OBJS =	emsg.o \
+ 	tofrodos.o \
+ 	utility.o
+ 
+-# implicit rules
+-.c.o:
+-	$(CC) $(CFLAGS) $<
+-
+ # user visible rules
+ all: $(FROMDOS) $(TODOS)
+ 

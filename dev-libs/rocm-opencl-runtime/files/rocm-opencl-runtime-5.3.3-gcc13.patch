@@ -1,0 +1,27 @@
+For https://bugs.gentoo.org/895382
+==================================
+From 767241dca886bcd2469d91382afab9d032e1cfa6 Mon Sep 17 00:00:00 2001
+From: Jeremy Newton <Jeremy.Newton@amd.com>
+Date: Wed, 8 Feb 2023 14:16:43 -0500
+Subject: [PATCH] SWDEV-1 - cltrace: Add missing include
+
+Newer GCC's seem to require this.
+
+Signed-off-by: Jeremy Newton <Jeremy.Newton@amd.com>
+Change-Id: I56ef934600729e892f1cd7ab11662760df48aed8
+---
+ tools/cltrace/cltrace.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/cltrace/cltrace.cpp b/tools/cltrace/cltrace.cpp
+index be96298..5ac5b62 100644
+--- a/tools/cltrace/cltrace.cpp
++++ b/tools/cltrace/cltrace.cpp
+@@ -17,6 +17,7 @@
+ #include <iostream>
+ #include <cstring>
+ #include <cstdlib>
++#include <cstdint>
+ 
+ #ifdef _MSC_VER
+ #include <windows.h>

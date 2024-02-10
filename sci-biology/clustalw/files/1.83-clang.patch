@@ -1,0 +1,11 @@
+--- a/interface.c
++++ b/interface.c
+@@ -210,7 +210,7 @@
+ 		Boolean 	name1 = FALSE;
+ 		sint ajb;
+ 
+-	if(args[0]==NULL) return;
++	if(args[0]==NULL) return 0;
+ 
+ 
+ 

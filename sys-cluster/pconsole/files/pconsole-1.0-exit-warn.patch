@@ -1,0 +1,10 @@
+--- a/pconsole.c	2001-04-09 12:51:49.000000000 +0400
++++ b/pconsole.c	2004-08-16 11:37:49.606267087 +0400
+@@ -28,6 +28,7 @@
+ #include "Conn.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <errno.h>
+ #include <signal.h>

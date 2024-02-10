@@ -1,0 +1,20 @@
+Description: replace hard-coded `gcc' with $CC in configure.ac
+ to allow cross-building.
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/901177
+Forwarded: not-yet
+Author: Helmut Grohne <helmut@subdivi.de>
+Reviewed-by: gregor herrmann <gregoa@debian.org>
+Last-Update: 2018-06-09
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,7 +96,7 @@
+    CXXFLAGS="$CXXFLAGS -Wall -Wwrite-strings -Woverloaded-virtual -fno-exceptions -fno-rtti -export-dynamic "
+ fi
+ 
+-SUPCXX=`gcc -print-file-name=libsupc++.a`
++SUPCXX=`$CC -print-file-name=libsupc++.a`
+ 
+ LIBS="$SUPCXX $LIBS"
+ 

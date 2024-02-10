@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+description="rp-pppoe server"
+pidfile="/run/pppoe-server.pid"
+command="/usr/sbin/pppoe-server"
+command_args="-I ${PPPOE_INTERFACE:-eth0} -C ${AC_NAME:-$(hostname)} -S ${SERVICE_NAME:-default} -N ${MAX_SESSIONS:-64} -x ${MAX_SESESSION_PER_MAC:-1} -L ${LOCAL_IP:-10.0.0.1.} -k -F ${OTHER_OPTIONS}"
+command_background="true"

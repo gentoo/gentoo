@@ -1,0 +1,67 @@
+From 0c3b094e14b60794eb6c4736a51f505865f14403 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 28 Dec 2017 15:08:34 +1300
+Subject: Fix test failures due to '.' in @INC removal on 5.26
+
+---
+ t/client.t   | 2 +-
+ t/compress.t | 2 +-
+ t/crypt.t    | 2 +-
+ t/methods.t  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/t/client.t b/t/client.t
+index a283f2d..f0b3b54 100644
+--- a/t/client.t
++++ b/t/client.t
+@@ -4,7 +4,7 @@
+ require 5.004;
+ use strict;
+ 
+-require "t/lib.pl";
++require "./t/lib.pl";
+ 
+ 
+ my $numTests = 10;
+diff --git a/t/compress.t b/t/compress.t
+index e13f6b3..a551421 100644
+--- a/t/compress.t
++++ b/t/compress.t
+@@ -10,7 +10,7 @@ if ($@) {
+     exit 0;
+ }
+ 
+-require "t/lib.pl";
++require "./t/lib.pl";
+ 
+ 
+ my $numTests = 18;
+diff --git a/t/crypt.t b/t/crypt.t
+index 2695633..6867349 100644
+--- a/t/crypt.t
++++ b/t/crypt.t
+@@ -10,7 +10,7 @@ if ($@ || $Crypt::DES::VERSION < 2.03) {
+     exit 0;
+ }
+ 
+-require "t/lib.pl";
++require "./t/lib.pl";
+ 
+ 
+ my $numTests = 18;
+diff --git a/t/methods.t b/t/methods.t
+index c9d81ca..1c9b2cd 100644
+--- a/t/methods.t
++++ b/t/methods.t
+@@ -4,7 +4,7 @@
+ require 5.004;
+ use strict;
+ 
+-require "t/lib.pl";
++require "./t/lib.pl";
+ 
+ 
+ my $numTests = 11;
+-- 
+2.15.1
+

@@ -1,0 +1,16 @@
+# Guard _LARGEFILE64_SOURCE define to avoid warning with append-lfs-flags
+# https://bugs.gentoo.org/914505
+diff --git a/hdparm.c b/hdparm.c
+index eb9796b..a3204f9 100644
+--- a/hdparm.c
++++ b/hdparm.c
+@@ -4,7 +4,9 @@
+  */
+ #define HDPARM_VERSION "v9.65"
+ 
++#ifndef _LARGEFILE64_SOURCE
+ #define _LARGEFILE64_SOURCE /*for lseek64*/
++#endif
+ #define _BSD_SOURCE	/* for strtoll() */
+ #include <unistd.h>
+ #include <stdlib.h>

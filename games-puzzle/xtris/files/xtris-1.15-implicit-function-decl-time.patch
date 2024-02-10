@@ -1,0 +1,23 @@
+Fixes:
+xtbot.c:211:23: warning: implicit declaration of function ‘time’; did you mean ‘utimes’? [-Wimplicit-function-declaration]
+xtserv.c:386:23: warning: implicit declaration of function ‘time’; did you mean ‘utimes’? [-Wimplicit-function-declaration]
+--- a/xtbot.c
++++ b/xtbot.c
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/socket.h>
+--- a/xtserv.c
++++ b/xtserv.c
+@@ -15,6 +15,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <signal.h>

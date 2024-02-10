@@ -1,0 +1,3 @@
+# See `man portfwd` for options.
+
+PORTFWD_OPTS="-f -t"

@@ -1,0 +1,60 @@
+diff --git a/mod_auth_gss.c.in b/mod_auth_gss.c.in
+index 6228b4d..3569ebb 100644
+--- a/mod_auth_gss.c.in
++++ b/mod_auth_gss.c.in
+@@ -38,6 +38,10 @@
+  */
+ 
+ #include "mod_gss.h"
++
++#define DECLINED PR_DECLINED
++#define ERROR_INT PR_ERROR_INT
++
+ extern unsigned char gss_engine;
+ extern unsigned long gss_flags;
+ extern int gss_logfd;
+diff --git a/mod_gss.c.in b/mod_gss.c.in
+index 9d2d4c8..83a4019 100644
+--- a/mod_gss.c.in
++++ b/mod_gss.c.in
+@@ -57,6 +57,13 @@
+ 
+ #include "mod_gss.h"
+ 
++#define LOG_SYMLINK PR_LOG_SYMLINK
++#define LOG_WRITEABLE_DIR PR_LOG_WRITABLE_DIR
++#define HANDLED PR_HANDLED
++#define ERROR PR_ERROR
++#define DECLINED PR_DECLINED
++#define ERROR_INT PR_ERROR_INT
++
+ module gss_module;
+ 
+ /* Module variables maybe used externaly */
+@@ -1395,7 +1402,7 @@ MODRET gss_auth(cmd_rec *cmd) {
+     
+     /* Convert the parameter to upper case */
+     for (i = 0; i < strlen(cmd->argv[1]); i++)
+-	(cmd->argv[1])[i] = toupper((cmd->argv[1])[i]);
++	((char*)cmd->argv[1])[i] = toupper(((char*)cmd->argv[1])[i]);
+ 
+     if (!strcmp(cmd->argv[1], "GSSAPI")) { 
+ 	pr_response_send(R_334, "Using authentication type %s; ADAT must follow", cmd->argv[1]);
+@@ -2014,7 +2021,7 @@ MODRET gss_prot(cmd_rec *cmd) {
+ 
+     /* Convert the parameter to upper case */
+     for (i = 0; i < strlen(cmd->argv[1]); i++)
+-	(cmd->argv[1])[i] = toupper((cmd->argv[1])[i]);
++	((char*)cmd->argv[1])[i] = toupper(((char*)cmd->argv[1])[i]);
+ 
+     /* Only PROT S , PROT C or PROT P is valid with respect to GSS. */
+     if (!strcmp(cmd->argv[1], "C")) {
+@@ -2098,7 +2105,7 @@ MODRET set_gsskeytab(cmd_rec *cmd) {
+     if (!file_exists(cmd->argv[1]))
+ 	CONF_ERROR(cmd, "file does not exist");
+ 
+-    if (*cmd->argv[1] != '/')
++    if (((char*)(*cmd->argv))[1] != '/')
+ 	CONF_ERROR(cmd, "parameter must be an absolute path");
+ 
+     add_config_param_str(cmd->argv[0], 1, cmd->argv[1]);

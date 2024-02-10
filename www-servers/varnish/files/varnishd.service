@@ -1,0 +1,16 @@
+[Unit]
+Description=Varnish is a high-performance HTTP accelerator
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=32786
+LimitMEMLOCK=82000
+PIDFile=/var/run/varnishd.pid
+ExecStart=/usr/sbin/varnishd -a 0.0.0.0:80 -P /var/run/varnishd.pid
+
+#If you wish to use a config file, then use the following ExecStart line
+#ExecStart=/usr/sbin/varnishd -a 0.0.0.0:80 -f /etc/varnish/default.vcl -P /var/run/varnishd.pid
+
+[Install]
+WantedBy=multi-user.target

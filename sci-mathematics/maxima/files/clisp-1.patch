@@ -1,0 +1,19 @@
+diff -r -U1 maxima-5.37.1.orig/src/maxima.in maxima-5.37.1/src/maxima.in
+--- maxima-5.37.1.orig/src/maxima.in	2015-05-22 04:40:03.000000000 +0600
++++ maxima-5.37.1/src/maxima.in	2015-09-03 16:08:22.467930422 +0600
+@@ -135,5 +135,5 @@
+       if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-        exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -q "" -- "$@"
++        exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -q -norc "" -- "$@"
+       else
+-	exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CLISP_RUNTIME@" $MAXIMA_LISP_OPTIONS -q -M "$maxima_image_base.mem" "" -- "$@"
++	exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CLISP_RUNTIME@" $MAXIMA_LISP_OPTIONS -q -norc -M "$maxima_image_base.mem" "" -- "$@"
+       fi
+@@ -141,5 +141,5 @@
+       if [ -x "$maxima_image_base" ]; then
+-        exec "$maxima_image_base"  $MAXIMA_LISP_OPTIONS -q  "" -- "$@"
++        exec "$maxima_image_base"  $MAXIMA_LISP_OPTIONS -q -norc  "" -- "$@"
+       else
+-	exec "@CLISP_NAME@" $MAXIMA_LISP_OPTIONS -q -M "$maxima_image_base.mem" "" -- "$@"
++	exec "@CLISP_NAME@" $MAXIMA_LISP_OPTIONS -q -norc -M "$maxima_image_base.mem" "" -- "$@"
+       fi

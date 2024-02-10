@@ -1,0 +1,41 @@
+https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=a5b2e20d8
+
+From a5b2e20d8f93e96817e00af6dd0a4c914580e8a2 Mon Sep 17 00:00:00 2001
+From: Bernhard Voelker <mail@bernhard-voelker.de>
+Date: Tue, 23 May 2023 01:57:47 +0200
+Subject: tests: fix FP in xargs test when /bin/sh is dash
+
+Dash as /bin/sh apparently does not know $'\n' syntax.
+
+* tests/xargs/verbose-quote.sh: Define NL variable for newline character;
+change from $'\n' syntax to the above variable when generating input
+for xargs.
+
+Fixes https://sv.gnu.org/bugs/?63934
+---
+ tests/xargs/verbose-quote.sh | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/xargs/verbose-quote.sh b/tests/xargs/verbose-quote.sh
+index d25f7db..e3607ce 100755
+--- a/tests/xargs/verbose-quote.sh
++++ b/tests/xargs/verbose-quote.sh
+@@ -28,12 +28,15 @@ printf "%s\n" \
+   || framework_failure_
+ 
+ # Run xargs with -t for verious commands which require quoting.
++# (Use NL because dash as /bin/sh does not know $'\n' syntax.)
++nl='
++'
+ printf '%s\0' \
+   000 \
+   '10 0' \
+   '20"0' \
+   "30'0" \
+-  40$'\n'0 \
++  "40${nl}0" \
+   | xargs -0t '-I{}' './my command' 'hel lo' '{}' world > out 2> err \
+   || fail=1
+ 
+-- 
+cgit v1.1

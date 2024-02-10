@@ -1,0 +1,31 @@
+Same that media-libs/cubeb does and meant for -DLAZY_LOAD_LIBS=no.
+
+Unfortunately need to use bundled cubeb here given it modifies the
+source starting with (but not likely limited to):
+https://github.com/PCSX2/pcsx2/commit/9170a5abc1
+--- a/3rdparty/cubeb/CMakeLists.txt
++++ b/3rdparty/cubeb/CMakeLists.txt
+@@ -76,3 +76,5 @@
+ 
++  if(CHECK_PULSE)
+   pkg_check_modules(libpulse IMPORTED_TARGET libpulse)
++  endif()
+   if(libpulse_FOUND)
+@@ -83,3 +85,5 @@
+ 
++  if(CHECK_ALSA)
+   pkg_check_modules(alsa IMPORTED_TARGET alsa)
++  endif()
+   if(alsa_FOUND)
+@@ -90,3 +94,5 @@
+ 
++  if(CHECK_JACK)
+   pkg_check_modules(jack IMPORTED_TARGET jack)
++  endif()
+   if(jack_FOUND)
+@@ -97,3 +103,5 @@
+ 
++  if(CHECK_SNDIO)
+   check_include_files(sndio.h USE_SNDIO)
++  endif()
+   if(USE_SNDIO)

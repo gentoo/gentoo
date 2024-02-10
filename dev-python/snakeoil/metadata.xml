@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>pkgcore@gentoo.org</email>
+		<name>Pkgcore</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">pkgcore/snakeoil</remote-id>
+		<remote-id type="pypi">snakeoil</remote-id>
+	</upstream>
+</pkgmetadata>

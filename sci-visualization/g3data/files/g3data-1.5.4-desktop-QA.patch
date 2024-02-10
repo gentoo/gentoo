@@ -1,0 +1,11 @@
+--- a/data/g3data.desktop
++++ b/data/g3data.desktop
+@@ -3,7 +3,7 @@
+ Name=g3data
+ Comment=Data Extraction Tool
+ Exec=g3data
+-Icon=g3data-icon.xpm
++Icon=g3data-icon
+ Terminal=false
+ Type=Application
+ Categories=GNOME;Science;Graphics;

@@ -1,0 +1,27 @@
+From eb479f24b766425dd522ba01e0c298fc814c788d Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@users.noreply.github.com>
+Date: Sat, 4 Mar 2023 14:46:07 -0700
+Subject: [PATCH] Disable doctests
+
+Doctests are not working on ghc-9.2
+
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ vector.cabal | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/vector.cabal b/vector.cabal
+index cea122a..c738a35 100644
+--- a/vector.cabal
++++ b/vector.cabal
+@@ -274,6 +274,7 @@ test-suite vector-tests-O2
+       Ghc-Options: -Wno-redundant-constraints
+ 
+ test-suite vector-doctest
++  buildable:        False
+   type:             exitcode-stdio-1.0
+   main-is:          doctests.hs
+   hs-source-dirs:   tests
+-- 
+2.39.2
+

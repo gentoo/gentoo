@@ -1,0 +1,13 @@
+As in https://src.fedoraproject.org/rpms/python-wxpython4/raw/rawhide/f/no-attrdict.patch.
+--- a/buildtools/config.py
++++ b/buildtools/config.py
+@@ -27,8 +27,6 @@ from distutils.dep_util  import newer
+ 
+ import distutils.sysconfig
+ 
+-from attrdict import AttrDict
+-
+ runSilently = False
+ 
+ #----------------------------------------------------------------------
+

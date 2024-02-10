@@ -1,0 +1,35 @@
+patch will fix readdir_r() is deprecated as of glibc-2.24
+https://www.vdr-portal.de/forum/index.php?thread/130752-handle-deprecated-functions-readdir-r-auto-ptr/&postID=1293833#post1293833
+
+Signed-of by: Joerg Bornkessel <hd_brummy@gentoo.org> (27 Aug 2018)
+diff -Naur vdr-2.2.0.orig/tools.c vdr-2.2.0/tools.c
+--- vdr-2.2.0.orig/tools.c	2018-08-27 12:59:28.571326559 +0200
++++ vdr-2.2.0/tools.c	2018-08-27 13:03:11.222326559 +0200
+@@ -1466,7 +1466,11 @@
+ struct dirent *cReadDir::Next(void)
+ {
+   if (directory) {
++#if !__GLIBC_PREREQ(2, 24) // readdir_r() is deprecated as of GLIBC 2.24
+      while (readdir_r(directory, &u.d, &result) == 0 && result) {
++#else
++     while ((result = readdir(directory)) != NULL) {
++#endif
+            if (strcmp(result->d_name, ".") && strcmp(result->d_name, ".."))
+               return result;
+            }
+diff -Naur vdr-2.2.0.orig/tools.h vdr-2.2.0/tools.h
+--- vdr-2.2.0.orig/tools.h	2018-08-27 12:59:28.641326559 +0200
++++ vdr-2.2.0/tools.h	2018-08-27 13:01:44.022326559 +0200
+@@ -369,10 +369,12 @@
+ private:
+   DIR *directory;
+   struct dirent *result;
++#if !__GLIBC_PREREQ(2, 24) // readdir_r() is deprecated as of GLIBC 2.24
+   union { // according to "The GNU C Library Reference Manual"
+     struct dirent d;
+     char b[offsetof(struct dirent, d_name) + NAME_MAX + 1];
+     } u;
++#endif
+ public:
+   cReadDir(const char *Directory);
+   ~cReadDir();

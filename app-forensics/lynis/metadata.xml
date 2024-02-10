@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mpagano@gentoo.org</email>
+    <name>Mike Pagano</name>
+  </maintainer>
+  <use>
+    <flag name="cron">Install /etc/cron.* files</flag>
+  </use>
+</pkgmetadata>

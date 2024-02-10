@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pesa@gentoo.org</email>
+		<name>Davide Pesavento</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Qbs is a tool that helps simplify the build process for developing
+	projects across multiple platforms. Qbs can be used for any software
+	project, regardless of programming language, toolkit, or libraries used.
+
+	Qbs projects are specified in a QML dialect. QML is a concise, easy to
+	learn, and intuitive language that is used successfully in the Qt project.
+	Its core is declarative, but it can be extended with JavaScript snippets
+	for extra flexibility.
+
+	Qbs is an all-in-one tool that generates a build graph from a high-level
+	project description (like qmake or CMake) and additionally undertakes the
+	task of executing the commands in the low-level build graph (like make).
+	</longdescription>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/qbs/</doc>
+	</upstream>
+</pkgmetadata>

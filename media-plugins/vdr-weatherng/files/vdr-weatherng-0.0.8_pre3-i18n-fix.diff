@@ -1,0 +1,32 @@
+remove unused translation, compile problems up from vdr-1.5.8
+
+Joerg Bornkessel 19 Sep 2007 <hd_brummy@gentoo.org>
+
+diff -Naur weatherng-0.0.8-pre3.orig/i18n.c weatherng-0.0.8-pre3/i18n.c
+--- weatherng-0.0.8-pre3.orig/i18n.c	2007-09-19 12:03:01.884552652 +0200
++++ weatherng-0.0.8-pre3/i18n.c	2007-09-19 12:03:21.786518169 +0200
+@@ -369,24 +369,6 @@
+     "",// TODO
+     "Привет!",
+   },
+-  { "АC",
+-    "АC",
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "АC",
+-    "",// TODO
+-    "АC",
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "",// TODO
+-    "Привет!",
+-  },
+   { "Update data on start",
+     "Update von Daten bei Start",
+     "",// TODO

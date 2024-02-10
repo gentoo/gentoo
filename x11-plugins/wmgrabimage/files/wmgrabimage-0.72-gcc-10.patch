@@ -1,0 +1,32 @@
+diff -Naur wmGrabImage-0.72.orig/wmgeneral/wmgeneral.c wmGrabImage-0.72/wmgeneral/wmgeneral.c
+--- wmGrabImage-0.72.orig/wmgeneral/wmgeneral.c	2001-05-27 21:02:18.000000000 +0200
++++ wmGrabImage-0.72/wmgeneral/wmgeneral.c	2020-02-02 12:25:53.013879815 +0100
+@@ -47,6 +47,10 @@
+ char		*Geometry = "";
+ Window		iconwin, win;
+ Pixmap		pixmask;
++Display		*display;
++Window		Root;
++GC			NormalGC;
++XpmIcon		wmgen;
+ 
+   /*****************/
+  /* Mouse Regions */
+diff -Naur wmGrabImage-0.72.orig/wmgeneral/wmgeneral.h wmGrabImage-0.72/wmgeneral/wmgeneral.h
+--- wmGrabImage-0.72.orig/wmgeneral/wmgeneral.h	2001-05-27 21:02:18.000000000 +0200
++++ wmGrabImage-0.72/wmgeneral/wmgeneral.h	2020-02-02 12:25:31.926869125 +0100
+@@ -28,10 +28,10 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
+-Window          Root;
+-GC              NormalGC;
+-XpmIcon         wmgen;
++extern Display  *display;
++extern Window   Root;
++extern GC       NormalGC;
++extern XpmIcon  wmgen;
+ 
+ 
+   /***********************/

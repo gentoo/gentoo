@@ -1,0 +1,16 @@
+ simulate.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/simulate.c b/simulate.c
+index 788c440..67ba2ba 100644
+--- a/simulate.c
++++ b/simulate.c
+@@ -383,7 +383,7 @@ static void simustat_core(gzFile fp, int Q_thres)
+ 	memset(wc_single, 0, 40); memset(tot_single, 0, 40);
+ 	memset(wc_pair, 0, 40); memset(tot_pair, 0, 40);
+ 	memset(abpair, 0, 4 * 256 * 10);
+-	memset(tc[2], 0, 4 * sizeof(int));
++	memset(tc, 0, 4 * sizeof(int));
+ 	while (maqmap_read1(fp, m1)) {
+ 		int is_correct;
+ 		bit32_t p1, p2;

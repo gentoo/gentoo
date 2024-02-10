@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/sbin/tcsd
+description="TrouSerS' TCS daemon (tcsd)"
+command_user="tss:tss"
+
+depend() {
+	use logger
+	need net
+}
+
+start_pre() {
+	if [ ! -c /dev/tpm ] && [ ! -c /dev/tpm0 ] ; then
+		eerror "No TPM device found!"
+		return 1
+	fi
+}

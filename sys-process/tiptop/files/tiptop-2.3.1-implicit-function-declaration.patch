@@ -1,0 +1,35 @@
+Date: Sun, 11 Dec 2022 22:11:42 +0100
+Subject: [PATCH] Fix build for sys-devel/reflex
+
+When LEX=reflex is used, this compiling calc.lex fails with a
+implicit function declaration error when
+Werror=implicit-function-declaration. (Like with clang16)
+
+Bug: https://bugs.gentoo.org/884361
+PR to upstream this: https://github.com/FeCastle/tiptop/pull/9
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+Clang16 will not allow implicit function declarations by default
+--- a/src/calc.lex
++++ b/src/calc.lex
+@@ -11,6 +11,7 @@
+ %{
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+
+ #include "formula-parser.h"
+ #include "y.tab.h"
+--- a/src/process.h
++++ b/src/process.h
+@@ -95,4 +95,6 @@ void reset_values(const struct process_list* const);
+ 
+ void update_name_cmdline(int pid, int name_only);
+ 
++void handle_error(int retval);
++
+ #endif  /* _PROCESS_H */
+-- 
+2.38.1
+

@@ -1,0 +1,36 @@
+Fix -Wformat -Werror=format-security errors caused by wrong fprintf calls
+See also: https://bugs.gentoo.org/show_bug.cgi?id=577430
+* utils_ui.c: In function ‘quick_message’:
+* utils_ui.c:192:29: error: format not a string literal and no format arguments [-Werror=format-security]
+*                              message);
+
+--- ggobi-2.1.11/src/utils_ui.c
++++ ggobi-2.1.11/src/utils_ui.c
+@@ -189,7 +189,7 @@
+ 
+   dialog =
+     gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
+-                            message);
++                            "%s", message);
+ 
+   if (modal)
+     gtk_window_set_modal (GTK_WINDOW (dialog), true);
+--- ggobi-2.1.11/src/write_xml.c
++++ ggobi-2.1.11/src/write_xml.c
+@@ -37,14 +37,14 @@
+ write_xml_string(FILE *f, gchar *str)
+ {
+   gchar *fmtstr = g_markup_printf_escaped("%s", str);
+-  fprintf(f, fmtstr);
++  fprintf(f, "%s", fmtstr);
+   g_free(fmtstr);
+ }
+ static void
+ write_xml_string_fmt(FILE *f, gchar *fmt, gchar *str)
+ {
+   gchar *fmtstr = g_markup_printf_escaped(fmt, str);
+-  fprintf(f, fmtstr);
++  fprintf(f, "%s", fmtstr);
+   g_free(fmtstr);
+ }
+ 

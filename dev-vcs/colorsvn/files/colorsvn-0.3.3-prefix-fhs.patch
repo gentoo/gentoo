@@ -1,0 +1,37 @@
+Fix confdir location for Prefix
+https://bugs.gentoo.org/435434
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -13,7 +13,6 @@
+ mandir=@mandir@
+ sysconfdir=@sysconfdir@
+ 
+-confdir=/etc
+ 
+ CP=@CP@
+ PERL=@PERL@
+@@ -36,10 +35,10 @@
+ install: colorsvn
+ 	$(INSTALL) -d $(DESTDIR)$(bindir) && \
+ 	$(INSTALL) -m 755 $(PACKAGE) $(DESTDIR)$(bindir)/$(PACKAGE) && \
+-	$(INSTALL) -d $(DESTDIR)/$(confdir) && \
+-	$(INSTALL) -m 644 $(CONFIGFILE) $(DESTDIR)/$(confdir)/$(CONFIGFILE) && \
+-	$(INSTALL) -d $(DESTDIR)/$(confdir)/profile.d && \
+-	$(INSTALL) -m 755 $(PROFFILE) $(DESTDIR)/$(confdir)/profile.d/$(PROFFILE) && \
++	$(INSTALL) -d $(DESTDIR)/$(sysconfdir) && \
++	$(INSTALL) -m 644 $(CONFIGFILE) $(DESTDIR)/$(sysconfdir)/$(CONFIGFILE) && \
++	$(INSTALL) -d $(DESTDIR)/$(sysconfdir)/profile.d && \
++	$(INSTALL) -m 755 $(PROFFILE) $(DESTDIR)/$(sysconfdir)/profile.d/$(PROFFILE) && \
+ 	if [ -f $(srcdir)/colorsvn.1 ] ; then \
+ 	    $(INSTALL) -d $(DESTDIR)$(mandir)/man1/ ; \
+ 	    $(INSTALL) -m 644 $(srcdir)/colorsvn.1 $(DESTDIR)$(mandir)/man1/ ; \
+@@ -54,6 +53,6 @@
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(PACKAGE) && \
+-	$(RM) $(DESTDIR)/$(confdir)/$(CONFIGFILE)  && \
+-	$(RM) $(DESTDIR)/$(confdir)/profile.d/$(PROFFILE)
++	$(RM) $(DESTDIR)/$(sysconfdir)/$(CONFIGFILE)  && \
++	$(RM) $(DESTDIR)/$(sysconfdir)/profile.d/$(PROFFILE)
+ 

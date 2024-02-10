@@ -1,0 +1,45 @@
+--- a/configure.in	2021-01-03 20:59:43.337589407 +0100
++++ b/configure.in	2021-01-03 21:00:48.936539537 +0100
+@@ -56,10 +56,6 @@
+   blt_enable_jpeg=$enableval ])
+ AC_ARG_ENABLE(cygwin,	[  --enable-cygwin         Use cygwin Tcl/Tk libraries. Requires cygwin1.dll], [
+   blt_enable_cygwin=$enableval ])
+-AC_ARG_WITH(cc,		[  --with-cc=CC            Set C compiler to CC], [
+-  blt_with_cc=$with_cc 
+-  unset ac_cv_prog_CC
+-  unset ac_cv_prog_CPP ])
+ AC_ARG_WITH(cflags,	[  --with-cflags=FLAGS     Set compiler flags to FLAGS],
+   blt_with_cflags="$with_cflags")
+ AC_ARG_WITH(gnu_ld,	[  --with-gnu-ld           Use GNU linker],
+@@ -96,22 +92,7 @@
+ #
+ 
+ AC_MSG_CHECKING([which C compiler])
+-if test "x${blt_with_cc}" != "x" ; then 
+-  CC=${blt_with_cc}
+-  unset ac_cv_prog_CPP
+-  unset ac_cv_prog_CC
+-elif test "x${BLT_ENV_CC}" != "x" ; then
+-  unset ac_cv_prog_CPP
+-  unset ac_cv_prog_CC
+-elif test "x${blt_cv_prog_cc}" != "x" ; then
+-  CC=${blt_cv_prog_cc}
+-  unset ac_cv_prog_CC
+-else 
+-  AC_PROG_CC
+-fi
+-if test "x${CC}" = "x" ; then
+-  CC=cc
+-fi
++AC_PROG_CC
+ 
+ case $target in
+   *-*-cygwin*|*-*-mingw*)
+@@ -125,7 +106,6 @@
+ 
+ unset blt_cv_prog_cc
+ AC_CACHE_VAL(blt_cv_prog_cc, blt_cv_prog_cc=$CC)
+-AC_SUBST(CC)
+ AC_PROG_CPP
+ AS_IF([test "x${GCC}" != "x"],[
+   blt_have_gcc="yes"

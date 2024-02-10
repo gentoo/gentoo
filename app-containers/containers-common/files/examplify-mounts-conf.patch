@@ -1,0 +1,7 @@
+--- a/pkg/subscriptions/mounts.conf
++++ a/pkg/subscriptions/mounts.conf
+@@ -1 +1,3 @@
+-/usr/share/rhel/secrets:/run/secrets
++# Refer to containers-mounts.conf(5)
++# Example:
++# /usr/share/rhel/secrets:/run/secrets

@@ -1,0 +1,56 @@
+https://bugzilla.netfilter.org/show_bug.cgi?id=1637
+
+From a6df37777fc47c2473a13501c17eb3cbbf922ec1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 24 Nov 2022 07:57:37 +0000
+Subject: [PATCH 3/3] Fix -Wimplicit-function-declaration
+
+Bug: https://bugzilla.netfilter.org/show_bug.cgi?id=1637
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/read_config_lex.l
++++ b/src/read_config_lex.l
+@@ -21,6 +21,7 @@
+ 
+ #include <string.h>
+ 
++#include "log.h"
+ #include "conntrackd.h"
+ #include "read_config_yy.h"
+ %}
+@@ -174,7 +175,7 @@ notrack		[N|n][O|o][T|t][R|r][A|a][C|c][K|k]
+ %%
+ 
+ int
+-yywrap()
++yywrap(void)
+ {
+ 	return 1;
+ }
+--- a/src/read_config_yy.y
++++ b/src/read_config_yy.y
+@@ -31,14 +31,25 @@
+ #include "cidr.h"
+ #include "helper.h"
+ #include "stack.h"
++#include "log.h"
++
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++
+ #include <sched.h>
+ #include <dlfcn.h>
++
+ #include <libnetfilter_conntrack/libnetfilter_conntrack.h>
+ #include <libnetfilter_conntrack/libnetfilter_conntrack_tcp.h>
+ 
+ extern char *yytext;
+ extern int   yylineno;
+ 
++int yylex (void);
++int yyerror (char *msg);
++void yyrestart (FILE *input_file);
++
+ struct ct_conf conf;
+ 
+ static void __kernel_filter_start(void);

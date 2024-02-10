@@ -1,0 +1,212 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-alpha
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-24)
+# sys-apps/flatpak is not keyworded here
+flatpak
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-14)
+# Qt is not keyworded here
+qt5
+qt6
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-17)
+# media-libs/libheif is not keyworded here
+heif
+
+# matoro <matoro_gentoo@matoro.tk> (2023-06-10)
+# dev-lang/go is not keyworded here
+go
+
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# dev-lang/ocaml is not keyworded here
+ocaml
+
+# Matt Turner <mattst88@gentoo.org> (2022-02-21)
+# app-crypt/tpm2-tss is not keyworded here
+tpm
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-10)
+# media-video/pipewire is not keyworded. Bug #807616.
+pipewire
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-05)
+nftables
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# net-libs/webkit-gtk has no alpha keywords
+webkit
+# net-libs/gnome-online-accounts depends on net-libs/webkit-gtk
+gnome-online-accounts
+
+# Matt Turner <mattst88@gentoo.org> (2020-07-01)
+# Unlikely.
+vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2020-05-10)
+# media-libs/allegro is not keyworded.
+allegro
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
+
+# Matt Turner <mattst88@gentoo.org> (2018-12-22)
+# net-libs/zeromq is not keyworded
+zeromq
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-06-13)
+# No ACPI support on alpha. Bug #657332
+acpi
+
+# Tobias Klausmann <klausman@gentoo.org> (2017-03-03)
+# There is no luajit support on alpha. Bugs #554376, #608322.
+lua_single_target_luajit
+lua_targets_luajit
+luajittex
+
+# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
+# We currently do not have the resources to AT qt5 packages.
+# This may change when/if qt4 goes away.
+qt5
+
+# This file masks out USE flags that are simply NOT allowed in the default
+# profile for any architecture.  This works, for example, if a non-default
+# profile (such as the selinux profiles) have a USE flag associated with
+# them.
+
+# No hardware to test by the team
+3dfx
+apcupsd
+bluetooth
+bluray
+dvb
+gps
+hbci
+ios
+ipod
+mtp
+lirc
+openct
+pcmcia
+pda
+sms
+upnp
+wifi
+
+# Hardware not available on alpha
+apm
+battery
+dmi
+
+# Stuff that doesn't work on alpha, or not tested
+clang
+djbfft
+hardened
+mecab
+netbeans
+timidity
+valgrind
+vaapi
+librtmp
+rtmp
+v4l
+vpx
+kde
+kwallet
+metalink
+tremor
+fdk
+
+# Stuff that doesn't compile on alpha
+emf
+mono
+ocamlopt
+openexr
+
+# Stuff we don't want
+afs
+ots
+frei0r
+libtar
+devil
+gts
+
+# Other
+
+# Raúl Porcel <armin76@gentoo.org> (2011-04-23)
+# Needs to be tested
+video_cards_nouveau
+
+# Ben de Groot <yngwin@gentoo.org> (2009-02-11)
+# Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
+phonon
+
+# Raúl Porcel <armin76@gentoo.org> (2007-05-14)
+# Alpha doesn't have wpa_supplicant keyworded, bug 175714
+networkmanager
+
+
+# alpha doesn't have java support
+java
+pdfannotextractor
+
+# Mask vpopmail until net-mail/vpopmail goes out of package.mask
+vpopmail
+
+# We don't have any virtual/mpi (bug 111807)
+mpi
+
+# Matt Turner <mattst88@gentoo.org>
+# llvm is not keyworded
+video_cards_amdgpu
+video_cards_radeonsi
+
+# conky dependencies missing keywords related (dragonheart -20061112)
+# media-sound/mpd
+mpd
+
+# USE=d seems to break gcc-4.1.2 (#178896)
+d
+
+# uses gnat/ada which is too big to support currently
+topal
+
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
+# We don't have sys-devel/llvm
+llvm
+
+# Matt Turner <mattst88@gentoo.org> (2012-05-27)
+# net-misc/connman is not keyworded
+connman
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
+# media-libs/xine-lib is not keyworded
+xine
+
+template-haskell
+
+# nvidia cg toolkit for binary drivers
+cg
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
+# virtual/opencl is not keyworded
+opencl
+
+# Unmask once sys-libs/libunwind gets ported & keyworded.
+unwind
+
+# Tobias Klausmann <klausman@gentoo.org> (2014-07-20)
+# Mask redis USE flag everywhere since redis depends on google-perftools,
+# which are not supported on Alpha at all (assembly).
+redis
+
+# sys-libs/libseccomp has not been ported to this arch yet #524148
+seccomp

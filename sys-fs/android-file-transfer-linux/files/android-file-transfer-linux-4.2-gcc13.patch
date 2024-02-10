@@ -1,0 +1,23 @@
+https://github.com/whoozle/android-file-transfer-linux/pull/330
+
+From 4e3df60538ac047d6ab2bd030d0da47e6e630a88 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 18 Apr 2023 11:00:58 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes so some
+are no longer transitively included.
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/894788
+--- a/mtp/types.h
++++ b/mtp/types.h
+@@ -27,6 +27,7 @@
+ #include <memory>
+ #include <mutex>
+ #include <exception>
++#include <stdexcept>
+ #include <string>
+ 
+ namespace mtp

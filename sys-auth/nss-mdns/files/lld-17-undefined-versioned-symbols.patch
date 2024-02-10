@@ -1,0 +1,160 @@
+Gentoo bug: https://bugs.gentoo.org/919484
+Upstream PR: https://github.com/avahi/nss-mdns/pull/93
+diff --git a/Makefile.am b/Makefile.am
+index d5a83c1..6df75f3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -17,9 +17,6 @@
+ EXTRA_DIST=bootstrap.sh README.md ACKNOWLEDGEMENTS.md NEWS.md LICENSE
+ ACLOCAL_AMFLAGS=-I m4
+ 
+-# src
+-EXTRA_DIST += src/map-file
+-
+ AM_CFLAGS = \
+ 	-DMDNS_ALLOW_FILE=\"$(MDNS_ALLOW_FILE)\" \
+ 	-DAVAHI_SOCKET=\"$(AVAHI_SOCKET)\"
+@@ -47,29 +44,53 @@ endif
+ 
+ check_PROGRAMS = nss-test avahi-test
+ 
++src/libnss-mdns-la-map-file: $(srcdir)/src/map-file.in $(srcdir)/src/nss.h
++	$(COMPILE) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(libnss_mdns_la_CFLAGS) -E -x assembler-with-cpp -DVER_SYM_MAP_GEN -o $@ $<
++
++src/libnss-mdns-minimal-la-map-file: $(srcdir)/src/map-file.in $(srcdir)/src/nss.h
++	$(COMPILE) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(libnss_mdns_minimal_la_CFLAGS) -E -x assembler-with-cpp -DVER_SYM_MAP_GEN -o $@ $<
++
++src/libnss-mdns4-la-map-file: $(srcdir)/src/map-file.in $(srcdir)/src/nss.h
++	$(COMPILE) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(libnss_mdns4_la_CFLAGS) -E -x assembler-with-cpp -DVER_SYM_MAP_GEN -o $@ $<
++
++src/libnss-mdns4-minimal-la-map-file: $(srcdir)/src/map-file.in $(srcdir)/src/nss.h
++	$(COMPILE) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(libnss_mdns4_minimal_la_CFLAGS) -E -x assembler-with-cpp -DVER_SYM_MAP_GEN -o $@ $<
++
++src/libnss-mdns6-la-map-file: $(srcdir)/src/map-file.in $(srcdir)/src/nss.h
++	$(COMPILE) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(libnss_mdns6_la_CFLAGS) -E -x assembler-with-cpp -DVER_SYM_MAP_GEN -o $@ $<
++
++src/libnss-mdns6-minimal-la-map-file: $(srcdir)/src/map-file.in $(srcdir)/src/nss.h
++	$(COMPILE) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(libnss_mdns6_minimal_la_CFLAGS) -E -x assembler-with-cpp -DVER_SYM_MAP_GEN -o $@ $<
++
+ libnss_mdns_la_SOURCES=src/util.c src/util.h src/avahi.c src/avahi.h src/nss.c src/nss.h
++EXTRA_libnss_mdns_la_DEPENDENCIES=src/libnss-mdns-la-map-file
+ libnss_mdns_la_CFLAGS=$(AM_CFLAGS)
+-libnss_mdns_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=$(srcdir)/src/map-file
++libnss_mdns_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=src/libnss-mdns-la-map-file
+ 
+ libnss_mdns_minimal_la_SOURCES=$(libnss_mdns_la_SOURCES)
++EXTRA_libnss_mdns_minimal_la_DEPENDENCIES=src/libnss-mdns-minimal-la-map-file
+ libnss_mdns_minimal_la_CFLAGS=$(libnss_mdns_la_CFLAGS) -DMDNS_MINIMAL
+-libnss_mdns_minimal_la_LDFLAGS=$(libnss_mdns_la_LDFLAGS)
++libnss_mdns_minimal_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=src/libnss-mdns-minimal-la-map-file
+ 
+ libnss_mdns4_la_SOURCES=$(libnss_mdns_la_SOURCES)
++EXTRA_libnss_mdns4_la_DEPENDENCIES=src/libnss-mdns4-la-map-file
+ libnss_mdns4_la_CFLAGS=$(libnss_mdns_la_CFLAGS) -DNSS_IPV4_ONLY=1
+-libnss_mdns4_la_LDFLAGS=$(libnss_mdns_la_LDFLAGS)
++libnss_mdns4_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=src/libnss-mdns4-la-map-file
+ 
+ libnss_mdns4_minimal_la_SOURCES=$(libnss_mdns_la_SOURCES)
++EXTRA_libnss_mdns4_minimal_la_DEPENDENCIES=src/libnss-mdns4-minimal-la-map-file
+ libnss_mdns4_minimal_la_CFLAGS=$(libnss_mdns_la_CFLAGS) -DNSS_IPV4_ONLY=1 -DMDNS_MINIMAL
+-libnss_mdns4_minimal_la_LDFLAGS=$(libnss_mdns_la_LDFLAGS)
++libnss_mdns4_minimal_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=src/libnss-mdns4-minimal-la-map-file
+ 
+ libnss_mdns6_la_SOURCES=$(libnss_mdns_la_SOURCES)
++EXTRA_libnss_mdns6_la_DEPENDENCIES=src/libnss-mdns6-la-map-file
+ libnss_mdns6_la_CFLAGS=$(libnss_mdns_la_CFLAGS) -DNSS_IPV6_ONLY=1
+-libnss_mdns6_la_LDFLAGS=$(libnss_mdns_la_LDFLAGS)
++libnss_mdns6_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=src/libnss-mdns6-la-map-file
+ 
+ libnss_mdns6_minimal_la_SOURCES=$(libnss_mdns_la_SOURCES)
++EXTRA_libnss_mdns6_minimal_la_DEPENDENCIES=src/libnss-mdns6-minimal-la-map-file
+ libnss_mdns6_minimal_la_CFLAGS=$(libnss_mdns_la_CFLAGS) -DNSS_IPV6_ONLY=1 -DMDNS_MINIMAL
+-libnss_mdns6_minimal_la_LDFLAGS=$(libnss_mdns_la_LDFLAGS)
++libnss_mdns6_minimal_la_LDFLAGS=$(AM_LDFLAGS) -shrext .so.2 -Wl,-version-script=src/libnss-mdns6-minimal-la-map-file
+ 
+ nss_mdns_la_SOURCES=$(libnss_mdns_la_SOURCES) src/bsdnss.c
+ nss_mdns_la_CFLAGS=$(AM_CFLAGS)
+diff --git a/src/map-file b/src/map-file
+deleted file mode 100644
+index 69e7987..0000000
+--- a/src/map-file
++++ /dev/null
+@@ -1,41 +0,0 @@
+-NSSMDNS_0 {
+-global:
+-
+-_nss_mdns_gethostbyaddr_r;
+-_nss_mdns4_gethostbyaddr_r;
+-_nss_mdns6_gethostbyaddr_r;
+-_nss_mdns_minimal_gethostbyaddr_r;
+-_nss_mdns4_minimal_gethostbyaddr_r;
+-_nss_mdns6_minimal_gethostbyaddr_r;
+-
+-_nss_mdns_gethostbyname_r;
+-_nss_mdns4_gethostbyname_r;
+-_nss_mdns6_gethostbyname_r;
+-_nss_mdns_minimal_gethostbyname_r;
+-_nss_mdns4_minimal_gethostbyname_r;
+-_nss_mdns6_minimal_gethostbyname_r;
+-
+-_nss_mdns_gethostbyname2_r;
+-_nss_mdns4_gethostbyname2_r;
+-_nss_mdns6_gethostbyname2_r;
+-_nss_mdns_minimal_gethostbyname2_r;
+-_nss_mdns4_minimal_gethostbyname2_r;
+-_nss_mdns6_minimal_gethostbyname2_r;
+-
+-_nss_mdns_gethostbyname3_r;
+-_nss_mdns4_gethostbyname3_r;
+-_nss_mdns6_gethostbyname3_r;
+-_nss_mdns_minimal_gethostbyname3_r;
+-_nss_mdns4_minimal_gethostbyname3_r;
+-_nss_mdns6_minimal_gethostbyname3_r;
+-
+-_nss_mdns_gethostbyname4_r;
+-_nss_mdns4_gethostbyname4_r;
+-_nss_mdns6_gethostbyname4_r;
+-_nss_mdns_minimal_gethostbyname4_r;
+-_nss_mdns4_minimal_gethostbyname4_r;
+-_nss_mdns6_minimal_gethostbyname4_r;
+-
+-local:
+-*;
+-};
+diff --git a/src/map-file.in b/src/map-file.in
+new file mode 100644
+index 0000000..caecf41
+--- /dev/null
++++ b/src/map-file.in
+@@ -0,0 +1,14 @@
++NSSMDNS_0 {
++global:
++
++#include "nss.h"
++
++_nss_mdns_gethostbyaddr_r;
++_nss_mdns_gethostbyname2_r;
++_nss_mdns_gethostbyname3_r;
++_nss_mdns_gethostbyname4_r;
++_nss_mdns_gethostbyname_r;
++
++local:
++*;
++};
+diff --git a/src/nss.h b/src/nss.h
+index dd8dbff..d63f51c 100644
+--- a/src/nss.h
++++ b/src/nss.h
+@@ -33,6 +33,7 @@
+ #define _nss_mdns_gethostbyaddr_r _nss_mdns_minimal_gethostbyaddr_r
+ #endif
+ 
++#ifndef VER_SYM_MAP_GEN
+ // Define prototypes for nss function we're going to export (fixes GCC warnings)
+ #ifndef __FreeBSD__
+ enum nss_status _nss_mdns_gethostbyname4_r(const char*, struct gaih_addrtuple**,
+@@ -50,3 +51,4 @@ enum nss_status _nss_mdns_gethostbyaddr_r(const void*, int, int,
+                                           int*);
+ 
+ #endif
++#endif

@@ -1,0 +1,19 @@
+--- a/mac-robber.c
++++ b/mac-robber.c
+@@ -45,6 +45,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <dirent.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -238,7 +239,7 @@
+     /* Make a buffer for the full path
+      * the 2 is for 1 NULL and 1 '/' for recursive directories 
+      */
+-    path_len = dir_len + MAXNAMLEN + 2;
++    path_len = dir_len + NAME_MAX + 2;
+     if (!(curpath = (char *) malloc(path_len))) {
+         printf("error allocating space for curpath\n");
+         exit(1);

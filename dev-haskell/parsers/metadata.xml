@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="attoparsec">You can disable the use of the `attoparsec` package using `-f-attoparsec`.</flag>
+		<flag name="binary">You can disable the use of the `binary` package using `-f-binary`.</flag>
+		<flag name="parsec">You can disable the use of the `parsec` package using `-f-parsec`.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">parsers</remote-id>
+		<remote-id type="github">ekmett/parsers</remote-id>
+	</upstream>
+</pkgmetadata>

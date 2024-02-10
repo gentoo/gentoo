@@ -1,0 +1,18 @@
+Index: src/Element.cpp
+--- a/src/Element.cpp.orig
++++ b/src/Element.cpp
+@@ -279,7 +279,13 @@ CBackgroundElement::CBackgroundElement(short initx, sh
+ 
+ void	CBackgroundElement::OnAllocate()
+ {
+-	short	params[5] = {-1, xs, ys, xe - xs, ye - ys};
++	short	params[5] = {
++		-1,
++		static_cast<short>(xs),
++		static_cast<short>(ys),
++		static_cast<short>(xe - xs),
++		static_cast<short>(ye - ys)
++	};
+ 	unsigned char *tmpBmp;
+ 
+ 	tmpBmp = gShapeManager->GetBackground(params[1], params[2]);

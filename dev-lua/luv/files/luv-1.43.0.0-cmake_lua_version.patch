@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 78c0345..853ba90 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -140,7 +140,7 @@ else (LUA)
+       if (WIN32)
+         find_package(Lua REQUIRED)
+       else()
+-        find_package(Lua)
++        find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+       endif()
+       if(NOT LUA_INCLUDE_DIR)
+         message( FATAL_ERROR "Failed to find Lua headers. Variable `LUA_INCLUDE_DIR' expected to be defined.")

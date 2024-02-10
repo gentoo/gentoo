@@ -1,0 +1,28 @@
+From 3bd65679f7db2ec95abb22fef7a30a15dcc1c297 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 23 Jan 2023 19:54:23 +0100
+Subject: [PATCH] disable collada tests
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -63,7 +63,6 @@ SET( COMMON
+   unit/utSimd.cpp
+   unit/utIOSystem.cpp
+   unit/utIOStreamBuffer.cpp
+-  unit/utIssues.cpp
+   unit/utAnim.cpp
+   unit/AssimpAPITest.cpp
+   unit/AssimpAPITest_aiMatrix3x3.cpp
+@@ -137,8 +136,6 @@ SET( IMPORTERS
+   unit/utBlendImportMaterials.cpp
+   unit/utBlenderWork.cpp
+   unit/utBVHImportExport.cpp
+-  unit/utColladaExport.cpp
+-  unit/utColladaImportExport.cpp
+   unit/utCSMImportExport.cpp
+   unit/utB3DImportExport.cpp
+   #unit/utM3DImportExport.cpp
+-- 
+2.39.1
+

@@ -1,0 +1,33 @@
+--- a/giblib-config.in
++++ b/giblib-config.in
+@@ -46,7 +46,7 @@
+       ;;
+     --libs)
+       libdirs=-L@libdir@
+-      echo $libdirs -lgiblib @LDFLAGS@ @IMLIB_LIBS@
++      echo $libdirs -lgiblib @IMLIB_LIBS@
+       ;;
+     *)
+       echo "${usage}" 1>&2
+--- a/giblib.pc.in
++++ b/giblib.pc.in
+@@ -6,6 +6,6 @@
+ Name: giblib
+ Description: wrapper library for imlib2, and other stuff
+ Version: @VERSION@
+-Libs: -L${libdir} -lgiblib @LDFLAGS@ @IMLIB_LIBS@
++Libs: -L${libdir} -lgiblib @IMLIB_LIBS@
+ Cflags: -I${includedir} -I${includedir}/giblib @IMLIB_CFLAGS@
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,8 +2,7 @@
+ 
+ SUBDIRS = giblib
+ 
+-docs_DATA = README AUTHORS ChangeLog TODO
+-docsdir = $(prefix)/doc/giblib
++doc_DATA = README AUTHORS ChangeLog TODO
+ 
+ EXTRA_DIST= $(docs_DATA) giblib.pc.in
+ 

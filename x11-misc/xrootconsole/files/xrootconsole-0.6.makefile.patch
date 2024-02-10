@@ -1,0 +1,36 @@
+--- a/Makefile
++++ b/Makefile
+@@ -43,20 +43,16 @@
+             else echo Bleeding Edge Version; \
+         fi;)
+ 
+-CC = gcc
+-CPPFLAGS =
+-
+ # for production
+-CFLAGS = -O2 -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
+-    -I /usr/X11R6/include
+-LDFLAGS = -s
++CFLAGS += -DNDEBUG -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION)\"" \
++    $(shell ${PKG_CONFIG} --cflags x11)
+ 
+ # for testing
+ #CFLAGS = -g -Wall "-DXROOTCONSOLE_VERSION=\"$(VERSION) (debug build)\"" \
+     -I /usr/X11R6/include
+ #LDFLAGS = 
+ 
+-LIBS = -L/usr/X11R6/lib -lX11 -lutil
++LIBS = $(shell ${PKG_CONFIG} --libs x11) -lutil
+ 
+ OBJS = main.o util.o
+ 
+@@ -76,5 +72,7 @@
+ 	rm -f $(EXEC) *.o core *~
+ 
+ install: $(EXEC)
+-	cp $(EXEC) $(BINDIR)
+-	cp $(MANFILE) $(MANDIR)
++	install -d $(BINDIR)
++	install -d $(MANDIR)
++	install $(EXEC) $(BINDIR)
++	install $(MANFILE) $(MANDIR)

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">i3/i3lock</remote-id>
+	</upstream>
+</pkgmetadata>

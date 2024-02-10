@@ -1,0 +1,71 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of CAMERAS USE_EXPAND flags.
+
+# Keep it sorted.
+
+adc65 - libgphoto support for adc65 cameras
+agfa_cl20 - libgphoto support for agfa_cl20 cameras
+aox - libgphoto support for aox cameras
+ax203 - libgphoto support for ax203 cameras
+barbie - libgphoto support for barbie cameras
+canon - libgphoto support for canon cameras
+casio_qv - libgphoto support for casio_qv cameras
+clicksmart310 - libgphoto support for clicksmart310 cameras
+digigr8 - libgphoto support for digigr8 cameras
+digita - libgphoto support for digita cameras
+dimagev - libgphoto support for dimagev cameras
+dimera3500 - libgphoto support for dimera3500 cameras
+directory - libgphoto support for directory cameras
+enigma13 - libgphoto support for enigma13 cameras
+fuji - libgphoto support for fuji cameras
+gsmart300 - libgphoto support for gsmart300 cameras
+hp215 - libgphoto support for hp215 cameras
+iclick - libgphoto support for iclick cameras
+jamcam - libgphoto support for jamcam cameras
+jd11 - libgphoto support for jd11 cameras
+jl2005a - libgphoto support for "American Idol Keychain Camera"
+jl2005c - libgphoto support for "American Idol Keychain Camera"
+kodak_dc120 - libgphoto support for kodak_dc120 cameras
+kodak_dc210 - libgphoto support for kodak_dc210 cameras
+kodak_dc240 - libgphoto support for kodak_dc240 cameras
+kodak_dc3200 - libgphoto support for kodak_dc3200 cameras
+kodak_ez200 - libgphoto support for kodak_ez200 cameras
+konica - libgphoto support for konica cameras
+konica_qm150 - libgphoto support for konica_qm150 cameras
+largan - libgphoto support for largan cameras
+lg_gsm - libgphoto support for lg_gsm cameras
+mars - libgphoto support for mars cameras
+mustek - libgphoto support for mustek cameras
+panasonic_coolshot - libgphoto support for panasonic_coolshot cameras
+panasonic_dc1000 - libgphoto support for panasonic_dc1000 cameras
+panasonic_dc1580 - libgphoto support for panasonic_dc1580 cameras
+panasonic_l859 - libgphoto support for panasonic_l859 cameras
+pccam300 - libgphoto support for pccam300 cameras
+pccam600 - libgphoto support for pccam600 cameras
+pentax - libgphoto support for pentax cameras
+polaroid_pdc320 - libgphoto support for polaroid_pdc320 cameras
+polaroid_pdc640 - libgphoto support for polaroid_pdc640 cameras
+polaroid_pdc700 - libgphoto support for polaroid_pdc700 cameras
+ptp2 - libgphoto support for ptp2 cameras
+ricoh - libgphoto support for ricoh cameras
+ricoh_g3 - libgphoto support for ricoh_g3 cameras
+samsung - libgphoto support for samsung cameras
+sierra - libgphoto support for sierra cameras
+sipix_blink2 - libgphoto support for sipix_blink2 cameras
+sipix_web2 - libgphoto support for sipix_web2 cameras
+smal - libgphoto support for smal cameras
+sonix - libgphoto support for sonix cameras
+sony_dscf1 - libgphoto support for sony_dscf1 cameras
+sony_dscf55 - libgphoto support for sony_dscf55 cameras
+soundvision - libgphoto support for soundvision cameras
+spca50x - libgphoto support for spca50x cameras
+sq905 - libgphoto support for sq905 cameras
+st2205 - libgphoto support for st2205 cameras
+stv0674 - libgphoto support for stv0674 cameras
+stv0680 - libgphoto support for stv0680 cameras
+sx330z - libgphoto support for sx330z cameras
+topfield - libgphoto support for Topfield PVR5000 cameras
+toshiba_pdrm11 - libgphoto support for toshiba_pdrm11 cameras
+tp6801 - libgphoto support for Tenx tp6801 cameras

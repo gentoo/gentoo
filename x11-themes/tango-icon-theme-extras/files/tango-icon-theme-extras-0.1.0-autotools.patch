@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/314423
+https://bugs.gentoo.org/413183
+https://bugs.gentoo.org/486906
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,6 +6,7 @@
+ 
+ AM_INIT_AUTOMAKE([1.9 tar-ustar])
+ 
++AC_PROG_MKDIR_P
+ PKG_PROG_PKG_CONFIG([0.19])
+ 
+ # Workaround to make aclocal get the right flags
+@@ -39,9 +40,6 @@
+ AM_CONDITIONAL(ENABLE_ICON_FRAMING, test x$enable_framing = xyes)
+ 
+ if test "x$enable_framing" = "xyes"; then
+-   PKG_CHECK_EXISTS([ImageMagick >= 5.5.7],
+-                    [enable_framing=yes], [enable_framing=no])
+-   if test "x$enable_framing" = "xyes"; then
+       AC_PATH_PROG(CONVERT, convert)
+       if test -z "$CONVERT"; then
+       	 AC_MSG_ERROR([ImageMagick is required to build tango-icon-theme])
+@@ -50,9 +48,6 @@
+       # Add the command line options we need here
+       CONVERT="$CONVERT -bordercolor Transparent -border 1x1"
+       AC_SUBST(CONVERT)
+-   else
+-      AC_MSG_ERROR([ImageMagick is required to build tango-icon-theme])
+-   fi
+ fi
+ 
+ # Check for rsvg or ksvgtopng for creating large scale bitmaps from svg
+@@ -68,7 +63,7 @@
+    PKG_CHECK_EXISTS([librsvg-2.0 >= 2.12.3],
+                     [enable_large_bitmaps=yes], [enable_large_bitmaps=no])
+    if test "x$enable_large_bitmaps" = "xyes"; then
+-      svgconvert_prog="rsvg"
++      svgconvert_prog="rsvg-convert"
+    else
+       svgconvert_prog="ksvgtopng"
+    fi

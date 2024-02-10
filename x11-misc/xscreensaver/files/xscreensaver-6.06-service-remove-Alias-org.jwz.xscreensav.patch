@@ -1,0 +1,18 @@
+From f275dd14752d9dc6a2159008490c68bf968be025 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sat, 29 Jul 2023 11:52:22 +0200
+Subject: xscreensaver.service: remove Alias=org.jwz.xscreensaver
+
+$ systemctl --user enable xscreensaver
+Failed to enable unit: Cannot alias xscreensaver.service as org.jwz.xscreensaver.
+--- a/driver/xscreensaver.service.in
++++ b/driver/xscreensaver.service.in
+@@ -14,5 +14,4 @@ Restart=on-failure
+ OOMScoreAdjust=-1000
+ 
+ [Install]
+-Alias=org.jwz.xscreensaver
+ WantedBy=default.target
+-- 
+2.41.0
+

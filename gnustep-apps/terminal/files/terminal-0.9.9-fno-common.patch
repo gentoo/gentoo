@@ -1,0 +1,12 @@
+diff -Naur Terminal-0.9.9.orig/TerminalWindow.h Terminal-0.9.9/TerminalWindow.h
+--- Terminal-0.9.9.orig/TerminalWindow.h	2016-06-10 19:50:22.000000000 +0200
++++ Terminal-0.9.9/TerminalWindow.h	2020-09-16 18:31:15.680833836 +0200
+@@ -17,7 +17,7 @@
+ #import <AppKit/NSWindowController.h>
+ #import <AppKit/NSTabView.h>
+ 
+-NSString *TerminalWindowNoMoreActiveWindowsNotification;
++extern NSString *TerminalWindowNoMoreActiveWindowsNotification;
+ 
+ @interface TerminalWindowController : NSWindowController
+ {

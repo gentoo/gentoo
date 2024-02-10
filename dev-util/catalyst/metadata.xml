@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>catalyst@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="ccache">Enables ccache support</flag>
+    <flag name="iso">Pulls in the depends for building iso images</flag>
+    <flag name="system-bootloader">Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar</flag>
+  </use>
+  <upstream>
+    <remote-id type="gentoo">proj/catalyst</remote-id>
+    <remote-id type="github">gentoo/catalyst</remote-id>
+  </upstream>
+</pkgmetadata>

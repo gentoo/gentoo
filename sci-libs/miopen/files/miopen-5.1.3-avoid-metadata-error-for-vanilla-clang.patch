@@ -1,0 +1,183 @@
+Together with find-sed command in 5.1.3 ebuild, this fixes
+https://github.com/ROCmSoftwarePlatform/MIOpen/issues/1731
+index 71b2cabf1..60e7fab6e 100644
+--- a/src/kernels/Conv_Winograd_v13_3_12_epilogue.inc
++++ b/src/kernels/Conv_Winograd_v13_3_12_epilogue.inc
+@@ -76,7 +76,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: N }
++    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: X }
+     - { .size: 4, .offset: 4,   .value_kind: by_value,      .value_type: i32, .name: C }
+     - { .size: 4, .offset: 8,   .value_kind: by_value,      .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12,  .value_kind: by_value,      .value_type: i32, .name: W }
+diff --git a/src/kernels/Conv_Winograd_v16_5_0_epilogue.inc b/src/kernels/Conv_Winograd_v16_5_0_epilogue.inc
+index 36d47c862..f8f677ec6 100644
+--- a/src/kernels/Conv_Winograd_v16_5_0_epilogue.inc
++++ b/src/kernels/Conv_Winograd_v16_5_0_epilogue.inc
+@@ -76,7 +76,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: N }
++    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: X }
+     - { .size: 4, .offset: 4,   .value_kind: by_value,      .value_type: i32, .name: C }
+     - { .size: 4, .offset: 8,   .value_kind: by_value,      .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12,  .value_kind: by_value,      .value_type: i32, .name: W }
+diff --git a/src/kernels/Conv_Winograd_v21_1_3_metadata.inc b/src/kernels/Conv_Winograd_v21_1_3_metadata.inc
+index deff81e84..ed47abea7 100644
+--- a/src/kernels/Conv_Winograd_v21_1_3_metadata.inc
++++ b/src/kernels/Conv_Winograd_v21_1_3_metadata.inc
+@@ -51,7 +51,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:   0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:   0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:   4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:   8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset:  12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/conv1x1u.s b/src/kernels/conv1x1u.s
+index 5dc213546..c890d45a4 100644
+--- a/src/kernels/conv1x1u.s
++++ b/src/kernels/conv1x1u.s
+@@ -1076,7 +1076,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:  4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:  8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/conv1x1u_bias_activ.s b/src/kernels/conv1x1u_bias_activ.s
+index 1675e819a..6bbdd9936 100644
+--- a/src/kernels/conv1x1u_bias_activ.s
++++ b/src/kernels/conv1x1u_bias_activ.s
+@@ -1230,7 +1230,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:  4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:  8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/conv1x1u_stride2.s b/src/kernels/conv1x1u_stride2.s
+index c5ea1e90c..6241edcf7 100644
+--- a/src/kernels/conv1x1u_stride2.s
++++ b/src/kernels/conv1x1u_stride2.s
+@@ -1162,7 +1162,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:  4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:  8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/conv1x1wrw.s b/src/kernels/conv1x1wrw.s
+index b13b6ffa4..eb63f17c6 100644
+--- a/src/kernels/conv1x1wrw.s
++++ b/src/kernels/conv1x1wrw.s
+@@ -1243,7 +1243,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:  4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:  8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/conv3x3wrw.s b/src/kernels/conv3x3wrw.s
+index a3f73aeae..b6fb1632c 100755
+--- a/src/kernels/conv3x3wrw.s
++++ b/src/kernels/conv3x3wrw.s
+@@ -1033,7 +1033,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:  0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:  4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:  8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/conv_3x3_wheel_alpha_v3_0b_epilogue.inc b/src/kernels/conv_3x3_wheel_alpha_v3_0b_epilogue.inc
+index 358772e63..b27ad5284 100644
+--- a/src/kernels/conv_3x3_wheel_alpha_v3_0b_epilogue.inc
++++ b/src/kernels/conv_3x3_wheel_alpha_v3_0b_epilogue.inc
+@@ -76,7 +76,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: N }
++    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: X }
+     - { .size: 4, .offset: 4,   .value_kind: by_value,      .value_type: i32, .name: C }
+     - { .size: 4, .offset: 8,   .value_kind: by_value,      .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12,  .value_kind: by_value,      .value_type: i32, .name: W }
+diff --git a/src/kernels/conv_3x3_wheel_alpha_v7_0_3b_epilogue.inc b/src/kernels/conv_3x3_wheel_alpha_v7_0_3b_epilogue.inc
+index d3296969a..f873ce153 100644
+--- a/src/kernels/conv_3x3_wheel_alpha_v7_0_3b_epilogue.inc
++++ b/src/kernels/conv_3x3_wheel_alpha_v7_0_3b_epilogue.inc
+@@ -76,7 +76,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: N }
++    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: X }
+     - { .size: 4, .offset: 4,   .value_kind: by_value,      .value_type: i32, .name: C }
+     - { .size: 4, .offset: 8,   .value_kind: by_value,      .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12,  .value_kind: by_value,      .value_type: i32, .name: W }
+diff --git a/src/kernels/conv_3x3_wheel_alpha_v9_0_15_epilogue.inc b/src/kernels/conv_3x3_wheel_alpha_v9_0_15_epilogue.inc
+index a253cc0f9..1582d002c 100644
+--- a/src/kernels/conv_3x3_wheel_alpha_v9_0_15_epilogue.inc
++++ b/src/kernels/conv_3x3_wheel_alpha_v9_0_15_epilogue.inc
+@@ -76,7 +76,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: N }
++    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: X }
+     - { .size: 4, .offset: 4,   .value_kind: by_value,      .value_type: i32, .name: C }
+     - { .size: 4, .offset: 8,   .value_kind: by_value,      .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12,  .value_kind: by_value,      .value_type: i32, .name: W }
+diff --git a/src/kernels/conv_3x3_wheel_alpha_v9_2_7_epilogue.inc b/src/kernels/conv_3x3_wheel_alpha_v9_2_7_epilogue.inc
+index e40ac1f60..78495e024 100644
+--- a/src/kernels/conv_3x3_wheel_alpha_v9_2_7_epilogue.inc
++++ b/src/kernels/conv_3x3_wheel_alpha_v9_2_7_epilogue.inc
+@@ -76,7 +76,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: N }
++    - { .size: 4, .offset: 0,   .value_kind: by_value,      .value_type: i32, .name: X }
+     - { .size: 4, .offset: 4,   .value_kind: by_value,      .value_type: i32, .name: C }
+     - { .size: 4, .offset: 8,   .value_kind: by_value,      .value_type: i32, .name: H }
+     - { .size: 4, .offset: 12,  .value_kind: by_value,      .value_type: i32, .name: W }
+diff --git a/src/kernels/xform_bidirect_winograd_code.inc b/src/kernels/xform_bidirect_winograd_code.inc
+index 724845f49..d03314ef5 100644
+--- a/src/kernels/xform_bidirect_winograd_code.inc
++++ b/src/kernels/xform_bidirect_winograd_code.inc
+@@ -1566,7 +1566,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:   0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:   0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:   4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:   8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset:  12, .value_kind: by_value, .value_type: i32, .name: W }
+diff --git a/src/kernels/xform_metadata.inc b/src/kernels/xform_metadata.inc
+index 960a9a2d8..83b736bee 100644
+--- a/src/kernels/xform_metadata.inc
++++ b/src/kernels/xform_metadata.inc
+@@ -74,7 +74,7 @@ amdhsa.kernels:
+     .max_flat_workgroup_size: \wg_x
+     .wavefront_size: 64
+     .args:
+-    - { .size: 4, .offset:   0, .value_kind: by_value, .value_type: i32, .name: N }
++    - { .size: 4, .offset:   0, .value_kind: by_value, .value_type: i32, .name: X }
+     - { .size: 4, .offset:   4, .value_kind: by_value, .value_type: i32, .name: C }
+     - { .size: 4, .offset:   8, .value_kind: by_value, .value_type: i32, .name: H }
+     - { .size: 4, .offset:  12, .value_kind: by_value, .value_type: i32, .name: W }

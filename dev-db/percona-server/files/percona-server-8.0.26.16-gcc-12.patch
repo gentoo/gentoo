@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/842168
+https://bugs.gentoo.org/853085
+https://bugs.gentoo.org/855170
+--- a/client/logger.cc
++++ b/client/logger.cc
+@@ -27,6 +27,7 @@
+ #include <time.h>
+ #include <iostream>
+ #include <locale>
++#include <memory>
+ 
+ using namespace std;
+ 
+--- a/components/keyrings/common/component_helpers/src/keyring_log_builtins_definition.cc
++++ b/components/keyrings/common/component_helpers/src/keyring_log_builtins_definition.cc
+@@ -25,6 +25,7 @@
+ #include <cstring>
+ #include <iostream>
+ #include <locale>
++#include <memory>
+ #include <sstream>
+ 
+ #include <m_string.h>
+--- a/plugin/auth_ldap/src/connection.cc
++++ b/plugin/auth_ldap/src/connection.cc
+@@ -1,6 +1,7 @@
+ #include "plugin/auth_ldap/include/connection.h"
+ 
+ #include <iostream>
++#include <iterator>
+ #include <regex>
+ 
+ #include "plugin/auth_ldap/include/plugin_log.h"
+diff --git a/router/src/harness/include/mysql/harness/net_ts/executor.h b/router/src/harness/include/mysql/harness/net_ts/executor.h
+index 5cf514b..ec61168 100644
+--- a/router/src/harness/include/mysql/harness/net_ts/executor.h
++++ b/router/src/harness/include/mysql/harness/net_ts/executor.h
+@@ -36,6 +36,7 @@
+ #include <thread>
+ #include <type_traits>  // decay_t, enable_if
+ #include <unordered_map>
++#include <utility>
+ 
+ #include "mysql/harness/net_ts/netfwd.h"
+ #include "mysql/harness/stdx/type_traits.h"  // conjunction, void_t

@@ -1,0 +1,77 @@
+From 36b952bdcdc301a600009308bff90440b6ceab5b Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Thu, 21 Jun 2018 15:57:01 +0100
+Subject: [PATCH 4/4] fix cast between incompatible function types
+
+---
+ modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp | 8 ++++++--
+ .../src/main/native-glass/gtk/glass_window_ime.cpp       | 9 +++------
+ 2 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp b/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp
+index f85b1dae..3b9225f7 100644
+--- a/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp
++++ b/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp
+@@ -556,7 +556,7 @@ static GdkDragContext *get_drag_context() {
+     return ctx;
+ }
+ 
+-static gboolean dnd_finish_callback() {
++static gboolean dnd_finish_callback(gpointer data) {
+     if (dnd_window) {
+         dnd_set_performed_action(
+                 translate_gdk_action_to_glass(
+@@ -1079,6 +1079,10 @@ gboolean DragView::get_drag_image_offset(int* x, int* y) {
+     return offset_set;
+ }
+ 
++static void on_pixbuf_destroy_notify(guchar *pixels, gpointer data) {
++	g_free(pixels);
++}
++
+ GdkPixbuf* DragView::get_drag_image(gboolean* is_raw_image, gint* width, gint* height) {
+     GdkPixbuf *pixbuf = NULL;
+     gboolean is_raw = FALSE;
+@@ -1106,7 +1110,7 @@ GdkPixbuf* DragView::get_drag_image(gboolean* is_raw_image, gint* width, gint* h
+                     if (data) {
+                         memcpy(data, (raw + whsz), nraw - whsz);
+                         pixbuf = gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8,
+-                                w, h, w * 4, (GdkPixbufDestroyNotify) g_free, NULL);
++                                w, h, w * 4, (GdkPixbufDestroyNotify) on_pixbuf_destroy_notify, NULL);
+                     }
+                 }
+             }
+diff --git a/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp b/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp
+index 82e54d11..51af2a6a 100644
+--- a/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp
++++ b/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp
+@@ -122,15 +122,12 @@ bool WindowContextBase::filterIME(GdkEvent * event) {
+     }
+ }
+ 
+-//Note: this function must return int, despite the fact it doesn't conform to XIMProc type.
+-// This is required in documentation of XIM
+-static int im_preedit_start(XIM im_xim, XPointer client, XPointer call) {
++static void im_preedit_start(XIM im_xim, XPointer client, XPointer call) {
+     (void)im_xim;
+     (void)call;
+ 
+     mainEnv->CallVoidMethod((jobject) client, jViewNotifyPreeditMode, JNI_TRUE);
+-    CHECK_JNI_EXCEPTION_RET(mainEnv, -1);
+-    return -1; // No restrictions
++    CHECK_JNI_EXCEPTION(mainEnv);
+ }
+ 
+ static void im_preedit_done(XIM im_xim, XPointer client, XPointer call) {
+@@ -234,7 +231,7 @@ void WindowContextBase::enableOrResetIME() {
+             return;
+         }
+ 
+-        XIMCallback startCallback = {(XPointer) jview, (XIMProc) im_preedit_start};
++        XIMCallback startCallback = {(XPointer) jview, im_preedit_start};
+         XIMCallback doneCallback = {(XPointer) jview, im_preedit_done};
+         XIMCallback drawCallback = {(XPointer) jview, im_preedit_draw};
+         XIMCallback caretCallback = {(XPointer) jview, im_preedit_caret};
+-- 
+2.17.1
+

@@ -1,0 +1,237 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-01-17)
+# The generated code is too large and it takes ages to build, bug #922249.
+dev-python/mypy native-extensions
+
+# Sam James <sam@gentoo.org> (2024-01-05)
+# sys-apps/keyutils not stable here, because of test failures. bug #636252
+app-benchmarks/stress-ng keyutils
+app-crypt/mit-krb5 keyutils
+app-emulation/qemu keyutils
+net-fs/cifs-utils ads creds pam
+net-fs/samba ads
+sys-auth/sssd keyutils
+sys-libs/libnvme keyutils
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-15)
+# Need dev-python/notebook (that indirectly requires net-libs/nodejs).
+dev-python/ipython notebook
+dev-python/nbclient test
+dev-python/nbconvert test
+
+# Sam James <sam@gentoo.org> (2023-10-08)
+# dev-db/mysql not keyworded/stable here
+dev-perl/DBD-mysql mysql
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-build/cmake gui
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# sys-apps/flatpak is not keyworded here
+sys-apps/xdg-desktop-portal flatpak
+
+# Matt Turner <mattst88@gentoo.org> (2023-05-30)
+# sys-apps/dbus-broker is not keyworded
+app-accessibility/at-spi2-core dbus-broker
+
+# Sam James <sam@gentoo.org> (2023-05-19)
+# kde-frameworks/kwayland:5 is not keyworded here.
+app-crypt/pinentry wayland
+
+# Sam James <sam@gentoo.org> (2023-05-06)
+# sci-libs/vtk not keyworded here (+ lots of unkw'd deps), bug #778293
+sci-mathematics/maxima vtk
+
+# Sam James <sam@gentoo.org> (2023-05-06)
+# Broken bundled Eigen, fails to compile. See bug #865191.
+sci-geosciences/grass pdal
+sci-libs/vtk pdal
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not keyworded
+dev-python/nbval test
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# dev-db/mysql not stable here
+dev-ruby/mysql2 mysql
+
+# Sam James <sam@gentoo.org> (2023-01-05)
+# dev-python/pythran fails tests on ppc32 right now, bug #880263
+dev-python/scipy fortran
+
+# Sam James <sam@gentoo.org> (2022-12-26)
+# Unkeyworded dependencies
+dev-util/diffoscope opendocument pascal pdf R
+
+# Sam James <sam@gentoo.org> (2022-11-19)
+# Fails to compile because of size, bug #829602.
+sys-devel/clang extra
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 bluetooth location speech
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
+# Matt Turner <mattst88@gentoo.org> (2022-07-28)
+# kde-frameworks/plasma not keyworded here
+app-i18n/uim kde
+
+# Lars Wendler <polynomial-c@gentoo.org> (2022-04-22)
+# gnome-base/librsvg missing keywords
+media-libs/freetype svg
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
+# Now requires dev-java/rhino which is not keyworded
+net-misc/plowshare javascript
+
+# Maciej Barć <xgqt@gentoo.org> (2022-03-10)
+# Java and Tex dependencies required to build documentation are not keyworded,
+# notably dev-java/antlr-tool and dev-python/sphinxcontrib-bibtex.
+# Reference: bug 750956
+>=sci-mathematics/coq-8.15.0 doc
+
+# Sam James <sam@gentoo.org> (2022-03-10)
+# Boost has support for PPC32
+# https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
+dev-libs/boost -context
+
+# Sam James <sam@gentoo.org> (2021-12-08)
+# Masks involving webkit-gtk; webkit-gtk was dekeyworded on ppc for a while.
+# We haven't (yet?) restored keywords for all the bits we had to drop, so
+# keep masks here (for now?).
+# Needs unkeyworded gnome-extra/sushi
+gnome-base/nautilus previewer
+# needs gnome-extra/sushi, depends on net-libs/webkit-gtk
+gnome-base/nautilus previewer
+# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
+gnome-base/gvfs google
+# needs mail-client/evolution, depends on net-libs/webkit-gtk
+net-mail/lbdb evo
+
+# Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
+# gnome-base/librsvg has no stable keywords here, bug #807130
+app-admin/conky lua-rsvg
+
+# Akinori Hattori <hattya@gentoo.org> (2021-10-24)
+# Requires unkeyworded dependencies
+app-i18n/uim kde
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-25)
+# gdm requires gnome-shell requires rustified librsvg.
+x11-misc/xscreensaver gdm
+
+# Matt Turner <mattst88@gentoo.org> (2021-07-23)
+# gui-libs/gtk is not keyworded
+net-libs/gssdp gtk
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects zamaudio
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Sam James <sam@gentoo.org> (2021-03-11)
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif
+www-client/links avif
+dev-lang/php avif
+
+# Sam James <sam@gentoo.org> (2021-02-28)
+# compiler-rt* has no support for ppc32 (yet?)
+# bug #708344
+sys-devel/clang-runtime compiler-rt sanitize
+sys-devel/clang-common default-compiler-rt
+sys-devel/clang default-compiler-rt
+
+# Florian Schmaus <flo@geekplace.eu> (2020-12-03)
+# Rubber's testsuite depends on media-gfx/asymptote and
+# dev-tex/pythontex which are not keyworded on ppc.
+# bug #766150
+dev-tex/rubber test
+
+# Mark Wright <gienah@gentoo.org> (2020-10-11)
+# dev-ml/ounit2 is not keyworded
+dev-ml/cudf test
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on ppc
+app-text/texlive-core -xindy
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-05-09)
+# No sys-cluster/ceph keywords on ppc.
+sys-block/tgt rbd
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
+# USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+media-libs/libv4l bpf
+media-tv/v4l-utils bpf
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -debug
+
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
+# sys-cluster/hpx, sci-libs/silo not keyworded
+sci-libs/libgeodecomp hpx silo
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
+# app-text/libwpd and app-text/libwpg are not keyworded
+media-gfx/inkscape cdr visio wpg
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-09-01)
+# The dependency is not keyworded
+net-analyzer/wireshark bcg729
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2017-10-03)
+# Incomplete support, bug #605878.
+net-vpn/tor seccomp
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
+# Dropping ppc from sci-libs/armadillo, bug 555896
+sci-libs/gdal armadillo
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
+# kde-frameworks/*:5 not keyworded.
+net-irc/kvirc kde
+
+# James Le Cuirot <chewi@gentoo.org> (2015-01-12)
+# Java is no longer supported on ppc.
+app-text/texlive pdfannotextractor
+dev-lang/logtalk fop
+
+# Pacho Ramos <pacho@gentoo.org> (2015-06-02)
+# Missing keywords (2015-06-02)
+net-misc/connman openconnect
+
+# Julian Ospald <hasufell@gentoo.org> (2013-11-23)
+# FIXME: app-arch/innoextract not available under ppc yet
+games-fps/duke3d-data gog

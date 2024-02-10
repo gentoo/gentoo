@@ -1,0 +1,31 @@
+diff -urNp bsign-0.4.5/configure.in bsign-0.4.5.new/configure.in
+--- bsign-0.4.5/configure.in	2002-01-18 03:16:44.000000000 +0200
++++ bsign-0.4.5.new/configure.in	2013-06-16 00:54:36.470673947 +0300
+@@ -14,12 +14,8 @@ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+ 
+-CFLAGS=-g
+-CXXFLAGS=-g
+-
+ if test "${GXX}" = "yes" ; then 
+  CFLAGS_W=" -Wall -Wno-parentheses -Wno-unused" 
+- CFLAGS="${CFLAGS}"
+ fi
+ 
+ dnl Checks for header files.
+diff -urNp bsign-0.4.5/Makefile.in bsign-0.4.5.new/Makefile.in
+--- bsign-0.4.5/Makefile.in	2002-01-27 22:56:56.000000000 +0200
++++ bsign-0.4.5.new/Makefile.in	2013-06-16 00:56:30.254676986 +0300
+@@ -56,9 +56,8 @@ CFLAGS=@CFLAGS@ @DEFS@
+ #CFLAGS_O=-O2 -fomit-frame-pointer
+ #CFLAGS_P=$(CFLAGS) -pg
+ CFLAGS_=-g $(CFLAGS_I)@CFLAGS_W@ $(CFLAGS_O) $(CFLAGS_P)
+-CXXFLAGS=$(CFLAGS)
+-CXXFLAGS_=$(CFLAGS_)
+-LFLAGS=-g -static @LDFLAGS@ @LIBS@
++CXXFLAGS=@CXXFLAGS@ @DEFS@
++LFLAGS=-g @LDFLAGS@ @LIBS@
+ #LFLAGS=-g @LDFLAGS@ @LIBS@
+ #LFLAGS=-pg ${LFLAGS}
+ DEPEND=depend.m

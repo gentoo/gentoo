@@ -1,0 +1,53 @@
+--- a/Changes
++++ b/Changes
+@@ -1,4 +1,7 @@
+ VERSION	DATE		WHAT WAS FIXED OR WHAT WAS/IS NEW
++
++	2 Jul 2002	2.4/2.5 patch
++
+ 1.05b11 7 Mar 2002	Support for multiple interfaces
+ 
+ 1.05b7	2 Apr 1998	Keeps LEDs deattached also after VT is reset if run
+--- a/tleds.c
++++ b/tleds.c
+@@ -43,16 +43,6 @@
+ #define VERSION	"1.05beta11"
+ #define MYNAME	"tleds"
+ 
+-/* Supported kernel version */
+-/* If you want to compile for Linux 2.1.x add -DKERNEL2_1 to gcc options. */
+-/* Currently kernel v2.1.97 is "tested", older v2.1.x kernels may not work */
+-#ifdef KERNEL2_1
+-#undef KERNEL2_1
+-#define KERNEL2_0 0
+-#else
+-#define KERNEL2_0 1
+-#endif
+-
+ /* If you don't want X stuff. */
+ #ifdef NO_X_SUPPORT
+ #define REMOVE_X_CODE 1
+--- a/Makefile
++++ b/Makefile
+@@ -9,18 +9,18 @@
+ 
+ # For 2.1.x kernels, you have to include -DKERNEL2_1 option for gcc
+ 
+-GCCOPTS = -D_GNU_SOURCE -O3 -Wall 
++GCCOPTS = -D_GNU_SOURCE $(CFLAGS) $(LDFLAGS) -Wall 
+ 
+ # The first one is if you want to include X code
+ xtleds:	tleds.c Makefile
+ 	# Making xtleds
+-	gcc $(GCCOPTS) -o xtleds tleds.c -I /usr/X11R6/include/ -L /usr/X11R6/lib/ -lX11
++	$(CC) $(GCCOPTS) -o xtleds tleds.c -I /usr/include/ -L /usr/lib/ -lX11
+ 
+ # This second one works only when started in VT. Check the REMOVE_X_CODE
+ # in the source code.
+ tleds:	tleds.c Makefile
+ 	# Making tleds
+-	gcc -DNO_X_SUPPORT $(GCCOPTS) -o tleds tleds.c
++	$(CC) -DNO_X_SUPPORT $(GCCOPTS) -o tleds tleds.c
+ 
+ help:
+ 	# make help	-	this.

@@ -1,0 +1,12 @@
+diff --git a/src/providers/krb5/krb5_auth.c b/src/providers/krb5/krb5_auth.c
+index a1c0b36..207c010 100644
+--- a/src/providers/krb5/krb5_auth.c
++++ b/src/providers/krb5/krb5_auth.c
+@@ -1037,6 +1037,7 @@ static void krb5_auth_done(struct tevent_req *subreq)
+     case ERR_ACCOUNT_LOCKED:
+         state->pam_status = PAM_PERM_DENIED;
+         state->dp_err = DP_ERR_OK;
++        state->pd->account_locked = true;
+         ret = EOK;
+         goto done;
+

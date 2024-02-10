@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>vim@gentoo.org</email>
+    <name>Gentoo Vim Project</name>
+  </maintainer>
+  <use>
+    <flag name="boost">Enable boost support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">msgpack/msgpack-c</remote-id>
+  </upstream>
+</pkgmetadata>

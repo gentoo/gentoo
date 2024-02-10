@@ -1,0 +1,15 @@
+--- a/scribus/third_party/Qt-Advanced-Docking-System/src/CMakeLists.txt
++++ b/scribus/third_party/Qt-Advanced-Docking-System/src/CMakeLists.txt
+@@ -123,12 +123,6 @@ install(FILES ${ads_HEADERS}
+     DESTINATION include/${library_name}
+     COMPONENT headers
+ )
+-install(FILES
+-    "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/../gnu-lgpl-v2.1.md"
+-    DESTINATION license/ads
+-    COMPONENT license
+-)
+ install(TARGETS ${library_name}
+     EXPORT adsTargets
+     RUNTIME DESTINATION bin

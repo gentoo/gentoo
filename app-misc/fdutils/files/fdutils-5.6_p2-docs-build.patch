@@ -1,0 +1,13 @@
+Use modern autoconf-archive macro to ensure @CC_FOR_BUILD@ and such gets
+replaced in Makefiles.
+--- a/configure.in
++++ b/configure.in
+@@ -9,7 +9,7 @@ AC_PROG_CC
+ AC_PROG_GCC_TRADITIONAL
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+-AX_CC_FOR_BUILD
++AX_PROG_CC_FOR_BUILD
+ 
+ AC_PATH_PROG(INSTALL_INFO, install-info, "")
+ 

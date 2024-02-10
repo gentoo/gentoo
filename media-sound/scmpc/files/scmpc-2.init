@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net mpd
+}
+
+start() {
+	ebegin "Starting scmpc"
+	/usr/bin/scmpc -f /etc/scmpc.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping scmpc"
+	/usr/bin/scmpc -kf /etc/scmpc.conf
+	eend $?
+}

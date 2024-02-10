@@ -1,0 +1,38 @@
+disable ssp usage in yaboot itself
+
+unfortunately, since we link against external libs that themselves were built
+with ssp turned on, we have to provide stubs to keep the linking from failing
+
+--- yaboot-1.3.13/Config.gentoo
++++ yaboot-1.3.13/Config.gentoo
+@@ -0,0 +1,6 @@
++check_gcc=$(shell if $(CC) $(1) -S -o /dev/null -xc /dev/null > /dev/null 2>&1; \
++	then echo "$(1)"; else echo "$(2)"; fi)
++
++CFLAGS     += $(call check_gcc, -fno-stack-protector)
++CFLAGS     += $(call check_gcc, --nopie)
++
+--- yaboot-1.3.13/Makefile
++++ yaboot-1.3.13/Makefile
+@@ -1,6 +1,7 @@
+ ## Setup
+ 
+ include Config
++include Config.gentoo
+ 
+ VERSION = 1.3.13
+ # Debug mode (spam/verbose)
+@@ -79,7 +80,7 @@ HOSTCFLAGS = -O2 $(CFLAGS) -Wall -I/usr/
+ 	second/fs_of.o second/fs_ext2.o second/fs_iso.o second/fs_swap.o \
+ 	second/iso_util.o \
+ 	lib/nonstd.o \
+-	lib/nosys.o lib/string.o lib/strtol.o lib/vsprintf.o lib/ctype.o lib/malloc.o lib/strstr.o
++	lib/nosys.o lib/string.o lib/strtol.o lib/vsprintf.o lib/ctype.o lib/malloc.o lib/strstr.o lib/ssp.o
+ 
+ ifeq ($(USE_MD5_PASSWORDS),y)
+ OBJS += second/md5.o
+--- yaboot-1.3.14/lib/ssp.c
++++ yaboot-1.3.14/lib/ssp.c
+@@ -0,0 +1,2 @@
++void __stack_chk_fail(void) {}
++void __stack_chk_fail_local(void) {}

@@ -1,0 +1,10 @@
+--- a/ethersrv-linux.c
++++ b/ethersrv-linux.c
+@@ -31,7 +31,6 @@
+ #include <arpa/inet.h>       /* htons() */
+ #include <errno.h>
+ #include <endian.h>          /* le16toh(), le32toh() */
+-#include <linux/if_ether.h>
+ #include <linux/if_packet.h>
+ #include <limits.h>          /* PATH_MAX and such */
+ #include <net/ethernet.h>

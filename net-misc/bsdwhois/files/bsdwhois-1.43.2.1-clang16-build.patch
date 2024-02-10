@@ -1,0 +1,21 @@
+Clang16 will not allow implicit function declarations and implicit integers etc.
+This patch overhauls the source code for modern C.
+
+Bug: https://bugs.gentoo.org/875029
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/strnstr.c
++++ b/strnstr.c
+@@ -46,10 +46,7 @@ static char sccsid[] = "@(#)strstr.c	8.1 (Berkeley) 6/4/93";
+  * first slen characters of s.
+  */
+ char *
+-strnstr(s, find, slen)
+-	const char *s;
+-	const char *find;
+-	size_t slen;
++strnstr(const char *s, const char *find, size_t slen)
+ {
+ 	char c, sc;
+ 	size_t len;

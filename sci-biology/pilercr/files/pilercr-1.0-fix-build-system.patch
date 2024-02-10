@@ -1,0 +1,34 @@
+Make build system honour user variables
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,4 @@
+-CFLAGS = -O3 -funroll-loops -Winline -DNDEBUG=1
+-#CFLAGS = -O3 -funroll-loops -Winline
+-LDLIBS = -lm -static
+-# LDLIBS = -lm
++LDLIBS = -lm
+ 
+ OBJ = .o
+ EXE =
+@@ -9,17 +6,13 @@
+ RM = rm -f
+ CP = cp
+ 
+-GPP = g++
+-LD = $(GPP) $(CFLAGS)
+-CPP = $(GPP) -c $(CFLAGS) 
+-
+ all: pilercr
+ 
+ CPPSRC = $(sort $(wildcard *.cpp))
+ CPPOBJ	= $(subst .cpp,.o,$(CPPSRC))
+ 
+-$(CPPOBJ): %.o: %.cpp
+-	$(CPP) $< -o $@
++%.o: %.cpp
++	$(CXX) $(CXXFLAGS) -DNDEBUG $(CPPFLAGS) -c $< -o $@
+ 
+ pilercr: $(CPPOBJ)
+-	$(LD) -o pilercr $(CPPOBJ) $(LDLIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o pilercr $(CPPOBJ) $(LDLIBS)

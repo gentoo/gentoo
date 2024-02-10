@@ -1,0 +1,15 @@
+patch by Marc Haber <mh+debian-packages@zugschlus.de>
+
+--- a/Docs/ippl.conf.man
++++ b/Docs/ippl.conf.man
+@@ -222,9 +222,7 @@
+ .SS Protocol
+ .PP
+ protocol is one of the supported protocols (see the protocols
+-section), except the
+-.I all
+-keyword, which is not supported.
++section).
+ 
+ .SS Description
+ .PP

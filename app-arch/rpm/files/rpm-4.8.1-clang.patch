@@ -1,0 +1,52 @@
+https://github.com/rpm-software-management/rpm/commit/6ad8a71407b173b6c50d389f01edd8a4aecd6807
+--- a/lib/fsm.c
++++ b/lib/fsm.c
+@@ -1015,27 +1015,28 @@
+             }
+ 
+ setmeta:
+-	    /* Special files require path-based ops */
+-	    int mayopen = S_ISREG(fp->sb.st_mode) || S_ISDIR(fp->sb.st_mode);
+-	    if (!rc && fd == -1 && mayopen) {
+-		int flags = O_RDONLY;
+-		/* Only follow safe symlinks, and never on temporary files */
+-		if (fp->suffix)
+-		    flags |= AT_SYMLINK_NOFOLLOW;
+-		fd = fsmOpenat(di.dirfd, fp->fpath, flags,
+-				S_ISDIR(fp->sb.st_mode));
+-		if (fd < 0)
+-		    rc = RPMERR_OPEN_FAILED;
+-	    }
++		{
++		    /* Special files require path-based ops */
++		    int mayopen = S_ISREG(fp->sb.st_mode) || S_ISDIR(fp->sb.st_mode);
++		    if (!rc && fd == -1 && mayopen) {
++			int flags = O_RDONLY;
++			/* Only follow safe symlinks, and never on temporary files */
++			if (fp->suffix)
++			    flags |= AT_SYMLINK_NOFOLLOW;
++			fd = fsmOpenat(di.dirfd, fp->fpath, flags,
++					S_ISDIR(fp->sb.st_mode));
++			if (fd < 0)
++			    rc = RPMERR_OPEN_FAILED;
++		    }
++	        if (!rc && fp->setmeta) {
++	    		rc = fsmSetmeta(fd, di.dirfd, fp->fpath,
++	    			fi, plugins, fp->action,
++	    			&fp->sb, nofcaps);
++	        }
+ 
+-	    if (!rc && fp->setmeta) {
+-		rc = fsmSetmeta(fd, di.dirfd, fp->fpath,
+-				fi, plugins, fp->action,
+-				&fp->sb, nofcaps);
+-	    }
+-
+-	    if (fd != firstlinkfile)
+-		fsmClose(&fd);
++	        if (fd != firstlinkfile)
++	    		fsmClose(&fd);
++		}
+ 	}
+ 
+ 	/* Notify on success. */

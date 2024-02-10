@@ -1,0 +1,53 @@
+--- a/hdr/cpuz80.h
++++ b/hdr/cpuz80.h
+@@ -5,7 +5,7 @@
+ #  include "raze.h"
+ #else
+ #  include "cmz80.h"
+-CONTEXTMZ80 cpuz80_z80; /* extern'd for save state code */
++extern CONTEXTMZ80 cpuz80_z80; /* extern'd for save state code */
+ #endif
+ 
+ #define LEN_SRAM 0x2000
+--- a/main/event.c
++++ b/main/event.c
+@@ -15,7 +15,7 @@
+ 
+ /* time for next event - update vdp_event - return when to call again */
+ 
+-inline void event_nextevent(void)
++void event_nextevent(void)
+ {
+   /* call this when it *is* time for the next event as dictated by vdp_event,
+      so we switch on it and update vdp_event at the same time */
+--- a/main/vdp.c
++++ b/main/vdp.c
+@@ -87,7 +87,7 @@
+ void vdp_eventinit(void);
+ void vdp_layer_simple(unsigned int layer, unsigned int priority,
+                       uint8 *fielddata, unsigned int lineoffset);
+-inline void vdp_plotcell(uint8 *patloc, uint8 palette, uint8 flags,
++static void vdp_plotcell(uint8 *patloc, uint8 palette, uint8 flags,
+                          uint8 *cellloc, unsigned int lineoffset);
+ void vdp_sprites(unsigned int line, uint8 *pridata, uint8 *outdata);
+ int vdp_sprite_simple(unsigned int priority, uint8 *framedata,
+@@ -1733,7 +1733,7 @@
+      vdp_event_endline); */
+ }
+ 
+-inline void vdp_plotcell(uint8 *patloc, uint8 palette, uint8 flags,
++static void vdp_plotcell(uint8 *patloc, uint8 palette, uint8 flags,
+                          uint8 *cellloc, unsigned int lineoffset)
+ {
+   int y, x;
+--- a/ym2612/support.h
++++ b/ym2612/support.h
+@@ -3,7 +3,7 @@
+ #include "config.h"
+ 
+ #define errorlog 0
+-#define INLINE inline
++#define INLINE
+ #define HAS_YM2612 1
+ #define YM2612UpdateRequest(x) 
+ #define AY8910_set_clock(chip,clock)

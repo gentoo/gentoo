@@ -1,0 +1,20 @@
+--- a/src/preload.conf.in	2008-07-24 02:02:11.000000000 +0200
++++ b/src/preload.conf.in	2008-07-24 16:32:28.565184094 +0200
+@@ -132,7 +132,7 @@
+ # preload doesn't special-handle device files internally.
+ #
+ # default: (empty list, accept all)
+-mapprefix = /usr/;/lib;/var/cache/;!/
++mapprefix = /usr/;/lib;/var/cache/;/opt/;/home/;!/
+ 
+ # exeprefix:
+ #
+@@ -141,7 +141,7 @@
+ # files instead of maps.
+ #
+ # default: (empty list, accept all)
+-exeprefix = !/usr/sbin/;!/usr/local/sbin/;/usr/;!/
++exeprefix = !/usr/sbin/;!/usr/local/sbin/;/usr/;/opt/;/usr/libexec/;!/
+ 
+ # maxprocs
+ #

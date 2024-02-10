@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="terminfo">Use the terminfo package for POSIX consoles.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">haskeline</remote-id>
+		<remote-id type="github">judah/haskeline</remote-id>
+	</upstream>
+</pkgmetadata>

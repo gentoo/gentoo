@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<use>
+		<flag name="capi">Enable ISDN support via CAPI</flag>
+		<flag name="osmesa">Add support for OpenGL in bitmaps using libOSMesa</flag>
+		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
+	</use>
+</pkgmetadata>

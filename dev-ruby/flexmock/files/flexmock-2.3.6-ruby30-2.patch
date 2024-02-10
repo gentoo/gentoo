@@ -1,0 +1,25 @@
+From b3a2d7984803d70778c1f585ca48fb1fd374e44c Mon Sep 17 00:00:00 2001
+From: Daniel Leidert <dleidert@debian.org>
+Date: Mon, 22 Nov 2021 01:34:48 +0100
+Subject: [PATCH] Use binding.source_location for test
+
+Fixes the warning:
+
+    warning: __FILE__ in eval may not return location in binding; use Binding#source_location instead
+---
+ test/test_helper.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test_helper.rb b/test/test_helper.rb
+index 9eb3310..c4fd622 100644
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -50,7 +50,7 @@ def assert_failure(klass, options={}, &block)
+     # added.
+     def assert_mock_failure(klass, options={}, &block)
+       ex = assert_failure(klass, options, &block)
+-      file = eval("__FILE__", block.binding)
++      file = block.binding.source_location.first
+       assert_matching_line(ex, file, options)
+     end
+ 

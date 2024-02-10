@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		A command-line tool and Python library and Pytest plugin for automated testing of RESTful APIs,
+		with a simple, concise and flexible YAML-based syntax.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">taverntesting/tavern</remote-id>
+		<remote-id type="pypi">tavern</remote-id>
+	</upstream>
+</pkgmetadata>

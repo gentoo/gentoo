@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="unicode">Enable unicode output. Otherwise, unicode characters will be escaped.</flag>
+		<flag name="system-libyaml">Use the system-wide libyaml instead of the bundled copy</flag>
+	</use>
+</pkgmetadata>

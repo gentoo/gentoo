@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Warp Rogue is a gothic science fantasy roguelike game. It features RPG-like game
+	mechanics, recruitable NPCs, and a consistent theme.
+	</longdescription>
+</pkgmetadata>

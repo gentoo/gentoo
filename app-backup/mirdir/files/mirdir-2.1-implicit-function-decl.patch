@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/854213
+--- a/mirdir.c
++++ b/mirdir.c
+@@ -88,6 +88,7 @@
+ #include <fcntl.h>
+ #include <dirent.h>
+ #include <time.h>
++#include <unistd.h>
+ 
+ /*
+ #include <sys/types.h>

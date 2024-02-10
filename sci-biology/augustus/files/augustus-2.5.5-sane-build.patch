@@ -1,0 +1,156 @@
+ Makefile                            |    8 +++---
+ scripts/Makefile                    |    6 +++-
+ scripts/aln2wig/Makefile            |    8 +++---
+ scripts/compileSpliceCands/Makefile |    6 ++--
+ src/Makefile                        |   43 ++++++++++++++++++----------------
+ 5 files changed, 38 insertions(+), 33 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e23a667..64610c8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,9 +3,9 @@
+ #
+ 
+ all: 
+-	cd src && ${MAKE}
+-	cd scripts && ${MAKE}
++	$(MAKE) -C src
++	$(MAKE) -C scripts
+ 
+ clean: 
+-	cd src && ${MAKE} clean
+-	cd scripts && ${MAKE} clean
++	$(MAKE) -C src clean
++	$(MAKE) -C scripts clean
+diff --git a/scripts/Makefile b/scripts/Makefile
+index 6d4dd67..ab6a885 100644
+--- a/scripts/Makefile
++++ b/scripts/Makefile
+@@ -1,5 +1,7 @@
+ all :
+-	cd aln2wig && ${MAKE}
++	$(MAKE) -C aln2wig
++	$(MAKE) -C compileSpliceCands
+ 
+ clean : 
+-	cd aln2wig && ${MAKE} clean
++	$(MAKE) -C aln2wig clean
++	$(MAKE) -C compileSpliceCands
+diff --git a/scripts/aln2wig/Makefile b/scripts/aln2wig/Makefile
+index 64d09f5..9752980 100644
+--- a/scripts/aln2wig/Makefile
++++ b/scripts/aln2wig/Makefile
+@@ -1,10 +1,10 @@
+-CFLAGS := -Wall -Wno-unused-result -Wno-sign-compare -ansi -pedantic -O2 -ggdb
++CFLAGS += -Wall -Wno-unused-result -Wno-sign-compare -ansi -pedantic
+ 
+ psl2wig : aln2wig.o
+-	gcc $(CFLAGS) -o aln2wig aln2wig.o;
+-	cp aln2wig ../../bin
++	$(CC) $(CFLAGS) $(LDFLAGS) -o aln2wig aln2wig.o;
++	cp aln2wig ../../bin/
+ psl2wig.o : aln2wig.c
+-	gcc $(CFLAGS) -c aln2wig.c
++	$(CC) $(CFLAGS) -c aln2wig.c
+ 
+ all : psl2wig
+ 
+diff --git a/scripts/compileSpliceCands/Makefile b/scripts/compileSpliceCands/Makefile
+index cddada5..8079791 100644
+--- a/scripts/compileSpliceCands/Makefile
++++ b/scripts/compileSpliceCands/Makefile
+@@ -1,8 +1,8 @@
+ compileSpliceCands : compileSpliceCands.o list.h list.o
+-	gcc -o compileSpliceCands compileSpliceCands.o list.o;
+-#	cp compileSpliceCands ../../bin
++	$(CC) $(CFLAGS) $(LDFLAGS) -o compileSpliceCands compileSpliceCands.o list.o;
++	cp compileSpliceCands ../../bin/
+ compileSpliceCands.o : compileSpliceCands.c 
+-	gcc -Wall -pedantic -ansi -c compileSpliceCands.c 
++	$(CC) $(CFLAGS) -Wall -pedantic -ansi -c compileSpliceCands.c 
+ 
+ all : compileSpliceCands
+ 
+diff --git a/src/Makefile b/src/Makefile
+index 71795b6..732b953 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,8 +6,8 @@
+ #          a strict signed-only usage strategy to avoid mistakes since we are not warned about this.
+ #        - In the current version, the order of object files in $(OBJS) IS IMPORTANT (see lldouble.hh)
+ #        
+-CC	= g++
+-CFLAGS := -Wall -Wno-sign-compare -ansi -pedantic -O2 ${CFLAGS} -static # -pg -DDEBUG  -g -ggdb -static
++CXX	?= g++
++CXXFLAGS += -Wall -Wno-sign-compare -ansi -pedantic # -pg -DDEBUG  -g -ggdb -static
+ INCLS	= -I../include -I.
+ LIBS	= # -lcwd
+ OBJS	= genbank.o properties.o pp_profile.o pp_hitseq.o pp_scoring.o statemodel.o namgene.o \
+@@ -18,45 +18,48 @@ TOBJS	= commontrain.o igenictrain.o introntrain.o exontrain.o utrtrain.o # conte
+ PROGR	= augustus etraining consensusFinder curve2hints fastBlockSearch prepareAlign
+ INFO    = cflags
+ 
+-all: $(OBJS) $(TOBJS) $(DUMOBJS) $(PROGR) info
++all: $(OBJS) $(TOBJS) $(DUMOBJS) $(PROGR) info bin
+ 
+ .SUFFIXES:
+ .SUFFIXES: .cc .o .so
+ 
+ .cc.o:
+-	$(CC) -c $(CFLAGS) -o $@ $< $(INCLS) 
++	$(CXX) -c $(CXXFLAGS) -o $@ $< $(INCLS) 
+ 
+-augustus: augustus.cc $(OBJS) $(DUMOBJS)
+-	$(CC) $(CFLAGS) -o $@ $^ $(INCLS) $(LIBS)
++bin: $(PROGR)
++	cp $(PROGR) ../bin/
++
++augustus: augustus.o $(OBJS) $(DUMOBJS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(INCLS) $(LIBS)
+ 	cp augustus ../bin/
+ 
+-etraining: etraining.cc $(TOBJS) $(OBJS) 
+-	$(CC) $(CFLAGS) -o $@ $^ $(INCLS) $(LIBS)
++etraining: etraining.o $(TOBJS) $(OBJS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(INCLS) $(LIBS)
+ 	cp etraining ../bin/
+ 
+-evaluate: evaluate.cc $(OBJS) $(DUMOBJS)
+-	$(CC) $(CFLAGS) -o $@ $^ $(INCLS) $(LIBS)
++evaluate: evaluate.o $(OBJS) $(DUMOBJS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(INCLS) $(LIBS)
+ 
+-consensusFinder: consensusFinder.cc consensus.o 
+-	$(CC) $(CFLAGS) -o $@ $^ $(INCLS) $(LIBS)
++consensusFinder: consensusFinder.o consensus.o 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(INCLS) $(LIBS)
+ 
+-curve2hints: curve2hints.cc exon_seg.o 
+-	$(CC) $(CFLAGS) -o $@ $^ $(INCLS) $(LIBS)
++curve2hints: curve2hints.o exon_seg.o 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(INCLS) $(LIBS)
+ 
+-fastBlockSearch: fastBlockSearch.cc pp_fastBlockSearcher.o \
++fastBlockSearch: fastBlockSearch.o pp_fastBlockSearcher.o \
+ 	types.o properties.o geneticcode.o pp_profile.o lldouble.o
+-	$(CC) $(CFLAGS) -o $@ $^ $(INCLS) $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(INCLS) $(LIBS)
+ 	cp fastBlockSearch ../bin/
+ 
+-prepareAlign: pp_prepare_align.cc
+-	$(CC) $(CFLAGS) -o $@ $^
++prepareAlign: pp_prepare_align.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^
+ 	cp prepareAlign ../bin/
+ 
+ info:
+-	echo "$(CFLAGS)" > $(INFO)
++	echo "$(CXXFLAGS)" > $(INFO)
+ 
+ clean:
+-	rm -f $(PROGR) $(OBJS) $(DUMOBJS) $(TOBJS) consensus.o exon_seg.o pp_fastBlockSearcher.o  $(INFO) 
++	rm -f $(PROGR) $(OBJS) $(DUMOBJS) $(TOBJS) consensus.o exon_seg.o pp_fastBlockSearcher.o  $(INFO) ../bin/*
+ 
+ tidy: clean
+ 	rm -f *~ *.o *.rej *.orig ../include/*~ ../include/*.orig ../include/*.rej $(INFO)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    OpenSMT2 is an SMT solver written in C++. It supports reading files in
+    SMT-LIB2 format and the theories QF_UF, QF_RDL, QF_IDL, QF_LRA, QF_LIA,
+    QF_UFLRA, QF_UFLIA and QF_AX. The system also provides an API; the
+    distribution includes a minimal example how to use the API.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/usi-verification-and-security/opensmt/issues/</bugs-to>
+    <remote-id type="github">usi-verification-and-security/opensmt</remote-id>
+  </upstream>
+</pkgmetadata>

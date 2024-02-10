@@ -1,0 +1,11 @@
+--- xloadimage.4.1/copyright.orig	2005-03-04 12:58:27.347474256 +0100
++++ xloadimage.4.1/copyright.h		2005-03-04 12:58:42.913107920 +0100
+@@ -22,7 +22,7 @@
+ #ifndef __SABER__
+ #ifndef LINT
+ static char *Copyright= "Copyright 1989, 1993 Jim Frost";
+-#endif LINT
++#endif /* LINT */
+ #endif
+ #define _JIM_COPYRIGHT_
+ #endif

@@ -1,0 +1,13 @@
+diff -ru xboing.debian/misc.c xboing/misc.c
+--- xboing.debian/misc.c	2013-02-02 20:07:07.000000000 +0100
++++ xboing/misc.c	2013-02-02 20:11:51.000000000 +0100
+@@ -116,9 +116,7 @@
+     long SyncTime;
+     static unsigned long accu;
+ 
+-#ifdef __alpha__
+     ms *= 1000;	/* convert from milliseconds to microseconds for usleep */
+-#endif
+   
+     gettimeofday(&st, NULL);
+     XSync(display, False);

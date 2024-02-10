@@ -1,0 +1,11 @@
+--- a/test/treemacs-test.el
++++ b/test/treemacs-test.el
+@@ -1079,7 +1079,7 @@
+ 
+ (describe "treemacs--parse-collapsed-dirs"
+ 
+-  (it "Finds dirs to flatten in test directory"
++  (xit "Finds dirs to flatten in test directory"
+     (-let [treemacs-collapse-dirs 3]
+       (expect (-> treemacs-dir
+                   (treemacs-join-path "test")

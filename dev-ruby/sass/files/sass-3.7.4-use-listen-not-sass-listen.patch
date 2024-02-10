@@ -1,0 +1,14 @@
+https://src.fedoraproject.org/rpms/rubygem-sass/blob/rawhide/f/rubygem-sass-3.5.6-use-listen.patch
+--- a/lib/sass/plugin/compiler.rb
++++ b/lib/sass/plugin/compiler.rb
+@@ -377,8 +377,8 @@ module Sass::Plugin
+ 
+     # This is mocked out in compiler_test.rb.
+     def create_listener(*args, &block)
+-      require 'sass-listen'
+-      SassListen.to(*args, &block)
++      require 'listen'
++      Listen.to(*args, &block)
+     end
+ 
+     def remove_redundant_directories(directories)

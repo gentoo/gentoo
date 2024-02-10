@@ -1,0 +1,20 @@
+--- a/src/tcl/tclwrap.c
++++ b/src/tcl/tclwrap.c
+@@ -46,7 +46,7 @@
+    result = Tcl_EvalFile(interp, (char *)fileName) == TCL_OK;
+    if (!result) {
+       utWarning("Tcl error in file %s, line %d: %s", fileName,
+-         interp->errorLine, interp->result);
++         Tcl_GetErrorLine(interp), Tcl_GetStringResult(interp));
+    }
+    return result;
+ }
+@@ -75,7 +75,7 @@
+       commandLine[xChar] = '\0';
+       result = Tcl_Eval(interp, commandLine);
+       if (result == TCL_ERROR) {
+-        utWarning("Tcl error: %s", interp->result);
++        utWarning("Tcl error: %s", Tcl_GetStringResult(interp));
+       }
+    } while (result != TCL_RETURN);
+    return true;

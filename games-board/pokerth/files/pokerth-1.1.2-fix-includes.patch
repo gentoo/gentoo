@@ -1,0 +1,106 @@
+Description: fix build failure due to including -isystem /usr/include before everything else
+ (usr/include is already included by the compiler itself)
+Author: Gianfranco Costamagna <locutusofborg@debian.org>
+Last-Update: 2018-10-02
+
+--- a/chatcleaner.pro
++++ b/chatcleaner.pro
+@@ -49,7 +49,6 @@
+ !win32{
+ 	##### My release static build options
+ 	#QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
+-	INCLUDEPATH += $${PREFIX}/include
+ }
+ mac {
+ 	# make it x86_64 only
+--- a/connectivity.pro
++++ b/connectivity.pro
+@@ -40,7 +40,6 @@
+ 	#QMAKE_LFLAGS += -Wl,--gc-sections
+ 
+ 	QMAKE_LIBDIR += lib $${PREFIX}/lib /opt/gsasl/lib
+-	INCLUDEPATH += $${PREFIX}/include
+ 	LIB_DIRS = $${PREFIX}/lib $${PREFIX}/lib64 $$system(qmake -query QT_INSTALL_LIBS)
+ 	BOOST_PROGRAM_OPTIONS = boost_program_options boost_program_options-mt
+ 	BOOST_SYS = boost_system boost_system-mt
+--- a/load.pro
++++ b/load.pro
+@@ -41,7 +41,6 @@
+ 	#QMAKE_LFLAGS += -Wl,--gc-sections
+ 
+ 	QMAKE_LIBDIR += lib $${PREFIX}/lib /opt/gsasl/lib
+-	INCLUDEPATH += $${PREFIX}/include
+ 	LIB_DIRS = $${PREFIX}/lib $${PREFIX}/lib64 $$system(qmake -query QT_INSTALL_LIBS)
+ 	BOOST_THREAD = boost_thread boost_thread-mt
+ 	BOOST_PROGRAM_OPTIONS = boost_program_options boost_program_options-mt
+--- a/pokerth_dbofficial.pro
++++ b/pokerth_dbofficial.pro
+@@ -73,7 +73,7 @@
+ !win32 { 
+     # #### My release static build options
+     # QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
+-    INCLUDEPATH += /usr/include \
++    INCLUDEPATH += \
+         /usr/include/mysql \
+         /usr/include/mysql++
+     INCLUDEPATH += /opt/boost/include
+--- a/pokerth_db.pro
++++ b/pokerth_db.pro
+@@ -52,7 +52,6 @@
+ !win32{
+ 	##### My release static build options
+ 	#QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
+-	INCLUDEPATH += $${PREFIX}/include
+ }
+ 
+ mac{
+--- a/pokerth_game.pro
++++ b/pokerth_game.pro
+@@ -405,7 +405,6 @@
+ 	# #### My release static build options
+ 	# QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
+ 	# QMAKE_LFLAGS += -Wl,--gc-sections
+-	INCLUDEPATH += $${PREFIX}/include
+ 	QMAKE_LIBDIR += lib
+ 	!android{
+ 		LIBPATH += $${PREFIX}/lib /opt/gsasl/lib
+--- a/pokerth_lib.pro
++++ b/pokerth_lib.pro
+@@ -269,7 +269,7 @@
+ 		src/dbofficial/asyncdbadminplayers.cpp \
+ 		src/dbofficial/asyncdbblockplayer.cpp \
+ 		src/dbofficial/dbidmanager.cpp
+-    INCLUDEPATH += /usr/include \
++    INCLUDEPATH += \
+         /usr/include/mysql \
+         /usr/include/mysql++
+ }
+@@ -286,7 +286,7 @@
+ !win32{
+ 	##### My release static build options
+ 	#QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
+-	INCLUDEPATH += $${PREFIX}/include /opt/gsasl/include
++	INCLUDEPATH += opt/gsasl/include
+ }
+ 
+ mac{
+--- a/pokerth_protocol.pro
++++ b/pokerth_protocol.pro
+@@ -40,7 +40,6 @@
+ 	system(protoc pokerth.proto --java_out=tests/src)
+ }
+ unix : !mac {
+-        INCLUDEPATH += $${PREFIX}/include
+ 	system(protoc pokerth.proto --cpp_out=src/third_party/protobuf)
+ 	system(protoc chatcleaner.proto --cpp_out=src/third_party/protobuf)
+ 	system(protoc pokerth.proto --java_out=tests/src)
+--- a/pokerth_server.pro
++++ b/pokerth_server.pro
+@@ -177,7 +177,6 @@
+ 	#QMAKE_LFLAGS += -Wl,--gc-sections
+ 
+ 	LIBPATH += lib $${PREFIX}/lib /opt/gsasl/lib
+-	INCLUDEPATH += $${PREFIX}/include
+ 	# see issue https://github.com/pokerth/pokerth/issues/282
+ 	INCLUDEPATH += $${PREFIX}/include/libircclient
+ 	LIB_DIRS = $${PREFIX}/lib $${PREFIX}/lib64 $$system(qmake -query QT_INSTALL_LIBS)

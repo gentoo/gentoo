@@ -1,0 +1,30 @@
+# Global config file for vdr rc-scripts
+
+# The default mount script is "mount.sh". This script is called from the
+# plugin with 2 options on commandline. The first is
+# one of mount/unmount/eject/status and gives the action to perform. The
+# second one is the base directory as defined in "mp3ngsources".
+# The script must return the exit code 0 if the action was
+# successfull and 1 if the action failed (see the comments in the example
+# "mount.sh" script which comes with the archive).
+#MOUNT="/usr/bin/mount-mp3ng.sh"
+
+# If you are using cdfs, the MP3 plugin is able to query a CDDB database for
+# the song information (like title, artist). Local CDDB lookups can be enable
+# from the setup menu and you must give the path to your local CDDB files.
+# The database layout follows the xmcd standard
+# (one subdirectory level for the categories, individual files for every disc).
+# The settings for remote CDDB lookups can be found in the setup menu, too.
+# Any information retrieved from a remote host is stored to your local CDDB
+# database, so the user running VDR needs write access to this directory.
+#CDDB="/var/cddb"
+
+# If you are using any of the networking capabilities and you have a dial-up
+# network you can use this script.
+# This script is called before and after any network access and receives one
+# option on commandline. This can either be "up" or "down", depending on if it's
+# before or after the network access. In the "up" case the script should not
+# return before the network is connected and useable. By default the plugin
+# assumes that network access can be done at any time without prior action.
+#NETWORK="/usr/bin/network.sh"
+

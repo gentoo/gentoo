@@ -1,0 +1,70 @@
+--- srecord-1.57.orig/etc/configure.ac
++++ srecord-1.57/etc/configure.ac
+@@ -29,6 +29,10 @@
+ AC_CHECK_FUNCS(snprintf vsnprintf)
+ AC_CHECK_LIB(gcrypt, gcry_md_open)
+ 
++top_builddir=`pwd`
++AC_SUBST(top_builddir)
++LT_INIT
++
+ dnl
+ dnl Make sure Boost is installed.
+ dnl
+@@ -119,46 +123,6 @@
+ operating system has a libgcrypt that supports WHIRLPOOL.])
+ AC_MSG_RESULT(yes),AC_MSG_RESULT(no))dnl
+ 
+-dnl!
+-dnl!  Now look for libtool.
+-dnl!
+-AC_CHECK_PROGS(LIBTOOL, libtool)
+-if test -z "$LIBTOOL"
+-then
+-  AC_MSG_RESULT([
+-        You must have GNU Libtool installed to build srecord.
+-        Homepage: http://www.gnu.org/software/libtool/])
+-  OK=no
+-  if apt-get --version > /dev/null 2> /dev/null; then
+-    AC_MSG_RESULT([
+-        The following command may be used to install it:
+-        sudo apt-get install libtool
+-    ])
+-    OK=yes
+-  fi
+-  if yum --version > /dev/null 2> /dev/null; then
+-    AC_MSG_RESULT([
+-        The following command may be used to install it:
+-        sudo yum install libtool
+-    ])
+-    OK=yes
+-  fi
+-  if pkg_info -a > /dev/null 2> /dev/null; then
+-    AC_MSG_RESULT([
+-        The following command may be used to install it:
+-        sudo pkg_add -r libtool
+-    ])
+-    OK=yes
+-  fi
+-  if test "$OK" != "yes"; then
+-    AC_MSG_RESULT([
+-        If you are using a package based install, you will need the
+-        libtool package.
+-    ])
+-  fi
+-  exit 1
+-fi
+-
+ dnl
+ dnl     If the soelim program exists, and understands the -I option,
+ dnl     arrange for the Makefile to install the .ps files from the
+--- srecord-1.57.orig/Makefile.in
++++ srecord-1.57/Makefile.in
+@@ -35,6 +35,7 @@
+ #
+ # directory containing the source
+ #
++top_builddir = @top_builddir@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 

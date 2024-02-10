@@ -1,0 +1,58 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need bluetooth
+	use logger
+}
+
+check_config() {
+	if [ -z "${USER}" ] ; then
+		eerror "Please set \$USER in /etc/conf.d/sobexsrv!"
+		return 1
+	fi
+	if [ -z "${GROUP}" ] ; then
+		eerror "Please set \$GROUP in /etc/conf.d/sobexsrv!"
+		return 1
+	fi
+
+	if [ "${CHROOT}" = "yes" ] ; then
+		if [ ! -u /usr/bin/sobexsrv ] ; then
+			eerror "The \$CHROOT option requires /usr/bin/sobexsrv to be suid root!"
+			return 1
+		fi
+	fi
+
+	if [ -z "${INBOX}" ] || [ ! -e "${INBOX}" ] ; then
+		eerror "Please configure \$INBOX correctly in /etc/conf.d/sobexsrv!"
+		return 1
+	fi
+}
+
+
+start() {
+	check_config || return 1
+
+	ebegin "Starting sobexsrv"
+
+	OPTIONS=""
+	[ -n "${CHANNEL}" ] && OPTIONS="${OPTIONS} -c ${CHANNEL}"
+	[ -n "${SECURITY_LEVEL}" ] && OPTIONS="${OPTIONS} -s ${SECURITY_LEVEL}"
+	[ "${CHROOT}" = "yes" ] && OPTIONS="${OPTIONS} -R"
+	[ "${DISABLE_OPUSH}" = "yes" ] && OPTIONS="${OPTIONS} -o"
+	[ "${DISABLE_OBEXFTP}" = "yes" ] && OPTIONS="${OPTIONS} -f"
+	[ "${DISABLE_OBEXFTP_LISTING}" = "yes" ] && OPTIONS="${OPTIONS} -F"
+	[ "${USE_SYSLOG}" = "yes" ] && OPTIONS="${OPTIONS} -S"
+
+	OPTIONS="-I -r ${INBOX} ${OPTIONS} ${SOBEXSRV_OPT}"
+
+	start-stop-daemon --user ${USER}:${GROUP} --start --quiet --exec /usr/bin/sobexsrv -- $OPTIONS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sobexsrv"
+	start-stop-daemon --stop --quiet --exec /usr/bin/sobexsrv
+	eend $?
+}

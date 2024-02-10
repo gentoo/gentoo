@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,5 @@
+-CC = gcc
+-CFLAGS = -Wall -W -Wshadow -Wstrict-prototypes -Wcast-qual -Wcast-align \
+-         -Wwrite-strings -O2 -pipe
++CFLAGS += -Wall -W -Wshadow -Wstrict-prototypes -Wcast-qual -Wcast-align \
++         -Wwrite-strings
+ SRC = spicctrl.c
+ OBJ = $(SRC:.c=.o)
+ LIBS =
+@@ -13,9 +12,6 @@
+ 
+ all: spicctrl
+ 
+-spicctrl: $(OBJ)
+-	$(CC) -o spicctrl $(OBJ) $(LIBS)
+-
+ clean:
+ 	rm -f $(OBJ) spicctrl *~
+ 

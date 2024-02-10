@@ -1,0 +1,65 @@
+--- a/ethloop.c
++++ b/ethloop.c
+@@ -1,5 +1,7 @@
+ /* vim: cin sw=4 ts=4
+ */
++#include <arpa/inet.h> /* htons() */
++#include <sys/types.h> /* recv() */
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+ #include <sys/poll.h>
+@@ -13,6 +15,7 @@
+ #include <stdlib.h>
+ #include <sys/time.h>
+ #include <signal.h>
++#include <string.h>
+ 
+ int sock;
+ 
+@@ -133,11 +136,11 @@
+ int recv_raw(int tmo)
+ {
+ 	struct pollfd pf = {sock,POLLIN,0};
+-	int r; unsigned short proto;
++	ssize_t r;
+ 	if(poll(&pf,1,tmo) <= 0) return 0;
+-	r = recv(sock,&buf,1550,0);
++	r = recv(sock,&buf,sizeof(buf),0);
+ 	if (r <= 0) {
+-		printf("error recv (%d)\n",r);
++		printf("error recv (%ld)\n",r);
+ 		return 0;
+ 	}
+ 	if (ntohs(buf.proto) != ETH_P_CUST) {
+@@ -239,10 +242,10 @@
+ 	}
+ }
+ 	
+-main(int c,char *av[])
++int main(int c,char *av[])
+ {
+-	unsigned long av_k1=0,av_k2=0,t_k1=0,t_k2=0;
+-	unsigned long av_k3=0,av_k4=0,t_k3=0,t_k4=0;
++	unsigned long av_k1=0,av_k2=0;
++	unsigned long av_k3=0,av_k4=0;
+ 	int x,tmo,flow,diff,lcheck = 0,lwrite = 0,i,n; 
+ 	struct flowtab *fp;
+ 	sock = socket(PF_PACKET,SOCK_RAW,htons(ETH_P_ALL));
+@@ -309,7 +312,7 @@
+ 		/* write stats every .5 second */
+ 		if (us - ALIGN(lwrite,LOGTIME) < LOGTIME) continue;
+ 		lwrite = us;
+-		fprintf(stderr,"store %d at %d ms\n",slog_cnt,us/1000);
++		fprintf(stderr,"store %d at %ld ms\n",slog_cnt,us/1000);
+ 		for (fp = ftab,i=0;i<FLOWS;fp++,i++) {
+ 			stp = slog + slog_cnt;
+ 			stp->av_delay[i] = fp->av_delay/EWMAC; 
+@@ -338,7 +341,7 @@
+ 		printf("%d.%d",(i+1)/2,(i&1)?0:5);
+ 		for (flow = 0; flow <= maxflow; flow++) {
+ 			fp = ftab + flow;
+-			printf(" %d %d %d %d",stp->av_wrate[flow],
++			printf(" %ld %ld %ld %ld",stp->av_wrate[flow],
+ 					stp->av_rate[flow], stp->av_delay[flow]/1000, 
+ 					stp->av_jitter[flow]);
+ 		}

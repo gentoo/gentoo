@@ -1,0 +1,10 @@
+[Unit]
+Description=DHCP Relay Agent Daemon
+Documentation=man:dhcrelay(8)
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/dhcrelay -d --no-pid -6 -l $lower-iface -u $upper-iface $DHCRELAY_SERVERS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+		git-machete is a robust tool that simplifies your git workflows.
+
+		The bird's eye view provided by git-machete makes merges/rebases/push/pulls
+		hassle-free even when multiple branches are present in the repository
+		(master/develop, your topic branches, teammate's branches checked out
+		for review, etc.).
+
+		Using this tool, you can maintain small, focused, easy-to-review pull
+		requests with little effort.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">VirtusLab/git-machete</remote-id>
+		<remote-id type="pypi">git-machete</remote-id>
+	</upstream>
+</pkgmetadata>

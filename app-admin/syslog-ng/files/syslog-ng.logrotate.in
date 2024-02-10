@@ -1,0 +1,13 @@
+#
+# Syslog-ng logrotate snippet for Gentoo Linux
+# contributed by Michael Sterrett
+#
+
+/var/log/messages {
+    delaycompress
+    missingok
+    sharedscripts
+    postrotate
+        @GENTOO_RESTART@ > /dev/null 2>&1 || true
+    endscript
+}

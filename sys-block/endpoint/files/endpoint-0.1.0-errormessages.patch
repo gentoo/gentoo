@@ -1,0 +1,47 @@
+diff -Naur endpoint-0.1.0/libjconfig/jconfig.c endpoint-0.1.0.new/libjconfig/jconfig.c
+--- endpoint-0.1.0/libjconfig/jconfig.c	2003-10-13 15:21:12.000000000 -0700
++++ endpoint-0.1.0.new/libjconfig/jconfig.c	2006-02-26 23:48:58.000000000 -0800
+@@ -1242,9 +1242,12 @@
+     cfc = j_config_new_context();
+     if (cfc)
+     {
++		j_config_context_set_verbose(cfc,TRUE);
+         cf = j_config_parse_file_with_context(cfc, filename);
+         j_config_context_free(cfc);
+-    }
++    } else {
++		g_warning("Failed to get config context.\n");
++	}
+ 
+     return(cf);
+ }  /* j_config_parse_file() */
+diff -Naur endpoint-0.1.0/src/main.c endpoint-0.1.0.new/src/main.c
+--- endpoint-0.1.0/src/main.c	2003-10-13 15:21:14.000000000 -0700
++++ endpoint-0.1.0.new/src/main.c	2006-02-26 23:44:42.000000000 -0800
+@@ -133,7 +133,7 @@
+ 
+   if (!app)
+     {
+-      /* ERROR MESSAGE */
++      fprintf(stderr,"Failed to parse config file %s.\n",configfile);
+       exit (1);
+     }
+ 
+@@ -142,7 +142,7 @@
+ 
+   if (app->ps_len < strlen (MASTER_NAME))
+     {
+-      /* ERROR MESSAGE */
++      fprintf(stderr,"Failed strlen(MASTER_NAME).\n");
+       exit (1);
+     }
+ 
+@@ -152,7 +152,7 @@
+ 
+   if (!wire_init ())
+     {
+-      /* ERROR MESSAGE */
++      fprintf(stderr,"Failed wire_init.\n");
+       exit (1);
+     }
+ 

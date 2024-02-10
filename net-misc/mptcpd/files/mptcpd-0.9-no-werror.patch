@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/832563
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,7 +31,7 @@ dnl Support "--enable-debug=..." configure script command line option.
+ AX_IS_RELEASE([git-directory])
+ AX_CHECK_ENABLE_DEBUG([yes])
+ 
+-AM_INIT_AUTOMAKE([1.15 -Wall -Werror -Wno-portability silent-rules std-options check-news])
++AM_INIT_AUTOMAKE([1.15 -Wall -Wno-portability silent-rules std-options check-news])
+ AM_SILENT_RULES([yes])
+ LT_INIT([disable-static])
+ 
+@@ -301,7 +301,7 @@ LIBS=$mptcpd_save_libs
+ # warning free.
+ # ---------------------------------------------------------------
+ AX_CFLAGS_WARN_ALL([CFLAGS])
+-AX_APPEND_COMPILE_FLAGS([-Wextra -Werror -pedantic])
++AX_APPEND_COMPILE_FLAGS([-Wextra -pedantic])
+ 
+ # ---------------------------------------------------------------
+ # Enable compile-time defense

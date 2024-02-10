@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+This is a Transient-based menu for the dotnet CLI. It aims to cover the most common scenarios, but I expect eventually all of the dotnet commands will be implemented.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/sebasmonia/sharper/issues/</bugs-to>
+    <remote-id type="github">sebasmonia/sharper</remote-id>
+  </upstream>
+</pkgmetadata>

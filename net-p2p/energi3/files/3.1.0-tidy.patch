@@ -1,0 +1,472 @@
+https://github.com/energicryptocurrency/energi3/pull/8
+
+From 3ebedbdd924cbc07b745140c4c7fed82c45f178f Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Tue, 24 Aug 2021 09:06:53 -0400
+Subject: [PATCH] tidy up go.mod and vendor/modules.txt
+
+Provides compatibility with go 1.17
+Fixes warnings in earlier versions of go
+
+See https://github.com/golang/go/issues/47823
+---
+ go.mod             |  69 +++++++++++++++
+ vendor/modules.txt | 204 ++++++++++++++++++++++++++++++++++-----------
+ 2 files changed, 224 insertions(+), 49 deletions(-)
+
+diff --git a/go.mod b/go.mod
+index 887cb8fc6..7ada2d1be 100644
+--- a/go.mod
++++ b/go.mod
+@@ -1,3 +1,72 @@
+ go 1.15
+ 
++require (
++        bazil.org/fuse v0.0.0-20160811212531-371fbbdaa898
++        github.com/Azure/azure-pipeline-go v0.1.9 // indirect
++        github.com/Azure/azure-storage-blob-go v0.0.0-20180712005634-eaae161d9d5e
++        github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
++        github.com/allegro/bigcache v1.2.0
++        github.com/aristanetworks/goarista v0.0.0-20170210015632-ea17b1a17847
++        github.com/btcsuite/btcd v0.0.0-20171128150713-2e60448ffcc6
++        github.com/cespare/cp v0.1.0
++        github.com/davecgh/go-spew v1.1.1
++        github.com/deckarep/golang-set v0.0.0-20180603214616-504e848d77ea
++        github.com/docker/docker v0.0.0-20180625184442-8e610b2b55bf
++        github.com/edsrzf/mmap-go v1.0.0
++        github.com/elastic/gosigar v0.0.0-20180330100440-37f05ff46ffa
++        github.com/fatih/color v1.9.0
++        github.com/fjl/memsize v0.0.0-20180418122429-ca190fb6ffbc
++        github.com/gizak/termui v2.3.0+incompatible
++        github.com/go-kit/kit v0.11.0 // indirect
++        github.com/go-ole/go-ole v1.2.4 // indirect
++        github.com/go-stack/stack v1.8.0
++        github.com/golang/protobuf v1.5.2
++        github.com/golang/snappy v0.0.1
++        github.com/hashicorp/golang-lru v0.5.1
++        github.com/huin/goupnp v1.0.0
++        github.com/influxdata/influxdb v1.7.3
++        github.com/influxdata/platform v0.0.0-20190117200541-d500d3cf5589 // indirect
++        github.com/jackpal/go-nat-pmp v1.0.1
++        github.com/julienschmidt/httprouter v1.3.0
++        github.com/karalabe/hid v1.0.0
++        github.com/kylelemons/godebug v1.1.0 // indirect
++        github.com/maruel/panicparse v1.2.1 // indirect
++        github.com/mattn/go-colorable v0.1.6
++        github.com/mattn/go-isatty v0.0.12
++        github.com/mitchellh/go-wordwrap v1.0.0 // indirect
++        github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826
++        github.com/naoina/go-stringutil v0.1.0 // indirect
++        github.com/naoina/toml v0.1.1
++        github.com/nsf/termbox-go v0.0.0-20190325093121-288510b9734e // indirect
++        github.com/olekukonko/tablewriter v0.0.1
++        github.com/opentracing/opentracing-go v1.2.0
++        github.com/pborman/uuid v1.2.0
++        github.com/peterh/liner v1.1.0
++        github.com/prometheus/prometheus v2.1.0+incompatible
++        github.com/prometheus/tsdb v0.10.0 // indirect
++        github.com/rjeczalik/notify v0.9.1
++        github.com/robertkrimen/otto v0.0.0-20170205013659-6a77b7cbc37d
++        github.com/rs/cors v1.3.0
++        github.com/shengdoushi/base58 v1.0.0
++        github.com/stretchr/testify v1.7.0
++        github.com/syndtr/goleveldb v1.0.0
++        github.com/uber-go/atomic v0.0.0-00010101000000-000000000000 // indirect
++        github.com/uber/jaeger-client-go v2.16.0+incompatible
++        github.com/uber/jaeger-lib v2.0.0+incompatible // indirect
++        golang.org/x/crypto v0.0.0-20210314154223-e6e6c4f2bb5b
++        golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
++        golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
++        golang.org/x/sys v0.0.0-20210603081109-ebe580a85c40
++        gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15
++        gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce
++        gopkg.in/olebedev/go-duktape.v3 v3.0.0-20180302121509-abf0ba0be5d5
++        gopkg.in/sourcemap.v1 v1.0.5 // indirect
++        gopkg.in/urfave/cli.v1 v1.20.0
++)
++
+ module energi.world/core/gen3
++
++replace github.com/codahale/hdrhistogram => github.com/HdrHistogram/hdrhistogram-go v0.9.0
++
++replace github.com/uber-go/atomic => github.com/uber-go/atomic v1.4.0
++
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index 192df8944..3142c7337 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -1,56 +1,80 @@
+ # bazil.org/fuse v0.0.0-20160811212531-371fbbdaa898
++## explicit
+ bazil.org/fuse
+ bazil.org/fuse/fs
+ bazil.org/fuse/fuseutil
+ # github.com/Azure/azure-pipeline-go v0.1.9
++## explicit
+ github.com/Azure/azure-pipeline-go/pipeline
+ # github.com/Azure/azure-storage-blob-go v0.0.0-20180712005634-eaae161d9d5e
++## explicit
+ github.com/Azure/azure-storage-blob-go/2018-03-28/azblob
+ # github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d
++## explicit
+ github.com/StackExchange/wmi
+ # github.com/allegro/bigcache v1.2.0
++## explicit
+ github.com/allegro/bigcache
+ github.com/allegro/bigcache/queue
+ # github.com/aristanetworks/goarista v0.0.0-20170210015632-ea17b1a17847
++## explicit
+ github.com/aristanetworks/goarista/monotime
+ # github.com/btcsuite/btcd v0.0.0-20171128150713-2e60448ffcc6
++## explicit
+ github.com/btcsuite/btcd/btcec
+ # github.com/cespare/cp v0.1.0
++## explicit
+ github.com/cespare/cp
+ # github.com/davecgh/go-spew v1.1.1
++## explicit
+ github.com/davecgh/go-spew/spew
+ # github.com/deckarep/golang-set v0.0.0-20180603214616-504e848d77ea
++## explicit
+ github.com/deckarep/golang-set
+ # github.com/docker/docker v0.0.0-20180625184442-8e610b2b55bf
++## explicit
+ github.com/docker/docker/pkg/reexec
+-# github.com/edsrzf/mmap-go v0.0.0-20160512033002-935e0e8a636c
++# github.com/edsrzf/mmap-go v1.0.0
++## explicit
+ github.com/edsrzf/mmap-go
+ # github.com/elastic/gosigar v0.0.0-20180330100440-37f05ff46ffa
++## explicit
+ github.com/elastic/gosigar
+ github.com/elastic/gosigar/sys/windows
+-# github.com/fatih/color v1.7.0
++# github.com/fatih/color v1.9.0
++## explicit
+ github.com/fatih/color
+ # github.com/fjl/memsize v0.0.0-20180418122429-ca190fb6ffbc
+-github.com/fjl/memsize/memsizeui
++## explicit
+ github.com/fjl/memsize
++github.com/fjl/memsize/memsizeui
+ # github.com/gizak/termui v2.3.0+incompatible
++## explicit
+ github.com/gizak/termui
++# github.com/go-kit/kit v0.11.0
++## explicit
+ # github.com/go-ole/go-ole v1.2.4
++## explicit
+ github.com/go-ole/go-ole
+ github.com/go-ole/go-ole/oleutil
+ # github.com/go-stack/stack v1.8.0
++## explicit
+ github.com/go-stack/stack
+-# github.com/golang/protobuf v1.2.0
++# github.com/golang/protobuf v1.5.2
++## explicit
+ github.com/golang/protobuf/proto
+ github.com/golang/protobuf/protoc-gen-go/descriptor
+ # github.com/golang/snappy v0.0.1
++## explicit
+ github.com/golang/snappy
+-# github.com/google/uuid v1.0.0
++# github.com/google/uuid v1.1.2
+ github.com/google/uuid
+ # github.com/hashicorp/golang-lru v0.5.1
++## explicit
+ github.com/hashicorp/golang-lru
+ github.com/hashicorp/golang-lru/simplelru
+ # github.com/huin/goupnp v1.0.0
++## explicit
+ github.com/huin/goupnp
+ github.com/huin/goupnp/dcps/internetgateway1
+ github.com/huin/goupnp/dcps/internetgateway2
+@@ -59,60 +83,84 @@ github.com/huin/goupnp/scpd
+ github.com/huin/goupnp/soap
+ github.com/huin/goupnp/ssdp
+ # github.com/influxdata/influxdb v1.7.3
++## explicit
+ github.com/influxdata/influxdb/client
+ github.com/influxdata/influxdb/models
+ github.com/influxdata/influxdb/pkg/escape
+ # github.com/influxdata/platform v0.0.0-20190117200541-d500d3cf5589
++## explicit
+ github.com/influxdata/platform/models
+ github.com/influxdata/platform/pkg/escape
+ # github.com/jackpal/go-nat-pmp v1.0.1
++## explicit
+ github.com/jackpal/go-nat-pmp
+-# github.com/julienschmidt/httprouter v1.2.0
++# github.com/julienschmidt/httprouter v1.3.0
++## explicit
+ github.com/julienschmidt/httprouter
+ # github.com/karalabe/hid v1.0.0
++## explicit
+ github.com/karalabe/hid
+-# github.com/kr/pretty v0.1.0
++# github.com/kr/pretty v0.2.0
+ github.com/kr/pretty
+ # github.com/kr/text v0.1.0
+ github.com/kr/text
++# github.com/kylelemons/godebug v1.1.0
++## explicit
+ # github.com/maruel/panicparse v1.2.1
++## explicit
+ github.com/maruel/panicparse/stack
+-# github.com/mattn/go-colorable v0.1.1
++# github.com/mattn/go-colorable v0.1.6
++## explicit
+ github.com/mattn/go-colorable
+-# github.com/mattn/go-isatty v0.0.7
++# github.com/mattn/go-isatty v0.0.12
++## explicit
+ github.com/mattn/go-isatty
+ # github.com/mattn/go-runewidth v0.0.3
+ github.com/mattn/go-runewidth
+ # github.com/mitchellh/go-wordwrap v1.0.0
++## explicit
+ github.com/mitchellh/go-wordwrap
+ # github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826
++## explicit
+ github.com/mohae/deepcopy
+ # github.com/naoina/go-stringutil v0.1.0
++## explicit
+ github.com/naoina/go-stringutil
+ # github.com/naoina/toml v0.1.1
++## explicit
+ github.com/naoina/toml
+ github.com/naoina/toml/ast
+ # github.com/nsf/termbox-go v0.0.0-20190325093121-288510b9734e
++## explicit
+ github.com/nsf/termbox-go
+ # github.com/olekukonko/tablewriter v0.0.1
++## explicit
+ github.com/olekukonko/tablewriter
+-# github.com/opentracing/opentracing-go v1.1.0
++# github.com/opentracing/opentracing-go v1.2.0
++## explicit
+ github.com/opentracing/opentracing-go
+-github.com/opentracing/opentracing-go/log
+ github.com/opentracing/opentracing-go/ext
++github.com/opentracing/opentracing-go/log
+ # github.com/pborman/uuid v1.2.0
++## explicit
+ github.com/pborman/uuid
+ # github.com/peterh/liner v1.1.0
++## explicit
+ github.com/peterh/liner
+-# github.com/pkg/errors v0.8.1
++# github.com/pkg/errors v0.9.1
+ github.com/pkg/errors
+ # github.com/pmezard/go-difflib v1.0.0
+ github.com/pmezard/go-difflib/difflib
+ # github.com/prometheus/prometheus v2.1.0+incompatible
++## explicit
+ github.com/prometheus/prometheus/util/flock
++# github.com/prometheus/tsdb v0.10.0
++## explicit
+ # github.com/rjeczalik/notify v0.9.1
++## explicit
+ github.com/rjeczalik/notify
+ # github.com/robertkrimen/otto v0.0.0-20170205013659-6a77b7cbc37d
++## explicit
+ github.com/robertkrimen/otto
+ github.com/robertkrimen/otto/ast
+ github.com/robertkrimen/otto/dbg
+@@ -121,101 +169,159 @@ github.com/robertkrimen/otto/parser
+ github.com/robertkrimen/otto/registry
+ github.com/robertkrimen/otto/token
+ # github.com/rs/cors v1.3.0
++## explicit
+ github.com/rs/cors
+ # github.com/shengdoushi/base58 v1.0.0
++## explicit
+ github.com/shengdoushi/base58
+-# github.com/stretchr/testify v1.3.0
++# github.com/stretchr/testify v1.7.0
++## explicit
+ github.com/stretchr/testify/assert
+ github.com/stretchr/testify/require
+ # github.com/syndtr/goleveldb v1.0.0
+-github.com/syndtr/goleveldb/leveldb/util
++## explicit
+ github.com/syndtr/goleveldb/leveldb
++github.com/syndtr/goleveldb/leveldb/cache
++github.com/syndtr/goleveldb/leveldb/comparer
+ github.com/syndtr/goleveldb/leveldb/errors
+ github.com/syndtr/goleveldb/leveldb/filter
+ github.com/syndtr/goleveldb/leveldb/iterator
+-github.com/syndtr/goleveldb/leveldb/opt
+-github.com/syndtr/goleveldb/leveldb/storage
+-github.com/syndtr/goleveldb/leveldb/cache
+-github.com/syndtr/goleveldb/leveldb/comparer
+ github.com/syndtr/goleveldb/leveldb/journal
+ github.com/syndtr/goleveldb/leveldb/memdb
++github.com/syndtr/goleveldb/leveldb/opt
++github.com/syndtr/goleveldb/leveldb/storage
+ github.com/syndtr/goleveldb/leveldb/table
++github.com/syndtr/goleveldb/leveldb/util
++# github.com/uber-go/atomic v0.0.0-00010101000000-000000000000 => github.com/uber-go/atomic v1.4.0
++## explicit
+ # github.com/uber/jaeger-client-go v2.16.0+incompatible
++## explicit
+ github.com/uber/jaeger-client-go
+ github.com/uber/jaeger-client-go/config
+ github.com/uber/jaeger-client-go/internal/baggage
++github.com/uber/jaeger-client-go/internal/baggage/remote
+ github.com/uber/jaeger-client-go/internal/spanlog
+ github.com/uber/jaeger-client-go/internal/throttler
++github.com/uber/jaeger-client-go/internal/throttler/remote
+ github.com/uber/jaeger-client-go/log
++github.com/uber/jaeger-client-go/rpcmetrics
+ github.com/uber/jaeger-client-go/thrift
++github.com/uber/jaeger-client-go/thrift-gen/agent
++github.com/uber/jaeger-client-go/thrift-gen/baggage
+ github.com/uber/jaeger-client-go/thrift-gen/jaeger
+ github.com/uber/jaeger-client-go/thrift-gen/sampling
+ github.com/uber/jaeger-client-go/thrift-gen/zipkincore
+-github.com/uber/jaeger-client-go/utils
+-github.com/uber/jaeger-client-go/internal/baggage/remote
+-github.com/uber/jaeger-client-go/internal/throttler/remote
+-github.com/uber/jaeger-client-go/rpcmetrics
+ github.com/uber/jaeger-client-go/transport
+-github.com/uber/jaeger-client-go/thrift-gen/agent
+-github.com/uber/jaeger-client-go/thrift-gen/baggage
++github.com/uber/jaeger-client-go/utils
+ # github.com/uber/jaeger-lib v2.0.0+incompatible
++## explicit
+ github.com/uber/jaeger-lib/metrics
+-# golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc
+-golang.org/x/crypto/pbkdf2
+-golang.org/x/crypto/scrypt
+-golang.org/x/crypto/ssh
+-golang.org/x/crypto/ssh/terminal
+-golang.org/x/crypto/sha3
+-golang.org/x/crypto/ripemd160
+-golang.org/x/crypto/openpgp
++# golang.org/x/crypto v0.0.0-20210314154223-e6e6c4f2bb5b
++## explicit
++golang.org/x/crypto/blowfish
++golang.org/x/crypto/cast5
++golang.org/x/crypto/chacha20
+ golang.org/x/crypto/curve25519
+ golang.org/x/crypto/ed25519
+-golang.org/x/crypto/internal/chacha20
+-golang.org/x/crypto/poly1305
++golang.org/x/crypto/ed25519/internal/edwards25519
++golang.org/x/crypto/internal/subtle
++golang.org/x/crypto/openpgp
+ golang.org/x/crypto/openpgp/armor
++golang.org/x/crypto/openpgp/elgamal
+ golang.org/x/crypto/openpgp/errors
+ golang.org/x/crypto/openpgp/packet
+ golang.org/x/crypto/openpgp/s2k
+-golang.org/x/crypto/ed25519/internal/edwards25519
+-golang.org/x/crypto/internal/subtle
+-golang.org/x/crypto/cast5
+-golang.org/x/crypto/openpgp/elgamal
+-# golang.org/x/net v0.0.0-20181023162649-9b4f9f5ad519
+-golang.org/x/net/websocket
++golang.org/x/crypto/pbkdf2
++golang.org/x/crypto/poly1305
++golang.org/x/crypto/ripemd160
++golang.org/x/crypto/scrypt
++golang.org/x/crypto/sha3
++golang.org/x/crypto/ssh
++golang.org/x/crypto/ssh/internal/bcrypt_pbkdf
++golang.org/x/crypto/ssh/terminal
++# golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
++## explicit
+ golang.org/x/net/context
+-golang.org/x/net/html/charset
+ golang.org/x/net/html
+ golang.org/x/net/html/atom
+-# golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
++golang.org/x/net/html/charset
++golang.org/x/net/websocket
++# golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
++## explicit
+ golang.org/x/sync/syncmap
+-# golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223
++# golang.org/x/sys v0.0.0-20210603081109-ebe580a85c40
++## explicit
+ golang.org/x/sys/cpu
++golang.org/x/sys/internal/unsafeheader
++golang.org/x/sys/plan9
+ golang.org/x/sys/unix
+ golang.org/x/sys/windows
+-# golang.org/x/text v0.3.0
++# golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1
++golang.org/x/term
++# golang.org/x/text v0.3.5
+ golang.org/x/text/encoding
+ golang.org/x/text/encoding/charmap
+ golang.org/x/text/encoding/htmlindex
+-golang.org/x/text/transform
+-golang.org/x/text/encoding/internal/identifier
+ golang.org/x/text/encoding/internal
++golang.org/x/text/encoding/internal/identifier
+ golang.org/x/text/encoding/japanese
+ golang.org/x/text/encoding/korean
+ golang.org/x/text/encoding/simplifiedchinese
+ golang.org/x/text/encoding/traditionalchinese
+ golang.org/x/text/encoding/unicode
+-golang.org/x/text/language
++golang.org/x/text/internal/language
++golang.org/x/text/internal/language/compact
++golang.org/x/text/internal/tag
+ golang.org/x/text/internal/utf8internal
++golang.org/x/text/language
+ golang.org/x/text/runes
+-golang.org/x/text/internal/tag
+-# gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127
++golang.org/x/text/transform
++# google.golang.org/protobuf v1.27.1
++google.golang.org/protobuf/encoding/prototext
++google.golang.org/protobuf/encoding/protowire
++google.golang.org/protobuf/internal/descfmt
++google.golang.org/protobuf/internal/descopts
++google.golang.org/protobuf/internal/detrand
++google.golang.org/protobuf/internal/encoding/defval
++google.golang.org/protobuf/internal/encoding/messageset
++google.golang.org/protobuf/internal/encoding/tag
++google.golang.org/protobuf/internal/encoding/text
++google.golang.org/protobuf/internal/errors
++google.golang.org/protobuf/internal/filedesc
++google.golang.org/protobuf/internal/filetype
++google.golang.org/protobuf/internal/flags
++google.golang.org/protobuf/internal/genid
++google.golang.org/protobuf/internal/impl
++google.golang.org/protobuf/internal/order
++google.golang.org/protobuf/internal/pragma
++google.golang.org/protobuf/internal/set
++google.golang.org/protobuf/internal/strs
++google.golang.org/protobuf/internal/version
++google.golang.org/protobuf/proto
++google.golang.org/protobuf/reflect/protodesc
++google.golang.org/protobuf/reflect/protoreflect
++google.golang.org/protobuf/reflect/protoregistry
++google.golang.org/protobuf/runtime/protoiface
++google.golang.org/protobuf/runtime/protoimpl
++google.golang.org/protobuf/types/descriptorpb
++# gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15
++## explicit
+ gopkg.in/check.v1
+ # gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce
++## explicit
+ gopkg.in/natefinch/npipe.v2
+ # gopkg.in/olebedev/go-duktape.v3 v3.0.0-20180302121509-abf0ba0be5d5
++## explicit
+ gopkg.in/olebedev/go-duktape.v3
+ # gopkg.in/sourcemap.v1 v1.0.5
++## explicit
+ gopkg.in/sourcemap.v1
+ gopkg.in/sourcemap.v1/base64vlq
+ # gopkg.in/urfave/cli.v1 v1.20.0
++## explicit
+ gopkg.in/urfave/cli.v1
++# gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
++gopkg.in/yaml.v3
++# github.com/codahale/hdrhistogram => github.com/HdrHistogram/hdrhistogram-go v0.9.0
++# github.com/uber-go/atomic => github.com/uber-go/atomic v1.4.0
++

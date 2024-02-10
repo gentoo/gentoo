@@ -1,0 +1,84 @@
+From 5997cf7587ce56aedac9114c0db9b250f1b54461 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 9 Jan 2024 23:45:27 -0500
+Subject: [PATCH 1/2] nir: Fix cast
+
+We were wrongly telling `nir_const_value_as_uint()` that `iter` had
+`bit_size` bits, but in one case it is explicitly i64. This works on
+little endian platforms, but caused the nir_loop_unroll_test.fadd{,_rev}
+tests to fail on big endian platforms.
+
+Bug: https://bugs.gentoo.org/921297
+Fixes: 268ad47c111 ("nir/loop_analyze: Handle bit sizes correctly in calculate_iterations")
+Reviewed-by: Rhys Perry <pendingchaos02@gmail.com>
+Reviewed-by: Ian Romanick <ian.d.romanick@intel.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/26964>
+---
+ src/compiler/nir/nir_loop_analyze.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/compiler/nir/nir_loop_analyze.c b/src/compiler/nir/nir_loop_analyze.c
+index b55da00b962..2b2ebfdd60f 100644
+--- a/src/compiler/nir/nir_loop_analyze.c
++++ b/src/compiler/nir/nir_loop_analyze.c
+@@ -827,6 +827,7 @@ get_iteration(nir_op cond_op, nir_const_value initial, nir_const_value step,
+               unsigned execution_mode)
+ {
+    nir_const_value span, iter;
++   unsigned iter_bit_size = bit_size;
+ 
+    switch (invert_comparison_if_needed(cond_op, invert_cond)) {
+    case nir_op_ine:
+@@ -880,13 +881,14 @@ get_iteration(nir_op cond_op, nir_const_value initial, nir_const_value step,
+       iter = eval_const_binop(nir_op_fdiv, bit_size, span,
+                               step, execution_mode);
+       iter = eval_const_unop(nir_op_f2i64, bit_size, iter, execution_mode);
++      iter_bit_size = 64;
+       break;
+ 
+    default:
+       return -1;
+    }
+ 
+-   uint64_t iter_u64 = nir_const_value_as_uint(iter, bit_size);
++   uint64_t iter_u64 = nir_const_value_as_uint(iter, iter_bit_size);
+    return iter_u64 > INT_MAX ? -1 : (int)iter_u64;
+ }
+ 
+-- 
+2.41.0
+
+From 4ed0957ce75878f8a2ce769e933c5ea3a1aa2510 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 9 Jan 2024 23:47:56 -0500
+Subject: [PATCH 2/2] nir/tests: Reenable tests that failed on big-endian
+
+These tests were disabled due to the bug fixed in the previous commit.
+
+Reviewed-by: Rhys Perry <pendingchaos02@gmail.com>
+Reviewed-by: Ian Romanick <ian.d.romanick@intel.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/26964>
+---
+ src/compiler/nir/tests/loop_unroll_tests.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/compiler/nir/tests/loop_unroll_tests.cpp b/src/compiler/nir/tests/loop_unroll_tests.cpp
+index f9ffb1f7a1c..af9b8f87549 100644
+--- a/src/compiler/nir/tests/loop_unroll_tests.cpp
++++ b/src/compiler/nir/tests/loop_unroll_tests.cpp
+@@ -144,12 +144,10 @@ UNROLL_TEST_INSERT(iadd,     int,   0,     24,   4,
+                    ige,      iadd,  false, TRUE, 6, 0)
+ UNROLL_TEST_INSERT(iadd_rev, int,   0,     24,   4,
+                    ilt,      iadd,  true,  TRUE, 7, 0)
+-#ifndef __s390x__
+ UNROLL_TEST_INSERT(fadd,     float, 0.0,   24.0, 4.0,
+                    fge,      fadd,  false, TRUE, 6, 0)
+ UNROLL_TEST_INSERT(fadd_rev, float, 0.0,   24.0, 4.0,
+                    flt,      fadd,  true,  TRUE, 7, 0)
+-#endif
+ UNROLL_TEST_INSERT(imul,     int,   1,     81,   3,
+                    ige,      imul,  false, TRUE, 4, 0)
+ UNROLL_TEST_INSERT(imul_rev, int,   1,     81,   3,
+-- 
+2.41.0
+

@@ -1,0 +1,14 @@
+--- developer_cmds-48/error/error.h
++++ developer_cmds-48/error/error.h
+@@ -194,11 +194,7 @@
+  */
+ extern	int	nerrors;
+ extern	Eptr	er_head;
+-#ifdef __APPLE__
+-__private_extern__
+-#else
+ extern
+-#endif
+ 	Eptr	*errors;	
+ /*
+  *	Resources for each of the files mentioned

@@ -1,0 +1,16 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -19,11 +19,11 @@ all:
+ 
+ cw:
+ 	@$(ECHO) "* Compiling cw(color wrapper)..."
+-	@$(CC) src/cw.c -o bin/cw @CFLAGS@ @LIBS@ @DEFS@
++	$(CC) $(CFLAGS) $(LDFLAGS) src/cw.c -o bin/cw @CFLAGS@ @LIBS@ @DEFS@
+ 
+ cwu:
+ 	@$(ECHO) "* Compiling cwu(color wrapper directive updater)..."
+-	@$(CC) src/cwu.c -o bin/cwu @CFLAGS@
++	$(CC) $(CFLAGS) $(LDFLAGS) src/cwu.c -o bin/cwu
+ 
+ local: cw cwu
+ 

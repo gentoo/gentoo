@@ -1,0 +1,87 @@
+--- a/src/ag.c
++++ b/src/ag.c
+@@ -184,15 +184,15 @@
+ ***********************************************************/
+ void bufferSounds(struct sound** soundCache){
+ 
+-	pushSound(&(*soundCache),"click-answer", "audio/click-answer.wav");
+-	pushSound(&(*soundCache),"click-shuffle", "audio/click-shuffle.wav");
+-	pushSound(&(*soundCache),"foundbig", "audio/foundbig.wav");
+-	pushSound(&(*soundCache),"found", "audio/found.wav");
+-	pushSound(&(*soundCache),"clear", "audio/clearword.wav");
+-	pushSound(&(*soundCache),"duplicate", "audio/duplicate.wav");
+-	pushSound(&(*soundCache),"badword", "audio/badword.wav");
+-	pushSound(&(*soundCache),"shuffle", "audio/shuffle.wav");
+-	pushSound(&(*soundCache),"clock-tick", "audio/clock-tick.wav");
++	pushSound(&(*soundCache),"click-answer", "/usr/share/anagramarama/audio/click-answer.wav");
++	pushSound(&(*soundCache),"click-shuffle", "/usr/share/anagramarama/audio/click-shuffle.wav");
++	pushSound(&(*soundCache),"foundbig", "/usr/share/anagramarama/audio/foundbig.wav");
++	pushSound(&(*soundCache),"found", "/usr/share/anagramarama/audio/found.wav");
++	pushSound(&(*soundCache),"clear", "/usr/share/anagramarama/audio/clearword.wav");
++	pushSound(&(*soundCache),"duplicate", "/usr/share/anagramarama/audio/duplicate.wav");
++	pushSound(&(*soundCache),"badword", "/usr/share/anagramarama/audio/badword.wav");
++	pushSound(&(*soundCache),"shuffle", "/usr/share/anagramarama/audio/shuffle.wav");
++	pushSound(&(*soundCache),"clock-tick", "/usr/share/anagramarama/audio/clock-tick.wav");
+ 
+ }
+ 
+@@ -982,7 +982,7 @@
+ int done = 0;
+ 
+ 	filelocation = rand()%10000;
+-	wordlist=fopen("wordlist.txt","r");
++	wordlist=fopen("/usr/share/anagramarama/wordlist.txt","r");
+ 
+ 	for (i=0;i<=filelocation;i++){
+ 
+@@ -992,7 +992,7 @@
+ 		else{
+ 			// go back to the start of the file
+ 			fclose(wordlist);
+-			fopen("wordlist.txt", "r");
++			fopen("/usr/share/anagramarama/wordlist.txt", "r");
+ 		}
+ 	}
+ 
+@@ -1011,7 +1011,7 @@
+ 			else{
+ 				// go back to the start of the file
+ 				fclose(wordlist);
+-				fopen("wordlist.txt", "r");
++				fopen("/usr/share/anagramarama/wordlist.txt", "r");
+ 				fscanf(wordlist, "%s", wordFromList);
+ 			}
+ 		}
+@@ -1485,7 +1485,7 @@
+ int i;
+ 
+ 	// show background
+-	ShowBMP("images/background.bmp",screen, 0,0);
++	ShowBMP("/usr/share/anagramarama/images/background.bmp",screen, 0,0);
+ 
+ 	destroyLetters(&(*letters));
+ 
+@@ -1760,9 +1760,9 @@
+ 	createDLBTree(&dlbHead);
+ 
+ 	// cache in-game graphics
+-	letterBank = SDL_LoadBMP("images/letterBank.bmp");
+-	smallLetterBank = SDL_LoadBMP("images/smallLetterBank.bmp");
+-	numberBank = SDL_LoadBMP("images/numberBank.bmp");
++	letterBank = SDL_LoadBMP("/usr/share/anagramarama/images/letterBank.bmp");
++	smallLetterBank = SDL_LoadBMP("/usr/share/anagramarama/images/smallLetterBank.bmp");
++	numberBank = SDL_LoadBMP("/usr/share/anagramarama/images/numberBank.bmp");
+ 
+ 	rootWord = malloc(sizeof(char)*9);
+ 	newGame(&head, dlbHead, screen, &letters);
+--- a/src/dlb.c
++++ b/src/dlb.c
+@@ -100,7 +100,7 @@
+ 	//printf("createDLBTree\n");
+ 
+ 	// open wordlist file
+-	wordlist = fopen("wordlist.txt", "r");
++	wordlist = fopen("/usr/share/anagramarama/wordlist.txt", "r");
+ 
+ 	// get each word from the list
+ 	while (fscanf(wordlist, "%s", wordFromList) != EOF){

@@ -1,0 +1,3 @@
+z /etc/ddclient.conf 0600 ddclient ddclient - -
+d /run/ddclient 0700 ddclient ddclient - -
+d /var/lib/cache/ddclient 0700 ddclient ddclient - -

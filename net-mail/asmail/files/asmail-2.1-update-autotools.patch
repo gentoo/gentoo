@@ -1,0 +1,61 @@
+I order to compile this package with clang we need to run autoreconf. Newer autotools complain about
+the several declarations of the same header.
+
+MD5 calculation is split from libssl into libcrypto. 
+
+Bug: https://bugs.gentoo.org/880913
+Bug: https://bugs.gentoo.org/900170
+
+--- a/autoconf/Makefile.defines.in
++++ b/autoconf/Makefile.defines.in
+@@ -38,7 +38,8 @@ LIBS_XEXTS	=
+ LIBS_AFTERSTEP	= -lXt
+ LIBS_PTHREAD	= -lpthread -lrt
+ LIBS_SSL	= @HAVESSL@
+-LIBRARIES	= $(LIBS_X) $(LIBS_XPM) $(LIBS_XEXTS) $(LIBS_PTHREAD) $(LIBS_SSL)
++LIBS_CRYPTO	= @HAVECRYPTO@
++LIBRARIES	= $(LIBS_X) $(LIBS_XPM) $(LIBS_XEXTS) $(LIBS_PTHREAD) $(LIBS_SSL) $(LIBS_CRYPTO)
+ 
+ AFTER_BIN_DIR	= @bindir@
+ AFTER_MAN_DIR	= @mandir@/man1
+--- a/autoconf/configure.in
++++ b/autoconf/configure.in
+@@ -1,3 +1,4 @@
++
+ dnl# -*- sh -*-
+ dnl# Process this file with autoconf to produce a configure script.
+ dnl#
+@@ -61,7 +62,6 @@ AC_CHECK_HEADERS(sys/statvfs.h sys/vfs.h sys/mount.h ustat.h)
+ AC_CHECK_HEADERS(machine/soundcard.h linux/soundcard.h linux/radio.h)
+ AC_CHECK_HEADERS(pthread.h)
+ AC_CHECK_HEADERS(openssl/ssl.h)
+-AC_CONFIG_HEADER(config.h)
+ 
+ dnl# Check for X
+ 
+@@ -110,8 +110,12 @@ AC_CHECK_LIB(ssl, SSL_CTX_new, [SSL_LIB="-lssl" HAVESSL="-lssl"],,)
+ MD5_OBJ=""
+ if test "x$HAVESSL" = "x"; then
+ 	MD5_OBJ="md5c.o"
++else
++  AC_CHECK_HEADERS(openssl/md5.h)
+ fi
+ 
++AC_CHECK_LIB(crypto, MD5, [CRYPTO_LIB="-lcrypto" HAVECRYPTO="-lcrypto"],,)
++
+ dnl# Variable strings declaration
+ 
+ AC_SUBST(version)
+@@ -129,11 +133,10 @@ AC_SUBST(with_gnustep_lib)
+ AC_SUBST(with_afterdir)
+ AC_SUBST(HAVESSL)
+ AC_SUBST(MD5_OBJ)
++AC_SUBST(HAVECRYPTO)
+ 
+ dnl# Write results
+ 
+-AC_CONFIG_HEADER(config.h)
+-
+ dnl# Common parts of the Makefile
+ MAKEFILEDEFINES=./autoconf/Makefile.defines
+ MAKEFILECOMMON=./autoconf/Makefile.common

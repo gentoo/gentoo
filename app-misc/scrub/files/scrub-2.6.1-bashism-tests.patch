@@ -1,0 +1,85 @@
+https://github.com/chaos/scrub/pull/31
+
+From 545d1b9cae8da18864277ca14a227d4adfafdc32 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 10 Jul 2022 10:23:09 +0100
+Subject: [PATCH] test: fix bashisms in tests
+
+We're using a /bin/sh shebang but the tests aren't
+compatible with a POSIX-compliant /bin/sh (like dash,
+instead of the usual bash).
+
+Switch to = instead of == which works the same but
+works with both Bash and dash.
+
+If desired, we could switch the shebangs to
+/bin/bash which would work.
+
+(Notably, Debian defaults to dash as /bin/sh).
+--- a/test/t09
++++ b/test/t09
+@@ -4,7 +4,7 @@
+ 
+ TEST=`basename $0 | cut -d- -f1`
+ # Test requires root
+-test `id -u` == 0 || exit 77
++test `id -u` = 0 || exit 77
+ 
+ EXPFILE=${TEST}-`hostname`.exp
+ TESTDEV=/dev/scrub-testdisk
+--- a/test/t10
++++ b/test/t10
+@@ -4,7 +4,7 @@
+ 
+ TEST=`basename $0 | cut -d- -f1`
+ # Test requires root
+-test `id -u` == 0 || exit 77
++test `id -u` = 0 || exit 77
+ 
+ EXPFILE=${TEST}-`hostname`.exp
+ test -f $EXPFILE || exit 77
+--- a/test/t18
++++ b/test/t18
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ TEST=`basename $0 | cut -d- -f1`
+ # Test requires root
+-test `id -u` == 0 || exit 77
++test `id -u` = 0 || exit 77
+ 
+ TMPLATE="${TMPDIR:-/tmp}/tmp.XXXXXXXXXX"
+ TESTDIR=`mktemp -d $TMPLATE` || exit 1
+--- a/test/t19
++++ b/test/t19
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ TEST=`basename $0 | cut -d- -f1`
+ # Test requires root
+-test `id -u` == 0 || exit 77
++test `id -u` = 0 || exit 77
+ LOOPFILE=`losetup -f` || exit 77
+ TMPLATE="${TMPDIR:-/tmp}/tmp.XXXXXXXXXX"
+ TESTFILE=`mktemp $TMPLATE` || exit 1
+--- a/test/t20
++++ b/test/t20
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ TEST=`basename $0 | cut -d- -f1`
+ # Test requires root
+-test `id -u` == 0 || exit 77
++test `id -u` = 0 || exit 77
+ LOOPFILE=`losetup -f` || exit 77
+ TMPLATE="${TMPDIR:-/tmp}/tmp.XXXXXXXXXX"
+ TESTFILE=`mktemp $TMPLATE` || exit 1
+--- a/test/t21
++++ b/test/t21
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ TEST=`basename $0 | cut -d- -f1`
+ # Test requires root
+-test `id -u` == 0 || exit 77
++test `id -u` = 0 || exit 77
+ 
+ TMPLATE="${TMPDIR:-/tmp}/tmp.XXXXXXXXXX"
+ 
+

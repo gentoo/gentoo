@@ -1,0 +1,43 @@
+# Copyright 2006-2013 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of ALSA_CARDS USE_EXPAND flags.
+
+# Keep it sorted.
+aica - Sega Dreamcast audio driver
+asihpi - AudioScience ASIxxxx
+ca0132 - Creative CA0132 (Sound Core3D) HD-audio
+cs46xx - Cirrus Logic (Sound Fusion) CS4280/CS461x/CS462x/CS463x
+darla20 - (Echoaudio) Darla20
+darla24 - (Echoaudio) Darla24
+echo3g - (Echoaudio) 3G cards
+emu10k1 - Emu10k1 (SB Live!, Audigy, E-mu APS)
+emu10k1x - Emu10k1X (Dell OEM Version)
+emu1212 - E-MU 1212M PCI
+emu1616 - E-MU 1616 CardBus, 1616m CardBus, 1616 PCI
+emu1820 - E-MU 1820M PCI
+gina20 - (Echoaudio) Gina20
+gina24 - (Echoaudio) Gina24
+hdspm - RME Hammerfall DSP MADI
+hdsp - RME Hammerfall DSP Audio
+ice1712 - ICEnsemble ICE1712 (Envy24)
+indigo - (Echoaudio) Indigo
+indigoio - (Echoaudio) Indigo IO
+korg1212 - Korg 1212 IO
+layla20 - (Echoaudio) Layla20
+layla24 - (Echoaudio) Layla24
+maestro3 - ESS Allegro/Maestro3
+mia - (Echoaudio) Mia
+mixart - Digigram miXart
+mona - (Echoaudio) Mona
+msnd-pinnacle - Turtle Beach MultiSound Pinnacle/Fiji driver
+pcxhr - Digigram PCXHR
+rme32 - RME Digi32, 32/8, 32 PRO
+rme96 - RME Digi96, 96/8, 96/8 PRO
+sb16 - Sound Blaster 16 (PnP)
+sbawe - Sound Blaster AWE (32,64) (PnP)
+sscape - Ensoniq SoundScape PnP driver
+usb-usx2y - Tascam US-122, US-224 and US-428 USB driver
+vx222 - Digigram VX222
+wavefront - Turtle Beach Maui,Tropez,Tropez+ (Wavefront)
+ymfpci - Yamaha YMF724/740/744/754

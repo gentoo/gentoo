@@ -1,0 +1,69 @@
+# Since musl doesn't provide error.h we need to check before adding it. If
+# error.h is present in system only then we include it else we use err.h.
+# Already there exists a bug report for this upstream [1]. The devs are open to
+# a custom implementation of error but for now this patch for do it.
+#
+# [1]: https://github.com/libratbag/libratbag/issues/1253
+#
+# Closes: https://bugs.gentoo.org/830557
+--- a/meson.build
++++ b/meson.build
+@@ -74,8 +74,13 @@ dep_libevdev = dependency('libevdev')
+ dep_glib = dependency('glib-2.0')
+ dep_json_glib = dependency('json-glib-1.0')
+ dep_lm = cc.find_library('m')
++error_exists = cc.has_header('error.h')
+ dep_unistring = cc.find_library('unistring')
+
++if error_exists
++	add_global_arguments('-DHAVE_ERROR_H', language : 'c')
++endif
++
+ if get_option('logind-provider') == 'elogind'
+ 	dep_logind = dependency('libelogind', version : '>=227')
+ else
+--- a/tools/hidpp10-dump-page.c
++++ b/tools/hidpp10-dump-page.c
+@@ -23,7 +23,12 @@
+
+ #include <config.h>
+ #include <errno.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#else
++#include <err.h>
++#define error(status, errno, ...) err(status, __VA_ARGS__)
++#endif
+ #include <fcntl.h>
+
+ #include <hidpp10.h>
+--- a/tools/hidpp20-dump-page.c
++++ b/tools/hidpp20-dump-page.c
+@@ -23,7 +23,12 @@
+
+ #include <config.h>
+ #include <errno.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#else
++#include <err.h>
++#define error(status, errno, ...) err(status, __VA_ARGS__)
++#endif
+ #include <fcntl.h>
+
+ #include <hidpp20.h>
+--- a/tools/hidpp20-reset.c
++++ b/tools/hidpp20-reset.c
+@@ -23,7 +23,12 @@
+
+ #include <config.h>
+ #include <errno.h>
++#ifdef HAVE_ERROR_H
+ #include <error.h>
++#else
++#include <err.h>
++#define error(status, errno, ...) err(status, __VA_ARGS__)
++#endif
+ #include <fcntl.h>
+
+ #include <hidpp20.h>

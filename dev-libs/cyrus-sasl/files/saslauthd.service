@@ -1,0 +1,13 @@
+[Unit]
+Description=SASL Authentication Daemon
+
+[Service]
+Type=forking
+PIDFile=/run/saslauthd/saslauthd.pid
+EnvironmentFile=/etc/conf.d/saslauthd
+ExecStart=/usr/sbin/saslauthd $SASLAUTHD_OPTS
+ExecStop=/bin/kill -15 $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

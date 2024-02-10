@@ -1,0 +1,24 @@
+--- a/jdbc/FindMySQL.cmake	2021-09-10 18:31:29.000000000 +0200
++++ b/jdbc/FindMySQL.cmake	2022-01-21 07:40:03.224705056 +0100
+@@ -282,8 +282,8 @@
+   # there, pick "libmysqlclient" that in 5.5 and up is multithreaded
+   # anyway (soft link "libmysqlclient_r" is not installed MySQL Server
+   # 5.6 and Debian/Ubuntu and might go in 5.7 for all installs)
+-  set(_dynamic_libs   "mysqlclient_r"      "mysqlclient")
+-  set(_static_libs    "libmysqlclient_r.a" "libmysqlclient.a")
++  set(_dynamic_libs   "mysqlclient")
++  set(_static_libs    "libmysqlclient.a")
+   set(_static_lib_ext ".a")
+ endif()
+ 
+--- a/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp	2022-01-21 07:52:41.224586087 +0100
++++ b/jdbc/driver/nativeapi/libmysql_dynamic_proxy.cpp	2022-01-21 07:52:50.168631719 +0100
+@@ -49,7 +49,7 @@
+ #elif defined(__hpux) && defined(__hppa)
+ static const char * const baseName = "libmysqlclient_r.sl";
+ #else
+-static const char * const baseName = "libmysqlclient_r.so";
++static const char * const baseName = "libmysqlclient.so";
+ #endif
+ 
+ template<typename FunctionType>

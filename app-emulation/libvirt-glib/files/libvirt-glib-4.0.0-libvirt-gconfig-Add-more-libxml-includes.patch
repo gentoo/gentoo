@@ -1,0 +1,50 @@
+From bcc82de1d74057f6d124c2eaff0ac97cbbf52657 Mon Sep 17 00:00:00 2001
+Message-ID: <bcc82de1d74057f6d124c2eaff0ac97cbbf52657.1701156704.git.mprivozn@redhat.com>
+In-Reply-To: <56acbe8a0765a02418f80fb3599b3cf7160ef446.1701156704.git.mprivozn@redhat.com>
+References: <56acbe8a0765a02418f80fb3599b3cf7160ef446.1701156704.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Sat, 25 Nov 2023 07:15:46 +0100
+Subject: [glib PATCH 2/2] libvirt-gconfig: Add more libxml/ includes
+
+In its 2.12.0 release, libxml reworked their header files (some
+might even call it cleaning up, I call it API incompatible
+change) and now  we don't get all declarations we need by just
+including one file. Add missing includes.
+
+Resolves: https://gitlab.com/libvirt/libvirt-glib/-/issues/6
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ libvirt-gconfig/libvirt-gconfig-helpers.c | 1 +
+ libvirt-gconfig/libvirt-gconfig-object.c  | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/libvirt-gconfig/libvirt-gconfig-helpers.c b/libvirt-gconfig/libvirt-gconfig-helpers.c
+index 37075e3..4dbb177 100644
+--- a/libvirt-gconfig/libvirt-gconfig-helpers.c
++++ b/libvirt-gconfig/libvirt-gconfig-helpers.c
+@@ -25,6 +25,7 @@
+ 
+ #include <string.h>
+ 
++#include <libxml/parser.h>
+ #include <libxml/xmlerror.h>
+ #include <glib/gi18n-lib.h>
+ 
+diff --git a/libvirt-gconfig/libvirt-gconfig-object.c b/libvirt-gconfig/libvirt-gconfig-object.c
+index 1fcc667..4dd189d 100644
+--- a/libvirt-gconfig/libvirt-gconfig-object.c
++++ b/libvirt-gconfig/libvirt-gconfig-object.c
+@@ -25,7 +25,10 @@
+ 
+ #include <string.h>
+ 
++#include <libxml/tree.h>
++#include <libxml/entities.h>
+ #include <libxml/relaxng.h>
++
+ #include <glib/gi18n-lib.h>
+ 
+ #include "libvirt-gconfig/libvirt-gconfig.h"
+-- 
+2.41.0
+

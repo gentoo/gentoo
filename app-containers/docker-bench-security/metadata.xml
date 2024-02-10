@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Docker Bench for Security is a script that checks for dozens of
+		common best-practices around deploying Docker containers in production.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">docker/docker-bench-security</remote-id>
+	</upstream>
+</pkgmetadata>

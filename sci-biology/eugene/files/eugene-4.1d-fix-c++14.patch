@@ -1,0 +1,17 @@
+Fix building with C++14, which errors out due to collisions with isinf
+from cmath. We don't need to fix ancient broken OSX toolchains.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594700
+
+--- a/src/SensorPlugins/Tester/Sensor.Tester.cc
++++ b/src/SensorPlugins/Tester/Sensor.Tester.cc
+@@ -18,9 +18,7 @@
+ // ------------------------------------------------------------------
+ 
+ // MacOS-X kludge. cmath undefines these macros. Turn them into inlines 
+-#include <math.h>
+-inline int (isinf)(double r) { return isinf(r); }
+-inline int (isnan)(double r) { return isnan(r); }
++#include <cmath>
+ 
+ #include <iomanip>
+ #include <fstream>

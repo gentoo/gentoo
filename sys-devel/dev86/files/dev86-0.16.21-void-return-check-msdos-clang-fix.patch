@@ -1,0 +1,20 @@
+--- a/bootblocks/makeboot.c	2020-11-30 00:28:40.383078094 +0300
++++ b/bootblocks/makeboot.c	2020-11-30 00:28:26.969025659 +0300
+@@ -183,6 +183,8 @@
+ unsigned char bpb_flags[100];
+ int has_bpb_overrides = 0;
+
++static void check_msdos();
++
+ main(argc, argv)
+ int argc;
+ char ** argv;
+@@ -1122,7 +1124,7 @@
+
+ /**************************************************************************/
+
+-check_msdos()
++static void check_msdos()
+ {
+    decode_super(buffer);
+    if( dosflds[DOS_CLUST].value == 0 )	/* MSDOS v1.0 */

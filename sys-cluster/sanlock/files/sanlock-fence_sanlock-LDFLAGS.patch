@@ -1,0 +1,12 @@
+diff -ur sanlock-3.8.2.orig/fence_sanlock/Makefile sanlock-3.8.2/fence_sanlock/Makefile
+--- sanlock-3.8.2.orig/fence_sanlock/Makefile   2020-08-21 19:48:12.695801870 +0200
++++ sanlock-3.8.2/fence_sanlock/Makefile        2020-08-21 19:47:50.477402437 +0200
+@@ -34,7 +34,7 @@
+ CFLAGS += -DVERSION=\"$(VER)\" -I../src -I../wdmd
+ CFLAGS += -fPIE -DPIE
+
+-LDFLAGS = -Wl,-z,now -Wl,-z,relro -pie
++LDFLAGS += -Wl,-z,now -Wl,-z,relro -pie
+ LDADD = -lrt -laio -lblkid -lsanlock -lwdmd
+
+ all: $(TARGET1) $(TARGET2)

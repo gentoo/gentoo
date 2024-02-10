@@ -1,0 +1,13 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -25,8 +25,8 @@
+ INSTALL = @INSTALL@
+ DEFS = @DEFS@
+ LIBS = @LIBS@
+-CFLAGS = -O
+-LDFLAGS = -s
++CFLAGS +=
++LDFLAGS +=
+ prefix = @prefix@
+ 
+ SHELL = /bin/sh

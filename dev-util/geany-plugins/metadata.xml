@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>aklhfex@gmail.com</email>
+		<name>Chris Mayo</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<use>
+		<flag name="ctags">Enable ctags plugin</flag>
+		<flag name="debugger">Enable the debugger plugin which interfaces with <pkg>dev-debug/gdb</pkg></flag>
+		<flag name="enchant">Enable spell checking using enchant</flag>
+		<flag name="gpg">Enable geanypg plugin which integrates GPG using <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="gtkspell">Use gtkspell for dictionary support in GeanyVC</flag>
+		<flag name="markdown">Enable the markdown plugin</flag>
+		<flag name="pretty-printer">Enable pretty-printer plugin</flag>
+		<flag name="scope">Enable the scope plugin which is a graphical GDB front-end</flag>
+		<flag name="webhelper">Enable webhelper plugin</flag>
+		<flag name="workbench">Enable workbench plugin</flag>
+	</use>
+</pkgmetadata>

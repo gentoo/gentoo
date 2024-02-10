@@ -1,0 +1,12 @@
+diff -urN levmar-2.6.old/CMakeLists.txt levmar-2.6/CMakeLists.txt
+--- levmar-2.6.old/CMakeLists.txt	2014-08-07 18:22:25.739008113 +0200
++++ levmar-2.6/CMakeLists.txt	2014-08-07 18:22:36.050014845 +0200
+@@ -67,7 +67,7 @@
+ 
+ # demo program
+ IF(BUILD_DEMO)
+-  SET(LIBS levmar)
++  SET(LIBS levmar m)
+ 
+   LINK_DIRECTORIES(${CMAKE_BINARY_DIR}) # location of the levmar library
+   LINK_DIRECTORIES(${LAPACKBLAS_DIR})

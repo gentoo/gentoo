@@ -1,0 +1,46 @@
+diff -urN o/common.sh os-prober-1.81/common.sh
+--- o/common.sh	2023-01-22 13:43:23.333123217 -0800
++++ os-prober-1.81/common.sh	2023-01-22 13:44:49.408153101 -0800
+@@ -326,3 +326,18 @@
+ 	fi
+ }
+ 
++list_mounts() {
++	if [ -f /proc/self/mountinfo ]; then
++		local x dev mount devs found
++		found=:
++		while read -r x x dev x mount x x fs x; do
++			if [ -L "/sys/dev/block/$dev" ]; then
++				devs="/dev/`readlink \"/sys/dev/block/$dev\" | rev | cut -d/ -f1 | rev`"
++				printf '%s %s %s\n' "$(mapdevfs "$devs")" "$mount" "$fs"
++				found="return 0"
++			fi
++		done < /proc/self/mountinfo
++		$found
++	fi
++	grep "^/dev/" /proc/mounts | parse_proc_mounts
++}
+diff -urN o/linux-boot-prober os-prober-1.81/linux-boot-prober
+--- o/linux-boot-prober	2023-01-22 13:43:23.334123229 -0800
++++ os-prober-1.81/linux-boot-prober	2023-01-22 13:43:34.897260733 -0800
+@@ -17,7 +17,7 @@
+ bootsv=
+ bootuuid=
+ 
+-grep "^/dev/" /proc/mounts | parse_proc_mounts >"$OS_PROBER_TMP/mounted-map" || true
++list_mounts >"$OS_PROBER_TMP/mounted-map" || true
+ 
+ if [ -z "$1" ]; then
+ 	ERR=y
+diff -urN o/os-prober os-prober-1.81/os-prober
+--- o/os-prober	2023-01-22 13:43:23.334123229 -0800
++++ os-prober-1.81/os-prober	2023-01-22 13:43:34.897260733 -0800
+@@ -128,7 +128,7 @@
+ 
+ # We need to properly canonicalize partitions with mount points and partitions
+ # used in RAID
+-grep "^/dev/" /proc/mounts | parse_proc_mounts >"$OS_PROBER_TMP/mounted-map" || true
++list_mounts >"$OS_PROBER_TMP/mounted-map" || true
+ : >"$OS_PROBER_TMP/swaps-map"
+ if [ -f /proc/swaps ]; then
+ 	grep "^/dev/" /proc/swaps | parse_proc_swaps >"$OS_PROBER_TMP/swaps-map" || true

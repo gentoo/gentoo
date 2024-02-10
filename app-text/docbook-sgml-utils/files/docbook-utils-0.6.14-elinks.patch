@@ -1,0 +1,13 @@
+--- a/backends/txt
++++ b/backends/txt
+@@ -10,6 +10,10 @@
+ then
+   CONVERT=/usr/bin/links
+   ARGS="-dump"
++elif [ -x /usr/bin/elinks ]
++then
++  CONVERT=/usr/bin/elinks
++  ARGS="-dump"
+ elif [ -x /usr/bin/w3m ]
+ then
+   CONVERT=/usr/bin/w3m

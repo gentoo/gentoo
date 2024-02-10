@@ -1,0 +1,41 @@
+https://github.com/openargus/clients/pull/7
+
+From 00264608bad9655d72927f31a2b2744b5e2e2e31 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 25 Nov 2022 19:03:24 +0100
+Subject: [PATCH] configure (AC_LBL_UNALIGNED_ACCESS): Avoid implicit function
+ decls
+
+Implicit function declarations were removed from the C language
+in 1999.  Include the relevant header files to ensure that the
+check still works with future compilers.  C99 also requires
+to declare the return types of all functions.
+--- a/acsite.m4
++++ b/acsite.m4
+@@ -298,8 +298,10 @@ AC_DEFUN([AC_LBL_UNALIGNED_ACCESS],
+ #      include <sys/types.h>
+ #      include <sys/wait.h>
+ #      include <stdio.h>
++#      include <stdlib.h>
++#      include <unistd.h>
+       unsigned char a[[5]] = { 1, 2, 3, 4, 5 };
+-      main() {
++      int main() {
+       unsigned int i;
+       pid_t pid;
+       int status;
+--- a/configure
++++ b/configure
+@@ -6711,8 +6711,10 @@ else
+ #      include <sys/types.h>
+ #      include <sys/wait.h>
+ #      include <stdio.h>
++#      include <stdlib.h>
++#      include <unistd.h>
+       unsigned char a[5] = { 1, 2, 3, 4, 5 };
+-      main() {
++      int main() {
+       unsigned int i;
+       pid_t pid;
+       int status;
+

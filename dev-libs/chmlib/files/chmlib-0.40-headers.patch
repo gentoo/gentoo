@@ -1,0 +1,18 @@
+--- a/src/chm_http.c
++++ b/src/chm_http.c
+@@ -34,6 +34,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #if __sun || __sgi
+   #include <strings.h>
+ #endif
+@@ -42,6 +43,7 @@
+ #include <sys/socket.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ 
+ /* threading includes */
+ #include <pthread.h>

@@ -1,0 +1,30 @@
+From 8b308c28e5c3684ac002289b0eebc64500bbed1c Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 24 Dec 2023 16:37:38 +0000
+Subject: [PATCH] GNUInstallDirs is not supposed to be used conditionally
+
+Always include it to fix cross-compiling. This should not break Windows.
+
+Closes: https://github.com/mborgerding/kissfft/issues/65
+---
+ CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0213798..c4d7d3e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -105,9 +105,7 @@ endif()
+ # Add GNUInstallDirs for GNU infrastructure before target)include_directories
+ #
+ 
+-if(CMAKE_SYSTEM_NAME MATCHES "^(Linux|kFreeBSD|GNU)$" AND NOT CMAKE_CROSSCOMPILING)
+-    include(GNUInstallDirs)
+-endif()
++include(GNUInstallDirs)
+ 
+ #
+ # Declare PKGINCLUDEDIR for kissfft include path
+-- 
+2.43.0
+

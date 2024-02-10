@@ -1,0 +1,57 @@
+diff -ru sable.orig/src/Makefile sable/src/Makefile
+--- sable.orig/src/Makefile	2006-03-14 00:57:31.000000000 -0500
++++ sable/src/Makefile	2009-01-21 15:15:02.000000000 -0500
+@@ -1,30 +1,10 @@
+-# are we on OSX?
+-ifeq ($(shell uname), Darwin)
+-OSX:=1
+-endif
+-
+-# C options
+-CC = gcc
+-NOOSXFLAGS = -c `sdl-config --cflags` -O2 -Wall -DSABLE_RESOURCEDIR=\"$(INSTALL_RESDIR)/sable/\" -Iinclude $(CFLAGS)
+-ifdef OSX
+-FLAGS = $(NOOSXFLAGS) -D_SABLE_OSX_
+-else
+-FLAGS = $(NOOSXFLAGS)
+-endif
+-
+-# C++ options.
+-CXX = g++
+-CXXFLAGS = $(FLAGS)
++NOOSXFLAGS = -c `sdl-config --cflags` -DSABLE_RESOURCEDIR=\"$(INSTALL_RESDIR)/sable/\" -Iinclude
++
++CFLAGS += $(NOOSXFLAGS)
++CXXFLAGS += $(NOOSXFLAGS)
+ 
+ # Linker options.
+-LD = g++
+-LDFLAGS = 
+-NOOSXLIBS =  -lSDL_image -lSDL_mixer
+-ifdef OSX
+-LIBS = `sdl-config --static-libs` $(NOOSXLIBS)
+-else
+-LIBS = `sdl-config --libs` $(NOOSXLIBS) -lGL -lGLU
+-endif
++LIBS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lGL -lGLU
+ 
+ COBJS = vcontrol/vcontrol.o \
+ 	bcplrandom.o \
+@@ -35,7 +15,7 @@
+ OBJS = $(COBJS) $(CXXOBJS)
+ 
+ sable: $(OBJS)
+-	$(LD) $(LDFLAGS) -o sable $(OBJS) $(LIBS)
++	$(CXX) $(LDFLAGS) -o sable $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f sable *.o vcontrol/*.o svaf/*.o
+@@ -44,7 +24,7 @@
+ 	find . -name \*.c\* | xargs makedepend -Y. -Iinclude >& /dev/null
+ 
+ $(COBJS): %.o: %.c
+-	$(CC) $(FLAGS) -o $@ $<
++	$(CC) $(CFLAGS) -o $@ $<
+ 
+ $(CXXOBJS): %.o: %.cpp
+ 	$(CXX) $(CXXFLAGS) -o $@ $<

@@ -1,0 +1,193 @@
+--- a/Makefile	2004-11-17 23:19:17.000000000 +0100
++++ b/Makefile	2005-01-16 21:23:33.000000000 +0100
+@@ -6,7 +6,7 @@
+ version = 1.2.1
+ 
+ CC = gcc
+-CFLAGS += -Wall
++CFLAGS += -Wall -D_FILE_OFFSET_BITS=64
+ LIBS = -lm
+ 
+ all: wavsplit wavren
+--- a/wavsplit.c	2004-11-17 23:19:17.000000000 +0100
++++ b/wavsplit.c	2005-01-16 22:04:39.000000000 +0100
+@@ -269,9 +269,9 @@
+            timepos * split)
+ {
+   char *buf, *bp_out;
+-  long to_write, to_read, n_read, pos;
++  off_t to_write, to_read, n_read, pos;
+   int fnr = 0;
+-  unsigned long in_blk_size;
++  off_t in_blk_size;
+   struct stat stat_buf;
+ 
+   /* Buffer reservieren */
+@@ -282,8 +282,8 @@
+   in_blk_size = stat_buf.st_blksize;
+   buf = malloc (in_blk_size + 1);
+   if (buf == NULL) {
+-    fprintf (stderr, "Could not allocate %ld bytes of memory.\n",
+-             in_blk_size + 1);
++    fprintf (stderr, "Could not allocate %llu bytes of memory.\n",
++             (in_blk_size + 1));
+     return 1;
+   }
+   /* if (verbose) printf("Allocated %ld bytes for buffer.\n", in_blk_size+1); */
+@@ -295,7 +295,7 @@
+     return 1;
+ 
+   do {
+-    n_read = (long) stdread (buf, in_blk_size + 1);
++    n_read = stdread (buf, in_blk_size + 1);
+     if (n_read < 0) {
+       fprintf (stderr, "Error while reading.\n");
+       return 1;
+@@ -336,7 +336,7 @@
+           else {
+             if (verbose)
+               printf
+-                ("[%02d]\tuntil the end                %12ld   100.00%%\n",
++                ("[%02d]\tuntil the end                %12llu   100.00%%\n",
+                  fnr + 1, databytes);
+           }
+         }
+@@ -374,7 +374,7 @@
+ int readheader ()
+ {
+   char ibuffer[BUFFERSIZE];
+-  u_long offset;
++  off_t offset;
+ 
+   if (lseek (ifd, 0L, SEEK_SET)) {
+     fprintf (stderr, "Could not locate beginning of input file\n");
+@@ -425,9 +425,22 @@
+   ptr += 4;                     /* we move past data */
+   memcpy (&databytes, ptr, sizeof (u_long));
+ 
+-  offset = (u_long) ptr + 4 - (u_long) ibuffer;
++  struct stat stat_buf;
++
++  /* Buffer reservieren */
++  if (fstat (ifd, &stat_buf) < 0) {
++    fprintf (stderr, "Could not read input file state.\n");
++    return 1;
++  }
++  if(stat_buf.st_size > databytes)  {
++    printf("Actual size of file (%llu) is larger than the databytes (%llu), setting to actual size: %llu!\n", 
++      stat_buf.st_size, databytes + (ptr - ibuffer) + 4, stat_buf.st_size - (ptr - ibuffer) - 4  );
++    databytes = stat_buf.st_size - (ptr - ibuffer) - 4 ;
++  }
++  
++  offset = ptr + 4 - ibuffer;
+   if (lseek (ifd, offset, SEEK_SET) == -1) {
+-    fprintf (stderr, "Error seeking to WAV data at %lu\n", offset);
++    fprintf (stderr, "Error seeking to WAV data at %llu\n", offset);
+     return 1;
+   }
+ 
+@@ -435,7 +448,7 @@
+     printf ("Channels: %d\n", waveformat.wChannels);
+     printf ("Samplerate: %ldHz\n", waveformat.dwSamplesPerSec);
+     printf ("Samplebits: %d\n", waveformat.wBitsPerSample);
+-    printf ("Databytes: %ld\n\n", databytes);
++    printf ("Databytes: %llu\n\n", databytes);
+     printf ("Split         Hours  Mins   Seconds         Bytes         %%\n");
+     //printf("Blocks: %ld\n",databytes/waveformat.wBlockAlign);
+   }
+@@ -473,7 +486,7 @@
+   return NULL;
+ }
+ 
+-int createout (int num, long datasize)
++int createout (int num, off_t datasize)
+ {
+   char ofile[MAX_PATH + 1];
+   sprintf (ofile, "%s/%02d.wav", basename, num);
+@@ -517,7 +530,7 @@
+     TimeFloat = hr* 3600.0 + min * 60.0 + sek + (frames/fps);
+ 
+ */
+-long calcsplit (unsigned int UseHours, unsigned int UseFrames,
++off_t calcsplit (unsigned int UseHours, unsigned int UseFrames,
+                 unsigned int fps, unsigned int UseTrackLens,
+                 int splitnr, timepos * split)
+ {
+@@ -526,7 +539,7 @@
+ 
+   double TimeFloat = 0.0;
+   double SplitTimeFloat = 0.0;
+-  long pos;
++  off_t pos;
+   unsigned int Opt = 2 * UseHours + UseFrames;
+ 
+   switch (Opt) {
+@@ -569,7 +582,7 @@
+   /* first calculate to the nearest sample, then scale by the  */
+   /* block size to avoid getting e.g. half a block */
+ 
+-  pos = (long) ((SplitTimeFloat * (double) waveformat.dwSamplesPerSec));
++  pos = (off_t) ((SplitTimeFloat * (double) waveformat.dwSamplesPerSec));
+   pos = pos * waveformat.wBlockAlign;
+ 
+   if (verbose) {
+@@ -581,24 +594,24 @@
+     }
+   }
+   if (UseFrames)
+-    printf ("%5d  %8.3f  %12ld    %3.2f%%\n",
++    printf ("%5d  %8.3f  %12llu    %3.2f%%\n",
+             split[splitnr].min,
+             (double) split[splitnr].seki +
+             ((double) split[splitnr].frames / (double) fps), pos,
+             (float) pos / (float) databytes * 100);
+ 
+   else
+-    printf ("%5d  %8.3f  %12ld    %3.2f%%\n",
++    printf ("%5d  %8.3f  %12llu    %3.2f%%\n",
+             split[splitnr].min,
+             split[splitnr].sek, pos, (float) pos / (float) databytes * 100);
+ 
+   return pos;
+ }
+ 
+-long stdread (char *buf, long nchars)
++off_t stdread (char *buf, off_t nchars)
+ {
+-  int n_read;
+-  int to_be_read = nchars;
++  off_t n_read;
++  off_t to_be_read = nchars;
+ 
+   while (to_be_read) {
+     n_read = read (ifd, buf, to_be_read);
+--- a/wavsplit.h	2004-11-17 23:19:17.000000000 +0100
++++ b/wavsplit.h	2005-01-16 21:23:33.000000000 +0100
+@@ -121,15 +121,15 @@
+ static int split (unsigned int UseHours, unsigned int UseFrames,
+                   unsigned int fps, unsigned int UseTrackLens,
+                   int splits, timepos * splitpos);
+-static long calcsplit (unsigned int UseHours, unsigned int UseFrames,
++static off_t calcsplit (unsigned int UseHours, unsigned int UseFrames,
+                        unsigned int fps, unsigned int UseTrackLens,
+                        int splitnr, timepos * split);
+-static int createout ();
++static int createout (int num, off_t datasize);
+ int closeout ();
+ void display (unsigned char avgleft, unsigned char avgright,
+               unsigned char avgloud);
+ static void usage ();
+-static long stdread (char *buf, long nchars);
++static off_t stdread (char *buf, off_t nchars);
+ #ifdef __powerpc__
+ static _ConvertHeaderFromNative (WAVE_HEADER * hdr);
+ static _ConvertHeaderToNative (WAVE_HEADER * hdr);
+@@ -137,7 +137,7 @@
+ 
+ static char *ptr;
+ static WAVEFORMAT waveformat;
+-static u_long databytes, b;
++static off_t databytes, b;
+ static int ifd, ofd;
+ static int verbose;
+ static char basename[MAX_PATH + 1], ifile[MAX_PATH + 1];

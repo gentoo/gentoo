@@ -1,0 +1,36 @@
+https://github.com/opencv/opencv/pull/23991
+
+From 4ee0f212cc19f7e77483d34d4cf8378945e3da31 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E4=B8=8D=E9=B1=BC=E5=84=BF?=
+ <36976072+buyuer@users.noreply.github.com>
+Date: Fri, 14 Jul 2023 08:45:14 +0000
+Subject: [PATCH] Eliminating compilation warnings when using lto in gcc12 and
+ later versions
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+use -flto=auto when use gcc12 or later
+
+Signed-off-by: 不鱼儿 <36976072+buyuer@users.noreply.github.com>
+---
+ cmake/OpenCVCompilerOptions.cmake | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/OpenCVCompilerOptions.cmake b/cmake/OpenCVCompilerOptions.cmake
+index d4600943fb0d..8bd86681303e 100644
+--- a/cmake/OpenCVCompilerOptions.cmake
++++ b/cmake/OpenCVCompilerOptions.cmake
+@@ -261,7 +261,11 @@ if(CV_GCC OR CV_CLANG)
+   endif()
+ 
+   if(ENABLE_LTO)
+-    add_extra_compiler_option(-flto)
++    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 12)
++      add_extra_compiler_option(-flto=auto)
++    else()
++      add_extra_compiler_option(-flto)
++    endif()
+   endif()
+   if(ENABLE_THIN_LTO)
+     add_extra_compiler_option(-flto=thin)

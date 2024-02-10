@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/912720
+https://gitlab.gnome.org/GNOME/evolution-data-server/-/issues/484
+https://gitlab.gnome.org/GNOME/evolution/-/issues/2485
+https://gitlab.gnome.org/GNOME/evolution-data-server/-/merge_requests/126
+
+From 087226d29de3ef9070fb7436ca3dcc476cd9a9a5 Mon Sep 17 00:00:00 2001
+From: Enrik Berkhan <enrik.berkhan@inka.de>
+Date: Thu, 6 Jul 2023 15:44:53 +0000
+Subject: [PATCH] Camel MIME utils: fix aliasing issue in datetok
+
+Due to an aliasing issue, datetok() always returned NULL.
+
+With this change, the C aliasing rules will be respected. Further, next is no longer required to be the first element in struct _date_token.
+--- a/src/camel/camel-mime-utils.c
++++ b/src/camel/camel-mime-utils.c
+@@ -4160,7 +4160,7 @@ struct _date_token {
+ static struct _date_token *
+ datetok (const gchar *date)
+ {
+-	struct _date_token *tokens = NULL, *token, *tail = (struct _date_token *) &tokens;
++	struct _date_token *tokens = NULL, *token, **tail = &tokens;
+ 	const gchar *start, *end;
+ 	guchar mask;
+ 
+@@ -4187,8 +4187,8 @@ datetok (const gchar *date)
+ 			token->len = end - start;
+ 			token->mask = mask;
+ 
+-			tail->next = token;
+-			tail = token;
++			*tail = token;
++			tail = &token->next;
+ 		}
+ 
+ 		if (*end)
+-- 
+GitLab

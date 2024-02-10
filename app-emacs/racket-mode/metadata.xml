@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Emacs major and minor modes for Racket: edit, REPL, check-syntax, debug,
+    profile, and more.
+    Racket Mode uses a "back end server" written in Racket, which is
+    responsible for running files and implementing commands that cannot be
+    implemented in Emacs Lisp.
+    Details: https://github.com/greghendershott/racket-mode
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/greghendershott/racket-mode/issues</bugs-to>
+    <remote-id type="github">greghendershott/racket-mode</remote-id>
+  </upstream>
+</pkgmetadata>

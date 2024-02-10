@@ -1,0 +1,22 @@
+diff -Naur a/simulator/src/simulatorlb.c b/simulator/src/simulatorlb.c
+--- a/simulator/src/simulatorlb.c	2009-07-28 15:31:16.000000000 +0100
++++ b/simulator/src/simulatorlb.c	2023-09-16 13:52:16.111512487 +0100
+@@ -2,7 +2,7 @@
+  * This file is copyright ©2009 Corvus Corax
+  * Distributed under the terms of the GPL version 2 or higher
+  */
+-#define _FILE_OFFSET_BITS 64
++#define _LARGEFILE64_SOURCE
+ #include <config.h>
+ 
+ #ifdef USE_GNU_SOURCE
+@@ -531,3 +531,9 @@
+ 	}
+ 	return realread(fd,buf,count);
+ }
++
++// copy_file_range() may be used instead so force failure to fall back to read().
++ssize_t copy_file_range(int fd_in, off_t off_in, int fd_out, off_t off_out, size_t len, unsigned int flags) {
++	errno = EXDEV;
++	return -1;
++}

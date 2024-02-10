@@ -1,0 +1,116 @@
+From 95befc684c535e251278ccc68b06261c2620271d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ant=C3=B3nio=20Fernandes?= <antoniof@gnome.org>
+Date: Sun, 10 Dec 2023 17:01:18 +0000
+Subject: [PATCH 1/2] icon-info: Don't ask the theme for an icon it doesn't
+ have
+
+GtkIconTheme changed behavior from GTK3 to GTK4. Before, it would
+return NULL for a non-existent icon. Now it returns a non-scallable
+`image-missing` icon.
+
+But our icon info code still relies on NULL icon to set a fallback.
+
+The documented solution to get the old behavior back is to call
+gtk_icon_theme_has_gicon(). Let's just do that instead.
+
+Also use  a more generic fallback icon that's been available in
+adwaita-icon-theme for a few versions before our GTK4 port.
+
+Closes https://gitlab.gnome.org/GNOME/nautilus/-/issues/2796
+
+
+(cherry picked from commit 7de816f8a2019adec468cf39073fcd5bb922512f)
+---
+ src/nautilus-file.c              | 2 +-
+ src/nautilus-icon-info.c         | 7 ++++---
+ src/nautilus-properties-window.c | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/nautilus-file.c b/src/nautilus-file.c
+index 0492e2f87..b469288a3 100644
+--- a/src/nautilus-file.c
++++ b/src/nautilus-file.c
+@@ -4706,7 +4706,7 @@ get_default_file_icon (void)
+     static GIcon *fallback_icon = NULL;
+     if (fallback_icon == NULL)
+     {
+-        fallback_icon = g_themed_icon_new ("text-x-generic");
++        fallback_icon = g_themed_icon_new ("application-x-generic");
+     }
+ 
+     return fallback_icon;
+diff --git a/src/nautilus-icon-info.c b/src/nautilus-icon-info.c
+index c6b1e9a92..a7f3243d6 100644
+--- a/src/nautilus-icon-info.c
++++ b/src/nautilus-icon-info.c
+@@ -395,13 +395,14 @@ nautilus_icon_info_lookup (GIcon *icon,
+         return g_object_ref (icon_info);
+     }
+ 
+-    icon_paintable = gtk_icon_theme_lookup_by_gicon (gtk_icon_theme_get_for_display (gdk_display_get_default ()),
+-                                                     icon, size, scale, GTK_TEXT_DIR_NONE, 0);
+-    if (icon_paintable == NULL)
++    GtkIconTheme *theme = gtk_icon_theme_get_for_display (gdk_display_get_default ());
++    if (!gtk_icon_theme_has_gicon (theme, icon))
+     {
+         return nautilus_icon_info_new_for_paintable (NULL, scale);
+     }
+ 
++    icon_paintable = gtk_icon_theme_lookup_by_gicon (theme, icon, size, scale, GTK_TEXT_DIR_NONE, 0);
++
+     if (G_IS_THEMED_ICON (icon))
+     {
+         ThemedIconKey lookup_key;
+diff --git a/src/nautilus-properties-window.c b/src/nautilus-properties-window.c
+index 08bf91fcb..6a6dcc362 100644
+--- a/src/nautilus-properties-window.c
++++ b/src/nautilus-properties-window.c
+@@ -570,7 +570,7 @@ get_image_for_properties_window (NautilusPropertiesWindow  *self,
+ 
+     if (!icon)
+     {
+-        g_autoptr (GIcon) gicon = g_themed_icon_new ("text-x-generic");
++        g_autoptr (GIcon) gicon = g_themed_icon_new ("application-x-generic");
+ 
+         icon = nautilus_icon_info_lookup (gicon, NAUTILUS_GRID_ICON_SIZE_MEDIUM, icon_scale);
+     }
+-- 
+2.43.0
+
+
+From 038885de47293a3fd2a15410d7cf3e0d36406a0d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ant=C3=B3nio=20Fernandes?= <antoniof@gnome.org>
+Date: Wed, 13 Dec 2023 00:13:35 +0000
+Subject: [PATCH 2/2] icon-info: Fix build
+
+Previous commit relied on mixing declarations with code, which is not allowed with the build flags of this branch.
+
+(cherry picked from commit deed9bcab051529e64e3fc1870f299233b8c200e)
+---
+ src/nautilus-icon-info.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/nautilus-icon-info.c b/src/nautilus-icon-info.c
+index a7f3243d6..f18d574d6 100644
+--- a/src/nautilus-icon-info.c
++++ b/src/nautilus-icon-info.c
+@@ -333,6 +333,7 @@ nautilus_icon_info_lookup (GIcon *icon,
+ {
+     NautilusIconInfo *icon_info;
+     g_autoptr (GtkIconPaintable) icon_paintable = NULL;
++    GtkIconTheme *theme;
+ 
+     if (G_IS_LOADABLE_ICON (icon))
+     {
+@@ -395,7 +396,7 @@ nautilus_icon_info_lookup (GIcon *icon,
+         return g_object_ref (icon_info);
+     }
+ 
+-    GtkIconTheme *theme = gtk_icon_theme_get_for_display (gdk_display_get_default ());
++    theme = gtk_icon_theme_get_for_display (gdk_display_get_default ());
+     if (!gtk_icon_theme_has_gicon (theme, icon))
+     {
+         return nautilus_icon_info_new_for_paintable (NULL, scale);
+-- 
+2.43.0
+

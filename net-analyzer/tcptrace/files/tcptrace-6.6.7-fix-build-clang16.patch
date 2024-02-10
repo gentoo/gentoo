@@ -1,0 +1,30 @@
+Bug: https://bugs.gentoo.org/897830
+--- a/compress.c
++++ b/compress.c
+@@ -61,6 +61,8 @@ static char const GCC_UNUSED rcsid[] =
+ 
+ #include "compress.h"
+ #include <sys/wait.h>
++#include <stdio.h>
++#include <stdio_ext.h>
+ 
+ /*
+  * OK, this stuff is a little complicated.  Here's why:
+@@ -240,7 +242,7 @@ CompReopenFile(
+     /* erase the file buffer and reposition to the front */
+ #ifdef HAVE_FPURGE
+     /* needed for NetBSD and FreeBSD (at least) */
+-    fpurge(stdin);		/* discard input buffer */
++    __fpurge(stdin);		/* discard input buffer */
+ #else /* HAVE_FPURGE */
+     fflush(stdin);		/* discard input buffer */
+ #endif /* HAVE_FPURGE */
+@@ -599,7 +601,7 @@ PipeHelper(void)
+     // read end of the pipe, fdpipe[0]
+     
+ #ifdef HAVE_FPURGE     
+-     fpurge(stdin); // needed for NetBSD/FreeBSD
++     __fpurge(stdin); // needed for NetBSD/FreeBSD
+ #else
+      fflush(stdin);
+ #endif

@@ -1,0 +1,11 @@
+--- a/cc/cc/cc.c
++++ b/cc/cc/cc.c
+@@ -206,7 +206,7 @@
+ #define PCCLIBDIR	NULL
+ #endif
+ #ifndef DEFLIBDIRS	/* default library search paths */
+-#ifdef MULTIARCH_PATH
++#ifndef MULTIARCH_PATH
+ #define DEFLIBDIRS	{ "/usr/lib/", 0 }
+ #else
+ #define DEFLIBDIRS	{ "/usr/lib/", "/usr/lib/" MULTIARCH_PATH "/", 0 }

@@ -1,0 +1,7 @@
+# /etc/conf.d/mdadm: config file for /etc/init.d/mdadm
+
+# Misc options to pass to mdadm in monitor mode.
+# For more info, run `mdadm --monitor --help` or see
+# the mdadm(8) manpage.
+
+MDADM_OPTS="--syslog"

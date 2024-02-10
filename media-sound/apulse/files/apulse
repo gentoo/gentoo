@@ -1,0 +1,14 @@
+#!/bin/sh
+# Author:  Daniel Campbell <zlg@gentoo.org>
+# License: Creative Commons Public Domain Dedication (CC0 1.0)
+#          <https://creativecommons.org/publicdomain/zero/1.0/>
+
+# apulse needs at least one argument
+if [ $# -lt 1 ]; then
+	echo "Usage: apulse <app-path> [options]"
+	exit
+fi
+
+# Set library path for the application so it'll use apulse. DIRS is
+# replaced by the ebuild to include the correct paths
+LD_LIBRARY_PATH=@@DIRS@@${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} exec "$@"

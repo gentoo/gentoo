@@ -1,0 +1,21 @@
+;;Pro*C embedded SQL
+;; looks like
+;; EXEC SQL UPDATE ARM43_OD_PRODUIT_SERV
+;; SET ARM43ID_TPS_FIN = NULL WHERE
+ARM43ID_TPS_FIN = 0;
+
+CCCC_FileExt@.pc@c++.ansi@
+
+CCCC_Dialect@c++.pc@EXEC@skip_stmt@
+
+;;MFC
+CCCC_Dialect@c++.mfc@ON_WM_PAINT@skip_line@
+CCCC_Dialect@c++.mfc@DECLARE_MESSAGE_MAP@skip_line@
+CCCC_Dialect@c++.mfc@DECLARE_DISPATCH_MAP@skip_line@
+
+CCCC_Dialect@c++.stl@__STL_BEGIN_NAMESPACE@ignore@
+CCCC_Dialect@c++.stl@__STL_END_NAMESPACE@ignore@
+
+CCCC_Dialect@c++.mfc@BEGIN_EVENT_MAP@start_skipping@
+CCCC_Dialect@c++.mfc@END_EVENT_MAP@stop_skipping@
+

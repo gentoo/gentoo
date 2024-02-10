@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tavianator/bfs</remote-id>
+	</upstream>
+	<use>
+		<flag name="io-uring">Use <pkg>sys-libs/liburing</pkg> for faster async I/O</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net oidentd
+}
+
+check_config() {
+	if [[ ! -f ${PSYBNC_CONFIG} ]]
+	then
+	    eerror "Please set \$PSYBNC_CONFIG in /etc/conf.d/psybnc!"
+	    return 1
+	fi
+
+	if [[ ! -d "${PSYBNC_HOME}" ]]
+	then
+	    eerror "Please set \$PSYBNC_HOME in /etc/conf.d/psybnc!"
+	    return 1
+	fi
+
+	if [[ -z "${PSYBNC_USER}" ]]
+	then
+	    eerror "Please set \$PSYBNC_USER in /etc/conf.d/psybnc!"
+	    return 1
+	fi
+}
+
+start() {
+	check_config || return 1
+	ebegin "Starting psyBNC"
+	start-stop-daemon --start --quiet --chuid "${PSYBNC_USER}" --chdir "${PSYBNC_HOME}" -e HOME="${PSYBNC_HOME}" --exec /usr/bin/psybnc -- "${PSYBNC_CONFIG}" &>/dev/null
+	eend $?
+}
+
+stop() {
+	check_config || return 1
+	ebegin "Stopping psyBNC"
+	start-stop-daemon --stop --quiet --pidfile "${PSYBNC_HOME}"/psybnc.pid --signal 9
+	eend $?
+}

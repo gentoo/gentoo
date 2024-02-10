@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		Siege is an http load testing and benchmarking utility. It was designed to let
+		web developers measure their code under duress, to see how it will stand up to load on the internet.
+		Siege supports basic authentication, cookies, HTTP, HTTPS and FTP protocols.
+		It lets its user hit a server with a configurable number of simulated clients.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">JoeDog/siege</remote-id>
+	</upstream>
+</pkgmetadata>

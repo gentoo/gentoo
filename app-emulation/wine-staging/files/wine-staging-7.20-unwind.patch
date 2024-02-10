@@ -1,0 +1,36 @@
+Fix build with llvm-libunwind, and also fix for non-llvm libunwind
+when using clang+bfd given clang doesn't have _Unwind_Find_FDE in
+its rtlib and expects it from llvm-libunwind.
+
+The _CONFIG_H_ check is for <llvm-libunwind-15 (adds _VERSION).
+--- a/dlls/ntdll/unix/dwarf.h
++++ b/dlls/ntdll/unix/dwarf.h
+@@ -255,5 +255,7 @@
+ };
+ 
++#if defined(_LIBUNWIND_VERSION) || defined(____LIBUNWIND_CONFIG_H__) || !defined(__clang__)
+ extern const struct dwarf_fde *_Unwind_Find_FDE (void *, struct dwarf_eh_bases *);
++#endif
+ 
+ static unsigned char dwarf_get_u1( const unsigned char **p )
+--- a/dlls/ntdll/unix/signal_x86_64.c
++++ b/dlls/ntdll/unix/signal_x86_64.c
+@@ -632,5 +632,5 @@
+     int rc;
+ 
+-#ifdef __APPLE__
++#if defined(__APPLE__) || defined(_LIBUNWIND_VERSION) || defined(____LIBUNWIND_CONFIG_H__)
+     rc = unw_getcontext( &unw_context );
+     if (rc == UNW_ESUCCESS)
+@@ -755,4 +755,5 @@
+ {
+     struct dwarf_eh_bases bases;
++#if defined(_LIBUNWIND_VERSION) || defined(____LIBUNWIND_CONFIG_H__) || !defined(__clang__)
+     const struct dwarf_fde *fde = _Unwind_Find_FDE( (void *)(context->Rip - 1), &bases );
+ 
+@@ -760,4 +761,5 @@
+         return dwarf_virtual_unwind( context->Rip, &dispatch->EstablisherFrame, context, fde,
+                                      &bases, &dispatch->LanguageHandler, &dispatch->HandlerData );
++#endif
+ #ifdef HAVE_LIBUNWIND
+     return libunwind_virtual_unwind( context->Rip, &dispatch->EstablisherFrame, context,

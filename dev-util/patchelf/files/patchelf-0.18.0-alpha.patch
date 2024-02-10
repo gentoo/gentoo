@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/909738
+https://github.com/NixOS/patchelf/pull/529
+Note this has removed the unit test changes because it involves adding a binary
+file which is not supported in portage for now, see
+https://bugs.gentoo.org/835964
+
+commit dbc9aeaadfd982b2d8a04eb74cbcecb83208844d
+Author: matoro <matoro@users.noreply.github.com>
+Date:   Sat Nov 4 20:01:22 2023 -0400
+
+    Fix page size on Alpha
+    
+    All tests pass.
+    
+    Also explicitly specifies -no-pie for executables which should have it
+    disabled, to be compatible with gccs built with --enable-default-pie.
+
+diff --git a/src/patchelf.cc b/src/patchelf.cc
+index b42111d..b4d4a7d 100644
+--- a/src/patchelf.cc
++++ b/src/patchelf.cc
+@@ -367,6 +367,7 @@ unsigned int ElfFile<ElfFileParamNames>::getPageSize() const noexcept
+     // requirements. There is no authoritative list of these values. The
+     // current list is extracted from GNU gold's source code (abi_pagesize).
+     switch (rdi(hdr()->e_machine)) {
++      case EM_ALPHA:
+       case EM_IA_64:
+       case EM_MIPS:
+       case EM_PPC:

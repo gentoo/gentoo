@@ -1,0 +1,31 @@
+diff -r -U3 foliate-2.6.4.orig/data/meson.build foliate-2.6.4/data/meson.build
+--- foliate-2.6.4.orig/data/meson.build	2022-01-13 19:23:26.000000000 +0700
++++ foliate-2.6.4/data/meson.build	2023-05-14 13:08:00.443754308 +0700
+@@ -7,13 +7,6 @@
+   install_dir: join_paths(get_option('datadir'), 'applications')
+ )
+ 
+-desktop_utils = find_program('desktop-file-validate', required: false)
+-if desktop_utils.found()
+-  test('Validate desktop file', desktop_utils,
+-    args: [desktop_file]
+-  )
+-endif
+-
+ appstream_file = i18n.merge_file(
+   input: 'com.github.johnfactotum.Foliate.metainfo.xml.in',
+   output: 'com.github.johnfactotum.Foliate.metainfo.xml',
+@@ -22,13 +15,6 @@
+   install_dir: join_paths(get_option('datadir'), 'metainfo')
+ )
+ 
+-appstream_util = find_program('appstream-util', required: false)
+-if appstream_util.found()
+-  test('Validate appstream file', appstream_util,
+-    args: ['validate', appstream_file]
+-  )
+-endif
+-
+ install_data('com.github.johnfactotum.Foliate.gschema.xml',
+   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
+ )

@@ -1,0 +1,109 @@
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31128
+
+From https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=bc23ea51f8a83e9524dfb553baa8baacb29e68a9
+From: Hannes Domani <ssbssa@yahoo.de>
+Date: Fri, 8 Dec 2023 19:06:14 +0100
+Subject: [PATCH] Fix printing of global variable stubs if no inferior is
+ running
+
+Since 3c45e9f915ae4aeab7312d6fc55a947859057572 gdb crashes when trying
+to print a global variable stub without a running inferior, because of
+a missing nullptr-check (the block_scope function took care of that
+check before it was converted to a method).
+
+With this check it works again:
+```
+(gdb) print s
+$1 = <incomplete type>
+```
+
+Bug: https://sourceware.org/PR31128
+Approved-By: Tom Tromey <tom@tromey.com>
+(cherry picked from commit 576745e26c0ec76a53ba45b20af464628a50b3e4)
+--- a/gdb/cp-namespace.c
++++ b/gdb/cp-namespace.c
+@@ -1026,7 +1026,11 @@ cp_lookup_transparent_type (const char *name)
+ 
+   /* If that doesn't work and we're within a namespace, look there
+      instead.  */
+-  scope = get_selected_block (0)->scope ();
++  const block *block = get_selected_block (0);
++  if (block == nullptr)
++    return nullptr;
++
++  scope = block->scope ();
+ 
+   if (scope[0] == '\0')
+     return NULL;
+--- /dev/null
++++ b/gdb/testsuite/gdb.cp/print-global-stub.cc
+@@ -0,0 +1,31 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2023 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++struct S
++{
++  S (int);
++  virtual ~S ();
++
++  int m_i;
++};
++
++S s (5);
++
++int main ()
++{
++  return 0;
++}
+--- /dev/null
++++ b/gdb/testsuite/gdb.cp/print-global-stub.exp
+@@ -0,0 +1,32 @@
++# Copyright (C) 2023 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# This file is part of the GDB testsuite.
++# It tests printing of a global stub without inferior.
++
++require allow_cplus_tests
++
++standard_testfile .cc
++set objfile [standard_output_file ${testfile}.o]
++
++if { [gdb_compile $srcdir/$subdir/$srcfile $objfile object \
++	  {c++ debug}] != "" } {
++    untested "failed to compile"
++    return -1
++}
++
++clean_restart $objfile
++
++gdb_test "print s" " = <incomplete type>"
+-- 
+2.39.3
+

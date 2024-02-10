@@ -1,0 +1,39 @@
+diff -Naur libinsane-1.0.1.orig/meson_options.txt libinsane-1.0.1/meson_options.txt
+--- libinsane-1.0.1.orig/meson_options.txt	1970-01-01 01:00:00.000000000 +0100
++++ libinsane-1.0.1/meson_options.txt	2019-08-23 15:14:21.374086921 +0200
+@@ -0,0 +1 @@
++option('doc', type: 'boolean', value: true, yield: true)
+diff -Naur libinsane-1.0.1.orig/subprojects/libinsane/meson.build libinsane-1.0.1/subprojects/libinsane/meson.build
+--- libinsane-1.0.1.orig/subprojects/libinsane/meson.build	2019-08-18 13:09:37.000000000 +0200
++++ libinsane-1.0.1/subprojects/libinsane/meson.build	2019-08-23 15:16:14.289190985 +0200
+@@ -22,6 +22,8 @@
+ subdir('include')
+ subdir('src')
+ 
+-subdir('doc')
++if get_option('doc')
++    subdir('doc')
++endif
+ subdir('examples')
+ subdir('tests')
+diff -Naur libinsane-1.0.1.orig/subprojects/libinsane/meson_options.txt libinsane-1.0.1/subprojects/libinsane/meson_options.txt
+--- libinsane-1.0.1.orig/subprojects/libinsane/meson_options.txt	1970-01-01 01:00:00.000000000 +0100
++++ libinsane-1.0.1/subprojects/libinsane/meson_options.txt	2019-08-23 15:14:51.290114436 +0200
+@@ -0,0 +1 @@
++option('doc', type: 'boolean', value: true, yield: true)
+diff -Naur libinsane-1.0.1.orig/subprojects/libinsane-gobject/meson.build libinsane-1.0.1/subprojects/libinsane-gobject/meson.build
+--- libinsane-1.0.1.orig/subprojects/libinsane-gobject/meson.build	2019-08-18 13:09:37.000000000 +0200
++++ libinsane-1.0.1/subprojects/libinsane-gobject/meson.build	2019-08-23 15:15:25.593146036 +0200
+@@ -9,4 +9,6 @@
+ 
+ subdir('include')
+ subdir('src')
+-subdir('doc')
++if get_option('doc')
++    subdir('doc')
++endif
+diff -Naur libinsane-1.0.1.orig/subprojects/libinsane-gobject/meson_options.txt libinsane-1.0.1/subprojects/libinsane-gobject/meson_options.txt
+--- libinsane-1.0.1.orig/subprojects/libinsane-gobject/meson_options.txt	1970-01-01 01:00:00.000000000 +0100
++++ libinsane-1.0.1/subprojects/libinsane-gobject/meson_options.txt	2019-08-23 15:14:53.859116801 +0200
+@@ -0,0 +1 @@
++option('doc', type: 'boolean', value: true, yield: true)

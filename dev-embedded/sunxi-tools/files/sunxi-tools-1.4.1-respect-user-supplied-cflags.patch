@@ -1,0 +1,153 @@
+From 95d40f8fcfd97890c270d2987bd845c7a6bac428 Mon Sep 17 00:00:00 2001
+From: Bernhard Nortmann <bernhard.nortmann@web.de>
+Date: Sat, 29 Oct 2016 18:32:00 +0200
+Subject: [PATCH] Makefile: Ensure that user-supplied CFLAGS get respected
+
+Signed-off-by: Bernhard Nortmann <bernhard.nortmann@web.de>
+---
+ .travis.yml |  2 +-
+ Makefile    | 53 ++++++++++++++++++++++++++++-------------------------
+ 2 files changed, 29 insertions(+), 26 deletions(-)
+
+diff --git a/.travis.yml b/.travis.yml
+index 47aa891..c843fba 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -4,7 +4,7 @@ sudo: false
+ language: c
+ 
+ # treat all warnings as errors
+-env: EXTRA_CFLAGS=-Werror
++env: CFLAGS=-Werror
+ 
+ os:
+   - linux
+diff --git a/Makefile b/Makefile
+index 6e0471b..12f121c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,21 +17,21 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ CC ?= gcc
+-CFLAGS = -g -O0 -Wall -Wextra $(EXTRA_CFLAGS)
+-CFLAGS += -std=c99 $(DEFINES)
+-CFLAGS += -Iinclude/
++DEFAULT_CFLAGS := -g -O0 -Wall -Wextra -std=c99
+ 
+-DEFINES = -D_POSIX_C_SOURCE=200112L
++DEFAULT_CFLAGS += -D_POSIX_C_SOURCE=200112L
+ # Define _BSD_SOURCE, necessary to expose all endian conversions properly.
+ # See http://linux.die.net/man/3/endian
+-DEFINES += -D_BSD_SOURCE
++DEFAULT_CFLAGS += -D_BSD_SOURCE
+ # glibc 2.20+ also requires _DEFAULT_SOURCE
+-DEFINES += -D_DEFAULT_SOURCE
++DEFAULT_CFLAGS += -D_DEFAULT_SOURCE
+ ifeq (NetBSD,$(OS))
+ # add explicit _NETBSD_SOURCE, see https://github.com/linux-sunxi/sunxi-tools/pull/22
+-DEFINES += -D_NETBSD_SOURCE
++DEFAULT_CFLAGS += -D_NETBSD_SOURCE
+ endif
+ 
++DEFAULT_CFLAGS += -Iinclude/
++
+ # Tools useful on host and target
+ TOOLS = sunxi-fexc sunxi-bootinfo sunxi-fel sunxi-nand-part
+ 
+@@ -49,6 +49,7 @@ MISC_TOOLS = phoenix_info sunxi-nand-image-builder
+ BINFILES = fel-pio.bin jtag-loop.sunxi fel-sdboot.sunxi uart0-helloworld-sdboot.sunxi
+ 
+ CROSS_COMPILE ?= arm-none-eabi-
++CROSS_CC ?= $(CROSS_COMPILE)gcc
+ MKSUNXIBOOT ?= mksunxiboot
+ 
+ DESTDIR ?=
+@@ -110,24 +111,26 @@ LIBUSB_CFLAGS ?= `pkg-config --cflags $(LIBUSB)`
+ LIBUSB_LIBS ?= `pkg-config --libs $(LIBUSB)`
+ ifeq ($(OS),Windows_NT)
+ 	# Windows lacks mman.h / mmap()
+-	DEFINES += -DNO_MMAP
++	DEFAULT_CFLAGS += -DNO_MMAP
+ 	# portable_endian.h relies on winsock2
+ 	LIBS += -lws2_32
+ endif
+ 
++HOST_CFLAGS = $(DEFAULT_CFLAGS) $(CFLAGS)
++
+ sunxi-fel: fel.c fel-to-spl-thunk.h progress.c progress.h
+-	$(CC) $(CFLAGS) $(LIBUSB_CFLAGS) $(LDFLAGS) -o $@ $(filter %.c,$^) $(LIBS) $(LIBUSB_LIBS)
++	$(CC) $(HOST_CFLAGS) $(LIBUSB_CFLAGS) $(LDFLAGS) -o $@ $(filter %.c,$^) $(LIBS) $(LIBUSB_LIBS)
+ 
+ sunxi-nand-part: nand-part-main.c nand-part.c nand-part-a10.h nand-part-a20.h
+-	$(CC) $(CFLAGS) -c -o nand-part-main.o nand-part-main.c
+-	$(CC) $(CFLAGS) -c -o nand-part-a10.o nand-part.c -D A10
+-	$(CC) $(CFLAGS) -c -o nand-part-a20.o nand-part.c -D A20
++	$(CC) $(HOST_CFLAGS) -c -o nand-part-main.o nand-part-main.c
++	$(CC) $(HOST_CFLAGS) -c -o nand-part-a10.o nand-part.c -D A10
++	$(CC) $(HOST_CFLAGS) -c -o nand-part-a20.o nand-part.c -D A20
+ 	$(CC) $(LDFLAGS) -o $@ nand-part-main.o nand-part-a10.o nand-part-a20.o $(LIBS)
+ 
+ sunxi-%: %.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(filter %.c,$^) $(LIBS)
++	$(CC) $(HOST_CFLAGS) $(LDFLAGS) -o $@ $(filter %.c,$^) $(LIBS)
+ phoenix_info: phoenix_info.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
++	$(CC) $(HOST_CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ %.bin: %.elf
+ 	$(CROSS_COMPILE)objcopy -O binary $< $@
+@@ -143,39 +146,39 @@ ARM_ELF_FLAGS += -mno-thumb-interwork -fno-stack-protector -fno-toplevel-reorder
+ ARM_ELF_FLAGS += -Wstrict-prototypes -Wno-format-nonliteral -Wno-format-security
+ 
+ fel-pio.elf: fel-pio.c fel-pio.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T fel-pio.lds
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T fel-pio.lds
+ 
+ fel-pio.nm: fel-pio.elf
+ 	$(CROSS_COMPILE)nm $< | grep -v " _" >$@
+ 
+ jtag-loop.elf: jtag-loop.c jtag-loop.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T jtag-loop.lds -Wl,-N
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T jtag-loop.lds -Wl,-N
+ 
+ fel-sdboot.elf: fel-sdboot.S fel-sdboot.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T fel-sdboot.lds -Wl,-N
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T fel-sdboot.lds -Wl,-N
+ 
+ uart0-helloworld-sdboot.elf: uart0-helloworld-sdboot.c uart0-helloworld-sdboot.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T uart0-helloworld-sdboot.lds -Wl,-N
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T uart0-helloworld-sdboot.lds -Wl,-N
+ 
+ boot_head_sun3i.elf: boot_head.S boot_head.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T boot_head.lds -Wl,-N -DMACHID=0x1094
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T boot_head.lds -Wl,-N -DMACHID=0x1094
+ 
+ boot_head_sun4i.elf: boot_head.S boot_head.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T boot_head.lds -Wl,-N -DMACHID=0x1008
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T boot_head.lds -Wl,-N -DMACHID=0x1008
+ 
+ boot_head_sun5i.elf: boot_head.S boot_head.lds
+-	$(CROSS_COMPILE)gcc  -g  $(ARM_ELF_FLAGS)  $< -nostdlib -o $@ -T boot_head.lds -Wl,-N -DMACHID=0x102A
++	$(CROSS_CC) -g $(ARM_ELF_FLAGS) $< -nostdlib -o $@ -T boot_head.lds -Wl,-N -DMACHID=0x102A
+ 
+ sunxi-bootinfo: bootinfo.c
+ 
+ # target tools
+-TARGET_CFLAGS = -g -O0 -Wall -Wextra -std=c99 $(DEFINES) -Iinclude/ -static
++TARGET_CFLAGS = $(DEFAULT_CFLAGS) -static $(CFLAGS)
+ sunxi-pio: pio.c
+-	$(CROSS_COMPILE)gcc $(TARGET_CFLAGS) -o $@ $<
++	$(CROSS_CC) $(TARGET_CFLAGS) -o $@ $<
+ sunxi-meminfo: meminfo.c
+-	$(CROSS_COMPILE)gcc $(TARGET_CFLAGS) -o $@ $<
++	$(CROSS_CC) $(TARGET_CFLAGS) -o $@ $<
+ sunxi-script_extractor: script_extractor.c
+-	$(CROSS_COMPILE)gcc $(TARGET_CFLAGS) -o $@ $<
++	$(CROSS_CC) $(TARGET_CFLAGS) -o $@ $<
+ 
+ version.h:
+ 	@./autoversion.sh > $@
+-- 
+2.32.0
+

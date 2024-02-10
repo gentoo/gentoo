@@ -1,0 +1,56 @@
+*Security Alert*
+
+Application confinement may be automatically disabled if snapd
+fails to detect the required features. If you would like to disable
+this automatic behavior, causing snapd to panic if its confinement
+feature detection fails, then use this setting in package.use:
+
+    app-emulation/snapd -forced-devmode
+
+Use this command to enable the snapd service:
+
+	systemctl enable snapd.socket
+
+You can source /etc/profile.d/snapd.sh in your shell in order to
+update PATH and XDG_DATA_DIRS environment variables to include
+installed snaps.
+
+Once you have snapd running (first refer to the *AppArmor Section*
+below if you have that enabled), see the snap-store installation
+instructions here:
+
+	https://snapcraft.io/docs/installing-snap-store-app
+
+If snap-store does not work correctly then it may be due to a temporary
+service outage which will hopefully be reported on this page:
+
+	https://status.snapcraft.io/
+
+When snap-store is not working due to a service outage, it may still
+be possible to install apps via the snap cli. See snap --help for
+details. Many apps can be installed without a snap store (Ubuntu One)
+account. The snap login, logout, and whoami subcommands are available
+to manage snap store account details.
+
+Note that you will need a polkit authentication agent running in
+order to authenticate as root when installing snaps as a non-root user.
+The agent is typically started by a desktop entry found in
+/etc/xdg/autostart such as one of these:
+
+	polkit-gnome-authentication-agent-1.desktop
+	polkit-kde-authentication-agent-1.desktop
+
+*AppArmor Section*
+
+When apparmor is enabled you should enable these services:
+
+	systemctl enable apparmor.service snapd.apparmor.service
+
+You also need it enabled in your kernel and you may need to add these
+kernel parameters to your boot loader configuration:
+
+	apparmor=1 security=apparmor
+
+Refer here for more information about apparmor:
+
+	https://wiki.gentoo.org/wiki/AppArmor

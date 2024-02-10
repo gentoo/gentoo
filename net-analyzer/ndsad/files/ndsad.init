@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/ndsad.conf ] ; then
+		eerror "/etc/ndsad.conf does not file exists!"
+		return 1
+	fi
+	
+	return 0
+}
+
+start() {
+	# Comment out the following line to get faster startups
+	checkconfig || return 1
+
+	ebegin "Starting ndsad"
+	# On success ndsad returns 1.
+	start-stop-daemon --start --quiet --exec /usr/sbin/ndsad -- -d ${NDSAD_OPTS} >/dev/null 2>&1
+	eend $(( $? - 1 ))
+}
+
+stop () {
+	ebegin "Stopping ndsad"
+	start-stop-daemon --stop --quiet --pidfile=/run/ndsad.pid --retry 20 >/dev/null
+	eend $?
+}

@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -81,15 +81,9 @@
+ 	rm -rf $(DISTDIR)
+ 
+ #TODO install man page and README
+-install: mo
++install: 
+ 	@[ -d $(LOCALEDIR) ] || mkdir -p $(LOCALEDIR); \
+ 	[ -d $(BINDIR) ] || mkdir -p $(BINDIR); \
+-	for pot in `cd $(PODIR) && ls *.mo`; do \
+-		poti=`echo $$pot | sed 's/\.mo$$//'`; \
+-		modir=$(LOCALEDIR)/$$poti/LC_MESSAGES; \
+-		[ -d $$modir ] || mkdir -p $$modir; \
+-		install -m644 $(PODIR)/$$pot $$modir/$(NAME).mo; \
+-	done; \
+ 	sed -e '/^TEXTDOMAINDIR=/s,=.*,=$(BLOCALEDIR),' \
+ 	    -e '/^VERSION=/s/=.*/=$(VERSION)/' $(SHSKEL) > $(BINDIR)/$(NAME) && \
+ 	chmod +x $(BINDIR)/$(NAME) && \

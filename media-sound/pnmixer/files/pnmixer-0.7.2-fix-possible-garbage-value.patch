@@ -1,0 +1,38 @@
+From c8577027aa4597c8f194a84a73982aa0ce7f2dd0 Mon Sep 17 00:00:00 2001
+From: Julian Ospald <hasufell@posteo.de>
+Date: Mon, 19 Feb 2018 20:06:26 +0100
+Subject: [PATCH] MEM: fix possible garbage value wrt #174
+
+Not sure if the clang static analyzer has trouble
+with g_memdup() or if there is something more serious
+going on. Good old g_malloc() works too though.
+---
+ src/ui-tray-icon.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/ui-tray-icon.c b/src/ui-tray-icon.c
+index 27b35f3..23ba947 100644
+--- a/src/ui-tray-icon.c
++++ b/src/ui-tray-icon.c
+@@ -166,9 +166,11 @@ pixbuf_array_free(GdkPixbuf **pixbufs)
+ static GdkPixbuf **
+ pixbuf_array_new(int size)
+ {
+-	GdkPixbuf *pixbufs[N_VOLUME_PIXBUFS];
++	GdkPixbuf **pixbufs;
+ 	gboolean system_theme;
+ 
++	pixbufs = g_new0(GdkPixbuf *, N_VOLUME_PIXBUFS);
++
+ 	DEBUG("Building pixbuf array (requesting size %d)", size);
+ 
+ 	system_theme = prefs_get_boolean("SystemTheme", FALSE);
+@@ -202,7 +204,7 @@ pixbuf_array_new(int size)
+ 		pixbufs[VOLUME_HIGH] = pixbuf_new_from_file("pnmixer-high.png");
+ 	}
+ 
+-	return g_memdup(pixbufs, sizeof pixbufs);
++	return pixbufs;
+ }
+ 
+ /* Tray icon volume meter */

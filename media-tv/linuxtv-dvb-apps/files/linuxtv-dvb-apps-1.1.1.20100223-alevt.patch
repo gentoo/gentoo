@@ -1,0 +1,37 @@
+--- linuxtv-dvb-apps-1.1.1.20100223/util/alevt/exp-gfx.c
++++ linuxtv-dvb-apps-1.1.1.20100223/util/alevt/exp-gfx.c
+@@ -137,6 +137,7 @@
+ 
+ #ifdef WITH_PNG
+ 
++#include <zlib.h>
+ #include <png.h>
+ static int png_open(struct export *e);
+ static int png_option(struct export *e, int opt, char *arg);
+--- linuxtv-dvb-apps-1.1.1.20100223/util/alevt/Makefile
++++ linuxtv-dvb-apps-1.1.1.20100223/util/alevt/Makefile
+@@ -25,13 +25,13 @@
+ all: alevt alevt-date alevt-cap alevt.1 alevt-date.1 alevt-cap.1
+ 
+ alevt: $(OBJS)
+-	$(CC) $(OPT) $(OBJS) -o alevt -L$(PREFIX)/lib -L$(PREFIX)/lib64 -lX11 $(EXPLIBS)
++	$(CC) $(OPT) $(OBJS) -o alevt -L$(PREFIX)/lib -L$(PREFIX)/lib64 -lX11 $(EXPLIBS) $(LDFLAGS)
+ 
+ alevt-date: $(TOBJS)
+-	$(CC) $(OPT) $(TOBJS) -o alevt-date $(ZVBILIB)
++	$(CC) $(OPT) $(TOBJS) -o alevt-date $(ZVBILIB) $(LDFLAGS)
+ 
+ alevt-cap: $(COBJS)
+-	$(CC) $(OPT) $(COBJS) -o alevt-cap $(EXPLIBS)
++	$(CC) $(OPT) $(COBJS) -o alevt-cap $(EXPLIBS) $(LDFLAGS)
+ 
+ font.o: font1.xbm font2.xbm font3.xbm font4.xbm
+ fontsize.h: font1.xbm font2.xbm font3.xbm font4.xbm
+@@ -73,7 +73,6 @@
+ 	install -m 0644 alevt.1		$(DESTDIR)$(PREFIX)/share/man/man1
+ 	install -m 0644 alevt-date.1	$(DESTDIR)$(PREFIX)/share/man/man1
+ 	install -m 0644 alevt-cap.1	$(DESTDIR)$(PREFIX)/share/man/man1
+-	install -m 0644 alevt.png $(DESTDIR)$(PREFIX)/share/pixmaps
+ 	install -m 0644 alevt.desktop $(DESTDIR)$(PREFIX)/share/applications
+ 
+ uninstall: clean

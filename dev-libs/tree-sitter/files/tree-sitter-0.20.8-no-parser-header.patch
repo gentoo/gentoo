@@ -1,0 +1,23 @@
+https://github.com/tree-sitter/tree-sitter-bash/issues/199
+https://github.com/tree-sitter/tree-sitter/pull/2573
+https://github.com/tree-sitter/tree-sitter/pull/2574
+
+From 05b18c2cda9b391efffb4986bf46fa56333d801b Mon Sep 17 00:00:00 2001
+From: Andrew Hlynskyi <ahlincq@gmail.com>
+Date: Sat, 26 Aug 2023 20:50:23 +0300
+Subject: [PATCH] fix: makefile should install only  header
+
+--- a/Makefile
++++ b/Makefile
+@@ -57,7 +57,7 @@ install: all
+ 	ln -sf libtree-sitter.$(SOEXTVER) '$(DESTDIR)$(LIBDIR)'/libtree-sitter.$(SOEXTVER_MAJOR)
+ 	ln -sf libtree-sitter.$(SOEXTVER) '$(DESTDIR)$(LIBDIR)'/libtree-sitter.$(SOEXT)
+ 	install -d '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter
+-	install -m644 lib/include/tree_sitter/*.h '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/
++	install -m644 lib/include/tree_sitter/api.h '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/
+ 	install -d '$(DESTDIR)$(PCLIBDIR)'
+ 	sed -e 's|@LIBDIR@|$(LIBDIR)|;s|@INCLUDEDIR@|$(INCLUDEDIR)|;s|@VERSION@|$(VERSION)|' \
+ 	    -e 's|=$(PREFIX)|=$${prefix}|' \
+-- 
+2.42.0
+

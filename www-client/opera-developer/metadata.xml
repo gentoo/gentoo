@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<use>
+		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+	</use>
+</pkgmetadata>

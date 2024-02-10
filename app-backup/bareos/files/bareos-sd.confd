@@ -1,0 +1,10 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Config file for /etc/init.d/bareos-sd
+
+# Options for the storage daemon.
+# The storage daemon can be run as a non-root user, however
+# please ensure that this user has proper permissions to
+# access your backup devices.
+SD_OPTIONS="-u bareos -g bareos"

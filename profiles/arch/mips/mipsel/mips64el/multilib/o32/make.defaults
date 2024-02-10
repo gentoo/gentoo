@@ -1,0 +1,12 @@
+# Copyright 2011-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+MULTILIB_ABIS="n64 n32 o32"
+DEFAULT_ABI="o32"
+ABI="${DEFAULT_ABI}"
+
+CHOST_n32="mips64el-unknown-linux-gnuabin32"
+CHOST_n64="mips64el-unknown-linux-gnuabi64"
+
+ABI_MIPS="o32"
+IUSE_IMPLICIT="abi_mips_o32"

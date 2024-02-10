@@ -1,0 +1,15 @@
+From: Kurt McKee <contactme@kurtmckee.org>
+Date: Sat, 12 Jun 2021 15:32:05 -0500
+Subject: [PATCH] Fix a crash that occurs with Python 3.10.0b2
+
+--- a/feedparser/html.py
++++ b/feedparser/html.py
+@@ -337,7 +337,7 @@ def parse_declaration(self, i):
+
+         try:
+             return sgmllib.SGMLParser.parse_declaration(self, i)
+-        except sgmllib.SGMLParseError:
++        except (AssertionError, sgmllib.SGMLParseError):
+             # Escape the doctype declaration and continue parsing.
+             self.handle_data('&lt;')
+             return i+1

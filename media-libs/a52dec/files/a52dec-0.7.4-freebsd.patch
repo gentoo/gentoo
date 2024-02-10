@@ -1,0 +1,11 @@
+--- a/libao/audio_out_oss.c
++++ b/libao/audio_out_oss.c
+@@ -35,7 +35,7 @@
+ #if defined(__OpenBSD__)
+ #include <soundcard.h>
+ #elif defined(__FreeBSD__)
+-#include <machine/soundcard.h>
++#include <sys/soundcard.h>
+ #ifndef AFMT_S16_NE
+ #include <machine/endian.h>
+ #if BYTE_ORDER == LITTLE_ENDIAN

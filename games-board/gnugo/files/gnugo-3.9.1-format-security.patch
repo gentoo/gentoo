@@ -1,0 +1,60 @@
+diff --git a/patterns/dfa.c b/patterns/dfa.c
+index 3689616..2d2f8c6 100644
+--- a/patterns/dfa.c
++++ b/patterns/dfa.c
+@@ -279,7 +279,7 @@ resize_dfa(dfa_t *pdfa, int max_states, int max_indexes)
+  * dump a dfa (debugging purpose).
+  */
+ 
+-static const char *line =
++static const char line[] =
+   "----------------------------------------------------\n";
+ 
+ void
+diff --git a/patterns/mkpat.c b/patterns/mkpat.c
+index 70a6964..5f1f1dd 100644
+--- a/patterns/mkpat.c
++++ b/patterns/mkpat.c
+@@ -1419,7 +1419,7 @@ generate_autohelper_code(int funcno, int number_of_params, int *labels)
+     /* A common case. Just use the labels as parameters. */
+     switch (number_of_params) {
+     case 0:
+-      code_pos += sprintf(code_pos, autohelper_functions[funcno].code);
++      code_pos += sprintf(code_pos, "%s", autohelper_functions[funcno].code);
+       break;
+     case 1:
+       code_pos += sprintf(code_pos, autohelper_functions[funcno].code,
+diff --git a/patterns/uncompress_fuseki.c b/patterns/uncompress_fuseki.c
+index 3290b05..c67a733 100644
+--- a/patterns/uncompress_fuseki.c
++++ b/patterns/uncompress_fuseki.c
+@@ -224,9 +224,9 @@ main(int argc, char *argv[])
+ 
+   assert(boardsize > 0);
+   if (boardsize > MAX_BOARD) {
+-    printf(output_strings[PREAMBLE]);
++    printf("%s", output_strings[PREAMBLE]);
+     printf(output_strings[HEADER], boardsize);
+-    printf(output_strings[FOOTER]);
++    printf("%s", output_strings[FOOTER]);
+     return EXIT_SUCCESS;
+   }
+   
+@@ -251,7 +251,7 @@ main(int argc, char *argv[])
+     board[k][boardsize + 1] = '|';
+   }
+ 
+-  printf(output_strings[PREAMBLE]);
++  printf("%s", output_strings[PREAMBLE]);
+   printf(output_strings[HEADER], boardsize);
+   
+ 
+@@ -308,7 +308,7 @@ main(int argc, char *argv[])
+   if (mode == C_OUTPUT)
+     write_pattern_c_code(NULL, board1d, NO_MOVE, 0, boardsize, -1);
+   
+-  printf(output_strings[FOOTER]);
++  printf("%s", output_strings[FOOTER]);
+ 
+   return EXIT_SUCCESS;
+ }

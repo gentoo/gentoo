@@ -1,0 +1,34 @@
+Gentoo issue: https://bugs.gentoo.org/917497
+Upstream issue: https://gitlab.gnome.org/GNOME/gimp/-/issues/10359
+Upstream patch:
+
+From b45a304df4f038eccb64e098f3643ae35d8f3e77 Mon Sep 17 00:00:00 2001
+From: Alx Sa <cmyk.student@gmail.com>
+Date: Sun, 19 Nov 2023 13:54:00 +0000
+Subject: [PATCH] core: Fix strict-aliasing error on ASE load
+
+Resolves #10359
+
+When compiled with -Werror=strict-aliasing, the build fails
+on this line due to converting pointer datatypes.
+This patch switches to using memcpy () instead.
+---
+ app/core/gimppalette-load.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/core/gimppalette-load.c b/app/core/gimppalette-load.c
+index 7605b92fcfb..e9813ebb168 100644
+--- a/app/core/gimppalette-load.c
++++ b/app/core/gimppalette-load.c
+@@ -1095,7 +1095,7 @@ gimp_palette_load_ase (GimpContext   *context,
+ 
+           /* Convert 4 bytes to a 32bit float value */
+           tmp = GINT32_FROM_BE (tmp);
+-          pixels[j] = *(gfloat *) &tmp;
++          memcpy (&pixels[j], &tmp, 4);
+         }
+ 
+       if (! valid_color)
+-- 
+GitLab
+

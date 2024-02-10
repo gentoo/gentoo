@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 800b5850f..331e8950d 100755
+--- a/configure
++++ b/configure
+@@ -1069,7 +1069,7 @@ then
+     fi
+ fi
+ 
+-if ! has "$make"
++if ! has $make
+ then
+     error_exit "GNU make ($make) not found"
+ fi

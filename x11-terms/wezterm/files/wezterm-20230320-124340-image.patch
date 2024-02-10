@@ -1,0 +1,44 @@
+--- wezterm-20230320-124340-559cb7b0-orig/termwiz/Cargo.toml	2023-03-21 06:43:40.000000000 +1100
++++ wezterm-20230320-124340-559cb7b0/termwiz/Cargo.toml	2023-03-25 16:56:20.193628496 +1100
+@@ -22,7 +22,7 @@
+ fnv = {version="1.0", optional=true}
+ hex = "0.4"
+ # we want image 0.24.6 or later. see https://github.com/wez/wezterm/issues/3250
+-image = {version="0.24", git="https://github.com/image-rs/image.git", rev="fe069785ae245a2c510fd724ef96da283b05a236", optional=true}
++image = {version="0.24.6", optional=true}
+ lazy_static = "1.4"
+ libc = "0.2"
+ log = "0.4"
+--- wezterm-20230320-124340-559cb7b0-orig/lua-api-crates/color-funcs/Cargo.toml	2023-03-21 06:43:40.000000000 +1100
++++ wezterm-20230320-124340-559cb7b0/lua-api-crates/color-funcs/Cargo.toml	2023-03-25 18:10:12.806185917 +1100
+@@ -11,7 +11,7 @@
+ csscolorparser = {version="0.6", features=["lab"]}
+ deltae = "0.3"
+ # we want image 0.24.6 or later. see https://github.com/wez/wezterm/issues/3250
+-image = {version="0.24", git="https://github.com/image-rs/image.git", rev="fe069785ae245a2c510fd724ef96da283b05a236"}
++image = {version="0.24.6"}
+ lazy_static = "1.4"
+ log = "0.4"
+ lru = "0.7"
+--- wezterm-20230320-124340-559cb7b0-orig/term/Cargo.toml	2023-03-21 06:43:40.000000000 +1100
++++ wezterm-20230320-124340-559cb7b0/term/Cargo.toml	2023-03-25 18:11:54.504212757 +1100
+@@ -22,7 +22,7 @@
+ finl_unicode = "1.2"
+ hex = "0.4"
+ # we want image 0.24.6 or later. see https://github.com/wez/wezterm/issues/3250
+-image = {version="0.24", git="https://github.com/image-rs/image.git", rev="fe069785ae245a2c510fd724ef96da283b05a236"}
++image = {version="0.24.6"}
+ lazy_static = "1.4"
+ log = "0.4"
+ lru = "0.7"
+--- wezterm-20230320-124340-559cb7b0-orig/wezterm-gui/Cargo.toml	2023-03-21 06:43:40.000000000 +1100
++++ wezterm-20230320-124340-559cb7b0/wezterm-gui/Cargo.toml	2023-03-25 18:10:05.233481770 +1100
+@@ -56,7 +56,7 @@
+ hdrhistogram = "7.1"
+ http_req = "0.9"
+ # we want image 0.24.6 or later. see https://github.com/wez/wezterm/issues/3250
+-image = {version="0.24", git="https://github.com/image-rs/image.git", rev="fe069785ae245a2c510fd724ef96da283b05a236"}
++image = {version="0.24.6"}
+ lazy_static = "1.4"
+ libc = "0.2"
+ lfucache = { path = "../lfucache" }

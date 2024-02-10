@@ -1,0 +1,11 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-02-19)
+# New enough SpiderMonkey not keyworded here, bug #753221
+sys-auth/polkit duktape
+
+# Tobias Klausmann <klausman@gentoo.org> 2014-12-04
+# The Firefox/Mozilla build system is broken in regards to linking the shipped
+# ICU library. Bug 529944
+www-client/firefox system-icu

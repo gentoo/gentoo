@@ -1,0 +1,10 @@
+--- a/makefile
++++ b/makefile
+@@ -6,6 +6,7 @@
+ ldoc:
+ 
+ install: install_parts
++	mkdir -p $(DESTDIR)$(LUA_BINDIR)
+ 	echo "lua $(LUA_SHAREDIR)/ldoc.lua \$$*" > $(DESTDIR)$(LUA_BINDIR)/ldoc
+ 	chmod +x $(DESTDIR)$(LUA_BINDIR)/ldoc
+ 

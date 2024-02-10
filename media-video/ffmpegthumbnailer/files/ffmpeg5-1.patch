@@ -1,0 +1,22 @@
+From 67be4abd22b726e277c4b67bfb3abf5a65cfd9b5 Mon Sep 17 00:00:00 2001
+From: Zane van Iperen <zane@zanevaniperen.com>
+Date: Mon, 15 Mar 2021 17:23:23 +1000
+Subject: [PATCH] lib/moviedecoder: remove unused variable
+
+---
+ libffmpegthumbnailer/moviedecoder.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/libffmpegthumbnailer/moviedecoder.cpp b/libffmpegthumbnailer/moviedecoder.cpp
+index 290e212..aa44adf 100644
+--- a/libffmpegthumbnailer/moviedecoder.cpp
++++ b/libffmpegthumbnailer/moviedecoder.cpp
+@@ -570,8 +570,6 @@ bool MovieDecoder::getVideoPacket()
+     bool framesAvailable = true;
+     bool frameDecoded = false;
+ 
+-    int attempts = 0;
+-
+     if (m_pPacket)
+     {
+         av_packet_unref(m_pPacket);

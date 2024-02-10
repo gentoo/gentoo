@@ -1,0 +1,38 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# PyPy3 is keyworded here.
+-python_targets_pypy3
+-python_single_target_pypy3
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# media-libs/openexr doesn't work on BE, but should on LE.
+# ...and openscenegraph needs openexr.
+-openexr
+-osg
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-16)
+# dev-qt/qtwebengine works on ppc64le
+-webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-03)
+# clang is keyworded and works on ppc64
+-clang
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# works on ppc64le
+-vaapi
+
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
+# Mask multilib, since we cannot use it.
+multilib
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# # works on ppc64le
+-video_cards_amdgpu
+-video_cards_ast

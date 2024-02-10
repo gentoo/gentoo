@@ -1,0 +1,39 @@
+diff -urN libwmf-0.2.8.4.old/fonts/Makefile.am libwmf-0.2.8.4/fonts/Makefile.am
+--- libwmf-0.2.8.4.old/fonts/Makefile.am	2011-07-01 22:37:57.000000000 +0200
++++ libwmf-0.2.8.4/fonts/Makefile.am	2011-07-01 22:38:37.000000000 +0200
+@@ -1,35 +1,3 @@
+ fontdir = @WMF_FONTDIR@
+ 
+ bin_SCRIPTS = libwmf-fontmap
+-
+-FONTS = \
+-	n019003l.afm \
+-	n019003l.pfb \
+-	n019004l.afm \
+-	n019004l.pfb \
+-	n019023l.afm \
+-	n019023l.pfb \
+-	n019024l.afm \
+-	n019024l.pfb \
+-	n021003l.afm \
+-	n021003l.pfb \
+-	n021004l.afm \
+-	n021004l.pfb \
+-	n021023l.afm \
+-	n021023l.pfb \
+-	n021024l.afm \
+-	n021024l.pfb \
+-	n022003l.afm \
+-	n022003l.pfb \
+-	n022004l.afm \
+-	n022004l.pfb \
+-	n022023l.afm \
+-	n022023l.pfb \
+-	n022024l.afm \
+-	n022024l.pfb \
+-	s050000l.afm \
+-	s050000l.pfb
+-
+-font_DATA = $(FONTS) fontmap
+-
+-EXTRA_DIST = libwmf-fontmap.in LICENSE $(FONTS)

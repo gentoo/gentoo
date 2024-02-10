@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Apheleia is an Emacs Lisp package which allows you to reformat a buffer
+    without moving point. This solves the usual problem of running a tool like
+    Prettier or Black on before-save-hook, namely that it resets point to the
+    beginning of the buffer. Apheleia maintains the position of point relative
+    to its surrounding text even if the buffer is modified by the reformatting.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/radian-software/apheleia/issues/</bugs-to>
+    <remote-id type="github">radian-software/apheleia</remote-id>
+  </upstream>
+</pkgmetadata>

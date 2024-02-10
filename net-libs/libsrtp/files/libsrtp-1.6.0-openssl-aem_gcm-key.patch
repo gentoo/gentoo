@@ -1,0 +1,83 @@
+Backport of https://github.com/cisco/libsrtp/commit/1acba569915d8124b627a29dd5e3500332618eac
+
+--- a/crypto/cipher/aes_gcm_ossl.c	2018-06-10 18:51:02 UTC
++++ b/crypto/cipher/aes_gcm_ossl.c
+@@ -187,22 +187,28 @@ err_status_t aes_gcm_openssl_dealloc (cipher_t *c)
+  */
+ err_status_t aes_gcm_openssl_context_init (aes_gcm_ctx_t *c, const uint8_t *key)
+ {
++    const EVP_CIPHER *evp;
++
+     c->dir = direction_any;
+ 
+-    /* copy key to be used later when CiscoSSL crypto context is created */
+-    v128_copy_octet_string((v128_t*)&c->key, key);
++    debug_print(mod_aes_gcm, "key:  %s", octet_string_hex_string(key, c->key_size));
+ 
+-    if (c->key_size == AES_256_KEYSIZE) {
+-        debug_print(mod_aes_gcm, "Copying last 16 bytes of key: %s",
+-                    v128_hex_string((v128_t*)(key + AES_128_KEYSIZE)));
+-        v128_copy_octet_string(((v128_t*)(&c->key.v8)) + 1, 
+-		               key + AES_128_KEYSIZE);
++    switch (c->key_size) {
++    case AES_256_KEYSIZE:
++        evp = EVP_aes_256_gcm();
++        break;
++    case AES_128_KEYSIZE:
++        evp = EVP_aes_128_gcm();
++        break;
++    default:
++        return (err_status_bad_param);
++        break;
+     }
+ 
+-    debug_print(mod_aes_gcm, "key:  %s", v128_hex_string((v128_t*)&c->key));
++    if (!EVP_CipherInit_ex(&c->ctx, evp, NULL, key, NULL, 0)) {
++        return (err_status_init_fail);
++    }
+ 
+-    EVP_CIPHER_CTX_cleanup(&c->ctx);
+-
+     return (err_status_ok);
+ }
+ 
+@@ -214,8 +220,6 @@ err_status_t aes_gcm_openssl_context_init (aes_gcm_ctx
+ err_status_t aes_gcm_openssl_set_iv (aes_gcm_ctx_t *c, void *iv,
+ 	                             int direction)
+ {
+-    const EVP_CIPHER *evp;
+-
+     if (direction != direction_encrypt && direction != direction_decrypt) {
+         return (err_status_bad_param);
+     }
+@@ -223,19 +227,7 @@ err_status_t aes_gcm_openssl_set_iv (aes_gcm_ctx_t *c,
+ 
+     debug_print(mod_aes_gcm, "setting iv: %s", v128_hex_string(iv));
+ 
+-    switch (c->key_size) {
+-    case AES_256_KEYSIZE:
+-        evp = EVP_aes_256_gcm();
+-        break;
+-    case AES_128_KEYSIZE:
+-        evp = EVP_aes_128_gcm();
+-        break;
+-    default:
+-        return (err_status_bad_param);
+-        break;
+-    }
+-
+-    if (!EVP_CipherInit_ex(&c->ctx, evp, NULL, (const unsigned char*)&c->key.v8,
++    if (!EVP_CipherInit_ex(&c->ctx, NULL, NULL, NULL,
+                            NULL, (c->dir == direction_encrypt ? 1 : 0))) {
+         return (err_status_init_fail);
+     }
+--- a/crypto/include/aes_gcm_ossl.h	2017-08-01 11:57:38 UTC
++++ b/crypto/include/aes_gcm_ossl.h
+@@ -52,7 +52,6 @@
+ #include <openssl/aes.h>
+ 
+ typedef struct {
+-  v256_t   key;
+   int      key_size;
+   int      tag_len;
+   EVP_CIPHER_CTX ctx;

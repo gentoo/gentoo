@@ -1,0 +1,11 @@
+--- a/tclconfig/tcl.m4	2023-03-16 08:23:24.920934671 +0100
++++ b/tclconfig/tcl.m4	2023-03-16 08:24:06.288775313 +0100
+@@ -794,7 +794,7 @@
+ 	    # results, and the version is kept in special file).
+ 	
+ 	    if test -r /etc/.relid -a "X`uname -n`" = "X`uname -s`" ; then
+-		system=MP-RAS-`awk '{print $3}' /etc/.relid'`
++		system=MP-RAS-`awk '{print $3}' /etc/.relid`
+ 	    fi
+ 	    if test "`uname -s`" = "AIX" ; then
+ 		system=AIX-`uname -v`.`uname -r`

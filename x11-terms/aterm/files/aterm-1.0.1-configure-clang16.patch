@@ -1,0 +1,23 @@
+Add missing int tpye, and avoid calling the undeclared exit function.
+Implicit ints and function declarations are language features removed
+in C99 and are likely to become unsupported (by default) in future
+compilers.
+
+--- a/autoconf/configure.in
++++ b/autoconf/configure.in
+@@ -615,12 +615,12 @@
+ [#define X_LOCALE 1
+ #include <X11/Xlocale.h>
+ #include <X11/Xlib.h>
+-main() {
++int main() {
+ char *p;
+ if ((p = XSetLocaleModifiers("@im=none")) != NULL && *p)
+-exit (XSupportsLocale() ? 0 : 1);
++return XSupportsLocale() ? 0 : 1;
+ else
+-exit (1);}
++return 1;}
+ ],rxvt_cv_func_xlocale=yes, rxvt_cv_func_xlocale=no,
+ AC_MSG_WARN([Define NO_XLOCALE in config.h manually]))])
+ 

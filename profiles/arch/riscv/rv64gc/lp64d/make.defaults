@@ -1,0 +1,17 @@
+# Copyright 2019-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V rv64gc/lp64d no-multilib profile
+
+CHOST="riscv64-unknown-linux-gnu"
+
+MULTILIB_ABIS="lp64d"
+DEFAULT_ABI="lp64d"
+ABI="lp64d"
+
+LIBDIR_lp64d="lib64"
+
+CFLAGS="-O2 -pipe -march=rv64gc -mabi=lp64d"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

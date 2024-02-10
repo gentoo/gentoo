@@ -1,0 +1,25 @@
+# /etc/conf.d/nginx-unit
+
+# non-privileged processes to run as specified user
+#NXT_USER="nginx-unit"
+
+# non-privileged processes to run as specified group
+#NXT_GROUP="nginx-unit"
+
+# Address of the Control API Socket
+#NXT_CONTROL="unix:/run/nginx-unit.sock"
+
+# PID file
+#NXT_PID="/run/nginx-unit.pid"
+
+# Log File Name
+#NXT_LOG="/var/log/nginx-unit"
+
+# Modules directory name
+#NXT_MODULES="/usr/lib64/nginx-unit"
+
+# State directory name
+#NXT_STATE="/var/lib/nginx-unit"
+
+# tmp directory name
+#NXT_TMP="/usr/tmp"

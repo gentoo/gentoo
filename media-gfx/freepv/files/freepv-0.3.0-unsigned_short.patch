@@ -1,0 +1,47 @@
+diff -Naur freepv-0.3.0.orig/src/libfreepv/Utils/signatures.cpp freepv-0.3.0/src/libfreepv/Utils/signatures.cpp
+--- freepv-0.3.0.orig/src/libfreepv/Utils/signatures.cpp	2009-05-02 01:12:31.000000000 +0200
++++ freepv-0.3.0/src/libfreepv/Utils/signatures.cpp	2017-01-25 15:51:23.781294110 +0100
+@@ -30,34 +30,34 @@
+ 
+   //JPEG Signature
+   char jpg_size=1;
+-  short jpg_sig[]={0xD8FF};
++  unsigned short jpg_sig[]={0xD8FF};
+   //PNG Signature
+   char png_size=4;
+-  short png_sig[]={0x5089, 0x474E, 0x0A0D, 0x0A1A};
++  unsigned short png_sig[]={0x5089, 0x474E, 0x0A0D, 0x0A1A};
+   //XML Signature
+   char xml_size=3;
+-  short xml_sig[]={0x3F3C, 0x6D78, 0x206C};
++  unsigned short xml_sig[]={0x3F3C, 0x6D78, 0x206C};
+   //DCR Signature
+   char dcr_size=2;
+-  short dcr_sig[]={0x4658, 0x5249};
++  unsigned short dcr_sig[]={0x4658, 0x5249};
+   //MOV (MOOV atom) Signature
+   char mov_moov_size=4;
+-  short mov_moov_sig[]={0x0000, 0x0000, 0x6F6D, 0x766F};
++  unsigned short mov_moov_sig[]={0x0000, 0x0000, 0x6F6D, 0x766F};
+   //MOV (FTYP atom) Siganture
+   char mov_ftyp_size=4;
+-    short mov_ftyp_sig[]={0x0000, 0x0000, 0x7466,  0x7079};
++    unsigned short mov_ftyp_sig[]={0x0000, 0x0000, 0x7466,  0x7079};
+    
+   //Signatures to check
+   char sig_types_num=6;
+-    short* signature[]={jpg_sig,png_sig,xml_sig,dcr_sig,mov_moov_sig,mov_ftyp_sig};
++    unsigned short* signature[]={jpg_sig,png_sig,xml_sig,dcr_sig,mov_moov_sig,mov_ftyp_sig};
+     char sig_sizes[]={jpg_size,png_size,xml_size,dcr_size,mov_moov_size,mov_ftyp_size};
+ 
+   const char* CheckMagicBytes(const char* filename)
+   {
+     FILE * p_file;
+     p_file=fopen(filename, "rb");
+-    short number;
+-    short equal=0;
++    unsigned short number;
++    unsigned short equal=0;
+     char i, type; 
+     
+     if(p_file==NULL){

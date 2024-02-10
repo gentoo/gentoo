@@ -1,0 +1,23 @@
+From 5491ffa3fde5729074fe804023bd279c56684f77 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Zatloukal?= <Zatloukal.Frantisek@gmail.com>
+Date: Mon, 24 Apr 2023 10:29:36 +0200
+Subject: [PATCH] Bump CMAKE_CXX_STANDARD to 17 (#416)
+
+Fixes build issues
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dc471d8..a7d1927 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,7 +58,7 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+       ${CMAKE_MODULE_PATH}
+       ${LLVM_CMAKE_DIR})
+ 
+-    set(CMAKE_CXX_STANDARD 14)
++    set(CMAKE_CXX_STANDARD 17)
+     set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+     option(LLVMSPIRV_INCLUDED_IN_LLVM

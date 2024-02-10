@@ -1,0 +1,10 @@
+Prevent double-patching with GIT_CRATES usage.
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -86,6 +86 @@
+ 
+-[patch.crates-io]
+-# These are needed because https://github.com/gfx-rs/wgpu/pull/4778
+-# is not yet in the latest wgpu release. TODO: Remove when it is.
+-wgpu = { git = "https://github.com/gfx-rs/wgpu", branch = "v0.18" }
+-naga = { git = "https://github.com/gfx-rs/wgpu", branch = "v0.18" }

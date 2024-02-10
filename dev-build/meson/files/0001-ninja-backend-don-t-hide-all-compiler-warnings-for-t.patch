@@ -1,0 +1,250 @@
+From 5f659af870011e74299d1455a65c2cd5f5ace51f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 5 Dec 2023 14:26:54 -0500
+Subject: [PATCH] ninja backend: don't hide all compiler warnings for
+ transpiled languages
+
+This was originally added for vala only, with the rationale that vala
+generates bad code that has warnings. Unfortunately, the rationale was
+fatally flawed. The compiler warns about a number of things, which the
+user can control depending on their code (or their code generator's
+code), but some of those things are absolutely critical to warn about.
+
+In particular, GCC 14 and clang 17 are updating their defaults to warn
+-- and error by default for -- invalid C code that breaks the standard,
+but has been silently accepted for over 20 years "because lots of people
+do it". The code in question is UB, and compilers will generate faulty
+machine code that behaves erroneously and probably has a mass of CVEs
+waiting to happen.
+
+Compiler warnings are NOT safe to just... universally turn off. Compiler
+warnings could be either:
+
+- coding style lints
+
+- threatening statements that the code is factually and behaviorally wrong
+
+There is no magic bullet to ignore the former while respecting the
+latter. And the very last thing we should ever do is pass `-w`, since
+that causes ALL warnings to be disabled, even the manually added
+`-Werror=XXX`.
+
+If vala generated code creates warnings, then the vala compiler can
+decrease the log level by generating better code, or by adding warning
+suppression pragmas for *specific* issues, such as unused functions.
+---
+ mesonbuild/backend/backends.py                | 13 ++-----
+ mesonbuild/backend/ninjabackend.py            | 19 ++++------
+ .../failing build/1 vala c werror/meson.build | 10 -----
+ .../failing build/1 vala c werror/prog.vala   |  7 ----
+ .../1 vala c werror/unused-var.c              |  8 ----
+ test cases/vala/5 target glib/meson.build     |  4 --
+ unittests/linuxliketests.py                   | 37 -------------------
+ 7 files changed, 11 insertions(+), 87 deletions(-)
+ delete mode 100644 test cases/failing build/1 vala c werror/meson.build
+ delete mode 100644 test cases/failing build/1 vala c werror/prog.vala
+ delete mode 100644 test cases/failing build/1 vala c werror/unused-var.c
+
+diff --git a/mesonbuild/backend/backends.py b/mesonbuild/backend/backends.py
+index 2c24e4c31..639e07b2a 100644
+--- a/mesonbuild/backend/backends.py
++++ b/mesonbuild/backend/backends.py
+@@ -986,7 +986,7 @@ class Backend:
+             return compiler.get_no_stdinc_args()
+         return []
+ 
+-    def generate_basic_compiler_args(self, target: build.BuildTarget, compiler: 'Compiler', no_warn_args: bool = False) -> 'CompilerArgs':
++    def generate_basic_compiler_args(self, target: build.BuildTarget, compiler: 'Compiler') -> 'CompilerArgs':
+         # Create an empty commands list, and start adding arguments from
+         # various sources in the order in which they must override each other
+         # starting from hard-coded defaults followed by build options and so on.
+@@ -999,17 +999,12 @@ class Backend:
+         commands += self.get_no_stdlib_args(target, compiler)
+         # Add things like /NOLOGO or -pipe; usually can't be overridden
+         commands += compiler.get_always_args()
+-        # Only add warning-flags by default if the buildtype enables it, and if
+-        # we weren't explicitly asked to not emit warnings (for Vala, f.ex)
+-        if no_warn_args:
+-            commands += compiler.get_no_warn_args()
+-        else:
+-            # warning_level is a string, but mypy can't determine that
+-            commands += compiler.get_warn_args(T.cast('str', target.get_option(OptionKey('warning_level'))))
++        # warning_level is a string, but mypy can't determine that
++        commands += compiler.get_warn_args(T.cast('str', target.get_option(OptionKey('warning_level'))))
+         # Add -Werror if werror=true is set in the build options set on the
+         # command-line or default_options inside project(). This only sets the
+         # action to be done for warnings if/when they are emitted, so it's ok
+-        # to set it after get_no_warn_args() or get_warn_args().
++        # to set it after or get_warn_args().
+         if target.get_option(OptionKey('werror')):
+             commands += compiler.get_werror_args()
+         # Add compile args for c_* or cpp_* build options set on the
+diff --git a/mesonbuild/backend/ninjabackend.py b/mesonbuild/backend/ninjabackend.py
+index 049ae253f..cdb747d73 100644
+--- a/mesonbuild/backend/ninjabackend.py
++++ b/mesonbuild/backend/ninjabackend.py
+@@ -1939,7 +1939,7 @@ class NinjaBackend(backends.Backend):
+         if cratetype in {'bin', 'dylib'}:
+             args.extend(rustc.get_linker_always_args())
+ 
+-        args += self.generate_basic_compiler_args(target, rustc, False)
++        args += self.generate_basic_compiler_args(target, rustc)
+         # Rustc replaces - with _. spaces or dots are not allowed, so we replace them with underscores
+         args += ['--crate-name', target.name.replace('-', '_').replace(' ', '_').replace('.', '_')]
+         depfile = os.path.join(target.subdir, target.name + '.d')
+@@ -2804,10 +2804,9 @@ https://gcc.gnu.org/bugzilla/show_bug.cgi?id=47485'''))
+             bargs = []
+         return (sargs, bargs)
+ 
+-    def _generate_single_compile(self, target: build.BuildTarget, compiler: 'Compiler',
+-                                 is_generated: bool = False) -> 'CompilerArgs':
++    def _generate_single_compile(self, target: build.BuildTarget, compiler: Compiler) -> CompilerArgs:
+         commands = self._generate_single_compile_base_args(target, compiler)
+-        commands += self._generate_single_compile_target_args(target, compiler, is_generated)
++        commands += self._generate_single_compile_target_args(target, compiler)
+         return commands
+ 
+     def _generate_single_compile_base_args(self, target: build.BuildTarget, compiler: 'Compiler') -> 'CompilerArgs':
+@@ -2825,14 +2824,10 @@ https://gcc.gnu.org/bugzilla/show_bug.cgi?id=47485'''))
+         return commands
+ 
+     @lru_cache(maxsize=None)
+-    def _generate_single_compile_target_args(self, target: build.BuildTarget, compiler: 'Compiler',
+-                                             is_generated: bool = False) -> 'ImmutableListProtocol[str]':
+-        # The code generated by valac is usually crap and has tons of unused
+-        # variables and such, so disable warnings for Vala C sources.
+-        no_warn_args = is_generated == 'vala'
++    def _generate_single_compile_target_args(self, target: build.BuildTarget, compiler: Compiler) -> ImmutableListProtocol[str]:
+         # Add compiler args and include paths from several sources; defaults,
+         # build options, external dependencies, etc.
+-        commands = self.generate_basic_compiler_args(target, compiler, no_warn_args)
++        commands = self.generate_basic_compiler_args(target, compiler)
+         # Add custom target dirs as includes automatically, but before
+         # target-specific include directories.
+         if target.implicit_include_directories:
+@@ -2901,7 +2896,7 @@ https://gcc.gnu.org/bugzilla/show_bug.cgi?id=47485'''))
+             if use_pch and 'mw' not in compiler.id:
+                 commands += self.get_pch_include_args(compiler, target)
+ 
+-            commands += self._generate_single_compile_target_args(target, compiler, is_generated=False)
++            commands += self._generate_single_compile_target_args(target, compiler)
+ 
+             # Metrowerks compilers require PCH include args to come after intraprocedural analysis args
+             if use_pch and 'mw' in compiler.id:
+@@ -2935,7 +2930,7 @@ https://gcc.gnu.org/bugzilla/show_bug.cgi?id=47485'''))
+         if use_pch and 'mw' not in compiler.id:
+             commands += self.get_pch_include_args(compiler, target)
+ 
+-        commands += self._generate_single_compile_target_args(target, compiler, is_generated)
++        commands += self._generate_single_compile_target_args(target, compiler)
+ 
+         # Metrowerks compilers require PCH include args to come after intraprocedural analysis args
+         if use_pch and 'mw' in compiler.id:
+diff --git a/test cases/failing build/1 vala c werror/meson.build b/test cases/failing build/1 vala c werror/meson.build
+deleted file mode 100644
+index 736d7aa43..000000000
+--- a/test cases/failing build/1 vala c werror/meson.build	
++++ /dev/null
+@@ -1,10 +0,0 @@
+-project('valatest', 'c', default_options : 'werror=true')
+-
+-if find_program('valac', required : false).found()
+-  add_languages('vala')
+-  valadeps = [dependency('glib-2.0'), dependency('gobject-2.0')]
+-  # Must fail due to -Werror and unused variable in C file
+-  executable('valaprog', 'prog.vala', 'unused-var.c', dependencies : valadeps)
+-else
+-  executable('failprog', 'unused-var.c')
+-endif
+diff --git a/test cases/failing build/1 vala c werror/prog.vala b/test cases/failing build/1 vala c werror/prog.vala
+deleted file mode 100644
+index 638e77660..000000000
+--- a/test cases/failing build/1 vala c werror/prog.vala	
++++ /dev/null
+@@ -1,7 +0,0 @@
+-class MainProg : GLib.Object {
+-
+-    public static int main(string[] args) {
+-        stdout.printf("Vala is working.\n");
+-        return 0;
+-    }
+-}
+diff --git a/test cases/failing build/1 vala c werror/unused-var.c b/test cases/failing build/1 vala c werror/unused-var.c
+deleted file mode 100644
+index 6b85078c9..000000000
+--- a/test cases/failing build/1 vala c werror/unused-var.c	
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#warning "something"
+-
+-int
+-somelib(void)
+-{
+-  int unused_var;
+-  return 33;
+-}
+diff --git a/test cases/vala/5 target glib/meson.build b/test cases/vala/5 target glib/meson.build
+index f285d9f16..089bb3c97 100644
+--- a/test cases/vala/5 target glib/meson.build	
++++ b/test cases/vala/5 target glib/meson.build	
+@@ -1,9 +1,5 @@
+ project('valatest', 'vala', 'c')
+ 
+-if not meson.is_unity()
+-  add_global_arguments('-Werror', language : 'c')
+-endif
+-
+ valadeps = [dependency('glib-2.0', version : '>=2.32'), dependency('gobject-2.0')]
+ 
+ e = executable('valaprog', 'GLib.Thread.vala', 'retcode.c', dependencies : valadeps)
+diff --git a/unittests/linuxliketests.py b/unittests/linuxliketests.py
+index 4fcf52e09..a02c99e8f 100644
+--- a/unittests/linuxliketests.py
++++ b/unittests/linuxliketests.py
+@@ -298,43 +298,6 @@ class LinuxlikeTests(BasePlatformTests):
+         self.build()
+         self._run(self.mtest_command)
+ 
+-    def test_vala_c_warnings(self):
+-        '''
+-        Test that no warnings are emitted for C code generated by Vala. This
+-        can't be an ordinary test case because we need to inspect the compiler
+-        database.
+-        https://github.com/mesonbuild/meson/issues/864
+-        '''
+-        if not shutil.which('valac'):
+-            raise SkipTest('valac not installed.')
+-        testdir = os.path.join(self.vala_test_dir, '5 target glib')
+-        self.init(testdir)
+-        compdb = self.get_compdb()
+-        vala_command = None
+-        c_command = None
+-        for each in compdb:
+-            if each['file'].endswith('GLib.Thread.c'):
+-                vala_command = each['command']
+-            elif each['file'].endswith('GLib.Thread.vala'):
+-                continue
+-            elif each['file'].endswith('retcode.c'):
+-                c_command = each['command']
+-            else:
+-                m = 'Unknown file {!r} in vala_c_warnings test'.format(each['file'])
+-                raise AssertionError(m)
+-        self.assertIsNotNone(vala_command)
+-        self.assertIsNotNone(c_command)
+-        # -w suppresses all warnings, should be there in Vala but not in C
+-        self.assertIn(" -w ", vala_command)
+-        self.assertNotIn(" -w ", c_command)
+-        # -Wall enables all warnings, should be there in C but not in Vala
+-        self.assertNotIn(" -Wall ", vala_command)
+-        self.assertIn(" -Wall ", c_command)
+-        # -Werror converts warnings to errors, should always be there since it's
+-        # injected by an unrelated piece of code and the project has werror=true
+-        self.assertIn(" -Werror ", vala_command)
+-        self.assertIn(" -Werror ", c_command)
+-
+     @skipIfNoPkgconfig
+     def test_qtdependency_pkgconfig_detection(self):
+         '''
+-- 
+2.41.0
+

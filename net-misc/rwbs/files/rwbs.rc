@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting Roger Wilco base station"
+	start-stop-daemon --start --quiet --exec /opt/bin/rwbs -b \
+		-- \${RWBS_OPTS} >>/var/log/rwbs 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Roger Wilco base station"
+	start-stop-daemon --stop --quiet --exec /opt/bin/rwbs > /dev/null 2>&1
+	eend $?
+}

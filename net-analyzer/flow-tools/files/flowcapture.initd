@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PORT=${PORT:=2055}
+# The daemon takes the pidfile argument and APPENDS .$PORT itself in writing.
+# It may have multiple children by original design, but this is not recommended
+# for Gentoo at this time.
+PIDFILE_BASE=${PIDFILE_BASE:=/run/flows/flowcapture.pid}
+PIDFILE=${PIDFILE:=${PIDFILE_BASE}.${PORT}}
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting flow-capture"
+	checkpath -d -o flows /run/flows
+	start-stop-daemon --start --user ${USER} --exec /usr/bin/flow-capture \
+		--pidfile ${PIDFILE} \
+		-- ${FLOW_OPTS} >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping flow-capture"
+	start-stop-daemon --stop --quiet --exec /usr/bin/flow-capture \
+		--pidfile ${PIDFILE}
+	eend $?
+}

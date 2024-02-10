@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<use>
+  <flag name="bliss">
+    Enable <pkg>sci-libs/bliss</pkg> interface for graph and face lattice
+    isomorphism computations.
+  </flag>
+  <flag name="cdd">
+    Enable <pkg>sci-libs/cddlib</pkg> interface for convex hull
+    computations (Should be kept enabled).
+  </flag>
+  <flag name="flint">
+    Build with "strongly recommended" support for
+    <pkg>sci-mathematics/flint</pkg>.
+  </flag>
+  <flag name="libpolymake">
+    Build the polymake library to build applications using the C++
+    interface.
+  </flag>
+  <flag name="lrs">
+    Enable <pkg>sci-libs/lrslib</pkg> interface for convex hull
+    computations.
+  </flag>
+  <flag name="nauty">
+    Build the extension for graph automorphism computations using
+    <pkg>sci-mathematics/nauty</pkg>.
+  </flag>
+  <flag name="normaliz">
+    Build the bundled extension for lattice computations using
+    <pkg>sci-mathematics/normaliz</pkg>.
+  </flag>
+  <flag name="ppl">
+    Enable <pkg>dev-libs/ppl</pkg> interface for convex hull computations.
+  </flag>
+  <flag name="singular">
+    Enable the interface to <pkg>sci-mathematics/singular</pkg> for
+    ideal related computations.
+  </flag>
+</use>
+<longdescription lang="en">
+  Polymake is open source software for research in polyhedral
+  geometry. It deals with polytopes, polyhedra, and fans as well as
+  simplicial complexes, matroids, graphs, tropical hypersurfaces, and
+  other objects.
+</longdescription>
+<upstream>
+  <remote-id type="github">polymake/polymake</remote-id>
+</upstream>
+</pkgmetadata>

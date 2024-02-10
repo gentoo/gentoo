@@ -1,0 +1,12 @@
+--- a/bb.c
++++ b/bb.c
+@@ -27,2 +27,3 @@
+ #include <aalib.h>
++#include <time.h>
+ #include "bb.h"
+--- a/main.c
++++ b/main.c
+@@ -23,2 +23,3 @@
+ 
++#include <ctype.h>
+ #include <string.h>

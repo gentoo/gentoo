@@ -1,0 +1,108 @@
+--- a/cert-to-efi-sig-list.c
++++ b/cert-to-efi-sig-list.c
+@@ -6,7 +6,6 @@
+ 
+ 
+ #include <stdint.h>
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ #ifdef CONFIG_arm
+ /* FIXME:
+--- a/efi-keytool.c
++++ b/efi-keytool.c
+@@ -15,7 +15,6 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ 
+ #include <kernel_efivars.h>
+--- a/efi-readvar.c
++++ b/efi-readvar.c
+@@ -17,7 +17,6 @@
+ 
+ #include <openssl/x509.h>
+ 
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ 
+ #include <kernel_efivars.h>
+--- a/efi-updatevar.c
++++ b/efi-updatevar.c
+@@ -20,7 +20,6 @@
+ #include <openssl/err.h>
+ #include <openssl/pem.h>
+ 
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ 
+ #include <kernel_efivars.h>
+--- a/flash-var.c
++++ b/flash-var.c
+@@ -1,3 +1,5 @@
++#define _XOPEN_SOURCE 700
++
+ #include <stdlib.h>
+ #include <stdint.h>
+ #include <sys/types.h>
+@@ -10,7 +12,6 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ 
+ #include <version.h>
+--- a/hash-to-efi-sig-list.c
++++ b/hash-to-efi-sig-list.c
+@@ -4,7 +4,6 @@
+  * see COPYING file
+  */
+ #include <stdint.h>
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ #ifdef CONFIG_arm
+ /* FIXME:
+--- a/include/variableformat.h
++++ b/include/variableformat.h
+@@ -109,7 +109,7 @@
+ 
+ #pragma pack()
+ 
+-inline BOOLEAN
++static inline BOOLEAN
+ IsValidVariableHeader (VARIABLE_HEADER   *vh) {
+ 	if (vh == NULL || vh->StartId != VARIABLE_DATA)
+ 		return FALSE;
+--- a/lib/kernel_efivars.c
++++ b/lib/kernel_efivars.c
+@@ -16,7 +16,6 @@
+ #include <unistd.h>
+ #include <time.h>
+ 
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ 
+ #include <kernel_efivars.h>
+--- a/sig-list-to-certs.c
++++ b/sig-list-to-certs.c
+@@ -4,7 +4,6 @@
+  * see COPYING file
+  */
+ #include <stdint.h>
+-#define __STDC_VERSION__ 199901L
+ #include <efi.h>
+ #ifdef CONFIG_arm
+ /* FIXME:
+--- a/sign-efi-sig-list.c
++++ b/sign-efi-sig-list.c
+@@ -4,7 +4,7 @@
+  * see COPYING file
+  */
+ #include <stdint.h>
+-#define __STDC_VERSION__ 199901L
++#define _XOPEN_SOURCE 700
+ #include <efi.h>
+ #ifdef CONFIG_arm
+ /* FIXME:

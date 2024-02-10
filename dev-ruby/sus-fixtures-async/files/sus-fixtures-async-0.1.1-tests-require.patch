@@ -1,0 +1,43 @@
+https://github.com/socketry/sus-fixtures-async/pull/2
+
+From 3d3a1016c1718a8a5eca6ee76cd65d88a66e2481 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 3 Apr 2023 00:36:26 +0100
+Subject: [PATCH] test: Fix version require
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When running e.g. 'ruby32 -S sus', I had:
+```
+🔥 Errored assertions:
+file test/sus/fixtures/async.rb:8
+        ⚠ NameError: uninitialized constant Sus::Fixtures::Async::VERSION
+                test/sus/fixtures/async.rb:8 block in <top (required)>
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/file.rb:10 class_eval
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/file.rb:10 block in <top (required)>
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/file.rb:39 build
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/file.rb:105 file
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/registry.rb:50 load_file
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/registry.rb:45 load
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/config.rb:95 block in load_registry
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/config.rb:94 each
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/config.rb:94 load_registry
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/lib/sus/config.rb:82 registry
+                /usr/lib64/ruby/gems/3.2.0/gems/sus-0.20.3/bin/sus:10 <top (required)>
+                /usr/bin/sus:9 load
+                /usr/bin/sus:9 <main>
+```
+
+It turns out we're missing a direct require, so chuck it in.
+--- a/test/sus/fixtures/async.rb
++++ b/test/sus/fixtures/async.rb
+@@ -4,6 +4,7 @@
+ # Copyright, 2022, by Samuel Williams.
+ 
+ require 'sus/fixtures/async'
++require 'sus/fixtures/async/version'
+ 
+ describe Sus::Fixtures::Async::VERSION do
+ 	it 'is a version string' do
+

@@ -1,0 +1,64 @@
+From a39f8328cf59492e68643f499c0d0fbda910444c Mon Sep 17 00:00:00 2001
+From: Armin Straub <31167361+arminstraub@users.noreply.github.com>
+Date: Sun, 17 Jan 2021 15:50:49 -0600
+Subject: [PATCH] Preserve links within a PDF (thanks to chrthi)
+
+---
+ ChangeLog          |  4 ++++
+ krop/mainwindow.py |  1 +
+ krop/pdfcropper.py | 11 +++++++++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/ChangeLog b/ChangeLog
+index eb7dbb1..4ffbedb 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,7 @@
++krop (0.6.1)  2021-00-00 -- Armin Straub
++
++  * Preserve links within a PDF (thanks to chrthi for doing this).
++
+ krop (0.6.0)  2020-06-09 -- Armin Straub
+ 
+   + Fixed aspect ratios, like letter size, can be chosen for selections.
+diff --git a/krop/mainwindow.py b/krop/mainwindow.py
+index fd1ae32..e8adadf 100644
+--- a/krop/mainwindow.py
++++ b/krop/mainwindow.py
+@@ -413,6 +413,7 @@ def slotKrop(self):
+             pdf = PdfFile()
+             pdf.loadFromFile(inputFileName)
+             cropper = PdfCropper()
++            cropper.copyDocumentRoot(pdf)
+             for nr in pages:
+                 c = self.viewer.cropValues(nr)
+                 cropper.addPageCropped(pdf, nr, c, alwaysinclude, rotation)
+diff --git a/krop/pdfcropper.py b/krop/pdfcropper.py
+index 679c6fc..db30646 100644
+--- a/krop/pdfcropper.py
++++ b/krop/pdfcropper.py
+@@ -55,6 +55,8 @@ def writeToFile(self, filename):
+         stream.close()
+     def addPageCropped(self, pdffile, pagenumber, croplist, rotate=0):
+         pass
++    def copyDocumentRoot(self, pdffile):
++        pass
+ 
+ 
+ class PyPdfFile(AbstractPdfFile):
+@@ -110,6 +112,15 @@ def cropPage(self, page, crop, rotate):
+         if rotate != 0:
+             page.rotateClockwise(rotate)
+ 
++    def copyDocumentRoot(self, pdffile):
++        # Sounds promising in PyPDF2 (see PdfFileWriter.cloneDocumentFromReader),
++        # but doesn't seem to produce a readable PDF:
++        # self.output.cloneReaderDocumentRoot(pdffile.reader)
++        # Instead, this copies at least the named destinations for links:
++        for dest in pdffile.reader.namedDestinations.values():
++            self.output.addNamedDestinationObject(dest)
++
++
+ def optimizePdfGhostscript(oldfilename, newfilename):
+     import subprocess
+     subprocess.check_call(('gs', '-sDEVICE=pdfwrite', '-sOutputFile=' + newfilename,

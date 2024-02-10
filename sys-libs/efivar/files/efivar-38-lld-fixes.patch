@@ -1,0 +1,345 @@
+https://bugs.gentoo.org/831472
+
+From b23aba1469de8bb7a115751f9cd294ad3aaa6680 Mon Sep 17 00:00:00 2001
+From: Ali Abdel-Qader <abdelqaderali@protonmail.com>
+Date: Tue, 31 May 2022 11:53:32 -0400
+Subject: [PATCH] Remove deprecated --add-needed linker flag
+
+Resolves #204
+Signed-off-by: Ali Abdel-Qader <abdelqaderali@protonmail.com>
+---
+ src/include/defaults.mk | 2 --
+ src/include/gcc.specs   | 2 +-
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/include/defaults.mk b/src/include/defaults.mk
+index b8cc590c..42bd3d6e 100644
+--- a/src/include/defaults.mk
++++ b/src/include/defaults.mk
+@@ -51,7 +51,6 @@ LDFLAGS ?=
+ override _CCLDFLAGS := $(CCLDFLAGS)
+ override _LDFLAGS := $(LDFLAGS)
+ override LDFLAGS = $(CFLAGS) -L. $(_LDFLAGS) $(_CCLDFLAGS) \
+-		   -Wl,--add-needed \
+ 		   -Wl,--build-id \
+ 		   -Wl,--no-allow-shlib-undefined \
+ 		   -Wl,--no-undefined-version \
+@@ -98,7 +97,6 @@ override _HOST_LDFLAGS := $(HOST_LDFLAGS)
+ override _HOST_CCLDFLAGS := $(HOST_CCLDFLAGS)
+ override HOST_LDFLAGS = $(HOST_CFLAGS) -L. \
+ 			$(_HOST_LDFLAGS) $(_HOST_CCLDFLAGS) \
+-			-Wl,--add-needed \
+ 			-Wl,--build-id \
+ 			-Wl,--no-allow-shlib-undefined \
+ 			-Wl,-z,now \
+diff --git a/src/include/gcc.specs b/src/include/gcc.specs
+index ef28e2bb..d85e8658 100644
+--- a/src/include/gcc.specs
++++ b/src/include/gcc.specs
+@@ -5,4 +5,4 @@
+ + %{!shared:%{!static:%{!r:-pie}}} %{static:-Wl,-no-fatal-warnings -Wl,-static -static -Wl,-z,relro,-z,now} -grecord-gcc-switches
+ 
+ *link:
+-+ %{!static:--fatal-warnings} --no-undefined-version --no-allow-shlib-undefined --add-needed -z now --build-id %{!static:%{!shared:-pie}} %{shared:-z relro} %{static:%<pie}
+++ %{!static:--fatal-warnings} --no-undefined-version --no-allow-shlib-undefined -z now --build-id %{!static:%{!shared:-pie}} %{shared:-z relro} %{static:%<pie}
+From 1f247260c9b4bd6fcda30f3e4cc358852aeb9e4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20Pawe=C5=82=20Gajc?= <tpgxyz@gmail.com>
+Date: Wed, 29 Jun 2022 21:44:29 +0200
+Subject: [PATCH] LLD: fix detection and remove not needed workarounds
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Tomasz Paweł Gajc <tpgxyz@gmail.com>
+---
+ src/include/workarounds.mk | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/include/workarounds.mk b/src/include/workarounds.mk
+index b72fbaf6..57394edd 100644
+--- a/src/include/workarounds.mk
++++ b/src/include/workarounds.mk
+@@ -2,12 +2,12 @@
+ #
+ # workarounds.mk - workarounds for weird stuff behavior
+ 
+-LD_FLAVOR := $(shell LC_ALL=C $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/ .*//g')
+-LD_VERSION := $(shell LC_ALL=C $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/.* //')
++LD_FLAVOR := $(shell LC_ALL=C $(LD) --version | grep -E '^((.* )?LLD|GNU ld)'|sed 's/.* LLD/LLD/;s/ .*//g')
++LD_VERSION := $(shell LC_ALL=C $(LD) --version | grep -E '^((.* )?LLD|GNU ld)'|sed 's/.* LLD/LLD/;s/.* //')
+ # 2.35 is definitely broken and 2.36 seems to work
+ LD_DASH_T := $(shell \
+ 	if [ "x${LD_FLAVOR}" = xLLD ] ; then \
+-		echo '-T' ; \
++		echo "" ; \
+ 	elif [ "x${LD_FLAVOR}" = xGNU ] ; then \
+ 		if echo "${LD_VERSION}" | grep -q -E '^2\.3[6789]|^2\.[456789]|^[3456789]|^[[:digit:]][[:digit:]]' ; then \
+ 			echo '-T' ; \
+@@ -15,7 +15,7 @@ LD_DASH_T := $(shell \
+ 			echo "" ; \
+ 		fi ; \
+ 	else \
+-		echo "Your linker is not supported" ; \
++		echo "Your linker ${LD_FLAVOR} version ${LD_VERSION} is not supported" ; \
+ 		exit 1 ; \
+ 	fi)
+ 
+From cfd686de51494d3e34be896a91835657ccab37d4 Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Mon, 10 Oct 2022 14:22:36 -0400
+Subject: [PATCH] Revamp efi_well_known_* variable handling
+
+The current implementation attempts to use the linker to create aliases
+for efi_well_known_guids and efi_well_known_names. It also tries to use
+the linker to generate the variables efi_well_known_guids_end and
+efi_well_known_names_end.
+
+When building with clang, the generated linker result results in a
+broken libefivar.so that causes programs to segfault when linked against
+it.  This change does away with linker script hacker and instead
+introduces pointers to store the locations of efi_well_known_guids_end
+and efi_well_known_names_end.
+
+Additionally, efi_well_known_guids and efi_well_known_names are now
+created as pointers that point to the beginning of their respective
+arrays.
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+Fixes: #234
+---
+ src/Makefile               |  7 ++--
+ src/include/rules.mk       |  5 +--
+ src/include/workarounds.mk | 24 -------------
+ src/makeguids.c            | 72 +++++++++++++-------------------------
+ 4 files changed, 27 insertions(+), 81 deletions(-)
+ delete mode 100644 src/include/workarounds.mk
+
+diff --git a/src/Makefile b/src/Makefile
+index e04357a7..ec1eabe6 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,7 +4,6 @@ include $(TOPDIR)/src/include/deprecated.mk
+ include $(TOPDIR)/src/include/version.mk
+ include $(TOPDIR)/src/include/rules.mk
+ include $(TOPDIR)/src/include/defaults.mk
+-include $(TOPDIR)/src/include/workarounds.mk
+ 
+ LIBTARGETS=libefivar.so libefiboot.so libefisec.so
+ STATICLIBTARGETS=libefivar.a libefiboot.a libefisec.a
+@@ -30,7 +29,7 @@ EFISECDB_OBJECTS = $(patsubst %.S,%.o,$(patsubst %.c,%.o,$(EFISECDB_SOURCES)))
+ GENERATED_SOURCES = include/efivar/efivar-guids.h guid-symbols.c
+ MAKEGUIDS_SOURCES = makeguids.c util-makeguids.c
+ MAKEGUIDS_OBJECTS = $(patsubst %.S,%.o,$(patsubst %.c,%.o,$(MAKEGUIDS_SOURCES)))
+-MAKEGUIDS_OUTPUT = $(GENERATED_SOURCES) guids.lds
++MAKEGUIDS_OUTPUT = $(GENERATED_SOURCES)
+ 
+ util-makeguids.c : util.c
+ 	cp util.c util-makeguids.c
+@@ -84,7 +83,7 @@ $(MAKEGUIDS_OUTPUT) : guids.txt
+ 	if [ "$${missing}" != "no" ]; then \
+ 		exit 1 ; \
+ 	fi
+-	./makeguids $(LD_DASH_T) guids.txt guid-symbols.c include/efivar/efivar-guids.h guids.lds
++	./makeguids guids.txt guid-symbols.c include/efivar/efivar-guids.h
+ 
+ prep : makeguids $(GENERATED_SOURCES)
+ 
+@@ -96,7 +95,6 @@ libefivar.a : $(patsubst %.o,%.static.o,$(LIBEFIVAR_OBJECTS))
+ libefivar.so : $(LIBEFIVAR_OBJECTS)
+ libefivar.so : | $(GENERATED_SOURCES) libefivar.map
+ libefivar.so : LIBS=dl
+-libefivar.so : LDSCRIPTS=guids.lds
+ libefivar.so : MAP=libefivar.map
+ 
+ efivar : $(EFIVAR_OBJECTS) | libefivar.so
+@@ -137,7 +135,6 @@ deps : $(ALL_SOURCES)
+ clean : 
+ 	@rm -rfv *~ *.o *.a *.E *.so *.so.* *.pc *.bin .*.d *.map \
+ 		makeguids guid-symbols.c include/efivar/efivar-guids.h \
+-		guids.lds \
+ 		$(TARGETS) $(STATICTARGETS)
+ 	@# remove the deps files we used to create, as well.
+ 	@rm -rfv .*.P .*.h.P *.S.P include/efivar/.*.h.P
+diff --git a/src/include/rules.mk b/src/include/rules.mk
+index f309f863..8d0b68a2 100644
+--- a/src/include/rules.mk
++++ b/src/include/rules.mk
+@@ -3,7 +3,6 @@ default : all
+ .PHONY: default all clean install test
+ 
+ include $(TOPDIR)/src/include/version.mk
+-include $(TOPDIR)/src/include/workarounds.mk
+ 
+ comma:= ,
+ empty:=
+@@ -36,9 +35,7 @@ family = $(foreach FAMILY_SUFFIX,$(FAMILY_SUFFIXES),$($(1)_$(FAMILY_SUFFIX)))
+ 	$(CCLD) $(CCLDFLAGS) $(CPPFLAGS) -o $@ $(sort $^) $(LDLIBS)
+ 
+ %.so :
+-	$(CCLD) $(CCLDFLAGS) $(CPPFLAGS) $(SOFLAGS) \
+-		$(foreach LDS,$(LDSCRIPTS),$(LD_DASH_T) $(LDS)) \
+-		-o $@ $^ $(LDLIBS)
++	$(CCLD) $(CCLDFLAGS) $(CPPFLAGS) $(SOFLAGS) -o $@ $^ $(LDLIBS)
+ 	ln -vfs $@ $@.1
+ 
+ %.abixml : %.so
+diff --git a/src/include/workarounds.mk b/src/include/workarounds.mk
+deleted file mode 100644
+index 57394edd..00000000
+--- a/src/include/workarounds.mk
++++ /dev/null
+@@ -1,24 +0,0 @@
+-# SPDX-License-Identifier: SPDX-License-Identifier: LGPL-2.1-or-later
+-#
+-# workarounds.mk - workarounds for weird stuff behavior
+-
+-LD_FLAVOR := $(shell LC_ALL=C $(LD) --version | grep -E '^((.* )?LLD|GNU ld)'|sed 's/.* LLD/LLD/;s/ .*//g')
+-LD_VERSION := $(shell LC_ALL=C $(LD) --version | grep -E '^((.* )?LLD|GNU ld)'|sed 's/.* LLD/LLD/;s/.* //')
+-# 2.35 is definitely broken and 2.36 seems to work
+-LD_DASH_T := $(shell \
+-	if [ "x${LD_FLAVOR}" = xLLD ] ; then \
+-		echo "" ; \
+-	elif [ "x${LD_FLAVOR}" = xGNU ] ; then \
+-		if echo "${LD_VERSION}" | grep -q -E '^2\.3[6789]|^2\.[456789]|^[3456789]|^[[:digit:]][[:digit:]]' ; then \
+-			echo '-T' ; \
+-		else \
+-			echo "" ; \
+-		fi ; \
+-	else \
+-		echo "Your linker ${LD_FLAVOR} version ${LD_VERSION} is not supported" ; \
+-		exit 1 ; \
+-	fi)
+-
+-export LD_DASH_T
+-
+-# vim:ft=make
+diff --git a/src/makeguids.c b/src/makeguids.c
+index 376bffba..bfdee12e 100644
+--- a/src/makeguids.c
++++ b/src/makeguids.c
+@@ -107,51 +107,46 @@ write_guidnames(FILE *out, const char *listname,
+ 			gn->symbol, gn->name, gn->description);
+ 	}
+ 	fprintf(out, "};\n");
++        fprintf(out, "const struct efivar_guidname\n"
++			"\t__attribute__((__visibility__ (\"default\")))\n"
++			"\t* const %s = %s_;\n", listname, listname);
++        fprintf(out, "const struct efivar_guidname\n"
++			"\t__attribute__((__visibility__ (\"default\")))\n"
++                        "\t* const %s_end = %s_\n\t+ %zd;\n",
++                        listname, listname, n - 1);
+ }
+ 
+ int
+ main(int argc, char *argv[])
+ {
+ 	int rc;
+-	int argstart = 0;
+-	FILE *symout, *header, *ldsout;
+-	int dash_t = 0;
++	FILE *symout, *header;
+ 
+-	if (argc < 5) {
++	if (argc < 4) {
+ 		errx(1, "Not enough arguments.\n");
+-	} else if (argc > 5 && !strcmp(argv[1],"-T")) {
+-		argstart = 1;
+-		dash_t = 1;
+-	} else if (argc > 5) {
++	} else if (argc > 4) {
+ 		errx(1, "Too many arguments.\n");
+ 	}
+ 
+-	symout = fopen(argv[argstart + 2], "w");
++	symout = fopen(argv[2], "w");
+ 	if (symout == NULL)
+-		err(1, "could not open \"%s\"", argv[argstart + 2]);
+-	rc = chmod(argv[argstart + 2], 0644);
++		err(1, "could not open \"%s\"", argv[2]);
++	rc = chmod(argv[2], 0644);
+ 	if (rc < 0)
+-		warn("chmod(%s, 0644)", argv[argstart + 2]);
++		warn("chmod(%s, 0644)", argv[2]);
+ 
+-	header = fopen(argv[argstart + 3], "w");
++	header = fopen(argv[3], "w");
+ 	if (header == NULL)
+-		err(1, "could not open \"%s\"", argv[argstart + 3]);
+-	rc = chmod(argv[argstart + 3], 0644);
+-	if (rc < 0)
+-		warn("chmod(%s, 0644)", argv[argstart + 3]);
+-
+-	ldsout = fopen(argv[argstart + 4], "w");
+-	if (ldsout == NULL)
+-		err(1, "could not open \"%s\"", argv[argstart + 4]);
+-	rc = chmod(argv[argstart + 4], 0644);
++		err(1, "could not open \"%s\"", argv[3]);
++	rc = chmod(argv[3], 0644);
+ 	if (rc < 0)
+-		warn("chmod(%s, 0644)", argv[argstart + 4]);
++		warn("chmod(%s, 0644)", argv[3]);
+ 
+ 	struct guidname_index *guidnames = NULL;
+ 
+-	rc = read_guids_at(AT_FDCWD, argv[argstart + 1], &guidnames);
++	rc = read_guids_at(AT_FDCWD, argv[1], &guidnames);
+ 	if (rc < 0)
+-		err(1, "could not read \"%s\"", argv[argstart + 1]);
++		err(1, "could not read \"%s\"", argv[1]);
+ 
+ 	struct efivar_guidname *outbuf;
+ 
+@@ -243,12 +238,11 @@ struct efivar_guidname {\n\
+ 	fprintf(header,
+ 		"extern const struct efivar_guidname\n"
+ 			"\t__attribute__((__visibility__ (\"default\")))\n"
+-			"\tefi_well_known_guids[%d];\n",
+-		i);
++			"\t* const efi_well_known_guids;\n");
+ 	fprintf(header,
+ 		"extern const struct efivar_guidname\n"
+ 			"\t__attribute__((__visibility__ (\"default\")))\n"
+-			"\tefi_well_known_guids_end;\n");
++			"\t* const efi_well_known_guids_end;\n");
+ 	fprintf(header,
+ 		"extern const uint64_t\n"
+ 			"\t__attribute__((__visibility__ (\"default\")))\n"
+@@ -256,12 +250,11 @@ struct efivar_guidname {\n\
+ 	fprintf(header,
+ 		"extern const struct efivar_guidname\n"
+ 			"\t__attribute__((__visibility__ (\"default\")))\n"
+-			"\tefi_well_known_names[%d];\n",
+-		i);
++			"\t* const efi_well_known_names;\n");
+ 	fprintf(header,
+ 		"extern const struct efivar_guidname\n"
+ 			"\t__attribute__((__visibility__ (\"default\")))\n"
+-			"\tefi_well_known_names_end;\n");
++			"\t* const efi_well_known_names_end;\n");
+ 	fprintf(header,
+ 		"extern const uint64_t\n"
+ 			"\t__attribute__((__visibility__ (\"default\")))\n"
+@@ -310,23 +303,6 @@ struct efivar_guidname {\n\
+ 
+ 	fclose(symout);
+ 
+-	fprintf(ldsout,
+-		"SECTIONS\n"
+-		"{\n"
+-		"  .data :\n"
+-		"  {\n"
+-		"    efi_well_known_guids = efi_well_known_guids_;\n"
+-		"    efi_well_known_guids_end = efi_well_known_guids_ + %zd;\n"
+-		"    efi_well_known_names = efi_well_known_names_;\n"
+-		"    efi_well_known_names_end = efi_well_known_names_ + %zd;\n"
+-		"  }\n"
+-		"}%s;\n",
+-		(line - 1) * sizeof(struct efivar_guidname),
+-		(line - 1) * sizeof(struct efivar_guidname),
+-		dash_t ? " INSERT AFTER .data" : "");
+-
+-	fclose(ldsout);
+-
+ 	free(guidnames->strtab);
+ 	free(guidnames);
+ 

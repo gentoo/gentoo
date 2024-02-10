@@ -1,0 +1,85 @@
+From 26126dd1467fc40af372b9f2ba6ab167e5b9f309 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Mon, 28 Aug 2023 09:54:47 +0200
+Subject: [PATCH] extras: defer invoking of gluster volume set help as late as
+ we can.
+
+---
+ extras/command-completion/gluster.bash | 44 +++++++++++++++++++-------
+ 1 file changed, 32 insertions(+), 12 deletions(-)
+
+diff --git a/extras/command-completion/gluster.bash b/extras/command-completion/gluster.bash
+index 70f8e19558..a096b62890 100644
+--- a/extras/command-completion/gluster.bash
++++ b/extras/command-completion/gluster.bash
+@@ -1,15 +1,5 @@
+ #!/bin/bash
+ 
+-if pidof glusterd > /dev/null 2>&1; then
+-        GLUSTER_SET_OPTIONS="
+-        $(for token in `gluster volume set help 2>/dev/null | grep "^Option:" | cut -d ' ' -f 2`
+-        do
+-                echo "{$token},"
+-        done)
+-        "
+-        GLUSTER_RESET_OPTIONS="$GLUSTER_SET_OPTIONS"
+-fi
+-
+ GLUSTER_TOP_SUBOPTIONS1="
+         {nfs},
+         {brick},
+@@ -161,12 +151,14 @@ GLUSTER_VOLUME_OPTIONS="
+                 },
+                 {reset
+                         {__VOLNAME
+-                                [ $GLUSTER_RESET_OPTIONS ]
++                                {__VOLOPTIONS
++                                },
+                         }
+                 },
+                 {set
+                         {__VOLNAME
+-                                [ $GLUSTER_SET_OPTIONS ]
++                                {__VOLOPTIONS
++                                },
+                         }
+                 },
+                 {start
+@@ -280,6 +272,34 @@ __VOLNAME ()
+         return 0
+ }
+ 
++__VOLOPTIONS()
++{
++        local zero=0
++        local ret=0
++        local cur_word="$2"
++        local list=""
++
++        if [ "X$1" == "X" ]; then
++                return
++
++        elif [ "$1" == "match" ]; then
++                return 0
++
++        elif [ "$1" == "complete" ]; then
++                if ! pidof glusterd > /dev/null 2>&1; then
++                        list='';
++                else
++                        list=`gluster volume set help 2>/dev/null | grep "^Option:" | cut -d ' ' -f 2`
++                fi
++        else
++                return 0
++        fi
++
++        func_return=`echo $(compgen -W "$list" -- $cur_word)`
++
++        return 0
++}
++
+ _gluster_throw () {
+ #echo $1 >&2
+         COMPREPLY=''
+-- 
+2.41.0
+

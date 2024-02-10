@@ -1,0 +1,16 @@
+Prevent double-patching with GIT_CRATES usage.
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -96,12 +96,5 @@
+ 
+-[patch.crates-io]
+ # These are needed because https://github.com/gfx-rs/wgpu/pull/4778
+ # is not yet in the latest wgpu release. TODO: Remove when it is.
+-wgpu = { git = "https://github.com/gfx-rs/wgpu", branch = "v0.18" }
+-naga = { git = "https://github.com/gfx-rs/wgpu", branch = "v0.18" }
+ 
+ # https://github.com/emilk/egui/pull/3812
+-egui = { git = "https://github.com/ruffle-rs/egui", branch = "consume_keys"}
+-egui_extras = { git = "https://github.com/ruffle-rs/egui", branch = "consume_keys"}
+-egui-winit = { git = "https://github.com/ruffle-rs/egui", branch = "consume_keys"}
+-egui-wgpu = { git = "https://github.com/ruffle-rs/egui", branch = "consume_keys"}

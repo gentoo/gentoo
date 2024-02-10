@@ -1,0 +1,380 @@
+diff -ur Maelstrom-3.0.6-orig/controls.cpp Maelstrom-3.0.6/controls.cpp
+--- Maelstrom-3.0.6-orig/controls.cpp	2001-03-25 03:04:28 +0900
++++ Maelstrom-3.0.6/controls.cpp	2003-05-21 11:25:53 +0900
+@@ -83,7 +83,7 @@
+ 	if ( fname ) {
+ 		*fname = datafile;
+ 	}
+-	sprintf(datafile,  "%s"DIR_SEP"%s", home, MAELSTROM_DATA);
++	snprintf(datafile, sizeof(datafile), "%s"DIR_SEP"%s", home, MAELSTROM_DATA);
+ 	if ( (data=fopen(datafile, mode)) == NULL )
+ 		return(NULL);
+ 	return(data);
+diff -ur Maelstrom-3.0.6-orig/dialog.h Maelstrom-3.0.6/dialog.h
+--- Maelstrom-3.0.6-orig/dialog.h	2001-07-21 00:08:10 +0900
++++ Maelstrom-3.0.6/dialog.h	2003-05-21 11:24:33 +0900
+@@ -92,7 +92,7 @@
+ 		va_list ap;
+ 
+ 		va_start(ap, fmt);
+-		vsprintf(errbuf, fmt, ap);
++		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
+ 		va_end(ap);
+ 		errstr = errbuf;
+         }
+@@ -878,7 +878,7 @@
+ 		if ( entry->text ) {
+ 			Fontserv->FreeText(entry->text);
+ 		}
+-		sprintf(buf, "%d", *entry->variable);
++		snprintf(buf, sizeof(buf), "%d", *entry->variable);
+ 
+ 		if ( entry->hilite ) {
+ 			clear = Fg;
+diff -ur Maelstrom-3.0.6-orig/load.cpp Maelstrom-3.0.6/load.cpp
+--- Maelstrom-3.0.6-orig/load.cpp	2000-02-15 11:47:39 +0900
++++ Maelstrom-3.0.6/load.cpp	2003-05-21 11:26:18 +0900
+@@ -81,7 +81,7 @@
+ 	SDL_Surface *bmp, *title;
+ 	
+ 	/* Open the title file -- we know its colormap is our global one */
+-	sprintf(file, "Images"DIR_SEP"Maelstrom_Titles#%d.bmp", title_id);
++	snprintf(file, sizeof(file), "Images"DIR_SEP"Maelstrom_Titles#%d.bmp", title_id);
+ 	bmp = SDL_LoadBMP(path.Path(file));
+ 	if ( bmp == NULL ) {
+ 		return(NULL);
+@@ -103,7 +103,7 @@
+ 	Uint16 w, h;
+ 	
+ 	/* Open the cicn sprite file.. */
+-	sprintf(file, "Images"DIR_SEP"Maelstrom_Icon#%hd.cicn", cicn_id);
++	snprintf(file, sizeof(file), "Images"DIR_SEP"Maelstrom_Icon#%hd.cicn", cicn_id);
+ 	if ( (cicn_src=SDL_RWFromFile(path.Path(file), "r")) == NULL ) {
+ 		error("GetCIcon(%hd): Can't open CICN %s: ",
+ 					cicn_id, path.Path(file));
+diff -ur Maelstrom-3.0.6-orig/maclib/Mac_FontServ.h Maelstrom-3.0.6/maclib/Mac_FontServ.h
+--- Maelstrom-3.0.6-orig/maclib/Mac_FontServ.h	1999-12-03 02:15:33 +0900
++++ Maelstrom-3.0.6/maclib/Mac_FontServ.h	2003-05-21 11:28:43 +0900
+@@ -135,7 +135,7 @@
+ 		va_list ap;
+ 
+ 		va_start(ap, fmt);
+-		vsprintf(errbuf, fmt, ap);
++		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
+ 		va_end(ap);
+ 		errstr = errbuf;
+ 	}
+diff -ur Maelstrom-3.0.6-orig/maclib/Mac_Resource.h Maelstrom-3.0.6/maclib/Mac_Resource.h
+--- Maelstrom-3.0.6-orig/maclib/Mac_Resource.h	1999-12-04 03:01:47 +0900
++++ Maelstrom-3.0.6/maclib/Mac_Resource.h	2003-05-21 11:28:35 +0900
+@@ -96,7 +96,7 @@
+ 		va_list ap;
+ 
+ 		va_start(ap, fmt);
+-		vsprintf(errbuf, fmt, ap);
++		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
+ 		va_end(ap);
+ 		errstr = errbuf;
+ 	}
+diff -ur Maelstrom-3.0.6-orig/maclib/Mac_Sound.h Maelstrom-3.0.6/maclib/Mac_Sound.h
+--- Maelstrom-3.0.6-orig/maclib/Mac_Sound.h	2002-10-20 11:53:34 +0900
++++ Maelstrom-3.0.6/maclib/Mac_Sound.h	2003-05-21 11:28:27 +0900
+@@ -199,7 +199,7 @@
+ 		va_list ap;
+ 
+ 		va_start(ap, fmt);
+-		vsprintf(errbuf, fmt, ap);
++		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
+ 		va_end(ap);
+ 		errstr = errbuf;
+ 	}
+diff -ur Maelstrom-3.0.6-orig/maclib/Mac_Wave.h Maelstrom-3.0.6/maclib/Mac_Wave.h
+--- Maelstrom-3.0.6-orig/maclib/Mac_Wave.h	2000-01-26 01:44:10 +0900
++++ Maelstrom-3.0.6/maclib/Mac_Wave.h	2003-05-21 11:28:20 +0900
+@@ -108,7 +108,7 @@
+ 		va_list ap;
+ 
+ 		va_start(ap, fmt);
+-		vsprintf(errbuf, fmt, ap);
++		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
+ 		va_end(ap);
+ 		errstr = errbuf;
+ 	}
+diff -ur Maelstrom-3.0.6-orig/maclib/macres.cpp Maelstrom-3.0.6/maclib/macres.cpp
+--- Maelstrom-3.0.6-orig/maclib/macres.cpp	2000-01-26 01:44:20 +0900
++++ Maelstrom-3.0.6/maclib/macres.cpp	2003-05-21 11:30:01 +0900
+@@ -58,8 +58,8 @@
+ 				ids[j], res->ResourceName(types[i], ids[j]));
+ 			if ( argv[2] ) {
+ 				char path[23];
+-				sprintf(path,"%s/%s:%hu", argv[2],
+-							types[i], ids[j]);
++				snprintf(path, sizeof(path), "%s/%s:%hu",
++					 argv[2], types[i], ids[j]);
+ 				FILE *output;
+ 				Mac_ResData *D;
+             			if ( (output=fopen(path, "w")) != NULL ) {
+diff -ur Maelstrom-3.0.6-orig/maclib/snd2wav.cpp Maelstrom-3.0.6/maclib/snd2wav.cpp
+--- Maelstrom-3.0.6-orig/maclib/snd2wav.cpp	2001-03-28 12:54:50 +0900
++++ Maelstrom-3.0.6/maclib/snd2wav.cpp	2003-05-21 11:29:23 +0900
+@@ -82,7 +82,7 @@
+ 			continue;
+ 		}
+ 		wave.Load(snd, rate);
+-		sprintf(wavname, "snd_%d.wav", ids[i]);
++		snprintf(wavname, sizeof(wavname), "snd_%d.wav", ids[i]);
+ 		wave.Save(wavname);
+ 	}
+ 	delete macx;
+diff -ur Maelstrom-3.0.6-orig/main.cpp Maelstrom-3.0.6/main.cpp
+--- Maelstrom-3.0.6-orig/main.cpp	2002-10-20 11:53:32 +0900
++++ Maelstrom-3.0.6/main.cpp	2003-05-21 11:27:02 +0900
+@@ -445,7 +445,7 @@
+ 		DrawText(xOff+309-7, yOff+240-6, text, geneva, STYLE_BOLD,
+ 							0x00, 0x00, 0x00);
+ 	}
+-	sprintf(text, "%d", gSoundLevel);
++	snprintf(text, sizeof(text), "%d", gSoundLevel);
+ 	DrawText(xOff+309-7, yOff+240-6, text, geneva, STYLE_BOLD,
+ 						30000>>8, 30000>>8, 0xFF);
+ 	screen->Update();
+@@ -547,11 +547,11 @@
+ 		}
+ 		DrawText(xOff+5, botDiv+42+(index*18), hScores[index].name,
+ 						font, STYLE_BOLD, R, G, B);
+-		sprintf(buffer, "%u", hScores[index].score);
++		snprintf(buffer, sizeof(buffer), "%u", hScores[index].score);
+ 		sw = fontserv->TextWidth(buffer, font, STYLE_BOLD);
+ 		DrawText(sRt-sw, botDiv+42+(index*18), buffer, 
+ 						font, STYLE_BOLD, R, G, B);
+-		sprintf(buffer, "%u", hScores[index].wave);
++		snprintf(buffer, sizeof(buffer), "%u", hScores[index].wave);
+ 		sw = fontserv->TextWidth(buffer, font, STYLE_BOLD);
+ 		DrawText(wRt-sw, botDiv+42+(index*18), buffer, 
+ 						font, STYLE_BOLD, R, G, B);
+@@ -560,7 +560,7 @@
+ 
+ 	DrawText(xOff+5, botDiv+46+(10*18)+3, "Last Score: ", 
+ 					bigfont, STYLE_NORM, 0xFF, 0xFF, 0xFF);
+-	sprintf(buffer, "%d", GetScore());
++	snprintf(buffer, sizeof(buffer), "%d", GetScore());
+ 	sw = fontserv->TextWidth("Last Score: ", bigfont, STYLE_NORM);
+ 	DrawText(xOff+5+sw, botDiv+46+(index*18)+3, buffer, 
+ 					bigfont, STYLE_NORM, 0xFF, 0xFF, 0xFF);
+diff -ur Maelstrom-3.0.6-orig/myerror.cpp Maelstrom-3.0.6/myerror.cpp
+--- Maelstrom-3.0.6-orig/myerror.cpp	1998-07-14 10:50:17 +0900
++++ Maelstrom-3.0.6/myerror.cpp	2003-05-21 11:23:33 +0900
+@@ -16,7 +16,7 @@
+ 	va_list ap;
+ 
+ 	va_start(ap, fmt);
+-	vsprintf(mesg, fmt, ap);
++	vsnprintf(mesg, sizeof(mesg), fmt, ap);
+ 	fputs(mesg, stderr);
+ 	va_end(ap);
+ }
+@@ -27,7 +27,7 @@
+ 	va_list ap;
+ 
+ 	va_start(ap, fmt);
+-	vsprintf(mesg, fmt, ap);
++	vsnprintf(mesg, sizeof(mesg), fmt, ap);
+ 	fputs(mesg, stdout);
+ 	va_end(ap);
+ }
+@@ -37,7 +37,7 @@
+ 	char buffer[BUFSIZ];
+ 
+ 	if ( *msg ) {
+-		sprintf(buffer, "%s: %s\n", msg, strerror(errno));
++		snprintf(buffer, sizeof(buffer), "%s: %s\n", msg, strerror(errno));
+ 		error(buffer);
+ 	} else
+ 		error((char *)strerror(errno));
+diff -ur Maelstrom-3.0.6-orig/netlogic/game.cpp Maelstrom-3.0.6/netlogic/game.cpp
+--- Maelstrom-3.0.6-orig/netlogic/game.cpp	2001-07-23 11:24:03 +0900
++++ Maelstrom-3.0.6/netlogic/game.cpp	2003-05-21 11:33:19 +0900
+@@ -232,7 +232,7 @@
+ 
+ 			lastDisplayed = gDisplayed;
+ 			screen->FillRect(0, 0, SCREEN_WIDTH, 12, ourBlack);
+-			sprintf(caption,
++			snprintf(caption, sizeof(caption),
+ 				"You are player %d --- displaying player %d",
+ 						gOurPlayer+1, gDisplayed+1);
+ 			DrawText(SPRITES_WIDTH, 11, caption, geneva,
+@@ -357,7 +357,7 @@
+ 				/* -- Erase old and draw new score */
+ 				screen->FillRect(45, gStatusLine+1,
+ 					score_width, text_height, ourBlack);
+-				sprintf(numbuf, "%d", Score);
++				snprintf(numbuf, sizeof(numbuf), "%d", Score);
+ 				score_width = DrawText(45, gStatusLine+11, 
+ 						numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+@@ -380,7 +380,7 @@
+ 		if (lastWave != gWave) {
+ 			screen->FillRect(255, gStatusLine+1,
+ 					wave_width, text_height, ourBlack);
+-			sprintf(numbuf, "%d", gWave);
++			snprintf(numbuf, sizeof(numbuf), "%d", gWave);
+ 			wave_width = DrawText(255, gStatusLine+11, 
+ 					numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+@@ -391,7 +391,7 @@
+ 		if (lastLives != Lives) {
+ 			screen->FillRect(319, gStatusLine+1,
+ 					lives_width, text_height, ourBlack);
+-			sprintf(numbuf, "%-3.1d", Lives);
++			snprintf(numbuf, sizeof(numbuf), "%-3.1d", Lives);
+ 			lives_width = DrawText(319, gStatusLine+11,
+ 					numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+@@ -402,7 +402,7 @@
+ 		if (lastBonus != Bonus) {
+ 			screen->FillRect(384, gStatusLine+1,
+ 					bonus_width, text_height, ourBlack);
+-			sprintf(numbuf, "%-7.1d", Bonus);
++			snprintf(numbuf, sizeof(numbuf), "%-7.1d", Bonus);
+ 			bonus_width = DrawText(384, gStatusLine+11,
+ 					numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+@@ -414,7 +414,7 @@
+ 			if (lastFrags != Frags) {
+ 				screen->FillRect(fragoff, gStatusLine+1,
+ 					frags_width, text_height, ourBlack);
+-				sprintf(numbuf, "%-3.1d", Frags);
++				snprintf(numbuf, sizeof(numbuf), "%-3.1d", Frags);
+ 				frags_width = DrawText(fragoff, gStatusLine+11,
+ 						numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+@@ -747,10 +747,11 @@
+ 		for ( i=0; i<gNumPlayers; ++i ) {
+ 			char buffer[BUFSIZ], num1[12], num2[12];
+ 
+-			sprintf(num1, "%7.1d", final[i].Score);
+-			sprintf(num2, "%3.1d", final[i].Frags);
+-			sprintf(buffer, "Player %d: %-.7s Points, %-.3s Frags",
+-						final[i].Player, num1, num2);
++			snprintf(num1, sizeof(num1), "%7.1d", final[i].Score);
++			snprintf(num2, sizeof(num2), "%3.1d", final[i].Frags);
++			snprintf(buffer, sizeof(buffer),
++				 "Player %d: %-.7s Points, %-.3s Frags",
++				 final[i].Player, num1, num2);
+ 			DrawText(160, 380+i*newyork_height, buffer,
+ 				newyork, STYLE_NORM, 30000>>8, 30000>>8, 0xFF);
+ 		}
+@@ -898,7 +899,7 @@
+ 	
+ 
+ 	/* -- Draw the wave completed message */
+-	sprintf(numbuf, "Wave %d completed.", gWave);
++	snprintf(numbuf, sizeof(numbuf), "Wave %d completed.", gWave);
+ 	sw = fontserv->TextWidth(numbuf, geneva, STYLE_BOLD);
+ 	x = (SCREEN_WIDTH - sw) / 2;
+ 	DrawText(x,  150, numbuf, geneva, STYLE_BOLD, 0xFF, 0xFF, 0x00);
+@@ -935,7 +936,7 @@
+ 		if (OurShip->GetBonusMult() != 1) {
+ 			SDL_Surface *sprite;
+ 
+-			sprintf(numbuf, "%-5.1d", OurShip->GetBonus());
++			snprintf(numbuf, sizeof(numbuf), "%-5.1d", OurShip->GetBonus());
+ 			DrawText(x, 200, numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+ 			x += 75;
+@@ -951,10 +952,10 @@
+ 	Delay(SOUND_DELAY);
+ 	sound->PlaySound(gFunk, 5);
+ 
+-	sprintf(numbuf, "%-5.1d", OurShip->GetBonus());
++	snprintf(numbuf, sizeof(numbuf), "%-5.1d", OurShip->GetBonus());
+ 	bonus_width = DrawText(x, 200, numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+-	sprintf(numbuf, "%-5.1d", OurShip->GetScore());
++	snprintf(numbuf, sizeof(numbuf), "%-5.1d", OurShip->GetScore());
+ 	score_width = DrawText(xt, 220, numbuf, geneva, STYLE_BOLD,
+ 							0xFF, 0xFF, 0xFF);
+ 	screen->Update();
+@@ -997,12 +998,12 @@
+ 	
+ 			screen->FillRect(x, 200-text_height+2,
+ 					bonus_width, text_height, ourBlack);
+-			sprintf(numbuf, "%-5.1d", OurShip->GetBonus());
++			snprintf(numbuf, sizeof(numbuf), "%-5.1d", OurShip->GetBonus());
+ 			bonus_width = DrawText(x, 200, numbuf,
+ 					geneva, STYLE_BOLD, 0xFF, 0xFF, 0xFF);
+ 			screen->FillRect(xt, 220-text_height+2,
+ 					score_width, text_height, ourBlack);
+-			sprintf(numbuf, "%-5.1d", OurShip->GetScore());
++			snprintf(numbuf, sizeof(numbuf), "%-5.1d", OurShip->GetScore());
+ 			score_width = DrawText(xt, 220, numbuf,
+ 					geneva, STYLE_BOLD, 0xFF, 0xFF, 0xFF);
+ 
+@@ -1015,7 +1016,7 @@
+ 	HandleEvents(10);
+ 
+ 	/* -- Draw the "next wave" message */
+-	sprintf(numbuf, "Prepare for Wave %d...", gWave+1);
++	snprintf(numbuf, sizeof(numbuf), "Prepare for Wave %d...", gWave+1);
+ 	sw = fontserv->TextWidth(numbuf, geneva, STYLE_BOLD);
+ 	x = (SCREEN_WIDTH - sw)/2;
+ 	DrawText(x, 259, numbuf, geneva, STYLE_BOLD, 0xFF, 0xFF, 0x00);
+diff -ur Maelstrom-3.0.6-orig/netlogic/netplay.cpp Maelstrom-3.0.6/netlogic/netplay.cpp
+--- Maelstrom-3.0.6-orig/netlogic/netplay.cpp	2002-10-20 13:11:52 +0900
++++ Maelstrom-3.0.6/netlogic/netplay.cpp	2003-05-21 11:31:43 +0900
+@@ -670,7 +670,9 @@
+ 		strcpy(message, "Waiting for players:");
+ 		for ( i=0; i<gNumPlayers; ++i ) {
+ 			if ( ! acked[i] )
+-				sprintf(&message[strlen(message)], " %d", i+1);
++				snprintf(&message[strlen(message)],
++					 sizeof(message)-strlen(message),
++					 " %d", i+1);
+ 		}
+ 		Message(message);
+ 
+@@ -725,7 +727,7 @@
+ 			/* Check the player... */
+ 			if ( (i != gOurPlayer) && (netbuf[1] == gOurPlayer) ) {
+ 				/* Print message, sleep 3 seconds absolutely */
+-				sprintf(message, 
++			  snprintf(message, sizeof(message),
+ 	"Error: Another player (%d) thinks they are player 1!\r\n", i+1);
+ 				ErrorMessage(message);
+ 				/* Suck up retransmission packets */
+diff -ur Maelstrom-3.0.6-orig/netscore.cpp Maelstrom-3.0.6/netscore.cpp
+--- Maelstrom-3.0.6-orig/netscore.cpp	2001-07-23 12:25:17 +0900
++++ Maelstrom-3.0.6/netscore.cpp	2003-05-21 11:27:18 +0900
+@@ -59,7 +59,7 @@
+ 
+ 	/* Send the scores */
+ 	crc = get_checksum(key, KEY_LEN);
+-	sprintf(netbuf, SCOREFMT, crc, high.name, high.score, high.wave);
++	snprintf(netbuf, sizeof(netbuf), SCOREFMT, crc, high.name, high.score, high.wave);
+ 	SDLNet_TCP_Send(remote, netbuf, strlen(netbuf));
+ 	n = SDLNet_TCP_Recv(remote, netbuf, 1024);
+ 	if ( n > 0 ) {
+diff -ur Maelstrom-3.0.6-orig/screenlib/SDL_FrameBuf.cpp Maelstrom-3.0.6/screenlib/SDL_FrameBuf.cpp
+--- Maelstrom-3.0.6-orig/screenlib/SDL_FrameBuf.cpp	2001-07-23 06:03:13 +0900
++++ Maelstrom-3.0.6/screenlib/SDL_FrameBuf.cpp	2003-05-21 11:31:01 +0900
+@@ -628,7 +628,7 @@
+ 
+ 		found = 0;
+ 		for ( which=0; !found; ++which ) {
+-			sprintf(file, "%s%d.bmp", prefix, which);
++			snprintf(file, sizeof(file), "%s%d.bmp", prefix, which);
+ 			if ( ((fp=fopen(file, "r")) == NULL) &&
+ 			     ((fp=fopen(file, "w")) != NULL) ) {
+ 				found = 1;
+diff -ur Maelstrom-3.0.6-orig/screenlib/SDL_FrameBuf.h Maelstrom-3.0.6/screenlib/SDL_FrameBuf.h
+--- Maelstrom-3.0.6-orig/screenlib/SDL_FrameBuf.h	2000-09-25 02:55:39 +0900
++++ Maelstrom-3.0.6/screenlib/SDL_FrameBuf.h	2003-05-21 11:27:41 +0900
+@@ -165,7 +165,7 @@
+ 		va_list ap;
+ 
+ 		va_start(ap, fmt);
+-		vsprintf(errbuf, fmt, ap);
++		vsnprintf(errbuf, sizeof(errbuf), fmt, ap);
+ 		va_end(ap);
+ 		errstr = errbuf;
+         }

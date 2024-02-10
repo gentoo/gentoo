@@ -1,0 +1,29 @@
+From 4363dd75d5df8c85869f0f6f5d3a22d561cff7e0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 17:28:49 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+Bug: https://bugs.gentoo.org/874957
+--- a/MultiMouse/daemon.c
++++ b/MultiMouse/daemon.c
+@@ -78,6 +78,7 @@ int MakeMeDaemon()
+     setsid();
+     close(fileno(stderr));
+     kill(parent, SIGTERM);
++    return 0;
+ }
+ 
+ void SetSignals()
+--- a/MultiMouse/main.c
++++ b/MultiMouse/main.c
+@@ -30,6 +30,10 @@
+ 
+ #include "mumse.h"
+ 
++int MakeMeDaemon(void);
++void SetSignals(void);
++void Selection(int numMouse);
++
+ static
+ void InitMouse(int mfd, u_short baud, u_short cflag)
+ {

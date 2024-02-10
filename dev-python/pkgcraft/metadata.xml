@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">pkgcraft/pkgcraft-python</remote-id>
+		<remote-id type="pypi">pkgcraft</remote-id>
+	</upstream>
+</pkgmetadata>

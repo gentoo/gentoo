@@ -1,0 +1,65 @@
+http://bugs.gentoo.org/show_bug.cgi?id=165638
+http://bugzilla.padl.com/show_bug.cgi?id=308
+
+Make nss_ldap compile with gssapi/gssapi.h even if there is no
+gssapi/gssapi_krb5.h present. This seems to be needed to compile against
+heimdal. Extended header checks and modified preprocessor logic a bit.
+
+2007-02-07 Martin von Gagern <Martin.vGagern@gmx.net>
+
+diff -ruN nss_ldap-257.2.orig/config.h.in nss_ldap-257.2/config.h.in
+--- nss_ldap-257.2.orig/config.h.in	2007-10-24 14:22:55.000000000 +0200
++++ nss_ldap-257.2/config.h.in	2007-10-24 14:25:15.000000000 +0200
+@@ -87,6 +87,9 @@
+ /* Define to 1 if you have the <gssapi/gssapi_krb5.h> header file. */
+ #undef HAVE_GSSAPI_GSSAPI_KRB5_H
+ 
++/* Define to 1 if you have the <gssapi/gssapi.h> header file. */
++#undef HAVE_GSSAPI_GSSAPI_H
++
+ /* Define to 1 if you have the <gssapi.h> header file. */
+ #undef HAVE_GSSAPI_H
+ 
+diff -ruN nss_ldap-257.2.orig/configure nss_ldap-257.2/configure
+--- nss_ldap-257.2.orig/configure	2007-10-24 14:22:55.000000000 +0200
++++ nss_ldap-257.2/configure	2007-10-24 14:25:49.000000000 +0200
+@@ -8409,7 +8409,7 @@
+ 
+ 
+ 
+-for ac_header in gssapi/gssapi_krb5.h gssapi.h
++for ac_header in gssapi/gssapi_krb5.h gssapi/gssapi.h gssapi.h
+ do
+ as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ if eval "test \"\${$as_ac_Header+set}\" = set"; then
+diff -ruN nss_ldap-257.2.orig/configure.in nss_ldap-257.2/configure.in
+--- nss_ldap-257.2.orig/configure.in	2007-10-24 14:22:55.000000000 +0200
++++ nss_ldap-257.2/configure.in	2007-10-24 14:26:26.000000000 +0200
+@@ -182,7 +182,7 @@
+ AC_CHECK_HEADERS(strings.h)
+ AC_CHECK_HEADERS(gssldap.h)
+ AC_CHECK_HEADERS(gsssasl.h)
+-AC_CHECK_HEADERS(gssapi/gssapi_krb5.h gssapi.h)
++AC_CHECK_HEADERS(gssapi/gssapi_krb5.h gssapi/gssapi.h gssapi.h)
+ AC_CHECK_HEADERS(krb5.h)
+ 
+ AC_CHECK_LIB(resolv, main)
+diff -ruN nss_ldap-257.2.orig/ldap-nss.c nss_ldap-257.2/ldap-nss.c
+--- nss_ldap-257.2.orig/ldap-nss.c	2007-10-24 14:22:55.000000000 +0200
++++ nss_ldap-257.2/ldap-nss.c	2007-10-24 14:27:32.000000000 +0200
+@@ -82,10 +82,14 @@
+ #endif
+ #ifdef HAVE_GSSAPI_H
+ #include <gssapi.h>
+-#elif defined(HAVE_GSSAPI_GSSAPI_KRB5_H)
++#else
++#ifdef HAVE_GSSAPI_GSSAPI_H
+ #include <gssapi/gssapi.h>
++#endif
++#ifdef HAVE_GSSAPI_GSSAPI_KRB5_H
+ #include <gssapi/gssapi_krb5.h>
+ #endif
++#endif
+ #ifdef CONFIGURE_KRB5_CCNAME
+ #include <krb5.h>
+ #endif

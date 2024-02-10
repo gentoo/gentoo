@@ -1,0 +1,60 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev (2022-02-16)
+# dev-python/networkx is keyworded here
+app-portage/nattka -depgraph-order
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps not keyworded
+media-gfx/gnome-photos upnp-av
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps not keyworded
+gnome-base/gnome-extra-apps share
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# keyworded and works on ppc64
+gnome-base/gnome -classic -extras
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
+# deps not keyworded
+net-analyzer/netdata mongodb
+
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-util/perf clang
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-19)
+# dev-java/openjdk:11 is not keyworded
+>=app-office/libreoffice-7 java
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
+# Problems even on ppc64le, needs more work
+dev-lang/spidermonkey clang
+mail-client/thunderbird clang
+
+# James Le Cuirot <chewi@gentoo.org> (2020-04-23)
+# Requires media-libs/mesa[llvm], which is masked.
+dev-python/pyopengl test
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-01)
+# luajit not keyworded on ppc64, #696222
+dev-libs/efl lua_single_target_luajit
+
+# Brian Evans <grknight@gentoo.org> (2015-11-23)
+# unmask galera for dev-db/mariadb
+>=dev-db/mariadb-10.1.0 -galera
+
+# Brent Baude <ranger@gentoo.org> (2010-01-06)
+# masking toolame for mplayer bug 280281
+media-video/mplayer toolame
+
+# Brent Baude <ranger@gentoo.org> (2009-12-31)
+# Masking for bug 274847
+app-admin/conky apcupsd

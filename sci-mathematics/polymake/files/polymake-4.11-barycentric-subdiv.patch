@@ -1,0 +1,23 @@
+commit d55dc6bd7f2da9245884f86706cb96e2d11fa83a
+Author: Benjamin Lorenz <lorenz@math.tu-berlin.de>
+Date:   Tue Nov 7 16:49:33 2023 +0100
+
+    barycentric_subdivision: dont call back on empty strings
+    
+    thanks jamesjer
+    
+    @Jenkins: merge
+
+diff --git a/apps/topaz/src/barycentric_subdivision.cc b/apps/topaz/src/barycentric_subdivision.cc
+index 753afb4040..e2d4130bc3 100644
+--- a/apps/topaz/src/barycentric_subdivision.cc
++++ b/apps/topaz/src/barycentric_subdivision.cc
+@@ -139,7 +139,7 @@ bs_data2Object(const bool realize,
+    else
+       desc << k << "th ";
+    desc << "barycentric subdivision of " << description;
+-   if (description.back() != '\n')
++   if (description.empty() || description.back() != '\n')
+       desc << endl;
+    p_out.set_description() << desc.str();
+    return p_out;

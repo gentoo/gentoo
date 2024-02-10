@@ -1,0 +1,19 @@
+diff --git a/util/fluxbox-generate_menu.in b/util/fluxbox-generate_menu.in
+index aca8b08..b229046 100755
+--- a/util/fluxbox-generate_menu.in
++++ b/util/fluxbox-generate_menu.in
+@@ -1794,12 +1794,8 @@ fi
+ append_submenu "${FBSETTINGSMENU}"
+     append "[config] (${CONFIGUREMENU})"
+ 
+-    append_menu "[submenu] (${SYSTEMSTYLES}) {${STYLEMENUTITLE}}"
+-        append "[stylesdir] (${PREFIX}/share/fluxbox/styles)"
+-    append_menu_end
+-
+-    append_menu "[submenu] (${USERSTYLES}) {${STYLEMENUTITLE}}"
+-        append "[stylesdir] (~/.@pkgprefix@fluxbox@pkgsuffix@/styles)"
++    append_submenu "Styles"
++        append "[include] (@GENTOO_PORTAGE_EPREFIX@/usr/share/fluxbox/menu.d/styles/)"
+     append_menu_end
+ 
+     # Backgroundmenu

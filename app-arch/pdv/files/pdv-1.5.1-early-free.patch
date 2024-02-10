@@ -1,0 +1,21 @@
+diff -ur pdv-1.5.1-orig/mkpkgutils.c pdv-1.5.1/mkpkgutils.c
+--- pdv-1.5.1-orig/mkpkgutils.c	2005-04-26 15:01:30.525131384 -0700
++++ pdv-1.5.1/mkpkgutils.c	2005-04-26 15:55:19.004327944 -0700
+@@ -114,8 +114,6 @@
+ 	if(access(fn_tst, R_OK) == 0)
+ 		fn = strdup(fn_tst);
+ 
+-	free(fn_tst);
+-
+ 	/* if we could not find it then try the search path
+ 	   including the current directory as a last resort */
+ 
+@@ -144,6 +142,8 @@
+ 		free(path);
+ 	} /* if(fn == NULL) */
+ 
++	free(fn_tst);
++
+ 	return fn;
+ } /* findpdv */
+ 

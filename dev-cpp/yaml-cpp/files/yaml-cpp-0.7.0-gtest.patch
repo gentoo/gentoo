@@ -1,0 +1,33 @@
+From 30fbefe6102da12e8d4d132aa4af2e24bfda9bfb Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 17 Sep 2022 12:25:24 +0300
+Subject: [PATCH] Use external gtest dependency
+
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,15 +1,10 @@
+ find_package(Threads REQUIRED)
++find_package(GTest REQUIRED CONFIG)
+ 
+ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+ set(BUILD_MOCK ON CACHE BOOL "" FORCE)
+ set(CMAKE_POLICY_DEFAULT_CMP0048 NEW)
+ 
+-add_subdirectory(
+-  "${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.10.0"
+-  "${CMAKE_CURRENT_BINARY_DIR}/prefix")
+-
+-include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/gtest-1.10.0/googletest/include")
+-
+ set(test-new-api-pattern "new-api/*.cpp")
+ set(test-source-pattern "*.cpp" "integration/*.cpp" "node/*.cpp")
+ if (CMAKE_VERSION VERSION_GREATER 3.11)
+@@ -38,7 +33,7 @@ target_link_libraries(yaml-cpp-tests
+   PRIVATE
+     Threads::Threads
+     yaml-cpp
+-    gmock)
++    GTest::gmock)
+ 
+ set_property(TARGET yaml-cpp-tests PROPERTY CXX_STANDARD_REQUIRED ON)
+ if (NOT DEFINED CMAKE_CXX_STANDARD)

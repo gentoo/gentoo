@@ -1,0 +1,44 @@
+
+
+Bug: https://bugs.gentoo.org/895868
+Source: https://github.com/falcosecurity/libs/commit/b8ec3e8637c850066d01543616fe413e8deb9e1f
+
+From b8ec3e8637c850066d01543616fe413e8deb9e1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Tue, 21 Feb 2023 22:08:23 +0100
+Subject: [PATCH] fix(driver): fix build on linux-6.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Attributes in "struct device*" are now const, so add a matching prototype
+for ppm_devnode().
+
+Fixes #918
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ driver/main.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/driver/main.c b/driver/main.c
+index 197933b9ce..6dc3374fc1 100644
+--- a/driver/main.c
++++ b/driver/main.c
+@@ -2662,11 +2662,15 @@ static int get_tracepoint_handles(void)
+ #endif
+ 
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 20)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 2, 0)
++static char *ppm_devnode(const struct device *dev, umode_t *mode)
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 3, 0)
+ static char *ppm_devnode(struct device *dev, umode_t *mode)
+ #else
+ static char *ppm_devnode(struct device *dev, mode_t *mode)
+-#endif
++#endif /* LINUX_VERSION_CODE > KERNEL_VERSION(3, 3, 0) */
++#endif /* LINUX_VERSION_CODE > KERNEL_VERSION(6, 2, 0) */
+ {
+ 	if (mode) {
+ 		*mode = 0400;

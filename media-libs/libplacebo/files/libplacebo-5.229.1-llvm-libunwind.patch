@@ -1,0 +1,9 @@
+llvm-libunwind does not have cmake nor pkg-config files, not great
+but switch to cc.find for simplicity with meson feature-type options
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -1,3 +1,3 @@
+ ### Common dependencies
+-unwind = dependency('libunwind', required: get_option('unwind'))
++unwind = cc.find_library('libunwind', required: get_option('unwind'))
+ libexecinfo = cc.find_library('execinfo', required: false)

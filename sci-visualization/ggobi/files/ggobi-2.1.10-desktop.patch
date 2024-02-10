@@ -1,0 +1,11 @@
+--- a/xdg/ggobi.desktop
++++ b/xdg/ggobi.desktop
+@@ -6,6 +6,6 @@
+ Comment=Multivariate interactive graphics for exploratory data analysis
+ TryExec=ggobi
+ Exec=ggobi
+-Icon=ggobi.png
+-Categories=Graphics;2DGraphics
++Icon=ggobi
++Categories=Graphics;2DGraphics;
+ MimeType=text/comma-separated-values;text/csv;application/csv;

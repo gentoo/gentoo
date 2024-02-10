@@ -1,0 +1,3 @@
+SEARCH_DIRS_MASK="@GENTOO_PORTAGE_EPREFIX@/usr/lib/libreoffice
+@GENTOO_PORTAGE_EPREFIX@/usr/lib32/libreoffice
+@GENTOO_PORTAGE_EPREFIX@/usr/lib64/libreoffice"

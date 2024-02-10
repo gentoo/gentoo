@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <longdescription>
+    Performant priority queue in pure ruby with support for changing priority using pairing heap data structure
+  </longdescription>
+  <upstream>
+    <remote-id type="github">mhib/pairing_heap</remote-id>
+  </upstream>
+</pkgmetadata>

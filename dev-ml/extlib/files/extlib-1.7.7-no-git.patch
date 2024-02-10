@@ -1,0 +1,9 @@
+--- ocaml-extlib-1.7.7-orig/Makefile	2020-04-25 07:55:13.000000000 +1000
++++ ocaml-extlib-1.7.7/Makefile	2020-09-26 07:17:42.141178856 +1000
+@@ -1,5 +1,5 @@
+ 
+-VERSION:=$(shell git --git-dir=.git describe --always --long)
++VERSION:=1.7.7-0-gbd9f453
+ RELEASE:=1.7.7
+ 
+ ifndef VERSION

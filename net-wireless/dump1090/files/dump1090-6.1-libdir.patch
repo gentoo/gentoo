@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index d4a5ff6..5d69505 100644
+--- a/Makefile
++++ b/Makefile
+@@ -99,9 +99,9 @@ ifeq ($(RTLSDR), yes)
+   ifdef RTLSDR_PREFIX
+     CPPFLAGS += -I$(RTLSDR_PREFIX)/include
+     ifeq ($(STATIC), yes)
+-      LIBS_SDR += -L$(RTLSDR_PREFIX)/lib -Wl,-Bstatic -lrtlsdr -Wl,-Bdynamic $(LIBS_USB)
++      LIBS_SDR += -Wl,-Bstatic -lrtlsdr -Wl,-Bdynamic $(LIBS_USB)
+     else
+-      LIBS_SDR += -L$(RTLSDR_PREFIX)/lib -lrtlsdr $(LIBS_USB)
++      LIBS_SDR += -lrtlsdr $(LIBS_USB)
+     endif
+   else
+     # some packaged .pc files are massively broken, try to handle it

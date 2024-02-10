@@ -1,0 +1,25 @@
+From e155e6e70ce7a6c52837688b570e8020faac5496 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 8 Sep 2018 18:58:42 +0200
+Subject: [PATCH] Fix WebEngine cache directory path
+
+Otherwise the URL is treated as a path, which results in a folder "file:" in ~.
+---
+ src/browser-request.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/browser-request.cpp b/src/browser-request.cpp
+index 146bec8..1895d59 100644
+--- a/src/browser-request.cpp
++++ b/src/browser-request.cpp
+@@ -132,7 +132,7 @@ void BrowserRequestPrivate::start()
+ 
+     m_dialog->rootContext()->setContextProperty("request", this);
+     m_dialog->rootContext()->setContextProperty("rootDir",
+-                                                QUrl::fromLocalFile(rootDir.absolutePath()));
++                                                rootDir.absolutePath());
+     m_dialog->setSource(webview);
+ }
+ 
+-- 
+2.18.0

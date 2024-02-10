@@ -1,0 +1,107 @@
+From b8e4f29db4b46614e7f21515ba439eab3c0698b1 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 13 Jun 2023 10:43:46 +0000
+Subject: [PATCH 2/2] cec.c: Including select.h and time.h
+
+According to POSIX.1-2001 sys/select.h should be included for usage of
+identifier fd_set
+
+For using structure timeval sys/time.h is needed.
+
+Without the aforementioned includes, I'm getting the following error:
+cec.c:311:3: warning: switch condition has boolean value [-Wswitch-bool]
+                switch (sh == tab) {
+                ^       ~~~~~~~~~
+cec.c:515:2: error: use of undeclared identifier 'fd_set'
+        fd_set rfds;
+        ^
+cec.c:521:23: error: variable has incomplete type 'struct timeval'
+        struct timeval *tvp, timout;
+                             ^
+cec.c:521:9: note: forward declaration of 'struct timeval'
+        struct timeval *tvp, timout;
+               ^
+cec.c:527:3: error: call to undeclared function 'FD_ZERO'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+                FD_ZERO(&rfds);
+                ^
+cec.c:527:12: error: use of undeclared identifier 'rfds'; did you mean 'ffs'?
+                FD_ZERO(&rfds);
+                         ^~~~
+                         ffs
+/usr/include/strings.h:25:5: note: 'ffs' declared here
+int ffs (int);
+    ^
+cec.c:528:3: error: call to undeclared function 'FD_SET'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+                FD_SET(fd, &rfds);
+                ^
+cec.c:528:15: error: use of undeclared identifier 'rfds'; did you mean 'ffs'?
+                FD_SET(fd, &rfds);
+                            ^~~~
+                            ffs
+/usr/include/strings.h:25:5: note: 'ffs' declared here
+int ffs (int);
+    ^
+cec.c:530:15: error: use of undeclared identifier 'rfds'; did you mean 'ffs'?
+                        FD_SET(0, &rfds);
+                                   ^~~~
+                                   ffs
+/usr/include/strings.h:25:5: note: 'ffs' declared here
+int ffs (int);
+    ^
+cec.c:533:7: error: incomplete definition of type 'struct timeval'
+                        tvp->tv_sec = 1;
+                        ~~~^
+cec.c:521:9: note: forward declaration of 'struct timeval'
+        struct timeval *tvp, timout;
+               ^
+cec.c:534:7: error: incomplete definition of type 'struct timeval'
+                        tvp->tv_usec = 0;
+                        ~~~^
+cec.c:521:9: note: forward declaration of 'struct timeval'
+        struct timeval *tvp, timout;
+               ^
+cec.c:537:7: error: call to undeclared function 'select'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+                n = select(fd+1, &rfds, nil, nil, tvp);
+                    ^
+cec.c:537:21: error: use of undeclared identifier 'rfds'; did you mean 'ffs'?
+                n = select(fd+1, &rfds, nil, nil, tvp);
+                                  ^~~~
+                                  ffs
+/usr/include/strings.h:25:5: note: 'ffs' declared here
+int ffs (int);
+    ^
+cec.c:550:7: error: call to undeclared function 'FD_ISSET'; ISO C99 and later do not
+      support implicit function declarations [-Wimplicit-function-declaration]
+                if (FD_ISSET(0, &rfds)) {
+                    ^
+cec.c:550:20: error: use of undeclared identifier 'rfds'; did you mean 'ffs'?
+                if (FD_ISSET(0, &rfds)) {
+                                 ^~~~
+                                 ffs
+/usr/include/strings.h:25:5: note: 'ffs' declared here
+int ffs (int);
+    ^
+cec.c:576:28: error: use of undeclared identifier 'rfds'; did you mean 'ffs'?
+                } else if (FD_ISSET(fd, &rfds)) {
+                                         ^~~~
+                                         ffs
+/usr/include/strings.h:25:5: note: 'ffs' declared here
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/cec.c
++++ b/cec.c
+@@ -9,6 +9,8 @@
+ #include <string.h>
+ #include <signal.h>
+ #include <sys/errno.h>
++#include <sys/select.h>
++#include <sys/time.h>
+ #include <arpa/inet.h>
+ #include <ctype.h>
+ #include "cec.h"
+-- 
+2.41.0
+

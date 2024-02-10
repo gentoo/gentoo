@@ -1,0 +1,31 @@
+Index: id3lib-3.8.3/configure.in
+===================================================================
+--- a/configure.in
++++ b/configure.in
+@@ -168,7 +168,7 @@ if test $has_iconv = 1; then
+ 		iconv_oldstyle=1, iconv_oldstyle=0)
+   if test $iconv_oldstyle = 1; then
+     AC_MSG_RESULT(const char **)
+-    AC_DEFINE(ID3LIB_ICONV_OLDSTYLE)
++    AC_DEFINE(ID3LIB_ICONV_OLDSTYLE, [], [Unknown])
+     #we'll check out the need of
+     #typecast in the call of iconv_open
+     AC_MSG_CHECKING(whether to typecast in iconv)
+@@ -184,7 +184,7 @@ if test $has_iconv = 1; then
+                    iconv_cast=0, iconv_cast=1)
+     if test $iconv_cast = 1; then
+       AC_MSG_RESULT(yes)
+-      AC_DEFINE(ID3LIB_ICONV_CAST_OK)
++      AC_DEFINE(ID3LIB_ICONV_CAST_OK, [], [Unknown])
+     else
+       AC_MSG_RESULT(no)
+     fi
+@@ -206,7 +206,7 @@ if test $has_iconv = 1; then
+                    iconv_cast=0, iconv_cast=1)
+     if test $iconv_cast = 1; then
+       AC_MSG_RESULT(yes)
+-      AC_DEFINE(ID3LIB_ICONV_CAST_OK)
++      AC_DEFINE(ID3LIB_ICONV_CAST_OK, [], [Unknown])
+     else
+       AC_MSG_RESULT(no)
+     fi

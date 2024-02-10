@@ -1,0 +1,47 @@
+--- tsocks-1.8/configure.in.orig	2002-07-16 02:51:03.000000000 +0400
++++ tsocks-1.8/configure.in	2019-03-22 01:38:19.065438275 +0300
+@@ -154,36 +154,36 @@
+   ])    
+ ])
+ 
+-if test "${enable_socksdns}" = "yes"; then
++if test "x${enable_socksdns}" = "xyes"; then
+   AC_DEFINE(USE_SOCKS_DNS)
+ fi
+ 
+-if test "x${enable_envconf}" = "x"; then
++if test "x${enable_envconf}" = "xyes"; then
+   AC_DEFINE(ALLOW_ENV_CONFIG)
+ fi
+ 
+-if test "${enable_oldmethod}" = "yes"; then
++if test "x${enable_oldmethod}" = "xyes"; then
+   AC_DEFINE(USE_OLD_DLSYM)
+   oldmethod="yes"
+ fi
+ 
+-if test "x${enable_debug}" = "x"; then
++if test "x${enable_debug}" = "xyes"; then
+   AC_DEFINE(ALLOW_MSG_OUTPUT)
+ fi
+ 
+-if test "x${enable_hostnames}" = "x"; then
++if test "x${enable_hostnames}" = "xyes"; then
+   AC_DEFINE(HOSTNAMES)
+ fi
+ 
+-if test "${enable_socksdns}" = "yes" -a \
+-        "x${enable_hostnames}" = "x" ; then
++if test "x${enable_socksdns}" = "xyes" -a \
++        "x${enable_hostnames}" != "xno" ; then
+   AC_MSG_ERROR("--enable-socksdns is not valid without --disable-hostnames")
+ fi
+ 
+ dnl If we have to use the old method of overriding connect (i.e no
+ dnl RTLD_NEXT) we need to know the location of the library that
+ dnl contains connect(), select(), poll() and close()
+-if test "${oldmethod}" = "yes"; then 
++if test "x${oldmethod}" = "xyes"; then 
+   dnl We need to find the path to the library, to do 
+   dnl this we use find on the usual suspects, i.e /lib and
+   dnl /usr/lib

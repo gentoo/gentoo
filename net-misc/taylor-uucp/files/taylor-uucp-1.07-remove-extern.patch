@@ -1,0 +1,67 @@
+From 84b5bf1e6b8cfad657b88f8b061e172e327ef970 Mon Sep 17 00:00:00 2001
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Thu, 10 Sep 2020 17:06:37 +0800
+Subject: [PATCH] Remove external function declarations
+
+We need to redeclare functions that we already have.
+
+This causes issues with recent toolchains:
+init.c:100:14: error: redeclaration of 'getcwd' must have the 'overloadable' attribute
+extern char *getcwd ();
+             ^
+/build/amd64-generic/usr/include/bits/unistd.h:158:8: note: previous overload of function is here
+__NTH (getcwd (char *const __clang_pass_object_size __buf, size_t __size))
+       ^
+
+And also reduces the number of build warnings.
+
+This forked repo does the same thing in this (large) cleanup patch:
+https://github.com/quinot/taylor-uucp/commit/b599665ae1e085df0f96de5f50a738fceee02150
+---
+ unix/init.c | 30 ------------------------------
+ 1 file changed, 30 deletions(-)
+
+diff --git a/unix/init.c b/unix/init.c
+index d9d2147edd93..a9b7135be9f4 100644
+--- a/unix/init.c
++++ b/unix/init.c
+@@ -81,36 +81,6 @@
+ #endif /* ! defined (MAXPATHLEN) */
+ #endif /* HAVE_GETWD */
+ 
+-/* External functions.  */
+-#ifndef getlogin
+-extern char *getlogin ();
+-#endif
+-#if GETPWNAM_DECLARATION_OK
+-#ifndef getpwnam
+-extern struct passwd *getpwnam ();
+-#endif
+-#endif
+-#if GETPWUID_DECLARATION_OK
+-#ifndef getpwuid
+-extern struct passwd *getpwuid ();
+-#endif
+-#endif
+-#if HAVE_GETCWD
+-#ifndef getcwd
+-extern char *getcwd ();
+-#endif
+-#endif
+-#if HAVE_GETWD
+-#ifndef getwd
+-extern char *getwd ();
+-#endif
+-#endif
+-#if HAVE_SYSCONF
+-#ifndef sysconf
+-extern long sysconf ();
+-#endif
+-#endif
+-
+ /* Initialize the system dependent routines.  We will probably be running
+    suid to uucp, so we make sure that nothing is obviously wrong.  We
+    save the login name since we will be losing the real uid.  */
+-- 
+2.28.0.526.ge36021eeef-goog
+

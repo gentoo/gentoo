@@ -1,0 +1,18 @@
+diff -u desktop/cairo-clock.desktop desktop2/cairo-clock.desktop
+--- a/desktop/cairo-clock.desktop
++++ b/desktop/cairo-clock.desktop
+@@ -37,4 +37,4 @@
+ Comment[zh_TW]=一個超好用的類比時鐘
+ Exec=cairo-clock
+ Icon=cairo-clock
+-Categories=GNOME;Application;Utility;
++Categories=GNOME;Utility;
+diff -u desktop/cairo-clock.desktop.in desktop2/cairo-clock.desktop.in
+--- a/desktop/cairo-clock.desktop.in
++++ b/desktop/cairo-clock.desktop.in
+@@ -5,4 +5,4 @@
+ _Comment=a super fine analog clock
+ Exec=cairo-clock
+ Icon=cairo-clock
+-Categories=GNOME;Application;Utility;
++Categories=GNOME;Utility;

@@ -1,0 +1,60 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -317,12 +317,11 @@ LIBS=$withval
+ echo Using extra libraries: $withval
+ )
+ 
+-LDFLAGS=
+ LIBDIRS=
+ AC_ARG_WITH(libdirs,
+ [  --with-libdirs          Specifies library directories (-Ldir1 -Ldir2).],
+ LIBDIRS=$withval
+-LDFLAGS=$withval
++LDFLAGS="$LDFLAGS $withval"
+ echo Using extra library directories: $withval
+ )
+ 
+--- a/src/bin/MakeRules.in
++++ b/src/bin/MakeRules.in
+@@ -3,7 +3,7 @@ HAVE_MAKERULES = yes
+ 
+ BINOBJ = $(BUILD_CSRC:%.c=%.$(OBJSUF))  $(BUILD_CXXSRC:%.cc=%.$(OBJSUF))
+ $(BUILD_BINARY): $(BINOBJ)
+-	$(LD) $^ $(LDFLAGS) $(SYSLIBS) -o $@
++	$(LD) $(LDFLAGS) $^ $(SYSLIBS) -o $@
+ 
+ .PHONY: install install_inc install_target uninstall clean oclean distclean targetclean realclean
+ install::
+--- a/src/lib/libderiv/Makefile.library
++++ b/src/lib/libderiv/Makefile.library
+@@ -23,7 +23,7 @@ $(TOPDIR)/lib/$(NAME).a: $(LIBOBJ)
+ 
+ # this is how shared library is made
+ $(TOPDIR)/lib/$(NAME).la: $(LIBOBJ)
+-	$(LTLINK) $(CXX) -o $@ $^ $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) -o $@ $^ $(LTLINKLIBOPTS)
+ 
+ $(TOPDIR)/include/$(NAME)/$(NAME).h: $(NAME).h
+ 	$(INSTALL) $(INSTALLDIROPT) $(TOPDIR)/include/$(NAME)
+--- a/src/lib/libint/Makefile.library
++++ b/src/lib/libint/Makefile.library
+@@ -41,7 +41,7 @@ $(TOPDIR)/lib/$(NAME).a: $(LIBOBJ)
+ 
+ # this is how shared library is made
+ $(TOPDIR)/lib/$(NAME).la: $(LIBOBJ)
+-	$(LTLINK) $(CXX) -o $@ $^ $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) -o $@ $^ $(LTLINKLIBOPTS)
+ 
+ $(TOPDIR)/include/$(NAME)/$(NAME).h: $(NAME).h
+ 	$(INSTALL) $(INSTALLDIROPT) $(TOPDIR)/include/$(NAME)
+--- a/src/lib/libr12/Makefile.library
++++ b/src/lib/libr12/Makefile.library
+@@ -47,7 +47,7 @@ $(TOPDIR)/lib/$(NAME).a: $(LIBOBJ)
+ 
+ # this is how shared library is made
+ $(TOPDIR)/lib/$(NAME).la: $(LIBOBJ)
+-	$(LTLINK) $(CXX) -o $@ $^ $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) -o $@ $^ $(LTLINKLIBOPTS)
+ 
+ $(TOPDIR)/include/$(NAME)/$(NAME).h: $(NAME).h
+ 	$(INSTALL) $(INSTALLDIROPT) $(TOPDIR)/include/$(NAME)

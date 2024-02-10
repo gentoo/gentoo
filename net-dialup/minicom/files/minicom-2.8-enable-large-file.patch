@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/912680
+https://salsa.debian.org/minicom-team/minicom/-/commit/4ed314c504bc95d8ccef81d7c68684d5ac31e9db.patch
+
+From 4ed314c504bc95d8ccef81d7c68684d5ac31e9db Mon Sep 17 00:00:00 2001
+From: Adam Lackorzynski <adam@l4re.org>
+Date: Sat, 19 Aug 2023 12:52:02 +0200
+Subject: [PATCH] configure.ac: Enable large file support
+
+Add AC_SYS_LARGEFILE to enable large file support in a portable way.
+Thanks the ChromeOS team and Raul Rangel for hinting at this.
+---
+ configure.ac | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 7b3f0df..6424a3f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,6 +16,8 @@ dnl Checks for programs.
+ AC_PROG_CC
+ AM_PROG_AR
+ 
++AC_SYS_LARGEFILE
++
+ AC_USE_SYSTEM_EXTENSIONS
+ AC_USE_SYSTEM_EXTENSIONS
+ 
+-- 
+GitLab
+

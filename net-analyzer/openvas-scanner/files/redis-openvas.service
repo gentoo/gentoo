@@ -1,0 +1,13 @@
+[Unit]
+Description=A persistent key-value database
+After=syslog.target network.target
+PartOf=gvm.target
+
+[Service]
+Type=forking
+PIDFile=/run/redis-openvas/redis-server.pid
+ExecStart=/usr/sbin/redis-server /etc/gvm/redis-openvas.conf
+User=gvm
+
+[Install]
+WantedBy=multi-user.target

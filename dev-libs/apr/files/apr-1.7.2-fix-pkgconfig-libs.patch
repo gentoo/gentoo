@@ -1,0 +1,35 @@
+Don't pollute Libs with internal bits like libcrypt.
+
+https://bugs.gentoo.org/811765
+https://sources.debian.org/patches/apr/1.7.2-2/fix-apr.pc.patch/
+https://sources.debian.org/patches/apr/1.7.2-2/omit_extra_libs.patch/
+
+From: <tfheen@debian.org>
+Subject: No description.
+
+--- a/apr.pc.in
++++ b/apr.pc.in
+@@ -7,5 +7,6 @@
+ Name: APR
+ Description: The Apache Portable Runtime library
+ Version: @APR_DOTTED_VERSION@
+-Libs: -L${libdir} -l@APR_LIBNAME@ @EXTRA_LIBS@
+-Cflags: @EXTRA_CPPFLAGS@ @EXTRA_CFLAGS@ -I${includedir}
++Libs: -L${libdir} -l@APR_LIBNAME@
++Libs.private: @EXTRA_LIBS@
++Cflags: @EXTRA_CPPFLAGS@ -I${includedir}
+
+From: Stefan Fritsch <sf@debian.org>
+Subject: #463399
+
+--- a/apr-config.in
++++ b/apr-config.in
+@@ -36,7 +36,7 @@ SHELL="@SHELL@"
+ CPPFLAGS="@EXTRA_CPPFLAGS@"
+ CFLAGS="@EXTRA_CFLAGS@"
+ LDFLAGS="@EXTRA_LDFLAGS@"
+-LIBS="@EXTRA_LIBS@"
++LIBS=""
+ EXTRA_INCLUDES="@EXTRA_INCLUDES@"
+ SHLIBPATH_VAR="@shlibpath_var@"
+ APR_SOURCE_DIR="@apr_srcdir@"

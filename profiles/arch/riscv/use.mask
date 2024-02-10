@@ -1,0 +1,78 @@
+# Copyright 2019-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-riscv
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
+# Yixun Lan <dlan@gentoo.org> (2021-05-19)
+# Unmask for more testing
+-elogind
+-gtk
+-gtk2
+-gtk3
+-introspection
+
+# Yongxiang Liang <tanekliang@gmail.com> (2024-01-16)
+# Requires qtwebengine, which is not ported to riscv
+webengine
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-14)
+# sci-libs/netcdf fails tests in a way suggesting it might be completely
+# unreliable on this arch as far as I/O is concerned.
+netcdf
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# dev-lang/luajit does not support this arch
+lua_single_target_luajit
+lua_targets_luajit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
+# valgrind has no RISCV port.
+valgrind
+
+# As of August 2021, RISC-V support in dev-lang/mono is minimal and some
+# versions do not even build on this arch. See
+# https://github.com/dotnet/runtime/issues/36748
+mono
+
+# No proper support for this arch yet
+java
+
+# not supported / tested cards
+
+video_cards_ast
+video_cards_dummy
+video_cards_freedreno
+video_cards_geode
+video_cards_i915
+video_cards_i965
+video_cards_intel
+video_cards_mga
+video_cards_omap
+video_cards_qxl
+video_cards_r128
+video_cards_siliconmotion
+video_cards_tegra
+video_cards_vc4
+video_cards_vesa
+video_cards_via
+video_cards_virtualbox
+video_cards_vmware
+video_cards_nvidia
+
+# input devices
+
+input_devices_elographics
+input_devices_joystick
+input_devices_vmmouse
+input_devices_void
+input_devices_synaptics
+input_devices_wacom

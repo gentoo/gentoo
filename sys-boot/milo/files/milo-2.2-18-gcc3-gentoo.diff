@@ -1,0 +1,174 @@
+diff -u -r --minimal milo-2.2-18.orig/config.in milo-2.2-18/config.in
+--- milo-2.2-18.orig/config.in	2001-07-18 15:58:30.000000000 +0100
++++ milo-2.2-18/config.in	2003-06-05 18:52:06.000000000 +0100
+@@ -5,7 +5,7 @@
+ 
+ comment 'Alpha Linux Miniloader setup'
+ #
+-string 'Path to kernel sources' KSRC /usr/src/linux
++string 'Path to kernel sources' KSRC ${WORKDIR}/linux
+ choice 'Alpha system type' \
+ 	"Alpha-XLT		MINI_ALPHA_XLT			\
+ 	 Alpha-XL		MINI_ALPHA_XL			\
+diff -u -r --minimal milo-2.2-18.orig/devices.c milo-2.2-18/devices.c
+--- milo-2.2-18.orig/devices.c	2001-07-18 16:59:38.000000000 +0100
++++ milo-2.2-18/devices.c	2003-06-05 18:52:06.000000000 +0100
+@@ -98,7 +98,7 @@
+ struct fs_struct init_fs = INIT_FS;
+ struct files_struct init_files = INIT_FILES;
+ struct signal_struct init_signals = INIT_SIGNALS;
+-struct mm_struct init_mm = INIT_MM;
++struct mm_struct init_mm;
+ 
+ unsigned securebits = SECUREBITS_DEFAULT;	/* systemwide security settings */
+ 
+@@ -1213,7 +1213,7 @@
+ }
+ 
+ 
+-void __wake_up(struct wait_queue **p, unsigned int mode, unsigned int wq_mode)
++void __wake_up(struct wait_queue **p, unsigned int mode)
+ {
+ 	wake_up(p);
+ }
+diff -u -r --minimal milo-2.2-18.orig/Documentation/defconfig.milo milo-2.2-18/Documentation/defconfig.milo
+--- milo-2.2-18.orig/Documentation/defconfig.milo	2001-07-19 10:59:45.000000000 +0100
++++ milo-2.2-18/Documentation/defconfig.milo	2003-06-05 18:52:06.000000000 +0100
+@@ -5,7 +5,7 @@
+ #
+ # Alpha Linux Miniloader setup
+ #
+-KSRC=/usr/src/linux
++KSRC=${WORKDIR}/linux
+ # MINI_ALPHA_XLT is not set
+ # MINI_ALPHA_XL is not set
+ # MINI_ALPHA_BOOK1 is not set
+@@ -36,7 +36,7 @@
+ # MINI_VGA_RAW2 is not set
+ MINI_TGA_CONSOLE=y
+ MINI_EXTERNAL_FONT=y
+-MINI_FONT_FILE=/usr/lib/kbd/consolefonts/default8x16.gz
++MINI_FONT_FILE=/usr/share/consolefonts/default8x16.psfu.gz
+ MILO_CONFIG_EXT2FS=y
+ MILO_CONFIG_MSDOSFS=y
+ MILO_CONFIG_REISERFS=y
+diff -u -r --minimal milo-2.2-18.orig/hwrpb.c milo-2.2-18/hwrpb.c
+--- milo-2.2-18.orig/hwrpb.c	2001-07-18 14:38:38.000000000 +0100
++++ milo-2.2-18/hwrpb.c	2003-06-05 18:52:06.000000000 +0100
+@@ -368,9 +368,17 @@
+ 		percpu =
+ 		    (struct percpu_struct *) (((char *) hwrpb) +
+ 					      hwrpb->processor_offset);
+-		percpu->serial_no[0] = 0x73695f78756e694c;
++#ifndef MILO_SERIAL_NUMBER0
++#define MILO_SERIAL_NUMBER0 0x73695f78756e694c
++#endif /* MILO_SERIAL_NUMBER0 */
++		    
++#ifndef MILO_SERIAL_NUMBER1
++#define MILO_SERIAL_NUMBER1 0x002174616572475f;
++#endif /* MILO_SERIAL_NUMBER1 */		    
++
++		percpu->serial_no[0] = MILO_SERIAL_NUMBER0;
+ 		/* :-) */
+-		percpu->serial_no[1] = 0x002174616572475f;
++		percpu->serial_no[1] = MILO_SERIAL_NUMBER1;
+ 		percpu->type = cpuid();
+ 
+ /*
+diff -u -r --minimal milo-2.2-18.orig/Makefile milo-2.2-18/Makefile
+--- milo-2.2-18.orig/Makefile	2001-07-18 17:15:31.000000000 +0100
++++ milo-2.2-18/Makefile	2003-06-05 18:52:06.000000000 +0100
+@@ -54,8 +54,8 @@
+ #
+ 
+ LINKFLAGS =  -non_shared -N -T milo.lds 
+-CFLAGS	  =	-Wall -Wstrict-prototypes -O2 -fomit-frame-pointer \
+-		-fno-strict-aliasing -mcpu=ev5 -pipe -mno-fp-regs \
++CFLAGS	  += 	-Wall -Wstrict-prototypes -fomit-frame-pointer \
++		-fno-strict-aliasing -pipe -mno-fp-regs \
+ 		-ffixed-8 -Wa,-mev6 -D__KERNEL__ -D__linux__ \
+ 		-I$(KSRC)/include
+ 
+diff -u -r --minimal milo-2.2-18.orig/milo.c milo-2.2-18/milo.c
+--- milo-2.2-18.orig/milo.c	2001-07-18 14:38:38.000000000 +0100
++++ milo-2.2-18/milo.c	2003-06-05 19:16:16.000000000 +0100
+@@ -1436,9 +1436,10 @@
+ {
+ 	extern U64 milo_memory_size;
+ 
+-	printk("MILO (%s):\n", alpha_mv.vector_name);
+-	printk("    Built against Linux " UTS_RELEASE "\n");
++	printk("Gentoo MILO (%s):\n", alpha_mv.vector_name);
++	printk("    Built against Gentoo Linux Kernel " UTS_RELEASE "\n");
+ 	printk("    Using compiler " LINUX_COMPILER "\n");
++	printk("\nWelcome to the Gentoo Linux MIniLOader\n");
+ 
+ #if 0
+ 	/* what sort of video do we have? */
+@@ -1792,7 +1793,7 @@
+ 	/* parse commands forever */
+ 	while (1) {
+ 
+-		printk("MILO> ");
++		printk("MILO > ");
+ 
+ 		kbd_gets(command_string, 256);
+ 		printk_rows = 0;
+diff -u -r --minimal milo-2.2-18.orig/tools/scripts/allfiles milo-2.2-18/tools/scripts/allfiles
+--- milo-2.2-18.orig/tools/scripts/allfiles	2001-07-11 18:27:02.000000000 +0100
++++ milo-2.2-18/tools/scripts/allfiles	2003-06-05 18:52:06.000000000 +0100
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+ LOC=kernel/objs
+-KSRC=/usr/src/linux/
++KSRC=${WORKDIR}/linux
+ 
+ rm -rf $LOC
+ 
+diff -u -r --minimal milo-2.2-18.orig/tools/scripts/build milo-2.2-18/tools/scripts/build
+--- milo-2.2-18.orig/tools/scripts/build	2001-07-18 16:58:29.000000000 +0100
++++ milo-2.2-18/tools/scripts/build	2003-06-05 19:14:25.000000000 +0100
+@@ -1,29 +1,9 @@
+ #!/bin/bash
+ set -e
+ 
+-RELEASE=2.2-17
++RELEASE=2.2-18-Gentoo
+ 
+-for i in \
+-	"Alpha-XLT	XLT"		\
+-	"Alpha-XL	XL"		\
+-	"AlphaBook1	BOOK1"		\
+-	"Avanti		AVANTI"		\
+-	"Cabriolet	CABRIOLET"	\
+-	"EB66		EB66"		\
+-	"EB66+		EB66P"		\
+-	"EB64+		EB64P"		\
+-	"EB164		EB164"		\
+-	"PC164		PC164"		\
+-	"LX164		LX164"		\
+-	"SX164		SX164"		\
+-	"Noname		NONAME"		\
+-	"Takara		TAKARA"		\
+-	"Mikasa		MIKASA"		\
+-	"Alcor		ALCOR"		\
+-	"Miata		MIATA"		\
+-	"Ruffian	RUFFIAN"	\
+-	"Platform2000	P2K"		\
+-	"UDB		UDB"
++for i in __MILO_ARCHES__
+ do
+ 	short=`echo $i | awk '{print $1}'`
+ 	long=`echo $i | awk '{print $2}'`
+diff -u -r --minimal milo-2.2-18.orig/tools/scripts/buildkernels milo-2.2-18/tools/scripts/buildkernels
+--- milo-2.2-18.orig/tools/scripts/buildkernels	1999-08-19 14:08:55.000000000 +0100
++++ milo-2.2-18/tools/scripts/buildkernels	2003-06-05 18:52:06.000000000 +0100
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-LINUX=/usr/src/linux
++LINUX=${WORKDIR}/linux
+ KOUT=$(dirname `pwd`)/linux
+ 
+ set -e

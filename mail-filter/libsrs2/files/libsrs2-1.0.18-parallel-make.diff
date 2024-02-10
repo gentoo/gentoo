@@ -1,0 +1,12 @@
+--- a/libsrs2/Makefile.am	2004-06-10 11:33:28.000000000 +0200
++++ b/libsrs2/Makefile.am	2009-09-29 16:08:29.000000000 +0200
+@@ -3,9 +3,6 @@
+ include_HEADERS = srs2.h
+ noinst_HEADERS = win32.h
+ 
+-lib_LIBRARIES = libsrs2.a
+-libsrs2_a_SOURCES = srs2.c sha1.c
+-
+ lib_LTLIBRARIES = libsrs2.la
+ libsrs2_la_LDFLAGS = -version-info 0:0:0
+ libsrs2_la_SOURCES = srs2.c sha1.c

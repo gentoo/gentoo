@@ -1,0 +1,32 @@
+Fix QA issue about malformed desktop launcher.
+
+ * QA Notice: This package installs one or more .desktop files that do not
+ * pass validation.
+ *
+ * 	/usr/share/applications/deadbeef.desktop: error: action group "Desktop Action Next" exists, but there is no matching action "Next"
+ * 	/usr/share/applications/deadbeef.desktop: error: action group "Desktop Action Prev" exists, but there is no matching action "Prev"
+ * 	/usr/share/applications/deadbeef.desktop: error: action group "Desktop Action Stop" exists, but there is no matching action "Stop"
+ * 	/usr/share/applications/deadbeef.desktop: error: file contains group "Desktop Action Toggle Pause", which has an invalid action identifier, only alphanumeric characters and '-' are allowed
+ * 	/usr/share/applications/deadbeef.desktop: error: value "Play;Pause;Toggle Pause;Stop;Next;Prev;" for key "Actions" in group "Desktop Entry" contains invalid action identifier "Toggle Pause", only alphanumeric characters and '-' are allowed
+ *
+
+--- a/deadbeef.desktop.in
++++ b/deadbeef.desktop.in
+@@ -14,7 +14,7 @@
+ Icon=deadbeef
+ Exec=deadbeef %F
+ Terminal=false
+-Actions=Play;Pause;Toggle Pause;Stop;Next;Prev;
++Actions=Play;Pause;Toggle-Pause;Stop;Next;Prev;
+ MimeType=application/ogg;audio/x-vorbis+ogg;application/x-ogg;audio/mp3;audio/prs.sid;audio/x-flac;audio/mpeg;audio/x-mpeg;audio/x-mod;audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mpegurl;audio/x-scpls;application/x-cue;
+ Categories=Audio;AudioVideo;Player;GTK;
+ Keywords=Sound;Music;Audio;Player;Musicplayer;MP3;
+@@ -35,7 +35,7 @@
+ Name[zh_TW]=暫停
+ Exec=deadbeef --pause
+ 
+-[Desktop Action Toggle Pause]
++[Desktop Action Toggle-Pause]
+ Name=Toggle Pause
+ Name[zh_CN]=播放/暂停
+ Name[zh_TW]=播放/暫停

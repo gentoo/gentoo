@@ -1,0 +1,42 @@
+[Unit]
+Description=Energi Core Node Service
+After=syslog.target network.target
+
+[Service]
+SyslogIdentifier=energi3
+Type=simple
+User=energi3
+Group=energi3
+ExecStart=/usr/bin/energi3 \
+--datadir ${STATE_DIRECTORY} \
+--masternode \
+--mine=1 \
+--rpc \
+--rpcport 39796 \
+--rpcaddr "127.0.0.1"  \
+--rpcapi admin,eth,web3,rpc,personal,energi \
+--ws \
+--wsaddr "127.0.0.1" \
+--wsport 39795 \
+--wsapi admin,eth,net,web3,personal,energi \
+--verbosity 0
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+NoNewPrivileges=true
+PrivateDevices=true
+CapabilityBoundingSet=
+ProtectClock=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+PrivateUsers=true
+StateDirectory=energi3
+
+[Install]
+WantedBy=multi-user.target
+

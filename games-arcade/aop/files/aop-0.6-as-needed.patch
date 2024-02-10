@@ -1,0 +1,9 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ 
+-LDFLAGS = -lncurses
++LDLIBS := $(shell ${PKG_CONFIG} ncurses --libs)
+ 
+ aop: aop.c
+ 

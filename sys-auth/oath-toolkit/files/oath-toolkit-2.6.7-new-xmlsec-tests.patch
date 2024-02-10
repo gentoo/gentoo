@@ -1,0 +1,74 @@
+https://gitlab.com/oath-toolkit/oath-toolkit/-/commit/0ae59b9c72f69ee21044e736e292b73051df3272
+
+From 0ae59b9c72f69ee21044e736e292b73051df3272 Mon Sep 17 00:00:00 2001
+From: Simon Josefsson <simon@josefsson.org>
+Date: Sat, 12 Nov 2022 21:42:17 +0100
+Subject: [PATCH] Handle new libxmlsec on ArchLinux.
+
+--- a/libpskc/examples/pskc-hotp-signed.xml
++++ b/libpskc/examples/pskc-hotp-signed.xml
+@@ -38,7 +38,8 @@ rIXbwqKhnBP943U4Ch31oEbZtbo+XRbiq11wv6dLNsi76TNGDqsjTKgEcSIYI6Vd
+ rMxnil6ChoIBvSSPGHhJuj1bW1EPW92JtIa6byrAj1m4RwSviQy2i65YoIdtrhRt
+ CWekj2zuL/0szv5rZMCCvxioOCA8znqELEPMfs0Aa/cACD2MZcC4gGXehNCvzYJr
+ TmB6lFpxP6f0g6eO7PVcqYN9NCwECxb5Cvx2j2uNlereY35/9oPR6YJx+V7sL+DB
+-n6F0mN8OUAFxDamepKdGRApU8uZ35624o/I4</X509Certificate>
++n6F0mN8OUAFxDamepKdGRApU8uZ35624o/I4
++</X509Certificate>
+ </X509Data>
+ </KeyInfo>
+ </Signature></KeyContainer>
+--- a/pskctool/tests/pskc-all-signed.xml
++++ b/pskctool/tests/pskc-all-signed.xml
+@@ -38,7 +38,8 @@ rIXbwqKhnBP943U4Ch31oEbZtbo+XRbiq11wv6dLNsi76TNGDqsjTKgEcSIYI6Vd
+ rMxnil6ChoIBvSSPGHhJuj1bW1EPW92JtIa6byrAj1m4RwSviQy2i65YoIdtrhRt
+ CWekj2zuL/0szv5rZMCCvxioOCA8znqELEPMfs0Aa/cACD2MZcC4gGXehNCvzYJr
+ TmB6lFpxP6f0g6eO7PVcqYN9NCwECxb5Cvx2j2uNlereY35/9oPR6YJx+V7sL+DB
+-n6F0mN8OUAFxDamepKdGRApU8uZ35624o/I4</X509Certificate>
++n6F0mN8OUAFxDamepKdGRApU8uZ35624o/I4
++</X509Certificate>
+ </X509Data>
+ </KeyInfo>
+ </Signature></KeyContainer>
+--- a/pskctool/tests/tst_libexamples.sh
++++ b/pskctool/tests/tst_libexamples.sh
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ # tst_libexamples.sh - keep pskctool output in GTK-DOC manual up to date
+-# Copyright (C) 2012-2021 Simon Josefsson
++# Copyright (C) 2012-2022 Simon Josefsson
+ 
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -45,7 +45,8 @@ fi
+ 
+ $PSKCTOOL --sign --sign-key $srcdir/pskc-ee-key.pem \
+     --sign-crt $srcdir/pskc-ee-crt.pem \
+-    $srcdir/../../libpskc/examples/pskc-hotp.xml > foo
++    $srcdir/../../libpskc/examples/pskc-hotp.xml \
++    | sed 's,4</X509Cert,4\n</X509Cert,' > foo
+ if ! diff -ur $srcdir/../../libpskc/examples/pskc-hotp-signed.xml foo; then
+     echo "FAIL: pskctool --sign output change, commit updated file."
+     exit 1
+--- a/pskctool/tests/tst_sign.sh
++++ b/pskctool/tests/tst_sign.sh
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ # tst_sign.sh - test that pskctool can sign and verify
+-# Copyright (C) 2012-2021 Simon Josefsson
++# Copyright (C) 2012-2022 Simon Josefsson
+ 
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -32,7 +32,7 @@ $PSKCTOOL --info --strict --debug $pskc_all > tmp-pre-human.txt
+ $PSKCTOOL --sign \
+     --sign-key $pskc_ee_key \
+     --sign-crt $pskc_ee_crt \
+-    $pskc_all > tmp-signed.xml
++    $pskc_all | sed 's,4</X509Cert,4\n</X509Cert,' > tmp-signed.xml
+ 
+ diff -ur $pskc_all_signed tmp-signed.xml
+ 
+-- 
+GitLab

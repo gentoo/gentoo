@@ -1,0 +1,14 @@
+--- a/LineManip.cc
++++ b/LineManip.cc
+@@ -3,10 +3,11 @@
+ // 
+ 
+ #include <unistd.h>
+ #include <ncurses.h>
+ #include <ctype.h>
++#include <cstdlib>
+ 
+ #include "LineManip.h"
+ #include "Util.h"
+ 
+ #ifdef __DEBUG__

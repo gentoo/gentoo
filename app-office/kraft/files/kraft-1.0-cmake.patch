@@ -1,0 +1,197 @@
+From 938f9796d7c84b86cde3778513941055f350ee0e Mon Sep 17 00:00:00 2001
+From: Klaas Freitag <kraft@freisturz.de>
+Date: Sat, 29 Apr 2023 10:37:55 +0200
+Subject: [PATCH 1/3] Adopt CMake files to Akonadi prefix KPim5
+
+(cherry picked from commit f54b317f5cd894e4063b6d4c4c3a96012c1bcb28)
+---
+ CMakeLists.txt       | 16 ++++++++++------
+ src/CMakeLists.txt   | 13 ++++++-------
+ tools/CMakeLists.txt |  6 +++---
+ 3 files changed, 19 insertions(+), 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07e15dd..8b5374c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,9 @@ find_package(ECM REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ set(CMAKE_AUTOMOC TRUE)
+ 
++# Akonadi Prefix: Set this to KF5 for builds with Akonadi Libs before 5.23
++set(AKO_PREFIX "KPim5")
++
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+ include(ECMInstallIcons)
+@@ -47,23 +50,23 @@ set_package_properties(Grantlee5 PROPERTIES
+     TYPE OPTIONAL
+ )
+ 
+-find_package(KF5Akonadi)
+-set_package_properties(KF5Akonadi PROPERTIES
++find_package(${AKO_PREFIX}Akonadi)
++set_package_properties(${AKO_PREFIX}Akonadi PROPERTIES
+     DESCRIPTION "Library for general Access to Akonadi"
+     URL "https://www.kde.org/"
+     PURPOSE "Optionally used for addressbook integration"
+     TYPE OPTIONAL
+ )
+ 
+-find_package(KF5AkonadiContact)
+-set_package_properties(KF5AkonadiContact PROPERTIES
++find_package(${AKO_PREFIX}AkonadiContact)
++set_package_properties(${AKO_PREFIX}AkonadiContact PROPERTIES
+     DESCRIPTION "Library for Accessing Contacts stored in Akonadi"
+     URL "https://www.kde.org/"
+     PURPOSE "Optionally used for addressbook integration"
+     TYPE OPTIONAL
+ )
+ 
+-if(KF5Akonadi_FOUND AND KF5AkonadiContact_FOUND)
++if(${AKO_PREFIX}Akonadi_FOUND AND ${AKO_PREFIX}AkonadiContact_FOUND)
+    add_definitions(-DHAVE_AKONADI)
+ endif()
+ 
+@@ -80,7 +83,8 @@ set(QT_DEFINITIONS "${Qt5Core_DEFINITIONS} ${Qt5Gui_DEFINITIONS} ${Qt5Widgets_DE
+ add_definitions(${QT_DEFINITIONS} )
+ 
+ include_directories(${QT_INCLUDES} src)
+-include_directories( /usr/include/KF5/AkonadiCore )
++include_directories( /usr/include/${AKO_PREFIX}/AkonadiCore )
++include_directories(/usr/include/${AKO_PREFIX}/)
+ 
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+         ki18n_install(po)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6eaa557..8e9b069 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,3 @@
+-# include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR} ${KDEPIMLIBS_INCLUDE_DIRS} external)
+ 
+ include_directories(${QT_INCLUDES} src)
+ add_subdirectory(pics)
+@@ -167,13 +166,13 @@ set(KRAFT_LINK_LIBS
+     ${CTEMPLATE_LIBRARIES} pthread
+     Grantlee5::Templates
+ )
+-if(KF5Akonadi_FOUND)
++if(${AKO_PREFIX}Akonadi_FOUND)
+   list(APPEND KRAFT_LINK_LIBS
+-    KF5::AkonadiCore
+-    KF5::AkonadiContact
+-    KF5::AkonadiAgentBase
+-    KF5::AkonadiWidgets
+-    KF5::AkonadiXml
++    ${AKO_PREFIX}::AkonadiCore
++    ${AKO_PREFIX}::AkonadiContact
++    ${AKO_PREFIX}::AkonadiAgentBase
++    ${AKO_PREFIX}::AkonadiWidgets
++    ${AKO_PREFIX}::AkonadiXml
+   )
+ endif()
+ 
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index 0c58c75..f005cfe 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -8,15 +8,15 @@ set(AUTOMOC ON)
+ # For now there is only the Akonadi based address backend, and thus
+ # the findcontact tool is only built if akonadi is there.
+ # If there are other backends, this must be FIXED.
+-if(KF5Akonadi_FOUND)
++if(${AKO_PREFIX}Akonadi_FOUND)
+     add_executable(${findcontact_NAME} ${FINDCONTACT_SRC})
+ 
+     target_link_libraries( ${findcontact_NAME}
+         Qt5::Core
+         Qt5::Widgets
+         KF5::Contacts
+-        KF5::AkonadiCore
+-        KF5::AkonadiContact
++        ${AKO_PREFIX}::AkonadiCore
++        ${AKO_PREFIX}::AkonadiContact
+     )
+ 
+     ########### install files ###############
+-- 
+2.42.0
+
+
+From 5a95547fe375d55f1bb690be14268b8a26b48204 Mon Sep 17 00:00:00 2001
+From: Klaas Freitag <kraft@freisturz.de>
+Date: Sat, 29 Apr 2023 22:23:27 +0200
+Subject: [PATCH 2/3] use option to set AKO_PREFIX rather than an internal
+ variable
+
+(cherry picked from commit 50e090059365ddbacfd219325095f4f6c5f4aa7b)
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b5374c..f5ecc41 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,7 +9,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modul
+ set(CMAKE_AUTOMOC TRUE)
+ 
+ # Akonadi Prefix: Set this to KF5 for builds with Akonadi Libs before 5.23
+-set(AKO_PREFIX "KPim5")
++option(AKO_PREFIX "Akonadi Prefix, either KF5 or KPim5, can be set by -DAKO_PREFIX=KF5" "KPim5")
+ 
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+-- 
+2.42.0
+
+
+From e34c8b73ccd4d0142c7c16f8d4d4756cbacadd4d Mon Sep 17 00:00:00 2001
+From: Klaas Freitag <kraft@freisturz.de>
+Date: Mon, 1 May 2023 14:09:09 +0200
+Subject: [PATCH 3/3] Fix Akonadi legacy detection
+
+(cherry picked from commit 66b64505bbfbc3285ba34ccacdf454720c8e0abc)
+---
+ CMakeLists.txt | 8 +++++++-
+ INSTALL.md     | 3 +++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5ecc41..82b4e07 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,8 +8,14 @@ find_package(ECM REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ set(CMAKE_AUTOMOC TRUE)
+ 
++option(AKONADI_LEGACY_BUILD "Build with older versions of Akonadi (KF5 Prefix)" OFF)
+ # Akonadi Prefix: Set this to KF5 for builds with Akonadi Libs before 5.23
+-option(AKO_PREFIX "Akonadi Prefix, either KF5 or KPim5, can be set by -DAKO_PREFIX=KF5" "KPim5")
++set(AKO_PREFIX "KPim5")
++
++if (AKONADI_LEGACY_BUILD)
++  set(AKO_PREFIX "KF5")
++endif()
++message("Akonadi Prefix is ${AKO_PREFIX}")
+ 
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+diff --git a/INSTALL.md b/INSTALL.md
+index 1edd0ae..77d559c 100644
+--- a/INSTALL.md
++++ b/INSTALL.md
+@@ -59,6 +59,9 @@ These are optional to build with Akonadi Support:
+ - akonadi-contact-devel
+ - akonadi-devel
+ 
++To build with Akonadi versions before 23.04, cmake has to run wtih the
++build option `-DAKONADI_LEGACY_BUILD=ON` to use the old prefix KF5.
++
+ ### Build Kraft
+ 
+ cmake is designed so that the build process can be done in a separate
+-- 
+2.42.0
+

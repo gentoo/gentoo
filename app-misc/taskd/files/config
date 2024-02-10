@@ -1,0 +1,17 @@
+confirmation=1
+extensions=/usr/libexec/taskd
+ip.log=on
+log=/var/log/taskd/taskd.log
+pid.file=/run/taskd.pid
+queue.size=10
+request.limit=1048576
+root=/var/lib/taskd
+server=localhost:53589
+trust=strict
+verbose=1
+# TLS config:
+#ciphers=
+#ca.cert=/etc/taskd/tls/ca.pem
+#server.cert=/etc/taskd/tls/server.crt.pem
+#server.crl=/etc/taskd/tls/server.crl.pem
+#server.key=/etc/taskd/tls/server.key.pem

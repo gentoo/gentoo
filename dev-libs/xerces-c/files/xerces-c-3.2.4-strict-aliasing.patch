@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/856100
+--- a/cmake/XercesWarnings.cmake
++++ b/cmake/XercesWarnings.cmake
+@@ -50,8 +50,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR
+       -Wswitch-default
+       -Wunused-variable
+       -Wwrite-strings
+-      -Wno-variadic-macros
+-      -fstrict-aliasing)
++      -Wno-variadic-macros)
+   if(extra-warnings)
+     list(APPEND test_flags
+         -Wfloat-equal

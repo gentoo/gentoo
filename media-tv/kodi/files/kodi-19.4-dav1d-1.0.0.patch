@@ -1,0 +1,94 @@
+diff -Nur a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
+--- a/cmake/modules/FindFFMPEG.cmake	2022-03-02 18:38:51.000000000 +0000
++++ b/cmake/modules/FindFFMPEG.cmake	2022-11-22 19:15:38.690434650 +0000
+@@ -275,6 +275,8 @@
+                       PATCH_COMMAND ${CMAKE_COMMAND} -E copy
+                                     ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/CMakeLists.txt
+                                     <SOURCE_DIR> &&
++				    # patch internal ffmpeg, fix build against dav1d 1.0.0
++				    patch -p1 < ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch &&
+                                     ${CMAKE_COMMAND} -E copy
+                                     ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/FindGnuTls.cmake
+                                     <SOURCE_DIR>)
+diff -Nur a/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch b/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch
+--- a/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch	1970-01-01 01:00:00.000000000 +0100
++++ b/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch	2022-11-22 19:12:09.566420470 +0000
+@@ -0,0 +1,78 @@
++From 2546e1ed27f92a840a2cf319e3c1833799974cf1 Mon Sep 17 00:00:00 2001
++From: BlackEagle <ike.devolder@gmail.com>
++Date: Fri, 29 Apr 2022 14:33:12 +0200
++Subject: [PATCH] add build fix for dav1d 1.0.0
++
++Taken from https://github.com/FFmpeg/FFmpeg/commit/e204846ec16c1ab34c7f3a681734cf5190433018
++
++add FF_DAV1D_VERSION_AT_LEAST
++
++Extracted from https://github.com/FFmpeg/FFmpeg/commit/7ee17ec7e46afef0e0af20af196292ec75f50b62
++
++Signed-off-by: BlackEagle <ike.devolder@gmail.com>
++---
++ libavcodec/libdav1d.c | 24 ++++++++++++++++++++++--
++ 1 file changed, 22 insertions(+), 2 deletions(-)
++
++diff --git a/libavcodec/libdav1d.c b/libavcodec/libdav1d.c
++index bbb3ec1e6c..08b4af8ac8 100644
++--- a/libavcodec/libdav1d.c
+++++ b/libavcodec/libdav1d.c
++@@ -30,6 +30,9 @@
++ #include "decode.h"
++ #include "internal.h"
++ 
+++#define FF_DAV1D_VERSION_AT_LEAST(x,y) \
+++    (DAV1D_API_VERSION_MAJOR > (x) || DAV1D_API_VERSION_MAJOR == (x) && DAV1D_API_VERSION_MINOR >= (y))
+++
++ typedef struct Libdav1dContext {
++     AVClass *class;
++     Dav1dContext *c;
++@@ -140,6 +143,15 @@ static av_cold int libdav1d_init(AVCodecContext *c)
++     if (dav1d->operating_point >= 0)
++         s.operating_point = dav1d->operating_point;
++ 
+++#if FF_DAV1D_VERSION_AT_LEAST(6,0)
+++    if (dav1d->frame_threads || dav1d->tile_threads)
+++        s.n_threads = FFMAX(dav1d->frame_threads, dav1d->tile_threads);
+++    else
+++        s.n_threads = FFMIN(threads, DAV1D_MAX_THREADS);
+++    s.max_frame_delay = (c->flags & AV_CODEC_FLAG_LOW_DELAY) ? 1 : s.n_threads;
+++    av_log(c, AV_LOG_DEBUG, "Using %d threads, %d max_frame_delay\n",
+++           s.n_threads, s.max_frame_delay);
+++#else
++     s.n_tile_threads = dav1d->tile_threads
++                      ? dav1d->tile_threads
++                      : FFMIN(floor(sqrt(threads)), DAV1D_MAX_TILE_THREADS);
++@@ -148,6 +160,7 @@ static av_cold int libdav1d_init(AVCodecContext *c)
++                       : FFMIN(ceil(threads / s.n_tile_threads), DAV1D_MAX_FRAME_THREADS);
++     av_log(c, AV_LOG_DEBUG, "Using %d frame threads, %d tile threads\n",
++            s.n_frame_threads, s.n_tile_threads);
+++#endif
++ 
++     res = dav1d_open(&dav1d->c, &s);
++     if (res < 0)
++@@ -384,11 +397,18 @@ static av_cold int libdav1d_close(AVCodecContext *c)
++     return 0;
++ }
++ 
+++#ifndef DAV1D_MAX_FRAME_THREADS
+++#define DAV1D_MAX_FRAME_THREADS DAV1D_MAX_THREADS
+++#endif
+++#ifndef DAV1D_MAX_TILE_THREADS
+++#define DAV1D_MAX_TILE_THREADS DAV1D_MAX_THREADS
+++#endif
+++
++ #define OFFSET(x) offsetof(Libdav1dContext, x)
++ #define VD AV_OPT_FLAG_VIDEO_PARAM | AV_OPT_FLAG_DECODING_PARAM
++ static const AVOption libdav1d_options[] = {
++-    { "tilethreads", "Tile threads", OFFSET(tile_threads), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, DAV1D_MAX_TILE_THREADS, VD },
++-    { "framethreads", "Frame threads", OFFSET(frame_threads), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, DAV1D_MAX_FRAME_THREADS, VD },
+++    { "tilethreads", "Tile threads", OFFSET(tile_threads), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, DAV1D_MAX_TILE_THREADS, VD | AV_OPT_FLAG_DEPRECATED },
+++    { "framethreads", "Frame threads", OFFSET(frame_threads), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, DAV1D_MAX_FRAME_THREADS, VD | AV_OPT_FLAG_DEPRECATED },
++     { "filmgrain", "Apply Film Grain", OFFSET(apply_grain), AV_OPT_TYPE_BOOL, { .i64 = -1 }, -1, 1, VD },
++     { "oppoint",  "Select an operating point of the scalable bitstream", OFFSET(operating_point), AV_OPT_TYPE_INT, { .i64 = -1 }, -1, 31, VD },
++     { "alllayers", "Output all spatial layers", OFFSET(all_layers), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
++-- 
++2.36.0
++

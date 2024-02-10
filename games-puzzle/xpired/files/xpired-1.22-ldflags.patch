@@ -1,0 +1,26 @@
+diff -ru src.orig/Makefile src/Makefile
+--- src.orig/Makefile	2002-08-01 14:42:51.000000000 -0400
++++ src/Makefile	2010-10-13 19:31:21.944183145 -0400
+@@ -1,18 +1,17 @@
+ PREFIX=/usr/local
+ SHARE_PREFIX=$(PREFIX)/share/xpired
+-CFLAGS=`sdl-config --cflags` -DUNIX -DPREFIX=\"$(PREFIX)\" -DSHARE_PREFIX=\"$(SHARE_PREFIX)\"
+-LDFLAGS=`sdl-config --libs` -lSDL -lSDL_mixer -lSDL_image -lSDL_gfx
+-CC=gcc
++CFLAGS+=`sdl-config --cflags` -DUNIX -DPREFIX=\"$(PREFIX)\" -DSHARE_PREFIX=\"$(SHARE_PREFIX)\"
++LDLIBS=`sdl-config --libs` -lSDL -lSDL_mixer -lSDL_image -lSDL_gfx
+ 
+ BINARIES = xpired xpiredit
+ 
+ all: $(BINARIES)
+ 
+ xpired: xpired.o
+-	$(CC) -o xpired xpired.o $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o xpired xpired.o $(LDLIBS)
+ 
+ xpiredit: xpiredit.o xpired_unix.h
+-	$(CC) -o xpiredit xpiredit.o $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o xpiredit xpiredit.o $(LDLIBS)
+ 
+ .PHONY: clean
+ 

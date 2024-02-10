@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>henson@acm.org</email>
+		<name>Paul B. Henson</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		OpenNTPD is a FREE, easy to use implementation of the Network Time
+		Protocol. It provides the ability to sync the local clock to remote
+		NTP servers and can act as NTP server itself, redistributing the
+		local clock.
+	</longdescription>
+	<use>
+		<flag name="constraints">Enable HTTPS TLS time constraint support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">openntpd-portable/openntpd-portable</remote-id>
+	</upstream>
+</pkgmetadata>

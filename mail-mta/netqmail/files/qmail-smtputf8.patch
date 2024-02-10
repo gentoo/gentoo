@@ -1,0 +1,242 @@
+This patch adds EAI support to qmail; EAI allows UTF8 almost everywhere in
+email.
+
+Thanks for CNNIC for sponsoring this work.
+
+--- /dev/null
++++ netqmail-1.06/Makefile
+@@ -1446,7 +1446,7 @@ substdio.a error.a str.a fs.a auto_qmail.o dns.lib socket.lib
+ 	timeoutwrite.o timeoutconn.o tcpto.o now.o dns.o ip.o \
+ 	ipalloc.o ipme.o quote.o ndelay.a case.a sig.a open.a \
+ 	lock.a seek.a getln.a stralloc.a alloc.a substdio.a error.a \
+-	str.a fs.a auto_qmail.o  `cat dns.lib` `cat socket.lib`
++	str.a fs.a auto_qmail.o  `cat dns.lib` `cat socket.lib` -lidn2
+ 
+ qmail-remote.0: \
+ qmail-remote.8
+--- /dev/null
++++ netqmail-1.06/qmail-remote.c
+@@ -2,6 +2,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
++#include <idn2.h>
+ #include "sig.h"
+ #include "stralloc.h"
+ #include "substdio.h"
+@@ -42,6 +43,7 @@
+ stralloc routes = {0};
+ struct constmap maproutes;
+ stralloc host = {0};
++stralloc asciihost = {0};
+ stralloc sender = {0};
+ 
+ saa reciplist = {0};
+@@ -53,12 +55,13 @@
+ # include "tls.h"
+ # include "ssl_timeoutio.h"
+ # include <openssl/x509v3.h>
+-# define EHLO 1
+ 
+ int tls_init();
+ const char *ssl_err_str = 0;
+ #endif 
+ 
++# define EHLO 1
++
+ void out(s) char *s; { if (substdio_puts(subfdoutsmall,s) == -1) _exit(0); }
+ void zero() { if (substdio_put(subfdoutsmall,"\0",1) == -1) _exit(0); }
+ void zerodie() { zero(); substdio_flush(subfdoutsmall); _exit(0); }
+@@ -156,6 +159,7 @@
+ substdio smtpfrom = SUBSTDIO_FDBUF(saferead,-1,smtpfrombuf,sizeof smtpfrombuf);
+ 
+ stralloc smtptext = {0};
++stralloc firstpart = {0};
+ 
+ void get(ch)
+ char *ch;
+@@ -308,6 +312,8 @@
+   int r;
+   char ch;
+ 
++  substdio_put(&smtpto,firstpart.s,firstpart.len);
++
+   for (;;) {
+     r = substdio_get(&ssin,&ch,1);
+     if (r == 0) break;
+@@ -518,6 +524,88 @@
+ 
+ stralloc recip = {0};
+ 
++int containsutf8(p, l) unsigned char * p; int l;
++{
++  int i = 0;
++  while (i<l)
++    if(p[i++] > 127) return 1;
++  return 0;
++}
++
++int utf8message;
++
++void checkutf8message()
++{
++  int pos;
++  int i;
++  int r;
++  char ch;
++  int state;
++
++  if (containsutf8(sender.s, sender.len)) { utf8message = 1; return; }
++  for (i = 0;i < reciplist.len;++i)
++    if (containsutf8(reciplist.sa[i].s, reciplist.sa[i].len)) {
++      utf8message = 1;
++      return;
++    }
++
++  state = 0;
++  pos = 0;
++  for (;;) {
++    r = substdio_get(&ssin,&ch,1);
++    if (r == 0) break;
++    if (r == -1) temp_read();
++
++    if (!stralloc_append(&firstpart,&ch)) temp_nomem();
++
++    if (ch == '\r')
++      continue;
++    if (ch == '\t')
++      ch = ' ';
++
++    switch (state) {
++    case 6: /* in Received, at LF but before WITH clause */
++      if (ch == ' ') { state = 3; pos = 1; continue; }
++      state = 0;
++      /* FALL THROUGH */
++
++    case 0: /* start of header field */
++      if (ch == '\n') return;
++      state = 1;
++      pos = 0;
++      /* FALL THROUGH */
++
++    case 1: /* partway through "Received:" */
++      if (ch != "RECEIVED:"[pos] && ch != "received:"[pos]) { state = 2; continue; }
++      if (++pos == 9) { state = 3; pos = 0; }
++      continue;
++
++    case 2: /* other header field */
++      if (ch == '\n') state = 0;
++      continue;
++
++    case 3: /* in Received, before WITH clause or partway though " with " */
++      if (ch == '\n') { state = 6; continue; }
++      if (ch != " WITH "[pos] && ch != " with "[pos]) { pos = 0; continue; }
++      if (++pos == 6) { state = 4; pos = 0; }
++      continue;
++
++    case 4: /* in Received, having seen with, before the argument */
++      if (pos == 0 && (ch == ' ' || ch == '\t')) continue;
++      if (ch != "UTF8"[pos] && ch != "utf8"[pos]) { state = 5; continue; }
++      if(++pos == 4) { utf8message = 1; state = 5; continue; }
++      continue;
++
++    case 5: /* after the RECEIVED WITH argument */
++      /* blast() assumes that it copies whole lines */
++      if (ch == '\n') return;
++      state = 1;
++      pos = 0;
++      continue;
++    }
++  }
++}
++
+ void smtp()
+ {
+   unsigned long code;
+@@ -571,9 +659,12 @@
+   }
+ #endif
+  
++  checkutf8message();
+   substdio_puts(&smtpto,"MAIL FROM:<");
+   substdio_put(&smtpto,sender.s,sender.len);
+-  substdio_puts(&smtpto,">\r\n");
++  substdio_puts(&smtpto,">");
++  if (utf8message) substdio_puts(&smtpto," SMTPUTF8");
++  substdio_puts(&smtpto,"\r\n");
+   substdio_flush(&smtpto);
+   code = smtpcode();
+   if (code >= 500) quit("DConnected to "," but sender was rejected");
+@@ -702,9 +793,17 @@
+       relayhost[i] = 0;
+     }
+     if (!stralloc_copys(&host,relayhost)) temp_nomem();
++  } else {
++    char * ascii = 0;
++    host.s[host.len] = '\0';
++    switch (idn2_lookup_u8(host.s, (uint8_t**)&ascii, IDN2_NFC_INPUT)) {
++      case IDN2_OK: break;
++      case IDN2_MALLOC: temp_nomem();
++      default: perm_dns();
++    }
++    if (!stralloc_copys(&asciihost, ascii)) temp_nomem();
+   }
+ 
+-
+   addrmangle(&sender,argv[2],&flagalias,0);
+  
+   if (!saa_readyplus(&reciplist,0)) temp_nomem();
+@@ -723,7 +822,7 @@
+ 
+  
+   random = now() + (getpid() << 16);
+-  switch (relayhost ? dns_ip(&ip,&host) : dns_mxip(&ip,&host,random)) {
++  switch (relayhost ? dns_ip(&ip,&host) : dns_mxip(&ip,&asciihost,random)) {
+     case DNS_MEM: temp_nomem();
+     case DNS_SOFT: temp_dns();
+     case DNS_HARD: perm_dns();
+--- /dev/null
++++ netqmail-1.06/qmail-smtpd.c
+@@ -273,6 +273,7 @@
+ stralloc rcptto = {0};
+ stralloc fuser = {0};
+ stralloc mfparms = {0};
++int smtputf8 = 0;
+ 
+ int mailfrom_size(arg) char *arg;
+ {
+@@ -323,6 +324,7 @@
+       while (len) {
+         arg++; len--; 
+         if (*arg == ' ' || *arg == '\0' ) {
++           if (case_starts(mfparms.s,"SMTPUTF8")) smtputf8 = 1;
+            if (case_starts(mfparms.s,"SIZE=")) if (mailfrom_size(mfparms.s+5)) { flagsize = 1; return; }
+            if (case_starts(mfparms.s,"AUTH=")) mailfrom_auth(mfparms.s+5,mfparms.len-5);  
+            if (!stralloc_copys(&mfparms,"")) die_nomem;
+@@ -351,7 +353,7 @@
+     out("\r\n250-STARTTLS");
+ #endif
+   size[fmt_ulong(size,(unsigned int) databytes)] = 0;
+-  out("\r\n250-PIPELINING\r\n250-8BITMIME\r\n");
++  out("\r\n250-PIPELINING\r\n250-SMTPUTF8\r\n250-8BITMIME\r\n");
+   out("250-SIZE "); out(size); out("\r\n");
+ #ifdef CRAM_MD5
+   out("250 AUTH LOGIN PLAIN CRAM-MD5\r\n");
+@@ -516,7 +518,15 @@
+   if (qmail_open(&qqt) == -1) { err_qqt(); return; }
+   qp = qmail_qp(&qqt);
+   out("354 go ahead\r\n");
+- 
++
++  if (smtputf8) {
++    stralloc utf8proto = {0};
++    if ('E' == *protocol) protocol++;
++    if (!stralloc_copys(&utf8proto, "UTF8")) die_nomem();
++    if (!stralloc_cats(&utf8proto, protocol)) die_nomem();
++    utf8proto.s[utf8proto.len] = '\0';
++    protocol = utf8proto.s;
++  }
+   received(&qqt,protocol,local,remoteip,remotehost,remoteinfo,fakehelo);
+   blast(&hops);
+   hops = (hops >= MAXHOPS);
+

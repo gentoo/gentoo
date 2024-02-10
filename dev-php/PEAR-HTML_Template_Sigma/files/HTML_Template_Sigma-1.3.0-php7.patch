@@ -1,0 +1,42 @@
+diff -aurN a/HTML/Template/Sigma.php b/HTML/Template/Sigma.php
+--- a/HTML/Template/Sigma.php	2014-01-13 04:33:52.000000000 -0500
++++ b/HTML/Template/Sigma.php	2018-02-19 09:29:52.995013991 -0500
+@@ -384,6 +384,26 @@
+      *
+      * @see   setRoot(), setCacheRoot()
+      */
++    function __construct($root = '', $cacheRoot = '')
++    {
++        // the class is inherited from PEAR to be able to use $this->setErrorHandling()
++        parent::__construct();
++        $this->variablesRegExp       = '@' . $this->openingDelimiter . '(' . $this->variablenameRegExp . ')' .
++                                       '(:(' . $this->functionnameRegExp . '))?' . $this->closingDelimiter . '@sm';
++        $this->removeVariablesRegExp = '@' . $this->openingDelimiter . '\s*(' . $this->variablenameRegExp . ')\s*'
++                                       . $this->closingDelimiter . '@sm';
++        $this->blockRegExp           = '@<!--\s+BEGIN\s+(' . $this->blocknameRegExp
++                                       . ')\s+-->(.*)<!--\s+END\s+\1\s+-->@sm';
++        $this->functionRegExp        = '@' . $this->functionPrefix . '(' . $this->functionnameRegExp . ')\s*\(@sm';
++        $this->setRoot($root);
++        $this->setCacheRoot($cacheRoot);
++
++        $this->setCallbackFunction('h', array(&$this, '_htmlspecialchars'));
++        $this->setCallbackFunction('e', array(&$this, '_htmlentities'));
++        $this->setCallbackFunction('u', 'urlencode');
++        $this->setCallbackFunction('r', 'rawurlencode');
++        $this->setCallbackFunction('j', array(&$this, '_jsEscape'));
++    }
+     function HTML_Template_Sigma($root = '', $cacheRoot = '')
+     {
+         // the class is inherited from PEAR to be able to use $this->setErrorHandling()
+diff -aurN a/tests/AllTests.php b/tests/AllTests.php
+--- a/tests/AllTests.php	2014-01-13 04:33:52.000000000 -0500
++++ b/tests/AllTests.php	2018-02-19 09:37:14.071972780 -0500
+@@ -24,8 +24,6 @@
+     define('PHPUnit_MAIN_METHOD', 'HTML_Template_Sigma_AllTests::main');
+ }
+ 
+-require_once 'PHPUnit/Autoload.php';
+-
+ /**
+  * Class for file / directory manipulation from PEAR package
+  */

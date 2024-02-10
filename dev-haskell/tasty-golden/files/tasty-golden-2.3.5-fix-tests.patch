@@ -1,0 +1,76 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+* There was a slight discrepency between the expected and actual results
+  of the "before-golden" test, likely due to a change in tasty's output.
+
+* The example executable is renamed to tasty-golden-example in the ebuild
+  to prevent possible name collisions.
+
+diff -urN tasty-golden-2.3.5/tests/golden/before-accept.golden tasty-golden-2.3.5-r1/tests/golden/before-accept.golden
+--- tasty-golden-2.3.5/tests/golden/before-accept.golden	2020-02-21 05:21:09.000000000 -0700
++++ tasty-golden-2.3.5-r1/tests/golden/before-accept.golden	2022-11-04 13:15:02.987564783 -0600
+@@ -7,6 +7,7 @@
+   Failing tests
+     goldenVsFile:       FAIL
+       Files 'example/golden/fail/goldenVsFile.golden' and 'example/golden/fail/goldenVsFile.actual' differ
++      Use -p '$0=="Tests.Failing tests.goldenVsFile"' to rerun this test only.
+     goldenVsFileDiff:   FAIL
+       1d0
+       < 1
+@@ -35,6 +36,7 @@
+       169d156
+       <<truncated>
+       Use --accept or increase --size-cutoff to see full output.
++      Use -p '/Failing tests.goldenVsFileDiff/' to rerun this test only.
+     goldenVsString:     FAIL
+       Test output was different from 'example/golden/fail/goldenVsString.golden'. It was:
+       2
+@@ -87,8 +89,9 @@
+       55
+       56<truncated>
+       Use --accept or increase --size-cutoff to see full output.
++      Use -p '$0=="Tests.Failing tests.goldenVsString"' to rerun this test only.
+     goldenVsStringDiff: FAIL
+-      Test output was different from 'example/golden/fail/goldenVsStringDiff.golden'. Output of ["diff","example/golden/fail/goldenVsStringDiff.golden","/tmp/goldenVsStringDiff.actual"]:
++      Test output was different from 'example/golden/fail/goldenVsStringDiff.golden'. Output of ["diff","example/golden/fail/goldenVsStringDiff.golden","/var/tmp/portage/dev-haskell/tasty-golden-2.3.5/temp/goldenVsStringDiff.actual"]:
+       1d0
+       < 1
+       4d2
+@@ -116,5 +119,6 @@
+       169d156
+       <<truncated>
+       Use --accept or increase --size-cutoff to see full output.
++      Use -p '/Failing tests.goldenVsStringDiff/' to rerun this test only.
+ 
+ 4 out of 8 tests failed
+diff -urN tasty-golden-2.3.5/tests/test.hs tasty-golden-2.3.5-r1/tests/test.hs
+--- tasty-golden-2.3.5/tests/test.hs	2021-02-24 06:27:55.000000000 -0700
++++ tasty-golden-2.3.5-r1/tests/test.hs	2022-11-04 13:04:13.007572500 -0600
+@@ -89,7 +89,7 @@
+           -- timings.
+           --
+           -- NB: cannot use multiline literals because of CPP.
+-          let cmd = shell ("cd " ++ tmp ++ " && example | " ++
++          let cmd = shell ("cd " ++ tmp ++ " && tasty-golden-example | " ++
+                       "sed -Ee 's/[[:digit:]-]+\\.actual/.actual/g; s/ \\([[:digit:].]+s\\)//' > " ++
+                       our</>"tests/golden/before-accept.actual || true")
+           runProcess_ cmd
+@@ -102,7 +102,7 @@
+         (do
+           tmp <- tmpIO
+           our <- getCurrentDirectory
+-          let cmd = shell ("cd " ++ tmp ++ " && example --accept | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
++          let cmd = shell ("cd " ++ tmp ++ " && tasty-golden-example --accept | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
+                           our </>"tests/golden/with-accept.actual")
+           runProcess_ cmd
+         )
+@@ -114,7 +114,7 @@
+         (do
+           tmp <- tmpIO
+           our <- getCurrentDirectory
+-          let cmd = shell ("cd " ++ tmp ++ " && example | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
++          let cmd = shell ("cd " ++ tmp ++ " && tasty-golden-example | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
+                           our</>"tests/golden/after-accept.actual")
+           runProcess_ cmd
+         )

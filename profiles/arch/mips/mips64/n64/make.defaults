@@ -1,0 +1,14 @@
+# Copyright 2011-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+PROFILE_ARCH="mips64"
+
+CHOST="mips64-unknown-linux-gnu"
+
+DEFAULT_ABI="n64"
+ABI="${DEFAULT_ABI}"
+MULTILIB_ABIS="n64"
+CHOST_n64="${CHOST}"
+
+ABI_MIPS="n64"
+IUSE_IMPLICIT="abi_mips_n64"

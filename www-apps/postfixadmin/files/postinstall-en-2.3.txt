@@ -1,0 +1,47 @@
+First Time Installation
+=======================
+PostfixAdmin can use either MySQL or PostgreSQL. It is up to you, or your
+database administrator, to provide a database and a user with full access to
+the database for use by PostfixAdmin.
+
+If you are unfamiliar with MySQL or PostgreSQL, we have some good starting
+guides:
+
+  * http://www.gentoo.org/doc/en/mysql-howto.xml
+  * https://wiki.gentoo.org/wiki/PostgreSQL
+
+Once the database and user have been allocated, you will need to provide the
+details of this database and the associated user within the configuration file:
+
+  ${MY_INSTALLDIR}/config.inc.php
+
+In the same configuration file, check for other settings that are relevant to
+your setup. Once you're finished with your changes, make sure you set:
+
+  $CONF['configured'] = true;
+
+To use Virtual Vacation, please read VIRTUAL_VACATION_INSTALL.
+
+Finally you should be able to complete the installation of postfixadmin by
+pointing your browser at:
+
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/setup.php
+
+Postfix Admin contains 3 views of administration:
+  1. Site Admin view, located at http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/admin/.
+  2. Domain Admin view, located at http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/.
+  3. User Admin View, located at http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/users/.
+
+In order to do the initial configuration you have to go to the Site Admin view.
+
+Upgrading
+=========
+When updating from older version of PostfixAdmin, make sure you backup your
+database before you run the update script on your database.
+
+  * mysqldump -a -u root -p > /tmp/postfixadmin-backup.sql
+  * pg_dump -U postgres -d postgres -C -f pa-db-backup.sql postfixadmin_db
+
+For update from version 1.5.x of PostfixAdmin:
+  1. Please read the DOCUMENTS/UPGRADE.TXT
+  2. Run: http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/setup.php

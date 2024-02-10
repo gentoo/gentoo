@@ -1,0 +1,40 @@
+Description: Fix FTBFS with GCC 10
+Author: Paul Wise <pabs@debian.org>
+Bug-Debian: https://bugs.debian.org/957439
+Origin: upstream, extracted from two separate commits:
+ https://git.savannah.nongnu.org/cgit/xforms.git/commit/?id=9806bce102d0c079c2c486b25ae6bdac3c98eecf
+ https://git.savannah.nongnu.org/cgit/xforms.git/commit/?id=2c1a9f151baf50887a517280645ec23379fb96f8
+--- a/fdesign/sp_spinner.c
++++ b/fdesign/sp_spinner.c
+@@ -29,7 +29,7 @@
+ #include "spec/spinner_spec.h"
+ 
+ static FD_spinnerattrib * spn_attrib;
+-FL_OBJECT *curobj;
++static FL_OBJECT *curobj;
+ 
+ 
+ /***************************************
+--- a/fdesign/sp_twheel.c
++++ b/fdesign/sp_twheel.c
+@@ -38,7 +38,7 @@
+ #include "spec/twheel_spec.h"
+ 
+ static FD_twheelattrib * twheel_attrib;
+-FL_OBJECT * curobj;
++static FL_OBJECT * curobj;
+ 
+ 
+ /***************************************
+--- a/lib/objects.c
++++ b/lib/objects.c
+@@ -36,6 +36,9 @@
+ 
+ #define TRANSLATE_Y( obj, form )    ( form->h - obj->h - obj->y )
+ 
++extern FL_OBJECT * fli_handled_obj;        /*  defined in  events.c */
++extern FL_OBJECT * fli_handled_parent;     /*  defined in  events.c */
++
+ extern FL_FORM * fli_fast_free_object;     /* defined in forms.c */
+ 
+ extern FL_OBJECT * fli_handled_obj;        /* defined in  events.c */

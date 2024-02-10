@@ -1,0 +1,55 @@
+--- a/Makefile
++++ b/Makefile
+@@ -23,7 +23,6 @@
+ # (the program should compile with no warning messages - if you
+ #  see a warning message please let me know about it)
+ # ------------------------------------------------------------
+-CC = cc
+ 
+ 
+ # STEP 2: IF YOU WANT TO COMPILE WITH THE MESA LIBRARIES THEN
+@@ -39,7 +38,8 @@
+ # ------------------------------------------------------------
+ #GLIB = -lMesaGL -lMesaGLU
+ # or
+-GLIB =  -lGL -lGLU
++GLIB_CFLAGS = `${PKG_CONFIG} --cflags gl` `${PKG_CONFIG} --cflags glu`
++GLIB_LIBS = `${PKG_CONFIG} --libs gl` `${PKG_CONFIG} --libs glu`
+ 
+ 
+ # STEP 4: CHOOSE WHICH HARDWARE / OS YOU ARE RUNNING
+@@ -91,13 +91,11 @@
+ 
+ # STEP 7: CHOOSE ANY OPTIMIZATIONS OR ADD ANY SPECIAL INCLUSIONS
+ # ------------------------------------------------------------
+-CFLAGS     = -O2  -I/usr/local/X11/include -I/usr/demo/SOUND/ -I./. $(AUDIODEF) $(OS)
+ 
+ 
+ # STEP 8: ADD ANY SPECIAL LIBRARY PATHS
+ #         (USEFUL TO POINT TO WHERE THE MESA LIBRARIES RESIDE)
+ # ------------------------------------------------------------
+-LIBFLAGS     = 
+ 
+ # you should now be able to type 'make' and everything should be fine ...
+ 
+@@ -106,15 +104,16 @@
+ TARGET 	= battalion
+ 
+ OBJ 	= battalion.o audio.o net.o gprim.o graphics.o objects.o text.o update.o tk.o font.o soundIt.o
+-LIBS    = -L./. -L/usr/X11R6/lib -lm -lX11 -lXext
++my_CPPFLAGS = -lm `${PKG_CONFIG} --cflags x11` `${PKG_CONFIG} --cflags xext` -I./. $(AUDIODEF) $(OS)
++my_LIBS = -lm `${PKG_CONFIG} --libs x11` `${PKG_CONFIG} --libs xext`
+ 
+ all:	$(TARGET)
+ 
+-#$(OBJ): $(?:.o=.c)
+-#	$(CC) $(CFLAGS) $(LIBFLAG) $(OS) $(WHICHLIB) $(AUDIOLIB) -c $?
++.c.o:
++	$(CC) $(CPPFLAGS) $(my_CPPFLAGS) $(CFLAGS) $(GLIB_CFLAGS) $(OS) $(WHICHLIB) $(AUDIOLIB) -c $<
+ 
+ $(TARGET): $(OBJ)
+-	$(CC) -o $(TARGET) $(OBJ) $(LIBFLAGS) $(GLIB) $(LIBS) $(AUDIODEF)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(GLIB_LIBS) $(LIBS) $(my_LIBS) $(AUDIODEF)
+ 
+ clean:
+ 	rm -f $(OBJ)

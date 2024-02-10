@@ -1,0 +1,16 @@
+Author: Tom Cato Amundsen <tca@debian.org>
+Description: don't run xmllint to fix FTBFS
+Bug-Debian: https://bugs.debian.org/643609
+Forwarded: not-needed
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -197,7 +197,7 @@
+ 
+ .PHONY: test
+ 
+-test: xmllint po/solfege.pot
++test: po/solfege.pot
+ 	if grep -H -n -e "[Uu]ser'*s manual" po/solfege.pot; then \
+ 		echo "Don't write \"users manual\" or \"user's manual\". Always write \"user manual\""; \
+ 		exit 10; \

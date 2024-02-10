@@ -1,0 +1,31 @@
+From 29dd0fcf8a6b6256d111b2ceb67798ae73c3e0b1 Mon Sep 17 00:00:00 2001
+From: DjLegolas <djlegolas@protonmail.com>
+Date: Mon, 7 Nov 2022 01:05:55 +0200
+Subject: [PATCH] [WebUI] Fix `TypeError` in DelugeWeb constractor
+
+In `twisted 22.10`, a check new for passing the `path` variable as
+`bytes` in the `putChild` method.
+We were enforcing this on every other place but the `__init__` of
+`DelugeWeb` itself.
+
+Ref: https://github.com/twisted/twisted/pull/11718
+Closes: https://dev.deluge-torrent.org/ticket/3566
+---
+ deluge/ui/web/server.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/deluge/ui/web/server.py b/deluge/ui/web/server.py
+index f391a78d27..020cf9ef4f 100644
+--- a/deluge/ui/web/server.py
++++ b/deluge/ui/web/server.py
+@@ -682,7 +682,9 @@ def __init__(self, options=None, daemon=True):
+ 
+         if self.base != '/':
+             # Strip away slashes and serve on the base path as well as root path
+-            self.top_level.putChild(self.base.strip('/'), self.top_level)
++            self.top_level.putChild(
++                self.base.strip('/').encode('utf-8'), self.top_level
++            )
+ 
+         setup_translation()
+ 

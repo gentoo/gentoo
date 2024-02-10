@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/709648
+--- a/lists.c
++++ b/lists.c
+@@ -38,6 +38,8 @@
+ 
+ 
+ extern int dodo_mode;
++struct pattern_file *pattern_head;
++struct subnet_block *subnet_head;
+ 
+ 
+ void init_lists(void)
+--- a/lists.h
++++ b/lists.h
+@@ -45,8 +45,8 @@
+ 
+ 
+ /* the two chief lists */
+-struct subnet_block *subnet_head;
+-struct pattern_file *pattern_head;
++extern struct subnet_block *subnet_head;
++extern struct pattern_file *pattern_head;
+ 
+ 
+ 

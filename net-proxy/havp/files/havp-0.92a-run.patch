@@ -1,0 +1,51 @@
+--- a/etc/havp/havp.config.in
++++ b/etc/havp/havp.config.in
+@@ -39,7 +39,7 @@
+ # /etc/init.d/havp script requires this to work.
+ #
+ # Default:
+-# PIDFILE @localstatedir@/run/havp/havp.pid
++# PIDFILE /run/havp/havp.pid
+ 
+ #
+ # For performance reasons several instances of HAVP have to run.
+@@ -539,7 +539,7 @@
+ # Path to aveserver socket
+ #
+ # Default:
+-# AVESOCKET /var/run/aveserver
++# AVESOCKET /run/aveserver
+ 
+ 
+ #####
+@@ -551,7 +551,7 @@
+ # Path to sophie socket
+ #
+ # Default:
+-# SOPHIESOCKET /var/run/sophie
++# SOPHIESOCKET /run/sophie
+ 
+ 
+ #####
+@@ -600,7 +600,7 @@
+ # Path to avastd socket
+ #
+ # Default:
+-# AVASTSOCKET /var/run/avast4/local.sock
++# AVASTSOCKET /run/avast4/local.sock
+ 
+ # ..OR if you use avastd TCP socket, uncomment to enable use
+ #
+@@ -619,10 +619,10 @@
+ 
+ # Path to arcavird socket
+ #
+-# For version 2008, default socket is /var/run/arcad.ctl
++# For version 2008, default socket is /run/arcad.ctl
+ #
+ # Default:
+-# ARCAVIRSOCKET /var/run/arcavird.socket
++# ARCAVIRSOCKET /run/arcavird.socket
+ 
+ # Used Arcavir version
+ #  2007 = Version 2007 and earlier

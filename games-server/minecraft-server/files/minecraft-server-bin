@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Options
+JAVA_JAR="/usr/share/minecraft-server/lib/minecraft-server.jar"
+JAVA_OPTS="$@"
+MINECRAFT_OPTS="nogui"
+
+# Choose JAVA
+set -- /opt/openjdk-bin-17.* /usr/lib*/openjdk-17
+while ! [ -d "${1}" ]; do
+	if [ ${#} -eq 1 ]; then
+		echo "Error: No JAVA 17 runtime found!"
+		exit 1
+	fi
+
+	shift
+done
+JAVA_HOME="${1}"
+
+# Launch Minecraft server
+"${JAVA_HOME}"/bin/java ${JAVA_OPTS} -jar "${JAVA_JAR}" "${MINECRAFT_OPTS}"

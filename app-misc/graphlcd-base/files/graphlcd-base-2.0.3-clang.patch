@@ -1,0 +1,63 @@
+From 6af42cb2d86aa8a86d25a61900cf664f50c4a41d Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Tue, 8 Nov 2022 22:31:38 +0100
+Subject: [PATCH] Drop Clang handling
+
+This drops the specific Clang handling, as it breaks linking with newer
+Clang versions. Instead, CC and CXX should be used as it is and clang++
+invoked.
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ Make.config | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/Make.config b/Make.config
+index 4f90b4c..852e4da 100644
+--- a/Make.config
++++ b/Make.config
+@@ -12,18 +12,6 @@ CXXFLAGS ?= -g -O2 -Wall -Woverloaded-virtual
+ #CXXFLAGS ?= -g -ggdb -O0 -Wall -Woverloaded-virtual
+ CXXFLAGS += -MMD -MP
+ 
+-# CXX set to clang++: force clang
+-ifeq ($(CXX),clang++)
+-  CXX = clang
+-endif
+-
+-# set CXXEXTRA according to compiler that is used
+-ifeq ($(CXX),clang)
+-  CXXEXTRA = -x c++ -Qunused-arguments 
+-else
+-  CXXEXTRA =
+-endif
+-
+ #LDFLAGS  ?= -g -ggdb -O0
+ 
+ LDCONFIG = ldconfig
+From 0eee30128b40426f9b3c56cfefb3defc8a2ca923 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Tue, 8 Nov 2022 22:48:26 +0100
+Subject: [PATCH] Add -std=c++2b to CXXFLAGS
+
+This fixes a warning, when using a newer clang version:
+extformats.cpp:26:2: warning: use of a '#elifdef' directive is a C++2b extension [-Wc++2b-extensions]
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ Make.config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Make.config b/Make.config
+index 852e4da..7cd4ae7 100644
+--- a/Make.config
++++ b/Make.config
+@@ -10,7 +10,7 @@ CXX      ?= g++
+ 
+ CXXFLAGS ?= -g -O2 -Wall -Woverloaded-virtual
+ #CXXFLAGS ?= -g -ggdb -O0 -Wall -Woverloaded-virtual
+-CXXFLAGS += -MMD -MP
++CXXFLAGS += -MMD -MP -std=c++2b
+ 
+ #LDFLAGS  ?= -g -ggdb -O0
+ 

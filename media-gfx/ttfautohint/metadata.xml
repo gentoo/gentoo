@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>matthew@gentoo.org</email>
+  <name>Matthew Smith</name>
+</maintainer>
+<maintainer type="person" proxied="yes">
+  <email>lssndrbarbieri@gmail.com</email>
+  <name>Alessandro Barbieri</name>
+</maintainer>
+<slots>
+  <subslots>reflect soname of libttfautohint</subslots>
+</slots>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+--- a/JSON.php	2011/01/28 00:16:42	307804
++++ b/JSON.php	2013/04/30 02:37:26	330165
+@@ -554,7 +544,7 @@
+                         
+                         return ($this->use & SERVICES_JSON_SUPPRESS_ERRORS)
+                         ? 'null'
+-                        : new Services_JSON_Error(class_name($var).
++                        : new Services_JSON_Error(get_class($var).
+                             " toJSON returned an object with a toJSON method.");
+                             
+                     }
+@@ -995,7 +985,7 @@
+         function Services_JSON_Error($message = 'unknown error', $code = null,
+                                      $mode = null, $options = null, $userinfo = null)
+         {
+-
++            return;
+         }
+     }
+     

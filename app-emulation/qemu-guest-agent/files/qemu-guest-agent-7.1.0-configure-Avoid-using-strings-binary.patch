@@ -1,0 +1,85 @@
+From 33ab5f24913db8d5590fe4155829bd38e7902506 Mon Sep 17 00:00:00 2001
+Message-Id: <33ab5f24913db8d5590fe4155829bd38e7902506.1666164897.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Fri, 14 Oct 2022 09:30:15 +0200
+Subject: [PATCH] configure: Avoid using strings binary
+
+When determining the endiandness of the target architecture we're
+building for a small program is compiled, which in an obfuscated
+way declares two strings. Then, we look which string is in
+correct order (using strings binary) and deduct the endiandness.
+But using the strings binary is problematic, because it's part of
+toolchain (strings is just a symlink to
+x86_64-pc-linux-gnu-strings or llvm-strings). And when
+(cross-)compiling, it requires users to set the symlink to the
+correct toolchain.
+
+Fortunately, we have a better alternative anyways. We can mimic
+what compiler.h is already doing: comparing __BYTE_ORDER__
+against values for little/big endiandness.
+
+Bug: https://bugs.gentoo.org/876933
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Message-Id: <d6d9c7043cfe6d976d96694f2b4ecf85cf3206f1.1665732504.git.mprivozn@redhat.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ configure | 35 ++++++++++++++++++-----------------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
+
+diff --git a/configure b/configure
+index f9ec050bf8..81561be7c1 100755
+--- a/configure
++++ b/configure
+@@ -1423,30 +1423,31 @@ if test "$tcg" = "enabled"; then
+     git_submodules="$git_submodules tests/fp/berkeley-softfloat-3"
+ fi
+ 
+-# ---
++##########################################
+ # big/little endian test
+ cat > $TMPC << EOF
+-#include <stdio.h>
+-short big_endian[] = { 0x4269, 0x4765, 0x4e64, 0x4961, 0x4e00, 0, };
+-short little_endian[] = { 0x694c, 0x7454, 0x654c, 0x6e45, 0x6944, 0x6e41, 0, };
+-int main(int argc, char *argv[])
+-{
+-    return printf("%s %s\n", (char *)big_endian, (char *)little_endian);
+-}
++#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
++# error LITTLE
++#endif
++int main(void) { return 0; }
+ EOF
+ 
+-if compile_prog ; then
+-    if strings -a $TMPE | grep -q BiGeNdIaN ; then
+-        bigendian="yes"
+-    elif strings -a $TMPE | grep -q LiTtLeEnDiAn ; then
+-        bigendian="no"
+-    else
+-        echo big/little test failed
+-        exit 1
+-    fi
++if ! compile_prog ; then
++  bigendian="no"
+ else
++  cat > $TMPC << EOF
++#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
++# error BIG
++#endif
++int main(void) { return 0; }
++EOF
++
++  if ! compile_prog ; then
++    bigendian="yes"
++  else
+     echo big/little test failed
+     exit 1
++  fi
+ fi
+ 
+ ##########################################
+-- 
+2.37.3
+

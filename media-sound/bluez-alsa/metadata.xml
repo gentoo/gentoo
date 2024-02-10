@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="github">Arkq/bluez-alsa</remote-id>
+  </upstream>
+  <use>
+    <flag name="aptx">aptX (HD) over Bluetooth (many Android compatible headphones)</flag>
+    <flag name="hcitop">Enable top-like monitoring tool for HCI</flag>
+    <flag name="ldac">Enable support for AOSP <pkg>media-libs/libldac</pkg> dispatcher</flag>
+    <flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
+    <flag name="ofono">Enable ofono elephony support</flag>
+  </use>
+</pkgmetadata>

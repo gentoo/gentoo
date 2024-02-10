@@ -1,0 +1,30 @@
+https://github.com/OpenSC/pkcs11-helper/commit/744001c1424b2d178272194d64e3356824ecdcdc
+https://github.com/OpenSC/pkcs11-helper/issues/60
+https://bugs.gentoo.org/880975
+
+From 744001c1424b2d178272194d64e3356824ecdcdc Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 12 Nov 2022 02:24:58 +0200
+Subject: [PATCH] openssl: fix openssl_ex_data_dup prototype
+
+--- a/lib/pkcs11h-openssl.c
++++ b/lib/pkcs11h-openssl.c
+@@ -340,7 +340,7 @@ int
+ __pkcs11h_openssl_ex_data_dup (
+ 	CRYPTO_EX_DATA *to,
+ 	CRYPTO_EX_DATA *from,
+-	void *from_d,
++	void **from_d,
+ 	int idx,
+ 	long argl,
+ 	void *argp
+@@ -350,7 +350,7 @@ int
+ __pkcs11h_openssl_ex_data_dup (
+ 	CRYPTO_EX_DATA *to,
+ 	const CRYPTO_EX_DATA *from,
+-	void *from_d,
++	void **from_d,
+ 	int idx,
+ 	long argl,
+ 	void *argp
+

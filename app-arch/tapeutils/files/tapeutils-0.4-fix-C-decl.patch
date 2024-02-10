@@ -1,0 +1,31 @@
+--- a/tapecopy.c
++++ b/tapecopy.c
+@@ -26,6 +26,8 @@
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
++#include <stdlib.h>
++
+ #include "tapeio.h"
+ #include "stdio.h"
+ #include "stdarg.h"
+--- a/tapedump.c
++++ b/tapedump.c
+@@ -26,6 +26,8 @@
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
++#include <stdlib.h>
++
+ #include "tapeio.h"
+ #include "stdio.h"
+ #include "stdarg.h"
+@@ -158,7 +160,7 @@
+       len = getrec (src, buf, MAX_REC_LEN);
+       if (len == 0)
+ 	{
+-	  printf ("total length of file %d = %d records, %d bytes\n",
++	  printf ("total length of file %d = %d records, %lu bytes\n",
+ 		  file, record, filebytes);
+ 	  tapebytes += filebytes;
+ 	  file++;

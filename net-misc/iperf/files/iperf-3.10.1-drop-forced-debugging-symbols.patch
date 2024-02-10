@@ -1,0 +1,148 @@
+https://bugs.gentoo.org/788973
+
+From 456e9460f9320123c5449fd2314bc1b2a001547a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Jul 2021 05:21:46 +0100
+Subject: [PATCH] Drop forced -g
+
+---
+ examples/Makefile.am |  4 ----
+ examples/Makefile.in |  4 ----
+ src/Makefile.am      | 11 ++---------
+ src/Makefile.in      | 11 ++---------
+ 4 files changed, 4 insertions(+), 26 deletions(-)
+
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index 829f242..aad0ae2 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -3,11 +3,7 @@ noinst_PROGRAMS		= mic mis		# Build, but don't install
+ AM_CPPFLAGS		= -I$(top_srcdir)/src
+ 
+ mic_SOURCES		= mic.c
+-mic_CFLAGS		= -g
+ mic_LDADD		= ../src/libiperf.la
+-mic_LDFLAGS		= -g
+ 
+ mis_SOURCES		= mis.c
+-mis_CFLAGS		= -g
+ mis_LDADD		= ../src/libiperf.la
+-mis_LDFLAGS		= -g
+diff --git a/examples/Makefile.in b/examples/Makefile.in
+index d74c3c8..089b45d 100644
+--- a/examples/Makefile.in
++++ b/examples/Makefile.in
+@@ -304,13 +304,9 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AM_CPPFLAGS = -I$(top_srcdir)/src
+ mic_SOURCES = mic.c
+-mic_CFLAGS = -g
+ mic_LDADD = ../src/libiperf.la
+-mic_LDFLAGS = -g
+ mis_SOURCES = mis.c
+-mis_CFLAGS = -g
+ mis_LDADD = ../src/libiperf.la
+-mis_LDFLAGS = -g
+ all: all-am
+ 
+ .SUFFIXES:
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 11d3e17..190ff26 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -47,9 +47,7 @@ libiperf_la_SOURCES     = \
+ 
+ # Specify the sources and various flags for the iperf binary
+ iperf3_SOURCES          = main.c
+-iperf3_CFLAGS           = -g
+ iperf3_LDADD            = libiperf.la
+-iperf3_LDFLAGS          = -g
+ 
+ if ENABLE_PROFILING
+ # If the iperf-profiled-binary is enabled
+@@ -58,34 +56,29 @@ if ENABLE_PROFILING
+ iperf3_profile_SOURCES  = main.c \
+                           $(libiperf_la_SOURCES)
+ 
+-iperf3_profile_CFLAGS   = -pg -g
++iperf3_profile_CFLAGS   = -pg
+ iperf3_profile_LDADD    = libiperf.la
+-iperf3_profile_LDFLAGS  = -pg -g
++iperf3_profile_LDFLAGS  = -pg
+ endif
+ 
+ # Specify the sources and various flags for the test cases
+ t_timer_SOURCES         = t_timer.c
+-t_timer_CFLAGS          = -g
+ t_timer_LDFLAGS         =
+ t_timer_LDADD           = libiperf.la
+ 
+ t_units_SOURCES         = t_units.c
+-t_units_CFLAGS          = -g
+ t_units_LDFLAGS         =
+ t_units_LDADD           = libiperf.la
+ 
+ t_uuid_SOURCES          = t_uuid.c
+-t_uuid_CFLAGS           = -g
+ t_uuid_LDFLAGS          =
+ t_uuid_LDADD            = libiperf.la
+ 
+ t_api_SOURCES           = t_api.c
+-t_api_CFLAGS            = -g
+ t_api_LDFLAGS           =
+ t_api_LDADD             = libiperf.la
+ 
+ t_auth_SOURCES           = t_auth.c
+-t_auth_CFLAGS            = -g
+ t_auth_LDFLAGS           =
+ t_auth_LDADD             = libiperf.la
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 34d92fa..2144ff7 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -671,9 +671,7 @@ libiperf_la_SOURCES = \
+ 
+ # Specify the sources and various flags for the iperf binary
+ iperf3_SOURCES = main.c
+-iperf3_CFLAGS = -g
+ iperf3_LDADD = libiperf.la
+-iperf3_LDFLAGS = -g
+ 
+ # If the iperf-profiled-binary is enabled
+ # Specify the sources and various flags for the profiled iperf binary. This
+@@ -681,29 +679,24 @@ iperf3_LDFLAGS = -g
+ @ENABLE_PROFILING_TRUE@iperf3_profile_SOURCES = main.c \
+ @ENABLE_PROFILING_TRUE@                          $(libiperf_la_SOURCES)
+ 
+-@ENABLE_PROFILING_TRUE@iperf3_profile_CFLAGS = -pg -g
++@ENABLE_PROFILING_TRUE@iperf3_profile_CFLAGS = -pg
+ @ENABLE_PROFILING_TRUE@iperf3_profile_LDADD = libiperf.la
+-@ENABLE_PROFILING_TRUE@iperf3_profile_LDFLAGS = -pg -g
++@ENABLE_PROFILING_TRUE@iperf3_profile_LDFLAGS = -pg
+ 
+ # Specify the sources and various flags for the test cases
+ t_timer_SOURCES = t_timer.c
+-t_timer_CFLAGS = -g
+ t_timer_LDFLAGS = 
+ t_timer_LDADD = libiperf.la
+ t_units_SOURCES = t_units.c
+-t_units_CFLAGS = -g
+ t_units_LDFLAGS = 
+ t_units_LDADD = libiperf.la
+ t_uuid_SOURCES = t_uuid.c
+-t_uuid_CFLAGS = -g
+ t_uuid_LDFLAGS = 
+ t_uuid_LDADD = libiperf.la
+ t_api_SOURCES = t_api.c
+-t_api_CFLAGS = -g
+ t_api_LDFLAGS = 
+ t_api_LDADD = libiperf.la
+ t_auth_SOURCES = t_auth.c
+-t_auth_CFLAGS = -g
+ t_auth_LDFLAGS = 
+ t_auth_LDADD = libiperf.la
+ dist_man_MANS = iperf3.1 libiperf.3
+-- 
+2.32.0
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ppc@gentoo.org</email>
+		<name>PowerPC architecture team</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/ibm-power-utilities/librtas/issues</bugs-to>
+		<changelog>https://github.com/ibm-power-utilities/librtas/blob/master/Changelog</changelog>
+		<remote-id type="github">ibm-power-utilities/librtas</remote-id>
+	</upstream>
+</pkgmetadata>

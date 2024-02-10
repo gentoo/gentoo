@@ -1,0 +1,23 @@
+From c15831c99bbef1a25710e5a34208809dc9160e86 Mon Sep 17 00:00:00 2001
+From: Joshua Jensch <jenschjoshua@gmail.com>
+Date: Sun, 1 Dec 2019 16:23:12 +0100
+Subject: [PATCH] fix bug preventing entries from being scrolled.
+
+resolves #41
+---
+ src/pamix_ui.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pamix_ui.cpp b/src/pamix_ui.cpp
+index 16a2e34..c1acb2b 100644
+--- a/src/pamix_ui.cpp
++++ b/src/pamix_ui.cpp
+@@ -265,7 +265,7 @@ pamix_entry_iter_t pamix_ui::getSelectedEntryIterator() {
+ }
+ 
+ void pamix_ui::adjustDisplayedEntries() {
+-	if (!m_Entries->empty())
++	if (m_Entries->empty())
+ 		return;
+ 	if (m_SelectedEntry >= m_NumSkippedEntries && m_SelectedEntry < m_NumSkippedEntries + m_NumDrawnEntries)
+ 		return;

@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/logsurfer.pid"
+command="/usr/bin/logsurfer"
+command_args="${LOGSURFER_OPTS}"
+command_user="logsurfer"
+command_background=true
+extra_started_commands="reload dump"
+
+depend() {
+	use logger
+}
+
+start_pre() {
+	# logsurfer won't start without a config file, but
+	# it doesn't mind an empty one.
+	checkpath --file /etc/logsurfer.conf
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $? "Failed to reload ${RC_SVCNAME}"
+}
+
+dump() {
+	ebegin "Dumping ${RC_SVCNAME} internal state"
+	start-stop-daemon --signal USR1 --pidfile "${pidfile}"
+	eend $? "Failed to dump ${RC_SVCNAME} internal state"
+}

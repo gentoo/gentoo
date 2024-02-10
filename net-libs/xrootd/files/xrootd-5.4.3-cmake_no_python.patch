@@ -1,0 +1,15 @@
+--- a/bindings/python/CMakeLists.txt
++++ b/bindings/python/CMakeLists.txt
+@@ -32,6 +32,7 @@
+ 
+ configure_file(${SETUP_PY_IN} ${SETUP_PY})
+ 
++if (0)
+ string(FIND "${PIP_OPTIONS}" "--prefix" PIP_OPTIONS_PREFIX_POSITION)
+ if( "${PIP_OPTIONS_PREFIX_POSITION}" EQUAL "-1" )
+   string(APPEND PIP_OPTIONS " --prefix \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}")
+@@ -100,3 +101,4 @@
+       )"
+   )
+ endif()
++endif()

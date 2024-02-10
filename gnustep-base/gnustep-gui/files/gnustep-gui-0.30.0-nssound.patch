@@ -1,0 +1,24 @@
+From f10c0eeb1ba5276d32c70a479f77eff54c6bdba5 Mon Sep 17 00:00:00 2001
+From: Sebastian Reitenbach <sebastia@l00-bugdead-prods.de>
+Date: Thu, 2 Mar 2023 13:19:39 +0100
+Subject: [PATCH] This broke building SimpleAgenda for me:
+
+In file included from SoundBackend.m:1:
+/usr/local/include/AppKit/NSSound.h:57:1: error: unknown type name 'APPKIT_EXPORT_CLASS'
+APPKIT_EXPORT_CLASS
+---
+ Headers/AppKit/NSSound.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Headers/AppKit/NSSound.h b/Headers/AppKit/NSSound.h
+index 4f4438765..c28019f55 100644
+--- a/Headers/AppKit/NSSound.h
++++ b/Headers/AppKit/NSSound.h
+@@ -30,6 +30,7 @@
+ 
+ #ifndef _GNUstep_H_NSSound
+ #define _GNUstep_H_NSSound
++#import <AppKit/AppKitDefines.h>
+ 
+ #import <Foundation/NSObject.h>
+ #import <Foundation/NSBundle.h>

@@ -1,0 +1,16 @@
+# /etc/conf.d/fancontrol
+
+# Configuration file
+#FANCONTROL_CONFIGFILE="/etc/fancontrol"
+
+# You can use this configuration option to pass additional options to the
+# start-stop-daemon, see start-stop-daemon(8) for more details.
+# Per default we forces fancontrol into background and wait 1000ms after we
+# have started the service to ensure that the daemon is really up and
+# running.
+#FANCONTROL_SSDARGS="--background --wait 1000"
+
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (60 + 5 seconds
+# per default) when you are stopping the service.
+#FANCONTROL_TERMTIMEOUT="TERM/60/KILL/5"

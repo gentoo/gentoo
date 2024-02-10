@@ -1,0 +1,11 @@
+[Unit]
+Description=SpamAssassin Proxy Daemon
+Before=mail-transfer-agent.target
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/spampd --nodetach $SPAMPD_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

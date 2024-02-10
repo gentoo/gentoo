@@ -1,0 +1,24 @@
+--- memdump-1.01.orig/makedefs
++++ memdump-1.01/makedefs
+@@ -30,9 +30,7 @@
+     SunOS.5*)	DEFS="-DSUNOS5 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+ 		RANLIB=":"
+ 		;;
+-  Linux.2.4*)   DEFS="-DLINUX2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+-		;;
+-    Linux.2*)   DEFS="-DLINUX2"
++    Linux.*)   DEFS="-DLINUX -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+ 		;;
+            *)   echo unsupported system: $SYSTEM.$RELEASE 1>&2; exit 1
+ 		;;
+--- memdump-1.01.orig/memdump.c
++++ memdump-1.01/memdump.c
+@@ -118,7 +118,7 @@
+ #define SUPPORTED
+ #endif
+ 
+-#ifdef LINUX2
++#ifdef LINUX
+ #include <paths.h>
+ #define GETPAGESIZE getpagesize
+ #define SUPPORTED

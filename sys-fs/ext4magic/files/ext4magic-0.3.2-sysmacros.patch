@@ -1,0 +1,13 @@
+https://sourceforge.net/p/ext4magic/tickets/4/
+https://bugs.gentoo.org/580192
+
+--- a/src/recover.c
++++ b/src/recover.c
+@@ -21,6 +21,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <sys/stat.h> 
++#include <sys/sysmacros.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <utime.h>

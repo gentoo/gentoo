@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription>
+		Eigen is a lightweight C++ template library for vector and matrix math,
+		a.k.a. linear algebra. Unlike most other linear algebra libraries, Eigen
+		focuses on the simple mathematical needs of applications: games and other
+		OpenGL apps, spreadsheets and other office apps, etc. Eigen is dedicated to
+		providing optimal speed with GCC.
+	</longdescription>
+	<use>
+		<flag name="benchmark">Build benchmark suite</flag>
+		<flag name="clang">Use clang for cuda units compilation</flag>
+		<flag name="hip">Enable HIP GPU computing support</flag>
+		<flag name="adolc">Add test support for Adolc (<pkg>sci-libs/adolc</pkg>)</flag>
+		<flag name="boost">Add test support for Boost.Multiprecision (<pkg>dev-libs/boost</pkg>)</flag>
+		<flag name="cholmod">Add test support for CHOLMOD (<pkg>sci-libs/cholmod</pkg>)</flag>
+		<flag name="fftw">Add test support for fftw (<pkg>sci-libs/fftw</pkg>)</flag>
+		<flag name="klu">Add test support for KLU (<pkg>sci-libs/klu</pkg>)</flag>
+		<flag name="mathjax">Use MathJax for rendering math in HTML docs (dev-libs/mathjax)</flag>
+		<flag name="opengl">Add test support for OpenGL</flag>
+		<flag name="openmp">Add test support for the OpenMP (support parallel computing)</flag>
+		<flag name="pastix">Add test support for PaStiX (<pkg>sci-libs/pastix</pkg>)</flag>
+		<flag name="sparsehash">Add test support for GoogleHash (<pkg>dev-cpp/sparsehash</pkg>)</flag>
+		<flag name="spqr">Add test support for SPQR (<pkg>sci-libs/spqr</pkg>)</flag>
+		<flag name="superlu">Add test support for SuperLU (<pkg>sci-libs/superlu</pkg>)</flag>
+		<flag name="umfpack">Add test support for UMFPACK (<pkg>sci-libs/umfpack</pkg>)</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">libeigen/eigen</remote-id>
+	</upstream>
+</pkgmetadata>

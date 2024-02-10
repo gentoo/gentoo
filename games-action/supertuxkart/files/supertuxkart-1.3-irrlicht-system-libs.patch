@@ -1,0 +1,54 @@
+diff -ur a/lib/irrlicht/source/Irrlicht/CIrrDeviceLinux.cpp b/lib/irrlicht/source/Irrlicht/CIrrDeviceLinux.cpp
+--- a/lib/irrlicht/source/Irrlicht/CIrrDeviceLinux.cpp	2021-09-28 11:02:26.000000000 +0100
++++ b/lib/irrlicht/source/Irrlicht/CIrrDeviceLinux.cpp	2021-10-29 23:30:44.714768031 +0100
+@@ -35,7 +35,7 @@
+ #include <GL/gl.h>
+ #ifdef _IRR_OPENGL_USE_EXTPOINTER_
+ #define GLX_GLXEXT_PROTOTYPES
+-#include "glxext.h"
++#include <GL/glxext.h>
+ #endif
+ #endif
+ 
+diff -ur a/lib/irrlicht/source/Irrlicht/COpenGLExtensionHandler.h b/lib/irrlicht/source/Irrlicht/COpenGLExtensionHandler.h
+--- a/lib/irrlicht/source/Irrlicht/COpenGLExtensionHandler.h	2021-09-28 11:02:26.000000000 +0100
++++ b/lib/irrlicht/source/Irrlicht/COpenGLExtensionHandler.h	2021-10-29 23:30:44.715768059 +0100
+@@ -30,7 +30,7 @@
+ 	#endif
+ 	#include <GL/gl.h>
+ 	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+-		#include "glext.h"
++		#include <GL/glext.h>
+ 	#endif
+ 	#include "wglext.h"
+ 
+@@ -45,7 +45,7 @@
+ 	#endif
+ 	#include <OpenGL/gl.h>
+ 	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+-		#include "glext.h"
++		#include <GL/glext.h>
+ 	#endif
+ #endif
+ 
+diff -ur a/lib/irrlicht/source/Irrlicht/COpenGLSLMaterialRenderer.h b/lib/irrlicht/source/Irrlicht/COpenGLSLMaterialRenderer.h
+--- a/lib/irrlicht/source/Irrlicht/COpenGLSLMaterialRenderer.h	2021-09-28 11:02:26.000000000 +0100
++++ b/lib/irrlicht/source/Irrlicht/COpenGLSLMaterialRenderer.h	2021-10-29 23:30:44.715768059 +0100
+@@ -20,7 +20,7 @@
+ 	#define WIN32_LEAN_AND_MEAN
+ 	#include <windows.h>
+ 	#include <GL/gl.h>
+-	#include "glext.h"
++	#include <GL/glext.h>
+ #else
+ #if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+ 	#define GL_GLEXT_LEGACY 1
+@@ -34,7 +34,7 @@
+ 	#include <GL/gl.h>
+ #endif
+ #if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+-	#include "glext.h"
++	#include <GL/glext.h>
+ #endif
+ #endif
+ 

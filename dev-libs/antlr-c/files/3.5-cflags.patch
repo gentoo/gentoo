@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -134,8 +134,8 @@
+  ;;
+ esac
+ 
+-CFLAGS="$CCFLAGS64 $CPPCMNTFLAGS $OPTIMFLAGS $DEBUGFLAGS $WARNFLAGS"
+-AC_MSG_RESULT([$CFLAGS])
++AM_CFLAGS="$CCFLAGS64 $CPPCMNTFLAGS $OPTIMFLAGS $DEBUGFLAGS $WARNFLAGS"
++AC_MSG_RESULT([$AM_CFLAGS])
+ AC_SUBST([OBJECT_MODE])
+ 
+ AS_IF([test "x$enable_antlrdebug" = xno], [AC_DEFINE([ANTLR3_NODEBUGGER], [1], [Define if ANTLR debugger not required])], [])

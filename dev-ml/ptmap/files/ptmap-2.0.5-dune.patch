@@ -1,0 +1,11 @@
+--- a/dune
++++ b/dune
+@@ -1,7 +1,6 @@
+ (library
+  (public_name ptmap)
+- (modules ptmap)
+- (libraries seq))
++ (modules ptmap))
+ 
+ (test
+  (name test)

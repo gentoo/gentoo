@@ -1,0 +1,35 @@
+--- a/flat/slim.theme
++++ b/flat/slim.theme
+@@ -20,9 +20,9 @@
+ input_pass_y            163
+ 
+ input_font          	Verdana:size=12
+-input_color		#fffafa
+-input_bgcolor           #000000
+-input_fgcolor           #ffffff
++input_color		#000000
++input_bgcolor           #fffafa
++input_fgcolor           #000000
+ 
+ # Welcome message
+ welcome_font          	Verdana:size=20:bold
+@@ -37,11 +37,17 @@
+ 
+ username_msg            username:
+ username_font           Verdana:size=14:bold
+-username_color		#f5f4fd
++username_color		#fffafa
+ username_x              35
+ username_y		110
++username_shadow_xoffset 2
++username_shadow_yoffset 2
++username_shadow_color   #333333
+ 
+ password_msg		password:
+-password_color		#f5f4fd
++password_color		#fffafa
+ password_x              35
+ password_y              165
++password_shadow_xoffset 2
++password_shadow_yoffset 2
++password_shadow_color   #333333

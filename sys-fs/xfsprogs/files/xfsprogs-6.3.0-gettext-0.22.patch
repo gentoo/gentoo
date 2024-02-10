@@ -1,0 +1,12 @@
+https://lore.kernel.org/linux-xfs/20230626095048.1290476-1-sam@gentoo.org/T/#u
+--- a/po/de.po
++++ b/po/de.po
+@@ -3084,7 +3084,7 @@
+ #: .././estimate/xfs_estimate.c:191
+ #, c-format
+ msgid "%s will take about %.1f megabytes\n"
+-msgstr "%s wird etwa %.lf Megabytes einnehmen\n"
++msgstr "%s wird etwa %.1f Megabytes einnehmen\n"
+ 
+ #: .././estimate/xfs_estimate.c:198
+ #, c-format

@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/777546
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -7,3 +7,2 @@
+ add_project_arguments('-Wall', language : 'c')
+-add_project_arguments('-Werror', language : 'c')
+ add_project_arguments('-fvisibility=hidden', language : 'c')

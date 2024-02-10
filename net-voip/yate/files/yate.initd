@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+YATE_PIDFILE=${YATE_PIDFILE:-/var/run/${SVCNAME}.pid}
+YATE_BINARY=${YATE_BINARY:-/usr/bin/yate}
+
+depend() {
+    need net
+    use mysql postgresql zaptel
+}
+
+start() {
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start --exec "${YATE_BINARY}" \
+			-- -d -p "${YATE_PIDFILE}" ${YATE_OPTS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --pidfile="${YATE_PIDFILE}"
+    eend $?
+}
+
+reload() {
+    ebegin "Reloading ${SVCNAME}"
+    start-stop-daemon --signal HUP --exec "${YATE_BINARY}" \
+			--pidfile "${YATE_PIDFILE}"
+    eend $?
+}

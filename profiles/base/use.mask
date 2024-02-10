@@ -1,0 +1,72 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file is only for generic masks. For arch-specific masks (i.e.
+# mask everywhere, unmask on arch/*) use arch/base.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-12-15)
+# KF6 is not in ::gentoo yet. Move to stable.use.mask on KF6 intro.
+kf6compat
+
+# Hans de Graaff <graaff@gentoo.org> (2023-08-19)
+# Ruby 3.0 is not compatible with OpenSSL 3. Please upgrade to a newer
+# Ruby version.
+ruby_targets_ruby30
+
+# Hans de Graaff <graaff@gentoo.org> (2023-04-10)
+# Ruby 2.7 is masked for removal.
+ruby_targets_ruby27
+
+# Matt Turner <mattst88@gentoo.org> (2022-04-16)
+# dev-util/sysprof not keyworded on most arches yet
+sysprof
+
+# Sam James <sam@gentoo.org> (2022-01-12)
+# PCH has proven itself to be unreliable and lead to spurious build
+# failures. Masking so users aren't exposed to such failures without opting-in.
+# Failures aren't always reproducible and implementations are often fragile.
+# Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
+# See e.g. bug #753323, bug #822690.
+pch
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# app-office/texmacs is package.mask'd. Bug #436400
+texmacs
+
+# Matt Turner <mattst88@gentoo.org> (2018-11-11)
+# d3d9 only works on amd64/x86.
+d3d9
+
+# masking here and unmasking in default/linux/
+kmod
+
+# profile specific USE flags
+# Don't put hardened in here.
+# TODO: move multilib into arch/base once inherit order is fixed
+selinux
+multilib
+
+elibc_bionic
+elibc_Cygwin
+elibc_Darwin
+elibc_musl
+elibc_SunOS
+
+kernel_Darwin
+kernel_SunOS
+kernel_Winnt
+
+# Jeremy Olexa <darkside@gentoo.org>
+# The prefix USE flags should never be used on non prefix profiles
+prefix
+prefix-guest
+prefix-stack
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
+# netlink is a Linux-specific interface
+netlink
+
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-30)
+# These are specific to Mac OS X
+aqua
+coreaudio

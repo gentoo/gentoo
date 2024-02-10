@@ -1,0 +1,42 @@
+--- a/Makefile
++++ b/Makefile
+@@ -27,9 +27,7 @@
+ #
+ # egcs used with -O2 includes -fno-force-mem which is/was buggy (1998/10/08)
+ #
+-	 CFLAGS = $(RPM_OPT_FLAGS) $(COPTS) $(DEBUG) $(INC) -D_GNU_SOURCE -Wall -pipe
+-	  CLOOP = -funroll-loops
+-	     CC = gcc
++	 CFLAGS = $(RPM_OPT_FLAGS) $(COPTS) $(DEBUG) $(INC) -D_GNU_SOURCE -Wall
+ 	     RM = rm -f
+ 	  MKDIR = mkdir -p
+ 	  RMDIR = rm -rf
+@@ -59,22 +57,22 @@
+ all: $(SBINPRG) $(UBINPRG)
+ 
+ libinit.o:	libinit.c libinit.h
+-	$(CC) $(CFLAGS) $(CLOOP) -DINITDIR=\"$(INITDIR)\" -c $<
++	$(CC) $(CFLAGS) -DINITDIR=\"$(INITDIR)\" -c $<
+ 
+ killproc:	killproc.c libinit.o
+-	$(CC) $(CFLAGS) $(CLOOP) -o $@ $^ $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ startproc:	startproc.c libinit.o
+-	$(CC) $(CFLAGS) $(CLOOP) -o $@ $^ $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ checkproc:	checkproc.c libinit.o
+-	$(CC) $(CFLAGS) $(CLOOP) -o $@ $^ $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ usleep:		usleep.c
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ fsync:		fsync.c
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ clean:
+ 	$(RM) *.o *~ killproc startproc checkproc pidofproc start_daemon usleep fsync

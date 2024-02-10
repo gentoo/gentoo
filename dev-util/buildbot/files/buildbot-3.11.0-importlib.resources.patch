@@ -1,0 +1,13 @@
+https://github.com/buildbot/buildbot/pull/7270
+We don't use older python then 3.10 so use importlib.resources
+--- a/buildbot/www/plugin.py	2023-12-27 11:18:13.107479017 +0100
++++ b/buildbot/www/plugin.py	2023-12-27 11:20:55.710106750 +0100
+@@ -14,7 +14,7 @@
+ # Copyright Buildbot Team Members
+ 
+ 
+-import importlib_resources
++import importlib.resources as importlib_resources
+ 
+ from twisted.web import static
+ 

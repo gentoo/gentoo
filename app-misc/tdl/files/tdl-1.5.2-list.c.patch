@@ -1,0 +1,34 @@
+--- tdl-1.5.2.orig/list.c
++++ tdl-1.5.2/list.c
+@@ -75,14 +75,15 @@
+ static void print_timestamp(int timestamp, char *leader, int indent, int monochrome)/*{{{*/
+ {
+   char buffer[32];
+-  time_t now;
++  time_t now, timestamp2;
+   long diff, days_ago, days_ahead;
+   
+   now = time(NULL);
+   diff = now - timestamp;
+   days_ago = (diff + ((diff > 0) ? 43200 : -43200)) / 86400;
++  timestamp2 = (time_t) timestamp;
+   strftime(buffer, sizeof(buffer), "%a %d %b %Y %H:%M", 
+-           localtime((time_t *)&timestamp));
++           localtime(&timestamp2));
+   do_indent(indent+2);
+   if (days_ago < 0) {
+     days_ahead = - days_ago;
+@@ -524,6 +525,13 @@
+          * Otherwise, use the priority from the specified node, _except_ when
+          * that is higher than normal, in which case use normal. */
+         prio_to_use = (prio_set) ? prio : ((node_prio > prio) ? prio : node_prio);
++	/* if listing up-to-some-depth (option -N) and also
++	 * beginning at some top-level (option NNN) then depth must be 
++	 * decremented by 1
++	 * see: http://bugs.debian.org/364083 */
++	if (options.depth > 0) {
++	  options.depth--;
++	}
+         list_chain(&n->kids, INDENT_TAB, 0, &options, index_buffer, prio_to_use, now, hits);
+       }
+     } else if ((y[0] == '-') && (y[1] == '-')) {

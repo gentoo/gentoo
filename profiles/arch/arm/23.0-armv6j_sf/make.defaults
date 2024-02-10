@@ -1,0 +1,10 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="armv6j-softfp-linux-gnueabi"
+CHOST_arm="${CHOST}"
+
+CFLAGS="-O2 -pipe -march=armv6j -mfpu=vfp -mfloat-abi=softfp"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

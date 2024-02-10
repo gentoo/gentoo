@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/883313
+https://gitlab.gnome.org/GNOME/gegl/-/merge_requests/132
+--- a/gegl/graph/gegl-region-generic.c
++++ b/gegl/graph/gegl-region-generic.c
+@@ -910,7 +910,7 @@ miRegionOp (GeglRegion       *newReg,
+           top = MAX (r1->y1, ybot);
+           bot = MIN (r1->y2, r2->y1);
+ 
+-          if ((top != bot) && (nonOverlap1Fn != (void (*)())NULL))
++          if ((top != bot) && (nonOverlap1Fn != (void (*)(void))NULL))
+             {
+               (*nonOverlap1Fn)(newReg, r1, r1BandEnd, top, bot);
+             }
+@@ -922,7 +922,7 @@ miRegionOp (GeglRegion       *newReg,
+           top = MAX (r2->y1, ybot);
+           bot = MIN (r2->y2, r1->y1);
+ 
+-          if ((top != bot) && (nonOverlap2Fn != (void (*)())NULL))
++          if ((top != bot) && (nonOverlap2Fn != (void (*)(void))NULL))
+             {
+               (*nonOverlap2Fn)(newReg, r2, r2BandEnd, top, bot);
+             }
+--- a/operations/common/ctx/ctx.h
++++ b/operations/common/ctx/ctx.h
+@@ -6047,7 +6047,6 @@ int _ctx_is_rasterizer (Ctx *ctx);
+ 
+ int ctx_color (Ctx *ctx, const char *string);
+ typedef struct _CtxState CtxState;
+-CtxColor *ctx_color_new ();
+ CtxState *ctx_get_state (Ctx *ctx);
+ void ctx_color_get_rgba (CtxState *state, CtxColor *color, float *out);
+ void ctx_color_set_rgba (CtxState *state, CtxColor *color, float r, float g, float b, float a);
+@@ -11081,7 +11080,6 @@ static void
+ ctx_matrix_set (CtxMatrix *matrix, float a, float b, float c, float d, float e, float f, float g, float h, float i);
+ 
+ 
+-static void ctx_font_setup ();
+ static float ctx_state_get (CtxState *state, uint32_t hash);
+ 
+ #if CTX_RASTERIZER
+@@ -40708,9 +40706,9 @@ static void ctx_events_deinit (Ctx *ctx)
+ #if CTX_TERMINAL_EVENTS
+ 
+ 
+-static int mice_has_event ();
+-static char *mice_get_event ();
+-static void mice_destroy ();
++static int mice_has_event (void);
++static char *mice_get_event (void);
++static void mice_destroy (void);
+ static int mice_get_fd (EvSource *ev_source);
+ static void mice_set_coord (EvSource *ev_source, double x, double y);
+ 
+@@ -40759,13 +40757,13 @@ static int mmm_evsource_mice_init ()
+   return 0;
+ }
+ 
+-static void mice_destroy ()
++static void mice_destroy (void)
+ {
+   if (mrg_mice_this->fd != -1)
+     close (mrg_mice_this->fd);
+ }
+ 
+-static int mice_has_event ()
++static int mice_has_event (void)
+ {
+   struct timeval tv;
+   int retval;
+@@ -40783,7 +40781,7 @@ static int mice_has_event ()
+   return 0;
+ }
+ 
+-static char *mice_get_event ()
++static char *mice_get_event (void)
+ {
+   const char *ret = "pm";
+   double relx, rely;
+

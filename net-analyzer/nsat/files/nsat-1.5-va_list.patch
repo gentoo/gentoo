@@ -1,0 +1,27 @@
+--- a/src/Logging.cpp
++++ b/src/Logging.cpp
+@@ -89,16 +89,17 @@
+  if((pi.Foreground) && (out!=NULL))
+   fprintf(stdout, "%s %s ", out, hn);
+ 
+- va_start(va, fmt);
+-
+- if(fp!=NULL)
++ if(fp!=NULL) {
++  va_start(va, fmt);
+   vfprintf(fp, fmt, va);
++  va_end(va);
++ }
+ 
+- if((pi.Foreground) && (out!=NULL))
++ if((pi.Foreground) && (out!=NULL)) {
++  va_start(va, fmt);
+   vfprintf(stdout, fmt, va);
+-
+- va_end(va);
+-
++  va_end(va);
++ }
+  if(fp!=NULL)
+   fprintf(fp, "\n");
+ 

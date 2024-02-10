@@ -1,0 +1,184 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-02-07)
+# grpc not stable here
+app-admin/syslog-ng grpc
+
+# Petr Vaněk <arkamar@gentoo.org> (2024-01-10)
+# Destabilize dev-db/redis for ~arm due to a lack of security stabilization
+# almost one year to this this date. bug 915548#c6
+dev-libs/hiredis test
+dev-python/redis test
+dev-python/sentry-sdk test
+
+# Matt Turner <mattst88@gentoo.org> (2023-10-30)
+# libei not stable yet
+x11-base/xwayland libei
+
+# Sam James <sam@gentoo.org> (2023-07-28)
+# media-libs/libffado not marked stable here
+media-video/pipewire ieee1394
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# Needs unkeyworded dev-python/sympy
+dev-python/nbval test
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2023-03-23)
+# app-emacs/flycheck is not marked stable here yet
+dev-util/pkgcheck emacs
+
+# Sam James <sam@gentoo.org> (2022-07-06)
+# sci-libs/sundials is not marked stable on arm
+sci-mathematics/octave sundials
+
+# Sam James <sam@gentoo.org> (2022-01-16)
+# net-libs/gnome-online-accounts is not marked stable on arm yet
+gnome-base/gvfs google
+
+# Sam James <sam@gentoo.org> (2022-01-15)
+# dev-python/nbconvert not yet marked stable on arm
+dev-python/ipython nbconvert
+
+# Sam James <sam@gentoo.org> (2022-01-15)
+# dev-libs/criterion is not marked stable yet
+app-admin/syslog-ng test
+
+# Sam James <sam@gentoo.org> (2022-01-15)
+# Requires dev-util/pahole which is not yet marked stable on arm.
+sys-kernel/gentoo-kernel debug
+sys-kernel/vanilla-kernel debug
+
+# Sam James <sam@gentoo.org> (2021-10-25)
+# Various dependencies not yet stable on arm
+# bug #816981
+dev-python/ipython notebook smp
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-25)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# media-libs/libffado is not stable yet, which itself has unstable and
+# unmaintained/broken dependencies. bug #746722
+media-sound/jack2 ieee1394
+
+# Sam James <sam@gentoo.org> (2020-07-30)
+# glslang is not yet stable on arm
+media-libs/mesa vulkan-overlay
+
+# Sam James <sam@gentoo.org> (2020-10-20)
+# Deps not yet stable
+# Migrated from package.use.mask
+app-text/asciidoc test
+media-libs/phonon vlc
+net-misc/openssh security-key
+dev-util/geany-plugins markdown
+app-arch/rpm test
+net-misc/unison gtk
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# virtual/jdk is not stable here.
+sci-mathematics/z3 java
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
+# Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
+dev-vcs/subversion kwallet
+net-libs/libproxy kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
+# Needs kde-plasma/{polkit-kde-agent,plasma-workspace} stable
+sys-auth/polkit kde
+virtual/notification-daemon kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-11-04)
+# media-libs/libmtp stabilisation timeout, bug #661162
+gnome-base/gvfs mtp
+
+# Akinori Hattori <hattya@gentoo.org> (2018-06-23)
+# No stable Java
+dev-db/qdbm java
+
+# Pacho Ramos <pacho@gentoo.org> (2018-05-28)
+# Don't rely on stable inkscape
+app-text/dblatex inkscape
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
+# Requires not stabilised dev-python/matplotlib
+dev-python/numpydoc test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-01-25)
+# Requires not stabilised app-text/libexttextcat, bug #637086
+net-mail/dovecot textcat
+
+# Brian Evans <grknight@gentoo.org> (2017-06-09)
+# sys-cluster/galera needs additional deps stable
+dev-db/mariadb galera
+
+# Alexis Ballier <aballier@gentoo.org> (2017-05-30)
+# No stable fluidsynth yet
+media-libs/sdl-mixer fluidsynth
+media-sound/mpd fluidsynth
+
+# Alexis Ballier <aballier@gentoo.org> (2017-05-29)
+# frei0r-plugins is not stable yet, mask it on stable versions
+media-video/ffmpeg frei0r
+
+# Michael Weber <xmw@gentoo.org> (2017-04-01)
+# no stable jdk
+media-libs/libbluray java
+
+# Thomas Deutschmann <whissi@gentoo.org> (2017-03-20)
+# Requires dev-java/java-config and deps which is not stable on arm
+# Requires app-emulation/xen-tools which is not stable on arm
+app-metrics/collectd collectd_plugins_java collectd_plugins_xencpu
+
+# Michael Weber <xmw@gentoo.org> (2017-03-01)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Michael Weber <xmw@gentoo.org> (2017-02-27)
+# Stable mask dev-ruby/haml test till rails is stabilized.
+dev-ruby/haml test
+
+# Brian Evans <grknight@gentoo.org> (2017-01-17)
+# Stable mask galera since dev-libs/asio is not stable on arm
+dev-db/mariadb galera
+
+# Pacho Ramos <pacho@gentoo.org> (2016-12-31)
+# Not going to be stable for now
+dev-util/geany-plugins gtkspell
+
+# Markus Meier <maekke@gentoo.org> (2016-09-27)
+# Missing stable
+dev-db/mariadb jdbc
+
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2016-04-13)
+# Requires special hardware to test and stabilize properly.
+media-video/mpv raspberry-pi
+
+# Brian Evans <grknight@gentoo.org> (2016-01-08)
+# net-misc/libteam is not yet stable on arm
+net-misc/networkmanager teamd
+
+# Markus Meier <maekke@gentoo.org> (2015-07-19)
+# Missing stable
+media-libs/gegl umfpack
+
+# Pacho Ramos <pacho@gentoo.org> (2015-06-02)
+# Missing stable
+net-misc/connman l2tp pptp

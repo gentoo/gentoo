@@ -1,0 +1,47 @@
+--- a/cg/Makefile.in
++++ b/cg/Makefile.in
+@@ -17,8 +17,8 @@
+ # These are set by configure
+ # NB: cc and various flags must match the ones used to compile Gauche,
+ # so the make invocator shouldn't casually override them.
+-CFLAGS   = @DEFS@ @CFLAGS@ @X_CFLAGS@ @GLUT_INCDIR@ -I../src
+-LDFLAGS  = -I../src @LDFLAGS@ 
++CFLAGS   = @DEFS@ @CFLAGS@ @X_CFLAGS@ @GLUT_INCDIR@ @CG_CFLAGS@ -I../src
++LDFLAGS  = @LDFLAGS@
+ OBJEXT   = @OBJEXT@
+ SOEXT    = @SOEXT@
+ OLIBS    = @LIBS@
+--- a/cg/cg-lib.stub
++++ b/cg/cg-lib.stub
+@@ -430,7 +430,6 @@
+ ;;
+ ;; Cg/cg_profiles.h
+ ;;
+-(define-enum CG_PROFILE_START)
+ (define-enum CG_PROFILE_UNKNOWN)
+ 
+ (define-enum CG_PROFILE_VS_1_1)
+@@ -443,8 +442,6 @@
+ (define-enum CG_PROFILE_PS_2_0)
+ (define-enum CG_PROFILE_PS_2_X)
+ 
+-(define-enum CG_PROFILE_MAX)
+-
+ ;;
+ ;; Cg/cg_errors.h
+ ;;
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,10 +46,11 @@
+    AC_HELP_STRING([--enable-cg], [Enable NVidia's Cg binding.]), [
+    AC_DEFINE(HAVE_CG, 1)
+    ENABLE_CG=1
+-   CG_LIBS="-lCgGL -lCg"
++   PKG_CHECK_MODULES([CG], [nvidia-cg-toolkit-gl])
+    CG_SCM="cg/gl/cg.scm";
+ ])
+ AC_SUBST(ENABLE_CG)
++AC_SUBST(CG_CFLAGS)
+ AC_SUBST(CG_LIBS)
+ AC_SUBST(CG_SCM)
+ 

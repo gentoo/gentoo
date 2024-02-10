@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>klondike@gentoo.org</email>
+		<name>Francisco Blas Izquierdo Riera</name>
+	</maintainer>
+	<use>
+		<flag name="doc">Create man pages for the package (requires <pkg>app-text/asciidoc</pkg>)</flag>
+		<flag name="json">Enable JSON support via <pkg>dev-libs/jansson</pkg></flag>
+		<flag name="modern-kernel">Install init scripts for 3.18 or higher kernels with atomic rule updates</flag>
+		<flag name="xtables">Add libxtables support to try to automatically translate rules added by iptables-compat</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+From b08f4b9b46009fb96c7194aecbc28d6b266e44c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 29 Jan 2024 18:14:32 +0100
+Subject: [PATCH] Convert `PORT` envvar to int to fix aiohttp/yarl
+ compatibility
+
+Conver the value of the `PORT` environment variable to int, to fix
+incompatibility with modern versions of aiohttp/yarl, that do expect
+the `port` argument to be one.
+
+Fixes #49
+---
+ tests/child_scripts/simplehttpserver.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/child_scripts/simplehttpserver.py b/tests/child_scripts/simplehttpserver.py
+index cc460ff..268dc7d 100644
+--- a/tests/child_scripts/simplehttpserver.py
++++ b/tests/child_scripts/simplehttpserver.py
+@@ -11,7 +11,7 @@
+ print("waiting", wait_time)
+ time.sleep(wait_time)
+ 
+-PORT = os.environ["PORT"]
++PORT = int(os.environ["PORT"])
+ 
+ routes = web.RouteTableDef()
+ 

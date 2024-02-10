@@ -1,0 +1,21 @@
+diff -rc procmail-3.22/src/pipes.c procmail-3.22-fixed/src/pipes.c
+*** procmail-3.22/src/pipes.c   Tue Sep 11 00:58:44 2001
+--- procmail-3.22-fixed/src/pipes.c     Wed Nov 21 23:53:39 2007
+***************
+*** 194,200 ****
+       makeblock(&temp,Stdfilled);
+       tmemmove(temp.p,Stdout,Stdfilled);
+       readdyn(&temp,&Stdfilled,Stdfilled+backlen+1);
+!      Stdout=realloc(Stdout,&Stdfilled+1);
+       tmemmove(Stdout,temp.p,Stdfilled+1);
+       freeblock(&temp);
+       retStdout(Stdout,pwait&&pipw,!backblock);
+--- 194,200 ----
+       makeblock(&temp,Stdfilled);
+       tmemmove(temp.p,Stdout,Stdfilled);
+       readdyn(&temp,&Stdfilled,Stdfilled+backlen+1);
+!      Stdout=realloc(Stdout,Stdfilled+1);
+       tmemmove(Stdout,temp.p,Stdfilled+1);
+       freeblock(&temp);
+       retStdout(Stdout,pwait&&pipw,!backblock);
+

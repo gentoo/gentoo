@@ -1,0 +1,12 @@
+resolves compilation error:	no member named 'multiplies' in namespace 'std' for library/src/twiddles.cpp
+
+--- a/library/src/include/twiddles.h	2021-04-15 10:24:46.000000000 -0700
++++ b/library/src/include/twiddles.h	2021-07-21 22:27:10.760604147 -0700
+@@ -9,6 +9,7 @@
+ #include "../../../shared/gpubuf.h"
+ #include "rocfft.h"
+ #include <cassert>
++#include <functional>
+ #include <math.h>
+ #include <numeric>
+ #include <tuple>

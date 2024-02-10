@@ -1,0 +1,170 @@
+Fix automagic configure options.
+
+--- ipmiutil-3.1.8.orig/configure.ac	2022-05-05 20:48:27.180318912 -0700
++++ ipmiutil-3.1.8/configure.ac	2022-05-05 20:53:10.070503250 -0700
+@@ -80,22 +80,30 @@
+ #  fi]
+ 
+ drv_landesk=0
++LANDESK_CFLAGS=""
++LANDESK_LDADD=""
+ dnl configure for LANDESK libipmiapi or not
+ AC_ARG_ENABLE([landesk],
+-    [  --enable-landesk       adds landesk library support [[default=no]]],
+-    [if test "x$enableval" = "xyes"; then
++	AS_HELP_STRING([--enable-landesk], [enable landesk support (default=no)]),
++	[],
++	[enable_landesk=no]
++)
++AS_IF([test "x$enable_landesk" = "xyes"], [
+ 	    drv_landesk=1
+             LANDESK_CFLAGS="-DLINK_LANDESK"
+             LANDESK_LDADD="-lipmiapi -L../lib"
+             AC_SUBST(LANDESK_CFLAGS)
+             AC_SUBST(LANDESK_LDADD)
+-    fi]
+-    )
++    echo "landesk enabled"
++])
+ 
+ dnl Configure ipmiutil for lanplus (libipmi_lanplus.a) or not (default yes)
+ AC_ARG_ENABLE([lanplus],
+-    [  --disable-lanplus      disable lanplus support [[default=enabled]]],)
+-if test "x$enable_lanplus" = "xno"; then
++	AS_HELP_STRING([--disable-lanplus], [enable lanplus support (default=yes)]),
++	[],
++	[enable_lanplus=yes]
++)
++
+ 	drv_lanplus=""
+ 	LANPLUS_CFLAGS=""
+ 	LANPLUS_LDADD=""
+@@ -103,8 +111,7 @@
+ 	LANPLUS_CRYPTO=""
+ 	LANPLUS_SAM="no"
+ 	LD_SAMX=""
+-      echo "lanplus disabled"
+-else
++AS_IF([test "x$enable_lanplus" = "xyes"], [
+ 	drv_lanplus="lanplus"
+ 	LANPLUS_CFLAGS="-DHAVE_LANPLUS"
+ 	# LANPLUS_CFLAGS="-DHAVE_LANPLUS -I${projdir}/lib/lanplus/inc"
+@@ -115,7 +122,7 @@
+ 	LANPLUS_SAM="yes"
+ 	LD_SAMX="../lib/libipmi_lanplus.a -lcrypto"
+       echo "lanplus enabled"
+-fi 
++])
+ 
+ dnl Configure libipmiutil.a for lanplus or not
+ dnl Only SOL requires lanplus, so usually build libipmiutil.a without lanplus
+@@ -130,21 +137,28 @@
+ #fi
+ 
+ # strings /lib/libssl.so* |grep EVP_sha256 
+-dnl configure for SHA256, build lanplus with SHA256 support, uses later openssl.
++dnl configure for SHA256, build lanplus with SHA256 support
++dnl requires openssl-1.0.1 which was released in 2012/03
+ AC_ARG_ENABLE([sha256],
+-    [  --enable-sha256        build with SHA256 support, requires later openssl.],
+-    [if test "x$enableval" = "xyes"; then
+-	LANPLUS_CFLAGS="$LANPLUS_CFLAGS -DHAVE_SHA256"
+-    fi]
++    AS_HELP_STRING([--disable-sha256], [build with SHA256 support (default=yes)]),
++	dnl action if passed
++	[],
++	dnl action if not passed
++	[enable_sha256=yes]
+     )
++AS_IF([test "x$enable_sha256" = "xyes"], [
++  LANPLUS_CFLAGS="$LANPLUS_CFLAGS -DHAVE_SHA256"
++])
+ 
+ dnl configure for EKANALYZER, build with ekanalyzer function enabled
+ AC_ARG_ENABLE([ekanalyzer],
+-    [  --enable-ekanalyzer        build with ekanalyzer function enabled.],
+-    [if test "x$enableval" = "xyes"; then
+-	OS_CFLAGS="$OS_CFLAGS -DHAVE_EKANAL"
+-    fi]
++	AS_HELP_STRING([--enable-ekanalyzer], [build with ekanalyzer function enabled.]),
++	[],
++	[enable_ekanalyzer=no]
+     )
++AS_IF([test "x$enable_ekanalyzer" = "xyes"], [
++	OS_CFLAGS="$OS_CFLAGS -DHAVE_EKANAL"
++    ])
+ 
+ GPL_CFLAGS=""
+ CROSS_LFLAGS=""
+@@ -154,17 +168,20 @@
+ SYSTEMD_DIR=/usr/share/ipmiutil
+ 
+ AC_ARG_ENABLE([useflags],
+-    [  --enable-useflags    include environment CFLAGS and LDFLAGS.],
+-    [if test "x$enableval" = "xyes"; then
++	AS_HELP_STRING([--enable-useflags], [include environment CFLAGS and LDFLAGS.]),
++	[],
++	[enable_useflags=no])
++AS_IF([test "x$enable_useflags" = "xyes"], [
+ 	   CROSS_CFLAGS="$CFLAGS"
+ 	   CROSS_LFLAGS="$LDFLAGS"
+-    fi]
+-    )
++])
+ 
+ dnl configure for standalone, with no lanplus or GPL libs 
+ AC_ARG_ENABLE([standalone],
+-    [  --enable-standalone    build standalone, with no GPL or LanPlus libs.],
+-    [if test "x$enableval" = "xyes"; then
++	AS_HELP_STRING([--enable-standalone], [build standalone, with no GPL or LanPlus libs.]),
++	[],
++	[enable_standalone=no])
++AS_IF([test "x$enable_standalone" = "xyes"], [
+         GPL_CFLAGS=""
+ 	LANPLUS_CFLAGS=""
+ 	LANPLUS_LDADD=""
+@@ -178,10 +195,11 @@
+ 	   # cross-compiling, so link with -static (e.g. Android ARM)
+ 	   CROSS_LFLAGS="-static"
+ 	   CROSS_CFLAGS="-DCROSS_COMPILE"
++	   # TODO: how can this be effective? Configure only converts Makefile.in -> Makefile
++	   # Configure does not convert Makefile.am->Makefile.in
+ 	   sed -i -e 's/^# ipmiutil:	$(METASOURCE:.c=.o)/ipmiutil:\t$(METASOURCE:.c=.o)\n\t$(CC) $(CFLAGS) $(LDFLAGS) -o ipmiutil $(METASOURCE:.c=.o) $(LDADD)/'  util/Makefile.am
+ 	fi
+-    fi]
+-    )
++    ])
+ 
+ AC_ARG_ENABLE([doc],
+     [  --enable-doc           build with documentation [[default=yes]]],
+@@ -194,20 +212,22 @@
+ 
+ dnl build libipmiutil with sensor modules
+ AC_ARG_ENABLE([libsensors],
+-    [  --enable-libsensors	 build libipmiutil with sensor modules [[default=no]]],
+-    [if test "x$enableval" = "xyes"; then
++    AS_HELP_STRING([--enable-libsensors], [build libipmiutil with sensor modules (default=no)]),
++    [],
++    [enable_libsensors=no])
++AS_IF([test "x$enable_libsensors" = "xyes"], [
+         LIBSENSORS="isensor2.o ievents2.o"
+         SAM2OBJ=""
+-    fi]
+-    )
++    ])
+ 
+ dnl configure for GPL build or not (GPL files: md2.h, ipmi_ioctl.h)
+ AC_ARG_ENABLE([gpl],
+-    [  --enable-gpl           build with some GPL code [[default=no]]],
+-    [if test "x$enableval" = "xyes"; then
++    AS_HELP_STRING([--enable-gpl], [build with some GPL code (default=no)]),
++    [],
++    [enable_gpl=no])
++AS_IF([test "x$enable_gpl" = "xyes"], [
+         GPL_CFLAGS="-DALLOW_GPL"
+-    fi]
+-    )
++    ])
+ 
+ dnl Does this Linux have systemd enabled?  Otherwise use sysv init.
+ AC_ARG_ENABLE([systemd],

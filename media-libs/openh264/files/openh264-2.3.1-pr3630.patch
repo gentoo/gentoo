@@ -1,0 +1,159 @@
+https://bugs.gentoo.org/show_bug.cgi?id=896138
+https://github.com/cisco/openh264/pull/3630
+
+From f60e7d9bdc39e51b644db7624256116202cac992 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Thu, 2 Mar 2023 17:39:45 -0500
+Subject: [PATCH] Use environment for mips feature detection
+
+The -march= option is perfectly happy to emit code to run on a processor
+different than the one on which it is being compiled.  This results in
+misdetection of mips features because the test compiles specify that a
+given extension should be emitted, but this does not check whether or
+not this corresponds to the subarchitecture targeted in CFLAGS by the
+rest of the build.
+
+$ echo "void main(void){ __asm__ volatile(\"punpcklhw \$f0, \$f0, \$f0\"); }" > test.c
+$ CFLAGS="-march=loongson3a" make test
+cc -march=loongson3a    test.c   -o test
+$ ./test
+Illegal instruction
+$ CFLAGS="-march=native" make -B test
+cc -march=native    test.c   -o test
+/tmp/ccLbeyM1.s: Assembler messages:
+/tmp/ccLbeyM1.s:25: Error: opcode not supported on this processor: octeon2 (mips64r2) `punpcklhw $f0,$f0,$f0'
+make: *** [<builtin>: test] Error 1
+
+This leads to -march=loongson3a getting appended to CFLAGS, which may
+conflict with previously specified -march= levels for the build, or
+other options.  Calling make in the test will use whatever CC/CFLAGS are
+specified in the environment to determine whether the actual compile
+command line to be used in the build supports these features.
+
+Fixes: 8b942ee ("Adjust the mmi/msa detection mode for mips platform.")
+---
+ build/arch.mk                 |  8 ++++----
+ build/loongarch-simd-check.sh | 17 +++++++----------
+ build/mips-simd-check.sh      | 17 +++++++----------
+ 3 files changed, 18 insertions(+), 24 deletions(-)
+
+diff --git a/build/arch.mk b/build/arch.mk
+index 4e1538c45c..80983686f7 100644
+--- a/build/arch.mk
++++ b/build/arch.mk
+@@ -39,14 +39,14 @@ ASM_ARCH = mips
+ ASMFLAGS += -I$(SRC_PATH)codec/common/mips/
+ #mmi
+ ifeq ($(ENABLE_MMI), Yes)
+-ENABLE_MMI = $(shell $(SRC_PATH)build/mips-simd-check.sh $(CC) mmi)
++ENABLE_MMI = $(shell CC="$(CC)" CFLAGS="$(CFLAGS)" $(SRC_PATH)build/mips-simd-check.sh mmi)
+ ifeq ($(ENABLE_MMI), Yes)
+ CFLAGS += -DHAVE_MMI -march=loongson3a
+ endif
+ endif
+ #msa
+ ifeq ($(ENABLE_MSA), Yes)
+-ENABLE_MSA = $(shell $(SRC_PATH)build/mips-simd-check.sh $(CC) msa)
++ENABLE_MSA = $(shell CC="$(CC)" CFLAGS="$(CFLAGS)" $(SRC_PATH)build/mips-simd-check.sh msa)
+ ifeq ($(ENABLE_MSA), Yes)
+ CFLAGS += -DHAVE_MSA -mmsa
+ endif
+@@ -63,14 +63,14 @@ ASM_ARCH = loongarch
+ ASMFLAGS += -I$(SRC_PATH)codec/common/loongarch/
+ #lsx
+ ifeq ($(ENABLE_LSX), Yes)
+-ENABLE_LSX = $(shell $(SRC_PATH)build/loongarch-simd-check.sh $(CC) lsx)
++ENABLE_LSX = $(shell CC="$(CC)" CFLAGS="$(CFLAGS)" $(SRC_PATH)build/loongarch-simd-check.sh lsx)
+ ifeq ($(ENABLE_LSX), Yes)
+ CFLAGS += -DHAVE_LSX -mlsx
+ endif
+ endif
+ #lasx
+ ifeq ($(ENABLE_LASX), Yes)
+-ENABLE_LASX = $(shell $(SRC_PATH)build/loongarch-simd-check.sh $(CC) lasx)
++ENABLE_LASX = $(shell CC="$(CC)" CFLAGS="$(CFLAGS)" $(SRC_PATH)build/loongarch-simd-check.sh lasx)
+ ifeq ($(ENABLE_LASX), Yes)
+ CFLAGS += -DHAVE_LASX -mlasx
+ endif
+diff --git a/build/loongarch-simd-check.sh b/build/loongarch-simd-check.sh
+index 597ddcdc22..2e609443b9 100755
+--- a/build/loongarch-simd-check.sh
++++ b/build/loongarch-simd-check.sh
+@@ -8,29 +8,26 @@
+ #    lsx, lasx (maybe more in the future).
+ #
+ #   --usage:
+-#             ./loongarch-simd-check.sh $(CC) lsx
+-#         or  ./loongarch-simd-check.sh $(CC) lasx
++#             ./loongarch-simd-check.sh lsx
++#         or  ./loongarch-simd-check.sh lasx
+ #
+ # date:  11/23/2021 Created
+ #***************************************************************************************
+ 
+ TMPC=$(mktemp tmp.XXXXXX.c)
+-TMPO=$(mktemp tmp.XXXXXX.o)
+-if [ $2 == "lsx" ]
++if [ $1 == "lsx" ]
+ then
+    echo "void main(void){ __asm__ volatile(\"vadd.b \$vr0, \$vr1, \$vr1\"); }" > $TMPC
+-   $1 -mlsx $TMPC -o $TMPO &> /dev/null
+-   if test -s $TMPO
++   if make -f /dev/null "${TMPC/.c/.o}"
+    then
+       echo "Yes"
+    fi
+-elif [ $2 == "lasx" ]
++elif [ $1 == "lasx" ]
+ then
+    echo "void main(void){ __asm__ volatile(\"xvadd.b \$xr0, \$xr1, \$xr1\"); }" > $TMPC
+-   $1 -mlasx $TMPC -o $TMPO &> /dev/null
+-   if test -s $TMPO
++   if make -f /dev/null "${TMPC/.c/.o}"
+    then
+       echo "Yes"
+    fi
+ fi
+-rm -f $TMPC $TMPO
++rm -f $TMPC
+diff --git a/build/mips-simd-check.sh b/build/mips-simd-check.sh
+index d0d72f9edd..5ff1eb432c 100755
+--- a/build/mips-simd-check.sh
++++ b/build/mips-simd-check.sh
+@@ -4,29 +4,26 @@
+ #    mmi, msa (maybe more in the future).
+ #
+ #   --usage:
+-#             ./mips-simd-check.sh $(CC) mmi
+-#         or  ./mips-simd-check.sh $(CC) msa
++#             ./mips-simd-check.sh mmi
++#         or  ./mips-simd-check.sh msa
+ #
+ # date:  10/17/2019 Created
+ #**********************************************************************************
+ 
+ TMPC=$(mktemp tmp.XXXXXX.c)
+-TMPO=$(mktemp tmp.XXXXXX.o)
+-if [ $2 == "mmi" ]
++if [ $1 == "mmi" ]
+ then
+    echo "void main(void){ __asm__ volatile(\"punpcklhw \$f0, \$f0, \$f0\"); }" > $TMPC
+-   $1 -march=loongson3a $TMPC -o $TMPO &> /dev/null
+-   if test -s $TMPO
++   if make -f /dev/null "${TMPC/.c/.o}" &> /dev/null
+    then
+       echo "Yes"
+    fi
+-elif [ $2 == "msa" ]
++elif [ $1 == "msa" ]
+ then
+    echo "void main(void){ __asm__ volatile(\"addvi.b \$w0, \$w1, 1\"); }" > $TMPC
+-   $1 -mmsa $TMPC -o $TMPO &> /dev/null
+-   if test -s $TMPO
++   if make -f /dev/null "${TMPC/.c/.o}" &> /dev/null
+    then
+       echo "Yes"
+    fi
+ fi
+-rm -f $TMPC $TMPO
++rm -f $TMPC

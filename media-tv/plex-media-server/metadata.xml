@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>joe@wt.gd</email>
+		<name>Joe Kappus</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://forums.plex.tv/t/plex-media-server/30447/</changelog>
+		<doc>https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/</doc>
+	</upstream>
+</pkgmetadata>

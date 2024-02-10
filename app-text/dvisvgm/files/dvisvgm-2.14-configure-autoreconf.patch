@@ -1,0 +1,383 @@
+https://github.com/mgieseki/dvisvgm/pull/202
+
+From 2dc8627a0864ea1543027e577ad96676a56bf4c5 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 20:04:43 +0000
+Subject: [PATCH 1/4] Cleanup obsolete m4 dist hack
+
+autoconf & automake, at least nowadays, handle including m4/
+correctly in dist tarballs (from `make dist`).
+
+Previously, dist tarballs lacked m4/ax_*.m4 and therefore `autoreconf -fi`
+would break the Makefile with:
+```
+make[3]: Entering directory '/var/tmp/portage/app-text/dvisvgm-2.14-r1/work/dvisvgm-2.14/libs/clipper'
+Makefile:664: *** missing separator.  Stop.
+```
+
+On that line is an unexpanded @CODE_COVERAGE_RULES@.
+
+Bug: https://bugs.gentoo.org/879539
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@
+ 
+ AUTOMAKE_OPTIONS = foreign
+ EXTRA_DIST = COPYING
+-SUBDIRS = libs m4 src tests doc
++SUBDIRS = libs src tests doc
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ if USE_BUNDLED_LIBS
+--- a/configure.ac
++++ b/configure.ac
+@@ -228,7 +228,6 @@ AC_CONFIG_FILES([
+ 	libs/variant/Makefile
+ 	libs/woff2/Makefile
+ 	libs/xxHash/Makefile
+-	m4/Makefile
+ 	src/Makefile
+ 	src/version.hpp
+ 	src/optimizer/Makefile
+--- a/m4/Makefile.am
++++ /dev/null
+@@ -1,4 +0,0 @@
+-M4_EXTRA_DIST = \
+-	ax_check_compile_flag.m4 \
+-	ax_code_coverage.m4 \
+-	ax_cxx_compile_stdcxx.m4
+
+From 2b03bccde2dd8a1b101f793159663446dd522ac9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 20:27:35 +0000
+Subject: [PATCH 2/4] Update to newer autoconf-archive (AX_*) macros
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,6 +3,8 @@
+ ##
+ ## Process this file with automake.
+ 
++include $(top_srcdir)/aminclude_static.am
++
+ AUTOMAKE_OPTIONS = foreign
+ EXTRA_DIST = COPYING
+ SUBDIRS = libs src tests doc
+--- a/configure.ac
++++ b/configure.ac
+@@ -205,6 +205,7 @@ AS_IF([test "x$enable_manpage" != "xyes"],
+ AM_CONDITIONAL([BUILD_MANPAGE], [test "x$enable_manpage" = "xyes"])
+ 
+ AX_CODE_COVERAGE
++
+ AS_IF([ test "$enable_code_coverage" = "yes" ], [
+ 	# disable optimization
+ 	changequote({,})
+--- a/libs/brotli/Makefile.am
++++ b/libs/brotli/Makefile.am
+@@ -81,7 +81,6 @@ libbrotli_a_SOURCES = \
+ 
+ AM_CFLAGS = -Wall -I$(srcdir)/include
+ 
+-@CODE_COVERAGE_RULES@
+ endif
+ 
+ EXTRA_DIST = LICENSE
+--- a/libs/clipper/Makefile.am
++++ b/libs/clipper/Makefile.am
+@@ -6,6 +6,4 @@ AM_CXXFLAGS = -Wall
+ 
+ clipper.cpp: clipper.hpp
+ 
+-@CODE_COVERAGE_RULES@
+-
+ CLEANFILES = *.gcda *.gcno
+--- a/libs/ff-woff/Makefile.am
++++ b/libs/ff-woff/Makefile.am
+@@ -85,6 +85,4 @@ EXTRA_DIST = LICENSE
+ 
+ AM_CFLAGS = -I$(srcdir)/inc -I$(srcdir)/fontforge $(ZLIB_CFLAGS)
+ 
+-@CODE_COVERAGE_RULES@
+-
+ CLEANFILES = *.gcda *.gcno
+--- a/libs/md5/Makefile.am
++++ b/libs/md5/Makefile.am
+@@ -6,7 +6,6 @@ AM_CXXFLAGS = -Wall
+ 
+ md5.c: md5.h
+ 
+-@CODE_COVERAGE_RULES@
+ endif
+ 
+ CLEANFILES = *.gcda *.gcno
+--- a/libs/potrace/Makefile.am
++++ b/libs/potrace/Makefile.am
+@@ -17,7 +17,6 @@ libpotrace_a_SOURCES = \
+ 
+ AM_CFLAGS = -Wall -I$(srcdir)
+ 
+-@CODE_COVERAGE_RULES@
+ endif
+ 
+ CLEANFILES = *.gcda *.gcno
+--- a/libs/woff2/Makefile.am
++++ b/libs/woff2/Makefile.am
+@@ -28,7 +28,6 @@ libwoff2_a_SOURCES = \
+ 
+ AM_CXXFLAGS = -Wall -I$(srcdir)/include -I$(srcdir)/../brotli/include
+ 
+-@CODE_COVERAGE_RULES@
+ endif
+ 
+ EXTRA_DIST = LICENSE
+--- a/libs/xxHash/Makefile.am
++++ b/libs/xxHash/Makefile.am
+@@ -6,7 +6,6 @@ AM_CXXFLAGS = -Wall
+ 
+ xxhash.c: xxhash.h xxh3.h
+ 
+-@CODE_COVERAGE_RULES@
+ endif
+ 
+ CLEANFILES = *.gcda *.gcno
+--- /dev/null
++++ b/m4/ax_ac_append_to_file.m4
+@@ -0,0 +1,32 @@
++# ===========================================================================
++#   https://www.gnu.org/software/autoconf-archive/ax_ac_append_to_file.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_AC_APPEND_TO_FILE([FILE],[DATA])
++#
++# DESCRIPTION
++#
++#   Appends the specified data to the specified Autoconf is run. If you want
++#   to append to a file when configure is run use AX_APPEND_TO_FILE instead.
++#
++# LICENSE
++#
++#   Copyright (c) 2009 Allan Caffee <allan.caffee@gmail.com>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 10
++
++AC_DEFUN([AX_AC_APPEND_TO_FILE],[
++AC_REQUIRE([AX_FILE_ESCAPES])
++m4_esyscmd(
++AX_FILE_ESCAPES
++[
++printf "%s" "$2" >> "$1"
++])
++])
+--- /dev/null
++++ b/m4/ax_ac_print_to_file.m4
+@@ -0,0 +1,32 @@
++# ===========================================================================
++#   https://www.gnu.org/software/autoconf-archive/ax_ac_print_to_file.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_AC_PRINT_TO_FILE([FILE],[DATA])
++#
++# DESCRIPTION
++#
++#   Writes the specified data to the specified file when Autoconf is run. If
++#   you want to print to a file when configure is run use AX_PRINT_TO_FILE
++#   instead.
++#
++# LICENSE
++#
++#   Copyright (c) 2009 Allan Caffee <allan.caffee@gmail.com>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 10
++
++AC_DEFUN([AX_AC_PRINT_TO_FILE],[
++m4_esyscmd(
++AC_REQUIRE([AX_FILE_ESCAPES])
++[
++printf "%s" "$2" > "$1"
++])
++])
+--- /dev/null
++++ b/m4/ax_add_am_macro_static.m4
+@@ -0,0 +1,28 @@
++# ===========================================================================
++#  https://www.gnu.org/software/autoconf-archive/ax_add_am_macro_static.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_ADD_AM_MACRO_STATIC([RULE])
++#
++# DESCRIPTION
++#
++#   Adds the specified rule to $AMINCLUDE.
++#
++# LICENSE
++#
++#   Copyright (c) 2009 Tom Howard <tomhoward@users.sf.net>
++#   Copyright (c) 2009 Allan Caffee <allan.caffee@gmail.com>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 8
++
++AC_DEFUN([AX_ADD_AM_MACRO_STATIC],[
++  AC_REQUIRE([AX_AM_MACROS_STATIC])
++  AX_AC_APPEND_TO_FILE(AMINCLUDE_STATIC,[$1])
++])
+--- /dev/null
++++ b/m4/ax_am_macros_static.m4
+@@ -0,0 +1,38 @@
++# ===========================================================================
++#   https://www.gnu.org/software/autoconf-archive/ax_am_macros_static.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_AM_MACROS_STATIC
++#
++# DESCRIPTION
++#
++#   Adds support for macros that create Automake rules. You must manually
++#   add the following line
++#
++#     include $(top_srcdir)/aminclude_static.am
++#
++#   to your Makefile.am files.
++#
++# LICENSE
++#
++#   Copyright (c) 2009 Tom Howard <tomhoward@users.sf.net>
++#   Copyright (c) 2009 Allan Caffee <allan.caffee@gmail.com>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 11
++
++AC_DEFUN([AMINCLUDE_STATIC],[aminclude_static.am])
++
++AC_DEFUN([AX_AM_MACROS_STATIC],
++[
++AX_AC_PRINT_TO_FILE(AMINCLUDE_STATIC,[
++# ]AMINCLUDE_STATIC[ generated automatically by Autoconf
++# from AX_AM_MACROS_STATIC on ]m4_esyscmd([LC_ALL=C date])[
++])
++])
+--- /dev/null
++++ b/m4/ax_file_escapes.m4
+@@ -0,0 +1,30 @@
++# ===========================================================================
++#     https://www.gnu.org/software/autoconf-archive/ax_file_escapes.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_FILE_ESCAPES
++#
++# DESCRIPTION
++#
++#   Writes the specified data to the specified file.
++#
++# LICENSE
++#
++#   Copyright (c) 2008 Tom Howard <tomhoward@users.sf.net>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 8
++
++AC_DEFUN([AX_FILE_ESCAPES],[
++AX_DOLLAR="\$"
++AX_SRB="\\135"
++AX_SLB="\\133"
++AX_BS="\\\\"
++AX_DQ="\""
++])
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -225,6 +225,4 @@ $(srcdir)/psdefs.cpp: psdefs.ps
+ 
+ psdefs.ps: ;
+ 
+-@CODE_COVERAGE_RULES@
+-
+ CLEANFILES = *.gcda *.gcno
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -421,6 +421,4 @@ XMLStringTest_LDADD = $(TESTLIBS)
+ EXTRA_DIST += check-conv genhashcheck.py normalize.xsl
+ TESTS += check-conv
+ 
+-@CODE_COVERAGE_RULES@
+-
+ CLEANFILES = *.gcda *.gcno hashcheck.cpp
+
+From 8689f1ceb2284038627668e70ec7e15f99220a5c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 22:42:58 +0000
+Subject: [PATCH 4/4] Upgrade to Autoconf 2.69
+
+autoconf 2.69 is still pretty old and this only affects
+folks who want to run autoreconf anyway.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ #
+ # Process this file with autoconf to produce a configure script.
+ 
+-AC_PREREQ(2.59)
++AC_PREREQ([2.69])
+ AC_INIT([dvisvgm],[2.14],[martin.gieseking@uos.de])
+ DATE="August 2022"
+ AC_CONFIG_SRCDIR(src)
+@@ -18,13 +18,11 @@ AC_DEFINE_UNQUOTED([TARGET_SYSTEM], ["$target"])
+ 
+ # Checks for programs.
+ AC_PROG_CC
+-AC_PROG_CC_C99
+ AC_PROG_CXX
+ AX_CXX_COMPILE_STDCXX([11])
+ AM_PROG_AR
+ LT_INIT
+ 
+-AC_PROG_RANLIB
+ AC_LANG(C)
+ 
+ AX_CHECK_COMPILE_FLAG([-Wmismatched-tags -Wno-mismatched-tags], [CXXFLAGS="$CXXFLAGS -Wno-mismatched-tags"])
+@@ -147,7 +145,7 @@ AC_CHECK_LIB(z, gzopen)
+ 
+ # Check for header files.
+ AC_HEADER_DIRENT
+-AC_HEADER_STDC
++
+ AC_CHECK_HEADERS_ONCE([libintl.h stdlib.h string.h strings.h unistd.h])
+ 
+ # Check for typedefs, structures, and compiler characteristics.
+

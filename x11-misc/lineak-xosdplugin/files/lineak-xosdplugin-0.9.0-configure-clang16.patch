@@ -1,0 +1,14 @@
+autoreconf fails and it's a trivial fix to the generated configure, so let's
+just patch that instead. This is fixed in autoconf itself in newer versions.
+
+https://bugs.gentoo.org/879783
+--- a/configure
++++ b/configure
+@@ -7153,6 +7153,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <ctype.h>
++#include <stdlib.h>
+ #if ((' ' & 0x0FF) == 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))

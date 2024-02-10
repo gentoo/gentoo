@@ -1,0 +1,185 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file specifies packages that are considered deprecated (but not
+# masked yet).  This will cause QA tools to report dependencies on those
+# packages as requiring replacement.
+#
+# When you add an entry to the top of this file, add your name, the date
+# in the UTC timezone, and an explanation of why something is getting
+# deprecated.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # This is no longer supported upstream, please switch to dev-foo/bar.
+## dev-foo/foo
+
+#--- END OF EXAMPLES ---
+
+# Michał Górny <mgorny@gentoo.org> (2024-01-23)
+# Unmaintained, very hacky package.  Its replacement, berkeleydb,
+# was so bad that we've lastrited it.
+dev-python/bsddb3
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-10)
+# Superseded by dev-python/psycopg:0 (version 3).
+dev-python/psycopg:2
+
+# Petr Vaněk <arkamar@gentoo.org> (2023-10-26)
+# dev-libs/hyperscan upstream is inactive [1], please switch to more portable,
+# drop-in replacement dev-libs/vectorscan. dev-libs/hyperscan will be
+# last-rited when all its revdeps are gone.
+# [1] https://github.com/intel/hyperscan/issues/421
+dev-libs/hyperscan
+
+# Matt Whitlock <gentoo@mattwhitlock.name> (2023-10-24)
+# Transitional meta packages. Please update dependencies:
+#   dev-util/bitcoin-tx          -> net-p2p/bitcoin-core
+#   net-libs/libbitcoinconsensus -> net-p2p/bitcoin-core[libs]
+#   net-p2p/bitcoin-cli          -> net-p2p/bitcoin-core[bitcoin-cli]
+#   net-p2p/bitcoin-qt           -> net-p2p/bitcoin-core[gui]
+#   net-p2p/bitcoind             -> net-p2p/bitcoin-core[daemon]
+dev-util/bitcoin-tx
+net-libs/libbitcoinconsensus
+net-p2p/bitcoin-cli
+net-p2p/bitcoin-qt
+net-p2p/bitcoind
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-10-21)
+# QtScript is deprecated since Qt 5.5, all projects must port away.
+# Bug 915779
+dev-qt/qtscript:5
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-18)
+# Superseded by dev-python/pdm-backend.  The migration guide is at:
+# https://pdm-backend.fming.dev/migration/
+dev-python/pdm-pep517
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Merged into dev-perl/Type-Tiny. Please depend on that instead.
+dev-perl/Type-Tie
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
+# Obsolete transitional meta package. Switch to media-libs/libpulse
+# which ensures a sound server is installed via PDEPEND.
+media-sound/pulseaudio
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# Inactive upstream, doesn't support newer Rubies.
+# Please port your package to use dev-ruby/erubis instead.
+dev-ruby/erubis
+
+# Sam James <sam@gentoo.org> (2023-04-07)
+# No longer supported upstream, fork of dev-ruby/listen.
+# Please port your package to use dev-ruby/listen instead.
+dev-ruby/sass-listen
+
+# Sam James <sam@gentoo.org> (2023-04-06)
+# net-libs/libgsasl and net-misc/gsasl are now merged together.
+# Please depend on net-misc/gsasl[server] for the server and
+# net-misc/gsasl[client] for the client.
+net-libs/libgsasl
+virtual/gsasl
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-30)
+# The package is on keep-alive by Debian.  Nevertheless, they can't
+# keep up with changes in dev-python/setuptools, and they do not accept
+# bug reports.  PEP517 build systems are simply a no-go for this class
+# of packages (partially due to the limitations of wheel format), meson
+# and autotools are both much better choices.
+dev-python/python-distutils-extra
+
+# Sam James <sam@gentoo.org> (2022-12-29)
+# Doesn't work correctly on newer kernels/hardware. Events may go unreported
+# if using sys-apps/edac-utils. See app-admin/rasdaemon's README for the technical
+# details. Please migrate to app-admin/rasdaemon instead.
+sys-apps/edac-utils
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-24)
+# Unmaintained with last release in 2019.  We already patched it to work
+# with Python 3.9+.  The upstream code is also vulnerable
+# to CVE-2022-40899.  Above all, this library is completely redundant
+# to packages not supporting Python 2 anymore.
+dev-python/future
+
+# Michał Górny <mgorny@gentoo.org> (2022-10-17)
+# Nosetests are no longer maintained (since 2015!), are completely
+# broken with Python 3.11, and we were already patching it to make it
+# work with prior Python versions.  If your package still needs it
+# (sic!), then either port it to use a maintained test framework (pytest
+# preferably) or last rite it.
+dev-python/nose
+
+# Matt Turner <mattst88@gentoo.org> (2022-10-02)
+# Dummy packages, now merged into app-accessibility/at-spi2-core.
+# When possible, replace dependencies on these packages with a dependency on
+# 	>=app-accessibility/at-spi2-core-2.46.0
+app-accessibility/at-spi2-atk
+dev-libs/atk
+
+# Michał Górny <mgorny@gentoo.org> (2022-06-19)
+# Test automation tools.  They are generally used to run the test suite
+# across multiple Python versions, i.e. what our eclasses do for you
+# already.  They usually can't work inside network sandbox (since they
+# fetch and install all the dependencies inside the venv), so even
+# if they are listed in dependencies, your package probably does not
+# actually need them to run tests.
+dev-python/nox
+dev-python/tox
+
+# Sam James <sam@gentoo.org> (2022-04-22)
+# Obsolete virtual.
+# Only one provider is left (media-libs/libjpeg-turbo), please change
+# dependency to that instead.
+virtual/jpeg
+
+# Matt Turner <mattst88@gentoo.org> (2022-03-27)
+# Deprecated GNOME 2 era packages
+app-text/enchant:0
+app-text/gnome-doc-utils
+app-text/gtkspell:2
+app-text/scrollkeeper-dtd
+dev-cpp/gtkmm:2.4
+dev-libs/libcroco
+dev-libs/libIDL
+dev-libs/libunique:1
+gnome-base/libglade
+gnome-base/libgnomecanvas
+media-libs/libart_lgpl
+x11-libs/gtksourceview:2.0
+x11-themes/gnome-icon-theme-extras
+x11-themes/gnome-icon-theme-symbolic
+x11-themes/gtk-chtheme
+x11-themes/gtk-engines
+x11-themes/gtk-engines-adwaita
+x11-themes/gtk-engines-candido
+x11-themes/gtk-engines-experience
+x11-themes/gtk-engines-murrine
+x11-themes/gtk-engines-qtpixmap
+x11-themes/gtk-engines-rezlooks
+x11-themes/gtk-engines-ubuntulooks
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
+# Deprecated upstream, see HOMEPAGE
+dev-perl/Mail-Sender
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
+# gtk2. Nuff said. See HOMEPAGE, too.
+dev-perl/Gtk2
+
+# Mart Raudsepp <leio@gentoo.org> (2020-07-04)
+# Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
+x11-libs/wxGTK:3.0
+
+# Kent Fredric <kentnl@gentoo.org> (2020-04-15)
+# Functionality now provided by Net::SMTP 3.25+
+# available with >=virtual/perl-libnet-1.28
+# provided by >=dev-lang/perl-5.20.0
+# Try patching/removing dependent code to utilize this.
+# Bug #650320
+dev-perl/Net-SMTP-SSL
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
+# x11-libs/gtkglext is in the process of being removed, tracker bug #698950
+x11-libs/gtkglext

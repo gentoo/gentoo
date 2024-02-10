@@ -1,0 +1,13 @@
+dev-python/markdown2 installs its command as markdown2
+
+--- markdown-mode-2.5/markdown-mode.el
++++ markdown-mode-2.5/markdown-mode.el
+@@ -94,7 +94,7 @@
+   :group 'text
+   :link '(url-link "https://jblevins.org/projects/markdown-mode/"))
+ 
+-(defcustom markdown-command (let ((command (cl-loop for cmd in '("markdown" "pandoc" "markdown_py")
++(defcustom markdown-command (let ((command (cl-loop for cmd in '("markdown" "pandoc" "markdown2" "markdown_py")
+                                                     when (executable-find cmd)
+                                                     return (file-name-nondirectory it))))
+                               (or command "markdown"))

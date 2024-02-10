@@ -1,0 +1,55 @@
+--- a/rexecd/rexecd.8
++++ b/rexecd/rexecd.8
+@@ -68,8 +68,9 @@
+ it is interpreted as the port number of a secondary
+ stream to be used for the 
+ .Em stderr .
+-A second connection is then created to the specified
+-port on the client's machine.
++A second connection will be created to the specified
++port on the client's machine after receiving and authenticating
++the user, password, and command from the client.
+ .It
+ A NUL terminated user name of at most 16 characters
+ is retrieved on the initial socket.
+--- a/rexec/Makefile
++++ b/rexec/Makefile
+@@ -1,30 +1,23 @@
+ 
+ SHELL = /bin/sh
+ 
+-BINDIR = /usr/local/bin
+-MANDIR = /usr/local/man/man1
++include ../MCONFIG
++include ../MRULES
+ 
+ # Uncomment this line if you get link errors under Solaris
+ #LDLIBS=-lsocket -lnsl
+ 
+ .PHONY: all
+ 
+-all: rexec install
++all: rexec
+ 
+ rexec: rexec.c
+ 
+ rexec.1:
+ 
++clean:
++	rm -f *.o rexec
++
+ install: rexec rexec.1
+-	@ echo "Installation:  Press enter for defaults."; \
+-	echo -n "Enter the location to install executable "; \
+-	echo -n " (default: $(BINDIR)): "; \
+-	read bindir; \
+-	bindir=$${bindir:-$(BINDIR)}; \
+-	echo -n "Enter the manpage location (default $(MANDIR)): ";\
+-	read mandir; \
+-	mandir=$${mandir:-$(MANDIR)}; \
+-	cp rexec $$bindir; \
+-	chmod a+rx $${bindir}/rexec; \
+-	cp rexec.1 $$mandir; \
+-	chmod a+r $${mandir}/rexec.1
++	install -m 0755 rexec $(INSTALLROOT)/$(BINDIR)/rexec
++	install -m 0644 rexec.1 $(INSTALLROOT)/$(MANDIR)/man1/rexec.1

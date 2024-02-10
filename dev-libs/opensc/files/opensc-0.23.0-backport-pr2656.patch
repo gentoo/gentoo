@@ -1,0 +1,215 @@
+https://bugs.gentoo.org/909781
+https://github.com/OpenSC/libp11/issues/478
+https://github.com/OpenSC/OpenSC/pull/2656
+
+From 99f7b82f187ca3512ceae6270c391243d018fdac Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Thu, 1 Dec 2022 20:08:53 +0100
+Subject: [PATCH 1/4] pkcs11-tool: Fix private key import
+
+---
+ src/tools/pkcs11-tool.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/tools/pkcs11-tool.c b/src/tools/pkcs11-tool.c
+index aae205fe2c..cfee8526d5 100644
+--- a/src/tools/pkcs11-tool.c
++++ b/src/tools/pkcs11-tool.c
+@@ -3669,13 +3669,13 @@ parse_rsa_pkey(EVP_PKEY *pkey, int private, struct rsakey_info *rsa)
+ 		RSA_get0_factors(r, &r_p, &r_q);
+ 		RSA_get0_crt_params(r, &r_dmp1, &r_dmq1, &r_iqmp);
+ #else
+-		if (EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_FACTOR1, &r_d) != 1 ||
++		if (EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_D, &r_d) != 1 ||
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_FACTOR1, &r_p) != 1 ||
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_FACTOR2, &r_q) != 1 ||
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_EXPONENT1, &r_dmp1) != 1 ||
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_EXPONENT2, &r_dmq1) != 1 ||
+-			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_EXPONENT3, &r_iqmp) != 1) {
+ 			util_fatal("OpenSSL error during RSA private key parsing");
++			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_COEFFICIENT1, &r_iqmp) != 1) {
+ 		}
+ #endif
+ 		RSA_GET_BN(rsa, private_exponent, r_d);
+
+From 4a6e1d1dcd18757502027b1c5d2fb2cbaca28407 Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Thu, 1 Dec 2022 20:11:41 +0100
+Subject: [PATCH 2/4] pkcs11-tool: Log more information on OpenSSL errors
+
+---
+ src/tools/pkcs11-tool.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/tools/pkcs11-tool.c b/src/tools/pkcs11-tool.c
+index cfee8526d5..f2e6b1dd91 100644
+--- a/src/tools/pkcs11-tool.c
++++ b/src/tools/pkcs11-tool.c
+@@ -3641,10 +3641,8 @@ parse_rsa_pkey(EVP_PKEY *pkey, int private, struct rsakey_info *rsa)
+ 	const BIGNUM *r_dmp1, *r_dmq1, *r_iqmp;
+ 	r = EVP_PKEY_get1_RSA(pkey);
+ 	if (!r) {
+-		if (private)
+-			util_fatal("OpenSSL error during RSA private key parsing");
+-		else
+-			util_fatal("OpenSSL error during RSA public key parsing");
++		util_fatal("OpenSSL error during RSA %s key parsing: %s", private ? "private" : "public",
++			ERR_error_string(ERR_peek_last_error(), NULL));
+ 	}
+ 
+ 	RSA_get0_key(r, &r_n, &r_e, NULL);
+@@ -3654,10 +3652,8 @@ parse_rsa_pkey(EVP_PKEY *pkey, int private, struct rsakey_info *rsa)
+ 	BIGNUM *r_dmp1 = NULL, *r_dmq1 = NULL, *r_iqmp = NULL;
+ 	if (EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_N, &r_n) != 1 ||
+ 		EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_E, &r_e) != 1) {
+-		if (private)
+-			util_fatal("OpenSSL error during RSA private key parsing");
+-		else
+-			util_fatal("OpenSSL error during RSA public key parsing");
++		util_fatal("OpenSSL error during RSA %s key parsing: %s", private ? "private" : "public",
++			ERR_error_string(ERR_peek_last_error(), NULL));
+ 	 }
+ #endif
+ 	RSA_GET_BN(rsa, modulus, r_n);
+@@ -3674,8 +3670,9 @@ parse_rsa_pkey(EVP_PKEY *pkey, int private, struct rsakey_info *rsa)
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_FACTOR2, &r_q) != 1 ||
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_EXPONENT1, &r_dmp1) != 1 ||
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_EXPONENT2, &r_dmq1) != 1 ||
+-			util_fatal("OpenSSL error during RSA private key parsing");
+ 			EVP_PKEY_get_bn_param(pkey, OSSL_PKEY_PARAM_RSA_COEFFICIENT1, &r_iqmp) != 1) {
++			util_fatal("OpenSSL error during RSA private key parsing: %s",
++				ERR_error_string(ERR_peek_last_error(), NULL));
+ 		}
+ #endif
+ 		RSA_GET_BN(rsa, private_exponent, r_d);
+
+From 267da3e81f1fc23a9ccce1462ab5deb1a4d4aec5 Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Thu, 1 Dec 2022 20:38:31 +0100
+Subject: [PATCH 3/4] Reproducer for broken pkcs11-tool key import
+
+---
+ tests/Makefile.am                | 10 ++++---
+ tests/test-pkcs11-tool-import.sh | 48 ++++++++++++++++++++++++++++++++
+ 2 files changed, 54 insertions(+), 4 deletions(-)
+ create mode 100755 tests/test-pkcs11-tool-import.sh
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index d378e2ee00..9d8a24c321 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -14,8 +14,9 @@ dist_noinst_SCRIPTS = common.sh \
+                       test-pkcs11-tool-test-threads.sh \
+                       test-pkcs11-tool-sign-verify.sh \
+                       test-pkcs11-tool-allowed-mechanisms.sh \
+-                      test-pkcs11-tool-sym-crypt-test.sh\
+-                      test-pkcs11-tool-unwrap-wrap-test.sh
++                      test-pkcs11-tool-sym-crypt-test.sh \
++                      test-pkcs11-tool-unwrap-wrap-test.sh \
++                      test-pkcs11-tool-import.sh
+ 
+ .NOTPARALLEL:
+ TESTS = \
+@@ -25,8 +26,9 @@ TESTS = \
+         test-pkcs11-tool-test.sh \
+         test-pkcs11-tool-test-threads.sh \
+         test-pkcs11-tool-allowed-mechanisms.sh \
+-        test-pkcs11-tool-sym-crypt-test.sh\
+-        test-pkcs11-tool-unwrap-wrap-test.sh
++        test-pkcs11-tool-sym-crypt-test.sh \
++        test-pkcs11-tool-unwrap-wrap-test.sh \
++        test-pkcs11-tool-import.sh
+ XFAIL_TESTS = \
+         test-pkcs11-tool-test-threads.sh \
+         test-pkcs11-tool-test.sh
+diff --git a/tests/test-pkcs11-tool-import.sh b/tests/test-pkcs11-tool-import.sh
+new file mode 100755
+index 0000000000..76ff8e51be
+--- /dev/null
++++ b/tests/test-pkcs11-tool-import.sh
+@@ -0,0 +1,48 @@
++#!/bin/bash
++SOURCE_PATH=${SOURCE_PATH:-..}
++
++source $SOURCE_PATH/tests/common.sh
++
++echo "======================================================="
++echo "Setup SoftHSM"
++echo "======================================================="
++if [[ ! -f $P11LIB ]]; then
++    echo "WARNING: The SoftHSM is not installed. Can not run this test"
++    exit 77;
++fi
++card_setup
++
++ID="0100"
++OPTS=""
++for KEYTYPE in "RSA" "EC"; do
++    echo "======================================================="
++    echo "Generate and import $KEYTYPE keys"
++    echo "======================================================="
++    if [ "$KEYTYPE" == "RSA" ]; then
++        ID="0100"
++    elif [ "$KEYTYPE" == "EC" ]; then
++        ID="0200"
++        OPTS="-pkeyopt ec_paramgen_curve:P-521"
++    fi
++    openssl genpkey -out "${KEYTYPE}_private.der" -outform DER -algorithm $KEYTYPE $OPTS
++    assert $? "Failed to generate private $KEYTYPE key"
++    $PKCS11_TOOL --write-object "${KEYTYPE}_private.der" --id "$ID" --type privkey \
++        --label "$KEYTYPE" -p "$PIN" --module "$P11LIB"
++    assert $? "Failed to write private $KEYTYPE key"
++
++    openssl pkey -in "${KEYTYPE}_private.der" -out "${KEYTYPE}_public.der" -pubout -inform DER -outform DER
++    assert $? "Failed to convert private $KEYTYPE key to public"
++    $PKCS11_TOOL --write-object "${KEYTYPE}_public.der" --id "$ID" --type pubkey --label "$KEYTYPE" \
++        -p $PIN --module $P11LIB
++    assert $? "Failed to write public $KEYTYPE key"
++    # certificate import already tested in all other tests
++
++    rm "${KEYTYPE}_private.der" "${KEYTYPE}_public.der"
++done
++
++echo "======================================================="
++echo "Cleanup"
++echo "======================================================="
++card_cleanup
++
++exit $ERRORS
+
+From 63a7bceeca43ece1eee201ef7a974b20b294ba4e Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jakuje@gmail.com>
+Date: Fri, 2 Dec 2022 18:07:43 +0100
+Subject: [PATCH 4/4] Simplify the new test
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Co-authored-by: Veronika Hanulíková <61348757+xhanulik@users.noreply.github.com>
+---
+ tests/test-pkcs11-tool-import.sh | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test-pkcs11-tool-import.sh b/tests/test-pkcs11-tool-import.sh
+index 76ff8e51be..c90b3b4926 100755
+--- a/tests/test-pkcs11-tool-import.sh
++++ b/tests/test-pkcs11-tool-import.sh
+@@ -12,15 +12,13 @@ if [[ ! -f $P11LIB ]]; then
+ fi
+ card_setup
+ 
+-ID="0100"
+-OPTS=""
+ for KEYTYPE in "RSA" "EC"; do
+     echo "======================================================="
+     echo "Generate and import $KEYTYPE keys"
+     echo "======================================================="
+-    if [ "$KEYTYPE" == "RSA" ]; then
+-        ID="0100"
+-    elif [ "$KEYTYPE" == "EC" ]; then
++    ID="0100"
++    OPTS=""
++    if [ "$KEYTYPE" == "EC" ]; then
+         ID="0200"
+         OPTS="-pkeyopt ec_paramgen_curve:P-521"
+     fi

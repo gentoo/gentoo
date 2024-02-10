@@ -1,0 +1,16 @@
+<VirtualHost 123.4.56.78 >
+	ServerName davical.example.net
+
+	DocumentRoot /var/www/myvhost/htdocs
+
+	<Directory /var/www/myvhost/htdocs/>
+		AllowOverride None
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	php_value magic_quotes_gpc 0
+	php_value register_globals 0
+	php_value error_reporting "E_ALL & ~E_NOTICE"
+	php_value default_charset "utf-8"
+</VirtualHost>

@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+config="/etc/${RC_SVCNAME}.conf"
+extra_commands="checkconfig"
+name="Mcproxy"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+command="mcproxy"
+command_background="true"
+command_args="${MCPROXY_OPTS} -f ${config}"
+command_args_checkconfig="-c"
+procname="${RC_SVCNAME}"
+
+checkconfig() {
+	${command} ${command_args_checkconfig}
+}
+
+start_pre() {
+	if [ ! -f "${config}" ]; then
+		eerror "Please create ${config} before starting ${name}!"
+		return 1
+	else
+		return 0
+	fi
+}

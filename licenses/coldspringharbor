@@ -1,0 +1,20 @@
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.  See the Artistic License file
+in the main Perl distribution for specific terms and conditions of
+use.  In addition, the following disclaimers apply:
+
+CSHL makes no representations whatsoever as to the SOFTWARE contained
+herein.  It is experimental in nature and is provided WITHOUT WARRANTY
+OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR ANY OTHER
+WARRANTY, EXPRESS OR IMPLIED.  CSHL MAKES NO REPRESENTATION OR
+WARRANTY THAT THE USE OF THIS SOFTWARE WILL NOT INFRINGE ANY PATENT OR
+OTHER PROPRIETARY RIGHT.
+
+By downloading this SOFTWARE, your Institution hereby indemnifies CSHL
+against any loss, claim, damage or liability, of whatsoever kind or
+nature, which may arise from your Institution's respective use,
+handling or storage of the SOFTWARE.
+
+If publications result from research using this SOFTWARE, we ask that
+CSHL be acknowledged and/or credit be given to CSHL scientists, as
+scientifically appropriate.

@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+if [ "${SVCNAME}" = "steamcmd" ]; then
+	instance="main"
+else
+	instance="${SVCNAME#steamcmd.}"
+fi
+
+dtach_tmpfile="$(mktemp -u)"
+name="SteamCMD (Mod: ${instance})"
+pidfile="/run/steamcmd.${instance}.pid"
+start_stop_daemon_args="--chdir ${STEAMCMD_PATH}"
+
+description_attach="Attaches to the session (non-interactive console) of the SteamCMD game server"
+extra_started_commands="attach"
+
+command="/usr/bin/dtach"
+command_args="-N ${dtach_tmpfile} ${STEAMCMD_PATH}/${STEAMCMD_BINARY} ${STEAMCMD_OPTS}"
+command_background="true"
+command_group="steamcmd"
+command_user="steamcmd"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	if [ -z "${STEAMCMD_BINARY}" ] || [ -z "${STEAMCMD_PATH}" ]; then
+		eerror "One or more STEAMCMD_* variables in /etc/conf.d/${SVCNAME} are not set!"
+		return 1
+	fi
+	return 0
+}
+
+attach() {
+	pidnumber="$(cat ${pidfile})"
+	dtach_tmpfile="$(cat /proc/${pidnumber}/cmdline | tr '\0' ' ' | awk '{print $3}')"
+
+	if [ -S "${dtach_tmpfile}" ]; then
+		eval "${command}" -a "${dtach_tmpfile}" "${DTACH_OPTS}"
+	else
+		eerror "The determined socket file for dtach could not be found!"
+		eerror "Did the process crash?"
+	fi
+}

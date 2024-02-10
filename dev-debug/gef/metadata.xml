@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		GEF is a set of commands for x86/64, ARM, MIPS, PowerPC and SPARC to
+		assist exploit developers and reverse-engineers when using old school
+		GDB. It provides additional features to GDB using the Python API to
+		assist during the process of dynamic analysis and exploit development.
+		Application developers will also benefit from it, as GEF lifts a great
+		part of regular GDB obscurity, avoiding repeating traditional commands,
+		or bringing out the relevant information from the debugging runtime.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hugsy/gef</remote-id>
+	</upstream>
+</pkgmetadata>

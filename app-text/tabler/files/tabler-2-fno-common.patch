@@ -1,0 +1,22 @@
+--- a/util.h
++++ b/util.h
+@@ -35,7 +35,7 @@
+ int digits(int n, int base);
+ char *replace_backslashed(char *string);
+ 
+-char *_strregtok_previous_end;
++extern char *_strregtok_previous_end;
+ char *strregtok(char *string, const regex_t *seperator);
+ 
+ #endif /* UTIL_H */
+--- a/util.c
++++ b/util.c
+@@ -32,6 +32,8 @@
+ #include "conf.h"
+ #include "util.h"
+ 
++char *_strregtok_previous_end;
++
+ /* replace_backslashed
+  *
+  * Replaces, within the given string, certain backslashed characters with the

@@ -1,0 +1,21 @@
+--- a/src/native/unix/Makedefs.in
++++ b/src/native/unix/Makedefs.in
+@@ -17,6 +17,7 @@
+ 
+ # @author  Pier Fumagalli <mailto:pier.fumagalli@eng.sun.com>
+ 
++AR = @AR@
+ CC = @CC@
+ CFLAGS = @CFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+--- a/src/native/unix/native/Makefile.in
++++ b/src/native/unix/native/Makefile.in
+@@ -31,7 +31,7 @@ OBJS =  arguments.o \
+ all: jsvc libservice.a
+ 
+ libservice.a: $(OBJS)
+-	ar cr libservice.a $(OBJS)
++	${AR} cr libservice.a $(OBJS)
+ 	$(RANLIB) libservice.a
+ 
+ jsvc: jsvc-unix.o libservice.a

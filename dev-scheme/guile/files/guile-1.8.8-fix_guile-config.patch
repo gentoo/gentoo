@@ -1,0 +1,14 @@
+diff -ruN 1/configure.in 2/configure.in
+--- 1/configure.in	2010-12-13 17:24:39.000000000 +0000
++++ 2/configure.in	2011-04-29 11:53:39.000000000 +0000
+@@ -1522,8 +1522,8 @@
+ #######################################################################
+ 
+ dnl Tell guile-config what flags guile users should compile and link with.
+-GUILE_LIBS="$LDFLAGS $LIBS"
+-GUILE_CFLAGS="$CPPFLAGS $PTHREAD_CFLAGS"
++GUILE_LIBS="$LIBS"
++GUILE_CFLAGS="$PTHREAD_CFLAGS"
+ AC_SUBST(GUILE_LIBS)
+ AC_SUBST(GUILE_CFLAGS)
+ 

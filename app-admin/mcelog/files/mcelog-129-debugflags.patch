@@ -1,0 +1,22 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Oct 24 15:41:33 UTC 2012
+Subject: build system
+
+don't overwrite system CFLAGS, only append "-g -Os" if DEBUG=1 is passed
+as argument
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,11 @@
+-CFLAGS := -g -Os
++CC ?= gcc
++
++# set to 1 to enable debug flags
++DEBUG = 0
++ifeq ($(DEBUG),1)
++CFLAGS += -g -Os
++endif
++
+ prefix := /usr
+ etcprefix :=
+ MANDIR := ${prefix}/share/man

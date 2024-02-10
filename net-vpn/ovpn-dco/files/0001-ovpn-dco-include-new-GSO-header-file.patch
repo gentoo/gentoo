@@ -1,0 +1,76 @@
+From dba96d203f960356b477291d6a58d30fc096fbe4 Mon Sep 17 00:00:00 2001
+From: Antonio Quartulli <antonio@openvpn.net>
+Date: Wed, 16 Aug 2023 22:15:01 +0200
+Subject: [PATCH] ovpn-dco: include new GSO header file
+
+GSO code has ben moved to its own files, therefore a new header
+needs to be included accordingly.
+
+This patch also provides some compat files so that ovpn-dco can
+continue to compile also on older kernels.
+
+Fixes: https://github.com/OpenVPN/ovpn-dco/issues/42
+Signed-off-by: Antonio Quartulli <antonio@openvpn.net>
+---
+ Makefile                    |  4 ++--
+ compat-include/net/gso.h    | 20 ++++++++++++++++++++
+ drivers/net/ovpn-dco/ovpn.c |  1 +
+ 3 files changed, 23 insertions(+), 2 deletions(-)
+ create mode 100644 compat-include/net/gso.h
+
+diff --git a/Makefile b/Makefile
+index a36a4d2..fe535e2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -34,8 +34,8 @@ ELFLAG := $(EL8FLAG) $(EL9FLAG)
+ NOSTDINC_FLAGS += \
+ 	-I$(PWD)/include/ \
+ 	$(CFLAGS) $(ELFLAG) \
+-	-include $(PWD)/linux-compat.h
+-#	-I$(PWD)/compat-include/
++	-include $(PWD)/linux-compat.h \
++	-I$(PWD)/compat-include/
+ 
+ ifneq ($(REVISION),)
+ NOSTDINC_FLAGS += -DOVPN_DCO_VERSION=\"$(REVISION)\"
+diff --git a/compat-include/net/gso.h b/compat-include/net/gso.h
+new file mode 100644
+index 0000000..2e41c8b
+--- /dev/null
++++ b/compat-include/net/gso.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* OpenVPN data channel accelerator
++ *
++ *  Copyright (C) 2023 OpenVPN, Inc.
++ *
++ *  Author:	Antonio Quartulli <antonio@openvpn.net>
++ */
++
++#ifndef _NET_OVPN_COMPAT_NET_GSO_H
++#define _NET_OVPN_COMPAT_NET_GSO_H
++
++#include <linux/version.h>
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 10)
++#include_next <net/gso.h>
++#else
++#include <linux/netdevice.h>
++#endif
++
++#endif /* _NET_OVPN_COMPAT_NET_GSO_H */
+diff --git a/drivers/net/ovpn-dco/ovpn.c b/drivers/net/ovpn-dco/ovpn.c
+index 772a34b..82e9f94 100644
+--- a/drivers/net/ovpn-dco/ovpn.c
++++ b/drivers/net/ovpn-dco/ovpn.c
+@@ -22,6 +22,7 @@
+ #include "udp.h"
+ 
+ #include <linux/workqueue.h>
++#include <net/gso.h>
+ #include <uapi/linux/if_ether.h>
+ 
+ static const unsigned char ovpn_keepalive_message[] = {
+-- 
+2.41.0
+

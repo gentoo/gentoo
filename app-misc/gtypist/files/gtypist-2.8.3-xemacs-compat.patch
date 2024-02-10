@@ -1,0 +1,18 @@
+--- gtypist-2.8.3-orig/tools/gtypist-mode.el	2003-09-28 23:35:22.000000000 +0200
++++ gtypist-2.8.3/tools/gtypist-mode.el	2007-04-21 14:49:16.000000000 +0200
+@@ -95,7 +95,14 @@
+ 
+ (require 'font-lock)
+ (require 'thingatpt)
+-(require 'executable) ;; executable-find
++
++(eval-and-compile
++  (cond
++   ((fboundp 'executable-find))
++   ((fboundp 'locate-file)
++    (defun executable-find (command)
++      (locate-file command exec-path nil 'executable)))
++   (t (require 'executable))))
+ 
+ (defvar gtypist-mode-syntax-table nil "Syntax-table for gtypist-mode.")
+ (unless gtypist-mode-syntax-table

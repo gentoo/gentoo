@@ -1,0 +1,202 @@
+Clang16 will not allow implicit function declarations and implicit integers etc.
+This patch overhauls the source code for modern C.
+
+Bug: https://bugs.gentoo.org/875704
+Upstream PR: https://github.com/oshazard/gtkdialog/pull/81
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/src/actions.c
++++ b/src/actions.c
+@@ -36,6 +36,7 @@
+ #include "attributes.h"
+ #include "variables.h"
+ #include "tag_attributes.h"
++#include "gtkdialog_parser.h"
+ 
+ extern gchar *option_include_file;
+ 
+--- a/src/automaton.c
++++ b/src/automaton.c
+@@ -35,6 +35,7 @@
+ */
+ 
+ #include <gtk/gtk.h>
++#include <glib/gprintf.h>
+ 
+ #include "config.h"
+ #include "gtkdialog.h"
+@@ -87,6 +88,8 @@
+ #undef TOOLTIPS
+ 
+ extern gboolean option_no_warning;
++extern void push_widget(GtkWidget * widget, int widgettype);
++int instruction_execute(instruction command);
+ 
+ instruction *program = NULL;
+ int instruction_counter = 0;		/* The first available memory cell */
+@@ -323,8 +326,7 @@ void print_command(instruction command)
+     fflush(stdout);
+ }
+ 
+-void
+-print_program()
++void print_program()
+ {
+ 	gint pc;
+ 	instruction command;
+@@ -580,8 +582,7 @@ finalize:
+ }
+ 
+ 
+-int 
+-instruction_execute(instruction command)
++int instruction_execute(instruction command)
+ {
+ 	GList *element;
+ 	token Token;
+@@ -911,9 +912,11 @@ gboolean widget_moved(GtkWidget *widget,
+ 		//gtk_widget_set_usize(window, 
+ 		//		configure->width -20,
+ 		//		configure->height);
++#if HAVE_GTK==2
+ 		gtk_widget_set_uposition(GTK_WIDGET(window), 
+ 				configure->x,
+ 				configure->y);
++#endif
+ 	}
+ 	
+ 	fflush(stderr);
+--- a/src/gtkdialog.h
++++ b/src/gtkdialog.h
+@@ -65,5 +65,6 @@ gint get_program_from_variable(gchar *name);
+ void set_program_name(gchar *name);
+ gchar *get_program_name(void);
+ void load_styles_file(gchar *filename);
++int getnextchar(void);
+ 
+ #endif
+--- a/src/gtkdialog_parser.h
++++ b/src/gtkdialog_parser.h
+@@ -385,3 +385,8 @@ typedef union YYSTYPE
+ extern YYSTYPE gtkdialog_lval;
+ 
+ 
++extern int gtkdialog_error(char *c);
++extern void run_program(void);
++extern void print_program();
++extern int gtkdialog_lex (void);
++extern int gtkdialog_parse (void);
+--- a/src/printing.c
++++ b/src/printing.c
+@@ -25,6 +25,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <gtk/gtk.h>
++#include <glib/gprintf.h>
+ #include "gtkdialog.h"
+ #include "printing.h"
+ 
+--- a/src/signals.c
++++ b/src/signals.c
+@@ -40,6 +40,8 @@
+ //#define DEBUG_CONTENT
+ //#define DEBUG_TRANSITS
+ 
++extern gboolean variables_is_avail_by_name(const char *name);
++
+ /* Local variables */
+ char *condexpr[] = {
+ 	"active_is_true(", "active_is_false(", "active_is_true (", "active_is_false (",
+--- a/src/stringman.c
++++ b/src/stringman.c
+@@ -30,6 +30,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <gtk/gtk.h>
+--- a/src/variables.c
++++ b/src/variables.c
+@@ -59,6 +59,7 @@
+ #endif
+ 
+ extern gboolean option_no_warning;
++extern int yywarning(char *c);
+ 
+ /* Local function prototypes */
+ #ifdef DEBUG
+--- a/src/widget_notebook.c
++++ b/src/widget_notebook.c
+@@ -28,6 +28,7 @@
+ #include "automaton.h"
+ #include "widgets.h"
+ #include "tag_attributes.h"
++#include "signals.h"
+ 
+ /* Defines */
+ //#define DEBUG_CONTENT
+--- a/src/widget_timer.c
++++ b/src/widget_timer.c
+@@ -28,6 +28,7 @@
+ #include "automaton.h"
+ #include "widgets.h"
+ #include "tag_attributes.h"
++#include "signals.h"
+ 
+ /* Defines */
+ //#define DEBUG_CONTENT
+--- a/src/widgets.h
++++ b/src/widgets.h
+@@ -38,6 +38,38 @@
+ #include "variables.h"
+ #include "automaton.h"
+ 
++#include "widget_window.h"
++#include "widget_vbox.h"
++#include "widget_tree.h"
++#include "widget_timer.h"
++#include "widget_text.h"
++#include "widget_terminal.h"
++#include "widget_template.h"
++#include "widget_table.h"
++#include "widget_statusbar.h"
++#include "widget_spinbutton.h"
++#include "widget_radiobutton.h"
++#include "widget_progressbar.h"
++#include "widget_pixmap.h"
++#include "widget_notebook.h"
++#include "widget_menuitem.h"
++#include "widget_menubar.h"
++#include "widget_list.h"
++#include "widget_hseparator.h"
++#include "widget_hscale.h"
++#include "widget_hbox.h"
++#include "widget_frame.h"
++#include "widget_fontbutton.h"
++#include "widget_expander.h"
++#include "widget_eventbox.h"
++#include "widget_entry.h"
++#include "widget_edit.h"
++#include "widget_comboboxtext.h"
++#include "widget_combobox.h"
++#include "widget_colorbutton.h"
++#include "widget_checkbox.h"
++#include "widget_button.h"
++
+ char *widget_get_text_value(GtkWidget *widget, int type);
+ FILE *widget_opencommand(const char *command);
+ char *widgets_to_str(int itype);
+--- a/src/gtkdialog.c
++++ b/src/gtkdialog.c
+@@ -345,7 +345,7 @@ get_program_from_file(char *name)
+ 	 * required because the #! is not included in the language.
+ 	 */
+ 	program_src = NULL;
+-	result = getline(&program_src, &tmp, sourcefile);
++	result = getline(&program_src, (size_t*)&tmp, sourcefile);
+ 	if (program_src[0] != '#') {
+ 		fclose(sourcefile);
+ 		sourcefile = fopen(name, "r");

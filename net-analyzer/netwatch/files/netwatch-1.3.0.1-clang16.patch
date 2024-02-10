@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/871375
+--- a/dispdata.c
++++ b/dispdata.c
+@@ -42,3 +42,3 @@
+ 
+-extern destroy_program;
++extern int destroy_program;
+ extern Semaphore masterdo;
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -608,2 +608,4 @@
+ void findaddr (u_int32_t searchaddr);
++int doeth ();
++int gh (int opt);
+ 
+--- a/netwatch.h
++++ b/netwatch.h
+@@ -220,2 +220,4 @@
+ char *servicenm( char *s, int port);
++void uthread_wait( long usec);
++int dokeyin (int force);
+ 

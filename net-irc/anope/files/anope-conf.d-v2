@@ -1,0 +1,9 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# user to run anope as
+ANOPE_USER="anope"
+
+# Additional commandline parameters
+ANOPE_OPTS="--confdir=/etc/anope --logdir=/var/log/anope --dbdir=/var/lib/anope"
+ANOPE_OPTS="${ANOPE_OPTS} --localedir=/usr/share/locale --modulesdir=%LIBDIR%"

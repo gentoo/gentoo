@@ -1,0 +1,79 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before bootmisc hdparm
+	after localmount
+}
+
+checkconfig() {
+	if [ ! -f /etc/conf.d/pciparm ]; then
+		ewarn "/etc/conf.d/pciparm does not exist, skipping"
+		return 1
+	fi
+
+	if [ -z "${PCIPARM_ALL}" -a -z "${PCIPARM_BUS_0}" -a  -z "${PCIPARM_VENDOR_0}" ]; then
+		ewarn "None of PCIPARM_ALL, PCIPARM_BUS_* or PCIPARM_VENDOR_* set in /etc/conf.d/pciparm"
+		return 1
+	fi
+}
+
+do_setpci() {
+	#ewarn "do_setpci: /usr/sbin/setpci $SETPCI_OPT $@"
+	SWITCH=$1
+	SPEC_ID=$2
+	shift 2
+	case "$SWITCH" in
+		-d) DESC=vendor ;;
+		-s) DESC=bus ;;
+		*) eerror "Unknown setpci type: $SWITCH" ; return 1 ;;
+	esac
+
+	if [ -z "$SPEC_ID" ]; then
+		eerror "Missing device specifier!"
+		return 1
+	fi
+	if [ -z "$*" ]; then
+		eerror "Missing configuration to set for ($DESC) $SPEC_ID!"
+		return 1
+	fi
+
+	ebegin "Setting PCI params for ($DESC) $SPEC_ID to $@"
+	/usr/sbin/setpci $SETPCI_OPT $SWITCH $SPEC_ID "$@"
+	rc=$?
+	eend $rc
+	return $rc
+}
+
+do_setpci_array() {
+	name=$1
+	shift
+	i=0
+	while true; do
+		eval opt="\$${name}_$i"
+		# End of loop
+		[ -z "${opt}" ] && break
+		# Pass in all other parameters here, in case we want to use multiple
+		# arguments later.
+		do_setpci "$@" $opt #|| return 1
+		i=$(($i+1))
+	done
+}
+
+start() {
+	if get_bootparam "nopciparm" ; then
+		ewarn "Skipping pciparm init as requested in kernel cmdline"
+		return 0
+	fi
+
+	checkconfig || return 1
+	
+	# We do not exit after any errors presently, because it might be a
+	# stability-related fix after a failure.
+	[ -n "$PCIPARM_ALL" ] && \
+		do_setpci -d '*:*' $PCIPARM_ALL #|| return 1
+
+	do_setpci_array PCIPARM_BUS -s #|| return 1
+	do_setpci_array PCIPARM_VENDOR -d #|| return 1
+}

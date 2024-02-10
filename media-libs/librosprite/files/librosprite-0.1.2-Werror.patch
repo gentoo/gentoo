@@ -1,0 +1,14 @@
+--- librosprite-0.1.2/Makefile
++++ librosprite-0.1.2/Makefile
+@@ -22,11 +22,6 @@
+ 	-Wformat=2 -Werror-implicit-function-declaration \
+ 	-Wmissing-declarations -Wmissing-prototypes
+ 
+-# BeOS/Haiku standard library headers create warnings
+-ifneq ($(BUILD),i586-pc-haiku)
+-  WARNFLAGS := $(WARNFLAGS) -Werror
+-endif
+-
+ CFLAGS := -I$(CURDIR)/include/ $(WARNFLAGS) $(CFLAGS)
+ 
+ ifneq ($(GCCVER),2)

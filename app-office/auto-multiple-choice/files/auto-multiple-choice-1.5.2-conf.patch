@@ -1,0 +1,52 @@
+diff -ruN auto-multiple-choice-1.5.2.orig/doc/Makefile auto-multiple-choice-1.5.2/doc/Makefile
+--- auto-multiple-choice-1.5.2.orig/doc/Makefile	2021-02-07 23:12:35.000000000 +0100
++++ auto-multiple-choice-1.5.2/doc/Makefile	2023-06-23 00:05:07.918465419 +0200
+@@ -67,7 +67,7 @@
+ %.pdf: export SOURCE_DATE_EPOCH=$(PACKAGE_V_EPOCH)
+ %.pdf: export SOURCE_DATE_EPOCH_TEX_PRIMITIVES=1
+ %.pdf: export FORCE_SOURCE_DATE=1
+-%.pdf: export TEXINPUTS=./img_pdf/:
++%.pdf: export TEXINPUTS=/usr/share/dblatex/latex/style:/usr/share/dblatex/latex/misc:/usr/share/dblatex/latex/graphics:./img_pdf/:
+ 
+ %.pdf: %.tex $(BLOCK_IMAGES:.svg=.pdf)
+ 	set -e ; $(XELATEX) $<; $(XELATEX) $<
+diff -ruN auto-multiple-choice-1.5.2.orig/Makefile.conf auto-multiple-choice-1.5.2/Makefile.conf
+--- auto-multiple-choice-1.5.2.orig/Makefile.conf	2021-01-29 15:52:23.000000000 +0100
++++ auto-multiple-choice-1.5.2/Makefile.conf	2023-06-23 00:03:59.662678013 +0200
+@@ -33,13 +33,13 @@
+ # directory for executable
+ BINDIR=/usr/bin
+ # directory for perl modules
+-PERLDIR=/usr/share/perl5
++PERLDIR=$(VENDOR_LIB)
+ # directory for some AMC executables, not to be used by end-user
+ MODSDIR=/usr/lib/AMC
+ # directory for LaTeX style file
+-TEXDIR=/usr/share/texmf/tex/latex/AMC
++TEXDIR=/usr/share/texmf-site/tex/latex/AMC
+ # directory for LaTeX doc
+-TEXDOCDIR=/usr/share/doc/texmf/AMC/
++TEXDOCDIR=/usr/share/texmf-site/doc/AMC/
+ # directory for man (1) files
+ MAN1DIR=/usr/share/man/man1
+ # directory for desktop file 
+@@ -60,7 +60,7 @@
+ # directory for AMC packaged models
+ MODELSDIR=/usr/share/auto-multiple-choice/models
+ # directory for documentation (will use html/auto-multiple-choice.* subdirs for HTML docs)
+-DOCDIR=/usr/share/doc/auto-multiple-choice
++DOCDIR=/usr/share/doc/$(PVR)
+ 
+ # directory for Shared MIME-info Database
+ SHARED_MIMEINFO_DIR=/usr/share/mime/packages
+@@ -95,10 +95,3 @@
+ 
+ GZIP_REPRODUCIBLE_ARGS=-n
+ 
+-# INSTALL USER AND GROUP
+-
+-ifneq ($(SYSTEM_TYPE),rpm)
+-INSTALL_USER=root
+-INSTALL_GROUP=root
+-endif
+-

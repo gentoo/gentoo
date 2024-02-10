@@ -1,0 +1,31 @@
+commit 11de11a1cfa840545dd8fd9b41937445c6107f86
+Author: orbea <orbea@riseup.net>
+Date:   Wed Mar 31 05:11:07 2021 -0700
+
+    build: Fix undefined reference for libm.
+
+diff --git a/Makefile.am b/Makefile.am
+index 62fd2e3..78ccc65 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,5 +22,4 @@ libcandido_la_SOURCES =		\
+ 	./src/config.h
+ 
+ libcandido_la_LDFLAGS = -module -avoid-version -no-undefined
+-libcandido_la_LIBADD =  $(GTK_LIBS)
+-
++libcandido_la_LIBADD =  $(GTK_LIBS) $(LIBM)
+diff --git a/configure.ac b/configure.ac
+index 8e261af..8570101 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,6 +27,9 @@ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.8.0,,
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+ AC_SUBST(GTK_VERSION)
+ 

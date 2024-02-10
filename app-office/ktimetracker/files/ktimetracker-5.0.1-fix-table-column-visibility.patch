@@ -1,0 +1,34 @@
+From ddc87a47089b900ee1c62be10b23d0d4bb2361f1 Mon Sep 17 00:00:00 2001
+From: Alexander Potashev <aspotashev@gmail.com>
+Date: Mon, 24 Feb 2020 23:01:23 +0100
+Subject: [PATCH] TaskView: Change visibility of table columns after the view
+ is connected to model
+
+Otherwise setColumnHidden() has no effect.
+
+BUG: 417988
+---
+ src/taskview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/taskview.cpp b/src/taskview.cpp
+index 3b9578f..c1b7580 100644
+--- a/src/taskview.cpp
++++ b/src/taskview.cpp
+@@ -164,12 +164,12 @@ void TaskView::load(const QUrl &url)
+     m_tasksWidget->setRootIsDecorated(true);
+ 
+     reconfigureModel();
+-    m_tasksWidget->reconfigure();
+ 
+     // Connect to the new model created by TimeTrackerStorage::load()
+     auto *tasksModel = m_storage->tasksModel();
+     m_filterProxyModel->setSourceModel(tasksModel);
+     m_tasksWidget->setSourceModel(tasksModel);
++    m_tasksWidget->reconfigure();
+     for (int i = 0; i <= tasksModel->columnCount(QModelIndex()); ++i) {
+         m_tasksWidget->resizeColumnToContents(i);
+     }
+-- 
+GitLab
+

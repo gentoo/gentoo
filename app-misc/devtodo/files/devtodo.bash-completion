@@ -1,0 +1,43 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# bash command-line completion for devtodo
+# Author: Aaron Walker <ka0ttic@gentoo.org>
+
+_devtodo() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-v --verbose -a --add -g --graft -l --link -R --reparent
+        -p --priority -e --edit --remove -d --done -D --not-done
+        --global-database -G --global --database -T --TODO -A --all
+        -f --filter --colour --force-colour --mono --help --version
+        --title --date-format --format --use-format --sort --paranoid
+        --database-loaders --backup -s --summary -c --comment --timeout
+        --purge"
+
+    if [[ "${cur}" == -* || ${COMP_CWORD} -eq 1 ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+
+    case "${prev}" in
+        -p|--priority)
+            COMPREPLY=( $(compgen -W "default veryhigh high medium low verylow" \
+                -- ${cur}) )
+            ;;
+        --database-loaders)
+            COMPREPLY=( $(compgen -W "xml binary" -- ${cur}) )
+            ;;
+        -l|--link|--*database)
+            COMPREPLY=( $(compgen -f -- ${cur}) )
+            ;;
+        *)
+            COMPREPLY=()
+            ;;
+    esac
+}
+complete -o filenames -F _devtodo devtodo todo tda tde tdr tdd
+
+# vim: set ft=sh tw=80 sw=4 et :

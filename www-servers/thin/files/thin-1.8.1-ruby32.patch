@@ -1,0 +1,99 @@
+https://github.com/macournoyer/thin/commit/829c3aaa48efcd0c289d856f068f5d0fb16edaac
+
+From 829c3aaa48efcd0c289d856f068f5d0fb16edaac Mon Sep 17 00:00:00 2001
+From: Vasily Fedoseyev <github@vasfed.ru>
+Date: Wed, 1 Feb 2023 00:03:48 +0300
+Subject: [PATCH] Update code base for Ruby v3.2 (#392)
+
+* `File.exists?` is removed in ruby 3.2
+
+* Fix deprecated rspec expectation syntax
+
+* Fix `Socket.gethostbyname` deprecation
+
+* Test on ruby 3.2 and rack 2.
+--- a/lib/thin/backends/swiftiply_client.rb
++++ b/lib/thin/backends/swiftiply_client.rb
+@@ -50,7 +50,17 @@ def swiftiply_handshake(key)
+ 
+       # For some reason Swiftiply request the current host
+       def host_ip
+-        Socket.gethostbyname(@backend.host)[3].unpack('CCCC') rescue [0, 0, 0, 0]
++        begin
++          if defined?(Addrinfo)
++            # ruby 2.0+
++            # TODO: ipv6 support here?
++            Addrinfo.getaddrinfo(@backend.host, @backend.port, :PF_INET, :STREAM).first.ip_address.split('.').map(&:to_i)
++          else
++            Socket.gethostbyname(@backend.host)[3].unpack('CCCC')
++          end
++        rescue
++          [0, 0, 0, 0]
++        end
+       end
+   end
+ end
+\ No newline at end of file
+--- a/lib/thin/daemonizing.rb
++++ b/lib/thin/daemonizing.rb
+@@ -78,7 +78,7 @@ def change_privilege(user, group=user)
+ 
+       if uid != target_uid || gid != target_gid
+         # Change PID file ownership
+-        File.chown(target_uid, target_gid, @pid_file) if File.exists?(@pid_file)
++        File.chown(target_uid, target_gid, @pid_file) if File.exist?(@pid_file)
+ 
+         # Change process ownership
+         Process.initgroups(user, target_gid)
+@@ -174,7 +174,7 @@ def read_pid_file(file)
+     
+     protected
+       def remove_pid_file
+-        File.delete(@pid_file) if @pid_file && File.exists?(@pid_file)
++        File.delete(@pid_file) if @pid_file && File.exist?(@pid_file)
+       end
+     
+       def write_pid_file
+--- a/spec/connection_spec.rb
++++ b/spec/connection_spec.rb
+@@ -37,7 +37,7 @@
+   end
+ 
+   it "should process at most once when request is larger than expected" do
+-    @connection.should_receive(:process).at_most(1)
++    expect(@connection).to receive(:process).at_most(1)
+     @connection.receive_data("POST / HTTP/1.1\r\nHost: localhost:3000\r\nContent-Length: 300\r\n\r\n")
+     10.times { @connection.receive_data('X' * 1_000) }
+   end
+--- a/spec/rails_app/config/boot.rb
++++ b/spec/rails_app/config/boot.rb
+@@ -26,7 +26,7 @@ def vendor_rails?
+ 
+     # FIXME : Ruby 1.9
+     def preinitialize
+-      load(preinitializer_path) if File.exists?(preinitializer_path)
++      load(preinitializer_path) if File.exist?(preinitializer_path)
+     end
+ 
+     def preinitializer_path
+--- a/spec/request/parser_spec.rb
++++ b/spec/request/parser_spec.rb
+@@ -210,7 +210,7 @@
+   end
+ 
+   it "should fail when total request vastly exceeds specified CONTENT_LENGTH" do
+-    proc do
++    expect do
+       R(<<-EOS, true)
+ POST / HTTP/1.1
+ Host: localhost:3000
+@@ -218,7 +218,7 @@
+ 
+ #{'X' * 300_000}
+ EOS
+-    end.should raise_error(InvalidRequest)
++    end.to raise_error(InvalidRequest)
+   end
+ 
+   it "should default SERVER_NAME to localhost" do
+

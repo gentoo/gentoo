@@ -1,0 +1,21 @@
+--- lrzsz-0.12.20/lib/long-options.c
++++ lrzsz-0.12.20/lib/long-options.c
+@@ -22,6 +22,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <getopt.h>
+ #include "long-options.h"
+ 
+--- lrzsz-0.12.20/src/lsyslog.c
++++ lrzsz-0.12.20/src/lsyslog.c
+@@ -22,6 +22,8 @@
+ #ifdef ENABLE_SYSLOG
++#define _GNU_SOURCE
+ #include "zglobal.h"
+ #include <pwd.h>
++#include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #endif

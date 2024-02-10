@@ -1,0 +1,146 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-arm64
+
+# Mart Raudsepp <leio@gentoo.org> (2023-10-05)
+# Orc optimisations are supported on arm64 NEON since 0.4.33
+-orc
+
+# Mart Raudsepp <leio@gentoo.org> (2023-10-03)
+# dev-util/sysprof-capture is keyworded on arm64
+-sysprof
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
+# Unmask secureboot flag on arches where sbsigntools is keyworded
+-secureboot
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-01-01)
+# unmask synaptics input driver
+-input_devices_synaptics
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
+# Mike Gilbert <floppym@gentoo.org> (2022-08-31)
+# Requires the following packages to be keyworded/stable:
+# sys-libs/libapparmor
+# sys-apps/apparmor
+# sys-apps/apparmor-utils
+-apparmor
+
+# David Seifert <soap@gentoo.org> (2022-03-13)
+# NVENC works here
+-nvenc
+
+# Ionen Wolkens <ionen@gentoo.org> (2022-02-17)
+# x11-drivers/nvidia-drivers' binary blob works here
+-video_cards_nvidia
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
+
+# Sam James <sam@gentoo.org> (2020-10-08)
+# PyPy3 works on arm64
+-python_targets_pypy3
+-python_single_target_pypy3
+
+# David Seifert <soap@gentoo.org> (2020-05-17)
+# Mono is hopelessly broken on arm64
+mono
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-27)
+# Mask cpu_flags_arm_neon for all of arm64
+# A neon64 USE is being discussed
+cpu_flags_arm_neon
+
+# Unmask arm specific USE flags
+-cpu_flags_arm_v8
+
+-cpu_flags_arm_aes
+-cpu_flags_arm_crc32
+-cpu_flags_arm_edsp
+-cpu_flags_arm_sha1
+-cpu_flags_arm_sha2
+-cpu_flags_arm_vfp
+-cpu_flags_arm_vfpv3
+-cpu_flags_arm_vfpv4
+-cpu_flags_arm_vfp-d32
+
+# Michał Górny <mgorny@gentoo.org> (2018-07-09)
+# No OpenCL provider is available on arm64.
+opencl
+
+# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
+# net-libs/libsmi not tested on arm64 yet
+smi
+
+# Markus Meier <maekke@gentoo.org> (2010-08-22)
+# net-wireless/wimax not tested
+wimax
+
+# Samuli Suominen <drac@gentoo.org>
+# media-libs/amrnb and media-libs/amrwb not tested.
+amr
+
+# No hardware to test by the team
+ios
+ipod
+
+# Stuff that doesn't make sense on this arch
+3dfx
+dmi
+
+# Stuff we don't want
+mpi
+lasi
+hardened
+pdfannotextractor
+mssql
+
+# havent tested yet
+afs
+zvbi
+sid
+mms
+ieee1394
+bs2b
+ggi
+dvd
+fits
+lpsol
+zvbi
+anthy
+snapcast
+
+# Unmask ARM-only video-cards
+-video_cards_exynos
+-video_cards_freedreno
+-video_cards_lima
+-video_cards_nouveau
+-video_cards_panfrost
+-video_cards_tegra
+-video_cards_v3d
+-video_cards_vc4
+-video_cards_amdgpu
+-video_cards_radeon
+-video_cards_radeonsi
+
+# James Le Cuirot <chewi@gentoo.org>
+# Unmask as Vivante is available for arm.
+-video_cards_vivante
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
+# Modular X: mask for architectures on which they aren't available
+video_cards_mga
+video_cards_r128
+
+# Matt Turner <mattst88@gentoo.org>
+# Mask more VIDEO_CARDs added with mesa-8.0
+video_cards_r100
+video_cards_r200
+video_cards_r300
+video_cards_r600

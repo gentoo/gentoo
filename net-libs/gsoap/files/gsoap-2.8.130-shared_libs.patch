@@ -1,0 +1,140 @@
+https://bugs.gentoo.org/583398
+https://build.opensuse.org/package/view_file/openSUSE:Factory/gsoap/gsoap-01-sharedlibs.diff?expand=1
+See also: https://src.fedoraproject.org/rpms/gsoap/blob/rawhide/f/gsoap-libtool.patch
+
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-07-01 17:19:00 +0200
+
+build: always use shared libraries
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,8 +15,8 @@ AM_PROG_CC_C_O
+ AM_PROG_LEX([noyywrap])
+ AC_PROG_YACC
+ AC_PROG_CPP
+-AC_PROG_RANLIB
+-#AM_PROG_LIBTOOL
++m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
++LT_INIT
+ AC_PROG_LN_S
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+@@ -310,7 +310,7 @@ if test "x$with_openssl" = "xyes"; then
+     WSDL2H_EXTRA_LIBS="${WSDL2H_EXTRA_LIBS} -lgnutls -lgcrypt -lgpg-error -lz"
+     SAMPLE_INCLUDES=
+     SAMPLE_SSL_LIBS="-lgnutls -lgcrypt -lgpg-error -lz"
+-    WSDL2H_SOAP_CPP_LIB="libgsoapssl++.a"
++    WSDL2H_SOAP_CPP_LIB="libgsoapssl++.la"
+   else
+     if test "x$with_wolfssl" = "xyes"; then
+       AC_MSG_RESULT(yes)
+@@ -318,7 +318,7 @@ if test "x$with_openssl" = "xyes"; then
+       WSDL2H_EXTRA_LIBS="${WSDL2H_EXTRA_LIBS} -lwolfssl -lz"
+       SAMPLE_INCLUDES=
+       SAMPLE_SSL_LIBS="-lwolfssl -lz"
+-      WSDL2H_SOAP_CPP_LIB="libgsoapssl++.a"
++      WSDL2H_SOAP_CPP_LIB="libgsoapssl++.la"
+     else
+       AC_MSG_RESULT(no)
+       WSDL2H_EXTRA_FLAGS="-DWITH_OPENSSL -DWITH_GZIP"
+@@ -326,7 +326,7 @@ if test "x$with_openssl" = "xyes"; then
+       WSDL2H_EXTRA_LIBS="${WSDL2H_EXTRA_LIBS} -lssl -lcrypto -lz"
+       SAMPLE_INCLUDES=
+       SAMPLE_SSL_LIBS="-lssl -lcrypto -lz"
+-      WSDL2H_SOAP_CPP_LIB="libgsoapssl++.a"
++      WSDL2H_SOAP_CPP_LIB="libgsoapssl++.la"
+     fi
+   fi
+   if test -n "$ZLIB"; then
+@@ -346,7 +346,7 @@ else
+   WSDL2H_EXTRA_FLAGS=
+   SAMPLE_SSL_LIBS=
+   SAMPLE_INCLUDES=
+-  WSDL2H_SOAP_CPP_LIB="libgsoap++.a"
++  WSDL2H_SOAP_CPP_LIB="libgsoap++.la"
+ fi
+ AM_CONDITIONAL([WITH_OPENSSL], [test "x$with_openssl" = "xyes" -a "x$with_gnutls" != "xyes" -a "x$with_wolfssl" != "xyes"])
+ AC_SUBST(WSDL2H_EXTRA_FLAGS)
+--- a/gsoap/Makefile.am
++++ b/gsoap/Makefile.am
+@@ -34,20 +34,34 @@ stdsoap2_ssl_cpp.cpp: stdsoap2.cpp
+ dom_cpp.cpp: dom.cpp
+ 	$(LN_S) -f $(top_srcdir)/gsoap/dom.cpp dom_cpp.cpp
+ 
+-lib_LIBRARIES = libgsoap.a libgsoap++.a libgsoapck.a libgsoapck++.a libgsoapssl.a libgsoapssl++.a
++lib_LTLIBRARIES = libgsoap.la libgsoap++.la libgsoapck.la libgsoapck++.la libgsoapssl.la libgsoapssl++.la
+ 
+-libgsoap_a_SOURCES = stdsoap2.c dom.c
+-libgsoap_a_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform)
+-libgsoap___a_SOURCES = stdsoap2_cpp.cpp dom_cpp.cpp
+-libgsoap___a_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform)
+-libgsoapck_a_SOURCES = stdsoap2_ck.c dom.c
+-libgsoapck_a_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) -DWITH_COOKIES
+-libgsoapck___a_SOURCES = stdsoap2_ck_cpp.cpp dom_cpp.cpp
+-libgsoapck___a_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) -DWITH_COOKIES
+-libgsoapssl_a_SOURCES = stdsoap2_ssl.c dom.c
+-libgsoapssl_a_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
+-libgsoapssl___a_SOURCES = stdsoap2_ssl_cpp.cpp dom_cpp.cpp
+-libgsoapssl___a_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
++libgsoap_la_SOURCES = stdsoap2.c dom.c
++libgsoap_la_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform)
++libgsoap___la_SOURCES = stdsoap2_cpp.cpp dom_cpp.cpp
++libgsoap___la_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform)
++libgsoapck_la_SOURCES = stdsoap2_ck.c dom.c
++libgsoapck_la_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) -DWITH_COOKIES
++libgsoapck___la_SOURCES = stdsoap2_ck_cpp.cpp dom_cpp.cpp
++libgsoapck___la_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) -DWITH_COOKIES
++libgsoapssl_la_SOURCES = stdsoap2_ssl.c dom.c
++libgsoapssl_la_CFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
++libgsoapssl___la_SOURCES = stdsoap2_ssl_cpp.cpp dom_cpp.cpp
++libgsoapssl___la_CXXFLAGS = $(SOAPCPP2_DEBUG) $(SOAPCPP2_NONAMESPACES) $(SOAPCPP2_NO_C_LOCALE) $(SOAPCPP2_IPV6) $(SOAPCPP2_IPV6_V6ONLY) -D$(platform) $(WSDL2H_EXTRA_FLAGS) -DWITH_DOM -DWITH_COOKIES
++libgsoap_la_LDFLAGS = -release ${PACKAGE_VERSION} -Wl,--version-script=gsoap.sym
++libgsoap___la_LDFLAGS = -release ${PACKAGE_VERSION} -Wl,--version-script=gsoap++.sym
++libgsoapck_la_LDFLAGS = -release ${PACKAGE_VERSION} -Wl,--version-script=gsoapck.sym
++libgsoapck___la_LDFLAGS = -release ${PACKAGE_VERSION} -Wl,--version-script=gsoapck++.sym
++libgsoapssl_la_LDFLAGS = -release ${PACKAGE_VERSION} -Wl,--version-script=gsoapssl.sym
++libgsoapssl_la_LIBADD = ${SAMPLE_SSL_LIBS}
++libgsoapssl___la_LDFLAGS = -release ${PACKAGE_VERSION} -Wl,--version-script=gsoapssl++.sym
++libgsoapssl___la_LIBADD = ${libgsoapssl_la_LIBADD}
++EXTRA_libgsoap_la_DEPENDENCIES = gsoap.sym
++EXTRA_libgsoap___la_DEPENDENCIES = gsoap++.sym
++EXTRA_libgsoapck_la_DEPENDENCIES = gsoapck.sym
++EXTRA_libgsoapck___la_DEPENDENCIES = gsoapck++.sym
++EXTRA_libgsoapssl_la_DEPENDENCIES = gsoapssl.sym
++EXTRA_libgsoapssl___la_DEPENDENCIES = gsoapssl++.sym
+ 
+ BUILT_SOURCES = stdsoap2_cpp.cpp dom_cpp.cpp stdsoap2_ck.c stdsoap2_ck_cpp.cpp stdsoap2_ssl.c stdsoap2_ssl_cpp.cpp
+ 
+--- /dev/null
++++ b/gsoap/gsoap++.sym
+@@ -0,0 +1 @@
++GSOAPXX { global: *; };
+--- /dev/null
++++ b/gsoap/gsoap.sym
+@@ -0,0 +1 @@
++GSOAP { global: *; };
+--- /dev/null
++++ b/gsoap/gsoapck++.sym
+@@ -0,0 +1 @@
++GSOAPCKXX { global: *; };
+--- /dev/null
++++ b/gsoap/gsoapck.sym
+@@ -0,0 +1 @@
++GSOAPCK { global: *; };
+--- /dev/null
++++ b/gsoap/gsoapckssl++.sym
+@@ -0,0 +1 @@
++GSOAPCKSSLXX { global: *; };
+--- /dev/null
++++ b/gsoap/gsoapckssl.sym
+@@ -0,0 +1 @@
++GSOAPCKSSL { global: *; };
+--- /dev/null
++++ b/gsoap/gsoapssl++.sym
+@@ -0,0 +1 @@
++GSOAPSSLXX { global: *; };
+--- /dev/null
++++ b/gsoap/gsoapssl.sym
+@@ -0,0 +1 @@
++GSOAPSSL { global: *; };

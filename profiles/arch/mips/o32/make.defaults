@@ -1,0 +1,14 @@
+# Copyright 2014-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+PROFILE_ARCH="mips"
+
+CHOST="mips-unknown-linux-gnu"
+CHOST_o32="mips-unknown-linux-gnu"
+
+ABI="o32"
+DEFAULT_ABI="o32"
+MULTILIB_ABIS="o32"
+
+ABI_MIPS="o32"
+IUSE_IMPLICIT="abi_mips_o32"

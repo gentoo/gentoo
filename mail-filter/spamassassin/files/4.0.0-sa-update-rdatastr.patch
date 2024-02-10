@@ -1,0 +1,12 @@
+https://svn.apache.org/viewvc/spamassassin/trunk/sa-update.raw?r1=1910601&r2=1910600&pathrev=1910601
+--- a/sa-update.raw
++++ b/sa-update.raw
+@@ -1458,7 +1458,7 @@
+       next if !$rr;  # no answer records, only rcode
+       next if $rr->type ne $rr_type;
+       # scalar context!
+-      my $text = $rr->UNIVERSAL::can('txtdata') ? $rr->txtdata : $rr->rdatastr;
++      my $text = $rr->UNIVERSAL::can('txtdata') ? $rr->txtdata : $rr->rdstring;
+       push(@result,$text)  if defined $text && $text ne '';
+     }
+     printf("DNS %s query: %s -> %s\n", $rr_type, $query, join(", ",@result))

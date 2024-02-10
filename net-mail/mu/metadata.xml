@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+		<description>
+			For mu4e (installed with USE=emacs).
+			Do not assign for anything else.
+		</description>
+	</maintainer>
+	<longdescription lang="en">
+		'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
+		are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.
+	</longdescription>
+	<use>
+		<flag name="emacs">Install the mu4e mail client</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">djcb/mu</remote-id>
+	</upstream>
+</pkgmetadata>

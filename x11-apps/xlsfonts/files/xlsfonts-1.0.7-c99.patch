@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/919204
+https://gitlab.freedesktop.org/xorg/app/xlsfonts/-/issues/1
+https://gitlab.freedesktop.org/xorg/app/xlsfonts/-/merge_requests/6
+
+From c92bb3e8243773535cecc4f347437a59d01dbfef Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Tue, 5 Dec 2023 15:41:28 -0800
+Subject: [PATCH 2/2] Fix -Wincompatible-pointer-types warning from gcc (issue
+ #1)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+xlsfonts.c: In function â€˜get_listâ€™:
+xlsfonts.c:204:23: warning: assignment to â€˜char **â€™ from incompatible
+ pointer type â€˜const char **â€™ [-Wincompatible-pointer-types]
+  204 |                 fonts = &pattern;
+      |                       ^
+
+Closes: #1
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ xlsfonts.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/xlsfonts.c b/xlsfonts.c
+index b834637..39aba13 100644
+--- a/xlsfonts.c
++++ b/xlsfonts.c
+@@ -56,6 +56,7 @@ static int  long_list                 = L_SHORT;
+ static int  nnames                    = N_START;
+ static int  font_cnt                  = 0;
+ static int  min_max;
++static char wild_string[]             = "*";
+ 
+ typedef struct {
+     char *name;
+@@ -65,7 +66,7 @@ typedef struct {
+ static FontList *font_list = NULL;
+ 
+ /* Local prototypes */
+-static void get_list(const char *pattern);
++static void get_list(char *pattern);
+ static int  compare(const void *arg1, const void *arg2);
+ static void show_fonts(void);
+ static void copy_number(char **pp1, char **pp2, int n1, int n2);
+@@ -180,7 +181,7 @@ main(int argc, char **argv)
+     }
+ 
+     if (argcnt == 0)
+-        get_list("*");
++        get_list(wild_string);
+ 
+     show_fonts();
+ 
+@@ -189,7 +190,7 @@ main(int argc, char **argv)
+ }
+ 
+ static void
+-get_list(const char *pattern)
++get_list(char *pattern)
+ {
+     int available = nnames + 1, i;
+     char **fonts;
+-- 
+GitLab

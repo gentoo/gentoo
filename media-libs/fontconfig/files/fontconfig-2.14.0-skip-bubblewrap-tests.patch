@@ -1,0 +1,14 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/320
+--- a/test/run-test.sh
++++ b/test/run-test.sh
+@@ -40,9 +40,7 @@ EXPECTED=${EXPECTED-"out.expected"}
+ FCLIST="$LOG_COMPILER ../fc-list/fc-list$EXEEXT"
+ FCCACHE="$LOG_COMPILER ../fc-cache/fc-cache$EXEEXT"
+ 
+-if [ -x "$(command -v bwrap)" ]; then
+-    BWRAP="$(command -v bwrap)"
+-fi
++BWRAP=""
+ 
+ FONT1=$TESTDIR/4x6.pcf
+ FONT2=$TESTDIR/8x16.pcf

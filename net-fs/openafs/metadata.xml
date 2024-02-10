@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>bircoph@gentoo.org</email>
+	<name>Andrew Savchenko</name>
+</maintainer>
+<use>
+	<flag name="apidoc">Build API documentation using <pkg>app-text/doxygen</pkg>.
+	May take a *long* time to build.</flag>
+	<flag name="bitmap-later">Enable fast startup of file server by not
+	reading bitmap till needed.</flag>
+	<flag name="fuse">Build fuse client.</flag>
+	<flag name="kauth">Install the DEPRECATED kauth server, PAM modules, and utilities</flag>
+	<flag name="modules">Build libafs kernel module. Disable only if you know
+	what you're doing: without this module OpenAFS client will not work.</flag>
+	<flag name="namei">Enable namei fileserver instead of inode fileserver.
+	You should disable this option only if compatibility with inode format AFS
+	storage is required.
+	</flag>
+	<flag name="pthreaded-ubik">Enable installation of pthreaded ubik applications.</flag>
+	<flag name="supergroups">Enable support for nested pts groups.</flag>
+	<flag name="tsm">Enable use of the Tivoli TSM API libraries from <pkg>app-backup/tsm</pkg>
+	for butc support. AMD64 only.</flag>
+	<flag name="ubik-read-while-write">Enable vlserver read from db cache during
+	write locks (EXPERIMENTAL)</flag>
+</use>
+</pkgmetadata>

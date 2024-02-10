@@ -1,0 +1,22 @@
+Keep ffmvforce separately optional given it's the only one
+with an additional dependency (sdl)
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -31,3 +31,6 @@
+ ifndef DISABLE_FORCEFEEDBACK
+-MANPAGES	+= fftest.1 ffmvforce.1 ffset.1 ffcfstress.1
++MANPAGES	+= fftest.1 ffset.1 ffcfstress.1
++ifndef DISABLE_FFMVFORCE
++MANPAGES	+= ffmvforce.1
++endif
+ endif
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -39,3 +39,6 @@
+ ifndef DISABLE_FORCEFEEDBACK
+-PROGRAMS	+= fftest ffmvforce ffset ffcfstress
++PROGRAMS	+= fftest ffset ffcfstress
++ifndef DISABLE_FFMVFORCE
++PROGRAMS	+= ffmvforce
++endif
+ endif

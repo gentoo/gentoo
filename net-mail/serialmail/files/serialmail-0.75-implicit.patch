@@ -1,0 +1,42 @@
+commit 3672e8edd2887775168c4c6c0c670a80dd413825
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Mon Jun 6 07:12:06 2011 +0000
+
+    Add missing includes for incompatible implicit declaration warnings.
+
+diff --git a/leapsecs_read.c b/leapsecs_read.c
+index c8f975f..248632d 100644
+--- a/leapsecs_read.c
++++ b/leapsecs_read.c
+@@ -2,6 +2,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <stdlib.h>
+ #include "tai.h"
+ #include "leapsecs.h"
+ 
+diff --git a/maildirserial.c b/maildirserial.c
+index 707470e..09214db 100644
+--- a/maildirserial.c
++++ b/maildirserial.c
+@@ -1,5 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
++#include "exit.h"
+ #include "sgetopt.h"
+ #include "scan.h"
+ #include "stralloc.h"
+diff --git a/myMd5.c b/myMd5.c
+index 5f41908..869a7f9 100644
+--- a/myMd5.c
++++ b/myMd5.c
+@@ -25,6 +25,7 @@
+  */
+ 
+ #include "myMd5.h"
++#include <string.h>
+ 
+ /* Constants for MD5Transform routine. */
+ #define S11 7

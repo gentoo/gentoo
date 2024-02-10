@@ -1,0 +1,152 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-python/PyQt6 and dev-python/pyside6 are not stable here yet
+dev-python/QtPy pyqt6 pyside6
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# This is still experimental, prebuilt images may not boot on all systems.
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
+
+# Michał Górny <mgorny@gentoo.org> (2023-04-22)
+# Needs unkeyworded dev-python/sympy
+dev-python/nbval test
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2022-07-06)
+# sci-libs/sundials is not marked stable on arm64
+sci-mathematics/octave sundials
+
+# Sam James <sam@gentoo.org> (2022-03-07)
+# sys-cluster/torque not marked stable on arm64
+# nor is sys-cluster/slurm yet
+sys-cluster/openmpi openmpi_rm_pbs openmpi_rm_slurm
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
+
+# Sam James <sam@gentoo.org> (2021-10-25)
+# Has unstable dependencies we don't want to drag in yet
+# bug #816981
+dev-python/ipython notebook
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-10)
+# no stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Marek Szuba <marecki@gentoo.org> (2021-08-09)
+# media-plugins/cmt-plugins isn't stable on this arch yet
+media-sound/fluidsynth ladspa
+
+# Sam James <sam@gentoo.org> (2021-06-16)
+# Drags in several not-yet-stable deps on arm64
+# glusterfs: sys-cluster/glusterfs
+# rbd: sys-cluster/ceph
+# bug #796362
+app-emulation/libvirt glusterfs rbd
+
+# Sam James <sam@gentoo.org> (2021-05-28)
+# media-gfx/inkscape is not yet stable on arm64
+# bug #785685
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2021-02-25)
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
+# Dependencies not yet stable, migrated from p.u.m.
+app-crypt/qca botan
+gnome-base/nautilus previewer
+
+# Sam James <sam@gentoo.org> (2021-02-05)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
+# No lua stable for this arch yet
+www-servers/nginx nginx_modules_http_lua
+
+# Sam James <sam@gentoo.org> (2020-12-23)
+# Needs stable dev-lang/luajit
+kde-apps/cantor lua
+
+# Sam James <sam@gentoo.org> (2020-10-18)
+# Needs dev-tex/hevea which isn't stable yet
+media-gfx/enblend doc
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
+# app-i18n/fcitx:4 not stable.
+media-libs/libsdl2 fcitx4
+
+# Sam James <sam@gentoo.org> (2020-10-06)
+# Not yet stable on arm64.
+media-plugins/gst-plugins-meta dvb vpx
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# media-libs/libffado is not stable yet, which itself has unstable and
+# unmaintained/broken dependencies. bug #746722
+media-sound/jack2 ieee1394
+
+# Sam James <sam@gentoo.org> (2020-08-19)
+# Unstable dependencies for qemu
+# bug #738056
+app-emulation/qemu smartcard rbd xen virgl
+app-emulation/qemu glusterfs io-uring
+app-emulation/spice smartcard
+net-misc/spice-gtk smartcard
+
+# Sam James <sam@gentoo.org> (2020-06-29)
+# Deps not yet stable
+dev-python/pymongo test-full
+net-misc/ntpsec rclock_oncore rclock_pps
+dev-util/bcc test
+dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
+net-analyzer/rrdtool rados
+www-servers/uwsgi uwsgi_plugins_rados
+dev-libs/boost mpi
+media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
+x11-wm/i3 test
+dev-python/ipython nbconvert
+
+# Mikle Kolyada <zlogene@gentoo,org> (2020-03-19)
+# deps not yet stable
+kde-apps/umbrello php
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is keyworded ~arm64
+sys-firmware/seabios debug
+
+# Aaron Bauman (2019-07-29)
+# app-arch/rar not supported
+kde-apps/kdeutils-meta rar
+
+# Aaron Bauman (2019-07-29)
+# deps are not stable yet
+net-im/pidgin eds
+
+# Aaron Bauman <bman@gentoo.org> (2019-05-20)
+# deps are not stable yet
+virtual/notification-daemon gnome
+
+# Aaron Bauman <bman@gentoo.org> (2019-05-15)
+# packages for these USE flags fail tests
+media-libs/opencv contribcvv contribhdf contribsfm glog gstreamer
+
+# Mart Raudsepp <leio@gentoo.org> (2019-01-18)
+# Respective x11-drivers/ not tested and stable yet
+x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
+
+# Michał Górny <mgorny@gentoo.org> (2018-04-15)
+# Non-stable dependencies.
+app-admin/syslog-ng spoof-source
+app-text/xmlto latex
+sys-auth/pambase pam_krb5 pam_ssh
+sys-block/thin-provisioning-tools test
+sys-devel/distcc gssapi
+
+# Michał Górny <mgorny@gentoo.org> (2018-02-19)
+# Masked due to unstable deps.
+net-analyzer/netcat crypt

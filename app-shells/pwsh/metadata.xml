@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    PowerShell Core is a cross-platform automation and configuration
+    tool/framework that works well with your existing tools and is optimized
+    for dealing with structured data (e.g. JSON, CSV, XML, etc.), REST APIs,
+    and object models. It includes a command-line shell, an associated
+    scripting language and a framework for processing cmdlets.
+  </longdescription>
+  <upstream>
+    <changelog>https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/</changelog>
+    <doc>https://learn.microsoft.com/en-us/powershell/</doc>
+    <bugs-to>https://github.com/PowerShell/PowerShell/issues/</bugs-to>
+    <remote-id type="github">PowerShell/PowerShell</remote-id>
+  </upstream>
+</pkgmetadata>

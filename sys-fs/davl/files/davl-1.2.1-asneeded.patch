@@ -1,0 +1,41 @@
+--- a/src/cdavl/Makefile
++++ b/src/cdavl/Makefile
+@@ -4,10 +4,6 @@
+ include $(PATH_LIST)
+ 
+ 
+-CC = gcc
+-DEBUG =
+-#DEBUG = -DDEBUG
+-CFLAGS = -Wall -g -O -D_FILE_OFFSET_BITS=64 $(DEBUG)
+ HEADERS = cdavl.h ../common/util.h ../drv/liveinfo_app.h
+ OBJS = ../common/util.o
+ CDAVL = cdavl
+--- a/src/gdavl/Makefile
++++ b/src/gdavl/Makefile
+@@ -4,22 +4,14 @@
+ include $(PATH_LIST)
+ 
+ 
+-CC = gcc
+-CFLAGS1 = -Wall -g -O `gtk-config --cflags --libs`
+-CFLAGS2 = -Wall -g -O `pkg-config --cflags --libs gtk+-2.0`
+-CFLAGS = -D$(GTK_VER)
+-ifeq ($(GTK_VER), GTK2)
+-	CFLAGS += $(CFLAGS2)
+-else
+-	CFLAGS += $(CFLAGS1)
+-endif
++CFLAGS += -D$(GTK_VER) `${PKG_CONFIG} --cflags gtk+-2.0`
++LDLIBS = `${PKG_CONFIG} --libs gtk+-2.0`
+ DEBUG =
+ #DEBUG = -D DEBUG
+ GDAVL = gdavl
+ 
+ 
+-$(GDAVL): gdavl.c if.c gdavl.h
+-	$(CC) $(CFLAGS) $(DEBUG) -o $(GDAVL) gdavl.c if.c
++$(GDAVL): gdavl.o if.o
+ 
+ clean:
+ 	rm -rf $(GDAVL) *.o test/*.png test/log test/test.log

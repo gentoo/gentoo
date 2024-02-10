@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>pgsql-bugs@gentoo.org</email>
+		<name>PostgreSQL and Related Package Development</name>
+	</maintainer>
+	<use>
+		<flag name="llvm">
+			Add support for llvm JIT engine
+		</flag>
+		<flag name="server">
+			Disable to build and install the clients and libraries
+			only.
+		</flag>
+		<flag name="uuid">
+			Enable server side UUID generation (via
+			<pkg>dev-libs/ossp-uuid</pkg>).
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">postgres/postgres</remote-id>
+	</upstream>
+</pkgmetadata>

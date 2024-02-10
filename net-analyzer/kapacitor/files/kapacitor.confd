@@ -1,0 +1,12 @@
+#The convention in this file is to show the default setting commented
+#out.
+#To change the setting, uncomment it then change the value.
+
+#This is the kapacitor error log:
+#error_log="/var/log/kapacitor/kapacitor.log"
+
+#This is the kapacitor output log:
+#output_log="/dev/null"
+
+# Extra options to pass to kapacitord:
+#kapacitor_opts=""

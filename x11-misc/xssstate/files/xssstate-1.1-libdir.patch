@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/732450
+Upstream-Commit: https://git.suckless.org/xssstate/commit/5d8e9b49ce2970f786f1e5aa12bbaae83900453f.html
+
+From: orbea <orbea@riseup.net>
+Date: Fri, 23 Sep 2022 21:17:01 -0700
+Subject: [PATCH] config.mk: Add LIBDIR
+
+--- a/config.mk
++++ b/config.mk
+@@ -5,11 +5,12 @@ VERSION = 1.1
+ 
+ # paths
+ PREFIX = /usr/local
++LIBDIR = ${PREFIX}/lib
+ MANPREFIX = ${PREFIX}/share/man
+ 
+ # includes and libs
+ INCS = -I. -I/usr/include
+-LIBS = -L/usr/lib -lc -lX11 -lXss
++LIBS = -L${LIBDIR} -lc -lX11 -lXss
+ 
+ # flags
+ CPPFLAGS = -DVERSION=\"${VERSION}\"

@@ -1,0 +1,328 @@
+diff -ur qrna-2.0.3c.orig/squid/sqio.c qrna-2.0.3c/squid/sqio.c
+--- qrna-2.0.3c.orig/squid/sqio.c	2005-05-11 19:30:51.000000000 +0300
++++ qrna-2.0.3c/squid/sqio.c	2009-08-05 22:27:20.000000000 +0300
+@@ -215,7 +215,7 @@
+ }
+ 
+ static void 
+-getline(struct ReadSeqVars *V)
++get_line(struct ReadSeqVars *V)
+ {
+   readline(V->f, V->sbuffer);
+ }
+@@ -277,7 +277,7 @@
+   V->seqlen = 0;
+   if (addfirst) addseq(V->sbuffer, V);
+   do {
+-    getline(V);
++    get_line(V);
+ 	/* feof() alone is a bug; files not necessarily \n terminated */
+     if (*(V->sbuffer) == '\0' && feof(V->f))
+       done = TRUE;
+@@ -305,7 +305,7 @@
+   char *sptr;
+ 				/* load first line of entry  */
+   while (!feof(V->f) && strncmp(V->sbuffer, "ENTRY", 5) != 0)
+-    getline(V);
++    get_line(V);
+   if (feof(V->f)) return;
+ 
+   if ((sptr = strtok(V->sbuffer + 15, "\n\t ")) != NULL)
+@@ -314,7 +314,7 @@
+       SetSeqinfoString(V->sqinfo, sptr, SQINFO_ID);
+     }
+   do {
+-    getline(V);
++    get_line(V);
+     if (!feof(V->f) && strncmp(V->sbuffer, "TITLE", 5) == 0)
+       SetSeqinfoString(V->sqinfo, V->sbuffer+15, SQINFO_DESC);
+     else if (!feof(V->f) && strncmp(V->sbuffer, "ACCESSION", 9) == 0)
+@@ -323,7 +323,7 @@
+ 	  SetSeqinfoString(V->sqinfo, sptr, SQINFO_ACC);
+       }
+   } while (! feof(V->f) && (strncmp(V->sbuffer,"SEQUENCE", 8) != 0));
+-  getline(V);			/* skip next line, coords */
++  get_line(V);			/* skip next line, coords */
+ 
+   readLoop(0, endPIR, V);
+ 
+@@ -337,7 +337,7 @@
+   /* get next line
+    */
+   while (!feof(V->f) && strncmp(V->sbuffer, "ENTRY", 5) != 0)
+-    getline(V);
++    get_line(V);
+ }
+ 
+ 
+@@ -355,7 +355,7 @@
+   char *nm;
+ 				/* position past ';' comments */
+   do {
+-    getline(V);
++    get_line(V);
+   } while (! (feof(V->f) || ((*V->sbuffer != 0) && (*V->sbuffer != ';')) ));
+ 
+   if (!feof(V->f))
+@@ -367,7 +367,7 @@
+     }
+   
+   while (!(feof(V->f) || ((*V->sbuffer != '\0') && (*V->sbuffer == ';'))))
+-    getline(V);
++    get_line(V);
+ }
+ 
+ static int 
+@@ -389,7 +389,7 @@
+ 	  if ((nm = strtok(V->sbuffer+16, ",\n\t ")) != NULL)
+ 	    SetSeqinfoString(V->sqinfo, nm, SQINFO_NAME);
+ 	}
+-      getline(V);
++      get_line(V);
+     }
+ 
+   if (! feof(V->f))
+@@ -398,7 +398,7 @@
+   /* load next line
+    */
+   while ((!feof(V->f)) && (*V->sbuffer != ';')) 
+-    getline(V);
++    get_line(V);
+ }
+ 
+ 
+@@ -416,7 +416,7 @@
+   int   in_definition;
+ 
+   while (strncmp(V->sbuffer, "LOCUS", 5) != 0)
+-    getline(V);
++    get_line(V);
+ 
+   if ((sptr = strtok(V->sbuffer+12, "\n\t ")) != NULL)
+     {
+@@ -427,7 +427,7 @@
+   in_definition = FALSE;
+   while (! feof(V->f))
+     {
+-      getline(V);
++      get_line(V);
+       if (! feof(V->f) && strstr(V->sbuffer, "DEFINITION") == V->sbuffer)
+ 	{
+ 	  if ((sptr = strtok(V->sbuffer+12, "\n")) != NULL)
+@@ -460,11 +460,11 @@
+ 
+ 
+   while (!(feof(V->f) || ((*V->sbuffer!=0) && (strstr(V->sbuffer,"LOCUS") == V->sbuffer))))
+-    getline(V);
++    get_line(V);
+ 				/* SRE: V->s now holds "//", so sequential
+ 				   reads are wedged: fixed Tue Jul 13 1993 */
+   while (!feof(V->f) && strstr(V->sbuffer, "LOCUS  ") != V->sbuffer)
+-    getline(V);
++    get_line(V);
+ }
+ 
+ static int
+@@ -494,12 +494,12 @@
+   if ((sptr = strtok(V->sbuffer+4, "\n\t ")) != NULL)
+     SetSeqinfoString(V->sqinfo, sptr, SQINFO_NAME);
+ 
+-  getline(V);   /*skip title-junk line*/
++  get_line(V);   /*skip title-junk line*/
+ 
+   readLoop(0, endNBRF, V);
+ 
+   while (!(feof(V->f) || (*V->sbuffer != 0 && *V->sbuffer == '>')))
+-    getline(V);
++    get_line(V);
+ }
+ 
+ 
+@@ -529,7 +529,7 @@
+     Die("bogus GCGdata format? %s", V->sbuffer);
+ 
+ 				/* second line contains free text description */
+-  getline(V);
++  get_line(V);
+   SetSeqinfoString(V->sqinfo, V->sbuffer, SQINFO_DESC);
+ 
+   if (binary) {
+@@ -549,7 +549,7 @@
+   else readLoop(0, endGCGdata, V);
+   
+   while (!(feof(V->f) || ((*V->sbuffer != 0) && (*V->sbuffer == '>'))))
+-    getline(V);
++    get_line(V);
+ }
+ 
+ static int
+@@ -571,7 +571,7 @@
+   readLoop(0, endPearson, V);
+ 
+   while (!(feof(V->f) || ((*V->sbuffer != 0) && (*V->sbuffer == '>'))))
+-    getline(V);
++    get_line(V);
+ }
+ 
+ 
+@@ -598,7 +598,7 @@
+ 
+ 				/* make sure we have first line */
+   while (!feof(V->f) && strncmp(V->sbuffer, "ID  ", 4) != 0)
+-    getline(V);
++    get_line(V);
+ 
+   if ((sptr = strtok(V->sbuffer+5, "\n\t ")) != NULL)
+     {
+@@ -607,7 +607,7 @@
+     }
+ 
+   do {
+-    getline(V);
++    get_line(V);
+     if (!feof(V->f) && strstr(V->sbuffer, "AC  ") == V->sbuffer)
+       {
+ 	if ((sptr = strtok(V->sbuffer+5, ";  \t\n")) != NULL)
+@@ -631,7 +631,7 @@
+ 
+ 				/* load next record's ID line */
+   while (!feof(V->f) && strncmp(V->sbuffer, "ID  ", 4) != 0)
+-    getline(V);
++    get_line(V);
+ }
+ 
+ 
+@@ -647,7 +647,7 @@
+ {
+   char *sptr;
+ 
+-  getline(V);  /*s == "seqLen seqid string..."*/
++  get_line(V);  /*s == "seqLen seqid string..."*/
+ 
+   if ((sptr = strtok(V->sbuffer+6, " \t\n")) != NULL)
+     SetSeqinfoString(V->sqinfo, sptr, SQINFO_NAME);
+@@ -658,7 +658,7 @@
+   readLoop(0, endZuker, V);
+ 
+   while (!(feof(V->f) | ((*V->sbuffer != '\0') & (*V->sbuffer == '('))))
+-    getline(V);
++    get_line(V);
+ }
+ 
+ static void 
+@@ -680,7 +680,7 @@
+ 
+   do {
+     done = feof(V->f);
+-    getline(V);
++    get_line(V);
+     if (! done) addseq(V->sbuffer, V);
+   } while (!done);
+ }
+@@ -692,7 +692,7 @@
+   char *sptr;
+   int   dostruc = FALSE;
+ 
+-  while (strncmp(V->sbuffer, "NAM ", 4) != 0) getline(V);
++  while (strncmp(V->sbuffer, "NAM ", 4) != 0) get_line(V);
+ 
+   if ((sptr = strtok(V->sbuffer+4, "\n\t ")) != NULL)
+     SetSeqinfoString(V->sqinfo, sptr, SQINFO_NAME);
+@@ -700,7 +700,7 @@
+   /*CONSTCOND*/
+   while (1)
+     {
+-      getline(V);
++      get_line(V);
+       if (feof(V->f)) {squid_errno = SQERR_FORMAT; return; }
+ 
+       if (strncmp(V->sbuffer, "SRC ", 4) == 0)
+@@ -732,14 +732,14 @@
+   while (1)
+     {
+ 				/* sequence line */
+-      getline(V);
++      get_line(V);
+       if (feof(V->f) || strncmp(V->sbuffer, "++", 2) == 0) 
+ 	break;
+       addseq(V->sbuffer, V);
+ 				/* structure line */
+       if (dostruc)
+ 	{
+-	  getline(V);
++	  get_line(V);
+ 	  if (feof(V->f)) { squid_errno = SQERR_FORMAT; return; }
+ 	  addstruc(V->sbuffer, V);
+ 	}
+@@ -747,7 +747,7 @@
+ 
+ 
+   while (!feof(V->f) && strncmp(V->sbuffer, "NAM ", 4) != 0)
+-    getline(V);
++    get_line(V);
+ }
+ 
+ 
+@@ -786,7 +786,7 @@
+ 
+   /* Load the first line.
+    */
+-  getline(dbfp);
++  get_line(dbfp);
+ 
+   return dbfp;
+ }
+@@ -800,7 +800,7 @@
+ SeqfilePosition(SQFILE *sqfp, long offset)
+ {
+   fseek(sqfp->f, offset, SEEK_SET);
+-  getline(sqfp);
++  get_line(sqfp);
+ }
+ 
+ 
+@@ -817,7 +817,7 @@
+   if (sqfp->ali_aseqs != NULL) sqfp->ali_curridx = 0;
+   else {
+     rewind(sqfp->f);
+-    getline(sqfp);
++    get_line(sqfp);
+   }
+ }
+ 
+@@ -912,7 +912,7 @@
+       do {			/* skip leading comments on GCG file */
+ 	gotuw = (strstr(V->sbuffer,"..") != NULL);
+ 	if (gotuw) readUWGCG(V);
+-	getline(V);
++	get_line(V);
+       } while (! feof(V->f));
+       break;
+ 
+@@ -991,7 +991,7 @@
+       do {			/* skip leading comments on GCG file */
+ 	gotuw = (strstr(V->sbuffer,"..") != NULL);
+ 	if (gotuw) readUWGCG(V);
+-	getline(V);
++	get_line(V);
+       } while (! feof(V->f));
+       break;
+ 
+@@ -1098,7 +1098,7 @@
+       do {			/* skip leading comments on GCG file */
+ 	gotuw = (strstr(V->sbuffer,"..") != NULL);
+ 	if (gotuw) readUWGCG(V);
+-	getline(V);
++	get_line(V);
+       } while (! feof(V->f));
+       break;
+ 
+@@ -1204,7 +1204,7 @@
+       do {			/* skip leading comments on GCG file */
+ 	gotuw = (strstr(V->sbuffer,"..") != NULL);
+ 	if (gotuw) readUWGCG(V);
+-	getline(V);
++	get_line(V);
+       } while (! feof(V->f));
+       break;
+ 

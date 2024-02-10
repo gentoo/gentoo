@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Soufflé is a variant of Datalog for tool designers crafting analyses in
+    Horn clauses. Soufflé synthesizes a native parallel C++ program from a
+    logic specification.
+  </longdescription>
+  <use>
+    <flag name="ffi">Support c++ functors with arbitrary number of arguments</flag>
+    <flag name="swig">Enable SWIG usage, needed for Java and Python bindings</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/souffle-lang/souffle/issues/</bugs-to>
+    <remote-id type="github">souffle-lang/souffle</remote-id>
+  </upstream>
+</pkgmetadata>

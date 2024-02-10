@@ -1,0 +1,50 @@
+From 625967e8d00a3564ce5c6634b84b0e3b89aa6f4e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 24 Jun 2023 07:26:10 +0100
+Subject: [PATCH] Revert "Replace remaining atty usages with stdlib"
+
+This reverts commit 39290c123d1606e520bbaa1f92737fea010ec278.
+
+This requires Rust 1.70 which is currently masked in Gentoo because
+of a bug involving strip.
+--- a/watchman/cli/Cargo.toml
++++ b/watchman/cli/Cargo.toml
+@@ -9,6 +9,7 @@ edition = "2021"
+ [dependencies]
+ ahash = "0.8"
+ anyhow = "1.0.65"
++atty = "0.2"
+ duct = "0.13.6"
+ jwalk = "0.6"
+ serde = { version = "1.0.136", features = ["derive", "rc"] }
+--- a/watchman/cli/src/rage/stream.rs
++++ b/watchman/cli/src/rage/stream.rs
+@@ -6,7 +6,6 @@
+  */
+ 
+ use std::io;
+-use std::io::IsTerminal;
+ use std::io::Stdout;
+ use std::io::Write;
+ 
+@@ -59,7 +58,7 @@ impl Stream {
+     }
+ 
+     pub fn new(hostname: Option<String>) -> Self {
+-        if !std::io::stdout().is_terminal() {
++        if atty::isnt(atty::Stream::Stdout) {
+             Self::new_stdout()
+         } else if let Ok(reporter) = FbReporter::new(hostname) {
+             Self::Child(reporter)
+@@ -73,7 +72,7 @@ impl Stream {
+         if let Self::Child(_) = self {
+             true
+         } else {
+-            !std::io::stdout().is_terminal()
++            atty::isnt(atty::Stream::Stdout)
+         }
+     }
+ 
+-- 
+2.41.0
+

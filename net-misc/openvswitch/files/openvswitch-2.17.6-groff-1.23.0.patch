@@ -1,0 +1,145 @@
+https://bugs.gentoo.org/910196
+https://github.com/openvswitch/ovs/commit/a45b3afbf82e1c1702d25a5097a25c45923c6fae
+https://github.com/openvswitch/ovs/commit/6929485d318e08c11e8e98f7847d5cefcb36c21c
+https://github.com/openvswitch/ovs/commit/93412e00e7a1f61c5eb4771d150bdbf504ff59aa
+
+From a45b3afbf82e1c1702d25a5097a25c45923c6fae Mon Sep 17 00:00:00 2001
+From: gordonwwang <gordonwwang@tencent.com>
+Date: Thu, 17 Aug 2023 11:04:39 +0800
+Subject: [PATCH] ovs.tmac: Fix troff warning in versions above groff-1.23.
+
+When the compilation dependency is groff-1.23, the following message is
+displayed in the compilation log, and the compilation fails:
+
+  troff:vswitchd/ovs-vswitchd.8:1298: warning: cannot select font 'CW'
+  make[1]: *** [Makefile:6761: manpage-check] Error 1
+
+CW font was removed and and now groff warns about non-existent font:
+ https://git.savannah.gnu.org/cgit/groff.git/commit/?id=d75ea8b2e283e37bd560e821fa4597065f36725f)
+
+Fix that by replacing CW with CR.  CW supposed to be an alias of CR
+anyway.
+
+Submitted-at: https://github.com/openvswitch/ovs/pull/416
+Co-authored-by: Xiaojie Chen <jackchanx@163.com>
+Signed-off-by: Xiaojie Chen <jackchanx@163.com>
+Signed-off-by: gordonwwang <gordonwwang@tencent.com>
+Signed-off-by: Ilya Maximets <i.maximets@ovn.org>
+---
+ lib/ovs.tmac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/ovs.tmac b/lib/ovs.tmac
+index 5f8f20afa4a..97b6fa3df76 100644
+--- a/lib/ovs.tmac
++++ b/lib/ovs.tmac
+@@ -175,7 +175,7 @@
+ .  nr mE \\n(.f
+ .  nf
+ .  nh
+-.  ft CW
++.  ft CR
+ ..
+ .
+ .
+
+From 6929485d318e08c11e8e98f7847d5cefcb36c21c Mon Sep 17 00:00:00 2001
+From: Frode Nordahl <frode.nordahl@canonical.com>
+Date: Mon, 21 Aug 2023 15:53:33 +0200
+Subject: [PATCH] docs: Add `nowarn` region option to tables.
+
+Starting with groff 1.23.0 a warning is produced if the tbl
+preprocessor is not run.  A side effect of enabling it is that
+new warnings on table formatting is printed.
+
+As requested during the review [0] of a series [1] attempting to
+address this, this patch makes use of the `nowarn` region option
+as opposed to attempting to change the formatting.
+
+0: https://patchwork.ozlabs.org/project/openvswitch/patch/ZM00Wfa80rOb2oCA@riva.ucam.org/#3164177
+1: https://patchwork.ozlabs.org/project/openvswitch/list/?series=367378&state=*
+
+Reported-by: Lucas Nussbaum <lucas@debian.org>
+Reported-at: https://bugs.debian.org/1042358
+Signed-off-by: Frode Nordahl <frode.nordahl@canonical.com>
+Signed-off-by: Ilya Maximets <i.maximets@ovn.org>
+---
+ build-aux/extract-ofp-fields | 6 +++---
+ lib/meta-flow.xml            | 1 +
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/build-aux/extract-ofp-fields b/build-aux/extract-ofp-fields
+index 8766995d9ab..7a9788be968 100755
+--- a/build-aux/extract-ofp-fields
++++ b/build-aux/extract-ofp-fields
+@@ -578,7 +578,7 @@ def field_to_xml(field_node, f, body, summary):
+     body += [""".PP
+ \\fB%s Field\\fR
+ .TS
+-tab(;);
++tab(;),nowarn;
+ l lx.
+ """ % title]
+ 
+@@ -655,7 +655,7 @@ def group_xml_to_nroff(group_node, fields):
+         '.SH \"%s\"\n' % build.nroff.text_to_nroff(title.upper() + " FIELDS"),
+         '.SS "Summary:"\n',
+         '.TS\n',
+-        'tab(;);\n',
++        'tab(;),nowarn;\n',
+         'l l l l l l l.\n',
+         'Name;Bytes;Mask;RW?;Prereqs;NXM/OXM Support\n',
+         '\_;\_;\_;\_;\_;\_\n']
+@@ -665,7 +665,7 @@ def group_xml_to_nroff(group_node, fields):
+     return ''.join(content)
+ 
+ def make_oxm_classes_xml(document):
+-    s = '''tab(;);
++    s = '''tab(;),nowarn;
+ l l l.
+ Prefix;Vendor;Class
+ \_;\_;\_
+diff --git a/lib/meta-flow.xml b/lib/meta-flow.xml
+index ff81fddc5e7..fe80ee930d0 100644
+--- a/lib/meta-flow.xml
++++ b/lib/meta-flow.xml
+@@ -3517,6 +3517,7 @@ actions=clone(load:0->NXM_OF_IN_PORT[],output:123)
+     </p>
+ 
+     <tbl>
++nowarn;
+ r r r r r.
+ Criteria        OpenFlow 1.0    OpenFlow 1.1    OpenFlow 1.2+   NXM
+ \_      \_      \_      \_      \_
+From 93412e00e7a1f61c5eb4771d150bdbf504ff59aa Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Mon, 21 Aug 2023 15:53:34 +0200
+Subject: [PATCH] docs: Run tbl preprocessor in manpage-check rule.
+
+If we omit this, groff 1.23.0 warns:
+
+  tbl preprocessor failed, or it or soelim was not run; table(s) likely
+  not rendered (TE macro called with TW register undefined)
+
+Reported-by: Lucas Nussbaum <lucas@debian.org>
+Reported-at: https://bugs.debian.org/1042358
+Signed-off-by: Colin Watson <cjwatson@ubuntu.com>
+Signed-off-by: Ilya Maximets <i.maximets@ovn.org>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index cb8076433e8..2a41e63ad90 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -368,7 +368,7 @@ ALL_LOCAL += manpage-check
+ manpage-check: $(man_MANS) $(dist_man_MANS) $(noinst_man_MANS)
+ 	@error=false; \
+ 	for manpage in $?; do \
+-	  LANG=en_US.UTF-8 groff -w mac -w delim -w escape -w input -w missing -w tab -T utf8 -man -p -z $$manpage >$@.tmp 2>&1; \
++	  LANG=en_US.UTF-8 groff -t -w mac -w delim -w escape -w input -w missing -w tab -T utf8 -man -p -z $$manpage >$@.tmp 2>&1; \
+ 	  if grep warning: $@.tmp; then error=:; fi; \
+ 	  rm -f $@.tmp; \
+ 	done; \
+

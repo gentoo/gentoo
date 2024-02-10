@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Java Servlet is the foundation web specification in the Java Enterprise Platform. Developers can build web applications using the Servlet API to interact with the request/response workflow.
+	</longdescription>
+	<slots>
+		<slot name="2.2">https://jcp.org/aboutJava/communityprocess/maintenance/jsr903/</slot>
+		<slot name="2.5">https://jcp.org/aboutJava/communityprocess/final/jsr154/</slot>
+		<slot name="3.1">https://jcp.org/aboutJava/communityprocess/final/jsr340/</slot>
+		<slot name="3.0">https://jcp.org/aboutJava/communityprocess/final/jsr315/</slot>
+	</slots>
+</pkgmetadata>

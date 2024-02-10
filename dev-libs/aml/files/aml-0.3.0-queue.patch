@@ -1,0 +1,21 @@
+The bundled queue.h breaks on musl, but the standard version lacks
+LIST_FOREACH_SAFE, which appears to come from FreeBSD, so patch that back
+in here. See https://github.com/any1/aml/issues/11.
+
+diff -Naur a/src/aml.c b/src/aml.c
+--- a/src/aml.c	2023-01-22 12:57:53.000000000 +0000
++++ b/src/aml.c	2023-03-19 10:10:11.034092428 +0000
+@@ -31,6 +31,13 @@
+ #include "sys/queue.h"
+ #include "thread-pool.h"
+
++#ifndef LIST_FOREACH_SAFE
++#define	LIST_FOREACH_SAFE(var, head, field, tvar)			\
++	for ((var) = LIST_FIRST((head));				\
++	    (var) && ((tvar) = LIST_NEXT((var), field), 1);		\
++	    (var) = (tvar))
++#endif
++
+ #define EXPORT __attribute__((visibility("default")))
+
+ #define EVENT_MASK_DEFAULT AML_EVENT_READ

@@ -1,0 +1,18 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -100,7 +100,6 @@
+ 	Package.$(OBJEXT) RecursiveDelete.$(OBJEXT) Tar.$(OBJEXT) \
+ 	DFArcFrame_Base.$(OBJEXT) Options_Base.$(OBJEXT) \
+ 	Package_Base.$(OBJEXT) InstallVerifyFrame_Base.$(OBJEXT)
+-@HAVE_WINDRES_TRUE@nodist_dfarc_OBJECTS = woeres.$(OBJEXT)
+ dfarc_OBJECTS = $(am_dfarc_OBJECTS) $(nodist_dfarc_OBJECTS)
+ dfarc_LDADD = $(LDADD)
+ AM_V_P = $(am__v_P_@AM_V@)
+@@ -346,7 +345,6 @@
+ 	InstallVerifyFrame_Base.wxg dink.ico
+ 
+ # How do we handle resources embedded in the executable binary?
+-@HAVE_WINDRES_TRUE@nodist_dfarc_SOURCES = woeres.rc
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 

@@ -1,0 +1,158 @@
+From: Sam James <sam@gentoo.org>
+Date: Wed, 29 Dec 2021 23:40:20 +0000
+Subject: [PATCH] Use <stdint.h> types
+
+Fixes musl compatibility.
+
+Bug: https://bugs.gentoo.org/712746
+--- a/src/fake_gtk.h
++++ b/src/fake_gtk.h
+@@ -7,7 +7,6 @@
+ #define GdkEvent int
+ #define gpointer int *
+ #define gboolean void
+-#define gint int
+ #define GdkInputCondition int
+ 
+ #else
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -62,10 +62,6 @@
+ #define EXTERN extern
+ #endif
+ 
+-#ifndef __USE_MISC
+-#define unsigned int uint;
+-#endif
+-
+ #define MAX_HOSTS 100
+ /* Maximum size of domain name */
+ #define MAX_DNAME_LEN 60
+@@ -93,8 +89,8 @@ typedef struct host_data_t
+     struct timeval lastok_tv;   /* timestamp of last ok echo */
+     int status;                 /* status of host, online, without reply, ... */
+     double delay;               /* ping latency in miliseconds */
+-    u_int last_seq_sent;        /* sequence nr. of last packet sent */
+-    u_int last_seq_recv;        /* sequence nr. of last packet received */
++    unsigned int last_seq_sent;        /* sequence nr. of last packet sent */
++    unsigned int last_seq_recv;        /* sequence nr. of last packet received */
+     unsigned long long nr_sent; /* number of send and received */
+     unsigned long long nr_recv;
+     int ok_delay;               /* time in ms, after we send next echo when OK (sucessfuly ping - ECHO REPLY) */
+@@ -164,9 +160,9 @@ typedef struct flstruct
+ #ifdef LOCAL
+ /* hosts specified only by domain names are resolved every 10 minutes. Specify
+  * other interval in seconds here if required. -1=disable. */
+-uint dns_check_s = 600;
++unsigned int dns_check_s = 600;
+ #else
+-extern uint dns_check_s;
++extern unsigned int dns_check_s;
+ #endif
+ 
+ EXTERN int mode;
+--- a/src/interface_gtk.c
++++ b/src/interface_gtk.c
+@@ -3,6 +3,7 @@
+ #include "ping.h"
+ #include <gdk/gdkkeysyms.h>
+ #include <stdio.h>
++#include <stdint.h>
+ #include <string.h>
+ 
+ GtkWidget *window;
+@@ -13,7 +14,7 @@ static GtkWidget *scrolled_list;
+ static GtkWidget *tabs;
+ /* status bar for clock */
+ static GtkWidget *status_bar;
+-static guint status_bar_context;
++static unsigned int status_bar_context;
+ /* Box where store tabs and status bar */
+ static GtkWidget *vbox;
+ 
+@@ -31,7 +32,7 @@ struct regular_disp_data
+ {
+     hosts_data *hosts;
+     int *stop_loop;
+-    guint disp_timeout_id;
++    unsigned int disp_timeout_id;
+ };
+ 
+ /* Interface display data */
+@@ -54,7 +55,7 @@ enum
+ static GtkWidget *create_list(hosts_data * hosts, int set_nr,
+                               GtkListStore ** model);
+ static gboolean display_pinger_status(gpointer data);
+-static gint gtk_delete_event(GtkWidget * widget, GdkEvent * event,
++static int gtk_delete_event(GtkWidget * widget, GdkEvent * event,
+                              gpointer data);
+ static gchar *my_locale_to_utf8(char *text, char *file, int line);
+ 
+@@ -63,7 +64,7 @@ static void tab_refresh_rate(GtkWidget * widget, GdkEvent * event,
+ {
+     g_source_remove(int_disp_data->disp_timeout_id);
+     int_disp_data->disp_timeout_id =
+-        g_timeout_add((guint32) * (int *) data, display_pinger_status,
++        g_timeout_add((uint32_t) * (int *) data, display_pinger_status,
+                       (gpointer) int_disp_data);
+ }
+ 
+@@ -462,7 +463,7 @@ static GtkWidget *create_list(hosts_data * hosts, int set_nr,
+ }
+ 
+ /* delete_event callback function. data is (hosts_data *) */
+-static gint gtk_delete_event(GtkWidget * widget,
++static int gtk_delete_event(GtkWidget * widget,
+                              GdkEvent * event, gpointer data)
+ {
+     if (free_sockets((hosts_data *) data))
+@@ -532,7 +533,7 @@ void gtk_gui_loop(hosts_data * hosts, int *stop_loop)
+     disp_data.stop_loop = stop_loop;
+ 
+     disp_data.disp_timeout_id =
+-        g_timeout_add((guint32) hosts->titles->refresh_int,
++        g_timeout_add((uint32_t) hosts->titles->refresh_int,
+                       display_pinger_status, (gpointer) & disp_data);
+     display_pinger_status((gpointer) & disp_data);
+ 
+--- a/src/ping.c
++++ b/src/ping.c
+@@ -35,10 +35,10 @@
+ #endif
+ 
+ /* Compute checksum for ICMP output buffer */
+-static u_short cksum(u_short * buf, u_int len)
++static unsigned short cksum(unsigned short * buf, unsigned int len)
+ {
+-    u_int sum = 0;
+-    u_short retval;
++    unsigned int sum = 0;
++    unsigned short retval;
+ 
+     /* 32 bit sum adds sequential 16 bit buffer parts */
+     while (len > 1) {
+@@ -51,12 +51,12 @@ static u_short cksum(u_short * buf, u_int len)
+ 
+         union
+         {
+-            u_short word;
+-            u_char byte;
++            unsigned short word;
++            unsigned char byte;
+         } odd;
+ 
+         odd.word = 0;
+-        odd.byte = *(u_char *) buf;
++        odd.byte = *(unsigned char *) buf;
+         sum += odd.word;
+     }
+ 
+@@ -189,7 +189,7 @@ int send_icmp_echo(host_data * host, hosts_data * hosts)
+     ich->checksum = 0;
+     ich->un.echo.sequence = ++host->last_seq_sent;
+     ich->un.echo.id = getpid() & 0xFFFF;
+-    ich->checksum = cksum((u_short *) outpacket, outpacket_len);
++    ich->checksum = cksum((unsigned short *) outpacket, outpacket_len);
+ 
+     if ((sendto
+          (host->rawfd, outpacket, outpacket_len, 0, (struct sockaddr *) &to,

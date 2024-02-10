@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="pipewire">Enable support for the <pkg>media-video/pipewire</pkg> audio backend</flag>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kcat/openal-soft</remote-id>
+	</upstream>
+</pkgmetadata>

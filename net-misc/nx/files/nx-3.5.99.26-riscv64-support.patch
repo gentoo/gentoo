@@ -1,0 +1,64 @@
+From 460562852eb4b1e14d2eeb81d2b96ea5de6ef683 Mon Sep 17 00:00:00 2001
+From: Alexandre Ghiti <alexandre.ghiti@canonical.com>
+Date: Fri, 10 Sep 2021 08:51:53 +0200
+Subject: [PATCH] nx-X11: Add support for riscv64 architecture
+
+Signed-off-by: Xin Yang <yangmame@icloud.com>
+---
+ nx-X11/config/cf/Imake.cf   | 5 +++++
+ nx-X11/config/cf/Imake.tmpl | 2 ++
+ nx-X11/config/cf/linux.cf   | 9 +++++++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/nx-X11/config/cf/Imake.cf b/nx-X11/config/cf/Imake.cf
+index 9d683b85..612bc4e3 100644
+--- a/nx-X11/config/cf/Imake.cf
++++ b/nx-X11/config/cf/Imake.cf
+@@ -878,6 +878,11 @@ XCOMM Keep cpp from replacing path elements containing i486/i586/i686
+ #  undef __powerpc64__
+ #  undef tmp_set_big_endian
+ # endif
++# ifdef __riscv
++#  if __riscv_xlen == 64
++#   define Riscv64Architecture
++#  endif
++# endif
+ # ifdef sparc
+ #  define SparcArchitecture
+ #  undef sparc
+diff --git a/nx-X11/config/cf/Imake.tmpl b/nx-X11/config/cf/Imake.tmpl
+index de1fca93..266be8c5 100644
+--- a/nx-X11/config/cf/Imake.tmpl
++++ b/nx-X11/config/cf/Imake.tmpl
+@@ -509,6 +509,8 @@ XCOMM the platform-specific parameters - edit site.def to change
+ #define ByteOrder		X_BIG_ENDIAN
+ #elif defined(Ppc64LeArchitecture)
+ #define ByteOrder		X_LITTLE_ENDIAN
++#elif defined(Riscv64Architecture)
++#define ByteOrder		X_LITTLE_ENDIAN
+ #elif defined(HPArchitecture)
+ #define ByteOrder		X_BIG_ENDIAN
+ #elif defined(SuperHArchitecture)
+diff --git a/nx-X11/config/cf/linux.cf b/nx-X11/config/cf/linux.cf
+index c3e9eaaf..6851be55 100644
+--- a/nx-X11/config/cf/linux.cf
++++ b/nx-X11/config/cf/linux.cf
+@@ -783,6 +783,15 @@ XCOMM binutils:	(LinuxBinUtilsMajorVersion)
+ # define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines
+ #endif /* PpcArchitecture */
+ 
++#ifdef Riscv64Architecture
++# ifndef OptimizedCDebugFlags
++#  define OptimizedCDebugFlags	-O3
++# endif
++# define LinuxMachineDefines	-D__riscv64__
++# define ServerOSDefines	XFree86ServerOSDefines
++# define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
++#endif /* Riscv64Achitecture */
++
+ #ifdef s390Architecture
+ # ifndef OptimizedCDebugFlags
+ #  define OptimizedCDebugFlags	-O2 -fomit-frame-pointer GccAliasingArgs
+-- 
+2.38.1
+

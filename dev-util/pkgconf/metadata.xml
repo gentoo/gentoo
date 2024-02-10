@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<slots>
+		<subslots>SONAME version of libpkgconf</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="github">pkgconf/pkgconf</remote-id>
+		<remote-id type="cpe">cpe:/a:pkgconf:pkgconf</remote-id>
+	</upstream>
+</pkgmetadata>

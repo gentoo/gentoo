@@ -1,0 +1,11 @@
+--- a/src/eledef.c
++++ b/src/eledef.c
+@@ -385,7 +385,7 @@ void ele_def(int method, FILE *frags, float cutoff, EPROT_t **all_epp, int *ecp,
+ 
+ void img_charge(IPROT_t **shadow, int ct, FILE *input) {
+   int i=0, pos=0;
+-  char line[151];
++  char line[256];
+   int scan_flag;
+   MSP_t msp;
+ 

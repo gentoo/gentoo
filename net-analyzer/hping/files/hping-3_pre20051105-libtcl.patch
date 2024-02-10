@@ -1,0 +1,16 @@
+When anything libtcl (bug #247282) this will fail, and we're only finding out
+the version of the library anyway, so why not use TCL_VER, which is found using
+a slightly less fishy method. -JeR
+
+--- a/configure
++++ b/configure
+@@ -98,8 +98,7 @@
+ fi
+ if [ -n $USE_TCL ]
+ then
+-	LIBPOSTFIX=`ls -1 /usr/local/lib/ /usr/lib | grep 'libtcl[0-9]' | grep so | sed -e 's/\.so.*//g' -e 's/libtcl//g' | sort -r | head -1`
+-	TCL_LIB="-ltcl${LIBPOSTFIX} -lm -lpthread"
++	TCL_LIB="-ltcl${TCL_VER} -lm -lpthread"
+ fi
+ 
+ #

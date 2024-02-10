@@ -1,0 +1,27 @@
+From a4c1dcc823d5294e32859a5b7f44d8dd31f7a43a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maciej=20Bar=C4=87?= <xgqt@gentoo.org>
+Date: Tue, 28 Feb 2023 18:57:14 +0100
+Subject: [PATCH] mediahelpers.cpp: use an explicit cast
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: https://bugs.gentoo.org/898372
+Signed-off-by: Maciej Barć <xgqt@gentoo.org>
+---
+ src/helpers/mediahelpers.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/helpers/mediahelpers.cpp b/src/helpers/mediahelpers.cpp
+index 47c563d..dbebf92 100644
+--- a/src/helpers/mediahelpers.cpp
++++ b/src/helpers/mediahelpers.cpp
+@@ -35,7 +35,7 @@ std::string MediaHelpers::durationToString(int durationInSeconds)
+ std::string MediaHelpers::fileSizeToString(std::uintmax_t fileSize)
+ {
+     std::vector<std::string> sizes{ _("B"), _("KB"), _("MB"), _("GB"), _("TB") };
+-    double size{ fileSize };
++    double size{ static_cast<double>(fileSize) };
+     int index{ 0 };
+     std::stringstream builder;
+     while (size >= 1024 && index < 4)

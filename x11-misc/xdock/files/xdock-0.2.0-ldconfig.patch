@@ -1,0 +1,8 @@
+--- a/src/lib/Makefile.am
++++ b/src/lib/Makefile.am
+@@ -8,5 +8,3 @@
+ 
+ include_HEADERS = xdock.h
+ 
+-install-exec-hook:
+-	ldconfig

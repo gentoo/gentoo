@@ -1,0 +1,10 @@
+--- a/Sources/Core/IOData/Generic/inputsource_file.cpp
++++ b/Sources/Core/IOData/Generic/inputsource_file.cpp
+@@ -32,6 +32,7 @@
+ #ifdef WIN32
+ #include <direct.h>
+ #endif
++#include <unistd.h>
+ #include <cstring>
+ #include <API/Core/IOData/inputsource_file.h>
+ 

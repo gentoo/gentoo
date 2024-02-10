@@ -1,0 +1,37 @@
+--- psi3.orig/src/bin/cints/Makefile.in	2003-11-14 08:15:19.000000000 -0800
++++ psi3/src/bin/cints/Makefile.in	2006-02-10 22:42:31.000000000 -0800
+@@ -51,25 +51,25 @@
+ # and form the list of the libraries. Remember that libderiv and libr12
+ # depend on libint, and hence need to come first for GNU ld to work.
+ #
+-INTLIBS := -lPSI_int
++INTLIBS := -lint
+ ifeq ($(findstring MP2R12,$(SUBDIRS)),MP2R12)
+-  ifneq ($(findstring -lPSI_r12,$(INTLIBS)),-lPSI_r12)
+-    INTLIBS := -lPSI_r12 $(INTLIBS)
++  ifneq ($(findstring -lr12,$(INTLIBS)),-lr12)
++    INTLIBS := -lr12 $(INTLIBS)
+   endif
+ endif
+ ifeq ($(findstring R12_Ints,$(SUBDIRS)),R12_Ints)
+-  ifneq ($(findstring -lPSI_r12,$(INTLIBS)),-lPSI_r12)
+-    INTLIBS := -lPSI_r12 $(INTLIBS)
++  ifneq ($(findstring -lr12,$(INTLIBS)),-lr12)
++    INTLIBS := -lr12 $(INTLIBS)
+   endif
+ endif
+ ifeq ($(findstring Default_Deriv1,$(SUBDIRS)),Default_Deriv1)
+-  ifneq ($(findstring -lPSI_deriv,$(INTLIBS)),-lPSI_deriv)
+-    INTLIBS := -lPSI_deriv $(INTLIBS)
++  ifneq ($(findstring -lderiv,$(INTLIBS)),-lderiv)
++    INTLIBS := -lderiv $(INTLIBS)
+   endif
+ endif
+ ifeq ($(findstring Default_Deriv2,$(SUBDIRS)),Default_Deriv2)
+-  ifneq ($(findstring -lderiv,$(INTLIBS)),-lPSI_deriv)
+-    INTLIBS := -lPSI_deriv $(INTLIBS)
++  ifneq ($(findstring -lderiv,$(INTLIBS)),-lderiv)
++    INTLIBS := -lderiv $(INTLIBS)
+   endif
+ endif
+ 

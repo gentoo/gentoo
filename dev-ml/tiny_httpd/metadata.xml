@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <use>
+    <flag name="camlzip">Interface to camlzip for tiny_httpd</flag>
+  </use>
+  <upstream>
+    <doc>https://c-cube.github.io/tiny_httpd/</doc>
+    <bugs-to>https://github.com/c-cube/tiny_httpd/issues</bugs-to>
+    <remote-id type="github">c-cube/tiny_httpd</remote-id>
+    <maintainer>
+      <name>Simon Cruanes</name>
+      <email>simon.cruanes.2007@m4x.org</email>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

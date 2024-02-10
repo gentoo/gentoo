@@ -1,0 +1,26 @@
+index 2ecaef5..8178375 100644
+--- a/package-lint.el
++++ b/package-lint.el
+@@ -106,13 +106,15 @@ a backport library shipping the feature and VERSION is an
+ optional minimum version containing the feature.")
+ 
+ (defconst package-lint-symbol-info
+-  (let* ((stdlib-changes (with-temp-buffer
+-                           (insert-file-contents
+-                            (expand-file-name "data/stdlib-changes"
+-                                              (if load-file-name
+-                                                  (file-name-directory load-file-name)
+-                                                default-directory)))
+-                           (read (current-buffer))))
++  (let* ((stdlib-changes
++          (with-temp-buffer
++            (insert-file-contents
++             (let ((siteetc-stdlib-changes
++                    (expand-file-name "data/stdlib-changes" "@SITEETC@")))
++               (if (file-exists-p siteetc-stdlib-changes)
++                   siteetc-stdlib-changes
++                 (expand-file-name "data/stdlib-changes" default-directory))))
++            (read (current-buffer))))
+          (info (make-hash-table)))
+     (pcase-dolist (`(,version . ,data) stdlib-changes)
+       (pcase-dolist (`(,syms . ,action)

@@ -1,0 +1,25 @@
+diff -urN clapack-3.2.1-CMAKE.old/INCLUDE/clapack.h clapack-3.2.1-CMAKE/INCLUDE/clapack.h
+--- clapack-3.2.1-CMAKE.old/INCLUDE/clapack.h	2011-04-30 11:39:51.000000000 +0200
++++ clapack-3.2.1-CMAKE/INCLUDE/clapack.h	2011-04-30 11:40:39.000000000 +0200
+@@ -3,6 +3,12 @@
+ #ifndef __CLAPACK_H
+ #define __CLAPACK_H
+ 
++#include <f2c.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ /* Subroutine */ int caxpy_(integer *n, complex *ca, complex *cx, integer *
+ 	incx, complex *cy, integer *incy);
+ 
+@@ -7250,5 +7256,8 @@
+ integer ilaenv_(integer *ispec, char *name__, char *opts, integer *n1, 
+ 	integer *n2, integer *n3, integer *n4);
+ 
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* __CLAPACK_H */

@@ -1,0 +1,28 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From afef34ba90f525081226b49be76dd53aa158967d Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 5 Jul 2022 17:37:00 +0200
+Subject: [PATCH 02/11] Remove usage of Q_EXTERN_C
+
+It doesn't exist in Qt6 any more
+---
+ lib/plugins/SignOn/authpluginif.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/plugins/SignOn/authpluginif.h b/lib/plugins/SignOn/authpluginif.h
+index 9cfc527..cad5d35 100644
+--- a/lib/plugins/SignOn/authpluginif.h
++++ b/lib/plugins/SignOn/authpluginif.h
+@@ -73,7 +73,7 @@ enum AuthPluginState {
+         }
+ 
+ #define SIGNON_DECL_AUTH_PLUGIN(pluginclass) \
+-        Q_EXTERN_C AuthPluginInterface *auth_plugin_instance() \
++        extern "C" AuthPluginInterface *auth_plugin_instance() \
+         SIGNON_PLUGIN_INSTANCE(pluginclass)
+ 
+ /*!
+-- 
+2.43.0
+

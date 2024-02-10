@@ -1,0 +1,12 @@
+grobian@gentoo.org: include string.h so memset is declared
+
+--- a/src/libspf2/spf_utils.c
++++ b/src/libspf2/spf_utils.c
+@@ -19,6 +19,7 @@
+ #ifdef STDC_HEADERS
+ # include <stdlib.h>	   /* malloc / free */
+ # include <ctype.h>		/* isupper / tolower */
++# include <string.h>	/* memset */
+ #endif
+ 
+ #ifdef HAVE_MEMORY_H

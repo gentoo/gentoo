@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+SENSORD_PIDFILE=${SENSORD_PIDFILE:-"/run/sensord.pid"}
+SENSORD_SSDARGS=${SENSORD_SSDARGS:-"--wait 1000"}
+SENSORD_TERMTIMEOUT=${SENSORD_TERMTIMEOUT:-"TERM/60/KILL/5"}
+SENSORD_OPTS=${SENSORD_OPTS:-""}
+
+command="/usr/sbin/sensord"
+command_args="${SENSORD_OPTS} --pid-file ${SENSORD_PIDFILE}"
+start_stop_daemon_args="${SENSORD_SSDARGS}"
+pidfile="${SENSORD_PIDFILE}"
+retry="${SENSORD_TERMTIMEOUT}"
+
+depend() {
+	need localmount
+	use logger lm_sensors
+}

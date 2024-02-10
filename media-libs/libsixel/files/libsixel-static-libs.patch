@@ -1,0 +1,11 @@
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -21,7 +21,7 @@
+   'writer.c'
+ ]
+ 
+-libsixel = both_libraries('sixel',
++libsixel = shared_library('sixel',
+   sources,
+   include_directories: [inc, inc_config],
+   dependencies: libsixel_deps,

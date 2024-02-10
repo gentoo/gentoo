@@ -1,0 +1,11 @@
+description: fix a format string issue
+--- a/src/AmpHead.hpp
++++ b/src/AmpHead.hpp
+@@ -183,6 +183,6 @@ typedef struct {
+ #define SWAP(a, b, _t) (a) = (_t)((long)a ^ (long)(b)); (b) = (_t)((long)(a) ^ (long)(b)); (a) = (_t)((long)(a) ^ (long)(b));
+ #define NZ(a, b) ((a) == 0 ? (b) : (a))
+ 
+-#define MSG(message) if (logFile) fprintf(logFile, message); fflush(logFile)
++#define MSG(message) if (logFile) fprintf(logFile, "%s", message); fflush(logFile)
+ 
+ #endif

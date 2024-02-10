@@ -1,0 +1,10 @@
+[Unit]
+Description=LogMeIn Hamachi daemon
+After=local-fs.target network.target
+
+[Service]
+ExecStart=/opt/logmein-hamachi/bin/hamachid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

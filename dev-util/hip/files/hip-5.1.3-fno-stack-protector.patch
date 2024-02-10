@@ -1,0 +1,16 @@
+Since 1e9b3a08b9243daae1bebd6bac3da939d924df1f /etc/clang/gentoo-hardened.cfg
+has -fstack-protector-strong which may cause build issues for HIP programs (bug
+#890377) Disable this by adding -fno-stack-protector into c/cxx flags in hipcc.
+===================================================================
+--- HIP-rocm-5.3.3.orig/bin/hipcc.pl
++++ HIP-rocm-5.3.3/bin/hipcc.pl
+@@ -687,6 +687,9 @@ if ($rdc and !$compileOnly and $HIP_PLAT
+ # pass-through CPP mode.
+ 
+ if ($HIP_PLATFORM eq "amd") {
++    # Append -fno-stack-protector due to stack protection for HIP is not supported
++    $HIPCXXFLAGS .= " -fno-stack-protector";
++    $HIPCFLAGS .= " -fno-stack-protector";
+     # Set default optimization level to -O3 for hip-clang.
+     if ($optArg eq "") {
+         $HIPCXXFLAGS .= " -O3";

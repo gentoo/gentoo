@@ -1,0 +1,69 @@
+This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_configure_src_rust.rs
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_ninja__gen_src_git.rs
+
+It prevents the build system from issuing the repo sync that
+requires git and an internet connection.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/configure/src/rust.rs
++++ b/build/configure/src/rust.rs
+@@ -10,7 +10,7 @@ use ninja_gen::cargo::CargoClippy;
+ use ninja_gen::cargo::CargoFormat;
+ use ninja_gen::cargo::CargoTest;
+ use ninja_gen::cargo::RustOutput;
+-use ninja_gen::git::SyncSubmodule;
++use ninja_gen::git::SyncSubmoduleOffline;
+ use ninja_gen::glob;
+ use ninja_gen::hash::simple_hash;
+ use ninja_gen::input::BuildInput;
+@@ -27,15 +27,16 @@ pub fn build_rust(build: &mut Build) -> Result<()> {
+ 
+ fn prepare_translations(build: &mut Build) -> Result<()> {
+     // ensure repos are checked out
++    println!("Patch: Skipping git repository sync for translation files.");
+     build.add_action(
+         "ftl:repo:core",
+-        SyncSubmodule {
++        SyncSubmoduleOffline {
+             path: "ftl/core-repo",
+         },
+     )?;
+     build.add_action(
+         "ftl:repo:qt",
+-        SyncSubmodule {
++        SyncSubmoduleOffline {
+             path: "ftl/qt-repo",
+         },
+     )?;
+--- a/build/ninja_gen/src/git.rs
++++ b/build/ninja_gen/src/git.rs
+@@ -12,6 +12,10 @@ pub struct SyncSubmodule {
+     pub path: &'static str,
+ }
+ 
++pub struct SyncSubmoduleOffline {
++    pub path: &'static str,
++}
++
+ impl BuildAction for SyncSubmodule {
+     fn command(&self) -> &str {
+         "git -c protocol.file.allow=always submodule update --init $path"
+@@ -37,6 +41,17 @@ impl BuildAction for SyncSubmodule {
+     }
+ }
+ 
++impl BuildAction for SyncSubmoduleOffline {
++    fn command(&self) -> &str {
++        "echo Running SyncSubmoduleOffline stub function for $path"
++    }
++
++    fn files(&mut self, build: &mut impl build::FilesHandle) {
++        build.add_variable("path", self.path);
++        build.add_output_stamp(format!("git/{}", self.path));
++    }
++}
++
+ /// We check the mtime of .git/HEAD to detect when we should sync submodules.
+ /// If this repo is a submodule of another project, .git/HEAD will not exist,
+ /// and we fall back on .git/modules/*/HEAD in a parent folder instead.

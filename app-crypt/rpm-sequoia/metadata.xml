@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>pastalian46@gmail.com</email>
+		<name>Takuya Wakazono</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">rpm-software-management/rpm-sequoia</remote-id>
+	</upstream>
+	<use>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as a crypto backend</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as a crypto backend</flag>
+	</use>
+</pkgmetadata>

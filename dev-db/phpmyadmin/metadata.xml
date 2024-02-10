@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="setup">
+			Installs the phpMyAdmin setup utility.
+			Users who don't use the utility should disable this USE flag
+			for security reasons as the setup tool was the target of various
+			exploits in the past.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">phpmyadmin</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,75 @@
+https://git.savannah.gnu.org/cgit/automake.git/commit/?h=bde43d0481ff540418271ac37012a574a4fcf097
+
+From aa449bd4c836abf0320033c5077259fc760b622d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 3 Nov 2019 11:51:19 +0100
+Subject: [PATCH] py-compile: Support -OO for py3.5+, and -O&-OO for pypy3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ lib/py-compile | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/lib/py-compile b/lib/py-compile
+index e56d98d6e..5b9ae5d5d 100755
+--- a/lib/py-compile
++++ b/lib/py-compile
+@@ -126,12 +126,10 @@ if test "$python_major" -le 2; then
+   import_lib=imp
+   import_test="hasattr(imp, 'get_tag')"
+   import_call=imp.cache_from_source
+-  import_arg2=', False' # needed in one call and not the other
+ else
+   import_lib=importlib
+   import_test="hasattr(sys.implementation, 'cache_tag')"
+   import_call=importlib.util.cache_from_source
+-  import_arg2=
+ fi
+ 
+ $PYTHON -c "
+@@ -159,7 +157,7 @@ $PYTHON -O -c "
+ import sys, os, py_compile, $import_lib
+ 
+ # pypy does not use .pyo optimization
+-if hasattr(sys, 'pypy_translation_info'):
++if hasattr(sys, 'pypy_translation_info') and sys.hexversion < 0x03050000:
+     sys.exit(0)
+ 
+ files = '''$files'''
+@@ -173,7 +171,30 @@ for file in files.split():
+     sys.stdout.write(file)
+     sys.stdout.flush()
+     if $import_test:
+-        py_compile.compile(filepath, $import_call(filepath$import_arg2), path)
++        py_compile.compile(filepath, $import_call(filepath), path)
++    else:
++        py_compile.compile(filepath, filepath + 'o', path)
++sys.stdout.write('\n')" 2>/dev/null || :
++
++$PYTHON -OO -c "
++import sys, os, py_compile, $import_lib
++
++# python<3.5 does not have split files for -O and -OO
++if sys.hexversion < 0x03050000:
++    sys.exit(0)
++
++files = '''$files'''
++sys.stdout.write('Byte-compiling python modules (optimized versions) ...\n')
++for file in files.split():
++    $pathtrans
++    $filetrans
++    if not os.path.exists(filepath) or not (len(filepath) >= 3
++                                            and filepath[-3:] == '.py'):
++	    continue
++    sys.stdout.write(file)
++    sys.stdout.flush()
++    if $import_test:
++        py_compile.compile(filepath, $import_call(filepath), path)
+     else:
+         py_compile.compile(filepath, filepath + 'o', path)
+ sys.stdout.write('\n')" 2>/dev/null || exit $?
+-- 
+2.25.2

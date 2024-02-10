@@ -1,0 +1,11 @@
+[Unit]
+Description=Ushare Media Server
+Requires=network.target
+
+[Service]
+Type=forking
+User=ushare
+ExecStart=/usr/bin/ushare -D --cfg=/etc/ushare.conf
+
+[Install]
+WantedBy=multi-user.target

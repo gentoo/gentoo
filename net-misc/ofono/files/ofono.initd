@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+   need dbus
+}
+
+start() {
+   ebegin "Starting oFono"
+   start-stop-daemon --start --quiet --exec /usr/sbin/ofonod
+   eend $?
+}
+
+stop() {
+   ebegin "Stopping oFono"
+   start-stop-daemon --stop --quiet --exec /usr/sbin/ofonod
+   eend $?
+}
+
+# vim: set ft=gentoo-init-d ts=3 sw=3 et:

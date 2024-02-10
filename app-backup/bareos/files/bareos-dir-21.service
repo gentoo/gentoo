@@ -1,0 +1,32 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# Bareos Director Daemon
+#
+[Unit]
+Description=Bareos Director Daemon
+Documentation=man:bareos-dir(8)
+Requires=nss-lookup.target network.target remote-fs.target time-sync.target
+After=nss-lookup.target network.target remote-fs.target time-sync.target postgresql.service
+ConditionPathIsDirectory=/var/lib/bareos
+
+[Service]
+# see bug #631598
+#Type=forking
+Type=simple
+User=bareos
+Group=bareos
+WorkingDirectory=/var/lib/bareos
+#PIDFile=/run/bareos/bareos-dir.9101.pid
+StandardError=journal
+ExecStartPre=/usr/sbin/bareos-dir -t -f
+#ExecStart=/usr/sbin/bareos-dir
+ExecStart=/usr/sbin/bareos-dir -f
+SuccessExitStatus=0 1 15
+ExecReload=/usr/sbin/bareos-dir -t -f
+ExecReload=/bin/kill -HUP $MAINPID
+#Restart=on-failure
+
+[Install]
+Alias=bareos-director.service
+WantedBy=multi-user.target

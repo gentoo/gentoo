@@ -1,0 +1,11 @@
+--- a/sockets.c
++++ b/sockets.c
+@@ -188,7 +188,7 @@
+ 	return -1;
+     }
+     if (ipbuf)
+-	memcpy(retbuf, &sa.sin_addr, 4);
++	memcpy(ipbuf, &sa.sin_addr, 4);
+ #endif
+ 
+     return sock;

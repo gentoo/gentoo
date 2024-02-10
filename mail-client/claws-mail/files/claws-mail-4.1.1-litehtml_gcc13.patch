@@ -1,0 +1,37 @@
+From a9a16a253ed3865a51db5e306539d3494087dafd Mon Sep 17 00:00:00 2001
+From: Paul <paul@claws-mail.org>
+Date: Wed, 19 Apr 2023 16:42:07 +0100
+Subject: [PATCH] fix bug 4648, 'fails to build with gcc 13'
+
+---
+ src/plugins/litehtml_viewer/litehtml/html.h    | 1 +
+ src/plugins/litehtml_viewer/litehtml/num_cvt.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/plugins/litehtml_viewer/litehtml/html.h b/src/plugins/litehtml_viewer/litehtml/html.h
+index 4151b1225..20457f155 100644
+--- a/src/plugins/litehtml_viewer/litehtml/html.h
++++ b/src/plugins/litehtml_viewer/litehtml/html.h
+@@ -9,6 +9,7 @@
+ #include <cstring>
+ #include <algorithm>
+ #include <sstream>
++#include <cstdint>
+ #include "os_types.h"
+ #include "types.h"
+ #include "background.h"
+diff --git a/src/plugins/litehtml_viewer/litehtml/num_cvt.h b/src/plugins/litehtml_viewer/litehtml/num_cvt.h
+index 515e46d62..367dcc36a 100644
+--- a/src/plugins/litehtml_viewer/litehtml/num_cvt.h
++++ b/src/plugins/litehtml_viewer/litehtml/num_cvt.h
+@@ -2,6 +2,7 @@
+ #define NUM_CVT_H
+ 
+ #include <string>
++#include <cstdint>
+ #include "os_types.h"
+ 
+ namespace litehtml
+-- 
+2.25.1
+

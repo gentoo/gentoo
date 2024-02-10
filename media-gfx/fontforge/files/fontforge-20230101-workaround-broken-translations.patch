@@ -1,0 +1,159 @@
+https://bugs.gentoo.org/908868
+https://savannah.gnu.org/bugs/index.php?64333
+https://github.com/fontforge/fontforge/issues/5251
+
+From f80f80871c6e3777f9974a44058f494eb5353c66 Mon Sep 17 00:00:00 2001
+From: blockiv <blockiv@tuta.io>
+Date: Thu, 22 Jun 2023 04:39:16 +0000
+Subject: [PATCH] Mark breaking translations as fuzzy
+
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -289,7 +289,7 @@ msgstr "chaîne %1$.30s pour %2$.30s"
+ #. GT: $2 is the glyph's encoding
+ #. GT: $3 is the font name
+ #. GT: $4 is the changed flag ('*' for the changed items)
+-#, c-format
++#, c-format, fuzzy
+ msgid "%1$.80s at %2$d from %3$.90s%4$s"
+ msgstr "%1$.80s à %2$d de %3$.90hs%4$s"
+ 
+@@ -300,7 +300,7 @@ msgstr "%1$.80s à %2$d de %3$.90hs%4$s"
+ #. GT: $2 is the glyph's encoding
+ #. GT: $3 is the pixel size of the bitmap font
+ #. GT: $4 is the font name
+-#, c-format
++#, c-format, fuzzy
+ msgid "%1$.80s at %2$d size %3$d from %4$.80s"
+ msgstr "%1$.80s (%2$d) taille %3$d de %4$.80hs"
+ 
+@@ -7427,7 +7427,7 @@ msgstr ""
+ "La fonte %1$.40s dans le fichier %2$.40s a été modifiée.\n"
+ "Voulez-vous l'enregistrer ?"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "Font %1$.40s in file %2$.40s has been changed.\n"
+ "Reverting the file will lose those changes.\n"
+@@ -19920,7 +19920,7 @@ msgstr ""
+ "Le nom de la fonte commence avec une séquence d'ordre d'octet utf8.  Ceci "
+ "n'est pas permis.  %s"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "The fonts %1$.30s and %2$.30s have a different number of glyphs or different "
+ "encodings"
+@@ -19928,7 +19928,7 @@ msgstr ""
+ "Les fontes %1$.30s et %2$.30hs n'ont pas le même nombre de glyphes ou des "
+ "codages différents"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "The fonts %1$.30s and %2$.30s use different types of splines (one quadratic, "
+ "one cubic)"
+@@ -19963,7 +19963,7 @@ msgstr ""
+ "Le glyphe %1$.30s dans %2$.30s a à la fois des références et des contours. "
+ "Ceci n'est pas supporté dans une fonte MM"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "The glyph %1$.30s in font %2$.30s has a different hint mask on its contours "
+ "than in %3$.30s"
+@@ -19979,7 +19979,7 @@ msgstr ""
+ "Le glyphe %1$.30s de la fonte %2$.30s a un nombre de points (ou de points de "
+ "contrôle) différent que dans %3$.30s"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "The glyph %1$.30s in font %2$.30s has a different number of references than "
+ "in %3$.30s"
+@@ -20454,7 +20454,7 @@ msgstr ""
+ "individuellement. Cela peut être utile si vous vouliez\n"
+ "conserver les versions quadratiques et cubiques d'une fonte."
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid "The outlines of glyph %2$.30s were not found in the font %1$.60s"
+ msgstr ""
+ "Le contours du glyphe %2$.30s n'ont pas été trouvés dans la police %1$.60hs"
+@@ -21040,7 +21040,7 @@ msgstr ""
+ msgid "There is already a subtable with that name, please pick another."
+ msgstr "Il y a déjà une sous-table avec ce nom, changez de nom SVP"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid "There is already an anchor point named %1$.40s in %2$.40s."
+ msgstr "Il y a déjà une ancre appelée %1$.40s dans %2$.40hs."
+ 
+@@ -21435,7 +21435,7 @@ msgstr ""
+ "Cette fonte ne précise pas de 'unitsPerEm', alors nous assumons que c'est "
+ "1000."
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "This font is based on the charset %1$.20s-%2$.20s-%3$d, but the best I've "
+ "been able to find is %1$.20s-%2$.20s-%4$d.\n"
+@@ -21764,7 +21764,7 @@ msgstr ""
+ "Et sur в, г, д, е, ж, л, м, ц, щ, ъ, ђ\n"
+ "Et sur toutes les lettres grecques minuscules. Et peut être tout le reste."
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "This kerning pair (%.20s and %.20s) is currently part of a kerning class "
+ "with a 0 offset for this combination. Would you like to alter this kerning "
+@@ -24544,7 +24544,7 @@ msgstr ""
+ "Vous voulez effacer %.30s qui est référencé par un\n"
+ "autre glyphe. Êtes-vous sûr(e) de vouloir poursuivre ?"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "You are attempting to paste a reference to %1$s into %2$s.\n"
+ "But %1$s does not exist in this font, nor can I find the original character "
+@@ -24556,7 +24556,7 @@ msgstr ""
+ "glyphe auquel il se référait.\n"
+ "Le glyphe ne sera pas copié."
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "You are attempting to paste a reference to %1$s into %2$s.\n"
+ "But %1$s does not exist in this font.\n"
+--- a/po/it.po
++++ b/po/it.po
+@@ -2297,7 +2297,7 @@ msgstr "Riferimento invertito"
+ msgid "Flipping"
+ msgstr "Ribaltamento"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "Font %1$.40s in file %2$.40s has been changed.\n"
+ "Reverting the file will lose those changes.\n"
+@@ -5830,7 +5830,7 @@ msgstr ""
+ msgid "The font does not contain a glyph named %s."
+ msgstr "Questo font non contiene un glifo chiamato %s."
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "The glyph %1$.30s has a different number of contours in font %2$.30s than in "
+ "%3$.30s"
+@@ -6229,7 +6229,7 @@ msgstr ""
+ msgid "This font does not specify font-face\n"
+ msgstr "Questo font non specifica il font-face\n"
+ 
+-#, c-format
++#, c-format, fuzzy
+ msgid ""
+ "This font is based on the charset %1$.20s-%2$.20s-%3$d, but the best I've "
+ "been able to find is %1$.20s-%2$.20s-%4$d.\n"
+-- 
+2.41.0

@@ -1,0 +1,71 @@
+From 937da0f2604ea208ec56517c5a41e582f316a246 Mon Sep 17 00:00:00 2001
+From: Cyprien Nicolas <cyp@fulax.fr>
+Date: Thu, 18 Apr 2013 23:45:23 +0200
+Subject: [PATCH] Fix texinfo files for makeinfo-5.1
+
+---
+ doc/ref/api-options.texi | 2 +-
+ doc/ref/api-utility.texi | 2 +-
+ doc/ref/fdl.texi         | 2 +-
+ doc/ref/gh.texi          | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/doc/ref/api-options.texi b/doc/ref/api-options.texi
+index 7b7a6e0..6ce7291 100644
+--- a/doc/ref/api-options.texi
++++ b/doc/ref/api-options.texi
+@@ -377,9 +377,9 @@ configure @emph{reading}, @emph{printing}, @emph{debugging} or
+ * User level options interfaces::
+ * Reader options::
+ * Printing options::
+-* Debugger options::
+ * Evaluator options::
+ * Evaluator trap options::
++* Debugger options::
+ * Examples of option use::
+ @end menu
+ 
+diff --git a/doc/ref/api-utility.texi b/doc/ref/api-utility.texi
+index 4a90212..9a4f3cc 100644
+--- a/doc/ref/api-utility.texi
++++ b/doc/ref/api-utility.texi
+@@ -657,7 +657,7 @@ Return 1 if @var{x} is a Scheme-level hook, 0 otherwise.
+ @end deftypefn
+ 
+ 
+-@subsubsection Handling Scheme-level hooks from C code
++@subsubheading Handling Scheme-level hooks from C code
+ 
+ Here is an example of how to handle Scheme-level hooks from C code using
+ the above functions.
+diff --git a/doc/ref/fdl.texi b/doc/ref/fdl.texi
+index 17fe148..4866055 100644
+--- a/doc/ref/fdl.texi
++++ b/doc/ref/fdl.texi
+@@ -408,7 +408,7 @@ as a draft) by the Free Software Foundation.
+ @end enumerate
+ 
+ @page
+-@appendixsubsec ADDENDUM: How to use this License for your documents
++@appendixsec ADDENDUM: How to use this License for your documents
+ 
+ To use this License in a document you have written, include a copy of
+ the License in the document and put the following copyright and
+diff --git a/doc/ref/gh.texi b/doc/ref/gh.texi
+index 95dfd92..bbd3af1 100644
+--- a/doc/ref/gh.texi
++++ b/doc/ref/gh.texi
+@@ -995,8 +995,8 @@ These correspond to the Scheme @code{(cons a b)} and @code{(list l0 l1
+ 
+ @deftypefun SCM gh_car (SCM @var{obj})
+ @deftypefunx SCM gh_cdr (SCM @var{obj})
+-@dots{}
+-
++@deftypefunx SCM gh_c[ad][ad]r (SCM @var{obj})
++@deftypefunx SCM gh_c[ad][ad][ad]r (SCM @var{obj})
+ @deftypefunx SCM gh_c[ad][ad][ad][ad]r (SCM @var{obj})
+ These correspond to the Scheme @code{(caadar ls)} procedures etc @dots{}
+ @end deftypefun
+-- 
+1.8.2.1
+

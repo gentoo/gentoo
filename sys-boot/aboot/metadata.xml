@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>alpha@gentoo.org</email>
+		<name>Alpha architecture team</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">mattst88/aboot</remote-id>
+		<remote-id type="sourceforge">aboot</remote-id>
+	</upstream>
+</pkgmetadata>

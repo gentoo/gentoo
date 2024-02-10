@@ -1,0 +1,20 @@
+--- a/src/log_pam.c
++++ b/src/log_pam.c
+@@ -49,7 +49,7 @@
+ # endif
+ 
+ #ifndef FTPD_PAM_SERVICE_NAME
+-# define FTPD_PAM_SERVICE_NAME "pure-ftpd"
++# define FTPD_PAM_SERVICE_NAME "ftp"
+ #endif
+ 
+ /* Static variables used to communicate between the conversation function
+@@ -164,7 +164,7 @@
+                           &PAM_conversation, &pamh);
+     PAM_BAIL;
+ # ifdef PAM_TTY
+-    (void) pam_set_item(pamh, PAM_TTY, "pure-ftpd");
++    (void) pam_set_item(pamh, PAM_TTY, FTPD_PAM_SERVICE_NAME);
+ # endif
+ # ifdef PAM_RUSER
+     (void) pam_set_item(pamh, PAM_RUSER, user);

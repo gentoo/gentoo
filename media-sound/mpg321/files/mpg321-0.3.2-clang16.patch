@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/860876
+https://bugs.gentoo.org/874312
+--- a/fft.c
++++ b/fft.c
+@@ -148,5 +148,5 @@
+         printf("%i is reversed to %i and maps to %i %i\n", i, bitReverse[i], bitReverse[i] * 2, (bitReverse[i] * 2) + 1);
+ #endif
+-        sound_sample* ptr = &(input[bitReverse[i] * 2]);
++        const sound_sample* ptr = &(input[bitReverse[i] * 2]);
+         *realptr++ = (ptr[0] + ptr[1]) / 2;
+         *imagptr++ = 0;
+--- a/mpg321.c
++++ b/mpg321.c
+@@ -100,5 +100,5 @@
+ pid_t output_pid;
+ /* Not used for the moment. It only works for CBR http/ftp retrieved files */
+-extern http_file_length;
++extern int http_file_length;
+ #ifdef HAVE_ALSA
+ /* ALSA Volume Range */
+--- a/mpg321.h
++++ b/mpg321.h
+@@ -177,4 +177,5 @@
+ 
+ /* network functions */
++void do_basicauth();
+ int tcp_open(char * address, int port);
+ int udp_open(char * address, int port);
+@@ -189,4 +190,5 @@
+ enum mad_flow output(void *data, struct mad_header const *header, struct mad_pcm *pcm);
+ int calc_length(char *file, buffer*buf );
++int calc_http_length(buffer *buf);
+ 
+ static enum mad_flow handle_error(void *data, struct mad_stream *stream, struct mad_frame *frame);
+@@ -199,6 +201,8 @@
+ void check_ao_default_play_device();
+ void check_default_play_device();
++int check_default_play_device_buffer();
+ int playdevice_is_live();
+ void open_ao_playdevice(struct mad_header const *header);
++ao_device *open_ao_playdevice_buffer(struct mad_header const *header);
+ 
+ /* remote control (-R) functions */
+@@ -230,4 +234,10 @@
+ RETSIGTYPE handle_sigchld(int sig);
+ 
++#ifdef HAVE_ALSA
++int init_alsa_volume_control(char *name);
++long mpg321_alsa_get_volume();
++void mpg321_alsa_set_volume(long value);
++#endif
++
+ /* FFT data structures */
+ #define FFT_BUFFER_SIZE_LOG 9
+@@ -243,5 +253,5 @@
+ 
+ typedef short int sound_sample;
+-//void fft_perform(const sound_sample *input, double *output, fft_state *state);
++void fft_perform(const sound_sample *input, double *output, fft_state *state);
+ 
+ fft_state *fft_init(void);
+--- a/options.c
++++ b/options.c
+@@ -45,5 +45,5 @@
+ extern int auth_enable;
+ extern int auth_enable_var;
+-extern remote_restart;
++extern int remote_restart;
+ /*Basic Authentication Arguments*/
+ char *basic_auth = NULL;
+--- a/volume.c
++++ b/volume.c
+@@ -29,5 +29,5 @@
+ int init_alsa_volume_control(char *name)
+ {
+-	char *elemnam;
++	const char *elemnam;
+ 	snd_mixer_open(&mixer,0);
+ 	snd_mixer_attach(mixer,name);

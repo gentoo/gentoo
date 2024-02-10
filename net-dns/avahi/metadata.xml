@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="autoipd">Build and install the IPv4LL (RFC3927) network address configuration daemon</flag>
+		<flag name="bookmarks">Install the avahi-bookmarks application (requires <pkg>dev-python/twisted</pkg>)</flag>
+		<flag name="gtk">Use gtk3 for the avahi utilities to build the avahi-ui-gtk3 library</flag>
+		<flag name="howl-compat">Enable compat libraries for howl</flag>
+		<flag name="mdnsresponder-compat">Enable compat libraries for mDNSResponder</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lathiat/avahi</remote-id>
+		<remote-id type="cpe">cpe:/a:avahi:avahi</remote-id>
+	</upstream>
+</pkgmetadata>

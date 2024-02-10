@@ -1,0 +1,16 @@
+Prevent accidental inclusion of mpi c++ headers 
+when hdf5.h is included third party library
+
+https://bugs.gentoo.org/show_bug.cgi?id=420777
+
+--- a/src/H5public.h
++++ b/src/H5public.h
+@@ -58,6 +58,8 @@
+ #   include <stddef.h>
+ #endif
+ #ifdef H5_HAVE_PARALLEL
++#   define OMPI_SKIP_MPICXX   /* Make sure that cxx specific headers are not included */
++#   define MPICH_SKIP_MPICXX
+ #   include <mpi.h>
+ #ifndef MPI_FILE_NULL		/*MPIO may be defined in mpi.h already       */
+ #   include <mpio.h>

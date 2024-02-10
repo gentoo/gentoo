@@ -1,0 +1,9 @@
+python3.10 does not allow concatenating a string with None and
+this shouldn't be ran either way if None.
+--- a/configure
++++ b/configure
+@@ -75,3 +75,3 @@
+             self).add_argument_group(title, description)
+-        if name != 'help' and len(name.split()) == 1:
++        if name != 'help' and len(name.split()) == 1 and title is not None:
+             self.add_argument("--help-" + name, group = 'help',

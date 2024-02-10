@@ -1,0 +1,24 @@
+From 3643683c20774afa1606bae5f1c4ccbfd2a905db Mon Sep 17 00:00:00 2001
+From: "Sam James (sam_c)" <sam@cmpct.info>
+Date: Tue, 21 Apr 2020 08:09:49 +0000
+Subject: [PATCH] Add -s (syslog) to help output
+
+Signed-off-by: Sam James (sam_c) <sam@cmpct.info>
+---
+ endlessh.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/endlessh.c b/endlessh.c
+index adb8ad3..8c3afff 100644
+--- a/endlessh.c
++++ b/endlessh.c
+@@ -530,6 +530,8 @@ usage(FILE *f)
+     fprintf(f, "  -m INT    Maximum number of clients ["
+             XSTR(DEFAULT_MAX_CLIENTS) "]\n");
+     fprintf(f, "  -p INT    Listening port [" XSTR(DEFAULT_PORT) "]\n");
++    fprintf(f, "  -s        Print diagnostics to syslog instead of "
++            "standard output\n");
+     fprintf(f, "  -v        Print diagnostics to standard output "
+             "(repeatable)\n");
+     fprintf(f, "  -V        Print version information and exit\n");
+

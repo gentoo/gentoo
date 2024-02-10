@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need net
+}
+
+check_config() {
+	if [ -z "${USER}" ]
+	then
+		eerror "Please set \$USER in /etc/conf.d/oidentd!"
+		return 1
+	fi
+	if [ -z "${GROUP}" ]
+	then
+		eerror "Please set \$GROUP in /etc/conf.d/oidentd!"
+		return 1
+	fi
+
+	if [ "$(sysctl -n security.bsd.see_other_uids 2>/dev/null)" = "0" ]; then
+		eerror "${SVCNAME} cannot work if the sysctl security.bsd.see_other_uids is 0"
+		return 1
+	fi
+}
+
+
+start() {
+	check_config || return 1
+	ebegin "Starting oidentd"
+	OPTIONS="${OPTIONS} -u ${USER} -g ${GROUP}"
+	start-stop-daemon --start --quiet --exec /usr/sbin/oidentd -- $OPTIONS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping oidentd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/oidentd
+	eend $?
+}

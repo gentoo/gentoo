@@ -1,0 +1,117 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="status"
+
+depend() {
+	need xenstored
+	after dhcp xend xenconsoled
+}
+
+get_domname() {
+	local name_from_file=$(sed -rn 's/^name\W*=\W*\"?([[:alnum:]_\.-]+)\"?\W*;?/\1/p' "${1}" | tail -n 1)
+
+	if [ -z ${name_from_file} ] ; then
+		basename "${1}"
+	else
+		echo ${name_from_file}	
+	fi
+}
+
+is_running() {
+	/usr/sbin/xl list "${1}" >/dev/null 2>&1
+}
+
+using_screen() {
+	[ "${SCREEN}" = "yes" -o "${SCREEN}" = "YES" ]
+}
+
+set_screen_cmd() {
+	screen_cmd="screen -c ${SCREENRC:-/dev/null} -q -r ${SCREEN_NAME:=xen} -X"
+}
+
+start() {
+	set_screen_cmd
+
+	einfo "Starting Xen domains from ${AUTODIR:=/etc/xen/auto}"
+	if using_screen ; then
+		ebegin "Creating screen session to hold domain consoles"
+		(  screen -c ${SCREENRC:-/dev/null} -d -m -S ${SCREEN_NAME} -t dom0 \
+		&& sleep 5 \
+		&& ${screen_cmd} zombie dr \
+		&& logrotate -f /etc/xen/xen-consoles.logrotate \
+		&& ${screen_cmd} logfile  /var/log/xen-consoles/%t.log \
+		&& ${screen_cmd} logfile flush ${SCREEN_LOG_INTERVAL:-1} \
+		&& ${screen_cmd} log on \
+		&& ${screen_cmd} deflog on ) >/dev/null
+		if [ $? -ne 0 ] ; then
+			eend 1
+			return 1
+		else
+			eend
+		fi
+	fi
+	# Create all domains with config files in AUTODIR.
+	for dom in $(ls "${AUTODIR:=/etc/xen/auto}/"* 2>/dev/null | sort); do
+		name=$(get_domname ${dom})
+		if ! is_running ${name} ; then
+			ebegin "  Starting domain ${name}"
+			if using_screen ; then
+				${screen_cmd} screen -t ${name} xl create ${dom} -c
+			else
+				xl create --quiet ${dom}
+			fi
+			eend $?
+		else
+			einfo "  Not starting domain ${name} - already running"
+		fi
+	done
+}
+
+stop() {
+	set_screen_cmd
+
+	einfo "Shutting down Xen domains from ${AUTODIR:=/etc/xen/auto}"
+	# Stop all domains with config files in AUTODIR.
+	DOMAINS="$(ls "${AUTODIR:=/etc/xen/auto}/"* 2>/dev/null | sort -r)"
+
+	if [ "$PARALLEL_SHUTDOWN" = "yes" ] ; then
+		for dom in $DOMAINS ; do
+			name=$(get_domname ${dom})
+			if is_running ${name} ; then
+				ebegin "  Asking domain ${name} to shutdown in the background..."
+				xl shutdown -w ${name} >/dev/null &
+			else
+				einfo "  Not stopping domain ${name} - not running"
+			fi
+		done
+		einfo "  Waiting for shutdown of domains that are still running"
+		wait
+		eend $?
+	else
+		for dom in $DOMAINS ; do
+			name=$(get_domname ${dom})
+			if is_running ${name} ; then
+				ebegin "  Waiting for domain ${name} to shutdown"
+				xl shutdown -w ${name} >/dev/null
+				eend $?
+			else
+				einfo "  Not stopping domain ${name} - not running"
+			fi
+		done
+	fi
+	if using_screen ; then
+		if ${screen_cmd} sleep 0 >/dev/null 2>&1 ; then
+			ebegin "Closing screen session ${SCREEN_NAME}"
+			${screen_cmd} quit
+			eend $?
+		else
+			eend 0
+		fi
+	fi
+}
+
+status() {
+	/usr/sbin/xl list
+}

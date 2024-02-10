@@ -1,0 +1,23 @@
+https://github.com/rust-lang/rust/pull/113579 which reverts the broken
+https://github.com/rust-lang/rust/pull/110906.
+From: ekusiadadus <ekusiadadus@gmail.com>
+Date: Wed, 12 Jul 2023 00:54:27 +0900
+Subject: [PATCH] Revert "fix: :bug: etc/bash_complettion -> src/etc/... to
+ avoid copy error"
+
+This reverts commit 08ce68b6a6bad360e9c3611ad60cf6598401f878.
+--- a/src/bootstrap/dist.rs
++++ b/src/bootstrap/dist.rs
+@@ -1074,11 +1074,7 @@ impl Step for Cargo {
+ 
+         tarball.add_file(&cargo, "bin", 0o755);
+         tarball.add_file(etc.join("_cargo"), "share/zsh/site-functions", 0o644);
+-        tarball.add_renamed_file(
+-            etc.join("cargo.bashcomp.sh"),
+-            "src/etc/bash_completion.d",
+-            "cargo",
+-        );
++        tarball.add_renamed_file(etc.join("cargo.bashcomp.sh"), "etc/bash_completion.d", "cargo");
+         tarball.add_dir(etc.join("man"), "share/man/man1");
+         tarball.add_legal_and_readme_to("share/doc/cargo");
+ 

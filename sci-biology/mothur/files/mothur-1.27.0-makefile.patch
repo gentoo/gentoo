@@ -1,0 +1,52 @@
+ makefile |   14 ++++++--------
+ 1 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/makefile b/makefile
+index db7c904..109488f 100644
+--- a/makefile
++++ b/makefile
+@@ -10,18 +10,18 @@
+ #
+ 
+ USEMPI ?= no
+-64BIT_VERSION ?= yes
++64BIT_VERSION ?= no
+ USEREADLINE ?= yes
+ CYGWIN_BUILD ?= no
+ USECOMPRESSION ?= no
+ MOTHUR_FILES="\"Enter_your_default_path_here\""
+ RELEASE_DATE = "\"8/8/2012\""
+ VERSION = "\"1.27.0\""
+-FORTAN_COMPILER = gfortran
+-FORTRAN_FLAGS = 
++FORTAN_COMPILER = ${FC}
++FORTRAN_FLAGS = ${FCFLAGS}
+ 
+ # Optimize to level 3:
+-CXXFLAGS += -O3 
++#CXXFLAGS += -O3
+ 
+ ifeq  ($(strip $(64BIT_VERSION)),yes)
+ 	#if you are using centos uncomment the following lines
+@@ -69,7 +69,7 @@ endif
+ 
+ 
+ ifeq  ($(strip $(USEMPI)),yes)
+-    CXX = mpic++
++#    CXX = mpic++
+     CXXFLAGS += -DUSE_MPI
+ endif
+ 
+@@ -95,11 +95,9 @@ OBJECTS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
+ OBJECTS+=$(patsubst %.c,%.o,$(wildcard *.c))
+ OBJECTS+=$(patsubst %.f,%.o,$(wildcard *.f))
+ 
+-mothur : fortranSource $(OBJECTS) uchime
++mothur : fortranSource $(OBJECTS)
+ 	$(CXX) $(LDFLAGS) $(TARGET_ARCH) -o $@ $(OBJECTS) $(LIBS)
+ 	
+-	strip mothur
+- 
+ uchime:
+ 	cd uchime_src && ./mk && mv uchime .. && cd ..
+ 	

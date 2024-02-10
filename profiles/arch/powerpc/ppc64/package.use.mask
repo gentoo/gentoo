@@ -1,0 +1,234 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is available here
+app-emulation/libvirt -virtiofsd
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
+# media-libs/shaderc is keyworded here.
+media-libs/libplacebo -shaderc
+
+# Sam James <sam@gentoo.org> (2023-09-22)
+# Qt 6 not keyworded here.
+dev-build/cmake gui
+
+# Joonas Niilola <juippis@gentoo.org> (2023-08-24)
+# media-video/libva-utils is masked on ppc64, so hwaccel on Firefox
+# wouldn't work.
+www-client/firefox hwaccel
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
+# OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
+# Therefore apply mask/force to override the profile's defaults, and invert on
+# arches where luajit is not keyworded.
+# Done this way also avoids conflicts for users using another default.
+games-engines/openmw -lua_single_target_lua5-1 lua_single_target_luajit
+games-engines/openmw -lua_single_target_lua5-3 -lua_single_target_lua5-4
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
+# MPV currently[1] has no plans to support >=lua5-3 making luajit
+# the only choice for maintained lua. Apply mask/force to override
+# the profile's defaults, and invert on arches where not keyworded.
+# Done this way also avoids conflicts for users using another default.
+# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
+media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
+
+# Sam James <sam@gentoo.org> (2023-04-14)
+# Needs dev-python/sympy which is not yet keyworded, see bug #892183
+dev-python/nbval test
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-24)
+# libomptarget is only supported on 64-bit architectures.
+>=sys-libs/libomp-16.0.0_pre20230124 -offload
+
+# Niccolò Belli <niccolo.belli@linuxsystems.it> (2022-11-29)
+# media-libs/webrtc-audio-processing only has amd64, x86 and ppc64 keywords
+media-video/pipewire -echo-cancel
+
+# Sam James <sam@gentoo.org> (2022-10-13)
+# Causes segfaults, bug #871921
+sci-libs/symengine tcmalloc
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-29)
+# USE=fix requires ring crate, which is not portable
+# https://github.com/rustsec/rustsec/issues/707
+dev-util/cargo-audit fix
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-17)
+# dev-python/pyside2 is not keyworded
+www-client/falkon python
+
+# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
+# Not keyworded here yet.
+lxqt-base/lxqt-meta desktop-portal
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-12)
+# telepathy stack is not keyworded
+dev-util/kdevelop reviewboard
+
+# Sam James <sam@gentoo.org> (2021-10-17)
+# Go doesn't support pie on ppc64, bug #818529
+net-dns/dnscrypt-proxy pie
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects zamaudio
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# Feature currently relies on amd64 prebuilt binaries.
+media-video/obs-studio browser
+
+# Joonas Niilola <juippis@gentoo.org> (2021-06-23)
+# Pandoc is a required dep, and not keyworded.
+sys-apps/eza man
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-25)
+# depends on ring crate, which is not so portable
+# https://github.com/briansmith/ring/issues/389
+dev-util/sccache dist-server
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Brings in a large number of unkeyworded
+# (broad) deps. Not keywording yet.
+# bug #769956
+dev-util/diffoscope R pascal
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Haskell isn't keyworded on ppc64
+# bug #769956, bug #583400
+dev-util/diffoscope haskell
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
+sys-libs/compiler-rt-sanitizers -ubsan -scudo
+sys-libs/compiler-rt-sanitizers -profile
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# fwupd keyworded now on ppc64
+kde-plasma/discover -firmware
+
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+# telepathy flag requires unkeyworded plasma-telepathy-meta
+kde-apps/kdenetwork-meta dropbox telepathy
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
+# zfs is keyworded on ppc64
+sys-boot/grub -libzfs
+
+# James Le Cuirot <chewi@gentoo.org> (2020-08-19)
+# Cinnamon is not keyworded on this architecture.
+x11-themes/arc-theme cinnamon
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-02)
+# media-libs/libplacebo is keyworded
+media-video/vlc -libplacebo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-07)
+# works on ppc64
+app-emulation/qemu -spice -usbredir
+
+# Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
+# Mask until 'app-arch/lxqt-archiver' is keyworded.
+lxqt-base/lxqt-meta archiver
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# bolt not keyworded on ~ppc64
+kde-plasma/plasma-meta thunderbolt
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
+# not keyworded or irrelevant on ~ppc64, bug 679888
+app-emulation/libvirt virtualbox xen
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
+# Matthew Thode <prometheanfire@gentoo.org> (2019-08-22)
+# context works with newer versions of boost
+# https://github.com/boostorg/context/commit/d4608a4e8ba2e8a0bdd45613243e6c53a23d23dc
+>=dev-libs/boost-1.71.0 -context
+
+# Jimi Huotari <chiitoo@gentoo.org> (2019-07-28)
+# Mask unkeyworded, untested dependencies.
+# bug #689606
+lxqt-base/lxqt-meta admin powermanagement processviewer screenshot sudo
+lxqt-base/lxqt-panel cpuload networkmonitor pulseaudio sysstat
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+net-analyzer/snort open-appid
+
+# Jeroen Roovers <jer@gentoo.org> (2017-01-16)
+# Incomplete support, bug #605878.
+net-vpn/tor seccomp
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
+# kde-frameworks/*:5 not keyworded.
+net-irc/kvirc kde
+app-arch/p7zip kde
+dev-vcs/subversion kwallet
+
+# Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
+# I would need to keyword an awful lot of packages on ppc64
+# that would need Java 7 otherwise.
+dev-java/bsf python
+dev-java/ant-apache-bsf python
+
+# Jeroen Roovers <jer@gentoo.org> (2015-12-26)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Michael Sterrett <mr_bones_@gentoo.org> (2013-11-12)
+# Mask openmedia use flag because the content generation tools
+# are missing keywords.
+games-simulation/openttd openmedia
+
+# Sergey Popov <pinkbyte@gentoo.org> (2013-02-18)
+# sys-cluster/ploop can not be build on ppc64, bug #447644
+# Masking USE-dep on it
+sys-cluster/vzctl ploop
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
+# Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
+www-client/seamonkey ipc
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
+# quesoglc is not keyworded
+x11-misc/rss-glx quesoglc
+
+# Joseph Jezak <josejx@gentoo.org> (2010-02-12)
+# Mask unstable pidgin deps until we can mark them stable (farsight2)
+net-im/pidgin gstreamer
+
+# mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
+media-video/mplayer cpudetection

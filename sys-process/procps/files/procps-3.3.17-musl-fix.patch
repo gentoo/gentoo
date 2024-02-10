@@ -1,0 +1,78 @@
+Temporary stopgap patch (a different solution was used upstream
+in the next release, should be in the next after 3.3.17 -- we'll need to
+add --disable-w instead).
+
+https://bugs.gentoo.org/794997
+
+From 7bfe2b7c12b33aabca71491360c433d2d3f7bbf4 Mon Sep 17 00:00:00 2001
+From: Alexander Kanavin <alex.kanavin@gmail.com>
+Date: Wed, 24 Feb 2021 21:14:31 +0000
+Subject: [PATCH 1/2] w.c: correct musl builds
+
+No need to redefine UT_ stuff to something that does not exist.
+
+UT_ is already provided in musl but via utmp.h header, so include
+it always.
+
+Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
+---
+ w.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/w.c b/w.c
+index 9d07ac9e..d10639b8 100644
+--- a/w.c
++++ b/w.c
+@@ -57,9 +57,8 @@
+ #include <unistd.h>
+ #ifdef HAVE_UTMPX_H
+ #	include <utmpx.h>
+-#else
+-#	include <utmp.h>
+ #endif
++#include <utmp.h>
+ #include <arpa/inet.h>
+ 
+ static int ignoreuser = 0;	/* for '-u' */
+@@ -72,12 +71,6 @@ typedef struct utmpx utmp_t;
+ typedef struct utmp utmp_t;
+ #endif
+ 
+-#if !defined(UT_HOSTSIZE) || defined(__UT_HOSTSIZE)
+-#	define UT_HOSTSIZE __UT_HOSTSIZE
+-#	define UT_LINESIZE __UT_LINESIZE
+-#	define UT_NAMESIZE __UT_NAMESIZE
+-#endif
+-
+ #ifdef W_SHOWFROM
+ # define FROM_STRING "on"
+ #else
+-- 
+GitLab
+
+
+From 145165aba6c659f3f0f3567a323a3e6170408ea6 Mon Sep 17 00:00:00 2001
+From: Alexander Kanavin <alex.kanavin@gmail.com>
+Date: Wed, 24 Feb 2021 21:16:14 +0000
+Subject: [PATCH 2/2] proc/escape.c: add missing include
+
+Signed-off-by: Alexander Kanavin <alex.kanavin@gmail.com>
+---
+ proc/escape.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/proc/escape.c b/proc/escape.c
+index 2e8fb7dd..e1f4612d 100644
+--- a/proc/escape.c
++++ b/proc/escape.c
+@@ -21,6 +21,7 @@
+ #include <sys/types.h>
+ #include <string.h>
+ #include <limits.h>
++#include <langinfo.h>
+ #include "procps.h"
+ #include "escape.h"
+ #include "readproc.h"
+-- 
+GitLab
+

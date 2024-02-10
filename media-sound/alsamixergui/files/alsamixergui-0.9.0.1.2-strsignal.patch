@@ -1,0 +1,13 @@
+diff --git a/src/alsamixer.cxx b/src/alsamixer.cxx
+index c7fda51..0d17e21 100644
+--- a/src/alsamixer.cxx
++++ b/src/alsamixer.cxx
+@@ -2081,7 +2081,7 @@ static void
+ mixer_signal_handler (int signal)
+ {
+   if (signal != SIGSEGV)
+-    mixer_abort (ERR_SIGNAL, sys_siglist[signal], 0);
++    mixer_abort (ERR_SIGNAL, strsignal(signal), 0);
+   else
+     {
+       fprintf (stderr, "\nSegmentation fault.\n");

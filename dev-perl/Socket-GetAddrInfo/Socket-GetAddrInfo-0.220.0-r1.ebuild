@@ -1,0 +1,27 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+DIST_AUTHOR=PEVANS
+DIST_VERSION=0.22
+
+inherit perl-module
+
+DESCRIPTION="Address-family independent name resolving functions"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="
+	virtual/perl-Exporter
+	virtual/perl-Socket
+"
+BDEPEND="${RDEPEND}
+	>=dev-perl/ExtUtils-CChecker-0.60.0
+	virtual/perl-ExtUtils-CBuilder
+	dev-perl/Module-Build
+	virtual/perl-Scalar-List-Utils
+	virtual/perl-XSLoader
+	test? ( virtual/perl-Test-Simple )
+"
+
+PERL_RM_FILES=( t/99pod.t )

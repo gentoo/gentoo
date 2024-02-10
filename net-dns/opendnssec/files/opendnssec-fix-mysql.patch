@@ -1,0 +1,39 @@
+diff -urN opendnssec-2.1.13.orig/enforcer/src/db/db_backend_mysql.c opendnssec-2.1.13/enforcer/src/db/db_backend_mysql.c
+--- opendnssec-2.1.13.orig/enforcer/src/db/db_backend_mysql.c	2023-06-26 13:24:05.000000000 +0200
++++ opendnssec-2.1.13/enforcer/src/db/db_backend_mysql.c	2023-12-04 08:39:37.685365824 +0100
+@@ -72,7 +72,7 @@
+     db_backend_mysql_bind_t* next;
+     MYSQL_BIND* bind;
+     unsigned long length;
+-    my_bool error;
++    _Bool error;
+     int value_enum;
+ };
+ 
+@@ -270,7 +270,7 @@
+             }
+ 
+             bind->bind = (mysql_bind = &((*statement)->mysql_bind_output[i]));
+-            mysql_bind->is_null = (my_bool*)0;
++            mysql_bind->is_null = (_Bool*)0;
+             mysql_bind->error = &bind->error;
+             mysql_bind->length = &bind->length;
+ 
+@@ -959,7 +959,7 @@
+         }
+ 
+         (*bind)->bind->length = &((*bind)->bind->buffer_length);
+-        (*bind)->bind->is_null = (my_bool*)0;
++        (*bind)->bind->is_null = (_Bool*)0;
+ 
+         switch (db_clause_type(clause)) {
+         case DB_CLAUSE_EQUAL:
+@@ -1079,7 +1079,7 @@
+     }
+ 
+     bind->bind->length = &(bind->bind->buffer_length);
+-    bind->bind->is_null = (my_bool*)0;
++    bind->bind->is_null = (_Bool*)0;
+ 
+     switch (db_value_type(value)) {
+     case DB_TYPE_PRIMARY_KEY:

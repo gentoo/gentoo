@@ -1,0 +1,14 @@
+[Unit]
+Description=MLDonkey multi-network P2P client service
+After=network.target
+
+[Service]
+User=p2p
+LimitNICE=+19
+Environment=MLDONKEY_DIR=/var/lib/mldonkey
+ExecStart=/usr/bin/mlnet
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,36 @@
+Call make with the current instance if possible.
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -17,12 +17,12 @@ apidox:
+ check: test
+ 
+ test:
+-	make -C src test
++	$(MAKE) -C src test
+ 
+ leakcheck: leaktest
+ 
+ leaktest:
+-	make -C src leaktest
++	$(MAKE) -C src leaktest
+ 
+ includetest:
+-	make -C src includetest
++	$(MAKE) -C src includetest
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -117,12 +117,12 @@ noinst_HEADERS = config.h prep.h dns.h nonsaslauth.h mucmessagesession.h stanzae
+ EXTRA_DIST = version.rc
+ 
+ test:
+-	make -C tests test
++	$(MAKE) -C tests test
+ 
+ check: test
+ 
+ leaktest:
+-	make -C tests leaktest
++	$(MAKE) -C tests leaktest
+ 
+ leakcheck: leaktest
+ 

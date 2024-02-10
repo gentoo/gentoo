@@ -1,0 +1,31 @@
+From f460883035ef849a2248b1713f711292ec19f4f0 Mon Sep 17 00:00:00 2001
+From: Emanuele Giaquinta <emanuele.giaquinta@gmail.com>
+Date: Fri, 14 May 2021 09:06:20 +0300
+Subject: [PATCH] _AC_PROG_CXX_STDCXX_EDITION_TRY: fix typo in variable name
+
+The typo causes "ac_prog_cxx_stdcxx" to be always set to "cxx11",
+regardless of whether the C++ compiler supports C++11.
+Message-Id: <YJ4TXAeJcvU0oSec@FSAPPLE2215.fi.f-secure.com>
+(tiny change)
+---
+ lib/autoconf/c.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/autoconf/c.m4 b/lib/autoconf/c.m4
+index 9f881f0b..47434c89 100644
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -2749,8 +2749,8 @@ AC_DEFUN([_AC_PROG_CXX_STDCXX_EDITION_TRY],
+ [AC_REQUIRE([_AC_CXX_CXX$1_TEST_PROGRAM])]dnl
+ [AS_IF([test x$ac_prog_cxx_stdcxx = xno],
+ [AC_MSG_CHECKING([for $CXX option to enable C++$1 features])
+-AC_CACHE_VAL(ac_cv_prog_cxx_$1,
+-[ac_cv_prog_cxx_$1=no
++AC_CACHE_VAL(ac_cv_prog_cxx_cxx$1,
++[ac_cv_prog_cxx_cxx$1=no
+ ac_save_CXX=$CXX
+ AC_LANG_CONFTEST([AC_LANG_DEFINES_PROVIDED][$][ac_cxx_conftest_cxx$1_program])
+ for ac_arg in '' m4_normalize(m4_defn([_AC_CXX_CXX$1_OPTIONS]))
+-- 
+2.39.3
+

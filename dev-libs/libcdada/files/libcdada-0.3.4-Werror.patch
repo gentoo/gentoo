@@ -1,0 +1,24 @@
+diff --git a/configure.ac b/configure.ac
+index f2c4dde..fbde89c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,7 +4,7 @@ AC_INIT(LIBCDADA, m4_esyscmd_s(cat VERSION), marcdevel@gmail.com, libcdada, http
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
+ 
+ AC_GNU_SOURCE
+ 
+@@ -24,8 +24,8 @@ LT_INIT
+ AC_ENABLE_STATIC
+ 
+ # Some useful default flags
+-CFLAGS="-std=gnu89 -Werror -Wall $CFLAGS"
+-CXXFLAGS="-Werror -Wall $CXXFLAGS"
++CFLAGS="-std=gnu89 -Wall $CFLAGS"
++CXXFLAGS="-Wall $CXXFLAGS"
+ AC_DEFINE([__STDC_FORMAT_MACROS], [], [Description])
+ 
+ # Check for Python3

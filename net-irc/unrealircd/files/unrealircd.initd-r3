@@ -1,0 +1,63 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Defaults
+: ${UNREALIRCD_CONF:=/etc/unrealircd/${SVCNAME}.conf}
+: ${UNREALIRCD_PIDFILE:=/run/unrealircd/${SVCNAME#unreal}.pid}
+
+# Convenience variable for the chroot bits, not actually user-controllable via conf.d
+UNREALIRCD_USER="unrealircd"
+UNREALIRCD_BIN="/usr/bin/unrealircd"
+UNREALIRCD_COMMAND_ARGS="-F -f ${UNREALIRCD_CONF} ${UNREALIRCD_OPTS}"
+
+# Run the daemon in the foreground and let OpenRC background it.
+# This way the PID file is created securely, as root.
+# https://bugs.unrealircd.org/view.php?id=4990
+# https://bugs.gentoo.org/628434
+command_args="${UNREALIRCD_COMMAND_ARGS}"
+command_background=true
+pidfile="${UNREALIRCD_PIDFILE}"
+
+start_stop_daemon_args="${UNREALIRCD_SSD_OPTS}"
+extra_started_commands="checkconfig reload"
+
+if [ -n "${UNREALIRCD_CHROOT}" ]; then
+	command=/usr/bin/chroot
+	command_args="--userspec ${UNREALIRCD_USER}:${UNREALIRCD_USER} ${UNREALIRCD_CHROOT} ${UNREALIRCD_BIN} ${UNREALIRCD_COMMAND_ARGS}"
+else
+	# We're running it directly so no need for anything special.
+	command="${UNREALIRCD_BIN}"
+	command_user=${UNREALIRCD_USER}
+fi
+
+checkconfig() {
+	# command_args weirdness because we want to preserve the chroot arguments if it's set
+	# Only run the configtest for the main instance; it can't work right now for others (no way to specify config file)
+	[ ${SVCNAME} = unrealircd ] && su -s /bin/sh ${command_user:=root} -c "${command} ${command_args%${UNREALIRCD_COMMAND_ARGS}}" configtest
+}
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+# It is unsafe for the unrealircd user to be able to write to its own
+# PID file, since root will be sending e.g. kill signals to the PID
+# listed in that file. Ensure that we overwrite the ownership and
+# permissions on /run/unrealircd from previous init scripts.
+start_pre() {
+	checkpath --directory --owner root:root --mode 0700 "${UNREALIRCD_CHROOT}"/run/unrealircd
+
+	checkconfig || return $?
+}
+
+reload() {
+	checkconfig || return $?
+
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP \
+			  --pidfile "${pidfile}" \
+			  ${UNREALIRCD_SSD_OPTS}
+	eend $?
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package provides basic interaction with a Clojure subprocess (REPL).
+    It's based on ideas from the popular inferior-lisp package. inf-clojure has
+    two components - a nice REPL buffer (inf-clojure) and a REPL interaction
+    minor mode (inf-clojure-minor-mode), which extends clojure-mode with
+    commands to evaluate forms directly in the REPL.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/clojure-emacs/inf-clojure/issues/</bugs-to>
+    <remote-id type="github">clojure-emacs/inf-clojure</remote-id>
+  </upstream>
+</pkgmetadata>

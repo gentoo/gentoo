@@ -1,0 +1,13 @@
+Use system copy of qtsingleapplication.
+
+--- a/musique.pro
++++ b/musique.pro
+@@ -18,7 +18,7 @@
+ 
+ QT += network sql widgets
+ 
+-include(src/qtsingleapplication/qtsingleapplication.pri)
++CONFIG += qtsingleapplication
+ include(src/http/http.pri)
+ include(src/tags/tags.pri)
+ 

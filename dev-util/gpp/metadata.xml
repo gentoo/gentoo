@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Kenton Groombridge</name>
+		<email>concord@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">logological/gpp</remote-id>
+		<bugs-to>https://github.com/logological/gpp/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		GPP is a general-purpose preprocessor with customizable syntax, suitable for
+		a wide range of preprocessing tasks. Its independence from any one
+		programming language makes it much more versatile than the C preprocessor
+		(cpp), while its syntax is lighter and more flexible than that of GNU m4.
+		There are built-in macros for use with C/C++, LaTeX, HTML, XHTML, and Prolog
+		files.
+	</longdescription>
+</pkgmetadata>

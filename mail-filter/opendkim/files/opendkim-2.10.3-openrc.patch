@@ -1,0 +1,295 @@
+diff --git a/Makefile.am b/Makefile.am
+index ee2d21ab..b085b988 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -39,6 +39,52 @@ DISTCLEANFILES = opendkim-@VERSION@.tar.gz
+ # though.
+ DISTCHECK_CONFIGURE_FLAGS=--enable-vbr --with-lua --enable-stats --with-odbx --with-db --with-openssl=/usr/local --enable-atps --enable-replace_rules
+ 
++
++#
++# Handle some scripts and configuration files that need @VARIABLE@
++# replacements here, so that we can share the rules (which are
++# identical) between all of the targets.
++#
++
++# We want to *build and install* these on the target machine.
++nodist_doc_DATA = contrib/OpenRC/opendkim.openrc \
++                  contrib/systemd/opendkim.service \
++                  contrib/systemd/opendkim.tmpfiles \
++                  opendkim/opendkim.conf.simple \
++                  opendkim/opendkim.conf.simple-verify
++
++# Custom variable to keep the rule below as sane as possible.
++doc_DATA_intermediate = contrib/OpenRC/opendkim.openrc.in
++
++# We want to *ship* these.
++EXTRA_DIST = contrib/OpenRC/opendkim.openrc.in.in \
++             contrib/systemd/opendkim.service.in \
++             contrib/systemd/opendkim.tmpfiles.in \
++             opendkim/opendkim.conf.simple.in \
++             opendkim/opendkim.conf.simple-verify.in
++
++# The next rule allow us to replace bindir, libdir, etc.  within
++# files. The example is taken from the autoconf documentation and can
++# be found in the "Installation Directory Variables" section.
++edit = sed -e 's|@DOMAIN[@]|$(DOMAIN)|g' \
++           -e 's|@RUNSTATEDIR[@]|$(runstatedir)|g' \
++           -e 's|@SBINDIR[@]|$(sbindir)|g' \
++           -e 's|@SYSCONFDIR[@]|$(sysconfdir)|g'
++
++# This rule includes EVERY source/intermediate file as a dependency of
++# EVERY output file, which is clearly wrong, but it may be the best we
++# can do without duplication. At least it's the right kind of wrong,
++# and rebuilds too often rather than not often enough.
++$(nodist_doc_DATA): $(doc_DATA_intermediate) $(EXTRA_DIST) Makefile
++	rm -f $@ $@.tmp
++	srcdir=''; \
++	  test -f ./$@.in || srcdir=$(srcdir)/; \
++	  $(edit) $${srcdir}$@.in > $@.tmp
++	mv $@.tmp $@
++
++
++
++
+ $(DIST_ARCHIVES): distcheck
+ 
+ $(DIST_ARCHIVES).md5: $(DIST_ARCHIVES)
+diff --git a/configure.ac b/configure.ac
+index 76914fd9..a478bb83 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,6 +65,9 @@ AC_PROG_CC_C99
+ AM_PROG_CC_C_O
+ AC_PROG_LIBTOOL
+ 
++# Used by the OpenRC service script, at least.
++AC_PROG_GREP
++
+ PKG_PROG_PKG_CONFIG
+ 
+ #
+@@ -2628,6 +2631,11 @@ AC_SUBST(SPECCONFIGURE)
+ AC_SUBST(SPECREQUIRES)
+ AC_SUBST(SPECBUILDREQUIRES)
+ 
++# Autoconf 2.70 will support this, and many distros patch it in,
++# but Autoconf 2.70 hasn't actually been released yet.
++AS_IF([test -z "${runstatedir}"], [runstatedir='${localstatedir}/run'])
++AC_SUBST([runstatedir])
++
+ #
+ # Finish up
+ #
+@@ -2639,6 +2647,7 @@ AC_OUTPUT([	Makefile
+ 			contrib/docs/Makefile
+ 			contrib/init/Makefile
+ 			contrib/init/generic/Makefile
++			contrib/OpenRC/opendkim.openrc.in
+ 			contrib/init/redhat/Makefile
+ 			contrib/init/redhat/opendkim
+ 			contrib/init/redhat/opendkim-default-keygen
+@@ -2650,8 +2659,6 @@ AC_OUTPUT([	Makefile
+ 			contrib/spec/Makefile
+ 			contrib/spec/opendkim.spec
+ 			contrib/stats/Makefile
+-			contrib/systemd/Makefile
+-			contrib/systemd/opendkim.service
+ 		libopendkim/opendkim.pc libopendkim/Makefile
+ 		libopendkim/docs/Makefile
+ 		libopendkim/tests/Makefile
+@@ -2664,8 +2671,6 @@ AC_OUTPUT([	Makefile
+ 			opendkim/opendkim-lua.3 
+ 			opendkim/opendkim-testkey.8 opendkim/opendkim-stats.8
+ 			opendkim/opendkim-testmsg.8 opendkim/opendkim.conf.5
+-			opendkim/opendkim.conf.simple
+-			opendkim/opendkim.conf.simple-verify
+ 			opendkim/opendkim-atpszone.8 opendkim/opendkim-spam.1
+ 		opendkim/tests/Makefile
+ 		stats/Makefile stats/opendkim-importstats.8
+diff --git a/contrib/Makefile.am b/contrib/Makefile.am
+index 76df01cd..401130bb 100644
+--- a/contrib/Makefile.am
++++ b/contrib/Makefile.am
+@@ -3,6 +3,6 @@
+ 
+ #AUTOMAKE_OPTIONS = foreign
+ 
+-SUBDIRS = convert docs init ldap lua patches repute spec stats systemd
++SUBDIRS = convert docs init ldap lua patches repute spec stats
+ 
+ dist_doc_DATA = README
+diff --git a/contrib/OpenRC/opendkim.openrc.in.in b/contrib/OpenRC/opendkim.openrc.in.in
+new file mode 100644
+index 00000000..4b783615
+--- /dev/null
++++ b/contrib/OpenRC/opendkim.openrc.in.in
+@@ -0,0 +1,54 @@
++#!/sbin/openrc-run
++# Copyright 1999-2019 Gentoo Authors
++# Distributed under the terms of the GNU General Public License v2
++
++CONFFILE="@SYSCONFDIR@/${RC_SVCNAME}.conf"
++required_files="${CONFFILE}"
++
++command="@SBINDIR@/opendkim"
++pidfile="@RUNSTATEDIR@/${RC_SVCNAME}.pid"
++command_args="-P ${pidfile} -x ${CONFFILE}"
++extra_commands="checkconfig"
++
++depend() {
++	use dns logger net
++	before mta
++}
++
++checkconfig() {
++	#
++	# The opendkim.conf man page says,
++	#
++	#   For parameters that are Boolean in nature, only the first byte
++	#   of the value is processed... For negative values, the following
++	#   are accepted: "F", "f", "N", "n", "0".'
++	#
++	if @GREP@ '^[[:space:]]*Background[[:space:]]\+[FfNn0]' "${CONFFILE}" \
++		>/dev/null 2>&1; then
++		eend 1 "${RC_SVCNAME} cannot run in the foreground!"
++	fi
++	if ! "${command}" -n "${command_args}"; then
++		eend 1 "${RC_SVCNAME} configuration check failed"
++	fi
++}
++
++start_pre() {
++	# If this isn't a restart, make sure that the user's config isn't
++	# busted before we try to start the daemon (this will produce
++	# better error messages than if we just try to start it blindly).
++	#
++	# If, on the other hand, this *is* a restart, then the stop_pre
++	# action will have ensured that the config is usable and we don't
++	# need to do that again.
++	if [ "${RC_CMD}" != "restart" ]; then
++		checkconfig || return $?
++	fi
++}
++
++stop_pre() {
++	# If this is a restart, check to make sure the user's config
++	# isn't busted before we stop the running daemon.
++	if [ "${RC_CMD}" = "restart" ]; then
++		checkconfig || return $?
++	fi
++}
+diff --git a/contrib/systemd/Makefile.am b/contrib/systemd/Makefile.am
+deleted file mode 100644
+index 2ffc88cc..00000000
+--- a/contrib/systemd/Makefile.am
++++ /dev/null
+@@ -1,3 +0,0 @@
+-# Copyright (c) 2013, The Trusted Domain Project.  All rights reserved.
+-
+-dist_doc_DATA = opendkim.service
+diff --git a/contrib/systemd/opendkim.service.in b/contrib/systemd/opendkim.service.in
+index f7665f43..236f8a06 100644
+--- a/contrib/systemd/opendkim.service.in
++++ b/contrib/systemd/opendkim.service.in
+@@ -1,20 +1,28 @@
+-# If you are using OpenDKIM with SQL datasets it might be necessary to start OpenDKIM after the database servers.
+-# For example, if using both MariaDB and PostgreSQL, change "After=" in the "[Unit]" section to:
+-# After=network.target nss-lookup.target syslog.target mariadb.service postgresql.service
++# If you are using OpenDKIM with SQL datasets, you should start
++# OpenDKIM after your database server. For example, when using
++# PostgreSQL, you should create a supplementary ".conf" file in the
++# appropriate directory containing,
++#
++# [Unit]
++# After=postgresql.service
++#
+ 
+ [Unit]
+ Description=DomainKeys Identified Mail (DKIM) Milter
+-Documentation=man:opendkim(8) man:opendkim.conf(5) man:opendkim-genkey(8) man:opendkim-genzone(8) man:opendkim-testadsp(8) man:opendkim-testkey http://www.opendkim.org/docs.html
++Documentation=man:opendkim(8) \
++              man:opendkim.conf(5) \
++              man:opendkim-genkey(8) \
++              man:opendkim-genzone(8) \
++              man:opendkim-testkey(8) \
++              http://www.opendkim.org/docs.html
+ After=network.target nss-lookup.target syslog.target
+ 
+ [Service]
+ Type=forking
+-PIDFile=@localstatedir@/run/opendkim/opendkim.pid
+-EnvironmentFile=-@sysconfdir@/sysconfig/opendkim
+-ExecStart=@sbindir@/opendkim $OPTIONS
++ExecStart=@SBINDIR@/opendkim -P @RUNSTATEDIR@/opendkim.pid
++ExecStartPre=@SBINDIR@/opendkim -P @RUNSTATEDIR@/opendkim.pid -n -f
+ ExecReload=/bin/kill -USR1 $MAINPID
+-User=opendkim
+-Group=opendkim
++PIDFile=@RUNSTATEDIR@/opendkim.pid
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/contrib/systemd/opendkim.tmpfiles.in b/contrib/systemd/opendkim.tmpfiles.in
+new file mode 100644
+index 00000000..a9118974
+--- /dev/null
++++ b/contrib/systemd/opendkim.tmpfiles.in
+@@ -0,0 +1,5 @@
++# We allow everyone to read/traverse this directory because if it
++# contains a local socket, then (for example) your MTA will want to
++# look in there. Permissions on the socket itself are controlled
++# by the "UserID" and "UMask" directives in the daemon's configuration.
++d @RUNSTATEDIR@/opendkim 0755 opendkim opendkim
+diff --git a/opendkim/Makefile.am b/opendkim/Makefile.am
+index 4aa615c1..7d514771 100644
+--- a/opendkim/Makefile.am
++++ b/opendkim/Makefile.am
+@@ -16,9 +16,11 @@ endif
+ sbin_PROGRAMS += opendkim-stats
+ endif
+ 
++
+ dist_sbin_SCRIPTS = opendkim-genkey
+-dist_doc_DATA = opendkim.conf.sample opendkim.conf.simple \
+-	opendkim.conf.simple-verify README.SQL
++
++dist_doc_DATA = opendkim.conf.sample README.SQL
++
+ 
+ if BUILD_FILTER
+ sbin_PROGRAMS += opendkim
+diff --git a/opendkim/opendkim.conf.simple-verify.in b/opendkim/opendkim.conf.simple-verify.in
+index 2224b64f..463048ab 100644
+--- a/opendkim/opendkim.conf.simple-verify.in
++++ b/opendkim/opendkim.conf.simple-verify.in
+@@ -17,5 +17,5 @@ Mode			v
+ 
+ # ADSPDiscard	no
+ 
+-# PidFile		/var/run/opendkim/opendkim.pid
++# PidFile		@RUNSTATEDIR@/opendkim.pid
+ 
+diff --git a/opendkim/opendkim.conf.simple.in b/opendkim/opendkim.conf.simple.in
+index 735b924b..b70bfb46 100644
+--- a/opendkim/opendkim.conf.simple.in
++++ b/opendkim/opendkim.conf.simple.in
+@@ -12,6 +12,12 @@ KeyFile			/var/db/dkim/@DOMAIN@.private
+ 
+ Socket                  inet:8891@localhost
+ 
++# To use a local socket instead, specify a path here. The "standard"
++# location is under @RUNSTATEDIR@/opendkim, and it's best to agree
++# on that directory so that various init systems can configure its
++# permissions and ownership automatically.
++#Socket                 local:@RUNSTATEDIR@/opendkim/opendkim.sock
++
+ ReportAddress           postmaster@@DOMAIN@
+ SendReports             yes
+ 
+@@ -25,4 +31,4 @@ SendReports             yes
+ #
+ # PeerList		X.X.X.X
+ 
+-# PidFile		/var/run/opendkim/opendkim.pid
++# PidFile		@RUNSTATEDIR@/opendkim.pid

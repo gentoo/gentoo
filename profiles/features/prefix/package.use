@@ -1,0 +1,7 @@
+# Sam James <sam@gentoo.org> (2021-12-22)
+# We don't use 'su' in Prefix because it requires privileges
+# (And PAM for util-linux).
+sys-apps/util-linux -su
+
+# Don't enable the security measures for convienence
+sys-apps/portage -rsync-verify

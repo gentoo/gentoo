@@ -1,0 +1,11 @@
+--- empty-0.6.18b/Makefile
++++ empty-0.6.18b/Makefile
+@@ -16,7 +16,7 @@
+ PREFIX = /usr/local
+ 
+ all:
+-	${CC} ${CFLAGS} -Wall ${LIBS} -o empty empty.c
++	${CC} ${CFLAGS} ${LDFLAGS} empty.c ${LIBS} -o empty
+ 
+ FreeBSD:	all
+ NetBSD:		all

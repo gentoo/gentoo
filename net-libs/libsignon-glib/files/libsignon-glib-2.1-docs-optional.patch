@@ -1,0 +1,28 @@
+From fc1098b3a376a04020c9e733eafda9fa0ac51723 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <toscano.pino@tiscali.it>
+Date: Sat, 2 Jan 2021 14:19:18 +0100
+Subject: [PATCH] build: make documentation really optional
+
+Build of the documentation only if the meson option for it is enabled.
+---
+ meson.build | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 5d0de55..b10f80d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -23,7 +23,9 @@ endif
+ root_dir = include_directories ('.')
+ 
+ subdir('libsignon-glib')
+-subdir('docs')
++if get_option('documentation')
++    subdir('docs')
++endif
+ 
+ if get_option('python')
+     subdir('pygobject')
+-- 
+GitLab
+

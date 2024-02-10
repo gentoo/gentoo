@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:htacg:tidy</remote-id>
+		<remote-id type="github">htacg/tidy-html5</remote-id>
+	</upstream>
+	<use>
+		<flag name="deprecated">Install tools and header files which are now considered deprecated</flag>
+	</use>
+</pkgmetadata>

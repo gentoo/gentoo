@@ -1,0 +1,16 @@
+ tests/entry.test | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/entry.test b/tests/entry.test
+index 4bc3a5f..727a7d8 100644
+--- a/tests/entry.test
++++ b/tests/entry.test
+@@ -65,7 +65,7 @@ destroy .e
+ 
+ test Entry-2.1 {Entry} {
+     list [catch {Entry} msg] $msg
+-} {1 {wrong # args: should be "Entry path ..."}}
++} {1 {wrong # args: should be "Entry path ?arg ...?"}}
+ test Entry-2.2 {Entry} {
+     list [catch {Entry gorp} msg] $msg
+ } {1 {bad window path name "gorp"}}

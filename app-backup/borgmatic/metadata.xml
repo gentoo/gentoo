@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>marecki@gentoo.org</email>
+	<name>Marek Szuba</name>
+</maintainer>
+<upstream>
+	<remote-id type="github">borgmatic-collective/borgmatic</remote-id>
+	<remote-id type="pypi">borgmatic</remote-id>
+</upstream>
+<use>
+	<flag name="apprise">Allow backup monitoring to send notification to a wide variety
+		of services, using <pkg>dev-python/apprise</pkg></flag>
+</use>
+</pkgmetadata>

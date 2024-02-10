@@ -1,0 +1,39 @@
+https://github.com/openzfs/zfs/issues/15241
+https://github.com/openzfs/zfs/pull/15560
+
+From e0a7ec29d91b79adfd81073f229241351ed0ae21 Mon Sep 17 00:00:00 2001
+From: Ilkka Sovanto <github@ilkka.kapsi.fi>
+Date: Wed, 22 Nov 2023 20:24:47 +0200
+Subject: [PATCH] Fix zoneid when USER_NS is disabled
+
+getzoneid() should return GLOBAL_ZONEID instead of 0 when USER_NS is disabled.
+
+Signed-off-by: Ilkka Sovanto <github@ilkka.kapsi.fi>
+--- a/lib/libspl/os/linux/zone.c
++++ b/lib/libspl/os/linux/zone.c
+@@ -42,20 +42,20 @@ getzoneid(void)
+ 	int c = snprintf(path, sizeof (path), "/proc/self/ns/user");
+ 	/* This API doesn't have any error checking... */
+ 	if (c < 0 || c >= sizeof (path))
+-		return (0);
++		return (GLOBAL_ZONEID);
+ 
+ 	ssize_t r = readlink(path, buf, sizeof (buf) - 1);
+ 	if (r < 0)
+-		return (0);
++		return (GLOBAL_ZONEID);
+ 
+ 	cp = strchr(buf, '[');
+ 	if (cp == NULL)
+-		return (0);
++		return (GLOBAL_ZONEID);
+ 	cp++;
+ 
+ 	unsigned long n = strtoul(cp, NULL, 10);
+ 	if (n == ULONG_MAX && errno == ERANGE)
+-		return (0);
++		return (GLOBAL_ZONEID);
+ 	zoneid_t z = (zoneid_t)n;
+ 
+ 	return (z);
+

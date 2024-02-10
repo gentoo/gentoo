@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/653136
+
+From 3c08d28fbae8b0ef3839ef26f8d2a713a9a684f9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 21 Feb 2019 23:53:19 +0100
+Subject: [PATCH] Make dbus daemon build optional
+
+--- a/bus/Makefile.am
++++ b/bus/Makefile.am
+@@ -76,6 +76,7 @@ agentdir=$(LAUNCHD_AGENT_DIR)
+ agent_DATA=org.freedesktop.dbus-session.plist
+ endif
+ 
++if DBUS_DAEMON
+ if DBUS_BUS_ENABLE_KQUEUE
+ DIR_WATCH_SOURCE=dir-watch-kqueue.c
+ else
+@@ -230,6 +231,7 @@ EXTRA_DIST += \
+ 	tmpfiles.d/dbus.conf.in \
+ 	tmpfiles.d/meson.build \
+ 	$(NULL)
++endif DBUS_DAEMON
+ 
+ if HAVE_SYSTEMD
+ systemdsystemunit_DATA = \
+--- a/configure.ac
++++ b/configure.ac
+@@ -211,6 +211,7 @@ AC_ARG_ENABLE([apparmor],
+   [enable_apparmor=$enableval],
+   [enable_apparmor=auto])
+ AC_ARG_ENABLE(libaudit,AS_HELP_STRING([--enable-libaudit],[build audit daemon support for SELinux]),enable_libaudit=$enableval,enable_libaudit=auto)
++AC_ARG_ENABLE(daemon, AS_HELP_STRING([--enable-daemon],[build with the dbus daemon]),enable_daemon=$enableval,enable_daemon=yes)
+ AC_ARG_ENABLE(inotify, AS_HELP_STRING([--enable-inotify],[build with inotify support (linux only)]),enable_inotify=$enableval,enable_inotify=auto)
+ AC_ARG_ENABLE(kqueue, AS_HELP_STRING([--enable-kqueue],[build with kqueue support]),enable_kqueue=$enableval,enable_kqueue=auto)
+ AC_ARG_ENABLE(console-owner-file, AS_HELP_STRING([--enable-console-owner-file],[enable console owner file]),enable_console_owner_file=$enableval,enable_console_owner_file=auto)
+@@ -658,7 +659,20 @@ AC_CHECK_MEMBER([struct unpcbid.unp_pid],
+                 [],
+                 [[#include <sys/un.h>]])
+ 
+-PKG_CHECK_MODULES([EXPAT], [expat])
++# dbusdaemon checks
++if test x$enable_daemon = xno ; then
++    have_daemon=no
++else
++    have_daemon=yes
++fi
++
++dnl check if daemon shall be built
++if test x$have_daemon = xyes; then
++   AC_DEFINE(DBUS_DAEMON,1,[Use daemon])
++   PKG_CHECK_MODULES([EXPAT], [expat])
++fi
++
++AM_CONDITIONAL(DBUS_DAEMON, test x$have_daemon = xyes)
+ 
+ save_cflags="$CFLAGS"
+ save_libs="$LIBS"
+@@ -1748,6 +1762,7 @@ echo "
+         Building bus stats API:   ${enable_stats}
+         Building SELinux support: ${have_selinux}
+         Building AppArmor support: ${have_apparmor}
++        Building daemon:          ${have_daemon}
+         Building inotify support: ${have_inotify}
+         Building kqueue support:  ${have_kqueue}
+         Building elogind support: ${have_elogind}

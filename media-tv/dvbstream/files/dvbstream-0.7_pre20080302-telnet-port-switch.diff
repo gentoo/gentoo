@@ -1,0 +1,26 @@
+diff -ru dvbstream-orig/dvbstream.c dvbstream/dvbstream.c
+--- dvbstream-orig/dvbstream.c	2008-05-16 18:23:03.023540289 +0200
++++ dvbstream/dvbstream.c	2008-05-16 18:25:32.293536581 +0200
+@@ -929,6 +929,7 @@
+ 
+   if (argc==1) {
+     fprintf(stderr,"Usage: dvbtune [OPTIONS] pid1 pid2 ... pid8\n\n");
++    fprintf(stderr,"-tp         TELNET port\n");
+     fprintf(stderr,"-i          IP multicast address\n");
+     fprintf(stderr,"-r          IP multicast port\n");
+     fprintf(stderr,"-net ip:prt IP address:port combination to be followed by pids list. Can be repeated to generate multiple RTP streams\n");
+@@ -1079,6 +1080,12 @@
+         LOF2=atoi(argv[i]);
+         LOF2*=1000UL;
+       }
++#ifdef ENABLE_TELNET
++      else if (strcmp(argv[i],"-tp")==0) {
++        i++;
++	port=atoi(argv[i]);
++      }
++#endif
+       else if (strcmp(argv[i],"-s")==0) {
+         i++;
+         srate=atoi(argv[i])*1000UL;
+Nur in dvbstream: dvbstream.c.orig.
+Nur in dvbstream: dvbstream.c.rej.

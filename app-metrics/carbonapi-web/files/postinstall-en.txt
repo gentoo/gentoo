@@ -1,0 +1,12 @@
+1. install and setup a Graphite resolving and rendering instance such as
+   app-metrics/carbonapi-booking
+2. setup a vhost that:
+   - uses default index file browser.html
+   - proxies these paths down to the Graphite rendering instance:
+     * /render/
+     * /metrics/
+     * /info/
+     * /functions/
+     * /tags/
+3. the combined setup should load the web browser and interact with your
+   Graphite install

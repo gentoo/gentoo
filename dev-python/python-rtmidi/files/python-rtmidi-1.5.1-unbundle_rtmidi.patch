@@ -1,0 +1,55 @@
+--- a/meson.build
++++ b/meson.build
+@@ -11,6 +11,8 @@
+ 
+ cpp = meson.get_compiler('cpp')
+ 
++rtmidi_dep = dependency('rtmidi')
++
+ # Jack API (portable)
+ jack2_dep = dependency('jack', version: '>=1.9.11', required: false)
+ jack1_dep = dependency('jack', version: ['>=0.125.0', '<1.0'], required: false)
+--- a/rtmidi/meson.build
++++ b/rtmidi/meson.build
+@@ -1,7 +1,7 @@
+ # https://mesonbuild.com/Python-module.html
+ 
+ defines = []
+-dependencies = [python.dependency()]
++dependencies = [python.dependency(), rtmidi_dep]
+ link_args = []
+ 
+ if host_machine.system() == 'darwin' and coremidi_dep.found() and get_option('coremidi')
+@@ -47,11 +47,10 @@
+ # Build and install the extension module
+ module = python.extension_module(
+     '_rtmidi',
+-    [rtmidi_cython, rtmidi_sources],
++    [rtmidi_cython],
+     dependencies: dependencies,
+     cpp_args: defines,
+     link_args: link_args,
+-    include_directories: rtmidi_inc,
+     install: true,
+     subdir: 'rtmidi',
+ )
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -1,9 +1,5 @@
+ fs = import('fs')
+ 
+-rtmidi_sources = files([
+-    'rtmidi/RtMidi.cpp',
+-])
+-rtmidi_inc = include_directories('.', 'rtmidi')
+ rtmidi_mod_pyx = '_rtmidi.pyx'
+ rtmidi_mod_cpp = '_rtmidi.cpp'
+ 
+@@ -16,7 +12,6 @@
+         'rtmidi_cython',
+         output: rtmidi_mod_cpp,
+         input: rtmidi_mod_pyx,
+-        depend_files: [rtmidi_sources],
+         command: [cython, '-3', '--cplus', '-o', '@OUTPUT@', '@INPUT@'],
+     )
+ else

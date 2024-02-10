@@ -1,0 +1,11 @@
+--- a/plugins/Makefile.in
++++ b/plugins/Makefile.in
+@@ -658,7 +658,7 @@ uninstall-am: uninstall-binPROGRAMS
+ all: ripperX_plugin_tester $(PLUGINS)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(LDFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

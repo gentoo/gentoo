@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="github">Guake/guake</remote-id>
+    <remote-id type="pypi">guake</remote-id>
+  </upstream>
+  <use>
+    <flag name="utempter">Include utmp management support
+      via <pkg>sys-libs/libutempter</pkg></flag>
+  </use>
+</pkgmetadata>

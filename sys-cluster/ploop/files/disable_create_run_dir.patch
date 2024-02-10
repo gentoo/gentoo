@@ -1,0 +1,21 @@
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -76,17 +76,13 @@
+ .depend: $(filter-out $(GENERATED),$(SOURCES))
+ -include .depend
+ 
+-install-lockdir:
+-	$(Q) $(INSTALL) -d $(DESTDIR)$(LOCKDIR)
+-.PHONY: install-lockdir
+-
+ install-pc: $(PC)
+ 	$(E) "  INSTALL " $(PC)
+ 	$(Q) $(INSTALL) -d $(DESTDIR)$(PCDIR)
+ 	$(Q) $(INSTALL) $(PC) $(DESTDIR)$(PCDIR)
+ .PHONY: install-pc
+ 
+-install: all install-lockdir install-pc
++install: all  install-pc
+ 	$(Q) $(INSTALL) -d $(DESTDIR)$(LIBDIR)
+ 	$(E) "  INSTALL " $(LIBPLOOP)
+ 	$(Q) $(INSTALL) -m 644 $(LIBPLOOP) $(DESTDIR)$(LIBDIR)

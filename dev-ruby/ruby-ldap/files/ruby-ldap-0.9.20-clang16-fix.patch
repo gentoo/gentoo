@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/884405
+--- a/ldap.c
++++ b/ldap.c
+@@ -201,7 +201,7 @@ rb_ldap_hash2mods (VALUE self, VALUE op, VALUE hash)
+   VALUE tmp;
+ 
+   tmp = rb_assoc_new (op, rb_ary_new ());
+-  rb_iterate (rb_each, hash, rb_ldap_hash2mods_i, tmp);
++  rb_iterate (rb_each, hash, (rb_block_call_func_t)rb_ldap_hash2mods_i, tmp);
+ 
+   return rb_ary_entry (tmp, 1);
+ }

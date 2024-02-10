@@ -1,0 +1,19 @@
+--- a/Makefile	2020-06-09 12:07:21.881455454 -0000
++++ b/Makefile	2020-06-09 12:08:43.984010587 -0000
+@@ -2,6 +2,7 @@
+ VERSION = '"1.4.0"'
+ CFLAGS += -O2 -Wall -DVERSION=$(VERSION)
+ PREFIX ?= /usr/local
++LDFLAGS ?= -L/usr/lib
+ 
+ UNAME := $(shell uname)
+ ifeq ($(UNAME), Darwin)
+@@ -14,7 +15,7 @@
+ all: ttygif
+ 
+ ttygif: ttygif.o io.o string_builder.o utils.o
+-	$(CC) $(CFLAGS) -o ttygif ttygif.o io.o string_builder.o utils.o
++	$(CC) $(CFLAGS) -o ttygif ttygif.o io.o string_builder.o utils.o $(LDFLAGS)
+ 
+ install: ttygif
+ 	install -d $(PREFIX)/bin

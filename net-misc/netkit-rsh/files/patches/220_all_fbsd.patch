@@ -1,0 +1,222 @@
+--- a/configure
++++ b/configure
+@@ -368,9 +368,35 @@
+ 
+ ##################################################
+ 
++echo -n 'Checking for rexec... '
++cat <<EOF >__conftest.c
++int main() { rexec(0, 0, 0, 0, 0, 0); }
++
++EOF
++
++if (
++      $CC $CFLAGS  __conftest.c  -o __conftest || exit 1
++   ) >/dev/null 2>&1; then
++    echo 'yes'
++else
++    if (
++          $CC $CFLAGS  __conftest.c -lcompat -o __conftest || exit 1
++       ) >/dev/null 2>&1; then
++        echo '-lcompat'
++        LIBS="$LIBS -lcompat"
++    else
++            echo 'no'
++            echo 'This package requires rexec.'
++            rm -f __conftest*
++            exit
++    fi
++fi
++rm -f __conftest*
++
++##################################################
++
+ echo -n 'Checking for forkpty... '
+ cat <<EOF >__conftest.c
+-#include <pty.h>
+ int main() { forkpty(0, 0, 0, 0); }
+ 
+ EOF
+--- a/rcp/rcp.c
++++ b/rcp/rcp.c
+@@ -50,6 +50,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
+ #include <sys/wait.h>
++#include <netinet/in_systm.h>
+ #include <netinet/in.h>
+ #include <netinet/ip.h>
+ #include <dirent.h>
+@@ -100,7 +101,7 @@
+ static void error(const char *fmt, ...);
+ 
+ int
+-main(int argc, char *argv[])
++main(int argc, char *argv[], char **env)
+ {
+ 	struct servent *sp;
+ 	int ch, fflag, tflag;
+@@ -108,8 +109,8 @@
+ 	const char *shell;
+ 	char *null = NULL;
+ 
+-	saved_environ = __environ;
+-	__environ = &null;
++	saved_environ = env;
++	env = &null;
+ 
+ 	fflag = tflag = 0;
+ 	while ((ch = getopt(argc, argv, OPTIONS)) != EOF)
+--- a/rexec/Makefile
++++ b/rexec/Makefile
+@@ -12,6 +12,7 @@
+ all: rexec
+ 
+ rexec: rexec.o ruserpass.o
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ rexec.1:
+ 
+--- a/rexec/ruserpass.c
++++ b/rexec/ruserpass.c
+@@ -39,6 +39,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <sys/types.h>
+ #include <utmp.h>
+ #include <ctype.h>
+ #include <sys/stat.h>
+--- a/rexecd/rexecd.c
++++ b/rexecd/rexecd.c
+@@ -76,7 +76,9 @@
+ #include <errno.h>
+ #include <syslog.h>
+ #include <unistd.h>
++#if defined(__GLIBC__)
+ #include <crypt.h>    /* apparently necessary in some glibcs */
++#endif
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/rlogin/rlogin.c
++++ b/rlogin/rlogin.c
+@@ -56,6 +56,7 @@
+ #include <sys/resource.h>
+ #include <sys/wait.h>
+ #include <sys/ioctl.h>
++#include <netinet/in_systm.h>
+ #include <netinet/in.h>
+ #include <netinet/ip.h>
+ #include <netdb.h>
+@@ -96,6 +97,13 @@
+ #define	SIGUSR1	30
+ #endif
+ 
++#ifndef TABDLY
++#define TABDLY OXTABS
++#endif
++#ifndef TAB3
++#define TAB3 OXTABS
++#endif
++
+ struct termios defmodes;
+ struct termios ixon_state;
+ static int eight, litout, rem;
+@@ -172,7 +180,7 @@
+ }
+ 
+ int
+-main(int argc, char **argv)
++main(int argc, char **argv, char **env)
+ {
+ 	struct passwd *pw;
+ 	struct servent *sp;
+@@ -265,7 +273,7 @@
+   	}
+ 	else snprintf(term, sizeof(term), "%.256s", t);
+ 
+-	__environ = &null;
++	env = &null;
+ 
+ 	get_window_size(0, &winsize);
+ 
+@@ -421,7 +429,7 @@
+ void
+ catch_child(int ignore)
+ {
+-	union wait status;
++	int status;
+ 	int pid;
+ 
+ 	(void)ignore;
+@@ -432,7 +440,7 @@
+ 			return;
+ 		/* if the child (reader) dies, just quit */
+ 		if (pid < 0 || (pid == childpid && !WIFSTOPPED(status)))
+-			done((int)(status.w_termsig | status.w_retcode));
++			done((int)(WTERMSIG(status) | WEXITSTATUS(status)));
+ 	}
+ 	/* NOTREACHED */
+ }
+--- a/rlogind/auth.c
++++ b/rlogind/auth.c
+@@ -31,6 +31,7 @@
+  * SUCH DAMAGE.
+  */
+ 
++#include <stdio.h>
+ #include <sys/types.h>
+ #include <pwd.h>
+ 
+@@ -190,7 +191,7 @@
+ #include <sys/socket.h>   /* for ruserok() in libc5 (!) */
+ #include <netdb.h>        /* for ruserok() in glibc (!) */
+ 
+-#if defined(__GLIBC__) && (__GLIBC__ >= 2)
++#if !(defined(__GLIBC__) && (__GLIBC__ < 2))
+ #define _check_rhosts_file  __check_rhosts_file
+ #endif
+ extern int _check_rhosts_file;
+--- a/rsh/rsh.c
++++ b/rsh/rsh.c
+@@ -69,7 +69,7 @@
+ static void usage(void);
+ 
+ int
+-main(int argc, char *argv[])
++main(int argc, char *argv[], char **env)
+ {
+ 	struct passwd *pw;
+ 	struct servent *sp;
+@@ -80,8 +80,8 @@
+ 	char *null = NULL;
+ 	char **saved_environ;
+ 
+-	saved_environ = __environ;
+-	__environ = &null;
++	saved_environ = env;
++	env = &null;
+ 
+ 	argoff = asrsh = dflag = nflag = 0;
+ 	one = 1;
+--- a/rshd/rshd.c
++++ b/rshd/rshd.c
+@@ -80,7 +80,7 @@
+ #include <ctype.h>
+ #include <assert.h>
+ 
+-#if defined(__GLIBC__) && (__GLIBC__ >= 2)
++#if !(defined(__GLIBC__) && (__GLIBC__ < 2))
+ #define _check_rhosts_file  __check_rhosts_file
+ #endif
+ 
+@@ -420,7 +420,7 @@
+ 			stderr_parent(sock, pv[0], pid);
+ 			/* NOTREACHED */
+ 		}
+-		setpgrp();
++		setpgid(0,0);
+ 		close(sock); 
+ 		close(pv[0]);
+ 		dup2(pv[1], 2);

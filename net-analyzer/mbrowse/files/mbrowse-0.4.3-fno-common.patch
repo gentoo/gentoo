@@ -1,0 +1,29 @@
+--- a/src/interface.h
++++ b/src/interface.h
+@@ -9,12 +9,14 @@
+   GtkAccelGroup *accels;
+ } main_widgets_t;
+ 
+-struct menu_items {
++typedef struct menu_items {
+   char *item;
+   GtkSignalFunc func;
+   gpointer data;
+   GtkWidget *mi;
+-};
++} menu_items;
++
++extern struct menu_items bookmark_items[128];
+ 
+ void set_hostname(const char *host);
+ void set_oid(const char *oid);
+--- a/src/bookmarks.c
++++ b/src/bookmarks.c
+@@ -27,7 +27,6 @@
+ static GtkWidget *bkdial;
+ int delete = 0;
+ 
+-struct menu_items bookmark_items[128];
+ static GtkWidget* create_bookmark_dialogue(void);
+ 
+ static void mark_for_delete(void) {

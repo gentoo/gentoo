@@ -1,0 +1,29 @@
+https://github.com/FreeRDP/FreeRDP/pull/9373
+https://bugs.gentoo.org/916515
+
+From 88dd68153c834e1d5f59beb59496bfd1bf9697a8 Mon Sep 17 00:00:00 2001
+From: Wang Mingyu <wangmy@cn.fujitsu.com>
+Date: Mon, 11 Sep 2023 00:31:54 +0000
+Subject: [PATCH] Fixes clang error error: incompatible function pointer types
+ assigning to 'OBJECT_NEW_FN' (aka 'void *(*)(void *)') from 'void *(const
+ void *)' [-Wincompatible-function-pointer-types] |         obj->fnObjectNew =
+ uwac_event_clone; |                          ^ ~~~~~~~~~~~~~~~~
+
+Signed-off-by: Wang Mingyu <wangmy@cn.fujitsu.com>
+---
+ client/Wayland/wlfreerdp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/client/Wayland/wlfreerdp.c b/client/Wayland/wlfreerdp.c
+index 5be10aae2c1b..ef3539383f55 100644
+--- a/client/Wayland/wlfreerdp.c
++++ b/client/Wayland/wlfreerdp.c
+@@ -598,7 +598,7 @@ static void wlf_client_free(freerdp* instance, rdpContext* context)
+ 	DeleteCriticalSection(&wlf->critical);
+ }
+ 
+-static void* uwac_event_clone(const void* val)
++static void* uwac_event_clone(void* val)
+ {
+ 	UwacEvent* copy;
+ 	const UwacEvent* ev = (const UwacEvent*)val;

@@ -1,0 +1,29 @@
+diff -Naur radmind-1.5.0/radmind.conf radmind-1.5.0-r1/radmind.conf
+--- radmind-1.5.0/radmind.conf	1970-01-01 01:00:00.000000000 +0100
++++ radmind-1.5.0-r1/radmind.conf	2005-02-24 23:04:12.379193384 +0100
+@@ -0,0 +1,3 @@
++# chose server dir here 
++# RADMIND_PATH="/srv/radmind"
++# RADMIND_OPTS="-D ${RADMIND_PATH} -p 6666"
+diff -Naur radmind-1.5.0/rc.radmind radmind-1.5.0-r1/rc.radmind
+--- radmind-1.5.0/rc.radmind	1970-01-01 01:00:00.000000000 +0100
++++ radmind-1.5.0-r1/rc.radmind	2005-02-24 23:04:12.379193384 +0100
+@@ -0,0 +1,18 @@
++#!/sbin/openrc-run
++
++depend (){
++  need net
++}
++
++start(){
++  ebegin "Starting radmind server"
++  start-stop-daemon --start --quiet --exec /usr/sbin/radmind \
++  -- ${RADMIND_OPTS}
++  eend $?
++}
++
++stop() {
++  ebegin "Stopping radmind"
++  start-stop-daemon --stop --quiet --exec /usr/sbin/radmind
++  eend $?
++}

@@ -1,0 +1,107 @@
+diff --git a/Makefile b/Makefile
+index a58462c..616f51a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+-CC = g++
+-EXT=$(shell ./cpuflags.pl --opt )
+-FLAGS = -Wall $(EXT)
+-#FLAGS = -O3 -Wall -ffast-math
++CXX ?= g++
++#EXT=$(shell ./cpuCXXFLAGS.pl --opt )
++#CXXFLAGS = -Wall $(EXT)
++#CXXFLAGS = -O3 -Wall -ffast-math
+ OBJS = utils-main.o utils-output.o utils-mrc.o
+ 
+ all:	cav chan fsv sol tun vdw vol
+@@ -17,54 +17,65 @@ volume:	vol
+ objects:	utils-main.o utils-output.o utils-mrc.o
+ 
+ cav:	objects cavities.cpp
+-	$(CC) $(FLAGS) -o Cavities.exe $(OBJS) cavities.cpp
+-	chmod 777 Cavities.exe
+-	mv Cavities.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o cavities.o cavities.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Cavities $(OBJS) cavities.o
++	chmod 755 Cavities
++	mv Cavities ../bin
+ 
+ chan:	objects channel.cpp
+-	$(CC) $(FLAGS) -o Channel.exe $(OBJS) channel.cpp
+-	chmod 777 Channel.exe
+-	mv Channel.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o channel.o channel.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Channel $(OBJS) channel.o
++	chmod 755 Channel
++	mv Channel ../bin
+ 
+ fsv:	objects fsv_calc.cpp
+-	$(CC) $(FLAGS) -o FsvCalc.exe $(OBJS) fsv_calc.cpp
+-	chmod 777 FsvCalc.exe
+-	mv FsvCalc.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o fsv_calc.o fsv_calc.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o FsvCalc $(OBJS) fsv_calc.o
++	chmod 755 FsvCalc
++	mv FsvCalc ../bin
+ 
+ sol:	objects solvent.cpp
+-	$(CC) $(FLAGS) -o Solvent.exe $(OBJS) solvent.cpp
+-	chmod 777 Solvent.exe
+-	mv Solvent.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o solvent.o solvent.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Solvent $(OBJS) solvent.o
++	chmod 755 Solvent
++	mv Solvent ../bin
+ 
+ tun:	objects tunnel.cpp
+-	$(CC) $(FLAGS) -o Tunnel.exe $(OBJS) tunnel.cpp
+-	chmod 777 Tunnel.exe
+-	mv Tunnel.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o tunnel.o tunnel.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Tunnel $(OBJS) tunnel.o
++	chmod 755 Tunnel
++	mv Tunnel ../bin
+ 
+ vdw:	objects vdw.cpp
+-	$(CC) $(FLAGS) -o VDW.exe $(OBJS) vdw.cpp
+-	chmod 777 VDW.exe
+-	mv VDW.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o vdw.o vdw.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o VDW $(OBJS) vdw.o
++	chmod 755 VDW
++	mv VDW ../bin
+ 
+ vol:	objects volume.cpp
+-	$(CC) $(FLAGS) -o Volume.exe $(OBJS) volume.cpp
+-	chmod 777 Volume.exe
+-	mv Volume.exe ../bin
++	$(CXX) $(CXXFLAGS) -c -o volume.o volume.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o Volume $(OBJS) volume.o
++	chmod 755 Volume
++	mv Volume ../bin
+ 
+ utils-main.o:	utils-main.cpp
+-	$(CC) $(FLAGS) -c -o utils-main.o utils-main.cpp
++	$(CXX) $(CXXFLAGS) -c -o utils-main.o utils-main.cpp
+ 
+ utils-output.o:	utils-main.o utils-output.cpp
+-	$(CC) $(FLAGS) -c -o utils-output.o utils-output.cpp
++	$(CXX) $(CXXFLAGS) -c -o utils-output.o utils-output.cpp
+ 
+ utils-mrc.o:	utils-mrc.cpp
+-	$(CC) $(FLAGS) -c -o utils-mrc.o utils-mrc.cpp
++	$(CXX) $(CXXFLAGS) -c -o utils-mrc.o utils-mrc.cpp
++
++install:
++	install -d $(DESTDIR)/usr/bin
++	install ../bin/* $(DESTDIR)/usr/bin/
+ 
+ clean:
+ 	rm -fv *.o  *~
+ 
+ distclean:
+-	rm -fv *.o ../bin/*.exe *~
++	rm -fv *.o ../bin/* *~
+ 
+ none:	
+ 	echo "Please type make xxx, where xxx = cav, cha, fsv, sol, tun, vdw, or vol"

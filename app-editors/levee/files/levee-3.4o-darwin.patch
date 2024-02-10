@@ -1,0 +1,16 @@
+--- a/unixcall.c
++++ b/unixcall.c
+@@ -77,6 +77,13 @@
+ static int ioset = 0;
+ static struct termios old;
+ 
++#if defined(__MACH__)
++# define TCGETS TIOCGETA
++# define TCSETS TIOCSETA
++# define TCGETA TIOCGETA
++# define TCSETAF TIOCSETAF
++#endif
++
+ void
+ initcon()
+ {

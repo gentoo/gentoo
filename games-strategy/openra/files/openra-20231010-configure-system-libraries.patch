@@ -1,0 +1,11 @@
+--- a/configure-system-libraries.sh
++++ b/configure-system-libraries.sh
+@@ -43,7 +43,7 @@ patch_config()
+ 			for LIB in ${SEARCH}; do
+ 				if [ -f "${DIR}/${LIB}" ]; then
+ 					echo "${LIB}"
+-					ln -s "${DIR}/${LIB}" "bin/${REPLACE}"
++					ln -f -s "${DIR}/${LIB}" "bin/${REPLACE}"
+ 					return 0
+ 				fi
+ 			done

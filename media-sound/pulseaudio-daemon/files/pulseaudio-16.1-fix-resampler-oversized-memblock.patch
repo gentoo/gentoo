@@ -1,0 +1,55 @@
+commit 1cfa7378236b3cf9daf3be09d3227b92df69cc53
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Wed Feb 8 03:24:59 2023 +0300
+
+    resampler: Fix oversized memblock pushed from resampler
+    
+    The assumption that the format enum is ordered by size is not valid for quite
+    some time, since 24bit formats were appended to format enum later than 32bit
+    formats. This causes resampler to produce properly aligned memblock of size
+    larger than maximum mempool block size if input format is 24bit and output
+    format is 32bit.
+    
+    Oversized block is getting split by `pa_pstream_send_memblock()` into parts of
+    size not exceeding maximum mempool block size. This usually works well but for
+    32ch 32bit 48000Hz stream the frame alignment is 128 bytes and maximum mempool
+    block size value is multiple of 64 but not 128 bytes, therefore resulting parts
+    are misaligned.
+    
+    On receiving side this causes extra allocation of 128 byte chunk while `mcalign`
+    helper reassembles properly aligned frame out of second block of misaligned
+    size. While first and second properly aligned frames are retrieved successfully
+    from `mcalign` helper, third retrieved frame would end up with properly aligned
+    size but misaligned memblock index (in this example, that would be 64 bytes.)
+    Attempt to push a chunk with misaligned memblock index causes assertion failure
+    
+      Assertion 'uchunk->index % bq->base == 0' failed at memblockq.c:289,
+        function pa_memblockq_push(). Aborting.
+    
+    Fix oversized block issue by checking proper size of format instead of enum
+    value.
+    
+    Fixes: a67c21f09 ("merge 'lennart' branch back into trunk.")
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/778>
+
+diff --git a/src/pulsecore/resampler.c b/src/pulsecore/resampler.c
+index b035f67ed..ba18c92c4 100644
+--- a/src/pulsecore/resampler.c
++++ b/src/pulsecore/resampler.c
+@@ -613,9 +613,13 @@ size_t pa_resampler_max_block_size(pa_resampler *r) {
+      * conversion */
+     max_ss.channels = (uint8_t) (PA_MAX(r->i_ss.channels, r->o_ss.channels));
+ 
+-    /* We silently assume that the format enum is ordered by size */
+-    max_ss.format = PA_MAX(r->i_ss.format, r->o_ss.format);
+-    max_ss.format = PA_MAX(max_ss.format, r->work_format);
++    max_ss.format = r->i_ss.format;
++
++    if (pa_sample_size_of_format(max_ss.format) < pa_sample_size_of_format(r->o_ss.format))
++        max_ss.format = r->o_ss.format;
++
++    if (pa_sample_size_of_format(max_ss.format) < pa_sample_size_of_format(r->work_format))
++        max_ss.format = r->work_format;
+ 
+     max_ss.rate = PA_MAX(r->i_ss.rate, r->o_ss.rate);
+ 

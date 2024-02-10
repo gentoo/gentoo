@@ -1,0 +1,13 @@
+[Unit]
+Description=Milter module for the ClamAV scanner
+After=nss-lookup.target network.target
+Before=sendmail.service
+Before=postfix.service
+
+[Service]
+Type=forking
+PIDFile=/run/clamav/clamav-milter.pid
+ExecStart=/usr/sbin/clamav-milter -c /etc/clamav-milter.conf
+
+[Install]
+WantedBy=multi-user.target

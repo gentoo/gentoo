@@ -1,0 +1,10 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,7 +8,6 @@
+ 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
+ 	-Wall \
+ 	-Wunused \
+-	-Werror \
+ 	-I$(top_srcdir)/src/utils
+ 
+ if WBAR_CONFIG

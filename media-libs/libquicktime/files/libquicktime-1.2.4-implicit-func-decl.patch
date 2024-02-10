@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/874447
+--- a/plugins/png/qtpng.c
++++ b/plugins/png/qtpng.c
+@@ -26,6 +26,7 @@
+ #include <quicktime/colormodels.h>
+ #include <png.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "qtpng.h"
+ 
+ typedef struct

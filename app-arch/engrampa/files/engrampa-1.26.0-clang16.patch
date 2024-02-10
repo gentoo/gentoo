@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/875404
+https://github.com/mate-desktop/engrampa/pull/477
+
+From f54425f1f994fc235c6cdd4013eb9fcf17da9f29 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 14 Apr 2023 22:35:08 +0200
+Subject: [PATCH] file-utils: Include <strings.h> for strcasecmp
+
+The _XOPEN_SOURCE macro definition overrides _DEFAULT_SOURCE
+and disables the declaration in <string.h>.
+
+This avoids an implicit function declaration and build failures
+with future compilers.
+--- a/src/file-utils.c
++++ b/src/file-utils.c
+@@ -27,6 +27,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <strings.h>
+ #include <ctype.h>
+ #include <time.h>
+ #include <unistd.h>
+

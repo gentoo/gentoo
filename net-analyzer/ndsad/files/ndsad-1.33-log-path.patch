@@ -1,0 +1,11 @@
+--- a/ndsad.conf
++++ b/ndsad.conf
+@@ -75,7 +75,7 @@
+ # Default:
+ #log (null)
+ # Example:
+-log /tmp/ndsad.log
++log /var/log/ndsad.log
+ 
+ # Jump to another configuration file
+ # Current file is closed after this line! Beware of loops!

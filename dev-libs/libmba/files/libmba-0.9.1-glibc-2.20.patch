@@ -1,0 +1,34 @@
+--- a/src/mba/text.h
++++ b/src/mba/text.h
+@@ -315,31 +315,6 @@
+ /* "dumb" snprintf returns -1 on overflow */
+ LIBMBA_API int dsnprintf(char *str, size_t size, const char *format, ...);
+ 
+-#if !defined(_GNU_SOURCE)
+-
+-#if !defined(_BSD_SOURCE) && \
+-	!defined(_XOPEN_SOURCE_EXTENDED) && \
+-	!defined(_WIN32) && \
+-	!(defined(__APPLE__) && defined(__MACH__))
+-LIBMBA_API char *strdup(const char *s);
+-#endif
+-
+-LIBMBA_API wchar_t *wcsdup(const wchar_t *s);
+-LIBMBA_API size_t strnlen(const char *s, size_t maxlen);
+-
+-#if (__STDC_VERSION__ < 199901L) && \
+-	!defined(_BSD_SOURCE) && \
+-	(_XOPEN_VERSION < 500) && \
+-	!(defined(__APPLE__) && defined(__MACH__))
+-#include <stdarg.h>
+-int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+-#endif
+-
+-LIBMBA_API size_t wcsnlen(const wchar_t *s, size_t maxlen);
+-LIBMBA_API int wcscasecmp(const wchar_t *s1, const wchar_t *s2);
+-
+-#endif /* _GNU_SOURCE */
+-
+ /*
+ wchar_t *wcschrnul(const wchar_t *s, wchar_t wc);
+ int wcsncasecmp(const wchar_t *s1, const wchar_t *s2, size_t n);

@@ -1,0 +1,138 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# This file requires eapi 5 or later. New entries go on top.
+# Please use the same syntax as in use.mask
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# Qt6 is not stable here yet
+qt6
+
+# Sam James <sam@gentoo.org> (2023-07-02)
+# Unlikely that anybody wants to use net-nds/openldap on hppa & often has
+# platform-specific bugs.
+ldap
+
+# Rolf Eike Beer <eike@sf-mail.de> (2021-11-12)
+# dev-libs/nspr and dev-libs/nss are not stable on hppa
+nss
+
+# Matt Turner <mattst88@gentoo.org> (2021-10-28)
+# dev-libs/hiredis is not stable on hppa
+redis
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Avoid large number of dependencies which often
+# have to be stabilised.
+doc
+
+# Sam James <sam@gentoo.org> (2021-10-16)
+# Avoid stabling chunks of GNOME and such as much as possible.
+# bug #807637
+colord
+
+# Matt Turner <mattst88@gentoo.org> (2021-09-22)
+# media-libs/libsamplerate is not stable on hppa
+libsamplerate
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-db/postgresql is not stable on hppa
+postgres
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-db/{mysql,mariadb}-connector-c is not stable on hppa
+mysql
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-libs/libXpm is not stable on hppa
+xpm
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/libnatspec is not stable on hppa
+natspec
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-vcs/subversion not stable for hppa
+subversion
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-vcs/cvs not stable for hppa
+cvs
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# virtual/opengl not stable for hppa
+opengl
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-libs/fltk is not stable for hppa
+fltk
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-lang/tk is not stable for hppa
+tk
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server and X libraries are not stable for hppa
+X
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-14)
+# dev-lang/php is not stable for hppa
+php
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/gstreamer is not stable for hppa
+gstreamer
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# No stable media-libs/libsdl or media-libs/libsdl2 on hppa
+sdl
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# No stable media-video/ffmpeg on hppa, bug #711144
+ffmpeg
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-06)
+# No stable app-arch/rpm on hppa, bug #471456
+rpm
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
+# app-editors/{,g}vim has no stable keywords
+vim-syntax
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-05)
+# app-editors/xemacs has no stable keywords
+xemacs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-23)
+# net-fs/samba has no stable keywords
+samba
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-23)
+# net-wireless/bluez has no stable keywords, bug #676430
+bluetooth
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# No stable x11-libs/gtk+ on hppa.
+gtk
+gtk2
+gtk3
+wxwidgets
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-01-21)
+# No stable media-sound/pulseaudio on hppa.
+pulseaudio
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-08)
+# sys-auth/elogind is not stable here.
+elogind
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
+openal
+
+# Matt Turner <mattst88@gentoo.org> (2018-04-22)
+# media-gfx/gimp is ~hppa only
+gimp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-10-29)
+# Mask qt5 for stabilisation timeout, bug #620334
+qt5

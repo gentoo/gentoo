@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>torokhov-s-a@yandex.ru</email>
+		<name>Sergey Torokhov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg>.</flag>
+		<flag name="sdl2">Add support for Simple Direct Layer 2.0 (<pkg>media-libs/libsdl2</pkg>)</flag>
+		<flag name="umfpack">Enable sparse solving via <pkg>sci-libs/umfpack</pkg>.</flag>
+	</use>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/gegl</remote-id>
+	</upstream>
+</pkgmetadata>

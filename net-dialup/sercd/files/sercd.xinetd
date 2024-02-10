@@ -1,0 +1,15 @@
+# default: on
+# description: RFC 2217 compliant Telnet serial port redirector
+service sredir
+{
+	type		= UNLISTED
+	flags		= REUSE
+	socket_type	= stream 
+	protocol     	= tcp
+	wait		= no
+	user		= uucp
+	server		= /usr/sbin/sercd
+	server_args	= 5 /dev/modem /run/lock/LCK..modem 100
+	port 		= 7000
+	disable		= yes
+}

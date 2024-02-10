@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -38,9 +38,6 @@
+ #	Later ones are for the various architectures that I have
+ #	successfully tested 'rcsi' on.
+ 
+-rcsi	: rcsi.c
+-	gcc -Wall -O2 -Xlinker -s -o rcsi rcsi.c
+-
+ sunos	: rcsi
+ 
+ solaris	irix osf1	: rcsi.c

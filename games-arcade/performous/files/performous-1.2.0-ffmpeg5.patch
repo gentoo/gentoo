@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/834371
+https://github.com/performous/performous/commit/c3c0d2b7172
+From: Sébastien Gonzalve <sebastien.gonzalve@aliceadsl.fr>
+Date: Tue, 3 May 2022 20:26:25 +0200
+Subject: [PATCH] Fix ffmpeg compilation on FC36
+
+The new version stats:
+
+2021-04-27 - 46dac8cf3d - lavf 59.0.100 - avformat.h
+  av_find_best_stream now uses a const AVCodec ** parameter
+  for the returned decoder.
+
+So performous needs a patch to add const when needed.
+--- a/game/ffmpeg.cc
++++ b/game/ffmpeg.cc
+@@ -251,6 +251,9 @@ FFmpeg::FFmpeg(fs::path const& _filename, int mediaType) : m_filename(_filename)
+ 	if (err < 0) throw Error(*this, err);
+ 	m_formatContext->flags |= AVFMT_FLAG_GENPTS;
+ 	// Find a track and open the codec
++#if (LIBAVFORMAT_VERSION_INT) >= (AV_VERSION_INT(59, 0, 100))
++	const
++#endif
+ 	AVCodec* codec = nullptr;
+ 	m_streamId = av_find_best_stream(m_formatContext.get(), static_cast<AVMediaType>(mediaType), -1, -1, &codec, 0);
+ 	if (m_streamId < 0) throw Error(*this, m_streamId);

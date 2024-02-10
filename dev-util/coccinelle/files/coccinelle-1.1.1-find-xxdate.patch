@@ -1,0 +1,11 @@
+--- a/docs/manual/find-xxdate
++++ b/docs/manual/find-xxdate
+@@ -9,7 +9,7 @@
+ # Otherwise, a warning is printed on stderr and the script returns 1
+ 
+ file=xxdate.exe
+-directories="$(opam var hevea:lib) /usr/lib64/hevea /usr/share/hevea /usr/local/lib/hevea /opt/local/share/hevea"
++directories="/usr/lib/hevea /usr/lib64/hevea /usr/share/hevea /usr/local/lib/hevea /opt/local/share/hevea"
+ 
+ for dir in ${directories}; do
+   fullpath=${dir}/${file};

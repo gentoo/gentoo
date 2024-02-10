@@ -1,0 +1,10 @@
+--- a/tensorpipe/channel/cma/context_impl.cc	2023-12-31 13:40:35.080753311 +0100
++++ b/tensorpipe/channel/cma/context_impl.cc	2023-12-31 13:40:44.570735997 +0100
+@@ -8,7 +8,6 @@
+ 
+ #include <tensorpipe/channel/cma/context_impl.h>
+ 
+-#include <linux/prctl.h>
+ #include <sys/prctl.h>
+ #include <sys/syscall.h>
+ #include <sys/uio.h>

@@ -1,0 +1,13 @@
+[Unit]
+Description=Synchronise two or more system clocks
+Documentation=man:phc2sys
+Requires=ptp4l.service
+After=ptp4l.service
+Before=time-sync.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/phc2sys -w -s %I
+
+[Install]
+WantedBy=multi-user.target

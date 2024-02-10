@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/725450
+--- a/doc/examples/modulesyms.sh
++++ b/doc/examples/modulesyms.sh
+@@ -7,7 +7,7 @@ for module in `cat modules.list`; do
+ 	    lib=$2/lib"$module""$dim".so
+ 	fi
+ 	if test -f $lib; then
+-	    nm -fb $lib | grep ".* T gfs_.*_class$" | grep -v "gfs_gl" | cut -d" " -f3-4
++	    ${NM:-nm} -fb $lib | grep ".* T gfs_.*_class$" | grep -v "gfs_gl" | cut -d" " -f3-4
+ 	fi
+     done
+ done | sort | uniq | sed -e 's/_class//g' -e 's/^./\U&/' -e 's/_./\U&/g' -e 's/_//g' | \

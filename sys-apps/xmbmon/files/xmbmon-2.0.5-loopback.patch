@@ -1,0 +1,40 @@
+Listen on loopback only with the -l option
+
+patch by Mike Frysinger
+
+--- a/mbmon.c
++++ b/mbmon.c
+@@ -41,4 +41,5 @@
+ static const char *MyName = "mbmon";
+ int port = 0;
++uint32_t listen_addr = INADDR_ANY;
+ 
+ int usage(void)
+@@ -61,4 +62,5 @@
+ "  -c count: repeat <count> times and exit\n"
+ "  -P port: run in daemon mode, using given port for clients\n"
++"  -l: listen on local interface only\n"
+ "  -T|F [1-7]: print Temperature|Fanspeed according to following styles\n"
+ "	style1: data1\\n\n"
+@@ -318,5 +320,5 @@
+ 	while ((ch = getopt(argc,argv,"VSIAfdDYe:p:s:c:T:F:tunNirh")) != -1) {
+ #else
+-	while ((ch = getopt(argc,argv,"VSIAfdDYe:p:c:T:F:tunNirhP:")) != -1) {
++	while ((ch = getopt(argc,argv,"VSIAfdDYe:p:c:T:F:tunNirhlP:")) != -1) {
+ #endif
+ 	  switch(ch) {
+@@ -371,4 +373,7 @@
+ 		probe_request = optarg;
+ 		break;
++	  case 'l':
++		listen_addr = INADDR_LOOPBACK;
++		break;
+ 	  case 'P':
+ 		port = atoi (optarg);
+@@ -458,5 +463,5 @@
+ 		server.sin_family = AF_INET;
+ 		server.sin_port = htons (port);
+-		server.sin_addr.s_addr = INADDR_ANY;
++		server.sin_addr.s_addr = htonl(listen_addr);
+ 		if (bind (fd, (struct sockaddr *) &server, sizeof (server)) < 0) {
+ 			perror("bind");

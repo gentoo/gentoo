@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">smbus2</remote-id>
+		<remote-id type="github">kplindegaard/smbus2</remote-id>
+	</upstream>
+</pkgmetadata>

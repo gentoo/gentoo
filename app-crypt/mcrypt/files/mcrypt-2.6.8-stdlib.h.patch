@@ -1,0 +1,11 @@
+--- a/src/rfc2440.c	2008-11-17 06:50:01.000000000 +1100
++++ b/src/rfc2440.c	2010-08-10 13:48:28.000000000 +1000
+@@ -23,7 +23,7 @@
+ #include <zlib.h>
+ #endif
+ #include <stdio.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ 
+ #include "xmalloc.h"
+ #include "keys.h"

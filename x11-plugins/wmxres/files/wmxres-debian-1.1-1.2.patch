@@ -1,0 +1,55 @@
+diff -Naur wmxres.app/wmxres/wmxres.c wmxres-1.2/wmxres/wmxres.c
+--- wmxres.app/wmxres/wmxres.c	1999-11-13 22:43:12.000000000 +0000
++++ wmxres-1.2/wmxres/wmxres.c	2004-04-19 01:27:19.000000000 +0000
+@@ -29,7 +29,7 @@
+ int	res_selected;
+ int	res_i_active=-1;
+ char	res_active[10];
+-char	res_list[10][20];
++char	res_list[100][20];
+ XF86VidModeModeInfo **res_modelines; 
+ XEvent  Event;
+ 
+@@ -139,7 +139,12 @@
+ 		}
+ 	}
+ 
+-	for(c=0; c < res_count; c++) {
++	/* fix bounds on res_count -- Todd Troxell <ttroxell@debian.org */	
++	if(res_count > 100) {
++		res_count =100;
++	}
++
++	for(c=0; c < res_count ; c++) {
+ 		sprintf(res_list[c], "%dx%d", res_modelines[c]->hdisplay, res_modelines[c]->vdisplay);
+ 	}
+ }
+diff -Naur wmxres.app/wmxres.1 wmxres-1.2/wmxres.1
+--- wmxres.app/wmxres.1	1970-01-01 00:00:00.000000000 +0000
++++ wmxres-1.2/wmxres.1	2004-04-19 01:02:46.000000000 +0000
+@@ -0,0 +1,25 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" wmxres.1 is copyright 2001 by
++.\" Todd Troxell <ttroxell@debian.org>
++.\"
++.\" This is free documentation, see the latest version of the GNU
++.\" General Public License for copying conditions. There is NO warranty.
++.TH WMXRES 1 "May  5, 2001"
++
++.SH NAME
++wmxres \- dockable application to change X modes 
++
++.SH SYNOPSIS
++.B wmxres
++
++.SH DESCRIPTION
++dockable application to select your display mode from those available.  It is written in C.
++
++.SH INFO 
++This manual page was written for the Debian GNU/Linux distribution
++because the original program does not have a manual page.
++.PP
++
++.SH AUTHOR
++This manual page was written by Todd Troxell <ttroxell@debian.org>,
++for the Debian GNU/Linux system (but may be used by others).

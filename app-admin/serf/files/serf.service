@@ -1,0 +1,14 @@
+[Unit]
+Description=serf agent
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=serf
+Environment=SERF_AGENT_OPTS="-config-dir=/etc/serf.d"
+ExecStart=/usr/bin/serf agent $SERF_AGENT_OPTS
+Restart=on-failure
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

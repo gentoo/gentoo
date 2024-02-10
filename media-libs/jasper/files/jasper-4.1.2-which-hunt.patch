@@ -1,0 +1,34 @@
+https://github.com/jasper-software/jasper/pull/369
+
+From de3e9d43224977cda178df609d09e222674200e6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 14 Jan 2024 05:49:55 +0000
+Subject: [PATCH] test: run_test_3: drop use of `which`
+
+`which` is non-portable (not part of POSIX) and distributions like Debian and
+Gentoo are looking to remove it from their base set of packages.
+
+Switch to `type -P` instead given `test/bin/run_test_3` already has a Bash
+shebang.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ test/bin/run_test_3 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/bin/run_test_3 b/test/bin/run_test_3
+index fad80412..5bc9da93 100755
+--- a/test/bin/run_test_3
++++ b/test/bin/run_test_3
+@@ -36,8 +36,8 @@ set_source_and_build_dirs || panic "cannot set source and build directories"
+ 
+ #$CMDDIR/rundectests jasper || exit 1
+ 
+-oj_compress=$(which opj2_compress) || oj_compress=""
+-oj_decompress=$(which opj2_decompress) || oj_decompress=""
++oj_compress=$(type -P opj2_compress) || oj_compress=""
++oj_decompress=$(type -P opj2_decompress) || oj_decompress=""
+ 
+ run_test="$cmd_dir/run_codec_test"
+ 
+

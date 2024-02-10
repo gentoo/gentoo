@@ -1,0 +1,22 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -193,7 +193,7 @@
+ endif
+ 
+ # We look at a sndfile symbol when libquickplot runs
+-libquickplot_la_LIBADD = $(sndfile_LIBS)
++libquickplot_la_LIBADD = $(sndfile_LIBS) -lm
+ 
+ if QP_DEBUG
+ libquickplot_la_SOURCES += debug_spew.c
+@@ -336,8 +336,8 @@
+ if HAVE_LOCAL_SCREENSHOTS
+ 
+ install-exec-hook:
+-	mkdir -p $(htmldir)
+-	cp ScreenShot_* _ScreenShot_* $(htmldir)
++	mkdir -p $(DESTDIR)$(htmldir)
++	cp ScreenShot_* _ScreenShot_* $(DESTDIR)$(htmldir)
+ 
+ thumbs.htm: mk_thumbs.htm.bash
+ 	./mk_thumbs.htm.bash > $@

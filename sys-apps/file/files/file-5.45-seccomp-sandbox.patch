@@ -1,0 +1,56 @@
+From b05f904dc5df267f90c6489817a379cb7f7f62ee Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 19 Oct 2023 13:58:20 -0400
+Subject: [PATCH] seccomp: allow syscalls used by Gentoo's LD_PRELOAD sandbox
+
+Bug: https://bugs.gentoo.org/728978
+Bug: https://bugs.gentoo.org/889046
+Bug: https://bugs.gentoo.org/915890
+---
+ src/seccomp.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+index 87d4c49e..f1804660 100644
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -174,6 +174,9 @@ enable_sandbox_full(void)
+ 	ALLOW_RULE(exit_group);
+ #ifdef __NR_faccessat
+ 	ALLOW_RULE(faccessat);
++#endif
++#ifdef __NR_faccessat2
++        ALLOW_RULE(faccessat2);
+ #endif
+ 	ALLOW_RULE(fcntl);
+  	ALLOW_RULE(fcntl64);
+@@ -185,9 +188,26 @@ enable_sandbox_full(void)
+ 	ALLOW_RULE(fstatat64);
+ #endif
+ 	ALLOW_RULE(futex);
++	ALLOW_RULE(getcwd);
+ 	ALLOW_RULE(getdents);
+ #ifdef __NR_getdents64
+ 	ALLOW_RULE(getdents64);
++#endif
++	ALLOW_RULE(getegid);
++#ifdef __NR_getegid32
++	ALLOW_RULE(getegid32);
++#endif
++	ALLOW_RULE(geteuid);
++#ifdef __NR_geteuid32
++	ALLOW_RULE(geteuid32);
++#endif
++	ALLOW_RULE(getgid);
++#ifdef __NR_getgid32
++	ALLOW_RULE(getgid32);
++#endif
++	ALLOW_RULE(getuid);
++#ifdef __NR_getuid32
++	ALLOW_RULE(getuid32);
+ #endif
+ #ifdef FIONREAD
+ 	// called in src/compress.c under sread
+-- 
+2.42.0
+

@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/870895
+https://rt.cpan.org/Public/Bug/Display.html?id=145874
+
+Add missing function prototypes.  This avoids implicit function
+declarations when building Nilsimsa.xs and build failures with future
+compilers.
+
+--- a/nilsimsa.h
++++ b/nilsimsa.h
+@@ -47,6 +47,8 @@ int nilsimsa(struct nsrecord *a,struct nsrecord *b);
+ void aggregate(int n);
+ void codetostr(struct nsrecord *a,char *str);
+ int strtocode(char *str,struct nsrecord *a);
++void makecode(struct nsrecord *a);
++void clear(struct nsrecord *a);
+ 
+ int accbuf(unsigned char *buf,int len,struct nsrecord *a);
+ void dprint(char *msg);
+

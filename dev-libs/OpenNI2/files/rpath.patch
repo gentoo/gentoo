@@ -1,0 +1,13 @@
+Index: OpenNI2-9999/ThirdParty/PSCommon/BuildSystem/CommonCppMakefile
+===================================================================
+--- OpenNI2-9999.orig/ThirdParty/PSCommon/BuildSystem/CommonCppMakefile
++++ OpenNI2-9999/ThirdParty/PSCommon/BuildSystem/CommonCppMakefile
+@@ -93,8 +93,6 @@ ifneq "$(LIB_NAME)" ""
+ endif
+ ifneq "$(EXE_NAME)" ""
+ 	OUTPUT_NAME = $(EXE_NAME)
+-	# We want the executables to look for the .so's locally first:
+-	LDFLAGS += -Wl,-rpath ./
+ 	OUTPUT_COMMAND = $(CXX) -o $(OUTPUT_FILE) $(OBJ_FILES) $(LDFLAGS)
+ endif
+ ifneq "$(SLIB_NAME)" ""

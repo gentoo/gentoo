@@ -1,0 +1,204 @@
+From b9e2714d5b42ad9a0742746996b989400c794adb Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 4 Nov 2022 19:31:15 -0400
+Subject: [PATCH 1/2] clamonacc/c-thread-pool/thpool.c: define _GNU_SOURCE for
+ syscall().
+
+On Linux, thpool.c uses syscall() from unistd.h, but that function is
+not defined without _GNU_SOURCE:
+
+  c-thread-pool/thpool.c: In function 'jobqueue_pull':
+  c-thread-pool/thpool.c:474:105: error: implicit declaration of function
+  'syscall' [-Werror=implicit-function-declaration]
+
+In general that's not great, because it hinders some compiler diagnostics,
+but it will also cause problems down the road if (for example) clang-16
+decides to enable -Werror=implicit-function-declaration by default.
+
+This commit changes the _POSIX_C_SOURCE definition at the top of
+thpool.c to _GNU_SOURCE, as in the syscall(2) man page.
+---
+ clamonacc/c-thread-pool/thpool.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/clamonacc/c-thread-pool/thpool.c b/clamonacc/c-thread-pool/thpool.c
+index 46572da5f4..27c5103ff1 100644
+--- a/clamonacc/c-thread-pool/thpool.c
++++ b/clamonacc/c-thread-pool/thpool.c
+@@ -8,7 +8,7 @@
+  *
+  ********************************/
+ 
+-#define _POSIX_C_SOURCE 200809L
++#define _GNU_SOURCE
+ #include <unistd.h>
+ #include <signal.h>
+ #include <stdio.h>
+
+From 7e3425ab701141064d179c45af2251f61af4ccc7 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 4 Nov 2022 20:08:30 -0400
+Subject: [PATCH 2/2] */*: fix invalid prototypes.
+
+Prototypes (or the declarations themselves, if there is no
+corresponding prototype) for functions that take no arguments are
+required by the C standard to specify (void) as their argument list;
+for example,
+
+  regex_pcre.h:79:1: error: function declaration isn't a prototype
+  [-Werror=strict-prototypes]
+     79 | cl_error_t cli_pcre_init_internal();
+
+Future versions of clang may become strict about this, and there's no
+harm in conforming to the standard right now, so we fix all such
+instances in this commit.
+---
+ clamonacc/clamonacc.c                | 2 +-
+ clamonacc/client/socket.h            | 2 +-
+ clamonacc/inotif/hash.c              | 2 +-
+ clamonacc/inotif/inotif.c            | 2 +-
+ clamonacc/scan/onas_queue.c          | 6 +++---
+ libclamav/matcher-pcre.h             | 6 +++---
+ libclamav/regex_pcre.h               | 2 +-
+ m4/reorganization/compiler_checks.m4 | 2 +-
+ shared/misc.h                        | 2 +-
+ 9 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/clamonacc/clamonacc.c b/clamonacc/clamonacc.c
+index ba986ef06c..c020897908 100644
+--- a/clamonacc/clamonacc.c
++++ b/clamonacc/clamonacc.c
+@@ -61,7 +61,7 @@
+ pthread_t ddd_pid        = 0;
+ pthread_t scan_queue_pid = 0;
+ 
+-static void onas_handle_signals();
++static void onas_handle_signals(void);
+ static int startup_checks(struct onas_context *ctx);
+ static struct onas_context *g_ctx = NULL;
+ 
+diff --git a/clamonacc/client/socket.h b/clamonacc/client/socket.h
+index 915f9086ca..ea84fb4c41 100644
+--- a/clamonacc/client/socket.h
++++ b/clamonacc/client/socket.h
+@@ -31,4 +31,4 @@ struct onas_sock_t {
+ };
+ 
+ cl_error_t onas_set_sock_only_once(struct onas_context *ctx);
+-int onas_get_sockd();
++int onas_get_sockd(void);
+diff --git a/clamonacc/inotif/hash.c b/clamonacc/inotif/hash.c
+index e4b3f1f983..2bbc4cdbb4 100644
+--- a/clamonacc/inotif/hash.c
++++ b/clamonacc/inotif/hash.c
+@@ -58,7 +58,7 @@
+ 
+ #if defined(HAVE_SYS_FANOTIFY_H)
+ 
+-static struct onas_bucket *onas_bucket_init();
++static struct onas_bucket *onas_bucket_init(void);
+ static void onas_free_bucket(struct onas_bucket *bckt);
+ static int onas_bucket_insert(struct onas_bucket *bckt, struct onas_element *elem);
+ static int onas_bucket_remove(struct onas_bucket *bckt, struct onas_element *elem);
+diff --git a/clamonacc/inotif/inotif.c b/clamonacc/inotif/inotif.c
+index 7799ae4889..b8680e9856 100644
+--- a/clamonacc/inotif/inotif.c
++++ b/clamonacc/inotif/inotif.c
+@@ -66,7 +66,7 @@
+ 
+ static int onas_ddd_init_ht(uint32_t ht_size);
+ static int onas_ddd_init_wdlt(uint64_t nwatches);
+-static int onas_ddd_grow_wdlt();
++static int onas_ddd_grow_wdlt(void);
+ 
+ static int onas_ddd_watch(const char *pathname, int fan_fd, uint64_t fan_mask, int in_fd, uint64_t in_mask);
+ static int onas_ddd_watch_hierarchy(const char *pathname, size_t len, int fd, uint64_t mask, uint32_t type);
+diff --git a/clamonacc/scan/onas_queue.c b/clamonacc/scan/onas_queue.c
+index d279df7415..6fa7df6e96 100644
+--- a/clamonacc/scan/onas_queue.c
++++ b/clamonacc/scan/onas_queue.c
+@@ -82,7 +82,7 @@ static cl_error_t onas_new_event_queue_node(struct onas_event_queue_node **node)
+     return CL_SUCCESS;
+ }
+ 
+-static void *onas_init_event_queue()
++static void *onas_init_event_queue(void)
+ {
+ 
+     if (CL_EMEM == onas_new_event_queue_node(&g_onas_event_queue_head)) {
+@@ -122,7 +122,7 @@ static void onas_destroy_event_queue_node(struct onas_event_queue_node *node)
+     return;
+ }
+ 
+-static void onas_destroy_event_queue()
++static void onas_destroy_event_queue(void)
+ {
+ 
+     if (NULL == g_onas_event_queue_head) {
+@@ -200,7 +200,7 @@ void *onas_scan_queue_th(void *arg)
+     pthread_cleanup_pop(1);
+ }
+ 
+-static int onas_queue_is_b_empty()
++static int onas_queue_is_b_empty(void)
+ {
+ 
+     if (g_onas_event_queue.head->next == g_onas_event_queue.tail) {
+diff --git a/libclamav/matcher-pcre.h b/libclamav/matcher-pcre.h
+index 5ffc88fb26..b0bd51852b 100644
+--- a/libclamav/matcher-pcre.h
++++ b/libclamav/matcher-pcre.h
+@@ -68,11 +68,11 @@ struct cli_pcre_meta {
+ };
+ 
+ /* PCRE PERFORMANCE DECLARATIONS */
+-void cli_pcre_perf_print();
+-void cli_pcre_perf_events_destroy();
++void cli_pcre_perf_print(void);
++void cli_pcre_perf_events_destroy(void);
+ 
+ /* PCRE MATCHER DECLARATIONS */
+-int cli_pcre_init();
++int cli_pcre_init(void);
+ cl_error_t cli_pcre_addpatt(struct cli_matcher *root, const char *virname, const char *trigger, const char *pattern, const char *cflags, const char *offset, const uint32_t *lsigid, unsigned int options);
+ cl_error_t cli_pcre_build(struct cli_matcher *root, long long unsigned match_limit, long long unsigned recmatch_limit, const struct cli_dconf *dconf);
+ cl_error_t cli_pcre_recaloff(struct cli_matcher *root, struct cli_pcre_off *data, struct cli_target_info *info, cli_ctx *ctx);
+diff --git a/libclamav/regex_pcre.h b/libclamav/regex_pcre.h
+index d1f4127984..52653431d4 100644
+--- a/libclamav/regex_pcre.h
++++ b/libclamav/regex_pcre.h
+@@ -76,7 +76,7 @@ struct cli_pcre_results {
+ };
+ #endif
+ 
+-cl_error_t cli_pcre_init_internal();
++cl_error_t cli_pcre_init_internal(void);
+ cl_error_t cli_pcre_addoptions(struct cli_pcre_data *pd, const char **opt, int errout);
+ cl_error_t cli_pcre_compile(struct cli_pcre_data *pd, long long unsigned match_limit, long long unsigned match_limit_recursion, unsigned int options, int opt_override);
+ int cli_pcre_match(struct cli_pcre_data *pd, const unsigned char *buffer, size_t buflen, size_t override_offset, int options, struct cli_pcre_results *results);
+diff --git a/m4/reorganization/compiler_checks.m4 b/m4/reorganization/compiler_checks.m4
+index f7984f4cb2..80c81e1d30 100644
+--- a/m4/reorganization/compiler_checks.m4
++++ b/m4/reorganization/compiler_checks.m4
+@@ -121,7 +121,7 @@ extern void abort(void);
+   ((bb_size) > 0 && (sb_size) > 0 && (size_t)(sb_size) <= (size_t)(bb_size) \
+    && (sb) >= (bb) && ((sb) + (sb_size)) <= ((bb) + (bb_size)) && ((sb) + (sb_size)) > (bb) && (sb) < ((bb) + (bb_size)))
+ 
+-int crashtest()
++int crashtest(void)
+ {
+ 	unsigned int backsize, dcur;
+ 	int dval=0x12000, unp_offset;
+diff --git a/shared/misc.h b/shared/misc.h
+index 436c73117b..63fdea0f50 100644
+--- a/shared/misc.h
++++ b/shared/misc.h
+@@ -72,7 +72,7 @@ int daemonize(void);
+ /*closes stdin, stdout, stderr.  This is called by daemonize, but not
+  * daemonize_all_return.  Users of daemonize_all_return should call this
+  * when initialization is complete.*/
+-int close_std_descriptors();
++int close_std_descriptors(void);
+ 
+ /*Returns the return value of fork.  All processes return */
+ int daemonize_all_return(void);

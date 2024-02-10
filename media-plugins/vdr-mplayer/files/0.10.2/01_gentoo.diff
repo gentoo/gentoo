@@ -1,0 +1,33 @@
+diff -Naur mp3-0.10.1.orig/Makefile mp3-0.10.1/Makefile
+--- mp3-0.10.1.orig/Makefile	2008-03-02 16:58:40.988974674 +0100
++++ mp3-0.10.1/Makefile	2008-03-02 16:59:36.879557750 +0100
+@@ -24,14 +24,14 @@
+ # in the VDR directory an set them there.
+ 
+ ### uncomment one of these lines, if you don't want one of the plugins
+-#WITHOUT_MP3=1
++WITHOUT_MP3=1
+ #WITHOUT_MPLAYER=1
+ 
+ ### uncomment the following line, if you don't have libsndfile installed
+-#WITHOUT_LIBSNDFILE=1
++WITHOUT_LIBSNDFILE=1
+ 
+ ### uncomment the following line, if you don't have libvorbisfile installed
+-#WITHOUT_LIBVORBISFILE=1
++WITHOUT_LIBVORBISFILE=1
+ 
+ ### uncomment the following line, if you want OSS sound output
+ #WITH_OSS_OUTPUT=1
+diff -Naur mp3-0.10.1.orig/mplayer.c mp3-0.10.1/mplayer.c
+--- mp3-0.10.1.orig/mplayer.c	2008-03-02 16:58:41.068960305 +0100
++++ mp3-0.10.1/mplayer.c	2008-03-02 17:00:53.845333952 +0100
+@@ -832,7 +832,7 @@
+ #else
+   i18n_name="vdr-mplayer";
+ #endif
+-  MPlaySources.Load(AddDirectory(ConfigDirectory(sourcesSub),"mplayersources.conf"));
++  MPlaySources.Load(AddDirectory(ConfigDirectory(sourcesSub),"mplayer/mplayersources.conf"));
+   if(MPlaySources.Count()<1) {
+     esyslog("ERROR: you must have defined at least one source in mplayersources.conf");
+     fprintf(stderr,"No source(s) defined in mplayersources.conf\n");

@@ -1,0 +1,11 @@
+--- a/configure.ac	2023-06-10 10:21:38.770760698 -0500
++++ b/configure.ac	2023-06-10 10:22:01.670904090 -0500
+@@ -86,7 +86,7 @@
+ 
+ #### Functions
+ AC_LINK_IFELSE(
+-    [AC_LANG_PROGRAM([#include <math.h>], [double x = exp10(1.0);])],
++    [AC_LANG_PROGRAM([#include <math.h>], [double exp10(double x);], [double x = exp10(1.0);])],
+     [AC_DEFINE([HAVE_EXP10], [1], [Define to 1 if you have the 'exp10' function])],
+   [])
+ 

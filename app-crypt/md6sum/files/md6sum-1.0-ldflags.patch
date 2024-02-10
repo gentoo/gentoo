@@ -1,0 +1,12 @@
+diff -Nru md6sum-1.0.orig/Makefile.in md6sum-1.0/Makefile.in
+--- md6sum-1.0.orig/Makefile.in	2011-01-09 02:12:09.000000000 +0000
++++ md6sum-1.0/Makefile.in	2011-02-01 04:41:35.000000000 +0000
+@@ -18,7 +18,7 @@
+ all: md6sum
+ 
+ md6sum: $(OBJS)
+-	$(CC) $(OBJS) $(CXXFLAGS) -o $@
++	$(CC) $(OBJS) $(CXXFLAGS) $(LDFLAGS) -o $@
+ 
+ md6_compress.o: md6_compress.c inttypes.h  md6.h  md6_nist.h  stdint.h
+ 	$(CC) $(CXXFLAGS) -c $< -o $@

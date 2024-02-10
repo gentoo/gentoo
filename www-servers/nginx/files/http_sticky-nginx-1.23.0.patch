@@ -1,0 +1,25 @@
+From 105c946c0c1af93099502417784888acf60da540 Mon Sep 17 00:00:00 2001
+From: Younes El-karama <yelkarama@gmail.com>
+Date: Sat, 2 Jul 2022 04:56:12 +0000
+Subject: [PATCH] make it compatible with nginx 1.23
+
+---
+ ngx_http_sticky_module.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ngx_http_sticky_module.c b/ngx_http_sticky_module.c
+index c9a0a04..37b5bc3 100644
+--- a/ngx_http_sticky_module.c
++++ b/ngx_http_sticky_module.c
+@@ -204,7 +204,7 @@ static ngx_int_t ngx_http_init_sticky_peer(ngx_http_request_t *r, ngx_http_upstr
+ 	iphp->request = r;
+ 
+ 	/* check weather a cookie is present or not and save it */
+-	if (ngx_http_parse_multi_header_lines(&r->headers_in.cookies, &iphp->sticky_conf->cookie_name, &route) != NGX_DECLINED) {
++	if (ngx_http_parse_multi_header_lines(r, r->headers_in.cookie, &iphp->sticky_conf->cookie_name, &route) != NULL) {
+ 		/* a route cookie has been found. Let's give it a try */
+ 		ngx_log_debug(NGX_LOG_DEBUG_HTTP, r->connection->log, 0, "[sticky/init_sticky_peer] got cookie route=%V, let's try to find a matching peer", &route);
+ 
+-- 
+2.36.1
+

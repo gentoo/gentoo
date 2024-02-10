@@ -1,0 +1,17 @@
+To allow users to use all features add them to the 'roccat' group
+To allow udev to detect your device without reboot, run
+# udevadm control --reload-rules && udevadm trigger --subsystem-match=usb
+*************************
+*** Upstream message: ***
+*************************
+* Some devices (Arvo, Kone) need uinput for some features. To use it as normal
+* user you can either create an extra group like uinput-users and add yourself
+* to this group (as described above) or reuse group roccat.
+* Create a file like /etc/udev/rules.d/90-uinput.rules containing the line
+* KERNEL=="uinput", GROUP="uinput-users", MODE="0660"
+* and replace the group name with your choice.
+
+* In addition, you need to enable CONFIG_INPUT_UINPUT in your kernel
+
+* Do a logout/login to apply your new group ownership and replug your device
+* and everything should work as expected.

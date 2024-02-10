@@ -1,0 +1,10 @@
+--- rxtx-2.2pre2/src/gnu/io/RXTXCommDriver.java.orig
++++ rxtx-2.2pre2/src/gnu/io/RXTXCommDriver.java
+@@ -574,6 +574,7 @@
+ 					if(osName.equals("Linux"))
+ 					{
+ 						String[] Temp = {
++						"ttyACM", // linux USB modems
+ 						"ttyS", // linux Serial Ports
+ 						"ttySA", // for the IPAQs
+ 						"ttyUSB", // for USB frobs

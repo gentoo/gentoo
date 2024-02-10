@@ -1,0 +1,77 @@
+# Copyright 2019-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-qt/qtwebengine:6 is not available here, technically does
+# not need to be masked for Qt5 (is keyworded) but would require
+# USE=qt5-webengine or so to make the distinction with Qt6.
+sci-astronomy/stellarium webengine
+
+# Marek Szuba <marecki@gentoo.org> (2023-12-05)
+# Needs USE=video_cards_amdgpu, which IS available on ppc64le.
+>=sys-apps/fwupd-1.9.10 -amdgpu
+
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmpeg -libplacebo
+
+# Joonas Niilola <juippis@gentoo.org> (2022-11-10)
+# Doesn't work on ppc64, #871921
+sci-mathematics/gmp-ecm custom-tune
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-13)
+# ppc64 has pipewire keyworded
+www-client/firefox -screencast
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-02)
+# altivec code is big-endian only, #773100
+media-libs/libdvbcsa cpu_flags_ppc_altivec
+
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-util/perf clang
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Additional sanitizers supported on ppc64le.
+sys-libs/compiler-rt-sanitizers -xray
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+kde-apps/kdenetwork-meta webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# criu is unmasked on little-endian ppc64
+app-containers/crun -criu
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
+# openjfx is keyworded on ppc64le
+dev-java/openjdk:8 -javafx
+dev-java/openjdk:11 -javafx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
+# Problems even on ppc64le needs more work
+dev-lang/spidermonkey clang
+mail-client/thunderbird clang
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
+# vulkan tested and works on ppc64le
+media-libs/mesa -vulkan -vulkan-overlay
+media-video/mpv -libplacebo -vulkan
+media-video/vlc -libplacebo
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-29)
+# PGO works on ppc64le
+>=www-client/firefox-68 -pgo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# works on ppc64le
+media-libs/mesa -llvm -video_cards_radeonsi

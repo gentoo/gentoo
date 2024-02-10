@@ -1,0 +1,144 @@
+From 9e928c98c8ad0767607bc421b14ac289cdc6e536 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sat, 8 Oct 2022 16:29:43 +0200
+Subject: [PATCH 1/2] Remove brittle `apWrapper` code
+
+* This causes issues on musl, and generally doesn't make the
+  code any simpler, while also creating lots of opportunities
+  for undefined behavior.
+
+Bug: https://bugs.gentoo.org/715910
+---
+ src/messages.cpp     | 14 ++++++++++----
+ src/sanity.cpp       |  4 +++-
+ src/sanity_defines.h | 23 -----------------------
+ src/strings.cpp      |  9 +++++----
+ 4 files changed, 18 insertions(+), 32 deletions(-)
+
+diff --git a/src/messages.cpp b/src/messages.cpp
+index 385f217..3794f66 100644
+--- a/src/messages.cpp
++++ b/src/messages.cpp
+@@ -60,8 +60,11 @@ void ManualConsoleMessages(){
+ }
+ 
+ string mysprintf(const char*str,...){
+-	WrapAp(str);
+-	return myvsprintf(str,ap);
++	va_list ap;
++	va_start(ap, str);
++	string result = myvsprintf(str,ap);
++	va_end(ap);
++	return result;
+ }
+ 
+ #if defined DEBUG || defined _DEBUG
+@@ -69,8 +72,11 @@ static RenumMessageId curMessage;
+ #endif
+ 
+ string IssueMessage(int minSan,RenumMessageId id,...){
+-	WrapAp(id);
+-	return vIssueMessage(minSan,id,ap);
++	va_list ap;
++	va_start(ap, id);
++	string result = vIssueMessage(minSan,id,ap);
++	va_end(ap);
++	return result;
+ }
+ 
+ string vIssueMessage(int minSan,RenumMessageId id,va_list& arg_ptr){
+diff --git a/src/sanity.cpp b/src/sanity.cpp
+index 844d840..0793a63 100644
+--- a/src/sanity.cpp
++++ b/src/sanity.cpp
+@@ -151,13 +151,15 @@ void Before8(int action){
+ }
+ 
+ bool CheckLength(int alen,int elen,RenumMessageId message,...){
+-	WrapAp(message);
++	va_list ap;
++	va_start(ap, message);
+ 	if(alen<elen){
+ 		vIssueMessage(FATAL,message,ap);
+ 		return true;
+ 	}
+ 	if(alen>elen)
+ 		vIssueMessage(WARNING2,message,ap);
++	va_end(ap);
+ 	return false;
+ }
+ 
+diff --git a/src/sanity_defines.h b/src/sanity_defines.h
+index d094f21..47f9c5f 100644
+--- a/src/sanity_defines.h
++++ b/src/sanity_defines.h
+@@ -22,7 +22,6 @@
+ #ifndef _RENUM_SANITY_DEFS_H_INCLUDED_
+ #define _RENUM_SANITY_DEFS_H_INCLUDED_
+ 
+-#include <cstdarg>
+ #include "message_mgr.h"
+ 
+ bool CheckLength(int,int,RenumMessageId,...);
+@@ -70,26 +69,4 @@ typedef auto_array<uint> Guintp;
+ 	type&operator[](uint x){return _p[x];}\
+ 	type operator[](uint x)const{return _p[x];}\
+ 
+-class apWrapper{
+-private:
+-	va_list _ap;
+-public:
+-	~apWrapper(){va_end(_ap);}
+-	operator va_list&(){return _ap;}
+-	operator const va_list&()const{return _ap;}
+-#ifdef __va_copy
+-	va_list&operator=(va_list&ap){
+-	    __va_copy(_ap,ap);
+-		return _ap;
+-	}
+-#else
+-	va_list const&operator=(va_list const&ap){
+-	    return _ap=ap;
+-	}
+-#endif
+-};
+-#define WrapAp(v)\
+-	apWrapper ap;\
+-	va_start((va_list&)ap,v);
+-
+ #endif//_RENUM_SANITY_DEFS_H_INCLUDED_
+diff --git a/src/strings.cpp b/src/strings.cpp
+index 2512734..e184825 100644
+--- a/src/strings.cpp
++++ b/src/strings.cpp
+@@ -23,6 +23,7 @@
+ #include<string>
+ #include<cerrno>
+ #include<cstdlib>
++#include<cstdarg>
+ 
+ using namespace std;
+ 
+@@ -396,15 +397,15 @@ static const uchar stackSize[]={0,1,2,2,4,2,8};
+ 
+ string MakeStack(int items,...){
+ 	string ret;
+-	WrapAp(items);
++	va_list ap;
++	va_start(ap, items);
+ 	uint item;
+ 	for(int i=0;i<items;i++){
+-		item=va_arg(ap.operator va_list&(),uint);
+-		//             ^^^^^^^^^^^^^^^^^^^
+-		// gcc complains without that call.
++		item=va_arg(ap, uint);
+ 		VERIFY(item&&item<STACK_INVALID,item);
+ 		ret+=string(stackSize[item],char(item|i<<4));
+ 	}
++	va_end(ap);
+ 	return ret;
+ }
+ 
+-- 
+2.38.0
+

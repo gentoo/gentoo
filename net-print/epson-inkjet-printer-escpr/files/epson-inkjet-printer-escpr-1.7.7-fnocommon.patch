@@ -1,0 +1,11 @@
+--- a/src/filter.c	2020-05-23 13:50:19.064756474 +0200
++++ b/src/filter.c	2020-05-23 13:53:01.936647646 +0200
+@@ -68,7 +68,7 @@
+ extern EPS_UINT8*   tmpLineBuf;
+ 
+ extern EPS_CMN_FUNC epsCmnFnc;
+-EPS_JOB_FUNCS		jobFnc;
++extern EPS_JOB_FUNCS	jobFnc;
+ 
+ extern EPS_INT32 tonerSave;
+ extern EPS_INT32 back_type;

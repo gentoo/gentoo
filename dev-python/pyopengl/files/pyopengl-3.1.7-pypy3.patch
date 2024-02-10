@@ -1,0 +1,26 @@
+From 33da175a6d89945ea9e74e85df8ef8929fc86b62 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 17 Nov 2023 19:56:58 +0100
+Subject: [PATCH] PYPY3 Add support for pypy3 in FormatHandler
+
+Add `_ctypes.array.ArrayMeta` to classes recognized by `ctypesarrays`
+formathandler.  This is the class used by arrays on PyPy3.10.  Adding
+this makes the test suite pass on PyPy3.10 7.3.13.
+
+Fixes #108
+---
+ OpenGL/__init__.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/OpenGL/__init__.py b/OpenGL/__init__.py
+index 77dc8c0b..959186ce 100644
+--- a/OpenGL/__init__.py
++++ b/OpenGL/__init__.py
+@@ -301,6 +301,7 @@ def setPlatform(key):
+         "_ctypes.PyCArrayType",
+         "_ctypes.Array",
+         "_ctypes.array.Array",
++        "_ctypes.array.ArrayMeta",
+     ],
+     isOutput=True,
+ )

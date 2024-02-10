@@ -1,0 +1,6 @@
+# Arguments to pass to openconnect
+#command_args="--authgroup AUTHGROUP --user USER SERVERNAME"
+
+# For non-interactive use, set either password or password_file
+#password="PASSWORD"
+#password_file="/etc/openconnect/vpn0.password"

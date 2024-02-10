@@ -1,0 +1,11 @@
+--- a/setup.py	2020-04-19 16:15:15.000000000 -0400
++++ b/setup.py	2020-07-07 13:56:25.181039348 -0400
+@@ -85,7 +85,7 @@
+     author_email='mycli-dev@googlegroups.com',
+     version=version,
+     url='http://mycli.net',
+-    packages=find_packages(),
++    packages=find_packages(exclude=["*.test","*.test.*","test.*","test"]),
+     package_data={'mycli': ['myclirc', 'AUTHORS', 'SPONSORS']},
+     description=description,
+     long_description=description,

@@ -1,0 +1,23 @@
+[Unit]
+Description=LXD - main daemon
+After=network-online.target lxcfs.service lxd.socket
+Requires=network-online.target lxcfs.service lxd.socket
+Documentation=man:lxd(1)
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/sbin/lxd --group lxd --syslog
+ExecStartPost=/usr/sbin/lxd waitready --timeout=600
+ExecStartPre=/bin/mkdir -p /var/log/lxd
+ExecStartPre=/bin/chown -R root:lxd /var/log/lxd
+KillMode=process
+PermissionsStartOnly=true
+TimeoutStartSec=600s
+TimeoutStopSec=30s
+Restart=on-failure
+LimitNOFILE=1048576
+LimitNPROC=infinity
+TasksMax=infinity
+
+[Install]
+Also=lxd-containers.service lxd.socket

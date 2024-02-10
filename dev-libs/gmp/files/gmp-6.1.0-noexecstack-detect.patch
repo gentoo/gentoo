@@ -1,0 +1,23 @@
+gmp's -Wa,--noexecstack check is based on glibc's, so backport a change
+that went into it there:
+https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=215a87451d1fd623fd2699fa57f16f8ab6f6a2f3
+https://sourceware.org/bugzilla/show_bug.cgi?id=6428
+
+this is to workaround broken clang assembler that fails w/CFLAGS=-g:
+http://crbug.com/585930
+https://llvm.org/bugs/show_bug.cgi?id=11740
+
+patch has been sent upstream too:
+https://gmplib.org/list-archives/gmp-bugs/2016-February/003916.html
+
+--- a/configure
++++ b/configure
+@@ -11339,7 +11339,7 @@ EOF
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; } \
+      && grep .note.GNU-stack conftest.s >/dev/null \
+-     && { ac_try='${CC} $CFLAGS $CPPFLAGS -Wa,--noexecstack
++     && { ac_try='${CC} $ASMFLAGS -Wa,--noexecstack
+                        -c -o conftest.o conftest.s >/dev/null'
+   { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_try\""; } >&5
+   (eval $ac_try) 2>&5

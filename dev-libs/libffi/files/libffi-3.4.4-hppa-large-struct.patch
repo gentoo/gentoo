@@ -1,0 +1,36 @@
+https://github.com/libffi/libffi/commit/c50c16d0bcb58952840184aa83e62c6d912bf779
+
+From c50c16d0bcb58952840184aa83e62c6d912bf779 Mon Sep 17 00:00:00 2001
+From: Anthony Green <green@moxielogic.com>
+Date: Sun, 20 Nov 2022 12:20:40 -0500
+Subject: [PATCH] Fix large struct passing on PA-RISC
+
+--- a/src/pa/ffi.c
++++ b/src/pa/ffi.c
+@@ -376,10 +376,26 @@ extern void ffi_call_pa32(void (*)(UINT32 *, extended_cif *, unsigned),
+ void ffi_call(ffi_cif *cif, void (*fn)(void), void *rvalue, void **avalue)
+ {
+   extended_cif ecif;
++  size_t i, nargs = cif->nargs;
++  ffi_type **arg_types = cif->arg_types;
+ 
+   ecif.cif = cif;
+   ecif.avalue = avalue;
+ 
++  /* If we have any large structure arguments, make a copy so we are passing
++     by value.  */
++  for (i = 0; i < nargs; i++)
++    {
++      ffi_type *at = arg_types[i];
++      int size = at->size;
++      if (at->type == FFI_TYPE_STRUCT && size > 8)
++	{
++	  char *argcopy = alloca (size);
++	  memcpy (argcopy, avalue[i], size);
++	  avalue[i] = argcopy;
++	}
++    }
++
+   /* If the return value is a struct and we don't have a return
+      value address then we need to make one.  */
+ 

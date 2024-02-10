@@ -1,0 +1,38 @@
+From 069d5a3eb81bcbc730e44c27a0d060a85cf9213d Mon Sep 17 00:00:00 2001
+From: Dimitry Andric <dimitry@andric.com>
+Date: Sun, 16 Jul 2023 15:17:39 +0200
+Subject: [PATCH] Future-proof build fix for clang > 16
+
+Clang is intending to remove the `-Wno-enum-constexpr-conversion` flag
+in the future, because it can invoke undefined behavior.
+
+To avoid the "integer value NNNN is outside the valid range of values
+[0, 7] for the enumeration type 'ObjectDescriptionType'" warnings,
+explicitly specify that the `ObjectDescriptionType` enum uses `unsigned`
+as the underlying type.
+
+This also allows to remove the CMake patch that added the
+`-Wno-enum-constexpr-conversion` flag.
+
+* asturm 2023-08-20: Drop adding of -Wno-enum-constexpr-conversion in
+  commit f685bdfdf30deeea2d1db01c1edf0c60cbda652e in the first place.
+
+---
+ phonon/objectdescription.h         | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/phonon/objectdescription.h b/phonon/objectdescription.h
+index 97fec2e79..6ce92de54 100644
+--- a/phonon/objectdescription.h
++++ b/phonon/objectdescription.h
+@@ -43,7 +43,7 @@ namespace Phonon
+      *
+      * \ingroup Backend
+      */
+-    enum ObjectDescriptionType
++    enum ObjectDescriptionType : unsigned
+     {
+         /**
+          * Audio output devices. This can be soundcards (with different drivers), soundservers or
+-- 
+GitLab

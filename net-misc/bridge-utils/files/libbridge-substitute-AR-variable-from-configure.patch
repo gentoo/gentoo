@@ -1,0 +1,40 @@
+From 4dc12feb7b5a0f8f4d27c737513853896e77feea Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 21 Apr 2020 13:17:33 -0400
+Subject: [PATCH] libbridge: substitute AR variable from configure
+
+Bug: https://bugs.gentoo.org/717700
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ configure.ac          | 1 +
+ libbridge/Makefile.in | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8b2e2ea..e66f334 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,6 +12,7 @@ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AC_CHECK_TOOL([AR], [ar])
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+diff --git a/libbridge/Makefile.in b/libbridge/Makefile.in
+index 7932bfe..bd55e9b 100644
+--- a/libbridge/Makefile.in
++++ b/libbridge/Makefile.in
+@@ -1,7 +1,7 @@
+ 
+ KERNEL_HEADERS=-I@KERNEL_HEADERS@
+ 
+-AR=ar
++AR=@AR@
+ RANLIB=@RANLIB@
+ 
+ CC=@CC@
+-- 
+2.26.1
+

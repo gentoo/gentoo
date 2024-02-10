@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/894522
+Upstream PR: https://github.com/linux-on-mac/mbpfan/pull/261
+--- a/src/util.c
++++ b/src/util.c
+@@ -1,6 +1,7 @@
+ #include <stdarg.h>
+ #include <stdio.h>
+ #define __USE_MISC
++#define _BSD_SOURCE
+ #include <syslog.h>
+ 
+ #include "global.h"

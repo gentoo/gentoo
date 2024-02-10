@@ -1,0 +1,145 @@
+# The register keyword has been deprecated since c++14 and completely removed since c++17
+# Hence dropping the keyword
+# Bug: https://bugs.gentoo.org/897798
+--- a/core.cc
++++ b/core.cc
+@@ -117,7 +117,7 @@ inline void addPixelFast(unsigned char *p,int br1,int br2) {
+ }
+ 
+ void fadeFade() {
+-  register uint32_t *ptr = (uint32_t*)output;
++  uint32_t *ptr = (uint32_t*)output;
+   int i = outWidth*outHeight*2/sizeof(uint32_t);
+   do {
+     //Bytewize version was: *(ptr++) -= *ptr+(*ptr>>1)>>4;
+--- a/sdlwrap.cc
++++ b/sdlwrap.cc
+@@ -171,19 +171,19 @@ void SdlScreen::show(void) {
+   attempt(SDL_LockSurface(surface),"locking screen for output.");
+ 
+   if (scaling == 1) {
+-    register uint32_t *ptr2 = (uint32_t*)output;
++    uint32_t *ptr2 = (uint32_t*)output;
+     uint32_t *ptr1 = (uint32_t*)( surface->pixels );
+     int i = outWidth*outHeight/sizeof(*ptr2);
+ 
+     do {
+       // Asger Alstrup Nielsen's (alstrup@diku.dk)
+       // optimized 32 bit screen loop
+-      register unsigned int const r1 = *(ptr2++);
+-      register unsigned int const r2 = *(ptr2++);
++      unsigned int const r1 = *(ptr2++);
++      unsigned int const r2 = *(ptr2++);
+     
+       //if (r1 || r2) {
+   #ifdef LITTLEENDIAN
+-        register unsigned int const v = 
++        unsigned int const v = 
+             ((r1 & 0x000000f0ul) >> 4)
+           | ((r1 & 0x0000f000ul) >> 8)
+           | ((r1 & 0x00f00000ul) >> 12)
+@@ -194,7 +194,7 @@ void SdlScreen::show(void) {
+           | ((r2 & 0x00f00000ul) << 4)
+           | ((r2 & 0xf0000000ul)));
+   #else
+-        register unsigned int const v = 
++        unsigned int const v = 
+             ((r2 & 0x000000f0ul) >> 4)
+           | ((r2 & 0x0000f000ul) >> 8)
+           | ((r2 & 0x00f00000ul) >> 12)
+--- a/svgawrap.cc
++++ b/svgawrap.cc
+@@ -120,7 +120,7 @@ void SvgaScreen::inputUpdate(int &mouseX,int &mouseY,int &mouseButtons,char &key
+ }
+ 
+ void SvgaScreen::show(void) {
+-  register uint32_t *ptr2 = (uint32_t*)output;
++  uint32_t *ptr2 = (uint32_t*)output;
+   uint32_t *ptr1 = (uint32_t*)scr;
+   int i = 320*200/sizeof(uint32_t);
+   // Asger Alstrup Nielsen's (alstrup@diku.dk)
+@@ -129,15 +129,15 @@ void SvgaScreen::show(void) {
+     //Original bytewize version:
+     //unsigned char v = (*(ptr2++)&15*16);
+     //*(ptr1++) = v|(*(ptr2++)>>4);
+-    register uint32_t const r1 = *(ptr2++);
+-    register uint32_t const r2 = *(ptr2++);
++    uint32_t const r1 = *(ptr2++);
++    uint32_t const r2 = *(ptr2++);
+ 
+     //Fade will continue even after value > 16
+     //thus black pixel will be written when values just > 0
+     //thus no need to write true black
+     //if (r1 || r2) {
+ #ifdef LITTLEENDIAN
+-      register uint32_t const v = 
++      uint32_t const v = 
+           ((r1 & 0x000000f0ul) >> 4)
+         | ((r1 & 0x0000f000ul) >> 8)
+         | ((r1 & 0x00f00000ul) >> 12)
+@@ -148,7 +148,7 @@ void SvgaScreen::show(void) {
+         | ((r2 & 0x00f00000ul) << 4)
+         | ((r2 & 0xf0000000ul)));
+ #else
+-      register uint32_t const v = 
++      uint32_t const v = 
+           ((r2 & 0x000000f0ul) >> 4)
+         | ((r2 & 0x0000f000ul) >> 8)
+         | ((r2 & 0x00f00000ul) >> 12)
+--- a/xlibwrap.cc
++++ b/xlibwrap.cc
+@@ -119,24 +119,24 @@ void XScreen::inputUpdate(int &mouseX,int &mouseY,int &mouseButtons,char &keyHit
+ }
+  
+ void XScreen::show(void) { 
+-  register uint32_t *ptr2 = (uint32_t*)output;
++  uint32_t *ptr2 = (uint32_t*)output;
+   uint32_t *ptr1 = (uint32_t*)d->back;
+   int i = outWidth*outHeight/sizeof(uint32_t);
+   if (lowColor)
+     do {
+-      register uint32_t const r1 = *(ptr2++);
+-      register uint32_t const r2 = *(ptr2++);
++      uint32_t const r1 = *(ptr2++);
++      uint32_t const r2 = *(ptr2++);
+     
+       //if (r1 || r2) {
+ #ifdef LITTLEENDIAN
+-        register uint32_t const v = 
++        uint32_t const v = 
+              mapping[((r1&0xe0ul)>>5)|((r1&0xe000ul)>>10)]
+             |mapping[((r1&0xe00000ul)>>21)|((r1&0xe0000000ul)>>26)]*256U; 
+         *(ptr1++) = v | 
+              mapping[((r2&0xe0ul)>>5)|((r2&0xe000ul)>>10)]*65536U
+             |mapping[((r2&0xe00000ul)>>21)|((r2&0xe0000000ul)>>26)]*16777216U; 
+ #else
+-        register uint32_t const v = 
++        uint32_t const v = 
+              mapping[((r2&0xe0ul)>>5)|((r2&0xe000ul)>>10)]
+             |mapping[((r2&0xe00000ul)>>21)|((r2&0xe0000000ul)>>26)]*256U; 
+         *(ptr1++) = v | 
+@@ -149,12 +149,12 @@ void XScreen::show(void) {
+     do {
+       // Asger Alstrup Nielsen's (alstrup@diku.dk)
+       // optimized 32 bit screen loop
+-      register uint32_t const r1 = *(ptr2++);
+-      register uint32_t const r2 = *(ptr2++);
++      uint32_t const r1 = *(ptr2++);
++      uint32_t const r2 = *(ptr2++);
+     
+       //if (r1 || r2) {
+ #ifdef LITTLEENDIAN
+-        register uint32_t const v = 
++        uint32_t const v = 
+             ((r1 & 0x000000f0ul) >> 4)
+           | ((r1 & 0x0000f000ul) >> 8)
+           | ((r1 & 0x00f00000ul) >> 12)
+@@ -165,7 +165,7 @@ void XScreen::show(void) {
+           | ((r2 & 0x00f00000ul) << 16 -12)
+           | ((r2 & 0xf0000000ul) << 16 -16);
+ #else
+-        register uint32_t const v = 
++        uint32_t const v = 
+             ((r2 & 0x000000f0ul) >> 4)
+           | ((r2 & 0x0000f000ul) >> 8)
+           | ((r2 & 0x00f00000ul) >> 12)

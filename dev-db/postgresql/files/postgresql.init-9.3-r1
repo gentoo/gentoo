@@ -1,0 +1,157 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload promote"
+
+PG_CTL="/usr/@LIBDIR@/postgresql-@SLOT@/bin/pg_ctl"
+
+description="PostgreSQL @SLOT@ -- the world's most advanced open source database --
+${RC_SERVICE} is a wrapper around pg_ctl with additional administrative checks
+and convenience"
+
+get_config() {
+    [ -f "${PGDATA%/}/postgresql.conf" ] || return 1
+
+    eval echo $(sed -e 's:#.*::' "${PGDATA%/}/postgresql.conf" \
+        | awk '$1 == "'$1'" { print ($2 == "=" ? $3 : $2) }')
+}
+
+depend() {
+    use net
+    provide postgresql
+
+    if [ "$(get_config log_destination)" = "syslog" ]; then
+        use logger
+    fi
+}
+
+configured_port=$(get_config port)
+: ${configured_port:=${PGPORT}}
+
+checkconfig() {
+    # Check that DATA_DIR has been set
+    if [ -z "${DATA_DIR}" ] ; then
+        eerror "DATA_DIR not set"
+        eerror "HINT: Perhaps you need to update /etc/conf.d/postgresql-@SLOT@"
+        return 1
+    fi
+
+    # Check that DATA_DIR exists
+    if [ ! -d "${DATA_DIR}" ] ; then
+        eerror "Directory not found: ${DATA_DIR}"
+        eerror "HINT: Ensure that DATA_DIR points to the right path."
+        eerror "HINT: Or perhaps you need to create the database cluster:"
+        eerror "    emerge --config dev-db/postgresql:@SLOT@"
+        return 1
+    fi
+
+    # Check for the existence of PostgreSQL's config files, and set the
+    # proper mode and ownership.
+    # Only three files should be checked as potentially other files
+    # may be in PGDATA that should not be touched.
+    local file
+    for file in postgresql pg_hba pg_ident ; do
+        file="${PGDATA%/}/${file}.conf"
+        if [ -f "${file}" ] ; then
+            checkpath -f -m 0600 -o postgres:postgres "${file}"
+        else
+            eerror "${file} not found"
+            eerror "HINT: mv ${DATA_DIR%/}/*.conf ${PGDATA}"
+            return 1
+        fi
+    done
+
+    # Set the proper permission for the socket paths and create it if
+    # it doesn't exist.
+    set -f; IFS=','
+    local s
+    for s in ${PG_SOCKET_DIRECTORIES}; do
+        checkpath -d -m 1775 -o root:postgres "${s}"
+        if [ -e "${s%/}/.s.PGSQL.${configured_port}" ] ; then
+            eerror "Socket conflict."
+            eerror "A server is already listening on:"
+            eerror "    ${s%/}/.s.PGSQL.${configured_port}"
+            eerror "HINT: Change PGPORT to listen on a different socket."
+            return 1
+        fi
+    done
+    set +f; unset IFS
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting PostgreSQL @SLOT@"
+
+    rm -f "${DATA_DIR%/}/postmaster.pid"
+
+    su - postgres -c \
+       "PGPORT=${configured_port} ${PG_EXTRA_ENV} ${PG_CTL} start \
+           -s -w -t ${START_TIMEOUT} -l ${DATA_DIR%/}/postmaster.log \
+           -D ${PGDATA} \
+           -o '--data-directory=${DATA_DIR} \
+               --unix-socket-directories=${PG_SOCKET_DIRECTORIES} \
+               ${PGOPTS}'"
+
+    local retval=$?
+
+    if [ $retval -ne 0 ] ; then
+        eerror "Check the log for a possible explanation of the above error."
+        eerror "The log may be located at:"
+        eerror "    ${DATA_DIR%/}/postmaster.log"
+        eerror "Or wherever you configured PostgreSQL @SLOT@ to log."
+    fi
+
+    eend $retval
+}
+
+stop() {
+    local seconds=$(( ${NICE_TIMEOUT} + ${RUDE_TIMEOUT} + ${FORCE_TIMEOUT} ))
+    ebegin "Stopping PostgreSQL @SLOT@ (this can take up to ${seconds} seconds)"
+
+    su - postgres -c \
+       "${PG_CTL} stop -t ${NICE_TIMEOUT} -s -D ${DATA_DIR} -m smart"
+    local retval=$?
+
+    if [ "${RUDE_QUIT}" != "NO" -a ${retval} -ne 0 ] ; then
+        einfo "Previous attempt failed. Trying RUDE_QUIT."
+        su - postgres -c \
+           "${PG_CTL} stop -t ${RUDE_TIMEOUT} -s -D ${DATA_DIR} -m fast"
+        retval=$?
+    fi
+
+    if [ "${FORCE_QUIT}" = "YES" -a ${retval} -ne 0 ] ; then
+        einfo "Previous step failed. Trying FORCE_QUIT."
+        ewarn "A recover-run might be executed on next startup."
+        su - postgres -c \
+           "${PG_CTL} stop -t ${FORCE_TIMEOUT} -s -D ${DATA_DIR} -m immediate"
+        retval=$?
+    fi
+
+    eend ${retval}
+}
+
+status() {
+    ebegin "Checking PostgreSQL @SLOT@ status"
+    su - postgres -c "${PG_CTL} status -D ${DATA_DIR}"
+    eend $?
+}
+
+description_reload="Simply sends the postgres process a SIGHUP signal, causing
+           it to reread its configuration files (postgresql.conf, pg_hba.conf,
+           etc.). This allows changing of configuration-file options that do not
+           require a complete restart to take effect."
+reload() {
+    ebegin "Reloading PostgreSQL @SLOT@ configuration"
+    su - postgres -c "${PG_CTL} reload -s -D ${DATA_DIR}"
+    eend $?
+}
+
+description_promote="If the server is in standby, it is commanded to exit
+            recovery and begin read-write operations."
+promote() {
+    ebegin "Promoting PostgreSQL @SLOT@"
+    su - postgres -c "${PG_CTL} promote -s -D ${DATA_DIR}"
+    eend $?
+}

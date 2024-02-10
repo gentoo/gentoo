@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index 199f143..70788ee 100644
+--- a/Makefile
++++ b/Makefile
+@@ -121,13 +121,3 @@ install-lib: $(LIBRARY)
+ install-man:
+ 	install -d $(DESTDIR)$(MAN3DIR)
+ 	install -d $(DESTDIR)$(MAN7DIR)
+-	for F in man/*.3; do \
+-	  gzip <$$F >$(DESTDIR)$(MAN3DIR)/$${F#man/}.gz; \
+-	done
+-	for F in man/*.7; do \
+-	  gzip <$$F >$(DESTDIR)$(MAN7DIR)/$${F#man/}.gz; \
+-	done
+-	while read FROM EQ TO; do \
+-	  echo ln -sf $$TO.gz $(DESTDIR)$(MAN3DIR)/$$FROM.gz; \
+-	done < man/also
+-

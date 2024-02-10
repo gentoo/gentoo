@@ -1,0 +1,271 @@
+https://github.com/cryfs/cryfs/commit/27587ea1acec5f939a31217f1c43953378f18821.patch
+https://bugs.gentoo.org/786459
+
+From 27587ea1acec5f939a31217f1c43953378f18821 Mon Sep 17 00:00:00 2001
+From: Sebastian Messmer <messmer@cryfs.org>
+Date: Sat, 8 May 2021 14:44:27 -0700
+Subject: [PATCH] Fixed an issue when compiling with GCC 11, see
+ https://github.com/cryfs/cryfs/issues/389
+
+---
+--- a/src/blobstore/implementations/onblocks/datanodestore/DataNodeView.h
++++ b/src/blobstore/implementations/onblocks/datanodestore/DataNodeView.h
+@@ -67,7 +67,7 @@ class DataNodeView final {
+ 
+   static DataNodeView create(blockstore::BlockStore *blockStore, const DataNodeLayout &layout, uint16_t formatVersion, uint8_t depth, uint32_t size, cpputils::Data data) {
+     ASSERT(data.size() <= layout.datasizeBytes(), "Data is too large for node");
+-    cpputils::Data serialized = _serialize(layout, formatVersion, depth, size, std::move(data));
++    cpputils::Data serialized = serialize_(layout, formatVersion, depth, size, std::move(data));
+     ASSERT(serialized.size() == layout.blocksizeBytes(), "Wrong block size");
+     auto block = blockStore->create(serialized);
+     return DataNodeView(std::move(block));
+@@ -75,7 +75,7 @@ class DataNodeView final {
+ 
+   static DataNodeView initialize(cpputils::unique_ref<blockstore::Block> block, const DataNodeLayout &layout, uint16_t formatVersion, uint8_t depth, uint32_t size, cpputils::Data data) {
+     ASSERT(data.size() <= DataNodeLayout(block->size()).datasizeBytes(), "Data is too large for node");
+-    cpputils::Data serialized = _serialize(layout, formatVersion, depth, size, std::move(data));
++    cpputils::Data serialized = serialize_(layout, formatVersion, depth, size, std::move(data));
+     ASSERT(serialized.size() == block->size(), "Block has wrong size");
+     block->write(serialized.data(), 0, serialized.size());
+     return DataNodeView(std::move(block));
+@@ -83,7 +83,7 @@ class DataNodeView final {
+ 
+   static DataNodeView overwrite(blockstore::BlockStore *blockStore, const DataNodeLayout &layout, uint16_t formatVersion, uint8_t depth, uint32_t size, const blockstore::BlockId &blockId, cpputils::Data data) {
+     ASSERT(data.size() <= layout.datasizeBytes(), "Data is too large for node");
+-    cpputils::Data serialized = _serialize(layout, formatVersion, depth, size, std::move(data));
++    cpputils::Data serialized = serialize_(layout, formatVersion, depth, size, std::move(data));
+     auto block = blockStore->overwrite(blockId, std::move(serialized));
+     return DataNodeView(std::move(block));
+   }
+@@ -143,7 +143,7 @@ class DataNodeView final {
+   }
+ 
+ private:
+-  static cpputils::Data _serialize(const DataNodeLayout &layout, uint16_t formatVersion, uint8_t depth, uint32_t size, cpputils::Data data) {
++  static cpputils::Data serialize_(const DataNodeLayout &layout, uint16_t formatVersion, uint8_t depth, uint32_t size, cpputils::Data data) {
+     cpputils::Data result(layout.blocksizeBytes());
+     cpputils::serialize<uint16_t>(result.dataOffset(layout.FORMAT_VERSION_OFFSET_BYTES), formatVersion);
+     cpputils::serialize<uint8_t>(result.dataOffset(layout.DEPTH_OFFSET_BYTES), depth);
+--- a/src/cryfs/filesystem/fsblobstore/utils/DirEntry.cpp
++++ b/src/cryfs/filesystem/fsblobstore/utils/DirEntry.cpp
+@@ -11,55 +11,55 @@ namespace cryfs {
+ 
+         namespace {
+             template<typename DataType>
+-            size_t _serialize(void* dst, const DataType& obj) {
++            size_t serialize_(void* dst, const DataType& obj) {
+                 cpputils::serialize<DataType>(dst, obj);
+                 return sizeof(DataType);
+             }
+ 
+             template<typename DataType>
+-            DataType _deserialize(const char** src) {
++            DataType deserialize_(const char** src) {
+                 DataType result = cpputils::deserialize<DataType>(*src);
+                 *src += sizeof(DataType);
+                 return result;
+             }
+ 
+-            constexpr size_t _serializedTimeValueSize() {
++            constexpr size_t serializedTimeValueSize_() {
+                 return sizeof(uint64_t) + sizeof(uint32_t);
+             }
+ 
+-            unsigned int _serializeTimeValue(uint8_t *dest, timespec value) {
++            unsigned int serializeTimeValue_(uint8_t *dest, timespec value) {
+                 unsigned int offset = 0;
+-                offset += _serialize<uint64_t>(dest + offset, value.tv_sec);
+-                offset += _serialize<uint32_t>(dest + offset, value.tv_nsec);
+-                ASSERT(offset == _serializedTimeValueSize(), "serialized to wrong size");
++                offset += serialize_<uint64_t>(dest + offset, value.tv_sec);
++                offset += serialize_<uint32_t>(dest + offset, value.tv_nsec);
++                ASSERT(offset == serializedTimeValueSize_(), "serialized to wrong size");
+                 return offset;
+             }
+ 
+-            timespec _deserializeTimeValue(const char **pos) {
++            timespec deserializeTimeValue_(const char **pos) {
+                 timespec value{};
+-                value.tv_sec = _deserialize<uint64_t>(pos);
+-                value.tv_nsec = _deserialize<uint32_t>(pos);
++                value.tv_sec = deserialize_<uint64_t>(pos);
++                value.tv_nsec = deserialize_<uint32_t>(pos);
+                 return value;
+             }
+ 
+-            unsigned int _serializeString(uint8_t *dest, const string &value) {
++            unsigned int serializeString_(uint8_t *dest, const string &value) {
+                 std::memcpy(dest, value.c_str(), value.size()+1);
+                 return value.size() + 1;
+             }
+ 
+-            string _deserializeString(const char **pos) {
++            string deserializeString_(const char **pos) {
+                 size_t length = strlen(*pos);
+                 string value(*pos, length);
+                 *pos += length + 1;
+                 return value;
+             }
+ 
+-            unsigned int _serializeBlockId(uint8_t *dest, const BlockId &blockId) {
++            unsigned int serializeBlockId_(uint8_t *dest, const BlockId &blockId) {
+                 blockId.ToBinary(dest);
+                 return blockId.BINARY_LENGTH;
+             }
+ 
+-            BlockId _deserializeBlockId(const char **pos) {
++            BlockId deserializeBlockId_(const char **pos) {
+                 BlockId blockId = BlockId::FromBinary(*pos);
+                 *pos += BlockId::BINARY_LENGTH;
+                 return blockId;
+@@ -75,35 +75,35 @@ namespace cryfs {
+                     _mode.hasDirFlag()) + ", " + std::to_string(_mode.hasSymlinkFlag()) + ", " + std::to_string(static_cast<uint8_t>(_type))
+             );
+             unsigned int offset = 0;
+-            offset += _serialize<uint8_t>(dest + offset, static_cast<uint8_t>(_type));
+-            offset += _serialize<uint32_t>(dest + offset, _mode.value());
+-            offset += _serialize<uint32_t>(dest + offset, _uid.value());
+-            offset += _serialize<uint32_t>(dest + offset, _gid.value());
+-            offset += _serializeTimeValue(dest + offset, _lastAccessTime);
+-            offset += _serializeTimeValue(dest + offset, _lastModificationTime);
+-            offset += _serializeTimeValue(dest + offset, _lastMetadataChangeTime);
+-            offset += _serializeString(dest + offset, _name);
+-            offset += _serializeBlockId(dest + offset, _blockId);
++            offset += serialize_<uint8_t>(dest + offset, static_cast<uint8_t>(_type));
++            offset += serialize_<uint32_t>(dest + offset, _mode.value());
++            offset += serialize_<uint32_t>(dest + offset, _uid.value());
++            offset += serialize_<uint32_t>(dest + offset, _gid.value());
++            offset += serializeTimeValue_(dest + offset, _lastAccessTime);
++            offset += serializeTimeValue_(dest + offset, _lastModificationTime);
++            offset += serializeTimeValue_(dest + offset, _lastMetadataChangeTime);
++            offset += serializeString_(dest + offset, _name);
++            offset += serializeBlockId_(dest + offset, _blockId);
+             ASSERT(offset == serializedSize(), "Didn't write correct number of elements");
+         }
+ 
+         const char *DirEntry::deserializeAndAddToVector(const char *pos, vector<DirEntry> *result) {
+-            fspp::Dir::EntryType type = static_cast<fspp::Dir::EntryType>(_deserialize<uint8_t>(&pos));
+-            fspp::mode_t mode = fspp::mode_t(_deserialize<uint32_t>(&pos));
+-            fspp::uid_t uid = fspp::uid_t(_deserialize<uint32_t>(&pos));
+-            fspp::gid_t gid = fspp::gid_t(_deserialize<uint32_t>(&pos));
+-            timespec lastAccessTime = _deserializeTimeValue(&pos);
+-            timespec lastModificationTime = _deserializeTimeValue(&pos);
+-            timespec lastMetadataChangeTime = _deserializeTimeValue(&pos);
+-            string name = _deserializeString(&pos);
+-            BlockId blockId = _deserializeBlockId(&pos);
++            fspp::Dir::EntryType type = static_cast<fspp::Dir::EntryType>(deserialize_<uint8_t>(&pos));
++            fspp::mode_t mode = fspp::mode_t(deserialize_<uint32_t>(&pos));
++            fspp::uid_t uid = fspp::uid_t(deserialize_<uint32_t>(&pos));
++            fspp::gid_t gid = fspp::gid_t(deserialize_<uint32_t>(&pos));
++            timespec lastAccessTime = deserializeTimeValue_(&pos);
++            timespec lastModificationTime = deserializeTimeValue_(&pos);
++            timespec lastMetadataChangeTime = deserializeTimeValue_(&pos);
++            string name = deserializeString_(&pos);
++            BlockId blockId = deserializeBlockId_(&pos);
+ 
+             result->emplace_back(type, name, blockId, mode, uid, gid, lastAccessTime, lastModificationTime, lastMetadataChangeTime);
+             return pos;
+         }
+ 
+         size_t DirEntry::serializedSize() const {
+-            return 1 + sizeof(uint32_t) + sizeof(uint32_t) + sizeof(uint32_t) + 3*_serializedTimeValueSize() + (
++            return 1 + sizeof(uint32_t) + sizeof(uint32_t) + sizeof(uint32_t) + 3*serializedTimeValueSize_() + (
+                     _name.size() + 1) + _blockId.BINARY_LENGTH;
+         }
+     }
+--- a/src/cryfs/localstate/LocalStateMetadata.cpp
++++ b/src/cryfs/localstate/LocalStateMetadata.cpp
+@@ -30,10 +30,10 @@ LocalStateMetadata::LocalStateMetadata(uint32_t myClientId, Hash encryptionKeyHa
+ 
+ LocalStateMetadata LocalStateMetadata::loadOrGenerate(const bf::path &statePath, const Data& encryptionKey, bool allowReplacedFilesystem) {
+   auto metadataFile = statePath / "metadata";
+-  auto loaded = _load(metadataFile);
++  auto loaded = load_(metadataFile);
+   if (loaded == none) {
+     // If it couldn't be loaded, generate a new client id.
+-    return _generate(metadataFile, encryptionKey);
++    return generate_(metadataFile, encryptionKey);
+   }
+ 
+   if (!allowReplacedFilesystem && loaded->_encryptionKeyHash.digest != cpputils::hash::hash(encryptionKey, loaded->_encryptionKeyHash.salt).digest) {
+@@ -42,22 +42,22 @@ LocalStateMetadata LocalStateMetadata::loadOrGenerate(const bf::path &statePath,
+   return *loaded;
+ }
+ 
+-optional<LocalStateMetadata> LocalStateMetadata::_load(const bf::path &metadataFilePath) {
++optional<LocalStateMetadata> LocalStateMetadata::load_(const bf::path &metadataFilePath) {
+   ifstream file(metadataFilePath.string());
+   if (!file.good()) {
+     // State file doesn't exist
+     return none;
+   }
+-  return _deserialize(file);
++  return deserialize_(file);
+ }
+ 
+-void LocalStateMetadata::_save(const bf::path &metadataFilePath) const {
++void LocalStateMetadata::save_(const bf::path &metadataFilePath) const {
+   ofstream file(metadataFilePath.string(), std::ios::trunc);
+-  _serialize(file);
++  serialize_(file);
+ }
+ 
+ namespace {
+-uint32_t _generateClientId() {
++uint32_t generateClientId_() {
+   uint32_t result;
+   do {
+     result = cpputils::deserialize<uint32_t>(Random::PseudoRandom().getFixedSize<sizeof(uint32_t)>().data());
+@@ -82,8 +82,8 @@ optional<uint32_t> _tryLoadClientIdFromLegacyFile(const bf::path &metadataFilePa
+ #endif
+ }
+ 
+-LocalStateMetadata LocalStateMetadata::_generate(const bf::path &metadataFilePath, const Data& encryptionKey) {
+-  uint32_t myClientId = _generateClientId();
++LocalStateMetadata LocalStateMetadata::generate_(const bf::path &metadataFilePath, const Data& encryptionKey) {
++  uint32_t myClientId = generateClientId_();
+ #ifndef CRYFS_NO_COMPATIBILITY
+   // In the old format, this was stored in a "myClientId" file. If that file exists, load it from there.
+   optional<uint32_t> legacy = _tryLoadClientIdFromLegacyFile(metadataFilePath);
+@@ -93,11 +93,11 @@ LocalStateMetadata LocalStateMetadata::_generate(const bf::path &metadataFilePat
+ #endif
+ 
+   LocalStateMetadata result(myClientId, cpputils::hash::hash(encryptionKey, cpputils::hash::generateSalt()));
+-  result._save(metadataFilePath);
++  result.save_(metadataFilePath);
+   return result;
+ }
+ 
+-void LocalStateMetadata::_serialize(ostream& stream) const {
++void LocalStateMetadata::serialize_(ostream& stream) const {
+   ptree pt;
+   pt.put<uint32_t>("myClientId", myClientId());
+   pt.put<string>("encryptionKey.salt", _encryptionKeyHash.salt.ToString());
+@@ -106,7 +106,7 @@ void LocalStateMetadata::_serialize(ostream& stream) const {
+   write_json(stream, pt);
+ }
+ 
+-LocalStateMetadata LocalStateMetadata::_deserialize(istream& stream) {
++LocalStateMetadata LocalStateMetadata::deserialize_(istream& stream) {
+ 	try {
+ 		ptree pt;
+ 		read_json(stream, pt);
+--- a/src/cryfs/localstate/LocalStateMetadata.h
++++ b/src/cryfs/localstate/LocalStateMetadata.h
+@@ -20,11 +20,11 @@ class LocalStateMetadata final {
+   const uint32_t _myClientId;
+   const cpputils::hash::Hash _encryptionKeyHash;
+ 
+-  static boost::optional<LocalStateMetadata> _load(const boost::filesystem::path &metadataFilePath);
+-  static LocalStateMetadata _deserialize(std::istream& stream);
+-  static LocalStateMetadata _generate(const boost::filesystem::path &metadataFilePath, const cpputils::Data& encryptionKey);
+-  void _save(const boost::filesystem::path &metadataFilePath) const;
+-  void _serialize(std::ostream& stream) const;
++  static boost::optional<LocalStateMetadata> load_(const boost::filesystem::path &metadataFilePath);
++  static LocalStateMetadata deserialize_(std::istream& stream);
++  static LocalStateMetadata generate_(const boost::filesystem::path &metadataFilePath, const cpputils::Data& encryptionKey);
++  void save_(const boost::filesystem::path &metadataFilePath) const;
++  void serialize_(std::ostream& stream) const;
+ 
+   LocalStateMetadata(uint32_t myClientId, cpputils::hash::Hash encryptionKey);
+ };

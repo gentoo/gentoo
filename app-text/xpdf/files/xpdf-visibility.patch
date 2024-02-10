@@ -1,0 +1,11 @@
+--- xpdf-4.01/goo/GString.h.orig	2019-02-18 21:24:19.000000000 +0300
++++ xpdf-4.01/goo/GString.h	2019-03-10 20:16:48.257102840 +0300
+@@ -39,7 +39,7 @@
+ 
+   // Copy a string.
+   GString(GString *str);
+-  GString *copy() { return new GString(this); }
++  __attribute__ ((visibility ("default"))) GString *copy() { return new GString(this); }
+ 
+   // Concatenate two strings.
+   GString(GString *str1, GString *str2);

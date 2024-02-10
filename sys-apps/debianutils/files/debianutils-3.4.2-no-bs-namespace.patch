@@ -1,0 +1,30 @@
+Allow dots in the names, bug #95173.  Patch by Kerin Millar.
+Re-sourced for 3.4.2
+
+--- a/run-parts.8
++++ b/run-parts.8
+@@ -25,9 +25,10 @@
+ .IR directory .
+ Other files and directories are silently ignored.
+ 
+-If neither the \-\-lsbsysinit option nor the \-\-regex option is given
+-then the names must consist entirely of ASCII upper- and lower-case
+-letters, ASCII digits, ASCII underscores, and ASCII minus-hyphens.
++If neither the \-\-lsbsysinit option nor the \-\-regex option is given then the
++names must consist entirely of ASCII upper- and lower-case letters, ASCII
++digits, ASCII underscores, and ASCII minus-hyphens. However, the name must not
++begin with a period.
+ 
+ If the \-\-lsbsysinit option is given, then the names must not end
+ in .dpkg\-old  or .dpkg\-dist or .dpkg\-new or .dpkg\-tmp, and must
+--- a/run-parts.c
++++ b/run-parts.c
+@@ -501,7 +501,7 @@
+                     != 0)
+             pt_regex = &tradre;
+ 
+-    } else if ( (err = regcomp(&classicalre, "^[a-zA-Z0-9_-]+$",
++    } else if ( (err = regcomp(&classicalre, "^[a-zA-Z0-9_-][a-zA-Z0-9._-]+$",
+                     REG_EXTENDED | REG_NOSUB)) != 0)
+         pt_regex = &classicalre;
+ 

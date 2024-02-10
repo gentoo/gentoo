@@ -1,0 +1,286 @@
+--- a/convert/eyuvtojpeg.c
++++ b/convert/eyuvtojpeg.c
+@@ -22,6 +22,7 @@
+ /*==============*
+  * HEADER FILES *
+  *==============*/
++#include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <malloc.h>
+@@ -43,7 +44,7 @@
+ void AllocYCC(void);
+ 
+ 
+-void	main(int argc, char **argv)
++int	main(int argc, char **argv)
+ {
+     FILE *fpointer;
+     char command[256];
+@@ -105,6 +106,7 @@
+     fprintf(stdout, "Converting to JPEG %s\n", dest);
+     sprintf(command, "cjpeg /tmp/foobar > %s", dest);
+     system(command);
++    return 0;
+ }
+ 
+ 
+--- a/convert/eyuvtoppm.c
++++ b/convert/eyuvtoppm.c
+@@ -22,6 +22,7 @@
+ /*==============*
+  * HEADER FILES *
+  *==============*/
++#include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <malloc.h>
+@@ -43,7 +44,7 @@
+ void AllocYCC(void);
+ 
+ 
+-void	main(int argc, char **argv)
++int	main(int argc, char **argv)
+ {
+     FILE *fpointer;
+     char src[256], dest[256];
+@@ -109,7 +110,7 @@
+ 
+     WritePPM(fpointer);
+     fclose(fpointer);
+-
++    return 0;
+ }
+ 
+ void Usage(void)
+--- a/convert/mtv/archdep.h
++++ b/convert/mtv/archdep.h
+@@ -45,16 +45,46 @@
+ 			    ((char *)(to))[5] = ((char *)(from))[2];	\
+ 			    ((char *)(to))[6] = ((char *)(from))[1];	\
+ 			    ((char *)(to))[7] = ((char *)(from))[0];
+-#endif /*little-endian*/
++#endif /*little-endian 32bit*/
++
++#if defined (__x86_64)
++#define	DECODE_SHORT(from, to)						\
++			    ((char *)(to))[0] = ((char *)(from))[1];	\
++			    ((char *)(to))[1] = ((char *)(from))[0];
++#define	DECODE_INT(from, to)						\
++			    ((char *)(to))[0] = ((char *)(from))[3];	\
++			    ((char *)(to))[1] = ((char *)(from))[2];	\
++			    ((char *)(to))[2] = ((char *)(from))[1];	\
++			    ((char *)(to))[3] = ((char *)(from))[0];
++
++#define	DECODE_LONG(from, to)						\
++			    ((char *)(to))[0] = ((char *)(from))[7];	\
++			    ((char *)(to))[1] = ((char *)(from))[6];	\
++			    ((char *)(to))[2] = ((char *)(from))[5];	\
++			    ((char *)(to))[3] = ((char *)(from))[4];    \
++			    ((char *)(to))[4] = ((char *)(from))[3];	\
++			    ((char *)(to))[5] = ((char *)(from))[2];	\
++			    ((char *)(to))[6] = ((char *)(from))[1];	\
++			    ((char *)(to))[7] = ((char *)(from))[0];
++
++#define	DECODE_FLOAT(from, to)		DECODE_INT((to), (from))
++
++#define	DECODE_DOUBLE(from, to)		DECODE_LONG((to), (from))
++
++#endif /*little-endian, 64bit*/
+ 
+ 
+ /* Most architectures are symmetrical with respect to conversions. */
+-#if defined (mc68000) || defined (sparc) || defined (i386)
++#if defined (mc68000) || defined (sparc) || defined (i386) || defined(__x86_64)
+ #define	ENCODE_SHORT(from, to)		DECODE_SHORT((from), (to))
+ #define	ENCODE_LONG(from, to)		DECODE_LONG((from), (to))
+ #define	ENCODE_FLOAT(from, to)		DECODE_FLOAT((from), (to))
+ #define	ENCODE_DOUBLE(from, to)		DECODE_DOUBLE((from), (to))
+ 
++#if defined(__x86_64)
++#define	ENCODE_INT(from, to)		DECODE_INT((from), (to))
++#endif
++
+ /* Define types of specific length */
+ typedef char		i_8;
+ typedef short		i_16;
+--- a/convert/mtv/movieToVid.c
++++ b/convert/mtv/movieToVid.c
+@@ -295,7 +295,7 @@
+     exit (0);
+ }
+ 
+-void
++int
+ main (argc, argv)
+ int argc;
+ char **argv;
+@@ -326,4 +326,5 @@
+     WriteScriptFile (argv[1], argv[2], argv[3], argv[4],
+ 		     &header, offsets, numFrames);
+     fprintf (stderr, "done\n");
++    return 0;
+ }
+--- a/convert/ppmtoeyuv.c
++++ b/convert/ppmtoeyuv.c
+@@ -39,6 +39,11 @@
+  * HEADER FILES *
+  *==============*/
+ 
++#include <malloc.h> 
++#include <unistd.h>
++#include <string.h>
++#include <stdlib.h>
++#include <ctype.h>
+ #include <stdio.h>
+ #include "ansi.h"
+ 
+@@ -65,7 +66,7 @@
+ static void PPMtoYUV _ANSI_ARGS_((void));
+ 
+ 
+-void	main(int argc, char **argv)
++int	main(int argc, char **argv)
+ {
+     if ( ! ReadPPM(stdin) )
+     {
+@@ -76,6 +77,7 @@
+     PPMtoYUV();
+ 
+     WriteYUV(stdout);
++    return 0;
+ }
+ 
+ 
+--- a/mpeg_encode/bitio.c
++++ b/mpeg_encode/bitio.c
+@@ -79,6 +79,8 @@
+  * HEADER FILES *
+  *==============*/
+ 
++#include <unistd.h>
++#include <time.h>
+ #include <assert.h>
+ #include "all.h"
+ #include "byteorder.h"
+--- a/mpeg_encode/jpeg.c
++++ b/mpeg_encode/jpeg.c
+@@ -65,6 +65,8 @@
+  *==============*/
+ 
+ #include <stdio.h>
++#include <sys/types.h>
++#include <unistd.h>
+ #include "all.h"
+ #include "mtypes.h"
+ #include "frames.h"
+--- a/mpeg_encode/headers/libpnmrw.h
++++ b/mpeg_encode/headers/libpnmrw.h
+@@ -20,9 +20,6 @@
+ ** that point here, feel free to tweak or remove these declarations.
+ */
+ #include <malloc.h>
+-#if !defined(sco)  &&  !defined(sgi) && !defined(IRIX)
+-extern char* malloc();
+-#endif
+ /* End of configurable definitions. */
+ 
+ 
+--- a/mpeg_encode/libpnmrw.c
++++ b/mpeg_encode/libpnmrw.c
+@@ -27,6 +27,9 @@
+ /* #define MSDOS */
+ #endif
+ 
++#include <stdlib.h>
++#include <unistd.h>
++#include <errno.h>
+ #include <stdio.h>
+ #include "libpnmrw.h"
+ 
+@@ -128,11 +128,9 @@
+   pm_perror( reason )
+ char* reason;
+ {
+-  extern char* sys_errlist[];
+-  extern int errno;
+   char* e;
+ 
+-  e = sys_errlist[errno];
++  e = strerror(errno);
+ 
+   if ( reason != 0 && reason[0] != '\0' )
+     (void) fprintf( stderr, "%s: %s - %s\n", progname, reason, e );
+@@ -361,7 +361,7 @@
+ int cols, format;
+ {
+   register int col, bitshift, b;
+-  register int item;
++  register int item = 0;
+   register bit* bP;
+ 
+   switch ( format )
+--- a/mpeg_encode/opts.c
++++ b/mpeg_encode/opts.c
+@@ -35,6 +35,7 @@
+  * HEADER FILES *
+  *==============*/
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include "opts.h"
+--- a/mpeg_encode/iframe.c
++++ b/mpeg_encode/iframe.c
+@@ -235,6 +235,8 @@
+ int SetFCodeHelper _ANSI_ARGS_((int sr));
+ void CalcDistortion _ANSI_ARGS_((MpegFrame *current, int y, int x));
+ 
++void Mpost_UnQuantZigBlockLaplace _ANSI_ARGS_((FlatBlock in, Block out, int qscale, boolean iblock));
++
+ int
+   SetFCodeHelper(SR)
+ int SR;
+--- a/convert/jmovie2jpeg.c
++++ b/convert/jmovie2jpeg.c
+@@ -33,6 +33,9 @@
+ ************************************************************************/
+ 
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <unistd.h>
+ 
+ #define HEADER_SIZE 607   /*JFIF header size used on output images*/
+ 
+@@ -54,7 +54,6 @@
+     FILE *inFile;         /* Jmovie file pointer */
+     FILE *outFile;        /* JPEG file pointer for output file */
+     FILE *audiooutfile;   /* SPARC .AU audio output file pointer*/
+-    extern char *malloc();
+     int fd, i;            /* input file descriptor and a counting variable*/
+     int start, end;       /* first and last frames to be extracted */
+     char ofname[256];     /* output filename string */
+@@ -283,12 +283,12 @@
+     if (fread (&(image_offset),sizeof(int),1,inFile) != 1)
+     {
+ 	perror("Error in reading image offset");
+-	exit();
++	exit(1);
+     }
+     if (fread (&(audio_tracks),sizeof(int),1,inFile) != 1)
+     {
+ 	perror("Error in reading audio tracks");
+-	exit();
++	exit(1);
+     }
+     if (audio_tracks != 1) 
+       { 
+@@ -373,6 +373,7 @@
+     fclose(inFile);
+     fclose(audiooutfile);
+     
++    return 0;
+ }
+ 
+ 

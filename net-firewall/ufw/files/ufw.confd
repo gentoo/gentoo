@@ -1,0 +1,5 @@
+# If equals to "yes", warnings that firewall is disabled
+# (using `ufw disable') will be suppressed and the service
+# will be considered started.
+# Default if unset or another value is "no".
+ufw_nonfatal_if_disabled=no

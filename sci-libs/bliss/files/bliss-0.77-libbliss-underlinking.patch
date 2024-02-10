@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/922651
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cfdb0a6..e0fd51a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,6 +51,9 @@ endif(MSVC)
+ # Add the shared library
+ add_library(bliss SHARED ${BLISS_SOURCE_FILES})
+ set_property(TARGET bliss PROPERTY POSITION_INDEPENDENT_CODE 1)
++if(USE_GMP)
++  target_link_libraries(bliss ${GMP_LIBRARIES})
++endif(USE_GMP)
+ 
+ # Add the static library
+ add_library(bliss_static STATIC ${BLISS_SOURCE_FILES})

@@ -1,0 +1,11 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-06)
+# Force Xorg without Mesa. Mesa has been tested on m68k with VirtIO-GPU under
+# QEMU and seems quite broken.
+x11-base/xorg-server minimal
+
+# James Le Cuirot <chewi@gentoo.org> (2021-11-09)
+# dev-perl/Type-Tie fails a test so avoid dependencies.
+dev-perl/Type-Tiny minimal

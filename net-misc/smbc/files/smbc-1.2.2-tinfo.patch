@@ -1,0 +1,18 @@
+diff -ur a/configure.in b/configure.in
+--- a/configure.in	2022-07-28 13:24:38.673242313 -0500
++++ b/configure.in	2022-07-28 13:27:43.726466613 -0500
+@@ -94,11 +94,9 @@
+              [AC_CHECK_LIB(popt, main)]
+             )
+ 
+-AC_CHECK_LIB(ncurses,  
+-             main, 
+-             [], 
+-             [AC_CHECK_LIB(ncurses, main)]
+-            )
++PKG_CHECK_MODULES([NCURSES], [ncurses], [
++	LIBS="$NCURSES_LIBS $LIBS"
++], [:])
+ 
+ AC_CHECK_LIB(smbclient, 
+              main, 

@@ -1,0 +1,242 @@
+'\" t
+.\"     Title: makemkvcon
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 05/20/2020
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "MAKEMKVCON" "1" "05/20/2020" "\ \&" "\ \&"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+makemkvcon \- MakeMKV console application
+.SH "SYNOPSIS"
+.sp
+\fBmakemkvcon\fR [\fIOPTIONS\fR] <backup|info|mkv> [\fIPARAMETERS\fR]
+.SH "DESCRIPTION"
+.sp
+Command\-line options for MakeMKV\&.
+.sp
+Configuration options and setup keys are located in ~/\&.MakeMKV/
+.SH "OPTIONS"
+.sp
+General options:
+.PP
+\fB\-\-messages=\fR\fIFILE\fR
+.RS 4
+Output all messgaes to a file\&. Special file names: stdout, stderr, null\&. Default is to stdout\&.
+.RE
+.PP
+\fB\-\-progress=\fR\fIFILE\fR
+.RS 4
+Output all progress messages to a file\&. Special file names: stdout, stderr, null\&. Use
+\fB\-same\fR
+to use
+\fB\-\-messages\fR
+argument\&. Default is no output\&.
+.RE
+.PP
+\fB\-\-debug\fR[=\fIFILE\fR]
+.RS 4
+Enables debug messages\&. Optionally saves to output file\&.
+.RE
+.PP
+\fB\-\-directio=[true|false]\fR
+.RS 4
+Enables or disables direct disc access\&.
+.RE
+.PP
+\fB\-\-noscan\fR
+.RS 4
+Don\(cqt access any media during disc scan and do not check for media insertion and removal\&. Helpful when other applications are already accessing discs in other drives\&.
+.RE
+.PP
+\fB\-\-cache=\fR\fISIZE\fR
+.RS 4
+Specifies size of read cache in megabytes\&. By default program uses a huge amount of memory\&. About 128 MB is recommended for streaming and backup, 512MB for DVD conversion and 1024MB for Blu\-ray conversion\&.
+.RE
+.PP
+\fB\-r, \-\-robot\fR
+.RS 4
+Enables automation mode\&. Program will output more information in a format that is easier to parse\&. All output is line\-based and output is flushed on line end\&. All strings are quoted, all control characters and quotes are backlash\-escaped\&. If you automate this program it is highly recommended to use this option\&. Some options make reference to apdefs\&.h file that can be found in MakeMKV open\-source package, included with version for Linux\&. These values will not change in future versions\&.
+.RE
+.sp
+Backup options:
+.PP
+\fB\-\-decrypt\fR
+.RS 4
+Decrypt stream files during backup\&. Default: no decryption\&.
+.RE
+.PP
+\fB\-\-minlength\fR=\fISECONDS\fR
+.RS 4
+Specify minimum title length\&. Default: program preferences\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fBbackup\fR Backup disc\&.
+.sp
+\fBinfo\fR Display information about a disc\&.
+.sp
+\fBmkv\fR Copy titles from disc\&.
+.sp
+\fBf\fR Run universal firmware tool\&.
+.SH "PARAMETERS"
+.PP
+\fBsource iso:\fR\fIFILENAME\fR
+.RS 4
+Open ISO image\&.
+.RE
+.PP
+\fBsource file:\fR\fIDIRECTORY\fR
+.RS 4
+Open files in directory\&.
+.RE
+.PP
+\fBsource disc:\fR\fIDISC ID\fR
+.RS 4
+Open disc with ID\&.
+.RE
+.PP
+\fBsource dev:\fR\fIDEVICE\fR
+.RS 4
+Open disc with device name\&.
+.RE
+.SH "EXAMPLES"
+.sp
+Copy all titles from first disc and save as MKV files into current directory:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+makemkvcon mkv disc:0 all \&.
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+List all available drives:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+makemkvcon \-r \-\-cache=1 info disc:9999
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Backup first disc decrypting all video files in automation mode with progress output:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+makemkvcon backup \-\-decrypt \-\-cache=16 \-\-noscan \-r \-\-progress=\-same disc:0 \&.
+.fi
+.if n \{\
+.RE
+.\}
+.SH "MESSAGE FORMATS"
+.sp
+\fBMessage output\fR
+.sp
+MSG:code,flags,count,message,format,param0,param1,\&...
+.sp
+code \- unique message code, should be used to identify particular string in language\-neutral way\&.
+.sp
+flags \- message flags, see AP_UIMSG_xxx flags in apdefs\&.h
+.sp
+count \- number of parameters
+.sp
+message \- raw message string suitable for output
+.sp
+format \- format string used for message\&. This string is localized and subject to change, unlike message code\&.
+.sp
+paramX \- parameter for message
+.sp
+\fBCurrent and total progress title\fR
+.sp
+PRGC:code,id,name
+.sp
+PRGT:code,id,name
+.sp
+code \- unique message code
+.sp
+id \- operation sub\-id
+.sp
+name \- name string
+.sp
+\fBProgress bar values for current and total progress\fR
+.sp
+PRGV:current,total,max
+.sp
+current \- current progress value
+.sp
+total \- total progress value
+.sp
+max \- maximum possible value for a progress bar, constant
+.sp
+\fBDrive scan messages\fR
+.sp
+DRV:index,visible,enabled,flags,drive name,disc name
+.sp
+index \- drive index
+.sp
+visible \- set to 1 if drive is present
+.sp
+enabled \- set to 1 if drive is accessible
+.sp
+flags \- media flags, see AP_DskFsFlagXXX in apdefs\&.h
+.sp
+drive name \- drive name string
+.sp
+disc name \- disc name string
+.sp
+\fBDisc information output messages\fR
+.sp
+TCOUT:count
+.sp
+count \- titles count
+.sp
+\fBDisc, title and stream information\fR
+.sp
+CINFO:id,code,value
+.sp
+TINFO:id,code,value
+.sp
+SINFO:id,code,value
+.sp
+id \- attribute id, see AP_ItemAttributeId in apdefs\&.h
+.sp
+code \- message code if attribute value is a constant string
+.sp
+value \- attribute value
+.SH "RESOURCES"
+.sp
+Console usage: https://www\&.makemkv\&.com/developers/usage\&.txt
+.sp
+MakeMKV for Linux forum: https://www\&.makemkv\&.com/forum/viewforum\&.php?f=3
+.sp
+Main web site: https://www\&.makemkv\&.com/

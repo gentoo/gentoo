@@ -1,0 +1,37 @@
+From ce93a8ad7a11d1e9be76ce6af0d510f935622c1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 25 Nov 2023 12:09:32 +0100
+Subject: [PATCH] Reset color-related envvars for testing
+
+Reset color-related environment variables in a fixture to prevent them
+from affecting test results.  Otherwise, some of the tests fail
+e.g. if NO_COLOR is set in the calling environment.
+---
+ testing/conftest.py | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/testing/conftest.py b/testing/conftest.py
+index 2a3ce5203..612777304 100644
+--- a/testing/conftest.py
++++ b/testing/conftest.py
+@@ -30,6 +30,17 @@ def set_column_width(monkeypatch: pytest.MonkeyPatch) -> None:
+     monkeypatch.setenv("COLUMNS", "80")
+ 
+ 
++@pytest.fixture(autouse=True)
++def reset_colors(monkeypatch: pytest.MonkeyPatch) -> None:
++    """
++    Reset all color-related variables to prevent them from affecting internal pytest output
++    in tests that depend on it.
++    """
++    monkeypatch.delenv("PY_COLORS", raising=False)
++    monkeypatch.delenv("NO_COLOR", raising=False)
++    monkeypatch.delenv("FORCE_COLOR", raising=False)
++
++
+ @pytest.hookimpl(hookwrapper=True, tryfirst=True)
+ def pytest_collection_modifyitems(items):
+     """Prefer faster tests.
+-- 
+2.43.0
+

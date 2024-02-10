@@ -1,0 +1,80 @@
+From 31cb6368b7feabfba37388050523667acd8942ac Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Tue, 13 Aug 2019 12:19:35 +0200
+Subject: [PATCH] Makefile.in: Export AR; Don't use DESTDIR in prefix
+ definition.
+
+---
+ Makefile.in | 37 +++++++++++++++++++------------------
+ 1 file changed, 19 insertions(+), 18 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 2721b48..798c603 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -9,8 +9,9 @@ NFSVER		= 0.1
+ CFLAGS		= @CFLAGS@ -I.
+ LDFLAGS		= @LDFLAGS@
+ CC		= @CC@
++AR		= @AR@
+ 
+-prefix		= $(DESTDIR)@prefix@
++prefix		= @prefix@
+ exec_prefix	= @exec_prefix@
+ bindir		= @bindir@
+ libdir		= @libdir@
+@@ -56,34 +57,34 @@ xlockfile.o:	lockfile.c
+ 			-c lockfile.c -o xlockfile.o
+ 
+ install_static:	static install_common
+-		install -d -m 755 -g root -p $(libdir)
+-		install -m 644 liblockfile.a $(libdir)
++		install -d -m 755 -p $(DESTDIR)$(libdir)
++		install -m 644 liblockfile.a $(DESTDIR)$(libdir)
+ 
+ install_shared:	shared install_static install_common
+-		install -d -m 755 -g root -p $(libdir)
++		install -d -m 755 -p $(DESTDIR)$(libdir)
+ 		install -m 755 liblockfile.so \
+-			$(libdir)/liblockfile.so.$(SOVER)
+-		ln -s liblockfile.so.$(SOVER) $(libdir)/liblockfile.so.$(MAJOR)
+-		ln -s liblockfile.so.$(SOVER) $(libdir)/liblockfile.so
++			$(DESTDIR)$(libdir)/liblockfile.so.$(SOVER)
++		ln -s liblockfile.so.$(SOVER) $(DESTDIR)$(libdir)/liblockfile.so.$(MAJOR)
++		ln -s liblockfile.so.$(SOVER) 	$(DESTDIR)$(libdir)/liblockfile.so
+ 		if test "$(DESTDIR)" = ""; then @LDCONFIG@; fi
+ 
+ install_common:
+-		install -d -m 755 -g root -p $(includedir)
+-		install -d -m 755 -g root -p $(bindir)
+-		install -d -m 755 -g root -p $(mandir)/man1
+-		install -d -m 755 -g root -p $(mandir)/man3
+-		install -m 644 lockfile.h maillock.h $(includedir)
++		install -d -m 755 -p $(DESTDIR)$(includedir)
++		install -d -m 755 -p $(DESTDIR)$(bindir)
++		install -d -m 755 -p $(DESTDIR)$(mandir)/man1
++		install -d -m 755 -p $(DESTDIR)$(mandir)/man3
++		install -m 644 lockfile.h maillock.h $(DESTDIR)$(includedir)
+ 		if [ "$(MAILGROUP)" != "" ]; then\
+-		  install -g $(MAILGROUP) -m 2755 dotlockfile $(bindir);\
++		  install -g $(MAILGROUP) -m 2755 dotlockfile $(DESTDIR)$(bindir);\
+ 		else \
+-		  install -g root -m 755 dotlockfile $(bindir); \
++		  install -m 755 dotlockfile $(DESTDIR)$(bindir); \
+ 		fi
+-		install -m 644 *.1 $(mandir)/man1
+-		install -m 644 *.3 $(mandir)/man3
++		install -m 644 *.1 $(DESTDIR)$(mandir)/man1
++		install -m 644 *.3 $(DESTDIR)$(mandir)/man3
+ 
+ install_nfslib:	nfslib
+-		install -d -m 755 -g root -p $(nfslockdir)
+-		install -m 755 nfslock.so.$(NFSVER) $(nfslockdir)
++		install -d -m 755 -p $(DESTDIR)$(nfslockdir)
++		install -m 755 nfslock.so.$(NFSVER) $(DESTDIR)$(nfslockdir)
+ 		if test "$(DESTDIR)" = ""; then @LDCONFIG@; fi
+ 
+ test:		test-stamp
+-- 
+2.23.0.rc2
+

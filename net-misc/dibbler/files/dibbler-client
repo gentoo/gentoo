@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting DHCPv6 client: dibbler-client"
+	/usr/sbin/dibbler-client start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping DHCPv6 client: dibbler-client"
+	/usr/sbin/dibbler-client stop
+	eend $?
+}

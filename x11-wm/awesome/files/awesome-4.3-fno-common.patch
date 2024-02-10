@@ -1,0 +1,179 @@
+Taken from: https://github.com/awesomeWM/awesome/commit/d256d9055095f27a33696e0aeda4ee20ed4fb1a0
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Rebased by Eddie Chapman <maracay@ehuk.net>
+
+--- a/common/lualib.c
++++ b/common/lualib.c
+@@ -20,6 +20,8 @@
+ #include "common/lualib.h"
+ #include "luaa.h"
+ 
++lua_CFunction lualib_dofunction_on_error;
++
+ void luaA_checkfunction(lua_State *L, int idx)
+ {
+     if(!lua_isfunction(L, idx))
+--- a/common/lualib.h
++++ b/common/lualib.h
+@@ -28,7 +28,7 @@
+ #include "common/util.h"
+ 
+ /** Lua function to call on dofunction() error */
+-lua_CFunction lualib_dofunction_on_error;
++extern lua_CFunction lualib_dofunction_on_error;
+ 
+ void luaA_checkfunction(lua_State *, int);
+ void luaA_checktable(lua_State *, int);
+--- a/luaa.c
++++ b/luaa.c
+@@ -91,6 +91,8 @@ extern const struct luaL_Reg awesome_mouse_meta[];
+ extern const struct luaL_Reg awesome_root_methods[];
+ extern const struct luaL_Reg awesome_root_meta[];
+ 
++signal_array_t global_signals;
++
+ /** A call into the Lua code aborted with an error.
+  *
+  * This signal is used in the example configuration, @{05-awesomerc.md},
+--- a/luaa.h
++++ b/luaa.h
+@@ -317,7 +317,7 @@ const char *luaA_find_config(xdgHandle *, const char *, luaA_config_callback *);
+ bool luaA_parserc(xdgHandle *, const char *);
+ 
+ /** Global signals */
+-signal_array_t global_signals;
++extern signal_array_t global_signals;
+ 
+ int luaA_class_index_miss_property(lua_State *, lua_object_t *);
+ int luaA_class_newindex_miss_property(lua_State *, lua_object_t *);
+--- a/objects/button.c
++++ b/objects/button.c
+@@ -35,6 +35,8 @@
+ 
+ #include "button.h"
+ 
++lua_class_t button_class;
++
+ /** Button object.
+  *
+  * @tfield int button The mouse button number, or 0 for any button.
+--- a/objects/button.h
++++ b/objects/button.h
+@@ -39,7 +39,7 @@ typedef struct button_t
+     xcb_button_t button;
+ } button_t;
+ 
+-lua_class_t button_class;
++extern lua_class_t button_class;
+ LUA_OBJECT_FUNCS(button_class, button_t, button)
+ ARRAY_FUNCS(button_t *, button, DO_NOTHING)
+ 
+--- a/objects/client.c
++++ b/objects/client.c
+@@ -108,6 +108,8 @@
+ #include <xcb/shape.h>
+ #include <cairo-xcb.h>
+ 
++lua_class_t client_class;
++
+ /** Client class.
+  *
+  * This table allow to add more dynamic properties to the clients. For example,
+--- a/objects/client.h
++++ b/objects/client.h
+@@ -200,7 +200,7 @@ struct client_t
+ ARRAY_FUNCS(client_t *, client, DO_NOTHING)
+ 
+ /** Client class */
+-lua_class_t client_class;
++extern lua_class_t client_class;
+ 
+ LUA_OBJECT_FUNCS(client_class, client_t, client)
+ 
+--- a/objects/drawin.c
++++ b/objects/drawin.c
+@@ -46,6 +46,8 @@
+ #include <cairo-xcb.h>
+ #include <xcb/shape.h>
+ 
++lua_class_t drawin_class;
++
+ /** Drawin object.
+  *
+  * @field border_width Border width.
+--- a/objects/drawin.h
++++ b/objects/drawin.h
+@@ -52,7 +52,7 @@ void luaA_drawin_systray_kickout(lua_State *);
+ 
+ void drawin_class_setup(lua_State *);
+ 
+-lua_class_t drawin_class;
++extern lua_class_t drawin_class;
+ 
+ #endif
+ // vim: filetype=c:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
+--- a/objects/key.c
++++ b/objects/key.c
+@@ -43,6 +43,8 @@
+ #include <xkbcommon/xkbcommon.h>
+ #include <glib.h>
+ 
++lua_class_t key_class;
++
+ /** Key object.
+  *
+  * @tfield string key The key to trigger an event.
+--- a/objects/key.h
++++ b/objects/key.h
+@@ -36,7 +36,7 @@ typedef struct keyb_t
+     xcb_keycode_t keycode;
+ } keyb_t;
+ 
+-lua_class_t key_class;
++extern lua_class_t key_class;
+ LUA_OBJECT_FUNCS(key_class, keyb_t, key)
+ DO_ARRAY(keyb_t *, key, DO_NOTHING)
+ 
+--- a/objects/tag.c
++++ b/objects/tag.c
+@@ -190,6 +190,8 @@
+ #include "ewmh.h"
+ #include "luaa.h"
+
++lua_class_t tag_class;
++
+ /**
+  * @signal request::select
+  */
+--- a/objects/tag.h
++++ b/objects/tag.h
+@@ -46,7 +46,7 @@ struct tag
+     client_array_t clients;
+ };
+ 
+-lua_class_t tag_class;
++extern lua_class_t tag_class;
+ LUA_OBJECT_FUNCS(tag_class, tag_t, tag)
+ 
+ void tag_class_setup(lua_State *);
+--- a/objects/window.c
++++ b/objects/window.c
+@@ -59,6 +59,7 @@
+ #include "property.h"
+ #include "xwindow.h"
+ 
++lua_class_t window_class;
+ LUA_CLASS_FUNCS(window, window_class)
+ 
+ static xcb_window_t
+--- a/objects/window.h
++++ b/objects/window.h
+@@ -80,7 +80,7 @@ typedef struct
+     WINDOW_OBJECT_HEADER
+ } window_t;
+ 
+-lua_class_t window_class;
++extern lua_class_t window_class;
+ 
+ void window_class_setup(lua_State *);
+

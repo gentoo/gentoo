@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		The Jolly Good API port of Mednafen has emulators for
+		Atari Lynx, Nintendo Virtual Boy, NEC PC Engine/TurboGrafx-16
+		NEC PC Engine CD/TurboDuo, NEC SuperGrafx, Sony PlayStation
+		Sega Saturn, Super Nintendo Entertainment System/Super Famicom
+		SNK Neo Geo Pocket Color and Bandai WonderSwan/Color.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/jgemu/mednafen/-/issues</bugs-to>
+		<remote-id type="gitlab">jgemu/mednafen</remote-id>
+	</upstream>
+</pkgmetadata>

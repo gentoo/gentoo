@@ -1,0 +1,44 @@
+https://bz.apache.org/SpamAssassin/show_bug.cgi?id=8073
+--- a/spamc/configure.in
++++ b/spamc/configure.in
+@@ -48,7 +48,9 @@ dnl ----------------------------------------------------------------------
+ AC_CACHE_CHECK([for SHUT_RD],
+        shutrd, [
+                 AC_TRY_COMPILE([#include <sys/types.h>
+-#include <sys/socket.h>],
++#include <sys/socket.h>
++#include <stdio.h>
++],
+                         [printf ("%d", SHUT_RD); return 0;],
+                                         [shutrd=yes],
+                                         [shutrd=no]),
+@@ -89,7 +91,8 @@ dnl ----------------------------------------------------------------------
+ 
+ AC_CACHE_CHECK([for h_errno],
+         herrno, [
+-                AC_TRY_COMPILE([#include <netdb.h>],
++                AC_TRY_COMPILE([#include <netdb.h>
++#include <stdio.h>],
+                         [printf ("%d", h_errno); return 0;],
+                                         [herrno=yes],
+                                         [herrno=no]),
+diff --git a/spamc/configure b/spamc/configure
+index d8e5dcf..2e30ba4 100755
+--- a/spamc/configure
++++ b/spamc/configure
+@@ -3555,6 +3555,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+ #include <sys/socket.h>
++#include <stdio.h>
+ int
+ main ()
+ {
+@@ -4253,6 +4254,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <netdb.h>
++#include <stdio.h>
+ int
+ main ()
+ {

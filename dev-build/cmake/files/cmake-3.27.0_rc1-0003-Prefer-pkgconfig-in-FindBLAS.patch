@@ -1,0 +1,31 @@
+From 9bc75325cc38962ecdd4a3ebd67ce34ea8162a45 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 13 Feb 2020 13:12:45 +0100
+Subject: [PATCH 3/6] Prefer pkgconfig in FindBLAS
+
+--- a/Modules/FindBLAS.cmake
++++ b/Modules/FindBLAS.cmake
+@@ -7,6 +7,10 @@ FindBLAS
+ 
+ Find Basic Linear Algebra Subprograms (BLAS) library
+ 
++Version modified for Gentoo Linux.
++If a valid PkgConfig configuration is found, this overrides and cancels
++all further checks.
++
+ This module finds an installed Fortran library that implements the
+ `BLAS linear-algebra interface`_.
+ 
+@@ -276,6 +280,9 @@ function(_add_blas_target)
+   endif()
+ endfunction()
+ 
++# first, try PkgConfig
++set(BLA_PREFER_PKGCONFIG ON)
++
+ if(CMAKE_Fortran_COMPILER_LOADED)
+   include(${CMAKE_CURRENT_LIST_DIR}/CheckFortranFunctionExists.cmake)
+ else()
+-- 
+2.41.0
+

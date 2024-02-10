@@ -1,0 +1,21 @@
+--- a/wmgeneral/wmgeneral.h
++++ b/wmgeneral/wmgeneral.h
+@@ -28,7 +28,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+--- a/wmSpaceWeather/wmSpaceWeather.c
++++ b/wmSpaceWeather/wmSpaceWeather.c
+@@ -91,6 +91,7 @@
+ char            URL[1024];
+ int		ForceUpdate2;
+ 
++Display		*display;
+ 
+ void ParseCMDLine(int argc, char *argv[]);
+ void pressEvent(XButtonEvent *xev);

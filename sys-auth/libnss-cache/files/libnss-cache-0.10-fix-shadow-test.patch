@@ -1,0 +1,12 @@
+diff -Nuar libnss-cache-0.10.orig//gen_getent.c libnss-cache-0.10//gen_getent.c
+--- libnss-cache-0.10.orig//gen_getent.c	2011-01-10 19:56:01.000000000 +0000
++++ libnss-cache-0.10//gen_getent.c	2011-01-13 06:43:05.475875153 +0000
+@@ -133,7 +133,7 @@
+   int errnop;
+   enum nss_status ret;
+   
+-  _nss_cache_setpwent_path(SHADOW_FILE);
++  _nss_cache_setspent_path(SHADOW_FILE);
+ 
+   buffer = malloc(buflen);
+   

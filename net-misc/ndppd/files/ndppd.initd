@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/ndppd"
+pidfile="/var/run/ndppd.pid"
+command_args="-p $pidfile -d"
+start_stop_daemon_args="--quiet"
+description="Proxies NDP messages between interfaces."
+
+depend() {
+	use net
+}

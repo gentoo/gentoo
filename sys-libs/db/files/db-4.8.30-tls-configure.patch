@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/898074
+https://bugs.gentoo.org/918936
+
+-ignoreme: warning: incompatible pointer to integer conversion passing 'pthread_key_t *' (aka 'unsigned int *') to parameter of type 'pthread_key_t' (aka 'unsigned int'); remove & [-Wint-conversion]
++ignoreme: error: incompatible pointer to integer conversion passing 'pthread_key_t *' (aka 'unsigned int *') to parameter of type 'pthread_key_t' (aka 'unsigned int'); remove & [-Wint-conversion]
+    34 |              return (void *)pthread_getspecific(&key);
+       |                                                 ^~~~
+ /usr/include/pthread.h:1305:49: note: passing argument to parameter '__key' here
+  1305 | extern void *pthread_getspecific (pthread_key_t __key) __THROW;
+       |                                                 ^
+-ignoreme: warning: incompatible pointer to integer conversion passing 'pthread_key_t *' (aka 'unsigned int *') to parameter of type 'pthread_key_t' (aka 'unsigned int'); remove & [-Wint-conversion]
++ignoreme: error: incompatible pointer to integer conversion passing 'pthread_key_t *' (aka 'unsigned int *') to parameter of type 'pthread_key_t' (aka 'unsigned int'); remove & [-Wint-conversion]
+    37 |               pthread_setspecific(&key, p);
+       |                                   ^~~~
+ /usr/include/pthread.h:1308:47: note: passing argument to parameter '__key' here
+  1308 | extern int pthread_setspecific (pthread_key_t __key,
+--- a/dist/aclocal/tls.m4
++++ b/dist/aclocal/tls.m4
+@@ -42,10 +42,10 @@ AC_DEFUN([AX_TLS], [
+              pthread_key_create(&key, NULL);
+          }
+          static void *get_tls() {
+-             return (void *)pthread_getspecific(&key);
++             return (void *)pthread_getspecific(key);
+          }
+          static void set_tls(void *p) {
+-              pthread_setspecific(&key, p);
++              pthread_setspecific(key, p);
+          }], [],
+          [ac_cv_tls=pthread])
+   fi

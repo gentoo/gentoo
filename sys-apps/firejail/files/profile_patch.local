@@ -1,0 +1,8 @@
+private-bin /usr/bin/patch,red
+ignore private-bin
+# Needed so patch can write under /var/tmp/portage/
+writable-var
+read-write /var/tmp/portage
+whitelist /var/tmp/portage
+
+private-lib libsandbox.so*

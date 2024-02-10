@@ -1,0 +1,13 @@
+diff --git a/ninewinecfg/main.c b/ninewinecfg/main.c
+index 3d58d67..e69668d 100644
+--- a/ninewinecfg/main.c
++++ b/ninewinecfg/main.c
+@@ -32,7 +32,7 @@
+ 
+ WINE_DEFAULT_DEBUG_CHANNEL(ninecfg);
+ 
+-static const char * const fn_nine_dll = "d3d9-nine.dll";
++static const char * const fn_nine_dll = G9DLL;
+ static const char * const fn_d3d9_dll = "d3d9.dll";
+ static const char * const fn_nine_exe = "ninewinecfg.exe";
+ 

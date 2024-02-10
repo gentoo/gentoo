@@ -1,0 +1,11 @@
+mitigate compilation error
+--- a/include/hip/amd_detail/amd_hip_vector_types.h
++++ b/include/hip/amd_detail/amd_hip_vector_types.h
+@@ -45,6 +45,7 @@ THE SOFTWARE.
+
+ #if defined(__cplusplus)
+ #if !defined(__HIPCC_RTC__)
++    #include <new>
+     #include <array>
+     #include <iosfwd>
+     #include <type_traits>

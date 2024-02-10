@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>https://dickey.his.com/cdk/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/cdk-snapshots</remote-id>
+	</upstream>
+</pkgmetadata>

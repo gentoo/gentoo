@@ -1,0 +1,11 @@
+# Config file for /etc/init.d/xsp
+
+# This is the document root; trailing slash is not necessary
+MonoServerRoot=/usr/lib/xsp/test
+
+# Port for the server to run on
+MonoServerPort=8000
+
+# If you want to host .NET 2.0 applications you have to set this to 2.
+# Otherwise, leave it unchanged
+MonoServerVersion=1

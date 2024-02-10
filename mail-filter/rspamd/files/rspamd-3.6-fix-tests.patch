@@ -1,0 +1,23 @@
+From: Duncan Bellamy <dunk@denkimushi.com>
+Date: Thu, 3 Aug 2023 22:08:06 +0000
+Subject: [PATCH] [Fix] CMakeLists.txt remove whitespace added by linter as it
+ makes tests fail
+
+Upstream-PR: https://github.com/rspamd/rspamd/pull/4560
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5402c4806..efda209ca 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -777,7 +777,7 @@ IF (NOT DEBIAN_BUILD)
+     ADD_CUSTOM_TARGET(check DEPENDS rspamd-test-cxx rspamd-test)
+     ADD_CUSTOM_TARGET(run-test DEPENDS check
+             COMMAND test/rspamd-test-cxx
+-            COMMAND sh -c 'LUA_PATH= "${CMAKE_SOURCE_DIR}/lualib/?.lua\;${CMAKE_SOURCE_DIR}/lualib/?/?.lua\;${CMAKE_SOURCE_DIR}/lualib/?/init.lua\;${CMAKE_SOURCE_DIR}/contrib/lua-?/?.lua"
++            COMMAND sh -c 'LUA_PATH="${CMAKE_SOURCE_DIR}/lualib/?.lua\;${CMAKE_SOURCE_DIR}/lualib/?/?.lua\;${CMAKE_SOURCE_DIR}/lualib/?/init.lua\;${CMAKE_SOURCE_DIR}/contrib/lua-?/?.lua"
+             test/rspamd-test -p /rspamd/lua')
+ ENDIF (NOT DEBIAN_BUILD)
+ 
+-- 
+2.41.0
+

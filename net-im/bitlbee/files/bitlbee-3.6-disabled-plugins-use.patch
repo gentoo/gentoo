@@ -1,0 +1,55 @@
+This patch is taken from upstrem https://github.com/bitlbee/bitlbee/pull/156
+where it was already merged.
+
+From a8196d6f72b44be9c315b9ad7dc45276d2aaca0c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Tue, 23 Mar 2021 13:07:18 +0100
+Subject: [PATCH] root_commands: prevent linker error when plugins are disabled
+
+This commit fixes compilation issue with disabled plugin support
+(./configure --plugins=0), where get_plugins function is unavailable.
+The problem has been introduced with addition of new 'plugins info'
+subcommand, where get_plugins is used in cmd_plugins_info function,
+which should be conditionally available only if WITH_PLUGINS is defined.
+
+Bug: https://bugs.gentoo.org/739510
+Bug: https://bugs.gentoo.org/617604
+Fixes: 6908ab747d1e ("Add 'plugins info' subcommand, only show plugin details there")
+Signed-off-by: Petr Vaněk <arkamar@atlas.cz>
+---
+ root_commands.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/root_commands.c b/root_commands.c
+index 8358c030..a4e72f83 100644
+--- a/root_commands.c
++++ b/root_commands.c
+@@ -1168,6 +1168,7 @@ static void prplstr(GList *prpls, GString *gstr)
+ 	g_list_free(prpls);
+ }
+ 
++#ifdef WITH_PLUGINS
+ static void cmd_plugins_info(irc_t *irc, char **cmd)
+ {
+ 	GList *l;
+@@ -1201,6 +1202,7 @@ static void cmd_plugins_info(irc_t *irc, char **cmd)
+ 		irc_rootmsg(irc, "  URL: %s", info->url);
+ 	}
+ }
++#endif
+ 
+ static void cmd_plugins(irc_t *irc, char **cmd)
+ {
+@@ -1208,7 +1210,9 @@ static void cmd_plugins(irc_t *irc, char **cmd)
+ 	GString *gstr;
+ 
+ 	if (cmd[1] && g_strcasecmp(cmd[1], "info") == 0) {
++#ifdef WITH_PLUGINS
+ 		cmd_plugins_info(irc, cmd);
++#endif
+ 		return;
+ 	}
+ 
+-- 
+2.26.3
+

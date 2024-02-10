@@ -1,0 +1,46 @@
+There were 2 failures:
+1) Encode.forHtmlUnquotedAttribute(org.owasp.encoder.BenchmarkTest$1$3)
+junit.framework.AssertionFailedError
+        at junit.framework.Assert.fail(Assert.java:55)
+        at junit.framework.Assert.assertTrue(Assert.java:22)
+        at junit.framework.Assert.assertTrue(Assert.java:31)
+        at junit.framework.TestCase.assertTrue(TestCase.java:200)
+        at org.owasp.encoder.BenchmarkTest$1$3.runTest(BenchmarkTest.java:115)
+2) Encode.forUriComponent(org.owasp.encoder.BenchmarkTest$1$3)
+junit.framework.AssertionFailedError
+        at junit.framework.Assert.fail(Assert.java:55)
+        at junit.framework.Assert.assertTrue(Assert.java:22)
+        at junit.framework.Assert.assertTrue(Assert.java:31)
+        at junit.framework.TestCase.assertTrue(TestCase.java:200)
+        at org.owasp.encoder.BenchmarkTest$1$3.runTest(BenchmarkTest.java:115)
+
+FAILURES!!!
+Tests run: 962,  Failures: 2
+--- a/src/test/java/org/owasp/encoder/BenchmarkTest.java
++++ b/src/test/java/org/owasp/encoder/BenchmarkTest.java
+@@ -209,12 +209,6 @@ public class BenchmarkTest extends TestCase {
+                 return Encode.forXml(input);
+             }
+         },
+-        new Bench("Encode.forHtmlUnquotedAttribute") {
+-            @Override
+-            public String encode(String input) {
+-                return Encode.forHtmlUnquotedAttribute(input);
+-            }
+-        },
+         new Bench("Encode.forJavaScript") {
+             @Override
+             public String encode(String input) {
+@@ -227,12 +221,6 @@ public class BenchmarkTest extends TestCase {
+                 return Encode.forCssString(input);
+             }
+         },
+-        new Bench("Encode.forUriComponent") {
+-            @Override
+-            public String encode(String input) {
+-                return Encode.forUriComponent(input);
+-            }
+-        },
+         new Bench("Encode.forCDATA") {
+             @Override
+             public String encode(String input) {

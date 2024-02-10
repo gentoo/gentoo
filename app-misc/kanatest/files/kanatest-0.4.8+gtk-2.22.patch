@@ -1,0 +1,23 @@
+Index: kanatest-0.4.8/Makefile.am
+===================================================================
+--- kanatest-0.4.8.orig/Makefile.am
++++ kanatest-0.4.8/Makefile.am
+@@ -1,5 +1,5 @@
+ SUBDIRS = src po data
+-ACLOCAL_AMFLAGS = -I m4 -Wall
++ACLOCAL_AMFLAGS = -Wall
+ 
+ EXTRA_DIST = README AUTHORS TRANSLATORS COPYING ChangeLog
+ 
+Index: kanatest-0.4.8/src/Makefile.am
+===================================================================
+--- kanatest-0.4.8.orig/src/Makefile.am
++++ kanatest-0.4.8/src/Makefile.am
+@@ -1,6 +1,5 @@
+ REVISION := $(shell if test -e .svn; then echo -DREV=\"`LC_ALL=C svn info | sed -n '/^Rev/p'| sed -e 's/^Revision:\ //'`\"; fi;)
+-AM_CPPFLAGS = -Wall -DLOCALEDIR=\"$(datadir)/locale\" $(REVISION) \
+-			  -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED
++AM_CPPFLAGS = -Wall -DLOCALEDIR=\"$(datadir)/locale\" $(REVISION)
+ bin_PROGRAMS = kanatest
+ kanatest_SOURCES = about.c about.h \
+ 				   chart.c chart.h \

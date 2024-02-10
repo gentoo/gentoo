@@ -1,0 +1,62 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools
+
+DESCRIPTION="City simulation game"
+HOMEPAGE="https://savannah.nongnu.org/projects/senken/"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="nls"
+
+RDEPEND="
+	>=media-libs/libsdl-1.2.4
+	media-libs/sdl-image
+	x11-libs/gtk+:2
+	nls? ( virtual/libintl )
+"
+DEPEND="
+	${RDEPEND}
+	nls? ( sys-devel/gettext )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-warnings.patch
+	"${FILESDIR}"/${P}-implicit-function-decl.patch
+)
+
+src_prepare() {
+	default
+
+	sed -i \
+		-e "s:/usr/local/share:/usr/share:" \
+		lib/utils.h || die
+
+	# Clang 16, bug #899022
+	sed -i -e "s:configure.in:configure.ac:" Makefile.in || die
+	eautoconf
+}
+
+src_configure() {
+	econf $(use_enable nls)
+}
+
+src_install() {
+	default
+
+	#dodir "${GAMES_DATADIR}"
+	#mv "${D}/${GAMES_PREFIX}/share/senken" "${D}/${GAMES_DATADIR}/" || die
+	#rm -rf "${D}/${GAMES_PREFIX}"/{include,lib,man,share} || die
+
+	insinto /usr/share/senken/img
+	doins img/*.png
+
+	find "${D}/usr/share/" -type f -exec chmod a-x \{\} +
+	find "${D}/usr/share/" -name "Makefile.*" -exec rm -f \{\} +
+}

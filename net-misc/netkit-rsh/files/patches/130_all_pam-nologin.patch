@@ -1,0 +1,14 @@
+--- a/rlogind/auth.c
++++ b/rlogind/auth.c
+@@ -127,7 +127,10 @@
+ 	
+     network_confirm();
+     retval = attempt_auth();
+-    if (retval != PAM_SUCCESS) {
++    if ((retval == PAM_ACCT_EXPIRED) || (retval == PAM_PERM_DENIED)) {
++	syslog(LOG_ERR, "PAM authentication denied for in.rlogind");
++	exit(1);
++    } else if (retval != PAM_SUCCESS) {
+ 	syslog(LOG_ERR, "PAM authentication failed for in.rlogind");
+ 	return -1;
+     }

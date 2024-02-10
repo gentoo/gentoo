@@ -1,0 +1,21 @@
+[Unit]
+Description=Prometheus exporter for machine metrics
+Documentation=https://github.com/prometheus/node_exporter
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Restart=on-failure
+Type=exec
+ExecStart=/usr/sbin/node_exporter
+ExecReload=/usr/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

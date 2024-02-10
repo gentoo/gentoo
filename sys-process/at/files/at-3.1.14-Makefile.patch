@@ -1,0 +1,18 @@
+# - install into Gentoo/FHS doc dir
+
+--- at-3.1.14/Makefile.in
++++ at-3.1.14/Makefile.in
+@@ -12,8 +12,11 @@
+ man1dir		= $(mandir)/man1
+ man5dir		= $(mandir)/man5
+ man8dir		= $(mandir)/man8
+-docdir		= $(prefix)/doc
+-atdocdir	= $(docdir)/at
++ifndef PF
++PF = at-$(VERSION)
++endif
++docdir		= $(prefix)/share/doc
++atdocdir	= $(docdir)/$(PF)
+ etcdir		= @ETCDIR@
+ systemdsystemunitdir = @systemdsystemunitdir@
+ 

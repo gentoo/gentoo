@@ -1,0 +1,43 @@
+From 71d766c506c62aa0ad88836e3c10443b90f46898 Mon Sep 17 00:00:00 2001
+From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date: Sat, 19 Feb 2022 07:17:17 +0100
+Subject: [PATCH] Adjust configure and Makefile.in
+
+---
+ Makefile.in | 4 ++--
+ configure   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 564e13c..66fbb31 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4,10 +4,10 @@ OBJECTS=token.o lex.o main.o scanner.o resultsdb.o vulndb.o handlers.o \
+  $(EXTRA_OBJS)
+ 
+ all:  $(OBJECTS)
+-	$(CC) -o $(PROGNAME) $(OBJECTS)
++	$(CC) $(OPTIMIZATION) $(EXTRA_FLAGS) -o $(PROGNAME) $(OBJECTS)
+ 
+ pure: $(OBJECTS)
+-	purify 	$(CC) -o $(PROGNAME) $(OBJECTS)
++	purify 	$(CC) $(OPTIMIZATION) $(EXTRA_FLAGS) -o $(PROGNAME) $(OBJECTS)
+ 
+ .C.o:
+ 	$(CC) -c -DDATA_DIR=$(INSTALL_DATADIR) $(EXTRA_FLAGS) ${OPTIMIZATION} $<
+diff --git a/configure b/configure
+index e85410f..12626c4 100755
+--- a/configure
++++ b/configure
+@@ -117,7 +117,7 @@ if test -z "${QUIET}"; then exec 5>&1; else exec 5>/dev/null; fi
+ 
+ ###### Can we invoke the compiler?
+ cat >tmp.c <<EOF 
+-#include <iostream.h>
++#include <iostream>
+ int main(){return 0;}
+ EOF
+ if test -n "${CC}"; then
+-- 
+2.34.1
+

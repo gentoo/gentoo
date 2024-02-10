@@ -1,0 +1,30 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index f532be1..815b07d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [project]
+-dynamic = ["version"]
+ name = "mkdocs-i18n"
++version = "0.4.6"
+ description = "MkDocs i18n plugin"
+ readme = "README.md"
+ authors = [
+@@ -46,15 +46,6 @@ test = [
+ [project.entry-points."mkdocs.plugins"]
+ i18n = "mkdocs_i18n:I18n"
+ 
+-[tool.semantic_release]
+-version_source = "tag_only"
+-hvcs = "gitlab"
+-branch = "main"
+-build_command = "python3 -m build"
+-
+ [build-system]
+-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+-
+-[tool.setuptools_scm]
+-# python-semantic-release with tag_only option leaves CHANGELOG.md file staged
+-git_describe_command = "git describe --tags --abbrev=0"
++requires = ["setuptools>=45"]
++build-backend = "setuptools.build_meta"

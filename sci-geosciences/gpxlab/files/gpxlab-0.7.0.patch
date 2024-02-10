@@ -1,0 +1,10 @@
+diff -r -U2 GPXLab-0.7.0.orig/GPXLab/GPXLab.pro GPXLab-0.7.0/GPXLab/GPXLab.pro
+--- GPXLab-0.7.0.orig/GPXLab/GPXLab.pro	2019-12-11 15:44:11.000000000 +0700
++++ GPXLab-0.7.0/GPXLab/GPXLab.pro	2021-03-25 17:03:19.093288969 +0700
+@@ -140,5 +140,5 @@
+ 
+ unix:!macx {
+-    isEmpty(PREFIX):PREFIX = /usr/local
++    isEmpty(PREFIX):PREFIX = /usr
+     DEFINES += PREFIX=\\\"$$PREFIX\\\"
+ 

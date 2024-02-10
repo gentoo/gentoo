@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="compat">Enable compatibility with <pkg>sys-libs/zlib</pkg>'s USE=minizip</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for further encryption capabilities</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zlib-ng/minizip-ng</remote-id>
+	</upstream>
+</pkgmetadata>

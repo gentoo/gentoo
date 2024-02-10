@@ -1,0 +1,14 @@
+Fix build with clang https://bugs.gentoo.org/758167
+
+--- a/md/md.c
++++ b/md/md.c
+@@ -148,8 +148,7 @@ static void parse_dep();
+ static void save_dot_o();
+ 
+ int
+-main(argc,argv)
+-register char **argv;
++main(int argc, char** argv)
+ {
+ int size;
+ 

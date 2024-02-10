@@ -1,0 +1,28 @@
+--- a/filter/config
++++ b/filter/config
+@@ -42,22 +42,13 @@ fi
+ ngx_module_type=HTTP_FILTER
+ ngx_module_name=ngx_http_brotli_filter_module
+ 
+-brotli="$ngx_addon_dir/deps/brotli/c"
+-if [ ! -f "$brotli/include/brotli/encode.h" ]; then
+-  brotli="/usr/local"
+-fi
+-if [ ! -f "$brotli/include/brotli/encode.h" ]; then
+-  brotli="/usr"
+-fi
++brotli=$(pkg-config --variable=prefix libbrotlienc)
++
+ if [ ! -f "$brotli/include/brotli/encode.h" ]; then
+ cat << END
+ 
+ $0: error: \
+-Brotli library is missing from the $brotli directory.
+-
+-Please make sure that the git submodule has been checked out:
+-
+-    cd $ngx_addon_dir && git submodule update --init && cd $PWD
++Brotli library not found. Don't you have app-arch/brotli installed?
+ 
+ END
+     exit 1

@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -79,7 +79,7 @@
+ 	groff -Tps -mandoc ./$(PKGNAME).1 >$(PKGNAME).ps
+ 	groff -Tascii -mandoc ./$(PKGNAME).1 | tee $(PKGNAME).prn | sed 's/.//g' >$(PKGNAME).txt
+ 
+-install.man:
++install.man: install.dirs
+ 	$(INSTALL) -m 644 $(PKGNAME).1 $(INSTALL_ROOT)/$(mandir)/man1/$(PKGNAME).1
+ 
+ install.dirs:

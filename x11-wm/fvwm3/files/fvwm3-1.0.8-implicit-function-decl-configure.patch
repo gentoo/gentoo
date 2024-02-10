@@ -1,0 +1,18 @@
+https://github.com/fvwmorg/fvwm3/pull/914
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Tue, 17 Oct 2023 16:01:33 +1000
+Subject: [PATCH] Fix implicit function declaration in configure
+
+Missing unistd.h include for `close` and `unlink`
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -996,6 +996,7 @@ AC_DEFUN([AM_SAFETY_CHECK_MKSTEMP],[
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ int main(void)
+ {
+   char template[128];
+-- 
+2.42.0

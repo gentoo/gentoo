@@ -1,0 +1,34 @@
+https://github.com/sleuthkit/sleuthkit/pull/2835
+
+From fd19051920849343631df1cbf8d4b86f1bf98b2c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?G=C3=B6kt=C3=BCrk=20Y=C3=BCksek?= <gokturk@gentoo.org>
+Date: Mon, 26 Jun 2023 22:05:47 -0700
+Subject: [PATCH] configure.ac: use '=' for comparison instead of '=='
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The operator '==' isn't POSIX compliant[0]. Use the standard '=', as it's
+done everywhere else in configure.ac.
+
+[0] https://pubs.opengroup.org/onlinepubs/9699919799/utilities/test.html
+
+Bug: https://bugs.gentoo.org/870250
+Signed-off-by: Göktürk Yüksek <gokturk@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c4226f5be4..bec6ddbf62 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -252,7 +252,7 @@ AS_IF([test "x$enable_java" != "xno"], [
+ dnl if we found everything we need, set ax_java_support for the
+ dnl status message and set X_JNI for use in Makefile
+ AS_IF([test "x$JNI_CPPFLAGS" != x && test "x$ANT_FOUND" != x && test "x$JAVA" != x], [ax_java_support=yes], [ax_java_support=no])
+-AM_CONDITIONAL([X_JNI],[test "x$ax_java_support" == "xyes"])
++AM_CONDITIONAL([X_JNI],[test "x$ax_java_support" = "xyes"])
+ 
+ AC_CONFIG_COMMANDS([tsk/tsk_incs.h],
+     [echo "#ifndef _TSK_INCS_H" > tsk/tsk_incs.h

@@ -1,0 +1,31 @@
+https://sourceforge.net/p/unixtop/patches/22/
+
+diff -u top-3.8beta1/top.c top-3.8beta1-rivoreo-r1/top.c
+--- top-3.8beta1/top.c	2008-05-07 11:41:39.000000000 +0800
++++ top-3.8beta1-rivoreo-r1/top.c	2017-01-15 18:32:50.000000000 +0800
+@@ -257,14 +258,14 @@
+ }
+ 
+ void
+-set_signals()
++set_signals(int set_winch)
+ 
+ {
+     (void) set_signal(SIGINT, sig_leave);
+     (void) set_signal(SIGQUIT, sig_leave);
+     (void) set_signal(SIGTSTP, sig_tstop);
+ #ifdef SIGWINCH
+-    (void) set_signal(SIGWINCH, sig_winch);
++    if(set_winch) set_signal(SIGWINCH, sig_winch);
+ #endif
+ }
+ 
+@@ -905,7 +906,7 @@
+     screen_init();
+ 
+     /* set the signal handlers */
+-    set_signals();
++    set_signals(gstate->interactive);
+ 
+     /* longjmp re-entry point */
+     /* set the jump buffer for long jumps out of signal handlers */

@@ -1,0 +1,41 @@
+--- a/configure.d/config_project_with_enable
++++ b/configure.d/config_project_with_enable
+@@ -1187,6 +1187,11 @@
+   [],
+   [with_bzip2="no"])
+ 
++AC_ARG_WITH([pcap],
++  [ --with-pcap[=DIR]          use libpcap in DIR],
++  [],
++  [with_pcap="no"])
++
+ NETSNMP_ARG_WITH(
+  [mnttab],
+  AS_HELP_STRING(
+--- a/configure.d/config_os_libs2
++++ b/configure.d/config_os_libs2
+@@ -583,14 +590,16 @@
+ ##
+ #   libpcap
+ ##
+-NETSNMP_BUILD_PCAP_PROG_TRUE='#'
+-NETSNMP_BUILD_PCAP_PROG_FALSE=''
+-AC_CHECK_LIB([pcap], [pcap_create], [
+-   AC_CHECK_HEADERS([pcap/pcap.h], [
+-      NETSNMP_BUILD_PCAP_PROG_TRUE=''
+-      NETSNMP_BUILD_PCAP_PROG_FALSE='#'
+-       ])
+-])
++if test "x$with_pcap" = "xyes" ; then
++  NETSNMP_BUILD_PCAP_PROG_TRUE='#'
++  NETSNMP_BUILD_PCAP_PROG_FALSE=''
++  AC_CHECK_LIB([pcap], [pcap_create], [
++     AC_CHECK_HEADERS([pcap/pcap.h], [
++        NETSNMP_BUILD_PCAP_PROG_TRUE=''
++        NETSNMP_BUILD_PCAP_PROG_FALSE='#'
++         ])
++  ])
++fi
+ AC_SUBST(NETSNMP_BUILD_PCAP_PROG_TRUE)
+ AC_SUBST(NETSNMP_BUILD_PCAP_PROG_FALSE)
+ 

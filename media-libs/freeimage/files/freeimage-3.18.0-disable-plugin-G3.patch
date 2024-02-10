@@ -1,0 +1,56 @@
+From d07a573fa1e0593e6af4f59e7bef15b78a8edfca Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <xytovl@laposte.net>
+Date: Tue, 13 Nov 2018 20:48:39 +0100
+Subject: [PATCH 4/4] disable plugin G3
+
+---
+ Makefile.srcs               | 3 ---
+ Source/FreeImage/Plugin.cpp | 3 ---
+ fipMakefile.srcs            | 3 ---
+ 3 files changed, 9 deletions(-)
+
+diff --git a/Makefile.srcs b/Makefile.srcs
+index a306aae..dac3ec2 100644
+--- a/Makefile.srcs
++++ b/Makefile.srcs
+@@ -37,9 +37,6 @@ SRCS-yes += \
+ SRCS-$(USE_EXR) += \
+ 	Source/FreeImage/PluginEXR.cpp \
+ 
+-SRCS-$(USE_TIFF) += \
+-	Source/FreeImage/PluginG3.cpp \
+-
+ SRCS-yes += \
+ 	Source/FreeImage/PluginGIF.cpp \
+ 	Source/FreeImage/PluginHDR.cpp \
+diff --git a/Source/FreeImage/Plugin.cpp b/Source/FreeImage/Plugin.cpp
+index 7768a32..43d8b6d 100644
+--- a/Source/FreeImage/Plugin.cpp
++++ b/Source/FreeImage/Plugin.cpp
+@@ -273,9 +273,6 @@ FreeImage_Initialise(BOOL load_local_plugins_only) {
+ 			s_plugins->AddNode(InitDDS);
+ 	        s_plugins->AddNode(InitGIF);
+ 	        s_plugins->AddNode(InitHDR);
+-#ifdef USE_TIFF
+-			s_plugins->AddNode(InitG3);
+-#endif
+ 			s_plugins->AddNode(InitSGI);
+ #ifdef USE_EXR
+ 			s_plugins->AddNode(InitEXR);
+diff --git a/fipMakefile.srcs b/fipMakefile.srcs
+index 74c9ec0..8a48b67 100644
+--- a/fipMakefile.srcs
++++ b/fipMakefile.srcs
+@@ -37,9 +37,6 @@ SRCS-yes += \
+ SRCS-$(USE_EXR) += \
+ 	Source/FreeImage/PluginEXR.cpp \
+ 
+-SRCS-$(USE_TIFF) += \
+-	Source/FreeImage/PluginG3.cpp \
+-
+ SRCS-yes += \
+ 	Source/FreeImage/PluginGIF.cpp \
+ 	Source/FreeImage/PluginHDR.cpp \
+-- 
+2.19.1
+

@@ -1,0 +1,14 @@
+diff -r 5a30b6b09e77 Config.mk
+--- a/Config.mk	Fri Dec 10 15:35:42 2021 +0100
++++ b/Config.mk	Sun Dec 12 14:52:19 2021 -0600
+@@ -56,10 +56,6 @@
+ OBJCOPY    ?= objcopy
+ OBJDUMP    ?= objdump
+ 
+-ifeq ($(debug),n)
+-INSTALL_STRIP ?= -s
+-endif
+-
+ INSTALL      ?= install
+ INSTALL_DIR  = $(INSTALL) -d -m0755 -p
+ INSTALL_DATA = $(INSTALL) -m0644 -p

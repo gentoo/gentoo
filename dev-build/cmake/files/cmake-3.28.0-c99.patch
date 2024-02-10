@@ -1,0 +1,90 @@
+https://gitlab.kitware.com/cmake/cmake/-/merge_requests/9002
+
+From 9ede6138b71ac2ab961b0954b10a9dc03cf77b37 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 23 Nov 2023 08:45:05 +0100
+Subject: [PATCH] Tests: Improve C compatibility of LoadCommand tests
+
+The previous code used `char **` and `const char **`` types as if they
+were the same.  But they are distinct types in C, so when passing
+these pointers as function arguments, their types have to match.
+Future C compilers will treat this as an error, similar to what
+C++ compilers do today.
+---
+ Tests/LoadCommand/CMakeCommands/cmTestCommand.c   | 13 ++++++++-----
+ .../CMakeCommands/cmTestCommand.c                 | 15 +++++++++------
+ 2 files changed, 17 insertions(+), 11 deletions(-)
+
+diff --git a/Tests/LoadCommand/CMakeCommands/cmTestCommand.c b/Tests/LoadCommand/CMakeCommands/cmTestCommand.c
+index 7176ebe9d4b..ba13727d2b8 100644
+--- a/Tests/LoadCommand/CMakeCommands/cmTestCommand.c
++++ b/Tests/LoadCommand/CMakeCommands/cmTestCommand.c
+@@ -16,14 +16,14 @@ static int CCONV InitialPass(void* inf, void* mf, int argc, char* argv[])
+ {
+   char* file;
+   char* str;
+-  char* srcs;
++  const char* srcs;
+   const char* cstr;
+   char buffer[1024];
+   void* source_file;
+   char* args[2];
+-  char* ccArgs[4];
+-  char* ccDep[1];
+-  char* ccOut[1];
++  const char* ccArgs[4];
++  const char* ccDep[1];
++  const char* ccOut[1];
+   cmLoadedCommandInfo* info = (cmLoadedCommandInfo*)inf;
+ 
+   cmVTKWrapTclData* cdata =
+@@ -148,7 +148,10 @@ static int CCONV InitialPass(void* inf, void* mf, int argc, char* argv[])
+   if (info->CAPI->GetTotalArgumentSize(2, args) != 13) {
+     return 0;
+   }
+-  info->CAPI->ExecuteCommand(mf, "SET", 2, args);
++
++  ccArgs[0] = "TEST_EXEC";
++  ccArgs[1] = "TRUE";
++  info->CAPI->ExecuteCommand(mf, "SET", 2, ccArgs);
+ 
+   /* make sure we can find the source file */
+   if (!info->CAPI->GetSource(mf, argv[1])) {
+diff --git a/Tests/LoadCommandOneConfig/CMakeCommands/cmTestCommand.c b/Tests/LoadCommandOneConfig/CMakeCommands/cmTestCommand.c
+index 7176ebe9d4b..e3b332c1aa9 100644
+--- a/Tests/LoadCommandOneConfig/CMakeCommands/cmTestCommand.c
++++ b/Tests/LoadCommandOneConfig/CMakeCommands/cmTestCommand.c
+@@ -16,14 +16,14 @@ static int CCONV InitialPass(void* inf, void* mf, int argc, char* argv[])
+ {
+   char* file;
+   char* str;
+-  char* srcs;
+-  const char* cstr;
++  const char* srcs;
++  char* cstr;
+   char buffer[1024];
+   void* source_file;
+   char* args[2];
+-  char* ccArgs[4];
+-  char* ccDep[1];
+-  char* ccOut[1];
++  const char* ccArgs[4];
++  const char* ccDep[1];
++  const char* ccOut[1];
+   cmLoadedCommandInfo* info = (cmLoadedCommandInfo*)inf;
+ 
+   cmVTKWrapTclData* cdata =
+@@ -148,7 +148,10 @@ static int CCONV InitialPass(void* inf, void* mf, int argc, char* argv[])
+   if (info->CAPI->GetTotalArgumentSize(2, args) != 13) {
+     return 0;
+   }
+-  info->CAPI->ExecuteCommand(mf, "SET", 2, args);
++
++  ccArgs[0] = "TEST_EXEC";
++  ccArgs[1] = "TRUE";
++  info->CAPI->ExecuteCommand(mf, "SET", 2, ccArgs);
+ 
+   /* make sure we can find the source file */
+   if (!info->CAPI->GetSource(mf, argv[1])) {
+-- 
+GitLab

@@ -1,0 +1,38 @@
+--- a/tlsBIO.c	2023-03-15 08:36:55.452468839 +0100
++++ b/tlsBIO.c	2023-03-15 08:37:20.480074701 +0100
+@@ -232,8 +232,12 @@
+ 		case BIO_CTRL_RESET:
+ 			dprintf("Got BIO_CTRL_RESET");
+ 			num = 0;
++			ret = 0;
++			break;
+ 		case BIO_C_FILE_SEEK:
+ 			dprintf("Got BIO_C_FILE_SEEK");
++			ret = 0;
++			break;
+ 		case BIO_C_FILE_TELL:
+ 			dprintf("Got BIO_C_FILE_TELL");
+ 			ret = 0;
+--- a/tls.c	2023-03-15 08:39:52.491651551 +0100
++++ b/tls.c	2023-03-15 08:41:44.543863094 +0100
+@@ -1424,7 +1424,8 @@
+ 		channelName = Tcl_GetStringFromObj(objv[2], NULL);
+ 		break;
+ 	    }
+-	    /* else fall... */
++	    Tcl_WrongNumArgs(interp, 1, objv, "?-local? channel");
++	    return TCL_ERROR;
+ 	default:
+ 	    Tcl_WrongNumArgs(interp, 1, objv, "?-local? channel");
+ 	    return TCL_ERROR;
+--- a/aclocal.m4	2023-03-15 09:05:11.853965135 +0100
++++ b/aclocal.m4	2023-03-15 09:05:49.134383835 +0100
+@@ -689,7 +689,7 @@
+ 			TCLTLS_SSL_LIBS="-L$openssldir -lssl -lcrypto"
+ 			openssldir="`AS_DIRNAME(["$openssldir"])`"
+ 		else
+-			TCLTLS_SSL_LIBS="-L$openssldir/lib -lssl -lcrypto"
++			TCLTLS_SSL_LIBS="-lssl -lcrypto"
+ 		fi
+ 		TCLTLS_SSL_CFLAGS="-I$openssldir/include"
+ 		TCLTLS_SSL_CPPFLAGS="-I$openssldir/include"

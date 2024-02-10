@@ -1,0 +1,50 @@
+--- b/clients/common/utility.cpp	2022-01-26 03:31:42.000000000 +0800
++++ a/clients/common/utility.cpp	2022-02-22 18:45:35.319732953 +0800
+@@ -23,6 +23,7 @@
+ #include <fcntl.h>
+ #endif
+ 
++#include <version>
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
+ #else
+--- b/clients/include/rocblas_data.hpp	2022-01-26 03:31:42.000000000 +0800
++++ a/clients/include/rocblas_data.hpp	2022-02-22 18:44:51.275733070 +0800
+@@ -17,6 +17,7 @@
+ #include <string>
+ #include <utility>
+ 
++#include<version>
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
+ #else
+--- b/clients/include/singletons.hpp	2022-01-26 03:31:42.000000000 +0800
++++ a/clients/include/singletons.hpp	2022-02-22 18:47:55.139732583 +0800
+@@ -3,6 +3,6 @@
+  * ************************************************************************ */
+ 
+ // global for device memory padding see d_vector.hpp
++#include<cstddef>
+-
+ extern size_t g_DVEC_PAD;
+ void          d_vector_set_pad_length(size_t pad);
+--- b/clients/include/testing_logging.hpp	2022-01-26 03:31:42.000000000 +0800
++++ a/clients/include/testing_logging.hpp	2022-02-22 18:44:13.115733171 +0800
+@@ -22,6 +22,7 @@
+ #include <unistd.h>
+ #endif
+ 
++#include<version>
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
+ #else
+--- b/clients/include/testing_ostream_threadsafety.hpp	2022-01-26 03:31:42.000000000 +0800
++++ a/clients/include/testing_ostream_threadsafety.hpp	2022-02-22 18:45:19.055732996 +0800
+@@ -30,6 +30,7 @@
+ #include <sys/types.h>
+ #endif
+ 
++#include <version>
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
+ #else

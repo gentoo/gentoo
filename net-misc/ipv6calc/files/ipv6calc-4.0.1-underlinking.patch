@@ -1,0 +1,79 @@
+https://github.com/pbiering/ipv6calc/pull/35
+
+From e73dfa578b2af3f75b86e7584cfffcad79d75764 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 15 Sep 2022 00:23:37 +0100
+Subject: [PATCH] Fix underlinking with -lm (LDFLAGS order)
+
+LDFLAGS must come _before_ any libraries,
+as some take effect based on arguments afterwards.
+
+For example, -Wl,--as-needed (which some distributions
+set by default, even) will discard (or not know about)
+any objects listed before it.
+
+See also e.g.
+https://wiki.gentoo.org/wiki/Project:Quality_Assurance/As-needed#Importance_of_linking_order.
+
+Bug: https://bugs.gentoo.org/661536
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/ipv6calc/Makefile.in
++++ b/ipv6calc/Makefile.in
+@@ -49,10 +49,10 @@ libipv6calc_db_wrapper:
+ 		cd ../ && ${MAKE} lib-make
+ 
+ ipv6calc:	$(OBJS) libipv6calc libipv6calc_db_wrapper
+-		$(CC) -o ipv6calc $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA)
++		$(CC) -o ipv6calc $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA) $(LIBS) -lm
+ 
+ static:		ipv6calc
+-		$(CC) -o ipv6calc-static $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) -static
++		$(CC) -o ipv6calc-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) $(LIBS) -lm -static
+ 
+ distclean:
+ 		${MAKE} clean
+--- a/ipv6loganon/Makefile.in
++++ b/ipv6loganon/Makefile.in
+@@ -49,10 +49,10 @@ libipv6calc_db_wrapper:
+ 		cd ../ && ${MAKE} lib-make
+ 
+ ipv6loganon:	$(OBJS) libipv6calc libipv6calc_db_wrapper
+-		$(CC) -o ipv6loganon $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA)
++		$(CC) -o ipv6loganon $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA) $(LIBS) -lm
+ 
+ static:		ipv6loganon
+-		$(CC) -o ipv6loganon-static $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) -static
++		$(CC) -o ipv6loganon-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) $(LIBS) -lm -static
+ 
+ distclean:
+ 		${MAKE} clean
+--- a/ipv6logconv/Makefile.in
++++ b/ipv6logconv/Makefile.in
+@@ -49,10 +49,10 @@ libipv6calc_db_wrapper:
+ 		cd ../ && ${MAKE} lib-make
+ 
+ ipv6logconv:	$(OBJS) libipv6calc libipv6calc_db_wrapper
+-		$(CC) -o ipv6logconv $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA)
++		$(CC) -o ipv6logconv $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA) $(LIBS) -lm
+ 
+ static:		ipv6logconv
+-		$(CC) -o ipv6logconv-static $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) -static
++		$(CC) -o ipv6logconv-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) $(LIBS) -lm -static
+ 
+ distclean:
+ 		${MAKE} clean
+--- a/ipv6logstats/Makefile.in
++++ b/ipv6logstats/Makefile.in
+@@ -49,10 +49,10 @@ libipv6calc_db_wrapper.a:
+ $(OBJS):	ipv6logstatsoptions.h ipv6logstatshelp.h ipv6logstats.h
+ 
+ ipv6logstats:	$(OBJS) libipv6calc.a libipv6calc_db_wrapper.a
+-		$(CC) -o ipv6logstats $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA)
++		$(CC) -o ipv6logstats $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA) $(LIBS) -lm
+ 
+ static:		ipv6logstats
+-		$(CC) -o ipv6logstats-static $(OBJS) $(GETOBJS) $(LIBS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) -static
++		$(CC) -o ipv6logstats-static $(OBJS) $(GETOBJS) $(LDFLAGS) $(LDFLAGS_EXTRA_STATIC) $(LIBS) -lm -static
+ 
+ distclean:
+ 		${MAKE} clean

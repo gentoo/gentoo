@@ -1,0 +1,55 @@
+From 07be723bc1d2b6a655a589dfcd4213e251cdb453 Mon Sep 17 00:00:00 2001
+From: Aaron Patterson <aaron@rubyonrails.org>
+Date: Wed, 25 May 2022 10:46:11 -0700
+Subject: [PATCH] Ensure Rails is green with Rack-Test main branch
+
+This commit just ensures we're green with the main branch of rack test.
+The changes are things we should have done anyway, and are backwards
+compatible with older versions of rack test
+---
+ actionpack/test/controller/new_base/render_streaming_test.rb | 4 ++++
+ actionpack/test/dispatch/session/cache_store_test.rb         | 2 +-
+ actionpack/test/dispatch/session/mem_cache_store_test.rb     | 2 +-
+ 3 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/actionpack/test/controller/new_base/render_streaming_test.rb b/actionpack/test/controller/new_base/render_streaming_test.rb
+index 23dc6bca40364..d9789355f9520 100644
+--- a/test/controller/new_base/render_streaming_test.rb
++++ b/test/controller/new_base/render_streaming_test.rb
+@@ -44,6 +44,10 @@ def explicit_cache
+   end
+ 
+   class StreamingTest < Rack::TestCase
++    def get(path, headers: { "SERVER_PROTOCOL" => "HTTP/1.1", "HTTP_VERSION" => "HTTP/1.1" })
++      super
++    end
++
+     test "rendering with streaming enabled at the class level" do
+       get "/render_streaming/basic/hello_world"
+       assert_body "b\r\nHello world\r\nb\r\n, I'm here!\r\n0\r\n\r\n"
+diff --git a/actionpack/test/dispatch/session/cache_store_test.rb b/actionpack/test/dispatch/session/cache_store_test.rb
+index 9677d177d0acc..6479654c73b37 100644
+--- a/test/dispatch/session/cache_store_test.rb
++++ b/test/dispatch/session/cache_store_test.rb
+@@ -59,7 +59,7 @@ def test_getting_session_value_after_session_reset
+       get "/set_session_value"
+       assert_response :success
+       assert cookies["_session_id"]
+-      session_cookie = cookies.send(:hash_for)["_session_id"]
++      session_cookie = cookies.get_cookie("_session_id")
+ 
+       get "/call_reset_session"
+       assert_response :success
+diff --git a/actionpack/test/dispatch/session/mem_cache_store_test.rb b/actionpack/test/dispatch/session/mem_cache_store_test.rb
+index 417a8355bfc2a..188f321c5999f 100644
+--- a/test/dispatch/session/mem_cache_store_test.rb
++++ b/test/dispatch/session/mem_cache_store_test.rb
+@@ -71,7 +71,7 @@ def test_getting_session_value_after_session_reset
+         get "/set_session_value"
+         assert_response :success
+         assert cookies["_session_id"]
+-        session_cookie = cookies.send(:hash_for)["_session_id"]
++        session_cookie = cookies.get_cookie("_session_id")
+ 
+         get "/call_reset_session"
+         assert_response :success

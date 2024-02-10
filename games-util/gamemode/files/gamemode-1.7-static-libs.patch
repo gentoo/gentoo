@@ -1,0 +1,29 @@
+From d339709cc42fe0b78b881d760003845010f5a7c1 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 6 Aug 2022 14:42:27 +0100
+Subject: [PATCH] Don't force installation of static libgamemodeauto
+
+Defining the library with `library` rather than `both_libraries` allows the user
+to choose which type they want to install using `-Ddefault_library`.
+
+Closes: https://github.com/FeralInteractive/gamemode/issues/287
+---
+ lib/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/meson.build b/lib/meson.build
+index e810509..7cdcf8a 100644
+--- a/lib/meson.build
++++ b/lib/meson.build
+@@ -25,7 +25,7 @@ gamemode_headers_includes = [
+ ]
+ 
+ # Small library to automatically use gamemode
+-libgamemodeauto = both_libraries(
++libgamemodeauto = library(
+     'gamemodeauto',
+     sources: [
+         'client_loader.c',
+-- 
+2.35.1
+

@@ -1,0 +1,33 @@
+commit d79e778080766cf359d6658367e1c7ce0668daa4
+Author: Benda Xu <orv@debian.org>
+Date:   Sat Jul 29 23:03:22 2023 +0800
+
+    sobol*_direction_vector_generator.cpp: include stdint.h for uint*_t
+    
+    Reference: https://gcc.gnu.org/gcc-13/porting_to.html
+    Signed-off-by: Benda Xu <heroxbd@gentoo.org>
+
+diff --git a/tools/sobol32_direction_vector_generator.cpp b/tools/sobol32_direction_vector_generator.cpp
+index 16c4354..eb316c7 100644
+--- a/tools/sobol32_direction_vector_generator.cpp
++++ b/tools/sobol32_direction_vector_generator.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
++#include <cstdint>
+ #include <string>
+ #include <iomanip>
+ 
+diff --git a/tools/sobol64_direction_vector_generator.cpp b/tools/sobol64_direction_vector_generator.cpp
+index e520903..ecdbdc4 100644
+--- a/tools/sobol64_direction_vector_generator.cpp
++++ b/tools/sobol64_direction_vector_generator.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include <iostream>
+ #include <fstream>
++#include <cstdint>
+ #include <string>
+ #include <iomanip>
+ 

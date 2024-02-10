@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/777087
+https://bugs.launchpad.net/libindicator/+bug/1502925
+Thanks-to: orbea <orbea@riseup.net>
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,7 @@ AM_INIT_AUTOMAKE([1.11 -Wall tar-pax])
+ 
+ AM_MAINTAINER_MODE([enable])
+ 
+-AM_SILENT_RULES([yes])]
++AM_SILENT_RULES([yes])
+ 
+ # Check for programs
+ AC_PROG_CC
+@@ -66,7 +66,7 @@ AS_IF([test "x$with_gtk" = x3],
+ AM_CONDITIONAL(USE_GTK3, [test "x$with_gtk" = x3])
+ 
+ LT_LIB_M
+-LIBINDICATOR_LIBS+="$LIBM"
++LIBINDICATOR_LIBS="${LIBINDICATOR_LIBS} $LIBM"
+ 
+ ##############################
+ # Custom Junk

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+			Logcheck is a simple utility which is designed to allow a system administrator to view the logfiles which are produced upon hosts under their control.
+			It does this by mailing summaries of the logfiles to them, after first filtering out "normal" entries.
+			Normal entries are entries which match one of the many included regular expression files contain in the database.
+	</longdescription>
+	<use>
+		<flag name="cron">Adds file to enable hourly cron job to run logcheck"</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<name>Mathias Gibbens</name>
+			<email>gibmat@debian.org</email>
+		</maintainer>
+		<maintainer status="active">
+			<name>Jose M Calhariz</name>
+			<email>calhariz@debian.org</email>
+		</maintainer>
+		<maintainer status="active">
+			<name>Debian logcheck Team</name>
+			<email>logcheck@packages.debian.org</email>
+		</maintainer>
+		<bugs-to>https://bugs.debian.org/logcheck</bugs-to>
+		<changelog>https://metadata.ftp-master.debian.org/changelogs/main/l/logcheck/unstable_changelog</changelog>
+	</upstream>
+</pkgmetadata>

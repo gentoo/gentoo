@@ -1,0 +1,15 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -107,12 +107,6 @@
+ @INTLTOOL_DESKTOP_RULE@
+ @INTLTOOL_XML_NOMERGE_RULE@
+ 
+-install-data-hook: install-update-icon-cache
+-	$(GLIB_COMPILE_SCHEMAS) $(gsettingsschemadir)
+-#$(gsettingsupdateschemacache) $(gsettingsschemadir)
+-
+-uninstall-hook: uninstall-update-icon-cache
+-
+ dist-hook: dist-changelog
+ 
+ # Note that this rule creates the ui/ build directory as a side effect.

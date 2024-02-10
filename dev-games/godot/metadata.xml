@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		Godot Engine is a feature-packed, cross-platform game engine
+		to create 2D and 3D games from a unified interface. It provides
+		a comprehensive set of common tools, so that users can focus on
+		making games without having to reinvent the wheel. Games can be
+		exported with one click to a number of platforms, including the
+		major desktop platforms (Linux, macOS, Windows), mobile
+		platforms (Android, iOS), as well as Web-based platforms (HTML5)
+		and consoles.
+	</longdescription>
+	<use>
+		<flag name="bullet">Enable the <pkg>sci-physics/bullet</pkg> module</flag>
+		<flag name="deprecated">Enable support for deprecated features</flag>
+		<flag name="raycast">Enable the raycast Editor module using <pkg>media-libs/embree</pkg></flag>
+		<flag name="runner">Build an additional binary optimized for running games (only relevant with USE=tools)</flag>
+		<flag name="tools">Enable the Godot Editor for game development</flag>
+		<flag name="webm">Enable the WebM module</flag>
+	</use>
+	<upstream>
+		<doc>https://docs.godotengine.org/</doc>
+		<remote-id type="github">godotengine/godot</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">nbdkit/libnbd</remote-id>
+		<remote-id type="github">libguestfs/libnbd</remote-id>
+	</upstream>
+	<use>
+		<flag name="uri-support">
+			Enable nbd:// URI support via <pkg>dev-libs/libxml2</pkg>.
+		</flag>
+		<flag name="fuse">
+			Install the <pkg>sys-fs/fuse</pkg> powered nbdfuse.
+		</flag>
+		<flag name="go">
+			Build bindings for <pkg>dev-lang/go</pkg>
+		</flag>
+	</use>
+</pkgmetadata>

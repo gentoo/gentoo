@@ -1,0 +1,10 @@
+--- quilt-el.orig/quilt.el
++++ quilt-el/quilt.el
+@@ -399,6 +399,7 @@
+     (cd quilt-header-directory)
+     (shell-command (concat "EDITOR=cat quilt -r header <" tmp))
+     (kill-buffer (current-buffer))
++    (delete-window)
+     (delete-file tmp)))
+ 
+ (defvar quilt-header-mode-map (make-keymap))

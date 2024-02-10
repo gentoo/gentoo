@@ -1,0 +1,32 @@
+From 00c84902e508c20c61b003a64f772cfe82f18d43 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Fri, 1 Dec 2023 04:39:56 +0100
+Subject: [PATCH] Makefile: prefer distro cflags if specified
+
+The compilation flags that are necessary for building and part of the
+developer's intentions belong in the `+=` section, but the base flags
+that distros like to override belong in a `?=` section, so that build
+systems using their own are respected.
+
+Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
+---
+ src/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 2c9d51b..bba8d42 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -12,7 +12,8 @@ VERSION := $(shell \
+ DEPDIR := .deps
+ DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+ 
+-CFLAGS += -Wall -Werror -ggdb -fno-omit-frame-pointer -O2 -D_FORTIFY_SOURCE=2
++CFLAGS ?= -ggdb -fno-omit-frame-pointer -O2
++CFLAGS += -Wall -Werror -D_FORTIFY_SOURCE=2
+ CFLAGS += -DVERSION=\"$(VERSION)\"
+ CFLAGS += -Wno-error=deprecated-declarations
+ 
+-- 
+2.42.0
+

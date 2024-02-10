@@ -1,0 +1,20 @@
+--- a/cmake/FindLua.cmake
++++ b/cmake/FindLua.cmake
+@@ -36,7 +36,7 @@
+ #SET(_POSSIBLE_LUA_LIBRARY lua)
+ 
+ # Determine possible naming suffixes (there is no standard for this)
+-SET(_POSSIBLE_SUFFIXES "52" "5.2" "-5.2" "53" "5.3" "-5.3" "")
++SET(_POSSIBLE_SUFFIXES "${LUA_ABI_VERSION}")
+ 
+ # Set up possible search names and locations
+ FOREACH(_SUFFIX ${_POSSIBLE_SUFFIXES})
+@@ -53,7 +53,7 @@
+ 
+ # Find the lua executable
+ FIND_PROGRAM(LUA_COMPILER
+-  NAMES luac5.3 ${_POSSIBLE_LUA_COMPILER}
++  NAMES ${_POSSIBLE_LUA_COMPILER}
+ )
+ 
+ # Find the lua header

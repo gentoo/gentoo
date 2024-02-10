@@ -1,0 +1,19 @@
+Make Perl shebangs Prefix friendly
+See also: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/scripts/MSPCollect.pl
++++ b/scripts/MSPCollect.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if (!@ARGV) {
+     die "usage: MSPCollect BLAST_output_file\n";
+--- a/scripts/recon.pl
++++ b/scripts/recon.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $path = "";
+ 

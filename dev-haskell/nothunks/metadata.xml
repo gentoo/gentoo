@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="bytestring">Provide instances for bytestring</flag>
+		<flag name="text">Provide instances for text</flag>
+		<flag name="vector">Provide instances for vector</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">nothunks</remote-id>
+		<remote-id type="github">input-output-hk/nothunks</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    use net
+}
+
+start() {
+    ebegin "Starting monopd server"
+    start-stop-daemon --start -q -b --exec GENTOO_DIR/monopd
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping monopd server"
+    start-stop-daemon --stop -q --exec GENTOO_DIR/monopd
+    eend $?
+}

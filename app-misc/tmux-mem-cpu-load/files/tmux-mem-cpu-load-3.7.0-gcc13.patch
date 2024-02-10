@@ -1,0 +1,24 @@
+https://github.com/thewtex/tmux-mem-cpu-load/pull/95
+
+From 59cca005e4c6d2fe9f90574a99afe78dcb6d8539 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 18 Apr 2023 04:25:00 +0100
+Subject: [PATCH] Fix build with GCC 13
+
+GCC 13 (as usual for new compiler releases) shuffles around some internal includes so some
+are no longer transitively included.
+
+See https://gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/895304
+--- a/common/cpu.h
++++ b/common/cpu.h
+@@ -19,6 +19,7 @@
+ #ifndef CPU_H_
+ #define CPU_H_
+ 
++#include <cstdint>
+ #include <sys/types.h>
+ 
+ #if defined(__APPLE__) && defined(__MACH__)
+

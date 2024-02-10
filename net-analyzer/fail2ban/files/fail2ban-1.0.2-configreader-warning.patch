@@ -1,0 +1,19 @@
+https://github.com/fail2ban/fail2ban/commit/432e7e1
+
+From 432e7e1e93936f09e349e80d94254e5f43d0cc8a Mon Sep 17 00:00:00 2001
+From: "Sergey G. Brester" <serg.brester@sebres.de>
+Date: Mon, 28 Nov 2022 13:21:15 +0100
+Subject: [PATCH] no warning if no config value but default (debug message now)
+
+closes #3420
+--- a/fail2ban/client/configreader.py
++++ b/fail2ban/client/configreader.py
+@@ -277,7 +277,7 @@ def getOptions(self, sec, options, pOptions=None, shouldExist=False, convert=Tru
+ 				# TODO: validate error handling here.
+ 			except NoOptionError:
+ 				if not optvalue is None:
+-					logSys.warning("'%s' not defined in '%s'. Using default one: %r"
++					logSys.debug("'%s' not defined in '%s'. Using default one: %r"
+ 								% (optname, sec, optvalue))
+ 					values[optname] = optvalue
+ 				# elif logSys.getEffectiveLevel() <= logLevel:

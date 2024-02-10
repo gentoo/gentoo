@@ -1,0 +1,13 @@
+diff -up KoboDeluxe-0.5.1/sound/a_midicon.c~ KoboDeluxe-0.5.1/sound/a_midicon.c
+--- KoboDeluxe-0.5.1/sound/a_midicon.c~	2015-06-03 20:31:31.000000000 +0200
++++ KoboDeluxe-0.5.1/sound/a_midicon.c	2015-06-03 20:47:40.836311461 +0200
+@@ -120,7 +120,8 @@ static inline void __press(unsigned ch,
+ {
+ 	m[ch].next[key] = -1;
+ 	m[ch].prev[key] = m[ch].last;
+-	m[ch].next[m[ch].last] = (char)key;
++	if (m[ch].last != -1)
++		m[ch].next[m[ch].last] = (char)key;
+ 	m[ch].last = (char)key;
+ }
+ 

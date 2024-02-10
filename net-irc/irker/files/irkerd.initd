@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: "${pidfile:=/run/${RC_SVCNAME}.pid}"
+: "${IRKERD_USER:=nobody}"
+
+depend() {
+        use net
+}
+
+start() (
+	if [ -n "${IRKERD_LOGFILE}" ] ; then
+		checkpath -f \
+			-o "${IRKERD_USER}" \
+			"${IRKERD_LOGFILE}" \
+			|| return 1
+	fi
+
+	set -f
+	set -- ${IRKERD_OPTS}
+	[ -n "${IRKERD_LOGLEVEL}" ] && set -- "$@" -d "${IRKERD_LOGLEVEL}"
+	[ -n "${IRKERD_LOGFILE}"  ] && set -- "$@" -l "${IRKERD_LOGFILE}"
+	[ -n "${IRKERD_NICK}"     ] && set -- "$@" -n "${IRKERD_NICK}"
+	[ -n "${IRKERD_PASSWORD}" ] && set -- "$@" -p "${IRKERD_PASSWORD}"
+
+        ebegin "Starting ${RC_SVCNAME}"
+        start-stop-daemon --start \
+                --quiet --background \
+                --user "${IRKERD_USER}" \
+                --make-pidfile --pidfile "${pidfile}" \
+                --exec /usr/bin/irkerd \
+                -- "$@" < /dev/null
+        eend $?
+)

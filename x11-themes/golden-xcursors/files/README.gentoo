@@ -1,0 +1,19 @@
+To use this set of cursors, edit or create the file ~/.Xdefaults and add the
+following line:
+Xcursor.theme: Gold
+
+You can change the size by adding a line like:
+Xcursor.size: 48
+
+Also, to globally use this set of mouse cursors edit the file:
+   /usr/share/cursors/xorg-x11/default/index.theme
+and change the line:
+	Inherits=[current setting]
+to
+	Inherits=Gold
+
+Note this will be overruled by a user's ~/.Xdefaults file.
+
+If you experience flickering, try setting the following line in the Device
+section of your xorg.conf file:
+	Option "HWCursor" "false"

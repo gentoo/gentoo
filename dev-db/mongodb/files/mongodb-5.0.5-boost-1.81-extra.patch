@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/889020
+--- a/src/mongo/util/boost_assert_shim.cpp
++++ b/src/mongo/util/boost_assert_shim.cpp
+@@ -31,6 +31,7 @@
+ 
+ #if defined(BOOST_ENABLE_ASSERT_DEBUG_HANDLER) && !defined(NDEBUG)
+ 
++#include <exception>
+ #include <boost/assert.hpp>
+ 
+ namespace mongo {

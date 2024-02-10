@@ -1,0 +1,98 @@
+--- a/ipguard.c
++++ b/ipguard.c
+@@ -29,6 +29,34 @@
+ 
+ #include "ipguard.h"
+ 
++char iface[IFNAMSIZ];
++char ethers_name[PATH_MAX];
++char log_name[PATH_MAX];
++char pid_name[PATH_MAX];
++char fmac[18];
++char pcapf[PCAPFSIZ];
++char suser[MAXLOGNAME];
++int ethers_update;
++int fake_regen;
++int fake_num;
++int fake_time;
++int buffer_num;
++int addr_nosubst;
++int nofirst;
++int grant;
++int read_only;
++int duplex;
++int fixbc;
++int hidden;
++int promisc;
++int debug;
++int verbose;
++
++unsigned int all, good, grat, wgrat, zmac, zip, bad, bmac, bsip, btip,
++    bnew, bgrat, mymac, fake, pfake, nzh, nbe, mis;
++char pfmac[18];
++char s[128+1];
++
+ void usage(char *name) {
+     fprintf(stdout, "%s v%s (c) %s <%s>\n\n", NAME, VERSION, AUTHOR, MAIL);
+     fprintf(stdout, "usage: %s [-h] [-ajgrxziovd]\n", name);
+--- a/ipguard.h
++++ b/ipguard.h
+@@ -68,33 +68,33 @@
+ #define NOTICE          3
+ #define INFO            4
+ 
+-char iface[IFNAMSIZ];
+-char ethers_name[PATH_MAX];
+-char log_name[PATH_MAX];
+-char pid_name[PATH_MAX];
+-char fmac[18];
+-char pcapf[PCAPFSIZ];
+-char suser[MAXLOGNAME];
+-int ethers_update;
+-int fake_regen;
+-int fake_num;
+-int fake_time;
+-int buffer_num;
+-int addr_nosubst;
+-int nofirst;
+-int grant;
+-int read_only;
+-int duplex;
+-int fixbc;
+-int hidden;
+-int promisc;
+-int debug;
+-int verbose;
++extern char iface[IFNAMSIZ];
++extern char ethers_name[PATH_MAX];
++extern char log_name[PATH_MAX];
++extern char pid_name[PATH_MAX];
++extern char fmac[18];
++extern char pcapf[PCAPFSIZ];
++extern char suser[MAXLOGNAME];
++extern int ethers_update;
++extern int fake_regen;
++extern int fake_num;
++extern int fake_time;
++extern int buffer_num;
++extern int addr_nosubst;
++extern int nofirst;
++extern int grant;
++extern int read_only;
++extern int duplex;
++extern int fixbc;
++extern int hidden;
++extern int promisc;
++extern int debug;
++extern int verbose;
+ 
+-unsigned int all, good, grat, wgrat, zmac, zip, bad, bmac, bsip, btip,
++extern unsigned int all, good, grat, wgrat, zmac, zip, bad, bmac, bsip, btip,
+     bnew, bgrat, mymac, fake, pfake, nzh, nbe, mis;
+-char pfmac[18];
+-char s[128+1];
++extern char pfmac[18];
++extern char s[128+1];
+ 
+ /*  ethers.c
+  */

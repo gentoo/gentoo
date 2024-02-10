@@ -1,0 +1,15 @@
+if our toolchain generates PIC by default, then do not use the hand written
+assembly files as none of it is PIC friendly.
+
+--- a/unix/configure
++++ b/unix/configure
+@@ -29,6 +29,9 @@
+ echo Check if we can use asm code
+ OBJA=""
+ OCRCU8=""
++piclib="$(echo | $CPP -dM $CFLAGS - | grep -i __pic__)"
++echo "Checking if compiler wants to create pic code"
++[ "$piclib" = "" ] && \
+ if eval "$CPP match.S > _match.s 2>/dev/null"; then
+   if test ! -s _match.s || grep error < _match.s > /dev/null; then
+     :

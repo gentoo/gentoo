@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    utop is an improved toplevel (i.e., Read-Eval-Print Loop or REPL) for
+    OCaml. It can run in a terminal or in Emacs. It supports line edition,
+    history, real-time and context sensitive completion, colors, and more.
+    It integrates with the Tuareg mode in Emacs.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ocaml-community/utop/issues/</bugs-to>
+    <remote-id type="github">ocaml-community/utop</remote-id>
+  </upstream>
+</pkgmetadata>

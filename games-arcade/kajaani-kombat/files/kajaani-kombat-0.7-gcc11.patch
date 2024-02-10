@@ -1,0 +1,31 @@
+These SDL_* return NULL on error, and gcc11/clang won't allow this.
+https://bugs.gentoo.org/739086
+--- a/client_net.cpp
++++ b/client_net.cpp
+@@ -33,3 +33,3 @@
+   cond = SDL_CreateCond();
+-  if (cond <0)
++  if (!cond)
+     {
+@@ -39,3 +39,3 @@
+   mutex = SDL_CreateMutex();
+-  if (mutex < 0)
++  if (!mutex)
+     {
+@@ -47,3 +47,3 @@
+   trans_th = SDL_CreateThread (&client_tcpnet::transf_func, (void *) this);
+-  if (trans_th < 0)
++  if (!trans_th)
+     {
+@@ -53,3 +53,3 @@
+   input_th = SDL_CreateThread (&client_tcpnet::input_func, (void *) this);
+-  if (input_th < 0)
++  if (!input_th)
+     {
+--- a/game_server.cpp
++++ b/game_server.cpp
+@@ -66,3 +66,3 @@
+   con_th = SDL_CreateThread (&game_server::connection_accepter, (void *) this);
+-  if (con_th < 0)
++  if (!con_th)
+     {

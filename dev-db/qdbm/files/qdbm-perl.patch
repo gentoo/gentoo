@@ -1,0 +1,34 @@
+--- a/perl/Makefile.in
++++ b/perl/Makefile.in
+@@ -25,10 +25,10 @@
+ DESTDIR =
+ 
+ # Building binaries
+-CC = gcc
++CC = @CC@
+ INC = -I. -I../.. -I$(HOME)/include -I/usr/local/include
+ OPTIMIZE = -O2
+-LD = gcc
++LD = @CC@
+ LIBS = -L../.. -I$(HOME)/lib -L/usr/local/lib -lqdbm @LIBS@
+ RUNENV = LD_LIBRARY_PATH=.:..:../..:/usr/local/lib:$(HOME)/lib
+ 
+@@ -42,15 +42,15 @@
+ all :
+ 	cd depot && [ -f Makefile ] || \
+ 	  $(RUNENV) perl Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; \
++	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS="vendor" ; \
+ 	  $(RUNENV) make
+ 	cd curia && [ -f Makefile ] || \
+ 	  $(RUNENV) perl Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; \
++	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS="vendor" ; \
+ 	  $(RUNENV) make
+ 	cd villa && [ -f Makefile ] || \
+ 	  $(RUNENV) perl Makefile.PL CC="$(CC)" INC="$(INC)" OPTIMIZE="$(OPTIMIZE)" \
+-	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" ; \
++	    LD="$(LD)" LIBS="$(LIBS)" PREFIX="$(prefix)" INSTALLDIRS="vendor" ; \
+ 	  $(RUNENV) make
+ 	@printf '\n'
+ 	@printf '#================================================================\n'

@@ -1,0 +1,55 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,8 +3,8 @@ ETCDIR = $(DESTDIR)/etc
+ VERSION = 0.4.0
+ OBJS = main.o diskset.o disk.o spindown.o iniparser.o dictionary.o log.o spindownd.o\
+         exceptions.o
+-CC = g++
+-CFLAGS +=
++CXX ?= c++
++CXXFLAGS +=
+ LDFLAGS +=
+ SRC = src/
+ INPARSER = $(SRC)ininiparser3.0b/
+@@ -61,31 +61,31 @@ dist:
+ 	rm -d -r -f $(SRCDIR)
+ 
+ spindownd: $(OBJS)
+-	g++ $(CFLAGS) $(LDFLAGS) -o spindownd $(OBJS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -o spindownd $(OBJS)
+ 
+ main.o: $(SRC)main.cpp $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)main.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)main.cpp
+ 
+ diskset.o: $(SRC)diskset.cpp $(SRC)diskset.h $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)diskset.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)diskset.cpp
+ 
+ disk.o: $(SRC)disk.cpp $(SRC)disk.h $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)disk.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)disk.cpp
+ 
+ spindown.o: $(SRC)spindown.cpp $(SRC)spindown.h $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)spindown.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)spindown.cpp
+ 
+ spindownd.o: $(SRC)spindownd.cpp $(SRC)spindownd.h $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)spindownd.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)spindownd.cpp
+ 
+ log.o: $(SRC)log.cpp $(SRC)log.h $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)log.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)log.cpp
+ 
+ exceptions.o: $(SRC)exceptions.cpp $(SRC)exceptions.h $(SRC)general.h
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)exceptions.cpp
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(SRC)exceptions.cpp
+ 
+ iniparser.o: $(INPARSER)iniparser.c
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(INPARSER)iniparser.c
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(INPARSER)iniparser.c
+ 
+ dictionary.o: $(INPARSER)dictionary.c
+-	g++ $(CFLAGS) $(LDFLAGS) -c $(INPARSER)dictionary.c
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $(INPARSER)dictionary.c

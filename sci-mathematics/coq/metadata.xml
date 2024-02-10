@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription>
+	Developed in the LogiCal project, the Coq tool is a formal proof
+	management system: a proof done with Coq is mechanically checked
+	by the machine.
+
+	In particular, Coq allows:
+	* the definition of functions or predicates,
+	* to state mathematical theorems and software specifications,
+	* to develop interactively formal proofs of these theorems,
+	* to check these proofs by a small certification "kernel".
+
+	Coq is based on a logical framework called "Calculus of Inductive
+	Constructions" extended by a modular development system for
+	theories.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/coq/coq/releases/</changelog>
+		<bugs-to>https://github.com/coq/coq/issues/</bugs-to>
+		<remote-id type="github">coq/coq</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,4 @@
+auth	sufficient	pam_securityserver.so
+auth	sufficient	pam_unix.so
+auth	required	pam_deny.so
+auth	required	pam_permit.so

@@ -1,0 +1,42 @@
+configure.ac: Conditionalize test dependencies
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -369,20 +369,25 @@ else
+ fi
+ AC_SUBST([DEFAULT_PCR_BANKS])
+ 
+-AC_PATH_PROG([EXPECT], expect)
+-if test "x$EXPECT" = "x"; then
+-	AC_MSG_ERROR([expect is required: expect package])
+-fi
++AC_ARG_ENABLE([test],
++	[AS_HELP_STRING([--enable-test],
++			[enable tests (default is yes)])],
++	[enable_test=$enableval],
++	[enable_test=yes])
++
++AS_IF([test "x$enable_test" != xno],
++	[AC_PATH_PROG([EXPECT], expect)
++	AS_IF([test "x$EXPECT" = "x"],
++		AC_MSG_ERROR([expect is required: expect package]))
++	AC_PATH_PROG([SOCAT], socat)
++	AS_IF([test "x$SOCAT" = "x"],
++		AC_MSG_ERROR([socat is required: socat package]))])
+ 
+ AC_PATH_PROG([GAWK], gawk)
+ if test "x$GAWK" = "x"; then
+ 	AC_MSG_ERROR([gawk is required: gawk package])
+ fi
+ 
+-AC_PATH_PROG([SOCAT], socat)
+-if test "x$SOCAT" = "x"; then
+-	AC_MSG_ERROR([socat is required: socat package])
+-fi
+ 
+ AC_PATH_PROG([BASE64], base64)
+ if test "x$BASE64" = "x"; then
+-- 
+2.34.1
+

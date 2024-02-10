@@ -1,0 +1,30 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -33,6 +33,7 @@ else
+ SOLIB_VERSION_OPTS =
+ endif
+ 
++AR	= @AR@
+ CC	= @CC@
+ CPPFLAGS= @CPPFLAGS@
+ CFLAGS	= @CFLAGS@ -I. -Iinclude -I$(srcdir) -I$(srcdir)/include
+@@ -161,7 +162,7 @@ solib-message.o: message.c
+ 
+ ifeq ($(BUILD_STATIC),1)
+ $(LIB): $(LIBOBJS)
+-	ar cr $@ $(LIBOBJS)
++	$(AR) cr $@ $(LIBOBJS)
+ else
+ $(LIB):
+ endif
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,6 +4,7 @@ AC_CONFIG_AUX_DIR([aclocal])
+ 
+ AC_CONFIG_HEADER(config.h)
+ 
++AM_PROG_AR
+ AC_PROG_CC
+ AC_CANONICAL_HOST
+ AC_C_BIGENDIAN
+ 

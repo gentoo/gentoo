@@ -1,0 +1,34 @@
+--- a/Makefile
++++ b/Makefile
+@@ -31,11 +31,11 @@ S_SRC+= src/tls_$(TLS_BACKEND).c
+ FEATURES=
+ FEATURES_INC=
+ 
+-CFLAGS+=-Wall -Werror -Wstrict-prototypes -Wmissing-prototypes
++CFLAGS+=-Wall -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS+=-Wmissing-declarations -Wshadow -Wpointer-arith -Wcast-qual
+ CFLAGS+=-Wsign-compare -Iinclude/kore -I$(OBJDIR) -std=c99 -pedantic
+ CFLAGS+=-Wtype-limits -fno-common
+-CFLAGS+=-DPREFIX='"$(PREFIX)"' -fstack-protector-all
++CFLAGS+=-DPREFIX='"$(PREFIX)"'
+ 
+ LDFLAGS+=-rdynamic
+ 
+@@ -69,7 +69,7 @@ endif
+ ifneq ("$(NOOPT)", "")
+ 	CFLAGS+=-O0
+ else
+-	CFLAGS+=-O2
++	CFLAGS+=
+ endif
+ 
+ ifneq ("$(NOSENDFILE)", "")
+@@ -155,7 +155,7 @@ ifeq ("$(OSNAME)", "darwin")
+ 	endif
+ 	S_SRC+=src/bsd.c
+ else ifeq ("$(OSNAME)", "linux")
+-	CFLAGS+=-D_GNU_SOURCE=1 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
++	CFLAGS+=-D_GNU_SOURCE=1
+ 	LDFLAGS+=-ldl
+ 	S_SRC+=src/linux.c src/seccomp.c
+ else

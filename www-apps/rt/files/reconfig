@@ -1,0 +1,56 @@
+#!/bin/bash
+PF=${PN}-${PVR}
+
+die() {
+    echo "#####"
+    echo $1
+    echo "#####"
+    exit 1
+}
+
+if [ $1 = "install" ]; then
+    # So, some craziness happens during the install process. First, we
+    # have doubled slashes, which the ebuild dutifully removes, but
+    # then, at some point, ${ED} is removed including its trailing
+    # slash, which leaves us with relative path references. That's why
+    # we remove the leading slash instead of the trailing slash in the
+    # variables below so that the sed statement will actually match
+    # what we mean.
+    echo "Replacing ${ROOT#/}${MY_HOSTROOTDIR#/} with ${VHOST_ROOT}/${PF}"
+    echo "Replacing ${ROOT#/}${MY_HTDOCSDIR#/} with ${MY_INSTALLDIR}"
+    echo "Replacing RT_DIR with ${VHOST_ROOT}/${PF}"
+
+    for file in $(find ${VHOST_ROOT}/${PF} -type f) ; do
+        sed -e "s|${ROOT#/}${MY_HOSTROOTDIR#/}/${PF}|${VHOST_ROOT}/${PF}|g" \
+            -e "s|${ROOT#/}${MY_HTDOCSDIR#/}|${MY_INSTALLDIR}|g" \
+            -e "s|RT_DIR|${VHOST_ROOT}/${PF}|g" \
+            -i "${file}" || die
+    done
+
+    echo
+    echo "If you're upgrading RT, you may need to update your database."
+    echo "Take a look in:"
+    echo
+    echo "  ${VHOST_ROOT}/${PF}/upgrade"
+    echo
+    echo "Iterate through each sub-directory, in order, whose name is greater"
+    echo "than your previously installed RT version, and run the following"
+    echo "commands:"
+    echo
+    for step in schema acl insert ; do
+        echo "  ${VHOST_ROOT}/${PF}/sbin/rt-setup-database \\"
+        echo "    --action ${step} --dba DBSUPERUSER --prompt-for-dba-password \\"
+        echo "    --datadir ${VHOST_ROOT}/${PF}/upgrade/<version> "
+        echo
+    done
+    echo "Note that some upgrade directories don't have all 3 items (schema,"
+    echo "acl, insert) and you can skip them safely."
+    echo
+    echo "Don't forget to read the online installation guide for more details"
+elif [ $1 = "clean" ]; then
+    echo "Please examine the contents of the following directories and delete"
+    echo "anything that is no longer necessary:"
+    echo
+    echo "  ${VHOST_ROOT}/${PF}"
+    echo "  ${MY_INSTALLDIR}"
+fi

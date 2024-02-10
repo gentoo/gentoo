@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Gentoo Python Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">simpervisor</remote-id>
+		<remote-id type="github">jupyterhub/simpervisor</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

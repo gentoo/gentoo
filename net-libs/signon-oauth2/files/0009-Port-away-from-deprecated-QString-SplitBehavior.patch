@@ -1,0 +1,40 @@
+From 3ead61662e9b931ff2487869904c9be33cf97a85 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:13:10 +0200
+Subject: [PATCH 09/10] Port away from deprecated QString::SplitBehavior
+
+---
+ src/oauth2plugin.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/oauth2plugin.cpp b/src/oauth2plugin.cpp
+index c7f7f84..45510ad 100644
+--- a/src/oauth2plugin.cpp
++++ b/src/oauth2plugin.cpp
+@@ -436,7 +436,11 @@ void OAuth2Plugin::userActionFinished(const SignOn::UiSessionData &data)
+                 } else if (pair.first == STATE) {
+                     state = pair.second;
+                 } else if (pair.first == SCOPE) {
++#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+                     respData.setScope(pair.second.split(' ', QString::SkipEmptyParts));
++#else
++                    respData.setScope(pair.second.split(' ', Qt::SkipEmptyParts));
++#endif
+                 } else {
+                     extraFields.insert(pair.first, pair.second);
+                 }
+@@ -587,7 +591,11 @@ void OAuth2Plugin::serverReply(QNetworkReply *reply)
+         QStringList scope;
+         if (map.contains(SCOPE)) {
+             QString rawScope = QString::fromUtf8(map.take(SCOPE).toByteArray());
++#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+             scope = rawScope.split(' ', QString::SkipEmptyParts);
++#else
++            scope = rawScope.split(' ', Qt::SkipEmptyParts);
++#endif
+         } else {
+             scope = d->m_oauth2Data.Scope();
+         }
+-- 
+2.43.0
+

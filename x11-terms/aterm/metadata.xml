@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>imirkin@alum.mit.edu</email>
+		<name>Ilia Mirkin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
+	</maintainer>
+	<use>
+		<flag name="background">Enable background image support via
+			<pkg>media-libs/libafterimage</pkg></flag>
+		<flag name="xgetdefault">Enable resources via X instead of aterm small
+			version</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">aterm</remote-id>
+	</upstream>
+</pkgmetadata>

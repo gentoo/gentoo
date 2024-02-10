@@ -1,0 +1,14 @@
+--- a/libad9361.pc.cmakein
++++ b/libad9361.pc.cmakein
+@@ -1,8 +1,8 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/lib
+-sharedlibdir=@CMAKE_INSTALL_PREFIX@/lib
+-includedir=@CMAKE_INSTALL_PREFIX@/include
++libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
++sharedlibdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
++includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: libad9361
+ Description: Device specific library for AD936X transceivers

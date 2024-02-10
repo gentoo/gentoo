@@ -1,0 +1,11 @@
+[Unit]
+Description=Yet Another SKK server
+After=yaskkserv.socket
+Requires=yaskkserv.socket
+
+[Service]
+User=nobody
+ExecStart=/usr/sbin/yaskkserv_normal --no-daemonize /usr/share/skk/SKK-JISYO.L.yaskkserv
+
+[Install]
+WantedBy=multi-user.target

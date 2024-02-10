@@ -1,0 +1,54 @@
+From ab1a38d8e902baebc7183fb511bd58c50e2b4571 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Mon, 24 Aug 2020 09:03:57 -0400
+Subject: [PATCH] Fix Python check for doc, bash-completion, fonts, and icons
+ options
+
+Fixes: cfc56fa6 ("Introduce configure options for bash-completion, doc, fonts, and icons")
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9bef517a..4dbd2db7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,7 +40,7 @@ AC_ARG_ENABLE([bash-completion],
+ AS_HELP_STRING([--disable-bash-completion], [Disable bash-completion])
+ )
+ AS_IF([test "x$enable_bash_completion" != xno], [
+-    AS_IF([test HAVE_PYTHON = false], [
++    AS_IF([test "x$HAVE_PYTHON" = xfalse], [
+         AC_MSG_WARN([Building bash-completion requires Python, but Python not found])
+         enable_bash_completion=no
+     ])
+@@ -51,7 +51,7 @@ AC_ARG_ENABLE([doc],
+ AS_HELP_STRING([--disable-doc], [Disable documentation])
+ )
+ AS_IF([test "x$enable_doc" != xno], [
+-    AS_IF([test HAVE_PYTHON = false], [
++    AS_IF([test "x$HAVE_PYTHON" = xfalse], [
+         AC_MSG_WARN([Building documentation requires Python, but Python not found])
+         enable_doc=no
+     ])
+@@ -62,7 +62,7 @@ AC_ARG_ENABLE([fonts],
+ AS_HELP_STRING([--disable-fonts], [Disable fonts])
+ )
+ AS_IF([test "x$enable_fonts" != xno], [
+-    AS_IF([test HAVE_PYTHON = false], [
++    AS_IF([test "x$HAVE_PYTHON" = xfalse], [
+         AC_MSG_WARN([Building fonts require Python, but Python not found])
+         enable_fonts=no
+     ])
+@@ -73,7 +73,7 @@ AC_ARG_ENABLE([icons],
+ AS_HELP_STRING([--disable-icons], [Disable icons])
+ )
+ AS_IF([test "x$enable_icons" != xno], [
+-    AS_IF([test HAVE_PYTHON = false], [
++    AS_IF([test "x$HAVE_PYTHON" = xfalse], [
+         AC_MSG_WARN([Building icons require Python, but Python not found])
+         enable_icons=no
+     ])
+-- 
+2.28.0
+

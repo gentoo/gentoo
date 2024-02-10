@@ -1,0 +1,18 @@
+## whois service
+service whois
+{
+	disable = no
+	socket_type = stream
+	protocol = tcp
+	port = 43
+	wait = no
+	user = gwhois
+#	group = 
+	server = /usr/bin/gwhois
+#	server_args = 
+	only_from = 0.0.0.0
+	instances = 20
+	log_on_success += PID HOST DURATION USERID EXIT
+	log_on_failure += HOST USERID
+	nice = 5
+}

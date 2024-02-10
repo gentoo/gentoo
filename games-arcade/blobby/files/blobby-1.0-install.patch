@@ -1,0 +1,29 @@
+From 0a3ebb368242ed379f4ff7d5eca24be79841d968 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 21 Jan 2017 18:55:47 +0100
+Subject: [PATCH] Install missing files
+
+---
+ data/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/data/CMakeLists.txt b/data/CMakeLists.txt
+index a2454cd..5a2a661 100644
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -25,10 +25,12 @@ set(install_files
+ 	${CMAKE_CURRENT_BINARY_DIR}/backgrounds.zip
+ 	${CMAKE_CURRENT_BINARY_DIR}/rules.zip
+ 	config.xml
++	Icon.bmp
+ 	inputconfig.xml
+ 	server/server.xml
+ 	lang_de.xml
+ 	lang_en.xml
++	lang_it.xml
+ 	lang_fr.xml)
+ 
+ if (WIN32)
+-- 
+2.11.0
+

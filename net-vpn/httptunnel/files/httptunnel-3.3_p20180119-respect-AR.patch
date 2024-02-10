@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index acd5843..f5ad65d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,6 +26,7 @@ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl Checks for libraries.
+ AC_CHECK_FUNC([gethostent], :, [AC_CHECK_LIB(nsl, gethostent)])

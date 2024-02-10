@@ -1,0 +1,38 @@
+--- a/rpm-spec-mode.el
++++ b/rpm-spec-mode.el
+@@ -112,7 +112,7 @@
+   :group 'rpm-spec)
+ 
+ (define-obsolete-variable-alias
+-  'rpm-completion-ignore-case 'rpm-spec-completion-ignore-case)
++  'rpm-completion-ignore-case 'rpm-spec-completion-ignore-case "")
+ 
+ (defcustom rpm-spec-completion-ignore-case t
+   "*Non-nil means that case differences are ignored during completion.
+@@ -132,7 +132,7 @@
+   :group 'rpm-spec)
+ 
+ (define-obsolete-variable-alias
+-  'rpm-spec-test 'rpm-spec-nobuild)
++  'rpm-spec-test 'rpm-spec-nobuild "")
+ 
+ (defcustom rpm-spec-nobuild nil
+   "Do not execute any build stages.  Useful for testing out spec files."
+@@ -158,7 +158,7 @@
+   :group 'rpm-spec)
+ 
+ (define-obsolete-variable-alias
+-  'rpm-initialize-sections 'rpm-spec-initialize-sections)
++  'rpm-initialize-sections 'rpm-spec-initialize-sections "")
+ 
+ (defcustom rpm-spec-initialize-sections t
+   "Automatically add empty section headings to new spec files."
+@@ -166,7 +166,7 @@
+   :group 'rpm-spec)
+ 
+ (define-obsolete-variable-alias
+-  'rpm-insert-version 'rpm-spec-insert-changelog-version)
++  'rpm-insert-version 'rpm-spec-insert-changelog-version "")
+ 
+ (defcustom rpm-spec-insert-changelog-version t
+   "Automatically add version in a new change log entry."

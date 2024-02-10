@@ -1,0 +1,25 @@
+From 7538458c6c8999296a272c40bd4ec24132a51877 Mon Sep 17 00:00:00 2001
+From: E5ten <ethancsommer@gmail.com>
+Date: Thu, 16 Jan 2020 02:06:09 +0000
+Subject: [PATCH] switch from non-standard "egrep" to POSIX "grep -E"
+
+---
+ scripts/xdg-open.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/xdg-open.in b/scripts/xdg-open.in
+index 202f3e3..35b0522 100644
+--- a/scripts/xdg-open.in
++++ b/scripts/xdg-open.in
+@@ -72,7 +72,7 @@ get_key()
+ is_file_url_or_path()
+ {
+     if echo "$1" | grep -q '^file://' \
+-            || ! echo "$1" | egrep -q '^[[:alpha:]][[:alpha:][:digit:]+\.\-]*:'; then
++            || ! echo "$1" | grep -Eq '^[[:alpha:]][[:alpha:][:digit:]+\.\-]*:'; then
+         return 0
+     else
+         return 1
+-- 
+GitLab
+

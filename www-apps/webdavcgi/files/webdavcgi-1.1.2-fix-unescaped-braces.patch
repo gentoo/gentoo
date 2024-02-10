@@ -1,0 +1,98 @@
+diff --git a/lib/perl/Requests/WebDAVRequest.pm b/lib/perl/Requests/WebDAVRequest.pm
+index 8d5b89e6..2b6ea4d9 100644
+--- a/lib/perl/Requests/WebDAVRequest.pm
++++ b/lib/perl/Requests/WebDAVRequest.pm
+@@ -134,7 +134,7 @@ sub get_prop_stat {
+     $fn .= $is_dir && $fn !~ /\/$/xms ? q{/} : q{};
+     foreach my $prop ( @{$props} ) {
+         my ( $xmlnsuri, $propname ) = ( 'DAV:', $prop );
+-        if ( $prop =~ /^{([^}]*)}(.*)$/xms ) {
++        if ( $prop =~ /^[{]([^}]*)[}](.*)$/xms ) {
+             ( $xmlnsuri, $propname ) = ( $1, $2 );
+         }
+ 
+diff --git a/lib/perl/WebDAV/Properties.pm b/lib/perl/WebDAV/Properties.pm
+index 2baf319b..a9ee2d73 100644
+--- a/lib/perl/WebDAV/Properties.pm
++++ b/lib/perl/WebDAV/Properties.pm
+@@ -139,7 +139,7 @@ sub set_property {
+     my $rfn = $self->resolve($fn);
+     my $ru  = $REQUEST_URI;
+     my ( $ns, $pn );
+-    if ( $propname =~ /^{([^}]+)}(.*)$/xms ) {
++    if ( $propname =~ /^[{]([^}]+)[}](.*)$/xms ) {
+         ( $ns, $pn ) = ( $1, $2 );
+     }
+ 
+@@ -186,7 +186,7 @@ sub set_property {
+         if (   $parref
+             && ref($parref) eq 'HASH'
+             && ( !${$parref}{xmlns} || ${$parref}{xmlns} eq q{} )
+-            && $n !~ /^{[^}]*}/xms )
++            && $n !~ /^[{][^}]*[}]/xms )
+         {
+             $n = '{}' . $n;
+         }
+diff --git a/lib/perl/WebDAV/XMLHelper.pm b/lib/perl/WebDAV/XMLHelper.pm
+index 10ec2ceb..c8116927 100644
+--- a/lib/perl/WebDAV/XMLHelper.pm
++++ b/lib/perl/WebDAV/XMLHelper.pm
+@@ -229,7 +229,7 @@ sub get_namespace_uri {
+ 
+ sub nonamespace {
+     my ($prop) = @_;
+-    $prop =~ s/^{[^}]*}//xms;
++    $prop =~ s/^[{][^}]*[}]//xms;
+     return $prop;
+ }
+ 
+diff --git a/lib/perl/WebInterface/Common.pm b/lib/perl/WebInterface/Common.pm
+index a4236fae..6fa904cf 100644
+--- a/lib/perl/WebInterface/Common.pm
++++ b/lib/perl/WebInterface/Common.pm
+@@ -562,7 +562,7 @@ sub _get_varref {
+         if ( defined $self->{$str} ) {
+             return $self->{$str};
+         }
+-        if ($str=~/^(.*){(.*?)}/xms) {
++        if ($str=~/^(.*)[{](.*?)[}]/xms) {
+             $ref = $DefaultConfig::{$1}{$2};
+             return $ref;
+         }
+diff --git a/lib/perl/WebInterface/Extension/PropertiesViewer.pm b/lib/perl/WebInterface/Extension/PropertiesViewer.pm
+index 2f6223e8..be7ba438 100644
+--- a/lib/perl/WebInterface/Extension/PropertiesViewer.pm
++++ b/lib/perl/WebInterface/Extension/PropertiesViewer.pm
+@@ -157,7 +157,7 @@ sub _render_viewer {
+         my $title = create_xml( $r200{prop},        1 );
+         my $value = create_xml( $r200{prop}{$prop}, 1 );
+         my $namespace = get_namespace_uri($prop);
+-        if ( $prop =~ /^{([^}]*)}/xms ) {
++        if ( $prop =~ /^[{]([^}]*)[}]/xms ) {
+             $namespace = $1;
+         }
+         push @bgstyleclasses, shift @bgstyleclasses;
+diff --git a/lib/perl/WebInterface/View/Simple/RenderFileListTable.pm b/lib/perl/WebInterface/View/Simple/RenderFileListTable.pm
+index 44cfd894..972d431f 100644
+--- a/lib/perl/WebInterface/View/Simple/RenderFileListTable.pm
++++ b/lib/perl/WebInterface/View/Simple/RenderFileListTable.pm
+@@ -85,7 +85,7 @@ sub render_file_list_table {
+         unselectable => $self->is_unselectable($fn)        ? 'yes' : 'no',
+     );
+     $filelisttabletemplate =~
+-        s/[\$]{?(\w+)}?/exists $stdvars{$1} && defined $stdvars{$1}?$stdvars{$1}:"\$$1"/xmegs;
++        s/[\$][{]?(\w+)[}]?/exists $stdvars{$1} && defined $stdvars{$1}?$stdvars{$1}:"\$$1"/xmegs;
+     my %jsondata = (
+         content => $self->minify_html(
+             $self->render_template( $fn, $ru, $filelisttabletemplate )
+@@ -253,8 +253,8 @@ sub _render_file_list_entry {
+     my $displayname = $self->{cgi}->escapeHTML( $self->{backend}->getDisplayName($full) );
+     my $now = $self->{c}{_render_file_list_entry}{now}{$lang} //= DateTime->now( locale => $lang );
+     my $cct = $self->can_create_thumb($full);
+-    my $u   = $self->{c}{_render_file_list_entry}{uid}{$uid // 'unknown'} //= $uid && $uid=~/^\d+$/xms ? scalar getpwuid( $uid ) : $uid ? $uid : 'unknown';
+-    my $g   = $self->{c}{_render_file_list_entry}{gid}{$gid // 'unknown'} //= $gid && $gid=~/^\d+$/xms ? scalar getgrgid( $gid ) : $gid ? $gid : 'unknown';
++    my $u   = $self->{c}{_render_file_list_entry}{uid}{$uid // 'unknown'} //= $uid && $uid=~/^\d+$/xms ? scalar getpwuid( $uid ) // $uid: $uid ? $uid : 'unknown';
++    my $g   = $self->{c}{_render_file_list_entry}{gid}{$gid // 'unknown'} //= $gid && $gid=~/^\d+$/xms ? scalar getgrgid( $gid ) // $gid: $gid ? $gid : 'unknown';
+     my $icon = $self->{c}{_render_file_list_entry}{icon}{$mime}
+         //= $self->get_icon($mime);
+     my $enthumb = $self->{c}{_render_file_list_entry}{cookie}{thumbnails}

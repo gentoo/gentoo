@@ -1,0 +1,36 @@
+diff --git a/Makefile b/Makefile
+index 551e3b8..1d55ebe 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@
+ # commenting out the includes of ptotdll.h in ptotdll.c and main.c.
+ # PMcJ 6 Sep 96
+ 
+-CC=gcc
++CC ?= gcc
+ #CC=cc -std
+ 
+ BUNDLE = ocr.h rot270.h rot90.h
+@@ -17,18 +17,18 @@ BUNDLE = ocr.h rot270.h rot90.h
+ all:	pstotext
+ 
+ main.o: main.c ptotdll.h bundle.h ocr.h rot270.h rot90.h
+-	$(CC) -c $*.c
++	$(CC) $(CFLAGS) -c $*.c
+ 
+ ptotdll.o: ptotdll.c ptotdll.h
+-	$(CC) -c $*.c
++	$(CC) $(CFLAGS) -c $*.c
+ 
+ pstotext: bundle.o main.o ptotdll.o
+-	$(CC) -o pstotext main.o bundle.o ptotdll.o -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o pstotext main.o bundle.o ptotdll.o -lm
+ 
+ .SUFFIXES: .ps
+ 
+ .c.o:
+-	$(CC) -c $*.c
++	$(CC) $(CFLAGS) -c $*.c
+ 
+ # "Bundle" an Ascii file.
+ .ps.h:

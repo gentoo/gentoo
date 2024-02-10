@@ -1,0 +1,13 @@
+diff --git a/internal/jsonapi/api_test.go b/internal/jsonapi/api_test.go
+index 43205a3..724090e 100644
+--- a/internal/jsonapi/api_test.go
++++ b/internal/jsonapi/api_test.go
+@@ -271,6 +271,8 @@ func TestRespondMessageCreate(t *testing.T) {
+ }
+ 
+ func TestCopyToClipboard(t *testing.T) {
++	t.Skip("clipboard manipulation doesn't work from within Portage")
++
+ 	secrets := []storedSecret{
+ 		{[]string{"foo", "bar"}, newSec(t, "20\n")},
+ 		{[]string{"yamllogin"}, newSec(t, "thesecret\n---\nlogin: muh")},

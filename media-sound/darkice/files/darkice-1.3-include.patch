@@ -1,0 +1,26 @@
+diff --git a/src/FaacEncoder.cpp b/src/FaacEncoder.cpp
+index 873c560..3f7dc75 100644
+--- a/src/FaacEncoder.cpp
++++ b/src/FaacEncoder.cpp
+@@ -36,7 +36,7 @@
+ // compile the whole file only if faac support configured in
+ #ifdef HAVE_FAAC_LIB
+ 
+-
++#include <string.h>
+ 
+ #include "Exception.h"
+ #include "Util.h"
+diff --git a/src/aacPlusEncoder.cpp b/src/aacPlusEncoder.cpp
+index 70831b6..1f2ec20 100644
+--- a/src/aacPlusEncoder.cpp
++++ b/src/aacPlusEncoder.cpp
+@@ -36,7 +36,7 @@
+ // compile the whole file only if aacplus support configured in
+ #ifdef HAVE_AACPLUS_LIB
+ 
+-
++#include <string.h>
+ 
+ #include "Exception.h"
+ #include "Util.h"

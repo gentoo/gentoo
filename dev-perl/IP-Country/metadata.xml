@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">IP-Country</remote-id>
+		<remote-id type="cpan-module">IP::Authority</remote-id>
+		<remote-id type="cpan-module">IP::Country</remote-id>
+		<remote-id type="cpan-module">IP::Country::Fast</remote-id>
+		<remote-id type="cpan-module">IP::Country::MaxMind</remote-id>
+		<remote-id type="cpan-module">IP::Country::Medium</remote-id>
+		<remote-id type="cpan-module">IP::Country::Slow</remote-id>
+	</upstream>
+</pkgmetadata>

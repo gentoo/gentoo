@@ -1,0 +1,11 @@
+[Unit]
+Description=Unrealircd IRC Server Daemon
+After=network.target
+
+[Service]
+Type=forking
+User=unrealircd
+ExecStart=/usr/bin/unrealircd
+
+[Install]
+WantedBy=multi-user.target

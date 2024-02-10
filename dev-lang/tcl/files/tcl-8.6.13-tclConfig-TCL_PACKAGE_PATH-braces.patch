@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/892029
+https://core.tcl-lang.org/tcltls/tktview?name=37bbdb9fb2
+--- a/unix/configure.in
++++ b/unix/configure.in
+@@ -866,9 +866,9 @@ if test "$FRAMEWORK_BUILD" = "1" ; then
+     test -z "$TCL_MODULE_PATH"  && \
+ 	TCL_MODULE_PATH="~/Library/Tcl /Library/Tcl"
+ elif test "$prefix/lib" != "$libdir"; then
+-    test -z "$TCL_PACKAGE_PATH" && TCL_PACKAGE_PATH="{${libdir}} {${prefix}/lib} ${TCL_PACKAGE_PATH}"
++    test -z "$TCL_PACKAGE_PATH" && TCL_PACKAGE_PATH="${libdir} ${prefix}/lib ${TCL_PACKAGE_PATH}"
+ else
+-    test -z "$TCL_PACKAGE_PATH" && TCL_PACKAGE_PATH="{${prefix}/lib} ${TCL_PACKAGE_PATH}"
++    test -z "$TCL_PACKAGE_PATH" && TCL_PACKAGE_PATH="${prefix}/lib ${TCL_PACKAGE_PATH}"
+ fi
+ 
+ #--------------------------------------------------------------------

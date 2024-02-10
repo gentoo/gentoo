@@ -1,0 +1,6 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev (2022-02-16)
+# dev-python/networkx is unstable here
+app-portage/nattka depgraph-order

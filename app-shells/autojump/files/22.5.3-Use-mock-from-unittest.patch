@@ -1,0 +1,27 @@
+https://github.com/wting/autojump/pull/648
+
+From b935baa9ab73305e0c8e3d733f40cc8567740020 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Thu, 27 Jan 2022 12:11:33 -0800
+Subject: [PATCH] Use mock from unittest
+
+---
+ tests/unit/autojump_utils_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/unit/autojump_utils_test.py b/tests/unit/autojump_utils_test.py
+index 07f67b3..386b4cd 100644
+--- a/tests/unit/autojump_utils_test.py
++++ b/tests/unit/autojump_utils_test.py
+@@ -3,7 +3,7 @@
+ import os
+ import sys
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ sys.path.append(os.path.join(os.getcwd(), 'bin'))  # noqa
+-- 
+2.34.1
+

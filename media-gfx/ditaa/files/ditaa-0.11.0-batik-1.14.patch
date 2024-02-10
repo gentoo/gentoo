@@ -1,0 +1,17 @@
+diff --git a/project.clj b/project.clj
+index df0aefe..759433b 100644
+--- a/project.clj
++++ b/project.clj
+@@ -7,9 +7,9 @@
+   :dependencies [[org.clojure/clojure "1.9.0"]
+                  [commons-cli/commons-cli "1.4"]
+                  [net.htmlparser.jericho/jericho-html "3.4"]
+-                 [org.apache.xmlgraphics/batik-gvt "1.9"]
+-                 [org.apache.xmlgraphics/batik-codec "1.9"]
+-                 [org.apache.xmlgraphics/batik-bridge "1.9"]]
++                 [org.apache.xmlgraphics/batik-gvt "1.14"]
++                 [org.apache.xmlgraphics/batik-codec "1.14"]
++                 [org.apache.xmlgraphics/batik-bridge "1.14"]]
+   :main org.stathissideris.ascii2image.core.CommandLineConverter
+   :java-source-paths ["src/java"]
+   :profiles {:dev {:dependencies      [[junit/junit "4.12"]]

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<use>
+		<flag name="systemd">
+			Use user ACLs rather than plugdev group to give user access to the HIDRAW
+			device.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Yubico/libu2f-host</remote-id>
+		<bugs-to>https://github.com/Yubico/libu2f-host/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

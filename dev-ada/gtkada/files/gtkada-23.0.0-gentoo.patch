@@ -1,0 +1,63 @@
+--- a/Makefile.in	2022-12-05 22:30:42.309525178 +0100
++++ b/Makefile.in	2022-12-05 22:35:01.794773265 +0100
+@@ -30,7 +30,7 @@
+ 
+ GPRBUILD_FULL = ${GPRBUILD} -j${PROCESSORS} -m -p ${GPRBUILD_SWITCHES}
+ GPRINSTALL_FULL = ${GPRINSTALL} -p -f --project-subdir=$(PRJDIR) \
+-	--build-var=GTKADA_BUILD,LIBRARY_TYPE --install-name=gtkada \
++	--build-var=LIBRARY_TYPE --install-name=gtkada \
+ 	--prefix=${DESTDIR}$(prefix) -XGTK_PREFIX=${prefix}
+ 
+ GETTEXT_INTL=@GETTEXT_INTL@
+@@ -71,24 +71,27 @@
+ LIBRARY_TYPE_FOR_TOOLS=static
+ endif
+ 
+-all: tools tests
++all: tools
+ static: build_library_type/static
+ relocatable: build_library_type/relocatable
+ 
+ tools:
+ 	@echo "====== Building tools ====="
+-	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Psrc/tools/tools.gpr
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	  -Psrc/tools/tools.gpr -cargs:Ada $(ADAFLAGS)
+ 
+ build_library_type/%:  src/gtkada-intl.adb
+ 	@echo "====== Building $(@F) libraries ====="
+-	${GPRBUILD_FULL} -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr
++	${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(@F) -Psrc/gtkada.gpr \
++	  -cargs:Ada $(ADAFLAGS) -cargs:C $(CFLAGS)
+ 
+ src/gtkada-intl.adb: src/gtkada-intl.gpb Makefile
+ 	gnatprep -DGETTEXT_INTL=$(GETTEXT_INTL) -DHAVE_GETTEXT=$(HAVE_GETTEXT) src/gtkada-intl.gpb $@
+ 
+ tests:
+ 	@echo "====== Building tests ====="
+-	cd testgtk; ${GPRBUILD_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) -Ptestgtk.gpr -aP ../src
++	cd testgtk; ${GPRBUILD_FULL} -v -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
++	  -Ptestgtk.gpr -aP ../src -cargs:Ada $(ADAFLAGS)
+ 
+ install/%: force
+ 	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(@F) --build-name=$(@F) \
+@@ -97,19 +100,11 @@
+ 		-Psrc/gtkada.gpr
+ 
+ install-clean:
+-ifneq (,$(wildcard $(prefix)/lib/gnat/manifests/gtkada))
+-	-$(GPRINSTALL) --uninstall -f --prefix=$(prefix) \
+-		--project-subdir=lib/gnat gtkada
+-endif
+ 
+ install: install-clean
+ 	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
+ 		--mode=usage -Psrc/tools/tools.gpr
+-	cd testgtk; ${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
+-		--mode=usage --exec-subdir=${DESTDIR}${exampledir} \
+-		-Ptestgtk.gpr -aP ../src
+ ifneq ($(OS),Windows_NT)
+-	ln -s ${libdir} ${DESTDIR}${datadir}/examples/gtkada --force
+ endif
+ 	@echo '-----------------------------------------------------------------------'
+ 	@echo '--  GtkAda has now been installed.                                   --'

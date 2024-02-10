@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/879883
+https://github.com/madler/zlib/issues/751
+
+From 2ad2713e6cb9166dcede9a020f6913b8189ff0c6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 23 Nov 2022 04:17:16 +0000
+Subject: [PATCH] Revert "Turn off RWX segment warnings on sparc systems."
+
+This breaks building on sparc with older binutils.
+
+This reverts commit 29fd715fd0bdaffee21e2d2d37be8c5a6ac67ee4.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -22,7 +22,7 @@ CFLAGS=-O
+ 
+ SFLAGS=-O
+ LDFLAGS=
+-TEST_LDFLAGS=$(LDFLAGS) -L. libz.a
++TEST_LDFLAGS=-L. libz.a
+ LDSHARED=$(CC)
+ CPP=$(CC) -E
+ 
+@@ -288,10 +288,10 @@ minigzip$(EXE): minigzip.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ minigzip.o $(TEST_LDFLAGS)
+ 
+ examplesh$(EXE): example.o $(SHAREDLIBV)
+-	$(CC) $(CFLAGS) -o $@ example.o $(LDFLAGS) -L. $(SHAREDLIBV)
++	$(CC) $(CFLAGS) -o $@ example.o -L. $(SHAREDLIBV)
+ 
+ minigzipsh$(EXE): minigzip.o $(SHAREDLIBV)
+-	$(CC) $(CFLAGS) -o $@ minigzip.o $(LDFLAGS) -L. $(SHAREDLIBV)
++	$(CC) $(CFLAGS) -o $@ minigzip.o -L. $(SHAREDLIBV)
+ 
+ example64$(EXE): example64.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ example64.o $(TEST_LDFLAGS)
+--- a/configure
++++ b/configure
+@@ -33,10 +33,7 @@ fi
+ # set command prefix for cross-compilation
+ if [ -n "${CHOST}" ]; then
+     uname=${CHOST}
+-    mname=${CHOST}
+     CROSS_PREFIX="${CHOST}-"
+-else
+-    mname=`(uname -a || echo unknown) 2>/dev/null`
+ fi
+ 
+ # destination name for static library
+@@ -223,10 +220,6 @@ if test "$gcc" -eq 1 && ($cc -c $test.c) >> configure.log 2>&1; then
+   fi
+   case "$uname" in
+   Linux* | linux* | *-linux* | GNU | GNU/* | solaris*)
+-        case "$mname" in
+-        *sparc*)
+-            LDFLAGS="${LDFLAGS} -Wl,--no-warn-rwx-segments" ;;
+-        esac
+         LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"} ;;
+   *BSD | *bsd* | DragonFly)
+         LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"}

@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="dump1090"
+description=""
+command=/usr/bin/dump1090
+command_args="$RECEIVER_OPTIONS $DECODER_OPTIONS $NET_OPTIONS $JSON_OPTIONS $POSITION ${WISDOM_FILE:+--wisdom} ${WISDOM_FILE}"
+
+depend() {
+  use rtl_tcp
+}
+pre_start() {
+	mkdir -p /run/dump1090/
+}

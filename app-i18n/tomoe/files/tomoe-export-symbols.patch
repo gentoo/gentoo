@@ -1,0 +1,240 @@
+Index: trunk/module/dict/tomoe-dict-xml.c
+===================================================================
+--- trunk/module/dict/tomoe-dict-xml.c	(revision 1581)
++++ trunk/module/dict/tomoe-dict-xml.c	(revision 1582)
+@@ -303,14 +303,14 @@
+         return success;
+ 
+     result.name = NULL;
+-    result.chars = _tomoe_dict_ptr_array_get_array (TOMOE_DICT_PTR_ARRAY (dict));
+-    success = _tomoe_xml_parser_parse_dictionary_file (dict->filename, &result);
++    result.chars = tomoe_dict_ptr_array_get_array (TOMOE_DICT_PTR_ARRAY (dict));
++    success = tomoe_xml_parser_parse_dictionary_file (dict->filename, &result);
+     if (result.name) {
+         g_free (dict->name);
+         dict->name = g_strdup (result.name);
+         g_free (result.name);
+     }
+-    _tomoe_dict_ptr_array_sort (TOMOE_DICT_PTR_ARRAY (dict));
++    tomoe_dict_ptr_array_sort (TOMOE_DICT_PTR_ARRAY (dict));
+ 
+     return success;
+ }
+@@ -343,7 +343,7 @@
+     else
+         g_string_append (xml, "<dictionary>\n");
+ 
+-    chars = _tomoe_dict_ptr_array_get_array (TOMOE_DICT_PTR_ARRAY (dict));
++    chars = tomoe_dict_ptr_array_get_array (TOMOE_DICT_PTR_ARRAY (dict));
+     for (i = 0; i < chars->len; i++) {
+         gchar *chr_xml;
+         TomoeChar *chr = g_ptr_array_index (chars, i);
+Index: trunk/module/dict/tomoe-dict-unihan.c
+===================================================================
+--- trunk/module/dict/tomoe-dict-unihan.c	(revision 1581)
++++ trunk/module/dict/tomoe-dict-unihan.c	(revision 1582)
+@@ -193,7 +193,7 @@
+         object = klass->constructor (type, n_props, props);
+         the_singleton = TOMOE_DICT_UNIHAN (object);
+ 
+-        chars = _tomoe_dict_ptr_array_get_array (TOMOE_DICT_PTR_ARRAY (object));
++        chars = tomoe_dict_ptr_array_get_array (TOMOE_DICT_PTR_ARRAY (object));
+         _tomoe_unihan_create (chars);
+     } else {
+         object = g_object_ref (G_OBJECT (the_singleton));
+Index: trunk/lib/tomoe-char.c
+===================================================================
+--- trunk/lib/tomoe-char.c	(revision 1581)
++++ trunk/lib/tomoe-char.c	(revision 1582)
+@@ -143,7 +143,7 @@
+ TomoeChar*
+ tomoe_char_new_from_xml_data (const gchar *data, gssize len)
+ {
+-    return _tomoe_xml_parser_parse_char_data (data, len);
++    return tomoe_xml_parser_parse_char_data (data, len);
+ }
+ 
+ static void
+Index: trunk/lib/tomoe-xml-parser.c
+===================================================================
+--- trunk/lib/tomoe-xml-parser.c	(revision 1581)
++++ trunk/lib/tomoe-xml-parser.c	(revision 1582)
+@@ -428,8 +428,8 @@
+ }
+ 
+ gboolean
+-_tomoe_xml_parser_parse_dictionary_file (const gchar *filename,
+-                                         TomoeXMLParsedData *result)
++tomoe_xml_parser_parse_dictionary_file (const gchar *filename,
++                                        TomoeXMLParsedData *result)
+ {
+     GMarkupParseContext *context;
+     FILE *f;
+@@ -469,7 +469,7 @@
+ }
+ 
+ TomoeChar *
+-_tomoe_xml_parser_parse_char_data (const gchar *xml, gssize len)
++tomoe_xml_parser_parse_char_data (const gchar *xml, gssize len)
+ {
+     GMarkupParseContext *context;
+     TomoeXMLParsedData result;
+Index: trunk/lib/tomoe-xml-parser.h
+===================================================================
+--- trunk/lib/tomoe-xml-parser.h	(revision 1581)
++++ trunk/lib/tomoe-xml-parser.h	(revision 1582)
+@@ -37,10 +37,10 @@
+     GPtrArray *chars;
+ };
+ 
+-gboolean   _tomoe_xml_parser_parse_dictionary_file (const gchar *filename,
+-                                                    TomoeXMLParsedData *result);
+-TomoeChar *_tomoe_xml_parser_parse_char_data       (const gchar *xml,
+-                                                    gssize      len);
++gboolean   tomoe_xml_parser_parse_dictionary_file (const gchar *filename,
++                                                   TomoeXMLParsedData *result);
++TomoeChar *tomoe_xml_parser_parse_char_data       (const gchar *xml,
++                                                   gssize      len);
+ 
+ 
+ G_END_DECLS
+Index: trunk/lib/tomoe-dict-ptr-array.c
+===================================================================
+--- trunk/lib/tomoe-dict-ptr-array.c	(revision 1581)
++++ trunk/lib/tomoe-dict-ptr-array.c	(revision 1582)
+@@ -50,7 +50,7 @@
+ 
+ static TomoeDictClass *parent_class;
+ 
+-G_DEFINE_ABSTRACT_TYPE (TomoeDictPtrArray, _tomoe_dict_ptr_array, TOMOE_TYPE_DICT)
++G_DEFINE_ABSTRACT_TYPE (TomoeDictPtrArray, tomoe_dict_ptr_array, TOMOE_TYPE_DICT)
+ 
+ static void         dispose                    (GObject       *object);
+ static void         set_property               (GObject       *object,
+@@ -75,7 +75,7 @@
+ static gchar       *get_available_private_utf8 (TomoeDict     *dict);
+ 
+ static void
+-_tomoe_dict_ptr_array_class_init (TomoeDictPtrArrayClass *klass)
++tomoe_dict_ptr_array_class_init (TomoeDictPtrArrayClass *klass)
+ {
+     GObjectClass *gobject_class;
+     TomoeDictClass *dict_class;
+@@ -123,7 +123,7 @@
+ }
+ 
+ static void
+-_tomoe_dict_ptr_array_init (TomoeDictPtrArray *dict)
++tomoe_dict_ptr_array_init (TomoeDictPtrArray *dict)
+ {
+     TomoeDictPtrArrayPrivate *priv = TOMOE_DICT_PTR_ARRAY_GET_PRIVATE (dict);
+     priv->chars    = g_ptr_array_new();
+@@ -196,7 +196,7 @@
+ }
+ 
+ void
+-_tomoe_dict_ptr_array_sort (TomoeDictPtrArray *dict)
++tomoe_dict_ptr_array_sort (TomoeDictPtrArray *dict)
+ {
+     TomoeDictPtrArrayPrivate *priv;
+ 
+@@ -219,7 +219,7 @@
+ 
+     unregister_char (dict, tomoe_char_get_utf8 (chr));
+     g_ptr_array_add (priv->chars, g_object_ref (G_OBJECT (chr)));
+-    _tomoe_dict_ptr_array_sort (TOMOE_DICT_PTR_ARRAY (dict));
++    tomoe_dict_ptr_array_sort (TOMOE_DICT_PTR_ARRAY (dict));
+ 
+     priv->modified = TRUE;
+ 
+@@ -449,7 +449,7 @@
+     g_ptr_array_add (*dest_chars, tomoe_char_dup (chr));
+ }
+ 
+-gboolean
++static gboolean
+ copy (TomoeDict *src_dict, TomoeDict *dest_dict)
+ {
+     TomoeDictPtrArrayPrivate *src_priv, *dest_priv;
+@@ -487,7 +487,7 @@
+     return TOMOE_DICT_PTR_ARRAY_GET_PRIVATE (dict)->editable;
+ }
+ 
+-gchar *
++static gchar *
+ get_available_private_utf8 (TomoeDict *dict)
+ {
+     TomoeDictPtrArrayPrivate *priv;
+@@ -523,7 +523,7 @@
+ }
+ 
+ GPtrArray *
+-_tomoe_dict_ptr_array_get_array (TomoeDictPtrArray *dict)
++tomoe_dict_ptr_array_get_array (TomoeDictPtrArray *dict)
+ {
+     g_return_val_if_fail (TOMOE_IS_DICT_PTR_ARRAY (dict), NULL);
+ 
+Index: trunk/lib/tomoe-dict-ptr-array.h
+===================================================================
+--- trunk/lib/tomoe-dict-ptr-array.h	(revision 1581)
++++ trunk/lib/tomoe-dict-ptr-array.h	(revision 1582)
+@@ -29,7 +29,7 @@
+ 
+ #include "tomoe-dict.h"
+ 
+-#define TOMOE_TYPE_DICT_PTR_ARRAY            (_tomoe_dict_ptr_array_get_type ())
++#define TOMOE_TYPE_DICT_PTR_ARRAY            (tomoe_dict_ptr_array_get_type ())
+ #define TOMOE_DICT_PTR_ARRAY(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TOMOE_TYPE_DICT_PTR_ARRAY, TomoeDictPtrArray))
+ #define TOMOE_DICT_PTR_ARRAY_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), TOMOE_TYPE_DICT_PTR_ARRAY, TomoeDictPtrArrayClass))
+ #define TOMOE_IS_DICT_PTR_ARRAY(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TOMOE_TYPE_DICT_PTR_ARRAY))
+@@ -49,9 +49,9 @@
+     TomoeDictClass parent_class;
+ };
+ 
+-GType     _tomoe_dict_ptr_array_get_type        (void) G_GNUC_CONST;
+-void      _tomoe_dict_ptr_array_sort            (TomoeDictPtrArray *dict);
+-GPtrArray *_tomoe_dict_ptr_array_get_array      (TomoeDictPtrArray *dict);
++GType      tomoe_dict_ptr_array_get_type        (void) G_GNUC_CONST;
++void       tomoe_dict_ptr_array_sort            (TomoeDictPtrArray *dict);
++GPtrArray *tomoe_dict_ptr_array_get_array       (TomoeDictPtrArray *dict);
+ 
+ G_END_DECLS
+ 
+Index: trunk/lib/Makefile.am
+===================================================================
+--- trunk/lib/Makefile.am	(revision 1581)
++++ trunk/lib/Makefile.am	(revision 1582)
+@@ -30,13 +30,15 @@
+ 	tomoe-context.h			\
+ 	tomoe-config.h			\
+ 	tomoe-dict.h			\
++	tomoe-dict-ptr-array.h		\
+ 	tomoe-module.h			\
+ 	tomoe-module-impl.h		\
+ 	tomoe-query.h			\
+ 	tomoe-reading.h			\
+ 	tomoe-recognizer.h		\
+ 	tomoe-shelf.h			\
+-	tomoe-writing.h
++	tomoe-writing.h			\
++	tomoe-xml-parser.h
+ 
+ enum_source_prefix = tomoe-enum-types
+ 
+@@ -103,15 +105,13 @@
+ 	tomoe-config.c		\
+ 	tomoe-dict.c		\
+ 	tomoe-dict-ptr-array.c	\
+-	tomoe-dict-ptr-array.h	\
+ 	tomoe-module.c		\
+ 	tomoe-query.c		\
+ 	tomoe-reading.c		\
+ 	tomoe-recognizer.c	\
+ 	tomoe-shelf.c		\
+ 	tomoe-writing.c         \
+-	tomoe-xml-parser.c	\
+-	tomoe-xml-parser.h
++	tomoe-xml-parser.c
+ 
+ libtomoe_la_LDFLAGS =				\
+ 	-version-info $(LT_VERSION_INFO)	\

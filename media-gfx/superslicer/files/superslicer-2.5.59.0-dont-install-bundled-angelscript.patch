@@ -1,0 +1,53 @@
+diff --git a/src/angelscript/CMakeLists.txt b/src/angelscript/CMakeLists.txt
+index fed80a0ad..a65d9f8d5 100644
+--- a/src/angelscript/CMakeLists.txt
++++ b/src/angelscript/CMakeLists.txt
+@@ -202,48 +202,3 @@ endif()
+ 
+ # Don't override the default runtime output path to avoid conflicts when building for multiple target platforms
+ #set(RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+-
+-#See https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#creating-packages for a detailed explanation about this part
+-install(TARGETS ${ANGELSCRIPT_LIBRARY_NAME} EXPORT AngelscriptTargets
+-	RUNTIME DESTINATION bin
+-	LIBRARY DESTINATION lib
+-	ARCHIVE DESTINATION lib
+-	INCLUDES DESTINATION include
+-)
+-
+-install(FILES
+-	${CMAKE_CURRENT_SOURCE_DIR}/include/angelscript.h
+-	DESTINATION include
+-	COMPONENT Devel
+-)
+-
+-include(CMakePackageConfigHelpers)
+-write_basic_package_version_file(
+-	"${CMAKE_CURRENT_BINARY_DIR}/Angelscript/AngelscriptConfigVersion.cmake"
+-	VERSION ${PROJECT_VERSION}
+-	COMPATIBILITY AnyNewerVersion
+-)
+-
+-export(EXPORT AngelscriptTargets
+-	FILE "${CMAKE_CURRENT_BINARY_DIR}/Angelscript/AngelscriptTargets.cmake"
+-	NAMESPACE Angelscript::
+-)
+-configure_file(cmake/AngelscriptConfig.cmake
+-	"${CMAKE_CURRENT_BINARY_DIR}/Angelscript/AngelscriptConfig.cmake"
+-	COPYONLY
+-)
+-
+-set(ConfigPackageLocation lib/cmake/Angelscript)
+-install(EXPORT AngelscriptTargets
+-	FILE AngelscriptTargets.cmake
+-	NAMESPACE Angelscript::
+-	DESTINATION ${ConfigPackageLocation}
+-)
+-install(
+-	FILES
+-		cmake/AngelscriptConfig.cmake
+-		"${CMAKE_CURRENT_BINARY_DIR}/Angelscript/AngelscriptConfigVersion.cmake"
+-	DESTINATION ${ConfigPackageLocation}
+-	COMPONENT Devel
+-)
+-

@@ -1,0 +1,88 @@
+Subject: [PATCH] Convert holler and bail to variadic function
+
+Both functions usually consume different types than char * which is
+problematic for some compliers like clang-16 where -Werror=implicit-int
+is enabled by default.
+
+The fix is done in such a way that original holler function is converted
+to vholer which uses va_list from stdarg.h and holler and bail are
+converted to variadic functions that utilize vholler for printing.
+
+Bug: https://bugs.gentoo.org/871003
+
+diff --git a/netcat.c b/netcat.c
+index 992c42b..b4d6fd8 100644
+--- a/netcat.c
++++ b/netcat.c
+@@ -80,6 +80,7 @@
+ #include <signal.h>
+ #include <fcntl.h>		/* O_WRONLY et al */
+ #include <unistd.h>
++#include <stdarg.h>
+ 
+ /* handy stuff: */
+ #define SA struct sockaddr	/* socket overgeneralization braindeath */
+@@ -215,23 +216,18 @@ int o_quit = -1; /* 0 == quit-now; >0 == quit after o_quit seconds */
+ /* support routines -- the bulk of this thing.  Placed in such an order that
+    we don't have to forward-declare anything: */
+ 
+-/* holler :
+-   fake varargs -- need to do this way because we wind up calling through
+-   more levels of indirection than vanilla varargs can handle, and not all
+-   machines have vfprintf/vsyslog/whatever!  6 params oughta be enough. */
+-void holler (str, p1, p2, p3, p4, p5, p6)
+-  char * str;
+-  char * p1, * p2, * p3, * p4, * p5, * p6;
++/* vholler : */
++void vholler(const char * str, va_list ap)
+ {
+   FILE *o_holler_out = (o_holler_stderr ? stderr : stdout);
+   if (o_verbose) {
+-    fprintf (o_holler_out, str, p1, p2, p3, p4, p5, p6);
++    vfprintf (o_holler_out, str, ap);
+ #ifdef HAVE_BIND
+     if (h_errno) {		/* if host-lookup variety of error ... */
+       if (h_errno > 4)		/* oh no you don't, either */
+ 	fprintf (o_holler_out, "preposterous h_errno: %d", h_errno);
+       else
+-	fprintf (o_holler_out, h_errs[h_errno]);	/* handle it here */
++	fputs (h_errs[h_errno], o_holler_out);	/* handle it here */
+       h_errno = 0;				/* and reset for next call */
+     }
+ #endif
+@@ -241,16 +237,27 @@ void holler (str, p1, p2, p3, p4, p5, p6)
+       fprintf (o_holler_out, "\n");
+     fflush (o_holler_out);
+   }
+-} /* holler */
++} /* vholler */
++
++void holler(const char * fmt, ...)
++{
++  va_list ap;
++  va_start(ap, fmt);
++  vholler(fmt, ap);
++  va_end(ap);
++}
+ 
+ /* bail :
+    error-exit handler, callable from anywhere */
+-void bail (str, p1, p2, p3, p4, p5, p6)
+-  char * str;
+-  char * p1, * p2, * p3, * p4, * p5, * p6;
++void bail (const char * fmt, ...)
+ {
+   o_verbose = 1;
+-  holler (str, p1, p2, p3, p4, p5, p6);
++  va_list ap;
++
++  va_start(ap, fmt);
++  vholler(fmt, ap);
++  va_end(ap);
++
+   close (netfd);
+   exit (1);
+ } /* bail */
+-- 
+2.35.1
+

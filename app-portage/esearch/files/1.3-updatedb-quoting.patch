@@ -1,0 +1,39 @@
+From 8cbf59309a48327b74969bf402b415e389d79f73 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gentoo.org>
+Date: Sun, 16 Aug 2020 13:37:27 -0700
+Subject: [PATCH] updatedb: use repr for correct quoting (bug 670224)
+
+Bug: https://bugs.gentoo.org/670224
+Signed-off-by: Zac Medico <zmedico@gentoo.org>
+---
+ esearch/update.py | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/esearch/update.py b/esearch/update.py
+index f05d08f..b18070c 100755
+--- a/esearch/update.py
++++ b/esearch/update.py
+@@ -210,18 +210,10 @@ def updatedb(config=None):
+                 lastcat = curcat
+ 
+             installed = pkg_version(VARTREE.dep_bestmatch(pkg))
+-            if installed:
+-                installed = "\'%s\'" % installed
+-            else:
+-                installed = str(installed)
+ 
+             dbfile.write(
+-                _unicode(
+-                    "(\'%s\', \'%s\', %s" %(pkgname, pkg, str(masked)) +
+-                    ", \'%s\', %s" % (pkg_version(pkgv), installed) +
+-                    ", \'%s\', \'%s\', \'%s\', \'%s\'"
+-                    % (filesize, homepage, description.replace("'", "\\'"),
+-                        _license) + "),\n"))
++                repr((pkgname, pkg, masked, pkg_version(pkgv), installed,
++                    filesize, homepage, description, _license)) + ",\n")
+ 
+     except KeyboardInterrupt:
+         dbfile.close()
+-- 
+2.25.3
+

@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -42,7 +42,7 @@ LOCAL_LIBDIR=@LOCAL_LIBDIR@
+ FOOMATIC_RIP=@FOOMATIC_RIP@
+ 
+ # foomatic-rip path for a "make inplace" installation
+-LOCAL_FOOMATIC_RIP=@LOCAL_FOOMATIC_RIP@
++LOCAL_FOOMATIC_RIP=@FOOMATIC_RIP@
+ 
+ # Locations for installing the components of this package
+ BINDIR=$(bindir)

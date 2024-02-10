@@ -1,0 +1,201 @@
+--- cvs-local.orig/dirdiff
++++ cvs-local/dirdiff
+@@ -563,7 +563,7 @@
+ 	    if {$d1 == $d2} continue
+ 	    set any 1
+ 	    $base.p.$sub1 add command -label "$d2" \
+-		    -command "makepatch \"$d1\" \"$d2\""
++		    -command [list makepatch $d1 $d2]
+ 	}
+ 	if {$any} {
+ 	    $base.p add cascade -label "$d1 ->" -menu $base.p.$sub1
+@@ -579,7 +579,7 @@
+     set i 0
+     foreach d $dirs {
+ 	if {!$dirreadonly($i)} {
+-	    $base.t add command -label $d -command "touchfiles \"$d\""
++	    $base.t add command -label $d -command [list touchfiles $d]
+ 	}
+ 	incr i
+     }
+@@ -677,7 +677,7 @@
+     set i 0
+     foreach d $dirs {
+ 	.bar.options add checkbutton -label "Read-only $d" \
+-		-variable dirreadonly($i) -command "readonlychange $i"
++		-variable dirreadonly($i) -command [list readonlychange $i]
+ 	incr i
+     }
+ 
+@@ -1153,7 +1153,7 @@
+ 	if {$xi != ""} {
+ 	    set x [lindex $dirs $xi]
+ 	    $diffbut add command -label "Show $x" \
+-		    -command "showfile \"$x\" \"$selfile\""
++		    -command [list showfile $x $selfile]
+ 	}
+     } elseif {$numgroups > 1} {
+ 	if {$numgroups > 2} {
+@@ -1163,7 +1163,7 @@
+ 		lappend x [lindex $dirs $i]
+ 	    }
+ 	    $diffbut add command -label "$numgroups-way diff" \
+-		-command "diffn {$x} {$selfile}"
++		-command [list diffn $x $selfile]
+ 	}
+ 	for {set gn 1} {$gn < $numgroups} {incr gn} {
+ 	    set yi [lindex $groupelts($gn) 0]
+@@ -1184,7 +1184,7 @@
+ 		set xi [lindex $groupelts($go) 0]
+ 		if {$xi == ""} continue
+ 		set x [lindex $dirs $xi]
+-		set cmd "diff2 \"$x\" \"$y\" \"$selfile\""
++		set cmd [list diff2 $x $y $selfile]
+ 		if {$numgroups <= 3} {
+ 		    if {$compound_ok} {
+ 			$diffbut add command -label "$x vs. $y" \
+@@ -1283,7 +1283,7 @@
+                 set cl2 [lindex $bgcolors($ng) $age]
+                 if {$im2 == "ex"} {set im2 ""}
+ 		set y [lindex $dirs $dst]
+-		set cmd "copyselfile \"$src\" \"$dst\" \"$selfile\" 0"
++		set cmd [list copyselfile $src $dst $selfile 0]
+ 		if {$any == 1} {
+ 		    if {$compound_ok} {
+ 			$copybut add command -label "$x -> $y" \
+@@ -1346,7 +1346,7 @@
+                 set im2 [lindex $agecolors($ng) $age]
+                 set cl2 [lindex $bgcolors($ng) $age]
+ 		set y [lindex $dirs $dst]
+-		set cmd "copyselfile \"$src\" \"$dst\" \"$selfile\" 1"
++		set cmd [list copyselfile $src $dst $selfile 1]
+ 		if {$any == 1} {
+ 		    if {$compound_ok} {
+ 			$copybut add command -label "$x -> $y" \
+@@ -1392,10 +1392,10 @@
+                 if {$compound_ok} {
+ 		    $copybut add command -label "Remove from $x" \
+                         -image ex -compound left \
+-			-command "removeselfile \"$dst\" \"$selfile\""
++			-command [list removeselfile $dst $selfile]
+                 } else {
+ 		    $copybut add command -label "Remove from $x" \
+-			-command "removeselfile \"$dst\" \"$selfile\""
++			-command [list removeselfile $dst $selfile]
+                 }
+ 	    }
+ 	}
+@@ -1415,7 +1415,7 @@
+ 		if {$dirreadonly($d)} continue
+ 		set y [lindex $dirs $d]
+ 		$copybut add command -label "$x -> $y" \
+-			-command "copyselfile \"$s\" \"$d\" \"$selfile\" 0"
++			-command [list copyselfile $s $d $selfile 0]
+ 	    }
+ 	}
+ 	set needsep 1
+@@ -1429,10 +1429,10 @@
+             if {$compound_ok} {
+ 	        $copybut add command -label "Remove from $x" \
+                     -image ex -compound left \
+-		    -command "removeselfile \"$s\" \"$selfile\""
++		    -command [list removeselfile $s $selfile]
+             } else {
+ 	        $copybut add command -label "Remove from $x" \
+-		    -command "removeselfile \"$s\" \"$selfile\""
++		    -command [list removeselfile $s $selfile]
+             }
+ 	}
+     }
+@@ -1469,7 +1469,7 @@
+ 
+     # Show the file in an external viewer
+     if { [llength $showprogram] > 0} {
+-       eval "exec $showprogram \"$fn\" &"
++       exec $showprogram $fn &
+        return
+     }
+     # Or make our own viewer
+@@ -1569,7 +1569,7 @@
+     set diffopts "-U $ctxlines $diffiflag $diffwflag $diffbflag $diffBflag $diffdflag"
+ 
+     if { [llength $diffprogram] > 0} {
+-       eval "exec $diffprogram \"$path1\" \"$path2\" &"
++       exec $diffprogram $path1 $path2 &
+        return
+     }
+     # If we used an external diff program, its options are used.  If we didn't,
+@@ -1750,7 +1750,7 @@
+ 	    if {$gx == $g && !$dirreadonly($k)} {
+ 		set f [lindex $dirs $k]
+ 		$mergebut.m add command -label "update $f" \
+-		    -command "diffmerge $i \"$f\""
++		    -command [list diffmerge $i $f]
+ 		set path [joinname $f $difffile]
+ 		set diffmtime($path) [file mtime $path]
+ 	    }
+@@ -1770,7 +1770,7 @@
+ 	    if {$gx == $g && !$dirreadonly($k)} {
+ 		set f [lindex $dirs $k]
+ 		$mpatchbut.m add command -label "for $f" \
+-		    -command "diffmpatch $i \"$f\""
++		    -command [list diffmpatch $i $f]
+ 	    }
+ 	    incr k
+ 	}
+@@ -3424,7 +3424,7 @@
+     $w.bar.edit.m add command -label Copy -command "tk_textCopy $w.t"
+     $w.bar.edit.m add command -label Paste -command "tk_textPaste $w.t"
+     $w.bar.edit.m add command -label Find \
+-	    -command "difffind :merge:$di:$fi $w.t"
++	    -command [list difffind :merge:$di:$fi $w.t]
+     pack $w.bar.edit -side left
+     frame $w.f -relief sunk -border 2
+     entry $w.f.filename
+@@ -3533,7 +3533,7 @@
+     $w.bar.edit.m add command -label Copy -command "tk_textCopy $w.t"
+     $w.bar.edit.m add command -label Paste -command "tk_textPaste $w.t"
+     $w.bar.edit.m add command -label Find \
+-	    -command "difffind :mpatch:$fi $w.t"
++	    -command [list difffind :mpatch:$fi $w.t]
+     pack $w.bar.edit -side left
+     frame $w.f -relief sunk -border 2
+     entry $w.f.filename
+@@ -3993,7 +3993,7 @@
+        $w.bar.edit.m add command -label Copy -command "tk_textCopy $w.t"
+        $w.bar.edit.m add command -label Paste -command "tk_textPaste $w.t"
+        $w.bar.edit.m add command -label Find \
+-	    -command "difffind :patch:$patchnum $w.t"
++	    -command [list difffind :patch:$patchnum $w.t]
+        pack $w.bar.edit -side left
+        frame $w.f -relief sunk -border 2
+        label $w.f.l -text "Filename: "
+@@ -4032,23 +4032,23 @@
+ 	set p1 [joinname $d1 $f]
+ 	set p2 [joinname $d2 $f]
+ 	if {[file exists $p1] && [file exists $p2]} {
+-	    set fh [open "|diff $contextopt $p1 $p2" r]
++	    set fh [open [list |diff $contextopt $p1 $p2] r]
+ 	} elseif {[file exists $p1] && ! [file exists $p2]} {
+-	    set fh [open "|diff $contextopt $p1 $nullfile" r]
++	    set fh [open [list |diff $contextopt $p1 $nullfile] r]
+ 	} elseif {! [file exists $p1] && [file exists $p2]} {
+-	    set fh [open "|diff $contextopt $nullfile $p2" r]
++	    set fh [open [list |diff $contextopt $nullfile $p2] r]
+ 	} else {
+             continue
+ 	}
+ 	fconfigure $fh -blocking 0
+-	fileevent $fh readable "readpatch $fh $pnum $w $d1 $d2 $i \"$f\""
++	fileevent $fh readable [list readpatch $fh $pnum $w $d1 $d2 $i $f]
+ 	return
+     }
+     if {[string match ".*" $w]} {
+        $w.t delete "end - 1c" end
+     } else {
+         close $w
+-        eval "exec $showprogram \"$patch_outfile\" &"
++        exec $showprogram $patch_outfile &
+         # Should we remove the tempfile here?  We don't have it if we used 
+         # the internal viewer
+     }

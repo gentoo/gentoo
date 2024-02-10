@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Alarig Le Lay</name>
+		<email>alarig@swordarmor.fr</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="client">Build the ncurses/readline full featured CLI</flag>
+		<flag name="libssh">
+			Enables <pkg>net-libs/libssh</pkg> binding, mendatory for RPKI
+			support
+		</flag>
+	</use>
+</pkgmetadata>

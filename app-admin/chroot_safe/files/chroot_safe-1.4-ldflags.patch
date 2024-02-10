@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index ce69ab7..e8542b5 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -12,7 +12,7 @@ install=@INSTALL@
+ all: chroot_safe.so
+ 
+ chroot_safe.so: chroot_safe.cpp Makefile
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(DEFINES) $(SOFLAGS) -o chroot_safe.so $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $(DEFINES) $(SOFLAGS) -o chroot_safe.so $<
+ 
+ clean:
+ 	rm -f *.o *.so *~

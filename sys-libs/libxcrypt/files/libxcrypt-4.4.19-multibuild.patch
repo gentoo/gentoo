@@ -1,0 +1,14 @@
+diff --git a/Makefile.am b/Makefile.am
+index d0cca1d..4a5d4a1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -86,9 +86,7 @@ noinst_HEADERS = \
+ 	test/des-cases.h \
+ 	test/ka-table.inc
+ 
+-if ENABLE_XCRYPT_COMPAT_FILES
+ nodist_include_HEADERS += xcrypt.h
+-endif
+ 
+ noinst_PROGRAMS = \
+ 	lib/gen-des-tables

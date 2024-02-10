@@ -1,0 +1,78 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2020-04-21 00:09:21.000000000 +0300
++++ b/configure.ac	2020-04-23 16:53:06.654339488 +0300
+@@ -336,6 +336,14 @@
+   AC_SUBST(DBUS_CONFDIR)
+ ])
+ 
++dnl zbarimg tests
++AC_ARG_WITH([zbarimg_tests],
++  [AS_HELP_STRING([--without-zbarimg-tests],
++    [disable tests for zbarimg])],
++  [],
++  [with_zbarimg_tests="yes"])
++AM_CONDITIONAL([HAVE_ZBARIMG_TESTS], [test "x$with_zbarimg_tests" = "xyes"])
++
+ dnl libjpeg
+ AC_ARG_WITH([jpeg],
+   [AS_HELP_STRING([--without-jpeg],
+@@ -724,25 +732,12 @@
+ 
+ AC_ARG_VAR([CLASSPATH], [Java class path (include JUnit to run java tests)])
+ AS_IF([test "x$CLASSPATH" = "x"], [CLASSPATH="."])
++AC_SUBST(CLASSPATH)
+ 
+-dnl Search for Java unit test library
+-AS_IF([test -z "$JUNIT_HOME"],
+-      [JUNIT_HOME="/usr/share/java"])
+-
+-AS_IF([test -f "$JUNIT_HOME/junit4.jar"],
+-      [JUNIT="$JUNIT_HOME/junit4.jar"],
+-      [AS_IF([test -f "$JUNIT_HOME/junit.jar"],
+-	    [JUNIT="$JUNIT_HOME/junit.jar"])])
+-
+-AS_IF([test "x$JUNIT" != "x"],
+-      [AS_IF([test -f "/usr/share/java/hamcrest/all.jar"],
+-	     [CLASSPATH="$JUNIT:/usr/share/java/hamcrest/all.jar:$CLASSPATH"
+-              AC_SUBST(CLASSPATH)
+-              with_java_unit="yes"])],
+-      [AS_IF([test -f "/usr/share/java/hamcrest-all.jar"],
+-             [CLASSPATH="$JUNIT:/usr/share/java/hamcrest-all.jar:$CLASSPATH"
+-              AC_SUBST(CLASSPATH)
+-              with_java_unit="yes"])])
++AC_ARG_WITH([java_unit],
++  [AS_HELP_STRING([--without-java-unit],
++    [Enable java unittest])],
++  [with_java_unit="yes"])
+ 
+ AM_CONDITIONAL([HAVE_JAVA_UNIT], [test "x$with_java_unit" = "xyes"])
+ 
+@@ -905,6 +900,8 @@
+   [echo "        => the Java interface will *NOT* be built"])
+ AS_IF([test "x$with_java_unit" != "xyes"],
+   [echo "        => the Java unit test will *NOT* be enabled"])
++AS_IF([test "x$with_zbarimg_tests" != "xyes"],
++  [echo "        => zbarimg tests will *NOT* be enabled"])
+ dnl echo "NPAPI Plugin     --with-npapi=$with_npapi"
+ dnl AS_IF([test "x$with_mozilla" != "xyes"],
+ dnl  [echo "       => the Mozilla/Firefox/OpenOffice plugin will *NOT* be built"])
+diff -ur a/test/Makefile.am.inc b/test/Makefile.am.inc
+--- a/test/Makefile.am.inc	2020-04-21 00:09:21.000000000 +0300
++++ b/test/Makefile.am.inc	2020-04-23 17:03:07.819999370 +0300
+@@ -91,11 +91,16 @@
+ regress-decoder: test/test_decode
+ 	@abs_top_builddir@/test/test_decode -q -n 100000
+ 
++if HAVE_ZBARIMG_TESTS
+ check-images-py: zbarimg/zbarimg
+ 	@PYTHON@ @abs_top_srcdir@/test/barcodetest.py
+ 
+ check-images: zbarimg/zbarimg
+ 	@abs_top_builddir@/test/test_examples.sh
++else
++check-images-py:
++check-images:
++endif
+ 
+ check-convert: test/test_convert
+ 	@abs_top_srcdir@/test/test_convert

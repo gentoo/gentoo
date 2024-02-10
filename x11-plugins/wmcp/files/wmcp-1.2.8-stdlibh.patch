@@ -1,0 +1,11 @@
+diff -ur wmcp-1.2.8.orig/wmcp.c wmcp-1.2.8/wmcp.c
+--- wmcp-1.2.8.orig/wmcp.c	1999-05-27 09:38:49.000000000 +0300
++++ wmcp-1.2.8/wmcp.c	2008-01-06 16:16:17.000000000 +0200
+@@ -25,6 +25,7 @@
+ #include <xpm.h>
+ #include <extensions/shape.h>
+ #include <keysym.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <math.h>
+ 

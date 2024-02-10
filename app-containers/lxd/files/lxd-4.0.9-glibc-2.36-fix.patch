@@ -1,0 +1,74 @@
+From cc7bab602e6b967fdd31c5feed0f3f6321c0a0a7 Mon Sep 17 00:00:00 2001
+From: Luca Barbato <lu_zero@gentoo.org>
+Date: Fri, 13 Jan 2023 21:43:22 +0000
+Subject: [PATCH] Fix syscall wrappers
+
+---
+ lxd/include/syscall_wrappers.h | 7 ++++---
+ lxd/main_nsexec.go             | 2 +-
+ shared/idmap/shift_linux.go    | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/lxd/include/syscall_wrappers.h b/lxd/include/syscall_wrappers.h
+index 2c28133a8..a6975ab4d 100644
+--- a/lxd/include/syscall_wrappers.h
++++ b/lxd/include/syscall_wrappers.h
+@@ -26,10 +26,10 @@ static inline int lxd_close_range(unsigned int fd, unsigned int max_fd, unsigned
+ 	return syscall(__NR_close_range, fd, max_fd, flags);
+ }
+ 
+-static inline int open_tree(int dfd, const char *filename, unsigned int flags)
++/* static inline int open_tree(int dfd, const char *filename, unsigned int flags)
+ {
+ 	return syscall(__NR_open_tree, dfd, filename, flags);
+-}
++}*/
+ 
+ /*
+  * mount_setattr()
+@@ -40,7 +40,7 @@ struct lxc_mount_attr {
+ 	__u64 propagation;
+ 	__u64 userns_fd;
+ };
+-
++/*
+ static inline int mount_setattr(int dfd, const char *path, unsigned int flags,
+ 				struct lxc_mount_attr *attr, size_t size)
+ {
+@@ -53,6 +53,7 @@ static inline int move_mount(int from_dfd, const char *from_pathname, int to_dfd
+ 	return syscall(__NR_move_mount, from_dfd, from_pathname, to_dfd,
+ 		       to_pathname, flags);
+ }
++*/
+ 
+ /* arg1 of prctl() */
+ #ifndef PR_SCHED_CORE
+diff --git a/lxd/main_nsexec.go b/lxd/main_nsexec.go
+index f11c0d4cb..753024283 100644
+--- a/lxd/main_nsexec.go
++++ b/lxd/main_nsexec.go
+@@ -298,7 +298,7 @@ static char *file_to_buf(char *path, ssize_t *length)
+ int mount_detach_idmap(const char *path, int fd_userns)
+ {
+ 	__do_close int fd_tree = -EBADF;
+-	struct lxc_mount_attr attr = {
++	struct mount_attr attr = {
+ 	    .attr_set		= MOUNT_ATTR_IDMAP,
+ 
+ 	};
+diff --git a/shared/idmap/shift_linux.go b/shared/idmap/shift_linux.go
+index daaf37275..e219ac01c 100644
+--- a/shared/idmap/shift_linux.go
++++ b/shared/idmap/shift_linux.go
+@@ -314,7 +314,7 @@ static int get_userns_fd(void)
+ static int create_detached_idmapped_mount(const char *path)
+ {
+ 	__do_close int fd_tree = -EBADF, fd_userns = -EBADF;
+-	struct lxc_mount_attr attr = {
++	struct mount_attr attr = {
+ 	    .attr_set		= MOUNT_ATTR_IDMAP,
+ 	    .propagation	= MS_SLAVE,
+ 
+-- 
+2.39.0
+

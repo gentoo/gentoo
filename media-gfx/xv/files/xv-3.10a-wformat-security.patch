@@ -1,0 +1,19 @@
+Fix errors caused by -Wformat -Werror=format-security
+https://bugs.gentoo.org/show_bug.cgi?id=542134
+
+* xvpbm.c:888:4: error: format not a string literal and no format arguments [-Werror=format-security]
+*     if (*pix) fprintf(fp,str1);
+
+--- xv-3.10a/xvpbm.c
++++ xv-3.10a/xvpbm.c
+@@ -885,8 +885,8 @@
+ 	  }
+ 	}
+ 	else {
+-	  if (*pix) fprintf(fp,str1);
+-	       else fprintf(fp,str0);
++	  if (*pix) fprintf(fp,"%s",str1);
++	       else fprintf(fp,"%s",str0);
+ 	  len+=2;
+ 	  if (len>68) { fprintf(fp,"\n"); len=0; }
+ 	}

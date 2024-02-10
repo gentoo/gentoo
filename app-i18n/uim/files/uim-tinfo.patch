@@ -1,0 +1,38 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1180,9 +1180,13 @@
+ 
+ if test "x$enable_fep" != xno; then
+   enable_fep=yes
+-  AC_CHECK_LIB(curses, setupterm, FEP_LIBADD="-lcurses $FEP_LIBADD",
+-    [AC_CHECK_LIB(ncurses, setupterm, FEP_LIBADD="-lncurses $FEP_LIBADD",
+-      AC_MSG_WARN([fep needs setupterm in libcurses or libncurses. disabled...]);enable_fep=no)])
++  PKG_CHECK_MODULES(CURSES, ncurses,
++    [FEP_LIBADD="$CURSES_LIBS $FEP_LIBADD"],
++    [
++      AC_CHECK_LIB(curses, setupterm, FEP_LIBADD="-lcurses $FEP_LIBADD",
++        [AC_CHECK_LIB(ncurses, setupterm, FEP_LIBADD="-lncurses $FEP_LIBADD",
++          AC_MSG_WARN([fep needs setupterm in libcurses or libncurses. disabled...]);enable_fep=no)])
++    ])
+   AC_CHECK_FUNCS(forkpty)
+   if test "x$ac_cv_func_forkpty" = xno; then
+     AC_CHECK_LIB(util, forkpty,
+@@ -1319,10 +1323,14 @@
+   saved_LDFLAGS=$LDFLAGS
+   CPPFLAGS="${CPPFLAGS} -I$libedit_path/include"
+   LDFLAGS="${LDFLAGS} -L$libedit_path/lib"
+-  AC_CHECK_LIB(curses, tgetent, LIBEDIT_LIBS="-lcurses",
+-    [AC_CHECK_LIB(ncurses, tgetent, LIBEDIT_LIBS="-lncurses",
+-      AC_MSG_WARN("libedit needs libcurses or libncurses. disabled...")
+-        with_libedit=no)])
++  PKG_CHECK_MODULES(CURSES, ncurses,
++    [LIBEDIT_LIBS="$CURSES_LIBS"],
++    [
++      AC_CHECK_LIB(curses, tgetent, LIBEDIT_LIBS="-lcurses",
++        [AC_CHECK_LIB(ncurses, tgetent, LIBEDIT_LIBS="-lncurses",
++          AC_MSG_WARN("libedit needs libcurses or libncurses. disabled...")
++            with_libedit=no)])
++    ])
+ 
+   if test "x$with_libedit" != xno; then
+       AC_CHECK_LIB(edit, el_init,

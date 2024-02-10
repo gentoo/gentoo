@@ -1,0 +1,15 @@
+diff --git a/meson.build b/meson.build
+index 9ebc14f..25e3704 100644
+--- a/meson.build
++++ b/meson.build
+@@ -344,8 +344,8 @@ if not get_option('qt5').disabled()
+     executable(
+       'jalv.qt5',
+       sources + files('src/jalv_qt.cpp') + [jalv_qt5_meta_cpp],
+-      c_args: c_suppressions + platform_defines + suil_defines,
+-      cpp_args: cpp_suppressions + platform_defines + suil_defines,
++      c_args: c_suppressions + platform_defines + suil_defines + '-fPIC',
++      cpp_args: cpp_suppressions + platform_defines + suil_defines + '-fPIC',
+       dependencies: common_dependencies + [qt5_dep, suil_dep],
+       include_directories: include_directories('src'),
+       install: true,

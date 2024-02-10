@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    Standard ML of New Jersey (abbreviated SML/NJ) is a compiler for
+    the Standard ML '97 programming language with associated libraries,
+    tools, and documentation. SML/NJ is free, open source software.
+  </longdescription>
+</pkgmetadata>

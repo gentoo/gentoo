@@ -1,0 +1,22 @@
+--- a/KeePass/Forms/AboutForm.cs
++++ b/KeePass/Forms/AboutForm.cs
+@@ -135,7 +135,18 @@
+ 			m_lvComponents.Columns.Add(strValueColumn, 100);
+ 
+ 			string strExe = WinUtil.GetExecutable();
+-			string strDir = UrlUtil.GetFileDirectory(strExe, true, false);
++			string strDir = null;
++			if (KeePassLib.Native.NativeLib.IsUnix())
++			{
++				string strBPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
++				strBPath = UrlUtil.EnsureTerminatingSeparator(strBPath, false);
++				strBPath += PwDefs.ShortProductName.ToLower();
++				strDir = UrlUtil.EnsureTerminatingSeparator(strBPath, false);
++			}
++			else
++			{
++				strDir = UrlUtil.GetFileDirectory(strExe, true, false);
++			}
+ 
+ 			AddComponentItem(PwDefs.ShortProductName, strMainVersion, strExe);
+ 

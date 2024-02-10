@@ -1,0 +1,15 @@
+[Unit]
+Description=Incus - Startup check
+After=incus.socket incus.service
+Requires=incus.socket
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/incus-startup start
+ExecStop=/usr/sbin/incus-startup stop
+TimeoutStartSec=600s
+TimeoutStopSec=600s
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+--- a/src/interface.c
++++ b/src/interface.c
+@@ -258,8 +258,8 @@
+ 
+     /* find our glade interface file */
+     datadir = g_string_new(DATADIR);
+-    if (datadir->str != "" || datadir->str != NULL)
+-        datadir = g_string_append(datadir, "/");
++    if (strcmp(datadir->str, "") || datadir->str != NULL)
++        datadir = g_string_append(datadir, "/frameworks/");
+     filename = g_string_new("frameworks.glade");
+ 
+     if (g_file_test(filename->str, G_FILE_TEST_EXISTS) == TRUE) {
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,7 +8,7 @@
+ EXTRA_DIST = template.glade template.gladep
+ 
+ bin_PROGRAMS = frameworks
+-data_DATA = frameworks.glade
++pkgdata_DATA = frameworks.glade
+ 
+ frameworks_SOURCES = frameworks.c frameworks.h common.h videodev.h \
+ 	camera.c camera.h interface.c interface.h callbacks.c callbacks.h \

@@ -1,0 +1,19 @@
+2010-07-26	Martin Rejman <martin.rejman@centrum.cz>
+ 
+		#327369
+		* test/globals:	bad_globals:	Use readelf and ignore hidden symbols
+
+--- a/test/globals	2010-07-07 20:37:49.000000000 +0200
++++ b/test/globals	2010-07-07 20:37:57.000000000 +0200
+@@ -12,8 +12,9 @@
+ srcdir=`cd $srcdir;pwd`
+ builddir=`cd $builddir;pwd`
+ 
+-bad_globals=`nm -g --defined-only $builddir/../liba52/*.o|\
+-    awk '{if ($3) print $3}'|grep -v '^_\?a52_'`
++bad_globals=`readelf -s $builddir/../liba52/*.o |\
++	awk '$5=="GLOBAL" && $6!="HIDDEN" && $7!="UND" {print $8}' |\
++	grep -v '^_\?a52_'`
+ 
+ if test x"$bad_globals" != x""; then
+     echo BAD GLOBAL SYMBOLS:

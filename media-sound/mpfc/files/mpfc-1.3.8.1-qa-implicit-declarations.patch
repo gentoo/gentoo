@@ -1,0 +1,193 @@
+Fix QA warnings caused by implicit declarations, such as
+
+* QA Notice: Package triggers severe warnings which indicate that it
+*            may exhibit random runtime failures.
+* wnd.c:1081:4: warning: implicit declaration of function ‘add_wch’ [-Wimplicit-function-declaration]
+
+--- mpfc-1.3.8.1/libmpfc/file_http.c
++++ mpfc-1.3.8.1/libmpfc/file_http.c
+@@ -35,6 +35,7 @@
+ #include "file.h"
+ #include "file_http.h"
+ #include "mystring.h"
++#include "util.h"
+ 
+ /* Get file data */
+ #define FHTTP_GET_DATA(data, file) \
+--- mpfc-1.3.8.1/libmpfc/id3.c
++++ mpfc-1.3.8.1/libmpfc/id3.c
+@@ -26,6 +26,7 @@
+ #include <unicode/ucnv.h>
+ #include "types.h"
+ #include "myid3.h"
++#include "util.h"
+ 
+ /* Create a new empty tag */
+ id3_tag_t *id3_new( void )
+--- mpfc-1.3.8.1/libmpfc/logger.c
++++ mpfc-1.3.8.1/libmpfc/logger.c
+@@ -28,6 +28,8 @@
+ #include "cfg.h"
+ #include "logger.h"
+ 
++int logger_get_level( logger_t *log );
++
+ /* Initialize logger */
+ logger_t *logger_new( cfg_node_t *cfg_list, char *file_name )
+ {
+--- mpfc-1.3.8.1/libmpfcwnd/wnd.h
++++ mpfc-1.3.8.1/libmpfcwnd/wnd.h
+@@ -23,7 +23,6 @@
+ #ifndef __SG_MPFC_WND_H__
+ #define __SG_MPFC_WND_H__
+ 
+-#define _XOPEN_SOURCE_EXTENDED
+ #include <curses.h>
+ #include "types.h"
+ #include "cfg.h"
+--- mpfc-1.3.8.1/libmpfcwnd/wnd.c
++++ mpfc-1.3.8.1/libmpfcwnd/wnd.c
+@@ -29,6 +29,8 @@
+ #include "logger.h"
+ #include "wnd.h"
+ #include "wnd_root.h"
++#include "util.h"
++#include <curses.h>
+ 
+ /* Initialize window system and create root window */
+ wnd_t *wnd_init( cfg_node_t *cfg_list, logger_t *log )
+--- mpfc-1.3.8.1/libmpfcwnd/wnd_combobox.c
++++ mpfc-1.3.8.1/libmpfcwnd/wnd_combobox.c
+@@ -28,6 +28,8 @@
+ #include "wnd_dlgitem.h"
+ #include "wnd_editbox.h"
+ #include "wnd_hbox.h"
++#include "wnd_label.h"
++#include "util.h"
+ 
+ /* Create a new combo box */
+ combo_t *combo_new( wnd_t *parent, char *id, char *text, char letter, 
+--- mpfc-1.3.8.1/libmpfcwnd/wnd_filebox.c
++++ mpfc-1.3.8.1/libmpfcwnd/wnd_filebox.c
+@@ -24,7 +24,6 @@
+ #include <fnmatch.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#define __USE_GNU
+ #include <string.h>
+ #include <unistd.h>
+ #include "types.h"
+@@ -33,6 +32,8 @@
+ #include "wnd_editbox.h"
+ #include "wnd_filebox.h"
+ #include "wnd_hbox.h"
++#include "wnd_label.h"
++#include "util.h"
+ 
+ /* Create a new file box */
+ filebox_t *filebox_new( wnd_t *parent, char *id, char *text, char letter,
+--- mpfc-1.3.8.1/libmpfcwnd/wnd_mouse.c
++++ mpfc-1.3.8.1/libmpfcwnd/wnd_mouse.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include "wnd.h"
++#include "util.h"
+ 
+ /* Initialize mouse */
+ wnd_mouse_data_t *wnd_mouse_init( wnd_global_data_t *global )
+--- mpfc-1.3.8.1/libmpfcwnd/wnd_print.c
++++ mpfc-1.3.8.1/libmpfcwnd/wnd_print.c
+@@ -32,6 +32,7 @@
+ #include "types.h"
+ #include "wnd.h"
+ #include "wnd_print.h"
++#include "util.h"
+ 
+ /* Move cursor to a specified position */
+ void wnd_move( wnd_t *wnd, wnd_move_style_t style, int x, int y )
+--- mpfc-1.3.8.1/libmpfcwnd/wnd_repval.c
++++ mpfc-1.3.8.1/libmpfcwnd/wnd_repval.c
+@@ -25,6 +25,7 @@
+ #include "wnd_dialog.h"
+ #include "wnd_editbox.h"
+ #include "wnd_repval.h"
++#include "wnd_label.h"
+ 
+ /* Create a repeat value dialog */
+ dialog_t *wnd_repval_new( wnd_t *parent, void *on_ok, int dig )
+--- mpfc-1.3.8.1/src/browser.c
++++ mpfc-1.3.8.1/src/browser.c
+@@ -24,6 +24,7 @@
+ #include <glob.h>
+ #include <string.h>
+ #include <sys/types.h>
++#include <fnmatch.h>
+ #include "types.h"
+ #include "browser.h"
+ #include "help_screen.h"
+--- mpfc-1.3.8.1/src/info_rw_thread.c
++++ mpfc-1.3.8.1/src/info_rw_thread.c
+@@ -27,6 +27,7 @@
+ #include "info_rw_thread.h"
+ #include "player.h"
+ #include "song.h"
++#include "util.h"
+ 
+ /* Thread queue */
+ irw_queue_t *irw_head, *irw_tail;
+--- mpfc-1.3.8.1/src/player.c
++++ mpfc-1.3.8.1/src/player.c
+@@ -35,6 +35,7 @@
+ #include "command.h"
+ #include "eqwnd.h"
+ #include "file.h"
++#include "genp.h"
+ #include "help_screen.h"
+ #include "logger.h"
+ #include "logger_view.h"
+@@ -57,8 +58,13 @@
+ #include "wnd_listbox.h"
+ #include "wnd_multiview_dialog.h"
+ #include "wnd_radio.h"
++#include "wnd_repval.h"
+ #include "wnd_root.h"
+ #include "xconvert.h"
++#include "info_rw_thread.h"
++
++void pmng_hook( pmng_t *pmng, char *hook );
++void outp_set_mixer_type( out_plugin_t *p, plugin_mixer_type_t type );
+ 
+ /*****
+  *
+--- mpfc-1.3.8.1/src/plist.c
++++ mpfc-1.3.8.1/src/plist.c
+@@ -36,6 +36,7 @@
+ #include "util.h"
+ #include "undo.h"
+ #include "wnd.h"
++#include "info_rw_thread.h"
+ 
+ extern void pmng_hook( pmng_t *pmng, char *hook );
+ 
+--- mpfc-1.3.8.1/src/util.h
++++ mpfc-1.3.8.1/src/util.h
+@@ -26,6 +26,8 @@
+ #include <stdio.h>
+ #include "types.h"
+ 
++int mbslen( char *str );
++
+ /* Write message to log file */
+ void util_log( char *format, ... );
+ 
+--- mpfc-1.3.8.1/src/vfs.h
++++ mpfc-1.3.8.1/src/vfs.h
+@@ -36,6 +36,7 @@
+ } vfs_t;
+ 
+ /* Check that input plugin uses VFS */
++dword inp_get_flags( in_plugin_t *p );
+ #define VFS_INP_HAS(inp)	(inp_get_flags(inp) & INP_VFS)
+ 
+ /* Get logger object */

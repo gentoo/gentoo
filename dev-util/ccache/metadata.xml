@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<use>
+		<flag name="redis">Enable Redis backend for storage via <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="static-c++">Avoid dynamic dependency on gcc's libstdc++.</flag>
+	</use>
+	<longdescription lang="en">
+		ccache acts as a caching pre-processor to C/C++ compilers, improving
+		compilation time when recompiling previously compiled source.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ccache/ccache</remote-id>
+	</upstream>
+</pkgmetadata>

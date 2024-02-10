@@ -1,0 +1,124 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot (2023-12-12)
+# USE=bpf depends on sys-devel/clang which is not keyworded on m68k
+media-libs/libv4l bpf
+
+# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# dev-build/samurai is not keyworded here.
+app-alternatives/ninja samurai
+
+# Sam James <sam@gentoo.org> (2023-06-18)
+# Qt 5 not keyworded here
+app-text/ansifilter gui
+app-text/highlight gui
+
+# Stijn Tintel <stijn@linux-ipv6.be> (2023-02-02)
+# Dependency not keyworded
+# https://bugs.gentoo.org/show_bug.cgi?id=892389
+net-misc/openvswitch unwind
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-29)
+# No TMP here, no xkb here
+sys-apps/systemd tpm xkb
+
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
+# Untested useflag on other arches, needs keywording
+media-video/ffmpeg vmaf
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Most usage of KMS requires GBM, which is provided by Mesa, which currently
+# doesn't work on m68k.
+media-libs/cogl kms
+media-libs/libsdl2 kms
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Requires dev-lang/go, which is not ported to m68k.
+sys-libs/libcap tools
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-01)
+# Some optional emacs dependencies are not keyworded.
+app-editors/emacs gui mailutils
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-28)
+# Needs a lot of Perl packages to be keyworded.
+dev-vcs/git doc
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
+# Avoid having to keyword Poppler and X11 libraries for now.
+media-gfx/graphviz pdf
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
+# Requires Rust, which is currently unavailable on m68k.
+app-editors/emacs svg
+media-gfx/graphviz svg
+media-gfx/imagemagick svg
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
+# Requires Ruby, which is broken on m68k.
+app-text/htmltidy test
+net-misc/chrony html
+sys-block/thin-provisioning-tools test
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
+# Requires texlive and friends to be keyworded.
+app-text/doxygen doc
+app-text/po4a test
+dev-libs/libcbor doc
+media-libs/libcaca doc
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-21)
+# Avoid lots of unkeyworded dependencies of Python tests.
+dev-python/argcomplete test
+dev-python/distlib test
+dev-python/fonttools test
+dev-python/hatchling test
+dev-python/isort test
+dev-python/nose test
+dev-python/numpydoc test
+dev-python/objgraph test
+dev-python/pip-run test
+dev-python/pytest-regressions test
+dev-python/requests test
+dev-python/sphinx test
+dev-python/urllib3 test
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
+# The CLI requires many unkeyworded dependencies.
+dev-python/hypothesis cli
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-05)
+# dev-python/parameterized is not keyworded
+dev-util/gtk-doc test
+
+# Kent Fredric <kentnl@gentoo.org> (2020-10-19)
+# lapack and friends don't make much sense on m68k
+# and aren't keyworded
+dev-python/numpy lapack
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-debug/systemtap is not keyworded on m68k
+sys-libs/glibc systemtap
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on m68k
+sys-libs/glibc gd
+
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Raúl Porcel <armin76@gentoo.org> (2013-01-23)
+# Architecture is unsupported
+dev-libs/libpcre jit
+dev-libs/libpcre2 jit
+
+# Ryan Hill <dirtyepic@gentoo.org> (2011-07-20)
+# graphite requires dev-libs/ppl & dev-libs/cloog-ppl
+# (bugs #269087 and #269088)
+sys-devel/gcc graphite

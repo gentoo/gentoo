@@ -1,0 +1,24 @@
+From: Arthur Marble <arthur@info9.net>
+Date: Wed, 16 Aug 2017 23:49:59 +0200
+Subject: clang-ftbfs
+
+Bug-Debian: https://bugs.debian.org/757486
+---
+ src/global.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/global.h b/src/global.h
+index bb46387..6a6d2b3 100644
+--- a/src/global.h
++++ b/src/global.h
+@@ -22,5 +22,10 @@
+ #include <config.h>
+ #include <SDL.h>
+ 
++#ifdef __clang__
++#define __inline__
++#else
++#define __inline__ inline
++#endif
+ 
+ #endif

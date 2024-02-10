@@ -1,0 +1,99 @@
+https://github.com/checkpoint-restore/criu/commit/517c0947050e63aac72f63a3bf373d76264723b9
+https://bugs.gentoo.org/868099
+
+From: Radostin Stoyanov <rstoyanov@fedoraproject.org>
+Date: Wed, 24 Aug 2022 21:20:30 +0200
+Subject: [PATCH] mount: add definition for FSOPEN_CLOEXEC
+
+A recent change in glibc introduced `enum fsconfig_command` [1] and as a
+result the compilation of criu fails with the following errors
+
+In file included from criu/pie/util.c:3:
+/usr/include/sys/mount.h:240:6: error: redeclaration of 'enum fsconfig_command'
+  240 | enum fsconfig_command
+      |      ^~~~~~~~~~~~~~~~
+In file included from /usr/include/sys/mount.h:32:
+criu/include/linux/mount.h:11:6: note: originally defined here
+   11 | enum fsconfig_command {
+      |      ^~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:242:3: error: redeclaration of enumerator 'FSCONFIG_SET_FLAG'
+  242 |   FSCONFIG_SET_FLAG       = 0,    /* Set parameter, supplying no value */
+      |   ^~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:12:9: note: previous definition of 'FSCONFIG_SET_FLAG' with type 'enum fsconfig_command'
+   12 |         FSCONFIG_SET_FLAG = 0, /* Set parameter, supplying no value */
+      |         ^~~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:244:3: error: redeclaration of enumerator 'FSCONFIG_SET_STRING'
+  244 |   FSCONFIG_SET_STRING     = 1,    /* Set parameter, supplying a string value */
+      |   ^~~~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:14:9: note: previous definition of 'FSCONFIG_SET_STRING' with type 'enum fsconfig_command'
+   14 |         FSCONFIG_SET_STRING = 1, /* Set parameter, supplying a string value */
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:246:3: error: redeclaration of enumerator 'FSCONFIG_SET_BINARY'
+  246 |   FSCONFIG_SET_BINARY     = 2,    /* Set parameter, supplying a binary blob value */
+      |   ^~~~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:16:9: note: previous definition of 'FSCONFIG_SET_BINARY' with type 'enum fsconfig_command'
+   16 |         FSCONFIG_SET_BINARY = 2, /* Set parameter, supplying a binary blob value */
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:248:3: error: redeclaration of enumerator 'FSCONFIG_SET_PATH'
+  248 |   FSCONFIG_SET_PATH       = 3,    /* Set parameter, supplying an object by path */
+      |   ^~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:18:9: note: previous definition of 'FSCONFIG_SET_PATH' with type 'enum fsconfig_command'
+   18 |         FSCONFIG_SET_PATH = 3, /* Set parameter, supplying an object by path */
+      |         ^~~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:250:3: error: redeclaration of enumerator 'FSCONFIG_SET_PATH_EMPTY'
+  250 |   FSCONFIG_SET_PATH_EMPTY = 4,    /* Set parameter, supplying an object by (empty) path */
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:20:9: note: previous definition of 'FSCONFIG_SET_PATH_EMPTY' with type 'enum fsconfig_command'
+   20 |         FSCONFIG_SET_PATH_EMPTY = 4, /* Set parameter, supplying an object by (empty) path */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:252:3: error: redeclaration of enumerator 'FSCONFIG_SET_FD'
+  252 |   FSCONFIG_SET_FD         = 5,    /* Set parameter, supplying an object by fd */
+      |   ^~~~~~~~~~~~~~~
+criu/include/linux/mount.h:22:9: note: previous definition of 'FSCONFIG_SET_FD' with type 'enum fsconfig_command'
+   22 |         FSCONFIG_SET_FD = 5, /* Set parameter, supplying an object by fd */
+      |         ^~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:254:3: error: redeclaration of enumerator 'FSCONFIG_CMD_CREATE'
+  254 |   FSCONFIG_CMD_CREATE     = 6,    /* Invoke superblock creation */
+      |   ^~~~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:24:9: note: previous definition of 'FSCONFIG_CMD_CREATE' with type 'enum fsconfig_command'
+   24 |         FSCONFIG_CMD_CREATE = 6, /* Invoke superblock creation */
+      |         ^~~~~~~~~~~~~~~~~~~
+/usr/include/sys/mount.h:256:3: error: redeclaration of enumerator 'FSCONFIG_CMD_RECONFIGURE'
+  256 |   FSCONFIG_CMD_RECONFIGURE = 7,   /* Invoke superblock reconfiguration */
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+criu/include/linux/mount.h:26:9: note: previous definition of 'FSCONFIG_CMD_RECONFIGURE' with type 'enum fsconfig_command'
+   26 |         FSCONFIG_CMD_RECONFIGURE = 7, /* Invoke superblock reconfiguration */
+
+This patch adds definition for FSOPEN_CLOEXEC to solve this problem. In particular,
+sys/mount.h includes ifndef check for FSOPEN_CLOEXEC surrounding `enum fsconfig_command`.
+
+[1] https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=7eae6a91e9b1670330c9f15730082c91c0b1d570
+
+Reported-by: Younes Manton (@ymanton)
+Signed-off-by: Radostin Stoyanov <rstoyanov@fedoraproject.org>
+--- a/criu/include/linux/mount.h
++++ b/criu/include/linux/mount.h
+@@ -6,7 +6,7 @@
+ 
+ /* Copied from /usr/include/sys/mount.h */
+ 
+-#ifndef FSCONFIG_CMD_CREATE
++#ifndef FSOPEN_CLOEXEC
+ /* The type of fsconfig call made.   */
+ enum fsconfig_command {
+ 	FSCONFIG_SET_FLAG = 0, /* Set parameter, supplying no value */
+@@ -26,7 +26,13 @@ enum fsconfig_command {
+ 	FSCONFIG_CMD_RECONFIGURE = 7, /* Invoke superblock reconfiguration */
+ #define FSCONFIG_CMD_RECONFIGURE FSCONFIG_CMD_RECONFIGURE
+ };
+-#endif // FSCONFIG_CMD_CREATE
++
++#endif // FSOPEN_CLOEXEC
++
++/* fsopen flags. With the redundant definition, we check if the kernel,
++ * glibc value and our value still match.
++ */
++#define FSOPEN_CLOEXEC 0x00000001
+ 
+ #ifndef MS_MGC_VAL
+ /* Magic mount flag number. Has to be or-ed to the flag values.  */

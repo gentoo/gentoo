@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=jwm
+Comment=Very fast and lightweight still powerful window manager for X
+TryExec=jwm
+Exec=/etc/X11/Sessions/jwm
+Type=Application

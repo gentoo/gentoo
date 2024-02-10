@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/bluetoothd.pid"
+command="/usr/libexec/bluetooth/bluetoothd"
+command_args="${BLUETOOTH_OPTS}"
+command_background=1
+
+depend() {
+	after coldplug
+	need dbus localmount hostname
+}

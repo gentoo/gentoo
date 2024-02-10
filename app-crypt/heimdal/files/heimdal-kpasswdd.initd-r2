@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net heimdal-kdc
+	after logger
+}
+
+start() {
+	ebegin "Starting Heimdal kpasswdd"
+	start-stop-daemon --background --start --quiet --exec \
+		/usr/sbin/kpasswdd -- "${OPTIONS}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Heimdal kpasswdd"
+	start-stop-daemon --stop --quiet --exec \
+		/usr/sbin/kpasswdd
+	eend $?
+}

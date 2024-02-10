@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>asturm@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
+	</maintainer>
+	<use>
+		<flag name="cgroup-hybrid">Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">elogind/elogind</remote-id>
+	</upstream>
+</pkgmetadata>

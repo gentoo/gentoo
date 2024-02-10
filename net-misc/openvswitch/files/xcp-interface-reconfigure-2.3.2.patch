@@ -1,0 +1,20 @@
+Description: Use xcp-xapi interface-reconfigure if found
+ Ubuntu/Debian provide the XCP interface-reconfigure hook in
+ a FHS compliant location; use this if found.
+Author: James Page <james.page@ubuntu.com>
+Ubuntu-Bug: https://bugs.launchpad.net/ubuntu/+source/openvswitch/+bug/1195053
+Forwarded: no
+
+--- a/xenserver/etc_xapi.d_plugins_openvswitch-cfg-update
++++ b/xenserver/etc_xapi.d_plugins_openvswitch-cfg-update
+@@ -43,6 +43,10 @@ def delete_cacert():
+ def update(session, args):
+     # Refresh bridge network UUIDs in case this host joined or left a pool.
+     script = '/opt/xensource/libexec/interface-reconfigure'
++    # NOTE(jamespage): Override with distro xcp xapi locations
++    # if present
++    if os.path.exists('/usr/lib/xcp/lib/interface-reconfigure'):
++        script = '/usr/lib/xcp/lib/interface-reconfigure'
+     try:
+         retval = subprocess.call([script, 'rewrite'])
+         if retval != 0:

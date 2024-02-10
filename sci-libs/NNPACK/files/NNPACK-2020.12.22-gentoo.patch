@@ -1,0 +1,149 @@
+--- a/CMakeLists.txt	2022-05-17 20:26:04.765047673 +0200
++++ b/CMakeLists.txt	2022-05-17 20:27:51.513583722 +0200
+@@ -123,7 +123,7 @@
+   CACHE PATH "Confu-style dependencies binary directory")
+ 
+ IF(NNPACK_BACKEND STREQUAL "x86-64")
+-  IF(NOT DEFINED PYTHON_SIX_SOURCE_DIR)
++  IF(FALSE)
+     MESSAGE(STATUS "Downloading six (Python package) to ${CONFU_DEPENDENCIES_SOURCE_DIR}/six (define PYTHON_SIX_SOURCE_DIR to avoid it)")
+     CONFIGURE_FILE(cmake/DownloadSix.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/six-download/CMakeLists.txt")
+     EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -133,7 +133,7 @@
+     SET(PYTHON_SIX_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/six" CACHE STRING "six (Python package) source directory")
+   ENDIF()
+ 
+-  IF(NOT DEFINED PYTHON_ENUM_SOURCE_DIR)
++  IF(FALSE)
+     IF(${PYTHON_VERSION_STRING} VERSION_LESS 3.4)
+       # ---[ Python < 3.4 does not natively support enums, and needs a polyfill
+       MESSAGE(STATUS "Downloading enum (Python package) to ${CONFU_DEPENDENCIES_SOURCE_DIR}/enum (define PYTHON_ENUM_SOURCE_DIR to avoid it)")
+@@ -148,7 +148,7 @@
+     ENDIF()
+   ENDIF()
+ 
+-  IF(NOT DEFINED PYTHON_PEACHPY_SOURCE_DIR)
++  IF(FALSE)
+     # ---[ PeachPy requires Opcodes for installation
+     IF(NOT DEFINED PYTHON_OPCODES_SOURCE_DIR)
+       MESSAGE(STATUS "Downloading opcodes (Python package) to ${CONFU_DEPENDENCIES_SOURCE_DIR}/opcodes (define PYTHON_OPCODES_SOURCE_DIR to avoid it)")
+@@ -177,7 +177,7 @@
+   ENDIF()
+ ENDIF()
+ 
+-IF(NOT DEFINED CPUINFO_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading cpuinfo to ${CONFU_DEPENDENCIES_SOURCE_DIR}/cpuinfo (define CPUINFO_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadCpuinfo.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/cpuinfo-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -187,7 +187,7 @@
+   SET(CPUINFO_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/cpuinfo" CACHE STRING "cpuinfo source directory")
+ ENDIF()
+ 
+-IF(NOT DEFINED FP16_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading FP16 to ${CONFU_DEPENDENCIES_SOURCE_DIR}/fp16 (define FP16_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadFP16.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/fp16-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -197,7 +197,7 @@
+   SET(FP16_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/fp16" CACHE STRING "FP16 source directory")
+ ENDIF()
+ 
+-IF(NOT DEFINED FXDIV_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading FXdiv to ${CONFU_DEPENDENCIES_SOURCE_DIR}/fxdiv (define FXDIV_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadFXdiv.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/fxdiv-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -207,7 +207,7 @@
+   SET(FXDIV_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/fxdiv" CACHE STRING "FXdiv source directory")
+ ENDIF()
+ 
+-IF(NOT DEFINED PSIMD_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading PSimd to ${CONFU_DEPENDENCIES_SOURCE_DIR}/psimd (define PSIMD_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadPSimd.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/psimd-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -217,7 +217,7 @@
+   SET(PSIMD_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/psimd" CACHE STRING "PSimd source directory")
+ ENDIF()
+ 
+-IF(NOT DEFINED PTHREADPOOL_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading pthreadpool to ${CONFU_DEPENDENCIES_SOURCE_DIR}/pthreadpool (define PTHREADPOOL_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadPThreadPool.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/pthreadpool-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -227,7 +227,7 @@
+   SET(PTHREADPOOL_SOURCE_DIR "${CONFU_DEPENDENCIES_SOURCE_DIR}/pthreadpool" CACHE STRING "pthreadpool source directory")
+ ENDIF()
+ 
+-IF(NNPACK_BUILD_TESTS AND NOT DEFINED GOOGLETEST_SOURCE_DIR)
++IF(FALSE)
+   MESSAGE(STATUS "Downloading Google Test to ${CONFU_DEPENDENCIES_SOURCE_DIR}/googletest (define GOOGLETEST_SOURCE_DIR to avoid it)")
+   CONFIGURE_FILE(cmake/DownloadGoogleTest.cmake "${CONFU_DEPENDENCIES_BINARY_DIR}/googletest-download/CMakeLists.txt")
+   EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+@@ -496,7 +496,7 @@
+ TARGET_INCLUDE_DIRECTORIES(nnpack_reference_layers PUBLIC include)
+ 
+ # ---[ Configure cpuinfo
+-IF(NOT TARGET cpuinfo)
++IF(FALSE)
+   SET(CPUINFO_BUILD_TOOLS OFF CACHE BOOL "")
+   SET(CPUINFO_BUILD_UNIT_TESTS OFF CACHE BOOL "")
+   SET(CPUINFO_BUILD_MOCK_TESTS OFF CACHE BOOL "")
+@@ -508,7 +508,7 @@
+ TARGET_LINK_LIBRARIES(nnpack PRIVATE cpuinfo)
+ 
+ # ---[ Configure pthreadpool
+-IF(NOT TARGET pthreadpool)
++IF(FALSE)
+   SET(PTHREADPOOL_BUILD_TESTS OFF CACHE BOOL "")
+   SET(PTHREADPOOL_BUILD_BENCHMARKS OFF CACHE BOOL "")
+   ADD_SUBDIRECTORY(
+@@ -525,7 +525,7 @@
+ TARGET_LINK_LIBRARIES(nnpack_reference_layers PUBLIC pthreadpool)
+ 
+ # ---[ Configure FXdiv
+-IF(NOT TARGET fxdiv)
++IF(FALSE)
+   SET(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+   SET(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+   ADD_SUBDIRECTORY(
+@@ -532,18 +532,16 @@
+     "${FXDIV_SOURCE_DIR}"
+     "${CONFU_DEPENDENCIES_BINARY_DIR}/fxdiv")
+ ENDIF()
+-TARGET_LINK_LIBRARIES(nnpack PRIVATE fxdiv)
+ 
+ # ---[ Configure psimd
+-IF(NOT TARGET psimd)
++IF(FALSE)
+   ADD_SUBDIRECTORY(
+     "${PSIMD_SOURCE_DIR}"
+     "${CONFU_DEPENDENCIES_BINARY_DIR}/psimd")
+ ENDIF()
+-TARGET_LINK_LIBRARIES(nnpack PRIVATE psimd)
+ 
+ # ---[ Configure FP16
+-IF(NOT TARGET fp16)
++IF(FALSE)
+   SET(FP16_BUILD_TESTS OFF CACHE BOOL "")
+   SET(FP16_BUILD_BENCHMARKS OFF CACHE BOOL "")
+   ADD_SUBDIRECTORY(
+@@ -550,8 +548,6 @@
+     "${FP16_SOURCE_DIR}"
+     "${CONFU_DEPENDENCIES_BINARY_DIR}/fp16")
+ ENDIF()
+-TARGET_LINK_LIBRARIES(nnpack PRIVATE fp16)
+-TARGET_LINK_LIBRARIES(nnpack_reference_layers PUBLIC fp16)
+ 
+ INSTALL(TARGETS nnpack
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -560,7 +560,7 @@
+ 
+ IF(NNPACK_BUILD_TESTS)
+   # ---[ Build google test
+-  IF(NOT TARGET gtest)
++  IF(FALSE)
+     SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+     ADD_SUBDIRECTORY(
+       "${GOOGLETEST_SOURCE_DIR}"

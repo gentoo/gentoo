@@ -1,0 +1,86 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Alfred Wingate <parona@protonmail.com> (2023-12-25)
+# Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
+>=media-tv/kodi-20.2 wayland -X
+
+# Marek Szuba <marecki@gentoo.org> (2023-11-12)
+# FUSE cannot be built with multiple audio drivers, and desktop/gnome
+# profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
+# from desktop). Default to the latter for now because PulseAudio support
+# in FUSE is currently considered experimental.
+app-emulation/fuse -pulseaudio
+
+# Required by sys-apps/fwupd, a dependency of kde-plasma/discover
+dev-libs/libjcat gpg pkcs7
+
+# Required by www-client/falkon[python] and dev-python/pyside2[location],
+# in addition fix REQUIRED_USE conflict caused if "webengine" is enabled.
+# qtwebchannel package is fairly small, and python bindings are
+# required by some popular desktop packages such as calibre,
+# qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
+dev-python/PyQt5 webchannel
+dev-python/PyQt6 webchannel
+dev-python/pyside2 designer location positioning quick
+dev-python/pyside2 printsupport webchannel
+dev-python/pyside6 webchannel
+
+# Required by sys-apps/flatpak, a dependency of kde-plasma/discover
+dev-util/ostree curl
+
+# Required by net-im/neochat:5
+dev-qt/qtmultimedia:5 gstreamer
+
+# Required by app-editors/okteta
+dev-qt/qtscript:5 scripttools
+
+# Required by kde-apps/akonadi
+dev-qt/qtsql:5 mysql
+
+# Required by kde-apps/ktp-text-ui
+kde-apps/ktp-common-internals otr
+
+# Enable by default, requires kde-frameworks/kwayland
+kde-apps/yakuake absolute-position
+
+# Required by kde-frameworks/kapidox
+media-gfx/graphviz python
+
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
+
+# Needed by a global USE=wayland right now
+media-libs/libsdl2 gles2
+
+# Required by kde-plasma/kwin
+media-libs/mesa wayland
+
+# Required by kde-apps/kdenlive
+media-libs/mlt ffmpeg frei0r rubberband
+
+# Required by media-gfx/digikam
+media-libs/opencv contrib contribdnn
+
+# Required by kde-plasma/plasma-firewall
+# Required by net-firewall/firewalld[nftables] (default enabled)
+net-firewall/nftables json python xtables
+
+# Required by dev-qt/qtwebengine:5
+sys-libs/zlib minizip
+
+# Keep existing defaults after dropping IUSE=phonon from make.defaults
+<app-office/calligra-3.3 phonon
+kde-apps/kio-extras phonon
+kde-apps/kio-extras-kf5 phonon
+kde-apps/marble phonon
+
+# Required by kde-plasma/plasma-meta
+kde-plasma/kwin lock
+
+# plasma profile never enabled pulseaudio. We're skipping to pipewire.
+media-video/pipewire sound-server
+
+# Expected to be available by default in Plasma
+kde-frameworks/purpose kaccounts
+kde-plasma/plasma-desktop kaccounts

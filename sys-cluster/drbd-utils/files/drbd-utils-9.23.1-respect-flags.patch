@@ -1,0 +1,21 @@
+--- a/user/drbdmon/Makefile.in
++++ b/user/drbdmon/Makefile.in
+@@ -1,6 +1,6 @@
+-CXXFLAGS=-std=c++11 -I. -I../shared -Icppdsaext/src -Wall -Werror -pedantic-errors -fPIC -O2 \
+--Wsign-compare -Wpointer-arith -Wswitch-default -Wswitch-enum -Wtype-limits \
+--Wmissing-declarations -Wshadow
++CPPFLAGS = -I. -I../shared -Icppdsaext/src
++CXXFLAGS ?= -Wall -Werror -pedantic-errors -fPIC -O2 -Wsign-compare -Wpointer-arith -Wswitch-default -Wswitch-enum -Wtype-limits -Wmissing-declarations -Wshadow
++CXXFLAGS += -std=c++11 -O2 -fPIC
+ CXX = @CXX@
+ LIBS = @LIBS@
+ 
+@@ -51,7 +51,7 @@ $(dsaext-obj): $(basename $(dsaext-obj)).cpp $(basename $(dsaext-obj)).h
+ $(integerparse-obj): $(basename $(integerparse-obj)).cpp $(basename $(integerparse-obj)).h
+ 
+ drbdmon: $(ls-obj)
+-	$(CXX) -o $@ $(CPPFLAGS) $(CXXFLAGS) $^ $(LIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ # do not try to rebuild Makefile itself
+ Makefile: ;

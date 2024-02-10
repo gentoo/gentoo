@@ -1,0 +1,44 @@
+From f6b02f21a9131bafc4965ebb64acf01a4505ce04 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Mon, 10 Oct 2022 16:06:20 +0200
+Subject: [PATCH] don't crash when the server doesn't respond
+
+inside libpulse a non-reply (e.g. caused by a timeout) results in info
+being a nullptr. when that happens simply skip over the callback. when
+this happens chances are the server crashed or is otherwise defunct so
+we won't be able to do much about this anyway
+
+easy to test by attaching to both plasmashell and pulseaudio and
+interrupting the latter when the former calls
+pa_context_get_server_info. this results in the reply timeout getting
+hit -> nullptr callback.
+
+it is unclear if we can somehow recover from this but in lieu of a
+reliable real world test case for this we at least shouldn't crash on
+nullptr access.
+
+BUG: 454647
+---
+ src/context.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/context.cpp b/src/context.cpp
+index 604364f..c5a0f10 100644
+--- a/src/context.cpp
++++ b/src/context.cpp
+@@ -161,6 +161,12 @@ static void server_cb(pa_context *context, const pa_server_info *info, void *dat
+ {
+     Q_ASSERT(context);
+     Q_ASSERT(data);
++    if (!info) {
++        // info may be nullptr when e.g. the server doesn't reply in time (e.g. it is stuck)
++        // https://bugs.kde.org/show_bug.cgi?id=454647
++        qCWarning(PULSEAUDIOQT) << "server_cb() called without info!";
++        return;
++    }
+     static_cast<ContextPrivate *>(data)->serverCallback(info);
+ }
+ 
+-- 
+GitLab
+

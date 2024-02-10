@@ -1,0 +1,62 @@
+https://bugs.gentoo.org/874477
+--- a/eufind_main.c
++++ b/eufind_main.c
+@@ -23,4 +23,5 @@
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include "squid.h"
+ #include "sqfuncs.h"
+@@ -47,4 +48,14 @@
+ -i <integer>   : start nucleotide numbering at <integer> (def=1)\n\n";
+ 
++int GetBbox(float*, int*, char*, int, int, int);
++int GetBestABox(TRNA_TYPE*, char*, char*, int, int, int, int, int);
++int GetBestTrxTerm(TRNA_TYPE*, char*, int, float);
++int GetSecABox(TRNA_TYPE*, char*);
++void Get_tRNA_stats(TRNA_TYPE*, char*, int, int);
++int Init_tRNA(TRNA_TYPE*);
++int IntEncodeSeq(char*, char*, int);
++void Save_tRNA(TRNA_TYPE*, SQINFO*, char*, int, int, long int);
++int tRNAOverlap(TRNA_TYPE*, TRNA_TYPE*, int);
++
+ int
+ main (int argc, char **argv)
+--- a/scan_main.c
++++ b/scan_main.c
+@@ -8,4 +8,5 @@
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <time.h>
+ #include <math.h>
+--- a/score_main.c
++++ b/score_main.c
+@@ -10,4 +10,5 @@
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <time.h>
+ #include <math.h>
+--- a/trnascan.c
++++ b/trnascan.c
+@@ -69,4 +69,5 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <ctype.h>
+ 
+@@ -333,5 +334,5 @@
+ 	    );
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+   /* pointers to the different files fpi=input file, fpo=output file, 
+@@ -1419,5 +1420,5 @@
+ /* Calls to this function eliminated for efficiency  T. Lowe  11/95  */
+ 
+-myindex (char *s, char *t)
++int myindex (char *s, char *t)
+ {
+ int i, j, k;

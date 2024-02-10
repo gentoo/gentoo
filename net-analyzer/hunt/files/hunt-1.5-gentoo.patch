@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS=-Wall -O2 -g -D_REENTRANT -std=gnu89
++CFLAGS += -Wall -D_REENTRANT -std=gnu89
+ #CFLAGS+=-DSYNC_FAST
+ #CFLAGS+=-D_WITH_LINUX_KERNEL_HDR
+ 
+--- a/tpserv/Makefile
++++ b/tpserv/Makefile
+@@ -1,9 +1,8 @@
+-CFLAGS=-Wall -O2 -g
+-
++CFLAGS += -Wall
+ all: tpserv
+ 
+ tpserv: tpserv.o
+-	$(CC) -o $@ $< $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ clean:
+ 	rm -f *.o

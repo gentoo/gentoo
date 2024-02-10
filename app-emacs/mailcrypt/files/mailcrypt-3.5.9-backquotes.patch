@@ -1,0 +1,11 @@
+--- mailcrypt-3.5.9-orig/mc-gpg.el
++++ mailcrypt-3.5.9/mc-gpg.el
+@@ -108,7 +108,7 @@
+       (defmacro with-current-buffer (buffer &rest body)
+ 	"Execute the forms in BODY with BUFFER as the current buffer.
+ The value returned is the value of the last form in BODY."
+-	(` (save-excursion (set-buffer (, buffer)) (,@ body)))))
++	`(save-excursion (set-buffer ,buffer) ,@body)))
+   )
+ 
+ (defun mc-gpg-debug-print (string)

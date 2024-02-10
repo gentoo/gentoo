@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/daisydog"
+command_args="${WATCHDOG_OPTS}"
+description="watchdog daemon to pet /dev/watchdog devices"
+command_background="yes"
+pidfile="/run/daisydog.pid"
+
+depend() {
+	provide watchdog
+}

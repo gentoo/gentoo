@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">LMAX-Exchange/disruptor</remote-id>
+		<bugs-to>https://github.com/LMAX-Exchange/disruptor/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 2015-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="vault server"
+group=${group:-${RC_SVCNAME}}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+rc_ulimit=${rc_ulimit-"-n 65536"}
+user=${user:-${RC_SVCNAME}}
+
+command="/usr/bin/${RC_SVCNAME}"
+command_args="server ${command_args}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+depend() {
+	need net
+}

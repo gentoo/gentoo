@@ -1,0 +1,66 @@
+--- a/src/fits/fitscat.c
++++ b/src/fits/fitscat.c
+@@ -42,6 +42,9 @@
+ #include	"fitscat_defs.h"
+ #include	"fitscat.h"
+ 
++int   bswapflag;
++char    gstr[MAXCHAR];
++
+ /****** about_cat **************************************************************
+ PROTO	int about_cat(catstruct *cat, FILE *stream)
+ PURPOSE	Print some info about a catalog.
+--- a/src/fits/fitscat_defs.h
++++ b/src/fits/fitscat_defs.h
+@@ -86,7 +86,7 @@
+ typedef	int		LONG;			/* for DEC-Alpha... */
+ 	
+ /*----------------------------- Internal constants --------------------------*/
+-char		gstr[MAXCHAR];
++extern char		gstr[MAXCHAR];
+ 
+ /*----------------------------- External constants --------------------------*/
+ 
+--- a/src/fits/fitscat.h
++++ b/src/fits/fitscat.h
+@@ -333,6 +333,6 @@
+ 		warning(char *msg1, char *msg2);
+ 
+ 
+-int		bswapflag;
++extern int		bswapflag;
+ 
+ #endif
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -29,7 +29,7 @@
+ #include "types.h"
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+-char		gstr[MAXCHAR];
++extern char		gstr[MAXCHAR];
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern void	makeit(void);
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -59,6 +59,8 @@
+ #include "prefs.h"
+ #include "preflist.h"
+ 
++prefstruct  prefs;
++
+ /********************************* dumpprefs ********************************/
+ /*
+ Print the default preference parameters.
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -149,7 +149,7 @@
+   int		nobj;				/* Number of sources added */
+         }	prefstruct;
+ 
+-prefstruct	prefs;
++extern prefstruct	prefs;
+ 
+ /*-------------------------------- protos -----------------------------------*/
+ extern int	cistrcmp(char *cs, char *ct, int mode);

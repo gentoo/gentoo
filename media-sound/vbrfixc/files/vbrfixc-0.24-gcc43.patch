@@ -1,0 +1,31 @@
+--- a/vbrfixc/vbrfix.cpp
++++ b/vbrfixc/vbrfix.cpp
+@@ -16,6 +16,8 @@
+  ***************************************************************************/
+ #include "vbrfix.h"
+ //#include "stdafx.h"//include in mfc version
++#include <cstring>
++#include <stdint.h>
+ int getXHpos(int ver,int chan);
+ VbrFix::VbrFix(){
+   frameptrs=NULL;flags=0;
+@@ -295,7 +297,7 @@
+       }
+       lyrics3Pos=mp3.getpos()-8-4;
+       //find its length
+-      bool e=false;unsigned char c;uint correctv1=0,correctv2=0,p=0;char ev1[]="LYRICSEND";char ev2[]="LYRICS200";
++      bool e=false;unsigned char c;uint32_t correctv1=0,correctv2=0,p=0;char ev1[]="LYRICSEND";char ev2[]="LYRICS200";
+       while(!e && mp3.getpos()< mp3length){
+         mp3.fRead(&c,1);
+         if(c==255){logi("Error byte value of 255 in the lyrics3 tag!, asuming tag has ended");e=true;}
+--- a/vbrfixc/wputil.h
++++ b/vbrfixc/wputil.h
+@@ -199,7 +199,7 @@
+     ofstream out(output, ios::out|ios::binary|ios::trunc);
+     if(out.fail())return false;
+     // fast portable file copy
+-    return out << in.rdbuf();
++    return bool(out << in.rdbuf());
+   }
+   static wps loadSetting(const char *file,wps setting,wps defaultValue){
+     ifstream in(file, ios::in);

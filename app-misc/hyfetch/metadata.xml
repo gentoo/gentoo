@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>baileykasin@gmail.com</email>
+		<name>Bailey Kasin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en"> hyfetch builds upon neofetch to add pride flag coloration to the OS
+		logo, and also maintains the standard version of neofetch with bug fixes and new features,
+		as the original project is un-maintained. </longdescription>
+	<upstream>
+		<remote-id type="github">hykilpikonna/hyfetch</remote-id>
+		<bugs-to>https://github.com/hykilpikonna/hyfetch/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

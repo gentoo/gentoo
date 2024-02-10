@@ -1,0 +1,51 @@
+--- a/repmgr-action-cluster.c
++++ b/repmgr-action-cluster.c
+@@ -26,6 +26,7 @@
+ 
+ #define SHOW_HEADER_COUNT 9
+ 
++extern t_conninfo_param_list source_conninfo;
+ typedef enum
+ {
+ 	SHOW_ID = 0,
+--- a/repmgr-action-node.c
++++ b/repmgr-action-node.c
+@@ -32,6 +32,7 @@
+ #include "repmgr-action-node.h"
+ #include "repmgr-action-standby.h"
+ 
++extern t_conninfo_param_list source_conninfo;
+ static bool copy_file(const char *src_file, const char *dest_file);
+ static void format_archive_dir(PQExpBufferData *archive_dir);
+ static t_server_action parse_server_action(const char *action);
+--- a/repmgr-action-service.c
++++ b/repmgr-action-service.c
+@@ -26,6 +26,7 @@
+ #include "repmgr-client-global.h"
+ #include "repmgr-action-service.h"
+ 
++extern t_conninfo_param_list source_conninfo;
+ 
+ /*
+  * Possibly also show:
+--- a/repmgr-action-witness.c
++++ b/repmgr-action-witness.c
+@@ -28,6 +28,7 @@
+ #include "repmgr-client-global.h"
+ #include "repmgr-action-witness.h"
+ 
++extern t_conninfo_param_list source_conninfo;
+ static char		repmgr_user[MAXLEN];
+ static char		repmgr_db[MAXLEN];
+ 
+--- a/repmgr-client-global.h
++++ b/repmgr-client-global.h
+@@ -236,7 +236,7 @@ typedef struct ColHeader
+ extern t_runtime_options runtime_options;
+ extern t_configuration_options config_file_options;
+ 
+-t_conninfo_param_list source_conninfo;
++extern t_conninfo_param_list source_conninfo;
+ 
+ 
+ extern bool config_file_required;

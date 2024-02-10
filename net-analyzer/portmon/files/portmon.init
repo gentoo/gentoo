@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# configuration is done in /etc/pormon.sh
+
+depend() {
+   need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/portmon/portmon.hosts ]; then
+		error " You need /etc/portmon/portmaon.hosts to run portmon."
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting portmon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/portmon -- -d -c /etc/portmon/portmon.hosts
+	eend $?
+}
+
+stop() {
+	checkconfig || return 1
+	ebegin "Staring portmon"
+	start-stop-daemon --stopt --quiet --exec /usr/sbin/portmon 
+}

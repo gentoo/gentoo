@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>kensington@gentoo.org</email>
+		<name>Michael Palimaka</name>
+	</maintainer>
+	<use>
+		<flag name="aot">Generate native code at build time, rather than runtime.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">keepass</remote-id>
+		<bugs-to>https://sourceforge.net/p/keepass/bugs/</bugs-to>
+	</upstream>
+</pkgmetadata>

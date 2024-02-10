@@ -1,0 +1,41 @@
+diff --git a/Makefile.in b/Makefile.in
+index aca5a16..2e49f0a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -8,6 +8,7 @@ subdirs = lib include src
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
++datarootdir = @datarootdir@
+ VPATH = @srcdir@
+ top_objdir = .
+ 
+diff --git a/lib/ruby/Makefile.in b/lib/ruby/Makefile.in
+index b31ce7f..e099e1b 100644
+--- a/lib/ruby/Makefile.in
++++ b/lib/ruby/Makefile.in
+@@ -29,10 +29,10 @@ ccenergy.rb    cclambda.rb    chkpt.rb       color.rb       deriv2.rb      frequ
+ cceom.rb       ccsort.rb      cints.rb       cphf.rb        detci.rb       input.rb       optking.rb     psi3.rb        testcases.rb 
+ 
+ install: $(RUBYSRC)
+-	$(MKDIRS) $(rubydatadir)
++	$(MKDIRS) $(DESTDIR)/$(rubydatadir)
+ 	for rbfile in $(RUBYSRC); \
+           do \
+-            ($(INSTALL_DATA) $(srcdir)/$${rbfile} $(rubydatadir)) || exit 1; \
++            ($(INSTALL_DATA) $(srcdir)/$${rbfile} $(DESTDIR)/$(rubydatadir)) || exit 1; \
+           done
+ 
+ install_man: 
+diff --git a/src/bin/Makefile.in b/src/bin/Makefile.in
+index e1abb46..4eddf8d 100644
+--- a/src/bin/Makefile.in
++++ b/src/bin/Makefile.in
+@@ -65,6 +65,7 @@ targetclean:
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
++datarootdir = @datarootdir@
+ top_objdir = ../..
+ 
+ $(top_srcdir)/configure: $(top_srcdir)/configure.ac $(top_srcdir)/aclocal.m4

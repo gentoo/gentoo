@@ -1,0 +1,6 @@
+SABNZBD_CONFIGFILE="/etc/sabnzbd/sabnzbd.ini"
+SABNZBD_USER="sabnzbd"
+SABNZBD_GROUP="sabnzbd"
+
+# 0 - error/warnings, 1 - info, 2 - debug
+SABNZBD_LOGGING="1"

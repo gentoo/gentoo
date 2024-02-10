@@ -1,0 +1,27 @@
+https://marc.info/?l=freeipmi-devel&m=166752785904895&w=2
+
+From e3f759741ffc96c92c3a97e4518b09becce622b7 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 02:01:51 +0000
+Subject: [PATCH 2/3] configure.ac: Fix detecting sighandler_t on glibc
+
+Fixes the following error/misdetection of sighandler_t:
+```
+config.log:2639:conftest.c:83:13: error: 'sighandler_t' undeclared (first use in this function); did you mean 'sa_handler'?
+```
+
+sighandler_t requires -D_GNU_SOURCE on glibc systems.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -490,7 +490,8 @@ AC_CHECK_FUNCS([cbrt])
+ AC_CHECK_FUNCS([getmsg putmsg])
+ 
+ dnl sighandler_t apparently not defined in Apple/OS X
+-AC_CHECK_TYPES([sighandler_t], [], [], [[#include <signal.h>]])
++AC_CHECK_TYPES([sighandler_t], [], [], [[#define _GNU_SOURCE
++#include <signal.h>]])
+ 
+ # At least on freebsd, putc_unlocked is a macro, so the standard
+ # AC_CHECK_FUNCS doesn't work well.

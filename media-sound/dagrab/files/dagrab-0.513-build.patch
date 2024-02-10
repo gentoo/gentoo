@@ -1,0 +1,56 @@
+--- a/dagrab.c
++++ b/dagrab.c
+@@ -776,6 +776,7 @@
+ 		thread_save(NULL);
+ #endif
+ 	      do_not_write_now:
++		;
+ 	}
+ 	/****************************************************************
+ 	 * Close output file 						*
+--- a/jit_in.c
++++ b/jit_in.c
+@@ -74,5 +74,6 @@
+ 			*p = (*(p + SSIZE) + *(p - SSIZE)) / 2;
+ 			view_status(ID_JITTER, NULL);
+ 		      is_ok:	/* means continue */
++			;
+ 		}
+ }
+--- a/Makefile
++++ b/Makefile
+@@ -3,23 +3,15 @@
+ # Note: PTHREAD support is optional, you can comment it out
+ ################################################################################
+ 
+-CC=	gcc
+-CFLAGS=	-O ${UCD} -W -Wall -DPTHREAD #-g # #-DDEBUG
+-LDFLAGS=-O -s -lpthread # -static
+ PREFIX=/usr/local
+-
+-ifneq ($(wildcard /usr/include/linux/ucdrom.h),)
+-       CFLAGS +=-DUSE_UCDROM
+-endif
++CFLAGS += -W -Wall -DPTHREAD
++LIBS = -lpthread
+ 
+ all:	dagrab
+ 
+ SOURCES=cddb.c dagrab.c jitter.c jit_in.c print.c err.c
+ OBJ= 	$(SOURCES:.c=.o)
+ 
+-%.o:	%.c
+-	$(CC) $(CFLAGS) -c $< -o $@
+-
+ cddb.o:		main.h const.h version.h dagrab.h
+ dagrab.o:	main.h const.h jit_in.h jitter.h cddb.h print.h err.c Makefile
+ jitter.o:	main.h dagrab.h print.h const.h
+@@ -28,7 +20,7 @@
+ err.o:		dagrab.h main.h
+ 
+ dagrab:	$(OBJ) Makefile
+-	$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o dagrab
++	$(CC) $(CFLAGS) $(LDFLAGS) -o dagrab $(OBJ) $(LIBS)
+ 
+ clean:
+ 	rm -f dagrab *.o *.wav *.mp[23] *.ogg .*swp *~ gmon.out tags

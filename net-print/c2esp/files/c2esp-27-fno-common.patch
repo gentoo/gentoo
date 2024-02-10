@@ -1,0 +1,32 @@
+Taken from: https://sources.debian.org/patches/c2esp/27-8/0002-Add-extern-stanzas-to-variable-definitions-in-header.patch/
+Author: Didier Raboud <odyx@debian.org>
+
+--- a/src/c2espcommon.c
++++ b/src/c2espcommon.c
+@@ -42,11 +42,11 @@
+  * Globals...
+  */
+ char		CallerName[50];  	/* String that identifies the calling program */
+-int		DoBack;			/* Enables the back channel comms */ 
++extern int	DoBack;			/* Enables the back channel comms */
+ char 		BackBuf[32000]; //for the back channel replies from the printer
+ int 		BackBufLen=sizeof(BackBuf)-1;
+ FILE 		*LogFile = NULL; //file descriptor for log file
+-time_t		StartTime;
++extern time_t	StartTime;
+ int		BlackPercent, ColourPercent;
+ 
+ time_t KeepAwake(time_t Start, int Interval, FILE *PrintFile)
+--- a/src/c2espcommon.h
++++ b/src/c2espcommon.h
+@@ -35,8 +35,8 @@
+ /*
+  * Globals...
+ */
+-char 		BackBuf[32000]; //for the back channel replies from the printer
+-int		ColourPercent, BlackPercent; //to store the detected marker levels
++extern char BackBuf[32000]; //for the back channel replies from the printer
++extern int ColourPercent, BlackPercent; //to store the detected marker levels
+ 
+ 
+ time_t KeepAwake(time_t Start, int Interval, FILE *PrintFile);

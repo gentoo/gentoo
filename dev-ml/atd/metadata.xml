@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    ATD stands for Adaptable Type Definitions. It is a syntax for defining
+    cross-language data types. It is used as input to generate efficient and
+    type-safe serializers, deserializers and validators.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ahrefs/atd/issues/</bugs-to>
+    <remote-id type="github">ahrefs/atd</remote-id>
+  </upstream>
+</pkgmetadata>

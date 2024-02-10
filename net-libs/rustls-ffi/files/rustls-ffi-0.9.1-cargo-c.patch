@@ -1,0 +1,61 @@
+https://github.com/rustls/rustls-ffi/pull/274
+https://github.com/rustls/rustls-ffi/issues/220
+
+From 1c1968a374b1e14551f32c360489185e9b6e4376 Mon Sep 17 00:00:00 2001
+From: Luca Barbato <lu_zero@gentoo.org>
+Date: Sat, 10 Dec 2022 12:00:41 +0100
+Subject: [PATCH 1/2] Move the language configuration to cbindgen.toml
+
+--- a/Makefile
++++ b/Makefile
+@@ -33,7 +33,7 @@ target:
+ 	mkdir -p $@
+ 
+ src/rustls.h: src/*.rs cbindgen.toml
+-	cbindgen --lang C > $@
++	cbindgen > $@
+ 
+ target/$(PROFILE)/librustls_ffi.a: src/*.rs Cargo.toml
+ 	RUSTFLAGS="-C metadata=rustls-ffi" cargo build $(CARGOFLAGS)
+--- a/cbindgen.toml
++++ b/cbindgen.toml
+@@ -1,4 +1,5 @@
+ include_guard = "CRUSTLS_H"
++language = "C"
+ 
+ usize_is_size_t = true
+ 
+
+From 5d3e109bea0f3fe3d9080a5d5ca4e30c66d4e2e9 Mon Sep 17 00:00:00 2001
+From: Luca Barbato <lu_zero@gentoo.org>
+Date: Sat, 10 Dec 2022 12:29:23 +0100
+Subject: [PATCH 2/2] Initial cargo-c support
+
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -19,6 +19,7 @@ links = "rustls_ffi"
+ # libraries.
+ no_log_capture = []
+ read_buf = ["rustls/read_buf"]
++capi = []
+ 
+ [dependencies]
+ # Keep in sync with RUSTLS_CRATE_VERSION in build.rs
+@@ -33,3 +34,16 @@ num_enum = "0.5.4"
+ [lib]
+ name = "rustls_ffi"
+ crate-type = ["lib", "staticlib"]
++
++
++[package.metadata.capi.header]
++name = "rustls"
++subdirectory = false
++
++[package.metadata.capi.library]
++name = "rustls"
++rustflags = "-Cmetadata=rustls-ffi"
++
++[package.metadata.capi.pkg_config]
++name = "rustls"
++filename = "rustls"
+

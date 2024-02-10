@@ -1,0 +1,49 @@
+add a --root option so we can generate with DESTDIR installs
+
+--- a/image/usr/sbin/update-ca-certificates
++++ b/image/usr/sbin/update-ca-certificates
+@@ -30,6 +30,8 @@ LOCALCERTSDIR=/usr/local/share/ca-certificates
+ CERTBUNDLE=ca-certificates.crt
+ ETCCERTSDIR=/etc/ssl/certs
+ HOOKSDIR=/etc/ca-certificates/update.d
++ROOT=""
++RELPATH=""
+ 
+ while [ $# -gt 0 ];
+ do
+@@ -59,13 +61,25 @@ do
+     --hooksdir)
+       shift
+       HOOKSDIR="$1";;
++    --root|-r)
++      shift
++      # Needed as c_rehash wants to read the files directly.
++      # This gets us from $CERTSCONF to $CERTSDIR.
++      RELPATH="../../.."
++      ROOT=$(readlink -f "$1");;
+     --help|-h|*)
+-      echo "$0: [--verbose] [--fresh]"
++      echo "$0: [--verbose] [--fresh] [--root <dir>]"
+       exit;;
+   esac
+   shift
+ done
+ 
++CERTSCONF="$ROOT$CERTSCONF"
++CERTSDIR="$ROOT$CERTSDIR"
++LOCALCERTSDIR="$ROOT$LOCALCERTSDIR"
++ETCCERTSDIR="$ROOT$ETCCERTSDIR"
++HOOKSDIR="$ROOT$HOOKSDIR"
++
+ if [ ! -s "$CERTSCONF" ]
+ then
+   fresh=1
+@@ -94,7 +107,7 @@ add() {
+                                                   -e 's/,/_/g').pem"
+   if ! test -e "$PEM" || [ "$(readlink "$PEM")" != "$CERT" ]
+   then
+-    ln -sf "$CERT" "$PEM"
++    ln -sf "${RELPATH}${CERT#$ROOT}" "$PEM"
+     echo "+$PEM" >> "$ADDED"
+   fi
+   # Add trailing newline to certificate, if it is missing (#635570)

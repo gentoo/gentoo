@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/870871
+--- a/src/interface_ncurses.c
++++ b/src/interface_ncurses.c
+@@ -41,3 +41,3 @@
+  * characters */
+-static nr_print_ull(char *c, int max_chars, unsigned long long l)
++static int nr_print_ull(char *c, int max_chars, unsigned long long l)
+ {

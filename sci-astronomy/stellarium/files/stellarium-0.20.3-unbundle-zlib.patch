@@ -1,0 +1,23 @@
+This patch is not really needed, because zlib is already used from system, but
+it makes it easier to ensure that nothing else is bundled
+
+diff --git a/src/external/CMakeLists.txt b/src/external/CMakeLists.txt
+index 834aff89cb..590579e501 100644
+--- a/src/external/CMakeLists.txt
++++ b/src/external/CMakeLists.txt
+@@ -36,6 +36,7 @@ target_link_libraries(glues_stel Qt5::Gui)
+ set_target_properties(glues_stel PROPERTIES AUTOMOC 0)
+ SET_TARGET_PROPERTIES(glues_stel PROPERTIES FOLDER "src/external")
+ 
++if(0)
+ SET(zlib_SRCS
+      zlib/adler32.c
+      zlib/compress.c
+@@ -69,6 +70,7 @@ target_include_directories(zlib_stel PUBLIC zlib)
+ #turn off automoc, not needed here
+ set_target_properties(zlib_stel PROPERTIES AUTOMOC 0)
+ SET_TARGET_PROPERTIES(zlib_stel PROPERTIES FOLDER "src/external")
++endif()
+ 
+ if(0)
+ set(qtcompress_SRCS

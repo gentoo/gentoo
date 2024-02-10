@@ -1,0 +1,28 @@
+# Copyright 2021-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: look for autotools-based tests are actually no-ops
+# Maintainer: Quality Assurance team <qa@gentoo.org>
+
+noop_testsuite_check() {
+	use test || return
+
+	IFS= readarray -t noop_testsuites < <(find "${S}" -type f -name 'test-suite.log' -print0 | xargs -0 grep -l "TOTAL: 0" 2>/dev/null)
+
+	if [[ -n ${noop_testsuites[@]} ]]; then
+		eqawarn "QA Notice: Test suite passed but did not actually execute any tests:"
+		eqawarn
+		for suite in ${noop_testsuites[@]}
+		do
+			# can't use eqatag here because filenames must be relative to ${D},
+			# but our test suite log files only exist in ${S}
+			eqawarn "\t${suite#${S}/}"
+		done
+		eqawarn
+	fi
+}
+
+noop_testsuite_check
+: # guarantee successful exit
+
+# vim:ft=sh

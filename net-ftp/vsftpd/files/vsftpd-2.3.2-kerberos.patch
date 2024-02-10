@@ -1,0 +1,20 @@
+Index: vsftpd-2.3.2/twoprocess.c
+===================================================================
+--- vsftpd-2.3.2.orig/twoprocess.c
++++ vsftpd-2.3.2/twoprocess.c
+@@ -284,6 +284,7 @@ process_login_req(struct vsf_session* p_
+ {
+   enum EVSFPrivopLoginResult e_login_result = kVSFLoginNull;
+   char cmd;
++  vsf_sysutil_install_null_sighandler(kVSFSysUtilSigCHLD);
+   /* Blocks */
+   cmd = priv_sock_get_cmd(p_sess->parent_fd);
+   if (cmd != PRIV_SOCK_LOGIN)
+@@ -363,7 +364,6 @@ common_do_login(struct vsf_session* p_se
+   int was_anon = anon;
+   const struct mystr* p_orig_user_str = p_user_str;
+   int newpid;
+-  vsf_sysutil_install_null_sighandler(kVSFSysUtilSigCHLD);
+   /* Tells the pre-login child all is OK (it may exit in response) */
+   priv_sock_send_result(p_sess->parent_fd, PRIV_SOCK_RESULT_OK);
+   if (!p_sess->control_use_ssl)

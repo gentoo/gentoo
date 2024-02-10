@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    GNU Emacs modes for Groovy and Grails. The major features are syntax
+    highlighting with groovy-mode, REPL integration with run-groovy and Grails
+    project navigation with grails-mode.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes/issues/</bugs-to>
+    <remote-id type="github">Groovy-Emacs-Modes/groovy-emacs-modes</remote-id>
+  </upstream>
+</pkgmetadata>

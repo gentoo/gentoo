@@ -1,0 +1,33 @@
+From 847856cd72088fd5f2349be858745c632c46b6c8 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 17 Jan 2022 11:42:53 -0500
+Subject: [PATCH] Adjust dependency for libefivar and libefiboot objects
+
+Depending on 'prep' causes all objects to be rebuilt every time 'make'
+is invoked.
+
+Depending on '$(GENERATED_SOURCES)' causes a build failure because
+guid-symbols.c gets passed to the compiler due to a rule in rules.mk.
+
+Depend on 'include/efivar/efivar-guids.h' directly to avoid these
+issues.
+
+Fixes: https://github.com/rhboot/efivar/issues/199
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 0e423c44..c6006ebf 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -85,7 +85,7 @@ $(MAKEGUIDS_OUTPUT) : guids.txt
+ 
+ prep : makeguids $(GENERATED_SOURCES)
+ 
+-$(LIBEFIVAR_OBJECTS) $(LIBEFIBOOT_OBJECTS) : prep
++$(LIBEFIVAR_OBJECTS) $(LIBEFIBOOT_OBJECTS) : include/efivar/efivar-guids.h
+ 
+ libefivar.a : | $(GENERATED_SOURCES)
+ libefivar.a : $(patsubst %.o,%.static.o,$(LIBEFIVAR_OBJECTS))

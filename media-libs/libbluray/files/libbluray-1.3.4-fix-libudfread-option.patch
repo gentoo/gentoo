@@ -1,0 +1,25 @@
+https://code.videolan.org/videolan/libbluray/-/merge_requests/44
+
+From c1550e5cfd92229373f4cb729e2320827b9d22a8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 31 May 2023 07:15:59 +0100
+Subject: [PATCH] configure.ac: Fix explicit --with-external-libudfread
+ handling
+
+We need "!= xno" [0] if we want the default to be *enabled*, otherwise passing
+--with-external-libudfread actually ends up disabling it.
+
+[0] https://www.gnu.org/software/autoconf/manual/autoconf-2.71/html_node/External-Software.html
+--- a/configure.ac
++++ b/configure.ac
+@@ -316,7 +316,7 @@ AM_CONDITIONAL([BDJ_J2SE], [ test x"$BDJ_TYPE" != x"j2me" ])
+ dnl bootclasspath
+ AC_SUBST(BDJ_BOOTCLASSPATH)
+ 
+-AS_IF([test "x$with_external_libudfread" = "xyes"], [
++AS_IF([test "x$with_external_libudfread" != "xno"], [
+     PKG_CHECK_MODULES([LIBUDFREAD], [libudfread >= 1.1.0],
+         [with_libudfread=yes
+          AC_DEFINE([HAVE_LIBUDFREAD], [1], [Define to 1 if external libudfread is to be used])
+-- 
+GitLab

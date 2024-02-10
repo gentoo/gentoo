@@ -1,0 +1,14 @@
+--- a/dependencies/lib-lua/CMakeLists.txt
++++ b/dependencies/lib-lua/CMakeLists.txt
+@@ -3,9 +3,9 @@
+ option(LOCAL_LUA_LIB "Download and build Lua instead of searching the system" ON)
+ if (NOT LOCAL_LUA_LIB)
+     message(STATUS "Using system Lua")
+-    find_package(Lua "5.3" REQUIRED)
++    find_package(Lua "${LUA_VERSION}" REQUIRED EXACT)
+     if (NOT LUA_FOUND)
+-        message(FATAL_ERROR "Lua 5.3 not found")
++        message(FATAL_ERROR "Lua ${LUA_VERSION} not found")
+     endif()
+ 
+     set(LUA_INCLUDE_DIRS "${LUA_INCLUDE_DIR}" PARENT_SCOPE)

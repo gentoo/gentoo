@@ -1,0 +1,91 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,10 +15,6 @@
+ 
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)
+ 
+-if(NOT MSVC)
+-  set(CMAKE_C_FLAGS "-O3 -Wall -fomit-frame-pointer -pipe")
+-endif(NOT MSVC)
+-
+ add_subdirectory(libmpcdec)
+ add_subdirectory(libmpcpsy)
+ add_subdirectory(libmpcenc)
+--- a/libmpcdec/CMakeLists.txt
++++ b/libmpcdec/CMakeLists.txt
+@@ -1,7 +1,15 @@
+ include_directories(${libmpc_SOURCE_DIR}/include)
+-if(SHARED)
+-  add_library(mpcdec_shared SHARED huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
+-else(SHARED)
+-  add_library(mpcdec_static STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
+-endif(SHARED)
+ 
++add_library(mpcdec_shared SHARED huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++set_target_properties(mpcdec_shared PROPERTIES OUTPUT_NAME mpcdec CLEAN_DIRECT_OUTPUT 1 VERSION 7.0.1 SOVERSION 7)
++if(NOT MSVC)
++  target_link_libraries(mpcdec_shared m)
++endif(NOT MSVC)
++
++add_library(mpcdec_shared STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++
++if(NOT MSVC)
++  target_link_libraries(mpcdec_shared m)
++endif(NOT MSVC)
++
++install(TARGETS mpcdec_shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
+--- a/mpc2sv8/CMakeLists.txt
++++ b/mpc2sv8/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ if(SHARED)
+   target_link_libraries(mpc2sv8 mpcdec_shared)
+ else(SHARED)
+-  target_link_libraries(mpc2sv8 mpcdec_static)
++  target_link_libraries(mpc2sv8 mpcdec_shared)
+ endif(SHARED)
+ 
+ target_link_libraries(mpc2sv8 mpcenc_static)
+--- a/mpcchap/CMakeLists.txt
++++ b/mpcchap/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ if(SHARED)
+   target_link_libraries(mpcchap mpcdec_shared)
+ else(SHARED)
+-  target_link_libraries(mpcchap mpcdec_static)
++  target_link_libraries(mpcchap mpcdec_shared)
+ endif(SHARED)
+ 
+ target_link_libraries(mpcchap mpcenc_static)
+--- a/mpccut/CMakeLists.txt
++++ b/mpccut/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ if(SHARED)
+   target_link_libraries(mpccut mpcdec_shared)
+ else(SHARED)
+-  target_link_libraries(mpccut mpcdec_static)
++  target_link_libraries(mpccut mpcdec_shared)
+ endif(SHARED)
+ 
+ target_link_libraries(mpccut mpcenc_static)
+--- a/mpcdec/CMakeLists.txt
++++ b/mpcdec/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ if(SHARED)
+   target_link_libraries(mpcdec mpcdec_shared)
+ else(SHARED)
+-  target_link_libraries(mpcdec mpcdec_static)
++  target_link_libraries(mpcdec mpcdec_shared)
+ endif(SHARED)
+ 
+ install(TARGETS mpcdec RUNTIME DESTINATION bin)
+--- a/mpcgain/CMakeLists.txt
++++ b/mpcgain/CMakeLists.txt
+@@ -22,7 +22,7 @@
+ if(SHARED)
+   target_link_libraries(mpcgain mpcdec_shared)
+ else(SHARED)
+-  target_link_libraries(mpcgain mpcdec_static)
++  target_link_libraries(mpcgain mpcdec_shared)
+ endif(SHARED)
+ 
+ if(NOT MSVC)

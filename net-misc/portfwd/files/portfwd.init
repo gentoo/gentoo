@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/portfwd.cfg ] ; then
+		eerror "You need an /etc/portfwd.cfg file first"
+		eerror "There are samples in the documentation directory"
+		return 1
+	fi
+}
+
+start() {
+    checkconfig || return 1
+    ebegin "Starting portfwd"
+    start-stop-daemon --start --quiet --pidfile /var/run/portfwd.pid --exec /usr/sbin/portfwd -- ${PORTFWD_OPTS}
+
+    _pid="`ps -C portfwd -o pid= | head -n 1`"
+    if [ -n "$_pid" ] ; then
+        echo "${_pid/ /}" > /var/run/portfwd.pid
+        eend 0
+    else
+        eend 1
+    fi
+}
+
+stop() {
+    ebegin "Stopping portfwd"
+    start-stop-daemon --stop --quiet --pidfile /var/run/portfwd.pid
+
+    if [ $? -eq 0 ]; then
+        rm -f /var/run/portfwd.pid
+    fi
+
+    eend $?
+}

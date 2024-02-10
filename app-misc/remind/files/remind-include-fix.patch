@@ -1,0 +1,11 @@
+diff -Naur remind-04.02.02-orig/src/funcs.c remind-04.02.02/src/funcs.c
+--- remind-04.02.02-orig/src/funcs.c	2023-01-01 13:54:23.000000000 -0800
++++ remind-04.02.02/src/funcs.c	2023-01-19 23:05:11.147990523 -0800
+@@ -27,6 +27,7 @@
+ #include <ctype.h>
+ #include <math.h>
+ #include <sys/ioctl.h>
++#include <fcntl.h>
+ 
+ #include <unistd.h>
+ 

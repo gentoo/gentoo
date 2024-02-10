@@ -1,0 +1,29 @@
+From 62c2fc13f69f6ae6a3315f59430018898b37b74f Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Wed, 29 Nov 2023 19:14:28 +0800
+Subject: [PATCH 12/12] bump cudnn frontend to v0.9
+
+---
+ tensorflow/workspace2.bzl | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tensorflow/workspace2.bzl b/tensorflow/workspace2.bzl
+index da9295adaba..86a3df2fe37 100644
+--- a/tensorflow/workspace2.bzl
++++ b/tensorflow/workspace2.bzl
+@@ -174,9 +174,9 @@ def _tf_repositories():
+         name = "cudnn_frontend_archive",
+         build_file = "//third_party:cudnn_frontend.BUILD",
+         patch_file = ["//third_party:cudnn_frontend_header_fix.patch"],
+-        sha256 = "bfcf778030831f325cfc13ae5995388cc834fbff2995a297ba580d9ec65ca3b6",
+-        strip_prefix = "cudnn-frontend-0.8",
+-        urls = tf_mirror_urls("https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.8.zip"),
++        sha256 = "d8dba9e2607a0c256aa8eacb45b39986ab6f3f24a4d431d4397047a3cb0cd4fb",
++        strip_prefix = "cudnn-frontend-0.9",
++        urls = tf_mirror_urls("https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.9.zip"),
+     )
+ 
+     tf_http_archive(
+-- 
+2.41.0
+

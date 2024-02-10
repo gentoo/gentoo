@@ -1,0 +1,49 @@
+Description: Work around FTBFS due to automake 1.14 bug
+ Automake generates invalid Makefiles when patsubst is used in
+ Makefile.am. To work around this problem configure injects the
+ patsubsts to the Makefile now.
+ .
+Author: Balint Reczey <balint@balintreczey.hu>
+Bug-Debian: http://bugs.debian.org/713353
+--- gtk2-engines-2.20.2.orig/configure.ac
++++ gtk2-engines-2.20.2/configure.ac
+@@ -142,6 +142,8 @@ fi
+ AC_SUBST(BUILD_ENGINES)
+ AC_SUBST(BUILD_THEMES)
+ AC_SUBST(BUILD_SCHEMAS)
++AC_SUBST([auto_find_tests], ['$(patsubst %,exported_%,$(BUILD_ENGINES)) torture_buildin $(patsubst %,torture_%,$(TORTURE_TEST_ENGINES))'])
++
+ 
+ if test $animation = "yes"; then
+ 	AC_DEFINE_UNQUOTED(HAVE_ANIMATION, 1, [Defines whether to compile with animation support])
+--- gtk2-engines-2.20.2.orig/test/Makefile.am
++++ gtk2-engines-2.20.2/test/Makefile.am
+@@ -64,9 +64,10 @@ VALGRIND_ENV=G_SLICE=always-malloc G_DEB
+ # Exported Symbols Test - Tests all engines unconditionally
+ #############################################################
+ # Prefix with exported_
+-EXPORTED_SYMBOLS_TESTS = $(patsubst %,exported_%,$(BUILD_ENGINES))
++# disabled to work around automake bug #14561
++# EXPORTED_SYMBOLS_TESTS = $(patsubst %,exported_%,$(BUILD_ENGINES))
+ 
+-TESTS += $(EXPORTED_SYMBOLS_TESTS)
++#TESTS += $(EXPORTED_SYMBOLS_TESTS)
+ 
+ 
+ #############################################################
+@@ -85,10 +86,13 @@ SUPPORTED_TORTURE_TEST_ENGINES = \
+ # Filter engines that are not build from the set of engines
+ TORTURE_TEST_ENGINES = $(filter $(SUPPORTED_TORTURE_TEST_ENGINES),$(BUILD_ENGINES))
+ # Prefix with torture_
+-TORTURE_TEST_TESTS = torture_buildin $(patsubst %,torture_%,$(TORTURE_TEST_ENGINES))
++# disabled to work around automake bug #14561
++# TORTURE_TEST_TESTS = torture_buildin $(patsubst %,torture_%,$(TORTURE_TEST_ENGINES))
+ 
+ # Add TORTURE_TEST_ENGINES to list of tests
+-TESTS += $(TORTURE_TEST_TESTS)
++# disabled to work around automake bug #14561
++#TESTS += $(TORTURE_TEST_TESTS)
++TESTS += @auto_find_tests@
+ 
+ # Possible other tests:
+ #  - An extensive theme switch tests that loads/unloads the engine

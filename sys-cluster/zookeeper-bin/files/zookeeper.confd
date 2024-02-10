@@ -1,0 +1,18 @@
+# JVM options
+JVM_OPTS=""
+
+# zookeeper files
+MAIN="org.apache.zookeeper.server.quorum.QuorumPeerMain"
+CONFIG="/opt/zookeeper-bin/conf/zoo.cfg"
+
+# build the classpath
+INSTALL_DIR=/opt/zookeeper-bin
+CLASSPATH="${INSTALL_DIR}/conf:${CLASSPATH}"
+
+for i in ${INSTALL_DIR}/zookeeper-*.jar; do
+	CLASSPATH="${i}:${CLASSPATH}"
+done
+
+for i in ${INSTALL_DIR}/lib/*.jar; do
+	CLASSPATH="${i}:${CLASSPATH}"
+done

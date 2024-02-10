@@ -1,0 +1,13 @@
+Index: rocprofiler-rocm-5.3.3/cmake_modules/env.cmake
+===================================================================
+--- rocprofiler-rocm-5.3.3.orig/cmake_modules/env.cmake
++++ rocprofiler-rocm-5.3.3/cmake_modules/env.cmake
+@@ -119,8 +119,3 @@ message ( "---------GPU_TARGETS: ${GPU_T
+ if ( "${ROCM_ROOT_DIR}" STREQUAL "" )
+   message ( FATAL_ERROR "ROCM_ROOT_DIR is not found." )
+ endif ()
+-
+-find_library ( FIND_AQL_PROFILE_LIB "libhsa-amd-aqlprofile64.so" HINTS ${CMAKE_INSTALL_PREFIX} PATHS ${ROCM_ROOT_DIR})
+-if (  NOT FIND_AQL_PROFILE_LIB )
+-  message ( FATAL_ERROR "AQL_PROFILE not installed. Please install AQL_PROFILE" )
+-endif()

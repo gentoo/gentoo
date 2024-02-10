@@ -1,0 +1,48 @@
+Description: Fix include location for ebur128 files
+ The Debian packages for ebur128 are shipping the headers in:
+
+    libebur128-dev: /usr/include/ebur128.h
+
+ while the upstream code expects ebur128/ebur128.h
+
+Author: Stuart Prescott <stuart@debian.org>
+Forwarded: not sure -- check interaction with cmake rules
+diff --git a/replaygain/ffmpeginput.cpp b/replaygain/ffmpeginput.cpp
+index 24e47d34..382bac90 100644
+--- a/replaygain/ffmpeginput.cpp
++++ b/replaygain/ffmpeginput.cpp
+@@ -31,7 +31,7 @@ extern "C" {
+ #include <QString>
+ #include <QList>
+ #include <QByteArray>
+-#include "ebur128/ebur128.h"
++#include "ebur128.h"
+ #include "ffmpeginput.h"
+ 
+ static QMutex mutex;
+diff --git a/replaygain/mpg123input.cpp b/replaygain/mpg123input.cpp
+index 43ae0371..6a7b266f 100644
+--- a/replaygain/mpg123input.cpp
++++ b/replaygain/mpg123input.cpp
+@@ -18,7 +18,7 @@ extern "C" {
+ #include <QFile>
+ #include <QString>
+ #include <QByteArray>
+-#include "ebur128/ebur128.h"
++#include "ebur128.h"
+ #include "mpg123input.h"
+ 
+ struct Mpg123Input::Handle {
+diff --git a/replaygain/trackscanner.h b/replaygain/trackscanner.h
+index b8709115..631e551a 100644
+--- a/replaygain/trackscanner.h
++++ b/replaygain/trackscanner.h
+@@ -25,7 +25,7 @@
+ #define _SCANNER_H_
+ 
+ #include "jobcontroller.h"
+-#include "ebur128/ebur128.h"
++#include "ebur128.h"
+ 
+ class Input;
+ 

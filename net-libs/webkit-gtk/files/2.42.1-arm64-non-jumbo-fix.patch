@@ -1,0 +1,38 @@
+From c5e664167ec74b24a9082506fe17dee1ea194185 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Wed, 18 Oct 2023 13:08:30 +0300
+Subject: [PATCH] [JSC] Fix Air OptimizePairedLoadStore missing header includes
+
+Reviewed by NOBODY (OOPS!).
+
+Fixes compile errors with non-unified build by adding missing include files for
+single unit compilation.
+Fixed compilation errors:
+
+error: incomplete type 'JSC::CCallHelpers' named in nested name specifier
+error: function 'JSC::B3::Air::Inst::forEachDefWithExtraClobberedRegs<JSC::B3::Air::Tmp, (lambda at ...)>' is used but not defined in this translation unit, and cannot be defined in any other translation unit because its type does not have linkage
+
+* Source/JavaScriptCore/b3/air/AirOptimizePairedLoadStore.cpp
+---
+ Source/JavaScriptCore/b3/air/AirOptimizePairedLoadStore.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+https://github.com/WebKit/WebKit/pull/19242
+
+diff --git a/Source/JavaScriptCore/b3/air/AirOptimizePairedLoadStore.cpp b/Source/JavaScriptCore/b3/air/AirOptimizePairedLoadStore.cpp
+index e6fc4d116d00..8321ba03822a 100644
+--- a/Source/JavaScriptCore/b3/air/AirOptimizePairedLoadStore.cpp
++++ b/Source/JavaScriptCore/b3/air/AirOptimizePairedLoadStore.cpp
+@@ -32,7 +32,9 @@
+ #include "AirArgInlines.h"
+ #include "AirCode.h"
+ #include "AirInst.h"
++#include "AirInstInlines.h"
+ #include "AirPhaseScope.h"
++#include "CCallHelpers.h"
+ #include <wtf/Range.h>
+ 
+ namespace JSC { namespace B3 { namespace Air {
+-- 
+2.42.0
+

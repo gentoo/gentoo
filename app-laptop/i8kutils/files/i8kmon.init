@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after modules
+}
+
+command="/usr/bin/i8kmon"
+command_args="--nouserconfig"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+start_pre() {
+	if [ ! -e /proc/i8k ]; then
+		eerror "The dell-smm-hwmon (i8k) driver is not loaded or installed"
+		return 1
+	fi
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package offers tabs with a wide range of customization options, both
+    aesthetical and functional, implementing them trying to follow the Emacs
+    philosophy packing them with useful keybindings and a nice integration with
+    the Emacs environment, without sacrificing customizability.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/ema2159/centaur-tabs/issues/</bugs-to>
+    <remote-id type="github">ema2159/centaur-tabs</remote-id>
+  </upstream>
+</pkgmetadata>

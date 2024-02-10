@@ -1,0 +1,9 @@
+lld does not ignore erroneous libdirs (ideally should use pkg-config)
+https://bugs.gentoo.org/875017
+--- a/configure.in
++++ b/configure.in
+@@ -60,3 +60,3 @@
+      CFLAGS="$CFLAGS -I${prefix}/include"
+-     LIBS="$LIBS -L${prefix}/lib -lpcap"
++     LIBS="$LIBS -lpcap"
+   elif test -f /usr/include/pcap/pcap.h; then

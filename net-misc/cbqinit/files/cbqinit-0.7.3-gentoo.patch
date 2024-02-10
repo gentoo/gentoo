@@ -1,0 +1,53 @@
+Use Gentoo friendly config paths and incorporate 
+cbq-0.7.1-avpkt-enhancement.patch from Fedora
+
+--- cbqinit
++++ cbqinit
+@@ -484,8 +484,8 @@
+ PRIO_REALM_DEFAULT=${PRIO_REALM:-300}
+ 
+ ### Default CBQ_PATH & CBQ_CACHE settings
+-CBQ_PATH=${CBQ_PATH:-/etc/sysconfig/cbq}
+-CBQ_CACHE=${CBQ_CACHE:-/var/cache/cbq.init}
++CBQ_PATH=${CBQ_PATH:-/etc/cbqinit}
++CBQ_CACHE=${CBQ_CACHE:-/var/cache/cbqinit}
+ 
+ ### Uncomment to enable logfile for debugging
+ #CBQ_DEBUG="/var/run/cbq-$1"
+@@ -501,6 +501,9 @@
+ CBQ_WORDS="$CBQ_WORDS|PRIO_MARK|PRIO_RULE|PRIO_REALM|BUFFER"
+ CBQ_WORDS="$CBQ_WORDS|LIMIT|PEAK|MTU|QUANTUM|PERTURB"
+ 
++### Source AVPKT if it exists
++[ -r "${CBQ_PATH}/avpkt" ] && . "${CBQ_PATH}/avpkt"
++AVPKT=${AVPKT:-1000}
+ 
+ #############################################################################
+ ############################# SUPPORT FUNCTIONS #############################
+@@ -749,7 +752,7 @@
+ 
+ 	### Setup root qdisc + class for device
+ 	tc qdisc add dev $dev root handle 1 cbq \
+-	bandwidth $DEVBWDT avpkt 1000 cell 8
++	bandwidth $DEVBWDT avpkt $AVPKT cell 8
+ 
+ 	### Set weight of the root class if set
+ 	[ -n "$DEVWGHT" ] &&
+@@ -766,7 +769,7 @@
+ 	### Create the class
+ 	tc class add dev $DEVICE parent 1:$PARENT classid 1:$CLASS cbq \
+ 	bandwidth $BANDWIDTH rate $RATE weight $WEIGHT prio $PRIO \
+-	allot 1514 cell 8 maxburst 20 avpkt 1000 $BOUNDED $ISOLATED ||
++	allot 1514 cell 8 maxburst 20 avpkt $AVPKT $BOUNDED $ISOLATED ||
+ 		cbq_fail_off "failed to add class $CLASS with parent $PARENT on $DEVICE!"
+ 
+ 	### Create leaf qdisc if set
+@@ -940,7 +943,7 @@
+ 	### Replace CBQ class
+ 	tc class replace dev $DEVICE classid 1:$CLASS cbq \
+ 	bandwidth $BANDWIDTH rate $NEW_RATE weight $NEW_WGHT prio $PRIO \
+-	allot 1514 cell 8 maxburst 20 avpkt 1000 $BOUNDED $ISOLATED
++	allot 1514 cell 8 maxburst 20 avpkt $AVPKT $BOUNDED $ISOLATED
+ 
+ 	### Replace leaf qdisc (if any)
+ 	if [ "$LEAF" = "tbf" ]; then

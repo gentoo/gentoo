@@ -1,0 +1,89 @@
+From e6c69762f5f555fa17659e3440d8392b6a47bbc6 Mon Sep 17 00:00:00 2001
+From: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Date: Mon, 8 Nov 2021 18:44:25 -0600
+Subject: [PATCH] Improved commandline help
+
+Output the descriptions of the commandline options in -h.
+
+Signed-off-by: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+---
+ options.c  | 25 +++++++++++++++++--------
+ physlock.1 |  2 +-
+ 2 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/options.c b/options.c
+index 6ec3634..ed21262 100644
+--- a/options.c
++++ b/options.c
+@@ -28,7 +28,16 @@ static options_t _options;
+ const options_t *options = (const options_t*) &_options;
+ 
+ void print_usage() {
+-	printf("usage: physlock [-dhLlmsv] [-p MSG]\n");
++	printf("Usage: physlock [-dhlLmsv] [-p MSG]\n");
++	printf("Lock all consoles / virtual terminals.\n\n");
++	printf("  -d        Fork and detach physlock before prompting for authentication.\n");
++	printf("  -h        Print brief usage information to standard output and exit.\n");
++	printf("  -l        Only lock console switching and exit.\n");
++	printf("  -L        Only enable (unlock) console switching and exit.\n");
++	printf("  -m        Mute kernel messages on console while physlock is running.\n");
++	printf("  -p MSG    Display MSG before the password prompt.\n");
++	printf("  -s        Disable SysRq mechanism while physlock is running.\n");
++	printf("  -v        Print version information to standard output and exit.\n");
+ }
+ 
+ void print_version() {
+@@ -46,23 +55,20 @@ void parse_options(int argc, char **argv) {
+ 	_options.lock_switch = -1;
+ 	_options.mute_kernel_messages = 0;
+ 
+-	while ((opt = getopt(argc, argv, "dhLlmp:sv")) != -1) {
++	while ((opt = getopt(argc, argv, "dhlLmp:sv")) != -1) {
+ 		switch (opt) {
+-			case '?':
+-				print_usage();
+-				exit(1);
+ 			case 'd':
+ 				_options.detach = 1;
+ 				break;
+ 			case 'h':
+ 				print_usage();
+ 				exit(0);
+-			case 'L':
+-				_options.lock_switch = 0;
+-				break;
+ 			case 'l':
+ 				_options.lock_switch = 1;
+ 				break;
++			case 'L':
++				_options.lock_switch = 0;
++				break;
+ 			case 'm':
+ 				_options.mute_kernel_messages = 1;
+ 				break;
+@@ -75,6 +81,9 @@ void parse_options(int argc, char **argv) {
+ 			case 'v':
+ 				print_version();
+ 				exit(0);
++			case '?':
++				print_usage();
++				exit(1);
+ 		}
+ 	}
+ }
+diff --git a/physlock.1 b/physlock.1
+index 32e8547..6243214 100644
+--- a/physlock.1
++++ b/physlock.1
+@@ -3,7 +3,7 @@
+ physlock \- lock all consoles / virtual terminals
+ .SH SYNOPSIS
+ .B physlock
+-.RB [ \-dhLlmsv ]
++.RB [ \-dhlLmsv ]
+ .RB [ \-p
+ .IR MSG ]
+ .SH DESCRIPTION
+-- 
+2.32.0
+

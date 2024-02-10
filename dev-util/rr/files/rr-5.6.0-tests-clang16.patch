@@ -1,0 +1,19 @@
+https://github.com/rr-debugger/rr/commit/548fab2071054cb7e906c53930b6fab19316dd61
+
+From 548fab2071054cb7e906c53930b6fab19316dd61 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sat, 3 Dec 2022 12:44:48 +0100
+Subject: [PATCH] test: Include <sys/mount.h> in util.h
+
+The mount_ns_exec test needs it to call the mount function.
+--- a/src/test/util.h
++++ b/src/test/util.h
+@@ -80,6 +80,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/ipc.h>
+ #include <sys/mman.h>
++#include <sys/mount.h>
+ #include <sys/msg.h>
+ #include <sys/prctl.h>
+ #include <sys/ptrace.h>
+

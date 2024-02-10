@@ -1,0 +1,46 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,12 +3,10 @@
+ datadir  = $(DESTDIR)/usr/share/cqrlog
+ bindir   = $(DESTDIR)/usr/bin
+ sharedir = $(DESTDIR)/usr/share
+-tmpdir   = /tmp
++tmpdir   := $(shell mktemp -d)
+ 
+ cqrlog: src/cqrlog.lpi
+-	$(CC) --ws=gtk2 --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
+-	$(ST) src/cqrlog
+-	gzip tools/cqrlog.1 -c > tools/cqrlog.1.gz
++	$(CC) -d --ws=gtk2 --max-process-count=1 --lazarusdir=/usr/share/lazarus --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
+ 
+ clean:
+ 	rm -f -v src/*.o src/*.ppu src/*.bak src/lnet/lib/*.ppu src/lnet/lib/*.o src/lnet/lib/*.bak src/cqrlog src/cqrlog.compiled src/ipc/*.o src/ipc/*.ppu src/cqrlog.or
+@@ -37,7 +35,7 @@
+ 	install -d -v         $(sharedir)/pixmaps/cqrlog
+ 	install -d -v         $(sharedir)/icons/cqrlog
+ 	install -d -v         $(sharedir)/applications
+-	install -d -v         $(sharedir)/appdata
++	install -d -v         $(sharedir)/metainfo
+ 	install -d -v         $(sharedir)/man/man1
+ 	install    -v -m 0755 src/cqrlog $(bindir)
+ 	install    -v -m 0755 tools/cqrlog-apparmor-fix $(datadir)/cqrlog-apparmor-fix
+@@ -60,7 +58,7 @@
+ #	install    -v -m 0644 images/icon/256x256/*   $(datadir)/images/icon/256x256/
+ #	install    -v -m 0644 images/*   $(datadir)/images/
+ 	install    -v -m 0644 tools/cqrlog.desktop $(sharedir)/applications/cqrlog.desktop
+-	install    -v -m 0644 tools/cqrlog.appdata.xml $(sharedir)/appdata/cqrlog.appdata.xml
++	install    -v -m 0644 tools/cqrlog.appdata.xml $(sharedir)/metainfo/cqrlog.appdata.xml
+ 	install    -v -m 0644 images/icon/32x32/cqrlog.png $(sharedir)/pixmaps/cqrlog/cqrlog.png
+ 	install    -v -m 0644 images/icon/128x128/cqrlog.png $(sharedir)/icons/cqrlog.png
+ 	install    -v -m 0644 src/changelog.html $(datadir)/changelog.html
+@@ -74,9 +72,8 @@
+ 	gzip tools/cqrlog.1 -c > tools/cqrlog.1.gz
+ 
+ cqrlog_qt5: src/cqrlog.lpi
+-	$(CC) --ws=qt5 --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
++	$(CC) -d --ws=qt5 --max-process-count=1 --lazarusdir=/usr/share/lazarus --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
+ 	$(ST) src/cqrlog
+-	gzip tools/cqrlog.1 -c > tools/cqrlog.1.gz
+ 
+ cqrlog_qt5_debug: src/cqrlog.lpi
+ 	$(CC) --ws=qt5 --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi

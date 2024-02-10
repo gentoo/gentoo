@@ -1,0 +1,25 @@
+diff -urN libwmf-0.2.8.4.old/configure.ac libwmf-0.2.8.4/configure.ac
+--- libwmf-0.2.8.4.old/configure.ac	2011-07-01 22:37:57.000000000 +0200
++++ libwmf-0.2.8.4/configure.ac	2011-07-01 22:41:38.000000000 +0200
+@@ -744,8 +744,7 @@
+ 
+ if test $LIBWMF_BUILDSTYLE != lite; then
+ 	PKG_CHECK_MODULES(GDK_PIXBUF,gdk-pixbuf-2.0 >= 2.1.2,[
+-		GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+-		GDK_PIXBUF_DIR="gtk-2.0/$GTK_VERSION/loaders"
++		GDK_PIXBUF_DIR=`$PKG_CONFIG --variable=gdk_pixbuf_moduledir gdk-pixbuf-2.0`
+ 		wmf_gdk_pixbuf=yes
+ 	],[	wmf_gdk_pixbuf=no
+ 	])
+diff -urN libwmf-0.2.8.4.old/src/Makefile.am libwmf-0.2.8.4/src/Makefile.am
+--- libwmf-0.2.8.4.old/src/Makefile.am	2011-07-01 22:37:57.000000000 +0200
++++ libwmf-0.2.8.4/src/Makefile.am	2011-07-01 22:40:41.000000000 +0200
+@@ -63,7 +63,7 @@
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+ 	-release $(LT_RELEASE) -export-dynamic
+ 
+-loaderdir = $(libdir)/$(GDK_PIXBUF_DIR)
++loaderdir = $(GDK_PIXBUF_DIR)
+ 
+ loader_LTLIBRARIES = $(GDK_PIXBUF_PLUGIN)
+ 

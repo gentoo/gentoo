@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -100,6 +100,7 @@
+ 		strndup strstr])
+ 
+ AC_CHECK_LIB(ncurses, initscr, [], [AC_ERROR(NCurses library not found)])
++AC_SEARCH_LIBS(stdscr, tinfo,,[AC_ERROR([Cannot find a library providing stdscr])])
+ AC_CHECK_FUNC(dlopen, [], [AC_CHECK_LIB(dl, dlopen)])
+ AC_CHECK_FUNC(getopt_long, [], [AC_CHECK_LIB(gnugetopt, getopt_long)])
+ 

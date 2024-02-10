@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus nftables metrics exporter"
+
+command="/usr/bin/nftables-exporter"
+command_background="true"
+error_log="/var/log/nftables-exporter/nftables-exporter.log"
+output_log="/var/log/nftables-exporter/nftables-exporter.log"
+pidfile=${pidfile:-"/run/nftables_exporter.pid"}
+
+depend() {
+	after net
+}

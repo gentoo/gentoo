@@ -1,0 +1,40 @@
+diff --git a/cmake/FindSkia.cmake b/cmake/FindSkia.cmake
+index 2d18c12..2e37f22 100644
+--- a/laf/cmake/FindSkia.cmake
++++ b/laf/cmake/FindSkia.cmake
+@@ -122,25 +122,25 @@ if(NOT ZLIB_LIBRARIES)
+   set(ZLIB_LIBRARIES ${ZLIB_LIBRARY})
+ endif()
+ 
+-set(FREETYPE_FOUND ON)
+-find_library(FREETYPE_LIBRARY freetype2 PATH "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+-set(FREETYPE_LIBRARIES ${FREETYPE_LIBRARY})
+-set(FREETYPE_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/freetype/include")
+-
+-find_library(HARFBUZZ_LIBRARY harfbuzz PATH "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+-set(HARFBUZZ_LIBRARIES ${HARFBUZZ_LIBRARY})
+-set(HARFBUZZ_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/harfbuzz/src")
+-
+ set(SKIA_LIBRARIES
+   ${SKIA_LIBRARY}
+   ${SKIA_OPENGL_LIBRARY}
++  ${FREETYPE_LIBRARIES}
++  ${JPEG_LIBRARIES}
++  ${HARFBUZZ_LIBRARIES}
++  ${PNG_LIBRARIES}
++  ${WEBP_LIBRARIES}
+   CACHE INTERNAL "Skia libraries")
+ 
+ add_library(skia INTERFACE)
+ target_include_directories(skia INTERFACE
+   ${SKIA_DIR}
+   ${FREETYPE_INCLUDE_DIRS}
+-  ${HARFBUZZ_INCLUDE_DIRS})
++  ${JPEG_INCLUDE_DIRS}
++  ${HARFBUZZ_INCLUDE_DIRS}
++  ${PNG_INCLUDE_DIRS}
++  ${WEBP_INCLUDE_DIRS}
++)
+ target_link_libraries(skia INTERFACE ${SKIA_LIBRARIES})
+ target_compile_definitions(skia INTERFACE
+   SK_INTERNAL
