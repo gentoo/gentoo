@@ -14,7 +14,9 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	if [[ ${PV} != *rc* ]] ; then
+		KEYWORDS="~amd64 ~arm64 ~riscv"
+	fi
 fi
 
 # main pkg
