@@ -13,4 +13,7 @@
 		<changelog>https://github.com/netaddr/netaddr/blob/master/CHANGELOG</changelog>
 		<doc>https://netaddr.readthedocs.io/</doc>
 	</upstream>
+	<use>
+		<flag name="cli">Provide a command-line interface</flag>
+	</use>
 </pkgmetadata>
