@@ -18,10 +18,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 
+# dev-python/regex doesn't support pypy
 BDEPEND="
 	test? (
 		dev-python/atomicwrites[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/regex[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
@@ -32,13 +35,6 @@ python_test() {
 		# require dev-python/js2py which is a really bad quality package
 		tests/test_nearley/test_nearley.py
 	)
-
-	if has "${EPYTHON}" pypy3 python3.{8,9}; then
-		EPYTEST_IGNORE+=(
-			# test using Python 3.10+ syntax
-			tests/test_pattern_matching.py
-		)
-	fi
 
 	epytest
 }
