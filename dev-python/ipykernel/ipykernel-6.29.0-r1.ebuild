@@ -21,11 +21,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc 
 
 RDEPEND="
 	>=dev-python/comm-0.1.1[${PYTHON_USEDEP}]
-	!elibc_Darwin? (
-		$(python_gen_cond_dep '
-			>=dev-python/debugpy-1.6.5[${PYTHON_USEDEP}]
-		' 'python*')
-	)
 	>=dev-python/ipython-7.23.1[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-client-8[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-core-4.12[${PYTHON_USEDEP}]
@@ -50,6 +45,12 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# debugpy is actually optional
+	sed -i -e '/debugpy/d' pyproject.toml || die
+	distutils-r1_src_prepare
+}
 
 python_compile() {
 	distutils-r1_python_compile
