@@ -255,18 +255,7 @@ src_unpack() {
 src_prepare() {
 	dotnet-pkg_src_prepare
 
-	find "${S}" -type f -iname nuget.config -exec rm -v {} + || die
-	cat <<EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
-
-	# Reimplementing "dotnet build.fsx -p Init" in shell:
+	# Reimplementing "dotnet build.fsx -p Init" in shell.
 	mkdir -p "${S}/.deps" || die
 	ln -s "${WORKDIR}/fsharp-${FCS_COMMIT}" "${S}/.deps/${FCS_COMMIT}" || die
 	find "${S}/.deps/${FCS_COMMIT}/src" -type f \
