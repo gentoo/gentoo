@@ -66,6 +66,12 @@ src_configure() {
 
 	use vala && vala_setup
 	econf "${myconf[@]}"
+
+	# force regen, workaround for:
+	# https://bugs.gentoo.org/924164
+	# https://gitlab.xfce.org/xfce/libxfce4ui/-/merge_requests/113
+	rm libxfce4ui/libxfce4ui.h || die
+	emake -C libxfce4ui libxfce4ui.h
 }
 
 src_install() {
