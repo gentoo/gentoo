@@ -341,6 +341,7 @@ dev-libs/cudnn-frontend
 dev-python/pycuda
 dev-util/nvidia-cuda-toolkit
 dev-libs/optix
+media-libs/nvidia-vaapi-driver
 x11-drivers/nvidia-drivers
 x11-misc/primus
 
