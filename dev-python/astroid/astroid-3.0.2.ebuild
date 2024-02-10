@@ -28,13 +28,16 @@ RDEPEND="
 		>=dev-python/typing-extensions-4.0.0[${PYTHON_USEDEP}]
 	' 3.10)
 "
+# dev-python/regex isn't available for pypy
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/attrs[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.17.0[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/regex[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
