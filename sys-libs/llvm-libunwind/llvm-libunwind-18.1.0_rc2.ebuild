@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
-	toolchain-funcs
+inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
+inherit toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
@@ -43,12 +43,9 @@ python_check_deps() {
 	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
-pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	python-any-r1_pkg_setup
-}
-
 multilib_src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	local libdir=$(get_libdir)
 
 	# https://github.com/llvm/llvm-project/issues/56825
