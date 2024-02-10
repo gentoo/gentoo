@@ -17,7 +17,12 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 RESTRICT="bindist mirror strip"
 
-RDEPEND="=app-emulation/virtualbox-${MY_PV}*"
+RDEPEND="
+	|| (
+		=app-emulation/virtualbox-${MY_PV}*
+		=app-emulation/virtualbox-kvm-${MY_PV}*
+	)
+"
 
 QA_PREBUILT="usr/lib*/virtualbox/ExtensionPacks/${MY_PN}/*"
 
