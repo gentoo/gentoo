@@ -34,3 +34,26 @@ PATCHES=(
 	# use `re` as fallback since `regex` doesn't support PyPy
 	"${FILESDIR}/${P}-re-fallback.patch"
 )
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# message/repr mismatches due to using `re` module
+				tests/re_assert_test.py::test_fail_at_beginning
+				tests/re_assert_test.py::test_fail_at_end_of_line
+				tests/re_assert_test.py::test_fail_at_end_of_line_mismatching_newline
+				tests/re_assert_test.py::test_fail_end_of_line_with_newline
+				tests/re_assert_test.py::test_fail_multiple_lines
+				tests/re_assert_test.py::test_match_with_tabs
+				tests/re_assert_test.py::test_matches_repr_with_flags
+				tests/re_assert_test.py::test_repr_with_failure
+			)
+			;;
+	esac
+
+	epytest
+}
