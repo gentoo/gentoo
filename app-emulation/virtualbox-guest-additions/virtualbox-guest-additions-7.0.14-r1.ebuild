@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.8.tar.bz2"
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.14.tar.bz2"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 # Reminder: see the LICENSE related comment in app-emulation/virtualbox-additions ebuild
@@ -98,7 +98,7 @@ src_prepare() {
 	# Respect LDFLAGS (bug #759100)
 	sed -i -e '/TEMPLATE_VBoxR3Exe_LDFLAGS.linux[    ]*=/ s/$/ $(CCLDFLAGS)/' Config.kmk || die
 
-	eapply "${WORKDIR}/virtualbox-patches-7.0.8/patches"
+	eapply "${WORKDIR}/virtualbox-patches-7.0.14/patches"
 	eapply_user
 }
 
