@@ -40,8 +40,8 @@ BDEPEND="
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/re-assert[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
+			dev-python/re-assert[${PYTHON_USEDEP}]
 			dev-python/time-machine[${PYTHON_USEDEP}]
 		' 'python3*')
 		test-rust? (
@@ -107,6 +107,14 @@ python_test() {
 			# on PyPy3 but the test suite needs an explicit switch,
 			# sigh
 			local -x AIOHTTP_NO_EXTENSIONS=1
+
+			EPYTEST_IGNORE+=(
+				# Skip tests requiring dev-python/re-assert -> dev-python/regex
+				tests/test_streams.py
+				tests/test_urldispatch.py
+				tests/test_client_session.py
+				tests/test_web_response.py
+			)
 			;;
 	esac
 
