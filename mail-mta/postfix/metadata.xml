@@ -19,5 +19,7 @@
 			for lookup tables</flag>
 		<flag name="lmdb">Add support for using <pkg>dev-db/lmdb</pkg>
 			for lookup tables</flag>
+		<flag name="mongodb">Add support for using <pkg>dev-db/mongodb</pkg>
+			for lookup tables</flag>
 	</use>
 </pkgmetadata>
