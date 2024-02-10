@@ -148,12 +148,6 @@ dev-java/osgi-enterprise-api
 dev-java/osgi-compendium
 dev-java/osgi-foundation
 
-# Michał Górny <mgorny@gentoo.org> (2024-01-11)
-# These plugins are no longer maintained.  At least
-# dev-python/pytest-virtualenv is broken.  They have no revdeps left.
-# Removal on 2024-02-10.  Bug #921836.
-dev-python/pytest-fixture-config
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
