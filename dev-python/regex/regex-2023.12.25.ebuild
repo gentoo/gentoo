@@ -5,7 +5,9 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+# pypy isn't supported upstream because of its UTF8 representation for strings
+# See https://github.com/mrabarnett/mrab-regex/issues/521#issuecomment-1936260187.
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
