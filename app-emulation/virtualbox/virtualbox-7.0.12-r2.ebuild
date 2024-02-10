@@ -27,7 +27,7 @@ DESCRIPTION="Family of powerful x86 virtualization products for enterprise and h
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="
 	https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.8.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.14.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${PV}.tar.xz ) )
 "
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -190,29 +190,8 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.1.26-configure-include-qt5-path.patch # bug #805365
-
-	# This patch is needed to avoid automagic detection based on a hardcoded
-	# list of Pythons in configure. It's necessary but not sufficient
-	# (see the rest of the ebuild's logic for the remainder) to handle
-	# proper Python selection.
-	"${FILESDIR}"/${PN}-6.1.34-r3-python.patch
-
-	# 865361
-	"${FILESDIR}"/${PN}-6.1.36-fcf-protection.patch
-
-	"${FILESDIR}"/${PN}-7.0.0-fix-compilation-clang.patch
-	"${FILESDIR}"/${PN}-7.0.10-python.patch
-	"${FILESDIR}"/${PN}-7.0.6-gcc-13.patch
-	"${FILESDIR}"/${PN}-7.0.8-mtune-keep-size.patch
-	"${FILESDIR}"/${PN}-7.0.6-fix-libxml2.patch
-	# 913109
-	"${FILESDIR}"/${PN}-7.0.10-fix-binutils-hardened.patch
-	# 922445
-	"${FILESDIR}"/${PN}-7.0.14-libxml2-2.12.patch
-
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.0.8/patches
+	"${WORKDIR}"/virtualbox-patches-7.0.14/patches
 )
 
 pkg_pretend() {
