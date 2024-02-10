@@ -42,8 +42,8 @@ BDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/re-assert[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
+			dev-python/re-assert[${PYTHON_USEDEP}]
 			dev-python/time-machine[${PYTHON_USEDEP}]
 		' 'python*')
 	)
@@ -81,6 +81,11 @@ python_test() {
 		'tests/tox_env/python/pip/test_pip_install.py::test_constrain_package_deps[explicit+requirements-True-True]'
 		'tests/tox_env/python/pip/test_pip_install.py::test_constrain_package_deps[requirements_indirect-True-True]'
 		'tests/tox_env/python/pip/test_pip_install.py::test_constrain_package_deps[requirements_constraints_indirect-True-True]'
+	)
+
+	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_IGNORE+=(
+		# requires dev-python/re-assert
+		tests/session/cmd/test_sequential.py
 	)
 
 	epytest
