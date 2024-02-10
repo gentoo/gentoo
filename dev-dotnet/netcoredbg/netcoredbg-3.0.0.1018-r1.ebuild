@@ -7,7 +7,7 @@ MY_PV="$(ver_cut 1-3)-$(ver_cut 4)"
 DOTNET_RUNTIME_V="7.0.14"
 
 CMAKE_IN_SOURCE_BUILD="ON"
-
+DOTNET_PKG_COMPAT="8.0"
 NUGETS="
 microsoft.codeanalysis.analyzers@1.1.0
 microsoft.codeanalysis.common@2.3.0
@@ -128,7 +128,7 @@ system.xml.xpath.xdocument@4.3.0
 system.xml.xpath@4.3.0
 "
 
-inherit check-reqs cmake flag-o-matic nuget
+inherit check-reqs dotnet-pkg flag-o-matic cmake
 
 DESCRIPTION="NetCoreDbg is a managed code debugger with MI interface for CoreCLR"
 HOMEPAGE="https://github.com/Samsung/netcoredbg/"
@@ -159,15 +159,10 @@ SRC_URI+="
 LICENSE="MIT"
 SLOT="0/${MY_PV}"
 
-RDEPEND="
-	>=virtual/dotnet-sdk-6.0
-"
-BDEPEND="
-	${RDEPEND}
-	dev-dotnet/csharp-gentoodotnetinfo
-"
-
 CHECKREQS_DISK_BUILD="1400M"
+DOTNET_PKG_PROJECTS=(
+	src/managed/ManagedPart.csproj   # Restore but do not build those projects.
+)
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0.1012-compileoptions.patch"
 )
@@ -175,10 +170,13 @@ QA_FLAGS_IGNORED=".*/libdbgshim.so"
 
 DOCS=( README.md docs/{interop,stepping}.md )
 
+pkg_setup() {
+	check-reqs_pkg_setup
+	dotnet-pkg_pkg_setup
+}
+
 src_unpack() {
-	nuget_link-system-nugets
-	nuget_link-nuget-archives
-	nuget_unpack-non-nuget-archives
+	dotnet-pkg_src_unpack
 
 	if [[ -n "${EGIT_REPO_URI}" ]] ; then
 		git-r3_src_unpack
@@ -186,35 +184,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ -z "${DOTNET_ROOT}" ]] ; then
-		die "DOTNET_ROOT is not set"
-	fi
-
-	export DOTNET_CLI_TELEMETRY_OPTOUT=1
-	export DOTNET_NOLOGO=1
-	export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-	export MSBUILDDISABLENODEREUSE=1
-	export UseSharedCompilation=false
-
-	find "${S}" -type f -iname nuget.config -exec rm -v {} + || die
-	cat <<-EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
-	cp NuGet.config tools/generrmsg/nuget.xml || die
-
 	cmake_src_prepare
+
+	nuget_writeconfig "$(pwd)/"
+	cp NuGet.config tools/generrmsg/nuget.xml || die
 }
 
 src_configure() {
 	INSTALL_PREFIX="/usr/$(get_libdir)/${PN}"
-	gentoo-dotnet-info || die
 	append-cxxflags -fpermissive
+	dotnet-pkg_src_configure
 
 	local -a mycmakeargs=(
 		-DBUILD_MANAGED=1
