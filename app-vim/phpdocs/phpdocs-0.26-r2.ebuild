@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: PHPDoc Support in VIM"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=520"
 
 LICENSE="vim"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 VIM_PLUGIN_HELPURI="https://www.vim.org/scripts/script.php?script_id=520"
 
