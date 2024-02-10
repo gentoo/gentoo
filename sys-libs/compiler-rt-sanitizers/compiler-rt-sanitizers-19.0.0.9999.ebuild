@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
+inherit check-reqs cmake flag-o-matic llvm.org llvm-utils python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -72,7 +72,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	check_space
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -102,6 +101,8 @@ src_prepare() {
 }
 
 src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
