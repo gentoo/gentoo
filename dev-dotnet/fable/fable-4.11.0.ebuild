@@ -347,5 +347,4 @@ src_prepare() {
 	fi
 
 	dotnet-pkg_src_prepare
-	edotnet sln ./Fable.sln remove "${DOTNET_PKG_BAD_PROJECTS[@]}"
 }

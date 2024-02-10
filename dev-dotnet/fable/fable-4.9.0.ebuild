@@ -294,7 +294,7 @@ CHECKREQS_DISK_BUILD="2G"
 DOTNET_PKG_PROJECTS=(
 	src/Fable.Cli/Fable.Cli.fsproj
 )
-DOTNET_PKG_REMOVE_PROJECTS=(
+DOTNET_PKG_BAD_PROJECTS=(
 	src/quicktest/QuickTest.fsproj
 	tests/Js/Main/Fable.Tests.fsproj
 )
@@ -319,12 +319,11 @@ src_prepare() {
 	rm Fable.Standalone.sln || die
 
 	if use debug ; then
-		DOTNET_PKG_REMOVE_PROJECTS+=(
+		DOTNET_PKG_BAD_PROJECTS+=(
 			# Seems to hang but in reality it fails with USE=debug, bug #922684
 			tests/Python/Fable.Tests.Python.fsproj
 		)
 	fi
 
 	dotnet-pkg_src_prepare
-	edotnet sln ./Fable.sln remove "${DOTNET_PKG_REMOVE_PROJECTS[@]}"
 }
