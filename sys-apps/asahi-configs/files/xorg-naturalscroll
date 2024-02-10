@@ -1,0 +1,7 @@
+Section "InputClass"
+	Identifier "Enable natural scrolling by default"
+	MatchIsTouchpad "on"
+	MatchDevicePath "/dev/input/event*"
+	MatchDriver "libinput"
+	Option "Natural Scrolling" "on"
+EndSection
