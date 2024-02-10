@@ -257,18 +257,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	distutils-r1_src_prepare
+	nuget_writeconfig "$(pwd)/"
 
-	# Because python scripts perform the build.
-	cat <<EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
+	distutils-r1_src_prepare
 }
 
 src_configure() {
