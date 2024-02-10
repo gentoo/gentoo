@@ -1,0 +1,16 @@
+diff --git a/re_assert.py b/re_assert.py
+index f6ea6b9..66479c3 100644
+--- a/re_assert.py
++++ b/re_assert.py
+@@ -3,7 +3,10 @@ from __future__ import annotations
+ from typing import Any
+ from typing import Pattern
+ 
+-import regex
++try:
++    import regex
++except ImportError:
++    import re as regex
+ 
+ 
+ class Matches:  # TODO: Generic[AnyStr] (binary pattern support)
