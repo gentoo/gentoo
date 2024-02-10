@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-10)
+# Very fragile, keeps breaking.  Limited platform support.  Used only
+# as an optional dependency for dev-python/ipykernel.
+# Removal on 2024-03-11.  Bug #924221.
+dev-python/debugpy
+
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
