@@ -195,6 +195,8 @@ SLOT="0"
 
 DOTNET_PKG_PROJECTS=( src/NuGetUtility/NuGetUtility.csproj )
 
+dotnet-pkg_force-compat
+
 src_unpack() {
 	dotnet-pkg_src_unpack
 
@@ -207,12 +209,6 @@ src_prepare() {
 	dotnet-pkg_src_prepare
 
 	rm tests/*/*/ReferencedPackagesReaderIntegrationTest.cs || die
-}
-
-src_test() {
-	local -x RollForward=Major
-
-	dotnet-pkg_src_test
 }
 
 src_install() {
