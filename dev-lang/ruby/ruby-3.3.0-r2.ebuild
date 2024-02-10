@@ -115,7 +115,8 @@ src_prepare() {
 		-i common.mk
 
 	# Avoid test that fails intermittently
-	sed -i -e '/test_gem_exec_gem_uninstall/aomit "Fails intermittently"' test/rubygems/test_gem_commands_exec_command.rb || die
+	sed -e '/test_gem_exec_gem_uninstall/aomit "Fails intermittently"' \
+		-i test/rubygems/test_gem_commands_exec_command.rb || die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
