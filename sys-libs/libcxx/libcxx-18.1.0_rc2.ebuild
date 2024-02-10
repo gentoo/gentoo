@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
-	toolchain-funcs
+inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
+inherit toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
@@ -48,12 +48,6 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	# Darwin Prefix builds do not have llvm installed yet, so rely on
-	# bootstrap-prefix to set the appropriate path vars to LLVM instead
-	# of using llvm_pkg_setup.
-	if [[ ${CHOST} != *-darwin* ]] || has_version sys-devel/llvm; then
-		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	fi
 	python-any-r1_pkg_setup
 
 	if ! use libcxxabi && ! tc-is-gcc ; then
@@ -79,6 +73,8 @@ test_compiler() {
 }
 
 src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	# note: we need to do this before multilib kicks in since it will
 	# alter the CHOST
 	local cxxabi cxxabi_incs
