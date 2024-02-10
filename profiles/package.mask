@@ -157,12 +157,6 @@ dev-python/pytest-shutil
 dev-python/pytest-verbose-parametrize
 dev-python/pytest-virtualenv
 
-# Michał Górny <mgorny@gentoo.org> (2024-01-07)
-# A Gentoo fork of an abandoned library that was historically used
-# by app-office/libreoffice.  No revdeps left.
-# Removal on 2024-02-06.  Bug #921576.
-sys-devel/ucpp
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
