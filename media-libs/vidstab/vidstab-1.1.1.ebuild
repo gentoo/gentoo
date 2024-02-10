@@ -19,7 +19,10 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="openmp cpu_flags_x86_sse2"
+IUSE="openmp cpu_flags_x86_sse2 test"
+
+RESTRICT="!test? ( test )"
+DEPEND="test? ( dev-lang/orc )"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
