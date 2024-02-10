@@ -13,13 +13,16 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/georgmartius/vid.stab/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~x86"
 	S="${WORKDIR}/vid.stab-${PV}"
 fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="openmp cpu_flags_x86_sse2"
+IUSE="openmp cpu_flags_x86_sse2 test"
+
+RESTRICT="!test? ( test )"
+DEPEND="test? ( dev-lang/orc )"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
