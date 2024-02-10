@@ -322,22 +322,12 @@ src_unpack() {
 src_prepare() {
 	dotnet-pkg_src_prepare
 
+	rm paket.lock || die
 	sed -i paket.dependencies -e "s|@NUGET_PACKAGES@|${NUGET_PACKAGES}|g" || die
-	cat << EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
 }
 
 src_configure() {
 	dotnet-pkg-base_restore_tools
-
-	rm paket.lock || die
 	edotnet paket install
 
 	dotnet-pkg_src_configure
