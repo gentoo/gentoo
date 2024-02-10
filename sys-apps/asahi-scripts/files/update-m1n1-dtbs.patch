@@ -1,0 +1,13 @@
+diff --git a/update-m1n1 b/update-m1n1
+index 0e55ead..f014a52 100755
+--- a/update-m1n1
++++ b/update-m1n1
+@@ -17,7 +17,7 @@ fi
+ : ${M1N1:="$SOURCE/m1n1.bin"}
+ : ${U_BOOT:="$SOURCE/u-boot-nodtb.bin"}
+ : ${TARGET:="$1"}
+-: ${DTBS:=$(/bin/ls -d /lib/modules/*-ARCH | sort -rV | head -1)/dtbs/*.dtb}
++: ${DTBS:=/usr/src/linux/arch/arm64/boot/dts/apple/*.dtb}
+ : ${CONFIG:=/etc/m1n1.conf}
+ 
+ umount=false
