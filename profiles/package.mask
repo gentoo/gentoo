@@ -155,7 +155,6 @@ dev-java/osgi-foundation
 dev-python/pytest-fixture-config
 dev-python/pytest-shutil
 dev-python/pytest-verbose-parametrize
-dev-python/pytest-virtualenv
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
