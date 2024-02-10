@@ -19,7 +19,7 @@ SRC_URI="https://github.com/sinatra/sinatra/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE=""
+IUSE="test"
 
 ruby_add_rdepend "
 	dev-ruby/mustermann:3
@@ -32,6 +32,7 @@ ruby_add_bdepend "
 		dev-ruby/erubi
 		dev-ruby/haml
 		>=dev-ruby/rack-test-0.5.6
+		dev-ruby/activesupport
 	)
 "
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
