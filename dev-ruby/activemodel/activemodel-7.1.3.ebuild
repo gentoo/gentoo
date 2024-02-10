@@ -34,7 +34,7 @@ ruby_add_bdepend "
 		dev-ruby/test-unit:2
 		dev-ruby/mocha
 		>=dev-ruby/bcrypt-ruby-3.1.7
-		<dev-ruby/minitest-5.16:*
+		dev-ruby/minitest:5
 	)"
 
 all_ruby_prepare() {
