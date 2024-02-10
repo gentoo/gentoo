@@ -83,10 +83,5 @@ python_test() {
 		'tests/tox_env/python/pip/test_pip_install.py::test_constrain_package_deps[requirements_constraints_indirect-True-True]'
 	)
 
-	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_IGNORE+=(
-		# requires dev-python/re-assert
-		tests/session/cmd/test_sequential.py
-	)
-
 	epytest
 }
