@@ -16,7 +16,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
 	acct-group/postfix
@@ -30,6 +30,7 @@ DEPEND="
 	ldap? ( net-nds/openldap:= )
 	ldap-bind? ( net-nds/openldap:=[sasl] )
 	lmdb? ( >=dev-db/lmdb-0.9.11:= )
+	mongodb? ( dev-libs/mongo-c-driver dev-libs/libbson )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nis? ( net-libs/libnsl:= )
 	pam? ( sys-libs/pam )
@@ -53,8 +54,8 @@ RDEPEND="${DEPEND}
 	!mail-mta/ssmtp[mta]
 	selinux? ( sec-policy/selinux-postfix )"
 
-# require at least one of db implementations for newalias (and postmap)
-# command to function correctly
+# require at least one db implementation for newalias (and postmap)
+# command to function properly
 REQUIRED_USE="
 	|| ( berkdb cdb lmdb )
 	ldap-bind? ( ldap sasl )
@@ -74,7 +75,7 @@ src_configure() {
 	# bug #915670
 	unset LD_LIBRARY_PATH
 
-	for name in CDB LDAP LMDB MYSQL PCRE PGSQL SDBM SQLITE
+	for name in CDB LDAP LMDB MONGODB MYSQL PCRE PGSQL SDBM SQLITE
 	do
 		local AUXLIBS_${name}=""
 	done
@@ -88,9 +89,28 @@ src_configure() {
 
 	use pam && mylibs="${mylibs} -lpam"
 
+	if use ssl; then
+		mycc="${mycc} -DUSE_TLS"
+		mylibs="${mylibs} -lssl -lcrypto"
+	fi
+
+	if ! use eai; then
+		mycc="${mycc} -DNO_EAI"
+	fi
+
 	if use ldap; then
 		mycc="${mycc} -DHAS_LDAP"
 		AUXLIBS_LDAP="-lldap -llber"
+	fi
+
+	if use lmdb; then
+		mycc="${mycc} -DHAS_LMDB"
+		AUXLIBS_LMDB="-llmdb -lpthread"
+	fi
+
+	if use mongodb; then
+		mycc="${mycc} -DHAS_MONGODB $(pkg-config --cflags libmongoc-1.0)"
+		AUXLIBS_MONGODB="-lmongoc-1.0 -lbson-1.0"
 	fi
 
 	if use mysql; then
@@ -107,26 +127,6 @@ src_configure() {
 		mycc="${mycc} -DHAS_SQLITE"
 		AUXLIBS_SQLITE="-lsqlite3 -lpthread"
 	fi
-
-	if use ssl; then
-		mycc="${mycc} -DUSE_TLS"
-		mylibs="${mylibs} -lssl -lcrypto"
-	fi
-
-	if use lmdb; then
-		mycc="${mycc} -DHAS_LMDB"
-		AUXLIBS_LMDB="-llmdb -lpthread"
-	fi
-
-	if ! use eai; then
-		mycc="${mycc} -DNO_EAI"
-	fi
-
-	# broken. and "in other words, not supported" by upstream.
-	# Use inet_protocols setting in main.cf
-	#if ! use ipv6; then
-	#	mycc="${mycc} -DNO_IPV6"
-	#fi
 
 	if use sasl; then
 		if use dovecot-sasl; then
@@ -172,12 +172,24 @@ src_configure() {
 	sed -i -e "/^RANLIB/s/ranlib/$(tc-getRANLIB)/g" "${S}"/makedefs
 	sed -i -e "/^AR/s/ar/$(tc-getAR)/g" "${S}"/makedefs
 
-	emake makefiles shared=yes dynamicmaps=no pie=yes \
+	emake makefiles \
+		shared=yes \
+		dynamicmaps=no \
+		pie=yes \
 		shlib_directory="/usr/$(get_libdir)/postfix/MAIL_VERSION" \
-		DEBUG="" CC="$(tc-getCC)" OPT="${CFLAGS}" CCARGS="${mycc}" AUXLIBS="${mylibs}" \
-		AUXLIBS_CDB="${AUXLIBS_CDB}" AUXLIBS_LDAP="${AUXLIBS_LDAP}" \
-		AUXLIBS_LMDB="${AUXLIBS_LMDB}" AUXLIBS_MYSQL="${AUXLIBS_MYSQL}" \
-		AUXLIBS_PCRE="${AUXLIBS_PCRE}" AUXLIBS_PGSQL="${AUXLIBS_PGSQL}" \
+		DEBUG="" \
+		CC="$(tc-getCC)" \
+		OPT="${CFLAGS}" \
+		CCARGS="${mycc}" \
+		AUXLIBS="${mylibs}" \
+		AUXLIBS_CDB="${AUXLIBS_CDB}" \
+		AUXLIBS_LDAP="${AUXLIBS_LDAP}" \
+		AUXLIBS_LMDB="${AUXLIBS_LMDB}" \
+		AUXLIBS_MONGODB="${AUXLIBS_MONGODB}" \
+		AUXLIBS_MYSQL="${AUXLIBS_MYSQL}" \
+		AUXLIBS_PCRE="${AUXLIBS_PCRE}" \
+		AUXLIBS_PGSQL="${AUXLIBS_PGSQL}" \
+		AUXLIBS_SDBM="${AUXLIBS_SDBM}" \
 		AUXLIBS_SQLITE="${AUXLIBS_SQLITE}"
 }
 
