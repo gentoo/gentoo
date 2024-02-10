@@ -153,7 +153,6 @@ dev-java/osgi-foundation
 # dev-python/pytest-virtualenv is broken.  They have no revdeps left.
 # Removal on 2024-02-10.  Bug #921836.
 dev-python/pytest-fixture-config
-dev-python/pytest-shutil
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
