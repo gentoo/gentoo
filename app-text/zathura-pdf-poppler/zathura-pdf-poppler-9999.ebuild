@@ -20,7 +20,7 @@ HOMEPAGE="https://pwmt.org/projects/zathura-pdf-poppler"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND="app-text/poppler[cairo]
+DEPEND=">=app-text/poppler-21.12.0:=[cairo]
 	>=app-text/zathura-0.5.3:=
 	dev-libs/girara
 	dev-libs/glib:2"
