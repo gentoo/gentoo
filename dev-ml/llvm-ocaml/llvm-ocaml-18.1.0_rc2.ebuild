@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake llvm llvm.org python-any-r1
+inherit cmake llvm.org llvm-utils python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
 HOMEPAGE="https://llvm.org/"
@@ -34,12 +34,9 @@ LLVM_COMPONENTS=( llvm cmake third-party )
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
-pkg_setup() {
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	python-any-r1_pkg_setup
-}
-
 src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
