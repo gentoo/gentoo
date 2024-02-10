@@ -3,8 +3,9 @@
 
 EAPI=8
 
+LLVM_COMPAT=( {15..17} )
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake llvm llvm.org python-any-r1
+inherit cmake llvm.org llvm-r1 python-any-r1
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="https://libclc.llvm.org/"
@@ -13,46 +14,19 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( MIT BSD )"
 SLOT="0"
 IUSE="+spirv video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 
-LLVM_MAX_SLOT=17
 BDEPEND="
 	${PYTHON_DEPS}
-	|| (
-		(
-			sys-devel/clang:17
-			spirv? ( dev-util/spirv-llvm-translator:17 )
-		)
-		(
-			sys-devel/clang:16
-			spirv? ( dev-util/spirv-llvm-translator:16 )
-		)
-		(
-			sys-devel/clang:15
-			spirv? ( dev-util/spirv-llvm-translator:15 )
-		)
-		(
-			sys-devel/clang:14
-			spirv? ( dev-util/spirv-llvm-translator:14 )
-		)
-		(
-			sys-devel/clang:13
-			spirv? ( dev-util/spirv-llvm-translator:13 )
-		)
-	)
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		spirv? ( dev-util/spirv-llvm-translator:${LLVM_SLOT} )
+	')
 "
 
 LLVM_COMPONENTS=( libclc )
 llvm.org_set_globals
 
-llvm_check_deps() {
-	if use spirv; then
-		has_version -b "dev-util/spirv-llvm-translator:${LLVM_SLOT}" ||
-			return 1
-	fi
-	has_version -b "sys-devel/clang:${LLVM_SLOT}"
-}
-
 pkg_setup() {
-	llvm_pkg_setup
+	llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 }
 
