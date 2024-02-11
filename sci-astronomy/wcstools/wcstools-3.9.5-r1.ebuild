@@ -1,18 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="World Coordinate System library for astronomical FITS images"
-HOMEPAGE="http://tdc-www.harvard.edu/software/wcstools"
-SRC_URI="http://tdc-www.harvard.edu/software/wcstools/${P}.tar.gz"
+HOMEPAGE="http://tdc-www.harvard.edu/software/wcstools/"
+SRC_URI="http://tdc-www.harvard.edu/software/wcstools/Old/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 DOCS=( Readme Programs NEWS )
 
@@ -56,6 +55,7 @@ src_install() {
 	newdoc libwcs/NEWS NEWS.libwcs
 	newdoc libwcs/Readme Readme.libwcs
 
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
