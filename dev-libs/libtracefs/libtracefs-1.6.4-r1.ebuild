@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,12 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/xmlto app-text/asciidoc dev-util/source-highlight )
 "
+
+src_prepare() {
+	default
+	sed -i -e "s|share/doc/libtracefs-doc|share/doc/libtracefs-${PV}|g" \
+		Documentation/Makefile || die
+}
 
 src_configure() {
 	EMAKE_FLAGS=(
