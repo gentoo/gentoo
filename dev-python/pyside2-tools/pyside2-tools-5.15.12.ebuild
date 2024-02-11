@@ -7,7 +7,9 @@ EAPI=8
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit cmake python-r1
+LLVM_COMPAT=( 15 )
+
+inherit cmake llvm-r1 python-r1
 
 MY_P=pyside-setup-opensource-src-${PV}
 
@@ -22,9 +24,15 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-python/pyside2-${PV}[${PYTHON_USEDEP}]
+	~dev-python/shiboken2-${PV}[${PYTHON_USEDEP},${LLVM_USEDEP}]
+	~dev-python/pyside2-${PV}[${PYTHON_USEDEP},${LLVM_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
+"
 
 # the tools conflict with tools from QT
 PATCHES=(
