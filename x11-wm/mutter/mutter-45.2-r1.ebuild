@@ -82,10 +82,6 @@ DEPEND="
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-0.3.33:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	test? (
-		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
-		gnome-extra/zenity
-	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 "
 # for now upstream has "have_x11 = true" in the meson.build, but sooner or later upstream is going to make X optional.
@@ -117,6 +113,10 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
+	test? (
+		>=x11-libs/gtk+-3.19.8:3[X,introspection?,wayland]
+		gnome-extra/zenity
+	)
 "
 BDEPEND="
 	dev-util/wayland-scanner
