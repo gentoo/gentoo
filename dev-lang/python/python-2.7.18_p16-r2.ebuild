@@ -39,7 +39,6 @@ RESTRICT="test"
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-# <expat-2.6: https://github.com/python/cpython/issues/115133
 RDEPEND="
 	app-arch/bzip2:=
 	dev-libs/libffi:=
@@ -61,7 +60,7 @@ RDEPEND="
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( <dev-libs/expat-2.6:= )
+	xml? ( >=dev-libs/expat-2.1:= )
 "
 # bluetooth requires headers from bluez
 DEPEND="
