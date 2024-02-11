@@ -23,6 +23,7 @@
 		<flag name="pipewire">Enable pipewire support</flag>
 		<flag name="power-control">Enable control of shutdown, reboot, suspend, and hibernate</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
+		<flag name="soc">Use additional <pkg>media-video/ffmpeg</pkg> patches for efficient playback on some SoCs (e.g. ARM, RISC-V)</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
 		<flag name="libusb">Use <pkg>virtual/libusb</pkg> for usb device hotplug support. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use udev.</flag>
 		<flag name="udf">Enable UDF support. Required for playing blurays.</flag>
