@@ -37,8 +37,10 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
+RUST_TOOLCHAIN_MULTILIB=no
+
 inherit autotools check-reqs desktop flag-o-matic gnome2-utils linux-info llvm multiprocessing \
-	optfeature pax-utils python-any-r1 readme.gentoo-r1 toolchain-funcs virtualx xdg
+	optfeature pax-utils python-any-r1 readme.gentoo-r1 rust-toolchain toolchain-funcs virtualx xdg
 
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
@@ -674,16 +676,8 @@ src_prepare() {
 	# Make cargo respect MAKEOPTS
 	export CARGO_BUILD_JOBS="$(makeopts_jobs)"
 
-	# Workaround for bgo#915651
-	if ! use elibc_glibc ; then
-		if use amd64 ; then
-			export RUST_TARGET="x86_64-unknown-linux-musl"
-		elif use x86 ; then
-			export RUST_TARGET="i686-unknown-linux-musl"
-		else
-			die "Unknown musl chost, please post your rustc -vV along with emerge --info on Gentoo's bug #915651"
-		fi
-	fi
+	# Respect RUST_TARGET, #748849 and #915651
+	export RUST_TARGET=$(rust_abi)
 
 	# Make LTO respect MAKEOPTS
 	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
