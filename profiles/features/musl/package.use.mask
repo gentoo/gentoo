@@ -88,11 +88,6 @@ net-analyzer/wireshark sdjournal
 sys-apps/ipmitool openbmc
 sys-auth/pambase homed
 
-# Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
-# Firefox does not build with these flags enabled on musl libc.
-# See bug #829033
-www-client/firefox clang pgo
-
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
 # nls support, see bug #712828
