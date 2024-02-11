@@ -16,7 +16,11 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit multilib-build
+# @ECLASS_VARIABLE: RUST_TOOLCHAIN_MULTILIB
+# @DESCRIPTION:
+# Controls whether multilib-build is inherited. Ebuilds may set this to
+# 'no' if they only need helper functions instead.
+: "${RUST_TOOLCHAIN_MULTILIB:=yes}"
 
 # @ECLASS_VARIABLE: RUST_TOOLCHAIN_BASEURL
 # @DESCRIPTION:
@@ -24,6 +28,10 @@ inherit multilib-build
 # rust_arch_uri and rust_all_arch_uris functions when
 # generating the URI output list.
 : "${RUST_TOOLCHAIN_BASEURL:=https://static.rust-lang.org/dist/}"
+
+if [[ ${RUST_TOOLCHAIN_MULTILIB} != "no" ]] ; then
+	inherit multilib-build
+fi
 
 # @FUNCTION: rust_abi
 # @USAGE: [CHOST-value]
