@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,9 @@ EAPI=8
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-r1
+LLVM_COMPAT=( {15..17} )
+
+inherit cmake llvm-r1 python-r1
 
 MY_PN="pyside-setup-everywhere-src"
 
@@ -22,9 +24,15 @@ KEYWORDS="~amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-python/pyside6-${PV}[quick,${PYTHON_USEDEP}]
+	~dev-python/shiboken6-${PV}[${PYTHON_USEDEP},${LLVM_USEDEP}]
+	~dev-python/pyside6-${PV}[quick,${PYTHON_USEDEP},${LLVM_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
+"
 
 src_prepare() {
 	cmake_src_prepare
