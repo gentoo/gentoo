@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2023-12-16)
-# Apply additional patches for efficient playback on some SoCs.
-media-video/ffmpeg soc
+# Apply additional FFmpeg patches for efficient playback on some SoCs.
+media-tv/kodi soc
+media-video/ffmpeg libdrm soc
+media-video/mpv soc
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is not keyworded here, so enable glslang fallback.
