@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# James Le Cuirot <chewi@gentoo.org> (2024-02-11)
+# The Raspberry Pi patch set is very heavy and will probably fail to apply
+# against a live checkout.
+>=media-video/ffmpeg-9999 soc
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-01-24)
 # A missing "-o pipefail" in the gap-pkg eclass caused me to
 # miss a few crashes in dev-gap packages when GAP itself is
