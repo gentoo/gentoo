@@ -91,7 +91,7 @@ fi
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
-# platform-specific checks (bug #898450):
+# platform-specific checks (bug #898450 #898452):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -100,7 +100,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 pkg_setup() {
-	# people with broken alphabets run into trouble. bug 82186.
+	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
@@ -124,7 +124,7 @@ src_prepare() {
 
 	# Use exuberant ctags which installs as /usr/bin/exuberant-ctags.
 	# Hopefully this pattern won't break for a while at least.
-	# This fixes bug 29398 (27 Sep 2003 agriffis)
+	# This fixes bug #29398 (27 Sep 2003 agriffis)
 	sed -i -e \
 		's/\<ctags\("\| [-*.]\)/exuberant-&/g' \
 		"${S}"/runtime/doc/syntax.txt \
@@ -145,7 +145,7 @@ src_prepare() {
 	if [[ -d "${S}"/src/po ]]; then
 		sed -i -e \
 			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
-			"${S}"/src/po/Makefile || die
+			"${S}"/src/po/Makefile || die "sed failed"
 	fi
 
 	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
@@ -157,7 +157,7 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i -e \
 		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm -v src/auto/configure || die "rm failed"
+	rm src/auto/configure || die "rm failed"
 
 	# --with-features=huge forces on cscope even if we --disable it. We need
 	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
@@ -174,8 +174,8 @@ src_prepare() {
 
 src_configure() {
 
-	# Fix bug 37354: Disallow -funroll-all-loops on amd64
-	# Bug 57859 suggests that we want to do this for all archs
+	# Fix bug #37354: Disallow -funroll-all-loops on amd64
+	# Bug #57859 suggests that we want to do this for all archs
 	filter-flags -funroll-all-loops
 
 	# Fix bug 76331: -O3 causes problems, use -O2 instead. We'll do this for
@@ -185,12 +185,12 @@ src_configure() {
 
 	emake -j1 -C src autoconf
 
-	# This should fix a sandbox violation (see bug 24447). The hvc
-	# things are for ppc64, see bug 86433.
+	# This should fix a sandbox violation (see bug #24447). The hvc
+	# things are for ppc64, see bug #86433.
 	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
 		if [[ -e ${file} ]]; then
-			addwrite $file
+			addwrite ${file}
 		fi
 	done
 
@@ -299,7 +299,7 @@ src_test() {
 }
 
 # Call eselect vi update with --if-unset
-# to respect user's choice (bug 187449)
+# to respect user's choice (bug #187449)
 eselect_vi_update() {
 	ebegin "Calling eselect vi update"
 	eselect vi update --if-unset
@@ -340,7 +340,7 @@ pkg_postinst() {
 	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
 
-	# update fdo mime stuff, bug #78394
+	# update desktop file mime cache
 	xdg_desktop_database_update
 
 	# update icon cache
@@ -354,7 +354,7 @@ pkg_postrm() {
 	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
 
-	# update fdo mime stuff, bug #78394
+	# update desktop file mime cache
 	xdg_desktop_database_update
 
 	# update icon cache
