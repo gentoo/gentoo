@@ -5,6 +5,12 @@
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
+  <use>
+    <!-- leave this global flag defined here to avoid a pkgcheck warning -->
+    <flag name="ipv6">
+      Support listening on ipv6 addresses and ipv6 database entries.
+    </flag>
+  </use>
 
   <longdescription lang="en">
     rbldnsd is a small and fast DNS daemon which is especially made to
