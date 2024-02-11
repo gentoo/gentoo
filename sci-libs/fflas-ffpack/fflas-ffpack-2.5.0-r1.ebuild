@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.5.0-blaslapack.patch"
 	"${FILESDIR}/${PN}-2.4.3-no-test-echelon.patch"
+	"${FILESDIR}/${PN}-2.4.3-fix-pc-libdir.patch"
 )
 
 pkg_pretend() {
