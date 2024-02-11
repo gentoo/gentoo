@@ -7,7 +7,9 @@ EAPI=8
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit cmake python-r1 virtualx
+LLVM_COMPAT=( 15 )
+
+inherit cmake llvm-r1 python-r1 virtualx
 
 # TODO: Add conditional support for "QtRemoteObjects" via a new "remoteobjects"
 # USE flag after an external "dev-qt/qtremoteobjects" package has been created.
@@ -83,7 +85,7 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-3)*:5"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-python/shiboken2-${PV}[${PYTHON_USEDEP}]
+	~dev-python/shiboken2-${PV}[${PYTHON_USEDEP},${LLVM_USEDEP}]
 	=dev-qt/qtcore-${QT_PV}
 	=dev-qt/qtopengl-${QT_PV}[gles2-only=]
 	=dev-qt/qtserialport-${QT_PV}
@@ -123,6 +125,10 @@ RDEPEND="${PYTHON_DEPS}
 	xmlpatterns? ( =dev-qt/qtxmlpatterns-${QT_PV}[qml?] )
 "
 DEPEND="${RDEPEND}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
 	test? ( x11-misc/xvfb-run )
 "
 
