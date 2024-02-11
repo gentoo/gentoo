@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,9 @@ EAPI=8
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake llvm python-r1 toolchain-funcs
+LLVM_COMPAT=( {15..17} )
+
+inherit cmake llvm-r1 python-r1 toolchain-funcs
 
 MY_PN="pyside-setup-everywhere-src"
 
@@ -40,11 +42,12 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-3)*:6"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
-LLVM_MAX_SLOT=17
 RDEPEND="${PYTHON_DEPS}
 	=dev-qt/qtbase-${QT_PV}
-	<sys-devel/clang-18:=
-	<sys-devel/clang-runtime-18:=
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
@@ -62,11 +65,6 @@ DOCS=( AUTHORS )
 PATCHES=(
 	"${FILESDIR}/${PN}-6.3.1-no-strip.patch"
 )
-
-# Ensure the path returned by get_llvm_prefix() contains clang as well.
-llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
-}
 
 src_prepare() {
 	# TODO: File upstream issue requesting a sane way to disable NumPy support.
@@ -126,7 +124,7 @@ src_configure() {
 			-DUSE_PYTHON_VERSION="${EPYTHON#python}"
 		)
 		# CMakeLists.txt expects LLVM_INSTALL_DIR as an environment variable.
-		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
+		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix)"
 		cmake_src_configure
 	}
 	python_foreach_impl shiboken6_configure
