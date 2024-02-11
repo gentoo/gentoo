@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,9 @@ EAPI=8
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-r1 virtualx
+LLVM_COMPAT=( {15..17} )
+
+inherit cmake llvm-r1 python-r1 virtualx
 
 # TODO: Add conditional support for "QtRemoteObjects" via a new "remoteobjects"
 # USE flag after an external "dev-qt/qtremoteobjects" package has been created.
@@ -83,7 +85,7 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-3)*:6"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-python/shiboken6-${PV}[${PYTHON_USEDEP}]
+	~dev-python/shiboken6-${PV}[${PYTHON_USEDEP},${LLVM_USEDEP}]
 	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl?,sql?,widgets?,xml?]
 	3d? ( =dev-qt/qt3d-${QT_PV}[qml?,gles2-only=] )
 	bluetooth? ( =dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
@@ -118,6 +120,10 @@ RDEPEND="${PYTHON_DEPS}
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
 "
 DEPEND="${RDEPEND}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
 	test? ( =dev-qt/qtbase-${QT_PV}[gui] )
 "
 # testlib is toggled by the gui flag on qtbase
