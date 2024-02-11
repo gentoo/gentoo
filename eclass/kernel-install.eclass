@@ -621,6 +621,7 @@ kernel-install_extract_from_uki() {
 
 	$(tc-getOBJCOPY) -O binary "-j.${extract_type}" "${uki}" "${out}" ||
 		die "Failed to extract ${extract_type}"
+	chmod 644 "${out}" || die
 }
 
 # @FUNCTION: kernel-install_install_all
