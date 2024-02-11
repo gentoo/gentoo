@@ -20,7 +20,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="${PV}"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+abi_x86_32 abi_x86_64 +shared"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )"
 
