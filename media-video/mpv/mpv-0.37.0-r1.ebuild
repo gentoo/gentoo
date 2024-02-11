@@ -24,8 +24,8 @@ IUSE="
 	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
 	+lua nvenc openal opengl pipewire pulseaudio rubberband sdl selinux
-	sixel sndio test tools +uchardet vaapi vdpau vulkan wayland xv zimg
-	zlib
+	sixel sndio soc test tools +uchardet vaapi vdpau vulkan wayland xv
+	zimg zlib
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -47,7 +47,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
 	>=media-libs/libplacebo-6.338:=[opengl?,vulkan?]
-	>=media-video/ffmpeg-4.4:=[encode,threads,vaapi?,vdpau?]
+	>=media-video/ffmpeg-4.4:=[encode,soc(-)?,threads,vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
