@@ -169,6 +169,7 @@ PATCHES=(
 	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
 	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch  # remove for >=1.77.0
+	"${FILESDIR}"/1.76.0-loong-code-model.patch  # remove for >=1.78.0
 )
 
 S="${WORKDIR}/${MY_P}-src"
