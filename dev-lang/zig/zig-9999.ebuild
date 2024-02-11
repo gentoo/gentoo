@@ -1,10 +1,12 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_MAX_SLOT=17
-inherit edo cmake llvm check-reqs toolchain-funcs
+LLVM_COMPAT=( 17 )
+LLVM_OPTIONAL=1
+
+inherit check-reqs cmake edo llvm-r1 toolchain-funcs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
@@ -30,7 +32,10 @@ fi
 LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="$(ver_cut 1-2)"
 IUSE="doc +llvm"
-REQUIRED_USE="!llvm? ( !doc )"
+REQUIRED_USE="
+	!llvm? ( !doc )
+	llvm? ( ${LLVM_REQUIRED_USE} )
+"
 
 BUILD_DIR="${S}/build"
 
@@ -41,9 +46,11 @@ BUILD_DIR="${S}/build"
 # options that are passed to LLVM CMake building (excluding "static" ofc).
 DEPEND="
 	llvm? (
-		sys-devel/clang:${LLVM_MAX_SLOT}=
-		sys-devel/lld:${LLVM_MAX_SLOT}=
-		sys-devel/llvm:${LLVM_MAX_SLOT}=[zstd]
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}
+			sys-devel/lld:${LLVM_SLOT}
+			sys-devel/llvm:${LLVM_SLOT}[zstd]
+		')
 	)
 "
 
@@ -62,10 +69,6 @@ RESTRICT="!llvm? ( test )"
 # Since commit https://github.com/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
 # Zig uses self-hosted compiler only
 CHECKREQS_MEMORY="4G"
-
-llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
-}
 
 ctarget_to_zigtarget() {
 	# Zig's Target Format: arch-os-abi
@@ -114,7 +117,7 @@ pkg_setup() {
 
 	export ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
 
-	use llvm && llvm_pkg_setup
+	use llvm && llvm-r1_pkg_setup
 	check-reqs_pkg_setup
 }
 
@@ -140,7 +143,7 @@ src_configure() {
 		-DZIG_TARGET_TRIPLE="$(get_zig_target)"
 		-DZIG_TARGET_MCPU="$(get_zig_mcpu)"
 		-DZIG_USE_LLVM_CONFIG=ON
-		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
+		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
 		-DCMAKE_INSTALL_PREFIX="${ZIG_SYS_INSTALL_DEST}"
 	)
 
