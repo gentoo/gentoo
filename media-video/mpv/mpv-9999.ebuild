@@ -234,6 +234,12 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	# ffmpeg tests are picky and easily break without necessarily
+	# meaning that there are runtime issues (bug #921091,#924276)
+	meson_src_test --no-suite ffmpeg
+}
+
 src_install() {
 	meson_src_install
 
