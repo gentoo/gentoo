@@ -14,6 +14,10 @@ EAPI=8
 # doing so since such a case is unlikely.
 FFMPEG_SUBSLOT=58.60.60
 
+SOC_PATCHES=(
+	ffmpeg-rpi-6.1.patch
+)
+
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
@@ -25,14 +29,15 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video. Includes libavcodec"
 HOMEPAGE="https://ffmpeg.org/"
+SRC_URI="soc? ( "${SOC_PATCHES[@]/#/https://dev.gentoo.org/~chewi/distfiles/}" )"
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
+	:
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
+	SRC_URI+=" mirror://gentoo/${P}.tar.xz"
 else # Release
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ffmpeg.asc
 	inherit verify-sig
-	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.xz"
+	SRC_URI+=" https://ffmpeg.org/releases/${P/_/-}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc )"
 
 	BDEPEND=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
@@ -108,7 +113,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa chromium doc +encode oss +pic sndio static-libs test v4l
+	alsa chromium doc +encode oss +pic sndio static-libs test v4l soc
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -263,6 +268,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
 	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.6.0:=[sftp,${MULTILIB_USEDEP}] )
@@ -341,6 +347,7 @@ REQUIRED_USE="
 	glslang? ( vulkan !shaderc )
 	libv4l? ( v4l )
 	shaderc? ( vulkan !glslang )
+	soc? ( libdrm )
 	test? ( encode )
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
@@ -379,6 +386,9 @@ src_prepare() {
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 
+	use soc &&
+		eapply "${SOC_PATCHES[@]/#/${DISTDIR}/}"
+
 	default
 
 	# -fdiagnostics-color=auto gets appended after user flags which
@@ -391,6 +401,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=( )
+
+	# Conditional patch options
+	use soc && myconf+=( --enable-v4l2-request --enable-libudev --enable-sand )
 
 	# bug 842201
 	use ia64 && tc-is-gcc && append-flags \
