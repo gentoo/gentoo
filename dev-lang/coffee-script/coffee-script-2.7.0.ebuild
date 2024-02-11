@@ -5,6 +5,8 @@ EAPI=8
 
 MY_PN="coffeescript"
 
+inherit readme.gentoo-r1
+
 DESCRIPTION="A little language that compiles into javascript"
 HOMEPAGE="https://coffeescript.org/"
 SRC_URI="https://github.com/jashkenas/${MY_PN}/archive/${PV}.tar.gz
@@ -22,6 +24,9 @@ IUSE="doc examples"
 RDEPEND="
 	net-libs/nodejs
 "
+
+DOC_CONTENTS="To enable installation alongside other tools the Gentoo
+maintainer decided to rename the \"cake\" executable to \"coffee-cake\"."
 
 src_install() {
 	local npm_module_dir="/usr/$(get_libdir)/node/${PN}"
@@ -50,6 +55,12 @@ src_install() {
 	exeinto "${npm_module_dir}/bin"
 	doexe bin/cake
 	doexe bin/coffee
-	dosym "${npm_module_dir}/bin/cake" "/usr/bin/cake"
+	dosym "${npm_module_dir}/bin/cake" "/usr/bin/coffee-cake"
 	dosym "${npm_module_dir}/bin/coffee" "/usr/bin/coffee"
+
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
