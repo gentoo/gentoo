@@ -1,0 +1,560 @@
+# file OSD_RAW_CMD_patch_2.diff
+--- a/linux/drivers/media/common/saa716x/saa716x_ff_cmd.h.orig
++++ b/linux/drivers/media/common/saa716x/saa716x_ff_cmd.h
+@@ -1,6 +1,24 @@
+ #ifndef __SAA716x_FF_CMD_H
+ #define __SAA716x_FF_CMD_H
+ 
++#if !defined OSD_RAW_CMD
++typedef struct osd_raw_cmd_s {
++    const void *cmd_data;
++    int cmd_len;
++    void *result_data;
++    int result_len;
++} osd_raw_cmd_t;
++
++typedef struct osd_raw_data_s {
++    const void *data_buffer;
++    int data_length;
++    int data_handle;
++} osd_raw_data_t;
++
++#define OSD_RAW_CMD            _IOWR('o', 162, osd_raw_cmd_t)
++#define OSD_RAW_DATA           _IOWR('o', 163, osd_raw_data_t)
++#endif
++
+ extern int sti7109_cmd_init(struct sti7109_dev *sti7109);
+ extern int sti7109_raw_cmd(struct sti7109_dev * sti7109,
+ 			   osd_raw_cmd_t * cmd);
+
+# file v4l-dvb-saa716x-Makefilepatch-2.diff
+--- a/linux/drivers/media/common/saa716x/Makefile
++++ b/linux/drivers/media/common/saa716x/Makefile
+@@ -24,3 +24,5 @@
+ obj-$(CONFIG_DVB_SAA716X_FF)	  += saa716x_ff.o
+ 
+ EXTRA_CFLAGS = -Idrivers/media/dvb/dvb-core/ -Idrivers/media/dvb/frontends/ -Idrivers/media/dvb-core/ -Idrivers/media/dvb-frontends/
++EXTRA_CFLAGS += -Idrivers/media/common/tuners/ # up to kernel 3.6
++EXTRA_CFLAGS += -Idrivers/media/tuners/        # kernel 3.7+
+
+
+# file v4l-dvb-saa716x-3.19-set_gpio.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_budget.c
++++ b/linux/drivers/media/common/saa716x/saa716x_budget.c
+@@ -497,10 +497,10 @@
+ 		break;
+ 	}
+ 
+-	err = stv090x_set_gpio(fe, 2, 0, en, 0);
++	err = skystar2_stv090x_config.set_gpio(fe, 2, 0, en, 0);
+ 	if (err < 0)
+ 		goto exit;
+-	err = stv090x_set_gpio(fe, 3, 0, sel, 0);
++	err = skystar2_stv090x_config.set_gpio(fe, 3, 0, sel, 0);
+ 	if (err < 0)
+ 		goto exit;
+ 
+@@ -519,7 +519,7 @@
+ 	else
+ 		value = 0;
+ 
+-	err = stv090x_set_gpio(fe, 4, 0, value, 0);
++	err = skystar2_stv090x_config.set_gpio(fe, 4, 0, value, 0);
+ 	if (err < 0)
+ 		goto exit;
+ 
+# file v4l-dvb-saa716x-4.2-fix-compile.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_budget.c
++++ b/linux/drivers/media/common/saa716x/saa716x_budget.c
+@@ -306,7 +306,7 @@
+ #define SAA716x_MODEL_TWINHAN_VP1028	"Twinhan/Azurewave VP-1028"
+ #define SAA716x_DEV_TWINHAN_VP1028	"DVB-S"
+ 
+-static int vp1028_dvbs_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
++static int vp1028_dvbs_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage voltage)
+ {
+ 	struct saa716x_dev *saa716x = fe->dvb->priv;
+ 
+--- a/linux/drivers/media/common/saa716x/saa716x_hybrid.c
++++ b/linux/drivers/media/common/saa716x/saa716x_hybrid.c
+@@ -321,7 +321,7 @@
+ 	.request_firmware	= tda1004x_vp6090_request_firmware,
+ };
+ 
+-static int vp6090_dvbs_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
++static int vp6090_dvbs_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage voltage)
+ {
+ 	struct saa716x_dev *saa716x = fe->dvb->priv;
+ 
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c
+@@ -1,3 +1,5 @@
++#include <asm/atomic.h>
++#include <linux/spinlock_types.h>
+ #include <asm/io.h>
+ #include <asm/pgtable.h>
+ #include <asm/page.h>
+
+# file v4l-dvb-saa716x-4.5.2-fix-compile.patch
+fix compile with kernel >= 4.5.2
+wrt bug 581450
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> 2016/05/05
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c
+@@ -1,6 +1,7 @@
+ #include <asm/atomic.h>
+ #include <linux/spinlock_types.h>
+ #include <asm/io.h>
++#include <asm/processor.h>
+ #include <asm/pgtable.h>
+ #include <asm/page.h>
+ #include <linux/kmod.h>
+
+
+
+# file v4l-dvb-saa716x-4.6.0-fix-compile.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c
+@@ -1,9 +1,6 @@
+ #include <asm/atomic.h>
+ #include <linux/spinlock_types.h>
+-#include <asm/io.h>
+ #include <asm/processor.h>
+-#include <asm/pgtable.h>
+-#include <asm/page.h>
+ #include <linux/kmod.h>
+ #include <linux/vmalloc.h>
+ #include <linux/init.h>
+@@ -20,11 +17,6 @@
+ 
+ #define DRIVER_NAME				"SAA716x Core"
+ 
+-static irqreturn_t saa716x_msi_handler(int irq, void *dev_id)
+-{
+-	return IRQ_HANDLED;
+-}
+-
+ static int saa716x_enable_msi(struct saa716x_dev *saa716x)
+ {
+ 	struct pci_dev *pdev = saa716x->pdev;
+
+
+
+# file v4l-dvb-saa716x-4.9-fix-warnings.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_rom.c
++++ a/linux/drivers/media/common/saa716x/saa716x_rom.c
+@@ -113,7 +113,7 @@
+ 	memcpy(rom_header, &buf[*offset], sizeof (struct saa716x_romhdr));
+ 	if (rom_header->header_size != sizeof (struct saa716x_romhdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%zd bytes, Expected=%d",
+ 			sizeof (struct saa716x_romhdr),
+ 			rom_header->header_size);
+ 
+@@ -237,7 +237,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_decoder_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_decoder_hdr));
+ 
+@@ -268,7 +268,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_gpio_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_gpio_hdr));
+ 
+@@ -305,7 +305,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_video_decoder_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_video_decoder_hdr));
+ 
+@@ -386,7 +386,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_audio_decoder_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_audio_decoder_hdr));
+ 
+@@ -417,7 +417,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_evsrc_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_evsrc_hdr));
+ 
+@@ -448,7 +448,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_xbar_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_xbar_hdr));
+ 
+@@ -486,7 +486,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_tuner_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_tuner_hdr));
+ 
+@@ -516,7 +516,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_pll_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_pll_hdr));
+ 
+@@ -546,7 +546,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_channel_decoder_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_channel_decoder_hdr));
+ 
+@@ -576,7 +576,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_encoder_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_encoder_hdr));
+ 
+@@ -606,7 +606,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_ir_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_ir_hdr));
+ 
+@@ -637,7 +637,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_eeprom_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_eeprom_hdr));
+ 
+@@ -668,7 +668,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_filter_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_filter_hdr));
+ 
+@@ -699,7 +699,7 @@
+ 	saa716x_descriptor_dbg(saa716x, buf, offset, header.size, header.ext_data);
+ 	if (header.size != sizeof (struct saa716x_streamdev_hdr)) {
+ 		dprintk(SAA716x_ERROR, 1,
+-			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%d",
++			"ERROR: Header size mismatch! Read size=%d bytes, Expected=%zd",
+ 			header.size,
+ 			sizeof (struct saa716x_streamdev_hdr));
+ 
+@@ -789,7 +789,7 @@
+ 
+ 	memcpy(device, &buf[*offset], sizeof (struct saa716x_devinfo));
+ 	if (device->struct_size != sizeof (struct saa716x_devinfo)) {
+-		dprintk(SAA716x_ERROR, 1, "ERROR: Device size mismatch! Read=%d bytes, expected=%d bytes",
++		dprintk(SAA716x_ERROR, 1, "ERROR: Device size mismatch! Read=%d bytes, expected=%zd bytes",
+ 		device->struct_size,
+ 		sizeof (struct saa716x_devinfo));
+ 
+# file v4l-dvb-saa716x-4.10-fix-compile.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_ff.h
++++ b/linux/drivers/media/common/saa716x/saa716x_ff.h
+@@ -1,7 +1,6 @@
+ #ifndef __SAA716x_FF_H
+ #define __SAA716x_FF_H
+ 
+-#include "dvb_filter.h"
+ #include "dvb_ringbuffer.h"
+ #include <linux/version.h>
+ #include <linux/workqueue.h>
+@@ -95,6 +94,7 @@
+ #define MAX_RESULT_LEN		256
+ #define MAX_DATA_LEN		(1024 * 1024)
+ 
++#define TS_SIZE			188
+ #define TSOUT_LEN		(1024 * TS_SIZE)
+ #define TSOUT_LEVEL_FILL	(350 * TS_SIZE)
+ #define TSOUT_LEVEL_HIGH	(30 * TS_SIZE)
+
+# file v4l-dvb-saa716x-4.14.0-fix-compile.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c
+@@ -39,7 +39,7 @@
+ 	for (i = 0; i < SAA716x_MSI_MAX_VECTORS; i++)
+ 		saa716x->msix_entries[i].entry = i;
+ 
+-	ret = pci_enable_msix(pdev, saa716x->msix_entries, SAA716x_MSI_MAX_VECTORS);
++	ret = pci_enable_msix_range(pdev, saa716x->msix_entries, SAA716x_MSI_MAX_VECTORS, SAA716x_MSI_MAX_VECTORS);
+ 	if (ret < 0)
+ 		dprintk(SAA716x_ERROR, 1, "MSI-X request failed <%d>", ret);
+ 	if (ret > 0)
+# file v4l-dvb-saa716x-4.15-fix-autorepeat.patch
+
+# Source: https://github.com/s-moch/linux-saa716x/commit/0b2276ee2e6383ad577fce5c694f8c4062d5334b.patch
+
+From 0b2276ee2e6383ad577fce5c694f8c4062d5334b Mon Sep 17 00:00:00 2001
+From: Soeren Moch <smoch@web.de>
+Date: Sat, 2 Dec 2017 20:51:10 +0100
+Subject: [PATCH] saa716x_ff: Remove autorepeat handling
+
+Let the input layer handle autorepeat for the IR remote.
+So no repeat_key timer is required anymore.
+
+Signed-off-by: Soeren Moch <smoch@web.de>
+---
+--- a/linux/drivers/media/common/saa716x/saa716x_ff_ir.c
++++ b/linux/drivers/media/common/saa716x/saa716x_ff_ir.c
+@@ -40,7 +40,7 @@ struct infrared {
+ 	u8			protocol;
+ 	u16			last_key;
+ 	u16			last_toggle;
+-	bool			delay_timer_finished;
++	bool			key_pressed;
+ };
+ 
+ #define IR_RC5		0
+@@ -52,11 +52,12 @@ static void ir_emit_keyup(unsigned long parm)
+ {
+ 	struct infrared *ir = (struct infrared *) parm;
+ 
+-	if (!ir || !test_bit(ir->last_key, ir->input_dev->key))
++	if (!ir || !ir->key_pressed)
+ 		return;
+ 
+ 	input_report_key(ir->input_dev, ir->last_key, 0);
+ 	input_sync(ir->input_dev);
++	ir->key_pressed = false;
+ }
+ 
+ 
+@@ -114,28 +115,18 @@ static void ir_emit_key(unsigned long parm)
+ 		return;
+ 	}
+ 
+-	if (timer_pending(&ir->keyup_timer)) {
+-		del_timer(&ir->keyup_timer);
+-		if (ir->last_key != keycode || toggle != ir->last_toggle) {
+-			ir->delay_timer_finished = false;
+-			input_event(ir->input_dev, EV_KEY, ir->last_key, 0);
+-			input_event(ir->input_dev, EV_KEY, keycode, 1);
+-			input_sync(ir->input_dev);
+-		} else if (ir->delay_timer_finished) {
+-			input_event(ir->input_dev, EV_KEY, keycode, 2);
+-			input_sync(ir->input_dev);
+-		}
+-	} else {
+-		ir->delay_timer_finished = false;
+-		input_event(ir->input_dev, EV_KEY, keycode, 1);
+-		input_sync(ir->input_dev);
+-	}
++	if (ir->key_pressed &&
++	    (ir->last_key != keycode || toggle != ir->last_toggle))
++		input_event(ir->input_dev, EV_KEY, ir->last_key, 0);
+ 
++	input_event(ir->input_dev, EV_KEY, keycode, 1);
++	input_sync(ir->input_dev);
++
++	ir->key_pressed = true;
+ 	ir->last_key = keycode;
+ 	ir->last_toggle = toggle;
+ 
+-	ir->keyup_timer.expires = jiffies + UP_TIMEOUT;
+-	add_timer(&ir->keyup_timer);
++	mod_timer(&ir->keyup_timer, jiffies + UP_TIMEOUT);
+ 
+ }
+ 
+@@ -166,16 +157,6 @@ static void ir_register_keys(struct infrared *ir)
+ 	ir->input_dev->keycodemax = ARRAY_SIZE(ir->key_map);
+ }
+ 
+-
+-/* called by the input driver after rep[REP_DELAY] ms */
+-static void ir_repeat_key(unsigned long parm)
+-{
+-	struct infrared *ir = (struct infrared *) parm;
+-
+-	ir->delay_timer_finished = true;
+-}
+-
+-
+ /* interrupt handler */
+ void saa716x_ir_handler(struct saa716x_dev *saa716x, u32 ir_cmd)
+ {
+@@ -236,9 +217,7 @@ int saa716x_ir_init(struct saa716x_dev *saa716x)
+ 		ir->key_map[i] = i+1;
+ 	ir_register_keys(ir);
+ 
+-	/* override repeat timer */
+-	input_dev->timer.function = ir_repeat_key;
+-	input_dev->timer.data = (unsigned long) ir;
++	input_enable_softrepeat(input_dev, 800, 200);
+ 
+ 	tasklet_init(&ir->tasklet, ir_emit_key, (unsigned long) saa716x);
+ 	saa716x->ir_priv = ir;
+
+# file v4l-dvb-saa716x-4.15-fix-timers.patch
+# Source: https://github.com/s-moch/linux-saa716x/commit/1002d79c4ba60de0dbeacba0f289119556d7450d.patch
+
+From 1002d79c4ba60de0dbeacba0f289119556d7450d Mon Sep 17 00:00:00 2001
+From: Soeren Moch <smoch@web.de>
+Date: Sat, 2 Dec 2017 21:23:34 +0100
+Subject: [PATCH] saa716x_ff: Convert to new timer API
+
+Convert to new timer API in linux-4.15.
+
+Signed-off-by: Soeren Moch <smoch@web.de>
+---
+--- a/linux/drivers/media/common/saa716x/saa716x_ff_ir.c
++++ b/linux/drivers/media/common/saa716x/saa716x_ff_ir.c
+@@ -48,9 +48,9 @@ struct infrared {
+ 
+ 
+ /* key-up timer */
+-static void ir_emit_keyup(unsigned long parm)
++static void ir_emit_keyup(struct timer_list *t)
+ {
+-	struct infrared *ir = (struct infrared *) parm;
++	struct infrared *ir = from_timer(ir, t, keyup_timer);
+ 
+ 	if (!ir || !ir->key_pressed)
+ 		return;
+@@ -184,9 +184,7 @@ int saa716x_ir_init(struct saa716x_dev *saa716x)
+ 	if (!ir)
+ 		return -ENOMEM;
+ 
+-	init_timer(&ir->keyup_timer);
+-	ir->keyup_timer.function = ir_emit_keyup;
+-	ir->keyup_timer.data = (unsigned long) ir;
++	timer_setup(&ir->keyup_timer, ir_emit_keyup, 0);
+ 
+ 	input_dev = input_allocate_device();
+ 	if (!input_dev)
+
+# file v4l-dvb-saa716x-4.16-fix-compile.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_adap.c
++++ b/linux/drivers/media/common/saa716x/saa716x_adap.c
+@@ -1,9 +1,9 @@
+ #include <linux/bitops.h>
+ 
+-#include "dmxdev.h"
+-#include "dvbdev.h"
+-#include "dvb_demux.h"
+-#include "dvb_frontend.h"
++#include <media/dmxdev.h>
++#include <media/dvbdev.h>
++#include <media/dvb_demux.h>
++#include <media/dvb_frontend.h>
+ 
+ #include "saa716x_mod.h"
+ #include "saa716x_spi.h"
+--- a/linux/drivers/media/common/saa716x/saa716x_ff.h
++++ b/linux/drivers/media/common/saa716x/saa716x_ff.h
+@@ -1,7 +1,7 @@
+ #ifndef __SAA716x_FF_H
+ #define __SAA716x_FF_H
+ 
+-#include "dvb_ringbuffer.h"
++#include <media/dvb_ringbuffer.h>
+ #include <linux/version.h>
+ #include <linux/workqueue.h>
+ 
+--- a/linux/drivers/media/common/saa716x/saa716x_priv.h
++++ b/linux/drivers/media/common/saa716x/saa716x_priv.h
+@@ -18,11 +18,11 @@
+ #include "saa716x_spi.h"
+ #include "saa716x_vip.h"
+ 
+-#include "dvbdev.h"
+-#include "dvb_demux.h"
+-#include "dmxdev.h"
+-#include "dvb_frontend.h"
+-#include "dvb_net.h"
++#include <media/dvbdev.h>
++#include <media/dvb_demux.h>
++#include <media/dmxdev.h>
++#include <media/dvb_frontend.h>
++#include <media/dvb_net.h>
+ 
+ #define SAA716x_ERROR		0
+ #define SAA716x_NOTICE		1
+
+# file v4l-dvb-saa716x-4.17-define-AUDIO_GET_PTS.patch
+--- a/linux/drivers/media/common/saa716x/saa716x_ff.h
++++ b/linux/drivers/media/common/saa716x/saa716x_ff.h
+@@ -108,6 +108,9 @@
+ #define VIDEO_CAPTURE_OFF	0
+ #define VIDEO_CAPTURE_ONE_SHOT	1
+
++#ifndef AUDIO_GET_PTS
++#define AUDIO_GET_PTS              _IOR('o', 19, __u64)
++#endif
+
+ /* place to store all the necessary device information */
+ struct sti7109_dev {
+--- a/linux/drivers/media/common/saa716x/saa716x_ff_phi.c
++++ b/linux/drivers/media/common/saa716x/saa716x_ff_phi.c
+@@ -41,7 +41,7 @@
+ 	}
+ 
+ 	/* skip first PHI window as it is already mapped */
+-	sti7109->mmio_uc = ioremap_nocache(phi1_start + 0x10000, 0x30000);
++	sti7109->mmio_uc = ioremap(phi1_start + 0x10000, 0x30000);
+ 	if (!sti7109->mmio_uc) {
+ 		dprintk(SAA716x_ERROR, 1, "Mem PHI1 remap failed");
+ 		err = -ENODEV;
+--- a/linux/drivers/media/common/saa716x/saa716x_pci.c
++++ b/linux/drivers/media/common/saa716x/saa716x_pci.c
+@@ -185,7 +185,7 @@
+ 		goto fail2;
+ 	}
+ 
+-	saa716x->mmio = ioremap_nocache(pci_resource_start(pdev, 0), 0x30000);
++	saa716x->mmio = ioremap(pci_resource_start(pdev, 0), 0x30000);
+ 	if (!saa716x->mmio) {
+ 		dprintk(SAA716x_ERROR, 1, "Mem 0 remap failed");
+ 		ret = -ENODEV;
+--- a/v4l/compat.h
++++ b/v4l/compat.h
+@@ -571,8 +571,8 @@
+ 
+ #ifdef NEED_PCI_IOREMAP_BAR
+ #define pci_ioremap_bar(pdev, bar) \
+-	 ioremap_nocache(pci_resource_start(pdev, bar),	\
+-			 pci_resource_len(pdev, bar))
++	 ioremap(pci_resource_start(pdev, bar),	\
++		 pci_resource_len(pdev, bar))
+ #endif
+ 
+ #ifdef NEED_POLL_SCHEDULE
