@@ -10,6 +10,11 @@ Date: Fri, 26 Jan 2024 21:58:59 +0000
 Subject: [PATCH] ACL: in "regex" condition, release store every thousand
  lines.  Bug 3047
 
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sun, 11 Feb 2024 13:57:18 +0000 (+0000)
+Subject: Use non-releaseable memory for regex match strings. Bug 3047
+Broken-by: 35aacb69f5c8
+
 
 diff --git a/src/src/exim.c b/src/src/exim.c
 --- a/src/exim.c
@@ -110,7 +115,7 @@ diff --git a/src/src/regex.c b/src/src/regex.c
  
  /* precompile our regexes */
  while ((regex_string = string_nextinlist(&list, &sep, NULL, 0)))
-@@ -58,7 +57,9 @@ while ((regex_string = string_nextinlist(&list, &sep, NULL, 0)))
+@@ -58,10 +57,19 @@ while ((regex_string = string_nextinlist(&list, &sep, NULL, 0)))
      ri->pcre_text = regex_string;
      ri->next = re_list_head;
      re_list_head = ri;
@@ -120,6 +125,34 @@ diff --git a/src/src/regex.c b/src/src/regex.c
  return re_list_head;
  }
  
++
++/* Check list of REs against buffer, returning OK for (first) match,
++else FAIL.  On match return allocated result strings in regex_vars[]. 
++
++We use the perm-pool for that, so that our caller can release
++other allocations.
++*/
+ static int
+ matcher(pcre_list * re_list_head, uschar * linebuffer, int len)
+ {
+@@ -75,6 +82,9 @@ for (pcre_list * ri = re_list_head; ri; ri = ri->next)
+   /* try matcher on the line */
+   if ((n = pcre2_match(ri->re, (PCRE2_SPTR)linebuffer, len, 0, 0, md, pcre_gen_mtc_ctx)) > 0)
+     {
++    int save_pool = store_pool;
++    store_pool = POOL_PERM;
++
+     Ustrncpy(regex_match_string_buffer, ri->pcre_text,
+ 	      sizeof(regex_match_string_buffer)-1);
+     regex_match_string = regex_match_string_buffer;
+@@ -87,6 +97,7 @@ for (pcre_list * ri = re_list_head; ri; ri = ri->next)
+       regex_vars[nn-1] = string_copyn(linebuffer + ovec[off], len);
+       }
+ 
++    store_pool = save_pool;
+     return OK;
+     }
+   }
 @@ -112,7 +113,8 @@ FILE * mbox_file;
  pcre_list * re_list_head;
  uschar * linebuffer;
