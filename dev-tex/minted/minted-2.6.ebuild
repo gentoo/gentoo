@@ -13,7 +13,7 @@ S="${WORKDIR}"/${P}/source
 
 SLOT="0"
 LICENSE="|| ( BSD LPPL-1.3 )"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~x86"
 IUSE="doc"
 
 RDEPEND="
