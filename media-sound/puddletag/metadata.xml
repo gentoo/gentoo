@@ -12,6 +12,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">puddletag</remote-id>
-		<remote-id type="github">keithgg/puddletag</remote-id>
+		<remote-id type="github">puddletag/puddletag</remote-id>
 	</upstream>
 </pkgmetadata>
