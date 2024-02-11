@@ -1,6 +1,6 @@
 --- a/lib/gauche/interactive/info.scm
 +++ b/lib/gauche/interactive/info.scm
-@@ -113,7 +113,8 @@
+@@ -83,7 +83,8 @@
                        :paths (get-info-paths)
                        :pred (^p (or (file-is-readable? p)
                                      (file-is-readable? #"~|p|.gz")
@@ -9,10 +9,10 @@
 +                                    (file-is-readable? #"~|p|.xz")))))
  
  (define (handle-ambiguous-name entry-name)
-   (let* ([keys (map x->string (hash-table-keys (~ (get-info)'index)))]
+   (let* ([keys (info-index-keys (get-info))]
 --- a/lib/text/info.scm
 +++ b/lib/text/info.scm
-@@ -67,6 +67,7 @@
+@@ -74,6 +74,7 @@
  
  ;; Find bzip2 location
  (define bzip2  (find-file-in-paths "bzip2"))
@@ -20,7 +20,7 @@
  
  (cond-expand
   [gauche.sys.zlib]
-@@ -90,6 +91,8 @@
+@@ -97,6 +98,8 @@
               (with-input-from-process #"~gzip -c -d ~|file|.gz" thunk)])]
            [(and bzip2 (file-exists? #"~|file|.bz2"))
             (with-input-from-process #"~bzip2 -c -d ~|file|.bz2" thunk)]
