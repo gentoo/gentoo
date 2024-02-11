@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lewdlime/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="examples pango"
 
 BDEPEND="virtual/pkgconfig"
