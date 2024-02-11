@@ -14,7 +14,9 @@ EAPI=8
 #     https://bugreports.qt.io/browse/PYSIDE-535
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit cmake llvm python-r1 toolchain-funcs
+LLVM_COMPAT=( 15 )
+
+inherit cmake llvm-r1 python-r1 toolchain-funcs
 
 MY_P=pyside-setup-opensource-src-${PV}
 
@@ -40,11 +42,12 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-3)*:5"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
-LLVM_MAX_SLOT=15
 RDEPEND="${PYTHON_DEPS}
 	=dev-qt/qtcore-${QT_PV}
-	<sys-devel/clang-16:=
-	<sys-devel/clang-runtime-16:=
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/llvm:${LLVM_SLOT}
+	')
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
@@ -55,15 +58,10 @@ RDEPEND="${PYTHON_DEPS}
 	vulkan? ( dev-util/vulkan-headers )
 "
 DEPEND="${RDEPEND}
-	test? (	=dev-qt/qttest-${QT_PV}	)
+	test? ( =dev-qt/qttest-${QT_PV} )
 "
 
 DOCS=( AUTHORS )
-
-# Ensure the path returned by get_llvm_prefix() contains clang as well.
-llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
-}
 
 src_prepare() {
 	# TODO: File upstream issue requesting a sane way to disable NumPy support.
@@ -123,7 +121,7 @@ src_configure() {
 			-DUSE_PYTHON_VERSION="${EPYTHON#python}"
 		)
 		# CMakeLists.txt expects LLVM_INSTALL_DIR as an environment variable.
-		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
+		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix)"
 		cmake_src_configure
 	}
 	python_foreach_impl shiboken2_configure
