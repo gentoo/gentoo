@@ -64,7 +64,7 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
-		INSTALLDIRLIB="${EPREFIX}/usr/$(get_libdir)" \
+		LIBDIR="$(get_libdir)" \
 		install
 
 	dodoc README Changelog.txt
