@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="ESO Recipe Execution Tool to exec cpl scripts"
-HOMEPAGE="http://www.eso.org/sci/software/cpl/esorex.html"
+HOMEPAGE="https://www.eso.org/sci/software/cpl/esorex.html"
 SRC_URI="ftp://ftp.eso.org/pub/dfs/pipelines/libraries/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 DEPEND=">=sci-astronomy/cpl-6.3:="
 RDEPEND="${DEPEND}"
