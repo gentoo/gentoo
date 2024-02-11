@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,11 +7,11 @@ inherit optfeature xdg-utils
 
 DESCRIPTION="Program for improving image files made with a digital camera"
 HOMEPAGE="https://kornelix.net/fotoxx/fotoxx.html"
-SRC_URI="https://kornelix.net/downloads/downloads/${P}-source.tar.gz"
+SRC_URI="https://kornelix.net/downloads/downloads/fotoxx-${PV}-source.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 # For required dependencies read doc/README, for required tools read
@@ -35,15 +35,15 @@ RDEPEND="
 	x11-misc/xdg-utils
 "
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/fotoxx"
 
-PATCHES=( "${FILESDIR}/${PN}-22.82-documentation.patch" )
+PATCHES=( "${FILESDIR}/fotoxx-22.18-documentation.patch" )
 
 DOCS=()
 HTML_DOCS=()
 
 src_prepare() {
-	sed -i -e "/^DOCDIR/ s/${PN}$/${PF}/" Makefile || die
+	sed -i -e "/^DOCDIR/ s/fotoxx$/${PF}/" Makefile || die
 	sed -i -e "/^Icon/ s/\.png$//" fotoxx.desktop || die
 	default
 }
