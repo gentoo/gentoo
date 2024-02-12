@@ -508,7 +508,7 @@ src_configure() {
 		--enable-build-opensymbol
 		--enable-cairo-canvas
 		--enable-largefile
-		--enable-mergelibs
+		--enable-mergelibs=more
 		--enable-python=system
 		--enable-randr
 		--enable-release-build
