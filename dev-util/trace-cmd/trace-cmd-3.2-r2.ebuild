@@ -43,7 +43,6 @@ DEPEND="
 "
 BDEPEND="
 	app-text/asciidoc
-	dev-util/source-highlight
 	virtual/pkgconfig
 	python? ( dev-lang/swig )
 "
@@ -88,8 +87,13 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+	python_install
 
 	# TODO: fix bash completion name
 	mv "${D}"/usr/share/bash-completion/completions/${PN}.bash \
 		"${D}"/usr/share/bash-completion/completions/${PN} || die
+}
+
+python_install() {
+	python_optimize $(python_get_sitedir)
 }
