@@ -6,7 +6,7 @@ EAPI=8
 inherit java-pkg-2
 
 DESCRIPTION="A language with a focus on simplicity, safety and correctness"
-HOMEPAGE="https://flang.dev/
+HOMEPAGE="https://fuzion-lang.dev/
 	https://github.com/tokiwa-software/fuzion/"
 
 if [[ "${PV}" == *9999* ]] ; then
