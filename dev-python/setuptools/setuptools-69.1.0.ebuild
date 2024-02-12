@@ -21,7 +21,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
