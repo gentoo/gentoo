@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 	media-libs/fontconfig
 	sys-libs/glibc"
 
-QA_PREBUILT="usr/bin/grafana-*"
+QA_PREBUILT="usr/bin/grafana*"
 QA_PRESTRIPPED=${QA_PREBUILT}
 
 src_install() {
