@@ -46,6 +46,9 @@ src_install() {
 	else
 		emake install DESTDIR="${ED}" KCONF="/usr/lib/kernel"
 	fi
+	# Backwards compatibility with sys-kernel/installkernel[-systemd]
+	dosym ../../../usr/lib/kernel/postinst.d/dkms /etc/kernel/postinst.d/dkms
+	dosym ../../../usr/lib/kernel/prerm.d/dkms /etc/kernel/prerm.d/dkms
 	einstalldocs
 	keepdir /var/lib/dkms
 }
