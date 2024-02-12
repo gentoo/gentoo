@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~hppa ~ppc64"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
