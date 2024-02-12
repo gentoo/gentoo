@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+
+# Logging
+error_log="${error_log:-/var/log/influxdb/influxd.log}"
+output_log="${output_log:-/dev/null}"
+
+config_path="${config_path:-/etc/influxdb/.}"
+influxd_opts=${influxd_opts:-}
+
+command=/usr/bin/influxd
+command_args="${influxd_opts}"
+command_user="influxdb:influxdb"
+extra_commands="version"
+
+retry=SIGTERM/30/SIGKILL/10
+supervisor="supervise-daemon"
+
+# Max open files
+rc_ulimit="-n 65536"
+
+start_pre() {
+	# Check if config file exist
+	if [ -n "${config_path}" ] && [ ! -e "${config_path}" ]; then
+		checkpath -d -o "${command_user}" "$(dirname "${config_path}")"
+	fi
+	if [ -n "${error_log}" ] && [ ! -e "${error_log}" ]; then
+		checkpath -d -o "${command_user}" "$(dirname "${error_log}")"
+	fi
+	if [ -n "${output_log}" ] && [ ! -e "${output_log}" ]; then
+		checkpath -d -o "${command_user}" "$(dirname "${output_log}")"
+	fi
+	return 0
+}
+
+version() {
+	$command version
+}
+
+if [ -n "${INFLUXDB_HEALTHCHECK_URI}" ]; then
+	healthcheck_delay=300
+	healthcheck_timer=60
+
+	healthcheck() {
+		command -v wget || return 0
+		wget -Oq- "${INFLUXDB_HEALTHCHECK_URI}"
+	}
+fi
