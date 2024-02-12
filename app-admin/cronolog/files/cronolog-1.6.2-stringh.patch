@@ -1,0 +1,24 @@
+From a1c6babd4414201323bbe23c62acd035564c462f Mon Sep 17 00:00:00 2001
+From: mipseb <germtoo@outlook.com>
+Date: Sat, 11 Nov 2023 19:12:04 -0500
+Subject: [PATCH 1/1] still don't know what I'm doing
+
+---
+ src/cronolog.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/cronolog.c b/src/cronolog.c
+index 7eae1c6..e173026 100644
+--- a/src/cronolog.c
++++ b/src/cronolog.c
+@@ -82,6 +82,7 @@
+  * written to "file" (e.g. /dev/console) or to stderr if "file" is "-".
+  */
+ 
++#include <string.h>
+ #include "cronoutils.h"
+ #include "getopt.h"
+ 
+-- 
+2.42.1
+
