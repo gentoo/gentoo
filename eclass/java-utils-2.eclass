@@ -319,12 +319,15 @@ java-pkg_doexamples() {
 # arguments are passed through to find.
 #
 # @CODE
+# Parameters:
+# $1 - jar file
+# $2 - resource tree directory
+# $* - arguments to pass to find
+#
+# Example:
 #	java-pkg_addres ${PN}.jar resources ! -name "*.html"
 # @CODE
 #
-# @param $1 - jar file
-# @param $2 - resource tree directory
-# @param $* - arguments to pass to find
 java-pkg_addres() {
 	debug-print-function ${FUNCNAME} $*
 
