@@ -2816,7 +2816,7 @@ java-pkg_die() {
 	echo "!!! When you file a bug report, please include the following information:" >&2
 	echo "GENTOO_VM=${GENTOO_VM}  CLASSPATH=\"${CLASSPATH}\" JAVA_HOME=\"${JAVA_HOME}\"" >&2
 	echo "JAVACFLAGS=\"${JAVACFLAGS}\" COMPILER=\"${GENTOO_COMPILER}\"" >&2
-	echo "and of course, the output of emerge --info =${P}" >&2
+	echo "and of course, the output of emerge --info =${CATEGORY}/${PF}" >&2
 }
 
 
