@@ -42,7 +42,7 @@ src_compile() {
 	# https://github.com/bfgroup/b2/pull/187#issuecomment-1335688424
 	edo ${CONFIG_SHELL:-${BASH}} ./build.sh cxx \
 		--cxx="$(tc-getCXX)" \
-		--cxxflags="${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}" \
+		--cxxflags="-pthread ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS}" \
 		-d+2 \
 		--without-python
 }
