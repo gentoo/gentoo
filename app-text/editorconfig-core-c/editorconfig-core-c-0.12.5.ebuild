@@ -17,7 +17,7 @@ IUSE="cli doc"
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="dev-libs/libpcre2:="
 RDEPEND="${DEPEND}
-	cli? ( !dev-python/editorconfig-core-py[cli] )"
+	cli? ( !dev-python/editorconfig[cli] )"
 
 src_prepare() {
 	# Don't install the static library.

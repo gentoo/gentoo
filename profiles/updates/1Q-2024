@@ -74,3 +74,4 @@ move dev-python/confusable_homoglyphs dev-python/confusable-homoglyphs
 move dev-python/ml_dtypes dev-python/ml-dtypes
 slotmove =dev-java/commons-imaging-1.0_alpha3-r1 0 1
 move media-gfx/fotoxx media-gfx/fotocx
+move dev-python/editorconfig-core-py dev-python/editorconfig

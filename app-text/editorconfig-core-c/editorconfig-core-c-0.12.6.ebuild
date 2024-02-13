@@ -18,7 +18,7 @@ BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="dev-libs/libpcre2:="
 RDEPEND="
 	${DEPEND}
-	cli? ( !dev-python/editorconfig-core-py[cli] )
+	cli? ( !dev-python/editorconfig[cli] )
 "
 # Header-only
 DEPEND+=" dev-libs/uthash"
