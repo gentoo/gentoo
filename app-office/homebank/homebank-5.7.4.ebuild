@@ -6,7 +6,10 @@ EAPI=8
 inherit xdg
 
 DESCRIPTION="Free, easy, personal accounting for everyone"
-HOMEPAGE="https://www.gethomebank.org/"
+HOMEPAGE="
+	https://www.gethomebank.org/
+	https://launchpad.net/homebank
+"
 SRC_URI="https://www.gethomebank.org/public/sources/${P}.tar.gz"
 
 LICENSE="GPL-2"
