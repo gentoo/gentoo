@@ -29,7 +29,6 @@ IUSE="cli test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!<app-vim/editorconfig-vim-0.3.3-r1
 	cli? ( !app-text/editorconfig-core-c[cli] )
 "
 
