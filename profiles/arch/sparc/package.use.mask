@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-02-13)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is not keyworded here and currently fails tests (bug #924430).
+dev-qt/qtmultimedia:6 qml
+
 # Eray Aslan <eras@gentoo.org> (2024-02-13)
 # tests require dev-db/mongodb which is not keyworded
 dev-libs/mongo-c-driver test
