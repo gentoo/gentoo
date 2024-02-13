@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -27,4 +27,7 @@ all_ruby_prepare() {
 	sed -i -e '/simplecov/,/unshift/ s:^:#:' spec/spec_helper.rb || die
 
 	sed -i -e 's:_relative ": "./:' -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Fix spec for different error message in ruby33 which no longer shows the class
+	sed -i -e '/undefined method/ s/nil:NilClass/nil/' spec/docile_spec.rb || die
 }
