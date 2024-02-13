@@ -139,16 +139,12 @@ BDEPEND="
 	app-alternatives/lex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
-	vulkan? (
-		dev-util/glslang
-		llvm? (
-			video_cards_intel? (
-				amd64? (
-					$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
-					~dev-util/intel_clc-${PV}
-					dev-libs/libclc[spirv(-)]
-				)
-			)
+	video_cards_intel? (
+		~dev-util/intel_clc-${PV}
+		dev-libs/libclc[spirv(-)]
+		vulkan? (
+			dev-util/glslang
+			$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
 		)
 	)
 	wayland? ( dev-util/wayland-scanner )
@@ -359,12 +355,6 @@ multilib_src_configure() {
 	use vulkan-overlay && vulkan_layers+=",overlay"
 	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
 
-	if use llvm && use vulkan && use video_cards_intel && use amd64; then
-		emesonargs+=(-Dintel-clc=system)
-	else
-		emesonargs+=(-Dintel-clc=disabled)
-	fi
-
 	if use opengl || use gles1 || use gles2; then
 		emesonargs+=(
 			-Degl=enabled
@@ -398,8 +388,10 @@ multilib_src_configure() {
 		$(meson_use osmesa)
 		$(meson_use selinux)
 		$(meson_feature unwind libunwind)
+		$(meson_feature video_cards_intel intel-rt)
 		$(meson_feature zstd)
 		$(meson_use cpu_flags_x86_sse2 sse2)
+		-Dintel-clc=$(usex video_cards_intel system auto)
 		-Dvalgrind=$(usex valgrind auto disabled)
 		-Dvideo-codecs=$(usex proprietary-codecs "all" "all_free")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
