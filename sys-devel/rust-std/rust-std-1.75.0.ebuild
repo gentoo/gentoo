@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,10 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
+
+PATCHES=(
+	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch  # remove for >=1.77.0
+)
 
 S="${WORKDIR}/${P/-std/c}-src"
 

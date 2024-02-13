@@ -36,6 +36,10 @@ RESTRICT="test"
 
 QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 
+PATCHES=(
+	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch  # remove for >=1.77.0
+)
+
 S="${WORKDIR}/${P/-std/c}-src"
 
 #
