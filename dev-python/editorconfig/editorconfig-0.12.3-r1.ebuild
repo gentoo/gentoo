@@ -18,6 +18,7 @@ SRC_URI="
 			-> editorconfig-core-test-${TESTVER}.tar.gz
 	)
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="PYTHON BSD-4"
 SLOT="0"
