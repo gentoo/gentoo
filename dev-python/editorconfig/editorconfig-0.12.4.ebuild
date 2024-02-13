@@ -46,10 +46,6 @@ src_prepare() {
 }
 
 python_test() {
-	local mycmakeargs=(
-		-DPYTHON_EXECUTABLE="${PYTHON}"
-	)
-
 	cmake_src_configure
 	cmake_src_compile
 	cmake_src_test
