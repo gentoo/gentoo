@@ -20,11 +20,12 @@ LICENSE="GPL-2"
 SLOT="0"
 # Dependencies according to
 # https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md.d/From-Source.md
-IUSE="php_targets_php8-1 php_targets_php8-2"
+IUSE="php_targets_php8-1 php_targets_php8-2 php_targets_php8-3"
 
 PHP_DEPEND="
 	php_targets_php8-1? ( dev-lang/php:8.1[curl,iconv,pcntl,posix,sockets] )
 	php_targets_php8-2? ( dev-lang/php:8.2[curl,iconv,pcntl,posix,sockets] )
+	php_targets_php8-3? ( dev-lang/php:8.3[curl,iconv,pcntl,posix,sockets] )
 "
 DEPEND="
 	acct-group/icingaweb2
@@ -33,7 +34,7 @@ DEPEND="
 RDEPEND="
 	${PHP_DEPEND}
 	${DEPEND}
-	>=www-apps/icingaweb2-module-incubator-0.20.0
+	>=www-apps/icingaweb2-module-incubator-0.22.0
 	>=dev-libs/icinga-php-library-0.13.0
 	>=dev-libs/icinga-php-thirdparty-0.12.0
 	>=www-apps/icingaweb2-2.9.0
