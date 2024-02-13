@@ -14,7 +14,7 @@ SRC_URI="https://github.com/APN-Pucky/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]
