@@ -1,5 +1,9 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-12-26)
 # net-libs/grpc not keyworded here
