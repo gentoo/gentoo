@@ -417,11 +417,18 @@ java-pkg-simple_src_compile() {
 			einfo "JAVADOC_SRC_DIRS exists, you need to call ejavadoc separately"
 		else
 			mkdir -p ${apidoc}
-			ejavadoc -d ${apidoc} \
-				-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
-				${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
-				@${sources} || die "javadoc failed"
+			if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
+				ejavadoc -d ${apidoc} \
+					-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
+					${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
+					@${sources} || die "javadoc failed"
+			else
+				ejavadoc -d ${apidoc} \
+					-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
+					${classpath:+--module-path ${classpath}} ${JAVADOC_ARGS:- -quiet} \
+					@${sources} || die "javadoc failed"
 			fi
+		fi
 	fi
 
 	# package
