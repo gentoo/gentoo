@@ -106,7 +106,7 @@ BDEPEND="
 "
 
 PATCHES=( "${WORKDIR}"/patches/${PN} )
-[[ ${PV} == 6.9999 ]] || # keep for 6.x.9999
+[[ ${PV} == 6.9999 ]] || # too fragile for 6.9999, but keep for 6.x.9999
 	PATCHES+=( "${WORKDIR}"/patches/chromium )
 
 PATCHES+=(
