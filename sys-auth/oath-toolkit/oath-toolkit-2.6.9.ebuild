@@ -31,6 +31,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	MIN # glibc fp
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-build-failure-noticed-on-ArchLinux-xmlsec.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		--cache-file="${S}"/config.cache
