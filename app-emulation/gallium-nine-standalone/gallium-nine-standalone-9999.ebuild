@@ -64,7 +64,7 @@ src_prepare() {
 	# which doesn't play well with our multi-Wine environment.
 	bootstrap_nine() {
 		local file=tools/cross-wine$(bits)
-		local g9dll=\"Z:${EPREFIX}/usr/$(get_libdir)/d3d9-nine.dll.so\"
+		local g9dll=\"z:${EPREFIX}/usr/$(get_libdir)/d3d9-nine.dll.so\"
 
 		sed \
 			-e "s!@PKG_CONFIG@!$(tc-getPKG_CONFIG)!" \
