@@ -8,7 +8,7 @@ index 4098035..345a8a2 100644
  	# man page
 -	gzip -fk -9 man/fotocx.man
 -	mv -f man/fotocx.man.gz $(DESTDIR)$(MANDIR)/fotocx.1.gz
-+	cp man/fotoxx.man $(DESTDIR)$(MANDIR)/fotoxx.1
++	cp man/fotocx.man $(DESTDIR)$(MANDIR)/fotocx.1
  	# desktop file and icon
  	cp -f fotocx.desktop $(DESTDIR)$(MENUDIR)
  	cp -f fotocx.png $(DESTDIR)$(ICONDIR)

@@ -6,7 +6,7 @@ EAPI=7
 inherit optfeature xdg-utils
 
 DESCRIPTION="Program for improving image files made with a digital camera"
-HOMEPAGE="https://kornelix.net/fotoxx/fotoxx.html"
+HOMEPAGE="https://kornelix.net/fotocx/fotocx.html"
 SRC_URI="https://kornelix.net/downloads/downloads/${P}-source.tar.gz"
 
 LICENSE="GPL-3+"
@@ -66,8 +66,8 @@ pkg_postinst() {
 
 	elog
 	elog "Please read the Help > User Guide for details. The source location is"
-	elog "/usr/share/fotoxx/data/userguide and after running fotoxx a copy will"
-	elog "be placed at /home/<user>/.fotoxx/userguide."
+	elog "/usr/share/fotocx/data/userguide and after running fotocx a copy will"
+	elog "be placed at /home/<user>/.fotocx/userguide."
 	elog
 	elog "To play videos, in Tools > Preferences set 'Video File Play Command'."
 	elog
