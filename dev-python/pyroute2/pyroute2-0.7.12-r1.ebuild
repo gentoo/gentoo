@@ -21,9 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 # tests need root access
 RESTRICT="test"
 
-RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
