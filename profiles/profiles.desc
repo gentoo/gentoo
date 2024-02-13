@@ -340,6 +340,30 @@ mips		default/linux/mips/17.0/mipsel/multilib/n32/systemd/merged-usr	exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64			exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd		exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd/merged-usr	exp
+mips		default/linux/mips/23.0/mipsel/o32				exp
+mips		default/linux/mips/23.0/mipsel/o32/systemd			exp
+mips		default/linux/mips/23.0/mipsel/n32				exp
+mips		default/linux/mips/23.0/mipsel/n32/systemd			exp
+mips		default/linux/mips/23.0/mipsel/n64				exp
+mips		default/linux/mips/23.0/mipsel/n64/systemd			exp
+mips		default/linux/mips/23.0/mipsel/multilib/n64			exp
+mips		default/linux/mips/23.0/mipsel/multilib/n64/systemd		exp
+mips		default/linux/mips/23.0/o32					exp
+mips		default/linux/mips/23.0/o32/systemd				exp
+mips		default/linux/mips/23.0/n32					exp
+mips		default/linux/mips/23.0/n32/systemd				exp
+mips		default/linux/mips/23.0/n64					exp
+mips		default/linux/mips/23.0/n64/systemd				exp
+mips		default/linux/mips/23.0/multilib/n64				exp
+mips		default/linux/mips/23.0/multilib/n64/systemd			exp
+mips		default/linux/mips/23.0/split-usr/mipsel/o32			exp
+mips		default/linux/mips/23.0/split-usr/mipsel/n32			exp
+mips		default/linux/mips/23.0/split-usr/mipsel/n64			exp
+mips		default/linux/mips/23.0/split-usr/mipsel/multilib/n64		exp
+mips		default/linux/mips/23.0/split-usr/o32				exp
+mips		default/linux/mips/23.0/split-usr/n32				exp
+mips		default/linux/mips/23.0/split-usr/n64				exp
+mips		default/linux/mips/23.0/split-usr/multilib/n64			exp
 
 # Deprecated PPC64 Profiles
 # @MAINTAINER: ppc64@gentoo.org
@@ -620,6 +644,14 @@ mips		default/linux/mips/17.0/o32/musl				exp
 mips		default/linux/mips/17.0/n64/musl				exp
 mips		default/linux/mips/17.0/mipsel/o32/musl				exp
 mips		default/linux/mips/17.0/mipsel/n64/musl				exp
+mips		default/linux/mips/23.0/mipsel/o32/musl				exp
+mips		default/linux/mips/23.0/mipsel/n64/musl				exp
+mips		default/linux/mips/23.0/o32/musl				exp
+mips		default/linux/mips/23.0/n64/musl				exp
+mips		default/linux/mips/23.0/split-usr/mipsel/o32/musl		exp
+mips		default/linux/mips/23.0/split-usr/mipsel/n64/musl		exp
+mips		default/linux/mips/23.0/split-usr/o32/musl			exp
+mips		default/linux/mips/23.0/split-usr/n64/musl			exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/musl			dev
 riscv		default/linux/riscv/23.0/rv64/lp64d/musl			exp
