@@ -2934,7 +2934,7 @@ java-pkg_ensure-dep() {
 #		if is-java-strict; then
 #			die "${dev_error}"
 #		else
-			eqawarn "java-pkg_ensure-dep: ${dev_error}"
+			eqawarn "QA Notice: java-pkg_ensure-dep: ${dev_error}"
 #			eerror "Because you have ${target_pkg} installed,"
 #			eerror "the package will build without problems, but please"
 #			eerror "report this to https://bugs.gentoo.org."
@@ -2945,7 +2945,7 @@ java-pkg_ensure-dep() {
 #		if is-java-strict; then
 #			die "${dev_error}"
 #		else
-			eqawarn "java-pkg_ensure-dep: ${dev_error}"
+			eqawarn "QA Notice: java-pkg_ensure-dep: ${dev_error}"
 #			eerror "The package will build without problems, but may fail to run"
 #			eerror "if you don't have ${target_pkg} installed,"
 #			eerror "so please report this to https://bugs.gentoo.org."
