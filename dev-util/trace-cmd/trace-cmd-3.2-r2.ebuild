@@ -95,5 +95,5 @@ src_install() {
 }
 
 python_install() {
-	python_optimize $(python_get_sitedir)
+	python_optimize "${D}$(python_get_sitedir)"
 }
