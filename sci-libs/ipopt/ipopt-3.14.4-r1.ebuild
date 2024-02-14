@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,11 +18,12 @@ S="${WORKDIR}/Ipopt-releases-${PV}"
 LICENSE="EPL-1.0 hsl? ( HSL )"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="hsl +lapack mpi mumps static-libs test"
+IUSE="+asl hsl +lapack mpi mumps static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/blas
+	asl? ( sci-libs/coinasl:0= )
 	hsl? ( sci-libs/coinhsl:0= )
 	lapack? ( virtual/lapack )
 	mpi? ( virtual/mpi )
@@ -41,6 +42,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_with doc dot)
+		$(use_with asl)
 	)
 
 	if use lapack; then
