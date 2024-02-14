@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
+# Data for removed sci-astronomy/casacore.  No other revdeps.
+# Removal on 2024-03-15.  Bug #923954.
+sci-astronomy/casa-data
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # media-sound/exaile is the last package to require unmaintained
 # dev-python/bsddb3 (or dev-python/berkeleydb which is equally horrible
 # and was removed in the past).
