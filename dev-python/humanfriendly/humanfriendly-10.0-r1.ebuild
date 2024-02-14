@@ -15,7 +15,7 @@ HOMEPAGE="https://pypi.org/project/humanfriendly/
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 # This is completely broken
 # AttributeError: module 'humanfriendly.tests' has no attribute 'connect'
