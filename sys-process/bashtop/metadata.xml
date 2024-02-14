@@ -5,10 +5,6 @@
         <email>zshzero@protonmail.com</email>
         <name>Ashwin A Kumar</name>
    </maintainer>
-   <maintainer type="person">
-        <email>dolsen@gentoo.org</email>
-        <name>Brian Dolbec</name>
-   </maintainer>
    <upstream>
        <remote-id type="github">aristocratos/bashtop</remote-id>
    </upstream>
