@@ -23,7 +23,7 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 JSON MIT"
 SLOT="0"
-IUSE="discord qt5 test"
+IUSE="discord qt5 test wayland"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -43,7 +43,9 @@ RDEPEND="
 		dev-qt/qtopengl:5[-gles2-only]
 		dev-qt/qtwidgets:5[-gles2-only]
 	)
-	!qt5? ( media-libs/libsdl2[X,opengl,sound,video] )
+	!qt5? (
+		media-libs/libsdl2[X,opengl,sound,video,wayland?]
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -74,6 +76,7 @@ src_configure() {
 		-DUSE_SYSTEM_SNAPPY=ON
 		-DUSE_SYSTEM_ZSTD=ON
 		-DUSE_DISCORD=$(usex discord)
+		-DUSE_WAYLAND_WSI=$(usex wayland)
 		-DUSING_QT_UI=$(usex qt5)
 		-DUNITTEST=$(usex test)
 	)
