@@ -241,3 +241,10 @@ src_install() {
 	newzshcomp assets/completions/${PN}.zsh _${PN}
 	dofishcomp assets/completions/${PN}.fish
 }
+
+src_test() {
+	# Set COLUMNS for deterministic help output, #913364
+	export COLUMNS=100
+
+	cargo_src_test
+}
