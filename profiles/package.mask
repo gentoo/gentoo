@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
+# media-sound/exaile is the last package to require unmaintained
+# dev-python/bsddb3 (or dev-python/berkeleydb which is equally horrible
+# and was removed in the past).
+# Removal on 2024-03-15.  Bug #922816.
+dev-python/bsddb3
+media-sound/exaile
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # All these firmwares are included in sys-kernel/linux-firmware, in some
 # cases in newer versions with security fixes.
 # Removal on 2024-03-15.  Bug #924589.
