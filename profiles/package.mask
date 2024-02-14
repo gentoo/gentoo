@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
+# Abandoned upstream in 2020.  Has a fork that has last been released
+# in 2021.  No revdeps.
+# Removal on 2024-03-15.  Bug #833088.
+dev-python/fb-re2
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # Unmaintained.  EAPI 6.  The service was shut down.
 # Removal on 2024-03-15.  Bug #922925.
 net-dns/odsclient
