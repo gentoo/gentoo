@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,15 +15,15 @@ HOMEPAGE="https://github.com/coin-or/Ipopt"
 SRC_URI="https://github.com/coin-or/Ipopt/archive/refs/tags/releases/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/Ipopt-releases-${PV}"
 
-LICENSE="EPL-1.0 hsl? ( HSL )"
+LICENSE="EPL-1.0"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="hsl +lapack mpi mumps static-libs test"
+IUSE="+asl +lapack mpi mumps static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/blas
-	hsl? ( sci-libs/coinhsl:0= )
+	asl? ( sci-libs/coinasl:0= )
 	lapack? ( virtual/lapack )
 	mpi? ( virtual/mpi )
 	mumps? ( sci-libs/mumps:0=[mpi=] )"
@@ -41,6 +41,8 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_with doc dot)
+		$(use_with asl)
+		--without-hsl
 	)
 
 	if use lapack; then
@@ -54,13 +56,6 @@ src_configure() {
 			--with-mumps-lib="-lmumps_common -ldmumps -lzmumps -lsmumps -lcmumps" )
 	else
 		myeconfargs+=( --without-mumps )
-	fi
-	if use hsl; then
-		myeconfargs+=(
-			--with-hsl-incdir="${EPREFIX}"/usr/include
-			--with-hsl-lib="$($(tc-getPKG_CONFIG) --libs coinhsl)" )
-	else
-		myeconfargs+=( --without-hsl )
 	fi
 	econf "${myeconfargs[@]}"
 }
