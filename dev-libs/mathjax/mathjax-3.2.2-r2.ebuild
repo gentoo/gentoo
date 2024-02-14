@@ -3,40 +3,63 @@
 
 EAPI=8
 
-inherit vcs-clean
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
+inherit python-any-r1 vcs-clean
+
+# MathJax-docs doesn't have releases, so this is the commit that was
+# current when mathjax-${PV} was released.
+DOCS_COMMIT="c4a733d6d0ced4242a4df1c46137d4be6b3aaaee"
 
 DESCRIPTION="JavaScript display engine for LaTeX, MathML and AsciiMath"
 HOMEPAGE="https://www.mathjax.org/"
-SRC_URI="https://github.com/mathjax/MathJax/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/mathjax/MathJax/archive/${PV}.tar.gz -> ${P}.tar.gz
+	doc? ( https://github.com/mathjax/MathJax-docs/archive/${DOCS_COMMIT}.tar.gz -> ${PN}-docs-${PV}.tar.gz )
+"
 S="${WORKDIR}/MathJax-${PV}"
+DOCS_S="${WORKDIR}/MathJax-docs-${DOCS_COMMIT}"
 
 LICENSE="Apache-2.0"
 # Some applications need to know which mathjax version they built against.
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc"
 
-RDEPEND="doc? ( ~app-doc/mathjax-docs-${PV} )"
+BDEPEND="
+	doc? (
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		')
+	)
+"
+RDEPEND="!app-doc/mathjax-docs"
+
+python_check_deps() {
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	if use doc; then
+		python-any-r1_pkg_setup
+	fi
+}
 
 src_prepare() {
 	default
 	egit_clean
 }
 
+src_compile() {
+	if use doc; then
+		build_sphinx "${DOCS_S}"
+	fi
+}
+
 src_install() {
 	local DOCS=( CONTRIBUTING.md README.md )
 	default
-
-	if use doc; then
-		# We need best_version to determine the right revision for
-		# app-doc/mathjax-docs.
-		local docsPF=$(best_version app-doc/mathjax-docs)
-
-		# Strip the (known) category from the best_version output.
-		docsPF=${docsPF#app-doc/}
-
-		dosym "../${docsPF}/html" "/usr/share/doc/${PF}/html"
-	fi
 
 	insinto "/usr/share/${PN}"
 
