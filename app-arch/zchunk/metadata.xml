@@ -5,10 +5,6 @@
 			<email>kangie@gentoo.org</email>
 			<name>Matt Jolly</name>
 	</maintainer>
-	<maintainer type="project" proxied="proxy">
-			<email>proxy-maint@gentoo.org</email>
-			<name>Proxy Maintainers</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">zchunk/zchunk</remote-id>
 	</upstream>
