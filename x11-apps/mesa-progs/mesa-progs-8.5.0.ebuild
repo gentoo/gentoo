@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="gles2 wayland X"
 
 RDEPEND="
-	media-libs/mesa[${MULTILIB_USEDEP},egl(+),gles2?,wayland?,X?]
+	media-libs/libglvnd[${MULTILIB_USEDEP},X?]
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
