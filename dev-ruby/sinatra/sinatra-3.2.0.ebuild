@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test:core"
 
@@ -26,11 +26,13 @@ ruby_add_rdepend "
 	>=dev-ruby/rack-2.2.4:2.2
 	~dev-ruby/rack-protection-${PV}
 	dev-ruby/tilt:2"
+
+# dev-ruby/haml is an optional test dependency, but it will lead to
+# circular dependencies so we don't require it for tests.
 ruby_add_bdepend "
 	test? (
 		dev-ruby/builder
 		dev-ruby/erubi
-		dev-ruby/haml
 		>=dev-ruby/rack-test-0.5.6
 		dev-ruby/activesupport
 	)
