@@ -48,5 +48,5 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "support for stand-alone executables" app-admin/chrpath
+	optfeature "support for stand-alone executables" dev-util/patchelf
 }
