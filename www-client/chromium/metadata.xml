@@ -5,8 +5,8 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>Matt.Jolly@footclan.ninja</email>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
 	</maintainer>
 	<use>

@@ -294,7 +294,7 @@ dev-util/schroot nls
 # bug #870211.
 dev-lang/rust llvm-libunwind
 
-# Matt Jolly <Matt.Jolly@footclan.ninja> (2022-09-09)
+# Matt Jolly <kangie@gentoo.org> (2022-09-09)
 # app-antivirus/clamav JIT support requires LLVM <=13
 # ebuild support is there but currently failing to link
 app-antivirus/clamav jit

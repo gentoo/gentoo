@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Jolly <Matt.Jolly@footclan.ninja> (2024-01-30)
+# Matt Jolly <kangie@gentoo.org> (2024-01-30)
 # Google does not provide a ppc64 toolchain
 www-client/chromium system-toolchain
 
