@@ -22,11 +22,7 @@ IUSE="aac alsa ao cddb cdio debug discid elogind examples ffmpeg +flac jack libs
 	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio sndio systemd tremor +unicode
 	+vorbis wavpack"
 
-# Both CONFIG_TREMOR=y and CONFIG_VORBIS=y are required to link to tremor libs instead of vorbis libs
-REQUIRED_USE="
-	?? ( elogind systemd )
-	tremor? ( vorbis )
-	mp4? ( aac )" # enabling mp4 adds -lfaad
+REQUIRED_USE="?? ( elogind systemd )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -50,7 +46,7 @@ DEPEND="
 	mp4? ( media-libs/libmp4v2:0 )
 	musepack? ( media-sound/musepack-tools )
 	opus? ( media-libs/opusfile )
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	sndio? ( media-sound/sndio )
 	systemd? ( sys-apps/systemd )
 	tremor? ( media-libs/tremor )
@@ -63,6 +59,10 @@ RDEPEND="${DEPEND}
 		net-im/pidgin
 	)
 "
+
+# Both CONFIG_TREMOR=y and CONFIG_VORBIS=y are required to link to tremor libs instead of vorbis libs
+REQUIRED_USE="tremor? ( vorbis )
+	mp4? ( aac )" # enabling mp4 adds -lfaad
 
 DOCS=( AUTHORS README.md )
 
