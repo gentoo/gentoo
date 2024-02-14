@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
+# Unmaintained.  EAPI 6.  The service was shut down.
+# Removal on 2024-03-15.  Bug #922925.
+net-dns/odsclient
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # Data for removed sci-astronomy/casacore.  No other revdeps.
 # Removal on 2024-03-15.  Bug #923954.
 sci-astronomy/casa-data
