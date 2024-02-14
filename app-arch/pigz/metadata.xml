@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		pigz, which stands for parallel implementation of gzip,
 		is a fully functional replacement for gzip that exploits
