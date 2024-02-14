@@ -4,6 +4,14 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas is not stable
+atlas
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper is not stable
+jasper
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # Qt6 is not stable here yet
 qt6
