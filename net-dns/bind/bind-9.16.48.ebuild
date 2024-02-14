@@ -14,7 +14,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit python-r1 autotools multiprocessing toolchain-funcs flag-o-matic db-use systemd tmpfiles
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
+inherit python-r1 autotools multiprocessing toolchain-funcs flag-o-matic db-use systemd tmpfiles verify-sig
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -29,7 +30,8 @@ RRL_PV="${MY_PV}"
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind https://gitlab.isc.org/isc-projects/bind9"
 SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
-	doc? ( mirror://gentoo/dyndns-samples.tbz2 )"
+	doc? ( mirror://gentoo/dyndns-samples.tbz2 )
+	verify-sig? ( https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz.asc )"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
@@ -87,6 +89,7 @@ BDEPEND="
 		dev-util/cmocka
 		dev-util/kyua
 	)
+	verify-sig? ( sec-keys/openpgp-keys-isc )
 "
 
 S="${WORKDIR}/${MY_P}"
