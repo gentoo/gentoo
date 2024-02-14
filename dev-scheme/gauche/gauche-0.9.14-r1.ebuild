@@ -15,12 +15,12 @@ SRC_URI="https://github.com/shirok/${PN^g}/releases/download/release${PV//./_}/$
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)8"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="ipv6 +mbedtls test"
+IUSE="ipv6 test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-libs/gdbm
-	virtual/libcrypt:=
-	mbedtls? ( net-libs/mbedtls:= )"
+RDEPEND="net-libs/mbedtls:=
+	sys-libs/gdbm
+	virtual/libcrypt:="
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
@@ -43,7 +43,7 @@ src_configure() {
 		$(use_enable ipv6) \
 		--with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt \
 		--with-slib="${EPREFIX}"/usr/share/slib \
-		--with-tls=$(usex mbedtls mbedtls axtls)
+		--with-tls=mbedtls
 }
 
 src_test() {
