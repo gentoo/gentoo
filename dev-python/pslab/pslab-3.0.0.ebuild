@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-python/mcbootflash-8.0.0[${PYTHON_USEDEP}]
