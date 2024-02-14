@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<longdescription lang="en">
 		Simple, fast and user-friendly alternative to find.
 		While it does not seek to mirror all of find's powerful functionality,
