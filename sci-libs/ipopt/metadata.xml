@@ -15,7 +15,7 @@
 	for Operations Research).
 </longdescription>
 <use>
-	<flag name="hsl">hsl</flag>
+	<flag name="asl">AMPL Solver Library support and build the 'ipopt' binary</flag>
 	<flag name="mumps">Enable <pkg>sci-libs/mumps</pkg> support</flag>
 </use>
 <upstream>
