@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
 
 CPU_USE=(
-	x86_{avx2,avx512f,sse2,ssse3,sse4_2,pclmul}
+	x86_{avx2,avx512f,avx512_vnni,sse2,ssse3,sse4_2,pclmul,vpclmulqdq}
 	arm_{crc32,neon}
 	ppc_{altivec,vsx2,vsx3}
 )
@@ -51,12 +51,12 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DWITH_AVX2=$(usex cpu_flags_x86_avx2)
 			-DWITH_AVX512=$(usex cpu_flags_x86_avx512f)
-			-DWITH_AVX512VNNI=OFF # TODO, see bug #908556
+			-DWITH_AVX512VNNI=$(usex cpu_flags_x86_avx512_vnni)
 			-DWITH_SSE2=$(usex cpu_flags_x86_sse2)
 			-DWITH_SSSE3=$(usex cpu_flags_x86_ssse3)
 			-DWITH_SSE42=$(usex cpu_flags_x86_sse4_2)
 			-DWITH_PCLMULQDQ=$(usex cpu_flags_x86_pclmul)
-			-DWITH_VPCLMULQDQ=OFF # TODO, see bug #908556
+			-DWITH_VPCLMULQDQ=$(usex cpu_flags_x86_vpclmulqdq)
 		)
 	fi
 
