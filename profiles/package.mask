@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
+# Does not work with >=kde-plasma/kwin-5.27 anymore.  Discontinued upstream.
+# https://github.com/Bismuth-Forge/bismuth/issues/471#issuecomment-1410969462
+# Removal on 2024-03-15.  Bug #924588.
+kde-misc/bismuth
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # A NIH build system with no revdeps.  Broken with ccache, clang
 # and possibly more.  Horrible bootstrap process.
 # Removal on 2024-03-15.  Bug #924587.
