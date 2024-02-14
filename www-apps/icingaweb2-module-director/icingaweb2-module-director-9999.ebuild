@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,11 +18,14 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-# Dependencies according to https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md
-IUSE="php_targets_php8-1"
+# Dependencies according to
+# https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/02-Installation.md.d/From-Source.md
+IUSE="php_targets_php8-1 php_targets_php8-2 php_targets_php8-3"
 
 PHP_DEPEND="
 	php_targets_php8-1? ( dev-lang/php:8.1[curl,iconv,pcntl,posix,sockets] )
+	php_targets_php8-2? ( dev-lang/php:8.2[curl,iconv,pcntl,posix,sockets] )
+	php_targets_php8-3? ( dev-lang/php:8.3[curl,iconv,pcntl,posix,sockets] )
 "
 DEPEND="
 	acct-group/icingaweb2
@@ -31,9 +34,9 @@ DEPEND="
 RDEPEND="
 	${PHP_DEPEND}
 	${DEPEND}
-	>=www-apps/icingaweb2-module-incubator-0.18.0
-	>=dev-libs/icinga-php-library-0.5.0
-	>=dev-libs/icinga-php-thirdparty-0.9.0
+	>=www-apps/icingaweb2-module-incubator-0.22.0
+	>=dev-libs/icinga-php-library-0.13.0
+	>=dev-libs/icinga-php-thirdparty-0.12.0
 	>=www-apps/icingaweb2-2.9.0
 "
 
@@ -60,9 +63,9 @@ pkg_postinst() {
 	# numbers, even though in practice it is typically just one.
 	local oldver
 	for oldver in ${REPLACING_VERSIONS}; do
-		if ver_test "${oldver}" -lt "1.10.0"; then
+		if ver_test "${oldver}" -lt "1.11.0"; then
 			ewarn "You are upgrading from ${oldver} to ${PVR}"
-			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.10.x"
+			ewarn "please read https://github.com/Icinga/icingaweb2-module-director/blob/master/doc/05-Upgrading.md#upgrade-to-1.11.x"
 			ewarn "for breaking changes"
 			ewarn
 			ewarn "Also, don't forget to upgrade database schema."
