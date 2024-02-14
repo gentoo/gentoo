@@ -3,13 +3,21 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 DESCRIPTION="Command line recorder for asciinema.org service"
-HOMEPAGE="https://asciinema.org/ https://pypi.org/project/asciinema/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://asciinema.org/
+	https://github.com/asciinema/asciinema/
+	https://pypi.org/project/asciinema/
+"
+SRC_URI="
+	https://github.com/asciinema/asciinema/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
