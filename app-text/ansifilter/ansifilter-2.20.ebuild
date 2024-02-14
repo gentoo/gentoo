@@ -7,7 +7,10 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andresimon.asc
 inherit desktop toolchain-funcs qmake-utils verify-sig xdg-utils
 
 DESCRIPTION="Handles text files containing ANSI terminal escape codes"
-HOMEPAGE="http://www.andre-simon.de/"
+HOMEPAGE="
+	http://andre-simon.de/doku/ansifilter/en/ansifilter.php
+	https://gitlab.com/saalen/ansifilter/
+"
 SRC_URI="
 	http://www.andre-simon.de/zip/${P}.tar.bz2
 	gui? ( https://gitlab.com/uploads/-/system/project/avatar/6678914/ansifilter2_logo_256.png )
