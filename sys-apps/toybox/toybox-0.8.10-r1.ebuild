@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 
 # For menuconfig support bug #924193
 BDEPEND="
-	ncurses?(
+	ncurses? (
 		sys-libs/ncurses
 		virtual/pkgconfig
 	)
