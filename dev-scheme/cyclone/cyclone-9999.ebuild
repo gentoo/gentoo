@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Cyclone is a self-hosting Scheme to C compiler
@@ -11,30 +11,38 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="R7RS Scheme to C compiler"
 HOMEPAGE="http://justinethier.github.io/cyclone/"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_REPO_URI="https://github.com/justinethier/${PN}-bootstrap.git"
 else
-	SRC_URI="https://github.com/justinethier/${PN}-bootstrap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/justinethier/${PN}-bootstrap/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-bootstrap-${PV}"
+
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	S="${WORKDIR}"/${PN}-bootstrap-${PV}
 fi
 
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="dev-libs/concurrencykit"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	dev-libs/concurrencykit
+"
+DEPEND="
+	${RDEPEND}
+"
 
 src_configure() {
 	export CYC_GCC_OPT_FLAGS="${CFLAGS}"
+
 	append-cflags -fPIC -Iinclude
 	append-ldflags -L.
 	tc-export AR CC RANLIB
 }
 
 src_compile() {
-	local myopts=(
+	local -a myopts=(
 		PREFIX="/usr"
 		CYC_GCC_OPT_FLAGS="${CYC_GCC_OPT_FLAGS}"
 		AR="$(tc-getAR)"
