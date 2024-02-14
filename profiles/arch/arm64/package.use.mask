@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2024-02-14)
+# Fails to compile, bug #924301
+~dev-lang/rust-1.75.0 lto
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-02-07)
 # nvidia-powerd is only available for arm64 in 550+
 <x11-drivers/nvidia-drivers-550 powerd
