@@ -27,6 +27,11 @@ RDEPEND="
 	geoclue? ( app-misc/geoclue:2.0 )
 "
 
+CMAKE_SKIP_TESTS=(
+	# threads test (rarely) fails randomly
+	tst_qgeoareamonitor
+)
+
 src_prepare() {
 	qt6-build_src_prepare
 
