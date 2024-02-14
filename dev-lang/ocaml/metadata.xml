@@ -5,10 +5,6 @@
 		<email>ml@gentoo.org</email>
 		<name>ML</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gienah@gentoo.org</email>
-		<name>Mark Wright</name>
-	</maintainer>
 	<use>
 		<flag name="flambda">Enables the Flambda optimizer: A new intermediate representation (introduced in ocaml 4.03) in the depths of the compiler designed to allow for better inlining.</flag>
 		<flag name="spacetime">Enables the Spacetime memory profiler. See https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html for more information.</flag>
