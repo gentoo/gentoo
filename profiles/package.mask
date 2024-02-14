@@ -34,6 +34,18 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
+# All these firmwares are included in sys-kernel/linux-firmware, in some
+# cases in newer versions with security fixes.
+# Removal on 2024-03-15.  Bug #924589.
+sys-firmware/iwl1000-ucode
+sys-firmware/iwl3160-7260-bt-ucode
+sys-firmware/iwl3160-ucode
+sys-firmware/iwl6005-ucode
+sys-firmware/iwl6030-ucode
+sys-firmware/iwl7260-ucode
+sys-firmware/iwl8000-ucode
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # Does not work with >=kde-plasma/kwin-5.27 anymore.  Discontinued upstream.
 # https://github.com/Bismuth-Forge/bismuth/issues/471#issuecomment-1410969462
 # Removal on 2024-03-15.  Bug #924588.
