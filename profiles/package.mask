@@ -370,6 +370,7 @@ dev-java/osgi-foundation
 ~kde-apps/kio-extras-24.01.95
 ~kde-apps/kio-extras-kf5-24.01.95
 ~kde-apps/libkcddb-24.01.95
+~kde-apps/libkcompactdisc-24.01.95
 ~kde-apps/libkexiv2-24.01.95
 ~kde-apps/spectacle-24.01.95
 ~kde-misc/kio-fuse-5.1.0
