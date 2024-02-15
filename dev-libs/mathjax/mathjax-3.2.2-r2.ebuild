@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
-inherit python-any-r1 vcs-clean
+inherit python-any-r1
 
 # MathJax-docs doesn't have releases, so this is the commit that was
 # current when mathjax-${PV} was released.
@@ -44,11 +44,6 @@ pkg_setup() {
 	if use doc; then
 		python-any-r1_pkg_setup
 	fi
-}
-
-src_prepare() {
-	default
-	egit_clean
 }
 
 src_compile() {

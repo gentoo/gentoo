@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{10..11} pypy3 )
-inherit python-any-r1 vcs-clean
+inherit python-any-r1
 
 DOCS_COMMIT="9d711f40638202b02f2154d7f05ea35088ff9388"
 
@@ -62,7 +62,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	egit_clean
 	sed -e 's/add_stylesheet/add_css_file/' -i "${DOCS_S}"/conf.py || die
 }
 
