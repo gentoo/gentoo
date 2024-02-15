@@ -5,7 +5,7 @@ Requires=fangfrisch.service
 [Timer]
 OnCalendar=*:00,10,20,30,40,50
 Persistent=true
-RandomizedDelaySec=10s
+RandomizedDelaySec=30s
 Unit=fangfrisch.service
 
 [Install]

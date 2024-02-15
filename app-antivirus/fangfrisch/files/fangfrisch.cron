@@ -1,4 +1,4 @@
-# HOME=/var/lib/fangfrisch
+# HOME=/var/lib/clamav
 # LOG_LEVEL=WARNING
 # minute hour day-of-month month day-of-week user command
-# */10 * * * * clamav fangfrisch -c /etc/fangfrisch.conf refresh
+# */10 * * * * clamav sleep $((RANDOM \% 30)); fangfrisch -c /etc/fangfrisch.conf refresh
