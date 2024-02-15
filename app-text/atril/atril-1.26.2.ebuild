@@ -23,6 +23,7 @@ REQUIRED_USE="t1lib? ( dvi )"
 
 COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
+	app-arch/libarchive:=
 	>=app-text/poppler-0.22[cairo]
 	>=dev-libs/glib-2.62:2
 	>=dev-libs/libxml2-2.5:2
