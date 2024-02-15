@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~riscv ~x86"
 
 RDEPEND="
 	<dev-python/asgiref-4[${PYTHON_USEDEP}]
