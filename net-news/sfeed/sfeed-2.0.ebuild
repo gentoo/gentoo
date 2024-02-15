@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://codemadness.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~sparc ~x86"
 
 THEMES=( mono{,-highlight} newsboat templeos )
 IUSE="+ncurses +${THEMES[@]/#/theme-}"
@@ -38,7 +38,7 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		RANLIB="$(tc-getRANLIB)" \
 		AR="$(tc-getAR)" \
-		SFEED_CURSES="$(usex ncurses "sfeed_curses" "")" \
+		SFEED_CURSES="$(usev ncurses sfeed_curses)" \
 		SFEED_THEME="${SFEED_THEME}" \
 		SFEED_CURSES_LDFLAGS="${LDFLAGS} ${ncurses_ldflags}"
 }
@@ -49,7 +49,7 @@ src_install() {
 		PREFIX="${EPREFIX}/usr" \
 		MANPREFIX="${EPREFIX}/usr/share/man" \
 		DOCPREFIX="${EPREFIX}/usr/share/doc/${PF}" \
-		SFEED_CURSES="$(usex ncurses "sfeed_curses" "")" \
+		SFEED_CURSES="$(usev ncurses sfeed_curses)" \
 		install
 
 	save_config $(printf "themes/%s.h " "${THEMES[@]//-/_}")
