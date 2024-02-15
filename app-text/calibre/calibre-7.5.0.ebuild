@@ -97,7 +97,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=app-pda/libimobiledevice-1.2.0
 	)
 	speech? ( $(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]') )
-	system-mathjax? ( >=dev-libs/mathjax-3 )
+	system-mathjax? ( >=dev-libs/mathjax-3:= )
 	udisks? ( virtual/libudev )
 	unrar? ( dev-python/unrardll )
 "
