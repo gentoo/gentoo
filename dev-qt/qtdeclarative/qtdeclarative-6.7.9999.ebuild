@@ -18,7 +18,7 @@ IUSE="+network opengl +sql +ssl vulkan +widgets"
 # other more minor issues (installs junk, sandbox/offscreen issues)
 RESTRICT="test"
 
-RDEPEND="~dev-qt/qtbase-${PV}:6[network=,opengl=,sql?,ssl?,vulkan=,widgets=]"
+RDEPEND="~dev-qt/qtbase-${PV}:6[gui,network=,opengl=,sql?,ssl?,vulkan=,widgets=]"
 DEPEND="
 	${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers )
