@@ -62,7 +62,7 @@ src_prepare() {
 
 src_configure() {
 	# there are in-source switches
-	use debug && CMAKE_BUILD_TYPE=Debug
+	use debug && local -x CPPFLAGS="${CPPFLAGS} -DDEBUG"
 
 	local mycmakeargs=(
 		-DGAMEDIR="${EPREFIX}/usr/bin"
