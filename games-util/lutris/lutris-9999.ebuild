@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,12 +15,9 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/lutris/lutris.git"
 	inherit git-r3
 else
-	if [[ ${PV} == *_beta* ]] ; then
-		SRC_URI="https://github.com/lutris/lutris/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
-		S="${WORKDIR}"/${P/_/-}
-	else
-		SRC_URI="https://lutris.net/releases/${P/-/_}.tar.xz"
-		S="${WORKDIR}/${PN}"
+	SRC_URI="https://github.com/lutris/lutris/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.gh.tar.gz"
+	S="${WORKDIR}"/${P/_/-}
+	if [[ ${PV} != *_beta* ]] ; then
 		KEYWORDS="~amd64 ~x86"
 	fi
 fi
@@ -83,6 +80,7 @@ src_test() {
 
 src_install() {
 	meson_src_install
+	python_optimize
 	python_fix_shebang "${ED}/usr/" #740048
 }
 
