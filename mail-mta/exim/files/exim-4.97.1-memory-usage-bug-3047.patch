@@ -15,6 +15,16 @@ Date: Sun, 11 Feb 2024 13:57:18 +0000 (+0000)
 Subject: Use non-releaseable memory for regex match strings. Bug 3047
 Broken-by: 35aacb69f5c8
 
+From 6fcb3173d64ef8a9d70f8adf19f134a0cd9cf6e8 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Sun, 11 Feb 2024 15:04:58 +0000
+Subject: [PATCH] use dynamic mem for regex_match_string
+
+From a173a4376d168edbf3fe2494dff998c4060bf425 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Tue, 13 Feb 2024 17:34:19 +0000
+Subject: [PATCH] Use non-releasable memory for regex line-buffer
+Broken-by: 5aacb69f5c8
 
 diff --git a/src/src/exim.c b/src/src/exim.c
 --- a/src/exim.c
@@ -99,6 +109,15 @@ diff --git a/src/src/macros.h b/src/src/macros.h
 diff --git a/src/src/regex.c b/src/src/regex.c
 --- a/src/regex.c
 +++ b/src/regex.c
+@@ -24,8 +24,6 @@ typedef struct pcre_list {
+   struct pcre_list *	next;
+ } pcre_list;
+ 
+-uschar regex_match_string_buffer[1024];
+-
+ extern FILE *mime_stream;
+ extern uschar *mime_current_boundary;
+ 
 @@ -31,12 +31,11 @@ extern uschar *mime_current_boundary;
  
  
@@ -135,16 +154,20 @@ diff --git a/src/src/regex.c b/src/src/regex.c
  static int
  matcher(pcre_list * re_list_head, uschar * linebuffer, int len)
  {
-@@ -75,6 +82,9 @@ for (pcre_list * ri = re_list_head; ri; ri = ri->next)
+@@ -75,9 +82,10 @@ for (pcre_list * ri = re_list_head; ri; ri = ri->next)
    /* try matcher on the line */
    if ((n = pcre2_match(ri->re, (PCRE2_SPTR)linebuffer, len, 0, 0, md, pcre_gen_mtc_ctx)) > 0)
      {
 +    int save_pool = store_pool;
 +    store_pool = POOL_PERM;
 +
-     Ustrncpy(regex_match_string_buffer, ri->pcre_text,
- 	      sizeof(regex_match_string_buffer)-1);
-     regex_match_string = regex_match_string_buffer;
+-    Ustrncpy(regex_match_string_buffer, ri->pcre_text,
+-	      sizeof(regex_match_string_buffer)-1);
+-    regex_match_string = regex_match_string_buffer;
++    regex_match_string = string_copy(ri->pcre_text);
+ 
+     for (int nn = 1; nn < n; nn++)
+       {
 @@ -87,6 +97,7 @@ for (pcre_list * ri = re_list_head; ri; ri = ri->next)
        regex_vars[nn-1] = string_copyn(linebuffer + ovec[off], len);
        }
@@ -153,9 +176,11 @@ diff --git a/src/src/regex.c b/src/src/regex.c
      return OK;
      }
    }
-@@ -112,7 +113,8 @@ FILE * mbox_file;
+@@ -110,9 +111,9 @@ FILE * mbox_file;
+ unsigned long mbox_size;
+ FILE * mbox_file;
  pcre_list * re_list_head;
- uschar * linebuffer;
+-uschar * linebuffer;
  long f_pos = 0;
 -int ret = FAIL;
 +int ret = FAIL, cnt, lcount = REGEX_LOOPCOUNT_STORE_RESET;
@@ -163,7 +188,7 @@ diff --git a/src/src/regex.c b/src/src/regex.c
  
  regex_vars_clear();
  
-@@ -136,26 +138,34 @@ else
+@@ -136,26 +138,32 @@ else
    mbox_file = mime_stream;
    }
  
@@ -187,17 +212,15 @@ diff --git a/src/src/regex.c b/src/src/regex.c
 +  /* precompile our regexes */
 +  if ((re_list_head = compile(*listptr, cacheable, &cnt)))
 +    {
-+    /* match each line against all regexes */
-+    linebuffer = store_get(32767, GET_TAINTED);
-+    while (fgets(CS linebuffer, 32767, mbox_file))
++    while (fgets(CS big_buffer, big_buffer_size, mbox_file))
 +      {
 +      if (  mime_stream && mime_current_boundary		/* check boundary */
-+	 && Ustrncmp(linebuffer, "--", 2) == 0
-+	 && Ustrncmp((linebuffer+2), mime_current_boundary,
++	 && Ustrncmp(big_buffer, "--", 2) == 0
++	 && Ustrncmp((big_buffer+2), mime_current_boundary,
 +		      Ustrlen(mime_current_boundary)) == 0)
 +	break;						/* found boundary */
 +
-+      if ((ret = matcher(re_list_head, linebuffer, (int)Ustrlen(linebuffer))) == OK)
++      if ((ret = matcher(re_list_head, big_buffer, (int)Ustrlen(big_buffer))) == OK)
 +	break;
 +
 +      if ((lcount -= cnt) <= 0)
