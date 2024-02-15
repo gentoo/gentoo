@@ -5,7 +5,6 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYPI_PN="python3-discogs-client"
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
