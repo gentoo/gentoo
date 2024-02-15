@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,10 +23,9 @@ LICENSE="ISC"
 SLOT="0"
 IUSE="debug selinux systemd utempter vim-syntax"
 
-# See https://github.com/tmux/tmux/issues/3531 for minimum ncurses version
 DEPEND="
 	dev-libs/libevent:=
-	>=sys-libs/ncurses-6.4_p20230424:=
+	sys-libs/ncurses:=
 	systemd? ( sys-apps/systemd:= )
 	utempter? ( sys-libs/libutempter )
 	kernel_Darwin? ( dev-libs/libutf8proc:= )
@@ -43,6 +42,9 @@ RDEPEND="
 	vim-syntax? ( app-vim/vim-tmux )
 "
 
+# BSD only functions
+QA_CONFIG_IMPL_DECL_SKIP=( strtonum recallocarray )
+
 DOCS=( CHANGES README )
 
 PATCHES=(
@@ -50,15 +52,15 @@ PATCHES=(
 )
 
 src_prepare() {
-	# bug 438558
-	# 1.7 segfaults when entering copy mode if compiled with -Os
-	replace-flags -Os -O2
-
 	default
 	eautoreconf
 }
 
 src_configure() {
+	# bug 438558
+	# 1.7 segfaults when entering copy mode if compiled with -Os
+	replace-flags -Os -O2
+
 	local myeconfargs=(
 		--sysconfdir="${EPREFIX}"/etc
 		$(use_enable debug)
