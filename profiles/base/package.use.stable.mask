@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Nick Sarnie <sarnex@gentoo.org> (2024-01-31)
-# Test dependencies are not stable
-dev-util/vulkan-utility-libraries test
-
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
 # Calendar is broken with some languages on 115.0 release with <icu-75.
 # Bug #910229, #920713
