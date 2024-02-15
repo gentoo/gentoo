@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ DESCRIPTION="Perl client for memcached, in C language"
 # Bug: https://bugs.gentoo.org/718946#c4
 LICENSE="|| ( Artistic GPL-1+ ) LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=virtual/perl-Carp-1.250.0
