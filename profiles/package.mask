@@ -369,6 +369,8 @@ dev-java/osgi-foundation
 =kde-apps/kio-extras-23.08.5-r100
 ~kde-apps/kio-extras-24.01.95
 ~kde-apps/kio-extras-kf5-24.01.95
+~kde-apps/libkcddb-24.01.95
+~kde-apps/libkcompactdisc-24.01.95
 ~kde-apps/libkexiv2-24.01.95
 ~kde-apps/spectacle-24.01.95
 ~kde-misc/kio-fuse-5.1.0
@@ -389,6 +391,7 @@ dev-java/osgi-foundation
 ~net-libs/accounts-qml-0.7_p20231028
 ~net-libs/signon-oauth2-0.25_p20210102
 =net-libs/signond-8.61-r100
+~net-misc/kio-zeroconf-24.01.95
 ~sys-auth/polkit-qt-0.175.0
 
 # Sam James <sam@gentoo.org> (2023-12-14)
