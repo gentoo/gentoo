@@ -18,9 +18,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.73.0:2
-	>=gui-libs/gtk-4.7:4
-	>=gui-libs/gtksourceview-5.5.0:5
-	>=gui-libs/libadwaita-1.4_alpha:1
+	>=gui-libs/gtk-4.10:4
+	>=gui-libs/gtksourceview-5.10.0:5
+	>=gui-libs/libadwaita-1.5_alpha:1
 	app-text/editorconfig-core-c
 	x11-libs/cairo
 	spell? (
