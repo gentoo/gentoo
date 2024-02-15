@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2024-02-15)
+# Hangs at runtime, bug #924617.
+=net-im/zoom-5.17.5.2543
+
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # Abandoned upstream in 2020.  Has a fork that has last been released
 # in 2021.  No revdeps.
