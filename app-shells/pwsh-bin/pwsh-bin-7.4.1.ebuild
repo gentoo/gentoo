@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 REQUIRED_USE="elibc_glibc"
 
 RDEPEND="
