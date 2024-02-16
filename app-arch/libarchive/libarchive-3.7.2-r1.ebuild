@@ -67,6 +67,9 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	# https://github.com/libarchive/libarchive/issues/1968
 	"${FILESDIR}/${P}-32bit-test.patch"
+	# https://github.com/libarchive/libarchive/issues/2069
+	# (we can simply update the command since we don't support old lrzip)
+	"${FILESDIR}/${P}-lrzip.patch"
 )
 
 multilib_src_configure() {
