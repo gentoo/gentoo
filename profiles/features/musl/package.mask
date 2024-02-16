@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2024-02-16)
+# Binary package, which is compiled against glibc
+app-editors/logseq-desktop-bin
+
 # Christopher Fore <csfore@posteo.net> (2024-01-24)
 # >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
 # https://github.com/koverstreet/bcachefs-tools/issues/213
