@@ -66,6 +66,11 @@ BDEPEND="
 "
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/urllib3/urllib3/commit/49b2ddaf07ec9ef65ef12d0218117f20e739ee6e
+		"${FILESDIR}/${P}-revert.patch"
+	)
+
 	# upstream considers 0.5 s to be "long" for a timeout
 	# we get tons of test failures on *fast* systems because of that
 	sed -i -e '/LONG_TIMEOUT/s:0.5:5:' test/__init__.py || die
