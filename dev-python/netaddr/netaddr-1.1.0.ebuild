@@ -25,7 +25,8 @@ RDEPEND="
 "
 
 distutils_enable_sphinx docs/source \
-	dev-python/furo
+	dev-python/furo \
+	dev-python/sphinx-issues
 distutils_enable_tests pytest
 
 src_prepare() {
