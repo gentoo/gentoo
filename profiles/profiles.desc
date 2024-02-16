@@ -247,6 +247,19 @@ hppa		default/linux/hppa/17.0/systemd					exp
 hppa		default/linux/hppa/17.0/systemd/merged-usr			exp
 hppa		default/linux/hppa/17.0/desktop					stable
 hppa		default/linux/hppa/17.0/developer				exp
+hppa		default/linux/hppa/23.0/hppa1.1					exp
+hppa		default/linux/hppa/23.0/hppa1.1/systemd				exp
+hppa		default/linux/hppa/23.0/hppa1.1/desktop				exp
+hppa		default/linux/hppa/23.0/hppa1.1/desktop/systemd			exp
+hppa		default/linux/hppa/23.0/hppa1.1/split-usr			exp
+hppa		default/linux/hppa/23.0/hppa1.1/split-usr/desktop		exp
+hppa		default/linux/hppa/23.0/hppa2.0					exp
+hppa		default/linux/hppa/23.0/hppa2.0/systemd				exp
+hppa		default/linux/hppa/23.0/hppa2.0/desktop				exp
+hppa		default/linux/hppa/23.0/hppa2.0/desktop/systemd			exp
+hppa		default/linux/hppa/23.0/hppa2.0/split-usr			exp
+hppa		default/linux/hppa/23.0/hppa2.0/split-usr/desktop		exp
+
 
 # IA64 Profiles
 # @MAINTAINER: ia64@gentoo.org
