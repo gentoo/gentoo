@@ -18,11 +18,12 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/dealii/dealii.git"
 	SRC_URI=""
 else
+	DOC_PV=9.4.1
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 		verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz.asc )
 		doc? (
-			https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-offline_documentation.tar.gz
-			verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-offline_documentation.tar.gz.asc )
+			https://github.com/${PN}/${PN}/releases/download/v${DOC_PV}/${PN}-${DOC_PV}-offline_documentation.tar.gz
+			verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${DOC_PV}/${PN}-${DOC_PV}-offline_documentation.tar.gz.asc )
 			)"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -82,6 +83,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
+	"${FILESDIR}"/${PN}-9.4.2-base-mpi.cc-remove-superfluous-explicit-instantiatio.patch
+	"${FILESDIR}"/${PN}-9.4.2-base-mpi.h-mark-a-template-variable-to-have-const-in.patch
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dealii.asc"
