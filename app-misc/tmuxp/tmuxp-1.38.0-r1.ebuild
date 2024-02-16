@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
 	>=app-misc/tmux-3.0a
-	=dev-python/libtmux-0.30.1*[${PYTHON_USEDEP}]
+	=dev-python/libtmux-0.30*[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.9[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 "
@@ -37,6 +37,13 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	sed -r -e 's:libtmux = "~[0-9.]+":libtmux = "~0.30":' \
+		-i pyproject.toml || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	SHELL="/bin/bash" epytest tests
