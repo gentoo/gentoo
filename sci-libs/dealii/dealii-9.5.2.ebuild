@@ -88,6 +88,8 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-dealii )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-9.4.2-base-mpi.cc-remove-superfluous-explicit-instantiatio.patch
+	"${FILESDIR}"/${PN}-9.4.2-base-mpi.h-mark-a-template-variable-to-have-const-in.patch
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dealii.asc"
