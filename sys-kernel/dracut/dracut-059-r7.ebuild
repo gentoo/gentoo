@@ -28,6 +28,7 @@ RDEPEND="
 	app-alternatives/cpio
 	>=app-shells/bash-4.0:0
 	sys-apps/coreutils[xattr(-)]
+	sys-apps/gawk
 	>=sys-apps/kmod-23[tools]
 	|| (
 		>=sys-apps/sysvinit-2.87-r3
