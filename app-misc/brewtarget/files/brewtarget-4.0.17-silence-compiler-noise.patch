@@ -1,0 +1,49 @@
+diff --git a/meson.build b/meson.build
+index 4952a515..17b99d26 100644
+--- a/meson.build
++++ b/meson.build
+@@ -343,7 +343,7 @@ qtCommonDependencies = dependency('qt6',
+                                              'Widgets',
+                                              'Xml'],         # TBD: Not sure we need this any more
+                                   include_type : 'system',
+-                                  static : true)
++                                  static : false)
+ # The Qt Gui module is only needed for the main program.  (We don't want the tests to try to load it or it could barf
+ # in a GitHub action that does not have a display running.)
+ qtMainExeDependencies = dependency('qt6', version : minVersionOfQt, modules: ['Gui'])
+@@ -422,7 +422,7 @@ boostModules = []
+ boostDependency = dependency('boost',
+                              version : '>=1.79.0',
+                              modules : boostModules,
+-                             static : true)
++                             static : false)
+ message('Boost:', boostDependency.name(), 'found =', boostDependency.found(), 'version =', boostDependency.version())
+ 
+ #
+@@ -489,7 +489,7 @@ endif
+ xercesDependency = dependency('XercesC',
+                               version : '>=3.2.2',
+                               required : true,
+-                              static : true)
++                              static : false)
+ xercesLibPaths = xercesDependency.get_variable(cmake : 'PACKAGE_LIBRARIES')
+ message('Xerces Library:', xercesDependency.name(), 'found =', xercesDependency.found(),
+         'version =', xercesDependency.version(), 'path(s)=', xercesLibPaths)
+@@ -497,7 +497,7 @@ sharedLibraryPaths += xercesLibPaths
+ xalanDependency = dependency('XalanC',
+                              version : '>=1.11.0',
+                              required : true,
+-                             static : true)
++                             static : false)
+ xalanLibPaths = xalanDependency.get_variable(cmake : 'PACKAGE_LIBRARIES')
+ message('Xalan Library:', xalanDependency.name(), 'found =', xalanDependency.found(),
+         'version =', xalanDependency.version(), 'path(s)=', xalanLibPaths)
+@@ -512,7 +512,7 @@ sharedLibraryPaths += xalanLibPaths
+ openSslDependency = dependency('OpenSSL',
+                                version : '>=3.0.2',
+                                required : true,
+-                               static : true)
++                               static : false)
+ #openSslLibPaths = openSslDependency.get_variable(cmake : 'PACKAGE_LIBRARIES')
+ message('OpenSSL Library:', openSslDependency.name(), 'found =', openSslDependency.found(),
+         'version =', openSslDependency.version())
