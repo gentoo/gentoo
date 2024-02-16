@@ -28,7 +28,6 @@ RESTRICT="test"
 
 # ffmpeg: https://tracker.dev.opencascade.org/view.php?id=32871
 RDEPEND="
-	!app-eselect/eselect-opencascade
 	dev-lang/tcl:=
 	dev-lang/tk:=
 	media-libs/fontconfig
