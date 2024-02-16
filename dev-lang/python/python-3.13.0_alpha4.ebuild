@@ -2,10 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+LLVM_COMPAT=( 16 )
+LLVM_OPTIONAL=1
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic multiprocessing pax-utils
-inherit python-utils-r1 toolchain-funcs verify-sig
+inherit autotools check-reqs flag-o-matic llvm-r1 multiprocessing
+inherit pax-utils python-utils-r1 toolchain-funcs verify-sig
 
 MY_PV=${PV/_alpha/a}
 MY_P="Python-${MY_PV%_p*}"
@@ -29,9 +32,10 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm libedit
+	bluetooth build debug +ensurepip examples gdbm jit libedit
 	+ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
+REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -83,6 +87,12 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
+	jit? (
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}
+			sys-devel/llvm:${LLVM_SLOT}
+		')
+	)
 	verify-sig? ( >=sec-keys/openpgp-keys-python-20221025 )
 "
 RDEPEND+="
@@ -108,6 +118,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	use jit && llvm-r1_pkg_setup
 	use test && check-reqs_pkg_setup
 }
 
@@ -279,6 +290,7 @@ src_configure() {
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
 		$(use_with debug assertions)
+		$(use_enable jit experimental-jit)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
 		$(use_with valgrind)
