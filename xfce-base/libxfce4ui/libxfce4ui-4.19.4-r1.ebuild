@@ -43,6 +43,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+DEPEND+="
+	x11-base/xorg-proto
+"
 BDEPEND="
 	dev-lang/perl
 	>=sys-devel/gettext-0.19.8
