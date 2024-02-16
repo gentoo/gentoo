@@ -38,6 +38,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/kevin1024/vcrpy/pull/823
+	"${FILESDIR}/${P}-httpbin-compat.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# these tests are failing with recent dev-python/werkzeug; losely related:
