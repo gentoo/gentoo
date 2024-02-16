@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic pam tmpfiles
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnu.org/software/screen/"
 
 if [[ ${PV} != 9999 ]] ; then
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
@@ -32,7 +32,8 @@ BDEPEND="sys-apps/texinfo"
 
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
-	"${FILESDIR}"/${P}-no-utempter.patch
+	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
+	"${FILESDIR}"/${PN}-4.9.1-utmp-exit.patch
 )
 
 src_prepare() {
@@ -40,9 +41,7 @@ src_prepare() {
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
-	sed -i '/include/ s:sched\.h:_sched.h:' \
-		screen.h winmsg.c window.h sched.c canvas.h || die
-	sed -i 's@[[:space:]]sched\.h@ _sched.h@' Makefile.in || die
+	sed -i '/include/ s:sched.h:_sched.h:' screen.h || die
 
 	# Fix manpage
 	sed -i \
@@ -78,12 +77,13 @@ src_configure() {
 	use debug && append-cppflags "-DDEBUG"
 
 	local myeconfargs=(
-		--enable-socket-dir="${EPREFIX}/tmp/${PN}"
-		--with-system_screenrc="${EPREFIX}/etc/screenrc"
+		--with-socket-dir="${EPREFIX}/tmp/${PN}"
+		--with-sys-screenrc="${EPREFIX}/etc/screenrc"
 		--with-pty-mode=0620
 		--with-pty-group=5
+		--enable-rxvt_osc
 		--enable-telnet
-		--enable-utmp
+		--enable-colors256
 		$(use_enable pam)
 	)
 	econf "${myeconfargs[@]}"
@@ -91,6 +91,7 @@ src_configure() {
 
 src_compile() {
 	LC_ALL=POSIX emake comm.h term.h
+	emake osdef.h
 
 	emake -C doc screen.info
 	default
@@ -98,7 +99,7 @@ src_compile() {
 
 src_install() {
 	local DOCS=(
-		README ChangeLog INSTALL TODO NEWS*
+		README ChangeLog INSTALL TODO NEWS* patchlevel.h
 		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
 	)
 
