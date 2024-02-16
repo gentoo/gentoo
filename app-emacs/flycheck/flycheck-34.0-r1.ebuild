@@ -25,10 +25,6 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	>=app-emacs/dash-2.12.1
-	>=app-emacs/pkg-info-0.4
-"
 BDEPEND="
 	test? (
 		app-emacs/buttercup
