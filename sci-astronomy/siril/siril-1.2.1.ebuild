@@ -52,6 +52,7 @@ BDEPEND="dev-build/cmake
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
+	"${FILESDIR}/${PN}-1.2-fseek64-musl.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )
