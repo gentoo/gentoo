@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-16)
+# Breaks dev-util/pkgcheck.  Masked until we resolve that.  Bug #924718.
+=dev-vcs/git-2.43.2
+
 # Sam James <sam@gentoo.org> (2024-02-15)
 # May break on some arches b/c of visibility/map changes to ffi_type_longdouble
 =dev-libs/libffi-3.4.5
