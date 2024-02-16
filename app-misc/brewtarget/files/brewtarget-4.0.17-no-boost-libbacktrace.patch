@@ -1,0 +1,49 @@
+diff --git a/meson.build b/meson.build
+index 506e5aa0..a044596d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -419,11 +419,6 @@ qtTestRunnerDependencies = dependency('qt6', version : minVersionOfQt, modules:
+ # For Boost, per https://mesonbuild.com/Dependencies.html#boost, we only need to supply module names for libraries we
+ # need to link against.  For the header-only Boost libraries, the 'boost' dependency suffices.
+ boostModules = []
+-if host_machine.system() == 'linux'
+-   boostModules += 'stacktrace_backtrace'
+-   add_global_arguments('-DBOOST_STACKTRACE_LINK', language : 'cpp')
+-   add_global_arguments('-DBOOST_STACKTRACE_USE_BACKTRACE', language : 'cpp')
+-endif
+ boostDependency = dependency('boost',
+                              version : '>=1.79.0',
+                              modules : boostModules,
+@@ -479,14 +474,6 @@ if host_machine.system() != 'windows'
+    endif
+ endif
+ 
+-# Note that, unlike, say, the parameters to include_directories(), the dirs argument to find_library() must be absolute
+-# paths
+-libbacktraceDir = join_paths(meson.project_source_root(), 'third-party/libbacktrace/.libs')
+-backtraceDependency = compiler.find_library('backtrace',
+-                                            required : true,
+-                                            static : true,
+-                                            dirs : [libbacktraceDir])
+-
+ #======================================== Find the other libraries we depend on ========================================
+ #
+ # See https://mesonbuild.com/Reference-manual_returned_dep.html for what info we can pull from a dependency object
+@@ -537,7 +524,6 @@ message('OpenSSL Library:', openSslDependency.name(), 'found =', openSslDependen
+ 
+ #==================================================== Other headers ====================================================
+ # Other directories to search in for headers.  Meson will barf an error if any of these directories does not exist.
+-includeDirs = include_directories('src', 'third-party/valijson/include', 'third-party/libbacktrace')
+ 
+ 
+ #=======================================================================================================================
+@@ -1311,8 +1297,7 @@ commonDependencies = [qtCommonDependencies,
+                       xalanDependency,
+                       boostDependency,
+                       dlDependency,
+-                      openSslDependency, # This isn't strictly needed for the testRunner, but no harm comes from including it
+-                      backtraceDependency]
++                      openSslDependency] # This isn't strictly needed for the testRunner, but no harm comes from including it
+ mainExeDependencies = commonDependencies + qtMainExeDependencies
+ testRunnerDependencies = commonDependencies + qtTestRunnerDependencies
+ 

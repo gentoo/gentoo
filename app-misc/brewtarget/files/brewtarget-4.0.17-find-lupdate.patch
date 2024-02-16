@@ -1,0 +1,15 @@
+diff --git a/meson.build b/meson.build
+index 506e5aa0..0ea58970 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1272,7 +1272,9 @@ if host_machine.system() == 'windows'
+ elif host_machine.system() == 'linux'
+    lupdate_name = 'lupdate'
+ endif
+-lupdate_executable = find_program(lupdate_name, required : true)
++lupdate_executable = find_program(lupdate_name,
++                                  dirs: qtCommonDependencies.get_variable(pkgconfig: 'bindir'),
++                                  required : true)
+ 
+ #
+ # Call lupdate to ensure the .ts files are synced with the source code.  We need:

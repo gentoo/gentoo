@@ -1,0 +1,29 @@
+diff --git a/meson.build b/meson.build
+index a044596d..381a7d79 100644
+--- a/meson.build
++++ b/meson.build
+@@ -519,12 +519,10 @@ message('OpenSSL Library:', openSslDependency.name(), 'found =', openSslDependen
+ #sharedLibraryPaths += openSslLibPaths
+ 
+ #====================================================== Valijson =======================================================
+-# Don't need to do anything special, other than set include directories below, as it's header-only and we pull it in as
+-# a Git submodule.
+-
++valijsonDependency = declare_dependency(include_directories: get_option('prefix')/get_option('includedir')/'valijson')
+ #==================================================== Other headers ====================================================
+ # Other directories to search in for headers.  Meson will barf an error if any of these directories does not exist.
+-
++includeDirs = include_directories('src', 'third-party/libbacktrace')
+ 
+ #=======================================================================================================================
+ #============================================= Extra Windows dependencies ==============================================
+@@ -1297,7 +1295,8 @@ commonDependencies = [qtCommonDependencies,
+                       xalanDependency,
+                       boostDependency,
+                       dlDependency,
+-                      openSslDependency] # This isn't strictly needed for the testRunner, but no harm comes from including it
++                      openSslDependency, # This isn't strictly needed for the testRunner, but no harm comes from including it
++                      valijsonDependency]
+ mainExeDependencies = commonDependencies + qtMainExeDependencies
+ testRunnerDependencies = commonDependencies + qtTestRunnerDependencies
+ 
