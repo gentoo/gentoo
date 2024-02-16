@@ -227,6 +227,13 @@ src_configure() {
 	cargo_src_configure
 }
 
+src_test() {
+	# Set COLUMNS for deterministic help output, #913364
+	export COLUMNS=100
+
+	cargo_src_test
+}
+
 src_install() {
 	cargo_src_install
 
@@ -240,11 +247,4 @@ src_install() {
 	newbashcomp assets/completions/${PN}.bash ${PN}
 	newzshcomp assets/completions/${PN}.zsh _${PN}
 	dofishcomp assets/completions/${PN}.fish
-}
-
-src_test() {
-	# Set COLUMNS for deterministic help output, #913364
-	export COLUMNS=100
-
-	cargo_src_test
 }
