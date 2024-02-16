@@ -4,7 +4,7 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit autotools flag-o-matic multilib multilib-build
+inherit autotools flag-o-matic optfeature multilib multilib-build
 inherit prefix toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
@@ -414,6 +414,9 @@ pkg_postinst() {
 		ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
 		ewarn "applications under ${PN} will likely not be usable."
 	fi
+
+	optfeature "/dev/hidraw* access used for *some* controllers (e.g. DualShock4)" \
+		games-util/game-device-udev-rules
 
 	eselect wine update --if-unset || die
 }
