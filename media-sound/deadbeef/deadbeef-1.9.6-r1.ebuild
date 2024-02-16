@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm libretro libsamplerate mp3 musepack nls notify +nullout opus oss pulseaudio pipewire sc68 shellexec +supereq vorbis wavpack"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm libretro libsamplerate mp3 musepack nls notify +nullout opus oss pulseaudio pipewire sc68 shellexec +supereq vorbis wavpack zip"
 
 REQUIRED_USE="
 	|| ( alsa oss pulseaudio pipewire nullout )
@@ -49,7 +49,7 @@ DEPEND="
 		media-libs/libogg
 	)
 	libsamplerate? ( media-libs/libsamplerate )
-	mp3? ( media-sound/mpg123 )
+	mp3? ( media-sound/mpg123-base )
 	musepack? ( media-sound/musepack-tools )
 	nls? ( virtual/libintl )
 	notify? ( sys-apps/dbus )
@@ -58,6 +58,7 @@ DEPEND="
 	pipewire? ( media-video/pipewire:= )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
+	zip? ( dev-libs/libzip:= )
 "
 
 RDEPEND="${DEPEND}"
@@ -146,7 +147,6 @@ src_configure () {
 		"--disable-sndfile"
 		"--disable-soundtouch"
 		"--disable-tta"
-		"--disable-vfs-zip"
 		"--disable-vtx"
 		"--disable-wildmidi"
 		"--disable-wma"
@@ -181,6 +181,7 @@ src_configure () {
 		"$(use_enable libretro)"
 		"$(use_enable libsamplerate src)"
 		"$(use_enable wavpack)"
+		"$(use_enable zip vfs-zip)"
 
 		"--enable-gtk3"
 		"--enable-vfs-curl"
