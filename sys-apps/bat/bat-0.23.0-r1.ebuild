@@ -208,7 +208,7 @@ src_configure() {
 
 src_test() {
 	# Set COLUMNS for deterministic help output, #913364
-	export COLUMNS=100
+	local -x COLUMNS=100
 
 	cargo_src_test
 }
