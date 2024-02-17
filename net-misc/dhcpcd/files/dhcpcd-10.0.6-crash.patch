@@ -1,0 +1,46 @@
+https://github.com/NetworkConfiguration/dhcpcd/issues/179
+https://github.com/NetworkConfiguration/dhcpcd/issues/283
+https://bugzilla.redhat.com/2262996
+https://github.com/NetworkConfiguration/dhcpcd/commit/727c78f503d456875e2a3cee7609288b537d9d25
+
+From 727c78f503d456875e2a3cee7609288b537d9d25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Men=C5=A1=C3=ADk?= <pemensik@redhat.com>
+Date: Fri, 16 Feb 2024 17:15:35 +0100
+Subject: [PATCH] Move dhcp(v4) packet size check earlier (#295)
+
+dhcp_handlebootp handled zero sized packets correctly, but
+dhcp_redirect_dhcp did not have such protection. Move size check before
+both of them. Size when called from dhcp_packet is checked by
+is_packet_udp_bootp call. Only dhcp_recvmsg needs earlier checking to be
+added.
+
+Fixes #283
+--- a/src/dhcp.c
++++ b/src/dhcp.c
+@@ -3532,12 +3532,6 @@ dhcp_handlebootp(struct interface *ifp, struct bootp *bootp, size_t len,
+ {
+ 	size_t v;
+ 
+-	if (len < offsetof(struct bootp, vend)) {
+-		logerrx("%s: truncated packet (%zu) from %s",
+-		    ifp->name, len, inet_ntoa(*from));
+-		return;
+-	}
+-
+ 	/* Unlikely, but appeases sanitizers. */
+ 	if (len > FRAMELEN_MAX) {
+ 		logerrx("%s: packet exceeded frame length (%zu) from %s",
+@@ -3670,6 +3664,13 @@ dhcp_recvmsg(struct dhcpcd_ctx *ctx, struct msghdr *msg)
+ 		logerr(__func__);
+ 		return;
+ 	}
++
++	if (iov->iov_len < offsetof(struct bootp, vend)) {
++		logerrx("%s: truncated packet (%zu) from %s",
++		    ifp->name, iov->iov_len, inet_ntoa(from->sin_addr));
++		return;
++	}
++
+ 	state = D_CSTATE(ifp);
+ 	if (state == NULL) {
+ 		/* Try re-directing it to another interface. */
