@@ -6,7 +6,7 @@ EAPI=8
 ECM_QTHELP="false"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework to collect user feedback for applications via telemetry and surveys"
