@@ -353,6 +353,8 @@ mips		default/linux/mips/17.0/mipsel/multilib/n32/systemd/merged-usr	exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64			exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd		exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd/merged-usr	exp
+mips		default/linux/mips/23.0/mipsel/o32_sf				exp
+mips		default/linux/mips/23.0/mipsel/o32_sf/systemd			exp
 mips		default/linux/mips/23.0/mipsel/o32				exp
 mips		default/linux/mips/23.0/mipsel/o32/systemd			exp
 mips		default/linux/mips/23.0/mipsel/n32				exp
@@ -361,6 +363,8 @@ mips		default/linux/mips/23.0/mipsel/n64				exp
 mips		default/linux/mips/23.0/mipsel/n64/systemd			exp
 mips		default/linux/mips/23.0/mipsel/multilib/n64			exp
 mips		default/linux/mips/23.0/mipsel/multilib/n64/systemd		exp
+mips		default/linux/mips/23.0/o32_sf					exp
+mips		default/linux/mips/23.0/o32_sf/systemd				exp
 mips		default/linux/mips/23.0/o32					exp
 mips		default/linux/mips/23.0/o32/systemd				exp
 mips		default/linux/mips/23.0/n32					exp
@@ -369,10 +373,12 @@ mips		default/linux/mips/23.0/n64					exp
 mips		default/linux/mips/23.0/n64/systemd				exp
 mips		default/linux/mips/23.0/multilib/n64				exp
 mips		default/linux/mips/23.0/multilib/n64/systemd			exp
+mips		default/linux/mips/23.0/split-usr/mipsel/o32_sf			exp
 mips		default/linux/mips/23.0/split-usr/mipsel/o32			exp
 mips		default/linux/mips/23.0/split-usr/mipsel/n32			exp
 mips		default/linux/mips/23.0/split-usr/mipsel/n64			exp
 mips		default/linux/mips/23.0/split-usr/mipsel/multilib/n64		exp
+mips		default/linux/mips/23.0/split-usr/o32_sf			exp
 mips		default/linux/mips/23.0/split-usr/o32				exp
 mips		default/linux/mips/23.0/split-usr/n32				exp
 mips		default/linux/mips/23.0/split-usr/n64				exp
