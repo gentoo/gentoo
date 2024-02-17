@@ -6,7 +6,7 @@ EAPI=8
 ECM_EXAMPLES="true"
 ECM_QTHELP="false"
 ECM_TEST="true"
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="QtQuick plugin providing high-performance charts"
