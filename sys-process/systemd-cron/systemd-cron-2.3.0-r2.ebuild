@@ -93,7 +93,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" PCH= install
 	rm -f "${ED}"/usr/lib/sysusers.d/systemd-cron.conf
 }
 
