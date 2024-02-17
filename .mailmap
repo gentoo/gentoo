@@ -1,6 +1,7 @@
 # Old/new developers can be added here to map their contributions accurately
 # before joining and after retiring, as well as the usual uses of .mailmap.
 # See gitmailmap(5) for format details.
+# Please keep this list sorted. Use "LC_ALL=en_US.utf-8 grep -v '^#' .mailmap | sort"
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <aammerlaan@science.ru.nl>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrew.ammerlaan@ru.nl>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@gentoo.org>
