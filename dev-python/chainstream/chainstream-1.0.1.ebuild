@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rrthomas/chainstream/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 src_configure() {
 	# upstream doesn't provide build system in pyproject.toml
