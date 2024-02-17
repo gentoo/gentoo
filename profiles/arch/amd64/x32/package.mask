@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2024-02-17)
+# Requires net-libs/nodejs which is unavailable on amd64/x32.
+net-misc/sunshine
+
 # Eli Schwartz <eschwartz93@gmail.com> (2023-10-19)
 # Requires net-libs/nodejs which is unavailable on amd64/x32.
 dev-lang/rapydscript-ng
