@@ -268,17 +268,17 @@ llvm.org_set_globals() {
 	fi
 
 	if [[ ${LLVM_MANPAGES} ]]; then
+		IUSE+=" doc"
+
 		# use pregenerated tarball if available
 		local manpage_dist=$(llvm_manpage_get_dist)
 		if [[ -n ${manpage_dist} ]]; then
-			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
 					https://dev.gentoo.org/~mgorny/dist/llvm/${manpage_dist}
 				)
 			"
 		else
-			IUSE+=" +doc"
 			# NB: this is not always the correct dep but it does no harm
 			BDEPEND+=" dev-python/sphinx"
 		fi
