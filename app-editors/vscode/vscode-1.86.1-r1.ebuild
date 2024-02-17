@@ -113,15 +113,15 @@ src_install() {
 	fi
 
 	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
-		"${FILESDIR}/vscode-url-handler.desktop" \
-		> "${T}/vscode-url-handler.desktop" || die
+		"${FILESDIR}/code-url-handler.desktop" \
+		> "${T}/code-url-handler.desktop" || die
 
 	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
-		"${FILESDIR}/vscode.desktop" \
-		> "${T}/vscode.desktop" || die
+		"${FILESDIR}/code.desktop" \
+		> "${T}/code.desktop" || die
 
-	domenu "${T}/vscode.desktop"
-	domenu "${T}/vscode-url-handler.desktop"
+	domenu "${T}/code.desktop"
+	domenu "${T}/code-url-handler.desktop"
 	newicon "resources/app/resources/linux/code.png" "vscode.png"
 }
 
