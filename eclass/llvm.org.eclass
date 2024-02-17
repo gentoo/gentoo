@@ -268,14 +268,30 @@ llvm.org_set_globals() {
 	fi
 
 	if [[ ${LLVM_MANPAGES} ]]; then
-		IUSE+=" doc"
+		# @ECLASS_VARIABLE: LLVM_MANPAGE_DIST
+		# @OUTPUT_VARIABLE
+		# @DESCRIPTION:
+		# The filename of the prebuilt manpage tarball for this version.
+		LLVM_MANPAGE_DIST=
+		if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
+			case ${PV} in
+				14*|15*|16.0.[0-3])
+					LLVM_MANPAGE_DIST="llvm-${PV}-manpages.tar.bz2"
+					;;
+				16*)
+					LLVM_MANPAGE_DIST="llvm-16.0.4-manpages.tar.bz2"
+					;;
+				17*)
+					LLVM_MANPAGE_DIST="llvm-17.0.1-manpages.tar.bz2"
+					;;
+			esac
+		fi
 
-		# use pregenerated tarball if available
-		local manpage_dist=$(llvm_manpage_get_dist)
-		if [[ -n ${manpage_dist} ]]; then
+		IUSE+=" doc"
+		if [[ -n ${LLVM_MANPAGE_DIST} ]]; then
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/${manpage_dist}
+					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
 				)
 			"
 		else
@@ -436,32 +452,12 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
-# @FUNCTION: llvm_manpage_get_dist
-# @DESCRIPTION:
-# Output the filename of the manpage dist for this version,
-# if available.  Otherwise returns without output.
-llvm_manpage_get_dist() {
-	if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
-		case ${PV} in
-			14*|15*|16.0.[0-3])
-				echo "llvm-${PV}-manpages.tar.bz2"
-				;;
-			16*)
-				echo "llvm-16.0.4-manpages.tar.bz2"
-				;;
-			17*)
-				echo "llvm-17.0.1-manpages.tar.bz2"
-				;;
-		esac
-	fi
-}
-
 # @FUNCTION: llvm_are_manpages_built
 # @DESCRIPTION:
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || [[ -z $(llvm_manpage_get_dist) ]]
+	use doc || [[ -z ${LLVM_MANPAGE_DIST} ]]
 }
 
 # @FUNCTION: llvm_install_manpages
