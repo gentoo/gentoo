@@ -24,6 +24,7 @@ IUSE="examples"
 
 RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
+	dev-python/wcwidth[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
