@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_TEST="false"
 PVCUT=$(ver_cut 1-2)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework providing integration of QML and KDE work spaces"
