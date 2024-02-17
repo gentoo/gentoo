@@ -1,0 +1,32 @@
+From https://github.com/Draghtnod/Pidgin-GPG/pull/9
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 17 Feb 2024 13:28:40 +0300
+Subject: [PATCH] Fix compilation on MUSL systems
+
+In MUSL encrypt() is part of unistd.h, which conflicts with internal
+static function encrypt(). Renamed last one to fix that.
+
+See: https://bugs.gentoo.org/831185
+--- a/src/pidgin-gpg.c
++++ b/src/pidgin-gpg.c
+@@ -604,7 +604,7 @@ static char* verify( const char* sig_str ) {
+  * encrypt a plain string with the key found with fingerprint fpr
+  * FREE MEMORY AFTER USAGE OF RETURN VALUE!
+  * ------------------ */
+-static char* encrypt( gpgme_ctx_t* ctx, gpgme_key_t* key_arr, const char* plain_str, const char* fpr ) {
++static char* pidgin_gpg_encrypt( gpgme_ctx_t* ctx, gpgme_key_t* key_arr, const char* plain_str, const char* fpr ) {
+ 	if( ctx == NULL ) {
+ 		purple_debug_error( PLUGIN_ID, "encrypt: missing ctx\n" );
+ 		return NULL;
+@@ -1054,7 +1054,7 @@ void jabber_send_signal_cb( PurpleConnection* pc, xmlnode** packet, gpointer unu
+ 			g_free( bare_jid );
+ 
+ 			// encrypt message
+-			enc_str = encrypt( &item->ctx, item->key_arr, message, item->fpr );
++			enc_str = pidgin_gpg_encrypt( &item->ctx, item->key_arr, message, item->fpr );
+ 			g_free( message );
+ 			if( enc_str != NULL ) {
+ 				// remove message from body
+-- 
+2.43.0
+
