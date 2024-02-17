@@ -23,7 +23,7 @@ LICENSE="
 	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain
 "
 SLOT="0"
-IUSE="alsa cpu_flags_x86_sse4_1 jack pulseaudio sndio test vulkan wayland"
+IUSE="alsa cpu_flags_x86_sse4_1 +clang jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
@@ -65,7 +65,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-qt/qttools:6[linguist]
-	sys-devel/clang:*
+	clang? ( sys-devel/clang:* )
 	wayland? (
 		dev-util/wayland-scanner
 		kde-frameworks/extra-cmake-modules
@@ -93,10 +93,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# upstream only supports clang and ignores gcc issues, e.g.
+	# note that upstream only supports clang and ignores gcc issues, e.g.
 	# https://github.com/PCSX2/pcsx2/issues/10624#issuecomment-1890326047
 	# (CMakeLists.txt also gives a big warning if compiler is not clang)
-	if ! tc-is-clang; then
+	if use clang && ! tc-is-clang; then
 		local -x CC=${CHOST}-clang CXX=${CHOST}-clang++
 		strip-unsupported-flags
 	fi
