@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-IUSE="eventfd gtk-doc +introspection liburing sysprof test vala"
+IUSE="+eventfd gtk-doc +introspection +liburing sysprof test vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
