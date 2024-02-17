@@ -15,7 +15,7 @@ EAPI=8
 FFMPEG_SUBSLOT=58.60.60
 
 SOC_PATCHES=(
-	ffmpeg-rpi-6.1.patch
+	ffmpeg-rpi-6.1-r1.patch
 )
 
 SCM=""
@@ -363,6 +363,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1-wint-conversion.patch
 	"${FILESDIR}"/${PN}-6.0-fix-lto-type-mismatch.patch
 	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
+	"${FILESDIR}"/${PN}-6.1-gcc-14.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
