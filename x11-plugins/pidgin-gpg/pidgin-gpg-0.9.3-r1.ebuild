@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/Pidgin-GPG-${PV}"
+
+PATCHES=(
+	"${FILESDIR}/pidgin-gpg-0.9.3_musl-support.patch"
+)
 
 src_prepare() {
 	default
