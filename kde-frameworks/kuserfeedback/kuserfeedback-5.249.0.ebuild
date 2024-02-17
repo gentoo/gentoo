@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
-	doc? ( >=dev-qt/qttools-${QTMIN}:6[assistant,qdoc] )
+	doc? ( >=dev-qt/qttools-${QTMIN}:6[assistant,qdoc,linguist] )
 "
 
 src_configure() {
