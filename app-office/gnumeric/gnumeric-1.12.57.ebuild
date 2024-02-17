@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools gnome.org python-r1 xdg
+inherit gnome.org libtool python-r1 xdg
 
 DESCRIPTION="The GNOME Spreadsheet"
 HOMEPAGE="http://www.gnumeric.org/"
