@@ -294,9 +294,6 @@ llvm.org_set_globals() {
 					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
 				)
 			"
-		else
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
 		fi
 	fi
 
