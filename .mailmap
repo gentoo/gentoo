@@ -4,6 +4,7 @@
 # Please keep this list sorted.
 # Use "grep -v '^#' .mailmap | LC_ALL=en_US.utf-8 sort".
 Alexey Shvetsov <alexxy@gentoo.org> <alexxy@omrb.pnpi.spb.ru>
+Alexey Sokolov <alexey+gentoo@asokolov.org> <sokolov@google.com>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <aammerlaan@science.ru.nl>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@gentoo.org>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@riseup.net>
