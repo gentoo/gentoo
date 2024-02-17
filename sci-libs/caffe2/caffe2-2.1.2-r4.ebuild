@@ -19,7 +19,7 @@ onednn? ( https://github.com/intel/ideep/archive/${IDEEP_VERSION}.tar.gz -> idee
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy onednn opencl opencv openmp qnnpack tensorpipe xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy onednn openblas opencl opencv openmp qnnpack tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -64,6 +64,7 @@ RDEPEND="
 	tensorpipe? ( sci-libs/tensorpipe[cuda?] )
 	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
 	mkl? ( sci-libs/mkl )
+	openblas? ( sci-libs/openblas )
 "
 DEPEND="
 	${RDEPEND}
@@ -189,6 +190,8 @@ src_configure() {
 
 	if use mkl; then
 		mycmakeargs+=(-DBLAS=MKL)
+	elif use openblas; then
+		mycmakeargs+=(-DBLAS=OpenBLAS)
 	else
 		mycmakeargs+=(-DBLAS=Generic -DBLAS_LIBRARIES=)
 	fi

@@ -10,15 +10,16 @@
 		<flag name="fbgemm">Use FBGEMM</flag>
 		<flag name="ffmpeg">Add support for video processing operators</flag>
 		<flag name="gloo">Use sci-libs/gloo</flag>
+		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
 		<flag name="nnpack">Use NNPACK</flag>
 		<flag name="numpy">Add support for math operations through numpy</flag>
 		<flag name="onednn">Use oneDNN</flag>
+		<flag name="openblas">Use <pkg>sci-libs/openblas</pkg> for blas routines</flag>
 		<flag name="opencv">Add support for image processing operators</flag>
 		<flag name="openmp">Use OpenMP for parallel code</flag>
 		<flag name="qnnpack">Use QNNPACK</flag>
 		<flag name="tensorpipe">Use tensorpipe</flag>
 		<flag name="xnnpack">Use XNNPACK</flag>
-		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pytorch/pytorch</remote-id>
