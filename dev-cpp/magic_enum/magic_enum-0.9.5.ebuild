@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Neargye/magic_enum/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
