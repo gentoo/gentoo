@@ -2,5 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2024-02-17)
-# JIT not supported here
+# dev-libs/libpcre2 doesn't support JIT here
 dev-libs/libpcre2 jit
+dev-lang/php jit
+net-proxy/haproxy pcre-jit
+www-servers/varnish jit
