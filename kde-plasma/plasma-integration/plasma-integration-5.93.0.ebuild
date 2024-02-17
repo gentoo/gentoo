@@ -7,7 +7,7 @@ KF5MIN=5.113.0
 KFMIN=5.249.0
 PVCUT=$(ver_cut 1-3)
 QT5MIN=5.15.9
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Qt Platform Theme integration plugins for the Plasma workspaces"
