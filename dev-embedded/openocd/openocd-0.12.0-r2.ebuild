@@ -37,6 +37,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.12.0-capstone-includedir.patch"
+)
+
 src_prepare() {
 	default
 
