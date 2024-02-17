@@ -24,7 +24,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/faraday:1 )"
+ruby_add_bdepend "test? ( dev-ruby/webmock dev-ruby/faraday:1 )"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die
