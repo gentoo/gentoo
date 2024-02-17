@@ -293,6 +293,7 @@ net-wireless/kismet ubertooth
 # ffmpeg does support 64 bit neon
 media-video/ffmpeg -cpu_flags_arm_neon
 media-video/ffmpeg-chromium -cpu_flags_arm_neon
+net-misc/sunshine -cpu_flags_arm_neon
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
