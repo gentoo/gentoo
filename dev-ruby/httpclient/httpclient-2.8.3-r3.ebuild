@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,11 +52,9 @@ all_ruby_prepare() {
 	# only fail on jruby.
 	rm test/test_auth.rb || die
 
-	# Skip test failing due to hard-coded expired certificate
-	sed -i -e '/test_verification_without_httpclient/,/^  end/ s:^:#:' test/test_ssl.rb || die
-
-	# Skip test depending on obsolete and vulnerable SSLv3
-	sed -i -e '/test_no_sslv3/,/^  end/ s:^:#:' test/test_ssl.rb || die
+	# Skip tests using obsolete 1024-bit or expired certificates and
+	# won't even run anymore.
+	rm -f test/test_ssl.rb || die
 
 	# Do not use 11-year-old bundled certificates!
 	# fix this copy so it doesn't fail tests
