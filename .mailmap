@@ -5,9 +5,9 @@
 # Use "grep -v '^#' .mailmap | LC_ALL=en_US.utf-8 sort".
 Alexey Shvetsov <alexxy@gentoo.org> <alexxy@omrb.pnpi.spb.ru>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <aammerlaan@science.ru.nl>
-Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrew.ammerlaan@ru.nl>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@gentoo.org>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrewammerlaan@riseup.net>
+Andrew Ammerlaan <andrewammerlaan@gentoo.org> <andrew.ammerlaan@ru.nl>
 Andrew Ammerlaan <andrewammerlaan@gentoo.org> <nowa-ammerlaan@riseup.net>
 Florian Schmaus <flow@gentoo.org> <flo@geekplace.eu>
 Ionen Wolkens <ionen@gentoo.org> <sudinave@gmail.com>
