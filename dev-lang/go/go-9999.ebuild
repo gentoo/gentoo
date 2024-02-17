@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,41 @@ EAPI=7
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 
-# See "Bootstrap" in release notes
-GO_BOOTSTRAP_MIN=1.17.13
 MY_PV=${PV/_/}
 
 inherit toolchain-funcs
+
+# See "Bootstrap" in release notes
+# BV is set to the minimum version of go required to bootstrap the
+# current version.
+BV=1.20.14
+BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
+SRC_URI="
+	amd64? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-amd64-bootstrap.tbz )
+	arm? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-arm-bootstrap.tbz )
+	arm64? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-arm64-bootstrap.tbz )
+	loong? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-loong64-bootstrap.tbz )
+	mips? (
+		abi_mips_o32? (
+			big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mips-bootstrap.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mipsle-bootstrap.tbz )
+		)
+		abi_mips_n64? (
+			big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mips64-bootstrap.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mips64le-bootstrap.tbz )
+		)
+	)
+	ppc64? (
+		big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-ppc64-bootstrap.tbz )
+		!big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-ppc64le-bootstrap.tbz )
+	)
+	riscv? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-riscv64-bootstrap.tbz )
+	s390? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-s390x-bootstrap.tbz )
+	x86? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-386-bootstrap.tbz )
+	x64-macos? ( ${BOOTSTRAP_DIST}/go-${BV}-darwin-amd64-bootstrap.tbz )
+	arm64-macos? ( ${BOOTSTRAP_DIST}/go-${BV}-darwin-arm64-bootstrap.tbz )
+	x64-solaris? ( ${BOOTSTRAP_DIST}/go-${BV}-solaris-amd64-bootstrap.tbz )
+	"
 
 case ${PV}  in
 *9999*)
@@ -18,7 +48,7 @@ case ${PV}  in
 	inherit git-r3
 	;;
 *)
-	SRC_URI="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz "
+	SRC_URI+=" https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz "
 	S="${WORKDIR}"/go
 	case ${PV} in
 	*_beta*|*_rc*) ;;
@@ -33,14 +63,11 @@ HOMEPAGE="https://go.dev"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="abi_mips_o32 abi_mips_n64 cpu_flags_x86_sse2"
+IUSE="abi_mips_o32 abi_mips_n64 cpu_flags_x86_sse2 big-endian"
 
 RDEPEND="
 arm? ( sys-devel/binutils[gold] )
 arm64? ( sys-devel/binutils[gold] )"
-BDEPEND="|| (
-		>=dev-lang/go-${GO_BOOTSTRAP_MIN}
-		>=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN} )"
 
 # the *.syso files have writable/executable stacks
 QA_EXECSTACK='*.syso'
@@ -57,7 +84,7 @@ QA_PREBUILT='.*'
 
 # Do not strip this package. Stripping is unsupported upstream and may
 # fail.
-RESTRICT+=" strip"
+RESTRICT=" strip"
 
 DOCS=(
 	CONTRIBUTING.md
@@ -125,20 +152,12 @@ PATCHES=(
 	"${FILESDIR}"/go-never-download-newer-toolchains.patch
 )
 
+src_unpack() {
+	default
+	[[ ${PV} == *9999* ]] && git-r3_src_unpack
+}
+
 src_compile() {
-	if has_version -b ">=dev-lang/go-${GO_BOOTSTRAP_MIN}"; then
-		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
-	elif has_version -b ">=dev-lang/go-bootstrap-${GO_BOOTSTRAP_MIN}"; then
-		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
-	else
-		eerror "Go cannot be built without go or go-bootstrap installed"
-		die "Should not be here, please report a bug"
-	fi
-
-	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
-	export GOROOT="${PWD}"
-	export GOBIN="${GOROOT}/bin"
-
 	# Go's build script does not use BUILD/HOST/TARGET consistently. :(
 	export GOHOSTARCH=$(go_arch ${CBUILD})
 	export GOHOSTOS=$(go_os ${CBUILD})
@@ -151,6 +170,11 @@ src_compile() {
 	use arm && export GOARM=$(go_arm)
 	use x86 && export GO386=$(usex cpu_flags_x86_sse2 '' 'softfloat')
 
+	export GOROOT="${PWD}"
+	export GOROOT_BOOTSTRAP="${WORKDIR}/go-${GOOS}-${GOARCH}-bootstrap"
+	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
+	export GOBIN="${GOROOT}/bin"
+
 	cd src
 	bash -x ./make.bash || die "build failed"
 }
@@ -161,7 +185,7 @@ src_test() {
 	cd src
 
 	# https://github.com/golang/go/issues/42005
-	rm cmd/link/internal/ld/fallocate_test.go || true
+	rm cmd/link/internal/ld/fallocate_test.go || die
 
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild -k || die "tests failed"
@@ -177,7 +201,7 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/lib/go
-	doins go.env VERSION
+	doins go.env VERSION*
 
 	# testdata directories are not needed on the installed system
 	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
