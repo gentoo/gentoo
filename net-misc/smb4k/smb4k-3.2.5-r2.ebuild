@@ -47,10 +47,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	net-fs/samba[cups]
-	discovery? (
-		net-libs/kdsoap:=[qt5(+)]
-		<net-libs/kdsoap-ws-discovery-client-0.3.0
-	)
+	discovery? ( net-libs/kdsoap:=[qt5(+)] )
 "
 RDEPEND="${DEPEND}
 	plasma? (
