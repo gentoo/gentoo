@@ -50,10 +50,6 @@ BDEPEND="
 	kernel_Darwin? (
 		<sys-libs/libcxx-${LLVM_VERSION}.9999
 	)
-	doc? ( $(python_gen_any_dep '
-		dev-python/myst-parser[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	') )
 	libffi? ( virtual/pkgconfig )
 "
 # There are no file collisions between these versions but having :0
@@ -73,8 +69,17 @@ LLVM_MANPAGES=1
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
 
+[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" doc? ( "
+BDEPEND+="
+	$(python_gen_any_dep '
+		dev-python/myst-parser[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	')
+"
+[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" ) "
+
 python_check_deps() {
-	use doc || return 0
+	llvm_are_manpages_built || return 0
 
 	python_has_version -b "dev-python/myst-parser[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
