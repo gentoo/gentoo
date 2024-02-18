@@ -4,12 +4,10 @@
 EAPI=8
 
 # These don't necessarily have to align with the upstream release.
-# We do have nv-codec-headers packaged, but Sunshine is very picky here.
 BUILD_DEPS_COMMIT="2aafe061cd52a944cb3b5f86d1f25e9ad2a19bec"
 ENET_COMMIT="c6bb0e50118d08252eee308de8412751218442d6"
 MOONLIGHT_COMMIT="6e9ed871bc3e013386c775b2ee7d31deb1151068"
 NANORS_COMMIT="e9e242e98e27037830490b2a752895ca68f75f8b"
-NV_CODEC_COMMIT="22441b505d9d9afc1e3002290820909846c24bdc"
 TRAY_COMMIT="e08bdbe5aa7de0ad9c0ce36257016e07c7e6e2c0"
 SWS_COMMIT="27b41f5ee154cca0fce4fe2955dd886d04e3a4ed"
 WLRP_COMMIT="4264185db3b7e961e7f157e1cc4fd0ab75137568"
@@ -37,8 +35,6 @@ else
 			-> moonlight-common-c-${MOONLIGHT_COMMIT}.tar.gz
 		https://github.com/sleepybishop/nanors/archive/${NANORS_COMMIT}.tar.gz
 			-> nanors-${NANORS_COMMIT}.tar.gz
-		https://github.com/FFmpeg/nv-codec-headers/archive/${NV_CODEC_COMMIT}.tar.gz
-			-> nv-codec-headers-${NV_CODEC_COMMIT}.tar.gz
 		https://github.com/LizardByte/tray/archive/${TRAY_COMMIT}.tar.gz
 			-> LizardByte-tray-${TRAY_COMMIT}.tar.gz
 		https://gitlab.com/eidheim/Simple-Web-Server/-/archive/${SWS_COMMIT}/Simple-Web-Server-${SWS_COMMIT}.tar.bz2
@@ -169,6 +165,7 @@ DEPEND="
 	${CDEPEND}
 	dev-cpp/nlohmann_json
 	media-libs/amf-headers
+	=media-libs/nv-codec-headers-12*
 	wayland? ( dev-libs/wayland-protocols )
 "
 
@@ -183,6 +180,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-custom-ffmpeg.patch
 	"${FILESDIR}"/${PN}-system-json.patch
+	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
 )
 
 # Make this mess a bit simpler.
@@ -213,7 +211,7 @@ src_unpack() {
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
 		local EGIT_SUBMODULES=(
-			third-party/{moonlight-common-c{,/enet},nanors,nv-codec-headers,tray,Simple-Web-Server,wlr-protocols}
+			third-party/{moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols}
 		)
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
@@ -229,7 +227,6 @@ src_unpack() {
 		ln -snf ../enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
 		ln -snf ../../moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
 		ln -snf ../../nanors-${NANORS_COMMIT} "${S}"/third-party/nanors || die
-		ln -snf ../../nv-codec-headers-${NV_CODEC_COMMIT} "${S}"/third-party/nv-codec-headers || die
 		ln -snf ../../tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
 		ln -snf ../../Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
 		ln -snf ../../wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
