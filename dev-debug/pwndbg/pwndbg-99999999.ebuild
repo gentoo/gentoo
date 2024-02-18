@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 wrapper
 
@@ -18,7 +18,7 @@ if [[ ${PV} == "99999999" ]]; then
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
 	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -36,11 +36,14 @@ RDEPEND="
 		>=dev-python/pygments-2.15.1[${PYTHON_USEDEP}]
 		>=dev-python/tabulate-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/typing-extensions-4.6.1[${PYTHON_USEDEP}]
-		>=dev-util/pwntools-4.10.0[${PYTHON_USEDEP}]
+		>=dev-util/pwntools-4.11.0[${PYTHON_USEDEP}]
 		>=dev-util/ROPgadget-7.2[${PYTHON_USEDEP}]
 		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
 	')
 "
+
+# Tests are architectur-specific (precompiled binaries)
+RESTRICT="test"
 
 src_prepare() {
 	if [[ ${PV} != 99999999 ]]; then
