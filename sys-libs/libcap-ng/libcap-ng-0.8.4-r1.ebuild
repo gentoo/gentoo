@@ -6,7 +6,7 @@ EAPI=8
 # Keep an eye on Fedora's packaging (https://src.fedoraproject.org/rpms/libcap-ng/tree/rawhide) for patches
 # Same maintainer in Fedora as upstream
 PYTHON_COMPAT=( python3_{10..12} )
-inherit autotools flag-o-matic python-r1
+inherit autotools flag-o-matic libtool python-r1
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"
@@ -37,6 +37,7 @@ src_prepare() {
 		# bug #668722
 		eautomake
 	fi
+	elibtoolize
 }
 
 src_configure() {
