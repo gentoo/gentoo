@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,9 +96,10 @@ multilib_src_configure() {
 		s390x|*64) myconf+=( --enable-64bit );;
 		default) # no abi actually set, fall back to old check
 			einfo "Running a short build test to determine 64bit'ness"
+			# TODO: Port this to toolchain-funcs tc-get-ptr-size/tc-get-build-ptr-size
 			echo > "${T}"/test.c || die
-			${CC} ${CFLAGS} ${CPPFLAGS} -c "${T}"/test.c -o "${T}"/test.o || die
-			case $(file "${T}"/test.o) in
+			${CC} ${CFLAGS} ${CPPFLAGS} -fno-lto -c "${T}"/test.c -o "${T}"/test.o || die
+			case $(file -S "${T}"/test.o) in
 				*32-bit*x86-64*) myconf+=( --enable-x32 );;
 				*64-bit*|*ppc64*|*x86_64*) myconf+=( --enable-64bit );;
 				*32-bit*|*ppc*|*i386*) ;;
