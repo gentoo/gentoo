@@ -7,7 +7,7 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 ROCM_SKIP_GLOBALS=1
 
-inherit cmake docs llvm rocm
+inherit cmake docs llvm rocm flag-o-matic
 
 LLVM_MAX_SLOT=17
 
@@ -81,6 +81,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #923986
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	use debug && CMAKE_BUILD_TYPE="Debug"
 
 	local mycmakeargs=(
