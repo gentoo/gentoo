@@ -1,6 +1,0 @@
-# Copyright 2024 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-CHOST="mipsel-softfloat-linux-gnu"
-CHOST_o32="mipsel-softfloat-linux-gnu"
-

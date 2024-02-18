@@ -1,7 +1,7 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-CHOST_o32="mips-unknown-linux-gnu"
+CHOST_o32="mips-softfloat-linux-gnu"
 CHOST_n32="mips64-unknown-linux-gnuabin32"
 CHOST_n64="mips64-unknown-linux-gnuabi64"
 
