@@ -93,8 +93,6 @@ src_test() {
 		'tests/test_newswrapper.py::TestNewsWrapper'
 		'tests/test_happyeyeballs.py::TestHappyEyeballs'
 		'tests/test_internetspeed.py::TestInternetSpeed'
-		# Doesn't work, fixture 'fs' not found
-		'tests/test_dirscanner.py::TestDirScanner'
 		# Just plain fails
 		'tests/test_newsunpack.py::TestPar2Repair::test_basic'
 		# Chromedriver tests don't want to behave in portage
@@ -116,8 +114,17 @@ src_test() {
 		'tests/test_functional_sorting.py::TestDownloadSorting'
 	)
 
+	# The test suite is prone to being broken by random plugins that happen
+	# to be installed, so disable autoloading.
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -s -p pytest_mock -p tavern
+	# Use PYTEST_PLUGINS instead of args to 'epytest' because the test suite
+	# calls pytest itself and the args would get lost. To get the list of plugins,
+	# if stuck, comment out the AUTOLOAD line above, look at the list of loaded
+	# plugins at the top of the pytest output, then translate those into module names
+	# by e.g. checking equery f.
+	local -x PYTEST_PLUGINS=pytest_mock,tavern,tavern._core.pytest,pyfakefs.pytest_plugin
+
+	epytest -s
 }
 
 src_install() {
