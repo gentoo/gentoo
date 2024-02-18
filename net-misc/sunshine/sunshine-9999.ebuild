@@ -131,10 +131,13 @@ CDEPEND="
 	dev-libs/boost:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
-	media-libs/libpulse
 	media-libs/opus
 	net-libs/miniupnpc:=
 	net-misc/curl
+	|| (
+		media-libs/libpulse
+		media-sound/apulse[sdk]
+	)
 	libdrm? (
 		sys-libs/libcap
 		x11-libs/libdrm
