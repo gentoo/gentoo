@@ -35,8 +35,6 @@ microsoft.extensions.options@8.0.0
 microsoft.extensions.primitives@8.0.0
 microsoft.jsinterop.webassembly@8.0.0
 microsoft.jsinterop@8.0.0
-microsoft.net.illink.tasks@8.0.1
-microsoft.net.sdk.webassembly.pack@8.0.1
 microsoft.net.test.sdk@17.8.0
 microsoft.netcore.platforms@1.1.0
 microsoft.sourcelink.common@8.0.0
