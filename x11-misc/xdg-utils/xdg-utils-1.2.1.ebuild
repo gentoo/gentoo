@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="dbus doc gnome"
+IUSE="dbus doc gnome X"
 REQUIRED_USE="gnome? ( dbus )"
 
 RDEPEND="
@@ -33,8 +33,10 @@ RDEPEND="
 		)
 	)
 	x11-misc/shared-mime-info
-	x11-apps/xprop
-	x11-apps/xset
+	X? (
+		x11-apps/xprop
+		x11-apps/xset
+	)
 "
 BDEPEND="
 	>=app-text/xmlto-0.0.28-r3[text(+)]
