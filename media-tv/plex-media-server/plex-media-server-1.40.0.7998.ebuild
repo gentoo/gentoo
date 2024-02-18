@@ -84,8 +84,8 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	einfo
-	einfo "IMPORTANT: This version makes changes to the database which will require 1.31.2 or higher to start"
-	einfo "Please also be patient when updating to this version, initial run may take time as database is upgraded"
-	einfo "Full release announcement, including instructions for rollback: https://forums.plex.tv/t/plex-media-server/30447/612"
+	ewarn "IMPORTANT: This version makes changes to the database which will require 1.31.2 or higher to start"
+	ewarn "Please also be patient when updating to this version, initial run may take time as database is upgraded"
+	ewarn "Full release announcement, including instructions for rollback: https://forums.plex.tv/t/plex-media-server/30447/612"
 
 }
