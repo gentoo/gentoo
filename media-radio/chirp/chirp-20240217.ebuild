@@ -34,10 +34,6 @@ BDEPEND="test? ( $(python_gen_cond_dep '
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 ') )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-20230818_no-future.patch
-)
-
 distutils_enable_tests pytest
 
 # The alias map is an internal developer file not included in release tarballs.
