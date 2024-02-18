@@ -63,6 +63,7 @@ src_configure() {
 	econf \
 		--sysconfdir=/etc/dnsdist \
 		--with-lua="${ELUA}" \
+		--without-h2o \
 		--enable-tls-providers \
 		$(use_with bpf ebpf) \
 		$(use_with cdb cdb) \
