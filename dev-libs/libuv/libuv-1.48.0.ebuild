@@ -30,17 +30,20 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-libuv )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.48.0-test-thread-priority-portage.patch
+)
+
 src_prepare() {
 	default
-
-	echo "m4_define([UV_EXTRA_AUTOMAKE_FLAGS], [serial-tests])" \
-		> m4/libuv-extra-automake-flags.m4 || die
 
 	if [[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] ; then
 		eapply "${FILESDIR}"/${PN}-1.41.0-darwin.patch
 	fi
 
-	# Upstream fails to ship a configure script
+	# Upstream fails to ship a configure script and has missing m4 file.
+	echo "m4_define([UV_EXTRA_AUTOMAKE_FLAGS], [serial-tests])" \
+		> m4/libuv-extra-automake-flags.m4 || die
 	eautoreconf
 }
 
