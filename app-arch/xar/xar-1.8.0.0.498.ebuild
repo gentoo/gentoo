@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
-APPLE_PV=$(ver_cut 5-)  # 487: macOS 13.3 and up
+APPLE_PV=$(ver_cut 5-)  # 498: macOS 13.3 and up
 DESCRIPTION="An easily extensible archive format"
 HOMEPAGE="https://github.com/apple-oss-distributions/xar"
 SRC_URI="https://github.com/apple-oss-distributions/xar/archive/xar-${APPLE_PV}.tar.gz"
