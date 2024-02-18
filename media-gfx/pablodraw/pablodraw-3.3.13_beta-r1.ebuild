@@ -14,7 +14,6 @@ giosharp@3.24.24.38
 glibsharp@3.24.24.38
 gtksharp@3.24.24.38
 lidgren.network@1.0.2
-microsoft.net.illink.tasks@8.0.1
 microsoft.netcore.platforms@1.1.0
 mono.nat@3.0.3
 netstandard.library@2.0.3
