@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bpf cdb dnscrypt dnstap doh doh3 gnutls ipcipher lmdb quic regex snmp +ssl systemd test xdp"
+IUSE="bpf cdb dnscrypt dnstap doh doh3 gnutls ipcipher lmdb quic regex snmp +ssl systemd test web xdp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 		dnscrypt? ( ssl )
@@ -55,6 +55,9 @@ BDEPEND="virtual/pkgconfig"
 src_configure() {
 	# bug #822855
 	append-lfs-flags
+
+	# some things can only be enabled/disabled by defines
+	! use web && append-flags -DDISABLE_BUILTIN_HTML
 
 	econf \
 		--sysconfdir=/etc/dnsdist \

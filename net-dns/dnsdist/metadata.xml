@@ -27,6 +27,7 @@
 		<flag name="quic">Enable support for dns over quic via <pkg>net-libs/quiche</pkg></flag>
 		<flag name="regex">Enable support for regular expression matching via <pkg>dev-libs/re2</pkg></flag>
 		<flag name="ssl">Enable support for and encrypted client-server communication via <pkg>dev-libs/libsodium</pkg></flag>
+		<flag name="web">Enable support for the web UI</flag>
 		<flag name="xdp">Enable support for AF_XDP high performance packet processing</flag>
 	</use>	
 	<upstream>
