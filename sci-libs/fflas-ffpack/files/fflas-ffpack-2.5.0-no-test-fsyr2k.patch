@@ -1,0 +1,30 @@
+From 59ba369aee228b0d166cd7f86d365b17a0104777 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 18 Feb 2024 07:39:09 -0500
+Subject: [PATCH 1/1] tests/Makefile.am: disable test-fsyr2k
+
+We have a report of this failing on Gentoo, and it's unlikely to get
+fixed any time soon. In any case it's reported upstream at,
+
+  https://github.com/linbox-team/fflas-ffpack/issues/393
+
+Bug: https://bugs.gentoo.org/924880
+---
+ tests/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index cd73818..2941182 100755
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -57,7 +57,6 @@ BASIC_TESTS =               \
+ 		test-quasisep       \
+ 		test-pluq-check     \
+ 		test-fsyrk          \
+-		test-fsyr2k          \
+ 		test-fsytrf          \
+ 		test-invert-check   \
+ 		test-rankprofiles   \
+-- 
+2.43.0
+
