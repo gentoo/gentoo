@@ -101,12 +101,13 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 src_compile() {
 	local files=( ${A} )
 
-	touch libuv.asc
+	touch libuv.asc || doe
 	# Skip keys w/no UID (gpg will error and gemato will abort),
 	# and strip github header (gpg will error and gemato will abort)
+	local file
 	for file in "${files[@]/#/${DISTDIR}/}" ; do
-		if gpg --list-packets "$file" 2>/dev/null | egrep -q '^:user ID' ; then
-		  sed "/^Note: The keys with the following IDs couldn't be exported/d" "$file" >>libuv.asc
+		if gpg --list-packets "${file}" 2>/dev/null | egrep -q '^:user ID' ; then
+			sed "/^Note: The keys with the following IDs couldn't be exported/d" "${file}" >>libuv.asc || die
 		fi
 	done
 }
