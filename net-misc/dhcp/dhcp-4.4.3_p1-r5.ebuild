@@ -16,6 +16,7 @@ HOMEPAGE="https://www.isc.org/dhcp"
 SRC_URI="
 	https://downloads.isc.org/isc/dhcp/${MY_P}.tar.gz
 	https://downloads.isc.org/isc/dhcp/${MY_PV}/${MY_P}.tar.gz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/dhcp-4.4.3-patches.tar.xz
 "
 S="${WORKDIR}/${MY_P}"
 
@@ -50,29 +51,31 @@ BDEPEND="
 PATCHES=(
 	# Gentoo patches - these will probably never be accepted upstream
 	# Fix some permission issues
-	"${FILESDIR}/${PN}-4.4.3-fix-perms.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-fix-perms.patch"
 
 	# Enable dhclient to equery NTP servers
-	"${FILESDIR}/${PN}-4.4.3-dhclient-ntp.patch"
-	"${FILESDIR}/${PN}-4.4.3-dhclient-resolvconf.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-dhclient-ntp.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-dhclient-resolvconf.patch"
 
 	# Enable dhclient to get extra configuration from stdin
-	"${FILESDIR}/${PN}-4.4.3-dhclient-stdin-conf.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-dhclient-stdin-conf.patch"
 	# bug #265531
-	"${FILESDIR}/${PN}-4.4.3-nogateway.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-nogateway.patch"
 	# bug #296921
-	"${FILESDIR}/${PN}-4.4.3-quieter-ping.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-quieter-ping.patch"
 	# bug #437108
-	"${FILESDIR}/${PN}-4.4.3-always-accept-4.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-always-accept-4.patch"
 	# bug #480636
-	"${FILESDIR}/${PN}-4.4.3-iproute2-path.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-iproute2-path.patch"
 	# bug #471142
-	"${FILESDIR}/${PN}-4.4.3-bindtodevice-inet6.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-bindtodevice-inet6.patch"
 	# bug #559832
-	"${FILESDIR}/${PN}-4.4.3-ldap-ipv6-client-id.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-ldap-ipv6-client-id.patch"
+	# bug #908986
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-infiniband.patch"
 
 	# Possible upstream candidates
-	"${FILESDIR}/${PN}-4.4.3-configure-clang16.patch"
+	"${WORKDIR}/dhcp-4.4.3-patches/${PN}-4.4.3-configure-clang16.patch"
 )
 
 src_unpack() {
@@ -136,7 +139,7 @@ src_prepare() {
 	binddir=${binddir}
 	GMAKE=${MAKE:-gmake}
 	EOF
-	eapply -p2 "${FILESDIR}"/${PN}-4.4.3-bind-disable.patch
+	eapply -p2 "${WORKDIR}"/dhcp-4.4.3-patches/${PN}-4.4.3-bind-disable.patch
 	# Only use the relevant subdirs now that ISC
 	#removed the lib/export structure in bind.
 	sed '/^SUBDIRS/s@=.*$@= isc dns isccfg irs samples@' \
