@@ -165,6 +165,7 @@ RDEPEND="
 DEPEND="
 	${CDEPEND}
 	media-libs/amf-headers
+	media-libs/libva
 	wayland? ( dev-libs/wayland-protocols )
 "
 
