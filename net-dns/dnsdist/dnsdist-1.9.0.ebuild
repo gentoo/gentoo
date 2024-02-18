@@ -52,6 +52,13 @@ RDEPEND="acct-group/dnsdist
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+src_prepare() {
+	default
+
+	# clean up duplicate file
+	rm -f README.md
+}
+
 src_configure() {
 	# bug #822855
 	append-lfs-flags
