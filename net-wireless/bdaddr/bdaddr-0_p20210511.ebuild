@@ -20,8 +20,8 @@ fi
 
 # https://github.com/thxomas/bdaddr/pull/6
 SRC_URI+="
-	https://github.com/Flowdalic/bdaddr/commit/e5cf5666e00828a3769fcda4717b0ee6f277001d.patch
-		-> ${PN}-0_p20210511-idiomatic-makefile.patch
+	https://github.com/Flowdalic/bdaddr/commit/85eeb2a13ab664432ce357cdb0641163fc541a99.patch
+		-> ${PN}-0_p20210511-idiomatic-makefile-r1.patch
 "
 
 LICENSE="GPL-2+"
@@ -40,7 +40,7 @@ DEPEND="
 BDEPEND="dev-go/go-md2man"
 
 PATCHES=(
-	"${DISTDIR}"/${PN}-0_p20210511-idiomatic-makefile.patch
+	"${DISTDIR}"/${PN}-0_p20210511-idiomatic-makefile-r1.patch
 )
 
 src_compile() {
