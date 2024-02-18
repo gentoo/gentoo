@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	dev-libs/libaio
 	dev-qt/qtbase:6[gui,widgets]
 	dev-qt/qtsvg:6
-	media-libs/libglvnd
+	media-libs/libglvnd[X]
 	media-libs/libpng:=
 	media-libs/libsdl2[haptic,joystick]
 	media-libs/libwebp:=
