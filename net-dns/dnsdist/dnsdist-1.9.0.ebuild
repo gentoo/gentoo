@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dnscrypt dnstap doh doh3 gnutls ipcipher +lmdb quic regex snmp +ssl systemd test"
+IUSE="dnscrypt dnstap doh doh3 gnutls ipcipher lmdb quic regex snmp +ssl systemd test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 		dnscrypt? ( ssl )
