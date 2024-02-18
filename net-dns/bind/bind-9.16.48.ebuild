@@ -12,7 +12,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
 inherit python-r1 autotools multiprocessing toolchain-funcs flag-o-matic db-use systemd tmpfiles verify-sig
@@ -29,18 +29,21 @@ RRL_PV="${MY_PV}"
 
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind https://gitlab.isc.org/isc-projects/bind9"
-SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
+SRC_URI="
+	https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
 	doc? ( mirror://gentoo/dyndns-samples.tbz2 )
-	verify-sig? ( https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz.asc )"
+	verify-sig? ( https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz.asc )
+"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 # -berkdb by default re bug #602682
-IUSE="berkdb +caps +dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi
-json ldap lmdb mysql odbc postgres python selinux static-libs test xml +zlib"
+IUSE="berkdb +caps +dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi"
+IUSE+=" json ldap lmdb mysql odbc postgres python selinux static-libs test xml +zlib"
 # sdb-ldap - patch broken
-# no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
+# no PKCS11 currently as it requires OpenSSL to be patched, also see bug #409687
 RESTRICT="!test? ( test )"
 
 # Upstream dropped the old geoip library, but the BIND configuration for using
@@ -58,6 +61,7 @@ REQUIRED_USE="
 DEPEND="
 	acct-group/named
 	acct-user/named
+	dev-libs/libuv:=
 	berkdb? ( sys-libs/db:= )
 	dev-libs/openssl:=[-bindist(-)]
 	mysql? ( dev-db/mysql-connector-c:0= )
@@ -77,13 +81,12 @@ DEPEND="
 		${PYTHON_DEPS}
 		dev-python/ply[${PYTHON_USEDEP}]
 	)
-	dev-libs/libuv:=
 "
-
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
+	sys-process/psmisc
 	selinux? ( sec-policy/selinux-bind )
-	sys-process/psmisc"
-
+"
 BDEPEND="
 	test? (
 		dev-util/cmocka
@@ -91,8 +94,6 @@ BDEPEND="
 	)
 	verify-sig? ( sec-keys/openpgp-keys-isc )
 "
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/ldap-library-path-on-multilib-machines.patch"
@@ -195,15 +196,13 @@ src_compile() {
 }
 
 python_compile() {
-	pushd "${BUILD_DIR}"/bin/python >/dev/null || die
-	emake
-	popd >/dev/null || die
+	emake -C "${BUILD_DIR}"/bin/python
 }
 
 src_test() {
 	# system tests ('emake test') require network configuration for IPs etc
 	# so we run the unit tests instead.
-	TEST_PARALLEL_JOBS="$(makeopts_jobs)" emake unit
+	TEST_PARALLEL_JOBS="$(makeopts_jobs)" emake -Onone unit
 }
 
 src_install() {
