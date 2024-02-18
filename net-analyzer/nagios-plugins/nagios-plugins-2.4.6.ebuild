@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,6 +60,16 @@ DOCS=(
 	REQUIREMENTS
 	SUPPORT
 	THANKS
+)
+
+# These all come from gnulib and the ./configure checks are working as
+# intended when the functions aren't present. Bugs 907755 and 924341.
+QA_CONFIG_IMPL_DECL_SKIP=(
+	statvfs64
+	re_set_syntax
+	re_compile_pattern
+	re_search
+	re_match
 )
 
 src_prepare() {
