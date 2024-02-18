@@ -15,7 +15,7 @@ EAPI=8
 FFMPEG_SUBSLOT=58.60.60
 
 SOC_PATCHES=(
-	ffmpeg-rpi-6.1-r1.patch
+	ffmpeg-rpi-6.1-r2.patch
 )
 
 SCM=""
