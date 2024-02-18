@@ -50,6 +50,7 @@ S=${WORKDIR}/${P%%_pre}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-testsuite.patch
+	"${FILESDIR}"/${P}-valgrind.patch
 )
 
 src_prepare() {
