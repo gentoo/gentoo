@@ -10,7 +10,7 @@ SRC_URI="https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
