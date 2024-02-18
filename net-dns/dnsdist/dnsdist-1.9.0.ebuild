@@ -57,6 +57,7 @@ src_configure() {
 	append-lfs-flags
 
 	# some things can only be enabled/disabled by defines
+	! use dnstap && append-flags -DDISABLE_PROTOBUF
 	! use web && append-flags -DDISABLE_BUILTIN_HTML
 
 	econf \
