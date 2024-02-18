@@ -19,9 +19,9 @@ IUSE="dnscrypt dnstap doh doh3 gnutls ipcipher lmdb quic regex snmp +ssl systemd
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 		dnscrypt? ( ssl )
-		gnutls? ( ssl )
 		doh? ( ssl !gnutls )
 		doh3? ( ssl !gnutls quic )
+		gnutls? ( ssl )
 		ipcipher? ( ssl !gnutls )
 		quic? ( ssl !gnutls )
 		ssl? ( !gnutls )"
@@ -32,6 +32,7 @@ RDEPEND="acct-group/dnsdist
 	dev-libs/libedit:=
 	dev-libs/libsodium:=
 	dnstap? ( dev-libs/fstrm:= )
+	doh? ( net-libs/nghttp2:= )
 	doh3? ( net-libs/quiche:= )
 	lmdb? ( dev-db/lmdb:= )
 	quic? ( net-libs/quiche:= )
@@ -43,7 +44,6 @@ RDEPEND="acct-group/dnsdist
 	)
 	systemd? ( sys-apps/systemd:0= )
 	${LUA_DEPS}
-	net-libs/nghttp2
 "
 
 DEPEND="${RDEPEND}"
