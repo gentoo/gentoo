@@ -150,7 +150,13 @@ PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
 	"${FILESDIR}/php-capstone-optional.patch"
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
-	"${FILESDIR}/php-8.2.15-gcc14-build-fix.patch"
+)
+
+# ARM/Windows functions that are expected to be undefined.
+QA_CONFIG_IMPL_DECL_SKIP=(
+	__crc32d
+	_controlfp
+	_controlfp_s
 )
 
 php_install_ini() {
