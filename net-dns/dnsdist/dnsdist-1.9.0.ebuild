@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dnscrypt dnstap doh doh3 gnutls ipcipher lmdb quic regex snmp +ssl systemd test"
+IUSE="bpf cdb dnscrypt dnstap doh doh3 gnutls ipcipher lmdb quic regex snmp +ssl systemd test xdp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 		dnscrypt? ( ssl )
@@ -28,6 +28,8 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 
 RDEPEND="acct-group/dnsdist
 	acct-user/dnsdist
+	bpf? ( dev-libs/libbpf:= )
+	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	dev-libs/boost:=
 	dev-libs/libedit:=
 	dev-libs/libsodium:=
@@ -43,6 +45,7 @@ RDEPEND="acct-group/dnsdist
 		!gnutls? ( dev-libs/openssl:= )
 	)
 	systemd? ( sys-apps/systemd:0= )
+	xdp? ( net-libs/xdp-tools )
 	${LUA_DEPS}
 "
 
@@ -57,6 +60,8 @@ src_configure() {
 		--sysconfdir=/etc/dnsdist \
 		--with-lua="${ELUA}" \
 		--enable-tls-providers \
+		$(use_with bpf ebpf) \
+		$(use_with cdb cdb) \
 		$(use_enable doh dns-over-https) \
 		$(use_enable doh3 dns-over-http3) \
 		$(use_enable dnscrypt) \
@@ -68,7 +73,9 @@ src_configure() {
 		$(use_with snmp net-snmp) \
 		$(use ssl && { echo "--enable-dns-over-tls" && use_with gnutls && use_with !gnutls libssl;} || echo "--without-gnutls --without-libssl") \
 		$(use_enable systemd) \
-		$(use_enable test unit-tests)
+		$(use_enable test unit-tests) \
+		$(use_with xdp xsk)
+
 		sed 's/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl$libdir'\''/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl\/$libdir'\''/g' \
 			-i "${S}/configure" || die
 }
