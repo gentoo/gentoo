@@ -18,5 +18,5 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/d' Rakefile || die
-	sed -i -e '/[Cc]overalls/d' test/test_helper.rb || die
+	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
 }
