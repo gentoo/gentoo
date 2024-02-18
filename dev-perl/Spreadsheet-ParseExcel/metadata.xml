@@ -22,5 +22,6 @@
     <remote-id type="cpan-module">Spreadsheet::ParseExcel::Utility</remote-id>
     <remote-id type="cpan-module">Spreadsheet::ParseExcel::Workbook</remote-id>
     <remote-id type="cpan-module">Spreadsheet::ParseExcel::Worksheet</remote-id>
+    <remote-id type="github">jmcnamara/spreadsheet-parseexcel</remote-id>
   </upstream>
 </pkgmetadata>
