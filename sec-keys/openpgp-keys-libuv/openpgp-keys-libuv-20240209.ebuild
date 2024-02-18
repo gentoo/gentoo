@@ -61,35 +61,55 @@ HOMEPAGE="https://libuv.org/"
 #   echo -e "\thttps://github.com/${A}.gpg\n\t\t-> libuv-\${PV}-${A}.asc"
 # done
 
+# XXXX: keyserver.ubuntu.com gives unstable results so we can't even get it mirrored
+# as the result has already changed by that point.
+#
+#SRC_URI="
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xD77B1E34243FBAF05F8E9CC34F55C8C846AB89B9
+#		-> libuv-${PV}-D77B1E34243FBAF05F8E9CC34F55C8C846AB89B9.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xAEAD0A4B686767751A0E4AEF34A25FB128246514
+#		-> libuv-${PV}-AEAD0A4B686767751A0E4AEF34A25FB128246514.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xCFBB9CA9A5BEAFD70E2B3C5A79A67C55A3679C8B
+#		-> libuv-${PV}-CFBB9CA9A5BEAFD70E2B3C5A79A67C55A3679C8B.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C
+#		-> libuv-${PV}-C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x612F0EAD9401622379DF4402F28C3C8DA33C03BE
+#		-> libuv-${PV}-612F0EAD9401622379DF4402F28C3C8DA33C03BE.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xFDF519364458319FA8233DC9410E5553AE9BC059
+#		-> libuv-${PV}-FDF519364458319FA8233DC9410E5553AE9BC059.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x94AE36675C464D64BAFA68DD7434390BDBE9B9C5
+#		-> libuv-${PV}-94AE36675C464D64BAFA68DD7434390BDBE9B9C5.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x57353E0DBDAAA7E839B66A1AFF47D5E4AD8B4FDC
+#		-> libuv-${PV}-57353E0DBDAAA7E839B66A1AFF47D5E4AD8B4FDC.asc
+#	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xAF2EEA41EC3447BFDD86FED9D7063CCE19B7E890
+#		-> libuv-${PV}-AF2EEA41EC3447BFDD86FED9D7063CCE19B7E890.asc
+#	https://github.com/vtjnash.gpg
+#		-> libuv-${PV}-vtjnash.asc
+#	https://github.com/richardlau.gpg
+#		-> libuv-${PV}-richardlau.asc
+#	https://github.com/santigimeno.gpg
+#		-> libuv-${PV}-santigimeno.asc
+#	https://github.com/trevnorris.gpg
+#		-> libuv-${PV}-trevnorris.asc
+#	https://github.com/cjihrig.gpg
+#		-> libuv-${PV}-cjihrig.asc
+#"
+
 SRC_URI="
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xD77B1E34243FBAF05F8E9CC34F55C8C846AB89B9
-		-> libuv-${PV}-D77B1E34243FBAF05F8E9CC34F55C8C846AB89B9.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xAEAD0A4B686767751A0E4AEF34A25FB128246514
-		-> libuv-${PV}-AEAD0A4B686767751A0E4AEF34A25FB128246514.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xCFBB9CA9A5BEAFD70E2B3C5A79A67C55A3679C8B
-		-> libuv-${PV}-CFBB9CA9A5BEAFD70E2B3C5A79A67C55A3679C8B.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C
-		-> libuv-${PV}-C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x612F0EAD9401622379DF4402F28C3C8DA33C03BE
-		-> libuv-${PV}-612F0EAD9401622379DF4402F28C3C8DA33C03BE.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xFDF519364458319FA8233DC9410E5553AE9BC059
-		-> libuv-${PV}-FDF519364458319FA8233DC9410E5553AE9BC059.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x94AE36675C464D64BAFA68DD7434390BDBE9B9C5
-		-> libuv-${PV}-94AE36675C464D64BAFA68DD7434390BDBE9B9C5.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x57353E0DBDAAA7E839B66A1AFF47D5E4AD8B4FDC
-		-> libuv-${PV}-57353E0DBDAAA7E839B66A1AFF47D5E4AD8B4FDC.asc
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xAF2EEA41EC3447BFDD86FED9D7063CCE19B7E890
-		-> libuv-${PV}-AF2EEA41EC3447BFDD86FED9D7063CCE19B7E890.asc
-	https://github.com/vtjnash.gpg
-		-> libuv-${PV}-vtjnash.asc
-	https://github.com/richardlau.gpg
-		-> libuv-${PV}-richardlau.asc
-	https://github.com/santigimeno.gpg
-		-> libuv-${PV}-santigimeno.asc
-	https://github.com/trevnorris.gpg
-		-> libuv-${PV}-trevnorris.asc
-	https://github.com/cjihrig.gpg
-		-> libuv-${PV}-cjihrig.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-D77B1E34243FBAF05F8E9CC34F55C8C846AB89B9.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-AEAD0A4B686767751A0E4AEF34A25FB128246514.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-CFBB9CA9A5BEAFD70E2B3C5A79A67C55A3679C8B.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-612F0EAD9401622379DF4402F28C3C8DA33C03BE.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-FDF519364458319FA8233DC9410E5553AE9BC059.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-94AE36675C464D64BAFA68DD7434390BDBE9B9C5.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-57353E0DBDAAA7E839B66A1AFF47D5E4AD8B4FDC.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-AF2EEA41EC3447BFDD86FED9D7063CCE19B7E890.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-vtjnash.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-richardlau.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-santigimeno.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-trevnorris.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/libuv-${PV}-cjihrig.asc
 "
 
 S="${WORKDIR}"
