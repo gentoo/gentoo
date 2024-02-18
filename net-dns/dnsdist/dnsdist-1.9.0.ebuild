@@ -57,9 +57,6 @@ src_configure() {
 		--sysconfdir=/etc/dnsdist \
 		--with-lua="${ELUA}" \
 		--enable-tls-providers \
-		--enable-asan \
-		--enable-lsan \
-		--enable-ubsan \
 		$(use_enable doh dns-over-https) \
 		$(use_enable doh3 dns-over-http3) \
 		$(use_enable dnscrypt) \
