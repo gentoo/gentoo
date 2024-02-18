@@ -151,6 +151,13 @@ PATCHES=(
 	"${FILESDIR}/php-8.1.27-gcc14-libxml.patch"
 )
 
+# ARM/Windows functions that are expected to be undefined.
+QA_CONFIG_IMPL_DECL_SKIP=(
+	__crc32d
+	_controlfp
+	_controlfp_s
+)
+
 php_install_ini() {
 	local phpsapi="${1}"
 
