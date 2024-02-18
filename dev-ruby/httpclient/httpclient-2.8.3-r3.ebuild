@@ -29,7 +29,7 @@ IUSE=""
 ruby_add_rdepend "virtual/ruby-ssl"
 
 ruby_add_bdepend "doc? ( dev-ruby/rdoc )"
-ruby_add_bdepend "test? ( dev-ruby/test-unit dev-ruby/http-cookie )"
+ruby_add_bdepend "test? ( dev-ruby/test-unit dev-ruby/http-cookie dev-ruby/webrick )"
 
 all_ruby_prepare() {
 	rm Gemfile || die
