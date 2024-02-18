@@ -27,7 +27,6 @@ RDEPEND="acct-group/dnsdist
 	dev-libs/boost:=
 	dev-libs/libedit:=
 	dev-libs/libsodium:=
-	>=dev-libs/protobuf-3:=
 	dnstap? ( dev-libs/fstrm:= )
 	doh? ( www-servers/h2o:=[libh2o] )
 	lmdb? ( dev-db/lmdb:= )
