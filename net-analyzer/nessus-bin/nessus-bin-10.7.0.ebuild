@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit rpm systemd
 
-MY_P="Nessus-${PV}-es8"
+MY_P="Nessus-${PV}-el8"
 
 DESCRIPTION="A remote security scanner for Linux"
 HOMEPAGE="https://www.tenable.com/"
