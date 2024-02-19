@@ -1304,8 +1304,8 @@ toolchain_src_configure() {
 
 	if tc_version_is_at_least 13.1 ; then
 		# Re-enable fixincludes for >= GCC 13 with older glibc
-		# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
-		if use elibc_glibc && has_version "<sys-libs/glibc-2.38" ; then
+		# https://gcc.gnu.org/PR107128
+		if ! is_crosscompile && use elibc_glibc && has_version "<sys-libs/glibc-2.38" ; then
 			GCC_RUN_FIXINCLUDES=1
 		fi
 
