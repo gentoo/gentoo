@@ -62,6 +62,7 @@ DEPEND="
 	x11-libs/libXtst
 	|| (
 		dev-java/openjdk-bin:${SLOT}
+		dev-java/icedtea-bin:${SLOT}
 		dev-java/openjdk:${SLOT}
 	)
 "
