@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+    <flag name="drm">Enable drm for cam.</flag>
+    <flag name="libevent">Compile the cam test application.</flag>
+    <flag name="trace">Enable tracing (based on lttng).</flag>
+    <flag name="v4l2">Compile the V4L2 compatibility layer.</flag>
+  </use>
+  <upstream>
+	<bugs-to>https://gitlab.freedesktop.org/groups/camera/-/issues</bugs-to>
+	<changelog>https://gitlab.freedesktop.org/camera/libcamera/-/releases</changelog>
+	<doc>https://libcamera.org/docs.html</doc>
+	<remote-id type="freedesktop-gitlab">camera/libcamera</remote-id>
+  </upstream>
+</pkgmetadata>
