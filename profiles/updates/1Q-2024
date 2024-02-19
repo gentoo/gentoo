@@ -76,3 +76,4 @@ slotmove =dev-java/commons-imaging-1.0_alpha3-r1 0 1
 move media-gfx/fotoxx media-gfx/fotocx
 move dev-python/editorconfig-core-py dev-python/editorconfig
 move dev-python/urwid_readline dev-python/urwid-readline
+move dev-python/python-evdev dev-python/evdev
