@@ -93,6 +93,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	if ! systemd_is_booted; then
 		if [[ -z ${REPLACING_VERSIONS} ]] ; then
 			# Only inform people the first time they install.
@@ -101,4 +102,8 @@ pkg_postinst() {
 			elog "	rc-update add mdraid boot"
 		fi
 	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }
