@@ -29,7 +29,7 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/ansi
 		dev-ruby/hashie
-		|| ( ( dev-ruby/faraday:2 dev-ruby/faraday-net_http_persistent ) dev-ruby/faraday:1 )
+		|| ( ( dev-ruby/faraday:2 dev-ruby/faraday-net_http_persistent:2 ) dev-ruby/faraday:1 )
 		dev-ruby/mocha:1.0
 		dev-ruby/pry
 		dev-ruby/rspec:3
