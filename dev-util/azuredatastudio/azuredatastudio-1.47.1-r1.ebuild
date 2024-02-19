@@ -31,6 +31,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	dev-util/lttng-ust:0/2.12
 	media-libs/alsa-lib
 	media-libs/libcanberra[gtk3]
 	media-libs/libglvnd
@@ -87,13 +88,14 @@ src_prepare() {
 	fi
 
 	# Patch "System.Security.Cryptography.Native.OpenSsl.so": *.so.10 -> *.so.1.0.0
-	local mssql_extension_version=4.10.2.1
-	local lib=System.Security.Cryptography.Native.OpenSsl.so
-	cd "resources/app/extensions/mssql/sqltoolsservice/Linux/${mssql_extension_version}" || die
-	patchelf --add-needed libcrypto.so.1.0.0 "${lib}" || die
-	patchelf --add-needed libssl.so.1.0.0 "${lib}" || die
-	patchelf --remove-needed libcrypto.so.10 "${lib}" || die
-	patchelf --remove-needed libssl.so.10 "${lib}" || die
+	local mssql_ext_version=4.10.2.1
+	local mssql_ext_lib=System.Security.Cryptography.Native.OpenSsl.so
+	cd "resources/app/extensions/mssql/sqltoolsservice/Linux/${mssql_ext_version}" || die
+	patchelf --add-needed libcrypto.so.1.0.0 "${mssql_ext_lib}" || die
+	patchelf --add-needed libssl.so.1.0.0 "${mssql_ext_lib}" || die
+	patchelf --remove-needed libcrypto.so.10 "${mssql_ext_lib}" || die
+	patchelf --remove-needed libssl.so.10 "${mssql_ext_lib}" || die
+	rm System.Native.a || die
 }
 
 src_install() {
