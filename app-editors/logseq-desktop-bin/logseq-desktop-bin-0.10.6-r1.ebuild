@@ -23,6 +23,7 @@ KEYWORDS="-* ~amd64"
 RESTRICT="mirror splitdebug"
 
 RDEPEND="
+	dev-libs/nss
 	dev-libs/openssl:0/3
 	media-libs/alsa-lib
 	media-libs/mesa
