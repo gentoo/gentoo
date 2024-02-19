@@ -11,4 +11,5 @@ IUSE="headless-awt"
 RDEPEND="|| (
 		dev-java/openjdk-bin:8[headless-awt=]
 		dev-java/openjdk:8[headless-awt=]
+		dev-java/icedtea-bin:8[headless-awt=]
 )"
