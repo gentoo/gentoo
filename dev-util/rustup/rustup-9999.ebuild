@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,21 +8,24 @@ CRATES="
 
 inherit bash-completion-r1 cargo prefix
 
-DESCRIPTION="Rust toolchain installer"
+DESCRIPTION="Manage multiple Rust installations with ease"
 HOMEPAGE="https://rust-lang.github.io/rustup/"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rust-lang/${PN}.git"
 else
+	declare -A GIT_CRATES=(
+		[home]="https://github.com/rbtcollins/home;a243ee2fbee6022c57d56f5aa79aefe194eabe53"
+	)
 	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		$(cargo_crate_uris ${CRATES})"
+			$(cargo_crate_uris)
+		"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 MIT Unlicense ZLIB"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 ISC MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	app-arch/xz-utils
@@ -32,7 +35,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/rust"
 
-QA_FLAGS_IGNORED="usr/bin/.*"
+# rust does not use *FLAGS from make.conf, solence portage warning
+# update with proper path to binaries this crate installs, omit leading /
+QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 # uses network
 RESTRICT="test"
@@ -56,10 +61,10 @@ src_configure() {
 		reqwest-default-tls
 	)
 	case ${ARCH} in
-		ppc*|mips*|riscv*|s390*)
-			;;
-		*) myfeatures+=( reqwest-rustls-tls )
-			;;
+		ppc* | mips* | riscv* | s390*) ;;
+		*)
+			myfeatures+=(reqwest-rustls-tls)
+		;;
 	esac
 	cargo_src_configure --no-default-features
 }
@@ -75,8 +80,8 @@ src_install() {
 	newbin "$(prefixify_ro "${FILESDIR}"/symlink_rustup.sh)" rustup-init-gentoo
 
 	ln -s "${ED}/usr/bin/rustup-init" rustup || die
-	./rustup completions bash rustup > "${T}/rustup" || die
-	./rustup completions zsh rustup > "${T}/_rustup" || die
+	./rustup completions bash rustup >"${T}/rustup" || die
+	./rustup completions zsh rustup >"${T}/_rustup" || die
 
 	dobashcomp "${T}/rustup"
 
@@ -85,11 +90,11 @@ src_install() {
 }
 
 pkg_postinst() {
-		elog "No rustup toolchains installed by default"
-		elog "eselect activated system rust toolchain can be added to rustup by running"
-		elog "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
-		elog "it will create symlinks to system-installed rustup in home directory"
-		elog "and rustup updates will be managed by portage"
-		elog "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
-		elog "before running rustup-init-gentoo"
+	elog "No rustup toolchains installed by default"
+	elog "eselect activated system rust toolchain can be added to rustup by running"
+	elog "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
+	elog "it will create symlinks to system-installed rustup in home directory"
+	elog "and rustup updates will be managed by portage"
+	elog "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
+	elog "before running rustup-init-gentoo"
 }
