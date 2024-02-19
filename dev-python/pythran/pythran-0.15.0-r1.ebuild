@@ -61,6 +61,7 @@ src_configure() {
 	rm -r pythran/{boost,xsimd} || die
 
 	if use test ; then
+		# https://bugs.gentoo.org/916461
 		sed -i \
 			-e 's|blas=blas|blas=cblas|' \
 			-e 's|libs=|libs=cblas|' \
