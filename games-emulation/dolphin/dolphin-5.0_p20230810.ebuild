@@ -3,19 +3,30 @@
 
 EAPI=7
 
-inherit cmake desktop xdg-utils pax-utils
+inherit cmake desktop flag-o-matic xdg-utils pax-utils
 
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=( Externals/mGBA/mgba )
+	EGIT_SUBMODULES=( Externals/mGBA/mgba Externals/rcheevos/rcheevos )
 	inherit git-r3
 else
-	EGIT_COMMIT=0f2540a0d1133950467845f20b1e003181147781
-	MGBA_COMMIT=40d4c430fc36caeb7ea32fd39624947ed487d2f2
+	EGIT_COMMIT=5512d19d4b66af1f7738cf5df9744e01364ffb11
+	IMPLOT_COMMIT=cc5e1daa5c7f2335a9460ae79c829011dc5cef2d
+	MGBA_COMMIT=8739b22fbc90fdf0b4f6612ef9c0520f0ba44a51
+	RCHEEVOS_COMMIT=d9e990e6d13527532b7e2bb23164a1f3b7f33bb5
+	VK_MEM_ALLOC_COMMIT=498e20dfd1343d99b9115201034bb0219801cdec
+	ZLIB_NG_COMMIT=ce01b1e41da298334f8214389cc9369540a7560f
 	SRC_URI="
 		https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz
 			-> ${P}.tar.gz
+		https://github.com/epezent/implot/archive/${IMPLOT_COMMIT}.tar.gz
+			-> implot-${IMPLOT_COMMIT}.tar.gz
+		https://github.com/RetroAchievements/rcheevos/archive/${RCHEEVOS_COMMIT}.tar.gz
+			-> rcheevos-${RCHEEVOS_COMMIT}.tar.gz
+		https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/${VK_MEM_ALLOC_COMMIT}.tar.gz -> VulkanMemoryAllocator-${VK_MEM_ALLOC_COMMIT}.tar.gz
+		https://github.com/zlib-ng/zlib-ng/archive/${ZLIB_NG_COMMIT}.tar.gz
+			-> zlib-ng-${ZLIB_NG_COMMIT}.tar.gz
 		mgba? (
 			https://github.com/mgba-emu/mgba/archive/${MGBA_COMMIT}.tar.gz
 				-> mgba-${MGBA_COMMIT}.tar.gz
@@ -32,10 +43,10 @@ LICENSE="GPL-2+ BSD BSD-2 LGPL-2.1+ MIT ZLIB"
 SLOT="0"
 IUSE="
 	alsa bluetooth discord-presence doc +evdev ffmpeg +gui log mgba
-	profile pulseaudio systemd upnp vulkan
+	profile pulseaudio systemd test upnp vulkan
 "
 
-PATCHES=("${FILESDIR}/${P}-libfmt-9.0.0-fix-build.patch")
+PATCHES=( "${FILESDIR}/${P}-system-libs.patch" )
 
 RDEPEND="
 	app-arch/bzip2:=
@@ -45,15 +56,18 @@ RDEPEND="
 	>=dev-libs/libfmt-8:=
 	dev-libs/lzo:=
 	dev-libs/pugixml:=
+	dev-libs/xxhash:=
 	media-libs/cubeb:=
+	media-libs/libglvnd:=
 	media-libs/libpng:=
-	media-libs/libsfml:=
+	media-libs/libsfml
+	media-libs/libspng
 	media-libs/mesa[egl(+)]
 	net-libs/enet:1.3
 	net-libs/mbedtls:=
 	net-misc/curl:=
 	sys-libs/readline:=
-	sys-libs/zlib:=[minizip]
+	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -67,12 +81,10 @@ RDEPEND="
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
+		dev-qt/qtbase:6
 	)
 	profile? ( dev-util/oprofile )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "
@@ -97,13 +109,13 @@ declare -A KEEP_BUNDLED=(
 	[Bochs_disasm]=LGPL-2.1+
 	[cpp-optparse]=MIT
 	[imgui]=MIT
+	[implot]=MIT
 	[glslang]=BSD
-
-	# FIXME: xxhash can't be found by cmake
-	[xxhash]=BSD-2
-
-	# FIXME: requires minizip-ng
-	#[minizip]=ZLIB
+	[VulkanMemoryAllocator]=MIT
+	# This is actually minizip-ng and needs minizip-ng[compat], which is masked in base profile.
+	[minizip]=ZLIB
+	# zlib-ng[compat] is masked.
+	[zlib-ng]=ZLIB
 
 	[FreeSurround]=GPL-2+
 	[soundtouch]=LGPL-2.1+
@@ -114,14 +126,27 @@ declare -A KEEP_BUNDLED=(
 	[mGBA]=MPL-2.0
 
 	[picojson]=BSD-2
+	[expr]=MIT
 	[rangeset]=ZLIB
+	[FatFs]=BSD
+	[rcheevos]=MIT
 	[gtest]= # (build-time only)
 )
 
 src_prepare() {
-	if use mgba && [[ ${PV} != *9999 ]]; then
-		rmdir Externals/mGBA/mgba || die
+	if [[ ${PV} != *9999 ]]; then
+		if use mgba; then
+			rmdir Externals/mGBA/mgba || die
 		mv "${WORKDIR}/mgba-${MGBA_COMMIT}" Externals/mGBA/mgba || die
+		fi
+		rmdir Externals/rcheevos/rcheevos || die
+		mv "${WORKDIR}/rcheevos-${RCHEEVOS_COMMIT}" Externals/rcheevos/rcheevos || die
+		rmdir Externals/implot/implot || die
+		mv "${WORKDIR}/implot-${IMPLOT_COMMIT}" Externals/implot/implot || die
+		rmdir Externals/zlib-ng/zlib-ng || die
+		mv "${WORKDIR}/zlib-ng-${ZLIB_NG_COMMIT}" Externals/zlib-ng/zlib-ng || die
+		rmdir Externals/VulkanMemoryAllocator || die
+		mv "${WORKDIR}/VulkanMemoryAllocator-${VK_MEM_ALLOC_COMMIT}" Externals/VulkanMemoryAllocator || die
 	fi
 
 	cmake_src_prepare
@@ -142,17 +167,12 @@ src_prepare() {
 		sed -i -e '/Externals\/glslang/d' CMakeLists.txt || die
 	fi
 
-	# Allow regular minizip.
-	sed -i -e '/minizip/s:>=2[.]0[.]0::' CMakeLists.txt || die
-
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMakeLists.txt || die
-
-	# Force Qt5 rather than automagic until support is properly handled here
-	sed -i -e '/NAMES Qt6 COMP/d' Source/Core/DolphinQt/CMakeLists.txt || die
 }
 
 src_configure() {
+	filter-lto # Likely the source of crash on launch with JIT enabled
 	local mycmakeargs=(
 		# Use ccache only when user did set FEATURES=ccache (or similar)
 		# not when ccache binary is present in system (automagic).
@@ -169,12 +189,15 @@ src_configure() {
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex gui)
 		-DENABLE_SDL=OFF # not supported: #666558
+		-DENABLE_TESTS=$(usex test)
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
-		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
+		-DUSE_RETRO_ACHIEVEMENTS=ON
+		-DUSE_SYSTEM_MINIZIP=OFF
+		-DUSE_SYSTEM_ZLIB=OFF
 
 		# Undo cmake.eclass's defaults.
 		# All dolphin's libraries are private

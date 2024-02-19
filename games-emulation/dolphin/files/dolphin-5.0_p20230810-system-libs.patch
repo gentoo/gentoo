@@ -1,0 +1,47 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ee44d04458..363b1bb7db 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -663,7 +663,10 @@ dolphin_find_optional_system_library(pugixml Externals/pugixml)
+ 
+ dolphin_find_optional_system_library_pkgconfig(ENET libenet>=1.3.8 enet::enet Externals/enet)
+ 
+-if(NOT XXHASH_FOUND)
++pkg_check_modules(XXHASH libxxhash IMPORTED_TARGET)
++if (XXHASH_FOUND)
++	add_library(xxhash ALIAS PkgConfig::XXHASH)
++else()
+   message(STATUS "Using static xxhash from Externals")
+   add_subdirectory(Externals/xxhash)
+ endif()
+diff --git a/Source/Core/DolphinNoGUI/CMakeLists.txt b/Source/Core/DolphinNoGUI/CMakeLists.txt
+index 820f01c275..3b90c54614 100644
+--- a/Source/Core/DolphinNoGUI/CMakeLists.txt
++++ b/Source/Core/DolphinNoGUI/CMakeLists.txt
+@@ -24,7 +24,7 @@ endif()
+ 
+ set_target_properties(dolphin-nogui PROPERTIES OUTPUT_NAME dolphin-emu-nogui)
+ 
+-target_link_libraries(dolphin-nogui
++target_link_libraries(dolphin-nogui PUBLIC ZLIB::ZLIB
+ PRIVATE
+   core
+   uicommon
+@@ -51,4 +51,3 @@ endif()
+ 
+ set(CPACK_PACKAGE_EXECUTABLES ${CPACK_PACKAGE_EXECUTABLES} dolphin-nogui)
+ install(TARGETS dolphin-nogui RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+-
+diff --git a/Source/Core/DolphinTool/CMakeLists.txt b/Source/Core/DolphinTool/CMakeLists.txt
+index e2c8c8cdd1..d20fd2042c 100644
+--- a/Source/Core/DolphinTool/CMakeLists.txt
++++ b/Source/Core/DolphinTool/CMakeLists.txt
+@@ -11,7 +11,7 @@ add_executable(dolphin-tool
+ 
+ set_target_properties(dolphin-tool PROPERTIES OUTPUT_NAME dolphin-tool)
+ 
+-target_link_libraries(dolphin-tool
++target_link_libraries(dolphin-tool PUBLIC ZLIB::ZLIB
+ PRIVATE
+   discio
+   uicommon
