@@ -1,0 +1,15 @@
+Gentoo splits ncurses into several independent libraries. Therefore this needs to be linked with more than just -lncurses.
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2024-02-19)
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -64,7 +64,7 @@ debug: flags_$(BOXES_PLATFORM) | $(OUT_DIR)
+ 	    CFLAGS_ADDTL="-ggdb3 $(CFLAGS_ADDTL)" flags_$(BOXES_PLATFORM) $(BOXES_EXECUTABLE_NAME)
+ 
+ boxes: $(ALL_OBJ) | check_dir
+-	$(CC) $(LDFLAGS) $^ -o $@ -lunistring -lpcre2-32 -lncurses
++	$(CC) $(LDFLAGS) $^ -o $@ -lunistring -lpcre2-32 $(shell pkg-config --libs ncurses)
+ 	if [ "$(STRIP)" = "true" ] ; then strip $@ ; fi
+ 
+ boxes.static: $(ALL_OBJ) | check_dir
