@@ -158,6 +158,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/2.42.1-arm64-non-jumbo-fix.patch
 	# Fix assert failure on some machines, bug #920704
 	eapply "${FILESDIR}"/2.42.4-wasm-assert-fix.patch
+	# Fix compilation on x86, bug #924873
+	eapply "${FILESDIR}"/2.42.5-x86-build-fix.patch
 }
 
 src_configure() {
