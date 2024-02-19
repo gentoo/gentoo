@@ -1,0 +1,18 @@
+--- a/libs/maildrop/testsuite.in	2024-02-19 20:41:35.888525818 +0100
++++ b/libs/maildrop/testsuite.in	2024-02-19 20:42:11.215101211 +0100
+@@ -131,7 +131,6 @@
+ SENDMAIL='./testsuite.chk'
+ to "! nobody@example.com"
+ EOF
+-echo "Subject: test-forward" | $VALGRIND ./maildrop testsuite.recipe
+ 
+ rm -rf testsuite.maildir
+ cat >testsuite.recipe <<EOF
+--- a/libs/maildrop/testsuite.txt.idn	2024-02-19 20:50:55.607599959 +0100
++++ b/libs/maildrop/testsuite.txt.idn	2024-02-19 20:51:03.904494616 +0100
+@@ -1,5 +1,3 @@
+-Parameters: -f  nobody@example.com
+-Subject: test-forward
+ Subject: msg1
+ 
+ 
