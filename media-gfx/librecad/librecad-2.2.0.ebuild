@@ -40,6 +40,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-missing-header.patch"
+)
+
 src_prepare() {
 	default
 
