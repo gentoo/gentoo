@@ -7,14 +7,14 @@ inherit cmake
 
 DESCRIPTION="Gradually typed embeddable scripting language derived from Lua"
 HOMEPAGE="https://luau-lang.org/
-	https://github.com/Roblox/luau/"
+	https://github.com/luau-lang/luau/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/Roblox/${PN}.git"
+	EGIT_REPO_URI="https://github.com/luau-lang/${PN}.git"
 else
-	SRC_URI="https://github.com/Roblox/${PN}/archive/${PV}.tar.gz
+	SRC_URI="https://github.com/luau-lang/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 	KEYWORDS="~amd64 ~x86"
