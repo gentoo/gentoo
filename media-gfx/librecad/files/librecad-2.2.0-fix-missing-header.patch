@@ -1,0 +1,29 @@
+The patch is borrowed from upstream https://github.com/LibreCAD/LibreCAD
+
+https://github.com/LibreCAD/LibreCAD/commit/6e0f1556bbd554e528295f92597a80a109344607
+
+https://bugs.gentoo.org/919822
+
+commit 6e0f1556bbd554e528295f92597a80a109344607
+Author: Denis Pronin <dannftk@yandex.ru>
+Date:   Sun Jun 2 22:23:11 2024 +0300
+
+    fix compilation with clang and llvm's libcxx
+    
+    librecad/src/lib/debug/rs_debug.h requires cstdio to be included because of FILE
+     type being used
+    
+    Signed-off-by: Denis Pronin <dannftk@yandex.ru>
+
+diff --git a/librecad/src/lib/debug/rs_debug.h b/librecad/src/lib/debug/rs_debug.h
+index 23918574..8950efcc 100644
+--- a/librecad/src/lib/debug/rs_debug.h
++++ b/librecad/src/lib/debug/rs_debug.h
+@@ -28,6 +28,7 @@
+ #ifndef RS_DEBUG_H
+ #define RS_DEBUG_H
+ 
++#include <cstdio>
+ #include <iosfwd>
+ #ifdef __hpux
+ #include <sys/_size_t.h>
