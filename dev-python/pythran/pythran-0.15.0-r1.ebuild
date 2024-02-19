@@ -27,6 +27,7 @@ KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-libs/boost
+	dev-cpp/xsimd
 	=dev-python/beniget-0.4*[${PYTHON_USEDEP}]
 	=dev-python/gast-0.5*[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -34,8 +35,10 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="
-	dev-libs/boost
-	dev-cpp/xsimd
+	test? (
+		dev-libs/boost
+		dev-cpp/xsimd
+	)
 "
 BDEPEND="
 	test? (
@@ -54,7 +57,7 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_configure() {
-	# sigh
+	# vendored C++ headers -- use system copies
 	rm -r pythran/{boost,xsimd} || die
 
 	if use test ; then
