@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="MIT Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa jack +ncurses pipewire portaudio pulseaudio sdl sndio"
 
 RDEPEND="
