@@ -40,6 +40,10 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-clang.patch"
+)
+
 src_prepare() {
 	default
 
