@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,7 +52,10 @@ BDEPEND="test? (
 	')
 )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.14.4-tests.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.14.4-tests.patch
+	"${FILESDIR}"/${P}-tests.patch
+)
 
 distutils_enable_tests pytest
 
