@@ -277,15 +277,12 @@ meson_feature() {
 	usex "$1" "-D${2-$1}=enabled" "-D${2-$1}=disabled"
 }
 
-# @FUNCTION: meson_src_configure
-# @USAGE: [extra meson arguments]
+# @FUNCTION: setup_meson_src_configure
 # @DESCRIPTION:
-# This is the meson_src_configure function.
-meson_src_configure() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
-
+# Calculate the command line which meson should use, and other relevant
+# variables. Invoke via "${MESONARGS[@]}" in the calling environment.
+# This function is called from meson_src_configure.
+setup_meson_src_configure() {
 	local BUILD_CFLAGS=${BUILD_CFLAGS}
 	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
 	local BUILD_CXXFLAGS=${BUILD_CXXFLAGS}
@@ -314,8 +311,7 @@ meson_src_configure() {
 		: "${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}"
 	fi
 
-	local mesonargs=(
-		meson setup
+	MESONARGS=(
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
@@ -341,11 +337,11 @@ meson_src_configure() {
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
-		mesonargs+=( --buildtype "${EMESON_BUILDTYPE}" )
+		MESONARGS+=( --buildtype "${EMESON_BUILDTYPE}" )
 	fi
 
 	if tc-is-cross-compiler; then
-		mesonargs+=( --cross-file "$(_meson_create_cross_file)" )
+		MESONARGS+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
 
 	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
@@ -353,7 +349,7 @@ meson_src_configure() {
 	# Handle quoted whitespace
 	eval "local -a MYMESONARGS=( ${MYMESONARGS} )"
 
-	mesonargs+=(
+	MESONARGS+=(
 		# Arguments from ebuild
 		"${emesonargs[@]}"
 
@@ -362,12 +358,6 @@ meson_src_configure() {
 
 		# Arguments from user
 		"${MYMESONARGS[@]}"
-
-		# Source directory
-		"${EMESON_SOURCE:-${S}}"
-
-		# Build directory
-		"${BUILD_DIR}"
 	)
 
 	# Used by symbolextractor.py
@@ -379,13 +369,32 @@ meson_src_configure() {
 	python_export_utf8_locale
 
 	# https://bugs.gentoo.org/721786
-	local -x BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
-	local -x BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
+	export BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
+	export BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
+}
+
+# @FUNCTION: meson_src_configure
+# @USAGE: [extra meson arguments]
+# @DESCRIPTION:
+# This is the meson_src_configure function.
+meson_src_configure() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
 
 	(
+		setup_meson_src_configure "$@"
+		MESONARGS+=(
+			# Source directory
+			"${EMESON_SOURCE:-${S}}"
+
+			# Build directory
+			"${BUILD_DIR}"
+		)
+
 		export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
-		echo "${mesonargs[@]}" >&2
-		"${mesonargs[@]}"
+		echo meson setup "${MESONARGS[@]}" >&2
+		meson setup "${MESONARGS[@]}"
 	) || die
 }
 
