@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.50-gentoo.patch
 	"${FILESDIR}"/${PN}-5.80-cflags.patch
 	"${FILESDIR}"/${PN}-5.80-fno-common.patch
+	"${FILESDIR}"/${P}-c99.patch
 )
 
 pkg_setup()  {

@@ -1,0 +1,10 @@
+--- a/lgmon3/src/keytext.c	2024-02-20 07:45:11.719827112 +0100
++++ b/lgmon3/src/keytext.c	2024-02-20 07:46:15.504048256 +0100
+@@ -37,6 +37,7 @@
+ #include <unistd.h>
+ #include <libxml/parser.h>	/* Ver.2.80 */
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "keytext.h"
+ 
