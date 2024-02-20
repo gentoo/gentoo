@@ -14,7 +14,8 @@ KEYWORDS="~amd64"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-DEPEND="sci-mathematics/gap"
+DEPEND="sci-mathematics/gap:="
+RDEPEND="${DEPEND}"
 BDEPEND="test? (
 	dev-gap/atlasrep
 	dev-gap/cvec
