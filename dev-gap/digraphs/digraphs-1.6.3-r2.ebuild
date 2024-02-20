@@ -12,7 +12,7 @@ SRC_URI="https://github.com/digraphs/Digraphs/releases/download/v${PV}/${P}.tar.
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 
-DEPEND="sci-mathematics/gap
+DEPEND="sci-mathematics/gap:=
 	sci-mathematics/planarity
 	sci-libs/bliss:="
 RDEPEND="${DEPEND}
