@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-20)
+# Unmaintained.  The recently merged rewrite in Rust broke compilation
+# on 32-bit architecture.  No revdeps left.
+# Removal on 2024-03-21.  Bug #924881.
+dev-python/pendulum
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-02-18)
 # Not ported to python3_12
 # Removal on 2024-03-18.
