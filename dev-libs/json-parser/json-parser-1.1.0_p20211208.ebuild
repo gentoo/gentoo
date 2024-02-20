@@ -24,8 +24,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
