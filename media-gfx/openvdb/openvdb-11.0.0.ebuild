@@ -336,7 +336,7 @@ my_src_test() {
 	[[ "${MULTIBUILD_VARIANT}" != "test" ]] && return
 
 	if use ax; then
-		ln -sr "${CMAKE_USE_DIR}/openvdb_ax/openvdb_ax/test" "${BUILD_DIR}/test"
+		ln -sr "${CMAKE_USE_DIR}/openvdb_ax/openvdb_ax/test" "${BUILD_DIR}/test" || die
 	fi
 
 	if use cuda; then
