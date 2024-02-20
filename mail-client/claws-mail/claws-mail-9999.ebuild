@@ -147,6 +147,7 @@ src_configure() {
 		$(use_enable debug crash-dialog)
 		$(use_enable debug more-addressbook-debug)
 		$(use_enable debug more-ldap-debug)
+		$(use_enable debug more-archive-debug)
 		$(use_enable doc manual)
 		$(use_enable gnutls)
 		$(use_enable ldap)
