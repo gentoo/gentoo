@@ -137,6 +137,10 @@ multilib_src_compile() {
 	emake V=1
 }
 
+multilib_src_test() {
+	emake -C test check
+}
+
 multilib_src_install() {
 	default
 
