@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2024-02-20)
+# Upstream massively reworked av1 support breaking our custom
+# system-av1 patches.
+>=www-client/firefox-123.0 system-av1
+
 # Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
 # Cinnamon wayland support is experimental and incomplete.
 # https://github.com/linuxmint/wayland/issues
