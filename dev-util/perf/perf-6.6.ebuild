@@ -176,6 +176,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	eapply "${FILESDIR}"/perf-6.4-libtracefs.patch
+	eapply "${FILESDIR}"/perf-6.6-ia64.patch
 	popd || die
 
 	# Drop some upstream too-developer-oriented flags and fix the
