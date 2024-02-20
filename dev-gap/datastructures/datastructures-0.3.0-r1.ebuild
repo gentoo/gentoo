@@ -12,7 +12,8 @@ SRC_URI="https://github.com/gap-packages/datastructures/releases/download/v${PV}
 LICENSE="GPL-2+"
 KEYWORDS="~amd64"
 
-DEPEND="sci-mathematics/gap"
+DEPEND="sci-mathematics/gap:="
+RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES.md README.md )
 
