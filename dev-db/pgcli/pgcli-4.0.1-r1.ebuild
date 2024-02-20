@@ -26,11 +26,25 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
 	dev-python/sqlparse[${PYTHON_USEDEP}]
-	dev-python/sshtunnel[${PYTHON_USEDEP}]"
+	dev-python/sshtunnel[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
 		dev-db/postgresql
 		dev-python/mock[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# hang while trying to create a keyring
+		# https://bugs.gentoo.org/925085
+		tests/test_main.py::test_pg_service_file
+		tests/test_ssh_tunnel.py::test_ssh_tunnel
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
