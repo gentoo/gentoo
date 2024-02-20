@@ -16,7 +16,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 
-DEPEND="sys-libs/ncurses:="
+DEPEND="sci-mathematics/gap:=
+	sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 GAP_PKG_EXTRA_INSTALL=( app bibl )
