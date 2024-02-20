@@ -173,7 +173,17 @@ python_test() {
 		# requires -Werror
 		tests/tslibs/test_to_offset.py::test_to_offset_lowercase_frequency_deprecated
 		tests/tslibs/test_to_offset.py::test_to_offset_uppercase_frequency_deprecated
+
+		# assumes that it will fail due to -mfpmath=387 on 32-bit arches,
+		# so it XPASS-es in every other scenario
+		tests/tools/test_to_timedelta.py::TestTimedeltas::test_to_timedelta_float
 	)
+
+	if ! has_version "dev-python/scipy[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/plotting/test_misc.py::test_savefig
+		)
+	fi
 
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
