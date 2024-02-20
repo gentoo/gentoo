@@ -15,6 +15,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 
+DEPEND="sci-mathematics/gap:="
+RDEPEND="${DEPEND}"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.7-user-flags.patch"
 )
