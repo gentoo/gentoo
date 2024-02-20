@@ -49,10 +49,8 @@ OPTIONAL_DEPEND="
 	>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
 	!x86? ( !hppa? (
-		$(python_gen_cond_dep '
-			dev-python/statsmodels[${PYTHON_USEDEP}]
-		' python3_{8..10} )
 		>=dev-python/scipy-1.8.1[${PYTHON_USEDEP}]
+		dev-python/statsmodels[${PYTHON_USEDEP}]
 	) )
 	X? (
 		|| (
