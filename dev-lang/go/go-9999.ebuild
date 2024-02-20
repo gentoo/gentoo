@@ -11,35 +11,35 @@ MY_PV=${PV/_/}
 inherit toolchain-funcs
 
 # See "Bootstrap" in release notes
-# BV is set to the minimum version of go required to bootstrap the
+# GO_BV is set to the minimum version of go required to bootstrap the
 # current version.
-BV=1.20.14
+GO_BV=1.20.14
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 SRC_URI="
-	amd64? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-amd64-bootstrap.tbz )
-	arm? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-arm-bootstrap.tbz )
-	arm64? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-arm64-bootstrap.tbz )
-	loong? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-loong64-bootstrap.tbz )
+	amd64? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-amd64-bootstrap.tbz )
+	arm? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-arm-bootstrap.tbz )
+	arm64? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-arm64-bootstrap.tbz )
+	loong? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-loong64-bootstrap.tbz )
 	mips? (
 		abi_mips_o32? (
-			big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mips-bootstrap.tbz )
-			!big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mipsle-bootstrap.tbz )
+			big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips-bootstrap.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mipsle-bootstrap.tbz )
 		)
 		abi_mips_n64? (
-			big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mips64-bootstrap.tbz )
-			!big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-mips64le-bootstrap.tbz )
+			big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips64-bootstrap.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips64le-bootstrap.tbz )
 		)
 	)
 	ppc64? (
-		big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-ppc64-bootstrap.tbz )
-		!big-endian? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-ppc64le-bootstrap.tbz )
+		big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-ppc64-bootstrap.tbz )
+		!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-ppc64le-bootstrap.tbz )
 	)
-	riscv? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-riscv64-bootstrap.tbz )
-	s390? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-s390x-bootstrap.tbz )
-	x86? ( ${BOOTSTRAP_DIST}/go-${BV}-linux-386-bootstrap.tbz )
-	x64-macos? ( ${BOOTSTRAP_DIST}/go-${BV}-darwin-amd64-bootstrap.tbz )
-	arm64-macos? ( ${BOOTSTRAP_DIST}/go-${BV}-darwin-arm64-bootstrap.tbz )
-	x64-solaris? ( ${BOOTSTRAP_DIST}/go-${BV}-solaris-amd64-bootstrap.tbz )
+	riscv? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-riscv64-bootstrap.tbz )
+	s390? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-s390x-bootstrap.tbz )
+	x86? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-386-bootstrap.tbz )
+	x64-macos? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-darwin-amd64-bootstrap.tbz )
+	arm64-macos? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-darwin-arm64-bootstrap.tbz )
+	x64-solaris? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-solaris-amd64-bootstrap.tbz )
 	"
 
 case ${PV}  in
