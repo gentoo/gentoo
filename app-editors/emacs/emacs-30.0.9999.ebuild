@@ -169,9 +169,10 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
-# Suppress false positive QA warnings #898304
+# Suppress false positive QA warnings #898304 #925091
 QA_CONFIG_IMPL_DECL_SKIP=(
-	malloc_{set,get}_state MIN static_assert alignof unreachable
+	malloc_set_state malloc_get_state MIN static_assert alignof unreachable
+	statvfs64 re_set_syntax re_compile_pattern re_search re_match
 )
 
 src_prepare() {
