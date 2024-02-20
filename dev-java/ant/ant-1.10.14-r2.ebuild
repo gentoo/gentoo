@@ -45,7 +45,10 @@ DEPEND="
 	commonsnet? ( dev-java/commons-net:0 )
 	jai? ( dev-java/sun-jai-bin:0 )
 	jakartamail? ( dev-java/jakarta-mail:0 )
-	javamail? ( dev-java/javax-mail:0 )
+	javamail? (
+		dev-java/jakarta-activation-api:1
+		dev-java/javax-mail:0
+	)
 	jdepend? ( >=dev-java/jdepend-2.10-r1:0 )
 	jsch? ( dev-java/jsch:0 )
 	junit4? ( dev-java/junit:4 )
@@ -293,7 +296,7 @@ src_compile() {
 		taskdeps ant-commons-net commons-net
 		taskdeps ant-jai sun-jai-bin
 		taskdeps ant-jakartamail jakarta-mail
-		taskdeps ant-javamail javax-mail
+		taskdeps ant-javamail 'javax-mail jakarta-activation-api-1'
 		taskdeps ant-jdepend jdepend
 		taskdeps ant-jsch jsch
 		taskdeps ant-junit junit-4 ant-junit/src/resources
