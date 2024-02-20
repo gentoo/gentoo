@@ -1,0 +1,40 @@
+From 7bd884f8750892de4f50bf4642fcfbe7011c6bdf Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sun, 18 Feb 2024 17:02:25 +0100
+Subject: [PATCH] opj_decompress: fix off-by-one read heap-buffer-overflow in
+ sycc420_to_rgb() when x0 and y0 are odd (CVE-2021-3575, fixes #1347)
+
+---
+ src/bin/common/color.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/bin/common/color.c b/src/bin/common/color.c
+index 27f15f137..ae5d648da 100644
+--- a/src/bin/common/color.c
++++ b/src/bin/common/color.c
+@@ -358,7 +358,15 @@ static void sycc420_to_rgb(opj_image_t *img)
+     if (i < loopmaxh) {
+         size_t j;
+ 
+-        for (j = 0U; j < (maxw & ~(size_t)1U); j += 2U) {
++        if (offx > 0U) {
++            sycc_to_rgb(offset, upb, *y, 0, 0, r, g, b);
++            ++y;
++            ++r;
++            ++g;
++            ++b;
++        }
++
++        for (j = 0U; j < (loopmaxw & ~(size_t)1U); j += 2U) {
+             sycc_to_rgb(offset, upb, *y, *cb, *cr, r, g, b);
+ 
+             ++y;
+@@ -375,7 +383,7 @@ static void sycc420_to_rgb(opj_image_t *img)
+             ++cb;
+             ++cr;
+         }
+-        if (j < maxw) {
++        if (j < loopmaxw) {
+             sycc_to_rgb(offset, upb, *y, *cb, *cr, r, g, b);
+         }
+     }
