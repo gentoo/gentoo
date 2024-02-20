@@ -13,7 +13,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="examples"
 
-RDEPEND="dev-gap/io
+DEPEND="sci-mathematics/gap:="
+RDEPEND="${DEPEND}
+	dev-gap/io
 	dev-gap/orb"
 
 gap-pkg_enable_tests
