@@ -367,7 +367,7 @@ setup_meson_src_configure() {
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
-		MESONARGS+=( --buildtype "${EMESON_BUILDTYPE}" )
+		MESONARGS+=( -Dbuildtype="${EMESON_BUILDTYPE}" )
 	fi
 
 	if tc-is-cross-compiler; then
