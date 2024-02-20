@@ -13,10 +13,6 @@
 # Requires llvm-17.
 >=www-client/chromium-118 libcxx lto pgo
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-18)
-# Unblock the support in python-exec while the target is masked.
-dev-lang/python-exec -python_targets_python3_12
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-11)
 # xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
 xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
