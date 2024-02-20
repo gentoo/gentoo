@@ -12,6 +12,7 @@ SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar
 LICENSE="BSD"
 KEYWORDS="~amd64"
 
-DEPEND="sci-mathematics/gap"
+DEPEND="sci-mathematics/gap:="
+RDEPEND="${DEPEND}"
 
 gap-pkg_enable_tests
