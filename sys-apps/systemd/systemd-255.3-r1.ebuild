@@ -287,6 +287,9 @@ multilib_src_configure() {
 		# no deps
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
+		# Match /etc/shells, bug 919749
+		-Ddebug-shell="${EPREFIX}/bin/sh"
+		-Ddefault-user-shell="${EPREFIX}/bin/bash"
 		# Optional components/dependencies
 		$(meson_native_use_bool acl)
 		$(meson_native_use_bool apparmor)
