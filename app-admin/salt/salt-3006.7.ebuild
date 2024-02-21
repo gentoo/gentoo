@@ -98,6 +98,7 @@ BDEPEND="
 		dev-python/mako[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/moto-2.0.0[${PYTHON_USEDEP}]
+		<dev-python/moto-5[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
@@ -273,11 +274,11 @@ python_test() {
 
 		# don't like sandbox
 		tests/pytests/functional/fileserver/test_roots.py::test_symlink_list
+		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_content
+		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_empty_file
+		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_no_append_on_match
 		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_no_match_newline
 		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_no_match_no_newline
-		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_empty_file
-		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_content
-		tests/pytests/functional/modules/file/test_replace.py::test_append_if_not_found_no_append_on_match
 		tests/pytests/functional/modules/test_defaults.py::test_defaults_get
 		tests/pytests/functional/pillar/test_top.py::test_pillar_top_compound_match
 		tests/pytests/functional/states/file/test_append.py::test_file_append_check_cmd
@@ -286,27 +287,30 @@ python_test() {
 		tests/pytests/functional/states/file/test_directory.py::test_directory_clean_require_in_with_id
 		tests/pytests/functional/states/file/test_directory.py::test_directory_clean_require_with_name
 		tests/pytests/functional/states/file/test_keyvalue.py::test_keyvalue
-		tests/pytests/functional/states/file/test_managed.py::test_managed_file_with_grains_data
-		tests/pytests/functional/states/file/test_managed.py::test_managed_escaped_file_path
-		tests/pytests/functional/states/file/test_managed.py::test_managed_latin1_diff
-		tests/pytests/functional/states/file/test_managed.py::test_managed_unicode_jinja_with_tojson_filter
-		tests/pytests/functional/states/file/test_managed.py::test_managed_source_hash_indifferent_case
 		tests/pytests/functional/states/file/test_managed.py::test_file_managed_requisites
-		tests/pytests/functional/states/file/test_managed.py::test_managed_file_issue_51208
-		tests/pytests/functional/states/file/test_recurse.py::test_issue_2726_mode_kwarg
 		tests/pytests/functional/states/file/test_managed.py::test_issue_8947_utf8_sls
-		tests/pytests/functional/states/file/test_replace.py::test_file_replace_prerequired_issues_55775
+		tests/pytests/functional/states/file/test_managed.py::test_managed_escaped_file_path
+		tests/pytests/functional/states/file/test_managed.py::test_managed_file_issue_51208
+		tests/pytests/functional/states/file/test_managed.py::test_managed_file_with_grains_data
+		tests/pytests/functional/states/file/test_managed.py::test_managed_latin1_diff
+		tests/pytests/functional/states/file/test_managed.py::test_managed_source_hash_indifferent_case
+		tests/pytests/functional/states/file/test_managed.py::test_managed_unicode_jinja_with_tojson_filter
+		tests/pytests/functional/states/file/test_recurse.py::test_issue_2726_mode_kwarg
 		tests/pytests/functional/states/file/test_replace.py::test_file_replace_check_cmd
+		tests/pytests/functional/states/file/test_replace.py::test_file_replace_prerequired_issues_55775
 		tests/pytests/functional/utils/functools/test_namespaced_function.py::test_namespacing
-		tests/pytests/unit/pillar/test_pillar.py::test_pillar_get_cache_disk
-		tests/pytests/unit/state/test_state_compiler.py::test_verify_high_too_many_functions_declared_error_message
-		tests/pytests/unit/utils/test_versions.py::test_warn_until_good_version_argument
 		tests/pytests/integration/modules/test_state.py::test_logging_and_state_output_order
 		tests/pytests/integration/modules/test_test.py::test_deprecation_warning_emits_deprecation_warnings
 		tests/pytests/unit/config/schemas/test_ssh.py::test_config_validate
-		tests/pytests/unit/test_ext_importers.py::test_tornado_import_override
-		tests/pytests/unit/modules/test_saltutil.py::test_list_extmods
+		tests/pytests/unit/grains/test_core.py::test_get_machine_id
+		tests/pytests/unit/loader/test_loader.py::test_named_loader_context_name_not_packed
 		tests/pytests/unit/modules/test_saltutil.py::test_clear_job_cache
+		tests/pytests/unit/modules/test_saltutil.py::test_list_extmods
+		tests/pytests/unit/pillar/test_pillar.py::test_pillar_get_cache_disk
+		tests/pytests/unit/state/test_state_compiler.py::test_verify_high_too_many_functions_declared_error_message
+		tests/pytests/unit/test_ext_importers.py::test_tornado_import_override
+		tests/pytests/unit/utils/test_rsax931.py::test_find_libcrypto_darwin_catalina
+		tests/pytests/unit/utils/test_versions.py::test_warn_until_good_version_argument
 		tests/unit/transport/test_ipc.py::IPCMessagePubSubCase::test_async_reading_streamclosederror
 
 		# tests that need network access
