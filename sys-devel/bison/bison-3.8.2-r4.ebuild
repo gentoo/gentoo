@@ -18,12 +18,15 @@ IUSE="examples nls static test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=sys-devel/m4-1.4.16
 	nls? ( >=sys-devel/gettext-0.21 )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	>=sys-devel/m4-1.4.16
+"
 BDEPEND="
 	app-alternatives/lex
+	>=sys-devel/m4-1.4.16
 	test? ( dev-lang/perl )
 	verify-sig? ( sec-keys/openpgp-keys-bison )
 "
