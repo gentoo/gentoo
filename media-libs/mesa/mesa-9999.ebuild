@@ -140,13 +140,12 @@ BDEPEND="
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
 	video_cards_intel? (
-		~dev-util/intel_clc-${PV}
-		dev-libs/libclc[spirv(-)]
-		vulkan? (
-			dev-util/glslang
+			~dev-util/intel_clc-${PV}
+			dev-libs/libclc[spirv(-)]
 			$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
 		)
 	)
+	vulkan? ( dev-util/glslang )
 	wayland? ( dev-util/wayland-scanner )
 "
 
