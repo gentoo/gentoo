@@ -34,5 +34,5 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr Q= STRIP= install
-	dodoc README.rst
+	dodoc README.md
 }
