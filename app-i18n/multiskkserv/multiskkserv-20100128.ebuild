@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -23,7 +23,10 @@ RDEPEND="app-i18n/skk-jisyo[cdb]
 DEPEND="${RDEPEND}
 	test? ( app-i18n/nkf )"
 
-PATCHES=( "${FILESDIR}"/${PN}-cdb.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-cdb.patch
+	"${FILESDIR}"/${PN}-slibtool.patch #924142
+)
 
 src_prepare() {
 	default
