@@ -1,0 +1,22 @@
+diff --color -Naru a/sdk/demo/demo.mk b/sdk/demo/demo.mk
+--- a/sdk/demo/demo.mk	2021-08-22 17:20:17.232777697 +0200
++++ b/sdk/demo/demo.mk	2021-08-22 17:24:49.800783794 +0200
+@@ -43,10 +43,15 @@
+ CC=/opt/SunProd/SUNWspro6.1/bin/CC
+ cc=/opt/SunProd/SUNWspro6.1/bin/cc
+ 
+-ICINCHOME=../
+-ICLIBHOME=../../
++ifeq ($(BUILD32),T)
++LIBDIR=lib
++else
++LIBDIR=lib64
++endif
++ICINCHOME=$(ORACLE_HOME)/include
++ICLIBHOME=$(ORACLE_HOME)/$(LIBDIR)
+ ICLIBPATH=-L$(ICLIBHOME)
+-CCINCLUDES=-I$(ICINCHOME)include
++CCINCLUDES=-I$(ICINCHOME)
+ 
+ THREADLIBS=-lthread
+ CCLIB=$(ICLIBPATH) -locci -lclntsh $(THREADLIBS)
