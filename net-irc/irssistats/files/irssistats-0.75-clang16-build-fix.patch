@@ -1,0 +1,40 @@
+Bug: https://bugs.gentoo.org/897866
+--- a/irssistats.c
++++ b/irssistats.c
+@@ -29,6 +29,7 @@
+ #include <time.h>
+ #include <string.h>
+ #include <locale.h>
++#include <ctype.h>
+ #ifdef __WIN32__
+ #define GLOBALCONF "irssistats.conf"
+ #else
+@@ -1561,19 +1562,19 @@ void gen_xhtml(char *xhtmlfile)
+   fclose(fic);
+ }
+ 
+-void parse_config(char *configfile)
++void expand(char *path)
+ {
+-  void expand(char *path)
++  char temp[MAXLINELENGTH];
++  if (*path=='~')
+   {
+-    char temp[MAXLINELENGTH];
+-    if (*path=='~')
+-    {
+-      snprintf(temp,MAXLINELENGTH-1,"%s%s",getenv("HOME"),path+1);
+-      temp[MAXLINELENGTH-1]='\0';
+-      strcpy(path,temp);
+-    }
++    snprintf(temp,MAXLINELENGTH-1,"%s%s",getenv("HOME"),path+1);
++    temp[MAXLINELENGTH-1]='\0';
++    strcpy(path,temp);
+   }
++}
+   
++void parse_config(char *configfile)
++{
+   FILE *fic;
+   char line[MAXLINELENGTH];
+   char keyword[MAXLINELENGTH];
