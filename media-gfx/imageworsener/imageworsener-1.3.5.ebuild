@@ -24,6 +24,8 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="test? ( jpeg png webp zlib )"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/${PN}-1.3.5-backport-pr46.patch" )
+
 src_configure() {
 	local switch=''
 	use test && switch=test
@@ -44,5 +46,5 @@ src_install() {
 
 src_test() {
 	cd "${S}"/tests || die
-	./runtest "${S}"/${MY_PN}
+	./runtest "${S}"/${MY_PN} || die
 }
