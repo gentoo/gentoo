@@ -33,6 +33,7 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	test? ( ~sys-devel/lld-${PV} )
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
