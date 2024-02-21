@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2024-02-16)
+# Test dependencies not keyworded on this arch.
+www-servers/nginx test
+
 # Sam James <sam@gentoo.org> (2024-02-03)
 # We only have MariaDB on loong, not MySQL.
 dev-perl/DBD-MariaDB mysql

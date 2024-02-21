@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="pypi">confusable-homoglyphs</remote-id>
 		<remote-id type="sourcehut">~valhalla/confusable_homoglyphs</remote-id>
+		<remote-id type="github">vhf/confusable_homoglyphs</remote-id>
 	</upstream>
 </pkgmetadata>

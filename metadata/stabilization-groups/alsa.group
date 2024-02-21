@@ -1,0 +1,9 @@
+dev-python/pyalsa
+media-libs/alsa-lib
+media-libs/alsa-oss
+media-libs/alsa-topology-conf
+media-libs/alsa-ucm-conf
+media-plugins/alsa-plugins
+media-sound/alsa-tools
+media-sound/alsa-utils
+sys-firmware/alsa-firmware

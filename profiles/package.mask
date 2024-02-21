@@ -33,6 +33,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-20)
+# Unmaintained.  The recently merged rewrite in Rust broke compilation
+# on 32-bit architecture.  No revdeps left.
+# Removal on 2024-03-21.  Bug #924881.
+dev-python/pendulum
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-02-18)
+# Not ported to python3_12
+# Removal on 2024-03-18.
+=sci-libs/pytorch-2.0*
+=sci-libs/caffe2-2.0*
+=sci-libs/pytorch-1*
+=sci-libs/caffe2-1*
+
+# Sam James <sam@gentoo.org> (2024-02-18)
+# Lots of changes, including a port to a new build system. Needs lots of testing.
+=sys-apps/gentoo-functions-1*
+
+# Sam James <sam@gentoo.org> (2024-02-15)
+# May break on some arches b/c of visibility/map changes to ffi_type_longdouble
+=dev-libs/libffi-3.4.5
+
 # Ulrich Müller <ulm@gentoo.org> (2024-02-15)
 # Hangs at runtime, bug #924617.
 =net-im/zoom-5.17.5.2543
@@ -86,6 +108,14 @@ kde-misc/bismuth
 dev-cpp/libodb
 dev-cpp/libodb-sqlite
 dev-util/build2
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-02-14)
+# "A harness to build OpenJDK using [...]" is no longer needed since
+# Gentoo can build openjdk from source.
+# Maintainer capacity missing to maintain these packages.
+# More than 30 open bugs.
+# Removal on 2024-03-15.
+dev-java/icedtea
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-10)
 # Very fragile, keeps breaking.  Limited platform support.  Used only
@@ -396,6 +426,7 @@ dev-java/osgi-foundation
 ~net-libs/signon-oauth2-0.25_p20210102
 =net-libs/signond-8.61-r100
 ~net-misc/kio-zeroconf-24.01.95
+=net-misc/smb4k-3.2.5-r2
 ~sys-auth/polkit-qt-0.175.0
 
 # Sam James <sam@gentoo.org> (2023-12-14)

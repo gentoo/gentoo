@@ -72,14 +72,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
+				19.0.0_pre20240218)
+					EGIT_COMMIT=3496927edcd0685807351ba88a7e2cfb006e1c0d
+					;;
 				19.0.0_pre20240210)
 					EGIT_COMMIT=8884ba43a8485bebef5c4d41e7ed457e3fa84f07
-					;;
-				19.0.0_pre20240203)
-					EGIT_COMMIT=78b4e7c5e349d8c101b50affbd260eb109748f8f
-					;;
-				19.0.0_pre20240127)
-					EGIT_COMMIT=1f13203029333ac99cc9844b8b6915aae3fc0902
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -268,19 +265,32 @@ llvm.org_set_globals() {
 	fi
 
 	if [[ ${LLVM_MANPAGES} ]]; then
-		# use pregenerated tarball if available
-		local manpage_dist=$(llvm_manpage_get_dist)
-		if [[ -n ${manpage_dist} ]]; then
-			IUSE+=" doc"
+		# @ECLASS_VARIABLE: LLVM_MANPAGE_DIST
+		# @OUTPUT_VARIABLE
+		# @DESCRIPTION:
+		# The filename of the prebuilt manpage tarball for this version.
+		LLVM_MANPAGE_DIST=
+		if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
+			case ${PV} in
+				14*|15*|16.0.[0-3])
+					LLVM_MANPAGE_DIST="llvm-${PV}-manpages.tar.bz2"
+					;;
+				16*)
+					LLVM_MANPAGE_DIST="llvm-16.0.4-manpages.tar.bz2"
+					;;
+				17*)
+					LLVM_MANPAGE_DIST="llvm-17.0.1-manpages.tar.bz2"
+					;;
+			esac
+		fi
+
+		IUSE+=" doc"
+		if [[ -n ${LLVM_MANPAGE_DIST} ]]; then
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/${manpage_dist}
+					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
 				)
 			"
-		else
-			IUSE+=" +doc"
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
 		fi
 	fi
 
@@ -436,32 +446,12 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
-# @FUNCTION: llvm_manpage_get_dist
-# @DESCRIPTION:
-# Output the filename of the manpage dist for this version,
-# if available.  Otherwise returns without output.
-llvm_manpage_get_dist() {
-	if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
-		case ${PV} in
-			14*|15*|16.0.[0-3])
-				echo "llvm-${PV}-manpages.tar.bz2"
-				;;
-			16*)
-				echo "llvm-16.0.4-manpages.tar.bz2"
-				;;
-			17*)
-				echo "llvm-17.0.1-manpages.tar.bz2"
-				;;
-		esac
-	fi
-}
-
 # @FUNCTION: llvm_are_manpages_built
 # @DESCRIPTION:
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || [[ -z $(llvm_manpage_get_dist) ]]
+	use doc || [[ -z ${LLVM_MANPAGE_DIST} ]]
 }
 
 # @FUNCTION: llvm_install_manpages

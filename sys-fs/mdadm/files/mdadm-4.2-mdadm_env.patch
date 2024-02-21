@@ -1,0 +1,36 @@
+--- mdadm-4.2/systemd/SUSE-mdadm_env.sh	2021-12-30 11:43:35.000000000 -0800
++++ mdadm-4.2/systemd/SUSE-mdadm_env.sh	2024-02-19 12:20:56.509632098 -0800
+@@ -6,6 +7,12 @@
+ 
+ MDADM_SCAN="yes"
+ 
++# Gentoo: source conf.d
++mdadmd_CONFIG=/etc/conf.d/mdadm
++if test -r $mdadmd_CONFIG; then
++   . $mdadmd_CONFIG
++fi
++
+ # Following adapted from /etc/init.d/mdadmd on openSUSE
+ 
+ mdadmd_CONFIG=/etc/sysconfig/mdadm
+@@ -42,7 +49,8 @@
+ fi
+ 
+ mkdir -p /run/sysconfig
+-echo "MDADM_MONITOR_ARGS=$MDADM_RAIDDEVICES $MDADM_DELAY $MDADM_MAIL $MDADM_PROGRAM $MDADM_SCAN $MDADM_SEND_MAIL $MDADM_CONFIG" > /run/sysconfig/mdadm
++# Gentoo: added $MDADM_OPTS to the end.
++echo "MDADM_MONITOR_ARGS=$MDADM_RAIDDEVICES $MDADM_DELAY $MDADM_MAIL $MDADM_PROGRAM $MDADM_SCAN $MDADM_SEND_MAIL $MDADM_CONFIG $MDADM_OPTS" > /run/sysconfig/mdadm
+ if [ -n "$MDADM_CHECK_DURATION" ]; then
+  echo "MDADM_CHECK_DURATION=$MDADM_CHECK_DURATION" >> /run/sysconfig/mdadm
+ fi
+--- mdadm-4.2.orig/Makefile	2024-02-19 12:27:19.512400849 -0800
++++ mdadm-4.2/Makefile	2024-02-19 12:27:39.517338433 -0800
+@@ -298,7 +298,7 @@
+ 	   $(INSTALL) -D -m 755  .install.tmp.3 $(DESTDIR)$(SYSTEMD_DIR)-shutdown/$$file ; \
+ 	   rm -f .install.tmp.3; \
+ 	done
+-	if [ -f /etc/SuSE-release -o -n "$(SUSE)" ] ;then $(INSTALL) -D -m 755 systemd/SUSE-mdadm_env.sh $(DESTDIR)$(LIB_DIR)/mdadm_env.sh ;fi
++	$(INSTALL) -D -m 755 systemd/SUSE-mdadm_env.sh $(DESTDIR)$(LIB_DIR)/mdadm_env.sh
+ 
+ install-bin: mdadm mdmon
+ 	$(INSTALL) -D $(STRIP) -m 755 mdadm $(DESTDIR)$(BINDIR)/mdadm

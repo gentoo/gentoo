@@ -7,7 +7,7 @@ ECM_HANDBOOK="optional"
 ECM_TEST="optional"
 KFMIN=5.249.0
 PVCUT=$(ver_cut 1-3)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"

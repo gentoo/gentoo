@@ -8,7 +8,7 @@ ECM_HANDBOOK="optional"
 ECM_HANDBOOK_DIR="docs"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org xdg-utils
 
 DESCRIPTION="Framework providing transparent file and data management"

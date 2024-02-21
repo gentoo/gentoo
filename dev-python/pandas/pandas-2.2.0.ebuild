@@ -49,10 +49,8 @@ OPTIONAL_DEPEND="
 	>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
 	!x86? ( !hppa? (
-		$(python_gen_cond_dep '
-			dev-python/statsmodels[${PYTHON_USEDEP}]
-		' python3_{8..10} )
 		>=dev-python/scipy-1.8.1[${PYTHON_USEDEP}]
+		dev-python/statsmodels[${PYTHON_USEDEP}]
 	) )
 	X? (
 		|| (
@@ -176,7 +174,17 @@ python_test() {
 		# requires pyarrow (which is really broken)
 		tests/io/formats/style/test_bar.py::test_style_bar_with_pyarrow_NA_values
 		tests/series/test_api.py::TestSeriesMisc::test_inspect_getmembers
+
+		# assumes that it will fail due to -mfpmath=387 on 32-bit arches,
+		# so it XPASS-es in every other scenario
+		tests/tools/test_to_timedelta.py::TestTimedeltas::test_to_timedelta_float
 	)
+
+	if ! has_version "dev-python/scipy[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/plotting/test_misc.py::test_savefig
+		)
+	fi
 
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die

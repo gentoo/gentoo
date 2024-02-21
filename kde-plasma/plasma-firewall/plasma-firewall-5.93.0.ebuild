@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="forceoptional"
 PYTHON_COMPAT=( python3_{10..12} )
 KFMIN=5.249.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org python-single-r1
 
 DESCRIPTION="Plasma frontend for Firewalld or UFW"

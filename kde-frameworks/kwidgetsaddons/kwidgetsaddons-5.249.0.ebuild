@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_DESIGNERPLUGIN="true"
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="An assortment of high-level widgets for common tasks"

@@ -17,6 +17,8 @@
     <remote-id type="gnome-gitlab">GNOME/libdex</remote-id>
   </upstream>
   <use>
+    <flag name="eventfd">Allow use of eventfd</flag>
+    <flag name="liburing">Allow use of liburing (io_uring)<pkg>sys-libs/liburing</pkg></flag>
     <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
   </use>
 </pkgmetadata>

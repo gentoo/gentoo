@@ -10,8 +10,7 @@ QMAIL_TLS_PV=20190114
 QMAIL_TLS_F=${PN}-1.05-tls-smtpauth-${QMAIL_TLS_PV}.patch
 QMAIL_TLS_CVE=vu555316.patch
 
-QMAIL_BIGTODO_PV=103
-QMAIL_BIGTODO_F=big-todo.${QMAIL_BIGTODO_PV}.patch
+QMAIL_BIGTODO_F=big-todo.103.patch
 
 QMAIL_LARGE_DNS='qmail-103.patch'
 
@@ -25,11 +24,11 @@ HOMEPAGE="
 	https://cr.yp.to/qmail.html
 	http://qmail.org
 "
-SRC_URI="mirror://qmail/${P}.tar.gz
+SRC_URI="http://qmail.org/${P}.tar.gz
 	https://github.com/DerDakon/genqmail/releases/download/genqmail-${GENQMAIL_PV}/${GENQMAIL_F}
 	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	!vanilla? (
-		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
+		highvolume? ( http://qmail.org/${QMAIL_BIGTODO_F} )
 		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
 		ssl? (
 			https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F}

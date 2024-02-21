@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 # TODO: optional dep on libspelling-1
 DEPEND="

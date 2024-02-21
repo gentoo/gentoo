@@ -62,7 +62,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -e 's/add_stylesheet/add_css_file/' -i "${DOCS_S}"/conf.py || die
+	if use doc; then
+		sed -e 's/add_stylesheet/add_css_file/' -i "${DOCS_S}"/conf.py || die
+	fi
 }
 
 src_compile() {

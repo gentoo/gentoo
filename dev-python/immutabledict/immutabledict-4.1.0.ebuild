@@ -19,3 +19,9 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64"
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# performance test which fails occasionally under heavy load,
+	# see bug 924831
+	tests/test_immutabledict.py::TestImmutableDict::test_performance
+)

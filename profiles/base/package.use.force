@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-02-17)
+# Currently fails to build with gcc, and either way the current upstream
+# makes it clear that non-clang is not a supported configuration.
+# Please do not report bugs if disabled unless upstream's stance changed.
+games-emulation/pcsx2 clang
+
 # Matt Turner <mattst88@gentoo.org> (2024-02-01)
 # Reverse dependencies are not ready for media-libs/mesa to not provide OpenGL.
 media-libs/mesa opengl

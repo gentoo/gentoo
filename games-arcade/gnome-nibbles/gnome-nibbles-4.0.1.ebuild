@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Nibbles https://gitlab.gnome.org/GNOME/gno
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.78.0:2

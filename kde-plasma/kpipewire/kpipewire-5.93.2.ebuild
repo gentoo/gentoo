@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-2)
 KFMIN=5.249.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Components relating to Flatpak pipewire use in Plasma"

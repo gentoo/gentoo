@@ -7,7 +7,7 @@ ECM_NONGUI="true"
 ECM_QTHELP="true"
 ECM_TEST="true"
 KFMIN=5.249.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Library for accessing usage data collected by the activities system"

@@ -4,7 +4,7 @@
 EAPI=8
 
 KFMIN=5.249.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Ocean Sound Theme for Plasma"

@@ -33,10 +33,6 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( $(python_gen_cond_dep '
-		dev-python/myst-parser[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	') )
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
@@ -54,6 +50,15 @@ LLVM_TEST_COMPONENTS=(
 )
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
+
+[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" doc? ( "
+BDEPEND+="
+	$(python_gen_cond_dep '
+		dev-python/myst-parser[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	')
+"
+[[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" ) "
 
 # Multilib notes:
 # 1. ABI_* flags control ABIs libclang* is built for only.

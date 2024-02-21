@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/pytest-3.6[${PYTHON_USEDEP}]

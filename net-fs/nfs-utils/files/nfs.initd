@@ -1,13 +1,13 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_started_commands="reload"
 
 # The binary locations
 exportfs=/usr/sbin/exportfs
-  mountd=/usr/sbin/rpc.mountd
-    nfsd=/usr/sbin/rpc.nfsd
+mountd=/usr/sbin/rpc.mountd
+nfsd=/usr/sbin/rpc.nfsd
 smnotify=/usr/sbin/sm-notify
 
 depend() {
@@ -106,13 +106,11 @@ stop() {
 	eend $?
 	ret=$((ret + $?))
 
-	# nfsd sets its process name to [nfsd] so don't look for $nfsd
 	ebegin "Stopping NFS daemon"
-	start-stop-daemon --stop --name nfsd --user root --signal 2
+	# Do not attempt to signal kernel nfsd threads directly, #924309
+	${nfsd} 0
 	eend $?
 	ret=$((ret + $?))
-	# in case things don't work out ... #228127
-	rpc.nfsd 0
 
 	# When restarting the NFS server, running "exportfs -ua" probably
 	# isn't what the user wants.  Running it causes all entries listed

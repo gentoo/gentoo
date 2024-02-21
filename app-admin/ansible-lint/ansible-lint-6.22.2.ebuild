@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/ansible/ansible-lint"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 # Upstream has stated explicitly that all tests require Internet access
 PROPERTIES="test_network"

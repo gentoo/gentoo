@@ -12,7 +12,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="fat elogind gnome systemd"
 REQUIRED_USE="?? ( elogind systemd )"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=media-libs/libdvdread-4.2.0:0=

@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_DESIGNERPLUGIN="true"
 PVCUT=$(ver_cut 1-2)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for common completion tasks such as filename or URL completion"

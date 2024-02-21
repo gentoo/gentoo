@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_NONGUI="false"
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework providing assorted high-level user interface components"

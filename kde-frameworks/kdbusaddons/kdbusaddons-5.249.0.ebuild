@@ -3,7 +3,7 @@
 
 EAPI=8
 
-QTMIN=6.6.0
+QTMIN=6.6.2
 VIRTUALDBUS_TEST="true"
 inherit ecm frameworks.kde.org
 

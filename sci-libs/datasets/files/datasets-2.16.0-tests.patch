@@ -1,0 +1,89 @@
+--- a/tests/test_arrow_dataset.py	2024-02-20 21:53:24.248470991 +0100
++++ b/tests/test_arrow_dataset.py	2024-02-20 21:53:29.441804737 +0100
+@@ -3982,7 +3982,6 @@
+     [
+         "relative/path",
+         "/absolute/path",
+-        "s3://bucket/relative/path",
+         "hdfs://relative/path",
+         "hdfs:///absolute/path",
+     ],
+--- a/tests/test_load.py	2024-02-20 22:12:13.699209107 +0100
++++ b/tests/test_load.py	2024-02-20 22:13:10.862626708 +0100
+@@ -386,21 +386,6 @@
+             hf_modules_cache=self.hf_modules_cache,
+         )
+ 
+-    def test_HubDatasetModuleFactoryWithScript_dont_trust_remote_code(self):
+-        # "squad" has a dataset script
+-        factory = HubDatasetModuleFactoryWithScript(
+-            "squad", download_config=self.download_config, dynamic_modules_path=self.dynamic_modules_path
+-        )
+-        with patch.object(config, "HF_DATASETS_TRUST_REMOTE_CODE", None):  # this will be the default soon
+-            self.assertRaises(ValueError, factory.get_module)
+-        factory = HubDatasetModuleFactoryWithScript(
+-            "squad",
+-            download_config=self.download_config,
+-            dynamic_modules_path=self.dynamic_modules_path,
+-            trust_remote_code=False,
+-        )
+-        self.assertRaises(ValueError, factory.get_module)
+-
+     def test_HubDatasetModuleFactoryWithScript_with_github_dataset(self):
+         # "wmt_t2t" has additional imports (internal)
+         factory = HubDatasetModuleFactoryWithScript(
+@@ -1235,12 +1235,6 @@
+ 
+ 
+ @pytest.mark.integration
+-def test_load_streaming_private_dataset_with_zipped_data(hf_token, hf_private_dataset_repo_zipped_txt_data):
+-    ds = load_dataset(hf_private_dataset_repo_zipped_txt_data, streaming=True, token=hf_token)
+-    assert next(iter(ds)) is not None
+-
+-
+-@pytest.mark.integration
+ def test_load_dataset_config_kwargs_passed_as_arguments():
+     ds_default = load_dataset(SAMPLE_DATASET_IDENTIFIER4)
+     ds_custom = load_dataset(SAMPLE_DATASET_IDENTIFIER4, drop_metadata=True)
+--- a/tests/test_hf_gcp.py	2024-02-21 09:59:26.918397895 +0100
++++ b/tests/test_hf_gcp.py	2024-02-21 09:59:46.335100597 +0100
+@@ -21,7 +21,6 @@
+     {"dataset": "wikipedia", "config_name": "20220301.frr"},
+     {"dataset": "wikipedia", "config_name": "20220301.it"},
+     {"dataset": "wikipedia", "config_name": "20220301.simple"},
+-    {"dataset": "eli5", "config_name": "LFQA_reddit"},
+     {"dataset": "wiki40b", "config_name": "en"},
+     {"dataset": "wiki_dpr", "config_name": "psgs_w100.nq.compressed"},
+     {"dataset": "wiki_dpr", "config_name": "psgs_w100.nq.no_index"},
+--- a/tests/test_inspect.py	2024-02-21 10:03:32.315520016 +0100
++++ b/tests/test_inspect.py	2024-02-21 10:03:50.345553490 +0100
+@@ -18,7 +18,7 @@
+ pytestmark = pytest.mark.integration
+ 
+ 
+-@pytest.mark.parametrize("path", ["paws", csv.__file__])
++@pytest.mark.parametrize("path", [csv.__file__])
+ def test_inspect_dataset(path, tmp_path):
+     inspect_dataset(path, tmp_path)
+     script_name = Path(path).stem + ".py"
+--- a/tests/packaged_modules/test_cache.py	2024-02-21 12:04:18.036866572 +0100
++++ b/tests/packaged_modules/test_cache.py	2024-02-21 12:04:54.333558520 +0100
+@@ -44,18 +44,3 @@
+         Cache(dataset_name=text_dir.name, hash="missing").download_and_prepare()
+     with pytest.raises(ValueError):
+         Cache(dataset_name=text_dir.name, config_name="missing", version="auto", hash="auto").download_and_prepare()
+-
+-
+-@pytest.mark.integration
+-def test_cache_multi_configs():
+-    repo_id = SAMPLE_DATASET_TWO_CONFIG_IN_METADATA
+-    dataset_name = repo_id.split("/")[-1]
+-    config_name = "v1"
+-    ds = load_dataset(repo_id, config_name)
+-    cache = Cache(dataset_name=dataset_name, repo_id=repo_id, config_name=config_name, version="auto", hash="auto")
+-    reloaded = cache.as_dataset()
+-    assert list(ds) == list(reloaded)
+-    assert len(ds["train"]) == len(reloaded["train"])
+-    with pytest.raises(ValueError) as excinfo:
+-        Cache(dataset_name=dataset_name, repo_id=repo_id, config_name="missing", version="auto", hash="auto")
+-    assert config_name in str(excinfo.value)

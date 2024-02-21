@@ -13,11 +13,6 @@ ruby_targets_ruby33
 # New unstable PHP slot.
 php_targets_php8-3
 
-# Michał Górny <mgorny@gentoo.org> (2023-05-23)
-# Mask until dev-lang/python:3.12 becomes stable.
-python_targets_python3_12
-python_single_target_python3_12
-
 # Brian Evans <grknight@gentoo.org> (2022-12-09)
 # PHP 8.2 is in testing
 php_targets_php8-2

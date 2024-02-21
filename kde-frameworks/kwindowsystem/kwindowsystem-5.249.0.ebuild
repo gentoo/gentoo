@@ -3,7 +3,7 @@
 
 EAPI=8
 
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework providing access to properties and features of the window manager"

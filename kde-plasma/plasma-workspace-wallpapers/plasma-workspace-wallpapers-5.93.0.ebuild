@@ -4,7 +4,7 @@
 EAPI=8
 
 PVCUT=$(ver_cut 1-3)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit cmake plasma.kde.org
 
 DESCRIPTION="Wallpapers for the Plasma workspace"

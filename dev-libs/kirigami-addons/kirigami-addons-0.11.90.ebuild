@@ -6,7 +6,7 @@ EAPI=8
 ECM_QTHELP="true"
 ECM_TEST="true"
 KFMIN=5.248.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then

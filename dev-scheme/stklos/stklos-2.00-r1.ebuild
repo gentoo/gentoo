@@ -11,7 +11,7 @@ SRC_URI="https://${PN}.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="threads"
 
 RDEPEND="dev-libs/boehm-gc[threads?]

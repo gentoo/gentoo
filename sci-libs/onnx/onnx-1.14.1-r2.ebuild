@@ -34,7 +34,10 @@ BDEPEND="python? (
 	${DISTUTILS_DEPS}
 )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.14.0-cxx_14.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.0-cxx_14.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
 
 src_prepare() {
 	cmake_src_prepare

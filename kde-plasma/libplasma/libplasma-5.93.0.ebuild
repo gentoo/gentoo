@@ -8,7 +8,7 @@ ECM_QTHELP="true"
 ECM_TEST="true"
 KFMIN=5.249.0
 PVCUT=$(ver_cut 1-3)
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Plasma library and runtime components based upon KF6 and Qt6"

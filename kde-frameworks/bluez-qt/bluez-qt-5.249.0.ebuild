@@ -3,7 +3,7 @@
 
 EAPI=8
 
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org udev
 
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"

@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,7 +71,6 @@ KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 BDEPEND="
 	test? (
 		dev-python/arrow[${PYTHON_USEDEP}]
-		dev-python/pendulum[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '

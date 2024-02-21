@@ -140,6 +140,11 @@ GCCMINOR=$(ver_cut 2 ${GCC_PV})
 # @DESCRIPTION:
 # GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
+# @ECLASS_VARIABLE: GCC_RUN_FIXINCLUDES
+# @INTERNAL
+# @DESCRIPTION:
+# Controls whether fixincludes should be used.
+GCC_RUN_FIXINCLUDES=0
 
 tc_use_major_version_only() {
 	local use_major_version_only=0
@@ -1297,6 +1302,20 @@ toolchain_src_configure() {
 		)
 	fi
 
+	if tc_version_is_at_least 13.1 ; then
+		# Re-enable fixincludes for >= GCC 13 with older glibc
+		# https://gcc.gnu.org/PR107128
+		if ! is_crosscompile && use elibc_glibc && has_version "<sys-libs/glibc-2.38" ; then
+			GCC_RUN_FIXINCLUDES=1
+		fi
+
+		if [[ ${GCC_RUN_FIXINCLUDES} == 1 ]] ; then
+			confgcc+=( --enable-fixincludes )
+		else
+			confgcc+=( --disable-fixincludes )
+		fi
+	fi
+
 	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
@@ -1831,9 +1850,7 @@ toolchain_src_install() {
 	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete || die
 
-	# Re-enable fixincludes for >= GCC 13
-	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
-	if [[ ${GCCMAJOR} -lt 13 ]] ; then
+	if [[ ${GCC_RUN_FIXINCLUDES} == 0 ]] ; then
 		# We remove the generated fixincludes, as they can cause things to break
 		# (ncurses, openssl, etc).  We do not prevent them from being built, as
 		# in the following commit which we revert:

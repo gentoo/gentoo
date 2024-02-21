@@ -1,0 +1,36 @@
+From 34ca4390bbae4dadf451af7dd4ec920a263558be Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 31 Dec 2023 20:57:45 +0000
+Subject: [PATCH 2/2] Fix grabbing code when DRM is enabled and X11 is disabled
+ (#1956)
+
+---
+ src/platform/linux/x11grab.h | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/platform/linux/x11grab.h b/src/platform/linux/x11grab.h
+index 24e96f6..4c2f347 100644
+--- a/src/platform/linux/x11grab.h
++++ b/src/platform/linux/x11grab.h
+@@ -51,9 +51,6 @@ namespace platf::x11 {
+   xdisplay_t
+   make_display();
+ #else
+-  // It's never something different from nullptr
+-  util::safe_ptr<_XDisplay, std::default_delete<_XDisplay>>;
+-
+   class cursor_t {
+   public:
+     static std::optional<cursor_t>
+@@ -65,7 +62,7 @@ namespace platf::x11 {
+     blend(img_t &, int, int) {}
+   };
+ 
+-  xdisplay_t
++  void *
+   make_display() { return nullptr; }
+ #endif
+ }  // namespace platf::x11
+-- 
+2.43.0
+

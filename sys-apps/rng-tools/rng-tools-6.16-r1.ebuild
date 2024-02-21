@@ -11,7 +11,7 @@ SRC_URI="https://github.com/nhorman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="jitterentropy nistbeacon pkcs11 qrypt rtlsdr selinux test"
 REQUIRED_USE="test? ( jitterentropy )"
 RESTRICT="!test? ( test )"

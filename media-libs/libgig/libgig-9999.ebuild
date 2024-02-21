@@ -39,6 +39,8 @@ src_install() {
 	use doc && HTML_DOCS=( doc/html/. )
 	einstalldocs
 
+	find "${ED}" -name '*.la' -type f -delete || die
+
 	# For libgig.so to be found at runtime
 	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/libgig/\"" > 99${PN} || die
 	doenvd "99${PN}"

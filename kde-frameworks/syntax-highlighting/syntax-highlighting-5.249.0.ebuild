@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for syntax highlighting"

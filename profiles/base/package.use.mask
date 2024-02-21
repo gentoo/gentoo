@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2024-02-20)
+# Upstream massively reworked av1 support breaking our custom
+# system-av1 patches.
+>=www-client/firefox-123.0 system-av1
+
 # Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
 # Cinnamon wayland support is experimental and incomplete.
 # https://github.com/linuxmint/wayland/issues
@@ -38,7 +43,7 @@ net-analyzer/nagios-plugin-check_raid hpa
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Requires LLVM 14 that is being removed.
 <dev-lang/ghc-9.4 llvm
-media-gfx/openvdb ax
+<media-gfx/openvdb-11 ax
 sys-devel/sparse llvm
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
