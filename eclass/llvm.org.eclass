@@ -205,10 +205,14 @@ ALL_LLVM_TARGET_FLAGS=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The current ABI version of LLVM dylib, in a form suitable for use
-# as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
-# for the main branch.
-LLVM_SOABI=${LLVM_MAJOR}
-[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]] && LLVM_SOABI=${PV}
+# as a subslot.
+if [[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]]; then
+	LLVM_SOABI=${PV}
+elif ver_test ${PV} -ge 18.1.0_rc3; then
+	LLVM_SOABI=$(ver_cut 1-2)
+else
+	LLVM_SOABI=${LLVM_MAJOR}
+fi
 
 # == global scope logic ==
 
