@@ -16,30 +16,32 @@ inherit toolchain-funcs
 GO_BV=1.20.14
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 SRC_URI="
-	amd64? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-amd64-bootstrap.tbz )
-	arm? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-arm-bootstrap.tbz )
-	arm64? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-arm64-bootstrap.tbz )
-	loong? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-loong64-bootstrap.tbz )
-	mips? (
-		abi_mips_o32? (
-			big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips-bootstrap.tbz )
-			!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mipsle-bootstrap.tbz )
+	!system-bootstrap? (
+		amd64? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-amd64-bootstrap.tbz )
+		arm? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-arm-bootstrap.tbz )
+		arm64? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-arm64-bootstrap.tbz )
+		loong? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-loong64-bootstrap.tbz )
+		mips? (
+			abi_mips_o32? (
+				big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips-bootstrap.tbz )
+				!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mipsle-bootstrap.tbz )
+			)
+			abi_mips_n64? (
+				big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips64-bootstrap.tbz )
+				!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips64le-bootstrap.tbz )
+			)
 		)
-		abi_mips_n64? (
-			big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips64-bootstrap.tbz )
-			!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-mips64le-bootstrap.tbz )
-		)
+		ppc64? (
+			big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-ppc64-bootstrap.tbz )
+			!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-ppc64le-bootstrap.tbz )
 	)
-	ppc64? (
-		big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-ppc64-bootstrap.tbz )
-		!big-endian? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-ppc64le-bootstrap.tbz )
+		riscv? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-riscv64-bootstrap.tbz )
+		s390? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-s390x-bootstrap.tbz )
+		x86? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-386-bootstrap.tbz )
+		x64-macos? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-darwin-amd64-bootstrap.tbz )
+		arm64-macos? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-darwin-arm64-bootstrap.tbz )
+		x64-solaris? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-solaris-amd64-bootstrap.tbz )
 	)
-	riscv? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-riscv64-bootstrap.tbz )
-	s390? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-s390x-bootstrap.tbz )
-	x86? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-linux-386-bootstrap.tbz )
-	x64-macos? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-darwin-amd64-bootstrap.tbz )
-	arm64-macos? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-darwin-arm64-bootstrap.tbz )
-	x64-solaris? ( ${BOOTSTRAP_DIST}/go-${GO_BV}-solaris-amd64-bootstrap.tbz )
 	"
 
 case ${PV}  in
@@ -63,7 +65,7 @@ HOMEPAGE="https://go.dev"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="abi_mips_o32 abi_mips_n64 cpu_flags_x86_sse2 big-endian"
+IUSE="abi_mips_o32 abi_mips_n64 big-endian system-bootstrap"
 
 RDEPEND="
 arm? ( sys-devel/binutils[gold] )
@@ -171,7 +173,15 @@ src_compile() {
 	use x86 && export GO386=$(usex cpu_flags_x86_sse2 '' 'softfloat')
 
 	export GOROOT="${PWD}"
-	export GOROOT_BOOTSTRAP="${WORKDIR}/go-${GOOS}-${GOARCH}-bootstrap"
+	if use system-bootstrap; then
+		if has_version <dev-lang/go-${GO_BV}; then
+			eerror "You need at least dev-lang/go-${GO_BV} installed to bootstrap this version of go"
+			die "version of go is too old"
+		fi
+		export GOROOT_BOOTSTRAP="${EPREFIX}/usr/lib/go"
+	else
+		export GOROOT_BOOTSTRAP="${WORKDIR}/go-${GOOS}-${GOARCH}-bootstrap"
+	fi
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
 	export GOBIN="${GOROOT}/bin"
 
