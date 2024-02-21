@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/916906
+https://github.com/jsummers/imageworsener/issues/47
+https://github.com/jsummers/imageworsener/pull/46
+
+From 91c7c79d86f55920193d17a7b87631b14ac7779f Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Mon, 15 Jan 2024 22:26:45 -0500
+Subject: [PATCH] Pass diff exit code up to shell for test suite
+
+Right now, test failures are not getting detected because the runtests
+script does not pass up a failing exit code from diff.
+---
+ tests/runtest | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/runtest b/tests/runtest
+index 6db7b6c..3f534dc 100755
+--- a/tests/runtest
++++ b/tests/runtest
+@@ -334,3 +334,4 @@ then
+ 	echo "All tests passed."
+ fi
+ 
++exit $RET

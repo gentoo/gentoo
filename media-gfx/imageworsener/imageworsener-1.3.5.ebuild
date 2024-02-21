@@ -22,7 +22,9 @@ DEPEND="png? ( media-libs/libpng:0 )
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( jpeg png webp zlib )"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PN}-1.3.5-runtest-exit-code.patch" )
 
 src_configure() {
 	local switch=''
@@ -44,5 +46,5 @@ src_install() {
 
 src_test() {
 	cd "${S}"/tests || die
-	./runtest "${S}"/${MY_PN}
+	./runtest "${S}"/${MY_PN} || die
 }
