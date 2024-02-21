@@ -353,6 +353,7 @@ upnp-av - Enable UPnP audio/video streaming support
 upower - Enable power management support
 usb - Add USB support to applications that have optional USB support (e.g. cups)
 v4l - Enable support for video4linux (using linux-headers or userspace libv4l libraries)
+v4l2codecs - Enable support for v4l2 stateless hardware video decoding
 vaapi - Enable Video Acceleration API for hardware decoding
 vala - Enable bindings for dev-lang/vala
 valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe to use even if not currently using dev-debug/valgrind

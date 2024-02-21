@@ -70,3 +70,6 @@ netlink
 # These are specific to Mac OS X
 aqua
 coreaudio
+
+# v4l2codecs is only available for arm64
+v4l2codecs
