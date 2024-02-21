@@ -23,7 +23,11 @@ RDEPEND="!dev-lang/mercury"
 
 src_prepare() {
 	default
-	sed -i 's/-Werror //' Makefile || die
+	sed -i \
+		-e 's/-Werror //' \
+		-e 's/-D_FORTIFY_SOURCE=2 //' \
+		-e "s/-DVERSION=.*/-DVERSION=\\\\\"gentoo-${PVR}\\\\\"/" \
+		Makefile || die
 }
 
 src_configure() {
