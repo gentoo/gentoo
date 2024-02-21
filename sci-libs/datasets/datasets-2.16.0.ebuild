@@ -66,4 +66,18 @@ src_prepare() {
 	sed -i -e \
 		"/pyarrow_hotfix/d" \
 		src/datasets/features/features.py || die
+	sed -i \
+		-e "s:pytest.mark.integration:pytest.mark.skip():g" \
+		tests/test_arrow_dataset.py \
+		tests/test_fingerprint.py \
+		tests/test_hf_gcp.py \
+		tests/test_inspect.py \
+		tests/test_iterable_dataset.py \
+		tests/test_iterable_dataset.py \
+		tests/test_load.py \
+		tests/test_offline_util.py \
+		tests/test_streaming_download_manager.py \
+		tests/commands/test_test.py \
+		tests/packaged_modules/test_cache.py \
+		die
 }
