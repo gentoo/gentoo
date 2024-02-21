@@ -227,6 +227,8 @@ src_configure() {
 
 	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
 
+	CMAKE_BUILD_TYPE=Release  # RelWithDebInfo enables debug logging
+
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
 	addpredict /dev/dri/renderD129
