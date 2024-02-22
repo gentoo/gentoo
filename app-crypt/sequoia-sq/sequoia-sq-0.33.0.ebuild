@@ -461,7 +461,7 @@ CRATES="
 
 LLVM_MAX_SLOT=17
 
-inherit bash-completion-r1 cargo shell-completion llvm
+inherit cargo shell-completion llvm
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"
