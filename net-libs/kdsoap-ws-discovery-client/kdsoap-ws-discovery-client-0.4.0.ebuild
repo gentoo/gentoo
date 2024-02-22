@@ -12,7 +12,7 @@ DESCRIPTION="WS-Discovery client library based on KDSoap"
 HOMEPAGE="https://invent.kde.org/libraries/kdsoap-ws-discovery-client"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 

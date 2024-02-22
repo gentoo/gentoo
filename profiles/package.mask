@@ -426,7 +426,7 @@ dev-java/osgi-foundation
 ~media-libs/phonon-vlc-0.12.0
 ~media-libs/pulseaudio-qt-1.4.0
 ~net-libs/kdsoap-2.2.0
-~net-libs/kdsoap-ws-discovery-client-0.3.0
+~net-libs/kdsoap-ws-discovery-client-0.4.0
 ~net-libs/signon-ui-0.15_p20231016
 ~net-libs/accounts-qt-1.16_p20220803
 ~net-libs/accounts-qml-0.7_p20231028
