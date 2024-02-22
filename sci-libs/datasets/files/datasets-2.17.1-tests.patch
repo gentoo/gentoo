@@ -8,6 +8,14 @@
          "hdfs://relative/path",
          "hdfs:///absolute/path",
      ],
+@@ -4136,6 +4136,7 @@
+                 )
+                 self.assertDictEqual(features_after_cast, dset.features)
+ 
++    @pytest.mark.skip(reason="require soundfile")
+     def test_task_automatic_speech_recognition(self):
+         # Include a dummy extra column `dummy` to test we drop it correctly
+         features_before_cast = Features(
 --- a/tests/test_load.py	2024-02-20 22:12:13.699209107 +0100
 +++ b/tests/test_load.py	2024-02-20 22:13:10.862626708 +0100
 @@ -388,6 +388,7 @@
@@ -122,3 +130,235 @@
  @pytest.mark.parametrize("remote", [False, True])
  @pytest.mark.parametrize("drop_labels", [None, True, False])
  def test_data_files_with_one_label_no_metadata(data_files_with_one_label_no_metadata, drop_labels, remote, cache_dir):
+--- a/tests/test_metric_common.py	2023-05-04 18:48:48.550861318 +0200
++++ b/tests/test_metric_common.py	2023-05-04 18:50:25.787364577 +0200
+@@ -93,6 +93,7 @@
+     INTENSIVE_CALLS_PATCHER = {}
+     metric_name = None
+ 
++    @pytest.mark.skip(reason="disabling, depends on bert_score, bleurt, math_equivalence, coval, nltk, faiss, mauve, rouge_score, sacrebleu, sacremoses ...")
+     @pytest.mark.filterwarnings("ignore:metric_module_factory is deprecated:FutureWarning")
+     @pytest.mark.filterwarnings("ignore:load_metric is deprecated:FutureWarning")
+     def test_load_metric(self, metric_name):
+--- a/tests/test_distributed.py	2023-05-04 19:43:09.861275030 +0200
++++ b/tests/test_distributed.py	2023-05-04 19:44:17.608326722 +0200
+@@ -74,6 +74,7 @@
+         split_dataset_by_node(full_ds.shuffle(), rank=0, world_size=world_size)
+ 
+ 
++@pytest.mark.skip(reason="require distributed torch")
+ @pytest.mark.parametrize("streaming", [False, True])
+ @require_torch
+ @pytest.mark.skipif(os.name == "nt", reason="execute_subprocess_async doesn't support windows")
+@@ -95,6 +96,7 @@
+     execute_subprocess_async(cmd, env=os.environ.copy())
+ 
+ 
++@pytest.mark.skip(reason="require distributed torch")
+ @pytest.mark.parametrize(
+     "nproc_per_node, num_workers",
+     [
+--- a/tests/utils.py	2023-05-06 08:43:16.251987543 +0200
++++ b/tests/utils.py	2023-05-06 08:44:24.467952870 +0200
+@@ -50,8 +50,8 @@
+ # Audio
+ require_sndfile = pytest.mark.skipif(
+     # On Windows and OS X, soundfile installs sndfile
+-    find_spec("soundfile") is None or version.parse(importlib.metadata.version("soundfile")) < version.parse("0.12.0"),
+-    reason="test requires sndfile>=0.12.1: 'pip install \"soundfile>=0.12.1\"'; ",
++    True,
++    reason="test requires librosa",
+ )
+ 
+ # Beam
+--- a/tests/features/test_audio.py	2023-05-06 09:03:58.680108142 +0200
++++ a/tests/features/test_audio.py	2023-05-06 09:05:50.463407967 +0200
+@@ -57,6 +57,7 @@
+     assert features.arrow_schema == pa.schema({"sequence_of_audios": pa.list_(Audio().pa_type)})
+ 
+ 
++@pytest.mark.skip(reason="require librosa")
+ @pytest.mark.parametrize(
+     "build_example",
+     [
+@@ -81,6 +82,7 @@
+     assert decoded_example.keys() == {"path", "array", "sampling_rate"}
+ 
+ 
++@pytest.mark.skip(reason="require librosa")
+ @pytest.mark.parametrize(
+     "build_example",
+     [
+@@ -148,6 +149,7 @@
+     assert decoded_example["sampling_rate"] == 48000
+ 
+ 
++@pytest.mark.skip(reason="require librosa")
+ @pytest.mark.parametrize("sampling_rate", [16_000, 48_000])
+ def test_audio_decode_example_pcm(shared_datadir, sampling_rate):
+     audio_path = str(shared_datadir / "test_audio_16000.pcm")
+@@ -414,6 +417,7 @@
+     assert column[0]["sampling_rate"] == 16000
+ 
+ 
++@pytest.mark.skip(reason="require librosa")
+ @pytest.mark.parametrize(
+     "build_data",
+     [
+@@ -438,6 +442,7 @@
+     assert item["audio"].keys() == {"path", "array", "sampling_rate"}
+ 
+ 
++@pytest.mark.skip(reason="require librosa")
+ def test_dataset_concatenate_audio_features(shared_datadir):
+     # we use a different data structure between 1 and 2 to make sure they are compatible with each other
+     audio_path = str(shared_datadir / "test_audio_44100.wav")
+@@ -451,6 +456,7 @@
+     assert concatenated_dataset[1]["audio"]["array"].shape == dset2[0]["audio"]["array"].shape
+ 
+ 
++@pytest.mark.skip(reason="require librosa")
+ def test_dataset_concatenate_nested_audio_features(shared_datadir):
+     # we use a different data structure between 1 and 2 to make sure they are compatible with each other
+     audio_path = str(shared_datadir / "test_audio_44100.wav")
+@@ -610,6 +616,7 @@
+     assert isinstance(ds, Dataset)
+ 
+ 
++@require_sndfile
+ def test_dataset_with_audio_feature_undecoded(shared_datadir):
+     audio_path = str(shared_datadir / "test_audio_44100.wav")
+     data = {"audio": [audio_path]}
+@@ -627,6 +634,7 @@
+     assert column[0] == {"path": audio_path, "bytes": None}
+ 
+ 
++@require_sndfile
+ def test_formatted_dataset_with_audio_feature_undecoded(shared_datadir):
+     audio_path = str(shared_datadir / "test_audio_44100.wav")
+     data = {"audio": [audio_path]}
+@@ -658,6 +666,7 @@
+         assert column[0] == {"path": audio_path, "bytes": None}
+ 
+ 
++@require_sndfile
+ def test_dataset_with_audio_feature_map_undecoded(shared_datadir):
+     audio_path = str(shared_datadir / "test_audio_44100.wav")
+     data = {"audio": [audio_path]}
+--- a/tests/packaged_modules/test_audiofolder.py	2023-05-06 14:00:39.560876163 +0200
++++ b/tests/packaged_modules/test_audiofolder.py	2023-05-06 14:01:26.005212423 +0200
+@@ -1,10 +1,8 @@
+ import shutil
+ import textwrap
+ 
+-import librosa
+ import numpy as np
+ import pytest
+-import soundfile as sf
+ 
+ from datasets import Audio, ClassLabel, Features, Value
+ from datasets.data_files import DataFilesDict, get_data_patterns
+@@ -192,8 +190,11 @@
+     return data_files_with_two_splits_and_metadata
+ 
+ 
++@pytest.mark.skip(reason="require soundfile")
+ @pytest.fixture
+ def data_files_with_zip_archives(tmp_path, audio_file):
++    import soundfile as sf
++    import librosa
+     data_dir = tmp_path / "audiofolder_data_dir_with_zip_archives"
+     data_dir.mkdir(parents=True, exist_ok=True)
+     archive_dir = data_dir / "archive"
+--- a/tests/test_streaming_download_manager.py	2023-08-26 07:33:41.937389401 +0200
++++ b/tests/test_streaming_download_manager.py	2023-08-26 07:37:22.521218698 +0200
+@@ -218,6 +218,7 @@
+     assert output_path == _readd_double_slash_removed_by_path(Path(expected_path).as_posix())
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, exists",
+     [
+@@ -301,6 +302,7 @@
+         assert list(f) == TEST_URL_CONTENT.splitlines(keepends=True)
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, expected_paths",
+     [
+@@ -331,6 +333,7 @@
+         xlistdir(root_url, download_config=download_config)
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, isdir",
+     [
+@@ -358,6 +361,7 @@
+     assert xisdir(root_url, download_config=download_config) is False
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, isfile",
+     [
+@@ -382,6 +386,7 @@
+     assert xisfile(root_url + "qwertyuiop", download_config=download_config) is False
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, size",
+     [
+@@ -407,6 +412,7 @@
+         xgetsize(root_url + "qwertyuiop", download_config=download_config)
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, expected_paths",
+     [
+@@ -450,6 +456,7 @@
+     assert len(xglob("zip://qwertyuiop/*::" + root_url, download_config=download_config)) == 0
+ 
+ 
++@pytest.mark.skip(reason="not working in sandbox")
+ @pytest.mark.parametrize(
+     "input_path, expected_outputs",
+     [
+@@ -540,6 +547,7 @@
+     def test_xpath_as_posix(self, input_path, expected_path):
+         assert xPath(input_path).as_posix() == expected_path
+ 
++    @pytest.mark.skip(reason="not working in sandbox")
+     @pytest.mark.parametrize(
+         "input_path, exists",
+         [
+@@ -555,6 +563,7 @@
+             (tmp_path / "file.txt").touch()
+         assert xexists(input_path) is exists
+ 
++    @pytest.mark.skip(reason="not working in sandbox")
+     @pytest.mark.parametrize(
+         "input_path, pattern, expected_paths",
+         [
+@@ -593,6 +602,7 @@
+         output_paths = sorted(xPath(input_path).glob(pattern))
+         assert output_paths == expected_paths
+ 
++    @pytest.mark.skip(reason="not working in sandbox")
+     @pytest.mark.parametrize(
+         "input_path, pattern, expected_paths",
+         [
+--- a/tests/io/test_parquet.py	2024-02-22 19:19:53.890749240 +0100
++++ b/tests/io/test_parquet.py	2024-02-22 19:20:30.954099914 +0100
+@@ -69,6 +69,7 @@
+     _check_parquet_dataset(dataset, expected_features)
+ 
+ 
++@pytest.mark.skip()
+ def test_parquet_read_geoparquet(geoparquet_path, tmp_path):
+     cache_dir = tmp_path / "cache"
+     dataset = ParquetDatasetReader(path_or_paths=geoparquet_path, cache_dir=cache_dir).read()

@@ -57,7 +57,6 @@ BDEPEND="test? (
 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.14.4-tests.patch
 	"${FILESDIR}"/${P}-tests.patch
 )
 
