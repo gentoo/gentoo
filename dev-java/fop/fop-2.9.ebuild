@@ -14,7 +14,7 @@ HOMEPAGE="https://xmlgraphics.apache.org/fop/"
 SRC_URI="
 	mirror://apache/xmlgraphics/fop/source/${P}-src.tar.gz
 	https://dev.gentoo.org/~flow/distfiles/fop/fop-2.7-jars.tar.xz
-	verify-sig? ( https://www.apache.org/dist/xmlgraphics/fop/source/${P}-src.tar.gz.asc )
+	verify-sig? ( https://downloads.apache.org/xmlgraphics/fop/source/${P}-src.tar.gz.asc )
 	test? ( https://repo1.maven.org/maven2/net/sf/offo/fop-hyph/2.0/fop-hyph-2.0.jar )
 "
 S="${WORKDIR}/fop-${PV}"
