@@ -143,6 +143,9 @@ src_compile() {
 		--without-zstd
 	)
 	${multilib} || conf_gcc+=( --disable-multilib )
+	# libstdc++ may misdetect sys/sdt.h on systemtap-enabled system and fail
+	# (not passed in conf_gcc above given it is lost in sub-configure calls)
+	local -x glibcxx_cv_sys_sdt_h=no
 
 	local conf_gcc_stage1=(
 		--enable-languages=c
