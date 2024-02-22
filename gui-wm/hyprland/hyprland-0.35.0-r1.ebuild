@@ -29,7 +29,6 @@ HYPRPM_RDEPEND="
 	dev-build/cmake
 	dev-build/meson
 	dev-vcs/git
-	sys-auth/polkit
 	virtual/pkgconfig
 "
 # bundled wlroots has the following dependency string according to included headers.
