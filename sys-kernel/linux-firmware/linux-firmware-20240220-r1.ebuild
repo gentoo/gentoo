@@ -29,12 +29,13 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )
 	unknown-license? ( all-rights-reserved )"
 SLOT="0"
-IUSE="compress-xz compress-zstd deduplicate initramfs +redistributable savedconfig unknown-license"
+IUSE="bindist compress-xz compress-zstd deduplicate initramfs +redistributable savedconfig unknown-license"
 REQUIRED_USE="initramfs? ( redistributable )
 	?? ( compress-xz compress-zstd )
 	savedconfig? ( !deduplicate )"
 
 RESTRICT="binchecks strip test
+	!bindist? ( bindist )
 	unknown-license? ( bindist )"
 
 BDEPEND="initramfs? ( app-alternatives/cpio )
@@ -139,8 +140,9 @@ src_prepare() {
 	# whitelist of misc files
 	local misc_files=(
 		copy-firmware.sh
+		README.md
 		WHENCE
-		README
+		LICEN[CS]E.*
 	)
 
 	# whitelist of images with a free software license
@@ -355,6 +357,10 @@ src_install() {
 		insinto /boot
 		doins "${S}"/amd-uc.img
 	fi
+
+	dodoc README.md
+	# some licenses require copyright and permission notice to be included
+	use bindist && dodoc WHENCE LICEN[CS]E.*
 }
 
 pkg_preinst() {
