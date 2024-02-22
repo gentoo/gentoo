@@ -8,16 +8,6 @@
      @pytest.mark.filterwarnings("ignore:metric_module_factory is deprecated:FutureWarning")
      @pytest.mark.filterwarnings("ignore:load_metric is deprecated:FutureWarning")
      def test_load_metric(self, metric_name):
---- a/tests/test_hf_gcp.py	2023-05-04 19:33:31.150825303 +0200
-+++ b/tests/test_hf_gcp.py	2023-05-04 19:40:08.401759538 +0200
-@@ -75,6 +75,7 @@
-             self.assertTrue(os.path.exists(datset_info_path))
- 
- 
-+@pytest.mark.skip(reason="require apache_beam")
- @pytest.mark.integration
- def test_as_dataset_from_hf_gcs(tmp_path_factory):
-     tmp_dir = tmp_path_factory.mktemp("test_hf_gcp") / "test_wikipedia_simple"
 --- a/tests/test_distributed.py	2023-05-04 19:43:09.861275030 +0200
 +++ b/tests/test_distributed.py	2023-05-04 19:44:17.608326722 +0200
 @@ -74,6 +74,7 @@

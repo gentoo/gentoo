@@ -1,6 +1,6 @@
 --- a/tests/test_arrow_dataset.py	2024-02-20 21:53:24.248470991 +0100
 +++ b/tests/test_arrow_dataset.py	2024-02-20 21:53:29.441804737 +0100
-@@ -3982,7 +3982,6 @@
+@@ -4016,7 +4016,6 @@
      [
          "relative/path",
          "/absolute/path",
@@ -10,15 +10,15 @@
      ],
 --- a/tests/test_load.py	2024-02-20 22:12:13.699209107 +0100
 +++ b/tests/test_load.py	2024-02-20 22:13:10.862626708 +0100
-@@ -386,6 +386,7 @@
+@@ -388,6 +388,7 @@
              hf_modules_cache=self.hf_modules_cache,
          )
  
 +    @pytest.mark.skip(reason="")
      def test_HubDatasetModuleFactoryWithScript_dont_trust_remote_code(self):
-         # "squad" has a dataset script
+         # "lhoestq/test" has a dataset script
          factory = HubDatasetModuleFactoryWithScript(
-@@ -402,6 +402,7 @@
+@@ -403,6 +404,7 @@
          )
          self.assertRaises(ValueError, factory.get_module)
  
@@ -26,7 +26,7 @@
      def test_HubDatasetModuleFactoryWithScript_with_github_dataset(self):
          # "wmt_t2t" has additional imports (internal)
          factory = HubDatasetModuleFactoryWithScript(
-@@ -411,6 +412,7 @@
+@@ -412,6 +414,7 @@
          assert importlib.import_module(module_factory_result.module_path) is not None
          assert module_factory_result.builder_kwargs["base_path"].startswith(config.HF_ENDPOINT)
  
@@ -34,7 +34,7 @@
      def test_GithubMetricModuleFactory_with_internal_import(self):
          # "squad_v2" requires additional imports (internal)
          factory = GithubMetricModuleFactory(
-@@ -419,6 +421,7 @@
+@@ -420,6 +423,7 @@
          module_factory_result = factory.get_module()
          assert importlib.import_module(module_factory_result.module_path) is not None
  
@@ -42,7 +42,7 @@
      @pytest.mark.filterwarnings("ignore:GithubMetricModuleFactory is deprecated:FutureWarning")
      def test_GithubMetricModuleFactory_with_external_import(self):
          # "bleu" requires additional imports (external from github)
-@@ -1032,6 +1035,7 @@
+@@ -1033,6 +1037,7 @@
          datasets.load_dataset_builder(SAMPLE_DATASET_TWO_CONFIG_IN_METADATA, "non-existing-config")
  
  
@@ -50,7 +50,7 @@
  @pytest.mark.parametrize("serializer", [pickle, dill])
  def test_load_dataset_builder_with_metadata_configs_pickable(serializer):
      builder = datasets.load_dataset_builder(SAMPLE_DATASET_SINGLE_CONFIG_IN_METADATA)
-@@ -1153,6 +1157,7 @@
+@@ -1154,6 +1159,7 @@
      assert len(builder.config.data_files["test"]) > 0
  
  
@@ -58,7 +58,7 @@
  def test_load_dataset_builder_fail():
      with pytest.raises(DatasetNotFoundError):
          datasets.load_dataset_builder("blabla")
-@@ -1168,6 +1173,7 @@
+@@ -1169,6 +1175,7 @@
      assert isinstance(next(iter(dataset["train"])), dict)
  
  
@@ -68,7 +68,7 @@
      assert isinstance(dataset, DatasetDict)
 --- a/tests/test_hf_gcp.py	2024-02-21 09:59:26.918397895 +0100
 +++ b/tests/test_hf_gcp.py	2024-02-21 09:59:46.335100597 +0100
-@@ -47,6 +47,7 @@
+@@ -45,6 +45,7 @@
          ]
  
  
@@ -78,15 +78,6 @@
      dataset = None
 --- a/tests/test_inspect.py	2024-02-21 10:03:32.315520016 +0100
 +++ b/tests/test_inspect.py	2024-02-21 10:03:50.345553490 +0100
-@@ -18,7 +18,7 @@
- pytestmark = pytest.mark.integration
- 
- 
--@pytest.mark.parametrize("path", ["paws", csv.__file__])
-+@pytest.mark.parametrize("path", [csv.__file__])
- def test_inspect_dataset(path, tmp_path):
-     inspect_dataset(path, tmp_path)
-     script_name = Path(path).stem + ".py"
 @@ -49,6 +49,7 @@
      assert list(info.splits.keys()) == expected_splits
  

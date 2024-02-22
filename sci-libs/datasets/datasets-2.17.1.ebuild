@@ -27,12 +27,16 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/aiohttp[${PYTHON_USEDEP}]
+		dev-python/dill[${PYTHON_USEDEP}]
+		dev-python/filelock[${PYTHON_USEDEP}]
 		<=dev-python/fsspec-2023.10.0[${PYTHON_USEDEP}]
 		dev-python/multiprocess[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet,snappy]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/xxhash[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
@@ -46,7 +50,7 @@ BDEPEND="test? (
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/pytest-datadir[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
-		=dev-python/sqlalchemy-1*[${PYTHON_USEDEP}]
+		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		sci-libs/jiwer[${PYTHON_USEDEP}]
 		sci-libs/seqeval[${PYTHON_USEDEP}]
 	')
@@ -79,5 +83,5 @@ src_prepare() {
 		tests/test_streaming_download_manager.py \
 		tests/commands/test_test.py \
 		tests/packaged_modules/test_cache.py \
-		die
+		|| die
 }
