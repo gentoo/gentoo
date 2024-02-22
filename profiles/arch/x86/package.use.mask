@@ -88,8 +88,8 @@ sci-physics/root qt5
 dev-libs/libclc spirv
 
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-07)
-# media-libs/libplacebo is keyworded here and vulkan is usable
-media-video/mpv -libplacebo -vulkan
+# Vulkan is usable here.
+media-video/mpv -vulkan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
