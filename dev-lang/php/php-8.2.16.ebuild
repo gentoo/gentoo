@@ -152,11 +152,17 @@ PATCHES=(
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
 )
 
-# ARM/Windows functions that are expected to be undefined.
+# ARM/Windows functions (bug 923335)
 QA_CONFIG_IMPL_DECL_SKIP=(
 	__crc32d
 	_controlfp
 	_controlfp_s
+)
+
+# Functions from alternate iconv implementations (bug 925268)
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	iconv_ccs_init
+	cstoccsid
 )
 
 php_install_ini() {
