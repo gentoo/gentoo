@@ -83,8 +83,8 @@ RDEPEND="
 QA_PREBUILT="*"
 
 src_install() {
-	# Cleanup
-	rm "${S}/resources/app/LICENSE.txt" || die
+	# Cleanup license file - it exists only in amd64 tarball
+	rm -f "${S}/resources/app/LICENSE.txt" || die
 
 	if ! use kerberos; then
 		rm -r "${S}/resources/app/node_modules.asar.unpacked/kerberos" || die
