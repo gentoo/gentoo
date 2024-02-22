@@ -38,12 +38,12 @@ EPYTEST_DESELECT=(
 )
 EPYTEST_XDIST=1
 
-# TODO: package sphinx-copybutton
-# distutils_enable_sphinx docs \
-# 	dev-python/sphinx-autodoc-typehints \
-# 	dev-python/furo \
-# 	dev-python/myst-parser \
-# 	dev-python/sphinxcontrib-apidoc
+distutils_enable_sphinx docs \
+	dev-python/sphinx-autodoc-typehints \
+	dev-python/sphinx-copybutton \
+	dev-python/furo \
+	dev-python/myst-parser \
+	dev-python/sphinxcontrib-apidoc
 distutils_enable_tests pytest
 
 src_test() {
