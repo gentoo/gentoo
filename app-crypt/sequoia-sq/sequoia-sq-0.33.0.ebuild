@@ -461,7 +461,7 @@ CRATES="
 
 LLVM_MAX_SLOT=17
 
-inherit bash-completion-r1 cargo llvm
+inherit bash-completion-r1 cargo shell-completion llvm
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"
@@ -518,11 +518,16 @@ src_install() {
 
 	doman target/$(usex debug debug release)/build/sequoia-sq-*/out/man-pages/*.1
 
-	newbashcomp target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions/sq.bash sq
+	# Since 0.33 sequoia-sq creates two shell-completions/ directories
+	# with indentical content. Select one of them. See also
+	# https://bugs.gentoo.org/923572
+	local completion_dirs=(
+		$(ls -1d target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions)
+	)
+	[[ ${#completion_dirs[@]} -lt 1 ]] && die "No completion directories found"
+	local completion_dir="${completion_dirs[0]}"
 
-	insinto /usr/share/zsh/site-functions
-	doins target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions/_sq
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions/sq.fish
+	newbashcomp "${completion_dir}"/sq.bash sq
+	dozshcomp "${completion_dir}"/_sq
+	dofishcomp "${completion_dir}"/sq.fish
 }
