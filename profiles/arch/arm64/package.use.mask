@@ -195,7 +195,7 @@ media-sound/bluez-alsa man
 # bug #729720
 sys-apps/systemd -boot -gnuefi -ukify
 sys-apps/systemd-utils -boot -ukify
-sys-kernel/installkernel -systemd-boot -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.

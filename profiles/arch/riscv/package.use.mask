@@ -46,7 +46,7 @@ media-video/mpv lua_single_target_luajit -lua_single_target_lua5-1
 # sd-boot should work here.
 sys-apps/systemd -boot -boot -ukify
 sys-apps/systemd-utils -boot -ukify
-sys-kernel/installkernel -systemd-boot -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
