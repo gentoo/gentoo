@@ -5,12 +5,12 @@ EAPI=8
 
 ECM_QTHELP="true"
 ECM_TEST="true"
-KFMIN=5.248.0
+KFMIN=5.249.0
 QTMIN=6.6.2
 inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64"
 fi
 
