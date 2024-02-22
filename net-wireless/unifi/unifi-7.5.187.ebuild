@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,10 @@ BDEPEND="app-arch/unzip"
 
 DOCS=( "readme.txt" )
 
-QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
+QA_PREBUILT="
+	usr/lib/unifi/lib/native/Linux/aarch64/*.so
+	usr/lib/unifi/lib/native/Linux/x86_64/*.so
+"
 
 src_prepare() {
 	if [[ ${CHOST} != aarch64* ]]; then
