@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Vadim Misbakh-Soloviov <mva@gentoo.org> (2024-02-22)
+# Masked for removal in 30 (or more) days.
+# Fetches only from specific geo-locations, hostile upstream, security issues.
+# Consider to use the version from overlay named "mva" after tree-cleaning.
+# No revdeps.  Bug #876271
+www-plugins/gosuslugi-plugin
+
 # Michał Górny <mgorny@gentoo.org> (2024-02-20)
 # Unmaintained.  The recently merged rewrite in Rust broke compilation
 # on 32-bit architecture.  No revdeps left.
