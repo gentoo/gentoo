@@ -434,7 +434,7 @@ dev-java/osgi-foundation
 =net-libs/signond-8.61-r100
 ~net-misc/kio-zeroconf-24.01.95
 =net-misc/smb4k-3.2.5-r2
-~sys-auth/polkit-qt-0.175.0
+~sys-auth/polkit-qt-0.200.0
 
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
