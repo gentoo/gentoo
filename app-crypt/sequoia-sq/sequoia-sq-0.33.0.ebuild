@@ -514,19 +514,13 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install
+	local asset_dir="${T}"/assets
 
-	doman target/$(usex debug debug release)/build/sequoia-sq-*/out/man-pages/*.1
+	ASSET_OUT_DIR="${asset_dir}" cargo_src_install
 
-	# Since 0.33 sequoia-sq creates two shell-completions/ directories
-	# with indentical content. Select one of them. See also
-	# https://bugs.gentoo.org/923572
-	local completion_dirs=(
-		$(ls -1d target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions)
-	)
-	[[ ${#completion_dirs[@]} -lt 1 ]] && die "No completion directories found"
-	local completion_dir="${completion_dirs[0]}"
+	doman "${asset_dir}"/man-pages/*
 
+	local completion_dir="${asset_dir}"/shell-completions
 	newbashcomp "${completion_dir}"/sq.bash sq
 	dozshcomp "${completion_dir}"/_sq
 	dofishcomp "${completion_dir}"/sq.fish
