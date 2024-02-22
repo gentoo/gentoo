@@ -49,46 +49,46 @@ VERSION_ZSTD="1.5.5"
 VERSION_KEYUTILS="1.6.3"
 
 COMMON_URI="
-	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
-	https://boostorg.jfrog.io/artifactory/main/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
-	https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
+	https://boostorg.jfrog.io/artifactory/main/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
 	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz
-	https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
-	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
-	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
 	https://dev.gentoo.org/~blueness/eudev/eudev-${VERSION_EUDEV}.tar.gz
 	https://github.com/libexpat/libexpat/releases/download/R_${VERSION_EXPAT//\./_}/expat-${VERSION_EXPAT}.tar.xz
-	https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz
 	https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
-	mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2
 	https://github.com/gentoo/hwids/archive/hwids-${VERSION_HWIDS}.tar.gz
-	https://github.com/open-iscsi/open-iscsi/archive/${VERSION_ISCSI}.tar.gz -> open-iscsi-${VERSION_ISCSI}.tar.gz
 	https://s3.amazonaws.com/json-c_releases/releases/json-c-${VERSION_JSON_C}.tar.gz
 	https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${VERSION_KMOD}.tar.xz
-	https://releases.pagure.org/libaio/libaio-${VERSION_LIBAIO}.tar.gz
-	mirror://gnupg/libgcrypt/libgcrypt-${VERSION_LIBGCRYPT}.tar.bz2
-	mirror://gnupg/libgpg-error/libgpg-error-${VERSION_LIBGPGERROR}.tar.bz2
 	https://github.com/besser82/libxcrypt/releases/download/v${VERSION_LIBXCRYPT}/libxcrypt-${VERSION_LIBXCRYPT}.tar.xz
-	https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz
+	https://releases.pagure.org/libaio/libaio-${VERSION_LIBAIO}.tar.gz
 	https://www.oberhumer.com/opensource/lzo/download/lzo-${VERSION_LZO}.tar.gz
-	https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz
-	http://ftp.rpm.org/popt/releases/popt-1.x/popt-${VERSION_POPT}.tar.gz
-	https://github.com/strace/strace/releases/download/v${VERSION_STRACE}/strace-${VERSION_STRACE}.tar.xz
-	https://github.com/jthornber/thin-provisioning-tools/archive/v${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz -> thin-provisioning-tools-${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz
-	https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
 	https://lttng.org/files/urcu/userspace-rcu-${VERSION_USERSPACE_RCU}.tar.bz2
 	https://www.kernel.org/pub/linux/utils/util-linux/v${VERSION_UTIL_LINUX:0:4}/util-linux-${VERSION_UTIL_LINUX}.tar.xz
-	https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-${VERSION_XFSPROGS}.tar.xz
 	https://tukaani.org/xz/xz-${VERSION_XZ}.tar.gz
 	https://zlib.net/zlib-${VERSION_ZLIB}.tar.gz
 	https://github.com/facebook/zstd/archive/v${VERSION_ZSTD}.tar.gz -> zstd-${VERSION_ZSTD}.tar.gz
-	https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-${VERSION_KEYUTILS}.tar.gz
+	bcache? ( https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz )
+	btrfs? ( https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz )
+	e2fsprogs? ( https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz )
+	xfsprogs? ( https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-${VERSION_XFSPROGS}.tar.xz )
+	unionfs? ( https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz )
+	iscsi? ( https://github.com/open-iscsi/open-iscsi/archive/${VERSION_ISCSI}.tar.gz -> open-iscsi-${VERSION_ISCSI}.tar.gz )
+	luks? ( https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz )
+	luks? ( mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2 )
+	luks? ( mirror://gnupg/libgcrypt/libgcrypt-${VERSION_LIBGCRYPT}.tar.bz2 )
+	luks? ( mirror://gnupg/libgpg-error/libgpg-error-${VERSION_LIBGPGERROR}.tar.bz2 )
+	luks? ( http://ftp.rpm.org/popt/releases/popt-1.x/popt-${VERSION_POPT}.tar.gz )
+	luks? ( https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-${VERSION_KEYUTILS}.tar.gz )
+	dmraid? ( https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2 )
+	lvm? ( https://mirrors.kernel.org/sourceware/lvm2/LVM2.${VERSION_LVM}.tgz )
+	lvm? ( https://github.com/jthornber/thin-provisioning-tools/archive/v${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz -> thin-provisioning-tools-${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz )
+	mdadm? ( https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.xz )
+	ssh? ( https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2 )
+	strace? ( https://github.com/strace/strace/releases/download/v${VERSION_STRACE}/strace-${VERSION_STRACE}.tar.xz )
 "
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
-	inherit git-r3
+		inherit git-r3
 	S="${WORKDIR}/${P}"
 	SRC_URI="${COMMON_URI}"
 else
@@ -103,7 +103,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Genkernel https://gitweb.gentoo.org/proj/
 LICENSE="GPL-2"
 SLOT="0"
 RESTRICT=""
-IUSE="ibm +firmware"
+IUSE="ibm +firmware +doc btrfs plymouth b2sum bcache dmraid e2fsprogs iscsi luks lvm mdadm multipath ssh strace unionfs xfsprogs zfs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Note:
@@ -128,11 +128,9 @@ RDEPEND="${PYTHON_DEPS}
 	dev-build/libtool
 	virtual/pkgconfig
 	elibc_glibc? ( sys-libs/glibc[static-libs(+)] )
-	firmware? ( sys-kernel/linux-firmware )"
-
-if [[ ${PV} == 9999* ]]; then
-	DEPEND="${DEPEND} app-text/asciidoc"
-fi
+	firmware? ( sys-kernel/linux-firmware )
+	plymouth? ( sys-boot/plymouth )
+	doc? ( app-text/asciidoc )"
 
 PATCHES=(
 )
@@ -164,72 +162,42 @@ src_prepare() {
 	fi
 
 	# Update software.sh
-	sed -i \
-		-e "s:VERSION_BCACHE_TOOLS:${VERSION_BCACHE_TOOLS}:"\
-		-e "s:VERSION_BOOST:${VERSION_BOOST}:"\
-		-e "s:VERSION_BTRFS_PROGS:${VERSION_BTRFS_PROGS}:"\
-		-e "s:VERSION_BUSYBOX:${VERSION_BUSYBOX}:"\
-		-e "s:VERSION_COREUTILS:${VERSION_COREUTILS}:"\
-		-e "s:VERSION_CRYPTSETUP:${VERSION_CRYPTSETUP}:"\
-		-e "s:VERSION_DMRAID:${VERSION_DMRAID}:"\
-		-e "s:VERSION_DROPBEAR:${VERSION_DROPBEAR}:"\
-		-e "s:VERSION_EUDEV:${VERSION_EUDEV}:"\
-		-e "s:VERSION_EXPAT:${VERSION_EXPAT}:"\
-		-e "s:VERSION_E2FSPROGS:${VERSION_E2FSPROGS}:"\
-		-e "s:VERSION_FUSE:${VERSION_FUSE}:"\
-		-e "s:VERSION_GPG:${VERSION_GPG}:"\
-		-e "s:VERSION_HWIDS:${VERSION_HWIDS}:"\
-		-e "s:VERSION_ISCSI:${VERSION_ISCSI}:"\
-		-e "s:VERSION_JSON_C:${VERSION_JSON_C}:"\
-		-e "s:VERSION_KMOD:${VERSION_KMOD}:"\
-		-e "s:VERSION_LIBAIO:${VERSION_LIBAIO}:"\
-		-e "s:VERSION_LIBGCRYPT:${VERSION_LIBGCRYPT}:"\
-		-e "s:VERSION_LIBGPGERROR:${VERSION_LIBGPGERROR}:"\
-		-e "s:VERSION_LIBXCRYPT:${VERSION_LIBXCRYPT}:"\
-		-e "s:VERSION_LVM:${VERSION_LVM}:"\
-		-e "s:VERSION_LZO:${VERSION_LZO}:"\
-		-e "s:VERSION_MDADM:${VERSION_MDADM}:"\
-		-e "s:VERSION_MULTIPATH_TOOLS:${VERSION_MULTIPATH_TOOLS}:"\
-		-e "s:VERSION_POPT:${VERSION_POPT}:"\
-		-e "s:VERSION_STRACE:${VERSION_STRACE}:"\
-		-e "s:VERSION_THIN_PROVISIONING_TOOLS:${VERSION_THIN_PROVISIONING_TOOLS}:"\
-		-e "s:VERSION_UNIONFS_FUSE:${VERSION_UNIONFS_FUSE}:"\
-		-e "s:VERSION_USERSPACE_RCU:${VERSION_USERSPACE_RCU}:"\
-		-e "s:VERSION_UTIL_LINUX:${VERSION_UTIL_LINUX}:"\
-		-e "s:VERSION_XFSPROGS:${VERSION_XFSPROGS}:"\
-		-e "s:VERSION_XZ:${VERSION_XZ}:"\
-		-e "s:VERSION_ZLIB:${VERSION_ZLIB}:"\
-		-e "s:VERSION_ZSTD:${VERSION_ZSTD}:"\
-		"${S}"/defaults/software.sh \
-		|| die "Could not adjust versions"
+	export VERSION_BCACHE_TOOLS VERSION_BOOST VERSION_BTRFS_PROGS VERSION_BUSYBOX VERSION_COREUTILS
+	export VERSION_CRYPTSETUP VERSION_DMRAID VERSION_DROPBEAR VERSION_EUDEV VERSION_EXPAT VERSION_E2FSPROGS
+	export VERSION_FUSE VERSION_GPG VERSION_HWIDS VERSION_ISCSI VERSION_JSON_C VERSION_KMOD VERSION_LIBAIO
+	export VERSION_LIBGCRYPT VERSION_LIBGPGERROR VERSION_LIBXCRYPT VERSION_LVM VERSION_LZO VERSION_MDADM
+	export VERSION_POPT VERSION_STRACE VERSION_THIN_PROVISIONING_TOOLS VERSION_UNIONFS_FUSE VERSION_USERSPACE_RCU
+	export VERSION_UTIL_LINUX VERSION_XFSPROGS VERSION_XZ VERSION_ZLIB VERSION_ZSTD VERSION_KEYUTILS
+
+	GK_FEATURES=""  # prepare genkernel feature list
+
+	if use b2sum ; then GK_FEATURES="${GK_FEATURES}b2sum " ; fi
+	if use bcache ; then GK_FEATURES="${GK_FEATURES}bcache " ; fi
+	if use btrfs ; then GK_FEATURES="${GK_FEATURES}btrfs " ; fi
+	if use dmraid ; then GK_FEATURES="${GK_FEATURES}dmraid " ; fi
+	if use e2fsprogs ; then GK_FEATURES="${GK_FEATURES}e2fsprogs " ; fi
+	if use iscsi ; then GK_FEATURES="${GK_FEATURES}iscsi " ; fi
+	if use luks ; then GK_FEATURES="${GK_FEATURES}luks " ; fi
+	if use lvm ; then GK_FEATURES="${GK_FEATURES}lvm " ; fi
+	if use mdadm ; then GK_FEATURES="${GK_FEATURES}mdadm " ; fi
+	if use multipath ; then GK_FEATURES="${GK_FEATURES}multipath " ; fi
+	if use plymouth ; then GK_FEATURES="${GK_FEATURES}plymouth " ; fi
+	# if use splash ; then GK_FEATURES="${GK_FEATURES}splash " ; fi
+	if use ssh ; then GK_FEATURES="${GK_FEATURES}ssh " ; fi
+	if use strace ; then GK_FEATURES="${GK_FEATURES}strace " ; fi
+	if use unionfs ; then GK_FEATURES="${GK_FEATURES}unionfs " ; fi
+	if use xfsprogs ; then GK_FEATURES="${GK_FEATURES}xfsprogs " ; fi
+	if use zfs ; then GK_FEATURES="${GK_FEATURES}zfs " ; fi
+
+	export GK_FEATURES
 }
 
 src_compile() {
-	if [[ ${PV} == 9999* ]] ; then
-		emake
-	fi
+	emake PREFIX=/usr
 }
 
 src_install() {
-	insinto /etc
-	doins "${S}"/genkernel.conf
-
-	doman genkernel.8
-	dodoc AUTHORS ChangeLog README TODO
-	dobin genkernel
-	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf
-
-	if use ibm ; then
-		cp "${S}"/arch/ppc64/kernel-2.6{-pSeries,} || die
-	else
-		cp "${S}"/arch/ppc64/kernel-2.6{.g5,} || die
-	fi
-
-	insinto /usr/share/genkernel
-	doins -r "${S}"/*
-
-	fperms +x /usr/share/genkernel/gen_worker.sh
-	fperms +x /usr/share/genkernel/path_expander.py
+	emake DESTDIR="${D}" PREFIX=/usr install
 
 	python_fix_shebang "${ED}"/usr/share/genkernel/path_expander.py
 
