@@ -23,6 +23,13 @@ LICENSE="Apache-2.0"
 SLOT="2.8"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
 
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
+
+BDEPEND="
+	dev-java/xalan:0
+	verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-fop )
+"
+
 CP_DEPEND="
 	dev-java/batik:1.16
 	dev-java/commons-io:1
@@ -47,8 +54,6 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
-BDEPEND="dev-java/xalan:0"
-
 DOCS=( NOTICE README )
 
 PATCHES=(
@@ -64,8 +69,6 @@ JAVA_CLASSPATH_EXTRA="
 	sun-jai-bin
 "
 
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-fop )"
-VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
 src_unpack() {
 	if use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${P}-src.tar.gz{,.asc}
