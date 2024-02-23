@@ -5,9 +5,9 @@
 		<email>orbea@riseup.net</email>
 		<name>orbea</name>
 	</maintainer>
-	<maintainer type="person" proxied="proxy">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		tpm is a tiny shell script which is heavily inspired and
