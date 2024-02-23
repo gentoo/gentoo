@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~riscv ~x86"
 DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[jpeg]
+	dev-qt/qtimageformats:5[mng]
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
