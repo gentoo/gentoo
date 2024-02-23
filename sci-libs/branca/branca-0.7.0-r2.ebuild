@@ -19,9 +19,12 @@ KEYWORDS="~amd64 ~x86"
 PATCHES=( "${FILESDIR}"/${PN}-0.6.0-test.patch )
 
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/selenium[${PYTHON_USEDEP}] )"
-BDEPEND="dev-python/setuptools-scm"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/setuptools-scm
+	test? (
+		dev-python/selenium[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
