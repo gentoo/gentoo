@@ -35,14 +35,6 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS NEWS README )
 
-src_prepare() {
-	default
-
-	# bug 568746
-	sed -i -e '/QMAKE_CXXFLAGS/s:-Werror::' \
-		src/{QXmlEdit,QXmlEditWidget,sessions/QXmlEditSessions}.pro || die
-}
-
 src_configure() {
 	export \
 		QXMLEDIT_INST_DIR="${EPREFIX}/usr/bin" \
@@ -50,6 +42,9 @@ src_configure() {
 		QXMLEDIT_INST_INCLUDE_DIR="${EPREFIX}/usr/include/${PN}" \
 		QXMLEDIT_INST_DATA_DIR="${EPREFIX}/usr/share/${PN}" \
 		QXMLEDIT_INST_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+
+	# avoid -Werror (affecting src/coptions.pri) bug #925324
+	export QXMLEDIT_INST_DISABLE_COMPILE_WARNINGS=Y
 
 	# avoid internal compiler errors
 	use x86 && export QXMLEDIT_INST_AVOID_PRECOMP_HEADERS=Y
