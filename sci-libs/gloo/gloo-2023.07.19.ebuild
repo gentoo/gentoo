@@ -1,10 +1,10 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 inherit cmake cuda
 
-CommitId=10909297fedab0a680799211a299203e53515032
+CommitId=cf1e1abc95d0b961222ee82b6935f76250fbcf16
 
 DESCRIPTION="library of floating-point neural network inference operators"
 HOMEPAGE="https://github.com/facebookincubator/gloo/"
