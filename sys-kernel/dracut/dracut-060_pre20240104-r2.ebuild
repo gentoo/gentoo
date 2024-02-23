@@ -24,7 +24,7 @@ HOMEPAGE="https://github.com/dracutdevs/dracut/wiki"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]]; then
-	KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 fi
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
