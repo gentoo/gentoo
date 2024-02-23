@@ -20,6 +20,7 @@ SLOT="0"
 
 PATCHES=(
 	"${FILESDIR}/${P}-null_pointer_fix.patch" # 786951
+	"${FILESDIR}/${P}-phony_targets_fix.patch"
 )
 
 src_compile() {
