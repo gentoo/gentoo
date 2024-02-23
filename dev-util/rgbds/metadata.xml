@@ -9,6 +9,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		RGBDS (Rednex Game Boy Development System) is a free assembler
 		and linker package for the Game Boy and Game Boy Color.
