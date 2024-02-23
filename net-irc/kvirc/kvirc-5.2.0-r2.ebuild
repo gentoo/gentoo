@@ -70,6 +70,7 @@ DOCS=()
 
 PATCHES=(
 	"${FILESDIR}/kvirc-5.2.0-qtver.patch"
+	"${FILESDIR}/kvirc-5.2.0-dccvideo.patch"
 )
 
 pkg_setup() {
