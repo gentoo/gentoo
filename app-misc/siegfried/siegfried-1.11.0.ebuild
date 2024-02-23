@@ -6,7 +6,10 @@ EAPI=8
 inherit go-module
 
 DESCRIPTION="Signature-based file format identification"
-HOMEPAGE="https://github.com/richardlehane/siegfried/"
+HOMEPAGE="
+	https://www.itforarchivists.com/siegfried/
+	https://github.com/richardlehane/siegfried/
+"
 SRC_URI="
 	https://github.com/richardlehane/siegfried/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
