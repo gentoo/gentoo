@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora"
+IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webengine"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
@@ -29,6 +29,7 @@ BDEPEND="dev-lang/perl:0
 	kde? ( kde-frameworks/extra-cmake-modules:0 )
 	nls? ( sys-devel/gettext )"
 DEPEND="dev-qt/qtcore:5
+	dev-qt/qtconcurrent:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -60,7 +61,8 @@ DEPEND="dev-qt/qtcore:5
 		media-libs/libogg
 		media-libs/libtheora
 		media-libs/libvorbis
-	)"
+	)
+	webengine? ( dev-qt/qtwebengine:5[widgets] )"
 RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
 
@@ -114,7 +116,7 @@ src_configure() {
 		-DWANT_PHONON=$(usex phonon)
 		-DWANT_PYTHON=$(usex python)
 		-DWANT_QTDBUS=$(usex dbus)
-		-DWANT_QTWEBKIT=OFF
+		-DWANT_QTWEBENGINE=$(usex webengine)
 		-DWANT_SPELLCHECKER=$(usex spell)
 		-DQT_VERSION_MAJOR=5
 
