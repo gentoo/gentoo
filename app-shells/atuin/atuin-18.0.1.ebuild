@@ -457,6 +457,7 @@ REQUIRED_USE="
 	test? ( client server sync )
 "
 RDEPEND="server? ( acct-user/atuin )"
+DEPEND="test? ( dev-db/postgresql )"
 BDEPEND=">=virtual/rust-1.71.0"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
@@ -466,12 +467,6 @@ DOCS=(
 	CONTRIBUTORS
 	README.md
 )
-
-src_prepare() {
-	default
-
-	rm atuin/tests/sync.rs || die
-}
 
 src_configure() {
 	local myfeatures=(
@@ -501,6 +496,41 @@ src_compile() {
 	for shell in bash fish zsh; do
 		"${ATUIN_BIN}" init ${shell} > shell-init/${shell} || die
 	done
+}
+
+src_test() {
+	local postgres_dir="${T}"/postgres
+	initdb "${postgres_dir}" || die
+
+	local port=11123
+	# -h '' → only socket connections allowed.
+	postgres -D "${postgres_dir}" \
+			 -k "${postgres_dir}" \
+			 -p "${port}" &
+	local postgres_pid=${!}
+
+	local timeout_secs=30
+	timeout "${timeout_secs}" bash -c \
+			'until printf "" >/dev/tcp/${0}/${1} 2>> "${T}/portlog"; do sleep 1; done' \
+			localhost "${port}" || die "Timeout waiting for postgres port ${port} to become available"
+
+	psql -h localhost -p "${port}" -d postgres <<-EOF || die "Failed to configure postgres"
+	create database atuin;
+	create user atuin with encrypted password 'pass';
+	grant all privileges on database atuin to atuin;
+	\connect atuin
+	grant all on schema public to atuin;
+	EOF
+
+	# Subshell so that postgres_pid is in scope when the trap is executed.
+	(
+		cleanup() {
+			kill "${postgres_pid}" || die "failed to send SIGTERM to postgres"
+		}
+		trap cleanup EXIT
+
+		ATUIN_DB_URI="postgres://atuin:pass@localhost:${port}/atuin" cargo_src_test
+	)
 }
 
 src_install() {
