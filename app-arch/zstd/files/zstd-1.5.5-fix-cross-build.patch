@@ -1,0 +1,24 @@
+From 3d06ef443c7b111742cf68b98bd2e42997e845b6 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@protonmail.com>
+Date: Fri, 23 Feb 2024 00:22:50 +0100
+Subject: [PATCH] build: Allow cross building of gen_html
+
+---
+ build/meson/contrib/gen_html/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/build/meson/contrib/gen_html/meson.build b/build/meson/contrib/gen_html/meson.build
+index 3f302538..cabff209 100644
+--- a/build/meson/contrib/gen_html/meson.build
++++ b/build/meson/contrib/gen_html/meson.build
+@@ -17,7 +17,6 @@ gen_html_includes = include_directories(join_paths(zstd_rootdir, 'programs'),
+ gen_html = executable('gen_html',
+   join_paths(zstd_rootdir, 'contrib/gen_html/gen_html.cpp'),
+   include_directories: gen_html_includes,
+-  native: true,
+   install: false)
+ 
+ # Update zstd manual
+-- 
+2.43.2
+

@@ -26,6 +26,8 @@ DEPEND="${RDEPEND}"
 MESON_PATCHES=(
 	# Workaround until Valgrind bugfix lands
 	"${FILESDIR}"/${PN}-1.5.4-no-find-valgrind.patch
+	# Fix for cross builds
+	"${FILESDIR}"/${PN}-1.5.5-fix-cross-build.patch
 )
 
 PATCHES=(
