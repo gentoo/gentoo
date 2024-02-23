@@ -470,7 +470,9 @@ DOCS=(
 src_prepare() {
 	default
 
+	# Need network
 	rm atuin/tests/sync.rs || die
+	rm atuin/tests/users.rs || die
 }
 
 src_configure() {
