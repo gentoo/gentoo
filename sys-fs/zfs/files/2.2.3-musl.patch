@@ -1,0 +1,34 @@
+https://github.com/openzfs/zfs/pull/15925
+
+From 3fa84afb3f4334b6609f0dcb141e5d10095e585b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 23 Feb 2024 05:12:09 +0000
+Subject: [PATCH] tests: use <fcntl.h> instead of <sys/fcntl.h>
+
+When building on musl, we get:
+```
+In file included from tests/zfs-tests/cmd/getversion.c:22:
+/usr/include/sys/fcntl.h:1:2: error: #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h> [-Werror=cpp]
+    1 | #warning redirecting incorrect #include <sys/fcntl.h> to <fcntl.h>
+      |  ^~~~~~~
+```
+
+There's some other use of <sys/fcntl.h> in the codebase, but they're on the
+module side, where libspl seems to handle it all, so not touching that.
+
+Bug: https://bugs.gentoo.org/925235
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tests/zfs-tests/cmd/getversion.c
++++ b/tests/zfs-tests/cmd/getversion.c
+@@ -19,9 +19,9 @@
+  */
+ 
+ #include <sys/ioctl.h>
+-#include <sys/fcntl.h>
+ #include <linux/fs.h>
+ #include <err.h>
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+
