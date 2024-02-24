@@ -228,10 +228,6 @@ dev-build/tup
 # Version bump to be done later when junit5 can be used for testing.
 dev-java/bnd-junit
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
-# Unused Java libraries. Removal on 2024-02-15
-dev-java/glassfish-persistence
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
