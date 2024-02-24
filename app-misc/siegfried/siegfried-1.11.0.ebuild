@@ -28,6 +28,10 @@ LICENSE+=" BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="
+	!app-misc/dfshow
+"
+
 src_compile() {
 	go build -v -work -x "${S}"/cmd/roy || die
 	go build -v -work -x "${S}"/cmd/sf || die
