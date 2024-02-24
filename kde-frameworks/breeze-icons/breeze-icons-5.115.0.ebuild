@@ -15,10 +15,14 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-qt/qttest:5 )"
+DEPEND="
+	test? (
+		dev-qt/qtcore:5
+		dev-qt/qttest:5
+	)
+"
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
-	dev-qt/qtcore:5
 	>=kde-frameworks/extra-cmake-modules-${PVCUT}:0
 	test? ( app-misc/fdupes )
 "
