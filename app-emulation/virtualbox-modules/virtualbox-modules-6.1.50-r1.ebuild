@@ -21,6 +21,10 @@ KEYWORDS="~amd64"
 
 CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.14-kernel-6.6-warning.patch
+)
+
 src_compile() {
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
 	local modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )

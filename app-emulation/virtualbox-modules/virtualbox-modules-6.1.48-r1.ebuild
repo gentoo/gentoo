@@ -15,11 +15,15 @@ HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${MY_P}.tar.xz"
 S="${WORKDIR}"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
 CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.14-kernel-6.6-warning.patch
+)
 
 src_compile() {
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
