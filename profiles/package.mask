@@ -232,7 +232,6 @@ dev-java/bnd-junit
 # Unused Java libraries. Removal on 2024-02-15
 dev-java/glassfish-persistence
 dev-java/osgi-core-api
-dev-java/osgi-enterprise-api
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
