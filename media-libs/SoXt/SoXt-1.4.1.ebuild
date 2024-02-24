@@ -9,10 +9,10 @@ MY_P=${P/soxt/SoXt}
 
 HOMEPAGE="https://github.com/coin3d/coin/wiki"
 DESCRIPTION="GUI binding for using Coin/Open Inventor with Xt/Motif"
-SRC_URI="https://github.com/coin3d/soxt/releases/download/${MY_P}/${P}-src.tar.gz"
+SRC_URI="https://github.com/coin3d/soxt/releases/download/v${PV}/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="debug doc"
 
@@ -32,16 +32,13 @@ S="${WORKDIR}/soxt"
 
 DOCS=(AUTHORS ChangeLog HACKING NEWS README TODO BUGS.txt)
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-drop-register-keyword.patch
-)
-
 src_configure() {
 	use debug && append-cppflags -DSOXT_DEBUG=1
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DSOXT_BUILD_DOCUMENTATION=$(usex doc)
 		-DSOXT_BUILD_INTERNAL_DOCUMENTATION=OFF
+		-DSOXT_BUILD_TESTS=OFF
 		-DSOXT_VERBOSE=$(usex debug)
 	)
 	cmake_src_configure
