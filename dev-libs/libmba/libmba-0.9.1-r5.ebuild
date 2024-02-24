@@ -11,7 +11,7 @@ HOMEPAGE="https://www.ioplex.com/~miallen/libmba/"
 SRC_URI="https://www.ioplex.com/~miallen/libmba/dl/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-qa.patch
