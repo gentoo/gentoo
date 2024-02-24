@@ -132,11 +132,7 @@ my_src_configure() {
 		--enable-large-secmem
 
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
-		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
-		KSBA_CONFIG="${ESYSROOT}/usr/bin/ksba-config"
-		LIBASSUAN_CONFIG="${ESYSROOT}/usr/bin/libassuan-config"
-		LIBGCRYPT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-libgcrypt-config"
-		NPTH_CONFIG="${ESYSROOT}/usr/bin/npth-config"
+		ac_cv_path_GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
 
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
