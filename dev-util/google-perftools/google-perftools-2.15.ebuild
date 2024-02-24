@@ -89,12 +89,6 @@ multilib_src_configure() {
 }
 
 src_test() {
-	if has sandbox ${FEATURES}; then
-		ewarn "Unable to run tests when sandbox is enabled."
-		ewarn "See https://bugs.gentoo.org/290249"
-		return 0
-	fi
-
 	multilib-minimal_src_test
 }
 
