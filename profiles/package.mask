@@ -234,7 +234,6 @@ dev-java/glassfish-persistence
 dev-java/osgi-core-api
 dev-java/osgi-enterprise-api
 dev-java/osgi-compendium
-dev-java/osgi-foundation
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
