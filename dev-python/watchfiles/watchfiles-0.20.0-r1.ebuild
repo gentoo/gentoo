@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -85,7 +85,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	=dev-python/anyio-3*[${PYTHON_USEDEP}]
+	>=dev-python/anyio-4.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
@@ -109,6 +109,12 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# test broken with new anyio
+		# https://github.com/samuelcolvin/watchfiles/issues/254
+		tests/test_watch.py::test_awatch_interrupt_raise
+	)
+
 	rm -rf watchfiles || die
 	epytest
 }
