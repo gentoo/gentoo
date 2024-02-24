@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson optfeature
+inherit fcaps meson optfeature
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="https://swaywm.org"
@@ -21,6 +21,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="+man +swaybar +swaynag tray wallpapers X"
+REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
@@ -69,7 +70,10 @@ if [[ ${PV} == 9999 ]]; then
 else
 	BDEPEND+="man? ( >=app-text/scdoc-1.9.3 )"
 fi
-REQUIRED_USE="tray? ( swaybar )"
+
+FILECAPS=(
+	cap_sys_nice usr/bin/${PN} # bug 919298
+)
 
 src_configure() {
 	local emesonargs=(
@@ -95,6 +99,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
+
 	optfeature_header "There are several packages that may be useful with sway:"
 	optfeature "wallpaper utility" gui-apps/swaybg
 	optfeature "idle management utility" gui-apps/swayidle
@@ -102,7 +108,7 @@ pkg_postinst() {
 	optfeature "lightweight notification daemon" gui-apps/mako
 	echo
 	einfo "For a list of additional addons and tools usable with sway please"
-	einfo "visit the offical wiki at:"
+	einfo "visit the official wiki at:"
 	einfo "https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway"
 	einfo "Please note that some of them might not (yet) available on gentoo"
 }
