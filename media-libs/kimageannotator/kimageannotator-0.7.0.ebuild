@@ -12,11 +12,14 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Tool for annotating images"
 HOMEPAGE="https://github.com/ksnip/kImageAnnotator"
 SRC_URI="https://github.com/ksnip/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
@@ -25,19 +28,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-			dev-qt/qtbase:6[test]
-			dev-cpp/gtest
+		dev-cpp/gtest
+		dev-qt/qtbase:6[test]
 	)
 "
-BDEPEND="
-	dev-qt/qttools:6[linguist]
-"
-
-RESTRICT="!test? ( test )"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 PATCHES=( "${FILESDIR}/${P}-fix-qt6-tests.patch" )
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local mycmakeargs=(
