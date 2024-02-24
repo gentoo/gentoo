@@ -209,7 +209,6 @@ net-wireless/crda
 # Use sci-libs/pytorch as a modern alternative with better packaging.
 # Removal on 2024-02-17. Bug #922374
 dev-build/bazel
-sci-libs/keras
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
