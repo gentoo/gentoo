@@ -133,7 +133,6 @@ RDEPEND="${PYTHON_DEPS}
 	firmware? ( sys-kernel/linux-firmware )
 "
 
-
 PATCHES=(
 )
 
