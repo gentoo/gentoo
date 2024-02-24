@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-02-24)
+# Only works on amd64 (and x32).
+dev-debug/gdb -cet
+sys-devel/binutils -cet
+sys-devel/gcc -cet
+sys-libs/binutils-libs -cet
+sys-libs/glibc -cet
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
 # net-libs/paho-mqtt-c is only available for amd64 and x86
 app-admin/syslog-ng -mqtt
