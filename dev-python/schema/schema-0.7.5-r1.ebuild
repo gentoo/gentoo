@@ -19,3 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# py2 leftover
+	> requirements.txt || die
+	distutils-r1_src_prepare
+}
