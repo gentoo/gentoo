@@ -220,7 +220,6 @@ sci-visualization/tensorboard
 # dev-build/tup was last released in 2021 and has a few bugs reported.
 # Removal on 2024-02-16.  Bug #922329.
 dev-build/cons
-dev-build/tup
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
