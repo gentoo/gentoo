@@ -190,11 +190,6 @@ mail-filter/libsrs_alt
 # Removal on 2024-02-23.  Bug #894688.
 dev-python/pymilter
 
-# David Seifert <soap@gentoo.org> (2024-01-21)
-# Not required anymore since 4.14 is EOL, handled within the kernel
-# nowadays. Removal on 2024-02-20.
-net-wireless/crda
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
 ~media-libs/mpvqt-1.0.0
