@@ -41,6 +41,11 @@ BDEPEND="
 	)
 "
 
+EPYTEST_DESELECT=(
+	# TODO: warning tests that require pytest-8
+	tests/test_routing.py::test_lifespan_with_on_events
+)
+
 EPYTEST_IGNORE=(
 	# Unpackaged 'databases' dependency
 	tests/test_database.py
