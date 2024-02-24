@@ -184,16 +184,6 @@ mail-filter/libsrs_alt
 ~app-misc/ddcutil-2.1.0
 ~app-misc/ddcui-0.5.0
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
-# The functionality of sys-kernel/installkernel-systemd has been
-# integrated into sys-kernel/installkernel[systemd].
-# Please install sys-kernel/installkernel and remove
-# sys-kernel/installkernel-systemd. See the news item entitled
-# "Merging of installkernel-gentoo and installkernel-systemd" for details.
-#
-# Removal on 2024-02-24
-sys-kernel/installkernel-systemd
-
 # Michał Górny <mgorny@gentoo.org> (2024-01-24)
 # Unmaintained, tests fail, requires discontinued dev-python/bsddb3.
 # No commits since 2022.  No reverse dependencies.
