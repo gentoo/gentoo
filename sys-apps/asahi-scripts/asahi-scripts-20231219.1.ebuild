@@ -6,15 +6,15 @@ EAPI="8"
 DESCRIPTION="Apple Silicon support scripts"
 HOMEPAGE="https://asahilinux.org/"
 SRC_URI="https://github.com/AsahiLinux/${PN}/archive/refs/tags/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="arm64"
+KEYWORDS="~arm64"
 
-BDEPEND="
-	dev-build/make"
-
-PATCHES=("${FILESDIR}/makefile.patch"
-	 "${FILESDIR}/update-m1n1-dtbs.patch")
+PATCHES=(
+	"${FILESDIR}/makefile.patch"
+	"${FILESDIR}/update-m1n1-dtbs.patch"
+)
 
 src_install() {
 	default
