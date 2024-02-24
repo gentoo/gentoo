@@ -8,19 +8,25 @@ inherit meson xdg
 DESCRIPTION="Display and control your Android device"
 HOMEPAGE="https://github.com/Genymobile/scrcpy"
 # Source code and server part on Android device
-SRC_URI="https://github.com/Genymobile/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/Genymobile/${PN}/releases/download/v${PV}/${PN}-server-v${PV}"
+SRC_URI="
+	https://github.com/Genymobile/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/Genymobile/${PN}/releases/download/v${PV}/${PN}-server-v${PV}
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-DEPEND="media-libs/libsdl2[X]
-	media-video/ffmpeg
-	virtual/libusb:1"
+DEPEND="
+	media-libs/libsdl2[X]
+	media-video/ffmpeg:=
+	virtual/libusb:1
+"
 # Manual install for ppc64 until bug #723528 is fixed
-RDEPEND="${DEPEND}
-	!ppc64? ( dev-util/android-tools )"
+RDEPEND="
+	${DEPEND}
+	!ppc64? ( dev-util/android-tools )
+"
 
 src_configure() {
 	local emesonargs=(
