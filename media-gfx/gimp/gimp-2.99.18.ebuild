@@ -7,11 +7,12 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{10..11} )
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
+SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
+
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
@@ -34,7 +35,7 @@ COMMON_DEPEND="
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
-	>=gnome-base/librsvg-2.40.21:2
+	>=gnome-base/librsvg-2.46.0:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
 	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
@@ -109,6 +110,10 @@ BDEPEND="
 "
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.10_fix_musl_backtrace_backend_switch.patch" #900148
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
