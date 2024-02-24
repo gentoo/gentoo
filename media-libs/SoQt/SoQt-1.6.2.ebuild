@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake flag-o-matic
 
@@ -14,21 +14,30 @@ SRC_URI="https://github.com/coin3d/soqt/releases/download/v${PV}/${MY_P}-src.tar
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="debug doc"
+IUSE="debug doc qt6"
 
 RDEPEND="
 	media-libs/coin
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtopengl:5
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXi
+	!qt6? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtopengl:5
+	)
+	qt6? (
+		dev-qt/qtbase:6[gui,opengl,widgets]
+	)
 "
+
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
+"
+
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "
 
@@ -42,7 +51,7 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DSOQT_BUILD_DOCUMENTATION=$(usex doc)
 		-DSOQT_BUILD_INTERNAL_DOCUMENTATION=OFF
-		-DSOQT_USE_QT6=OFF
+		-DSOQT_USE_QT6=$(usex qt6)
 		-DSOQT_VERBOSE=$(usex debug)
 	)
 	cmake_src_configure
