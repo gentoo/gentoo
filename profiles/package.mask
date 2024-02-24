@@ -210,7 +210,6 @@ net-wireless/crda
 # Removal on 2024-02-17. Bug #922374
 dev-build/bazel
 sci-libs/keras
-sci-libs/tensorflow
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
