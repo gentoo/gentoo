@@ -163,7 +163,6 @@ pkg_postinst() {
 	optfeature "cythonmagic" dev-python/cython
 	optfeature "%lprun magic command" dev-python/line-profiler
 	optfeature "%matplotlib magic command" dev-python/matplotlib-inline
-	optfeature "%mprun magic command" dev-python/memory-profiler
 
 	if use nbconvert; then
 		if ! has_version virtual/pandoc ; then
