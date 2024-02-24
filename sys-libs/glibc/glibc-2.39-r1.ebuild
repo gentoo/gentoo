@@ -38,7 +38,7 @@ MIN_PAX_UTILS_VER="1.3.3"
 
 # Minimum systemd version needed (which contains any new syscall changes for
 # its seccomp filter!). Please double check this!
-MIN_SYSTEMD_VER="255"
+MIN_SYSTEMD_VER="254.9-r1"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
