@@ -242,6 +242,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/systemd-253-initrd-generators.patch"
 		"${FILESDIR}/254-PrivateDevices-userdbd.patch"
+		"${FILESDIR}/systemd-254.9-fchmodat2.patch"
 	)
 
 	if ! use vanilla; then
