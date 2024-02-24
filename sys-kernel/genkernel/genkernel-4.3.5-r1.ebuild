@@ -108,7 +108,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # because genkernel will usually build things like LVM2, cryptsetup,
 # mdadm... during initramfs generation which will require these
 # things.
-DEPEND=""
 RDEPEND="${PYTHON_DEPS}
 	app-alternatives/cpio
 	>=app-misc/pax-utils-1.2.2
