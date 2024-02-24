@@ -9,8 +9,15 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 	<longdescription lang="en">QToolButton with color popup menu with lets you
 		select a color. The popup features a color dialog button which can be
 		used to add custom colors to the popup menu.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ksnip/kColorPicker</remote-id>
+	</upstream>
 </pkgmetadata>
