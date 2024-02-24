@@ -1,0 +1,41 @@
+From bbc4b946355775606da35557e5404ca83a586c67 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>
+Date: Thu, 22 Feb 2024 22:41:15 -0500
+Subject: [PATCH] incus/image: Fix column handling with --all-projects
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Stéphane Graber <stgraber@stgraber.org>
+---
+ cmd/incus/image.go | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/cmd/incus/image.go b/cmd/incus/image.go
+index 5ee2b74709..d5a1126855 100644
+--- a/cmd/incus/image.go
++++ b/cmd/incus/image.go
+@@ -1134,11 +1134,6 @@ func (c *cmdImageList) parseColumns() ([]imageColumn, error) {
+ 	columnList := strings.Split(c.flagColumns, ",")
+ 
+ 	columns := []imageColumn{}
+-	// Add project column if --all-projects flag specified and
+-	// no --c was passed
+-	if c.flagAllProjects && c.flagColumns == defaultImagesColumns {
+-		c.flagColumns = defaultImagesColumnsAllProjects
+-	}
+ 
+ 	for _, columnEntry := range columnList {
+ 		if columnEntry == "" {
+@@ -1321,6 +1316,11 @@ func (c *cmdImageList) Run(cmd *cobra.Command, args []string) error {
+ 		return err
+ 	}
+ 
++	// Add project column if --all-projects flag specified and no -c was passed.
++	if c.flagAllProjects && c.flagColumns == defaultImagesColumns {
++		c.flagColumns = defaultImagesColumnsAllProjects
++	}
++
+ 	// Parse remote
+ 	remote := ""
+ 	if len(args) > 0 {
