@@ -4,7 +4,7 @@
 EAPI=8
 
 VIRTUALX_REQUIRED="test"
-inherit cmake virtualx
+inherit cmake
 
 MY_PN=kImageAnnotator
 MY_P="${MY_PN}-${PV}"
@@ -12,7 +12,6 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Tool for annotating images"
 HOMEPAGE="https://github.com/ksnip/kImageAnnotator"
 SRC_URI="https://github.com/ksnip/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3+"
 SLOT="0"
@@ -20,32 +19,35 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5[png]
-	>=media-libs/kcolorpicker-0.2.0
-	<media-libs/kcolorpicker-0.3.0
-	x11-libs/libX11
+	dev-qt/qtbase:6[gui,widgets]
+	dev-qt/qtsvg:6
+	>=media-libs/kcolorpicker-0.3.0
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
 	test? (
-			dev-qt/qttest:5
+			dev-qt/qtbase:6[test]
 			dev-cpp/gtest
 	)
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 "
+
+RESTRICT="!test? ( test )"
+
+PATCHES=( "${FILESDIR}/${P}-fix-qt6-tests.patch" )
+
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
+		-DBUILD_WITH_QT6=ON
 	)
 	cmake_src_configure
 }
 
 src_test() {
-	BUILD_DIR="${BUILD_DIR}/tests" virtx cmake_src_test
+	local -x QT_QPA_PLATFORM=offscreen
+	BUILD_DIR="${BUILD_DIR}/tests" cmake_src_test
 }
