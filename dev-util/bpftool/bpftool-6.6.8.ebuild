@@ -88,6 +88,9 @@ src_prepare() {
 
 	# dev-python/docutils installs rst2man.py, not rst2man
 	sed -i -e 's/rst2man/rst2man.py/g' Documentation/Makefile || die
+
+	# remove -Werror (bug 887981)
+	sed -i -e 's/\-Werror//g' ../../lib/bpf/Makefile || die
 }
 
 bpftool_make() {
