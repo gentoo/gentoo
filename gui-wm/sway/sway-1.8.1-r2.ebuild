@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
