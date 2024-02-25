@@ -263,8 +263,8 @@ src_install() {
 	doexe usr/lib/influxdb/scripts/influxd-systemd-start.sh
 	exeinto /usr/share/influxdb
 	doexe usr/share/influxdb/influxdb2-upgrade.sh
-	newconfd "${FILESDIR}"/influxdb.confd influxdb
-	newinitd "${FILESDIR}"/influxdb.initd influxdb
+	newconfd "${FILESDIR}"/influxdb.confd-r1 influxdb
+	newinitd "${FILESDIR}"/influxdb.initd-r1 influxdb
 	keepdir /var/log/influxdb
 	fowners influxdb:influxdb /var/log/influxdb
 
