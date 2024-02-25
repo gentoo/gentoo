@@ -23,7 +23,8 @@ src_prepare() {
 src_configure() {
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
-	econf $(use_enable test tests)
+	econf $(use_enable test tests) \
+		--enable-install-npth-config
 }
 
 src_install() {
