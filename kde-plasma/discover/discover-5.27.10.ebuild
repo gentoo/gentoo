@@ -44,7 +44,7 @@ DEPEND="
 	>=kde-frameworks/purpose-${KFMIN}:5
 	firmware? ( >=sys-apps/fwupd-1.5.0 )
 	flatpak? ( sys-apps/flatpak )
-	snap? ( sys-libs/snapd-glib:=[qt5] )
+	snap? ( sys-libs/snapd-glib:=[qt5(-)] )
 	telemetry? ( kde-frameworks/kuserfeedback:5 )
 	webengine? ( >=dev-qt/qtwebview-${QTMIN}:5 )
 "
