@@ -9,16 +9,21 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake frameworks.kde.org python-any-r1
 
 DESCRIPTION="Breeze SVG icon theme binary resource"
+
 LICENSE="LGPL-3"
 KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-qt/qttest:5 )"
+DEPEND="
+	test? (
+		dev-qt/qtcore:5
+		dev-qt/qttest:5
+	)
+"
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
-	dev-qt/qtcore:5
 	>=kde-frameworks/extra-cmake-modules-${PVCUT}:0
 	test? ( app-misc/fdupes )
 "
