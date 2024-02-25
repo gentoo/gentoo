@@ -50,6 +50,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/neatvnc-0.8.0-fix-tracing-undeclared-variable.patch"
+)
+
 src_prepare() {
 	default
 
