@@ -14,11 +14,6 @@ SRC_URI="https://github.com/fedoradesign/backgrounds/releases/download/v${PV}/${
 LICENSE="CC-BY-SA-4.0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 SLOT="$(ver_cut 1)"
-
-RDEPEND=""
-DEPEND=""
-BDEPEND=""
 
 S="${WORKDIR}/${MY_PN}"
