@@ -19,13 +19,16 @@ KEYWORDS="~amd64 ~arm64 ~sparc ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-SRC_URI="${SRC_URI} https://dev.gentoo.org/~zorry/patches/buildbot/buildbot-worker-${PV}-remove_py27.tar.gz"
+SRC_URI+="
+	https://github.com/buildbot/buildbot/releases/download/v${PV}/${P}.tar.gz
+"
 
 RDEPEND="
 	acct-user/buildbot
 	!<dev-util/buildbot-3.0.0
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -48,8 +51,6 @@ src_prepare() {
 	# Remove shipped windows start script
 	sed -e "/'buildbot_worker_windows_service=buildbot_worker.scripts.windows_service:HandleCommandLine',/d" \
 		-i setup.py || die
-	# applay remove py 2.7 patch
-	eapply "${WORKDIR}/buildbot-worker-${PV}-remove_py27.patch"
 
 	distutils-r1_src_prepare
 }
