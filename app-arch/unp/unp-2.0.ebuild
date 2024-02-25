@@ -23,6 +23,8 @@ DEPEND="nls? ( sys-devel/gettext )
 RDEPEND="${DEPEND}
 	dev-lang/perl"
 
+RESTRICT="!test? ( test )"
+
 src_compile() {
 	if use nls; then
 		strip-linguas -i .
