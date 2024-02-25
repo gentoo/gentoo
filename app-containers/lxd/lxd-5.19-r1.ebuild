@@ -20,7 +20,7 @@ DEPEND="acct-group/lxd
 	app-arch/xz-utils
 	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
-	>=dev-libs/dqlite-1.13.0:=[lz4]
+	>=dev-libs/dqlite-1.16.4:=[lz4]
 	dev-libs/lzo
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp]
