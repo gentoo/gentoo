@@ -134,6 +134,14 @@ src_prepare() {
 	# Avoid using ancient termcap from host on Prefix systems
 	sed -i -e 's/termcap tinfow/tinfow/g' \
 		gdb/configure{.ac,} || die
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# code relies on C++11, so make sure we get that selected
+		# due to Python 3.11 pymacro.h doing stuff to work around
+		# versioning mess based on the C version, while we're compiling
+		# C++ here, so we need to make it clear we're doing C++11/C11
+		# because Solaris system headers act on these
+		sed -i -e 's/-x c++/-std=c++11/' gdb/Makefile.in || die
+	fi
 }
 
 gdb_branding() {
