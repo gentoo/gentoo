@@ -35,6 +35,7 @@ src_configure() {
 
 	local -a myconf=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html
+		--disable-werror
 		--enable-backend-chert
 		--enable-backend-glass
 		--enable-backend-inmemory
