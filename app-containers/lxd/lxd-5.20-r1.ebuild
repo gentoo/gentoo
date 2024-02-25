@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 	verify-sig? ( https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz.asc
 )"
 
-LICENSE="Apache-2.0 BSD LGPL-3 MIT"
+LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
 SLOT="0/stable"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="apparmor nls"
@@ -20,9 +20,8 @@ DEPEND="acct-group/lxd
 	app-arch/xz-utils
 	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
-	>=dev-libs/dqlite-1.13.0:=
+	>=dev-libs/dqlite-1.13.0:=[lz4]
 	dev-libs/lzo
-	>=dev-libs/raft-0.17.1:=[lz4]
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp]
 	sys-libs/libcap
@@ -40,7 +39,7 @@ RDEPEND="${DEPEND}
 	>=sys-fs/lxcfs-5.0.0
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
-BDEPEND="dev-lang/go
+BDEPEND=">=dev-lang/go-1.20
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-canonical )"
 
