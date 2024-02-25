@@ -174,6 +174,9 @@ src_unpack() {
 src_prepare() {
 	default
 	tc-export CC
+
+	# Version sed needed because the Makefile hasn't been bumped yet
+	# Check if it is no longer before bumping
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
