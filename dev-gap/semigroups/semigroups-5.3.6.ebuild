@@ -13,7 +13,7 @@ LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 
 DEPEND="sci-mathematics/gap:=
-	sci-libs/libsemigroups:="
+	>=sci-libs/libsemigroups-2.7.3:="
 RDEPEND="${DEPEND}
 	dev-gap/orb
 	dev-gap/io
