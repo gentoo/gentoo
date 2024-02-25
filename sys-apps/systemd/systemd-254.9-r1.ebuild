@@ -524,11 +524,11 @@ pkg_postinst() {
 	fi
 
 	if use boot; then
-		optfeature "install kernels in systemd-boot's native layout and update loader entries" \
+		optfeature "installing kernels in systemd-boot's native layout and update loader entries" \
 			"sys-kernel/installkernel[systemd-boot]"
 	fi
 	if use ukify; then
-		optfeature "generate unified kernel image on each kernel installation" \
+		optfeature "generating unified kernel image on each kernel installation" \
 			"sys-kernel/installkernel[ukify]"
 	fi
 }
