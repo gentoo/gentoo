@@ -34,7 +34,7 @@ HOMEPAGE="https://www.qt.io/product/development-tools"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="
-	+clang +designer doc +help qmldesigner serialterminal
+	+clang designer doc +help qmldesigner serialterminal
 	+svg test +tracing webengine
 "
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
