@@ -28,9 +28,9 @@ alpha		default/linux/alpha/23.0/split-usr				exp
 alpha		default/linux/alpha/23.0/split-usr/desktop			exp
 alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		exp
 
-# SYMLINK_LIB=no profiles
-# Run app-portage/unsymlink-lib *before* switching the profile.
-# @MAINTAINER: mgorny@gentoo.org
+
+# AMD64 Profiles
+# @MAINTAINER: amd64@gentoo.org
 amd64		default/linux/amd64/17.1					stable
 amd64		default/linux/amd64/17.1/selinux				stable
 amd64		default/linux/amd64/17.1/hardened				stable
@@ -59,12 +59,55 @@ amd64		default/linux/amd64/17.1/systemd/selinux/merged-usr		exp
 amd64		default/linux/amd64/17.1/clang					exp
 amd64		default/linux/amd64/17.1/systemd/clang				exp
 amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
+amd64		default/linux/amd64/23.0					exp
+amd64		default/linux/amd64/23.0/systemd				exp
+amd64		default/linux/amd64/23.0/desktop				exp
+amd64		default/linux/amd64/23.0/desktop/systemd			exp
+amd64		default/linux/amd64/23.0/desktop/gnome				exp
+amd64		default/linux/amd64/23.0/desktop/gnome/systemd			exp
+amd64		default/linux/amd64/23.0/desktop/plasma				exp
+amd64		default/linux/amd64/23.0/desktop/plasma/systemd			exp
+amd64		default/linux/amd64/23.0/no-multilib				exp
+amd64		default/linux/amd64/23.0/no-multilib/systemd			exp
+amd64		default/linux/amd64/23.0/no-multilib/hardened			exp
+amd64		default/linux/amd64/23.0/no-multilib/hardened/systemd		exp
+amd64		default/linux/amd64/23.0/no-multilib/hardened/selinux		exp
+amd64		default/linux/amd64/23.0/no-multilib/hardened/selinux/systemd	exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix			exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.32+	exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.16+	exp
+amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-3.2+		exp
+amd64		default/linux/amd64/23.0/llvm					exp
+amd64		default/linux/amd64/23.0/llvm/systemd				exp
+amd64		default/linux/amd64/23.0/hardened				exp
+amd64		default/linux/amd64/23.0/hardened/systemd			exp
+amd64		default/linux/amd64/23.0/hardened/selinux			exp
+amd64		default/linux/amd64/23.0/hardened/selinux/systemd		exp
+amd64		default/linux/amd64/23.0/split-usr				exp
+amd64		default/linux/amd64/23.0/split-usr/desktop			exp
+amd64		default/linux/amd64/23.0/split-usr/desktop/gnome		exp
+amd64		default/linux/amd64/23.0/split-usr/desktop/plasma		exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib			exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/selinux		exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/hardened		exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/hardened/selinux	exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix		exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.32+	exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.16+	exp
+amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-3.2+	exp
+amd64		default/linux/amd64/23.0/split-usr/llvm				exp
+amd64		default/linux/amd64/23.0/split-usr/hardened			exp
+amd64		default/linux/amd64/23.0/split-usr/hardened/selinux		exp
+
 
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
 amd64		default/linux/amd64/17.0/x32					dev
 amd64		default/linux/amd64/17.0/x32/systemd				exp
 amd64		default/linux/amd64/17.0/x32/systemd/merged-usr			exp
+amd64		default/linux/amd64/23.0/x32					exp
+amd64		default/linux/amd64/23.0/x32/systemd				exp
+amd64		default/linux/amd64/23.0/split-usr/x32				exp
 
 
 # ARM Profiles
@@ -632,6 +675,14 @@ amd64		default/linux/amd64/17.0/musl					dev
 amd64		default/linux/amd64/17.0/musl/clang				exp
 amd64		default/linux/amd64/17.0/musl/hardened				exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux			exp
+amd64		default/linux/amd64/23.0/musl					exp
+amd64		default/linux/amd64/23.0/musl/llvm				exp
+amd64		default/linux/amd64/23.0/musl/hardened				exp
+amd64		default/linux/amd64/23.0/musl/hardened/selinux			exp
+amd64		default/linux/amd64/23.0/split-usr/musl				exp
+amd64		default/linux/amd64/23.0/split-usr/musl/llvm			exp
+amd64		default/linux/amd64/23.0/split-usr/musl/hardened		exp
+amd64		default/linux/amd64/23.0/split-usr/musl/hardened/selinux	exp
 arm		default/linux/arm/17.0/musl/armv6j				dev
 arm		default/linux/arm/17.0/musl/armv6j/hardened			exp
 arm		default/linux/arm/17.0/musl/armv6j/hardened/selinux		exp
