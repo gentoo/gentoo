@@ -450,6 +450,16 @@ src_test() {
 		)
 	use xpm || exclude_tests+=( %src/image-tests.el )
 
+	# Some tests hang with gnupg-2.2.42
+	local gpgver=$(best_version app-crypt/gnupg)
+	gpgver=${gpgver#*gnupg-}
+	[[ -n ${gpgver} ]] \
+		&& ver_test "${gpgver}" -ge 2.2.42 && ver_test "${gpgver}" -lt 2.3 \
+		&& exclude_tests+=(
+			%lisp/epg-tests.el
+			%lisp/gnus/mml-sec-tests.el
+		)
+
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
 	mkdir "${T}"/gpg || die
