@@ -35,7 +35,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-17.0.0-intel-capability.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-intel-capability.patch
+	"${FILESDIR}"/${P}-do-not-rely-on-version-of-compiler-being-VER.0.0-219.patch
+)
 
 src_prepare() {
 	append-flags -fPIC
