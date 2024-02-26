@@ -167,14 +167,19 @@ src_install() {
 	doins "${FILESDIR}"/exports
 	keepdir /etc/exports.d
 
-	local f list=() opt_need=""
+	local f list=()
 	if use nfsv4 ; then
-		opt_need="rpc.idmapd"
 		list+=( rpc.idmapd rpc.pipefs )
 		use kerberos && list+=( rpc.gssd rpc.svcgssd )
 	fi
+
+	local sedexp=( -e '#placehoder' )
+	use nfsv3 || sedexp+=( -e '/need portmap/d' )
+
+	mkdir -p "${T}/init.d" || die
 	for f in nfs nfsclient rpc.statd "${list[@]}" ; do
-		newinitd "${FILESDIR}"/${f}.initd ${f}
+		sed "${sedexp[@]}" "${FILESDIR}/${f}.initd" > "${T}/init.d/${f}" || die
+		doinitd "${T}/init.d/${f}"
 	done
 
 	local systemd_systemunitdir="$(systemd_get_systemunitdir)"
