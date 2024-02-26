@@ -37,6 +37,10 @@ RDEPEND="${DEPEND}
 	>=sys-devel/binutils-config-5
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.41-lld.patch
+)
+
 S="${WORKDIR}/${MY_P%_p?}"
 
 MULTILIB_WRAPPED_HEADERS=(
