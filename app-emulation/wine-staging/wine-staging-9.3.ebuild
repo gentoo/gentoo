@@ -5,7 +5,7 @@ EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{10..12} )
-inherit autotools edo flag-o-matic optfeature multilib multilib-build
+inherit autotools edo flag-o-matic multilib multilib-build optfeature
 inherit prefix python-any-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
