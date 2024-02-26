@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vdr-plugin-2.eclass
@@ -83,7 +83,7 @@ S="${WORKDIR}/${VDRPLUGIN}-${PV}"
 # depend on headers for DVB-driver and vdr-scripts
 BDEPEND="virtual/pkgconfig"
 DEPEND="media-tv/gentoo-vdr-scripts
-	virtual/linuxtv-dvb-headers"
+	sys-kernel/linux-headers"
 RDEPEND="media-tv/gentoo-vdr-scripts
 	app-eselect/eselect-vdr"
 
