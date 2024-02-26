@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,6 +41,12 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# https://bugs.gentoo.org/904054
+	# https://gitlab.xfce.org/xfce/xfdesktop/-/commit/84e087b6f36a06d4db503d6aec4bef415b4b5df2
+	"${FILESDIR}/${P}-no-wayland.patch"
+)
 
 src_configure() {
 	local myconf=(
