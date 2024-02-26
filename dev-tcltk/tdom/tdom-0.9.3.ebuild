@@ -23,7 +23,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${P}-src
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.2-useCC.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.2-useCC.patch
+	"${FILESDIR}"/${P}-expat.patch
+)
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	stat64 arc4random_buf arc4random # used to test for Large File Support
