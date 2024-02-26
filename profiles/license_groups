@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Please report bugs or other requests at bugs.gentoo.org and assign to
@@ -34,7 +34,7 @@ OSI-APPROVED-FREE 0BSD AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL
 # Licenses in this list should NOT appear directly or indirectly in
 # @FSF-APPROVED or @OSI-APPROVED.
 # Note: Licenses for fonts should be included in @MISC-FREE-DOCS.
-MISC-FREE AIFFWriter.m Allegro alternate AMPAS BEER-WARE boehm-gc BSD-1 BSD-2-with-patent BSD-with-attribution BSD-with-disclosure buddy bufexplorer.vim BZIP2 CAOSL CDDL-1.1 CDDL-Schily coldspringharbor CPL-0.5 CRACKLIB Crypt-IDEA curl DES docbook dom4j DUMB-0.9.3 ElementTree Emacs ErlPL-1.1 FastCGI feh File-MMagic Flashpix FLEX flexmock FLTK freetts FVWM gd gsm HTML-Tidy iASL icu IDPL imagemagick Info-ZIP inner-net Interbase-1.0 ipadic Ispell JasPer2.0 JDOM JOVE Khronos-CLHPP LambdaMOO LIBGLOSS libmng libpng libpng2 libtiff LLGPL-2.1 LPPL-1.3 lsof matplotlib Mini-XML minpack MIT-with-advertising mm mpich2 NCSA-AMD NCSA-HDF netcat NEWLIB ngrep NPSL-0.95 Old-MIT openafs-krb5-a Openwall otter par PCRE perforce photopc PHP-2.02 pngcrush pngnq Princeton psutils rc rdisc regexp-UofT repoze RSA RtMidi rwpng sash scanlogd sdlsasteroids Sendmail Sendmail-Open-Source SMAIL Snd SSLeay symlinks Sympow-BSD tablelist tcltk tcp_wrappers_license TeX TeX-other-free TextMate-bundle the-Click-license Time-Format Time-modules tm-align torque-2.5 totd Toyoda trio UCAR-Unidata unicode URT VTK w3m wm2 xbatt xboing XC Xdebug xtrs ZSH
+MISC-FREE AIFFWriter.m Allegro alternate AMPAS BEER-WARE boehm-gc BSD-1 BSD-2-with-patent BSD-with-attribution BSD-with-disclosure buddy bufexplorer.vim BZIP2 CAOSL CDDL-1.1 CDDL-Schily coldspringharbor CPL-0.5 CRACKLIB Crypt-IDEA curl DES docbook dom4j DUMB-0.9.3 ElementTree Emacs ErlPL-1.1 FastCGI feh File-MMagic Flashpix FLEX flexmock FLTK freetts FVWM gd gsm HTML-Tidy iASL icu IDPL imagemagick Info-ZIP inner-net Interbase-1.0 ipadic Ispell JasPer2.0 JDOM JOVE Khronos-CLHPP LambdaMOO LIBGLOSS libmng libpng libpng2 libtiff LLGPL-2.1 LPPL-1.3 lsof matplotlib Mini-XML minpack MIT-with-advertising mm mpich2 NCSA-AMD NCSA-HDF netcat NEWLIB ngrep NPSL-0.95 Old-MIT openafs-krb5-a Openwall otter par PCRE perforce photopc PHP-2.02 pngcrush pngnq Princeton psutils rc rdisc regexp-UofT repoze RSA RtMidi rwpng sash scanlogd sdlsasteroids Sendmail Sendmail-Open-Source SMAIL Snd Spencer-99 SSLeay symlinks Sympow-BSD tablelist tcltk tcp_wrappers_license TeX TeX-other-free TextMate-bundle the-Click-license Time-Format Time-modules tm-align torque-2.5 totd Toyoda trio UCAR-Unidata unicode URT VTK w3m wm2 xbatt xboing XC Xdebug xtrs ZSH
 
 # Metaset for all free software
 FREE-SOFTWARE @FSF-APPROVED @OSI-APPROVED-FREE @MISC-FREE
