@@ -172,12 +172,6 @@ dev-python/flask-gravatar
 # Removal on 2024-02-29. Bug #923329.
 app-editors/emacs:25
 
-# Fabian Groffen <grobian@gentoo.org> (2024-01-26)
-# compilation issues, no reverse dependencies in the tree
-# bugs #885057, #875410, #847211
-# Removal on 2024-02-26
-mail-filter/libsrs_alt
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
 # app-misc/ddcutil-2.1.0 causes core-dump crashes in
 # kde-plasma/powerdevil[brightness-control].
