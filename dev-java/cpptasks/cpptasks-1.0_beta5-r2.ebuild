@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Ant-tasks to compile various source languages and produce executables"
-HOMEPAGE="http://ant-contrib.sourceforge.net/"
+HOMEPAGE="https://ant-contrib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.gz"
 S="${WORKDIR}/${P/_beta/b}"
 
