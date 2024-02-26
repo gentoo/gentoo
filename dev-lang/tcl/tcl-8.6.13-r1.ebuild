@@ -36,6 +36,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 src_prepare() {
+	# By dropping the compat directory a lot of licensing and attribution burden
+	# (BSD-3, zlib,...) is lifted from the user
 	find \
 		"${SPARENT}"/compat/* \
 		"${SPARENT}"/doc/try.n \
