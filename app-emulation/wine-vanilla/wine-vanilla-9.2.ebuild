@@ -4,7 +4,7 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit autotools flag-o-matic optfeature multilib multilib-build
+inherit autotools flag-o-matic multilib multilib-build optfeature
 inherit prefix toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
