@@ -45,3 +45,9 @@ DEPEND="${COMMON_DEPEND}
 		x11-themes/sound-theme-freedesktop
 	)
 "
+
+src_prepare() {
+	ecm_src_prepare
+
+	sed -e "/set(KF_MIN_VERSION/s/6.0.0/5.249.0/" -i CMakeLists.txt || die
+}
