@@ -46,6 +46,14 @@ src_prepare() {
 		| xargs cp --parent -t "${JAVA_RESOURCE_DIRS}" || die
 }
 
+src_compile() {
+	java-pkg-simple_src_compile
+	#925083
+	# Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
+	zip -d ecj.jar "META-INF/ECLIPSE_.RSA" || die "Failed to remove ECLIPSE_.RSA"
+	zip -d ecj.jar "META-INF/ECLIPSE_.SF" || die "Failed to remove ECLIPSE_.SF"
+}
+
 src_install() {
 	java-pkg-simple_src_install
 	insinto /usr/share/java-config-2/compiler
