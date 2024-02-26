@@ -128,10 +128,6 @@ src_configure() {
 		$(use_enable nfsv4 nfsv4server)
 		$(use_enable uuid)
 		$(use_with tcpd tcp-wrappers)
-		# XXX: Remove this hack after 2.6.3
-		# See bug #904718.
-		# Patch: https://git.linux-nfs.org/?p=steved/nfs-utils.git;a=commit;h=bc4a5deef9f820c55fdac3c0070364c17cd91cca
-		LIBS="-lsqlite3 -levent_core"
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -210,19 +206,4 @@ pkg_postinst() {
 		einfo "Copying default ${f##*/} from ${EPREFIX}/usr/$(get_libdir)/nfs to ${EPREFIX}/var/lib/nfs"
 		cp -pPR "${f}" "${EROOT}"/var/lib/nfs/
 	done
-
-	if systemd_is_booted; then
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${v}" -lt 1.3.0; then
-				ewarn "We have switched to upstream systemd unit files. Since"
-				ewarn "they got renamed, you should probably enable the new ones."
-				ewarn "You can run 'equery files nfs-utils | grep systemd'"
-				ewarn "to know what services you need to enable now."
-			fi
-		done
-	else
-		ewarn "If you use OpenRC, the nfsmount service has been replaced with nfsclient."
-		ewarn "If you were using nfsmount, please add nfsclient and netmount to the"
-		ewarn "same runlevel as nfsmount."
-	fi
 }
