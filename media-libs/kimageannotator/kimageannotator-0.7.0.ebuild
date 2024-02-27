@@ -29,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-cpp/gtest
-		dev-qt/qtbase:6[test]
+		dev-qt/qtbase:6
 	)
 "
 BDEPEND="dev-qt/qttools:6[linguist]"
