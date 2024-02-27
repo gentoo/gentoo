@@ -1828,6 +1828,10 @@ distutils-r1_run_phase() {
 		# Rust extensions are incompatible with C/C++ LTO compiler
 		# see e.g. https://bugs.gentoo.org/910220
 		if has cargo ${INHERITED}; then
+			local x
+			for x in $(all-flag-vars); do
+				local -x "${x}=${!x}"
+			done
 			filter-lto
 		fi
 	fi
