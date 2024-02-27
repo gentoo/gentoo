@@ -72,8 +72,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
+	default
 
 	dosym gmake /usr/bin/make
 	dosym gmake.1 /usr/share/man/man1/make.1
