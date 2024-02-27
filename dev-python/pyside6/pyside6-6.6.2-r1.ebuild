@@ -98,6 +98,7 @@ RDEPEND="${PYTHON_DEPS}
 	help? ( =dev-qt/qttools-${QT_PV}[assistant] )
 	location? ( =dev-qt/qtlocation-${QT_PV} )
 	multimedia? ( =dev-qt/qtmultimedia-${QT_PV} )
+	network? ( =dev-qt/qtbase-${QT_PV}[ssl] )
 	network-auth? ( =dev-qt/qtnetworkauth-${QT_PV} )
 	nfc? ( =dev-qt/qtconnectivity-${QT_PV}[nfc] )
 	pdfium? ( =dev-qt/qtwebengine-${QT_PV}[pdfium(-),widgets?] )
