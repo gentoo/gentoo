@@ -20,9 +20,9 @@ RDEPEND="
 	!kde-frameworks/${PN}-rcc:5
 	!kde-frameworks/${PN}-rcc:6
 "
-DEPEND="test? ( dev-qt/qtbase:6 )"
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+	dev-qt/qtbase:6
 	>=kde-frameworks/extra-cmake-modules-${PVCUT}:*
 	test? ( app-misc/fdupes )
 "
