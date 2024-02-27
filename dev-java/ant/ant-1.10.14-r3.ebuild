@@ -20,9 +20,9 @@ S="${WORKDIR}/apache-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86"
-IUSE="bcel bsf commonslogging commonsnet jai jakartamail javamail jdepend jsch junit junit4
-	junitlauncher log4j oro regexp resolver testutil xalan xz"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+IUSE="antlr bcel bsf commonslogging commonsnet imageio jai jakartamail javamail jdepend
+	jmf jsch junit junit4 junitlauncher log4j oro regexp resolver swing testutil xalan xz"
 
 # At least 10 test cases would fail without network
 PROPERTIES="test_network"
@@ -71,9 +71,7 @@ DEPEND="
 	)
 	xz? ( dev-java/xz-java:0 )
 "
-PDEPEND="~dev-java/ant-core-${PV}:0"
 RDEPEND="
-	!<dev-java/ant-core-1.10.14
 	!dev-java/ant-apache-regexp
 	!dev-java/ant-apache-log4j
 	!dev-java/ant-apache-xalan2
@@ -143,7 +141,7 @@ src_prepare() {
 	eprefixify "src/script/ant"
 
 	ANT_TASKS=(
-		ant-antlr # no dependencies
+		$(use antlr && echo ant-antlr) # no dependencies
 		$(use bcel && echo ant-apache-bcel)
 		$(use bsf && echo ant-apache-bsf) # REQUIRED_USE for tests
 		$(use log4j && echo ant-apache-log4j)
@@ -153,12 +151,12 @@ src_prepare() {
 		$(use xalan && echo ant-apache-xalan2)
 		$(use commonslogging && echo ant-commons-logging)
 		$(use commonsnet && echo ant-commons-net)
-		ant-imageio	# no dependencies
+		$(use imageio && echo ant-imageio)	# no dependencies
 		$(use jai && echo ant-jai)
 		$(use jakartamail && echo ant-jakartamail)
 		$(use javamail && echo ant-javamail)
 		$(use jdepend && echo ant-jdepend)
-		ant-jmf	# no dependencies
+		$(use jmf && echo ant-jmf)	# no dependencies
 		$(use jsch && echo ant-jsch)
 		$(use junit && echo ant-junit)	# REQUIRED_USE for junit4 and for testutil
 		$(use junit4 && echo ant-junit4)
@@ -167,7 +165,7 @@ src_prepare() {
 		# available on https://www.netrexx.org/downloads.nsp and states:
 		# "IBM's last NetRexx release, suitable for JVM versions 1.5 and below [...]"
 		# $(use netrexx && echo ant-netrexx) # src/etc/poms/ant-netrexx/pom.xml
-		ant-swing # no dependencies
+		$(use swing && echo ant-swing) # no dependencies
 		$(use testutil && echo ant-testutil)
 		$(use xz && echo ant-xz)
 	)
