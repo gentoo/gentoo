@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="guile nls static test"
+IUSE="doc guile nls static test"
 RESTRICT="!test? ( test )"
 
 DEPEND="guile? ( >=dev-scheme/guile-1.8:= )"
@@ -31,6 +31,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 "
 BDEPEND="
+	doc? ( sys-apps/texinfo )
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-make )
 	test? ( dev-lang/perl )
@@ -71,7 +72,12 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	emake all $(usev doc 'pdf html')
+}
+
 src_install() {
+	use doc && HTML_DOCS=( doc/make.html/. ) DOCS="$DOCS doc/make.pdf"
 	default
 
 	dosym gmake /usr/bin/make
