@@ -354,6 +354,7 @@ app-editors/emacs:25
 ~kde-apps/libkexiv2-24.01.95
 ~kde-apps/spectacle-24.01.95
 ~kde-misc/kio-fuse-5.1.0
+~kde-misc/plasma-pass-1.2.2
 ~dev-libs/appstream-1.0.1
 ~dev-libs/kdiagram-3.0.1
 ~dev-libs/kirigami-addons-1.0.0
