@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/tcl/Thread%20Extension/${PV}/${MY_P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 DEPEND="dev-lang/tcl:0=[threads]"
 RDEPEND="${DEPEND}"
@@ -24,7 +24,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.8.5-musl.patch )
 
 src_prepare() {
 	default
