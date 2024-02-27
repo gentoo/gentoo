@@ -1,5 +1,9 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Joshua Kinard <kumba@gentoo.org> (2024-02-27)
+# app-arch/lrzip-next does not support 32-bit arches (#925548)
+app-arch/lrzip-next
 
 # fails to build, bug 920576
 =sys-apps/systemd-255*
