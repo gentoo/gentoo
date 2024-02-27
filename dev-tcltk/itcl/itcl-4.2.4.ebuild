@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 MYP="${PN}-$(ver_rs 1- '-')"
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
@@ -25,9 +27,13 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	stat64 opendir64 rewinddir64 closedir64 # used to test for Large File Support
 )
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 src_prepare() {
 	default
 	cp -r itclWidget/tclconfig tclconfig || die
+	echo "git-a3e8b43c671afc7f0d82bd892325d42c813791ab" > manifest.uuid
+	eautoreconf
 }
 
 src_configure() {
