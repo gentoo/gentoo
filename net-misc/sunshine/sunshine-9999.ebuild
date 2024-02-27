@@ -165,7 +165,6 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	dev-cpp/nlohmann_json
 	media-libs/amf-headers
 	=media-libs/nv-codec-headers-12*
 	wayland? ( dev-libs/wayland-protocols )
@@ -181,7 +180,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-custom-ffmpeg.patch
-	"${FILESDIR}"/${PN}-system-json.patch
 	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
 )
 
@@ -346,7 +344,6 @@ src_configure() {
 		-DSUNSHINE_ENABLE_X11=$(usex X)
 		-DSUNSHINE_ENABLE_TRAY=$(usex trayicon)
 		-DSUNSHINE_REQUIRE_TRAY=$(usex trayicon)
-		-DSUNSHINE_SYSTEM_NLOHMANN_JSON=yes
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
 		-DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir)
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
