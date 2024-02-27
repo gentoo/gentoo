@@ -5,9 +5,6 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
-	<use>
-		<flag name="docs">Generate man page</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">rfjakob/earlyoom</remote-id>
 	</upstream>
