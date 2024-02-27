@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,12 +7,11 @@ inherit autotools
 
 DESCRIPTION="A set of extensions to TCL"
 HOMEPAGE="http://tclx.sourceforge.net"
-SRC_URI="https://github.com/flightaware/${PN}/archive/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+SRC_URI="https://github.com/flightaware/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="threads"
 
 DEPEND="dev-lang/tcl:0="
@@ -24,10 +23,6 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.4-varinit.patch
 	"${FILESDIR}"/${PN}-8.4-ldflags.patch
-	"${FILESDIR}"/${P}-configure-clang16.patch
-	"${FILESDIR}"/${P}-configure-clang16-deux.patch
-	"${FILESDIR}"/${P}-gcc11.patch
-	"${FILESDIR}"/${P}-musl.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -35,10 +30,12 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 src_prepare() {
+	default
+
 	sed \
 		-e '/CC=/s:-pipe::g' \
 		-i tclconfig/tcl.m4 configure || die
-	default
+
 	eautoreconf
 }
 
