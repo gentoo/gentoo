@@ -1,20 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools edos2unix prefix toolchain-funcs virtualx
 
-MYP=Img-${PV}-Source
+MYP=Img-${PV}
 
 DESCRIPTION="Adds a lot of image formats to Tcl/Tk"
 HOMEPAGE="http://tkimg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/$(ver_cut 1-2)/${PN}%20${PV}/${MYP}.tar.gz
-	https://dev.gentoo.org/~tupone/distfiles/${PN}-1.4.12-patchset-1.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PN}/$(ver_cut 1-2)/${P}/${MYP}-Source.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${PN}-1.4.14-patchset-1.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test static-libs"
 
 RDEPEND="
@@ -33,11 +33,17 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/Img-${PV}"
+S="${WORKDIR}/${MYP}"
 
 PATCHES=(
 	"${WORKDIR}"/patchset-1
-	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${PN}-1.4.15-gcc11.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+	glBegin # used to test for openGL support
+	glutMainLoop # used to test for glut support
 )
 
 src_prepare() {
@@ -45,9 +51,17 @@ src_prepare() {
 		libjpeg/jpegtclDecls.h \
 		zlib/zlibtclDecls.h \
 		libpng/pngtclDecls.h \
+		tiff/tiffZip.c \
+		tiff/tiffPixar.c \
 		libtiff/tifftclDecls.h
 
+	# libtiff/jpeg unbundle is problematic
+	rm ../patchset-1/tkimg-1.4.12-tiff.patch || die
+	rm ../patchset-1/tkimg-1.4.10-jpeg.patch || die
+
 	default
+
+	echo "unknown" > manifest.uuid || die
 
 	find compat/libtiff/config -name ltmain.sh -delete || die
 	sed -i \
@@ -56,12 +70,21 @@ src_prepare() {
 
 	eautoreconf
 	for dir in zlib libpng libtiff libjpeg base bmp gif ico jpeg pcx pixmap png\
-		ppm ps sgi sun tga tiff window xbm xpm dted raw flir ; do
+		ppm ps sgi sun tga tiff window xbm xpm dted raw flir compat/libtiff ; do
 		(cd ${dir}; AT_NOELIBTOOLIZE=yes eautoreconf)
 	done
 
 	eprefixify */*.h
 	tc-export AR
+}
+
+src_configure() {
+	default
+
+	sed -i \
+		-e "/PACKAGE_/d" \
+		libtiff/libtiff/tif_config.h \
+		|| die
 }
 
 src_test() {
