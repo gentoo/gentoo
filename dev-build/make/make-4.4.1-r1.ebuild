@@ -36,6 +36,8 @@ BDEPEND="
 	test? ( dev-lang/perl )
 "
 
+DOCS="AUTHORS NEWS README*"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.4-default-cxx.patch
 )
@@ -71,7 +73,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc AUTHORS NEWS README*
+	einstalldocs
 
 	dosym gmake /usr/bin/make
 	dosym gmake.1 /usr/share/man/man1/make.1
