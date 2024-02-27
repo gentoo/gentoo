@@ -14,7 +14,7 @@
 # written in the go programming language that uses modules.
 # If the software you are packaging has a file named go.mod in its top level
 # directory, it uses modules.
-# 
+#
 # Modules have been the preferred method of tracking dependencies in software
 # written in Go since version 1.16,
 # so if the software isn't using modules, it should be updated.
