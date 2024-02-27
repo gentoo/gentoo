@@ -1824,16 +1824,16 @@ distutils-r1_run_phase() {
 		# bug fixes from Cython (this works only when setup.py is using
 		# cythonize() but it's better than nothing)
 		local -x CYTHON_FORCE_REGEN=1
+
+		# Rust extensions are incompatible with C/C++ LTO compiler
+		# see e.g. https://bugs.gentoo.org/910220
+		if has cargo ${INHERITED}; then
+			filter-lto
+		fi
 	fi
 
 	# silence warnings when pydevd is loaded on Python 3.11+
 	local -x PYDEVD_DISABLE_FILE_VALIDATION=1
-
-	# Rust extensions are incompatible with C/C++ LTO compiler
-	# see e.g. https://bugs.gentoo.org/910220
-	if has cargo ${INHERITED}; then
-		filter-lto
-	fi
 
 	# How to build Python modules in different worlds...
 	local ldopts
