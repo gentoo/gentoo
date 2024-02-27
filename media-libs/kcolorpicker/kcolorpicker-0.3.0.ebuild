@@ -22,7 +22,7 @@ RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-qt/qtbase:6[test] )
+	test? ( dev-qt/qtbase:6 )
 "
 
 S="${WORKDIR}/${MY_P}"
