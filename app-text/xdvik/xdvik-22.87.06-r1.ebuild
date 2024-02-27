@@ -34,7 +34,7 @@ DEPEND=">=media-libs/freetype-2.9.1-r2:2
 	dev-libs/kpathsea:="
 RDEPEND="${DEPEND}
 	virtual/latex-base
-	!<app-text/texlive-2007"
+"
 BDEPEND="app-alternatives/lex
 	app-alternatives/yacc
 	virtual/pkgconfig"
