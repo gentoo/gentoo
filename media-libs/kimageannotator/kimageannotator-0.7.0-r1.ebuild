@@ -3,7 +3,6 @@
 
 EAPI=8
 
-VIRTUALX_REQUIRED="test"
 inherit cmake
 
 MY_PN=kImageAnnotator
@@ -25,8 +24,10 @@ RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
 	dev-qt/qtsvg:6
 	>=media-libs/kcolorpicker-0.3.0
+	x11-libs/libX11
 "
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	test? (
 		dev-cpp/gtest
 		dev-qt/qtbase:6
@@ -43,6 +44,9 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+# one test is failing KeyInputHelperTest
+# upstream bug https://github.com/ksnip/kImageAnnotator/issues/335
 
 src_test() {
 	local -x QT_QPA_PLATFORM=offscreen
