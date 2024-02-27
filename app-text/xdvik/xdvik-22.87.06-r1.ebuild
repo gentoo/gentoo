@@ -39,6 +39,11 @@ BDEPEND="app-alternatives/lex
 	app-alternatives/yacc
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-22.87.06-configure-clang16.patch
+	"${FILESDIR}"/${PN}-22.87.06-c99-fix.patch
+)
+
 src_prepare() {
 	default
 
@@ -51,7 +56,6 @@ src_prepare() {
 
 	cd "${WORKDIR}/${P}" || die
 	cd "${S}" || die
-	eapply "${FILESDIR}"/${PN}-22.87.06-configure-clang16.patch
 	eautoreconf
 }
 
