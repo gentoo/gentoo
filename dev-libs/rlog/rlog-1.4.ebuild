@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc sparc x86"
 IUSE="valgrind"
 
-DEPEND="valgrind? ( dev-util/valgrind )"
+DEPEND="valgrind? ( dev-debug/valgrind )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.7-gcc-4.3.patch

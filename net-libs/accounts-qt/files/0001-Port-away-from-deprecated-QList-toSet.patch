@@ -1,0 +1,92 @@
+https://gitlab.com/accounts-sso/libaccounts-qt/-/merge_requests/21
+
+From 3107822e036300684c2bdf587838a110eea8ba30 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 1 Aug 2022 20:35:03 +0200
+Subject: [PATCH 1/5] Port away from deprecated QList::toSet
+
+---
+ tests/tst_libaccounts.cpp | 44 +++++++++++++++++++++++++++++----------
+ 1 file changed, 33 insertions(+), 11 deletions(-)
+
+diff --git a/tests/tst_libaccounts.cpp b/tests/tst_libaccounts.cpp
+index 471e3d5..efede91 100644
+--- a/tests/tst_libaccounts.cpp
++++ b/tests/tst_libaccounts.cpp
+@@ -326,11 +326,11 @@ void AccountsTest::testService()
+     QCOMPARE(service.description(), QStringLiteral("Test description"));
+     QCOMPARE(service.iconName(), QString("general_myservice"));
+     QCOMPARE(service.trCatalog(), QString("accounts"));
+-    QStringList tags;
++    QSet<QString> tags;
+     tags << "email" << "e-mail";
+-    QCOMPARE(service.tags(), tags.toSet());
++    QCOMPARE(service.tags(), tags);
+     // Called twice, because the second time it returns a cached result
+-    QCOMPARE(service.tags(), tags.toSet());
++    QCOMPARE(service.tags(), tags);
+     QVERIFY(service.hasTag("email"));
+     QVERIFY(!service.hasTag("chat"));
+ 
+@@ -687,10 +687,15 @@ void AccountsTest::testAccountService()
+     spyChanged.clear();
+     spyEnabled.clear();
+ 
+-    QStringList expectedChanges;
++    QSet<QString> expectedChanges;
+     expectedChanges << "parameters/server";
+     expectedChanges << "enabled";
+-    QCOMPARE(m_accountServiceChangedFields.toSet(), expectedChanges.toSet());
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    QSet<QString> changedFields(m_accountServiceChangedFields.begin(), m_accountServiceChangedFields.end());
++#else
++    QSet<QString> changedFields = m_accountServiceChangedFields.toSet();
++#endif
++    QCOMPARE(changedFields, expectedChanges);
+ 
+     QCOMPARE(accountService->value("server").toString(),
+              UTF8("www.example.com"));
+@@ -727,17 +732,34 @@ void AccountsTest::testAccountService()
+ 
+ 
+     /* test some more APIs */
+-    QStringList expectedList;
++    QSet<QString> expectedList;
+     expectedList << "server" << "fallback-conference-server" <<
+         "port" << "old-ssl";
+-    QCOMPARE(accountService->childKeys().toSet(), expectedList.toSet());
+-    QCOMPARE(accountService->childGroups().toSet(), QSet<QString>());
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    QStringList childKeysList = accountService->childKeys();
++    QSet<QString> childKeys(childKeysList.begin(), childKeysList.end());
++
++    QStringList childGroupsList = accountService->childGroups();
++    QSet<QString> childGroups(childGroupsList.begin(), childGroupsList.end());
++#else
++    QSet<QString> childKeys = accountService->childKeys().toSet();
++    QSet<QString> childGroups = accountService->childGroups().toSet();
++#endif
++
++    QCOMPARE(childKeys, expectedList);
++    QCOMPARE(childGroups, QSet<QString>());
+     QCOMPARE(accountService->contains("port"), true);
+     accountService->endGroup();
+ 
+-    expectedList.clear();
+-    expectedList << "parameters";
+-    QCOMPARE(accountService->childGroups().toSet(), expectedList.toSet());
++    QSet<QString> expectedList2;
++    expectedList2 << "parameters";
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    QStringList childGroupsList2 = accountService->childGroups();
++    QSet<QString> childGroups2(childGroupsList2.begin(), childGroupsList2.end());
++#else
++    QSet<QString> childGroups2 = accountService->childGroups().toSet();
++#endif
++    QCOMPARE(childGroups2, expectedList2);
+ 
+     /* Remove one key */
+     accountService->remove("parameters/port");
+-- 
+2.43.0
+

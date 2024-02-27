@@ -1,13 +1,63 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
-app-alternatives/ninja samurai
+# Sam James <sam@gentoo.org> (2024-01-02)
+# dev-libs/capstone not keyworded here
+dev-lang/php capstone
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
+# matoro <matoro_gentoo@matoro.tk> (2023-12-22)
+# Overflows R_MIPS_TLS_GOTTPREL with LTO
+# https://github.com/rust-lang/rust/issues/118794
+dev-lang/rust lto
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-15)
+# media-libs/libjxl casualties
+# https://github.com/libjxl/libjxl/issues/2433
+media-video/ffmpeg jpegxl
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-15)
+# media-libs/libvpx casualties (#700902)
+media-video/ffmpeg vpx
+media-plugins/gst-plugins-meta vpx
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-26)
+# Qt 5 is not keyworded here
+dev-vcs/subversion kwallet
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-24)
+# sys-cluster/ceph not keyworded here.
+net-analyzer/rrdtool rados
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-24)
+# media-libs/shaderc not keyworded here.
+>=media-video/ffmpeg-5 shaderc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# Qt 5 is not keyworded here
+app-admin/setools X
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
+# Qt 5 is not keyworded here
+net-p2p/bitcoin-core gui qrcode
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-20)
+# media-libs/libaom casualties
+# https://bugs.chromium.org/p/aomedia/issues/detail?id=3487
+media-video/ffmpeg libaom
+media-libs/libavif aom
+media-libs/libheif aom
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-19)
+# Pulls in LXDE which is not keyworded here
+x11-misc/xscreensaver new-login
+
+# matoro <matoro_gentoo@matoro.tk> (2023-11-16)
+# gui-libs/gtk:4 casualties
+app-i18n/ibus gtk4
+
+# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# dev-build/samurai is not keyworded here.
+app-alternatives/ninja samurai
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # app-i18n/fcitx:4 not keyworded here
@@ -166,7 +216,7 @@ dev-python/numpydoc test
 
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
-app-doc/doxygen clang
+app-text/doxygen clang
 
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2

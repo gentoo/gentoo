@@ -1,0 +1,17 @@
+server {
+
+	listen		9100;
+	server_name	bareos;
+	root		/var/www/localhost/htdocs/bareos-webui/public;
+
+	location / {
+		index index.php;
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location ~ .php$ {
+		snippets/fastcgi-php.conf
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_param APPLICATION_ENV production;
+	}
+}

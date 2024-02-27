@@ -75,7 +75,10 @@ src_test() {
 src_install() {
 	default
 
-	newbin "${FILESDIR}"/lesspipe-r2.sh lesspipe
+	keepdir /usr/lib/lessfilter.d
+	keepdir /etc/lessfilter.d
+
+	newbin "${FILESDIR}"/lesspipe-r3.sh lesspipe
 	newenvd "${FILESDIR}"/less.envd 70less
 }
 

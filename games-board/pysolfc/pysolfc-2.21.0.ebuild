@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/configobj[${PYTHON_USEDEP}]
-		dev-python/pysol_cards[${PYTHON_USEDEP}]
+		dev-python/pysol-cards[${PYTHON_USEDEP}]
 		dev-python/random2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		sound? ( dev-python/pygame[${PYTHON_USEDEP}] )

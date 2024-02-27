@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="README.md Changelog.markdown"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -26,7 +26,11 @@ ruby_add_rdepend ">=dev-ruby/nokogiri-1.6.0
 ruby_add_bdepend "test? ( dev-ruby/minitest )"
 
 all_ruby_prepare() {
-	sed -i -e "/bundler/d" test/test_helper.rb || die
+	sed -e "/bundler/d" \
+		-e 's/MiniTest::Unit::TestCase/Minitest::Test/' \
+		-i test/test_helper.rb || die
+	sed -e 's/MiniTest::Unit::TestCase/Minitest::Test/' \
+		-i test/*_test.rb || die
 }
 
 each_ruby_test() {

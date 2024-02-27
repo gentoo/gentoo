@@ -14,6 +14,6 @@
 		tabs, multiple screens and mouse wheel tab navigation amongst other features.
 	</longdescription>
 	<use>
-		<flag name="absolute-position">Use <pkg>kde-frameworks/kwayland</pkg> for absolute window positioning in KWin</flag>
+		<flag name="absolute-position">Use <pkg>kde-plasma/kwayland</pkg> for absolute window positioning in KWin</flag>
 	</use>
 </pkgmetadata>

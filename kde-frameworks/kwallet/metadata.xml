@@ -10,6 +10,7 @@
 	</upstream>
 	<use>
 		<flag name="gpg">Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file</flag>
+		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
 	</use>
 	<slots>
 		<subslots>

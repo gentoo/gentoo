@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/924017
+https://github.com/curl/curl/pull/12848
+
+From ed09a99af57200643d5ae001e815eeab9ffe3f84 Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Thu, 1 Feb 2024 18:15:50 +0100
+Subject: [PATCH] vtls: revert "receive max buffer" + add test case
+
+- add test_05_04 for requests using http/1.0, http/1.1 and h2 against an
+  Apache resource that does an unclean TLS shutdown.
+- revert special workarund in openssl.c for suppressing shutdown errors
+  on multiplexed connections
+- vlts.c restore to its state before 9a90c9dd64d2f03601833a70786d485851bd1b53
+
+Fixes #12885
+Fixes #12844
+
+Closes #12848
+---
+ lib/vtls/vtls.c | 27 ++++++---------------------
+ 1 file changed, 6 insertions(+), 21 deletions(-)
+
+diff --git a/lib/vtls/vtls.c b/lib/vtls/vtls.c
+index e928ba5d0..f654a9749 100644
+--- a/lib/vtls/vtls.c
++++ b/lib/vtls/vtls.c
+@@ -1715,32 +1715,17 @@ static ssize_t ssl_cf_recv(struct Curl_cfilter *cf,
+ {
+   struct cf_call_data save;
+   ssize_t nread;
+-  size_t ntotal = 0;
+ 
+   CF_DATA_SAVE(save, cf, data);
+   *err = CURLE_OK;
+-  /* Do receive until we fill the buffer somehwhat or EGAIN, error or EOF */
+-  while(!ntotal || (len - ntotal) > (4*1024)) {
++  nread = Curl_ssl->recv_plain(cf, data, buf, len, err);
++  if(nread > 0) {
++    DEBUGASSERT((size_t)nread <= len);
++  }
++  else if(nread == 0) {
++    /* eof */
+     *err = CURLE_OK;
+-    nread = Curl_ssl->recv_plain(cf, data, buf + ntotal, len - ntotal, err);
+-    if(nread < 0) {
+-      if(*err == CURLE_AGAIN && ntotal > 0) {
+-        /* we EAGAINed after having reed data, return the success amount */
+-        *err = CURLE_OK;
+-        break;
+-      }
+-      /* we have a an error to report */
+-      goto out;
+-    }
+-    else if(nread == 0) {
+-      /* eof */
+-      break;
+-    }
+-    ntotal += (size_t)nread;
+-    DEBUGASSERT((size_t)ntotal <= len);
+   }
+-  nread = (ssize_t)ntotal;
+-out:
+   CURL_TRC_CF(data, cf, "cf_recv(len=%zu) -> %zd, %d", len,
+               nread, *err);
+   CF_DATA_RESTORE(cf, save);
+-- 
+2.43.0
+

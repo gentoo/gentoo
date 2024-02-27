@@ -8,4 +8,5 @@
   <maintainer type="project">
     <email>vim@gentoo.org</email>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>

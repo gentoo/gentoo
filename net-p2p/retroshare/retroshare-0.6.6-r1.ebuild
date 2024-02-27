@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,9 +49,9 @@ DEPEND="${RDEPEND}
 	dev-qt/qtcore:5
 	gui? ( dev-qt/designer:5 )"
 
-BDEPEND="dev-util/cmake
+BDEPEND="dev-build/cmake
 	virtual/pkgconfig
-	jsonapi? ( app-doc/doxygen )"
+	jsonapi? ( app-text/doxygen )"
 
 PATCHES=( "${FILESDIR}/${P}-fix-cxx17-compilation.patch" )
 

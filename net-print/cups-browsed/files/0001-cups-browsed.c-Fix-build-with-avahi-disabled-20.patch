@@ -1,0 +1,34 @@
+Upstream: https://github.com/OpenPrinting/cups-browsed/commit/08af74bfbf9aa8ccab45a2ee74e95951839756ba.patch
+From 08af74bfbf9aa8ccab45a2ee74e95951839756ba Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Wed, 27 Sep 2023 13:01:46 +0200
+Subject: [PATCH] cups-browsed.c: Fix build with avahi disabled (#20)
+
+Fixes #19
+---
+ daemon/cups-browsed.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/daemon/cups-browsed.c b/daemon/cups-browsed.c
+index b06461b4..c1e64fab 100644
+--- a/daemon/cups-browsed.c
++++ b/daemon/cups-browsed.c
+@@ -400,6 +400,7 @@ typedef struct pagesize_count_s
+   int   count;
+ } pagesize_count_t;
+ 
++#ifdef HAVE_AVAHI
+ typedef struct resolver_args_s
+ {
+   AvahiIfIndex interface;
+@@ -414,6 +415,7 @@ typedef struct resolver_args_s
+   AvahiLookupResultFlags flags;
+   void* userdata;
+ } resolver_args_t;
++#endif // HAVE_AVAHI
+ 
+ typedef struct create_args_s
+ {
+-- 
+2.41.0
+

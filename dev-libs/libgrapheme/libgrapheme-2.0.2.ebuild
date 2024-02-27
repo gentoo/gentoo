@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://dl.suckless.org/libgrapheme/${P}.tar.gz"
 
 LICENSE="ISC Unicode-DFS-2016"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 # upstream suggests keeping the static option, others have requested it too
 IUSE="static-libs"
 

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-02-07)
+# grpc not stable here
+app-admin/syslog-ng grpc
+
 # Niccolò Belli <niccolo.belli@linuxsystems.it> (2023-03-12)
 # media-libs/webrtc-audio-processing not stable on ppc64
 media-video/pipewire echo-cancel

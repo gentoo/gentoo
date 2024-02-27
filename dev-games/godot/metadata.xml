@@ -24,7 +24,6 @@
 		<flag name="deprecated">Enable support for deprecated features</flag>
 		<flag name="raycast">Enable the raycast Editor module using <pkg>media-libs/embree</pkg></flag>
 		<flag name="runner">Build an additional binary optimized for running games (only relevant with USE=tools)</flag>
-		<flag name="speech">Enable text-to-speech support</flag>
 		<flag name="tools">Enable the Godot Editor for game development</flag>
 		<flag name="webm">Enable the WebM module</flag>
 	</use>

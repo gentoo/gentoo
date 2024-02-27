@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="
 	x11-misc/xdg-utils
 "
 DEPEND="${RDEPEND}
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	virtual/pkgconfig
 "
 

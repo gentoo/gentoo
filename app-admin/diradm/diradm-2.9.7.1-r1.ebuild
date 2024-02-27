@@ -11,7 +11,7 @@ SRC_URI="http://orbis-terrarum.net/~robbat2/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 IUSE="automount irixpasswd samba test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( automount irixpasswd samba )"

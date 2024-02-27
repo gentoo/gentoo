@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -130,7 +130,7 @@ fi
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
 EAUTORECONF_DEPEND+="
-	>=sys-devel/libtool-2.2.6a
+	>=dev-build/libtool-2.2.6a
 	sys-devel/m4"
 if [[ ${PN} != util-macros ]] ; then
 	EAUTORECONF_DEPEND+=" >=x11-misc/util-macros-1.18"

@@ -1,0 +1,61 @@
+From 178d97ac391fa1877d56ad9fbaade1a29bbb9655 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Tue, 22 Nov 2022 07:35:22 -0500
+Subject: [PATCH 2/3] Disable updates
+
+---
+ src/Ryujinx/Modules/Updater/Updater.cs      | 1 +
+ src/Ryujinx/Ui/MainWindow.glade             | 4 ++--
+ src/Ryujinx/Ui/Windows/SettingsWindow.glade | 2 +-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/Ryujinx/Modules/Updater/Updater.cs b/src/Ryujinx/Modules/Updater/Updater.cs
+index f8ce4c0b..e1911d44 100644
+--- a/src/Ryujinx/Modules/Updater/Updater.cs
++++ b/src/Ryujinx/Modules/Updater/Updater.cs
+@@ -511,6 +511,7 @@ namespace Ryujinx.Modules
+ 
+         public static bool CanUpdate(bool showWarnings)
+         {
++            return false;
+ #if !DISABLE_UPDATER
+             if (RuntimeInformation.OSArchitecture != Architecture.X64)
+             {
+diff --git a/src/Ryujinx/Ui/MainWindow.glade b/src/Ryujinx/Ui/MainWindow.glade
+index 58d5d955..6a31ce9f 100644
+--- a/src/Ryujinx/Ui/MainWindow.glade
++++ b/src/Ryujinx/Ui/MainWindow.glade
+@@ -545,7 +545,7 @@
+                     <property name="can-focus">False</property>
+                     <child>
+                       <object class="GtkMenuItem" id="UpdateMenuItem">
+-                        <property name="visible">True</property>
++                        <property name="visible">False</property>
+                         <property name="can-focus">False</property>
+                         <property name="tooltip-text" translatable="yes">Check for updates to Ryujinx</property>
+                         <property name="label" translatable="yes">Check for Updates</property>
+@@ -555,7 +555,7 @@
+                     </child>
+                     <child>
+                       <object class="GtkSeparatorMenuItem">
+-                        <property name="visible">True</property>
++                        <property name="visible">False</property>
+                         <property name="can-focus">False</property>
+                       </object>
+                     </child>
+diff --git a/src/Ryujinx/Ui/Windows/SettingsWindow.glade b/src/Ryujinx/Ui/Windows/SettingsWindow.glade
+index f0dbd6b6..9ba7e50b 100644
+--- a/src/Ryujinx/Ui/Windows/SettingsWindow.glade
++++ b/src/Ryujinx/Ui/Windows/SettingsWindow.glade
+@@ -130,7 +130,7 @@
+                                 <child>
+                                   <object class="GtkCheckButton" id="_checkUpdatesToggle">
+                                     <property name="label" translatable="yes">Check for Updates on Launch</property>
+-                                    <property name="visible">True</property>
++                                    <property name="visible">False</property>
+                                     <property name="can-focus">True</property>
+                                     <property name="receives-default">False</property>
+                                     <property name="halign">start</property>
+-- 
+2.43.0
+

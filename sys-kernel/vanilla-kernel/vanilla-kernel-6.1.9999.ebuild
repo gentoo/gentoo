@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit git-r3 kernel-build toolchain-funcs
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=6.1.7-gentoo
-GENTOO_CONFIG_VER=g7
+GENTOO_CONFIG_VER=g11
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
@@ -43,7 +43,6 @@ EGIT_REPO_URI=(
 EGIT_BRANCH="linux-${PV/.9999/.y}"
 
 LICENSE="GPL-2"
-KEYWORDS=""
 IUSE="debug hardened"
 REQUIRED_USE="arm? ( savedconfig )"
 

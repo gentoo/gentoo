@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs vdr-plugin-2
+inherit flag-o-matic toolchain-funcs vdr-plugin-2
 
 GENTOO_VDR_CONDITIONAL=yes
 

@@ -12,6 +12,6 @@ SRC_URI="https://github.com/PAntoine/vimgitlog/archive/version_${PV}.tar.gz -> $
 S="${WORKDIR}/vim${PN}-version_${PV}"
 
 LICENSE="Artistic"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

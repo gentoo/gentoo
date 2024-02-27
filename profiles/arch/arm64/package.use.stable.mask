@@ -1,9 +1,14 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (2023-10-30)
-# libei not stable yet
-x11-base/xwayland libei
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-python/PyQt6 and dev-python/pyside6 are not stable here yet
+dev-python/QtPy pyqt6 pyside6
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# This is still experimental, prebuilt images may not boot on all systems.
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # Needs unkeyworded dev-python/sympy
@@ -109,11 +114,6 @@ dev-python/ipython nbconvert
 # Mikle Kolyada <zlogene@gentoo,org> (2020-03-19)
 # deps not yet stable
 kde-apps/umbrello php
-
-# Craig Andrews <candrews@gentoo.org> (2019-11-26)
-# net-libs/quiche is an early HTTP/3 implementation
-# not yet ready for everyone.
-net-misc/curl quiche
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is keyworded ~arm64

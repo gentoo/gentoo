@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ DEPEND="
 	kde-apps/kaccounts-integration:5
 	kde-frameworks/kcoreaddons:5
 	kde-frameworks/knotifications:5
-	kde-frameworks/plasma:5
+	kde-plasma/libplasma:5
 	net-libs/accounts-qt
 "
 RDEPEND="${DEPEND}

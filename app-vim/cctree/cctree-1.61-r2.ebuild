@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: Cscope based source-code browser and code flow analysis
 HOMEPAGE="https://sites.google.com/site/vimcctree/"
 
 LICENSE="bufexplorer.vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 

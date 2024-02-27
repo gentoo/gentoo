@@ -11,7 +11,7 @@
 #
 # Additional features to come; this provides a starting point
 
-EPREFIX=''
+EPREFIX='@GENTOO_PORTAGE_EPREFIX@'
 
 . "${EPREFIX}"/lib/gentoo/functions.sh 2>/dev/null || {
 	ebegin() { echo " * $* ..."; }

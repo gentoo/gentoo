@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD-2 MIT MPL-2.0"
 SLOT="0/1.0" # Bumped every time a backwards-incompatible version is released
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="examples"
 
 RDEPEND="

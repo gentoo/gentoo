@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: library for helping with arrays"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=171"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides library functions and is not intended to be used

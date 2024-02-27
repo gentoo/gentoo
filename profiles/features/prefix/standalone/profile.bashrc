@@ -43,7 +43,7 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/perl && ${EBUILD_PHASE} == configure ]]; t
     ebegin "Removing Android detection"
     sed "/libandroid.so/d" -i "${S}"/Configure
     eend $?
-elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
+elif [[ ${CATEGORY}/${PN} == dev-build/make && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying default shell"
     sed -i -r "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," "${S}"/job.c
     eend $?
@@ -57,7 +57,7 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/php && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying ext/iconv/config.m4 paths"
     sed -i -r "/for i in/s,(/usr(/local|)),${EPREFIX}\1,g" "${S}"/ext/iconv/config.m4
     eend $?
-elif [[ ${CATEGORY}/${PN} == dev-util/cmake && ${EBUILD_PHASE} == prepare ]]; then
+elif [[ ${CATEGORY}/${PN} == dev-build/cmake && ${EBUILD_PHASE} == prepare ]]; then
     einfo "Removing Debian magic..."
     for f in Modules/{CMakeFindPackageMode,FindPkgConfig,GNUInstallDirs,Platform/{GNU,Linux}}.cmake; do
 	ebegin "  Updating $f"

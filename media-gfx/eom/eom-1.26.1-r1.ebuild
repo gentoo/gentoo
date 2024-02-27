@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,10 +48,14 @@ BDEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
 	dev-util/glib-utils
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26.1-libxml2-2.12.patch
+)
 
 src_configure() {
 	mate_src_configure \

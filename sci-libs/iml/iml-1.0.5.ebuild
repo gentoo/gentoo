@@ -9,7 +9,8 @@ DESCRIPTION="Integer Matrix Library"
 HOMEPAGE="https://www.cs.uwaterloo.ca/~astorjoh/iml.html"
 SRC_URI="https://www.cs.uwaterloo.ca/~astorjoh/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+# COPYING is GPL-2, but the files under src/ all have a BSD header
+LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"

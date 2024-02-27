@@ -10,6 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="hackage">shelly</remote-id>
-		<remote-id type="github">gregwebs/Shelly.hs</remote-id>
+		<remote-id type="github">yesodweb/Shelly.hs</remote-id>
 	</upstream>
 </pkgmetadata>

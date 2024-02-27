@@ -20,6 +20,13 @@
 		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>
 		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
 		<flag name="vkd3d">Enable DirectX 12 support using <pkg>app-emulation/vkd3d</pkg></flag>
+		<flag name="wow64">
+			Enable running 32bit applications without 32bit ELF
+			multilib by mapping to 64bit calls (experimental,
+			may have worse OpenGL performance or other issues
+			compared to USE=abi_x86_32) -- still requires (just)
+			<pkg>dev-util/mingw64-toolchain</pkg> with abi_x86_32
+		</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/ValveSoftware/Proton/wiki/Changelog</changelog>

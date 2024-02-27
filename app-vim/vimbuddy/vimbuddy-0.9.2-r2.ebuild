@@ -11,6 +11,6 @@ SRC_URI="https://github.com/vim-scripts/${PN}.vim/archive/${PV}.tar.gz -> ${P}.t
 S="${WORKDIR}/${PN}.vim-${PV}"
 
 LICENSE="public-domain"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc sparc x86"
 
 VIM_PLUGIN_HELPURI="http://www.vim.org/scripts/script.php?script_id=8"

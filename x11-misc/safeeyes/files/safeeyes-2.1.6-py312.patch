@@ -1,0 +1,34 @@
+From 043d9c5018431b3b41cc2bcfacdaaa7f0db1563c Mon Sep 17 00:00:00 2001
+From: Alyssa Rosenzweig <alyssa@rosenzweig.io>
+Date: Thu, 9 Nov 2023 12:14:13 -0400
+Subject: [PATCH] Fix with python3.12
+
+imp is deprecated in 3.4 and removed in 3.12. this caused safe eyes to
+break on upgrading to fedora 39
+
+Signed-off-by: Alyssa Rosenzweig <alyssa@rosenzweig.io>
+---
+ safeeyes/utility.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/safeeyes/utility.py b/safeeyes/utility.py
+index e145d4d..3976140 100644
+--- a/safeeyes/utility.py
++++ b/safeeyes/utility.py
+@@ -21,7 +21,6 @@
+ """
+ 
+ import errno
+-import imp
+ import inspect
+ import importlib
+ import json
+@@ -355,7 +354,7 @@ def module_exist(module):
+     Check wther the given Python module exists or not.
+     """
+     try:
+-        imp.find_module(module)
++        importlib.util.find_spec(module)
+         return True
+     except ImportError:
+         return False

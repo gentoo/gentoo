@@ -1,0 +1,18 @@
+https://lists.gnu.org/archive/html/bug-bash/2024-01/msg00011.html
+https://git.savannah.gnu.org/cgit/bash.git/diff/builtins/evalstring.c?h=devel&id=81f7b44564cd1510788035cea7c59631865a7db2&dt=1#n766
+
+*** builtins/evalstring.c   Tue Dec 13 12:53:21 2022
+--- builtins/evalstring.c       Tue Nov 28 17:25:39 2023
+***************
+*** 763,766 ****
+--- 773,779 ----
+    if (fnp)
+      *fnp = fn;
++   else
++     free (fn);
++
+    return fd;
+  }
+
+
+

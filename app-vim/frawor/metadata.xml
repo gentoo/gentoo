@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="bitbucket">ZyX_I/frawor</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

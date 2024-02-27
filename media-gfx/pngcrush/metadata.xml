@@ -12,5 +12,6 @@
 		</maintainer>
 		<bugs-to>https://sourceforge.net/p/pmt/bugs/</bugs-to>
 		<remote-id type="sourceforge">pmt</remote-id>
+		<remote-id type="cpe">cpe:/a:pngcrush_project:pngcrush</remote-id>
 	</upstream>
 </pkgmetadata>

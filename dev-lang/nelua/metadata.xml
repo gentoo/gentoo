@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Nelua (stands for Native Extensible Lua) is a minimal, efficient,
+    statically-typed and meta-programmable systems programming language heavily
+    inspired by Lua, which compiles to C and native code.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/edubart/nelua-lang/issues</bugs-to>
+    <remote-id type="github">edubart/nelua-lang</remote-id>
+  </upstream>
+</pkgmetadata>

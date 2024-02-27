@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,8 +44,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
@@ -79,7 +79,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	slang? ( sys-libs/slang )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	tcmalloc? ( dev-util/google-perftools )
 	unwind? ( sys-libs/libunwind:= )
 	zstd? ( app-arch/zstd:= )
@@ -212,6 +212,20 @@ perf_make() {
 	local arch=$(tc-arch-kernel)
 	local java_dir
 	use java && java_dir="${EPREFIX}/etc/java-config-2/current-system-vm"
+
+	# sync this with the whitelist in tools/perf/Makefile.config
+	local disable_libdw
+	if ! use amd64 && ! use x86 && \
+	   ! use arm && \
+	   ! use arm64 && \
+	   ! use ppc && ! use ppc64 \
+	   ! use s390 && \
+	   ! use riscv && \
+	   ! use loong
+	then
+		disable_libdw=1
+	fi
+
 	# FIXME: NO_CORESIGHT
 	local emakeargs=(
 		V=1 VF=1
@@ -241,7 +255,7 @@ perf_make() {
 		NO_LIBBPF=$(puse bpf)
 		NO_LIBCAP=$(puse caps)
 		NO_LIBCRYPTO=$(puse crypt)
-		NO_LIBDW_DWARF_UNWIND=
+		NO_LIBDW_DWARF_UNWIND="${disable_libdw}"
 		NO_LIBELF=
 		NO_LIBNUMA=$(puse numa)
 		NO_LIBPERL=$(puse perl)

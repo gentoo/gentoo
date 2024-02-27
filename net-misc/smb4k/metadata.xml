@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:smb4k_project:smb4k</remote-id>
+		<remote-id type="kde-invent">network/smb4k</remote-id>
 		<remote-id type="sourceforge">smb4k</remote-id>
 	</upstream>
 	<use>

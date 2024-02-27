@@ -72,7 +72,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	sys-libs/zlib
 	virtual/libiconv
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	charts? ( dev-libs/kdiagram:5 )
 	crypt? ( >=app-crypt/qca-2.3.0:2 )
 	fontconfig? ( media-libs/fontconfig )
@@ -90,7 +90,7 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2 )
 	okular? ( kde-apps/okular:5 )
 	pdf? ( app-text/poppler:=[qt5] )
-	phonon? ( >=media-libs/phonon-4.11.0 )
+	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
 	X? (

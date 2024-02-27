@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Default config and docs related to Containers' storage"
 HOMEPAGE="https://github.com/containers/storage"
 
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/containers/storage.git"
 else
@@ -18,27 +18,19 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 
-DEPEND=">=dev-go/go-md2man-2.0.2"
+BDEPEND=">=dev-go/go-md2man-2.0.2"
 
 src_prepare() {
 	default
 	eapply "${FILESDIR}"/system-md2man-path.patch
 }
 
-src_configure() {
-	return
-}
-
 src_compile() {
 	emake -C docs containers-storage.conf.5
 }
 
-src_test() {
-	return
-}
-
 src_install() {
-	emake DESTDIR="${D}" -C docs install
+	emake DESTDIR="${ED}" -C docs install
 
 	insinto /etc/containers
 	doins storage.conf

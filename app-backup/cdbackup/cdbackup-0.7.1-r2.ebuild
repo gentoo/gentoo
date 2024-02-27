@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s"
-HOMEPAGE="http://www.muempf.de/index.html"
-SRC_URI="http://www.muempf.de/down/${P}.tar.gz"
+HOMEPAGE="https://www.muempf.de/index.html"
+SRC_URI="https://www.muempf.de/down/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

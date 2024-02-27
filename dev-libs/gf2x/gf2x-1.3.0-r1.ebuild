@@ -10,9 +10,10 @@ HOMEPAGE="https://gitlab.inria.fr/thome/gf2x/ https://gforge.inria.fr/projects/g
 # The Gitlab release is missing the autotools files.
 SRC_URI="https://gforge.inria.fr/frs/download.php/38243/${P}.tar.gz"
 
-LICENSE="GPL-2"
+# License is tricky, see their README
+LICENSE="GPL-3+ GPL-2+"
 SLOT="0/3" # soname major version, defined in configure.ac
-KEYWORDS="amd64 ~arm64 ~loong ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 ~loong ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="fft static-libs custom-tune"
 IUSE_CPU_FLAGS=" pclmul sse2 sse3 sse4_1 ssse3"
 IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"

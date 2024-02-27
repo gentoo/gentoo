@@ -13,7 +13,7 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
 fi
 

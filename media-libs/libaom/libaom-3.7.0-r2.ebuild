@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ else
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
 		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
@@ -36,7 +36,7 @@ SLOT="0/3"
 IUSE="big-endian doc +examples test"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3"
 IUSE="${IUSE} cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2"
-IUSE="${IUSE} cpu_flags_arm_neon"
+IUSE="${IUSE} cpu_flags_arm_neon cpu_flags_ppc_vsx"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -49,7 +49,7 @@ BDEPEND="${PYTHON_DEPS}
 	abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 # The PATENTS file is required to be distributed with this package, bug #682214
@@ -91,6 +91,8 @@ multilib_src_configure() {
 		-DENABLE_SSE4_2=$(usex cpu_flags_x86_sse4_2 ON OFF)
 		-DENABLE_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
+
+		-DENABLE_VSX=$(usex cpu_flags_ppc_vsx ON OFF)
 	)
 
 	# For 32-bit multilib builds, force some intrinsics on to work around

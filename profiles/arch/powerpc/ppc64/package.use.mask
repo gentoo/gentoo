@@ -1,5 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is available here
+app-emulation/libvirt -virtiofsd
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is keyworded here.
@@ -7,7 +11,7 @@ media-libs/libplacebo -shaderc
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
+dev-build/cmake gui
 
 # Joonas Niilola <juippis@gentoo.org> (2023-08-24)
 # media-video/libva-utils is masked on ppc64, so hwaccel on Firefox
@@ -50,10 +54,6 @@ sci-libs/symengine tcmalloc
 # USE=fix requires ring crate, which is not portable
 # https://github.com/rustsec/rustsec/issues/707
 dev-util/cargo-audit fix
-
-# Andrey Grozin <grozin@gentoo.org> (2022-09-02)
-# dev-libs/capstone not keyworded
-dev-lisp/sbcl capstone
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-07-17)
 # dev-python/pyside2 is not keyworded

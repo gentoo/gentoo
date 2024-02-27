@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools fcaps
 
-DESCRIPTION="A utility to see if a specific IP is taken and what MAC owns it"
-HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=arping"
+DESCRIPTION="Utility to see if a specific IP is taken and what MAC owns it"
+HOMEPAGE="https://www.habets.pp.se/synscan/programs.php?prog=arping"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ThomasHabets/arping"
 	inherit git-r3
@@ -17,7 +17,7 @@ else
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="2"
 IUSE="+seccomp test"
 RESTRICT="!test? ( test )"

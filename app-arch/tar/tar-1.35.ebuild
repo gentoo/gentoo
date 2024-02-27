@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tar.asc
-inherit verify-sig
+inherit multiprocessing verify-sig
 
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
@@ -70,7 +70,7 @@ src_test() {
 	# Drop after 1.35: https://git.savannah.gnu.org/cgit/tar.git/commit/?id=18f90676e4695ffcf13413e9fbb24cc0ae2ae9d5
 	local -x XZ_OPT= XZ_DEFAULTS=
 
-	default
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 src_install() {

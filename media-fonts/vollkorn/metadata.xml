@@ -5,10 +5,6 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<use>
-		<flag name="otf">Install the OpenType version of the font</flag>
-		<flag name="ttf">Install the TrueType version of the font</flag>
-	</use>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">FAlthausen/Vollkorn-Typeface</remote-id>

@@ -16,7 +16,7 @@ fi
 DESCRIPTION="par2cmdline × ParPar: speed focused par2cmdline fork"
 HOMEPAGE="https://github.com/animetosho/par2cmdline-turbo"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="openmp"
 

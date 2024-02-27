@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>xfce@gentoo.org</email>
-    <name>XFCE Team</name>
-  </maintainer>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="archive">
+			Install <pkg>app-arch/xarchiver</pkg>.
+		</flag>
+		<flag name="editor">
+			Install the <pkg>app-editors/mousepad</pkg> text editor.
+		</flag>
+		<flag name="image">
+			Install the <pkg>media-gfx/ristretto</pkg> image viewer.
+		</flag>
+		<flag name="media">
+			Install the <pkg>media-video/parole</pkg> media player.
+		</flag>
+		<flag name="mpd">
+			Install the <pkg>media-sound/xfmpc</pkg> MPD client.
+		</flag>
+		<flag name="remote-fs">
+			Install the <pkg>x11-misc/gigolo</pkg> frontend to manage
+			remote filesystem connections.
+		</flag>
+		<flag name="search">
+			Install the <pkg>dev-util/catfish</pkg> search tool frontend.
+		</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,75 @@
+From 8e350d3f47a1785eb4eea83dee43c596d6399459 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 10 Feb 2024 07:30:37 -0500
+Subject: [PATCH] configure.ac,fflas-ffpack-config.in: use pkg-config to check
+ for blas
+
+Patching configure.ac for this is ugly, but in this case it is
+actually the simplest way to get sane behavior out of the blas/lapack
+check.
+---
+ configure.ac           | 29 ++++++++++++++++++-----------
+ fflas-ffpack-config.in |  4 ++--
+ 2 files changed, 20 insertions(+), 13 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5390bcf..2f5fc46 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,17 +133,24 @@ FF_CHECK_GIVARO_USABILITY()
+ 
+ AS_ECHO([---------------------------------------])
+ 
+-BLAS_FOUND=false
+-
+-FF_CHECK_BLAS_CFLAGS
+-FF_CHECK_BLAS_LIBS
+-FF_CHECK_MKL
+-FF_CHECK_USER_BLAS
+-FF_CHECK_USER_LAPACK
+-
+-FF_OPENBLAS_NUM_THREADS
+-
+-# FF_CHECK_CUDA
++PKG_PROG_PKG_CONFIG
++
++PKG_CHECK_MODULES([BLAS], [cblas blas],[
++    AC_DEFINE(HAVE_BLAS,1,[Define if BLAS is installed])
++    AC_DEFINE(HAVE_CBLAS,1,[Define if C interface to BLAS is installed])
++    HAVE_BLAS=yes
++    BLAS_PATH=""
++    CBLAS_LIBS="${BLAS_LIBS}"
++    AC_SUBST(BLAS_LIBS)
++    AC_SUBST(CBLAS_LIBS)
++    AC_SUBST(BLAS_CFLAGS)
++    AC_SUBST(BLAS_PATH)])
++
++PKG_CHECK_MODULES([LAPACK], [lapack],[
++    AC_DEFINE(HAVE_LAPACK,1,[Define if LAPACK is installed])
++    AC_SUBST(LAPACK_LIBS)])
++
++AM_CONDITIONAL(FFLASFFPACK_HAVE_LAPACK,  test "x$HAVE_LAPACK" == "x1")
+ 
+ AS_ECHO([---------------------------------------])
+ 
+diff --git a/fflas-ffpack-config.in b/fflas-ffpack-config.in
+index 3e2f53f..e227ce0 100644
+--- a/fflas-ffpack-config.in
++++ b/fflas-ffpack-config.in
+@@ -106,11 +106,11 @@ while test $# -gt 0; do
+ 			;;
+ 
+ 		--libs)
+-			echo @PARLIBS@ @PRECOMPILE_LIBS@ @BLAS_LIBS@ @GIVARO_LIBS@
++			echo @PARLIBS@ @PRECOMPILE_LIBS@ @LAPACK_LIBS@ @BLAS_LIBS@ @GIVARO_LIBS@
+ 			;;
+ 
+ 		--blas-libs)
+-			echo @BLAS_LIBS@
++			echo @LAPACK_LIBS@ @BLAS_LIBS@
+ 			;;
+ 
+ 		*)
+-- 
+2.43.0
+

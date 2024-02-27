@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/paul-j-lucas/cdecl/releases/download/${P}/${P}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="debug readline ncurses"
 
 DEPEND="
@@ -18,8 +18,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 "
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ PYTHON_REQ_USE='threads(+)'
 EGIT_OVERRIDE_REPO_ENYOJS_BOOTPLATE="https://github.com/enyojs/bootplate.git"
 EGIT_OVERRIDE_BRANCH_ENYOJS_BOOTPLATE="master"
 
-inherit python-any-r1 waf-utils xdg git-r3
+inherit multiprocessing python-any-r1 waf-utils xdg git-r3
 
 DESCRIPTION="Virtual guitar amplifier for Linux"
 HOMEPAGE="https://guitarix.org/"
@@ -66,7 +66,10 @@ BDEPEND="
 DOCS=( changelog README )
 
 src_configure() {
+	export -n {CXX,LD}FLAGS
+
 	local myconf=(
+		--cxxflags="${CXXFLAGS}"
 		--cxxflags-debug=""
 		--cxxflags-release="-DNDEBUG"
 		--ldflags="${LDFLAGS}"
@@ -76,6 +79,7 @@ src_configure() {
 		--no-faust
 		--no-ldconfig
 		--shared-lib
+		--jobs=$(makeopts_jobs)
 		$(use_enable nls)
 		$(usex bluetooth "" "--no-bluez")
 		$(usex debug "--debug" "")

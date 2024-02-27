@@ -1,9 +1,9 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit ssl-cert vdr-plugin-2
+inherit ssl-cert toolchain-funcs vdr-plugin-2
 
 MY_P="v3.0.6"
 

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit ruby-fakegem
 
@@ -14,7 +14,7 @@ DESCRIPTION="A Ruby interface to some LDAP libraries"
 HOMEPAGE="https://github.com/bearded/ruby-ldap"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="ssl"
 DEPEND=">=net-nds/openldap-2:=
 	dev-libs/cyrus-sasl

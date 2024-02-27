@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-chemistry@gentoo.org</email>
-    <name>Gentoo Chemistry Project</name>
-  </maintainer>
-  <longdescription>
-  wxMacMolPlt is a program for plotting 3D molecular structures and normal modes (vibrations), various orbitals and electron density maps. It reads a variety of file formats including any GAMESS input, log or IRC file directly to create animations. It has a simple GAMESS input (.inp) builder and a primitive molecule builder.
-  </longdescription>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">brettbode/wxmacmolplt</remote-id>
+	</upstream>
+	<longdescription>
+	wxMacMolPlt is a program for plotting 3D molecular structures and normal modes (vibrations), various orbitals and electron density maps. It reads a variety of file formats including any GAMESS input, log or IRC file directly to create animations. It has a simple GAMESS input (.inp) builder and a primitive molecule builder.
+	</longdescription>
 </pkgmetadata>

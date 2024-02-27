@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="

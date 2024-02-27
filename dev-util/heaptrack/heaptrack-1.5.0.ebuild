@@ -40,7 +40,16 @@ DEPEND="
 RDEPEND="${DEPEND}
 	gui? ( >=kde-frameworks/kf-env-4 )
 "
-BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:5 )"
+BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# This doesn't exist in libunwind (bug #898768).
+	unw_backtrace_skip
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.0-c99.patch
+)
 
 src_prepare() {
 	cmake_src_prepare

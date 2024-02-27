@@ -12,6 +12,6 @@ SRC_URI="https://github.com/fholgado/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="bufexplorer.vim"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

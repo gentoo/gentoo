@@ -689,7 +689,9 @@ linux-mod_src_install() {
 		# and similarly compress the module being built if != NONE.
 
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
-			xz -T$(makeopts_jobs) --memlimit-compress=50% -q ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
+			# match kernel compression options for compatibility
+			# https://bugs.gentoo.org/920837
+			xz -T$(makeopts_jobs) --memlimit-compress=50% -q --check=crc32 --lzma2=dict=1MiB ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
 			doins ${modulename}.${KV_OBJ}.xz
 			KV_OBJ_COMPRESS_EXT=".xz"
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ BDEPEND="
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
 	test? (
 		sys-apps/diffutils
-		sys-devel/bc
+		app-alternatives/bc
 		sys-process/procps
 	)
 	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230801 )"
@@ -123,6 +123,7 @@ src_configure() {
 	# code. This has been in the ebuild for > 10 years but even in 2022,
 	# it's still relevant:
 	# - https://github.com/llvm/llvm-project/issues/55255
+	# - https://github.com/openssl/openssl/issues/12247
 	# - https://github.com/openssl/openssl/issues/18225
 	# - https://github.com/openssl/openssl/issues/18663#issuecomment-1181478057
 	# Don't remove the no strict aliasing bits below!

@@ -1,0 +1,60 @@
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31112
+
+From https://sourceware.org/git/?p=binutils-gdb.git;a=commitdiff;h=43a608adb04251be8999304cf724f55b2d840ac3
+From: Hannes Domani <ssbssa@yahoo.de>
+Date: Wed, 6 Dec 2023 20:52:06 +0100
+Subject: [PATCH] Fix DLL export forwarding
+
+I noticed it when I was trying to set a breakpoint at ExitProcess:
+```
+(gdb) b ExitProcess
+Breakpoint 1 at 0x14001fdd0
+(gdb) r
+Starting program: C:\qiewer\heob\heob64.exe
+Warning:
+Cannot insert breakpoint 1.
+Cannot access memory at address 0x3dbf4120
+Cannot insert breakpoint 1.
+Cannot access memory at address 0x77644120
+```
+
+The problem doesn't exist in gdb 13.2, and the difference can easily be
+seen when printing ExitProcess.
+gdb 14.1:
+```
+(gdb) p ExitProcess
+$1 = {<text variable, no debug info>} 0x77644120 <UserHandleGrantAccess+36128>
+```
+gdb 13.2:
+```
+(gdb) p ExitProcess
+$1 = {<text variable, no debug info>} 0x77734120 <ntdll!RtlExitUserProcess>
+```
+
+The new behavior started with 9675da25357c7a3f472731ddc6eb3becc65b469a,
+where VMA was then calculated relative to FORWARD_DLL_NAME, while it was
+relative to DLL_NAME before.
+
+Fixed by calculating VMA relative to DLL_NAME again.
+
+Bug: https://sourceware.org/PR31112
+Approved-By: Tom Tromey <tom@tromey.com>
+
+(cherry picked from commit 2574cd903dd84e7081506e24c2e232ecda11a736)
+--- a/gdb/coff-pe-read.c
++++ b/gdb/coff-pe-read.c
+@@ -210,7 +210,10 @@ add_pe_forwarded_sym (minimal_symbol_reader &reader,
+ 			      " \"%s\" in dll \"%s\", pointing to \"%s\"\n"),
+ 		sym_name, dll_name, forward_qualified_name.c_str ());
+ 
+-  unrelocated_addr vma = msymbol.minsym->unrelocated_address ();
++  /* Calculate VMA as if it were relative to DLL_NAME/OBJFILE, even though
++     it actually points inside another dll (FORWARD_DLL_NAME).  */
++  unrelocated_addr vma = unrelocated_addr (msymbol.value_address ()
++					   - objfile->text_section_offset ());
+   msymtype = msymbol.minsym->type ();
+   section = msymbol.minsym->section_index ();
+ 
+-- 
+2.39.3
+

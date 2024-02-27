@@ -1,0 +1,20 @@
+--- a/dynolog/src/metric_frame/ExtraTypes.h	2023-12-04 22:40:38.277556488 +0100
++++ b/dynolog/src/metric_frame/ExtraTypes.h	2023-12-04 22:40:59.044223825 +0100
+@@ -6,6 +6,7 @@
+ #pragma once
+ 
+ #include <ostream>
++#include <cstdint>
+ 
+ namespace facebook::dynolog {
+ 
+--- a/hbt/src/perf_event/CpuEventsGroup.h	2023-12-04 22:56:20.774267789 +0100
++++ b/hbt/src/perf_event/CpuEventsGroup.h	2023-12-04 22:56:38.454271601 +0100
+@@ -10,6 +10,7 @@
+ 
+ #include <cstring>
+ #include <sstream>
++#include <utility>
+ 
+ #include <inttypes.h>
+ #include <stdlib.h>

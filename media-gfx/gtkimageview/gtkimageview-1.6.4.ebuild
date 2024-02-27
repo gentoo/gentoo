@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RESTRICT="test"
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="gnome-base/gnome-common"
 BDEPEND="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	gnome-base/gnome-common
 "
 

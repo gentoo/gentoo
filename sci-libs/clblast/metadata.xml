@@ -21,9 +21,6 @@
     <flag name="cuda">
       Build with support for cuda instead of opencl (beta!)
     </flag>
-    <flag name="opencl">
-      Build with support for opencl
-    </flag>
   </use>
   <upstream>
     <remote-id type="github">CNugteren/CLBlast</remote-id>

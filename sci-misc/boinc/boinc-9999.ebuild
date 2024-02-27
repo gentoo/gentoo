@@ -44,7 +44,7 @@ DEPEND="
 		virtual/opencl
 	)
 	dev-libs/openssl:=
-	net-misc/curl[curl_ssl_gnutls(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
+	net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	X? (

@@ -1,0 +1,61 @@
+From 31e125cc80497b0dc9f16abc808859ce97fd5fd1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 26 Mar 2023 19:25:40 +0200
+Subject: [PATCH] Add CMake option to build WITHOUT_X11
+
+We want to be able to build without X11 support even if some of the used
+libraries may not work w/o X11 themselves yet or need to be built with X11
+support for other reverse dependencies.
+
+X11_FOUND is set automagically so far, and using
+-DCMAKE_DISABLE_FIND_PACKAGE_X11 will break if any dependencies list X11
+as required in their cmake config.
+
+Introducing this option means there is no behavior change by default,
+cmake will just skip finding X11 if the option is enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c08b03..d491926 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,13 +47,17 @@ find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED COMPON
+     Widgets
+ )
+ 
+-find_package(X11)
+-set_package_properties(X11 PROPERTIES
+-    TYPE OPTIONAL
+-    PURPOSE "For colord integration on X11"
+-)
++option(WITHOUT_X11 "Build without colord-kded for X11 integration (skips finding X11)" OFF)
++if(NOT WITHOUT_X11)
++    find_package(X11)
++    set_package_properties(X11 PROPERTIES
++        TYPE OPTIONAL
++        PURPOSE "For colord integration on X11"
++    )
++    set(HAVE_X11 ${X11_FOUND})
++endif()
+ 
+-if (X11_FOUND)
++if (HAVE_X11)
+     find_package(XCB REQUIRED COMPONENTS XCB RANDR)
+     if (QT_MAJOR_VERSION STREQUAL "5")
+         find_package(Qt5X11Extras ${REQUIRED_QT_VERSION} NO_MODULE)
+@@ -80,7 +84,7 @@ ecm_set_disabled_deprecation_versions(
+ 	KF 5.100.0)
+ 
+ 
+-if (X11_FOUND)
++if (HAVE_X11)
+     add_subdirectory(colord-kded)
+ endif()
+ add_subdirectory(colord-kcm)
+-- 
+GitLab
+

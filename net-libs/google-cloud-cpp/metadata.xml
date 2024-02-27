@@ -5,4 +5,7 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">GoogleCloudPlatform/google-cloud-cpp</remote-id>
+	</upstream>
 </pkgmetadata>

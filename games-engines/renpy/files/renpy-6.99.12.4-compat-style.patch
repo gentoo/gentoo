@@ -1,0 +1,45 @@
+https://github.com/bircoph/renpy/commit/1d350d993d2b51df7880e92b48ed103e059ec385
+
+commit 1d350d993d2b51df7880e92b48ed103e059ec385
+Author: Andrew Savchenko <bircoph@gmail.com>
+Date:   Sun Jul 16 17:07:27 2017 +0300
+
+    Fix compatibility problem With ElvenRelations-1.2:
+    
+    When starting game:
+    
+    Full traceback:
+      File "/home/andrew/src/_compat/styles.rpymc", line 22, in script
+      File "/usr/lib64/python2.7/site-packages/renpy699/renpy/ast.py", line 814, in execute
+        renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+      File "/usr/lib64/python2.7/site-packages/renpy699/renpy/python.py", line 1719, in py_exec_bytecode
+        exec bytecode in globals, locals
+      File "renpy/common/_compat/styles.rpym", line 374, in <module>
+        style.selected_button = _SelectedCompat('button')
+      File "renpy/common/_compat/styles.rpym", line 347, in __init__
+        self.target = target
+      File "renpy/style.pyx", line 378, in renpy.style.StyleCore.__setattr__ (gen/renpy.style.c:6236)
+        raise Exception("Style property {} is not known.".format(name))
+    Exception: Style property target is not known.
+    
+    "button*" properties are no longer present in RenPy, so relevant
+    code is removed.
+
+diff --git a/renpy/common/_compat/styles.rpym b/renpy/common/_compat/styles.rpym
+index d83eeb0..174f0b6 100644
+--- a/renpy/common/_compat/styles.rpym
++++ b/renpy/common/_compat/styles.rpym
+@@ -371,13 +371,6 @@ init python:
+             self.property_updates = [ ]
+ 
+ 
+-    style.selected_button = _SelectedCompat('button')
+-    style.selected_button_text = _SelectedCompat('button_text')
+-    style.gm_nav_selected_button = _SelectedCompat('gm_nav_button')
+-    style.gm_nav_selected_button_text = _SelectedCompat('gm_nav_button_text')
+-    style.prefs_selected_button = _SelectedCompat('prefs_button')
+-    style.prefs_selected_button_text = _SelectedCompat('prefs_button_text')
+-
+     def _apply_selected_compat():
+         for scs in _selected_compat:
+             scs.apply()

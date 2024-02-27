@@ -1,0 +1,13 @@
+Fix implicit function declaration in configure logs: mkdir
+https://bugs.gentoo.org/898594
+
+--- a/support/cpp/configure.ac
++++ b/support/cpp/configure.ac
+@@ -2317,6 +2317,7 @@
+ ################################################################################
+ 
+ # mkdir takes a single argument on some systems.
++AC_CHECK_HEADERS([sys/stat.h])
+ gcc_AC_FUNC_MKDIR_TAKES_ONE_ARG
+ 
+ # File extensions

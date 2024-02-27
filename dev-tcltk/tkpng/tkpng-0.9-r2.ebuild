@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,10 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
 
 # test target in Makefile, but test not shipped
 RESTRICT="test"

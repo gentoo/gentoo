@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <use>
-    <flag name="fox">Build a <pkg>x11-libs/fox</pkg> GUI</flag>
-  </use>
   <upstream>
     <remote-id type="github">libusb/hidapi</remote-id>
   </upstream>

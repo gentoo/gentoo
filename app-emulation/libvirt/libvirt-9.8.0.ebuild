@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ EAPI=8
 # app-emulation/libvirt
 # Please bump them together!
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
 inherit meson linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -81,7 +81,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
-	dtrace? ( dev-util/systemtap )
+	dtrace? ( dev-debug/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( sys-fs/fuse:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
@@ -146,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.4.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-9.10.0-virxml-include-libxml-xmlsave.h-for-xmlIndentTreeOut.patch
 )
 
 pkg_setup() {

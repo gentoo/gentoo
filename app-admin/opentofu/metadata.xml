@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/opentofu/opentofu/blob/main/CHANGELOG.md</changelog>
+		<remote-id type="github">opentofu/opentofu</remote-id>
+		</upstream>
+</pkgmetadata>

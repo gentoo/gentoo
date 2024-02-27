@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: syntax highlighting for udev rules files"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1381"
 
 LICENSE="vim"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ppc sparc x86"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides syntax highlighting for udev.rules files. These files

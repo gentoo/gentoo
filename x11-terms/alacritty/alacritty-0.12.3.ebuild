@@ -1,4 +1,4 @@
-# Copyright 2017-2023 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -240,7 +240,7 @@ CRATES="
 
 MY_PV="${PV//_rc/-rc}"
 # https://bugs.gentoo.org/725962
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 cargo desktop python-any-r1
 
@@ -253,7 +253,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris)"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 fi
 
 LICENSE="Apache-2.0 Artistic-2 Boost-1.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB"
@@ -287,7 +287,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 BDEPEND="
-	dev-util/cmake
+	dev-build/cmake
 	>=virtual/rust-1.57.0
 "
 

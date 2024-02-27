@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/Zarith/archive/release-${PV}.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc x86"
 IUSE="doc mpir +ocamlopt"
 RESTRICT="!ocamlopt? ( test )"
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The SmallGrp package provides the library of groups of certain
+    "small" orders. The groups are sorted by their orders and they are
+    listed up to isomorphism; that is, for each of the available orders
+    a complete and irredundant list of isomorphism type representatives
+    of groups is given.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/smallgrp</remote-id>
+  </upstream>
+</pkgmetadata>

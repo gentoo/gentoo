@@ -1,0 +1,34 @@
+Gentoo's sandbox does not whitelist this path by default yet.
+
+(4.1 update:
+https://github.com/ccache/ccache/issues/984
+https://github.com/ccache/ccache/issues/1044
+https://github.com/ccache/ccache/commit/a0edd4294f6a5a2d3f0c7b01273736f975f250e1
+https://github.com/ccache/ccache/commit/ef2e922f9642f943199138447b29ec53fa63ea68
+... gets us closer, but not there yet.)
+
+And see https://github.com/ccache/ccache/discussions/1086#discussioncomment-3327565.
+
+https://bugs.gentoo.org/837362 for 4.6 issue.
+https://bugs.gentoo.org/883799 and https://bugs.gentoo.org/887019 fo 4.8 issue.
+--- a/src/Config.cpp
++++ b/src/Config.cpp
+@@ -1194,17 +1194,5 @@ Config::check_key_tables_consistency()
+ std::string
+ Config::default_temporary_dir() const
+ {
+-  static const std::string run_user_tmp_dir = [] {
+-#ifndef _WIN32
+-    const char* const xdg_runtime_dir = getenv("XDG_RUNTIME_DIR");
+-    if (xdg_runtime_dir && DirEntry(xdg_runtime_dir).is_directory()) {
+-      auto dir = FMT("{}/ccache-tmp", xdg_runtime_dir);
+-      if (fs::create_directories(dir) && access(dir.c_str(), W_OK) == 0) {
+-        return dir;
+-      }
+-    }
+-#endif
+-    return std::string();
+-  }();
+-  return !run_user_tmp_dir.empty() ? run_user_tmp_dir : m_cache_dir + "/tmp";
++  return m_cache_dir + "/tmp";
+ }

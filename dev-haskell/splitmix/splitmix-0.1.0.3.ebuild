@@ -19,6 +19,10 @@ IUSE="optimised-mixer"
 
 RESTRICT=test # circular deps: dev-haskell/splitmix[test]->dev-haskell/base-compat-batteries->dev-haskell/quickcheck->dev-haskell/splitmix
 
+CABAL_CHDEPS=(
+	'base     >=4.3     && <4.16' 'base >=4.3'
+)
+
 RDEPEND=">=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}

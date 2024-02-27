@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="+ocamlopt test"
 RESTRICT="test"  # Tests fail.
 

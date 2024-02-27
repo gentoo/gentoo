@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 optfeature pypi
@@ -51,6 +51,8 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.1.0-test-timeouts.patch
+	# https://github.com/ipython/ipyparallel/pull/846
+	"${FILESDIR}"/${P}-pypy310.patch
 )
 
 src_configure() {

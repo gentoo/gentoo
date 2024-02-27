@@ -15,4 +15,7 @@
     functioning of priority-inheritance mutexes. Additionally it contains
     hackbench, a program to generate work for the scheduler.
   </longdescription>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:kernel:rt-tests</remote-id>
+  </upstream>
 </pkgmetadata>

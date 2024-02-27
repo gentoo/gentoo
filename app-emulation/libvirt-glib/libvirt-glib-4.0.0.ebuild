@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://libvirt.org/ https://gitlab.com/libvirt/libvirt-glib/"
 SRC_URI="https://libvirt.org/sources/glib/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="gtk-doc +introspection test +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
@@ -30,6 +30,11 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.3 )
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0.0-Make-xmlError-structs-constant.patch
+	"${FILESDIR}"/${PN}-4.0.0-libvirt-gconfig-Add-more-libxml-includes.patch
+)
 
 src_prepare() {
 	default

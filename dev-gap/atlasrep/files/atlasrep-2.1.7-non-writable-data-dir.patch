@@ -1,0 +1,34 @@
+From 3df6f42de798f0b5ab758d5886606c2bbc5c364f Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 16 Dec 2023 13:43:36 -0500
+Subject: [PATCH 2/2] gap/userpref.g: allow non-writable AtlasRepDataDirectory
+
+On Gentoo, all of the data is already there. So there's no reason to
+download it. So there's no requirement for the directory to be
+writable. (Remote access is disabled by default anyway.)
+---
+ gap/userpref.g | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/gap/userpref.g b/gap/userpref.g
+index 75140b9..2d497ee 100644
+--- a/gap/userpref.g
++++ b/gap/userpref.g
+@@ -94,13 +94,7 @@ otherwise the default is an empty string."
+       local dir;
+ 
+       dir:= DirectoriesPackageLibrary( "atlasrep", "" );
+-      if ForAll( [ "dataext", "datagens", "dataword" ],
+-                 subdir -> IsWritableFile( Filename( dir, subdir ) ) ) then
+-        # The package directory is the first default.
+-        return Filename( dir, "" );
+-      else
+-        return "";
+-      fi;
++      return Filename( dir, "" );
+     end,
+   package:= "AtlasRep",
+   check:= function( val )
+-- 
+2.41.0
+

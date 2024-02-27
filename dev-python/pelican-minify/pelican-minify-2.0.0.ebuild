@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=app-text/pelican-4.5[${PYTHON_USEDEP}]
@@ -24,3 +24,8 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/pelican-plugins/minify/pull/3
+	"${FILESDIR}/${P}-hatchling.patch"
+)

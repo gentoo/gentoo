@@ -1,0 +1,43 @@
+https://github.com/open-iscsi/open-iscsi/commit/11bdc17938ba648c81a853355a6bbddad69a9fc7
+https://bugs.gentoo.org/908587
+
+From 11bdc17938ba648c81a853355a6bbddad69a9fc7 Mon Sep 17 00:00:00 2001
+From: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+Date: Wed, 4 Oct 2023 23:18:20 +0200
+Subject: [PATCH] usr/idbm.c: fix musl build (#426)
+
+Fix the following musl build failure raised since version 2.1.9 and
+https://github.com/open-iscsi/open-iscsi/commit/7b571d76d6937a78c141630fc38c3c57c532466c:
+
+../usr/idbm.c: In function 'idbm_rec_write_old':
+../usr/idbm.c:2230:27: error: 'GLOB_ONLYDIR' undeclared (first use in this function)
+ 2230 |         rc = glob(portal, GLOB_ONLYDIR, NULL, &globbuf);
+      |                           ^~~~~~~~~~~~
+
+Fixes:
+ - http://autobuild.buildroot.org/results/14fc1c139f055b5b1eaa6e04e327863c06176a7b
+
+Signed-off-by: Fabrice Fontaine <fontaine.fabrice@gmail.com>
+---
+ usr/idbm.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/usr/idbm.c b/usr/idbm.c
+index ca4a4ec..c39abb6 100644
+--- a/usr/idbm.c
++++ b/usr/idbm.c
+@@ -45,6 +45,11 @@
+ #include "fw_context.h"
+ #include "iscsi_err.h"
+ 
++// GLOB_ONLYDIR is not defined under musl
++#ifndef GLOB_ONLYDIR
++#define GLOB_ONLYDIR	0x100
++#endif
++
+ #define IDBM_HIDE	0    /* Hide parameter when print. */
+ #define IDBM_SHOW	1    /* Show parameter when print. */
+ #define IDBM_MASKED	2    /* Show "stars" instead of real value when print */
+-- 
+2.41.0
+

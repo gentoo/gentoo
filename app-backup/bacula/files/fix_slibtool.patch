@@ -1,0 +1,67 @@
+# slibtool creates library in .libs directory but need -L. to find them
+# Bug #914389
+--- src/stored/Makefile.in.orig	2023-11-15 14:20:23.135630968 +0100
++++ src/stored/Makefile.in	2023-11-15 14:22:35.771246680 +0100
+@@ -267,7 +267,7 @@
+ 	   -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+ btape: Makefile  $(TAPEOBJS) libbacsd.la drivers ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(TAPEOBJS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib -o $@ $(TAPEOBJS) \
+ 	  $(SD_LIBS) $(DLIB) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ 
+@@ -277,7 +277,7 @@
+            -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+ cloud_test: Makefile cloud_test.o ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)  $(BLSOBJS)  libbacsd.la drivers
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(CLOUDTESTOBJS) $(DLIB) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib -o $@ $(CLOUDTESTOBJS) $(DLIB) \
+            $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bcloud.o: bcloud.c
+@@ -286,7 +286,7 @@
+            -I$(basedir) $(DINCLUDE) $(S3_INC) $(CFLAGS) $<
+ 
+ bcloud: Makefile bcloud.o ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)  $(BLSOBJS)  libbacsd.la drivers
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(CLOUDCLIOBJS) $(DLIB) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib -o $@ $(CLOUDCLIOBJS) $(DLIB) \
+            $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(S3_LIBS)
+ 
+ bls.o:	bls.c
+@@ -296,7 +296,7 @@
+ 
+ bls:	Makefile $(BLSOBJS) libbacsd.la drivers  ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+ 	@echo "Compiling $<"
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(BLSOBJS) $(DLIB) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib -o $@ $(BLSOBJS) $(DLIB) \
+ 	   $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bextract.o: bextract.c
+@@ -306,7 +306,7 @@
+ 
+ bextract: Makefile $(BEXTOBJS) libbacsd.la drivers ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+ 	@echo "Compiling $<"
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(BEXTOBJS) $(DLIB) $(ZLIBS) $(LZO_LIBS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib -o $@ $(BEXTOBJS) $(DLIB) $(ZLIBS) $(LZO_LIBS) \
+ 	   $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bscan.o: bscan.c
+@@ -316,7 +316,7 @@
+ 
+ bscan:	Makefile $(SCNOBJS) libbacsd.la drivers ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) \
+ 	../cats/libbacsql$(DEFAULT_ARCHIVE_TYPE) ../cats/libbaccats$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../cats -L../findlib -o $@ $(SCNOBJS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../cats -L../findlib -o $@ $(SCNOBJS) \
+ 	   $(SD_LIBS) -lbacsql -lbaccats $(DB_LIBS) $(ZLIBS) -lbacfind -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ bcopy.o: bcopy.c
+@@ -325,7 +325,7 @@
+ 	   -I$(basedir) $(DINCLUDE) $(CFLAGS) $<
+ 
+ bcopy:	Makefile $(COPYOBJS) libbacsd.la drivers ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(COPYOBJS) \
++	$(LIBTOOL_LINK) $(CXX) $(TTOOL_LDFLAGS) $(LDFLAGS) -L. -L../lib -L../findlib -o $@ $(COPYOBJS) \
+ 	   $(SD_LIBS) -lm $(LIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS)
+ 
+ cloud_parts_test: Makefile cloud_parts.c

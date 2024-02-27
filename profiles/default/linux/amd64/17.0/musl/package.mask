@@ -3,9 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2022-10-08)
 # openjdk-bin is available on amd64 musl
-# version 8.352_p08 is first openjdk-bin:8 with musl tarball
 -dev-java/openjdk-bin
-<dev-java/openjdk-bin-8.352_p08
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-28)
 # rust-bin is available on amd64 musl

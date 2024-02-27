@@ -1,0 +1,19 @@
+Add missing prototype to a common header file.
+
+Bug: https://bugs.gentoo.org/882157
+
+diff --git a/X11/xmpdvmkpkg.h b/X11/xmpdvmkpkg.h
+index abaaa47..fd6c6f5 100644
+--- a/X11/xmpdvmkpkg.h
++++ b/X11/xmpdvmkpkg.h
+@@ -76,6 +76,7 @@ extern Widget g_statusw;
+ void spectowidgets(void);
+ void widgetstospec(struct pdvspec_st *spec);
+ int  cmpspecandwidgets(void);
++void statusmsg(char *fmt, ...);
+ void xu_SetMainTitle(const char *newtitle, const char *newprefix
+  , Widget topshell);
+ 
+-- 
+2.41.0
+

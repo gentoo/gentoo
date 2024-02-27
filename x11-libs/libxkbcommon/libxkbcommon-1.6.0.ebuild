@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/xkbcommon/${PN}"
 else
 	SRC_URI="https://xkbcommon.org/download/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 PYTHON_COMPAT=( python3_{10..12} )
@@ -23,8 +23,8 @@ RESTRICT="!test? ( test )"
 SLOT="0"
 
 BDEPEND="
-	sys-devel/bison
-	doc? ( app-doc/doxygen )
+	app-alternatives/yacc
+	doc? ( app-text/doxygen )
 	test? ( ${PYTHON_DEPS} )
 	tools? ( wayland? ( dev-util/wayland-scanner ) )
 "

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 # There are specs but they depend heavily on unpackaged code.
 RUBY_FAKEGEM_RECIPE_TEST="none"

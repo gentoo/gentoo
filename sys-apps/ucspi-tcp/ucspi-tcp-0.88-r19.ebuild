@@ -9,7 +9,7 @@ DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="https://cr.yp.to/ucspi-tcp.html"
 SRC_URI="
 	https://cr.yp.to/${PN}/${P}.tar.gz
-	mirror://qmail/ucspi-rss.diff
+	http://qmail.org/ucspi-rss.diff
 	http://smarden.org/pape/djb/manpages/${P}-man.tar.gz
 	http://xs3.b92.net/tomislavr/${P}-rblspp.patch
 	ipv6? ( https://www.fefe.de/ucspi/${P}-ipv6.diff20.bz2 )"

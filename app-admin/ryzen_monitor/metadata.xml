@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">hattedsquirrel/ryzen_monitor</remote-id>
+		<remote-id type="gitlab">leogx9r/ryzen_smu</remote-id>
+	</upstream>
 </pkgmetadata>

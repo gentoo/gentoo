@@ -1,0 +1,17 @@
+In Musl path max is in limits.h and not automatically pulled in
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2023-10-14)
+
+Bug: https://bugs.gentoo.org/713962
+upstream PR: https://github.com/cbxbiker61/cdargs/pull/8
+
+--- a/src/cdargs.cc
++++ b/src/cdargs.cc
+@@ -56,6 +56,7 @@ using namespace std;
+ # include <unistd.h>
+ # include <signal.h>
+ # include <string.h>
++# include <limits.h>
+ 
+ //# if defined(USE_NCURSES) && !defined(RENAMED_NCURSES)
+ # if defined(HAVE_NCURSES_H)

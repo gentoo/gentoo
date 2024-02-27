@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools readme.gentoo-r1 toolchain-funcs usr-ldscript
 
 DESCRIPTION="Linux Port of OpenBSD Single-key Password System"
 HOMEPAGE="https://web.archive.org/web/20160710152027/http://www.openbsd.org:80/faq/faq8.html#SKey"
-SRC_URI="mirror://gentoo/${P}.tar.bz2
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2
 	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-7.tar.xz"
 
 LICENSE="BSD MIT RSA BEER-WARE"

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gienah@gentoo.org</email>
-		<name>Mark Wright</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		ODB is an open-source, cross-platform, and cross-database
 		object-relational mapping (ORM) system for C++. It allows you

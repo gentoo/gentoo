@@ -1,21 +1,20 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# 3.12 needs QTBUG-117979 (see also QTBUG-115512)
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.6-patchset-1.tar.xz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.7-patchset-4.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 IUSE="
@@ -106,7 +105,7 @@ BDEPEND="
 "
 
 PATCHES=( "${WORKDIR}"/patches/${PN} )
-[[ ${PV} == 6.9999 ]] || # keep for 6.x.9999
+[[ ${PV} == 6.9999 ]] || # too fragile for 6.9999, but keep for 6.x.9999
 	PATCHES+=( "${WORKDIR}"/patches/chromium )
 
 PATCHES+=(
@@ -129,8 +128,8 @@ qtwebengine_check-reqs() {
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD=7G
-	local CHECKREQS_DISK_USR=220M
+	local CHECKREQS_DISK_BUILD=8G
+	local CHECKREQS_DISK_USR=360M
 
 	if ! has distcc ${FEATURES}; then #830661
 		# assume ~2GB per job or 1.5GB if clang, possible with less
@@ -172,6 +171,7 @@ src_configure() {
 		$(qt_feature pdfium qtpdf_build)
 		$(qt_feature qml qtpdf_quick_build)
 		$(qt_feature widgets qtpdf_widgets_build)
+		$(usev pdfium -DQT_FEATURE_pdf_v8=ON)
 
 		-DQT_FEATURE_qtwebengine_build=ON
 		$(qt_feature qml qtwebengine_quick_build)
@@ -202,7 +202,7 @@ src_configure() {
 		# cooperate with new major ffmpeg versions (bug #831487)
 		-DQT_FEATURE_webengine_system_ffmpeg=OFF
 
-		# preemptively using bundled to avoid complications, may revisit
+		# use bundled re2 to avoid complications, may revisit
 		# (see discussions in https://github.com/gentoo/gentoo/pull/32281)
 		-DQT_FEATURE_webengine_system_re2=OFF
 
@@ -211,9 +211,9 @@ src_configure() {
 
 		# not necessary to pass these (default), but in case detection fails
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
-			freetype glib harfbuzz lcms2 libevent libjpeg \
-			libopenjpeg2 libpci libpng libtiff libwebp \
-			libxml minizip opus poppler snappy zlib)
+			freetype gbm glib harfbuzz lcms2 libevent libjpeg \
+			libopenjpeg2 libpci libpng libtiff libwebp libxml \
+			minizip opus poppler snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		-DINSTALL_GN=OFF
@@ -232,6 +232,12 @@ src_configure() {
 			replace-flags '-g?(gdb)?([2-9])' -g1
 			ewarn "-g2+/-ggdb* *FLAGS replaced with -g1 (enable USE=custom-cflags to keep)"
 		fi
+
+		# Built helpers segfault when using (at least) -march=armv8-a+pauth
+		# (bug #920555, #920568 -- suspected gcc bug). For now, filter all
+		# for simplicity. Override with USE=custom-cflags if wanted, please
+		# report if above -march works again so can cleanup.
+		use arm64 && tc-is-gcc && filter-flags '-march=*' '-mcpu=*'
 	fi
 
 	export NINJA NINJAFLAGS=$(get_NINJAOPTS)
@@ -241,6 +247,13 @@ src_configure() {
 	einfo "Extra Gn args: ${EXTRA_GN}"
 
 	qt6-build_src_configure
+}
+
+src_compile() {
+	# tentatively work around a possible (rare) race condition (bug #921680)
+	cmake_build WebEngineCore_sync_all_public_headers
+
+	cmake_src_compile
 }
 
 src_test() {
@@ -258,6 +271,8 @@ src_test() {
 		tst_qwebengineview
 		# certs verfication seems flaky and gives expiration warnings
 		tst_qwebengineclientcertificatestore
+		# test is misperformed when qtbase is built USE=-test?
+		tst_touchinput
 	)
 
 	# prevent using the system's qtwebengine
@@ -270,6 +285,13 @@ src_test() {
 
 	# random failures in several tests without -j1
 	qt6-build_src_test -j1
+}
+
+src_install() {
+	qt6-build_src_install
+
+	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
+		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
 }
 
 pkg_postinst() {

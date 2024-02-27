@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>cluster@gentoo.org</email>
-  <name>Gentoo Cluster Project</name>
-</maintainer>
-<longdescription> 
-  The Portable Hardware Locality (hwloc) software package provides a portable abstraction 
-  (across OS, versions, architectures, ...) of the hierarchical topology of modern architectures,
-  including NUMA memory nodes, sockets, shared caches, cores and simultaneous multithreading. 
-  It also gathers various system attributes such as cache and memory information. 
-  It primarily aims at helping applications with gathering information about modern computing 
-  hardware so as to exploit it accordingly and efficiently.
-</longdescription>
-<use>
-  <flag name="cairo">Enable the Cairo back-end of hwloc's lstopo command</flag>
-  <flag name="cpuid">Enable the cpuid-based architecture specific support (x86 component)</flag>
-  <flag name="cuda">Enable CUDA device discovery using libcudart</flag>
-  <flag name="gl">Enable GL display device discovery (NVCtrl)</flag> 
-  <flag name="numa">Add support for numa memory allocation</flag>
-  <flag name="nvml">Enable the NVML device discovery</flag>
-  <flag name="pci">Enable PCI device discovery using libpci</flag>
-  <flag name="plugins">Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)</flag>
-  <flag name="xml">use libxml2 for XML support, instead of a custom minimalistic support</flag>
-  <flag name="X">use the X Window System</flag>
-</use>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<longdescription> 
+	The Portable Hardware Locality (hwloc) software package provides a portable abstraction 
+	(across OS, versions, architectures, ...) of the hierarchical topology of modern architectures,
+	including NUMA memory nodes, sockets, shared caches, cores and simultaneous multithreading. 
+	It also gathers various system attributes such as cache and memory information. 
+	It primarily aims at helping applications with gathering information about modern computing 
+	hardware so as to exploit it accordingly and efficiently.
+	</longdescription>
+	<use>
+		<flag name="cairo">Enable the Cairo back-end of hwloc's lstopo command</flag>
+		<flag name="cpuid">Enable the cpuid-based architecture specific support (x86 component)</flag>
+		<flag name="cuda">Enable CUDA device discovery using libcudart</flag>
+		<flag name="gl">Enable GL display device discovery (NVCtrl)</flag> 
+		<flag name="numa">Add support for numa memory allocation</flag>
+		<flag name="nvml">Enable the NVML device discovery</flag>
+		<flag name="pci">Enable PCI device discovery using libpci</flag>
+		<flag name="plugins">Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)</flag>
+		<flag name="xml">use libxml2 for XML support, instead of a custom minimalistic support</flag>
+		<flag name="X">use the X Window System</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">open-mpi/hwloc</remote-id>
+	</upstream>
 </pkgmetadata>

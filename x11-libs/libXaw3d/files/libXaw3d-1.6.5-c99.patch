@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/919373
+https://gitlab.freedesktop.org/xorg/lib/libxaw3d/-/merge_requests/10
+
+From 7b4af57e8a1471747e17fff184032d8250e598b6 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Thu, 7 Dec 2023 18:01:47 -0800
+Subject: [PATCH] Multisink.c: Clear -Werror=incompatible-pointer-types error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+MultiSink.c: In function â€˜SetValuesâ€™:
+MultiSink.c:582:18: error: passing argument 1 of â€˜SetTabsâ€™ from
+ incompatible pointer type [-Werror=incompatible-pointer-types]
+  582 |         SetTabs( w, w->text_sink.tab_count, w->text_sink.char_tabs );
+      |                  ^
+      |                  |
+      |                  MultiSinkObject {aka struct _MultiSinkRec *}
+MultiSink.c:99:21: note: expected â€˜Widgetâ€™ {aka â€˜struct _WidgetRec *â€™}
+ but argument is of type â€˜MultiSinkObjectâ€™ {aka â€˜struct _MultiSinkRec *â€™}
+   99 | static void SetTabs(Widget, int, short *);
+      |                     ^~~~~~
+
+Adopts change originally made to libXaw in XFree86 4
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+--- a/src/MultiSink.c
++++ b/src/MultiSink.c
+@@ -579,7 +579,7 @@ SetValues(Widget current, Widget request, Widget new, ArgList args, Cardinal *nu
+     if ( w->multi_sink.fontset != old_w->multi_sink.fontset ) {
+ 	((TextWidget)XtParent(new))->text.redisplay_needed = True;
+ #ifndef NO_TAB_FIX
+-	SetTabs( w, w->text_sink.tab_count, w->text_sink.char_tabs );
++	SetTabs((Widget)w, w->text_sink.tab_count, w->text_sink.char_tabs);
+ #endif
+     }
+ 
+-- 
+GitLab

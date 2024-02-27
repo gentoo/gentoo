@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="
 	dev-lang/perl
-	sys-devel/flex
+	app-alternatives/lex
 	${RDEPEND}
 "
 # Unsure whether to depend on >=www-misc/htdig-3.1.6-r4 or not

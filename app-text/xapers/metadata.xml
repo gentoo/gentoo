@@ -10,9 +10,6 @@
     <name>Proxy maintainers</name>
   </maintainer>
   <upstream>
-    <maintainer status="active">
-      <name>Jameson Graef Rollins</name>
-      <email>jrollins@finestructure.net</email>
-    </maintainer>
+    <remote-id type="gitlab">wpettersson/xapers</remote-id>
   </upstream>
 </pkgmetadata>

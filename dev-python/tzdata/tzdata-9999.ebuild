@@ -30,5 +30,9 @@ src_unpack() {
 		name = "tzdata"
 		version = "9999"
 		description = "tzdata shim to satisfy requirements (using system tzdata)"
+
+		[tool.hatch.build.targets.wheel]
+		# apparently it doesn't have to exist...
+		packages = ["gentoo_tzdata"]
 	EOF
 }

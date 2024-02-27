@@ -13,10 +13,6 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <use>
-    <flag name="c++14">Build using the C++14 standard</flag>
-    <flag name="c++17">Build using the C++17 standard</flag>
-  </use>
   <upstream>
     <remote-id type="github">vmc-project/vmc</remote-id>
   </upstream>

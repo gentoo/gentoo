@@ -1,16 +1,16 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 edo linux-info optfeature systemd toolchain-funcs
+inherit bash-completion-r1 edo optfeature systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dracutdevs/dracut"
 else
 	if [[ ${PV} == *_p* ]] ; then
-		EGIT_COMMIT="b2af8c8bcfc72802e02e2c0adc2eed9279101624"
+		EGIT_COMMIT="856e7acdb1462803c2517c8d64afb2e34c73c735"
 		SRC_URI="https://github.com/dracutdevs/dracut/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 		S="${WORKDIR}"/${PN}-${EGIT_COMMIT}
 	else
@@ -30,7 +30,7 @@ IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-arch/cpio
+	app-alternatives/cpio
 	>=app-shells/bash-4.0:0
 	sys-apps/coreutils[xattr(-)]
 	>=sys-apps/kmod-23[tools]
@@ -81,11 +81,6 @@ src_configure() {
 	tc-export CC PKG_CONFIG
 
 	edo ./configure "${myconf[@]}"
-
-	if [[ ${PV} != 9999 && ! -f dracut-version.sh ]] ; then
-		# Source tarball from github doesn't include this file
-		echo "DRACUT_VERSION=${PV}" > dracut-version.sh || die
-	fi
 }
 
 src_test() {
@@ -117,33 +112,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if linux-info_get_any_version && linux_config_exists; then
-		ewarn ""
-		ewarn "If the following test report contains a missing kernel"
-		ewarn "configuration option, you should reconfigure and rebuild your"
-		ewarn "kernel before booting image generated with this Dracut version."
-		ewarn ""
-
-		local CONFIG_CHECK="~BLK_DEV_INITRD ~DEVTMPFS"
-
-		# Kernel configuration options descriptions:
-		local ERROR_DEVTMPFS='CONFIG_DEVTMPFS: "Maintain a devtmpfs filesystem to mount at /dev" '
-		ERROR_DEVTMPFS+='is missing and REQUIRED'
-		local ERROR_BLK_DEV_INITRD='CONFIG_BLK_DEV_INITRD: "Initial RAM filesystem and RAM disk '
-		ERROR_BLK_DEV_INITRD+='(initramfs/initrd) support" is missing and REQUIRED'
-
-		check_extra_config
-		echo
-	else
-		ewarn ""
-		ewarn "Your kernel configuration couldn't be checked."
-		ewarn "Please check manually if following options are enabled:"
-		ewarn ""
-		ewarn "  CONFIG_BLK_DEV_INITRD"
-		ewarn "  CONFIG_DEVTMPFS"
-		ewarn ""
-	fi
-
 	optfeature "Networking support" net-misc/networkmanager
 	optfeature "Legacy networking support" net-misc/curl "net-misc/dhcp[client]" \
 		sys-apps/iproute2 "net-misc/iputils[arping]"
@@ -181,4 +149,6 @@ pkg_postinst() {
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
 		sys-apps/rng-tools
+	optfeature "automatically generating an initramfs on each kernel installation" \
+		"sys-kernel/installkernel[dracut]"
 }

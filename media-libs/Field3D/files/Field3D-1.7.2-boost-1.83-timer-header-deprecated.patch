@@ -1,0 +1,35 @@
+From: https://bugs.gentoo.org/912312#c10
+From: Attila Tóth <atoth@atoth.sote.hu>
+--- a/apps/sample_code/sparse_field_io/main.cpp	2023-08-24 11:30:05.951289118 +0200
++++ b/apps/sample_code/sparse_field_io/main.cpp	2023-08-24 11:30:32.491719405 +0200
+@@ -38,7 +38,7 @@
+ #include <vector>
+ 
+ #include <boost/lexical_cast.hpp>
+-#include <boost/timer.hpp>
++#include <boost/timer/timer.hpp>
+ 
+ #include <Field3D/SparseField.h>
+ #include <Field3D/SparseFile.h>
+--- a/test/misc_tests/access_speed/main.cpp	2023-08-24 11:30:05.963289314 +0200
++++ b/test/misc_tests/access_speed/main.cpp	2023-08-24 11:30:42.903885904 +0200
+@@ -38,7 +38,7 @@
+ #include <vector>
+ 
+ #include <boost/lexical_cast.hpp>
+-#include <boost/timer.hpp>
++#include <boost/timer/timer.hpp>
+ 
+ #include <Field3D/DenseField.h>
+ #include <Field3D/SparseField.h>
+--- a/test/misc_tests/threading_and_virtual_calls/main.cpp	2023-08-24 11:30:05.963289314 +0200
++++ b/test/misc_tests/threading_and_virtual_calls/main.cpp	2023-08-24 11:30:51.656025852 +0200
+@@ -38,7 +38,7 @@
+ #include <vector>
+ 
+ #include <boost/lexical_cast.hpp>
+-#include <boost/timer.hpp>
++#include <boost/timer/timer.hpp>
+ #include <boost/thread/thread.hpp>
+ #include <boost/date_time/posix_time/posix_time.hpp>
+ 

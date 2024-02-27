@@ -1,0 +1,38 @@
+https://github.com/trusteddomainproject/OpenDMARC/issues/183
+https://bugs.gentoo.org/900521
+
+--- a/opendmarc/opendmarc-arcseal.h	2021-04-30 17:34:43.000000000 +0100
++++ b/opendmarc/opendmarc-arcseal.h	2021-06-25 14:23:01.725593770 +0100
+@@ -32,7 +32,7 @@
+ /* max header tag value length (short) */
+ #define OPENDMARC_ARCSEAL_MAX_SHORT_VALUE_LEN 256
+ /* max header tag value length (long) */
+-#define OPENDMARC_ARCSEAL_MAX_LONG_VALUE_LEN  512
++#define OPENDMARC_ARCSEAL_MAX_LONG_VALUE_LEN  768
+ 
+ /* names and field labels */
+ #define OPENDMARC_ARCSEAL_HDRNAME	"ARC-Seal"
+--- a/opendmarc/opendmarc-arcseal.c	2021-04-30 17:34:43.000000000 +0100
++++ b/opendmarc/opendmarc-arcseal.c	2021-06-25 14:27:10.689908703 +0100
+@@ -29,7 +29,7 @@
+ #include "opendmarc.h"
+ 
+ #define OPENDMARC_ARCSEAL_MAX_FIELD_NAME_LEN 255
+-#define OPENDMARC_ARCSEAL_MAX_TOKEN_LEN      512
++#define OPENDMARC_ARCSEAL_MAX_TOKEN_LEN      768
+ 
+ /* tables */
+ struct opendmarc_arcseal_lookup
+@@ -167,7 +167,12 @@ opendmarc_arcseal_parse(u_char *hdr, str
+ 		if (*token_ptr == '\0')
+ 			return 0;
+ 		tag_label = strsep(&token_ptr, "=");
++		if (token_ptr == NULL)
++			return 0;
++
+ 		tag_value = opendmarc_arcseal_strip_whitespace(token_ptr);
++		if (tag_value == NULL)
++			return 0;
+ 
+ 		tag_code = opendmarc_arcseal_convert(as_tags, tag_label);
+ 

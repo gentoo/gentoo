@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 ~arm64 ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
 IUSE="examples"
 
 # Fatal Python error: Segmentation fault
@@ -49,7 +49,7 @@ distutils_enable_tests pytest
 # 	dev-python/seaborn \
 # 	dev-python/sphinx-gallery \
 # 	dev-python/sphinx-prompt \
-# 	sci-libs/scikit-image
+# 	dev-python/scikit-image
 
 python_test() {
 	# This needs to be run in the install dir

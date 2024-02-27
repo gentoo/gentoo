@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,13 @@ SRC_URI="http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${MY_P}-1.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 IUSE="aspell cups debug dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # bc needed http://comments.gmane.org/gmane.editors.lyx.devel/137498 and bug #787839
 BDEPEND="
-	sys-devel/bc
+	app-alternatives/bc
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "

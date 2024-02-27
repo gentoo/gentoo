@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # please keep this ebuild at EAPI 7 -- sys-apps/portage dep
@@ -31,6 +31,11 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -o tmp_path_retention_policy=all
+}
 
 python_install() {
 	python_domodule gpep517

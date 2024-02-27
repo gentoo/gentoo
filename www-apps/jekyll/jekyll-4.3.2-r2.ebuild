@@ -39,7 +39,6 @@ ruby_add_rdepend "
 "
 ruby_add_bdepend "
 	test? (
-		dev-ruby/httpclient
 		dev-ruby/kramdown-syntax-coderay
 		dev-ruby/launchy
 		dev-ruby/nokogiri
@@ -97,6 +96,9 @@ all_ruby_prepare() {
 	# Confused by network-sandbox
 	sed -e "/return true if there's internet/askip \"Confused by network-sandbox\"" \
 		-i test/test_utils.rb || die
+
+	# Avoid tests requiring unmaintained and broken httpclient
+	rm -f test/test_commands_serve.rb || die
 }
 
 src_test() {

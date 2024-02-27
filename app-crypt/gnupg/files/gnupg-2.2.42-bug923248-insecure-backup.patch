@@ -1,0 +1,292 @@
+https://bugs.gentoo.org/923248
+https://dev.gnupg.org/T6944
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=3b69d8bf7146b8d10737d0cfea9c97affc60ad73
+
+From 3b69d8bf7146b8d10737d0cfea9c97affc60ad73 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Wed, 24 Jan 2024 11:29:24 +0100
+Subject: [PATCH] gpg: Fix leftover unprotected card backup key.
+
+* agent/command.c (cmd_learn): Add option --reallyforce.
+* agent/findkey.c (agent_write_private_key): Implement reallyforce.
+Also add arg reallyforce and pass it along the call chain.
+
+* g10/call-agent.c (agent_scd_learn): Pass --reallyforce with a
+special force value.
+* g10/keygen.c (card_store_key_with_backup): Use that force value.
+--
+
+This was a regression in 2.2.42.  We took the easy path to fix it by
+getting the behaviour back to what we did prior to 2.2.42.  With GnuPG
+2.4.4 we use an entire different and safer approach by introducing an
+ephemeral private key store.
+
+GnuPG-bug-id: 6944
+--- a/agent/agent.h
++++ b/agent/agent.h
+@@ -422,7 +422,8 @@ void start_command_handler_ssh (ctrl_t, gnupg_fd_t);
+ gpg_error_t agent_modify_description (const char *in, const char *comment,
+                                       const gcry_sexp_t key, char **result);
+ int agent_write_private_key (const unsigned char *grip,
+-                             const void *buffer, size_t length, int force,
++                             const void *buffer, size_t length,
++                             int force, int reallyforce,
+                              const char *serialno, const char *keyref,
+                              const char *dispserialno, time_t timestamp);
+ gpg_error_t agent_key_from_file (ctrl_t ctrl,
+@@ -548,6 +549,7 @@ gpg_error_t s2k_hash_passphrase (const char *passphrase, int hashalgo,
+ gpg_error_t agent_write_shadow_key (const unsigned char *grip,
+                                     const char *serialno, const char *keyid,
+                                     const unsigned char *pkbuf, int force,
++                                    int reallyforce,
+                                     const char *dispserialno);
+ 
+ 
+@@ -628,7 +630,8 @@ void agent_card_killscd (void);
+ 
+ 
+ /*-- learncard.c --*/
+-int agent_handle_learn (ctrl_t ctrl, int send, void *assuan_context, int force);
++int agent_handle_learn (ctrl_t ctrl, int send, void *assuan_context,
++                        int force, int reallyforce);
+ 
+ 
+ /*-- cvt-openpgp.c --*/
+--- a/agent/command-ssh.c
++++ b/agent/command-ssh.c
+@@ -2499,7 +2499,7 @@ card_key_available (ctrl_t ctrl, gcry_sexp_t *r_pk, char **cardsn)
+ 
+       /* (Shadow)-key is not available in our key storage.  */
+       agent_card_getattr (ctrl, "$DISPSERIALNO", &dispserialno);
+-      err = agent_write_shadow_key (grip, serialno, authkeyid, pkbuf, 0,
++      err = agent_write_shadow_key (grip, serialno, authkeyid, pkbuf, 0, 0,
+                                     dispserialno);
+       xfree (dispserialno);
+       if (err)
+@@ -3159,7 +3159,7 @@ ssh_identity_register (ctrl_t ctrl, ssh_key_type_spec_t *spec,
+ 
+   /* Store this key to our key storage.  We do not store a creation
+    * timestamp because we simply do not know.  */
+-  err = agent_write_private_key (key_grip_raw, buffer, buffer_n, 0,
++  err = agent_write_private_key (key_grip_raw, buffer, buffer_n, 0, 0,
+                                  NULL, NULL, NULL, 0);
+   if (err)
+     goto out;
+--- a/agent/command.c
++++ b/agent/command.c
+@@ -1042,7 +1042,7 @@ cmd_readkey (assuan_context_t ctx, char *line)
+       /* Shadow-key is or is not available in our key storage.  In
+        * any case we need to check whether we need to update with
+        * a new display-s/n or whatever.  */
+-      rc = agent_write_shadow_key (grip, serialno, keyid, pkbuf, 0,
++      rc = agent_write_shadow_key (grip, serialno, keyid, pkbuf, 0, 0,
+                                    dispserialno);
+       if (rc)
+         goto leave;
+@@ -1855,16 +1855,18 @@ cmd_learn (assuan_context_t ctx, char *line)
+ {
+   ctrl_t ctrl = assuan_get_pointer (ctx);
+   gpg_error_t err;
+-  int send, sendinfo, force;
++  int send, sendinfo, force, reallyforce;
+ 
+   send = has_option (line, "--send");
+   sendinfo = send? 1 : has_option (line, "--sendinfo");
+   force = has_option (line, "--force");
++  reallyforce = has_option (line, "--reallyforce");
+ 
+   if (ctrl->restricted)
+     return leave_cmd (ctx, gpg_error (GPG_ERR_FORBIDDEN));
+ 
+-  err = agent_handle_learn (ctrl, send, sendinfo? ctx : NULL, force);
++  err = agent_handle_learn (ctrl, send, sendinfo? ctx : NULL,
++                            force, reallyforce);
+   return leave_cmd (ctx, err);
+ }
+ 
+@@ -2427,11 +2429,11 @@ cmd_import_key (assuan_context_t ctx, char *line)
+       err = agent_protect (key, passphrase, &finalkey, &finalkeylen,
+                            ctrl->s2k_count);
+       if (!err)
+-        err = agent_write_private_key (grip, finalkey, finalkeylen, force,
++        err = agent_write_private_key (grip, finalkey, finalkeylen, force, 0,
+                                        NULL, NULL, NULL, opt_timestamp);
+     }
+   else
+-    err = agent_write_private_key (grip, key, realkeylen, force,
++    err = agent_write_private_key (grip, key, realkeylen, force, 0,
+                                    NULL, NULL, NULL, opt_timestamp);
+ 
+  leave:
+--- a/agent/cvt-openpgp.c
++++ b/agent/cvt-openpgp.c
+@@ -1070,7 +1070,7 @@ convert_from_openpgp_native (ctrl_t ctrl,
+                               &protectedkey, &protectedkeylen,
+                               ctrl->s2k_count))
+             agent_write_private_key (grip, protectedkey, protectedkeylen,
+-                                     1/*force*/, NULL, NULL, NULL, 0);
++                                     1/*force*/, 0, NULL, NULL, NULL, 0);
+           xfree (protectedkey);
+         }
+       else
+@@ -1079,7 +1079,7 @@ convert_from_openpgp_native (ctrl_t ctrl,
+           agent_write_private_key (grip,
+                                    *r_key,
+                                    gcry_sexp_canon_len (*r_key, 0, NULL,NULL),
+-                                   1/*force*/, NULL, NULL, NULL, 0);
++                                   1/*force*/, 0, NULL, NULL, NULL, 0);
+         }
+     }
+ 
+--- a/agent/findkey.c
++++ b/agent/findkey.c
+@@ -82,7 +82,8 @@ fname_from_keygrip (const unsigned char *grip, int for_new)
+  * recorded as creation date.  */
+ int
+ agent_write_private_key (const unsigned char *grip,
+-                         const void *buffer, size_t length, int force,
++                         const void *buffer, size_t length,
++                         int force, int reallyforce,
+                          const char *serialno, const char *keyref,
+                          const char *dispserialno,
+                          time_t timestamp)
+@@ -165,10 +166,13 @@ agent_write_private_key (const unsigned char *grip,
+   /* Check that we do not update a regular key with a shadow key.  */
+   if (is_regular && gpg_err_code (is_shadowed_key (key)) == GPG_ERR_TRUE)
+     {
+-      log_info ("updating regular key file '%s'"
+-                " by a shadow key inhibited\n", oldfname);
+-      err = 0;  /* Simply ignore the error.  */
+-      goto leave;
++      if (!reallyforce)
++        {
++          log_info ("updating regular key file '%s'"
++                    " by a shadow key inhibited\n", oldfname);
++          err = 0;  /* Simply ignore the error.  */
++          goto leave;
++        }
+     }
+   /* Check that we update a regular key only in force mode.  */
+   if (is_regular && !force)
+@@ -1704,12 +1708,13 @@ agent_delete_key (ctrl_t ctrl, const char *desc_text,
+  * Shadow key is created by an S-expression public key in PKBUF and
+  * card's SERIALNO and the IDSTRING.  With FORCE passed as true an
+  * existing key with the given GRIP will get overwritten. If
+- * DISPSERIALNO is not NULL the human readable s/n will also be
+- * recorded in the key file.   */
++ * REALLYFORCE is also true, even a private key will be overwritten by
++ * a shadown key.  If DISPSERIALNO is not NULL the human readable s/n
++ * will also be recorded in the key file.  */
+ gpg_error_t
+ agent_write_shadow_key (const unsigned char *grip,
+                         const char *serialno, const char *keyid,
+-                        const unsigned char *pkbuf, int force,
++                        const unsigned char *pkbuf, int force, int reallyforce,
+                         const char *dispserialno)
+ {
+   gpg_error_t err;
+@@ -1737,7 +1742,7 @@ agent_write_shadow_key (const unsigned char *grip,
+     }
+ 
+   len = gcry_sexp_canon_len (shdkey, 0, NULL, NULL);
+-  err = agent_write_private_key (grip, shdkey, len, force,
++  err = agent_write_private_key (grip, shdkey, len, force, reallyforce,
+                                  serialno, keyid, dispserialno, 0);
+   xfree (shdkey);
+   if (err)
+--- a/agent/genkey.c
++++ b/agent/genkey.c
+@@ -69,7 +69,7 @@ store_key (gcry_sexp_t private, const char *passphrase, int force,
+       buf = p;
+     }
+ 
+-  rc = agent_write_private_key (grip, buf, len, force,
++  rc = agent_write_private_key (grip, buf, len, force, 0,
+                                 NULL, NULL, NULL, timestamp);
+   xfree (buf);
+   return rc;
+--- a/agent/learncard.c
++++ b/agent/learncard.c
+@@ -297,9 +297,12 @@ send_cert_back (ctrl_t ctrl, const char *id, void *assuan_context)
+ }
+ 
+ /* Perform the learn operation.  If ASSUAN_CONTEXT is not NULL and
+-   SEND is true all new certificates are send back via Assuan.  */
++   SEND is true all new certificates are send back via Assuan.  If
++   REALLYFORCE is true a private key will be overwritten by a stub
++   key. */
+ int
+-agent_handle_learn (ctrl_t ctrl, int send, void *assuan_context, int force)
++agent_handle_learn (ctrl_t ctrl, int send, void *assuan_context,
++                    int force, int reallyforce)
+ {
+   int rc;
+   struct kpinfo_cb_parm_s parm;
+@@ -414,7 +417,7 @@ agent_handle_learn (ctrl_t ctrl, int send, void *assuan_context, int force)
+ 
+         agent_card_getattr (ctrl, "$DISPSERIALNO", &dispserialno);
+         rc = agent_write_shadow_key (grip, serialno, item->id, pubkey,
+-                                     force, dispserialno);
++                                     force, reallyforce, dispserialno);
+         xfree (dispserialno);
+       }
+       xfree (pubkey);
+--- a/agent/protect-tool.c
++++ b/agent/protect-tool.c
+@@ -807,13 +807,15 @@ agent_askpin (ctrl_t ctrl,
+  * to stdout. */
+ int
+ agent_write_private_key (const unsigned char *grip,
+-                         const void *buffer, size_t length, int force,
++                         const void *buffer, size_t length,
++                         int force, int reallyforce,
+                          const char *serialno, const char *keyref,
+                          const char *dispserialno, time_t timestamp)
+ {
+   char hexgrip[40+4+1];
+   char *p;
+ 
++  (void)reallyforce;
+   (void)force;
+   (void)timestamp;
+   (void)serialno;
+--- a/g10/call-agent.c
++++ b/g10/call-agent.c
+@@ -745,6 +745,11 @@ learn_status_cb (void *opaque, const char *line)
+  *  card-util.c
+  *  keyedit_menu
+  *  card_store_key_with_backup  (Woth force to remove secret key data)
++ *
++ * If force has the value 2 the --reallyforce option is also used.
++ * This is to make sure the sshadow key overwrites the private key.
++ * Note that this option is gnupg 2.2 specific because since 2.4.4 an
++ * ephemeral private key store is used instead.
+  */
+ int
+ agent_scd_learn (struct agent_card_info_s *info, int force)
+@@ -764,6 +769,7 @@ agent_scd_learn (struct agent_card_info_s *info, int force)
+ 
+   parm.ctx = agent_ctx;
+   rc = assuan_transact (agent_ctx,
++                        force == 2? "LEARN --sendinfo --force --reallyforce" :
+                         force ? "LEARN --sendinfo --force" : "LEARN --sendinfo",
+                         dummy_data_cb, NULL, default_inq_cb, &parm,
+                         learn_status_cb, info);
+--- a/g10/keygen.c
++++ b/g10/keygen.c
+@@ -5201,8 +5201,11 @@ card_store_key_with_backup (ctrl_t ctrl, PKT_public_key *sub_psk,
+   if (err)
+     log_error ("writing card key to backup file: %s\n", gpg_strerror (err));
+   else
+-    /* Remove secret key data in agent side.  */
+-    agent_scd_learn (NULL, 1);
++    {
++      /* Remove secret key data in agent side.  We use force 2 here to
++       * allow overwriting of the temporary private key.  */
++      agent_scd_learn (NULL, 2);
++    }
+ 
+  leave:
+   xfree (ecdh_param_str);
+-- 
+2.30.2

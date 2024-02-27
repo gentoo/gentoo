@@ -14,10 +14,14 @@ HOMEPAGE="https://github.com/Hexirp/doctest-driver-gen#readme"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+executable"
+IUSE="executable"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.0.7-add-executable-flag.patch"
+)
+
+CABAL_TEST_REQUIRED_BINS=(
+	"${PN}"
 )
 
 RDEPEND="
@@ -32,9 +36,21 @@ DEPEND="
 "
 
 src_configure() {
-	local config_flags=(
-		$(cabal_flag executable executable)
-	)
+	if use executable || use test; then
+		local exe_flag=--flag=executable
+	else
+		local exe_flag=--flag=-executable
+	fi
 
-	haskell-cabal_src_configure "${config_flags[@]}"
+	# test-suite preprocessor needs the newly built components
+	export LD_LIBRARY_PATH="${S}/dist/build/${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
+	export PATH="${S}/dist/build/${PN}${PATH+:}${PATH}"
+
+	haskell-cabal_src_configure "${exe_flag}"
+}
+
+src_install() {
+	local components=( "lib:${PN}" )
+	use executable && components+=( "exe:${PN}" )
+	haskell-cabal_src_install "${components[@]}"
 }

@@ -27,9 +27,9 @@ checkconfig() {
 
 	# colorize output
 	echo "$msgout" | while read ln; do
-		if [[ "$ln" == *ignored* ]]; then
+		if [ "$ln" = *ignored* ]; then
 			ewarn "$ln"
-		elif [[ "$ln" != "Configuration OK" ]]; then
+		elif [ "$ln" != "Configuration OK" ]; then
 			eerror "$ln"
 		fi
 	done

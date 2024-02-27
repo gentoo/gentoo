@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 flag-o-matic waf-utils systemd
+inherit distutils-r1 flag-o-matic waf-utils systemd toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -50,7 +50,7 @@ RDEPEND="${DEPEND}
 BDEPEND=">=app-text/asciidoc-8.6.8
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	sys-devel/bison"
+	app-alternatives/yacc"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
@@ -73,7 +73,7 @@ src_prepare() {
 }
 
 src_configure() {
-	is-flagq -flto* && filter-flags -fuse-linker-plugin
+	tc-is-lto && filter-flags -fuse-linker-plugin
 	filter-lto
 
 	local string_127=""

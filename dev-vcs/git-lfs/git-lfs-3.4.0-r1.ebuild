@@ -28,7 +28,7 @@ else
 	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
 	# xz -k -9eT0 --memlimit-decompress=256M $P-deps.tar
 	SRC_URI+=" https://files.holgersson.xyz/gentoo/distfiles/golang-pkg-deps/${P}-deps.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"

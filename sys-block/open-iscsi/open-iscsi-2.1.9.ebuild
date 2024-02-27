@@ -34,6 +34,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.7-fix_bitwise.patch
+	"${FILESDIR}"/${P}-usr-idbm.c-fix-musl-build-426.patch
 )
 
 pkg_setup() {

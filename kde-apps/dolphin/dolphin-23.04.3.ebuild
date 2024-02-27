@@ -48,17 +48,20 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
-	>=media-libs/phonon-4.11.0
-	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
+	>=media-libs/phonon-4.11.0[qt5(+)]
+	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	semantic-desktop? (
 		>=kde-apps/baloo-widgets-${PVCUT}:5
 		>=kde-frameworks/baloo-${KFMIN}:5
 		>=kde-frameworks/kfilemetadata-${KFMIN}:5
 	)
-	telemetry? ( dev-libs/kuserfeedback:5 )
+	telemetry? ( kde-frameworks/kuserfeedback:5 )
 "
 RDEPEND="${DEPEND}
-	>=kde-apps/kio-extras-${PVCUT}:5
+	|| (
+		kde-apps/kio-extras-kf5:5
+		>=kde-apps/kio-extras-${PVCUT}:5
+	)
 "
 
 src_configure() {

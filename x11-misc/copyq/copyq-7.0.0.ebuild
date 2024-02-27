@@ -12,7 +12,7 @@ S="${WORKDIR}/CopyQ-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug kde qt6 test"
 RESTRICT="test"
 
@@ -35,7 +35,7 @@ RDEPEND="
 		test? ( dev-qt/qttest:5 )
 	)
 	qt6? (
-		dev-qt/qtbase:6=[X,gui,network,test?,widgets,xml(+)]
+		dev-qt/qtbase:6=[X,gui,network,widgets,xml(+)]
 		dev-qt/qtdeclarative:6
 		dev-qt/qtsvg:6
 		dev-qt/qtwayland:6
@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 	!qt6? (
 		dev-qt/linguist-tools:5
 		dev-qt/qtwaylandscanner:5

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ SLOT=$(ver_cut 1)
 
 SRC_URI="
 	$(abi_uri aarch64 arm64)
+	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 amd64 musl)
 "
@@ -38,7 +39,7 @@ SRC_URI="
 DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="alsa cups headless-awt selinux source"
 
 RDEPEND="

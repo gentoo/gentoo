@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>kumba@gentoo.org</email>
+		<name>Joshua Kinard</name>
+	</maintainer>
 	<use>
 		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS</flag>
 		<flag name="dnstap">Enable the structured binary log format</flag>

@@ -7,8 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="bzip2">Enable bzip2 encoder/decoder plugin</flag>
-		<flag name="egl">Enable EGL support</flag>
-		<flag name="gles2">Enable GLES2 support</flag>
 		<flag name="qsv">Enable Intel Quick Sync Video using the <pkg>media-libs/oneVPL</pkg> dispatcher</flag>
 	</use>
 </pkgmetadata>

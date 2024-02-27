@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}/src"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv x86"
-IUSE="+binary efi ipv6 iso lkrn +qemu undi usb vmware"
+IUSE="+binary uefi ipv6 iso lkrn +qemu undi usb vmware"
 REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
 
 SOURCE_DEPEND="
@@ -93,7 +93,7 @@ src_compile() {
 		ipxemake bin/15ad07b0.rom # vmxnet3
 	fi
 
-	use efi && ipxemake PLATFORM=efi BIN=bin-efi bin-efi/ipxe.efi
+	use uefi && ipxemake PLATFORM=efi BIN=bin-efi bin-efi/ipxe.efi
 	use iso && ipxemake bin/ipxe.iso
 	use undi && ipxemake bin/undionly.kpxe
 	use usb && ipxemake bin/ipxe.usb
@@ -107,7 +107,7 @@ src_install() {
 		doins bin/*.rom
 	fi
 	use vmware && doins bin/*.mrom
-	use efi && doins bin-efi/*.efi
+	use uefi && doins bin-efi/*.efi
 	use iso && doins bin/*.iso
 	use undi && doins bin/*.kpxe
 	use usb && doins bin/*.usb

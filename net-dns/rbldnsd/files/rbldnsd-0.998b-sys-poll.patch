@@ -1,0 +1,54 @@
+From 9a4eeaec16ebd7e5a493fe0a10c371b60ecf813c Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 16 Feb 2024 07:36:24 -0500
+Subject: [PATCH 1/2] configure,rbldnsd.c: include <poll.h> instead of
+ <sys/poll.h>
+
+As far back as 1997, the Single UNIX Specification (that later became
+POSIX) has said that <poll.h> is the file that provides poll() and
+friends:
+
+  https://pubs.opengroup.org/onlinepubs/7908799/xsh/poll.h.html
+
+Most implementations also support the old <sys/poll.h>, but musl, for
+example, raises a warning about its usage:
+
+  https://git.musl-libc.org/cgit/musl/tree/include/sys/poll.h
+
+This commit updates <sys/poll.h> to <poll.h> in two places.
+
+Closes: https://github.com/spamhaus/rbldnsd/issues/25
+---
+ configure | 2 +-
+ rbldnsd.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 6470c9e..5686b0a 100755
+--- a/configure
++++ b/configure
+@@ -229,7 +229,7 @@ fi
+ 
+ if ac_link_v "for poll()" <<EOF
+ #include <sys/types.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ int main(int argc, char **argv) {
+   struct pollfd pfd[2];
+   return poll(pfd, 2, 10);
+diff --git a/rbldnsd.c b/rbldnsd.c
+index e791231..8ea25a2 100644
+--- a/rbldnsd.c
++++ b/rbldnsd.c
+@@ -27,7 +27,7 @@
+ # include <sys/select.h>
+ #endif
+ #ifndef NO_POLL
+-# include <sys/poll.h>
++# include <poll.h>
+ #endif
+ #ifndef NO_MEMINFO
+ # include <malloc.h>
+-- 
+2.43.0
+

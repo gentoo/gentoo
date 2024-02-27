@@ -6,6 +6,7 @@
 		<name>Matthias Maier</name>
 	</maintainer>
 	<use>
+		<flag name="charts">Enable QtCharts usage in the GUI</flag>
 		<flag name="htmlreport">install cppcheck-htmlreport</flag>
 	</use>
 	<upstream>

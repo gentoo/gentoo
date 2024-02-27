@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 	~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}]
 	~dev-util/spirv-headers-99999999
 	~dev-util/vulkan-headers-${PV}
+	~dev-util/vulkan-utility-libraries-${PV}:=[${MULTILIB_USEDEP}]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -45,7 +46,6 @@ multilib_src_configure() {
 		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=ON
-		-DBUILD_LAYER_SUPPORT_FILES=ON
 		-DBUILD_WERROR=OFF
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)

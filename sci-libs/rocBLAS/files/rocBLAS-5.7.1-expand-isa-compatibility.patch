@@ -1,0 +1,132 @@
+Allow rocBLAS to load the compatible kernels when running on
+architectures compatible with those ISAs.
+
+Based on patch from Cordell Bloor <cgmb@slerp.xyz>
+https://salsa.debian.org/rocm-team/rocblas/-/blob/master/debian/patches/0012-expand-isa-compatibility.patch
+
+--- a/library/src/handle.cpp
++++ b/library/src/handle.cpp
+@@ -21,6 +21,7 @@
+  * ************************************************************************ */
+ #include "handle.hpp"
+ #include <cstdarg>
++#include <cstring>
+ #include <limits>
+ #ifdef WIN32
+ #include <windows.h>
+@@ -77,6 +78,31 @@ static inline int getActiveArch(int deviceId)
+ {
+     hipDeviceProp_t deviceProperties;
+     hipGetDeviceProperties(&deviceProperties, deviceId);
++    // coerce to compatible arch
++    switch(deviceProperties.gcnArch)
++    {
++    case 902:
++    case 909:
++    case 912:
++        deviceProperties.gcnArch = 900;
++        std::strcpy(deviceProperties.gcnArchName, "gfx900");
++        break;
++    case 1011:
++    case 1012:
++    case 1013:
++        deviceProperties.gcnArch = 1010;
++        std::strcpy(deviceProperties.gcnArchName, "gfx1010");
++        break;
++    case 1031:
++    case 1032:
++    case 1033:
++    case 1034:
++    case 1035:
++    case 1036:
++        deviceProperties.gcnArch = 1030;
++        std::strcpy(deviceProperties.gcnArchName, "gfx1030");
++        break;
++    }
+     return deviceProperties.gcnArch;
+ }
+ 
+--- a/library/src/rocblas_auxiliary.cpp
++++ b/library/src/rocblas_auxiliary.cpp
+@@ -24,6 +24,7 @@
+ #include "logging.hpp"
+ #include "rocblas-auxiliary.h"
+ #include <cctype>
++#include <cstring>
+ #include <cstdlib>
+ #include <memory>
+ #include <string>
+@@ -1285,6 +1286,31 @@ std::string rocblas_internal_get_arch_name()
+     hipGetDevice(&deviceId);
+     hipDeviceProp_t deviceProperties;
+     hipGetDeviceProperties(&deviceProperties, deviceId);
++    // coerce to compatible arch
++    switch(deviceProperties.gcnArch)
++    {
++    case 902:
++    case 909:
++    case 912:
++        deviceProperties.gcnArch = 900;
++        std::strcpy(deviceProperties.gcnArchName, "gfx900");
++        break;
++    case 1011:
++    case 1012:
++    case 1013:
++        deviceProperties.gcnArch = 1010;
++        std::strcpy(deviceProperties.gcnArchName, "gfx1010");
++        break;
++    case 1031:
++    case 1032:
++    case 1033:
++    case 1034:
++    case 1035:
++    case 1036:
++        deviceProperties.gcnArch = 1030;
++        std::strcpy(deviceProperties.gcnArchName, "gfx1030");
++        break;
++    }
+     return ArchName<hipDeviceProp_t>{}(deviceProperties);
+ }
+ 
+--- a/library/src/tensile_host.cpp
++++ b/library/src/tensile_host.cpp
+@@ -45,6 +45,7 @@ extern "C" void rocblas_shutdown();
+ #include <Tensile/hip/HipUtils.hpp>
+ #include <atomic>
+ #include <complex>
++#include <cstring>
+ #include <exception>
+ #include <future>
+ #include <iomanip>
+@@ -837,6 +838,31 @@ namespace
+ 
+             hipDeviceProp_t prop;
+             HIP_CHECK_EXC(hipGetDeviceProperties(&prop, deviceId));
++            // coerce to compatible arch
++            switch(prop.gcnArch)
++            {
++            case 902:
++            case 909:
++            case 912:
++                prop.gcnArch = 900;
++                std::strcpy(prop.gcnArchName, "gfx900");
++                break;
++            case 1011:
++            case 1012:
++            case 1013:
++                prop.gcnArch = 1010;
++                std::strcpy(prop.gcnArchName, "gfx1010");
++                break;
++            case 1031:
++            case 1032:
++            case 1033:
++            case 1034:
++            case 1035:
++            case 1036:
++                prop.gcnArch = 1030;
++                std::strcpy(prop.gcnArchName, "gfx1030");
++                break;
++            }
+ 
+             m_deviceProp = std::make_shared<hipDeviceProp_t>(prop);
+ 

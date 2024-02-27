@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jgraph/drawio-desktop</remote-id>
+		<bugs-to>https://github.com/jgraph/drawio-desktop/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+gnutls +iconv +icu +libffi zeroconf"
 
 RDEPEND="${GNUSTEP_CORE_DEPEND}

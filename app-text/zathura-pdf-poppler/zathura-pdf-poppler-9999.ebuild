@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg-utils
 
@@ -20,8 +20,8 @@ HOMEPAGE="https://pwmt.org/projects/zathura-pdf-poppler"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND="app-text/poppler[cairo]
-	>=app-text/zathura-0.3.9:=
+DEPEND=">=app-text/poppler-21.12.0:=[cairo]
+	>=app-text/zathura-0.5.3:=
 	dev-libs/girara
 	dev-libs/glib:2"
 

@@ -19,5 +19,6 @@
     <changelog>https://nginx.org/en/CHANGES</changelog>
     <remote-id type="github">openresty/memc-nginx-module</remote-id>
     <remote-id type="bitbucket">nginx-goodies/nginx-sticky-module-ng</remote-id>
+    <remote-id type="cpe">cpe:/a:nginx:nginx</remote-id>
   </upstream>
 </pkgmetadata>

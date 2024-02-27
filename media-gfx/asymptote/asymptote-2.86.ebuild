@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools elisp-common latex-package python-r1
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+boehm-gc context curl doc emacs examples fftw gsl +imagemagick latex lsp offscreen +opengl python sigsegv svg test vim-syntax X"
 RESTRICT="!test? ( test )"
 
@@ -44,8 +44,8 @@ RDEPEND="
 	X? (
 		${PYTHON_DEPS}
 		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,svg]
+		dev-python/cson
 		dev-python/numpy
-		dev-python/pycson
 		>=gnome-base/librsvg-2.40
 	)
 	latex? (

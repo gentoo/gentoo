@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ SLOT="0"
 # Keep in sync with llvm/CMakeLists.txt
 KEYSTONE_TARGETS="AArch64 ARM Hexagon Mips PowerPC Sparc SystemZ X86"
 
-IUSE="debug python"
+IUSE="python"
 
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
@@ -64,8 +64,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-
 	sed -i '/NOT uppercase_CMAKE_BUILD_TYPE MATCHES/ s/DEBUG/GENTOO|DEBUG/' \
 		llvm/CMakeLists.txt || die
 	cmake_src_prepare

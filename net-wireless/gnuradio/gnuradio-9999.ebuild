@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,9 +23,7 @@ fi
 
 IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio +qt5 sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
 
-#RESTRICT="!test? ( test )"
-#Tests are known broken right now
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	audio? ( || ( alsa oss jack portaudio ) )
@@ -87,11 +85,11 @@ RDEPEND="${PYTHON_DEPS}
 		$(python_gen_cond_dep 'dev-python/PyQt5[opengl,${PYTHON_USEDEP}]')
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		x11-libs/qwt:6[qt5(+)]
+		x11-libs/qwt:6=[qt5(+)]
 		dev-qt/qtwidgets:5
 	)
 	soapy? (
-		$(python_gen_cond_dep 'net-wireless/soapysdr[${PYTHON_USEDEP}]')
+		$(python_gen_cond_dep 'net-wireless/soapysdr:=[${PYTHON_USEDEP}]')
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	trellis? ( dev-python/scipy )
@@ -121,7 +119,7 @@ DEPEND="${RDEPEND}
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	doc? (
-		>=app-doc/doxygen-1.5.7.1
+		>=app-text/doxygen-1.5.7.1
 		<dev-libs/mathjax-3
 	)
 	grc? ( x11-misc/xdg-utils )
@@ -224,7 +222,8 @@ src_install() {
 }
 
 src_test() {
-	virtx cmake_src_test
+	# skip test which needs internet
+	virtx cmake_src_test -E metainfo_test --output-on-failure
 }
 
 pkg_postinst() {

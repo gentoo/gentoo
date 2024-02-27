@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="cjk emacs latex nls static-libs vanilla"
 
 # a2ps-lpr-wrapper needs bash
@@ -52,6 +52,7 @@ src_configure() {
 	export LANG=C LC_ALL=C
 
 	econf \
+		--cache-file="${S}"/config.cache \
 		--enable-shared \
 		$(use_enable static-libs static) \
 		--sysconfdir="${EPREFIX}"/etc/a2ps \

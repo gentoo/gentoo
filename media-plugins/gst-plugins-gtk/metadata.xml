@@ -6,7 +6,6 @@
 	<name>GStreamer package maintainers</name>
 </maintainer>
 <use>
-	<flag name="egl">Enable EGL platform usage</flag>
 	<flag name="gles2">Enable gtkglsink OpenGL sink based on GLESv2 API</flag>
 	<flag name="opengl">Enable gtkglsink OpenGL sink based on desktop OpenGL API</flag>
 </use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ else
 		)
 	"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
@@ -52,12 +52,12 @@ RDEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
-	xxhash? ( dev-libs/xxhash[${MULTILIB_USEDEP}] )
 "
-# vulkan-headers is required even with USE=-vulkan (bug #882065)
+# vulkan-headers is required even with USE=-vulkan for the stub (bug #882065)
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
+	xxhash? ( dev-libs/xxhash[${MULTILIB_USEDEP}] )
 "
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')

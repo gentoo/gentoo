@@ -10,7 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="asm">Enable assembly for optimization</flag>
 		<flag name="external-signer">Include support for external wallet signer programs</flag>
 		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>

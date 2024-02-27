@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -159,7 +159,7 @@ src_configure() {
 		# Tell the CMake-based build system it's building a release.
 		-DAUDACITY_BUILD_LEVEL=2
 		-Daudacity_use_nyquist=local
-		#-Daudacity_use_pch leaving it to the default behavior
+		-Daudacity_use_pch=OFF
 		-Daudacity_use_portmixer=$(usex portmixer system off)
 		-Daudacity_use_soxr=system
 

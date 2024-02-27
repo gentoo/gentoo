@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE=""
 
 DEPEND=""
-RDEPEND="app-arch/cpio"
+RDEPEND="app-alternatives/cpio"
 
 src_configure() {
 	tc-export CC

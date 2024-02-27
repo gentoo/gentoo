@@ -11,7 +11,7 @@ SRC_URI="https://github.com/magit/${PN}/archive/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 RDEPEND=">=app-emacs/compat-29.1.4.1"

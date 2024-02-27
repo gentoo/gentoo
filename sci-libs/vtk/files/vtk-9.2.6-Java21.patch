@@ -1,0 +1,17 @@
+diff --git a/Wrapping/Java/CMakeLists.txt b/Wrapping/Java/CMakeLists.txt
+index 01f3f93d..3afd78cf 100644
+--- a/Wrapping/Java/CMakeLists.txt
++++ b/Wrapping/Java/CMakeLists.txt
+@@ -201,10 +201,10 @@ set(VTK_JAVA_TARGET_VERSION "<DEFAULT>" CACHE STRING "javac target version")
+ mark_as_advanced(VTK_JAVA_TARGET_VERSION)
+ 
+ if (VTK_JAVA_SOURCE_VERSION STREQUAL "<DEFAULT>")
+-  set(VTK_JAVA_SOURCE_VERSION "1.7")
++  set(VTK_JAVA_SOURCE_VERSION "1.8")
+ endif ()
+ if (VTK_JAVA_TARGET_VERSION STREQUAL "<DEFAULT>")
+-  set(VTK_JAVA_TARGET_VERSION "1.7")
++  set(VTK_JAVA_TARGET_VERSION "1.8")
+ endif ()
+ 
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_JARDIR}")

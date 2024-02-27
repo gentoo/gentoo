@@ -11,7 +11,7 @@ SRC_URI="http://oldhome.schmorp.de/marc/data/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~riscv x86"
 IUSE="motif"
 
 RDEPEND="

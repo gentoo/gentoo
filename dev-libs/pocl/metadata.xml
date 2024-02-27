@@ -7,13 +7,11 @@
 	<use>
 		<flag name="accel">Enable the generic hardware accelerator device driver</flag>
 		<flag name="conformance">Ensures that certain build options which would result in non-conformant pocl build stay disabled. Note that this does not quarantee a fully conformant build of pocl.</flag>
-		<flag name="cuda">Enable the CUDA backend for NVIDIA GPUs</flag>
 		<flag name="float-conversion">When enabled, OpenCL printf() call's f/e/g formatters are handled by pocl. When disabled, these are handled by system C library.</flag>
 		<flag name="hardening">Enable hardening against various attacks. May worsen performance</flag>
 		<!--<flag name="hsa">Enable the HSA base profile runtime device driver</flag>-->
 		<flag name="hwloc">Enable hwloc support</flag>
 		<flag name="memmanager">Enables custom memory manager. Except for special circumstances, this should be disabled</flag>
-		<flag name="lto">Adds support for link time optimization</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pocl/pocl</remote-id>

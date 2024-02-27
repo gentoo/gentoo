@@ -5,6 +5,8 @@ Subject: [PATCH] provide dn_skipname
 
 Modified for Gentoo to include dn_expand fix
 keep dn_expand available, for musl and glibc-2.34
+also added declaration fix for dn_expand for glibc because we
+cannot include resolv.h, which defines it
 
 ---
  configure.ac                   |  2 +-
@@ -131,10 +133,13 @@ index 0000000..88d48b5
 
 --- a/src/libreplace/arpa_nameser.h
 +++ b/src/libreplace/arpa_nameser.h
-@@ -59,7 +59,7 @@
+@@ -59,7 +59,10 @@
  #  define __P(x) x
  #endif
  
++#if defined(HAVE_DN_EXPAND)
++int dn_expand __P((const u_char *, const u_char *, const u_char *, char *, int));
++#endif
 -#if defined( HAVE_ARPA_NAMESER_H ) && defined( HAVE_NS_TYPE )
 +#if !defined(HAVE_DN_EXPAND) && defined( HAVE_ARPA_NAMESER_H ) && defined( HAVE_NS_TYPE )
  #define dn_expand		__dn_expand

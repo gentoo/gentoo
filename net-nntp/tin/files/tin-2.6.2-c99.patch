@@ -1,0 +1,93 @@
+https://src.fedoraproject.org/rpms/tin/c/1f724cd60f641c3599f65e819dd2a878efa6b1a2?branch=rawhide
+
+diff --git a/aclocal.m4 b/aclocal.m4
+index 2891764c68c773c4..5620aad356b67762 100644
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -3517,7 +3517,7 @@ RETSIGTYPE signal_handler (int sig)
+ 	int system_status;
+ 	wait (&wait_status);
+ 	system_status = WEXITSTATUS(wait_status); /* should be nonzero */
+-	${cf_cv_main_return:-return}(system_status != 23);
++	exit(system_status != 23);
+ }
+ 
+ int main(void)
+@@ -5173,7 +5173,7 @@ AC_CACHE_CHECK([for passwd.pw_gecos], cf_cv_pw_gecos,[
+ #include <pwd.h>
+ ],[
+ 	struct passwd foo;
+-	char bar = foo.pw_gecos],
++	char *bar = foo.pw_gecos],
+ 	[cf_cv_pw_gecos=yes],
+ 	[cf_cv_pw_gecos=no])])
+ test $cf_cv_pw_gecos = no && AC_DEFINE(DONT_HAVE_PW_GECOS,1,[Define this to 1 if passwd struct has .pw_gecos])
+diff --git a/configure b/configure
+index 9e2d9ab4b6c46581..a85eaf929db2c820 100755
+--- a/configure
++++ b/configure
+@@ -24209,7 +24209,8 @@ int
+ main (void)
+ {
+ 
+-			int32_t needed, ustr = NULL;
++			int32_t needed;
++			const UChar *ustr = NULL;
+  			UErrorCode status;
+ 			needed = unorm_normalize(ustr, -1, UNORM_DEFAULT, 0, NULL, 0, &status);
+   ;
+@@ -26820,8 +26821,8 @@ cat >"conftest.$ac_ext" <<_ACEOF
+ int
+ main (void)
+ {
+-struct timeval *tv;
+-struct timezone *tz;
++struct timeval tv;
++struct timezone tz;
+ gettimeofday(&tv, &tz);
+   ;
+   return 0;
+@@ -27669,7 +27670,7 @@ main (void)
+ {
+ 
+ 	struct passwd foo;
+-	char bar = foo.pw_gecos
++	char *bar = foo.pw_gecos
+   ;
+   return 0;
+ }
+@@ -28106,7 +28107,7 @@ RETSIGTYPE signal_handler (int sig)
+ 	int system_status;
+ 	wait (&wait_status);
+ 	system_status = WEXITSTATUS(wait_status); /* should be nonzero */
+-	${cf_cv_main_return:-return}(system_status != 23);
++	exit(system_status != 23);
+ }
+ 
+ int main(void)
+diff --git a/configure.in b/configure.in
+index 7d24b24176f7c3a6..810eaf6158dc9b48 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1013,7 +1013,8 @@ AC_CHECK_HEADER(unicode/unorm.h,[
+ 		cf_try_icuuc="no"
+ 		LIBS="$LIBS -licuuc"
+ 		AC_TRY_LINK([#include <unicode/unorm.h>], [
+-			int32_t needed, ustr = NULL;
++			int32_t needed;
++			const UChar *ustr = NULL;
+  			UErrorCode status;
+ 			needed = unorm_normalize(ustr, -1, UNORM_DEFAULT, 0, NULL, 0, &status);], [
+ 			AC_DEFINE(HAVE_LIBICUUC,1,[Define this to 1 if we have libicuuc])
+@@ -1280,8 +1281,8 @@ AC_TRY_COMPILE([
+ #if HAVE_SYS_TIME_H
+ #include <sys/time.h>
+ #endif],
+-[struct timeval *tv;
+-struct timezone *tz;
++[struct timeval tv;
++struct timezone tz;
+ gettimeofday(&tv, &tz);],
+ ac_cv_func_gettimeofday_2args=yes, ac_cv_func_gettimeofday_2args=no)
+ AC_MSG_RESULT($ac_cv_func_gettimeofday_2args)
+

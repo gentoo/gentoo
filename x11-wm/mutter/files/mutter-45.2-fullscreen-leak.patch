@@ -1,0 +1,37 @@
+From bedf8df88f41c34c9824dccba507c8e333dd9ba6 Mon Sep 17 00:00:00 2001
+From: Robert Balas <bluew@r14s.ch>
+Date: Mon, 4 Dec 2023 00:27:49 +0100
+Subject: [PATCH] clutter: Fix memory leak when running in fullscreen
+
+`clutter_stage_do_paint_view()` only gets called when leaving fullscreen
+and by that time enough calls to
+`clutter_actor_get_transformed_paint_volume()` can make the underlying
+GArray grow to a large size.
+
+To fix this, we call call the cleanup function in
+`clutter_stage_finish_layout()` to make it happen every frame.
+
+Co-authored-by: Sebastian Keller <skeller@gnome.org>
+
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/3191
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3439>
+---
+ clutter/clutter/clutter-stage.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 55bb81c2b46..deb383fe216 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -970,6 +970,8 @@ clutter_stage_finish_layout (ClutterStage *stage)
+     }
+ 
+   g_warn_if_fail (!priv->actor_needs_immediate_relayout);
++
++  _clutter_stage_paint_volume_stack_free_all (stage);
+ }
+ 
+ void
+-- 
+GitLab
+

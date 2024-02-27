@@ -16,7 +16,6 @@
 	<use>
 		<flag name="doc">Create man pages for the package (requires <pkg>app-text/asciidoc</pkg>)</flag>
 		<flag name="json">Enable JSON support via <pkg>dev-libs/jansson</pkg></flag>
-		<flag name="modern-kernel">Install init scripts for 3.18 or higher kernels with atomic rule updates</flag>
 		<flag name="xtables">Add libxtables support to try to automatically translate rules added by iptables-compat</flag>
 	</use>
 </pkgmetadata>

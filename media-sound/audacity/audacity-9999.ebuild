@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets xdg
+inherit cmake wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://www.audacityteam.org/"
@@ -37,10 +37,9 @@ LICENSE="GPL-2+
 "
 SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 ogg
-	opus +portmixer sbsms twolame vamp +vorbis wavpack"
-
-# The testsuite consists of two tests, 50% of which fail.
-RESTRICT="test"
+	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( mpg123 )"
 
 # dev-db/sqlite:3 hard dependency.
 # dev-libs/glib:2, x11-libs/gtk+:3 hard dependency, from
@@ -67,6 +66,7 @@ RESTRICT="test"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/rapidjson
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
 	media-libs/portaudio[alsa?]
@@ -103,7 +103,8 @@ RDEPEND="dev-db/sqlite:3
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( <dev-cpp/catch-3:0 )"
 BDEPEND="app-arch/unzip
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -120,13 +121,16 @@ PATCHES=(
 
 	# For has_networking
 	"${FILESDIR}/${PN}-3.3.3-local-threadpool-libraries.patch"
+
+	# Allows running tests without conan
+	"${FILESDIR}/${PN}-3.3.3-remove-conan-test-dependency.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	local header_subs="${S}/lib-src/header-substitutes"
-	cat <<-EOF >"${header_subs}/allegro.h" || die
+	local header_subs="${S}/libraries/lib-note-track"
+	cat <<-EOF >"${header_subs}/WrapAllegro.h" || die
 	/* Hack the allegro.h header substitute to use system headers.  */
 	#include <portsmf/allegro.h>
 	EOF
@@ -151,7 +155,7 @@ src_configure() {
 		# Tell the CMake-based build system it's building a release.
 		-DAUDACITY_BUILD_LEVEL=2
 		-Daudacity_use_nyquist=local
-		#-Daudacity_use_pch leaving it to the default behavior
+		-Daudacity_use_pch=OFF
 		-Daudacity_use_portmixer=$(usex portmixer system off)
 		-Daudacity_use_soxr=system
 
@@ -199,9 +203,15 @@ src_configure() {
 		## Keep watch of PA_HAS_OSS in lib-src/portmixer/CMakeLists.txt;
 		## AFAICT it introduces no deps as-is, but that could change.
 		## Similar goes for PA_HAS_JACK.
+
+		-Daudacity_has_tests=$(usex test ON OFF)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
 }
 
 src_install() {

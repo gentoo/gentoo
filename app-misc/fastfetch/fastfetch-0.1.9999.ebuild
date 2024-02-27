@@ -1,11 +1,11 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake flag-o-matic
 
-DESCRIPTION="Fast system information tool"
+DESCRIPTION="Fast neofetch-like system information tool"
 HOMEPAGE="https://github.com/fastfetch-cli/fastfetch"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -15,21 +15,24 @@ if [[ ${PV} == *9999 ]]; then
 	[[ "${EGIT_BRANCH}" == "" ]] && die "Please set a git branch"
 else
 	SRC_URI="https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="MIT"
+LICENSE="MIT nvidia-gpu? ( NVIDIA-NVLM )"
 SLOT="0"
-IUSE="X chafa dbus ddcutil gnome imagemagick networkmanager opencl opengl osmesa pci pulseaudio sqlite vulkan wayland xcb xfce xrandr"
+IUSE="X chafa dbus ddcutil drm gnome imagemagick networkmanager nvidia-gpu opencl opengl osmesa pci pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
+RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
+# make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
-	dev-libs/yyjson
+	>=dev-libs/yyjson-0.8.0:=
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
 	ddcutil? ( app-misc/ddcutil:= )
+	drm? ( x11-libs/libdrm )
 	gnome? (
 		dev-libs/glib
 		gnome-base/dconf
@@ -42,21 +45,25 @@ RDEPEND="
 	pci? ( sys-apps/pciutils )
 	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
-	vulkan? ( media-libs/vulkan-loader )
+	vulkan? (
+		media-libs/vulkan-loader
+		sys-apps/pciutils
+	)
 	wayland? ( dev-libs/wayland )
 	xcb? ( x11-libs/libxcb )
 	xfce? ( xfce-base/xfconf )
 	xrandr? ( x11-libs/libXrandr )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
 	xrandr? ( X )
 	chafa? ( imagemagick )
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-2.0.0-dont-fetch-yyjson.patch )
 
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
@@ -69,11 +76,13 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
+		-DENABLE_SYSTEM_YYJSON=yes
 
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
-		-DENABLE_DDCUTIL=$(usex ddcutil)
 		-DENABLE_DCONF=$(usex gnome)
+		-DENABLE_DDCUTIL=$(usex ddcutil)
+		-DENABLE_DRM=$(usex drm)
 		-DENABLE_EGL=$(usex opengl)
 		-DENABLE_GIO=$(usex gnome)
 		-DENABLE_GLX=$(usex opengl)
@@ -92,6 +101,7 @@ src_configure() {
 		-DENABLE_XCB_RANDR=$(usex xcb)
 		-DENABLE_XFCONF=$(usex xfce)
 		-DENABLE_XRANDR=$(usex xrandr)
+		-DBUILD_TESTS=$(usex test)
 	)
 
 	append-cppflags -DNDEBUG

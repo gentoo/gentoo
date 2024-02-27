@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN^^}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -23,7 +23,7 @@ DEPEND="
 	)"
 BDEPEND="
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 	)"
 

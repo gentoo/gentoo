@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_SRC="https://www.linuxfromscratch.org/lfs/downloads/${PV}"
 BOOTSCRIPT_PV="20210608"
 
 DESCRIPTION="LFS documents building a Linux system entirely from source"
-HOMEPAGE="http://www.linuxfromscratch.org/lfs"
+HOMEPAGE="https://www.linuxfromscratch.org/lfs/"
 SRC_URI="${MY_SRC}/LFS-BOOK-${PV}.tar.xz
 	${MY_SRC}/lfs-bootscripts-${BOOTSCRIPT_PV}.tar.xz
 	${MY_SRC}-systemd/LFS-BOOK-${PV}.tar.bz2 -> LFS-BOOK-${PV}-systemd.tar.bz2

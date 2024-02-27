@@ -1,0 +1,51 @@
+From 621e2897c19155df8d0a5931a0c862bfdac22a0a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Wed, 17 Jan 2024 22:08:29 -0500
+Subject: [PATCH] add configure option to always install all completions
+
+This is useful for distro packaging. Many distros have a policy that
+shell completions shall always be installed, even if the shell they are
+for is not installed at the time.
+
+This is useful because buildbot chroots often don't have additional
+shells installed, so users will *never* get zsh completions.
+---
+ configure | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index 68d03a1..d521962 100755
+--- a/configure
++++ b/configure
+@@ -10,10 +10,10 @@ use Getopt::Long;
+ # find sxw2txt and other scripts in current dir, if scripts not installed yet
+ $ENV{PATH} .= ':.';
+ 
+-use vars qw($opt_help $opt_prefix $opt_nomake $opt_shell);
++use vars qw($opt_help $opt_prefix $opt_nomake $opt_shell $opt_all_completions);
+ 
+ Getopt::Long::Configure("prefix_pattern=--");
+-my $result = GetOptions('help+', 'prefix=s', 'shell=s', 'nomake+');
++my $result = GetOptions('help+', 'prefix=s', 'shell=s', 'nomake+', 'all-completions+');
+ if ( $ARGV[0] or ! $result or $opt_help) {
+ 	print << 'EOF';
+ Usage: configure [options]
+@@ -21,6 +21,7 @@ Options:
+  --help			print this message
+  --shell=<filename>	specify an alternative shell path (zsh/bash) to use
+  --nomake		do not generate a Makefile
++ --all-completions	always install all completions
+ Directory and file names:
+  --prefix=PREFIX	install lesspipe.sh in PREFIX/bin (/usr/local)
+ 
+@@ -47,8 +48,8 @@ if ( $opt_shell and -f $opt_shell and $opt_shell =~ /^\// ) {
+ my @bad = ();
+ my $shell = check_shell_vers();
+ if ( ! $opt_nomake ) {
+-	my $no_bash = grep {/bash/} @bad;
+-	my $no_zsh = grep {/zsh/} @bad;
++	my $no_bash = (grep {/bash/} @bad and ! $opt_all_completions);
++	my $no_zsh = (grep {/zsh/} @bad and ! $opt_all_completions);
+ 	open OUT, ">Makefile";
+ 	while (<DATA>) {
+ 		next if /bash_complete_dir/ and $no_bash;

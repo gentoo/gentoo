@@ -1,0 +1,11 @@
+[Unit]
+Description=Launch audit
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+RandomizedDelaySec=240
+Persistent=true
+
+[Install]
+WantedBy=timers.target

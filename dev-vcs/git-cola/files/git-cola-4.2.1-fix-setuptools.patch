@@ -1,0 +1,24 @@
+From b53983c7fa7d29dd6f474177015fcb6f2ee0e6d1 Mon Sep 17 00:00:00 2001
+From: David Aguilar <davvid@gmail.com>
+Date: Thu, 2 Nov 2023 01:33:16 -0700
+Subject: [PATCH] pyproject.toml: list dependencies and optional-dependencies
+ as dynamic
+
+Signed-off-by: David Aguilar <davvid@gmail.com>
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 20b3008e0..97cdf79b4 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -13,7 +13,7 @@ classifiers = [
+ 	"Topic :: Software Development :: Version Control :: Git",
+ ]
+ description = "A sleek and powerful Git GUI"
+-dynamic = ["version"]
++dynamic = ["dependencies", "optional-dependencies", "version"]
+ license = {file = "COPYING"}
+ readme = "README.md"
+ 

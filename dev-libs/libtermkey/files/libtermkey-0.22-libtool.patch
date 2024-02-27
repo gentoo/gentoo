@@ -1,0 +1,99 @@
+Upstream is archived: https://github.com/neovim/libtermkey
+
+From f3316ec933d618352ee9c6b1f1ef354c8896372e Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 7 Sep 2023 09:52:10 -0700
+Subject: [PATCH] build: Add a minimal configure.ac
+
+When building with slibtool using the rlibtool symlink the build will
+fail when it fails to find the generated libtool. This is required so
+rlibtool can determine if it should build shared or static libraries.
+
+This can be fixed by adding a minimal configure.ac that can generate the
+required files with autoreconf.
+
+Gentoo Bug: https://bugs.gentoo.org/913482
+---
+ Makefile => Makefile.in | 29 +++++++++++++++--------------
+ configure.ac            | 14 ++++++++++++++
+ 2 files changed, 29 insertions(+), 14 deletions(-)
+ rename Makefile => Makefile.in (91%)
+ create mode 100644 configure.ac
+
+diff --git a/Makefile b/Makefile.in
+similarity index 91%
+rename from Makefile
+rename to Makefile.in
+index 199f143..8f12b07 100644
+--- a/Makefile
++++ b/Makefile.in
+@@ -1,14 +1,10 @@
+ pkgconfig = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config $(1))
+ 
+-ifeq ($(shell uname),Darwin)
+-  LIBTOOL ?= glibtool
+-else
+-  LIBTOOL ?= libtool
+-endif
++CC = @CC@
++LIBTOOL = @LIBTOOL@
+ 
+-ifneq ($(VERBOSE),1)
+-  LIBTOOL +=--quiet
+-endif
++override CFLAGS = @CFLAGS@
++override LDFLAGS = @LDFLAGS@
+ 
+ override CFLAGS +=-Wall -std=c99
+ 
+@@ -48,8 +44,8 @@ DEMO_OBJECTS=$(DEMOS:=.lo)
+ TESTSOURCES=$(wildcard t/[0-9]*.c)
+ TESTFILES=$(TESTSOURCES:.c=.t)
+ 
+-VERSION_MAJOR=0
+-VERSION_MINOR=22
++VERSION_MAJOR=@MAJOR@
++VERSION_MINOR=@MINOR@
+ 
+ VERSION=$(VERSION_MAJOR).$(VERSION_MINOR)
+ 
+@@ -57,10 +53,15 @@ VERSION_CURRENT=15
+ VERSION_REVISION=2
+ VERSION_AGE=14
+ 
+-PREFIX=/usr/local
+-LIBDIR=$(PREFIX)/lib
+-INCDIR=$(PREFIX)/include
+-MANDIR=$(PREFIX)/share/man
++top_builddir=@top_builddir@
++
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++datarootdir=@datarootdir@
++datadir=@datadir@
++LIBDIR=@libdir@
++INCDIR=@includedir@
++MANDIR=@mandir@
+ MAN3DIR=$(MANDIR)/man3
+ MAN7DIR=$(MANDIR)/man7
+ 
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..46fe30e
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,14 @@
++m4_define([MAJOR], [0])
++m4_define([MINOR], [22])
++
++AC_INIT([libtermkey], [MAJOR.MINOR])
++AC_CONFIG_FILES([Makefile])
++
++LT_INIT
++
++AC_SUBST([top_builddir], [$abs_builddir])
++
++AC_SUBST([MAJOR], [MAJOR])
++AC_SUBST([MINOR], [MINOR])
++
++AC_OUTPUT

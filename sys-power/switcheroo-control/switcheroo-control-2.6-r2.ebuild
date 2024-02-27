@@ -1,8 +1,8 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit meson python-single-r1 systemd
 
@@ -12,15 +12,16 @@ SRC_URI="https://gitlab.freedesktop.org/hadess/switcheroo-control/uploads/86ea54
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="gtk-doc test"
+IUSE="gtk-doc selinux test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/libgudev-232:=
+	selinux? ( sec-policy/selinux-switcheroo )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -55,7 +56,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	python_fix_shebang "${D}"/usr/bin/switcherooctl
+	python_fix_shebang "${ED}"/usr/bin/switcherooctl
 	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
 }
 

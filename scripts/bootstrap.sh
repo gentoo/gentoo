@@ -1,10 +1,10 @@
 #!/bin/bash
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: releng@gentoo.org
 
-file_version="2021.0"		# update manually: <year>.<counter>
+file_version="2024.0"		# update manually: <year>.<counter>
 
 # people who were here:
 # (drobbins, 06 Jun 2003)
@@ -137,7 +137,7 @@ if [[ ! -d ${MYPROFILEDIR} ]] ; then
 	exit 1
 fi
 
-echo -e "\n${GOOD}Gentoo Linux; ${BRACKET}http://www.gentoo.org/${NORMAL}"
+echo -e "\n${GOOD}Gentoo Linux; ${BRACKET}https://www.gentoo.org/${NORMAL}"
 echo -e "${file_copyright}; Distributed under the GPLv2"
 if [[ " ${STRAP_EMERGE_OPTS} " == *" -f "* ]] ; then
 	echo "Fetching all bootstrap-related archives ..."
@@ -227,23 +227,8 @@ for opt in ${ORIGUSE} ; do
 			USE_NLS=1
 			ALLOWED_USE="${ALLOWED_USE} nls"
 			;;
-		nptl)
-			export MYARCH=$(portageq envvar ARCH)
- 			if [[ -z $(portageq best_visible / '>=sys-kernel/linux-headers-2.6.0') ]] ; then
-				eerror "You need to have >=sys-kernel/linux-headers-2.6.0 unmasked!"
-				eerror "Please edit the latest >=sys-kernel/linux-headers-2.6.0 package,"
-				eerror "and add your ARCH to KEYWORDS or change your make.profile link"
-				eerror "to a profile which does not have 2.6 headers masked."
-				echo
-				cleanup 1
-			fi
-			USE_NPTL=1
-			;;
 		multilib)
 			ALLOWED_USE="${ALLOWED_USE} multilib"
-			;;
-		userlocales)
-			ALLOWED_USE="${ALLOWED_USE} userlocales"
 			;;
 	esac
 done
@@ -277,16 +262,10 @@ for atom in portage.settings.packages:
 [[ -z ${myTEXINFO}    ]] && myTEXINFO="sys-apps/texinfo"
 [[ -z ${myZLIB}       ]] && myZLIB="sys-libs/zlib"
 [[ -z ${myNCURSES}    ]] && myNCURSES="sys-libs/ncurses"
+[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 
 # Do we really want gettext/nls?
 [[ ${USE_NLS} != 1 ]] && myGETTEXT=
-
-if [[ ${USE_NPTL} = "1" ]] ; then
-	myOS_HEADERS="$(portageq best_visible / '>=sys-kernel/linux-headers-2.6.0')"
-	[[ -n ${myOS_HEADERS} ]] && myOS_HEADERS=">=${myOS_HEADERS}"
-	ALLOWED_USE="${ALLOWED_USE} nptl"
-fi
-[[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 
 einfo "Using baselayout : ${myBASELAYOUT}"
 einfo "Using portage    : ${myPORTAGE}"
@@ -322,9 +301,6 @@ if [ ${BOOTSTRAP_STAGE} -le 1 ] ; then
 fi
 export USE="-* bootstrap ${ALLOWED_USE} ${BOOTSTRAP_USE}"
 
-# We can't unmerge headers which may or may not exist yet. If your
-# trying to use nptl, it may be needed to flush out any old headers
-# before fully bootstrapping.
 if [ ${BOOTSTRAP_STAGE} -le 2 ] ; then
 	show_status 3 Emerging packages
 	if [[ ${RESUME} -eq 1 ]] ; then

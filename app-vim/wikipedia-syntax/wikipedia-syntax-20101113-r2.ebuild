@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: Wikipedia syntax highlighting"
 HOMEPAGE="https://en.wikipedia.org/wiki/Wikipedia:Text_editor_support#Vim"
 
 LICENSE="CC-BY-SA-3.0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~mips ppc ppc64 x86"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides syntax highlighting for Wikipedia article

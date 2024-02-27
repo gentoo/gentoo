@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,8 +34,8 @@ DEPEND="
 	kde-frameworks/knotifications:5
 	kde-frameworks/kwidgetsaddons:5
 	kde-frameworks/kxmlgui:5
-	kde-frameworks/plasma:5
 	kde-frameworks/solid:5
+	kde-plasma/libplasma:5
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtdeclarative:5

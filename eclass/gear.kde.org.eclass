@@ -60,7 +60,7 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 		*) _KDE_SRC_URI+="stable/release-service/${PV}/src/" ;;
 	esac
 
-	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_NAME}-${PV}.tar.xz"
+	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
 fi
 
 fi

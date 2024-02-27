@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="https://ftp.gnu.org/gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ppc64 ~x86"
 IUSE="+ansi athena emacs +readline tk X"
 RESTRICT="strip"  #205803
 
@@ -24,7 +24,7 @@ RDEPEND="dev-libs/gmp
 DEPEND="${RDEPEND}
 	virtual/texi2dvi
 	app-text/texi2html
-	>=sys-devel/autoconf-2.52"
+	>=dev-build/autoconf-2.52"
 
 src_configure() {
 	strip-flags

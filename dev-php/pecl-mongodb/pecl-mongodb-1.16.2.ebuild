@@ -4,7 +4,7 @@
 EAPI=8
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php8-0 php8-1 php8-2"
+USE_PHP="php8-1 php8-2"
 
 inherit php-ext-pecl-r3
 
@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="sasl test"
 
 PHP_DEPEND="
-	php_targets_php8-0? ( dev-lang/php:8.0[ssl,zlib] )
 	php_targets_php8-1? ( dev-lang/php:8.1[ssl,zlib] )
 	php_targets_php8-2? ( dev-lang/php:8.2[ssl,zlib] )"
 COMMON_DEPEND="${PHP_DEPEND}

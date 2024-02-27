@@ -97,7 +97,7 @@ DEPEND="
 "
 BDEPEND="
 	dev-qt/linguist-tools:5
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 "
 
 DOCS=( AUTHORS ChangeLog README.md )

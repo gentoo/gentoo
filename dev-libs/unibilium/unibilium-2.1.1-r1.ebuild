@@ -11,7 +11,7 @@ SRC_URI="https://github.com/neovim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+ MIT"
 SLOT="0/4"
-KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86 ~x64-macos"
 
 BDEPEND="dev-lang/perl"
 

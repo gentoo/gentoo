@@ -1,0 +1,28 @@
+https://git.savannah.gnu.org/cgit/automake.git/commit/?h=ae8fb00111ba0c4922609cd9beb552fb41b66cc6
+
+From e3db5b8038a902501a354b6921dcebcb4180f50a Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Fri, 20 Nov 2020 02:13:56 +0100
+Subject: [PATCH 1/2] tests: fix py-compile-basedir.sh: add missing test call
+
+Fixes: b279a0d46 ("tests: in python tests, do not require .pyo files (for python3)")
+---
+ t/py-compile-basedir.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/py-compile-basedir.sh b/t/py-compile-basedir.sh
+index 13a22ff1d..1a16ee2d7 100644
+--- a/t/py-compile-basedir.sh
++++ b/t/py-compile-basedir.sh
+@@ -43,7 +43,7 @@ for d in foo foo/bar "$(pwd)/foo" . .. ../foo ''; do
+   py_installed "$d2/sub/$f.pyc"
+   files=$(find "$d2" | grep '\.py[co]$')
+   # with new-enough Python3, there are six files.
+-  test $(echo "$files" | wc -l) -eq 4 || $(echo "$files" | wc -l) -eq 6
++  test $(echo "$files" | wc -l) -eq 4 || test $(echo "$files" | wc -l) -eq 6
+   case $d2 in
+     .|..) rm -f $files;;
+        *) rm -rf "$d2";;
+-- 
+2.29.2
+

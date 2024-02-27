@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} pypy3 )
+PYTHON_COMPAT=( python3_10 pypy3 )
 
 inherit flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
@@ -41,7 +41,7 @@ DEPEND="
 	${PYTHON_DEPS}
 "
 BDEPEND="
-	dev-util/cmake
+	dev-build/cmake
 	sys-apps/which
 	virtual/pkgconfig
 "

@@ -1,0 +1,83 @@
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Tue, 24 Oct 2023 06:36:10 +0200
+Subject: [PATCH] dnscache: Enable larger truncation
+
+This variation conflicts with the IPv6 patch.
+
+This is a workaround for https://forum.mikrotik.com/viewtopic.php?t=200627
+where Mikrotik doesn't fall back if the UDP response is truncated.
+
+This is done by enabling larger (configurable) than 512 byte responses on UDP
+such that Mikrotik doesn't have a need to revert to TCP.  Since it's impossible
+to truly know the maximum size of a DNS response trivially this is made
+configurable and the upper limit is arbitrarily capped to 16KB.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+diff -bru djbdns-1.05.o/dnscache.c djbdns-1.05/dnscache.c
+--- djbdns-1.05.o/dnscache.c	2024-02-23 08:05:00.037623680 +0200
++++ djbdns-1.05/dnscache.c	2024-02-23 08:18:26.320580927 +0200
+@@ -52,6 +52,7 @@
+ static char buf[1024];
+ uint64 numqueries = 0;
+ 
++static unsigned int truncate_len = 512;
+ 
+ static int udp53;
+ 
+@@ -77,7 +78,7 @@
+ {
+   if (!u[j].active) return;
+   response_id(u[j].id);
+-  if (response_len > 512) response_tc();
++  if (response_len > truncate_len) response_tc();
+   socket_send4(udp53,response,response_len,u[j].ip,u[j].port);
+   log_querydone(&u[j].active,response_len);
+   u[j].active = 0; --uactive;
+@@ -430,6 +431,15 @@
+   if (!cache_init(cachesize))
+     strerr_die3x(111,FATAL,"not enough memory for cache of size ",x);
+ 
++  x = env_get("TRUNCATELEN");
++  if (x) {
++    scan_ulong(x,&truncate_len);
++    if (truncate_len < 512)
++      truncate_len = 512;
++    if (truncate_len > 16384)
++      truncate_len = 16384;
++  }
++
+   if (env_get("HIDETTL"))
+     response_hidettl();
+   if (env_get("FORWARDONLY"))
+diff -Nbrau djbdns-1.05.o/server.c djbdns-1.05/server.c
+--- djbdns-1.05.o/server.c	2001-02-11 23:11:45.000000000 +0200
++++ djbdns-1.05/server.c	2024-02-23 08:19:40.020855813 +0200
+@@ -83,6 +83,7 @@
+ {
+   char *x;
+   int udp53;
++  unsigned int truncate_len = 512;
+ 
+   x = env_get("IP");
+   if (!x)
+@@ -105,11 +106,19 @@
+ 
+   buffer_putsflush(buffer_2,starting);
+ 
++  x = env_get("TRUNCATELEN");
++  if (x) {
++    scan_ulong(x,&truncate_len);
++    if (truncate_len < 512)
++      truncate_len = 512;
++    if (truncate_len > 16384)
++      truncate_len = 16384;
++  }
+   for (;;) {
+     len = socket_recv4(udp53,buf,sizeof buf,ip,&port);
+     if (len < 0) continue;
+     if (!doit()) continue;
+-    if (response_len > 512) response_tc();
++    if (response_len > truncate_len) response_tc();
+     socket_send4(udp53,response,response_len,ip,port);
+     /* may block for buffer space; if it fails, too bad */
+   }

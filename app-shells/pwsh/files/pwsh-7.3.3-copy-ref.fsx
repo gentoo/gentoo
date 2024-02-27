@@ -1,43 +1,30 @@
-// Copyright 1999-2023 Gentoo Authors
+// Copyright 1999-2024 Gentoo Authors
 // Distributed under the terms of the GNU General Public License v2
-
 
 open System.IO
 open System.Runtime.InteropServices
 
+let args = fsi.CommandLineArgs |> Array.tail
 
-let args =
-    fsi.CommandLineArgs |> Array.tail
+let wantedDirectory = System.IO.Path.GetFullPath args.[0]
 
+printfn $" * Wanted directory: {wantedDirectory}"
 
-let wanted_directory =
-    System.IO.Path.GetFullPath args.[0]
+System.IO.Directory.CreateDirectory wantedDirectory
 
-printfn $" * Wanted directory: {wanted_directory}"
+let runtimeDirectory = RuntimeEnvironment.GetRuntimeDirectory()
 
-System.IO.Directory.CreateDirectory wanted_directory
+printfn $" * Runtime directory: {runtimeDirectory}"
 
-
-let runtime_directory =
-    RuntimeEnvironment.GetRuntimeDirectory ()
-
-printfn $" * Runtime directory: {runtime_directory}"
-
-
-let runtime_files =
-    System.IO.Directory.GetFiles runtime_directory
+let runtimeFiles =
+    System.IO.Directory.GetFiles runtimeDirectory
     |> Array.filter (fun s -> s.EndsWith ".dll")
     |> Array.sort
 
-printfn $" * Copying {runtime_files.Length} files"
+printfn $" * Copying {runtimeFiles.Length} files into {wantedDirectory}"
 
+for runtime_file in runtimeFiles do
+    let runtimeFileName = System.IO.Path.GetFileName runtime_file
+    let wantedRuntimeFile = System.IO.Path.Join(wantedDirectory, runtimeFileName)
 
-for runtime_file in runtime_files do
-    let runtime_file_name =
-        System.IO.Path.GetFileName runtime_file
-
-    let wanted_runtime_file =
-        System.IO.Path.Join(wanted_directory, runtime_file_name)
-
-    FileInfo(runtime_file).CopyTo(wanted_runtime_file, true)
-    |> ignore
+    FileInfo(runtime_file).CopyTo(wantedRuntimeFile, true) |> ignore

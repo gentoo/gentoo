@@ -11,7 +11,7 @@ SRC_URI="https://www.spice-space.org/download/libcacard/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="+passthrough static-libs test"
 RESTRICT="!test? ( test )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ IUSE="nls acl minimal"
 
 # ncurses is only needed by ./configure, so no subslot operator required
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
-BDEPEND="sys-devel/autoconf"
+BDEPEND="dev-build/autoconf"
 
 if [[ ${PV} != 9999* ]]; then
 	# Gentoo patches to fix runtime issues, cross-compile errors, etc
@@ -108,6 +108,11 @@ src_prepare() {
 
 	# Remove src/auto/configure file.
 	rm -v src/auto/configure || die "rm configure failed"
+
+	# bug 908961
+	if use elibc_musl ; then
+		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
+	fi
 }
 
 src_configure() {

@@ -74,6 +74,7 @@ COMMON_DEPENDS="
 	!qt6? ( >=dev-libs/quazip-1.3:=[qt5(+)] )
 	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(-)] )
 
+	app-text/cmark
 	sys-libs/zlib
 "
 
@@ -81,10 +82,9 @@ COMMON_DEPENDS="
 # only on legacy macOS. Still, we need it present at build time to appease CMake, and having it like this
 # makes it easier to maintain than patching the CMakeLists file directly.
 BDEPEND="
-	app-text/cmark
 	app-text/scdoc
 	dev-cpp/gulrak-filesystem
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 "
 
 DEPEND="
@@ -108,9 +108,11 @@ RDEPEND="
 src_prepare() {
 	cmake_src_prepare
 
+	sed -i -e 's/-Werror//' CMakeLists.txt || die 'Failed to remove -Werror via sed'
+
 	# Prevent conflicting with the user's flags
-	# See https://bugs.gentoo.org/848765 for more info
-	sed -i -e 's/-Werror//' -e 's/-D_FORTIFY_SOURCE=2//' CMakeLists.txt || die 'Failed to remove -Werror and -D_FORTIFY_SOURCE via sed'
+	# See https://bugs.gentoo.org/848765 and https://bugs.gentoo.org/911858 for more info
+	sed -i -e "/CMAKE_CXX_FLAGS_RELEASE/d" CMakeLists.txt || die 'Failed to remove "CMAKE_CXX_FLAGS_RELEASE" from CMakeLists via sed'
 }
 
 src_configure(){

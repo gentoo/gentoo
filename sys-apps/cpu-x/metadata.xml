@@ -23,14 +23,12 @@
 		<flag name="cpu">Use the <pkg>dev-libs/libcpuid</pkg> library for CPU info</flag>
 		<flag name="force-libstatgrab">Use <pkg>sys-libs/libstatgrab</pkg> to instead of <pkg>sys-process/procps</pkg></flag>
 		<flag name="gpu">Use the <pkg>media-libs/glfw</pkg> library for GPU info</flag>
-		<flag name="opencl">Use the <pkg>virtual/opencl</pkg> library</flag>
 		<flag name="pci">Use the <pkg>sys-apps/pciutils</pkg> library for PCI info</flag>
 	</use>
 	<use lang="fr">
 		<flag name="cpu">Utiliser la bibliothèque <pkg>dev-libs/libcpuid</pkg> pour les informations liées au C.P.U.</flag>
 		<flag name="force-libstatgrab">Utiliser <pkg>sys-libs/libstatgrab</pkg> à la place de <pkg>sys-process/procps</pkg></flag>
 		<flag name="gpu">Utiliser la bibliothèque <pkg>media-libs/glfw</pkg> pour les informations liées au G.P.U.</flag>
-		<flag name="opencl">Utiliser la bibliothèque <pkg>virtual/opencl</pkg></flag>
 		<flag name="pci">Utiliser la bibliothèque <pkg>sys-apps/pciutils</pkg> pour les informations liées aux bus P.C.I.</flag>
 	</use>
 	<upstream>

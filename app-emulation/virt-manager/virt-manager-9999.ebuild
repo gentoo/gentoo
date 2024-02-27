@@ -27,7 +27,7 @@ IUSE="gui policykit sasl"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	app-cdr/cdrtools
+	|| ( dev-libs/libisoburn app-cdr/cdrtools )
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	$(python_gen_cond_dep '

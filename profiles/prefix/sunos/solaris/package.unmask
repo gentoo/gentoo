@@ -1,6 +1,0 @@
-# Copyright 1999-2018 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2018-12-12)
-# unmask older binutils, this goes together with the masking of 2.31.1
-<sys-devel/binutils-2.30

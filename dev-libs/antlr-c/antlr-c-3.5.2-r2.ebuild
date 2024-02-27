@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug debugger doc"
 
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}/3.5-cflags.patch" )
 

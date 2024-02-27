@@ -1,5 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/flasgger
+dev-python/nbclient
+dev-python/nbconvert
+dev-python/nbformat
+dev-python/nbsphinx
+dev-python/sphobjinv
+dev-python/warlock
+net-wireless/gnuradio
+net-wireless/gqrx
+net-wireless/gr-iqbal
+net-wireless/gr-osmosdr
 
 # Various packages requiring Rust.
 app-admin/ansible
@@ -11,6 +25,8 @@ app-backup/borgmatic
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
+app-crypt/rpm-sequoia
+app-emulation/virtiofsd
 app-eselect/eselect-rust
 app-misc/khal
 app-text/mdbook
@@ -25,6 +41,7 @@ dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
 dev-python/cfn-lint
 >=dev-python/cryptography-36
+dev-python/apprise
 dev-python/dirty-equals
 dev-python/hatch-jupyter-builder
 dev-python/inflect
@@ -46,13 +63,14 @@ dev-python/jupyterlab
 dev-python/keyring
 dev-python/apache-libcloud
 dev-python/moto
-dev-python/mkdocs-redirects
-dev-python/mkdocs-material
-dev-python/mkdocs-pymdownx-material-extras
-dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
-dev-python/mkdocs-material-extensions
+dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-git-revision-date-localized-plugin
+dev-python/mkdocs-material
+dev-python/mkdocs-material-extensions
+dev-python/mkdocs-pymdownx-material-extras
+dev-python/mkdocs-redirects
+dev-python/mkdocs-static-i18n
 dev-python/nbclassic
 dev-python/nbdime
 dev-python/nbval
@@ -68,6 +86,7 @@ dev-python/orjson
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
+dev-python/pendulum
 dev-python/pooch
 dev-python/pydantic
 dev-python/pydantic-core
@@ -85,7 +104,7 @@ dev-python/python-ironicclient
 dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
-dev-python/python-sshpubkeys
+dev-python/quart-trio
 dev-python/readme-renderer
 dev-python/referencing
 dev-python/requests-kerberos
@@ -96,6 +115,7 @@ dev-python/selenium
 dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/spur
+dev-python/sshpubkeys
 dev-python/sshtunnel
 dev-python/tempest
 dev-python/trustme
@@ -130,6 +150,7 @@ gnome-extra/sushi
 >=media-libs/libopenraw-0.3.2
 media-video/rav1e
 net-analyzer/wtfis
+net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37
 net-libs/quiche

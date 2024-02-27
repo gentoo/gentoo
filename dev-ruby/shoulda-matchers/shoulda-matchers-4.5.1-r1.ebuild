@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/thoughtbot/shoulda-matchers/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/activesupport-4.2.0:*"

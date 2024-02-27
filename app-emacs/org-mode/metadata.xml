@@ -22,7 +22,6 @@
 </longdescription>
 <stabilize-allarches/>
 <use>
-  <flag name="contrib">Install user-contributed files</flag>
   <flag name="odt-schema">Install non-free schema files
     for OpenDocument Text exporter</flag>
 </use>

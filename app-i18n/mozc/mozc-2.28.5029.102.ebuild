@@ -1,4 +1,4 @@
-# Copyright 2010-2023 Gentoo Authors
+# Copyright 2010-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -45,16 +45,16 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="debug emacs fcitx4 +gui ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	dev-build/gyp
 	$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	>=dev-libs/protobuf-3.0.0
-	dev-util/gyp
-	dev-util/ninja
+	app-alternatives/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )

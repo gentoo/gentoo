@@ -14,7 +14,8 @@ depend() {
 		done
 	fi
 	config /etc/fstab
-	need portmap rpc.statd rpc.idmapd ${myneed}
+	need portmap
+	need rpc.statd rpc.idmapd ${myneed}
 	use ypbind dns
 }
 

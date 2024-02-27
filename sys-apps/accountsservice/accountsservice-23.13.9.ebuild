@@ -55,6 +55,9 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
 	"${FILESDIR}"/${PN}-23.13.9-generate-version.patch #905770
+	# From Alpine Linux
+	# https://gitlab.freedesktop.org/accountsservice/accountsservice/-/merge_requests/97
+	"${FILESDIR}"/${PN}-23.13.9-musl-fixes.patch
 )
 
 python_check_deps() {

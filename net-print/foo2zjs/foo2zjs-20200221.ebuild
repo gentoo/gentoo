@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	app-editors/vim
 	net-misc/wget
 	sys-apps/ed
-	sys-devel/bc
+	app-alternatives/bc
 	test? ( sys-process/time )"
 
 SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"

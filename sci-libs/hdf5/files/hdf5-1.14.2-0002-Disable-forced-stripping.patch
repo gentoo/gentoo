@@ -1,0 +1,31 @@
+From 260c90de63af19ff96fcf735d75d497356747788 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 17 Dec 2023 09:26:33 +0000
+Subject: [PATCH 2/3] Disable forced stripping
+
+Bug: https://bugs.gentoo.org/665378
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index baad732..8c6b6f4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2183,9 +2183,9 @@ case "X-$SYMBOLS" in
+     AC_MSG_RESULT([yes])
+     ;;
+   X-no)
+-    H5_CFLAGS="$H5_CFLAGS $NO_SYMBOLS_CFLAGS"
+-    H5_CXXFLAGS="$H5_CXXFLAGS $NO_SYMBOLS_CXXFLAGS"
+-    H5_FCFLAGS="$H5_FCFLAGS $NO_SYMBOLS_FCFLAGS"
++    H5_CFLAGS="$H5_CFLAGS"
++    H5_CXXFLAGS="$H5_CXXFLAGS"
++    H5_FCFLAGS="$H5_FCFLAGS"
+     AC_MSG_RESULT([no])
+     ;;
+   *)
+-- 
+2.43.0
+

@@ -5,8 +5,4 @@
 		<email>ml@gentoo.org</email>
 		<name>ML</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gienah@gentoo.org</email>
-		<name>Mark Wright</name>
-	</maintainer>
 </pkgmetadata>

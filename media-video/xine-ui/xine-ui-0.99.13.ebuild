@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools xdg-utils
+inherit autotools xdg
 
 DESCRIPTION="Xine movie player"
 HOMEPAGE="https://xine-project.org/home"
@@ -86,16 +86,4 @@ src_install() {
 		install
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }

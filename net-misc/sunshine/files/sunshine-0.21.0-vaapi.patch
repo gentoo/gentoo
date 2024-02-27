@@ -1,0 +1,26 @@
+From dac48e21278339e72c9b3efb5dab63d9c10b5975 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@aura-online.co.uk>
+Date: Sun, 31 Dec 2023 20:10:48 +0000
+Subject: [PATCH 1/2] Use dl handle for libva's vaTerminate rather than actual
+ function (#1955)
+
+---
+ src/platform/linux/vaapi.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/platform/linux/vaapi.cpp b/src/platform/linux/vaapi.cpp
+index 18b0dff..77daeab 100644
+--- a/src/platform/linux/vaapi.cpp
++++ b/src/platform/linux/vaapi.cpp
+@@ -520,7 +520,7 @@ namespace va {
+     auto hwctx = (AVVAAPIDeviceContext *) ctx->hwctx;
+     auto priv = (VAAPIDevicePriv *) ctx->user_opaque;
+ 
+-    vaTerminate(hwctx->display);
++    terminate(hwctx->display);
+     close(priv->drm_fd);
+     av_freep(&priv);
+   }
+-- 
+2.43.0
+

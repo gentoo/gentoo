@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    AutoDoc is a package for the GAP computer algebra system. It is
+    meant to simplify the creation of reference manuals for GAP
+    packages. It makes it possible to create documentation from source
+    code comments, without writing XML files. It is not a substitute for
+    GAPDoc, but rather builds on GAPDoc, by generating XML input for the
+    latter. As such, you can combine an existing GAPDoc manual with
+    AutoDoc.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/AutoDoc</remote-id>
+  </upstream>
+</pkgmetadata>

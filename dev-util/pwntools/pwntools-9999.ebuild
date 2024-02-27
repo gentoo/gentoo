@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 inherit bash-completion-r1 distutils-r1
 
@@ -15,7 +15,9 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/Gallopsled/pwntools.git"
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	if [[ ${PV} != *_beta* ]] ; then
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	fi
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi
 
@@ -33,7 +35,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.15.2[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.3.0[${PYTHON_USEDEP}]
-	>=dev-python/pyelftools-0.2.4[${PYTHON_USEDEP}]
+	>=dev-python/pyelftools-0.29[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pyserial-2.7[${PYTHON_USEDEP}]
 	dev-python/PySocks[${PYTHON_USEDEP}]

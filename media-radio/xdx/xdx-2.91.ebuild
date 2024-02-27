@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/xdxclusterclient/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND="x11-libs/gtk+:3

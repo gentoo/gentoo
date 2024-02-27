@@ -9,6 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="activities">Enable Plasma Activities support via <pkg>kde-frameworks/kactivities</pkg></flag>
+		<flag name="activities">Enable Plasma Activities support via <pkg>kde-plasma/plasma-activities</pkg></flag>
 	</use>
 </pkgmetadata>

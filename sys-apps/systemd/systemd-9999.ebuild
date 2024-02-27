@@ -1,4 +1,4 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,10 +23,13 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+	if [[ ${PV} != *rc* ]] ; then
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	fi
 fi
 
-inherit bash-completion-r1 linux-info meson-multilib pam python-single-r1
+inherit bash-completion-r1 linux-info meson-multilib optfeature pam python-single-r1
 inherit secureboot systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
@@ -36,9 +39,9 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnutls homed http idn importd iptables +kmod
+	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
-	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm vanilla xkb +zstd
+	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -47,20 +50,22 @@ REQUIRED_USE="
 	homed? ( cryptsetup pam openssl )
 	importd? ( curl lzma || ( gcrypt openssl ) )
 	pwquality? ( homed )
+	boot? ( kernel-install )
+	ukify? ( boot )
 "
 RESTRICT="!test? ( test )"
 
 MINKV="4.15"
 
 COMMON_DEPEND="
-	>=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
+	>=sys-apps/util-linux-2.32:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl:0= )
-	apparmor? ( sys-libs/libapparmor:0= )
+	apparmor? ( >=sys-libs/libapparmor-2.13:0= )
 	audit? ( >=sys-process/audit-2:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
-	curl? ( net-misc/curl:0= )
+	curl? ( >=net-misc/curl-7.32.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	fido2? ( dev-libs/libfido2:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
@@ -77,12 +82,12 @@ COMMON_DEPEND="
 	iptables? ( net-firewall/iptables:0= )
 	openssl? ( >=dev-libs/openssl-1.1.0:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
-	pkcs11? ( app-crypt/p11-kit:0= )
+	pkcs11? ( >=app-crypt/p11-kit-0.23.3:0= )
 	pcre? ( dev-libs/libpcre2 )
-	pwquality? ( dev-libs/libpwquality:0= )
-	qrcode? ( media-gfx/qrencode:0= )
+	pwquality? ( >=dev-libs/libpwquality-1.4.1:0= )
+	qrcode? ( >=media-gfx/qrencode-3:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.3:0= )
-	selinux? ( sys-libs/libselinux:0= )
+	selinux? ( >=sys-libs/libselinux-2.1.9:0= )
 	tpm? ( app-crypt/tpm2-tss:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )
 	zstd? ( >=app-arch/zstd-1.4.0:0=[${MULTILIB_USEDEP}] )
@@ -124,7 +129,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
-	boot? (
+	ukify? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "${PEFILE_DEPEND}")
 	)
@@ -153,7 +158,7 @@ PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 BDEPEND="
 	app-arch/xz-utils:0
 	dev-util/gperf
-	>=dev-util/meson-0.46
+	>=dev-build/meson-0.46
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -170,10 +175,8 @@ BDEPEND="
 	$(python_gen_cond_dep "
 		dev-python/jinja[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
-		boot? (
-			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
-			test? ( ${PEFILE_DEPEND} )
-		)
+		boot? ( >=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}] )
+		ukify? ( test? ( ${PEFILE_DEPEND} ) )
 	")
 "
 
@@ -269,6 +272,8 @@ src_configure() {
 multilib_src_configure() {
 	local myconf=(
 		--localstatedir="${EPREFIX}/var"
+		# default is developer, bug 918671
+		-Dmode=release
 		-Dsupport-url="https://gentoo.org/support/"
 		-Dpamlibdir="$(getpam_mod_dir)"
 		# avoid bash-completion dep
@@ -282,6 +287,9 @@ multilib_src_configure() {
 		# no deps
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
+		# Match /etc/shells, bug 919749
+		-Ddebug-shell="${EPREFIX}/bin/sh"
+		-Ddefault-user-shell="${EPREFIX}/bin/bash"
 		# Optional components/dependencies
 		$(meson_native_use_bool acl)
 		$(meson_native_use_bool apparmor)
@@ -300,6 +308,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool importd)
 		$(meson_native_use_bool importd bzip2)
 		$(meson_native_use_bool importd zlib)
+		$(meson_native_use_bool kernel-install)
 		$(meson_native_use_bool kmod)
 		$(meson_use lz4)
 		$(meson_use lzma xz)
@@ -317,6 +326,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool selinux)
 		$(meson_native_use_bool tpm tpm2)
 		$(meson_native_use_bool test dbus)
+		$(meson_native_use_bool ukify)
 		$(meson_native_use_bool xkb xkbcommon)
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
@@ -343,6 +353,7 @@ multilib_src_configure() {
 		$(meson_native_true timesyncd)
 		$(meson_native_true tmpfiles)
 		$(meson_native_true vconsole)
+		$(meson_native_enabled vmspawn)
 	)
 
 	meson_src_configure "${myconf[@]}"
@@ -395,10 +406,13 @@ multilib_src_install_all() {
 		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
 	fi
 
-	if use boot; then
-		python_fix_shebang "${ED}"
-		secureboot_auto_sign
+	if use kernel-install; then
+		# Dummy config, remove to make room for sys-kernel/installkernel
+		rm "${ED}/usr/lib/kernel/install.conf" || die
 	fi
+
+	use ukify && python_fix_shebang "${ED}"
+	use boot && secureboot_auto_sign
 }
 
 migrate_locale() {
@@ -482,11 +496,26 @@ pkg_postinst() {
 		rm "${EROOT}/var/lib/systemd/timesync"
 	fi
 
+	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
+		ebegin "Reexecuting system manager (systemd)"
+		systemctl daemon-reexec
+		eend $? || FAIL=1
+	fi
+
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
+	fi
+
+	if use boot; then
+		optfeature "installing kernels in systemd-boot's native layout and update loader entries" \
+			"sys-kernel/installkernel[systemd-boot]"
+	fi
+	if use ukify; then
+		optfeature "generating unified kernel image on each kernel installation" \
+			"sys-kernel/installkernel[ukify]"
 	fi
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-libpng14.patch
 	"${FILESDIR}"/${PN}-1.0-libpng15.patch
 	"${FILESDIR}"/${PN}-1.0-Wimplicit-function-declaration.patch
+	"${FILESDIR}"/${PN}-1.1-autoconf-quoting.patch
 )
 
 src_prepare() {

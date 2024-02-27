@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby31"
 
 inherit desktop ruby-ng
 
@@ -68,12 +68,11 @@ all_ruby_unpack() {
 }
 
 all_ruby_install() {
-	local rubyversion
-	local r
+	local ruby
 
-	for r in $USE_RUBY; do
-		if use ruby_targets_${r}; then
-			rubyversion=${r}
+	for ruby in ${RUBY_TARGETS_PREFERENCE}; do
+		if use ruby_targets_${ruby}; then
+			break
 		fi
 	done
 
@@ -81,7 +80,7 @@ all_ruby_install() {
 	doexe mikutter.rb
 	insinto /usr/share/mikutter
 	doins -r core plugin
-	sed -e "s/ruby19/${rubyversion}/" "${FILESDIR}"/mikutter \
+	sed -e "s/ruby19/${ruby}/" "${FILESDIR}"/mikutter \
 		| newbin - mikutter
 	dodoc README
 	make_desktop_entry mikutter Mikutter \

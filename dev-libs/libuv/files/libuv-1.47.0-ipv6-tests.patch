@@ -1,0 +1,54 @@
+https://github.com/libuv/libuv/issues/4211
+https://github.com/libuv/libuv/pull/4220
+https://github.com/libuv/libuv/commit/54d8364c2406758b572621af381f1d83e01ae46c
+
+From 54d8364c2406758b572621af381f1d83e01ae46c Mon Sep 17 00:00:00 2001
+From: Ben Noordhuis <info@bnoordhuis.nl>
+Date: Tue, 14 Nov 2023 22:09:30 +0100
+Subject: [PATCH] test: check if ipv6 link-local traffic is routable (#4220)
+
+Fixes: https://github.com/libuv/libuv/issues/4211
+--- a/test/test-tcp-connect6-error.c
++++ b/test/test-tcp-connect6-error.c
+@@ -23,6 +23,7 @@
+ #include "task.h"
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ 
+ static int connect_cb_called = 0;
+@@ -75,9 +76,13 @@ TEST_IMPL(tcp_connect6_error_fault) {
+ 
+ 
+ TEST_IMPL(tcp_connect6_link_local) {
++  uv_interface_address_t* ifs;
++  uv_interface_address_t* p;
+   struct sockaddr_in6 addr;
+   uv_connect_t req;
+   uv_tcp_t server;
++  int ok;
++  int n;
+ 
+   if (!can_ipv6())
+     RETURN_SKIP("IPv6 not supported");
+@@ -90,6 +95,18 @@ TEST_IMPL(tcp_connect6_link_local) {
+   RETURN_SKIP("Test does not currently work in QEMU");
+ #endif  /* defined(__QEMU__) */
+ 
++  /* Check there's an interface that routes link-local (fe80::/10) traffic. */
++  ASSERT_OK(uv_interface_addresses(&ifs, &n));
++  for (p = ifs; p < &ifs[n]; p++)
++    if (p->address.address6.sin6_family == AF_INET6)
++      if (!memcmp(&p->address.address6.sin6_addr, "\xfe\x80", 2))
++        break;
++  ok = (p < &ifs[n]);
++  uv_free_interface_addresses(ifs, n);
++
++  if (!ok)
++    RETURN_SKIP("IPv6 link-local traffic not supported");
++
+   ASSERT_OK(uv_ip6_addr("fe80::0bad:babe", 1337, &addr));
+   ASSERT_OK(uv_tcp_init(uv_default_loop(), &server));
+ 
+

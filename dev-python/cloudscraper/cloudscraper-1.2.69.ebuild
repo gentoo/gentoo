@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 RDEPEND="
 	dev-python/pyparsing[${PYTHON_USEDEP}]

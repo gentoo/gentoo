@@ -3,6 +3,10 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<doc>https://copyq.readthedocs.io/</doc>
 		<remote-id type="github">hluk/CopyQ</remote-id>
 	</upstream>
+	<use>
+		<flag name="notification">Build with native notification support (requires <pkg>kde-frameworks/knotifications</pkg>:5)</flag>
+	</use>
 </pkgmetadata>

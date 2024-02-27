@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/914511
+https://github.com/alsa-project/alsa-lib/issues/356
+https://github.com/alsa-project/alsa-lib/commit/96f60d829f2c9dc9ad9eda46410adaa41b4b0da0
+
+From 96f60d829f2c9dc9ad9eda46410adaa41b4b0da0 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 10 Oct 2023 08:20:15 +0200
+Subject: [PATCH] seq: Fix typos in symbol version definitions
+
+There were obvious typos in src/Versions.in that resulted in the
+undefined symbols.  Correct those entries.
+
+Fixes: 2aefb5c41cc0 ("seq: Add UMP support")
+Closes: https://github.com/alsa-project/alsa-lib/issues/356
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+--- a/src/Versions.in
++++ b/src/Versions.in
+@@ -158,13 +158,13 @@ ALSA_1.2.10 {
+     @SYMBOL_PREFIX@snd_ctl_ump_block_info;
+     @SYMBOL_PREFIX@snd_seq_ump_*;
+     @SYMBOL_PREFIX@snd_seq_client_info_get_midi_version;
+-    @SYMBOL_PREFIX@snd_seq_seq_client_info_get_ump_group_enabled;
++    @SYMBOL_PREFIX@snd_seq_client_info_get_ump_group_enabled;
+     @SYMBOL_PREFIX@snd_seq_client_info_get_ump_groupless_enabled;
+-    @SYMBOL_PREFIX@snd_seq_seq_client_get_ump_conversion;
++    @SYMBOL_PREFIX@snd_seq_client_info_get_ump_conversion;
+     @SYMBOL_PREFIX@snd_seq_client_info_set_midi_version;
+-    @SYMBOL_PREFIX@snd_seq_seq_client_info_set_ump_group_enabled;
++    @SYMBOL_PREFIX@snd_seq_client_info_set_ump_group_enabled;
+     @SYMBOL_PREFIX@snd_seq_client_info_set_ump_groupless_enabled;
+-    @SYMBOL_PREFIX@snd_seq_seq_client_set_ump_conversion;
++    @SYMBOL_PREFIX@snd_seq_client_info_set_ump_conversion;
+     @SYMBOL_PREFIX@snd_seq_get_ump_endpoint_info;
+     @SYMBOL_PREFIX@snd_seq_get_ump_block_info;
+     @SYMBOL_PREFIX@snd_seq_set_ump_endpoint_info;

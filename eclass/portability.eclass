@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: portability.eclass
@@ -105,7 +105,7 @@ dlopen_lib() {
 #
 # This will return make (provided by system packages) for BSD userlands,
 # or bsdmake for Darwin userlands and pmake for the rest of userlands,
-# both of which are provided by sys-devel/pmake package.
+# both of which are provided by dev-build/pmake package.
 #
 # Note: the bsdmake for Darwin userland is with compatibility with MacOSX
 # default name.

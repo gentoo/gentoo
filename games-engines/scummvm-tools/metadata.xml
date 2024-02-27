@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">scummvm</remote-id>
 	</upstream>
+	<use>
+		<flag name="tremor">Enable tremor, a fixed-point version of the Ogg Vorbis decoder</flag>
+	</use>
 </pkgmetadata>

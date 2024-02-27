@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${PN}-${CommitId}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-musl.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

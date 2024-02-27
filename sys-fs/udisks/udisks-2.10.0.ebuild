@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,15 +49,15 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	>=dev-util/gdbus-codegen-2.32
-	>=dev-util/gtk-doc-am-1.3
+	>=dev-build/gtk-doc-am-1.3
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.8 )
 	dev-libs/gobject-introspection-common
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 "
 # If adding a eautoreconf, then these might be needed at buildtime:
 # dev-libs/gobject-introspection-common
-# sys-devel/autoconf-archive
+# dev-build/autoconf-archive
 
 DOCS=( AUTHORS HACKING NEWS README.md )
 

@@ -2,14 +2,28 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
 		<email>arfrever.fta@gmail.com</email>
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<use>
+		<flag name="config-qt">Enable fcitx5-config-qt</flag>
+		<flag name="kcm">Enable KDE KCM support</flag>
+		<flag name="test">Enable Test</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">fcitx/fcitx-configtool</remote-id>
+		<remote-id type="github">fcitx/fcitx5-configtool</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,10 @@
+--- a/Directory.Build.props
++++ b/Directory.Build.props
+@@ -5,7 +5,4 @@
+     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+   </PropertyGroup>
+ 
+-  <ItemGroup>
+-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+-  </ItemGroup>
+ </Project>

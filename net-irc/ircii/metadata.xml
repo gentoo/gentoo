@@ -5,7 +5,4 @@
 		<email>bkohler@gentoo.org</email>
 		<name>Ben Kohler</name>
 	</maintainer>
-	<use>
-		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
-	</use>
 </pkgmetadata>

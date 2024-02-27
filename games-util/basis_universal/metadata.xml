@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="opencl">Enable OpenCL support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">BinomialLLC/basis_universal</remote-id>
 	</upstream>

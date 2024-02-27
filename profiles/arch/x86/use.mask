@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -107,7 +107,6 @@ webengine
 
 # Unmask x86 instruction sets
 -lilo
--mpx
 -svga
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
@@ -134,12 +133,10 @@ webengine
 -input_devices_vmmouse
 -input_devices_wacom
 -video_cards_ast
--video_cards_crocus
 -video_cards_d3d12
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel
--video_cards_iris
 -video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode

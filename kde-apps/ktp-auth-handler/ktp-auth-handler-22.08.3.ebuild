@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,10 +30,10 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kwallet-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	net-libs/accounts-qt
-	net-libs/signond
+	net-libs/accounts-qt[qt5(+)]
+	net-libs/signond[qt5(+)]
 	>=net-libs/telepathy-qt-0.9.8
 "
 RDEPEND="${DEPEND}
-	>=app-crypt/qca-2.3.0:2[qt5(+),ssl]
+	>=app-crypt/qca-2.3.0:2[ssl]
 "

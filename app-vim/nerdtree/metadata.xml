@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">scrooloose/nerdtree</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

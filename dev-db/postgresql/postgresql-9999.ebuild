@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ acct-user/postgres
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
-kerberos? ( virtual/krb5 )
+kerberos? ( app-crypt/mit-krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? (
 	sys-devel/llvm:=
@@ -81,7 +81,7 @@ app-text/openjade
 dev-libs/libxml2
 dev-libs/libxslt
 sys-devel/bison
-sys-devel/flex
+app-alternatives/lex
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "

@@ -400,7 +400,7 @@ else
 		https://github.com/mozilla/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="Apache-2.0"

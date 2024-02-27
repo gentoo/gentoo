@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # configure options currently not used:
 # --enable-mem(no) memory debugging: needs Electric fence (efence), which
@@ -51,9 +51,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-util/gtk-doc-am-1.25-r1
+	>=dev-build/gtk-doc-am-1.25-r1
 	>=dev-util/intltool-0.51.0-r1
-	>=sys-devel/flex-2.6.1
+	app-alternatives/lex
 	virtual/pkgconfig
 	app-alternatives/yacc
 	gtk-doc? ( >=dev-util/gtk-doc-1.25-r1 )

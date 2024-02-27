@@ -30,30 +30,39 @@ BUILD_BIN_PV=9.0.2
 BUILD_BIN_REV=r4
 BUILD_BIN_PVR="${BUILD_BIN_PV}${BUILD_BIN_REV:+-${BUILD_BIN_REV}}"
 
-DEFAULT_SRC_HOST="https://eidetic.codes"
-
-ghc_binaries() {
+# Binaries created and uploaded by hololeap
+SRC_URL_HOLOLEAP="https://eidetic.codes"
+ghc_binaries_hololeap() {
 	echo "
-		binary? ( ${DEFAULT_SRC_HOST}/${PN}-bin-${BIN_PVR}-${1}.gpkg.tar )
-		!binary? ( ${DEFAULT_SRC_HOST}/${PN}-bin-${BUILD_BIN_PVR}-${1}.gpkg.tar )
+		binary? ( ${SRC_URL_HOLOLEAP}/${PN}-bin-${BIN_PVR}-${1}.gpkg.tar )
+		!binary? ( ${SRC_URL_HOLOLEAP}/${PN}-bin-${BUILD_BIN_PVR}-${1}.gpkg.tar )
+	"
+}
+
+# Binaries created and uploaded by matoro
+SRC_URL_MATORO="https://github.com/matoro/${PN}/releases/download"
+ghc_binaries_matoro() {
+	echo "
+		binary? ( ${SRC_URL_MATORO}/${BIN_PVR}/${PN}-bin-${BIN_PVR}-${1}.gpkg.tar )
+		!binary? ( ${SRC_URL_MATORO}/${BUILD_BIN_PVR}/${PN}-bin-${BUILD_BIN_PVR}-${1}.tar.gz )
 	"
 }
 
 # Differentiate glibc/musl
 
 #glibc_binaries="$glibc_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
-glibc_binaries+=" amd64? ( $(ghc_binaries x86_64-pc-linux-gnu) )"
+glibc_binaries+=" amd64? ( $(ghc_binaries_hololeap x86_64-pc-linux-gnu) )"
 #glibc_binaries="$glibc_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-#glibc_binaries+=" arm64? ( $(ghc_binaries_gz_build_bin aarch64-unknown-linux-gnu) )"
+glibc_binaries+=" arm64? ( $(ghc_binaries_matoro aarch64-unknown-linux-gnu) )"
 #glibc_binaries="$glibc_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #glibc_binaries="$glibc_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-#glibc_binaries+=" ppc64? (
-#	big-endian? ( $(ghc_binaries_gz_build_bin powerpc64-unknown-linux-gnu) )
-#	!big-endian? ( $(ghc_binaries_gz_build_bin powerpc64le-unknown-linux-gnu) )
-#)"
-#glibc_binaries+=" riscv? ( $(ghc_binaries_gz_build_bin riscv64-unknown-linux-gnu) )"
+glibc_binaries+=" ppc64? (
+	big-endian? ( $(ghc_binaries_matoro powerpc64-unknown-linux-gnu) )
+	!big-endian? ( $(ghc_binaries_matoro powerpc64le-unknown-linux-gnu) )
+)"
+glibc_binaries+=" riscv? ( $(ghc_binaries_matoro riscv64-unknown-linux-gnu) )"
 #glibc_binaries="$glibc_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
-glibc_binaries+=" x86? ( $(ghc_binaries i686-pc-linux-gnu) )"
+glibc_binaries+=" x86? ( $(ghc_binaries_hololeap i686-pc-linux-gnu) )"
 
 #musl_binaries="$musl_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
 #musl_binaries="$musl_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-musl.tbz2 )"
@@ -79,13 +88,13 @@ yet_binary() {
 		glibc)
 			case "${ARCH}" in
 				#alpha) return 0 ;;
-				#arm64) return 0 ;;
+				arm64) return 0 ;;
 				#arm) return 0 ;;
 				amd64) return 0 ;;
 				#ia64) return 0 ;;
 				#ppc) return 0 ;;
-				#ppc64) return 0 ;;
-				#riscv) return 0 ;;
+				ppc64) return 0 ;;
+				riscv) return 0 ;;
 				#sparc) return 0 ;;
 				x86) return 0 ;;
 				*) return 1 ;;
@@ -130,7 +139,7 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp llvm numa profile test unregisterised"
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
@@ -170,19 +179,28 @@ RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/docbook-xml-dtd:4.2
+	doc? (
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		')
+		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
-		dev-python/sphinx
-		dev-python/sphinx-rtd-theme
-		>=dev-libs/libxslt-1.1.2 )
-	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )
-	test? ( ${PYTHON_DEPS} )
+		>=dev-libs/libxslt-1.1.2
+	)
+	!ghcbootstrap? (
+		${PREBUILT_BINARY_DEPENDS}
+	)
+	test? (
+		${PYTHON_DEPS}
+	)
 "
 
 needs_python() {
 	# test driver is written in python
 	use test && return 0
+	use doc && return 0
 	return 1
 }
 
@@ -195,6 +213,13 @@ REQUIRED_USE="
 
 # haskell libraries built with cabal in configure mode, #515354
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-gcc"
+
+python_check_deps() {
+	if use doc; then
+		python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]"
+	fi
+}
 
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
@@ -563,9 +588,6 @@ src_prepare() {
 				# UPDATE ME for ghc-7
 				mkdir "${WORKDIR}"/ghc-bin-installer || die
 				pushd "${WORKDIR}"/ghc-bin-installer > /dev/null || die
-				use sparc-solaris && unpack ghc-6.10.4-sparc-sun-solaris2.tar.bz2
-				use x86-solaris && unpack ghc-7.0.3-i386-unknown-solaris2.tar.bz2
-				use x86-macos && unpack ghc-7.4.1-i386-apple-darwin.tar.bz2
 				use x64-macos && unpack ghc-7.4.1-x86_64-apple-darwin.tar.bz2
 				popd > /dev/null
 
@@ -656,13 +678,13 @@ src_prepare() {
 		# However, the patch is difficult to apply and our versions of GHC don't
 		# have the update, so we symlink to the system version instead.
 		if use doc; then
-			local rtd_theme_dir="$(dirname $(python -c "import sphinx_rtd_theme; print(sphinx_rtd_theme.__file__)"))"
+			local python_str="import sphinx_rtd_theme; print(sphinx_rtd_theme.__file__)"
+			local rtd_theme_dir="$(dirname $("${EPYTHON}" -c "$python_str"))"
 			local orig_rtd_theme_dir="${S}/docs/users_guide/rtd-theme"
 
-			ebegin "Replacing bundled rtd-theme with dev-python/sphinx-rtd-theme"
+			einfo "Replacing bundled rtd-theme with dev-python/sphinx-rtd-theme"
 			rm -r "${orig_rtd_theme_dir}" || die
 			ln -s "${rtd_theme_dir}" "${orig_rtd_theme_dir}" || die
-			eend 0
 		fi
 
 		# mingw32 target
@@ -680,6 +702,10 @@ src_prepare() {
 
 src_configure() {
 	if ! use binary; then
+		# No upstream LTO support. bug #855596
+		filter-lto
+		append-flags -fno-strict-aliasing
+
 		# initialize build.mk
 		echo '# Gentoo changes' > mk/build.mk
 

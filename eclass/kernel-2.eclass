@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -288,7 +288,7 @@
 # Moved this above inherit as crossdev.eclass uses CHOST internally.
 [[ ${PROFILE_ARCH} == ppc64 ]] && CHOST="powerpc64-${CHOST#*-}"
 
-inherit crossdev estack multiprocessing toolchain-funcs
+inherit crossdev estack multiprocessing optfeature toolchain-funcs
 
 case ${EAPI} in
 	7|8) ;;
@@ -653,12 +653,12 @@ kernel_is() {
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
 	RDEPEND="!build? (
-		app-arch/cpio
+		app-alternatives/cpio
 		dev-lang/perl
-		sys-devel/bc
+		app-alternatives/bc
+		dev-build/make
 		sys-devel/bison
 		sys-devel/flex
-		sys-devel/make
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
 		virtual/pkgconfig
@@ -992,6 +992,9 @@ postinst_sources() {
 			fi
 		fi
 	fi
+
+	optfeature "versioned kernel image installation and optionally automating tasks such as generating an initramfs or unified kernel image" \
+		"sys-kernel/installkernel"
 }
 
 # pkg_setup functions

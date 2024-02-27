@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="https://github.com/oneapi-src/oneTBB"
@@ -27,6 +27,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	# Workaround for bug #912210
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# Has an #error to force compilation as C but links with C++ library, dies
 	# with GLIBCXX_ASSERTIONS as a result.
 	sed -i -e '/tbb_add_c_test(SUBDIR tbbmalloc NAME test_malloc_pure_c DEPENDENCIES TBB::tbbmalloc)/d' test/CMakeLists.txt || die

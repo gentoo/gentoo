@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,10 +25,10 @@ PATCHES=( "${FILESDIR}"/${PN}-5.1.3_stdint-gcc13.patch
 
 RDEPEND="dev-util/hip"
 DEPEND="${RDEPEND}
-dev-util/rocm-cmake
+dev-build/rocm-cmake
 test? ( dev-cpp/gtest )"
-BDEPEND="dev-util/rocm-cmake
->=dev-util/cmake-3.22"
+BDEPEND="dev-build/rocm-cmake
+>=dev-build/cmake-3.22"
 
 S="${WORKDIR}/rocRAND-rocm-${PV}"
 

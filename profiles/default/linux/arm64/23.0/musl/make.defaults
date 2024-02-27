@@ -4,7 +4,7 @@
 ARCH="arm64"
 ACCEPT_KEYWORDS="${ARCH}"
 
-CHOST="aarch64-gentoo-linux-musl"
+CHOST="aarch64-unknown-linux-musl"
 CFLAGS="-O2"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"

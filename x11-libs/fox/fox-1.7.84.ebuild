@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ DEPEND="
 	x11-base/xorg-proto
 	x11-libs/libXt
 "
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.84-pthread_rwlock_prefer_writer_np-musl.patch

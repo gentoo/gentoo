@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/symengine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 # BUILD_FOR_DISTRIBUTION enables threads by default so do it here
 IUSE="arb benchmarks boost debug doc ecm +flint llvm +mpc +mpfr openmp test tcmalloc +threads"
 RESTRICT="!test? ( test )"
@@ -33,11 +33,13 @@ DEPEND="
 	${RDEPEND}
 	dev-libs/cereal
 "
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-cmake-build-type.patch
 	"${FILESDIR}"/${PN}-0.8.1-fix_llvm.patch
+	# https://github.com/symengine/symengine/pull/1985
+	"${FILESDIR}"/${PN}-0.11.1-flint-3.patch
 )
 
 pkg_pretend() {

@@ -1,0 +1,17 @@
+Inpompatible function pointers are an error instead of a warning by default since clang16
+
+Bug: https://bugs.gentoo.org/896232
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-22)
+
+--- a/window.c
++++ b/window.c
+@@ -833,7 +833,7 @@ char imageInWindow (Display *disp, int scrn, Image *image, OptionSet *global_opt
+       /* reset alarm to -delay seconds after every event */
+ #ifdef ENABLE_TIMEOUT
+       AlarmWentOff = 0;
+-      signal(SIGALRM, delayAlarmHandler);
++      signal(SIGALRM, (__sighandler_t)delayAlarmHandler);
+       alarm(delay);
+ #endif /* ENABLE_TIMEOUT */
+   }

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ RDEPEND=">=dev-libs/rocr-runtime-5.3
 	media-libs/mesa[-opencl]"
 DEPEND="${RDEPEND}
 	dev-util/opencl-headers"
-BDEPEND=">=dev-util/rocm-cmake-5.3
+BDEPEND=">=dev-build/rocm-cmake-5.3
 	test? (
 		>=x11-apps/mesa-progs-8.5.0[X]
 		media-libs/glew
@@ -53,6 +53,9 @@ if [[ ${PV} == "9999" ]]; then
 	fi
 }
 src_prepare() {
+	# Fix ld.lld linker error: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/155
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	cmake_src_prepare
 
 	pushd ${CLR_S} || die

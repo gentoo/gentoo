@@ -34,9 +34,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
-	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-	)
 "
 
 PATCHES=(

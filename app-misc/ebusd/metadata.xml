@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Ebusd is a daemon for handling communication with eBUS devices
+		connected to a 2-wire bus system. The "energy bus" is used by
+		numerous heating systems.
+	</longdescription>
+	<use>
+		<flag name="contrib">Compile and install additional user contribued plugins.</flag>
+		<flag name="knx">Enable support for connecting to KNX.</flag>
+		<flag name="mqtt">Enable support for connecting to MQTT.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/john30/ebusd/issues</bugs-to>
+		<remote-id type="github">john30/ebusd</remote-id>
+	</upstream>
+</pkgmetadata>

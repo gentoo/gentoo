@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=wluma
+Comment=Start the wluma brightness monitor
+Exec=/usr/bin/wluma
+Terminal=false
+Type=Application
+X-GNOME-HiddenUnderSystemd=true
+X-KDE-HiddenUnderSystemd=true
+X-systemd-skip=true

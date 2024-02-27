@@ -40,6 +40,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.0-no-clobber-fortify-source.patch
+	"${FILESDIR}"/${PN}-1.11.0-Make-xmlError-structs-constant.patch
+	"${FILESDIR}"/${PN}-1.11.0-osinfo-db-validate-Add-more-libxml-includes.patch
 )
 
 python_check_deps() {

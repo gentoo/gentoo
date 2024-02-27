@@ -19,9 +19,9 @@ IUSE="+binary-laws +unary-laws"
 
 RDEPEND="dev-haskell/contravariant:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
-	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
-	unary-laws? ( >=dev-haskell/quickcheck-2.10.0:2=[profile?] )
-	!unary-laws? ( !binary-laws? ( >=dev-haskell/quickcheck-2.7:2=[profile?] ) )
+	binary-laws? ( >=dev-haskell/quickcheck-2.10.0:=[profile?] )
+	unary-laws? ( >=dev-haskell/quickcheck-2.10.0:=[profile?] )
+	!unary-laws? ( !binary-laws? ( >=dev-haskell/quickcheck-2.7:=[profile?] ) )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.4

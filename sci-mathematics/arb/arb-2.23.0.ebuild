@@ -15,7 +15,7 @@ RESTRICT="!test? ( test )"
 
 LICENSE="GPL-2+"
 SLOT="0/3"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
 	dev-libs/gmp:0=

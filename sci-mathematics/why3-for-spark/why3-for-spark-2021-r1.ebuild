@@ -21,8 +21,8 @@ RESTRICT="strip"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.11:=[ocamlopt?]
-	dev-ml/menhir:=
-	dev-ml/num:=
+	dev-ml/menhir:=[ocamlopt?]
+	dev-ml/num:=[ocamlopt?]
 	dev-ml/yojson:=
 	coq? ( sci-mathematics/coq )
 	emacs? ( app-editors/emacs:* )
@@ -34,8 +34,8 @@ RDEPEND="
 		dev-ml/ppx_sexp_conv:=[ocamlopt?]
 		dev-ml/sexplib:=[ocamlopt?]
 	)
-	zarith? ( dev-ml/zarith:= )
-	zip? ( dev-ml/camlzip:= )
+	zarith? ( dev-ml/zarith:=[ocamlopt?] )
+	zip? ( dev-ml/camlzip:=[ocamlopt?] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -69,7 +69,8 @@ QA_FLAGS_IGNORED=(
 	/usr/bin/why3ide.cmxs
 )
 
-REQUIRED_USE="html? ( doc )"
+# Forcing native for bug #913497
+REQUIRED_USE="html? ( doc ) ocamlopt"
 
 src_prepare() {
 	find examples -name \*gz | xargs gunzip

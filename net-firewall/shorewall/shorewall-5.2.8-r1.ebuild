@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -95,7 +95,7 @@ DEPEND=""
 RDEPEND="
 	>=net-firewall/iptables-1.4.20
 	>=sys-apps/iproute2-3.8.0[-minimal]
-	>=sys-devel/bc-1.06.95
+	app-alternatives/bc
 	ipv4? (
 		>=dev-lang/perl-5.16
 		virtual/perl-Digest-SHA

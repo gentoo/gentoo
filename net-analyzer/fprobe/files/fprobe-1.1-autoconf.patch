@@ -1,0 +1,315 @@
+https://bugs.gentoo.org/921189
+
+Fix various underquoting issues and use of old macros.
+--- a/configure.in
++++ b/configure.in
+@@ -3,44 +3,42 @@ define([AC_CACHE_LOAD], )
+ define([AC_CACHE_SAVE], )
+ 
+ AC_INIT
+-AC_CANONICAL_SYSTEM
+-AM_INIT_AUTOMAKE(fprobe,1.1)
+-AM_CONFIG_HEADER(config.h)
++AC_CANONICAL_HOST
++AM_INIT_AUTOMAKE([fprobe], [1.1])
++AM_CONFIG_HEADER([config.h])
+ 
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+-AC_CHECK_LIB(pthread, pthread_create, ,
+-	AC_CHECK_LIB(c_r, pthread_create), ,
+-	[AC_ERROR(POSIX threads not found)])
+-AC_SEARCH_LIBS(socket, socket)
+-AC_SEARCH_LIBS(gethostbyname, nsl)
+-AC_SEARCH_LIBS(sched_setscheduler, rt)
++AC_CHECK_LIB([pthread], [pthread_create], [], [AC_CHECK_LIB([c_r], [pthread_create], [], [AC_MSG_ERROR(POSIX threads not found)])])
++AC_SEARCH_LIBS([socket], [socket])
++AC_SEARCH_LIBS([gethostbyname], [nsl])
++AC_SEARCH_LIBS([sched_setscheduler], [rt])
+ 
+ dnl ************************************************
+ dnl inttypes
+ 
+-AC_CHECK_HEADER(inttypes.h, ,
+-	[AC_CHECK_SIZEOF(int, 8)
+-	AC_CHECK_SIZEOF(long, 8)
+-	AC_CHECK_SIZEOF(long long, 8)]
+-)
++AC_CHECK_HEADER([inttypes.h], [], [
++	AC_CHECK_SIZEOF([int], [8])
++	AC_CHECK_SIZEOF([long], [8])
++	AC_CHECK_SIZEOF([long long], [8])
++])
+ 
+ dnl ************************************************
+ dnl OS type
+ 
+-case "${target}" in
++case "${host}" in
+ 	*-*-*linux*)
+-		AC_DEFINE_UNQUOTED(OS_LINUX, , OS type)
+-		AC_DEFINE_UNQUOTED(CLONEBASED_THREADS, , clone()-based threads)
++		AC_DEFINE_UNQUOTED([OS_LINUX], [], [OS type])
++		AC_DEFINE_UNQUOTED([CLONEBASED_THREADS], [], [clone()-based threads])
+ 		CFLAGS="$CFLAGS -D_BSD_SOURCE"
+ 		;;
+ 	*-*-solaris*)
+-		AC_DEFINE_UNQUOTED(OS_SOLARIS, , OS type)
++		AC_DEFINE_UNQUOTED([OS_SOLARIS], [], [OS type])
+ 		CFLAGS="$CFLAGS -D_POSIX_PTHREAD_SEMANTICS"
+ 		;;
+ 	*-*-freebsd*)
+-		AC_DEFINE_UNQUOTED(OS_FREEBSD, , OS type)
++		AC_DEFINE_UNQUOTED([OS_FREEBSD], [], [OS type])
+ 		CFLAGS="$CFLAGS -pthread"
+ 		;;
+ esac
+@@ -48,12 +46,12 @@ esac
+ dnl ************************************************
+ dnl pcap.h location
+ 
+-AC_ARG_WITH(pcap,
++AC_ARG_WITH([pcap],
+ 	[  --with-pcap=DIR         pcap.h location],
+-	pcap="$withval")
++	[pcap="$withval"])
+ 
+-AC_CHECK_HEADER(pcap.h, , [
+-	AC_MSG_CHECKING(for pcap.h in alternative location)
++AC_CHECK_HEADER([pcap.h], [] , [
++	AC_MSG_CHECKING([for pcap.h in alternative location])
+ 	found=""
+ 	pcap_dirs="$pcap /usr/include/pcap"
+ 	for pcap in $pcap_dirs; do
+@@ -64,18 +62,18 @@ AC_CHECK_HEADER(pcap.h, , [
+ 		fi
+ 	done
+ 
+-	AC_MSG_RESULT($found)
++	AC_MSG_RESULT([$found])
+ 	if test -z "$found"; then
+-		AC_ERROR(pcap.h not found)
++		AC_MSG_ERROR([pcap.h not found])
+ 	fi
+ 	])
+ 
+ dnl ************************************************
+ dnl libpcap location
+ 
+-AC_ARG_WITH(libpcap,
++AC_ARG_WITH([libpcap],
+ 	[  --with-libpcap=DIR      libpcap location],
+-	libpcap="$withval")
++	[libpcap="$withval"])
+ 
+ if test "$libpcap" = "yes"; then
+ 	libpcap=""
+@@ -85,15 +83,15 @@ if test "$libpcap"; then
+ 	LDFLAGS="$LDFLAGS -L$libpcap"
+ fi
+ 
+-AC_CHECK_LIB(pcap, pcap_loop, , AC_ERROR(libpcap not found), $LDFLAGS)
++AC_CHECK_LIB([pcap], [pcap_loop], [], [AC_MSG_ERROR(libpcap not found)], [$LDFLAGS])
+ 
+ dnl ************************************************
+ dnl Memory bulk indexing mode
+ 
+-AC_MSG_CHECKING(which memory bulk indexing mode to use)
+-AC_ARG_WITH(membulk,
++AC_MSG_CHECKING([which memory bulk indexing mode to use])
++AC_ARG_WITH([membulk],
+ 	[  --with-membulk=MODE     indexing mode: index8|index16|ptr [default=ptr]],
+-	mem="$withval", mem="ptr")
++	[mem="$withval"], [mem="ptr"])
+ 
+ case "$mem" in
+ 	ptr)
+@@ -106,95 +104,95 @@ case "$mem" in
+ 		mem_bits="16"
+ 		;;
+ 	*)
+-		AC_ERROR(Invalid argument: "$mem")
++		AC_MSG_ERROR([Invalid argument: "$mem"])
+ 		;;
+ esac
+ 
+-AC_MSG_RESULT("$mem")
+-AC_DEFINE_UNQUOTED(MEM_BITS, $mem_bits, Memory bulk indexing mode)
++AC_MSG_RESULT([$mem])
++AC_DEFINE_UNQUOTED([MEM_BITS], [$mem_bits], [Memory bulk indexing mode])
+ 
+ dnl ************************************************
+ dnl Hash type
+ 
+-AC_MSG_CHECKING(which hash type and size to use)
+-AC_ARG_WITH(hash, 
++AC_MSG_CHECKING([which hash type and size to use])
++AC_ARG_WITH([hash],
+ 	[  --with-hash=TYPE        hash type: crc16|xor16|xor8 [default=crc16]],
+-	hash="$withval", hash="crc16")
++	[hash="$withval"], [hash="crc16"])
+ 
+ hash_type=`echo "$hash"|cut -b -3`
+ hash_bits=`echo "$hash"|cut -b 4-`
+ 
+ if test "$hash_type" = "xor"; then
+-	AC_DEFINE_UNQUOTED(HASH_TYPE_XOR, , Hash type)
++	AC_DEFINE_UNQUOTED([HASH_TYPE_XOR], [], [Hash type])
+ 	if test "$hash_bits" != "8" -a "$hash_bits" != "16"; then
+-		AC_ERROR(Invalid argument: "$withval")
++		AC_MSG_ERROR([Invalid argument: "$withval"])
+ 	fi
+ else
+ 	if test "$hash" != "crc16"; then
+-		AC_ERROR(Invalid argument: "$hash")
++		AC_MSG_ERROR([Invalid argument: "$hash"])
+ 	fi
+-	AC_DEFINE_UNQUOTED(HASH_TYPE_CRC, , Hash type)
++	AC_DEFINE_UNQUOTED([HASH_TYPE_CRC], [], [Hash type])
+ fi
+ 
+-AC_DEFINE_UNQUOTED(HASH_BITS, $hash_bits , Hash size)
+-AC_MSG_RESULT("$hash")
++AC_DEFINE_UNQUOTED([HASH_BITS], [$hash_bits], [Hash size])
++AC_MSG_RESULT([$hash])
+ 
+ dnl ************************************************
+ dnl Uptime trick
+ 
+-AC_MSG_CHECKING(whether to enable uptime trick)
+-AC_ARG_ENABLE(uptime_trick,
++AC_MSG_CHECKING([whether to enable uptime trick])
++AC_ARG_ENABLE([uptime_trick],
+ 	[  --enable-uptime_trick   enable uptime trick [default=yes]],
+-	uptime_trick="$enableval", uptime_trick="yes")
++	[uptime_trick="$enableval"], [uptime_trick="yes"])
+ case "$uptime_trick" in
+ 	yes)
+-		AC_MSG_RESULT(yes)
+-		AC_DEFINE_UNQUOTED(UPTIME_TRICK, , Uptime trick)
++		AC_MSG_RESULT([yes])
++		AC_DEFINE_UNQUOTED([UPTIME_TRICK], [], [Uptime trick])
+ 		;;
+ 	*)
+-		AC_MSG_RESULT(no)
++		AC_MSG_RESULT([no])
+ 		;;
+ esac
+ 
+ dnl ************************************************
+ dnl ICMP trick
+ 
+-AC_MSG_CHECKING(whether to enable icmp trick)
+-AC_ARG_ENABLE(icmp_trick, 
++AC_MSG_CHECKING([whether to enable icmp trick])
++AC_ARG_ENABLE([icmp_trick],
+ 	[  --enable-icmp_trick     enable icmp trick: yes|cisco|no [default=yes]],
+-	icmp_trick="$enableval", icmp_trick="yes")
++	[icmp_trick="$enableval"], [icmp_trick="yes"])
+ case "$icmp_trick" in
+ 	yes)
+-		AC_MSG_RESULT(yes)
+-		AC_DEFINE_UNQUOTED(ICMP_TRICK, , ICMP trick)
++		AC_MSG_RESULT([yes])
++		AC_DEFINE_UNQUOTED([ICMP_TRICK], [], [ICMP trick])
+ 		;;
+ 	cisco)
+-		AC_MSG_RESULT(yes: cisco)
+-		AC_DEFINE_UNQUOTED(ICMP_TRICK_CISCO, , ICMP trick)
++		AC_MSG_RESULT([yes: cisco])
++		AC_DEFINE_UNQUOTED([ICMP_TRICK_CISCO], [], [ICMP trick])
+ 		;;
+ 	*)
+-		AC_MSG_RESULT(no)
++		AC_MSG_RESULT([no])
+ 		;;
+ esac
+ 
+ dnl ************************************************
+ dnl Debugging output
+ 
+-AC_MSG_CHECKING(whether to enable debugging)
++AC_MSG_CHECKING([whether to enable debugging])
+ AC_ARG_ENABLE(debug,
+ 	[  --enable-debug          enable debugging [default=no]],
+-	debug="$enableval", debug="no")
++	[debug="$enableval"], [debug="no"])
+ case "$debug" in
+ 	no)
+-		AC_MSG_RESULT(no)
++		AC_MSG_RESULT([no])
+ 		debug_val="0"
+ 		;;
+ 	yes)
+-		AC_MSG_RESULT(all)
++		AC_MSG_RESULT([all])
+ 		debug_val="-1"
+ 		;;
+ 	*)
+-		AC_MSG_RESULT(custom: $debug)
++		AC_MSG_RESULT([custom: $debug])
+ 		debug_val="0"
+ 		debug=`echo $debug|tr , " "`
+ 		for i in $debug; do
+@@ -202,43 +200,44 @@ case "$debug" in
+ 		done
+ 		;;
+ esac
+-AC_DEFINE_UNQUOTED(DEBUG, ($debug_val) , Debugging output)
++AC_DEFINE_UNQUOTED([DEBUG], [$debug_val], [Debugging output])
+ 
+ dnl ************************************************
+ dnl Runtime messages
+ 
+-AC_MSG_CHECKING(whether to enable runtime messages)
+-AC_ARG_ENABLE(messages,
++AC_MSG_CHECKING([whether to enable runtime messages])
++AC_ARG_ENABLE([messages],
+ 	[  --enable-messages       enable runtime messages [default=no]],
+-	messages="$enableval", messages="no")
++	[messages="$enableval"], [messages="no"])
+ case "$messages" in
+ 	yes)
+-		AC_MSG_RESULT(yes)
+-		AC_DEFINE_UNQUOTED(MESSAGES, , Runtime messages)
++		AC_MSG_RESULT([yes])
++		AC_DEFINE_UNQUOTED([MESSAGES], [], [Runtime messages])
+ 		;;
+ 	*)
+-		AC_MSG_RESULT(no)
++		AC_MSG_RESULT([no])
+ 		;;
+ esac
+ 
+ dnl ************************************************
+ dnl Pidfiles location
+ 
+-AC_MSG_CHECKING(directory to store pidfiles)
+-AC_ARG_WITH(piddir,
++AC_MSG_CHECKING([directory to store pidfiles])
++AC_ARG_WITH([piddir],
+ 	[  --with-piddir=DIR       pidfiles location [default=/var/run]],
+-	piddir="$withval", piddir="/var/run")
+-	AC_DEFINE_UNQUOTED(PID_DIR, "$piddir", Pidfiles location)
+-	AC_MSG_RESULT("$piddir")
++	[piddir="$withval"], [piddir="/var/run"])
++AC_DEFINE_UNQUOTED([PID_DIR], ["$piddir"], [Pidfiles location])
++AC_MSG_RESULT([$piddir])
+ 
+ dnl ************************************************
+ 
+ CFLAGS="$CFLAGS -D_REENTRANT"
+ CFLAGS="$CFLAGS -DWALL -W -Wall"
+ 
+-AC_SUBST(PACKAGE)
+-AC_SUBST(VERSION)
++AC_SUBST([PACKAGE])
++AC_SUBST([VERSION])
+ DATE=`date +%Y-%m-%d`
+-AC_SUBST(DATE)
++AC_SUBST([DATE])
+ 
+-AC_OUTPUT(Makefile src/Makefile)
++AC_CONFIG_FILES([Makefile src/Makefile])
++AC_OUTPUT

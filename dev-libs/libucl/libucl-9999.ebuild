@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..3} )
 inherit lua-single autotools
@@ -18,7 +18,7 @@ else
 fi
 
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="0/9"
 IUSE="lua +regex sign urls +utils static-libs test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -36,12 +36,11 @@ RDEPEND="${DEPEND}"
 DOCS=( README.md doc/api.md )
 
 pkg_setup() {
-	use lua && lua_pkg_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
 	default
-	rm tests/schema/{definitions,ref{,Remote}}.json || die
 	eautoreconf
 }
 
@@ -58,10 +57,6 @@ src_configure() {
 		LIB_LIBS="$(lua_get_LIBS)"
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	emake check
 }
 
 src_install() {

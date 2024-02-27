@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 _IUSE_QT_MODULES="
 	designer +gui help multimedia +network opengl positioning
@@ -110,7 +110,6 @@ RDEPEND="
 # all flags are available in PyQt5/PySide2, so some tests are still skipped.
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		pyqt5? (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
@@ -119,6 +118,7 @@ BDEPEND="
 			dev-python/PyQt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
 			dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+			dev-qt/qtsql:5[sqlite]
 		)
 		pyqt6? (
 			dev-python/PyQt6[${PYTHON_USEDEP}]
@@ -127,6 +127,7 @@ BDEPEND="
 			dev-python/PyQt6[sensors(-),spatialaudio(-),speech(-),sql,ssl,svg,testlib,webchannel]
 			dev-python/PyQt6[websockets,widgets,xml]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets,quick]
+			dev-qt/qtbase:6[sqlite]
 		)
 		pyside2? (
 			$(python_gen_cond_dep '
@@ -137,6 +138,7 @@ BDEPEND="
 				dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
 				dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
 				dev-python/pyside2[xml,xmlpatterns]
+				dev-qt/qtsql:5[sqlite]
 			' python3_{10..11})
 		)
 		pyside6? (
@@ -146,6 +148,7 @@ BDEPEND="
 			dev-python/pyside6[printsupport,qml,quick,quick3d,scxml(-),sensors(-)]
 			dev-python/pyside6[serialport,spatialaudio(-),speech(-),sql,svg,testlib,webchannel]
 			dev-python/pyside6[webengine,websockets,widgets,xml]
+			dev-qt/qtbase:6[sqlite]
 		)
 	)
 "
@@ -200,41 +203,34 @@ src_prepare() {
 }
 
 python_test() {
+	local -x QT_API
+	local -a EPYTEST_DESELECT
+	local other
+
 	# Test for each enabled Qt4Python target.
 	# Deselect the other targets, their test fails if we specify QT_API
 	# or if we have disabled their corresponding inherit in __init__.py above
-	if use pyqt5; then
-		einfo "Testing with ${EPYTHON} and QT_API=PyQt5"
-		QT_API="pyqt5" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6]
-	fi
-	if use pyqt6; then
-		einfo "Testing with ${EPYTHON} and QT_API=PyQt6"
-		QT_API="pyqt6" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6] \
-			--deselect qtpy/tests/test_qtsensors.py::test_qtsensors
-			# Qt6Sensors not yet packaged and enabled in PyQt6 ebuild
-	fi
-	if use pyside2; then
-		einfo "Testing with ${EPYTHON} and QT_API=PySide2"
-		QT_API="pyside2" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide6]
-	fi
-	if use pyside6; then
-		einfo "Testing with ${EPYTHON} and QT_API=PySide6"
-		QT_API="pyside6" virtx epytest \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PySide2] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt5] \
-			--deselect qtpy/tests/test_main.py::test_qt_api_environ[PyQt6] \
-			--deselect qtpy/tests/test_qtsensors.py::test_qtsensors
-			# Qt6Sensors not yet packaged and enabled in PySide6 ebuild
-	fi
+	for QT_API in PyQt{5,6} PySide{2,6}; do
+		if use "${QT_API,,}"; then
+			EPYTEST_DESELECT=()
+			for other in PyQt{5,6} PySide{2,6}; do
+				if [[ ${QT_API} != ${other} ]]; then
+					EPYTEST_DESELECT+=(
+						"qtpy/tests/test_main.py::test_qt_api_environ[${other}]"
+					)
+				fi
+			done
+
+			einfo "Testing with ${EPYTHON} and QT_API=${QT_API}"
+			nonfatal epytest ||
+				die -n "Tests failed with ${EPYTHON} and QT_API=${QT_API}" ||
+				return 1
+		fi
+	done
+}
+
+src_test() {
+	virtx distutils-r1_src_test
 }
 
 pkg_postinst() {

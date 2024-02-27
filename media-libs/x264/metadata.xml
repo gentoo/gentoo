@@ -6,7 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="interlaced">enable interlaced encoding support, this can decrease encoding speed by up to 2%</flag>
-		<flag name="opencl">Add support for OpenCL.</flag>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="extract attachment files out of a MIME-encoded email pack"
-HOMEPAGE="http://pldaniels.com/ripmime/"
-SRC_URI="http://www.pldaniels.com/ripmime/${P}.tar.gz"
+HOMEPAGE="https://pldaniels.com/ripmime/"
+SRC_URI="https://www.pldaniels.com/ripmime/${P}.tar.gz"
 
-LICENSE="Sendmail"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 

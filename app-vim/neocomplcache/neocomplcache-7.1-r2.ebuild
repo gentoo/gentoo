@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: ultimate auto completion system"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2620"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 

@@ -1,8 +1,32 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
- 
+
+# Joonas Niilola <juippis@gentoo.org> (2024-02-16)
+# Test dependencies not keyworded on this arch.
+www-servers/nginx test
+
+# Sam James <sam@gentoo.org> (2024-02-03)
+# We only have MariaDB on loong, not MySQL.
+dev-perl/DBD-MariaDB mysql
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
+
+# WANG Xuerui <xen0n@gentoo.org> (2024-01-09)
+# PCRE2 upstream has gained JIT support on loong since 10.43.
+<dev-libs/libpcre2-10.43_rc1 jit
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-08)
+# media-libs/shaderc is keyworded here.
+media-libs/libplacebo -shaderc
+
+# WANG Xuerui <xen0n@gentoo.org> (2024-01-03)
+# app-crypt/rpm-sequoia is keyworded here.
+app-arch/rpm -sequoia
+
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Sam James <sam@gentoo.org> (2023-10-08)
@@ -38,11 +62,10 @@ sys-devel/llvm -debuginfod
 # Revdeps of dev-python/ujson which is masked.
 dev-python/cattrs test
 dev-python/requests-cache test
-dev-python/ruamel-std-pathlib test
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
 # Avoid having to keyword more Qt deps
-dev-python/pyside2 3d datavis script location scxml
+dev-python/pyside2 3d datavis location scxml
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-26)
 # no llvm:15 or lld:16 on loong
@@ -97,8 +120,9 @@ app-accessibility/at-spi2-core dbus-broker
 
 # Mike Gilbert <floppym@gentoo.org> (2023-05-27)
 # Newer sd-boot does not use gnuefi.
->=sys-apps/systemd-254 -boot
->=sys-apps/systemd-utils-254 -boot
+>=sys-apps/systemd-254 -boot -ukify
+>=sys-apps/systemd-utils-254 -boot -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
 # dev-python/pyopengl fails tests
@@ -168,6 +192,7 @@ media-video/ffmpeg libilbc libtesseract
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-auth/sssd isn't keyworded here yet
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-04)
 # neither app-text/ronn or app-text/ronn-ng can be built with
@@ -206,10 +231,6 @@ sys-boot/grub:2 grub_platforms_coreboot grub_platforms_efi-32 grub_platforms_iee
 # Oct 2023), hence no virtual/pandoc and friends.
 sys-apps/eza man
 www-apps/hugo test
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-11-30)
-# Test phase apparently requires an ocamlopt port.
-dev-lang/ocaml test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-29)
 # Dep media-plugins/libvisual-plugins fails to build, seems too hairy to fix.
@@ -271,7 +292,6 @@ dev-util/catalyst -system-bootloader
 sys-devel/binutils gold
 
 # These aren't ported to LoongArch yet
-dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
 

@@ -5,4 +5,8 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/pymumu/smartdns/issues</bugs-to>
+		<remote-id type="github">pymumu/smartdns</remote-id>
+	</upstream>
 </pkgmetadata>

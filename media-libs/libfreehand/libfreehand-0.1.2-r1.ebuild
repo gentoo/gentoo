@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,12 +28,12 @@ DEPEND="${RDEPEND}
 	dev-libs/icu
 	dev-util/gperf
 	media-libs/lcms
-	sys-devel/libtool
+	dev-build/libtool
 	test? ( dev-util/cppunit )
 "
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 PATCHES=( "${FILESDIR}"/${P}-icu-65.patch )

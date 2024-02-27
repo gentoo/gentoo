@@ -23,4 +23,9 @@
 	libv4l2 offers the v4l2 API on top of v4l2 devices, while adding for the
 	application transparent libv4lconvert conversion where necessary.
 	</longdescription>
+	<use>
+		<flag name="bpf">Enable support for IR BPF decoders</flag>
+		<flag name="tracer">Build the v4l2-tracer tool and library</flag>
+		<flag name="utils">Build the v4l-utils collection of utilities</flag>
+	</use>
 </pkgmetadata>

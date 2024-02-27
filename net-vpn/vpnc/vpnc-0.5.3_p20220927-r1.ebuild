@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info systemd tmpfiles toolchain-funcs
+inherit linux-info systemd toolchain-funcs
 
-DESCRIPTION="Free client for Cisco VPN routing software"
-HOMEPAGE="https://www.unix-ag.uni-kl.de/~massar/vpnc/"
+DESCRIPTION="IPsec (Cisco/Juniper) VPN concentrator client"
+HOMEPAGE="https://github.com/streambinder/vpnc"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -21,8 +21,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="resolvconf +gnutls selinux"
-RESTRICT="!gnutls? ( bindist )"
+IUSE="resolvconf gnutls selinux"
 
 DEPEND="
 	dev-libs/libgcrypt:=
@@ -72,18 +71,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process vpnc-tmpfiles.conf
-
 	elog "You can generate a configuration file from the original Cisco profiles of your"
 	elog "connection by using /usr/bin/pcf2vpnc to convert the .pcf file"
 	elog "A guide is available at https://wiki.gentoo.org/wiki/Vpnc"
-
-	if use gnutls; then
-		elog "Will build with GnuTLS (default) instead of OpenSSL so you may even redistribute binaries."
-		elog "See the Makefile itself and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440318"
-	else
-		ewarn "Building SSL support with OpenSSL instead of GnuTLS. This means that"
-		ewarn "you are not allowed to re-distibute the binaries due to conflicts between BSD license and GPL,"
-		ewarn "see the vpnc Makefile and https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=440318"
-	fi
 }

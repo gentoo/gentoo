@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,11 @@ src_prepare() {
 		-i src/lib/include/fwts_binpaths.h || die
 
 	eautoreconf
+}
+
+src_compile() {
+	# https://github.com/fwts/fwts/issues/7 (bug #870109)
+	emake -j1 --shuffle=none
 }
 
 src_install() {

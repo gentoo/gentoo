@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ BDEPEND="dev-python/docutils"
 DEPEND="${RDEPEND}
 	care? ( dev-libs/uthash )
 	elibc_musl? ( sys-libs/queue-standalone )
-	test? ( dev-util/valgrind )"
+	test? ( dev-debug/valgrind )"
 
 # Breaks sandbox
 RESTRICT="test"

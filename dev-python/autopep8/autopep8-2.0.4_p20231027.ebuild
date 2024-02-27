@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/hhatto/${PN}.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
 	COMMIT="af7399d90926f2fe99a71f15197a08fa197f73a1"
 	SRC_URI="
 		https://github.com/hhatto/autopep8/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz

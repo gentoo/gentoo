@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,8 +37,8 @@ RDEPEND="${COMMON_DEPS}
 	selinux? ( sec-policy/selinux-sensord )"
 
 DEPEND="${COMMON_DEPS}
-	sys-devel/bison
-	sys-devel/flex"
+	app-alternatives/yacc
+	app-alternatives/lex"
 
 CONFIG_CHECK="~HWMON ~I2C_CHARDEV ~I2C"
 WARNING_HWMON="${PN} requires CONFIG_HWMON to be enabled for use."

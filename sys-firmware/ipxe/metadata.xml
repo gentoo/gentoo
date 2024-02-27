@@ -11,8 +11,8 @@
 	</maintainer>
 	<use>
 		<flag name="binary">Use pre-built binaries</flag>
-		<flag name="efi">Build a 32bit EFI program for using PXE</flag>
-		<flag name="efi64">Build a 64bit EFI program for using PXE</flag>
+		<flag name="uefi32">Build a 32bit UEFI program for using PXE</flag>
+		<flag name="uefi64">Build a 64bit UEFI program for using PXE</flag>
 		<flag name="iso">Build a bootable ISO for using PXE</flag>
 		<flag name="lkrn">Build a linux kernel bootable file for using with grub/etc...</flag>
 		<flag name="usb">Build a bootable USB image for using PXE</flag>

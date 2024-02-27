@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="Changelog README.md"
 
@@ -24,7 +24,7 @@ ruby_add_bdepend "test? ( dev-ruby/bundler >=dev-ruby/rr-3.1:0 dev-ruby/timecop 
 
 all_ruby_prepare() {
 	sed -i -e '/rake/ s/~>/>=/' \
-		-e '/rspec/ s/2.13.0/3.0/' \
+		-e '/rspec/ s/3.12.0/3.12/' \
 		-e '/rake-compiler/ s:^:#:' serverengine.gemspec || die
 
 	sed -i -e '/color_enabled/ s:^:#:' -e '1irequire "fileutils"' spec/spec_helper.rb || die

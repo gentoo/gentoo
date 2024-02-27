@@ -16,4 +16,5 @@
     <bugs-to>https://github.com/politza/tablist/issues/</bugs-to>
     <remote-id type="github">politza/tablist</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

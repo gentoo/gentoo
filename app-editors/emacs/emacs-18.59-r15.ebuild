@@ -74,11 +74,13 @@ src_configure() {
 		src/s-linux.h || die
 
 	# -O3 and -finline-functions cause segmentation faults at run time.
-	# -Wno-implicit and -Wno-return-type will quieten newer versions of GCC;
-	# feel free to submit a patch adding all those missing prototypes.
+	# -Wno-implicit, -Wno-return-type and -Wno-return-mismatch will
+	# quieten newer versions of GCC; feel free to submit a patch adding
+	# all those missing prototypes.
 	strip-flags
 	filter-flags -finline-functions -fpie
-	append-flags -fno-strict-aliasing -Wno-implicit -Wno-return-type
+	append-flags -fno-strict-aliasing -Wno-implicit -Wno-return-type \
+		-Wno-return-mismatch
 	append-ldflags $(test-flags -no-pie)	#639562
 	replace-flags -O[3-9] -O2
 }

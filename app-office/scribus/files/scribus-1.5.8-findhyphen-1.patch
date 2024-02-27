@@ -1,5 +1,3 @@
-diff --git a/scribus/CMakeLists.txt b/scribus/CMakeLists.txt
-index aec69d3..9451404 100644
 --- a/scribus/CMakeLists.txt
 +++ b/scribus/CMakeLists.txt
 @@ -587,7 +587,9 @@ set(SCRIBUS_SOURCES
@@ -39,8 +37,6 @@ index aec69d3..9451404 100644
  if(WIN32)
  	set_target_properties(${EXE_NAME}
  		PROPERTIES
-diff --git a/scribus/hyphenator.h b/scribus/hyphenator.h
-index 7fa4abd..2863c70 100644
 --- a/scribus/hyphenator.h
 +++ b/scribus/hyphenator.h
 @@ -13,7 +13,7 @@ for which a new license (GPL+exception) is in place.

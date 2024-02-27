@@ -1,0 +1,42 @@
+From 8a2c3c4de266f49312eda4c91dcdf5d5464717e8 Mon Sep 17 00:00:00 2001
+From: Pablo Galindo <pablogsal@gmail.com>
+Date: Fri, 9 Jun 2023 11:22:20 +0100
+Subject: [PATCH] Fix factorial parsing for Python 3.12
+
+Signed-off-by: Pablo Galindo <pablogsal@gmail.com>
+---
+ .mailmap                      | 1 +
+ sympy/parsing/sympy_parser.py | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/.mailmap b/.mailmap
+index fe496637dd..8a9de2d99d 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -1496,6 +1496,7 @@ naelsondouglas <naelson17@gmail.com>
+ noam simcha finkelstein <noam.finkelstein@protonmail.com>
+ numbermaniac <5206120+numbermaniac@users.noreply.github.com>
+ oittaa <8972248+oittaa@users.noreply.github.com>
++pablogsal <pablogsal@gmail.com>
+ pekochun <hamburg_hamburger2000@yahoo.co.jp>
+ prshnt19 <prashant.rawat216@gmail.com>
+ rahuldan <rahul02013@gmail.com>
+diff --git a/sympy/parsing/sympy_parser.py b/sympy/parsing/sympy_parser.py
+index 5935f4baf2..862679e644 100644
+--- a/sympy/parsing/sympy_parser.py
++++ b/sympy/parsing/sympy_parser.py
+@@ -627,7 +627,10 @@ def factorial_notation(tokens: List[TOKEN], local_dict: DICT, global_dict: DICT)
+     result: List[TOKEN] = []
+     nfactorial = 0
+     for toknum, tokval in tokens:
+-        if toknum == ERRORTOKEN:
++        if toknum == OP and tokval == "!":
++            # In Python 3.12 "!" are OP instead of ERRORTOKEN
++            nfactorial += 1
++        elif toknum == ERRORTOKEN:
+             op = tokval
+             if op == '!':
+                 nfactorial += 1
+-- 
+2.42.1
+

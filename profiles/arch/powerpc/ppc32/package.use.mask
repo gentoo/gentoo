@@ -1,5 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-01-17)
+# The generated code is too large and it takes ages to build, bug #922249.
+dev-python/mypy native-extensions
+
+# Sam James <sam@gentoo.org> (2024-01-05)
+# sys-apps/keyutils not stable here, because of test failures. bug #636252
+app-benchmarks/stress-ng keyutils
+app-crypt/mit-krb5 keyutils
+app-emulation/qemu keyutils
+net-fs/cifs-utils ads creds pam
+net-fs/samba ads
+sys-auth/sssd keyutils
+sys-libs/libnvme keyutils
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/notebook (that indirectly requires net-libs/nodejs).
@@ -13,7 +27,7 @@ dev-perl/DBD-mysql mysql
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
+dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # sys-apps/flatpak is not keyworded here
@@ -61,10 +75,6 @@ sys-devel/clang extra
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 bluetooth location speech
 
-# Andrey Grozin <grozin@gentoo.org> (2022-09-02)
-# dev-libs/capstone not keyworded
-dev-lisp/sbcl capstone
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
@@ -76,10 +86,6 @@ app-i18n/uim kde
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-22)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
-
-# Matt Turner <mattst88@gentoo.org> (2022-04-16)
-# sys-auth/seatd is not keyworded
-<=dev-libs/weston-10.0.0 seatd
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
 # Now requires dev-java/rhino which is not keyworded
@@ -170,6 +176,7 @@ dev-python/pyopengl test
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (2020-03-11)
 # USE=bpf depends on sys-devel/clang which is not keyworded on ppc.
+media-libs/libv4l bpf
 media-tv/v4l-utils bpf
 
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)

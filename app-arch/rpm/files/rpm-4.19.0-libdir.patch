@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c164e9c52..5738c821f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,7 +32,7 @@ option(WITH_FSVERITY "Build with fsverity support" OFF)
+ option(WITH_IMAEVM "Build with IMA support" OFF)
+ option(WITH_FAPOLICYD "Build with fapolicyd support" ON)
+ 
+-set(RPM_CONFIGDIR "${CMAKE_INSTALL_PREFIX}/lib/rpm" CACHE PATH "rpm home")
++set(RPM_CONFIGDIR "${CMAKE_INSTALL_PREFIX}/libexec/rpm" CACHE PATH "rpm home")
+ set(RPM_VENDOR "vendor" CACHE STRING "rpm vendor string")
+ 
+ # Emulate libtool versioning. Before a public release:

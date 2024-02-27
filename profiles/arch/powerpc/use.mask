@@ -54,7 +54,6 @@ gnuefi
 -cpu_flags_ppc_vsx
 -cpu_flags_ppc_vsx2
 -cpu_flags_ppc_vsx3
--ppcsha1
 
 # Incompatible Use Flags
 #
@@ -116,10 +115,6 @@ ios
 # Samuli Suominen <ssuominen@gentoo.org> (2010-11-03)
 # and it's also masked in arch/powerpc/ppc64/32ul/package.mask
 lirc
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-07-26)
-# ppc keywords were dropped for dev-libs/prelude
-prelude
 
 # Julian Ospald <hasufell@gentoo.org> (2012-04-25)
 # Masked because nvidia-texture-tools is not (tested) for PowerPC

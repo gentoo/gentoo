@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for SSL certificates
 # @DESCRIPTION:
 # This eclass implements a standard installation procedure for installing
@@ -15,7 +15,7 @@
 # "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -42,22 +42,11 @@ _SSL_CERT_ECLASS=1
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		SSL_DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl:0 )"
+		BDEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		SSL_DEPEND="dev-libs/openssl:0"
+		BDEPEND="dev-libs/openssl"
 	fi
-
-	case "${EAPI}" in
-		6)
-			DEPEND="${SSL_DEPEND}"
-		;;
-		*)
-			BDEPEND="${SSL_DEPEND}"
-		;;
-	esac
-
-	unset SSL_DEPEND
 fi
 
 # @FUNCTION: gen_cnf

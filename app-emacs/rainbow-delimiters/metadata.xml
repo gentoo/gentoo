@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/Fanael/rainbow-delimiters/issues/</bugs-to>
     <remote-id type="github">Fanael/rainbow-delimiters</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

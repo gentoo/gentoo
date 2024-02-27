@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 		fapi? ( >=net-misc/curl-7.80.0 ) )"
 BDEPEND="sys-apps/acl
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0-Dont-install-files-into-run.patch"
@@ -56,6 +56,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Fails with inlining
+	filter-flags -fno-semantic-interposition
 	# tests fail with LTO enabbled. See bug 865275 and 865279
 	filter-lto
 

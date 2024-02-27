@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
@@ -14,7 +14,6 @@
 # There is no luajit support on ppc64 userland. Bug #608326.
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 
 # Anthony G. Basile <blueness@gentoo.org> (2015-08-01)
 # There is no luajit support on ppc64 userland.  Bug #554376.
@@ -25,7 +24,6 @@ luajittex
 opencl
 
 pda
-prelude
 mono
 
 # not tested on ppc64
@@ -37,9 +35,6 @@ diet
 # we don't have hardware to test. also see bug #113398
 dvb
 
-# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-20)
-# Modular X: mask for architectures on which they aren't available
-video_cards_glint
 # llvm is not keyworded
 video_cards_radeonsi
 

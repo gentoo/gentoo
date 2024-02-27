@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="test"  # Tests fail
 

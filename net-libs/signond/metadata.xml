@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:signond_project:signond</remote-id>
+		<remote-id type="gitlab">accounts-sso/signond</remote-id>
 	</upstream>
 </pkgmetadata>

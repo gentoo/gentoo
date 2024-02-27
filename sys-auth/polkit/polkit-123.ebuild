@@ -22,7 +22,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+daemon +duktape examples gtk +introspection kde pam selinux systemd test"
 # https://gitlab.freedesktop.org/polkit/polkit/-/issues/181 for test restriction
 RESTRICT="!test? ( test ) test"

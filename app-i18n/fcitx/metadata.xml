@@ -2,8 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
 		<email>arfrever.fta@gmail.com</email>
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
@@ -11,11 +19,15 @@
 	</maintainer>
 	<use>
 		<flag name="autostart">Enable XDG-compatible autostart of Fcitx</flag>
+		<flag name="emoji">Enable emoji loading for CLDR</flag>
 		<flag name="enchant">Enable Enchant backend (using <pkg>app-text/enchant</pkg>) for spelling hinting</flag>
 		<flag name="gtk2">Install input method module for GTK+ 2</flag>
 		<flag name="gtk3">Install input method module for GTK+ 3</flag>
+		<flag name="keyboard">Enable key event translation with XKB and build keyboard engine</flag>
 		<flag name="opencc">Enable OpenCC engine (using <pkg>app-i18n/opencc</pkg>) for converter between Simplified Chinese and Traditional Chinese</flag>
 		<flag name="pango">Enable support for <pkg>x11-libs/pango</pkg></flag>
+		<flag name="presage">Enable presage for word predication (not stable)</flag>
+		<flag name="server">Build a fcitx as server, disable this option if you want to use fcitx as an embedded library</flag>
 		<flag name="table">Install table input methods for Simplified Chinese</flag>
 		<flag name="xkb">Enable support for XKB (required for fcitx-xkb, fcitx-xkbdbus, part of fcitx-keyboard)</flag>
 	</use>

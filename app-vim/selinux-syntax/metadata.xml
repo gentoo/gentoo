@@ -9,4 +9,5 @@
 		<email>hardened@gentoo.org</email>
 		<name>Gentoo Hardened</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

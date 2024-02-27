@@ -1,0 +1,25 @@
+From 3c946010c8521497b0fba2c8bc9bde184622345a Mon Sep 17 00:00:00 2001
+From: Fergus Dall <sidereal@google.com>
+Date: Tue, 7 Nov 2023 17:42:42 +1100
+Subject: [PATCH libxcb] Enable large file support
+
+Signed-off-by: Fergus Dall <sidereal@google.com>
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index b78454d..d981bea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,6 +18,7 @@ AM_PATH_PYTHON([3.0])
+ # Must be called before any macros that run the compiler (like AC_PROG_LIBTOOL)
+ # to avoid autoconf errors.
+ AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ 
+ # Initialize libtool
+ LT_PREREQ([2.2])
+-- 
+2.42.0.869.gea05f2083d-goog
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.6
+MODULES_KERNEL_MAX=6.7
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -22,7 +22,7 @@ S=${WORKDIR}
 
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X abi_x86_32 abi_x86_64 persistenced +static-libs +tools wayland"
 
 COMMON_DEPEND="
@@ -61,6 +61,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	static-libs? (
+		x11-base/xorg-proto
 		x11-libs/libX11
 		x11-libs/libXext
 	)
@@ -82,6 +83,7 @@ QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
+	"${FILESDIR}"/nvidia-drivers-470.223.02-gpl-pfn_valid.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
 	"${FILESDIR}"/nvidia-settings-390.144-no-gtk2.patch
@@ -144,12 +146,24 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC CXX LD OBJCOPY OBJDUMP
+	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
+
+	# latest branches has proper fixes, but legacy have more issues and are
+	# not worth the trouble, so doing the lame "fix" for gcc14 (bug #921370)
+	# TODO: check if still needed on bumps given this branch is supported,
+	# and reminder to cleanup the CC="${KERNEL_CC}" in modargs if removing
+	local noerr=(
+		-Wno-error=implicit-function-declaration
+		-Wno-error=incompatible-pointer-types
+	)
+	# not *FLAGS to ensure it's used everywhere including conftest.sh
+	CC+=" $(test-flags-CC "${noerr[@]}")"
+	use modules && KERNEL_CC+=" $(CC=${KERNEL_CC} test-flags-CC "${noerr[@]}")"
 
 	local xnvflags=-fPIC #840389
 	# lto static libraries tend to cause problems without fat objects
-	is-flagq '-flto@(|=*)' && xnvflags+=" $(test-flags-CC -ffat-lto-objects)"
+	tc-is-lto && xnvflags+=" $(test-flags-CC -ffat-lto-objects)"
 
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
@@ -162,6 +176,7 @@ src_compile() {
 
 	local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=video:kernel )
 	local modargs=(
+		CC="${KERNEL_CC}" # for the above gcc14 workarounds
 		IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 		SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 	)

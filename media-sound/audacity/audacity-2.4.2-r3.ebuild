@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
 IUSE="alsa doc ffmpeg +flac id3tag jack +ladspa +lv2 mad ogg oss
 	portmidi +portmixer portsmf sbsms twolame vamp +vorbis +vst"
 
@@ -95,7 +95,7 @@ src_configure() {
 		-Daudacity_use_pa_alsa=$(usex alsa)
 		-Daudacity_use_pa_jack=$(usex jack linked off)
 		-Daudacity_use_pa_oss=$(usex oss)
-		#-Daudacity_use_pch leaving it to the default behavior
+		-Daudacity_use_pch=OFF
 		-Daudacity_use_portaudio=local # only 'local' option is present
 		-Daudacity_use_portmixer=$(usex portmixer local off)
 		-Daudacity_use_portsmf=$(usex portsmf local off)

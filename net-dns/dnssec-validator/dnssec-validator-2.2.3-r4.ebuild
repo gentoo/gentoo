@@ -12,7 +12,7 @@ S="${WORKDIR}/DNSSEC-Tools-dnssec-tools-${PV}/dnssec-tools/validator"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="dlv +nsec3 static-libs +threads"
 
 RDEPEND=">=dev-libs/openssl-1.1.0:0="

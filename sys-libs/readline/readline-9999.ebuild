@@ -49,8 +49,8 @@ elif is_release ; then
 		patch_url=
 		my_patch_index=
 
-		upstream_url_base="mirror://gnu/bash"
-		mirror_url_base="ftp://ftp.cwru.edu/pub/bash"
+		upstream_url_base="mirror://gnu/readline"
+		mirror_url_base="ftp://ftp.cwru.edu/pub/readline"
 
 		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
 			printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
@@ -69,8 +69,8 @@ elif is_release ; then
 		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
 	fi
 else
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
+	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/readline/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/readline/${MY_P}.tar.gz.sig )"
 fi
 
 if ! is_release ; then

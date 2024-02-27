@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit font
 DESCRIPTION="The iconic font"
 HOMEPAGE="https://fontawesome.com"
 SRC_URI="https://github.com/FortAwesome/Font-Awesome/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv x86"
 S="${WORKDIR}/Font-Awesome-${PV}"
 
 LICENSE="CC-BY-4.0 OFL-1.1"

@@ -1,0 +1,29 @@
+This patch allows to HSA_OVERRIDE_GFX_VERSION environment variable (library just crashes otherwise) 
+--- a/rocprim/include/rocprim/device/config_types.hpp
++++ b/rocprim/include/rocprim/device/config_types.hpp
+@@ -197,15 +197,21 @@ constexpr bool prefix_equals(const char* lhs, const char* rhs, std::size_t n)
+ constexpr target_arch get_target_arch_from_name(const char* const arch_name, const std::size_t n)
+ {
+     constexpr const char* target_names[]
+-        = {"gfx803", "gfx900", "gfx906", "gfx908", "gfx90a", "gfx1030", "gfx1102"};
++        = {"gfx803",
++        "gfx900", "gfx902", "gfx909", "gfx912",
++        "gfx906",
++        "gfx908",
++        "gfx90a",
++        "gfx1030", "gfx1031", "gfx1032", "gfx1033", "gfx1034", "gfx1035", "gfx1036",
++        "gfx1100", "gfx1101", "gfx1102", "gfx1103", "gfx1150", "gfx1151"};
+     constexpr target_arch target_architectures[] = {
+         target_arch::gfx803,
+-        target_arch::gfx900,
++        target_arch::gfx900, target_arch::gfx900, target_arch::gfx900, target_arch::gfx900,
+         target_arch::gfx906,
+         target_arch::gfx908,
+         target_arch::gfx90a,
+-        target_arch::gfx1030,
+-        target_arch::gfx1102,
++        target_arch::gfx1030, target_arch::gfx1030, target_arch::gfx1030, target_arch::gfx1030, target_arch::gfx1030, target_arch::gfx1030, target_arch::gfx1030,
++        target_arch::gfx1102, target_arch::gfx1102, target_arch::gfx1102, target_arch::gfx1102, target_arch::gfx1102, target_arch::gfx1102,
+     };
+     static_assert(sizeof(target_names) / sizeof(target_names[0])
+                       == sizeof(target_architectures) / sizeof(target_architectures[0]),

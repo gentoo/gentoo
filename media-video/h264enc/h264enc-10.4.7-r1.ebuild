@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="media-video/mplayer[encode,x264]
 	sys-apps/coreutils
 	sys-apps/pv
-	sys-devel/bc
+	app-alternatives/bc
 	sys-process/time"
 
 PATCHES=( "${FILESDIR}/${P}-libaacplusenc.patch" )

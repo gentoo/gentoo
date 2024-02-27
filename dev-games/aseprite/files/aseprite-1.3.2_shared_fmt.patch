@@ -1,0 +1,52 @@
+From 7afccfca25ffe17aba5dada1dab663c8b6228ab1 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 2 Jan 2024 20:00:12 +0300
+Subject: [PATCH] Use shared fmt library
+
+Added option -DUSE_SHARED_FMT
+---
+ CMakeLists.txt             | 5 +++++
+ third_party/CMakeLists.txt | 4 +++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fc29252b..e49373323 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,6 +39,7 @@ enable_testing()
+ 
+ option(USE_SHARED_CMARK   "Use your installed copy of cmark" off)
+ option(USE_SHARED_CURL    "Use your installed copy of curl" off)
++option(USE_SHARED_FMT     "Use your installed copy of libfmt" off)
+ option(USE_SHARED_GIFLIB  "Use your installed copy of giflib" off)
+ option(USE_SHARED_JPEGLIB "Use your installed copy of jpeglib" off)
+ option(USE_SHARED_JSON11  "Use your installed copy of json11" off)
+@@ -197,6 +198,10 @@ if(NOT USE_SHARED_CURL)
+   set(CURL_STATICLIB ON BOOL)
+ endif()
+ 
++if(USE_SHARED_FMT)
++  find_package(fmt REQUIRED)
++endif()
++
+ # zlib
+ if(USE_SHARED_ZLIB)
+   find_package(ZLIB REQUIRED)
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index babbd4742..3c83991a4 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -113,7 +113,9 @@ if(NOT USE_SHARED_HARFBUZZ AND NOT LAF_BACKEND STREQUAL "skia")
+ endif()
+ 
+ add_subdirectory(simpleini)
+-add_subdirectory(fmt)
++if(NOT USE_SHARED_FMT)
++  add_subdirectory(fmt)
++endif()
+ 
+ # Add cmark without tests
+ if(NOT USE_SHARED_CMARK)
+-- 
+2.41.0
+

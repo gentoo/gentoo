@@ -14,7 +14,7 @@ HOMEPAGE="https://api.kde.org/futuresql/html/index.html https://invent.kde.org/l
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN/5/}/${KDE_ORG_NAME}-${PV}.tar.xz"
 	S="${WORKDIR}/${KDE_ORG_NAME}-${PV}"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~riscv x86"
 fi
 
 LICENSE="MIT"

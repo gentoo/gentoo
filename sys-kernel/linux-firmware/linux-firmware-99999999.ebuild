@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit linux-info mount-boot savedconfig multiprocessing
 
 # In case this is a real snapshot, fill in commit below.
@@ -19,7 +19,7 @@ else
 		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
 	fi
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -29,16 +29,18 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )
 	unknown-license? ( all-rights-reserved )"
 SLOT="0"
-IUSE="compress-xz compress-zstd initramfs +redistributable savedconfig unknown-license"
+IUSE="compress-xz compress-zstd deduplicate initramfs +redistributable savedconfig unknown-license"
 REQUIRED_USE="initramfs? ( redistributable )
-	?? ( compress-xz compress-zstd )"
+	?? ( compress-xz compress-zstd )
+	savedconfig? ( !deduplicate )"
 
 RESTRICT="binchecks strip test
 	unknown-license? ( bindist )"
 
-BDEPEND="initramfs? ( app-arch/cpio )
+BDEPEND="initramfs? ( app-alternatives/cpio )
 	compress-xz? ( app-arch/xz-utils )
-	compress-zstd? ( app-arch/zstd )"
+	compress-zstd? ( app-arch/zstd )
+	deduplicate? ( app-misc/rdfind )"
 
 #add anything else that collides to this
 RDEPEND="!savedconfig? (
@@ -275,7 +277,7 @@ src_prepare() {
 }
 
 src_install() {
-	./copy-firmware.sh -v "${ED}/lib/firmware" || die
+	./copy-firmware.sh $(usex deduplicate '' '--ignore-duplicates') -v "${ED}/lib/firmware" || die
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
 

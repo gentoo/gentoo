@@ -10,7 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="asm">Enable assembly for optimization</flag>
 		<flag name="berkdb">Support legacy wallets in Berkeley DB format</flag>
 		<flag name="bitcoin-cli">Build and install bitcoin-cli command line interface</flag>
 		<flag name="daemon">Build and install bitcoind daemon</flag>

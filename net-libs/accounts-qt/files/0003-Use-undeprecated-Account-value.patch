@@ -1,0 +1,28 @@
+https://gitlab.com/accounts-sso/libaccounts-qt/-/merge_requests/21
+
+From 102cf562f9d143de2f93ba40f8448c1d531c2c7b Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 18 Oct 2022 01:40:05 +0200
+Subject: [PATCH 3/5] Use undeprecated Account::value
+
+---
+ tests/tst_libaccounts.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/tests/tst_libaccounts.cpp b/tests/tst_libaccounts.cpp
+index efede91..d12091c 100644
+--- a/tests/tst_libaccounts.cpp
++++ b/tests/tst_libaccounts.cpp
+@@ -516,8 +516,7 @@ void AccountsTest::testAccountValue()
+     QTRY_COMPARE(synced.count(), 1);
+ 
+     /* check that the values we wrote are retrieved successfully */
+-    QVariant val = QVariant::String;
+-    account->value(QString("test"), val);
++    QVariant val = account->value(QString("test"));
+     QCOMPARE(val.toString(), QString("value"));
+ 
+     SettingSource source;
+-- 
+2.43.0
+

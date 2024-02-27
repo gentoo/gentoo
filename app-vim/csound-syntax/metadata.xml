@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">luisjure/csound</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

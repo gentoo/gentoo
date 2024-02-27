@@ -1,0 +1,26 @@
+commit b68dc9af6db53de231d5ac71f9b6ba2ff3057a68
+Author: Peter Wu <peter@lekensteyn.nl>
+Date:   Sun Jun 14 22:59:19 2020 +0200
+
+    ltunify: fix harmless compiler warning
+    
+    bInterfaceNumber is expected to return the `%02x` format according to
+    the current kernel sources. Even if that is not true, a user can always
+    manually specify the hidraw device if the wrong device is detected.
+
+diff --git a/ltunify.c b/ltunify.c
+index 1e685b4..9625776 100644
+--- a/ltunify.c
++++ b/ltunify.c
+@@ -1214,7 +1214,10 @@ int open_hidraw(void) {
+ 				if (pid == PID_NANO_RECEIVER_2) {
+ 					int iface = -1;
+ 					if ((fp = fopen_format("/sys/class/hidraw/%s/device/../bInterfaceNumber", dev_name))) {
+-						fscanf(fp, "%02x", &iface);
++						int m = fscanf(fp, "%02x", &iface);
++						if (m != 1) {
++							iface = -1;
++						}
+ 						fclose(fp);
+ 					}
+ 					if (iface == 0) {

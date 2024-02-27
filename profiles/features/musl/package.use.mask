@@ -1,5 +1,39 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Violet Purcell <vimproved@inventati.org> (2024-01-25)
+# f16c support in gtk4 requires the ifunc attribute, which
+# is not available on musl. There is a configure check for
+# this, however it seems to be unreliable, see bug #922897.
+gui-libs/gtk cpu_flags_x86_f16c
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
+# The systemd flag is globally masked on musl. But we need
+# systemd's kernel-install to use systemd-boot which is still
+# possible on musl via systemd-utils[boot].
+sys-kernel/installkernel -systemd
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-01-09)
+# linked against glibc
+sci-libs/caffe2 mkl
+dev-libs/oneDNN mkl
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-31)
+# Requires dev-libs/level-zero.
+dev-lang/ispc gpu
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Requires systemd
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
+
+# Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
+# execinfo.h required for server.
+games-board/cockatrice server
+
+# Violet Purcell <vimproved@inventati.org> (2023-09-18)
+# Fails to compile on musl, bug 829544.
+media-sound/supercollider ableton-link
 
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is masked on musl
@@ -24,11 +58,11 @@ dev-scheme/scm readline
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-auth/sssd is masked on musl
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-libs/libsmbios is masked on musl
 app-laptop/pbbuttonsd macbook
-sys-apps/fwupd dell
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Needs masked net-misc/netkit-telnetd
@@ -53,11 +87,6 @@ www-client/qutebrowser widevine
 net-analyzer/wireshark sdjournal
 sys-apps/ipmitool openbmc
 sys-auth/pambase homed
-
-# Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
-# Firefox does not build with these flags enabled on musl libc.
-# See bug #829033
-www-client/firefox clang pgo
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
@@ -101,10 +130,6 @@ sys-apps/util-linux nls
 # Disable some sanitizers for LLVM, see bug #753935
 # Needs libexecinfo on musl, not yet packaged
 sys-libs/compiler-rt-sanitizers gwp-asan
-
-# James Le Cuirot <chewi@gentoo.org> (2020-05-16)
-# execinfo.h is required for debug.
-dev-games/cegui debug
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-19)
 # check does not work on musl, bug #713138

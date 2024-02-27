@@ -16,7 +16,9 @@
 # All file paths below are relative to the chroot.
 # You can specify a different chroot directory but MAKE SURE it's empty.
 
-# Specify a configuration file - the default is /etc/dhcp/dhcpd.conf
+# Specify a configuration file - the default is based on the service name,
+# so dhcpd would use /etc/dhcp/dhcpd.conf and dhcpd.foo would use
+# /etc/dhcp/dhcpd.foo.conf
 # DHCPD_CONF="/etc/dhcp/dhcpd.conf"
 
 # Configure which interface or interfaces to for dhcpd to listen on.

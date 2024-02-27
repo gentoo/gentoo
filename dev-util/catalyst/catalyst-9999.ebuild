@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -101,6 +101,11 @@ python_install_all() {
 	if use doc; then
 		dodoc files/HOWTO.html files/docbook-xsl.css
 	fi
+}
+
+python_install() {
+	distutils-r1_python_install
+	rm -rv "${D}"$(python_get_sitedir)/usr
 }
 
 src_install() {

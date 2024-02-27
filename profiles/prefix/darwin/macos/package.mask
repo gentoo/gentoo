@@ -28,8 +28,3 @@ media-sound/lilypond
 # For example, 'lgetxattr' is not available on macOS or gnulib.
 # https://www.gnu.org/software/gnulib/manual/html_node/lgetxattr.html
 sys-apps/attr
-
-# Fabian Groffen <grobian@gentoo.org> (2023-06-05)
-# Fails to compile using GCC, misdetecting sincosf
-# https://github.com/harfbuzz/harfbuzz/issues/4266
-=media-libs/harfbuzz-7.3.0

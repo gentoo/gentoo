@@ -1,4 +1,4 @@
-# Copyright 2007-2023 Gentoo Authors
+# Copyright 2007-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 S="${WORKDIR}/${MY_P}"

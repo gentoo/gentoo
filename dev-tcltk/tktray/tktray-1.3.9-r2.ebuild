@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,10 @@ DEPEND="
 	>=dev-lang/tk-8.4:=
 	x11-libs/libXext"
 RDEPEND="${DEPEND}"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
 
 PATCHES=(
 	"${FILESDIR}"/1.1-ldflags.patch

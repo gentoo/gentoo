@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -37,7 +37,7 @@ CDEPEND="X? (
 	expat? ( dev-libs/expat )
 	gtk? ( x11-libs/gtk+:3 )
 	gtk2? ( x11-libs/gtk+:2 )
-	kde? ( kde-frameworks/plasma:5 )
+	kde? ( kde-plasma/libplasma:5 )
 	libedit? ( dev-libs/libedit )
 	libffi? ( dev-libs/libffi:= )
 	libnotify? ( x11-libs/libnotify )
@@ -80,7 +80,7 @@ RDEPEND="${CDEPEND}
 BDEPEND="gnome-base/librsvg
 	sys-devel/gettext
 	virtual/pkgconfig
-	kde? ( dev-util/cmake )
+	kde? ( dev-build/cmake )
 	nls? ( dev-util/intltool )"
 
 PATCHES=(

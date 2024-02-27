@@ -16,5 +16,6 @@
 		<flag name="libvirt">Enable the <pkg>app-emulation/libvirt</pkg> plugin.</flag>
 		<flag name="nbd">Enable the nbd plugin via <pkg>sys-libs/libnbd</pkg>.</flag>
 		<flag name="torrent">Enable the torrent plugin via <pkg>net-libs/libtorrent-rasterbar</pkg>.</flag>
+		<flag name="zlib-ng">Use <pkg>sys-libs/zlib-ng</pkg> to handle zlib decompression.</flag>
 	</use>
 </pkgmetadata>

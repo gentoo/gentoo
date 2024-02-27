@@ -6,6 +6,5 @@
 
 gnutls - Use GnuTLS
 mbedtls - Use mbed TLS
-nss - Use Mozilla's Network Security Services 
 openssl - Use OpenSSL
 rustls - Use Rustls

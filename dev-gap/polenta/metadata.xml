@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Polenta package provides methods to compute polycyclic
+    presentations of matrix groups (finite or infinite). As a
+    by-product, this package gives some functionality to compute certain
+    module series for modules of solvable groups.  For example, if G is
+    a rational polycyclic matrix group, then we can compute the radical
+    series of the natural Q[G]-module Q^d.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/polenta</remote-id>
+  </upstream>
+</pkgmetadata>

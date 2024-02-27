@@ -16,7 +16,7 @@ SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/vile/current/${MY
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~riscv sparc x86"
 IUSE="perl"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -20,7 +20,7 @@ RDEPEND=">=app-i18n/imsettings-1.8
 	x11-libs/libSM
 	xfce? ( xfce-base/libxfce4util )"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/autoconf-archive
+BDEPEND="dev-build/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,8 +20,8 @@ RDEPEND="dev-libs/libltdl:0=
 	debug? ( sys-libs/binutils-libs:0= )
 	motif? ( x11-libs/motif:0= )"
 DEPEND="${RDEPEND}
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	dev-util/gperf"
 
 # games-sports/ski and app-emulation/ski both install 'ski' binary, bug #653110

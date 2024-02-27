@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="hackage">MissingH</remote-id>
-		<remote-id type="github">haskell-hvr/missingh</remote-id>
+		<remote-id type="github">hvr/missingh</remote-id>
 	</upstream>
 </pkgmetadata>

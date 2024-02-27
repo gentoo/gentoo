@@ -25,5 +25,6 @@
   </use>
   <upstream>
     <remote-id type="savannah">parted</remote-id>
+    <remote-id type="cpe">cpe:/a:parted_project:parted</remote-id>
   </upstream>
 </pkgmetadata>

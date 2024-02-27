@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">elzr/vim-json</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

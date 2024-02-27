@@ -1,14 +1,16 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop llvm optfeature qt6-build
+LLVM_COMPAT=( {15..18} )
+LLVM_OPTIONAL=1
+inherit desktop llvm-r1 optfeature qt6-build
 
 DESCRIPTION="Qt Tools Collection"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 IUSE="
@@ -20,6 +22,7 @@ IUSE="
 # if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
 REQUIRED_USE="
 	assistant? ( widgets )
+	clang? ( ${LLVM_REQUIRED_USE} )
 	designer? ( qml widgets )
 	distancefieldgenerator? ( qml widgets )
 	pixeltool? ( widgets )
@@ -31,11 +34,15 @@ REQUIRED_USE="
 # and 3rdparty/ tries to FetchContent gtest)
 RESTRICT="test"
 
-LLVM_MAX_SLOT=17
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[network,widgets?]
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
-	clang? ( <sys-devel/clang-$((LLVM_MAX_SLOT+1)):= )
+	clang? (
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}
+			sys-devel/llvm:${LLVM_SLOT}
+		')
+	)
 	designer? (
 		~dev-qt/qtbase-${PV}:6[xml,zstd=]
 		zstd? ( app-arch/zstd:= )
@@ -52,16 +59,14 @@ DEPEND="
 	)
 "
 
-llvm_check_deps() {
-	has_version -d "sys-devel/clang:${LLVM_SLOT}"
-}
-
 pkg_setup() {
-	use clang && llvm_pkg_setup
+	use clang && llvm-r1_pkg_setup
 }
 
 src_configure() {
 	local mycmakeargs=(
+		# prevent the clang test as it can abort due to bug #916098
+		$(cmake_use_find_package clang WrapLibClang)
 		$(cmake_use_find_package qml Qt6Qml)
 		$(cmake_use_find_package widgets Qt6Widgets)
 		$(qt_feature assistant)

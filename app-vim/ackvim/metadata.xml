@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="github">mileszs/ack.vim</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

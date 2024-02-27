@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=yes
 DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 WANT_AUTOMAKE=none
 
 inherit autotools distutils-r1 perl-module systemd
@@ -65,10 +65,10 @@ COMMON_DEPEND="
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 "
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="
 	${COMMON_DEPEND}
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="
 	${COMMON_DEPEND}

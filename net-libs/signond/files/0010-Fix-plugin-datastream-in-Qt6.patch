@@ -1,0 +1,33 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From f4e9e3b541027eb0a360d4e3de27ac48b67411eb Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 17:14:47 +0200
+Subject: [PATCH 10/11] Fix plugin datastream in Qt6
+
+We send the size of the to-be-sent data to the datastream
+
+In Qt6 QByteArray::size() is 64 bit, but the other side reads it as int, breaking the communication
+
+Cast the size to int to avoid that
+---
+ lib/plugins/signon-plugins-common/SignOn/blobiohandler.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/plugins/signon-plugins-common/SignOn/blobiohandler.cpp b/lib/plugins/signon-plugins-common/SignOn/blobiohandler.cpp
+index d156659..fe35031 100644
+--- a/lib/plugins/signon-plugins-common/SignOn/blobiohandler.cpp
++++ b/lib/plugins/signon-plugins-common/SignOn/blobiohandler.cpp
+@@ -63,7 +63,8 @@ bool BlobIOHandler::sendData(const QVariantMap &map)
+ 
+     QDataStream stream(m_writeChannel);
+     QByteArray ba = variantMapToByteArray(map);
+-    stream << ba.size();
++    // in Qt6 QByteArray::size() is 64 bit, but the receiving side expects int
++    stream << static_cast<int>(ba.size());
+ 
+     QVector<QByteArray> pages = pageByteArray(ba);
+     for (int i = 0; i < pages.count(); ++i)
+-- 
+2.43.0
+

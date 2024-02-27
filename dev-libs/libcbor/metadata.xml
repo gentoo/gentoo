@@ -5,9 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<use>
-		<flag name="custom-alloc">Custom, dynamically defined allocator support</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">pjk/libcbor</remote-id>
 	</upstream>

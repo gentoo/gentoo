@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: open a file without supplying a path"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=858"
 
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 
 RDEPEND="sys-apps/mlocate"
 

@@ -1,7 +1,9 @@
 [Unit]
 Description=CoreDNS DNS server
+Documentation=man:coredns(1)
 Documentation=https://coredns.io
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 PermissionsStartOnly=true

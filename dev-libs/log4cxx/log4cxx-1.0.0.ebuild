@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/15"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="odbc smtp test"
 RESTRICT="!test? ( test )"
 

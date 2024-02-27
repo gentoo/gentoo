@@ -1,0 +1,13 @@
+diff --git a/lib/tiger.c b/lib/tiger.c
+index 8f15df4..8d28f27 100644
+--- a/lib/tiger.c
++++ b/lib/tiger.c
+@@ -254,7 +254,7 @@ void tiger_final(struct tiger_ctx *ctx)
+ 	register mutils_word64 i, j;
+ 	/* Force 64-bit alignment */
+ 	mutils_word64 temp_64bit[TIGER_DATASIZE/8];
+-	mutils_word8 *temp = temp_64bit;
++	mutils_word8 *temp = (mutils_word8 *) temp_64bit;
+ 	i = ctx->index;
+ 	
+ #if defined(WORDS_BIGENDIAN)

@@ -1,25 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit eapi8-dosym latex-package
+inherit latex-package
 
 DESCRIPTION="Collection of blackletter fonts for LaTeX"
-HOMEPAGE="http://www.gaehrken.de/fraktur/"
-SRC_URI="mirror://gentoo/${P}-base.zip
-	mirror://gentoo/${P}-tfrak.zip
-	mirror://gentoo/${P}-obibel.zip
-	mirror://gentoo/${P}-odedruck.zip
-	mirror://gentoo/${P}-odeschmk.zip
-	mirror://gentoo/${P}-oweissfr.zip
-	mirror://gentoo/${P}-oweissgo.zip
-	mirror://gentoo/${P}-talteswab.zip
-	mirror://gentoo/${P}-tbrtkpf.zip
-	mirror://gentoo/${P}-tkngsbg.zip
-	mirror://gentoo/${P}-twieynk.zip
-	mirror://gentoo/${P}-twieyvig.zip
-	mirror://gentoo/${P}-tzentenar.zip"
+HOMEPAGE="https://www.gaehrken.de/fraktur/"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}-base.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-tfrak.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-obibel.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-odedruck.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-odeschmk.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-oweissfr.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-oweissgo.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-talteswab.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-tbrtkpf.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-tkngsbg.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-twieynk.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-twieyvig.zip
+	https://dev.gentoo.org/~ulm/distfiles/${P}-tzentenar.zip"
+S="${WORKDIR}"
 
 LICENSE="LPPL-1.2 free-noncomm"
 SLOT="0"
@@ -27,7 +28,6 @@ KEYWORDS="amd64 x86"
 
 BDEPEND="app-arch/unzip"
 
-S="${WORKDIR}"
 TEXMF="/usr/share/texmf-site"
 
 src_prepare() {
@@ -54,5 +54,5 @@ src_install() {
 	dodoc -r doc/fonts/fraktur/*
 
 	# symlink for texdoc
-	dosym8 -r /usr/share/doc/${PF} "${TEXMF}"/doc/fonts/fraktur
+	dosym -r /usr/share/doc/${PF} "${TEXMF}"/doc/fonts/fraktur
 }

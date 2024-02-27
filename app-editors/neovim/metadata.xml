@@ -14,7 +14,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="lto">Build with Link Time Optimization (LTO)</flag>
 		<flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
 	</use>
 	<upstream>

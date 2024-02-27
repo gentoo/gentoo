@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/917646
+https://github.com/systemd-cron/systemd-cron/issues/141
+https://github.com/systemd-cron/systemd-cron/commit/1662b899b206f00face30b9d4671551427262b07
+
+From 1662b899b206f00face30b9d4671551427262b07 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=D0=BD=D0=B0=D0=B1?= <nabijaczleweli@nabijaczleweli.xyz>
+Date: Tue, 21 Nov 2023 19:40:05 +0100
+Subject: [PATCH] Add PCH= for broken compilers like #141
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,6 +1,7 @@
+ CFLAGS ?= -O2
+ SHELLCHECK ?= shellcheck
+ CRONTAB ?= crontab
++PCH ?= y
+ 
+ version		:= @version@
+ schedules		:= @schedules@
+@@ -208,12 +209,12 @@ $(builddir)/include/%.hpp: $(srcdir)/include/%.hpp
+ CXXVER := $(shell $(CXX) --version | { read -r l; echo "$$l"; })
+ ifneq "$(findstring clang,$(CXXVER))" ""
+ 	# clang doesn't use PCHs automatically
+-	PCH_ARG := -include-pch $(builddir)/include/libvoreutils.hpp.gch -Wno-gcc-compat
++	PCH_ARG := $(if $(PCH),-include-pch $(builddir)/include/libvoreutils.hpp.gch) -Wno-gcc-compat
+ else
+ 	PCH_ARG :=
+ endif
+ 
+-common_headers := $(builddir)/include/configuration.hpp $(builddir)/include/libvoreutils.hpp.gch $(builddir)/include/util.hpp
++common_headers := $(builddir)/include/configuration.hpp $(builddir)/include/libvoreutils.hpp$(if $(PCH),.gch) $(builddir)/include/util.hpp
+ CFLAGS += -Wall -Wextra -fno-exceptions -Wno-psabi
+ $(builddir)/include/libvoreutils.hpp.gch : $(builddir)/include/libvoreutils.hpp
+ 	$(CXX) $(CFLAGS) $(CPPFLAGS) -std=c++20 -I $(builddir)/include            $< -o $@
+--- a/README.md
++++ b/README.md
+@@ -146,6 +146,8 @@ without the override, the jobs would run twice since native-timer detection woul
+ If there is already a perfect 1:1 mapping between `/etc/cron.<freq>/<job>` and `/usr/lib/systemd/system/<job>.timer`,
+ then it is not needed to add an entry to these tables.
+ 
++If your compiler's [PCH compilation is broken](https://github.com/systemd-cron/systemd-cron/issues/141), build with `make PCH=`.
++
+ ### Caveat
+ 
+ Your package should also run these extra commands before starting cron.target
+

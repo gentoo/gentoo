@@ -1,0 +1,22 @@
+https://github.com/linbox-team/linbox/issues/304
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index d870aa9..f7234ea 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -57,7 +57,6 @@ EXTRA_DIST = \
+ BASIC_TESTS =            \
+     test-solve          \
+     test-solve-full             \
+-    test-smith-form-valence  \
+     test-local-smith-form-sparseelim\
+     test-smith-form             \
+     test-smith-form-adaptive     \
+@@ -66,7 +65,6 @@ BASIC_TESTS =            \
+     test-last-invariant-factor  \
+     test-qlup                    \
+     test-det            \
+-    test-regression        \
+     test-regression2       \
+     test-rank-ex        \
+     test-rank-u32        \

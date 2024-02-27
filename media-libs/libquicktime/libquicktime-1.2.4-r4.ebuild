@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
 
 # <ffmpeg-5 dep for bug #834384, Debian has disabled ffmpeg support entirely
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	X? ( x11-base/xorg-proto )"
 
 REQUIRED_USE="opengl? ( X )"

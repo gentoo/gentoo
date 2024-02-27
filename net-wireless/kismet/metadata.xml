@@ -16,6 +16,11 @@
 			reducing security risks
 		</flag>
 		<flag name="ubertooth">Enable capture source for ubertooth to sniff bluetooth low energy</flag>
+		<flag name="wext">
+			Enable building kismet with support for the deprecated Linux Wireless Extensions.
+			This is required for some out of tree and staging drivers, and kismet has not
+			been well tested with it disabled, so it defaults to on.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">kismetwireless/kismet</remote-id>

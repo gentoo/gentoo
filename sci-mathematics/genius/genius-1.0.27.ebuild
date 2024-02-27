@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,10 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gtk-update-icon-cache
 	dev-util/intltool
-	sys-devel/autoconf-archive
-	sys-devel/flex
+	dev-build/autoconf-archive
+	app-alternatives/lex
 	app-alternatives/yacc
-" # eautoreconf needs sys-devel/autoconf-archive
+" # eautoreconf needs dev-build/autoconf-archive
 # dev-util/gtk-update-icon-cache because configure checks for it for some reason and never calls it with DESTDIR set..
 
 PATCHES=(

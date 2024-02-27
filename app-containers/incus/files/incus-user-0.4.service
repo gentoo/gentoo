@@ -1,0 +1,12 @@
+[Unit]
+Description=Incus - User daemon
+After=incus-user.socket incus.service
+Requires=incus-user.socket
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/sbin/incus-user --group incus
+Restart=on-failure
+
+[Install]
+Also=incus-user.socket

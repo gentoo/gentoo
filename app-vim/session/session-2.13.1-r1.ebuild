@@ -11,7 +11,7 @@ SRC_URI="https://github.com/xolox/vim-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/vim-${P}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 

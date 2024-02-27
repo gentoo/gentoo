@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit mount-boot
 
 DESCRIPTION="LSI MPT-SAS2 controller management tool"
@@ -10,7 +11,7 @@ HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9207-8
 LICENSE="LSI"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~ppc64 ~x86 ~x64-solaris"
-IUSE="efi doc"
+IUSE="uefi doc"
 RESTRICT="strip fetch mirror"
 
 DEPEND="app-arch/unzip"
@@ -88,7 +89,7 @@ src_install() {
 	use amd64 || use x86 && doexe sas2ircu_linux_x86_rel/sas2ircu
 	use ppc64 && doexe sas2ircu_linux_x86_rel/sas2ircu
 	use x64-solaris && doexe sas2ircu_solaris_x86_rel/sas2ircu
-	if use efi; then
+	if use uefi; then
 		exeinto /boot/efi/
 		doexe sas2ircu_efi_ebc_rel/sas2ircu.efi
 	fi

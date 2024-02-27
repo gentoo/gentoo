@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/ecukes/ecukes/issues/</bugs-to>
     <remote-id type="github">ecukes/ecukes</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

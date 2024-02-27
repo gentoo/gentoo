@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="|| ( x11-wm/fvwm3 >=x11-wm/fvwm-2.6.2 )"
 

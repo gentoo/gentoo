@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="x11-libs/libX11
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	virtual/pkgconfig
 "
 

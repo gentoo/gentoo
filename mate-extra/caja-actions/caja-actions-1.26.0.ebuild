@@ -1,14 +1,14 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MATE_LA_PUNT=yes
 
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Caja Actions"
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/autoconf-2.53:*
-	>=sys-devel/libtool-2.2.6:2
+	>=dev-build/autoconf-2.53:*
+	>=dev-build/libtool-2.2.6:2
 	virtual/pkgconfig
 "

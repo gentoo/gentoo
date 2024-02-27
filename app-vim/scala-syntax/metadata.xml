@@ -4,4 +4,5 @@
 	<maintainer type="person">
 		<email>monsieurp@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

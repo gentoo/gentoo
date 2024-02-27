@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>vim@gentoo.org</email>
-	<name>Gentoo Vim Project</name>
-</maintainer>
-<longdescription lang="en">
-	VIM 7 plugin useful for manipulating files controlled by CVS, SVN, SVK, git,
-	bzr, and hg within VIM, including committing changes and performing diffs
-	using the vimdiff system.
-</longdescription>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		VIM 7 plugin useful for manipulating files controlled by CVS, SVN, SVK, git,
+		bzr, and hg within VIM, including committing changes and performing diffs
+		using the vimdiff system.
+	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>

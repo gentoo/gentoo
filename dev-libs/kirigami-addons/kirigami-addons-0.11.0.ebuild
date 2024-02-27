@@ -34,7 +34,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
-	>=kde-frameworks/plasma-${KFMIN}:5
+	>=kde-plasma/libplasma-${KFMIN}:5
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}

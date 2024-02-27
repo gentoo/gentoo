@@ -5,10 +5,6 @@
     <email>matthew@gentoo.org</email>
     <name>Matthew Smith</name>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>telans@posteo.de</email>
-    <name>James Beddek</name>
-  </maintainer>
   <maintainer type="person">
     <email>candrews@gentoo.org</email>
     <name>Craig Andrews</name>
@@ -23,9 +19,6 @@
     </flag>
     <flag name="hwloc">
       Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support
-    </flag>
-    <flag name="opencl">
-      Enable OpenCL support
     </flag>
   </use>
   <upstream>

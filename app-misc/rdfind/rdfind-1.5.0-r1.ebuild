@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="amd64"
 
 RDEPEND="dev-libs/nettle:="
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/autoconf-archive"
+BDEPEND="dev-build/autoconf-archive"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.0_include-limits-header.patch"

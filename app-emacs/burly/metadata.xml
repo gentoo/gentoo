@@ -17,4 +17,5 @@
     <bugs-to>https://github.com/alphapapa/burly.el/issues/</bugs-to>
     <remote-id type="github">alphapapa/burly.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

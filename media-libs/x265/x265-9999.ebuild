@@ -11,7 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 	S=${WORKDIR}/${P}/source
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
@@ -19,8 +19,8 @@ HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/207"
-IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
+SLOT="0/208"
+IUSE="+10bit +12bit cpu_flags_ppc_vsx2 numa test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -32,10 +32,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-arm.patch"
-	#"${FILESDIR}/neon.patch"
-	"${FILESDIR}/${PN}-9999-ppc64.patch"
+	"${FILESDIR}/neon.patch"
 	"${FILESDIR}/tests.patch"
-	"${FILESDIR}/test-ns.patch"
+	"${FILESDIR}/${PN}-9999-test-ns.patch"
 )
 
 src_unpack() {
@@ -166,18 +165,15 @@ multilib_src_configure() {
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
+	# Unfortunately, the asm for x86/x32/arm isn't PIC-safe.
 	if [[ ${ABI} = x86 ]] ; then
-		# Bug #528202
-		if use pic ; then
-			ewarn "PIC has been requested but x86 asm is not PIC-safe, disabling it."
-			myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
-		fi
+		# Bug #528202, bug #913412
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	elif [[ ${ABI} = x32 ]] ; then
 		# bug #510890
 		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	elif [[ ${ABI} = arm ]] ; then
-		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex pic OFF $(usex cpu_flags_arm_neon ON OFF)) )
-		use cpu_flags_arm_neon && use pic && ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )

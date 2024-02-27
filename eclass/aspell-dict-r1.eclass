@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: aspell-dict-r1.eclass
@@ -58,7 +58,6 @@ SLOT="0"
 
 RDEPEND="app-text/aspell"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-apps/which"
 
 _ASPELL_MAJOR_VERSION=${ASPELL_VERSION:-6}
 [[ ${_ASPELL_MAJOR_VERSION} != [56] ]] && die "Unsupported ASPELL_VERSION=${ASPELL_VERSION}"
@@ -68,6 +67,10 @@ unset _ASPELL_MAJOR_VERSION
 # @DESCRIPTION:
 # The aspell-dict-r1 src_configure function which is exported.
 aspell-dict-r1_src_configure() {
+	# configure generates lines like:
+	#  `echo "ASPELL = `which $ASPELL`" > Makefile`
+	sed -i -e '/.* = `which/ s:`which:`command -v:' configure || die
+
 	# Since it's a non-autoconf based script, 'econf' cannot be used.
 	./configure || die
 }

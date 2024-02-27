@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -20,7 +20,7 @@ _FLAG_O_MATIC_ECLASS=1
 
 inherit toolchain-funcs
 
-[[ ${EAPI} == 6 ]] && inherit eutils
+[[ ${EAPI} == 6 ]] && inherit eqawarn
 
 # @FUNCTION: all-flag-vars
 # @DESCRIPTION:
@@ -81,6 +81,7 @@ _setup-allowed-flags() {
 		-gstabs -gstabs+
 		-gz
 		-glldb
+		'-fdebug-default-version=*'
 
 		# Cosmetic/output related, see e.g. bug #830534
 		-fno-diagnostics-color '-fmessage-length=*'
@@ -114,8 +115,15 @@ _setup-allowed-flags() {
 		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 '-mabi=*'
 		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 '-mcmodel=*'
 		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' '-mfloat-abi=*'
+
+		# This is default on for a bunch of arches except amd64 in GCC
+		# already, and amd64 itself is planned too.
+		'-mtls-dialect=*'
+
+		# MIPS errata
 		-mfix-r4000 -mno-fix-r4000 -mfix-r4400 -mno-fix-r4400
-		-mfix-rm7000 -mno-fix-rm7000 -mfix-r10000 -mno-fix-r10000
+		-mfix-r10000 -mno-fix-r10000
+
 		'-mr10k-cache-barrier=*' -mthumb -marm
 
 		# needed for arm64 (and in particular SCS)

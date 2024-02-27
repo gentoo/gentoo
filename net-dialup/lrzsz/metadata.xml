@@ -5,4 +5,7 @@
 	<email>embedded@gentoo.org</email>
 	<name>Embedded Gentoo</name>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:lrzsz_project:lrzsz</remote-id>
+</upstream>
 </pkgmetadata>

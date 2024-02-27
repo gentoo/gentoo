@@ -5,6 +5,10 @@
 		The lxde-base category contains core packages for LXDE,
 		the Lightweight X11 Desktop Environment.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie lxde-base enthält grundlegende Pakete für LXDE,
+		das "Lightweight X11 Desktop Environment".
+	</longdescription>
 	<longdescription lang="es">
 		La categoría lxde-base contiene paquetes vitales para LXDE, el
 		entorno de escritorio ligero X11.

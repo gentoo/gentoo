@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 # Port to meson once https://gitlab.freedesktop.org/spice/spice/-/issues/75 is fixed
 inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
 
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	smartcard? ( app-emulation/qemu[smartcard] )
 	test? ( net-libs/glib-networking )"
 BDEPEND="${PYTHON_DEPS}
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]

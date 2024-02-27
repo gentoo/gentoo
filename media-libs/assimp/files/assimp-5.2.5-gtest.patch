@@ -1,0 +1,30 @@
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index afe4874..5a87cc2 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -191,7 +191,6 @@ SET( POST_PROCESSES
+   unit/utRemoveComments.cpp
+   unit/utRemoveComponent.cpp
+   unit/utVertexTriangleAdjacency.cpp
+-  unit/utJoinVertices.cpp
+   unit/utSplitLargeMeshes.cpp
+   unit/utFindDegenerates.cpp
+   unit/utFindInvalidData.cpp
+@@ -281,4 +281,6 @@ target_link_libraries( unit assimp ${platform_libs} )
+ 
+ add_subdirectory(headercheck)
+ 
+-add_test( unittests unit )
++get_target_property(unit_SOURCES unit SOURCES)
++find_package(GTest REQUIRED)
++gtest_add_tests(TARGET unit ${unit_SOURCES})
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -725,6 +725,7 @@ IF ( ASSIMP_BUILD_SAMPLES )
+ ENDIF ()
+ 
+ IF ( ASSIMP_BUILD_TESTS )
++  enable_testing()
+   ADD_SUBDIRECTORY( test/ )
+ ENDIF ()
+ 

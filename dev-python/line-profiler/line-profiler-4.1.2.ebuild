@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]

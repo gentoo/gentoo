@@ -11,4 +11,7 @@
 		<flag name="libutf8proc">Use <pkg>media-libs/harfbuzz</pkg> and
 		<pkg>dev-libs/libutf8proc</pkg> for run shaping</flag>
 	</use>
+	<upstream>
+		<remote-id type="codeberg">dnkl/fcft</remote-id>
+	</upstream>
 </pkgmetadata>

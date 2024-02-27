@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of RUBY_TARGETS USE_EXPAND flags.
 
-ruby25 - Build with MRI Ruby 2.5.x
 ruby26 - Build with MRI Ruby 2.6.x
 ruby27 - Build with MRI Ruby 2.7.x
 ruby30 - Build with MRI Ruby 3.0.x
 ruby31 - Build with MRI Ruby 3.1.x
 ruby32 - Build with MRI Ruby 3.2.x
+ruby33 - Build with MRI Ruby 3.3.x

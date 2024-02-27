@@ -11,4 +11,5 @@
     <bugs-to>https://github.com/abo-abo/hydra/issues/</bugs-to>
     <remote-id type="github">abo-abo/hydra</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

@@ -18,7 +18,6 @@
 		<flag name="client">The client part of the library and libwebsockets-test-client</flag>
 		<flag name="extensions">Compile with extensions (permessage-deflate)</flag>
 		<flag name="generic-sessions">With the Generic Sessions plugin</flag>
-		<flag name="http2">Support the HTTP/2 protocol</flag>
 		<flag name="http-proxy">Support for rewriting HTTP proxying</flag>
 		<flag name="lejp">With the Lightweight JSON Parser</flag>
 		<flag name="libev">Support event loops via <pkg>dev-libs/libev</pkg></flag>

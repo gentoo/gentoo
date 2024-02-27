@@ -14,7 +14,6 @@
     <flag name="iptables">Use <pkg>net-firewall/iptables</pkg> for connection sharing</flag>
     <flag name="iwd">Use <pkg>net-wireless/iwd</pkg> instead of <pkg>net-wireless/wpa_supplicant</pkg> for wifi support by default</flag>
     <flag name="psl">Use public suffix list via <pkg>net-libs/libpsl</pkg></flag>
-    <flag name="lto">Build using Link Time Optimizations (LTO)</flag>
     <flag name="modemmanager">Enable support for mobile broadband devices using <pkg>net-misc/modemmanager</pkg></flag>
     <flag name="nftables">Use <pkg>net-firewall/nftables</pkg> for connection sharing</flag>
     <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,6 +60,5 @@ src_prepare() {
 
 	toolchain_src_prepare
 
-	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
 	eapply_user
 }

@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,14 +16,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-python/ansi2html[${PYTHON_USEDEP}]
 	sci-visualization/dash[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/retrying[${PYTHON_USEDEP}]"
-BDEPEND=""
 
 src_install () {
 	distutils-r1_src_install

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -95,7 +95,6 @@ clang
 # dev-lang/luajit has not been ported to HPPA
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 luajittex
 
 # Jeroen Roovers <jer@gentoo.org> (2014-05-20)
@@ -134,10 +133,6 @@ dvb
 # No support for Blu-ray (bug #397531).
 bluray
 
-# Jeroen Roovers <jer@gentoo.org> (2011-09-15)
-# Prelude has not been tested on HPPA.
-prelude
-
 # Jeroen Roovers <jer@gentoo.org> (2011-06-09)
 # Lots of untested dependencies (bug #365451)
 facedetect
@@ -154,7 +149,6 @@ webkit
 # Mask USE=gnome entirely (bug #324511)
 glade
 libnotify
-gconf
 gnome
 gnome-keyring
 gnome-online-accounts
@@ -170,10 +164,6 @@ applet
 vaapi
 vdpau
 
-# Jeroen Roovers <jer@gentoo.org> (2010-07-01)
-# Drop support for ghc and darcs
-darcs
-
 # Jeroen Roovers <jer@gentoo.org> (2010-04-05)
 # Mask USE=kde (bug #304363).
 kde
@@ -184,7 +174,7 @@ kwallet
 flite
 
 # Jeroen Roovers <jer@gentoo.org> (2008-06-07)
-# dev-util/valgrind has not been ported to HPPA.
+# dev-debug/valgrind has not been ported to HPPA.
 valgrind
 
 # Jeroen Roovers <jer@gentoo.org> (2008-01-04)
@@ -226,7 +216,6 @@ dri
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
 video_cards_amdgpu
-video_cards_glint
 video_cards_mga
 video_cards_nouveau
 video_cards_r100

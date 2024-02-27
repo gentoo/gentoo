@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
 HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libburn"
-SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
+SRC_URI="https://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,7 +15,6 @@ IUSE="debug static-libs"
 BDEPEND="
 	virtual/pkgconfig
 "
-RDEPEND=""
 DEPEND="
 	${RDEPEND}
 "

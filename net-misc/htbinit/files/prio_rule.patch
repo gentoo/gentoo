@@ -1,6 +1,6 @@
 --- a/htb.init
 +++ b/htb.init
-@@ -453,7 +457,7 @@
+@@ -458,7 +458,7 @@
  	### Load & filter file $HTB_PATH/$1
  	htb_filter_file () {
  		sed -n "s/#.*//; s/[^a-zA-Z0-9.,;:=/*-_]\+//g; \
@@ -9,7 +9,7 @@
  	} # htb_filter_file
  
  
-@@ -517,7 +521,7 @@
+@@ -522,7 +522,7 @@
  
  	htb_filter_file () {
  		sed 's/#.*//; s/[^a-zA-Z0-9.,;:=/*-_]\+//g' $HTB_PATH/$1 \

@@ -30,5 +30,6 @@
   </longdescription>
   <upstream>
     <remote-id type="github">canonical/lxd</remote-id>
+    <remote-id type="cpe">cpe:/a:linuxcontainers:lxd</remote-id>
   </upstream>
 </pkgmetadata>

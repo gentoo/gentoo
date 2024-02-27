@@ -11,5 +11,6 @@
 	<use>
 		<flag name="lock">Enable screen locking via <pkg>kde-plasma/kscreenlocker</pkg></flag>
 		<flag name="multimedia">Enable effect video button in desktop effects KCM</flag>
+		<flag name="shortcuts">Enable global shortcuts support via <pkg>kde-plasma/kglobalacceld</pkg></flag>
 	</use>
 </pkgmetadata>

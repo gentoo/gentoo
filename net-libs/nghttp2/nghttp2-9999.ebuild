@@ -11,7 +11,6 @@ EGIT_REPO_URI="https://github.com/nghttp2/nghttp2.git"
 
 LICENSE="MIT"
 SLOT="0/1.14" # 1.<SONAME>
-KEYWORDS=""
 IUSE="debug hpack-tools jemalloc static-libs systemd test utils xml"
 
 RESTRICT="!test? ( test )"

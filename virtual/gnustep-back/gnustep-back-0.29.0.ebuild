@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Virtual for back-end component for the GNUstep GUI Library"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="|| (
 		~gnustep-base/gnustep-back-cairo-${PV}

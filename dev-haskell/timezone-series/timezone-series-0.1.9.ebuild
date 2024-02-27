@@ -17,6 +17,10 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+CABAL_CHDEPS=(
+	'time (>= 1.1.4 && < 1.9) || (>= 1.9.1 && < 1.10)' 'time >=1.1.4'
+)
+
 RDEPEND=">=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}

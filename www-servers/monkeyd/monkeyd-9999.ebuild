@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ REQUIRED_USE="
 
 #DEPEND="jemalloc? ( >=dev-libs/jemalloc-3.3.1 )"
 DEPEND="
-	dev-util/cmake
+	dev-build/cmake
 	monkeyd_plugins_tls? ( net-libs/mbedtls:= )"
 RDEPEND="
 	acct-group/monkeyd

@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cups gif icu jpeg png speech"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}

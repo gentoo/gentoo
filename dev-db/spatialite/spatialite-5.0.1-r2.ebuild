@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv x86"
 IUSE="+geos iconv +proj rttopo test +xls +xml"
 # Further poking required
 RESTRICT="test"

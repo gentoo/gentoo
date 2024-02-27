@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,13 +24,13 @@ IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	sci-physics/geant:=[c++17,opengl,geant3?]
-	sci-physics/root:=[c++17,-vmc(-)]
-	sci-physics/vmc:=[c++17]
+	sci-physics/geant:=[opengl,geant3?]
+	sci-physics/root:=
+	sci-physics/vmc:=
 	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}
 	test? ( sci-physics/geant:=[gdml] )"
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 RESTRICT="
 	!examples? ( test )
 	!geant3? ( test )

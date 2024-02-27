@@ -31,16 +31,10 @@
 		<flag name="dmarc">Adds support for DMARC</flag>
 		<flag name="dsn">Adds support for Delivery Status Notifications
 			(DSN)</flag>
-		<flag name="exiscan-acl">Patch providing support for content
-			scanning</flag>
 		<flag name="lmtp">Adds support for lmtp</flag>
 		<flag name="mbx">Adds support for UW's mbx format</flag>
 		<flag name="spf">Adds support for Sender Policy Framework</flag>
 		<flag name="srs">Adds support for Sender Rewriting Scheme</flag>
-		<flag name="srs-alt">Use <pkg>mail-filter/libsrs_alt</pkg> to
-			implement SRS support</flag>
-		<flag name="srs-native">Use Exim's built-in SRS support to
-			implement SRS support</flag>
 		<flag name="proxy">Add support for being behind a proxy, such as HAProxy</flag>
 		<flag name="pkcs11">Require pkcs11 support in <pkg>net-libs/gnutls</pkg> with USE=gnutls</flag>
 		<flag name="redis">Adds support for querying <pkg>dev-db/redis</pkg></flag>

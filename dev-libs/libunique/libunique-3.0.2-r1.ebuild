@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,11 +23,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.11
+	>=dev-build/gtk-doc-am-1.11
 	virtual/pkgconfig
 "
 # For eautoreconf
-#	dev-util/gtk-doc-am
+#	dev-build/gtk-doc-am
 
 src_configure() {
 	# --disable-dbus means gdbus is used instead of dbus-glib

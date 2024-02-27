@@ -1,0 +1,50 @@
+https://github.com/polkit-org/polkit/pull/417
+
+From 69d6b94d590b4dd1fbbac22b4f4d449f46ef61aa Mon Sep 17 00:00:00 2001
+From: Luca Boccassi <bluca@debian.org>
+Date: Thu, 18 Jan 2024 15:07:32 +0000
+Subject: [PATCH] meson: fix build failure when -Dsystemdsystemunitdir is
+ specified
+
+When 'systemdsystemunitdir' is specified as an option the systemd_dep
+variable is not defined, but the sysusers.d directory lookup uses it,
+causing a build failure:
+
+dh_auto_configure -- \
+	-Dexamples=false \
+	-Dintrospection=true \
+	-Dman=true \
+	-Dsystemdsystemunitdir=/usr/lib/systemd/system \
+	-Dtests=true \
+	-Dgtk_doc=true -Dsession_tracking=libsystemd-login
+	cd obj-x86_64-linux-gnu && DEB_PYTHON_INSTALL_LAYOUT=deb LC_ALL=C.UTF-8 meson setup .. --wrap-mode=nodownload --buildtype=plain --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libdir=lib/x86_64-linux-gnu -Dpython.bytecompile=-1 -Dexamples=false -Dintrospection=true -Dman=true -Dsystemdsystemunitdir=/usr/lib/systemd/system -Dtests=true -Dgtk_doc=true -Dsession_tracking=libsystemd-login
+The Meson build system
+Version: 1.3.1
+Source dir: /builds/bluca/polkit/debian/output/source_dir
+Build dir: /builds/bluca/polkit/debian/output/source_dir/obj-x86_64-linux-gnu
+Build type: native build
+Project name: polkit
+Project version: 124
+
+<...>
+
+Run-time dependency libsystemd found: YES 255
+Checking for function "sd_uid_get_display" with dependency libsystemd: YES
+Checking for function "sd_pidfd_get_session" with dependency libsystemd: YES
+../meson.build:222:37: ERROR: Unknown variable "systemd_dep".
+
+Follow-up for 24f1e0af3f7bd17e220cb96201f3c654e737ad34
+--- a/meson.build
++++ b/meson.build
+@@ -212,9 +212,9 @@ if enable_logind
+   config_h.set10('HAVE_' + func.to_upper(), cc.has_function(func, dependencies: logind_dep))
+ 
+   # systemd unit / service files
++  systemd_dep = dependency('systemd', not_found_message: 'systemd required but not found, please provide a valid systemd user unit dir or disable it')
+   systemd_systemdsystemunitdir = get_option('systemdsystemunitdir')
+   if systemd_systemdsystemunitdir == '' and session_tracking == 'libsystemd-login'
+-    systemd_dep = dependency('systemd', not_found_message: 'systemd required but not found, please provide a valid systemd user unit dir or disable it')
+     # FIXME: systemd.pc file does not use variables with relative paths, so `define_variable` cannot be used
+     systemd_systemdsystemunitdir = systemd_dep.get_pkgconfig_variable('systemdsystemunitdir')
+   endif
+

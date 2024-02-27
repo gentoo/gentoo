@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/922448
+https://bugs.ghostscript.com/show_bug.cgi?id=707502
+https://git.ghostscript.com/?p=ghostpdl.git;h=8f5c77af6c0b84bdea719010cf4f67877e857b2b
+
+From 8f5c77af6c0b84bdea719010cf4f67877e857b2b Mon Sep 17 00:00:00 2001
+From: Ken Sharp <Ken.Sharp@artifex.com>
+Date: Fri, 19 Jan 2024 08:44:33 +0000
+Subject: [PATCH] X device - fix compiler 'warning'
+
+Bug #707502 "- -Wincompatible-pointer-types warning in devices/gdevxini.c"
+
+This is probably an oversight from when we changed a load of variables
+to size_t.
+
+Seems odd that compilers (well gcc) should refuse to compile becuase of
+a warning, but that's compilers. The pointer type is incorrect so let's
+fix it.
+--- a/devices/gdevx.h
++++ b/devices/gdevx.h
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2001-2023 Artifex Software, Inc.
++/* Copyright (C) 2001-2024 Artifex Software, Inc.
+    All Rights Reserved.
+ 
+    This software is provided AS-IS with no warranty, either express or
+@@ -39,7 +39,7 @@ typedef struct gx_device_X_s {
+     bool is_buffered;
+     bool IsPageDevice;
+     byte *buffer;		/* full-window image */
+-    long buffer_size;
++    size_t buffer_size;
+     gx_device_color_info        orig_color_info;
+ 
+     /* An XImage object for writing bitmap images to the screen */
+--- a/devices/gdevxini.c
++++ b/devices/gdevxini.c
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2001-2023 Artifex Software, Inc.
++/* Copyright (C) 2001-2024 Artifex Software, Inc.
+    All Rights Reserved.
+ 
+    This software is provided AS-IS with no warranty, either express or
+@@ -621,7 +621,7 @@ x_set_buffer(gx_device_X * xdev)
+         }
+         if (mdev->width != xdev->width || mdev->height != xdev->height) {
+             byte *buffer;
+-            ulong space;
++            size_t space;
+ 
+             if (gdev_mem_data_size(mdev, xdev->width, xdev->height, &space) < 0 ||
+                 space > xdev->space_params.MaxBitmap) {
+-- 
+2.34.1

@@ -60,7 +60,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
-	kde? ( kde-frameworks/extra-cmake-modules:5 )
+	kde? ( kde-frameworks/extra-cmake-modules:0 )
 "
 
 pkg_setup() {

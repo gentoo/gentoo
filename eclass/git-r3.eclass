@@ -120,6 +120,14 @@ fi
 # usage.
 : "${EGIT_LFS_CLONE_TYPE:=shallow}"
 
+# @ECLASS_VARIABLE: EVCS_STORE_DIRS
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Record of names of all the repositories directories being cloned in the git3_src.
+# This is useful in the case of ebuild that fetch multiple repos and
+# it would be used by eclean to clean them up.
+EVCS_STORE_DIRS=()
+
 # @ECLASS_VARIABLE: EGIT3_STORE_DIR
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -359,6 +367,8 @@ _git-r3_set_gitdir() {
 	: "${EGIT3_STORE_DIR:=${distdir}/git3-src}"
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
+
+	EVCS_STORE_DIRS+=( "${GIT_DIR}" )
 
 	if [[ ! -d ${EGIT3_STORE_DIR} && ! ${EVCS_OFFLINE} ]]; then
 		(
@@ -672,6 +682,8 @@ git-r3_fetch() {
 					# and HEAD in case we need the default branch
 					# (we keep it in refs/git-r3 since otherwise --prune interferes)
 					"+HEAD:refs/git-r3/HEAD"
+					# fetch the specifc commit_ref to deal with orphan commits
+					"${remote_ref}"
 				)
 			else # single or shallow
 				local fetch_l fetch_r

@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/902217
+https://github.com/ultravideo/kvazaar/pull/377
+
+From e19b7925d910e4b77fc5a46d92de0f2563a7e506 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Wed, 29 Nov 2023 10:58:08 -0500
+Subject: [PATCH] Don't export MD5 byteReverse symbol on big-endian
+
+Otherwise this fails the test which checks that all exported symbols
+begin with kvz_ prefix.
+---
+ src/extras/libmd5.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/extras/libmd5.c b/src/extras/libmd5.c
+index b06b291eb..8a437da68 100644
+--- a/src/extras/libmd5.c
++++ b/src/extras/libmd5.c
+@@ -27,11 +27,11 @@ static void MD5Transform(uint32_t buf[4], uint32_t const in[16]);
+ #ifndef __BIG_ENDIAN__
+ # define byteReverse(buf, len)    /* Nothing */
+ #else
+-void byteReverse(uint32_t *buf, unsigned len);
++static void byteReverse(uint32_t *buf, unsigned len);
+ /*
+  * Note: this code is harmless on little-endian machines.
+  */
+-void byteReverse(uint32_t *buf, unsigned len)
++static void byteReverse(uint32_t *buf, unsigned len)
+ {
+   uint32_t t;
+   do {

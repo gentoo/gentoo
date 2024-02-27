@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>hanno@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="crypt">End to end encryption and GPG encryption</flag>
     <flag name="geolocation">Sharing your location</flag>

@@ -10,7 +10,7 @@ S="${WORKDIR}/chromedriver-linux64/"
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="

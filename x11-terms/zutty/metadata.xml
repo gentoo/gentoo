@@ -16,7 +16,4 @@
     range of users. Zutty offers high throughput with low latency, and
     strives to conform to relevant (published or de-facto) standards.
   </longdescription>
-  <upstream>
-    <remote-id type="github">tomscii/zutty</remote-id>
-  </upstream>
 </pkgmetadata>

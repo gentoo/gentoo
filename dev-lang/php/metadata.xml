@@ -20,6 +20,10 @@
     <flag name="bcmath">
       Enable the BCMath Arbitrary Precision Mathematics extension
     </flag>
+    <flag name="capstone">
+      Support opcache JIT disassembly through
+      <pkg>dev-libs/capstone</pkg>
+    </flag>
     <flag name="cli">
       Enable the Command-Line Interface (CLI) SAPI
     </flag>
@@ -57,6 +61,11 @@
       Enable the Image Processing and GD extension (requires
       <pkg>media-libs/libjpeg-turbo</pkg> and
       <pkg>media-libs/libpng</pkg>)
+    </flag>
+    <!-- leave this global flag defined here to avoid a pkgcheck warning -->
+    <flag name="ipv6">
+      Support IPv6 connectivity in fopen and friends, and v6 address
+      conversions in functions like inet_pton and inet_ntop.
     </flag>
     <flag name="inifile">
       Add dbm support for .ini files

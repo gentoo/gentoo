@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	!dev-python/namespace-zope

@@ -1,0 +1,31 @@
+https://github.com/curl/curl/commit/ae75db3527461248b0a7b1686df52200d28d83b9
+
+From ae75db3527461248b0a7b1686df52200d28d83b9 Mon Sep 17 00:00:00 2001
+From: annalee <150648636+a-n-n-a-l-e-e@users.noreply.github.com>
+Date: Fri, 29 Dec 2023 05:43:33 +0000
+Subject: [PATCH] configure: fix no default int compile error in ipv6 detection
+
+Closes #12607
+--- a/configure.ac
++++ b/configure.ac
+@@ -1655,15 +1655,12 @@ AS_HELP_STRING([--disable-ipv6],[Disable IPv6 support]),
+ # include <netinet/in6.h>
+ #endif
+ #endif
+-#include <stdlib.h> /* for exit() */
+-main()
++
++int main(void)
+ {
+  struct sockaddr_in6 s;
+  (void)s;
+- if (socket(AF_INET6, SOCK_STREAM, 0) < 0)
+-   exit(1);
+- else
+-   exit(0);
++ return socket(AF_INET6, SOCK_STREAM, 0) < 0;
+ }
+ ]])
+ ],
+
+

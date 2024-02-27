@@ -43,16 +43,16 @@ need no advice for delete-frame.
 +
 +  (defun device-on-window-system-p (&optional device)
 +    "Return non-nil if DEVICE is on a window system.
-+  This generally means that there is support for the mouse, the menubar,
-+  the toolbar, glyphs, etc."
++This generally means that there is support for the mouse, the menubar,
++the toolbar, glyphs, etc."
 +    (and (cdr-safe (assq 'display (frame-parameters device))) t))
 +
 +  (defun delete-device (device &optional force)
 +    "Delete DEVICE, permanently eliminating it from use.
-+  Normally, you cannot delete the last non-minibuffer-only frame (you must
-+  use `save-buffers-kill-emacs' or `kill-emacs').  However, if optional
-+  second argument FORCE is non-nil, you can delete the last frame. (This
-+  will automatically call `save-buffers-kill-emacs'.)"
++Normally, you cannot delete the last non-minibuffer-only frame (you must
++use `save-buffers-kill-emacs' or `kill-emacs').  However, if optional
++second argument FORCE is non-nil, you can delete the last frame. (This
++will automatically call `save-buffers-kill-emacs'.)"
 +    (let ((frames (device-frame-list device)))
 +      (run-hook-with-args 'delete-device-hook device)
 +      (while frames

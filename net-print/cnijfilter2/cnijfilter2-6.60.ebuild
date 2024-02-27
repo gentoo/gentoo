@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ SRC_URI="https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAxMTc1MzA
 LICENSE="Canon-IJ"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 DEPEND="virtual/libusb:1
 	dev-libs/libxml2
@@ -27,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.50-gentoo.patch
 	"${FILESDIR}"/${PN}-5.80-cflags.patch
 	"${FILESDIR}"/${PN}-5.80-fno-common.patch
+	"${FILESDIR}"/${P}-c99.patch
 )
 
 pkg_setup()  {

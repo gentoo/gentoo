@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI+=" test? ( mirror://gnu/freefont/freefont-otf-20120503.tar.gz )"
 LICENSE="GPL-2+"
 SLOT="0/5"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="+png +jpeg +gif +svg +chm +harfbuzz +fontconfig +libunibreak +fribidi +zstd +libutf8proc lto static-libs test"
+IUSE="+png +jpeg +gif +svg +chm +harfbuzz +fontconfig +libunibreak +fribidi +zstd +libutf8proc static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -68,7 +68,6 @@ src_configure() {
 		-DBUILD_TOOLS=OFF
 		-DENABLE_UNITTESTING=$(usex test)
 		-DOFFLINE_BUILD_MODE=ON
-		-DENABLE_LTO=$(usex lto)
 	)
 	cmake_src_configure
 }

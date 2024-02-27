@@ -9,8 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
-		<flag name="indi">Enable support for Astronomical control library using libindi</flag>
 		<flag name="password">Store passwords securely via <pkg>dev-libs/qtkeychain</pkg></flag>
 		<flag name="wcs">Enable support for World Coordinate System library using wcslib</flag>
 	</use>

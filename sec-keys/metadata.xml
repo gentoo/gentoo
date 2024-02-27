@@ -5,4 +5,9 @@
 		The sec-keys category contains cryptographic key bundles
 		such as OpenPGP keys used by upstream to sign distfiles.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sec-keys enthält kryptographische Schlüsselbunde
+		wie z. B. OpenPGP-Schlüssel, die von Upstream zum Signieren von
+		Distributionsdateien verwendet werden.
+	</longdescription>
 </catmetadata>

@@ -52,6 +52,7 @@ src_configure() {
 	# the 64bit flag is useless ... it only adds 64bit compiler flags
 	# (like -m64) which the target toolchain should already handle
 	econf \
+		--cache-file="${S}"/config.cache \
 		--with-tcl="${EPREFIX}/usr/$(get_libdir)" \
 		--disable-64bit \
 		--enable-shared \

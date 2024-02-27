@@ -1,0 +1,26 @@
+From 587443c9e9094f37ac4e185fb4f889913c6992a9 Mon Sep 17 00:00:00 2001
+From: Dmitry Sidorov <dmitry.sidorov@intel.com>
+Date: Thu, 26 Oct 2023 04:36:07 -0700
+Subject: [PATCH] do not rely on version of compiler being $VER.0.0 (#2194)
+
+Co-authored-by: Stanley Gambarin <stanley.gambarin@intel.com>
+---
+ test/DebugInfo/NonSemantic/DebugFunction.cl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/DebugInfo/NonSemantic/DebugFunction.cl b/test/DebugInfo/NonSemantic/DebugFunction.cl
+index 43294916..f84b303a 100644
+--- a/test/DebugInfo/NonSemantic/DebugFunction.cl
++++ b/test/DebugInfo/NonSemantic/DebugFunction.cl
+@@ -25,7 +25,7 @@ void kernel k() {
+ // CHECK-SPIRV-DAG: String [[foo:[0-9]+]] "foo"
+ // CHECK-SPIRV-DAG: String [[#EmptyStr:]] ""
+ // CHECK-SPIRV-DAG: String [[k:[0-9]+]] "k"
+-// CHECK-SPIRV-DAG: String [[#CV:]] "{{.*}}clang version [[#]].0.0
++// CHECK-SPIRV-DAG: String [[#CV:]] "{{.*}}clang version [[#]].[[#]].[[#]]
+ // CHECK-SPIRV: [[#CU:]] [[#]] DebugCompilationUnit
+ // CHECK-SPIRV: [[#FuncFoo:]] [[#]] DebugFunction [[foo]] {{.*}} [[#CU]]
+ // CHECK-SPIRV: [[#FuncK:]] [[#]] DebugFunction [[k]] {{.*}} [[#CU]]
+-- 
+2.43.0
+

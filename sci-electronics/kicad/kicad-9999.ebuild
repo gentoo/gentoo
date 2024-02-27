@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -28,13 +28,16 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples nls openmp"
+IUSE="doc examples nls openmp test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
+# Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
 COMMON_DEPEND="
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
@@ -47,12 +50,12 @@ COMMON_DEPEND="
 	>=sci-libs/opencascade-7.3.0:0=
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
-	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
+	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
-		~dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
+		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
 	nls? (
@@ -64,7 +67,7 @@ RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
 BDEPEND=">=dev-lang/swig-4.0
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds
@@ -100,9 +103,6 @@ src_configure() {
 		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
-		# wxWidgets does not support runtime selection of backends (GLX vs EGL),
-		# if enabled it can break KiCad depending on what wxGTK was compiled
-		# with, see bug #911120
 		-DKICAD_USE_EGL=OFF
 
 		-DKICAD_BUILD_I18N="$(usex nls)"
@@ -118,6 +118,9 @@ src_configure() {
 
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
+
+		-DKICAD_SPICE_QA="$(usex test)"
+		-DKICAD_BUILD_QA_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure

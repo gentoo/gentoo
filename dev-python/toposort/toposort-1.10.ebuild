@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 python_test() {
 	"${EPYTHON}" test/test_toposort.py -v || die "Tests failed with ${EPYTHON}"

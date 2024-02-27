@@ -9,7 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="activities">Enable <pkg>kde-frameworks/kactivities</pkg> integration</flag>
+		<flag name="activities">Enable <pkg>kde-plasma/plasma-activities</pkg> integration</flag>
 		<flag name="addressbook">Enable <pkg>kde-apps/akonadi</pkg> contact integration</flag>
 		<flag name="hbci">Enable HBCI support using <pkg>net-libs/aqbanking</pkg></flag>
 		<flag name="holidays">Enable <pkg>kde-frameworks/kholidays</pkg> integration</flag>

@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/920054
+https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/patch/?id=962692356a1cc41932e43575f3c50927e455ab53
+
+From 962692356a1cc41932e43575f3c50927e455ab53 Mon Sep 17 00:00:00 2001
+From: Andrea Claudi <aclaudi@redhat.com>
+Date: Wed, 15 Nov 2023 18:25:35 +0100
+Subject: Makefile: use /usr/share/iproute2 for config files
+
+According to FHS:
+
+"/usr/lib includes object files and libraries. On some systems, it may
+also include internal binaries that are not intended to be executed
+directly by users or shell scripts."
+
+A better directory to store config files is /usr/share:
+
+"The /usr/share hierarchy is for all read-only architecture independent
+data files.
+
+This hierarchy is intended to be shareable among all architecture
+platforms of a given OS; thus, for example, a site with i386, Alpha, and
+PPC platforms might maintain a single /usr/share directory that is
+centrally-mounted."
+
+Accordingly, move configuration files to $(DATADIR)/iproute2.
+
+Fixes: 946753a4459b ("Makefile: ensure CONF_USR_DIR honours the libdir config")
+Reported-by: Luca Boccassi <luca.boccassi@gmail.com>
+Signed-off-by: Andrea Claudi <aclaudi@redhat.com>
+Acked-by: Luca Boccassi <bluca@debian.org>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Stephen Hemminger <stephen@networkplumber.org>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a24844cf0..8024d45ec 100644
+--- a/Makefile
++++ b/Makefile
+@@ -16,12 +16,12 @@ endif
+ 
+ PREFIX?=/usr
+ SBINDIR?=/sbin
+-CONF_ETC_DIR?=/etc/iproute2
+-CONF_USR_DIR?=$(PREFIX)/lib/iproute2
+ NETNS_RUN_DIR?=/var/run/netns
+ NETNS_ETC_DIR?=/etc/netns
+ DATADIR?=$(PREFIX)/share
+ HDRDIR?=$(PREFIX)/include/iproute2
++CONF_ETC_DIR?=/etc/iproute2
++CONF_USR_DIR?=$(DATADIR)/iproute2
+ DOCDIR?=$(DATADIR)/doc/iproute2
+ MANDIR?=$(DATADIR)/man
+ ARPDDIR?=/var/lib/arpd
+-- 
+cgit 1.2.3-korg

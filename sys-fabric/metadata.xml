@@ -4,6 +4,10 @@
 	<longdescription lang="en">
 		The sys-fabric category contains OFED software stack and other infiniband related software.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-fabric enthält den OFED-Software-Stack und
+		andere mit InfiniBand verbundene Software.
+	</longdescription>
 	<longdescription lang="es">
 		La categoría sys-fabric contiene la pila de software OFED y
 		otro software relacionado con infiniband.

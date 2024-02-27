@@ -1,8 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot (2023-12-12)
+# USE=bpf depends on sys-devel/clang which is not keyworded on m68k
+media-libs/libv4l bpf
+
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Sam James <sam@gentoo.org> (2023-06-18)
@@ -59,7 +63,7 @@ sys-block/thin-provisioning-tools test
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Requires texlive and friends to be keyworded.
-app-doc/doxygen doc
+app-text/doxygen doc
 app-text/po4a test
 dev-libs/libcbor doc
 media-libs/libcaca doc
@@ -73,6 +77,7 @@ dev-python/hatchling test
 dev-python/isort test
 dev-python/nose test
 dev-python/numpydoc test
+dev-python/objgraph test
 dev-python/pip-run test
 dev-python/pytest-regressions test
 dev-python/requests test
@@ -97,7 +102,7 @@ dev-python/numpy lapack
 net-misc/openssh security-key
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
-# dev-util/systemtap is not keyworded on m68k
+# dev-debug/systemtap is not keyworded on m68k
 sys-libs/glibc systemtap
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)

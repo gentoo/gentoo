@@ -12,7 +12,7 @@ SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=7722 -> ${P}.zip
 S="${WORKDIR}"
 
 LICENSE="vim.org"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND=">=dev-util/ctags-5.7"

@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND=">=dev-python/mkdocs-1.0.3[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/pytest-golden[${PYTHON_USEDEP}] )"

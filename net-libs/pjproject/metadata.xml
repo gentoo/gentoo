@@ -22,6 +22,7 @@
 		<flag name="openh264">Include Open H.264 support in the build</flag>
 		<flag name="resample">Include resampling implementations in the build</flag>
 		<flag name="silk">Include SILK support in the build</flag>
+		<flag name="srtp">Enable support for encrypted voice transmission (secure RTP)</flag>
 		<flag name="v4l2">Include Video4Linux v2 support in the build</flag>
 		<flag name="vpx">Include VP8 and VP9 codec support in the build</flag>
 		<flag name="webrtc">Enable WebRTC support</flag>

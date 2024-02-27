@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="doc"
 
-DEPEND="doc? ( >=app-doc/doxygen-1.3.5 )"
+DEPEND="doc? ( >=app-text/doxygen-1.3.5 )"
 RDEPEND=""
 
 src_prepare() {

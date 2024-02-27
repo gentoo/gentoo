@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
 fi
 
 # mold (MIT)
@@ -72,6 +72,7 @@ src_configure() {
 		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
+		-DMOLD_USE_MIMALLOC=$(usex !kernel_Darwin)
 		-DMOLD_USE_SYSTEM_MIMALLOC=ON
 		-DMOLD_USE_SYSTEM_TBB=ON
 	)
@@ -90,5 +91,13 @@ src_install() {
 
 	dosym ${PN} /usr/bin/ld.${PN}
 	dosym ${PN} /usr/bin/ld64.${PN}
-	dosym ../../../usr/bin/${PN} /usr/libexec/${PN}/ld
+	dosym -r /usr/bin/${PN} /usr/libexec/${PN}/ld
+}
+
+src_test() {
+	export TEST_CC="$(tc-getCC)" \
+		   TEST_GCC="$(tc-getCC)" \
+		   TEST_CXX="$(tc-getCXX)" \
+		   TEST_GXX="$(tc-getCXX)"
+	cmake_src_test
 }

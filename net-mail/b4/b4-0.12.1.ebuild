@@ -14,7 +14,7 @@ SRC_URI="https://git.kernel.org/pub/scm/utils/b4/b4.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/dkimpy-1.0[${PYTHON_USEDEP}]

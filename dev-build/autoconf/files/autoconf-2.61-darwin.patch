@@ -1,0 +1,11 @@
+--- a/bin/autoreconf.in
++++ b/bin/autoreconf.in
+@@ -110,7 +110,7 @@
+ my $autoheader = $ENV{'AUTOHEADER'} || '@bindir@/@autoheader-name@';
+ my $automake   = $ENV{'AUTOMAKE'}   || 'automake';
+ my $aclocal    = $ENV{'ACLOCAL'}    || 'aclocal';
+-my $libtoolize = $ENV{'LIBTOOLIZE'} || 'libtoolize';
++my $libtoolize = $ENV{'LIBTOOLIZE'} || 'glibtoolize';
+ my $autopoint  = $ENV{'AUTOPOINT'}  || 'autopoint';
+ 
+ # --install -- as --add-missing in other tools.

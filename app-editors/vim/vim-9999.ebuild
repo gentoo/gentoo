@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ VIM_VERSION="9.0"
 VIM_PATCHES_VERSION="9.0.1000"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
@@ -58,10 +58,12 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 # configure runs the Lua interpreter
 BDEPEND="
-	sys-devel/autoconf
+	dev-build/autoconf
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
@@ -153,6 +155,11 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
+
+	# bug 908961
+	if use elibc_musl ; then
+		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
+	fi
 }
 
 src_configure() {

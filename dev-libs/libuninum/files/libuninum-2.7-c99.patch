@@ -1,0 +1,30 @@
+Avoid an implicit declaration of exit in the configure script.  This
+ensures that the package continues to build with future compilers
+which do not support such implicit declarations by default.
+
+diff --git a/configure b/configure
+index 8fd0eed37cb997de..f5ebc89db38d88f4 100755
+--- a/configure
++++ b/configure
+@@ -4323,8 +4323,8 @@ main ()
+   for (i = 0; i < 256; i++)
+     if (XOR (islower (i), ISLOWER (i))
+ 	|| toupper (i) != TOUPPER (i))
+-      exit(2);
+-  exit (0);
++      return 2;
++  return 0;
+ }
+ _ACEOF
+ rm -f conftest$ac_exeext
+@@ -18747,8 +18747,8 @@ main ()
+   for (i = 0; i < 256; i++)
+     if (XOR (islower (i), ISLOWER (i))
+ 	|| toupper (i) != TOUPPER (i))
+-      exit(2);
+-  exit (0);
++      return 2;
++  return 0;
+ }
+ _ACEOF
+ rm -f conftest$ac_exeext

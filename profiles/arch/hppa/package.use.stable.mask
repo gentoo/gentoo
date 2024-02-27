@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,14 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
+# Mask pdf support so net-print/cups-filters stabilisation
+# can go ahead (bug 627392)
+# and subsequently bug 923811
+net-print/cups-filters pdf
+net-print/libcupsfilters pdf
+net-print/cups-meta pdf
 
 # Sam James <sam@gentoo.org> (2023-06-18)
 # Qt 5 not stable here
@@ -64,7 +72,7 @@ sys-process/htop hwloc
 
 # Sam James <sam@gentoo.org> (2021-11-03)
 # dev-util/source-highlight is not marked stable on HPPA
-sys-devel/gdb source-highlight
+dev-debug/gdb source-highlight
 
 # Matt Turner <mattst88@gentoo.org> (2021-09-22)
 # Non-stable deps.
@@ -153,7 +161,7 @@ dev-libs/check subunit
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-libs/xapian is not stable on hppa
-app-doc/doxygen doxysearch
+app-text/doxygen doxysearch
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # x11-base/xorg-server not stable.
@@ -168,7 +176,7 @@ dev-python/twisted test
 dev-tcltk/bwidget test
 dev-tcltk/snack test
 dev-tcltk/tcllib test
-dev-util/cmake test
+dev-build/cmake test
 sys-apps/dbus test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
@@ -257,11 +265,6 @@ net-wireless/bluez obex
 dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
 sys-block/thin-provisioning-tools test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-09-30)
-# Mask pdf support so net-print/cups-filters stabilisation
-# can go ahead (bug 627392)
-net-print/cups-filters pdf
 
 # David Seifert <soap@gentoo.org> (2017-09-23)
 #  >=virtual/mpi-2.0-r4 does not have stable keywords on hppa

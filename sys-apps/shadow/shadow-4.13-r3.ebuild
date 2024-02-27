@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -231,6 +231,10 @@ src_install() {
 	newdoc README README.download
 	cd doc || die
 	dodoc HOWTO README* WISHLIST *.txt
+
+	if use elibc_musl; then
+		QA_CONFIG_IMPL_DECL_SKIP+=( sgetsgent )
+	fi
 }
 
 pkg_preinst() {

@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/JCTools/JCTools/issues</bugs-to>
+		<remote-id type="github">JCTools/JCTools</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -17,5 +17,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">lxc/lxfs</remote-id>
+		<remote-id type="cpe">cpe:/a:canonical:lxcfs</remote-id>
 	</upstream>
 </pkgmetadata>

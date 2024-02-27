@@ -1,4 +1,4 @@
-# Copyright 2005-2023 Gentoo Authors
+# Copyright 2005-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,19 +13,19 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
-	TEST_COMMIT="e3cdc82782941a8d7b8112f83b4a81b3d334601a"
+	TEST_COMMIT="400f3ff05b2b1c0ae17797a0bd50e75e35c1f1b1"
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-	SLOT="0/133"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/134"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="boost cairo cjk curl +cxx debug doc gpgme +introspection +jpeg +jpeg2k +lcms nss png qt5 test tiff +utils"
+IUSE="boost cairo cjk curl +cxx debug doc gpgme +introspection +jpeg +jpeg2k +lcms nss png qt5 qt6 test tiff +utils"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -49,6 +49,7 @@ COMMON_DEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtxml:5
 	)
+	qt6? ( dev-qt/qtbase:6[gui,xml] )
 	tiff? ( media-libs/tiff:= )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -56,10 +57,13 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.71 )
-	test? ( qt5? (
-		dev-qt/qttest:5
-		dev-qt/qtwidgets:5
-	) )
+	test? (
+		qt5? (
+			dev-qt/qttest:5
+			dev-qt/qtwidgets:5
+		)
+		qt6? ( dev-qt/qtbase:6[widgets] )
+	)
 "
 BDEPEND="
 	>=dev-util/glib-utils-2.64
@@ -112,6 +116,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT5_TESTS=$(usex test $(usex qt5))
+		-DBUILD_QT6_TESTS=$(usex test $(usex qt6))
 		-DBUILD_CPP_TESTS=$(usex test)
 		-DBUILD_MANUAL_TESTS=$(usex test)
 		-DTESTDATADIR="${WORKDIR}"/test-${TEST_COMMIT}
@@ -131,9 +136,9 @@ src_configure() {
 		-DENABLE_NSS3=$(usex nss)
 		-DWITH_PNG=$(usex png)
 		-DENABLE_QT5=$(usex qt5)
+		-DENABLE_QT6=$(usex qt6)
 		-DENABLE_LIBTIFF=$(usex tiff)
 		-DENABLE_UTILS=$(usex utils)
-		-DENABLE_QT6=OFF
 	)
 	use cairo && mycmakeargs+=( -DWITH_GObjectIntrospection=$(usex introspection) )
 

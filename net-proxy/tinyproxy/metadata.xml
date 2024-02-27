@@ -13,5 +13,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">tinyproxy/tinyproxy</remote-id>
+		<remote-id type="cpe">cpe:/a:tinyproxy_project:tinyproxy</remote-id>
 	</upstream>
 </pkgmetadata>

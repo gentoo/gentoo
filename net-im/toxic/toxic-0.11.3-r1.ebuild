@@ -13,7 +13,7 @@ SRC_URI="https://github.com/JFreegman/toxic/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+audio-notify debug games llvm notification png python qrcode +sound +video +X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	video? ( sound X ) "

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package provides various algorithms for computations with
+    polycyclic groups defined by polycyclic presentations. The features
+    of this package include,
+
+      * creating a polycyclic group from a polycyclic presentation
+        arithmetic in a polycyclic group
+
+      * computation with subgroups and factor groups of a polycyclic
+        group
+
+      * computation of standard subgroup series such as the derived
+        series, the lower central series
+
+      * computation of the first and second cohomology
+
+      * computation of group extensions
+
+      * computation of normalizers and centralizers
+
+      * solutions to the conjugacy problems for elements and subgroups
+
+      * computation of torsion and various finite subgroups
+
+      * computation of various subgroups of finite index
+
+      * computation of the Schur multiplicator, the non-abelian exterior
+        square and the non-abelian tenor square
+
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/polycyclic</remote-id>
+  </upstream>
+</pkgmetadata>

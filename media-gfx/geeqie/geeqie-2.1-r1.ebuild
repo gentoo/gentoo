@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
 
 RDEPEND="gnome-extra/zenity
@@ -46,6 +46,7 @@ BDEPEND="
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-locale.patch
 	"${FILESDIR}"/${P}-lua_hpp.patch
 	"${FILESDIR}"/${P}-exiv2-0.28.0.patch
 )

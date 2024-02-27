@@ -13,7 +13,7 @@
 	</longdescription>
 	<use>
 		<flag name="binutils">Use <pkg>sys-devel/binutils</pkg></flag>
-		<flag name="cpio">Use <pkg>app-arch/cpio</pkg></flag>
+		<flag name="cpio">Use <pkg>app-alternatives/cpio</pkg></flag>
 		<flag name="diff">Use <pkg>sys-apps/diffutils</pkg></flag>
 		<flag name="docx">Use <pkg>app-text/docx2txt</pkg></flag>
 		<flag name="dtc">Use <pkg>sys-apps/dtc</pkg></flag>

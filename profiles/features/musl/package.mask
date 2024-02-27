@@ -1,5 +1,45 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Joshua Kinard <kumba@gentoo.org> (2024-02-27)
+# app-arch/lrzip-next cannot work w/ musl's pthreads at
+# this time. (#925547)
+app-arch/lrzip-next
+
+# Marek Szuba <marecki@gentoo.org> (2024-02-18)
+# Binary-only packages linked against glibc
+net-analyzer/nessus-agent-bin
+net-analyzer/nessus-bin
+
+# Marc Schiffbauer <mschiff@gentoo.org> (2024-02-16)
+# Binary package, which is compiled against glibc
+app-editors/logseq-desktop-bin
+
+# Christopher Fore <csfore@posteo.net> (2024-01-24)
+# >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
+# https://github.com/koverstreet/bcachefs-tools/issues/213
+>=sys-fs/bcachefs-tools-1.4.1
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
+# Uses glibc function getsourcefilter(),
+# which are not available on musl.
+net-misc/mcproxy
+
+# Giuseppe Foti  <foti.giuseppe@gmail.com> (2024-01-22)
+# Binary package, which is compiled against glibc
+app-office/drawio-desktop-bin
+
+# Maciej Barć <xgqt@gentoo.org> (2024-01-06)
+# Binary package, which is compiled against glibc
+app-office/joplin-desktop
+
+# Maciej Barć <xgqt@gentoo.org> (2024-01-06)
+# Binary package, which is compiled against glibc
+dev-util/azuredatastudio
+
+# Florian Schmaus <flow@gentoo.org> (2023-11-22)
+# Requires systemd which is not supported on musl.
+sys-power/sandmann-bin
 
 # Maciej Barć <xgqt@gentoo.org> (2023-09-16)
 # Binary package, which is compiled against glibc
@@ -37,11 +77,6 @@ sys-apps/smcipmitool
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
 # Uses dev-util/nvidia-cuda-sdk
 dev-libs/cutlass
-
-# Sam James <sam@gentoo.org> (2023-01-02)
-# Uses error.h, bug #888956
-=sys-libs/liburing-2.3
-=sys-libs/liburing-2.3-r1
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-12-31)
 # RTLD_DEEPBIND does not exist on musl
@@ -129,7 +164,7 @@ www-client/chromium
 net-misc/netkit-telnetd
 net-misc/sitecopy
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
 app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
@@ -138,7 +173,9 @@ app-admin/puppetserver
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
+app-benchmarks/geekbench-ml
 app-crypt/rainbowcrack
+app-crypt/yubioath-flutter-bin
 app-editors/sublime-text
 app-editors/vscode
 app-editors/vscodium
@@ -210,7 +247,6 @@ games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
 games-strategy/darwinia-demo
-games-strategy/defcon-demo
 games-strategy/knights-demo
 games-strategy/majesty-demo
 gnome-extra/nautilus-dropbox
@@ -232,7 +268,6 @@ net-im/rocketchat-desktop-bin
 net-im/skypeforlinux
 net-im/slack
 net-im/telegram-desktop-bin
-net-im/wazzapp-bin
 net-im/whatsapp-desktop-bin
 net-im/zoom
 net-misc/chrome-remote-desktop
@@ -320,6 +355,7 @@ dev-libs/cudnn-frontend
 dev-python/pycuda
 dev-util/nvidia-cuda-toolkit
 dev-libs/optix
+media-libs/nvidia-vaapi-driver
 x11-drivers/nvidia-drivers
 x11-misc/primus
 
@@ -334,6 +370,16 @@ app-editors/jasspa-microemacs
 sys-apps/unscd
 sys-auth/libnss-nis
 sys-auth/sssd
+net-nds/nsscache
+sys-auth/libnss-cache
+sys-auth/libnss-mysql
+sys-auth/libnss-nis
+sys-auth/libnss-pgsql
+sys-auth/nss-mdns
+sys-auth/nss-myhostname
+sys-auth/nss-pam-ldapd
+sys-auth/nss_ldap
+sys-libs/nss-usrfiles
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-03-21)
 # Needs a port to musl. Uses glibc-specific termio and __getppid.

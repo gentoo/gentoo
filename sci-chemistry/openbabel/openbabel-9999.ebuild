@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-WX_GTK_VER=3.0-gtk3
+WX_GTK_VER=3.2-gtk3
 
 inherit cmake desktop flag-o-matic perl-functions python-r1 toolchain-funcs wxwidgets xdg-utils
 
@@ -48,7 +48,7 @@ REQUIRED_USE="
 BDEPEND="
 	dev-lang/perl
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		dev-texlive/texlive-latex
 	)
 	perl? ( >=dev-lang/swig-2 )

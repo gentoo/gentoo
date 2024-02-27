@@ -8,7 +8,6 @@ move dev-python/podman-py dev-python/podman
 move dev-python/sphinx_rtd_theme dev-python/sphinx-rtd-theme
 move dev-python/python-zeroconf dev-python/zeroconf
 move dev-python/keystoneauth dev-python/keystoneauth1
-move dev-python/jupyter_server_fileid dev-python/jupyter-server-fileid
 move dev-python/python-xmlsec dev-python/xmlsec
 move dev-python/github3 dev-python/github3-py
 move dev-python/python-zstandard dev-python/zstandard
@@ -18,7 +17,6 @@ move dev-python/myst_parser dev-python/myst-parser
 move dev-python/setuptools_scm dev-python/setuptools-scm
 move dev-python/netcdf4-python dev-python/netcdf4
 move dev-python/jupyterlab_server dev-python/jupyterlab-server
-move dev-python/jupyter_server_ydoc dev-python/jupyter-server-ydoc
 move app-text/pytextile dev-python/textile
 move dev-python/jupyter_server dev-python/jupyter-server
 move dev-python/pytest_jupyter dev-python/pytest-jupyter

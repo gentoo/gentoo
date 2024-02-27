@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="console">Adds support for line-editing in the console</flag>
-		<flag name="lto">Adds support for link time optimization</flag>
 		<flag name="jumbo-build">Combine source files to speed up build process, requires more memory</flag>
 		<flag name="mail">Allows for mailing of alerts</flag>
 		<flag name="mariadb">Enable support for the mariadb database backend</flag>

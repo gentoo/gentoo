@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,8 +77,8 @@ src_prepare() {
 src_test() {
 	# we need to create jar files for the tests the same way as it's done using pom.xml
 	local implementation_version=$(grep Implementation-Version pom.xml | grep -oE "[0-9]+\.[0-9]+\.[0-9]+")
-	mkdir -p target/test-classes/META-INF || die
-	pushd target/test-classes || die
+	mkdir -p generated-test/META-INF || die
+	pushd generated-test || die
 	echo "Implementation-Version: ${implementation_version}" > META-INF/MANIFEST.MF
 	ejavac -d . -encoding ${JAVA_ENCODING} $(find "${S}/${JAVA_TEST_SRC_DIR}" -name CommonGatewayInterface.java) || die
 	jar cfm cgi-api.jar META-INF/MANIFEST.MF $(find -name CommonGatewayInterface.class) || die

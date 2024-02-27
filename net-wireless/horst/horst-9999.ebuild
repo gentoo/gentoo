@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Small 802.11 wireless LAN analyzer"
 HOMEPAGE="https://github.com/br101/horst/"
 EGIT_REPO_URI="https://github.com/br101/${PN}/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug +pcap test"
 
 RDEPEND="
@@ -18,15 +18,14 @@ RDEPEND="
 	sys-libs/ncurses:0
 	pcap? ( net-libs/libpcap )
 "
-TDEPEND="
+DEPEND="${RDEPEND}"
+BEDEPEND="
+	virtual/pkgconfig
 	test? ( sys-devel/sparse )
 "
-DEPEND="
-	${RDEPEND}
-	${TDEPEND}
-	virtual/pkgconfig
-"
+
 RESTRICT=test #just semantic tests, no functional tests
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-tinfo.patch
 )

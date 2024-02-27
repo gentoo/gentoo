@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,7 @@ IUSE="httpd cgi-lua cgi-php static doc"
 
 # TODO: add ipv6, and c#, java, lua, perl bindings
 # Currently these all have some issue
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 RDEPEND="
 	httpd? (
 		acct-group/axtls

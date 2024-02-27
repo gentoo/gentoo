@@ -1,0 +1,16 @@
+https://github.com/numpy/numpy/pull/25078
+https://github.com/numpy/numpy/pull/25254
+
+diff --git a/numpy/f2py/crackfortran.py b/numpy/f2py/crackfortran.py
+index f352bbaa2..d17b052f9 100755
+--- a/numpy/f2py/crackfortran.py
++++ b/numpy/f2py/crackfortran.py
+@@ -2452,7 +2452,7 @@ def _selected_real_kind_func(p, r=0, radix=0):
+     if p < 16:
+         return 8
+     machine = platform.machine().lower()
+-    if machine.startswith(('aarch64', 'arm64', 'loongarch', 'power', 'ppc', 'riscv', 's390x', 'sparc')):
++    if machine.startswith(('aarch64', 'alpha', 'arm64', 'loongarch', 'mips', 'power', 'ppc', 'riscv', 's390x', 'sparc')):
+         if p <= 33:
+             return 16
+     else:

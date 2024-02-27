@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
 else
 	SRC_URI="https://github.com/jackaudio/jack2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
@@ -50,7 +50,7 @@ RDEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 # tools were formerly provided here, pull to maintain expectations
 PDEPEND="tools? ( media-sound/jack-example-tools )"
 

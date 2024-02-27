@@ -39,6 +39,7 @@ RDEPEND="
 	dev-libs/sleef
 	sci-libs/lapack
 	>=sci-libs/onnx-1.12.0
+	<sci-libs/onnx-1.15.0
 	sci-libs/foxi
 	cuda? (
 		=dev-libs/cudnn-8*

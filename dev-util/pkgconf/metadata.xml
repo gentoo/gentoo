@@ -9,5 +9,6 @@
 	</slots>
 	<upstream>
 		<remote-id type="github">pkgconf/pkgconf</remote-id>
+		<remote-id type="cpe">cpe:/a:pkgconf:pkgconf</remote-id>
 	</upstream>
 </pkgmetadata>

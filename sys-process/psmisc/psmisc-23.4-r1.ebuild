@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="A set of tools that use the proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 nls selinux test X"
@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=sys-devel/libtool-2.2.6b
+	>=dev-build/libtool-2.2.6b
 	nls? ( sys-devel/gettext )
 	test? ( dev-util/dejagnu )
 "

@@ -30,7 +30,7 @@ else
 				-> pdfrw-static_pdfs-${PDFS_COMMIT}.tar.gz
 		)
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ppc ppc64 ~sparc x86"
 	S=${WORKDIR}/${MY_P}
 fi
 

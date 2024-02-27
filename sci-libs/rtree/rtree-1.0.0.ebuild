@@ -15,7 +15,7 @@ HOMEPAGE="https://rtree.readthedocs.io"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 RDEPEND="
 	sci-libs/libspatialindex

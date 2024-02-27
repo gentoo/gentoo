@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0/5"
 IUSE="cpu_flags_x86_rdrand doc static-libs threads"
 
-BDEPEND="doc? ( >=app-doc/doxygen-1.8.13 )"
+BDEPEND="doc? ( >=app-text/doxygen-1.8.13 )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h

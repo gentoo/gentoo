@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/916571
+--- a/test/org/antlr/stringtemplate/test/TestStringTemplate.java
++++ b/test/org/antlr/stringtemplate/test/TestStringTemplate.java
+@@ -28,6 +28,7 @@
+ package org.antlr.stringtemplate.test;
+ 
+ import org.antlr.stringtemplate.*;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
+ import org.antlr.stringtemplate.language.DefaultTemplateLexer;
+ import org.junit.Test;

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/msgpack/msgpack-c/releases/download/cpp-${PV}/${P}.t
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="+boost doc examples test"
 
 REQUIRED_USE="test? ( boost )"
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="boost? ( dev-libs/boost[context] )
 	!<dev-libs/msgpack-5.0.0"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen[dot] )
+BDEPEND="doc? ( app-text/doxygen[dot] )
 	test? ( sys-libs/zlib )"
 
 src_configure() {

@@ -156,7 +156,7 @@ RDEPEND="
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
-	mp3? ( media-sound/mpg123 )
+	mp3? ( media-sound/mpg123-base )
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
@@ -170,7 +170,7 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-libs/libpulse )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] <net-misc/freerdp-3 )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
@@ -434,20 +434,18 @@ src_configure() {
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
 
+	# https://code.videolan.org/videolan/vlc/-/issues/17626 (bug #861143)
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Compatibility fix for Samba 4.
-	use samba && append-cppflags "-I/usr/include/samba-4.0"
+	use samba && append-cppflags "-I${ESYSROOT}/usr/include/samba-4.0"
 
 	if use x86; then
 		# We need to disable -fstack-check if use >=gcc 4.8.0. bug #499996
 		append-cflags $(test-flags-CC -fno-stack-check)
 		# Bug 569774
 		replace-flags -Os -O2
-	fi
-
-	if use omxil; then
-		# bug #723006
-		# https://trac.videolan.org/vlc/ticket/24617
-		append-cflags -fcommon
 	fi
 
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...

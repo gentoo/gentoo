@@ -1,0 +1,69 @@
+https://github.com/ahupp/python-magic/commit/4ffcd59113fa26d7c2e9d5897b1eef919fd4b457
+
+From 4ffcd59113fa26d7c2e9d5897b1eef919fd4b457 Mon Sep 17 00:00:00 2001
+From: Adam Hupp <adam@hupp.org>
+Date: Mon, 9 Jan 2023 12:55:15 -0800
+Subject: [PATCH] update test for upstream added gzip extensions
+
+--- a/test/python_magic_test.py
++++ b/test/python_magic_test.py
+@@ -134,7 +134,7 @@ def test_extension(self):
+             self.assert_values(m, {
+                 # some versions return '' for the extensions of a gz file,
+                 # including w/ the command line.  Who knows...
+-                'test.gz': ('gz/tgz/tpz/zabw/svgz', '', '???'),
++                'test.gz': ('gz/tgz/tpz/zabw/svgz/adz/kmy/xcfgz', 'gz/tgz/tpz/zabw/svgz', '', '???'),
+                 'name_use.jpg': 'jpeg/jpg/jpe/jfif',
+             })
+         except NotImplementedError:
+@@ -227,6 +227,5 @@ def test_pathlike(self):
+         m = magic.Magic(mime=True)
+         self.assertEqual('application/pdf', m.from_file(path))
+ 
+-
+ if __name__ == '__main__':
+     unittest.main()
+
+From b434c88c9c8e901adf5b3779e3aac65f10d90aab Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 2 Aug 2023 11:29:47 +0200
+Subject: [PATCH 1/2] Fix test suite with file 5.45
+
+[   12s] test/python_magic_test.py:53: in assert_values
+[   12s]     self.assertIn(value, expected_value)
+[   12s] E   AssertionError: 'PDF document, version 1.2, 2 page(s)' not found in ('PDF document, version 1.2', 'PDF document, version 1.2, 2 pages')
+---
+ test/libmagic_test.py     | 2 +-
+ test/python_magic_test.py | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/test/libmagic_test.py b/test/libmagic_test.py
+index 5719a58..7b4665b 100644
+--- a/test/libmagic_test.py
++++ b/test/libmagic_test.py
+@@ -15,7 +15,7 @@ class MagicTestCase(unittest.TestCase):
+     filename = os.path.join(TESTDATA_DIR, 'test.pdf')
+     expected_mime_type = 'application/pdf'
+     expected_encoding = 'us-ascii'
+-    expected_name = ('PDF document, version 1.2', 'PDF document, version 1.2, 2 pages')
++    expected_name = ('PDF document, version 1.2', 'PDF document, version 1.2, 2 pages', 'PDF document, version 1.2, 2 page(s)')
+ 
+     def assert_result(self, result):
+         self.assertEqual(result.mime_type, self.expected_mime_type)
+diff --git a/test/python_magic_test.py b/test/python_magic_test.py
+index 624a443..78f63a3 100755
+--- a/test/python_magic_test.py
++++ b/test/python_magic_test.py
+@@ -108,7 +108,8 @@ class MagicTest(unittest.TestCase):
+             self.assert_values(m, {
+                 'magic._pyc_': 'python 2.4 byte-compiled',
+                 'test.pdf': ('PDF document, version 1.2',
+-                             'PDF document, version 1.2, 2 pages'),
++                             'PDF document, version 1.2, 2 pages',
++                             'PDF document, version 1.2, 2 page(s)'),
+                 'test.gz':
+                     ('gzip compressed data, was "test", from Unix, last '
+                      'modified: Sun Jun 29 01:32:52 2008',
+-- 
+2.43.0
+

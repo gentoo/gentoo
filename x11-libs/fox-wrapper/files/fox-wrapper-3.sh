@@ -2,7 +2,7 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Based on the am-wrapper.sh script (sys-devel/automake-wrapper-1-r1)
+# Based on the am-wrapper.sh script (dev-build/automake-wrapper-1-r1)
 #
 # Executes the correct fox-config version, based on the value of WANT_FOX.
 # All versions of fox after 1.0.x ship with a fox-config script

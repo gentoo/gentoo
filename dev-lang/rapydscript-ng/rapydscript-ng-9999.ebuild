@@ -16,7 +16,7 @@ else
 		https://github.com/kovidgoyal/rapydscript-ng/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/rapydscript-ng-node_modules-${PV}.tar.xz
 	"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 inherit edo

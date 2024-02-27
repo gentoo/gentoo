@@ -1,6 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# SPDX-License-Identifier: MIT
 
 description="Maintain persistent software state in the NVIDIA driver"
 command="nvidia-persistenced"

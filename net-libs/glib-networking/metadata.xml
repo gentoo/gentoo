@@ -11,5 +11,6 @@
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/glib-networking</remote-id>
+    <remote-id type="cpe">cpe:/a:gnome:glib</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,20 @@
+--- a/compileoptions.cmake
++++ b/compileoptions.cmake
+@@ -29,7 +29,7 @@ if (CLR_CMAKE_PLATFORM_UNIX)
+   add_definitions(-DDISABLE_CONTRACTS)
+   # The -ferror-limit is helpful during the porting, it makes sure the compiler doesn't stop
+   # after hitting just about 20 errors.
+-  add_compile_options(-ferror-limit=4096)
++  add_compile_options()
+ 
+   if (CLR_CMAKE_WARNINGS_ARE_ERRORS)
+     # All warnings that are not explicitly disabled are reported as errors
+@@ -57,7 +57,7 @@ if (CLR_CMAKE_PLATFORM_UNIX)
+   # as x64 does. It has been causing issues in ARM (https://github.com/dotnet/coreclr/issues/4746)
+   add_compile_options(-fsigned-char)
+ 
+-  add_compile_options(-Wall -Wextra -Walign-cast -Wstrict-aliasing -Wno-unused-parameter -Wnarrowing)
++  add_compile_options(-Wall -Wextra  -Wstrict-aliasing -Wno-unused-parameter -Wnarrowing)
+ endif(CLR_CMAKE_PLATFORM_UNIX)
+ 
+ 

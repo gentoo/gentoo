@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/composer/ca-bundle/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	dev-lang/php:*

@@ -1,12 +1,32 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (2023-09-18)
-# Disabling gstreamer seems to be untested upstream and is often broken.
-# The gstreamer dependencies are trivial in compile time and disk usage
-# compared to webkit-gtk.
-# Bugs #911663, #914362
->=net-libs/webkit-gtk-2.42 gstreamer
+# Ionen Wolkens <ionen@gentoo.org> (2024-02-17)
+# Currently fails to build with gcc, and either way the current upstream
+# makes it clear that non-clang is not a supported configuration.
+# Please do not report bugs if disabled unless upstream's stance changed.
+games-emulation/pcsx2 clang
+
+# Matt Turner <mattst88@gentoo.org> (2024-02-01)
+# Reverse dependencies are not ready for media-libs/mesa to not provide OpenGL.
+media-libs/mesa opengl
+
+# Michael Orlitzky <mjo@gentoo.org> (2023-11-22)
+# USE=-gui is broken in this and the subsequent version (bug
+# 916718). Package is a PITA: the maintainer is combative, and the
+# issue tracker is a French-language forum that never sends me
+# confirmation emails when I try to sign up.
+=sci-mathematics/giac-1.9.0.67 gui
+
+# Michael Orlitzky <mjo@gentoo.org> (2023-12-04)
+# This was originally forced because gstreamer-less builds are untested
+# upstream and are often broken (e.g. bugs 911663 and 914362). But from
+# the user's perspective, having it forced is worse than having it fail
+# to build; if it fails, you can always set USE=gstreamer for one
+# version, i.e. at least you have a choice. The two latest 2.42.x
+# ebuilds in the tree both build fine with gstreamer disabled, so it is
+# at least safe to re-enable for those. Older ebuilds, who knows.
+<net-libs/webkit-gtk-2.42 gstreamer
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
@@ -22,11 +42,6 @@ games-engines/openmw lua_single_target_luajit
 # Done this way also avoids conflicts for users using another default.
 # [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
 media-video/mpv lua_single_target_luajit
-
-# Joonas Niilola <juippis@gentoo.org> (2023-07-21)
-# -system-librnp is currently broken with upstream package.
-~mail-client/thunderbird-115.0 system-librnp
-~mail-client/thunderbird-115.0.1 system-librnp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-08)
 # Uses attr even if disabling is requested, bug 910070
@@ -159,13 +174,6 @@ net-misc/wget ssl
 # is maintained for experts only.
 sys-libs/libcxx libcxxabi
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-06)
-# Non-initramfs builds do not work with the default .config.  Force
-# the mask, so that users don't brick their systems.  If somebody wants
-# to avoid initramfs, he needs to use a custom .config and unforce
-# the flag.
-sys-kernel/vanilla-kernel initramfs
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
 media-sound/lilypond guile2
@@ -213,11 +221,6 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# David Seifert <soap@gentoo.org> (2017-03-07)
-# Only ever use system ffmpeg, allow kodi bundled ffmpeg
-# only for debug pruposes.
-media-tv/kodi system-ffmpeg
-
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns
@@ -226,11 +229,6 @@ media-tv/kodi system-ffmpeg
 # Doesn't work without acl support
 # No patch yet, #516626
 >=net-fs/netatalk-3.1.3 acl
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2014-06-12)
-# Chromium builds in PIC mode on most arches anyway,
-# i.e. this use flag has no effect on them.
-www-client/chromium pic
 
 # Zac Medico <zmedico@gentoo.org> (2012-12-04)
 # Force app-shells/bash[readline] in stage1 builds, so that compgen is

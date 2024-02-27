@@ -11,7 +11,7 @@ SRC_URI="https://github.com/cask/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

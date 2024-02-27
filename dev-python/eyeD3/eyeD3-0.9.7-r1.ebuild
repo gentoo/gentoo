@@ -25,7 +25,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0.7"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	dev-python/deprecation[${PYTHON_USEDEP}]

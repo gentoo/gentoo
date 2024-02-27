@@ -13,7 +13,7 @@ S="${WORKDIR}"/swiper-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="test"  # Ivy, Swiper and Counsel tests are performed in app-emacs/ivy
 
 RDEPEND="

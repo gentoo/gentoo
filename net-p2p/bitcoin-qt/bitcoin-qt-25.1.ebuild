@@ -8,7 +8,7 @@ HOMEPAGE="https://bitcoincore.org/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+asm +berkdb dbus +external-signer kde nat-pmp +qrcode +sqlite systemtap test upnp +wallet zeromq"
 RESTRICT="!test? ( test )"
 

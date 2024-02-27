@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit autotools python-r1 s6 systemd tmpfiles multilib-minimal
 
 DESCRIPTION="NSS module for name lookups using LDAP"
@@ -12,9 +12,10 @@ SRC_URI="https://arthurdejong.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="debug kerberos +pam pynslcd sasl selinux test +utils"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	utils? ( ${PYTHON_REQUIRED_USE} )
 	test? ( ${PYTHON_REQUIRED_USE} pynslcd )
 "

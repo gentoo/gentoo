@@ -25,6 +25,9 @@
 			Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image
 			storage
 		</flag>
+		<flag name="nbd">
+			Allow using <pkg>sys-block/nbdkit</pkg> to access network disks
+		</flag>
 		<flag name="nfs">
 			Allow using Network File System mounts as pool for disk image storage
 		</flag>
@@ -52,7 +55,7 @@
 			Support management of VirtualBox virtualisation (<pkg>app-emulation/virtualbox</pkg>)
 		</flag>
 		<!-- Miscellaneous flags -->
-		<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
+		<flag name="dtrace">Enable dtrace support via <pkg>dev-debug/systemtap</pkg></flag>
 		<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mountpoints</flag>
 		<flag name="numa">
 			Use NUMA for memory segmenting via <pkg>sys-process/numactl</pkg> and
@@ -92,6 +95,9 @@
 		</flag>
 		<flag name="zfs">
 			Enable ZFS backend storage <pkg>sys-fs/zfs</pkg>
+		</flag>
+		<flag name="virtiofsd">
+			Drag in virtiofsd dependency <pkg>app-emulation/virtiofsd</pkg>
 		</flag>
 	</use>
 	<upstream>

@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-multipart</remote-id>
-		<remote-id type="github">andrew-d/python-multipart</remote-id>
+		<remote-id type="github">Kludex/python-multipart</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,19 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 
-inherit flag-o-matic wxwidgets xdg-utils
+inherit autotools flag-o-matic wxwidgets xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/amule-project/amule"
-	inherit autotools git-r3
+	inherit git-r3
 else
 	MY_P="${PN/m/M}-${PV}"
 	SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
@@ -29,7 +29,7 @@ RDEPEND="
 	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
-	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X?]
+	x11-libs/wxGTK:${WX_GTK_VER}[X?]
 	daemon? ( acct-user/amule )
 	geoip? ( dev-libs/geoip )
 	nls? ( virtual/libintl )
@@ -45,13 +45,15 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig
-	>=sys-devel/boost-m4-0.4_p20221019
+	>=dev-build/boost-m4-0.4_p20221019
 	nls? ( sys-devel/gettext )
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
 	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
+	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
+	"${FILESDIR}/${PN}-2.3.3-wx3.2.patch"
 )
 
 pkg_setup() {
@@ -70,6 +72,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use debug || append-cppflags -DwxDEBUG_LEVEL=0
 	append-cxxflags -std=gnu++14
 
 	local myconf=(
@@ -103,6 +106,10 @@ src_configure() {
 	fi
 
 	econf "${myconf[@]}"
+}
+
+src_test() {
+	emake check
 }
 
 src_install() {

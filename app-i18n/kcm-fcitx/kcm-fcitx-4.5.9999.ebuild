@@ -27,7 +27,7 @@ IUSE=""
 BDEPEND=">=app-i18n/fcitx-4.2.9:4
 	dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 	sys-devel/gettext
 	virtual/pkgconfig"
 DEPEND=">=app-i18n/fcitx-4.2.9:4

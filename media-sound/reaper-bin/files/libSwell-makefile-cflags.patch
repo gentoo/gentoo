@@ -1,0 +1,31 @@
+diff -ru justinfrankel-WDL-d974e49/WDL/swell/Makefile justinfrankel-WDL-d974e49.new/WDL/swell/Makefile
+--- justinfrankel-WDL-d974e49/WDL/swell/Makefile	2023-12-10 17:12:41.000000000 +0100
++++ justinfrankel-WDL-d974e49.new/WDL/swell/Makefile	2023-12-12 19:42:19.161433462 +0100
+@@ -17,7 +17,7 @@
+ 
+ COMPILER=GCC
+ 
+-CFLAGS = -pipe -fvisibility=hidden -fno-math-errno -fPIC -DPIC -Wall -Wshadow -Wno-unused-function -Wno-multichar -Wtype-limits
++CFLAGS += -fvisibility=hidden -fno-math-errno -fPIC -DPIC -Wall -Wshadow -Wno-unused-function -Wno-multichar -Wtype-limits
+ 
+ CFLAGS += -DSWELL_MAKING_DYLIB
+ 
+@@ -63,16 +63,9 @@
+ 
+ 
+ ifdef DEBUG
+-CFLAGS += -O0 -g -D_DEBUG
++CFLAGS += -D_DEBUG
+ else
+-CFLAGS += -O2 -DNDEBUG
+-  ifdef DEBUG_INFO
+-    CFLAGS += -g
+-  else
+-    ifneq ($(COMPILER),CLANG)
+-      CFLAGS += -s
+-    endif
+-  endif
++CFLAGS += -DNDEBUG
+ endif
+ 
+ LINKEXTRA =  -lpthread -ldl 

@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/cask/shut-up/issues/</bugs-to>
     <remote-id type="github">cask/shut-up</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

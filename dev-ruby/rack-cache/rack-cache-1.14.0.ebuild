@@ -32,13 +32,9 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/mocha-2 )"
 
 all_ruby_prepare() {
-	sed -i -e '/bundler/ s:^:#:' \
-		test/test_helper.rb || die
-}
-
-all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find */' -e "s:_relative ': './:" ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/bundler/ s:^:#:' test/test_helper.rb || die
+	sed -i -e 's/MiniTest/Minitest/' test/*_test.rb || die
 }
 
 each_ruby_test() {

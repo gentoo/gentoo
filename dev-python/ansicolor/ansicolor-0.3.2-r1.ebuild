@@ -17,7 +17,7 @@ else
 	SRC_URI="
 	https://github.com/numerodix/ansicolor/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="Produce ansi color output and colored highlighting and diffing"

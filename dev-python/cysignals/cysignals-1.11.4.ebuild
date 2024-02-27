@@ -16,7 +16,7 @@ HOMEPAGE="https://pypi.org/project/cysignals/
 # setup.py has "or later"
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="sci-mathematics/pari:="

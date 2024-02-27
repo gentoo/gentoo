@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}.vim-${PV}"
 
 LICENSE="vim.org"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 src_compile() {
 	:;

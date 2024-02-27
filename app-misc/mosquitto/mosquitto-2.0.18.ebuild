@@ -12,8 +12,8 @@ SRC_URI="https://mosquitto.org/files/source/${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="bridge examples +persistence +srv ssl systemd tcpd test websockets"
+KEYWORDS="amd64 arm ~arm64 x86"
+IUSE="+bridge examples +persistence +srv ssl systemd tcpd test websockets"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( bridge )"
@@ -21,12 +21,12 @@ REQUIRED_USE="test? ( bridge )"
 RDEPEND="
 	acct-user/mosquitto
 	acct-group/mosquitto
-	dev-libs/cJSON:=
+	dev-libs/cJSON
 	srv? ( net-dns/c-ares:= )
 	ssl? (
 		dev-libs/openssl:0=
 	)
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	websockets? ( net-libs/libwebsockets[lejp] )
 "
@@ -35,8 +35,15 @@ DEPEND="
 	test? ( dev-util/cunit )
 "
 BDEPEND="
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/psutil[${PYTHON_USEDEP}]')
+	)
 "
+
+python_check_deps() {
+	python_has_version -b "dev-python/psutil[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	use test && python_setup

@@ -5,6 +5,9 @@
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
   </maintainer>
+  <use>
+    <flag name="msgpack">Support ActiveSupport::MessagePack module</flag>
+  </use>
   <upstream>
     <remote-id type="github">rails/rails</remote-id>
   </upstream>

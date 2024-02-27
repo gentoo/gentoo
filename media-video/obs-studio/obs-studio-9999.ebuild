@@ -9,10 +9,10 @@ PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake lua-single optfeature python-single-r1 xdg
 
-CEF_DIR="cef_binary_5060_linux64"
-OBS_BROWSER_COMMIT="e397df52e70392ebb9146e0ab6317c0d1a30bce4"
-OBS_WEBSOCKET_COMMIT="4ff109b62bc221192943541010d055be9ae5dbba"
-QR_COMMIT="8518684c0f33d004fa93971be2c6a8eca3167d1e"
+CEF_DIR="cef_binary_5060_linux_x86_64"
+CEF_REVISION="_v3"
+OBS_BROWSER_COMMIT="211f851bb3f203483a1f7571dd40fa66d0dfceb8"
+OBS_WEBSOCKET_COMMIT="ede66a68cbc043a6fc7c8af683ae0924d4068941"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -29,7 +29,7 @@ else
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
-SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}.tar.bz2 )"
+SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
@@ -38,8 +38,9 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
-	python qsv speex +ssl truetype v4l vlc wayland websocket
+	python qsv speex +ssl test truetype v4l vlc wayland websocket
 "
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -114,6 +115,7 @@ DEPEND="
 	qsv? ( media-libs/oneVPL )
 	speex? ( media-libs/speexdsp )
 	ssl? ( net-libs/mbedtls:= )
+	test? ( dev-util/cmocka )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -131,6 +133,7 @@ DEPEND="
 		dev-cpp/asio
 		dev-cpp/nlohmann_json
 		dev-cpp/websocketpp
+		dev-libs/qr-code-generator
 	)
 "
 RDEPEND="${DEPEND}"
@@ -193,6 +196,7 @@ src_configure() {
 		-DENABLE_RNNOISE=ON
 		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
 		-DENABLE_SPEEXDSP=$(usex speex)
+		-DENABLE_UNIT_TESTS=$(usex test)
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON

@@ -1,0 +1,7 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-12-07)
+# Does not support split-usr filesystem geometry. Please migrate to
+# a merged-usr profile.
+>=sys-apps/systemd-255

@@ -20,7 +20,6 @@
     <flag name="libunibreak">Use <pkg>dev-libs/libunibreak</pkg> for hyphenation</flag>
     <flag name="fribidi">Support bidirectional text by <pkg>dev-libs/fribidi</pkg></flag>
     <flag name="libutf8proc">Use <pkg>dev-libs/libutf8proc</pkg> for manipulating unicode strings</flag>
-    <flag name="lto">Use link time optimization</flag>
   </use>
   <upstream>
     <remote-id type="gitlab">coolreader-ng/crengine-ng</remote-id>

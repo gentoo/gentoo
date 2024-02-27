@@ -1,0 +1,14 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 10482b8..25827a0 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -7,3 +7,9 @@ from click.testing import CliRunner
+ @pytest.fixture
+ def runner():
+     return CliRunner()
++
++
++@pytest.fixture(autouse=True)
++def clean_env(monkeypatch):
++    monkeypatch.delenv("FORCE_COLOR", raising=False)
++    monkeypatch.delenv("NO_COLOR", raising=False)

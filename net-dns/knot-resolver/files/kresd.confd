@@ -1,5 +1,0 @@
-# Copyright 1999-2023 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-KRESD_OPTS="-n /var/run/kresd"
-
-#KRESD_PIDFILE="/var/run/kresd.pid"

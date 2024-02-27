@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+cron systemd"
 
-DEPEND=""
 RDEPEND="
 	app-shells/bash
 	cron? ( !systemd? ( virtual/cron ) )"

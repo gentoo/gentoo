@@ -12,7 +12,7 @@ SRC_URI="https://web.archive.org/web/20150908031821/http://martin.meltin.net/sit
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~x86-linux ~ppc-macos"
 IUSE="gui"
 
 RDEPEND=">=app-eselect/eselect-emacs-1.15

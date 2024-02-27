@@ -1,0 +1,34 @@
+From fab698862466994a8fdc9aa335c87b4f05430ce6 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:15:56 +0200
+Subject: [PATCH 10/10] Port away from deprecated QList::toSet
+
+---
+ src/oauth2plugin.cpp | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/oauth2plugin.cpp b/src/oauth2plugin.cpp
+index 45510ad..0c23b99 100644
+--- a/src/oauth2plugin.cpp
++++ b/src/oauth2plugin.cpp
+@@ -256,9 +256,15 @@ bool OAuth2Plugin::respondWithStoredToken(const QVariantMap &token,
+      * we cannot use it now */
+     if (!scopes.isEmpty()) {
+         if (!token.contains(SCOPES)) return false;
+-        QSet<QString> cachedScopes =
+-            token.value(SCOPES).toStringList().toSet();
++
++        QStringList scopesList = token.value(SCOPES).toStringList();
++#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
++        QSet<QString> cachedScopes = scopesList.toSet();
+         if (!cachedScopes.contains(scopes.toSet())) return false;
++#else
++        QSet<QString> cachedScopes(scopesList.begin(), scopesList.end());
++        if (!cachedScopes.contains(QSet(scopes.begin(), scopes.end()))) return false;
++#endif
+     }
+ 
+     if (token.contains(TOKEN)) {
+-- 
+2.43.0
+

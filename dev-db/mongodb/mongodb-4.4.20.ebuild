@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 SCONS_MIN_VERSION="3.3.1"
 CHECKREQS_DISK_BUILD="2400M"
@@ -21,7 +21,7 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 -riscv"
-IUSE="debug kerberos lto ssl test +tools"
+IUSE="debug kerberos ssl test +tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="acct-group/mongodb
@@ -42,11 +42,11 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	debug? ( dev-util/valgrind )"
+	debug? ( dev-debug/valgrind )"
 BDEPEND="
 	$(python_gen_any_dep '
 		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/requests[${PYTHON_USEDEP}] )
-		>=dev-util/scons-3.1.1[${PYTHON_USEDEP}]
+		>=dev-build/scons-3.1.1[${PYTHON_USEDEP}]
 		dev-python/cheetah3[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -73,7 +73,7 @@ python_check_deps() {
 		python_has_version "dev-python/requests[${PYTHON_USEDEP}]" || return 1
 	fi
 
-	python_has_version ">=dev-util/scons-3.1.1[${PYTHON_USEDEP}]" &&
+	python_has_version ">=dev-build/scons-3.1.1[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/psutil[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
@@ -123,7 +123,6 @@ src_configure() {
 	use arm64 && scons_opts+=( --use-hardware-crc32=off ) # Bug 701300
 	use debug && scons_opts+=( --dbg=on )
 	use kerberos && scons_opts+=( --use-sasl-client )
-	use lto && scons_opts+=( --lto=on )
 	use ssl && scons_opts+=( --ssl )
 
 	# Needed to avoid forcing FORTIFY_SOURCE

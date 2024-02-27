@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<project name="gentoo-classpath">
-    <path id="mvel.classpath">
-        <pathelement path="${gentoo.classpath}" />
-    </path>
-</project>

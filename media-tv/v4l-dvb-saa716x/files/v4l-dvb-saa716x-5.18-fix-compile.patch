@@ -1,0 +1,84 @@
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_budget.c.orig	2024-02-04 09:44:55.817082316 +0100
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_budget.c	2024-02-04 10:00:19.630031631 +0100
+@@ -268,10 +268,10 @@
+	do {
+		u8 *data = (u8 *)fgpi_entry->dma_buf[fgpi_entry->read_index].mem_virt;
+
+-		pci_dma_sync_sg_for_cpu(saa716x->pdev,
++		dma_sync_sg_for_cpu(&saa716x->pdev->dev,
+			fgpi_entry->dma_buf[fgpi_entry->read_index].sg_list,
+			fgpi_entry->dma_buf[fgpi_entry->read_index].list_len,
+-			PCI_DMA_FROMDEVICE);
++			DMA_FROM_DEVICE);
+
+		dvb_dmx_swfilter(demux, data, 348 * 188);
+
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_hybrid.c.orig	2024-02-04 09:54:31.756421321 +0100
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_hybrid.c	2024-02-04 09:59:49.043925659 +0100
+@@ -283,10 +283,10 @@
+	do {
+		u8 *data = (u8 *)fgpi_entry->dma_buf[fgpi_entry->read_index].mem_virt;
+
+-		pci_dma_sync_sg_for_cpu(saa716x->pdev,
++		dma_sync_sg_for_cpu(&saa716x->pdev->dev,
+			fgpi_entry->dma_buf[fgpi_entry->read_index].sg_list,
+			fgpi_entry->dma_buf[fgpi_entry->read_index].list_len,
+-			PCI_DMA_FROMDEVICE);
++			DMA_FROM_DEVICE);
+
+		dvb_dmx_swfilter(demux, data, 348 * 188);
+
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_pci.c.orig	2024-02-04 09:27:44.356023812 +0100
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_pci.c	2024-02-04 09:35:33.867498244 +0100
+@@ -149,14 +149,14 @@
+		goto fail0;
+	}
+
+-	if (!pci_set_dma_mask(pdev, DMA_BIT_MASK(64))) {
++	if (!dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64))) {
+		use_dac = 1;
+-		err = pci_set_consistent_dma_mask(pdev, DMA_BIT_MASK(64));
++		err = dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(64));
+		if (err) {
+			dprintk(SAA716x_ERROR, 1, "Unable to obtain 64bit DMA");
+			goto fail1;
+		}
+-	} else if ((err = pci_set_consistent_dma_mask(pdev, DMA_BIT_MASK(32))) != 0) {
++	} else if ((err = dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(32))) != 0) {
+		dprintk(SAA716x_ERROR, 1, "Unable to obtain 32bit DMA");
+		goto fail1;
+	}
+--- powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_ff_main.c.orig	2024-02-04 09:46:17.092236435 +0100
++++ powARman-v4l-dvb-saa716x-83f3bfd93a95/linux/drivers/media/common/saa716x/saa716x_ff_main.c	2024-02-04 10:01:59.274872910 +0100
+@@ -624,15 +624,15 @@
+	}
+
+	do {
+-		pci_dma_sync_sg_for_cpu(saa716x->pdev,
++		dma_sync_sg_for_cpu(&saa716x->pdev->dev,
+			vip_entry->dma_buf[0][vip_entry->read_index].sg_list,
+			vip_entry->dma_buf[0][vip_entry->read_index].list_len,
+-			PCI_DMA_FROMDEVICE);
++			DMA_FROM_DEVICE);
+		if (vip_entry->dual_channel) {
+-			pci_dma_sync_sg_for_cpu(saa716x->pdev,
++			dma_sync_sg_for_cpu(&saa716x->pdev->dev,
+				vip_entry->dma_buf[1][vip_entry->read_index].sg_list,
+				vip_entry->dma_buf[1][vip_entry->read_index].list_len,
+-				PCI_DMA_FROMDEVICE);
++				DMA_FROM_DEVICE);
+		}
+
+		vip_entry->read_index = (vip_entry->read_index + 1) & 7;
+@@ -1321,10 +1321,10 @@
+	do {
+		u8 *data = (u8 *)fgpi_entry->dma_buf[fgpi_entry->read_index].mem_virt;
+
+-		pci_dma_sync_sg_for_cpu(saa716x->pdev,
++		dma_sync_sg_for_cpu(&saa716x->pdev->dev,
+			fgpi_entry->dma_buf[fgpi_entry->read_index].sg_list,
+			fgpi_entry->dma_buf[fgpi_entry->read_index].list_len,
+-			PCI_DMA_FROMDEVICE);
++			DMA_FROM_DEVICE);
+
+		dvb_dmx_swfilter(demux, data, 348 * 188);

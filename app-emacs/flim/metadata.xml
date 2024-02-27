@@ -6,6 +6,11 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
+<use>
+  <flag name="oauth2">
+    Support OAuth2 authentication (<pkg>app-emacs/oauth2</pkg>)
+  </flag>
+</use>
 <upstream>
   <remote-id type="github">wanderlust/flim</remote-id>
 </upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc examples"
 
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-man-page-typo-fix.patch

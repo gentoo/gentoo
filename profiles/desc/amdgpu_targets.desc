@@ -15,6 +15,6 @@ gfx1011 - RDNA GPU, codename navi12, including Radeon Pro 5600M/V520
 gfx1012 - RDNA GPU, codename navi14, including Radeon RX 5500XT/5500/5500M/5500XTB/5300/5300M, Radeon Pro 5500XT/5500M/5300/5300M, Radeon Pro W5500X/W5500/W5500M/W5300M
 gfx1030 - RDNA2 GPU, codename navi21/sienna cichlid, including Radeon RX 6950XT/6900XT/6800XT/6800, Radeon Pro W6800
 gfx1031 - RDNA2 GPU, codename navi22/navy flounder, including Radeon RX 6750XT/6700XT/6800M/6700M
-gfx1100 - RDNA3 GPU, codename navi31/plum bonito, including Radeon RX 7900XTX/7900XT
-gfx1101 - RDNA3 GPU, codename navi32
-gfx1102 - RDNA3 GPU, codename navi33
+gfx1100 - RDNA3 GPU, codename navi31/plum bonito, including Radeon RX 7900XTX/7900XT, AMD Radeon Pro W7900/W7800
+gfx1101 - RDNA3 GPU, codename navi32, including Radeon RX 7700XT/7800XT
+gfx1102 - RDNA3 GPU, codename navi33, including Radeon RX 7600/7600M/7600M XT/7700S/7600S, AMD Radeon PRO W7600/W7500

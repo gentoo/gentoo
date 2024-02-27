@@ -5,9 +5,6 @@
 		<email>sci-mathematics@gentoo.org</email>
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
-	<use>
-		<flag name="lto">Use link-time optimization for R and its recommended packages.</flag>
-	</use>
 	<longdescription lang="en">
 		R is GNU S, a system for statistical computation and graphics. It
 		consists of a language plus a run-time environment with graphics, a

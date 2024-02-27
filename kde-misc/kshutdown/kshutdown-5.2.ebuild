@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	app-arch/unzip
 	sys-devel/gettext
-	kde? ( kde-frameworks/extra-cmake-modules:5 )
+	kde? ( kde-frameworks/extra-cmake-modules:0 )
 "
 
 src_configure() {

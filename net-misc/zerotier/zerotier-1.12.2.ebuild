@@ -191,7 +191,7 @@ declare -A GIT_CRATES=(
 	[jwt]='https://github.com/glimberg/rust-jwt;61a9291fdeec747c6edf14f4fa0caf235136c168;rust-jwt-%commit%'
 )
 
-inherit cargo flag-o-matic systemd toolchain-funcs
+inherit cargo systemd toolchain-funcs
 
 DESCRIPTION="A software-based managed Ethernet switch for planet Earth"
 HOMEPAGE="https://www.zerotier.com/"
@@ -225,6 +225,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.1-respect-ldflags.patch
 	"${FILESDIR}"/${PN}-1.10.1-add-armv7a-support.patch
+	"${FILESDIR}"/${PN}-1.12.2-noexecstack.patch
 )
 
 DOCS=( README.md AUTHORS.md )
@@ -247,10 +248,6 @@ src_prepare() {
 
 src_configure() {
 	tc-export CXX CC
-
-	# Several assembler files without GNU-stack markings
-	# https://github.com/zerotier/ZeroTierOne/issues/1179
-	append-ldflags -Wl,-z,noexecstack
 
 	use cpu_flags_arm_neon || export ZT_DISABLE_NEON=1
 

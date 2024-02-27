@@ -9,9 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="otf">Install the OpenType version of the font</flag>
-		<flag name="ttf">Install the TrueType version of the font</flag>
-	</use>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">FortAwesome/Font-Awesome</remote-id>
+	</upstream>
 </pkgmetadata>

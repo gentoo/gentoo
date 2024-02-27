@@ -15,10 +15,8 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
-PATCHES=( "${FILESDIR}/${PN}-1.4.12-cabal-doctest.patch" )
-
-GHC_BOOTSTRAP_PACKAGES=(
-	cabal-doctest
+PATCHES=(
+	"${FILESDIR}/${PN}-1.4.15-cabal-doctest.patch"
 )
 
 RDEPEND=">=dev-haskell/comonad-4.0:=[profile?] <dev-haskell/comonad-6:=[profile?]
@@ -35,5 +33,14 @@ RDEPEND=">=dev-haskell/comonad-4.0:=[profile?] <dev-haskell/comonad-6:=[profile?
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0.0.0
-	test? ( >=dev-haskell/doctest-0.16 )
+	test? (
+		>=dev-haskell/cabal-doctest-1.0.0
+		>=dev-haskell/doctest-0.16
+	)
 "
+
+src_configure() {
+	use test && export GHC_BOOTSTRAP_PACKAGES+=( cabal-doctest )
+
+	haskell-cabal_src_configure
+}

@@ -103,7 +103,7 @@ RDEPEND="
 	mysql? ( dev-db/mariadb-connector-c )
 	odbc? ( dev-db/unixODBC )
 	openvdb? ( media-gfx/openvdb:= )
-	pdal? ( sci-libs/pdal:= )
+	pdal? ( <sci-libs/pdal-2.6.0:= )
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}

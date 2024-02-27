@@ -1,0 +1,27 @@
+From 9a23019d49513acba5128c5173e622ae2f53ced6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 19 Dec 2023 20:57:04 +0100
+Subject: [PATCH] Add missing QDebug include
+
+Downstream report: https://bugs.gentoo.org/920311
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/console/jobs/securityscanjob.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/console/jobs/securityscanjob.cpp b/src/console/jobs/securityscanjob.cpp
+index 698db22..fcb8bbf 100644
+--- a/src/console/jobs/securityscanjob.cpp
++++ b/src/console/jobs/securityscanjob.cpp
+@@ -10,6 +10,7 @@
+ 
+ #include <rest/restclient.h>
+ 
++#include <QDebug>
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
+ #include <QNetworkRequest>
+-- 
+GitLab
+

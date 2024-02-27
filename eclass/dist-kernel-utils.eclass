@@ -12,13 +12,6 @@
 # This eclass provides various utility functions related to Distribution
 # Kernels.
 
-# @ECLASS_VARIABLE: KERNEL_IUSE_SECUREBOOT
-# @PRE_INHERIT
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# If set to a non-null value, inherits secureboot.eclass
-# and allows signing of generated kernel images.
-
 # @ECLASS_VARIABLE: KERNEL_EFI_ZBOOT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -33,42 +26,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-	inherit secureboot
-fi
-
-# @FUNCTION: dist-kernel_build_initramfs
-# @USAGE: <output> <version>
-# @DESCRIPTION:
-# Build an initramfs for the kernel.  <output> specifies the absolute
-# path where initramfs will be created, while <version> specifies
-# the kernel version, used to find modules.
-#
-# Note: while this function uses dracut at the moment, other initramfs
-# variants may be supported in the future.
-dist-kernel_build_initramfs() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
-	local output=${1}
-	local version=${2}
-
-	local rel_image_path=$(dist-kernel_get_image_path)
-	local image=${output%/*}/${rel_image_path##*/}
-
-	local args=(
-		--force
-		# if uefi=yes is used, dracut needs to locate the kernel image
-		--kernel-image "${image}"
-
-		# positional arguments
-		"${output}" "${version}"
-	)
-
-	ebegin "Building initramfs via dracut"
-	dracut "${args[@]}"
-	eend ${?} || die -n "Building initramfs failed"
-}
+inherit toolchain-funcs
 
 # @FUNCTION: dist-kernel_get_image_path
 # @DESCRIPTION:
@@ -83,6 +41,13 @@ dist-kernel_get_image_path() {
 				echo arch/${ARCH}/boot/vmlinuz.efi
 			else
 				echo arch/${ARCH}/boot/Image.gz
+			fi
+			;;
+		loong)
+			if [[ ${KERNEL_EFI_ZBOOT} ]]; then
+				echo arch/loongarch/boot/vmlinuz.efi
+			else
+				echo arch/loongarch/boot/vmlinux.elf
 			fi
 			;;
 		arm)
@@ -114,42 +79,10 @@ dist-kernel_install_kernel() {
 	local image=${2}
 	local map=${3}
 
-	# if dracut is used in uefi=yes mode, initrd will actually
-	# be a combined kernel+initramfs UEFI executable.  we can easily
-	# recognize it by PE magic (vs cpio for a regular initramfs)
-	local initrd=${image%/*}/initrd
-	local magic
-	[[ -s ${initrd} ]] && read -n 2 magic < "${initrd}"
-	if [[ ${magic} == MZ ]]; then
-		einfo "Combined UEFI kernel+initramfs executable found"
-		# install the combined executable in place of kernel
-		image=${initrd%/*}/uki.efi
-		mv "${initrd}" "${image}" || die
-		# We moved the generated initrd, prevent dracut from running again
-		# https://github.com/dracutdevs/dracut/pull/2405
-		shopt -s nullglob
-		local plugins=()
-		for file in "${EROOT}"/etc/kernel/install.d/*.install; do
-			plugins+=( "${file}" )
-		done
-		for file in "${EROOT}"/usr/lib/kernel/install.d/*.install; do
-			if ! has "${file##*/}" 50-dracut.install 51-dracut-rescue.install "${plugins[@]##*/}"; then
-					plugins+=( "${file}" )
-			fi
-		done
-		shopt -u nullglob
-		export KERNEL_INSTALL_PLUGINS="${KERNEL_INSTALL_PLUGINS} ${plugins[@]}"
-
-		if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-			# Ensure the uki is signed if dracut hasn't already done so.
-			secureboot_sign_efi_file "${image}"
-		fi
-	fi
-
 	ebegin "Installing the kernel via installkernel"
 	# note: .config is taken relatively to System.map;
 	# initrd relatively to bzImage
-	installkernel "${version}" "${image}" "${map}"
+	ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}"
 	eend ${?} || die -n "Installing the kernel failed"
 }
 
@@ -172,19 +105,13 @@ dist-kernel_reinstall_initramfs() {
 	local ver=${2}
 
 	local image_path=${kernel_dir}/$(dist-kernel_get_image_path)
-	local initramfs_path=${image_path%/*}/initrd
 	if [[ ! -f ${image_path} ]]; then
 		eerror "Kernel install missing, image not found:"
 		eerror "  ${image_path}"
 		eerror "Initramfs will not be updated.  Please reinstall your kernel."
 		return
 	fi
-	if [[ ! -f ${initramfs_path} && ! -f ${initramfs_path%/*}/uki.efi ]]; then
-		einfo "No initramfs or uki found at ${image_path}"
-		return
-	fi
 
-	dist-kernel_build_initramfs "${initramfs_path}" "${ver}"
 	dist-kernel_install_kernel "${ver}" "${image_path}" \
 		"${kernel_dir}/System.map"
 }
@@ -203,6 +130,43 @@ dist-kernel_PV_to_KV() {
 	[[ -z $(ver_cut 3- "${kv}") ]] && kv+=".0"
 	[[ ${pv} == *_* ]] && kv+=-${pv#*_}
 	echo "${kv}"
+}
+
+# @FUNCTION: dist-kernel_compressed_module_cleanup
+# @USAGE: <path>
+# @DESCRIPTION:
+# Traverse path for duplicate (un)compressed modules and remove all
+# but the newest variant.
+dist-kernel_compressed_module_cleanup() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
+	local path=${1}
+	local basename f
+
+	while read -r basename; do
+		local prev=
+		for f in "${path}/${basename}"{,.gz,.xz,.zst}; do
+			if [[ ! -e ${f} ]]; then
+				continue
+			elif [[ -z ${prev} ]]; then
+				prev=${f}
+			elif [[ ${f} -nt ${prev} ]]; then
+				rm -v "${prev}" || die
+				prev=${f}
+			else
+				rm -v "${f}" || die
+			fi
+		done
+	done < <(
+		cd "${path}" &&
+		find -type f \
+			\( -name '*.ko' \
+			-o -name '*.ko.gz' \
+			-o -name '*.ko.xz' \
+			-o -name '*.ko.zst' \
+			\) | sed -e 's:[.]\(gz\|xz\|zst\)$::' | sort | uniq -d || die
+	)
 }
 
 _DIST_KERNEL_UTILS=1

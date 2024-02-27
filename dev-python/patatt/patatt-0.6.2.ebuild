@@ -13,6 +13,6 @@ HOMEPAGE="https://pypi.org/project/patatt/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="dev-python/pynacl[${PYTHON_USEDEP}]"

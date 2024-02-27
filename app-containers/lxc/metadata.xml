@@ -11,10 +11,10 @@
   </maintainer>
   <use>
     <flag name="io-uring">Enable io_uring support, and use io_uring instead of epoll</flag>
-    <flag name="lto">Enable Link Time Optimization (LTO)</flag>
     <flag name="tools">Build and install additional command line tools</flag>
   </use>
   <upstream>
     <remote-id type="github">lxc/lxc</remote-id>
+    <remote-id type="cpe">cpe:/a:linuxcontainers:lxc</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="BSD-2"
 # See bug #822336 re subslot
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv sparc x86"
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1"
 
 REQUIRED_USE="|| ( aom dav1d )"
@@ -23,7 +23,7 @@ DEPEND="media-libs/libpng[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-3.3.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( >=media-libs/dav1d-1.0.0:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
-	rav1e? ( >=media-video/rav1e-0.5.1[capi] )
+	rav1e? ( >=media-video/rav1e-0.5.1:=[capi] )
 	svt-av1? ( >=media-libs/svt-av1-0.9.1 )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -73,12 +73,6 @@ multilib_src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-pkg_preinst() {
-	if use gdk-pixbuf ; then
-		gnome2_gdk_pixbuf_savelist
-	fi
 }
 
 pkg_postinst() {

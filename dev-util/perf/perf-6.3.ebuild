@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit bash-completion-r1 estack flag-o-matic llvm toolchain-funcs python-r1 linux-info
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
@@ -41,8 +41,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
@@ -67,7 +67,7 @@ RDEPEND="audit? ( sys-process/audit )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	slang? ( sys-libs/slang )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	unwind? ( sys-libs/libunwind )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd )
@@ -179,6 +179,19 @@ perf_make() {
 	local arch=$(tc-arch-kernel)
 	local java_dir
 	use java && java_dir="${EPREFIX}/etc/java-config-2/current-system-vm"
+
+	# sync this with the whitelist in tools/perf/Makefile.config
+	local disable_libdw
+	if ! use amd64 && ! use x86 && \
+	   ! use arm && \
+	   ! use arm64 && \
+	   ! use ppc && ! use ppc64 \
+	   ! use s390 && \
+	   ! use riscv
+	then
+		disable_libdw=1
+	fi
+
 	# FIXME: NO_CORESIGHT
 	emake V=1 VF=1 \
 		HOSTCC="$(tc-getBUILD_CC)" HOSTLD="$(tc-getBUILD_LD)" \
@@ -204,7 +217,7 @@ perf_make() {
 		NO_LIBBIONIC=1 \
 		NO_LIBBPF= \
 		NO_LIBCRYPTO=$(puse crypt) \
-		NO_LIBDW_DWARF_UNWIND= \
+		NO_LIBDW_DWARF_UNWIND="${disable_libdw}" \
 		NO_LIBELF= \
 		NO_LIBNUMA=$(puse numa) \
 		NO_LIBPERL=$(puse perl) \

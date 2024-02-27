@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,13 +52,12 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xkbcomp
-	!<=x11-base/xorg-server-1.20.11
 
 	libei? ( >=sys-apps/xdg-desktop-portal-1.18.0 )
 	selinux? ( sec-policy/selinux-xserver )
 "
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 	dev-util/wayland-scanner
 "
 

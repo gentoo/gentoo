@@ -19,6 +19,10 @@ IUSE=""
 
 RESTRICT=test # Requires network access?
 
+CABAL_CHDEPS=(
+	'bytestring              == 0.10.*' 'bytestring >= 0.10'
+)
+
 RDEPEND=">=dev-haskell/language-javascript-0.6:=[profile?] <dev-haskell/language-javascript-0.8:=[profile?]
 	>=dev-haskell/optparse-applicative-0.7:=[profile?]
 	>=dev-haskell/text-1.2:=[profile?] <dev-haskell/text-1.3:=[profile?]

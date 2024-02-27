@@ -11,26 +11,28 @@ HOMEPAGE="https://github.com/WayfireWM/wayfire-plugins-extra"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wayfire-plugins-extra.git"
+	SLOT="0/9999"
 else
 	SRC_URI="https://github.com/WayfireWM/wayfire-plugins-extra/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
+	SLOT="0/$(ver_cut 1-2)"
 fi
 
 LICENSE="MIT"
-SLOT="0"
+
+# no tests
+RESTRICT="test"
 
 DEPEND="
 	dev-cpp/glibmm:2
-	x11-libs/pixman
-	gnome-base/librsvg
-	~gui-libs/wlroots-9999:=
-	~gui-wm/wayfire-9999
-	x11-libs/cairo
-	x11-libs/pixman
+	dev-cpp/nlohmann_json
+	dev-libs/libevdev
+	dev-libs/wayland
+	gui-wm/wayfire:${SLOT}
 "
 RDEPEND="${DEPEND}"
-
 BDEPEND="
-	dev-libs/wayland-protocols
+	>=dev-libs/wayland-protocols-1.12
+	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

@@ -1,0 +1,41 @@
+From ebad60218b9d9e6901ae48c3dec9b90da963809c Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Wed, 13 Dec 2023 07:44:01 +0100
+Subject: [PATCH] kpropertiesdialog: don't trip over malformed Exec
+
+when the user incorrectly put env vars into the Program field the
+resulting desktop file will be somewhat malformed and literally contain
+
+> Exec='FOO=1 Bar'
+
+this then needs careful handling when parsing so we don't accidentally
+drain the execline list. when this scenario appears we'll need to assume
+the last item in the list is the program as we can't really tell if it
+is a program that looks like an env var or an env var without program
+
+BUG: 465290
+(cherry picked from commit 78d4364677fbe658c6e05d19bb158f895403ccc9)
+---
+ src/widgets/kpropertiesdialog.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/widgets/kpropertiesdialog.cpp b/src/widgets/kpropertiesdialog.cpp
+index 93ec0759cf..25061825af 100644
+--- a/src/widgets/kpropertiesdialog.cpp
++++ b/src/widgets/kpropertiesdialog.cpp
+@@ -3379,6 +3379,12 @@ KDesktopPropsPlugin::KDesktopPropsPlugin(KPropertiesDialog *_props)
+             execLine.pop_front();
+         }
+         for (auto env : execLine) {
++            if (execLine.length() <= 1) {
++                // Don't empty out the list. If the last element contains an equal sign we have to treat it as part of the
++                // program name lest we have no program
++                // https://bugs.kde.org/show_bug.cgi?id=465290
++                break;
++            }
+             if (!env.contains(QLatin1String("="))) {
+                 break;
+             }
+-- 
+GitLab
+

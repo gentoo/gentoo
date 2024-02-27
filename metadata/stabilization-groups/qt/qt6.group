@@ -5,6 +5,7 @@ dev-qt/qtbase:6
 dev-qt/qtcharts:6
 dev-qt/qtconnectivity:6
 dev-qt/qtdeclarative:6
+dev-qt/qthttpserver:6
 dev-qt/qtimageformats:6
 dev-qt/qtlocation:6
 dev-qt/qtmultimedia:6
@@ -25,3 +26,4 @@ dev-qt/qtwayland:6
 dev-qt/qtwebchannel:6
 dev-qt/qtwebengine:6
 dev-qt/qtwebsockets:6
+dev-qt/qtwebview:6

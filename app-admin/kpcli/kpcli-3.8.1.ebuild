@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit optfeature
 
-DESCRIPTION="A command line interface to KeePass database files"
-HOMEPAGE="http://kpcli.sourceforge.net"
+DESCRIPTION="Command line interface to KeePass database files"
+HOMEPAGE="https://kpcli.sourceforge.io/"
 SRC_URI="https://downloads.sourceforge.net/project/kpcli/${P}.pl"
 
 LICENSE="|| ( Artistic GPL-1+ )"

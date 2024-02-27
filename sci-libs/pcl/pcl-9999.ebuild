@@ -1,18 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-SCM=""
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
+inherit cmake cuda
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/PointCloudLibrary/pcl"
-fi
-
-inherit ${SCM} cmake cuda
-
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
@@ -22,8 +17,8 @@ fi
 HOMEPAGE="https://pointclouds.org/"
 DESCRIPTION="2D/3D image and point cloud processing"
 LICENSE="BSD"
-SLOT="0/1.12"
-IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 usb vtk cpu_flags_x86_sse test tutorials"
+SLOT="0/$(ver_cut 1-2)"
+IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 qt6 usb vtk cpu_flags_x86_sse test tutorials"
 # tests need the gtest sources to be available at build time
 RESTRICT="test"
 
@@ -42,6 +37,13 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtopengl:5
+		vtk? ( sci-libs/vtk[qt5] )
+	)
+	qt6? (
+		!qt5? (
+			dev-qt/qtbase:6[concurrent,gui,opengl]
+			vtk? ( sci-libs/vtk[-qt5,qt6] )
+		)
 	)
 	usb? ( virtual/libusb:1 )
 	vtk? ( >=sci-libs/vtk-5.6:=[imaging,rendering,views] )
@@ -52,7 +54,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		virtual/latex-base
 	)
 	tutorials? (
@@ -92,7 +94,6 @@ src_configure() {
 		"-DWITH_OPENGL=$(usex opengl TRUE FALSE)"
 		"-DWITH_PNG=$(usex png TRUE FALSE)"
 		"-DWITH_QHULL=$(usex qhull TRUE FALSE)"
-		"-DWITH_QT=$(usex qt5 TRUE FALSE)"
 		"-DWITH_VTK=$(usex vtk TRUE FALSE)"
 		"-DWITH_PCAP=$(usex pcap TRUE FALSE)"
 		"-DWITH_OPENNI=$(usex openni TRUE FALSE)"
@@ -102,6 +103,14 @@ src_configure() {
 		"-DWITH_TUTORIALS=$(usex tutorials TRUE FALSE)"
 		"-DBUILD_global_tests=FALSE"
 	)
+
+	if use qt5; then
+		mycmakeargs+=( "-DWITH_QT=QT5" )
+	elif use qt6; then
+		mycmakeargs+=( "-DWITH_QT=QT6" )
+	else
+		mycmakeargs+=( "-DWITH_QT=NO" )
+	fi
 
 	cmake_src_configure
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=sys-devel/bison-1.28
-	>=sys-devel/flex-2.4.6
+	app-alternatives/lex
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.8.1-disable-tcp-wrappers-automagic.patch

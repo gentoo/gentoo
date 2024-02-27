@@ -9,6 +9,9 @@
 	<email>alicef@gentoo.org</email>
 	<name>Alice Ferrazzi</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">mananapr/cfiles</remote-id>
+</upstream>
 <longdescription lang="en">
 cfiles is a terminal file manager with vim like keybindings, written in C using the ncurses library. It aims to provide an interface like ranger while being lightweight, fast and minimal.
 </longdescription>

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -29,6 +29,10 @@ all_ruby_prepare() {
 	sed -e '/extensiontask/ s:^:#:' -e '/ExtensionTask/,/^end/ s:^:#:' \
 		-e '/bundler/ s:^:#:' \
 		-i Rakefile || die
+
+	# Fix minitest deprecation
+	sed -e 's/MiniTest::Unit::TestCase/Minitest::Test/' \
+		-i test/*/*_test.rb || die
 
 	sed -i -e 's/git ls-files/find * -print/' bcrypt_pbkdf.gemspec || die
 }

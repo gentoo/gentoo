@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/rejeep/commander.el/issues/</bugs-to>
     <remote-id type="github">rejeep/commander.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

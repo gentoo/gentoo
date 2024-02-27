@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,24 +9,29 @@ EGIT_REPO_URI="https://github.com/OpenRCT2/OpenRCT2.git"
 EGIT_BRANCH="develop"
 
 MY_PN="OpenRCT2"
+MY_PN_MSX="openmusic"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
+MY_PN_SFX="opensound"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.3.11"
+MY_PV_MSX="1.5"
+MY_PV_OBJ="1.3.13"
 MY_PV_RPL="0.0.78"
+MY_PV_SFX="1.0.3"
 MY_PV_TS="0.4.6"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
 SRC_URI="
+	https://github.com/${MY_PN}/${MY_PN_MSX}/releases/download/v${MY_PV_MSX}/${MY_PN_MSX}.zip -> ${PN}-${MY_PN_MSX}-${MY_PV_MSX}.zip
 	https://github.com/${MY_PN}/${MY_PN_OBJ}/releases/download/v${MY_PV_OBJ}/${MY_PN_OBJ}.zip -> ${PN}-${MY_PN_OBJ}-${MY_PV_OBJ}.zip
+	https://github.com/${MY_PN}/OpenSoundEffects/releases/download/v${MY_PV_SFX}/${MY_PN_SFX}.zip -> ${PN}-${MY_PN_SFX}-${MY_PV_SFX}.zip
 	https://github.com/${MY_PN}/${MY_PN_TS}/releases/download/v${MY_PV_TS}/${MY_PN_TS}.zip -> ${PN}-${MY_PN_TS}-${MY_PV_TS}.zip
 	test? ( https://github.com/${MY_PN}/${MY_PN_RPL}/releases/download/v${MY_PV_RPL}/${MY_PN_RPL}.zip -> ${PN}-${MY_PN_RPL}-${MY_PV_RPL}.zip )
 "
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="dedicated +flac +opengl scripting test +truetype +vorbis"
 
 COMMON_DEPEND="
@@ -78,15 +83,20 @@ PATCHES=(
 )
 
 src_unpack() {
-	git-r3_src_unpack
+	unpack "${P}".tar.gz
 
-	mkdir -p "${S}"/data/sequence || die
-	cd "${S}"/data/sequence || die
-	unpack "${PN}-${MY_PN_TS}-${MY_PV_TS}".zip
+	mkdir -p "${S}"/data || die
+	cd "${S}"/data
+	unpack "${PN}-${MY_PN_MSX}-${MY_PV_MSX}".zip
+	unpack "${PN}-${MY_PN_SFX}-${MY_PV_SFX}".zip
 
 	mkdir -p "${S}"/data/object || die
 	cd "${S}"/data/object || die
 	unpack "${PN}-${MY_PN_OBJ}-${MY_PV_OBJ}".zip
+
+	mkdir -p "${S}"/data/sequence || die
+	cd "${S}"/data/sequence || die
+	unpack "${PN}-${MY_PN_TS}-${MY_PV_TS}".zip
 
 	if use test; then
 		mkdir -p "${S}"/testdata/replays || die
@@ -167,5 +177,5 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	xdg_mimeinf
 }

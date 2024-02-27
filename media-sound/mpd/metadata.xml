@@ -32,7 +32,6 @@
     <flag name="pipewire">PipeWire support</flag>
     <flag name="qobuz">Build plugin to access qobuz</flag>
     <flag name="recorder">Enables output plugin for recording radio streams</flag>
-    <flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
     <flag name="signalfd">Use the signalfd function in MPD's event loop</flag>
     <flag name="snapcast">Snapcast audio plugin</flag>
     <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>

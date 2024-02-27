@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org meson-multilib python-single-r1 vala xdg
@@ -46,6 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.3-meson-1.2.0-fix.patch
+	"${FILESDIR}"/${PN}-1.4.3-libxml2-2.12.patch
 )
 
 src_prepare() {

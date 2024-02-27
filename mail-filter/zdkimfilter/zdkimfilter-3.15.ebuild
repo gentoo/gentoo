@@ -2,9 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit toolchain-funcs
+
 DESCRIPTION="DKIM filter for Courier-MTA"
 HOMEPAGE="https://www.tana.it/sw/zdkimfilter"
 SRC_URI="https://www.tana.it/sw/zdkimfilter/${P}.tar.gz"
+
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -24,6 +28,10 @@ RESTRICT="test"
 
 src_configure() {
 	econf $(use_enable debug)
+}
+
+src_compile() {
+	emake AR=$(tc-getAR)
 }
 
 src_install() {

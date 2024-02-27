@@ -1,0 +1,25 @@
+diff -ruN quarter/CMakeLists.txt my/CMakeLists.txt
+--- quarter/CMakeLists.txt	2024-02-05 00:29:17.000000000 +0100
++++ my/CMakeLists.txt	2024-02-24 05:23:51.451634039 +0100
+@@ -96,17 +96,17 @@
+ 
+ if(QUARTER_USE_QT6)
+   if(QUARTER_BUILD_PLUGIN)
+-    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets Designer QUIET)
++    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets Designer REQUIRED)
+   else()
+-    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets QUIET)
++    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets REQUIRED)
+   endif()
+ endif()
+ 
+ if(NOT Qt6_FOUND AND QUARTER_USE_QT5)
+   if(QUARTER_BUILD_PLUGIN)
+-    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL Designer QUIET)
++    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL Designer REQUIRED)
+   else()
+-    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL QUIET)
++    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL REQUIRED)
+   endif()
+ endif()
+ 

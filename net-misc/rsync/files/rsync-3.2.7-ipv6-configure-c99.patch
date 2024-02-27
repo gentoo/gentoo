@@ -1,0 +1,32 @@
+https://github.com/WayneD/rsync/pull/558
+
+From d869bcd3850b9a80f27f5aee4d41725f39d84ea7 Mon Sep 17 00:00:00 2001
+From: Ivan Babrou <github@ivan.computer>
+Date: Mon, 1 Jan 2024 19:31:01 -0800
+Subject: [PATCH] configure.ac: fix failing IPv6 check due to missing return
+ type
+
+Fixing this warning escalated to an error, resuting in no IPv6 support:
+
+```
+configure.sh:7679: checking whether to enable ipv6
+configure.sh:7718: clang -o conftest -g -O2 -DHAVE_CONFIG_H -Wall -W   conftest.c  >&5
+conftest.c:73:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+main()
+^
+int
+1 error generated.
+configure.sh:7718: $? = 1
+configure.sh: program exited with status 1
+```
+--- a/configure.ac
++++ b/configure.ac
+@@ -392,7 +392,7 @@ AS_HELP_STRING([--disable-ipv6],[disable to omit ipv6 support]),
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+-main()
++int main()
+ {
+    if (socket(AF_INET6, SOCK_STREAM, 0) < 0)
+      exit(1);

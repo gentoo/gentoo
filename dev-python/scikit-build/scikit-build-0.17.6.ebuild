@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -52,6 +52,17 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# no "library" in (our install of) pypy3
+				tests/test_cmaker.py::test_get_python_library
+			)
+			;;
+	esac
+
 	epytest -m "not isolated and not nosetuptoolsscm"
 	rm -r "${BUILD_DIR}/install$(python_get_sitedir)"/{easy-install.pth,*.egg,*.egg-link} || die
 }

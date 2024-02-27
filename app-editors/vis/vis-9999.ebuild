@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MY_PTV=0.5
 LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
 
-inherit lua-single optfeature
+inherit lua-single
 
 if [ "${PV}" == "9999" ]; then
 	inherit git-r3
@@ -32,7 +32,11 @@ DEPEND="dev-libs/libtermkey
 	lua? ( ${LUA_DEPS} )
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}
-	app-eselect/eselect-vi"
+	app-eselect/eselect-vi
+	lua? (
+		$(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]')
+	)
+"
 # lpeg: https://github.com/martanne/vis-test/issues/28
 BDEPEND="test? (
 	$(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]')
@@ -71,6 +75,7 @@ src_configure() {
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		--disable-lpeg-static \
 		$(use_enable lua) \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
@@ -88,5 +93,4 @@ pkg_postrm() {
 
 pkg_postinst() {
 	update_symlinks
-	optfeature "syntax highlighting support" dev-lua/lpeg
 }

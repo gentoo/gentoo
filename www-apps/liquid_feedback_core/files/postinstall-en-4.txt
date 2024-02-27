@@ -1,0 +1,32 @@
+To use Liquid Feedback you have to follow these
+simple steps, which have to be done as the postgres system user (or
+which ever is the database superuser):
+
+$ createuser -d apache
+
+$ psql 
+postgres=# ALTER USER apache WITH PASSWORD 'the_new_password';
+
+$ createdb -U apache liquid_feedback
+$ psql -U apache liquid_feedback
+\i /usr/share/liquid_feedback_core/core.sql
+\i /usr/share/liquid_feedback_core/geoindex_install.sql
+INSERT INTO system_setting (member_ttl) VALUES ('1 year');
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (false, '1 hour', 20, 6);
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (false, '1 day', 80, 12);
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (true, '1 hour', 200, 60);
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (true, '1 day', 800, 120);
+
+and Create an invite code for an admin user:
+
+$ psql -U liquid_feedback liquid_feedback
+liquid_feedback=# INSERT INTO member (invite_code, admin) VALUES ('sesam', true);
+
+Then you can start the periodic task of liquid_feedback_core by running
+/etc/init.d/liquid_feedback_core restart
+
+and eventually adding this to the default level
+
+rc-update add liquid_feedback_core
+
+For other info look at the README file

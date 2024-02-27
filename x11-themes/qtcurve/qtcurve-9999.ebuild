@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ IUSE="gtk nls plasma +qt5 test +X"
 
 if [[ ${KDE_BUILD_TYPE} = release ]] ; then
 	SRC_URI="https://github.com/KDE/qtcurve/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${P/_/-}"
 fi
 
@@ -59,7 +59,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	plasma? ( kde-frameworks/extra-cmake-modules:5 )
+	plasma? ( kde-frameworks/extra-cmake-modules:0 )
 "
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )

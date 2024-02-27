@@ -9,4 +9,12 @@
 		<remote-id type="pypi">stripe</remote-id>
 		<remote-id type="github">stripe/stripe-python</remote-id>
 	</upstream>
+	<use>
+		<flag name="telemetry">
+			Enable sending "telemetry to Stripe regarding request latency
+			and feature usage" by default.  Upstream enables it by default
+			in their PyPI distribution; it can also be explicitly controlled
+			via stripe.enable_telemetry variable (boolean).
+		</flag>
+	</use>
 </pkgmetadata>

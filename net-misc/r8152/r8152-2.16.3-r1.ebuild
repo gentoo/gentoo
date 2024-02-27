@@ -11,7 +11,7 @@ SRC_URI="http://rtitwww.realtek.com/rtdrivers/cn/nic1/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="virtual/udev"
 DEPEND="${RDEPEND}"
@@ -48,6 +48,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	linux-mod-r1_pkg_postrm
 	udev_reload
 }

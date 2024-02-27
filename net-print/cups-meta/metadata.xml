@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="browsed">Include support for the cups-browsed daemon.</flag>
+		<flag name="foomatic">Include support for the foomatic-rip printer driver. Strongly recommended.</flag>
+		<flag name="poppler">Include support for the <pkg>app-text/poppler</pkg> filters.</flag>
+	</use>
+</pkgmetadata>

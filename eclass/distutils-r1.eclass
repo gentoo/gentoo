@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -50,6 +50,7 @@ case ${EAPI} in
 esac
 
 # @ECLASS_VARIABLE: DISTUTILS_EXT
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a non-null value if the package (possibly
@@ -617,6 +618,9 @@ distutils_enable_tests() {
 			;;
 		pytest)
 			test_pkgs='>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]'
+			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
+				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
+			fi
 			if [[ ${EPYTEST_XDIST} ]]; then
 				test_pkgs+=' dev-python/pytest-xdist[${PYTHON_USEDEP}]'
 			fi
@@ -1242,7 +1246,7 @@ _distutils-r1_get_backend() {
 	if [[ -f pyproject.toml ]]; then
 		# if pyproject.toml exists, try getting the backend from it
 		# NB: this could fail if pyproject.toml doesn't list one
-		build_backend=$(gpep517 get-backend)
+		build_backend=$("${EPYTHON}" -m gpep517 get-backend)
 	fi
 	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
 		-f setup.py ]]
@@ -1316,7 +1320,7 @@ distutils_wheel_install() {
 
 	einfo "  Installing ${wheel##*/} to ${root}"
 	local cmd=(
-		gpep517 install-wheel
+		"${EPYTHON}" -m gpep517 install-wheel
 			--destdir="${root}"
 			--interpreter="${PYTHON}"
 			--prefix="${EPREFIX}/usr"
@@ -1400,6 +1404,9 @@ distutils_pep517_install() {
 			)
 			;;
 		setuptools)
+			if in_iuse debug && use debug; then
+				local -x SETUPTOOLS_RUST_CARGO_PROFILE=dev
+			fi
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				config_settings=$(
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
@@ -1445,7 +1452,7 @@ distutils_pep517_install() {
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
 	local cmd=(
-		gpep517 build-wheel
+		"${EPYTHON}" -m gpep517 build-wheel
 			--prefix="${EPREFIX}/usr"
 			--backend "${build_backend}"
 			--output-fd 3
@@ -1806,12 +1813,20 @@ distutils-r1_run_phase() {
 	tc-export AR CC CPP CXX
 
 	if [[ ${DISTUTILS_EXT} ]]; then
+		if [[ ${BDEPEND} == *dev-python/cython* ]] ; then
+			# Workaround for https://github.com/cython/cython/issues/2747 (bug #918983)
+			local -x CFLAGS="${CFLAGS} $(test-flags-CC -Wno-error=incompatible-pointer-types)"
+		fi
+
 		local -x CPPFLAGS="${CPPFLAGS} $(usex debug '-UNDEBUG' '-DNDEBUG')"
 		# always generate .c files from .pyx files to ensure we get latest
 		# bug fixes from Cython (this works only when setup.py is using
 		# cythonize() but it's better than nothing)
 		local -x CYTHON_FORCE_REGEN=1
 	fi
+
+	# silence warnings when pydevd is loaded on Python 3.11+
+	local -x PYDEVD_DISABLE_FILE_VALIDATION=1
 
 	# Rust extensions are incompatible with C/C++ LTO compiler
 	# see e.g. https://bugs.gentoo.org/910220

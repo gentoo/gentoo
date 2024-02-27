@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://gnomeboxes.org"
 LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: qemu probably needs to depend on spice[smartcard] directly with USE=spice
 # FIXME: Check over libvirt USE=libvirtd,qemu and the smartcard/usbredir requirements

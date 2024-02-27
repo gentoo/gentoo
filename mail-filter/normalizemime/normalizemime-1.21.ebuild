@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 src_unpack() {
 	cp "${DISTDIR}"/${P}.cc "${WORKDIR}"/${PN}.cc || die

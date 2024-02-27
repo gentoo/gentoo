@@ -6,8 +6,6 @@
     <name>X11</name>
   </maintainer>
   <use>
-    <flag name="egl">Enable EGL support</flag>
-    <flag name="gbm">Enable support for the Generic Buffer Manager (gbm)</flag>
     <flag name="wayland">Enable Wayland support</flag>
   </use>
   <upstream>

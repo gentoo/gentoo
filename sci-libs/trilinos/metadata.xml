@@ -19,7 +19,6 @@
 		<flag name="all-packages">Enable all supported Trilinos packages (per default only a subset is built)</flag>
 		<flag name="arprec">Add support for arprec (<pkg>sci-libs/arprec</pkg>)</flag>
 		<flag name="clp">Add support for clp (<pkg>sci-libs/coinor-clp</pkg>)</flag>
-		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>
 		<flag name="eigen">Add support for eigen (<pkg>dev-cpp/eigen</pkg>)</flag>
 		<flag name="glpk">Add support for glpk (<pkg>sci-mathematics/glpk</pkg>)</flag>
 		<flag name="gtest">Add support for gtest (<pkg>dev-cpp/gtest</pkg>)</flag>
@@ -44,4 +43,7 @@
 		<flag name="tvmet">Add support for tvmet (<pkg>dev-libs/tvmet</pkg>)</flag>
 		<flag name="yaml">Add support for yaml (<pkg>dev-cpp/yaml-cpp</pkg>)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">trilinos/Trilinos</remote-id>
+	</upstream>
 </pkgmetadata>

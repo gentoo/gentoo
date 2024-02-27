@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit python-any-r1
 
 DESCRIPTION="GNU Image Manipulation Program help files"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gimp/help/${P}.tar.bz2"
 
 LICENSE="FDL-1.2+"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="nls"
 
 BDEPEND="
@@ -32,6 +32,8 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	# The upstream build system isn't pure gettext and doesn't distinguish
 	# between empty and unset LINGUAS. Default to English only if either
 	# nls is unset or if LINGUAS exists but is empty. #891709

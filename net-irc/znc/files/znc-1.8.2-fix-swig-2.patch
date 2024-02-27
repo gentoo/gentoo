@@ -1,0 +1,123 @@
+From 3f4c1cce77cbe1337e5642e9e0e9d048c9e07370 Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <alexey+znc@asokolov.org>
+Date: Fri, 5 Jan 2024 02:19:55 +0000
+Subject: [PATCH] Fix build with SWIG 4.2.0
+
+https://bugs.gentoo.org/921230
+---
+ modules/modpython/codegen.pl | 88 ++++++++++++++++++++++++++----------
+ 1 file changed, 65 insertions(+), 23 deletions(-)
+
+diff --git a/modules/modpython/codegen.pl b/modules/modpython/codegen.pl
+index 1bc09806e0..bbcb148bed 100755
+--- a/modules/modpython/codegen.pl
++++ b/modules/modpython/codegen.pl
+@@ -50,29 +50,6 @@
+  ***************************************************************************/
+ 
+ namespace {
+-/*	template<class T>
+-	struct pyobj_to_ptr {
+-		CString m_sType;
+-		SvToPtr(const CString& sType) {
+-			m_sType = sType;
+-		}
+-		bool operator()(PyObject* py, T** result) {
+-			T* x = nullptr;
+-			int res = SWIG_ConvertPtr(sv, (void**)&x, SWIG_TypeQuery(m_sType.c_str()), 0);
+-			if (SWIG_IsOK(res)) {
+-				*result = x;
+-				return true;
+-			}
+-			DEBUG("modpython: ");
+-			return false;
+-		}
+-	};
+-
+-	CModule::EModRet SvToEModRet(PyObject* py, CModule::EModRet* result) {
+-		long int x = PyLong_AsLong();
+-		return static_cast<CModule::EModRet>(SvUV(sv));
+-	}*/
+-
+ 	inline swig_type_info* SWIG_pchar_descriptor(void) {
+ 		static int init = 0;
+ 		static swig_type_info* info = 0;
+@@ -83,6 +60,70 @@
+ 		return info;
+ 	}
+ 
++// SWIG 4.2.0 replaced SWIG_Python_str_AsChar with SWIG_PyUnicode_AsUTF8AndSize.
++// SWIG doesn't provide any good way to detect SWIG version (other than parsing
++// `swig -version`), but it also introduced SWIG_NULLPTR.
++// So let's abuse that define to do different code for new SWIG.
++#ifdef SWIG_NULLPTR
++	// This is copied from some SWIG 4.2.0 from pystrings.swg
++	inline int SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc) {
++#if PY_VERSION_HEX>=0x03000000
++#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
++		if (PyBytes_Check(obj))
++#else
++		if (PyUnicode_Check(obj))
++#endif
++#else
++		if (PyString_Check(obj))
++#endif
++		{
++			char *cstr; Py_ssize_t len;
++			PyObject *bytes = NULL;
++			int ret = SWIG_OK;
++			if (alloc)
++				*alloc = SWIG_OLDOBJ;
++#if PY_VERSION_HEX>=0x03000000 && defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
++			if (PyBytes_AsStringAndSize(obj, &cstr, &len) == -1)
++				return SWIG_TypeError;
++#else
++			cstr = (char *)SWIG_PyUnicode_AsUTF8AndSize(obj, &len, &bytes);
++			if (!cstr)
++				return SWIG_TypeError;
++			/* The returned string is only duplicated if the char * returned is not owned and memory managed by obj */
++			if (bytes && cptr) {
++				if (alloc) {
++					//cstr = %new_copy_array(cstr, len + 1, char);
++					cstr = (char *)memcpy((char *)malloc((len + 1)*sizeof(char)), cstr, sizeof(char)*(len + 1));
++					*alloc = SWIG_NEWOBJ;
++				} else {
++					/* alloc must be set in order to clean up allocated memory */
++					return SWIG_RuntimeError;
++				}
++			}
++#endif
++			if (cptr) *cptr = cstr;
++			if (psize) *psize = len + 1;
++			Py_XDECREF(bytes);
++			return ret;
++		} else {
++			swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
++			if (pchar_descriptor) {
++				void* vptr = 0;
++				if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
++					if (cptr) *cptr = (char *) vptr;
++					if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
++					if (alloc) *alloc = SWIG_OLDOBJ;
++					return SWIG_OK;
++				}
++			}
++		}
++		return SWIG_TypeError;
++	}
++
++#else
++	// TODO: at some point drop support for SWIG<4.2.0 (drop this branch of ifdef)
++
++	// This is copied from some old SWIG version from pystrings.swg
+ 	inline int SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc) {
+ #if PY_VERSION_HEX>=0x03000000
+ 		if (PyUnicode_Check(obj))
+@@ -155,6 +196,7 @@
+ 			}
+ 		return SWIG_TypeError;
+ 	}
++#endif
+ 
+ 	inline int SWIG_AsPtr_CString (PyObject * obj, CString **val) {
+ 		char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;

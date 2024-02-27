@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/tomchristie/${PN}/archive/${PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="dev-python/markdown[${PYTHON_USEDEP}]"
 

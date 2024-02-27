@@ -1,0 +1,23 @@
+From 41eca94bb6bf3642b1cdb80e89845813a9d03edc Mon Sep 17 00:00:00 2001
+From: Nimrod <ndh42@cornell.edu>
+Date: Mon, 27 Nov 2023 20:31:20 -0500
+Subject: [PATCH] Update git source of Gemini grammar
+
+The author's username changed from "sfr" to "nbsp"
+---
+ languages.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/languages.toml b/languages.toml
+index ef4687af8a71..33b27626e720 100644
+--- a/languages.toml
++++ b/languages.toml
+@@ -2916,7 +2916,7 @@ file-types = ["gmi"]
+ 
+ [[grammar]]
+ name = "gemini"
+-source = { git = "https://git.sr.ht/~sfr/tree-sitter-gemini", rev = "3cc5e4bdf572d5df4277fc2e54d6299bd59a54b3" }
++source = { git = "https://git.sr.ht/~nbsp/tree-sitter-gemini", rev = "3cc5e4bdf572d5df4277fc2e54d6299bd59a54b3" }
+ 
+ [[language]]
+ name = "templ"

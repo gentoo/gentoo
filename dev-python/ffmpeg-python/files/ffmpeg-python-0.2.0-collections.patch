@@ -1,0 +1,14 @@
+--- a/ffmpeg/_utils.py
++++ b/ffmpeg/_utils.py
+@@ -3,6 +3,11 @@ from builtins import str
+ import hashlib
+ import sys
+ 
++try:
++    from collections.abc import Iterable
++except ImportError:
++    from collections import Iterable
++
+ 
+ def with_metaclass(meta, *bases):
+     class metaclass(meta):

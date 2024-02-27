@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/894376
+https://gitlab.gnome.org/GNOME/libgee/-/commit/2f0bbe8987e5eb1390b23ac531c971b202c2ef77
+
+From 2f0bbe8987e5eb1390b23ac531c971b202c2ef77 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Thu, 13 Apr 2023 23:43:03 +0200
+Subject: [PATCH] Implementations of "G List.get()" should use non-nullable
+ return as defined
+
+--- a/gee/abstractlist.vala
++++ b/gee/abstractlist.vala
+@@ -39,7 +39,7 @@ public abstract class Gee.AbstractList<G> : Gee.AbstractCollection<G>, List<G> {
+ 	/**
+ 	 * {@inheritDoc}
+ 	 */
+-	public abstract new G? get (int index);
++	public abstract new G get (int index);
+ 
+ 	/**
+ 	 * {@inheritDoc}
+--- a/gee/concurrentlist.vala
++++ b/gee/concurrentlist.vala
+@@ -170,7 +170,7 @@ public class Gee.ConcurrentList<G> : AbstractList<G> {
+ 	/**
+ 	 * {@inheritDoc}
+ 	 */
+-	public override G? get (int index) {
++	public override G get (int index) {
+ 		HazardPointer.Context ctx = new HazardPointer.Context ();
+ 		Utils.Misc.unused (ctx);
+ 		assert (index >= 0);
+--- a/gee/readonlylist.vala
++++ b/gee/readonlylist.vala
+@@ -74,7 +74,7 @@ internal class Gee.ReadOnlyList<G> : Gee.ReadOnlyCollection<G>, List<G> {
+ 	/**
+ 	 * {@inheritDoc}
+ 	 */
+-	public new G? get (int index) {
++	public new G get (int index) {
+ 		return ((Gee.List<G>) _collection).get (index);
+ 	}
+ 
+--- a/gee/unrolledlinkedlist.vala
++++ b/gee/unrolledlinkedlist.vala
+@@ -158,7 +158,7 @@ public class Gee.UnrolledLinkedList<G> : AbstractBidirList<G>, Queue<G>, Deque<G
+ 		return new Iterator<G> (this);
+ 	}
+ 
+-	public override G? get (int index) {
++	public override G get (int index) {
+ 		assert (index >= 0);
+ 		assert (index < this._size);
+ 
+-- 
+GitLab

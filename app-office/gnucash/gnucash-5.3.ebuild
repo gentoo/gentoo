@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Please bump with app-doc/gnucash-docs
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake gnome2-utils python-single-r1
 
@@ -83,12 +83,12 @@ DEPEND="
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
 	dev-perl/XML-Parser
-	sys-devel/libtool
+	dev-build/libtool
 	>=dev-cpp/gtest-1.8.0
 "
 BDEPEND="
 	dev-lang/swig
-	>=dev-util/cmake-3.10
+	>=dev-build/cmake-3.10
 	virtual/pkgconfig
 "
 
@@ -108,6 +108,9 @@ PATCHES=(
 	# This is only to prevent webkit2gtk-4 from being selected.
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
+
+	# GCC 14 no longer includes <algorithm> by default, this is fixed in 5.5
+	"${FILESDIR}/${PN}-5.3-include-algorithm.patch"
 )
 
 # guile generates ELF files without use of C or machine code

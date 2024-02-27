@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main LoongArch profile directory. Common settings for all loong profiles.
@@ -13,8 +13,6 @@
 
 ARCH="loong"
 ACCEPT_KEYWORDS="loong ~loong"
-
-USE_EXPAND_VALUES_ARCH="${USE_EXPAND_VALUES_ARCH} loong"
 
 CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"

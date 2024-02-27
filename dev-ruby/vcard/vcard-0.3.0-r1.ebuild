@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 # Avoid the complexity of the "rake" recipe and run testrb-2 manually.
 RUBY_FAKEGEM_RECIPE_TEST=none

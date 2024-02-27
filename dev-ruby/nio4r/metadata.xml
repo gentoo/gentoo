@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">celluloid/nio4r</remote-id>
+    <remote-id type="github">socketry/nio4r</remote-id>
+    <remote-id type="rubygems">nio4r</remote-id>
   </upstream>
 </pkgmetadata>

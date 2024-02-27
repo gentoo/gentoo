@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/serpent-1.40[${PYTHON_USEDEP}]

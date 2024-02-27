@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=net-libs/libyang-2.1.55"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 src_configure() {
 	local mycmakeargs=(

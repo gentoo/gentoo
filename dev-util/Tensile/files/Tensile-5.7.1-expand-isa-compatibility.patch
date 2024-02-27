@@ -1,0 +1,49 @@
+Allow Tensile to load the compatible kernels when running on
+architectures compatible with those ISAs.
+
+Based on patch from Cordell Bloor <cgmb@slerp.xyz>
+https://salsa.debian.org/rocm-team/rocblas/-/blob/master/debian/patches/0012-expand-isa-compatibility.patch
+
+--- a/Tensile/Source/lib/source/hip/HipHardware.cpp
++++ b/Tensile/Source/lib/source/hip/HipHardware.cpp
+@@ -24,6 +24,8 @@
+  *
+  *******************************************************************************/
+ 
++#include <cstring>
++
+ #include <Tensile/AMDGPU.hpp>
+ #include <Tensile/hip/HipHardware.hpp>
+ #include <Tensile/hip/HipUtils.hpp>
+@@ -56,6 +58,31 @@ namespace Tensile
+         {
+             hipDeviceProp_t prop;
+             HIP_CHECK_EXC(hipGetDeviceProperties(&prop, deviceId));
++            // coerce to compatible arch
++            switch(prop.gcnArch)
++            {
++            case 902:
++            case 909:
++            case 912:
++                prop.gcnArch = 900;
++                std::strcpy(prop.gcnArchName, "gfx900");
++                break;
++            case 1011:
++            case 1012:
++            case 1013:
++                prop.gcnArch = 1010;
++                std::strcpy(prop.gcnArchName, "gfx1010");
++                break;
++            case 1031:
++            case 1032:
++            case 1033:
++            case 1034:
++            case 1035:
++            case 1036:
++                prop.gcnArch = 1030;
++                std::strcpy(prop.gcnArchName, "gfx1030");
++                break;
++            }
+ #if HIP_VERSION >= 50220730
+             int hip_version;
+             HIP_CHECK_EXC(hipRuntimeGetVersion(&hip_version));

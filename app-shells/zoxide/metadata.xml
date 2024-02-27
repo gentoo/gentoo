@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>leohdz172@proton.me</email>
+    <name>Leonardo Hernández Hernández</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ajeetdsouza/zoxide</remote-id>
+  </upstream>
+  <longdescription lang="en">
+    zoxide is a blazing fast replacement for your cd command, inspired
+    by z and z.lua. It keeps track of the directories you use most
+    frequently, and uses a ranking algorithm to navigate to the best
+    match.
+  </longdescription>
+</pkgmetadata>

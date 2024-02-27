@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
 	toolchain-funcs
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://libcxx.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~riscv ~sparc x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~riscv sparc x86 ~x64-macos"
 IUSE="+clang +libcxxabi +static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
@@ -35,8 +35,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 	)
 	test? (
-		>=dev-util/cmake-3.16
-		sys-devel/gdb[python]
+		dev-debug/gdb[python]
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
 "

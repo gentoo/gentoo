@@ -1,6 +1,12 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-10-06)
+# Require ABIs matching MULTILIB_ABIS in gcc dependencies -- otherwise
+# sys-devel/gcc[multilib] (which is forced) will fail late in build.
+dev-libs/libatomic_ops abi_x86_64
+dev-libs/boehm-gc abi_x86_64
+
 # Michał Górny <mgorny@gentoo.org> (2017-04-08)
 # Require sandbox to be multilib-capable to avoid failures when building
 # multilib packages, #611292.

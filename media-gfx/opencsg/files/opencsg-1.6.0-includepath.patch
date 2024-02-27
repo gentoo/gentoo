@@ -1,0 +1,24 @@
+* Fix build with GCC 6
+* Don't hardcode libdir
+
+Gentoo-bug: 623840
+
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -7,14 +7,13 @@
+ }
+ 
+ CONFIG += opengl warn_on release
+-INCLUDEPATH += ../include ../ $$INSTALLDIR/include
++INCLUDEPATH += ../include ..
+ CONFIG -= qt
+-LIBS += -L$$INSTALLDIR/lib
+ 
+ DESTDIR = ../lib
+ headers.files = ../include/opencsg.h
+ headers.path = $$INSTALLDIR/include
+-target.path = $$INSTALLDIR/lib
++target.path = $$INSTALLDIR/$$LIBDIR
+ INSTALLS += target headers
+ 
+ HEADERS		= ../include/opencsg.h \

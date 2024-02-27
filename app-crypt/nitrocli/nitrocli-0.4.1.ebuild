@@ -1,4 +1,4 @@
-# Copyright 2017-2023 Gentoo Authors
+# Copyright 2017-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ getrandom-0.1.16
 getrandom-0.2.2
 heck-0.3.2
 lazy_static-1.4.0
-libc-0.2.94
+libc-0.2.146
 log-0.4.14
 memchr-2.4.0
 merge-0.1.0
@@ -92,6 +92,10 @@ RDEPEND="
 # to be run as part of the installation.
 RESTRICT="test"
 QA_FLAGS_IGNORED="usr/bin/nitrocli"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.1-fix-musl-1.2.4-build.patch
+)
 
 src_compile() {
 	cargo_src_compile --bin=nitrocli

@@ -1,0 +1,69 @@
+https://github.com/MusicPlayerDaemon/MPD/issues/1952
+https://github.com/curl/curl/issues/12632
+https://github.com/curl/curl/commit/8e2d7b9fa4264b94bd1d9838c84d16e4cd33fbea
+
+From 8e2d7b9fa4264b94bd1d9838c84d16e4cd33fbea Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Thu, 4 Jan 2024 10:06:17 +0100
+Subject: [PATCH] http: adjust_pollset fix
+
+do not add a socket for POLLIN when the transfer does not want to send
+(for example is paused).
+
+Follow-up to 47f5b1a
+
+Reported-by: bubbleguuum on github
+Fixes #12632
+Closes #12633
+--- a/lib/cf-socket.c
++++ b/lib/cf-socket.c
+@@ -1243,7 +1243,7 @@ static void cf_socket_adjust_pollset(struct Curl_cfilter *cf,
+   if(ctx->sock != CURL_SOCKET_BAD) {
+     if(!cf->connected)
+       Curl_pollset_set_out_only(data, ps, ctx->sock);
+-    else
++    else if(CURL_WANT_RECV(data))
+       Curl_pollset_add_in(data, ps, ctx->sock);
+     CURL_TRC_CF(data, cf, "adjust_pollset -> %d socks", ps->num);
+   }
+--- a/lib/http2.c
++++ b/lib/http2.c
+@@ -2341,8 +2341,8 @@ static void cf_h2_adjust_pollset(struct Curl_cfilter *cf,
+     bool c_exhaust, s_exhaust;
+ 
+     CF_DATA_SAVE(save, cf, data);
+-    c_exhaust = !nghttp2_session_get_remote_window_size(ctx->h2);
+-    s_exhaust = stream && stream->id >= 0 &&
++    c_exhaust = want_send && !nghttp2_session_get_remote_window_size(ctx->h2);
++    s_exhaust = want_send && stream && stream->id >= 0 &&
+                 !nghttp2_session_get_stream_remote_window_size(ctx->h2,
+                                                                stream->id);
+     want_recv = (want_recv || c_exhaust || s_exhaust);
+--- a/lib/vquic/curl_ngtcp2.c
++++ b/lib/vquic/curl_ngtcp2.c
+@@ -1166,9 +1166,10 @@ static void cf_ngtcp2_adjust_pollset(struct Curl_cfilter *cf,
+     bool c_exhaust, s_exhaust;
+ 
+     CF_DATA_SAVE(save, cf, data);
+-    c_exhaust = !ngtcp2_conn_get_cwnd_left(ctx->qconn) ||
+-                !ngtcp2_conn_get_max_data_left(ctx->qconn);
+-    s_exhaust = stream && stream->id >= 0 && stream->quic_flow_blocked;
++    c_exhaust = want_send && (!ngtcp2_conn_get_cwnd_left(ctx->qconn) ||
++                !ngtcp2_conn_get_max_data_left(ctx->qconn));
++    s_exhaust = want_send && stream && stream->id >= 0 &&
++                stream->quic_flow_blocked;
+     want_recv = (want_recv || c_exhaust || s_exhaust);
+     want_send = (!s_exhaust && want_send) ||
+                  !Curl_bufq_is_empty(&ctx->q.sendbuf);
+--- a/lib/vquic/curl_quiche.c
++++ b/lib/vquic/curl_quiche.c
+@@ -1189,7 +1189,7 @@ static void cf_quiche_adjust_pollset(struct Curl_cfilter *cf,
+ 
+     c_exhaust = FALSE; /* Have not found any call in quiche that tells
+                           us if the connection itself is blocked */
+-    s_exhaust = stream && stream->id >= 0 &&
++    s_exhaust = want_send && stream && stream->id >= 0 &&
+                 (stream->quic_flow_blocked || !stream_is_writeable(cf, data));
+     want_recv = (want_recv || c_exhaust || s_exhaust);
+     want_send = (!s_exhaust && want_send) ||
+

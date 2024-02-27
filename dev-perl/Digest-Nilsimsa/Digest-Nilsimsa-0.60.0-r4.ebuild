@@ -13,7 +13,7 @@ DESCRIPTION="Perl version of Nilsimsa code"
 LICENSE="GPL-2+ LGPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.60.0-clang16.patch

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,8 +39,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=sys-devel/libtool-2.4.2
-	doc? ( app-doc/doxygen )
+	>=dev-build/libtool-2.4.2
+	doc? ( app-text/doxygen )
 "
 
 DOCS=( CHANGES NOTICE README )
@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-my_bool.patch
 	"${FILESDIR}"/${PN}-1.6.1-drop-my_init.patch
 	"${FILESDIR}"/${PN}-1.6.3-fix-pkgconfig-libs.patch
+	"${FILESDIR}"/${PN}-1.6.3-configure-int.patch
 )
 
 src_prepare() {

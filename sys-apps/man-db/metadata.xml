@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="gitlab">man-db/man-db</remote-id>
+		<remote-id type="cpe">cpe:/a:man-db_project:man-db</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 src_test() {
 	# Tests expect to be run from github repo, in which code is inside dir

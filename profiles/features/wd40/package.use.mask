@@ -1,5 +1,21 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/botocore test
+dev-python/ipython nbconvert test
+dev-python/pip-run test
+dev-python/sentry-sdk test
+dev-python/sphinx-autodoc-typehints test
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-01)
+# Need dev-python/trio.
+>=dev-python/urllib3-2.2.0 test
+
+# Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
+# Need app-crypt/rpm-sequoia.
+app-arch/rpm sequoia
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/jupyter-server.
@@ -30,7 +46,6 @@ net-misc/zerotier sso
 # Michał Górny <mgorny@gentoo.org> (2023-06-06)
 # Packages needing dev-python/pydantic.
 dev-python/jaraco-itertools test
-dev-python/jaraco-text cli
 dev-python/versioningit test
 dev-python/zipp test
 
@@ -53,7 +68,7 @@ dev-lang/ruby jit
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
-dev-util/gef doc
+dev-debug/gef doc
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.
@@ -114,6 +129,8 @@ dev-python/python-keystoneclient test
 dev-python/python-socks test
 dev-python/starlette test
 dev-python/tiny-proxy test
+dev-python/twisted test
+net-misc/stunnel test
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/pyopenssl or its revdeps.
@@ -134,7 +151,6 @@ www-apps/roundup ssl
 dev-python/anyio test
 dev-python/httpcore test
 dev-python/httpx test
-<dev-python/uvicorn-0.21.1-r1 test
 dev-python/aiohttp-socks test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)

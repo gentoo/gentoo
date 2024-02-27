@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="launchpad">ubuntu</remote-id>
+		<remote-id type="github">fwts/fwts</remote-id>
 	</upstream>
 </pkgmetadata>

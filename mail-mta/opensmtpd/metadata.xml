@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">OpenSMTPD/OpenSMTPD</remote-id>
+		<bugs-to>mailto:bugs@opensmtpd.org</bugs-to>
 	</upstream>
 </pkgmetadata>

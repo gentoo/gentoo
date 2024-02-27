@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	libcaca? ( media-libs/libcaca )
 	colord? ( x11-misc/colord )
-	cpio? ( app-arch/cpio )
+	cpio? ( app-alternatives/cpio )
 	diff? ( sys-apps/diffutils )
 	docx? ( app-text/docx2txt )
 	dtc? ( sys-apps/dtc )

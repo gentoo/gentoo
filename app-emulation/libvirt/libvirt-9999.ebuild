@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ EAPI=8
 # app-emulation/libvirt
 # Please bump them together!
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
 inherit meson linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
@@ -30,9 +30,9 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
-	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nfs nls numa openvz
-	parted pcap policykit +qemu rbd sasl selinux test +udev
-	virtualbox +virt-network wireshark-plugins xen zfs
+	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nbd nfs nls numa
+	openvz parted pcap policykit +qemu rbd sasl selinux test +udev
+	virtiofsd virtualbox +virt-network wireshark-plugins xen zfs
 "
 RESTRICT="!test? ( test )"
 
@@ -53,7 +53,6 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
-	net-libs/rpcsvc-proto
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
@@ -81,7 +80,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor )
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
-	dtrace? ( dev-util/systemtap )
+	dtrace? ( dev-debug/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( sys-fs/fuse:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
@@ -91,6 +90,7 @@ RDEPEND="
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
+	nbd? ( sys-block/nbdkit )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -120,6 +120,7 @@ RDEPEND="
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
+	virtiofsd? ( app-emulation/virtiofsd )
 	wireshark-plugins? ( >=net-analyzer/wireshark-2.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.9.0
@@ -270,6 +271,7 @@ src_configure() {
 		$(meson_feature lvm storage_lvm)
 		$(meson_feature lvm storage_mpath)
 		$(meson_feature lxc driver_lxc)
+		$(meson_feature nbd nbdkit)
 		$(meson_feature nls)
 		$(meson_feature numa numactl)
 		$(meson_feature numa numad)

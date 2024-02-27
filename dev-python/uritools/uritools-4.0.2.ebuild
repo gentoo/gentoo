@@ -19,6 +19,6 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="amd64 arm64 ~riscv"
 
 distutils_enable_tests pytest

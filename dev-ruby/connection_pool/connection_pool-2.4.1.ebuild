@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_GEMSPEC="connection_pool.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rake"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mperham/connection_pool/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"

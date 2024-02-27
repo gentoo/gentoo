@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -27,12 +27,8 @@ all_ruby_prepare() {
 }
 
 each_ruby_prepare() {
-	case ${RUBY} in
-		*ruby30|*ruby31|*ruby32)
-			sed -e '/test_late_included_module_in_kernel_is_ok/askip "broken due to different ruby behavior"' \
-				-i test/test_blankslate.rb || die
-			;;
-	esac
+	sed -e '/test_late_included_module_in_kernel_is_ok/askip "broken due to different ruby behavior"' \
+		-i test/test_blankslate.rb || die
 }
 
 each_ruby_test() {

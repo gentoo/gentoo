@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="https://hg.icculus.org/icculus/physfs"
 	inherit mercurial
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc64 ~riscv x86"
 	SRC_URI="https://icculus.org/physfs/downloads/${P}.tar.bz2"
 fi
 
@@ -20,7 +20,7 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE="7zip doc grp hog iso mvl qpak slb static-libs vdf wad +zip"
 
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}"/GNUInstallDirs.patch

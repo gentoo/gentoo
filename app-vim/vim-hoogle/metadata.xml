@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">Twinside/vim-hoogle</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

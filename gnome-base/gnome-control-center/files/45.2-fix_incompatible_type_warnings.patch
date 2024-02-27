@@ -1,0 +1,39 @@
+From 13c939659a844049ddc68e90c7830bf96ebe174d Mon Sep 17 00:00:00 2001
+From: Marco Melorio <marco.melorio@protonmail.com>
+Date: Thu, 5 Oct 2023 19:21:39 +0200
+Subject: [PATCH] misc: Fix incompatible type warnings
+
+---
+ panels/datetime/cc-datetime-panel.c | 2 +-
+ panels/network/net-device-wifi.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/panels/datetime/cc-datetime-panel.c b/panels/datetime/cc-datetime-panel.c
+index 3544411d04..204b8ce44d 100644
+--- a/panels/datetime/cc-datetime-panel.c
++++ b/panels/datetime/cc-datetime-panel.c
+@@ -695,7 +695,7 @@ list_box_row_activated (CcDateTimePanel *self,
+     }
+   else if (row == GTK_LIST_BOX_ROW (self->timezone_row))
+     {
+-      present_window (self, self->timezone_dialog);
++      present_window (self, GTK_WINDOW (self->timezone_dialog));
+     }
+ }
+ 
+diff --git a/panels/network/net-device-wifi.c b/panels/network/net-device-wifi.c
+index dd4453d0f8..3cb66e19fa 100644
+--- a/panels/network/net-device-wifi.c
++++ b/panels/network/net-device-wifi.c
+@@ -780,7 +780,7 @@ net_device_wifi_dispose (GObject *object)
+         NetDeviceWifi *self = NET_DEVICE_WIFI (object);
+ 
+         if (self->hotspot_dialog) {
+-                gtk_window_destroy (self->hotspot_dialog);
++                gtk_window_destroy (GTK_WINDOW (self->hotspot_dialog));
+                 self->hotspot_dialog = NULL;
+         }
+ 
+-- 
+GitLab
+

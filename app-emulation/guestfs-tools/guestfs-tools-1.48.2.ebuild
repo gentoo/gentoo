@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 # Failures - doc
 COMMON_DEPEND="
 	!<app-emulation/libguestfs-1.46.0-r1
-	app-arch/cpio
+	app-alternatives/cpio
 	app-arch/lzma
 	app-arch/unzip[natspec]
 	app-arch/xz-utils

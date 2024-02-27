@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">vim-scripts/Screen-vim---gnu-screentmux</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

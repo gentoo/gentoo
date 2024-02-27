@@ -1,0 +1,24 @@
+From 2c708c513131cd710fb5ba30ddaab0f4ce6a44a3 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 29 Nov 2023 07:59:25 +0100
+Subject: [PATCH] Fix mem leak
+
+---
+ src/qaccessibilityclient/registry.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/qaccessibilityclient/registry.cpp b/src/qaccessibilityclient/registry.cpp
+index bea73d0..4a32cf4 100644
+--- a/src/qaccessibilityclient/registry.cpp
++++ b/src/qaccessibilityclient/registry.cpp
+@@ -19,6 +19,7 @@ Registry::Registry(QObject *parent)
+ 
+ Registry::~Registry()
+ {
++    delete d->m_cache;
+     delete d;
+ }
+ 
+-- 
+GitLab
+

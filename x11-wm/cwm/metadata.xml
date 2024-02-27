@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">chneukirchen/cwm</remote-id>
+		<remote-id type="github">leahneukirchen/cwm</remote-id>
 	</upstream>
 </pkgmetadata>

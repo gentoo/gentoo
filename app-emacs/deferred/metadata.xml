@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/kiwanami/emacs-deferred/issues/</bugs-to>
     <remote-id type="github">kiwanami/emacs-deferred</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

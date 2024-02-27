@@ -9,7 +9,6 @@
 		<flag name="g15">Enable support for the Logitech G15 LCD (and compatible devices).</flag>
 		<flag name="pipewire">Enable pipewire support for audio output.</flag>
 		<flag name="rnnoise">Enable alternative noise suppression option based on RNNoise.</flag>
-		<flag name="speech">Enable text-to-speech support in Mumble.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mumble-voip/mumble</remote-id>

@@ -5,18 +5,11 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
-	<!--
-		TODO: mark stabilize-allarches after sip-6.8.0 is released
-		and 6.7.12 stabilization is done (6.8 becomes pure python)
-	-->
+	<stabilize-allarches/>
 	<upstream>
-		<maintainer status="active">
-			<email>phil@riverbankcomputing.com</email>
-			<name>Phil Thompson</name>
-		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/hg/sip/file/tip/NEWS</changelog>
-		<doc>https://www.riverbankcomputing.com/static/Docs/sip/</doc>
-		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<changelog>https://github.com/Python-SIP/sip/blob/main/NEWS</changelog>
+		<doc>https://python-sip.readthedocs.io/en/latest/</doc>
+		<remote-id type="github">Python-SIP/sip</remote-id>
 		<remote-id type="pypi">sip</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -38,7 +38,6 @@ dev-util/perf clang
 # Problems even on ppc64le, needs more work
 dev-lang/spidermonkey clang
 mail-client/thunderbird clang
-<www-client/firefox-104 clang
 
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.

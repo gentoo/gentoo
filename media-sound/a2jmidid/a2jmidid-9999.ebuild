@@ -1,22 +1,23 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit meson python-single-r1 git-r3
 
-DESCRIPTION="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system"
-HOMEPAGE="https://github.com/jackaudio/a2jmidid"
-EGIT_REPO_URI="https://github.com/jackaudio/a2jmidid.git"
+DESCRIPTION="Daemon for exposing ALSA sequencer applications in JACK MIDI system"
+HOMEPAGE="https://a2jmidid.ladish.org"
+EGIT_REPO_URI="https://gitea.ladish.org/LADI/a2jmidid.git"
+EGIT_BRANCH="main"
+EGIT_SUBMODULES=( waf-autooptions waftoolchainflags siginfo )
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="dbus python"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="dbus"
+REQUIRED_USE="dbus? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -24,13 +25,12 @@ BDEPEND="
 CDEPEND="
 	media-libs/alsa-lib
 	virtual/jack
-	dbus? ( sys-apps/dbus )
-	python? ( ${PYTHON_DEPS} )
+	dbus? ( sys-apps/dbus ${PYTHON_DEPS} )
 "
 RDEPEND="${CDEPEND}"
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS.rst CHANGELOG.rst README.rst internals.txt )
+DOCS=( AUTHORS.rst NEWS.rst README internals.txt )
 
 src_configure() {
 	local emesonargs=(
@@ -43,9 +43,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	if use python; then
+	if use dbus; then
 		python_fix_shebang "${ED}"
-	else
-		rm "${ED}/usr/bin/a2j_control" || die
 	fi
 }

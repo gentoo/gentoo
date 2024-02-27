@@ -1,0 +1,20 @@
+--- a/configure.ac	2023-12-20 22:48:44.764596449 +0100
++++ b/configure.ac	2023-12-20 22:50:10.493170634 +0100
+@@ -1109,7 +1109,7 @@
+            USE_CURSES="missing_header"
+          fi], [])], [])
+     if test "$USE_CURSES" = "ncursesw"; then
+-      LIBCOB_LIBS="$LIBCOB_LIBS -lncursesw"
++      LIBCOB_LIBS="$LIBCOB_LIBS $(ncursesw6-config --libs)"
+     fi
+   else
+     if test "$USE_CURSES" = "ncursesw"; then
+@@ -1128,7 +1128,7 @@
+               USE_CURSES="missing_header"
+             fi], [])], [])], [])
+     if test "$USE_CURSES" = "ncurses"; then
+-      LIBCOB_LIBS="$LIBCOB_LIBS -lncurses"
++      LIBCOB_LIBS="$LIBCOB_LIBS $(ncurses6-config --libs)"
+     fi
+   else
+     if test "$USE_CURSES" = "ncurses"; then

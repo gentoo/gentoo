@@ -24,7 +24,6 @@
     <flag name="extra-hardened">Enable extra security checks. This will hurt performance.</flag>
     <flag name="gio">Enable GIO for FS monitoring (glib based alternative to inotify interface, not recommended; if both are compiled, may be selected at runtime).</flag>
     <flag name="highload-locks">Allows to use spinlocks for short delays instead of mutexes, but only on SMP systems.</flag>
-    <flag name="lto">Build with link time optimization (LTO).</flag>
     <flag name="namespaces">Enable namespaces isolation.</flag>
     <flag name="socket-library">Build the control and monitoring socket library: libclsync.</flag>
   </use>

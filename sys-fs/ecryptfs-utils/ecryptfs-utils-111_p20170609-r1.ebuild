@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ S="${WORKDIR}/~${MY_PN}/${MY_PN}/trunk/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86"
 IUSE="doc gpg gtk nls openssl pam pkcs11 suid tpm"
 
 BDEPEND="

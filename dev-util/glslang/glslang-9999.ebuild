@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/${PN}.git"
 	inherit git-r3
 else
-	SNAPSHOT_COMMIT="sdk-${PV}.0"
+	SNAPSHOT_COMMIT="vulkan-sdk-${PV}.0"
 	SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${SNAPSHOT_COMMIT}"
@@ -20,19 +20,22 @@ DESCRIPTION="Khronos reference front-end for GLSL and ESSL, and sample SPIR-V ge
 HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/ https://github.com/KhronosGroup/glslang"
 
 LICENSE="BSD"
-SLOT="0/12"
+SLOT="0/14"
 
 # Bug 698850
 RESTRICT="test"
 
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="${PYTHON_DEPS}
+	~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]
+"
 
-PATCHES=( "${FILESDIR}/${PN}-1.3.236-Install-static-libs.patch" )
+DEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PCH=OFF
-		-DALLOW_EXTERNAL_SPIRV_TOOLS=1
+		-DALLOW_EXTERNAL_SPIRV_TOOLS=ON
 	)
 	cmake_src_configure
 }

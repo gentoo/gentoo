@@ -1,0 +1,51 @@
+From 7d79acbabf3d9836a4bd9e7296d6f6dd6a222fb7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 9 Dec 2023 15:25:21 +0100
+Subject: [PATCH] Fix running tests in environment with FORCE_COLOR or NO_COLOR
+ set
+
+Ensure to unset FORCE_COLOR and NO_COLOR environment variables within
+the scope of individual tests, in order to fix test failures when these
+variables are set in the environment where tests are run, e.g. via:
+
+    NO_COLOR=1 tox
+---
+ CHANGELOG.md      | 6 ++++++
+ tests/conftest.py | 8 ++++++++
+ 2 files changed, 14 insertions(+)
+ create mode 100644 tests/conftest.py
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 9b0eecd7..af7354b4 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
+ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+ 
++## Unreleased
++
++### Fixed
++
++- Running tests in environment with `FORCE_COLOR` or `NO_COLOR` environment variables
++
+ ## [13.7.0] - 2023-11-15
+ 
+ ### Added
+diff --git a/tests/conftest.py b/tests/conftest.py
+new file mode 100644
+index 00000000..52662964
+--- /dev/null
++++ b/tests/conftest.py
+@@ -0,0 +1,8 @@
++import pytest
++
++
++@pytest.fixture(autouse=True)
++def reset_color_envvars(monkeypatch):
++    """Remove color-related envvars to fix test output"""
++    monkeypatch.delenv("FORCE_COLOR", raising=False)
++    monkeypatch.delenv("NO_COLOR", raising=False)
+-- 
+2.43.0
+

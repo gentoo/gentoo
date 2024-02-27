@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 # https://bugs.gentoo.org/873349
 # Building documentation requires packaging: callouts and mkdocs-autorefs

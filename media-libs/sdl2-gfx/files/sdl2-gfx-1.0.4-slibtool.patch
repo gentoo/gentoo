@@ -1,4 +1,4 @@
-This fixes build with sys-devel/slibtool
+This fixes build with dev-build/slibtool
 
 --- SDL2_gfx-1.0.4/configure.in
 +++ SDL2_gfx-1.0.4/configure.in

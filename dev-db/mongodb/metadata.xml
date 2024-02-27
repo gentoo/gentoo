@@ -14,7 +14,6 @@
 	and powerful queries).
 	</longdescription>
 	<use>
-		<flag name="lto">Adds support for link time optimization</flag>
 		<flag name="mongosh">Install the MongoDB shell from <pkg>app-admin/mongosh-bin</pkg></flag>
 		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) from <pkg>app-admin/mongo-tools</pkg></flag>
 	</use>

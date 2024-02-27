@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>mpagano@gentoo.org</email>
-        <name>Mike Pagano</name>
-    </maintainer>
-    <stabilize-allarches/>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
+	<longdescription>
+		This software is a filter program used with Common UNIX Printing System
+		(CUPS) from the Linux. This can supply the high quality print with
+		Seiko Epson Color Ink Jet Printers.
+
+		This product supports only EPSON ESC/P-R printers. This package can be
+		used for all EPSON ESC/P-R printers.
+
+		For detail list of supported printer, please refer to below site:
+		http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX.
+	</longdescription>
+	<longdescription lang="fr">
+		Ce logiciel est un programme de filtres pour le « Common UNIX Printing
+		System » (CUPS) de Linux. Il peut fournir une impression de haute
+		qualité avec les imprimantes à jet d'encre couleur Seiko Epson (« Seiko
+		Epson Color Ink Jet Printers »).
+
+		Ce produit ne supporte que les imprimantes EPSON ESC/P-R. Ce paquet
+		peut être être utilisé pour toutes les imprimantes EPSON ESC/P-R.
+
+		Pour une liste détaillée des imprimantes supportées, veuillez vous
+		référer au site ci-dessous :
+		http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX.
+	</longdescription>
+	<slots>
+		<slot name="0">Epson Inkjet Printer Driver (ESC/P-R) for Linux</slot>
+		<slot name="2">Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux</slot>
+	</slots>
+	<slots lang="fr">
+		<slot name="0">Epson Inkjet Printer Driver (ESC/P-R) pour Linux</slot>
+		<slot name="2">Epson Inkjet Printer Driver 2 (ESC/P-R) pour Linux</slot>
+	</slots>
+	<upstream>
+		<maintainer status="active">
+			<name>Seiko Epson Corporation</name>
+			<email>linux-printer@epson.jp</email>
+		</maintainer>
+		<doc>http://download.ebz.epson.net/man/linux/escpr2.html</doc>
+	</upstream>
 </pkgmetadata>

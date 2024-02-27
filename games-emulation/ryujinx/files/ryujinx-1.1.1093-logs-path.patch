@@ -1,0 +1,86 @@
+From 78e443211b8dab8c0cf62ba5aada309ad47b9de9 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Tue, 22 Nov 2022 07:52:55 -0500
+Subject: [PATCH 3/3] Use ConfigurationPath for log base path
+
+---
+ src/Ryujinx.Ava/Program.cs                          | 2 +-
+ src/Ryujinx.Ui.Common/Configuration/LoggerModule.cs | 7 +++++--
+ src/Ryujinx/Program.cs                              | 2 +-
+ src/Ryujinx/Ui/MainWindow.cs                        | 2 +-
+ 4 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/Ryujinx.Ava/Program.cs b/src/Ryujinx.Ava/Program.cs
+index cc062a25..e75b0324 100644
+--- a/src/Ryujinx.Ava/Program.cs
++++ b/src/Ryujinx.Ava/Program.cs
+@@ -90,7 +90,7 @@ namespace Ryujinx.Ava
+             ConfigurationState.Initialize();
+ 
+             // Initialize the logger system.
+-            LoggerModule.Initialize();
++            LoggerModule.Initialize(AppDataManager.BaseDirPath);
+ 
+             // Initialize Discord integration.
+             DiscordIntegrationModule.Initialize();
+diff --git a/src/Ryujinx.Ui.Common/Configuration/LoggerModule.cs b/src/Ryujinx.Ui.Common/Configuration/LoggerModule.cs
+index e18b2bfa..4f2d00f7 100644
+--- a/src/Ryujinx.Ui.Common/Configuration/LoggerModule.cs
++++ b/src/Ryujinx.Ui.Common/Configuration/LoggerModule.cs
+@@ -7,7 +7,9 @@ namespace Ryujinx.Ui.Common.Configuration
+ {
+     public static class LoggerModule
+     {
+-        public static void Initialize()
++        private static string LogPath;
++
++        public static void Initialize(string LogPathIn)
+         {
+             ConfigurationState.Instance.Logger.EnableDebug.Event += ReloadEnableDebug;
+             ConfigurationState.Instance.Logger.EnableStub.Event += ReloadEnableStub;
+@@ -19,6 +21,7 @@ namespace Ryujinx.Ui.Common.Configuration
+             ConfigurationState.Instance.Logger.EnableFsAccessLog.Event += ReloadEnableFsAccessLog;
+             ConfigurationState.Instance.Logger.FilteredClasses.Event += ReloadFilteredClasses;
+             ConfigurationState.Instance.Logger.EnableFileLog.Event += ReloadFileLogger;
++            LogPath = LogPathIn;
+         }
+ 
+         private static void ReloadEnableDebug(object sender, ReactiveEventArgs<bool> e)
+@@ -81,7 +84,7 @@ namespace Ryujinx.Ui.Common.Configuration
+             if (e.NewValue)
+             {
+                 Logger.AddTarget(new AsyncLogTargetWrapper(
+-                    new FileLogTarget(ReleaseInformation.GetBaseApplicationDirectory(), "file"),
++                    new FileLogTarget(LogPath, "file"),
+                     1000,
+                     AsyncLogTargetOverflowAction.Block
+                 ));
+diff --git a/src/Ryujinx/Program.cs b/src/Ryujinx/Program.cs
+index 597d00f3..07cedb93 100644
+--- a/src/Ryujinx/Program.cs
++++ b/src/Ryujinx/Program.cs
+@@ -147,7 +147,7 @@ namespace Ryujinx
+             ConfigurationState.Initialize();
+ 
+             // Initialize the logger system.
+-            LoggerModule.Initialize();
++            LoggerModule.Initialize(AppDataManager.BaseDirPath);
+ 
+             // Initialize Discord integration.
+             DiscordIntegrationModule.Initialize();
+diff --git a/src/Ryujinx/Ui/MainWindow.cs b/src/Ryujinx/Ui/MainWindow.cs
+index 8b0b35e6..eaee6f66 100644
+--- a/src/Ryujinx/Ui/MainWindow.cs
++++ b/src/Ryujinx/Ui/MainWindow.cs
+@@ -1379,7 +1379,7 @@ namespace Ryujinx.Ui
+ 
+         private void OpenLogsFolder_Pressed(object sender, EventArgs args)
+         {
+-            string logPath = System.IO.Path.Combine(ReleaseInformation.GetBaseApplicationDirectory(), "Logs");
++            string logPath = System.IO.Path.Combine(AppDataManager.BaseDirPath, "Logs");
+ 
+             new DirectoryInfo(logPath).Create();
+ 
+-- 
+2.43.0
+

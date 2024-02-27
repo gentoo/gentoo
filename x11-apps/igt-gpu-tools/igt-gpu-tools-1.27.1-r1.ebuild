@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="Intel GPU userland tools"
@@ -61,7 +61,7 @@ RDEPEND="
 	)
 	runner? ( dev-libs/json-c:= )
 	unwind? ( sys-libs/libunwind:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-1.25-r1 )
@@ -71,8 +71,8 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 	video_cards_intel? (
-		sys-devel/bison
-		sys-devel/flex
+		app-alternatives/yacc
+		app-alternatives/lex
 	)
 "
 BDEPEND="${PYTHON_DEPS}"

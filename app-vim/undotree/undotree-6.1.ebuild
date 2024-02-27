@@ -11,4 +11,4 @@ HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=4177
 SRC_URI="https://github.com/mbbill/${PN}/archive/rel_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"

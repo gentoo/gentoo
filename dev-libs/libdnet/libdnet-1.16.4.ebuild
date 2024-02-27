@@ -36,6 +36,9 @@ src_prepare() {
 		-e 's/libcheck.a/libcheck.so/g' \
 		configure.ac || die
 	sed -i \
+		-e "s/lib\/libcheck/$(get_libdir)\/libcheck/g" \
+		configure.ac || die
+	sed -i \
 		-e 's|-L$libdir ||g' \
 		dnet-config.in || die
 	sed -i \
@@ -56,7 +59,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with python) \
-		$(use_with test check "${ESYSROOT}/usr")
+		$(use_enable test check)
 }
 
 src_compile() {

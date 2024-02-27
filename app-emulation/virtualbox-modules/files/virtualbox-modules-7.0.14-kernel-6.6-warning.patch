@@ -1,0 +1,27 @@
+https://www.virtualbox.org/changeset/103168/vbox
+https://bugs.gentoo.org/923277
+
+--- a/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
++++ b/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
+@@ -244,9 +244,21 @@
+ #if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
+             if (fKernel)
+             {
++# if RTLNX_VER_MIN(6,6,0)
++                /* In kernel 6.6 mk_pte() macro was fortified with additional
++                 * check which does not allow to use our custom mask anymore
++                 * (see kernel commit ae1f05a617dcbc0a732fbeba0893786cd009536c).
++                 * For this particular mapping case, an existing mask PAGE_KERNEL_ROX
++                 * can be used instead. PAGE_KERNEL_ROX was introduced in
++                 * kernel 5.8, however, lets apply it for kernels 6.6 and newer
++                 * to be on a safe side.
++                 */
++                return PAGE_KERNEL_ROX;
++# else
+                 pgprot_t fPg = MY_PAGE_KERNEL_EXEC;
+                 pgprot_val(fPg) &= ~_PAGE_RW;
+                 return fPg;
++# endif
+             }
+             return PAGE_READONLY_EXEC;
+ #else

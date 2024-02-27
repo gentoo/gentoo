@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ else
 	MY_P="${P/_rc/RC}"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~ppc ~x86"
+		KEYWORDS="amd64 ~ppc ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
@@ -95,8 +95,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"

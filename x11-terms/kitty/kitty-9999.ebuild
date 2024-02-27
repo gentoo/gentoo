@@ -1,10 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit edo optfeature multiprocessing python-single-r1 toolchain-funcs xdg
+inherit edo flag-o-matic go-env optfeature multiprocessing
+inherit python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,7 +25,7 @@ DESCRIPTION="Fast, feature-rich, GPU-based terminal"
 HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
 LICENSE="GPL-3 ZLIB"
-LICENSE+=" Apache-2.0 BSD BSD-2 MIT MPL-2.0 " # go
+LICENSE+=" Apache-2.0 BSD BSD-2 MIT MPL-2.0" # go
 SLOT="0"
 IUSE="+X test wayland"
 REQUIRED_USE="
@@ -50,24 +51,30 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 	~x11-terms/kitty-shell-integration-${PV}
 	~x11-terms/kitty-terminfo-${PV}
-	X? ( x11-libs/libX11 )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXcursor
+	)
 	wayland? ( dev-libs/wayland )
 	!sci-mathematics/kissat
 "
 DEPEND="
 	${RDEPEND}
+	amd64? ( dev-libs/simde )
+	arm64? ( dev-libs/simde )
+	x86? ( dev-libs/simde )
 	X? (
 		x11-base/xorg-proto
-		x11-libs/libXcursor
 		x11-libs/libXi
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 	)
 	wayland? ( dev-libs/wayland-protocols )
 "
+# bug #919751 wrt go subslot
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-lang/go-1.21
+	>=dev-lang/go-1.21:=
 	sys-libs/ncurses
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
@@ -76,10 +83,6 @@ BDEPEND="
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
 QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.30.1-no-sudo.patch
-)
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -126,9 +129,21 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
+	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
+
+	go-env_set_compile_environment
 	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x"
 	use ppc64 && [[ $(tc-endian) == big ]] || GOFLAGS+=" -buildmode=pie"
-	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
+
+	# workaround link errors with Go + gcc + -g3 (bug #924436),
+	# retry now and then to see if can be dropped
+	tc-is-gcc &&
+		CGO_CFLAGS=$(
+			CFLAGS=${CGO_CFLAGS}
+			replace-flags -g3 -g
+			replace-flags -ggdb3 -ggdb
+			printf %s "${CFLAGS}"
+		)
 
 	local conf=(
 		--disable-link-time-optimization

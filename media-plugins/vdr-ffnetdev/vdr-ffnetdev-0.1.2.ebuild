@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit vdr-plugin-2
 
@@ -10,19 +10,13 @@ VERSION="837" # every bump, new version
 DESCRIPTION="VDR Plugin: Provides an easy way of connecting possible streaming clients to VDR"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-ffnetdev"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tar.bz2"
+S="${WORKDIR}/${P}" # override eclass default
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-S=${WORKDIR}/${P}
 
 DEPEND=">=media-video/vdr-1.6.0"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}_gettext.diff"
-
-	vdr-plugin-2_src_prepare
-}
+PATCHES=( "${FILESDIR}/${P}_gettext.diff" )

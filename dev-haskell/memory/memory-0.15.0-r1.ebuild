@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/basement-0.0.7:=[profile?]
-	>=dev-lang/ghc-8.0.1:=
+	>=dev-lang/ghc-8.0.1:= <dev-lang/ghc-9.1
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.24.0.0

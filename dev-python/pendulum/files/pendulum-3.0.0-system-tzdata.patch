@@ -1,0 +1,50 @@
+From 0143f10dfcc94f5cba1a83912e055026a0282c19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 2 Feb 2024 17:48:55 +0100
+Subject: [PATCH] Fix `pendulum.tz.timezones()` to use system tzdata
+
+Fix the `pendulum.tz.available_timezones()` to use
+`available_timezones()` function instead of iterating over the files
+in `tzdata` package.  This is more in line with PEP 615, as the system
+timezone functions will operate on system-provided tzdata when
+available, and use the `tzdata` package only if it's not available.
+Therefore, the previous code would yield a potentially different list
+of timezones than the system actually provides.
+
+Furthermore, Gentoo provides a dummy `tzdata` package that does not
+provide any data, since Python always uses system tzdata.  This change
+is necessary to make pendulum work again on Gentoo.
+
+Fixes #769
+---
+ src/pendulum/tz/__init__.py | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/src/pendulum/tz/__init__.py b/src/pendulum/tz/__init__.py
+index 36c2c692..8dc64705 100644
+--- a/src/pendulum/tz/__init__.py
++++ b/src/pendulum/tz/__init__.py
+@@ -9,7 +9,7 @@
+ from pendulum.tz.timezone import UTC
+ from pendulum.tz.timezone import FixedTimezone
+ from pendulum.tz.timezone import Timezone
+-from pendulum.utils._compat import resources
++from pendulum.utils._zoneinfo import available_timezones
+ 
+ 
+ PRE_TRANSITION = "pre"
+@@ -22,13 +22,7 @@
+ 
+ 
+ def timezones() -> tuple[str, ...]:
+-    global _timezones
+-
+-    if _timezones is None:
+-        with cast(Path, resources.files("tzdata").joinpath("zones")).open() as f:
+-            _timezones = tuple(tz.strip() for tz in f.readlines())
+-
+-    return _timezones
++    return available_timezones()
+ 
+ 
+ def fixed_timezone(offset: int) -> FixedTimezone:

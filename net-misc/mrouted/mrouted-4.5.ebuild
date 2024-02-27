@@ -11,7 +11,7 @@ SRC_URI="https://github.com/troglobit/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="Stanford GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="rsrr test"
 
 # Needs unshare

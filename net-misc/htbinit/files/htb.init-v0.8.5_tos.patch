@@ -1,8 +1,8 @@
 --- a/htb.init
 +++ b/htb.init
 @@ -240,6 +240,10 @@
- #      Maximum packet size HTB creates rate maps for. The default should
- #      be sufficient for most cases, it certainly is for Ethernet.
+ #	Maximum packet size HTB creates rate maps for. The default should
+ #	be sufficient for most cases, it certainly is for Ethernet.
  #
 +# TOS=<number>                                 optional, default "none"
 +#
@@ -11,7 +11,7 @@
  ### SFQ qdisc parameters
  #
  # The SFQ queueing discipline is a cheap way to fairly share class bandwidth
-@@ -435,6 +435,7 @@
+@@ -435,6 +439,7 @@
  HTB_CLASS="RATE\|CEIL\|BURST\|CBURST\|PRIO\|LEAF\|MTU"
  HTB_CLASS="$HTB_CLASS\|PRIO_RULE\|PRIO_MARK\|PRIO_REALM"
  HTB_CLASS="$HTB_CLASS\|LIMIT\|QUANTUM\|PERTURB"
@@ -19,7 +19,7 @@
  
  
  #############################################################################
-@@ -646,7 +647,7 @@
+@@ -646,7 +651,7 @@
  	### Set defaults & load class
  	MTU=""; LEAF=none; PERTURB=10
  	RATE=""; BURST=""; CEIL=""; CBURST=""
@@ -28,7 +28,7 @@
  	
  	PRIO_RULE=$PRIO_RULE_DEFAULT
  	PRIO_MARK=$PRIO_MARK_DEFAULT
-@@ -868,12 +869,19 @@
+@@ -868,12 +873,19 @@
  		u32_d="${DPORT:+match ip dport $DPORT $DMASK}"
  		u32_d="${DADDR:+match ip dst $DADDR} $u32_d"
  

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ BDEPEND="
 	app-arch/xz-utils[extra-filters(-)]
 	virtual/pkgconfig
 	apidoc? (
-		app-doc/doxygen
+		app-text/doxygen
 		dev-lang/perl
 	)
 	doc? (
@@ -67,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		>=app-editors/emacs-${NEED_EMACS}:*[libxml2]
 		app-misc/dtach
-		sys-devel/gdb[python]
+		dev-debug/gdb[python]
 		crypt? (
 			app-crypt/gnupg
 			dev-libs/openssl

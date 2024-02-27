@@ -1,14 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit toolchain-funcs vcs-snapshot
+EAPI=8
+
+inherit toolchain-funcs
 
 DESCRIPTION="Small 802.11 wireless LAN analyzer"
 HOMEPAGE="https://github.com/br101/horst/"
 SRC_URI="https://github.com/br101/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +pcap test"
@@ -18,15 +19,14 @@ RDEPEND="
 	sys-libs/ncurses:0
 	pcap? ( net-libs/libpcap )
 "
-TDEPEND="
+DEPEND="${RDEPEND}"
+BEDEPEND="
+	virtual/pkgconfig
 	test? ( sys-devel/sparse )
 "
-DEPEND="
-	${RDEPEND}
-	${TDEPEND}
-	virtual/pkgconfig
-"
-RESTRICT=test #just semantic tests, no functional tests
+
+RESTRICT="test" #just semantic tests, no functional tests
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1-CC.patch
 	"${FILESDIR}"/${PN}-5.1-pcap_bufsize.patch

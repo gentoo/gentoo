@@ -15,5 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">netplex/json-smart-v1</remote-id>
+		<remote-id type="github">netplex/json-smart-v2</remote-id>
 	</upstream>
 </pkgmetadata>

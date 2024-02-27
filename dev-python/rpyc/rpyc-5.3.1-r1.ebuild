@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -15,14 +15,14 @@ SRC_URI="https://github.com/tomerfiliba-org/rpyc/archive/refs/tags/${PV}.tar.gz 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 # USE flags gdb, numpy are used *only* to run tests depending on these packages
 IUSE="test numpy gdb"
 RESTRICT="!test? ( test )"
 
 CDEPEND="numpy? ( dev-python/numpy[${PYTHON_USEDEP}] dev-python/pandas[${PYTHON_USEDEP}] )
-	gdb? ( sys-devel/gdb )"
+	gdb? ( dev-debug/gdb )"
 
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"

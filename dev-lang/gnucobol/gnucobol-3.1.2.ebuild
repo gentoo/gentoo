@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,11 +22,14 @@ RDEPEND="
 	berkdb? ( sys-libs/db:4.8= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/libtool"
+BDEPEND="dev-build/libtool"
 
 DOCS=( AUTHORS ChangeLog NEWS README README.md )
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-ncurses.patch
+)
 
 src_prepare() {
 	default

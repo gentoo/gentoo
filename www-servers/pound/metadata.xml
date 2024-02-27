@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">graygnuorg/pound</remote-id>
+	</upstream>
 	<longdescription lang="en">
 		The Pound program is a reverse proxy, load balancer
 		and HTTPS front-end for Web server(s). Pound was developed to enable

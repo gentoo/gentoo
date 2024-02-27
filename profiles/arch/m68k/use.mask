@@ -38,7 +38,6 @@ vim-syntax
 # Hardware that probably doesn't apply to m68k.
 input_devices_elographics
 video_cards_amdgpu
-video_cards_glint
 video_cards_mga
 video_cards_nouveau
 video_cards_r128
@@ -83,6 +82,7 @@ ruby
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
 # Qt is not keyworded or tested.
 qt5
+qt6
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
 # valgrind has no m68k port.

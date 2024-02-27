@@ -5,6 +5,7 @@
 	<upstream>
 		<remote-id type="sourceforge">zbar</remote-id>
 		<remote-id type="github">mchehab/zbar</remote-id>
+		<remote-id type="cpe">cpe:/a:zbar_project:zbar</remote-id>
 		<bugs-to>https://github.com/mchehab/zbar/issues</bugs-to>
 	</upstream>
 	<longdescription>

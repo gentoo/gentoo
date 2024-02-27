@@ -13,7 +13,7 @@ SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1+ Elm"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 
 DEPEND="dev-libs/openssl:0=

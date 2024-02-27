@@ -1,14 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 aes - Use the AES cryptography instruction set
+asimddp - Use the Advanced SIMD dot product instructions
 crc32 - Use the CRC32 instruction set
 edsp - Use the enhanced DSP instructions (ARMv*E and ARMv6+)
+i8mm - Use the AArch64 Int8 matrix multiplication instructions
 iwmmxt - Use the iwMMXt instruction set
 iwmmxt2 - Use the iwMMXt2 instruction set
 neon - Use the NEON (ASIMD) instruction set
 sha1 - Use the SHA-1 cryptography instruction set
 sha2 - Use the SHA-2 cryptography instruction set
+sm4 - Use the SM4 cryptography instruction set
+sve - Use the Scalable Vector Extension instruction set
 thumb - Enable Thumb instruction set (ARMv*T and ARMv6+)
 thumb2 - Enable Thumb-2 instruction set (ARMv*T2 and ARMv7+)
 v4 - Use instructions added in ARMv4

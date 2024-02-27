@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,8 +30,8 @@ SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="audit babeltrace bpf caps crypt debug +doc gtk java libpfm +libtraceevent +libtracefs lzma numa perl python slang systemtap tcmalloc unwind zstd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+IUSE="abi_mips_o32 abi_mips_n32 abi_mips_n64 audit babeltrace big-endian bpf caps crypt debug +doc gtk java libpfm +libtraceevent +libtracefs lzma numa perl python slang systemtap tcmalloc unwind zstd"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -43,8 +43,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
@@ -78,7 +78,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	slang? ( sys-libs/slang )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	tcmalloc? ( dev-util/google-perftools )
 	unwind? ( sys-libs/libunwind:= )
 	zstd? ( app-arch/zstd:= )
@@ -176,6 +176,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	eapply "${FILESDIR}"/perf-6.4-libtracefs.patch
+	eapply "${FILESDIR}"/perf-6.6-ia64.patch
 	popd || die
 
 	# Drop some upstream too-developer-oriented flags and fix the
@@ -209,11 +210,43 @@ perf_make() {
 	local arch=$(tc-arch-kernel)
 	local java_dir
 	use java && java_dir="${EPREFIX}/etc/java-config-2/current-system-vm"
+
+	# sync this with the whitelist in tools/perf/Makefile.config
+	local disable_libdw
+	if ! use amd64 && ! use x86 && \
+	   ! use arm && \
+	   ! use arm64 && \
+	   ! use ppc && ! use ppc64 \
+	   ! use s390 && \
+	   ! use riscv && \
+	   ! use loong
+	then
+		disable_libdw=1
+	fi
+
+	# perf directly invokes LD for linking without going through CC, on mips
+	# it is required to specify the emulation.  port of below buildroot patch
+	# https://patchwork.ozlabs.org/project/buildroot/patch/20170217105905.32151-1-Vincent.Riera@imgtec.com/
+	local linker="$(tc-getLD)"
+	if use mips
+	then
+		if use big-endian
+		then
+			use abi_mips_n64 && linker+=" -m elf64btsmip"
+			use abi_mips_n32 && linker+=" -m elf32btsmipn32"
+			use abi_mips_o32 && linker+=" -m elf32btsmip"
+		else
+			use abi_mips_n64 && linker+=" -m elf64ltsmip"
+			use abi_mips_n32 && linker+=" -m elf32ltsmipn32"
+			use abi_mips_o32 && linker+=" -m elf32ltsmip"
+		fi
+	fi
+
 	# FIXME: NO_CORESIGHT
 	local emakeargs=(
 		V=1 VF=1
 		HOSTCC="$(tc-getBUILD_CC)" HOSTLD="$(tc-getBUILD_LD)"
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" LD="$(tc-getLD)" NM="$(tc-getNM)"
+		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" LD="${linker}" NM="$(tc-getNM)"
 		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		prefix="${EPREFIX}/usr" bindir_relative="bin"
 		tipdir="share/doc/${PF}"
@@ -237,7 +270,7 @@ perf_make() {
 		NO_LIBBPF=$(puse bpf)
 		NO_LIBCAP=$(puse caps)
 		NO_LIBCRYPTO=$(puse crypt)
-		NO_LIBDW_DWARF_UNWIND=
+		NO_LIBDW_DWARF_UNWIND="${disable_libdw}"
 		NO_LIBELF=
 		NO_LIBNUMA=$(puse numa)
 		NO_LIBPERL=$(puse perl)

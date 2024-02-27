@@ -19,4 +19,3 @@ RESTRICT="test"
 
 RDEPEND=">=sci-geosciences/GeographicLib-1.51-r1[python,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-BDEPEND=""

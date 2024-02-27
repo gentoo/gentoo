@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -30,8 +30,8 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:0= )
 "
 DEPEND="${RDEPEND}
-	sys-devel/libtool:2
-	>=sys-devel/autoconf-2.69
+	dev-build/libtool:2
+	>=dev-build/autoconf-2.69
 "
 S="${WORKDIR}/${MY_P}"
 

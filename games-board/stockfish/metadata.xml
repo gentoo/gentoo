@@ -10,4 +10,7 @@
 		<flag name="general-64">Generic unoptimized 64-bits build</flag>
 		<flag name="optimize">Enable upstream -O3 optimizations (default enabled)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">official-stockfish/Stockfish</remote-id>
+	</upstream>
 </pkgmetadata>

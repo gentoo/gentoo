@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit git-r3 linux-info python-any-r1 systemd toolchain-funcs
 
@@ -28,7 +28,7 @@ RDEPEND="
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
-	ffmpeg? ( <media-video/ffmpeg-5:=[opus?,vpx?,x264?,x265?] )
+	ffmpeg? ( media-video/ffmpeg:=[opus?,vpx?,x264?,x265?] )
 	hdhomerun? ( media-libs/libhdhomerun )
 	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )

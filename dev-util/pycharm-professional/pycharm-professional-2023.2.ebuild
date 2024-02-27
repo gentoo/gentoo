@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="PyCharm_Academic PyCharm_Classroom PyCharm PyCharm_OpenSource PyCharm_Preview"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bundled-jdk"
 
 BDEPEND="dev-util/patchelf"

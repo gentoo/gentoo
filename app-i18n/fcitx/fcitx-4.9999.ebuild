@@ -1,4 +1,4 @@
-# Copyright 2003-2022 Gentoo Authors
+# Copyright 2003-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -35,11 +35,12 @@ REQUIRED_USE="cairo? ( X )
 RESTRICT="!test? ( test )"
 
 BDEPEND="dev-util/glib-utils
-	kde-frameworks/extra-cmake-modules:5
+	kde-frameworks/extra-cmake-modules:0
 	virtual/pkgconfig
 	introspection? ( dev-libs/gobject-introspection )
 	nls? ( sys-devel/gettext )"
-DEPEND="dev-libs/glib:2
+DEPEND="!app-i18n/fcitx:5
+	dev-libs/glib:2
 	sys-apps/dbus
 	sys-apps/util-linux
 	virtual/libiconv

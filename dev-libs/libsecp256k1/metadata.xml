@@ -10,7 +10,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="asm">Enable x86_64 assembly optimisation</flag>
     <flag name="ecdh">Enable ECDH shared secret computation</flag>
     <flag name="ellswift">Enable ElligatorSwift encoding for public keys</flag>
     <flag name="endomorphism">Enable endomorphism</flag>

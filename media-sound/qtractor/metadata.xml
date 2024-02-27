@@ -20,5 +20,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">qtractor</remote-id>
+		<remote-id type="github">rncbc/qtractor</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -28,7 +28,7 @@ RDEPEND=">=dev-haskell/attoparsec-0.14.2:=[profile?] <dev-haskell/attoparsec-0.1
 	>=dev-haskell/indexed-traversable-0.1.2:=[profile?] <dev-haskell/indexed-traversable-0.2:=[profile?]
 	>=dev-haskell/onetuple-0.3.1:=[profile?] <dev-haskell/onetuple-0.4:=[profile?]
 	>=dev-haskell/primitive-0.7.3.0:=[profile?] <dev-haskell/primitive-0.8:=[profile?]
-	>=dev-haskell/quickcheck-2.14.2:2=[profile?] <dev-haskell/quickcheck-2.15:2=[profile?]
+	>=dev-haskell/quickcheck-2.14.2:=[profile?] <dev-haskell/quickcheck-2.15:=[profile?]
 	>=dev-haskell/scientific-0.3.7.0:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
 	>=dev-haskell/semialign-1.2:=[profile?] <dev-haskell/semialign-1.3:=[profile?]
 	>=dev-haskell/strict-0.4:=[profile?] <dev-haskell/strict-0.5:=[profile?]

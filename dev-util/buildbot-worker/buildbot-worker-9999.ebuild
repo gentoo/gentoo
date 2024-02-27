@@ -23,14 +23,12 @@ RDEPEND="
 	acct-user/buildbot
 	!<dev-util/buildbot-1.0.0
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
-	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)

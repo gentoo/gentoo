@@ -1,0 +1,47 @@
+https://github.com/tpm2-software/tpm2-tools/pull/3339
+
+From 9f244c3f74747b7f79c8c6813657b2f2f8a1c844 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 21 Jan 2024 08:08:28 +0000
+Subject: [PATCH] configure.ac: fix bashisms
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking for libcurl... yes
+./configure: 15201: test: xauto: unexpected operator
+./configure: 15286: test: xauto: unexpected operator
+checking for efivar/efivar.h... yes
+```
+
+This fixes a build error later on too:
+```
+/usr/lib/gcc/x86_64-pc-linux-gnu/14/../../../../x86_64-pc-linux-gnu/bin/ld: lib/libcommon.a(libcommon_a-tpm2_eventlog_yaml.o): in function `yaml_devicepath':
+tpm2_eventlog_yaml.c:(.text.yaml_devicepath+0x2f): undefined reference to `efidp_format_device_path'
+/usr/lib/gcc/x86_64-pc-linux-gnu/14/../../../../x86_64-pc-linux-gnu/bin/ld: tpm2_eventlog_yaml.c:(.text.yaml_devicepath+0x61): undefined reference to `efidp_format_device_path'
+```
+
+Bug: https://bugs.gentoo.org/922592
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -94,9 +94,9 @@ AC_ARG_WITH([efivar],
+ )
+ 
+ # use the true program to avoid failing hard
+-AS_IF([test "x$with_efivar" == "xauto"],
++AS_IF([test "x$with_efivar" = "xauto"],
+   [PKG_CHECK_MODULES([EFIVAR], [efivar], [AC_CHECK_HEADERS([efivar/efivar.h], , [true])], [true])],
+-  [test "x$with_efivar" == "xyes"],
++  [test "x$with_efivar" = "xyes"],
+   [PKG_CHECK_MODULES([EFIVAR], [efivar], [AC_CHECK_HEADERS([efivar/efivar.h])])],
+ )
+ 
+

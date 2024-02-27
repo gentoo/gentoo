@@ -1,0 +1,41 @@
+From 1ef98559d75b4fa5b87dad2daff0d12e7857ac8d Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Mon, 30 Oct 2023 20:25:05 -0500
+Subject: [PATCH] Fix flint headers and replace use of deprecated funcs in
+ flint2/3
+
+---
+ symengine/flint_wrapper.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/symengine/flint_wrapper.h b/symengine/flint_wrapper.h
+index 21cfcef056..ade419088f 100644
+--- a/symengine/flint_wrapper.h
++++ b/symengine/flint_wrapper.h
+@@ -6,6 +6,8 @@
+ 
+ #include <flint/fmpz.h>
+ #include <flint/fmpq.h>
++#include <flint/fmpz_poly.h>
++#include <flint/fmpz_poly_factor.h>
+ #include <flint/fmpq_poly.h>
+ 
+ namespace SymEngine
+@@ -710,13 +712,15 @@ class fmpq_poly_wrapper
+     }
+     fmpq_poly_wrapper(const mpz_t z)
+     {
++        fmpz_wrapper fz(z);
+         fmpq_poly_init(poly);
+-        fmpq_poly_set_mpz(poly, z);
++        fmpq_poly_set_fmpz(poly, fz.get_fmpz_t());
+     }
+     fmpq_poly_wrapper(const mpq_t q)
+     {
++        fmpq_wrapper fq(q);
+         fmpq_poly_init(poly);
+-        fmpq_poly_set_mpq(poly, q);
++        fmpq_poly_set_fmpq(poly, fq.get_fmpq_t());
+     }
+     fmpq_poly_wrapper(const fmpq_wrapper &q)
+     {

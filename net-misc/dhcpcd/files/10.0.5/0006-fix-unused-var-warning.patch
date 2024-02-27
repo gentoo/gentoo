@@ -1,0 +1,37 @@
+https://github.com/NetworkConfiguration/dhcpcd/commit/6788608eb0fcd32fd23974100cdd42d3174cb8d1
+
+From 6788608eb0fcd32fd23974100cdd42d3174cb8d1 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Mon, 13 Nov 2023 16:05:04 +0000
+Subject: [PATCH] Fix an unused var warning for capsicum for prior
+
+--- a/src/privsep.c
++++ b/src/privsep.c
+@@ -299,7 +299,7 @@ ps_rights_limit_fdpair(int fd[])
+ }
+ 
+ static int
+-ps_rights_limit_stdio(struct dhcpcd_ctx *ctx)
++ps_rights_limit_stdio()
+ {
+ 	const int iebadf = CAPH_IGNORE_EBADF;
+ 	int error = 0;
+@@ -452,7 +452,7 @@ ps_startprocess(struct ps_process *psp,
+ 			ctx->ps_log_root_fd = -1;
+ 		}
+ #ifdef PRIVSEP_RIGHTS
+-		if (ps_rights_limit_stdio(ctx) == -1) {
++		if (ps_rights_limit_stdio() == -1) {
+ 			logerr("ps_rights_limit_stdio");
+ 			goto errexit;
+ 		}
+@@ -666,7 +666,7 @@ ps_managersandbox(struct dhcpcd_ctx *ctx, const char *_pledge)
+ #ifdef PRIVSEP_RIGHTS
+ 	if ((ctx->pf_inet_fd != -1 &&
+ 	    ps_rights_limit_ioctl(ctx->pf_inet_fd) == -1) ||
+-	     ps_rights_limit_stdio(ctx) == -1)
++	     ps_rights_limit_stdio() == -1)
+ 	{
+ 		logerr("%s: cap_rights_limit", __func__);
+ 		return -1;
+

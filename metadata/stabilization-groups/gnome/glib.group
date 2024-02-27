@@ -1,3 +1,4 @@
 dev-libs/glib
 dev-util/gdbus-codegen
 dev-util/glib-utils
+net-libs/glib-networking

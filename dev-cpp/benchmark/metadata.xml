@@ -10,7 +10,4 @@
 		<doc lang="en">https://github.com/google/benchmark/tree/master/docs/</doc>
 		<remote-id type="github">google/benchmark</remote-id>
 	</upstream>
-	<use>
-		<flag name="lto">Optimize the build using Link Time Optimization (LTO)</flag>
-	</use>
 </pkgmetadata>

@@ -10,7 +10,6 @@ HOMEPAGE="https://sdr.osmocom.org/trac/wiki/rtl-sdr"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
 else
 	#git clone https://git.osmocom.org/rtl-sdr
@@ -24,7 +23,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+zerocopy"
 

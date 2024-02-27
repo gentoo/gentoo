@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/NoRedInk/rspec-retry"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rspec-core-3.3"

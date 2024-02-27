@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/bugaevc/${PN}.git"
 else
 	SRC_URI="https://github.com/bugaevc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-3"

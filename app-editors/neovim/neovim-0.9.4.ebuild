@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,12 +16,12 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86 ~x64-macos"
 fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+lto +nvimpager test"
+IUSE="+nvimpager test"
 
 # Upstream say the test library needs LuaJIT
 # https://github.com/neovim/neovim/blob/91109ffda23d0ce61cec245b1f4ffb99e7591b62/CMakeLists.txt#L377
@@ -82,14 +82,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# Upstream default to LTO on non-debug builds
-	# Let's expose it as a USE flag because upstream
-	# have preferences for how we should use LTO
-	# if we want it on (not just -flto)
-	# ... but allow turning it off.
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
-		-DENABLE_LTO=$(usex lto)
+		# appends -flto
+		-DENABLE_LTO=OFF
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${ELUA}"
 	)

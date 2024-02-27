@@ -14,7 +14,6 @@ KEYWORDS="~amd64"
 
 DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}/${PN}-Release${PV}"
 

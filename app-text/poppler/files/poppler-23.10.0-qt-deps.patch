@@ -27,8 +27,8 @@ Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
  find_soft_mandatory_package(ENABLE_QT6 Qt6Gui ${QT6_VERSION})
 -find_soft_mandatory_package(ENABLE_QT6 Qt6Widgets ${QT6_VERSION})
 -find_soft_mandatory_package(ENABLE_QT6 Qt6Test ${QT6_VERSION})
-+find_soft_mandatory_package(ENABLE_QT6_TESTS Qt6Widgets ${QT6_VERSION})
-+find_soft_mandatory_package(ENABLE_QT6_TESTS Qt6Test ${QT6_VERSION})
++find_soft_mandatory_package(BUILD_QT6_TESTS Qt6Widgets ${QT6_VERSION})
++find_soft_mandatory_package(BUILD_QT6_TESTS Qt6Test ${QT6_VERSION})
  
  # Check for Cairo rendering backend
  macro_optional_find_package(Cairo ${CAIRO_VERSION})
@@ -53,7 +53,7 @@ Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
  
 -add_subdirectory(tests)
 -add_subdirectory(demos)
-+if(BUILD_QT5_TESTS)
++if(BUILD_QT6_TESTS)
 +  add_subdirectory(tests)
 +  add_subdirectory(demos)
 +endif()

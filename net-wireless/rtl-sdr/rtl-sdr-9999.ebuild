@@ -10,21 +10,16 @@ HOMEPAGE="https://sdr.osmocom.org/trac/wiki/rtl-sdr"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://git.osmocom.org/${PN}"
 else
-	#git clone https://git.osmocom.org/rtl-sdr
-	#cd rtl-sdr
-	#git archive --format=tar --prefix=rtl-sdr-${PV}/ master | xz > ../rtl-sdr-${PV}.tar.xz
-	#SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
-
-	COMMIT="142325a93c6ad70f851f43434acfdf75e12dfe03"
-	SRC_URI="https://github.com/osmocom/rtl-sdr/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	#COMMIT="142325a93c6ad70f851f43434acfdf75e12dfe03"
+	#SRC_URI="https://github.com/osmocom/rtl-sdr/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	#S="${WORKDIR}/${PN}-${COMMIT}"
+	SRC_URI="https://github.com/osmocom/rtl-sdr/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+zerocopy"
 
@@ -34,11 +29,6 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/rtl-sdl-0.6.0_p2020802-fix-pkgconfig-libdir.patch
 )
-
-src_prepare() {
-	sed -i 's#VERSION_INFO_PATCH_VERSION git#VERSION_INFO_PATCH_VERSION 0_p20221217#' CMakeLists.txt
-	cmake_src_prepare
-}
 
 src_configure() {
 	#the udev rules are 666, we don't want that

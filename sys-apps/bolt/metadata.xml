@@ -5,4 +5,8 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
 </pkgmetadata>

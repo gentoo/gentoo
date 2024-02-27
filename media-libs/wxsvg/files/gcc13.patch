@@ -1,0 +1,24 @@
+From 7b17fe365fb522618fb3520d7c5c1109b138358f Mon Sep 17 00:00:00 2001
+From: alex <alex@sinus.fritz.box>
+Date: Sat, 5 Aug 2023 23:29:54 +0200
+Subject: [PATCH 4/5] applied gcc 13 patch
+
+---
+ src/cairo/SVGCanvasCairo.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/cairo/SVGCanvasCairo.cpp b/src/cairo/SVGCanvasCairo.cpp
+index f482cbf..0a62a88 100644
+--- a/src/cairo/SVGCanvasCairo.cpp
++++ b/src/cairo/SVGCanvasCairo.cpp
+@@ -14,6 +14,7 @@
+ #include "SVGCanvasImageCairo.h"
+ #include <wx/log.h>
+ #include <wx/file.h>
++#include <cstdint>
+ 
+ wxSVGCanvasCairo::~wxSVGCanvasCairo() {
+ 	Destroy();
+-- 
+2.41.0
+

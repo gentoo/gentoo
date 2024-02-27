@@ -25,7 +25,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 RESTRICT=test # circular deps: cabal -> quickcheck -> cabal
 
 RDEPEND="
-	>=dev-lang/ghc-8.4.3:=
+	>=dev-lang/ghc-8.4.3:= <dev-lang/ghc-9.1:=
 "
 DEPEND="${RDEPEND}
 "

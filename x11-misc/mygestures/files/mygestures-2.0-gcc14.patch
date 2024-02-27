@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/923585
+--- a/src/configuration_parser.c
++++ b/src/configuration_parser.c
+@@ -18,2 +18,3 @@
+ 
++#include <stdlib.h>
+ #include <string.h>

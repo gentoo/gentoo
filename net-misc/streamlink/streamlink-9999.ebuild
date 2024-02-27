@@ -29,10 +29,15 @@ if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
+# See https://github.com/streamlink/streamlink/commit/9d8156dd794ee0919297cd90d85bcc11b8a28358 for chardet/charset-normalizer dep
 RDEPEND="
 	media-video/ffmpeg
 	$(python_gen_cond_dep '
 		dev-python/certifi[${PYTHON_USEDEP}]
+		|| (
+			dev-python/chardet[${PYTHON_USEDEP}]
+			dev-python/charset-normalizer[${PYTHON_USEDEP}]
+		)
 		>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
 		dev-python/isodate[${PYTHON_USEDEP}]
 		>=dev-python/lxml-4.6.4[${PYTHON_USEDEP}]

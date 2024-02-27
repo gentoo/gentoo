@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/923745
+https://github.com/openzfs/zfs/issues/15453
+https://github.com/openzfs/zfs/pull/15781
+https://github.com/openzfs/zfs/pull/15789
+
+From a0aa7a2ee3b56d7b6d69c2081034ec8293a6d605 Mon Sep 17 00:00:00 2001
+From: Kevin Jin <33590050+jxdking@users.noreply.github.com>
+Date: Wed, 17 Jan 2024 12:03:58 -0500
+Subject: [PATCH] Autotrim High Load Average Fix
+
+Switch from cv_wait() to cv_wait_idle() in vdev_autotrim_wait_kick(),
+which should mitigate the high load average while waiting.
+
+Reviewed-by: Brian Atkinson <batkinson@lanl.gov>
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Reviewed-by: Alexander Motin <mav@FreeBSD.org>
+Signed-off-by: jxdking <lostking2008@hotmail.com>
+Closes #15781
+--- a/module/zfs/vdev_trim.c
++++ b/module/zfs/vdev_trim.c
+@@ -194,7 +194,8 @@ vdev_autotrim_wait_kick(vdev_t *vd, int num_of_kick)
+ 	for (int i = 0; i < num_of_kick; i++) {
+ 		if (vd->vdev_autotrim_exit_wanted)
+ 			break;
+-		cv_wait(&vd->vdev_autotrim_kick_cv, &vd->vdev_autotrim_lock);
++		cv_wait_idle(&vd->vdev_autotrim_kick_cv,
++		    &vd->vdev_autotrim_lock);
+ 	}
+ 	boolean_t exit_wanted = vd->vdev_autotrim_exit_wanted;
+ 	mutex_exit(&vd->vdev_autotrim_lock);
+

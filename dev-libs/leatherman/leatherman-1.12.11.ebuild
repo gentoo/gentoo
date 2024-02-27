@@ -11,7 +11,7 @@ SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="debug static-libs test"
 #RESTRICT="!test? ( test )"
 RESTRICT="test"  # restricted til we don't need the shared_nowide patch

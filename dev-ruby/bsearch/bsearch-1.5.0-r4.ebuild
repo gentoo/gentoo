@@ -6,7 +6,7 @@ EAPI=8
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="doc/*"
 
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit ruby-fakegem
 DESCRIPTION="A binary search library for Ruby"

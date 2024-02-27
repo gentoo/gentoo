@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -17,17 +17,17 @@
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
 
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
 _JAVA_UTILS_2_ECLASS=1
 
-# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
+# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier EAPIs.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver eutils multilib versionator
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver eqawarn multilib versionator
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
@@ -216,6 +216,46 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 # @CODE
 # JAVA_PKG_FORCE_ANT_TASKS="ant-junit ant-trax" \
 # 	ebuild foo.ebuild compile
+# @CODE
+
+# @ECLASS_VARIABLE: JAVADOC_CLASSPATH
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Comma or space separated list of java packages that are needed for generating
+# javadocs. Can be used to avoid overloading the compile classpath in multi-jar
+# packages if there are jar files which have different dependencies.
+#
+# @CODE
+# Example:
+# 	JAVADOC_CLASSPATH="
+# 		jna-4
+# 		jsch
+# 	"
+# @CODE
+
+# @ECLASS_VARIABLE: JAVADOC_SRC_DIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of directories relative to ${S} which contain the sources of
+# the application. It needs to sit in global scope; if put in src_compile()
+# it would not work.
+# It is needed by the java-pkg-simple.eclass to decide whether to call ejavadoc
+# or not. If this variable is defined then java-pkg-simple_src_compile will not
+# call ejavadoc automatically. ejavadoc has then to be called explicitly from
+# the ebuild. It is meant for usage in multi-jar packages in order to avoid an
+# extra compilation run only for producing the javadocs.
+#
+# @CODE
+# Example:
+#	JAVADOC_SRC_DIRS=(
+#	    "${PN}-core"
+#	    "${PN}-jsch"
+#	    "${PN}-pageant"
+#	    "${PN}-sshagent"
+#	    "${PN}-usocket-jna"
+#	    "${PN}-usocket-nc"
+#	    "${PN}-connector-factory"
+#	)
 # @CODE
 
 # TODO document me
@@ -1703,16 +1743,6 @@ java-pkg_get-jni-cflags() {
 	echo ${flags}
 }
 
-java-pkg_ensure-gcj() {
-	# was enforcing sys-devel/gcc[gcj]
-	die "${FUNCNAME} was removed. Use use-deps available as of EAPI 2 instead. #261562"
-}
-
-java-pkg_ensure-test() {
-	# was enforcing USE=test if FEATURES=test
-	die "${FUNCNAME} was removed. Package mangers handle this already. #278965"
-}
-
 # @FUNCTION: java-pkg_register-ant-task
 # @USAGE: [--version x.y] [<name>]
 # @DESCRIPTION:
@@ -1942,7 +1972,7 @@ etestng() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	case ${EAPI:-0} in
+	case ${EAPI} in
 		[678]) eapply_user ;;
 		*) default_src_prepare ;;
 	esac
@@ -1960,12 +1990,6 @@ java-utils-2_src_prepare() {
 		find "${WORKDIR}" -name "*.class"
 		echo "Search done."
 	fi
-
-	# Delete bundled .class and .jar files.
-	case ${EAPI:-0} in
-		[678]) ;;
-		*) java-pkg_clean ;;
-	esac
 }
 
 # @FUNCTION: java-utils-2_pkg_preinst
@@ -2171,9 +2195,27 @@ ejavadoc() {
 		einfo "javadoc ${javadoc_args} ${@}"
 	fi
 
-	local args=( javadoc ${javadoc_args} "${@}" )
-	echo "${args[@]}" >&2
-	"${args[@]}" || die "ejavadoc failed"
+	if [[ "${JAVADOC_SRC_DIRS[@]}" ]]; then
+		mkdir -p target/api || die "cannot create target/api"
+		local dependency
+		for dependency in ${JAVADOC_CLASSPATH}; do
+			classpath="${classpath}:$(java-pkg_getjars \
+				--build-only \
+				--with-dependencies \
+				${dependency})"
+		done
+		find "${JAVADOC_SRC_DIRS[@]}" -name '*.java' > sources
+		javadoc \
+			"${javadoc_args}" \
+			-d target/api \
+			-cp "${classpath}" \
+			-quiet \
+			@sources || die "ejavadoc failed"
+	else
+		local args=( javadoc ${javadoc_args} "${@}" )
+		echo "${args[@]}" >&2
+		"${args[@]}" || die "ejavadoc failed"
+	fi
 }
 
 # @FUNCTION: java-pkg_filter-compiler
@@ -2451,6 +2493,9 @@ java-pkg_do_write_() {
 		echo "SLOT=\"${SLOT}\""
 		echo "CATEGORY=\"${CATEGORY}\""
 		echo "PVR=\"${PVR}\""
+		# Record LIBDIR so that gjl can set java.library.path
+		# accordingly. Bug #917326.
+		echo "LIBDIR=\"$(get_libdir)\""
 
 		[[ -n "${JAVA_PKG_CLASSPATH}" ]] && echo "CLASSPATH=\"${JAVA_PKG_CLASSPATH}\""
 		[[ -n "${JAVA_PKG_LIBRARY}" ]] && echo "LIBRARY_PATH=\"${JAVA_PKG_LIBRARY}\""

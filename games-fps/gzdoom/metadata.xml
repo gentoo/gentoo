@@ -14,7 +14,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="gles2">Enable GLES2 backend</flag>
 		<flag name="non-free">Enable non-free components</flag>
 		<flag name="swr">Enable software renderer</flag>
 	</use>

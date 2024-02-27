@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/nashamri/spacemacs-theme/issues/</bugs-to>
     <remote-id type="github">nashamri/spacemacs-theme</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

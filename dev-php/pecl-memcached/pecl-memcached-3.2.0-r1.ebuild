@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PHP_EXT_NAME="memcached"
 DOCS=( ChangeLog README.markdown )
 
-USE_PHP="php8-0 php8-1"
+USE_PHP="php8-1"
 PHP_EXT_NEEDED_USE="json(+)?,session(-)?"
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="|| ( dev-libs/libmemcached-awesome[sasl(-)?] >=dev-libs/libmemcached-1.0.14[sasl(-)?] )
 	sys-libs/zlib
-	igbinary? ( dev-php/igbinary[php_targets_php8-0(-)?,php_targets_php8-1(-)?] )
+	igbinary? ( dev-php/igbinary[php_targets_php8-1(-)?] )
 "
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"

@@ -1,0 +1,88 @@
+https://github.com/icl-utk-edu/papi/commit/dd11311aadbd06ab6c76d49a997a8bb2bcdcd5f7
+https://github.com/icl-utk-edu/papi/pull/142
+
+From dd11311aadbd06ab6c76d49a997a8bb2bcdcd5f7 Mon Sep 17 00:00:00 2001
+From: Giuseppe Congiu <gcongiu@icl.utk.edu>
+Date: Fri, 29 Sep 2023 10:20:28 +0200
+Subject: [PATCH] configure: fix tls detection
+
+Configure TLS detection tests were failing because of wrong usage of
+pthread_create(). Problem was caused by wrong definition of thread
+functions which require void *f(void *) instead of int f(void *) or
+void f(void *).
+---
+ configure.in | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index e77f1d017..346e3dab1 100644
+--- a/configure.in
++++ b/configure.in
+@@ -707,7 +707,7 @@ AC_ARG_WITH(tls,
+                            #include <unistd.h>
+                            extern __thread int i;
+                            static int res1, res2;
+-                           void thread_main (void *arg) {
++                           void *thread_main (void *arg) {
+                              i = (int)arg;
+                              sleep (1);
+                              if ((int)arg == 1)
+@@ -849,7 +849,7 @@ AC_ARG_WITH(virtualtimer,
+                                        int gettid() {
+                                          return syscall( SYS_gettid );
+                                        } 
+-                                       int doThreadOne( void * v ) {
++                                       void *doThreadOne( void * v ) {
+                                          struct tms tm;
+                                          int status;
+                                          while (!done)
+@@ -859,7 +859,7 @@ AC_ARG_WITH(virtualtimer,
+                                          threadone = tm.tms_utime;
+                                          return 0;
+                                        }   
+-                                       int doThreadTwo( void * v ) {
++                                       void *doThreadTwo( void * v ) {
+                                          struct tms tm;
+                                          long i, j = 0xdeadbeef;
+                                          int status;
+
+From 08f0d7dfaeb53283ab133e3b7d6f13d03245d88c Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Mon, 18 Dec 2023 08:18:50 +0100
+Subject: [PATCH] configure: Fix return values in start thread routines
+
+Thread start routines must return a void * value, and future
+compilers refuse to convert integers to pointers with just a warning
+(the virtualtimer probe).  Without this change, the probe always fails
+to compile with future compilers (such as GCC 14).
+
+For the tls probe, return a null pointer for future-proofing, although
+current and upcoming C compilers do not treat this omission as an
+error.
+
+Updates commit dd11311aadbd06ab6c76d ("configure: fix tls detection").
+---
+ configure.in | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 7d95ae1a4..f9b494036 100644
+--- a/configure.in
++++ b/configure.in
+@@ -721,6 +721,7 @@ AC_ARG_WITH(tls,
+ 		                       res1 = (i == (int)arg);
+                              else
+ 		                       res2 = (i == (int)arg);
++		             return NULL;
+                            }
+ 	                       __thread int i;
+                            int main () {
+@@ -812,7 +813,7 @@ AC_ARG_WITH(virtualtimer,
+                                exit(1);
+                              }        
+                              done = 1;
+-	                         return j;
++			     return (void *) j;
+                            } 
+   
+                            int main( int argc, char ** argv ) {

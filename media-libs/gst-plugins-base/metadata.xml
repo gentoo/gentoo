@@ -7,7 +7,6 @@
 </maintainer>
 <use>
 	<flag name="gbm">Enable Graphics Buffer Manager based EGL windowing system support (requires egl and at least one of gles or opengl)</flag>
-	<flag name="egl">Enable EGL platform support</flag>
 	<flag name="gles2">Enable OpenGL library and plugin via GLESv2 API (requires egl)</flag>
 	<flag name="ivorbis">Enable integer based vorbis decoder</flag>
 	<flag name="opengl">Enable OpenGL library and plugin via desktop OpenGL API</flag>

@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit systemd toolchain-funcs
 
 DESCRIPTION="Audio-entropyd generates entropy-data for the /dev/random device"
-HOMEPAGE="http://www.vanheusden.com/aed/"
-SRC_URI="http://www.vanheusden.com/aed/${P}.tgz"
+HOMEPAGE="https://vanheusden.com/crypto/entropy/aed/"
+SRC_URI="https://vanheusden.com/crypto/entropy/aed/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

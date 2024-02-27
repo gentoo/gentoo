@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="ISC"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/cryptography-1.3[${PYTHON_USEDEP}]

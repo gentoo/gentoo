@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,7 @@ HOMEPAGE="https://github.com/hattedsquirrel/ryzen_monitor"
 
 SLOT="0"
 LICENSE="AGPL-3"
-IUSE=""
 
-DEPEND=""
 RDEPEND="app-admin/ryzen_smu"
 
 PATCHES=(

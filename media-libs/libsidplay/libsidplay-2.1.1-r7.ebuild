@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,10 +13,10 @@ SRC_URI="mirror://sourceforge/sidplay2/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="static-libs"
 
-BDEPEND="sys-devel/autoconf-archive"
+BDEPEND="dev-build/autoconf-archive"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sidplay/sidconfig.h
@@ -47,9 +47,10 @@ src_prepare() {
 		.
 	)
 
+	local i
 	for i in ${subdirs[@]}; do
 		(
-			cd "$i" || die
+			cd "${i}" || die
 			eautoreconf
 		)
 	done
@@ -59,6 +60,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--cache-file="${BUILD_DIR}"/config.cache
 		--enable-shared
 		--with-pic
 		$(use_enable static-libs static)

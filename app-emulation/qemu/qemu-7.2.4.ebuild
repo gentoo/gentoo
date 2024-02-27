@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ QEMU_DOCS_VERSION="7.2.0"
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.2.0"
@@ -154,7 +154,7 @@ ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )"
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
@@ -272,7 +272,7 @@ PPC_FIRMWARE_DEPEND="
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
-	dev-util/meson
+	dev-build/meson
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (
@@ -282,7 +282,7 @@ BDEPEND="
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
 		dev-libs/glib[utils]
-		sys-devel/bc
+		app-alternatives/bc
 	)
 "
 CDEPEND="

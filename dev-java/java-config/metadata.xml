@@ -11,6 +11,9 @@
 		per-user default JVMs, construct classpath env vars from installed java
 		packages and be used to query for the path to various JDK tools.
 	</longdescription>
+	<use>
+		<flag name="compat">Install bin/java-config-2 symlink pointing to java-config</flag>
+	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/java-config</remote-id>
 		<remote-id type="github">gentoo/java-config</remote-id>

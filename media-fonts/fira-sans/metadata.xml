@@ -6,8 +6,4 @@
 		<name>Fonts</name>
 	</maintainer>
 	<stabilize-allarches/>
-	<use>
-		<flag name="otf">Install the OpenType version of the font</flag>
-		<flag name="ttf">Install the TrueType version of the font</flag>
-	</use>
 </pkgmetadata>

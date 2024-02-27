@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Binwalk is a tool for searching a given binary image for embedded files.
 		Specifically, it is designed for identifying files embedded inside of firmware

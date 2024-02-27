@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake fortran-2 python-single-r1
 
@@ -15,7 +15,7 @@ SRC_URI="https://files.inria.fr/pastix/releases/v$(ver_cut 1)/${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cuda examples +fortran int64 metis mpi +python +scotch starpu test"
 
 RESTRICT="!test? ( test )"

@@ -5,4 +5,5 @@
     <email>vim@gentoo.org</email>
     <name>Gentoo Vim Project</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>

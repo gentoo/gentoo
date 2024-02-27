@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>nativemad@gentoo.org</email>
+		<name>Andreas Schuerch</name>
+	</maintainer>
 	<use>
 		<flag name="twitgin">Enable graphical plugin for Gtk+ interface of Pidgin.</flag>
 	</use>

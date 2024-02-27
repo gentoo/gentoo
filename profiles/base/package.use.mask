@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
@@ -6,9 +6,69 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Marek Szuba <marecki@gentoo.org> (2023-10-26)
-# media-gfx/gmic has been masked for removal, see Bug #916289.
-media-gfx/darktable gmic
+# Sam James <sam@gentoo.org> (2024-02-24)
+# Only works on amd64 (and x32).
+dev-debug/gdb cet
+sys-devel/binutils cet
+sys-devel/binutils-hppa64 cet
+sys-devel/gcc cet
+sys-libs/binutils-libs cet
+sys-libs/glibc cet
+
+# Joonas Niilola <juippis@gentoo.org> (2024-02-20)
+# Upstream massively reworked av1 support breaking our custom
+# system-av1 patches.
+>=www-client/firefox-123.0 system-av1
+
+# Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
+# Cinnamon wayland support is experimental and incomplete.
+# https://github.com/linuxmint/wayland/issues
+gnome-extra/cinnamon wayland
+
+# James Le Cuirot <chewi@gentoo.org> (2024-02-11)
+# The Raspberry Pi patch set is very heavy and will probably fail to apply
+# against a live checkout.
+>=media-video/ffmpeg-9999 soc
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-01-24)
+# A missing "-o pipefail" in the gap-pkg eclass caused me to
+# miss a few crashes in dev-gap packages when GAP itself is
+# built with kernel debugging enabled. These may not be the
+# only problems but it's hard to tell because they cascade:
+#
+#  * https://github.com/frankluebeck/EDIM/issues/24
+#  * https://github.com/gap-packages/io/issues/122
+#
+sci-mathematics/gap debug
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-01-20)
+# Not working, bug #890756
+sci-mathematics/why3-for-spark doc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-12-22)
+# Requires sys-block/hpacucli
+net-analyzer/nagios-plugin-check_raid hpa
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-22)
+# Requires LLVM 14 that is being removed.
+<dev-lang/ghc-9.4 llvm
+<media-gfx/openvdb-11 ax
+sys-devel/sparse llvm
+
+# Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
+# app-crypt/rpm-sequoia is not keyworded on most architectures.
+app-arch/rpm sequoia
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
+# Qt6 is still experimental in freecad, currently the configure phase
+# gets itself stuck by importing both qt5 and qt6 cmake files.
+# Since there is no python3.12 support for shiboken2/pyside2, we have
+# to mask that flag as well.
+media-gfx/freecad qt6 python_single_target_python3_12
+
+# Florian Schmaus <flow@gentoo.org> (2023-11-10)
+# Only available for amd64.
+sys-apps/irqbalance thermal
 
 # hololeap <hololeap@protonmail.com> (2023-10-15)
 # Enabling these flags will create cycles in the dependency graph.
@@ -35,18 +95,6 @@ dev-haskell/scientific test
 dev-haskell/splitmix test
 dev-haskell/tasty-expected-failure test
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-14)
-# media-video/transcode is masked for removal.
-media-video/chaplin transcode
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-10-10)
-# Broken with Qt6.6 and, given USE has no revdeps, simpler to just
-# mask for now to save desktop profile users (default bluetooth)
-# from failures. Limited to -r1 to spare stable users from rebuilds
-# (-r0 instead requires <6.6).
-=dev-python/PyQt6-6.5.2-r1 bluetooth
-~dev-python/PyQt6-6.5.3 bluetooth
-
 # Jaco Kroon <jaco@uls.co.za> (2023-09-19)
 # Joonas Niilola <juippis@gentoo.org> (2023-09-21)
 # DAHDI is being last-rited. See bug #914477.
@@ -57,33 +105,9 @@ net-voip/yate dahdi
 # Not ported to libsoup:3.0
 app-office/abiword collab
 
-# Sam James <sam@gentoo.org> (2023-09-09)
-# Needs <dev-libs/openssl-3 which is EOL on 2023-09-11. Please upgrade immediately.
-# See bug #913685.
-sci-libs/gloo ssl
-
-# WANG Xuerui <xen0n@gentoo.org> (2023-08-28)
-# Breaks multiple high-profile packages depending on outdated proc-macro2 when
-# USE=nightly and using an affected Rust version; keep until revdep problems
-# are gone.
-# See https://github.com/rust-lang/rust/issues/113152
->=dev-lang/rust-1.72.0 nightly
-
 # Michael Orlitzky <mjo@gentoo.org> (2023-08-23)
 # Polymake itself is masked for removal (bug 909570).
 sci-mathematics/singular polymake
-
-# Michael Orlitzky <mjo@gentoo.org> (2023-08-12)
-# php-7.x is End-of-Life (EOL) and masked, but these packages don't
-# support any newer versions with USE=php. Bugs 912183, 912184,
-# and 912185.
-dev-libs/redland-bindings php
-media-gfx/exact-image php
-sci-geosciences/mapserver php
-
-# Michael Orlitzky <mjo@gentoo.org> (2023-08-11)
-# php-7.x is End-of-Life (EOL) and masked.
-www-servers/nginx-unit php7-4
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
@@ -136,7 +160,8 @@ net-misc/curl sslv3
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-05-04)
 # No suitable version of dev-libs/protobuf available.
-dev-java/protobuf-java system-protoc
+>=dev-java/protobuf-java-3.24.2 system-protoc
+=dev-java/protobuf-java-3.23.0 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-06-06)
 # Runtime not tested, may require more configuration in the ebuild.
@@ -150,10 +175,6 @@ app-emulation/qemu aio
 # Joonas Niilola <juippis@gentoo.org> (2023-05-07)
 # Doesn't compile, see #894210.
 dev-libs/log4cxx smtp
-
-# Mike Gilbert <floppym@gentoo.org> (2023-05-04)
-# Requires unreleased >media-libs/libaom-3.6.0.
->=www-client/chromium-113 system-av1
 
 # Sam James <sam@gentoo.org> (2023-05-01)
 # Doc building is broken with Python 3.11. See https://github.com/ukoethe/vigra/issues/529.
@@ -184,10 +205,6 @@ dev-java/ant-apache-bsf python
 # https://bugs.gentoo.org/833098
 dev-java/openjdk:11 lto
 
-# Sam James <sam@gentoo.org> (2023-03-29)
-# Depends on last-rited kde-apps/kross-interpreters.
-kde-apps/kdesdk-meta ruby
-
 # Sam James <sam@gentoo.org> (2023-03-15)
 # Signing key is expired on Savannah. The same key is renewed elsewhere
 # and the signature is valid, but it's easier to disable verify-sig here
@@ -216,7 +233,7 @@ sys-libs/libomp llvm_targets_AMDGPU
 
 # Sam James <sam@gentoo.org> (2023-01-21)
 # Fails to compile: https://github.com/libffi/libffi/issues/760
-dev-libs/libffi exec-static-trampoline
+<dev-libs/libffi-3.4.4-r4 exec-static-trampoline
 
 # Joonas Niilola <juippis@gentoo.org> (2023-01-08)
 # Doesn't compile currently, bug #853094.
@@ -231,10 +248,6 @@ dev-libs/libffi exec-static-trampoline
 # fragility to Portage which relies on pax-utils' scanelf heavily. bug #815877.
 app-misc/pax-utils seccomp
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-20)
-# sys-cluster/ganglia is masked for removal.
-app-metrics/collectd collectd_plugins_gmond
-
 # Sam James <sam@gentoo.org> (2022-12-17)
 # Broken when trying to use sys-libs/binutils-libs header, bug #879067
 >=x11-libs/cairo-1.17.6 debug
@@ -247,11 +260,6 @@ x11-wm/stumpwm doc
 # USE=tbb is broken in 7.7.0
 # https://tracker.dev.opencascade.org/view.php?id=33152
 ~sci-libs/opencascade-7.7.0 tbb
-
-# Sam James <sam@gentoo.org> (2022-11-24)
-# Depends on old dev-lang/spidermonkey:68, bug #807772
-# Particularly unwise given it parses data from network.
-net-libs/libproxy spidermonkey
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not keyworded on most architectures
@@ -292,13 +300,6 @@ app-emulation/virtualbox pax-kernel
 sys-libs/zlib-ng compat
 sys-libs/minizip-ng compat
 
-# Yiyang Wu <xgreenlandforwyy@gmail.com> (2022-09-21)
-# Intolerable mathematical errors found on AMD Radeon VII GPU during src_test,
-# may lead to incorrect results in computation.
-# https://github.com/ROCmSoftwarePlatform/rocFFT/issues/369
-=sci-libs/rocFFT-5.1.3 amdgpu_targets_gfx906
-=sci-libs/hipFFT-5.1.3 amdgpu_targets_gfx906
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
 # po4a crashes while translating
 # mask for now
@@ -312,7 +313,7 @@ dev-util/schroot nls
 # bug #870211.
 dev-lang/rust llvm-libunwind
 
-# Matt Jolly <Matt.Jolly@footclan.ninja> (2022-09-09)
+# Matt Jolly <kangie@gentoo.org> (2022-09-09)
 # app-antivirus/clamav JIT support requires LLVM <=13
 # ebuild support is there but currently failing to link
 app-antivirus/clamav jit
@@ -345,11 +346,6 @@ sci-physics/bullet tbb
 # This flag concerns an x86-specific problem.
 sys-libs/glibc stack-realign
 sys-libs/ncurses stack-realign
-
-# Matt Turner <mattst88@gentoo.org> (2022-06-21)
-# Depends on old spidermonkey:68. Upstream recommends using Duktape or Webkit
-# for PAC parsing. See https://github.com/libproxy/libproxy/pull/139
->=net-libs/libproxy-0.4.18 spidermonkey
 
 # Maciej Barć <xgqt@gentoo.org> (2022-05-31)
 # "doc" require old version of dev-python/antlr4-python3-runtime (4.9.3)
@@ -446,10 +442,6 @@ x11-misc/read-edid vbe-mode
 # https://github.com/rust-lang/rust/issues/89108
 dev-lang/rust parallel-compiler
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-09-16)
-# Uses a function that is not available in media-video/ffmpeg.
->=www-client/chromium-94 system-ffmpeg
-
 # Petr Vanek <arkamar@atlas.cz> (2021-09-12)
 # rspamd-3.0 segfaults a lot with jemalloc enabled (Bug #810337)
 # It is caused by -Wl,--as-needed linker flag,
@@ -491,13 +483,6 @@ media-sound/puddletag quodlibet
 # Creates +130 GB worth of bindings, possibly Gentoo-related.
 # Upstream issue: https://phab.enlightenment.org/T8924
 dev-libs/efl mono
-
-# Sam James <sam@gentoo.org> (2021-04-09)
-# Crashes at runtime.
-# Mask LTO for now until issue with Qt
-# (to be resolved in Wireshark?) is resolved
-# bug #754021
-net-analyzer/wireshark lto
 
 # Sam James <sam@gentoo.org> (2021-04-09)
 # Fails to build right now
@@ -547,9 +532,7 @@ dev-php/PEAR-Text_Password test
 dev-php/PEAR-Text_Wiki test
 dev-php/PEAR-Text_Wiki_Mediawiki test
 dev-php/PEAR-XML_RSS test
-dev-php/PHP_CodeCoverage test
 dev-php/PHP_CodeSniffer test
-dev-php/PHP_TokenStream test
 dev-php/awl test
 dev-php/fedora-autoloader test
 dev-php/json-schema test
@@ -633,27 +616,17 @@ dev-python/autobahn xbr
 # Multiple runtime crashes, see bug #724672
 media-gfx/inkscape jemalloc
 
-# Stephan Hartmann <stha09@googlemail.com> (2020-16-06)
-# Mostly intended for debugging and development,
-# not recommended for general use. Build is also often
-# broken.
-www-client/chromium component-build
-
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
 net-fs/samba test
 
 # Mike Gilbert <floppym@gentoo.org> (2020-04-23)
 # Tests are very sensitive to the host environment.
-dev-util/meson test
+dev-build/meson test
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
-
-# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
-# Requires dev-libs/cudnn which is only available on amd64
-sci-physics/root cudnn
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can't be disabled everywhere
@@ -739,12 +712,6 @@ app-text/ghostscript-gpl l10n_ja
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi
 
-# William Hubbs <williamh@gentoo.org> (2019-01-13)
-# For memtest86+ mask the floppy use flag since it requires grub:0 which
-# is being removed
-# (bug #674364)
-sys-apps/memtest86+ floppy
-
 # Alfredo Tupone <tupone@gentoo.org> (2018-11-18)
 # go brokes build of gnat-gpl
 dev-lang/gnat-gpl go
@@ -758,17 +725,6 @@ dev-lang/gnat-gpl jit
 # be re-enabled with the 'server' USE flag, but this flag is hard
 # masked. bug #666619
 dev-python/paramiko server
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-08-03)
-# New and for Gentoo still quite experimental. You've been
-# warned. (Also, works only on x86_64 and with certain CPUs
-# and compiler/binutils combinations.)
-sys-devel/binutils cet
-sys-devel/binutils-hppa64 cet
-sys-devel/gdb cet
-sys-libs/binutils-libs cet
-sys-libs/glibc cet
-sys-devel/gcc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
@@ -917,7 +873,7 @@ media-libs/libsdl2 custom-cflags
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-05-19)
 # Fails to build, haven't had time to debug
-app-doc/doxygen sqlite
+app-text/doxygen sqlite
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)

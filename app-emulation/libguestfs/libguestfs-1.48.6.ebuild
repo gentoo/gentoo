@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ SRC_URI="https://download.libguestfs.org/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua +ocaml +perl python ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ REQUIRED_USE="
 # Failures - doc
 COMMON_DEPEND="
 	>=app-admin/augeas-1.8.0
-	app-arch/cpio
+	app-alternatives/cpio
 	app-arch/lzma
 	app-arch/rpm
 	app-arch/unzip[natspec]
@@ -90,7 +90,7 @@ COMMON_DEPEND="
 		sys-libs/libselinux:=
 		sys-libs/libsemanage
 	)
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 "
 # Some OCaml is always required
 # bug #729674

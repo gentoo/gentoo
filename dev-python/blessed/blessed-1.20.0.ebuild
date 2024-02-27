@@ -16,7 +16,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]

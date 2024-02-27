@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mattn/${PN}-vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-vim-${PV}"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 
 RDEPEND="net-misc/curl"
 

@@ -1,9 +1,9 @@
-# Copyright 2006-2022 Gentoo Authors
+# Copyright 2006-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="ntfs-3g_ntfsprogs-${PV}"
 
@@ -32,17 +32,6 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2022.5.17-configure-bashism.patch
-)
-
-src_prepare() {
-	default
-
-	# Only needed for bashism patch
-	eautoreconf
-}
 
 src_configure() {
 	tc-ld-disable-gold
@@ -74,7 +63,9 @@ src_configure() {
 		--with-fuse=internal
 	)
 
-	econf "${myconf[@]}"
+	# bash for bug #921018 - should be fixed in next release though
+	# see https://github.com/tuxera/ntfs-3g/pull/58
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"
 }
 
 src_install() {

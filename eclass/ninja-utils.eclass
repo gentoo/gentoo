@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
@@ -8,11 +8,11 @@
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
-# @BLURB: common bits to run dev-util/ninja builder
+# @BLURB: common bits to run app-alternatives/ninja builder
 # @DESCRIPTION:
 # This eclass provides a single function -- eninja -- that can be used
 # to run the ninja builder alike emake. It does not define any
-# dependencies, you need to depend on dev-util/ninja yourself. Since
+# dependencies, you need to depend on app-alternatives/ninja yourself. Since
 # ninja is rarely used stand-alone, most of the time this eclass will
 # be used indirectly by the eclasses for other build systems (CMake,
 # Meson).
@@ -55,17 +55,7 @@ _NINJA_UTILS_ECLASS=1
 
 inherit multiprocessing
 
-case "${NINJA}" in
-	ninja)
-		NINJA_DEPEND=">=dev-util/ninja-1.8.2"
-	;;
-	samu)
-		NINJA_DEPEND="dev-util/samurai"
-	;;
-	*)
-		NINJA_DEPEND=""
-	;;
-esac
+NINJA_DEPEND="app-alternatives/ninja"
 
 # @FUNCTION: get_NINJAOPTS
 # @DESCRIPTION:
@@ -84,7 +74,14 @@ get_NINJAOPTS() {
 # by the supplied arguments.  This function dies if ninja fails.  It
 # also supports being called via 'nonfatal'.
 eninja() {
-	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+	case "${NINJA}" in
+		ninja|samu)
+			;;
+		*)
+			ewarn "Unknown value '${NINJA}' for \${NINJA}"
+			;;
+	esac
+
 	local v
 	case "${NINJA_VERBOSE}" in
 		OFF) ;;

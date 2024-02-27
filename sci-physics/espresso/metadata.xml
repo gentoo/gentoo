@@ -6,7 +6,6 @@
     <name>Gentoo Physics Project</name>
   </maintainer>
   <use>
-    <flag name="cuda">Enable cuda support</flag>
     <flag name="examples">Installs the examples</flag>
   </use>
   <upstream>

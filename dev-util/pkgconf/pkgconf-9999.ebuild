@@ -1,4 +1,4 @@
-# Copyright 2012-2023 Gentoo Authors
+# Copyright 2012-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
 
 	MULTILIB_CHOST_TOOLS=(
-		/usr/bin/pkgconf
+		/usr/bin/pkgconf$(get_exeext)
 		/usr/bin/pkg-config$(get_exeext)
 	)
 }

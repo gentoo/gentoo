@@ -13,12 +13,20 @@ HOMEPAGE="https://github.com/ndmitchell/extra#readme"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="2/${PV}"
+SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/clock-0.7:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
 "
+
+# Tests do not work correctly on >=ghc-9.2
+RDEPEND+="
+	test? (
+		<dev-lang/ghc-9.1
+	)
+"
+
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
 	test? ( >=dev-haskell/quickcheck-2.10

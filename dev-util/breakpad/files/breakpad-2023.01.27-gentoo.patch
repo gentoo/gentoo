@@ -117,3 +117,13 @@
  
  namespace {
  
+--- a/src/common/module.cc	2023-11-09 06:57:57.891443802 +0100
++++ b/src/common/module.cc	2023-11-09 06:58:16.688120866 +0100
+@@ -42,6 +42,7 @@
+ #include <iostream>
+ #include <memory>
+ #include <utility>
++#include <algorithm>
+ 
+ namespace google_breakpad {
+ 

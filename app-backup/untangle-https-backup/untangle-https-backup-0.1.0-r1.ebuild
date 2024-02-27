@@ -9,8 +9,8 @@ DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
 DESCRIPTION="Back up Untangle configurations via the web admin UI"
-HOMEPAGE="http://michael.orlitzky.com/code/untangle-https-backup.xhtml"
-SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.gz"
+HOMEPAGE="https://michael.orlitzky.com/code/untangle-https-backup.xhtml"
+SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

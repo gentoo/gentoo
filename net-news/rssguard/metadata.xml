@@ -14,7 +14,9 @@
 		<bugs-to>https://github.com/martinrotter/rssguard/issues</bugs-to>
 	</upstream>
 	<use>
+		<flag name="libmpv">Enable media player support via libmpv from <pkg>media-video/mpv</pkg></flag>
 		<flag name="qt6">Build with Qt6 support instead of the default Qt5</flag>
+		<flag name="qtmultimedia">Enable media player support via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for embedded web browser</flag>
 	</use>
 	<longdescription>

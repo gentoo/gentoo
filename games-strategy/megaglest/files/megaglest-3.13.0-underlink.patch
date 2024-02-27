@@ -1,0 +1,12 @@
+diff -up megaglest-3.13.0/source/shared_lib/CMakeLists.txt.orig megaglest-3.13.0/source/shared_lib/CMakeLists.txt
+--- megaglest-3.13.0/source/shared_lib/CMakeLists.txt.orig	2019-09-24 15:38:49.867482131 -0300
++++ megaglest-3.13.0/source/shared_lib/CMakeLists.txt	2019-09-24 15:39:00.045556832 -0300
+@@ -109,7 +109,7 @@ IF(BUILD_MEGAGLEST_MODEL_VIEWER OR BUILD
+ 	FIND_PACKAGE(OpenGL REQUIRED)
+ 	INCLUDE_DIRECTORIES(${OPENGL_INCLUDE_DIR})
+ 	IF(UNIX)
+-		SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${OPENGL_LIBRARY})
++		SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${OPENGL_LIBRARY} -lX11)
+ 	ENDIF()
+ 
+ 	FIND_PACKAGE(X11 REQUIRED)

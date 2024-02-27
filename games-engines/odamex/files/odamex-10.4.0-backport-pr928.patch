@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/849866
+https://github.com/odamex/odamex/pull/928
+
+From b952137ac487a6558e1796c86d8fd55b8b3c9025 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Wed, 6 Dec 2023 01:01:29 -0500
+Subject: [PATCH] Fix auto-SIMD for i386+sse2, ppc+altivec
+
+Only Darwin ever used -faltivec, gcc uses -maltivec since at least 2007:
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=30254#c1
+
+Similarly, recent versions of gcc define __APPLE_ALTIVEC__ for
+compatibility, so just unconditionally include altivec.h.
+
+Canonical way to enable specific extensions is e.g. -msse2, use that
+instead of optimizing for a specific CPU.
+
+Finally, cmake uses target_compile_options to add arbitrary flags.
+target_compile_definitions assumes you want a preprocessor definition,
+which was adding "-D-faltivec" to the command line which gcc doesn't
+like; this is what originally prompted this change.
+---
+ client/CMakeLists.txt          | 11 +++++++----
+ client/src/r_drawt_altivec.cpp |  2 --
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index 646164916..56caf04f8 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -169,14 +169,17 @@ if(TARGET SDL2::SDL2 OR TARGET SDL::SDL)
+       message(STATUS "Default SIMD flags not touched for AMD64")
+     elseif(ODAMEX_TARGET_ARCH STREQUAL "i386")
+       if(NOT MSVC)
+-        # Pentium M has SSE2.
+-        target_compile_definitions(odamex PRIVATE -march=pentium-m)
++        target_compile_options(odamex PRIVATE -msse2)
+       else()
+-        target_compile_definitions(odamex PRIVATE /arch:SSE2)
++        target_compile_options(odamex PRIVATE /arch:SSE2)
+       endif()
+       message(STATUS "Default SIMD flags set to SSE2")
+     elseif(ODAMEX_TARGET_ARCH MATCHES "ppc")
+-      target_compile_definitions(odamex PRIVATE -faltivec)
++      if(APPLE)
++        target_compile_options(odamex PRIVATE -faltivec)
++      else()
++        target_compile_options(odamex PRIVATE -maltivec)
++      endif()
+       message(STATUS "Default SIMD flags set to AltiVec")
+     endif()
+   else()
+diff --git a/client/src/r_drawt_altivec.cpp b/client/src/r_drawt_altivec.cpp
+index eea758733..5a0cdf95e 100644
+--- a/client/src/r_drawt_altivec.cpp
++++ b/client/src/r_drawt_altivec.cpp
+@@ -36,9 +36,7 @@
+ #include "r_main.h"
+ #include "i_video.h"
+ 
+-#if !defined(__APPLE_ALTIVEC__)
+ #include <altivec.h>
+-#endif
+ 
+ #define ALTIVEC_ALIGNED(x) x __attribute__((aligned(16)))
+ 

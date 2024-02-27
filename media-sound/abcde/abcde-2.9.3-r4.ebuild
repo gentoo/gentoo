@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,7 @@ IUSE="aac aiff cdr flac +id3tag +lame mac musepack musicbrainz normalize opus re
 
 # See `grep :: abcde-musicbrainz-tool` output for USE musicbrainz dependencies
 RDEPEND="
+	media-libs/glyr
 	media-sound/cd-discid
 	net-misc/wget
 	sys-apps/util-linux

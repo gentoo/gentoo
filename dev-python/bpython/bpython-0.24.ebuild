@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 pypi
 
@@ -18,8 +18,9 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 IUSE="clipboard +jedi watch"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
+# see https://github.com/bpython/bpython/issues/641 wrt greenlet
 RDEPEND="
 	>=dev-python/curtsies-0.4.0[${PYTHON_USEDEP}]
 	dev-python/cwcwidth[${PYTHON_USEDEP}]

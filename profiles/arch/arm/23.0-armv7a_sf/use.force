@@ -1,0 +1,10 @@
+# armv7 has these instruction sets
+cpu_flags_arm_v4
+cpu_flags_arm_v5
+cpu_flags_arm_v6
+cpu_flags_arm_v7
+
+cpu_flags_arm_edsp
+cpu_flags_arm_thumb
+cpu_flags_arm_thumb2
+cpu_flags_arm_vfp

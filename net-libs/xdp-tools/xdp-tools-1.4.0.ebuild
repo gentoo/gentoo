@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="The libxdp library and various tools for use with XDP"
 HOMEPAGE="https://github.com/xdp-project/xdp-tools"

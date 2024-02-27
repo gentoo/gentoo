@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools linux-info python-any-r1 systemd
 
@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv ~sparc x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -41,7 +41,7 @@ REQUIRED_USE="
 	ssl? ( || ( gnutls openssl ) )
 "
 
-BDEPEND=">=sys-devel/autoconf-archive-2015.02.24
+BDEPEND=">=dev-build/autoconf-archive-2015.02.24
 	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (
@@ -109,8 +109,8 @@ DEPEND="
 
 if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
-	BDEPEND+=" >=sys-devel/flex-2.5.39-r1"
-	BDEPEND+=" >=sys-devel/bison-2.4.3"
+	BDEPEND+=" >=app-alternatives/lex-2.5.39-r1"
+	BDEPEND+=" >=app-alternatives/yacc-2.4.3"
 	BDEPEND+=" >=dev-python/docutils-0.12"
 fi
 

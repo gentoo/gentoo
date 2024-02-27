@@ -11,7 +11,7 @@ SRC_URI="https://github.com/abo-abo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="test"  # Ivy, Swiper and Counsel tests are performed in app-emacs/ivy
 
 RDEPEND=">=app-emacs/ivy-${PV}"

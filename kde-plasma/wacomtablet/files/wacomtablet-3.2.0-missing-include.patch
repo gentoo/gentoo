@@ -1,0 +1,24 @@
+From c6bdd5a15c2e200aae6a7fe3597bbf11691e7e5f Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 6 Jun 2023 23:24:07 +0200
+Subject: [PATCH] Add missing include
+
+---
+ autotests/faketablet/faketablet.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/autotests/faketablet/faketablet.cpp b/autotests/faketablet/faketablet.cpp
+index 076a8d18..bf9e4904 100644
+--- a/autotests/faketablet/faketablet.cpp
++++ b/autotests/faketablet/faketablet.cpp
+@@ -20,6 +20,7 @@
+ #include <iostream>
+ #include <cstring>
+ #include <cstdio>
++#include <cstdint>
+ #include <cstdlib>
+ #include <csignal>
+ #include <unistd.h>
+-- 
+GitLab
+

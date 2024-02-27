@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	gtk-doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		dev-lang/perl
 		dev-libs/libxslt
 	)

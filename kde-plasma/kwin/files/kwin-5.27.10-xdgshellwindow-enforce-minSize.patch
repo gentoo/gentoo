@@ -1,0 +1,38 @@
+From 0d59f48fbf2cbbcc71556f0ce005d939c604f2c4 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Mon, 11 Dec 2023 18:06:31 +0100
+Subject: [PATCH] xdgshellwindow: make maxSize always >= minSize by enforcing
+ the same minimum
+
+BUG: 478269
+
+
+(cherry picked from commit d228dc173a24bc27a895d4924936a1d91d7c25b9)
+---
+ src/xdgshellwindow.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/xdgshellwindow.cpp b/src/xdgshellwindow.cpp
+index 29d8623cac3..525481f00dd 100644
+--- a/src/xdgshellwindow.cpp
++++ b/src/xdgshellwindow.cpp
+@@ -601,12 +601,14 @@ MaximizeMode XdgToplevelWindow::requestedMaximizeMode() const
+ QSizeF XdgToplevelWindow::minSize() const
+ {
+     const int enforcedMinimum = m_nextDecoration ? 150 : 20;
+-    return rules()->checkMinSize(QSize(std::max(enforcedMinimum, m_shellSurface->minimumSize().width()), std::max(enforcedMinimum, m_shellSurface->minimumSize().height())));
++    return rules()->checkMinSize(m_shellSurface->minimumSize()).expandedTo(QSizeF(enforcedMinimum, enforcedMinimum));
+ }
+ 
+ QSizeF XdgToplevelWindow::maxSize() const
+ {
+-    return rules()->checkMaxSize(m_shellSurface->maximumSize());
++    // enforce the same minimum as for minSize, so that maxSize is always bigger than minSize
++    const int enforcedMinimum = m_nextDecoration ? 150 : 20;
++    return rules()->checkMaxSize(m_shellSurface->maximumSize()).expandedTo(QSizeF(enforcedMinimum, enforcedMinimum));
+ }
+ 
+ bool XdgToplevelWindow::isFullScreen() const
+-- 
+GitLab
+

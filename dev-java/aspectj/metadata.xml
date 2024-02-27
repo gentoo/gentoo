@@ -6,7 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">eclipse/org.aspectj</remote-id>
-		<bugs-to>https://www.eclipse.org/aspectj/bugs.php</bugs-to>
+		<bugs-to>https://github.com/eclipse-aspectj/aspectj/issues</bugs-to>
+		<remote-id type="github">eclipse-aspectj/aspectj</remote-id>
 	</upstream>
 </pkgmetadata>

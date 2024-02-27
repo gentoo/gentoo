@@ -12,7 +12,7 @@ HOMEPAGE="https://pear.php.net/package/Crypt_GPG"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

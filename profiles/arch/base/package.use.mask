@@ -1,5 +1,51 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
+# net-libs/paho-mqtt-c is only available for amd64 and x86
+app-admin/syslog-ng mqtt
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
+# Refind is only available on a subset of arches
+sys-kernel/installkernel refind
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-python/PyQt6 and dev-python/pyside6 have very few keywords
+dev-python/QtPy pyqt6 pyside6
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is only available on some arches
+app-emulation/libvirt virtiofsd
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel grub
+
+# Michał Górny <mgorny@gentoo.org> (2023-12-31)
+# Requires dev-libs/level-zero.
+dev-lang/ispc gpu
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# Experimental and only available on a subset of architectures
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
+# Needs dev-qt/qtwebengine:6 which has very few keywords.
+dev-python/PyQt6 pdfium
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
+# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
+# are only available for amd64 and riscv
+>=gui-libs/wlroots-0.17.0 drm liftoff
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# media-libs/oneVPL is only keyworded for amd64 at this time.
+media-video/obs-studio qsv
+
+# Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
+# dev-libs/qr-code-generator is only keyworded for amd64 at this time.
+media-video/obs-studio websocket
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-10-21)
 # net-libs/librist is only keyworded for arm64 at this time.
@@ -23,7 +69,7 @@ media-video/pipewire roc
 
 # Sam James <sam@gentoo.org> (2023-07-18)
 # dev-cpp/cppdap is not keyworded in most places
-dev-util/cmake dap
+dev-build/cmake dap
 
 # Sam James <sam@gentoo.org> (2023-07-09)
 # sys-libs/libhugetlbfs is broken w/ newer glibc, bug #806079
@@ -45,6 +91,10 @@ kde-plasma/discover snap
 # Needs dev-python/py-cpuinfo which is not ported to all of our platforms
 # See bug #894078.
 dev-python/tables cpudetection
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
+media-video/ffmpeg libplacebo
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
@@ -81,7 +131,6 @@ sys-devel/gcc fixed-point
 # only unmask on relevant arches.
 # bug #875830
 app-laptop/pbbuttonsd macbook
-sys-apps/fwupd dell
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
 # www-servers/nginx requires keywording
@@ -212,12 +261,6 @@ sys-block/fio python gnuplot
 app-emulation/aranym jit
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
-# net-libs/quiche is not available on all arches
-# Track addition arch keywording of quiche at:
-# bug #694320
-net-misc/curl quiche
-
-# Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
 net-misc/curl nghttp3
 
@@ -268,7 +311,7 @@ dev-util/catalyst system-bootloader
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
-media-video/mpv libplacebo vulkan
+media-video/mpv vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is not available everywhere.
@@ -347,17 +390,14 @@ net-misc/moonlight mmal
 >=dev-db/mariadb-10.1.0 mroonga galera
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sd-boot is not supported on all archs.
-sys-apps/systemd boot gnuefi
-sys-apps/systemd-utils boot
+# sd-boot and ukify are not supported on all archs.
+sys-apps/systemd boot gnuefi ukify
+sys-apps/systemd-utils boot ukify
+sys-kernel/installkernel systemd-boot ukify uki
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
 media-libs/libbluray bdplus
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
-# It's only supported on amd64
-dev-db/mariadb tokudb
 
 # Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Not working on 64bit systems
@@ -406,10 +446,6 @@ media-sound/pulseaudio-daemon webrtc-aec
 # mips only use flags
 >=sci-libs/fftw-3 zbus
 
-# Samuli Suominen <ssuominen@gentoo.org> (2011-12-06)
-# NuppelVideo is available on x86 only
-media-video/transcode nuv pic
-
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86, so
 # mask the flag here and unmask it in the appropriate arch profiles.
@@ -437,7 +473,3 @@ media-video/mplayer cpudetection
 # Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
-media-video/ffmpeg libplacebo

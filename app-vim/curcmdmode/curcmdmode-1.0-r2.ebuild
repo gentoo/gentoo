@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: library for extending vim's mode() function"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=745"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 
 RDEPEND="app-vim/genutils"
 

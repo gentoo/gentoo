@@ -1,0 +1,53 @@
+https://git.savannah.gnu.org/cgit/automake.git/commit/?h=ed1368e8803e8934a8bbab52a38753484dba2a37
+
+From ed1368e8803e8934a8bbab52a38753484dba2a37 Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Mon, 12 Dec 2022 14:50:33 -0800
+Subject: test: avoid apostrophe in test document.
+
+From automake patch https://bugs.gnu.org/59989
+(though a different solution), suggestion by Frederic Berat.
+
+* t/txinfo-include.sh: avoid apostrophes in test document,
+since Texinfo 7.0 turns them into UTF-8 by default.
+---
+ t/txinfo-include.sh | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/t/txinfo-include.sh b/t/txinfo-include.sh
+index 8a15f01..10fff07 100644
+--- a/t/txinfo-include.sh
++++ b/t/txinfo-include.sh
+@@ -28,6 +28,9 @@ main_TEXINFOS = one.texi two.texi three.texi
+ sub_more_TEXINFOS = sub/desc.texi sub/hist.texi
+ END
+ 
++# We avoid apostrophes in the test document since Texinfo
++# turns them into UTF-8, which is not easy to grep.
++#
+ cat > main.texi << 'END'
+ \input texinfo
+ @setfilename main.info
+@@ -61,8 +64,8 @@ END
+ 
+ cat > three.texi << 'END'
+ @node three
+-@chapter Chapter two
+-GNU's Not Unix.
++@chapter Chapter three
++Quux quux quux.
+ END
+ 
+ mkdir sub
+@@ -106,7 +109,7 @@ check_info_contents ()
+   srcdir=${1-.}
+   $FGREP "Foo bar, baz."                        $srcdir/main.info
+   $FGREP "Blah Blah Blah."                      $srcdir/main.info
+-  $FGREP "GNU's Not Unix."                      $srcdir/main.info
++  $FGREP "Quux quux quux."                      $srcdir/main.info
+   $FGREP 'It does something, really.'           $srcdir/sub/more.info
+   $FGREP 'It was written somehow.'              $srcdir/sub/more.info
+ }
+-- 
+cgit v1.1
+

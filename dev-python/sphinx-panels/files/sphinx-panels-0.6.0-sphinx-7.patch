@@ -1,0 +1,65 @@
+https://salsa.debian.org/python-team/packages/sphinx-panels/-/blob/debian/master/debian/patches/Make-the-tests-pass-with-Sphinx-7.x.patch
+
+From: Dmitry Shachnev <mitya57@debian.org>
+Date: Fri, 3 Nov 2023 23:25:11 +0300
+Subject: Make the tests pass with Sphinx 7.x
+
+---
+ tests/test_sphinx.py                               | 8 +++++++-
+ tests/test_sphinx/test_sources_dropdown_basic_.xml | 2 +-
+ tests/test_sphinx/test_sources_tabbed_basic_.xml   | 2 +-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_sphinx.py b/tests/test_sphinx.py
+index 9efc2c2..35affa1 100644
+--- a/tests/test_sphinx.py
++++ b/tests/test_sphinx.py
+@@ -2,6 +2,7 @@ from pathlib import Path
+ import shutil
+ 
+ import pytest
++import sphinx
+ from sphinx.testing.path import path
+ 
+ from sphinx_panels.tabs import TabbedHtmlTransform
+@@ -15,7 +16,10 @@ def sphinx_app_factory(make_app, tmp_path: Path, monkeypatch):
+         shutil.copytree(
+             (Path(__file__).parent / "sources" / src_folder), tmp_path / src_folder
+         )
+-        app = make_app(srcdir=path(str((tmp_path / src_folder).absolute())), **kwargs)
++        srcdir = (tmp_path / src_folder).absolute()
++        if sphinx.version_info < (7, 2):
++            srcdir = path(str(srcdir))
++        app = make_app(srcdir=srcdir, **kwargs)
+         return app
+ 
+     yield _func
+@@ -28,6 +32,8 @@ def test_sources(sphinx_app_factory, file_regression, folder):
+     assert app._warning.getvalue() == ""
+     doctree = app.env.get_and_resolve_doctree("index", app.builder)
+     doctree["source"] = "source"
++    if sphinx.version_info < (7, 1):
++        doctree["translation_progress"] = "{'total': 0, 'translated': 0}"
+     file_regression.check(
+         doctree.pformat(),
+         encoding="utf8",
+diff --git a/tests/test_sphinx/test_sources_dropdown_basic_.xml b/tests/test_sphinx/test_sources_dropdown_basic_.xml
+index b984330..4c42825 100644
+--- a/tests/test_sphinx/test_sources_dropdown_basic_.xml
++++ b/tests/test_sphinx/test_sources_dropdown_basic_.xml
+@@ -1,4 +1,4 @@
+-<document source="source">
++<document source="source" translation_progress="{'total': 0, 'translated': 0}">
+     <section ids="title" names="title">
+         <title>
+             Title
+diff --git a/tests/test_sphinx/test_sources_tabbed_basic_.xml b/tests/test_sphinx/test_sources_tabbed_basic_.xml
+index b3f2d1a..f55e06e 100644
+--- a/tests/test_sphinx/test_sources_tabbed_basic_.xml
++++ b/tests/test_sphinx/test_sources_tabbed_basic_.xml
+@@ -1,4 +1,4 @@
+-<document source="source">
++<document source="source" translation_progress="{'total': 0, 'translated': 0}">
+     <section ids="title" names="title">
+         <title>
+             Title

@@ -44,7 +44,7 @@ checkconfig() {
 	done
 
 	ebegin "Checking ${CONFIGS}"
-	$command -q -c $configs $HAPROXY_OPTS
+	$command -q -c $command_args
 	eend $?
 }
 

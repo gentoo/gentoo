@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
@@ -11,7 +11,7 @@ inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	REPO="xen.git"
-	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
+	EGIT_REPO_URI="https://xenbits.xen.org/git-http/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="amd64 ~arm ~arm64 x86"
@@ -150,7 +150,7 @@ DEPEND="${COMMON_DEPEND}
 	hvm? ( x11-base/xorg-proto )
 	qemu? (
 		app-arch/snappy:=
-		dev-util/meson
+		dev-build/meson
 		sdl? (
 			media-libs/libsdl[X]
 			media-libs/libsdl2[X]
@@ -162,7 +162,7 @@ DEPEND="${COMMON_DEPEND}
 	python? ( >=dev-lang/swig-4.0.0 )"
 
 BDEPEND="dev-lang/perl
-	sys-devel/bison
+	app-alternatives/yacc
 	sys-devel/gettext"
 
 # hvmloader is used to bootstrap a fully virtualized kernel

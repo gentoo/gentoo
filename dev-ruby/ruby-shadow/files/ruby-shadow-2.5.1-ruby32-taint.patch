@@ -1,0 +1,54 @@
+From 70330521b99e84c8f7445c213dfde0768f45a690 Mon Sep 17 00:00:00 2001
+From: Michael Hashizume <michael.hashizume@puppet.com>
+Date: Thu, 20 Oct 2022 13:28:09 -0700
+Subject: [PATCH] Removes taint checking functions
+
+Taint checking has been completely removed from Ruby as of Ruby
+3.2.0. This commit removes taint checking functions from ruby-
+shadow.
+
+See https://bugs.ruby-lang.org/issues/16131
+---
+ pwd/shadow.c    | 6 +++---
+ shadow/shadow.c | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/pwd/shadow.c b/pwd/shadow.c
+index eeb96d4..46313d4 100644
+--- a/pwd/shadow.c
++++ b/pwd/shadow.c
+@@ -56,8 +56,8 @@ static VALUE convert_pw_struct( struct passwd *entry )
+ {
+   /* Hmm. Why custom pw_change instead of sp_lstchg? */
+   return rb_struct_new(rb_sPasswdEntry,
+-         rb_tainted_str_new2(entry->pw_name), /* sp_namp */
+-         rb_tainted_str_new2(entry->pw_passwd), /* sp_pwdp, encryped password */
++         rb_str_new2(entry->pw_name), /* sp_namp */
++         rb_str_new2(entry->pw_passwd), /* sp_pwdp, encryped password */
+          Qnil, /* sp_lstchg, date when the password was last changed (in days since Jan 1, 1970) */
+          Qnil, /* sp_min, days that password must stay same */
+          Qnil, /* sp_max, days until password changes. */
+@@ -66,7 +66,7 @@ static VALUE convert_pw_struct( struct passwd *entry )
+          INT2FIX(difftime(entry->pw_change, 0) / (24*60*60)), /* pw_change */
+          INT2FIX(difftime(entry->pw_expire, 0) / (24*60*60)), /* sp_expire */
+          Qnil, /* sp_flag */
+-         rb_tainted_str_new2(entry->pw_class), /* sp_loginclass, user access class */
++         rb_str_new2(entry->pw_class), /* sp_loginclass, user access class */
+          NULL);
+ }
+ 
+diff --git a/shadow/shadow.c b/shadow/shadow.c
+index 35a77a1..9a2ae70 100644
+--- a/shadow/shadow.c
++++ b/shadow/shadow.c
+@@ -34,8 +34,8 @@ static VALUE rb_eFileLock;
+ static VALUE convert_pw_struct( struct spwd *entry ) 
+ {
+   return rb_struct_new(rb_sPasswdEntry,
+-		      rb_tainted_str_new2(entry->sp_namp),
+-		      rb_tainted_str_new2(entry->sp_pwdp),
++		      rb_str_new2(entry->sp_namp),
++		      rb_str_new2(entry->sp_pwdp),
+ 		      INT2FIX(entry->sp_lstchg),
+ 		      INT2FIX(entry->sp_min),
+ 		      INT2FIX(entry->sp_max),

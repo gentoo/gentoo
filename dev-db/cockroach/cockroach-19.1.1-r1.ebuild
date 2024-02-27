@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ DEPEND="
 	${RDEPEND}
 	>=app-arch/xz-utils-5.2.3
 	>=dev-lang/go-1.8.3
-	>=dev-util/cmake-3.8.1
+	>=dev-build/cmake-3.8.1
 "
 
 QA_EXECSTACK="usr/bin/cockroach"

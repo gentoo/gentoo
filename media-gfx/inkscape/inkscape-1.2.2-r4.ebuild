@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
 else
 	SRC_URI="https://media.inkscape.org/dl/resources/file/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="SVG based generic vector-drawing program"
@@ -107,6 +107,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.2-fix-compile.patch
+	"${FILESDIR}"/${PN}-1.3.2-libxml2-2.12.patch
 )
 
 pkg_pretend() {

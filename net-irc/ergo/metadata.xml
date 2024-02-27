@@ -6,6 +6,6 @@
 		<name>Sam James</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">oragono/oragono</remote-id>
+		<remote-id type="github">ergochat/ergo</remote-id>
 	</upstream>
 </pkgmetadata>

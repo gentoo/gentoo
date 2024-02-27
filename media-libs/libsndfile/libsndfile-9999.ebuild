@@ -29,7 +29,7 @@ RDEPEND="
 		media-libs/libvorbis:=[${MULTILIB_USEDEP}]
 		media-libs/opus:=[${MULTILIB_USEDEP}]
 		media-sound/lame:=[${MULTILIB_USEDEP}]
-		media-sound/mpg123:=[${MULTILIB_USEDEP}]
+		media-sound/mpg123-base:=[${MULTILIB_USEDEP}]
 	)
 	alsa? ( media-libs/alsa-lib:= )
 	sqlite? ( dev-db/sqlite )"

@@ -4,6 +4,10 @@
 	<longdescription lang="en">
 		The sys-firmware category contains misc. firmware and microcode.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-firmware enthält verschiedene Firmware und
+		Mikrocode.
+	</longdescription>
 	<longdescription lang="es">
 		La categoría sys-firmware contiene firmware y microcódigo para
 		diversos dispositivos.

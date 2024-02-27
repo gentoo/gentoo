@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/pytest-3.0[${PYTHON_USEDEP}]

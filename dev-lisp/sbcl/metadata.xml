@@ -25,6 +25,7 @@
 	</longdescription>
 	<use>
 		<flag name="system-bootstrap">Bootstrap SBCL using either system SBCL installation or <pkg>dev-lisp/clisp</pkg></flag>
+		<flag name="unicode">Make the produced lisp support unicode</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sbcl</remote-id>

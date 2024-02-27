@@ -13,7 +13,7 @@ SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV%%.*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 
 DEPEND=""
@@ -28,6 +28,7 @@ BDEPEND="
 "
 
 RESTRICT="!test? ( test )"
+PATCHES=( "${FILESDIR}/${PN}-20230802.0-sdata-tests.patch" )
 
 src_prepare() {
 	cmake_src_prepare

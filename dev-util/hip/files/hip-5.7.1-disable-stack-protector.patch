@@ -1,0 +1,13 @@
+Disable stack-protector (which is enabled by default gentoo-hardened) in device code.
+This is not required after https://github.com/llvm/llvm-project/pull/70799, but helps with older clang.
+Upstream bug: https://github.com/ROCm-Developer-Tools/clr/issues/21
+--- a/hipamd/src/hiprtc/hiprtcInternal.cpp
++++ b/hipamd/src/hiprtc/hiprtcInternal.cpp
+@@ -144,6 +144,7 @@ RTCCompileProgram::RTCCompileProgram(std::string name_) : RTCProgram(name_), fgp
+   compile_options_.push_back("-nogpuinc");
+   compile_options_.push_back("-Wno-gnu-line-marker");
+   compile_options_.push_back("-Wno-missing-prototypes");
++  compile_options_.push_back("-fno-stack-protector");
+ #ifdef _WIN32
+   compile_options_.push_back("-target");
+   compile_options_.push_back("x86_64-pc-windows-msvc");

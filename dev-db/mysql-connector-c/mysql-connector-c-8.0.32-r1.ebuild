@@ -95,6 +95,8 @@ multilib_src_configure() {
 		-DWITH_DEFAULT_COMPILER_OPTIONS=OFF
 		-DENABLED_LOCAL_INFILE=ON
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/run/mysqld/mysqld.sock"
+		# Automagically uses LLD with not using LTO (bug #710272, #775845)
+		-DUSE_LD_LLD=OFF
 		-DWITH_LZ4=system
 		-DWITH_NUMA=OFF
 		-DWITH_SSL=system

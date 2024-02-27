@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    The Closure Compiler is a tool for making JavaScript download and run
+    faster. It is a true compiler for JavaScript. Instead of compiling from a
+    source language to machine code, it compiles from JavaScript to better
+    JavaScript. It parses your JavaScript, analyzes it, removes dead code and
+    rewrites and minimizes what's left. It also checks syntax, variable
+    references, and types, and warns about common JavaScript pitfalls.
+  </longdescription>
   <upstream>
+    <bugs-to>https://github.com/google/closure-compiler/issues/</bugs-to>
     <remote-id type="github">google/closure-compiler</remote-id>
   </upstream>
 </pkgmetadata>

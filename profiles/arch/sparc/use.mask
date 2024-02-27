@@ -1,8 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# Needs bug #918896 for missing Qt6 keywords
+qt6
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-17)
 # media-libs/libheif is not keyworded here
@@ -56,7 +60,6 @@ mongodb
 # There is no luajit support on sparc. Bug #554376
 lua_single_target_luajit
 lua_targets_luajit
-luajit
 luajittex
 
 # David Seifert <soap@gentoo.org> (2017-07-08)
@@ -84,7 +87,6 @@ nagios-game
 # Alexandre Rostovtsev <tetromino@gmail.com> (2011-10-28)
 # x11-misc/colord and app-admin/packagekit-base not tested. Bug #387959.
 colord
-packagekit
 
 # Raúl Porcel <armin76@gentoo.org>
 # Stuff that sigbuses
@@ -150,7 +152,6 @@ wildmidi
 barcode
 xmms2
 gme
-aacplus
 soundcloud
 devil
 gts
@@ -178,7 +179,6 @@ gps
 # Stuff we don't want
 ots
 frei0r
-prelude
 redis
 
 # USE-flags from differents origins

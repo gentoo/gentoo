@@ -10,7 +10,11 @@ MY_PV=$(ver_cut 1-3)
 DESCRIPTION="A free C++ Computer Algebra System library and its interfaces"
 HOMEPAGE="https://www-fourier.ujf-grenoble.fr/~parisse/giac.html"
 SRC_URI="https://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/${FETCH_P}.tar.gz"
-LICENSE="GPL-2"
+
+# The licensing is explained in README. We disable or delete several
+# bundled features (MicroPytho, QuickJS, FLTK, gl2ps) that are
+# specifically mentioned there.
+LICENSE="GPL-3+"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
-	doc? ( >=app-doc/halibut-1.2 )"
+	doc? ( >=app-text/halibut-1.2 )"
 
 PATCHES=( "${FILESDIR}/${PN}-20161207-builtin-help.patch" )
 

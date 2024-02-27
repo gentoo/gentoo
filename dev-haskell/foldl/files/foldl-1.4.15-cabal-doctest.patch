@@ -1,0 +1,120 @@
+From 7dc9bf5a311c56408f5f102c09d36ab127e64b94 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Sat, 4 Nov 2023 14:43:01 -0600
+Subject: [PATCH 1/1] Migrate to cabal-doctest
+
+doctest pulls in the out-of-scope packages if they are installed on the
+system. The best current workaround is to migrate to cabal-doctest.
+
+Bug: https://bugs.gentoo.org/916851
+Signed-off-by: hololeap <hololeap@protonmail.com>
+---
+ Setup.hs        | 17 +++++++++++++++++
+ foldl.cabal     | 13 +++++++++++--
+ test/doctest.hs | 29 +++++++++++++++++++++++++++--
+ 3 files changed, 55 insertions(+), 4 deletions(-)
+
+diff --git a/Setup.hs b/Setup.hs
+index 9a994af..f21ad76 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -1,2 +1,23 @@
++{-# LANGUAGE CPP #-}
++
++module Main (main) where
++
++#ifndef MIN_VERSION_cabal_doctest
++#define MIN_VERSION_cabal_doctest(x,y,z) 0
++#endif
++
++#if MIN_VERSION_cabal_doctest(1,0,0)
++
++import Distribution.Extra.Doctest ( defaultMainWithDoctests )
++
++main :: IO ()
++main = defaultMainWithDoctests "doctest"
++
++#else
++
+ import Distribution.Simple
++
++main :: IO ()
+ main = defaultMain
++
++#endif
+diff --git a/foldl.cabal b/foldl.cabal
+index 08715aa..ec2983e 100644
+--- a/foldl.cabal
++++ b/foldl.cabal
+@@ -1,7 +1,7 @@
+ Name: foldl
+ Version: 1.4.15
+ Cabal-Version: >=1.10
+-Build-Type: Simple
++Build-Type: Custom
+ License: BSD3
+ License-File: LICENSE
+ Copyright: 2013 Gabriella Gonzalez
+@@ -21,6 +21,12 @@ Source-Repository head
+     Type: git
+     Location: https://github.com/Gabriella439/Haskell-Foldl-Library
+ 
++custom-setup
++    setup-depends:
++        base
++      , Cabal
++      , cabal-doctest >= 1.0.0
++
+ Library
+     HS-Source-Dirs: src
+     Build-Depends:
+@@ -83,6 +89,9 @@ Test-Suite doctest
+     Main-Is: doctest.hs
+     Build-Depends:
+         base,
+-        doctest >= 0.16
++        doctest >= 0.16,
++        directory,
++        filepath,
++        base-compat
+     GHC-Options: -threaded
+     Default-Language: Haskell2010
+diff --git a/test/doctest.hs b/test/doctest.hs
+index 5981eb4..847b897 100644
+--- a/test/doctest.hs
++++ b/test/doctest.hs
+@@ -1,4 +1,29 @@
+ import Test.DocTest
++import GHC.IO.Encoding (setLocaleEncoding)
++import System.Directory (getCurrentDirectory, makeAbsolute)
++import System.FilePath.Posix ((</>))
++import System.IO (utf8)
++import Build_doctests (pkgs)
++ 
++main = do
++    setLocaleEncoding utf8
++    pwd    <- getCurrentDirectory
++    prefix <- makeAbsolute pwd
+ 
+-main :: IO ()
+-main = doctest ["-isrc", "src/Control/Foldl.hs", "src/Control/Scanl.hs"]
++    let customFlags =
++            [ "-package-env=-"
++            , "-hide-all-packages"
++            , "-no-user-package-db"
++            , "-package-db=" ++ prefix </> "dist/package.conf.inplace"
++            ]
++
++    let origFlags =
++            [ "-isrc"
++            ]
++
++    let modules =
++            [ "src/Control/Foldl.hs"
++            , "src/Control/Scanl.hs"
++            ]
++
++    doctest $ customFlags ++ pkgs ++ origFlags ++ modules
+-- 
+2.41.0
+

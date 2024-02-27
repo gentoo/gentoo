@@ -14,7 +14,6 @@
 		<flag name="fpx">Enable <pkg>media-libs/libfpx</pkg> support</flag>
 		<flag name="hdri">Enable High Dynamic Range Images formats</flag>
 		<flag name="lqr">Enable experimental liquid rescale support using <pkg>media-libs/liblqr</pkg></flag>
-		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="pango">Enable Pango support using <pkg>x11-libs/pango</pkg></flag>
 		<flag name="q32">Set quantum depth value to 32</flag>
 		<flag name="q8">Set quantum depth value to 8</flag>

@@ -20,12 +20,6 @@
     details of the parallel computer.
   </longdescription>
   <use>
-    <flag name="cuda">
-      Enables plugins for NVIDIA GPUs
-    </flag>
-    <flag name="opencl">
-      Enables OpenCL backend
-    </flag>
     <flag name="opencv">
       Enables OpenCV related code
     </flag>

@@ -1,9 +1,9 @@
-# Copyright 2018-2023 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib toolchain-funcs
+inherit cmake-multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="Video stabilization library"
 HOMEPAGE="http://public.hronopik.de/vid.stab/"
@@ -13,13 +13,16 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/georgmartius/vid.stab/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/vid.stab-${PV}"
 fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="openmp cpu_flags_x86_sse2"
+IUSE="openmp cpu_flags_x86_sse2 test"
+
+RESTRICT="!test? ( test )"
+DEPEND="test? ( dev-lang/orc )"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -54,6 +57,7 @@ multilib_src_test() {
 		-DUSE_OMP="$(usex openmp)"
 		-DSSE2_FOUND="$(usex cpu_flags_x86_sse2)"
 	)
+	append-cflags $(test-flags-CC -fopenmp)
 	local CMAKE_USE_DIR="${CMAKE_USE_DIR}/tests"
 	local BUILD_DIR="${BUILD_DIR}/tests"
 	cmake_src_configure

@@ -9,7 +9,7 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">oneapi-src/oneVPL</remote-id>
+		<remote-id type="github">intel/libvpl</remote-id>
 	</upstream>
 	<use>
 		<flag name="drm">Build with DRM support</flag>

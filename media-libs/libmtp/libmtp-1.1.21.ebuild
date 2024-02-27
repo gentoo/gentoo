@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 DOCS=( AUTHORS README TODO )
 
@@ -64,7 +64,7 @@ src_configure() {
 		$(use_enable crypt mtpz)
 		$(use_enable doc doxygen)
 		$(use_enable static-libs static)
-		--with-udev="$(get_udevdir)"
+		--with-udev="${EPREFIX}$(get_udevdir)"
 		--with-udev-group=plugdev
 		--with-udev-mode=0660
 	)

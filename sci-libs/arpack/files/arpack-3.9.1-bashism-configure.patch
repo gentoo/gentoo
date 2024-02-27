@@ -1,0 +1,42 @@
+https://github.com/opencollab/arpack-ng/pull/441
+
+From a3beacc11e2acbe0baf8b301cb47938dcf01e71d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 13 Nov 2023 02:38:46 +0000
+Subject: [PATCH] configure.ac: fix bashisms
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking for cheev_ in -llapack... yes
+./configure: 8590: test: x: unexpected operator
+checking how to print strings... printf
+```
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,7 +20,7 @@ dnl Check for LAPACK libraries
+ AX_LAPACK([], [AC_MSG_ERROR([cannot find LAPACK libraries])])
+ 
+ AC_ARG_VAR(INTERFACE64, [set to 1 to use the 64-bit integer interface (ILP64) for ARPACK, BLAS and LAPACK])
+-if test x"$INTERFACE64" == x"1"; then
++if test x"$INTERFACE64" = x"1"; then
+   AC_LANG_PUSH([Fortran 77])
+   AX_CHECK_COMPILE_FLAG(-fdefault-integer-8, FFLAGS="$FFLAGS -fdefault-integer-8",
+                         AX_CHECK_COMPILE_FLAG(-i8, FFLAGS="$FFLAGS -i8",
+@@ -191,7 +191,7 @@ AS_IF([test x"$enable_mpi" != x"no"], [
+ ])
+ 
+ dnl TODO: this needs full re-write of parpack to support ILP64...
+-if test x"$INTERFACE64" == x"1"; then
++if test x"$INTERFACE64" = x"1"; then
+   if test x"$enable_mpi" != x"no"; then
+     AC_MSG_ERROR([Parallel arpack does not support ILP64.])
+   fi
+

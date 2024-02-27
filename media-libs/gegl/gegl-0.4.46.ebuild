@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -67,9 +67,9 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	>=dev-util/gtk-doc-am-1
+	>=dev-build/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/libtool-2.2
+	>=dev-build/libtool-2.2
 	virtual/pkgconfig
 	test? ( $(python_gen_any_dep '>=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )

@@ -24,7 +24,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	systemd? ( >=sys-apps/systemd-197 )
-	!systemd? ( sys-auth/nss-myhostname !sys-apps/systemd )
+	elibc_glibc? ( !systemd? ( sys-auth/nss-myhostname !sys-apps/systemd ) )
 "
 BDEPEND="
 	dev-util/gdbus-codegen

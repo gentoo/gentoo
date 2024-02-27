@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit crossdev flag-o-matic toolchain-funcs prefix
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.musl-libc.org/musl"
+	EGIT_REPO_URI="https://git.musl-libc.org/git/musl"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/musl.asc
@@ -155,7 +155,7 @@ src_install() {
 		rm "${ED}"/lib/ld-musl-${arch}.so.1 || die
 		if use split-usr; then
 			dosym ../usr/lib/libc.so /lib/ld-musl-${arch}.so.1
-			# If it's still a dead symlnk, OK, we really do need to abort.
+			# If it's still a dead symlink, OK, we really do need to abort.
 			[[ -e "${ED}"/lib/ld-musl-${arch}.so.1 ]] || die
 		else
 			dosym libc.so /usr/lib/ld-musl-${arch}.so.1

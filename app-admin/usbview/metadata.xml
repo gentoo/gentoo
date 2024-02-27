@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>telans@posteo.de</email>
-		<name>James Beddek</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<name>Proxy Maintainers</name>
-		<email>proxy-maint@gentoo.org</email>
+	<maintainer type="person">
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">gregkh/usbview</remote-id>

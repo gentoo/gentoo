@@ -1,0 +1,12 @@
+diff -up megaglest-source-3.13.0/source/shared_lib/sources/platform/sdl/gl_wrap.cpp.ignore-GLEW_ERROR_NO_GLX_DISPLAY megaglest-source-3.13.0/source/shared_lib/sources/platform/sdl/gl_wrap.cpp
+--- megaglest-source-3.13.0/source/shared_lib/sources/platform/sdl/gl_wrap.cpp.ignore-GLEW_ERROR_NO_GLX_DISPLAY	2022-10-17 09:47:51.084267697 -0400
++++ megaglest-source-3.13.0/source/shared_lib/sources/platform/sdl/gl_wrap.cpp	2022-10-17 09:48:35.079555790 -0400
+@@ -301,7 +301,7 @@ void PlatformContextGl::init(int colorBi
+ 
+ 		if(SystemFlags::VERBOSE_MODE_ENABLED) printf("In [%s::%s %d] AFTER glewInit call err = %d\n",extractFileFromDirectoryPath(__FILE__).c_str(),__FUNCTION__,__LINE__,err);
+ 
+-		if (GLEW_OK != err) {
++		if (GLEW_OK != err && GLEW_ERROR_NO_GLX_DISPLAY != err) {
+ 			if(SystemFlags::VERBOSE_MODE_ENABLED) printf("In [%s::%s %d]\n",extractFileFromDirectoryPath(__FILE__).c_str(),__FUNCTION__,__LINE__);
+ 
+ 			fprintf(stderr, "Error [main]: glewInit failed: %s\n", glewGetErrorString(err));

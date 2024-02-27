@@ -1,0 +1,19 @@
+https://github.com/boostorg/math/pull/1057
+
+From b3a21bcbcbd95c23da594ff53c3a48e38f0ff9f3 Mon Sep 17 00:00:00 2001
+From: Matt Borland <matt@mattborland.com>
+Date: Wed, 13 Dec 2023 08:43:43 +0100
+Subject: [PATCH] Fix cstdfloat numeric limits detection macro for libstdc++14
+
+--- a/boost/math/cstdfloat/cstdfloat_limits.hpp
++++ b/boost/math/cstdfloat/cstdfloat_limits.hpp
+@@ -24,7 +24,7 @@
+ #pragma GCC system_header
+ #endif
+ 
+-  #if defined(BOOST_CSTDFLOAT_HAS_INTERNAL_FLOAT128_T) && defined(BOOST_MATH_USE_FLOAT128) && !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_SUPPORT) && (!defined(__GNUC__) || (defined(__GNUC__) && __GNUC__ < 14))
++  #if defined(BOOST_CSTDFLOAT_HAS_INTERNAL_FLOAT128_T) && defined(BOOST_MATH_USE_FLOAT128) && !defined(BOOST_CSTDFLOAT_NO_LIBQUADMATH_SUPPORT) && (!defined(_GLIBCXX_RELEASE) || (defined(_GLIBCXX_RELEASE) && _GLIBCXX_RELEASE < 14))
+ 
+     #include <limits>
+     #include <boost/math/tools/nothrow.hpp>
+

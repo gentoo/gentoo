@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools libtool multilib-minimal
+inherit autotools flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -45,11 +45,13 @@ src_prepare() {
 	default
 
 	eautoreconf
-
-	elibtoolize # to prevent -L/usr/lib ending up in the linker line wrt 499510
+	elibtoolize # to prevent -L/usr/lib ending up in the linker line wrt #499510
 }
 
 multilib_src_configure() {
+	# Workaround for LLD 17, drop after 2.1.0 (bug #915826)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	local util_switch
 	if ! multilib_is_native_abi || use minimal ; then
 		util_switch="--without"

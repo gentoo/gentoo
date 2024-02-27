@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://libkate.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="debug doc"
 
@@ -21,10 +21,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/bison
+	app-alternatives/yacc
 	sys-devel/flex[${MULTILIB_USEDEP}]
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 multilib_src_configure() {

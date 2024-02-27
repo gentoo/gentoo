@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.force
 
+# James Le Cuirot <chewi@gentoo.org> (2023-12-23)
+# Force ffmpeg-chromium fork until ffmpeg-6.1 is stable.
+www-client/vivaldi ffmpeg-chromium
+
 ## Kent Fredric <kentnl@gentoo.org> (2019-07-11)
 # The absense of these features require dev-perl/GD, which currently
 # can't be considered stable due to serious defects upstream.

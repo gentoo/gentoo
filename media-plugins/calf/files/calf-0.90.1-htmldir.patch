@@ -1,7 +1,7 @@
 Make PKGDOCDIR configurable for distributions.
 
---- a/configure.ac	2018-07-08 12:35:56.000000000 +0200
-+++ b/configure.ac	2019-03-10 20:11:45.053432800 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -227,7 +227,7 @@
  
  # Other defines
@@ -11,8 +11,8 @@ Make PKGDOCDIR configurable for distributions.
  
  ############################################################################################
  
---- a/Makefile.am	2018-07-08 12:35:56.000000000 +0200
-+++ b/Makefile.am	2019-03-10 20:55:12.448824164 +0100
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -25,29 +25,29 @@
  	rm -rf autom4te.cache
  

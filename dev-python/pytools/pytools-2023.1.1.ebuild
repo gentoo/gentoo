@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 
 # NB: numpy is now an "extra" (optional) dep -- we can remove it from
 # RDEPEND If revdeps don't need it

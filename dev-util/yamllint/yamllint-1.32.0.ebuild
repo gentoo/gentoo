@@ -13,7 +13,7 @@ HOMEPAGE="https://pypi.org/project/yamllint/ https://github.com/adrienverge/yaml
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND=">=dev-python/pathspec-0.5.3[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]

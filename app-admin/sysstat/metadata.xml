@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
@@ -14,6 +10,5 @@
 	</upstream>
 	<use>
 		<flag name="dcron">Adjust cronjobs to work properly under <pkg>sys-process/dcron</pkg></flag>
-		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,15 @@
+This patch fixes typo in parameter usage when help printed
+
+diff --git a/qmHandle b/qmHandle
+index af083f4..a1f3eee 100755
+--- a/qmHandle
++++ b/qmHandle
+@@ -828,7 +828,7 @@ sub Usage {
+     print "  -mN      : display message number N\n";
+     print "  -dN      : delete message number N\n";
+     print "  -fsender : delete message from sender\n";
+-    print "  -f're'   : delete message from senders matching regular expression re\n";
++    print "  -F're'   : delete message from senders matching regular expression re\n";
+     print "  -Stext   : delete all messages that have/contain text as Subject\n";
+     print "  -h're'   : delete all messages with headers matching regular expression re (case insensitive)\n";
+     print "  -b're'   : delete all messages with body matching regular expression re (case insensitive)\n";

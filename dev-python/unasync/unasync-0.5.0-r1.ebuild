@@ -16,7 +16,7 @@ SRC_URI="https://github.com/python-trio/unasync/archive/refs/tags/v${PV}.tar.gz 
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 distutils_enable_sphinx docs/source \
 	dev-python/sphinxcontrib-trio \

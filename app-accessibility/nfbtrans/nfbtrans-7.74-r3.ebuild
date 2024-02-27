@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 BDEPEND=">=app-arch/unzip-5.50-r2"
 

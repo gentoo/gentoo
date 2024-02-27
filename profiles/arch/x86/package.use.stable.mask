@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,9 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
-# Matt Turner <mattst88@gentoo.org> (2023-10-30)
-# libei not stable yet
-x11-base/xwayland libei
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
+# This is still experimental, prebuilt images may not boot on all systems.
+sys-kernel/gentoo-kernel generic-uki
+sys-kernel/gentoo-kernel-bin generic-uki
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
 # Destabilizing x86 keywords on sci-*/* packages
@@ -84,10 +85,6 @@ dev-util/diffoscope haskell
 # large amount of fabric. bug #763954
 sys-block/open-iscsi infiniband
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
-# REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
-app-office/libreoffice base
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
 # sys-cluster/slurm has no stable keywords
 app-metrics/collectd collectd_plugins_slurm
@@ -100,6 +97,7 @@ media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glo
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
+sys-auth/pambase -sssd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc

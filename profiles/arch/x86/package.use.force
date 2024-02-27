@@ -37,8 +37,3 @@ dev-lang/rust llvm_targets_X86
 dev-ml/llvm-ocaml llvm_targets_X86
 sys-devel/clang llvm_targets_X86
 sys-devel/llvm llvm_targets_X86
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2014-06-12)
-# On x86 Chromium can be built in non-PIC mode, and this
-# flag can affect performance, see http://crbug.com/332109 .
-www-client/chromium -pic

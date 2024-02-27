@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<use>
-		<flag name="asm">Enable assembly for optimization</flag>
-	</use>
 	<maintainer type="person">
 		<email>gokturk@gentoo.org</email>
 		<name>Göktürk Yüksek</name>

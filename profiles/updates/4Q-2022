@@ -7,5 +7,4 @@ move dev-python/retworkx dev-python/rustworkx
 move dev-lang/open-cobol dev-lang/gnucobol
 move virtual/awk app-alternatives/awk
 move virtual/yacc app-alternatives/yacc
-slotmove sys-devel/autoconf-dickey 2.52_p20210509 2.52
 move dev-python/nuitka dev-python/Nuitka

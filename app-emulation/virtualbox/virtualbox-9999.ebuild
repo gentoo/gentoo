@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ DESCRIPTION="Family of powerful x86 virtualization products for enterprise and h
 HOMEPAGE="https://www.virtualbox.org/"
 ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
 SRC_URI="
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.10_pre20230615.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.0_pre20240210.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 S="${WORKDIR}/trunk"
@@ -48,12 +48,13 @@ IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl py
 
 unset WATCOM #856769
 
+# <libxml2-2.12.0: bug #922445
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	acct-group/vboxusers
 	app-arch/xz-utils
 	dev-libs/libtpms
-	dev-libs/libxml2
+	<dev-libs/libxml2-2.12.0
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
@@ -137,7 +138,7 @@ BDEPEND="
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
 	dev-util/glslang
-	>=dev-util/kbuild-0.1.9998.3592
+	>=dev-build/kbuild-0.1.9998.3592
 	sys-apps/which
 	sys-devel/bin86
 	sys-libs/libcap
@@ -197,26 +198,8 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.0.11-configure-include-qt6-path.patch # bug #805365
-
-	# This patch is needed to avoid automagic detection based on a hardcoded
-	# list of Pythons in configure. It's necessary but not sufficient
-	# (see the rest of the ebuild's logic for the remainder) to handle
-	# proper Python selection.
-	"${FILESDIR}"/${PN}-6.1.34-r3-python.patch
-
-	# 865361
-	"${FILESDIR}"/${PN}-6.1.36-fcf-protection.patch
-
-	"${FILESDIR}"/${PN}-7.0.0-fix-compilation-clang.patch
-	"${FILESDIR}"/${PN}-7.0.9-python.patch
-	"${FILESDIR}"/${PN}-7.0.6-gcc-13.patch
-	"${FILESDIR}"/${PN}-7.0.8-mtune-keep-size.patch
-	# 913109
-	"${FILESDIR}"/${PN}-7.0.10-fix-binutils-hardened.patch
-
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.0.10_pre20230615/patches
+	"${WORKDIR}"/virtualbox-patches-7.1.0_pre20240210/patches
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs

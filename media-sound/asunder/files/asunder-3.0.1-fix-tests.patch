@@ -1,0 +1,11 @@
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -6,5 +6,6 @@ src/interface.c
+ src/prefs.c
+ src/support.c
+ src/threads.c
++src/upload.c
+ src/util.c
+-src/wrappers.c
+\ No newline at end of file
++src/wrappers.c

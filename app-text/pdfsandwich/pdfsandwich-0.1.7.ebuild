@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.tobias-elze.de/pdfsandwich"
 SRC_URI="mirror://sourceforge/pdfsandwich/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 IUSE="png"
 
@@ -27,6 +27,7 @@ DOCS=( changelog )
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 QA_FLAGS_IGNORED="/usr/bin/${PN}"
+QA_TEXTRELS="/usr/bin/${PN}"
 
 src_prepare() {
 	sed -i \

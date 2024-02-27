@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arkamar@gentoo.org</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<longdescription>
+		A fork of Intel's Hyperscan, modified to run on more platforms.
+		Currently ARM NEON/ASIMD is 100% functional, and Power VSX are in
+		development. ARM SVE2 support is in ongoing with access to hardware now.
+		More platforms will follow in the future.
+
+		Vectorscan follows Intel's API and internal algorithms where
+		possible, but will not hesitate to make code changes where it is thought
+		of giving better performance or better portability.
+	</longdescription>
+	<slots>
+		<subslots>libhs soname version</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="github">VectorCamp/vectorscan</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/918124
+https://github.com/rockowitz/ddcutil/commit/4e2681a89fc5ba1ab5f909e30baf9eef0c99e5bd
+diff --git a/src/cmdline/cmd_parser_goption.c b/src/cmdline/cmd_parser_goption.c
+index 342d7b03..5168861f 100644
+--- a/src/cmdline/cmd_parser_goption.c
++++ b/src/cmdline/cmd_parser_goption.c
+@@ -1604,6 +1604,7 @@ parse_command(
+       FREE(fl2_work);
+    }
+ 
++#ifdef USE_USB
+    if (ignored_vid_pid) {
+       int ndx = 0;
+       for (char * cur = ignored_vid_pid[ndx]; cur && ndx < 10; cur=ignored_vid_pid[++ndx]) {
+@@ -1630,6 +1631,7 @@ parse_command(
+       ntsa_free(ignored_vid_pid,true);
+       ignored_vid_pid = NULL;
+    }
++#endif
+ 
+    if (sleep_multiplier_work) {
+       float multiplier = 0.0f;

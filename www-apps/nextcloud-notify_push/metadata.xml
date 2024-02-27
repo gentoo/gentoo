@@ -2,8 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>github@fischl-online.de</email>
+		<name>Anton Fischl</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/nextcloud/notify_push/issues</bugs-to>

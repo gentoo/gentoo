@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -12,19 +12,17 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
 	BDEPEND="
-		sys-devel/autoconf-archive
+		dev-build/autoconf-archive
 	"
 else
 	MY_PV="${PV}-1"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 fi
 LICENSE="LGPL-2+"
 SLOT="0/3"	# subslot is SOVERSION
 IUSE="+cryptsetup device-mapper escrow gtk-doc introspection lvm +nvme test +tools"
-# Tests require root. In a future release, we may be able to run a smaller
-# subset with new run_tests.py arguments.
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -56,19 +54,27 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 	test? (
 		$(python_gen_cond_dep '
 			dev-libs/libbytesize[python,${PYTHON_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/pyyaml[${PYTHON_USEDEP}]
 		')
 		sys-block/targetcli-fb
 	)
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-		escrow? ( cryptsetup )"
+		escrow? ( cryptsetup )
+		test? ( introspection lvm )
+"
+
+PATCHES=(
+	"${FILESDIR}/libblockdev-3.0.4-add-non-systemd-method-for-distro-info.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -109,9 +115,8 @@ src_configure() {
 
 src_test() {
 	# See http://storaged.org/libblockdev/ch03.html
-	# The 'check' target just does Pylint.
-	# ... but it needs root.
-	emake test
+	# Largest subset which doesn't require root priviledges
+	${EPYTHON} tests/run_tests.py --include-tags extradeps sourceonly || die
 }
 
 src_install() {

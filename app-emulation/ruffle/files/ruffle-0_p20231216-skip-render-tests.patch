@@ -1,0 +1,16 @@
+Running renderer tests using mesa's software rendering has a tendency
+to misbehave (esp. on tinderboxes) and does not reflect usage on real
+hardware.
+
+These are auto-skipped if mesa[-gles2] and perhaps [-llvm], but pretend
+we lack support even if conditions are met.
+
+https://bugs.gentoo.org/903295
+https://bugs.gentoo.org/911320
+https://bugs.gentoo.org/911367
+--- a/tests/framework/src/options.rs
++++ b/tests/framework/src/options.rs
+@@ -170,2 +170,3 @@
+         if let Some(render) = &self.with_renderer {
++            if check_renderer { return false; }
+             // If we don't actually want to check the renderer (ie we're just listing potential tests),

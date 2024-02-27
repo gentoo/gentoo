@@ -6,6 +6,12 @@
     directly related libraries and development applications from the upstream
     Qt Project. Do not add other packages to this category.
   </longdescription>
+  <longdescription lang="de">
+    Die Kategorie dev-qt enthält Pakete für die Qt-Framework-Module
+    sowie direkt zugehörige Bibliotheken und Entwicklungsanwendungen
+    des Qt-Upstream-Projekts. Zu dieser Kategorie sollen keine anderen
+    Pakete hinzugefügt werden.
+  </longdescription>
   <longdescription lang="es">
     La categoría dev-qt contiene paquetes para los módulos del marco de trabajo
     Qt y las librerías y aplicaciones de desarrollo directamente relacionadas

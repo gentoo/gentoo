@@ -65,7 +65,7 @@ RDEPEND="dev-haskell/aeson:=
 	>=dev-haskell/persistent-2.8.1:=
 	>=dev-haskell/persistent-sqlite-2.8.1:=
 	dev-haskell/persistent-template:=
-	>=dev-haskell/quickcheck-2.10.0:2=
+	>=dev-haskell/quickcheck-2.10.0:=
 	dev-haskell/random:=
 	dev-haskell/regex-tdfa:=
 	dev-haskell/resourcet:=

@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	app-text/asciidoc
 	app-text/xmlto
-	sys-devel/libtool
+	dev-build/libtool
 	virtual/pkgconfig
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="cdr colord exif keyring gstreamer heif jpegxl lcms raw slideshow svg tiff webkit webp"
 
 # libX11 dep is a workaround. See files/3.12.2-link-with-x11.patch
@@ -61,8 +61,8 @@ BDEPEND="
 	>=dev-libs/appstream-0.14.6
 	dev-util/glib-utils
 	dev-util/itstool
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "

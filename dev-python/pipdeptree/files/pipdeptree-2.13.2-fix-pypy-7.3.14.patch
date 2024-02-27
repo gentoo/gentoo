@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/923893
+
+From 5d111ebe3bb1d24baa314b615d67d3e3928297ca Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 7 Feb 2024 08:47:03 +0200
+Subject: [PATCH] Use json output for test which parses installed packages
+
+* pypy bundles hpy which has a dependency on setuptools, therefore
+  breaking non-json output due sub-dependency pretty printing.
+* Using json makes parsing dependencies straight forward.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tests/test_non_host.py
++++ b/tests/test_non_host.py
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
+ 
++import json
+ import sys
+ from platform import python_implementation
+ from typing import TYPE_CHECKING
+@@ -25,10 +26,10 @@ def test_custom_interpreter(
+     monkeypatch.chdir(tmp_path)
+     py = str(result.creator.exe.relative_to(tmp_path))
+     cmd += [f"--python={result.creator.exe}"] if args_joined else ["--python", py]
+-    monkeypatch.setattr(sys, "argv", cmd)
++    monkeypatch.setattr(sys, "argv", [*cmd, "-j"])
+     main()
+     out, _ = capfd.readouterr()
+-    found = {i.split("==")[0] for i in out.splitlines()}
++    found = {i["package"]["package_name"] for i in json.loads(out)}
+     implementation = python_implementation()
+     if implementation == "CPython":
+         expected = {"pip", "setuptools", "wheel"}
+-- 
+2.43.0
+

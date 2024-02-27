@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="github">ammen99/wf-recorder</remote-id>
 	</upstream>
+	<use>
+		<flag name="pulseaudio">Enable support for audio capture via PulseAudio</flag>
+	</use>
 </pkgmetadata>

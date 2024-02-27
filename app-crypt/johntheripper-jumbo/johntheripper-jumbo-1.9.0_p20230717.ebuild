@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,7 @@ DEPEND=">=dev-libs/openssl-1.0.1:=
 # - Digest::x
 # See bug #777369.
 RDEPEND="${DEPEND}
+	dev-perl/Compress-Raw-Lzma
 	dev-perl/Digest-MD2
 	virtual/perl-Digest-MD5
 	dev-perl/Digest-SHA3

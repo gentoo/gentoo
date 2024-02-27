@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="bison">
-			Symlink to <pkg>sys-devel/bison</pkg>.
+			Symlink to <pkg>app-alternatives/yacc</pkg>.
 		</flag>
 		<flag name="byacc">
 			Symlink to <pkg>dev-util/byacc</pkg>.

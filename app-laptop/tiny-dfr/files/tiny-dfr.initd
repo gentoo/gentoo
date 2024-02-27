@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+J293_Z2="/dev/input/by-path/platform-235100000.spi-cs-0-event"
+J493_Z2="/dev/input/by-path/platform-23510c000.spi-cs-0-event"
+
+pidfile=/run/${RC_SVCNAME}.pid
+command=/usr/bin/tiny-dfr
+command_background=true
+
+depend() {
+	need localmount
+	after modules-load
+}
+
+
+# Check for the presence of the touchbar digitiser.
+start_pre() {
+	ebegin "${RC_SVCNAME}: checking for a touchbar"
+	if [ -e ${J293_Z2} ]; then
+		eend $?
+	elif [ -e ${J493_Z2} ]; then
+		eend $?
+	else
+		eend "${RC_SVCNAME}: no touchbar present on this machine"
+	fi
+}
