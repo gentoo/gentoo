@@ -561,6 +561,7 @@
 ~kde-apps/kaccounts-integration-24.01.95
 ~kde-apps/kdegraphics-mobipocket-24.01.95
 =kde-apps/kio-extras-23.08.5-r100
+=kde-misc/kio-gdrive-23.08.5-r1
 =kde-apps/libkgapi-23.08.5-r100
 ~kde-apps/kio-extras-24.01.95
 ~kde-apps/kio-extras-kf5-24.01.95
