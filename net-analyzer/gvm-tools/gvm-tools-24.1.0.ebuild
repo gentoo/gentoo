@@ -13,7 +13,7 @@ SRC_URI="https://github.com/greenbone/gvm-tools/archive/v${PV}.tar.gz -> ${P}.ta
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=net-analyzer/python-gvm-23.4.2[${PYTHON_USEDEP}]
