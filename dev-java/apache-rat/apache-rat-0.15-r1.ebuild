@@ -15,7 +15,7 @@ inherit java-pkg-2 java-pkg-simple verify-sig
 
 DESCRIPTION="Apache Rat is a release audit tool, focused on licenses"
 HOMEPAGE="https://creadur.apache.org/rat/"
-SRC_URI="mirror://apache//creadur/${P}/${P}-src.tar.bz2
+SRC_URI="https://archive.apache.org/dist/creadur/${P}/${P}-src.tar.bz2
 	verify-sig? ( https://archive.apache.org/dist/creadur/${P}/${P}-src.tar.bz2.asc )"
 S="${WORKDIR}/${P}"
 
