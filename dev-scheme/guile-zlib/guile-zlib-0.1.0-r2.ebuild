@@ -7,21 +7,32 @@ inherit autotools
 
 DESCRIPTION="GNU Guile library providing bindings to zlib"
 HOMEPAGE="https://notabug.org/guile-zlib/guile-zlib/"
-SRC_URI="https://notabug.org/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://notabug.org/${PN}/${PN}.git"
+else
+	SRC_URI="https://notabug.org/${PN}/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}"
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.0:=
-	sys-libs/zlib
+	>=sys-libs/zlib-1.3-r4
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README.org )
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}/${PN}-0.1.0-gentoo.patch" )
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
@@ -34,12 +45,6 @@ src_prepare() {
 	find "${S}" -name "*.scm" -exec touch {} + || die
 
 	eautoreconf
-}
-
-src_configure() {
-	# Gentoo installs zlib to /${libdir} and to /usr/${libdir}.
-	# We need /${libdir} with shared library here.
-	econf LIBZ_LIBDIR="${EPREFIX}/$(get_libdir)"
 }
 
 src_install() {
