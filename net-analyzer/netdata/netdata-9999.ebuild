@@ -107,6 +107,7 @@ src_configure() {
 		-DENABLE_EXPORTER_PROMETHEUS_REMOTE_WRITE=$(usex prometheus)
 		-DENABLE_PLUGIN_XENSTAT=$(usex xen)
 		-DENABLE_PLUGIN_EBPF=$(usex bpf)
+		-DENABLE_PLUGIN_GO=FALSE
 	)
 	cmake_src_configure
 }
