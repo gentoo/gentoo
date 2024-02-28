@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 
 DESCRIPTION="ECMAScipt compatible parser and engine"
 LICENSE="BSD-2 LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 BDEPEND="
