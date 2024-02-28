@@ -39,7 +39,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	>=net-libs/libhtp-0.5.45
+	>=net-libs/libhtp-0.5.46
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng
@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.7_configure-no-hyperscan-automagic.patch"
 	"${FILESDIR}/${PN}-6.0.0_default-config.patch"
 	"${FILESDIR}/${PN}-7.0.2_configure-no-sphinx-pdflatex-automagic.patch"
+	"${FILESDIR}/${PN}-7.0.3_fix-build-with-gcc14.patch"
 )
 
 pkg_pretend() {
