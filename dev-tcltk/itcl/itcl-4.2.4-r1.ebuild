@@ -73,4 +73,5 @@ src_install() {
 	LDPATH="${EPREFIX}/usr/$(get_libdir)/${MY_P}/"
 	EOF
 	doenvd "${T}"/34${PN}
+	dosym . /usr/$(get_libdir)/${MY_P}/library
 }
