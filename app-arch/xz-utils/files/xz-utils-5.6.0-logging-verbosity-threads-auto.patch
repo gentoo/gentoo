@@ -1,0 +1,43 @@
+https://github.com/tukaani-project/xz/commit/5c91b454c24e043ca8f2cc7d2b09bd091dafe655
+
+From 5c91b454c24e043ca8f2cc7d2b09bd091dafe655 Mon Sep 17 00:00:00 2001
+From: Jia Tan <jiat0218@gmail.com>
+Date: Tue, 27 Feb 2024 23:42:41 +0800
+Subject: [PATCH] xz: Change logging level for thread reduction to highest
+ verbosity only.
+
+Now that multi threaded encoding is the default, users do not need to
+see a warning message everytime the number of threads is reduced. On
+some machines, this could happen very often. It is not unreasonable for
+users to need to set double verbose mode to see this kind of
+information.
+
+To see these warning messages -vv or --verbose --verbose must be passed
+to set xz into the highest possible verbosity mode.
+
+These warnings had caused automated testing frameworks to fail when they
+expected no output to stderr.
+
+Thanks to Sebastian Andrzej Siewior for reporting this and for the
+initial version of the patch.
+--- a/src/xz/coder.c
++++ b/src/xz/coder.c
+@@ -581,7 +581,7 @@ coder_set_compression_settings(void)
+ 
+ 			if (memory_usage <= memory_limit) {
+ 				// The memory usage is now low enough.
+-				message(V_WARNING, _("Reduced the number of "
++				message(V_DEBUG, _("Reduced the number of "
+ 					"threads from %s to %s to not exceed "
+ 					"the memory usage limit of %s MiB"),
+ 					uint64_to_str(
+@@ -601,7 +601,7 @@ coder_set_compression_settings(void)
+ 		// time the soft limit will never make xz fail and never make
+ 		// xz change settings that would affect the compressed output.
+ 		if (hardware_memlimit_mtenc_is_default()) {
+-			message(V_WARNING, _("Reduced the number of threads "
++			message(V_DEBUG, _("Reduced the number of threads "
+ 				"from %s to one. The automatic memory usage "
+ 				"limit of %s MiB is still being exceeded. "
+ 				"%s MiB of memory is required. "
+
