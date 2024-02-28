@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}/packages/python/plotly"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
