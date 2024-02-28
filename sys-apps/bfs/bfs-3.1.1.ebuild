@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tavianator/bfs/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="0BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc"
 IUSE="acl caps debug io-uring unicode xattr"
 
 DEPEND="

@@ -36,7 +36,7 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
@@ -171,8 +171,11 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
-# Suppress false positive QA warnings #898304
-QA_CONFIG_IMPL_DECL_SKIP=( malloc_{set,get}_state MIN static_assert alignof )
+# Suppress false positive QA warnings #898304 #925091
+QA_CONFIG_IMPL_DECL_SKIP=(
+	malloc_set_state malloc_get_state MIN static_assert alignof
+	statvfs64 re_set_syntax re_compile_pattern re_search re_match
+)
 
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
@@ -447,13 +450,23 @@ src_test() {
 		)
 	use xpm || exclude_tests+=( %src/image-tests.el )
 
+	# Some tests hang with gnupg-2.2.42
+	local gpgver=$(best_version app-crypt/gnupg)
+	gpgver=${gpgver#*gnupg-}
+	[[ -n ${gpgver} ]] \
+		&& ver_test "${gpgver}" -ge 2.2.42 && ver_test "${gpgver}" -lt 2.3 \
+		&& exclude_tests+=(
+			%lisp/epg-tests.el
+			%lisp/gnus/mml-sec-tests.el
+		)
+
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
-	mkdir "${T}"/gnupg || die
+	mkdir "${T}"/gpg || die
 	local f
-	for f in S.gpg-agent{,.browser,.extra,.ssh}; do
-		printf "%%Assuan%%\nsocket=%s\n" "${T}/gnupg/${f}" \
-			> "test/lisp/gnus/mml-sec-resources/${f}" || die
+	for f in browser extra ssh; do
+		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
+			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
 	done
 
 	# See test/README for possible options

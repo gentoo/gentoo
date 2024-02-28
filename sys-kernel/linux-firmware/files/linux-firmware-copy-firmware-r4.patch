@@ -1,0 +1,35 @@
+--- a/copy-firmware.sh	2024-02-24 10:47:41.073251066 -0500
++++ b/copy-firmware.sh	2024-02-24 10:25:45.283922934 -0500
+@@ -50,6 +50,16 @@ while test $# -gt 0; do
+             shift
+             ;;
+ 
++        --firmware-list)
++            if [ -n "$2" ]; then
++                FIRMWARE_LIST=`cat $2`
++                shift 2
++            else
++                echo "ERROR: '--firmware-list' requires a non-empty option argument of firmware files to install"
++                exit 1
++            fi
++            ;;
++
+         -*)
+             if test "$compress" = "cat"; then
+                 echo "ERROR: unknown command-line option: $1"
+@@ -85,6 +95,7 @@ fi
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^(RawFile|File):' WHENCE | sed -E -e 's/^(RawFile|File): */\1 /;s/"//g' | while read k f; do
+     test -f "$f" || continue
++	   [ -n "${FIRMWARE_LIST}" ]  && if ! echo "${FIRMWARE_LIST}" | grep -q "${f}"; then continue; fi
+     install -d "$destdir/$(dirname "$f")"
+     $verbose "copying/compressing file $f$compext"
+     if test "$compress" != "cat" && test "$k" = "RawFile"; then
+@@ -107,6 +118,7 @@ fi
+ 
+ # shellcheck disable=SC2162 # file/folder name can include escaped symbols
+ grep -E '^Link:' WHENCE | sed -e 's/^Link: *//g;s/-> //g' | while read f d; do
++	   [ -n "${FIRMWARE_LIST}" ]  && if ! echo "${FIRMWARE_LIST}" | grep -q "${f}"; then continue; fi
+     if test -L "$f$compext"; then
+         test -f "$destdir/$f$compext" && continue
+         $verbose "copying link $f$compext"

@@ -1,0 +1,37 @@
+From 84e087b6f36a06d4db503d6aec4bef415b4b5df2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C4=90o=C3=A0n=20Tr=E1=BA=A7n=20C=C3=B4ng=20Danh?=
+ <congdanhqx@gmail.com>
+Date: Fri, 17 Feb 2023 19:48:52 +0700
+Subject: [PATCH] main: Fix control (always) reach end of non void function
+
+When configured with --disable-wayland, the ENABLE_WAYLAND will be
+dropped, the "return matches" clause will be considered the else
+statement of the "if (xfw_windowing_get() == _X11)", which is always
+false in this scenario.  Thus, this function always reach end of
+function without any return values.
+
+While we're at it, fix the comment for the ENABLE_WAYLAND leg.
+---
+ settings/main.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/settings/main.c b/settings/main.c
+index 3a1ce17b..410a2d23 100644
+--- a/settings/main.c
++++ b/settings/main.c
+@@ -1740,8 +1740,11 @@ is_our_window(AppearancePanel *panel,
+             matches = TRUE;
+         }
+         // TODO: check window geometry?
++    } else
++#endif  /* ENABLE_WAYLAND */
++    {
++        g_assert_not_reached();
+     }
+-#endif  /* GTK_WINDOWING_WAYLAND */
+ 
+     return matches;
+ }
+-- 
+GitLab
+

@@ -56,7 +56,7 @@ WLROOTS_RDEPEND="
 	)
 "
 WLROOTS_DEPEND="
-	>=dev-libs/wayland-protocols-1.32
+	>=dev-libs/wayland-protocols-1.33
 "
 WLROOTS_BDEPEND="
 	dev-util/glslang
@@ -83,6 +83,7 @@ DEPEND="
 	${RDEPEND}
 	${WLROOTS_DEPEND}
 	dev-libs/hyprland-protocols
+	dev-libs/hyprlang
 	>=dev-libs/wayland-protocols-1.25
 "
 BDEPEND="

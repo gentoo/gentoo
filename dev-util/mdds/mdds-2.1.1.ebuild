@@ -8,7 +8,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools toolchain-funcs
 

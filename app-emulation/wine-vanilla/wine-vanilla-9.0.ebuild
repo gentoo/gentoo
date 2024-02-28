@@ -17,7 +17,7 @@ else
 	(( $(ver_cut 2) )) && WINE_SDIR=$(ver_cut 1).x || WINE_SDIR=$(ver_cut 1).0
 	SRC_URI="https://dl.winehq.org/wine/source/${WINE_SDIR}/wine-${PV}.tar.xz"
 	S="${WORKDIR}/wine-${PV}"
-	KEYWORDS="-* ~amd64 x86"
+	KEYWORDS="-* amd64 x86"
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
@@ -292,8 +292,6 @@ src_configure() {
 
 	if use mingw; then
 		use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
-
-		filter-flags -fno-plt # build failure
 
 		# CROSSCC was formerly recognized by wine, thus been using similar
 		# variables (subject to change, esp. if ever make a mingw.eclass).

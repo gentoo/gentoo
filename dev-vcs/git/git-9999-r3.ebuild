@@ -261,7 +261,10 @@ src_prepare() {
 
 	if use prefix ; then
 		# bug #757309
-		eapply "${FILESDIR}"/git-2.37.2-darwin-prefix-gettext.patch
+		sed -i \
+			-e 's:/usr/local/opt/gettext/:/do/not/look/elsewhere/:g' \
+			-e 's:/opt/homebrew/:/do/not/look/elsewhere/:g' \
+			config.mak.uname || die
 	fi
 
 	sed -i \

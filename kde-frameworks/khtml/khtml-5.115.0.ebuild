@@ -11,7 +11,7 @@ inherit ecm flag-o-matic frameworks.kde.org
 DESCRIPTION="KHTML web rendering engine"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="X"
 
 RDEPEND="

@@ -6,6 +6,20 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2024-02-24)
+# Only works on amd64 (and x32).
+dev-debug/gdb cet
+sys-devel/binutils cet
+sys-devel/binutils-hppa64 cet
+sys-devel/gcc cet
+sys-libs/binutils-libs cet
+sys-libs/glibc cet
+
+# Joonas Niilola <juippis@gentoo.org> (2024-02-20)
+# Upstream massively reworked av1 support breaking our custom
+# system-av1 patches.
+>=www-client/firefox-123.0 system-av1
+
 # Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
 # Cinnamon wayland support is experimental and incomplete.
 # https://github.com/linuxmint/wayland/issues
@@ -38,7 +52,7 @@ net-analyzer/nagios-plugin-check_raid hpa
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Requires LLVM 14 that is being removed.
 <dev-lang/ghc-9.4 llvm
-media-gfx/openvdb ax
+<media-gfx/openvdb-11 ax
 sys-devel/sparse llvm
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
@@ -711,17 +725,6 @@ dev-lang/gnat-gpl jit
 # be re-enabled with the 'server' USE flag, but this flag is hard
 # masked. bug #666619
 dev-python/paramiko server
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-08-03)
-# New and for Gentoo still quite experimental. You've been
-# warned. (Also, works only on x86_64 and with certain CPUs
-# and compiler/binutils combinations.)
-sys-devel/binutils cet
-sys-devel/binutils-hppa64 cet
-dev-debug/gdb cet
-sys-libs/binutils-libs cet
-sys-libs/glibc cet
-sys-devel/gcc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.

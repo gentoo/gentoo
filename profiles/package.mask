@@ -33,6 +33,67 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-02-28)
+# Nosetests have been abandoned in 2015.  Upstream (while technically
+# still around) has refused to accept any patches since, and we have
+# already had to fork it, to keep it somewhat working.  All
+# the remaining reverse dependencies were finally ported or last rited.
+# Removal on 2024-03-29.  Bug #822414.
+dev-python/nose
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-28)
+# The project is not really actively maintained upstream, and it still
+# depends on dev-python/nose.  There are other tools with similar
+# functionality.
+# Removal on 2024-03-29.  Bug #878695.
+app-misc/rmlint
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-27)
+# dev-python/boto is dead, with last release in 2018.  It has been
+# replaced by dev-python/boto3.  It carries a ton of patches and still
+# depends on dev-python/nose.
+#
+# Removal on 2024-03-28.  Bug #888235.
+dev-python/boto
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-27)
+# Unmaintained upstream.  Already carries a few patches.
+# Depends on dev-python/nose.
+# Removal on 2024-03-28.  Bug #878693.
+app-misc/binwalk
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-27)
+# Still depends on dev-python/nose.  No reverse dependencies.
+# Removal on 2024-03-28.  Bug #878721.
+sci-biology/biopandas
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-27)
+# Effectively unmaintained in Gentoo.  Still depends on dev-python/nose,
+# on top of that tests are restricted, so we don't even know if it
+# works at all.  No reverse dependencies.
+# Removal on 2024-03-28.  Bug #878725.
+sci-chemistry/nmrglue
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-02-23)
+# A library without any reverse dependencies in tree. Maintainer-needed
+# package. Has open security bug without handling. Has open bump for a
+# long time.
+# Removal: 2024-03-24.  Bugs #925342, #837518.
+dev-libs/zlog
+
+# Vadim Misbakh-Soloviov <mva@gentoo.org> (2024-02-22)
+# Masked for removal in 30 (or more) days.
+# Fetches only from specific geo-locations, hostile upstream, security issues.
+# Consider to use the version from overlay named "mva" after tree-cleaning.
+# No revdeps.  Bug #876271
+www-plugins/gosuslugi-plugin
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-20)
+# Unmaintained.  The recently merged rewrite in Rust broke compilation
+# on 32-bit architecture.  No revdeps left.
+# Removal on 2024-03-21.  Bug #924881.
+dev-python/pendulum
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-02-18)
 # Not ported to python3_12
 # Removal on 2024-03-18.
@@ -152,79 +213,11 @@ dev-python/flask-gravatar
 # Removal on 2024-02-29. Bug #923329.
 app-editors/emacs:25
 
-# Fabian Groffen <grobian@gentoo.org> (2024-01-26)
-# compilation issues, no reverse dependencies in the tree
-# bugs #885057, #875410, #847211
-# Removal on 2024-02-26
-mail-filter/libsrs_alt
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
 # app-misc/ddcutil-2.1.0 causes core-dump crashes in
 # kde-plasma/powerdevil[brightness-control].
 ~app-misc/ddcutil-2.1.0
 ~app-misc/ddcui-0.5.0
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
-# The functionality of sys-kernel/installkernel-systemd has been
-# integrated into sys-kernel/installkernel[systemd].
-# Please install sys-kernel/installkernel and remove
-# sys-kernel/installkernel-systemd. See the news item entitled
-# "Merging of installkernel-gentoo and installkernel-systemd" for details.
-#
-# Removal on 2024-02-24
-sys-kernel/installkernel-systemd
-
-# Michał Górny <mgorny@gentoo.org> (2024-01-24)
-# Unmaintained, tests fail, requires discontinued dev-python/bsddb3.
-# No commits since 2022.  No reverse dependencies.
-# Removal on 2024-02-23.  Bug #894688.
-dev-python/pymilter
-
-# David Seifert <soap@gentoo.org> (2024-01-21)
-# Not required anymore since 4.14 is EOL, handled within the kernel
-# nowadays. Removal on 2024-02-20.
-net-wireless/crda
-
-# David Seifert <soap@gentoo.org> (2024-01-18)
-# Unmaintained set of packages. Overall, TensorFlow is ill-suited for
-# distro packaging, since it's entangled with tons of googleware and
-# continually breaks on minor dependency updates coupled with a
-# byzantine build system. These 5 packages together have a total of
-# 54 bugs reported against them, with zero activity from the maintainer.
-#
-# Unmasking this requires a sign-off from QA and treecleaners, since
-# these packages require a ton of mental bandwidth to keep up to date
-# and Google's general unwillingness to take community input quickly
-# leads to maintainer burnout.
-# Use sci-libs/pytorch as a modern alternative with better packaging.
-# Removal on 2024-02-17. Bug #922374
-dev-build/bazel
-sci-libs/keras
-sci-libs/tensorflow
-sci-libs/tensorflow-estimator
-sci-visualization/tensorboard
-
-# Michał Górny <mgorny@gentoo.org> (2024-01-17)
-# Unmaintained build systems with no reverse dependencies.
-# dev-build/cons was last released in 2001.
-# dev-build/tup was last released in 2021 and has a few bugs reported.
-# Removal on 2024-02-16.  Bug #922329.
-dev-build/cons
-dev-build/tup
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
-# Old version of a Java library, presently without consumer.
-# Blocks removal of dev-java/osgi-core-api
-# Version bump to be done later when junit5 can be used for testing.
-dev-java/bnd-junit
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-01-15)
-# Unused Java libraries. Removal on 2024-02-15
-dev-java/glassfish-persistence
-dev-java/osgi-core-api
-dev-java/osgi-enterprise-api
-dev-java/osgi-compendium
-dev-java/osgi-foundation
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-25)
 # Masked until KF6 is unmasked.
@@ -402,18 +395,20 @@ dev-java/osgi-foundation
 ~kde-apps/libkexiv2-24.01.95
 ~kde-apps/spectacle-24.01.95
 ~kde-misc/kio-fuse-5.1.0
-~dev-libs/appstream-1.0.1
+~kde-misc/plasma-pass-1.2.2
+~dev-libs/appstream-1.0.2
 ~dev-libs/kdiagram-3.0.1
-~dev-libs/kirigami-addons-0.11.90
+~dev-libs/kirigami-addons-1.0.0
 ~dev-libs/ktextaddons-1.5.3
 ~dev-libs/kweathercore-0.8.0
 ~gui-apps/xwaylandvideobridge-0.4.0
+=media-libs/kquickimageeditor-0.3.0-r100
 ~media-libs/libqaccessibilityclient-0.6.0
 ~media-libs/phonon-4.12.0
 ~media-libs/phonon-vlc-0.12.0
 ~media-libs/pulseaudio-qt-1.4.0
 ~net-libs/kdsoap-2.2.0
-~net-libs/kdsoap-ws-discovery-client-0.3.0
+~net-libs/kdsoap-ws-discovery-client-0.4.0
 ~net-libs/signon-ui-0.15_p20231016
 ~net-libs/accounts-qt-1.16_p20220803
 ~net-libs/accounts-qml-0.7_p20231028
@@ -421,7 +416,8 @@ dev-java/osgi-foundation
 =net-libs/signond-8.61-r100
 ~net-misc/kio-zeroconf-24.01.95
 =net-misc/smb4k-3.2.5-r2
-~sys-auth/polkit-qt-0.175.0
+~sys-auth/polkit-qt-0.200.0
+>=sys-libs/snapd-glib-1.64-r100
 
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and

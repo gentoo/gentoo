@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ipfs/${PN}/releases/download/v${PV}/kubo-source.tar.
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	acct-group/ipfs

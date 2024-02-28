@@ -74,7 +74,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 IUSE="cet debuginfod guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
 if [[ -n ${REGULAR_RELEASE} ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -134,6 +134,14 @@ src_prepare() {
 	# Avoid using ancient termcap from host on Prefix systems
 	sed -i -e 's/termcap tinfow/tinfow/g' \
 		gdb/configure{.ac,} || die
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# code relies on C++11, so make sure we get that selected
+		# due to Python 3.11 pymacro.h doing stuff to work around
+		# versioning mess based on the C version, while we're compiling
+		# C++ here, so we need to make it clear we're doing C++11/C11
+		# because Solaris system headers act on these
+		sed -i -e 's/-x c++/-std=c++11/' gdb/Makefile.in || die
+	fi
 }
 
 gdb_branding() {

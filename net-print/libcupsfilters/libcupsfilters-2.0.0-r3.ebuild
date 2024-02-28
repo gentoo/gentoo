@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenPrinting/libcupsfilters/releases/download/${PV}/
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="dbus exif jpeg pdf +poppler +postscript png test tiff"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 RESTRICT="!test? ( test )"
 

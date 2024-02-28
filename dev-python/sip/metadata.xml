@@ -7,13 +7,9 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<maintainer status="active">
-			<email>phil@riverbankcomputing.com</email>
-			<name>Phil Thompson</name>
-		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/hg/sip/file/tip/NEWS</changelog>
-		<doc>https://www.riverbankcomputing.com/static/Docs/sip/</doc>
-		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<changelog>https://github.com/Python-SIP/sip/blob/main/NEWS</changelog>
+		<doc>https://python-sip.readthedocs.io/en/latest/</doc>
+		<remote-id type="github">Python-SIP/sip</remote-id>
 		<remote-id type="pypi">sip</remote-id>
 	</upstream>
 </pkgmetadata>

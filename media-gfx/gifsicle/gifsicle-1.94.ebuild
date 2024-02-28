@@ -9,7 +9,7 @@ SRC_URI="https://www.lcdf.org/~eddietwo/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="X"
 
 PATCHES=( "${FILESDIR}/$P-CVE-2023-46009.patch" )

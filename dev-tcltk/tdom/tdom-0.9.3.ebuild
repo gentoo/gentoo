@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,10 +23,13 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${P}-src
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.2-useCC.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.2-useCC.patch
+	"${FILESDIR}"/${P}-expat.patch
+)
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	stat64 # used to test for Large File Support
+	stat64 arc4random_buf arc4random # used to test for Large File Support
 )
 
 src_prepare() {

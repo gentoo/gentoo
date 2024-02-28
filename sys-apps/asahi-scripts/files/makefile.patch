@@ -1,0 +1,6 @@
+--- a/Makefile	2022-10-31 17:46:24.536323376 +1000
++++ b/Makefile	2022-10-31 17:47:13.510116412 +1000
+@@ -1,2 +1,2 @@
+-PREFIX=/usr/local
++PREFIX=/usr
+ CONFIG_DIR=/etc/default

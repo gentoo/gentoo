@@ -1,0 +1,87 @@
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Tue, 24 Oct 2023 06:36:10 +0200
+Subject: [PATCH] dnscache: Enable larger truncation
+
+This variation applies on top of the IPv6 patch.
+
+This is a workaround for https://forum.mikrotik.com/viewtopic.php?t=200627
+where Mikrotik doesn't fall back if the UDP response is truncated.
+
+This is done by enabling larger (configurable) than 512 byte responses on UDP
+such that Mikrotik doesn't have a need to revert to TCP.  Since it's impossible
+to truly know the maximum size of a DNS response trivially this is made
+configurable and the upper limit is arbitrarily capped to 16KB.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+diff -bru djbdns-1.05.o/dnscache.c djbdns-1.05/dnscache.c
+--- a/dnscache.c	2023-10-20 00:34:15.788688135 +0200
++++ b/dnscache.c	2023-10-20 00:46:55.030355147 +0200
+@@ -58,6 +58,7 @@
+ static char buf[1024];
+ uint64 numqueries = 0;
+ 
++static unsigned int truncate_len = 512;
+ 
+ static int udp53;
+ 
+@@ -84,7 +85,7 @@
+ {
+   if (!u[j].active) return;
+   response_id(u[j].id);
+-  if (response_len > 512) response_tc();
++  if (response_len > truncate_len) response_tc();
+   socket_send6(udp53,response,response_len,u[j].ip,u[j].port,u[j].scope_id);
+   log_querydone(&u[j].active,response_len);
+   u[j].active = 0; --uactive;
+@@ -449,6 +450,15 @@
+   if (!cache_init(cachesize))
+     strerr_die3x(111,FATAL,"not enough memory for cache of size ",x);
+ 
++  x = env_get("TRUNCATELEN");
++  if (x) {
++    scan_ulong(x,&truncate_len);
++    if (truncate_len < 512)
++      truncate_len = 512;
++    if (truncate_len > 16384)
++      truncate_len = 16384;
++  }
++
+   if (openreadclose("ignoreip",&sa,64) < 0) 
+     strerr_die2x(111,FATAL,"trouble reading ignoreip");
+   for(j = k = i = 0; i < sa.len; i++)
+Only in djbdns-1.05/: .dnscache.c.swp
+diff -bru djbdns-1.05.o/server.c djbdns-1.05/server.c
+--- djbdns-1.05.o/server.c	2023-10-20 00:34:15.778688116 +0200
++++ djbdns-1.05/server.c	2023-10-20 00:43:31.519954643 +0200
+@@ -94,6 +94,7 @@
+   int *udp53;
+   unsigned int off;
+   unsigned int cnt;
++  unsigned int truncate_len = 512;
+   iopause_fd *iop;
+ 
+   x = env_get("IP");
+@@ -154,6 +155,14 @@
+ 
+   buffer_putsflush(buffer_2,starting);
+ 
++  x = env_get("TRUNCATELEN");
++  if (x) {
++    scan_ulong(x,&truncate_len);
++    if (truncate_len < 512)
++      truncate_len = 512;
++    if (truncate_len > 16384)
++      truncate_len = 16384;
++  }
+   for (;;) {
+     struct taia stamp;
+     struct taia deadline;
+@@ -168,7 +177,7 @@
+ 	len = socket_recv6(udp53[i],buf,sizeof buf,ip,&port,&ifid);
+ 	if (len < 0) continue;
+ 	if (!doit()) continue;
+-	if (response_len > 512) response_tc();
++	if (response_len > truncate_len) response_tc();
+ 	socket_send6(udp53[i],response,response_len,ip,port,ifid);
+ 	/* may block for buffer space; if it fails, too bad */
+       }

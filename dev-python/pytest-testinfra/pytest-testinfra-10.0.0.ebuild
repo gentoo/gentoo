@@ -27,9 +27,6 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		app-admin/ansible
-		$(python_gen_cond_dep '
-			app-admin/salt[${PYTHON_USEDEP}]
-		' python3_10)
 		dev-python/paramiko[${PYTHON_USEDEP}]
 		dev-python/pywinrm[${PYTHON_USEDEP}]
 	)

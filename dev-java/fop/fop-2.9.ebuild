@@ -14,14 +14,21 @@ HOMEPAGE="https://xmlgraphics.apache.org/fop/"
 SRC_URI="
 	mirror://apache/xmlgraphics/fop/source/${P}-src.tar.gz
 	https://dev.gentoo.org/~flow/distfiles/fop/fop-2.7-jars.tar.xz
-	verify-sig? ( https://www.apache.org/dist/xmlgraphics/fop/source/${P}-src.tar.gz.asc )
+	verify-sig? ( https://downloads.apache.org/xmlgraphics/fop/source/${P}-src.tar.gz.asc )
 	test? ( https://repo1.maven.org/maven2/net/sf/offo/fop-hyph/2.0/fop-hyph-2.0.jar )
 "
 S="${WORKDIR}/fop-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="2.8"
-KEYWORDS="amd64 ~arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
+
+BDEPEND="
+	dev-java/xalan:0
+	verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-fop )
+"
 
 CP_DEPEND="
 	dev-java/batik:1.16
@@ -47,8 +54,6 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
-BDEPEND="dev-java/xalan:0"
-
 DOCS=( NOTICE README )
 
 PATCHES=(
@@ -64,8 +69,6 @@ JAVA_CLASSPATH_EXTRA="
 	sun-jai-bin
 "
 
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-fop )"
-VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/xmlgraphics-fop.apache.org.asc"
 src_unpack() {
 	if use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${P}-src.tar.gz{,.asc}

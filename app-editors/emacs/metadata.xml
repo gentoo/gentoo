@@ -44,8 +44,6 @@
     of the internal Lisp implementations</flag>
     <flag name="mailutils">Retrieve e-mail using <pkg>net-mail/mailutils</pkg>
     instead of the internal movemail substitute</flag>
-    <flag name="small-ja-dic">Generate a smaller-size Japanese dictionary
-    (saves about 5 MiB in installed image)</flag>
     <flag name="source">Install C source files and make them available for
     find-function</flag>
     <flag name="threads">Add elisp threading support</flag>

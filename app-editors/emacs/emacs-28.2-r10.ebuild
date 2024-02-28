@@ -142,8 +142,11 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
-# Suppress false positive QA warnings #898304
-QA_CONFIG_IMPL_DECL_SKIP=( malloc_{set,get}_state MIN )
+# Suppress false positive QA warnings #898304 #925449
+QA_CONFIG_IMPL_DECL_SKIP=(
+	malloc_set_state malloc_get_state MIN
+	statvfs64 re_set_syntax re_compile_pattern re_search re_match
+)
 
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then

@@ -6,7 +6,8 @@
 
 depend() {
 	use ypbind net
-	need portmap rpc.pipefs
+	need portmap
+	need rpc.pipefs
 	after quota
 }
 

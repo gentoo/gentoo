@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	<dev-python/anyio-5[${PYTHON_USEDEP}]
@@ -40,6 +40,11 @@ BDEPEND="
 		dev-python/trio[${PYTHON_USEDEP}]
 	)
 "
+
+EPYTEST_DESELECT=(
+	# TODO: warning tests that require pytest-8
+	tests/test_routing.py::test_lifespan_with_on_events
+)
 
 EPYTEST_IGNORE=(
 	# Unpackaged 'databases' dependency

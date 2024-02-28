@@ -461,7 +461,7 @@ CRATES="
 
 LLVM_MAX_SLOT=17
 
-inherit bash-completion-r1 cargo llvm
+inherit cargo shell-completion llvm
 
 DESCRIPTION="CLI of the Sequoia OpenPGP implementation"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-sq"
@@ -514,15 +514,14 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install
+	local asset_dir="${T}"/assets
 
-	doman target/$(usex debug debug release)/build/sequoia-sq-*/out/man-pages/*.1
+	ASSET_OUT_DIR="${asset_dir}" cargo_src_install
 
-	newbashcomp target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions/sq.bash sq
+	doman "${asset_dir}"/man-pages/*
 
-	insinto /usr/share/zsh/site-functions
-	doins target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions/_sq
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins target/$(usex debug debug release)/build/sequoia-sq-*/out/shell-completions/sq.fish
+	local completion_dir="${asset_dir}"/shell-completions
+	newbashcomp "${completion_dir}"/sq.bash sq
+	dozshcomp "${completion_dir}"/_sq
+	dofishcomp "${completion_dir}"/sq.fish
 }

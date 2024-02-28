@@ -11,7 +11,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

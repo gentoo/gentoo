@@ -10,7 +10,7 @@ inherit desktop llvm-r1 optfeature qt6-build
 DESCRIPTION="Qt Tools Collection"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 IUSE="
@@ -39,8 +39,8 @@ RDEPEND="
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? (
 		$(llvm_gen_dep '
-			sys-devel/clang:${LLVM_SLOT}
-			sys-devel/llvm:${LLVM_SLOT}
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
 		')
 	)
 	designer? (

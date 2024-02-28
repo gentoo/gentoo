@@ -7,29 +7,29 @@ DESCRIPTION="KDE SDK - merge this to pull in all kdesdk-derived packages"
 HOMEPAGE="https://apps.kde.org/categories/development/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 arm64 x86"
 IUSE="cvs git mercurial perl php python subversion webengine"
 
 RDEPEND="
-	>=kde-apps/kapptemplate-${PV}:${SLOT}
-	>=kde-apps/kcachegrind-${PV}:${SLOT}
-	>=kde-apps/kde-dev-scripts-${PV}:${SLOT}
-	>=kde-apps/kde-dev-utils-${PV}:${SLOT}
-	>=kde-apps/kdesdk-thumbnailers-${PV}:${SLOT}
-	>=kde-apps/kompare-${PV}:${SLOT}
-	>=kde-apps/libkomparediff2-${PV}:${SLOT}
-	>=kde-apps/poxml-${PV}:${SLOT}
-	>=kde-apps/umbrello-${PV}:${SLOT}
-	cvs? ( >=kde-apps/cervisia-${PV}:${SLOT} )
-	git? ( >=kde-apps/dolphin-plugins-git-${PV}:${SLOT} )
-	mercurial? ( >=kde-apps/dolphin-plugins-mercurial-${PV}:${SLOT} )
-	perl? ( >=dev-util/kio-perldoc-${PV}:${SLOT} )
-	python? ( >=kde-apps/lokalize-${PV}:${SLOT} )
-	subversion? ( >=kde-apps/dolphin-plugins-subversion-${PV}:${SLOT} )
+	>=kde-apps/kapptemplate-${PV}:5
+	>=kde-apps/kcachegrind-${PV}:5
+	>=kde-apps/kde-dev-scripts-${PV}:5
+	>=kde-apps/kde-dev-utils-${PV}:5
+	>=kde-apps/kdesdk-thumbnailers-${PV}:5
+	>=kde-apps/kompare-${PV}:5
+	>=kde-apps/libkomparediff2-${PV}:5
+	>=kde-apps/poxml-${PV}:5
+	>=kde-apps/umbrello-${PV}:5
+	cvs? ( >=kde-apps/cervisia-${PV}:5 )
+	git? ( >=kde-apps/dolphin-plugins-git-${PV}:5 )
+	mercurial? ( >=kde-apps/dolphin-plugins-mercurial-${PV}:5 )
+	perl? ( >=dev-util/kio-perldoc-${PV}:5 )
+	python? ( >=kde-apps/lokalize-${PV}:5 )
+	subversion? ( >=kde-apps/dolphin-plugins-subversion-${PV}:5 )
 	webengine? (
-		>=dev-util/kdevelop-${PV}:${SLOT}
-		php? ( >=dev-util/kdevelop-php-${PV}:${SLOT} )
-		python? ( >=dev-util/kdevelop-python-${PV}:${SLOT} )
+		>=dev-util/kdevelop-${PV}:5
+		php? ( >=dev-util/kdevelop-php-${PV}:5 )
+		python? ( >=dev-util/kdevelop-python-${PV}:5 )
 	)
 "

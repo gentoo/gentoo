@@ -19,7 +19,7 @@ S="${WORKDIR}"/${PN/-layoutex}/source
 LICENSE="BSD"
 SLOT="0/${PV%.*}.1"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 fi
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"

@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/925503
+
+Call coreutils date instead of a Python script.
+--- a/meson.build
++++ b/meson.build
+@@ -104,17 +104,16 @@ cxx.check_header('charconv', required:true)
+ build_aux = join_paths(meson.current_source_dir(), 'build-aux')
+ ################################################################################
+ # derived date values (based on 'mu-date'); used in docs
+-# we can't use the 'date' because MacOS 'date' is incompatible with GNU's.
+-pdate=find_program(join_paths(build_aux, 'date.py'))
++date=find_program('date', required:true)
+ env = environment()
+ env.set('LANG', 'C')
+-mu_day_month_year = run_command(pdate, mu_date, '%d %B %Y',
++mu_day_month_year = run_command(date, '-u', '+%d %B %Y', '--date', mu_date,
+                                 check:true, capture:true,
+                                 env: env).stdout().strip()
+-mu_month_year = run_command(pdate, mu_date, '%B %Y',
++mu_month_year = run_command(date, '-u', '+%B %Y', '--date', mu_date,
+                             check:true, capture:true,
+                             env: env).stdout().strip()
+-mu_year = run_command(pdate, mu_date, '%Y',
++mu_year = run_command(date, '-u', '+%Y', '--date', mu_date,
+                       check:true, capture:true, env: env).stdout().strip()
+ 
+ ################################################################################
+-- 
+2.44.0
+

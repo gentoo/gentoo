@@ -5,20 +5,31 @@
 		<email>nativemad@gentoo.org</email>
 		<name>Andreas Schuerch</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>holger@applied-asynchrony.com</email>
+		<name>Holger Hoffstätte</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		dnsdist is a highly DNS-, DoS- and abuse-aware loadbalancer. Its goal in life is to route traffic to the best server, delivering top performance to legitimate users while shunting or blocking abusive traffic.
 	</longdescription>
 	<use>
+		<flag name="bpf">Enable support for eBPF socket filtering</flag>
 		<flag name="dnscrypt">Enable the ability to act as a DNSCrypt server</flag>
+		<flag name="dnstap">Enable support for dnstap</flag>
+		<flag name="doh">Enable support for dns over http via <pkg>net-libs/nghttp2</pkg></flag>
+		<flag name="doh3">Enable support for dns over http3 via <pkg>net-libs/quiche</pkg></flag>
+		<flag name="ipcipher">Enable support for ipcipher via <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="lmdb">Enable support for lmdb</flag>
+		<flag name="quic">Enable support for dns over quic via <pkg>net-libs/quiche</pkg></flag>
 		<flag name="regex">Enable support for regular expression matching via <pkg>dev-libs/re2</pkg></flag>
 		<flag name="remote-logging">Enable support for remote logging via <pkg>dev-libs/protobuf</pkg></flag>
 		<flag name="ssl">Enable support for and encrypted client-server communication via <pkg>dev-libs/libsodium</pkg></flag>
-		<flag name="doh">Enable support for dns over http via <pkg>net-libs/nghttp2</pkg></flag>
-		<flag name="doh3">Enable support for dns over http3 via <pkg>net-libs/quiche</pkg></flag>
-		<flag name="dnstap">Enable support for dnstap</flag>
-		<flag name="lmdb">Enable support for lmdb</flag>
-		<flag name="quic">Enable support for dns over quic via <pkg>net-libs/quiche</pkg></flag>
-		<flag name="ipcipher">Enable support for ipcipher via <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="web">Enable support for the web UI</flag>
+		<flag name="xdp">Enable support for AF_XDP high performance packet processing</flag>
 	</use>	
 	<upstream>
 		<remote-id type="github">PowerDNS/pdns</remote-id>

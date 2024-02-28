@@ -60,6 +60,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	amd64? ( dev-libs/simde )
+	arm64? ( dev-libs/simde )
+	x86? ( dev-libs/simde )
 	X? (
 		x11-base/xorg-proto
 		x11-libs/libXi

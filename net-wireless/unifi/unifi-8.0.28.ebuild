@@ -30,7 +30,10 @@ BDEPEND="app-arch/unzip"
 
 DOCS=( "readme.txt" )
 
-QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
+QA_PREBUILT="
+	usr/lib/unifi/lib/native/Linux/aarch64/*.so
+	usr/lib/unifi/lib/native/Linux/x86_64/*.so
+"
 
 src_prepare() {
 	if [[ ${CHOST} != aarch64* ]]; then

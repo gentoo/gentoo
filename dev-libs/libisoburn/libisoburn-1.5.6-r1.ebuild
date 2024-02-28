@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn"
 HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisoburn"
-SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
+SRC_URI="https://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
@@ -24,12 +24,20 @@ RDEPEND="
 	>=dev-libs/libburn-1.5.6
 	>=dev-libs/libisofs-1.5.6
 	readline? ( sys-libs/readline:0= )
-	!readline? ( libedit? ( dev-libs/libedit ) )
+	!readline? (
+		libedit? ( dev-libs/libedit )
+	)
 	acl? ( virtual/acl )
 	xattr? ( sys-apps/attr )
 	zlib? ( sys-libs/zlib )
-	launch-frontend? ( dev-lang/tcl:0 dev-lang/tk:0 )
-	launch-frontend-setuid? ( dev-lang/tcl:0 dev-lang/tk:0 )
+	launch-frontend? (
+		dev-lang/tcl:0
+		dev-lang/tk:0
+	)
+	launch-frontend-setuid? (
+		dev-lang/tcl:0
+		dev-lang/tk:0
+	)
 	frontend-optional? ( dev-tcltk/bwidget )
 "
 DEPEND="

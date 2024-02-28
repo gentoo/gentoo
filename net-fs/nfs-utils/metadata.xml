@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>base-system@gentoo.org</email>
-    <name>Gentoo Base System</name>
-  </maintainer>
-  <use>
-    <flag name="junction">Enable NFS junction support in nfsref</flag>
-    <flag name="ldap">Add ldap support</flag>
-    <flag name="libmount">Link mount.nfs with libmount</flag>
-    <flag name="nfsdcld">Enable nfsdcld NFSv4 clientid tracking daemon and tools</flag>
-    <flag name="nfsidmap">Enable support for newer nfsidmap helper</flag>
-    <flag name="nfsv3">Enable support for NFSv2 and NFSv3</flag>
-    <flag name="nfsv4">Enable support for NFSv4</flag>
-    <flag name="nfsv41">Enable support for NFSv4.1</flag>
-    <flag name="uuid">Support UUID lookups in rpc.mountd</flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:linux-nfs:nfs-utils</remote-id>
-    <remote-id type="sourceforge">nfs</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="junction">Enable NFS junction support in nfsref</flag>
+		<flag name="ldap">Add ldap support</flag>
+		<flag name="libmount">Link mount.nfs with libmount</flag>
+		<flag name="nfsv3">Enable support for NFSv2 and NFSv3</flag>
+		<flag name="nfsv4">Enable support for NFSv4 (includes NFSv4.1 and NFSv4.2)</flag>
+		<flag name="uuid">Support UUID lookups in rpc.mountd</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:linux-nfs:nfs-utils</remote-id>
+		<remote-id type="sourceforge">nfs</remote-id>
+	</upstream>
 </pkgmetadata>

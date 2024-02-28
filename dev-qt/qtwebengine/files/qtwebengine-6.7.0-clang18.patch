@@ -1,0 +1,96 @@
+Patch status: fixed in >=chromium-122.0.6200.0
+
+https://bugs.gentoo.org/925486
+https://webrtc-review.googlesource.com/c/src/+/332240
+https://webrtc.googlesource.com/src/+/267f9bdd5
+From: Tommi <tommi@webrtc.org>
+Date: Thu, 21 Dec 2023 14:08:26 +0100
+Subject: [PATCH] Update LegacyStatsCollector to conform with Wc++11-narrowing
+--- a/src/3rdparty/chromium/third_party/webrtc/pc/legacy_stats_collector.cc
++++ b/src/3rdparty/chromium/third_party/webrtc/pc/legacy_stats_collector.cc
+@@ -189,7 +189,8 @@
+       {StatsReport::kStatsValueNamePreemptiveExpandRate,
+        info.preemptive_expand_rate},
+-      {StatsReport::kStatsValueNameTotalAudioEnergy, info.total_output_energy},
++      {StatsReport::kStatsValueNameTotalAudioEnergy,
++       static_cast<float>(info.total_output_energy)},
+       {StatsReport::kStatsValueNameTotalSamplesDuration,
+-       info.total_output_duration}};
++       static_cast<float>(info.total_output_duration)}};
+ 
+   const IntForAdd ints[] = {
+@@ -245,7 +246,8 @@
+ 
+   const FloatForAdd floats[] = {
+-      {StatsReport::kStatsValueNameTotalAudioEnergy, info.total_input_energy},
++      {StatsReport::kStatsValueNameTotalAudioEnergy,
++       static_cast<float>(info.total_input_energy)},
+       {StatsReport::kStatsValueNameTotalSamplesDuration,
+-       info.total_input_duration}};
++       static_cast<float>(info.total_input_duration)}};
+ 
+   RTC_DCHECK_GE(info.audio_level, 0);
+@@ -341,5 +343,6 @@
+       {StatsReport::kStatsValueNameRenderDelayMs, info.render_delay_ms},
+       {StatsReport::kStatsValueNameTargetDelayMs, info.target_delay_ms},
+-      {StatsReport::kStatsValueNameFramesDecoded, info.frames_decoded},
++      {StatsReport::kStatsValueNameFramesDecoded,
++       static_cast<int>(info.frames_decoded)},
+   };
+ 
+@@ -385,13 +388,17 @@
+       {StatsReport::kStatsValueNameFirsReceived, info.firs_received},
+       {StatsReport::kStatsValueNameFrameHeightSent, info.send_frame_height},
+-      {StatsReport::kStatsValueNameFrameRateInput, round(info.framerate_input)},
++      {StatsReport::kStatsValueNameFrameRateInput,
++       static_cast<int>(round(info.framerate_input))},
+       {StatsReport::kStatsValueNameFrameRateSent, info.framerate_sent},
+       {StatsReport::kStatsValueNameFrameWidthSent, info.send_frame_width},
+-      {StatsReport::kStatsValueNameNacksReceived, info.nacks_received},
++      {StatsReport::kStatsValueNameNacksReceived,
++       static_cast<int>(info.nacks_received)},
+       {StatsReport::kStatsValueNamePacketsLost, info.packets_lost},
+       {StatsReport::kStatsValueNamePacketsSent, info.packets_sent},
+       {StatsReport::kStatsValueNamePlisReceived, info.plis_received},
+-      {StatsReport::kStatsValueNameFramesEncoded, info.frames_encoded},
+-      {StatsReport::kStatsValueNameHugeFramesSent, info.huge_frames_sent},
++      {StatsReport::kStatsValueNameFramesEncoded,
++       static_cast<int>(info.frames_encoded)},
++      {StatsReport::kStatsValueNameHugeFramesSent,
++       static_cast<int>(info.huge_frames_sent)},
+   };
+ 
+@@ -781,17 +788,23 @@
+ 
+   const Int64ForAdd int64s[] = {
+-      {StatsReport::kStatsValueNameBytesReceived, info.recv_total_bytes},
+-      {StatsReport::kStatsValueNameBytesSent, info.sent_total_bytes},
+-      {StatsReport::kStatsValueNamePacketsSent, info.sent_total_packets},
+-      {StatsReport::kStatsValueNameRtt, info.rtt},
++      {StatsReport::kStatsValueNameBytesReceived,
++       static_cast<int64_t>(info.recv_total_bytes)},
++      {StatsReport::kStatsValueNameBytesSent,
++       static_cast<int64_t>(info.sent_total_bytes)},
++      {StatsReport::kStatsValueNamePacketsSent,
++       static_cast<int64_t>(info.sent_total_packets)},
++      {StatsReport::kStatsValueNameRtt, static_cast<int64_t>(info.rtt)},
+       {StatsReport::kStatsValueNameSendPacketsDiscarded,
+-       info.sent_discarded_packets},
++       static_cast<int64_t>(info.sent_discarded_packets)},
+       {StatsReport::kStatsValueNameSentPingRequestsTotal,
+-       info.sent_ping_requests_total},
++       static_cast<int64_t>(info.sent_ping_requests_total)},
+       {StatsReport::kStatsValueNameSentPingRequestsBeforeFirstResponse,
+-       info.sent_ping_requests_before_first_response},
+-      {StatsReport::kStatsValueNameSentPingResponses, info.sent_ping_responses},
+-      {StatsReport::kStatsValueNameRecvPingRequests, info.recv_ping_requests},
+-      {StatsReport::kStatsValueNameRecvPingResponses, info.recv_ping_responses},
++       static_cast<int64_t>(info.sent_ping_requests_before_first_response)},
++      {StatsReport::kStatsValueNameSentPingResponses,
++       static_cast<int64_t>(info.sent_ping_responses)},
++      {StatsReport::kStatsValueNameRecvPingRequests,
++       static_cast<int64_t>(info.recv_ping_requests)},
++      {StatsReport::kStatsValueNameRecvPingResponses,
++       static_cast<int64_t>(info.recv_ping_responses)},
+   };
+   for (const auto& i : int64s)

@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt5=ON

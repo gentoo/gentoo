@@ -65,6 +65,9 @@ multilib_src_configure() {
 	# The build system overrides user optimization level based on a configure flag. #886987
 	local my_optlvl=$(get-flag '-O*')
 
+	# bgo #923802
+	append-lfs-flags
+
 	# We use the standard BUILD_xxx but nspr uses HOST_xxx
 	tc-export_build_env BUILD_CC
 	export HOST_CC=${BUILD_CC} HOST_CFLAGS=${BUILD_CFLAGS} HOST_LDFLAGS=${BUILD_LDFLAGS}

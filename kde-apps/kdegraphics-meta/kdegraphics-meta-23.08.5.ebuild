@@ -7,27 +7,27 @@ DESCRIPTION="kdegraphics - merge this to pull in all kdegraphics-derived package
 HOMEPAGE="https://apps.kde.org/graphics/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="color-management scanner +screencast"
 
 RDEPEND="
-	>=kde-apps/gwenview-${PV}:${SLOT}
-	>=kde-apps/kamera-${PV}:${SLOT}
-	>=kde-apps/kcolorchooser-${PV}:${SLOT}
-	>=kde-apps/kdegraphics-mobipocket-${PV}:${SLOT}
-	>=kde-apps/kolourpaint-${PV}:${SLOT}
-	>=kde-apps/kruler-${PV}:${SLOT}
-	>=kde-apps/libkdcraw-${PV}:${SLOT}
-	>=kde-apps/libkexiv2-${PV}:${SLOT}
-	>=kde-apps/okular-${PV}:${SLOT}
-	>=kde-apps/svgpart-${PV}:${SLOT}
-	>=kde-apps/thumbnailers-${PV}:${SLOT}
-	color-management? ( >=kde-misc/colord-kde-${PV}:${SLOT} )
+	>=kde-apps/gwenview-${PV}:5
+	>=kde-apps/kamera-${PV}:5
+	>=kde-apps/kcolorchooser-${PV}:5
+	>=kde-apps/kdegraphics-mobipocket-${PV}:5
+	>=kde-apps/kolourpaint-${PV}:5
+	>=kde-apps/kruler-${PV}:5
+	>=kde-apps/libkdcraw-${PV}:5
+	>=kde-apps/libkexiv2-${PV}:5
+	>=kde-apps/okular-${PV}:5
+	>=kde-apps/svgpart-${PV}:5
+	>=kde-apps/thumbnailers-${PV}:5
+	color-management? ( >=kde-misc/colord-kde-${PV}:5 )
 	scanner? (
-		>=kde-apps/libksane-${PV}:${SLOT}
-		>=kde-misc/skanlite-${PV}:${SLOT}
-		>=media-gfx/skanpage-${PV}:${SLOT}
+		>=kde-apps/libksane-${PV}:5
+		>=kde-misc/skanlite-${PV}:5
+		>=media-gfx/skanpage-${PV}:5
 	)
 	screencast? ( >=kde-apps/spectacle-${PV}:* )
 "

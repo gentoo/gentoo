@@ -7,39 +7,39 @@ DESCRIPTION="kdeutils - merge this to pull in all kdeutils-derived packages"
 HOMEPAGE="https://apps.kde.org/categories/utilities/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 x86"
 IUSE="7zip cups gpg lrz plasma rar +webengine"
 
 RDEPEND="
-	>=app-cdr/dolphin-plugins-mountiso-${PV}:${SLOT}
+	>=app-cdr/dolphin-plugins-mountiso-${PV}:5
 	>=app-crypt/keysmith-${PV}
-	>=kde-apps/ark-${PV}:${SLOT}
-	>=kde-apps/filelight-${PV}:${SLOT}
-	>=kde-apps/kate-${PV}:${SLOT}
-	>=kde-apps/kbackup-${PV}:${SLOT}
-	>=kde-apps/kcalc-${PV}:${SLOT}
-	>=kde-apps/kcharselect-${PV}:${SLOT}
-	>=kde-apps/kdebugsettings-${PV}:${SLOT}
-	>=kde-apps/kdf-${PV}:${SLOT}
-	>=kde-apps/kteatime-${PV}:${SLOT}
-	>=kde-apps/ktimer-${PV}:${SLOT}
-	>=kde-apps/kwalletmanager-${PV}:${SLOT}
-	>=kde-apps/sweeper-${PV}:${SLOT}
-	>=kde-apps/yakuake-${PV}:${SLOT}
-	>=kde-misc/kweather-${PV}:${SLOT}
-	>=kde-misc/markdownpart-${PV}:${SLOT}
-	>=sys-block/partitionmanager-${PV}:${SLOT}
-	>=sys-libs/kpmcore-${PV}:${SLOT}
+	>=kde-apps/ark-${PV}:5
+	>=kde-apps/filelight-${PV}:5
+	>=kde-apps/kate-${PV}:5
+	>=kde-apps/kbackup-${PV}:5
+	>=kde-apps/kcalc-${PV}:5
+	>=kde-apps/kcharselect-${PV}:5
+	>=kde-apps/kdebugsettings-${PV}:5
+	>=kde-apps/kdf-${PV}:5
+	>=kde-apps/kteatime-${PV}:5
+	>=kde-apps/ktimer-${PV}:5
+	>=kde-apps/kwalletmanager-${PV}:5
+	>=kde-apps/sweeper-${PV}:5
+	>=kde-apps/yakuake-${PV}:5
+	>=kde-misc/kweather-${PV}:5
+	>=kde-misc/markdownpart-${PV}:5
+	>=sys-block/partitionmanager-${PV}:5
+	>=sys-libs/kpmcore-${PV}:5
 	cups? ( || (
 		kde-plasma/print-manager:6
 		>=kde-plasma/print-manager-${PV}:5
 	) )
-	gpg? ( >=kde-apps/kgpg-${PV}:${SLOT} )
+	gpg? ( >=kde-apps/kgpg-${PV}:5 )
 	plasma? ( >=kde-misc/kclock-${PV} )
 	webengine? (
 		>=app-editors/ghostwriter-${PV}
-		>=kde-apps/kimagemapeditor-${PV}:${SLOT}
+		>=kde-apps/kimagemapeditor-${PV}:5
 	)
 "
 # Optional runtime deps: kde-apps/ark

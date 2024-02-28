@@ -1,0 +1,55 @@
+#!/bin/bash
+set -e
+
+# This creates go bootstrap tarballs for the version of go currently
+# installed on your system.
+# It should be run as part of bumping dev-lang/go when a newer version
+# of go is required for bootstrapping.
+# Make sure the version of go required for bootstrapping is installed
+# then run this script.
+# The script will output the location where the bootstrap tarballs are
+# stored.
+# Next, update the GO_BV variable in the new version of the dev-lang/go
+# ebuild to the version in the bootstrap tarballs file name.
+
+go_tuples=(
+	darwin-amd64
+	darwin-arm64
+	linux-386
+	linux-amd64
+	linux-arm
+	linux-arm64
+	linux-loong64
+	linux-mips
+	linux-mipsle
+	linux-mips64
+	linux-mips64le
+	linux-ppc64
+	linux-ppc64le
+	linux-riscv64
+	linux-s390x
+	solaris-amd64
+)
+
+go_version=$(go version)
+go_version=${go_version##*go}
+go_version=${go_version%% *}
+build_path=$(mktemp -d /tmp/go-bootstraps-XXXXXX)
+pushd "${build_path}"
+git clone https://github.com/golang/go.git
+cd go
+git checkout go"${go_version}"
+cd src
+for tuple in ${go_tuples[@]}; do
+	printf "Building go version %s bootstrap tarball for %s\n" "${go_version}" "${tuple}"
+	GOOS=${tuple%%-*} GOARCH=${tuple##*-} ./bootstrap.bash
+	rm -fr ../../go-${tuple}-bootstrap
+done
+cd ../..
+rm -fr go
+for f in *tbz; do
+		mv "${f}" "${f/go/go-${go_version}}"
+	done
+popd
+mv "${build_path}" "${build_path%-*}"
+printf "The bootstrap tarballs are stored in %s\n" "${build_path%-*}"

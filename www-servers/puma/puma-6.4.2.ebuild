@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_GEMSPEC="puma.gemspec"
 
@@ -29,9 +29,9 @@ ruby_add_bdepend "virtual/ruby-ssl
 ruby_add_rdepend "dev-ruby/nio4r:2"
 
 all_ruby_prepare() {
-	sed -e '/bundler/ s:^:#:' \
-		-e '/prove/ s:^:#:' \
-		-e '/stub_const/ s:^:#:' \
+	sed -e '/\(pride\|prove\|stub_const\)/ s:^:#:' \
+		-e '/require_relative.*verbose/ s:^:#:' \
+		-e '/securerandom/arequire "rack/handler"' \
 		-i test/helper.rb || die
 
 	# Avoid tests failing inconsistently
@@ -63,6 +63,6 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	einfo "Running test suite"
-	${RUBY} -Ilib:.:test \
+	MT_NO_PLUGINS=true ${RUBY} -Ilib:.:test \
 		-e "require 'minitest/autorun'; Dir['test/**/*test_*.rb'].each{require _1}" || die
 }

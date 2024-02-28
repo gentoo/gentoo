@@ -8,7 +8,8 @@ rpc_bin=/usr/sbin/rpc.idmapd
 
 depend() {
 	use ypbind net
-	need portmap rpc.pipefs
+	need portmap
+	need rpc.pipefs
 	after quota
 }
 

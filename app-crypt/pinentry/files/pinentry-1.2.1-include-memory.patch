@@ -1,0 +1,313 @@
+https://bugs.gentoo.org/925557
+https://dev.gnupg.org/D566
+
+From 8ab1682e80a2b4185ee9ef66cbb44340245966fc Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 20 Mar 2023 08:31:04 +0100
+Subject: [PATCH] Fix problem with inclusion of wrong memory.h.
+
+* secmem/memory.h: Rename to ...
+* secmem/secmem.h: this.
+* pinentry/pinentry.h: Include secmem.h.  Remove almost all inclusions
+of memory.h or replace them by "../secmem/secmem.h".
+--
+
+See-also: https://dev.gnupg.org/D566
+---
+ fltk/main.cxx                 | 1 -
+ fltk/pinwindow.cxx            | 2 +-
+ gnome3/pinentry-gnome3.c      | 2 --
+ pinentry/password-cache.c     | 2 +-
+ pinentry/pinentry-curses.c    | 7 +++----
+ pinentry/pinentry-emacs.c     | 2 +-
+ pinentry/pinentry.c           | 1 -
+ pinentry/pinentry.h           | 2 ++
+ secmem/Makefile.am            | 2 +-
+ secmem/secmem++.h             | 2 +-
+ secmem/secmem.c               | 2 +-
+ secmem/{memory.h => secmem.h} | 0
+ tqt/secqstring.h              | 2 +-
+ tty/pinentry-tty.c            | 1 -
+ w32/main.c                    | 1 -
+ 15 files changed, 12 insertions(+), 17 deletions(-)
+ rename secmem/{memory.h => secmem.h} (100%)
+
+--- a/fltk/main.cxx	2019-03-05 23:09:48.000000000 -0800
++++ b/fltk/main.cxx	2024-02-26 11:02:47.822134762 -0800
+@@ -34,7 +34,6 @@
+ #include <getopt.h>
+ #include <assert.h>
+ 
+-#include "memory.h"
+ #include <memory>
+ 
+ #include <pinentry.h>
+--- a/fltk/pinwindow.cxx	2017-12-03 08:13:05.000000000 -0800
++++ b/fltk/pinwindow.cxx	2024-02-26 11:02:47.822134762 -0800
+@@ -32,7 +32,7 @@
+ #include <FL/Fl_Return_Button.H>
+ #include <FL/Fl_Pixmap.H>
+ 
+-#include "memory.h"
++#include "../secmem/secmem.h"
+ 
+ #include "encrypt.xpm"
+ #include "icon.xpm"
+--- a/gnome3/pinentry-gnome3.c	2022-08-24 03:31:59.000000000 -0700
++++ b/gnome3/pinentry-gnome3.c	2024-02-26 11:02:47.822134762 -0800
+@@ -30,8 +30,6 @@
+ 
+ #include <assuan.h>
+ 
+-#include "memory.h"
+-
+ #include "pinentry.h"
+ 
+ #ifdef FALLBACK_CURSES
+--- a/pinentry/password-cache.c	2017-12-03 08:13:15.000000000 -0800
++++ b/pinentry/password-cache.c	2024-02-26 11:02:47.822134762 -0800
+@@ -31,7 +31,7 @@
+ #endif
+ 
+ #include "password-cache.h"
+-#include "memory.h"
++#include "../secmem/secmem.h"
+ 
+ #ifdef HAVE_LIBSECRET
+ static const SecretSchema *
+--- a/pinentry/pinentry.c	2022-08-24 03:31:59.000000000 -0700
++++ b/pinentry/pinentry.c	2024-02-26 11:02:47.822134762 -0800
+@@ -44,7 +44,6 @@
+ 
+ #include <assuan.h>
+ 
+-#include "memory.h"
+ #include "secmem-util.h"
+ #include "argparse.h"
+ #include "pinentry.h"
+--- a/pinentry/pinentry-curses.c	2022-08-24 03:31:59.000000000 -0700
++++ b/pinentry/pinentry-curses.c	2024-02-26 11:02:47.822134762 -0800
+@@ -62,8 +62,6 @@
+ #include <utime.h>
+ #endif /*HAVE_UTIME_H*/
+ 
+-#include <memory.h>
+-
+ #ifdef HAVE_WCHAR_H
+ #include <wchar.h>
+ #endif /*HAVE_WCHAR_H*/
+@@ -1017,10 +1015,11 @@
+ #ifndef HAVE_DOSISH_SYSTEM
+   int no_input = 1;
+ #endif
+-
+ #ifdef HAVE_NCURSESW
+   char *old_ctype = NULL;
++#endif
+ 
++#ifdef HAVE_NCURSESW
+   if (pinentry->lc_ctype)
+     {
+       old_ctype = strdup (setlocale (LC_CTYPE, NULL));
+--- a/pinentry/pinentry-emacs.c	2021-08-11 04:16:10.000000000 -0700
++++ b/pinentry/pinentry-emacs.c	2024-02-26 11:02:47.822134762 -0800
+@@ -48,7 +48,7 @@
+ #include <assuan.h>
+ 
+ #include "pinentry-emacs.h"
+-#include "memory.h"
++#include "../secmem/secmem.h"
+ #include "secmem-util.h"
+ 
+ /* The communication mechanism is similar to emacsclient, but there
+--- a/pinentry/pinentry.h	2022-08-24 03:31:59.000000000 -0700
++++ b/pinentry/pinentry.h	2024-02-26 11:02:47.822134762 -0800
+@@ -21,6 +21,8 @@
+ #ifndef PINENTRY_H
+ #define PINENTRY_H
+ 
++#include "../secmem/secmem.h"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #if 0
+--- a/secmem/Makefile.am	2017-12-03 08:13:05.000000000 -0800
++++ b/secmem/Makefile.am	2024-02-26 11:02:47.822134762 -0800
+@@ -22,7 +22,7 @@
+ noinst_LIBRARIES = libsecmem.a
+ 
+ libsecmem_a_SOURCES = \
+-	memory.h \
++	secmem.h \
+ 	secmem-util.h \
+ 	util.h \
+ 	secmem.c \
+--- a/secmem/memory.h	2017-12-03 08:13:05.000000000 -0800
++++ b/secmem/memory.h	1969-12-31 16:00:00.000000000 -0800
+@@ -1,55 +0,0 @@
+-/* Quintuple Agent secure memory allocation
+- * Copyright (C) 1998,1999 Free Software Foundation, Inc.
+- * Copyright (C) 1999,2000 Robert Bihlmeyer <robbe@orcus.priv.at>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation; either version 2 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, see <https://www.gnu.org/licenses/>.
+- * SPDX-License-Identifier: GPL-2.0+
+- */
+-
+-#ifndef _MEMORY_H
+-#define _MEMORY_H
+-
+-#include <sys/types.h>
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#if 0
+-}
+-#endif
+-#endif
+-
+-
+-/* values for flags, hardcoded in secmem.c */
+-#define SECMEM_WARN		0
+-#define SECMEM_DONT_WARN	1
+-#define SECMEM_SUSPEND_WARN	2
+-
+-void secmem_init( size_t npool );
+-void secmem_term( void );
+-void *secmem_malloc( size_t size );
+-void *secmem_realloc( void *a, size_t newsize );
+-void secmem_free( void *a );
+-int  m_is_secure( const void *p );
+-void secmem_dump_stats(void);
+-void secmem_set_flags( unsigned flags );
+-unsigned secmem_get_flags(void);
+-size_t secmem_get_max_size (void);
+-
+-#if 0
+-{
+-#endif
+-#ifdef __cplusplus
+-}
+-#endif
+-#endif /* _MEMORY_H */
+--- a/secmem/secmem.c	2022-08-24 03:31:59.000000000 -0700
++++ b/secmem/secmem.c	2024-02-26 11:02:47.822134762 -0800
+@@ -34,7 +34,7 @@
+ #endif
+ #include <string.h>
+ 
+-#include "memory.h"
++#include "secmem.h"
+ 
+ #ifdef ORIGINAL_GPG_VERSION
+ #include "types.h"
+--- a/secmem/secmem++.h	2017-12-03 08:13:05.000000000 -0800
++++ b/secmem/secmem++.h	2024-02-26 11:02:47.822134762 -0800
+@@ -19,7 +19,7 @@
+ #ifndef __SECMEM_SECMEMPP_H__
+ #define __SECMEM_SECMEMPP_H__
+ 
+-#include "secmem/memory.h"
++#include "../secmem/secmem.h"
+ #include <cstddef>
+ 
+ namespace secmem {
+--- a/secmem/secmem.h	1969-12-31 16:00:00.000000000 -0800
++++ b/secmem/secmem.h	2024-02-26 11:02:47.822134762 -0800
+@@ -0,0 +1,55 @@
++/* Quintuple Agent secure memory allocation
++ * Copyright (C) 1998,1999 Free Software Foundation, Inc.
++ * Copyright (C) 1999,2000 Robert Bihlmeyer <robbe@orcus.priv.at>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ * SPDX-License-Identifier: GPL-2.0+
++ */
++
++#ifndef _MEMORY_H
++#define _MEMORY_H
++
++#include <sys/types.h>
++
++#ifdef __cplusplus
++extern "C" {
++#if 0
++}
++#endif
++#endif
++
++
++/* values for flags, hardcoded in secmem.c */
++#define SECMEM_WARN		0
++#define SECMEM_DONT_WARN	1
++#define SECMEM_SUSPEND_WARN	2
++
++void secmem_init( size_t npool );
++void secmem_term( void );
++void *secmem_malloc( size_t size );
++void *secmem_realloc( void *a, size_t newsize );
++void secmem_free( void *a );
++int  m_is_secure( const void *p );
++void secmem_dump_stats(void);
++void secmem_set_flags( unsigned flags );
++unsigned secmem_get_flags(void);
++size_t secmem_get_max_size (void);
++
++#if 0
++{
++#endif
++#ifdef __cplusplus
++}
++#endif
++#endif /* _MEMORY_H */
+--- a/tqt/secqstring.h	2017-12-03 08:33:12.000000000 -0800
++++ b/tqt/secqstring.h	2024-02-26 11:02:47.822134762 -0800
+@@ -65,7 +65,7 @@
+ 
+ extern "C"
+ {
+-#include "memory.h"
++#include "../secmem/secmem.h"
+ }
+ 
+ /* We need the original qchar and qstring for transparent conversion
+--- a/tty/pinentry-tty.c	2021-08-11 04:16:10.000000000 -0700
++++ b/tty/pinentry-tty.c	2024-02-26 11:02:47.822134762 -0800
+@@ -41,7 +41,6 @@
+ #include <gpg-error.h>
+ 
+ #include "pinentry.h"
+-#include "memory.h"
+ 
+ #ifndef HAVE_DOSISH_SYSTEM
+ static int timed_out;
+--- a/w32/main.c	2022-08-24 03:31:59.000000000 -0700
++++ b/w32/main.c	2024-02-26 11:02:47.822134762 -0800
+@@ -29,7 +29,6 @@
+ #endif
+ 
+ #include "pinentry.h"
+-#include "memory.h"
+ 
+ #include "resource.h"
+ /* #include "msgcodes.h" */

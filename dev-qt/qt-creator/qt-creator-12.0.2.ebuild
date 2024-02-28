@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QT_PV}=
 	clang? (
 		dev-cpp/yaml-cpp:=
-		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}')
+		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=')
 	)
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? (

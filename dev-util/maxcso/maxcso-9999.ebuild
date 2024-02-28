@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,22 +15,31 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="ISC MIT LGPL-2.1+ Apache-2.0"
+LICENSE="ISC LGPL-2.1+ Apache-2.0"
 SLOT="0"
 
 DEPEND="
-	app-arch/lz4
-	dev-libs/libuv
+	app-arch/libdeflate[zlib]
+	app-arch/lz4:=
+	dev-libs/libuv:=
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_compile() {
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
+	emake \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		USE_EXTERNAL_LIBDEFLATE=1
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
+	emake install \
+		DESTDIR="${D}" \
+		PREFIX="${EPREFIX}"/usr \
+		USE_EXTERNAL_LIBDEFLATE=1
+
 	dodoc README.md README_CSO.md README_ZSO.md
 }

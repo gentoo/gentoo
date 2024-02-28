@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Advanced plugin and service introspection"
 
 LICENSE="LGPL-2 LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+man"
 
 # requires running kde environment

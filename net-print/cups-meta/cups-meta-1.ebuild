@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="metapackage"
 SLOT="0"
 IUSE="+browsed +foomatic pdf +postscript +poppler zeroconf"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	net-print/cups[zeroconf?]

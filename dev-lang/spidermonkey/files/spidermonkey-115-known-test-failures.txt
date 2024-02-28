@@ -3,6 +3,7 @@ non262/Intl/Collator/big5han-gb2312han.js
 non262/Intl/Collator/implicithan.js
 non262/Intl/DateTimeFormat/day-period-hour-cycle.js
 non262/Intl/DateTimeFormat/fractional-second-digits-append-item.js
+non262/Intl/DateTimeFormat/related-year.js
 non262/Intl/DateTimeFormat/timeZone_backzone.js
 non262/Intl/DisplayNames/calendar.js
 non262/Intl/DisplayNames/currency.js

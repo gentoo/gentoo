@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 # https://hexdocs.pm/elixir/compatibility-and-deprecations.html#compatibility-between-elixir-and-erlang-otp
 DEPEND="
 	>=dev-lang/erlang-24:0=[ssl]
-	<dev-lang/erlang-27
+	<dev-lang/erlang-26.1
 "
 # 'mix' tool collides with sci-biology/phylip, bug #537514
 RDEPEND="${DEPEND}

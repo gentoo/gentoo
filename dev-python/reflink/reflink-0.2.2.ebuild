@@ -18,6 +18,9 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
+# The test suite mounts a btrfs volume on a loopback device.
+PROPERTIES="test_privileged"
+RESTRICT="test"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -41,15 +44,13 @@ src_prepare() {
 }
 
 src_test() {
+	if [[ ! -c /dev/loop-control ]]; then
+		die "Tests require /dev/loop-control"
+	fi
+
 	rm -rf reflink || die
 
-	if [[ ${EUID} != 0 ]]; then
-		ewarn "Tests require root permissions (FEATURES=-userpriv)"
-	elif [[ ! -c /dev/loop-control ]]; then
-		die "Tests require /dev/loop-control"
-	else
-		local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-		addwrite /dev
-		distutils-r1_src_test
-	fi
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	addwrite /dev
+	distutils-r1_src_test
 }

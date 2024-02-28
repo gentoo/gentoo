@@ -122,7 +122,7 @@ app-accessibility/at-spi2-core dbus-broker
 # Newer sd-boot does not use gnuefi.
 >=sys-apps/systemd-254 -boot -ukify
 >=sys-apps/systemd-utils-254 -boot -ukify
-sys-kernel/installkernel -systemd-boot -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
 # dev-python/pyopengl fails tests

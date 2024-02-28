@@ -70,12 +70,11 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 BDEPEND="
 	test? (
 		dev-python/arrow[${PYTHON_USEDEP}]
-		dev-python/pendulum[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '

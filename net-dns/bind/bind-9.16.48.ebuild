@@ -99,6 +99,13 @@ PATCHES=(
 	"${FILESDIR}/ldap-library-path-on-multilib-machines.patch"
 )
 
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
+	default
+}
+
 src_prepare() {
 	default
 

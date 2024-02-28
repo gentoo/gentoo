@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/cpuguy83/go-md2man"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
 
 # restrict tests because they need network-sandbox disabled
 # bug https://bugs.gentoo.org/715028

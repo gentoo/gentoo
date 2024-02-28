@@ -1309,6 +1309,22 @@ toolchain_src_configure() {
 			GCC_RUN_FIXINCLUDES=1
 		fi
 
+		case ${CBUILD}-${CHOST}-${CTARGET} in
+			*i686-w64-mingw32*|*x86_64-w64-mingw32*)
+				# config/i386/t-cygming requires fixincludes (bug #925204)
+				GCC_RUN_FIXINCLUDES=1
+				;;
+			*mips*-sde-elf*)
+				# config/mips/t-sdemtk needs fixincludes too (bug #925204)
+				# It maps to mips*-sde-elf*, but only with --without-newlib.
+				if [[ ${confgcc} != *with-newlib* ]] ; then
+					GCC_RUN_FIXINCLUDES=1
+				fi
+				;;
+			*)
+				;;
+		esac
+
 		if [[ ${GCC_RUN_FIXINCLUDES} == 1 ]] ; then
 			confgcc+=( --enable-fixincludes )
 		else

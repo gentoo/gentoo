@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unbundling.patch
 	"${FILESDIR}"/${P}-noWerror.patch
 	"${FILESDIR}"/${P}-riscv.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" )

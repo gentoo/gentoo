@@ -72,6 +72,9 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
+				19.0.0_pre20240224)
+					EGIT_COMMIT=60a904b2ad9842b93cc5fa0ad5bda5e22c550b7e
+					;;
 				19.0.0_pre20240218)
 					EGIT_COMMIT=3496927edcd0685807351ba88a7e2cfb006e1c0d
 					;;
@@ -205,10 +208,14 @@ ALL_LLVM_TARGET_FLAGS=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The current ABI version of LLVM dylib, in a form suitable for use
-# as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
-# for the main branch.
-LLVM_SOABI=${LLVM_MAJOR}
-[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]] && LLVM_SOABI=${PV}
+# as a subslot.
+if [[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]]; then
+	LLVM_SOABI=${PV}
+elif ver_test ${PV} -ge 18.1.0_rc3; then
+	LLVM_SOABI=$(ver_cut 1-2)
+else
+	LLVM_SOABI=${LLVM_MAJOR}
+fi
 
 # == global scope logic ==
 

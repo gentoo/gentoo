@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -143,7 +143,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# pyo3 < 0.20.3 is broken on ppc; https://bugs.gentoo.org/918970
+RESTRICT="
+	!test? ( test )
+	ppc? ( test )
+"
+[[ ${CRATES} != *pyo3@0.20.0* ]] && die "Please recheck ppc test restriction"
 
 RDEPEND="
 	virtual/rust

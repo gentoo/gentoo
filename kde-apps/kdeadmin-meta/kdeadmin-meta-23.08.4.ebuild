@@ -7,11 +7,11 @@ DESCRIPTION="KDE administration tools - merge this to pull in all kdeadmin-deriv
 HOMEPAGE="https://apps.kde.org/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="+cron"
 
 RDEPEND="
-	>=kde-apps/ksystemlog-${PV}:${SLOT}
-	cron? ( >=kde-apps/kcron-${PV}:${SLOT} )
+	>=kde-apps/ksystemlog-${PV}:5
+	cron? ( >=kde-apps/kcron-${PV}:5 )
 "
