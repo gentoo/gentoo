@@ -16,7 +16,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 LLVM_COMPAT=( {15..17} )
 
-inherit cmake llvm-r1 python-r1 toolchain-funcs
+inherit cmake flag-o-matic llvm-r1 python-r1 toolchain-funcs
 
 MY_PN="pyside-setup-everywhere-src"
 
@@ -109,6 +109,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/925479
+	# https://bugreports.qt.io/browse/PYSIDE-2619
+	filter-lto
+
 	# Minimal tests for now, 2 failing with the extended version
 	# FIXME Subscripted generics cannot be used with class and instance checks
 	local mycmakeargs=(
