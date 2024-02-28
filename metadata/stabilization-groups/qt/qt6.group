@@ -15,6 +15,7 @@ dev-qt/qtquick3d:6
 dev-qt/qtquicktimeline:6
 dev-qt/qtscxml:6
 dev-qt/qtsensors:6
+dev-qt/qtserialbus:6
 dev-qt/qtserialport:6
 dev-qt/qtshadertools:6
 dev-qt/qtspeech:6
