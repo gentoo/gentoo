@@ -18,7 +18,6 @@ else
 	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
-IUSE=""
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 
