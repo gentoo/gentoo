@@ -38,12 +38,7 @@
 # replaced by dev-python/boto3.  It carries a ton of patches and still
 # depends on dev-python/nose.
 #
-# app-admin/salt is its only remaining reverse dependency.  The ebuild
-# is of very low quality.
-#
 # Removal on 2024-03-28.  Bug #888235.
-app-admin/salt
-dev-python/pytest-salt-factories
 dev-python/boto
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-27)
