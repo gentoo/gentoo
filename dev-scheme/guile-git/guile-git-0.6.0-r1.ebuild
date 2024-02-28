@@ -32,7 +32,12 @@ RDEPEND="
 	>=dev-scheme/guile-2.0.11:=
 	dev-scheme/bytestructures
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
