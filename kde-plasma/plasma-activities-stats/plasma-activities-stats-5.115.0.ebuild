@@ -14,7 +14,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Library for accessing usage data collected by the activities system"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
