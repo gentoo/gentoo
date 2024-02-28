@@ -136,8 +136,8 @@ media-video/openshot
 media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
-net-im/neochat
-net-im/tokodon
+>=net-im/neochat-24.02.0
+>=net-im/tokodon-24.02.0
 net-im/whatsie
 net-libs/signon-ui
 net-misc/nextcloud-client
