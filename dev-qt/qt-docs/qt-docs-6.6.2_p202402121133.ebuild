@@ -81,7 +81,7 @@ qt6_docs_generate_metadata() {
 		-remoteobjects/qtremoteobjects
 		+scxml/qtscxml
 		+sensors/qtsensors
-		-serialbus/qtserialbus
+		+serialbus/qtserialbus
 		+serialport/qtserialport
 		+shadertools/qtshadertools: # empty examples
 		+speech/qtspeech="qttexttospeech"
