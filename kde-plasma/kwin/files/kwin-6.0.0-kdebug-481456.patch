@@ -1,0 +1,272 @@
+From ebce0e3c3371fbc5a59955c91873edca1b6e4e79 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Mon, 26 Feb 2024 10:32:49 +0000
+Subject: [PATCH] x11window: Disable strict geometry placement by default in
+ wayland
+
+Strict geometry disables certain user activites; full screen requests
+and only sending configure events at sizes the client claims to support.
+
+This was added as a workaround for xterm in 19 years ago. It's a client
+side bug as applications can still choose to ignore the configure event,
+so kwin shouldn't have to sanitise them in advance. xterm seems to have
+fixed it's bug, and pragmatically we know not all window managers
+perform these checks so most clients should not be relying on it.
+
+On Wayland this additional check is proving problematic, the handling of
+scaling especially fractional scaling is hitting cases where it's better
+to always ask the client to do what kwin wants.
+
+Tests that refer to sizeIncrements are dropped as they are only used in
+the strict geometry passes which is being obsoleted. Resizing in general
+is still tested.
+
+BUG: 481456
+
+
+(cherry picked from commit 32be54b19d24e3fafc3a50492b1ca48047a64103)
+---
+ autotests/integration/x11_window_test.cpp | 171 ----------------------
+ src/x11window.cpp                         |  14 +-
+ 2 files changed, 11 insertions(+), 174 deletions(-)
+
+diff --git a/autotests/integration/x11_window_test.cpp b/autotests/integration/x11_window_test.cpp
+index aa48b26d8d2..588b01e8141 100644
+--- a/autotests/integration/x11_window_test.cpp
++++ b/autotests/integration/x11_window_test.cpp
+@@ -35,8 +35,6 @@ private Q_SLOTS:
+ 
+     void testMinimumSize();
+     void testMaximumSize();
+-    void testResizeIncrements();
+-    void testResizeIncrementsNoBaseSize();
+     void testTrimCaption_data();
+     void testTrimCaption();
+     void testFullscreenLayerWithActiveWaylandWindow();
+@@ -291,175 +289,6 @@ void X11WindowTest::testMaximumSize()
+     c.reset();
+ }
+ 
+-void X11WindowTest::testResizeIncrements()
+-{
+-    // This test verifies that the resize increments constraint is correctly applied.
+-    QFETCH_GLOBAL(qreal, scale);
+-    kwinApp()->setXwaylandScale(scale);
+-
+-    // Create an xcb window.
+-    Test::XcbConnectionPtr c = Test::createX11Connection();
+-    QVERIFY(!xcb_connection_has_error(c.get()));
+-    const QRect windowGeometry(0, 0, 100, 200);
+-    xcb_window_t windowId = xcb_generate_id(c.get());
+-    xcb_create_window(c.get(), XCB_COPY_FROM_PARENT, windowId, rootWindow(),
+-                      windowGeometry.x(),
+-                      windowGeometry.y(),
+-                      windowGeometry.width(),
+-                      windowGeometry.height(),
+-                      0, XCB_WINDOW_CLASS_INPUT_OUTPUT, XCB_COPY_FROM_PARENT, 0, nullptr);
+-    xcb_size_hints_t hints;
+-    memset(&hints, 0, sizeof(hints));
+-    xcb_icccm_size_hints_set_position(&hints, 1, windowGeometry.x(), windowGeometry.y());
+-    xcb_icccm_size_hints_set_size(&hints, 1, windowGeometry.width(), windowGeometry.height());
+-    xcb_icccm_size_hints_set_base_size(&hints, windowGeometry.width(), windowGeometry.height());
+-    xcb_icccm_size_hints_set_resize_inc(&hints, 3, 5);
+-    xcb_icccm_set_wm_normal_hints(c.get(), windowId, &hints);
+-    xcb_map_window(c.get(), windowId);
+-    xcb_flush(c.get());
+-
+-    QSignalSpy windowCreatedSpy(workspace(), &Workspace::windowAdded);
+-    QVERIFY(windowCreatedSpy.wait());
+-    X11Window *window = windowCreatedSpy.last().first().value<X11Window *>();
+-    QVERIFY(window);
+-    QVERIFY(window->isDecorated());
+-
+-    QSignalSpy interactiveMoveResizeStartedSpy(window, &Window::interactiveMoveResizeStarted);
+-    QSignalSpy interactiveMoveResizeSteppedSpy(window, &Window::interactiveMoveResizeStepped);
+-    QSignalSpy interactiveMoveResizeFinishedSpy(window, &Window::interactiveMoveResizeFinished);
+-    QSignalSpy frameGeometryChangedSpy(window, &Window::frameGeometryChanged);
+-
+-    // Begin resize.
+-    QCOMPARE(workspace()->moveResizeWindow(), nullptr);
+-    QVERIFY(!window->isInteractiveResize());
+-    workspace()->slotWindowResize();
+-    QCOMPARE(workspace()->moveResizeWindow(), window);
+-    QCOMPARE(interactiveMoveResizeStartedSpy.count(), 1);
+-    QVERIFY(window->isInteractiveResize());
+-
+-    const QPointF cursorPos = KWin::Cursors::self()->mouse()->pos();
+-
+-    window->keyPressEvent(Qt::Key_Right);
+-    window->updateInteractiveMoveResize(KWin::Cursors::self()->mouse()->pos());
+-    QCOMPARE(KWin::Cursors::self()->mouse()->pos(), cursorPos + QPoint(8, 0));
+-    QCOMPARE(interactiveMoveResizeSteppedSpy.count(), 1);
+-    QVERIFY(frameGeometryChangedSpy.wait());
+-
+-    //  100 + 8 logical pixels, rounded to resize increments. This will differ on scale
+-    const qreal horizontalResizeInc = 3 / scale;
+-    const qreal verticalResizeInc = 5 / scale;
+-    const qreal expectedHorizontalResizeInc = std::floor(8. / horizontalResizeInc) * horizontalResizeInc;
+-    const qreal expectedVerticalResizeInc = std::floor(8. / verticalResizeInc) * verticalResizeInc;
+-
+-    QCOMPARE(window->clientSize(), QSizeF(100, 200) / scale + QSizeF(expectedHorizontalResizeInc, 0));
+-
+-    window->keyPressEvent(Qt::Key_Down);
+-    window->updateInteractiveMoveResize(KWin::Cursors::self()->mouse()->pos());
+-    QCOMPARE(KWin::Cursors::self()->mouse()->pos(), cursorPos + QPoint(8, 8));
+-    QCOMPARE(interactiveMoveResizeSteppedSpy.count(), 2);
+-    QVERIFY(frameGeometryChangedSpy.wait());
+-    QCOMPARE(window->clientSize(), QSize(100, 200) / scale + QSizeF(expectedHorizontalResizeInc, expectedVerticalResizeInc));
+-
+-    // Finish the resize operation.
+-    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 0);
+-    window->keyPressEvent(Qt::Key_Enter);
+-    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 1);
+-    QCOMPARE(workspace()->moveResizeWindow(), nullptr);
+-    QVERIFY(!window->isInteractiveResize());
+-
+-    // Destroy the window.
+-    QSignalSpy windowClosedSpy(window, &X11Window::closed);
+-    xcb_unmap_window(c.get(), windowId);
+-    xcb_destroy_window(c.get(), windowId);
+-    xcb_flush(c.get());
+-    QVERIFY(windowClosedSpy.wait());
+-    c.reset();
+-}
+-
+-void X11WindowTest::testResizeIncrementsNoBaseSize()
+-{
+-    QFETCH_GLOBAL(qreal, scale);
+-    kwinApp()->setXwaylandScale(scale);
+-
+-    // Create an xcb window.
+-    Test::XcbConnectionPtr c = Test::createX11Connection();
+-    QVERIFY(!xcb_connection_has_error(c.get()));
+-    const QRect windowGeometry(0, 0, 100, 200);
+-    xcb_window_t windowId = xcb_generate_id(c.get());
+-    xcb_create_window(c.get(), XCB_COPY_FROM_PARENT, windowId, rootWindow(),
+-                      windowGeometry.x(),
+-                      windowGeometry.y(),
+-                      windowGeometry.width(),
+-                      windowGeometry.height(),
+-                      0, XCB_WINDOW_CLASS_INPUT_OUTPUT, XCB_COPY_FROM_PARENT, 0, nullptr);
+-    xcb_size_hints_t hints;
+-    memset(&hints, 0, sizeof(hints));
+-    xcb_icccm_size_hints_set_position(&hints, 1, windowGeometry.x(), windowGeometry.y());
+-    xcb_icccm_size_hints_set_size(&hints, 1, windowGeometry.width(), windowGeometry.height());
+-    xcb_icccm_size_hints_set_min_size(&hints, windowGeometry.width(), windowGeometry.height());
+-    xcb_icccm_size_hints_set_resize_inc(&hints, 3, 5);
+-    xcb_icccm_set_wm_normal_hints(c.get(), windowId, &hints);
+-    xcb_map_window(c.get(), windowId);
+-    xcb_flush(c.get());
+-
+-    QSignalSpy windowCreatedSpy(workspace(), &Workspace::windowAdded);
+-    QVERIFY(windowCreatedSpy.wait());
+-    X11Window *window = windowCreatedSpy.last().first().value<X11Window *>();
+-    QVERIFY(window);
+-    QVERIFY(window->isDecorated());
+-
+-    QSignalSpy interactiveMoveResizeStartedSpy(window, &Window::interactiveMoveResizeStarted);
+-    QSignalSpy interactiveMoveResizeSteppedSpy(window, &Window::interactiveMoveResizeStepped);
+-    QSignalSpy interactiveMoveResizeFinishedSpy(window, &Window::interactiveMoveResizeFinished);
+-    QSignalSpy frameGeometryChangedSpy(window, &Window::frameGeometryChanged);
+-
+-    // Begin resize.
+-    QCOMPARE(workspace()->moveResizeWindow(), nullptr);
+-    QVERIFY(!window->isInteractiveResize());
+-    workspace()->slotWindowResize();
+-    QCOMPARE(workspace()->moveResizeWindow(), window);
+-    QCOMPARE(interactiveMoveResizeStartedSpy.count(), 1);
+-    QVERIFY(window->isInteractiveResize());
+-
+-    const QPointF cursorPos = KWin::Cursors::self()->mouse()->pos();
+-
+-    window->keyPressEvent(Qt::Key_Right);
+-    window->updateInteractiveMoveResize(KWin::Cursors::self()->mouse()->pos());
+-    QCOMPARE(KWin::Cursors::self()->mouse()->pos(), cursorPos + QPoint(8, 0));
+-    QCOMPARE(interactiveMoveResizeSteppedSpy.count(), 1);
+-    QVERIFY(frameGeometryChangedSpy.wait());
+-
+-    //  100 + 8 pixels, rounded to resize increments. This will differ on scale
+-    const qreal horizontalResizeInc = 3 / scale;
+-    const qreal verticalResizeInc = 5 / scale;
+-    const qreal expectedHorizontalResizeInc = std::floor(8. / horizontalResizeInc) * horizontalResizeInc;
+-    const qreal expectedVerticalResizeInc = std::floor(8. / verticalResizeInc) * verticalResizeInc;
+-
+-    QCOMPARE(window->clientSize(), QSizeF(100, 200) / scale + QSizeF(expectedHorizontalResizeInc, 0));
+-
+-    window->keyPressEvent(Qt::Key_Down);
+-    window->updateInteractiveMoveResize(KWin::Cursors::self()->mouse()->pos());
+-    QCOMPARE(KWin::Cursors::self()->mouse()->pos(), cursorPos + QPoint(8, 8));
+-    QCOMPARE(interactiveMoveResizeSteppedSpy.count(), 2);
+-    QVERIFY(frameGeometryChangedSpy.wait());
+-    QCOMPARE(window->clientSize(), QSizeF(100, 200) / scale + QSizeF(expectedHorizontalResizeInc, expectedVerticalResizeInc));
+-
+-    // Finish the resize operation.
+-    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 0);
+-    window->keyPressEvent(Qt::Key_Enter);
+-    QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 1);
+-    QCOMPARE(workspace()->moveResizeWindow(), nullptr);
+-    QVERIFY(!window->isInteractiveResize());
+-
+-    // Destroy the window.
+-    QSignalSpy windowClosedSpy(window, &X11Window::closed);
+-    xcb_unmap_window(c.get(), windowId);
+-    xcb_destroy_window(c.get(), windowId);
+-    xcb_flush(c.get());
+-    QVERIFY(windowClosedSpy.wait());
+-    c.reset();
+-}
+-
+ void X11WindowTest::testTrimCaption_data()
+ {
+     QFETCH_GLOBAL(qreal, scale);
+diff --git a/src/x11window.cpp b/src/x11window.cpp
+index e4ab708f472..9aa2056b1d0 100644
+--- a/src/x11window.cpp
++++ b/src/x11window.cpp
+@@ -1492,7 +1492,8 @@ bool X11Window::isFullScreenable() const
+     if (!rules()->checkFullScreen(true)) {
+         return false;
+     }
+-    if (rules()->checkStrictGeometry(true)) {
++    const bool isX11Mode = kwinApp()->operationMode() == Application::OperationModeX11;
++    if (rules()->checkStrictGeometry(isX11Mode)) {
+         // check geometry constraints (rule to obey is set)
+         const QRectF fullScreenArea = workspace()->clientArea(FullScreenArea, this);
+         const QSizeF constrainedClientSize = constrainClientSize(fullScreenArea.size());
+@@ -3705,7 +3706,8 @@ QSizeF X11Window::constrainClientSize(const QSizeF &size, SizeMode mode) const
+     w = std::max(min_size.width(), w);
+     h = std::max(min_size.height(), h);
+ 
+-    if (!rules()->checkStrictGeometry(!isFullScreen())) {
++    const bool isX11Mode = kwinApp()->operationMode() == Application::OperationModeX11;
++    if (!rules()->checkStrictGeometry(!isFullScreen() && isX11Mode)) {
+         // Disobey increments and aspect by explicit rule.
+         return QSizeF(w, h);
+     }
+@@ -3890,6 +3892,10 @@ QSizeF X11Window::maxSize() const
+ 
+ QSizeF X11Window::basicUnit() const
+ {
++    const bool isX11Mode = kwinApp()->operationMode() == Application::OperationModeX11;
++    if (!isX11Mode) {
++        return QSize(1, 1);
++    }
+     return m_geometryHints.resizeIncrements();
+ }
+ 
+@@ -4457,9 +4463,11 @@ void X11Window::maximize(MaximizeMode mode)
+ 
+     // if the client insist on a fix aspect ratio, we check whether the maximizing will get us
+     // out of screen bounds and take that as a "full maximization with aspect check" then
++    const bool isX11Mode = kwinApp()->operationMode() == Application::OperationModeX11;
++
+     if (m_geometryHints.hasAspect() && // fixed aspect
+         (mode == MaximizeVertical || mode == MaximizeHorizontal) && // ondimensional maximization
+-        rules()->checkStrictGeometry(true)) { // obey aspect
++        rules()->checkStrictGeometry(isX11Mode)) { // obey aspect
+         const QSize minAspect = m_geometryHints.minAspect();
+         const QSize maxAspect = m_geometryHints.maxAspect();
+         if (mode == MaximizeVertical || (old_mode & MaximizeVertical)) {
+-- 
+GitLab
+
