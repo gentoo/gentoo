@@ -6,7 +6,7 @@ EAPI=8
 KFMIN=6.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.6.2
-inherit ecm plasma.kde.org
+inherit ecm flag-o-matic plasma.kde.org
 
 DESCRIPTION="Plasma applet and services for creating encrypted vaults"
 HOMEPAGE+=" https://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
@@ -39,6 +39,9 @@ RDEPEND="${DEPEND}
 "
 
 src_configure() {
+	# ODR violations (bug #909446, kde#471836)
+	filter-lto
+
 	local mycmakeargs=(
 		$(cmake_use_find_package networkmanager KF6NetworkManagerQt)
 	)
