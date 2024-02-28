@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools virtualx
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itk%2
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm64 ~ia64 ppc ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -64,4 +64,5 @@ src_install() {
 	LDPATH="${EPREFIX}/usr/$(get_libdir)/${PN}${MY_PV}/"
 	EOF
 	doenvd "${T}"/34${PN}
+	dosym . /usr/$(get_libdir)/${PN}${MY_PV}/library
 }
