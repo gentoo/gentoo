@@ -700,6 +700,8 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0 ISC MIT
 	MPL-2.0 Unicode-DFS-2016 ZLIB
 "
+# Manually added crate licenses
+LICENSE+=" openssl"
 # The supermemo importer is licensed under GPL-3+ and 0BSD.
 # - pylib/anki/importing/supermemo_xml.py
 #
