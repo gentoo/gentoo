@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,19 +7,32 @@ inherit autotools
 
 DESCRIPTION="GNU Guile library providing bindings to lzlib"
 HOMEPAGE="https://notabug.org/guile-lzlib/guile-lzlib/"
-SRC_URI="https://notabug.org/${PN}/${PN}/archive/${PV}.tar.gz
-	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://notabug.org/${PN}/${PN}.git"
+else
+	SRC_URI="https://notabug.org/${PN}/${PN}/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}"
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.0:=
 	app-arch/lzlib
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README.org )
 
@@ -29,11 +42,10 @@ QA_PREBUILT='*[.]go'
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
 	find "${S}" -name "*.scm" -exec touch {} + || die
-
-	eautoreconf
 }
 
 src_install() {
