@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ HOMEPAGE="https://github.com/containers/crun"
 if [[ "$PV" == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/containers/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
