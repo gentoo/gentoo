@@ -7,28 +7,28 @@ DESCRIPTION="kdecore - merge this to pull in the most basic applications"
 HOMEPAGE="https://apps.kde.org/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 IUSE="+handbook +share +thumbnail +webengine"
 
 RDEPEND="
-	>=kde-apps/dolphin-${PV}:${SLOT}
-	>=kde-apps/kdialog-${PV}:${SLOT}
-	>=kde-apps/keditbookmarks-${PV}:${SLOT}
-	>=kde-apps/kfind-${PV}:${SLOT}
-	>=kde-apps/konsole-${PV}:${SLOT}
-	>=kde-apps/kwrite-${PV}:${SLOT}
-	handbook? ( >=kde-apps/khelpcenter-${PV}:${SLOT} )
+	>=kde-apps/dolphin-${PV}:5
+	>=kde-apps/kdialog-${PV}:5
+	>=kde-apps/keditbookmarks-${PV}:5
+	>=kde-apps/kfind-${PV}:5
+	>=kde-apps/konsole-${PV}:5
+	>=kde-apps/kwrite-${PV}:5
+	handbook? ( >=kde-apps/khelpcenter-${PV}:5 )
 	webengine? ( || (
 		>=www-client/falkon-${PV}
-		>=kde-apps/konqueror-${PV}:${SLOT}
+		>=kde-apps/konqueror-${PV}:5
 	) )
 "
 # Optional runtime deps: kde-apps/dolphin
 RDEPEND="${RDEPEND}
-	share? ( kde-frameworks/purpose:${SLOT} )
+	share? ( kde-frameworks/purpose:5 )
 	thumbnail? (
-		>=kde-apps/ffmpegthumbs-${PV}:${SLOT}
-		>=kde-apps/thumbnailers-${PV}:${SLOT}
+		>=kde-apps/ffmpegthumbs-${PV}:5
+		>=kde-apps/thumbnailers-${PV}:5
 	)
 "

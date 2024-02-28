@@ -60,7 +60,7 @@ kde-apps/kaddressbook:5
 kde-apps/kalarm:5
 kde-apps/kalgebra:5
 kde-apps/kdepim-addons:5
-kde-apps/kdepim-meta:5
+kde-apps/kdepim-meta
 kde-apps/kdepim-runtime:5
 kde-apps/kimagemapeditor:5
 kde-apps/kmail:5

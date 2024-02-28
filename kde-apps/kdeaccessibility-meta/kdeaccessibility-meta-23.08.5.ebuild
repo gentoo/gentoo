@@ -7,13 +7,13 @@ DESCRIPTION="kdeaccessibility - merge this to pull in all kdeaccessiblity-derive
 HOMEPAGE="https://apps.kde.org/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
-	>=app-accessibility/kontrast-${PV}:${SLOT}
-	>=kde-apps/kmag-${PV}:${SLOT}
-	>=kde-apps/kmousetool-${PV}:${SLOT}
-	>=kde-apps/kmouth-${PV}:${SLOT}
+	>=app-accessibility/kontrast-${PV}:5
+	>=kde-apps/kmag-${PV}:5
+	>=kde-apps/kmousetool-${PV}:5
+	>=kde-apps/kmouth-${PV}:5
 "

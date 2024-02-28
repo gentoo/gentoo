@@ -62,8 +62,8 @@ dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/QtPy test
 games-util/lgogdownloader gui
-kde-apps/kde-apps-meta:5 pim
-kde-apps/kdenetwork-meta:5 bittorrent telepathy
+kde-apps/kde-apps-meta pim
+kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra:5 pim
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive share

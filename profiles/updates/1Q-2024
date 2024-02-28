@@ -74,3 +74,15 @@ move media-gfx/fotoxx media-gfx/fotocx
 move dev-python/editorconfig-core-py dev-python/editorconfig
 move dev-python/urwid_readline dev-python/urwid-readline
 move dev-python/python-evdev dev-python/evdev
+slotmove kde-apps/kdeaccessibility-meta 5 0
+slotmove kde-apps/kdeadmin-meta 5 0
+slotmove kde-apps/kde-apps-meta 5 0
+slotmove kde-apps/kdecore-meta 5 0
+slotmove kde-apps/kdeedu-meta 5 0
+slotmove kde-apps/kdegames-meta 5 0
+slotmove kde-apps/kdegraphics-meta 5 0
+slotmove kde-apps/kdemultimedia-meta 5 0
+slotmove kde-apps/kdenetwork-meta 5 0
+slotmove kde-apps/kdepim-meta 5 0
+slotmove kde-apps/kdesdk-meta 5 0
+slotmove kde-apps/kdeutils-meta 5 0

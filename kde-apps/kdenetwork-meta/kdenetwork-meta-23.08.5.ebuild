@@ -7,25 +7,25 @@ DESCRIPTION="kdenetwork - merge this to pull in all kdenetwork-derived packages"
 HOMEPAGE="https://apps.kde.org/"
 
 LICENSE="metapackage"
-SLOT="5"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+bittorrent dropbox samba +screencast +webengine"
 
 RDEPEND="
-	>=kde-apps/kget-${PV}:${SLOT}
-	>=kde-apps/krdc-${PV}:${SLOT}
-	>=kde-misc/kdeconnect-${PV}:${SLOT}
+	>=kde-apps/kget-${PV}:5
+	>=kde-apps/krdc-${PV}:5
+	>=kde-misc/kdeconnect-${PV}:5
 	>=net-im/neochat-${PV}
 	>=net-im/tokodon-${PV}
-	>=net-irc/konversation-${PV}:${SLOT}
-	>=net-misc/kio-zeroconf-${PV}:${SLOT}
+	>=net-irc/konversation-${PV}:5
+	>=net-misc/kio-zeroconf-${PV}:5
 	>=net-news/alligator-${PV}
 	bittorrent? (
-		>=net-libs/libktorrent-${PV}:${SLOT}
-		>=net-p2p/ktorrent-${PV}:${SLOT}
+		>=net-libs/libktorrent-${PV}:5
+		>=net-p2p/ktorrent-${PV}:5
 	)
-	dropbox? ( >=kde-apps/dolphin-plugins-dropbox-${PV}:${SLOT} )
-	samba? ( >=kde-apps/kdenetwork-filesharing-${PV}:${SLOT} )
-	screencast? ( >=kde-apps/krfb-${PV}:${SLOT} )
-	webengine? ( >=kde-misc/kio-gdrive-${PV}:${SLOT} )
+	dropbox? ( >=kde-apps/dolphin-plugins-dropbox-${PV}:5 )
+	samba? ( >=kde-apps/kdenetwork-filesharing-${PV}:5 )
+	screencast? ( >=kde-apps/krfb-${PV}:5 )
+	webengine? ( >=kde-misc/kio-gdrive-${PV}:5 )
 "
