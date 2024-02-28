@@ -28,7 +28,7 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples nls openmp test"
+IUSE="doc examples nls openmp telemetry test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -41,7 +41,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
-	dev-libs/libgit2
+	dev-libs/libgit2:=
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
@@ -75,10 +75,6 @@ if [[ ${PV} == 9999 ]] ; then
 fi
 
 CHECKREQS_DISK_BUILD="1500M"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-7.0.0-werror.patch
-)
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -118,6 +114,8 @@ src_configure() {
 
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
+
+		-DKICAD_USE_SENTRY="$(usex telemetry)"
 
 		-DKICAD_SPICE_QA="$(usex test)"
 		-DKICAD_BUILD_QA_TESTS="$(usex test)"
