@@ -6,10 +6,15 @@ EAPI=8
 inherit virtualx autotools
 
 BASE_URI_ITCLTK="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-4-source"
+ITCL_VER=4.1.1
+ITK_VER=4.1.0
 
 DESCRIPTION="Widget collection for incrTcl/incrTk"
 HOMEPAGE="http://incrtcl.sourceforge.net/itcl/"
-SRC_URI="mirror://sourceforge/incrtcl/%5BIncr%20Widgets%5D/${PV}/${P}.tar.gz"
+SRC_URI="
+	mirror://sourceforge/incrtcl/%5BIncr%20Widgets%5D/${PV}/${P}.tar.gz
+	${BASE_URI_ITCLTK}/itcl%20${ITCL_VER}/itcl${ITCL_VER}.tar.gz
+	${BASE_URI_ITCLTK}/itk%20${ITK_VER}/itk${ITK_VER}.tar.gz"
 
 LICENSE="HPND Old-MIT tcltk"
 SLOT="0"
@@ -17,8 +22,8 @@ KEYWORDS="amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-tcltk/itcl
-	dev-tcltk/itk"
+	>=dev-tcltk/itcl-${ITCL_VER}
+	>=dev-tcltk/itk-${ITK_VER}"
 RDEPEND="${DEPEND}"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -42,17 +47,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local itcl_package=$(best_version dev-tcltk/itcl)
-	local itcl_version=${itcl_package#*/*-}
-	local itcl="itcl${itcl_version%-*}"
-	local itk_package=$(best_version dev-tcltk/itk)
-	local itk_version=${itk_package#*/*-}
-	local itk="itk${itk_version%-*}"
+	(cd ../itcl${ITCL_VER}; ./configure)
 	econf \
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
 		--with-tk="${EPREFIX}"/usr/$(get_libdir) \
-		--with-itcl="${EPREFIX}"/usr/$(get_libdir)/${itcl} \
-		--with-itk="${EPREFIX}"/usr/$(get_libdir)/${itk}
+		--with-itcl="${WORKDIR}"/itcl${ITCL_VER} \
+		--with-itk="${WORKDIR}"/itk${ITK_VER}
 }
 
 src_compile() {
