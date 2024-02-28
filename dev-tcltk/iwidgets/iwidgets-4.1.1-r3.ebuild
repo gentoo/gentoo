@@ -13,12 +13,12 @@ SRC_URI="mirror://sourceforge/incrtcl/%5BIncr%20Widgets%5D/${PV}/${P}.tar.gz"
 
 LICENSE="HPND Old-MIT tcltk"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-tcltk/itcl
-	dev-tcltk/itk"
+	>=dev-tcltk/itcl-4.2.4-r1
+	>=dev-tcltk/itk-4.1.0-r1"
 RDEPEND="${DEPEND}"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
