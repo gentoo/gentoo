@@ -48,10 +48,10 @@ OPTIONAL_DEPEND="
 	>=dev-python/xlrd-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
-	!x86? ( !hppa? (
+	!arm? ( !hppa? ( !ppc? ( !x86? (
 		>=dev-python/scipy-1.8.1[${PYTHON_USEDEP}]
 		dev-python/statsmodels[${PYTHON_USEDEP}]
-	) )
+	) ) ) )
 	X? (
 		|| (
 			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
