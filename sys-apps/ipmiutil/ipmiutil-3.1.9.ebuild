@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="IPMI Management Utilities"
 HOMEPAGE="https://ipmiutil.sourceforge.net/"
@@ -48,6 +48,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863590
+	# https://github.com/arcress0/ipmiutil/issues/21
+	filter-lto
+
 	local myeconfargs=(
 		--disable-systemd
 		--enable-sha256
