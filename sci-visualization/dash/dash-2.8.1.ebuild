@@ -14,7 +14,7 @@ SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 # Test need some packages not yet in the tree
 # flask_talisman
 # percy
