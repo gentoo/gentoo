@@ -12,7 +12,7 @@ SRC_URI="https://github.com/canonical/dqlite/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0/1.15.1"
 KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="lz4 test"
+IUSE="+lz4 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
