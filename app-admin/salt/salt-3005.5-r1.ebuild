@@ -86,7 +86,6 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/apache-libcloud[${PYTHON_USEDEP}]
-		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 		>=dev-python/certifi-2023.07.22[${PYTHON_USEDEP}]
 		dev-python/cherrypy[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.0[${PYTHON_USEDEP}]
@@ -119,7 +118,6 @@ REQUIRED_USE="|| ( raet zeromq )
 RESTRICT="!test? ( test ) x86? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/salt-3003-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3003-gentoolkit-revdep.patch"
 	"${FILESDIR}/salt-3002-tests.patch"
 	"${FILESDIR}/salt-3003.1-tests.patch"
@@ -191,7 +189,9 @@ python_prepare_all() {
 		tests/pytests/integration/cli/test_salt_deltaproxy.py
 		tests/pytests/integration/cli/test_salt_proxy.py
 		tests/pytests/integration/master/test_clear_funcs.py
+		tests/pytests/integration/modules/test_state.py
 		tests/pytests/integration/proxy/test_simple.py
+		tests/pytests/integration/runners/state/orchestrate/test_events.py
 		tests/pytests/integration/wheel/test_pillar_roots.py
 		tests/pytests/unit/client/ssh/test_ssh.py
 		tests/pytests/unit/cloud/test_map.py
@@ -204,6 +204,8 @@ python_prepare_all() {
 		tests/pytests/{integration,functional}/netapi tests/integration/netapi
 		tests/unit/cloud/clouds/test_joyent.py
 		tests/unit/config/schemas/test_ssh.py
+		tests/unit/modules/test_boto3_elasticsearch.py
+		tests/unit/modules/test_boto3_route53.py
 		tests/unit/modules/test_network.py
 		tests/unit/netapi/rest_tornado/test_saltnado.py
 		tests/unit/{states,modules}/test_zcbuildout.py
@@ -214,6 +216,9 @@ python_prepare_all() {
 	)
 
 	rm -r "${remove_test_files[@]}" || die
+
+	# axe the boto dep (bug #888235)
+	find "${S}/tests" -name 'test_boto_*.py' -delete || die
 
 	# removes contextvars, see bug: https://bugs.gentoo.org/799431
 	sed -i '/^contextvars/d' requirements/base.txt || die
@@ -265,6 +270,7 @@ python_test() {
 		# need root
 		tests/pytests/unit/modules/test_cmdmod.py::test_runas_env_sudo_group
 	)
+
 	# https://bugs.gentoo.org/924377
 	has_version 'sys-apps/systemd' || EPYTEST_DESELECT+=(
 		tests/pytests/unit/modules/test_aptpkg.py::test_autoremove
