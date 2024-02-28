@@ -31,6 +31,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
