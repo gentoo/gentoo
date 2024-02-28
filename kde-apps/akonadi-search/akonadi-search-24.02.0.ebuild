@@ -22,6 +22,7 @@ RESTRICT="test" # perpetually broken, bug 662378
 
 RDEPEND="
 	>=dev-libs/xapian-1.3:=[chert(+)]
+	>=dev-libs/ktextaddons-1.5.2:6
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
 	>=kde-apps/akonadi-${PVCUT}:6
 	>=kde-apps/akonadi-mime-${PVCUT}:6
