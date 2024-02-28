@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 # NB: these don't affect the build, they are only used for tests
 IUSE="cpu_flags_arm_crc32 cpu_flags_x86_sse4_2"
 
