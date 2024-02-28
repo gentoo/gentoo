@@ -443,12 +443,6 @@ app-misc/rmlint
 dev-python/boto
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-27)
-# Unmaintained upstream.  Already carries a few patches.
-# Depends on dev-python/nose.
-# Removal on 2024-03-28.  Bug #878693.
-app-misc/binwalk
-
-# Michał Górny <mgorny@gentoo.org> (2024-02-27)
 # Still depends on dev-python/nose.  No reverse dependencies.
 # Removal on 2024-03-28.  Bug #878721.
 sci-biology/biopandas
