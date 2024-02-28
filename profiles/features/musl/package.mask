@@ -180,6 +180,7 @@ app-editors/sublime-text
 app-editors/vscode
 app-editors/vscodium
 app-emulation/crossover-bin
+app-emulation/genymotion-bin
 app-misc/kryoflux-dtc
 app-office/libreoffice-bin
 app-office/libreoffice-bin-debug
