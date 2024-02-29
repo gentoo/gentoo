@@ -39,6 +39,7 @@ RESTRICT="!test? ( test )"
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 # Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
 COMMON_DEPEND="
+	app-crypt/libsecret
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
