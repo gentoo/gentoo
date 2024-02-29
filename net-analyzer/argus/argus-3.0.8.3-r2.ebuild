@@ -15,9 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug sasl tcpd"
 
-RDEPEND="
-	acct-group/argus
-	acct-user/argus
+DEPEND="
 	net-libs/libnsl:=
 	net-libs/libpcap
 	net-libs/libtirpc
@@ -25,7 +23,11 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	acct-group/argus
+	acct-user/argus
+	${DEPEND}
+"
 BDEPEND="
 	>=sys-devel/bison-1.28
 	app-alternatives/lex
