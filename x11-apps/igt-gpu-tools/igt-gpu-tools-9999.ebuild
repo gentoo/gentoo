@@ -7,7 +7,7 @@ if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="Intel GPU userland tools"
