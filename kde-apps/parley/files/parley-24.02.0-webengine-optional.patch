@@ -1,0 +1,161 @@
+From e45b4a51f7fd17d3ecc0cc73a014280646f810c8 Mon Sep 17 00:00:00 2001
+From: Andreas Cord-Landwehr <cordlandwehr@kde.org>
+Date: Sun, 18 Feb 2024 09:37:10 +0100
+Subject: [PATCH] Provide option to disable browser integration
+
+The web browser integration is only used for a small feature in the
+editor part and pulls in a very big dependency via webengine that
+sometimes is not wanted.
+
+(cherry picked from commit 8b66372fec610b1d7470e6b2dda80fce4fc6c530)
+---
+ CMakeLists.txt              |  6 +++++-
+ src/CMakeLists.txt          | 22 ++++++++++++++++++----
+ src/browserintegration.h.in |  4 ++++
+ src/editor/editor.cpp       |  5 +++++
+ 4 files changed, 32 insertions(+), 5 deletions(-)
+ create mode 100644 src/browserintegration.h.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a2624488..db8c5a1d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,13 +30,17 @@ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+ add_definitions(-DQT_NO_FOREACH)
+ add_definitions(-DKNEWSTUFFWIDGETS_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055A00)
+ 
++option(BUILD_BROWSERINTEGRATION "Build integration for accessing the Internet (requires QtWebengine)" ON)
++
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED
+   Core
+   Svg
+   Concurrent
+   Multimedia
+-  WebEngineWidgets
+ )
++if (BUILD_BROWSERINTEGRATION)
++    find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED WebEngineWidgets)
++endif()
+ 
+ find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} MODULE REQUIRED COMPONENTS
+   DocTools  #to produce the docbook
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index bf1e66ad..bac3ce7b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,6 +4,8 @@ add_subdirectory( settings )
+ # This library is used both by parley itself and the unit tests.
+ add_library(parley_LIB STATIC)
+ 
++configure_file(browserintegration.h.in browserintegration.h @ONLY)
++
+ target_sources(parley_LIB PRIVATE
+     collection/collection.cpp
+     collection/collection.h
+@@ -43,8 +45,6 @@ target_sources(parley_LIB PRIVATE
+     dashboard/gradereferencewidget.h
+     editor/audiowidget.cpp
+     editor/audiowidget.h
+-    editor/browserwidget.cpp
+-    editor/browserwidget.h
+     editor/comparisonwidget.cpp
+     editor/comparisonwidget.h
+     editor/conjugationwidget.cpp
+@@ -194,6 +194,12 @@ target_sources(parley_LIB PRIVATE
+     utils.cpp
+     utils.h
+ )
++if (BUILD_BROWSERINTEGRATION)
++    target_sources(parley_LIB PRIVATE
++        editor/browserwidget.cpp
++        editor/browserwidget.h
++    )
++endif()
+ 
+ ki18n_wrap_ui(parley_LIB
+     collection/entryfilterdialog.ui
+@@ -204,7 +210,6 @@ ki18n_wrap_ui(parley_LIB
+     editor/imagechooserwidget.ui
+     editor/audiowidget.ui
+     editor/synonymwidget.ui
+-    editor/browserwidget.ui
+     editor/summarywordwidget.ui
+     editor/latexwidget.ui
+     practice/practicesummarywidget.ui
+@@ -228,6 +233,11 @@ ki18n_wrap_ui(parley_LIB
+     statistics/statisticsmainwindow.ui
+     dashboard/dashboard.ui
+ )
++if (BUILD_BROWSERINTEGRATION)
++    ki18n_wrap_ui(parley_LIB
++        editor/browserwidget.ui
++    )
++endif()
+ 
+ kconfig_add_kcfg_files(parley_LIB
+     settings/prefs.kcfgc
+@@ -298,8 +308,12 @@ target_link_libraries(parley_LIB
+     Qt${QT_MAJOR_VERSION}::Widgets
+     Qt${QT_MAJOR_VERSION}::Concurrent
+     Qt${QT_MAJOR_VERSION}::Multimedia
+-    Qt${QT_MAJOR_VERSION}::WebEngineWidgets
+ )
++if (BUILD_BROWSERINTEGRATION)
++    target_link_libraries(parley_LIB
++       Qt${QT_MAJOR_VERSION}::WebEngineWidgets
++    )
++endif()
+ 
+ add_executable(parley
+     main.cpp
+diff --git a/src/browserintegration.h.in b/src/browserintegration.h.in
+new file mode 100644
+index 00000000..2b350055
+--- /dev/null
++++ b/src/browserintegration.h.in
+@@ -0,0 +1,4 @@
++// SPDX-License-Identifier: MIT
++// SPDX-FileCopyrightText: Andreas Cord-Landwehr <cordlandwehr@kde.org>
++
++#cmakedefine BUILD_BROWSERINTEGRATION
+diff --git a/src/editor/editor.cpp b/src/editor/editor.cpp
+index 65d3146b..8a087c48 100644
+--- a/src/editor/editor.cpp
++++ b/src/editor/editor.cpp
+@@ -7,6 +7,7 @@
+ */
+ 
+ #include "editor.h"
++#include "browserintegration.h"
+ 
+ #include <config-parley.h>
+ 
+@@ -24,7 +25,9 @@
+ #include "wordtypeview.h"
+ 
+ #include "audiowidget.h"
++#ifdef BUILD_BROWSERINTEGRATION
+ #include "browserwidget.h"
++#endif
+ #include "comparisonwidget.h"
+ #include "imagechooserwidget.h"
+ #include "inflectionwidget.h"
+@@ -321,6 +324,7 @@ void EditorWindow::initDockWidgets()
+     m_mainWindow->tabifyDockWidget(imageDock, audioDock);
+ 
+     // browser
++#ifdef BUILD_BROWSERINTEGRATION
+     QDockWidget *browserDock = new QDockWidget(i18n("Internet"), this);
+     browserDock->setObjectName(QStringLiteral("BrowserDock"));
+     BrowserWidget *htmlPart = new BrowserWidget(browserDock);
+@@ -334,6 +338,7 @@ void EditorWindow::initDockWidgets()
+     browserDock->setVisible(false);
+     connect(m_vocabularyView, &VocabularyView::translationChanged, htmlPart, &BrowserWidget::setTranslation);
+     m_mainWindow->tabifyDockWidget(summaryDock, browserDock);
++#endif
+ 
+     // LaTeX
+     QDockWidget *latexDock = new QDockWidget(i18n("LaTeX"), this);
+-- 
+2.44.0
+
