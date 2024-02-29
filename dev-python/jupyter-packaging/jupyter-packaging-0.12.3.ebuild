@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,8 +35,13 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# require Internet
-	tests/test_build_api.py::test_build_package
-	tests/test_build_api.py::test_deprecated_metadata
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# require Internet
+		tests/test_build_api.py::test_build_package
+		tests/test_build_api.py::test_deprecated_metadata
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p pytest_mock -o tmp_path_retention_policy=all
+}
