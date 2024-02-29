@@ -36,7 +36,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/elfutils
 	dev-libs/glib:2
-	sys-apps/kmod:=
+	sys-apps/kmod
 	sys-libs/zlib:=
 	sys-process/procps:=
 	virtual/libudev:=
@@ -47,7 +47,7 @@ RDEPEND="
 	chamelium? (
 		dev-libs/xmlrpc-c:=[curl]
 		sci-libs/gsl:=
-		media-libs/alsa-lib:=
+		media-libs/alsa-lib
 	)
 	overlay? (
 		>=x11-libs/libXrandr-1.3
