@@ -34,6 +34,8 @@ RDEPEND="${DEPEND}
 	dev-vcs/git
 "
 
+PATCHES=( "${FILESDIR}/${P}-deps.patch" ) # bug 925728, pending upstream
+
 src_prepare() {
 	ecm_src_prepare
 	# solid, qtdbus only required by mountiso
