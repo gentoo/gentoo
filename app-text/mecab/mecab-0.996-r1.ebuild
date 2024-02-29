@@ -30,16 +30,13 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.98-iconv.patch
 	"${FILESDIR}"/${PN}-0.996-clang-16-register.patch
+	"${FILESDIR}"/0001-configure-remove-terrible-horrible-code-that-resets-.patch
 )
 
 HTML_DOCS=( doc/. )
 
 src_prepare() {
 	default
-	sed -i \
-		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
-		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
-		configure.in
 	sed -i "s:/lib:/$(get_libdir):" ${PN}rc.in
 
 	mv configure.{in,ac} || die
