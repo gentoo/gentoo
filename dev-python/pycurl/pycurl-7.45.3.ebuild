@@ -43,6 +43,7 @@ BDEPEND="
 	test? (
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
