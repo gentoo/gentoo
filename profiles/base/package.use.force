@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2024-02-28)
+# A large number of packages still need /usr/bin/pkg-config
+# including meson.eclass consumers.
+# This is largely a QA smoketesting flag, and as such, should
+# not be enabled by users.
+dev-util/pkgconf native-symlinks
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-02-17)
 # Currently fails to build with gcc, and either way the current upstream
 # makes it clear that non-clang is not a supported configuration.
