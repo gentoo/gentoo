@@ -7,6 +7,7 @@
 # This is largely a QA smoketesting flag, and as such, should
 # not be enabled by users.
 dev-util/pkgconf native-symlinks
+virtual/pkgconfig native-symlinks
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-02-17)
 # Currently fails to build with gcc, and either way the current upstream
