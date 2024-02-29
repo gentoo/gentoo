@@ -16,7 +16,7 @@ index c188a8c3..c2902144 100644
      I18n
      KIO
      TextWidgets
-+    ConfigGui
++    Config
      CoreAddons
      Solid
  )
