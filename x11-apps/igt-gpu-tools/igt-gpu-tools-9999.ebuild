@@ -91,16 +91,19 @@ src_configure() {
 	use overlay && use X && overlay_backends+="x,"
 
 	local emesonargs=(
-		$(meson_feature chamelium)
-		$(meson_feature doc docs)
-		$(meson_feature man)
 		$(meson_feature overlay)
-		$(meson_feature runner)
-		$(meson_feature tests)
-		$(meson_feature valgrind)
-		$(meson_feature unwind libunwind)
 		-Doverlay_backends=${overlay_backends%?}
+		$(meson_feature chamelium)
+		$(meson_feature valgrind)
+		$(meson_feature man)
+		-Dtestplan=disabled
+		-Dsphinx=disabled
+		$(meson_feature doc docs)
+		$(meson_feature tests)
+		-Dxe_driver=disabled
 		-Dlibdrm_drivers=${gpus%?}
+		$(meson_feature unwind libunwind)
+		$(meson_feature runner)
 	)
 	meson_src_configure
 }
