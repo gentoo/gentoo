@@ -15,7 +15,6 @@ SLOT="0"
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 IUSE="cron"
-RESTRICT="test"
 
 DEPEND="
 	acct-user/gvm
@@ -31,14 +30,17 @@ RDEPEND="
 	cron? ( virtual/cron )
 "
 
+distutils_enable_tests unittest
+
 python_install() {
 	distutils-r1_python_install
 
-	#greenbone-feed-sync should not be run as root to avoid changing file permissions
+	# greenbone-feed-sync should not be run as root to avoid changing file permissions
 	insinto /etc/sudoers.d
 	newins - greenbone-feed-sync <<-EOF
 	gvm ALL = NOPASSWD: /usr/bin/greenbone-feed-sync
-EOF
+	EOF
+
 	fperms 0750 /etc/sudoers.d
 	fperms 0440 /etc/sudoers.d/greenbone-feed-sync
 
