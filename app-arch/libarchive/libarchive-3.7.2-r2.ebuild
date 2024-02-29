@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit multilib-minimal toolchain-funcs verify-sig
+inherit libtool multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Multi-format archive and compression library"
 HOMEPAGE="
@@ -77,6 +77,13 @@ PATCHES=(
 	# (we can simply update the command since we don't support old lrzip)
 	"${FILESDIR}/${P}-lrzip.patch"
 )
+
+src_prepare() {
+	default
+
+	# Needed for flags to be respected w/ LTO
+	elibtoolize
+}
 
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923
