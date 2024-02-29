@@ -5,7 +5,6 @@
 depend() {
 	need localmount
 	use logger
-	before nfsmount
 }
 
 checkxattr() {
