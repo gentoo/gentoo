@@ -13,9 +13,7 @@ inherit ${GIT_ECLASS} meson python-any-r1
 DESCRIPTION="Intel GPU userland tools"
 
 HOMEPAGE="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
-if [[ ${PV} = *9999* ]]; then
-	SRC_URI=""
-else
+if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.x.org/releases/individual/app/${P}.tar.xz"
 fi
