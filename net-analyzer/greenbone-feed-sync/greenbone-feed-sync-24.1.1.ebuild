@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} pypy3)
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 systemd
 
@@ -16,7 +16,7 @@ LICENSE="GPL-3+"
 KEYWORDS="~amd64"
 IUSE="cron"
 
-DEPEND="
+COMMON_DEPEND="
 	acct-user/gvm
 	net-misc/rsync
 	>=net-analyzer/gvmd-22.5.0
@@ -24,9 +24,12 @@ DEPEND="
 	>=dev-python/rich-13.2.0[${PYTHON_USEDEP}]
 	>=dev-python/shtab-1.6.5[${PYTHON_USEDEP}]
 "
-
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( net-analyzer/pontos[${PYTHON_USEDEP}] )
+"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	cron? ( virtual/cron )
 "
 
