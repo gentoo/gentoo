@@ -59,18 +59,8 @@ RDEPEND+=" ${RDEPEND}
 PDEPEND="emacs? ( >=app-emacs/puppet-mode-0.3-r1 )"
 
 all_ruby_prepare() {
-	# Avoid spec that require unpackaged json-schema.
-	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
-
 	# fix systemd path
 	eapply -p0 "${FILESDIR}/puppet-systemd.patch"
-
-	# Avoid specs that can only run in the puppet.git repository. This
-	# should be narrowed down to the specific specs.
-	rm spec/integration/parser/compiler_spec.rb || die
-
-	# Avoid failing spec that need further investigation.
-	rm spec/unit/module_tool/metadata_spec.rb || die
 }
 
 each_ruby_install() {
