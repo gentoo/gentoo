@@ -35,8 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local ITCL_VERSION=$(best_version dev-tcltk/itcl)
-	ITCL_VERSION=${ITCL_VERSION:15} # remove category, package name and dash
+	local itcl_package=$(best_version dev-tcltk/itcl)
+	local itcl_version=${itcl_package#*/*-}
+	local ITCL_VERSION="${itcl_version%-*}"
 	source "${EPREFIX}"/usr/$(get_libdir)/itcl${ITCL_VERSION}*/itclConfig.sh || die
 	econf \
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
