@@ -1,0 +1,22 @@
+--- a/library/std/Cargo.toml	2023-08-03 08:13:07.000000000 -0400
++++ b/library/std/Cargo.toml	2023-12-04 14:40:59.448304727 -0500
+@@ -7,7 +7,7 @@
+ edition = "2021"
+ 
+ [lib]
+-crate-type = ["dylib", "rlib"]
++crate-type = ["rlib"]
+ 
+ [dependencies]
+ alloc = { path = "../alloc" }
+--- a/library/test/Cargo.toml	2023-12-04 14:49:18.228922209 -0500
++++ b/library/test/Cargo.toml	2023-12-04 14:49:56.612837892 -0500
+@@ -4,7 +4,7 @@
+ edition = "2021"
+ 
+ [lib]
+-crate-type = ["dylib", "rlib"]
++crate-type = ["rlib"]
+ 
+ [dependencies]
+ getopts = { version = "0.2.21", features = ['rustc-dep-of-std'] }
