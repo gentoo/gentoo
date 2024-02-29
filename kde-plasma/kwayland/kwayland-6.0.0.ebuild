@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="true"
 KFMIN=6.0
 QTMIN=6.6.2
-inherit ecm plasma.kde.org
+inherit ecm flag-o-matic plasma.kde.org
 
 DESCRIPTION="Qt-style API to interact with the wayland-client API"
 HOMEPAGE="https://invent.kde.org/frameworks/kwayland"
@@ -35,3 +35,8 @@ BDEPEND="
 	>=dev-qt/qtwayland-${QTMIN}:6
 	>=dev-util/wayland-scanner-1.19.0
 "
+
+src_configure() {
+	filter-lto # bug 866575
+	ecm_src_configure
+}
