@@ -130,7 +130,9 @@ src_prepare() {
 }
 
 src_configure() {
-	# aliasing unsafe wrt #310393
+	# ODR violation (https://gitlab.com/inkscape/lib2geom/-/issues/71, bug #859628)
+	filter-lto
+	# Aliasing unsafe (bug #310393)
 	append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
