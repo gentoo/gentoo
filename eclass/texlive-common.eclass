@@ -199,7 +199,8 @@ efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then
 		if [[ -z ${ROOT} && -x "${EPREFIX}"/usr/bin/fmtutil-sys ]] ; then
 			einfo "Rebuilding formats"
-			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null || die
+			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null ||
+				die -n "fmtutil-sys returned non-zero exit status ${?}"
 		else
 			ewarn "Cannot run fmtutil-sys for some reason."
 			ewarn "Your formats might be inconsistent with your installed ${PN} version"
