@@ -12,7 +12,7 @@ description_reload="re-exec the daemon, while maintaining open connections"
 
 
 depend() {
-    after ntp-client ntpd nfs nfsmount corosync
+    after ntp-client ntpd nfs corosync
 }
 
 reload() {
