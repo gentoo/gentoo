@@ -1,0 +1,11 @@
+--- a/configure	2024-02-29 19:28:27.192049469 +0100
++++ b/configure	2024-02-29 19:28:41.507876154 +0100
+@@ -2627,7 +2627,7 @@
+ 
+     # Configure the installer.
+ 
+-    INSTALL='$(SHELL) $(srcdir)/tclconfig/install-sh -c'
++    INSTALL='$(SHELL) install -c'
+     INSTALL_DATA_DIR='${INSTALL} -d -m 755'
+     INSTALL_DATA='${INSTALL} -m 644'
+     INSTALL_PROGRAM='${INSTALL} -m 755'

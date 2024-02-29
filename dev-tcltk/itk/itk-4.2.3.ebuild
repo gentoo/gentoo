@@ -27,6 +27,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	stat64 # used to test for Large File Support
 )
 
+PATCHES=( "${FILESDIR}"/${P}-install.patch )
+
+UNINSTALL_IGNORE='/usr/lib.*/itk.*/library'
+
 src_prepare() {
 	sed 's:-pipe::g' -i configure || die
 	default
@@ -64,5 +68,5 @@ src_install() {
 	LDPATH="${EPREFIX}/usr/$(get_libdir)/${PN}${MY_PV}/"
 	EOF
 	doenvd "${T}"/34${PN}
-	dosym . /usr/$(get_libdir)/${PN}${MY_PV}/library
+	dosym . /usr/$(get_libdir)/${PN}${PV}/library
 }
