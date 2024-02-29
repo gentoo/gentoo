@@ -189,10 +189,11 @@ src_install() {
 	if use test; then
 		# Preventing tests from being installed in the first place is a moving target,
 		# just axe them all afterwards.
-		rm -rf "${ED}"/etc/fwupd/remotes.d/fwupd-tests.conf \
+		rm -rf \
 			"${ED}"/usr/libexec/installed-tests \
 			"${ED}"/usr/share/fwupd/device-tests \
 			"${ED}"/usr/share/fwupd/host-emulate.d/thinkpad-p1-iommu.json.gz \
+			"${ED}"/usr/share/fwupd/remotes.d/fwupd-tests.conf \
 			"${ED}"/usr/share/installed-tests \
 		|| die
 	fi
