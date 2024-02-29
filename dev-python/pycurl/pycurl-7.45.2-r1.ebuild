@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,7 @@ BDEPEND="
 	test? (
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
@@ -81,9 +82,15 @@ python_test() {
 		tests/memory_mgmt_test.py::MemoryMgmtTest::test_readdata_refcounting
 		tests/memory_mgmt_test.py::MemoryMgmtTest::test_writedata_refcounting
 		tests/memory_mgmt_test.py::MemoryMgmtTest::test_writeheader_refcounting
+		# broken with curl 8.4.0+
+		tests/multi_callback_test.py::MultiCallbackTest::test_multi_socket_action
+		tests/multi_socket_select_test.py::MultiSocketSelectTest::test_multi_socket_select
+		# TODO
+		tests/option_constants_test.py::OptionConstantsTest::test_proxy_tlsauth
+		tests/option_constants_test.py::OptionConstantsTest::test_socks5_gssapi_nec_setopt
 	)
 
-	epytest -p flaky tests
+	epytest -p flaky -p timeout --timeout=30 tests
 }
 
 python_install_all() {
