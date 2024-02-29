@@ -1,6 +1,6 @@
 diff -ruN quarter/CMakeLists.txt my/CMakeLists.txt
 --- quarter/CMakeLists.txt	2024-02-05 00:29:17.000000000 +0100
-+++ my/CMakeLists.txt	2024-02-24 05:23:51.451634039 +0100
++++ my/CMakeLists.txt	2024-02-29 02:46:06.768299838 +0100
 @@ -96,17 +96,17 @@
  
  if(QUARTER_USE_QT6)
@@ -9,7 +9,7 @@ diff -ruN quarter/CMakeLists.txt my/CMakeLists.txt
 +    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets Designer REQUIRED)
    else()
 -    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets QUIET)
-+    find_package(Qt6 COMPONENTS Widgets UiTools OpenGL OpenGLWidgets REQUIRED)
++    find_package(Qt6 COMPONENTS Widgets OpenGL OpenGLWidgets REQUIRED)
    endif()
  endif()
  
@@ -19,7 +19,24 @@ diff -ruN quarter/CMakeLists.txt my/CMakeLists.txt
 +    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL Designer REQUIRED)
    else()
 -    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL QUIET)
-+    find_package(Qt5 COMPONENTS Widgets UiTools OpenGL REQUIRED)
++    find_package(Qt5 COMPONENTS Widgets OpenGL REQUIRED)
    endif()
  endif()
  
+@@ -116,14 +116,14 @@
+ endif()
+ 
+ if(Qt6_FOUND)
+-  set(QUARTER_QT_TARGETS Qt6::Widgets Qt6::UiTools Qt6::OpenGL Qt6::OpenGLWidgets)
++  set(QUARTER_QT_TARGETS Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets)
+   set(QUARTER_PLUGIN_QT_TARGETS Qt6::Designer)
+   string(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_VERSION_MAJOR "${Qt6Core_VERSION_STRING}")
+   string(REGEX REPLACE "^[0-9]+\\.([0-9]+)\\.[0-9]+.*" "\\1" QT_VERSION_MINOR "${Qt6Core_VERSION_STRING}")
+   string(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" QT_VERSION_PATCH "${Qt6Core_VERSION_STRING}")
+   set(QUARTER_PKG_DEPS "${QUARTER_PKG_DEPS} Qt6Widgets Qt6UiTools Qt6OpenGL Qt6OpenGLWidgets Qt6Designer")
+ elseif(Qt5_FOUND)
+-  set(QUARTER_QT_TARGETS Qt5::Widgets Qt5::UiTools Qt5::OpenGL)
++  set(QUARTER_QT_TARGETS Qt5::Widgets Qt5::OpenGL)
+   set(QUARTER_PLUGIN_QT_TARGETS Qt5::Designer)
+   string(REGEX REPLACE "^([0-9]+)\\.[0-9]+\\.[0-9]+.*" "\\1" QT_VERSION_MAJOR "${Qt5Core_VERSION_STRING}")
+   string(REGEX REPLACE "^[0-9]+\\.([0-9]+)\\.[0-9]+.*" "\\1" QT_VERSION_MINOR "${Qt5Core_VERSION_STRING}")
