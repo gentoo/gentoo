@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://openargus.org/"
@@ -59,6 +59,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861146
+	# https://github.com/openargus/argus/issues/8
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use debug && touch .debug # enable debugging
 
 	econf \
