@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-02-29)
+# sys-apps/xdg-desktop-portal is not keyworded here, #925731
+x11-base/xwayland libei
+
 # matoro <matoro_gentoo@matoro.tk> (2024-02-06)
 # Pulls in dev-python/scipy, which does not pass tests, #923067
 media-video/pipewire liblc3
