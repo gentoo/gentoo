@@ -23,7 +23,7 @@ CRATES="
 	anstyle-query@1.0.2
 	anstyle-wincon@3.0.2
 	anstyle@1.0.6
-	anyhow@1.0.79
+	anyhow@1.0.80
 	argfile@0.1.6
 	arrayvec@0.7.4
 	ascii-canvas@3.0.0
@@ -35,7 +35,7 @@ CRATES="
 	bit-vec@0.6.3
 	bitflags@1.3.2
 	bitflags@2.4.2
-	bstr@1.9.0
+	bstr@1.9.1
 	bumpalo@3.14.0
 	cachedir@0.3.1
 	cast@0.3.0
@@ -46,8 +46,8 @@ CRATES="
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.0
-	clap_builder@4.5.0
+	clap@4.5.1
+	clap_builder@4.5.1
 	clap_complete@4.5.0
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.5.0
@@ -55,8 +55,8 @@ CRATES="
 	clap_derive@4.5.0
 	clap_lex@0.7.0
 	clearscreen@2.0.1
-	codspeed-criterion-compat@2.3.3
-	codspeed@2.3.3
+	codspeed-criterion-compat@2.4.0
+	codspeed@2.4.0
 	colorchoice@1.0.0
 	colored@2.1.0
 	console@0.15.8
@@ -112,9 +112,6 @@ CRATES="
 	hermit-abi@0.3.5
 	hexf-parse@0.2.1
 	home@0.5.9
-	hoot@0.1.3
-	hootbin@0.1.1
-	httparse@1.8.0
 	humantime@2.1.0
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.60
@@ -129,7 +126,7 @@ CRATES="
 	inotify-sys@0.1.5
 	inotify@0.9.6
 	insta-cmd@0.4.0
-	insta@1.34.0
+	insta@1.35.1
 	instant@0.1.12
 	is-docker@0.2.0
 	is-macro@0.3.5
@@ -239,10 +236,10 @@ CRATES="
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
 	seahash@4.1.0
-	semver@1.0.21
-	serde-wasm-bindgen@0.6.3
-	serde@1.0.196
-	serde_derive@1.0.196
+	semver@1.0.22
+	serde-wasm-bindgen@0.6.4
+	serde@1.0.197
+	serde_derive@1.0.197
 	serde_derive_internals@0.26.0
 	serde_json@1.0.113
 	serde_spanned@0.6.5
@@ -265,7 +262,7 @@ CRATES="
 	strum_macros@0.25.3
 	subtle@2.5.0
 	syn@1.0.109
-	syn@2.0.48
+	syn@2.0.51
 	tempfile@3.10.0
 	term@0.7.0
 	termcolor@1.4.1
@@ -309,7 +306,7 @@ CRATES="
 	unicode_names2@1.2.1
 	unicode_names2_generator@1.2.1
 	untrusted@0.9.0
-	ureq@2.9.5
+	ureq@2.9.6
 	url@2.5.0
 	utf8parse@0.2.1
 	uuid-macro-internal@1.7.0
