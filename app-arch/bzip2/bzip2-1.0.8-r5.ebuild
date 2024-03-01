@@ -16,7 +16,7 @@ SRC_URI+=" verify-sig? ( https://sourceware.org/pub/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos"
 IUSE="static static-libs"
 
 BDEPEND="
