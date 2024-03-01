@@ -397,6 +397,8 @@ KEYWORDS="~amd64 ~loong"
 BDEPEND="
 	>=virtual/rust-1.71
 "
+RDEPEND="dev-libs/jemalloc:="
+DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/.*"
 
@@ -420,6 +422,8 @@ src_configure() {
 }
 
 src_compile() {
+	local -x CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+	local -x JEMALLOC_OVERRIDE="${ESYSROOT}/usr/$(get_libdir)"/libjemalloc.so
 	cargo_src_compile --bin ruff --bin ruff_shrinking
 
 	local releasedir
