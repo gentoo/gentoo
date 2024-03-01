@@ -12,7 +12,7 @@ dev-lang/php capstone
 # matoro <matoro_gentoo@matoro.tk> (2023-12-22)
 # Overflows R_MIPS_TLS_GOTTPREL with LTO
 # https://github.com/rust-lang/rust/issues/118794
-dev-lang/rust lto
+~dev-lang/rust-1.74.1 lto
 
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # media-libs/libjxl casualties
