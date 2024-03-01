@@ -39,7 +39,7 @@ src_unpack() {
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
-	eapply_user
+	default
 }
 
 src_install() {
