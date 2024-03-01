@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Style for QtQuickControls 2 that uses QWidget's QStyle for painting"
 
 LICENSE="|| ( GPL-2+ LGPL-3+ )"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 DEPEND="
