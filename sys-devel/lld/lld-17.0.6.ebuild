@@ -58,6 +58,9 @@ src_unpack() {
 }
 
 src_configure() {
+	# ODR violations (https://github.com/llvm/llvm-project/issues/83529, bug #922353)
+	filter-lto
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
