@@ -1,0 +1,18 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 78ed70a..4bb4c0a 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -14,10 +14,11 @@ def pytest_collection_modifyitems(items):
+ 
+         marker = marker_getter('xfail')
+ 
++        # requires pytest-cov
+         # Need to query the args because conditional xfail tests still have
+         # the xfail mark even if they are not expected to fail
+-        if marker and (not marker.args or marker.args[0]):
+-            item.add_marker(pytest.mark.no_cover)
++        #if marker and (not marker.args or marker.args[0]):
++        #    item.add_marker(pytest.mark.no_cover)
+ 
+ 
+ def set_tzpath():
