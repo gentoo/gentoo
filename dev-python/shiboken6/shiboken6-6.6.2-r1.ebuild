@@ -127,6 +127,7 @@ src_configure() {
 			-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 			-DPYTHON_EXECUTABLE="${PYTHON}"
 			-DUSE_PYTHON_VERSION="${EPYTHON#python}"
+			-DFORCE_LIMITED_API=OFF
 		)
 		# CMakeLists.txt expects LLVM_INSTALL_DIR as an environment variable.
 		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix)"
