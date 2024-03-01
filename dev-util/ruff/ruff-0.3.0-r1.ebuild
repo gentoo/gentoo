@@ -395,11 +395,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~loong"
 
 BDEPEND="
-	dev-util/patchelf
 	>=virtual/rust-1.71
 "
 
-QA_FLAGS_IGNORED="usr/bin/.* usr/lib.*/libruff.*.so"
+QA_FLAGS_IGNORED="usr/bin/.*"
 
 PATCHES=(
 	"${FILESDIR}/ruff-0.1.14-tests.patch"
@@ -421,14 +420,10 @@ src_configure() {
 }
 
 src_compile() {
-	cargo_src_compile
+	cargo_src_compile --bin ruff --bin ruff_shrinking
 
-	local solib releasedir
+	local releasedir
 	releasedir=target/$(usex 'debug' 'debug' 'release')
-
-	for solib in "target/$(usex 'debug' 'debug' 'release')"/*.so; do
-		patchelf --set-soname "${solib##*/}" "${solib}" || die
-	done
 
 	${releasedir}/ruff generate-shell-completion bash > ruff-completion.bash || die
 	${releasedir}/ruff generate-shell-completion zsh > ruff-completion.zsh || die
@@ -441,8 +436,7 @@ src_test() {
 src_install() {
 	local releasedir=target/$(usex 'debug' 'debug' 'release')
 
-	dobin ${releasedir}/ruff{,_{dev,python_formatter,shrinking}}
-	dolib.so "${releasedir}"/*.so
+	dobin ${releasedir}/ruff{,_shrinking}
 
 	newbashcomp ruff-completion.bash ruff
 	newzshcomp ruff-completion.zsh _ruff
