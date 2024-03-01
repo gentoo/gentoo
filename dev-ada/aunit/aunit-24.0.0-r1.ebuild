@@ -14,6 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc"
 
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
@@ -21,15 +22,27 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
+src_prepare() {
+	default
+	sed -i \
+		-e "s|@PF@|${PF}|g" \
+		lib/gnat/aunit.gpr \
+		|| die
+}
+
 src_compile() {
 	emake GPROPTS_EXTRA="-j$(makeopts_jobs) -v -cargs ${ADAFLAGS}"
+	if use doc; then
+		emake -C doc html-all
+		emake -C doc txt-all
+	fi
 }
 
 src_install() {
 	emake INSTALL="${D}"/usr install
 	einstalldocs
-	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
-	rmdir "${D}"/usr/share/examples || die
 	rm -r "${D}"/usr/share/gpr/manifests || die
 }
 
