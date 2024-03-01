@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake distutils-r1
+inherit cmake distutils-r1 flag-o-matic
 
 DESCRIPTION="assembly/assembler framework + bindings"
 HOMEPAGE="https://www.keystone-engine.org/"
@@ -75,6 +75,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# ODR violations in bundled LLVM (bug #924866)
+	filter-lto
+
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DCMAKE_CONFIGURATION_TYPES="Gentoo"
