@@ -36,6 +36,11 @@ DEPEND="${RDEPEND}
 	abi_x86_64? ( ${ASM_DEP} )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.0-backport-pr392.patch"
+	"${FILESDIR}/${PN}-2.3.0-backport-c6f2ba4.patch"
+)
+
 src_prepare() {
 	default
 	sed -e "/^dist_doc_DATA/s/COPYING //" -i Makefile.am || die
