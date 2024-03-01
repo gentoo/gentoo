@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,12 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc"
 
 DEPEND="${ADA_DEPS}
 	dev-ada/gprconfig_kb[${ADA_USEDEP}]"
 RDEPEND="${DEPEND}"
+BDEPEND="doc? ( dev-python/sphinx )"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=( "${FILESDIR}"/${PN}-22.0.0-gentoo.patch )
@@ -56,6 +58,11 @@ src_compile() {
 		gnatmake -j$(makeopts_jobs) ${inc_flags} ${lib} $ADAFLAGS \
 			-largs ${LDFLAGS} gpr_imports.o || die
 	done
+	if use doc; then
+		emake -C doc txt
+		emake -C doc info
+		emake -C doc html
+	fi
 }
 
 src_install() {
@@ -64,5 +71,12 @@ src_install() {
 	doexe ${lib_progs}
 	insinto /usr/share/gpr
 	doins share/_default.gpr
+	local HTML_DOCS=
+	local DOCS=README.md
+	if use doc; then
+		DOCS+=" examples doc/txt/gprbuild_ug.txt"
+		HTML_DOCS+="doc/html/*"
+		doinfo doc/info/gprbuild_ug.info
+	fi
 	einstalldocs
 }
