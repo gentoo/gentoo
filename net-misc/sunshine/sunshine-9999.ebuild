@@ -235,6 +235,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Apply CBS patch.
+	cd "${WORKDIR}"/build-deps || die
+	eapply "${FILESDIR}"/${PN}-cross-cbs.patch
+
 	# Apply general ffmpeg patches.
 	cd "${WORKDIR}"/build-deps/ffmpeg_sources/ffmpeg || die
 	eapply "${WORKDIR}"/build-deps/ffmpeg_patches/ffmpeg/*.patch
@@ -327,8 +331,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/ffmpeg
-		$(usex arm64 -DCROSS_COMPILE_ARM=yes "")
-		$(usex ppc64 -DCROSS_COMPILE_PPC=yes "")
 	)
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_configure
 
