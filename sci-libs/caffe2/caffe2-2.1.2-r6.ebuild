@@ -8,13 +8,11 @@ inherit python-single-r1 cmake cuda flag-o-matic prefix
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
-IDEEP_VERSION="6f4d653802bd43bc4eda515460df9f90353dbebe"
 
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
-SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${MYP}.tar.gz
-onednn? ( https://github.com/intel/ideep/archive/${IDEEP_VERSION}.tar.gz -> ideep-${IDEEP_VERSION}.tar.gz )
-"
+SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${MYP}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -69,6 +67,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	cuda? ( >=dev-libs/cutlass-3.1.0 )
+	onednn? ( sci-libs/ideep )
 	dev-libs/psimd
 	dev-libs/FP16
 	dev-libs/FXdiv
@@ -210,7 +209,7 @@ src_configure() {
 			-DUSE_MKLDNN=ON
 			-DMKLDNN_FOUND=ON
 			-DMKLDNN_LIBRARIES=dnnl
-			-DMKLDNN_INCLUDE_DIR="${ESYSROOT}/usr/include/oneapi/dnnl;${WORKDIR}/ideep-${IDEEP_VERSION}/include"
+			-DMKLDNN_INCLUDE_DIR="${ESYSROOT}/usr/include/oneapi/dnnl"
 		)
 	fi
 
