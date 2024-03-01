@@ -3,20 +3,15 @@
 
 EAPI=8
 
-if [[ ${PV} == *9999 ]]; then
-	EGIT_REPO_URI="https://github.com/seanmiddleditch/libtelnet.git"
-	inherit git-r3 cmake
-else
-	inherit autotools
-	SRC_URI="https://github.com/seanmiddleditch/libtelnet/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+inherit autotools
 
 DESCRIPTION="Simple RFC-compliant TELNET implementation as a C library"
 HOMEPAGE="https://github.com/seanmiddleditch/libtelnet"
+SRC_URI="https://github.com/seanmiddleditch/libtelnet/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}"
@@ -27,12 +22,7 @@ BDEPEND="
 
 src_prepare() {
 	default
-	if [[ ${PV} = *9999 ]]; then
-		eapply "${FILESDIR}"/${P}-doc.patch
-		cmake_src_prepare
-	else
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_install() {
