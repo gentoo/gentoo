@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-02-29)
+# Ancient fork of gmp from 2017. Various build issues, fails tests. All
+# reverse dependencies turned out to be incorrect or preferred gmp
+# anyways. No path forward to keeping it buildable, no use case for
+# keeping it around.  Bug #812950, #874537, #925308
+# Removal on 2024-03-31.
+sci-libs/mpir
+
 # Michał Górny <mgorny@gentoo.org> (2024-02-29)
 # Breaks xfce-base/xfdesktop (both 4.19.0 and masked 4.19.1).
 # https://gitlab.xfce.org/xfce/xfdesktop/-/issues/282
