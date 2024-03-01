@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="double-precision minimal"
 
+# qhull: newer meshlab supports system re-entrant version
+# levmar: build system hardcodes vendored copy
 DEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/muParser
@@ -31,9 +33,6 @@ DEPEND="
 	media-libs/glew:0=
 	=media-libs/lib3ds-1*
 	media-libs/openctm:=
-	media-libs/qhull:=
-	sci-libs/levmar
-	sci-libs/mpir:=
 "
 RDEPEND="${DEPEND}"
 
