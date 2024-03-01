@@ -506,7 +506,7 @@ distutils_enable_sphinx() {
 	local deps autodoc=1 d
 	deps=">=dev-python/sphinx-5.3.0[\${PYTHON_USEDEP}]"
 	for d; do
-		if [[ ${d} == --no-autodoc ]]; then
+		if [[ ${d} = --no-autodoc ]]; then
 			autodoc=
 		else
 			deps+="
@@ -546,7 +546,7 @@ distutils_enable_sphinx() {
 		[[ -f ${confpy} ]] ||
 			die "${confpy} not found, distutils_enable_sphinx call wrong"
 
-		if [[ ${_DISTUTILS_SPHINX_PLUGINS[0]} == --no-autodoc ]]; then
+		if [[ ${_DISTUTILS_SPHINX_PLUGINS[0]} = --no-autodoc ]]; then
 			if grep -F -q 'sphinx.ext.autodoc' "${confpy}"; then
 				die "distutils_enable_sphinx: --no-autodoc passed but sphinx.ext.autodoc found in ${confpy}"
 			fi
@@ -776,7 +776,7 @@ distutils_install_for_testing() {
 	local install_method=root
 	case ${1} in
 		--via-home)
-			[[ ${EAPI} == 7 ]] || die "${*} is banned in EAPI ${EAPI}"
+			[[ ${EAPI} = 7 ]] || die "${*} is banned in EAPI ${EAPI}"
 			install_method=home
 			shift
 			;;
@@ -793,7 +793,7 @@ distutils_install_for_testing() {
 	TEST_DIR=${BUILD_DIR}/test
 	local add_args=()
 
-	if [[ ${install_method} == venv ]]; then
+	if [[ ${install_method} = venv ]]; then
 		# create a quasi-venv
 		mkdir -p "${TEST_DIR}"/bin || die
 		ln -s "${PYTHON}" "${TEST_DIR}/bin/${EPYTHON}" || die
@@ -863,7 +863,7 @@ distutils_write_namespace() {
 
 	local namespace
 	for namespace; do
-		if [[ ${namespace} == *[./]* ]]; then
+		if [[ ${namespace} = *[./]* ]]; then
 			die "${FUNCNAME} does not support nested namespaces at the moment"
 		fi
 
@@ -907,7 +907,7 @@ _distutils-r1_handle_pyproject_toml() {
 		die "${FUNCNAME} is not implemented in PEP517 mode"
 	fi
 
-	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
+	[[ ${DISTUTILS_USE_SETUPTOOLS} = manual ]] && return
 
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
 		eerror "No setup.py found but pyproject.toml is present.  Please migrate"
@@ -1141,7 +1141,7 @@ _distutils-r1_create_setup_cfg() {
 		zip_safe = False
 	_EOF_
 
-	if [[ ${EBUILD_PHASE} == install ]]; then
+	if [[ ${EBUILD_PHASE} = install ]]; then
 		# we can't refer to ${D} before src_install()
 		cat >> "${HOME}"/.pydistutils.cfg <<-_EOF_ || die
 
@@ -1248,7 +1248,7 @@ _distutils-r1_get_backend() {
 		# NB: this could fail if pyproject.toml doesn't list one
 		build_backend=$("${EPYTHON}" -m gpep517 get-backend)
 	fi
-	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} == setuptools &&
+	if [[ -z ${build_backend} && ${DISTUTILS_USE_PEP517} = setuptools &&
 		-f setup.py ]]
 	then
 		# use the legacy setuptools backend as a fallback
@@ -1545,7 +1545,7 @@ _distutils-r1_wrap_scripts() {
 
 			local shebang
 			read -r shebang < "${f}"
-			if [[ ${shebang} == '#!'*${EPYTHON}* ]]; then
+			if [[ ${shebang} = '#!'*${EPYTHON}* ]]; then
 				debug-print "${FUNCNAME}: matching shebang: ${shebang}"
 				python_files+=( "${f}" )
 			else
@@ -1561,7 +1561,7 @@ _distutils-r1_wrap_scripts() {
 
 			debug-print "${FUNCNAME}: installing wrapper at ${bindir}/${basename}"
 			local dosym=dosym
-			[[ ${EAPI} == 7 ]] && dosym=dosym8
+			[[ ${EAPI} = 7 ]] && dosym=dosym8
 			"${dosym}" -r /usr/lib/python-exec/python-exec2 \
 				"${bindir#${EPREFIX}}/${basename}"
 		done
@@ -1813,7 +1813,7 @@ distutils-r1_run_phase() {
 	tc-export AR CC CPP CXX
 
 	if [[ ${DISTUTILS_EXT} ]]; then
-		if [[ ${BDEPEND} == *dev-python/cython* ]] ; then
+		if [[ ${BDEPEND} = *dev-python/cython* ]] ; then
 			# Workaround for https://github.com/cython/cython/issues/2747 (bug #918983)
 			local -x CFLAGS="${CFLAGS} $(test-flags-CC -Wno-error=incompatible-pointer-types)"
 		fi
