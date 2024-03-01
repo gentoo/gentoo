@@ -27,6 +27,10 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	${SDCC_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-update-syntax.patch
+)
+
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack
