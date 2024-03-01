@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 BDEPEND="doc? (
 	dev-tex/latexmk
 	dev-python/sphinx
+	dev-python/sphinx-rtd-theme
 )"
 
 PATCHES=(
