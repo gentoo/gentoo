@@ -360,7 +360,7 @@ CRATES="
 	zeroize@1.7.0
 "
 
-inherit cargo
+inherit cargo shell-completion
 
 DESCRIPTION="An extremely fast Python linter, written in Rust"
 HOMEPAGE="
@@ -429,6 +429,9 @@ src_compile() {
 	for solib in "target/$(usex 'debug' 'debug' 'release')"/*.so; do
 		patchelf --set-soname "${solib##*/}" "${solib}" || die
 	done
+
+	${releasedir}/ruff generate-shell-completion bash > ruff-completion.bash || die
+	${releasedir}/ruff generate-shell-completion zsh > ruff-completion.zsh || die
 }
 
 src_test() {
@@ -440,6 +443,9 @@ src_install() {
 
 	dobin ${releasedir}/ruff{,_{dev,python_formatter,shrinking}}
 	dolib.so "${releasedir}"/*.so
+
+	newbashcomp ruff-completion.bash ruff
+	newzshcomp ruff-completion.zsh _ruff
 
 	dodoc -r "${DOCS[@]}"
 }
