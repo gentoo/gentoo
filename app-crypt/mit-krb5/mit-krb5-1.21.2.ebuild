@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit autotools python-any-r1 systemd toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic python-any-r1 systemd toolchain-funcs multilib-minimal
 
 MY_P="${P/mit-}"
 P_DIR=$(ver_cut 1-2)
@@ -65,6 +65,13 @@ src_prepare() {
 	sed -i 's:^[[:space:]]*util/verto$::' configure.ac || die
 
 	eautoreconf
+}
+
+src_configure() {
+	# lto-type-mismatch (bug #854225)
+	filter-lto
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
