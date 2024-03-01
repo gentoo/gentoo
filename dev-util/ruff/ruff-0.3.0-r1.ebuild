@@ -5,9 +5,6 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_USE_PEP517=maturin
-
 CRATES="
 	Inflector@0.11.4
 	adler@1.0.2
@@ -363,7 +360,7 @@ CRATES="
 	zeroize@1.7.0
 "
 
-inherit distutils-r1 cargo
+inherit cargo
 
 DESCRIPTION="An extremely fast Python linter, written in Rust"
 HOMEPAGE="
@@ -418,18 +415,6 @@ DOCS=(
 	docs
 )
 
-src_prepare() {
-	sed -r 's:(strip[[:space:]]*=[[:space:]]*)true:\1false:' \
-		-i pyproject.toml || die
-
-	default
-
-	# python_copy_sources is called in src_compile after cargo_src_compile
-	# to avoid rebuilding rust code for each python impl
-
-	rm -rf docs/{.overrides,gitignore} || die
-}
-
 src_configure() {
 	export RUSTFLAGS="${RUSTFLAGS}"
 	cargo_src_configure
@@ -437,9 +422,6 @@ src_configure() {
 
 src_compile() {
 	cargo_src_compile
-
-	python_copy_sources
-	distutils-r1_src_compile
 
 	local solib releasedir
 	releasedir=target/$(usex 'debug' 'debug' 'release')
@@ -453,12 +435,7 @@ src_test() {
 	cargo_src_test
 }
 
-# placeholder to silence QA warning, tests are in rust
-python_test() { :; }
-
 src_install() {
-	distutils-r1_src_install
-
 	local releasedir=target/$(usex 'debug' 'debug' 'release')
 
 	dobin ${releasedir}/ruff{,_{dev,python_formatter,shrinking}}
