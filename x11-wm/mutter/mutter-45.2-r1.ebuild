@@ -166,7 +166,7 @@ src_configure() {
 		# - https://bugs.gentoo.org/835786
 		# - https://forums.gentoo.org/viewtopic-p-8695669.html
 
-		--buildtype $(usex debug debug plain)
+		-Dbuildtype=$(usex debug debug plain)
 		-Dopengl=true
 		$(meson_use wayland gles2)
 		#gles2_libname
