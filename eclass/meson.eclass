@@ -374,8 +374,6 @@ setup_meson_src_configure() {
 		MESONARGS+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
 
-	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
-
 	# Handle quoted whitespace
 	eval "local -a MYMESONARGS=( ${MYMESONARGS} )"
 
@@ -411,6 +409,8 @@ meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+
+	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
 
 	(
 		setup_meson_src_configure "$@"
