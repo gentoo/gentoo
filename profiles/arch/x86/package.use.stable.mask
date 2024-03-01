@@ -27,7 +27,6 @@ sys-kernel/gentoo-kernel-bin generic-uki
 app-metrics/collectd collectd_plugins_gps collectd_plugins_sigrok
 dev-games/openscenegraph las
 dev-libs/efl physics
-dev-ml/zarith mpir
 media-libs/a52dec djbfft
 dev-python/graphviz test
 kde-apps/cantor R
