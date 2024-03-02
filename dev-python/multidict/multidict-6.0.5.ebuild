@@ -28,7 +28,7 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# don't enable coverage or other pytest settings
-	sed -i -e '/cov/d' pyproject.toml || die
+	sed -i -e '/cov/d' pyproject.toml pytest.ini || die
 	distutils-r1_python_prepare_all
 }
 
