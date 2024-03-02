@@ -410,7 +410,7 @@ sys-process/systemd-cron
 >=www-misc/profile-sync-daemon-6
 sys-block/wait-for-dri-devices-rules
 
-# rust-bin requires a glibc system
+# rust-bin isn't available on all platforms
 dev-lang/rust-bin
 mail-client/thunderbird-bin
 www-client/firefox-bin
