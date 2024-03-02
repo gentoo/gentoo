@@ -141,7 +141,7 @@ SRC_URI="
 # crates are used at test time only, update via pycargoebuild -L -i ...
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
 # pyo3 < 0.20.3 is broken on ppc; https://bugs.gentoo.org/918970
 RESTRICT="
