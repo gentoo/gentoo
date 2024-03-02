@@ -110,13 +110,14 @@ src_configure() {
 	# bug #835653
 	use x86 && replace-flags -Os -O2
 
+	use debug && EMESON_BUILDTYPE=debug
+
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	local emesonargs=(
 		--localstatedir "${EPREFIX}/var"
 		--sysconfdir "${EPREFIX}/etc/X11"
-		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)

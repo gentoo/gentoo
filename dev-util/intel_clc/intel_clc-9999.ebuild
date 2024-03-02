@@ -59,6 +59,8 @@ pkg_setup() {
 src_configure() {
 	PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
 
+	use debug && EMESON_BUILDTYPE=debug
+
 	local emesonargs=(
 		-Dllvm=enabled
 		-Dshared-llvm=enabled
@@ -75,7 +77,6 @@ src_configure() {
 		-Dlibunwind=disabled
 		-Dzstd=disabled
 
-		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure

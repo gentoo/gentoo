@@ -150,6 +150,8 @@ python_check_deps() {
 }
 
 src_configure() {
+	use debug && EMESON_BUILDTYPE=debug
+
 	local emesonargs=(
 		# Mutter X11 renderer only supports gles2 and GLX, thus do NOT pass
 		#
@@ -164,7 +166,6 @@ src_configure() {
 		# - https://bugs.gentoo.org/835786
 		# - https://forums.gentoo.org/viewtopic-p-8695669.html
 
-		-Dbuildtype=$(usex debug debug plain)
 		-Dopengl=true
 		$(meson_use wayland gles2)
 		#gles2_libname
