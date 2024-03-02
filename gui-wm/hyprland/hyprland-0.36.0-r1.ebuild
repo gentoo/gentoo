@@ -94,6 +94,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/legacy-renderer-fix.patch"
+)
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
