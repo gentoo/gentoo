@@ -37,7 +37,7 @@ src_prepare() {
 		mv "${WORKDIR}"/editorconfig-core-test-${TESTVER}/* "${S}"/tests || die
 	fi
 	if ! use cli; then
-		sed -i -e '/editorconfig\.__main__/d' setup.py || die
+		sed -i -e '/editorconfig\.__main__/d' setup.cfg || die
 	fi
 
 	cmake_src_prepare
