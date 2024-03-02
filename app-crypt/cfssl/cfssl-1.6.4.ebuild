@@ -21,6 +21,9 @@ PATCHES=(
 )
 
 src_compile() {
+	# bug 905997
+	use elibc_musl && export CGO_CFLAGS="-D_LARGEFILE64_SOURCE"
+
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" emake VERSION="${PV}"
 }
 
