@@ -18,7 +18,7 @@ S="${WORKDIR}/ripMIME-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.0.9-makefile.patch"
