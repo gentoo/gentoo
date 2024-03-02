@@ -31,16 +31,17 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=()
-	case ${EPYTHON} in
-		pypy3)
-			EPYTEST_DESELECT+=(
-				'tests/test_syntax.py::test_extensions[compare54]'
-			)
-			;;
-	esac
+src_prepare() {
+	# broken on pypy3; unfortunately, the parametrization is based
+	# on indexes and these are pretty random, so we need to remove it
+	# entirely
+	# TODO: restore it when pypy with a fix is in Gentoo
+	# https://github.com/pypy/pypy/issues/4920
+	rm "tests/extensions/superfences/superfences (normal).txt" || die
+	distutils-r1_src_prepare
+}
 
+python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
