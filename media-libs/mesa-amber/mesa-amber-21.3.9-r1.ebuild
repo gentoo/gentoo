@@ -157,6 +157,8 @@ multilib_src_configure() {
 		echo "${drivers//$'\n'/,}"
 	}
 
+	use debug && EMESON_BUILDTYPE=debug
+
 	emesonargs+=(
 		-Damber=true
 		$(meson_use test build-tests)
@@ -177,7 +179,6 @@ multilib_src_configure() {
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=''
 		-Dvulkan-drivers=''
-		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure

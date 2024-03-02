@@ -155,8 +155,6 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dbuildtype=plain
-
 		-D buffer=false
 		-D build-tests=false
 		-D cocoa=false
