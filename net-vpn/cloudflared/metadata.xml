@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" >
+		<email>priv@pppig236.com</email>
+		<name>Weikai Kong</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">cloudflare/cloudflared</remote-id>
+	</upstream>
+</pkgmetadata>
