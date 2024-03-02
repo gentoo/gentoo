@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,6 +49,13 @@ RDEPEND="!=sys-devel/gcc-${TOOLCHAIN_GCC_PV}*"
 BDEPEND=sys-devel/binutils
 
 S="${WORKDIR}"/${MYP}
+
+pkg_pretend() {
+	toolchain_pkg_pretend
+	if tc-is-clang; then
+		die "${P} does not build with clang. It is bootstrapped."
+	fi
+}
 
 src_prepare() {
 	if use amd64; then
