@@ -9,8 +9,10 @@ MY_CODE_VER=${PV}
 MY_DATA_VER=${PV}
 DESCRIPTION="Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)"
 HOMEPAGE="https://www.iana.org/time-zones"
-SRC_URI="https://www.iana.org/time-zones/repository/releases/tzdata${MY_DATA_VER}.tar.gz
-	https://www.iana.org/time-zones/repository/releases/tzcode${MY_CODE_VER}.tar.gz"
+SRC_URI="
+	https://www.iana.org/time-zones/repository/releases/tzdata${MY_DATA_VER}.tar.gz
+	https://www.iana.org/time-zones/repository/releases/tzcode${MY_CODE_VER}.tar.gz
+"
 
 LICENSE="BSD public-domain"
 SLOT="0"
@@ -22,6 +24,10 @@ RDEPEND="
 	${DEPEND}
 	!sys-libs/glibc[vanilla(+)]
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-AsiaAlmaty.patch
+)
 
 src_unpack() {
 	mkdir "${S}" && cd "${S}" || die
