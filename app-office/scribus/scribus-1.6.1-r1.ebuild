@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts +templates tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
