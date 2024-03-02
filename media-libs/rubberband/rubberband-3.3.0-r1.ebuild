@@ -33,6 +33,8 @@ BDEPEND="
 	test? ( dev-libs/boost[${MULTILIB_USEDEP}] )
 "
 
+EMESON_BUILDTYPE=release
+
 src_prepare() {
 	sed -i \
 		-e "s/if have_jni/if get_option('jni')/g" \
@@ -60,7 +62,6 @@ multilib_src_configure() {
 	fi
 
 	local emesonargs=(
-		-Dbuildtype=release
 		-Dfft=fftw
 		-Dresampler=libsamplerate
 		-Ddefault_library=$(use static-libs && echo "both" || echo "shared")
