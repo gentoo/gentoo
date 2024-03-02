@@ -30,13 +30,15 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/hypercorn-0.12.0[${PYTHON_USEDEP}]
+		>=dev-python/async-timeout-4.0.0[${PYTHON_USEDEP}]
+		>=dev-python/hypercorn-0.14.3[${PYTHON_USEDEP}]
 		>=dev-python/pytest-asyncio-0.18.3[${PYTHON_USEDEP}]
 		>=dev-python/pytest-trio-0.7.0[${PYTHON_USEDEP}]
-		>=dev-python/starlette-0.19.1[${PYTHON_USEDEP}]
-		>=dev-python/trio-0.18.0[${PYTHON_USEDEP}]
+		>=dev-python/starlette-0.25.0[${PYTHON_USEDEP}]
+		>=dev-python/tiny-proxy-0.1.1[${PYTHON_USEDEP}]
+		>=dev-python/trio-0.22.0[${PYTHON_USEDEP}]
+		>=dev-python/trustme-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/yarl-1.6.3[${PYTHON_USEDEP}]
-		dev-python/tiny-proxy[${PYTHON_USEDEP}]
 	)
 "
 
