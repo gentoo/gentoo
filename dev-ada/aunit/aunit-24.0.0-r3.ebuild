@@ -19,7 +19,10 @@ IUSE="doc"
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-BDEPEND="doc? ( dev-python/sphinx )"
+BDEPEND="doc? (
+	dev-python/sphinx
+	dev-python/sphinx-rtd-theme
+)"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
