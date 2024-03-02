@@ -24,6 +24,7 @@ BDEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]
 	doc? (
 		dev-python/sphinx
+		dev-python/sphinx-rtd-theme
 		dev-tex/latexmk
 	)"
 
