@@ -13,7 +13,7 @@ SRC_URI="https://www.lesbonscomptes.com/recoll/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="camelcase chm +inotify qt5 session +spell systemd webengine"
 REQUIRED_USE="
@@ -92,6 +92,7 @@ src_configure() {
 		--without-fam
 		--enable-recollq
 	)
+	use qt5 && myeconfargs+=( $(usex webengine "--disable-webpreview" "--enable-webpreview" ) )
 
 	econf "${myeconfargs[@]}"
 }
