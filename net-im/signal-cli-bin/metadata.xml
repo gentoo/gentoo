@@ -2,18 +2,21 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>martin.dummer@gmx.net</email>
-		<name>Martin Dummer</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
 		<email>julien@jroy.ca</email>
 		<name>Julien Roy</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>martin.dummer@gmx.net</email>
+		<name>Martin Dummer</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/AsamK/signal-cli/issues</bugs-to>
+		<changelog>https://github.com/AsamK/signal-cli/releases</changelog>
+		<doc>https://github.com/AsamK/signal-cli/wiki</doc>
 		<remote-id type="github">AsamK/signal-cli</remote-id>
 	</upstream>
 </pkgmetadata>
