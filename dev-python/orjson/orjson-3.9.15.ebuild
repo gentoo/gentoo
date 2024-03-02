@@ -73,6 +73,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 BDEPEND="
+	>=virtual/rust-1.72
 	test? (
 		dev-python/arrow[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
