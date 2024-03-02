@@ -92,6 +92,9 @@ src_prepare() {
 src_compile() {
 	export PREFIX="${EPREFIX}/usr"
 
+	# bug 906073
+	use elibc_musl && export CGO_CFLAGS="-D_LARGEFILE64_SOURCE"
+
 	# For non-live versions, prevent git operations which causes sandbox violations
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
 	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT=""
