@@ -23,6 +23,7 @@ RESTRICT="test" # missing selenium-webdriver-at-spi
 
 # kde-frameworks/kwindowsystem[X]: Uses KX11Extras
 COMMON_DEPEND="
+	dev-libs/icu:=
 	dev-libs/wayland
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent,dbus,gui,network,sql,widgets,xml]
