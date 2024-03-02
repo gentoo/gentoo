@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2024-03-02)
+# Fails tests, potential false negatives #911402
+app-antivirus/clamav system-mspack
+
 # Sam James <sam@gentoo.org> (2024-01-17)
 # The generated code is too large and it takes ages to build, bug #922249.
 dev-python/mypy native-extensions
