@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/xz-utils
 	dev-libs/libaio
-	dev-qt/qtbase:6[gui,widgets]
+	dev-qt/qtbase:6[concurrent,gui,widgets]
 	dev-qt/qtsvg:6
 	media-libs/libglvnd[X]
 	media-libs/libpng:=
