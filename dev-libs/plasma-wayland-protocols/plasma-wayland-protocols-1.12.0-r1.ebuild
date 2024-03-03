@@ -3,8 +3,7 @@
 
 EAPI=8
 
-ECM_NONGUI=true
-inherit ecm kde.org
+inherit cmake kde.org
 
 DESCRIPTION="Plasma Specific Protocols for Wayland"
 HOMEPAGE="https://invent.kde.org/libraries/plasma-wayland-protocols"
@@ -16,3 +15,21 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+
+BDEPEND="
+	dev-libs/libpcre2:*
+	>=kde-frameworks/extra-cmake-modules-5.115.0:*
+	|| (
+		dev-qt/qtbase:6
+		dev-qt/qtcore:5
+	)
+"
+
+ecm_src_configure() {
+	local mycmakeargs=(
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON # ecm.eclass
+		-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help" # ecm.eclass
+	)
+
+	cmake_src_configure
+}
