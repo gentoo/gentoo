@@ -65,6 +65,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent]
 "
 RDEPEND="${COMMON_DEPEND}
+	>=dev-qt/qtbase-${QTMIN}:6[libproxy]
 	sys-power/switcheroo-control
 "
 PDEPEND=">=kde-frameworks/kded-${PVCUT}:6"
