@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2024-03-03)
+# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
+# are only available for amd64, arm64 and riscv
+>=gui-libs/wlroots-0.17.0 -drm -liftoff
+
 # Joonas Niilola <juippis@gentoo.org> (2024-02-16)
 # Test dependencies not keyworded on this arch.
 www-servers/nginx test
