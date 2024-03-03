@@ -393,9 +393,6 @@ setup_meson_src_configure() {
 	tc-export NM
 	tc-getPROG READELF readelf >/dev/null
 
-	# https://bugs.gentoo.org/625396
-	python_export_utf8_locale
-
 	# https://bugs.gentoo.org/721786
 	export BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
 	export BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
@@ -411,6 +408,9 @@ meson_src_configure() {
 	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
 
 	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
+
+	# https://bugs.gentoo.org/625396
+	python_export_utf8_locale
 
 	(
 		setup_meson_src_configure "$@"
