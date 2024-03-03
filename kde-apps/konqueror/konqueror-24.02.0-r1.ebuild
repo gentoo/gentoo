@@ -55,6 +55,7 @@ DEPEND="${COMMON_DEPEND}
 	activities? ( kde-plasma/plasma-activities:6 )
 "
 RDEPEND="${COMMON_DEPEND}
+	!<kde-apps/kio-extras-23.08.5-r100:5
 	kde-apps/kfind:6
 	kde-plasma/kde-cli-tools:*
 "
