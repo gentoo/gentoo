@@ -361,7 +361,6 @@ net-print/hplip -scanner kde
 media-video/ffmpeg -mmal
 media-video/ffmpeg-chromium -mmal
 media-video/mpv -mmal
-net-misc/moonlight -mmal
 
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330
