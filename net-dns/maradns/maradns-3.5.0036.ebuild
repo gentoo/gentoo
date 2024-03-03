@@ -31,6 +31,8 @@ src_configure() {
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/861293
 	# https://github.com/samboy/MaraDNS/discussions/124
+	#
+	# should be fixed in git master; try removing this on the next bump
 	filter-lto
 
 	tc-export CC
