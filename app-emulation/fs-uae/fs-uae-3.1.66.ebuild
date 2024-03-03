@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools xdg
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Integrates the most accurate Amiga emulation code available from WinUAE"
 HOMEPAGE="https://fs-uae.net/"
@@ -56,6 +56,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/854519
+	#
+	# Fixed upstream in git master but no releases since 2021 and no activity since 2022.
+	filter-lto
+
 	# Qt and Udis86 are unused.
 	econf \
 		--enable-a2065 \
