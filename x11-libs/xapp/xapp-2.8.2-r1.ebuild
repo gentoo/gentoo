@@ -53,14 +53,14 @@ PATCHES=(
 	# Make desktop environment integrations optional
 	# https://github.com/linuxmint/xapp/pull/176
 	"${FILESDIR}"/${PN}-optional-de-options.patch
+
+	# don't install pastebin upload wrapper
+	"${FILESDIR}"/0001-don-t-install-pastebin-upload-wrapper.patch
 )
 
 src_prepare() {
 	vala_src_prepare
 	default
-
-	# don't install pastebin upload wrapper
-	sed -iE "s/'(pastebin|upload-system-info)',//" scripts/meson.build || die
 
 	# Fix meson helpers
 	python_setup
