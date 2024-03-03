@@ -9,7 +9,6 @@ SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
 
 RDEPEND="dev-libs/libxml2:=
 	media-libs/libsvgtiny:=
