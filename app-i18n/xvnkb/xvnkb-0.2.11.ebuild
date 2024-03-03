@@ -31,8 +31,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# *not* autotools
-	./configure \
+	# *not* autotools. Uses broken logic that assumes all the world is a bash
+	bash ./configure \
 		$(usex spell '' '--no-spellcheck') \
 		$(usex xft '' '--no-xft') \
 		--use-extstroke \
