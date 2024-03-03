@@ -1,0 +1,59 @@
+https://github.com/numpy/numpydoc/pull/523
+diff --git a/numpydoc/tests/test_validate.py b/numpydoc/tests/test_validate.py
+index d41e4bd0..0671684b 100644
+--- a/numpydoc/tests/test_validate.py
++++ b/numpydoc/tests/test_validate.py
+@@ -1348,6 +1348,7 @@ def test_bad_generic_functions(self, capsys, func):
+         assert isinstance(errors, list)
+         assert errors
+ 
++    @pytest.mark.filterwarnings("ignore::DeprecationWarning")
+     @pytest.mark.parametrize(
+         "klass,func,msgs",
+         [
+
+diff --git a/.github/workflows/test.yml b/.github/workflows/test.yml
+index 1af5e7a5..fd1be4ed 100644
+--- a/.github/workflows/test.yml
++++ b/.github/workflows/test.yml
+@@ -16,7 +16,7 @@ jobs:
+     strategy:
+       matrix:
+         os: [Ubuntu]
+-        python-version: ["3.8", "3.9", "3.10", "3.11"]
++        python-version: ["3.9", "3.10", "3.11", "3.12"]
+         sphinx-version:
+           [
+             "sphinx==5.0",
+@@ -76,7 +76,7 @@ jobs:
+     strategy:
+       matrix:
+         os: [ubuntu]
+-        python-version: ["3.9", "3.10"]
++        python-version: ["3.10", "3.11", "3.12"]
+     steps:
+       - uses: actions/checkout@v4
+ 
+
+diff --git a/.github/workflows/test.yml b/.github/workflows/test.yml
+index fd1be4ed..3d9c7979 100644
+--- a/.github/workflows/test.yml
++++ b/.github/workflows/test.yml
+@@ -16,7 +16,7 @@ jobs:
+     strategy:
+       matrix:
+         os: [Ubuntu]
+-        python-version: ["3.9", "3.10", "3.11", "3.12"]
++        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+         sphinx-version:
+           [
+             "sphinx==5.0",
+@@ -76,7 +76,7 @@ jobs:
+     strategy:
+       matrix:
+         os: [ubuntu]
+-        python-version: ["3.10", "3.11", "3.12"]
++        python-version: ["3.11", "3.12"]
+     steps:
+       - uses: actions/checkout@v4
+ 
