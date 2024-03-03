@@ -185,6 +185,9 @@ src_configure() {
 	# Work around stack alignment issue, bug #647954. in case we ever have x86
 	use x86 && append-flags -mincoming-stack-boundary=2
 
+	# bug 906987; append-cppflags doesnt work
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# Work around -fno-common ( GCC10 default ), bug #713180
 	append-flags -fcommon
 
