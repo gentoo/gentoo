@@ -188,7 +188,9 @@ multilib_src_configure() {
 	#fi
 
 	local emesonargs=(
-		-Dbuildtype=$(usex debug debug plain)
+		-Dbuildtype=plain
+
+		$(meson_feature debug glib_debug)
 		-Ddefault_library=$(usex static-libs both shared)
 		-Druntime_dir="${EPREFIX}"/run
 		$(meson_feature selinux)
