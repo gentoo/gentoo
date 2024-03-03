@@ -25,7 +25,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.5.0022-flags.patch
+	"${FILESDIR}"/${PN}-3.5.0036-flags.patch
 )
 
 src_configure() {
