@@ -8,7 +8,7 @@ ECM_TEST="optional"
 KFMIN=6.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.6.2
-inherit ecm plasma.kde.org
+inherit ecm flag-o-matic plasma.kde.org
 
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 
@@ -119,6 +119,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# ODR violation (bug #921558)
+	filter-lto
+
 	local mycmakeargs=(
 		# KWIN_BUILD_NOTIFICATIONS exists, but kdeclarative still hard-depends on it
 		$(cmake_use_find_package accessibility QAccessibilityClient6)
