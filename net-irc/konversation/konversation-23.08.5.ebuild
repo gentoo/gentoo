@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.106.0
 QTMIN=5.15.9
-inherit ecm gear.kde.org
+inherit ecm gear.kde.org optfeature
 
 DESCRIPTION="User friendly IRC Client"
 HOMEPAGE="https://konversation.kde.org https://apps.kde.org/konversation/"
@@ -69,4 +69,11 @@ src_install() {
 	# Bug 616162
 	insinto /etc/xdg
 	doins "${FILESDIR}"/konversationrc
+}
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		optfeature "konsole view" "kde-apps/konsolepart:5" "kde-apps/konsole:5"
+	fi
+	ecm_pkg_postinst
 }
