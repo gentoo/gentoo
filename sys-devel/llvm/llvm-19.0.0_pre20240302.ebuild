@@ -444,11 +444,13 @@ multilib_src_configure() {
 		)
 	fi
 
-	# On Macos prefix, Gentoo doesn't split sys-libs/ncurses to libtinfo and
-	# libncurses, but llvm tries to use libtinfo before libncurses, and ends up
-	# using libtinfo (actually, libncurses.dylib) from system instead of prefix
 	use kernel_Darwin && mycmakeargs+=(
+		# On Macos prefix, Gentoo doesn't split sys-libs/ncurses to libtinfo and
+		# libncurses, but llvm tries to use libtinfo before libncurses, and ends up
+		# using libtinfo (actually, libncurses.dylib) from system instead of prefix
 		-DTerminfo_LIBRARIES=-lncurses
+		# Use our libtool instead of looking it up with xcrun
+		-DCMAKE_LIBTOOL="${EPREFIX}/usr/bin/${CHOST}-libtool"
 	)
 
 	# LLVM can have very high memory consumption while linking,
