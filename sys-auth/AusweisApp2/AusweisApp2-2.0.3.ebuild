@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN/2/}-${PV}"
 
 LICENSE="EUPL-1.2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	dev-qt/qtshadertools:6
