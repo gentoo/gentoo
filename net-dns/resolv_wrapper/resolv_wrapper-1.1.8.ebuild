@@ -15,10 +15,16 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		dev-util/cmocka
 		net-libs/socket_wrapper
-	)"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-cmocka-cmake.patch
+)
 
 # Work around a problem with >=dev-build/cmake-3.3.0 (bug #558340)
 # Because of this we cannot use cmake-multilib_src_configure() here.
