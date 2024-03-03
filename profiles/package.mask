@@ -254,6 +254,7 @@ sci-libs/mpir
 ~kde-plasma/xdg-desktop-portal-kde-6.0.0
 ~kde-apps/baloo-widgets-24.02.0
 ~kde-apps/dolphin-24.02.0
+~kde-apps/ffmpegthumbs-24.02.0
 ~kde-apps/kate-24.02.0
 ~kde-apps/kate-addons-24.02.0
 ~kde-apps/kate-lib-24.02.0
