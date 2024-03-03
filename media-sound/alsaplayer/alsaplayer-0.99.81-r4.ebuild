@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools desktop xdg
 
 DESCRIPTION="A heavily multi-threaded pluggable audio player"
-HOMEPAGE="http://www.alsaplayer.org/"
-SRC_URI="http://www.alsaplayer.org/${P}.tar.bz2"
+HOMEPAGE="https://alsaplayer.sourceforge.net/"
+SRC_URI="https://alsaplayer.sourceforge.net/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
