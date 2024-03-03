@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop xdg
+inherit autotools desktop flag-o-matic xdg
 
 DESCRIPTION="A heavily multi-threaded pluggable audio player"
 HOMEPAGE="https://alsaplayer.sourceforge.net/"
@@ -47,6 +47,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860423
+	# https://github.com/alsaplayer/alsaplayer/issues/28
+	filter-lto
+
 	export ac_cv_prog_HAVE_DOXYGEN=$(usex doc true false)
 	export ac_cv_lib_xosd_xosd_create=$(usex xosd)
 
