@@ -95,6 +95,9 @@ src_configure() {
 
 	use debug || append-flags -DNDEBUG
 
+	# bug 907096
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	cmake_src_configure
 }
 
