@@ -28,7 +28,7 @@ else
 	fi
 fi
 
-inherit bash-completion-r1 distutils-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic distutils-r1 toolchain-funcs
 
 DESCRIPTION="Open source build system"
 HOMEPAGE="https://mesonbuild.com/"
@@ -86,6 +86,11 @@ src_test() {
 
 python_test() {
 	(
+		# meson has its own tests for LTO support. We don't need to verify that
+		# all tests work when they happen to use it. And in particular, this
+		# breaks rust.
+		filter-lto
+
 		# remove unwanted python_wrapper_setup contents
 		# We actually do want to non-error if python2 is installed and tested.
 		remove="${T}/${EPYTHON}/bin:"
