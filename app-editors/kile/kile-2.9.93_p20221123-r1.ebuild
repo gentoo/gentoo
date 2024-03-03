@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,6 @@ KDE_ORG_CATEGORY="office"
 KDE_ORG_COMMIT="1ca67389327d63fdc5a4c65ab6dd1cf7fbf597af"
 KFMIN=5.82.0
 QTMIN=5.15.5
-MY_P=${P/_beta/b}
 inherit ecm kde.org
 
 DESCRIPTION="Latex Editor and TeX shell based on KDE Frameworks"
@@ -24,7 +23,10 @@ DEPEND="
 	>=dev-qt/qtscript-${QTMIN}:5
 	>=dev-qt/qttest-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
-	kde-apps/okular:5
+	|| (
+		media-gfx/okularpart:5[pdf?]
+		kde-apps/okular:5[pdf?]
+	)
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kcrash-${KFMIN}:5
@@ -41,8 +43,10 @@ DEPEND="
 	pdf? ( app-text/poppler[qt5] )
 "
 RDEPEND="${DEPEND}
-	kde-apps/konsole:5
-	kde-apps/okular:5[pdf?]
+	|| (
+		kde-apps/konsolepart:5
+		kde-apps/konsole:5
+	)
 	virtual/latex-base
 	virtual/tex-base
 	pdf? (
