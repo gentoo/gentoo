@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop qmake-utils xdg
+inherit flag-o-matic desktop qmake-utils xdg
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="https://retroshare.cc"
@@ -68,6 +68,9 @@ src_configure() {
 	local qupnplibs="none"
 	use miniupnp && qupnplibs="miniupnpc"
 	use libupnp && qupnplibs="upnp ixml"
+
+	# bug 907898
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
 	eqmake5 CONFIG+="${qconfigs[*]}" \
 		RS_MAJOR_VERSION=$(ver_cut 1) RS_MINOR_VERSION=$(ver_cut 2) \
