@@ -18,11 +18,10 @@ IUSE="examples"
 
 BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl"
-DEPEND="
+RDEPEND="
 	acct-group/maradns
 	acct-user/duende
 	acct-user/maradns"
-RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5.0036-flags.patch
