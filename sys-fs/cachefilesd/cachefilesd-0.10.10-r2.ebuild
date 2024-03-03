@@ -28,6 +28,9 @@ src_prepare() {
 
 	tc-export CC
 	append-flags -fpie
+
+	# bug #908661
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 }
 
 src_install() {
