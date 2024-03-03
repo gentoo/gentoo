@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd
+inherit autotools systemd
 
-DESCRIPTION="Nagios addon to store Nagios data in a MySQL database"
-HOMEPAGE="https://www.nagios.org/"
+DESCRIPTION="Nagios addon to store Nagios data in a database"
+HOMEPAGE="https://github.com/NagiosEnterprises/ndoutils"
 SRC_URI="https://github.com/NagiosEnterprises/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 
@@ -14,14 +14,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-# We require the "nagios" user from net-analyzer/nagios-core at build
-# time.
 DEPEND="
 	dev-db/mysql-connector-c
 	dev-perl/DBD-mysql
-	dev-perl/DBI
-	>=net-analyzer/nagios-core-4.4.5"
+	dev-perl/DBI"
+
+# The default value of the --with-ndo2db-{user,group} flag is "nagios".
+# For unrelated reasons, we actually patch out the build-time dependency
+# on the user/group, but it should still be there at runtime.
 RDEPEND="${DEPEND}
+	acct-user/nagios
+	acct-group/nagios
 	virtual/mysql"
 
 PATCHES=(
@@ -29,7 +32,13 @@ PATCHES=(
 	"${FILESDIR}"/ndoutils-2.0.0-asprintf.patch
 	"${FILESDIR}"/sample-config-piddir.patch
 	"${FILESDIR}"/openrc-init.patch
+	"${FILESDIR}"/secure-install-permissions.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	# The localstatedir is where our socket will be created by the
@@ -39,6 +48,9 @@ src_configure() {
 	# And normally, we would use /run for the pid file, but the daemon
 	# drops permissions before creating it, so the piddir also needs
 	# to be writable by the nagios user.
+	#
+	# Oh, and the build fails without --enable-mysql, so don't try.
+	#
 	econf --enable-mysql \
 		  --localstatedir=/var/lib/nagios \
 		  --sysconfdir=/etc/nagios \
