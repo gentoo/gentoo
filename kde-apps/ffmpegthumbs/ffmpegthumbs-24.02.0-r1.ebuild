@@ -3,25 +3,25 @@
 
 EAPI=8
 
-KFMIN=5.113.0
-QTMIN=5.15.9
+KFMIN=6.0.0
+QTMIN=6.6.2
 inherit ecm gear.kde.org
 
 DESCRIPTION="FFmpeg based thumbnail generator for video files"
 
 LICENSE="GPL-2+"
-SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+SLOT="6"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=kde-frameworks/kconfig-${KFMIN}:5
-	>=kde-frameworks/kio-${KFMIN}:5
+	>=dev-qt/qtbase-${QTMIN}:6[gui]
+	>=kde-frameworks/kconfig-${KFMIN}:6
+	>=kde-frameworks/kio-${KFMIN}:6
 	media-video/ffmpeg:0=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	virtual/pkgconfig
 "
