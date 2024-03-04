@@ -10,11 +10,11 @@ DESCRIPTION="single-file public domain (or MIT licensed) libraries for C/C++"
 HOMEPAGE="https://github.com/nothings/stb"
 SRC_URI="https://github.com/nothings/stb/archive/${CHECKSUM}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}-${CHECKSUM}"
+
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
-
-S="${WORKDIR}/${PN}-${CHECKSUM}"
 
 src_prepare() {
 	default
