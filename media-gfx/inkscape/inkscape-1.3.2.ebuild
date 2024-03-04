@@ -107,7 +107,8 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.2-libxml2-2.12.patch
+	"${FILESDIR}"/${P}-libxml2-2.12.patch
+	"${FILESDIR}"/${P}-poppler-24.03.patch
 )
 
 pkg_pretend() {
