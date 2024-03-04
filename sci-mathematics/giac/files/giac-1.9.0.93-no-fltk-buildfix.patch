@@ -1,0 +1,60 @@
+diff --git a/src/Editeur.cc b/src/Editeur.cc
+index d69dce2..f7725bb 100644
+--- a/src/Editeur.cc
++++ b/src/Editeur.cc
+@@ -3,7 +3,6 @@
+ #include "Input.h"
+ #include "Tableur.h"
+ #include "Python.h"
+-Fl_Tabs * xcas_main_tab=0;
+ #ifdef HAVE_LIBMICROPYTHON
+ extern "C" int mp_token(const char * line);
+ #endif
+@@ -27,6 +26,7 @@ extern "C" int mp_token(const char * line);
+ 
+ 
+ #ifdef HAVE_LIBFLTK
++Fl_Tabs * xcas_main_tab=0;
+ #include <FL/fl_ask.H>
+ #include <FL/fl_ask.H>
+ #include <FL/Fl_Return_Button.H>
+diff --git a/src/icas.cc b/src/icas.cc
+index a5e3711..44ec905 100644
+--- a/src/icas.cc
++++ b/src/icas.cc
+@@ -2166,11 +2166,13 @@ int main(int ARGC, char *ARGV[]){
+ 	printf("%s\n","Running ./xcas");
+ 	continue;
+       }
++#ifdef HAVE_LIBFLTK
+       if (s=="xcas"){
+ 	giac::gen ge; std::string filename;
+ 	xcas::fltk_view(0,ge,"session.xws",filename,5,contextptr);
+ 	continue;
+       }
++#endif
+       if (s=="giac"){
+ 	python_compat(python_compat(contextptr)&3,contextptr);
+ 	printf("%s\n","Switching to giac interpreter");
+@@ -2251,7 +2253,9 @@ int main(int ARGC, char *ARGV[]){
+ #else
+       start=clock();
+ #endif
++#ifdef HAVE_LIBFLTK
+       xcas::icas_eval(gq,ge,reading_file,filename,contextptr);
++#endif
+ #ifdef __APPLE_
+       startc=clock()-startc;
+ #endif
+@@ -2265,9 +2269,11 @@ int main(int ARGC, char *ARGV[]){
+       // 2-d plot?
+       int graph_output=graph_output_type(ge);
+       if (reading_file>=2 || graph_output || (giac::ckmatrix(ge,true) &&ge.subtype==giac::_SPREAD__VECT) ){
++#ifdef HAVE_LIBFLTK
+ 	if (xcas::fltk_view(gq,ge,"",filename,reading_file,contextptr))
+ 	  cout << "Done";
+ 	else
++#endif
+ 	  cout << "Plot cancelled or unable to plot";
+       }
+       else {

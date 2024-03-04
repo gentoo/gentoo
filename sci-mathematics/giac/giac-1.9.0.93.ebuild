@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,10 +56,9 @@ BDEPEND="dev-tex/hevea
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0.1-gsl_lapack.patch"
 	"${FILESDIR}/${PN}-1.9.0.21-pari-2.15.patch"
-	"${FILESDIR}/${PN}-1.9.0.55-pari-2.15-test.patch"
-	"${FILESDIR}/${PN}-1.9.0.55-undefined-behavior.patch"
 	"${FILESDIR}/${PN}-1.9.0.67-system-gl2ps.patch"
-	"${FILESDIR}/${PN}-1.9.0.67-glibcxx-assertions.patch"
+	"${FILESDIR}/${P}-glibcxx-assertions.patch"
+	"${FILESDIR}/${P}-no-fltk-buildfix.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
