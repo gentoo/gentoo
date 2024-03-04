@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 CP_DEPEND="
 	>=dev-java/ant-1.10.14-r1:0
 	dev-java/bcel:0
-	dev-java/commons-compress:0
+	>=dev-java/commons-compress-1.26.0:0
 	dev-java/commons-io:1
 "
 
