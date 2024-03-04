@@ -261,6 +261,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Filter LTO for legacy branch with ODR violations (bug #855242)
+	filter-lto
+
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
