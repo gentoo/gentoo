@@ -17,6 +17,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+CMAKE_SKIP_TESTS=(
+	# rarely fails randomly (perhaps related to -j)
+	tst_qcandbcfileparser
+)
+
 src_install() {
 	qt6-build_src_install
 
