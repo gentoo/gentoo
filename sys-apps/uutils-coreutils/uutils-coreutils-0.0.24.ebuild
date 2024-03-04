@@ -341,6 +341,10 @@ src_compile() {
 	# normally cargo_src_compile sets this for us, but we don't use it
 	filter-lto
 
+	# By default, the crate uses a system version if it can. This just guarantees
+	# that it will error out instead of building a vendored copy.
+	export RUSTONIG_SYSTEM_LIBONIG=1
+
 	makeargs=(
 		# Disable output synchronisation as make calls cargo
 		-Onone
