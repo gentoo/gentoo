@@ -11,6 +11,7 @@
 		<flag name="pdfium">Build the QtPdf module based on chromium's PDFium library</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
 		<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg> instead of bundled.</flag>
+		<flag name="webdriver">Build tool for automated testing (ChromeDriver equivalent)</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>
 	<upstream>

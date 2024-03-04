@@ -20,7 +20,7 @@ fi
 IUSE="
 	+alsa bindist custom-cflags designer geolocation +jumbo-build
 	kerberos opengl pdfium pulseaudio qml screencast +system-icu
-	vaapi vulkan +widgets
+	vaapi vulkan webdriver +widgets
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
@@ -170,6 +170,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(qt_feature pdfium qtpdf_build)
 		$(qt_feature qml qtpdf_quick_build)
+		$(qt_feature webdriver webenginedriver)
 		$(qt_feature widgets qtpdf_widgets_build)
 		$(usev pdfium -DQT_FEATURE_pdf_v8=ON)
 
@@ -273,6 +274,8 @@ src_test() {
 		tst_qwebengineclientcertificatestore
 		# test is misperformed when qtbase is built USE=-test?
 		tst_touchinput
+		# currently requires webenginedriver to be already installed
+		tst_webenginedriver
 	)
 
 	# prevent using the system's qtwebengine
