@@ -1,0 +1,38 @@
+https://github.com/LibreOffice/core/commit/db98a3f1b1a703ea8e1284b8815eea2274abb2db
+
+From db98a3f1b1a703ea8e1284b8815eea2274abb2db Mon Sep 17 00:00:00 2001
+From: Martin Jambor <mjambor@suse.cz>
+Date: Wed, 7 Jun 2023 18:11:45 +0200
+Subject: [PATCH] Add cstdlib include necessary to build with gcc14 libstdc++
+ (tdf#155715)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Without explicitely including <cstdlib>, compiling some files
+including store/source/storbase.hxx (such as store/source/storpage.cxx
+which includes it through store/source/storpage.hxx) will result in
+errors:
+
+  error: ‘malloc’ is not a member of ‘std’
+
+and
+
+  error: ‘free’ is not a member of ‘std’
+
+This patch simply adds the necessary include.
+
+Change-Id: I3d1fa2a17c5ae9d512f1de9d434dac3d82fc353f
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/152712
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+--- a/store/source/storbase.hxx
++++ b/store/source/storbase.hxx
+@@ -32,6 +32,7 @@
+ 
+ #include <store/types.h>
+ 
++#include <cstdlib>
+ #include <memory>
+ #include <utility>
+ 
