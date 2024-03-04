@@ -208,7 +208,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+git"
 
-DEPEND="git? ( dev-libs/libgit2:= )"
+DEPEND="git? ( >=dev-libs/libgit2-1.7.0:= )"
 RDEPEND="${DEPEND}"
 BDEPEND=">=virtual/rust-1.70.0"
 
@@ -229,7 +229,7 @@ src_configure() {
 	local myfeatures=(
 		$(usev git)
 	)
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 	cargo_src_configure --no-default-features
 }
