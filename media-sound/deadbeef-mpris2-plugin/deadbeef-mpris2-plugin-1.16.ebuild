@@ -35,6 +35,5 @@ src_install() {
 	default
 
 	# Remove static library
-	rm "${ED}"/usr/$(get_libdir)/deadbeef/mpris.la || die
-
+	find "${ED}" -name \*.la -delete || die
 }
