@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit python-any-r1 xdg cmake
+inherit flag-o-matic python-any-r1 xdg cmake
 
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/
@@ -66,6 +66,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# bug https://bugs.gentoo.org/926079
+	filter-lto
+
 	local -a mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DCMAKE_SKIP_RPATH=ON
