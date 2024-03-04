@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 x86"
 fi
 
-inherit cmake-multilib toolchain-funcs
+inherit cmake-multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="C client library for MariaDB/MySQL"
 HOMEPAGE="https://mariadb.org/"
@@ -64,10 +64,17 @@ src_prepare() {
 	cmake_src_prepare
 }
 
-multilib_src_configure() {
+src_configure() {
 	# mariadb cannot use ld.gold, bug #508724
 	tc-ld-disable-gold
 
+	# bug #855233 (MDEV-11914, MDEV-25633) at least
+	filter-lto
+
+	cmake-multilib_src_configure
+}
+
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DWITH_EXTERNAL_ZLIB=ON
 		-DWITH_SSL:STRING=$(usex ssl $(usex gnutls GNUTLS OPENSSL) OFF)
