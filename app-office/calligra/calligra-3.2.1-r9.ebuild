@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	virtual/libiconv
 	activities? ( >=kde-plasma/plasma-activities-${KFMIN}:5 )
 	charts? ( dev-libs/kdiagram:5 )
-	crypt? ( >=app-crypt/qca-2.3.0:2 )
+	crypt? ( >=app-crypt/qca-2.3.0:2[qt5(+)] )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( >=dev-qt/qtdeclarative-${QTMIN}:5[widgets] )
 	gsl? ( sci-libs/gsl:= )
@@ -88,7 +88,10 @@ COMMON_DEPEND="
 		media-libs/libvisio
 	)
 	lcms? ( media-libs/lcms:2 )
-	okular? ( kde-apps/okular:5 )
+	okular? ( || (
+		media-gfx/okularpart:5
+		kde-apps/okular:5
+	) )
 	pdf? ( app-text/poppler:=[qt5] )
 	phonon? ( >=media-libs/phonon-4.11.0[qt5(+)] )
 	spacenav? ( dev-libs/libspnav )
