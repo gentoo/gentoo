@@ -206,7 +206,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	>=dev-libs/libgit2-1.1.0:=[threads]
+	>=dev-libs/libgit2-1.7.0:=[threads]
 	dev-libs/oniguruma:=
 	sys-libs/zlib
 "
@@ -221,7 +221,7 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_configure() {
 	export RUSTONIG_SYSTEM_LIBONIG=1
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 	sed -i -e 's/strip = true/strip = false/g' Cargo.toml || die
 	cargo_src_configure
