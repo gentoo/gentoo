@@ -1,0 +1,48 @@
+diff --git a/crates/uv/tests/pip_compile_scenarios.rs b/crates/uv/tests/pip_compile_scenarios.rs
+index 2cbece6d..9b785300 100644
+--- a/crates/uv/tests/pip_compile_scenarios.rs
++++ b/crates/uv/tests/pip_compile_scenarios.rs
+@@ -118,3 +118,2 @@ fn requires_incompatible_python_version_compatible_override() -> Result<()> {
+ /// ```
+-#[test]
+ fn requires_compatible_python_version_incompatible_override() -> Result<()> {
+diff --git a/crates/uv/tests/pip_install_scenarios.rs b/crates/uv/tests/pip_install_scenarios.rs
+index e0ad34ec..87bff298 100644
+--- a/crates/uv/tests/pip_install_scenarios.rs
++++ b/crates/uv/tests/pip_install_scenarios.rs
+@@ -2369,3 +2369,2 @@ fn requires_python_version_greater_than_current() {
+ /// ```
+-#[test]
+ fn requires_python_version_greater_than_current_patch() {
+diff --git a/crates/uv/tests/pip_list.rs b/crates/uv/tests/pip_list.rs
+index 71bdf344..b80fea5f 100644
+--- a/crates/uv/tests/pip_list.rs
++++ b/crates/uv/tests/pip_list.rs
+@@ -95,3 +95,2 @@ fn single_no_editable() -> Result<()> {
+ 
+-#[test]
+ fn editable() -> Result<()> {
+@@ -197,3 +196,2 @@ fn editable() -> Result<()> {
+ 
+-#[test]
+ fn editable_only() -> Result<()> {
+@@ -328,3 +326,2 @@ fn editable_only() -> Result<()> {
+ 
+-#[test]
+ fn exclude() -> Result<()> {
+diff --git a/crates/uv/tests/pip_sync.rs b/crates/uv/tests/pip_sync.rs
+index bcb1fd55..b68787db 100644
+--- a/crates/uv/tests/pip_sync.rs
++++ b/crates/uv/tests/pip_sync.rs
+@@ -1440,3 +1440,2 @@ fn install_git_source_dist_cached() -> Result<()> {
+ /// Check that we show the right messages on cached, registry source distribution installs.
+-#[test]
+ fn install_registry_source_dist_cached() -> Result<()> {
+diff --git a/crates/uv/tests/venv.rs b/crates/uv/tests/venv.rs
+index ea3c213f..c6ed2233 100644
+--- a/crates/uv/tests/venv.rs
++++ b/crates/uv/tests/venv.rs
+@@ -340,3 +340,2 @@ fn create_venv_unknown_python_patch() -> Result<()> {
+ 
+-#[test]
+ fn create_venv_python_patch() -> Result<()> {
