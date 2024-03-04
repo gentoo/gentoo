@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake-multilib java-pkg-opt-2 python-single-r1
+inherit cmake-multilib flag-o-matic java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="An efficient theorem prover"
 HOMEPAGE="https://github.com/Z3Prover/z3/"
@@ -35,6 +35,18 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 src_prepare() {
 	cmake_src_prepare
 	java-pkg-opt-2_src_prepare
+}
+
+src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/879327
+	# https://github.com/Z3Prover/z3/issues/7143
+	#
+	# Do not trust it with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	cmake-multilib_src_configure
 }
 
 multilib_src_configure() {
