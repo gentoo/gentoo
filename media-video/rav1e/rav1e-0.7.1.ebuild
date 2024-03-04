@@ -280,12 +280,10 @@ src_unpack() {
 }
 
 src_compile() {
-	export CARGO_HOME="${ECARGO_HOME}"
-	local args=$(usev !debug --release)
-
-	cargo build ${args} || die "cargo build failed"
+	cargo_src_compile
 
 	if use capi; then
+		local args=$(usev !debug --release)
 		cargo cbuild ${args} --target-dir="capi" \
 			--prefix="/usr" --libdir="/usr/$(get_libdir)" \
 			--library-type=cdylib \
