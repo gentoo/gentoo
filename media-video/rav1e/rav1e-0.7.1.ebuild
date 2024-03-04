@@ -265,6 +265,8 @@ BDEPEND="
 	amd64? ( ${ASM_DEP} )
 	capi? ( >=dev-util/cargo-c-0.6.3 )
 "
+# only used as a build script to check the version of rav1e...
+DEPEND="dev-libs/libgit2"
 
 # Rust
 QA_FLAGS_IGNORED="usr/lib.*/librav1e.* usr/bin/rav1e"
@@ -280,6 +282,9 @@ src_unpack() {
 }
 
 src_compile() {
+	# used by build script to get rav1e repository info
+	export LIBGIT2_NO_VENDOR=1
+
 	cargo_src_compile
 
 	if use capi; then
