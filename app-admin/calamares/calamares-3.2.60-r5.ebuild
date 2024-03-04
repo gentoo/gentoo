@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	kde-frameworks/kservice:5
 	sys-apps/dbus
 	sys-apps/dmidecode
-	sys-auth/polkit-qt
+	sys-auth/polkit-qt[qt5(+)]
 	>=sys-libs/kpmcore-4.0.0:5=
 	virtual/libcrypt:=
 "
