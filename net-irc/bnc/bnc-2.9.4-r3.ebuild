@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools flag-o-matic
 
 MY_P="${P/-/}"
 DESCRIPTION="BNC (BouNCe) is used as a gateway to an IRC Server"
@@ -25,11 +27,19 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	sed -i -e 's:./mkpasswd:/usr/bin/bncmkpasswd:' bncsetup \
 		|| die 'failed to rename mkpasswd in bncsetup'
+
+	# bug #900076
+	eautoreconf
 }
 
 src_configure() {
+	# bug #861374
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf $(use_with ssl)
 }
 
