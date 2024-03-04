@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/855953
+https://bugs.gentoo.org/893896
+https://git.savannah.gnu.org/gitweb/?p=libsigsegv.git;a=commit;h=3030c472c9d7e1ffb2c6ce8c815545146a6ff8b8
+https://git.savannah.gnu.org/gitweb/?p=libsigsegv.git;a=commit;h=bfa4d54ddbd8caabbe2e9a943395905e40f45f00
+
+From 3030c472c9d7e1ffb2c6ce8c815545146a6ff8b8 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Sat, 11 Feb 2023 18:43:46 +0100
+Subject: [PATCH] Don't let configure tests fail due to the picky clang 16
+ compiler.
+
+clang 16 will report an error for -Wincompatible-function-pointer-types
+by default.
+
+Reported by Sam James <sam@gentoo.org> in
+<https://savannah.gnu.org/bugs/index.php?63788>.
+
+* configure.ac (MacOSX/Darwin7 PowerPC): Add a cast when assigning to
+action.sa_sigaction.
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,7 +1,7 @@
+ dnl Autoconf configuration for libsigsegv.
+ dnl Process this file with autoconf to produce a configure script.
+ dnl
+-dnl Copyright (C) 2002-2022  Bruno Haible <bruno@clisp.org>
++dnl Copyright (C) 2002-2023  Bruno Haible <bruno@clisp.org>
+ dnl
+ dnl This program is free software: you can redistribute it and/or modify
+ dnl it under the terms of the GNU General Public License as published by
+@@ -238,7 +238,7 @@ SV_TRY_FAULT([MacOSX/Darwin7 PowerPC], sv_cv_fault_macosdarwin7_ppc,
+   [#include "$srcdir/src/fault-macosdarwin7-powerpc.c"],
+   [int sig, siginfo_t *sip, ucontext_t *ucp],
+   [get_fault_addr (sip, ucp)],
+-  [action.sa_sigaction = &sigsegv_handler;
++  [action.sa_sigaction = (void (*) (int, siginfo_t *, void *)) &sigsegv_handler;
+    action.sa_flags = SA_SIGINFO;])
+ 
+ if test "$sv_cv_fault_macosdarwin7_ppc" != yes; then
+-- 
+2.17.1
+
+From bfa4d54ddbd8caabbe2e9a943395905e40f45f00 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Thu, 29 Jun 2023 11:24:26 +0200
+Subject: [PATCH] Make the autoconf tests more robust.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+Triggered by
+https://gitlab.com/redhat/centos-stream/rpms/libsigsegv/-/blob/c9s/configure.patch
+from Petr Å abata <contyk@redhat.com>.
+
+* m4/fault.m4 (SV_TRY_FAULT): Mark the variables that are accessed by
+the signal handler as 'volatile'.
+--- a/m4/fault.m4
++++ b/m4/fault.m4
+@@ -1,5 +1,5 @@
+-# fault.m4 serial 9 (libsigsegv-2.12)
+-dnl Copyright (C) 2002-2003, 2011, 2017 Bruno Haible <bruno@clisp.org>
++# fault.m4 serial 10 (libsigsegv-2.15)
++dnl Copyright (C) 2002-2003, 2011, 2017, 2023 Bruno Haible <bruno@clisp.org>
+ dnl This file is free software, distributed under the terms of the GNU
+ dnl General Public License.  As a special exception to the GNU General
+ dnl Public License, this file may be distributed as part of a program
+@@ -52,8 +52,8 @@ static int zero_fd;
+ #else
+ # define SIGSEGV_FAULT_ADDRESS_ROUNDOFF_BITS 0UL
+ #endif
+-unsigned long page;
+-int handler_called = 0;
++unsigned long volatile page;
++int volatile handler_called = 0;
+ void sigsegv_handler ($5)
+ {
+   void *fault_address = (void *) ($6);
+-- 
+2.17.1
