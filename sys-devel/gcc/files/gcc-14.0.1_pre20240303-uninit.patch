@@ -1,0 +1,48 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=901e7bdab70e2275723ac31dacbbce0b6f68f4f4
+
+From 901e7bdab70e2275723ac31dacbbce0b6f68f4f4 Mon Sep 17 00:00:00 2001
+From: Jakub Jelinek <jakub@redhat.com>
+Date: Mon, 4 Mar 2024 19:23:02 +0100
+Subject: [PATCH] combine: Fix recent WORD_REGISTER_OPERATIONS check [PR113010]
+
+On Mon, Mar 04, 2024 at 05:18:39PM +0100, Rainer Orth wrote:
+> unfortunately, the patch broke Solaris/SPARC bootstrap
+> (sparc-sun-solaris2.11):
+>
+> .../gcc/combine.cc: In function 'rtx_code simplify_comparison(rtx_code, rtx_def**, rtx_def**)':
+> .../gcc/combine.cc:12101:25: error: '*(unsigned int*)((char*)&inner_mode + offsetof(scalar_int_mode, scalar_int_mode::m_mode))' may be used uninitialized [-Werror=maybe-uninitialized]
+> 12101 |   scalar_int_mode mode, inner_mode, tmode;
+>       |                         ^~~~~~~~~~
+
+I don't see how it could ever work properly, inner_mode in that spot is
+just uninitialized.
+
+I think we shouldn't worry about paradoxical subregs of non-scalar_int_mode
+REGs/MEMs and for the scalar_int_mode ones should initialize inner_mode
+before we use it.
+Another option would be to use
+maybe_lt (GET_MODE_PRECISION (GET_MODE (SUBREG_REG (op0))), BITS_PER_WORD)
+and
+load_extend_op (GET_MODE (SUBREG_REG (op0))) == ZERO_EXTEND,
+or set machine_mode smode = GET_MODE (SUBREG_REG (op0)); and use it in
+those two spots.
+
+2024-03-04  Jakub Jelinek  <jakub@redhat.com>
+
+	PR rtl-optimization/113010
+	* combine.cc (simplify_comparison): Guard the
+	WORD_REGISTER_OPERATIONS check on scalar_int_mode of SUBREG_REG
+	and initialize inner_mode.
+--- a/gcc/combine.cc
++++ b/gcc/combine.cc
+@@ -12554,6 +12554,8 @@ simplify_comparison (enum rtx_code code, rtx *pop0, rtx *pop1)
+ 	  if (paradoxical_subreg_p (op0))
+ 	    {
+ 	      if (WORD_REGISTER_OPERATIONS
++		  && is_a <scalar_int_mode> (GET_MODE (SUBREG_REG (op0)),
++					     &inner_mode)
+ 		  && GET_MODE_PRECISION (inner_mode) < BITS_PER_WORD
+ 		  /* On WORD_REGISTER_OPERATIONS targets the bits
+ 		     beyond sub_mode aren't considered undefined,
+-- 
+2.39.3

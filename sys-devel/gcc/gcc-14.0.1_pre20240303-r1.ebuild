@@ -60,5 +60,6 @@ src_prepare() {
 
 	toolchain_src_prepare
 
+	eapply "${FILESDIR}"/${P}-uninit.patch
 	eapply_user
 }
