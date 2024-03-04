@@ -26,7 +26,7 @@ CP_DEPEND="
 	dev-java/asm:9
 	dev-java/brotli-dec:0
 	dev-java/commons-codec:0
-	dev-java/commons-io:1
+	>=dev-java/commons-io-2.15.1:1
 	dev-java/commons-lang:3.6
 	dev-java/xz-java:0
 	dev-java/zstd-jni:0
