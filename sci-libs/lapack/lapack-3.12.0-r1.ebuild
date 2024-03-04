@@ -5,7 +5,7 @@ EAPI=8
 
 # Some additional tests are run if Python is found
 PYTHON_COMPAT=( python3_{10..11} )
-inherit cmake fortran-2 python-any-r1
+inherit cmake flag-o-matic fortran-2 python-any-r1
 
 DESCRIPTION="BLAS, CBLAS, LAPACK, LAPACKE reference implementations"
 HOMEPAGE="https://www.netlib.org/lapack/"
@@ -47,6 +47,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# bug #878891
+	filter-lto
+
 	local mycmakeargs=(
 		-DCBLAS=ON
 		-DLAPACKE=$(usex lapacke)
