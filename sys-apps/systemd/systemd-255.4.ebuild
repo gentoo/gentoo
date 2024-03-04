@@ -248,6 +248,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}"/255-install-format-overflow.patch
 	)
 
 	if ! use vanilla; then
