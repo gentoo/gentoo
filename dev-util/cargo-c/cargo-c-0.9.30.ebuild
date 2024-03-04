@@ -376,6 +376,6 @@ src_configure() {
 	# Some crates will auto-build and statically link C libraries(!)
 	# Tracker bug #709568
 	export LIBSSH2_SYS_USE_PKG_CONFIG=1
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 }
