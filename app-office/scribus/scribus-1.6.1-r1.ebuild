@@ -77,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-remove-hello-world-test.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
+	"${FILESDIR}"/${PN}-1.6.1-poppler-24.03.patch
 )
 
 src_prepare() {
