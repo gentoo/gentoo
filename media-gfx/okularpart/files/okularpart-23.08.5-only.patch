@@ -1,0 +1,35 @@
+From e3baad173b95ad75afe9d339c4a86d030b67f4be Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 10 Mar 2024 21:37:44 +0100
+Subject: [PATCH] Disable bits we don't need for okularpart only
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c47d6ab0f..91f25c62e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -184,7 +184,7 @@ if (BUILD_MOBILE)
+     )
+ endif()
+ 
+-if(NOT WIN32 AND NOT ANDROID AND NOT APPLE)
++if(0)
+     find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS
+         Activities
+     )
+@@ -303,7 +303,7 @@ endif()
+ add_subdirectory( icons ) # an own directory for multi-size icons retrieved by KIconThemeLoader
+ add_subdirectory( part )
+ if(BUILD_DESKTOP)
+-    add_subdirectory( shell )
++#    add_subdirectory( shell )
+ endif()
+ add_subdirectory( generators )
+ 
+-- 
+2.44.0
+
