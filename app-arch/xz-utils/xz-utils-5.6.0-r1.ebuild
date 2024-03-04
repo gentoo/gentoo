@@ -55,6 +55,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${P}-logging-verbosity-threads-auto.patch
+	"${FILESDIR}"/${PN}-5.6.0-ifunc-crc-workaround.patch
 )
 
 src_prepare() {

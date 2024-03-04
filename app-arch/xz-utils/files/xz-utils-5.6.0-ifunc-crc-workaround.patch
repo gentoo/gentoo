@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/925415
+https://gcc.gnu.org/PR114115
+
+Workaround a build failure with USE=pgo by disabling instrumentation of the
+crc{32,64} IFUNC resolvers.
+--- a/src/liblzma/check/crc32_fast.c
++++ b/src/liblzma/check/crc32_fast.c
+@@ -135,7 +135,7 @@ typedef uint32_t (*crc32_func_type)(
+ // This resolver is shared between all three dispatch methods. It serves as
+ // the ifunc resolver if ifunc is supported, otherwise it is called as a
+ // regular function by the constructor or first call resolution methods.
+-static crc32_func_type
++static __attribute__((no_profile_instrument_function)) crc32_func_type
+ crc32_resolve(void)
+ {
+ 	return is_arch_extension_supported()
+--- a/src/liblzma/check/crc64_fast.c
++++ b/src/liblzma/check/crc64_fast.c
+@@ -98,7 +98,7 @@ typedef uint64_t (*crc64_func_type)(
+ #	pragma GCC diagnostic ignored "-Wunused-function"
+ #endif
+ 
+-static crc64_func_type
++static __attribute__((no_profile_instrument_function)) crc64_func_type
+ crc64_resolve(void)
+ {
+ 	return is_arch_extension_supported()
