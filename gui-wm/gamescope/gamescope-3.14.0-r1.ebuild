@@ -48,7 +48,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	<dev-libs/stb-20231010
+	>=dev-libs/stb-20240201-r1
 	dev-util/vulkan-headers
 	<media-libs/glm-1.0.0
 	dev-util/spirv-headers
@@ -61,6 +61,8 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${PN}-${MY_PV}"
+
+PATCHES=( "${FILESDIR}/${P}-deprecated-stb.patch" )
 
 FILECAPS=(
 	cap_sys_nice usr/bin/${PN}
