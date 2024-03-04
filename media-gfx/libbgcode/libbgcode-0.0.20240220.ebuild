@@ -18,14 +18,12 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="
+# catch is not needed only for tests: đ926168
+DEPEND="
+	=dev-cpp/catch-2*:0
 	>=dev-libs/boost-1.82
 	>=dev-libs/heatshrink-0.4.1
 	>=dev-python/pybind11-2.11
 	>=sys-libs/zlib-1.0
 "
-DEPEND="
-	${CDEPEND}
-	test? ( =dev-cpp/catch-2*:0 )
-"
-RDEPEND="${CDEPEND}"
+RDEPEND="${DEPEND}"
