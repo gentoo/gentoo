@@ -17,7 +17,8 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/emacs-${P}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	# Bug: https://github.com/jorgenschaefer/emacs-buttercup/issues/243
+	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-3+"
