@@ -6,7 +6,7 @@ EAPI=8
 MODULES_OPTIONAL_USE="modules"
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit autotools linux-mod python-single-r1 systemd tmpfiles
+inherit autotools linux-mod-r1 python-single-r1 systemd tmpfiles
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"
@@ -51,7 +51,7 @@ pkg_setup() {
 		CONFIG_CHECK+=" ~!OPENVSWITCH"
 		kernel_is ge 3 10 0 || die "Linux >= 3.10.0 and <= 5.8 required for userspace modules"
 		kernel_is le 5 8 999 || die "Linux >= 3.10.0 and <= 5.8 required for userspace modules"
-		linux-mod_pkg_setup
+		linux-mod-r1_pkg_setup
 	else
 		CONFIG_CHECK+=" ~OPENVSWITCH"
 		linux-info_pkg_setup
@@ -106,7 +106,7 @@ src_configure() {
 src_compile() {
 	default
 
-	use modules && linux-mod_src_compile
+	use modules && linux-mod-r1_src_compile
 }
 
 src_install() {
@@ -144,11 +144,11 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins rhel/etc_logrotate.d_openvswitch openvswitch
 
-	use modules && linux-mod_src_install
+	use modules && linux-mod-r1_src_install
 }
 
 pkg_postinst() {
-	use modules && linux-mod_pkg_postinst
+	use modules && linux-mod-r1_pkg_postinst
 
 	tmpfiles_process openvswitch.conf
 
