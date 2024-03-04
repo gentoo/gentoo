@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nothings/stb/archive/${CHECKSUM}.tar.gz -> ${P}.tar.
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 S="${WORKDIR}/${PN}-${CHECKSUM}"
 
