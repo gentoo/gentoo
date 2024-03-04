@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# Can't do 12 yet: heavy use of imp, among other things (bug #915001, bug #915062)
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="xml(+)"
 
 # PACKAGING NOTES:
