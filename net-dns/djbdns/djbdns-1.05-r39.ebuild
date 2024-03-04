@@ -59,6 +59,7 @@ src_prepare() {
 		)
 	else
 		PATCHES=(${PATCHES[@]}
+			"${FILESDIR}/implicit-declarations-nov6.patch"
 			# Fix CVE2008-4392 (no ipv6)
 			"${FILESDIR}/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-r1.patch"
 			"${FILESDIR}/CVE2008-4392_0002-dnscache-cache-soa-records.patch"
