@@ -13,7 +13,7 @@ LICENSE="MIT"
 # The soname is $PV, which usually means it can't be trusted, which
 # ironically means that it's the correct subslot.
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 BDEPEND="
 	dev-build/netsurf-buildsystem
