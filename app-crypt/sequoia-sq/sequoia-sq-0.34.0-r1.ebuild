@@ -516,7 +516,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	sys-devel/clang
+	dev-libs/capnproto
 "
 RDEPEND="
 	${COMMON_DEPEND}
