@@ -16,6 +16,7 @@ SRC_URI="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="+bazel-symlink"
 
 DOCS=( CONTRIBUTING.md README.md )
 
@@ -33,6 +34,10 @@ src_compile() {
 src_install() {
 	exeinto /usr/bin
 	doexe "bin/${PN}"
+
+	if use bazel-symlink ; then
+		dosym -r /usr/bin/bazelisk /usr/bin/bazel
+	fi
 
 	einstalldocs
 }

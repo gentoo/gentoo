@@ -7,12 +7,15 @@
     <name>Maciej Barć</name>
   </maintainer>
   <longdescription>
-    Bazelisk is a wrapper for Bazel written in Go. It automatically picks
-    a good version of Bazel given your current working directory, downloads it
+    Bazelisk is a wrapper for Bazel written in Go. It automatically picks a
+    good version of Bazel given your current working directory, downloads it
     from the official server (if required) and then transparently passes
     through all command-line arguments to the real Bazel binary. You can call
     it just like you would call Bazel.
   </longdescription>
+  <use>
+    <flag name="bazel-symlink">Install bazel symlink that points to bazelisk</flag>
+  </use>
   <upstream>
     <bugs-to>https://github.com/bazelbuild/bazelisk/issues/</bugs-to>
     <remote-id type="github">bazelbuild/bazelisk</remote-id>
