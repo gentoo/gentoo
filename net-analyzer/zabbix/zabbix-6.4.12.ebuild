@@ -21,6 +21,8 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 	agent2? ( https://dev.gentoo.org/~fordfrog/distfiles/${P}-go-deps.tar.xz )
 "
 
+S=${WORKDIR}/${MY_P}
+
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
@@ -122,8 +124,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.4.0-configure-sscanf.patch"
 	"${FILESDIR}/${PN}-6.4.6-clang16-build-fix.patch"
 )
-
-S=${WORKDIR}/${MY_P}
 
 ZABBIXJAVA_BASE="opt/zabbix_java"
 
