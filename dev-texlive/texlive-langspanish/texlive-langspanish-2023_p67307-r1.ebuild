@@ -37,7 +37,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Spanish"
 
-LICENSE="CC-BY-4.0 LPPL-1.3 MIT TeX-other-free public-domain"
+LICENSE="CC-BY-4.0 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 COMMON_DEPEND="
