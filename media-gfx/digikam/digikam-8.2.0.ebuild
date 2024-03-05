@@ -14,7 +14,7 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 		SRC_URI="mirror://kde/stable/${PN}/${PV}/"
 	fi
 	SRC_URI+="digiKam-${PV/_/-}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
