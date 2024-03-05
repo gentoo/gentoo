@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-IUSE="+grapheme-clustering"
+IUSE="+grapheme-clustering +terminfo"
 
 COMMON_DEPEND="
 	dev-libs/wayland
@@ -54,8 +54,11 @@ src_configure() {
 		$(meson_feature grapheme-clustering)
 		-Dthemes=true
 		-Dime=true
-		-Dterminfo=disabled
+		$(meson_feature terminfo)
 	)
+	if use terminfo; then
+		emesonargs+=(-Ddefault-terminfo=foot-extra)
+	fi
 	meson_src_configure
 
 	sed 's|@bindir@|/usr/bin|g' "${S}/"/foot-server@.service.in > foot-server@.service
