@@ -40,7 +40,8 @@
 kde-misc/gmail-feed
 
 # Florian Schmaus <flow@gentoo.org> (2024-03-01)
-# TexLive 2023 mask
+# TexLive 2023 is currently masked for testing.
+# Please report bugs via https://bugs.gentoo.org
 >=app-text/dvipsk-2023.03.11_p66203
 >=app-text/dvisvgm-3.2
 >=app-text/ps2pkm-1.8_p20230311
