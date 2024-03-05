@@ -39,7 +39,6 @@ BDEPEND="
 	test? (
 		dev-python/ipython[test]
 		dev-python/mock[${PYTHON_USEDEP}]
-		<dev-python/pytest-8[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-tornado[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
