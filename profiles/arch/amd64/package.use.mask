@@ -113,11 +113,6 @@ net-misc/curl -nghttp3
 # dev-cpp/cppdap is not keyworded in most places
 dev-build/cmake -dap
 
-# Marek Szuba <marecki@gentoo.org> (2023-06-29)
-# Now that we globally unmask USE=qt6 for amd64, the mask set
-# in profiles/base/package.use.mask no longer has any effect on this arch.
-dev-python/pyotherside qt6
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb miraculously got keyworded here.
 dev-python/pymongo -test-full
