@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Small program to test performances of remote servers"
-HOMEPAGE="http://echoping.sourceforge.net/"
+HOMEPAGE="https://framagit.org/bortzmeyer/echoping"
 SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 LICENSE="GPL-2"
 
