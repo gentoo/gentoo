@@ -19,9 +19,7 @@ IUSE="+qt5 qt6"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( qt5 qt6 )"
 
-# qt6 TODO:
-#  - check if all qt6 deps are okay yet
-#  - multibuild for both qt5 and qt6 if requested
+# TODO: multibuild for both qt5 and qt6 if requested
 RDEPEND="
 	${PYTHON_DEPS}
 	qt5? (
@@ -33,10 +31,15 @@ RDEPEND="
 	)
 	qt6? (
 		dev-qt/qtbase:6[opengl]
-		dev-qt/qtdeclarative:6
+		dev-qt/qtdeclarative:6[opengl]
+		dev-qt/qtquick3d:6[opengl]
 		dev-qt/qtsvg:6
 	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-qt6.5.patch
+)
 
 src_prepare() {
 	default
