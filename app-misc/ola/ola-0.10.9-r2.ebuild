@@ -3,7 +3,6 @@
 
 EAPI=8
 
-# py3.12 blocked by protobuf-python
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools python-single-r1
@@ -22,7 +21,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="<dev-libs/protobuf-23:=
+RDEPEND="<dev-libs/protobuf-22.5:=
 	sys-apps/util-linux
 	sys-libs/ncurses
 	ftdi? ( dev-embedded/libftdi:1 )
