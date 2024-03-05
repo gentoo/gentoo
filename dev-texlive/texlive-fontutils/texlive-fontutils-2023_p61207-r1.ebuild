@@ -48,7 +48,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Graphics and font utilities"
 
-LICENSE="Artistic BSD GPL-1 GPL-2 LPPL-1.3 LPPL-1.3c TeX TeX-other-free public-domain"
+LICENSE="Artistic BSD GPL-1 GPL-2 LPPL-1.3c TeX TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 COMMON_DEPEND="
