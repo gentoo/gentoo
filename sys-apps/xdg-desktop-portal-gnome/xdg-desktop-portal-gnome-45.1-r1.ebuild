@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org meson systemd xdg
+inherit flag-o-matic gnome.org meson systemd xdg
 
 DESCRIPTION="Backend implementation for xdg-desktop-portal using GNOME"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome"
@@ -41,6 +41,15 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/919852
+	# https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/113
+	# https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/merge_requests/138
+	#
+	# Recheck this after next version bump!
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local emesonargs=(
 		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
 	)
