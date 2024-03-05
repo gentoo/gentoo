@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Rise of the Triad for Linux!"
 HOMEPAGE="https://www.icculus.org/rott/"
@@ -33,6 +33,18 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/858758
+	#
+	# The upstream homepage notes that you should send bug reports and feature
+	# requests to your distro. Rationale: "1.1.2 contains all the debian
+	# patches from the previous 2.5 years" and "1.1.1. contains all the debian
+	# and fedora patches that accumulated during the past year."
+	#
+	# This is an interesting collaborative model that unfortunately means there
+	# will be NO bug report.
+	filter-lto
+
 	tc-export CC
 	emake -j1 \
 		EXTRACFLAGS="${CFLAGS} -DDATADIR=\\\"/usr/share/${PN}/\\\"" \
