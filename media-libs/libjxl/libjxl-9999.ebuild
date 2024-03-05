@@ -17,7 +17,7 @@ EGIT_SUBMODULES=(
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gdk-pixbuf openexr test"
+IUSE="+gdk-pixbuf openexr test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
