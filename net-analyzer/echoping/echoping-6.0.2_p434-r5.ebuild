@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_certificate_type_set_priority.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_session.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-fno-common.patch
+	"${FILESDIR}"/0001-correctly-link-to-libm.patch
 )
 
 src_prepare() {
