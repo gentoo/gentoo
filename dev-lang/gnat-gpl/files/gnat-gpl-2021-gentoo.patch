@@ -56,17 +56,19 @@
    ac_cv_c_stack_direction=0
  else
 +  cat >>confdefs.h <<_ACEOF
-+#include <stdlib.h>
++extern void exit(int status);
 +_ACEOF
    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  find_stack_direction ()
-@@ -7539,6 +7542,9 @@
+@@ -7539,6 +7542,11 @@
    if test "$cross_compiling" = yes; then :
    ac_cv_func_strncmp_works=yes
  else
 +  cat >>confdefs.h <<_ACEOF
-+#include <string.h>
++ extern int strlen(const char *s);
++ extern char *strcpy(char *dst, const char *src);
++ extern int strncmp(const char *s1, const char *s2, size_t n);
 +_ACEOF
    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
