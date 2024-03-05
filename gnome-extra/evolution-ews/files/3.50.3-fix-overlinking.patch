@@ -1,0 +1,73 @@
+From c9e8707d024048ea595d825ed08833c9aa6bff37 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Mon, 4 Mar 2024 18:02:54 +0100
+Subject: [PATCH] build: Correct overlinking on the m365 part
+
+This can bring in gtk3 and other UI-specific libs into the background processes,
+when the compiler does not filter them out, which can happen with clang.
+
+Related to https://gitlab.gnome.org/GNOME/gnome-contacts/-/issues/222
+---
+ src/Microsoft365/calendar/CMakeLists.txt | 3 ---
+ src/Microsoft365/common/CMakeLists.txt   | 3 ---
+ 2 files changed, 6 deletions(-)
+
+diff --git a/src/Microsoft365/calendar/CMakeLists.txt b/src/Microsoft365/calendar/CMakeLists.txt
+index 676e2d7f..60801886 100644
+--- a/src/Microsoft365/calendar/CMakeLists.txt
++++ b/src/Microsoft365/calendar/CMakeLists.txt
+@@ -27,7 +27,6 @@ target_compile_definitions(ecalbackendmicrosoft365 PRIVATE
+ 
+ target_compile_options(ecalbackendmicrosoft365 PUBLIC
+ 	${CAMEL_CFLAGS}
+-	${EVOLUTION_CALENDAR_CFLAGS}
+ 	${LIBEBACKEND_CFLAGS}
+ 	${LIBECAL_CFLAGS}
+ 	${LIBEDATACAL_CFLAGS}
+@@ -41,7 +40,6 @@ target_include_directories(ecalbackendmicrosoft365 PUBLIC
+ 	${CMAKE_SOURCE_DIR}/src/Microsoft365
+ 	${CMAKE_CURRENT_BINARY_DIR}
+ 	${CAMEL_INCLUDE_DIRS}
+-	${EVOLUTION_CALENDAR_INCLUDE_DIRS}
+ 	${LIBEBACKEND_INCLUDE_DIRS}
+ 	${LIBECAL_INCLUDE_DIRS}
+ 	${LIBEDATACAL_INCLUDE_DIRS}
+@@ -51,7 +49,6 @@ target_include_directories(ecalbackendmicrosoft365 PUBLIC
+ target_link_libraries(ecalbackendmicrosoft365
+ 	${DEPENDENCIES}
+ 	${CAMEL_LDFLAGS}
+-	${EVOLUTION_CALENDAR_LDFLAGS}
+ 	${LIBEBACKEND_LDFLAGS}
+ 	${LIBECAL_LDFLAGS}
+ 	${LIBEDATACAL_LDFLAGS}
+diff --git a/src/Microsoft365/common/CMakeLists.txt b/src/Microsoft365/common/CMakeLists.txt
+index 1b81e6ea..def3d020 100644
+--- a/src/Microsoft365/common/CMakeLists.txt
++++ b/src/Microsoft365/common/CMakeLists.txt
+@@ -31,7 +31,6 @@ target_compile_definitions(evolution-microsoft365 PRIVATE
+ 
+ target_compile_options(evolution-microsoft365 PUBLIC
+ 	${CAMEL_CFLAGS}
+-	${EVOLUTION_CALENDAR_CFLAGS}
+ 	${JSON_GLIB_CFLAGS}
+ 	${LIBEBACKEND_CFLAGS}
+ 	${LIBECAL_CFLAGS}
+@@ -48,7 +47,6 @@ target_include_directories(evolution-microsoft365 PUBLIC
+ 	${CMAKE_CURRENT_BINARY_DIR}
+ 	${CMAKE_CURRENT_SOURCE_DIR}
+ 	${CAMEL_INCLUDE_DIRS}
+-	${EVOLUTION_CALENDAR_INCLUDE_DIRS}
+ 	${JSON_GLIB_INCLUDE_DIRS}
+ 	${LIBEBACKEND_INCLUDE_DIRS}
+ 	${LIBECAL_INCLUDE_DIRS}
+@@ -59,7 +57,6 @@ target_include_directories(evolution-microsoft365 PUBLIC
+ 
+ target_link_libraries(evolution-microsoft365
+ 	${CAMEL_LDFLAGS}
+-	${EVOLUTION_CALENDAR_LDFLAGS}
+ 	${JSON_GLIB_LDFLAGS}
+ 	${LIBEBACKEND_LDFLAGS}
+ 	${LIBECAL_LDFLAGS}
+-- 
+2.43.0
+

@@ -45,6 +45,9 @@ RESTRICT="test !test? ( test )"
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	# Fix wrongly linking in GTK3 webkit without --as-needed, which breaks GTK4 evolution-data-server apps like gnome-contacts
+	eapply "${FILESDIR}"/${PV}-fix-overlinking.patch
 }
 
 src_configure() {
