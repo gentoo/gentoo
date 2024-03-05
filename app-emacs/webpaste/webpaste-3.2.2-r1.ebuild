@@ -22,6 +22,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
+RESTRICT="test"         # Old tests, w/o lexical-binding needed by buttercup >=1.34.
 
 RDEPEND="
 	app-emacs/request
