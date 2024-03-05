@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multiprocessing toolchain-funcs readme.gentoo-r1
+inherit flag-o-matic multiprocessing toolchain-funcs readme.gentoo-r1
 
 MY_HASH="cc4571fec67407652b03d6603ada6580de2194dc"
 MY_P="${PN}-${MY_HASH}"
@@ -88,6 +88,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/858452
+	# https://github.com/9fans/plan9port/issues/646
+	filter-lto
+
 	local -a myconf=(
 		CC9="$(tc-getCC)"
 		CC9FLAGS="'${CFLAGS} ${LDFLAGS}'"
