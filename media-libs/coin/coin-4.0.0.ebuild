@@ -64,6 +64,11 @@ DOCS=(
 )
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/859832
+	# https://github.com/coin3d/coin/issues/521
+	filter-lto
+
 	use debug && append-cppflags -DCOIN_DEBUG=1
 
 	local mycmakeargs=(
