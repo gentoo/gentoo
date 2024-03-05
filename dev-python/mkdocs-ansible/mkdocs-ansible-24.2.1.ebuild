@@ -37,5 +37,5 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.0-prune_deps.patch
+	"${FILESDIR}"/${PN}-24.2.1-prune_deps.patch
 )
