@@ -77,7 +77,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Essential programs and files"
 
-LICENSE="GPL-1 GPL-2+ LGPL-2.1 LPPL-1.3 LPPL-1.3c MIT OFL TeX TeX-other-free public-domain"
+LICENSE="GPL-1 GPL-2+ LGPL-2.1 LPPL-1.0 LPPL-1.3 LPPL-1.3c MIT OFL TeX TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 COMMON_DEPEND="
