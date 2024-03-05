@@ -23,3 +23,6 @@ DEPEND="
 "
 
 DOCS=(AUTHORS NEWS.md README.md)
+PATCHES=(
+	"${FILESDIR}-${P}-checksum-detection.patch"
+)
