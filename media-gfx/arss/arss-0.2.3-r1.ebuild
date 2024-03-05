@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_IN_SOURCE_BUILD="true"
 MY_P="${P}-src"
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Analysis & Resynthesis Sound Spectrograph"
 HOMEPAGE="https://arss.sourceforge.net"
@@ -22,3 +22,15 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 DOCS=( ../AUTHORS ../ChangeLog )
+
+src_compile() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859604
+	# Upstream is on sourceforge, inactive since 2009. No bug filed.
+	#
+	# Do not trust it for LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	default
+}
