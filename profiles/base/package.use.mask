@@ -18,7 +18,11 @@ sys-libs/glibc cet
 # Joonas Niilola <juippis@gentoo.org> (2024-02-20)
 # Upstream massively reworked av1 support breaking our custom
 # system-av1 patches.
->=www-client/firefox-123.0 system-av1
+# Looks like the bundled libvpx is heavily patched (including av1
+#  support) - I'm not confident that currently enabling custom-patched
+# system-libvpx gives the same experience as using the bundled one.
+# Need to revisit in 125.0.
+>=www-client/firefox-123.0 system-av1 system-libvpx
 
 # Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
 # Cinnamon wayland support is experimental and incomplete.
