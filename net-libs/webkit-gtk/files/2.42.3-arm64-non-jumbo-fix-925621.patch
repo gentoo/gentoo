@@ -1,0 +1,29 @@
+From 56001e951362a5064027b1af81283e523e35559b Mon Sep 17 00:00:00 2001
+From: Dennis Camera <dennis.camera+webkit@riiengineering.ch>
+Date: Mon, 4 Mar 2024 09:27:54 -0800
+Subject: [PATCH] [JSC] A64DOpcode include <mutex>
+ https://bugs.webkit.org/show_bug.cgi?id=270394
+
+Reviewed by Michael Catanzaro.
+
+When UNIFIED_BUILDS are disabled, the build fails due to missing std::call_once.
+
+* Source/JavaScriptCore/disassembler/ARM64/A64DOpcode.h: include <mutex>.
+
+Canonical link: https://commits.webkit.org/275630@main
+---
+ Source/JavaScriptCore/disassembler/ARM64/A64DOpcode.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/JavaScriptCore/disassembler/ARM64/A64DOpcode.h b/Source/JavaScriptCore/disassembler/ARM64/A64DOpcode.h
+index 0392bcb6e20a0..202aa4d1d81de 100644
+--- a/Source/JavaScriptCore/disassembler/ARM64/A64DOpcode.h
++++ b/Source/JavaScriptCore/disassembler/ARM64/A64DOpcode.h
+@@ -25,6 +25,7 @@
+ 
+ #pragma once
+ 
++#include <mutex>
+ #include <stdint.h>
+ #include <wtf/Assertions.h>
+ #include <wtf/DataLog.h>
