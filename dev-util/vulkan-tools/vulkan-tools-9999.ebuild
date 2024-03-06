@@ -22,9 +22,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="cube wayland +X"
-
-REQUIRED_USE="cube? ( || ( X wayland ) )"
+IUSE="cube wayland X"
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
@@ -72,9 +70,15 @@ multilib_src_configure() {
 		-DVULKAN_HEADERS_INSTALL_DIR="${ESYSROOT}/usr"
 	)
 
-	use cube && mycmakeargs+=(
-		-DCUBE_WSI_SELECTION=$(usex X XCB WAYLAND)
-	)
+	if use cube; then
+		if use X; then
+			mycmakeargs+=(-DCUBE_WSI_SELECTION=XCB)
+		elif use wayland; then
+			mycmakeargs+=(-DCUBE_WSI_SELECTION=WAYLAND)
+		else
+			mycmakeargs+=(-DCUBE_WSI_SELECTION=DISPLAY)
+		fi
+	fi
 
 	cmake_src_configure
 }
