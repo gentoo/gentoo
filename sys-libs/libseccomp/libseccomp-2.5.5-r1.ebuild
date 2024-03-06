@@ -18,13 +18,14 @@ if [[ ${PV} == *9999 ]] ; then
 	PRERELEASE="2.6.0"
 	inherit autotools git-r3
 else
-	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz
+		experimental-loong? ( https://dev.gentoo.org/~xen0n/distfiles/${PN}-2.5.5-loongarch64-20231204.patch.xz )"
 	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="python static-libs test"
+IUSE="experimental-loong python static-libs test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -39,12 +40,24 @@ BDEPEND="${DEPEND}
 	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
+	"${FILESDIR}"/libseccomp-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
+	"${FILESDIR}"/libseccomp-2.5.5-which-hunt.patch
 )
 
 src_prepare() {
+	if use experimental-loong; then
+		PATCHES+=( "${WORKDIR}/${PN}-2.5.5-loongarch64-20231204.patch" )
+	fi
+
 	default
+
+	if use experimental-loong; then
+		# touch generated files to avoid activating maintainer mode
+		# remove when loong-fix-build.patch is no longer necessary
+		touch ./aclocal.m4 ./configure ./configure.h.in || die
+		find . -name Makefile.in -exec touch {} + || die
+	fi
 
 	if [[ ${PV} == *9999 ]] ; then
 		sed -i -e "s/0.0.0/${PRERELEASE}/" configure.ac || die
