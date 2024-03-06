@@ -289,4 +289,3 @@ pkg_preinst() {
 		fi
 	fi
 }
-
