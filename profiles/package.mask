@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2024-03-06)
+# Inactive upstream maintainer. Needs porting to PEP 517 (or better,
+# from Python to Emacs Lisp) and from layman to repository.eselect.
+# Removal on 2024-05-05. Bug #909887, #909890.
+app-portage/g-sorcery
+app-portage/gs-elpa
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
 # Stopped working after GMail changes some 1.5 years ago,
 # no more upstream development.
