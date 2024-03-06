@@ -62,8 +62,8 @@ src_compile() {
 
 src_install() {
 	insinto /usr/bin
-	doins bin/uxn*
-	fperms 0755 /usr/bin/uxn*
+	doins bin/uxn{asm,cli,emu}
+	fperms 0755 /usr/bin/uxn{asm,cli,emu}
 
 	insinto /usr/share/uxn
 	doins -r projects
