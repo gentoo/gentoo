@@ -29,7 +29,7 @@ RDEPEND="
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/dill[${PYTHON_USEDEP}]
 		dev-python/filelock[${PYTHON_USEDEP}]
-		<=dev-python/fsspec-2023.10.0[${PYTHON_USEDEP}]
+		dev-python/fsspec[${PYTHON_USEDEP}]
 		dev-python/multiprocess[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
@@ -57,7 +57,7 @@ BDEPEND="test? (
 )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${PN}-2.17.1-tests.patch
 )
 
 distutils_enable_tests pytest
