@@ -95,7 +95,7 @@ CRATES="
 LLVM_COMPAT=( {16..17} )
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cargo flag-o-matic llvm-r1 multiprocessing python-any-r1 toolchain-funcs unpacker
+inherit cargo flag-o-matic llvm-r1 multiprocessing python-any-r1 shell-completion toolchain-funcs unpacker
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"
@@ -174,6 +174,9 @@ src_unpack() {
 src_prepare() {
 	default
 	tc-export CC
+
+	# Version sed needed because the Makefile hasn't been bumped yet
+	# Check if it is no longer before bumping
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
@@ -189,6 +192,11 @@ src_compile() {
 	default
 
 	use test && emake tests
+
+	local shell
+	for shell in bash fish zsh; do
+		./bcachefs completions ${shell} > ${shell}.completion || die
+	done
 }
 
 src_test() {
@@ -226,6 +234,10 @@ src_install() {
 		dosym bcachefs /sbin/mkfs.fuse.bcachefs
 		dosym bcachefs /sbin/mount.fuse.bcachefs
 	fi
+
+	newbashcomp bash.completion bcachefs
+	newfishcomp fish.completion bcachefs.fish
+	newzshcomp zsh.completion _bcachefs
 
 	doman bcachefs.8
 }
