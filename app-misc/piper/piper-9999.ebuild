@@ -3,17 +3,23 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit meson python-single-r1 xdg
 
 DESCRIPTION="GTK application to configure gaming devices"
 HOMEPAGE="https://github.com/libratbag/piper"
-SRC_URI="https://github.com/libratbag/piper/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/libratbag/piper.git"
+else
+	SRC_URI="https://github.com/libratbag/piper/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -51,15 +57,8 @@ DEPEND="
 	virtual/libudev
 "
 
-PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" )
-
 src_configure() {
 	python_setup
-
-	local emesonargs=(
-		$(meson_use test tests)
-	)
-
 	meson_src_configure
 }
 
