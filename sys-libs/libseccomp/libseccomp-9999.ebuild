@@ -26,17 +26,23 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="python static-libs test"
 RESTRICT="!test? ( test )"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # We need newer kernel headers; we don't keep strict control of the exact
 # version here, just be safe and pull in the latest stable ones. bug #551248
-DEPEND=">=sys-kernel/linux-headers-5.15
-	python? ( ${PYTHON_DEPS} )"
+DEPEND="
+	>=sys-kernel/linux-headers-5.15
+	python? ( ${PYTHON_DEPS} )
+"
 RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}
+BDEPEND="
+	${DEPEND}
 	dev-util/gperf
-	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
+	python? (
+		${DISTUTILS_DEPS}
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
