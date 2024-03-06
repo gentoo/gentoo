@@ -29,15 +29,16 @@ BDEPEND="${PYTHON_DEPS}
 "
 RDEPEND="
 	~dev-util/volk-${PV}:=[${MULTILIB_USEDEP}]
-	~media-libs/vulkan-loader-${PV}:=[${MULTILIB_USEDEP},wayland?,X?]
-	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
+	~media-libs/vulkan-loader-${PV}[${MULTILIB_USEDEP},wayland?,X?]
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
-		x11-libs/libX11:=[${MULTILIB_USEDEP}]
-		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libxcb:=[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
 	~dev-util/vulkan-headers-${PV}
+	X? ( x11-libs/libXrandr[${MULTILIB_USEDEP}] )
 "
 
 pkg_setup() {
