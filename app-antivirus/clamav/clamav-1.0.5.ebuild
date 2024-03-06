@@ -166,7 +166,7 @@ S=${WORKDIR}/clamav-${MY_P}
 LICENSE="Apache-2.0 BSD GPL-2 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB"
 SLOT="0/lts"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 IUSE="doc clamonacc +clamapp experimental jit libclamav-only milter rar selinux +system-mspack systemd test"
