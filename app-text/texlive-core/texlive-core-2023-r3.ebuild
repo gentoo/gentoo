@@ -21,7 +21,7 @@ SRC_URI="
 "
 
 # Macros that are not a part of texlive-sources or or pulled in from collection-binextra
-# but still needed for other packages during installation
+# but still needed for other packages during installation.
 TL_CORE_EXTRA_CONTENTS="
 	autosp.r58211
 	axodraw2.r58155
@@ -304,7 +304,6 @@ src_configure() {
 		$(use_with X x)
 		$(use_enable xindy)
 		--enable-ptex=no
-		--enable-uptex=no
 		--enable-autosp=yes
 		--enable-axodraw2=yes
 		--enable-devnag=yes
@@ -415,7 +414,9 @@ src_install() {
 	# by texmf-update
 	rm "${ED}${TEXMF_PATH}/web2c/fmtutil.cnf" || die
 
-	rm "${ED}/usr/bin/"{,u}ptex || die
+	if use cjk; then
+		rm "${ED}/usr/bin/"{,u}ptex || die
+	fi
 
 	dobin_texmf_scripts ${TEXLIVE_MODULE_BINSCRIPTS}
 
@@ -427,7 +428,7 @@ src_install() {
 	done
 
 	# https://bugs.gentoo.org/832139
-    rm "${ED}"/usr/bin/tlmgr || die
+	rm "${ED}"/usr/bin/tlmgr || die
 
 	texlive-common_handle_config_files
 
