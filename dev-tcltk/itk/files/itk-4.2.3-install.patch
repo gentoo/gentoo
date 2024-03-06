@@ -5,7 +5,7 @@
      # Configure the installer.
  
 -    INSTALL='$(SHELL) $(srcdir)/tclconfig/install-sh -c'
-+    INSTALL='$(SHELL) install -c'
++    INSTALL='install -c'
      INSTALL_DATA_DIR='${INSTALL} -d -m 755'
      INSTALL_DATA='${INSTALL} -m 644'
      INSTALL_PROGRAM='${INSTALL} -m 755'
