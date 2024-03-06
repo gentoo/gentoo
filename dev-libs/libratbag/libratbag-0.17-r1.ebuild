@@ -9,11 +9,17 @@ inherit meson python-single-r1 systemd udev
 
 DESCRIPTION="Library to configure gaming mice"
 HOMEPAGE="https://github.com/libratbag/libratbag"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/libratbag/libratbag.git"
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="doc elogind systemd test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
