@@ -24,6 +24,7 @@ REQUIRED_USE="client? ( ${ROCM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
+	client? ( dev-libs/boost )
 	>=dev-cpp/msgpack-cxx-6.0.0
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
@@ -43,11 +44,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-change-cmake-name-for-msgpack-cxx-6-release.patch
 	"${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
 	"${FILESDIR}"/${PN}-5.4.2-use-ninja.patch
 	"${FILESDIR}"/${PN}-5.7.1-expand-isa-compatibility.patch
+	"${FILESDIR}"/${PN}-5.7.1-fix-msgpack-dependency.patch
 )
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
