@@ -18,6 +18,7 @@ RDEPEND="
 	>=app-i18n/scim-1.2.0
 	>=app-i18n/tomoe-gtk-0.6.0
 	>=x11-libs/gtk+-2.4:2
+	dev-libs/libltdl
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
