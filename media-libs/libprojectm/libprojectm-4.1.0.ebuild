@@ -26,6 +26,10 @@ RDEPEND="media-libs/mesa[X(+)]"
 
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/libprojectm-4.1.0-patch-include-dir.patch
+)
+
 multilib_prc_prepare() {
 	cmake_src_prepare
 }
