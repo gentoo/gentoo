@@ -46,6 +46,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/mapbox_earcut[${PYTHON_USEDEP}]
+		dev-python/pillow[webp,${PYTHON_USEDEP}]
 	)
 "
 
