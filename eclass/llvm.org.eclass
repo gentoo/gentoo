@@ -282,6 +282,9 @@ llvm.org_set_globals() {
 				17*)
 					LLVM_MANPAGE_DIST="llvm-17.0.1-manpages.tar.bz2"
 					;;
+				18*)
+					LLVM_MANPAGE_DIST="llvm-18.1.0-manpages.tar.bz2"
+					;;
 			esac
 		fi
 
