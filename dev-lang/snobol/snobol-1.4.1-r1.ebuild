@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${PN}4-${PV}"
 DESCRIPTION="Phil Budne's port of Macro SNOBOL4 in C, for modern machines"
@@ -25,6 +25,11 @@ PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
+
+	# bug #855650
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	sed -i -e '/autoconf/s:autoconf:./autoconf:g' configure || die
 	sed -i -e 's/$(INSTALL) -s/$(INSTALL)/' Makefile2.m4 || die
 	echo "ADD_OPT([${CFLAGS}])" >> local-config || die
