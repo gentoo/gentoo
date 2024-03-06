@@ -14,8 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/scim-1.4
-	>=dev-libs/m17n-lib-1.2.0"
+RDEPEND="
+	>=app-i18n/scim-1.4
+	>=dev-libs/m17n-lib-1.2.0
+	dev-libs/libltdl
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
