@@ -4,7 +4,7 @@
 EAPI=8
 GO_OPTIONAL=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit go-module distutils-r1 pypi
@@ -65,6 +65,8 @@ python_prepare_all() {
 	if ! use jp-symlink; then
 		sed -e '/"jp = jpipe/d' -i setup.py || die
 	fi
+	sed -e 's:entry_points()\["console_scripts"\]:entry_points().select(group="console_scripts"):' \
+		-i lib/python/jpipe/cmd/main.py || die
 	distutils-r1_python_prepare_all
 }
 
