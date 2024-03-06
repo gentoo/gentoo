@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="xml(+)"
 
@@ -33,6 +33,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="ipv6"
 
+BDEPEND="${DISTUTILS_DEPS}"
 RDEPEND="
 	dev-util/dialog
 	>=net-analyzer/netselect-0.4[ipv6(+)?]
@@ -45,6 +46,8 @@ python_prepare_all() {
 	python_setup
 
 	local -x VERSION="${PVR}"
+	sed -e 's:os.path.join(os.sep, EPREFIX.lstrip(os.sep), "usr/share/man/man8"):"share/man/man8":' \
+		-i setup.py || die
 	eprefixify setup.py mirrorselect/main.py
 	edo "${PYTHON}" setup.py set_version
 
