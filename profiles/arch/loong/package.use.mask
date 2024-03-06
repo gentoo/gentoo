@@ -56,6 +56,7 @@ dev-util/librnp man
 
 # Michał Górny <mgorny@gentoo.org> (2023-09-19)
 # dev-cpp/cpp-httplib is keyworded here.
+dev-debug/lldb -debuginfod
 sys-devel/llvm -debuginfod
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-10)
