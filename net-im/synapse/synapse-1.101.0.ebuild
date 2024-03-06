@@ -140,6 +140,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# fix tests with >=dev-python/netaddr-1.0.0
+	"${FILESDIR}/${P}-netaddr-tests.patch"
+)
+
 # Rust extension
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/synapse/synapse_rust.abi3.so"
 
