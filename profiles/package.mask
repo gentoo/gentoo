@@ -667,13 +667,6 @@ dev-python/flask-gravatar
 # by the Python team.
 >=dev-python/pytest-8
 
-# Ulrich Müller <ulm@gentoo.org> (2024-01-30)
-# SLOT 25 of app-editors/emacs, corresponding to GNU Emacs version 25.3.
-# This version was released in May 2018. Please upgrade to >=emacs-26
-# and update your Emacs Lisp packages with emacs-updater.
-# Removal on 2024-02-29. Bug #923329.
-app-editors/emacs:25
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
 # app-misc/ddcutil-2.1.0 causes core-dump crashes in
 # kde-plasma/powerdevil[brightness-control].
