@@ -16,7 +16,9 @@ IUSE=""
 
 RDEPEND="
 	>=app-i18n/uim-1.5.0
-	>=app-i18n/scim-1.4.0"
+	>=app-i18n/scim-1.4.0
+	dev-libs/libltdl
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
