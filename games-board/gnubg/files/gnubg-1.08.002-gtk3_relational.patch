@@ -1,0 +1,12 @@
+diff -Naur gnubg-1.08.002.orig/gtkrelational.c gnubg-1.08.002/gtkrelational.c
+--- gnubg-1.08.002.orig/gtkrelational.c	2024-02-24 22:07:39.000000000 +0100
++++ gnubg-1.08.002/gtkrelational.c	2024-03-06 22:45:43.113919993 +0100
+@@ -502,7 +502,7 @@
+     // window setup
+     // window = (GtkWindow*)gtk_window_new(GTK_WINDOW_TOPLEVEL);
+     //window = GTKCreateDialog("", DT_INFO, NULL, DIALOG_FLAG_MINMAXBUTTONS, NULL, NULL);
+-    window = GTKCreateDialog(_("History plot"), DT_INFO, pwDialog, DIALOG_FLAG_MINMAXBUTTONS, NULL, NULL);
++    window = GTKCreateDialog(_("History plot"), DT_INFO, NULL, DIALOG_FLAG_MINMAXBUTTONS, NULL, NULL);
+ 
+     gtk_window_set_default_size (GTK_WINDOW(window), WIDTH, HEIGHT);
+     gtk_window_set_position     (GTK_WINDOW(window), GTK_WIN_POS_CENTER);
