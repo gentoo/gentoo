@@ -24,7 +24,7 @@ SLOT="0"
 
 BDEPEND="
 	app-alternatives/yacc
-	doc? ( app-text/doxygen )
+	doc? ( app-text/doxygen[dot] )
 	test? ( ${PYTHON_DEPS} )
 	tools? ( wayland? ( dev-util/wayland-scanner ) )
 "
