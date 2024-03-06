@@ -62,6 +62,9 @@ src_configure() {
 	# Avoid automagic on libdevmapper (bug #709694)
 	export ac_cv_search_dm_task_create=no
 
+	# bug 903611
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# Build fails with -O3 (bug #712698)
 	replace-flags -O3 -O2
 
