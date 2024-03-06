@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -19,7 +19,8 @@ RDEPEND="
 	>=app-i18n/tomoe-gtk-0.6.0
 	>=x11-libs/gtk+-2.4:2
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	>=dev-util/intltool-0.35.0
 "
