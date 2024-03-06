@@ -32,6 +32,7 @@ RDEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6
 	>=kde-plasma/kdecoration-${PVCUT}:6
+	>=kde-plasma/libplasma-${PVCUT}:6
 	qt5? (
 		>=dev-qt/qtdbus-${QT5MIN}:5
 		>=dev-qt/qtdeclarative-${QT5MIN}:5
