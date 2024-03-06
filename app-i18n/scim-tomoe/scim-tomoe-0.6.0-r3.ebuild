@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Japanese input method Tomoe IMEngine for SCIM"
 HOMEPAGE="http://tomoe.sourceforge.net/"
@@ -23,6 +25,12 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=( "${FILESDIR}"/${P}-gcc43.patch )
+
+src_prepare() {
+	default
+	# update the 2007 era configure / libtool scripts, which fail with LTO
+	eautoreconf
+}
 
 src_configure() {
 	econf --disable-static
