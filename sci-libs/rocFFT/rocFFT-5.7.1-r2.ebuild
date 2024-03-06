@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 ROCM_VERSION=${PV}
 
 inherit cmake check-reqs edo multiprocessing python-r1 rocm
@@ -30,9 +30,11 @@ perfscripts? (
 ${PYTHON_DEPS}"
 
 DEPEND="=dev-util/hip-5*
-	${PYTHON_DEPS}"
-
-BDEPEND="
+	${PYTHON_DEPS}
+	benchmark? (
+		dev-libs/boost
+		sci-libs/hipRAND:${SLOT}[${ROCM_USEDEP}]
+	)
 	test? (
 		dev-cpp/gtest
 		dev-libs/boost
@@ -40,6 +42,9 @@ BDEPEND="
 		sys-libs/libomp
 		sci-libs/hipRAND:${SLOT}[${ROCM_USEDEP}]
 	)
+"
+
+BDEPEND="
 	>=dev-build/cmake-3.22
 	dev-build/rocm-cmake
 	dev-db/sqlite
@@ -137,6 +142,11 @@ src_install() {
 	if use benchmark; then
 		cd "${BUILD_DIR}"/clients/staging || die
 		dobin *rider
+
+		if ! use perfscripts; then
+			# prevent collision with dev-util/perf
+			rm -rf "${ED}"/usr/bin/perf || die
+		fi
 	fi
 
 	if use perfscripts; then
