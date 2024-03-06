@@ -14,7 +14,7 @@ DESCRIPTION="Library for akonadi contact integration"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
 # some akonadi tests time out, that probably needs more work as it's ~700 tests
