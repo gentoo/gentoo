@@ -10,17 +10,17 @@ inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single \
 		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
 XSIMD_HASH="aeec9c872c8b475dedd7781336710f2dd2666cb2"
+DESCRIPTION="Ceph distributed filesystem"
+HOMEPAGE="https://ceph.com/"
+
 SRC_URI="
 	https://download.ceph.com/tarballs/${P}.tar.gz
 	parquet? ( https://github.com/xtensor-stack/xsimd/archive/${XSIMD_HASH}.tar.gz -> ceph-xsimd-${PV}.tar.gz )
 "
-KEYWORDS="amd64 ~arm64"
-
-DESCRIPTION="Ceph distributed filesystem"
-HOMEPAGE="https://ceph.com/"
 
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
+KEYWORDS="amd64 ~arm64"
 
 CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
