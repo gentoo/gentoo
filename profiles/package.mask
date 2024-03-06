@@ -33,10 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ulrich Müller <ulm@gentoo.org> (2024-03-06)
-# Masked for testing, bug #924617.
-=net-im/zoom-5.17.10.3512
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
 # Stopped working after GMail changes some 1.5 years ago,
 # no more upstream development.
@@ -574,10 +570,6 @@ dev-python/pendulum
 # Sam James <sam@gentoo.org> (2024-02-15)
 # May break on some arches b/c of visibility/map changes to ffi_type_longdouble
 =dev-libs/libffi-3.4.5
-
-# Ulrich Müller <ulm@gentoo.org> (2024-02-15)
-# Hangs at runtime, bug #924617.
-=net-im/zoom-5.17.5.2543
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-14)
 # Abandoned upstream in 2020.  Has a fork that has last been released
