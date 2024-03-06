@@ -1,0 +1,48 @@
+From 57b8fef20b090ffdf99bcf2c3f5fc8d0d4472788 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 6 Mar 2024 11:54:24 +0000
+Subject: [PATCH 2/4] Fix -Wincompatible-pointer-types
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Backport https://github.com/openjdk/jdk17u/commit/6632e6c6ca74101b45b052fb7962376fbe97605e.
+
+```
+jdk8u-jdk8u402-ga/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c: In function ‘Java_com_sun_imageio_plugins_jpeg_JPEGImageWriter_writeImage’:
+jdk8u-jdk8u402-ga/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c:2853:19: error: passing argument 1 of ‘freeArray’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 2853 |         freeArray(scale, numBands);
+      |                   ^~~~~
+      |                   |
+      |                   UINT8 ** {aka unsigned char **}
+jdk8u-jdk8u402-ga/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c:2689:30: note: expected ‘void **’ but argument is of type ‘UINT8 **’ {aka ‘unsigned char **’}
+ 2689 | static void freeArray(void** arr, jint size) {
+      |                       ~~~~~~~^~~
+jdk8u-jdk8u402-ga/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c:2860:19: error: passing argument 1 of ‘freeArray’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 2860 |         freeArray(scale, numBands);
+      |                   ^~~~~
+      |                   |
+      |                   UINT8 ** {aka unsigned char **}
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c b/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c
+index 7e1d8c9..163003c 100644
+--- a/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c
++++ b/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c
+@@ -2686,7 +2686,7 @@ Java_com_sun_imageio_plugins_jpeg_JPEGImageWriter_writeTables
+     RELEASE_ARRAYS(env, data, NULL);
+ }
+ 
+-static void freeArray(void** arr, jint size) {
++static void freeArray(UINT8** arr, jint size) {
+     int i;
+     if (arr != NULL) {
+         for (i = 0; i < size; i++) {
+-- 
+2.44.0
+
