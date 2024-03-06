@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -126,6 +126,11 @@ src_compile() {
 	# Protect against people choosing a strip implementation
 	# bug #739194
 	unset STRIP
+
+	# Strict aliasing violations (bug #858740), but they seem to be fixed in git.
+	# Check on next release (>20140513) / snapshot.
+	append-flags -fno-strict-aliasing
+	filter-lto
 
 	tc-export CC
 
