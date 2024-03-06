@@ -27,5 +27,6 @@
 		<remote-id type="github">openjdk/jdk8u</remote-id>
 		<remote-id type="github">openjdk/jdk11u</remote-id>
 		<remote-id type="github">openjdk/jdk17u</remote-id>
+		<remote-id type="github">openjdk/jdk21u</remote-id>
 	</upstream>
 </pkgmetadata>
