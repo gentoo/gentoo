@@ -228,7 +228,12 @@ src_install() {
 
 	newbashcomp contrib/completions/bash/bitcoin-tx.bash bitcoin-tx
 	use bitcoin-cli && newbashcomp contrib/completions/bash/bitcoin-cli.bash bitcoin-cli
-	use daemon || use gui && newbashcomp contrib/completions/bash/bitcoind.bash bitcoind
+	if use daemon ; then
+		newbashcomp contrib/completions/bash/bitcoind.bash bitcoind
+		use gui && bashcomp_alias bitcoind bitcoin-qt
+	elif use gui ; then
+		newbashcomp contrib/completions/bash/bitcoind.bash bitcoin-qt
+	fi
 
 	if use daemon ; then
 		insinto /etc/bitcoin
