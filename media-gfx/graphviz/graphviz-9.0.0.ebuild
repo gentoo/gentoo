@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit python-single-r1
+inherit libtool python-single-r1
 
 DESCRIPTION="Open Source Graph Visualization Software"
 HOMEPAGE="https://www.graphviz.org/ https://gitlab.com/graphviz/graphviz/"
@@ -139,6 +139,11 @@ BDEPEND="
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+	elibtoolize
 }
 
 src_configure() {
