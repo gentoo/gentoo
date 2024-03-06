@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
 
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 ada multiprocessing
 
 DESCRIPTION="A Python framework to generate language parsers"
@@ -25,6 +25,7 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	${ADA_DEPS}
+	dev-ada/gnatcoll-core:=
 	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared?,static-libs?,static-pic?]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
