@@ -116,6 +116,7 @@ src_configure() {
 		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
 		-DWITH_CLIENT_SDL=$(usex sdl ON OFF)
+		-DWITH_SAMPLE=OFF
 		-DWITH_CUPS=$(usex cups ON OFF)
 		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
 		-DWITH_MANPAGES=ON
