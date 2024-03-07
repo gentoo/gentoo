@@ -158,7 +158,7 @@ sys-libs/libomp -llvm_targets_AMDGPU
 net-misc/curl -rustls -curl_ssl_rustls
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
-# Quick Sync Video (through intel-mediasdk or oneVPL) is
+# Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv
 media-libs/gst-plugins-bad -qsv

@@ -65,7 +65,7 @@ sys-libs/libomp llvm_targets_AMDGPU
 net-misc/curl rustls curl_ssl_rustls
 
 # Sam James <sam@gentoo.org> (2022-12-07)
-# Needs unstable media-libs/oneVPL
+# Needs unstable media-libs/libvpl
 media-libs/gst-plugins-bad qsv
 media-video/ffmpeg qsv
 
