@@ -21,7 +21,6 @@ DEPEND="
 	dev-libs/libical
 	>=dev-libs/ktextaddons-1.4.42:6
 	>=dev-qt/qtbase-${QTMIN}:6[gui,widgets]
-	>=dev-qt/qttools-${QTMIN}:6[designer]
 	>=kde-apps/akonadi-${PVCUT}:6
 	>=kde-apps/akonadi-calendar-${PVCUT}:6
 	>=kde-apps/akonadi-notes-${PVCUT}:6

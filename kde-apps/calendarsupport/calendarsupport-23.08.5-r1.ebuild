@@ -19,7 +19,6 @@ IUSE=""
 
 DEPEND="
 	dev-libs/libical
-	>=dev-qt/designer-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
