@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# To enable sync via cron, execute "runuser -u logcheck touch /etc/logcheck/cron-logcheck-enabled"
+if [[ ! -f /etc/logcheck/cron-logcheck-enabled ]]; then
+   exit
+fi
+if [ ! -d /var/lock/logcheck ]; then
+	mkdir -p /var/lock/logcheck
+	chown logcheck:logcheck /var/lock/logcheck
+fi
+/sbin/runuser -u logcheck --nice -n10 /usr/sbin/logcheck "$@"
