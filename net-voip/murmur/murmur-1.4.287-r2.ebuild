@@ -24,7 +24,7 @@ else
 			https://dl.mumble.info/${MY_P}.tar.gz"
 		S="${WORKDIR}/${MY_P}.src"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-openssl3.patch.xz"
