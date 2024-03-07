@@ -15,7 +15,7 @@ fi
 
 IUSE="
 	+assistant clang designer distancefieldgenerator gles2-only
-	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
+	+linguist opengl pixeltool +qdbus qdoc qml qtattributionsscanner
 	qtdiag qtplugininfo vulkan +widgets zstd
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
