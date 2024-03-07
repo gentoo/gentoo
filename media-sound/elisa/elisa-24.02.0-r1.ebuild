@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/elisa/"
 LICENSE="LGPL-3+"
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="mpris +vlc"
+IUSE="mpris vlc"
 
 RESTRICT="test"
 
@@ -40,7 +40,7 @@ DEPEND="
 		>=kde-frameworks/kdbusaddons-${KFMIN}:6
 	)
 	vlc? ( media-video/vlc:= )
-	!vlc? ( >=dev-qt/qtmultimedia-${QTMIN}:6[gstreamer] )
+	!vlc? ( >=dev-qt/qtmultimedia-${QTMIN}:6 )
 "
 RDEPEND="${DEPEND}
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
