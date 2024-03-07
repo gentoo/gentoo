@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-libs/qtkeychain-0.14.1-r1:=[qt6]
 	>=dev-qt/qtbase-${QTMIN}:6[gui,network,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
-	>=dev-qt/qtmultimedia-${QTMIN}:6[gstreamer]
+	>=dev-qt/qtmultimedia-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
 	>=dev-qt/qtwebview-${QTMIN}:6
 	>=kde-frameworks/kcolorscheme-${KFMIN}:6
