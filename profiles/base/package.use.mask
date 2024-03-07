@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2024-03-07)
+# The bluetooth feature is unstable for now (causes timeouts if no dbus adapter
+# is available).
+# https://mail.kde.org/pipermail/distributions/2024-March/001481.html
+>=kde-misc/kdeconnect-24.02.0 bluetooth
+
 # Sam James <sam@gentoo.org> (2024-02-24)
 # Only works on amd64 (and x32).
 dev-debug/gdb cet
