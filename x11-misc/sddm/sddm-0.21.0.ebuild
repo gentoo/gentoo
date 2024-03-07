@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PAM_TAR="${PN}-0.21.0-pam"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -12,10 +13,11 @@ else
 fi
 
 QTMIN=5.15.12
-inherit cmake linux-info optfeature systemd tmpfiles
+inherit cmake linux-info optfeature pam systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PAM_TAR}.tar.xz"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
@@ -57,14 +59,16 @@ PATCHES=(
 	# Downstream patches
 	"${FILESDIR}/${PN}-0.20.0-respect-user-flags.patch"
 	"${FILESDIR}/${P}-Xsession.patch" # bug 611210
-	"${FILESDIR}/${PN}-0.20.0-sddm.pam-use-substack.patch" # bug 728550
-	"${FILESDIR}/${P}-disable-etc-debian-check.patch"
-	"${FILESDIR}/${P}-no-default-pam_systemd-module.patch" # bug 669980
 )
 
 pkg_setup() {
 	local CONFIG_CHECK="~DRM"
 	use kernel_linux && linux-info_pkg_setup
+}
+
+src_unpack() {
+	[[ ${PV} == *9999* ]] && git-r3_src_unpack
+	default
 }
 
 src_prepare() {
@@ -82,13 +86,19 @@ EOF
 		sed -e "/^find_package/s/ Test//" -i CMakeLists.txt || die
 		cmake_comment_add_subdirectory test
 	fi
+
+	if use systemd; then
+		sed -e "/pam_elogind.so/s/elogind/systemd/" \
+			-i "${WORKDIR}"/${PAM_TAR}/${PN}-greeter.pam || die
+	fi
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_MAN_PAGES=ON
-		-DBUILD_WITH_QT6=OFF # default theme  (and others) not yet compatible
+		-DBUILD_WITH_QT6=OFF # default theme (and others) not yet compatible
 		-DDBUS_CONFIG_FILENAME="org.freedesktop.sddm.conf"
+		-DINSTALL_PAM_CONFIGURATION=OFF
 		-DRUNTIME_DIR=/run/sddm
 		-DSYSTEMD_TMPFILES_DIR="/usr/lib/tmpfiles.d"
 		-DNO_SYSTEMD=$(usex !systemd)
@@ -108,6 +118,10 @@ src_install() {
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}/sddm.logrotate" sddm
 	fi
+
+	newpamd "${WORKDIR}"/${PAM_TAR}/${PN}.pam ${PN}
+	newpamd "${WORKDIR}"/${PAM_TAR}/${PN}-autologin.pam ${PN}-autologin
+	newpamd "${WORKDIR}"/${PAM_TAR}/${PN}-greeter.pam ${PN}-greeter
 }
 
 pkg_postinst() {
