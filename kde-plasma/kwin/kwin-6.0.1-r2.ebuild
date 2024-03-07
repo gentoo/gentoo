@@ -15,7 +15,7 @@ DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 LICENSE="GPL-2+"
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="accessibility caps gles2-only lock multimedia screencast +shortcuts"
+IUSE="accessibility caps gles2-only lock screencast +shortcuts"
 
 RESTRICT="test"
 
@@ -78,15 +78,19 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	!kde-plasma/kdeplasma-addons:5
 	!kde-plasma/kwayland-server
+	>=dev-qt/qtmultimedia-${QTMIN}:6[qml]
+	|| (
+		dev-qt/qtmultimedia:6[ffmpeg]
+		(
+			dev-qt/qtmultimedia:6[gstreamer]
+			media-plugins/gst-plugins-soup:1.0
+		)
+	)
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/kitemmodels-${KFMIN}:6
 	>=kde-plasma/libplasma-${PVCUT}:6[wayland]
 	sys-apps/hwdata
 	x11-base/xwayland
-	multimedia? (
-		>=dev-qt/qtmultimedia-${QTMIN}:6[gstreamer,qml]
-		media-plugins/gst-plugins-soup:1.0
-	)
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.11.1
@@ -108,7 +112,6 @@ PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:*"
 
 src_prepare() {
 	ecm_src_prepare
-	use multimedia || eapply "${FILESDIR}/${PN}-5.90.90-gstreamer-optional.patch"
 
 	# TODO: try to get a build switch upstreamed
 	if ! use screencast; then
