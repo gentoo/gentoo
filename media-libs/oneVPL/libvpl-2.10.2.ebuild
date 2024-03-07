@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake-multilib optfeature
 
-DESCRIPTION="oneAPI Video Processing Library, dispatcher, tools, and examples"
+DESCRIPTION="Intel Video Processing Library, dispatcher, tools, and examples"
 HOMEPAGE="https://github.com/intel/libvpl/"
 SRC_URI="https://github.com/intel/libvpl//archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/libvpl-${PV}"
