@@ -1,0 +1,36 @@
+From 1d554cb2c29e57bfd58b9aed7643dcb60fbf8659 Mon Sep 17 00:00:00 2001
+From: Eli MacKenzie <argonel@gmail.com>
+Date: Sun, 3 Mar 2024 17:33:42 -0500
+Subject: [PATCH] Delay tray setup until mainwindow state restored
+
+Otherwise the the KSNI appears to lose track of the main window.
+
+BUG: 482316
+---
+ src/mainwindow.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index c1a029b5a..6faf7d90c 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -571,13 +571,13 @@ MainWindow::MainWindow() : KXmlGuiWindow(nullptr)
+     new KonviBookmarkHandler(menu, this);
+     actionCollection()->addAction(QStringLiteral("bookmarks") , action);
+ 
+-    // decide whether to show the tray icon or not
+-    updateTrayIcon();
+-
+     createGUI();
+ 
+     setAutoSaveSettings();
+ 
++    // decide whether to show the tray icon or not
++    updateTrayIcon();
++
+     // Apply menubar show/hide pref
+     m_showMenuBarAction->setChecked(Preferences::self()->showMenuBar());
+     toggleMenubar(true);
+-- 
+GitLab
+
