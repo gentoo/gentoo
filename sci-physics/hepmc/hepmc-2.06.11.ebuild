@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MYP=HepMC-${PV}
 
@@ -70,6 +70,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# error: ‘hepevt_’ violates the C++ One Definition Rule [-Werror=odr]
+	# Bug 863284
+	filter-lto
 	# use MeV over GeV and mm over cm
 	local mycmakeargs=(
 		-Dlength=$(usex cm CM MM)
