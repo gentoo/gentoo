@@ -41,7 +41,7 @@ PATCHES=(
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	stat64 # used to test for Large File Support
+	opendir64 rewinddir64 closedir64 stat64 # used on AIX
 	glBegin # used to test for openGL support
 	glutMainLoop # used to test for glut support
 )
