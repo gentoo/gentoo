@@ -79,10 +79,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--bindir="${EPREFIX}/bin"
 		--enable-shared
 		--with-bashcompletiondir="$(get_bashcompdir)"
-		--with-rootlibdir="${EPREFIX}/$(get_libdir)"
 		$(use_enable debug)
 		$(usev doc '--enable-gtk-doc')
 		$(use_enable static-libs static)
@@ -100,18 +98,6 @@ src_install() {
 	default
 
 	find "${ED}" -type f -name "*.la" -delete || die
-
-	if use tools; then
-		local cmd
-		for cmd in depmod insmod modprobe rmmod; do
-			dosym ../bin/kmod /sbin/${cmd}
-		done
-
-		# These are also usable as normal user
-		for cmd in lsmod modinfo; do
-			dosym kmod /bin/${cmd}
-		done
-	fi
 
 	cat <<-EOF > "${T}"/usb-load-ehci-first.conf
 	softdep uhci_hcd pre: ehci_hcd
