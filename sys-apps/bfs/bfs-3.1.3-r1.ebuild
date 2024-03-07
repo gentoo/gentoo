@@ -47,4 +47,5 @@ src_test() {
 
 src_install() {
 	bfsmake DESTDIR="${D}" install
+	einstalldocs
 }
