@@ -31,6 +31,7 @@ RDEPEND="
 		>=dev-python/exceptiongroup-1.0.0_rc8[${PYTHON_USEDEP}]
 		>=dev-python/tomli-1[${PYTHON_USEDEP}]
 	' 3.10)
+	!!<=dev-python/flaky-3.7.0-r5
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-6.2.3[${PYTHON_USEDEP}]
