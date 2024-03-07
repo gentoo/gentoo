@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{10..12} )
+inherit cmake python-any-r1
 
 MY_P="trrntzip-${PV}"
 DESCRIPTION="Create identical zip archives over multiple systems"
@@ -14,6 +15,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2+ ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib:=
@@ -21,8 +24,25 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+BDEPEND="
+	test? (
+		${RDEPEND}
+		${PYTHON_DEPS}
+		>=dev-util/nihtest-1.5.0
+	)
+"
 
 DOCS=(AUTHORS NEWS.md README.md)
 
-# Tests need nihtest <https://nih.at/nihtest/>, not packaged
-mycmakeargs=( -DRUN_REGRESS=OFF )
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
+src_configure() {
+	if use test; then
+		local mycmakeargs=( -DPYTHONBIN="${EPYTHON}" )
+	else
+		local mycmakeargs=( -DRUN_REGRESS=NO )
+	fi
+	cmake_src_configure
+}
