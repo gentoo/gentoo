@@ -86,3 +86,4 @@ slotmove kde-apps/kdenetwork-meta 5 0
 slotmove kde-apps/kdepim-meta 5 0
 slotmove kde-apps/kdesdk-meta 5 0
 slotmove kde-apps/kdeutils-meta 5 0
+move media-libs/oneVPL media-libs/libvpl
