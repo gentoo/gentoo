@@ -16,4 +16,10 @@
 	<upstream>
 		<remote-id type="github">git-cola/git-cola</remote-id>
 	</upstream>
+	<use>
+		<flag name="pyqt5">Use <pkg>dev-python/PyQt5</pkg> as Qt backend</flag>
+		<flag name="pyqt6">Use <pkg>dev-python/PyQt6</pkg> as Qt backend</flag>
+		<flag name="pyside2">Use <pkg>dev-python/pyside2</pkg> as Qt backend</flag>
+		<flag name="pyside6">Use <pkg>dev-python/pyside6</pkg> as Qt backend</flag>
+	</use>
 </pkgmetadata>
