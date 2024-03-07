@@ -23,6 +23,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
+	>=dev-qt/qttools-${QTMIN}:6[widgets]
 	>=kde-apps/akonadi-${PVCUT}:6
 	>=kde-apps/akonadi-calendar-${PVCUT}:6
 	>=kde-apps/akonadi-contacts-${PVCUT}:6
@@ -60,7 +61,6 @@ COMMON_DEPEND="
 	telemetry? ( >=kde-frameworks/kuserfeedback-${KFMIN}:6 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-qt/qttools-${QTMIN}:6[designer]
 	>=kde-apps/kldap-${PVCUT}:6
 	test? ( >=kde-apps/akonadi-${PVCUT}:6[sqlite] )
 "
