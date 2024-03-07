@@ -651,14 +651,14 @@ arm64		default/linux/arm64/17.0/musl					dev
 arm64		default/linux/arm64/17.0/musl/llvm				exp
 arm64		default/linux/arm64/17.0/musl/hardened				exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux			exp
-# arm64		default/linux/arm64/23.0/musl					exp
-# arm64		default/linux/arm64/23.0/musl/llvm				exp
-# arm64		default/linux/arm64/23.0/musl/hardened				exp
-# arm64		default/linux/arm64/23.0/musl/hardened/selinux			exp
-# arm64		default/linux/arm64/23.0/split-usr/musl				exp
-# arm64		default/linux/arm64/23.0/split-usr/musl/llvm			exp
-# arm64		default/linux/arm64/23.0/split-usr/musl/hardened		exp
-# arm64		default/linux/arm64/23.0/split-usr/musl/hardened/selinux	exp
+arm64		default/linux/arm64/23.0/musl					exp
+arm64		default/linux/arm64/23.0/musl/llvm				exp
+arm64		default/linux/arm64/23.0/musl/hardened				exp
+arm64		default/linux/arm64/23.0/musl/hardened/selinux			exp
+arm64		default/linux/arm64/23.0/split-usr/musl				exp
+arm64		default/linux/arm64/23.0/split-usr/musl/llvm			exp
+arm64		default/linux/arm64/23.0/split-usr/musl/hardened		exp
+arm64		default/linux/arm64/23.0/split-usr/musl/hardened/selinux	exp
 m68k		default/linux/m68k/17.0/musl					exp
 m68k		default/linux/m68k/23.0/musl					exp
 m68k		default/linux/m68k/23.0/split-usr/musl				exp
@@ -682,14 +682,14 @@ riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		exp
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		exp
 x86		default/linux/x86/17.0/musl					dev
 x86		default/linux/x86/17.0/musl/selinux				exp
-# x86		default/linux/x86/23.0/i686/musl				exp
-# x86		default/linux/x86/23.0/i686/musl/selinux			exp
-# x86		default/linux/x86/23.0/i686/split-usr/musl			exp
-# x86		default/linux/x86/23.0/i686/split-usr/musl/selinux		exp
-# x86		default/linux/x86/23.0/i486/musl				exp
-# x86		default/linux/x86/23.0/i486/musl/selinux			exp
-# x86		default/linux/x86/23.0/i486/split-usr/musl			exp
-# x86		default/linux/x86/23.0/i486/split-usr/musl/selinux		exp
+x86		default/linux/x86/23.0/i686/musl				exp
+x86		default/linux/x86/23.0/i686/musl/selinux			exp
+x86		default/linux/x86/23.0/i686/split-usr/musl			exp
+x86		default/linux/x86/23.0/i686/split-usr/musl/selinux		exp
+x86		default/linux/x86/23.0/i486/musl				exp
+x86		default/linux/x86/23.0/i486/musl/selinux			exp
+x86		default/linux/x86/23.0/i486/split-usr/musl			exp
+x86		default/linux/x86/23.0/i486/split-usr/musl/selinux		exp
 
 
 # These are Gentoo Prefix profiles, maintained by the Prefix team
