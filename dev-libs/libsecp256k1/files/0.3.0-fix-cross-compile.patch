@@ -1,6 +1,6 @@
 https://github.com/bitcoin-core/secp256k1/pull/1159
 
-From 772e747bd9104d80fe531bed61f23f75342d7d63 Mon Sep 17 00:00:00 2001
+From dc87b08eea757aae95b1efc25fe543e91510df0a Mon Sep 17 00:00:00 2001
 From: Matt Whitlock <bitcoin@mattwhitlock.name>
 Date: Sun, 20 Nov 2022 01:46:07 -0500
 Subject: [PATCH] Makefile: build precomp generators using build-system
@@ -11,24 +11,26 @@ files need to be regenerated, then the generators need to be built for
 the *build* system, not for the *host* system. Autoconf supports this
 fairly cleanly via the `AX_PROG_CC_FOR_BUILD` macro (from Autoconf
 Archive), but Automake requires some hackery. When building the
-generators, we override the `CC`, `CFLAGS`, `CPPFLAGS`, and `LDFLAGS`
-variables to their build-system counterparts, whose names are suffixed
-with `_FOR_BUILD` and whose values are populated by the aforementioned
-Autoconf macro and may be overridden on the `make` command line. Since
-Automake lacks support for overriding `EXEEXT` on a per-program basis,
-we define a recipe that builds the generator binaries with names
-suffixed with `$(EXEEXT)` and then renames them suffixed with
+generators, we override the `CC` variable to its build-system
+counterpart, `CC_FOR_BUILD`, and we specify Automake per-program
+overrides for `CFLAGS`, `CPPFLAGS`, and `LDFLAGS`, setting their values
+respectively from the `CFLAGS_FOR_BUILD`, `CPPFLAGS_FOR_BUILD`, and
+`LDFLAGS_FOR_BUILD` variables, whose values in turn are populated by the
+aforementioned Autoconf macro and may be overridden on the `make`
+command line. Since Automake lacks support for overriding `EXEEXT` on a
+per-program basis, we define a recipe that builds the generator binaries
+with names suffixed with `$(EXEEXT)` and then renames them suffixed with
 `$(BUILD_EXEEXT)`.
 ---
- Makefile.am  | 30 ++++++++++++++++++++++++------
+ Makefile.am  | 35 +++++++++++++++++++++++++++--------
  configure.ac |  1 +
- 2 files changed, 25 insertions(+), 6 deletions(-)
+ 2 files changed, 28 insertions(+), 8 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 30b6a794d0..e929300298 100644
+index e3fdf4da..5e859c91 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -180,8 +180,26 @@ endif
+@@ -186,15 +186,34 @@ endif
  endif
  
  ### Precomputed tables
@@ -36,9 +38,6 @@ index 30b6a794d0..e929300298 100644
 -CLEANFILES = $(EXTRA_PROGRAMS)
 +PROGRAMS_FOR_BUILD = precompute_ecmult precompute_ecmult_gen
 +$(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD)) : override CC = $(CC_FOR_BUILD)
-+$(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD)) : override CFLAGS = $(CFLAGS_FOR_BUILD)
-+$(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD)) : override CPPFLAGS = $(CPPFLAGS_FOR_BUILD)
-+$(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD)) : override LDFLAGS = $(LDFLAGS_FOR_BUILD)
 +# Automake has no support for PROGRAMS suffixed with BUILD_EXEEXT
 +# instead of EXEEXT, so if those extensions differ, then we define a
 +# recipe that builds the latter and renames it to the former. Since
@@ -56,8 +55,21 @@ index 30b6a794d0..e929300298 100644
 +CLEANFILES = $(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD))
  
  precompute_ecmult_SOURCES = src/precompute_ecmult.c
- precompute_ecmult_CPPFLAGS = $(SECP_INCLUDES)
-@@ -198,11 +216,11 @@ precompute_ecmult_gen_LDADD = $(SECP_LIBS) $(COMMON_LIB)
+-precompute_ecmult_CPPFLAGS = $(SECP_CONFIG_DEFINES)
++precompute_ecmult_CFLAGS = $(CFLAGS_FOR_BUILD)
++precompute_ecmult_CPPFLAGS = $(CPPFLAGS_FOR_BUILD) $(SECP_CONFIG_DEFINES)
++precompute_ecmult_LDFLAGS = $(LDFLAGS_FOR_BUILD)
+ precompute_ecmult_LDADD = $(COMMON_LIB)
+ 
+ precompute_ecmult_gen_SOURCES = src/precompute_ecmult_gen.c
+-precompute_ecmult_gen_CPPFLAGS = $(SECP_CONFIG_DEFINES)
++precompute_ecmult_gen_CFLAGS = $(CFLAGS_FOR_BUILD)
++precompute_ecmult_gen_CPPFLAGS = $(CPPFLAGS_FOR_BUILD) $(SECP_CONFIG_DEFINES)
++precompute_ecmult_gen_LDFLAGS = $(LDFLAGS_FOR_BUILD)
+ precompute_ecmult_gen_LDADD = $(COMMON_LIB)
+ 
+ # See Automake manual, Section "Errors with distclean".
+@@ -204,11 +223,11 @@ precompute_ecmult_gen_LDADD = $(COMMON_LIB)
  # This means that rebuilds of the prebuilt files always need to be
  # forced by deleting them, e.g., by invoking `make clean-precomp`.
  src/precomputed_ecmult.c:
@@ -74,10 +86,10 @@ index 30b6a794d0..e929300298 100644
  PRECOMP = src/precomputed_ecmult_gen.c src/precomputed_ecmult.c
  precomp: $(PRECOMP)
 diff --git a/configure.ac b/configure.ac
-index a2a15d2b82..013964f5ff 100644
+index a46a0a7b..3b88d0d0 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -35,6 +35,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+@@ -32,6 +32,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
  AC_PROG_CC
  AM_PROG_AS
  AM_PROG_AR
