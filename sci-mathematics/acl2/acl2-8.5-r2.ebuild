@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Only SBCL (dev-lisp/sbcl) is tested for now, but probably
@@ -15,14 +15,14 @@ HOMEPAGE="https://www.cs.utexas.edu/users/moore/acl2/
 	https://github.com/acl2/acl2/"
 SRC_URI="https://github.com/acl2/acl2/archive/${PV}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc emacs"
 REQUIRED_USE="emacs? ( doc )"
 
 RDEPEND="
-	dev-lisp/sbcl:=
+	<=dev-lisp/sbcl-2.4.1:=
 	emacs? ( >=app-editors/emacs-25:* )
 "
 BDEPEND="
