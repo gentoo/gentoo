@@ -25,7 +25,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=media-libs/libva-intel-media-driver-${PV}
 	|| (
-		media-libs/oneVPL[drm,vaapi]
+		media-libs/libvpl[drm,vaapi]
 		media-libs/intel-mediasdk
 	)
 "
