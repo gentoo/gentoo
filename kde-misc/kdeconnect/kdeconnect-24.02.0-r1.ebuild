@@ -65,6 +65,10 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/kirigami-addons:6
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
 	>=dev-qt/qtmultimedia-${QTMIN}:6[qml]
+	|| (
+		>=dev-qt/qttools-${QTMIN}:6[qdbus]
+		dev-qt/qdbus:*
+	)
 	>=kde-frameworks/kdeclarative-${KFMIN}:6
 	kde-plasma/libplasma:6
 	net-fs/sshfs
