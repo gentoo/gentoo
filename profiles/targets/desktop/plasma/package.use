@@ -29,13 +29,13 @@ dev-python/pyside6 webchannel
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
 
-# Required by net-im/neochat:5
+# Required by <net-im/neochat-23.08.50
 dev-qt/qtmultimedia:5 gstreamer
 
-# Required by app-editors/okteta
+# Required by app-editors/okteta:5
 dev-qt/qtscript:5 scripttools
 
-# Required by kde-apps/akonadi
+# Required by kde-apps/akonadi:5
 dev-qt/qtsql:5 mysql
 
 # Required by kde-apps/ktp-text-ui
@@ -66,7 +66,7 @@ media-libs/opencv contrib contribdnn
 # Required by net-firewall/firewalld[nftables] (default enabled)
 net-firewall/nftables json python xtables
 
-# Required by dev-qt/qtwebengine:5
+# Required by dev-qt/qtwebengine
 sys-libs/zlib minizip
 
 # Keep existing defaults after dropping IUSE=phonon from make.defaults

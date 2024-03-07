@@ -11,8 +11,8 @@
 app-text/poppler nss boost
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-11)
-# egl, libinput required by kde-frameworks/kwayland
-# accessibility required by kde-plasma/kwin
+# egl, libinput required by kde-plasma/kwayland:5
+# accessibility required by kde-plasma/kwin:5
 dev-qt/qtgui:5 accessibility egl libinput
 
 # Sam James <sam@gentoo.org> (2023-09-22)
