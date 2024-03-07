@@ -7,9 +7,8 @@
 # This just makes sense nowadays, if only for distfiles...
 USE="lzma zstd"
 
-## make sure toolchain has sane defaults <toolchain@gentoo.org>
-# (re-enable after one round of stage rebuilds)
-#USE="${USE} openmp"
+# make sure toolchain has sane defaults <toolchain@gentoo.org>
+USE="${USE} openmp"
 
 # bug 831045
 USE="${USE} -cli"
