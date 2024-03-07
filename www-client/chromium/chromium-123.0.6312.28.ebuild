@@ -26,7 +26,7 @@ PYTHON_REQ_USE="xml(+)"
 
 # These variables let us easily bound supported major dependency versions in one place.
 GCC_MIN_VER=12
-GN_MIN_VER=0.2143
+GN_MIN_VER=0.2154
 LLVM_MAX_SLOT=17
 LLVM_MIN_SLOT=16
 RUST_MIN_VER=1.72.0
@@ -375,7 +375,7 @@ pkg_setup() {
 		fi
 		# Users should never hit this, it's purely a development convenience
 		if ver_test $(gn --version || die) -lt ${GN_MIN_VER}; then
-				die "dev-util/gn >= ${GN_MIN_VER} is required to build this Chromium"
+				die "dev-build/gn >= ${GN_MIN_VER} is required to build this Chromium"
 		fi
 	fi
 
