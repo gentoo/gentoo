@@ -23,8 +23,8 @@ IUSE=""
 RDEPEND="
 	dev-lang/perl
 	sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
