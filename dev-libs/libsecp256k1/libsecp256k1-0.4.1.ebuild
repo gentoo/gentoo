@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
@@ -41,6 +41,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #895048
+	local -x CC_FOR_BUILD="$(tc-getBUILD_CC)"
+
 	local myeconfargs=(
 		--disable-benchmark
 		$(use_enable experimental)
