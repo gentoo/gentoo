@@ -9,8 +9,8 @@ MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A high-performance multi-threaded backup (and restore) toolset for MySQL"
-HOMEPAGE="https://github.com/maxbube/mydumper"
-SRC_URI="https://github.com/maxbube/mydumper/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/mydumper/mydumper"
+SRC_URI="https://github.com/mydumper/mydumper/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
