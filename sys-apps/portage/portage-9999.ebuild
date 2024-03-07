@@ -4,10 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=meson-python
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
-inherit meson linux-info multiprocessing python-r1 tmpfiles
+inherit meson linux-info multiprocessing python-r1 distutils-r1 tmpfiles
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -34,6 +36,7 @@ RESTRICT="!test? ( test )"
 #
 # >=meson-1.2.1-r1 for bug #912051
 BDEPEND="
+	${DISTUTILS_DEPS}
 	${PYTHON_DEPS}
 	>=dev-build/meson-1.2.1-r1
 	|| (
@@ -123,11 +126,19 @@ src_prepare() {
 			-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
 			-i cnf/repos.conf || die "sed failed"
 	fi
+	# Use distutils-r1 for PEP517 mode to generate dist-info.
+	distutils-r1_src_prepare
+	# Use the meson build for system-wide install mode which overwrites
+	# files from the PEP517 build (we want at least installation.py to
+	# come from the system-wide mode since that controls evaluation of
+	# paths in the portage.const module).
+	cp -p -R "${S}" "${S}-meson" || die
 }
 
 src_configure() {
+	distutils-r1_src_configure
 	local code_only=false
-	python_foreach_impl my_src_configure
+	BUILD_DIR="${S}-meson" python_foreach_impl my_src_configure
 }
 
 my_src_configure() {
@@ -160,17 +171,23 @@ my_src_configure() {
 }
 
 src_compile() {
-	python_foreach_impl meson_src_compile
+	distutils-r1_src_compile
+	BUILD_DIR="${S}-meson" python_foreach_impl meson_src_compile
 }
 
 src_test() {
 	local -x PYTEST_ADDOPTS="-vv -ra -l -o console_output_style=count -n $(makeopts_jobs) --dist=worksteal"
 
-	python_foreach_impl meson_src_test --no-rebuild --verbose
+	BUILD_DIR="${S}-meson" python_foreach_impl meson_src_test --no-rebuild --verbose
 }
 
 src_install() {
-	python_foreach_impl my_src_install
+	distutils-r1_src_install
+	# TODO: Add a setup arg to exclude this stuff.
+	rm -rf "${ED}/usr/"{bin,sbin,etc,lib/portage/bin} || die
+	# Omit undesirable RECORD and entry_points.txt files.
+	find "${ED}" \( -name RECORD -o -name entry_points.txt \) -delete || die
+	BUILD_DIR="${S}-meson" python_foreach_impl my_src_install
 	dotmpfiles "${FILESDIR}"/portage-{ccache,tmpdir}.conf
 
 	local scripts
