@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/3"
-IUSE="aad alsa cpu_flags_arm_neon cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
+IUSE="aad alsa cpu_flags_arm_neon cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sample sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -112,6 +112,7 @@ src_configure() {
 		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
 		-DWITH_CLIENT_SDL=$(usex sdl ON OFF)
+		-DWITH_SAMPLE=$(usex sample ON OFF)
 		-DWITH_CUPS=$(usex cups ON OFF)
 		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
 		-DWITH_MANPAGES=ON
