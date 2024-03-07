@@ -14,9 +14,7 @@ S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
 LICENSE="MIT"
 SLOT="0"
-if [[ "${PV}" == *_rc* ]] ; then
-	KEYWORDS=""
-else
+if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 # IUSE="+cli" doesn't work due to https://bugs.gentoo.org/831045#c3
