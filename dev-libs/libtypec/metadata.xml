@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+    “libtypec” is aimed to provide a generic interface abstracting all
+    platform complexity for user space to develop tools for efficient
+    USB-C port management. The library can also enable development of
+    diagnostic and debug tools to debug system issues around USB-C/USB
+    PD topology. 
+  </longdescription>
+  <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="github">Rajaram-Regupathy/libtypec</remote-id>
+  </upstream>
+</pkgmetadata>
