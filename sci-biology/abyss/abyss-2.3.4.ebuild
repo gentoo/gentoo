@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 HOMEPAGE="https://www.bcgsc.ca/resources/software/abyss/"
@@ -48,6 +48,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862252
+	# https://github.com/bcgsc/abyss/issues/474
+	filter-lto
+
 	# disable building haskell tool Misc/samtobreak
 	# unless request by user: bug #534412
 	use misc-haskell || export ac_cv_prog_ac_ct_GHC=
