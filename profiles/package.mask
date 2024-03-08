@@ -823,10 +823,6 @@ net-misc/openr2
 =sys-libs/ncurses-6.4_p20230506
 =sys-libs/ncurses-6.4_p20230527
 
-# Eray Aslan <eras@gentoo.org> (2023-04-12)
-# Mask experimental software
-=mail-mta/postfix-3.9*
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
