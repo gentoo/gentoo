@@ -418,6 +418,7 @@ CRATES_TEST="
 	windows_x86_64_msvc@0.36.1
 	windows_x86_64_msvc@0.48.0
 "
+DISTUTILS_EXT=1 #926507
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 inherit cargo distutils-r1 edo shell-completion toolchain-funcs
