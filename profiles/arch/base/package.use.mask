@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
+# media-libs/libdovi has very few keywords and there is little interest
+# in adding extras unless requested (also needs rust+cargo-c)
+media-libs/libplacebo libdovi
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
 # net-libs/paho-mqtt-c is only available for amd64 and x86
 app-admin/syslog-ng mqtt

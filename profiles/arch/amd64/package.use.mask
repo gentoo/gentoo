@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
+# media-libs/libdovi is keyworded here
+media-libs/libplacebo -libdovi
+
 # Sam James <sam@gentoo.org> (2024-02-24)
 # Only works on amd64 (and x32).
 dev-debug/gdb -cet

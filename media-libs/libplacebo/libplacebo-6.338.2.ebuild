@@ -37,13 +37,17 @@ LICENSE="
 	opengl? ( MIT )
 "
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname
-IUSE="glslang +lcms llvm-libunwind +opengl +shaderc test unwind +vulkan +xxhash"
+IUSE="
+	glslang +lcms libdovi llvm-libunwind +opengl +shaderc test
+	unwind +vulkan +xxhash
+"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
 # dlopen: libglvnd (glad)
 RDEPEND="
 	lcms? ( media-libs/lcms:2[${MULTILIB_USEDEP}] )
+	libdovi? ( media-libs/libdovi:=[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP}] )
 	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	!shaderc? ( glslang? ( dev-util/glslang:=[${MULTILIB_USEDEP}] ) )
@@ -106,7 +110,7 @@ multilib_src_configure() {
 		-Ddemos=false #851927
 		$(meson_use test tests)
 		$(meson_feature lcms)
-		-Dlibdovi=disabled # TODO: package libdovi, ask if you need this
+		$(meson_feature libdovi)
 		$(meson_feature opengl)
 		$(meson_feature opengl gl-proc-addr)
 		$(meson_feature shaderc)
