@@ -418,10 +418,10 @@ CRATES_TEST="
 	windows_x86_64_msvc@0.36.1
 	windows_x86_64_msvc@0.48.0
 "
-DISTUTILS_EXT=1 #926507
+
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
-inherit cargo distutils-r1 edo shell-completion toolchain-funcs
+inherit cargo distutils-r1 shell-completion toolchain-funcs
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 HOMEPAGE="https://www.maturin.rs/"
@@ -446,7 +446,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.10)"
 DEPEND="ssl? ( dev-libs/openssl:= )"
 BDEPEND="
-	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? ( app-text/mdbook )
 	test? (
@@ -463,6 +462,9 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_prepare() {
 	distutils-r1_src_prepare
+
+	# we build the Rust executable (just once) via cargo_src_compile
+	sed -i -e '/setuptools_rust/d' -e '/rust_extensions/d' setup.py || die
 
 	if use test; then
 		# used to prevent use of network during tests, and silence pip
@@ -493,11 +495,12 @@ src_configure() {
 		--features full,password-storage$(usev ssl ,native-tls)
 	)
 
-	export MATURIN_SETUP_ARGS=${cargoargs[*]}
+	cargo_src_configure "${cargoargs[@]}"
 	export OPENSSL_NO_VENDOR=1
 }
 
 python_compile_all() {
+	cargo_src_compile
 	use !doc || mdbook build -d html guide || die
 
 	if ! tc-is-cross-compiler; then
@@ -523,10 +526,12 @@ python_test() {
 		--skip pyo3_no_extension_module
 	)
 
-	edo cargo test $(usev !debug --release) ${MATURIN_SETUP_ARGS} -- "${skip[@]}"
+	cargo_src_test -- "${skip[@]}"
 }
 
 python_install_all() {
+	cargo_src_install
+
 	dodoc Changelog.md README.md
 	use doc && dodoc -r guide/html
 
