@@ -14,8 +14,7 @@ SLOT="1.7"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile tools"
 
-RDEPEND="
-	x11-libs/fox-wrapper
+COMMON_DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXrandr
 	bzip2? ( app-arch/bzip2 )
@@ -29,8 +28,12 @@ RDEPEND="
 	)
 	zlib? ( sys-libs/zlib )
 "
+RDEPEND="
+	${COMMON_DEPEND}
+	x11-libs/fox-wrapper
+"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt
 "
