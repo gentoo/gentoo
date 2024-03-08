@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-03-08)
+# A library without reverse dependencies.
+# Removal on: 2024-04-07.  Bug #926486.
+dev-libs/yascreen
+
 # Ulrich Müller <ulm@gentoo.org> (2024-03-06)
 # Inactive upstream maintainer. Needs porting to PEP 517 (or better,
 # from Python to Emacs Lisp) and from layman to repository.eselect.
