@@ -38,6 +38,7 @@ TL_CORE_EXTRA_CONTENTS="
 	m-tx.r64182
 	makeindex.r62517
 	pmx.r65926
+	texdoctk.r62186
 	texlive-scripts.r69754
 	texlive-scripts-extra.r62517
 	texlive.infra.r69740
@@ -45,6 +46,7 @@ TL_CORE_EXTRA_CONTENTS="
 	upmendex.r66381
 	velthuis.r66186
 	vlna.r66186
+	xindy.r65958
 	xml2pmx.r57972
 "
 TL_CORE_EXTRA_DOC_CONTENTS="
@@ -62,6 +64,7 @@ TL_CORE_EXTRA_DOC_CONTENTS="
 	m-tx.doc.r64182
 	makeindex.doc.r62517
 	pmx.doc.r65926
+	texdoctk.doc.r62186
 	texlive-scripts.doc.r69754
 	texlive-scripts-extra.doc.r62517
 	texlive.infra.doc.r69740
@@ -69,6 +72,7 @@ TL_CORE_EXTRA_DOC_CONTENTS="
 	upmendex.doc.r66381
 	velthuis.doc.r66186
 	vlna.doc.r66186
+	xindy.doc.r65958
 	xml2pmx.doc.r57972
 "
 TL_CORE_EXTRA_SRC_CONTENTS="
@@ -416,6 +420,11 @@ src_install() {
 
 	if use cjk; then
 		rm "${ED}/usr/bin/"{,u}ptex || die
+	fi
+
+	if ! use xindy; then
+		rm -rf "${ED}{TEXMF_PATH}"/{,scripts,doc}/xindy
+		rm "${ED}"/usr/share/tlpkg/tlpobj/xindy.* || die
 	fi
 
 	dobin_texmf_scripts ${TEXLIVE_MODULE_BINSCRIPTS}

@@ -79,7 +79,6 @@ TEXLIVE_MODULE_CONTENTS="
 	texdiff.r29752
 	texdirflatten.r55064
 	texdoc.r69672
-	texdoctk.r62186
 	texfot.r68110
 	texliveonfly.r55777
 	texloganalyser.r54526
@@ -93,7 +92,6 @@ TEXLIVE_MODULE_CONTENTS="
 	typeoutfileinfo.r67526
 	web.r66186
 	xindex.r67771
-	xindy.r65958
 	xpdfopen.r65952
 "
 TEXLIVE_MODULE_DOC_CONTENTS="
@@ -172,7 +170,6 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	texdiff.doc.r29752
 	texdirflatten.doc.r55064
 	texdoc.doc.r69672
-	texdoctk.doc.r62186
 	texfot.doc.r68110
 	texliveonfly.doc.r55777
 	texloganalyser.doc.r54526
@@ -186,7 +183,6 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	typeoutfileinfo.doc.r67526
 	web.doc.r66186
 	xindex.doc.r67771
-	xindy.doc.r65958
 	xpdfopen.doc.r65952
 "
 TEXLIVE_MODULE_SRC_CONTENTS="
