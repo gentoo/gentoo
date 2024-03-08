@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,12 @@ JAVA_PKG_IUSE=source
 inherit desktop edos2unix java-pkg-2 java-ant-2 xdg
 
 DESCRIPTION="Editor for VDR channels.conf"
-HOMEPAGE="https://sites.google.com/site/reniershomepage/"
-SRC_URI="mirror://sourceforge/${PN}/${P/-/_}_src.tar.gz"
+HOMEPAGE="https://sites.google.com/site/reniershomepage/channeleditor"
+SRC_URI="mirror://sourceforge/project/channeleditor/channeleditor/$(ver_cut 1-3)/${P/-/_}_src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
