@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,13 +18,12 @@ inherit cmake docs distutils-r1 systemd
 
 DESCRIPTION="Extended ROOT remote file server"
 HOMEPAGE="https://xrootd.slac.stanford.edu/"
+SRC_URI="https://xrootd.slac.stanford.edu/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-3+"
 
-IUSE="ceph examples fuse http kerberos +libxml2 macaroons python readline scitokens +server systemd test xrdec"
 SLOT="0"
-
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-SRC_URI="https://xrootd.slac.stanford.edu/download/v${PV}/${P}.tar.gz"
+IUSE="ceph examples fuse http kerberos +libxml2 macaroons python readline scitokens +server systemd test xrdec"
 
 RESTRICT="!test? ( test )"
 
