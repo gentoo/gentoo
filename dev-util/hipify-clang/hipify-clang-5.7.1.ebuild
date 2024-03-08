@@ -29,6 +29,8 @@ src_prepare() {
 	sed -i 's:/../libexec/hipify::' \
 		bin/hipconvertinplace.sh bin/hipconvertinplace-perl.sh \
 		bin/hipexamine-perl.sh bin/hipexamine.sh || die
+	# Workaround for bug https://github.com/ROCm/HIPIFY/issues/1396
+	sed -i 's/find_package(LLVM REQUIRED/find_package(LLVM 17 REQUIRED/' CMakeLists.txt
 }
 
 src_install() {
