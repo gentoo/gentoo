@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,12 @@ EAPI=7
 inherit desktop qmake-utils xdg
 
 DESCRIPTION="Tool for cutting MPEG files especially for removing commercials"
-HOMEPAGE="https://github.com/templer/ttcut"
+HOMEPAGE="https://github.com/baltendorf/ttcut"
 SRC_URI="https://dev.gentoo.org/~billie/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 DEPEND="
 	>=media-libs/libmpeg2-0.4.0
