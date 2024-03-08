@@ -58,6 +58,7 @@ src_configure() {
 		-DENABLE_QT5=$(usex qt5)
 		-DENABLE_QT6=$(usex qt6)
 		-DENABLE_QT6_WAYLAND_WORKAROUND=$(usex qt6 $(usex wayland))
+		-DENABLE_X11=$(usex X)
 		-DBUILD_ONLY_PLUGIN=$(usex onlyplugin)
 		-DBUILD_STATIC_PLUGIN=$(usex staticplugin)
 	)
