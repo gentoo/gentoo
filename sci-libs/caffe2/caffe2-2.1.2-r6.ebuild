@@ -237,6 +237,6 @@ src_install() {
 	if use cuda; then
 		python_domodule python/nvfuser
 	fi
-	rm -rf "${ED}"/var/tmp
+	rm -rf "${ED}${WORKDIR}"
 	find "${ED}" -empty -delete
 }
