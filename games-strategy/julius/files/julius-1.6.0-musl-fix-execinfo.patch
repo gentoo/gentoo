@@ -1,14 +1,15 @@
 # Fix building on musl
 #
 # Closes: https://bugs.gentoo.org/829246
+diff --git a/src/core/backtrace.c b/src/core/backtrace.c
 --- a/src/core/backtrace.c
 +++ b/src/core/backtrace.c
 @@ -2,7 +2,7 @@
-
+ 
  #include "core/log.h"
-
--#if defined(__GNUC__) && !defined(__MINGW32__) && !defined(__OpenBSD__) && !defined(__vita__) && !defined(__SWITCH__) && !defined(__ANDROID__)
-+#if defined(__GNUC__) && defined(__GLIBC__) && !defined(__MINGW32__) && !defined(__OpenBSD__) && !defined(__vita__) && !defined(__SWITCH__) && !defined(__ANDROID__)
-
- #include <execinfo.h>
-
+ 
+-#if defined(__GNUC__) && !defined(__MINGW32__) && !defined(__OpenBSD__) && \
++#if defined(__GNUC__) && defined(__GLIBC__) && !defined(__MINGW32__) && !defined(__OpenBSD__) && \
+     !defined(__vita__) && !defined(__SWITCH__) && !defined(__ANDROID__) && \
+     !defined(__HAIKU__) && !defined(__EMSCRIPTEN__)
+ 
