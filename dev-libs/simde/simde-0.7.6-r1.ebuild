@@ -18,6 +18,10 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.6-musl.patch
+)
+
 src_configure() {
 	# *FLAGS are only used for tests (nothing that is installed), and
 	# upstream tests with specific *FLAGS and is otherwise flaky with
