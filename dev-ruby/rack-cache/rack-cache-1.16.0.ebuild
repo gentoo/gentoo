@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
-# no documentation is generable, it needs hanna, which is broken
+# no documentation can be generated. It needs hanna, which is broken.
 RUBY_FAKEGEM_RECIPE_DOC="none"
 
 RUBY_FAKEGEM_TASK_TEST="none"
