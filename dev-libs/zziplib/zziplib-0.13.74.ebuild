@@ -25,6 +25,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
+	test? (
+		app-arch/unzip
+		app-arch/zip
+	)
 "
 DEPEND="
 	sys-libs/zlib
