@@ -23,7 +23,7 @@ LICENSE="LGPL-3+"
 IUSE="ceph examples fuse http kerberos +libxml2 macaroons python readline scitokens +server systemd test xrdec"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 SRC_URI="https://xrootd.slac.stanford.edu/download/v${PV}/${P}.tar.gz"
 
 RESTRICT="!test? ( test )"
