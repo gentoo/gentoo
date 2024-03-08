@@ -418,7 +418,6 @@ CRATES_TEST="
 	windows_x86_64_msvc@0.36.1
 	windows_x86_64_msvc@0.48.0
 "
-
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 inherit cargo distutils-r1 shell-completion toolchain-funcs
@@ -496,11 +495,13 @@ src_configure() {
 		password-storage
 		$(usev ssl native-tls)
 	)
-	cargo_src_configure "${cargoargs[@]}"
+
+	cargo_src_configure
 }
 
 python_compile_all() {
 	cargo_src_compile
+
 	use !doc || mdbook build -d html guide || die
 
 	if ! tc-is-cross-compiler; then
