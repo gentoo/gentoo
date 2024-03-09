@@ -20,26 +20,34 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
 
-MY_PN="VirtualBox"
-MY_P=${MY_PN}-${PV}
+PATCHES_PV="7.0.14"
+ORIGIN_PN="VirtualBox"
+ORIGIN_PV=${PATCHES_PV}
 
-ORIGIN_PN="virtualbox"
+MY_PN=virtualbox
+MY_PV=${PV#*_pre}
+
+PATCHES_DIR="${WORKDIR}"/${PN}-${MY_PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/cyberus-technology/virtualbox-kvm"
-SRC_URI="https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.14.tar.bz2"
+SRC_URI="https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_PV}.tar.bz2"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 
-	ORIGIN_PV="7.0.14"
+	ORIGIN_PV=${PATCHES_PV}
 	EGIT_REPO_URI="https://github.com/cyberus-technology/virtualbox-kvm"
 else
-	MY_PV=${PV#*_pre}
 	ORIGIN_PV=${PV%_pre*}
+	PATCHES_DIR="${WORKDIR}"/${PN}-dev-${MY_PV}
 	SRC_URI+=" https://github.com/cyberus-technology/virtualbox-kvm/archive/dev-${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-dev-${MY_PV}"
 fi
-SRC_URI+=" gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${ORIGIN_PN}/${ORIGIN_PN}-help-${ORIGIN_PV}.tar.xz ) )"
+MY_P=${ORIGIN_PN}-${ORIGIN_PV}
+SRC_URI+="
+	https://download.virtualbox.org/virtualbox/${ORIGIN_PV}/${MY_P}.tar.bz2
+	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${MY_PN}/${MY_PN}-help-${ORIGIN_PV}.tar.xz ) )
+"
+S="${WORKDIR}/${ORIGIN_PN}-${ORIGIN_PV}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0"
@@ -199,7 +207,8 @@ REQUIRED_USE="
 
 PATCHES=(
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.0.14/patches
+	"${WORKDIR}"/virtualbox-patches-${PATCHES_PV}/patches
+	"${PATCHES_DIR}"/
 )
 
 pkg_pretend() {
@@ -255,7 +264,7 @@ src_prepare() {
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
-		"${FILESDIR}"/${ORIGIN_PN}-5-localconfig > LocalConfig.kmk || die
+		"${FILESDIR}"/${MY_PN}-5-localconfig > LocalConfig.kmk || die
 
 	if ! use pch; then
 		# bug #753323
@@ -319,7 +328,7 @@ src_prepare() {
 		sed -i -e '/^\//d' src/libs/xpcom18a4/nsprpub/pr/src/md/unix/os_Linux_x86_64.s || die
 
 		# clang does not support this extension
-		eapply "${FILESDIR}"/${ORIGIN_PN}-7.0.8-disable-rebuild-iPxeBiosBin.patch
+		eapply "${FILESDIR}"/${MY_PN}-7.0.8-disable-rebuild-iPxeBiosBin.patch
 	fi
 
 	# fix doc generation
@@ -503,7 +512,7 @@ src_compile() {
 src_install() {
 	cd "${S}"/out/linux.${ARCH}/$(usex debug debug release)/bin || die
 
-	local vbox_inst_path="/usr/$(get_libdir)/${ORIGIN_PN}" each size ico icofile
+	local vbox_inst_path="/usr/$(get_libdir)/${MY_PN}" each size ico icofile
 
 	vbox_inst() {
 		local binary="${1}"
@@ -521,7 +530,7 @@ src_install() {
 
 	# Create configuration files
 	insinto /etc/vbox
-	newins "${FILESDIR}/${ORIGIN_PN}-4-config" vbox.cfg
+	newins "${FILESDIR}/${MY_PN}-4-config" vbox.cfg
 
 	# Set the correct libdir
 	sed \
@@ -530,7 +539,7 @@ src_install() {
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
-	newexe "${FILESDIR}/${ORIGIN_PN}-ose-6-wrapper" "VBox"
+	newexe "${FILESDIR}/${MY_PN}-ose-6-wrapper" "VBox"
 	fowners root:vboxusers ${vbox_inst_path}/VBox
 	fperms 0750 ${vbox_inst_path}/VBox
 
@@ -608,21 +617,21 @@ src_install() {
 		doins -r nls
 		doins -r UnattendedTemplates
 
-		newmenu ${ORIGIN_PN}.desktop ${PN}.desktop
+		newmenu ${MY_PN}.desktop ${PN}.desktop
 
 		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
 		for size in 16 32 48 64 128 ; do
-			newicon -s ${size} ${ORIGIN_PN}-${size}px.png ${PN}.png
+			newicon -s ${size} ${MY_PN}-${size}px.png ${PN}.png
 		done
-		newicon ${ORIGIN_PN}-48px.png ${PN}.png
-		newicon -s scalable ${ORIGIN_PN}.svg ${PN}.png
+		newicon ${MY_PN}-48px.png ${PN}.png
+		newicon -s scalable ${MY_PN}.svg ${PN}.png
 		popd &>/dev/null || die
 		pushd "${S}"/src/VBox/Artwork/other &>/dev/null || die
 		for size in 16 24 32 48 64 72 96 128 256 512 ; do
 			for ico in hdd ova ovf vbox{,-extpack} vdi vdh vmdk ; do
-				icofile="${ORIGIN_PN}-${ico}-${size}px.png"
+				icofile="${MY_PN}-${ico}-${size}px.png"
 				if [[ -f "${icofile}" ]]; then
-					newicon -s ${size} ${icofile} ${ORIGIN_PN}-${ico}.png
+					newicon -s ${size} ${icofile} ${MY_PN}-${ico}.png
 				fi
 			done
 		done
@@ -668,7 +677,7 @@ src_install() {
 	fi
 
 	# Remove dead symlinks (bug #715338)
-	find "${ED}"/usr/$(get_libdir)/${ORIGIN_PN} -xtype l -delete || die
+	find "${ED}"/usr/$(get_libdir)/${MY_PN} -xtype l -delete || die
 
 	# Fix version string in extensions or else they don't get accepted
 	# by the virtualbox host process (see bug #438930)
@@ -688,11 +697,12 @@ src_install() {
 
 	if use doc; then
 		dodoc UserManual.pdf UserManual.q{ch,hc}
-		docompress -x /usr/share/doc/${PF}
+		docompress -x /usr/share/doc/${PF}/UserManual.*
 	elif use gui; then
-		dodoc "${WORKDIR}"/${ORIGIN_PN}-help-${ORIGIN_PV}/UserManual.q{ch,hc}
-		docompress -x /usr/share/doc/${PF}
+		dodoc "${WORKDIR}"/${MY_PN}-help-${ORIGIN_PV}/UserManual.q{ch,hc}
+		docompress -x /usr/share/doc/${PF}/UserManual.*
 	fi
+	dodoc ${PATCHES_DIR}/README.*
 
 	if use python; then
 		local python_path_ext="${ED}/usr/$(get_libdir)/virtualbox/VBoxPython3.so"
@@ -719,7 +729,7 @@ src_install() {
 		rm -r "${installer_dir}" || die
 	fi
 
-	newtmpfiles "${FILESDIR}"/${ORIGIN_PN}-vboxusb_tmpfilesd virtualbox-vboxusb.conf
+	newtmpfiles "${FILESDIR}"/${MY_PN}-vboxusb_tmpfilesd virtualbox-vboxusb.conf
 }
 
 pkg_postinst() {
@@ -747,7 +757,7 @@ pkg_postinst() {
 	optfeature "Guest additions ISO" app-emulation/virtualbox-additions
 
 	if ! use udev; then
-		ewarn "Without USE=udev, USB devices will likely not work in ${ORIGIN_PN}."
+		ewarn "Without USE=udev, USB devices will likely not work in ${MY_PN}."
 	fi
 }
 
