@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,10 @@ BDEPEND="x11-libs/libdrm[video_cards_amdgpu]"
 
 CMAKE_BUILD_TYPE=Release
 
-PATCHES=( "${FILESDIR}/${PN}-5.7.0-functions.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.0.0-functions.patch"
+	"${FILESDIR}/${PN}-5.7.1-musl.patch"
+)
 
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
