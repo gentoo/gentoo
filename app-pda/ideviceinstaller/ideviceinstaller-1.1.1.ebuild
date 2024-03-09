@@ -7,7 +7,7 @@ DESCRIPTION="A tool to interact with the installation_proxy of an Apple's iDevic
 HOMEPAGE="https://libimobiledevice.org"
 SRC_URI="https://github.com/libimobiledevice/ideviceinstaller/releases/download/${PV}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
