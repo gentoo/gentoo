@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ DESCRIPTION="Radeon Open Compute Runtime"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCR-Runtime"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3.0_no-aqlprofiler.patch"
+	"${FILESDIR}/${PN}-5.7.1-musl.patch"
 )
 
 LICENSE="MIT"
@@ -32,8 +33,8 @@ COMMON_DEPEND="dev-libs/elfutils
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
-	sys-devel/clang
-	sys-devel/lld"
+	sys-devel/clang:${LLVM_MAX_SLOT}=
+	sys-devel/lld:${LLVM_MAX_SLOT}="
 RDEPEND="${DEPEND}"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
