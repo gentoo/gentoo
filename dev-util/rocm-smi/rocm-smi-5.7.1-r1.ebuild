@@ -37,8 +37,9 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	sed "s/\${PKG_VERSION_STR}/${PV}/g" \
-		-i CMakeLists.txt -i oam/CMakeLists.txt -i rocm_smi/CMakeLists.txt || die
+	sed "s/\${PKG_VERSION_STR}/${PV}/" -i CMakeLists.txt || die
+	sed -e "s/@VERSION_MAJOR@/$(ver_cut 1)/ ; s/@VERSION_MINOR@/$(ver_cut 2)/" \
+		-i oam/CMakeLists.txt -i rocm_smi/CMakeLists.txt || die
 }
 
 src_configure() {

@@ -5,7 +5,7 @@ This patch repeats approach of similar patch from Debian, additionally removing 
 https://salsa.debian.org/rocm-team/rocm-smi-lib/-/blob/master/debian/patches/0007-rocm_smi64-soversion.patch
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -30,27 +30,6 @@ set(SHARE_INSTALL_PREFIX
+@@ -30,18 +30,6 @@ set(SHARE_INSTALL_PREFIX
      "share/${ROCM_SMI}"
      CACHE STRING "Tests and Example install directory")
  
@@ -21,21 +21,12 @@ https://salsa.debian.org/rocm-team/rocm-smi-lib/-/blob/master/debian/patches/000
 -set(${AMD_SMI_LIBS_TARGET}_VERSION_PATCH "0")
 -set(${AMD_SMI_LIBS_TARGET}_VERSION_BUILD "0")
 -
--# The following default version values should be updated as appropriate for
--# ABI breaks (update MAJOR and MINOR), and ABI/API additions (update MINOR).
--# Until ABI stabilizes VERSION_MAJOR will be 0. This should be over-ridden
--# by git tags (through "git describe") when they are present.
--set(PKG_VERSION_MAJOR 1)
--set(PKG_VERSION_MINOR 0)
--set(PKG_VERSION_PATCH 0)
--set(PKG_VERSION_NUM_COMMIT 0)
--
- ## Define default variable and variables for the optional build target
- ##  rocm_smi_lib-dev
- set(CMAKE_INSTALL_PREFIX "/opt/rocm" CACHE STRING "Default installation directory.")
+ # The following default version values should be updated as appropriate for
+ # ABI breaks (update MAJOR and MINOR), and ABI/API additions (update MINOR).
+ # Until ABI stabilizes VERSION_MAJOR will be 0. This should be over-ridden
 --- a/oam/CMakeLists.txt
 +++ b/oam/CMakeLists.txt
-@@ -29,23 +29,10 @@ set(OAM_NAME "oam")
+@@ -29,23 +29,11 @@ set(OAM_NAME "oam")
  set(OAM_COMPONENT "lib${OAM_NAME}")
  set(OAM_TARGET "${OAM_NAME}")
  
@@ -56,13 +47,23 @@ https://salsa.debian.org/rocm-team/rocm-smi-lib/-/blob/master/debian/patches/000
 -else()
 -    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}")
 -endif ()
-+set(VERSION_MAJOR "1")
-+set(VERSION_MINOR "0")
++set(VERSION_MAJOR "@VERSION_MAJOR@")
++set(VERSION_MINOR "@VERSION_MINOR@")
 +
-+set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}")
++set(SO_VERSION_MAJOR "1")
++set(SO_VERSION_STRING "1.0")
  set(${OAM_NAME}_VERSION_MAJOR "${VERSION_MAJOR}")
  set(${OAM_NAME}_VERSION_MINOR "${VERSION_MINOR}")
  set(${OAM_NAME}_VERSION_PATCH "0")
+@@ -78,7 +66,7 @@ target_include_directories(${OAM_TARGET} PRIVATE
+ 
+ ## Set the VERSION and SOVERSION values
+ set_property(TARGET ${OAM_TARGET} PROPERTY
+-             SOVERSION "${VERSION_MAJOR}")
++             SOVERSION "${SO_VERSION_MAJOR}")
+ set_property(TARGET ${OAM_TARGET} PROPERTY
+              VERSION "${SO_VERSION_STRING}")
+ 
 --- a/python_smi_tools/rsmiBindings.py.in
 +++ b/python_smi_tools/rsmiBindings.py.in
 @@ -9,19 +9,9 @@ from enum import Enum
@@ -90,7 +91,7 @@ https://salsa.debian.org/rocm-team/rocm-smi-lib/-/blob/master/debian/patches/000
  
 --- a/rocm_smi/CMakeLists.txt
 +++ b/rocm_smi/CMakeLists.txt
-@@ -31,17 +31,8 @@ set(ROCM_SMI_TARGET "${ROCM_SMI}64")
+@@ -31,23 +31,10 @@ set(ROCM_SMI_TARGET "${ROCM_SMI}64")
  ## Include common cmake modules
  include(utils)
  
@@ -105,8 +106,25 @@ https://salsa.debian.org/rocm-team/rocm-smi-lib/-/blob/master/debian/patches/000
 -get_version_from_tag("5.0.0.0" ${SO_VERSION_GIT_TAG_PREFIX} GIT)
 -
 -# VERSION_* variables should be set by get_version_from_tag
-+set(VERSION_MAJOR "1")
-+set(VERSION_MINOR "0")
- if ( ${ROCM_PATCH_VERSION} )
-     set ( VERSION_PATCH ${ROCM_PATCH_VERSION})
-     set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+-if ( ${ROCM_PATCH_VERSION} )
+-    set ( VERSION_PATCH ${ROCM_PATCH_VERSION})
+-    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+-else()
+-    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}")
+-endif ()
++set(VERSION_MAJOR "@VERSION_MAJOR@")
++set(VERSION_MINOR "@VERSION_MINOR@")
++set(SO_VERSION_MAJOR "1")
++set(SO_VERSION_STRING "1.0")
+ set(${ROCM_SMI}_VERSION_MAJOR "${VERSION_MAJOR}")
+ set(${ROCM_SMI}_VERSION_MINOR "${VERSION_MINOR}")
+ set(${ROCM_SMI}_VERSION_PATCH "0")
+@@ -99,7 +86,7 @@ endif()
+ 
+ ## Set the VERSION and SOVERSION values
+ set_property(TARGET ${ROCM_SMI_TARGET} PROPERTY
+-             SOVERSION "${VERSION_MAJOR}")
++             SOVERSION "${SO_VERSION_MAJOR}")
+ set_property(TARGET ${ROCM_SMI_TARGET} PROPERTY
+              VERSION "${SO_VERSION_STRING}")
+ 
