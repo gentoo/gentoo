@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,9 +10,10 @@ RELEASE_COMMIT="54145b03f4240222e336a9a2f402e93facefde65" #tag v3.2_latest
 
 inherit autotools python-single-r1
 
-DESCRIPTION="A simple C language RPC framework"
-HOMEPAGE="https://github.com/haiwen/libsearpc/ http://seafile.com/"
+DESCRIPTION="Simple C language RPC framework"
+HOMEPAGE="https://github.com/haiwen/libsearpc/ https://seafile.com/"
 SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -26,8 +27,6 @@ RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		dev-python/simplejson[${PYTHON_USEDEP}]
 	')"
-
-S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
 src_prepare() {
 	default
