@@ -1,19 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 arm ~arm64 ~m68k ~mips ~s390 x86"
-
 DESCRIPTION="Small footprint implementation of Tcl programming language"
-HOMEPAGE="http://jim.tcl.tk/"
+HOMEPAGE="https://jim.tcl.tk/"
+SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/78" # SONAME=libjim.so.0.78
+KEYWORDS="amd64 arm ~arm64 ~m68k ~mips ~s390 x86"
 IUSE="doc static-libs"
 
-RDEPEND=""
 DEPEND="
 	doc? ( app-text/asciidoc )
 	app-arch/unzip
