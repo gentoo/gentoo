@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -389,18 +389,8 @@ src_install() {
 	use privsep && dosbin wpa_priv
 	dobin wpa_cli wpa_passphrase
 
-	# baselayout-1 compat
-	if has_version "<sys-apps/baselayout-2.0.0"; then
-		dodir /sbin
-		dosym ../usr/sbin/wpa_supplicant /sbin/wpa_supplicant
-		dodir /bin
-		dosym ../usr/bin/wpa_cli /bin/wpa_cli
-	fi
-
-	if has_version ">=sys-apps/openrc-0.5.0"; then
-		newinitd "${FILESDIR}/${PN}-init.d" wpa_supplicant
-		newconfd "${FILESDIR}/${PN}-conf.d" wpa_supplicant
-	fi
+	newinitd "${FILESDIR}/${PN}-init.d" wpa_supplicant
+	newconfd "${FILESDIR}/${PN}-conf.d" wpa_supplicant
 
 	exeinto /etc/wpa_supplicant/
 	newexe "${FILESDIR}/wpa_cli.sh" wpa_cli.sh
