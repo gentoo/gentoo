@@ -5,10 +5,10 @@ EAPI=8
 
 # These don't necessarily have to align with the upstream release.
 BUILD_DEPS_COMMIT="2aafe061cd52a944cb3b5f86d1f25e9ad2a19bec"
-ENET_COMMIT="c6bb0e50118d08252eee308de8412751218442d6"
-MOONLIGHT_COMMIT="6e9ed871bc3e013386c775b2ee7d31deb1151068"
+ENET_COMMIT="04e27590670a87a7cd40f5a05cda97467e4e25a3"
+MOONLIGHT_COMMIT="cbd0ec1b25edfb8ee8645fffa49ff95b6e04c70e"
 NANORS_COMMIT="e9e242e98e27037830490b2a752895ca68f75f8b"
-TRAY_COMMIT="e08bdbe5aa7de0ad9c0ce36257016e07c7e6e2c0"
+TRAY_COMMIT="2bf1c610300b27f8d8ce87e2f13223fc83efeb42"
 SWS_COMMIT="27b41f5ee154cca0fce4fe2955dd886d04e3a4ed"
 WLRP_COMMIT="4264185db3b7e961e7f157e1cc4fd0ab75137568"
 FFMPEG_VERSION="6.1.1"
@@ -17,9 +17,9 @@ FFMPEG_VERSION="6.1.1"
 # PV=
 # git fetch
 # git checkout v$PV
-# rm -rf node_modules
-# npm install
-# XZ_OPT=-9 tar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-node-modules-$PV.tar.xz node_modules
+# rm -rf node_modules npm_cache package-lock.json
+# npm_config_cache="${PWD}"/npm_cache npm install --logs-max=0 --omit=optional
+# XZ_OPT=-9 tar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-npm-cache-$PV.tar.xz npm_cache package-lock.json
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -40,7 +40,7 @@ else
 		https://gitlab.com/eidheim/Simple-Web-Server/-/archive/${SWS_COMMIT}/Simple-Web-Server-${SWS_COMMIT}.tar.bz2
 		https://gitlab.freedesktop.org/wlroots/wlr-protocols/-/archive/${WLRP_COMMIT}/wlr-protocols-${WLRP_COMMIT}.tar.bz2
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
-		https://dev.gentoo.org/~chewi/distfiles/${PN}-node-modules-${PV}.tar.xz
+		https://dev.gentoo.org/~chewi/distfiles/${PN}-npm-cache-${PV}.tar.xz
 	"
 	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/Sunshine-${PV}"
@@ -188,9 +188,11 @@ CMAKE_IN_SOURCE_BUILD=1
 
 # Make npm behave.
 export npm_config_audit=false
+export npm_config_cache="${S}"/npm_cache
 export npm_config_color=false
 export npm_config_foreground_scripts=true
 export npm_config_loglevel=verbose
+export npm_config_optional=false
 export npm_config_progress=false
 export npm_config_save=false
 
