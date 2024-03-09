@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,15 +6,15 @@ EAPI=7
 inherit desktop xdg-utils savedconfig toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/muennich/sxiv.git"
+	EGIT_REPO_URI="https://github.com/xyb3rt/sxiv.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/muennich/sxiv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xyb3rt/sxiv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Simple (or small or suckless) X Image Viewer"
-HOMEPAGE="https://github.com/muennich/sxiv/"
+HOMEPAGE="https://github.com/xyb3rt/sxiv/"
 
 LICENSE="GPL-2+ public-domain"
 SLOT="0"
