@@ -19,6 +19,12 @@ BDEPEND="unicode? ( ${AUTOTOOLS_DEPEND} )"
 
 DOCS=( README.md )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# https://bugs.gentoo.org/906384
+	arc4random
+	arc4random_buf
+)
+
 src_prepare() {
 	default
 
