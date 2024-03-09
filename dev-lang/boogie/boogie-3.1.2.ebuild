@@ -226,8 +226,9 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/lit
 		dev-python/OutputCheck
+		dev-python/lit
+		dev-python/psutil
 	)
 "
 
