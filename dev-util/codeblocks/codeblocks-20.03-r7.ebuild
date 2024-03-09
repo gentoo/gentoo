@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-env.patch
 	"${WORKDIR}"/patches/
 	"${FILESDIR}"/${P}_fix_DoxyBlocks_startup_segfault.patch
+	"${FILESDIR}"/${P}_Scintilla_fix_buffer_over-read_with_absolute_reference.patch
 	)
 
 src_prepare() {
