@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{9..12} )
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_SINGLE_IMPL=yes
 
 inherit distutils-r1 xdg
 
@@ -37,16 +37,10 @@ PATCHES=(
 )
 
 python_compile_all() {
-	emake
-}
-
-python_install() {
-	local dir=${EPREFIX}/usr/share/${PN}
-	distutils-r1_python_install --install-lib="${dir}" --install-scripts="${dir}"
+	emake mo
 }
 
 python_install_all() {
-	dosym ../share/${PN}/${PN} /usr/bin/${PN}
 	emake install-data DESTDIR="${D}" prefix="${EPREFIX}"/usr
 	mv "${ED}"/usr/share/doc/{${PN},${PF}} || die
 }
