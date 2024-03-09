@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit cmake cuda fortran-2 python-single-r1 toolchain-funcs
+inherit cmake cuda flag-o-matic fortran-2 python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -168,6 +168,9 @@ src_prepare() {
 #       with vanilla clang. The patches enable the C++ interpreter to work.
 
 src_configure() {
+
+	filter-lto # https://bugs.gentoo.org/879323
+
 	local mycmakeargs=(
 		-DCMAKE_C_COMPILER="$(tc-getCC)"
 		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
