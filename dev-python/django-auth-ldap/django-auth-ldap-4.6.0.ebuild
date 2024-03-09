@@ -15,12 +15,11 @@ HOMEPAGE="
 	https://pypi.org/project/django-auth-ldap/
 "
 
+LICENSE="BSD-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
-
-LICENSE="BSD-2"
-SLOT="0"
 
 RDEPEND="
 	>=dev-python/django-2.2[${PYTHON_USEDEP}]
