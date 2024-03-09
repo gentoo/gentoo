@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A shell interface to network sockets"
-HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~mj/linux.shtml"
-SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/local/mj/net/${P}.tar.gz"
+DESCRIPTION="Shell interface to network sockets"
+HOMEPAGE="https://mj.ucw.cz/sw/"
+SRC_URI="https://mj.ucw.cz/download/net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
