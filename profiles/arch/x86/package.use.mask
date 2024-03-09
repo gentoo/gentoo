@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
+# Qt6 not keyworded on x86
+sci-physics/root qt6
+
 # Sam James <sam@gentoo.org> (2024-03-04)
 # Miscompiles rust and fails to bootstrap (bug #923278)
 >=dev-lang/rust-1.74.1 lto
