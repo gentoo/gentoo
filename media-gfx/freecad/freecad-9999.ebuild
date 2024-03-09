@@ -59,6 +59,7 @@ RDEPEND="
 	)
 	qt6? (
 		dev-qt/qtbase:6[concurrent,network,xml]
+		dev-qt/qt5compat:6
 	)
 	media-libs/freetype
 	media-libs/qhull:=
