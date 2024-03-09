@@ -15,8 +15,8 @@ HOMEPAGE="https://root.cern"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 IUSE="+X aqua +asimage cuda cudnn +davix debug +examples fits fftw fortran
-	+gdml graphviz +gsl http jupyter libcxx +minuit mpi mysql odbc +opengl
-	oracle postgres pythia6 pythia8 +python qt5 R +roofit +root7 shadow
+	+gdml graphviz +gsl +http jupyter libcxx +minuit mpi mysql odbc +opengl
+	oracle postgres pythia6 pythia8 +python qt5 qt6 R +roofit +root7 shadow
 	sqlite +ssl +tbb test +tmva +unuran uring vc +xml xrootd"
 
 if [[ ${PV} =~ "9999" ]] ; then
@@ -40,11 +40,12 @@ PROPERTIES="test_network"
 REQUIRED_USE="
 	cuda? ( tmva )
 	cudnn? ( cuda )
-	!X? ( !asimage !opengl !qt5 )
+	!X? ( !asimage !opengl !qt5 !qt6 )
 	davix? ( ssl xml )
 	jupyter? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	qt5? ( root7 )
+	qt5? ( root7 http )
+	qt6? ( root7 http )
 	roofit? ( minuit )
 	tmva? ( gsl python )
 	uring? ( root7 )
@@ -78,8 +79,11 @@ CDEPEND="
 		)
 		qt5? (
 			dev-qt/qtcore:5
-			dev-qt/qtgui:5
 			dev-qt/qtwebengine:5[widgets]
+		)
+		qt6? (
+			dev-qt/qtbase:6
+			dev-qt/qtwebengine:6[widgets]
 		)
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
@@ -278,7 +282,7 @@ src_configure() {
 		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
 		-Dqt5web=$(usex qt5)
-		-Dqt6web=OFF
+		-Dqt6web=$(usex qt6)
 		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
 		-Droofit_multiprocess=OFF
