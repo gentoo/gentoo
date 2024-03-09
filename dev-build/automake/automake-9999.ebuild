@@ -13,6 +13,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
+	EGIT_MIN_CLONE_TYPE=single
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
 	inherit git-r3
 else
