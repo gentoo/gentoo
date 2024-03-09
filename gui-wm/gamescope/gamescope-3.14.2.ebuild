@@ -62,7 +62,9 @@ BDEPEND="
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}/${P}-deprecated-stb.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-deprecated-stb.patch
+)
 
 FILECAPS=(
 	cap_sys_nice usr/bin/${PN}
@@ -70,11 +72,6 @@ FILECAPS=(
 
 src_prepare() {
 	default
-
-	# Normally wraps stb with Meson. Upstream does not ship a pkg-config file so
-	# we don't install one. Work around this using symlinks.
-	mkdir subprojects/stb || die
-	ln -sn "${ESYSROOT}"/usr/include/stb/* "${S}"/subprojects/packagefiles/stb/* subprojects/stb/ || die
 
 	# ReShade is bundled as a git submodule, but it references an unofficial
 	# fork, so we cannot unbundle it. Symlink to its extracted sources.
