@@ -7,7 +7,7 @@ DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 pypi
+inherit cmake distutils-r1 pypi
 
 DESCRIPTION="A testing tool for command line utilities"
 HOMEPAGE="
@@ -22,12 +22,34 @@ SRC_URI+="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep 'dev-python/python-dateutil[${PYTHON_USEDEP}]')
 "
+BDEPEND="test? ( ${RDEPEND} )"
 
+CMAKE_SKIP_TESTS=(
+	preload-pass.test # https://github.com/nih-at/nihtest/issues/7
+)
 DOCS=( NEWS.md README.md TODO.md )
+
+src_prepare() {
+	distutils-r1_src_prepare
+	if use test; then
+		CMAKE_USE_DIR=${S}/tests
+		BUILD_DIR=${WORKDIR}/tests_build cmake_src_prepare
+	fi
+}
+
+python_test() {
+	local BUILD_DIR=${WORKDIR}/tests_build
+	local mycmakeargs=( -DNIHTEST=nihtest )
+	cmake_src_configure
+	cmake_src_compile
+	cmake_src_test
+}
 
 src_install() {
 	distutils-r1_src_install
