@@ -50,7 +50,7 @@ DEPEND="
 	${RDEPEND}
 	>=dev-libs/stb-20240201-r1
 	dev-util/vulkan-headers
-	<media-libs/glm-1.0.0
+	media-libs/glm
 	dev-util/spirv-headers
 	wsi-layer? ( >=media-libs/vkroots-0_p20231108 )
 "
