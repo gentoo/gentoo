@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="A tool to interact with the installation_proxy of an Apple's iDevice"
-HOMEPAGE="http://www.libimobiledevice.org/"
+HOMEPAGE="https://libimobiledevice.org"
 SRC_URI="https://github.com/libimobiledevice/ideviceinstaller/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
