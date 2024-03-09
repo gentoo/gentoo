@@ -16,10 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2"
 
-PATCHES=(
-	"${FILESDIR}/${P}-underlinking.patch"
-)
-
 DOCS=( CHANGELOG.md README.rst doc/THANKS )
 
 src_configure() {
