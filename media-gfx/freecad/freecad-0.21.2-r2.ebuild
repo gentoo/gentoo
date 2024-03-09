@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit check-reqs cmake optfeature python-single-r1 qmake-utils xdg
 
@@ -59,7 +59,6 @@ RDEPEND="
 	)
 	qt6? (
 		dev-qt/qtbase:6[concurrent,network,xml]
-		dev-qt/qt5compat:6
 	)
 	media-libs/freetype
 	media-libs/qhull:=
@@ -100,6 +99,7 @@ RDEPEND="
 		)
 		qt6? (
 			designer? ( dev-qt/qttools:6[designer] )
+			dev-qt/qt5compat:6
 			dev-qt/qttools:6[widgets]
 			dev-qt/qtbase:6[gui,opengl,widgets]
 			dev-qt/qtsvg:6
@@ -158,9 +158,7 @@ REQUIRED_USE="
 	designer? ( gui )
 	inspection? ( points )
 	path? ( robot )
-	python_single_target_python3_12? ( gui? ( qt6 ) )
 "
-# There is no py3.12 support planned for pyside2
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
@@ -195,7 +193,6 @@ src_configure() {
 		-DBUILD_COMPLETE=OFF					# deprecated
 		-DBUILD_DRAFT=ON
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
-		-DBUILD_DRAWING=ON
 		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for >=boost-1.77.0
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=$(usex netgen)
@@ -280,6 +277,8 @@ src_configure() {
 			-DQt6Core_MOC_EXECUTABLE="$(qt6_get_bindir)/moc"
 			-DQt6Core_RCC_EXECUTABLE="$(qt6_get_bindir)/rcc"
 			-DBUILD_QT5=OFF
+			# Drawing module unmaintained and not ported to qt6
+			-DBUILD_DRAWING=OFF
 		)
 	else
 		mycmakeargs+=(
@@ -289,6 +288,8 @@ src_configure() {
 			-DQt5Core_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
 			-DQt5Core_RCC_EXECUTABLE="$(qt5_get_bindir)/rcc"
 			-DBUILD_QT5=ON
+			# Drawing module unmaintained and not ported to qt6
+			-DBUILD_DRAWING=ON
 		)
 	fi
 
