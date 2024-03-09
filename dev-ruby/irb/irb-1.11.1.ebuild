@@ -28,7 +28,13 @@ ruby_add_rdepend "
 	!<app-eselect/eselect-ruby-20231008
 "
 
-ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/test-unit dev-ruby/test-unit-ruby-core )"
+ruby_add_bdepend "
+	test? (
+		dev-ruby/bundler
+		dev-ruby/debug
+		dev-ruby/test-unit
+		dev-ruby/test-unit-ruby-core
+	)"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ":"./:' \
