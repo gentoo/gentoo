@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-# py3.12: seqtest*.py segfaults
+# py3.12: https://github.com/alsa-project/alsa-python/issues/8
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
