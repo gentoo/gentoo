@@ -349,6 +349,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-build-svt-av1-1.5.0.patch
 	"${FILESDIR}"/${PN}-5.1.3-binutils-2.41.patch
 	"${FILESDIR}"/${PN}-4.4.4-opencl-parallel-gmake-fix.patch
+	"${FILESDIR}"/${PN}-4.4.4-glslang.patch
 	"${WORKDIR}"/${PN}-4.4.4-texinfo.patch
 )
 
