@@ -13,5 +13,8 @@
 	by constraining the mouse pointer, and when appropriate the
 	pointer is also constrained to the taskbar/menubar in order to
 	make target menu items easier to hit.
-	</longdescription>	
+	</longdescription>
+	<upstream>
+		<remote-id type="github">nick-gravgaard/windowlab</remote-id>
+	</upstream>
 </pkgmetadata>
