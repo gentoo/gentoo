@@ -39,11 +39,11 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.46[introspection?]
 	>=x11-libs/cairo-1.14[X]
+	>=x11-libs/pixman-0.42
 	>=dev-libs/fribidi-1.0.0
 	>=gnome-base/gsettings-desktop-schemas-42.0[introspection?]
 	>=dev-libs/glib-2.75.1:2
 	gnome-base/gnome-settings-daemon
-	>=dev-libs/json-glib-0.12.0[introspection?]
 	>=x11-libs/libxkbcommon-0.4.3
 	x11-libs/libICE
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
@@ -52,6 +52,7 @@ DEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
+	media-libs/libdisplay-info
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -60,10 +61,10 @@ DEPEND="
 	media-libs/libglvnd[X]
 
 	wayland? (
-		>=dev-libs/wayland-protocols-1.32
-		>=dev-libs/wayland-1.21.0
+		>=dev-libs/wayland-protocols-1.33
+		>=dev-libs/wayland-1.22
 
-		x11-libs/libdrm
+		>=x11-libs/libdrm-2.4.95
 		media-libs/mesa[gbm(+)]
 		>=dev-libs/libinput-1.19.0:=
 
@@ -193,6 +194,7 @@ src_configure() {
 		-Dtty_tests=false
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
+		-Dlibdisplay_info=enabled
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path
