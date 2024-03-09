@@ -95,6 +95,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/legacy-renderer-fix.patch"
+	# https://bugs.gentoo.org/926259
+	# https://github.com/hyprwm/Hyprland/issues/4839
+	"${FILESDIR}/tty-freeze.patch"
 )
 
 pkg_setup() {
