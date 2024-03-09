@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Small, unconfigurable window manager"
-HOMEPAGE="http://www.all-day-breakfast.com/wm2/"
-SRC_URI="http://www.all-day-breakfast.com/wm2/${P}.tar.gz"
+HOMEPAGE="https://www.all-day-breakfast.com/wm2/"
+SRC_URI="https://www.all-day-breakfast.com/wm2/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="wm2 HPND"
+SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 RDEPEND="x11-libs/libXmu"
