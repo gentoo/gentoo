@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
+# Requires manually installing dependencies, see bug #791802
+# Please use MYCMAKEARGS instead.
+sci-physics/root R
+
 # Sam James <sam@gentoo.org> (2024-03-07)
 # The bluetooth feature is unstable for now (causes timeouts if no dbus adapter
 # is available).
