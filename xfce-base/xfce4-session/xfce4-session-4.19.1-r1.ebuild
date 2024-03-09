@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,6 +65,18 @@ src_install() {
 		startxfce4
 	EOF
 	dosym Xfce4 /etc/X11/Sessions/Xfce
+
+	if [[ -f ${ED}/usr/share/xdg-desktop-portal/xfce-portals.conf ]]; then
+		die "Please remove the xfce-portals.conf hack"
+	fi
+	insinto /usr/share/xdg-desktop-portal
+	# https://gitlab.xfce.org/xfce/xfce4-session/-/blob/master/xfce4-session/xfce-portals.conf
+	newins - xfce-portals.conf <<-EOF
+		[preferred]
+		default=gtk;
+		org.freedesktop.impl.portal.Wallpaper=xapp;gtk;
+		org.freedesktop.impl.portal.Screenshot=xapp;gtk;
+	EOF
 }
 
 pkg_postinst() {
