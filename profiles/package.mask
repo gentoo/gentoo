@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-09)
+# Requires pyside2/shiboken2, which is unmaintained upstream and
+# not compatible with llvm-16 and up or python-3.12 and up.
+# No upstream activity for 2 years.
+# dev-python/QtPy is an alternative that does support Qt6.
+# Removal on: 2024-04-09.  Bug #926548
+dev-python/anyqt
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-03-08)
 # A library without reverse dependencies.
 # Removal on: 2024-04-07.  Bug #926486.
