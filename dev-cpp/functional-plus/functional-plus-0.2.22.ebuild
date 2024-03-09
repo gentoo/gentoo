@@ -35,6 +35,12 @@ fplus_test_wrapper() {
 	$@
 }
 
+src_prepare() {
+	# avoid -Werror, bug 926538
+	sed -i 's/-Werror//' cmake/warnings.cmake || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	cmake_src_configure
 	use test && fplus_test_wrapper cmake_src_configure
