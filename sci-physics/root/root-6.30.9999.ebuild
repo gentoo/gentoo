@@ -12,14 +12,12 @@ inherit cmake cuda flag-o-matic fortran-2 python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
+LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 IUSE="+X aqua +asimage cuda cudnn +davix debug +examples fits fftw fortran
 	+gdml graphviz +gsl http jupyter libcxx +minuit mpi mysql odbc +opengl
 	oracle postgres pythia6 pythia8 +python qt5 R +roofit +root7 shadow
 	sqlite +ssl +tbb test +tmva +unuran uring vc +xml xrootd"
-
-RESTRICT="test"
-PROPERTIES="test_network"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -36,7 +34,8 @@ else
 	SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 fi
 
-LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 REQUIRED_USE="
 	cuda? ( tmva )
