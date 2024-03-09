@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/13" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
@@ -81,7 +81,6 @@ DEPEND="
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-0.3.33:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	test? ( >=x11-libs/gtk+-3.19.8:3[X,introspection?] )
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 "
 # for now upstream has "have_x11 = true" in the meson.build, but sooner or later upstream is going to make X optional.
@@ -108,13 +107,15 @@ DEPEND+="
 #	)"
 
 RDEPEND="${DEPEND}
-	gnome-extra/zenity
-
 	!<gui-libs/gtk-4.6.4:4
 "
 DEPEND="${DEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
+	test? (
+		>=x11-libs/gtk+-3.19.8:3[X,introspection?,wayland]
+		gnome-extra/zenity
+	)
 "
 BDEPEND="
 	dev-util/wayland-scanner
