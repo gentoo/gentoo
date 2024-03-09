@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="MIME quoted-printable data encoding and decoding utility"
-HOMEPAGE="http://www.fourmilab.ch/webtools/qprint/"
-SRC_URI="http://www.fourmilab.ch/webtools/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.fourmilab.ch/webtools/qprint/"
+SRC_URI="https://www.fourmilab.ch/webtools/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
