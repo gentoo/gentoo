@@ -19,13 +19,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.7.4.3[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pytest-qt[${PYTHON_USEDEP}]
