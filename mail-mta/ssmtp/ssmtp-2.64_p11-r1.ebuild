@@ -4,17 +4,14 @@
 EAPI=8
 
 MY_PATCHSET=4
+DEBIAN_ORIG=yes
+DEBIAN_ORIG_SUFFIX=bz2
 WANT_AUTOMAKE=none
-inherit autotools
+inherit autotools debian-patches
 
 DESCRIPTION="Extremely simple MTA to get mail off the system to a Mailhub"
 HOMEPAGE="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/"
-SRC_URI="
-	mirror://debian/pool/main/s/ssmtp/${PN}_$(ver_cut 1-2).orig.tar.bz2
-	mirror://debian/pool/main/s/ssmtp/${PN}_${PV/_p/-}.debian.tar.xz
-	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${PN}-$(ver_cut 1-2)-patches-${MY_PATCHSET}.tar.xz
-"
-S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
+SRC_URI+=" https://dev.gentoo.org/~pinkbyte/distfiles/patches/${PN}-${DEBIAN_ORIG_PV}-patches-${MY_PATCHSET}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -47,18 +44,19 @@ RDEPEND="
 	)
 "
 
-src_prepare() {
-	drop_debian_patch() {
-		rm "${WORKDIR}"/debian/patches/${1} || die
-		sed -i -e "/^${1}/d" "${WORKDIR}"/debian/patches/series || die
-	}
+DEBIAN_SKIP_PATCHES=(
+	# Forces gnutls with no optionality (drops openssl support)
+	01-374327-use-gnutls.patch
+)
 
+PATCHES=(
+	"${WORKDIR}"/patches
+)
+
+src_prepare() {
 	drop_gentoo_patch() {
 		rm "${WORKDIR}"/patches/${1} || die
 	}
-
-	# Forces gnutls with no optionality (drops openssl support)
-	drop_debian_patch 01-374327-use-gnutls.patch
 
 	# Included in Debian patchset
 	# TODO: Drop these with new patch tarball
@@ -66,15 +64,7 @@ src_prepare() {
 	drop_gentoo_patch 0100_all_ldflags.patch
 	drop_gentoo_patch 0130_all_garbage-writes.patch
 
-	PATCHES+=(
-		# Debian patchset
-		$(awk '{print $1}' "${WORKDIR}"/debian/patches/series | sed -e "s:^:${WORKDIR}/debian/patches/:")
-
-		# Gentoo patchset
-		"${WORKDIR}"/patches
-	)
-
-	default
+	debian-patches_src_prepare
 
 	# let's start by not using configure.in anymore as future autoconf
 	# versions will not support it.
