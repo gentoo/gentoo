@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake git-r3 xdg-utils
 
 DESCRIPTION="Official authentication app for German ID cards and residence permits"
 HOMEPAGE="https://www.ausweisapp.bund.de/"
-EGIT_REPO_URI="https://github.com/Governikus/AusweisApp2.git"
+EGIT_REPO_URI="https://github.com/Governikus/AusweisApp.git"
 
 LICENSE="EUPL-1.2"
 SLOT="0"
