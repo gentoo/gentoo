@@ -336,7 +336,7 @@ src_test() {
 	local -x COLUMNS=80
 	local -x PYTHONDONTWRITEBYTECODE=
 
-	nonfatal emake test EXTRATESTOPTS="${test_opts[*]}" \
+	nonfatal emake -Onone test EXTRATESTOPTS="${test_opts[*]}" \
 		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
 	local ret=${?}
 

@@ -425,7 +425,7 @@ src_test() {
 	# workaround https://bugs.gentoo.org/775416
 	addwrite "/usr/lib/python${PYVER}/site-packages"
 
-	nonfatal emake test EXTRATESTOPTS="${test_opts[*]}" \
+	nonfatal emake -Onone test EXTRATESTOPTS="${test_opts[*]}" \
 		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
 	local ret=${?}
 
