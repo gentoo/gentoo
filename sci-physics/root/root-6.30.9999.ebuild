@@ -312,6 +312,7 @@ src_configure() {
 		-Dvdt=OFF
 		-Dveccore=OFF
 		-Dvecgeom=OFF
+		-Dwebgui=$(usex http)
 		-Dx11=$(usex X)
 		-Dxml=$(usex xml)
 		-Dxrootd=$(usex xrootd)
