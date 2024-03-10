@@ -20,7 +20,7 @@ SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~s390 ~sparc x86"
+KEYWORDS="amd64 ppc ~s390 sparc x86"
 IUSE="X cjk doc ncurses ssl tcl"
 
 RDEPEND="
