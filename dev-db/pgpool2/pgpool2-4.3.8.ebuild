@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 POSTGRES_COMPAT=( 9.6 {10..15} )
 
-inherit autotools postgres-multi
+inherit autotools flag-o-matic postgres-multi
 
 MY_P="${PN/2/-II}-${PV}"
 
@@ -48,6 +48,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855248
+	# https://github.com/pgpool/pgpool2/issues/42
+	#
+	filter-lto
+
 	postgres-multi_foreach econf \
 		--disable-rpath \
 		--sysconfdir="${EPREFIX}/etc/${PN}" \
