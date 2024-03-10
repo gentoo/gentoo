@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-10)
+# Archived upstream, latest release is 3 years old. One test
+# failure with python 3.11, more with python 3.12.
+# Removal on: 2024-04-10.  Bug #920439
+sci-libs/scikit-optimize
+
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*
