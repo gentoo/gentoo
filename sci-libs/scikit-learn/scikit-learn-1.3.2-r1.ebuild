@@ -10,8 +10,15 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Machine learning library for Python"
-HOMEPAGE="https://scikit-learn.org/stable/"
-SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://scikit-learn.org/stable/
+	https://github.com/scikit-learn/scikit-learn/
+	https://pypi.org/project/scikit-learn/
+"
+SRC_URI="
+	https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -35,7 +42,9 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
 # For some reason this wants to use urllib to fetch things from the internet
 # distutils_enable_sphinx doc \
 # 	dev-python/matplotlib \
@@ -49,9 +58,17 @@ distutils_enable_tests pytest
 # 	dev-python/scikit-image
 
 python_test() {
-	# This needs to be run in the install dir
-	cd "${WORKDIR}/${P}-${EPYTHON//./_}/install/usr/lib/${EPYTHON}/site-packages/sklearn" || die
-	distutils-r1_python_test
+	local EPYTEST_DESELECT=(
+		# test broken with newer scipy, fixed upstream
+		# https://github.com/scikit-learn/scikit-learn/issues/27578
+		manifold/tests/test_locally_linear.py::test_singular_matrix
+		# TODO
+		gaussian_process/kernels.py::sklearn.gaussian_process.kernels.ExpSineSquared
+	)
+
+	rm -rf sklearn || die
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest --pyargs sklearn
 }
 
 python_install_all() {
