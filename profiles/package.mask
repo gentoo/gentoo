@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-03-14)
+# Deprecated, doesn't work with python 3.12. Unmaintained with last
+# serious release in 2019, and another release in 2024 that claims
+# to support python 3.12 but fails tests if you actually do. No
+# route to making it work with python 3.13 at all, and upstream
+# explicitly states that future "like Python 2, is now done". The
+# package is entirely redundant to packages not supporting python
+# 2 anymore, and the ones that do support it should be using
+# dev-python/six instead, anyways.  Bug #888271
+# Removal on 2024-04-13.
+dev-python/future
+
 # Petr Vaněk <arkamar@gentoo.org> (2024-03-13)
 # dev-libs/hyperscan upstream is inactive [1], please switch to more portable,
 # drop-in replacement dev-libs/vectorscan.
@@ -81,7 +93,7 @@ dev-java/ant-jsch
 dev-java/ant-xz
 dev-java/gnu-jaf
 dev-java/failureaccess
-
+#
 # Michał Górny <mgorny@gentoo.org> (2024-03-10)
 # Packages that still require <dev-python/cython-3 and do not promise
 # a fix anytime soon.
