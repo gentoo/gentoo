@@ -28,6 +28,9 @@ fi
 LINUX_SOURCES="linux-${LINUX_VER}.tar.xz"
 SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
+S_K="${WORKDIR}/linux-${LINUX_VER}"
+S="${S_K}/tools/perf"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
@@ -91,9 +94,6 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-5.10
 	java? ( virtual/jdk )
 "
-
-S_K="${WORKDIR}/linux-${LINUX_VER}"
-S="${S_K}/tools/perf"
 
 QA_FLAGS_IGNORED=(
 	'usr/bin/perf-read-vdso32' # not linked with anything except for libc
