@@ -7,7 +7,7 @@ mail-mta/postfix mongodb
 
 # Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2024-02-14)
 # Fails to compile, bug #924396
-~dev-lang/rust-1.75.0 lto
+>=dev-lang/rust-1.75.0 lto
 
 # Eray Aslan <eras@gentoo.org> (2024-02-13)
 # tests require dev-db/mongodb which is not keyworded

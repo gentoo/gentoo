@@ -12,7 +12,7 @@ www-servers/nginx test
 
 # Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2024-02-14)
 # Fails to compile, bug #924301
-~dev-lang/rust-1.75.0 lto
+>=dev-lang/rust-1.75.0 lto
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-02-07)
 # nvidia-powerd is only available for arm64 in 550+
