@@ -341,10 +341,3 @@ src_install() {
 
 	use python && python_optimize
 }
-
-pkg_postinst() {
-	einfo "Please note that from now on (specifically since sci-physics/root-6.28.00),"
-	einfo "ROOT is more closely following FHS (see https://bugs.gentoo.org/666222)."
-	einfo "Due to this, it will no longer be possible to install multiple concurrent"
-	einfo "versions of ROOT in Gentoo, since that would now cause file collisions."
-}
