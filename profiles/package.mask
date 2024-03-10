@@ -37,6 +37,7 @@
 # Packages that still require <dev-python/cython-3 and do not promise
 # a fix anytime soon.
 #
+# dev-python/python-efl: econnman as revdep, bug #925692.
 # sci-chemistry/mdtraj: also py3.12, PEP517, bug #911646.
 #
 # Includes their few reverse dependencies and their exclusive
@@ -44,6 +45,8 @@
 #
 # Removal on 2024-04-09.
 dev-python/astunparse
+dev-python/python-efl
+net-misc/econnman
 sci-chemistry/mdtraj
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-10)
