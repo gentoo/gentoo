@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2024-03-10)
+# Mask experimental software
+=mail-mta/postfix-3.10*
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-09)
 # Requires pyside2/shiboken2, which is unmaintained upstream and
 # not compatible with llvm-16 and up or python-3.12 and up.
