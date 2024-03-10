@@ -63,6 +63,7 @@ BDEPEND+="
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 		')
+		sys-apps/lsb-release
 		sys-block/targetcli-fb
 	)
 "
