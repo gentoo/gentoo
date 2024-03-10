@@ -8,5 +8,8 @@
   <maintainer type="project">
     <email>vim@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">nfnty/vim-nftables</remote-id>
+  </upstream>
   <stabilize-allarches/>
 </pkgmetadata>
