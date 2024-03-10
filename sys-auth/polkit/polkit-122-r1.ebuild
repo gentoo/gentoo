@@ -149,6 +149,10 @@ src_install() {
 			diropts -m 0700 -o polkitd
 		fi
 		keepdir /etc/polkit-1/rules.d
+		local unitdir="$(systemd_get_systemunitdir)"
+		unitdir="${unitdir#"${EPREFIX}"}"
+		insinto "${unitdir}/polkit.service.d"
+		doins "${FILESDIR}"/00-gentoo.conf
 	fi
 }
 
