@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	dev-python/aiofiles[${PYTHON_USEDEP}]
