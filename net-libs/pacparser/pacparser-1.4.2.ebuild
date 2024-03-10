@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 src_prepare() {
 	default
 
+	sed -e 's/^SMCFLAGS.*/SMCFLAGS = -DHAVE_VA_COPY -DVA_COPY=va_copy -DHAVE_VA_LIST_AS_ARRAY/' \
+		-i src/Makefile || die
 	sed -e '/CC = gcc/d' \
 		-i src/spidermonkey/js/src/config/Linux_All.mk || die
 
@@ -37,8 +39,7 @@ src_prepare() {
 
 src_compile() {
 	# Upstream parallel compilation bug, do that first to work around
-	emake -C src/spidermonkey
-	emake -C src
+	emake -C src -j1
 	use python && python_foreach_impl emake -C src pymod
 }
 
