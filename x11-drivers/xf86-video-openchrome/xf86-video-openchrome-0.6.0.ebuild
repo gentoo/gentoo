@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 XORG_DRI="always"
-inherit xorg-3
+inherit flag-o-matic xorg-3
 
 DESCRIPTION="X.Org driver for VIA/S3G cards"
 HOMEPAGE="https://www.freedesktop.org/wiki/Openchrome/"
@@ -26,6 +26,16 @@ DEPEND="
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/864406
+	# Upstream appears to have never migrated from the old bugzilla and
+	# cgit hosting over to gitlab.fd.o, no activity in a year, no way
+	# to report a bug I guess. Yay dead software.
+	#
+	# Do not trust for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable debug)
 		$(use_enable debug xv-debug)
