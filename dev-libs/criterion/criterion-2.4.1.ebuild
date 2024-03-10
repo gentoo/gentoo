@@ -55,6 +55,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855674
+	# https://github.com/Snaipe/Criterion/issues/524
+	filter-lto
+
 	# bug 906379
 	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
 
