@@ -5,6 +5,10 @@
 		<email>ros@gentoo.org</email>
 		<name>Gentoo ROS Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
 	<upstream>
 		<maintainer status="active">
 			<email>charles@karney.com</email>
