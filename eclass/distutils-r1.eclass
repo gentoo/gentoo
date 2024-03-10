@@ -1505,31 +1505,27 @@ distutils-r1_python_compile() {
 
 	_python_check_EPYTHON
 
-	case ${DISTUTILS_USE_PEP517:-setuptools} in
-		setuptools)
-			# call setup.py build when using setuptools (either via PEP517
-			# or in legacy mode)
-
-			# distutils is parallel-capable since py3.5
-			local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}")
-
-			if [[ ${DISTUTILS_USE_PEP517} ]]; then
-				mkdir -p "${BUILD_DIR}" || die
-				local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
-				cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
-					[build]
-					build_base = ${BUILD_DIR}/build
-
-					[build_ext]
-					parallel = ${jobs}
-				EOF
-			else
-				_distutils-r1_copy_egg_info
-				esetup.py build -j "${jobs}" "${@}"
-			fi
-			;;
+	case ${DISTUTILS_USE_PEP517:-unset} in
 		no)
 			return
+			;;
+		unset)
+			# legacy mode
+			_distutils-r1_copy_egg_info
+			esetup.py build -j "$(makeopts_jobs "${MAKEOPTS} ${*}")" "${@}"
+			;;
+		*)
+			# we do this for all build systems, since other backends
+			# and custom hooks may wrap setuptools
+			mkdir -p "${BUILD_DIR}" || die
+			local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
+			cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
+				[build]
+				build_base = ${BUILD_DIR}/build
+
+				[build_ext]
+				parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
+			EOF
 			;;
 	esac
 
