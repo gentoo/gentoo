@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-03-10)
+# Packages that still require <dev-python/cython-3 and do not promise
+# a fix anytime soon.
+#
+# sci-chemistry/mdtraj: also py3.12, PEP517, bug #911646.
+#
+# Includes their few reverse dependencies and their exclusive
+# dependencies without Python 3.12 support.
+#
+# Removal on 2024-04-09.
+dev-python/astunparse
+sci-chemistry/mdtraj
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-10)
 # Archived upstream, latest release is 3 years old. One test
 # failure with python 3.11, more with python 3.12.
