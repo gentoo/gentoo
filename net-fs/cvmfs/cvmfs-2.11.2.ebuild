@@ -60,7 +60,8 @@ src_prepare() {
 	cmake_src_prepare
 	# gentoo stuff
 	rm bootstrap.sh || die
-	sed -i -e "s:/usr/bin/systemctl:/bin/systemctl:g" cvmfs/cvmfs_config || die
+	sed -i -e "s:/usr/bin/systemctl:/bin/systemctl:g" \
+		-e "s:/bin/pidof:/usr/bin/pidof:g" cvmfs/cvmfs_config || die
 	sed -i -e 's/COPYING//' -e "s:cvmfs-\${CernVM-FS_VERSION_STRING}:${PF}:" \
 		CMakeLists.txt || die
 	eapply_user
