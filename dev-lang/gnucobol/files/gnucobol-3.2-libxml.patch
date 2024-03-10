@@ -1,0 +1,10 @@
+--- a/libcob/common.c	2024-03-10 11:12:23.253391905 +0100
++++ b/libcob/common.c	2024-03-10 11:12:46.433130551 +0100
+@@ -136,6 +136,7 @@
+ #if defined (WITH_XML2)
+ #include <libxml/xmlversion.h>
+ #include <libxml/xmlwriter.h>
++#include <libxml/parser.h>
+ #endif
+ 
+ #if defined (WITH_CJSON)
