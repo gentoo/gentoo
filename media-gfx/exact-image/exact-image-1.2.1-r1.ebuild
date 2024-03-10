@@ -14,7 +14,7 @@ SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="expat jpeg lua openexr perl png swig tiff truetype X"
+IUSE="expat jpeg jpegxl lua openexr perl png swig tiff truetype X"
 REQUIRED_USE="lua? ( swig ) perl? ( swig )"
 # Tests are broken; 'make check' fails and referenced testsuite dir not found
 RESTRICT="test"
@@ -24,6 +24,7 @@ RDEPEND="
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
 	jpeg? ( media-libs/libjpeg-turbo:= )
+	jpegxl? ( <media-libs/libjxl-0.9:= )
 	lua? ( ${LUA_DEPS} )
 	openexr? ( media-libs/openexr:= )
 	perl? ( dev-lang/perl )
@@ -78,6 +79,7 @@ src_configure() {
 		$(use_with truetype freetype) \
 		--without-evas \
 		$(use_with jpeg libjpeg) \
+		$(use_with jpegxl libjxl) \
 		$(use_with tiff libtiff) \
 		$(use_with png libpng) \
 		--without-libgif \
