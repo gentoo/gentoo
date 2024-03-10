@@ -208,12 +208,6 @@ dev-lang/ruby jit
 # Depends on x11-libs/libdmx, which is masked for removal
 x11-apps/xdpyinfo dmx
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-09)
-# dev-java/jython is last-rited due to vulnerabilities.
-# See bug #825486.
-dev-java/bsf python
-dev-java/ant-apache-bsf python
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-04-05)
 # Currently broken on 11
 # https://bugs.gentoo.org/833097
