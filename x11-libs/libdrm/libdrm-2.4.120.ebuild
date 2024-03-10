@@ -46,6 +46,12 @@ python_check_deps() {
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
 
+src_prepare() {
+	default
+	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
+		symbols-check.py || die # bug #925550
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_use udev)
