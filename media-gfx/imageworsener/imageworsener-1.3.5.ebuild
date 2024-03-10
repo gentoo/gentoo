@@ -12,7 +12,7 @@ SRC_URI="https://entropymine.com/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/3"  # because of libimageworsener.so.3.*.*
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="jpeg png static-libs test webp zlib"
 
 DEPEND="png? ( media-libs/libpng:0 )
