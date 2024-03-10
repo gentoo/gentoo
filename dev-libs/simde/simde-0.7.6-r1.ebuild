@@ -34,3 +34,12 @@ src_configure() {
 
 	meson_src_configure
 }
+
+src_test() {
+	if use x86; then
+		# some --skip option for meson when
+		meson_src_test $(meson_src_test --list | grep -v dbsad) #926706
+	else
+		meson_src_test
+	fi
+}
