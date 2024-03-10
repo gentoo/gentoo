@@ -194,7 +194,10 @@ src_configure() {
 		--disable-ltdl-install
 		QMAKE=$(usev qt5 qmake5)
 	)
-	econf "${myconf[@]}"
+	# XXX: Temporary bash for bug #926600. It's been reverted upstream
+	# on master already:
+	# https://gitlab.com/graphviz/graphviz/-/merge_requests/3636
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"
 }
 
 src_install() {
