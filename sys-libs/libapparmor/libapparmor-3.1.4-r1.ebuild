@@ -46,6 +46,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.4-clang-flto-partition.patch
+)
+
 src_prepare() {
 	default
 
