@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
@@ -42,6 +42,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855239
+	#
+	# Fixed upstream in git master:
+	# https://github.com/mydumper/mydumper/pull/1413
+	filter-lto
+
 	local mycmakeargs=(-DBUILD_DOCS=$(usex doc))
 
 	cmake_src_configure
