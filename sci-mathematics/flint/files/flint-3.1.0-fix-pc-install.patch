@@ -1,0 +1,29 @@
+From f4e0dfda90f6574048578f112bea1013d54f0987 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 10 Mar 2024 21:48:51 -0400
+Subject: [PATCH 1/1] CMakeLists.txt: install the pkg-config file to the
+ configured libdir
+
+Currently it installs to lib/pkgconfig, which can be incorrect on
+systems where (for example) the normal libdir is lib64 and "lib" is
+reserved for 32-bit libraries.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 30935cef4..d8dfee38d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -537,7 +537,7 @@ set(PACKAGE_NAME ${PROJECT_NAME})
+ set(PACKAGE_VERSION ${PROJECT_VERSION})
+ configure_file(flint.pc.in flint.pc @ONLY)
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/flint.pc DESTINATION lib/pkgconfig)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/flint.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ if(BUILD_TESTING)
+     set(FLINT_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src) # To get src/test/main
+-- 
+2.43.0
+
