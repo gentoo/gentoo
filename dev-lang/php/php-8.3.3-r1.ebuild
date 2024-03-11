@@ -174,10 +174,6 @@ php_install_ini() {
 	local phpinisrc="php.ini-production-${phpsapi}"
 	cp php.ini-production "${phpinisrc}" || die
 
-	# Set the extension dir
-	sed -e "s|^extension_dir .*$|extension_dir = ${extension_dir}|g" \
-		-i "${phpinisrc}" || die
-
 	# Set the include path to point to where we want to find PEAR
 	# packages
 	local sed_src='^;include_path = ".:/php.*'
@@ -198,7 +194,7 @@ php_install_ini() {
 
 	if use opcache; then
 		elog "Adding opcache to $PHP_EXT_INI_DIR"
-		echo "zend_extension=${PHP_DESTDIR}/$(get_libdir)/opcache.so" >> \
+		echo "zend_extension = opcache.so" >> \
 			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
 		dosym "../ext/opcache.ini" \
 			  "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}/opcache.ini"
@@ -508,6 +504,10 @@ src_configure() {
 	# in main/build-defs.h which is included in main/php.h which is
 	# included by basically everything; so, avoiding a rebuild after
 	# changing it is not an easy job.
+	#
+	# The upstream build system also does not support building the
+	# apache2 and embed SAPIs at the same time, presumably because they
+	# both produce a libphp.so.
 	local one_sapi
 	local sapi
 	mkdir "${WORKDIR}/sapis-build" || die
@@ -599,20 +599,15 @@ src_install() {
 		fi
 	done
 
-	# Makefile forgets to create this before trying to write to it...
-	dodir "${PHP_DESTDIR#${EPREFIX}}/bin"
-
-	# Install php environment (without any sapis)
+	# Install SAPI-independent targets
 	cd "${WORKDIR}/sapis-build/$first_sapi" || die
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
-
-	local extension_dir="$("${ED}/${PHP_DESTDIR#${EPREFIX}}/bin/php-config" --extension-dir)"
+	use opcache && emake INSTALL_ROOT="${D}" install-modules
 
 	# Create the directory where we'll put version-specific php scripts
 	keepdir "/usr/share/php${PHP_MV}"
 
-	local file=""
 	local sapi_list=""
 
 	for sapi in ${SAPIS}; do
@@ -677,12 +672,6 @@ src_install() {
 			fi
 		fi
 	done
-
-	# Installing opcache module
-	if use opcache ; then
-		into "${PHP_DESTDIR#${EPREFIX}}"
-		dolib.so "modules/opcache$(get_libname)"
-	fi
 
 	# Install env.d files
 	newenvd "${FILESDIR}/20php5-envd" "20php${SLOT}"
