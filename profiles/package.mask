@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Jolly <kangie@gentoo.org> (2024-03-11)
+# Obsolete, does not compile, archived upstream.
+# Removal: 2024-04-10.  Bugs #876977, #907705.
+media-video/obs-v4l2sink
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
 # Unused java libraries. The ant tasks are now provided by dev-java/ant.
 # Removal on 2024-04-09.
