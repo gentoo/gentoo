@@ -3,11 +3,18 @@
 
 EAPI=8
 
+inherit autotools
+
 MY_P="${PN}-$(ver_rs 0- '-')"
+TCLCONFIGId=4a924db4fb37fa0c7cc2ae987b294dbaa97bc713
 
 DESCRIPTION="Tcl Thread extension"
 HOMEPAGE="http://www.tcl.tk/"
-SRC_URI="https://github.com/tcltk/${PN}/archive/refs/tags/${MY_P}.tar.gz"
+SRC_URI="
+	https://github.com/tcltk/${PN}/archive/refs/tags/${MY_P}.tar.gz
+	https://github.com/tcltk/tclconfig/archive/${TCLCONFIGId}.tar.gz
+		-> tclconfig-2023.12.11.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,6 +30,17 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 S="${WORKDIR}"/${PN}-${MY_P}
 
 PATCHES=( "${FILESDIR}"/${PN}-2.8.5-musl.patch )
+
+src_prepare() {
+	ln -s ../tclconfig-${TCLCONFIGId} tclconfig || die
+	default
+
+	# Search for libs in libdir not just exec_prefix/lib
+	sed -i -e 's:${exec_prefix}/lib:${libdir}:' \
+		aclocal.m4 || die "sed failed"
+
+	eautoreconf
+}
 
 src_configure() {
 	econf --with-tclinclude="${EPREFIX}/usr/include" \
