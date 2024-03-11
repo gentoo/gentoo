@@ -128,6 +128,8 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
+	optfeature_header "Install the following packages for additional support:"
 	optfeature "sound support" \
 		media-sound/pulseaudio media-sound/apulse[sdk] media-video/pipewire
+	optfeature "emoji support" media-fonts/noto-emoji
 }
