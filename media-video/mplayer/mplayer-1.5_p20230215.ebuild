@@ -263,6 +263,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# undefined reference to `sse_int32_map_factor' etc
+	# https://bugs.gentoo.org/650458
+	# https://trac.mplayerhq.hu/ticket/2408
+	use libass && use cpu_flags_x86_sse4_1 && filter-lto
+
 	local myconf=()
 	local uses i
 
