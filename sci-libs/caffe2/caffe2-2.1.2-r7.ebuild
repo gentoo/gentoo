@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
-inherit python-single-r1 cmake cuda flag-o-matic prefix
+ROCM_VERSION=5.7
+inherit python-single-r1 cmake cuda flag-o-matic prefix rocm
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -17,7 +18,7 @@ SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy onednn openblas opencl opencv openmp qnnpack tensorpipe xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy onednn openblas opencl opencv openmp qnnpack rocm tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -26,7 +27,9 @@ REQUIRED_USE="
 	tensorpipe? ( distributed )
 	distributed? ( tensorpipe )
 	gloo? ( distributed )
-" # ?? ( cuda rocm )
+	?? ( cuda rocm )
+	rocm? ( || ( ${ROCM_REQUIRED_USE} ) )
+"
 
 # CUDA 12 not supported yet: https://github.com/pytorch/pytorch/issues/91122
 RDEPEND="
@@ -59,6 +62,20 @@ RDEPEND="
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
+	rocm? (
+		>=dev-util/hip-5.7
+		>=dev-libs/rccl-5.7[${ROCM_USEDEP}]
+		>=sci-libs/rocThrust-5.7[${ROCM_USEDEP}]
+		>=sci-libs/rocPRIM-5.7[${ROCM_USEDEP}]
+		>=sci-libs/hipBLAS-5.7[${ROCM_USEDEP}]
+		>=sci-libs/hipFFT-5.7[${ROCM_USEDEP}]
+		>=sci-libs/hipSPARSE-5.7[${ROCM_USEDEP}]
+		>=sci-libs/hipRAND-5.7[${ROCM_USEDEP}]
+		>=sci-libs/hipCUB-5.7[${ROCM_USEDEP}]
+		>=sci-libs/hipSOLVER-5.7[${ROCM_USEDEP}]
+		>=sci-libs/miopen-5.7[${ROCM_USEDEP}]
+		>=dev-util/roctracer-5.7[${ROCM_USEDEP}]
+	)
 	tensorpipe? ( sci-libs/tensorpipe[cuda?] )
 	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
 	mkl? ( sci-libs/mkl )
@@ -92,6 +109,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.1-cudaExtra.patch
 	"${FILESDIR}"/${PN}-2.1.2-fix-rpath.patch
 	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
+	"${FILESDIR}"/${PN}-2.1.2-rocm-fix-std-cpp17.patch
 )
 
 src_prepare() {
@@ -118,6 +136,18 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		torch/CMakeLists.txt \
 		CMakeLists.txt
+
+	if use rocm; then
+		sed -e "s:ROCM_PATH /opt/rocm:ROCM_PATH /usr:" \
+			-e "s:HIP_PATH \${ROCM_PATH}/hip:HIP_PATH /usr:" \
+			-e "s:\${HIP_PATH}/cmake:/usr/$(get_libdir)/cmake/hip:g" \
+			-e "s/HIP 1.0/HIP 1.0 REQUIRED/" \
+			-i cmake/public/LoadHIP.cmake || die
+
+		ebegin "HIPifying cuda sources"
+		${EPYTHON} tools/amd_build/build_amd.py || die
+		eend $?
+	fi
 }
 
 src_configure() {
@@ -140,9 +170,6 @@ src_configure() {
 
 		-DUSE_CCACHE=OFF
 		-DUSE_CUDA=$(usex cuda)
-		-DUSE_CUDNN=$(usex cuda)
-		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
-		-DBUILD_NVFUSER=$(usex cuda)
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
@@ -155,7 +182,6 @@ src_configure() {
 		-DUSE_LEVELDB=OFF
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
 		-DUSE_MKLDNN=$(usex onednn)
-		-DUSE_NCCL=OFF # TODO: NVIDIA Collective Communication Library
 		-DUSE_NNPACK=$(usex nnpack)
 		-DUSE_QNNPACK=$(usex qnnpack)
 		-DUSE_XNNPACK=$(usex xnnpack)
@@ -166,7 +192,7 @@ src_configure() {
 		-DUSE_OPENCL=$(usex opencl)
 		-DUSE_OPENCV=$(usex opencv)
 		-DUSE_OPENMP=$(usex openmp)
-		-DUSE_ROCM=OFF # TODO
+		-DUSE_ROCM=$(usex rocm)
 		-DUSE_SYSTEM_CPUINFO=ON
 		-DUSE_SYSTEM_PYBIND11=ON
 		-DUSE_UCC=OFF
@@ -200,7 +226,19 @@ src_configure() {
 		addpredict "/dev/char"
 
 		mycmakeargs+=(
+			-DUSE_CUDNN=ON
+			-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
+			-DBUILD_NVFUSER=ON
+			-DUSE_NCCL=OFF # TODO: NVIDIA Collective Communication Library
 			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
+		)
+	elif use rocm; then
+		export PYTORCH_ROCM_ARCH="$(get_amdgpu_flags)"
+
+		mycmakeargs+=(
+			-DBUILD_NVFUSER=ON
+			-DUSE_NCCL=ON
+			-DUSE_SYSTEM_NCCL=ON
 		)
 	fi
 
@@ -214,6 +252,9 @@ src_configure() {
 	fi
 
 	cmake_src_configure
+
+	# do not rerun cmake and the build process in src_install
+	sed '/RERUN/,+1d' -i "${BUILD_DIR}"/build.ninja || die
 }
 
 src_install() {
@@ -225,7 +266,7 @@ src_install() {
 	rm -rf python
 	mkdir -p python/torch/include || die
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
-	if use cuda; then
+	if use cuda || use rocm; then
 		mv "${ED}${S}"/nvfuser python/nvfuser || die
 		mv "${ED}"/usr/$(get_libdir)/nvfuser.so python/nvfuser/_C.so || die
 	fi
@@ -234,7 +275,7 @@ src_install() {
 	python_domodule python/torch
 	ln -s ../../../../../include/torch \
 		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
-	if use cuda; then
+	if use cuda || use rocm; then
 		python_domodule python/nvfuser
 	fi
 	rm -rf "${ED}${WORKDIR}"
