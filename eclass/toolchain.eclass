@@ -1240,7 +1240,10 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse cet ; then
-		confgcc+=( $(use_enable cet) )
+		confgcc+=(
+			$(use_enable cet)
+			$(use_enable cet standard-branch-protection)
+		)
 	fi
 
 	if in_iuse systemtap ; then
