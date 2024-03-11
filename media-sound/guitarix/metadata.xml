@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>poaudio@gentoo.org</email>
+		<email>proaudio@gentoo.org</email>
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
