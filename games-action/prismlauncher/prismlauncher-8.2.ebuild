@@ -139,6 +139,7 @@ src_configure(){
 
 		-DENABLE_LTO=$(usex lto)
 		-DBUILD_TESTING=$(usex test)
+		-DDEBUG_ADDRESS_SANITIZER=0
 	)
 
 	if use debug; then

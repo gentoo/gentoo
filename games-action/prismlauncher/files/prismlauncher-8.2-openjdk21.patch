@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/917072
+--- a/libraries/launcher/CMakeLists.txt
++++ b/libraries/launcher/CMakeLists.txt
+@@ -1,10 +1,10 @@
+ cmake_minimum_required(VERSION 3.9.4)
+ project(launcher Java)
+-find_package(Java 1.7 REQUIRED COMPONENTS Development)
++find_package(Java 1.8 REQUIRED COMPONENTS Development)
+
+ include(UseJava)
+ set(CMAKE_JAVA_JAR_ENTRY_POINT org.prismlauncher.EntryPoint)
+-set(CMAKE_JAVA_COMPILE_FLAGS -target 7 -source 7)
++set(CMAKE_JAVA_COMPILE_FLAGS -target 8 -source 8)
+
+ set(SRC
+     org/prismlauncher/EntryPoint.java
+--- a/flatpak/org.prismlauncher.PrismLauncher.yml
++++ b/flatpak/org.prismlauncher.PrismLauncher.yml
+@@ -40,8 +40,8 @@ modules:
+       - -DLauncher_QT_VERSION_MAJOR=5
+     build-options:
+       env:
+-        JAVA_HOME: /usr/lib/sdk/openjdk17/jvm/openjdk-17
+-        JAVA_COMPILER: /usr/lib/sdk/openjdk17/jvm/openjdk-17/bin/javac
++        JAVA_HOME: "$(java-config -O)"
++        JAVA_COMPILER: "$(java-config -c)"
+     sources:
+       - type: dir
+         path: ../
+--- a/libraries/javacheck/CMakeLists.txt
++++ b/libraries/javacheck/CMakeLists.txt
+@@ -1,10 +1,10 @@
+ cmake_minimum_required(VERSION 3.9.4)
+ project(launcher Java)
+-find_package(Java 1.7 REQUIRED COMPONENTS Development)
++find_package(Java 1.8 REQUIRED COMPONENTS Development)
+
+ include(UseJava)
+ set(CMAKE_JAVA_JAR_ENTRY_POINT JavaCheck)
+-set(CMAKE_JAVA_COMPILE_FLAGS -target 7 -source 7 -Xlint:deprecation -Xlint:unchecked)
++set(CMAKE_JAVA_COMPILE_FLAGS -target 8 -source 8 -Xlint:deprecation -Xlint:unchecked)
+
+ set(SRC
+     JavaCheck.java
