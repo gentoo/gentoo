@@ -1,0 +1,25 @@
+From b9638e2418408be4906752297e700506766dcf20 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=BCrg=20Billeter?= <j@bitron.ch>
+Date: Fri, 24 Nov 2023 16:19:47 +0100
+Subject: [PATCH] goabackend: Fix build with libxml2 2.12
+
+libxml/xmlIO.h no longer includes libxml/parser.h.
+---
+ src/goabackend/goaewsclient.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/goabackend/goaewsclient.c b/src/goabackend/goaewsclient.c
+index 4cb23581..01a52d14 100644
+--- a/src/goabackend/goaewsclient.c
++++ b/src/goabackend/goaewsclient.c
+@@ -27,6 +27,7 @@
+ #include <glib/gi18n-lib.h>
+ 
+ #include <libsoup/soup.h>
++#include <libxml/parser.h>
+ #include <libxml/xmlIO.h>
+ 
+ #include "goaewsclient.h"
+-- 
+GitLab
+
