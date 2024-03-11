@@ -6,7 +6,7 @@ EAPI=7
 POSTGRES_COMPAT=( 9.6 {10..14} )
 POSTGRES_USEDEP="server,threads(+)"
 
-inherit postgres-multi
+inherit flag-o-matic postgres-multi
 
 IUSE="doc perl"
 
@@ -47,6 +47,11 @@ src_unpack() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855251
+	# https://github.com/ssinger/slony1-engine/issues/21
+	filter-lto
+
 	local slot_bin_dir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/bin"
 	use perl && myconf=" --with-perltools=\"${slot_bin_dir}\""
 	postgres-multi_foreach econf ${myconf} \
