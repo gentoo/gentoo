@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Library of cd audio related routines"
 HOMEPAGE="https://libcdaudio.sourceforge.net/"
 SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
@@ -17,6 +19,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libdir-fix.patch
 	"${FILESDIR}"/${P}-m4-testprogram-fix.patch
 )
+
+src_prepare() {
+	default
+
+	# replace vintage 2004 autotools collection complete with worrying
+	# code to "make it portable" by converting ANSI C into K&R C
+	sed -i '/AM_C_PROTOTYPES/d' configure.ac
+	sed -i '/ansi2knr/d' Makefile.am
+	eautoreconf
+}
 
 src_configure() {
 	econf --enable-threads --disable-static
