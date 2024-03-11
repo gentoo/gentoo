@@ -234,7 +234,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXt
 	x11-libs/libXtst
 	java? (
-		dev-java/ant-core
+		dev-java/ant:0
 		>=virtual/jdk-11
 	)
 	test? (
