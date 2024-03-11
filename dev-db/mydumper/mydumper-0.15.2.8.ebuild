@@ -30,12 +30,11 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.13.1-atomic.patch" #654314
+
+	"${FILESDIR}"/${PN}-0.15-Do-not-overwrite-the-user-CFLAGS.patch
 )
 
 src_prepare() {
-	# respect user cflags; do not expand ${CMAKE_C_FLAGS} (!)
-	sed -i -e 's|-g -Werror|${CMAKE_C_FLAGS}|' CMakeLists.txt || die
-
 	# fix doc install path
 	sed -i -e "s|share/doc/mydumper|share/doc/${PF}|" docs/CMakeLists.txt || die
 
