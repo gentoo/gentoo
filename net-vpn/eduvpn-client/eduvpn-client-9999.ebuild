@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/eduvpn/python-${PN}.git"
 	S="${WORKDIR}/${P}"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eduvpn.asc
+	# Development Versions use a different release signing key
+	if [[ $(ver_cut 2) == 99 || $(ver_cut 3) == 99 ]] ; then
+		VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eduvpn-dev.asc
+	else
+		VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eduvpn.asc
+	fi
 	inherit verify-sig
 	MY_P="python-${P}"
 	SRC_URI="
@@ -40,11 +45,11 @@ RESTRICT="test"
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	>=net-vpn/eduvpn-common-1.2.0[${PYTHON_USEDEP}]
+	>=net-vpn/eduvpn-common-1.99.0[${PYTHON_USEDEP}]
 "
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-eduvpn )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eduvpn-20240307 )"
 fi
 
 PATCHES=(
