@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
@@ -10,30 +10,20 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Interfaces useful for applications which support RELAX Core"
 HOMEPAGE="http://www.xml.gr.jp/relax/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
+S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 
-RESTRICT="test"
-
-CDEPEND="dev-java/ant-core:0"
-
-DEPEND="
-	${CDEPEND}
+CP_DEPEND=">=dev-java/ant-1.10.14-r3:0"
+DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*"
-
-RDEPEND="
-	${CDEPEND}
-	>=virtual/jre-1.8:*"
-
-S="${WORKDIR}/${P}"
-
-JAVA_GENTOO_CLASSPATH="ant-core"
+RDEPEND=">=virtual/jre-1.8:*"
 
 JAVA_SRC_DIR="src"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	java-pkg_clean
 }
