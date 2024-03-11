@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library of cd audio related routines"
 HOMEPAGE="https://libcdaudio.sourceforge.net/"
@@ -31,6 +31,15 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	#
+	# Upstream is pretty dead. The best that can be said is that as of a year
+	# ago if you posted support tickets, upstream would ask you:
+	#
+	# "libcdaudio is looking for a maintainer. Would you accept becoming a
+	# maintainer, so that you can integrate the change directly?"
+	filter-lto
+
 	econf --enable-threads --disable-static
 }
 
