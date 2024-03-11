@@ -33,6 +33,7 @@ PATCHES=( "${FILESDIR}"/${PN}-2.8.5-musl.patch )
 
 src_prepare() {
 	ln -s ../tclconfig-${TCLCONFIGId} tclconfig || die
+	echo "unknown" > manifest.uuid || die
 	default
 
 	# Search for libs in libdir not just exec_prefix/lib
