@@ -25,8 +25,8 @@ src_prepare() {
 
 	# replace vintage 2004 autotools collection complete with worrying
 	# code to "make it portable" by converting ANSI C into K&R C
-	sed -i '/AM_C_PROTOTYPES/d' configure.ac
-	sed -i '/ansi2knr/d' Makefile.am
+	sed -i '/AM_C_PROTOTYPES/d' configure.ac || die
+	sed -i '/ansi2knr/d' Makefile.am || die
 	eautoreconf
 }
 
