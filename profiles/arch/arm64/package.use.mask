@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-03-11)
+# Used to control -mbranch-protection=standard.
+sys-devel/gcc -cet
+sys-libs/glibc -cet
+
 # Mart Raudsepp <leio@gentoo.org> (2024-03-03)
 # media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
 # are only available for amd64, arm64 and riscv
