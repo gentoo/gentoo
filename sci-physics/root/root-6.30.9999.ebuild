@@ -140,13 +140,15 @@ RDEPEND="${CDEPEND}
 	)
 "
 
+BDEPEND="${PYTHON_DEPS}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
 )
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
-	use python && python-single-r1_pkg_setup
+	python-single-r1_pkg_setup
 
 	elog "There are extra options on packages not available in Gentoo."
 	elog "You can use the environment variable MYCMAKEARGS to enable"
