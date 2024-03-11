@@ -44,7 +44,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-gfx/qrencode:=
 	sys-libs/readline:0=
-	sys-libs/zlib:=
+	sys-libs/zlib:=[minizip]
 	X? (
 		dev-qt/qtx11extras:5
 	)
@@ -52,15 +52,13 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXtst
 	)
-	keeshare? (
-		sys-libs/zlib:=[minizip]
-	)
 	yubikey? (
 		dev-libs/libusb:1
 		sys-apps/pcsc-lite
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-qt/qttest:5
 "
 BDEPEND="
