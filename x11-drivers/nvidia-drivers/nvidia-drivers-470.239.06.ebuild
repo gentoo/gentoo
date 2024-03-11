@@ -22,7 +22,7 @@ S=${WORKDIR}
 
 LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X abi_x86_32 abi_x86_64 persistenced +static-libs +tools"
 
 COMMON_DEPEND="
