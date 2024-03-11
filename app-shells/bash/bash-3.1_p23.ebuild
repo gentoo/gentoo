@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -95,6 +95,12 @@ src_prepare() {
 }
 
 src_configure() {
+	#/var/tmp/portage/app-shells/bash-3.2_p57/temp/ccW7JJDK.ltrans2.ltrans.o: in function `shell_execve':
+	# <artificial>:(.text+0x8b30): undefined reference to `__setostype'
+	#
+	# It works fine in bash 4+. Backporting may not be worth it.
+	filter-lto
+
 	local myconf=(
 		--with-installed-readline=.
 
