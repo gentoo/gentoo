@@ -43,6 +43,12 @@ src_prepare() {
 		"${SPARENT}"/doc/try.n \
 		-delete || die
 
+	# Drop -Werror
+	sed -i \
+		-e "s: -Werror::g" \
+		dltest/Makefile.in \
+		|| die
+
 	pushd "${SPARENT}" &>/dev/null || die
 	default
 	popd &>/dev/null || die
