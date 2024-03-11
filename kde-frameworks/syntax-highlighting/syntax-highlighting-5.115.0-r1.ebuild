@@ -24,3 +24,5 @@ BDEPEND="
 	dev-lang/perl
 	>=dev-qt/linguist-tools-${QTMIN}:5
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" ) # bug 924756
