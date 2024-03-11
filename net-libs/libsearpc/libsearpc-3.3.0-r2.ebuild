@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,10 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.26.0
 	>=dev-libs/jansson-2.2.1:="
-RDEPEND="${DEPEND}
-	$(python_gen_cond_dep '
-		dev-python/simplejson[${PYTHON_USEDEP}]
-	')"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
