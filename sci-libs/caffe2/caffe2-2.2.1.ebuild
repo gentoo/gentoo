@@ -45,7 +45,7 @@ RDEPEND="
 		>=dev-libs/cudnn-frontend-0.9.2:0/8
 		dev-util/nvidia-cuda-toolkit:=[profiler]
 	)
-	fbgemm? ( >=dev-libs/FBGEMM-2023.11.02 )
+	fbgemm? ( >=dev-libs/FBGEMM-2023.12.01 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	gloo? ( sci-libs/gloo[cuda?] )
 	mpi? ( virtual/mpi )
