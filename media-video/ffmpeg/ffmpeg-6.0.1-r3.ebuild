@@ -348,6 +348,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0-fix-lto-type-mismatch.patch
 	"${FILESDIR}"/${PN}-4.4.4-opencl-parallel-gmake-fix.patch
 	"${FILESDIR}"/${PN}-6.0.1-alignment.patch
+	"${FILESDIR}"/${PN}-6.0.1-libjxl-0.9.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
