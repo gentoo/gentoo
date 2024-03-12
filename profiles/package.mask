@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-12)
+# Unused java libraries. Removal on 2024-04-11.
+dev-java/ant-eclipse-ecj
+
 # Matt Jolly <kangie@gentoo.org> (2024-03-11)
 # Obsolete, does not compile, archived upstream.
 # Removal: 2024-04-10.  Bugs #876977, #907705.
