@@ -1,15 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit java-pkg-2 java-ant-2
 
 MY_P="${PN}$(ver_rs 1- '')"
 
 DESCRIPTION="InterProlog is a Java front-end and enhancement for Prolog"
-HOMEPAGE="http://www.declarativa.com/interprolog/"
-SRC_URI="http://www.declarativa.com/interprolog/${MY_P}.zip"
+HOMEPAGE="https://declarativa.com/InterProlog/"
+SRC_URI="https://declarativa.com/InterProlog/${MY_P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -21,7 +21,7 @@ RDEPEND=">=virtual/jdk-1.8:*
 
 DEPEND="${RDEPEND}
 	app-arch/unzip
-	dev-java/ant-core
+	>=dev-java/ant-1.10.14-r3:0
 	|| (
 		dev-lang/xsb
 		dev-lang/swi-prolog
