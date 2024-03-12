@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple java-osgi
 
 DESCRIPTION="Ivy is a free java based dependency manager"
 HOMEPAGE="https://ant.apache.org/ivy/"
-SRC_URI="mirror://apache/ant/ivy/${PV}/apache-ivy-${PV}-src.tar.gz"
+SRC_URI="https://archive.apache.org/dist/ant/ivy/${PV}/apache-ivy-${PV}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
@@ -21,7 +21,7 @@ PROPERTIES="test_network"
 RESTRICT="test"
 
 CDEPEND="
-	dev-java/ant-core:0
+	>=dev-java/ant-1.10.14-r3:0
 	dev-java/bcpg:0
 	dev-java/bcprov:0
 	dev-java/httpcomponents-client
@@ -31,10 +31,7 @@ CDEPEND="
 	dev-java/jsch:0
 	dev-java/jsch-agent-proxy:0
 	test? (
-		dev-java/ant-junit:0
-		dev-java/ant-junit4:0
-		dev-java/ant-junitlauncher:0
-		dev-java/ant-testutil:0
+		>=dev-java/ant-1.10.14-r3:0[junit,junit4,junitlauncher,testutil]
 		dev-java/hamcrest-core:1.3
 		dev-java/hamcrest-library:1.3
 		dev-java/xmlunit:1
@@ -50,12 +47,28 @@ DOCS=( LICENSE NOTICE README.adoc )
 
 S="${WORKDIR}/apache-ivy-${PV}"
 
-JAVA_GENTOO_CLASSPATH="ant-core,bcpg,bcprov,httpcomponents-client-4,commons-vfs-2,httpcore,jakarta-oro-2.0,jsch,jsch-agent-proxy"
+JAVA_GENTOO_CLASSPATH="
+	ant
+	bcpg
+	bcprov
+	httpcomponents-client-4
+	commons-vfs-2
+	httpcore
+	jakarta-oro-2.0
+	jsch
+	jsch-agent-proxy
+"
 JAVA_MAIN_CLASS="org.apache.ivy.Main"
 JAVA_SRC_DIR="src/java"
 JAVA_RESOURCE_DIRS="resources/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="ant-junit,ant-junit4,ant-junitlauncher,ant-testutil,hamcrest-core-1.3,hamcrest-library-1.3,junit-4,xmlunit-1"
+JAVA_TEST_GENTOO_CLASSPATH="
+	ant
+	hamcrest-core-1.3
+	hamcrest-library-1.3
+	junit-4
+	xmlunit-1
+"
 JAVA_TEST_SRC_DIR="test-src/java"
 JAVA_TEST_RESOURCE_DIRS="test"
 JAVA_GENTOO_CLASSPATH_EXTRA="ant-ivy.jar:test.jar:custom-resolver.jar"
