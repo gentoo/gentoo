@@ -332,6 +332,7 @@ src_test() {
 			tst_qicoimageformat
 			tst_qimagereader
 			tst_qimage
+			tst_qprocess
 		')
 		# fails due to hppa's NaN handling, needs looking into (bug #914371)
 		$(usev hppa '
