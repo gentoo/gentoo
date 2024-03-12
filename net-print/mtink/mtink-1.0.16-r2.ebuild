@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-motif.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-fix-function-declarations.patch
 )
 
 src_prepare() {

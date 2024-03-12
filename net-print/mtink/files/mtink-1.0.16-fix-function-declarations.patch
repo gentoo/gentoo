@@ -1,0 +1,57 @@
+Description: fix function declarations
+ This patch fixes various conflicting and implicit function declarations
+ reported by goto-cc from the cbmc package.
+Bug-Debian: http://bugs.debian.org/749433
+Author: Graham Inggs <graham@nerve.org.za>
+Forwarded: No, nothing left to forward to
+Last-Update: 2015-05-31
+--- a/mainSrc/cmd.h
++++ b/mainSrc/cmd.h
+@@ -70,6 +70,4 @@
+ }
+ #endif
+ 
+-extern int devRead(int fd, unsigned char *buf, int len, int timeout); 
+-extern int devWrite(int fd, unsigned char *buf, int len, int timeout); 
+ #endif
+--- a/mainSrc/rw.c
++++ b/mainSrc/rw.c
+@@ -18,6 +18,8 @@
+  
+ #ifndef MACOS
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <errno.h>
+--- a/mainSrc/cmd.c
++++ b/mainSrc/cmd.c
+@@ -53,6 +53,7 @@
+ #include "mtink.h"
+ #include "cmd.h"
+ #include "d4lib.h"
++#include "rw.h"
+ 
+ #ifdef MACOS
+ #include "usbHlp.h"
+--- a/mainSrc/gimp-mtink.c
++++ b/mainSrc/gimp-mtink.c
+@@ -23,6 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <libgimp/gimp.h>
+ #include <unistd.h>
+ #include <dirent.h>
+--- a/detect/askPrinter.c
++++ b/detect/askPrinter.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <sys/time.h>
