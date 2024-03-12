@@ -1,0 +1,89 @@
+https://bugs.gentoo.org/922877
+https://github.com/google/benchmark/pull/1756
+
+From 3805709f137766c99922f647af9b97d49d14e772 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 13 Feb 2024 20:23:20 -0500
+Subject: [PATCH] sysinfo.cc: Always abort on GetNumCPUs failure
+
+Defines a wrapper function, CheckNumCPUs, which enforces that GetNumCPUs
+never returns fewer than one CPU.  There is no reasonable way to
+continue if we are unable to identify the number of CPUs.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/sysinfo.cc | 28 +++++++++++++++++-----------
+ 1 file changed, 17 insertions(+), 11 deletions(-)
+
+diff --git a/src/sysinfo.cc b/src/sysinfo.cc
+index 786bb1b41..daeb98b02 100644
+--- a/src/sysinfo.cc
++++ b/src/sysinfo.cc
+@@ -474,12 +474,11 @@ std::string GetSystemName() {
+ #endif  // Catch-all POSIX block.
+ }
+ 
+-int GetNumCPUs() {
++int GetNumCPUsImpl() {
+ #ifdef BENCHMARK_HAS_SYSCTL
+   int num_cpu = -1;
+   if (GetSysctl("hw.ncpu", &num_cpu)) return num_cpu;
+-  fprintf(stderr, "Err: %s\n", strerror(errno));
+-  std::exit(EXIT_FAILURE);
++  PrintErrorAndDie("Err: ", strerror(errno));
+ #elif defined(BENCHMARK_OS_WINDOWS)
+   SYSTEM_INFO sysinfo;
+   // Use memset as opposed to = {} to avoid GCC missing initializer false
+@@ -493,8 +492,8 @@ int GetNumCPUs() {
+   // Returns -1 in case of a failure.
+   long num_cpu = sysconf(_SC_NPROCESSORS_ONLN);
+   if (num_cpu < 0) {
+-    fprintf(stderr, "sysconf(_SC_NPROCESSORS_ONLN) failed with error: %s\n",
+-            strerror(errno));
++    PrintErrorAndDie("sysconf(_SC_NPROCESSORS_ONLN) failed with error: ",
++                     strerror(errno));
+   }
+   return (int)num_cpu;
+ #elif defined(BENCHMARK_OS_QNX)
+@@ -510,8 +509,7 @@ int GetNumCPUs() {
+   int max_id = -1;
+   std::ifstream f("/proc/cpuinfo");
+   if (!f.is_open()) {
+-    std::cerr << "failed to open /proc/cpuinfo\n";
+-    return -1;
++    PrintErrorAndDie("Failed to open /proc/cpuinfo");
+   }
+ #if defined(__alpha__)
+   const std::string Key = "cpus detected";
+@@ -540,12 +538,10 @@ int GetNumCPUs() {
+     }
+   }
+   if (f.bad()) {
+-    std::cerr << "Failure reading /proc/cpuinfo\n";
+-    return -1;
++    PrintErrorAndDie("Failure reading /proc/cpuinfo");
+   }
+   if (!f.eof()) {
+-    std::cerr << "Failed to read to end of /proc/cpuinfo\n";
+-    return -1;
++    PrintErrorAndDie("Failed to read to end of /proc/cpuinfo");
+   }
+   f.close();
+ 
+@@ -559,6 +555,16 @@ int GetNumCPUs() {
+   BENCHMARK_UNREACHABLE();
+ }
+ 
++int GetNumCPUs() {
++  const int num_cpus = GetNumCPUsImpl();
++  if (num_cpus < 1) {
++    PrintErrorAndDie(
++        "Unable to extract number of CPUs.  If your platform uses "
++        "/proc/cpuinfo, custom support may need to be added.");
++  }
++  return num_cpus;
++}
++
+ class ThreadAffinityGuard final {
+  public:
+   ThreadAffinityGuard() : reset_affinity(SetAffinity()) {
