@@ -41,7 +41,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
-	gnome2_src_configure
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
