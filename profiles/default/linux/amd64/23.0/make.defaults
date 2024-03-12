@@ -2,3 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs"
+
+USE="cet"
+
+BOOTSTRAP_USE="${BOOTSTRAP_USE} cet"
