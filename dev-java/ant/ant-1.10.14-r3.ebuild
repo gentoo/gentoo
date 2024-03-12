@@ -76,6 +76,7 @@ RDEPEND="
 	!dev-java/ant-apache-log4j
 	!dev-java/ant-apache-xalan2
 	!dev-java/ant-commons-logging
+	!<dev-java/ant-core-1.10.14
 	!dev-java/ant-swing
 	!dev-java/ant-junit4
 	!dev-java/ant-testutil
