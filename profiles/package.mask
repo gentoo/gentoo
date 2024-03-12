@@ -74,7 +74,6 @@ dev-java/failureaccess
 # a fix anytime soon.
 #
 # dev-python/python-efl: econnman as revdep, bug #925692.
-# dev-python/pipenv: via <pydantic-2, + dparse, bug #925698, bug #925553.
 # dev-python/pygame_sdl2: also py3.12, bug #911781
 # games-engines/renpy: also py3.12, bug #925693
 # sci-chemistry/mdtraj: also py3.12, PEP517, bug #911646.
@@ -84,8 +83,6 @@ dev-java/failureaccess
 #
 # Removal on 2024-04-09.
 dev-python/astunparse
-dev-python/dparse
-dev-python/pipenv
 dev-python/pygame_sdl2
 dev-python/python-efl
 games-engines/renpy
