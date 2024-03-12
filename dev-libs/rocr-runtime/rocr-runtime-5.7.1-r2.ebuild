@@ -48,6 +48,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/856091
+	# https://github.com/ROCm/ROCR-Runtime/issues/182
+	filter-lto
+
 	use debug || append-cxxflags "-DNDEBUG"
 	local mycmakeargs=( -DINCLUDE_PATH_COMPATIBILITY=OFF )
 	cmake_src_configure
