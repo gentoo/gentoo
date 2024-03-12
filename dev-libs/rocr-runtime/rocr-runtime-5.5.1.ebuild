@@ -38,9 +38,6 @@ BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
 
 src_prepare() {
-	# ... otherwise system llvm/clang is used ...
-	sed -e "/find_package(Clang REQUIRED HINTS /s:\${CMAKE_INSTALL_PREFIX}/llvm \${CMAKE_PREFIX_PATH}/llvm PATHS /opt/rocm/llvm:$(get_llvm_prefix ${LLVM_MAX_SLOT}):" -i image/blit_src/CMakeLists.txt || die
-
 	# Gentoo installs "*.bc" to "/usr/lib" instead of a "[path]/bitcode" directory ...
 	sed -e "s:-O2:--rocm-path=${EPREFIX}/usr/lib/ -O2:" -i image/blit_src/CMakeLists.txt || die
 
