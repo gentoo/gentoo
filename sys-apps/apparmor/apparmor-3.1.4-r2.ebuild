@@ -36,6 +36,7 @@ S=${WORKDIR}/apparmor-${PV}/parser
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.5-makefile.patch"
 	"${FILESDIR}/${PN}-2.11.1-dynamic-link.patch"
+	"${FILESDIR}/${PN}-3.1.4-fix-hardcoded-path.patch"
 )
 
 src_prepare() {
