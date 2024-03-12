@@ -122,6 +122,7 @@ src_configure() {
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--localstatedir="${EPREFIX}/var" \
 		--enable-user=${PN} \
+		--with-rebar=rebar \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
 		$(use_enable mssql) \
