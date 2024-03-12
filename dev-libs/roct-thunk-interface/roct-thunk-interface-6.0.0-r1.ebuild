@@ -33,7 +33,6 @@ PATCHES=(
 
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
-	sed -e "s:ubuntu:gentoo:" -i CMakeLists.txt || die
 	cmake_src_prepare
 }
 
