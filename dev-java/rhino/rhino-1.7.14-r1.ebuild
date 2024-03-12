@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RESTRICT="test"
 
 DEPEND=">=virtual/jdk-1.8:*
 	test? (
-		dev-java/ant-junit:0
+		>=dev-java/ant-1.10.14-r3:0[junit]
 		dev-java/emma:0
 		dev-java/jakarta-xml-soap-api:1
 		dev-java/jmh-core:0
@@ -50,7 +50,7 @@ JAVA_SRC_DIR=( "src" "toolsrc" "xmlimplsrc" )
 JAVA_RESOURCE_DIRS="res"
 JAVA_MAIN_CLASS="org.mozilla.javascript.tools.shell.Main"
 
-JAVA_TEST_GENTOO_CLASSPATH="ant-junit,emma,hamcrest-core-1.3,jakarta-xml-soap-api-1,jmh-core,junit-4,snakeyaml"
+JAVA_TEST_GENTOO_CLASSPATH="ant,emma,hamcrest-core-1.3,jakarta-xml-soap-api-1,jmh-core,junit-4,snakeyaml"
 JAVA_TEST_SRC_DIRS="testsrc"
 JAVA_TEST_RESOURCE_DIRS="testres"
 
