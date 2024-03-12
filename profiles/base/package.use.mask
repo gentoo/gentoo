@@ -31,13 +31,6 @@ app-crypt/pinentry qt6
 # https://github.com/psycopg/psycopg/issues/734
 <=dev-python/psycopg-3.1.18 native-extensions
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
-# These packages have RESTRICT="test" and depend on dev-java/ant-junit
-# which is going away. Remove this mask when ebuilds are updated.
-dev-java/ant-ivy test
-dev-java/rhino test
-www-servers/tomcat test
-
 # Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
 # Requires manually installing dependencies, see bug #791802
 # Please use MYCMAKEARGS instead.
