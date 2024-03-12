@@ -81,6 +81,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/858383
+	# https://github.com/ROCm/clr/issues/64
+	#
+	# Do not trust it for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Workaround for bug #923986
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
