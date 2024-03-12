@@ -1,0 +1,15 @@
+# Set desktop file name to correspond to the one installed by
+# the ebuild ("retext.desktop"). 
+# Bug: https://bugs.gentoo.org/925726
+
+--- a/ReText/__main__.py
++++ b/ReText/__main__.py
+@@ -65,7 +65,7 @@ def main():
+ 	app.setApplicationDisplayName("ReText")
+ 	app.setApplicationVersion(app_version)
+ 	app.setOrganizationDomain('mitya57.me')
+-	app.setDesktopFileName('me.mitya57.ReText.desktop')
++	app.setDesktopFileName('retext')
+ 	QNetworkProxyFactory.setUseSystemConfiguration(True)
+ 
+ 	RtTranslator = QTranslator()
