@@ -1,8 +1,5 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/cniweb/ant-contrib/archive/0228412be2ef648cfabc1d74416d3188755aff9b.tar.gz --slot 0 --keywords "~amd64 ~ppc64 ~x86" --ebuild ant-contrib-1.0_beta6_pre20201123.ebuild
 
 EAPI=8
 
@@ -14,8 +11,9 @@ inherit java-pkg-2 java-pkg-simple
 
 MY_COMMIT="0228412be2ef648cfabc1d74416d3188755aff9b"
 DESCRIPTION="Ant-contrib tasks for Apache Ant"
-HOMEPAGE="http://ant-contrib.sourceforge.net"
+HOMEPAGE="https://ant-contrib.sourceforge.net/"
 SRC_URI="https://github.com/cniweb/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_COMMIT}/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -34,7 +32,7 @@ RESTRICT="test"
 # xerces:xercesImpl:2.12.0 -> >=dev-java/xerces-2.12.0:2
 
 CDEPEND="
-	dev-java/ant-core:0
+	>=dev-java/ant-1.10.14-r3:0
 	dev-java/ant-ivy:2
 	dev-java/bcel:0
 	dev-java/commons-httpclient:3
@@ -49,20 +47,18 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	>=virtual/jdk-1.8:*
 	test? (
-		dev-java/ant-core:0
+		>=dev-java/ant-1.10.14-r3:0[junit4]
 	)"
 
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.8:*"
 
-S="${WORKDIR}/${PN}-${MY_COMMIT}/${PN}"
-
 #	JAVA_GENTOO_CLASSPATH="commons-httpclient-3,ant-core,bcel,ant-ivy-2,!!!groupId-not-found!!!,xerces-2"
-JAVA_GENTOO_CLASSPATH="commons-httpclient-3,ant-core,bcel,ant-ivy-2,xerces-2"
+JAVA_GENTOO_CLASSPATH="commons-httpclient-3,ant,bcel,ant-ivy-2,xerces-2"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 
-JAVA_TEST_GENTOO_CLASSPATH="junit-4,ant-core"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4,ant"
 JAVA_TEST_SRC_DIR="test/src"
 JAVA_TEST_RESOURCE_DIRS="test/resources"
 
