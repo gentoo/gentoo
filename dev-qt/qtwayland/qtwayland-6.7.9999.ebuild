@@ -11,11 +11,11 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-IUSE="compositor qml vulkan"
+IUSE="accessibility compositor qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
-	~dev-qt/qtbase-${PV}:6[gui,opengl,vulkan=,wayland]
+	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl,vulkan=,wayland]
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
 	compositor? (
