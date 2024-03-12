@@ -93,6 +93,7 @@ src_configure() {
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_DOCS="$(usex doc)"
 		-DWITH_XC_BROWSER="$(usex browser)"
+		-DWITH_XC_BROWSER_PASSKEYS="$(usex browser)"
 		-DWITH_XC_BOTAN3=ON
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
