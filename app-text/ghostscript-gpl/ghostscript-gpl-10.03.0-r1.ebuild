@@ -126,6 +126,9 @@ src_configure() {
 	# Unsupported upstream, bug #884841
 	filter-lto
 
+	# bug #899952
+	append-lfs-flags
+
 	local FONTPATH
 	for path in \
 		"${EPREFIX}"/usr/share/fonts/urw-fonts \
