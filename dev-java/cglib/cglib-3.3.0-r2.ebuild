@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,26 +16,25 @@ MY_P=cglib-${MY_PV}
 DESCRIPTION="cglib is a powerful, high performance and quality Code Generation Library"
 HOMEPAGE="https://github.com/cglib/cglib"
 SRC_URI="https://github.com/cglib/cglib/archive//${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="3"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
-CDEPEND="dev-java/ant-core:0
+CP_DEPEND="
+	>=dev-java/ant-1.10.14-r3:0
 	dev-java/asm:9
 "
 DEPEND="
 	>=virtual/jdk-1.8:*
-	${CDEPEND}
+	${CP_DEPEND}
 "
 RDEPEND="
 	>=virtual/jre-1.8:*
-	${CDEPEND}
+	${CP_DEPEND}
 "
 
-S="${WORKDIR}"
-
-JAVA_GENTOO_CLASSPATH="asm-9 ant-core"
 JAVA_SRC_DIR="${MY_P}/${PN}/src/main/java"
 JAVA_RESOURCE_DIRS="${MY_P}/${PN}/src/main/resources"
 
@@ -54,7 +53,8 @@ src_test() {
 	# Caused by: net.sf.cglib.core.CodeGenerationException:
 	# java.lang.reflect.InaccessibleObjectException-->Unable to make protected final java.lang.Class
 	# java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
-	# throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @42bb2aee
+	# throws java.lang.ClassFormatError accessible: \
+	# module java.base does not "opens java.lang" to unnamed module @42bb2aee
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if ver_test "${vm_version}" -ge "17" ; then
