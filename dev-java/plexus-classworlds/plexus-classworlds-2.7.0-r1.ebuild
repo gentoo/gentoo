@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 DEPEND="
 	>=virtual/jdk-1.8:*
 	test? (
-		dev-java/ant-core:0
+		>=dev-java/ant-1.10.14-r3:0
 		dev-java/commons-logging:0
 		dev-java/xml-commons-external:1.4
 	)
@@ -41,7 +41,7 @@ src_test(){
 	# java.io.FileNotFoundException: target/test-lib/xml-apis-1.3.02.jar
 	mkdir -p target/test-lib || die
 	java-pkg_jar-from --into target/test-lib xml-commons-external-1.4 xml-commons-external.jar xml-apis-1.3.02.jar
-	java-pkg_jar-from --into target/test-lib ant-core ant.jar ant-1.9.0.jar
+	java-pkg_jar-from --into target/test-lib ant ant.jar ant-1.9.0.jar
 	java-pkg_jar-from --into target/test-lib commons-logging commons-logging.jar commons-logging-1.0.3.jar
 	java-pkg-simple_src_test
 }
