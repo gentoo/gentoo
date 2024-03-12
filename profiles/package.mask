@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-03-12)
+# Not more needed, >=sci-visualization/dash-2.11 provide
+# direct integration with jupyter nodebook
+# Removal on 2024-04-11.
+sci-visualization/jupyter-dash
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-12)
 # Unused java libraries. Removal on 2024-04-11.
 dev-java/ant-eclipse-ecj
