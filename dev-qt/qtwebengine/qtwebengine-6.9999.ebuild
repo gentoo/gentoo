@@ -270,6 +270,10 @@ src_test() {
 		tst_qquickwebengineview
 		tst_qwebengineglobalsettings
 		tst_qwebengineview
+		# fails with offscreen rendering, may be worth retrying if the issue
+		# persist given these are rather major tests (or consider virtx)
+		tst_qmltests
+		tst_qwebenginepage
 		# certs verfication seems flaky and gives expiration warnings
 		tst_qwebengineclientcertificatestore
 		# test is misperformed when qtbase is built USE=-test?
