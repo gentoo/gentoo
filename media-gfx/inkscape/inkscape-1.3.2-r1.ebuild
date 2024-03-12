@@ -107,6 +107,11 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libxml2-2.12.patch
+	"${FILESDIR}"/${P}-poppler-24.03.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -142,6 +147,7 @@ src_configure() {
 		-DENABLE_POPPLER=ON
 		-DENABLE_POPPLER_CAIRO=ON
 		-DWITH_PROFILING=OFF
+		-DWITH_INTERNAL_CAIRO=OFF
 		-DWITH_INTERNAL_2GEOM=ON
 		-DBUILD_TESTING=$(usex test)
 		-DWITH_LIBCDR=$(usex cdr)
