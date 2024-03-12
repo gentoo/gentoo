@@ -1,9 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-CMAKE_BUILD_TYPE="Release"
 
 inherit cmake-multilib
 
@@ -13,15 +11,18 @@ if [[ ${PV} == *9999 ]] ; then
 		: ${EGIT_BRANCH:="release/${PV%.9999}"}
 	fi
 	inherit git-r3
+else
+	KEYWORDS="~amd64"
+	SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
+	S="${WORKDIR}/${PN}-intel-${P}"
 fi
 
 DESCRIPTION="Intel Graphics Memory Management Library"
 HOMEPAGE="https://github.com/intel/gmmlib"
-SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0/12.3"
-IUSE="test +custom-cflags"
+IUSE="+custom-cflags test"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
@@ -33,7 +34,6 @@ PATCHES=(
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
-		-DBUILD_TYPE="Release"
 		-DOVERRIDE_COMPILER_FLAGS="$(usex !custom-cflags)"
 	)
 
