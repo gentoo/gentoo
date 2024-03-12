@@ -21,6 +21,7 @@ IUSE="ipv6 ssl oidentd scripting multinetwork"
 DEPEND="
 	acct-group/psybnc
 	acct-user/psybnc
+	net-dns/c-ares
 	ssl? ( >=dev-libs/openssl-0.9.7d:= )
 	oidentd? ( >=net-misc/oidentd-2.0 )
 "
