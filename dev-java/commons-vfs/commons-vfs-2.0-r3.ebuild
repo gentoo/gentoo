@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="source"
 
@@ -9,14 +9,15 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A single API for accessing various different file systems"
 HOMEPAGE="https://commons.apache.org/vfs/"
-SRC_URI="mirror://apache/commons/vfs/source/${P}-src.tar.gz"
+SRC_URI="https://archive.apache.org/dist/commons/vfs/source/${P}-src.tar.gz"
+S="${WORKDIR}/${P}/core"
 
 LICENSE="Apache-2.0"
 SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 
 CDEPEND="
-	dev-java/ant-core:0
+	dev-java/ant:0
 	dev-java/commons-collections:0
 	dev-java/commons-logging:0
 	dev-java/commons-net:0
@@ -34,10 +35,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-incompatibility.patch
 )
 
-S="${WORKDIR}/${P}/core"
-
 EANT_GENTOO_CLASSPATH="
-	ant-core
+	ant
 	commons-collections
 	commons-logging
 	commons-net
