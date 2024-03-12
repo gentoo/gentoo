@@ -55,6 +55,7 @@ src_test() {
 
 	# Do basic smoke tests to help catch issues like bug #925560
 	# where trivial 'gcal' invocation crashed w/ _F_S=3.
+	local -x PATH="${S}/src:${S}:${PATH}"
 	local bin
 	for bin in gcal2txt tcal txt2gcal gcal ; do
 		src/${bin} || die
