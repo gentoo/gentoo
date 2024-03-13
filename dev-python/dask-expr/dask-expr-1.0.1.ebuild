@@ -28,9 +28,12 @@ RDEPEND="
 	>=dev-python/pyarrow-7.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pandas-2[${PYTHON_USEDEP}]
 "
+# TODO: make pandas depend on pyarrow unconditionally?  we're having
+# transitive deps here.
 BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? (
+		dev-libs/apache-arrow[parquet,snappy]
 		dev-python/pyarrow[parquet,${PYTHON_USEDEP}]
 	)
 "
