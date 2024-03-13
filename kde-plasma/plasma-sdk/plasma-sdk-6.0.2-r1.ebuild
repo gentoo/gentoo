@@ -38,5 +38,6 @@ DEPEND="
 	>=kde-plasma/plasma5support-${PVCUT}:6
 "
 RDEPEND="${DEPEND}
+	>=dev-qt/qt5compat-${QTMIN}:6[qml]
 	>=kde-frameworks/kirigami-${KFMIN}:6
 "
