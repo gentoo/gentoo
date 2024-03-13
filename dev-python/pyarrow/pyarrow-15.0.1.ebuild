@@ -21,7 +21,7 @@ S="${WORKDIR}/apache-arrow-${PV}/python"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~riscv"
-IUSE="parquet snappy ssl"
+IUSE="+parquet +snappy ssl"
 
 RDEPEND="
 	~dev-libs/apache-arrow-${PV}[compute,dataset,json,parquet?,re2,snappy?,ssl?]
