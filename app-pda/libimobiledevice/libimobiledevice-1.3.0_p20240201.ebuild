@@ -63,7 +63,7 @@ src_compile() {
 	emake
 
 	if use doc; then
-		doxygen "${BUILD_DIR}"/doxygen.cfg || die
+		doxygen doxygen.cfg || die
 	fi
 }
 
