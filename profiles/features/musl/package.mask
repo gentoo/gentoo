@@ -5,6 +5,11 @@
 # To bootstrap uses an ada compiler built using glibc
 dev-lang/gnat-gpl
 dev-ada/gnatcoll-db
+dev-ada/gprbuild
+dev-ada/xmlada
+dev-ada/libgpr
+dev-ada/gnatcoll-core
+dev-ada/gnatcoll-bindings
 
 # Sergey Popov <pinkbyte@gentoo.org> (2024-03-05)
 # games-strategy/seven-kingdoms does not build on musl,
