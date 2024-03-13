@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="cronolog wrapper for use with dumb daemons like squid, varnish and so on"
 HOMEPAGE="https://gitweb.gentoo.org/proj/fifo-cronolog.git"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="http://dev.gentoo.org/~robbat2/distfiles/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
