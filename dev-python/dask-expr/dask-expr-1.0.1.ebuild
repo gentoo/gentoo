@@ -30,6 +30,9 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
+	test? (
+		dev-python/pyarrow[parquet,${PYTHON_USEDEP}]
+	)
 "
 
 EPYTEST_XDIST=1
