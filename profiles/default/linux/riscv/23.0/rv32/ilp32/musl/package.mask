@@ -1,0 +1,6 @@
+# Copyright 2020-2024 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com> (2024-03-13)
+# No rv32 support in musl pre 1.2.5
+<sys-libs/musl-1.2.5
