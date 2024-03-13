@@ -5,6 +5,9 @@
 		<email>candrews@gentoo.org</email>
 		<name>Craig Andrews</name>
 	</maintainer>
+  <use>
+	<flag name="libev">Support event loops via <pkg>dev-libs/libev</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">yrutschle/sslh</remote-id>
 		<remote-id type="cpe">cpe:/a:sslh_project:sslh</remote-id>
