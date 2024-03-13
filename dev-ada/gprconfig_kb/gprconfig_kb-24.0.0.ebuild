@@ -22,7 +22,7 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e "s:@VER@:${GCC_PV}:g" \
+		-e "s:@VER@:${GCCPV}:g" \
 		db/compilers.xml \
 		db/gnat.xml \
 		db/c.xml \
