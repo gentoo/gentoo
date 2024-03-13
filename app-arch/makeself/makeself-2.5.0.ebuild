@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/megastep/makeself/archive/refs/tags/release-${PV}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux"
 
 # NB: The test framework requires bashunit (which isn't a big deal), but the
 # tests themselves are not of great quality.  You should avoid running them
