@@ -7,7 +7,8 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="A selection of tools from Debian"
 HOMEPAGE="https://packages.qa.debian.org/d/debianutils.html"
-SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
+#SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
+SRC_URI="mirror://gentoo/e7/${PN}_${PV}.tar.xz"
 
 LICENSE="BSD GPL-2 SMAIL"
 SLOT="0"
