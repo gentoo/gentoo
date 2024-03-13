@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtshadertools-${QTMIN}:6
 	>=kde-frameworks/kauth-${KFMIN}:6
 	>=kde-frameworks/kcmutils-${KFMIN}:6
+	>=kde-frameworks/kcolorscheme-${KFMIN}:6
 	>=kde-frameworks/kconfig-${KFMIN}:6[qml]
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
