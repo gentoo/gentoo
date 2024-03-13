@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit readme.gentoo-r1
+inherit flag-o-matic readme.gentoo-r1
 
 MY_P="${PN}-$(ver_rs 2 b)"
 
@@ -53,6 +53,13 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/854204
+	#
+	# Abandoned upstream for 3 years. Known corruptions reported in
+	# pkg_postinst. Sourceforge software. Not bothering to report a bug...
+	filter-lto
+
 	local myeconfargs=(
 		--with-dumpdatespath=/etc/dumpdates
 		--with-rmtpath='$(sbindir)/rmt'
