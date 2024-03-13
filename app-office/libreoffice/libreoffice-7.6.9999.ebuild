@@ -296,6 +296,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
 
+	# TODO: upstream
+	"${FILESDIR}/${PN}-7.6-unused-qt5network.patch"
+
 	# maybe upstreamable
 	"${FILESDIR}/${PN}-7.5.8.2-icu-74-compatibility.patch"
 )
