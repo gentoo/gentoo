@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=dev-libs/libinput-1.19:=
 	>=dev-libs/wayland-1.22.0
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
-	>=dev-qt/qtbase-${QTMIN}:6=[dbus,gles2-only=,gui,libinput,opengl,widgets]
+	>=dev-qt/qtbase-${QTMIN}:6=[accessibility=,dbus,gles2-only=,gui,libinput,opengl,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsensors-${QTMIN}:6
 	>=dev-qt/qtshadertools-${QTMIN}:6
@@ -110,6 +110,10 @@ BDEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:*"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-6.0.2-qtgui-accessibility-optional.patch" # bug 926935, 6.1
+)
 
 src_prepare() {
 	ecm_src_prepare
