@@ -17,7 +17,7 @@ else
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
 		https://cdn.turret.cyou/~turret/distfiles/${PN}/${P}-manpages.tar.xz
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="ZLIB"
