@@ -20,7 +20,10 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-AR.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-AR.patch
+	"${FILESDIR}"/0001-fix-bashism-in-configure-script.patch
+)
 
 src_prepare() {
 	default
