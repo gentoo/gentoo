@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="Simple XLS data extraction library"
 HOMEPAGE="https://www.gaia-gis.it/fossil/freexl/index"
 SRC_URI="https://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
@@ -17,6 +19,11 @@ DEPEND="
 	virtual/libiconv
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf --enable-xmldocs
