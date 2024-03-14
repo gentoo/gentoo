@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,8 @@ BDEPEND="${PYTHON_DEPS}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-caps5-include-path.patch
 	"${FILESDIR}"/${PN}-2.3.1-cmake-include-checksym.patch
+	# backport upstream patch for -Werror=lto-type-mismatch
+	"${FILESDIR}"/adccd68b16eff815590c1ec993354ef8e752ecfd.patch
 )
 
 DOCS=(
