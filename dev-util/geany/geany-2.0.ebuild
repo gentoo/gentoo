@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit strip-linguas xdg
+inherit optfeature strip-linguas xdg
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko ku lb lt mn nl nn pl pt pt_BR ro ru si sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
@@ -73,6 +73,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	optfeature "editing files outside the local filesystem" gnome-base/gvfs
 }
 
 pkg_postrm() {
