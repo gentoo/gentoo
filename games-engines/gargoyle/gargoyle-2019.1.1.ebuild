@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Regarding licenses: libgarglk is licensed under the GPLv2. Bundled
@@ -64,6 +64,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Aliasing violations in bundled glulxe library (bug #858716)
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# build system messes up flags and toolchain completely
 	# append flags to compiler commands to have consistent behavior
 	jam \
