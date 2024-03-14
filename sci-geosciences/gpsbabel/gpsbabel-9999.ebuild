@@ -62,7 +62,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS NEWS README.{contrib,igc,mapconverter,md} gui/README.{contrib,gui} )
+DOCS=( AUTHORS NEWS README.{contrib,igc,md} gui/README.gui )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.0-no-automagic-qt5-qt6.patch"
