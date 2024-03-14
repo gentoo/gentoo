@@ -119,7 +119,7 @@ src_prepare() {
 		elog
 		elog "If you experience any problems, install an older java compiler"
 		elog "and select it with \"eselect java\", then recompile ${PN}."
-		eapply "${FILESDIR}/${P}-openjdk21.patch"
+		eapply "${FILESDIR}/${PN}-8.2-openjdk21.patch"
 	fi
 
 	sed -i -e 's/-Werror//' CMakeLists.txt || die 'Failed to remove -Werror via sed'
