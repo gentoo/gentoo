@@ -595,6 +595,7 @@ sci-libs/mpir
 ~dev-libs/kirigami-addons-1.0.1
 ~dev-libs/ktextaddons-1.5.3
 ~dev-libs/kweathercore-0.8.0
+~games-puzzle/skladnik-0.5.2
 ~gui-apps/xwaylandvideobridge-0.4.0
 ~kde-frameworks/oxygen-icons-6.0.0
 =media-libs/kquickimageeditor-0.3.0-r100
