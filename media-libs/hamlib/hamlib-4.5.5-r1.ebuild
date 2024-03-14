@@ -47,11 +47,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# fix hardcoded libdir paths
-	sed -i -e "s#fix}/lib#fix}/$(get_libdir)/hamlib#" \
-		-e "s#fix}/include#fix}/include/hamlib#" \
-		hamlib.pc.in || die "sed failed"
-
 	# Correct install target to whatever INSTALLDIRS says and use vendor
 	# installdirs everywhere (bug #611550)
 	sed -i -e "s#install_site#install#"	\
