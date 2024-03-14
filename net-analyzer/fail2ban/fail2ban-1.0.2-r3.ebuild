@@ -21,8 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux systemd test"
-RESTRICT="!test? ( test )"
+IUSE="selinux systemd"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -38,19 +37,13 @@ RDEPEND="
 		')
 	)
 "
-BDEPEND="
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/aiosmtpd[${PYTHON_USEDEP}]
-		')
-	)
-"
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
 	"${FILESDIR}"/${PN}-1.0.2-umask-tests.patch
+	"${FILESDIR}"/${P}-configreader-warning.patch
 )
 
 python_prepare_all() {
@@ -59,6 +52,14 @@ python_prepare_all() {
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
+
+	# Incompatible with Python 3.12 in 1.0.x, 9999 uses dev-python/aiosmtpd.
+	rm fail2ban/tests/action_d/test_smtp.py || die
+}
+
+python_compile() {
+	./fail2ban-2to3 || die
+	distutils-r1_python_compile
 }
 
 python_test() {
@@ -66,6 +67,7 @@ python_test() {
 	# https://github.com/fail2ban/fail2ban/issues/3586
 	bin/fail2ban-testcases \
 		--no-network \
+		--no-gamin \
 		--ignore databasetestcase.DatabaseTest.testRepairDb \
 		--verbosity=4 || die "Tests failed with ${EPYTHON}"
 
