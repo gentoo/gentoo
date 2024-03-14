@@ -75,6 +75,7 @@ DOCS=( NEWS README )
 
 # patches merged upstream, to be removed with 17.1 or later bump
 PATCHES=(
+	"${FILESDIR}/pulseaudio-17.0-backport-pr807.patch"
 )
 
 src_prepare() {
