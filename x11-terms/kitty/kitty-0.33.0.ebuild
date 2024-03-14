@@ -132,7 +132,7 @@ src_compile() {
 	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
 
 	go-env_set_compile_environment
-	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x"
+	local -x GOFLAGS="-p=$(makeopts_jobs) -v -x -buildvcs=false"
 	use ppc64 && [[ $(tc-endian) == big ]] || GOFLAGS+=" -buildmode=pie"
 
 	# workaround link errors with Go + gcc + -g3 (bug #924436),
