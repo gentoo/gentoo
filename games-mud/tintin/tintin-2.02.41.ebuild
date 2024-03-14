@@ -1,24 +1,28 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="(T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t"
 HOMEPAGE="https://tintin.mudhalla.net/"
-SRC_URI="mirror://sourceforge/tintin/${P}.tar.gz"
+SRC_URI="https://github.com/scandum/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	dev-libs/libpcre
-	net-libs/gnutls
-	sys-libs/readline:0
-	sys-libs/zlib"
-RDEPEND=${DEPEND}
+	dev-libs/libpcre:3
+	net-libs/gnutls:=
+	sys-libs/readline:=
+	sys-libs/zlib
+"
 
-S=${WORKDIR}/tt/src
+RDEPEND="
+	${DEPEND}
+"
+
+S="${WORKDIR}"/tt/src
 
 src_install() {
 	dobin tt++
