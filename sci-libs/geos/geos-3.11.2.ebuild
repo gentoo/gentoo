@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
 HOMEPAGE="https://libgeos.org/"
@@ -22,6 +22,11 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/862702
+	# https://github.com/libgeos/geos/issues/1054
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
