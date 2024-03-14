@@ -19,8 +19,8 @@ HOMEPAGE="
 	https://pypi.org/project/pandas/
 "
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~hppa ~riscv"
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
