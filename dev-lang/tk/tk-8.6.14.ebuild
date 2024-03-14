@@ -46,7 +46,7 @@ PATCHES=(
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	stat64 opendir64 rewinddir64 closedir64 # used to test for Large File Support
+	stat64 opendir64 readdir64 rewinddir64 closedir64 # used on AIX
 )
 
 src_prepare() {
