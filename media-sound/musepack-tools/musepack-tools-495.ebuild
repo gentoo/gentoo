@@ -10,7 +10,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="Musepack SV8 libraries and utilities"
 HOMEPAGE="https://www.musepack.net"
-SRC_URI="mirror://gentoo/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0"
