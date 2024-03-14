@@ -18,6 +18,7 @@ else
 fi
 
 src_prepare() {
+	default
 	if [[ ${PV} == "9999" ]] ; then
 	    mv configure.in configure.ac || die
 		eautoreconf
@@ -26,7 +27,6 @@ src_prepare() {
 	's#/usr/local/bin/portspoof -D -c /usr/local/etc/portspoof.conf -s /usr/local/etc/portspoof_signatures#/usr/bin/portspoof -D -c /etc/portspoof.conf -s /etc/portspoof_signatures#'\
 	 system_files/init.d/portspoof.sh
 	sed -i '/#include <sys\/sysctl.h>/d' src/connection.h || die
-	eapply_user
 }
 
 src_install() {
