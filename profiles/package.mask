@@ -93,7 +93,7 @@ dev-java/ant-jsch
 dev-java/ant-xz
 dev-java/gnu-jaf
 dev-java/failureaccess
-#
+
 # Michał Górny <mgorny@gentoo.org> (2024-03-10)
 # Packages that still require <dev-python/cython-3 and do not promise
 # a fix anytime soon.
