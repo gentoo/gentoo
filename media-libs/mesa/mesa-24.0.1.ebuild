@@ -154,6 +154,12 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
+# Fix bug https://bugs.gentoo.org/921658
+# See: https://gitlab.freedesktop.org/eric/mesa/-/commit/6d276b55312f26c839d1091e1b1f4029d72c64f0
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-nouveau-undefined-reference.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 EGIT_CHECKOUT_DIR=${S}
 
