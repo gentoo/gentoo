@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 SLOT="0"
 
 CP_DEPEND="
-	dev-java/ant-core:0
+	>=dev-java/ant-1.10.14-r3:0
 	dev-java/bsh:0
 	dev-java/guice:4
 	dev-java/jcommander:1.64
