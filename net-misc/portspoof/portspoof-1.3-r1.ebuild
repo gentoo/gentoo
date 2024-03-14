@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="return SYN+ACK for every port connection attempt"
 HOMEPAGE="http://portspoof.org/"
 LICENSE="GPL-2+"
@@ -27,6 +29,18 @@ src_prepare() {
 	's#/usr/local/bin/portspoof -D -c /usr/local/etc/portspoof.conf -s /usr/local/etc/portspoof_signatures#/usr/bin/portspoof -D -c /etc/portspoof.conf -s /etc/portspoof_signatures#'\
 	 system_files/init.d/portspoof.sh
 	sed -i '/#include <sys\/sysctl.h>/d' src/connection.h || die
+}
+
+src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861698
+	# https://github.com/drk1wi/portspoof/issues/48
+	#
+	# Do not trust it with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	default
 }
 
 src_install() {
