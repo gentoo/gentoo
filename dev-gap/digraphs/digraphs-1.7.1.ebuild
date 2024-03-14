@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic gap-pkg
+inherit gap-pkg
 
 DESCRIPTION="Graphs, digraphs, and multidigraphs in GAP"
 SLOT="0"
@@ -25,17 +25,7 @@ DOCS=( CHANGELOG.md README.md )
 GAP_PKG_EXTRA_INSTALL=( data notebooks )
 gap-pkg_enable_tests
 
-src_prepare() {
-	default
-
-	# Fix the build with pathological CFLAGS
-	eautoreconf
-}
-
 src_configure() {
-	# https://github.com/digraphs/Digraphs/issues/596
-	append-cflags -Wno-error=strict-prototypes
-
 	gap-pkg_econf \
 		--with-external-planarity \
 		--with-external-bliss
