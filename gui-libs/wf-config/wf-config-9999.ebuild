@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wf-config"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wf-config.git"
-	SLOT="0/9999"
+	SLOT="0/0.9"
 else
 	SRC_URI="https://github.com/WayfireWM/wf-config/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
