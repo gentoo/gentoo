@@ -145,6 +145,9 @@ src_compile() {
 			printf %s "${CFLAGS}"
 		)
 
+	# workaround simde bug with -mxop (bug #926959)
+	append-cppflags -DSIMDE_X86_XOP_NO_NATIVE=1
+
 	local conf=(
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
