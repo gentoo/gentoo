@@ -22,7 +22,7 @@ LICENSE="|| ( MIT Apache-2.0 ) chez? ( Apache-2.0 ) !chez? ( LGPL-3 )"
 # PV == SLOT but this has to be checked carefully and in cases
 # where we use _p, _pre, etc it will have to be set manually.
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc ppc64 x86"
 IUSE="+chez +doc +futures iconv +jit minimal ncurses +places +threads"
 # See bug #809785 re chez/threads
 REQUIRED_USE="chez? ( futures places ) futures? ( jit threads ) places? ( threads )"
