@@ -8,4 +8,4 @@ if [ ! -d /var/lock/logcheck ]; then
 	mkdir -p /var/lock/logcheck
 	chown logcheck:logcheck /var/lock/logcheck
 fi
-/sbin/runuser -u logcheck --nice -n10 /usr/sbin/logcheck "$@"
+/sbin/runuser -u logcheck -- nice -n10 /usr/sbin/logcheck "$@"
