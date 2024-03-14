@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
@@ -10,6 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="JFlex is a lexical analyzer generator for Java"
 HOMEPAGE="https://www.jflex.de/"
 SRC_URI="https://${PN}.de/${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,7 +18,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos"
 IUSE="examples test vim-syntax"
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-java/ant-core:0"
+CDEPEND=">=dev-java/ant-1.10.14:0"
 
 RDEPEND=">=virtual/jre-1.8:*
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
@@ -29,7 +30,6 @@ DEPEND=">=virtual/jdk-1.8:*
 
 PDEPEND="dev-java/javacup:0"
 
-S="${WORKDIR}/${P}"
 JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
@@ -59,17 +59,19 @@ src_configure() {
 		JAVACUP=$(echo lib/java-cup-*.jar)
 	fi
 
-	JAVA_GENTOO_CLASSPATH_EXTRA="$(java-pkg_getjars --build-only ant-core):${JAVACUP}"
+	JAVA_GENTOO_CLASSPATH_EXTRA="$(java-pkg_getjar --build-only ant ant.jar):${JAVACUP}"
 }
 
 jflex_compile() {
-	java "${@}" jflex.Main -d ${JAVA_SRC_DIR}/${PN} --skel src/main/${PN}/skeleton.nested src/main/${PN}/LexScan.flex || die
+	java "${@}" jflex.Main -d ${JAVA_SRC_DIR}/${PN} \
+		--skel src/main/${PN}/skeleton.nested src/main/${PN}/LexScan.flex || die
 	java-pkg-simple_src_compile
 	java-pkg_addres ${PN}.jar src/main/resources
 }
 
 src_compile() {
-	java -jar "${JAVACUP}" -destdir ${JAVA_SRC_DIR}/${PN} -package ${PN} -parser LexParse -interface src/main/cup/LexParse.cup || die
+	java -jar "${JAVACUP}" -destdir ${JAVA_SRC_DIR}/${PN} -package ${PN} \
+		-parser LexParse -interface src/main/cup/LexParse.cup || die
 
 	# The IcedTea ARM HotSpot port (as of 2.6.1) hangs when running
 	# jflex. We have patched jflex to fix it but we have to run the
@@ -77,8 +79,8 @@ src_compile() {
 	# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2678.
 	use arm && local JFLEX_ARGS="-Xint"
 
-	# First compile (without doc/source) using the bundled jflex.
-	JAVA_PKG_IUSE= jflex_compile -cp "lib/${P}.jar:${JAVACUP}" ${JFLEX_ARGS}
+	# First compile using the bundled jflex.
+	jflex_compile -cp "lib/${P}.jar:${JAVACUP}" ${JFLEX_ARGS}
 
 	# Then recompile using the fresh jflex.
 	jflex_compile -cp "${PN}.jar:${JAVACUP}"
