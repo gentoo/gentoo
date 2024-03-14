@@ -22,7 +22,7 @@ fi
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
-	    mv configure.in configure.ac || die
+		mv configure.in configure.ac || die
 		eautoreconf
 	fi
 	sed -i \
