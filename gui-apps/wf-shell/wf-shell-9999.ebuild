@@ -10,10 +10,10 @@ HOMEPAGE="https://github.com/WayfireWM/wf-shell"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
-	SLOT="0/9999"
+	EGIT_REPO_URI="https://github.com/WayfireWM/wf-shell.git"
+	SLOT="0/0.8"
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	SRC_URI="https://github.com/WayfireWM/wf-shell/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/$(ver_cut 1-2)"
 fi
@@ -30,8 +30,8 @@ DEPEND="
 	dev-libs/libdbusmenu[gtk3]
 	>=gui-libs/gtk-layer-shell-0.6
 	dev-libs/wayland
-	gui-libs/wf-config:${SLOT}
-	gui-wm/wayfire:${SLOT}
+	>=gui-libs/wf-config-0.7.0
+	gui-wm/wayfire
 	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${DEPEND}
