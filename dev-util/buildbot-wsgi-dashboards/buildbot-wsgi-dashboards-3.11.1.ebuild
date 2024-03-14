@@ -16,7 +16,7 @@ HOMEPAGE="https://buildbot.net/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
