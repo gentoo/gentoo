@@ -36,6 +36,44 @@ RESTRICT+=" !test? ( test )"
 # Used to override upstream tag name if tagged differently, e.g. most releases
 # are v${PV} but some are tagged as rust-${PV}.
 
+# @ECLASS_VARIABLE: TS_BINDINGS
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of bindings language to build. Currently only "python" is supported.
+
+for _BINDING in "${TS_BINDINGS[@]}"; do
+	case ${_BINDING} in
+		python)
+			DISTUTILS_EXT=1
+			DISTUTILS_OPTIONAL=1
+			DISTUTILS_USE_PEP517=setuptools
+			PYTHON_COMPAT=( python3_{10..12} )
+			inherit distutils-r1
+
+			IUSE+=" python"
+			REQUIRED_USE+=" python? ( ${PYTHON_REQUIRED_USE} )"
+
+			DEPEND+=" python? (
+				${PYTHON_DEPS}
+			)"
+			RDEPEND+=" python? (
+				${PYTHON_DEPS}
+				>=dev-python/tree-sitter-0.21.0[${PYTHON_USEDEP}]
+			)"
+			BDEPEND+=" python? (
+				${PYTHON_DEPS}
+				${DISTUTILS_DEPS}
+				dev-python/wheel[${PYTHON_USEDEP}]
+			)"
+			;;
+		*)
+			die "Unknown binding: ${_BINDING}"
+			;;
+	esac
+done
+unset _BINDING
+
 # @FUNCTION: _get_tsg_abi_ver
 # @INTERNAL
 # @DESCRIPTION:
@@ -47,6 +85,34 @@ _get_tsg_abi_ver() {
 	# (the ABI number itself)
 	sed -n 's/#define LANGUAGE_VERSION //p' "${S}"/src/parser.c ||
 		die "Unable to extract ABI version for this grammar"
+}
+
+tree-sitter-grammar_src_prepare() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	default
+
+	local binding
+	for binding in "${TS_BINDINGS[@]}"; do
+		case ${binding} in
+			python)
+				use python && distutils-r1_src_prepare
+				;;
+		esac
+	done
+}
+
+tree-sitter-grammar_src_configure() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local binding
+	for binding in "${TS_BINDINGS[@]}"; do
+		case ${binding} in
+			python)
+				use python && distutils-r1_src_configure
+				;;
+		esac
+	done
 }
 
 # @FUNCTION: _tree-sitter-grammar_legacy_compile
@@ -102,6 +168,15 @@ tree-sitter-grammar_src_compile() {
 	else
 		_tree-sitter-grammar_legacy_compile
 	fi
+
+	local binding
+	for binding in "${TS_BINDINGS[@]}"; do
+		case ${binding} in
+			python)
+				use python && distutils-r1_src_compile
+				;;
+		esac
+	done
 }
 
 # @FUNCTION: tree-sitter-grammar_src_test
@@ -131,8 +206,17 @@ tree-sitter-grammar_src_install() {
 		dolib.so "${WORKDIR}/${soname}"
 		dosym "${soname}" /usr/$(get_libdir)/lib${PN}$(get_libname)
 	fi
+
+	local binding
+	for binding in "${TS_BINDINGS[@]}"; do
+		case ${binding} in
+			python)
+				use python && distutils-r1_src_install
+				;;
+		esac
+	done
 }
 
 fi
 
-EXPORT_FUNCTIONS src_compile src_test src_install
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
