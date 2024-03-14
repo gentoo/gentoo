@@ -67,7 +67,7 @@ src_install() {
 
 	if use cron; then
 		exeinto /etc/cron.hourly
-		newexe "${FILESDIR}"/"${PN}"-r3.cron ${PN}
+		newexe "${FILESDIR}"/"${PN}"-r4.cron ${PN}
 		insinto /etc/cron.d
 		newins "${FILESDIR}"/${PN}.cron.d ${PN}
 		DOC_CONTENTS="${DOC_CONTENTS}\n
