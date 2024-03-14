@@ -23,9 +23,10 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 RDEPEND="
+	dev-python/flask-compress[${PYTHON_USEDEP}]
+	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	dev-python/nest-asyncio[${PYTHON_USEDEP}]
-	dev-python/plotly[${PYTHON_USEDEP}]
-	dev-python/flask-compress[${PYTHON_USEDEP}]"
+	dev-python/plotly[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/beautifulsoup4 )"
 
