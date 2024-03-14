@@ -14,5 +14,6 @@
 		interface have been contributed and are included in the distribution.</longdescription>
 	<upstream>
 		<remote-id type="google-code">flow-tools</remote-id>
+		<remote-id type="github">5u623l20/flow-tools</remote-id>
 	</upstream>
 </pkgmetadata>
