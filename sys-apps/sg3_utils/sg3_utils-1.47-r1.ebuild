@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit libtool
+
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="https://sg.danny.cz/sg/"
 #SRC_URI="https://github.com/hreinecke/sg3_utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -19,6 +21,11 @@ PATCHES=(
 	# Bug #828897
 	"${FILESDIR}"/${PN}-1.47-musl.patch
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf $(use_enable static-libs static)
