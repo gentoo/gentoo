@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/781929
+https://bugs.gentoo.org/863272
+https://bugs.gentoo.org/874081
+--- a/src/devices.h
++++ b/src/devices.h
+@@ -455,4 +455,6 @@ int devices_poll();
+ 
+ int devices_queue_realloc(int search_entry, char *target, int wipe, void (*callback)(void));
+ 
++int devices_have_uv_data(int i);
++
+ #endif
+--- a/src/hobbyboards_moist.c
++++ b/src/hobbyboards_moist.c
+@@ -7,6 +7,7 @@
+ 
+ 
+ // Include Files
++#include <ctype.h>
+ #include <stdio.h>
+ #include <math.h>
+ #include "werr.h"
+--- a/src/mainwin.c
++++ b/src/mainwin.c
+@@ -16,6 +16,7 @@
+ #include "setup.h"
+ #include "oww.h"
+ #include "convert.h"
++#include "devices.h"
+ //#include "message.h"
+ #include "globaldef.h"
+ #include "werr.h"
+--- a/src/mownetu.c
++++ b/src/mownetu.c
+@@ -52,11 +52,11 @@ static SMALLINT bitacc(SMALLINT,SMALLINT,SMALLINT,uchar *);
+ static int LastDiscrepancy[MAX_PORTNUM];
+ static int LastFamilyDiscrepancy[MAX_PORTNUM];
+ static uchar LastDevice[MAX_PORTNUM];
+-uchar SerialNum[MAX_PORTNUM][8];
++extern uchar SerialNum[MAX_PORTNUM][8];
+ 
+ // external globals
+ extern int UMode[MAX_PORTNUM];
+-extern uchar USpeed[MAX_PORTNUM];
++extern SMALLINT USpeed[MAX_PORTNUM];
+ 
+ //--------------------------------------------------------------------------
+ // The 'owFirst' finds the first device on the 1-Wire Net  This function
+--- a/src/weather.h
++++ b/src/weather.h
+@@ -21,6 +21,8 @@ int FindWeatherStation(void) ;
+ void weather_lcd_output(void) ;
+ //int weather_read_ws_read_gpc (void) ;
+ void weather_sub_update_gpcs (void) ;
++int weather_primary_uv (statsmean * means);
++int weather_primary_leafwetness (statsmean * means);
+ 
+ #define TEMP_CONV_TIME 100L
+ #define UNDEFINED_T -1000.0F
