@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/rust"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
-QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_FLAGS_IGNORED="usr/bin/rustup-init"
 
 src_unpack() {
 	if [[ "${PV}" == 9999 ]]; then
