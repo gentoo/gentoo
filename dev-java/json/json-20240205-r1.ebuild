@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A reference implementation of a JSON package in Java"
 HOMEPAGE="https://github.com/stleary/JSON-java"
-JPV="2.4.0"
+JPV="2.9.0"
 SRC_URI="https://codeload.github.com/stleary/JSON-java/tar.gz/${PV} -> ${P}.tar.gz
 	test? (
 		https://repo1.maven.org/maven2/com/jayway/jsonpath/json-path/${JPV}/json-path-${JPV}.jar
@@ -50,6 +50,7 @@ JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
+	JAVA_TEST_EXTRA_ARGS=( -Xss2M )
 	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/json-path-${JPV}.jar" # Test compile dependency
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
