@@ -12,7 +12,6 @@ SRC_URI="https://github.com/band-a-prend/gentoo-overlay/releases/download/ct-doc
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 S="${WORKDIR}/"
 
