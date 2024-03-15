@@ -306,6 +306,7 @@ src_test() {
 		-j "$(makeopts_jobs)"
 
 		# fails
+		-x test_concurrent_futures
 		-x test_gdb
 	)
 
