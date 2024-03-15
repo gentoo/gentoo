@@ -22,6 +22,7 @@ IUSE="acl +kwallet wayland X"
 # tests hang
 RESTRICT="test"
 
+# slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,ssl,widgets]
 	>=dev-qt/qt5compat-${QTMIN}:6
@@ -60,6 +61,7 @@ COMMON_DEPEND="
 		=kde-frameworks/kdoctools-${PVCUT}*:6
 	)
 	kwallet? ( =kde-frameworks/kwallet-${PVCUT}*:6 )
+	X? ( >=dev-qt/qtbase-${QTMIN}:6=[gui] )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent]
