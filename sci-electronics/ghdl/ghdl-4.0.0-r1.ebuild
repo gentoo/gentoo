@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 )
+ADA_COMPAT=( gnat_2021 gcc_13 )
 LLVM_MAX_SLOT=17        # Check "configure" script for supported LLVM versions.
 
 inherit ada edo llvm toolchain-funcs

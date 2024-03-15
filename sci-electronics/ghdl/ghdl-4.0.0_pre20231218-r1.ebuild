@@ -5,7 +5,7 @@ EAPI=8
 
 [[ "${PV}" = *_pre20231218 ]] && COMMIT=2135cbf1458bd1b8b8f42bda81222ab57bd66de6
 
-ADA_COMPAT=( gnat_2021 )
+ADA_COMPAT=( gnat_2021 gcc_13 )
 LLVM_MAX_SLOT=17        # Check "configure" script for supported LLVM versions.
 
 inherit ada edo llvm toolchain-funcs
