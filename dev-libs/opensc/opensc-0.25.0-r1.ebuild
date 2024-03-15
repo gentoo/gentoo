@@ -74,7 +74,7 @@ src_configure() {
 }
 
 src_test() {
-	P11LIB="/usr/$(get_libdir)/softhsm/libsofthsm2.so" default
+	P11LIB="${ESYSROOT}/usr/$(get_libdir)/softhsm/libsofthsm2.so" default
 }
 
 src_install() {
