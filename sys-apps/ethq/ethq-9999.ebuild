@@ -35,7 +35,6 @@ src_prepare() {
 	fi
 }
 
-
 src_configure() {
 	# https://github.com/isc-projects/ethq/issues/30 (bug #879893)
 	filter-lto
