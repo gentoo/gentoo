@@ -31,7 +31,8 @@ src_compile() {
 	# https://bugs.gentoo.org/862450
 	#
 	# Upstream provides a contact email. I have sent an email describing the
-	# bug.
+	# bug. They responded to say it is now fixed and a new version will be
+	# available shortly.
 	filter-lto
 
 	tc-export CC AR
