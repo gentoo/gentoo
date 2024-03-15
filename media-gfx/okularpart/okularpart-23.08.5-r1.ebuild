@@ -90,5 +90,5 @@ src_configure() {
 src_install() {
 	ecm_src_install
 
-	rm -r "${ED}"/usr/{include,share} || die
+	rm -r "${ED}"/usr/share || die
 }

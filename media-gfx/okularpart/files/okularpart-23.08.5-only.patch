@@ -1,15 +1,18 @@
-From e3baad173b95ad75afe9d339c4a86d030b67f4be Mon Sep 17 00:00:00 2001
+From e6392d67120187d357de1a787b52aaeffeb60230 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Sun, 10 Mar 2024 21:37:44 +0100
 Subject: [PATCH] Disable bits we don't need for okularpart only
 
+Install headers to okular5 to not collide with okular6, unfortunately
+this will require hacking revdeps too.
+
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- CMakeLists.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c47d6ab0f..91f25c62e 100644
+index c47d6ab0f..2e08335a1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -184,7 +184,7 @@ if (BUILD_MOBILE)
@@ -30,6 +33,24 @@ index c47d6ab0f..91f25c62e 100644
  endif()
  add_subdirectory( generators )
  
+@@ -401,7 +401,7 @@ install( FILES
+            ${CMAKE_CURRENT_BINARY_DIR}/core/version.h
+            ${CMAKE_CURRENT_BINARY_DIR}/core/okularcore_export.h
+            ${CMAKE_CURRENT_BINARY_DIR}/settings_core.h
+-         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/okular/core COMPONENT Devel)
++         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/okular5/core COMPONENT Devel)
+ 
+ install( FILES
+            interfaces/configinterface.h
+@@ -409,7 +409,7 @@ install( FILES
+            interfaces/printinterface.h
+            interfaces/saveinterface.h
+            interfaces/viewerinterface.h
+-         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/okular/interfaces COMPONENT Devel)
++         DESTINATION ${KDE_INSTALL_INCLUDEDIR}/okular5/interfaces COMPONENT Devel)
+ 
+ ki18n_wrap_ui(okularcore_SRCS
+    core/chooseenginewidget.ui
 -- 
 2.44.0
 
