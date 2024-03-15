@@ -1,14 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools flag-o-matic
 
 DESCRIPTION="Displays statistics about ethernet traffic including protocol breakdown"
-SRC_URI="http://trash.net/~reeler/nstats/files/${P}.tar.gz"
 HOMEPAGE="http://trash.net/~reeler/nstats/"
-LICENSE="Artistic"
+SRC_URI="http://trash.net/~reeler/nstats/files/${P}.tar.gz"
 
+LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
@@ -16,15 +17,15 @@ RDEPEND="
 	net-libs/libpcap
 	sys-libs/ncurses
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-glibc24.patch
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-tinfo.patch
 )
+
 DOCS=( BUGS doc/TODO doc/ChangeLog )
 
 src_prepare() {
@@ -34,5 +35,7 @@ src_prepare() {
 
 src_configure() {
 	append-cflags -fcommon
+	# Conflicting definitions of quit() (bug #861227)
+	filter-lto
 	default
 }
