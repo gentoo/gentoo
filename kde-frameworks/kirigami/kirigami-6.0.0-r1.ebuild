@@ -19,8 +19,9 @@ IUSE="openmp"
 # requires package to already be installed
 RESTRICT="test"
 
+# slot op: Uses Qt6::GuiPrivate for qguiapplication_p.h
 DEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[concurrent,dbus,gui,network]
+	>=dev-qt/qtbase-${QTMIN}:6=[concurrent,dbus,gui,network]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
 "
