@@ -28,6 +28,7 @@ dev-ada/gpr
 dev-ada/gnatmem
 dev-ada/ada_libfswatch
 dev-ada/gnatsymbolize
+dev-ada/AdaSAT
 
 # Sergey Popov <pinkbyte@gentoo.org> (2024-03-05)
 # games-strategy/seven-kingdoms does not build on musl,
