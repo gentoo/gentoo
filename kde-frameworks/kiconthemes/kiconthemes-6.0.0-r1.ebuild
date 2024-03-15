@@ -16,8 +16,9 @@ IUSE=""
 
 RESTRICT="test" # bug 574770
 
+# slot op: Uses Qt6::GuiPrivate for qiconloader_p.h, qguiapplication_p.h
 RDEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
+	>=dev-qt/qtbase-${QTMIN}:6=[dbus,gui,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
 	=kde-frameworks/karchive-${PVCUT}*:6
