@@ -19,7 +19,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	>=x11-libs/qscintilla-2.10.3:="
+	>=x11-libs/qscintilla-2.10.3:=[qt5(+)]"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

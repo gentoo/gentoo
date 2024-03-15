@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 IUSE="curl doc fftw fltk +glpk gnuplot gui hdf5 imagemagick java json opengl portaudio postscript +qhull +qrupdate readline sndfile +sparse ssl sundials X zlib"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 # Although it is listed in INSTALL.OCTAVE as a build tool, Octave runs
 # "makeinfo" from sys-apps/texinfo at runtime to convert its texinfo
@@ -49,7 +49,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		x11-libs/qscintilla:=
+		x11-libs/qscintilla:=[qt5(+)]
 	)
 	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
@@ -65,7 +65,7 @@ RDEPEND="
 	postscript? (
 		app-text/epstool
 		media-gfx/pstoedit
-		media-gfx/transfig
+		>=media-gfx/fig2dev-3.2.9-r1
 	)
 	qhull? ( media-libs/qhull:= )
 	qrupdate? ( sci-libs/qrupdate:= )

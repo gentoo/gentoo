@@ -49,7 +49,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
-		x11-libs/qscintilla:=
+		x11-libs/qscintilla:=[qt5(+)]
 	)
 	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )

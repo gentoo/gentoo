@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-qt/qtprintsupport-5.5:5
 	>=dev-qt/qtwidgets-5.5:5
 	>=dev-qt/qtxml-5.5:5
-	>=x11-libs/qscintilla-2.8.10:=
+	>=x11-libs/qscintilla-2.8.10:=[qt5(+)]
 	sqlcipher? ( dev-db/sqlcipher )
 "
 
