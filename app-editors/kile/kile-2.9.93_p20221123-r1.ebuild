@@ -63,6 +63,14 @@ DOCS=( kile-remote-control.txt )
 
 PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
+src_prepare() {
+	if has_version "media-gfx/okularpart:5"; then
+		eapply "${FILESDIR}/${P}-okularpart.patch"
+	fi
+
+	ecm_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package pdf Poppler)
