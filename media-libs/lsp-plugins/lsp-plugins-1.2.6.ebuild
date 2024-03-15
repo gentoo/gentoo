@@ -1,9 +1,9 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic xdg
+inherit flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Linux Studio Plugins"
 HOMEPAGE="https://lsp-plug.in"
@@ -65,6 +65,9 @@ src_configure() {
 		FEATURES="${MODULES}" \
 		PREFIX="/usr" \
 		LIBDIR="/usr/$(get_libdir)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
 		CFLAGS_EXT="${CFLAGS}" \
 		CXXFLAGS_EXT="${CXXFLAGS}" \
 		LDFLAGS_EXT="$(raw-ldflags)" \
@@ -77,6 +80,9 @@ src_compile() {
 		FEATURES="${MODULES}" \
 		PREFIX="/usr" \
 		LIBDIR="/usr/$(get_libdir)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
 		CFLAGS_EXT="${CFLAGS}" \
 		CXXFLAGS_EXT="${CXXFLAGS}" \
 		LDFLAGS_EXT="$(raw-ldflags)" \
