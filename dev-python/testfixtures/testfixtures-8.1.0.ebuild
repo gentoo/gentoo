@@ -14,8 +14,8 @@ HOMEPAGE="
 	https://github.com/Simplistix/testfixtures/
 "
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
