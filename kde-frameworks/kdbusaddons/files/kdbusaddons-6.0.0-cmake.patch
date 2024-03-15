@@ -1,0 +1,35 @@
+From d307f232232de6e5646fd6a91053fe097b90b35f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 15 Mar 2024 14:26:49 +0100
+Subject: [PATCH] Conditionalise Qt6::GuiPrivate on HAVE_X11
+
+qtx11extras_p.h is already conditional behind HAVE_X11
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c47bc15..de5ac6f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -60,11 +60,11 @@ ecm_generate_export_header(KF6DBusAddons
+     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
+ )
+ 
+-if(TARGET Qt6::Gui)
+-    set(_qt_x11_extras_libs Qt6::GuiPrivate) # qtx11extras_p.h
+-endif()
++target_link_libraries(KF6DBusAddons PUBLIC Qt6::DBus)
+ 
+-target_link_libraries(KF6DBusAddons PUBLIC Qt6::DBus PRIVATE ${_qt_x11_extras_libs})
++if(HAVE_X11)
++    target_link_libraries(KF6DBusAddons PRIVATE Qt6::GuiPrivate) # qtx11extras_p.h
++endif()
+ 
+ target_include_directories(KF6DBusAddons INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/KDBusAddons>")
+ 
+-- 
+GitLab
+
