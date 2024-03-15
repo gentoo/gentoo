@@ -283,6 +283,13 @@ cargo_gen_config() {
 	[term]
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
+
+	[profile.release]
+	strip = false
+
+	[profile.dev]
+	strip = false
+
 	$(_cargo_gen_git_config)
 	_EOF_
 
