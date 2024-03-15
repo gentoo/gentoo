@@ -42,7 +42,7 @@ git checkout go"${go_version}"
 cd src
 for tuple in ${go_tuples[@]}; do
 	printf "Building go version %s bootstrap tarball for %s\n" "${go_version}" "${tuple}"
-	GOOS=${tuple%%-*} GOARCH=${tuple##*-} ./bootstrap.bash
+	GO386=softfloat GOOS=${tuple%%-*} GOARCH=${tuple##*-} ./bootstrap.bash
 	rm -fr ../../go-${tuple}-bootstrap
 done
 cd ../..
