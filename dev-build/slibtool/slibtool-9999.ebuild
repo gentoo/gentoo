@@ -24,7 +24,7 @@ fi
 BDEPEND="sys-devel/m4"
 
 if [[ ${PV} != *9999 ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-midipix )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-midipix-20240315 )"
 fi
 
 LICENSE="MIT"
