@@ -39,6 +39,7 @@ PATCHES=(
 	# https://github.com/Reference-LAPACK/lapack/issues/990#issuecomment-1973258284
 	# https://bugs.gentoo.org/878891
 	"${FILESDIR}"/lapack-3.12.0-correct-64bit-interface.patch
+	"${FILESDIR}"/lapack-3.12.0-test-summary.patch
 )
 
 pkg_setup() {
