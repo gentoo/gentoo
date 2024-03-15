@@ -56,6 +56,17 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/858626
+	#
+	# From upstream configure.ac, only enabled if CFLAGS is not set:
+	# - Code was written when compilers where not aggressively optimizing undefined behaviour about aliasing
+	# - Code was written when compilers where not aggressively optimizing undefined behaviour about overflow in signed integers
+	# - Code was written on Intel where char is signed
+	#
+	# Do not trust with LTO either, BTW
+	append-flags -fno-strict-aliasing -fno-strict-overflow -fsigned-char
+	filter-lto
+
 	# Fix for bug #78030
 	use ppc && append-ldflags "-Wl,--relax"
 
