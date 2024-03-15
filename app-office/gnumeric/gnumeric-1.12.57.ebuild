@@ -37,7 +37,7 @@ RDEPEND="
 	>=gnome-extra/libgsf-1.14.33:=
 	>=x11-libs/goffice-0.10.57:0.10[introspection?]
 	>=dev-libs/libxml2-2.4.12:2
-	>=x11-libs/pango-1.24.0:=
+	>=x11-libs/pango-1.46.0:=
 
 	>=x11-libs/gtk+-3.8.7:3
 	x11-libs/cairo:=[svg(+)]
