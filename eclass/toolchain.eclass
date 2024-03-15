@@ -1849,10 +1849,10 @@ toolchain_src_test() {
 	SANDBOX_ON=0 LD_PRELOAD= nonfatal emake -k check
 	local success_tests=$?
 
-	if [[ ! -d "${BROOT}"/var/cache/gcc/${SLOT} ]] && ! [[ ${success_tests} -eq 0 ]] ; then
+	if [[ ! -d "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} ]] && ! [[ ${success_tests} -eq 0 ]] ; then
 		# We have no reference data saved from a previous run to know if
 		# the failures are tolerable or not, so we bail out.
-		eerror "Reference test data does NOT exist at ${BROOT}/var/cache/gcc/${SLOT}"
+		eerror "Reference test data does NOT exist at ${BROOT}/var/cache/gcc/${CHOST}/${SLOT}"
 		eerror "Tests failed and nothing to compare with, so this is a fatal error."
 		eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
 
@@ -1868,14 +1868,14 @@ toolchain_src_test() {
 
 	# If previous results exist on the system, compare with it
 	# TODO: Distribute some baseline results in e.g. gcc-patches.git?
-	if [[ -d "${BROOT}"/var/cache/gcc/${SLOT} ]] ; then
-		einfo "Comparing with previous cached results at ${BROOT}/var/cache/gcc/${SLOT}"
+	if [[ -d "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} ]] ; then
+		einfo "Comparing with previous cached results at ${BROOT}/var/cache/gcc/${CHOST}/${SLOT}"
 
 		# Exit with the following values:
 		# 0 if there is nothing of interest
 		# 1 if there are errors when comparing single test case files
 		# N for the number of errors found when comparing directories
-		"${S}"/contrib/compare_tests "${BROOT}"/var/cache/gcc/${SLOT}/ . || die "Comparison for tests results failed, error code: $?"
+		"${S}"/contrib/compare_tests "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT}/ . || die "Comparison for tests results failed, error code: $?"
 	fi
 }
 
@@ -2104,11 +2104,11 @@ toolchain_src_install() {
 		# more versions even after unmerged? Also would be useful for
 		# historical records and tracking down regressions a while
 		# after they first appeared, but were only just reported.
-		einfo "Copying test results to ${EPREFIX}/var/cache/gcc/${SLOT} for future comparison"
+		einfo "Copying test results to ${EPREFIX}/var/cache/gcc/${CHOST}/${SLOT} for future comparison"
 		(
-			dodir /var/cache/gcc/${SLOT}
+			dodir /var/cache/gcc/${CHOST}/${SLOT}
 			cd "${WORKDIR}"/build || die
-			find . -name \*.sum -exec cp --parents -v {} "${ED}"/var/cache/gcc/${SLOT} \;
+			find . -name \*.sum -exec cp --parents -v {} "${ED}"/var/cache/gcc/${CHOST}/${SLOT} \;
 		)
 	fi
 }
