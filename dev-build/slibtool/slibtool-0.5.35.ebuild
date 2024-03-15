@@ -19,9 +19,12 @@ else
 	SRC_URI+=" verify-sig? ( https://dl.midipix.org/slibtool/${P}.tar.xz.sig )"
 
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+fi
 
-	BDEPEND="sys-devel/m4
-		verify-sig? ( sec-keys/openpgp-keys-midipix )"
+BDEPEND="sys-devel/m4"
+
+if [[ ${PV} != *9999 ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-midipix )"
 fi
 
 LICENSE="MIT"
