@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Celestial Mechanics and Astronomical Calculation Library"
-HOMEPAGE="http://libnova.sourceforge.net/"
+HOMEPAGE="https://libnova.sourceforge.net/"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2"
