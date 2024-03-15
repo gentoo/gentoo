@@ -13,11 +13,13 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64"
 IUSE="X"
 
+# slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
 RDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
 	=kde-frameworks/kcoreaddons-${PVCUT}*:6
 	=kde-frameworks/knotifications-${PVCUT}*:6
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:6
+	X? ( >=dev-qt/qtbase-${QTMIN}:6=[gui] )
 "
 DEPEND="${RDEPEND}
 	X? (
