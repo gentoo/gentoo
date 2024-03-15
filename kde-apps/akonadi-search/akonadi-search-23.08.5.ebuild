@@ -47,3 +47,9 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )
 "
+
+src_configure() {
+	# not packaged (bug 911819), but if present leads to rust shenanigans (bug 927072)
+	local mycmakeargs=( -DCMAKE_DISABLE_FIND_PACKAGE_Corrosion=ON )
+	ecm_src_configure
+}
