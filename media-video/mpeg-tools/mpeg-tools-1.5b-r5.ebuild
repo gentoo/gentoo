@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_PN=mpeg_encode
 DESCRIPTION="Tools for MPEG video"
@@ -45,6 +45,11 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861137
+	# Upstream is thoroughly dead, homepage doesn't even exist anymore.
+	filter-lto
+
 	emake CC="$(tc-getCC)"
 	emake -C convert CC="$(tc-getCC)"
 	emake -C convert/mtv CC="$(tc-getCC)"
