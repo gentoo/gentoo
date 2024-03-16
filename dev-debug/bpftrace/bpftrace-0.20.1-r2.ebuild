@@ -45,7 +45,7 @@ BDEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
 	test? (
-i		app-editors/vim-core
+		app-editors/vim-core
 		dev-util/pahole
 	)
 	virtual/pkgconfig
