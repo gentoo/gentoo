@@ -384,6 +384,9 @@ ceph_src_configure() {
 	# hopefully this will not be necessary in the next release
 	use parquet && export ARROW_XSIMD_URL="file:///${DISTDIR}/ceph-xsimd-${PV}.tar.gz"
 
+	# https://bugs.gentoo.org/927066
+	filter-lto
+
 	cmake_src_configure
 
 	# bug #630232

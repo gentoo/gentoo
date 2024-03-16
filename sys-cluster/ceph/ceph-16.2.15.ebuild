@@ -362,6 +362,9 @@ ceph_src_configure() {
 	rm -f "${BUILD_DIR:-${S}}/CMakeCache.txt" \
 		|| die "failed to remove cmake cache"
 
+	# https://bugs.gentoo.org/927066
+	filter-lto
+
 	cmake_src_configure
 
 	# bug #630232
