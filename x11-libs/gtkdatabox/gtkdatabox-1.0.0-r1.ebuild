@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="Gtk+ Widgets for live display of large amounts of fluctuating numerical data"
 HOMEPAGE="https://sourceforge.net/projects/gtkdatabox/"
@@ -26,16 +26,19 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
 src_prepare() {
 	default
 
 	# Remove -D.*DISABLE_DEPRECATED cflags
 	find . -iname 'Makefile.am' -exec \
 		sed -e '/-D[A-Z_]*DISABLE_DEPRECATED/d' -i {} + || die
-	# Do Makefile.in after Makefile.am to avoid automake maintainer-mode
-	find . -iname 'Makefile.in' -exec \
-		sed -e '/-D[A-Z_]*DISABLE_DEPRECATED/d' -i {} + || die
-	sed -e '/SUBDIRS/{s: examples::;}' -i Makefile.am -i Makefile.in || die
+	sed -e '/SUBDIRS/{s: examples::;}' -i Makefile.am || die
+
+	eautoreconf
 }
 
 src_configure() {
