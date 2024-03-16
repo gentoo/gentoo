@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 DOCS_BUILDER="sphinx"
 DOCS_DEPEND="dev-python/sphinx-rtd-theme"
 DOCS_DIR="docs/source"
-inherit cmake-multilib flag-o-matic python-any-r1 docs
+inherit cmake-multilib cuda flag-o-matic python-any-r1 docs
 
 DESCRIPTION="Nonlinear least-squares minimizer"
 HOMEPAGE="http://ceres-solver.org/"
@@ -16,7 +16,7 @@ SRC_URI="http://ceres-solver.org/${P}.tar.gz"
 LICENSE="sparse? ( BSD ) !sparse? ( LGPL-2.1 )"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples gflags lapack +schur sparse test"
+IUSE="examples cuda gflags lapack +schur sparse test"
 
 REQUIRED_USE="test? ( gflags ) sparse? ( lapack ) abi_x86_32? ( !sparse !lapack )"
 RESTRICT="!test? ( test )"
@@ -28,6 +28,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 RDEPEND="
 	dev-cpp/glog[gflags?,${MULTILIB_USEDEP}]
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	lapack? ( virtual/lapack )
 	sparse? (
 		sci-libs/amd
@@ -61,7 +62,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# CUSTOM_BLAS=OFF EIGENSPARSE=OFF MINIGLOG=OFF CXX11=OFF
+	# CUSTOM_BLAS=OFF EIGENSPARSE=OFF MINIGLOG=OFF
 	local mycmakeargs=(
 		-DBUILD_BENCHMARKS=OFF
 		-DBUILD_EXAMPLES=$(usex examples)
@@ -72,11 +73,30 @@ src_configure() {
 		-DSCHUR_SPECIALIZATIONS=$(usex schur)
 		-DSUITESPARSE=$(usex sparse)
 		-DEigen3_DIR=/usr/$(get_libdir)/cmake/eigen3
+
+		-DBUILD_SHARED_LIBS="yes"
+		-DEIGENMETIS="yes"
+		-DEIGENSPARSE="yes"
+		-DMINIGLOG="no"
+		-DCUSTOM_BLAS="yes"
+		-DUSE_CUDA="$(usex cuda)"
 	)
+
+	if use cuda; then
+		: "${CUDAHOSTCXX:=$(cuda_gccdir)}"
+		: "${CUDAARCHS:=all}"
+		export CUDAHOSTCXX
+		export CUDAARCHS
+	fi
 
 	use sparse || mycmakeargs+=( -DEIGENSPARSE=ON )
 
 	cmake-multilib_src_configure
+}
+
+src_test() {
+	use cuda && cuda_add_sandbox -w
+	cmake_src_test
 }
 
 src_install() {
