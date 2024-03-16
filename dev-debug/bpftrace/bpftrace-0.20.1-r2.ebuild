@@ -44,8 +44,10 @@ BDEPEND="
 	app-arch/xz-utils
 	app-alternatives/lex
 	app-alternatives/yacc
-	app-editors/vim-core
-	dev-util/pahole
+	test? (
+i		app-editors/vim-core
+		dev-util/pahole
+	)
 	virtual/pkgconfig
 "
 
