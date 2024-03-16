@@ -7,40 +7,45 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2 prefix verify-sig
 
-MY_P="apache-${P}-src"
+MY_P="apache-${PN}-${PV}-src"
 
-DESCRIPTION="Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container"
+# Currently we bundle binary versions of bnd.jar
+# See bugs #203080 and #676116
+BND_VERSION="7.0.0"
+BND="biz.aQute.bnd-${BND_VERSION}.jar"
+
+DESCRIPTION="Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-8/v${PV}/src/${MY_P}.tar.gz
+SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz
+	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd/${BND_VERSION}/${BND}
 	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/apache-tomcat-${PV}-src.tar.gz.asc )"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
-SLOT="8.5"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+SLOT="9"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
+# though it could work with 4.22 and upstream uses 4.20,
+# we still use 4.15 because 4.20+ is currently built with java 11
+# and it would force Tomcat to use at least java 11 too
 ECJ_SLOT="4.15"
 
-# we don't use ~ for el and jsp because the same implementation
-# is also present in tomcat 9 and it would be impossible to install
-# both tomcat 8.5 and 9 at the same time
-COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}"
+COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
+	dev-java/jax-rpc-api:0
+	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
 	acct-group/tomcat
 	acct-user/tomcat
 	>=virtual/jre-1.8:*"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
-	dev-java/ant-core
-	>=virtual/jdk-11:*
-	doc? (
-		dev-java/jax-rpc-api:0
-		dev-java/wsdl4j:0
-	)
+	>=dev-java/ant-1.10.14-r3:0
+	>=virtual/jdk-17:*
 	test? (
-		>=dev-java/ant-junit-1.9:0
+		>=dev-java/ant-1.10.14-r3:0[junit]
 		dev-java/easymock:3.2
 	)"
 
@@ -48,11 +53,23 @@ BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-${PV}:${PV} )"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-${PV}.apache.org.asc"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-8.5.86-build.xml.patch"
-	"${FILESDIR}/${PN}-8.5.95-min.java.patch"
+	"${FILESDIR}/${PN}-9.0.50-insufficient-ecj.patch"
+	"${FILESDIR}/${PN}-9.0.72-build.xml.patch"
 )
 
-S=${WORKDIR}/${MY_P}
+BND_HOME="${S}/tomcat-build-libs/bnd"
+BND_JAR="${BND_HOME}/${BND}"
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.asc}
+	fi
+
+	unpack ${MY_P}.tar.gz
+
+	mkdir -p "${BND_HOME}" || die "Failed to create dir"
+	ln -s "${DISTDIR}/${BND}" "${BND_HOME}/" || die "Failed to symlink bnd-*.jar"
+}
 
 src_prepare() {
 	default
@@ -70,19 +87,24 @@ src_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_BUILD_TARGET="deploy"
-EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT}"
+EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},wsdl4j"
 EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
-EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dexecute.validate=false"
+EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dbnd.jar=${BND_JAR}"
 
 # revisions of the scripts
 IM_REV="-r2"
 INIT_REV="-r1"
 
+src_configure() {
+	java-ant-2_src_configure
+
+	eapply "${FILESDIR}/${PN}-9.0.37-fix-build-rewrite.patch"
+}
+
 src_compile() {
-	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
-	use doc && EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjars --build-only jax-rpc-api):$(java-pkg_getjars --build-only wsdl4j)"
+	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant ant.jar):$(java-pkg_getjars --build-only jax-rpc-api)"
 	LC_ALL=C java-pkg-2_src_compile
 }
 
