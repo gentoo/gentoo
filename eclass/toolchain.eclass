@@ -22,7 +22,7 @@ _TOOLCHAIN_ECLASS=1
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit edo flag-o-matic gnuconfig libtool multilib pax-utils python-any-r1 toolchain-funcs prefix
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -84,6 +84,11 @@ tc_version_is_between() {
 # Used to override GCC version. Useful for e.g. live ebuilds or snapshots.
 # Defaults to ${PV}.
 
+# @ECLASS_VARIABLE: TOOLCHAIN_GCC_VALIDATE_FAILURES_VERSION
+# @DESCRIPTION:
+# Version of test comparison script (validate_fails.py) to use.
+: "${GCC_VALIDATE_FAILURES_VERSION:=7bbfb01a32b73842f8908de028703510a0e12057}"
+
 # @ECLASS_VARIABLE: TOOLCHAIN_USE_GIT_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -92,6 +97,39 @@ tc_version_is_between() {
 # release series (e.g. suppose 12.0 just got released, then adding snapshots
 # for 13.0, we don't want to create new patchsets for every single 13.0 snapshot,
 # so just grab patches from git each time if this variable is set).
+
+# @ECLASS_VARIABLE: GCC_TESTS_COMPARISON_DIR
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Source of previous GCC test results and location to store new results.
+: "${GCC_TESTS_COMPARISON_DIR:=${BROOT}/var/cache/gcc/testresults/${CHOST}}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_COMPARISON_SLOT
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Slot to compare test results with. Defaults to current slot.
+: "${GCC_TESTS_COMPARISON_SLOT:=${SLOT}}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_IGNORE_NO_BASELINE
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Ignore missing baseline/reference data and create new baseline.
+: "${GCC_TESTS_IGNORE_NO_BASELINE:=}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_CHECK_TARGET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Defaults to 'check'. Allows choosing a different test target, e.g.
+# 'test-gcc' (https://gcc.gnu.org/install/test.html).
+: "${GCC_TESTS_CHECK_TARGET:=check}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_RUNTESTFLAGS
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Extra options to pass to DejaGnu as RUNTESTFLAGS.
+: "${GCC_TESTS_RUNTESTFLAGS:=}"
 
 # @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
 # @DEFAULT_UNSET
@@ -311,6 +349,7 @@ BDEPEND="
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
 	test? (
+		${PYTHON_DEPS}
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)
@@ -484,6 +523,8 @@ get_gcc_src_uri() {
 	[[ -n ${MUSL_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 
+	GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> ${PN}-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
+
 	echo "${GCC_SRC_URI}"
 }
 
@@ -513,6 +554,8 @@ toolchain_pkg_setup() {
 	# Avoid really confusing logs from subconfigure spam, makes logs far
 	# more legible.
 	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
+	use test && python-any-r1_pkg_setup
 }
 
 #---->> src_unpack <<----
@@ -574,6 +617,11 @@ toolchain_src_prepare() {
 
 	if ! use vanilla ; then
 		tc_enable_hardened_gcc
+	fi
+
+	if use test ; then
+		cp "${DISTDIR}"/${PN}-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py "${T}"/validate_failures.py || die
+		chmod +x "${T}"/validate_failures.py || die
 	fi
 
 	# Make sure the pkg-config files install into multilib dirs.
@@ -1835,48 +1883,68 @@ gcc_do_make() {
 #---->> src_test <<----
 
 toolchain_src_test() {
-	cd "${WORKDIR}"/build || die
+	# GCC's testsuite is a special case.
+	#
+	# * Generally, people work off comparisons rather than a full set of
+	#   passing tests.
+	#
+	# * The guality (sic) tests are for debug info quality and are especially
+	#   unreliable.
+	#
+	# * The execute torture tests are hopefully a good way for us to smoketest
+	#   and find critical regresions.
 
-	# From opensuse's spec file:
-	# "asan needs a whole shadow address space"
+	# From opensuse's spec file: "asan needs a whole shadow address space"
 	ulimit -v unlimited
 
 	# 'asan' wants to be preloaded first, so does 'sandbox'.
-	# To make asan tests work disable sandbox for all of test suite.
-	# 'backtrace' tests also does not like 'libsandbox.so' presence.
-	#
-	# Nonfatal here as we die if compare_tests failed
-	SANDBOX_ON=0 LD_PRELOAD= nonfatal emake -k check
-	local success_tests=$?
+	# To make asan tests work, we disable sandbox for all of test suite.
+	# The 'backtrace' tests also do not like the presence of 'libsandbox.so'.
+	local -x SANDBOX_ON=0
+	local -x LD_PRELOAD=
 
-	if [[ ! -d "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} ]] && ! [[ ${success_tests} -eq 0 ]] ; then
+	# Controls running expensive tests in e.g. the torture testsuite.
+	local -x GCC_TEST_RUN_EXPENSIVE=1
+
+	# nonfatal here as we die if the comparison below fails. Also, note that
+	# the exit code of targets other than 'check' may be unreliable.
+	nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}"
+
+	if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} && -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
+		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
+		# validate_failures.py manifest files support include directives.
+		einfo "Comparing with previous cached results at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+
+		edo "${T}"/validate_failures.py \
+			--srcpath="${S}" \
+			--build_dir="${WORKDIR}"/build \
+			--manifest="${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+	else
+		# nonfatal first because we want to run again with comparison data if available.
+		nonfatal edo "${T}"/validate_failures.py \
+			--srcpath="${S}" \
+			--build_dir="${WORKDIR}"/build
+		ret=$?
+
 		# We have no reference data saved from a previous run to know if
 		# the failures are tolerable or not, so we bail out.
-		eerror "Reference test data does NOT exist at ${BROOT}/var/cache/gcc/${CHOST}/${SLOT}"
-		eerror "Tests failed and nothing to compare with, so this is a fatal error."
-		eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
+		eerror "No reference test data at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail!"
+		eerror "GCC's tests require a baseline to compare with for any reasonable interpretation of results."
 
-		if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
+		if [[ -n ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
+			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, creating new baseline manifest..."
+		elif [[ ${ret} != 0 ]]; then
+			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
 			die "Tests failed (failures occurred with no reference data)"
 		fi
 	fi
 
-	einfo "Testing complete! Review the following output to check for success or failure."
-	einfo "Please ignore any 'mail' lines in the summary output below (no mail is sent)."
-	einfo "Summary:"
-	"${S}"/contrib/test_summary
-
-	# If previous results exist on the system, compare with it
-	# TODO: Distribute some baseline results in e.g. gcc-patches.git?
-	if [[ -d "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} ]] ; then
-		einfo "Comparing with previous cached results at ${BROOT}/var/cache/gcc/${CHOST}/${SLOT}"
-
-		# Exit with the following values:
-		# 0 if there is nothing of interest
-		# 1 if there are errors when comparing single test case files
-		# N for the number of errors found when comparing directories
-		"${S}"/contrib/compare_tests "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT}/ . || die "Comparison for tests results failed, error code: $?"
-	fi
+	# Produce an updated set of expected results
+	edo "${T}"/validate_failures.py \
+		--srcpath="${S}" \
+		--build_dir="${WORKDIR}"/build \
+		--manifest="${T}"/${CHOST}.xfail \
+		--produce_manifest &> /dev/null
 }
 
 #---->> src_install <<----
@@ -2259,15 +2327,19 @@ create_revdep_rebuild_entry() {
 
 toolchain_pkg_preinst() {
 	if use test ; then
-		# Install as orphaned to allow comparison across more
-		# versions even after unmerged. Also useful for historical records
-		# and tracking down regressions a while after they first appeared,
-		# but were only just reported.
-		einfo "Copying test results to ${BROOT}/var/cache/gcc/${CHOST}/${SLOT} for future comparison"
+		# Install as orphaned to allow comparison across more versions even
+		# after unmerged. Also useful for historical records and tracking
+		# down regressions a while after they first appeared, but were only
+		# just reported.
+		einfo "Copying test results to ${GCC_TESTS_COMPARISON_DIR}/${SLOT}/${CHOST}.xfail for future comparison"
 		(
-			mkdir -p "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} || die
+			mkdir -p "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" || die
 			cd "${T}"/test-results || die
-			find . -name \*.sum -exec cp --parents -v {} "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} \;
+			# May not exist with test-fail-continue
+			if [[ -f "${T}"/${CHOST}.xfail ]] ; then
+				cp -v "${T}"/${CHOST}.xfail "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" || die
+			fi
+			find . -name \*.sum -exec cp --parents -v {} "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" \;
                 )
         fi
 }
