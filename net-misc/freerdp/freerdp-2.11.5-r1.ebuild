@@ -52,7 +52,7 @@ RDEPEND="
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
-		x11-libs/libXrandr
+		X? ( x11-libs/libXrandr )
 	)
 	icu? ( dev-libs/icu:0= )
 	jpeg? ( media-libs/libjpeg-turbo:0= )
