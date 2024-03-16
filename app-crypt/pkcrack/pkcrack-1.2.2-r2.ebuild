@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="PkZip cipher breaker"
@@ -34,18 +35,18 @@ PATCHES=(
 )
 
 src_compile() {
-	cd src
+	cd src || die
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" all
 }
 
 src_test() {
-	cd test
+	cd test || die
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" all
 }
 
 src_install() {
 	einstalldocs
-	cd src
+	cd src || die
 	dobin pkcrack zipdecrypt findkey makekey
 	newbin extract "${PN}-extract"
 }
