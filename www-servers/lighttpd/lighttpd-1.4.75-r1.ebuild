@@ -166,7 +166,7 @@ src_install() {
 
 	# Configs
 	insinto /etc/lighttpd
-	newins "${FILESDIR}"/conf/lighttpd.conf-r1 lighttpd.conf
+	newins "${FILESDIR}"/conf/lighttpd.conf-r2 lighttpd.conf
 	doins "${FILESDIR}"/conf/mime-types.conf
 	doins "${FILESDIR}"/conf/mod_cgi.conf
 	doins "${FILESDIR}"/conf/mod_fastcgi.conf
