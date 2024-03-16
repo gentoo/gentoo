@@ -228,6 +228,12 @@ sci-libs/mpir
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
 # KDE Plasma 6.0.2, Gear 24.02.0 and Frameworks 6.0.0 mask
+#
+# Don't do anything unless you're intentionally moving to Plasma 6, which is
+# masked still for a reason. If you get this message just from conflicts where
+# you're not trying to do that, please cleanup stale entries in /etc/portage
+# and your world file.
+#
 # Plasma 6 replaces 5. For conflict resolution between KF5- and KF6-packages:
 # - put '-kf6compat' into /etc/portage/profile/use.mask
 # - enable USE=kf6compat globally
