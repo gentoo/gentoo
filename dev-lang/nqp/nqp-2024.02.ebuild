@@ -3,8 +3,6 @@
 
 EAPI=8
 
-RESTRICT="test" # always fail
-
 inherit java-pkg-opt-2 multibuild
 
 if [[ ${PV} == "9999" ]]; then
