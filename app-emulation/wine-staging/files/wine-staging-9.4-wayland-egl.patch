@@ -1,0 +1,16 @@
+Unsure how this check is supposed to work, HAVE_LIBWAYLAND_EGL is never set
+as a variable but rather output as a "#define" line. Assume been last minute
+upstream oversight.
+
+We check the requirements from the ebuild itself, so let's just drop the check
+as a quick fix for now. Assume that it will be fixed in wine-9.5.
+--- a/configure.ac
++++ b/configure.ac
+@@ -1392,7 +1392,2 @@
+                   [WAYLAND_EGL_LIBS=""],[$WAYLAND_EGL_LIBS])])])
+-        if test "x$with_wayland" != "x"
+-        then
+-            WINE_NOTICE_WITH(opengl, [test -z "$ac_cv_lib_soname_EGL" -o -z "$HAVE_LIBWAYLAND_EGL"],
+-                [EGL ${notice_platform}development files not found, the Wayland driver won't support OpenGL])
+-        fi
+     fi

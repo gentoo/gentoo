@@ -59,6 +59,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/856088
+	# https://github.com/ROCm/clr/issues/64
+	#
+	# Do not trust it for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Fix ld.lld linker error: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/155
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 

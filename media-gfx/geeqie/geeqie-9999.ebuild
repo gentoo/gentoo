@@ -8,13 +8,11 @@ inherit flag-o-matic git-r3 lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
-SRC_URI=""
 # Using github mirror, as geeqie.org does not have a valid SSL certificate
 EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
 
 RDEPEND="gnome-extra/zenity

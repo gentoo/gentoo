@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ROCm-Developer-Tools/HIPIFY</remote-id>
+  </upstream>
+</pkgmetadata>

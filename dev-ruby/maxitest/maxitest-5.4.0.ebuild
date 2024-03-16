@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -30,7 +30,9 @@ all_ruby_prepare() {
 	# Remove developer-only gems from the gemspec and avoid git issues
 	sed -e 's:_relative ": "./:' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
-	sed -i -e '/\(debug\|bump\)/ s:^:#:' Gemfile || die
+	sed -e '/\(debug\|bump\)/ s:^:#:' \
+		-e 'agem "mutex_m"' \
+		-i Gemfile || die
 
 	sed -e '/shows backtrace for/askip' \
 		-e '/describe.*line/ s/describe/xdescribe/' \

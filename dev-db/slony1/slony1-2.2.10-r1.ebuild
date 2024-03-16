@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 POSTGRES_COMPAT=( 9.6 {10..14} )
 POSTGRES_USEDEP="server,threads(+)"
 
-inherit postgres-multi
+inherit flag-o-matic postgres-multi
 
 IUSE="doc perl"
 
@@ -27,7 +27,7 @@ DEPEND="${POSTGRES_DEP}
 "
 RDEPEND=${DEPEND}
 
-REQUIRE_USE="${POSTGRES_REQ_USE}"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 # Testing requires a more complex setup than we benefit from being able
 # to perform.
@@ -47,6 +47,11 @@ src_unpack() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855251
+	# https://github.com/ssinger/slony1-engine/issues/21
+	filter-lto
+
 	local slot_bin_dir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/bin"
 	use perl && myconf=" --with-perltools=\"${slot_bin_dir}\""
 	postgres-multi_foreach econf ${myconf} \

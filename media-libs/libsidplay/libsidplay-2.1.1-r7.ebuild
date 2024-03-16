@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 MY_P=sidplay-libs-${PV}
 
@@ -59,6 +59,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	filter-lto
 	local myeconfargs=(
 		--cache-file="${BUILD_DIR}"/config.cache
 		--enable-shared

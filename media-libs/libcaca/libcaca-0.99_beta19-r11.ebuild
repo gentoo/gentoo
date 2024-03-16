@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/100_doxygen.diff"
 	# Fix doxygen docs install, bug 543870
 	"${FILESDIR}/fix-css-path.patch"
+	"${FILESDIR}/configure-lto.patch"
 )
 
 src_prepare() {

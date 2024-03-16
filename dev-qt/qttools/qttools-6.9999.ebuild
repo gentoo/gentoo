@@ -85,6 +85,8 @@ src_configure() {
 		# to lag behind and bundled may work out better for now
 		# https://github.com/litehtml/litehtml/issues/266
 		$(usev assistant -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=ON)
+
+		$(usev designer -DQT_UNITY_BUILD=OFF) # fails to build (QTBUG-122634)
 	)
 
 	qt6-build_src_configure

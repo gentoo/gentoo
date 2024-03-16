@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,6 +50,7 @@ src_prepare() {
 	sed '/sys::path::append(HIPPath/s,"hip","",' -i src/comgr-env.cpp || die
 	sed "/return LLVMPath;/s,LLVMPath,llvm::SmallString<128>(\"$(get_llvm_prefix ${LLVM_MAX_SLOT})\")," -i src/comgr-env.cpp || die
 	eapply $(prefixify_ro "${FILESDIR}"/${PN}-5.0-rocm_path.patch)
+	eapply $(prefixify_ro "${FILESDIR}"/${PN}-5.7.1-fix-tests-rocm-path.patch)
 	cmake_src_prepare
 }
 

@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/919266
+https://github.com/flashrom/flashrom/commit/e31d721469a37bd5784b86ffcd2318108a796616
+
+From e31d721469a37bd5784b86ffcd2318108a796616 Mon Sep 17 00:00:00 2001
+From: Nikolai Artemiev <nartemiev@google.com>
+Date: Mon, 28 Nov 2022 17:40:56 +1100
+Subject: [PATCH] tree/: Make probe_opcode() flashctx argument const
+
+Probing an opcode generally shouldn't involve mutating the flashctx
+state and currently no probe_opcode functions do that.
+
+Make the flashctx arg const so that call sites don't need to have a
+non-const pointer.
+
+BUG=b:253715389,b:253713774
+BRANCH=none
+TEST=ninja test
+
+Change-Id: I19e98be50d682de2d2715417f8b7b8c62b871617
+Signed-off-by: Nikolai Artemiev <nartemiev@google.com>
+Reviewed-on: https://review.coreboot.org/c/flashrom/+/70030
+Reviewed-by: Angel Pons <th3fanbus@gmail.com>
+Reviewed-by: Edward O'Callaghan <quasisec@chromium.org>
+Tested-by: build bot (Jenkins) <no-reply@coreboot.org>
+---
+ dummyflasher.c       | 4 ++--
+ ichspi.c             | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/dummyflasher.c b/dummyflasher.c
+index 35cdfef0b..da4efc79f 100644
+--- a/dummyflasher.c
++++ b/dummyflasher.c
+@@ -122,10 +122,10 @@ static int dummy_spi_write_256(struct flashctx *flash, const uint8_t *buf, unsig
+ 				 emu_data->spi_write_256_chunksize);
+ }
+ 
+-static bool dummy_spi_probe_opcode(struct flashctx *flash, uint8_t opcode)
++static bool dummy_spi_probe_opcode(const struct flashctx *flash, uint8_t opcode)
+ {
+ 	size_t i;
+-	struct emu_data *emu_data = flash->mst->spi.data;
++	const struct emu_data *emu_data = flash->mst->spi.data;
+ 	for (i = 0; i < emu_data->spi_blacklist_size; i++) {
+ 		if (emu_data->spi_blacklist[i] == opcode)
+ 			return false;
+diff --git a/ichspi.c b/ichspi.c
+index 62d1799b6..4588502a6 100644
+--- a/ichspi.c
++++ b/ichspi.c
+@@ -1661,7 +1661,7 @@ static int ich_spi_send_multicommand(const struct flashctx *flash,
+ 	return ret;
+ }
+ 
+-static bool ich_spi_probe_opcode(struct flashctx *flash, uint8_t opcode)
++static bool ich_spi_probe_opcode(const struct flashctx *flash, uint8_t opcode)
+ {
+ 	return find_opcode(curopcodes, opcode) >= 0;
+ }

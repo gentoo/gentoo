@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake udev
+inherit cmake flag-o-matic udev
 
 DESCRIPTION="Libraries for supporing the BladeRF hardware from Nuand"
 HOMEPAGE="https://nuand.com/"
@@ -53,6 +53,11 @@ src_unpack() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861872
+	# https://github.com/Nuand/bladeRF/issues/903
+	filter-lto
+
 	local mycmakeargs=(
 		-DVERSION_INFO_OVERRIDE:STRING="${PV}"
 		-DBUILD_DOCUMENTATION="$(usex doc)"

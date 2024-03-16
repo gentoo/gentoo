@@ -147,6 +147,13 @@ src_prepare() {
 		# test itself has -Werror=strict-aliasing issues, drop for simplicity
 		sed -e '/add_subdirectory(qsharedpointer)/d' \
 			-i tests/auto/corelib/tools/CMakeLists.txt || die
+
+		# workaround for __extendhfxf2 being used for tst_qfloat16.cpp
+		# which is unavailable with compiler-rt (assume used if clang)
+		if tc-is-clang; then
+			sed -e '/add_subdirectory(qfloat16)/d' \
+				-i tests/auto/corelib/global/CMakeLists.txt || die
+		fi
 	fi
 }
 
@@ -167,6 +174,8 @@ src_configure() {
 		-DINSTALL_QMLDIR="${QT6_QMLDIR}"
 		-DINSTALL_SYSCONFDIR="${QT6_SYSCONFDIR}"
 		-DINSTALL_TRANSLATIONSDIR="${QT6_TRANSLATIONDIR}"
+
+		-DQT_UNITY_BUILD=ON # ~30% faster build, affects other dev-qt/* too
 
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)
@@ -323,6 +332,7 @@ src_test() {
 			tst_qicoimageformat
 			tst_qimagereader
 			tst_qimage
+			tst_qprocess
 		')
 		# fails due to hppa's NaN handling, needs looking into (bug #914371)
 		$(usev hppa '

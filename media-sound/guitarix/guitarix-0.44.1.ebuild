@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit multiprocessing python-any-r1 waf-utils xdg
@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py3.11.patch
 	"${FILESDIR}"/${P}-zita-resampler-1.10.patch
 	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}"/${P}-fix-flto.patch
 )
 
 src_configure() {

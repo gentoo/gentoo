@@ -14,6 +14,7 @@ DESCRIPTION="Discrete Wavelet Transforms in Python"
 HOMEPAGE="
 	https://pywavelets.readthedocs.io/en/latest/
 	https://github.com/PyWavelets/pywt/
+	https://pypi.org/project/PyWavelets/
 "
 
 LICENSE="MIT"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit desktop edos2unix java-pkg-2 java-ant-2 toolchain-funcs xdg
 XDG_P="xdg-20100731"
 
 DESCRIPTION="Converts, splits and demuxes DVB and other MPEG recordings"
-HOMEPAGE="http://project-x.sourceforge.net/"
+HOMEPAGE="https://project-x.sourceforge.net/"
 SRC_URI="https://dev.gentoo.org/~billie/distfiles/${PF}.tar.xz
 	https://dev.gentoo.org/~billie/distfiles/${PN}-idctfast.tar.xz
 	https://dev.gentoo.org/~billie/distfiles/${XDG_P}.java.xz

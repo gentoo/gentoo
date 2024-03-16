@@ -18,7 +18,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN^^}-${PV}"
 
-	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"

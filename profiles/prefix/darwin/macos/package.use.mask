@@ -1,5 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2024-03-08)
+# -z,now is not something Darwin linkers understand
+sys-devel/gcc default-znow
 
 # Benda Xu <heroxbd@gentoo.org> (2023-08-18)
 # strlcpy and other BSD functions are available in the libc of macOS.

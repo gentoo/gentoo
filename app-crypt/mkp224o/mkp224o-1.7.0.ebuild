@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cpu_flags_x86_sse2 pcre"
 
 DEPEND="

@@ -20,7 +20,7 @@ SRC_URI="https://github.com/Snaipe/Criterion/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="BSD-2 MIT ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -55,6 +55,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855674
+	# https://github.com/Snaipe/Criterion/issues/524
+	filter-lto
+
 	# bug 906379
 	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
 

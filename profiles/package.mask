@@ -33,6 +33,110 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-03-14)
+# Deprecated, doesn't work with python 3.12. Unmaintained with last
+# serious release in 2019, and another release in 2024 that claims
+# to support python 3.12 but fails tests if you actually do. No
+# route to making it work with python 3.13 at all, and upstream
+# explicitly states that future "like Python 2, is now done". The
+# package is entirely redundant to packages not supporting python
+# 2 anymore, and the ones that do support it should be using
+# dev-python/six instead, anyways.  Bug #888271
+# Removal on 2024-04-13.
+dev-python/future
+
+# Petr Vaněk <arkamar@gentoo.org> (2024-03-13)
+# dev-libs/hyperscan upstream is inactive [1], please switch to more portable,
+# drop-in replacement dev-libs/vectorscan.
+# [1] https://github.com/intel/hyperscan/issues/421
+# Removal: 2024-04-12.
+dev-libs/hyperscan
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-03-12)
+# Not more needed, >=sci-visualization/dash-2.11 provide
+# direct integration with jupyter nodebook
+# Removal on 2024-04-11.
+sci-visualization/jupyter-dash
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-12)
+# Unused java libraries. Removal on 2024-04-11.
+dev-java/ant-eclipse-ecj
+
+# Matt Jolly <kangie@gentoo.org> (2024-03-11)
+# Obsolete, does not compile, archived upstream.
+# Removal: 2024-04-10.  Bugs #876977, #907705.
+media-video/obs-v4l2sink
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
+# Unused java libraries. The ant tasks are now provided by dev-java/ant.
+# Removal on 2024-04-09.
+dev-java/ant-apache-regexp
+dev-java/ant-apache-log4j
+dev-java/ant-apache-xalan2
+dev-java/ant-commons-logging
+dev-java/ant-swing
+dev-java/ant-junit4
+dev-java/ant-testutil
+dev-java/ant-junitlauncher
+dev-java/ant-jai
+dev-java/ant-commons-net
+dev-java/ant-apache-bsf
+dev-java/ant-jmf
+dev-java/ant-apache-oro
+dev-java/ant-javamail
+dev-java/ant-junit
+dev-java/ant-jdepend
+dev-java/ant-antlr
+dev-java/ant-apache-bcel
+dev-java/ant-apache-resolver
+dev-java/ant-jsch
+dev-java/ant-xz
+dev-java/gnu-jaf
+dev-java/failureaccess
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-10)
+# Packages that still require <dev-python/cython-3 and do not promise
+# a fix anytime soon.
+#
+# dev-python/python-efl: econnman as revdep, bug #925692.
+# dev-python/pygame_sdl2: also py3.12, bug #911781
+# games-engines/renpy: also py3.12, bug #925693
+# sci-chemistry/mdtraj: also py3.12, PEP517, bug #911646.
+#
+# Includes their few reverse dependencies and their exclusive
+# dependencies without Python 3.12 support.
+#
+# Removal on 2024-04-09.
+dev-python/astunparse
+dev-python/pygame_sdl2
+dev-python/python-efl
+games-engines/renpy
+net-misc/econnman
+sci-chemistry/mdtraj
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-10)
+# Archived upstream, latest release is 3 years old. One test
+# failure with python 3.11, more with python 3.12.
+# Removal on: 2024-04-10.  Bug #920439
+sci-libs/scikit-optimize
+
+# Eray Aslan <eras@gentoo.org> (2024-03-10)
+# Mask experimental software
+=mail-mta/postfix-3.10*
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-09)
+# Requires pyside2/shiboken2, which is unmaintained upstream and
+# not compatible with llvm-16 and up or python-3.12 and up.
+# No upstream activity for 2 years.
+# dev-python/QtPy is an alternative that does support Qt6.
+# Removal on: 2024-04-09.  Bug #926548
+dev-python/anyqt
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-03-08)
+# A library without reverse dependencies.
+# Removal on: 2024-04-07.  Bug #926486.
+dev-libs/yascreen
+
 # Ulrich Müller <ulm@gentoo.org> (2024-03-06)
 # Inactive upstream maintainer. Needs porting to PEP 517 (or better,
 # from Python to Emacs Lisp) and from layman to repository.eselect.
@@ -48,7 +152,9 @@ kde-misc/gmail-feed
 
 # Florian Schmaus <flow@gentoo.org> (2024-03-01)
 # TexLive 2023 is currently masked for testing.
-# Please report bugs via https://bugs.gentoo.org
+# Please report issues by creating a new bug report at
+# https://bugs.gentoo.org instead of commenting on the
+# tracking bug #836779 (https://bugs.gentoo.org/836779).
 >=app-text/dvipsk-2023.03.11_p66203
 >=app-text/dvisvgm-3.2
 >=app-text/ps2pkm-1.8_p20230311
@@ -121,7 +227,13 @@ sci-libs/mpir
 =xfce-base/xfce4-panel-4.19.3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
-# KDE Plasma 6.0.0, Gear 24.02.0 and Frameworks 6.0.0 mask
+# KDE Plasma 6.0.2, Gear 24.02.0 and Frameworks 6.0.0 mask
+#
+# Don't do anything unless you're intentionally moving to Plasma 6, which is
+# masked still for a reason. If you get this message just from conflicts where
+# you're not trying to do that, please cleanup stale entries in /etc/portage
+# and your world file.
+#
 # Plasma 6 replaces 5. For conflict resolution between KF5- and KF6-packages:
 # - put '-kf6compat' into /etc/portage/profile/use.mask
 # - enable USE=kf6compat globally
@@ -204,68 +316,68 @@ sci-libs/mpir
 ~kde-frameworks/kxmlgui-6.0.0
 ~kde-frameworks/purpose-6.0.0
 ~kde-frameworks/qqc2-desktop-style-6.0.0
-~kde-plasma/bluedevil-6.0.1
-~kde-plasma/breeze-6.0.1
-~kde-plasma/breeze-grub-6.0.1
-~kde-plasma/breeze-gtk-6.0.1.1
-~kde-plasma/breeze-plymouth-6.0.1.1
-~kde-plasma/discover-6.0.1
-~kde-plasma/drkonqi-6.0.1
-~kde-plasma/flatpak-kcm-6.0.1
-~kde-plasma/kactivitymanagerd-6.0.1
-~kde-plasma/kde-cli-tools-6.0.1
-~kde-plasma/kde-gtk-config-6.0.1
-~kde-plasma/kdecoration-6.0.1
-~kde-plasma/kdeplasma-addons-6.0.1
-~kde-plasma/kgamma-6.0.1
-~kde-plasma/kglobalacceld-6.0.1
-~kde-plasma/kinfocenter-6.0.1
-~kde-plasma/kmenuedit-6.0.1
-~kde-plasma/kpipewire-6.0.1.1
-~kde-plasma/kscreen-6.0.1
-~kde-plasma/kscreenlocker-6.0.1
-~kde-plasma/ksshaskpass-6.0.1
-~kde-plasma/ksystemstats-6.0.1
-~kde-plasma/kwallet-pam-6.0.1
-~kde-plasma/kwayland-6.0.1
-~kde-plasma/kwayland-integration-6.0.1
-~kde-plasma/kwin-6.0.1
-~kde-plasma/kwrited-6.0.1
-~kde-plasma/layer-shell-qt-6.0.1
-~kde-plasma/libkscreen-6.0.1
-~kde-plasma/libksysguard-6.0.1
-~kde-plasma/libplasma-6.0.1
-~kde-plasma/milou-6.0.1
-~kde-plasma/ocean-sound-theme-6.0.1
-~kde-plasma/oxygen-6.0.1
-~kde-plasma/oxygen-sounds-6.0.1
-~kde-plasma/plasma-activities-6.0.1
-~kde-plasma/plasma-activities-stats-6.0.1
-~kde-plasma/plasma-browser-integration-6.0.1
-~kde-plasma/plasma-desktop-6.0.1
-~kde-plasma/plasma-disks-6.0.1
-~kde-plasma/plasma-firewall-6.0.1
-~kde-plasma/plasma-integration-6.0.1
-~kde-plasma/plasma-meta-6.0.1
-~kde-plasma/plasma-nm-6.0.1
-~kde-plasma/plasma-pa-6.0.1
-~kde-plasma/plasma-sdk-6.0.1
-~kde-plasma/plasma-systemmonitor-6.0.1
-~kde-plasma/plasma-thunderbolt-6.0.1
-~kde-plasma/plasma-vault-6.0.1
-~kde-plasma/plasma-welcome-6.0.1
-~kde-plasma/plasma-workspace-6.0.1
-~kde-plasma/plasma-workspace-wallpapers-6.0.1
-~kde-plasma/plasma5support-6.0.1
-~kde-plasma/plymouth-kcm-6.0.1
-~kde-plasma/polkit-kde-agent-6.0.1
-~kde-plasma/powerdevil-6.0.1
-~kde-plasma/print-manager-6.0.1
-~kde-plasma/qqc2-breeze-style-6.0.1
-~kde-plasma/sddm-kcm-6.0.1
-~kde-plasma/systemsettings-6.0.1
-~kde-plasma/wacomtablet-6.0.1
-~kde-plasma/xdg-desktop-portal-kde-6.0.1
+~kde-plasma/bluedevil-6.0.2
+~kde-plasma/breeze-6.0.2
+~kde-plasma/breeze-grub-6.0.2
+~kde-plasma/breeze-gtk-6.0.2
+~kde-plasma/breeze-plymouth-6.0.2
+~kde-plasma/discover-6.0.2
+~kde-plasma/drkonqi-6.0.2
+~kde-plasma/flatpak-kcm-6.0.2
+~kde-plasma/kactivitymanagerd-6.0.2
+~kde-plasma/kde-cli-tools-6.0.2
+~kde-plasma/kde-gtk-config-6.0.2
+~kde-plasma/kdecoration-6.0.2
+~kde-plasma/kdeplasma-addons-6.0.2
+~kde-plasma/kgamma-6.0.2
+~kde-plasma/kglobalacceld-6.0.2
+~kde-plasma/kinfocenter-6.0.2
+~kde-plasma/kmenuedit-6.0.2
+~kde-plasma/kpipewire-6.0.2
+~kde-plasma/kscreen-6.0.2
+~kde-plasma/kscreenlocker-6.0.2
+~kde-plasma/ksshaskpass-6.0.2
+~kde-plasma/ksystemstats-6.0.2
+~kde-plasma/kwallet-pam-6.0.2
+~kde-plasma/kwayland-6.0.2
+~kde-plasma/kwayland-integration-6.0.2
+~kde-plasma/kwin-6.0.2
+~kde-plasma/kwrited-6.0.2
+~kde-plasma/layer-shell-qt-6.0.2
+~kde-plasma/libkscreen-6.0.2
+~kde-plasma/libksysguard-6.0.2
+~kde-plasma/libplasma-6.0.2
+~kde-plasma/milou-6.0.2
+~kde-plasma/ocean-sound-theme-6.0.2
+~kde-plasma/oxygen-6.0.2
+~kde-plasma/oxygen-sounds-6.0.2
+~kde-plasma/plasma-activities-6.0.2
+~kde-plasma/plasma-activities-stats-6.0.2
+~kde-plasma/plasma-browser-integration-6.0.2
+~kde-plasma/plasma-desktop-6.0.2
+~kde-plasma/plasma-disks-6.0.2
+~kde-plasma/plasma-firewall-6.0.2
+~kde-plasma/plasma-integration-6.0.2
+~kde-plasma/plasma-meta-6.0.2
+~kde-plasma/plasma-nm-6.0.2
+~kde-plasma/plasma-pa-6.0.2
+~kde-plasma/plasma-sdk-6.0.2
+~kde-plasma/plasma-systemmonitor-6.0.2
+~kde-plasma/plasma-thunderbolt-6.0.2
+~kde-plasma/plasma-vault-6.0.2
+~kde-plasma/plasma-welcome-6.0.2
+~kde-plasma/plasma-workspace-6.0.2
+~kde-plasma/plasma-workspace-wallpapers-6.0.2
+~kde-plasma/plasma5support-6.0.2
+~kde-plasma/plymouth-kcm-6.0.2
+~kde-plasma/polkit-kde-agent-6.0.2
+~kde-plasma/powerdevil-6.0.2
+~kde-plasma/print-manager-6.0.2
+~kde-plasma/qqc2-breeze-style-6.0.2
+~kde-plasma/sddm-kcm-6.0.2
+~kde-plasma/systemsettings-6.0.2
+~kde-plasma/wacomtablet-6.0.2
+~kde-plasma/xdg-desktop-portal-kde-6.0.2
 ~kde-apps/baloo-widgets-24.02.0
 ~kde-apps/dolphin-24.02.0
 ~kde-apps/ffmpegthumbs-24.02.0
@@ -489,6 +601,7 @@ sci-libs/mpir
 ~dev-libs/kirigami-addons-1.0.1
 ~dev-libs/ktextaddons-1.5.3
 ~dev-libs/kweathercore-0.8.0
+~games-puzzle/skladnik-0.5.2
 ~gui-apps/xwaylandvideobridge-0.4.0
 ~kde-frameworks/oxygen-icons-6.0.0
 =media-libs/kquickimageeditor-0.3.0-r100
@@ -653,11 +766,6 @@ dev-python/debugpy
 # Last upstream activity in late 2020.  No reverse dependencies left.
 # Removal on 2024-03-08.  Bug #806079.
 sys-libs/libhugetlbfs
-
-# Joonas Niilola <juippis@gentoo.org> (2024-02-07)
-# The webpage it was built to scrape isn't online anymore.
-# Removal: 2024-03-08.  Bug #924007.
-net-misc/buka
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-03)
 # Doesn't work with Flask 3, and is abandoned upstream.  It can be
@@ -825,10 +933,6 @@ net-misc/openr2
 =sys-libs/ncurses-6.4_p20230424
 =sys-libs/ncurses-6.4_p20230506
 =sys-libs/ncurses-6.4_p20230527
-
-# Eray Aslan <eras@gentoo.org> (2023-04-12)
-# Mask experimental software
-=mail-mta/postfix-3.9*
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].

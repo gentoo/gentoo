@@ -59,9 +59,12 @@ RDEPEND="
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/gtk+:3 )
-	X? ( x11-libs/libXaw )"
+	X? (
+		x11-libs/libX11
+		x11-libs/libXaw )"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 BDEPEND="
 	virtual/pkgconfig

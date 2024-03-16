@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~keri/distfiles/tuprolog/${P}.tar.gz
 
 LICENSE="LGPL-3 BSD"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

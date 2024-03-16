@@ -11,7 +11,7 @@ SRC_URI="https://github.com/graygnuorg/pound/releases/download/v${PV}/${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 
 DEPEND="
 	dev-libs/openssl:=

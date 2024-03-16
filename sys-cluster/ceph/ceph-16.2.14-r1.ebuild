@@ -160,7 +160,7 @@ RDEPEND="
 		diskprediction? (
 			>=dev-python/scipy-1.4.0[${PYTHON_USEDEP}]
 		)
-		sci-libs/scikit-learn[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 	selinux? ( sec-policy/selinux-ceph )

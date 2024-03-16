@@ -20,6 +20,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/${PN}-1.0.0-make-test-failures-fatal.patch" )
+
 src_prepare() {
 	default
 	sed -e '1i#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"' \
@@ -33,6 +35,10 @@ _emake() {
 
 src_compile() {
 	_emake
+}
+
+src_test() {
+	_emake test
 }
 
 src_install() {

@@ -66,9 +66,9 @@
    ac_cv_func_strncmp_works=yes
  else
 +  cat >>confdefs.h <<_ACEOF
-+ extern int strlen(const char *s);
++ extern long unsigned int strlen(const char *s);
 + extern char *strcpy(char *dst, const char *src);
-+ extern int strncmp(const char *s1, const char *s2, size_t n);
++ extern int strncmp(const char *s1, const char *s2, long unsigned int n);
 +_ACEOF
    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */

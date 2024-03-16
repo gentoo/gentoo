@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/902217
+https://github.com/ultravideo/kvazaar/issues/391
+https://github.com/ultravideo/kvazaar/commit/c6f2ba4711d42285636da97b133a7b5aa49c9533
+
+From c6f2ba4711d42285636da97b133a7b5aa49c9533 Mon Sep 17 00:00:00 2001
+From: Joose Sainio <joose.sainio@tuni.fi>
+Date: Thu, 1 Feb 2024 10:47:16 +0200
+Subject: [PATCH] fix unaligned access on array_checksum_generic8
+
+---
+ src/strategies/generic/nal-generic.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/strategies/generic/nal-generic.c b/src/strategies/generic/nal-generic.c
+index 1762c8ba..075c8264 100644
+--- a/src/strategies/generic/nal-generic.c
++++ b/src/strategies/generic/nal-generic.c
+@@ -157,6 +157,13 @@ static void array_checksum_generic8(const kvz_pixel* data,
+   assert(SEI_HASH_MAX_LENGTH >= 4);
+ 
+   for (y = 0; y < height; ++y) {
++    if (y*stride % 8 != 0) {
++      for (x = 0; x < width; ++x) {
++        uint8_t mask = (uint8_t)((x & 0xff) ^ (y & 0xff) ^ (x >> 8) ^ (y >> 8));
++        checksum += (data[(y * stride) + x] & 0xff) ^ mask;
++      }
++      continue;
++    }
+     for (xp = 0; xp < width/8; ++xp) {
+       const int x = xp * 8;
+       const uint64_t mask = ckmap[(xp&31)+32*(y&255)] ^ ((uint64_t)((x >> 8) ^ (y >> 8)) * 0x101010101010101);

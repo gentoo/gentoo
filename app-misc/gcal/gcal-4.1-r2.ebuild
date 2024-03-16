@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/gcal/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ncurses nls unicode"
 
 RDEPEND="nls? ( virtual/libintl )
@@ -55,6 +55,7 @@ src_test() {
 
 	# Do basic smoke tests to help catch issues like bug #925560
 	# where trivial 'gcal' invocation crashed w/ _F_S=3.
+	local -x PATH="${S}/src:${S}:${PATH}"
 	local bin
 	for bin in gcal2txt tcal txt2gcal gcal ; do
 		src/${bin} || die

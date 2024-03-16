@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
+# media-libs/libdovi is not stable here yet
+media-libs/libplacebo libdovi
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-python/pyside6 is not stable here yet
 dev-python/QtPy pyside6

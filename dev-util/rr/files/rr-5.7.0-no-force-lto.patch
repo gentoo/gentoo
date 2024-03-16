@@ -1,0 +1,23 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -118,7 +118,6 @@ if(LOWERCASE_CMAKE_BUILD_TYPE STREQUAL "debug")
+   set(RR_FLAGS "${RR_FLAGS_DEBUG} -g3 ")
+ elseif(LOWERCASE_CMAKE_BUILD_TYPE STREQUAL "release")
+   # CMake itself will add optimization flags
+-  set(RR_FLAGS "${RR_FLAGS_RELEASE} -g3 -flto")
+ endif()
+ 
+ set(LINKER_FLAGS "")
+@@ -675,12 +674,6 @@ endif()
+ 
+ # Add -flto option to linking step if release
+ if(LOWERCASE_CMAKE_BUILD_TYPE STREQUAL "release")
+-  CHECK_C_COMPILER_FLAG("-flto=auto" SUPPORTS_LTO_AUTO)
+-  if(SUPPORTS_LTO_AUTO)
+-    set(RR_MAIN_LINKER_FLAGS "${RR_MAIN_LINKER_FLAGS} -flto=auto")
+-  else()
+-    set(RR_MAIN_LINKER_FLAGS "${RR_MAIN_LINKER_FLAGS} -flto")
+-  endif()
+ endif()
+ 
+ if(LIBRT)

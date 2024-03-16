@@ -18,7 +18,4 @@
 		The gEDA/gaf suite (this package) provides schematic capture,
 		netlisting, bill of materials generation, and many other features.
 	</longdescription>
-	<use>
-		<flag name="stroke">enable mouse gesture support</flag>
-	</use>
 </pkgmetadata>

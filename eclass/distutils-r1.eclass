@@ -197,6 +197,10 @@ _DISTUTILS_R1_ECLASS=1
 inherit flag-o-matic
 inherit multibuild multilib multiprocessing ninja-utils toolchain-funcs
 
+if [[ ${DISTUTILS_USE_PEP517} == meson-python ]]; then
+	inherit meson
+fi
+
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit python-r1
 else
@@ -1386,9 +1390,19 @@ distutils_pep517_install() {
 			)
 			;;
 		meson-python)
+			# variables defined by setup_meson_src_configure
+			local MESONARGS=() BOOST_INCLUDEDIR BOOST_LIBRARYDIR NM READELF
+			# it also calls filter-lto
+			local x
+			for x in $(all-flag-vars); do
+				local -x "${x}=${!x}"
+			done
+
+			setup_meson_src_configure "${DISTUTILS_ARGS[@]}"
+
 			local -x NINJAOPTS=$(get_NINJAOPTS)
 			config_settings=$(
-				"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+				"${EPYTHON}" - "${MESONARGS[@]}" <<-EOF || die
 					import json
 					import os
 					import shlex
@@ -1491,31 +1505,27 @@ distutils-r1_python_compile() {
 
 	_python_check_EPYTHON
 
-	case ${DISTUTILS_USE_PEP517:-setuptools} in
-		setuptools)
-			# call setup.py build when using setuptools (either via PEP517
-			# or in legacy mode)
-
-			# distutils is parallel-capable since py3.5
-			local jobs=$(makeopts_jobs "${MAKEOPTS} ${*}")
-
-			if [[ ${DISTUTILS_USE_PEP517} ]]; then
-				mkdir -p "${BUILD_DIR}" || die
-				local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
-				cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
-					[build]
-					build_base = ${BUILD_DIR}/build
-
-					[build_ext]
-					parallel = ${jobs}
-				EOF
-			else
-				_distutils-r1_copy_egg_info
-				esetup.py build -j "${jobs}" "${@}"
-			fi
-			;;
+	case ${DISTUTILS_USE_PEP517:-unset} in
 		no)
 			return
+			;;
+		unset)
+			# legacy mode
+			_distutils-r1_copy_egg_info
+			esetup.py build -j "$(makeopts_jobs "${MAKEOPTS} ${*}")" "${@}"
+			;;
+		*)
+			# we do this for all build systems, since other backends
+			# and custom hooks may wrap setuptools
+			mkdir -p "${BUILD_DIR}" || die
+			local -x DIST_EXTRA_CONFIG="${BUILD_DIR}/extra-setup.cfg"
+			cat > "${DIST_EXTRA_CONFIG}" <<-EOF || die
+				[build]
+				build_base = ${BUILD_DIR}/build
+
+				[build_ext]
+				parallel = $(makeopts_jobs "${MAKEOPTS} ${*}")
+			EOF
 			;;
 	esac
 
@@ -1812,27 +1822,32 @@ distutils-r1_run_phase() {
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
 	tc-export AR CC CPP CXX
 
-	if [[ ${DISTUTILS_EXT} ]]; then
-		if [[ ${BDEPEND} == *dev-python/cython* ]] ; then
-			# Workaround for https://github.com/cython/cython/issues/2747 (bug #918983)
-			local -x CFLAGS="${CFLAGS} $(test-flags-CC -Wno-error=incompatible-pointer-types)"
-		fi
-
+	# Perform additional environment modifications only for python_compile
+	# phase.  This is the only phase where we expect to be calling the Python
+	# build system.  We want to localize the altered variables to avoid them
+	# leaking to other parts of multi-language ebuilds.  However, we want
+	# to avoid localizing them in other phases, particularly
+	# python_configure_all, where the ebuild may wish to alter them globally.
+	if [[ ${DISTUTILS_EXT} && ( ${1} == *compile* || ${1} == *test* ) ]]; then
 		local -x CPPFLAGS="${CPPFLAGS} $(usex debug '-UNDEBUG' '-DNDEBUG')"
 		# always generate .c files from .pyx files to ensure we get latest
 		# bug fixes from Cython (this works only when setup.py is using
 		# cythonize() but it's better than nothing)
 		local -x CYTHON_FORCE_REGEN=1
+
+		# Rust extensions are incompatible with C/C++ LTO compiler
+		# see e.g. https://bugs.gentoo.org/910220
+		if has cargo ${INHERITED}; then
+			local x
+			for x in $(all-flag-vars); do
+				local -x "${x}=${!x}"
+			done
+			filter-lto
+		fi
 	fi
 
 	# silence warnings when pydevd is loaded on Python 3.11+
 	local -x PYDEVD_DISABLE_FILE_VALIDATION=1
-
-	# Rust extensions are incompatible with C/C++ LTO compiler
-	# see e.g. https://bugs.gentoo.org/910220
-	if has cargo ${INHERITED}; then
-		filter-lto
-	fi
 
 	# How to build Python modules in different worlds...
 	local ldopts

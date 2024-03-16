@@ -19,7 +19,7 @@ REQUIRED_USE="
 	gtk-doc? ( crypt )
 "
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.44:2[${MULTILIB_USEDEP}]

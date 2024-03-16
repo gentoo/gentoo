@@ -1,0 +1,45 @@
+https://gitlab.com/kraxel/virt-firmware/-/merge_requests/11
+diff --git a/virt/firmware/bootcfg/linuxcfg.py b/virt/firmware/bootcfg/linuxcfg.py
+index 5682b15..121af73 100644
+--- a/virt/firmware/bootcfg/linuxcfg.py
++++ b/virt/firmware/bootcfg/linuxcfg.py
+@@ -188,9 +188,10 @@ class LinuxOsInfo(OsRelease):
+ 
+     def shim_path(self):
+         esp    = self.esp_path()
+-        subdir = self.esp_distro_dir()
++        distro_dir = self.esp_distro_dir()
+         arch   = self.efi_arch()
+-        shim   = f'{esp}/EFI/{subdir}/shim{arch}.efi'
+-        if os.path.exists(shim):
+-            return shim
++        for subdir in distro_dir, 'shim', 'Linux':
++            shim = f'{esp}/EFI/{subdir}/shim{arch}.efi'
++            if os.path.exists(shim):
++                return shim
+         return None
+diff --git a/virt/firmware/bootcfg/main.py b/virt/firmware/bootcfg/main.py
+index 04888d5..291903b 100644
+--- a/virt/firmware/bootcfg/main.py
++++ b/virt/firmware/bootcfg/main.py
+@@ -34,8 +34,7 @@ def update_next_or_order(cfg, options, nr):
+ 
+ def add_uki(cfg, options):
+     if not options.shim and cfg.secureboot:
+-        logging.error('shim binary not specified')
+-        sys.exit(1)
++        logging.warning('shim binary not specified')
+     if not options.title:
+         logging.error('entry title not specified')
+         sys.exit(1)
+@@ -112,8 +111,8 @@ def boot_success(cfg, options):
+ 
+ def update_boot_csv(cfg, options):
+     if not options.shim:
+-        logging.error('shim binary not specified')
+-        sys.exit(1)
++        logging.warning('shim binary not specified')
++        sys.exit(0)
+     efishim  = linuxcfg.LinuxEfiFile(options.shim)
+     shimpath = efishim.dev_path_file()
+ 

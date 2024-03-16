@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -20,7 +20,6 @@ SRC_URI="https://github.com/cchandler/certificate_authority/archive/v${PV}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/\(bundler\|pry\|overalls\)/ s:^:#:' spec/spec_helper.rb || die
@@ -30,4 +29,7 @@ all_ruby_prepare() {
 	# make work on different arches due to hardwired load paths in
 	# specs.
 	rm -f spec/units/pkcs11_key_material_spec.rb || die
+
+	# Fix spec for OpenSSL 3.x
+	sed -i -e '426 s/keyid://' spec/units/certificate_spec.rb || die
 }

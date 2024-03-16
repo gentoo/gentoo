@@ -7,6 +7,9 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://issues.apache.org/jira/projects/VALIDATOR/issues/</bugs-to>
-		<changelog>http://commons.apache.org/proper/commons-validator/changes-report.html</changelog>
+		<changelog>
+			http://commons.apache.org/proper/commons-validator/changes-report.html
+		</changelog>
+		<remote-id type="github">apache/commons-validator</remote-id>
 	</upstream>
 </pkgmetadata>

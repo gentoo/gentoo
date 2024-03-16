@@ -8,7 +8,7 @@ EAPI=7
 # on new automake (major) releases, as well as the dependency in RDEPEND below too.
 # * Update _WANT_AUTOMAKE and _automake_atom case statement in autotools.eclass.
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-any-r1
 
@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.16.5-fix-py-compile-basedir.sh-test.patch
 	"${FILESDIR}"/${PN}-1.16.5-apostrophe-in-tests.patch
 	"${FILESDIR}"/${PN}-1.16.5-parallel-build.patch
+	"${FILESDIR}"/${PN}-1.16.5-py312.patch
 	"${WORKDIR}"/${PN}-1.16.5-tests-c99.patch
 )
 

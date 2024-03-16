@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2 multilib-minimal
+inherit flag-o-matic gnome2 multilib-minimal
 
 DESCRIPTION="Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit"
 HOMEPAGE="https://gitlab.gnome.org/Archive/libcroco"
@@ -34,6 +34,14 @@ src_prepare() {
 	fi
 
 	gnome2_src_prepare
+}
+
+src_configure() {
+	# bug #855704
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

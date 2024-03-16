@@ -1,6 +1,39 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-03-15)
+# Needs ada
+sci-electronics/ghdl
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-03-13)
+# To bootstrap uses an ada compiler built using glibc
+dev-lang/gnat-gpl
+dev-lang/spark
+dev-ada/gnatcoll-db
+dev-ada/gprbuild
+dev-ada/xmlada
+dev-ada/libgpr
+dev-ada/gnatcoll-core
+dev-ada/gnatcoll-bindings
+dev-ada/langkit
+dev-ada/templates-parser
+dev-ada/libadalang-tools
+dev-ada/libadalang
+dev-ada/spawn
+dev-ada/gtkada
+dev-ada/markdown
+dev-ada/VSS
+dev-ada/aws
+dev-ada/aunit
+dev-ada/ada_language_server
+dev-ada/gnatdoc
+dev-ada/gpr-unit-provider
+dev-ada/gpr
+dev-ada/gnatmem
+dev-ada/ada_libfswatch
+dev-ada/gnatsymbolize
+dev-ada/AdaSAT
+
 # Sergey Popov <pinkbyte@gentoo.org> (2024-03-05)
 # games-strategy/seven-kingdoms does not build on musl,
 # requires glibc-specific locale handling. (#923907)

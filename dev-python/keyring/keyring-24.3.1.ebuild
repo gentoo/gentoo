@@ -14,9 +14,9 @@ HOMEPAGE="
 	https://pypi.org/project/keyring/
 "
 
-SLOT="0"
 LICENSE="PSF-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+SLOT="0"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/secretstorage-3.2[${PYTHON_USEDEP}]

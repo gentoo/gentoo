@@ -96,10 +96,10 @@ src_install() {
 
 		HTML_DOCS=( doc/HTML/. )
 		einstalldocs
-	fi
 
-	# Some binaries in "books". Not needed since the sources are there.
-	find "${ED}/usr/share/acl2/books" -type f -name "*.elf64" -delete || die
+		# Some binaries in "books". Not needed since the sources are there.
+		find "${ED}/usr/share/acl2/books" -type f -name "*.elf64" -delete || die
+	fi
 }
 
 pkg_postinst() {

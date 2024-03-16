@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/925365
+https://rt.cpan.org/Public/Bug/Display.html?id=127007
+https://github.com/chansen/p5-unicode-utf8/pull/3
+
+From cb30ee19c31a27254c709b78451159d89c377beb Mon Sep 17 00:00:00 2001
+From: "E. Choroba" <choroba@matfyz.cz>
+Date: Thu, 6 Dec 2018 14:42:09 +0100
+Subject: [PATCH 1/2] Fix 080_super.t for 32-bit
+
+Copied from https://rt.cpan.org/Public/Bug/Display.html?id=127007.
+--- a/t/080_super.t
++++ b/t/080_super.t
+@@ -1,5 +1,6 @@
+ #!perl
+ 
++use Config;
+ use strict;
+ use warnings;
+ use lib 't';
+@@ -16,8 +17,12 @@ my @SUPER = ();
+     for (my $i = 0x0011_0000; $i < 0x7FFF_FFFF; $i += 0x200000) {
+         push @SUPER, $i;
+     }
+-    for (my $i = 0x8000_0000; $i < 0xFFFF_FFFF; $i += 0x400000) {
+-        push @SUPER, $i;
++
++    # Doesn't work on 32 bit.
++    if ($Config{ptrsize} == 8) {
++        for (my $i = 0x8000_0000; $i < 0xFFFF_FFFF; $i += 0x400000) {
++            push @SUPER, $i;
++        }
+     }
+ }
+ 
+
+From f989eaedfe83639c7be35fd429af36452ebaf1d2 Mon Sep 17 00:00:00 2001
+From: "E. Choroba" <choroba@matfyz.cz>
+Date: Tue, 11 Dec 2018 17:30:13 +0100
+Subject: [PATCH 2/2] fixup! Fix 080_super.t for 32-bit
+
+--- a/t/080_super.t
++++ b/t/080_super.t
+@@ -19,7 +19,7 @@ my @SUPER = ();
+     }
+ 
+     # Doesn't work on 32 bit.
+-    if ($Config{ptrsize} == 8) {
++    if ($Config{ivsize} > 4) {
+         for (my $i = 0x8000_0000; $i < 0xFFFF_FFFF; $i += 0x400000) {
+             push @SUPER, $i;
+         }
+

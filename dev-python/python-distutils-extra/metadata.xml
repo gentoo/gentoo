@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://www.debian.org/Bugs/</bugs-to>
+		<remote-id type="launchpad">python-distutils-extra</remote-id>
 	</upstream>
 </pkgmetadata>

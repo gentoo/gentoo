@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{9,10} )
 
 inherit python-single-r1
 
-DESCRIPTION="A toolkit for dealing with the qmail queue directory structure"
-HOMEPAGE="http://pyropus.ca/software/queue-repair/"
-SRC_URI="http://pyropus.ca/software/queue-repair/${P}.tar.gz"
+DESCRIPTION="Toolkit for dealing with the qmail queue directory structure"
+HOMEPAGE="https://pyropus.ca/software/queue-repair/"
+SRC_URI="https://pyropus.ca/software/queue-repair/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

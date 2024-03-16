@@ -6,6 +6,18 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
+# These packages have RESTRICT="test" and depend on dev-java/ant-junit
+# which is going away. Remove this mask when ebuilds are updated.
+dev-java/ant-ivy test
+dev-java/rhino test
+www-servers/tomcat test
+
+# Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
+# Requires manually installing dependencies, see bug #791802
+# Please use MYCMAKEARGS instead.
+sci-physics/root R
+
 # Sam James <sam@gentoo.org> (2024-03-07)
 # The bluetooth feature is unstable for now (causes timeouts if no dbus adapter
 # is available).
@@ -20,15 +32,6 @@ sys-devel/binutils-hppa64 cet
 sys-devel/gcc cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
-
-# Joonas Niilola <juippis@gentoo.org> (2024-02-20)
-# Upstream massively reworked av1 support breaking our custom
-# system-av1 patches.
-# Looks like the bundled libvpx is heavily patched (including av1
-#  support) - I'm not confident that currently enabling custom-patched
-# system-libvpx gives the same experience as using the bundled one.
-# Need to revisit in 125.0.
->=www-client/firefox-123.0 system-av1 system-libvpx
 
 # Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
 # Cinnamon wayland support is experimental and incomplete.
@@ -68,13 +71,6 @@ sys-devel/sparse llvm
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # app-crypt/rpm-sequoia is not keyworded on most architectures.
 app-arch/rpm sequoia
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
-# Qt6 is still experimental in freecad, currently the configure phase
-# gets itself stuck by importing both qt5 and qt6 cmake files.
-# Since there is no python3.12 support for shiboken2/pyside2, we have
-# to mask that flag as well.
-media-gfx/freecad qt6 python_single_target_python3_12
 
 # Florian Schmaus <flow@gentoo.org> (2023-11-10)
 # Only available for amd64.
@@ -202,12 +198,6 @@ dev-lang/ruby jit
 # Matt Turner <mattst88@gentoo.org> (2023-04-10)
 # Depends on x11-libs/libdmx, which is masked for removal
 x11-apps/xdpyinfo dmx
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-09)
-# dev-java/jython is last-rited due to vulnerabilities.
-# See bug #825486.
-dev-java/bsf python
-dev-java/ant-apache-bsf python
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-04-05)
 # Currently broken on 11

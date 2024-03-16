@@ -167,6 +167,8 @@ src_configure() {
 		-DINSTALL_SYSCONFDIR="${QT6_SYSCONFDIR}"
 		-DINSTALL_TRANSLATIONSDIR="${QT6_TRANSLATIONDIR}"
 
+		-DQT_UNITY_BUILD=ON # ~30% faster build, affects other dev-qt/* too
+
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)
 		$(qt_feature udev libudev)

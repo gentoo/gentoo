@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch
 	"${FILESDIR}"/${P}-Add-missing-include-cstdint-required-by-gcc-13-1264.patch
 	"${FILESDIR}"/${P}-add-missed-include-cstdint-statement.patch
+	"${FILESDIR}"/${P}-musl-i386.patch
 )
 
 DOCS=( CHANGES.md GOVERNANCE.md PATENTS README.md SECURITY.md docs/SymbolVisibility.md )

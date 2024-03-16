@@ -24,10 +24,10 @@ for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
 
-IUSE="${IUSE_VIDEO_CARDS} test tools udev valgrind"
-RESTRICT="!test? ( test )"
 LICENSE="MIT"
 SLOT="0"
+IUSE="${IUSE_VIDEO_CARDS} test tools udev valgrind"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	video_cards_intel? ( >=x11-libs/libpciaccess-0.13.1-r1:=[${MULTILIB_USEDEP}] )"
@@ -44,6 +44,12 @@ BDEPEND="${PYTHON_DEPS}
 
 python_check_deps() {
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
+}
+
+src_prepare() {
+	default
+	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
+		symbols-check.py || die # bug #925550
 }
 
 multilib_src_configure() {

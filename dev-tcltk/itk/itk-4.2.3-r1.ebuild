@@ -6,10 +6,15 @@ EAPI=8
 inherit virtualx
 
 MY_PV=${PN}-$(ver_rs 1- '-')
+TCLCONFIGId=4a924db4fb37fa0c7cc2ae987b294dbaa97bc713
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
 HOMEPAGE="http://incrtcl.sourceforge.net/"
-SRC_URI="https://github.com/tcltk/${PN}/archive/refs/tags/${MY_PV}.tar.gz"
+SRC_URI="
+	https://github.com/tcltk/${PN}/archive/refs/tags/${MY_PV}.tar.gz
+	https://github.com/tcltk/tclconfig/archive/${TCLCONFIGId}.tar.gz
+		-> tclconfig-2023.12.11.tar.gz
+"
 
 SLOT="0"
 LICENSE="BSD"
@@ -27,11 +32,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	opendir64 readdir64 rewinddir64 closedir64 stat64 # used on AIX
 )
 
-PATCHES=( "${FILESDIR}"/${P}-install.patch )
-
 UNINSTALL_IGNORE='/usr/lib.*/itk.*/library'
 
 src_prepare() {
+	ln -s ../tclconfig-${TCLCONFIGId} tclconfig || die
 	sed 's:-pipe::g' -i configure || die
 	default
 	echo "unknown" > manifest.uuid

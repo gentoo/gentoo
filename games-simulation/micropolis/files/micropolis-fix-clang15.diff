@@ -1,0 +1,104 @@
+diff --git a/src/tclx/src/tclxgdat.y b/src/tclx/src/tclxgdat.y
+index aea9f3d49ced8818421c6aca538df0f1a08b17b3..2439a2fc8cfd4a90be7f51216ed4bae1b9feb7e2 100644
+--- a/src/tclx/src/tclxgdat.y
++++ b/src/tclx/src/tclxgdat.y
+@@ -46,11 +46,11 @@
+ #if 0
+ 	static time_t timeconv(int hh, int mm, int ss, int mer);
+ 	static time_t daylcorr(time_t future, time_t now);
+-	static lookup(char *id);
++	static int lookup(char *id);
+ #else
+ 	static time_t timeconv();
+ 	static time_t daylcorr();
+-	static lookup();
++	static int lookup();
+ #endif
+ 
+ #define AM 1
+@@ -463,7 +463,7 @@ struct table milzone[] = {
+         {0, 0, 0}};
+ 
+ static
+-lookup(id) char *id;
++int lookup(id) char *id;
+ {
+ #define gotit (yylval=i->value,  i->type)
+ #define getid for(j=idvar, k=id; *j++ = *k++; )
+diff --git a/src/tclx/src/tclxmath.c b/src/tclx/src/tclxmath.c
+index 9f967bf4f2402c7f61f0f2b8f03ef835c7ceb70d..bf5a52a76f3eca59260299096436aebaf8ba2818 100644
+--- a/src/tclx/src/tclxmath.c
++++ b/src/tclx/src/tclxmath.c
+@@ -16,6 +16,7 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
++#include <time.h>
+ #include "tclxint.h"
+ 
+ extern int rand();
+diff --git a/src/tk/tkbitmap.c b/src/tk/tkbitmap.c
+index cc81cd02c477b6289a25b76909b3b46f8db212a6..c7693e84a71953b340ee3b37044ec65be6050dc7 100644
+--- a/src/tk/tkbitmap.c
++++ b/src/tk/tkbitmap.c
+@@ -434,7 +434,7 @@ Tk_GetBitmapFromData(interp, tkwin, source, width, height)
+     Tk_Uid name = NULL;		/* Initialization need only to prevent
+ 				 * compiler warning. */
+     int new;
+-    static autoNumber = 0;
++    static int autoNumber = 0;
+     char string[20];
+ 
+     if (!initialized) {
+diff --git a/src/tk/tkerror.c b/src/tk/tkerror.c
+index a58814c4599d4a8111cdf03cf67054009c7a626f..b6fdb17c41853f9fb5dbd33274d314d5ca8a723f 100644
+--- a/src/tk/tkerror.c
++++ b/src/tk/tkerror.c
+@@ -23,7 +23,7 @@ static char rcsid[] = "$Header: /user6/ouster/wish/RCS/tkError.c,v 1.10 92/04/12
+ #include "tkconfig.h"
+ #include "tkint.h"
+ 
+-static initialized = 0;
++static int initialized = 0;
+ 
+ /*
+  * Forward references to procedures declared later in this file:
+diff --git a/src/tk/tkpack.c b/src/tk/tkpack.c
+index f065bd5d20d6cfa81c4ce37104a9764a99816287..a998017fcfd308595aed170ad3915817a85ec9f7 100644
+--- a/src/tk/tkpack.c
++++ b/src/tk/tkpack.c
+@@ -95,7 +95,7 @@ static Tcl_HashTable packerHashTable;
+  * Have statics in this module been initialized?
+  */
+ 
+-static initialized = 0;
++static int initialized = 0;
+ 
+ /*
+  * Forward declarations for procedures defined later in this file:
+diff --git a/src/tk/tkpixmap.c b/src/tk/tkpixmap.c
+index 753bbe190caa3e585b82a0757e77184f1ec68b20..8d23daded56264edd6d3dbc333014f253568592a 100644
+--- a/src/tk/tkpixmap.c
++++ b/src/tk/tkpixmap.c
+@@ -516,7 +516,7 @@ Tk_GetPixmapFromData(interp, tkwin, source, width, height)
+     Tk_Uid name = NULL;		/* Initialization need only to prevent
+ 				 * compiler warning. */
+     int new;
+-    static autoNumber = 0;
++    static int autoNumber = 0;
+     char string[20];
+ 
+     if (!initialized) {
+diff --git a/src/tk/tkwindow.c b/src/tk/tkwindow.c
+index 05029aa38b11e2e189010736c69c74113616d581..eb6b7fe22bc66cebfae99a0fe663a9089a7c5b2a 100644
+--- a/src/tk/tkwindow.c
++++ b/src/tk/tkwindow.c
+@@ -55,7 +55,7 @@ TkDisplay *tkDisplayList = NULL;
+  * Have statics in this module been initialized?
+  */
+ 
+-static initialized = 0;
++static int initialized = 0;
+ 
+ /*
+  * Context information used to map from X window id's to

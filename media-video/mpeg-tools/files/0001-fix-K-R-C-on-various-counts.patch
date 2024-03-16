@@ -1,0 +1,98 @@
+From 0905d53337e2d7d72575684a72a466df1b13c610 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 14 Mar 2024 22:37:59 -0400
+Subject: [PATCH] fix K&R C on various counts
+
+---
+ convert/jmovie2jpeg.c    |  7 ++-----
+ convert/mpeg_demux.c     |  2 +-
+ convert/mtv/movieToVid.c | 16 ++++------------
+ 3 files changed, 7 insertions(+), 18 deletions(-)
+
+diff --git a/convert/jmovie2jpeg.c b/convert/jmovie2jpeg.c
+index 7583135..d77505a 100644
+--- a/convert/jmovie2jpeg.c
++++ b/convert/jmovie2jpeg.c
+@@ -39,17 +39,14 @@
+ 
+ #define HEADER_SIZE 607   /*JFIF header size used on output images*/
+ 
+-usage (p)
+-char *p;
++void usage (char *p)
+ 
+ {
+     fprintf (stderr, "Usage: %s infilename outfilename start-frame-no end-frame-no\n", p);
+     exit (1);
+ }
+ 
+-main (argc, argv)
+-int argc;
+-char **argv;
++int main (int argc, char **argv)
+ {
+     char *infilename;     /* input filename string */
+     char *obase;          /* output filename base string=>obase##.jpg */
+diff --git a/convert/mpeg_demux.c b/convert/mpeg_demux.c
+index bcce728..505afd1 100644
+--- a/convert/mpeg_demux.c
++++ b/convert/mpeg_demux.c
+@@ -110,7 +110,7 @@ static int gNumPrivate_2_Packets;
+ static FILE *errorOutput;
+ #endif
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+   {
+    unsigned int startCode;
+    int errorCode;
+diff --git a/convert/mtv/movieToVid.c b/convert/mtv/movieToVid.c
+index 4f02a3b..7262db8 100644
+--- a/convert/mtv/movieToVid.c
++++ b/convert/mtv/movieToVid.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <malloc.h>
++#include <strings.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/mman.h>
+@@ -64,7 +65,7 @@ MapFile (filename)
+  *--------------------------------------------------------------
+  */
+ 
+-WriteScriptFile (name, dataDir, indexDir, host, headerPtr, offsets, numFrames)
++void WriteScriptFile (name, dataDir, indexDir, host, headerPtr, offsets, numFrames)
+     char *name, *dataDir;
+     char *indexDir, *host;
+     jpheader *headerPtr;
+@@ -120,11 +121,7 @@ WriteScriptFile (name, dataDir, indexDir, host, headerPtr, offsets, numFrames)
+  *--------------------------------------------------------------
+  */
+ 
+-WriteOfsFile (name, dir, headerPtr, offsets, numFrames)
+-    char *name, *dir;
+-    jpheader *headerPtr;
+-    int *offsets;
+-    int numFrames;
++void WriteOfsFile (char *name, char *dir, jpheader *headerPtr, int *offsets, int numFrames)
+ {
+     FILE *outFile;
+     char str[512];
+@@ -172,12 +169,7 @@ WriteOfsFile (name, dir, headerPtr, offsets, numFrames)
+  *--------------------------------------------------------------
+  */
+ 
+-WriteVidFile (name, dir, headerPtr, fot, numFrames, offset)
+-    char *name, *dir;
+-    jpheader *headerPtr;
+-    int *fot;
+-    int numFrames;
+-    int *offset;
++void WriteVidFile (char *name, char *dir, jpheader *headerPtr, int *fot, int numFrames, int *offset)
+ {
+     FILE *vidFile;
+     FILE *audFile;
+-- 
+2.43.2
+

@@ -72,7 +72,7 @@ COMMON_DEPEND="
 BDEPEND="
 	${COMMON_DEPEND}
 	>=dev-build/meson-1.2.1
-	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
+	>=dev-python/cython-3.0.5[${PYTHON_USEDEP}]
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	test? (
 		${VIRTUALX_DEPEND}

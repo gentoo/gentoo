@@ -1,13 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+PATCHSET="${P}-patchset"
 inherit cmake linux-info systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
@@ -47,22 +49,22 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-respect-user-flags.patch"
-	"${FILESDIR}/${P}-Xsession.patch" # bug 611210
-	"${FILESDIR}/${PN}-0.18.0-sddmconfdir.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-respect-user-flags.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-Xsession.patch" # bug 611210
+	"${WORKDIR}/${PATCHSET}/${PN}-0.18.0-sddmconfdir.patch"
 	# fix for groups: https://github.com/sddm/sddm/issues/1159
-	"${FILESDIR}/${P}-revert-honor-PAM-supplemental-groups.patch"
-	"${FILESDIR}/${P}-honor-PAM-supplemental-groups-v2.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-revert-honor-PAM-supplemental-groups.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-honor-PAM-supplemental-groups-v2.patch"
 	# fix for ReuseSession=true
-	"${FILESDIR}/${P}-only-reuse-online-sessions.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-only-reuse-online-sessions.patch"
 	# TODO: fix properly
-	"${FILESDIR}/pam-1.4-substack.patch"
+	"${WORKDIR}/${PATCHSET}/pam-1.4-substack.patch"
 	# upstream git develop branch:
-	"${FILESDIR}/${P}-qt-5.15.2.patch"
-	"${FILESDIR}/${P}-cve-2020-28049.patch" # bug 753104
-	"${FILESDIR}/${P}-nvidia-glitches-vt-switch.patch"
-	"${FILESDIR}/${P}-drop-wayland-suffix.patch"
-	"${FILESDIR}/${P}-fix-qt-5.15.7.patch" # KDE-bug 458865
+	"${WORKDIR}/${PATCHSET}/${P}-qt-5.15.2.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-cve-2020-28049.patch" # bug 753104
+	"${WORKDIR}/${PATCHSET}/${P}-nvidia-glitches-vt-switch.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-drop-wayland-suffix.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-fix-qt-5.15.7.patch" # KDE-bug 458865
 )
 
 pkg_setup() {
@@ -93,7 +95,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	newtmpfiles "${FILESDIR}/${PN}.tmpfiles" "${PN}.conf"
+	newtmpfiles "${WORKDIR}/${PATCHSET}/${PN}.tmpfiles" "${PN}.conf"
 
 	# Create a default.conf as upstream dropped /etc/sddm.conf w/o replacement
 	local confd="/usr/share/sddm/sddm.conf.d"

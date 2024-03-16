@@ -8,6 +8,9 @@ inherit cmake
 DESCRIPTION="High Energy Physics C++ library"
 HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
 SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/dist1/${P}.tgz"
+
+S="${WORKDIR}/${PV}/CLHEP"
+
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
@@ -25,8 +28,6 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 "
-
-S="${WORKDIR}/${PV}/CLHEP"
 
 src_prepare() {
 	cmake_src_prepare

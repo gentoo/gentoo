@@ -2,7 +2,6 @@ move acct-group/openldap acct-group/ldap
 move acct-user/openldap acct-user/ldap
 move x11-apps/copyq x11-misc/copyq
 slotmove media-gfx/gimp 2 0
-move dev-python/scikit-learn sci-libs/scikit-learn
-move sci-libs/scikits_learn sci-libs/scikit-learn
+move sci-libs/scikits_learn dev-python/scikit-learn
 move sci-libs/scikits_image dev-python/scikit-image
 move dev-python/httpstat net-misc/httpstat

@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-env.eclass
@@ -14,7 +14,7 @@
 if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 # @FUNCTION: go-env_set_compile_environment
 # @DESCRIPTION:
@@ -27,11 +27,14 @@ inherit toolchain-funcs
 # (e.g. "emerge-aarch64-cross-linux-gnu foo" run on x86_64 will emerge "foo" for x86_64
 #  instead of aarch64)
 go-env_set_compile_environment() {
-	tc-export CC CXX
+	tc-export CC CXX PKG_CONFIG
 
 	export GOARCH="$(go-env_goarch)"
 	use arm && export GOARM=$(go-env_goarm)
 	use x86 && export GO386=$(go-env_go386)
+
+	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
+	[[ $(gcc-fullversion) == 14.0.1 ]] && filter-lto
 
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"

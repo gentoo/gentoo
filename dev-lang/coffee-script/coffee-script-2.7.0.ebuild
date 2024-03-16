@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # This package has a test suite (that works), but it requires a number
 # of NodeJS/NPM packages that aren't in the tree.

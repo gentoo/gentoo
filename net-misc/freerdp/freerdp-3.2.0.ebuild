@@ -106,6 +106,10 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Wno-dev
+
+		# https://bugs.gentoo.org/927037
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)
 		-DWITH_AAD=$(usex aad ON OFF)

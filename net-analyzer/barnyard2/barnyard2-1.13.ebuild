@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,10 @@ inherit autotools
 DESCRIPTION="Parser for Snort unified/unified2 files"
 HOMEPAGE="https://github.com/firnsy/barnyard2 https://firnsy.com/projects"
 SRC_URI="https://github.com/firnsy/barnyard2/archive/v2-${PV}.tar.gz -> ${P}-github.tar.gz"
+S="${WORKDIR}/${PN}-2-${PV}"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug gre mpls mysql odbc postgres sguil"
 
@@ -24,7 +25,6 @@ RDEPEND="
 	${DEPEND}
 "
 DOCS="RELEASE.NOTES etc/barnyard2.conf doc/README* schemas/create_*"
-S="${WORKDIR}/${PN}-2-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-free.patch
 	"${FILESDIR}"/${PN}-1.13-libdir.patch

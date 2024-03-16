@@ -20,6 +20,7 @@
 		<flag name="libssp">Build SSP support into a dedicated library rather
 			than use the code in the C library (DO NOT ENABLE THIS IF YOU DON'T
 			KNOW WHAT IT DOES)</flag>
+		<flag name="modula2">Build the GCC Modula-2 language frontend.</flag>
 		<flag name="objc">Build support for the Objective C code language
 		</flag>
 		<flag name="objc++">Build support for the Objective C++ language</flag>

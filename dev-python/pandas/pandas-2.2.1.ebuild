@@ -19,8 +19,8 @@ HOMEPAGE="
 	https://pypi.org/project/pandas/
 "
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~hppa ~riscv"
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
@@ -72,7 +72,7 @@ COMMON_DEPEND="
 BDEPEND="
 	${COMMON_DEPEND}
 	>=dev-build/meson-1.2.1
-	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
+	>=dev-python/cython-3.0.5[${PYTHON_USEDEP}]
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	test? (
 		${VIRTUALX_DEPEND}

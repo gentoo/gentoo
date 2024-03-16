@@ -1,9 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # The 32-bits profile is inherited by the 64-bits one!
 # All the Mac OS X profiles inherit from their matching arch profile here.
 
+# Fabian Groffen <grobian@gentoo.org> (2024-03-08)
+# mask pie, won't work on this arch
+sys-devel/gcc pie
 
 # Elias Pipping <pipping@gentoo.org> (2007-09-01)
 # imlib2 does not compile with USE=mmx

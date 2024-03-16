@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 # svn export http://svn.musepack.net/libmpc/trunk musepack-tools-${PV}
 # tar -cjf musepack-tools-${PV}.tar.bz2 musepack-tools-${PV}
@@ -31,3 +31,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-musl.patch
 )
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/860882
+	#
+	# Software is dead since 2016.
+	filter-lto
+
+	cmake_src_configure
+}
