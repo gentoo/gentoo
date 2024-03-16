@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ src_prepare() {
 
 src_compile() {
 	local modlist=(
-		v4l2loopback=video:
+		v4l2loopback=video:::all
 	)
 
 	linux-mod-r1_src_compile
