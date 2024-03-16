@@ -24,7 +24,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-apache-tomcat-connectors )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.49-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.49-export-symbols-regex.patch" #914237
+	"${FILESDIR}/${PN}-1.2.49-musl.patch"
+)
 
 APACHE2_MOD_FILE="${S}/apache-2.0/${PN}.so"
 APACHE2_MOD_DEFINE="JK"
