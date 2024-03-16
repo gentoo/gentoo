@@ -1,10 +1,14 @@
 [Unit]
-Description=Lightning Fast Webserver With Light System Requirements
-After=syslog.target network.target
+Description=Lighttpd Daemon
+After=syslog.target network-online.target
 
 [Service]
+Type=simple
+PIDFile=/run/lighttpd.pid
+ExecStartPre=/usr/sbin/lighttpd -tt -f /etc/lighttpd/lighttpd.conf
 ExecStart=/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
-ExecReload=/bin/kill -HUP $MAINPID
+ExecReload=/bin/kill -USR1 $MAINPID
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

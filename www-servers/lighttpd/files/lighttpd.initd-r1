@@ -25,7 +25,7 @@ checkconfig() {
 		eerror "and try again"
 		return 1
 	fi
-	/usr/sbin/lighttpd -t -f ${LIGHTTPD_CONF} >/dev/null
+	/usr/sbin/lighttpd -tt -f ${LIGHTTPD_CONF} >/dev/null
 }
 
 start() {
@@ -69,11 +69,8 @@ graceful() {
 	fi
 	checkconfig || return 1
 
-	ebegin "Gracefully stopping lighttpd"
+	ebegin "Gracefully restarting lighttpd"
 	start-stop-daemon --quiet --pidfile "${LIGHTTPD_PID}" \
-		--signal INT
-	if eend $? ; then
-		rm -f "${LIGHTTPD_PID}"
-		start
-	fi
+		--signal USR1
+	eend $?
 }
