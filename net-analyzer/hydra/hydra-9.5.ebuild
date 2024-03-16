@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ RDEPEND="
 	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pcre? ( dev-libs/libpcre2 )
 	postgres? ( dev-db/postgresql:* )
-	rdp? ( net-misc/freerdp )
+	rdp? ( >=net-misc/freerdp-2.0.0 <net-misc/freerdp-3 )
 	libssh? ( >=net-libs/libssh-0.4.0 )
 	samba? ( net-fs/samba )
 	subversion? ( dev-vcs/subversion )
