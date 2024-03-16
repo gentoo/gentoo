@@ -24,5 +24,5 @@ DEPEND="
 
 DOCS=(AUTHORS NEWS.md README.md)
 PATCHES=(
-	"${FILESDIR}-${P}-checksum-detection.patch"
+	"${FILESDIR}/${P}-checksum-detection.patch"
 )
