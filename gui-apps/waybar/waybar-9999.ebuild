@@ -44,7 +44,7 @@ RDEPEND="
 	>=dev-libs/spdlog-1.10.0:=
 	dev-libs/date:=
 	dev-libs/wayland
-	>=gui-libs/gtk-layer-shell-0.6.0:=
+	gui-libs/gtk-layer-shell
 	gui-libs/wlroots:=
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
@@ -88,6 +88,7 @@ src_configure() {
 		$(meson_feature network libnl)
 		$(meson_feature pulseaudio)
 		$(meson_feature pipewire wireplumber)
+		$(meson_feature pipewire pipewire)
 		$(meson_feature sndio)
 		$(meson_feature systemd)
 		$(meson_feature test tests)
