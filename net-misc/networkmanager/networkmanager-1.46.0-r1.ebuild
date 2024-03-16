@@ -5,7 +5,7 @@ EAPI=8
 GNOME_ORG_MODULE="NetworkManager"
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 readme.gentoo-r1 systemd udev vala virtualx
+inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -170,6 +170,8 @@ meson_nm_native_program() {
 multilib_src_configure() {
 	# Workaround for LLD 17 (bug #915819)
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+	# Build system requires -flto-partition=none support for LTO
+	tc-is-clang && filter-lto
 
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
@@ -207,7 +209,8 @@ multilib_src_configure() {
 		$(meson_native_use_bool tools nmtui)
 		$(meson_native_use_bool tools nm_cloud_setup)
 		$(meson_native_use_bool bluetooth bluez5_dun)
-		-Debpf=true
+		# ebpf is problematic in at least v1.46.0, bug #926943
+		-Debpf=false
 
 		-Dconfig_wifi_backend_default=$(multilib_native_usex iwd iwd default)
 		-Dconfig_plugins_default=keyfile
