@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-backport-pr392.patch"
 	"${FILESDIR}/${PN}-2.3.0-backport-c6f2ba4.patch"
+	"${FILESDIR}/${PN}-2.3.0-backport-f6a9d92.patch"
 )
 
 src_prepare() {
