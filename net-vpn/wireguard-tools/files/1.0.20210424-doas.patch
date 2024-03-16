@@ -1,0 +1,11 @@
+--- a/work/wireguard-tools-1.0.20210424/src/wg-quick/linux.bash
++++ b/work/wireguard-tools-1.0.20210424/src/wg-quick/linux.bash
+@@ -82,7 +82,7 @@ read_bool() {
+ }
+ 
+ auto_su() {
+-	[[ $UID == 0 ]] || exec sudo -p "$PROGRAM must be run as root. Please enter the password for %u to continue: " -- "$BASH" -- "$SELF" "${ARGS[@]}"
++	[[ $UID == 0 ]] || exec doas -- "$BASH" -- "$SELF" "${ARGS[@]}"
+ }
+ 
+ add_if() {
