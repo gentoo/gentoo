@@ -2100,16 +2100,9 @@ toolchain_src_install() {
 	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
 
 	if use test ; then
-		# TODO: In future, install orphaned to allow comparison across
-		# more versions even after unmerged? Also would be useful for
-		# historical records and tracking down regressions a while
-		# after they first appeared, but were only just reported.
-		einfo "Copying test results to ${EPREFIX}/var/cache/gcc/${CHOST}/${SLOT} for future comparison"
-		(
-			dodir /var/cache/gcc/${CHOST}/${SLOT}
-			cd "${WORKDIR}"/build || die
-			find . -name \*.sum -exec cp --parents -v {} "${ED}"/var/cache/gcc/${CHOST}/${SLOT} \;
-		)
+		mkdir "${T}"/test-results || die
+		cd "${WORKDIR}"/build || die
+		find . -name \*.sum -exec cp --parents -v {} "${T}"/test-results \;
 	fi
 }
 
@@ -2260,6 +2253,23 @@ create_revdep_rebuild_entry() {
 	# Ignore libraries built for ${CTARGET}, https://bugs.gentoo.org/692844.
 	SEARCH_DIRS_MASK="${LIBPATH}"
 	EOF
+}
+
+#---->> pkg_pre* <<----
+
+toolchain_pkg_preinst() {
+	if use test ; then
+		# Install as orphaned to allow comparison across more
+		# versions even after unmerged. Also useful for historical records
+		# and tracking down regressions a while after they first appeared,
+		# but were only just reported.
+		einfo "Copying test results to ${BROOT}/var/cache/gcc/${CHOST}/${SLOT} for future comparison"
+		(
+			mkdir -p "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} || die
+			cd "${T}"/test-results || die
+			find . -name \*.sum -exec cp --parents -v {} "${BROOT}"/var/cache/gcc/${CHOST}/${SLOT} \;
+                )
+        fi
 }
 
 #---->> pkg_post* <<----
@@ -2515,4 +2525,4 @@ fi
 # enabled-by-default state:
 #    econf $(usex foo '' --disable-foo)
 
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
