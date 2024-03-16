@@ -122,14 +122,14 @@ tc_version_is_between() {
 # @DESCRIPTION:
 # Defaults to 'check'. Allows choosing a different test target, e.g.
 # 'test-gcc' (https://gcc.gnu.org/install/test.html).
-: "${GCC_TESTS_CHECK_TARGET:=check-gcc}"
+: "${GCC_TESTS_CHECK_TARGET:=check}"
 
 # @ECLASS_VARIABLE: GCC_TESTS_RUNTESTFLAGS
 # @DEFAULT_UNSET
 # @USER_VARIABLE
 # @DESCRIPTION:
 # Extra options to pass to DejaGnu as RUNTESTFLAGS.
-: "${GCC_TESTS_RUNTESTFLAGS:=execute.exp}"
+: "${GCC_TESTS_RUNTESTFLAGS:=}"
 
 # @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
 # @DEFAULT_UNSET
