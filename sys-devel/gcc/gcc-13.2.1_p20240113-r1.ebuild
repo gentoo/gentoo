@@ -8,6 +8,7 @@ PATCH_GCC_VER="13.2.0"
 PATCH_VER="12"
 MUSL_VER="2"
 MUSL_GCC_VER="13.2.0"
+PYTHON_COMPAT=( python3_{10..11} )
 
 if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
