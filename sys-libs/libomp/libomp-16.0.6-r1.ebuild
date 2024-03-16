@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit flag-o-matic cmake-multilib linux-info llvm.org llvm-utils
+inherit flag-o-matic cmake-multilib linux-info llvm llvm.org
 inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -12,8 +12,9 @@ HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
 IUSE="
-	+debug gdb-plugin hwloc offload ompt test
+	debug gdb-plugin hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX
 "
 REQUIRED_USE="
@@ -75,14 +76,13 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	use offload && LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	if use gdb-plugin || use test; then
 		python-single-r1_pkg_setup
 	fi
 }
 
 multilib_src_configure() {
-	use offload && llvm_prepend_path "${LLVM_MAJOR}"
-
 	# LTO causes issues in other packages building, #870127
 	filter-lto
 
@@ -115,24 +115,15 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
+		# prevent trying to access the GPU
+		-DLIBOMPTARGET_AMDGPU_ARCH=LIBOMPTARGET_AMDGPU_ARCH-NOTFOUND
 	)
 
 	if [[ ${build_omptarget} == ON ]]; then
-		local ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
-		local ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
-		mycmakeargs+=(
-			-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
-			-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
-		)
-
 		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 			mycmakeargs+=(
 				-DLIBOMPTARGET_BUILD_AMDGPU_PLUGIN=$(usex llvm_targets_AMDGPU)
 				-DLIBOMPTARGET_BUILD_CUDA_PLUGIN=$(usex llvm_targets_NVPTX)
-
-				# prevent trying to access the GPU
-				-DLIBOMPTARGET_AMDGPU_ARCH=LIBOMPTARGET_AMDGPU_ARCH-NOTFOUND
-				-DLIBOMPTARGET_NVPTX_ARCH=LIBOMPTARGET_NVPTX_ARCH-NOTFOUND
 			)
 		else
 			mycmakeargs+=(
