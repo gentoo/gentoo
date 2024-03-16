@@ -1,0 +1,12 @@
+This is not needed. Gentoo will collect license files into
+the documentation directory in ebuild.
+--- a/share/rocmcmakebuildtools/cmake/ROCMCreatePackage.cmake
++++ b/share/rocmcmakebuildtools/cmake/ROCMCreatePackage.cmake
+@@ -409,7 +409,6 @@ macro(rocm_create_package)
+     if(PARSE_PTH)
+         rocm_parse_python_syspath(${LIB_DIR} ${PARSE_NAME})
+     endif()
+-    rocm_setup_license(${PARSE_HEADER_ONLY})
+     if(PARSE_COMPONENTS)
+         rocm_set_comp_cpackvar(PARSE_HEADER_ONLY "${PARSE_COMPONENTS}")
+     endif()
