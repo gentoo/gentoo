@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.2-boost-1.69-compatibility.patch
 	"${FILESDIR}"/${PN}-4.0.2-qt-5.15-compatibility.patch
 	"${FILESDIR}"/${PN}-4.0.3-gcc11-compatibility.patch
+	"${FILESDIR}"/${PN}-4.0.3-libxml2-2.12-compatibility.patch
 	"${WORKDIR}"/${PN}-4.0.3-python3-compatibility.patch
 	"${FILESDIR}"/${PN}-4.0.3-reproducible-build.patch
 )
