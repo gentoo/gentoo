@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,7 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	pipewire? ( >=media-video/pipewire-0.3:= )
-	rdp? ( >=net-misc/freerdp-2.3.0:=[server] <net-misc/freerdp-3 )
+	rdp? ( >=net-misc/freerdp-2.3.0:2=[server] )
 	remoting? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
