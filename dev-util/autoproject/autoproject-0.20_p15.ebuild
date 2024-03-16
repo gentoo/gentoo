@@ -31,6 +31,7 @@ BDEPEND="
 	test? (
 		sys-apps/texinfo
 		sys-devel/autogen
+		virtual/texi2dvi
 	)
 "
 
