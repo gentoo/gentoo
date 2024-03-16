@@ -37,7 +37,7 @@ src_prepare() {
 
 src_compile() {
 	local modlist=(
-		v4l2loopback=video:
+		v4l2loopback=video:::all
 	)
 
 	linux-mod-r1_src_compile
