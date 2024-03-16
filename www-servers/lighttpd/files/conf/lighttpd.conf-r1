@@ -27,9 +27,7 @@ server.modules = (
 #    "mod_userdir",
 #    "mod_deflate",
 #    "mod_ssi",
-#    "mod_usertrack",
 #    "mod_expire",
-#    "mod_secdownload",
 #    "mod_rrdtool",
 #    "mod_webdav",
     "mod_accesslog"
@@ -57,17 +55,13 @@ server.indexfiles    = ("index.php", "index.html",
 
 # server.tag           = "lighttpd"
 
-server.follow-symlink = "enable"
-
-# event handler (defaults to "poll")
+# event handler
 # see performance.txt
 #
-# for >= linux-2.4
-#   server.event-handler = "linux-rtsig"
 # for >= linux-2.6
-#   server.event-handler = "linux-sysepoll"
+#   server.event-handler = "epoll"   # default on Linux
 # for FreeBSD
-#   server.event-handler = "freebsd-kqueue"
+#   server.event-handler = "kqueue"  # default on FreeBSD
 
 # chroot to directory (defaults to no chroot)
 # server.chroot      = "/"
@@ -86,9 +80,8 @@ server.follow-symlink = "enable"
 # -> ..../status-404.html for 'File not found'
 # server.errorfile-prefix    = var.basedir + "/error/status-"
 
-# FAM support for caching stat() calls
-# requires that lighttpd be built with USE=fam
-#   server.stat-cache-engine = "fam"
+# support for caching stat() calls
+# server.stat-cache-engine = "inotify"
 
 # If lighttpd was build with IPv6 support, and you would like to listen on IPv6,
 # uncomment the following:
