@@ -22,11 +22,19 @@ DESCRIPTION="Free implementation of the Remote Desktop Protocol"
 HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
-SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer icu jpeg kerberos openh264 pulseaudio server smartcard systemd test usb valgrind wayland X xinerama xv"
+SLOT="2"
+IUSE="alsa cpu_flags_arm_neon client cups debug doc +ffmpeg gstreamer icu jpeg kerberos openh264 pulseaudio server smartcard systemd test tools usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	X? ( doc? (
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/xmlto
+	) )
+"
+
+COMMON_DEPEND="
 	dev-libs/openssl:0=
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
@@ -81,16 +89,14 @@ RDEPEND="
 		x11-libs/libxkbfile
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	valgrind? ( dev-debug/valgrind )
 "
-BDEPEND="
-	virtual/pkgconfig
-	X? ( doc? (
-		app-text/docbook-xml-dtd:4.1.2
-		app-text/xmlto
-	) )
+RDEPEND="${COMMON_DEPEND}
+	!net-misc/freerdp:0
+	client? ( !net-misc/freerdp:3[client] )
+	server? ( !net-misc/freerdp:3[server] )
+	tools? ( !net-misc/freerdp:3[tools] )
 "
 
 src_configure() {
@@ -104,6 +110,7 @@ src_configure() {
 		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
 		-DWITH_CUPS=$(usex cups ON OFF)
+		-DWITH_CLIENT=$(usex client ON OFF)
 		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
 		-DWITH_MANPAGES=$(usex doc ON OFF)
 		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
@@ -126,6 +133,7 @@ src_configure() {
 		-DWITH_XINERAMA=$(usex xinerama ON OFF)
 		-DWITH_XV=$(usex xv ON OFF)
 		-DWITH_WAYLAND=$(usex wayland ON OFF)
+		-DWITH_WINPR_TOOLS=$(usex tools ON OFF)
 	)
 	cmake_src_configure
 }
