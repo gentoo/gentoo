@@ -148,3 +148,8 @@ src_test() {
 	use elibc_musl && myctestargs+=( -E TestBacktrace )
 	cmake_src_test
 }
+
+src_install() {
+	cmake_src_install
+	mv "${ED}"/usr/share/man/man7/wlog{,2}.7 || die
+}

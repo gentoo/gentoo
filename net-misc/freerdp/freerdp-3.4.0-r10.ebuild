@@ -161,3 +161,8 @@ src_test() {
 	has network-sandbox ${FEATURES} && myctestargs+=( -E TestConnect )
 	cmake_src_test
 }
+
+src_install() {
+	cmake_src_install
+	mv "${ED}"/usr/share/man/man7/wlog{,3}.7 || die
+}
