@@ -34,11 +34,6 @@ server.modules = (
 )
 # }}}
 
-# {{{ includes
-include "mime-types.conf"
-# fcgi and cgi are included below
-# }}}
-
 # {{{ server settings
 server.username      = "lighttpd"
 server.groupname     = "lighttpd"
