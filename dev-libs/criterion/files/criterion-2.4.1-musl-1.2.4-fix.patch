@@ -1,0 +1,45 @@
+Starting in Musl 1.2.4, it begins to error on LFS64 workarounds
+(off64_t, etc.) so we have to revert those to their normal names
+and add -D_FILE_OFFSET_BITS=64 to CFLAGS for Glibc.
+
+https://musl.libc.org/releases.html
+
+diff --git a/src/compat/internal.h b/src/compat/internal.h
+index 5e52348..cab9e0c 100644
+--- a/src/compat/internal.h
++++ b/src/compat/internal.h
+@@ -35,7 +35,7 @@
+ #  else
+ #   define off_t     cr_off64
+ #  endif
+-#  define off64_t    cr_off64
++#  define off_t    cr_off64
+ # endif
+ # include <io.h>
+ # if defined (MINGW_DEFINE_OFF_T) && (defined (__MINGW32__) || defined (__MINGW64__))
+diff --git a/src/compat/mockfile.c b/src/compat/mockfile.c
+index d42384a..99e2a54 100644
+--- a/src/compat/mockfile.c
++++ b/src/compat/mockfile.c
+@@ -39,7 +39,7 @@ typedef fpos_t cr_off;
+ # else
+ typedef size_t cr_count;
+ typedef ssize_t cr_retcount;
+-typedef off64_t cr_off;
++typedef off_t cr_off;
+ # endif
+ 
+ struct memfile {
+diff --git a/src/compat/posix.h b/src/compat/posix.h
+index 9dcb5f7..519c200 100644
+--- a/src/compat/posix.h
++++ b/src/compat/posix.h
+@@ -48,7 +48,7 @@
+ # else
+ #  define off_t     cr_off64
+ # endif
+-# define off64_t    cr_off64
++# define off_t    cr_off64
+ #endif
+ #include <stdio.h>
+ #include <string.h>

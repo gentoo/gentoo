@@ -37,6 +37,11 @@ BDEPEND="dev-build/cmake
 
 S="${WORKDIR}/Criterion-${PV}"
 
+PATCHES=(
+	# bug 906379
+	"${FILESDIR}"/${PN}-2.4.1-musl-1.2.4-fix.patch
+)
+
 python_check_deps() {
 	has_version "dev-util/cram[${PYTHON_USEDEP}]"
 }
@@ -61,7 +66,7 @@ src_configure() {
 	filter-lto
 
 	# bug 906379
-	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+	append-cflags "-D_FILE_OFFSET_BITS=64"
 
 	local emesonargs=(
 		-Dsamples=$(usex test true false)
