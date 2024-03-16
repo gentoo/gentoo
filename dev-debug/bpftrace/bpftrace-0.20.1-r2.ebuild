@@ -31,6 +31,7 @@ RDEPEND="
 	>=sys-devel/clang-10
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
+	sys-process/procps
 	sys-libs/binutils-libs:=
 	virtual/libelf:=
 "
@@ -43,6 +44,8 @@ BDEPEND="
 	app-arch/xz-utils
 	app-alternatives/lex
 	app-alternatives/yacc
+	app-editors/vim-core
+	dev-util/pahole
 	virtual/pkgconfig
 "
 
