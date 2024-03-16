@@ -45,3 +45,11 @@ src_configure() {
 
 	qt6-build_src_configure
 }
+
+src_test() {
+	# users' session setting may break tst_clientextension (bug #927030)
+	unset DESKTOP_SESSION XDG_CURRENT_DESKTOP
+	unset GNOME_DESKTOP_SESSION_ID KDE_FULL_SESSION
+
+	qt6-build_src_test
+}
