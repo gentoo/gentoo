@@ -11,7 +11,7 @@ DESCRIPTION="Astronomical World Coordinate System transformations library"
 HOMEPAGE="https://www.atnf.csiro.au/people/mcalabre/WCS/"
 SRC_URI="ftp://ftp.atnf.csiro.au/pub/software/${PN}/${P}.tar.bz2"
 
-SLOT="0/7"
+SLOT="0/8"
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fortran fits pgplot static-libs +tools"
