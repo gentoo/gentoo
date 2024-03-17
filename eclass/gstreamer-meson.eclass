@@ -95,6 +95,11 @@ hls"
 soup"
 	fi
 
+	if grep -q "option('gl'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+gl"
+	fi
+
 	# See bug #907483
 	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
 		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}

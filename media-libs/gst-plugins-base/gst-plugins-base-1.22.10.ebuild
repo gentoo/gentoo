@@ -98,7 +98,7 @@ multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
 
 	# opus: split to media-plugins/gst-plugins-opus
-	GST_PLUGINS_NOAUTO="alsa ogg pango theora vorbis x11 xshm xvideo"
+	GST_PLUGINS_NOAUTO="alsa gl ogg pango theora vorbis x11 xshm xvideo"
 
 	local emesonargs=(
 		-Dtools=enabled
