@@ -13,14 +13,14 @@ HOMEPAGE="https://github.com/copiousfreetime/launchy"
 
 LICENSE="ISC"
 
-SLOT="0"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend "
 	>=dev-ruby/addressable-2.8
 	dev-ruby/childprocess:5
-	!<dev-ruby/launchy-2.5.2
+	!<dev-ruby/launchy-2.5.2-r1
 "
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.0:5 )"
