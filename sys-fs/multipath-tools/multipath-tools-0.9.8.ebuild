@@ -34,7 +34,6 @@ CONFIG_CHECK="~DM_MULTIPATH"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.7-remove-Werror.patch
-	"${FILESDIR}"/${P}-null-pointer-dereference-in-uev_update_path.patch
 )
 
 myemake() {
