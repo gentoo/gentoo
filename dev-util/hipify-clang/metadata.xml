@@ -10,6 +10,6 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm-Developer-Tools/HIPIFY</remote-id>
+    <remote-id type="github">ROCm/HIPIFY</remote-id>
   </upstream>
 </pkgmetadata>
