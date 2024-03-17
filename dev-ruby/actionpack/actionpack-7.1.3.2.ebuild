@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -39,7 +39,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "
 	test? (
-		dev-ruby/mocha:0.14
+		dev-ruby/mocha
 		dev-ruby/bundler
 		>=dev-ruby/capybara-3.26
 		~dev-ruby/activemodel-${PV}
@@ -47,7 +47,7 @@ ruby_add_bdepend "
 		>=dev-ruby/rack-cache-1.2:1.2
 		dev-ruby/selenium-webdriver:4
 		www-servers/puma
-		<dev-ruby/minitest-5.16:*
+		dev-ruby/minitest:5
 	)"
 
 all_ruby_prepare() {
