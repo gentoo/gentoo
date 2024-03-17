@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/913864
+https://gitlab.xfce.org/xfce/xfce4-settings/-/issues/494
+https://gitlab.xfce.org/xfce/xfce4-settings/-/commit/f13b9ff1e5361439eafb9cffafd4d23fa6b2cb9e
+
+From f13b9ff1e5361439eafb9cffafd4d23fa6b2cb9e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ga=C3=ABl=20Bonithon?= <gael@xfce.org>
+Date: Tue, 28 Nov 2023 11:27:59 +0100
+Subject: [PATCH] build: Check for gmodule-2.0 (V2)
+
+Completes: c4a489aebce624301e7ad63ad14a97fbc46c3207
+Related: #494
+---
+ xfsettingsd/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/xfsettingsd/Makefile.am b/xfsettingsd/Makefile.am
+index 181b5e77..0a81974a 100644
+--- a/xfsettingsd/Makefile.am
++++ b/xfsettingsd/Makefile.am
+@@ -158,6 +158,7 @@ libxfsettingsd_gtk_settings_sync_la_SOURCES = \
+ 	gtk-settings-module.c
+ 
+ libxfsettingsd_gtk_settings_sync_la_CFLAGS = \
++	$(GMODULE_CFLAGS) \
+ 	$(GTK_CFLAGS) \
+ 	$(XFCONF_CFLAGS)
+ 
+@@ -169,6 +170,7 @@ libxfsettingsd_gtk_settings_sync_la_LDFLAGS = \
+ 	$(PLATFORM_LDFLAGS)
+ 
+ libxfsettingsd_gtk_settings_sync_la_LIBADD = \
++	$(GMODULE_LIBS) \
+ 	$(GTK_LIBS) \
+ 	$(XFCONF_LIBS)
+ 
