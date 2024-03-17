@@ -36,6 +36,7 @@
 # Sam James <sam@gentoo.org> (2024-03-16)
 # MIssing files (bug #927142).
 =app-admin/salt-3007.0
+=dev-python/pytest-salt-factories-1.0.0_rc29
 
 # Eli Schwartz <eschwartz93@gmail.com> (2024-03-14)
 # Deprecated, doesn't work with python 3.12. Unmaintained with last
