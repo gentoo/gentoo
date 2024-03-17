@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Enhanced C version of Carbon relay, aggregator and rewriter"
 HOMEPAGE="https://github.com/grobian/carbon-c-relay"
