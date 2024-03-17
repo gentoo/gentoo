@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 optfeature systemd
+inherit distutils-r1 systemd
 
 COMMIT="f278ef19b0bc94ae93881ee4ab45fcbb03926e5f"
 
@@ -29,6 +29,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-24.2-dont-force-shim.patch"
+	"${FILESDIR}/${PN}-24.2-allow-cmdline-override.patch"
 )
 
 distutils_enable_tests unittest
@@ -45,11 +46,7 @@ python_install_all() {
 	doinitd "${FILESDIR}/kernel-bootcfg-boot-successful"
 	systemd_dounit systemd/kernel-bootcfg-boot-successful.service
 
-	exeinto /usr/lib/kernel/install.d
-	doexe systemd/99-uki-uefi-setup.install
-}
-
-pkg_postinst() {
-	optfeature "managing UEFI entries on Unified Kernel Image installation and removal" \
-		"sys-kernel/installkernel[systemd,uki]"
+	# Use our own provided by sys-kernel/installkernel[efistub] instead
+	#exeinto /usr/lib/kernel/install.d
+	#doexe systemd/99-uki-uefi-setup.install
 }
