@@ -107,6 +107,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
 COMMON_DEPEND="
 	>=app-text/texlive-core-2023[xetex]
 	>=dev-texlive/texlive-basic-2023
+	>=dev-texlive/texlive-latex-2023
 "
 RDEPEND="
 	${COMMON_DEPEND}
