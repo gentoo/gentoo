@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.1-set-soversion.patch
 	"${FILESDIR}"/${PN}-5.7.1-no-strip.patch
 	"${FILESDIR}"/${PN}-5.7.1-remove-example.patch
+	"${FILESDIR}"/${PN}-5.4.2-detect-builtin-amdgpu.patch
 )
 
 src_prepare() {
