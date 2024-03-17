@@ -45,7 +45,7 @@ https://salsa.debian.org/rocm-team/rocr-runtime/-/blob/master/debian/patches/000
 +        }
 +      } else if (code_object_isa.GetMajorVersion() == 10) {
 +        if (code_object_isa.GetMinorVersion() == 1) {
-+          const std::array<int32_t, 2> gfx1010_equivalent = { 0, 2 };
++          const std::array<int32_t, 1> gfx1010_equivalent = { 0 };
 +          const std::array<int32_t, 4> gfx1010_superset = { 0, 1, 2, 3 };
 +          if (Contains(gfx1010_equivalent, code_object_isa.GetStepping()) &&
 +              Contains(gfx1010_superset, agent_isa.GetStepping())) {
