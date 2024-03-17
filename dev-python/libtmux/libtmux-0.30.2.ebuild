@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
 inherit distutils-r1
 
@@ -53,5 +53,8 @@ python_test() {
 	local -a EPYTEST_DESELECT=(
 		libtmux/pane.py::libtmux.pane.Pane.send_keys
 	)
+	# tests/test_window.py::test_fresh_window_data fails if TMUX_PANE is set
+	# https://bugs.gentoo.org/927158
+	local -x TMUX_PANE=
 	epytest
 }
