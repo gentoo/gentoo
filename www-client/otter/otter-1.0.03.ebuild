@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake desktop xdg
+inherit cmake desktop flag-o-matic xdg
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/OtterBrowser/${PN}-browser"
@@ -47,6 +47,14 @@ PATCHES=(
 )
 
 src_prepare() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/864130
+	#
+	# Compiles fine with otter-9999, BUT new versions are being tagged from a
+	# maintenance branch, not from master, so do check before trying to remove
+	# this.
+	filter-lto
+
 	cmake_src_prepare
 
 	if [[ -n ${LINGUAS} ]]; then
