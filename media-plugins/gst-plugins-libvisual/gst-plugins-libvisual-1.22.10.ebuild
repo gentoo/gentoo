@@ -17,7 +17,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	gstreamer_system_package audio_dep:gstreamer-audio
-	gstreamer_system_package pbutils_dep:gstreamer-pbutils
-	gstreamer_system_package video_dep:gstreamer-video
+	gstreamer_system_package audio_dep:gstreamer-audio \
+		pbutils_dep:gstreamer-pbutils \
+		video_dep:gstreamer-video
 }
