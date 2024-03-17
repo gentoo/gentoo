@@ -23,7 +23,7 @@ PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 DOCS=( ../AUTHORS ../ChangeLog )
 
-src_compile() {
+src_configure() {
 	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/859604
 	# Upstream is on sourceforge, inactive since 2009. No bug filed.
@@ -32,5 +32,5 @@ src_compile() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
-	default
+	cmake_src_configure
 }
