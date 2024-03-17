@@ -2339,9 +2339,8 @@ toolchain_pkg_preinst() {
 			if [[ -f "${T}"/${CHOST}.xfail ]] ; then
 				cp -v "${T}"/${CHOST}.xfail "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" || die
 			fi
-			find . -name \*.sum -exec cp --parents -v {} "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" \;
-                )
-        fi
+		)
+	fi
 }
 
 #---->> pkg_post* <<----
