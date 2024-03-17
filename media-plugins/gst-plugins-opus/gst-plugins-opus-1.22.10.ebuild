@@ -19,9 +19,9 @@ DEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
 	default
-	gstreamer_system_package audio_dep:gstreamer-audio
-	gstreamer_system_package pbutils_dep:gstreamer-pbutils
-	gstreamer_system_package tag_dep:gstreamer-tag
+	gstreamer_system_package audio_dep:gstreamer-audio \
+		pbutils_dep:gstreamer-pbutils \
+		tag_dep:gstreamer-tag
 }
 
 # Everything below is for building opusparse from gst-plugins-bad. Once it moves into -base, all below can be removed
