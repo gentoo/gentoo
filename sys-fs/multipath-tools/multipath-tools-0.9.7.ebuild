@@ -67,6 +67,8 @@ src_compile() {
 	tc-export CC
 	# Breaks with always_inline
 	filter-flags -fno-semantic-interposition
+	# Breaks because of use of wrapping (-Wl,-wrap, wrap_*)
+	filter-lto
 	myemake
 }
 
