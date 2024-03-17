@@ -31,6 +31,16 @@ src_prepare() {
 	append-flags -pthread
 	# fix build with >=sys-devel/gcc-11, bug #787866
 	sed -i "/^CPPFLAGS/s/=/= -DNO_TLS/" Makefile
+
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/858257
+	#
+	# There is an upstream update to 2.0.8 (lotta new versions!) but it changes
+	# way too much to trivially update. The issue may or may not be fixed.
+	# Before multiple other things bombed out, the erroring source file
+	# *seemed* to compile ok.
+	append-flags -fno-strict-aliasing
+	filter-lto
 }
 
 src_compile() {
