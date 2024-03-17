@@ -8,49 +8,46 @@ ROCM_VERSION=${PV}
 inherit cmake edo rocm flag-o-matic
 
 DESCRIPTION="ROCm Communication Collectives Library (RCCL)"
-HOMEPAGE="https://github.com/ROCmSoftwarePlatform/rccl"
-SRC_URI="https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-${PV}.tar.gz -> rccl-${PV}.tar.gz"
+HOMEPAGE="https://github.com/ROCm/rccl"
+SRC_URI="https://github.com/ROCm/rccl/archive/rocm-${PV}.tar.gz -> rccl-${PV}.tar.gz"
+S="${WORKDIR}/rccl-rocm-${PV}"
 
 LICENSE="BSD"
-KEYWORDS="~amd64"
 SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="
-	=dev-util/hip-5*
+	=dev-util/hip-6*
 	dev-util/rocm-smi:${SLOT}"
 DEPEND="${RDEPEND}
 	sys-libs/binutils-libs"
 BDEPEND="
 	>=dev-build/cmake-3.22
-	>=dev-build/rocm-cmake-5.0.2-r1
+	>=dev-build/rocm-cmake-5.7.1
 	dev-util/hipify-clang:${SLOT}
 	test? ( dev-cpp/gtest )"
 
 RESTRICT="!test? ( test )"
-S="${WORKDIR}/rccl-rocm-${PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.7.1-remove-chrpath.patch"
+	"${FILESDIR}/${PN}-6.0.2-fix-version-check.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
 	# https://reviews.llvm.org/D69582 - clang does not support parallel jobs
-	sed -i 's/-parallel-jobs=[0-9][0-9]//g' CMakeLists.txt || die
+	sed 's/-parallel-jobs=[0-9][0-9]//g' -i CMakeLists.txt || die
 
-	# https://github.com/ROCmSoftwarePlatform/rccl/pull/860 - bad escape
-	sed -i 's/\\%/%/' src/include/msccl/msccl_struct.h || die
+	# https://github.com/ROCm/rccl/issues/958 - fix AMDGPU_TARGETS
+	sed '/set(AMDGPU_TARGETS/s/ FORCE//' -i CMakeLists.txt || die
 
-	# https://github.com/ROCmSoftwarePlatform/rccl/issues/958 - fix AMDGPU_TARGETS
-	sed -i '/set(AMDGPU_TARGETS/s/ FORCE//' CMakeLists.txt || die
+	# complete fix-version-check patch
+	sed "s/@rocm_version@/${PV}/" -i CMakeLists.txt || die
 }
 
 src_configure() {
-	addpredict /dev/kfd
-	addpredict /dev/dri/
-
 	# https://github.com/llvm/llvm-project/issues/71711 - fix issue of clang
 	append-ldflags -Wl,-z,noexecstack
 
@@ -69,11 +66,4 @@ src_test() {
 	check_amdgpu
 	cd "${BUILD_DIR}" || die
 	LD_LIBRARY_PATH="${BUILD_DIR}" edob test/rccl-UnitTests
-}
-
-src_install() {
-	cmake_src_install
-
-	# remove extra copy of headers
-	rm -r "${ED}"/usr/rccl || die
 }
