@@ -1,0 +1,13 @@
+Fix error "cannot assign to variable 'rhs' with const-qualified type"
+PR: https://github.com/ROCm/rocm_smi_lib/pull/156
+--- a/include/rocm_smi/rocm_smi_utils.h
++++ b/include/rocm_smi/rocm_smi_utils.h
+@@ -216,7 +216,7 @@ class ScopeGuard {
+   __forceinline ~ScopeGuard() {
+     if (!dismiss_) release_();
+   }
+-  __forceinline ScopeGuard& operator=(const ScopeGuard& rhs) {
++  __forceinline ScopeGuard& operator=(ScopeGuard& rhs) {
+     dismiss_ = rhs.dismiss_;
+     release_ = rhs.release_;
+     rhs.dismiss_ = true;
