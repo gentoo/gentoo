@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/919084
+https://github.com/linuxmint/cinnamon-settings-daemon/commit/48da3c4763bea93ea3e1d2ba2e2dfdb7f41d8afc
+
+From 48da3c4763bea93ea3e1d2ba2e2dfdb7f41d8afc Mon Sep 17 00:00:00 2001
+From: Leigh Scott <leigh123linux@gmail.com>
+Date: Mon, 5 Feb 2024 16:07:03 +0000
+Subject: [PATCH] Fix compile issue (#386)
+
+(Warning becomes an error due to gcc 14 changes)
+--- a/plugins/keyboard/gkbd-configuration.c
++++ b/plugins/keyboard/gkbd-configuration.c
+@@ -340,11 +340,11 @@ gkbd_configuration_get_xkl_engine (GkbdConfiguration *configuration)
+ const char * const *
+ gkbd_configuration_get_group_names (GkbdConfiguration *configuration)
+ {
+-	return configuration->priv->full_group_names;
++	return (const char * const *)configuration->priv->full_group_names;
+ }
+ 
+ const char * const *
+ gkbd_configuration_get_short_group_names (GkbdConfiguration *configuration)
+ {
+-	return configuration->priv->short_group_names;
++	return (const char * const *)configuration->priv->short_group_names;
+ }
+
