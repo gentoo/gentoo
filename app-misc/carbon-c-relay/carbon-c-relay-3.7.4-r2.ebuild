@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,15 +17,19 @@ REQUIRED_USE="
 	pcre2?     ( !oniguruma )
 	oniguruma? ( !pcre2 )
 "
-RDEPEND="lz4? ( app-arch/lz4 )
+DEPEND="
+	lz4? ( app-arch/lz4 )
 	snappy? ( app-arch/snappy )
 	zlib? ( app-arch/gzip )
 	ssl? ( dev-libs/openssl:0= )
 	pcre2? ( dev-libs/libpcre2 )
 	oniguruma? ( dev-libs/oniguruma )
+"
+RDEPEND="
+	${DEPEND}
 	acct-group/carbon
-	acct-user/carbon"
-DEPEND="${RDEPEND}"
+	acct-user/carbon
+"
 
 src_configure() {
 	econf \
