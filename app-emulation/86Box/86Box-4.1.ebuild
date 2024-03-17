@@ -72,7 +72,7 @@ src_configure() {
 		-DRTMIDI="ON"
 		-DQT="$(usex qt5 'ON' $(usex qt6))"
 		-DRELEASE="ON"
-		-DUSE_QT6="$(usex qt6)"
+		$(usex qt6 '-DUSE_QT6=ON')
 	)
 
 	cmake_src_configure
