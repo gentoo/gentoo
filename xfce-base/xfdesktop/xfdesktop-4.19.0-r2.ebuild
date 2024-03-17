@@ -27,7 +27,8 @@ DEPEND="
 	>=xfce-base/garcon-0.6:=
 	>=xfce-base/libxfce4ui-4.13:=
 	>=xfce-base/libxfce4util-4.13:=
-	>=xfce-base/libxfce4windowing-4.19.1:=
+	<xfce-base/libxfce4windowing-4.19.3:=
+	>=xfce-base/libxfce4windowing-4.19.1
 	>=xfce-base/xfconf-4.12.1:=
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	thunar? ( >=xfce-base/thunar-4.17.10:= )
