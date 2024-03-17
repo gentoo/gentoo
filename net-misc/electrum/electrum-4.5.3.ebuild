@@ -58,6 +58,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+EPYTEST_IGNORE=(
+	# test for qml/PyQt6 GUI that doesn't work anyway
+	tests/test_qml_types.py
+)
+
 src_prepare() {
 	# use backwards-compatible cryptodome API
 	sed -i -e 's:Cryptodome:Crypto:' electrum/crypto.py || die
