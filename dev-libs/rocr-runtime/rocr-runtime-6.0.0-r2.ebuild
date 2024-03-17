@@ -3,24 +3,25 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic llvm
+LLVM_COMPAT=( 17 )
 
-LLVM_MAX_SLOT=17
+inherit cmake flag-o-matic llvm-r1
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCR-Runtime/"
+	EGIT_REPO_URI="https://github.com/ROCm/ROCR-Runtime.git"
 	inherit git-r3
 	S="${WORKDIR}/${P}/src"
 else
-	SRC_URI="https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ROCm/ROCR-Runtime/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/ROCR-Runtime-rocm-${PV}/src"
 	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Radeon Open Compute Runtime"
-HOMEPAGE="https://github.com/RadeonOpenCompute/ROCR-Runtime"
+HOMEPAGE="https://github.com/ROCm/ROCR-Runtime"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3.0_no-aqlprofiler.patch"
+	"${FILESDIR}/${PN}-5.7.1-extend-isa-compatibility-check.patch"
 	"${FILESDIR}/${PN}-5.7.1-musl.patch"
 )
 
@@ -33,8 +34,11 @@ COMMON_DEPEND="dev-libs/elfutils
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
-	sys-devel/clang:${LLVM_MAX_SLOT}=
-	sys-devel/lld:${LLVM_MAX_SLOT}="
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}=
+		sys-devel/lld:${LLVM_SLOT}=
+	')
+"
 RDEPEND="${DEPEND}"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
