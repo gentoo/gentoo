@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="High performance web server"
 HOMEPAGE="https://www.fefe.de/gatling/"
@@ -39,6 +39,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/864133
+	#
+	# Last released in 2016, sources are in cvs so I cannot check for activity.
+	filter-lto
+
 	local DIET=
 	use diet && DIET='/usr/bin/diet'
 
