@@ -105,6 +105,10 @@ RDPEND="${COMMON_DEPEND}
 	tools? ( !net-misc/freerdp:2[tools] )
 "
 
+option() {
+	usex "$1" ON OFF
+}
+
 src_configure() {
 	# bug #881695
 	filter-lto
@@ -115,42 +119,42 @@ src_configure() {
 		# https://bugs.gentoo.org/927037
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
 
-		-DBUILD_TESTING=$(usex test ON OFF)
-		-DCHANNEL_URBDRC=$(usex usb ON OFF)
-		-DWITH_AAD=$(usex aad ON OFF)
-		-DWITH_ALSA=$(usex alsa ON OFF)
+		-DBUILD_TESTING=$(option test)
+		-DCHANNEL_URBDRC=$(option usb)
+		-DWITH_AAD=$(option aad)
+		-DWITH_ALSA=$(option alsa)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT=$(usex client ON OFF)
-		-DWITH_CLIENT_SDL=$(usex sdl ON OFF)
+		-DWITH_CLIENT=$(option client)
+		-DWITH_CLIENT_SDL=$(option sdl)
 		-DWITH_SAMPLE=OFF
-		-DWITH_CUPS=$(usex cups ON OFF)
-		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
+		-DWITH_CUPS=$(option cups)
+		-DWITH_DEBUG_ALL=$(option debug)
 		-DWITH_MANPAGES=ON
-		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_FFMPEG=$(option ffmpeg)
 		-DWITH_FREERDP_DEPRECATED_COMMANDLINE=ON
-		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
-		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
-		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
-		-DWITH_FUSE=$(usex fuse ON OFF)
-		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
-		-DWITH_JPEG=$(usex jpeg ON OFF)
-		-DWITH_KRB5=$(usex kerberos ON OFF)
-		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
-		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_SWSCALE=$(option ffmpeg)
+		-DWITH_CAIRO=$(option !ffmpeg)
+		-DWITH_DSP_FFMPEG=$(option ffmpeg)
+		-DWITH_FUSE=$(option fuse)
+		-DWITH_GSTREAMER_1_0=$(option gstreamer)
+		-DWITH_JPEG=$(option jpeg)
+		-DWITH_KRB5=$(option kerberos)
+		-DWITH_NEON=$(option cpu_flags_arm_neon)
+		-DWITH_OPENH264=$(option openh264)
 		-DWITH_OSS=OFF
-		-DWITH_PCSC=$(usex smartcard ON OFF)
-		-DWITH_PKCS11=$(usex smartcard ON OFF)
-		-DWITH_PULSE=$(usex pulseaudio ON OFF)
-		-DWITH_SERVER=$(usex server ON OFF)
-		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
-		-DWITH_UNICODE_BUILTIN=$(usex icu OFF ON)
-		-DWITH_VALGRIND_MEMCHECK=$(usex valgrind ON OFF)
-		-DWITH_X11=$(usex X ON OFF)
-		-DWITH_XINERAMA=$(usex xinerama ON OFF)
-		-DWITH_XV=$(usex xv ON OFF)
-		-DWITH_WAYLAND=$(usex wayland ON OFF)
+		-DWITH_PCSC=$(option smartcard)
+		-DWITH_PKCS11=$(option smartcard)
+		-DWITH_PULSE=$(option pulseaudio)
+		-DWITH_SERVER=$(option server)
+		-DWITH_LIBSYSTEMD=$(option systemd)
+		-DWITH_UNICODE_BUILTIN=$(option !icu)
+		-DWITH_VALGRIND_MEMCHECK=$(option valgrind)
+		-DWITH_X11=$(option X)
+		-DWITH_XINERAMA=$(option xinerama)
+		-DWITH_XV=$(option xv)
+		-DWITH_WAYLAND=$(option wayland)
 		-DWITH_WEBVIEW=OFF
-		-DWITH_WINPR_TOOLS=$(usex tools ON OFF)
+		-DWITH_WINPR_TOOLS=$(option tools)
 	)
 	cmake_src_configure
 }
