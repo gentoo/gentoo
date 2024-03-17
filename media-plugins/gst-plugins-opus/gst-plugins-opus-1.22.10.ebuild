@@ -43,11 +43,6 @@ src_compile() {
 	S="${WORKDIR}/gst-plugins-bad-${PV}"  multilib_foreach_abi in_bdir gstreamer_multilib_src_compile
 }
 
-multilib_src_test() {
-	S="${WORKDIR}/gst-plugins-base-${PV}" multilib_foreach_abi in_bdir gstreamer_multilib_src_test
-	S="${WORKDIR}/gst-plugins-bad-${PV}"  multilib_foreach_abi in_bdir gstreamer_multilib_src_test
-}
-
 src_install() {
 	S="${WORKDIR}/gst-plugins-base-${PV}" multilib_foreach_abi in_bdir gstreamer_multilib_src_install
 	S="${WORKDIR}/gst-plugins-bad-${PV}"  multilib_foreach_abi in_bdir gstreamer_multilib_src_install
