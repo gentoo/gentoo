@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake vcs-snapshot
+inherit cmake flag-o-matic vcs-snapshot
 
 SNAPSHOT="c55215330b1e8a61af6d34d57d3d8236c8cc7d5b"
 
@@ -19,6 +19,15 @@ IUSE=""
 RDEPEND="net-libs/gnutls:= net-analyzer/net-snmp:="
 DEPEND="${RDEPEND}"
 DOCS=( readme.txt Changes )
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861683
+	# appears to be terminally dead
+	filter-lto
+
+	cmake_src_configure
+}
 
 src_install() {
 	cmake_src_install
