@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=aiorpcX-${PV}
 DESCRIPTION="Generic async RPC implementation, including JSON-RPC"
 HOMEPAGE="
 	https://github.com/kyuupichan/aiorpcX/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/kyuupichan/aiorpcX/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
