@@ -11,7 +11,6 @@
 		<flag name="fuse">Clipboard with FUSE file copy support</flag>
 		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
 		<flag name="server">Build server binaries</flag>
-		<flag name="tools">Build tools</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">FreeRDP/FreeRDP</remote-id>
