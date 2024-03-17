@@ -90,3 +90,4 @@ move media-libs/oneVPL media-libs/libvpl
 move sys-auth/AusweisApp2 sys-auth/AusweisApp
 move sci-libs/scikit-learn dev-python/scikit-learn
 slotmove =dev-ruby/launchy-3.0.0 0 3
+move dev-python/DBUtils dev-python/dbutils
