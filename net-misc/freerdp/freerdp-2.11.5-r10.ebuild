@@ -80,9 +80,11 @@ COMMON_DEPEND="
 	)
 	smartcard? ( sys-apps/pcsc-lite )
 	systemd? ( sys-apps/systemd:0= )
-	wayland? (
-		dev-libs/wayland
-		x11-libs/libxkbcommon
+	client? (
+		wayland? (
+			dev-libs/wayland
+			x11-libs/libxkbcommon
+		)
 	)
 	X? (
 		x11-libs/libX11
@@ -106,6 +108,14 @@ PATCHES=(
 
 option() {
 	usex "$1" ON OFF
+}
+
+option_client() {
+	if use client; then
+		option "$1"
+	else
+		echo OFF
+	fi
 }
 
 src_configure() {
@@ -141,7 +151,7 @@ src_configure() {
 		-DWITH_X11=$(option X)
 		-DWITH_XINERAMA=$(option xinerama)
 		-DWITH_XV=$(option xv)
-		-DWITH_WAYLAND=$(option wayland)
+		-DWITH_WAYLAND=$(option_client wayland)
 		-DWITH_WINPR_TOOLS=$(option tools)
 	)
 	cmake_src_configure
