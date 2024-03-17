@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2024-03-17)
+# Needs masked version of salt (bug #927142).
+dev-python/pytest-salt-factories python_targets_python3_12
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
 # These packages have RESTRICT="test" and depend on dev-java/ant-junit
 # which is going away. Remove this mask when ebuilds are updated.
