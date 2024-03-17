@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 
 DEPEND="
 	dev-java/ant:0
-	dev-java/bnd:0
+	~dev-java/bnd-${PV}:0
 	>=virtual/jdk-17:*"
 RDEPEND=">=virtual/jre-17:*"
 
