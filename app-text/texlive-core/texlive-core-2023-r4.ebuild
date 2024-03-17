@@ -184,6 +184,8 @@ RDEPEND="
 		dev-lang/tk
 		dev-perl/Tk
 	)
+	!<dev-texlive/texlive-basic-2023
+	!<dev-texlive/texlive-mathscience-2023
 "
 
 S="${WORKDIR}/${MY_P}"
