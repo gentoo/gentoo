@@ -83,36 +83,23 @@ gstreamer_get_plugins() {
 		"${S}/meson_options.txt" || die "Failed to extract options for plugins with external deps"
 	)
 
-	# opencv and hls in gst-plugins-bad are split, can't be properly detected
-	if grep -q "option('opencv'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-opencv"
-	fi
-	if grep -q "option('hls'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-hls"
-	fi
+	# meson_options that should be in GST_PLUGINS_EXT_DEPS but automatic parsing above can't catch
+	local extra_options
+	extra_options=(
+		opencv
+		hls
+		soup
+		gl
+		qt5
+		qt6
+	)
 
-	# soup in gst-plugins-good is split, can't be properly detected
-	if grep -q "option('soup'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-soup"
-	fi
-
-	if grep -q "option('gl'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-gl"
-	fi
-
-	# See bug #907483
-	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-qt5"
-	fi
-	if grep -q "option('qt6'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-qt6"
-	fi
+	for option in ${extra_options[@]} ; do
+		if grep -q "option('${option}'" "${EMESON_SOURCE}"/meson_options.txt ; then
+			GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+${option}"
+		fi
+	done
 }
 
 # @FUNCTION: gstreamer_system_package
