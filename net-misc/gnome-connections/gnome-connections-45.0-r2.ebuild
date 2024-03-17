@@ -24,7 +24,7 @@ DEPEND="
 	>=dev-libs/libxml2-2.7.8
 	app-crypt/libsecret[vala]
 
-	>=net-misc/freerdp-2.0.0:=
+	>=net-misc/freerdp-2.0.0:2=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
