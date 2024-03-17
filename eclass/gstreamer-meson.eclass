@@ -26,8 +26,12 @@
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
 
+# TODO: Remove after all older versions are gone from tree
+if ver_test ${PV} -lt 1.22.10 ; then
+	inherit virtualx
+fi
 # multilib-minimal goes last
-inherit meson multilib toolchain-funcs virtualx xdg-utils multilib-minimal
+inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
 
 case "${EAPI:-0}" in
 	7)
@@ -234,6 +238,8 @@ if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
 	# Export multilib phases used for split builds.
 	multilib_src_install_all() { gstreamer_multilib_src_install_all; }
 else
+	inherit virtualx
+
 	IUSE="nls test"
 	RESTRICT="!test? ( test )"
 	if [[ "${PN}" != "gstreamer" ]]; then
