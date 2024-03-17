@@ -23,15 +23,13 @@ HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-IUSE="alsa cpu_flags_arm_neon client cups debug doc +ffmpeg gstreamer icu jpeg kerberos openh264 pulseaudio server smartcard systemd test tools usb valgrind wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon client cups debug +ffmpeg gstreamer icu jpeg kerberos openh264 pulseaudio server smartcard systemd test tools usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
-	X? ( doc? (
-		app-text/docbook-xml-dtd:4.1.2
-		app-text/xmlto
-	) )
+	app-text/docbook-xml-dtd:4.1.2
+	app-text/xmlto
 "
 
 COMMON_DEPEND="
@@ -131,7 +129,7 @@ src_configure() {
 		-DWITH_CUPS=$(option cups)
 		-DWITH_CLIENT=$(option client)
 		-DWITH_DEBUG_ALL=$(option debug)
-		-DWITH_MANPAGES=$(option doc)
+		-DWITH_MANPAGES=ON
 		-DWITH_FFMPEG=$(option ffmpeg)
 		-DWITH_SWSCALE=$(option ffmpeg)
 		-DWITH_CAIRO=$(option !ffmpeg)
