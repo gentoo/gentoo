@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2024-03-17)
+# Suffers from unaligned accesses, upstream's working on it.
+# https://github.com/psycopg/psycopg/issues/734
+<=dev-python/psycopg-3.1.18 native-extensions
+
 # Sam James <sam@gentoo.org> (2024-03-17)
 # Needs masked version of salt (bug #927142).
 dev-python/pytest-salt-factories python_targets_python3_12
