@@ -25,18 +25,18 @@ SLOT="0/31" # based on SONAME
 KEYWORDS="~amd64 ~arm ~arm64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
+REQUIRED_USE="doc? ( utils )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-arch/libdeflate
+	app-arch/libdeflate[zlib]
 	>=dev-libs/imath-3.1.6:=
-	doc? (
-		sys-apps/help2man
-		dev-python/sphinx-press-theme
-	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( sys-apps/help2man )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-bintests-iff-utils.patch"
@@ -54,34 +54,32 @@ src_prepare() {
 
 	cmake_src_prepare
 
-	if use test; then
-		if use utils; then
-			IMAGES=(
-				Beachball/multipart.0001.exr
-				Beachball/singlepart.0001.exr
-				Chromaticities/Rec709.exr
-				Chromaticities/Rec709_YC.exr
-				Chromaticities/XYZ.exr
-				Chromaticities/XYZ_YC.exr
-				LuminanceChroma/Flowers.exr
-				LuminanceChroma/Garden.exr
-				MultiResolution/ColorCodedLevels.exr
-				MultiResolution/WavyLinesCube.exr
-				MultiResolution/WavyLinesLatLong.exr
-				MultiView/Adjuster.exr
-				TestImages/GammaChart.exr
-				TestImages/GrayRampsHorizontal.exr
-				v2/LeftView/Balls.exr
-				v2/Stereo/Trunks.exr
-			)
+	if use test && use utils; then
+		IMAGES=(
+			Beachball/multipart.0001.exr
+			Beachball/singlepart.0001.exr
+			Chromaticities/Rec709.exr
+			Chromaticities/Rec709_YC.exr
+			Chromaticities/XYZ.exr
+			Chromaticities/XYZ_YC.exr
+			LuminanceChroma/Flowers.exr
+			LuminanceChroma/Garden.exr
+			MultiResolution/ColorCodedLevels.exr
+			MultiResolution/WavyLinesCube.exr
+			MultiResolution/WavyLinesLatLong.exr
+			MultiView/Adjuster.exr
+			TestImages/GammaChart.exr
+			TestImages/GrayRampsHorizontal.exr
+			v2/LeftView/Balls.exr
+			v2/Stereo/Trunks.exr
+		)
 
-			mkdir -p "${BUILD_DIR}/src/test/bin" || die
+		mkdir -p "${BUILD_DIR}/src/test/bin" || die
 
-			for image in "${IMAGES[@]}"; do
-				mkdir -p "${BUILD_DIR}/src/test/bin/$(dirname "${image}")" || die
-				cp -a "${WORKDIR}/openexr-images-1.0/${image}" "${BUILD_DIR}/src/test/bin/$(dirname "${image}")/" || die
-			done
-		fi
+		for image in "${IMAGES[@]}"; do
+			mkdir -p "${BUILD_DIR}/src/test/bin/$(dirname "${image}")" || die
+			cp -a "${WORKDIR}/openexr-images-1.0/${image}" "${BUILD_DIR}/src/test/bin/${image}" || die
+		done
 	fi
 
 }
@@ -98,14 +96,14 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 		-DBUILD_WEBSITE="no"
 
+		-DOPENEXR_BUILD_EXAMPLES="$(usex examples)"
 		-DOPENEXR_BUILD_PYTHON="no"
 		-DOPENEXR_BUILD_TOOLS="$(usex utils)"
 		-DOPENEXR_ENABLE_LARGE_STACK="$(usex large-stack)"
 		-DOPENEXR_ENABLE_THREADING="$(usex threads)"
 
 		-DOPENEXR_INSTALL="yes"
-		-DOPENEXR_INSTALL_DOCS="$(usex doc "$(usex utils)")"
-		-DOPENEXR_INSTALL_EXAMPLES="$(usex examples)"
+		-DOPENEXR_INSTALL_DOCS="$(usex doc)"
 		-DOPENEXR_INSTALL_PKG_CONFIG="yes"
 		-DOPENEXR_INSTALL_TOOLS="$(usex utils)"
 
@@ -113,8 +111,15 @@ src_configure() {
 
 		-DOPENEXR_FORCE_INTERNAL_DEFLATE="no"
 		-DOPENEXR_FORCE_INTERNAL_IMATH="no"
-		-DOPENEXR_RUN_FUZZ_TESTS="$(usex test)" # NOTE expensive
 	)
+	if use test; then
+		# OPENEXR_RUN_FUZZ_TESTS depends on BUILD_TESTING, see
+		#   - https://bugs.gentoo.org/925128
+		#   - https://openexr.com/en/latest/install.html#component-options
+
+		# NOTE: the fuzz tests are very slow
+		mycmakeargs+=( -DOPENEXR_RUN_FUZZ_TESTS="ON" )
+	fi
 
 	cmake_src_configure
 }
