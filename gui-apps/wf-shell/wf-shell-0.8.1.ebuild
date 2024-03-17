@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit meson xdg
 
 DESCRIPTION="Compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wf-shell"
