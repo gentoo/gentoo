@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# virt-firmware is keyworded here
+sys-kernel/installkernel -efistub
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
 # media-libs/libdovi is keyworded here
 media-libs/libplacebo -libdovi

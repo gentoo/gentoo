@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# Experimental, virt-firmware is keyworded only unstable
+sys-kernel/installkernel efistub
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
 # media-libs/libdovi is not stable here yet
 media-libs/libplacebo libdovi
