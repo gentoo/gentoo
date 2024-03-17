@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/libsecp256k1
 	dev-python/scrypt[${PYTHON_USEDEP}]
 	>=dev-python/aiohttp-socks-0.3[${PYTHON_USEDEP}]
-	=dev-python/aiorpcX-0.22*[${PYTHON_USEDEP}]
+	=dev-python/aiorpcx-0.22*[${PYTHON_USEDEP}]
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
 	dev-python/bitstring[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
