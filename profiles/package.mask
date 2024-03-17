@@ -224,12 +224,6 @@ kde-misc/gmail-feed
 # Removal on 2024-03-31.
 sci-libs/mpir
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-29)
-# Breaks xfce-base/xfdesktop (both 4.19.0 and masked 4.19.1).
-# https://gitlab.xfce.org/xfce/xfdesktop/-/issues/282
-=xfce-base/libxfce4windowing-4.19.3
-=xfce-base/xfce4-panel-4.19.3
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
 # KDE Plasma 6.0.2, Gear 24.02.0 and Frameworks 6.0.0 mask
 #
