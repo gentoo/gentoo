@@ -66,8 +66,8 @@ src_configure() {
 	if use elogind; then
 		local pkgconfig="$(tc-getPKG_CONFIG)"
 		myconf+=(
-			ACTION_BUTTON_CFLAGS="$(${pkgconfig} --cflags gio-unix-2.0 gtk+-3.0 libelogind x11)"
-			ACTION_BUTTON_LIBS="$(${pkgconfig} --libs gio-unix-2.0 gtk+-3.0 libelogind x11)"
+			ACTION_BUTTON_CFLAGS="$(${pkgconfig} --cflags gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind x11)"
+			ACTION_BUTTON_LIBS="$(${pkgconfig} --libs gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind x11)"
 			LAUNCHER_CFLAGS="$(${pkgconfig} --cflags gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
 			LAUNCHER_LIBS="$(${pkgconfig} --libs gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
 			MENU_CFLAGS="$(${pkgconfig} --cflags gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind)"
