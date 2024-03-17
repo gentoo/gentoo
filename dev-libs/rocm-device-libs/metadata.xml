@@ -5,7 +5,11 @@
         <email>candrews@gentoo.org</email>
         <name>Craig Andrews</name>
     </maintainer>
+    <maintainer type="person">
+      <email>lockalsash@gmail.com</email>
+      <name>Sv. Lockal</name>
+    </maintainer>
     <upstream>
-        <remote-id type="github">RadeonOpenCompute/ROCm-Device-Libs</remote-id>
+        <remote-id type="github">ROCm/ROCm-Device-Libs</remote-id>
     </upstream>
 </pkgmetadata>
