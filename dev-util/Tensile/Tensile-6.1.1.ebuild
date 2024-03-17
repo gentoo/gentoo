@@ -6,9 +6,9 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 ROCM_VERSION=${PV}
-inherit cmake distutils-r1 llvm prefix rocm
+LLVM_COMPAT=( 18 )
 
-LLVM_MAX_SLOT=17
+inherit cmake distutils-r1 llvm-r1 prefix rocm
 
 DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/Tensile"
@@ -16,8 +16,8 @@ SRC_URI="https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-${PV}.tar.
 S="${WORKDIR}/${PN}-rocm-${PV}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
 SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64"
 IUSE="client test"
 REQUIRED_USE="client? ( ${ROCM_REQUIRED_USE} )"
 
@@ -28,9 +28,11 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-cpp/msgpack-cxx-6.0.0
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	=dev-util/hip-5*
+	=dev-util/hip-6*
 	>=dev-util/rocm-smi-4.3.0
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+	')
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -48,15 +50,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
 	"${FILESDIR}"/${PN}-5.4.2-use-ninja.patch
-	"${FILESDIR}"/${PN}-5.7.1-expand-isa-compatibility.patch
-	"${FILESDIR}"/${PN}-5.7.1-fix-msgpack-dependency.patch
+	"${FILESDIR}"/${PN}-6.1.1-fix-msgpack-dependency.patch
+	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
 )
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
 
 src_prepare() {
 	distutils-r1_src_prepare
-	sed -e "s,\@LLVM_PATH\@,$(get_llvm_prefix ${LLVM_MAX_SLOT}),g" \
+	sed -e "s,\@LLVM_PATH\@,$(get_llvm_prefix),g" \
 		"${FILESDIR}"/${PN}-5.7.1-gentoopath.patch > "${S}"/gentoopath.patch || die
 	eapply $(prefixify_ro "${S}"/gentoopath.patch)
 
@@ -117,7 +119,7 @@ src_install() {
 
 	pushd ${PN} || die
 	insinto /usr/share/${PN}
-	doins -r Configs Perf ReplacementKernels-cov3 Source CustomKernels
+	doins -r Configs Perf Source CustomKernels
 	insinto /usr/$(get_libdir)/cmake/${PN}
 	doins cmake/*.cmake
 
