@@ -48,7 +48,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	# live git does not have a configure script
+	# Let cython reproduce this for more recent python versions
+	rm wrappers/python/lhapdf.cpp || die
 	eautoreconf
 }
 
