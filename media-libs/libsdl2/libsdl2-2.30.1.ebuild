@@ -246,6 +246,7 @@ src_compile() {
 }
 
 multilib_src_test() {
+	unset SDL_GAMECONTROLLERCONFIG SDL_GAMECONTROLLER_USE_BUTTON_LABELS
 	LD_LIBRARY_PATH="${BUILD_DIR}/build/.libs:${LD_LIBRARY_PATH}" emake -Onone -C test check V=1
 }
 
