@@ -1,0 +1,15 @@
+There is no /usr/.info/version file in Gentoo
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -120,10 +120,7 @@ execute_process(
+ message(STATUS "hipcc version:    ${hipcc_version_string}")
+ 
+ ## Check for ROCm version
+-execute_process(
+-  COMMAND         bash "-c" "cat ${ROCM_PATH}/.info/version"
+-  OUTPUT_VARIABLE rocm_version_string
+-)
++set(rocm_version_string "@rocm_version@")
+ string(REGEX MATCH "([0-9]+)\\.([0-9]+)\\.([0-9]+)" rocm_version_matches ${rocm_version_string})
+ if (rocm_version_matches)
+     set(ROCM_MAJOR_VERSION ${CMAKE_MATCH_1})
