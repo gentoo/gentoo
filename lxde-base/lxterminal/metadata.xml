@@ -4,5 +4,6 @@
 <!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">lxde</remote-id>
+		<remote-id type="github">lxde/lxterminal</remote-id>
 	</upstream>
 </pkgmetadata>
