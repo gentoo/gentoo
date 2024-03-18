@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index c02de0972..2d99808d9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -16,8 +16,7 @@
+ 
+ include makeinclude
+ 
+-DIRS = $(IMAGEDIRS) $(LIBDECORDIR) src $(CAIRODIR) $(FLUIDDIR) fltk-options test \
+-       documentation
++DIRS = $(IMAGEDIRS) $(LIBDECORDIR) src $(CAIRODIR) fltk-options
+ 
+ all: makeinclude fltk-config
+ 	for dir in $(DIRS); do\
