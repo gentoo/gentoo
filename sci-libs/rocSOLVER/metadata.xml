@@ -12,11 +12,15 @@
     <email>xgreenlandforwyy@gmail.com</email>
     <name>Yiyang Wu</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">ROCmSoftwarePlatform/rocSOLVER</remote-id>
+    <remote-id type="github">ROCm/rocSOLVER</remote-id>
   </upstream>
-    <use>
-        <flag name="test">Perform rocsolver-test to compare the result between rocSOLVER and system LAPACK.</flag>
-        <flag name="benchmark">Build and install rocsolver-bench.</flag>
-    </use>
+  <use>
+    <flag name="test">Perform rocsolver-test to compare the result between rocSOLVER and system LAPACK.</flag>
+    <flag name="benchmark">Build and install rocsolver-bench.</flag>
+  </use>
 </pkgmetadata>
