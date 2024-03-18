@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools desktop
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A graphical rogue-like adventure game"
 HOMEPAGE="https://sourceforge.net/projects/scourge/"
@@ -57,6 +57,15 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859211
+	# Upstream sourceforge last updated in 2015, and that appears to have
+	# been uploading existing files. svn last updated 2011. No bug filed. ;)
+	#
+	# Do not trust it for LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf \
 		--disable-rpath \
 		--with-data-dir="${EPREFIX}"/usr/share/${PN}
