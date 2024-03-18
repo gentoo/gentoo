@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ EAPI=8
 # or take new snapshots every so often as no SDL 1 / 1.2.x releases
 # will be made anymore.
 
-inherit toolchain-funcs multilib-minimal
+inherit autotools toolchain-funcs multilib-minimal
 
 SDL_IMAGE_COMMIT="633dc522f5114f6d473c910dace62e8ca27a1f7d"
 
@@ -31,6 +31,11 @@ RDEPEND="
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
