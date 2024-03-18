@@ -12,4 +12,4 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
 
-S="${WORKDIR}/${P}/ocaml/src"
+S="${WORKDIR}/${P}/ocaml"
