@@ -839,6 +839,7 @@ dev-python/flask-gravatar
 # Sam James <sam@gentoo.org> (2023-11-25)
 # Breaks desktop icon rendering, see bug #904468.
 # Upstream bug: https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
+=xfce-base/xfdesktop-4.19.2
 =xfce-base/xfdesktop-4.19.1
 
 # Sam James <sam@gentoo.org> (2023-11-22)
