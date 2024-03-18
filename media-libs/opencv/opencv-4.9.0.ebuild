@@ -353,8 +353,8 @@ src_prepare() {
 
 	mkdir -p "${S}/.cache/ade" || die
 	cp \
-		"${DISTDIR}/ade-${ADE_PV}.zip" \
-		"${S}/.cache/ade/$(md5sum "${DISTDIR}/ade-${ADE_PV}.zip" | cut -f 1 -d " ")-v${ADE_PV}.zip" || die
+		"${DISTDIR}/ade-${ADE_PV}.tar.gz" \
+		"${S}/.cache/ade/$(md5sum "${DISTDIR}/ade-${ADE_PV}.tar.gz" | cut -f 1 -d " ")-v${ADE_PV}.tar.gz" || die
 
 	if use dnnsamples; then
 		mkdir -p "${S}/.cache/wechat_qrcode" || die
@@ -415,10 +415,10 @@ src_prepare() {
 	if use cuda; then
 		mkdir -p "${S}/.cache/nvidia_optical_flow"
 		cp \
-			"${DISTDIR}/NVIDIAOpticalFlowSDK-${NVIDIA_OPTICAL_FLOW_COMMIT}.zip" \
+			"${DISTDIR}/NVIDIAOpticalFlowSDK-${NVIDIA_OPTICAL_FLOW_COMMIT}.tar.gz" \
 			"${S}/.cache/nvidia_optical_flow/$( \
-				md5sum "${DISTDIR}/NVIDIAOpticalFlowSDK-${NVIDIA_OPTICAL_FLOW_COMMIT}.zip" | cut -f 1 -d " " \
-			)-${NVIDIA_OPTICAL_FLOW_COMMIT}.zip" || die
+				md5sum "${DISTDIR}/NVIDIAOpticalFlowSDK-${NVIDIA_OPTICAL_FLOW_COMMIT}.tar.gz" | cut -f 1 -d " " \
+			)-${NVIDIA_OPTICAL_FLOW_COMMIT}.tar.gz" || die
 	fi
 
 	if use java; then
