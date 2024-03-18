@@ -40,6 +40,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/860447
+	#
+	# Upstream is dead. The last release was in 2013 and the last maintainer
+	# comment on discussions was 2020.
+	filter-lto
+
 	tc-export PKG_CONFIG
 
 	append-cflags -fcommon
