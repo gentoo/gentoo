@@ -8,7 +8,6 @@ inherit tree-sitter-grammar
 DESCRIPTION="Gleam grammar for Tree-sitter"
 HOMEPAGE="https://github.com/gleam-lang/tree-sitter-gleam"
 SRC_URI="https://github.com/gleam-lang/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${P}/src
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -18,5 +17,5 @@ src_install() {
 	tree-sitter-grammar_src_install
 
 	docinto queries
-	dodoc ../queries/{highlights,locals,tags}.scm
+	dodoc queries/{highlights,locals,tags}.scm
 }

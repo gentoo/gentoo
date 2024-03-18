@@ -7,7 +7,7 @@ inherit tree-sitter-grammar
 
 DESCRIPTION="TypeScript grammar for Tree-sitter"
 HOMEPAGE="https://github.com/tree-sitter/tree-sitter-typescript"
-S="${WORKDIR}"/${P}/typescript/src
+S="${WORKDIR}"/${P}/typescript
 
 LICENSE="MIT"
 SLOT="0"
