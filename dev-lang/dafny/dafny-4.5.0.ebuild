@@ -403,6 +403,7 @@ BDEPEND="
 		dev-lang/go
 		dev-python/OutputCheck
 		dev-python/lit
+		dev-python/psutil
 		net-libs/nodejs[npm]
 	)
 "
