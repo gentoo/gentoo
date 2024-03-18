@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop vcs-clean
+inherit desktop flag-o-matic vcs-clean
 
 DESCRIPTION="GTK+2 Soccer Management Game"
 HOMEPAGE="https://bygfoot.sourceforge.io/new/"
@@ -29,6 +29,14 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859232
+	#
+	# Upstream sourceforge is inactive since 2021, and even that was a java port.
+	# The gtk / C project was last touched in 2014. Even if upstream was still
+	# around, it does not seem worth discussing the production C version.
+	filter-lto
+
 	econf --disable-gstreamer
 }
 
