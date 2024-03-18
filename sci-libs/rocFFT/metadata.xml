@@ -9,11 +9,15 @@
     <email>gentoo@holzke.net</email>
     <name>Wilfried Holzke</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">ROCmSoftwarePlatform/rocFFT</remote-id>
+    <remote-id type="github">ROCm/rocFFT</remote-id>
   </upstream>
-    <use>
-        <flag name="benchmark">Build and install [dyna-]rocfft-rider.</flag>
-        <flag name="perfscripts">Install rocfft-perf performance visualization suite.</flag>
-    </use>
+  <use>
+    <flag name="benchmark">Build and install rocfft benchmark tools.</flag>
+    <flag name="perfscripts">Install rocfft-perf performance visualization suite.</flag>
+  </use>
 </pkgmetadata>
