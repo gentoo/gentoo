@@ -15,7 +15,7 @@ else
 fi
 
 # bzip2 depacker code is 0BSD
-LICENSE="LGPL-2.1+ MIT 0BSD"
+LICENSE="MIT 0BSD"
 SLOT="0"
 
 src_prepare() {
