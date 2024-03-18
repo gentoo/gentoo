@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-dontcompress.patch
 	"${FILESDIR}"/${P}-rm_alsa-iatomic.h.patch
 	"${FILESDIR}"/bristol-c99.patch
+	"${FILESDIR}"/0001-configure.ac-fix-various-erroneous-bashisms.patch
 )
 
 src_prepare() {

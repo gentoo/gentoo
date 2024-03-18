@@ -1,0 +1,80 @@
+From 103c856f20b34cc315c5ae4d096b0b863aba046d Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 17 Mar 2024 20:31:15 -0400
+Subject: [PATCH] configure.ac: fix various erroneous bashisms
+
+double equals in shell scripts is ALWAYS wrong. POSIX sh uses single
+equals, and bash implements double equals as an exact alias of the
+single equals form.
+
+Using double equals accomplishes no purpose whatsoever, and for your
+troubles you end up with muscle memory telling you to use it in POSIX sh
+where it fails. Avoid at all costs.
+---
+ configure.ac | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c233743..de50709 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,9 +62,9 @@ AC_ARG_ENABLE(version_check, [  --disable-version-check	ignore preinstalled vers
+ if test "x$TRY_VC" = 'xyes'
+ then
+ 	which startBristol > /dev/null 2>&1
+-	if test $? == 0; then showErrMsg1; fi
++	if test $? = 0; then showErrMsg1; fi
+ 	which bristol > /dev/null 2>&1
+-	if test $? == 0; then showErrMsg1; fi
++	if test $? = 0; then showErrMsg1; fi
+ 	if test -f ${prefix}/bin/bristol; then showErrMsg1; fi
+ fi
+ 
+@@ -166,7 +166,7 @@ AC_SUBST(_BRISTOL_VOICES)
+ 
+ BRISTOL_LIN_ATTACK=-DBRISTOL_LIN_ATTACK
+ AC_ARG_ENABLE(exp-attack, [  --enable-exp-attack		enable exponential attack], USE_EXP_ATTACK=yes , USE_EXP_ATTACK=no )
+-if test "x$USE_EXP_ATTACK" == "xyes"
++if test "x$USE_EXP_ATTACK" = "xyes"
+ then
+ 	BRISTOL_LIN_ATTACK=
+ fi
+@@ -176,7 +176,7 @@ BRISTOL_SEM_OPEN=
+ BRISTOL_SEMAPHORE=
+ AC_ARG_ENABLE(semaphore, [  --enable-semaphore		enable engine semaphores ],
+ 			USE_SEMAPHORE=yes , USE_SEMAPHORE=no )
+-if test "x$USE_SEMAPHORE" == "xyes"
++if test "x$USE_SEMAPHORE" = "xyes"
+ then
+ 	BRISTOL_SEMAPHORE=-DBRISTOL_SEMAPHORE
+ 
+@@ -194,7 +194,7 @@ AC_SUBST(BRISTOL_SEMAPHORE)
+ BRISTOL_BARRIER=
+ AC_ARG_ENABLE(memory-barrier, [  --enable-memory-barrier	enable ringbuffer barrier],
+ 			USE_BARRIER=yes , USE_BARRIER=no )
+-if test "x$USE_BARRIER" == "xyes"
++if test "x$USE_BARRIER" = "xyes"
+ then
+ 	BRISTOL_BARRIER=-DUSE_MLOCK
+ fi
+@@ -427,7 +427,7 @@ echo \| Build with sem_open ............................ : true
+ fi
+ fi
+ 
+-if test $USE_BARRIER == "yes"; then
++if test $USE_BARRIER = "yes"; then
+ echo \| Build with jrb memory barrier .................. : true
+ fi
+ 
+@@ -454,7 +454,7 @@ echo \| Default voicecount ............................. : BRISTOL_VOICECOUNT=$_
+ if test $BRR != 10; then
+ echo \| Envelope max ramp time ......................... : $BRR seconds
+ fi
+-if test x$USE_EXP_ATTACK == "xyes"; then
++if test x$USE_EXP_ATTACK = "xyes"; then
+ echo \| Envelope attack type ........................... : exponential
+ fi
+ echo \| author ......................................... : Nick Copeland
+-- 
+2.43.2
+
