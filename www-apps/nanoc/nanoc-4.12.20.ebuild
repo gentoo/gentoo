@@ -51,6 +51,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/pry
 	dev-ruby/rdoc
 	>=dev-ruby/rouge-3.5.1:2
+	dev-ruby/rspec-its
 	dev-ruby/rubypants
 	dev-ruby/systemu
 	dev-ruby/timecop
