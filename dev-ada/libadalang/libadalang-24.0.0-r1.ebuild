@@ -107,4 +107,5 @@ src_install() {
 	rm -r "${D}"/usr/python || die
 	python_domodule build/python/libadalang
 	rm -r "${D}"/usr/ocaml || die
+	rm -r "${D}"/usr/java || die
 }
