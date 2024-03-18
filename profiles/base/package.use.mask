@@ -15,10 +15,6 @@ app-crypt/pinentry qt6
 # https://github.com/psycopg/psycopg/issues/734
 <=dev-python/psycopg-3.1.18 native-extensions
 
-# Sam James <sam@gentoo.org> (2024-03-17)
-# Needs masked version of salt (bug #927142).
-dev-python/pytest-salt-factories python_targets_python3_12
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
 # These packages have RESTRICT="test" and depend on dev-java/ant-junit
 # which is going away. Remove this mask when ebuilds are updated.
