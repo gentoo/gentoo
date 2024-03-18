@@ -318,7 +318,9 @@ gstreamer_multilib_src_configure() {
 			gst_conf+=( -Dintrospection=$(multilib_native_usex introspection enabled disabled) )
 		else
 			gst_conf+=( -Dintrospection=disabled )
-			eqawarn "QA: IUSE=introspection is missing while plugin supports it"
+			if [[ "${PN}" == "${GST_ORG_MODULE}" ]]; then
+				eqawarn "QA: IUSE=introspection is missing while package supports it"
+			fi
 		fi
 	else
 		if in_iuse introspection ; then
