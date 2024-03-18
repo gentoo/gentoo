@@ -86,12 +86,17 @@ gstreamer_get_plugins() {
 	# meson_options that should be in GST_PLUGINS_EXT_DEPS but automatic parsing above can't catch
 	local extra_options
 	extra_options=(
-		opencv
-		hls
-		soup
+		# gst-plugins-base
 		gl
+		# gst-plugins-good
 		qt5
 		qt6
+		soup
+		v4l2
+		ximagesrc
+		# gst-plugins-bad
+		hls
+		opencv
 	)
 
 	for option in ${extra_options[@]} ; do
