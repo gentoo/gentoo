@@ -20,3 +20,7 @@ src_prepare() {
 	gstreamer_system_package tag_dep:gstreamer-tag
 	gstreamer_system_library gsturidownloader_dep:gsturidownloader
 }
+
+pkg_postinst() {
+	einfo "media-plugins/gst-plugins-adaptivedemux2 provides an alternative DASH demuxer option (dashdemux2)"
+}
