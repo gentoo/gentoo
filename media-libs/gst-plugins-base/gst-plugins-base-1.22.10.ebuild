@@ -81,8 +81,6 @@ RDEPEND="
 
 	gles2? ( ${GL_DEPS} )
 	opengl? ( ${GL_DEPS} )
-
-	!<media-libs/gst-plugins-bad-1.15.0:1.0
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
@@ -105,7 +103,6 @@ multilib_src_configure() {
 
 		$(meson_feature alsa)
 		$(meson_feature ogg)
-		$(meson_feature orc)
 		$(meson_feature pango)
 		$(meson_feature theora)
 		$(meson_feature vorbis)
