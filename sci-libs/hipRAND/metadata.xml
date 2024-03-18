@@ -9,7 +9,11 @@
     <email>xgreenlandforwyy@gmail.com</email>
     <name>Yiyang Wu</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">ROCmSoftwarePlatform/hipRAND</remote-id>
+    <remote-id type="github">ROCm/hipRAND</remote-id>
   </upstream>
 </pkgmetadata>

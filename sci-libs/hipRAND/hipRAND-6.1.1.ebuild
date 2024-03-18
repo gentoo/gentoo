@@ -8,21 +8,21 @@ ROCM_VERSION=${PV}
 inherit cmake rocm
 
 DESCRIPTION="CU / ROCM agnostic hip RAND implementation"
-HOMEPAGE="https://github.com/ROCmSoftwarePlatform/hipRAND"
-SRC_URI="https://github.com/ROCmSoftwarePlatform/hipRAND/archive/refs/tags/rocm-${PV}.tar.gz -> hipRAND-rocm-${PV}.tar.gz"
+HOMEPAGE="https://github.com/ROCm/hipRAND"
+SRC_URI="https://github.com/ROCm/hipRAND/archive/refs/tags/rocm-${PV}.tar.gz -> hipRAND-rocm-${PV}.tar.gz"
+S="${WORKDIR}/hipRAND-rocm-${PV}"
+
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
 SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64"
 
 RESTRICT="test"
 
 RDEPEND="dev-util/hip
 	sci-libs/rocRAND:${SLOT}[${ROCM_USEDEP}]"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/hipRAND-rocm-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
