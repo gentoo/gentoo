@@ -38,10 +38,6 @@
 # https://github.com/containers/buildah/issues/5320
 =app-containers/buildah-1.34.0
 
-# Sam James <sam@gentoo.org> (2024-03-16)
-# MIssing files (bug #927142).
-=app-admin/salt-3007.0
-
 # Eli Schwartz <eschwartz93@gmail.com> (2024-03-14)
 # Deprecated, doesn't work with python 3.12. Unmaintained with last
 # serious release in 2019, and another release in 2024 that claims
