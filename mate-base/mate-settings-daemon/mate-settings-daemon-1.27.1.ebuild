@@ -20,7 +20,7 @@ IUSE="X accessibility debug libnotify policykit pulseaudio rfkill smartcard +sou
 
 REQUIRED_USE="pulseaudio? ( sound )"
 
-COMMON_DEPEND=">=dev-libs/gdbus-codegen-2.76.4
+COMMON_DEPEND=">=dev-util/gdbus-codegen-2.76.4
 	>=dev-libs/glib-2.50:2
 	>=gnome-base/dconf-0.13.4
 	>=mate-base/libmatekbd-1.17.0
@@ -60,10 +60,6 @@ RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.26.0-fix-buid-with-clang16.patch
-)
 
 src_configure() {
 	mate_src_configure \
