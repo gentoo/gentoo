@@ -28,9 +28,11 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples nls openmp"
+IUSE="doc examples nls openmp test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
