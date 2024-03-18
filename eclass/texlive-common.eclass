@@ -179,7 +179,8 @@ etexmf-update() {
 		if [[ -z ${ROOT} && -x "${EPREFIX}"/usr/sbin/texmf-update ]] ; then
 			"${EPREFIX}"/usr/sbin/texmf-update
 			local res="${?}"
-			if [[ "${res}" -ne 0 ]] && ver_test -ge 2023; then
+			if [[ "${res}" -ne 0 ]] &&
+				   { [[ ${CATEGORY} != dev-texlive ]] || ver_test -ge 2023; } then
 				die -n "texmf-update returned non-zero exit status ${res}"
 			fi
 		else
