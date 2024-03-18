@@ -9,10 +9,14 @@
     <email>gentoo@holzke.net</email>
     <name>Wilfried Holzke</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">ROCmSoftwarePlatform/rocRAND</remote-id>
+    <remote-id type="github">ROCm/rocRAND</remote-id>
   </upstream>
-    <use>
-        <flag name="benchmark">Build and install benchmark programs.</flag>
-    </use>
+  <use>
+    <flag name="benchmark">Build and install benchmark programs.</flag>
+  </use>
 </pkgmetadata>
