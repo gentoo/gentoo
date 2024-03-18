@@ -58,6 +58,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/vcr
 	dev-ruby/webmock
 	dev-ruby/yard
+	www-apps/nanoc-spec
 )
 doc? (
 	dev-ruby/kramdown
