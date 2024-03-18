@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gap-system/gap/releases/download/v${PV/_/-}/${P/_/-}
 
 LICENSE="GPL-2+"
 SLOT="0/9" # soname
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="cpu_flags_x86_popcnt debug memcheck minimal readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
 RESTRICT="!test? ( test )"
