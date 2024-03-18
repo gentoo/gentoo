@@ -303,9 +303,14 @@ gstreamer_multilib_src_configure() {
 	if grep -q "option('orc'" "${EMESON_SOURCE}"/meson_options.txt ; then
 		if in_iuse orc ; then
 			gst_conf+=( -Dorc=$(usex orc enabled disabled) )
+			if [[ "${PN}" != "${GST_ORG_MODULE}" ]] && ! _gstreamer_get_has_orc_dep; then
+				eqawarn "QA: IUSE=orc is present while plugin does not seem to support it"
+			fi
 		else
 			gst_conf+=( -Dorc=disabled )
-			eqawarn "QA: IUSE=orc is missing while plugin supports it"
+			if [[ "${PN}" == "${GST_ORG_MODULE}" ]] || _gstreamer_get_has_orc_dep; then
+				eqawarn "QA: IUSE=orc is missing while plugin supports it"
+			fi
 		fi
 	else
 		if in_iuse orc ; then
@@ -396,6 +401,23 @@ EOF
 
 	perl "${WORKDIR}/_gstreamer_get_target_filename.pl" $@ \
 		|| die "Failed to extract target filenames from meson-info"
+}
+
+# @FUNCTION: _gstreamer_get_has_orc_dep
+# @INTERNAL
+# @DESCRIPTION:
+# Finds whether plugin appears to use dev-lang/orc or not.
+_gstreamer_get_has_orc_dep() {
+	local has_orc_dep pdir plugin_dir
+	has_orc_dep=0
+
+	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
+		pdir=$(gstreamer_get_plugin_dir ${plugin_dir})
+		if grep -q "orc_dep" "${S}/${pdir}"/meson.build ; then
+			has_orc_dep=1
+		fi
+	done
+	[[ ${has_orc_dep} -ne 0 ]]
 }
 
 # @FUNCTION: gstreamer_multilib_src_compile
