@@ -29,30 +29,12 @@ DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 PATCHES=( "${FILESDIR}/gst-plugins-good-1.22.9-soup-tests-automagic.patch" )
 
 multilib_src_configure() {
+	# gst/matroska can use bzip2
 	GST_PLUGINS_NOAUTO="bz2"
 
 	local emesonargs=(
 		-Dbz2=enabled
-
-		# gst-plugins-ximagesrc
-		-Dximagesrc=disabled
-		-Dximagesrc-xshm=disabled
-		-Dximagesrc-xfixes=disabled
-		-Dximagesrc-xdamage=disabled
-
-		# gst-plugins-v4l2
-		-Dv4l2=disabled
-
-		# TODO: These two almost certainly need to be their own
-		# gst-plugins-qt5 & qt-plugins-qt6.
-		-Dqt5=disabled
-		-Dqt6=disabled
 	)
 
 	gstreamer_multilib_src_configure
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	find "${ED}" -name '*.la' -delete || die
 }
