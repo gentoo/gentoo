@@ -34,3 +34,7 @@ multilib_src_configure() {
 
 	gstreamer_multilib_src_configure
 }
+
+pkg_postinst() {
+	einfo "media-plugins/gst-plugins-adaptivedemux2 provides an alternative HLS demuxer option (hlsdemux2)"
+}
