@@ -39,12 +39,12 @@ CRATES="
 	cc@1.0.88
 	cfg-if@1.0.0
 	chic@1.2.2
-	chrono@0.4.34
+	chrono@0.4.35
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.1
-	clap_builder@4.5.1
+	clap@4.5.2
+	clap_builder@4.5.2
 	clap_complete@4.5.1
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.5.0
@@ -67,7 +67,9 @@ CRATES="
 	crossbeam-channel@0.5.12
 	crossbeam-deque@0.8.5
 	crossbeam-epoch@0.9.18
+	crossbeam-queue@0.3.11
 	crossbeam-utils@0.8.19
+	crossbeam@0.8.4
 	crunchy@0.2.2
 	darling@0.20.8
 	darling_core@0.20.8
@@ -133,7 +135,8 @@ CRATES="
 	itertools@0.11.0
 	itertools@0.12.1
 	itoa@1.0.10
-	js-sys@0.3.68
+	jod-thread@0.1.2
+	js-sys@0.3.69
 	kqueue-sys@1.0.4
 	kqueue@1.0.8
 	lalrpop-util@0.20.2
@@ -151,6 +154,8 @@ CRATES="
 	linux-raw-sys@0.4.13
 	lock_api@0.4.11
 	log@0.4.21
+	lsp-server@0.7.6
+	lsp-types@0.95.0
 	matchers@0.1.0
 	matches@0.1.10
 	memchr@2.7.1
@@ -238,6 +243,7 @@ CRATES="
 	serde_derive@1.0.197
 	serde_derive_internals@0.26.0
 	serde_json@1.0.114
+	serde_repr@0.1.18
 	serde_spanned@0.6.5
 	serde_test@1.0.176
 	serde_with@3.6.1
@@ -273,8 +279,6 @@ CRATES="
 	thread_local@1.1.8
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
-	time-core@0.1.0
-	time@0.3.20
 	tiny-keccak@2.0.2
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
@@ -285,8 +289,10 @@ CRATES="
 	tracing-attributes@0.1.27
 	tracing-core@0.1.32
 	tracing-indicatif@0.3.6
+	tracing-log@0.1.4
 	tracing-log@0.2.0
 	tracing-subscriber@0.3.18
+	tracing-tree@0.2.5
 	tracing@0.1.40
 	typed-arena@2.0.2
 	unic-char-property@0.9.0
@@ -299,8 +305,8 @@ CRATES="
 	unicode-normalization@0.1.23
 	unicode-width@0.1.11
 	unicode-xid@0.2.4
-	unicode_names2@1.2.1
-	unicode_names2_generator@1.2.1
+	unicode_names2@1.2.2
+	unicode_names2_generator@1.2.2
 	untrusted@0.9.0
 	ureq@2.9.6
 	url@2.5.0
@@ -315,14 +321,14 @@ CRATES="
 	wait-timeout@0.2.0
 	walkdir@2.5.0
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-backend@0.2.91
+	wasm-bindgen-backend@0.2.92
 	wasm-bindgen-futures@0.4.41
-	wasm-bindgen-macro-support@0.2.91
-	wasm-bindgen-macro@0.2.91
-	wasm-bindgen-shared@0.2.91
+	wasm-bindgen-macro-support@0.2.92
+	wasm-bindgen-macro@0.2.92
+	wasm-bindgen-shared@0.2.92
 	wasm-bindgen-test-macro@0.3.41
 	wasm-bindgen-test@0.3.41
-	wasm-bindgen@0.2.91
+	wasm-bindgen@0.2.92
 	web-sys@0.3.68
 	webpki-roots@0.26.1
 	which@4.4.2
@@ -396,16 +402,18 @@ KEYWORDS="~amd64 ~loong"
 BDEPEND="
 	>=virtual/rust-1.71
 "
-RDEPEND="dev-libs/jemalloc:="
-DEPEND="${RDEPEND}"
+RDEPEND="
+	dev-libs/jemalloc:=
+"
+DEPEND="
+	${RDEPEND}
+"
 
 QA_FLAGS_IGNORED="usr/bin/.*"
 
 PATCHES=(
 	"${FILESDIR}/ruff-0.1.14-tests.patch"
 	"${FILESDIR}/ruff-0.2.0-tests.patch"
-	# backport fix for rustc version-specific test
-	"${FILESDIR}"/0001-Gate-f-string-struct-size-test-for-Rustc-1.76-10371.patch
 )
 
 DOCS=(
