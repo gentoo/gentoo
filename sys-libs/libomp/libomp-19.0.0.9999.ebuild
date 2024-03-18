@@ -11,7 +11,7 @@ DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
-SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
+SLOT="0/${LLVM_SOABI}"
 IUSE="
 	+debug gdb-plugin hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX
@@ -29,7 +29,6 @@ RDEPEND="
 		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
 		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
 	)
-	!sys-libs/libomp:0
 "
 # tests:
 # - dev-python/lit provides the test runner
@@ -102,7 +101,6 @@ multilib_src_configure() {
 
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
 
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
