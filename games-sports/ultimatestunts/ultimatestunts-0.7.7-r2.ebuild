@@ -1,11 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit desktop flag-o-matic vcs-clean versionator
+inherit desktop flag-o-matic vcs-clean
 
-MY_P=${PN}-srcdata-$(replace_all_version_separators)1
+MY_P=${PN}-srcdata-$(ver_rs 1- '')1
 
 DESCRIPTION="Remake of the famous Stunts game"
 HOMEPAGE="http://www.ultimatestunts.nl/"
@@ -25,8 +25,8 @@ RDEPEND="
 	virtual/opengl
 	virtual/glu
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	sys-devel/gettext"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
 S=${WORKDIR}/${MY_P}
 
