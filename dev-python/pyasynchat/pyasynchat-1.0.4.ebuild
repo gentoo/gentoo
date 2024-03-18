@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND=">=dev-python/pyasyncore-1.0.2[${PYTHON_USEDEP}]"
 
