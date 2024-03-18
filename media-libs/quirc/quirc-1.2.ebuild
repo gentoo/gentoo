@@ -39,6 +39,7 @@ src_prepare() {
 		-e '/^QUIRC_CFLAGS/ s/$/ -fPIC/' \
 		-i Makefile || die
 
+	default
 	multilib_copy_sources
 }
 
