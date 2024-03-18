@@ -19,3 +19,7 @@ src_prepare() {
 	gstreamer_system_library gstisoff_dep:gstisoff
 	gstreamer_system_library gsturidownloader_dep:gsturidownloader
 }
+
+pkg_postinst() {
+	einfo "media-plugins/gst-plugins-adaptivedemux2 provides an alternative smooth streaming demuxer option (mssdemux2)"
+}
