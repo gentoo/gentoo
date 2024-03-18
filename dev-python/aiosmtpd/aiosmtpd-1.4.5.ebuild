@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=dev-python/atpublic-4.0[${PYTHON_USEDEP}]
