@@ -1,2 +1,2 @@
 # arguments for prometheus node exporter
-command_args="--collector.textfile.directory=/var/lib/node_exporter/ --collector.textfile.directory=/var/lib/node_exporter"
+command_args="--collector.textfile.directory=/var/lib/node_exporter/"
