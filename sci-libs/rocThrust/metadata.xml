@@ -8,10 +8,14 @@
     <email>gentoo@holzke.net</email>
     <name>Wilfried Holzke</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">ROCm-Developer-Tools/rocThrust</remote-id>
+    <remote-id type="github">ROCm/rocThrust</remote-id>
   </upstream>
-    <use>
-      <flag name="benchmark">Build and install benchmark binary.</flag>
-    </use>
+  <use>
+    <flag name="benchmark">Build and install benchmark binary.</flag>
+  </use>
 </pkgmetadata>
