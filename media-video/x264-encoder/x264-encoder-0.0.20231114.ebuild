@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	X264_COMMIT="c196240409e4d7c01b47448d93b1f9683aaa7cf7"
 	SRC_URI="https://code.videolan.org/videolan/x264/-/archive/${X264_COMMIT}/x264-${X264_COMMIT}.tar.bz2 -> ${P/-encoder}.tar.bz2"
-	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
 	S="${WORKDIR}/${PN/-encoder}-${X264_COMMIT}"
 fi
 
