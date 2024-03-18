@@ -1,0 +1,25 @@
+Don't install tests into /usr/bin
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -114,11 +114,6 @@ function(add_rocwmma_test TEST_TARGET TEST_SOURCE)
+   add_test(NAME ${TEST_TARGET} COMMAND ${TEST_TARGET})
+   set_property(TEST ${TEST_TARGET} PROPERTY SKIP_REGULAR_EXPRESSION "no ROCm-capable device" "unsupported host device")
+ 
+-  rocm_install_targets(
+-    TARGETS ${TEST_TARGET}
+-    COMPONENT tests
+-  )
+-
+   get_target_property(EXE_NAME ${TEST_TARGET} RUNTIME_OUTPUT_NAME)
+   if(EXE_NAME STREQUAL "EXE_NAME-NOTFOUND")
+       get_target_property(EXE_NAME ${TEST_TARGET} OUTPUT_NAME)
+@@ -148,9 +143,3 @@ add_subdirectory(gemm)
+ add_subdirectory(unit)
+ add_subdirectory(dlrm)
+ 
+-rocm_install(
+-    FILES "${INSTALL_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)
