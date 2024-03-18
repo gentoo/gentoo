@@ -7,7 +7,7 @@ inherit gap-pkg
 
 DESCRIPTION="Free Group Algorithms (FGA) for GAP"
 SLOT="0"
-SRC_URI="https://github.com/chsievers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gap-packages/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64"
