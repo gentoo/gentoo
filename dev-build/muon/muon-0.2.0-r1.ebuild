@@ -13,16 +13,14 @@ DESCRIPTION="A meson-compatible build system"
 HOMEPAGE="https://muon.build/"
 SRC_URI="
 	https://git.sr.ht/~lattis/muon/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz
-	man? (
-		https://mochiro.moe/wrap/${MESON_DOCS_TAR}
-	)
+	https://mochiro.moe/wrap/${MESON_DOCS_TAR}
 "
 
 # Apache-2.0 for meson-docs
-LICENSE="GPL-3 man? ( Apache-2.0 )"
+LICENSE="GPL-3 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
-IUSE="+archive +curl +libpkgconf +man"
+IUSE="+archive +curl +libpkgconf"
 
 S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
@@ -33,28 +31,20 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	man? (
-		app-text/scdoc
-		$(python_gen_any_dep '
-			dev-python/pyyaml[${PYTHON_USEDEP}]
-		')
-	)
+	app-text/scdoc
+	$(python_gen_any_dep '
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	')
 "
 
 python_check_deps() {
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
-pkg_setup() {
-	use man && python-any-r1_pkg_setup
-}
-
 src_prepare() {
 	default
 
-	if use man; then
-		mv "${WORKDIR}/meson-docs" "${S}/subprojects" || die
-	fi
+	mv "${WORKDIR}/meson-docs" "${S}/subprojects" || die
 }
 
 src_configure() {
@@ -62,7 +52,7 @@ src_configure() {
 		$(meson_feature curl libcurl)
 		$(meson_feature archive libarchive)
 		$(meson_feature libpkgconf)
-		$(meson_feature man docs)
+		-Ddocs=enabled
 		-Dsamurai=disabled  # patched version of samurai downloaded via wraps
 		-Dbestline=enabled  # vendored bestline, an insignificant addition
 	)
