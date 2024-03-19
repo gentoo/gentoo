@@ -22,7 +22,7 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/templates-parser[${ADA_USEDEP}]
+	dev-ada/templates-parser[${ADA_USEDEP},shared?,static-libs?]
 	dev-ada/VSS[${ADA_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]"
