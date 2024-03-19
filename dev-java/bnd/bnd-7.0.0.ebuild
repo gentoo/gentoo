@@ -8,7 +8,7 @@ MAVEN_ID="biz.aQute.bnd:biz.aQute.bnd:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="bndlib: A Swiss Army Knife for OSGi"
+DESCRIPTION="AQute Bnd"
 HOMEPAGE="https://bnd.bndtools.org/"
 SRC_URI="https://github.com/bndtools/bnd/archive/${PV}.tar.gz -> aQute.bnd-${PV}.tar.gz"
 S="${WORKDIR}/${P}"
