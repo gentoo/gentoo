@@ -16,3 +16,10 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="dev-qt/qtbase:6[gui,ssl]"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	# Do not look for Qt5
+	sed -e "s/Qt5//" -i CMakeLists.txt || die
+
+	cmake_src_prepare
+}
