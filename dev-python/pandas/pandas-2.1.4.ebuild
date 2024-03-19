@@ -64,6 +64,7 @@ OPTIONAL_DEPEND="
 	)
 "
 DEPEND="
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23.2[${PYTHON_USEDEP}]
 "
 COMMON_DEPEND="
