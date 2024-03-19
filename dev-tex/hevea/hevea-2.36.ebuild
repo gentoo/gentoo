@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit texlive-common
+
 DESCRIPTION="HeVeA is a quite complete and fast LaTeX to HTML translator"
 HOMEPAGE="https://hevea.inria.fr/"
 SRC_URI="https://hevea.inria.fr/distri/${P}.tar.gz"
@@ -58,13 +60,9 @@ src_install() {
 # If latex is installed later, it will see hevea.sty
 
 pkg_postinst() {
-	if [[ -z "${ROOT}" ]] && [[ -x "${EPREFIX}"/usr/sbin/texmf-update ]] ; then
-		"${EPREFIX}"/usr/sbin/texmf-update || die "texmf-update returned non-zero exit status ${?}"
-	fi
+	etexmf-update
 }
 
 pkg_postrm() {
-	if [[ -z "${ROOT}" ]] && [[ -x "${EPREFIX}"/usr/sbin/texmf-update ]] ; then
-		"${EPREFIX}"/usr/sbin/texmf-update || die "texmf-update returned non-zero exit status ${?}"
-	fi
+	etexmf-update
 }
