@@ -9,8 +9,10 @@
     </longdescription>
     <use>
         <flag name="gles">use libglvnd to do animations more efficiently</flag>
-        <flag name="system-wfconfig">use the system-wide wf-config, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
-        <flag name="system-wlroots">use the system wide wlroots, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
+        <flag name="gles3">Enable OpenGL ES 3.x Features.</flag>
+        <flag name="system-wfconfig">Use the system-wide <pkg>gui-libs/wf-config</pkg> instead of building as a submodule. It will block system-wide <pkg>gui-libs/wf-config</pkg> from being installed.</flag>
+        <flag name="system-wlroots">Use the system-wide <pkg>gui-libs/wlroots</pkg> instead of building as a submodule. It will block system-wide <pkg>gui-libs/wlroots</pkg> from being installed.</flag>
+        <flag name="X">Enable support for X11 applications (XWayland).</flag>
     </use>
     <upstream>
         <remote-id type="github">WayfireWM/wayfire</remote-id>
