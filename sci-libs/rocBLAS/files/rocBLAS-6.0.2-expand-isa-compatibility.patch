@@ -1,0 +1,96 @@
+--- a/library/src/handle.cpp
++++ b/library/src/handle.cpp
+@@ -21,6 +21,7 @@
+  * ************************************************************************ */
+ #include "handle.hpp"
+ #include <cstdarg>
++#include <cstring>
+ #include <limits>
+ #ifdef WIN32
+ #include <windows.h>
+@@ -80,6 +81,20 @@ static Processor getActiveArch(int deviceId)
+     // strip out xnack/ecc from name
+     std::string deviceFullString(deviceProperties.gcnArchName);
+     std::string deviceString = deviceFullString.substr(0, deviceFullString.find(":"));
++    // coerce to compatible arch
++    int gcnArch = deviceString.substr(0, 3) == "gfx" ? std::stoi(deviceString.substr(3)) : 0;
++    switch(gcnArch)
++    {
++    case 902: case 909: case 912:
++        std::strcpy(deviceProperties.gcnArchName, "gfx900");
++        break;
++    case 1013:
++        std::strcpy(deviceProperties.gcnArchName, "gfx1010");
++        break;
++    case 1031: case 1032: case 1033: case 1034: case 1035: case 1036:
++        std::strcpy(deviceProperties.gcnArchName, "gfx1030");
++        break;
++    }
+ 
+     if(deviceString.find("gfx803") != std::string::npos)
+     {
+--- a/library/src/rocblas_auxiliary.cpp
++++ b/library/src/rocblas_auxiliary.cpp
+@@ -24,6 +24,7 @@
+ #include "logging.hpp"
+ #include "rocblas-auxiliary.h"
+ #include <cctype>
++#include <cstring>
+ #include <cstdlib>
+ #include <memory>
+ #include <string>
+@@ -1242,6 +1243,20 @@ std::string rocblas_internal_get_arch_name()
+     hipGetDevice(&deviceId);
+     hipDeviceProp_t deviceProperties;
+     hipGetDeviceProperties(&deviceProperties, deviceId);
++    // coerce to compatible arch
++    int gcnArch = strncmp(deviceProperties.gcnArchName, "gfx", 3) == 0 ? std::stoi(deviceProperties.gcnArchName + 3) : 0;
++    switch(gcnArch)
++    {
++    case 902: case 909: case 912:
++        std::strcpy(deviceProperties.gcnArchName, "gfx900");
++        break;
++    case 1013:
++        std::strcpy(deviceProperties.gcnArchName, "gfx1010");
++        break;
++    case 1031: case 1032: case 1033: case 1034: case 1035: case 1036:
++        std::strcpy(deviceProperties.gcnArchName, "gfx1030");
++        break;
++    }
+     return ArchName<hipDeviceProp_t>{}(deviceProperties);
+ }
+ 
+--- a/library/src/tensile_host.cpp
++++ b/library/src/tensile_host.cpp
+@@ -45,6 +45,7 @@ extern "C" void rocblas_shutdown();
+ #include <Tensile/hip/HipUtils.hpp>
+ #include <atomic>
+ #include <complex>
++#include <cstring>
+ #include <exception>
+ #include <future>
+ #include <iomanip>
+@@ -802,6 +803,23 @@ namespace
+                         std::string deviceFullString(prop.gcnArchName);
+                         std::string deviceString
+                             = deviceFullString.substr(0, deviceFullString.find(":"));
++                        // coerce to compatible arch
++                        int gcnArch = deviceString.substr(0, 3) == "gfx" ? std::stoi(deviceString.substr(3)) : 0;
++                        switch(gcnArch)
++                        {
++                        case 902: case 909: case 912:
++                            std::strcpy(prop.gcnArchName, "gfx900");
++                            deviceString = prop.gcnArchName;
++                            break;
++                        case 1013:
++                            std::strcpy(prop.gcnArchName, "gfx1010");
++                            deviceString = prop.gcnArchName;
++                            break;
++                        case 1031: case 1032: case 1033: case 1034: case 1035: case 1036:
++                            std::strcpy(prop.gcnArchName, "gfx1030");
++                            deviceString = prop.gcnArchName;
++                            break;
++                        }
+                         m_devicePropMap[deviceString] = std::make_shared<hipDeviceProp_t>(prop);
+                     }
+                 }

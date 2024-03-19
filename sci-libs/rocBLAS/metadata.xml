@@ -12,6 +12,10 @@
     <email>xgreenlandforwyy@gmail.com</email>
     <name>Yiyang Wu</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <use>
     <flag name="test">Perform rocblas-test to compare the result between rocBLAS and system BLAS.</flag>
     <flag name="benchmark">Build and install rocblas-bench.</flag>
