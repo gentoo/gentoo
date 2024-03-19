@@ -1,9 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-RESTRICT="strip"
 
 inherit cmake llvm
 
@@ -25,7 +23,7 @@ HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-Device-Libs"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="strip !test? ( test )"
 
 RDEPEND="sys-devel/clang:${LLVM_MAX_SLOT}"
 DEPEND="${RDEPEND}"
@@ -33,7 +31,9 @@ DEPEND="${RDEPEND}"
 CMAKE_BUILD_TYPE=Release
 
 PATCHES=(
+	"${FILESDIR}/${PN}-5.5.0-test-bitcode-dir.patch"
 	"${FILESDIR}/${PN}-5.5.1-fix-llvm-link.patch"
+	"${FILESDIR}/${PN}-5.5.1-remove-gfx700-tests.patch"
 	)
 
 src_prepare() {
@@ -44,8 +44,14 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		# -DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/llvm"
 		-DLLVM_DIR="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	local CMAKE_SKIP_TESTS=(
+		compile_frexp__gfx600
+	)
+	cmake_src_test
 }
