@@ -26,7 +26,14 @@ SLOT="0/2"
 IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer icu jpeg kerberos openh264 pulseaudio server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	X? ( doc? (
+		app-text/docbook-xml-dtd:4.1.2
+		app-text/xmlto
+	) )
+"
+COMMON_DEPEND="
 	dev-libs/openssl:0=
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
@@ -81,16 +88,12 @@ RDEPEND="
 		x11-libs/libxkbfile
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	valgrind? ( dev-debug/valgrind )
 "
-BDEPEND="
-	virtual/pkgconfig
-	X? ( doc? (
-		app-text/docbook-xml-dtd:4.1.2
-		app-text/xmlto
-	) )
+RDEPEND="${COMMON_DEPEND}
+	!net-misc/freerdp:2
+	!net-misc/freerdp:3
 "
 
 PATCHES=(
