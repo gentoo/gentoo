@@ -25,7 +25,7 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/libadalang[${ADA_USEDEP},static-libs,static-pic]
 	dev-ada/libgpr[${ADA_USEDEP},shared,static-libs,static-pic]
 	dev-ada/markdown[${ADA_USEDEP}]
-	dev-ada/VSS[${ADA_USEDEP},static-libs]
+	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},static-libs]
 	dev-ada/xmlada[${ADA_USEDEP},shared,static-libs,static-pic]"
 DEPEND="${RDEPEND}"
 
