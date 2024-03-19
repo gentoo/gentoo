@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Viorel Munteanu <ceamac@gentoo.org> (2024-03-19)
+# The live version needs a new BDEPEND for doc
+=app-emulation/virtualbox-9999 doc
+
 # Sam James <sam@gentoo.org> (2024-03-18)
 # Needs masked KF6 for Wayland at least.
 app-crypt/pinentry qt6
