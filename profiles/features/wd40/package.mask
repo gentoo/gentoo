@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Requires dev-python/cryptography
+app-emulation/virt-firmware
+
 # Michał Górny <mgorny@gentoo.org> (2024-02-03)
 # Need dev-python/jsonschema (or its revdeps).
 dev-python/flasgger
