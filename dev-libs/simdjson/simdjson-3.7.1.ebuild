@@ -36,9 +36,9 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/simdjson-1.0.0-dont-bundle-cxxopts.patch"
 	"${FILESDIR}/simdjson-0.9.0-tests.patch"
-	"${FILESDIR}/simdjson-1.0.0-dont-fetch-data-tarball.patch"
 	"${FILESDIR}/simdjson-1.0.0-install-tools.patch"
 	"${FILESDIR}/simdjson-3.1.7-tests.patch"
+	"${FILESDIR}/simdjson-3.7.1-data-optional.patch"
 )
 
 DOCS=(
@@ -51,7 +51,8 @@ DOCS=(
 
 src_prepare() {
 	if use test; then
-		mv "${WORKDIR}/${PN}-data-${DATA_HASH}" "${S}/dependencies/${PN}-data" || die
+		mkdir "${S}/dependencies/.cache" || die
+		mv "${WORKDIR}/${PN}-data-${DATA_HASH}" "${S}/dependencies/.cache/${PN}-data" || die
 	fi
 
 	sed -e 's:-Werror ::' -i cmake/developer-options.cmake || die
