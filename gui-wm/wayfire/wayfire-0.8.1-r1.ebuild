@@ -60,6 +60,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/wayfire-0.8.0-dont-use-installed-config-h.patch"
+)
+
 src_prepare() {
 	default
 
