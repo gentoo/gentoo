@@ -58,6 +58,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-AR.patch"
 	"${FILESDIR}/${PN}-1.3.0-automagic.patch" # bug #819939, bug #837719
+	"${FILESDIR}/${PN}-1.3.0-ifdef-qt.patch"
 )
 
 src_prepare() {
@@ -129,7 +130,7 @@ src_install() {
 
 	if use qt6 ; then
 		dosym pinentry-qt /usr/bin/pinentry-qt6
-	elif use qt6 ; then
+	elif use qt5 ; then
 		dosym pinentry-qt /usr/bin/pinentry-qt5
 	fi
 }
