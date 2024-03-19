@@ -1,0 +1,18 @@
+`-fno-offload-uniform-block` flag was added in Clang 18; do not use it if hipcc uses Clang 17
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -144,11 +144,9 @@ else()
+     message("Building CK for the following targets: ${AMDGPU_TARGETS}")
+ endif()
+ find_package(hip)
+-# No assumption that HIP kernels are launched with uniform block size for backward compatibility
+-# SWDEV-413293 and https://reviews.llvm.org/D155213
+-math(EXPR hip_VERSION_FLAT "(${hip_VERSION_MAJOR} * 1000 + ${hip_VERSION_MINOR}) * 100000 + ${hip_VERSION_PATCH}")
+-message("hip_version_flat=${hip_VERSION_FLAT}")
+-if(NOT WIN32 AND ${hip_VERSION_FLAT} GREATER 500723302)
++
++check_cxx_compiler_flag("-x hip -fno-offload-uniform-block" COMPILER_HAS_OPTION_OFFLOAD_UNIFORM_BLOCK)
++if(COMPILER_HAS_OPTION_OFFLOAD_UNIFORM_BLOCK)
+    message("Adding the fno-offload-uniform-block compiler flag")
+    add_compile_options(-fno-offload-uniform-block)
+ endif()
