@@ -128,10 +128,10 @@ src_install() {
 
 	rm "${ED}"/usr/bin/pinentry || die
 
+	# The preferred Qt implementation upstream gets installed as just 'qt'.
+	# Make a symlink for eselect-pinentry and friends.
 	if use qt6 ; then
 		dosym pinentry-qt /usr/bin/pinentry-qt6
-	elif use qt5 ; then
-		dosym pinentry-qt /usr/bin/pinentry-qt5
 	fi
 }
 
