@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-inherit meson python-any-r1
+inherit meson
 
 COMMIT_HASH="${PV}"
 MESON_DOCS_TAR=meson-docs-0.64.1-19-g39c6fa4bc.tar.gz
@@ -13,7 +12,6 @@ DESCRIPTION="A meson-compatible build system"
 HOMEPAGE="https://muon.build/"
 SRC_URI="
 	https://git.sr.ht/~lattis/muon/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz
-	https://mochiro.moe/wrap/${MESON_DOCS_TAR}
 "
 
 # Apache-2.0 for meson-docs
@@ -32,19 +30,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	app-text/scdoc
-	$(python_gen_any_dep '
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-	')
 "
-
-python_check_deps() {
-	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	default
-
-	mv "${WORKDIR}/meson-docs" "${S}/subprojects" || die
 }
 
 src_configure() {
