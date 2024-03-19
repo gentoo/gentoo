@@ -23,9 +23,9 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/templates-parser[${ADA_USEDEP},shared?,static-libs?]
-	dev-ada/VSS[${ADA_USEDEP}]"
-DEPEND="${RDEPEND}
+	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 	dev-ada/libadalang:=[${ADA_USEDEP},static-libs?,static-pic?]"
+DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
 
 src_compile() {
