@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake desktop xdg
+inherit cmake desktop flag-o-matic xdg
 
 MY_P="SuperTuxKart-${PV}-src"
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
@@ -63,6 +63,17 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/858521
+	# https://github.com/supertuxkart/stk-code/issues/5035
+	#
+	# The issue is bundled code from sci-physics/bullet which is unlikely to
+	# be debundled.
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DUSE_SQLITE3=$(usex sqlite)
 		-DUSE_SYSTEM_ANGELSCRIPT=ON
