@@ -87,6 +87,7 @@ src_configure() {
 		-DMIOPEN_USE_MLIR=OFF
 		-DBUILD_TESTS=$(usex test ON OFF)
 		-DMIOPEN_TEST_ALL=$(usex test ON OFF)
+		-DHALF_INCLUDE_DIR="${EPREFIX}/usr/include/half"
 	)
 
 	if use test; then

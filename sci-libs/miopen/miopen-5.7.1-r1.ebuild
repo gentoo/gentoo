@@ -91,6 +91,7 @@ src_configure() {
 		-DBUILD_TESTS=$(usex test ON OFF)
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCM_SYMLINK_LIBS=OFF
+		-DHALF_INCLUDE_DIR="${EPREFIX}/usr/include/half"
 	)
 
 	if use test; then
