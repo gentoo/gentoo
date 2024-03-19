@@ -22,7 +22,11 @@ PDEPEND="dev-gap/alnuth"
 # into them, upstream recommends disabling it:
 #
 #  https://github.com/gap-packages/polycyclic/issues/46
+#  https://github.com/gap-packages/polycyclic/issues/89
 #
-PATCHES=( "${FILESDIR}/${P}-hanging-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-hanging-tests.patch"
+	"${FILESDIR}/${P}-failing-test.patch"
+)
 
 gap-pkg_enable_tests
