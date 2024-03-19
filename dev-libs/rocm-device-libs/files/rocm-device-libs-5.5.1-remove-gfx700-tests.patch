@@ -1,0 +1,34 @@
+https://github.com/ROCm/ROCm-Device-Libs/issues/86
+https://github.com/ROCm/ROCm-Device-Libs/pull/89
+From 936a78464491c95c7cfffde08491bfe1a48c7177 Mon Sep 17 00:00:00 2001
+From: Brian Sumner <brian.sumner@amd.com>
+Date: Tue, 9 May 2023 07:55:03 -0700
+Subject: [PATCH] Remove gfx700 from tests
+
+Change-Id: I23d6639cb7c04246cc5be86d6e172e32546b3b90
+---
+ test/compile/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/compile/CMakeLists.txt b/test/compile/CMakeLists.txt
+index 9af0b1a..a789222 100644
+--- a/test/compile/CMakeLists.txt
++++ b/test/compile/CMakeLists.txt
+@@ -54,12 +54,12 @@ foreach(gpu gfx900 gfx1030)
+   add_constant_fold_test(lgamma_r ${gpu})
+ endforeach()
+ 
+-foreach(gpu gfx700 gfx803)
++foreach(gpu gfx803)
+   add_isa_test(asin ${gpu})
+   add_isa_test(atan2 ${gpu})
+   add_isa_test(atan2pi ${gpu})
+ endforeach()
+ 
+-foreach(gpu gfx600 gfx700)
++foreach(gpu gfx600)
+   add_isa_test(frexp ${gpu})
+ endforeach()
+-- 
+2.41.0
+

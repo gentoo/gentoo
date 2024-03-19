@@ -1,0 +1,37 @@
+`--rocm-device-lib-path` is needed to execute the tests because they are not
+installed to system yet
+===================================================================
+--- ROCm-Device-Libs-rocm-6.0.0.orig/test/compile/CMakeLists.txt
++++ ROCm-Device-Libs-rocm-6.0.0/test/compile/CMakeLists.txt
+@@ -30,6 +30,7 @@ function(add_compile_test test_name func
+      -DFILECHECK_BIN=${FILECHECK_BIN}
+      -DOUTPUT_FILE=output.${name}.${test_cpu}.s
+      -DINPUT_FILE=${CMAKE_CURRENT_SOURCE_DIR}/${func_name}.cl
++     -DAMDGCN_BITCODES=${PROJECT_BINARY_DIR}/lib/amdgcn/bitcode
+      -DTEST_CPU=${test_cpu}
+      -DEXTRA_CHECK_PREFIX=${extra_check_prefixes}
+      -P ${script})
+Index: ROCm-Device-Libs-rocm-6.0.0/test/compile/RunConstantFoldTest.cmake
+===================================================================
+--- ROCm-Device-Libs-rocm-6.0.0.orig/test/compile/RunConstantFoldTest.cmake
++++ ROCm-Device-Libs-rocm-6.0.0/test/compile/RunConstantFoldTest.cmake
+@@ -16,6 +16,7 @@ execute_process(COMMAND
+   -target amdgcn-amd-amdhsa -mcpu=${TEST_CPU}
+   -Xclang -finclude-default-header
+   --rocm-path=${BINARY_DIR}
++  --rocm-device-lib-path=${AMDGCN_BITCODES}
+   -mllvm -amdgpu-simplify-libcall=0
+   -o ${OUTPUT_FILE} ${INPUT_FILE}
+   RESULT_VARIABLE CLANG_RESULT
+Index: ROCm-Device-Libs-rocm-6.0.0/test/compile/RunCompileTest.cmake
+===================================================================
+--- ROCm-Device-Libs-rocm-6.0.0.orig/test/compile/RunCompileTest.cmake
++++ ROCm-Device-Libs-rocm-6.0.0/test/compile/RunCompileTest.cmake
+@@ -16,6 +16,7 @@ execute_process(COMMAND
+   -target amdgcn-amd-amdhsa -mcpu=${TEST_CPU}
+   -Xclang -finclude-default-header
+   --rocm-path=${BINARY_DIR}
++  --rocm-device-lib-path=${AMDGCN_BITCODES}
+   -mllvm -amdgpu-simplify-libcall=0
+   -o ${OUTPUT_FILE} ${INPUT_FILE}
+   RESULT_VARIABLE CLANG_RESULT
