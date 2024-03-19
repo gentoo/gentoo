@@ -56,6 +56,7 @@ DEPEND="
 	)
 "
 RDEPEND="
+	!<dev-build/muon-0.2.0-r2[man(-)]
 	virtual/pkgconfig
 "
 
