@@ -30,11 +30,11 @@ DEPEND="
 	curl? ( net-misc/curl )
 	archive? ( app-arch/libarchive:= )
 	libpkgconf? ( dev-util/pkgconf:= )
-	man? ( app-text/scdoc )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	man? (
+		app-text/scdoc
 		$(python_gen_any_dep '
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 		')
