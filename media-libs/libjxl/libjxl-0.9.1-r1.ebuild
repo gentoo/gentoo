@@ -102,9 +102,9 @@ multilib_src_install() {
 }
 
 pkg_postinst() {
-	use gdk-pixbuf && multilib_foreach_impl gnome2_gdk_pixbuf_update
+	use gdk-pixbuf && multilib_foreach_abi gnome2_gdk_pixbuf_update
 }
 
 pkg_postrm() {
-	use gdk-pixbuf && multilib_foreach_impl gnome2_gdk_pixbuf_update
+	use gdk-pixbuf && multilib_foreach_abi gnome2_gdk_pixbuf_update
 }
