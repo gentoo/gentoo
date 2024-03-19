@@ -594,6 +594,7 @@ sci-libs/mpir
 =kde-plasma/print-manager-23.08.5-r100
 ~kde-misc/kio-fuse-5.1.0
 ~kde-misc/plasma-pass-1.2.2
+~app-editors/kile-2.9.94
 ~dev-db/futuresql-0.1.1
 ~dev-libs/appstream-1.0.2
 ~dev-libs/kdiagram-3.0.1
