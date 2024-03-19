@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-WX_GTK_VER="3.2-gtk3"
+WX_GTK_VER="3.0-gtk3" # odalaunch crashes with 3.2. Check it before updating!
 inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
@@ -43,6 +43,8 @@ S="${WORKDIR}/${PN}-src-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-unbundle-fltk.patch
 	"${FILESDIR}"/${PN}-10.4.0-backport-pr928.patch
+	"${FILESDIR}"/${PN}-odalaunch-prefix.patch
+	"${FILESDIR}"/${PN}-lto.patch
 )
 
 src_prepare() {
