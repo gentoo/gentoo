@@ -69,7 +69,7 @@ src_unpack() {
 		git-r3_src_unpack
 	else
 		default
-		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.asc}
+		use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.asc}
 	fi
 }
 
