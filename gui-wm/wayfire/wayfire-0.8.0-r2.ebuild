@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+gles +system-wfconfig +system-wlroots test X"
+IUSE="+gles3 +system-wfconfig +system-wlroots test X"
 RESTRICT="!test? ( test )"
 
 # bundled wlroots has the following dependency string according to included headers.
@@ -128,7 +128,7 @@ src_configure() {
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature test tests)
 		$(meson_feature X xwayland)
-		$(meson_use gles enable_gles32)
+		$(meson_use gles3 enable_gles32)
 	)
 
 	meson_src_configure
