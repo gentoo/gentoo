@@ -28,7 +28,7 @@ else
 	fi
 fi
 
-inherit bash-completion-r1 distutils-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic distutils-r1 toolchain-funcs
 
 DESCRIPTION="Open source build system"
 HOMEPAGE="https://mesonbuild.com/"
@@ -52,6 +52,10 @@ RDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.1-python-path.patch
+)
+
 python_prepare_all() {
 	local disable_unittests=(
 		# ASAN and sandbox both want control over LD_PRELOAD
@@ -61,12 +65,6 @@ python_prepare_all() {
 		# ASAN is unsupported on some targets
 		# https://bugs.gentoo.org/692822
 		-e 's/test_pch_with_address_sanitizer/_&/'
-
-		# https://github.com/mesonbuild/meson/issues/7203
-		-e 's/test_templates/_&/'
-
-		# Broken due to python2 wrapper
-		-e 's/test_python_module/_&/'
 	)
 
 	sed -i "${disable_unittests[@]}" unittests/*.py || die
@@ -88,6 +86,16 @@ src_test() {
 
 python_test() {
 	(
+		# meson has its own tests for LTO support. We don't need to verify that
+		# all tests work when they happen to use it. And in particular, this
+		# breaks rust.
+		filter-lto
+
+		# remove unwanted python_wrapper_setup contents
+		# We actually do want to non-error if python2 is installed and tested.
+		remove="${T}/${EPYTHON}/bin:"
+		PATH=${PATH/${remove}/}
+
 		# test_meson_installed
 		unset PYTHONDONTWRITEBYTECODE
 
@@ -107,8 +115,7 @@ python_test() {
 		# value in JAVA_HOME, and the tests should get skipped.
 		export JAVA_HOME=$(java-config -O 2>/dev/null)
 
-		# Call python3 instead of EPYTHON to satisfy test_meson_uninstalled.
-		python3 run_tests.py
+		${EPYTHON} -u run_tests.py
 	) || die "Testing failed with ${EPYTHON}"
 }
 
