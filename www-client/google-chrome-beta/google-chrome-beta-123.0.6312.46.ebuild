@@ -18,15 +18,16 @@ else
 	MY_PN=${PN}
 fi
 
-KEYWORDS="-* ~amd64"
-
 MY_P="${MY_PN}_${PV}-1"
-
 SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb"
+S=${WORKDIR}
 
 LICENSE="google-chrome"
 SLOT="0"
+KEYWORDS="-* ~amd64"
+
 IUSE="qt5 qt6 selinux"
+
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -73,7 +74,6 @@ RDEPEND="
 
 QA_PREBUILT="*"
 QA_DESKTOP_FILE="usr/share/applications/google-chrome.*\\.desktop"
-S=${WORKDIR}
 CHROME_HOME="opt/google/chrome${PN#google-chrome}"
 
 pkg_nofetch() {
