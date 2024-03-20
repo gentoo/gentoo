@@ -8,14 +8,13 @@ inherit toolchain-funcs
 DESCRIPTION="Multiple sequence comparison by log-expectation"
 HOMEPAGE="https://www.drive5.com/muscle/"
 SRC_URI="https://github.com/rcedgar/muscle/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${P}/src
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="!sci-libs/libmuscle"
-
-S="${WORKDIR}"/${P}/src
 
 PATCHES=(
 	"${FILESDIR}"/0001-Makefile-fix-horribleness-so-that-it-respects-build-.patch
