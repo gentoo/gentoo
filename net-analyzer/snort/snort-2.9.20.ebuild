@@ -52,10 +52,6 @@ src_prepare() {
 
 	mv configure.{in,ac} || die
 
-	# USE=debug exposes a macro whose name apparently wasn't changed
-	sed -i -e 's/BEFORE_SRV_FAIL/BEFORE_SERVICE_FAIL/' \
-		src/dynamic-preprocessors/appid/appInfoTable.c || die
-
 	AT_M4DIR=m4 eautoreconf
 }
 
