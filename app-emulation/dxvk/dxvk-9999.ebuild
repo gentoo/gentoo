@@ -17,17 +17,18 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/libdisplay-info
 	)
 else
-	HASH_SPIRV=0bcc624926a25a2a273d07877fd25a6ff5ba1cfb
-	HASH_VULKAN=98f440ce6868c94f5ec6e198cc1adda4760e8849
-	HASH_DISPLAYINFO=d39344f466caae0495ebac4d49b03a886d83ba3a
+	HASH_SPIRV=
+	HASH_VULKAN=
+	HASH_DISPLAYINFO=
 	SRC_URI="
 		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
-			-> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+			-> spirv-headers-${HASH_SPIRV}.tar.gz
 		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
-			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
-		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/${PN}-libdisplay-info-${HASH_DISPLAYINFO::10}.tar.bz2"
+			-> vulkan-headers-${HASH_VULKAN}.tar.gz
+		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/libdisplay-info-${HASH_DISPLAYINFO}.tar.bz2
+	"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -43,12 +44,14 @@ IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 +dxgi +strip"
 REQUIRED_USE="
 	|| ( d3d9 d3d10 d3d11 dxgi )
 	d3d10? ( d3d11 )
-	d3d11? ( dxgi )"
+	d3d11? ( dxgi )
+"
 
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/glslang
-	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-wow64-setup.patch
