@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cargo desktop git-r3 xdg
+inherit cargo desktop git-r3 optfeature xdg
 
 DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
@@ -20,11 +20,10 @@ RESTRICT="!test? ( test )"
 
 # dlopen: libX* (see winit+x11-dl crates)
 RDEPEND="
-	dev-libs/glib:2
 	dev-libs/openssl:=
 	media-libs/alsa-lib
 	sys-libs/zlib:=
-	x11-libs/gtk+:3
+	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libXcursor
 	x11-libs/libXrandr
@@ -87,4 +86,10 @@ src_install() {
 	newbin ${PN}_desktop ${PN}
 	newbin exporter ${PN}_exporter
 	dobin ${PN}_scanner
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "the in-application file picker" sys-apps/xdg-desktop-portal
 }
