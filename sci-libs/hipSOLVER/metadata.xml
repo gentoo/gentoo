@@ -16,4 +16,7 @@
   <upstream>
     <remote-id type="github">ROCmSoftwarePlatform/hipSOLVER</remote-id>
   </upstream>
+  <use>
+    <flag name="sparse">Build hipSOLVER with sparse functionality (sci-libs/cholmod)</flag>
+  </use>
 </pkgmetadata>

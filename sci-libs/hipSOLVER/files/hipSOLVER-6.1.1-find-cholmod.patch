@@ -1,0 +1,29 @@
+cholmod.h is in /usr/include in Gentoo, use pkg-config to find it
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -221,11 +221,9 @@ if( NOT USE_CUDA )
+   if( BUILD_WITH_SPARSE )
+     list(APPEND hipsolver_pkgdeps "rocsparse >= 2.3.0")
+ 
+-    if( SYSTEM_OS STREQUAL "centos" OR SYSTEM_OS STREQUAL "rhel" )
+-      list(APPEND hipsolver_pkgdeps "suitesparse")
+-    else()
+-      list(APPEND hipsolver_pkgdeps "libcholmod3" "libsuitesparseconfig5")
+-    endif()
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(CHOLMOD REQUIRED IMPORTED_TARGET cholmod)
++    target_link_libraries(hipsolver-common INTERFACE PkgConfig::CHOLMOD)
+   endif( )
+ 
+   rocm_package_add_dependencies(DEPENDS ${hipsolver_pkgdeps})
+--- a/library/src/amd_detail/hipsolver_sparse.cpp
++++ b/library/src/amd_detail/hipsolver_sparse.cpp
+@@ -45,7 +45,7 @@
+ 
+ #ifdef HAVE_ROCSPARSE
+ #include <rocsparse/rocsparse.h>
+-#include <suitesparse/cholmod.h>
++#include <cholmod.h>
+ #endif
+ 
+ #undef TRUE
