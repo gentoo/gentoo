@@ -24,14 +24,10 @@
 	</longdescription>
 	<use>
 		<flag name="btrfs">
-			Enables dependencies for the "btrfs" graph driver, including
-			necessary kernel flags.
+			Enables btrfs support (graph driver) in Podman
 		</flag>
 		<flag name="cgroup-hybrid">
 			Use legacy (hybrid) cgroups instead of modern (unified) cgroups
-		</flag>
-		<flag name="cron">
-			Runs `podman auto-update` daily. See podman-auto-update(1)
 		</flag>
 		<flag name="fuse">
 			Enables fuse dependencies (fuse-overlayfs is especially useful

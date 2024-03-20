@@ -1,7 +1,0 @@
-#!/bin/sh
-set -e
-
-# mimicking behaviour of podman-auto-update.service
-if [ -x /usr/bin/podman ]; then
-   /usr/bin/podman auto-update && /usr/bin/podman image prune -f
-fi
