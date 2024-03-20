@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( luajit )
 
-inherit autotools lua-single systemd tmpfiles
+inherit autotools flag-o-matic lua-single systemd tmpfiles
 
 DESCRIPTION="The de facto standard for intrusion detection/prevention"
 HOMEPAGE="https://www.snort.org"
@@ -60,6 +60,15 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861239
+	#
+	# Upstream does bug mail. Sent an email.
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf \
 		$(use_enable gre) \
 		$(use_enable control-socket) \
