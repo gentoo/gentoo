@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_BUILD_TYPE=Release
 inherit cmake
 
 DESCRIPTION="Monkey's Audio Codecs"
@@ -15,15 +16,13 @@ KEYWORDS="~alpha ~amd64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 BDEPEND="app-arch/unzip"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-10.18-linux.patch"
+	"${FILESDIR}/${PN}-10.52-output.patch"
+)
+
 src_unpack() {
 	mkdir -p "${S}" || die
 	cd "${S}" || die
 	default
 }
-
-CMAKE_BUILD_TYPE=Release
-
-PATCHES=(
-	"${FILESDIR}/${PN}-10.18-linux.patch"
-	"${FILESDIR}/${PN}-10.52-output.patch"
-)
