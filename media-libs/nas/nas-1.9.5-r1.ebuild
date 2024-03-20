@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Network Audio System"
 HOMEPAGE="https://radscan.com/nas.html"
@@ -52,6 +52,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859934
+	# https://sourceforge.net/p/nas/bugs/13/
+	filter-lto
+
 	# Need to run econf so that config.guess is updated
 	pushd config || die
 	econf
