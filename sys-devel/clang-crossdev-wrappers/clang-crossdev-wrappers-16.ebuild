@@ -16,6 +16,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x64-ma
 
 RDEPEND="
 	sys-devel/clang:${SLOT}
+	sys-devel/lld:${SLOT}
 "
 
 src_install() {
