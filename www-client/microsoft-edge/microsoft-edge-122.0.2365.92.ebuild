@@ -6,7 +6,7 @@ EAPI="8"
 inherit chromium-2 desktop pax-utils unpacker xdg
 
 DESCRIPTION="The web browser from Microsoft"
-HOMEPAGE="https://www.microsoft.com/en-us/edge"
+HOMEPAGE="https://www.microsoft.com/edge"
 
 if [[ ${PN} == microsoft-edge ]]; then
 	MY_PN=${PN}-stable
@@ -14,16 +14,16 @@ else
 	MY_PN=${PN}
 fi
 
-KEYWORDS="-* amd64"
-
 MY_P="${MY_PN}_${PV}-1"
-
 SRC_URI="https://packages.microsoft.com/repos/edge/pool/main/m/${MY_PN}/${MY_P}_amd64.deb"
+S=${WORKDIR}
 
 LICENSE="microsoft-edge"
 SLOT="0"
-RESTRICT="bindist mirror strip"
+KEYWORDS="-* amd64"
+
 IUSE="+mip qt5 qt6"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
@@ -66,7 +66,6 @@ RDEPEND="
 
 QA_PREBUILT="*"
 QA_DESKTOP_FILE="usr/share/applications/microsoft-edge.*\\.desktop"
-S=${WORKDIR}
 EDGE_HOME="opt/microsoft/msedge${PN#microsoft-edge}"
 
 pkg_nofetch() {
