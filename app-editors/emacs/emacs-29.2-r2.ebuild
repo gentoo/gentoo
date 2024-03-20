@@ -586,6 +586,14 @@ src_install() {
 			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
 			symlink it into /Applications by yourself."
 	fi
+	if ! use mailutils; then
+		DOC_CONTENTS+="\\n\\nThe mailutils USE flag is disabled. If Emacs'
+		own e-mail features are going to be used as an e-mail client
+		(e.g. Rmail), you are strongly encouraged to enable it. If not,
+		Emacs will use its own implementation of movemail; which has
+		fewer features and is less secure. For more information see:
+		https://www.gnu.org/software/emacs/manual/html_node/emacs/Movemail.html"
+	fi
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.
 		To create this file at run time, execute the following command:
