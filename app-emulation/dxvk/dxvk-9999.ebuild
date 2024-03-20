@@ -30,11 +30,12 @@ else
 		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/${PN}-libdisplay-info-${HASH_DISPLAYINFO::10}.tar.bz2"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
-# setup_dxvk.sh is no longer provided, fetch old until a better solution
-SRC_URI+=" https://raw.githubusercontent.com/doitsujin/dxvk/cd21cd7fa3b0df3e0819e21ca700b7627a838d69/setup_dxvk.sh"
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
 HOMEPAGE="https://github.com/doitsujin/dxvk/"
+
+# setup_dxvk.sh is no longer provided, fetch old until a better solution
+SRC_URI+=" https://raw.githubusercontent.com/doitsujin/dxvk/cd21cd7fa3b0df3e0819e21ca700b7627a838d69/setup_dxvk.sh"
 
 LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
