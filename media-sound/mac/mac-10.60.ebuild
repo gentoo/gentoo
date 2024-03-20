@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake
 
 DESCRIPTION="Monkey's Audio Codecs"
 HOMEPAGE="https://www.monkeysaudio.com"
