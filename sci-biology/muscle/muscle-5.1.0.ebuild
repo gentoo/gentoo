@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Multiple sequence comparison by log-expectation"
 HOMEPAGE="https://www.drive5.com/muscle/"
