@@ -6,7 +6,7 @@ EAPI=8
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="Simple generic tabbed fronted to xembed aware applications"
-HOMEPAGE="https://tools.suckless.org/tabbed"
+HOMEPAGE="https://tools.suckless.org/tabbed/"
 SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
