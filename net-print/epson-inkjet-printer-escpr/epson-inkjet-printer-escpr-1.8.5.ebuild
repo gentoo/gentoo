@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/1.6.5-warnings.patch"
 	"${FILESDIR}/${PN}-1.7.7-fnocommon.patch"
-	"${FILESDIR}/${P}-1-missing-include.patch"
+	"${FILESDIR}/${PN}-1.8-missing-include.patch"
 )
 
 src_configure() {
