@@ -13,6 +13,10 @@
     <email>gentoo@holzke.net</email>
     <name>Wilfried Holzke</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">ROCmSoftwarePlatform/hipSPARSE</remote-id>
   </upstream>
