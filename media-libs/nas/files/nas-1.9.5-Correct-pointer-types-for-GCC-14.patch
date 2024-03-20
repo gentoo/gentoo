@@ -1,0 +1,108 @@
+From cffa7bbc124f775520914a0cfb0ede619a05e07d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 2 Feb 2024 16:05:11 +0100
+Subject: [PATCH] Correct pointer types for GCC 14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 14 became pickier about pointer types:
+
+auth.c:71:26: error: initialization of ‘int (*)()’ from incompatible pointer type ‘int (*)(short unsigned int,  char *)’ [-Wincompatible-pointer-types]
+   71 |      MitToID, MitFromID, MitRemoveCookie,
+      |                          ^~~~~~~~~~~~~~~
+
+Including const correctness:
+
+audemo.c: In function ‘rescanCB’:
+audemo.c:524:23: error: passing argument 2 of ‘XawListChange’ from incompatible pointer type [-Wincompatible-pointer-types]
+  524 |                       makeFileList(globals->fileNames, globals->numFiles),
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       |
+      |                       char **
+
+This patch fixes these errors.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ clients/audio/audemo/audemo.c | 28 ++++++++++++++--------------
+ server/os/auth.c              |  2 +-
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/clients/audio/audemo/audemo.c b/clients/audio/audemo/audemo.c
+index 5617cf7..e77b95d 100644
+--- a/clients/audio/audemo/audemo.c
++++ b/clients/audio/audemo/audemo.c
+@@ -500,11 +500,11 @@ newBucketCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ static void
+ rescanCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ {
+-    GlobalDataPtr   globals = (GlobalDataPtr) globalsp;
+-    static char    *noFilesString = "No files found";
+-    char           *dir,
+-                   *template;
+-    int             i;
++    GlobalDataPtr       globals = (GlobalDataPtr) globalsp;
++    static const char   *noFilesString = "No files found";
++    char                *dir,
++                        *template;
++    int                 i;
+ 
+     if (globals->numFiles)
+     {
+@@ -521,7 +521,7 @@ rescanCB(Widget w, XtPointer globalsp, XtPointer call_data)
+     if (globals->numFiles)
+     {
+ 	XawListChange(globals->samples,
+-		      makeFileList(globals->fileNames, globals->numFiles),
++		      (const char **)makeFileList(globals->fileNames, globals->numFiles),
+ 		      globals->numFiles, -1, True);
+ 	XtSetSensitive(globals->samples, True);
+     }
+@@ -591,13 +591,13 @@ bucketPlayCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ static void
+ bucketQueryCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ {
+-    GlobalDataPtr   globals = (GlobalDataPtr) globalsp;
++    GlobalDataPtr       globals = (GlobalDataPtr) globalsp;
+     BucketDialogDataPtr buf = &globals->buf;
+-    char            tmp[200],
+-                    access[4],
+-                    desc[COMMENT_LEN];
+-    int             i;
+-    static char    *noBucketString = "No buckets";
++    char                tmp[200],
++                        access[4],
++			desc[COMMENT_LEN];
++    int                 i;
++    static const char  *noBucketString = "No buckets";
+ 
+     if (buf->numBuckets)
+     {
+@@ -652,8 +652,8 @@ bucketQueryCB(Widget w, XtPointer globalsp, XtPointer call_data)
+ 
+     if (buf->numBuckets)
+     {
+-	XawListChange(buf->bucketList, buf->bucketText, buf->numBuckets, -1,
+-		      True);
++	XawListChange(buf->bucketList, (const char **)buf->bucketText,
++	              buf->numBuckets, -1, True);
+ 	XtSetSensitive(buf->bucketList, True);
+     }
+     else
+diff --git a/server/os/auth.c b/server/os/auth.c
+index a80a257..9488db7 100644
+--- a/server/os/auth.c
++++ b/server/os/auth.c
+@@ -55,7 +55,7 @@ struct protocol {
+     int (*Reset) ();            /* delete all authorization data entries */
+         AuID(*ToID) ();         /* convert cookie to ID */
+     int (*FromID) ();           /* convert ID to cookie */
+-    int (*Remove) ();           /* remove a specific cookie */
++    int (*Remove) (unsigned short, char *);     /* remove a specific cookie */
+ };
+ 
+ extern int MitAddCookie();
+-- 
+2.43.0
+
