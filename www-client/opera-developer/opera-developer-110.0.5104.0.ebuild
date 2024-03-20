@@ -24,8 +24,6 @@ fi
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
-LICENSE="OPERA-2018"
-SLOT="0"
 
 SRC_URI_BASE=(
 	"https://download1.operacdn.com/pub/${PN}"
@@ -41,15 +39,16 @@ else
 	MY_PN=${PN}
 fi
 
-KEYWORDS="-* ~amd64"
-
 FFMPEG_VERSION="114.0.5735.9"
-
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.${OPERA_ARCHIVE_EXT}}
 	proprietary-codecs? (
 		mirror+https://dev.gentoo.org/~sultan/distfiles/www-client/opera/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
 	)"
+S=${WORKDIR}
 
+LICENSE="OPERA-2018"
+SLOT="0"
+KEYWORDS="-* ~amd64"
 IUSE="+proprietary-codecs +suid qt5 qt6"
 RESTRICT="bindist mirror strip"
 
@@ -89,7 +88,6 @@ RDEPEND="
 "
 
 QA_PREBUILT="*"
-S=${WORKDIR}
 OPERA_HOME="opt/opera${PN#opera}"
 
 pkg_pretend() {
