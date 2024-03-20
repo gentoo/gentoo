@@ -65,18 +65,18 @@ RDEPEND="
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
 	rocm? (
-		>=dev-util/hip-5.7
-		>=dev-libs/rccl-5.7[${ROCM_USEDEP}]
-		>=sci-libs/rocThrust-5.7[${ROCM_USEDEP}]
-		>=sci-libs/rocPRIM-5.7[${ROCM_USEDEP}]
-		>=sci-libs/hipBLAS-5.7[${ROCM_USEDEP}]
-		>=sci-libs/hipFFT-5.7[${ROCM_USEDEP}]
-		>=sci-libs/hipSPARSE-5.7[${ROCM_USEDEP}]
-		>=sci-libs/hipRAND-5.7[${ROCM_USEDEP}]
-		>=sci-libs/hipCUB-5.7[${ROCM_USEDEP}]
-		>=sci-libs/hipSOLVER-5.7[${ROCM_USEDEP}]
-		>=sci-libs/miopen-5.7[${ROCM_USEDEP}]
-		>=dev-util/roctracer-5.7[${ROCM_USEDEP}]
+		=dev-util/hip-5.7*
+		=dev-libs/rccl-5.7*[${ROCM_USEDEP}]
+		=sci-libs/rocThrust-5.7*[${ROCM_USEDEP}]
+		=sci-libs/rocPRIM-5.7*[${ROCM_USEDEP}]
+		=sci-libs/hipBLAS-5.7*[${ROCM_USEDEP}]
+		=sci-libs/hipFFT-5.7*[${ROCM_USEDEP}]
+		=sci-libs/hipSPARSE-5.7*[${ROCM_USEDEP}]
+		=sci-libs/hipRAND-5.7*[${ROCM_USEDEP}]
+		=sci-libs/hipCUB-5.7*[${ROCM_USEDEP}]
+		=sci-libs/hipSOLVER-5.7*[${ROCM_USEDEP}]
+		=sci-libs/miopen-5.7*[${ROCM_USEDEP}]
+		=dev-util/roctracer-5.7*[${ROCM_USEDEP}]
 	)
 	distributed? ( sci-libs/tensorpipe[cuda?] )
 	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
