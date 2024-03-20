@@ -34,8 +34,8 @@ src_compile() {
 	tc-export CC PKG_CONFIG
 
 	local emakeargs=(
-		TABBED_CFLAGS="$("${PKG_CONFIG}" --cflags x11 xft)"
-		TABBED_LDFLAGS="$("${PKG_CONFIG}" --libs x11 xft)"
+		TABBED_CFLAGS="${CFLAGS} $("${PKG_CONFIG}" --cflags x11 xft)"
+		TABBED_LDFLAGS="${LDFLAGS} $("${PKG_CONFIG}" --libs x11 xft)"
 	)
 
 	emake "${emakeargs[@]}"
