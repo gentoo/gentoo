@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-IUSE="+clang +debug static-libs test"
+IUSE="cet +clang +debug static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
@@ -79,6 +79,7 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLLVM_INCLUDE_TESTS=OFF
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
+		-DLIBUNWIND_ENABLE_CET=$(usex cet ON OFF)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
 		-DLIBUNWIND_INCLUDE_TESTS=$(usex test)
 		-DLIBUNWIND_INSTALL_HEADERS=ON
