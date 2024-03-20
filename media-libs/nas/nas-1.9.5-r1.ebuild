@@ -8,6 +8,7 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 DESCRIPTION="Network Audio System"
 HOMEPAGE="https://radscan.com/nas.html"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-1.9.5-patches.tar.xz"
 
 LICENSE="HPND MIT"
 SLOT="0"
@@ -39,11 +40,7 @@ BDEPEND="
 DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.9.2-asneeded.patch"
-	"${FILESDIR}/${PN}-1.9.4-libfl.patch"
-	# Applied upstream
-	"${FILESDIR}"/nas-1.9.5-No-implicit-ints-and-function-declarations.patch
-	"${FILESDIR}"/nas-1.9.5-Correct-pointer-types-for-GCC-14.patch
+	"${WORKDIR}"/${PN}-1.9.5-patches
 )
 
 src_prepare() {
