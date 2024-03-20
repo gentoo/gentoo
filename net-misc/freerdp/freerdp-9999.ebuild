@@ -100,7 +100,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	valgrind? ( dev-debug/valgrind )
 "
-RDPEND="${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	!net-misc/freerdp:0
 	client? ( !net-misc/freerdp:2[client] )
 	server? ( !net-misc/freerdp:2[server] )
