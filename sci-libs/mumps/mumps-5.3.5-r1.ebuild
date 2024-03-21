@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit fortran-2 flag-o-matic multilib toolchain-funcs
 MYP=MUMPS_${PV}
 
 DESCRIPTION="MUltifrontal Massively Parallel sparse direct matrix Solver"
-HOMEPAGE="http://mumps.enseeiht.fr/"
-SRC_URI="http://mumps.enseeiht.fr/${MYP}.tar.gz"
+HOMEPAGE="https://mumps-solver.org/"
+SRC_URI="https://mumps-solver.org/${MYP}.tar.gz"
 S="${WORKDIR}/${MYP}"
 
 LICENSE="public-domain"
