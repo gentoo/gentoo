@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tokusan441@gmail.com</email>
+		<name>Hiroki Tokunaga</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="alt-cannadic">Include Mozc UT ALt-Cannadic Dictionary.</flag>
+		<flag name="edict">Include Mozc UT EDICT2 Dictionary.</flag>
+		<flag name="jawiki">Include Mozc UT Jawiki Dictionary.</flag>
+		<flag name="neologd">Include Mozc UT NEologd Dictionary.</flag>
+		<flag name="personal-names">Include Mozc UT Personal Name Dictionary.</flag>
+		<flag name="place-names">Include Mozc UT Place Name Dictionary.</flag>
+		<flag name="skk-jisyo">Include Mozc UT SKK-JISYO Dictionary.</flag>
+		<flag name="sudachidict">Include Mozc UT SudachiDict Dictionary.</flag>
+	</use>
+</pkgmetadata>
