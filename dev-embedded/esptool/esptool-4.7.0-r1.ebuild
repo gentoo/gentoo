@@ -22,6 +22,7 @@ RDEPEND="
 		dev-python/bitstring[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		>=dev-python/ecdsa-0.16.0[${PYTHON_USEDEP}]
+		dev-python/intelhex[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/reedsolo[${PYTHON_USEDEP}]
@@ -33,7 +34,6 @@ BDEPEND="
 	')
 	test? ( $(python_gen_cond_dep '
 		dev-python/cffi[${PYTHON_USEDEP}]
-		dev-python/intelhex[${PYTHON_USEDEP}]
 		dev-python/pyelftools[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	') )
