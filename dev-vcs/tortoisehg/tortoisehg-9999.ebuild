@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit desktop distutils-r1 optfeature xdg-utils
@@ -13,7 +13,7 @@ if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${PV}/thg-${PV}.tar.gz -> ${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-6.2[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '>=dev-vcs/mercurial-6.3.2[${PYTHON_USEDEP}]' python3_11 )
-		<dev-vcs/mercurial-6.6[${PYTHON_USEDEP}]"
+		<dev-vcs/mercurial-6.7[${PYTHON_USEDEP}]"
 	S="${WORKDIR}/thg-${PV}"
 else
 	inherit mercurial
