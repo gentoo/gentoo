@@ -64,19 +64,6 @@ src_prepare() {
 		sed -i -e 's/\texamples$//' Makefile.in || die
 	fi
 
-	# add missing GIO_LIB Bug #684870
-	sed -i -e 's/gsymcheck_LDFLAGS =/gsymcheck_LDFLAGS = $(GIO_LIBS)/' \
-		gsymcheck/src/Makefile.am || die
-
-	sed -i -e 's/gnetlist_LDFLAGS =/gnetlist_LDFLAGS = $(GIO_LIBS)/' \
-		gnetlist-legacy/src/Makefile.am || die
-
-	sed -i -e 's/gschlas_LDFLAGS =/gschlas_LDFLAGS = $(GIO_LIBS)/' \
-		utils/gschlas/Makefile.am || die
-
-	sed -i -e 's/sarlacc_schem_LDFLAGS =/sarlacc_schem_LDFLAGS = $(GIO_LIBS)/' \
-		contrib/sarlacc_schem/Makefile.am || die
-
 	# remove compressed files, compressed by portage in install phase
 	rm docs/wiki/media/geda/gsch2pcb-libs.tar.gz || die
 	rm docs/wiki/media/geda/pcb_plugin_template.tar.gz || die
