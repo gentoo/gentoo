@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 # https://hexdocs.pm/elixir/compatibility-and-deprecations.html#compatibility-between-elixir-and-erlang-otp
 DEPEND="
 	>=dev-lang/erlang-23:0=[ssl]
-	<dev-lang/erlang-26.1
+	<dev-lang/erlang-27
 "
 # 'mix' tool collides with sci-biology/phylip, bug #537514
 RDEPEND="${DEPEND}
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-no-Q.patch
 	"${FILESDIR}"/${PN}-1.10.3-epmd-daemon.patch
 	"${FILESDIR}"/${PN}-1.14.1-make44-parallel-build.patch
+	"${FILESDIR}"/${PN}-1.14.5-otp26-tests.patch
 )
 
 src_install() {
