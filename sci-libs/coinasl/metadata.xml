@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>audvare@gmail.com</email>
+		<name>Andrew Udvare</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">coin-or-tools/ThirdParty-ASL</remote-id>
+	</upstream>
+	<use>
+		<flag name="big-goff-32">Force the value of ASL_big_goff to 32</flag>
+		<flag name="big-goff-64">Force the value of ASL_big_goff to 64</flag>
+	</use>
+</pkgmetadata>
