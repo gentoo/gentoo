@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library for sci-biology/mauve"
 HOMEPAGE="http://gel.ahabs.wisc.edu/mauve/"
@@ -29,6 +29,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862897
+	# Upstream website doesn't load. Nowhere to report bugs to.
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf $(use_enable static-libs static)
 }
 
