@@ -20,8 +20,10 @@ SLOT="0"
 
 DEPEND="media-libs/libpng"
 RDEPEND="${DEPEND}"
-BDEPEND="app-alternatives/yacc[bison]
-	virtual/pkgconfig"
+BDEPEND="
+	sys-devel/bison
+	virtual/pkgconfig
+"
 
 src_compile() {
 	append-flags -DNDEBUG
