@@ -1,17 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit perl-module
+inherit go-module perl-module
 
 DESCRIPTION="Advanced command-line tools to perform a variety of MySQL and system tasks"
 HOMEPAGE="https://www.percona.com/software/mysql-tools/percona-toolkit"
-SRC_URI="https://www.percona.com/downloads/${PN}/${PV}/source/tarball/${P}.tar.gz"
+SRC_URI="https://www.percona.com/downloads/${PN}/${PV}/source/tarball/${P}.tar.gz
+	https://github.com/hydrapolic/gentoo-dist/releases/download/${P}/${P}-deps.tar.xz"
 
 LICENSE="|| ( GPL-2 Artistic )"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 # Package warrants IUSE doc
 IUSE=""
 
@@ -42,10 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.10-slave-delay-fix.patch
 )
 
-src_prepare() {
+src_install() {
 	default
-
-	sed -i \
-		-e "s/=> 'percona-toolkit',/=> 'Percona::Toolkit',/g" \
-		Makefile.PL || die
+	dobin bin/*
 }
