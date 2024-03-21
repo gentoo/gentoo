@@ -42,6 +42,7 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		-DQT_FEATURE_system_assimp=ON
+		-DQT_UNITY_BUILD=OFF # fails to build
 	)
 
 	qt6-build_src_configure
