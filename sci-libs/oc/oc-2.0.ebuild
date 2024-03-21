@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit flag-o-matic
 
 DESCRIPTION="Network Data Access Protocol client C library"
 HOMEPAGE="https://opendap.org/"
@@ -18,6 +20,15 @@ RDEPEND="net-misc/curl"
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862906
+	#
+	# Upstream exists, they just don't seem to mention oc anymore, *anywhere*.
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf --disable-static
 }
 
