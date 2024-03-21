@@ -62,6 +62,10 @@ src_prepare() {
 	rm docs/wiki/media/geda/pcb_plugin_template.tar.gz || die
 	rm docs/wiki/media/pcb/plugin_debug_window.tar.gz || die
 
+	# -Wmaybe-uninitialized is made fatal, which is not ideal for building
+	# releases. Upstream is working on fixing these anyway.
+	sed -i '/Werror_maybe_uninitialized_IF_SUPPORTED/d' configure.ac
+
 	eautoreconf
 }
 
