@@ -64,7 +64,7 @@ src_prepare() {
 
 	# -Wmaybe-uninitialized is made fatal, which is not ideal for building
 	# releases. Upstream is working on fixing these anyway.
-	sed -i '/Werror_maybe_uninitialized_IF_SUPPORTED/d' configure.ac
+	sed -i '/Werror_maybe_uninitialized_IF_SUPPORTED/d' configure.ac || die
 
 	eautoreconf
 }
