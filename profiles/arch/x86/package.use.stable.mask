@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
+# Experimental, virt-firmware is keyworded only unstable
+sys-kernel/installkernel efistub
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
 # This is still experimental, prebuilt images may not boot on all systems.
 sys-kernel/gentoo-kernel generic-uki
