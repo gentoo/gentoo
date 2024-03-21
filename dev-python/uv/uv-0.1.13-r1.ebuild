@@ -46,6 +46,12 @@ IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
 
+DEPEND="
+	dev-libs/libgit2:=
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	test? (
 		dev-lang/python:3.8
