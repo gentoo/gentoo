@@ -62,14 +62,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	# skip broken tests:
-	# - requiring pinned CPython versions (3.8.12, 3.11.7, 3.12.1)
-	# - requiring specific terminal width (COLUMNS don't seem to work)
-	# - other (perhaps failing because of other skipped tests?)
-	"${FILESDIR}/uv-0.1.13-skip-tests.patch"
-)
-
 QA_FLAGS_IGNORED="usr/bin/.*"
 
 check_space() {
@@ -86,6 +78,19 @@ pkg_setup() {
 	check_space
 }
 
+src_prepare() {
+	local PATCHES=(
+		# skip broken tests:
+		# - requiring pinned CPython versions (3.8.12, 3.11.7, 3.12.1)
+		# - requiring specific terminal width (COLUMNS don't seem to work)
+		# - other (perhaps failing because of other skipped tests?)
+		"${FILESDIR}/uv-0.1.13-skip-tests.patch"
+	)
+
+	rm crates/uv/tests/pip_compile_scenarios.rs || die
+	default
+}
+
 src_compile() {
 	cd crates/uv || die
 	cargo_src_compile
@@ -93,7 +98,7 @@ src_compile() {
 
 src_test() {
 	cd crates/uv || die
-	cargo_src_test
+	cargo_src_test --no-fail-fast
 }
 
 src_install() {

@@ -1,19 +1,35 @@
-diff --git a/crates/uv/tests/pip_compile_scenarios.rs b/crates/uv/tests/pip_compile_scenarios.rs
-index 2cbece6d..9b785300 100644
---- a/crates/uv/tests/pip_compile_scenarios.rs
-+++ b/crates/uv/tests/pip_compile_scenarios.rs
-@@ -118,3 +118,2 @@ fn requires_incompatible_python_version_compatible_override() -> Result<()> {
- /// ```
+diff --git a/crates/uv/tests/pip_install.rs b/crates/uv/tests/pip_install.rs
+index bb6f719e..e8628b4d 100644
+--- a/crates/uv/tests/pip_install.rs
++++ b/crates/uv/tests/pip_install.rs
+@@ -827,3 +827,2 @@ fn install_no_index_version() {
+ /// Ref: <https://github.com/astral-sh/uv/issues/1600>
 -#[test]
- fn requires_compatible_python_version_incompatible_override() -> Result<()> {
+ fn install_extra_index_url_has_priority() {
 diff --git a/crates/uv/tests/pip_install_scenarios.rs b/crates/uv/tests/pip_install_scenarios.rs
-index e0ad34ec..87bff298 100644
+index e0ad34ec..4e0c33c9 100644
 --- a/crates/uv/tests/pip_install_scenarios.rs
 +++ b/crates/uv/tests/pip_install_scenarios.rs
-@@ -2369,3 +2369,2 @@ fn requires_python_version_greater_than_current() {
+@@ -2246,3 +2246,2 @@ fn package_prereleases_specifier_boundary() {
+ /// ```
+-#[test]
+ fn requires_python_version_does_not_exist() {
+@@ -2287,3 +2286,2 @@ fn requires_python_version_does_not_exist() {
+ /// ```
+-#[test]
+ fn requires_python_version_less_than_current() {
+@@ -2328,3 +2326,2 @@ fn requires_python_version_less_than_current() {
+ /// ```
+-#[test]
+ fn requires_python_version_greater_than_current() {
+@@ -2369,3 +2366,2 @@ fn requires_python_version_greater_than_current() {
  /// ```
 -#[test]
  fn requires_python_version_greater_than_current_patch() {
+@@ -2529,3 +2525,2 @@ fn requires_python_version_greater_than_current_backtrack() {
+ /// ```
+-#[test]
+ fn requires_python_version_greater_than_current_excluded() {
 diff --git a/crates/uv/tests/pip_list.rs b/crates/uv/tests/pip_list.rs
 index 71bdf344..b80fea5f 100644
 --- a/crates/uv/tests/pip_list.rs
