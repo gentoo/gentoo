@@ -63,6 +63,16 @@ static_to_shared() {
 }
 
 src_prepare() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862903
+	#
+	# There is an upstream mailing list but it seems to be broken. I *think*,
+	# because it's all in French. I tried and failed to report the bug.
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# workaround for gcc10 (bug #743442)
 	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 
