@@ -9,7 +9,7 @@ inherit xorg-3 meson-multilib
 
 DESCRIPTION="X.Org XvMC library"
 
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
