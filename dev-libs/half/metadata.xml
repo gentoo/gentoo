@@ -12,6 +12,10 @@
     <email>xgreenlandforwyy@gmail.com</email>
     <name>Yiyang Wu</name>
   </maintainer>
+  <maintainer type="person">
+    <email>lockalsash@gmail.com</email>
+    <name>Sv. Lockal</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">ROCm/half</remote-id>
   </upstream>
