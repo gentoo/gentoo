@@ -1,0 +1,30 @@
+From 3387d8a4de3bb0bab7b32ea6440798eff0ae2a9c Mon Sep 17 00:00:00 2001
+From: Marco Scardovi <mscardovi@icloud.com>
+Date: Sat, 11 Nov 2023 11:06:12 +0100
+Subject: [PATCH] nls
+
+---
+ src/hddtemp.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/hddtemp.c b/src/hddtemp.c
+index 64d000e..66a4c89 100644
+--- a/src/hddtemp.c
++++ b/src/hddtemp.c
+@@ -270,10 +270,12 @@ int main(int argc, char* argv[]) {
+   backtrace_sigill();
+   backtrace_sigbus();
+ 
++#if ENABLE_NLS
+   setlocale (LC_ALL, "");
+   bindtextdomain (PACKAGE, LOCALEDIR);
+   textdomain (PACKAGE);
+-
++#endif
++  
+   show_db = debug = numeric = quiet = wakeup = af_hint = syslog_interval = foreground = 0;
+   unit = DEFAULT;
+   portnum = PORT_NUMBER;
+-- 
+2.42.1
+
