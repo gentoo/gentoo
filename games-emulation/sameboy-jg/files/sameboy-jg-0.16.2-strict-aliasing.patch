@@ -1,0 +1,115 @@
+https://bugs.gentoo.org/926077
+https://github.com/LIJI32/SameBoy/pull/593
+https://gitlab.com/jgemu/sameboy/-/merge_requests/50
+https://gitlab.com/jgemu/sameboy/-/commit/6a283f65cc4b9ee4896942afde745fa67e612fd3
+https://gitlab.com/jgemu/sameboy/-/commit/9067678fe0160fe5c2f10a7f6271f8293d5150d1
+
+From 6a283f65cc4b9ee4896942afde745fa67e612fd3 Mon Sep 17 00:00:00 2001
+From: Lior Halphon <LIJI32@gmail.com>
+Date: Sat, 9 Mar 2024 11:08:01 -0800
+Subject: [PATCH 1/2] Avoid strict aliasing violations. Closes #593
+
+Backported from:
+
+https://github.com/LIJI32/SameBoy/commit/8739da61c013e20e1cc94f0619c622a65c713408
+---
+ Core/apu.c |  4 ++--
+ Core/apu.h | 11 +++++++++++
+ Makefile   |  2 +-
+ 3 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/Core/apu.c b/Core/apu.c
+index e621e82a..0f0ed16b 100644
+--- a/Core/apu.c
++++ b/Core/apu.c
+@@ -100,7 +100,7 @@ static void update_sample(GB_gameboy_t *gb, GB_channel_t index, int8_t value, un
+                 output.left = output.right = 0;
+             }
+             
+-            if (*(uint32_t *)&(gb->apu_output.current_sample[index]) != *(uint32_t *)&output) {
++            if (gb->apu_output.current_sample[index].packed != output.packed) {
+                 refresh_channel(gb, index, cycles_offset);
+                 gb->apu_output.current_sample[index] = output;
+             }
+@@ -131,7 +131,7 @@ static void update_sample(GB_gameboy_t *gb, GB_channel_t index, int8_t value, un
+         if (likely(!gb->apu_output.channel_muted[index])) {
+             output = (GB_sample_t){(0xF - value * 2) * left_volume, (0xF - value * 2) * right_volume};
+         }
+-        if (*(uint32_t *)&(gb->apu_output.current_sample[index]) != *(uint32_t *)&output) {
++        if (gb->apu_output.current_sample[index].packed != output.packed) {
+             refresh_channel(gb, index, cycles_offset);
+             gb->apu_output.current_sample[index] = output;
+         }
+diff --git a/Core/apu.h b/Core/apu.h
+index c8700c80..15b54a87 100644
+--- a/Core/apu.h
++++ b/Core/apu.h
+@@ -25,11 +25,22 @@
+ 
+ /* APU ticks are 2MHz, triggered by an internal APU clock. */
+ 
++#ifdef GB_INTERNAL
++typedef union
++{
++    struct {
++        int16_t left;
++        int16_t right;
++    };
++    uint32_t packed;
++} GB_sample_t;
++#else
+ typedef struct
+ {
+     int16_t left;
+     int16_t right;
+ } GB_sample_t;
++#endif
+ 
+ typedef struct
+ {
+diff --git a/Makefile b/Makefile
+index c25f38b2..bc239893 100644
+--- a/Makefile
++++ b/Makefile
+@@ -164,7 +164,7 @@ endif
+ 
+ # These must come before the -Wno- flags
+ WARNINGS += -Werror -Wall -Wno-unknown-warning -Wno-unknown-warning-option -Wno-missing-braces
+-WARNINGS += -Wno-nonnull -Wno-unused-result -Wno-strict-aliasing -Wno-multichar -Wno-int-in-bool-context -Wno-format-truncation
++WARNINGS += -Wno-nonnull -Wno-unused-result -Wno-multichar -Wno-int-in-bool-context -Wno-format-truncation
+ 
+ # Only add this flag if the compiler supports it
+ ifeq ($(shell $(CC) -x c -c $(NULL) -o $(NULL) -Werror -Wpartial-availability 2> $(NULL); echo $$?),0)
+-- 
+GitLab
+
+
+From 9067678fe0160fe5c2f10a7f6271f8293d5150d1 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 9 Mar 2024 11:08:57 -0800
+Subject: [PATCH 2/2] build: remove -Wno-strict-aliasing + add
+ -Wno-missing-braces
+
+Upstream also uses -Wno-missing-braces
+
+See: https://github.com/LIJI32/SameBoy/pull/597
+---
+ jollygood/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/jollygood/Makefile b/jollygood/Makefile
+index a0bd24b3..b1c22384 100644
+--- a/jollygood/Makefile
++++ b/jollygood/Makefile
+@@ -17,7 +17,7 @@ FLAGS_PB12 := -Os -std=c99
+ DEFS := -D_GNU_SOURCE -DGB_INTERNAL -DGB_DISABLE_REWIND -DGB_DISABLE_DEBUGGER \
+ 	-DGB_VERSION=\"$(VERSION)\"
+ 
+-WARNINGS := -Wall -Wno-strict-aliasing -Wno-multichar -Wno-unused-result
++WARNINGS := -Wall -Wno-missing-braces -Wno-multichar -Wno-unused-result
+ WARNINGS_PB12 := -Wall -Wextra -Wshadow
+ 
+ # Only relative include paths are used in sameboy
+-- 
+GitLab
+
