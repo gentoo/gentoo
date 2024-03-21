@@ -49,7 +49,7 @@ amd64		default/linux/amd64/17.1/systemd/merged-usr			stable
 amd64		default/linux/amd64/17.1/systemd/selinux/merged-usr		exp
 amd64		default/linux/amd64/17.1/clang					exp
 amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
-amd64		default/linux/amd64/23.0					exp
+amd64		default/linux/amd64/23.0					stable
 amd64		default/linux/amd64/23.0/systemd				exp
 amd64		default/linux/amd64/23.0/desktop				exp
 amd64		default/linux/amd64/23.0/desktop/systemd			exp
@@ -144,7 +144,7 @@ arm		default/linux/arm/17.0/armv7a/desktop/plasma			dev
 arm		default/linux/arm/17.0/armv7a/desktop/plasma/systemd/merged-usr	dev
 arm		default/linux/arm/17.0/armv7a/developer				exp
 arm		default/linux/arm/17.0/armv7a/systemd/merged-usr		dev
-arm		default/linux/arm/23.0						exp
+arm		default/linux/arm/23.0						stable
 arm		default/linux/arm/23.0/desktop					exp
 arm		default/linux/arm/23.0/desktop/gnome				exp
 arm		default/linux/arm/23.0/desktop/gnome/systemd			exp
@@ -224,7 +224,7 @@ arm64		default/linux/arm64/17.0/systemd/merged-usr			stable
 arm64		default/linux/arm64/17.0/systemd/selinux/merged-usr		exp
 arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
-arm64		default/linux/arm64/23.0					exp
+arm64		default/linux/arm64/23.0					stable
 arm64		default/linux/arm64/23.0/hardened				exp
 arm64		default/linux/arm64/23.0/hardened/selinux			exp
 arm64		default/linux/arm64/23.0/hardened/selinux/systemd		exp
@@ -263,7 +263,7 @@ hppa		default/linux/hppa/17.0						stable
 hppa		default/linux/hppa/17.0/systemd/merged-usr			exp
 hppa		default/linux/hppa/17.0/desktop					stable
 hppa		default/linux/hppa/17.0/developer				exp
-hppa		default/linux/hppa/23.0/hppa1.1					exp
+hppa		default/linux/hppa/23.0/hppa1.1					stable
 hppa		default/linux/hppa/23.0/hppa1.1/systemd				exp
 hppa		default/linux/hppa/23.0/hppa1.1/desktop				exp
 hppa		default/linux/hppa/23.0/hppa1.1/desktop/systemd			exp
@@ -285,7 +285,7 @@ ia64		default/linux/ia64/17.0/desktop/gnome				stable
 ia64		default/linux/ia64/17.0/desktop/gnome/systemd/merged-usr	stable
 ia64		default/linux/ia64/17.0/developer				exp
 ia64		default/linux/ia64/17.0/systemd/merged-usr			exp
-ia64		default/linux/ia64/23.0						exp
+ia64		default/linux/ia64/23.0						stable
 ia64		default/linux/ia64/23.0/desktop					exp
 ia64		default/linux/ia64/23.0/desktop/gnome				exp
 ia64		default/linux/ia64/23.0/desktop/gnome/systemd			exp
@@ -310,7 +310,7 @@ loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr		stabl
 loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd					stable
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			stable
-loong		default/linux/loong/23.0/la64v100/lp64d						exp
+loong		default/linux/loong/23.0/la64v100/lp64d						stable
 loong		default/linux/loong/23.0/la64v100/lp64d/llvm					exp
 loong		default/linux/loong/23.0/la64v100/lp64d/llvm/systemd				exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop					exp
@@ -412,7 +412,7 @@ ppc		default/linux/ppc/17.0/systemd/merged-usr			stable
 ppc		default/linux/ppc/17.0/developer				exp
 ppc		default/linux/ppc/17.0/musl					dev
 ppc		default/linux/ppc/17.0/musl/hardened				exp
-ppc		default/linux/ppc/23.0						exp
+ppc		default/linux/ppc/23.0						stable
 ppc		default/linux/ppc/23.0/desktop					exp
 ppc		default/linux/ppc/23.0/desktop/gnome				exp
 ppc		default/linux/ppc/23.0/desktop/gnome/systemd			exp
@@ -435,7 +435,7 @@ ppc64		default/linux/ppc64/17.0/systemd/merged-usr			stable
 ppc64		default/linux/ppc64/17.0/developer				exp
 ppc64		default/linux/ppc64/17.0/musl					dev
 ppc64		default/linux/ppc64/17.0/musl/hardened				exp
-ppc64		default/linux/ppc64/23.0					exp
+ppc64		default/linux/ppc64/23.0					stable
 ppc64		default/linux/ppc64/23.0/desktop				exp
 ppc64		default/linux/ppc64/23.0/desktop/gnome				exp
 ppc64		default/linux/ppc64/23.0/desktop/gnome/systemd			exp
@@ -462,7 +462,7 @@ ppc64		default/linux/ppc64le/17.0/developer				exp
 ppc64		default/linux/ppc64le/17.0/musl					dev
 ppc64		default/linux/ppc64le/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/17.0/ieee-long-double			exp
-ppc64		default/linux/ppc64le/23.0					exp
+ppc64		default/linux/ppc64le/23.0					stable
 ppc64		default/linux/ppc64le/23.0/desktop				exp
 ppc64		default/linux/ppc64le/23.0/desktop/gnome			exp
 ppc64		default/linux/ppc64le/23.0/desktop/gnome/systemd		exp
@@ -508,8 +508,7 @@ riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd/merged-usr			stable
 riscv		default/linux/riscv/20.0/rv64gc/multilib				exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
 riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd/merged-usr		exp
-
-riscv		default/linux/riscv/23.0/rv64/lp64d					exp
+riscv		default/linux/riscv/23.0/rv64/lp64d					stable
 riscv		default/linux/riscv/23.0/rv64/lp64d/desktop				exp
 riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome			exp
 riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome/systemd		exp
@@ -543,7 +542,7 @@ s390		default/linux/s390/17.0						stable
 s390		default/linux/s390/17.0/s390x					stable
 s390		default/linux/s390/17.0/systemd/merged-usr			stable
 s390		default/linux/s390/17.0/s390x/systemd/merged-usr		exp
-s390		default/linux/s390/23.0						exp
+s390		default/linux/s390/23.0						stable
 s390		default/linux/s390/23.0/systemd					exp
 s390		default/linux/s390/23.0/split-usr				exp
 s390		default/linux/s390/23.0/split-usr/s390x				exp
@@ -560,7 +559,7 @@ sparc		default/linux/sparc/17.0/64ul					stable
 sparc		default/linux/sparc/17.0/64ul/desktop				stable
 sparc		default/linux/sparc/17.0/64ul/developer				exp
 sparc		default/linux/sparc/17.0/64ul/systemd/merged-usr		stable
-sparc		default/linux/sparc/23.0					exp
+sparc		default/linux/sparc/23.0					stable
 sparc		default/linux/sparc/23.0/desktop				exp
 sparc		default/linux/sparc/23.0/systemd				exp
 sparc		default/linux/sparc/23.0/64ul					exp
@@ -584,7 +583,7 @@ x86		default/linux/x86/17.0/desktop/plasma				stable
 x86		default/linux/x86/17.0/desktop/plasma/systemd/merged-usr	stable
 x86		default/linux/x86/17.0/developer				exp
 x86		default/linux/x86/17.0/systemd/merged-usr			stable
-x86		default/linux/x86/23.0/i686					exp
+x86		default/linux/x86/23.0/i686					stable
 x86		default/linux/x86/23.0/i686/systemd				exp
 x86		default/linux/x86/23.0/i686/hardened				exp
 x86		default/linux/x86/23.0/i686/hardened/selinux			exp
@@ -607,7 +606,7 @@ x86		default/linux/x86/23.0/i686/split-usr/prefix			exp
 x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-2.6.32+	exp
 x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-2.6.16+	exp
 x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-3.2+	exp
-x86		default/linux/x86/23.0/i486					exp
+x86		default/linux/x86/23.0/i486					stable
 x86		default/linux/x86/23.0/i486/systemd				exp
 x86		default/linux/x86/23.0/i486/hardened				exp
 x86		default/linux/x86/23.0/i486/hardened/selinux			exp
