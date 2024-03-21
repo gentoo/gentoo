@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake elisp-common java-pkg-2 java-ant-2
 
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/boost:=
 	emacs? ( >=app-editors/emacs-23.1:* )"
 
 DEPEND="${RDEPEND}
-	dev-java/ant-core
+	>=dev-java/ant-1.10.14-r3:0
 	>=virtual/jdk-1.8:=
 	dev-lang/scala:2.12
 	test? ( dev-cpp/gtest:= )"
