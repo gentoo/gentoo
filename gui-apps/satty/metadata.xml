@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gonegrier.duarte@gmail.com</email>
+		<name>Gonçalo Negrier Duarte</name>
+	</maintainer>
+	<upstream>
+		<doc>https://github.com/gabm/satty</doc>
+		<bugs-to>https://github.com/gabm/satty/issues</bugs-to>
+		<remote-id type="github">gabm/satty</remote-id>
+	</upstream>
+</pkgmetadata>
