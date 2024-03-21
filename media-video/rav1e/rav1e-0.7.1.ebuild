@@ -281,6 +281,14 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	# libgit2-sys unnecessarily(?) requests <libgit2-1.8.0, bump to 2 for now
+	sed -e '/range_version/s/1\.8\.0/2/' \
+		-i "${ECARGO_VENDOR}"/libgit2-sys-0.16.1+1.7.1/build.rs || die
+}
+
 src_compile() {
 	# used by build script to get rav1e repository info
 	export LIBGIT2_NO_VENDOR=1
