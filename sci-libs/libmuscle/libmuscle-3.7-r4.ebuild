@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
 RDEPEND="!sci-biology/muscle"
-DEPEND="${RDEPEND}
-	doc? ( app-text/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-bufferoverflow.patch
