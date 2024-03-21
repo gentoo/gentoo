@@ -17,6 +17,10 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.5-werror.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DMAGIC_ENUM_OPT_BUILD_TESTS=$(usex test)
