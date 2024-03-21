@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-disable-network-tests.patch
 	"${FILESDIR}"/${PN}-1.10.3-no-Q.patch
 	"${FILESDIR}"/${PN}-1.10.3-epmd-daemon.patch
+	"${FILESDIR}"/${PN}-1.16.1-skip-tests-requiring-erlang-docs.patch
 )
 
 src_install() {
