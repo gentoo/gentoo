@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info
+inherit autotools linux-info
 
 DESCRIPTION="C library and tools for interacting with the linux GPIO character device"
 HOMEPAGE="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/"
@@ -29,9 +29,19 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	# bug 913899
+	"${FILESDIR}"/${PN}-2.1-libtool.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="~GPIO_CDEV_V1"
 	linux-info_pkg_setup
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
