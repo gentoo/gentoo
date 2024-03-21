@@ -73,7 +73,8 @@ src_install() {
 	local utils=( "${ED}"/usr/bin/tpm2_* )
 	utils=("${utils[@]##*/}")
 	# these utiltites don't have bash completions
-	local nobashcomp=( tpm2_encodeobject tpm2_getpolicydigest tpm2_sessionconfig )
+	local nobashcomp=( tpm2_encodeobject tpm2_getpolicydigest\
+			   tpm2_sessionconfig tpm2_tr_encode)
 	mapfile -d $'\0' -t utils < <(printf '%s\0' "${utils[@]}" | grep -Ezvw "${nobashcomp[@]/#/-e}")
 	bashcomp_alias tpm2 "${utils[@]}"
 }
