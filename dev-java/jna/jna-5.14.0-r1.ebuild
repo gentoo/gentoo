@@ -64,6 +64,8 @@ src_prepare() {
 		-e "/VERSION =/s:TEMPLATE:${PV}:" \
 		-e '/VERSION_NATIVE =/s:TEMPLATE:5.1.0:' \
 		-i src/com/sun/jna/Version.java || die
+
+	use ppc64 && eapply "${FILESDIR}/jna-5.14.0-skip-testUnionCallstack.patch"
 }
 
 src_compile() {
