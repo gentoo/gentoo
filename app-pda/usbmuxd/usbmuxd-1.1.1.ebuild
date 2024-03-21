@@ -21,6 +21,9 @@ DEPEND="
 	>=app-pda/libplist-2.0:=
 	virtual/libusb:1"
 
+# See bug #926999
+DEPEND="${DEPEND} <app-pda/libplist-2.3"
+
 RDEPEND="
 	${DEPEND}
 	virtual/udev
