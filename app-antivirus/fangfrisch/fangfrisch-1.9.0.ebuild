@@ -10,7 +10,7 @@ inherit distutils-r1 readme.gentoo-r1 systemd
 
 DESCRIPTION="Update and verify unofficial Clam Anti-Virus signatures"
 HOMEPAGE="https://github.com/rseichter/fangfrisch https://pypi.org/project/fangfrisch/"
-SRC_URI="https://github.com/rseichter/fangfrisch/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rseichter/fangfrisch/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 MY_CONF="/etc/${PN}.conf"
 MY_DBDIR="/var/lib/${PN}"
