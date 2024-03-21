@@ -50,6 +50,11 @@ else
 	BDEPEND+=" app-arch/unzip"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.45.1-ppc64-ptr.patch
+	"${FILESDIR}"/${PN}-3.45.2-tests-x86.patch
+)
+
 _fossil_fetch() {
 	local distdir="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}"
 	local repo_id="${1}"
