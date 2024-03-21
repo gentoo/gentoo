@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
-IUSE="debug examples fam nls"
+IUSE="debug fam nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -56,13 +56,6 @@ PATCHES=(
 src_prepare() {
 	default
 	rm -r xorn || die
-
-	if ! use doc ; then
-		sed -i -e '/^SUBDIRS = /s/docs//' Makefile.in || die
-	fi
-	if ! use examples ; then
-		sed -i -e 's/\texamples$//' Makefile.in || die
-	fi
 
 	# remove compressed files, compressed by portage in install phase
 	rm docs/wiki/media/geda/gsch2pcb-libs.tar.gz || die
