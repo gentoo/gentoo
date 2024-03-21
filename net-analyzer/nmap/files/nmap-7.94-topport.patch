@@ -1,0 +1,26 @@
+From edad9c059ca45bccab8c0f41fe6fc6546c60153a Mon Sep 17 00:00:00 2001
+From: dmiller <dmiller@e0a8ed71-7df4-0310-8962-fdc924857419>
+Date: Thu, 20 Jul 2023 16:21:23 +0000
+Subject: [PATCH] Add missing braces. Fixes #2679
+
+---
+ services.cc | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/services.cc b/services.cc
+index a0899c7509..2a709dca97 100644
+--- a/services.cc
++++ b/services.cc
+@@ -496,9 +496,10 @@ void gettoppts(double level, const char *portlist, struct scan_lists * ports, co
+         if (sctpmax && strcmp(current->s_proto, "sctp") == 0
+             && (!ptsdata_initialized ||
+               is_port_member(ptsdata.sctp_ports, ptsdata.sctp_count, current))
+-           )
++           ) {
+           ports->sctp_ports[ports->sctp_count++] = current->s_port;
+-        sctpmax--;
++          sctpmax--;
++        }
+         break;
+       default:
+         break;
