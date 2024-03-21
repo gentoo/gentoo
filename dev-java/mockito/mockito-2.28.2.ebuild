@@ -78,6 +78,9 @@ src_test() {
 	# Increasing number of test failures with higher Java versions
 	# Test failures are documented in https://bugs.gentoo.org/903897
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 21; then
+		eapply "${FILESDIR}/mockito-2.28.2-UnusedStubbingsTest-java21.patch"
+	fi
 	if ver_test "${vm_version}" -ge 11; then
 		JAVA_TEST_EXCLUDES+=(
 			org.mockito.internal.stubbing.defaultanswers.ReturnsMocksTest
