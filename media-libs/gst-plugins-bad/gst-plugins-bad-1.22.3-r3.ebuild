@@ -54,6 +54,8 @@ BDEPEND="
 	dev-util/glib-utils
 "
 
+GST_PLUGINS_ENABLED="debugutils transcode"
+
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
 # FIXME: gstharness.c:889:gst_harness_new_with_padnames: assertion failed: (element != NULL)
