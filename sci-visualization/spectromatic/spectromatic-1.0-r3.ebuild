@@ -1,25 +1,25 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
-MY_P=${PN}_${PV}-1
+MY_P="${PN}_${PV}-1"
 
 DESCRIPTION="Generates time-frequency analysis images from wav files"
-HOMEPAGE="http://ieee.uow.edu.au/~daniel/software/spectromatic/"
-SRC_URI="http://ieee.uow.edu.au/~daniel/software/spectromatic/dist/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-1+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	media-libs/libpng:0=
 	sci-libs/gsl:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
