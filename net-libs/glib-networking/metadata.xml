@@ -8,6 +8,8 @@
   <use>
     <flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for getting the HTTP/HTTPS/SOCKS proxy configuration</flag>
     <flag name="gnome">Extract HTTP/HTTPS/SOCKS proxy configuration stored using GSettings</flag>
+    <flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> for SSL/TLS support</flag>
+    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for SSL/TLS support (experimental)</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/glib-networking</remote-id>
