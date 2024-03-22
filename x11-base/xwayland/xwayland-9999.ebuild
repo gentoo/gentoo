@@ -70,7 +70,6 @@ src_configure() {
 		$(meson_use selinux xselinux)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
-		$(meson_use video_cards_nvidia xwayland_eglstream)
 		-Ddpms=true
 		-Ddri3=true
 		-Ddrm=true
