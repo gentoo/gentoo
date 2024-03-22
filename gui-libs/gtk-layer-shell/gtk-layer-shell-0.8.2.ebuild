@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 VALA_USE_DEPEND="vapigen"
 inherit vala meson python-any-r1
 
