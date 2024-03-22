@@ -11,7 +11,7 @@ HOMEPAGE="https://www.courier-mta.org/authlib/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="berkdb debug gdbm ldap mysql pam postgres sqlite static-libs"
 
 RESTRICT="!berkdb? ( test )"
