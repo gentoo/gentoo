@@ -12,4 +12,7 @@
 		others). Where possible the access methods are compatible with the
 		STL or alternative algorithms are available.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">kpeeters/tree.hh</remote-id>
+	</upstream>
 </pkgmetadata>
