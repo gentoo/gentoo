@@ -25,12 +25,6 @@ USE="${USE} seccomp"
 # use defaults...
 USE="${USE} pcre"
 
-# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
-# Modular X: Support direct rendering by default
-# Andreas K. Huettel <dilfridge@gentoo.org> (2013-01-21)
-# Re-added following discussion with chithead
-USE="${USE} dri"
-
 # Luca Barbato <lu_zero@gentoo.org> (2006-10-28)
 # on glibc system you cannot turn it off
 USE="${USE} iconv"
