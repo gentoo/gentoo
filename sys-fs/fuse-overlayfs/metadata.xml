@@ -8,4 +8,12 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>me@rahil.rocks</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>
