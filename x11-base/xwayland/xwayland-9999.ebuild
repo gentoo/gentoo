@@ -16,10 +16,10 @@ fi
 DESCRIPTION="Standalone X server running under Wayland"
 HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 
-IUSE="libei selinux unwind xcsecurity"
-
 LICENSE="MIT"
 SLOT="0"
+
+IUSE="libei selinux unwind xcsecurity"
 
 COMMON_DEPEND="
 	dev-libs/libbsd
