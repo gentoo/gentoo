@@ -92,3 +92,4 @@ move sci-libs/scikit-learn dev-python/scikit-learn
 slotmove =dev-ruby/launchy-3.0.0 0 3
 move dev-python/DBUtils dev-python/dbutils
 move dev-python/aiorpcX dev-python/aiorpcx
+move www-apps/sonarr www-apps/sonarr-bin
