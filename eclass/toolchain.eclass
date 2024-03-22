@@ -300,7 +300,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" go"
 	IUSE+=" +sanitize"  TC_FEATURES+=( sanitize )
 	IUSE+=" graphite" TC_FEATURES+=( graphite )
-	IUSE+=" ada"
+	IUSE+=" ada" TC_FEATURES+=( ada )
 	IUSE+=" vtv"
 	IUSE+=" jit"
 	IUSE+=" +pie +ssp pch"
