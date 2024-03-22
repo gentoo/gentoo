@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-any-r1
+inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.org/"
@@ -44,6 +44,8 @@ src_configure() {
 		-DUSE_HTTP_PARSER=system
 		-DREGEX_BACKEND=pcre2
 	)
+	# https://bugs.gentoo.org/925207
+	append-lfs-flags
 	cmake_src_configure
 }
 
