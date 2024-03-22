@@ -119,6 +119,10 @@ kde-plasma/discover -firmware
 # ppc64. bug #750974.
 sci-mathematics/gmp-ecm -custom-tune
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+kde-apps/kdenetwork-meta dropbox
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on ppc64
 sys-boot/grub -libzfs
