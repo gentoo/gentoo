@@ -169,9 +169,10 @@ pkg_pretend() {
 		if ! use video_cards_d3d12 &&
 		   ! use video_cards_freedreno &&
 		   ! use video_cards_intel &&
+		   ! use video_cards_panfrost &&
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, radeonsi, or v3d"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, panfrost, radeonsi, or v3d"
 		fi
 	fi
 
@@ -345,6 +346,7 @@ multilib_src_configure() {
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_d3d12 microsoft-experimental
+		vulkan_enable video_cards_panfrost panfrost
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
 	fi
