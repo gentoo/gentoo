@@ -182,16 +182,8 @@ x86? (
 )"
 
 src_unpack() {
-	# Unpack even on live ebuilds
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-		unpack syn-${syn_PV}.tar.gz
-		unpack proc-macro2-${proc_macro2_PV}.tar.gz
-		unpack quote-${quote_PV}.tar.gz
-		unpack unicode-ident-${unicode_ident_PV}.tar.gz
-	else
-		unpack ${A}
-	fi
+	[[ ${PV} == 9999 ]] && git-r3_src_unpack
+	unpack ${A}
 }
 
 pkg_pretend() {
@@ -280,30 +272,17 @@ src_prepare() {
 
 	if use video_cards_nouveau; then
 		# NVK Subproject Handeling
-		# Move meson.build files
-		cp "${S}/subprojects/packagefiles/proc-macro2/meson.build" \
-			"${WORKDIR}/proc-macro2-${proc_macro2_PV}" || die
-		cp "${S}/subprojects/packagefiles/syn/meson.build" \
-			"${WORKDIR}/syn-${syn_PV}" || die
-		cp "${S}/subprojects/packagefiles/quote/meson.build" \
-			"${WORKDIR}/quote-${quote_PV}" || die
-		cp "${S}/subprojects/packagefiles/unicode-ident/meson.build" \
-			"${WORKDIR}/unicode-ident-${unicode_ident_PV}" || die
-
-		# Move to subproject folder
-		mv "${WORKDIR}/proc-macro2-${proc_macro2_PV}" \
-			"${S}/subprojects/proc-macro2-${proc_macro2_PV}" || die
-		mv "${WORKDIR}/syn-${syn_PV}" \
-			"${S}/subprojects/syn-${syn_PV}" || die
-		mv "${WORKDIR}/quote-${quote_PV}" \
-			"${S}/subprojects/quote-${quote_PV}" || die
-		mv "${WORKDIR}/unicode-ident-${unicode_ident_PV}" \
-			"${S}/subprojects/unicode-ident-${unicode_ident_PV}" || die
-
-  		# HACK: Remove crate .rlib files before build
-  		# (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
-  		[ -d build/subprojects ] && find build/subprojects -iname "*.rlib" -delete
-  		[ -d build/src/nouveau/compiler ] && find build/src/nouveau/compiler -iname "*.rlib" -delete
+		pushd "${WORKDIR}" || die
+			for subpkg in proc-macro2-${proc_macro2_PV} syn-${syn_PV} quote-${quote_PV} unicode-ident-${unicode_ident_PV}; do
+				# copy subproject folder
+				subpkg_folder=mesa-${PV}/subprojects
+				cp -r ${subpkg} ${subpkg_folder} || die
+				# copy meson.build
+				cp ${subpkg_folder}/packagefiles/${subpkg%-*}/meson.build ${subpkg_folder}/${subpkg} || die
+				#ovewrite subpkg version when needed
+				sed -i -e "s/directory = \S\+/directory = ${subpkg}/" ${subpkg_folder}/${subpkg%-*}.wrap || die
+			done
+		popd || die
 	fi
 }
 
