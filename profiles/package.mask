@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-03-22)
+# Broken with modern compilers, bug 884249. No longer maintained
+# upstream, last release 5 years ago. No reverse dependencies left. Use
+# dev-ruby/concurrent-ruby instead.
+# Removal on 2024-04-22.
+dev-ruby/atomic
+
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
 # buildah-1.34.0 isn't getting security fixes from upstream
 # https://github.com/containers/buildah/issues/5320
