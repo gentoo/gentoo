@@ -466,6 +466,7 @@ ppc64		default/linux/ppc64le/23.0/split-usr/desktop			stable
 ppc64		default/linux/ppc64le/23.0/split-usr/desktop/gnome		stable
 ppc64		default/linux/ppc64le/23.0/split-usr/desktop/plasma		stable
 
+
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
 riscv		default/linux/riscv/20.0/rv64gc/lp64d					exp
@@ -526,16 +527,17 @@ riscv		default/linux/riscv/23.0/rv64/split-usr/multilib			exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
-s390		default/linux/s390/17.0						stable
-s390		default/linux/s390/17.0/s390x					stable
-s390		default/linux/s390/17.0/systemd/merged-usr			stable
+s390		default/linux/s390/17.0						exp
+s390		default/linux/s390/17.0/s390x					exp
+s390		default/linux/s390/17.0/systemd/merged-usr			exp
 s390		default/linux/s390/17.0/s390x/systemd/merged-usr		exp
 s390		default/linux/s390/23.0						stable
-s390		default/linux/s390/23.0/systemd					exp
-s390		default/linux/s390/23.0/split-usr				exp
-s390		default/linux/s390/23.0/split-usr/s390x				exp
-s390		default/linux/s390/23.0/s390x					exp
-s390		default/linux/s390/23.0/s390x/systemd				exp
+s390		default/linux/s390/23.0/systemd					dev
+s390		default/linux/s390/23.0/split-usr				dev
+s390		default/linux/s390/23.0/split-usr/s390x				stable
+s390		default/linux/s390/23.0/s390x					stable
+s390		default/linux/s390/23.0/s390x/systemd				stable
+
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
