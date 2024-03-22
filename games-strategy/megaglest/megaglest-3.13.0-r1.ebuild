@@ -14,7 +14,7 @@ LUA_COMPAT=( lua5-{1..4} )
 VIRTUALX_REQUIRED="manual"
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake desktop lua-single readme.gentoo-r1 virtualx wxwidgets xdg-utils
+inherit cmake desktop flag-o-matic lua-single readme.gentoo-r1 virtualx wxwidgets xdg-utils
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
@@ -108,6 +108,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/926143
+	# https://github.com/MegaGlest/megaglest-source/issues/275
+	filter-lto
+
 	if use cpu_flags_x86_sse3; then
 		SSE=3
 	elif use cpu_flags_x86_sse2; then
