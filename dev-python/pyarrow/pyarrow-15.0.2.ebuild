@@ -20,7 +20,7 @@ S="${WORKDIR}/apache-arrow-${PV}/python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~riscv"
+KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~x86"
 IUSE="+parquet +snappy ssl"
 
 RDEPEND="
