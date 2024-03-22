@@ -17,7 +17,7 @@ SRC_URI="https://github.com/CGNS/CGNS/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/CGNS-${PV}"
 
 LICENSE="ZLIB"
-SLOT="0/4"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="base-scope debug examples fortran hdf5 legacy mpi scoping szip test tools"
 
