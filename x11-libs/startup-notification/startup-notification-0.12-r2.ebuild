@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit xorg-3
+EAPI=8
+
+inherit libtool
 
 DESCRIPTION="Application startup notification and feedback library"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/startup-notification"
@@ -24,3 +25,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-sys-select_h.patch
 	"${FILESDIR}"/${P}-time_t-crash-with-32bit.patch
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}
