@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	#"${FILESDIR}"/${PN}-1.48.0-build.patch
+	"${FILESDIR}"/${PN}-1.48.0-build.patch
 )
 
 src_configure() {
