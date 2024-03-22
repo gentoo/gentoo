@@ -23,7 +23,7 @@
 		<flag name="wow64">
 			Enable running 32bit applications without 32bit ELF
 			multilib by mapping to 64bit calls (experimental,
-			may have slightly worse OpenGL performance or other
+			*may* have worse/unusable OpenGL performance or other
 			issues compared to USE=abi_x86_32, also lacks 16bit
 			support) -- still need <pkg>dev-util/mingw64-toolchain</pkg>
 			with abi_x86_32 which itself does not need multilib
