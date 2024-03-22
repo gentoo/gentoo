@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-22)
+# Building with qt6 requires (masked) kde-frameworks:6
+app-admin/calamares qt6
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-03-19)
 # The live version needs a new BDEPEND for doc
 =app-emulation/virtualbox-9999 doc
