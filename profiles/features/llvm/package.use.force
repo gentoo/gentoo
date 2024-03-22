@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-08-11)
@@ -12,5 +12,4 @@ app-emulation/wine-vanilla mingw
 # default-libcxx in particular changes ABI so can't be toggled at-will, and other
 # profile settings expect it.
 # TODO: Make a profile without default-libcxx too?
-sys-devel/clang default-compiler-rt default-lld default-libcxx
 sys-devel/clang-common default-compiler-rt default-lld default-libcxx

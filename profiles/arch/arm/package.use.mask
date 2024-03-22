@@ -169,7 +169,7 @@ net-im/prosody selinux
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm
 # bug #729720
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 
@@ -302,7 +302,7 @@ app-metrics/collectd -collectd_plugins_mqtt
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213

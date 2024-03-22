@@ -84,11 +84,6 @@ media-sound/pulseaudio
 # Please port your package to use dev-ruby/erubis instead.
 dev-ruby/erubis
 
-# Sam James <sam@gentoo.org> (2023-04-07)
-# No longer supported upstream, fork of dev-ruby/listen.
-# Please port your package to use dev-ruby/listen instead.
-dev-ruby/sass-listen
-
 # Sam James <sam@gentoo.org> (2023-04-06)
 # net-libs/libgsasl and net-misc/gsasl are now merged together.
 # Please depend on net-misc/gsasl[server] for the server and

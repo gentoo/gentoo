@@ -24,7 +24,7 @@ dev-qt/qtgui:5 accessibility egl libinput
 # on desktop profiles and CMake is unavoidable, it feels a shame to drag in
 # Qt 6 just for something people are unlikely to want. Plus, it avoids a
 # circular dependency out of the box.
-dev-build/cmake -gui -qt5 -qt6
+dev-build/cmake -gui -qt6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-07-29)
 # Required by dev-python/PyQt5[multimedia]

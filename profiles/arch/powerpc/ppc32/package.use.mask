@@ -154,7 +154,6 @@ dev-lang/php avif
 # bug #708344
 sys-devel/clang-runtime compiler-rt sanitize
 sys-devel/clang-common default-compiler-rt
-sys-devel/clang default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and

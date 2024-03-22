@@ -121,15 +121,6 @@ dev-libs/cutlass
 # RTLD_DEEPBIND does not exist on musl
 dev-libs/intel-compute-runtime
 
-# Sam James <sam@gentoo.org> (2022-12-17)
-# Segfaults when building on musl, bug #885501
-=sys-devel/gcc-10.4.1_p20221208:10
-=sys-devel/gcc-10.4.1_p20221222:10
-=sys-devel/gcc-11.3.1_p20221209:11
-=sys-devel/gcc-11.3.1_p20221223:11
-=sys-devel/gcc-12.2.1_p20221231:12
-=sys-devel/gcc-12.2.1_p20230121:12
-
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
 # https://github.com/rr-debugger/rr/issues/2236
@@ -353,12 +344,7 @@ x11-misc/xflux
 x11-misc/xflux-gui
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
-# Emacs 23 does not support x86_64-gentoo-linux-musl systems
-# (bug #830408). Emacs 24 and 25 have build failures (bug #862462).
 # Emacs 26 segfaults when dumping (bug #862489).
-app-editors/emacs:23
-app-editors/emacs:24
-app-editors/emacs:25
 app-editors/emacs:26
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)

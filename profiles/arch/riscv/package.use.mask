@@ -234,10 +234,6 @@ www-servers/nginx nginx_modules_http_lua
 dev-db/postgresql llvm
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
-# sys-cluster/ucx fails to compile on this arch
-sys-cluster/slurm ucx
-
-# Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
 #  - sci-libs/vtk
 media-libs/opencv vtk

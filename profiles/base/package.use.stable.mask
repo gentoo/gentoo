@@ -115,7 +115,6 @@ x11-themes/arc-theme cinnamon
 
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
-sys-apps/earlyoom docs
 sys-apps/earlyoom man
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)

@@ -218,13 +218,6 @@ x11-apps/xdpyinfo dmx
 # https://bugs.gentoo.org/833098
 dev-java/openjdk:11 lto
 
-# Sam James <sam@gentoo.org> (2023-03-15)
-# Signing key is expired on Savannah. The same key is renewed elsewhere
-# and the signature is valid, but it's easier to disable verify-sig here
-# for now as it's not a new release.  Recent Gemato got stricter with this
-# which is how it appears now. See bug #900895.
-~net-misc/wget-1.21.3 verify-sig
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # dev-python/colorspacious is masked for removal.
 <dev-python/matplotlib-3.7.1 doc
@@ -333,7 +326,6 @@ app-antivirus/clamav jit
 
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
 # slurm is last rited
-app-metrics/collectd collectd_plugins_slurm
 sys-cluster/openmpi openmpi_rm_slurm
 
 # Joonas Niilola <juippis@gentoo.org> (2022-08-02)
@@ -649,7 +641,6 @@ sci-chemistry/gromacs python
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
 # Requires old x11-libs/fox:1.6 slot.
 dev-games/openscenegraph fox
-dev-libs/hidapi fox
 sci-mathematics/gsl-shell fox
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
@@ -657,7 +648,6 @@ sci-mathematics/gsl-shell fox
 # supporting Python 2.7.  This can be resolved long term via either
 # using any-r1 API to build docs or cond-deps.
 dev-python/matplotlib doc
-dev-python/pandas doc
 dev-python/statsmodels doc
 
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2019-12-01)
@@ -705,10 +695,6 @@ mail-client/claws-mail litehtml
 # terms. Masked to prevent accidental installation of these files,
 # bug #318841#c20.
 sys-kernel/linux-firmware unknown-license
-
-# Virgil Dupras <vdupras@gentoo.org> (2019-04-29)
-# Docs are temporarily broken. See bug #680014
-dev-python/pandas doc
 
 # Ulrich Müller <ulm@gentoo.org> (2019-04-25)
 # Pulls in media-fonts/kochi-substitute as dependency, which allows
@@ -823,7 +809,6 @@ net-irc/hexchat theme-manager
 # Ulrich Müller <ulm@gentoo.org> (2016-10-15)
 # The --with-cairo option is considered as experimental by upstream
 # and causes problems with updating the X window, bug #592238
-app-editors/emacs:25 cairo
 app-editors/emacs:26 cairo
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-06-02)
@@ -879,10 +864,6 @@ media-libs/cogl gstreamer
 # Randomly breaks consumers at runtime. Do not report
 # gentoo bugs.
 media-libs/libsdl2 custom-cflags
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2013-05-19)
-# Fails to build, haven't had time to debug
-app-text/doxygen sqlite
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2013-04-04)
 # Broken for now (segmentation fault on play)

@@ -418,7 +418,7 @@ sys-boot/grub:2 -grub_platforms_xen-32
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sd-boot is not supported on all archs.
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 

@@ -1,6 +1,0 @@
-# Copyright 2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
-# Destabilizing x86 keywords on sci-*/* packages
-app-office/libalkimia gmp

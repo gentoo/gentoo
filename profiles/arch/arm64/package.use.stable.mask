@@ -33,8 +33,7 @@ sci-mathematics/octave sundials
 
 # Sam James <sam@gentoo.org> (2022-03-07)
 # sys-cluster/torque not marked stable on arm64
-# nor is sys-cluster/slurm yet
-sys-cluster/openmpi openmpi_rm_pbs openmpi_rm_slurm
+sys-cluster/openmpi openmpi_rm_pbs
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # Don't apply stable masks to python-exec since we're forcing every

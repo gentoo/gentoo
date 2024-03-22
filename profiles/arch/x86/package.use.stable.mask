@@ -62,10 +62,6 @@ sci-physics/geant vtk
 # sci-libs/sundials is not marked stable on x86
 sci-mathematics/octave sundials
 
-# Sam James <sam@gentoo.org> (2022-02-02)
-# sys-cluster/ucx is not marked stable on x86
-sys-cluster/slurm ucx
-
 # Marek Szuba <marecki@gentoo.org> (2022-01-03)
 # no stable media-libs/rnnoise on this arch yet
 media-sound/pulseeffects rnnoise
@@ -87,10 +83,6 @@ dev-util/diffoscope haskell
 # Dependencies not yet stable, drags in
 # large amount of fabric. bug #763954
 sys-block/open-iscsi infiniband
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
-# sys-cluster/slurm has no stable keywords
-app-metrics/collectd collectd_plugins_slurm
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
@@ -115,7 +107,7 @@ virtual/wine proton staging
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask groonga on mariadb as I don't know how stable

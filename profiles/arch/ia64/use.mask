@@ -97,7 +97,6 @@ semantic-desktop
 fits
 libburn
 topal
-indi
 flite
 sctp
 bs2b

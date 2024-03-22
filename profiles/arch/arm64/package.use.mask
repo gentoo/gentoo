@@ -88,10 +88,6 @@ dev-lang/ruby -jit
 # avoid larger deptree, bug #882593
 dev-python/bracex doc
 
-# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Mask nvml use flag for slurm
-sys-cluster/slurm nvml
-
 # Sam James <sam@gentoo.org> (2022-07-08)
 # Unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
@@ -128,10 +124,6 @@ media-video/ffmpeg vmaf
 # Sam James <sam@gentoo.org> (2022-02-02)
 # sys-cluster/knem is not keyworded on arm64
 sys-cluster/openmpi openmpi_fabrics_knem
-
-# Sam James <sam@gentoo.org> (2022-02-01)
-# sys-cluster/ucx is not keyworded on arm64
-sys-cluster/slurm ucx
 
 # Sam James <sam@gentoo.org> (2022-01-22)
 # Supports 64-bit NEON
@@ -202,7 +194,7 @@ media-sound/bluez-alsa man
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm64
 # bug #729720
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 

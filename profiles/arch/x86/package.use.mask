@@ -113,10 +113,6 @@ media-video/mpv -vulkan
 # sys-libs/libsmbios is available here.
 app-laptop/pbbuttonsd -macbook
 
-# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Mask nvml use flag for slurm
-sys-cluster/slurm nvml
-
 # Alfredo Tupone <tupone@gentoo.org> (2022-08-30)
 # ada bootstrap currently only available on amd64/x86
 sys-devel/gcc -ada
@@ -412,7 +408,7 @@ app-emulation/libvirt xen
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 

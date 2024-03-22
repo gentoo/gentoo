@@ -387,7 +387,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies

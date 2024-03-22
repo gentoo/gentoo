@@ -3,7 +3,6 @@
 
 # Sam James <sam@gentoo.org> (2024-02-17)
 # Broken on arm, see bug #924649 (https://github.com/golang/go/issues/65601).
-=dev-lang/go-1.22.0
 >=net-vpn/tailscale-1.60.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
