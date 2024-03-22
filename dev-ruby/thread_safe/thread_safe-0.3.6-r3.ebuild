@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/ruby-concurrency/thread_safe"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
 each_ruby_prepare() {
