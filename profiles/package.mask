@@ -33,6 +33,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-03-22)
+# New versions of Hatchling counterintuitively ignore changes
+# to pyproject.toml when PKG-INFO exists (i.e. when unpacking
+# from sdist).  Masked until upstream reaches final decision on how
+# things are going to behave, and we add safety checks and/or hacks
+# in the eclass.
+#
+# https://github.com/pypa/hatch/issues/1325
+# https://discuss.python.org/t/respecting-core-metadata-2-2-when-building-from-source-distributions/48886/5
+>=dev-python/hatchling-1.22
+
 # Hans de Graaff <graaff@gentoo.org> (2024-03-22)
 # Broken with modern compilers, bug 884249. No longer maintained
 # upstream, last release 5 years ago. No reverse dependencies left. Use
