@@ -11,3 +11,17 @@ index fbbcf8646..15ca7d3b0 100644
 -    'protocol.txt',
 -    install_dir: serverconfigdir,
 -)
+diff --git a/man/meson.build b/man/meson.build
+index 2961469c5..1183d741d 100644
+--- a/man/meson.build
++++ b/man/meson.build
+@@ -28,9 +28,3 @@ manpage_config.set('modulepath', module_dir)
+ # manpage_config.set('suid_wrapper_dir', join_paths(get_option('prefix'), libexecdir))
+ manpage_config.set('suid_wrapper_dir', join_paths(get_option('prefix'), 'libexec'))
+ manpage_config.set('default_font_path', default_font_path)
+-
+-install_man(configure_file(
+-    input: 'Xserver.man',
+-    output: 'Xserver.1',
+-    configuration: manpage_config,
+-))
