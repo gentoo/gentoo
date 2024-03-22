@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
+# Stuck on old EAPI6. Last stable release over 10 years ago.
+# Not compatible with PHP8. Removal on 2024-04-22.
+dev-php/onphp
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
 # Stuck on old EAPI6. PEAR channel long dead.
 # Removal on 2024-04-22.
 dev-php/mockery
