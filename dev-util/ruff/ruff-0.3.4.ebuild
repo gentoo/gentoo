@@ -24,7 +24,6 @@ CRATES="
 	argfile@0.1.6
 	arrayvec@0.7.4
 	ascii-canvas@3.0.0
-	assert_cmd@2.0.14
 	autocfg@1.1.0
 	base64@0.21.7
 	bincode@1.3.3
@@ -43,13 +42,13 @@ CRATES="
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.2
+	clap@4.5.3
 	clap_builder@4.5.2
 	clap_complete@4.5.1
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.5.0
 	clap_complete_nushell@0.1.11
-	clap_derive@4.5.0
+	clap_derive@4.5.3
 	clap_lex@0.7.0
 	clearscreen@2.0.1
 	codspeed-criterion-compat@2.4.0
@@ -75,14 +74,12 @@ CRATES="
 	darling_core@0.20.8
 	darling_macro@0.20.8
 	diff@0.1.13
-	difflib@0.4.0
 	dirs-next@2.0.0
 	dirs-sys-next@0.1.2
 	dirs-sys@0.3.7
 	dirs-sys@0.4.1
 	dirs@4.0.0
 	dirs@5.0.1
-	doc-comment@0.3.3
 	drop_bomb@0.1.5
 	dyn-clone@1.0.17
 	either@1.10.0
@@ -108,6 +105,7 @@ CRATES="
 	hashbrown@0.12.3
 	hashbrown@0.14.3
 	heck@0.4.1
+	heck@0.5.0
 	hermit-abi@0.3.9
 	hexf-parse@0.2.1
 	home@0.5.9
@@ -171,6 +169,7 @@ CRATES="
 	notify@6.1.1
 	nu-ansi-term@0.46.0
 	num-traits@0.2.18
+	num_cpus@1.16.0
 	number_prefix@0.4.0
 	once_cell@1.19.0
 	oorandom@11.1.3
@@ -200,11 +199,8 @@ CRATES="
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	precomputed-hash@0.1.1
-	predicates-core@1.0.6
-	predicates-tree@1.0.9
-	predicates@3.1.0
 	pretty_assertions@1.4.0
-	proc-macro2@1.0.78
+	proc-macro2@1.0.79
 	pyproject-toml@0.9.0
 	quick-junit@0.3.5
 	quick-xml@0.31.0
@@ -270,12 +266,11 @@ CRATES="
 	termcolor@1.4.1
 	terminal_size@0.3.0
 	terminfo@0.8.0
-	termtree@0.4.1
 	test-case-core@3.3.1
 	test-case-macros@3.3.1
 	test-case@3.3.1
-	thiserror-impl@1.0.57
-	thiserror@1.0.57
+	thiserror-impl@1.0.58
+	thiserror@1.0.58
 	thread_local@1.1.8
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
@@ -283,9 +278,9 @@ CRATES="
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
-	toml@0.8.10
+	toml@0.8.11
 	toml_datetime@0.6.5
-	toml_edit@0.22.6
+	toml_edit@0.22.7
 	tracing-attributes@0.1.27
 	tracing-core@0.1.32
 	tracing-indicatif@0.3.6
@@ -318,16 +313,15 @@ CRATES="
 	vt100@0.15.2
 	vte@0.11.1
 	vte_generate_state_changes@0.1.1
-	wait-timeout@0.2.0
 	walkdir@2.5.0
 	wasi@0.11.0+wasi-snapshot-preview1
 	wasm-bindgen-backend@0.2.92
-	wasm-bindgen-futures@0.4.41
+	wasm-bindgen-futures@0.4.42
 	wasm-bindgen-macro-support@0.2.92
 	wasm-bindgen-macro@0.2.92
 	wasm-bindgen-shared@0.2.92
-	wasm-bindgen-test-macro@0.3.41
-	wasm-bindgen-test@0.3.41
+	wasm-bindgen-test-macro@0.3.42
+	wasm-bindgen-test@0.3.42
 	wasm-bindgen@0.2.92
 	web-sys@0.3.68
 	webpki-roots@0.26.1
