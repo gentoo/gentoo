@@ -431,20 +431,14 @@ ppc64		default/linux/ppc64/17.0/desktop/gnome				exp
 ppc64		default/linux/ppc64/17.0/desktop/gnome/systemd/merged-usr	exp
 ppc64		default/linux/ppc64/17.0/systemd/merged-usr			exp
 ppc64		default/linux/ppc64/17.0/developer				exp
-ppc64		default/linux/ppc64/17.0/musl					dev
-ppc64		default/linux/ppc64/17.0/musl/hardened				exp
 ppc64		default/linux/ppc64/23.0					stable
 ppc64		default/linux/ppc64/23.0/desktop				stable
 ppc64		default/linux/ppc64/23.0/desktop/gnome				stable
 ppc64		default/linux/ppc64/23.0/desktop/gnome/systemd			stable
 ppc64		default/linux/ppc64/23.0/systemd				stable
-ppc64		default/linux/ppc64/23.0/musl					dev
-ppc64		default/linux/ppc64/23.0/musl/hardened				exp
 ppc64		default/linux/ppc64/23.0/split-usr				stable
 ppc64		default/linux/ppc64/23.0/split-usr/desktop			stable
 ppc64		default/linux/ppc64/23.0/split-usr/desktop/gnome		stable
-ppc64		default/linux/ppc64/23.0/split-usr/musl				dev
-ppc64		default/linux/ppc64/23.0/split-usr/musl/hardened		exp
 
 
 # PPC64LE profiles
@@ -458,8 +452,6 @@ ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd/merged-usr	exp
 ppc64		default/linux/ppc64le/17.0/desktop/systemd/merged-usr		exp
 ppc64		default/linux/ppc64le/17.0/systemd/merged-usr			exp
 ppc64		default/linux/ppc64le/17.0/developer				exp
-ppc64		default/linux/ppc64le/17.0/musl					exp
-ppc64		default/linux/ppc64le/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/17.0/ieee-long-double			exp
 ppc64		default/linux/ppc64le/23.0					stable
 ppc64		default/linux/ppc64le/23.0/desktop				stable
@@ -469,14 +461,10 @@ ppc64		default/linux/ppc64le/23.0/desktop/plasma			stable
 ppc64		default/linux/ppc64le/23.0/desktop/plasma/systemd		stable
 ppc64		default/linux/ppc64le/23.0/desktop/systemd			stable
 ppc64		default/linux/ppc64le/23.0/systemd				stable
-ppc64		default/linux/ppc64le/23.0/musl					dev
-ppc64		default/linux/ppc64le/23.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/23.0/split-usr				stable
 ppc64		default/linux/ppc64le/23.0/split-usr/desktop			stable
 ppc64		default/linux/ppc64le/23.0/split-usr/desktop/gnome		stable
 ppc64		default/linux/ppc64le/23.0/split-usr/desktop/plasma		stable
-ppc64		default/linux/ppc64le/23.0/split-usr/musl			dev
-ppc64		default/linux/ppc64le/23.0/split-usr/musl/hardened		exp
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
@@ -678,6 +666,18 @@ ppc		default/linux/ppc/23.0/musl					dev
 ppc		default/linux/ppc/23.0/musl/hardened				exp
 ppc		default/linux/ppc/23.0/split-usr/musl				dev
 ppc		default/linux/ppc/23.0/split-usr/musl/hardened			exp
+ppc64		default/linux/ppc64/17.0/musl					dev
+ppc64		default/linux/ppc64/17.0/musl/hardened				exp
+ppc64		default/linux/ppc64/23.0/musl					dev
+ppc64		default/linux/ppc64/23.0/musl/hardened				exp
+ppc64		default/linux/ppc64/23.0/split-usr/musl				dev
+ppc64		default/linux/ppc64/23.0/split-usr/musl/hardened		exp
+ppc64		default/linux/ppc64le/17.0/musl					exp
+ppc64		default/linux/ppc64le/17.0/musl/hardened			exp
+ppc64		default/linux/ppc64le/23.0/musl					dev
+ppc64		default/linux/ppc64le/23.0/musl/hardened			exp
+ppc64		default/linux/ppc64le/23.0/split-usr/musl			dev
+ppc64		default/linux/ppc64le/23.0/split-usr/musl/hardened		exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl			dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/musl			dev
 riscv		default/linux/riscv/23.0/rv64/lp64d/musl			exp
