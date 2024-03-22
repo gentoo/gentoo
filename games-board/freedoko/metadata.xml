@@ -15,5 +15,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">free-doko</remote-id>
+    <remote-id type="gitlab">dknof/FreeDoko</remote-id>
   </upstream>
 </pkgmetadata>
