@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 WX_GTK_VER="3.2-gtk3"
 
-inherit desktop toolchain-funcs wxwidgets xdg
+inherit desktop flag-o-matic toolchain-funcs wxwidgets xdg
 
 DESCRIPTION="Utilities for the SCUMM game engine"
 HOMEPAGE="https://www.scummvm.org/"
@@ -51,6 +51,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=odr
+	# https://bugs.gentoo.org/926081
+	# https://bugs.scummvm.org/ticket/15039
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	setup-wxwidgets
 	tc-export CXX STRINGS
 
