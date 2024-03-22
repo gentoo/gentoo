@@ -142,6 +142,7 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 "
+#Meson regression nouveau/NVK (upstream bug #10855)
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
@@ -164,6 +165,7 @@ BDEPEND="
 			>=dev-util/bindgen-0.68.1
 			>=dev-util/cbindgen-0.26.0
 			>=virtual/rust-1.74.1
+			<dev-build/meson-1.4.0
 		)
 	)
 	wayland? ( dev-util/wayland-scanner )
