@@ -81,6 +81,10 @@ fi
 
 CHECKREQS_DISK_BUILD="1500M"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.0.1-libgit2.patch
+)
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
