@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
+# Stuck on old EAPI6. PEAR channel long dead.
+# Removal on 2024-04-22.
+dev-php/mockery
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
 # Stuck on old EAPI6. Not compatible with PHP7 and newer.
 # Upstream stopped development.
 # Removal on 2024-04-22.
