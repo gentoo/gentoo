@@ -18,7 +18,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ppc64 ~x86"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
