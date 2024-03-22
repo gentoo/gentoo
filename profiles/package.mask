@@ -694,14 +694,6 @@ www-plugins/gosuslugi-plugin
 # Removal on 2024-03-21.  Bug #924881.
 dev-python/pendulum
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-02-18)
-# Not ported to python3_12
-# Removal on 2024-03-18.
-=sci-libs/pytorch-2.0*
-=sci-libs/caffe2-2.0*
-=sci-libs/pytorch-1*
-=sci-libs/caffe2-1*
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
