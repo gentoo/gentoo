@@ -96,3 +96,4 @@ move www-apps/sonarr www-apps/sonarr-bin
 move www-apps/jellyfin www-apps/jellyfin-bin
 move www-apps/radarr www-apps/radarr-bin
 move www-apps/lidarr www-apps/lidarr-bin
+move www-apps/prowlarr www-apps/prowlarr-bin
