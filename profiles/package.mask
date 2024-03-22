@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
+# Stuck on old EAPI6. Not compatible with PHP7 and newer.
+# Upstream stopped development.
+# Removal on 2024-04-22.
+dev-php/libchart
+
 # Michał Górny <mgorny@gentoo.org> (2024-03-22)
 # New versions of Hatchling counterintuitively ignore changes
 # to pyproject.toml when PKG-INFO exists (i.e. when unpacking
