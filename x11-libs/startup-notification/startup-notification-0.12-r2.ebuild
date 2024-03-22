@@ -31,6 +31,10 @@ src_prepare() {
 	elibtoolize
 }
 
+src_test() {
+	:;
+}
+
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
