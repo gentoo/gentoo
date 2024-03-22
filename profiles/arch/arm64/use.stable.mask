@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# Qt6 is not stable here yet
-qt6
-
 # Mart Raudsepp <leio@gentoo.org> (2023-10-03)
 # dev-util/sysprof-capture and dev-util/sysprof are not stable yet
 sysprof
