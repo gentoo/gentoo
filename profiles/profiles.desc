@@ -541,24 +541,25 @@ s390		default/linux/s390/23.0/s390x/systemd				stable
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
-sparc		default/linux/sparc/17.0					stable
-sparc		default/linux/sparc/17.0/desktop				stable
+sparc		default/linux/sparc/17.0					exp
+sparc		default/linux/sparc/17.0/desktop				exp
 sparc		default/linux/sparc/17.0/developer				exp
-sparc		default/linux/sparc/17.0/systemd/merged-usr			stable
-sparc		default/linux/sparc/17.0/64ul					stable
-sparc		default/linux/sparc/17.0/64ul/desktop				stable
+sparc		default/linux/sparc/17.0/systemd/merged-usr			exp
+sparc		default/linux/sparc/17.0/64ul					exp
+sparc		default/linux/sparc/17.0/64ul/desktop				exp
 sparc		default/linux/sparc/17.0/64ul/developer				exp
-sparc		default/linux/sparc/17.0/64ul/systemd/merged-usr		stable
+sparc		default/linux/sparc/17.0/64ul/systemd/merged-usr		exp
 sparc		default/linux/sparc/23.0					stable
-sparc		default/linux/sparc/23.0/desktop				exp
-sparc		default/linux/sparc/23.0/systemd				exp
-sparc		default/linux/sparc/23.0/64ul					exp
-sparc		default/linux/sparc/23.0/64ul/desktop				exp
-sparc		default/linux/sparc/23.0/64ul/systemd				exp
-sparc		default/linux/sparc/23.0/split-usr				exp
-sparc		default/linux/sparc/23.0/split-usr/desktop			exp
-sparc		default/linux/sparc/23.0/split-usr/64ul				exp
-sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			exp
+sparc		default/linux/sparc/23.0/desktop				dev
+sparc		default/linux/sparc/23.0/systemd				dev
+sparc		default/linux/sparc/23.0/64ul					stable
+sparc		default/linux/sparc/23.0/64ul/desktop				stable
+sparc		default/linux/sparc/23.0/64ul/systemd				stable
+sparc		default/linux/sparc/23.0/split-usr				dev
+sparc		default/linux/sparc/23.0/split-usr/desktop			dev
+sparc		default/linux/sparc/23.0/split-usr/64ul				stable
+sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			stable
+
 
 # x86 Profiles
 # @MAINTAINER: x86@gentoo.org
