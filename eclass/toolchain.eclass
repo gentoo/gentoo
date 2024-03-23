@@ -2089,8 +2089,9 @@ toolchain_src_install() {
 
 	docompress "${DATAPATH}"/{info,man}
 
-	# Prune empty dirs left behind
-	find "${ED}" -depth -type d -delete 2>/dev/null || die
+	# Prune empty dirs left behind. It's fine not to die here as we may
+	# really have no empty dirs left.
+	find "${ED}" -depth -type d -delete 2>/dev/null
 
 	# libstdc++.la: Delete as it doesn't add anything useful: g++ itself
 	# handles linkage correctly in the dynamic & static case.  It also just
