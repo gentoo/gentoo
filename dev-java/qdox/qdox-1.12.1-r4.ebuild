@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos"
 
 S="${WORKDIR}/${PN}-${PN}-${PV}"
 
-CDEPEND="dev-java/ant-core:0"
+CDEPEND=">=dev-java/ant-1.10.14-r3:0"
 
 DEPEND=">=virtual/jdk-1.8:*
 	dev-java/byaccj:0
@@ -52,7 +52,7 @@ src_compile() {
 	# create jar
 	mkdir -p build/classes || die
 
-	local cp="$(java-pkg_getjars --build-only ant-core,jmock-1.0)"
+	local cp="$(java-pkg_getjars --build-only ant,jmock-1.0)"
 
 	if use test ; then
 		cp="${cp}:$(java-pkg_getjars --build-only junit)"
@@ -74,7 +74,7 @@ src_compile() {
 }
 
 src_test() {
-	java -cp "${S}"/dist/${PN}.jar:$(java-pkg_getjars --build-only ant-core,junit,jmock-1.0) \
+	java -cp "${S}"/dist/${PN}.jar:$(java-pkg_getjars --build-only ant,junit,jmock-1.0) \
 		com.thoughtworks.qdox.tools.QDoxTester src || die "Tests failed!"
 }
 

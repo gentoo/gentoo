@@ -35,15 +35,15 @@ CP_DEPEND="
 	dev-java/commons-io:1
 	dev-java/commons-logging:0
 	dev-java/fontbox:0
+	dev-java/javax-servlet-api:2.2
 	dev-java/qdox:1.12
+	dev-java/sun-jai-bin:0
 	dev-java/xmlgraphics-commons:2
 "
 
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
-	dev-java/ant-core:0
-	dev-java/javax-servlet-api:2.2
-	dev-java/sun-jai-bin:0
+	>=dev-java/ant-1.10.14-r3:0
 	test? (
 		dev-java/mockito:2
 		dev-java/pdfbox:0
@@ -52,6 +52,7 @@ DEPEND="${CP_DEPEND}
 "
 
 RDEPEND="${CP_DEPEND}
+	>=dev-java/ant-1.10.14-r3:0
 	>=virtual/jre-1.8:*"
 
 DOCS=( NOTICE README )
@@ -62,12 +63,6 @@ PATCHES=(
 	"${FILESDIR}/fop-2.9-MissingLanguageWarningTestCase.patch"
 	"${FILESDIR}/fop-2.9-FO2StructureTreeConverterTestCase.patch"
 )
-
-JAVA_CLASSPATH_EXTRA="
-	ant-core
-	javax-servlet-api-2.2
-	sun-jai-bin
-"
 
 src_unpack() {
 	if use verify-sig; then
@@ -83,6 +78,9 @@ src_prepare() {
 }
 
 src_compile() {
+	# while ant could install multiple jar files we only need ant.jar
+	JAVA_GENTOO_CLASSPATH_EXTRA=":$(java-pkg_getjar ant ant.jar)"
+
 	JAVA_JAR_FILENAME="fop-util.jar"
 	JAVA_SRC_DIR="fop-util/src/main/java"
 	java-pkg-simple_src_compile

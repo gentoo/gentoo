@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,14 +22,15 @@ CDEPEND="
 
 # Restricting to jdk:1.8 since it fails to build with openjdk-17
 # BUILD FAILED
-# /var/tmp/portage/dev-java/lucene-2.4.1-r3/work/lucene-2.4.1/build.xml:52: rmic does not exist under Java 15 and higher,
+# /var/tmp/portage/dev-java/lucene-2.4.1-r3/work/lucene-2.4.1/build.xml:52: \
+# rmic does not exist under Java 15 and higher,
 # use rmic of an older JDK and explicitly set the executable attribute
 DEPEND="
 	${CDEPEND}
 	virtual/jdk:1.8
 	test? (
+		>=dev-java/ant-1.10.14-r3:0[junit]
 		dev-java/junit:0
-		dev-java/ant-core:0
 	)"
 
 RDEPEND="
@@ -64,7 +65,7 @@ src_compile() {
 
 src_test() {
 	java-ant_rewrite-classpath common-build.xml
-	EANT_GENTOO_CLASSPATH="junit ant-core" \
+	EANT_GENTOO_CLASSPATH="junit ant" \
 		ANT_TASKS="ant-junit" \
 		eant \
 		test-core
