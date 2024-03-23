@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module linux-info
+inherit go-module linux-info toolchain-funcs
 
 DESCRIPTION="A tool that facilitates building OCI images"
 HOMEPAGE="https://github.com/containers/buildah"
@@ -109,6 +109,7 @@ src_compile() {
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
 	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT=""
 
+	tc-export AS LD
 	default
 }
 
