@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/OtterBrowser/${PN}-browser/archive/v${PV/_p/-dev}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${PN}-browser-${PV/_p/-dev}
 fi
 
