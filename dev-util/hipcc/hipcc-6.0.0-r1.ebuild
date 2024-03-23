@@ -3,9 +3,8 @@
 
 EAPI=8
 
-inherit cmake perl-functions llvm
-
-LLVM_MAX_SLOT=17
+LLVM_COMPAT=( 17 )
+inherit cmake perl-functions llvm-r1
 
 DESCRIPTION="Radeon Open Compute hipcc"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipcc"
@@ -20,9 +19,13 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/HIPCC-rocm-${PV}
 
-DEPEND="<sys-devel/llvm-18:=
-	<sys-devel/clang-18:=
-	"
+DEPEND="
+	$(llvm_gen_dep '
+		sys-libs/compiler-rt:${LLVM_SLOT}=
+		sys-devel/llvm:${LLVM_SLOT}=
+		sys-devel/clang:${LLVM_SLOT}=
+	')
+"
 RDEPEND="${DEPEND}
 	!<dev-util/hip-5.7"
 
@@ -34,7 +37,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "s:\$ROCM_PATH/llvm/bin:$(get_llvm_prefix ${LLVM_MAX_SLOT})/bin:" \
+	sed -e "s:\$ROCM_PATH/llvm/bin:$(get_llvm_prefix)/bin:" \
 		-i bin/hipvars.pm || die
 
 	sed -e "s:\$ENV{'DEVICE_LIB_PATH'}:'${EPREFIX}/usr/lib/amdgcn/bitcode':" \
