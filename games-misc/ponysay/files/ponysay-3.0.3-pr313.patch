@@ -1,0 +1,355 @@
+From 1d898ec29946725d53a47515d413d845d192b51e Mon Sep 17 00:00:00 2001
+From: Tonyl <git@tonyl.eu>
+Date: Fri, 10 Nov 2023 19:21:43 +0100
+Subject: [PATCH 1/3] escape backslashes
+
+---
+ src/balloon.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/balloon.py b/src/balloon.py
+index 0f1909e4..3fa10ef2 100644
+--- a/src/balloon.py
++++ b/src/balloon.py
+@@ -43,9 +43,9 @@ def __init__(self, link, linkmirror, linkcross, ww, ee, nw, nnw, n, nne, ne, nee
+         '''
+         Constructor
+         
+-        @param  link:str        The \-directional balloon line character
++        @param  link:str        The \\-directional balloon line character
+         @param  linkmirror:str  The /-directional balloon line character
+-        @param  linkcross:str   The /-directional balloon crossing a \-directional ballonon line character
++        @param  linkcross:str   The /-directional balloon crossing a \\-directional ballonon line character
+         @param  ww:str          See the info manual
+         @param  ee:str          See the info manual
+         @param  nw:list<str>    See the info manual
+
+From 8bf2602d281b5d6b20eb60e84f8b42e35beec8d6 Mon Sep 17 00:00:00 2001
+From: Tonyl <git@tonyl.eu>
+Date: Fri, 10 Nov 2023 20:40:46 +0100
+Subject: [PATCH 2/3] fix default ANSI code
+
+---
+ setup.py           | 26 +++++++++++++-------------
+ src/__main__.py    |  2 +-
+ src/argparser.py   |  8 ++++----
+ src/backend.py     |  4 ++--
+ src/lists.py       | 12 ++++++------
+ src/ponysaytool.py | 14 +++++++-------
+ 6 files changed, 33 insertions(+), 33 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 5728a23f..9b9f3e28 100755
+--- a/setup.py
++++ b/setup.py
+@@ -48,7 +48,7 @@
+ 
+ class Setup():
+     def __init__(self):
+-        usage_script = '\033[34;1msetup.py\033[21;39m'
++        usage_script = '\033[34;1msetup.py\033[0;39m'
+         usage_help   = '(--version | --help)'
+         usage_proc   = '[\033[4mconfigurations\033[24m] ([build] | prebuilt | install | (uninstall|clean)[-old] | view)'
+ 
+@@ -358,9 +358,9 @@ def viewconf(self, conf):
+         print('Using system configuration directory: ' + conf['sysconf-dir'])
+         print('Prefered linking style: ' + self.linking)
+         print('Using umask: 022 (only owner can do modifications)')
+-        if self.free is None:                      print(YELLOW % ('\033[01m--freedom is manditory and has not be specified\033[21m'))
++        if self.free is None:                      print(YELLOW % ('\033[01m--freedom is manditory and has not be specified\033[0m'))
+         elif self.free:                            print(GREEN  % ('', 'Installing only fully free parts of the package'))
+-        else:                                      print(RED    % ('Installing \033[1mnot\033[21m only fully free parts of the package'))
++        else:                                      print(RED    % ('Installing \033[1mnot\033[0m only fully free parts of the package'))
+ 
+         print()
+     
+@@ -369,7 +369,7 @@ def build(self, conf):
+         Compile ponysay
+         '''
+         
+-        print('\033[1;34m::\033[39mCompiling...\033[21m')
++        print('\033[1;34m::\033[39mCompiling...\033[0m')
+ 
+         def compressCommand(ext):
+             if ext == 'gz':  return 'gzip -9 -f'
+@@ -575,7 +575,7 @@ def install(self, conf):
+         Install compiled ponysay
+         '''
+         
+-        print('\033[1;34m::\033[39mInstalling...\033[21m')
++        print('\033[1;34m::\033[39mInstalling...\033[0m')
+ 
+         dests = []
+         for command in commands:
+@@ -665,7 +665,7 @@ def uninstall(self, conf):
+         Uninstall ponysay
+         '''
+         
+-        print('\033[1;34m::\033[39mUninstalling...\033[21m')
++        print('\033[1;34m::\033[39mUninstalling...\033[0m')
+ 
+         (files, dirs, infos) = ([], [], [])
+ 
+@@ -723,7 +723,7 @@ def uninstallOld(self, conf):
+         Uninstall file ponysay no longer uses
+         '''
+         
+-        print('\033[1;34m::\033[39mUninstalling old files...\033[21m')
++        print('\033[1;34m::\033[39mUninstalling old files...\033[0m')
+ 
+         instdir = conf['~prefix~'] + '/usr'
+         files = [instdir + f for f in ['bin/ponysaylist.pl', 'bin/ponysaytruncater', 'bin/ponysay.py', 'bin/ponythink.py']]
+@@ -744,7 +744,7 @@ def clean(self):
+         Remove compiled files
+         '''
+         
+-        print('\033[1;34m::\033[39mCleaning...\033[21m')
++        print('\033[1;34m::\033[39mCleaning...\033[0m')
+ 
+         files = ['ponysay.info', 'ponysay.info.gz', 'ponysay.info.xz',  'ponysay.pdf.gz', 'ponysay.pdf.xz', 'ponysay.install', 'ponysay.zip']
+         files += ['src/%s.install' % file for file in ponysaysrc]
+@@ -771,7 +771,7 @@ def cleanOld(self):
+         Remove compiled files ponysay is no longer compiling
+         '''
+         
+-        print('\033[1;34m::\033[39mCleaning old files...\033[21m')
++        print('\033[1;34m::\033[39mCleaning old files...\033[0m')
+ 
+         files = ['truncater', 'ponysaytruncater', 'ponysay.py.install', 'ponysay.install~', 'ponysay.zip']
+         dirs = []
+@@ -1199,7 +1199,7 @@ def usage(self):
+         if self.__longdescription is not None:
+             print(self.__longdescription)
+             print()
+-        print('\n\033[1mUSAGE:\033[21m', end='')
++        print('\n\033[1mUSAGE:\033[0m', end='')
+         first = True
+         for line in self.__usage.split('\n'):
+             if first:  first = False
+@@ -1214,11 +1214,11 @@ def help(self):
+         '''
+         
+         # The usage should be terse so this header is only included in the help command.
+-        print('\033[1m{}\033[21m - {}\n'.format(self.__program, self.__description))
++        print('\033[1m{}\033[0m - {}\n'.format(self.__program, self.__description))
+         
+         self.usage()
+         
+-        print('\033[1mCONFIGURATIONS:\033[21m\n')
++        print('\033[1mCONFIGURATIONS:\033[0m\n')
+         for opt in self.__arguments:
+             (opt_type, opt_alts, opt_arg, opt_help) = opt[0:4]
+             if opt_help is not None:
+@@ -1229,7 +1229,7 @@ def help(self):
+                         print('\t\033[2m' + opt_alt + '\033[22m')
+                 first = True
+                 for line in opt_help.split('\n'):
+-                    print(('\t\t\033[32;1m%s\033[21;39m' if first else '\t\t%s') % (line))
++                    print(('\t\t\033[32;1m%s\033[0;39m' if first else '\t\t%s') % (line))
+                     first = False
+                 print()
+         print()
+diff --git a/src/__main__.py b/src/__main__.py
+index 3b084e93..6aa5e793 100644
+--- a/src/__main__.py
++++ b/src/__main__.py
+@@ -66,7 +66,7 @@
+         isthink = isthink[:isthink.find(os.extsep)]
+     isthink = isthink.endswith('think')
+     
+-    usage_saythink = '\033[34;1m(ponysay | ponythink)\033[21;39m'
++    usage_saythink = '\033[34;1m(ponysay | ponythink)\033[0;39m'
+     usage_common   = '[-c] [-W\033[33mCOLUMN\033[39m] [-b\033[33mSTYLE\033[39m]'
+     usage_listhelp = '(-l | -L | -B | +l | +L | -A | + A | -v | -h)'
+     usage_file     = '[-f\033[33mPONY\033[39m]* [[--] \033[33mmessage\033[39m]'
+diff --git a/src/argparser.py b/src/argparser.py
+index 7b13b3cc..6898c710 100644
+--- a/src/argparser.py
++++ b/src/argparser.py
+@@ -254,7 +254,7 @@ def help(self, use_colours = None):
+         if use_colours is None:
+             use_colours = sys.stdout.isatty()
+         
+-        print(('\033[1m%s\033[21m %s %s' if use_colours else '%s %s %s') % (self.__program, '-' if self.linuxvt else '—', self.__description))
++        print(('\033[1m%s\033[0m %s %s' if use_colours else '%s %s %s') % (self.__program, '-' if self.linuxvt else '—', self.__description))
+         print()
+         if self.__longdescription is not None:
+             desc = self.__longdescription
+@@ -265,7 +265,7 @@ def help(self, use_colours = None):
+             print(desc)
+         print()
+         
+-        print('\033[1mUSAGE:\033[21m' if use_colours else 'USAGE:', end='')
++        print('\033[1mUSAGE:\033[0m' if use_colours else 'USAGE:', end='')
+         first = True
+         for line in self.__usage.split('\n'):
+             if first:
+@@ -291,7 +291,7 @@ def help(self, use_colours = None):
+                 maxfirstlen.append(first)
+         maxfirstlen = len(max(maxfirstlen, key = len))
+         
+-        print('\033[1mSYNOPSIS:\033[21m' if use_colours else 'SYNOPSIS')
++        print('\033[1mSYNOPSIS:\033[0m' if use_colours else 'SYNOPSIS')
+         (lines, lens) = ([], [])
+         for opt in self.__arguments:
+             opt_type = opt[0]
+@@ -337,7 +337,7 @@ def help(self, use_colours = None):
+             for line in opt_help.split('\n'):
+                 if first:
+                     first = False
+-                    print('%s' % (line), end='\033[21;39m\n' if use_colours else '\n')
++                    print('%s' % (line), end='\033[0;39m\n' if use_colours else '\n')
+                 else:
+                     print(('%s\033[%sm%s\033[39m' if use_colours else '%s%s%s') % (' ' * col, colour, line))
+             index += 1
+diff --git a/src/backend.py b/src/backend.py
+index 82ff1496..4111f822 100644
+--- a/src/backend.py
++++ b/src/backend.py
+@@ -118,7 +118,7 @@ def parse(self):
+                 printinfo(info)
+                 self.pony = self.pony[infoend:]
+         elif self.infolevel == 2:
+-            self.message = '\033[01;31mI am the mysterious mare...\033[21;39m'
++            self.message = '\033[01;31mI am the mysterious mare...\033[0;39m'
+         elif self.infolevel == 1:
+             self.pony = 'There is not metadata for this pony file'
+         self.pony = self.mode + self.pony
+@@ -149,7 +149,7 @@ def formatInfo(info):
+                     test = test.replace(c, '')
+                 if (len(test) == 0) and (len(key.replace(' ', '')) > 0):
+                     value = line[sep + 1:].strip()
+-                    line = '\033[1m%s\033[21m: %s\n' % (key.strip(), value)
++                    line = '\033[1m%s\033[0m: %s\n' % (key.strip(), value)
+                     tags += line
+                     continue
+             comment += '\n' + line
+diff --git a/src/lists.py b/src/lists.py
+index 6a8c4a71..dc0cb10e 100644
+--- a/src/lists.py
++++ b/src/lists.py
+@@ -125,8 +125,8 @@ def simplelist(ponydirs, quoters = [], ucsiser = None):
+         ## If ther directory is not empty print its name and all ponies, columnised
+         if len(ponies) == 0:
+             continue
+-        print('\033[1mponies located in ' + ponydir + '\033[21m')
+-        _print_columnised([(pony, '\033[1m' + pony + '\033[21m' if pony in quoters else pony) for pony in ponies])
++        print('\033[1mponies located in ' + ponydir + '\033[0m')
++        _print_columnised([(pony, '\033[1m' + pony + '\033[0m' if pony in quoters else pony) for pony in ponies])
+ 
+ 
+ def linklist(ponydirs = None, quoters = [], ucsiser = None):
+@@ -145,7 +145,7 @@ def linklist(ponydirs = None, quoters = [], ucsiser = None):
+         ## If there are no ponies in the directory skip to next directory, otherwise, print the directories name
+         if len(ponies) == 0:
+             continue
+-        print('\033[1mponies located in ' + ponydir + '\033[21m')
++        print('\033[1mponies located in ' + ponydir + '\033[0m')
+         
+         ## UCS:ise pony names
+         pseudolinkmap = {}
+@@ -179,7 +179,7 @@ def linklist(ponydirs = None, quoters = [], ucsiser = None):
+         ponies = {}
+         for pony in ponymap:
+             w = UCS.dispLen(pony)
+-            item = '\033[1m' + pony + '\033[21m' if (pony in quoters) else pony
++            item = '\033[1m' + pony + '\033[0m' if (pony in quoters) else pony
+             syms = ponymap[pony]
+             syms.sort()
+             if len(syms) > 0:
+@@ -190,9 +190,9 @@ def linklist(ponydirs = None, quoters = [], ucsiser = None):
+                     w += UCS.dispLen(sym)
+                     if first:  first = False
+                     else:      item += ' '
+-                    item += '\033[1m' + sym + '\033[21m' if (sym in quoters) else sym
++                    item += '\033[1m' + sym + '\033[0m' if (sym in quoters) else sym
+                 item += ')'
+-            ponies[(item.replace('\033[1m', '').replace('\033[21m', ''), item)] = w
++            ponies[(item.replace('\033[1m', '').replace('\033[0m', ''), item)] = w
+         
+         ## Print the ponies, columnised
+         _print_columnised(list(ponies))
+diff --git a/src/ponysaytool.py b/src/ponysaytool.py
+index 574a2baa..aef0c0c6 100755
+--- a/src/ponysaytool.py
++++ b/src/ponysaytool.py
+@@ -275,7 +275,7 @@ def browse(self, ponydir, restriction):
+         ponies.sort()
+         
+         if len(ponies) == 0:
+-            print('\033[1;31m%s\033[21m;39m' % 'No ponies... press Enter to exit.')
++            print('\033[1;31m%s\033[0m;39m' % 'No ponies... press Enter to exit.')
+             input()
+         
+         panelw = Backend.len(max(ponies, key = Backend.len))
+@@ -338,7 +338,7 @@ def findcolumn(line, column):
+                     elif px > 0:
+                         ponyprint = [px * ' ' + line for line in ponyprint]
+                     ponyprint = [(line if Backend.len(line) <= termw else line[:findcolumn(line, termw)]) for line in ponyprint]
+-                    ponyprint = ['\033[21;39;49;0m%s\033[21;39;49;0m' % line for line in ponyprint]
++                    ponyprint = ['\033[0;39;49;0m%s\033[0;39;49;0m' % line for line in ponyprint]
+                     return '\n'.join(ponyprint)
+                 
+                 if quotes:
+@@ -774,7 +774,7 @@ def isatty(self):
+             buf += c + colourstack.feed(c)
+         modprintpony = buf.replace(AUTO_PUSH, '').replace(AUTO_POP, '')
+         
+-        printpony = [('\033[21;39;49;0m%s%s\033[21;39;49;0m' % (' ' * (termsize[1] - ponywidth), line)) for line in modprintpony.split('\n')]
++        printpony = [('\033[0;39;49;0m%s%s\033[0;39;49;0m' % (' ' * (termsize[1] - ponywidth), line)) for line in modprintpony.split('\n')]
+         
+         
+         print(preprint, end='')
+@@ -922,9 +922,9 @@ def alert(text):
+                 else:
+                     print('\033[%i;%iH\033[34m%s:\033[39m' % (self.top + oldy, self.left, leftlines[oldy]), end='')
+                 if (y > 0) and (leftlines[y - 1] == leftlines[y]) and (leftlines[y] == leftlines[-1]):
+-                    print('\033[%i;%iH\033[1;34m%s\033[21;39m' % (self.top + y, self.left, '>'), end='')
++                    print('\033[%i;%iH\033[1;34m%s\033[0;39m' % (self.top + y, self.left, '>'), end='')
+                 else:
+-                    print('\033[%i;%iH\033[1;34m%s:\033[21;39m' % (self.top + y, self.left, leftlines[y]), end='')
++                    print('\033[%i;%iH\033[1;34m%s:\033[0;39m' % (self.top + y, self.left, leftlines[y]), end='')
+                 print('\033[%i;%iH' % (self.top + y, innerleft + x), end='')
+             (oldy, oldx, oldmark) = (y, x, mark)
+             if edited:
+@@ -1080,7 +1080,7 @@ def alert(text):
+                         leftline = leftlines[row] + ':'
+                         if (leftlines[row - 1] == leftlines[row]) and (leftlines[row] == leftlines[-1]):
+                             leftline = '>'
+-                        print('\033[%i;%iH\033[%s34m%s\033[%s39m' % (self.top + row, self.left, '1;' if row == y else '', leftline, '21;' if row == y else ''), end='')
++                        print('\033[%i;%iH\033[%s34m%s\033[%s39m' % (self.top + row, self.left, '1;' if row == y else '', leftline, '0;' if row == y else ''), end='')
+                     for row in range(0, len(datalines)):
+                         print('\033[%i;%iH%s\033[49m' % (self.top + row, innerleft, datalines[row]), end='')
+                     print('\033[%i;%iH' % (self.top + y, innerleft + x), end='')
+@@ -1206,7 +1206,7 @@ def alert(text):
+ '''
+ 
+ 
+-usage_program = '\033[34;1mponysay-tool\033[21;39m'
++usage_program = '\033[34;1mponysay-tool\033[0;39m'
+ 
+ usage = '\n'.join(['%s %s' % (usage_program, '(--help | --version | --kms)'),
+                    '%s %s' % (usage_program, '(--edit | --edit-rm) \033[33mPONY-FILE\033[39m'),
+
+From eaeb08cf7a619982c41e0dab679f77868e8478af Mon Sep 17 00:00:00 2001
+From: Tonyl <git@tonyl.eu>
+Date: Fri, 10 Nov 2023 21:16:43 +0100
+Subject: [PATCH 3/3] fix bracket
+
+---
+ ponies/raritysdad.pony | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ponies/raritysdad.pony b/ponies/raritysdad.pony
+index f683c54e..9dec8afe 100644
+--- a/ponies/raritysdad.pony
++++ b/ponies/raritysdad.pony
+@@ -12,7 +12,7 @@ KIND: earth
+ LINK: regular
+ MANE: black
+ NAME: (not mentioned)
+-OTHER NAMES: Magnum (official, in Gameloft game), Hondo Flanks (official. on Trading Card Game}, Carlton (unofficial)
++OTHER NAMES: Magnum (official, in Gameloft game), Hondo Flanks (official, on Trading Card Game), Carlton (unofficial)
+ POSE: stand
+ SOURCE: (Bot-chan) Desktop ponies
+ WIDTH: 41
