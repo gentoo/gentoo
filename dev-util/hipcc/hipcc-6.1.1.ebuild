@@ -59,9 +59,11 @@ src_prepare() {
 	cmake_src_prepare
 
 	sed -e "s:\$ROCM_PATH/llvm/bin:$(get_llvm_prefix)/bin:" \
+		-e "s:/opt/rocm:/usr:" \
 		-i bin/hipvars.pm || die
 
-	sed -e "s:\$ENV{'HIP_LIB_PATH'}:'${EPREFIX}/usr/$(get_libdir)':" \
+	sed -e "s:\$ENV{'DEVICE_LIB_PATH'}:'${EPREFIX}/usr/lib/amdgcn/bitcode':" \
+		-e "s:\$ENV{'HIP_LIB_PATH'}:'${EPREFIX}/usr/$(get_libdir)':" \
 		-e "/HIP.*FLAGS.*isystem.*HIP_INCLUDE_PATH/d" \
 		-i bin/hipcc.pl || die
 
