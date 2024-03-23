@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/902217
+https://github.com/ultravideo/kvazaar/pull/392
+
+From b10fc25cb980e1dbab8f42c38280f57765f93a37 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Thu, 1 Feb 2024 18:35:23 -0500
+Subject: [PATCH] Ignore "*get_pc_thunk.*" symbols in exported symbols test
+
+On i386 (32-bit x86) and sparc, gcc generates references to these
+functions which load the current PC into the specified register.  These
+references are then resolved at link-time.  Examples of what these
+symbols look like:
+
+../src/.libs/libkvazaar.a:libkvazaar_la-cfg.o:00000000 T __x86.get_pc_thunk.ax
+../src/.libs/libkvazaar.a:libkvazaar_la-cabac.o:0000000000000000 W __sparc_get_pc_thunk.l7
+
+Since these are platform symbols inserted by the toolchain, ignore them.
+The regex is specified as tightly as possible, and based on a quick
+search these appear to be the only two platforms affected.
+---
+ tests/test_external_symbols.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_external_symbols.sh b/tests/test_external_symbols.sh
+index b9b3d5957..4983078bf 100755
+--- a/tests/test_external_symbols.sh
++++ b/tests/test_external_symbols.sh
+@@ -4,7 +4,7 @@
+ 
+ set -eu${BASH+o pipefail}
+ 
+-if nm -go --defined-only ../src/.libs/libkvazaar.a | grep -v ' kvz_'; then
++if nm -go --defined-only ../src/.libs/libkvazaar.a | grep -Ev ' (kvz_|__[a-z0-9]+(_|\.)get_pc_thunk\.)'; then
+     printf '%s\n' 'Only symbols prefixed with "kvz_" should be exported from libkvazaar.'
+     false
+ fi

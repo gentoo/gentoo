@@ -112,7 +112,7 @@ DEPEND="
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
 	python? ( ${PYTHON_DEPS} )
-	qsv? ( media-libs/oneVPL )
+	qsv? ( media-libs/libvpl )
 	speex? ( media-libs/speexdsp )
 	ssl? ( net-libs/mbedtls:= )
 	test? ( dev-util/cmocka )

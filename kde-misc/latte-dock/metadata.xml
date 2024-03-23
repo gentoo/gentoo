@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">psifidotos/Latte-Dock</remote-id>
+		<remote-id type="kde-invent">plasma/latte-dock</remote-id>
 	</upstream>
 </pkgmetadata>

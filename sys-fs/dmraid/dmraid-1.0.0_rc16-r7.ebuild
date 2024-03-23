@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools linux-info
+inherit flag-o-matic autotools linux-info
 
 MY_PV=${PV/_/.}-3
 
@@ -67,6 +67,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 908662
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# disable klibc and dietlibc, bug #653392
 	econf \
 		--with-usrlibdir='${prefix}'/$(get_libdir) \

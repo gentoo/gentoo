@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 COMMIT=80c52493ef42e6fe605a69dcddd2a691cd8a1380
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{9..11} )
-inherit perl-module python-any-r1 cmake-multilib
+inherit flag-o-matic perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
 HOMEPAGE="https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home"
@@ -61,6 +61,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# ODR (bug #875224)
+	filter-lto
+
 	local mycmakeargs=(
 		# Renamed VM_MACHINE_TYPE to GRAPHITE2_VM_TYPE
 		-DGRAPHITE2_VM_TYPE=direct

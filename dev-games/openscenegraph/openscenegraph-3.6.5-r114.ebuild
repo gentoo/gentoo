@@ -94,6 +94,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.5-use_boost_asio.patch
 	"${FILESDIR}"/${PN}-3.6.5-cmake_lua_version.patch
 	"${FILESDIR}"/${PN}-3.6.5-openexr3.patch
+	"${FILESDIR}"/${PN}-3.6.5-remove-register-keyword.patch
 )
 
 pkg_setup() {

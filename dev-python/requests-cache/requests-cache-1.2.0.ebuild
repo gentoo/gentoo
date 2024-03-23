@@ -9,11 +9,11 @@ PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
 
+DESCRIPTION="Persistent cache for requests library"
 HOMEPAGE="
 	https://pypi.org/project/requests-cache/
 	https://github.com/requests-cache/requests-cache/
 "
-DESCRIPTION="Persistent cache for requests library"
 SRC_URI="
 	https://github.com/requests-cache/requests-cache/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]

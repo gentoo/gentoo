@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kontact/"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 RESTRICT="test" # bug 907957, 851000, 739732...

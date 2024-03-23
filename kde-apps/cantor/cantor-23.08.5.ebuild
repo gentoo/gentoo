@@ -18,7 +18,7 @@ HOMEPAGE="https://apps.kde.org/cantor/ https://edu.kde.org/cantor/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE="+analitza julia lua postscript python qalculate R"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) python? ( ${PYTHON_REQUIRED_USE} )"
@@ -98,6 +98,11 @@ src_configure() {
 		-DLUAJIT_LIBDIR="${EPREFIX}/$(lua_get_cmod_dir)"
 	)
 	ecm_src_configure
+}
+
+src_compile() {
+	# -j1 for bug #919576
+	MAKEOPTS="-j1" ecm_src_compile
 }
 
 pkg_postinst() {

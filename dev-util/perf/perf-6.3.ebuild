@@ -28,6 +28,9 @@ fi
 LINUX_SOURCES="linux-${LINUX_VER}.tar.xz"
 SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
+S_K="${WORKDIR}/linux-${LINUX_VER}"
+S="${S_K}/tools/perf"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
@@ -78,9 +81,6 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-5.10
 	java? ( virtual/jdk )
 "
-
-S_K="${WORKDIR}/linux-${LINUX_VER}"
-S="${S_K}/tools/perf"
 
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 

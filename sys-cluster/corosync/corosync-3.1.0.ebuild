@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 IUSE="augeas dbus doc selinux snmp systemd watchdog xml"
 
 DEPEND="

@@ -22,7 +22,8 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="guile nls static"
+IUSE="guile nls static test"
+RESTRICT="!test? ( test )"
 
 DEPEND="guile? ( >=dev-scheme/guile-1.8:= )"
 RDEPEND="
@@ -32,6 +33,7 @@ RDEPEND="
 BDEPEND="
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-make )
+	test? ( dev-lang/perl )
 "
 
 PATCHES=(

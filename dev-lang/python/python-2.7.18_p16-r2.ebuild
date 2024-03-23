@@ -266,7 +266,7 @@ src_test() {
 	local -x TZ=UTC
 
 	# Rerun failed tests in verbose mode (regrtest -w).
-	emake test EXTRATESTOPTS="-w" < /dev/tty
+	emake -Onone test EXTRATESTOPTS="-w" < /dev/tty
 
 	for test in "${skipped_tests[@]}"; do
 		mv "${T}/test_${test}.py" Lib/test/ || die

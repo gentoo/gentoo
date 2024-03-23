@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -59,6 +59,9 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	nls? (
 		sys-devel/gettext
+	)
+	test? (
+		media-gfx/cairosvg
 	)
 "
 DEPEND="${COMMON_DEPEND}"
@@ -133,7 +136,8 @@ src_compile() {
 
 src_test() {
 	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
-	ln -s "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
+	mkdir -p "${BUILD_DIR}/qa/eeschema/" || die
+	dosym "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
 
 	# LD_LIBRARY_PATH is there to help it pick up the just-built libraries
 	LD_LIBRARY_PATH="${BUILD_DIR}/3d-viewer/3d_cache/sg:${LD_LIBRARY_PATH}" cmake_src_test

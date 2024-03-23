@@ -41,7 +41,7 @@ RDEPEND="
 		sys-apps/s6-linux-init[sysv-utils(-)]
 	)
 	>=sys-apps/util-linux-2.21
-	virtual/pkgconfig
+	virtual/pkgconfig[native-symlinks(+)]
 	virtual/udev
 
 	elibc_musl? ( sys-libs/fts-standalone )

@@ -1,0 +1,47 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ce188b7..19bd013 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,41 +68,7 @@ if (NOT HIPIFY_CLANG_TESTS_ONLY)
+   endif()
+ 
+   # Link against LLVM and CLANG libraries.
+-  target_link_libraries(hipify-clang PRIVATE
+-    clangASTMatchers
+-    clangFrontend
+-    clangTooling
+-    clangParse
+-    clangSerialization
+-    clangSema
+-    clangEdit
+-    clangFormat
+-    clangLex
+-    clangAnalysis
+-    clangDriver
+-    clangAST
+-    clangToolingCore
+-    clangRewrite
+-    clangBasic
+-    LLVMProfileData
+-    LLVMSupport
+-    LLVMMCParser
+-    LLVMMC
+-    LLVMBitReader
+-    LLVMOption
+-    LLVMCore)
+-
+-  if(LLVM_PACKAGE_VERSION VERSION_GREATER "6.0.1")
+-    target_link_libraries(hipify-clang PRIVATE clangToolingInclusions)
+-  endif()
+-
+-  if(LLVM_PACKAGE_VERSION VERSION_GREATER "9.0.1")
+-    target_link_libraries(hipify-clang PRIVATE LLVMFrontendOpenMP)
+-  endif()
+-
+-  if(LLVM_PACKAGE_VERSION VERSION_EQUAL "15.0.0" OR LLVM_PACKAGE_VERSION VERSION_GREATER "15.0.0")
+-    target_link_libraries(hipify-clang PRIVATE LLVMWindowsDriver clangSupport)
+-  endif()
++  target_link_libraries(hipify-clang PRIVATE clang clang-cpp)
+ 
+   if(LLVM_PACKAGE_VERSION VERSION_EQUAL "16.0.0" OR LLVM_PACKAGE_VERSION VERSION_GREATER "16.0.0")
+     if(MSVC)

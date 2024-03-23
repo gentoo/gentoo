@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>gienah@gentoo.org</email>
+		<name>Mark Wright</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/wez/wezterm/issues</bugs-to>
 		<changelog>https://wezfurlong.org/wezterm/changelog.html</changelog>

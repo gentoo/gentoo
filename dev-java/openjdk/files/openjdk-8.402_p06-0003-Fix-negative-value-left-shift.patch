@@ -1,0 +1,38 @@
+From 685bf942bdf5b265a3b343c2b682b01b11b6e58a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 6 Mar 2024 12:20:03 +0000
+Subject: [PATCH 3/4] Fix negative value left shift
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Backport of https://github.com/openjdk/jdk17u/commit/51be7db96f3fc32a7ddb24f8af19fb4fc0577aaf.
+
+```
+jdk/src/share/native/com/sun/java/util/jar/pack/constants.h:226:37: error: left operand of shift expression ‘(-1 << 13)’ is negative [-fpermissive]
+jdk/src/share/native/com/sun/java/util/jar/pack/constants.h:226:39: error: enumerator value for ‘AO_UNUSED_MBZ’ is not an integer constant
+  226 |     AO_UNUSED_MBZ             = (-1)<<13, // options bits reserved for future use.
+      |                                       ^~
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ jdk/src/share/native/com/sun/java/util/jar/pack/constants.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/jdk/src/share/native/com/sun/java/util/jar/pack/constants.h b/jdk/src/share/native/com/sun/java/util/jar/pack/constants.h
+index f1a1f73..536003b 100644
+--- a/jdk/src/share/native/com/sun/java/util/jar/pack/constants.h
++++ b/jdk/src/share/native/com/sun/java/util/jar/pack/constants.h
+@@ -223,7 +223,7 @@ enum {
+     AO_HAVE_FIELD_FLAGS_HI    = 1<<10,
+     AO_HAVE_METHOD_FLAGS_HI   = 1<<11,
+     AO_HAVE_CODE_FLAGS_HI     = 1<<12,
+-    AO_UNUSED_MBZ             = (-1)<<13, // options bits reserved for future use.
++    AO_UNUSED_MBZ             = (int)((~0U)<<13), // options bits reserved for future use.
+ 
+ #define ARCHIVE_BIT_DO(F) \
+          F(AO_HAVE_SPECIAL_FORMATS) \
+-- 
+2.44.0
+

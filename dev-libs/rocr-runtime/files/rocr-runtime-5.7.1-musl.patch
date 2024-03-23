@@ -1,0 +1,106 @@
+Fix compilation with musl.
+
+Bug: https://github.com/ROCm/ROCR-Runtime/issues/181
+--- a/core/inc/checked.h
++++ b/core/inc/checked.h
+@@ -58,7 +58,7 @@ template <uint64_t code, bool multiProcess = false> class Check final {
+   Check(const Check&) { object_ = uintptr_t(this) ^ uintptr_t(code); }
+   Check(Check&&) { object_ = uintptr_t(this) ^ uintptr_t(code); }
+ 
+-  ~Check() { object_ = NULL; }
++  ~Check() { object_ = uintptr_t(NULL); }
+ 
+   const Check& operator=(Check&& rhs) { return *this; }
+   const Check& operator=(const Check& rhs) { return *this; }
+--- a/core/runtime/default_signal.cpp
++++ b/core/runtime/default_signal.cpp
+@@ -57,7 +57,7 @@ int BusyWaitSignal::rtti_id_ = 0;
+ BusyWaitSignal::BusyWaitSignal(SharedSignal* abi_block, bool enableIPC)
+     : Signal(abi_block, enableIPC) {
+   signal_.kind = AMD_SIGNAL_KIND_USER;
+-  signal_.event_mailbox_ptr = NULL;
++  signal_.event_mailbox_ptr = uint64_t(NULL);
+ }
+ 
+ hsa_signal_value_t BusyWaitSignal::LoadRelaxed() {
+--- a/core/util/lnx/os_linux.cpp
++++ b/core/util/lnx/os_linux.cpp
+@@ -111,9 +111,12 @@ class os_thread {
+       }
+     }
+ 
++    int cores = 0;
++    cpu_set_t* cpuset = nullptr;
++
+     if (core::Runtime::runtime_singleton_->flag().override_cpu_affinity()) {
+-      int cores = get_nprocs_conf();
+-      cpu_set_t* cpuset = CPU_ALLOC(cores);
++      cores = get_nprocs_conf();
++      cpuset = CPU_ALLOC(cores);
+       if (cpuset == nullptr) {
+         fprintf(stderr, "CPU_ALLOC failed: %s\n", strerror(errno));
+         return;
+@@ -122,12 +125,6 @@ class os_thread {
+       for (int i = 0; i < cores; i++) {
+         CPU_SET(i, cpuset);
+       }
+-      err = pthread_attr_setaffinity_np(&attrib, CPU_ALLOC_SIZE(cores), cpuset);
+-      CPU_FREE(cpuset);
+-      if (err != 0) {
+-        fprintf(stderr, "pthread_attr_setaffinity_np failed: %s\n", strerror(err));
+-        return;
+-      }
+     }
+ 
+     err = pthread_create(&thread, &attrib, ThreadTrampoline, args.get());
+@@ -157,6 +154,14 @@ class os_thread {
+     if (err != 0) {
+       fprintf(stderr, "pthread_attr_destroy failed: %s\n", strerror(err));
+     }
++
++    if (thread && cores && cpuset) {
++      err = pthread_setaffinity_np(thread, CPU_ALLOC_SIZE(cores), cpuset);
++      CPU_FREE(cpuset);
++      if (err != 0) {
++        fprintf(stderr, "pthread_setaffinity_np failed: %s\n", strerror(err));
++      }
++    }
+   }
+ 
+   os_thread(os_thread&& rhs) {
+@@ -617,11 +622,13 @@ SharedMutex CreateSharedMutex() {
+     fprintf(stderr, "rw lock attribute init failed: %s\n", strerror(err));
+     return nullptr;
+   }
++#if defined(__GLIBC__)
+   err = pthread_rwlockattr_setkind_np(&attrib, PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP);
+   if (err != 0) {
+     fprintf(stderr, "Set rw lock attribute failure: %s\n", strerror(err));
+     return nullptr;
+   }
++#endif
+ 
+   pthread_rwlock_t* lock = new pthread_rwlock_t;
+   err = pthread_rwlock_init(lock, &attrib);
+--- a/core/util/utils.h
++++ b/core/util/utils.h
+@@ -74,7 +74,7 @@ static __forceinline void* _aligned_malloc(size_t size, size_t alignment) {
+   return aligned_alloc(alignment, size);
+ #else
+   void *mem = NULL;
+-  if (NULL != posix_memalign(&mem, alignment, size))
++  if (0 != posix_memalign(&mem, alignment, size))
+     return NULL;
+   return mem;
+ #endif
+--- a/image/util.h
++++ b/image/util.h
+@@ -95,7 +95,7 @@ static __forceinline void* _aligned_malloc(size_t size, size_t alignment) {
+   return aligned_alloc(alignment, size);
+ #else
+   void* mem = NULL;
+-  if (NULL != posix_memalign(&mem, alignment, size)) return NULL;
++  if (0 != posix_memalign(&mem, alignment, size)) return NULL;
+   return mem;
+ #endif
+ }

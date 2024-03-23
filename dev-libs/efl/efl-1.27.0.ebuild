@@ -28,6 +28,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 	?? ( fbcon tslib )
 	drm? ( wayland )
 	examples? ( eet svg )
+	gstreamer? ( sound )
 	ibus? ( glib )
 	opengl? ( X )
 	pulseaudio? ( sound )
@@ -154,7 +155,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		--buildtype=plain
+		-Dbuildtype=plain
 
 		-D buffer=false
 		-D build-tests=false

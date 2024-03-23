@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cxxflags -DBOOST_FILESYSTEM_VERSION=3 -std=c++11
+	append-cxxflags -DBOOST_FILESYSTEM_VERSION=3 -DBOOST_TIMER_ENABLE_DEPRECATED -std=c++14
 }
 
 src_compile() {

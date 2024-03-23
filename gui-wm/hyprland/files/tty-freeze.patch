@@ -1,0 +1,12 @@
+diff --git a/src/events/Misc.cpp b/src/events/Misc.cpp
+index b77cf038..eaaaec18 100644
+--- a/src/events/Misc.cpp
++++ b/src/events/Misc.cpp
+@@ -169,6 +169,7 @@ void Events::listener_sessionActive(wl_listener* listener, void* data) {
+ 
+     for (auto& m : g_pCompositor->m_vMonitors) {
+         g_pCompositor->scheduleFrameForMonitor(m.get());
++        g_pHyprRenderer->applyMonitorRule(m.get(), &m->activeMonitorRule, true);
+     }
+ 
+     g_pConfigManager->m_bWantsMonitorReload = true;

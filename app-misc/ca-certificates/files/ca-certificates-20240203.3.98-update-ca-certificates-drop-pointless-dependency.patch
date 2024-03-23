@@ -1,0 +1,45 @@
+From c33e85bc2fe61e66e2fa5c2ab0efc4277b7cef5e Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 29 Jan 2024 21:54:04 -0500
+Subject: [PATCH] update-ca-certificates: drop pointless dependency on external
+ run-parts
+
+This external program belongs to debianutils and hence is used
+internally by the update-ca-certificates script synced from Debian.
+
+It has a couple utilities:
+- it sorts files in a directory with LC_ALL=C
+- it runs each of them in turn
+- it can print them instead of running them
+
+Here, it's used for sorting and printing the scripts to run. They need
+to each accept some stdin, so run-parts cannot actually be used for
+dispatch. But this functionality works fine directly from a shell, so
+the additional dependency honestly seems frivolous. In particular, this
+is the only reason why all Debian systems have debianutils installed,
+through openssl. (This is in contrast to Debian, where debianutils is
+part of the essential system set and provides a vastly greater number of
+programs than the ones Gentoo repackages.)
+
+It's very easy to replace with `printf %s\\n *`, so do so. Even if it
+wasn't easy to replace with printf, it would be easy to replace with
+`for x in *; "$x"; done` instead.
+---
+ image/usr/sbin/update-ca-certificates | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/image/usr/sbin/update-ca-certificates b/image/usr/sbin/update-ca-certificates
+index bb5aa54..fbf1ee2 100755
+--- a/image/usr/sbin/update-ca-certificates
++++ b/image/usr/sbin/update-ca-certificates
+@@ -218,8 +218,9 @@ then
+   echo "Running hooks in $HOOKSDIR..."
+   VERBOSE_ARG=
+   [ "$verbose" = 0 ] || VERBOSE_ARG="--verbose"
+-  eval run-parts "$VERBOSE_ARG" --test -- "$HOOKSDIR" | while read -r hook
++  ( LC_ALL=C; printf %s\\n "$HOOKSDIR"/* ) | while read hook
+   do
++    [ -f "$hook" ] || continue
+     ( cat "$ADDED"
+       cat "$REMOVED" ) | "$hook" || echo "E: $hook exited with code $?."
+   done

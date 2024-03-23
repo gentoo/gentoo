@@ -1,0 +1,8 @@
+--- a/Makefile
++++ b/Makefile
+@@ -10,4 +10,4 @@ CC=gcc
+ CFLAGS=-O
+ 
+ sl: sl.c sl.h
+-	$(CC) $(CFLAGS) -o sl sl.c -lncurses
++	$(CC) $(CFLAGS) -o sl $(LDFLAGS) sl.c -lncurses

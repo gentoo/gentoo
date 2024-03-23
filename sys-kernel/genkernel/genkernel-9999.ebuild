@@ -6,7 +6,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -102,7 +102,6 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Genkernel https://gitweb.gentoo.org/proj/
 
 LICENSE="GPL-2"
 SLOT="0"
-RESTRICT=""
 IUSE="ibm +firmware"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -111,7 +110,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # because genkernel will usually build things like LVM2, cryptsetup,
 # mdadm... during initramfs generation which will require these
 # things.
-DEPEND=""
+DEPEND="
+	app-text/asciidoc
+"
 RDEPEND="${PYTHON_DEPS}
 	app-alternatives/cpio
 	>=app-misc/pax-utils-1.2.2
@@ -128,11 +129,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-build/libtool
 	virtual/pkgconfig
 	elibc_glibc? ( sys-libs/glibc[static-libs(+)] )
-	firmware? ( sys-kernel/linux-firmware )"
-
-if [[ ${PV} == 9999* ]]; then
-	DEPEND="${DEPEND} app-text/asciidoc"
-fi
+	firmware? ( sys-kernel/linux-firmware )
+"
 
 PATCHES=(
 )
@@ -163,73 +161,19 @@ src_prepare() {
 		popd >/dev/null || die
 	fi
 
-	# Update software.sh
-	sed -i \
-		-e "s:VERSION_BCACHE_TOOLS:${VERSION_BCACHE_TOOLS}:"\
-		-e "s:VERSION_BOOST:${VERSION_BOOST}:"\
-		-e "s:VERSION_BTRFS_PROGS:${VERSION_BTRFS_PROGS}:"\
-		-e "s:VERSION_BUSYBOX:${VERSION_BUSYBOX}:"\
-		-e "s:VERSION_COREUTILS:${VERSION_COREUTILS}:"\
-		-e "s:VERSION_CRYPTSETUP:${VERSION_CRYPTSETUP}:"\
-		-e "s:VERSION_DMRAID:${VERSION_DMRAID}:"\
-		-e "s:VERSION_DROPBEAR:${VERSION_DROPBEAR}:"\
-		-e "s:VERSION_EUDEV:${VERSION_EUDEV}:"\
-		-e "s:VERSION_EXPAT:${VERSION_EXPAT}:"\
-		-e "s:VERSION_E2FSPROGS:${VERSION_E2FSPROGS}:"\
-		-e "s:VERSION_FUSE:${VERSION_FUSE}:"\
-		-e "s:VERSION_GPG:${VERSION_GPG}:"\
-		-e "s:VERSION_HWIDS:${VERSION_HWIDS}:"\
-		-e "s:VERSION_ISCSI:${VERSION_ISCSI}:"\
-		-e "s:VERSION_JSON_C:${VERSION_JSON_C}:"\
-		-e "s:VERSION_KMOD:${VERSION_KMOD}:"\
-		-e "s:VERSION_LIBAIO:${VERSION_LIBAIO}:"\
-		-e "s:VERSION_LIBGCRYPT:${VERSION_LIBGCRYPT}:"\
-		-e "s:VERSION_LIBGPGERROR:${VERSION_LIBGPGERROR}:"\
-		-e "s:VERSION_LIBXCRYPT:${VERSION_LIBXCRYPT}:"\
-		-e "s:VERSION_LVM:${VERSION_LVM}:"\
-		-e "s:VERSION_LZO:${VERSION_LZO}:"\
-		-e "s:VERSION_MDADM:${VERSION_MDADM}:"\
-		-e "s:VERSION_MULTIPATH_TOOLS:${VERSION_MULTIPATH_TOOLS}:"\
-		-e "s:VERSION_POPT:${VERSION_POPT}:"\
-		-e "s:VERSION_STRACE:${VERSION_STRACE}:"\
-		-e "s:VERSION_THIN_PROVISIONING_TOOLS:${VERSION_THIN_PROVISIONING_TOOLS}:"\
-		-e "s:VERSION_UNIONFS_FUSE:${VERSION_UNIONFS_FUSE}:"\
-		-e "s:VERSION_USERSPACE_RCU:${VERSION_USERSPACE_RCU}:"\
-		-e "s:VERSION_UTIL_LINUX:${VERSION_UTIL_LINUX}:"\
-		-e "s:VERSION_XFSPROGS:${VERSION_XFSPROGS}:"\
-		-e "s:VERSION_XZ:${VERSION_XZ}:"\
-		-e "s:VERSION_ZLIB:${VERSION_ZLIB}:"\
-		-e "s:VERSION_ZSTD:${VERSION_ZSTD}:"\
-		"${S}"/defaults/software.sh \
-		|| die "Could not adjust versions"
+	# Export all the versions that may be used by genkernel build.
+	for v in $(set |awk -F= '/^VERSION_/{print $1}') ; do
+	export ${v}
+	done
 }
 
 src_compile() {
-	if [[ ${PV} == 9999* ]] ; then
-		emake
-	fi
+	emake PREFIX=/usr
 }
 
 src_install() {
-	insinto /etc
-	doins "${S}"/genkernel.conf
-
-	doman genkernel.8
+	emake DESTDIR="${D}" PREFIX=/usr install
 	dodoc AUTHORS ChangeLog README TODO
-	dobin genkernel
-	rm -f genkernel genkernel.8 AUTHORS ChangeLog README TODO genkernel.conf
-
-	if use ibm ; then
-		cp "${S}"/arch/ppc64/kernel-2.6{-pSeries,} || die
-	else
-		cp "${S}"/arch/ppc64/kernel-2.6{.g5,} || die
-	fi
-
-	insinto /usr/share/genkernel
-	doins -r "${S}"/*
-
-	fperms +x /usr/share/genkernel/gen_worker.sh
-	fperms +x /usr/share/genkernel/path_expander.py
 
 	python_fix_shebang "${ED}"/usr/share/genkernel/path_expander.py
 

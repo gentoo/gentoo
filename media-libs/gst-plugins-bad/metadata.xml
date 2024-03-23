@@ -7,6 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="bzip2">Enable bzip2 encoder/decoder plugin</flag>
-		<flag name="qsv">Enable Intel Quick Sync Video using the <pkg>media-libs/oneVPL</pkg> dispatcher</flag>
+		<flag name="qsv">Enable Intel Quick Sync Video using the <pkg>media-libs/libvpl</pkg> dispatcher</flag>
 	</use>
 </pkgmetadata>

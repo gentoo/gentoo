@@ -17,6 +17,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/${PN}-1.0.0-make-test-failures-fatal.patch" )
+
 src_prepare() {
 	default
 }
@@ -28,6 +30,10 @@ _emake() {
 
 src_compile() {
 	_emake
+}
+
+src_test() {
+	_emake test
 }
 
 src_install() {

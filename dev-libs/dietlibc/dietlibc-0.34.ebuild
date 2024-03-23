@@ -1,7 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A libc optimized for small size"
@@ -20,6 +21,9 @@ DIETHOME="/usr/diet"
 
 src_prepare() {
 	default
+
+	# bug #855677
+	filter-lto
 
 	# Replace sparc64 related C[XX]FLAGS (see bug #45716)
 	use sparc && replace-sparc64-flags

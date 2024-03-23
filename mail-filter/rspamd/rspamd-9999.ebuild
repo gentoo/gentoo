@@ -38,6 +38,7 @@ RDEPEND="
 	')
 	acct-group/rspamd
 	acct-user/rspamd
+	app-arch/libarchive:=
 	app-arch/zstd:=
 	dev-db/sqlite:3
 	dev-libs/glib:2

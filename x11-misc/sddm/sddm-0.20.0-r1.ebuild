@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+PATCHSET="${P}-patchset"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -16,6 +17,7 @@ inherit cmake linux-info optfeature systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
@@ -57,19 +59,24 @@ PATCHES=(
 	# Downstream patches
 	"${FILESDIR}/${P}-respect-user-flags.patch"
 	"${FILESDIR}/${PN}-0.18.1-Xsession.patch" # bug 611210
-	"${FILESDIR}/${P}-sddm.pam-use-substack.patch" # bug 728550
-	"${FILESDIR}/${P}-disable-etc-debian-check.patch"
-	"${FILESDIR}/${P}-no-default-pam_systemd-module.patch" # bug 669980
+	"${WORKDIR}/${PATCHSET}/${P}-sddm.pam-use-substack.patch" # bug 728550
+	"${WORKDIR}/${PATCHSET}/${P}-disable-etc-debian-check.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-no-default-pam_systemd-module.patch" # bug 669980
 	# git master
-	"${FILESDIR}/${P}-fix-use-development-sessions.patch"
-	"${FILESDIR}/${P}-greeter-platform-detection.patch"
-	"${FILESDIR}/${P}-no-qtvirtualkeyboard-on-wayland.patch"
-	"${FILESDIR}/${P}-dbus-policy-in-usr.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-fix-use-development-sessions.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-greeter-platform-detection.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-no-qtvirtualkeyboard-on-wayland.patch"
+	"${WORKDIR}/${PATCHSET}/${P}-dbus-policy-in-usr.patch"
 )
 
 pkg_setup() {
 	local CONFIG_CHECK="~DRM"
 	use kernel_linux && linux-info_pkg_setup
+}
+
+src_unpack() {
+	[[ ${PV} == *9999* ]] && git-r3_src_unpack
+	default
 }
 
 src_prepare() {

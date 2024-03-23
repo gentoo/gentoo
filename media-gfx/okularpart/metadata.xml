@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:okular</remote-id>
+		<remote-id type="kde-invent">graphics/okular</remote-id>
+	</upstream>
+	<use>
+		<flag name="epub">Enable E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
+		<flag name="mobi">Enable mobipocket support via <pkg>kde-apps/kdegraphics-mobipocket</pkg></flag>
+	</use>
+</pkgmetadata>

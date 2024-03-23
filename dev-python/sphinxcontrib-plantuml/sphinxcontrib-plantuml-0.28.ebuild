@@ -17,12 +17,11 @@ SRC_URI="
 	https://github.com/sphinx-contrib/plantuml/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
+S="${WORKDIR}/${P#sphinxcontrib-}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
-
-S="${WORKDIR}/${P#sphinxcontrib-}"
+KEYWORDS="amd64 arm64"
 
 BDEPEND="
 	test? (

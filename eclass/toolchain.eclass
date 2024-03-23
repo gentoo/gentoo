@@ -677,6 +677,11 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DDEF_GENTOO_ZNOW"
 	fi
 
+	if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux-gnu* ]] ; then
+		einfo "Updating gcc to use x86-64 control flow protection by default ..."
+		hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
+	fi
+
 	if _tc_use_if_iuse hardened ; then
 		# Will add some hardened options as default, e.g. for gcc-12
 		# * -fstack-clash-protection
@@ -687,10 +692,6 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DGENTOO_FORTIFY_SOURCE_LEVEL=3"
 		# Add -D_GLIBCXX_ASSERTIONS
 		hardened_gcc_flags+=" -DDEF_GENTOO_GLIBCXX_ASSERTIONS"
-
-		if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
-			hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
-		fi
 
 		# Rebrand to make bug reports easier
 		BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
@@ -906,7 +907,7 @@ toolchain_src_configure() {
 		BUILD_CONFIG_TARGETS+=( bootstrap-lto )
 	fi
 
-	if tc_version_is_at_least 12 && _tc_use_if_iuse cet ; then
+	if tc_version_is_at_least 12 && _tc_use_if_iuse cet && [[ ${CTARGET} == x86_64-*-gnu* ]] ; then
 		BUILD_CONFIG_TARGETS+=( bootstrap-cet )
 	fi
 
@@ -1240,7 +1241,8 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse cet ; then
-		confgcc+=( $(use_enable cet) )
+		[[ ${CTARGET} == x86_64-*-gnu* ]] && confgcc+=( $(use_enable cet) )
+		[[ ${CTARGET} == aarch64-*-gnu* ]] && confgcc+=( $(use_enable cet standard-branch-protection) )
 	fi
 
 	if in_iuse systemtap ; then
@@ -1309,6 +1311,22 @@ toolchain_src_configure() {
 			GCC_RUN_FIXINCLUDES=1
 		fi
 
+		case ${CBUILD}-${CHOST}-${CTARGET} in
+			*i686-w64-mingw32*|*x86_64-w64-mingw32*)
+				# config/i386/t-cygming requires fixincludes (bug #925204)
+				GCC_RUN_FIXINCLUDES=1
+				;;
+			*mips*-sde-elf*)
+				# config/mips/t-sdemtk needs fixincludes too (bug #925204)
+				# It maps to mips*-sde-elf*, but only with --without-newlib.
+				if [[ ${confgcc} != *with-newlib* ]] ; then
+					GCC_RUN_FIXINCLUDES=1
+				fi
+				;;
+			*)
+				;;
+		esac
+
 		if [[ ${GCC_RUN_FIXINCLUDES} == 1 ]] ; then
 			confgcc+=( --enable-fixincludes )
 		else
@@ -1330,7 +1348,8 @@ toolchain_src_configure() {
 	# killing the 32bit builds which want /usr/lib.
 	export ac_cv_have_x='have_x=yes ac_x_includes= ac_x_libraries='
 
-	confgcc+=( "$@" ${EXTRA_ECONF} )
+	eval "local -a EXTRA_ECONF=(${EXTRA_ECONF})"
+	confgcc+=( "$@" "${EXTRA_ECONF[@]}" )
 
 	if ! is_crosscompile && ! tc-is-cross-compiler && [[ -n ${BUILD_CONFIG_TARGETS} ]] ; then
 		# e.g. ./configure --with-build-config='bootstrap-lto bootstrap-cet'
@@ -1367,6 +1386,7 @@ toolchain_src_configure() {
 		local confgcc_jit=(
 			"${confgcc[@]}"
 
+			--enable-lto
 			--disable-analyzer
 			--disable-bootstrap
 			--disable-cet
@@ -1382,7 +1402,6 @@ toolchain_src_configure() {
 			--disable-libssp
 			--disable-libstdcxx-pch
 			--disable-libvtv
-			--disable-lto
 			--disable-nls
 			--disable-objc-gc
 			--disable-systemtap

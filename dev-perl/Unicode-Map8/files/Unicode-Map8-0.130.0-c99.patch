@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/834518
+https://bugs.gentoo.org/856574
+https://bugs.gentoo.org/883709
+
+https://rt.cpan.org/Ticket/Display.html?id=24652
+https://rt.cpan.org/Ticket/Display.html?id=126031
+https://rt.cpan.org/Ticket/Display.html?id=70534
+https://rt.cpan.org/Ticket/Display.html?id=43404
+--- a/Map8.xs
++++ b/Map8.xs
+@@ -218,7 +218,7 @@ map8_to_char8(map, uc)
+ 	U16 uc
+ 
+ SV*
+-to8(map, str16)
++to8(map, xstr16)
+ 	Map8* map
+ 	PREINIT:
+ 	    STRLEN len;
+@@ -282,7 +282,7 @@ to8(map, str16)
+ 	    RETVAL
+ 
+ SV*
+-to16(map, str8)
++to16(map, xstr8)
+ 	Map8* map
+ 	PREINIT:
+ 	    STRLEN len;
+@@ -347,7 +347,7 @@ recode8(m1, m2, str)
+ 	Map8* m2
+ 	PREINIT:
+ 	    STRLEN len;
+-	    STRLEN rlen;
++	    int rlen;
+ 	    char*  res;
+ 	INPUT:
+ 	    char* str = SvPV(ST(2), len);
+--- a/map8.h
++++ b/map8.h
+@@ -80,7 +80,7 @@ void  map8_free(Map8*);
+ 
+ U16*  map8_to_str16(Map8*, U8*, U16*, int, int*);
+ U8*   map8_to_str8 (Map8*, U16*, U8*, int, int*);
+-U8*   map8_recode_8(Map8*, Map8*, U8*, U8*, int, int*);
++U8*   map8_recode8(Map8*, Map8*, U8*, U8*, int, int*);
+ 
+ int   map8_empty_block(Map8*, U8);
+ 

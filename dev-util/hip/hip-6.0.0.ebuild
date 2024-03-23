@@ -79,6 +79,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/858383
+	# https://github.com/ROCm/clr/issues/64
+	#
+	# Do not trust it for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use debug && CMAKE_BUILD_TYPE="Debug"
 
 	# Fix ld.lld linker error: https://github.com/ROCm/HIP/issues/3382

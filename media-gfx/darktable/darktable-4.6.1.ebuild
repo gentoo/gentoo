@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_BUILD_TYPE="Release"
 LUA_COMPAT=( lua5-4 )
 
 inherit cmake flag-o-matic lua-single toolchain-funcs xdg
@@ -134,6 +133,7 @@ src_prepare() {
 }
 
 src_configure() {
+	CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
 		-DBUILD_CURVE_TOOLS=$(usex tools)
 		-DBUILD_NOISE_TOOLS=$(usex tools)

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Compiles finite state machines from regular languages into executable code"
 HOMEPAGE="https://www.colm.net/open-source/ragel/"
@@ -11,7 +11,7 @@ SRC_URI="https://www.colm.net/files/ragel/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
 
 # Notes from bug #766090
@@ -51,6 +51,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# We need to be careful with both ragel and colm.
+	# See bug #858341, bug #883993 bug #924163.
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	econf \
 		--with-colm="${EPREFIX}/usr" \
 		$(use_enable doc manual)

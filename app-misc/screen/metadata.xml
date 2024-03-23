@@ -31,6 +31,7 @@
     <flag name="nethack">Express error messages in nethack style</flag>
   </use>
   <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:screen</remote-id>
     <remote-id type="savannah">screen</remote-id>
   </upstream>
 </pkgmetadata>

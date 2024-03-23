@@ -25,7 +25,7 @@ else
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 	fi
 fi
 
@@ -510,11 +510,11 @@ pkg_postinst() {
 	fi
 
 	if use boot; then
-		optfeature "automatically installing the kernels in systemd-boot's native layout and updating the bootloader configuration" \
+		optfeature "installing kernels in systemd-boot's native layout and update loader entries" \
 			"sys-kernel/installkernel[systemd-boot]"
 	fi
 	if use ukify; then
-		optfeature "automatically generating an unified kernel image on each kernel installation" \
+		optfeature "generating unified kernel image on each kernel installation" \
 			"sys-kernel/installkernel[ukify]"
 	fi
 }

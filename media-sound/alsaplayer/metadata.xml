@@ -8,4 +8,8 @@
 	<use>
 		<flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">alsaplayer</remote-id>
+		<remote-id type="github">alsaplayer/alsaplayer</remote-id>
+	</upstream>
 </pkgmetadata>

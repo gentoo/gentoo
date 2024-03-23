@@ -1,0 +1,114 @@
+https://trac.ffmpeg.org/ticket/10549
+https://bugs.gentoo.org/915384
+https://git.videolan.org/?p=ffmpeg.git;a=patch;h=7945d30e91b96d2f4f5b612048169087d214d41e
+
+From 7945d30e91b96d2f4f5b612048169087d214d41e Mon Sep 17 00:00:00 2001
+From: Timo Rothenpieler <timo@rothenpieler.org>
+Date: Sun, 3 Dec 2023 21:01:50 +0100
+Subject: [PATCH] avutil/mem: limit alignment to maximum simd align
+
+FFmpeg has instances of DECLARE_ALIGNED(32, ...) in a lot of structs,
+which then end up heap-allocated.
+By declaring any variable in a struct, or tree of structs, to be 32 byte
+aligned, it allows the compiler to safely assume the entire struct
+itself is also 32 byte aligned.
+
+This might make the compiler emit code which straight up crashes or
+misbehaves in other ways, and at least in one instances is now
+documented to actually do (see ticket 10549 on trac).
+The issue there is that an unrelated variable in SingleChannelElement is
+declared to have an alignment of 32 bytes. So if the compiler does a copy
+in decode_cpe() with avx instructions, but ffmpeg is built with
+--disable-avx, this results in a crash, since the memory is only 16 byte
+aligned.
+
+Mind you, even if the compiler does not emit avx instructions, the code
+is still invalid and could misbehave. It just happens not to. Declaring
+any variable in a struct with a 32 byte alignment promises 32 byte
+alignment of the whole struct to the compiler.
+
+This patch limits the maximum alignment to the maximum possible simd
+alignment according to configure.
+While not perfect, it at the very least gets rid of a lot of UB, by
+matching up the maximum DECLARE_ALIGNED value with the alignment of heap
+allocations done by lavu.
+---
+ libavutil/mem.c          |  2 +-
+ libavutil/mem_internal.h | 33 ++++++++++++++++++++++++++++-----
+ 2 files changed, 29 insertions(+), 6 deletions(-)
+
+diff --git a/libavutil/mem.c b/libavutil/mem.c
+index 36b8940a0c..62163b4cb3 100644
+--- a/libavutil/mem.c
++++ b/libavutil/mem.c
+@@ -62,7 +62,7 @@ void  free(void *ptr);
+ 
+ #endif /* MALLOC_PREFIX */
+ 
+-#define ALIGN (HAVE_AVX512 ? 64 : (HAVE_AVX ? 32 : 16))
++#define ALIGN (HAVE_SIMD_ALIGN_64 ? 64 : (HAVE_SIMD_ALIGN_32 ? 32 : 16))
+ 
+ /* NOTE: if you want to override these functions with your own
+  * implementations (not recommended) you have to link libav* as
+diff --git a/libavutil/mem_internal.h b/libavutil/mem_internal.h
+index 2448c606f1..b1d89a0605 100644
+--- a/libavutil/mem_internal.h
++++ b/libavutil/mem_internal.h
+@@ -76,27 +76,50 @@
+  */
+ 
+ #if defined(__INTEL_COMPILER) && __INTEL_COMPILER < 1110 || defined(__SUNPRO_C)
+-    #define DECLARE_ALIGNED(n,t,v)      t __attribute__ ((aligned (n))) v
++    #define DECLARE_ALIGNED_T(n,t,v)    t __attribute__ ((aligned (n))) v
+     #define DECLARE_ASM_ALIGNED(n,t,v)  t __attribute__ ((aligned (n))) v
+     #define DECLARE_ASM_CONST(n,t,v)    const t __attribute__ ((aligned (n))) v
+ #elif defined(__DJGPP__)
+-    #define DECLARE_ALIGNED(n,t,v)      t __attribute__ ((aligned (FFMIN(n, 16)))) v
++    #define DECLARE_ALIGNED_T(n,t,v)    t __attribute__ ((aligned (FFMIN(n, 16)))) v
+     #define DECLARE_ASM_ALIGNED(n,t,v)  t av_used __attribute__ ((aligned (FFMIN(n, 16)))) v
+     #define DECLARE_ASM_CONST(n,t,v)    static const t av_used __attribute__ ((aligned (FFMIN(n, 16)))) v
+ #elif defined(__GNUC__) || defined(__clang__)
+-    #define DECLARE_ALIGNED(n,t,v)      t __attribute__ ((aligned (n))) v
++    #define DECLARE_ALIGNED_T(n,t,v)    t __attribute__ ((aligned (n))) v
+     #define DECLARE_ASM_ALIGNED(n,t,v)  t av_used __attribute__ ((aligned (n))) v
+     #define DECLARE_ASM_CONST(n,t,v)    static const t av_used __attribute__ ((aligned (n))) v
+ #elif defined(_MSC_VER)
+-    #define DECLARE_ALIGNED(n,t,v)      __declspec(align(n)) t v
++    #define DECLARE_ALIGNED_T(n,t,v)    __declspec(align(n)) t v
+     #define DECLARE_ASM_ALIGNED(n,t,v)  __declspec(align(n)) t v
+     #define DECLARE_ASM_CONST(n,t,v)    __declspec(align(n)) static const t v
+ #else
+-    #define DECLARE_ALIGNED(n,t,v)      t v
++    #define DECLARE_ALIGNED_T(n,t,v)    t v
+     #define DECLARE_ASM_ALIGNED(n,t,v)  t v
+     #define DECLARE_ASM_CONST(n,t,v)    static const t v
+ #endif
+ 
++#if HAVE_SIMD_ALIGN_64
++    #define ALIGN_64 64
++    #define ALIGN_32 32
++#elif HAVE_SIMD_ALIGN_32
++    #define ALIGN_64 32
++    #define ALIGN_32 32
++#else
++    #define ALIGN_64 16
++    #define ALIGN_32 16
++#endif
++
++#define DECLARE_ALIGNED(n,t,v) DECLARE_ALIGNED_V(n,t,v)
++
++// Macro needs to be double-wrapped in order to expand
++// possible other macros being passed for n.
++#define DECLARE_ALIGNED_V(n,t,v) DECLARE_ALIGNED_##n(t,v)
++
++#define DECLARE_ALIGNED_4(t,v)  DECLARE_ALIGNED_T(       4, t, v)
++#define DECLARE_ALIGNED_8(t,v)  DECLARE_ALIGNED_T(       8, t, v)
++#define DECLARE_ALIGNED_16(t,v) DECLARE_ALIGNED_T(      16, t, v)
++#define DECLARE_ALIGNED_32(t,v) DECLARE_ALIGNED_T(ALIGN_32, t, v)
++#define DECLARE_ALIGNED_64(t,v) DECLARE_ALIGNED_T(ALIGN_64, t, v)
++
+ // Some broken preprocessors need a second expansion
+ // to be forced to tokenize __VA_ARGS__
+ #define E1(x) x
+-- 
+2.30.2

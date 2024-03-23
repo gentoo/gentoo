@@ -17,7 +17,7 @@ SLOT="0/4"
 # linux amd64/arm/arm64/ppc/ppc64/riscv/x86
 # OSX ppc/amd64
 # AIX ppc/ppc64
-KEYWORDS="-* amd64 arm arm64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="-* amd64 arm arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 IUSE="largepages largepages64k +debug llvm-libunwind minimal optimisememory test static-libs"
 

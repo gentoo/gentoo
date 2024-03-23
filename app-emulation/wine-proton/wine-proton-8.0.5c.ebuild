@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
 	S="${WORKDIR}/${PN}-wine-${WINE_PV}"
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 ~x86"
 fi
 
 DESCRIPTION="Valve Software's fork of Wine"

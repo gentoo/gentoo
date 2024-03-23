@@ -1,0 +1,88 @@
+https://bugs.gentoo.org/916884
+https://github.com/wxWidgets/wxWidgets/pull/24197
+
+From 891bfff867b7dc92ed6330ea46ee2dcfa5424ee0 Mon Sep 17 00:00:00 2001
+From: Cliff Zhao <qzhao@suse.com>
+Date: Thu, 4 Jan 2024 08:01:00 +0100
+Subject: [PATCH] Fix testsuite failures on s390x
+
+``/sys/power/state`` does not exist on s390x platforms and certain
+types of containers, so check that the file exist before running the
+test case.
+
+Output from ``make check`` was:
+
+	./textfile/textfiletest.cpp:351
+	...............................................................................
+
+	./textfile/textfiletest.cpp:354: FAILED:
+	  CHECK( f.Open("/sys/power/state") )
+	with expansion:
+	  false
+
+	./textfile/textfiletest.cpp:355: FAILED:
+	  REQUIRE( f.GetLineCount() == 1 )
+	with expansion:
+	  0 == 1
+---
+ tests/file/filetest.cpp         | 2 ++
+ tests/filename/filenametest.cpp | 2 ++
+ tests/textfile/textfiletest.cpp | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/tests/file/filetest.cpp b/tests/file/filetest.cpp
+index 8902eb4d6684..fc3c90569480 100644
+--- a/tests/file/filetest.cpp
++++ b/tests/file/filetest.cpp
+@@ -153,6 +153,7 @@ TEST_CASE("wxFile::Special", "[file][linux][special-file]")
+     CHECK( fileProc.ReadAll(&s) );
+     CHECK( !s.empty() );
+ 
++    if ( wxFile::Exists("/sys/power/state") ) {
+     // All files in /sys have the size of one kernel page, even if they don't
+     // have that much data in them.
+     const long pageSize = sysconf(_SC_PAGESIZE);
+@@ -163,6 +164,7 @@ TEST_CASE("wxFile::Special", "[file][linux][special-file]")
+     CHECK( fileSys.ReadAll(&s) );
+     CHECK( !s.empty() );
+     CHECK( s.length() < pageSize );
++    }
+ }
+ 
+ #endif // __LINUX__
+diff --git a/tests/filename/filenametest.cpp b/tests/filename/filenametest.cpp
+index 84356b39f719..ce2ec2af2760 100644
+--- a/tests/filename/filenametest.cpp
++++ b/tests/filename/filenametest.cpp
+@@ -1040,9 +1040,11 @@ TEST_CASE("wxFileName::GetSizeSpecial", "[filename][linux][special-file]")
+     INFO( "size of /proc/kcore=" << size );
+     CHECK( size > 0 );
+ 
++    if ( wxFile::Exists("/sys/power/state") ) {
+     // All files in /sys are one page in size, irrespectively of the size of
+     // their actual contents.
+     CHECK( wxFileName::GetSize("/sys/power/state") == sysconf(_SC_PAGESIZE) );
++    }
+ }
+ 
+ #endif // __LINUX__
+diff --git a/tests/textfile/textfiletest.cpp b/tests/textfile/textfiletest.cpp
+index f744ffc3271b..73467be8f85f 100644
+--- a/tests/textfile/textfiletest.cpp
++++ b/tests/textfile/textfiletest.cpp
+@@ -348,6 +348,7 @@ TEST_CASE("wxTextFile::Special", "[textfile][linux][special-file]")
+         CHECK( f.GetLineCount() > 1 );
+     }
+ 
++    if ( wxFile::Exists("/sys/power/state") ) {
+     SECTION("/sys")
+     {
+         wxTextFile f;
+@@ -356,6 +357,7 @@ TEST_CASE("wxTextFile::Special", "[textfile][linux][special-file]")
+         INFO( "/sys/power/state contains \"" << f[0] << "\"" );
+         CHECK( (f[0].find("mem") != wxString::npos || f[0].find("disk") != wxString::npos) );
+     }
++    }
+ }
+ 
+ #endif // __LINUX__

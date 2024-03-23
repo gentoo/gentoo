@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools desktop
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A flexible command-line scientific calculator"
 HOMEPAGE="http://w-calc.sourceforge.net/"
@@ -20,7 +20,10 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-AR.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-AR.patch
+	"${FILESDIR}"/0001-fix-bashism-in-configure-script.patch
+)
 
 src_prepare() {
 	default
@@ -28,6 +31,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862384
+	#
+	# Upstream is sourceforge. Last release in 2015, last activity 2021. Not
+	# submitting a bug report for now. -- Eli
+	filter-lto
+
 	econf $(use_with readline)
 }
 

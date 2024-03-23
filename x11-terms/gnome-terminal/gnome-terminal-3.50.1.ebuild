@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
-inherit gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
+inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="A terminal emulator for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal"
@@ -66,6 +66,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
+	filter-lto
+
 	local emesonargs=(
 		$(meson_use debug dbg)
 		-Ddocs=false

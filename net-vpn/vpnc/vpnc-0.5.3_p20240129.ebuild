@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	inherit vcs-snapshot
 	SRC_URI="https://api.github.com/repos/streambinder/vpnc/tarball/64468ff -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
 LICENSE="GPL-3"

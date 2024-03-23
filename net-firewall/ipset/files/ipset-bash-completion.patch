@@ -1,0 +1,11 @@
+--- a/utils/ipset_bash_completion/ipset	2024-03-09 12:53:38.756882196 -0500
++++ b/utils/ipset_bash_completion/ipset	2024-03-09 12:54:32.838917743 -0500
+@@ -1005,7 +1005,7 @@ if ((got_bashcompl)); then
+ 	if ! declare -F _ipset_known_hosts &>/dev/null; then
+ 	eval '_ipset_known_hosts() { '$(declare -f _known_hosts_real | \
+ 		grep -v __ltrim_colon_completions | \
+-		grep -Ev "^_known_hosts_real.*$" | grep -Ev "^(\{|\})")'; }'
++		grep -Ev "^_known_hosts_real.*$" | grep -Ev "^(\{|\})")' }'
+ 	fi
+ fi
+ 

@@ -20,4 +20,7 @@
 		<flag name="syncft">Compile with Charm++ fault tolerance support</flag>
 		<flag name="tcp">Use TCP (instead of UPD) for socket communication</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">UIUC-PPL/charm</remote-id>
+	</upstream>
 </pkgmetadata>

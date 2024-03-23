@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/yakuake/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="absolute-position"
 
 # kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras

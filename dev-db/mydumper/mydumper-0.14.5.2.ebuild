@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
@@ -30,12 +30,11 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.13.1-atomic.patch" #654314
+
+	"${FILESDIR}"/${PN}-0.14-Do-not-overwrite-the-user-CFLAGS.patch
 )
 
 src_prepare() {
-	# respect user cflags; do not expand ${CMAKE_C_FLAGS} (!)
-	sed -i -e 's|-O3 -g -Werror|${CMAKE_C_FLAGS}|' CMakeLists.txt || die
-
 	# fix doc install path
 	sed -i -e "s|share/doc/mydumper|share/doc/${PF}|" docs/CMakeLists.txt || die
 
@@ -43,6 +42,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855239
+	#
+	# Fixed upstream in git master:
+	# https://github.com/mydumper/mydumper/pull/1413
+	filter-lto
+
 	local mycmakeargs=(-DBUILD_DOCS=$(usex doc))
 
 	cmake_src_configure

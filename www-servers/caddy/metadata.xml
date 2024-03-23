@@ -19,6 +19,11 @@
       https://caddyserver.com/docs/modules/events.handlers.exec
       https://caddyserver.com/docs/caddyfile/options#event-options
     </flag>
+    <flag name="security">
+      Authentication, Authorization, and Accounting. LDAP, OAuth, SAML, MFA, 2FA, JWT etc..
+      https://caddyserver.com/docs/modules/security
+      https://github.com/greenpau/caddy-security
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">caddyserver/caddy</remote-id>

@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,7 +56,7 @@ endif()
+ add_subdirectory(src)
+ 
+ ## Build tests
+-if(${LIBRARY_TYPE} STREQUAL SHARED)
++if(WITH_TESTS)
+   add_subdirectory(test)
+ endif()
+ 

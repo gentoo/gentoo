@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A fast WebAssembly interpreter and the most universal WASM runtime"
 HOMEPAGE="https://github.com/wasm3/wasm3/"
@@ -25,6 +25,10 @@ SLOT="0"
 DOCS=( README.md docs )
 
 src_configure() {
+	# bug https://bugs.gentoo.org/925933
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local -a mycmakeargs=(
 		-DBUILD_WASI=simple
 	)

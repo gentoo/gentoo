@@ -14,7 +14,4 @@
 		<remote-id type="cpe">cpe:/a:golang:go</remote-id>
 		<remote-id type="github">golang/go</remote-id>
 	</upstream>
-	<use>
-		<flag name="system-bootstrap">Bootstrap using installed go compiler</flag>
-	</use>
 </pkgmetadata>

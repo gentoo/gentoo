@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 arm64 ~riscv"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
@@ -27,9 +27,6 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		app-admin/ansible
-		$(python_gen_cond_dep '
-			app-admin/salt[${PYTHON_USEDEP}]
-		' python3_10)
 		dev-python/paramiko[${PYTHON_USEDEP}]
 		dev-python/pywinrm[${PYTHON_USEDEP}]
 	)

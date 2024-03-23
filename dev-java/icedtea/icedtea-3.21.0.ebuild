@@ -203,7 +203,9 @@ src_configure() {
 	# ${FILESDIR} directly.
 	mkdir -v gentoo_patches || die
 	cp -v "${FILESDIR}/openjdk-8-hotspot-arrayallocator.patch" gentoo_patches || die
+	cp -v "${FILESDIR}/openjdk-8-make-4.4.patch" gentoo_patches || die
 	export DISTRIBUTION_PATCHES="gentoo_patches//openjdk-8-hotspot-arrayallocator.patch"
+	DISTRIBUTION_PATCHES+=" gentoo_patches//openjdk-8-make-4.4.patch"
 
 	# For bootstrap builds as the sandbox control file might not yet exist.
 	addpredict /proc/self/coredump_filter #nowarn

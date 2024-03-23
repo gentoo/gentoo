@@ -11,12 +11,12 @@ SRC_URI="https://download.linuxsampler.org/packages/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="alsa doc jack lv2 sf2 sqlite"
 REQUIRED_USE="|| ( alsa jack )"
 
 RDEPEND="
-	media-libs/libgig
+	>=media-libs/libgig-4.4.0
 	media-libs/libsndfile[-minimal]
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )

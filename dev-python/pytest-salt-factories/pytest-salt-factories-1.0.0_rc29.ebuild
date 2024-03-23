@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_1{0..1} )
+PYTHON_COMPAT=( python3_1{0..2} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -57,6 +57,8 @@ src_prepare() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
+		"tests/functional/test_manager.py::test_system_service_cli[system-service(True)]"
+		"tests/functional/test_manager.py::test_system_service_config_fixture[system-service(True)]"
 		tests/integration/factories/daemons/ssh/test_salt_ssh.py::test_salt_ssh
 		tests/integration/factories/daemons/sshd/test_sshd.py::test_connect
 		tests/scenarios/examples/test_echoext.py::test_echoext

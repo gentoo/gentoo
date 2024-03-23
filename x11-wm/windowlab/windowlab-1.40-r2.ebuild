@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="small and simple window manager of novel design"
-HOMEPAGE="http://www.nickgravgaard.com/windowlab/"
+DESCRIPTION="Small and simple window manager of novel design"
+HOMEPAGE="https://github.com/nick-gravgaard/windowlab"
 SRC_URI="http://www.nickgravgaard.com/${PN}/${P}.tar"
 
 LICENSE="GPL-2"

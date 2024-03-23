@@ -1,0 +1,59 @@
+From 40654399bd090dda20750b184eb6b15bc615a5dc Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 25 Feb 2024 16:24:25 +0000
+Subject: [PATCH] Fix cross-compiling and don't treat x86 as the default case
+
+If you set arch-specific CFLAGS, then ffmpeg's configure script may
+fail when it tries to use these flags against the build host's compiler.
+
+Also use CMAKE_SYSTEM_PROCESSOR to set up cross-compiling without
+relying on any custom variables. ffmpeg normalises its --arch option and
+will accept just about any string that you'll likely throw at it.
+
+diff --git a/cmake/ffmpeg_cbs.cmake b/cmake/ffmpeg_cbs.cmake
+index 573bec0..4a75e1a 100644
+--- a/cmake/ffmpeg_cbs.cmake
++++ b/cmake/ffmpeg_cbs.cmake
+@@ -30,23 +30,30 @@ if (WIN32)
+     set(LEADING_SH_COMMAND sh)
+ endif ()
+ 
+-if (CROSS_COMPILE_ARM)
+-    set(FFMPEG_EXTRA_CONFIGURE
+-            --arch=aarch64
+-            --enable-cross-compile)
++string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} arch)
++
++if (${arch} STREQUAL "aarch64" OR ${arch} STREQUAL "arm64")
+     set(CBS_ARCH_PATH arm)
+-elseif (CROSS_COMPILE_PPC)
+-    set(FFMPEG_EXTRA_CONFIGURE
+-            --arch=powerpc64le
+-            --enable-cross-compile)
++elseif (${arch} STREQUAL "ppc64le")
+     set(CBS_ARCH_PATH ppc)
+-else ()
++elseif (${arch} STREQUAL "amd64" OR ${arch} STREQUAL "x86_64")
+     set(CBS_ARCH_PATH x86)
++else ()
++    message(FATAL_ERROR "Unsupported system processor:" ${CMAKE_SYSTEM_PROCESSOR})
++endif ()
++
++if (CMAKE_CROSSCOMPILING)
++    set(FFMPEG_EXTRA_CONFIGURE --arch=${arch} --enable-cross-compile)
+ endif ()
+ 
+ # The generated config.h needs to have `CONFIG_CBS_` flags enabled (from `--enable-bsfs`)
+ execute_process(
+         COMMAND ${LEADING_SH_COMMAND} ./configure
++            --cc=${CMAKE_C_COMPILER}
++            --cxx=${CMAKE_CXX_COMPILER}
++            --ar=${CMAKE_AR}
++            --ranlib=${CMAKE_RANLIB}
++            --optflags=${CMAKE_C_FLAGS}
+             --disable-all
+             --disable-autodetect
+             --disable-iconv
+-- 
+2.43.2
+

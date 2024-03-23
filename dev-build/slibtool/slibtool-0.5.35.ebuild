@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 # git.foss21.org is the official repository per upstream
-DESCRIPTION="A skinny libtool implementation, written in C"
+DESCRIPTION="A strong libtool implementation, written in C"
 HOMEPAGE="https://git.foss21.org/slibtool"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
@@ -19,9 +19,12 @@ else
 	SRC_URI+=" verify-sig? ( https://dl.midipix.org/slibtool/${P}.tar.xz.sig )"
 
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+fi
 
-	BDEPEND="sys-devel/m4
-		verify-sig? ( sec-keys/openpgp-keys-midipix )"
+BDEPEND="sys-devel/m4"
+
+if [[ ${PV} != *9999 ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-midipix )"
 fi
 
 LICENSE="MIT"

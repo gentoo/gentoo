@@ -9,7 +9,7 @@ GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{10..11} )
 WANT_AUTOMAKE=none
 
-inherit autotools distutils-r1 perl-module systemd
+inherit autotools distutils-r1 libtool perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="https://www.net-snmp.org/"
@@ -122,6 +122,7 @@ src_prepare() {
 	default
 
 	eautoconf
+	elibtoolize
 }
 
 src_configure() {

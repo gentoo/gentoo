@@ -8,6 +8,7 @@
 	<use>
 		<flag name="glslang">Use <pkg>dev-util/glslang</pkg> to compile GLSL</flag>
 		<flag name="lcms">Add support for color management via <pkg>media-libs/lcms</pkg></flag>
+		<flag name="libdovi">Use <pkg>media-libs/libdovi</pkg> to read Dolby Vision metadata</flag>
 		<flag name="shaderc">Use <pkg>media-libs/shaderc</pkg> to compile GLSL</flag>
 		<flag name="xxhash">Use <pkg>dev-libs/xxhash</pkg> to speed up internal hashing</flag>
 	</use>

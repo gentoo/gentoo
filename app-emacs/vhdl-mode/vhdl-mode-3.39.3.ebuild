@@ -11,7 +11,7 @@ SRC_URI="https://iis-people.ee.ethz.ch/~zimmi/emacs/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 ELISP_REMOVE="site-start.*"
 PATCHES=( "${FILESDIR}/${PN}-info-dir-gentoo.patch" )

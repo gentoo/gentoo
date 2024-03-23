@@ -21,14 +21,14 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="+native-extensions"
 
 distutils_enable_tests pytest
 
 python_prepare_all() {
 	# don't enable coverage or other pytest settings
-	sed -i -e '/cov/d' pyproject.toml || die
+	sed -i -e '/cov/d' pyproject.toml pytest.ini || die
 	distutils-r1_python_prepare_all
 }
 

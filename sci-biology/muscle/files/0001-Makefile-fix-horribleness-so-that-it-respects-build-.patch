@@ -1,0 +1,49 @@
+From 9ef231e4612263524a4c41ecb841cdcf0e17d011 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 19 Mar 2024 23:44:43 -0400
+Subject: [PATCH] Makefile: fix horribleness so that it respects build system
+ environment
+
+Do not strip, that is portage's job. Respect $CXX, don't override use
+-O.
+---
+ Makefile | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index df16673..086aba3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,14 +19,10 @@ OS := $(shell uname)
+ 
+ CPPFLAGS := $(CPPFLAGS) -DNDEBUG -pthread
+ 
+-CXX := g++
+-ifeq ($(OS),Darwin)
+-	CXX := g++-11
+-endif
++CXX ?= g++
++CXXFLAGS := $(CXXFLAGS) -fopenmp -ffast-math
+ 
+-CXXFLAGS := $(CXXFLAGS) -O3 -fopenmp -ffast-math
+-
+-LDFLAGS := $(LDFLAGS) -O3 -fopenmp -pthread -lpthread ${LDFLAGS2}
++LDFLAGS := $(LDFLAGS) -fopenmp -pthread -lpthread ${LDFLAGS2}
+ 
+ HDRS := $(shell echo *.h)
+ OBJS := $(shell echo *.cpp | sed "-es/^/$(OS)\//" | sed "-es/ / $(OS)\//g" | sed "-es/\.cpp/.o/g")
+@@ -35,10 +31,7 @@ SRCS := $(shell ls *.cpp *.h)
+ .PHONY: clean
+ 
+ $(OS)/muscle : gitver.txt $(OS)/ $(OBJS)
+-	$(CXX) $(LDFLAGS) $(OBJS) -o $@
+-
+-	# Warning: do not add -d option to strip, this is not portable
+-	strip $(OS)/muscle
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $@
+ 
+ gitver.txt : $(SRCS)
+ 	bash ./gitver.bash
+-- 
+2.43.2
+

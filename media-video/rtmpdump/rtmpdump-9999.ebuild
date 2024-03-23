@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -58,7 +58,6 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
-	use ssl && use !gnutls && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
 	default
 	multilib_copy_sources
 }

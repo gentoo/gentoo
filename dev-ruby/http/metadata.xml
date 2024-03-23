@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">tarcieri/http</remote-id>
+    <remote-id type="github">httprb/http</remote-id>
   </upstream>
 </pkgmetadata>

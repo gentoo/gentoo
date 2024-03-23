@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit libtool
 
 MY_PN="lib${PN}"
 MY_P="${MY_PN}-${PV}"
@@ -30,6 +32,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="test? ( iconv )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	# 1) gcp disabled for now to preserve MPL licence

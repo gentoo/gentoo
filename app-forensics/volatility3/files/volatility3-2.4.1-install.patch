@@ -1,0 +1,81 @@
+From b4c6b661f01fc3dde54362a4f55be4d89e4cc6e5 Mon Sep 17 00:00:00 2001
+From: Mike Auty <mike.auty@gmail.com>
+Date: Sun, 3 Sep 2023 21:11:36 +0100
+Subject: [PATCH] Core: Include only volatility3 in distributions packages
+Upstream: https://github.com/volatilityfoundation/volatility3/commit/b4c6b661f01fc3dde54362a4f55be4d89e4cc6e5
+
+Fixes #951
+--- a/setup.py
++++ b/setup.py
+@@ -40,7 +40,7 @@ def get_install_requires():
+     include_package_data=True,
+     exclude_package_data={"": ["development", "development.*"], "development": ["*"]},
+     packages=setuptools.find_namespace_packages(
+-        exclude=["development", "development.*"]
++        include=["volatility3"]
+     ),
+     entry_points={
+         "console_scripts": [
+From 05df365936a5965171632c7b0b0dbd1bee6c08a9 Mon Sep 17 00:00:00 2001
+From: Mike Auty <mike.auty@gmail.com>
+Date: Tue, 5 Sep 2023 18:23:48 +0100
+Subject: [PATCH] Core: Fix missing packages in setup.py
+Upstream: https://github.com/volatilityfoundation/volatility3/commit/05df365936a5965171632c7b0b0dbd1bee6c08a9
+
+Fixes #1002.
+--- a/setup.py
++++ b/setup.py
+@@ -12,7 +12,7 @@
+ 
+ def get_install_requires():
+     requirements = []
+-    with open("requirements-minimal.txt", "r", encoding = "utf-8") as fh:
++    with open("requirements-minimal.txt", "r", encoding="utf-8") as fh:
+         for line in fh.readlines():
+             stripped_line = line.strip()
+             if stripped_line == "" or stripped_line.startswith("#"):
+@@ -20,6 +20,7 @@ def get_install_requires():
+             requirements.append(stripped_line)
+     return requirements
+ 
++
+ setuptools.setup(
+     name="volatility3",
+     description="Memory forensics framework",
+@@ -39,9 +40,8 @@ def get_install_requires():
+     python_requires=">=3.7.0",
+     include_package_data=True,
+     exclude_package_data={"": ["development", "development.*"], "development": ["*"]},
+-    packages=setuptools.find_namespace_packages(
+-        include=["volatility3"]
+-    ),
++    packages=setuptools.find_namespace_packages(where="volatility3"),
++    package_dir={"": "volatility3"},
+     entry_points={
+         "console_scripts": [
+             "vol = volatility3.cli:main",
+From 803c56e3c4c6495b2725b77cc7d045e39c98a9bd Mon Sep 17 00:00:00 2001
+From: Mike Auty <mike.auty@gmail.com>
+Date: Tue, 5 Sep 2023 23:51:17 +0100
+Subject: [PATCH] Core: include the volatility3 package and all volatility3
+ subpackages
+Upstream: https://github.com/volatilityfoundation/volatility3/commit/803c56e3c4c6495b2725b77cc7d045e39c98a9bd
+
+--- a/setup.py
++++ b/setup.py
+@@ -37,11 +37,12 @@ def get_install_requires():
+         "Documentation": "https://volatility3.readthedocs.io/",
+         "Source Code": "https://github.com/volatilityfoundation/volatility3",
+     },
++    packages=setuptools.find_namespace_packages(
++        include=["volatility3", "volatility3.*"]
++    ),
++    package_dir={"volatility3": "volatility3"},
+     python_requires=">=3.7.0",
+     include_package_data=True,
+-    exclude_package_data={"": ["development", "development.*"], "development": ["*"]},
+-    packages=setuptools.find_namespace_packages(where="volatility3"),
+-    package_dir={"": "volatility3"},
+     entry_points={
+         "console_scripts": [
+             "vol = volatility3.cli:main",

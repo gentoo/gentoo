@@ -11,6 +11,6 @@ SRC_URI="https://github.com/atomicobject/${PN}/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 PATCHES=( "${FILESDIR}/${P}-cmake.patch" )

@@ -451,11 +451,11 @@ src_test() {
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
-	mkdir "${T}"/gnupg || die
+	mkdir "${T}"/gpg || die
 	local f
-	for f in S.gpg-agent{,.browser,.extra,.ssh}; do
-		printf "%%Assuan%%\nsocket=%s\n" "${T}/gnupg/${f}" \
-			> "test/lisp/gnus/mml-sec-resources/${f}" || die
+	for f in browser extra ssh; do
+		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
+			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
 	done
 
 	# See test/README for possible options

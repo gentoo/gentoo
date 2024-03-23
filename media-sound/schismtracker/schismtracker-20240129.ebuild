@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop xdg
+inherit desktop xdg
 
 DESCRIPTION="Free implementation of Impulse Tracker, a tool used to create high quality music"
 HOMEPAGE="http://schismtracker.org/"
@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 LGPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=media-libs/libsdl2-2.0.5[X]

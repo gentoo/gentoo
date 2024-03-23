@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit flag-o-matic autotools toolchain-funcs
 
 DESCRIPTION="Program and text file generation"
 HOMEPAGE="https://www.gnu.org/software/autogen/"
@@ -59,6 +59,9 @@ src_configure() {
 		export ag_cv_run_strcspn=no
 		export libopts_cv_with_libregex=yes
 	fi
+
+	# bug 920174
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
 
 	econf $(use_enable static-libs static)
 }

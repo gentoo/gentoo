@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 USE_RUBY="ruby31 ruby32 ruby33"
 
 # No, I am not calling ruby-ng
-inherit python-r1 toolchain-funcs multilib-minimal
+inherit flag-o-matic python-r1 toolchain-funcs multilib-minimal
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -54,6 +54,9 @@ src_prepare() {
 
 multilib_src_compile() {
 	tc-export AR CC PKG_CONFIG RANLIB
+
+	# bug 905711
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
 
 	local -x CFLAGS="${CFLAGS} -fno-semantic-interposition"
 

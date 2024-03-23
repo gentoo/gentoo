@@ -8,13 +8,13 @@ JAVA_PKG_IUSE="doc examples source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Ant-tasks to compile various source languages and produce executables"
-HOMEPAGE="http://ant-contrib.sourceforge.net/"
+HOMEPAGE="https://ant-contrib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.gz"
 S="${WORKDIR}/${P/_beta/b}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	>=dev-java/ant-1.10.14:0

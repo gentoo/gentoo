@@ -12,7 +12,4 @@
 		<bugs-to>https://github.com/netaddr/netaddr/issues</bugs-to>
 		<doc>https://netaddr.readthedocs.io/</doc>
 	</upstream>
-	<use>
-		<flag name="cli">Provide a command-line interface</flag>
-	</use>
 </pkgmetadata>

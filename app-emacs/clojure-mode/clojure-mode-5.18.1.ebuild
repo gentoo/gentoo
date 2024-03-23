@@ -11,15 +11,13 @@ SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64 ~x86"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 ~x86"
+RESTRICT="test"         # w/o lexical-binding needed by buttercup >=1.34, should be fixed in git.
 
 BDEPEND="
 	test? (
 		app-emacs/s
-		app-emacs/buttercup
 		app-emacs/paredit
 	)
 "
@@ -27,6 +25,4 @@ BDEPEND="
 DOCS=( README.md doc )
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	buttercup -L . -L test --traceback full || die
-}
+elisp-enable-tests buttercup test

@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
-	before xendomains xend sshd ntp-client ntpd nfs nfsmount rsyncd portmap dhcp
+	before xendomains xend sshd ntp-client ntpd nfs rsyncd portmap dhcp
 	need xencommons
 }
 

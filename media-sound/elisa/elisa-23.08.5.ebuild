@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/elisa/"
 
 LICENSE="LGPL-3+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="mpris semantic-desktop +vlc"
 
 RESTRICT="test"

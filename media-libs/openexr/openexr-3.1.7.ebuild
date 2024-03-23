@@ -25,7 +25,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch
+	"${FILESDIR}"/${PN}-3.1.7-musl-i386.patch
+)
+
 DOCS=( CHANGES.md GOVERNANCE.md PATENTS README.md SECURITY.md )
 
 src_prepare() {
