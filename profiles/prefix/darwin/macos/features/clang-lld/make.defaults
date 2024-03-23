@@ -3,5 +3,10 @@
 
 LD=ld64.lld
 
+# This is the sort of equivalent of -Wl,--as-needed
+# It's already set in profiles/prefix/darwin, but profiles/features/llvm
+# appends --as-needed to it, so here we set it back to the previous value
+LDFLAGS="-Wl,-dead_strip_dylibs"
+
 # Several packages fail to build without this
 lt_cv_apple_cc_single_mod=yes

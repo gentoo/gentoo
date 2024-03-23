@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of COLLECTD_PLUGINS USE_EXPAND flags.
@@ -104,7 +104,6 @@ rrdtool - Build the rrdtool output plugin (writes values to RRD-files)
 sensors - Build the sensors input plugin (reads hardware sensors from lm-sensors)
 serial - Build the serial input plugin (collects the traffic on serial interfaces)
 sigrok - Build the sigrok input plugin (reads measurements from any supported hardware from sigrok project)
-slurm - Build the slurm input plugin (collects metrics from the SLURM workload manager)
 smart - Build the S.M.A.R.T input plugin (collects S.M.A.R.T statistics from disk drives)
 snmp - Build the snmp input plugin (reads values from network devices using SNMP)
 snmp_agent - Build an input plugin which implements an SNMP AgentX subagent that receives and handles queries from SNMP master agent and returns configured metrics

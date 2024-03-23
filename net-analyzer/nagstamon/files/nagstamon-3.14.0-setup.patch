@@ -1,0 +1,24 @@
+--- a/setup.py	2023-01-29 09:29:13.885165525 +0100
++++ b/setup.py	2023-01-29 09:30:32.585630680 +0100
+@@ -45,6 +45,6 @@
+ #VERSION = AppInfo.VERSION.replace('-', '.') + '.' + DIST + DIST_VERSION
+ VERSION = AppInfo.VERSION.replace('-', '.')
+-NAGSTAMON_SCRIPT = 'nagstamon.py'
++NAGSTAMON_SCRIPT = 'nagstamon'
+ 
+ from setuptools import setup
+ 
+@@ -120,12 +120,7 @@
+                 'Nagstamon.Servers',
+                 'Nagstamon.Servers.Alertmanager',
+                 'Nagstamon.Servers.Centreon',
+-                'Nagstamon.thirdparty',
+-                'Nagstamon.thirdparty.Xlib',
+-                'Nagstamon.thirdparty.Xlib.ext',
+-                'Nagstamon.thirdparty.Xlib.protocol',
+-                'Nagstamon.thirdparty.Xlib.support',
+-                'Nagstamon.thirdparty.Xlib.xobject'],
++                'Nagstamon.thirdparty'],
+       package_dir={'Nagstamon': 'Nagstamon'},
+       package_data={'Nagstamon': ['resources/*.*',
+                                   'resources/qui/*',

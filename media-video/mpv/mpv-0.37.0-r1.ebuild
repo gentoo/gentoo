@@ -116,7 +116,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
-	dvb? ( virtual/linuxtv-dvb-headers )
+	dvb? ( sys-kernel/linux-headers )
 	nvenc? ( media-libs/nv-codec-headers )
 	wayland? ( dev-libs/wayland-protocols )
 "

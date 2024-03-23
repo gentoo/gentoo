@@ -18,7 +18,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 IUSE="+launcher"
 

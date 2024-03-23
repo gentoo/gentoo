@@ -23,7 +23,7 @@ else
 	else
 		die "could not generate SRC_URI"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3+"

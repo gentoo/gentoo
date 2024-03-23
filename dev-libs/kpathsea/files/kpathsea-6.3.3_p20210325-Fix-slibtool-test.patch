@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/924405
+https://github.com/TeX-Live/texlive-source/pull/65
+https://github.com/TeX-Live/texlive-source/commit/9c4aec9b1b85f3f0e336914d65d55ca6263c5526
+
+From 9c4aec9b1b85f3f0e336914d65d55ca6263c5526 Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Thu, 22 Feb 2024 23:41:54 +0000
+Subject: [PATCH] make kpsereadlink.test generic, instead of depending on
+ libtool
+
+git-svn-id: svn://tug.org/texlive/trunk/Build/source@70081 c570f23f-e606-0410-a88d-b1316a301751
+---
+ texk/kpathsea/tests/kpsereadlink.test | 17 +++++++++++++----
+ 1 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/tests/kpsereadlink.test b/tests/kpsereadlink.test
+index 3b3570aa8d..2e1a852494 100755
+--- a/tests/kpsereadlink.test
++++ b/tests/kpsereadlink.test
+@@ -1,14 +1,23 @@
+ #! /bin/sh -vx
+ # $Id$
+-# Copyright 2017 Karl Berry <tex-live@tug.org>
++# Copyright 2017-2024 Karl Berry <tex-live@tug.org>
+ # Copyright 2010 Peter Breitenlohner <tex-live@tug.org>
+ # You may freely use, modify and/or distribute this file.
+ 
++test -n "$LN_S" || LN_S="ln -s" # standalone testing
++
+ test "x$LN_S" = 'xln -s' || exit 77
+ 
+-./kpsereadlink $LT_OBJDIR/libkpathsea.lai && exit 1
++rm -f readlink_test_file readlink_test_symlink
++
++touch readlink_test_file
++
++$LN_S readlink_test_file readlink_test_symlink || exit 1
++
++./kpsereadlink readlink_test_file && exit 1
+ 
+-link=`./kpsereadlink $LT_OBJDIR/libkpathsea.la` || exit 1
++link=`./kpsereadlink readlink_test_symlink` || exit 1
+ 
+-test "x$link" = x../libkpathsea.la || exit 1
++test "x$link" = xreadlink_test_file || exit 1
+ 
++rm -f readlink_test_file readlink_test_symlink

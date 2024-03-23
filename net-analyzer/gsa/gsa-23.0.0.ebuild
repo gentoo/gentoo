@@ -16,7 +16,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="AGPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 BDEPEND="
 	>=net-libs/nodejs-18.0.0[ssl]

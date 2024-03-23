@@ -6,8 +6,8 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
-		<email>waebbl-gentoo@posteo.net</email>
-		<name>Bernd Waibel</name>
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
 	</maintainer>
 	<use>
 		<flag name="logging">Enable logging through <pkg>dev-libs/spdlog</pkg></flag>

@@ -21,12 +21,8 @@
 		<flag name="theme-manager">Build the theme manager (mono)</flag>
 	</use>
 	<upstream>
-		<maintainer status="active">
-			<email>tingping@tingping.se</email>
-			<name>TingPing</name>
-		</maintainer>
 		<bugs-to>https://github.com/hexchat/hexchat/issues</bugs-to>
-		<doc lang="en">http://hexchat.readthedocs.org/en/latest</doc>
+		<doc lang="en">https://hexchat.readthedocs.io/en/latest</doc>
 		<remote-id type="github">hexchat/hexchat</remote-id>
 	</upstream>
 </pkgmetadata>

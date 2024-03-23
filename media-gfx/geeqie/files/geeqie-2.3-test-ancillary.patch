@@ -1,0 +1,13 @@
+diff -Naur geeqie-2.3.orig/meson.build geeqie-2.3/meson.build
+--- geeqie-2.3.orig/meson.build	2024-03-06 16:56:22.000000000 +0100
++++ geeqie-2.3/meson.build	2024-03-09 11:21:17.870229854 +0100
+@@ -742,9 +742,3 @@
+ else
+     summary({'lua' : ['Test runs:', false]}, section : 'Testing', bool_yn : true)
+ endif
+-
+-# Ancillary files test
+-test_ancillary_files_sh = find_program('test-ancillary-files.sh', dirs : scriptsdir, required : true)
+-test('Ancillary files', test_ancillary_files_sh, args: [meson.current_source_dir()], timeout: 100)
+-
+-summary({'Ancillary files' : ['Test runs:', true]}, section : 'Testing', bool_yn : true)

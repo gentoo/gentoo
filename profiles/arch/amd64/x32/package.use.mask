@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Maciej Barć <xgqt@gentoo.org> (2023-09-17)
@@ -40,11 +40,12 @@ app-i18n/fcitx-libpinyin dictionary-manager
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
 games-util/lgogdownloader gui
-kde-apps/kde-apps-meta:5 pim
-kde-apps/kdenetwork-meta:5 bittorrent telepathy
+kde-apps/kde-apps-meta pim
+kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra:5 pim
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive share
+kde-plasma/plasma-nm openconnect
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth

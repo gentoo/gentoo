@@ -6,7 +6,7 @@
 
 depend() {
 	need localmount
-	use net netmount nfsmount alsasound esound pulseaudio
+	use net netmount alsasound esound pulseaudio
 	config ${CFGFILE}
 }
 

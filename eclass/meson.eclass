@@ -41,9 +41,9 @@ esac
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+inherit flag-o-matic multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
-BDEPEND=">=dev-build/meson-1.2.1
+BDEPEND=">=dev-build/meson-1.2.3
 	${NINJA_DEPEND}
 	dev-build/meson-format-array
 "
@@ -277,14 +277,43 @@ meson_feature() {
 	usex "$1" "-D${2-$1}=enabled" "-D${2-$1}=disabled"
 }
 
-# @FUNCTION: meson_src_configure
-# @USAGE: [extra meson arguments]
+# @FUNCTION: setup_meson_src_configure
 # @DESCRIPTION:
-# This is the meson_src_configure function.
-meson_src_configure() {
-	debug-print-function ${FUNCNAME} "$@"
+# Calculate the command line which meson should use, and other relevant
+# variables. Invoke via "${MESONARGS[@]}" in the calling environment.
+# This function is called from meson_src_configure.
+setup_meson_src_configure() {
+	MESONARGS=()
+	if tc-is-lto; then
+		# We want to connect -flto in *FLAGS to the dedicated meson option,
+		# to ensure that meson has visibility into what the user set. Although
+		# it is unlikely projects will check `get_option('b_lto')` and change
+		# their behavior, individual targets which are broken with LTO can
+		# disable it per target. Injecting via *FLAGS means that meson cannot
+		# strip -flto from that target.
+		MESONARGS+=( -Db_lto=true )
 
-	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+		# respect -flto value, e.g. -flto=8, -flto=thin
+		local v=$(get-flag flto)
+		case ${v} in
+			thin)
+				MESONARGS+=( -Db_lto_mode=thin )
+				;;
+			''|*[!0-9]*)
+				;;
+			*)
+				MESONARGS+=( -Db_lto_threads=${v} )
+				;;
+		esac
+		# finally, remove it from *FLAGS to avoid passing it:
+		# - twice, with potentially different values
+		# - on excluded targets
+		filter-lto
+	else
+		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
+		# enabled via setting *FLAGS appropriately.
+		MESONARGS+=( -Db_lto=false )
+	fi
 
 	local BUILD_CFLAGS=${BUILD_CFLAGS}
 	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
@@ -314,8 +343,7 @@ meson_src_configure() {
 		: "${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}"
 	fi
 
-	local mesonargs=(
-		meson setup
+	MESONARGS+=(
 		--libdir "$(get_libdir)"
 		--localstatedir "${EPREFIX}/var/lib"
 		--prefix "${EPREFIX}/usr"
@@ -335,25 +363,21 @@ meson_src_configure() {
 		# an upstream development matter. bug #754279.
 		-Dwerror=false
 
-		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
-		# enabled via setting *FLAGS appropriately.
-		-Db_lto=false
+		"${ltoflags[@]}"
 	)
 
 	if [[ -n ${EMESON_BUILDTYPE} ]]; then
-		mesonargs+=( --buildtype "${EMESON_BUILDTYPE}" )
+		MESONARGS+=( -Dbuildtype="${EMESON_BUILDTYPE}" )
 	fi
 
 	if tc-is-cross-compiler; then
-		mesonargs+=( --cross-file "$(_meson_create_cross_file)" )
+		MESONARGS+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
-
-	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
 
 	# Handle quoted whitespace
 	eval "local -a MYMESONARGS=( ${MYMESONARGS} )"
 
-	mesonargs+=(
+	MESONARGS+=(
 		# Arguments from ebuild
 		"${emesonargs[@]}"
 
@@ -362,12 +386,6 @@ meson_src_configure() {
 
 		# Arguments from user
 		"${MYMESONARGS[@]}"
-
-		# Source directory
-		"${EMESON_SOURCE:-${S}}"
-
-		# Build directory
-		"${BUILD_DIR}"
 	)
 
 	# Used by symbolextractor.py
@@ -375,17 +393,38 @@ meson_src_configure() {
 	tc-export NM
 	tc-getPROG READELF readelf >/dev/null
 
+	# https://bugs.gentoo.org/721786
+	export BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
+	export BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
+}
+
+# @FUNCTION: meson_src_configure
+# @USAGE: [extra meson arguments]
+# @DESCRIPTION:
+# This is the meson_src_configure function.
+meson_src_configure() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+
+	BUILD_DIR="${BUILD_DIR:-${WORKDIR}/${P}-build}"
+
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 
-	# https://bugs.gentoo.org/721786
-	local -x BOOST_INCLUDEDIR="${BOOST_INCLUDEDIR-${EPREFIX}/usr/include}"
-	local -x BOOST_LIBRARYDIR="${BOOST_LIBRARYDIR-${EPREFIX}/usr/$(get_libdir)}"
-
 	(
+		setup_meson_src_configure "$@"
+		MESONARGS+=(
+			# Source directory
+			"${EMESON_SOURCE:-${S}}"
+
+			# Build directory
+			"${BUILD_DIR}"
+		)
+
 		export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
-		echo "${mesonargs[@]}" >&2
-		"${mesonargs[@]}"
+		echo meson setup "${MESONARGS[@]}" >&2
+		meson setup "${MESONARGS[@]}"
 	) || die
 }
 

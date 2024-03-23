@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc64 ~riscv ~x86"
 
 PATCHES=(
 	"${FILESDIR}/asciinema-2.2.0-setup.patch"

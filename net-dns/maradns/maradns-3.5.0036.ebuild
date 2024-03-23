@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit python-any-r1 systemd toolchain-funcs
+inherit flag-o-matic python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="A security-aware DNS server"
 HOMEPAGE="https://maradns.samiam.org"
@@ -18,17 +18,23 @@ IUSE="examples"
 
 BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl"
-DEPEND="
+RDEPEND="
 	acct-group/maradns
 	acct-user/duende
 	acct-user/maradns"
-RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.5.0022-flags.patch
+	"${FILESDIR}"/${PN}-3.5.0036-flags.patch
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861293
+	# https://github.com/samboy/MaraDNS/discussions/124
+	#
+	# should be fixed in git master; try removing this on the next bump
+	filter-lto
+
 	tc-export CC
 	./configure --ipv6 || die "Failed to configure"
 }

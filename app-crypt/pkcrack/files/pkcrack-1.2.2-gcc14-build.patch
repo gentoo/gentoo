@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/924227
+--- a/src/zdmain.c
++++ b/src/zdmain.c
+@@ -53,7 +53,7 @@ char *c;
+         break;
+     default:
+         fprintf( stderr, "Usage: %s {<password> | <key0> <key1> <key2>} <cryptedzipfile> <plainzipfile>\n", argv[0] );
+-        return;
++        return 0;
+     }
+ 
+     zipdecrypt( argv[argc-2], argv[argc-1], key0, key1, key2 );

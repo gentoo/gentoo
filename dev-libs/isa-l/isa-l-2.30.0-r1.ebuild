@@ -33,6 +33,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.30.0_fix-shebang.patch
 	"${FILESDIR}"/${PN}-2.30.0_makefile-no-D.patch
 	"${FILESDIR}"/${PN}-2.30.0_makefile-x86.patch
 )

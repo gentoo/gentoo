@@ -45,7 +45,7 @@ SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 lto pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 RESTRICT="!test? ( test )"
 

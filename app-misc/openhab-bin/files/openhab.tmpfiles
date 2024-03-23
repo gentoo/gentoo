@@ -1,0 +1,8 @@
+# OpenHAB, or rather jrxtx, a fork of rxtx used by OpenHAB, require write access to
+# /run/lock to access devices on serial ports.
+# See also
+# - https://bugs.gentoo.org/416439
+# - https://bugs.gentoo.org/892517
+
+#Type  Path                           Mode User Group Age Argument
+A+     /run/lock                      -    -    -     -   u:openhab:rwx

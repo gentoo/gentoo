@@ -275,6 +275,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #855233 (MDEV-11914, MDEV-25633) at least
+	filter-lto
 	# bug 508724 mariadb cannot use ld.gold
 	tc-ld-disable-gold
 	# Bug #114895, bug #110149

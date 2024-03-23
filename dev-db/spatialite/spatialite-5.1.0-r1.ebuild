@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 MY_PN="lib${PN}"
 MY_P="${MY_PN}-${PV}"
 
@@ -30,6 +32,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="test? ( iconv )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	# 1) gcp disabled for now to preserve MPL licence

@@ -1,0 +1,34 @@
+From 45044252aaf73262cd46443acd049e7afcdf072b Mon Sep 17 00:00:00 2001
+From: Thomas Perl <m@thp.io>
+Date: Sat, 2 Dec 2023 18:46:06 +0100
+Subject: [PATCH] Fix build error with Qt >= 6.5 (fixes #128)
+
+--- a/src/qpython_priv.cpp
++++ b/src/qpython_priv.cpp
+@@ -405,8 +405,25 @@ pyotherside_QObjectMethod_call(PyObject *callable_object, PyObject *args, PyObje
+             }
+ 
+             QVariant result;
++#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
++            QGenericReturnArgument returnArg = Q_RETURN_ARG(QVariant, result);
++#else
++            /**
++             * Starting with Qt 6.5, Q_RETURN_ARG() expands to a QMetaMethodReturnArgument,
++             * whereas previously it returned a QGenericReturnArgument. Since we are using
++             * the old, deprecated QMetaMethod::invoke() functions, and those take a
++             * QGenericReturnArgument and not a QMetaMethodReturnArgument, we need to
++             * create the QGenericReturnArgument ourselves by emulating what Q_RETURN_ARG()
++             * does in old Qt versions before 6.5.
++             *
++             * See also:
++             * https://bugreports.qt.io/browse/QTBUG-113147
++             * https://github.com/thp/pyotherside/issues/128
++             **/
++            QGenericReturnArgument returnArg {QT_STRINGIFY(QVariant), &result};
++#endif
+             if (method.invoke(o, Qt::DirectConnection,
+-                    Q_RETURN_ARG(QVariant, result), genericArguments.value(0),
++                    returnArg, genericArguments.value(0),
+                     genericArguments.value(1), genericArguments.value(2),
+                     genericArguments.value(3), genericArguments.value(4),
+                     genericArguments.value(5), genericArguments.value(6),

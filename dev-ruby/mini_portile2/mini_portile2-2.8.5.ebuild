@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/flavorjones/mini_portile"
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
-IUSE=""
+IUSE="test"
 
 BDEPEND="test? ( dev-build/cmake )"
 
@@ -23,6 +23,13 @@ ruby_add_bdepend "test? (
 	dev-ruby/net-ftp
 	dev-ruby/webrick
 )"
+
+all_ruby_prepare() {
+	# Avoid tests that expect gcc to be the main compiler, which we
+	# cannot guarantee.
+	sed -e '/test_configure_defaults_with/askip("Requires gcc to be the C/C++ compiler.")' \
+		-i test/test_cmake.rb || die
+}
 
 each_ruby_test() {
 	${RUBY} -w -W2 -I. -Ilib -e 'Dir["test/test_*.rb"].map{|f| require f}' || die

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake desktop xdg
+inherit cmake desktop flag-o-matic xdg
 
 DESCRIPTION="FastTracker 2 inspired music tracker"
 HOMEPAGE="https://milkytracker.titandemo.org/"
@@ -35,6 +35,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860870
+	# https://github.com/milkytracker/MilkyTracker/issues/340
+	filter-lto
+
 	local mycmakeargs=(
 		$(cmake_use_find_package alsa ALSA)
 		$(cmake_use_find_package jack JACK)

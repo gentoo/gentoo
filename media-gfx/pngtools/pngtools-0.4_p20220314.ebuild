@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_COMMIT="1ccca3a0f3f6882661bbafbfb62feb774ca195d1"
 DESCRIPTION="A series of tools for the PNG image format"
@@ -28,6 +28,15 @@ src_prepare() {
 	default
 
 	eautoreconf
+}
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/875371
+	# https://github.com/mikalstill/pngtools/issues/21
+	filter-lto
+
+	default
 }
 
 src_install() {

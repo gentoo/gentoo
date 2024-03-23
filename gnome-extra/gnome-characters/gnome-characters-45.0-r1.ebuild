@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/CharacterMap"
 
 LICENSE="GPL-2+ BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

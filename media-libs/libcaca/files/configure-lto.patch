@@ -1,0 +1,44 @@
+https://github.com/cacalabs/libcaca/pull/76
+
+[Modified to just save/restore flags.]
+
+From 07cb730bf3dc49170f0c387d9edcf5537a4e26b6 Mon Sep 17 00:00:00 2001
+From: kxxt <rsworktech@outlook.com>
+Date: Wed, 21 Jun 2023 00:06:04 +0800
+Subject: [PATCH] Disable LTO when checking for fsin/fcos/fldln2/...
+
+LTO might interfere with the instruction detection and produce false positives.
+(The conftest.c compiles with `-flto=auto` but fails without it)
+
+The build for riscv64 arch linux fails because of this:
+https://archriscv.felixc.at/.status/log.htm?url=logs/libcaca/libcaca-0.99.beta20-2.log
+
+This PR fixes it.
+---
+ configure.ac | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 27b8d5b4..ee38ead3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -145,6 +145,9 @@ AC_COMPILE_IFELSE(
+   AC_DEFINE(HAVE_SLEEP, 1, [Define to 1 if you have the ‘Sleep’ function.])],
+  [AC_MSG_RESULT(no)])
+ 
++OLD_CFLAGS="${CFLAGS}" # Disable LTO when checking for the instructions
++CFLAGS="${CFLAGS} -fno-lto"
++
+ AC_MSG_CHECKING(for fsin/fcos)
+ AC_COMPILE_IFELSE(
+  [AC_LANG_PROGRAM(
+@@ -163,6 +166,8 @@ AC_COMPILE_IFELSE(
+   AC_DEFINE(HAVE_FLDLN2, 1, [Define to 1 if you have the ‘fldln2’ and other floating point instructions.])],
+  [AC_MSG_RESULT(no)])
+ 
++CFLAGS="${OLD_CFLAGS}"
++
+ AC_CHECK_HEADERS(zlib.h)
+ AC_CHECK_LIB(z, gzopen, [ZLIB_LIBS="${ZLIB_LIBS} -lz"])
+ 
+

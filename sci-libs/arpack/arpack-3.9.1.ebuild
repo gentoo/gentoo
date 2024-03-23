@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools fortran-2 toolchain-funcs
+inherit autotools flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
@@ -39,6 +39,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/878139
+	# https://github.com/opencollab/arpack-ng/issues/451
+	#
+	# Only when building tests. Still this means we cannot test it.
+	filter-lto
+
 	econf \
 		--disable-static \
 		--enable-icb \

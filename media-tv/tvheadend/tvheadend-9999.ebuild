@@ -13,7 +13,6 @@ EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 
 IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
 
@@ -41,7 +40,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	dvb? ( virtual/linuxtv-dvb-headers )
+	dvb? ( sys-kernel/linux-headers )
 	ffmpeg? (
 		opus? ( media-libs/opus )
 		vpx? ( media-libs/libvpx )

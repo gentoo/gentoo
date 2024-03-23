@@ -1,9 +1,9 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic xdg
+inherit flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Linux Studio Plugins"
 HOMEPAGE="https://lsp-plug.in"
@@ -59,6 +59,17 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/875833
+	#
+	# Actually the whole thing is kind of a waste of time. It looks like
+	# programs use LDFLAGS, but libraries do not! So some things don't
+	# build with LTO, while other things don't build when LTO is enabled.
+	# Attempting to build with LTO is just a waste of time and cycles.
+	#
+	# This was reported upstream but the ticket closed. Abandon hope.
+	filter-lto
+
 	use doc && MODULES+="doc"
 	use jack && MODULES+=" jack"
 	use ladspa && MODULES+=" ladspa"
@@ -69,6 +80,9 @@ src_configure() {
 		FEATURES="${MODULES}" \
 		PREFIX="/usr" \
 		LIBDIR="/usr/$(get_libdir)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
 		CFLAGS_EXT="${CFLAGS}" \
 		CXXFLAGS_EXT="${CXXFLAGS}" \
 		LDFLAGS_EXT="$(raw-ldflags)" \
@@ -81,6 +95,9 @@ src_compile() {
 		FEATURES="${MODULES}" \
 		PREFIX="/usr" \
 		LIBDIR="/usr/$(get_libdir)" \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		LD="$(tc-getLD)" \
 		CFLAGS_EXT="${CFLAGS}" \
 		CXXFLAGS_EXT="${CXXFLAGS}" \
 		LDFLAGS_EXT="$(raw-ldflags)" \

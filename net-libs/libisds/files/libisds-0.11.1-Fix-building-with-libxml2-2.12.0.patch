@@ -1,0 +1,37 @@
+From 0539e12b3de14a77481bd3f87b301b7e7550172c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <petr.pisar@atlas.cz>
+Date: Thu, 23 Nov 2023 21:10:05 +0100
+Subject: [PATCH] Fix building with libxml2-2.12.0
+
+libxml-2.12.0 shuffled included header files.
+---
+ test/offline/isds_message_free.c | 1 +
+ test/simline/service.c           | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/test/offline/isds_message_free.c b/test/offline/isds_message_free.c
+index 3c2096e..f819d19 100644
+--- a/test/offline/isds_message_free.c
++++ b/test/offline/isds_message_free.c
+@@ -1,5 +1,6 @@
+ #include "../test.h"
+ #include "isds.h"
++#include <libxml/parser.h>
+ 
+ static int test_isds_message_free(struct isds_message **message) {
+     isds_message_free(message);
+diff --git a/test/simline/service.c b/test/simline/service.c
+index 533bed5..fea6e87 100644
+--- a/test/simline/service.c
++++ b/test/simline/service.c
+@@ -6,6 +6,7 @@
+ #include "system.h"
+ #include <string.h>
+ #include <stdint.h>     /* For intmax_t */
++#include <stdlib.h>     /* For free() */
+ #include <inttypes.h>   /* For PRIdMAX */
+ #include <ctype.h>      /* for isdigit() */
+ #include <libxml/parser.h>
+-- 
+2.43.0
+

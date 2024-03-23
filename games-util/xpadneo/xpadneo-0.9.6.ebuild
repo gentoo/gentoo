@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_MIN_CLONE_TYPE="single"
 else
 	SRC_URI="https://github.com/atar-axis/xpadneo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Advanced Linux Driver for Xbox One Wireless Controller"

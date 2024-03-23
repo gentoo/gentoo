@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,9 +35,8 @@ DEPEND=">=media-libs/gmmlib-22.3.14:=[${MULTILIB_USEDEP}]
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-21.4.2-Remove-unwanted-CFLAGS.patch
-	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
+	"${FILESDIR}"/${PN}-23.3.4-Remove-unwanted-CFLAGS.patch
+	"${FILESDIR}"/${PN}-23.3.4_testing_in_src_test.patch
 )
 
 multilib_src_configure() {
@@ -49,7 +48,7 @@ multilib_src_configure() {
 		-DMEDIA_RUN_TEST_SUITE=$(usex test)
 		-DBUILD_TYPE=Release
 		-DPLATFORM=linux
-		-DUSE_X11=$(usex X)
+		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DENABLE_NONFREE_KERNELS=$(usex redistributable)
 		-DLATEST_CPP_NEEDED=ON # Seems to be the best option for now
 	)

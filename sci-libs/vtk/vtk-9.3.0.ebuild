@@ -43,7 +43,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # TODO: Like to simplifiy these. Mostly the flags related to Groups.
 IUSE="all-modules boost cuda debug doc examples ffmpeg +freetype gdal gles2-only imaging
 	java las +logging mpi mysql odbc opencascade openmp openvdb pdal postgres python qt5
-	qt6 +rendering sdl tbb test +threads tk video_cards_nvidia views vtkm web"
+	qt6 +rendering sdl tbb test +threads tk video_cards_nvidia +views vtkm web"
 
 RESTRICT="!test? ( test )"
 
@@ -60,7 +60,7 @@ REQUIRED_USE="
 	sdl? ( rendering )
 	tk? ( python rendering )
 	web? ( python )
-	rendering? ( freetype )
+	rendering? ( freetype views )
 "
 
 # eigen, nlohmann_json, pegtl and utfcpp are referenced in the cmake files

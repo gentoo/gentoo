@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# 3.12 needs QTBUG-117979 (see also QTBUG-115512)
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
@@ -15,7 +14,7 @@ SRC_URI+="
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 IUSE="
@@ -111,6 +110,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.6.2-clang18.patch
 )
 
 python_check_deps() {

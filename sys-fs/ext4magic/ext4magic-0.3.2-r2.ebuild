@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2 FSFAP GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug +expert-mode file-attr"
 
 RDEPEND="app-arch/bzip2

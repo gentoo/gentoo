@@ -1,0 +1,40 @@
+https://github.com/oco2000/xfce4-kbdleds-plugin/pull/10
+https://github.com/oco2000/xfce4-kbdleds-plugin/commit/190434d67843c2ec392aa4a2cab46e8479d2d34d
+
+From 128f5cd7d042007d91b2ec7cb744e64a81468566 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 17 Mar 2024 08:37:11 -0700
+Subject: [PATCH] panel-plugin: add missing x11 linker flags
+
+The configure.ac.in has XDT_CHECK_LIBX11_REQUIRE, but fails to use the
+provided $(LIBX11_CFLAGS) and $(LIBX11_LIBS) variables in the build.
+
+While the build has -no-undefined GNU libtool will silently ignore that
+flag, but when built with slibtool instead it correctly passes
+-Wl,--no-undefined to the linker revealing this issue.
+
+Gentoo issue: https://bugs.gentoo.org/913681
+---
+ panel-plugin/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/panel-plugin/Makefile.am b/panel-plugin/Makefile.am
+index 5f355fe..bb3b225 100644
+--- a/panel-plugin/Makefile.am
++++ b/panel-plugin/Makefile.am
+@@ -22,6 +22,7 @@ libkbdleds_la_SOURCES = \
+ 	kbdleds-dialogs.h
+ 
+ libkbdleds_la_CFLAGS = \
++	$(LIBX11_CFLAGS) \
+ 	$(LIBXFCE4UTIL_CFLAGS) \
+ 	$(LIBXFCE4UI_CFLAGS) \
+ 	$(LIBXFCE4PANEL_CFLAGS) \
+@@ -35,6 +36,7 @@ libkbdleds_la_LDFLAGS = \
+        $(PLATFORM_LDFLAGS)
+ 
+ libkbdleds_la_LIBADD = \
++	$(LIBX11_LIBS) \
+ 	$(LIBXFCE4UTIL_LIBS) \
+ 	$(LIBXFCE4UI_LIBS) \
+ 	$(LIBXFCE4PANEL_LIBS)

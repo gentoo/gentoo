@@ -8,20 +8,31 @@
 	<use>
 		<flag name="ada">Build the ADA language (GNAT) frontend</flag>
 		<flag name="cet" restrict="&gt;=sys-devel/gcc-10">
-			Enable support for Intel Control Flow Enforcement Technology (CET).
+			Enable support for control flow hijacking protection.
 
-			Only effective on amd64/x86.
+			On amd64, this provides Intel Control Flow Enforcement Technology (CET).
+
+			On arm64, this provides Branch Target Identification (BTI)
+			and Pointer Authentication Code (PAC) support.
+
+			This is only effective on amd64 or arm64.
 
 			Only provides benefits on newer CPUs. For Intel, the CPU
 			must be at least as new as Tiger Lake. For AMD, it must be
 			at least as new as Zen 3. This is harmless on older CPUs,
 			but provides no benefit either.
 
-			When combined with USE=hardened, GCC will set -fcf-protection
+			For ARM64, PAC was introduced in armv8.3-a, and BTI was
+			introduced in armv8.5-a.
+
+			When combined with USE=hardened on amd64, GCC will set -fcf-protection
 			by default when building software. The effect is minimal
 			on systems which do not support it, other than a possible
 			small increase in codesize for the NOPs. The generated
 			code is therefore compatible with i686 at the earliest.
+
+			On arm64, GCC will set -mbranch-protection=standard by default
+			when building software.
 		</flag>
 		<flag name="d">Enable support for the D programming language</flag>
 		<flag name="debug">

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs udev
+inherit flag-o-matic toolchain-funcs udev
 
 MY_PV="$(ver_rs 2 -)"
 
@@ -36,6 +36,9 @@ src_prepare() {
 src_compile() {
 	local target
 	use pam || target="nopam"
+
+	# bug #863569
+	filter-lto
 
 	emake ${target} CC="$(tc-getCC)" OPT_FLAGS="${CFLAGS}"
 }

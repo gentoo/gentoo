@@ -48,12 +48,10 @@ OPTIONAL_DEPEND="
 	>=dev-python/xlrd-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
-	!x86? ( !hppa? (
-		$(python_gen_cond_dep '
-			dev-python/statsmodels[${PYTHON_USEDEP}]
-		' python3_{8..10} )
+	!arm? ( !hppa? ( !ppc? ( !x86? (
 		>=dev-python/scipy-1.8.1[${PYTHON_USEDEP}]
-	) )
+		dev-python/statsmodels[${PYTHON_USEDEP}]
+	) ) ) )
 	X? (
 		|| (
 			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
@@ -64,6 +62,7 @@ OPTIONAL_DEPEND="
 	)
 "
 DEPEND="
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23.2[${PYTHON_USEDEP}]
 "
 COMMON_DEPEND="
@@ -74,7 +73,7 @@ COMMON_DEPEND="
 BDEPEND="
 	${COMMON_DEPEND}
 	>=dev-build/meson-1.2.1
-	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
+	>=dev-python/cython-3.0.5[${PYTHON_USEDEP}]
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	test? (
 		${VIRTUALX_DEPEND}
@@ -173,7 +172,17 @@ python_test() {
 		# requires -Werror
 		tests/tslibs/test_to_offset.py::test_to_offset_lowercase_frequency_deprecated
 		tests/tslibs/test_to_offset.py::test_to_offset_uppercase_frequency_deprecated
+
+		# assumes that it will fail due to -mfpmath=387 on 32-bit arches,
+		# so it XPASS-es in every other scenario
+		tests/tools/test_to_timedelta.py::TestTimedeltas::test_to_timedelta_float
 	)
+
+	if ! has_version "dev-python/scipy[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/plotting/test_misc.py::test_savefig
+		)
+	fi
 
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die

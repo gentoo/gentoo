@@ -93,8 +93,6 @@ src_prepare() {
 	sed 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' -i Makefile.am Makefile.in \
 		|| die "examples sed failed"
 
-	sed -e 's/sleep 2//' -i configure || die
-
 	eautoreconf # For configure.ac patching
 }
 

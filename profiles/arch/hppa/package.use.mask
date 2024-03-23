@@ -41,7 +41,6 @@ media-libs/libplacebo glslang shaderc vulkan
 # Vulkan is not available on hppa.
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
-<dev-qt/qtwayland-5.15.11:5 vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch

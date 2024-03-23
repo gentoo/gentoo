@@ -1,15 +1,23 @@
-Rebased on 2024-01-20, version 3.5.0036
-
 From 15470045421448a7a6813e2a4a96e18bba3b0aa4 Mon Sep 17 00:00:00 2001
 From: Victor Kustov <ktrace@yandex.ru>
 Date: Wed, 27 Jul 2022 21:28:31 +0300
 Subject: [PATCH] 2nd
 
+---
+ build/Makefile.linux | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
 diff --git a/build/Makefile.linux b/build/Makefile.linux
-index 9d8117e..22a7518 100644
+index 965c7fb..572dccc 100644
 --- a/build/Makefile.linux
 +++ b/build/Makefile.linux
-@@ -29,29 +29,27 @@ Q="DEFINES=-DSELECT_PROBLEM"
+@@ -24,32 +24,32 @@ EXECS=server/maradns
+ # end the Solaris section
+ # Non-Solaris version of "M"
+ V="VERSION=$(VERSION)"
+-Q="DEFINES=-DSELECT_PROBLEM"
++Q="$(LDFLAGS) DEFINES=-DSELECT_PROBLEM"
+ 
  # Debug
  
  FLAGS = -O2 -Wall -DSELECT_PROBLEM
@@ -26,9 +34,7 @@ index 9d8117e..22a7518 100644
 -	make $(M) $(V) COMPILED=\"$(COMPILED)\" ; \
 -	cd ../tools ; make $(M) ; \
 -	cd ../deadwood-*/src/ ; make FLAGS=-O2 ; \
--	cd ../tools/blockhash ; make CFLAGS=-O2 ; \
--	cd ../../../coLunacyDNS/ ; make ; \
--	cd ../tcp ; make $(M) $(V) ; cat ../00README.FIRST
+-	cd ../../tcp ; make $(M) $(V) ; cat ../00README.FIRST
 +	cd libs ; $(MAKE) $(M) ; cd ../dns ; $(MAKE) $(M) ; \
 +	cd ../rng ; $(MAKE) $(M) ; cd ../parse ; $(MAKE) $(M) ; \
 +	cd ../qual ; $(MAKE) $(M) ; cd ../server ; \
@@ -54,3 +60,6 @@ index 9d8117e..22a7518 100644
  
  clean:
  	rm -f $(OBJECTS) core $(EXECS) ; \
+-- 
+2.35.1
+

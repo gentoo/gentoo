@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit edo bash-completion-r1 flag-o-matic python-any-r1 toolchain-funcs
+inherit edo bash-completion-r1 python-any-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
@@ -40,7 +40,6 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/ninja-cflags.patch
-	"${FILESDIR}"/ninja-cppflags.patch
 )
 
 run_for_build() {
@@ -48,7 +47,7 @@ run_for_build() {
 		local -x AR=$(tc-getBUILD_AR)
 		local -x CXX=$(tc-getBUILD_CXX)
 		local -x CFLAGS=
-		local -x CXXFLAGS=${BUILD_CXXFLAGS}
+		local -x CXXFLAGS="${BUILD_CXXFLAGS} -D_FILE_OFFSET_BITS=64"
 		local -x LDFLAGS=${BUILD_LDFLAGS}
 	fi
 	echo "$@" >&2
@@ -61,7 +60,7 @@ src_compile() {
 	# configure.py appends CFLAGS to CXXFLAGS
 	unset CFLAGS
 
-	append-lfs-flags
+	local -x CXXFLAGS="${CXXFLAGS} -D_FILE_OFFSET_BITS=64"
 
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 

@@ -1,10 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="threads(+),xml(+)"
+
 inherit cmake flag-o-matic python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
@@ -28,7 +29,7 @@ REQUIRED_USE="
 
 BDEPEND="
 	test? (
-		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 # runtime dependency on python is required by the vigra-config script

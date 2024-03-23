@@ -10,5 +10,6 @@
 </use>
 <upstream>
 <remote-id type="sourceforge">packeth</remote-id>
+<remote-id type="github">jemcek/packETH</remote-id>
 </upstream>
 </pkgmetadata>

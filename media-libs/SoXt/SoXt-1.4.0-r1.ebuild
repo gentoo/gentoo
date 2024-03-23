@@ -24,6 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	doc? ( app-text/doxygen )
 "
 

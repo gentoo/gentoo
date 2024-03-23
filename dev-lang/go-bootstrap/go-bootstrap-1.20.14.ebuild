@@ -35,7 +35,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="-* amd64 arm arm64 ~loong ~mips ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="abi_mips_n64 abi_mips_o32 big-endian"
 RESTRICT="strip"
 QA_PREBUILT="*"

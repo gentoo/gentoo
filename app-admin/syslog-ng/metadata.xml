@@ -17,6 +17,7 @@
 		<flag name="json">Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
 		<flag name="kafka">Enable support for Kafka destinations</flag>
 		<flag name="mongodb">Enable support for mongodb destinations</flag>
+		<flag name="mqtt">Enable MQTT support via <pkg>net-libs/paho-mqtt-c</pkg></flag>
 		<flag name="pacct">Enable support for reading Process Accounting files (EXPERIMENTAL, Linux only)</flag>
 		<flag name="redis">Enable support for Redis destinations</flag>
 		<flag name="smtp">Enable support for SMTP destinations</flag>

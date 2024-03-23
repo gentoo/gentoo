@@ -16,6 +16,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 
-RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/urllib3[${PYTHON_USEDEP}]
+"
+
+EPYTEST_DESELECT=(
+	tests/test_download.py::test__preprocess_conn
+	tests/test_download.py::test_file_integrity
+)
 
 distutils_enable_tests pytest

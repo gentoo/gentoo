@@ -20,6 +20,9 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 multilib_src_configure() {
+	# Tests use Valgrind automagically otherwise (bug #927027)
+	export USE_VALGRIND=0
+
 	local mycmakeargs=(
 		# apps are not installed, so disable unconditionally.
 		# https://github.com/json-c/json-c/blob/json-c-0.17-20230812/apps/CMakeLists.txt#L119...L121

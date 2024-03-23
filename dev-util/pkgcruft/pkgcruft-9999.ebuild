@@ -32,7 +32,7 @@ RESTRICT="!test? ( test )"
 # clang needed for bindgen
 BDEPEND+="
 	sys-devel/clang
-	>=virtual/rust-1.71
+	>=virtual/rust-1.74
 	test? ( dev-util/cargo-nextest )
 "
 

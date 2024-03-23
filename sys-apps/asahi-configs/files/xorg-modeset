@@ -1,0 +1,6 @@
+Section "OutputClass"
+    Identifier "appledrm"
+    MatchDriver "apple"
+    Driver "modesetting"
+    Option "PrimaryGPU" "true"    
+EndSection

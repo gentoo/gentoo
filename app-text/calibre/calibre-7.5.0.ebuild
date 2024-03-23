@@ -35,7 +35,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 SLOT="0"
 IUSE="+font-subsetting ios speech +system-mathjax test +udisks unrar"
 
@@ -97,7 +97,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=app-pda/libimobiledevice-1.2.0
 	)
 	speech? ( $(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]') )
-	system-mathjax? ( >=dev-libs/mathjax-3 )
+	system-mathjax? ( >=dev-libs/mathjax-3:= )
 	udisks? ( virtual/libudev )
 	unrar? ( dev-python/unrardll )
 "

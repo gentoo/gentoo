@@ -1,0 +1,27 @@
+From 0632885d08917092ffc8d98febd158745a74465a Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Fri, 4 Aug 2023 16:07:52 +0200
+Subject: [PATCH] Do not consider failures to write files in /sys hard errors
+
+systemd-tmpfiles can run in containers, chroots, ... where writing to /sys will fail, so let's suffix these lines with "-" to avoid considering these cases hard errors.
+
+Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+---
+ dist/tmpfiles.d/tpm2-tss-fapi.conf.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dist/tmpfiles.d/tpm2-tss-fapi.conf.in b/dist/tmpfiles.d/tpm2-tss-fapi.conf.in
+index 7ea3c652..51ff78e5 100644
+--- a/dist/tmpfiles.d/tpm2-tss-fapi.conf.in
++++ b/dist/tmpfiles.d/tpm2-tss-fapi.conf.in
+@@ -3,5 +3,5 @@ d       @localstatedir@/lib/tpm2-tss/system/keystore   2775 tss  tss   -
+ a+      @localstatedir@/lib/tpm2-tss/system/keystore   -    -    -     -           default:group:tss:rwx
+ d       @runstatedir@/tpm2-tss/eventlog                2775 tss  tss   -           -
+ a+      @runstatedir@/tpm2-tss/eventlog                -    -    -     -           default:group:tss:rwx
+-z	/sys/kernel/security/tpm[0-9]/binary_bios_measurements	0440  root tss	-	    -
+-z	/sys/kernel/security/ima/binary_runtime_measurements	0440  root tss	-	    -
++z-	/sys/kernel/security/tpm[0-9]/binary_bios_measurements	0440  root tss	-	    -
++z-	/sys/kernel/security/ima/binary_runtime_measurements	0440  root tss	-	    -
+-- 
+2.43.0
+

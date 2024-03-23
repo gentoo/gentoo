@@ -9,7 +9,6 @@
 		<flag name="archive">Enable support for compressed files using <pkg>app-arch/libarchive</pkg></flag>
 		<flag name="deprecated">Enable deprecated components</flag>
 		<flag name="fits">Enable support for the Flexible Image Transport System data format using <pkg>sci-libs/cfitsio</pkg></flag>
-		<flag name="gsf">Enable support for structured files using <pkg>gnome-extra/libgsf</pkg></flag>
 		<flag name="highway">Enable SIMD optimizations using <pkg>dev-cpp/highway</pkg> (replaces USE=orc)</flag>
 		<flag name="imagequant">Enable support for Image Quantization using <pkg>media-gfx/libimagequant</pkg></flag>
 		<flag name="matio">Enable support for matlab files using <pkg>sci-libs/matio</pkg></flag>

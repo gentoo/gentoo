@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs
 
 MY_PV="$(ver_cut 1-2)"
 
@@ -49,6 +49,13 @@ src_prepare() {
 	sed -e "s/cpp/$(tc-getCPP) -/" \
 		-i ../common/list_capabilities.sh \
 		-i ../common/list_af_names.sh || die
+}
+
+src_configure() {
+	# ODR violations (bug #863524)
+	filter-lto
+
+	default
 }
 
 src_compile() {

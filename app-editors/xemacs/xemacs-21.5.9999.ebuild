@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -6,7 +6,7 @@
 
 EAPI=8
 
-inherit flag-o-matic xdg-utils desktop
+inherit flag-o-matic xdg-utils desktop autotools
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="https://www.xemacs.org/"
@@ -64,8 +64,11 @@ src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	eapply "${FILESDIR}/${PN}-21.5.35-mule-tests.patch"
+	eapply "${FILESDIR}/${PN}-21.5.35-configure-libc-version.patch"
 
 	eapply_user
+
+	eautoconf
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).
@@ -155,8 +158,13 @@ src_configure() {
 		myconf="${myconf} --without-database"
 	fi
 
-	use debug && myconf="${myconf} --with-debug" ||
+	if use debug ; then
+		myconf="${myconf} --with-debug"
+		# bug #924339
+		append-flags -fno-strict-aliasing
+	else
 		myconf="${myconf} --with-optimization --with-cflags-debugging="
+	fi
 
 	use bignum && myconf="${myconf} --with-bignum=openssl" ||
 		myconf="${myconf} --with-bignum=no"

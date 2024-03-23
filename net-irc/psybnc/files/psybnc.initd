@@ -7,19 +7,19 @@ depend() {
 }
 
 check_config() {
-	if [[ ! -f ${PSYBNC_CONFIG} ]]
+	if [ ! -f ${PSYBNC_CONFIG} ]
 	then
 	    eerror "Please set \$PSYBNC_CONFIG in /etc/conf.d/psybnc!"
 	    return 1
 	fi
 
-	if [[ ! -d "${PSYBNC_HOME}" ]]
+	if [ ! -d "${PSYBNC_HOME}" ]
 	then
 	    eerror "Please set \$PSYBNC_HOME in /etc/conf.d/psybnc!"
 	    return 1
 	fi
 
-	if [[ -z "${PSYBNC_USER}" ]]
+	if [ -z "${PSYBNC_USER}" ]
 	then
 	    eerror "Please set \$PSYBNC_USER in /etc/conf.d/psybnc!"
 	    return 1
@@ -29,7 +29,7 @@ check_config() {
 start() {
 	check_config || return 1
 	ebegin "Starting psyBNC"
-	start-stop-daemon --start --quiet --chuid "${PSYBNC_USER}" --chdir "${PSYBNC_HOME}" --exec /usr/bin/psybnc -- "${PSYBNC_CONFIG}" &>/dev/null
+	start-stop-daemon --start --quiet --chuid "${PSYBNC_USER}" --chdir "${PSYBNC_HOME}" --exec /usr/bin/psybnc -- "${PSYBNC_CONFIG}" >/dev/null 2>&1
 	eend $?
 }
 

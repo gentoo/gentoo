@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<use>
 		<flag name="largepages">
 			Use (experimental) larger pages for tcmalloc, this increases
@@ -12,6 +15,26 @@
 			Use (experimental) 64K pages for tcmalloc, this increases
 			memory usage, but should speed up the allocation/free
 			operations.
+		</flag>
+		<flag name="pagesize-16k">
+			Use 16K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-32k">
+			Use 32K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-64k">
+			Use 64K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-128k">
+			Use 128K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-256k">
+			Use 256K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
 		</flag>
 		<flag name="debug">
 			Build a set of libraries with debug support (so-called

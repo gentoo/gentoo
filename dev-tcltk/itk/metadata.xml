@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">incrtcl</remote-id>
+		<remote-id type="github">tcltk/itk</remote-id>
 	</upstream>
 </pkgmetadata>

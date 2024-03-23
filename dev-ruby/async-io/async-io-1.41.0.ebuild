@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRA_DOC="README.md"
@@ -23,6 +23,7 @@ IUSE="test"
 ruby_add_rdepend "dev-ruby/async"
 
 ruby_add_bdepend "test? (
+	>=dev-ruby/async-2.8.1:2
 	>=dev-ruby/async-container-0.15:0
 	>=dev-ruby/async-rspec-1.10:1
 	dev-ruby/rack-test

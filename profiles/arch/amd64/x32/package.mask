@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2024-02-17)
+# Requires net-libs/nodejs which is unavailable on amd64/x32.
+net-misc/sunshine
+
 # Eli Schwartz <eschwartz93@gmail.com> (2023-10-19)
 # Requires net-libs/nodejs which is unavailable on amd64/x32.
 dev-lang/rapydscript-ng
@@ -29,6 +33,7 @@ sci-geosciences/viking
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
+dev-python/jupyter-server-proxy
 sci-misc/jupyterlab-desktop-bin
 dev-python/plotly
 dev-python/plotly-geo
@@ -84,45 +89,46 @@ dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5
 gnome-extra/gnome-shell-extension-pop-shell
-kde-apps/akonadi-calendar:5
-kde-apps/akonadi-import-wizard:5
-kde-apps/akonadiconsole:5
-kde-apps/akregator:5
-kde-apps/calendarjanitor:5
-kde-apps/calendarsupport:5
-kde-apps/cantor:5
-kde-apps/eventviews:5
-kde-apps/grantlee-editor:5
-kde-apps/incidenceeditor:5
-kde-apps/kaccounts-providers:5
-kde-apps/kaddressbook:5
-kde-apps/kalarm:5
-kde-apps/kalgebra:5
-kde-apps/kdepim-addons:5
-kde-apps/kdepim-meta:5
-kde-apps/kdepim-runtime:5
-kde-apps/kimagemapeditor:5
-kde-apps/kmail:5
-kde-apps/kmail-account-wizard:5
-kde-apps/kmailtransport:5
-kde-apps/knotes:5
-kde-apps/konqueror:5
-kde-apps/konsolekalendar:5
-kde-apps/kontact:5
-kde-apps/korganizer:5
-kde-apps/ktp-accounts-kcm:5
-kde-apps/ktp-text-ui:5
-kde-apps/libksieve:5
-kde-apps/mailcommon:5
-kde-apps/messagelib:5
-kde-apps/mbox-importer:5
-kde-apps/parley:5
-kde-apps/pim-data-exporter:5
-kde-apps/pim-sieve-editor:5
+kde-apps/akonadi-calendar
+kde-apps/akonadi-import-wizard
+kde-apps/akonadiconsole
+kde-apps/akregator
+kde-apps/calendarjanitor
+kde-apps/calendarsupport
+kde-apps/cantor
+kde-apps/eventviews
+kde-apps/grantlee-editor
+kde-apps/incidenceeditor
+kde-apps/kaccounts-providers
+kde-apps/kaddressbook
+kde-apps/kalarm
+kde-apps/kalgebra
+kde-apps/kdepim-addons
+kde-apps/kdepim-meta
+kde-apps/kdepim-runtime
+kde-apps/khelpcenter:6
+kde-apps/kimagemapeditor
+kde-apps/kmail
+kde-apps/kmail-account-wizard
+kde-apps/kmailtransport
+kde-apps/knotes
+kde-apps/konqueror
+kde-apps/konsolekalendar
+kde-apps/kontact
+kde-apps/korganizer
+kde-apps/ktp-accounts-kcm
+kde-apps/ktp-text-ui
+kde-apps/libksieve
+kde-apps/mailcommon
+kde-apps/messagelib
+kde-apps/mbox-importer
+kde-apps/parley
+kde-apps/pim-data-exporter
+kde-apps/pim-sieve-editor
 kde-apps/plasma-telepathy-meta:5
 kde-misc/kio-gdrive
-kde-misc/tellico:5
-kde-misc/zanshin:5
+kde-misc/tellico
+kde-misc/zanshin
 media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
@@ -131,6 +137,8 @@ media-video/openshot
 media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
+>=net-im/neochat-24.02.0
+>=net-im/tokodon-24.02.0
 net-im/whatsie
 net-libs/signon-ui
 net-misc/nextcloud-client

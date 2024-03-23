@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">utilities/kio-stash</remote-id>
 	</upstream>
 </pkgmetadata>

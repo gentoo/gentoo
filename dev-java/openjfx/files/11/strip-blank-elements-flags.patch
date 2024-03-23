@@ -1,0 +1,29 @@
+Without this, you'll get bizarre errors where linking fails because it looks for
+a literal "" arg.
+
+https://bugs.gentoo.org/715092
+https://bugs.gentoo.org/719484
+https://bugs.gentoo.org/799227
+https://bugs.gentoo.org/915727
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -47,7 +47,8 @@ def commonFlags = [
+         "-Wno-error=cast-function-type",
+         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=trampolines"] // warning flags
+ 
+-commonFlags.addAll(System.getenv("CFLAGS").trim().split(" "))
++commonFlags.addAll(System.getenv("CFLAGS").strip().split(" "))
++commonFlags.removeAll([""])
+ 
+ if (!IS_64) {
+     commonFlags += "-m32"
+@@ -75,7 +76,8 @@ def staticLinkFlags = [].flatten()
+ 
+ def linkFlags = IS_STATIC_BUILD ? staticLinkFlags : dynamicLinkFlags;
+ 
+-linkFlags.addAll(System.getenv("LDFLAGS").trim().split(" "))
++linkFlags.addAll(System.getenv("LDFLAGS").strip().split(" "))
++linkFlags.removeAll([""])
+ 
+ if (IS_DEBUG_NATIVE) {
+     linkFlags += "-g"

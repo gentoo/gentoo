@@ -14,14 +14,13 @@ SRC_URI="https://github.com/moby/moby/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="apparmor btrfs +container-init device-mapper overlay seccomp selinux"
+IUSE="apparmor btrfs +container-init overlay seccomp selinux"
 
 DEPEND="
 	acct-group/docker
 	>=dev-db/sqlite-3.7.9:3
 	apparmor? ( sys-libs/libapparmor )
 	btrfs? ( >=sys-fs/btrfs-progs-3.16.1 )
-	device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] )
 	seccomp? ( >=sys-libs/libseccomp-2.2.1 )
 "
 
@@ -34,7 +33,7 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	>=app-containers/containerd-1.7.3[apparmor?,btrfs?,device-mapper?,seccomp?]
+	>=app-containers/containerd-1.7.3[apparmor?,btrfs?,seccomp?]
 	>=app-containers/runc-1.1.9[apparmor?,seccomp?]
 	!app-containers/docker-proxy
 	container-init? ( >=sys-process/tini-0.19.0[static] )
@@ -227,12 +226,6 @@ pkg_setup() {
 		"
 	fi
 
-	if use device-mapper; then
-		CONFIG_CHECK+="
-			~BLK_DEV_DM ~DM_THIN_PROVISIONING
-		"
-	fi
-
 	CONFIG_CHECK+="
 		~OVERLAY_FS
 	"
@@ -252,7 +245,7 @@ src_compile() {
 
 	# let's set up some optional features :)
 	export DOCKER_BUILDTAGS=''
-	for gd in btrfs device-mapper overlay; do
+	for gd in btrfs overlay; do
 		if ! use $gd; then
 			DOCKER_BUILDTAGS+=" exclude_graphdriver_${gd//-/}"
 		fi
@@ -306,12 +299,6 @@ pkg_postinst() {
 	elog "To use Docker as a non-root user, add yourself to the 'docker' group:"
 	elog '  usermod -aG docker <youruser>'
 	elog
-
-	if use device-mapper; then
-		elog " Devicemapper storage driver has been deprecated"
-		elog " It will be removed in a future release"
-		elog
-	fi
 
 	if use overlay; then
 		elog " Overlay storage driver/USEflag has been deprecated"

@@ -87,7 +87,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	python_install
+	use python && python_install
 
 	# TODO: fix bash completion name
 	mv "${D}"/usr/share/bash-completion/completions/${PN}.bash \

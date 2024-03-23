@@ -1,10 +1,10 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 pypi
 
@@ -14,3 +14,4 @@ HOMEPAGE="https://github.com/vpelletier/htail"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+BDEPEND="${DISTUTILS_DEPS}"

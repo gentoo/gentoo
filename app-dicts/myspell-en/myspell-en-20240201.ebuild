@@ -15,7 +15,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/41/1706771103/dict-
 
 LICENSE="BSD MIT LGPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 PLOCALES=( "en-AU" "en-CA" "en-GB" "en-US" "en-ZA" )
 IUSE+="+l10n_en ${PLOCALES[@]/#/l10n_}"

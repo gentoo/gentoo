@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 # Please bump the following packages together:
 # dev-util/lttng-modules
@@ -36,6 +38,9 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 src_configure() {
+	# bug 906928
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+
 	econf $(usex ust "" --without-lttng-ust)
 }
 

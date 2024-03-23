@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Cross-platform Sextractor and Astrometry.net-Based internal astrometric solver"
 HOMEPAGE="https://github.com/rlancaste/stellarsolver"
@@ -25,3 +25,10 @@ RDEPEND="
 	sci-astronomy/wcslib:=
 "
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	# bug #862930
+	filter-lto
+
+	cmake_src_configure
+}

@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">tcl</remote-id>
+		<remote-id type="github">tcltk/thread</remote-id>
 	</upstream>
 </pkgmetadata>

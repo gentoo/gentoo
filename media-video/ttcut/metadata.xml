@@ -18,5 +18,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">ttcut.berlios</remote-id>
+		<remote-id type="github">baltendorf/ttcut</remote-id>
 	</upstream>
 </pkgmetadata>

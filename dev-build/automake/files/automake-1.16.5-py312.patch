@@ -1,0 +1,34 @@
+https://git.savannah.gnu.org/cgit/automake.git/commit/?id=f1112a88d2361eb2ba5cedf49995ac75879059d9
+
+From f1112a88d2361eb2ba5cedf49995ac75879059d9 Mon Sep 17 00:00:00 2001
+From: Bogdan <bogdro_rep@gmx.us>
+Date: Sun, 28 Jan 2024 18:12:50 -0800
+Subject: [PATCH] test: another check for PEP-3147 induced by Python 3.12.1.
+
+Fix for more of https://bugs.gnu.org/68119.
+
+* t/ax/am-test-lib.sh (python_has_pep3147) <am_pep3147_tag>:
+check sys.implementation.cache_tag as well as the (old)
+imp.get_tag. For Python 3.12.1.
+---
+ t/ax/am-test-lib.sh | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/t/ax/am-test-lib.sh b/t/ax/am-test-lib.sh
+index fbbb79005..d61fd6662 100644
+--- a/t/ax/am-test-lib.sh
++++ b/t/ax/am-test-lib.sh
+@@ -635,6 +635,10 @@ python_has_pep3147 ()
+     am_pep3147_tag=$($PYTHON -c 'import imp; print(imp.get_tag())') \
+       || am_pep3147_tag=none
+   fi
++  if test "$am_pep3147_tag" = "none"; then
++    am_pep3147_tag=$($PYTHON -c 'import sys; print(sys.implementation.cache_tag)') \
++      || am_pep3147_tag=none
++  fi
+   test $am_pep3147_tag != none
+ }
+ am_pep3147_tag=
+-- 
+2.44.0
+

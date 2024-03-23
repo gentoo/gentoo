@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Small program to test performances of remote servers"
-HOMEPAGE="http://echoping.sourceforge.net/"
+HOMEPAGE="https://framagit.org/bortzmeyer/echoping"
 SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 LICENSE="GPL-2"
 
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_certificate_type_set_priority.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_session.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-fno-common.patch
+	"${FILESDIR}"/0001-correctly-link-to-libm.patch
 )
 
 src_prepare() {

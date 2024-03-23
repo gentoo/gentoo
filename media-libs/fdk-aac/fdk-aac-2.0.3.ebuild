@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
@@ -35,6 +35,12 @@ src_prepare() {
 	else
 		elibtoolize
 	fi
+}
+
+src_configure() {
+	# ODR violations (https://github.com/mstorsjo/fdk-aac/issues/156, bug #885355)
+	filter-lto
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">muennich/sxiv</remote-id>
+		<remote-id type="github">xyb3rt/sxiv</remote-id>
 	</upstream>
 </pkgmetadata>

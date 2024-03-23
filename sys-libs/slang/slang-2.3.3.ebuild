@@ -37,6 +37,7 @@ MAKEOPTS+=" -j1"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.3-slsh-libs.patch
+	"${FILESDIR}"/${PN}-2.3.3-remove-undefined-symbol-from-version-script.patch
 )
 
 src_prepare() {

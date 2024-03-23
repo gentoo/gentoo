@@ -1,0 +1,24 @@
+--- a/input_sources/xmlada_input.gpr	2024-03-01 19:32:59.111253474 +0100
++++ b/input_sources/xmlada_input.gpr	2024-03-01 19:34:57.282827180 +0100
+@@ -39,13 +39,15 @@
+    package Ide      renames XmlAda_Shared.Ide;
+ 
+    package Install is
+-      for Artifacts ("share/doc/xmlada")
+-        use ("../docs/_build/html/*", "../docs/_build/latex/XMLAda.pdf");
++      for Artifacts ("share/doc/@PF@/html")
++        use ("../docs/_build/html/*");
++      for Artifacts ("share/doc/@PF@")
++        use ("../docs/_build/latex/XMLAda.pdf");
+       for Artifacts ("share/gpr") use ("../distrib/xmlada.gpr");
+-      for Artifacts ("share/examples/xmlada/dom") use ("../docs/dom/*");
+-      for Artifacts ("share/examples/xmlada/sax") use ("../docs/sax/*");
+-      for Artifacts ("share/examples/xmlada/schema") use ("../docs/schema/*");
+-      for Artifacts ("share/examples/xmlada/cross") use ("../docs/cross/*");
++      for Artifacts ("share/doc/@PF@/examples/dom") use ("../docs/dom/*");
++      for Artifacts ("share/doc/@PF@/examples/sax") use ("../docs/sax/*");
++      for Artifacts ("share/doc/@PF@/examples/schema") use ("../docs/schema/*");
++      for Artifacts ("share/doc/@PF@/examples/cross") use ("../docs/cross/*");
+    end Install;
+ 
+ end XmlAda_Input;

@@ -1,0 +1,13 @@
+diff --git a/makefile.u b/makefile.u
+index a1cb700..6d5fb78 100644
+--- a/makefile.u
++++ b/makefile.u
+@@ -88,7 +88,7 @@ libf2c.a: $(OFILES)
+ ## arrange for $DYLD_LIBRARY_PATH to include the directory containing libf2c.so.
+ 
+ libf2c.so: $(OFILES)
+-	$(CC) $(LDFLAGS) -shared -o libf2c.so $(OFILES)
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,libf2c.so.2 -o libf2c.so.2 -lm $(OFILES)
+ 
+ ### If your system lacks ranlib, you don't need it; see README.
+ 

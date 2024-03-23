@@ -45,6 +45,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/yaml-cpp
 	dev-libs/OpenNI2[opengl(+)]
 	dev-libs/boost:=
 	dev-libs/libfmt:=
@@ -98,7 +99,9 @@ RDEPEND="
 			' python3_{10..11} )
 		)
 		qt6? (
-			dev-qt/qttools:6[designer]
+			designer? ( dev-qt/qttools:6[designer] )
+			dev-qt/qt5compat:6
+			dev-qt/qttools:6[widgets]
 			dev-qt/qtbase:6[gui,opengl,widgets]
 			dev-qt/qtsvg:6
 			dev-qt/qtwebengine:6[widgets]
@@ -194,7 +197,6 @@ src_configure() {
 		-DBUILD_COMPLETE=OFF					# deprecated
 		-DBUILD_DRAFT=ON
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
-		-DBUILD_DRAWING=ON
 		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for current git master
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=$(usex netgen)
@@ -279,6 +281,8 @@ src_configure() {
 			-DQt6Core_MOC_EXECUTABLE="$(qt6_get_bindir)/moc"
 			-DQt6Core_RCC_EXECUTABLE="$(qt6_get_bindir)/rcc"
 			-DBUILD_QT5=OFF
+			# Drawing module unmaintained and not ported to qt6
+			-DBUILD_DRAWING=OFF
 		)
 	else
 		mycmakeargs+=(
@@ -288,6 +292,8 @@ src_configure() {
 			-DQt5Core_MOC_EXECUTABLE="$(qt5_get_bindir)/moc"
 			-DQt5Core_RCC_EXECUTABLE="$(qt5_get_bindir)/rcc"
 			-DBUILD_QT5=ON
+			# Drawing module unmaintained and not ported to qt6
+			-DBUILD_DRAWING=ON
 		)
 	fi
 

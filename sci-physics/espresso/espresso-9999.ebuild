@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake cuda python-single-r1 savedconfig
 
 DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
-HOMEPAGE="http://espressomd.org"
+HOMEPAGE="https://espressomd.org"
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"

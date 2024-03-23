@@ -36,6 +36,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Wimplicit-function-declaration.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# _AC_UNDECLARED_BUILTIN false positive
+	strchr
+)
+
 pkg_setup() {
 	if use aspell && use hunspell; then
 		ewarn "You have enabled 'aspell' and 'hunspell' support, but both cannot coexist,"

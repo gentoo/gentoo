@@ -21,7 +21,6 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/17"
 KEYWORDS="amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="ipv6"
 
 BDEPEND="
 	kernel_linux? ( sys-apps/lsb-release )
@@ -57,7 +56,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -j1 HAVE_IPV6=$(usex ipv6) check
+	emake -j1 check
 }
 
 src_install() {

@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wcm"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wcm.git"
-	SLOT="0/9999"
+	SLOT="0/0.9"
 else
 	SRC_URI="https://github.com/WayfireWM/wcm/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
@@ -27,9 +27,9 @@ CDEPEND="
 	dev-libs/libxml2
 	dev-libs/wayland
 	dev-cpp/gtkmm:3.0[wayland]
-	gui-apps/wf-shell:${SLOT}
-	gui-libs/wf-config:${SLOT}
-	gui-wm/wayfire:${SLOT}
+	gui-apps/wf-shell
+	>=gui-libs/wf-config-0.6.0
+	gui-wm/wayfire
 	x11-libs/libxkbcommon
 "
 RDEPEND="${CDEPEND}"

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
 	<longdescription lang="en">
 		An alternative implementation of the zfs-auto-snapshot service for Linux
 		that is compatible with zfs-linux and zfs-fuse.

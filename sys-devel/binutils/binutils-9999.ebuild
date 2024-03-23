@@ -270,7 +270,7 @@ src_configure() {
 		$(use_with zstd)
 
 		# Disable modules that are in a combined binutils/gdb tree, bug #490566
-		--disable-{gdb,libdecnumber,readline,sim}
+		--disable-{gdb,gdbserver,libbacktrace,libdecnumber,readline,sim}
 		# Strip out broken static link flags: https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
 		# Change SONAME to avoid conflict across {native,cross}/binutils, binutils-libs. bug #666100
@@ -333,10 +333,20 @@ src_configure() {
 		)
 	fi
 
+	if use test || { use pgo && tc-is-lto ; } ; then
+		# -Wa,* needs to be consistent everywhere or lto-wrapper will complain
+		filter-flags '-Wa,*'
+	fi
+
 	if ! is_cross ; then
-		myconf+=( $(use_enable pgo pgo-build lto) )
+		myconf+=( $(use_enable pgo pgo-build $(tc-is-lto && echo "lto" || echo "yes")) )
 
 		if use pgo ; then
+			# We let configure handle it for us because it has to run
+			# the testsuite later on for profiling, and LTO isn't compatible
+			# with the testsuite.
+			filter-lto
+
 			export BUILD_CFLAGS="${CFLAGS}"
 		fi
 	fi
@@ -374,10 +384,28 @@ src_compile() {
 src_test() {
 	cd "${MY_BUILDDIR}" || die
 
-	# bug #637066
-	filter-flags -Wall -Wreturn-type
+	# https://sourceware.org/PR31327
+	local -x XZ_OPT="-T1"
+	local -x XZ_DEFAULTS="-T1"
 
-	emake -k check
+	(
+		# Tests don't expect LTO
+		filter-lto
+
+		# lto-wrapper warnings which confuse tests
+		filter-flags '-Wa,*'
+
+		# bug #637066
+		filter-flags -Wall -Wreturn-type
+
+		emake -k check \
+			CFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET:-${CFLAGS}}" \
+			CXXFLAGS_FOR_TARGET="${CXXFLAGS_FOR_TARGET:-${CXXFLAGS}}" \
+			LDFLAGS_FOR_TARGET="${LDFLAGS_FOR_TARGET:-${LDFLAGS}}" \
+			CFLAGS="${CFLAGS}" \
+			CXXFLAGS="${CXXFLAGS}" \
+			LDFLAGS="${LDFLAGS}"
+	)
 }
 
 src_install() {

@@ -1,0 +1,70 @@
+From 6cf4549217e95659c8dfd14f9166fb8b80bad333 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 15 Mar 2024 12:45:51 +0100
+Subject: [PATCH] Switch okular headers to okular5
+
+Otherwise it will be using okular6's.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/configtester.cpp    | 2 +-
+ src/kileviewmanager.cpp | 2 +-
+ src/kileviewmanager.h   | 2 +-
+ src/livepreview.cpp     | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/configtester.cpp b/src/configtester.cpp
+index 35ce3e71..cd7ed588 100644
+--- a/src/configtester.cpp
++++ b/src/configtester.cpp
+@@ -14,7 +14,7 @@
+ 
+ #include "configtester.h"
+ 
+-#include <okular/interfaces/viewerinterface.h>
++#include <okular5/interfaces/viewerinterface.h>
+ 
+ #include <QTimer>
+ 
+diff --git a/src/kileviewmanager.cpp b/src/kileviewmanager.cpp
+index 34f84397..f5ac0cdc 100644
+--- a/src/kileviewmanager.cpp
++++ b/src/kileviewmanager.cpp
+@@ -15,7 +15,7 @@
+ #include "kileviewmanager.h"
+ #include <config.h>
+ 
+-#include <okular/interfaces/viewerinterface.h>
++#include <okular5/interfaces/viewerinterface.h>
+ 
+ #include <KAcceleratorManager>
+ #include <KActionCollection>
+diff --git a/src/kileviewmanager.h b/src/kileviewmanager.h
+index 42367291..e0b3ca09 100644
+--- a/src/kileviewmanager.h
++++ b/src/kileviewmanager.h
+@@ -15,7 +15,7 @@
+ #ifndef KILEVIEWKILEVIEWMANAGER_H
+ #define KILEVIEWKILEVIEWMANAGER_H
+ 
+-#include <okular/interfaces/viewerinterface.h>
++#include <okular5/interfaces/viewerinterface.h>
+ 
+ #include <KTextEditor/Cursor>
+ #include <KTextEditor/ModificationInterface>
+diff --git a/src/livepreview.cpp b/src/livepreview.cpp
+index dbd7ff13..fcfa2a6d 100644
+--- a/src/livepreview.cpp
++++ b/src/livepreview.cpp
+@@ -40,7 +40,7 @@
+ #include <KParts/MainWindow>
+ #include <KXMLGUIFactory>
+ 
+-#include <okular/interfaces/viewerinterface.h>
++#include <okular5/interfaces/viewerinterface.h>
+ 
+ #include "errorhandler.h"
+ #include "kiledebug.h"
+-- 
+2.44.0
+

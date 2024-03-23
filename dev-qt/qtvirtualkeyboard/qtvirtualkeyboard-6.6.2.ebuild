@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Customizable input framework and virtual keyboard for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~loong"
+	KEYWORDS="amd64 ~loong"
 fi
 
 IUSE="+spell"
@@ -31,10 +31,15 @@ src_configure() {
 }
 
 src_test() {
+	local CMAKE_SKIP_TESTS=(
+		# rarely randomly(?) fails even with -j1
+		tst_layoutfilesystem
+	)
+
 	if use spell && has_version app-dicts/myspell-en; then
 		# 99% pass but minor sub-tests fail with myspell-en, needs looking into
 		ewarn "Warning: notable tests were skipped due to ${_} being installed"
-		local CMAKE_SKIP_TESTS=(
+		CMAKE_SKIP_TESTS+=(
 			tst_inputpanel
 			tst_inputpanelcontrols2
 		)
@@ -42,6 +47,5 @@ src_test() {
 		einfo "tst_inputpanel can take >5mins, not known to actually hang"
 	fi
 
-	# tst_layoutfilesystem seems to fail randomly without -j1
-	qt6-build_src_test -j1
+	qt6-build_src_test
 }

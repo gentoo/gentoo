@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/867283
+https://wiki.gentoo.org/wiki/Musl_porting_notes#cdefs.h:_No_such_file_or_directory
+--- a/pico-sdk/src/host/pico_platform/include/pico/platform.h
++++ b/pico-sdk/src/host/pico_platform/include/pico/platform.h
+@@ -13,7 +13,11 @@
+ 
+ #ifdef __unix__
+ 
+-#include <sys/cdefs.h>
++#if defined __has_include
++# if __has_include (<sys/cdefs.h>)
++#  include <sys/cdefs.h>
++# endif
++#endif
+ 
+ #endif
+ 

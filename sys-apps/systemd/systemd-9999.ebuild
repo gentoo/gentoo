@@ -287,6 +287,9 @@ multilib_src_configure() {
 		# no deps
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
+		# Match /etc/shells, bug 919749
+		-Ddebug-shell="${EPREFIX}/bin/sh"
+		-Ddefault-user-shell="${EPREFIX}/bin/bash"
 		# Optional components/dependencies
 		$(meson_native_use_bool acl)
 		$(meson_native_use_bool apparmor)
@@ -507,11 +510,11 @@ pkg_postinst() {
 	fi
 
 	if use boot; then
-		optfeature "automatically installing the kernels in systemd-boot's native layout and updating the bootloader configuration" \
+		optfeature "installing kernels in systemd-boot's native layout and update loader entries" \
 			"sys-kernel/installkernel[systemd-boot]"
 	fi
 	if use ukify; then
-		optfeature "automatically generating an unified kernel image on each kernel installation" \
+		optfeature "generating unified kernel image on each kernel installation" \
 			"sys-kernel/installkernel[ukify]"
 	fi
 }

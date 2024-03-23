@@ -1,0 +1,10 @@
+--- a/generic/dom.h	2024-02-26 08:37:08.464473295 +0100
++++ b/generic/dom.h	2024-02-26 08:43:19.859997138 +0100
+@@ -37,6 +37,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
++#define XML_GE 1
+ #include <expat.h>
+ #include <domalloc.h>
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake udev
+inherit cmake flag-o-matic udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
@@ -41,6 +41,11 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/878525
+	# https://github.com/indilib/indi/issues/2023
+	filter-lto
+
 	local mycmakeargs=(
 		-DINDI_BUILD_QT5_CLIENT=OFF
 		-DINDI_BUILD_SHARED=ON

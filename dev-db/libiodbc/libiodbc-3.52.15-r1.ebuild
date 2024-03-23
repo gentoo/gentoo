@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_PN="iODBC"
 
@@ -41,6 +41,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/924665
+	# https://github.com/openlink/iODBC/issues/100
+	filter-lto
+
 	econf \
 		--disable-static \
 		--enable-odbc3 \

@@ -6,7 +6,6 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">pytorch/pytorch</remote-id>
 		<remote-id type="github">NVIDIA/cutlass</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,22 +18,23 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	HASH_VKD3D=eb4b411734f8de04912c4a950f407f25a92f35ab # match tag on bumps
-	HASH_DXIL=fc4df6ce3aa7deffa764847c6e59f8df63c7b4b6
-	HASH_SPIRV=1d31a100405cf8783ca7a31e31cdd727c9fc54c3
-	HASH_SPIRV_DXIL=aa331ab0ffcb3a67021caa1a0c1c9017712f2f31
-	HASH_VULKAN=a0c76b4ef76e219483755ff61dce6b67ff79f24b
+	HASH_VKD3D= # match tag on bumps
+	HASH_DXIL=
+	HASH_SPIRV=
+	HASH_SPIRV_DXIL=
+	HASH_VULKAN=
 	SRC_URI="
 		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 		https://github.com/HansKristian-Work/dxil-spirv/archive/${HASH_DXIL}.tar.gz
-			-> ${PN}-dxil-spirv-${HASH_DXIL::10}.tar.gz
+			-> dxil-spirv-${HASH_DXIL}.tar.gz
 		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
-			-> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+			-> spirv-headers-${HASH_SPIRV}.tar.gz
 		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV_DXIL}.tar.gz
-			-> ${PN}-spirv-headers-${HASH_SPIRV_DXIL::10}.tar.gz
+			-> spirv-headers-${HASH_SPIRV_DXIL}.tar.gz
 		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
-			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
+			-> vulkan-headers-${HASH_VULKAN}.tar.gz
+	"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -88,10 +89,15 @@ src_prepare() {
 		mv ../SPIRV-Headers-${HASH_SPIRV} khronos/SPIRV-Headers || die
 		mv ../Vulkan-Headers-${HASH_VULKAN} khronos/Vulkan-Headers || die
 
-		# dxil and vkd3d's spirv headers currently mismatch and incompatible
 		rmdir subprojects/dxil-spirv/third_party/spirv-headers || die
-		mv ../SPIRV-Headers-${HASH_SPIRV_DXIL} \
-			subprojects/dxil-spirv/third_party/spirv-headers || die
+		# dxil and vkd3d's spirv headers sometime mismatch and are incompatible
+		if [[ ${HASH_SPIRV} == "${HASH_SPIRV_DXIL}" ]]; then
+			ln -s ../../../khronos/SPIRV-Headers \
+				subprojects/dxil-spirv/third_party/spirv-headers || die
+		else
+			mv ../SPIRV-Headers-${HASH_SPIRV_DXIL} \
+				subprojects/dxil-spirv/third_party/spirv-headers || die
+		fi
 	fi
 
 	default

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>negril.nx+gentoo@gmail.com</email>
+    <name>Paul Zander</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <use>
+    <flag name="opencv">Build tools requiring <pkg>media-libs/opencv</pkg> (inspect-opencv,quirc-demo-opencv)</flag>
+    <flag name="sdl">Build tools requiring <pkg>media-libs/sdl-gfx</pkg> (inspect, quirc-demo)</flag>
+    <flag name="tools">Build tools (qrtest)</flag>
+    <flag name="v4l">Build tools for webcams (quirc-scanner)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">dlbeer/quirc</remote-id>
+  </upstream>
+</pkgmetadata>

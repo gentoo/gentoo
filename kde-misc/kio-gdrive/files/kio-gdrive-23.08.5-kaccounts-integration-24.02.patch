@@ -1,0 +1,53 @@
+From f3a8d9dbc22d3743e03b1b0092baa3b060a1c001 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 10 Dec 2023 22:27:46 +0100
+Subject: [PATCH] Adapt to KAccounts API change
+
+---
+ kaccounts/kaccountsplugin.cpp | 2 +-
+ kaccounts/kaccountsplugin.h   | 2 +-
+ src/kaccountsmanager.cpp      | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/kaccounts/kaccountsplugin.cpp b/kaccounts/kaccountsplugin.cpp
+index 676bc4a..9ba2d17 100644
+--- a/kaccounts/kaccountsplugin.cpp
++++ b/kaccounts/kaccountsplugin.cpp
+@@ -18,7 +18,7 @@
+ K_PLUGIN_CLASS_WITH_JSON(GoogleDrivePlugin, "kaccountsplugin.json")
+ 
+ GoogleDrivePlugin::GoogleDrivePlugin(QObject *parent, const QVariantList &args)
+-    : KAccountsDPlugin(parent, args)
++    : KAccounts::KAccountsDPlugin(parent, args)
+ {
+ }
+ 
+diff --git a/kaccounts/kaccountsplugin.h b/kaccounts/kaccountsplugin.h
+index d330c64..748feac 100644
+--- a/kaccounts/kaccountsplugin.h
++++ b/kaccounts/kaccountsplugin.h
+@@ -9,7 +9,7 @@
+ 
+ #include <KAccounts/KAccountsDPlugin>
+ 
+-class GoogleDrivePlugin : public KAccountsDPlugin
++class GoogleDrivePlugin : public KAccounts::KAccountsDPlugin
+ {
+     Q_OBJECT
+ public:
+diff --git a/src/kaccountsmanager.cpp b/src/kaccountsmanager.cpp
+index 6660a4e..c6d4273 100644
+--- a/src/kaccountsmanager.cpp
++++ b/src/kaccountsmanager.cpp
+@@ -151,7 +151,7 @@ void KAccountsManager::loadAccounts()
+ 
+ AccountPtr KAccountsManager::getAccountCredentials(Accounts::AccountId id, const QString& displayName)
+ {
+-    auto job = new GetCredentialsJob(id, nullptr);
++    auto job = new KAccounts::GetCredentialsJob(id, nullptr);
+     job->exec();
+     if (job->error()) {
+         qCWarning(GDRIVE) << "GetCredentialsJob failed:" << job->errorString();
+-- 
+GitLab
+

@@ -12,7 +12,4 @@
 		<bugs-to>https://github.com/pydantic/pydantic/issues</bugs-to>
 		<doc>https://docs.pydantic.dev/latest/</doc>
 	</upstream>
-	<use>
-		<flag name="native-extensions">Compiles native "C" extensions.</flag>
-	</use>
 </pkgmetadata>

@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 BDEPEND="
 	test? (
@@ -40,6 +40,13 @@ src_test() {
 }
 
 python_test() {
+	if use x86 ; then
+		EPYTEST_DESELECT+=(
+			# https://github.com/networkx/networkx/issues/5913 (bug #921958)
+			networkx/algorithms/approximation/tests/test_traveling_salesman.py::test_asadpour_tsp
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# virtx implies nonfatal
 	nonfatal epytest -p xdist -n "$(makeopts_jobs)" --dist=worksteal || die

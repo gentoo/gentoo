@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,9 +16,9 @@ SRC_URI="
 "
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="-* amd64 x86"
 LICENSE="SPS"
 SLOT="0"
+KEYWORDS="-* amd64 x86"
 IUSE="demos doc fast-firmware gui static"
 
 RDEPEND="
@@ -94,11 +94,22 @@ pkg_postinst() {
 	elog "If you want to access your Kryoflux without root access,"
 	elog "please add yourself to the floppy group."
 
+	udev_reload
+
 	if use fast-firmware; then
 		elog ""
 		elog "You have enabled the fast firmware. Please keep in mind,"
 		elog "that this firmware can cause trouble with older floppy drives."
 	fi
+
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+	fi
+}
+
+pkg_postrm() {
+	udev_reload
 
 	if use gui; then
 		xdg_desktop_database_update

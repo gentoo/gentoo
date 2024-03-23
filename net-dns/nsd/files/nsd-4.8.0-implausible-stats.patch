@@ -1,0 +1,22 @@
+https://github.com/NLnetLabs/nsd/issues/313
+https://github.com/NLnetLabs/nsd/commit/ccc1bbc28abd3a723c25cb8dcc735731926979d0
+
+From ccc1bbc28abd3a723c25cb8dcc735731926979d0 Mon Sep 17 00:00:00 2001
+From: "W.C.A. Wijngaards" <wouter@nlnetlabs.nl>
+Date: Tue, 6 Feb 2024 11:44:24 +0100
+Subject: [PATCH] - Fix #313: nsd 4.8 stats with implausible spikes.
+
+--- a/remote.c
++++ b/remote.c
+@@ -2932,7 +2932,9 @@ process_stats(RES* ssl, xfrd_state_type* xfrd, int peek)
+ 	process_stats_manage_clear(xfrd, stats, peek);
+ 	process_stats_add_total(xfrd, &total, stats);
+ 	print_stats(ssl, xfrd, &stattime, !peek, &total, zonestats);
+-	xfrd->nsd->rc->stats_time = stattime;
++	if(!peek) {
++		xfrd->nsd->rc->stats_time = stattime;
++	}
+ 
+ 	free(stats);
+ #ifdef USE_ZONE_STATS
+

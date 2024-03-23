@@ -1,0 +1,79 @@
+Fix building and don't use bundled uchime.
+--- a/Makefile
++++ b/Makefile
+@@ -104,12 +104,19 @@ endif
+ # INCLUDE directories for mothur
+ #
+ #
+-	VPATH=source/calculators:source/chimera:source/classifier:source/clearcut:source/commands:source/communitytype:source/datastructures:source/engines:source/metastats:source/read:source/svm:source/
++	VPATH=source:source/calculators:source/chimera:source/classifier:source/clearcut:source/commands:source/communitytype:source/datastructures:source/engines:source/metastats:source/read:source/svm:source/
++    source := source
+     skipUchime := source/uchime_src/
++    skipTestMothur := source/TestMothur/
++    skipSeqnoise := seqnoise.cpp
+     subdirs :=  $(sort $(dir $(filter-out  $(skipUchime), $(wildcard source/*/))))
++    subdirs :=  $(filter-out  $(skipTestMothur), $(subdirs))
+     subDirIncludes = $(patsubst %, -I %, $(subdirs))
++    subDirIncludes += $(patsubst %, -I %, $(source))
+     subDirLinking =  $(patsubst %, -L%, $(subdirs))
+-    CXXFLAGS += -I. $(subDirIncludes)
++    subDirLinking +=  $(patsubst %, -L%, $(source))
++    subdirs :=  $(dir source) $(sort $(dir $(filter-out  $(skipUchime), $(wildcard source/*/))))
++    CXXFLAGS += -Isource -I. $(subDirIncludes)
+     LDFLAGS += $(subDirLinking)
+ 
+ 
+@@ -118,15 +125,14 @@ endif
+ #
+     OBJECTS=$(patsubst %.cpp,%.o,$(wildcard $(addsuffix *.cpp,$(subdirs))))
+     OBJECTS+=$(patsubst %.c,%.o,$(wildcard $(addsuffix *.c,$(subdirs))))
++    OBJECTS+=$(patsubst %.cpp,%.o,$(filter-out $(skipSeqnoise), $(wildcard source/*.cpp)))
++    OBJECTS+=$(patsubst %.cpp,%.o,$(filter-out $(skipSeqnoise), $(wildcard source/*.c)))
+     OBJECTS+=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
+     OBJECTS+=$(patsubst %.c,%.o,$(wildcard *.c))
+ 
+-mothur : $(OBJECTS) uchime
++mothur : $(OBJECTS)
+ 	$(CXX) $(LDFLAGS) $(TARGET_ARCH) -o $@ $(OBJECTS) $(LIBS)
+ 
+-uchime :
+-	cd source/uchime_src && export CXX=$(CXX) && make clean && make && mv uchime ../../ && cd ..
+-
+ install : mothur
+ 
+ ifeq  ($(strip $(INSTALL_DIR)),"\"Enter_your_mothur_install_path_here\"")
+--- a/makefile-internal
++++ b/makefile-internal
+@@ -115,7 +115,6 @@ endif
+ 
+ mothur : $(OBJECTS)
+     $(CXX) $(LDFLAGS) $(TARGET_ARCH) -o $@ $(OBJECTS) $(LIBS)
+-    strip mothur
+ 
+ %.o : %.c %.h
+     $(COMPILE.c) $(OUTPUT_OPTION) $<
+--- a/source/uchime_src/makefile
++++ b/source/uchime_src/makefile
+@@ -1,4 +1,4 @@
+-CXXFLAGS = -O3 -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 -DUCHIMES=1
++CXXFLAGS = -std=c++11 -O3 -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 -DUCHIMES=1
+ LDFLAGS = -g
+ 
+ #
+@@ -26,4 +26,4 @@ install : uchime
+ 
+ clean :
+ 	@rm -f $(OBJECTS)
+-	
+\ No newline at end of file
++	
+--- a/source/writer.h
++++ b/source/writer.h
+@@ -9,6 +9,7 @@
+ #ifndef writer_h
+ #define writer_h
+ 
++#include <memory>
+ #include "sharedwriter.hpp"
+ 
+ /***********************************************************************/

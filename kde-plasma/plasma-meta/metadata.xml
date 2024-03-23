@@ -22,13 +22,18 @@
 		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
 		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
 		<flag name="legacy-systray">Add support for legacy applications using <pkg>kde-plasma/xembed-sni-proxy</pkg></flag>
+		<flag name="oxygen-theme">Pull in Oxygen icons, sound theme and visual style for KDE Plasma</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
+		<flag name="qt5">Pull in required packages for seamless integration of KF5/Qt5-based applications</flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
 		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
 		<flag name="smart">Pull in <pkg>kde-plasma/plasma-disks</pkg> for disk health monitoring</flag>
 		<flag name="thunderbolt">Pull in <pkg>kde-plasma/plasma-thunderbolt</pkg> control center module</flag>
+		<flag name="unsupported">Allow packages that are known to ruin runtime experience ** DO NOT FILE BUGS WITH THIS ENABLED **</flag>
 		<flag name="wacom">Pull in <pkg>kde-plasma/wacomtablet</pkg> control center module</flag>
 		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
+		<flag name="webengine">Use <pkg>kde-apps/khelpcenter</pkg> to access the locally installed KDE Help System Handbook</flag>
+		<flag name="xwayland">Enable Wayland windows screensharing to XWayland applications via <pkg>gui-apps/xwaylandvideobridge</pkg></flag>
 	</use>
 </pkgmetadata>

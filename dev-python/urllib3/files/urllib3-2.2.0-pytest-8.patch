@@ -1,0 +1,112 @@
+From aa8d3dd2535cc125e123e5c2bca38738d6864b2a Mon Sep 17 00:00:00 2001
+From: Ruben Laguna <ruben.laguna@gmail.com>
+Date: Mon, 5 Feb 2024 15:29:35 +0100
+Subject: [PATCH] Fix ssl_version tests for upcoming migration to pytest 8
+
+---
+ dev-requirements.txt                |  2 +-
+ test/contrib/test_pyopenssl.py      |  1 -
+ test/with_dummyserver/test_https.py | 35 ++++++++++++++++++++---------
+ 3 files changed, 26 insertions(+), 12 deletions(-)
+
+diff --git a/test/contrib/test_pyopenssl.py b/test/contrib/test_pyopenssl.py
+index b4799ce802..eaca77ba6f 100644
+--- a/test/contrib/test_pyopenssl.py
++++ b/test/contrib/test_pyopenssl.py
+@@ -38,7 +38,6 @@ def teardown_module() -> None:
+ from ..test_ssl import TestSSL  # noqa: E402, F401
+ from ..test_util import TestUtilSSL  # noqa: E402, F401
+ from ..with_dummyserver.test_https import (  # noqa: E402, F401
+-    TestHTTPS,
+     TestHTTPS_IPV4SAN,
+     TestHTTPS_IPV6SAN,
+     TestHTTPS_TLSv1,
+diff --git a/test/with_dummyserver/test_https.py b/test/with_dummyserver/test_https.py
+index aa22f11879..b8353d758b 100644
+--- a/test/with_dummyserver/test_https.py
++++ b/test/with_dummyserver/test_https.py
+@@ -65,7 +65,7 @@
+ CLIENT_CERT = CLIENT_INTERMEDIATE_PEM
+ 
+ 
+-class TestHTTPS(HTTPSHypercornDummyServerTestCase):
++class BaseTestHTTPS(HTTPSHypercornDummyServerTestCase):
+     tls_protocol_name: str | None = None
+ 
+     def tls_protocol_not_default(self) -> bool:
+@@ -83,11 +83,17 @@ def tls_version(self) -> ssl.TLSVersion:
+     def ssl_version(self) -> int:
+         if self.tls_protocol_name is None:
+             return pytest.skip("Skipping base test class")
+-        attribute = f"PROTOCOL_{self.tls_protocol_name.replace('.', '_')}"
+-        ssl_version = getattr(ssl, attribute, None)
+-        if ssl_version is None:
+-            return pytest.skip(f"ssl.{attribute} isn't available")
+-        return ssl_version  # type: ignore[no-any-return]
++
++        if self.tls_protocol_name == "TLSv1.3" and ssl.HAS_TLSv1_3:
++            return ssl.PROTOCOL_TLS_CLIENT
++        if self.tls_protocol_name == "TLSv1.2" and ssl.HAS_TLSv1_2:
++            return ssl.PROTOCOL_TLSv1_2
++        if self.tls_protocol_name == "TLSv1.1" and ssl.HAS_TLSv1_1:
++            return ssl.PROTOCOL_TLSv1_1
++        if self.tls_protocol_name == "TLSv1" and ssl.HAS_TLSv1:
++            return ssl.PROTOCOL_TLSv1
++        else:
++            return pytest.skip(f"{self.tls_protocol_name} isn't available")
+ 
+     @classmethod
+     def setup_class(cls) -> None:
+@@ -797,6 +803,10 @@ def test_tls_protocol_name_of_socket(self) -> None:
+     def test_ssl_version_is_deprecated(self) -> None:
+         if self.tls_protocol_name is None:
+             pytest.skip("Skipping base test class")
++        if self.ssl_version() == ssl.PROTOCOL_TLS_CLIENT:
++            pytest.skip(
++                "Skipping because ssl_version=ssl.PROTOCOL_TLS_CLIENT is not deprecated"
++            )
+ 
+         with HTTPSConnectionPool(
+             self.host, self.port, ca_certs=DEFAULT_CA, ssl_version=self.ssl_version()
+@@ -964,6 +974,11 @@ def test_default_ssl_context_ssl_min_max_versions(self) -> None:
+         assert ctx.maximum_version == expected_maximum_version
+ 
+     def test_ssl_context_ssl_version_uses_ssl_min_max_versions(self) -> None:
++        if self.ssl_version() == ssl.PROTOCOL_TLS_CLIENT:
++            pytest.skip(
++                "Skipping because ssl_version=ssl.PROTOCOL_TLS_CLIENT is not deprecated"
++            )
++
+         with pytest.warns(
+             DeprecationWarning,
+             match=r"'ssl_version' option is deprecated and will be removed in "
+@@ -977,25 +992,25 @@ def test_ssl_context_ssl_version_uses_ssl_min_max_versions(self) -> None:
+ 
+ 
+ @pytest.mark.usefixtures("requires_tlsv1")
+-class TestHTTPS_TLSv1(TestHTTPS):
++class TestHTTPS_TLSv1(BaseTestHTTPS):
+     tls_protocol_name = "TLSv1"
+     certs = TLSv1_CERTS
+ 
+ 
+ @pytest.mark.usefixtures("requires_tlsv1_1")
+-class TestHTTPS_TLSv1_1(TestHTTPS):
++class TestHTTPS_TLSv1_1(BaseTestHTTPS):
+     tls_protocol_name = "TLSv1.1"
+     certs = TLSv1_1_CERTS
+ 
+ 
+ @pytest.mark.usefixtures("requires_tlsv1_2")
+-class TestHTTPS_TLSv1_2(TestHTTPS):
++class TestHTTPS_TLSv1_2(BaseTestHTTPS):
+     tls_protocol_name = "TLSv1.2"
+     certs = TLSv1_2_CERTS
+ 
+ 
+ @pytest.mark.usefixtures("requires_tlsv1_3")
+-class TestHTTPS_TLSv1_3(TestHTTPS):
++class TestHTTPS_TLSv1_3(BaseTestHTTPS):
+     tls_protocol_name = "TLSv1.3"
+     certs = TLSv1_3_CERTS
+ 

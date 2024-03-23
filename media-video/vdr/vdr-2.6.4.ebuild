@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	sys-libs/libcap"
 DEPEND="${COMMON_DEPEND}
-	>=virtual/linuxtv-dvb-headers-5.3"
+	sys-kernel/linux-headers"
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	media-tv/gentoo-vdr-scripts

@@ -22,7 +22,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="amd64 ~riscv"
 fi
 
 DEPEND="

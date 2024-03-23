@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson
+inherit flag-o-matic meson
 
 DESCRIPTION="Pidgin's GLib Ncurses Toolkit"
 HOMEPAGE="https://keep.imfreedom.org/libgnt/libgnt"
@@ -32,6 +32,11 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855872
+	# https://issues.imfreedom.org/issue/LIBGNT-19/Build-fails-with-LTO
+	filter-lto
+
 	local emesonargs=(
 		-Dpython2=false
 		$(meson_use doc)

@@ -1,0 +1,4 @@
+app-text/xapian-omega
+dev-libs/xapian
+dev-libs/xapian-bindings
+dev-perl/Search-Xapian

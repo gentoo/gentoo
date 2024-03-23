@@ -5,14 +5,19 @@
 		<email>ros@gentoo.org</email>
 		<name>Gentoo ROS Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
 	<upstream>
 		<maintainer status="active">
 			<email>charles@karney.com</email>
 			<name>Charles Karney</name>
 		</maintainer>
-		<doc lang="en">https://geographiclib.sourceforge.io/html</doc>
+		<doc lang="en">https://geographiclib.sourceforge.io/html/</doc>
 		<bugs-to>https://sourceforge.net/p/geographiclib/bugs/</bugs-to>
 		<remote-id type="sourceforge">geographiclib</remote-id>
+		<remote-id type="github">geographiclib/geographiclib</remote-id>
 	</upstream>
 	<longdescription lang="en">
 GeographicLib is a small set of C++ classes for converting between geographic, UTM, UPS, MGRS, and geocentric coordinates, for gravity (e.g., EGM2008), geoid, and geomagnetic field (e.g., WMM2010) calculations, and for solving geodesic problems.

@@ -15,7 +15,7 @@ fi
 
 IUSE="
 	+assistant clang designer distancefieldgenerator gles2-only
-	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
+	+linguist opengl pixeltool +qdbus qdoc qml qtattributionsscanner
 	qtdiag qtplugininfo vulkan +widgets zstd
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
@@ -39,8 +39,8 @@ RDEPEND="
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? (
 		$(llvm_gen_dep '
-			sys-devel/clang:${LLVM_SLOT}
-			sys-devel/llvm:${LLVM_SLOT}
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
 		')
 	)
 	designer? (
@@ -85,6 +85,8 @@ src_configure() {
 		# to lag behind and bundled may work out better for now
 		# https://github.com/litehtml/litehtml/issues/266
 		$(usev assistant -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=ON)
+
+		$(usev designer -DQT_UNITY_BUILD=OFF) # fails to build (QTBUG-122634)
 	)
 
 	qt6-build_src_configure

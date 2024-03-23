@@ -6,7 +6,7 @@ extra_commands="index"
 
 depend() {
 	need net
-	after netmount nfsmount
+	after netmount
 }
 
 start() {

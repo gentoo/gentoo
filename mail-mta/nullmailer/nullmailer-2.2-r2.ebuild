@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,6 +66,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/859529
+	# https://github.com/bruceg/nullmailer/issues/94
+	filter-lto
+
 	# https://github.com/bruceg/nullmailer/pull/31/commits
 	append-lfs-flags #471102
 	econf \

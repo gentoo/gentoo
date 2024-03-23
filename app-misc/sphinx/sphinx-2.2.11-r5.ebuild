@@ -58,6 +58,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #854738
+	append-flags -fno-strict-aliasing
+	filter-lto
 	# This code is no longer maintained and not compatible with modern C/C++ standards, bug #880923
 	append-cflags -std=gnu89
 	append-cxxflags -std=c++11

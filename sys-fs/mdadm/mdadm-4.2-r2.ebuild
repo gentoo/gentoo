@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,6 +59,9 @@ src_compile() {
 
 	# CPPFLAGS won't work for this
 	use udev || append-cflags -DNO_LIBUDEV
+
+	# bug 907082
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
 
 	mdadm_emake all
 }

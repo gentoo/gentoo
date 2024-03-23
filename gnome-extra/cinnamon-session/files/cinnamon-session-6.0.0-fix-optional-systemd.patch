@@ -1,0 +1,21 @@
+From 44ac74ea7e771a35a41235b4e7d2539d4521b626 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Tue, 2 Jan 2024 23:26:20 -0500
+Subject: [PATCH] Remove orphaned include
+
+---
+ cinnamon-session/main.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/cinnamon-session/main.c b/cinnamon-session/main.c
+index 49d1e32..802a1ae 100644
+--- a/cinnamon-session/main.c
++++ b/cinnamon-session/main.c
+@@ -40,7 +40,6 @@
+ #include "csm-session-fill.h"
+ #include "csm-store.h"
+ #include "csm-system.h"
+-#include <systemd/sd-journal.h>
+ 
+ #define CSM_DBUS_NAME "org.gnome.SessionManager"
+ 

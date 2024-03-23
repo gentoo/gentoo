@@ -1,0 +1,22 @@
+--- a/src/reshade_effect_manager.cpp
++++ b/src/reshade_effect_manager.cpp
+@@ -14,7 +14,7 @@
+ 
+ #include <stb_image.h>
+ #define STB_IMAGE_RESIZE_IMPLEMENTATION
+-#include <stb_image_resize.h>
++#include <deprecated/stb_image_resize.h>
+ 
+ #include <unistd.h>
+ #include <sys/types.h>
+--- a/src/steamcompmgr.cpp
++++ b/src/steamcompmgr.cpp
+@@ -108,7 +108,7 @@ static const int g_nBaseCursorScale = 36;
+ #define STB_IMAGE_WRITE_IMPLEMENTATION
+ #include <stb_image.h>
+ #include <stb_image_write.h>
+-#include <stb_image_resize.h>
++#include <deprecated/stb_image_resize.h>
+ 
+ #define GPUVIS_TRACE_IMPLEMENTATION
+ #include "gpuvis_trace_utils.h"

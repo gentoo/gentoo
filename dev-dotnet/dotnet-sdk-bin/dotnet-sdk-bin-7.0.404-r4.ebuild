@@ -3,6 +3,9 @@
 
 EAPI=8
 
+SDK_SLOT="$(ver_cut 1-2)"
+RUNTIME_SLOT="${SDK_SLOT}.14"
+
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
 	https://github.com/dotnet/dotnet/"
@@ -22,16 +25,24 @@ arm64? (
 "
 S="${WORKDIR}"
 
-SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.14"
-SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
-
 LICENSE="MIT"
+SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
 KEYWORDS="amd64 arm arm64"
 
 # STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
 # bug https://bugs.gentoo.org/923430
 RESTRICT="splitdebug strip"
+
+CURRENT_NUGETS_DEPEND="
+	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
+"
+EXTRA_NUGETS_DEPEND="
+	~dev-dotnet/dotnet-runtime-nugets-6.0.25
+"
+NUGETS_DEPEND="
+	${CURRENT_NUGETS_DEPEND}
+	${EXTRA_NUGETS_DEPEND}
+"
 
 RDEPEND="
 	app-crypt/mit-krb5:0/0
@@ -46,8 +57,7 @@ IDEPEND="
 	app-eselect/eselect-dotnet
 "
 PDEPEND="
-	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
-	~dev-dotnet/dotnet-runtime-nugets-6.0.25
+	${NUGETS_DEPEND}
 "
 
 QA_PREBUILT="*"

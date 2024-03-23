@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2023-06-23)
@@ -16,12 +16,6 @@ sys-apps/attr
 # Fails to compile due to missing DT_* symbols
 # fix: https://lore.kernel.org/git/20230606205935.3183276-1-asedeno@google.com/
 ~dev-vcs/git-2.41.0
-
-# Fabian Groffen <grobian@gentoo.org> (2023-06-07)
-# Fails to compile, epoll missing:
-# https://github.com/chriskohlhoff/asio/issues/1289
-# patch: https://bugs.gentoo.org/908025
-~dev-libs/boost-1.82.0
 
 # Fabian Groffen <grobian@gentoo.org> (2014-01-14)
 # util-linux has no business on Solaris systems

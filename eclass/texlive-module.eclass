@@ -85,6 +85,12 @@ HOMEPAGE="https://www.tug.org/texlive/"
 
 IUSE="doc source"
 
+if [[ -z ${TL_PV} ]] \
+	   && [[ ${EAPI} != 7 ]] \
+	   && [[ ${CATEGORY} == dev-texlive ]]; then
+	TL_PV=$(ver_cut 1)
+fi
+
 RDEPEND=">=app-text/texlive-core-${TL_PV:-${PV}}"
 # We do not need anything from SYSROOT:
 #   Everything is built from the texlive install in /

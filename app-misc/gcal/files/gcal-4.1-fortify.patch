@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/925560
+https://git.savannah.gnu.org/cgit/gcal.git/commit/?id=a9d49b3e6535ebf2b5a0b4051e95bb5dc0c27fdb
+
+From a9d49b3e6535ebf2b5a0b4051e95bb5dc0c27fdb Mon Sep 17 00:00:00 2001
+From: Oleg Derevenetz <oleg-derevenetz@yandex.ru>
+Date: Sun, 29 Nov 2020 17:42:07 +0100
+Subject: src/utils.c: fix segfault
+
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -1354,7 +1354,7 @@ month_name (month)
+ 
+ 
+ 	  len = (int) strlen (s) - 1;
+-	  mayname = (char *) my_malloc (len,
++	  mayname = (char *) my_malloc (len + 2,
+ 					ERR_NO_MEMORY_AVAILABLE,
+ 					__FILE__, ((long) __LINE__) - 2L,
+ 					"mayname", 0);
+-- 
+cgit v1.1
