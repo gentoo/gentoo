@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/gpsbabel/gpsbabel.git"
 else
 	SRC_URI="https://github.com/gpsbabel/gpsbabel/archive/gpsbabel_${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/gpsbabel-gpsbabel_${MY_PV}"
 fi
 
