@@ -41,9 +41,6 @@ src_compile() {
 	)
 
 	linux-mod-r1_src_compile
-
-	emake CC="$(tc-getCC)" -C utils
-
 	if use examples; then
 		emake CC="$(tc-getCC)" -C examples
 	fi
