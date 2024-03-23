@@ -1570,7 +1570,7 @@ gcc_do_filter_flags() {
 	declare -A l1_cache_sizes=()
 	# Workaround for inconsistent cache sizes on hybrid P/E cores
 	# See PR111768 (and bug #904426, bug #908523, and bug #915389)
-	if [[ ${CBUILD} == x86_64* || ${CBUILD} == i?86* ]] && [[ ${CFLAGS} == *-march=native* ]] && tc-is-gcc ; then
+	if [[ ${CBUILD} == @(x86_64|i?86)* ]] && [[ ${CFLAGS} == *-march=native* ]] && tc-is-gcc ; then
 		local x
 		local l1_cache_size
 		# Iterate over all cores and find their L1 cache size
