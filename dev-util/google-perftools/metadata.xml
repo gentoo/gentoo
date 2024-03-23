@@ -16,6 +16,26 @@
 			memory usage, but should speed up the allocation/free
 			operations.
 		</flag>
+		<flag name="pagesize-16k">
+			Use 16K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-32k">
+			Use 32K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-64k">
+			Use 64K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-128k">
+			Use 128K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
+		<flag name="pagesize-256k">
+			Use 256K page size for tcmalloc. Larger size makes tcmalloc faster,
+			at the cost of using more space (due to internal fragmentation)
+		</flag>
 		<flag name="debug">
 			Build a set of libraries with debug support (so-called
 			debugalloc). These are available by default but are not needed

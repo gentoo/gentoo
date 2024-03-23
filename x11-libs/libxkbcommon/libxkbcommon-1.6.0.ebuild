@@ -18,13 +18,14 @@ inherit bash-completion-r1 meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
 DESCRIPTION="Keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
 LICENSE="MIT"
+SLOT="0"
+
 IUSE="doc static-libs test tools wayland X"
 RESTRICT="!test? ( test )"
-SLOT="0"
 
 BDEPEND="
 	app-alternatives/yacc
-	doc? ( app-text/doxygen )
+	doc? ( app-text/doxygen[dot] )
 	test? ( ${PYTHON_DEPS} )
 	tools? ( wayland? ( dev-util/wayland-scanner ) )
 "

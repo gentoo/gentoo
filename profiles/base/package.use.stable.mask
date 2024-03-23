@@ -13,10 +13,6 @@
 # Requires llvm-17.
 >=www-client/chromium-118 libcxx lto pgo
 
-# Michał Górny <mgorny@gentoo.org> (2023-10-18)
-# Unblock the support in python-exec while the target is masked.
-dev-lang/python-exec -python_targets_python3_12
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-11)
 # xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
 xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
@@ -37,7 +33,7 @@ sys-block/nbdkit libguestfs
 sci-physics/lammps hip
 
 # Sam James <sam@gentoo.org> (2022-12-07)
-# Needs unstable media-libs/oneVPL
+# Needs unstable media-libs/libvpl
 media-libs/gst-plugins-bad qsv
 media-video/ffmpeg qsv
 
@@ -119,7 +115,6 @@ x11-themes/arc-theme cinnamon
 
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
-sys-apps/earlyoom docs
 sys-apps/earlyoom man
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)

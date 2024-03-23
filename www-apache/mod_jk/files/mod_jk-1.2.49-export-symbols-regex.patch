@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/914237
+https://github.com/apache/tomcat-connectors/commit/ecd005d0792441c4510dc4c2d9348979ab71ddcc
+
+From ecd005d0792441c4510dc4c2d9348979ab71ddcc Mon Sep 17 00:00:00 2001
+From: Rainer Jung <rainer.jung@kippdata.de>
+Date: Fri, 10 Nov 2023 11:38:04 +0100
+Subject: [PATCH] BZ 68117: Fix typo and escaping in libtool flag introduced in
+ 1.2.49.
+
+---
+ apache-2.0/Makefile.apxs.in | 2 +-
+ apache-2.0/Makefile.in      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/apache-2.0/Makefile.apxs.in b/apache-2.0/Makefile.apxs.in
+index 36aeada1c..161616502 100644
+--- a/apache-2.0/Makefile.apxs.in
++++ b/apache-2.0/Makefile.apxs.in
+@@ -21,7 +21,7 @@ top_builddir=@top_builddir@
+ APXS=@APXS@
+ APXSCFLAGS=@APXSCFLAGS@
+ APXSLDFLAGS=@APXSLDFLAGS@
+-JKLDFLAGS=-export-symbols-regex ^jk_module$
++JKLDFLAGS=-export-symbols-regex ^jk_module\$$
+ 
+ COMMON=common
+ JK_INCL=-DUSE_APACHE_MD5 -I${top_builddir}/${COMMON} -I ${top_srcdir}/${COMMON}
+diff --git a/apache-2.0/Makefile.in b/apache-2.0/Makefile.in
+index e63f5c921..a9327743b 100644
+--- a/apache-2.0/Makefile.in
++++ b/apache-2.0/Makefile.in
+@@ -23,7 +23,7 @@ MKDIR=@MKDIR@
+ APXSCFLAGS=@APXSCFLAGS@
+ APXSCPPFLAGS=@APXSCPPFLAGS@
+ APXSLDFLAGS=@APXSLDFLAGS@
+-JKLDFLAGS=-export-symbols-regexp ^jk_module$
++JKLDFLAGS=-export-symbols-regex ^jk_module\$$
+ 
+ CC=@CC@
+ SHELL=@SHELL@

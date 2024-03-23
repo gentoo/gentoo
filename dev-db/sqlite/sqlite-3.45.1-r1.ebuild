@@ -24,7 +24,7 @@ else
 	"
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="public-domain"
@@ -52,6 +52,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.45.1-ppc64-ptr.patch
+	"${FILESDIR}"/${P}-lto.patch
 )
 
 _fossil_fetch() {

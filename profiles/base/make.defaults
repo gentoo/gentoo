@@ -166,10 +166,10 @@ POSTGRES_TARGETS="postgres15"
 #
 PHP_TARGETS="php8-1"
 
-# Alfredo Tupone <tupone@gentoo.org> (2022-11-16)
+# Alfredo Tupone <tupone@gentoo.org> (2024-03-15)
 #
 # Default ADA target
-ADA_TARGET="gnat_2021"
+ADA_TARGET="gcc_12"
 
 # Marek Szuba <marecki@gentoo.org> (2020-10-15)
 # Default targets for lua{,-single}.eclass

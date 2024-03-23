@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,7 +65,6 @@ src_prepare() {
 	sed -e "s/= gcc$/= $(tc-getCC)/" \
 		-e "s/-O3/${CFLAGS} -pthread/" \
 		-e "s/= ar$/= $(tc-getAR)/" \
-		-e "s/= ranlib$/= $(tc-getRANLIB)/" \
 		-e "s/= ranlib$/= $(tc-getRANLIB)/" \
 		-e "/^LDFLAGS/ s/$/ ${LDFLAGS}/" \
 		src/Make.inc/Makefile.inc.i686_pc_linux3 > src/Makefile.inc || die

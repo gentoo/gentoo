@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,13 +23,15 @@ else
 fi
 
 LICENSE="MIT Apache-2.0"
+# Dependent crate licenses
 LICENSE+="
-	Apache-2.0 BSD CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 Unlicense
-	ZLIB
+	Apache-2.0 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016
+	Unlicense ZLIB
 "
 SLOT="0"
 
 DEPEND="app-arch/xz-utils
+	app-arch/zstd:=
 	dev-db/sqlite:3
 	dev-libs/openssl:="
 RDEPEND="${DEPEND}"
@@ -46,15 +48,16 @@ src_unpack() {
 }
 
 src_compile() {
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	for crate in crates/*; do
-		pushd crates/arti || die
+		pushd "${crate}" || die
 		cargo_src_compile
 		popd >/dev/null || die
 	done
 }
 
 src_install() {
-	pushd crates/arti >/dev/null || due
+	pushd crates/arti >/dev/null || die
 
 	cargo_src_install
 	newdoc src/arti-example-config.toml arti.toml

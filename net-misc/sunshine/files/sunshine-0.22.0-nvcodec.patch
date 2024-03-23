@@ -1,0 +1,27 @@
+From 36b5a18ffd0cdf379b579db91bfaacc46e8c4757 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 18 Feb 2024 10:25:25 +0000
+Subject: [PATCH] Be less strict about the nv-codec-headers version
+
+Using the bundled version is awkward. Restrict the major version only
+and deal with any issues later.
+---
+ src/nvenc/nvenc_base.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/nvenc/nvenc_base.cpp b/src/nvenc/nvenc_base.cpp
+index b9eba5a..e11c4e2 100644
+--- a/src/nvenc/nvenc_base.cpp
++++ b/src/nvenc/nvenc_base.cpp
+@@ -11,7 +11,7 @@
+ // - NV_ENC_*_VER definitions where the value inside NVENCAPI_STRUCT_VERSION() was increased
+ // - Incompatible struct changes in nvEncodeAPI.h (fields removed, semantics changed, etc.)
+ // - Test both old and new drivers with all supported codecs
+-#if NVENCAPI_VERSION != MAKE_NVENC_VER(12U, 0U)
++#if NVENCAPI_MAJOR_VERSION != 12
+   #error Check and update NVENC code for backwards compatibility!
+ #endif
+ 
+-- 
+2.43.0
+

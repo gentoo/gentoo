@@ -20,7 +20,7 @@ RESTRICT+=" test "
 S="${WORKDIR}/kubernetes-${PV}"
 
 src_compile() {
-	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
+	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" FORCE_HOST_GO=yes \
 	emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
 }
 

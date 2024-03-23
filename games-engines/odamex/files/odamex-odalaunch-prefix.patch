@@ -1,0 +1,64 @@
+From 04e38b9fcb8a71a7b0b1b5bc1c1f229f2ff7a0a8 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 18 Mar 2024 22:54:16 +0000
+Subject: [PATCH] Always define INSTALL_PREFIX to fix paths for odalaunch
+
+Without INSTALL_PREFIX, it was falling back to the current directory and
+failing to launch the game.
+---
+ CMakeLists.txt        | 5 +++++
+ client/CMakeLists.txt | 5 -----
+ server/CMakeLists.txt | 5 -----
+ 3 files changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 147060cb1..97c447424 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,11 @@ include(GNUInstallDirs OPTIONAL)
+ add_definitions(-DINSTALL_BINDIR="${CMAKE_INSTALL_BINDIR}")
+ add_definitions(-DINSTALL_DATADIR="${CMAKE_INSTALL_DATADIR}")
+ 
++# Set up FHS installation path
++if(NOT APPLE AND NOT WIN32)
++  add_definitions(-DINSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
++endif()
++
+ if(WIN32)
+   set(USE_INTERNAL_LIBS 1)
+ else()
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index 56caf04f8..0559564c7 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -128,11 +128,6 @@ if(APPLE)
+     ${AUDIOUNIT_LIBRARY})
+ endif()
+ 
+-# Set up FHS installation path
+-if(NOT APPLE AND NOT WIN32)
+-  add_definitions(-DINSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+-endif()
+-
+ # Client target
+ if(TARGET SDL2::SDL2 OR TARGET SDL::SDL)
+ 
+diff --git a/server/CMakeLists.txt b/server/CMakeLists.txt
+index e5b54d8de..9afc6c2c6 100644
+--- a/server/CMakeLists.txt
++++ b/server/CMakeLists.txt
+@@ -37,11 +37,6 @@ if(WIN32 AND NOT MSVC)
+   add_definitions(-DWINVER=0x0500)
+ endif()
+ 
+-# Set up FHS installation path
+-if(NOT APPLE AND NOT WIN32)
+-  add_definitions(-DINSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+-endif()
+-
+ add_executable(odasrv
+   ${COMMON_SOURCES} ${SERVER_SOURCES} ${SERVER_WIN32_SOURCES})
+ odamex_target_settings(odasrv)
+-- 
+2.43.2
+

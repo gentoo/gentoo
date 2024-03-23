@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
-inherit meson lua-single python-any-r1
+inherit flag-o-matic meson lua-single python-any-r1
 
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
@@ -75,6 +75,13 @@ pkg_setup() {
 }
 
 src_configure() {
+	# This file is severely broken w.r.t. strict-aliasing and upstream acknowledges it:
+	# https://github.com/rkd77/elinks/blob/d05ce90b35d82109aab320b490e3ca54aa6df057/src/util/lists.h#L14
+	# https://github.com/rkd77/elinks/blob/d05ce90b35d82109aab320b490e3ca54aa6df057/src/meson.build#L44
+	#
+	# Although they force fno-strict-aliasing, we should also not trust the LTO either.
+	filter-lto
+
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		-Dhtmldoc=false

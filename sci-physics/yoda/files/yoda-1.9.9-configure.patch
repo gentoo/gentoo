@@ -1,0 +1,56 @@
+From a9267acfaadf93cd4fbe6d5a91e766bfb3bf154a Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Fri, 15 Mar 2024 20:36:32 +0000
+Subject: [PATCH 1/2] Fix configure failure for uncommon shells
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 86de6b35..e9db8ee7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -131,11 +131,11 @@ if test x$enable_pyext = xyes; then
+     enable_pyext=no
+   fi
+ fi
+-AM_CONDITIONAL(ENABLE_PYEXT, [test x$enable_pyext == xyes])
++AM_CONDITIONAL(ENABLE_PYEXT, [test x$enable_pyext = xyes])
+ 
+ 
+ ## Cython checks
+-if test x$enable_pyext == xyes; then
++if test x$enable_pyext = xyes; then
+   AM_CHECK_CYTHON([0.24], [:], [:])
+   if test x$CYTHON_FOUND = xyes; then
+     AC_PATH_PROGS(CYTHON, [$CYTHON cython-$PYTHON_VERSION cython$PYTHON_VERSION cython-$PYTHON_MAJOR_VERSION cython$PYTHON_MAJOR_VERSION cython])
+-- 
+GitLab
+
+
+From 62f321a54d83a3937d5061759ca04b97aa8e2616 Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Fri, 15 Mar 2024 20:41:19 +0000
+Subject: [PATCH 2/2] Update configure.ac
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e9db8ee7..6a8a34cb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -194,7 +194,7 @@ AC_CONFIG_FILES([yodaenv.sh yoda.pc])
+ 
+ AC_OUTPUT
+ 
+-if test x$enable_pyext == xyes; then
++if test x$enable_pyext = xyes; then
+    cat <<EOF
+ 
+ ************************************************************
+-- 
+GitLab
+

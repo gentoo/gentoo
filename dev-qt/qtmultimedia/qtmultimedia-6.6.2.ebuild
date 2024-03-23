@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 IUSE="+X alsa eglfs +ffmpeg gstreamer opengl pulseaudio qml v4l vaapi vulkan"
@@ -24,7 +24,7 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? (
-		~dev-qt/qtbase-${PV}:6[X=,eglfs=]
+		~dev-qt/qtbase-${PV}:6[X=,concurrent,eglfs=]
 		media-video/ffmpeg:=[vaapi?]
 		X? (
 			x11-libs/libX11

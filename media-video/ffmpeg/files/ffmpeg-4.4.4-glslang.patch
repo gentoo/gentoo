@@ -1,0 +1,25 @@
+Bug: https://bugs.gentoo.org/926551
+
+diff -Naur a/configure b/configure
+--- a/configure	2024-03-09 22:07:52.005888104 +0000
++++ b/configure	2024-03-09 22:08:18.634656978 +0000
+@@ -6374,7 +6374,7 @@
+ enabled libfontconfig     && require_pkg_config libfontconfig fontconfig "fontconfig/fontconfig.h" FcInit
+ enabled libfreetype       && require_pkg_config libfreetype freetype2 "ft2build.h FT_FREETYPE_H" FT_Init_FreeType
+ enabled libfribidi        && require_pkg_config libfribidi fribidi fribidi.h fribidi_version_info
+-enabled libglslang        && require_cpp libglslang glslang/SPIRV/GlslangToSpv.h "glslang::TIntermediate*" -lglslang -lMachineIndependent -lOSDependent -lHLSL -lOGLCompiler -lGenericCodeGen -lSPVRemapper -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++
++enabled libglslang        && require_cpp libglslang glslang/SPIRV/GlslangToSpv.h "glslang::TIntermediate*" -lglslang -lSPVRemapper -lSPIRV -lSPIRV-Tools-opt -lSPIRV-Tools -lpthread -lstdc++
+ enabled libgme            && { check_pkg_config libgme libgme gme/gme.h gme_new_emu ||
+                                require libgme gme/gme.h gme_new_emu -lgme -lstdc++; }
+ enabled libgsm            && { for gsm_hdr in "gsm.h" "gsm/gsm.h"; do
+diff -Naur a/libavfilter/glslang.cpp b/libavfilter/glslang.cpp
+--- a/libavfilter/glslang.cpp	2023-04-12 19:01:50.000000000 +0100
++++ b/libavfilter/glslang.cpp	2024-03-09 22:08:36.210161783 +0000
+@@ -17,6 +17,7 @@
+  */
+ 
+ #include <pthread.h>
++#include <cassert>
+ 
+ extern "C" {
+ #include "libavutil/mem.h"

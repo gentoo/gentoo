@@ -14,7 +14,7 @@ S="${WORKDIR}/desktop-${PV/_/-}"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="doc dolphin nautilus test webengine"
 RESTRICT="!test? ( test )"
 

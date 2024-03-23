@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PN="ZMusic"
 DESCRIPTION="GZDoom's music system as a standalone library"
@@ -35,6 +35,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860117
+	# https://github.com/ZDoom/ZMusic/issues/56
+	filter-lto
+
 	local mycmakeargs=(
 		-DFORCE_INTERNAL_ZLIB=OFF
 		-DFORCE_INTERNAL_GME=ON

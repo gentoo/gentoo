@@ -11,5 +11,4 @@ sys-libs/compiler-rt clang
 sys-devel/clang-runtime compiler-rt libcxx -sanitize
 # sys-libs/compiler-rt-sanitizers clang
 
-sys-libs/libcxx libunwind libcxxabi
-sys-libs/libcxxabi libunwind
+sys-libs/libcxx libcxxabi

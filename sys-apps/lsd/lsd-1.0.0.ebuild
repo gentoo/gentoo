@@ -175,7 +175,7 @@ SRC_URI="https://github.com/lsd-rs/lsd/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}"
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 
 QA_FLAGS_IGNORED="usr/bin/lsd"
 

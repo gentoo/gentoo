@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/chetramey.asc
-inherit flag-o-matic multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript verify-sig
+inherit flag-o-matic multilib multilib-minimal preserve-libs toolchain-funcs verify-sig
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-8.1-patches/
@@ -189,8 +189,6 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi ; then
-		gen_usr_ldscript -a readline history #4411
-
 		if use utils && ! tc-is-cross-compiler; then
 			dobin examples/rlfe/rlfe
 		fi

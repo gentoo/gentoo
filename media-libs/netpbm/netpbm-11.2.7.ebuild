@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/netpbm-10.86.21-build.patch
 	"${FILESDIR}"/netpbm-11.0.0-misc-deps.patch
 	"${FILESDIR}"/netpbm-11.1.0-fix-clang-O2.patch
+	"${FILESDIR}"/netpbm-11.2.7-fix-pnmcolormap2-test.patch
 )
 
 netpbm_libtype() {
@@ -160,10 +161,13 @@ src_prepare() {
 	fi
 
 	# this test requires LC_ALL=en_US.iso88591, not available on musl
+	# ppmpat-random is broken on musl
+	# bug #907295
 	if use elibc_musl; then
 		sed -i \
 			-e 's:pbmtext-iso88591.*::' \
-			test/Test-Order || die
+			-e 's:ppmpat-random.*::' \
+			-i test/Test-Order || die
 	fi
 }
 

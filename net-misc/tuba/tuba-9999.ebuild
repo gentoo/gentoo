@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SLOT="0"
 
 # TODO: optional dep on libspelling-1
 DEPEND="
-	app-crypt/libsecret[introspection]
+	app-crypt/libsecret[introspection,vala]
 	>=dev-libs/glib-2.76.0:2
 	>=dev-libs/json-glib-1.4.4[introspection]
 	>=dev-libs/libgee-0.8.5:0.8[introspection]
@@ -25,7 +25,7 @@ DEPEND="
 	>=gui-libs/gtk-4.11.3:4[gstreamer,introspection]
 	>=gui-libs/libadwaita-1.4:1[introspection,vala]
 	>=gui-libs/gtksourceview-5.6.0:5[introspection,vala]
-	net-libs/libsoup:3.0[introspection]
+	net-libs/libsoup:3.0[introspection,vala]
 "
 RDEPEND="
 	${DEPEND}

@@ -90,6 +90,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859784
+	# https://github.com/POV-Ray/povray/issues/458
+	# Upstream activity is dead for 3 years now, so don't hold
+	# your breath for a fix.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Fixes bug 71255
 	if [[ $(get-flag march) == k6-2 ]]; then
 		filter-flags -fomit-frame-pointer

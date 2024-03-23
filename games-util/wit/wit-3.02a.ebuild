@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="wiimms-iso-tools.source-${PV}"
 
@@ -32,6 +32,13 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859319
+	#
+	# After investigation, the build system also uses -fno-strict-aliasing
+	# so do not trust it with LTO either, even if the type-mismatch gets fixed.
+	filter-lto
+
 	export NO_FUSE=$(usex fuse 0 1)
 	export NO_ZLIB=$(usex zlib 0 1)
 

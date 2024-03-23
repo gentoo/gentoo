@@ -1,9 +1,0 @@
-Don't rely on the cmake macro to pass -fno-lto to the problematic
-FastJmp.cpp so that it works if users add -flto themselves.
---- a/common/CMakeLists.txt
-+++ b/common/CMakeLists.txt
-@@ -275,3 +275,3 @@
- 
--if (USE_GCC AND CMAKE_INTERPROCEDURAL_OPTIMIZATION)
-+if (USE_GCC)
- 	# GCC LTO doesn't work with asm statements

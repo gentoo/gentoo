@@ -74,6 +74,7 @@ src_prepare() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		optfeature "konsole view" "kde-apps/konsolepart:5" "kde-apps/konsole:5"
 		optfeature "Markdown text previews" "kde-misc/markdownpart:${SLOT}"
 		optfeature "PDF/PS and RAW image thumbnails" "kde-apps/thumbnailers:${SLOT}"
 		optfeature "video thumbnails" "kde-apps/ffmpegthumbs:${SLOT}"

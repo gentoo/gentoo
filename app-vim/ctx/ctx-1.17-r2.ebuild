@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: display current scope context in a C file"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=208"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc x86"
 
 VIM_PLUGIN_HELPURI="https://www.vim.org/scripts/script.php?script_id=208"
 

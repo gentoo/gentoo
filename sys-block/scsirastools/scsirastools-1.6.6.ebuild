@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Serviceability for SCSI Disks and Arrays"
 HOMEPAGE="http://scsirastools.sourceforge.net/"
@@ -30,6 +30,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863719
+	# Upstream sourceforge; dead for 6 years; no bug filed.
+	filter-lto
+
 	econf --sbindir=/usr/sbin
 }
 

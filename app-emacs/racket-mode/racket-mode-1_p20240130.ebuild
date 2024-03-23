@@ -20,7 +20,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"

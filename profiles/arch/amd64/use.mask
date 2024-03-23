@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas works on x86_64
+-atlas
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper works on x86_64
+-jasper
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2023-12-10)
 # cuDNN works here
 -cudnn

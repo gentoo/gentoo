@@ -67,7 +67,6 @@ LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/python-dateutil-2.6[${PYTHON_USEDEP}]
