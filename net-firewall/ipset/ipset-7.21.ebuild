@@ -21,6 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${PN}-bash-completion.patch" )
+
 DOCS=( ChangeLog INSTALL README UPGRADE )
 
 # configurable from outside, e.g. /etc/portage/make.conf

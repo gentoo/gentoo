@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="An open-source C implementation of the RPKI/Router Protocol client"
 HOMEPAGE="https://rtrlib.realmv6.org/"
@@ -32,6 +32,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861581
+	# https://github.com/rtrlib/rtrlib/issues/287
+	#
+	# Do not trust LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DRTRLIB_TRANSPORT_SSH=$(usex ssh)
 	)

@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/925419
+https://bugzilla.redhat.com/2190057
+https://src.fedoraproject.org/rpms/psacct/blob/rawhide/f/psacct-6.6.4-sprintf-buffer-overflow.patch
+
+--- a/dev_hash.c
++++ b/dev_hash.c
+@@ -147,7 +147,7 @@ static void setup_devices(char *dirname)
+     {
+       char *fullname = (char *) alloca ((strlen (dirname)
+                                          + NAMLEN (dp)
+-                                         + 1) * sizeof (char));
++                                         + 2) * sizeof (char));  /* slash + null; Fedora BZ#2190057 */
+ 
+       (void)sprintf (fullname, "%s/%s", dirname, dp->d_name);
+       if (stat (fullname, &sp))

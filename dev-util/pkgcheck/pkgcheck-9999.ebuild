@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,17 +29,17 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.21[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.10.7[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.25[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
-	dev-libs/tree-sitter
-	>=dev-libs/tree-sitter-bash-0.20.4
+	>=dev-libs/tree-sitter-0.20.9
+	>=dev-libs/tree-sitter-bash-0.20.5
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	>=dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
+	>=dev-python/tree-sitter-0.20.4[${PYTHON_USEDEP}]
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode

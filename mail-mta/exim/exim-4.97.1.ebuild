@@ -12,6 +12,7 @@ socks5 spf sqlite srs +ssl syslog tdb tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
+	!dane? ( ssl? ( gnutls ) )
 	dmarc? ( dkim spf )
 	dkim? ( ssl !gnutls )
 	gnutls? ( ssl )
@@ -19,12 +20,14 @@ REQUIRED_USE="
 	|| ( berkdb gdbm tdb )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
-# for x86 and amd64 only, due to this, repoman won't allow depending on
-# gnutls[dane] for all else.  Because we cannot express USE=dane when
+# for x86 and amd64 only (probably due to unbound dep)
+# Exim supports it but we cannot express the dep USE=dane when
 # USE=gnutls is in effect only in package.use.mask, the only option we
 # have left is to a) ignore the dependency (but that results in bug
 # #661164) or b) mask the usage of USE=dane with USE=gnutls.  Both are
-# incorrect, but b) is the only "correct" view from repoman.
+# incorrect, but b) is the only "correct" view from dep-pointofview.
+# Bug #925108 showed that DANE is basically non-optional with OpenSSL,
+# so we make -dane mandatory to use gnutls.  Bleh.
 # We cannot express a required use for berkdb/gdbm/tdb correctly because
 # berkdb and gdbm are both enabled in base profile
 

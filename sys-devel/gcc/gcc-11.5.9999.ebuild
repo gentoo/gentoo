@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,7 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	# bug #830454
 	RDEPEND="elibc_glibc? ( sys-libs/glibc[cet(-)?] )"
 	DEPEND="${RDEPEND}"
-	BDEPEND=">=${CATEGORY}/binutils-2.30[cet(-)?]"
+	BDEPEND="amd64? ( >=${CATEGORY}/binutils-2.30[cet(-)?] )"
 fi
 
 src_prepare() {

@@ -16,14 +16,6 @@
 		powers Doom is free; Freedoom complements this with free levels,
 		artwork, sound effects and music to make a completely free game.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>vilhelm.gray@gmail.com</email>
-		<name>William Breathitt Gray</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>

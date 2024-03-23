@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_COMMIT="29ae3ed4d5b83eec43598d6cd7949bccb41c8083"
 DESCRIPTION="A very small C compiler for ix86/amd64"
@@ -54,6 +54,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# fails tests
+	# https://bugs.gentoo.org/866815
+	#
+	# Also distributes static libraries:
+	# https://bugs.gentoo.org/926120
+	filter-lto
+
 	local libc
 
 	use test && unset CFLAGS LDFLAGS # Tests run with CC=tcc etc, they will fail hard otherwise

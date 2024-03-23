@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,7 @@ RDEPEND="
 	')
 	acct-group/rspamd
 	acct-user/rspamd
+	app-arch/libarchive:=
 	app-arch/zstd:=
 	dev-db/sqlite:3
 	dev-libs/glib:2
@@ -109,12 +110,20 @@ src_configure() {
 		-DENABLE_JEMALLOC=$(usex jemalloc ON OFF)
 		-DENABLE_LUAJIT=$(usex lua_single_target_luajit ON OFF)
 		-DENABLE_PCRE2=ON
+
+		-DBUILD_TESTING=$(usex test ON OFF)
 	)
 	cmake_src_configure
 }
 
 src_test() {
-	cmake_build run-test
+	# These variables ensure tests use Lua scripts from this package rather
+	# than the installed version. However, rspamd always first attempts to load
+	# from /etc/rspamd/lua, with no method to override this behavior.
+	LUA_PATH="${S}/contrib/lua-?/?.lua" \
+	LUALIBDIR="${S}/lualib" \
+	RULESDIR="${S}/lualib" \
+	cmake_src_test
 }
 
 src_install() {

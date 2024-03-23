@@ -14,7 +14,7 @@
 		system (IDS/IPS) developed by Sourcefire. Combining the benefits of
 		signature, protocol, and anomaly-based inspection, Snort is the most
 		widely deployed IDS/IPS technology worldwide. With millions of downloads
-		and approximately 300,000 registered users, Snort has become the de facto 
+		and approximately 300,000 registered users, Snort has become the de facto
 		standard for IPS.
 	</longdescription>
 	<upstream>
@@ -23,8 +23,8 @@
 			<name>Snort Team</name>
 		</maintainer>
 		<changelog>http://www.snort.org/snort-downloads</changelog>
-		<doc>http://www.snort.org/docs</doc>
-		<bugs-to>http://www.snort.org/snort-downloads/submit-a-bug/</bugs-to>
+		<doc>https://snort.org/documents#OfficialDocumentation</doc>
+		<bugs-to>https://snort.org/community#bugs</bugs-to>
 	</upstream>
 	<use>
 		<flag name="control-socket">
@@ -34,7 +34,7 @@
 			Enables extended file inspection capabilities.
 		</flag>
 		<flag name="gre">
-			Enable support for inspecting and processing Generic Routing 
+			Enable support for inspecting and processing Generic Routing
 			Encapsulation (GRE) packet headers. Only needed if you are
 			monitoring GRE tunnels.
 		</flag>
@@ -62,12 +62,12 @@
 			and implement application detection. Requires <pkg>dev-lang/luajit</pkg>.
 		</flag>
 		<flag name="perfprofiling">
-			Enables support for preprocessor and rule performance profiling 
+			Enables support for preprocessor and rule performance profiling
 			using the perfmonitor preprocessor.
 		</flag>
 		<flag name="ppm">
 			Enables support for setting per rule or per packet latency limits.
-			Helps protect against introducing network latency with inline 
+			Helps protect against introducing network latency with inline
 			deployments.
 		</flag>
 		<flag name="react">
@@ -86,17 +86,17 @@
 			--enable-perfprofiling and --enable-ppm.
 		</flag>
 		<flag name="reload-error-restart">
-			Enables support for completely restarting snort if an error is 
+			Enables support for completely restarting snort if an error is
 			detected during a reload.
 		</flag>
 		<flag name="active-response">
-			Enables support for automatically sending TCP resets and ICMP 
+			Enables support for automatically sending TCP resets and ICMP
 			unreachable messages to terminate connections. Used with inline
 			deployments.
 		</flag>
 		<flag name="flexresp3">
 			Enables support for new flexable response preprocessor for enabling
-			connection tearing for inline deployments. Replaces flexresp and 
+			connection tearing for inline deployments. Replaces flexresp and
 			flexresp2.
 		</flag>
 		<flag name="large-pcap-64bit">

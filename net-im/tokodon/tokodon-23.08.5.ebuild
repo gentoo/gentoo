@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/tokodon/"
 
 LICENSE="CC-BY-SA-4.0 GPL-2+ GPL-3+ || ( LGPL-2.1+ LGPL-3+ ) MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 DEPEND="
 	>=dev-libs/kirigami-addons-0.10.0:5

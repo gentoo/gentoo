@@ -22,7 +22,7 @@ net-libs/libsoup gssapi samba vala
 net-libs/glib-networking gnome libproxy
 net-misc/wget metalink uuid
 sys-apps/dbus selinux elogind systemd
-app-text/doxygen clang doxysearch qt5 gui
+app-text/doxygen clang doxysearch gui
 app-text/ghostscript-gpl cups
 app-text/texlive-core cjk
 

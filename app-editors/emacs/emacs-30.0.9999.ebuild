@@ -169,9 +169,10 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
-# Suppress false positive QA warnings #898304
+# Suppress false positive QA warnings #898304 #925091
 QA_CONFIG_IMPL_DECL_SKIP=(
-	malloc_{set,get}_state MIN static_assert alignof unreachable
+	malloc_set_state malloc_get_state MIN static_assert alignof unreachable
+	statvfs64 re_set_syntax re_compile_pattern re_search re_match
 )
 
 src_prepare() {
@@ -450,11 +451,11 @@ src_test() {
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
-	mkdir "${T}"/gnupg || die
+	mkdir "${T}"/gpg || die
 	local f
-	for f in S.gpg-agent{,.browser,.extra,.ssh}; do
-		printf "%%Assuan%%\nsocket=%s\n" "${T}/gnupg/${f}" \
-			> "test/lisp/gnus/mml-sec-resources/${f}" || die
+	for f in browser extra ssh; do
+		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
+			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
 	done
 
 	# See test/README for possible options

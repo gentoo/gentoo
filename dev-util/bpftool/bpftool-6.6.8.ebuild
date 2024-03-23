@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit estack linux-info optfeature python-any-r1 bash-completion-r1 toolchain-funcs
 
 MY_PV="${PV/_/-}"
@@ -88,6 +88,9 @@ src_prepare() {
 
 	# dev-python/docutils installs rst2man.py, not rst2man
 	sed -i -e 's/rst2man/rst2man.py/g' Documentation/Makefile || die
+
+	# remove -Werror (bug 887981)
+	sed -i -e 's/\-Werror//g' ../../lib/bpf/Makefile || die
 }
 
 bpftool_make() {

@@ -1,0 +1,78 @@
+From e3b1fe06a2593edcaf33f106b2f77679cd1ea9c8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 15 Mar 2024 12:39:45 +0100
+Subject: [PATCH] Switch okular headers to okular5
+
+Otherwise it will be using okular6's.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ extras/okularodpgenerator/OkularOdpGenerator.cpp | 2 +-
+ extras/okularodpgenerator/OkularOdpGenerator.h   | 6 +++---
+ extras/okularodtgenerator/OkularOdtGenerator.cpp | 2 +-
+ extras/okularodtgenerator/OkularOdtGenerator.h   | 6 +++---
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/extras/okularodpgenerator/OkularOdpGenerator.cpp b/extras/okularodpgenerator/OkularOdpGenerator.cpp
+index 823d039b3b0..a4614f38f6b 100644
+--- a/extras/okularodpgenerator/OkularOdpGenerator.cpp
++++ b/extras/okularodpgenerator/OkularOdpGenerator.cpp
+@@ -33,7 +33,7 @@
+ #include <KoDocumentInfo.h>
+ #include <KoGlobal.h>
+ 
+-#include <okular/core/page.h>
++#include <okular5/core/page.h>
+ 
+ #include <KLocalizedString>
+ 
+diff --git a/extras/okularodpgenerator/OkularOdpGenerator.h b/extras/okularodpgenerator/OkularOdpGenerator.h
+index 9107c52c52b..5564ec7f881 100644
+--- a/extras/okularodpgenerator/OkularOdpGenerator.h
++++ b/extras/okularodpgenerator/OkularOdpGenerator.h
+@@ -22,9 +22,9 @@
+ 
+ #include "kookulargenerator_odp_export.h"
+ 
+-#include <okular/core/generator.h>
+-#include <okular/core/document.h>
+-#include <okular/core/version.h>
++#include <okular5/core/generator.h>
++#include <okular5/core/document.h>
++#include <okular5/core/version.h>
+ 
+ class KoPADocument;
+ 
+diff --git a/extras/okularodtgenerator/OkularOdtGenerator.cpp b/extras/okularodtgenerator/OkularOdtGenerator.cpp
+index 9ba114d6080..bccfb11a068 100644
+--- a/extras/okularodtgenerator/OkularOdtGenerator.cpp
++++ b/extras/okularodtgenerator/OkularOdtGenerator.cpp
+@@ -41,7 +41,7 @@
+ #include <KoTextLayoutRootArea.h>
+ #include <KoCharAreaInfo.h>
+ 
+-#include <okular/core/page.h>
++#include <okular5/core/page.h>
+ 
+ 
+ OkularOdtGenerator::OkularOdtGenerator( QObject *parent, const QVariantList &args )
+diff --git a/extras/okularodtgenerator/OkularOdtGenerator.h b/extras/okularodtgenerator/OkularOdtGenerator.h
+index d3e9692b385..994a81aae2c 100644
+--- a/extras/okularodtgenerator/OkularOdtGenerator.h
++++ b/extras/okularodtgenerator/OkularOdtGenerator.h
+@@ -22,9 +22,9 @@
+ 
+ #include "kookulargenerator_odt_export.h"
+ 
+-#include <okular/core/generator.h>
+-#include <okular/core/document.h>
+-#include <okular/core/version.h>
++#include <okular5/core/generator.h>
++#include <okular5/core/document.h>
++#include <okular5/core/version.h>
+ 
+ class KWDocument;
+ 
+-- 
+2.44.0
+

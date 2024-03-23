@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${PN}${PV}_src"
 
@@ -22,6 +22,14 @@ S="${WORKDIR}"/${PN}${PV}/src
 PATCHES=( "${FILESDIR}"/${PV}-make.patch )
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862276
+	# Fixed upstream in later releases
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	tc-export CXX
 }
 

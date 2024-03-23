@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake desktop xdg-utils pax-utils
+inherit cmake desktop flag-o-matic xdg-utils pax-utils
 
 if [[ ${PV} == *9999 ]]
 then
@@ -153,6 +153,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #891225 (https://bugs.dolphin-emu.org/issues/11481, QTBUG-61710)
+	use gui && filter-lto
+
 	local mycmakeargs=(
 		# Use ccache only when user did set FEATURES=ccache (or similar)
 		# not when ccache binary is present in system (automagic).

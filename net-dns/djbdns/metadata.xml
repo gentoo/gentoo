@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>mjo@gentoo.org</email>
-  <name>Michael Orlitzky</name>
-</maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <use>
+    <!-- leave this global flag defined here to avoid a pkgcheck warning -->
+    <flag name="ipv6">
+      Apply Fefe's patch (https://www.fefe.de/dns/) for ipv6 support.
+    </flag>
+  </use>
 </pkgmetadata>

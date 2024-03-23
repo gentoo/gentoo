@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,9 +27,9 @@ S="${WORKDIR}/${PN}"
 
 src_compile() {
 	echo "$(tc-getCXX) ${CXXFLAGS} -c -o main.o main.cpp"
-	$(tc-getCXX) ${CXXFLAGS} -c -o main.o -I/usr/include/taglib main.cpp
+	$(tc-getCXX) ${CXXFLAGS} -c -o main.o -I/usr/include/taglib main.cpp || die
 	echo "$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o iripdb main.o -lz -lm -ltag -lstdc++"
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o iripdb main.o -lz -lm -ltag -lstdc++
+	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o iripdb main.o -lz -lm -ltag -lstdc++ || die
 }
 
 src_install() {

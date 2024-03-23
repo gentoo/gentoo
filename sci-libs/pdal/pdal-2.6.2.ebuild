@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A C++ library for translating and manipulating point cloud data"
 HOMEPAGE="https://pdal.io/"
@@ -39,6 +39,16 @@ DEPEND="
 S="${WORKDIR}/PDAL-${PV}-src"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862915
+	# https://github.com/PDAL/PDAL/issues/3836
+	#
+	# only occurs inside unwind support
+	if use debug; then
+		append-flags -fno-strict-aliasing
+		filter-lto
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_PLUGIN_PGPOINTCLOUD="$(usex postgres)"
 		-DWITH_COMPLETION=ON

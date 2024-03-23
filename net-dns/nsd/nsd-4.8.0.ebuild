@@ -21,7 +21,7 @@ else
 		SRC_URI="https://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 		S="${WORKDIR}"/${MY_P}
 
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="amd64 x86"
 	fi
 fi
 

@@ -14,7 +14,7 @@ DESCRIPTION="Library for retrieval of weather information including forecasts an
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64"
 fi
 LICENSE="LGPL-2+"
 SLOT="6"

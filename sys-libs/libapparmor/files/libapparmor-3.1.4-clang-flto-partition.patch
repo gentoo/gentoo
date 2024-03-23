@@ -1,0 +1,33 @@
+https://gitlab.com/apparmor/apparmor/-/commit/d8bb0435c2b283fe9eed2a6db9a0b09ac2566c0e
+From d8bb0435c2b283fe9eed2a6db9a0b09ac2566c0e Mon Sep 17 00:00:00 2001
+From: John Johansen <john@jjmx.net>
+Date: Sun, 25 Feb 2024 03:31:01 +0000
+Subject: [PATCH] Merge makefiles: test for support of flto-partition flag
+--- a/configure.ac
++++ b/configure.ac
+@@ -92,6 +92,13 @@ if test "$ac_cv_prog_cc_c99" = "no"; then
+   AC_MSG_ERROR([C99 mode is required to build libapparmor])
+ fi
+ 
++EXTRA_CFLAGS="-Wall ${EXTRA_WARNINGS} -fPIC"
++AX_CHECK_COMPILE_FLAG([-flto-partition=none], , , [-Werror])
++AS_VAR_IF([ax_cv_check_cflags__Werror__flto_partition_none], [yes],
++	[EXTRA_CFLAGS="$EXTRA_CFLAGS -flto-partition=none"]
++	,)
++AC_SUBST([AM_CFLAGS], ["$EXTRA_CFLAGS"])
++
+ AC_OUTPUT(
+ Makefile
+ doc/Makefile
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -39,7 +39,6 @@ include $(COMMONDIR)/Make.rules
+ BUILT_SOURCES = grammar.h scanner.h af_protos.h
+ AM_LFLAGS = -v
+ AM_YFLAGS = -d -p aalogparse_
+-AM_CFLAGS = -Wall $(EXTRA_WARNINGS) -fPIC -flto-partition=none
+ AM_CPPFLAGS = -D_GNU_SOURCE -I$(top_srcdir)/include/
+ scanner.h: scanner.l
+ 	$(LEX) -v $<
+-- 
+GitLab

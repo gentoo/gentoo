@@ -1,0 +1,26 @@
+From b7158c5382163385ef08edec8021da259bf7afe4 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 9 Mar 2024 11:34:23 -0800
+Subject: [PATCH] tools: fix shebang
+
+This causes a build failure with slibtool.
+
+Gentoo issue: https://bugs.gentoo.org/924403
+
+Signed-off-by: orbea <orbea@riseup.net>
+--- a/tools/nasm-filter.sh
++++ b/tools/nasm-filter.sh
+@@ -1,4 +1,4 @@
+-#/bin/sh
++#!/bin/sh
+ 
+ # Filter out unnecessary options added by automake
+ 
+--- a/tools/yasm-filter.sh
++++ b/tools/yasm-filter.sh
+@@ -1,4 +1,4 @@
+-#/bin/sh
++#!/bin/sh
+ 
+ # Filter out unnecessary options added by automake
+ 

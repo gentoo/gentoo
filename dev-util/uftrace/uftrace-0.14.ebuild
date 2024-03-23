@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit bash-completion-r1 lua-single python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic lua-single python-single-r1 toolchain-funcs
 
 DESCRIPTION="Function (graph) tracer for user-space"
 HOMEPAGE="https://github.com/namhyung/uftrace"
@@ -40,6 +40,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #858503 (https://github.com/namhyung/uftrace/issues/1343)
+	filter-lto
+
 	local myconf=(
 		--libdir="${EPREFIX}/usr/$(get_libdir)/uftrace"
 		$(use_with capstone)

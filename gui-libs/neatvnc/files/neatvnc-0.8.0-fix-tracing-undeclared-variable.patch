@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/902141
+https://github.com/any1/neatvnc/pull/110
+
+From ce654aaf8b680768c4c51bef858e16f0db895814 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 25 Feb 2024 19:31:47 +0200
+Subject: [PATCH] server: remove undeclared variable from tracing macro
+
+* 3647457f6d769fe3c9518078008ef56be58b70b1 accidentally referred to
+  an nonexistant variable.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/src/server.c
++++ b/src/server.c
+@@ -2109,7 +2109,7 @@ static void complete_fb_update(struct nvnc_client* client)
+ 	client->current_fb = NULL;
+ 	process_fb_update_requests(client);
+ 	client_unref(client);
+-	DTRACE_PROBE2(neatvnc, update_fb_done, client, pts);
++	DTRACE_PROBE1(neatvnc, update_fb_done, client);
+ }
+ 
+ static void on_write_frame_done(void* userdata, enum stream_req_status status)
+-- 
+2.43.2
+

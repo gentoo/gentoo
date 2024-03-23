@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop optfeature
+inherit autotools desktop flag-o-matic optfeature
 
 DESCRIPTION="Graphical front-end for command-line debuggers"
 HOMEPAGE="https://www.gnu.org/software/ddd"
@@ -57,6 +57,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/858347
+	# https://savannah.gnu.org/bugs/?65456
+	filter-lto
+
 	econf \
 		$(use_with readline)
 }

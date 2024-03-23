@@ -247,7 +247,7 @@ else
 		https://github.com/xiph/rav1e/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="BSD-2"
@@ -265,6 +265,8 @@ BDEPEND="
 	amd64? ( ${ASM_DEP} )
 	capi? ( >=dev-util/cargo-c-0.6.3 )
 "
+# only used as a build script to check the version of rav1e...
+DEPEND="dev-libs/libgit2"
 
 # Rust
 QA_FLAGS_IGNORED="usr/lib.*/librav1e.* usr/bin/rav1e"
@@ -279,13 +281,22 @@ src_unpack() {
 	fi
 }
 
-src_compile() {
-	export CARGO_HOME="${ECARGO_HOME}"
-	local args=$(usev !debug --release)
+src_prepare() {
+	default
 
-	cargo build ${args} || die "cargo build failed"
+	# libgit2-sys unnecessarily(?) requests <libgit2-1.8.0, bump to 2 for now
+	sed -e '/range_version/s/1\.8\.0/2/' \
+		-i "${ECARGO_VENDOR}"/libgit2-sys-0.16.1+1.7.1/build.rs || die
+}
+
+src_compile() {
+	# used by build script to get rav1e repository info
+	export LIBGIT2_NO_VENDOR=1
+
+	cargo_src_compile
 
 	if use capi; then
+		local args=$(usev !debug --release)
 		cargo cbuild ${args} --target-dir="capi" \
 			--prefix="/usr" --libdir="/usr/$(get_libdir)" \
 			--library-type=cdylib \

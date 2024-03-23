@@ -14,9 +14,7 @@ EAPI=8
 # doing so since such a case is unlikely.
 FFMPEG_SUBSLOT=58.60.60
 
-SOC_PATCHES=(
-	ffmpeg-rpi-6.1-r2.patch
-)
+SOC_PATCH="ffmpeg-rpi-6.1-r3.patch"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -29,18 +27,36 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video. Includes libavcodec"
 HOMEPAGE="https://ffmpeg.org/"
-SRC_URI="soc? ( "${SOC_PATCHES[@]/#/https://dev.gentoo.org/~chewi/distfiles/}" )"
+SRC_URI="soc? ( https://dev.gentoo.org/~chewi/distfiles/${SOC_PATCH} )"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	:
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI+=" mirror://gentoo/${P}.tar.xz"
 else # Release
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ffmpeg.asc
 	inherit verify-sig
-	SRC_URI+=" https://ffmpeg.org/releases/${P/_/-}.tar.xz"
-	SRC_URI+=" verify-sig? ( https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc )"
 
-	BDEPEND=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
+	SRC_URI+="
+		https://ffmpeg.org/releases/${P/_/-}.tar.xz
+		verify-sig? (
+			https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc
+			soc? ( https://dev.gentoo.org/~chewi/distfiles/${SOC_PATCH}.asc )
+		)
+	"
+
+	BDEPEND="
+		verify-sig? (
+			sec-keys/openpgp-keys-ffmpeg
+			soc? ( sec-keys/openpgp-keys-gentoo-developers )
+		)
+	"
+
+	src_unpack() {
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}"/${P/_/-}.tar.xz{,.asc} /usr/share/openpgp-keys/ffmpeg.asc
+			use soc && verify-sig_verify_detached "${DISTDIR}"/${SOC_PATCH}{,.asc} /usr/share/openpgp-keys/gentoo-developers.asc
+		fi
+		default
+	}
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
@@ -262,7 +278,7 @@ RDEPEND="
 	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
-	qsv? ( media-libs/oneVPL[${MULTILIB_USEDEP}] )
+	qsv? ( media-libs/libvpl[${MULTILIB_USEDEP}] )
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
@@ -285,7 +301,7 @@ RDEPEND="
 	vaapi? ( >=media-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vidstab? ( >=media-libs/vidstab-1.1.0[${MULTILIB_USEDEP}] )
-	vmaf? ( >=media-libs/libvmaf-2.0.0[${MULTILIB_USEDEP}] )
+	vmaf? ( >=media-libs/libvmaf-2.0.0:=[${MULTILIB_USEDEP}] )
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
@@ -387,7 +403,7 @@ src_prepare() {
 	fi
 
 	use soc &&
-		eapply "${SOC_PATCHES[@]/#/${DISTDIR}/}"
+		eapply "${DISTDIR}"/${SOC_PATCH}
 
 	default
 

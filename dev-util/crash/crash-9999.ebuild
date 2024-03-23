@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 GDB_VERSION=10.2
 if [[ ${PV} == "9999" ]] ; then
@@ -31,6 +31,13 @@ src_prepare() {
 	default
 	sed -i -e "s|ar -rs|\${AR} -rs|g" Makefile || die
 	ln -s "${DISTDIR}"/gdb-10.2.tar.gz . || die
+}
+
+src_configure() {
+	# bug #858344
+	filter-lto
+
+	default
 }
 
 src_compile() {

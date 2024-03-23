@@ -40,12 +40,9 @@ move dev-util/muon dev-build/muon
 move dev-util/xfce4-dev-tools dev-build/xfce4-dev-tools
 move sys-devel/boost-m4 dev-build/boost-m4
 move dev-util/gtk-doc-am dev-build/gtk-doc-am
-move dev-util/bazel dev-build/bazel
 move dev-util/gn dev-build/gn
 move dev-util/gyp dev-build/gyp
 move dev-util/netsurf-buildsystem dev-build/netsurf-buildsystem
-move dev-util/tup dev-build/tup
-move sys-devel/cons dev-build/cons
 move dev-util/scons dev-build/scons
 move sys-devel/qconf dev-build/qconf
 move dev-util/b2 dev-build/b2
@@ -77,3 +74,21 @@ move media-gfx/fotoxx media-gfx/fotocx
 move dev-python/editorconfig-core-py dev-python/editorconfig
 move dev-python/urwid_readline dev-python/urwid-readline
 move dev-python/python-evdev dev-python/evdev
+slotmove kde-apps/kdeaccessibility-meta 5 0
+slotmove kde-apps/kdeadmin-meta 5 0
+slotmove kde-apps/kde-apps-meta 5 0
+slotmove kde-apps/kdecore-meta 5 0
+slotmove kde-apps/kdeedu-meta 5 0
+slotmove kde-apps/kdegames-meta 5 0
+slotmove kde-apps/kdegraphics-meta 5 0
+slotmove kde-apps/kdemultimedia-meta 5 0
+slotmove kde-apps/kdenetwork-meta 5 0
+slotmove kde-apps/kdepim-meta 5 0
+slotmove kde-apps/kdesdk-meta 5 0
+slotmove kde-apps/kdeutils-meta 5 0
+move media-libs/oneVPL media-libs/libvpl
+move sys-auth/AusweisApp2 sys-auth/AusweisApp
+move sci-libs/scikit-learn dev-python/scikit-learn
+slotmove =dev-ruby/launchy-3.0.0 0 3
+move dev-python/DBUtils dev-python/dbutils
+move dev-python/aiorpcX dev-python/aiorpcx

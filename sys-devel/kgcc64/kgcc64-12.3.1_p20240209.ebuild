@@ -24,7 +24,7 @@ inherit toolchain
 DESCRIPTION="64bit kernel compiler"
 
 # Works on hppa and mips; all other archs, refer to bug #228115
-KEYWORDS="~hppa"
+KEYWORDS="hppa"
 
 # unlike every other target, hppa has not unified the 32/64 bit
 # ports in binutils yet

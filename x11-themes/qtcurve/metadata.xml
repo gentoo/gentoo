@@ -10,6 +10,6 @@
     <name>Gentoo KDE Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">QtCurve/qtcurve</remote-id>
+    <remote-id type="kde-invent">system/qtcurve</remote-id>
   </upstream>
 </pkgmetadata>

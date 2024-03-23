@@ -18,7 +18,7 @@ HOMEPAGE="https://gitea.treehouse.systems/ariadne/pkgconf"
 
 LICENSE="ISC"
 SLOT="0/4"
-IUSE="test"
+IUSE="+native-symlinks test"
 
 RESTRICT="!test? ( test )"
 
@@ -64,6 +64,10 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
+
+	if ! use native-symlinks; then
+		rm "${ED}"/usr/bin/{pkgconf,pkg-config}$(get_exeext) || die
+	fi
 
 	find "${ED}" -type f -name '*.la' -delete || die
 }

@@ -46,6 +46,9 @@ PATCHES=(
 
 	# Fix building on sparc with older binutils, we pass it in ebuild instead
 	"${FILESDIR}"/${PN}-1.3.1-Revert-Turn-off-RWX-segment-warnings-on-sparc-system.patch
+
+	# On Darwin, don't force /usr/bin/libtool as AR. bug #924839
+	"${FILESDIR}"/${PN}-1.3.1-configure-fix-AR-libtool-on-darwin.patch
 )
 
 src_prepare() {

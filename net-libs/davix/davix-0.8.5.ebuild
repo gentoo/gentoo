@@ -39,6 +39,10 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="test? ( tools )"
 
+PATCHES=(
+		"${FILESDIR}/${P}-gcc14.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 

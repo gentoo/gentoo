@@ -1,0 +1,76 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/commit/?id=c076dff259e99d84d3822b4d2ad7f3f66532f411
+
+From c076dff259e99d84d3822b4d2ad7f3f66532f411 Mon Sep 17 00:00:00 2001
+From: Pavel Reichl <preichl@redhat.com>
+Date: Tue, 20 Dec 2022 14:13:29 +0100
+Subject: test: Fix test expectation based on kernel config
+
+Some test results are dependent on the kernel configuration option
+CONFIG_SYSTEM_BLACKLIST_AUTH_UPDATE.
+
+Check the kernel configuration file for its presence and expect appropriate
+test results.
+
+Function has_kernel_config is based on its xfstsests counterpart.
+
+Signed-off-by: Pavel Reichl <preichl@redhat.com>
+Signed-off-by: David Howells <dhowells@redhat.com>
+--- a/tests/features/builtin_trusted/runtest.sh
++++ b/tests/features/builtin_trusted/runtest.sh
+@@ -33,7 +33,11 @@ expect_error EACCES
+ create_key --fail user a a $stk
+ expect_error EOPNOTSUPP
+ create_key --fail user a a $blk
+-expect_error EACCES
++if has_kernel_config "CONFIG_SYSTEM_BLACKLIST_AUTH_UPDATE"; then
++	expect_error EOPNOTSUPP
++else
++	expect_error EACCES
++fi
+ 
+ # Try adding a key to the keyrings
+ marker "TRY ADDING ASYMMETRIC KEYS"
+@@ -89,7 +93,11 @@ expect_error EACCES
+ create_key --fail -x asymmetric "" "$x509" $stk
+ expect_error ENOKEY
+ create_key --fail -x asymmetric "" "$x509" $blk
+-expect_error EACCES
++if has_kernel_config "CONFIG_SYSTEM_BLACKLIST_AUTH_UPDATE"; then
++	expect_error EOPNOTSUPP
++else
++	expect_error EACCES
++fi
+ 
+ echo "++++ FINISHED TEST: $result" >>$OUTPUTFILE
+ 
+--- a/tests/prepare.inc.sh
++++ b/tests/prepare.inc.sh
+@@ -4,6 +4,26 @@
+ includes=${BASH_SOURCE[0]}
+ includes=${includes%/*}/
+ 
++# Check if currently running kernel has option set
++function has_kernel_config()
++{
++        local option=$1
++        local uname=$(uname -r)
++        local config_list="$KCONFIG_PATH
++                     /lib/modules/$uname/build/.config
++                     /boot/config-$uname
++                     /lib/kernel/config-$uname"
++
++        for config in $config_list; do
++                [ ! -f $config ] && continue
++                grep -qE "^${option}=[my]" $config
++                return
++        done
++
++        echo "Failed to find kernel configuration file"
++        return false
++}
++
+ # --- need to run in own session keyring
+ watch_fd=0
+ if [ "$1" != "--inside-test-session" ]
+-- 
+cgit 1.2.3-korg

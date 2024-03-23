@@ -72,11 +72,14 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				19.0.0_pre20240218)
-					EGIT_COMMIT=3496927edcd0685807351ba88a7e2cfb006e1c0d
+				19.0.0_pre20240316)
+					EGIT_COMMIT=6d3cec01a6c29fa4e51ba129fa13dbf55d2b928e
 					;;
-				19.0.0_pre20240210)
-					EGIT_COMMIT=8884ba43a8485bebef5c4d41e7ed457e3fa84f07
+				19.0.0_pre20240309)
+					EGIT_COMMIT=1c7607e8ee6ec4ca3abce1561dd39a98d4efac96
+					;;
+				19.0.0_pre20240302)
+					EGIT_COMMIT=597f9761c3a5ba278fa930d2fac13f156287d505
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -205,10 +208,14 @@ ALL_LLVM_TARGET_FLAGS=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The current ABI version of LLVM dylib, in a form suitable for use
-# as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
-# for the main branch.
-LLVM_SOABI=${LLVM_MAJOR}
-[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]] && LLVM_SOABI=${PV}
+# as a subslot.
+if [[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]]; then
+	LLVM_SOABI=${PV}
+elif ver_test ${PV} -ge 18.1.0_rc3; then
+	LLVM_SOABI=$(ver_cut 1-2)
+else
+	LLVM_SOABI=${LLVM_MAJOR}
+fi
 
 # == global scope logic ==
 
@@ -280,6 +287,9 @@ llvm.org_set_globals() {
 					;;
 				17*)
 					LLVM_MANPAGE_DIST="llvm-17.0.1-manpages.tar.bz2"
+					;;
+				18*)
+					LLVM_MANPAGE_DIST="llvm-18.1.0-manpages.tar.bz2"
 					;;
 			esac
 		fi

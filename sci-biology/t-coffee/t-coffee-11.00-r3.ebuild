@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,14 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862327
+	# https://github.com/cbcrg/tcoffee/issues/60
+	#
+	# Do not trust with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	tc-export CXX
 	append-cxxflags -Wno-write-strings -Wno-unused-result
 }

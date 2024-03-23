@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
+	<longdescription lang="en">
+		Implementation of a DPLL-based SAT solver in Ada. Main features:
+
+			Conflict analysis and backjumping
+			Two-watched literals scheme
+			Built-in support for At-Most-One constraints
+			Custom theories
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/AdaSAT</remote-id>
+	</upstream>
+</pkgmetadata>

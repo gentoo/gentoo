@@ -1,0 +1,84 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+remove redundant Find*.cmake files
+use CMake 3.20 GTest targets for nanovdb
+change vdb_ax_test WORKING_DIRECTORY so testfiles can be found
+fix syntax for OpenVDBCXX.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9ecdaef..9dd416e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -287,9 +287,7 @@ if(OPENVDB_INSTALL_CMAKE_MODULES)
+     cmake/FindBlosc.cmake
+     cmake/FindJemalloc.cmake
+     cmake/FindLog4cplus.cmake
+-    cmake/FindOpenEXR.cmake
+     cmake/FindOpenVDB.cmake
+-    cmake/FindTBB.cmake
+     cmake/OpenVDBGLFW3Setup.cmake
+     cmake/OpenVDBHoudiniSetup.cmake
+     cmake/OpenVDBMayaSetup.cmake
+diff --git a/nanovdb/nanovdb/unittest/CMakeLists.txt b/nanovdb/nanovdb/unittest/CMakeLists.txt
+index b0a32be..4d294f4 100644
+--- a/nanovdb/nanovdb/unittest/CMakeLists.txt
++++ b/nanovdb/nanovdb/unittest/CMakeLists.txt
+@@ -20,7 +20,7 @@ message(STATUS "----------------------------------------------------")
+
+ ###############################################################################
+ # TODO: Benchmark should probably not require gtest.
+-if(NOT TARGET GTest::GTest)
++if(NOT TARGET GTest::gtest_main)
+   message(WARNING " - GTest required to build unittests. Skipping.")
+   return()
+ endif()
+@@ -36,14 +36,14 @@ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/data")
+ # -----------------------------------------------------------------------------
+
+ add_executable(nanovdb_test_nanovdb "TestNanoVDB.cc")
+-target_link_libraries(nanovdb_test_nanovdb PRIVATE nanovdb GTest::GTest GTest::Main)
++target_link_libraries(nanovdb_test_nanovdb PRIVATE nanovdb GTest::gtest GTest::gtest_main)
+ add_test(nanovdb_unit_test nanovdb_test_nanovdb)
+
+ # -----------------------------------------------------------------------------
+
+ if(NANOVDB_USE_CUDA)
+   add_executable(nanovdb_test_cuda "TestNanoVDB.cu")
+-  target_link_libraries(nanovdb_test_cuda PRIVATE nanovdb GTest::GTest GTest::Main)
++  target_link_libraries(nanovdb_test_cuda PRIVATE nanovdb GTest::gtest GTest::gtest_main)
+   add_test(nanovdb_cuda_unit_test nanovdb_test_cuda)
+ endif()
+
+@@ -55,5 +55,5 @@ if(NOT (NANOVDB_USE_TBB AND NANOVDB_USE_OPENVDB))
+ endif()
+
+ add_executable(nanovdb_test_openvdb "TestOpenVDB.cc")
+-target_link_libraries(nanovdb_test_openvdb PRIVATE nanovdb GTest::GTest GTest::Main)
++target_link_libraries(nanovdb_test_openvdb PRIVATE nanovdb GTest::gtest GTest::gtest_main)
+ add_test(nanovdb_openvdb_unit_test nanovdb_test_openvdb)
+diff --git a/openvdb_ax/openvdb_ax/test/CMakeLists.txt b/openvdb_ax/openvdb_ax/test/CMakeLists.txt
+index e403f71..91774f8 100644
+--- a/openvdb_ax/openvdb_ax/test/CMakeLists.txt
++++ b/openvdb_ax/openvdb_ax/test/CMakeLists.txt
+@@ -131,7 +131,7 @@ if(OPENVDB_AX_TEST_PROFILE)
+   target_compile_definitions(vdb_ax_test PRIVATE "-DPROFILE")
+ endif()
+
+-add_test(NAME vdb_ax_unit_test COMMAND vdb_ax_test -v WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../)
++add_test(NAME vdb_ax_unit_test COMMAND vdb_ax_test -v WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+
+ # For the undefined behaviour sanitizer, add the suppression file and
+ # additional options
+diff --git a/cmake/config/OpenVDBCXX.cmake b/cmake/config/OpenVDBCXX.cmake
+index 5ad5d18..a6c4ebe 100644
+--- a/cmake/config/OpenVDBCXX.cmake
++++ b/cmake/config/OpenVDBCXX.cmake
+@@ -252,7 +252,7 @@ set(EXTRA_BUILD_TYPES coverage tsan asan lsan msan ubsan)
+ # DebugNoInfo - An internal build type only used by the OpenVDB CI. no optimizations, no symbols, asserts enabled
+ set(CMAKE_CXX_FLAGS_DebugNoInfo "" CACHE STRING "Flags used by the C++ compiler during DebugNoInfo builds.")
+
+-foreach(TYPE ${EXTRA_BUILD_TYPES})
++foreach(TYPE IN LISTS EXTRA_BUILD_TYPES)
+   set(CMAKE_CXX_FLAGS_${U_TYPE} "" CACHE STRING "Flags used by the C++ compiler during ${TYPE} builds.")
+   set(CMAKE_SHARED_LINKER_FLAGS_${U_TYPE} "" CACHE STRING "Flags used by the linker during ${TYPE} builds.")
+   set(CMAKE_EXE_LINKER_FLAGS_${U_TYPE} "" CACHE STRING "Flags used by the linker during ${TYPE} builds.")

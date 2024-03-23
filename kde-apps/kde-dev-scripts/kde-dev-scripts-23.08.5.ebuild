@@ -11,7 +11,7 @@ DESCRIPTION="KDE Development Scripts"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE=""
 
 # kdelibs4support - required for kdex.dtd

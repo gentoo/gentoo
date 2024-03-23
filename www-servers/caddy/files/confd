@@ -1,2 +1,0 @@
-# command_user="http:http"
-# command_args="run --config /etc/caddy/caddy_config.json"

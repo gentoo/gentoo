@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -280,8 +280,14 @@ rocm_package_setup_component(profiler
+ )
+ 
+ add_subdirectory(library)
+-add_subdirectory(example)
+-add_subdirectory(test)
++option(BUILD_EXAMPLES "Build examples" OFF)
++if(BUILD_EXAMPLES)
++	add_subdirectory(example)
++endif()
++option(BUILD_TESTS "Build binaries for tests" OFF)
++if(BUILD_TESTS)
++	add_subdirectory(test)
++endif()
+ add_subdirectory(profiler)
+ 
+ #Create an interface target for the include only files and call it "composablekernels"

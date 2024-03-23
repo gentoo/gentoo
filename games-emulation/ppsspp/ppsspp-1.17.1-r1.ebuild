@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit python-any-r1 xdg cmake
+inherit flag-o-matic python-any-r1 xdg cmake
 
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/
@@ -18,7 +18,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://github.com/hrydgard/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 JSON MIT"
@@ -66,6 +66,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# bug https://bugs.gentoo.org/926079
+	filter-lto
+
 	local -a mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DCMAKE_SKIP_RPATH=ON

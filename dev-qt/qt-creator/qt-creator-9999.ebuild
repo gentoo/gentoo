@@ -34,7 +34,7 @@ HOMEPAGE="https://www.qt.io/product/development-tools"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="
-	+clang +designer doc +help qmldesigner serialterminal
+	+clang designer doc +help qmldesigner serialterminal
 	+svg test +tracing webengine
 "
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QT_PV}=
 	clang? (
 		dev-cpp/yaml-cpp:=
-		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}')
+		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=')
 	)
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? (

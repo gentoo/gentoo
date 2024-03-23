@@ -13,4 +13,11 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="native-symlinks">
+			Install generic symlinks like pkgconf and pkg-config.
+			If this flag is disabled, only CHOST-prefixed pkg-config
+			executables will be available to end users and ebuilds.
+		</flag>
+	</use>
 </pkgmetadata>

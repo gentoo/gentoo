@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/927258
+https://github.com/util-linux/util-linux/pull/2845
+
+From d271589d9536181184fcd19194f879e7c776d43e Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 18 Mar 2024 21:29:13 -0400
+Subject: [PATCH] libmount: Fix export of mnt_context_is_lazy and
+ mnt_context_is_onlyonce
+
+[kzak@redhat.com: - fix also function docs]
+
+Bug: https://bugs.gentoo.org/927258
+Closes: https://github.com/util-linux/util-linux/issues/2844
+Fixes: 3d1c41c8c ("libmount: add --onlyonce")
+Signed-off-by: Matt Turner <mattst88@gmail.com>
+Signed-off-by: Karel Zak <kzak@redhat.com>
+(cherry picked from commit 6d2917f2eb910fb8bcdc6476be18c34fee152911)
+---
+ libmount/src/context.c    | 4 ++--
+ libmount/src/libmount.sym | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libmount/src/context.c b/libmount/src/context.c
+index 0cd320190..20f4c64ae 100644
+--- a/libmount/src/context.c
++++ b/libmount/src/context.c
+@@ -549,10 +549,10 @@ int mnt_context_enable_onlyonce(struct libmnt_context *cxt, int enable)
+ }
+ 
+ /**
+- * mnt_context_is_lazy:
++ * mnt_context_is_onlyonce:
+  * @cxt: mount context
+  *
+- * Returns: 1 if lazy umount is enabled or 0
++ * Returns: 1 if only-once mount is enabled or 0
+  */
+ int mnt_context_is_onlyonce(struct libmnt_context *cxt)
+ {
+diff --git a/libmount/src/libmount.sym b/libmount/src/libmount.sym
+index 715bb5c5f..1fa8bce3c 100644
+--- a/libmount/src/libmount.sym
++++ b/libmount/src/libmount.sym
+@@ -370,7 +370,7 @@ MOUNT_2_38 {
+ MOUNT_2_39 {
+ 	mnt_cache_set_sbprobe;
+ 	mnt_context_enable_onlyonce;
+-	mnt_context_is_lazy;
++	mnt_context_is_onlyonce;
+ 	mnt_context_enable_noautofs;
+ 	mnt_table_enable_noautofs;
+ 	mnt_table_is_noautofs;
+-- 
+2.43.2
+

@@ -1,0 +1,33 @@
+This patch searches the jre 21 binary in the gentoo specific directories.
+
+Signed-off-by: Julien Roy <julien@jroy.ca>
+
+--- a/bin/signal-cli
++++ b/bin/signal-cli
+@@ -118,13 +118,19 @@
+ 
+ 
+ # Determine the Java command to use to start the JVM.
+-if [ -n "$JAVA_HOME" ] ; then
+-    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+-        # IBM's JDK on AIX uses strange locations for the executables
+-        JAVACMD=$JAVA_HOME/jre/sh/java
+-    else
+-        JAVACMD=$JAVA_HOME/bin/java
+-    fi
++# This package needs Java 21,
++# so we must search for matching java binaries
++for I in /usr/lib*/openjdk-21 /opt/openjdk-bin-21 /opt/openjdk-jre-bin-21; do
++	J_TRY="$I/bin/java"
++	if [ -x "$J_TRY" ] ; then
++		"$J_TRY" -version 2>&1 | grep --fixed-strings --quiet "17."
++		if [ $? -eq 0 ] ; then
++			JAVACMD="$J_TRY"
++			break
++		fi
++	fi
++done
++if [ -n "$JAVACMD" ] ; then
+     if [ ! -x "$JAVACMD" ] ; then
+         die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+ 

@@ -1,0 +1,44 @@
+
+Bug: https://bugs.gentoo.org/926768
+Minimal subset of changes from: https://github.com/falcosecurity/libs/pull/1632
+
+--- a/driver/ppm_events.c	2024-03-11 15:19:23.000000000 +0100
++++ b/driver/ppm_events.c	2024-03-11 15:22:48.230598879 +0100
+@@ -624,12 +624,16 @@ int val_to_ring(struct event_filler_argu
+ 				if (unlikely(len < 0))
+ 					return PPM_FAILURE_INVALID_USER_MEMORY;
+ 			} else {
+-				len = (int)strlcpy(args->buffer + args->arg_data_offset,
++				len = (int)strscpy(args->buffer + args->arg_data_offset,
+ 								(const char *)(syscall_arg_t)val,
+ 								max_arg_size);
+ 
+-				if (++len > (int)max_arg_size)
++				if (len == -E2BIG) {
+ 					len = max_arg_size;
++				} else {
++					len++;
++				}
++					
+ 			}
+ 
+ 			/*
+@@ -640,12 +644,15 @@ int val_to_ring(struct event_filler_argu
+ 			/*
+ 			 * Handle NULL pointers
+ 			 */
+-			len = (int)strlcpy(args->buffer + args->arg_data_offset,
++			len = (int)strscpy(args->buffer + args->arg_data_offset,
+ 				"(NULL)",
+ 				max_arg_size);
+ 
+-			if (++len > (int)max_arg_size)
+-				len = max_arg_size;
++			if (len == -E2BIG) {
++				len = max_arg_size;
++			} else {
++				len++;
++			}
+ 		}
+ 
+ 		break;

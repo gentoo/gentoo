@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit qmake-utils python-single-r1
 
@@ -19,9 +19,7 @@ IUSE="+qt5 qt6"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( qt5 qt6 )"
 
-# qt6 TODO:
-#  - check if all qt6 deps are okay yet
-#  - multibuild for both qt5 and qt6 if requested
+# TODO: multibuild for both qt5 and qt6 if requested
 RDEPEND="
 	${PYTHON_DEPS}
 	qt5? (
@@ -33,10 +31,15 @@ RDEPEND="
 	)
 	qt6? (
 		dev-qt/qtbase:6[opengl]
-		dev-qt/qtdeclarative:6
+		dev-qt/qtdeclarative:6[opengl]
+		dev-qt/qtquick3d:6[opengl]
 		dev-qt/qtsvg:6
 	)"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-qt6.5.patch
+)
 
 src_prepare() {
 	default

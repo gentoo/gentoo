@@ -1,14 +1,16 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 multilib-minimal
 
-DESCRIPTION="high level interface to Linux seccomp filter"
+DESCRIPTION="High level interface to Linux seccomp filter"
 HOMEPAGE="https://github.com/seccomp/libseccomp"
 
 if [[ ${PV} == *9999 ]] ; then
@@ -24,17 +26,23 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="python static-libs test"
 RESTRICT="!test? ( test )"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # We need newer kernel headers; we don't keep strict control of the exact
 # version here, just be safe and pull in the latest stable ones. bug #551248
-DEPEND=">=sys-kernel/linux-headers-5.15
-	python? ( ${PYTHON_DEPS} )"
+DEPEND="
+	>=sys-kernel/linux-headers-5.15
+	python? ( ${PYTHON_DEPS} )
+"
 RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}
+BDEPEND="
+	${DEPEND}
 	dev-util/gperf
-	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
+	python? (
+		${DISTUTILS_DEPS}
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
@@ -60,15 +68,6 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-do_python() {
-	# setup.py reads VERSION_RELEASE from the environment
-	local -x VERSION_RELEASE=${PRERELEASE-${PV}}
-
-	pushd "${BUILD_DIR}/src/python" >/dev/null || die
-	"$@"
-	popd >/dev/null || die
-}
-
 multilib_src_compile() {
 	emake
 
@@ -79,7 +78,12 @@ multilib_src_compile() {
 		cp -r "${S}"/src/python "${BUILD_DIR}"/src/python || die
 		local -x CPPFLAGS="-I\"${BUILD_DIR}/include\" -I\"${S}/include\" ${CPPFLAGS}"
 
-		do_python distutils-r1_src_compile
+		# setup.py reads VERSION_RELEASE from the environment
+		local -x VERSION_RELEASE=${PRERELEASE-${PV}}
+
+		pushd "${BUILD_DIR}/src/python" >/dev/null || die
+		distutils-r1_src_compile
+		popd >/dev/null || die
 	fi
 }
 
@@ -87,7 +91,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use python ; then
-		do_python distutils-r1_src_install
+		distutils-r1_src_install
 	fi
 }
 

@@ -1,0 +1,156 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=d6c428699db7aa20f8b6ca9fe83197a0314b7e91
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=c33c4fdf10b7ed9e03f2afe988d93f3085b727aa
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=41c022072599bc3f12f659e962653548cd86fa3a
+
+From d6c428699db7aa20f8b6ca9fe83197a0314b7e91 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 15 Feb 2024 15:38:34 +0900
+Subject: [PATCH] dirmngr: Fix proxy with TLS.
+
+* dirmngr/http.c (proxy_get_token, run_proxy_connect): Always
+available regardless of USE_TLS.
+(send_request): Remove USE_TLS.
+
+--
+
+Since quite some time building w/o TLS won't work.
+
+GnuPG-bug-id: 6997
+--- a/dirmngr/http.c
++++ b/dirmngr/http.c
+@@ -2498,9 +2498,7 @@ proxy_get_token (proxy_info_t proxy, const char *inputstring)
+ }
+ 
+ 
+-
+ /* Use the CONNECT method to proxy our TLS stream.  */
+-#ifdef USE_TLS
+ static gpg_error_t
+ run_proxy_connect (http_t hd, proxy_info_t proxy,
+                    const char *httphost, const char *server,
+@@ -2709,7 +2707,6 @@ run_proxy_connect (http_t hd, proxy_info_t proxy,
+   xfree (tmpstr);
+   return err;
+ }
+-#endif /*USE_TLS*/
+ 
+ 
+ /* Make a request string using a standard proxy.  On success the
+@@ -2866,7 +2863,6 @@ send_request (http_t hd, const char *httphost, const char *auth,
+       goto leave;
+     }
+ 
+-#if USE_TLS
+   if (use_http_proxy && hd->uri->use_tls)
+     {
+       err = run_proxy_connect (hd, proxy, httphost, server, port);
+@@ -2878,7 +2874,6 @@ send_request (http_t hd, const char *httphost, const char *auth,
+        * clear the flag to indicate this.  */
+       use_http_proxy = 0;
+     }
+-#endif	/* USE_TLS */
+ 
+ #if HTTP_USE_NTBTLS
+   err = run_ntbtls_handshake (hd);
+-- 
+2.30.2
+
+From c33c4fdf10b7ed9e03f2afe988d93f3085b727aa Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 16 Feb 2024 11:31:37 +0900
+Subject: [PATCH] dirmngr: Fix the regression of use of proxy for TLS
+ connection.
+
+* dirmngr/http.c (run_proxy_connect): Don't set keep_alive, since it
+causes resource leak of FP_WRITE.
+Don't try to read response body to fix the hang.
+
+--
+
+GnuPG-bug-id: 6997
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+--- a/dirmngr/http.c
++++ b/dirmngr/http.c
+@@ -2520,6 +2520,7 @@ run_proxy_connect (http_t hd, proxy_info_t proxy,
+    * RFC-4559 - SPNEGO-based Kerberos and NTLM HTTP Authentication
+    */
+   auth_basic = !!proxy->uri->auth;
++  hd->keep_alive = 0;
+ 
+   /* For basic authentication we need to send just one request.  */
+   if (auth_basic
+@@ -2541,13 +2542,12 @@ run_proxy_connect (http_t hd, proxy_info_t proxy,
+                          httphost ? httphost : server,
+                          port,
+                          authhdr ? authhdr : "",
+-                         auth_basic? "" : "Connection: keep-alive\r\n");
++                         hd->keep_alive? "Connection: keep-alive\r\n" : "");
+   if (!request)
+     {
+       err = gpg_error_from_syserror ();
+       goto leave;
+     }
+-  hd->keep_alive = !auth_basic; /* We may need to send more requests.  */
+ 
+   if (opt_debug || (hd->flags & HTTP_FLAG_LOG_RESP))
+     log_debug_with_string (request, "http.c:proxy:request:");
+@@ -2574,16 +2574,6 @@ run_proxy_connect (http_t hd, proxy_info_t proxy,
+   if (err)
+     goto leave;
+ 
+-  {
+-    unsigned long count = 0;
+-
+-    while (es_getc (hd->fp_read) != EOF)
+-      count++;
+-    if (opt_debug)
+-      log_debug ("http.c:proxy_connect: skipped %lu bytes of response-body\n",
+-                 count);
+-  }
+-
+   /* Reset state.  */
+   es_clearerr (hd->fp_read);
+   ((cookie_t)(hd->read_cookie))->up_to_empty_line = 1;
+-- 
+2.30.2
+
+From 41c022072599bc3f12f659e962653548cd86fa3a Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 16 Feb 2024 16:24:26 +0900
+Subject: [PATCH] dirmngr: Fix keep-alive flag handling.
+
+* dirmngr/http.c (run_proxy_connect): Set KEEP_ALIVE if not Basic
+Authentication.  Fix resource leak of FP_WRITE.
+
+--
+
+GnuPG-bug-id: 6997
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+--- a/dirmngr/http.c
++++ b/dirmngr/http.c
+@@ -2520,7 +2520,7 @@ run_proxy_connect (http_t hd, proxy_info_t proxy,
+    * RFC-4559 - SPNEGO-based Kerberos and NTLM HTTP Authentication
+    */
+   auth_basic = !!proxy->uri->auth;
+-  hd->keep_alive = 0;
++  hd->keep_alive = !auth_basic; /* We may need to send more requests.  */
+ 
+   /* For basic authentication we need to send just one request.  */
+   if (auth_basic
+@@ -2684,6 +2684,14 @@ run_proxy_connect (http_t hd, proxy_info_t proxy,
+     }
+ 
+  leave:
++  if (hd->keep_alive)
++    {
++      es_fclose (hd->fp_write);
++      hd->fp_write = NULL;
++      /* The close has released the cookie and thus we better set it
++       * to NULL.  */
++      hd->write_cookie = NULL;
++    }
+   /* Restore flags, destroy stream, reset state.  */
+   hd->flags = saved_flags;
+   es_fclose (hd->fp_read);
+-- 
+2.30.2

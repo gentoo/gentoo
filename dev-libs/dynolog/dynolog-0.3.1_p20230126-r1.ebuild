@@ -69,11 +69,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unbundling.patch
 	"${FILESDIR}"/${P}-noWerror.patch
 	"${FILESDIR}"/${P}-riscv.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" )
 
 src_prepare() {
+	sed -i \
+		-e "s:__u64:ino_t:g" \
+		hbt/src/common/System.h \
+		|| die
 	cmake_src_prepare
 	cmake_comment_add_subdirectory third_party/gflags
 	cmake_comment_add_subdirectory third_party/glog

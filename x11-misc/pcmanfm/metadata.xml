@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="sourceforge">pcmanfm</remote-id>
+    <remote-id type="github">lxde/pcmanfm</remote-id>
   </upstream>
 </pkgmetadata>

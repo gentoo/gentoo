@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">maxbube/mydumper</remote-id>
+		<remote-id type="github">mydumper/mydumper</remote-id>
 	</upstream>
 </pkgmetadata>

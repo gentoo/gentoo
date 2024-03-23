@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/926094
+https://bugreports.qt.io/browse/QTBUG-122955
+
+https://bugs.gentoo.org/926093
+https://github.com/embree/embree/issues/477
+--- a/src/3rdparty/embree/common/sys/platform.h
++++ b/src/3rdparty/embree/common/sys/platform.h
+@@ -34,3 +34,3 @@
+ /* detect 64 bit platform */
+-#if defined(__X86_64__) || defined(__aarch64__)
++#if (defined(__X86_64__) || defined(__aarch64__)) && ! defined(__ILP32__)
+ #define __64BIT__

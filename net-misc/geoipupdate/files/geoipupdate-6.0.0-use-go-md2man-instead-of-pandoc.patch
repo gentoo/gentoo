@@ -1,0 +1,26 @@
+From 250049909d1f9ed3c8ab06e07fcb10487942953a Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 13 Dec 2023 18:59:31 +0200
+Subject: [PATCH] Use go-md2man instead of perl script with pandoc
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/Makefile
++++ b/Makefile
+@@ -53,10 +53,11 @@ $(BUILDDIR)/GeoIP.conf.md: $(BUILDDIR) doc/GeoIP.conf.md
+ $(BUILDDIR)/geoipupdate.md: $(BUILDDIR) doc/geoipupdate.md
+ 	sed -e 's|CONFFILE|$(CONFFILE)|g' -e 's|DATADIR|$(DATADIR)|g' -e 's|$$|$(MAYBE_CR)|g' doc/geoipupdate.md > $(BUILDDIR)/geoipupdate.md
+ 
+-$(BUILDDIR)/GeoIP.conf.5: $(BUILDDIR)/GeoIP.conf.md  $(BUILDDIR)/geoipupdate.md
+-	dev-bin/make-man-pages.pl "$(BUILDDIR)"
++$(BUILDDIR)/GeoIP.conf.5: %.5 : %.md
++	go-md2man -in $< -out $@
+ 
+-$(BUILDDIR)/geoipupdate.1: $(BUILDDIR)/GeoIP.conf.5
++$(BUILDDIR)/geoipupdate.1: %.1: %.md
++	go-md2man -in $< -out $@
+ 
+ clean:
+ 	rm -rf $(BUILDDIR)/GeoIP.conf \
+-- 
+2.43.0
+

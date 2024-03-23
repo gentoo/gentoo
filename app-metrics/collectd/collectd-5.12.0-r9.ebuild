@@ -5,7 +5,7 @@ EAPI="7"
 
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools fcaps java-pkg-opt-2 linux-info lua-single perl-functions python-single-r1 systemd tmpfiles udev
 
@@ -63,7 +63,7 @@ COLLECTD_TESTED_PLUGINS="aggregation amqp apache apcups ascent battery bind
 	notify_email notify_nagios ntpd numa nut olsrd onewire openldap
 	openvpn oracle ovs_events ovs_stats pcie_errors perl ping postgresql
 	powerdns procevent processes protocols python redis routeros
-	rrdcached rrdtool sensors serial sigrok slurm smart snmp snmp_agent
+	rrdcached rrdtool sensors serial sigrok smart snmp snmp_agent
 	statsd swap synproxy sysevent syslog table tail tail_csv
 	target_notification target_replace target_scale target_set tcpconns
 	teamspeak2 ted thermal threshold turbostat ubi unixsock uptime users
@@ -134,7 +134,6 @@ COMMON_DEPEND="
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool:= )
 	collectd_plugins_sensors?		( sys-apps/lm-sensors:= )
 	collectd_plugins_sigrok?		( >=sci-libs/libsigrok-0.4:= dev-libs/glib:2 )
-	collectd_plugins_slurm?			( sys-cluster/slurm )
 	collectd_plugins_smart?			( dev-libs/libatasmart:0= )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp:= )
 	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp:= )

@@ -128,7 +128,8 @@ stop() {
 	else
 		ebegin "Stopping uWSGI application ${PROGNAME}"
 	fi
-	start-stop-daemon --stop --signal QUIT --pidfile "${PIDFILE}"
+	# retry should be set higher than uwsgi worker-reload-mercy (default 60)
+	start-stop-daemon --stop --signal QUIT --retry 90 --pidfile "${PIDFILE}"
 	eend $?
 }
 

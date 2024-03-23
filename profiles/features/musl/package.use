@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors.
+# Copyright 1999-2024 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-09-08)
@@ -6,10 +6,6 @@
 # so we don't need to mask the flag, just turn it
 # off by default to steer towards libxcrypt.
 sys-libs/musl -crypt
-
-# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
-# The musl allocator works well with telegram
-net-im/telegram-desktop -jemalloc
 
 # Anthony G. Basile <blueness@gentoo.org> (2016-07-14)
 # We need this to break a circular dependency with

@@ -1,0 +1,62 @@
+From 2352b7c243be8b816511ff45377da26f7228fa72 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Wed, 28 Feb 2024 20:03:49 +0100
+Subject: [PATCH] opbible: improve Makefile, respect user's CXX, C(P|XX)FLAGS,
+ and LDFLAGS
+
+Make the Makefile respect the user's CXX, C(P|XX)FLAGS, and LDFLAGS by
+either using GNU Make's implicit rules or by appending instead of
+overriding the CXXFLAGS variable. This also has the nice advantage
+that the Makefile becomes more idiomatic and shorter.
+
+The Makefile not respecting user variables was initially report by
+Gentoo's CI and the following two downstream bugs:
+- https://bugs.gentoo.org/925710
+- https://bugs.gentoo.org/925711
+
+Also use pkg-config to determine sword's flags and libraries.
+--- a/txs-gen/Makefile
++++ b/txs-gen/Makefile
+@@ -5,35 +5,19 @@
+ 
+ ## definitions
+ 
+-CXX = g++
+-LD = g++
+-LIBS = -lsword
+-LDFLAGS = $(LIBS)
+-CXXFLAGS = -I/usr/include/sword
++LDLIBS = $(shell pkg-config --libs sword)
+ 
+-target = mod2tex
+-objects = mod2tex.o
++CXXFLAGS += $(shell pkg-config --cflags sword)
+ 
+ ## static rules
+ 
+ .PHONY : all
+ 
+-all : $(target)
+-
+-$(target) : $(objects)
+-	$(LD) -o $@ $< $(LDFLAGS)
+-
+-$(objects) : %.o: %.cpp
+-	$(CXX) -c $(CXXFLAGS) -o $@ $<
++all : mod2tex
+ 
+ .PHONY : clean
+ 
+ clean :
+-	-rm -f *~ $(objects) $(target)
+-
+-## pattern rules
+-
+-%.o : %.cpp
+-	$(CXX) -c $(CFLAGS) $(CXXFLAGS) -o $@ $<
++	-rm -f *~ mod2tex
+ 
+ ### Makefile ends here
+-- 
+2.43.0
+

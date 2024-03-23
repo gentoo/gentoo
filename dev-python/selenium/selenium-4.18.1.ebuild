@@ -25,9 +25,9 @@ SRC_URI+="
 	)
 "
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/certifi-2021.10.8[${PYTHON_USEDEP}]

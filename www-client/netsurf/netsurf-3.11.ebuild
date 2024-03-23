@@ -11,7 +11,7 @@ SRC_URI="https://download.netsurf-browser.org/netsurf/releases/source/${P}-src.t
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="bmp fbcon truetype +gif +gtk +javascript +jpeg
 	+png +psl rosprite +svg +svgtiny +webp"
 

@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">python-snappy</remote-id>
-		<remote-id type="github">andrix/python-snappy</remote-id>
+		<remote-id type="github">intake/python-snappy</remote-id>
 	</upstream>
 </pkgmetadata>

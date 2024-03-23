@@ -17,7 +17,7 @@ HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="+gdbui hex +plasma +qmake reviewboard subversion"
 
 # see bug 366471
@@ -122,7 +122,7 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "konsole view" kde-apps/konsole
+		optfeature "konsole view" "kde-apps/konsolepart:5" "kde-apps/konsole:5"
 		optfeature "static C++ Qt code analysis" dev-util/clazy
 		optfeature "static C/C++ code analysis" dev-util/cppcheck
 		optfeature "heap memory profiling" "dev-util/heaptrack[gui]"

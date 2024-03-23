@@ -12,7 +12,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Buildbot badges plugin produces an image in SVG or PNG format..."
 HOMEPAGE="https://buildbot.net/
 	https://github.com/buildbot/buildbot
-	https://pypi.org/project/buildbot-grid-view/"
+	https://pypi.org/project/buildbot-badges/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit python-single-r1 xdg-utils
+inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="Configuration system for the Xfce desktop environment"
 HOMEPAGE="
@@ -62,6 +62,17 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# https://bugs.gentoo.org/913864
+	# https://gitlab.xfce.org/xfce/xfce4-settings/-/issues/494
+	"${FILESDIR}"/${PN}-4.19.1-gmodule-libs.patch
+)
+
+src_prepare() {
+	default
+	eautomake
+}
 
 src_configure() {
 	local myconf=(

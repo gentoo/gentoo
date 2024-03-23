@@ -24,7 +24,8 @@ depend() {
 		}' /etc/exports /etc/exports.d/*.exports 2>/dev/null
 	)"
 	config /etc/exports /etc/exports.d/*.exports
-	need portmap rpc.statd ${myneed} ${NFS_NEEDED_SERVICES}
+	need portmap
+	need rpc.statd ${myneed} ${NFS_NEEDED_SERVICES}
 	use ypbind net dns rpc.rquotad rpc.idmapd rpc.svcgssd
 	after quota
 }

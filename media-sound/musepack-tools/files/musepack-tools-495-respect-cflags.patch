@@ -1,0 +1,27 @@
+From 95ba4fd6c2f2f5bd770d1a100afd65e5c95fa1d0 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Wed, 13 Mar 2024 00:00:45 -0400
+Subject: [PATCH] Respect environment CFLAGS
+
+---
+ CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d9b78f..3b09d4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,10 +20,6 @@ endif()
+ 
+ add_definitions(-DFAST_MATH -DCVD_FASTLOG)
+ 
+-if(NOT MSVC)
+-  set(CMAKE_C_FLAGS "-O3 -Wall -fomit-frame-pointer -pipe")
+-endif(NOT MSVC)
+-
+ add_subdirectory(libmpcdec)
+ add_subdirectory(libmpcpsy)
+ add_subdirectory(libmpcenc)
+-- 
+2.43.2
+

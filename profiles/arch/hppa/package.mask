@@ -5,11 +5,6 @@
 # Needs explicit porting to each platform (bug 894078#c6)
 dev-python/py-cpuinfo
 
-# Sam James <sam@gentoo.org> (2023-03-10)
-# Fails to build on HPPA w/ sys-kernel/linux-headers-6.2:
-# https://github.com/strace/strace/issues/241
-=dev-debug/strace-6.2
-
 # Quote from <eike@s...l.de>:
 # "Compilation fails with: #error You need to define CycleTimer for
 #  your OS and CPU"

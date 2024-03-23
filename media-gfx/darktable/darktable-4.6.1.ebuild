@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_BUILD_TYPE="Release"
 LUA_COMPAT=( lua5-4 )
 
 inherit cmake flag-o-matic lua-single toolchain-funcs xdg
@@ -134,6 +133,7 @@ src_prepare() {
 }
 
 src_configure() {
+	CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
 		-DBUILD_CURVE_TOOLS=$(usex tools)
 		-DBUILD_NOISE_TOOLS=$(usex tools)
@@ -170,7 +170,10 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	# This USE flag is masked for -9999
-	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.*.pdf
+	if use doc; then
+		dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.en.pdf
+		use l10n_uk && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.uk.pdf
+	fi
 
 	if use nls; then
 		for lang in ${LANGS} ; do

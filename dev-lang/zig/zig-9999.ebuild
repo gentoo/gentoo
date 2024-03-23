@@ -179,7 +179,7 @@ src_test() {
 	local ZIG_TEST_ARGS="-Dstatic-llvm=false -Denable-llvm -Dskip-non-native \
 		-Doptimize=ReleaseSafe -Dtarget=$(get_zig_target) -Dcpu=$(get_zig_mcpu)"
 	local ZIG_TEST_STEPS=(
-		test-cases test-fmt test-behavior test-compiler-rt test-universal-libc test-compare-output
+		test-fmt test-cases test-behavior test-c-import test-compiler-rt test-universal-libc test-compare-output
 		test-standalone test-c-abi test-link test-stack-traces test-cli test-asm-link test-translate-c
 		test-run-translated-c test-std
 	)

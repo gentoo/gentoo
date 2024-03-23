@@ -17,7 +17,7 @@ else
 		-> ocaml-${P}.tar.gz"
 	S="${WORKDIR}/ocaml-${P}"
 
-	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2-with-linking-exception"

@@ -73,6 +73,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/openmw-0.48.0-gcc14.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 

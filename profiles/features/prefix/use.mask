@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # prefix USE flag should always be unmasked in prefix profiles
@@ -12,6 +12,10 @@ systemd
 
 # system authentication etc. not possible for non-privileged Prefix
 pam
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-02-14)
+# sci-libs/atlas does not have prefix keywords
+atlas
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl does not have prefix keywords

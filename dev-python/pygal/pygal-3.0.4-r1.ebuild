@@ -37,7 +37,7 @@ BDEPEND="
 # CHANGELOG is a symlink to docs/changelog.rst
 DOCS=( docs/changelog.rst README.md )
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 

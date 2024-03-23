@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Libconfig is a simple library for manipulating structured configuration files"
 HOMEPAGE="
-	http://www.hyperrealm.com/libconfig/libconfig.html
+	https://www.hyperrealm.com/libconfig/libconfig.html
 	https://github.com/hyperrealm/libconfig
 "
 SRC_URI="https://github.com/hyperrealm/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"

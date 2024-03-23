@@ -31,6 +31,7 @@ LICENSE+="
 SLOT="0"
 
 DEPEND="app-arch/xz-utils
+	app-arch/zstd:=
 	dev-db/sqlite:3
 	dev-libs/openssl:="
 RDEPEND="${DEPEND}"
@@ -47,6 +48,7 @@ src_unpack() {
 }
 
 src_compile() {
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	for crate in crates/*; do
 		pushd "${crate}" || die
 		cargo_src_compile

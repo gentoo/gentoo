@@ -26,7 +26,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD ECL-2.0 MIT CC0-1.0"
 SLOT="0"
 
-IUSE='events-handlers-exec'
+IUSE='events-handlers-exec security'
 RESTRICT="test"
 
 RDEPEND="
@@ -44,22 +44,29 @@ PATCHES=(
 
 # takes a module as an only arg
 add_custom_module() {
-	local LINE_NO=$(grep -n 'plug in Caddy modules here' cmd/caddy/main.go | awk -F: '{print $1;}')
+	local LINE_NO=$(grep -n 'plug in Caddy modules here' cmd/caddy/main.go | awk -F: '{print $1;}' || die)
 	sed -i -e "${LINE_NO:?}a \        _ \"$1\"" cmd/caddy/main.go || die
 }
 
 src_unpack() {
+	declare -A MOOMODULES || die
+
+	use events-handlers-exec && { MOOMODULES[exec]="github.com/mholt/caddy-events-exec" || die ; }
+	use security && { MOOMODULES[sec]="github.com/greenpau/caddy-security" || die ; }
+
+	export MY_MODULES="${MOOMODULES[@]}" || die
+
 	if [[ "${PV}" == 9999* ]]; then
 		# clone main git repo
 		git-r3_src_unpack
 
 		# get extra modules
-		if use events-handlers-exec; then
-			pushd "${P}"
-			add_custom_module 'github.com/mholt/caddy-events-exec' || die
-			ego get github.com/mholt/caddy-events-exec
-			popd
-		fi
+		pushd "${P}" || die
+		for moo in ${MY_MODULES}; do
+			add_custom_module "${moo}"
+			ego get "${moo}"
+		done
+		popd || die
 
 		# clone dist repo (docs and misc)
 		EGIT_REPO_URI="https://github.com/caddyserver/dist.git"
@@ -68,7 +75,7 @@ src_unpack() {
 
 		go-module_live_vendor
 	else
-		go-module_src_unpack
+		default
 	fi
 }
 
@@ -76,18 +83,13 @@ src_prepare() {
 	default
 	sed -i -e "s|User=caddy|User=http|g;s|Group=caddy|Group=http|g;" ../dist-"${PV}"/init/*service || die
 
-	if use events-handlers-exec && [[ "${PV}" != 9999* ]]; then
-		add_custom_module 'github.com/mholt/caddy-events-exec' || die
-		cat <<-EOF >> go.sum || die
-			github.com/mholt/caddy-events-exec v0.0.0-20231121214933-055bfd2e8b82 h1:uRsPaFNQJRDrYcSsgnH0hFhCWFXfgB8QVH8yjX+u154=
-			github.com/mholt/caddy-events-exec v0.0.0-20231121214933-055bfd2e8b82/go.mod h1:Y9JjT8YLxpmk7PeUkvsWAhzzRdC6rXP7QjAHiwmvjD0=
-		EOF
+	if [[ "${PV}" != 9999* ]]; then
+		mv ../vendor ./ || die
+		eapply ../go-mod-sum.patch
 
-		cat <<-EOF >> go.mod || die
-			require (
-					github.com/mholt/caddy-events-exec v0.0.0-20231121214933-055bfd2e8b82 // indirect
-			)
-		EOF
+		for moo in ${MY_MODULES}; do
+			add_custom_module "${moo}"
+		done
 	fi
 }
 
