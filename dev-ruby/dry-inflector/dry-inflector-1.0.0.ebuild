@@ -21,6 +21,9 @@ LICENSE="MIT"
 
 KEYWORDS="~amd64"
 SLOT="$(ver_cut 1)"
+IUSE="test"
+
+ruby_add_bdepend "test? ( dev-ruby/warning )"
 
 all_ruby_prepare() {
 	sed -i -e '/\(bundler\|coverage\)/ s/^/#/' spec/spec_helper.rb || die
