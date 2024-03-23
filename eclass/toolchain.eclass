@@ -359,7 +359,7 @@ DEPEND="${RDEPEND}"
 if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
 	# Snapshots don't contain info pages.
 	# If they start to, adjust gcc_cv_prog_makeinfo_modern logic in toolchain_src_configure.
-	# Needed unless/until https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 is fixed
+	# Needed unless/until https://gcc.gnu.org/PR106899 is fixed
 	BDEPEND+=" sys-apps/texinfo"
 fi
 
@@ -803,7 +803,7 @@ toolchain_src_configure() {
 	gcc_do_filter_flags
 
 	if ! tc_version_is_at_least 11 && [[ $(gcc-major-version) -ge 12 ]] ; then
-		# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105695
+		# https://gcc.gnu.org/PR105695
 		# bug #849359
 		export ac_cv_std_swap_in_utility=no
 	fi
@@ -1044,7 +1044,7 @@ toolchain_src_configure() {
 		fi
 
 		confgcc+=(
-			# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100289
+			# https://gcc.gnu.org/PR100289
 			# TOOD: Find a way to disable this just for stage1 cross?
 			--disable-gcov
 
@@ -1374,7 +1374,7 @@ toolchain_src_configure() {
 
 	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
-		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
+		# Safeguard against https://gcc.gnu.org/PR106899 being fixed
 		# without corresponding ebuild changes.
 		eqawarn "Snapshot release with pre-generated info pages found!"
 		eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
@@ -1989,10 +1989,10 @@ toolchain_src_install() {
 	# with it. Several reported bugs exist where the resulting image
 	# was wrong, rather than a simple compile/install failure:
 	# - bug #906155
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=42980
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=51814
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103656
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109898
+	# - https://gcc.gnu.org/PR42980
+	# - https://gcc.gnu.org/PR51814
+	# - https://gcc.gnu.org/PR103656
+	# - https://gcc.gnu.org/PR109898
 	S="${WORKDIR}"/build emake DESTDIR="${D}" -j1 install
 
 	# Punt some tools which are really only useful while building gcc
