@@ -646,7 +646,7 @@ toolchain_src_prepare() {
 	# Update configure files
 	local f
 	einfo "Fixing misc issues in configure files"
-	for f in $(grep -l 'autoconf version 2.13' $(find "${S}" -name configure)) ; do
+	for f in $(grep -l 'autoconf version 2.13' $(find "${S}" -name configure || die) || die) ; do
 		ebegin "  Updating ${f/${S}\/} [LANG]"
 		patch "${f}" "${FILESDIR}"/gcc-configure-LANG.patch >& "${T}"/configure-patch.log \
 			|| eerror "Please file a bug about this"
@@ -1865,7 +1865,7 @@ gcc_do_make() {
 			emake doc-man-doxygen
 
 			# Clean bogus manpages. bug #113902
-			find -name '*_build_*' -delete
+			find -name '*_build_*' -delete || die
 
 			# Blow away generated directory references. Newer versions of gcc
 			# have gotten better at this, but not perfect. This is easier than
@@ -1982,9 +1982,9 @@ toolchain_src_install() {
 		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" -j1 install
 
 		# Punt some tools which are really only useful while building gcc
-		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
+		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \; || die
 		# This one comes with binutils
-		find "${ED}" -name libiberty.a -delete
+		find "${ED}" -name libiberty.a -delete || die
 
 		# Move the libraries to the proper location
 		gcc_movelibs
@@ -2006,9 +2006,9 @@ toolchain_src_install() {
 	S="${WORKDIR}"/build emake DESTDIR="${D}" -j1 install
 
 	# Punt some tools which are really only useful while building gcc
-	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
+	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \; || die
 	# This one comes with binutils
-	find "${ED}" -name libiberty.a -delete
+	find "${ED}" -name libiberty.a -delete || die
 
 	# Move the libraries to the proper location
 	gcc_movelibs
@@ -2084,9 +2084,9 @@ toolchain_src_install() {
 		rm -rf "${ED}"/usr/share/{man,info}
 		rm -rf "${D}"${DATAPATH}/{man,info}
 	else
-		local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man)
+		local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man || die)
 		if [[ -d ${cxx_mandir} ]] ; then
-			cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/
+			cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/ || die
 		fi
 	fi
 
@@ -2100,7 +2100,7 @@ toolchain_src_install() {
 	docompress "${DATAPATH}"/{info,man}
 
 	# Prune empty dirs left behind
-	find "${ED}" -depth -type d -delete 2>/dev/null
+	find "${ED}" -depth -type d -delete 2>/dev/null || die
 
 	# libstdc++.la: Delete as it doesn't add anything useful: g++ itself
 	# handles linkage correctly in the dynamic & static case.  It also just
@@ -2137,17 +2137,17 @@ toolchain_src_install() {
 			-name libitm.la -o \
 			-name libvtv.la -o \
 			-name 'lib*san.la' \
-		')' -type f -delete
+		')' -type f -delete || die
 
 	# Use gid of 0 because some stupid ports don't have
 	# the group 'root' set to gid 0.  Send to /dev/null
 	# for people who are testing as non-root.
-	chown -R 0:0 "${D}${LIBPATH}" 2>/dev/null
+	chown -R 0:0 "${D}${LIBPATH}" 2>/dev/null || die
 
 	# Installing gdb pretty-printers into gdb-specific location.
 	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH}
-	pushd "${D}${LIBPATH}" >/dev/null
-	for py in $(find . -name '*-gdb.py') ; do
+	pushd "${D}${LIBPATH}" >/dev/null || die
+	for py in $(find . -name '*-gdb.py' || die) ; do
 		local multidir=${py%/*}
 
 		insinto "${gdbdir}/${multidir}"
@@ -2157,7 +2157,7 @@ toolchain_src_install() {
 
 		rm "${py}" || die
 	done
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# Don't scan .gox files for executable stacks - false positives
 	export QA_EXECSTACK="usr/lib*/go/*/*.gox"
@@ -2170,7 +2170,7 @@ toolchain_src_install() {
 	if use test ; then
 		mkdir "${T}"/test-results || die
 		cd "${WORKDIR}"/build || die
-		find . -name \*.sum -exec cp --parents -v {} "${T}"/test-results \;
+		find . -name \*.sum -exec cp --parents -v {} "${T}"/test-results \; || die
 	fi
 }
 
@@ -2217,7 +2217,7 @@ gcc_movelibs() {
 			removedirs="${removedirs} ${FROMDIR}"
 			FROMDIR=${D}${FROMDIR}
 			if [[ ${FROMDIR} != "${TODIR}" && -d ${FROMDIR} ]] ; then
-				local files=$(find "${FROMDIR}" -maxdepth 1 ! -type d 2>/dev/null)
+				local files=$(find "${FROMDIR}" -maxdepth 1 ! -type d 2>/dev/null || die)
 				if [[ -n ${files} ]] ; then
 					mv ${files} "${TODIR}" || die
 				fi
@@ -2234,7 +2234,7 @@ gcc_movelibs() {
 		rmdir "${D}"${FROMDIR} >& /dev/null
 	done
 
-	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null
+	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null || die
 }
 
 # Make sure the libtool archives have libdir set to where they actually
