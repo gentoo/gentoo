@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit readme.gentoo-r1 toolchain-funcs
+inherit flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Collection of DNS client/server software"
 HOMEPAGE="https://cr.yp.to/djbdns.html"
@@ -81,6 +81,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Bug 927539. This is beyond our ability to realistically fix due
+	# to patch conflicts.
+	append-cflags $(test-flags-CC -Wno-error=incompatible-pointer-types)
+
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo "/usr" > conf-home || die
