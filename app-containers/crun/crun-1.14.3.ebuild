@@ -27,6 +27,7 @@ DEPEND="
 	sys-kernel/linux-headers
 	caps? ( sys-libs/libcap )
 	criu? ( >=sys-process/criu-3.15 )
+	elibc_musl? ( sys-libs/argp-standalone[static-libs] )
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd:= )
 "
