@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,7 +66,7 @@ RDEPEND="
 		dev-libs/openssl:=
 		net-misc/curl
 	)
-	fem? ( sci-libs/vtk:=[qt5,rendering] )
+	fem? ( <sci-libs/vtk-9.3.0:=[qt5,rendering] )
 	gui? (
 		dev-qt/designer:5
 		dev-qt/qtgui:5
