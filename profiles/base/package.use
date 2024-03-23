@@ -1,5 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-03-23)
+# Used by pkgcheck, so let's make it easier for all developers to install it
+>=dev-libs/tree-sitter-bash-0.21.0 python
 
 # Alfred Wingate <parona@protonmail.com> (2023-12-25)
 # Default to gbm on non-desktop with REQUIRED_USE: ^^ ( gbm wayland X )
