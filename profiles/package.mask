@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-03-23)
+# Apparently broken.  No tests.  Last code change in 2016.  No revdeps.
+# Removal on 2024-04-22.  Bug #892613.
+dev-python/sphinxcontrib-asyncio
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-03-23)
 # Source incompatible with mygui-3.4.1
 # https://bugs.gentoo.org/927634
