@@ -283,7 +283,7 @@ CRATES="
 	zip@0.6.6
 "
 
-inherit cargo
+inherit cargo flag-o-matic
 
 DESCRIPTION="GNU coreutils rewritten in Rust"
 HOMEPAGE="https://uutils.github.io/coreutils/ https://github.com/uutils/coreutils"
@@ -338,6 +338,9 @@ src_unpack() {
 }
 
 src_compile() {
+	# normally cargo_src_compile sets this for us, but we don't use it
+	filter-lto
+
 	makeargs=(
 		# Disable output synchronisation as make calls cargo
 		-Onone

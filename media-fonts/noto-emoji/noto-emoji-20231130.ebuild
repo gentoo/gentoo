@@ -12,7 +12,7 @@ SRC_URI="https://github.com/googlefonts/noto-emoji/archive/${COMMIT}.tar.gz -> $
 
 LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="icons"
 
 RESTRICT="binchecks strip"

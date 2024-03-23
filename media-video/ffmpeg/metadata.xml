@@ -58,7 +58,7 @@
 		<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
 		<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
 		<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
-		<flag name="qsv">Enable Intel Quick Sync Video via <pkg>media-libs/intel-mediasdk</pkg> (ffmpeg versions older than, and including, 5.1) or <pkg>media-libs/oneVPL</pkg> (ffmpeg version newer than 5.1).</flag>
+		<flag name="qsv">Enable Intel Quick Sync Video via <pkg>media-libs/intel-mediasdk</pkg> (ffmpeg versions older than, and including, 5.1) or <pkg>media-libs/libvpl</pkg> (ffmpeg version newer than 5.1).</flag>
 		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 		<flag name="network">Enables network streaming support</flag>
 		<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>

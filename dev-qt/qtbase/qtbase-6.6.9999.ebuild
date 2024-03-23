@@ -137,7 +137,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-no-glx.patch
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
-	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
 )
 
 src_prepare() {
@@ -167,6 +166,8 @@ src_configure() {
 		-DINSTALL_QMLDIR="${QT6_QMLDIR}"
 		-DINSTALL_SYSCONFDIR="${QT6_SYSCONFDIR}"
 		-DINSTALL_TRANSLATIONSDIR="${QT6_TRANSLATIONDIR}"
+
+		-DQT_UNITY_BUILD=ON # ~30% faster build, affects other dev-qt/* too
 
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)

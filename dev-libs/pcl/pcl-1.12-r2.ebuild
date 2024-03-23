@@ -9,7 +9,7 @@ SRC_URI="http://www.xmailserver.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/1"
-KEYWORDS="amd64 arm ~arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-musl.patch"

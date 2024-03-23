@@ -105,7 +105,7 @@ src_configure() {
 		-Dlibunwind=disabled
 		-Dzstd=disabled
 
-		--buildtype $(usex debug debug plain)
+		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure

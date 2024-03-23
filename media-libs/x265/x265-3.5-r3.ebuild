@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake multilib-minimal multibuild
+inherit cmake flag-o-matic multilib-minimal multibuild
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -157,6 +157,11 @@ x265_variant_src_configure() {
 }
 
 multilib_src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/875854
+	# https://bitbucket.org/multicoreware/x265_git/issues/937/build-fails-with-lto
+	filter-lto
+
 	local myabicmakeargs=(
 		-DENABLE_TESTS=$(usex test ON OFF)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")

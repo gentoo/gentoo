@@ -130,6 +130,11 @@ src_configure() {
 	# avoid bug https://bugs.gentoo.org/800067
 	local -x AS="$(tc-getCC) -c"
 
+	# -Werror=odr
+	# https://tracker.ardour.org/view.php?id=9649
+	# https://bugs.gentoo.org/917095
+	filter-lto
+
 	local backends="alsa,dummy"
 	use jack && backends+=",jack"
 	use pulseaudio && backends+=",pulseaudio"

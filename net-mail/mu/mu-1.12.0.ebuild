@@ -27,7 +27,11 @@ BDEPEND="
 "
 
 PATCHES=(
+	# https://github.com/djcb/mu/pull/2632
 	"${FILESDIR}"/${PN}-1.12.0-cld2-opt.patch
+
+	# https://bugs.gentoo.org/925503
+	"${FILESDIR}"/${PN}-1.12.0-no-python.patch
 )
 
 SITEFILE="70mu-gentoo-autoload.el"

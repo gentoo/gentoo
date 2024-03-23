@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake vcs-snapshot
+inherit cmake flag-o-matic vcs-snapshot
 
 MY_P=${P/_/-}
 
@@ -31,6 +31,16 @@ RDEPEND="dev-qt/qtcore:5
 	>=media-libs/hamlib-4
 	doc? ( dev-ruby/asciidoctor )"
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/860411
+	#
+	# Upstream is on bitbucket, no activity since 2020.
+	filter-lto
+
+	cmake_src_configure
+}
 
 src_install() {
 	cmake_src_install

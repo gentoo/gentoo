@@ -31,6 +31,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
+	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
 )
 
 CMAKE_SKIP_TESTS=(
@@ -41,6 +42,7 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		-DQT_FEATURE_system_assimp=ON
+		-DQT_UNITY_BUILD=OFF # fails to build
 	)
 
 	qt6-build_src_configure

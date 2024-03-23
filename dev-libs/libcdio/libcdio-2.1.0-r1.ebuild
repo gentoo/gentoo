@@ -49,6 +49,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855701
+	# https://savannah.gnu.org/bugs/index.php?65458
+	filter-lto
+
 	# Workaround for LLD 17, drop after 2.1.0 (bug #915826)
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 

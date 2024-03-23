@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit multilib-minimal toolchain-funcs verify-sig
+inherit libtool multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Multi-format archive and compression library"
 HOMEPAGE="
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="
 	acl blake2 +bzip2 +e2fsprogs expat +iconv lz4 +lzma lzo nettle
 	static-libs test xattr zstd
@@ -77,6 +77,13 @@ PATCHES=(
 	# (we can simply update the command since we don't support old lrzip)
 	"${FILESDIR}/${P}-lrzip.patch"
 )
+
+src_prepare() {
+	default
+
+	# Needed for flags to be respected w/ LTO
+	elibtoolize
+}
 
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923

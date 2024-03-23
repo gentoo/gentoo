@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Legacy library for PPD files, split out of cups-filters"
 HOMEPAGE="https://github.com/OpenPrinting/libppd"
 SRC_URI="https://github.com/OpenPrinting/libppd/releases/download/${PV}/${P}.tar.xz"
@@ -28,6 +30,15 @@ BDEPEND="
 	>=sys-devel/gettext-0.18.3
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(

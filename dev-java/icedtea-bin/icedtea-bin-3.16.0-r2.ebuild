@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ HOMEPAGE="http://icedtea.classpath.org"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="8"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="-* amd64 ~arm arm64 ppc64 x86"
 IUSE="+alsa big-endian cups doc examples +gtk headless-awt pulseaudio selinux source"
 
 REQUIRED_USE="gtk? ( !headless-awt )"

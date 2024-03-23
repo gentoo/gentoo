@@ -1,22 +1,8 @@
-From: Jaco Kroon <jaco@uls.co.za>
-Date: Tue, 24 Oct 2023 06:36:10 +0200
-Subject: [PATCH] dnscache: Enable larger truncation
-
-This variation conflicts with the IPv6 patch.
-
-This is a workaround for https://forum.mikrotik.com/viewtopic.php?t=200627
-where Mikrotik doesn't fall back if the UDP response is truncated.
-
-This is done by enabling larger (configurable) than 512 byte responses on UDP
-such that Mikrotik doesn't have a need to revert to TCP.  Since it's impossible
-to truly know the maximum size of a DNS response trivially this is made
-configurable and the upper limit is arbitrarily capped to 16KB.
-
-Signed-off-by: Jaco Kroon <jaco@uls.co.za>
-diff -bru djbdns-1.05.o/dnscache.c djbdns-1.05/dnscache.c
---- djbdns-1.05.o/dnscache.c	2024-02-23 08:05:00.037623680 +0200
-+++ djbdns-1.05/dnscache.c	2024-02-23 08:18:26.320580927 +0200
-@@ -52,6 +52,7 @@
+diff --git a/dnscache.c b/dnscache.c
+index 8c899a3..8b10571 100644
+--- a/dnscache.c
++++ b/dnscache.c
+@@ -51,6 +51,7 @@ static char myipincoming[4];
  static char buf[1024];
  uint64 numqueries = 0;
  
@@ -24,7 +10,7 @@ diff -bru djbdns-1.05.o/dnscache.c djbdns-1.05/dnscache.c
  
  static int udp53;
  
-@@ -77,7 +78,7 @@
+@@ -77,7 +78,7 @@ void u_respond(int j)
  {
    if (!u[j].active) return;
    response_id(u[j].id);
@@ -33,7 +19,7 @@ diff -bru djbdns-1.05.o/dnscache.c djbdns-1.05/dnscache.c
    socket_send4(udp53,response,response_len,u[j].ip,u[j].port);
    log_querydone(&u[j].active,response_len);
    u[j].active = 0; --uactive;
-@@ -430,6 +431,15 @@
+@@ -431,6 +432,15 @@ int main()
    if (!cache_init(cachesize))
      strerr_die3x(111,FATAL,"not enough memory for cache of size ",x);
  
@@ -49,10 +35,19 @@ diff -bru djbdns-1.05.o/dnscache.c djbdns-1.05/dnscache.c
    if (env_get("HIDETTL"))
      response_hidettl();
    if (env_get("FORWARDONLY"))
-diff -Nbrau djbdns-1.05.o/server.c djbdns-1.05/server.c
---- djbdns-1.05.o/server.c	2001-02-11 23:11:45.000000000 +0200
-+++ djbdns-1.05/server.c	2024-02-23 08:19:40.020855813 +0200
-@@ -83,6 +83,7 @@
+diff --git a/server.c b/server.c
+index e486fe1..63ad11c 100644
+--- a/server.c
++++ b/server.c
+@@ -2,6 +2,7 @@
+ #include "case.h"
+ #include "env.h"
+ #include "buffer.h"
++#include "scan.h"
+ #include "strerr.h"
+ #include "ip4.h"
+ #include "uint16.h"
+@@ -83,6 +84,7 @@ int main()
  {
    char *x;
    int udp53;
@@ -60,7 +55,7 @@ diff -Nbrau djbdns-1.05.o/server.c djbdns-1.05/server.c
  
    x = env_get("IP");
    if (!x)
-@@ -105,11 +106,19 @@
+@@ -105,11 +107,19 @@ int main()
  
    buffer_putsflush(buffer_2,starting);
  

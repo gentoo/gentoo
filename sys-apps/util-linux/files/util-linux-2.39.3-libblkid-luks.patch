@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/926950
+https://gitlab.com/lvmteam/lvm2/-/issues/11
+https://bugzilla.opensuse.org/show_bug.cgi?id=1213227
+https://github.com/util-linux/util-linux/pull/2373
+https://github.com/util-linux/util-linux/commit/93ba7961779789217a1f814ce3110ff8c040c8c3
+
+From 93ba7961779789217a1f814ce3110ff8c040c8c3 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Wed, 12 Jul 2023 15:48:27 +0200
+Subject: [PATCH] Revert "libblkid: try LUKS2 first when probing"
+
+mdadm superblocks before 1.1 are placed at the end of the device, which
+means that the data contained inside the array starts at offset 0. For
+LUKS inside MD, blkid falsely detects this as plain LUKS instead of a
+linux_raid_member. This causes e.g. dracut to not assemble the array
+during boot and system startup fails.
+
+This reverts commit b8889c0a214aeb3dd47bf1ab280fe5534b64d2aa.
+--- a/libblkid/src/superblocks/superblocks.c
++++ b/libblkid/src/superblocks/superblocks.c
+@@ -94,11 +94,6 @@ static int blkid_probe_set_usage(blkid_probe pr, int usage);
+  */
+ static const struct blkid_idinfo *idinfos[] =
+ {
+-	/* In case the volume is locked with OPAL we are going to get
+-	 * an I/O error when reading past the LUKS header, so try it
+-	 * first. */
+-	&luks_idinfo,
+-
+ 	/* RAIDs */
+ 	&linuxraid_idinfo,
+ 	&ddfraid_idinfo,
+@@ -124,6 +119,7 @@ static const struct blkid_idinfo *idinfos[] =
+ 	&snapcow_idinfo,
+ 	&verity_hash_idinfo,
+ 	&integrity_idinfo,
++	&luks_idinfo,
+ 	&vmfs_volume_idinfo,
+ 	&ubi_idinfo,
+ 	&vdo_idinfo,

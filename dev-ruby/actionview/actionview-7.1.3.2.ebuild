@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -44,7 +44,7 @@ ruby_add_bdepend "
 		~dev-ruby/activerecord-${PV}
 		~dev-ruby/railties-${PV}
 		dev-ruby/sqlite3
-		<dev-ruby/minitest-5.16:*
+		dev-ruby/minitest:5
 	)"
 
 all_ruby_prepare() {

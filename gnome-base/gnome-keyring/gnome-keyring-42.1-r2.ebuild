@@ -40,6 +40,10 @@ BDEPEND="
 	test? ( ${PYTHON_DEPS} )
 "
 
+PATCHES=(
+	"${FILESDIR}"/gnome-keyring-42.1-c99.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }

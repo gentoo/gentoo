@@ -9,7 +9,7 @@ SRC_URI="https://github.com/wjoye/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 SLOT="0"
 RESTRICT="test"
 
@@ -20,7 +20,7 @@ HTML_DOCS=( doc/tkTable.html )
 DOCS=( ChangeLog README.txt release.txt )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	stat64 # used to test for Large File Support
+	opendir64 rewinddir64 closedir64 stat64 # used on AIX
 )
 
 PATCHES=(

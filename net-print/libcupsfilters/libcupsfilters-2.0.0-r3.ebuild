@@ -39,6 +39,10 @@ BDEPEND="
 	test? ( media-fonts/dejavu )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-r3-c++17.patch"
+)
+
 src_prepare() {
 	default
 

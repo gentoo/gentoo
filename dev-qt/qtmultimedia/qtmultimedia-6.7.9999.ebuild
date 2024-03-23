@@ -24,7 +24,7 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? (
-		~dev-qt/qtbase-${PV}:6[X=,eglfs=]
+		~dev-qt/qtbase-${PV}:6[X=,concurrent,eglfs=]
 		media-video/ffmpeg:=[vaapi?]
 		X? (
 			x11-libs/libX11

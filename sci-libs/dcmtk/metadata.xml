@@ -4,4 +4,7 @@
   <maintainer type="project">
     <email>sci-biology@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">DCMTK/dcmtk</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,0 +1,42 @@
+diff --git a/Makefile b/Makefile
+index 2d99808d9..283f825dd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -103,9 +103,6 @@ makeinclude: configure configh.in makeinclude.in
+ 	touch config.h
+ 	chmod +x fltk-config
+ 
+-configure: configure.ac
+-	autoconf
+-
+ portable-dist:
+ 	epm -v -s fltk.xpm fltk
+ 
+diff --git a/documentation/Makefile b/documentation/Makefile
+index 0b176246b..882fbf8a4 100644
+--- a/documentation/Makefile
++++ b/documentation/Makefile
+@@ -91,12 +91,6 @@ install: $(MANPAGES)
+ 	  $(INSTALL_DATA) fltk.pdf $(DESTDIR)$(docdir); \
+ 	fi
+ 	echo "Installing man pages in $(DESTDIR)$(mandir) ..."
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fluid.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-config.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-options.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat3
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk.$(CAT3EXT) $(DESTDIR)$(mandir)/cat3
+ 	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fluid.man $(DESTDIR)$(mandir)/man1/fluid.1
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-config.man $(DESTDIR)$(mandir)/man1/fltk-config.1
+@@ -105,10 +99,6 @@ install: $(MANPAGES)
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk.man $(DESTDIR)$(mandir)/man3/fltk.3
+ 
+ install-linux install-osx:
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/blocks.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/checkers.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/sudoku.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+ 	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/man6
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/blocks.man $(DESTDIR)$(mandir)/man6/blocks.6
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/checkers.man $(DESTDIR)$(mandir)/man6/checkers.6

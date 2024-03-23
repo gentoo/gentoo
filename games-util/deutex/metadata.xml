@@ -11,14 +11,6 @@
 		It is a command-line driven program and as such, is suitable for
 		scripting such as from a shell script or Makefile.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>vilhelm.gray@gmail.com</email>
-		<name>William Breathitt Gray</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_PV=${PV//./_}
 MY_P=${PN}-${MY_PV}
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ethernet NIC Queue stats viewer"
 HOMEPAGE="https://github.com/isc-projects/ethq"
@@ -35,6 +35,13 @@ src_prepare() {
 		sed -i '/TARGETS/s/ethq_test//' Makefile \
 			|| die "sed failed for USE flag test"
 	fi
+}
+
+src_configure() {
+	# https://github.com/isc-projects/ethq/issues/30 (bug #879893)
+	filter-lto
+
+	default
 }
 
 src_compile() {

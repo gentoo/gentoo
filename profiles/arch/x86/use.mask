@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas works on x86
+-atlas
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper works on x86
+-jasper
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot

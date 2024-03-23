@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
@@ -31,6 +31,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
+	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
 )
 
 CMAKE_SKIP_TESTS=(

@@ -1,0 +1,41 @@
+From cc568d4d246ffc9bf08a96db0889d3b89c852718 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 6 Mar 2024 11:22:11 +0000
+Subject: [PATCH 1/4] Fix -Wint-conversion
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Backport of upstream commit https://github.com/openjdk/jdk21u-dev/commit/7b1455163ed893639059b3d62b71b2ff347c2e3f.
+
+Fixes the following warning/error:
+```
+jdk8u-jdk8u402-ga/jdk/src/share/bin/splashscreen_stubs.c:64:5: error: returning ‘void *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ jdk/src/share/bin/splashscreen_stubs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/jdk/src/share/bin/splashscreen_stubs.c b/jdk/src/share/bin/splashscreen_stubs.c
+index 9c1f514..666634f 100644
+--- a/jdk/src/share/bin/splashscreen_stubs.c
++++ b/jdk/src/share/bin/splashscreen_stubs.c
+@@ -61,11 +61,11 @@ typedef char* (*SplashGetScaledImageName_t)(const char* fileName,
+ #define INVOKEV(name) _INVOKE(name, ,;)
+ 
+ int     DoSplashLoadMemory(void* pdata, int size) {
+-    INVOKE(SplashLoadMemory, NULL)(pdata, size);
++    INVOKE(SplashLoadMemory, 0)(pdata, size);
+ }
+ 
+ int     DoSplashLoadFile(const char* filename) {
+-    INVOKE(SplashLoadFile, NULL)(filename);
++    INVOKE(SplashLoadFile, 0)(filename);
+ }
+ 
+ void    DoSplashInit(void) {
+-- 
+2.44.0
+
