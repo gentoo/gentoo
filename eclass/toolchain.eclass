@@ -2223,8 +2223,8 @@ gcc_movelibs() {
 	for FROMDIR in ${removedirs} ; do
 		rmdir "${D}"${FROMDIR} >& /dev/null
 	done
-
-	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null || die
+	# XXX: Intentionally no die, here to remove empty dirs
+	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null
 }
 
 # Make sure the libtool archives have libdir set to where they actually
