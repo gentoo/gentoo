@@ -58,6 +58,7 @@ lua_src_compile() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
 	lua_foreach_impl lua_src_compile
 }
 

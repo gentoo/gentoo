@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="A high-performance event loop/event model with lots of feature"
 HOMEPAGE="http://software.schmorp.de/pkg/libev.html"
@@ -25,6 +25,14 @@ src_prepare() {
 	sed -i -e "/^include_HEADERS/s/ event.h//" Makefile.am || die
 
 	eautoreconf
+}
+
+src_configure() {
+	# See bug #855869 and its large number of dupes in bundled libev copies.
+	filter-lto
+	append-flags -fno-strict-aliasing
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

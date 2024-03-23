@@ -1,6 +1,19 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# Experimental, only keyworded for amd64 currently
+sys-kernel/installkernel efistub
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
+# media-libs/libdovi has very few keywords and there is little interest
+# in adding extras unless requested (also needs rust+cargo-c)
+media-libs/libplacebo libdovi
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
+# net-libs/paho-mqtt-c is only available for amd64 and x86
+app-admin/syslog-ng mqtt
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
 # Refind is only available on a subset of arches
 sys-kernel/installkernel refind
@@ -32,11 +45,11 @@ dev-python/PyQt6 pdfium
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
 # media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
-# are only available for amd64 and riscv
+# are only available for amd64, arm64 and riscv
 >=gui-libs/wlroots-0.17.0 drm liftoff
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
-# media-libs/oneVPL is only keyworded for amd64 at this time.
+# media-libs/libvpl is only keyworded for amd64 at this time.
 media-video/obs-studio qsv
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
@@ -53,6 +66,7 @@ media-libs/libplacebo shaderc
 
 # Michał Górny <mgorny@gentoo.org> (2023-09-19)
 # dev-cpp/cpp-httplib is barely keyworded anywhere.
+dev-debug/lldb debuginfod
 sys-devel/llvm debuginfod
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-09-13)
@@ -66,10 +80,6 @@ media-video/pipewire roc
 # Sam James <sam@gentoo.org> (2023-07-18)
 # dev-cpp/cppdap is not keyworded in most places
 dev-build/cmake dap
-
-# Sam James <sam@gentoo.org> (2023-07-09)
-# sys-libs/libhugetlbfs is broken w/ newer glibc, bug #806079
-sys-apps/nvme-cli hugepages
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb builds practically only on the authors' computer.
@@ -307,7 +317,7 @@ dev-util/catalyst system-bootloader
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
-media-video/mpv libplacebo vulkan
+media-video/mpv vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is not available everywhere.
@@ -379,7 +389,6 @@ media-video/motion mmal
 media-video/ffmpeg mmal
 media-video/ffmpeg-chromium mmal
 media-video/mpv mmal
-net-misc/moonlight mmal
 
 # Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
@@ -387,9 +396,9 @@ net-misc/moonlight mmal
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sd-boot and ukify are not supported on all archs.
-sys-apps/systemd boot gnuefi ukify
+sys-apps/systemd boot ukify
 sys-apps/systemd-utils boot ukify
-sys-kernel/installkernel systemd-boot ukify
+sys-kernel/installkernel systemd-boot ukify uki
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.

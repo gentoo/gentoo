@@ -1,8 +1,7 @@
-# Copyright 1999-2024 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2024-01-11)
 # Fails to compile:
 # https://github.com/c-ares/c-ares/issues/682
-=net-dns/c-ares-1.25.0
 =net-dns/c-ares-1.25.0-r1

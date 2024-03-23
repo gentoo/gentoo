@@ -1,0 +1,36 @@
+From 6f4d653802bd43bc4eda515460df9f90353dbebe Mon Sep 17 00:00:00 2001
+From: leslie-fang-intel <leslie.fang@intel.com>
+Date: Fri, 25 Aug 2023 13:37:20 +0800
+Subject: [PATCH] reland remove conv weight scale reciprocal (#226)
+
+---
+ include/ideep.hpp                | 2 +-
+ include/ideep/operators/conv.hpp | 3 ---
+ 2 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/include/ideep.hpp b/include/ideep.hpp
+index 7e02c366..a11c3553 100644
+--- a/include/ideep.hpp
++++ b/include/ideep.hpp
+@@ -48,6 +48,6 @@
+ #define IDEEP_VERSION_MAJOR    DNNL_VERSION_MAJOR
+ #define IDEEP_VERSION_MINOR    DNNL_VERSION_MINOR
+ #define IDEEP_VERSION_PATCH    DNNL_VERSION_PATCH
+-#define IDEEP_VERSION_REVISION 0
++#define IDEEP_VERSION_REVISION 1
+ 
+ #endif
+diff --git a/include/ideep/operators/conv.hpp b/include/ideep/operators/conv.hpp
+index 49677ff6..27ee84b6 100644
+--- a/include/ideep/operators/conv.hpp
++++ b/include/ideep/operators/conv.hpp
+@@ -161,9 +161,6 @@ struct conv_deconv_utils {
+           weights_scales_in.size(), oc_per_group, groups, is_deconv);
+       auto wei_scales = weights_scales_in;
+       if (!std::all_of(wei_scales.begin(), wei_scales.end(), [](float i){ return i == 1.0f; })) {
+-        for (auto& s : wei_scales) {
+-          s = 1.0 / s;
+-        }
+         op_attr.set_scales(DNNL_ARG_WEIGHTS, wei_scale_mask, wei_scales);
+       }
+       if (dst_scales_in[0] != 1.0f) {

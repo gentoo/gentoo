@@ -1,0 +1,381 @@
+diff --git a/squid/Makefile b/squid/Makefile
+index fafab4c..8c329b3 100644
+--- a/squid/Makefile
++++ b/squid/Makefile
+@@ -19,7 +19,6 @@ MANDIR     = $(HOME)/man
+ #  On an Alliant, use fxc.
+ #
+ #CC = cc
+-CC = gcc
+ #CC = fxc
+ 
+ ## Any special compiler flags you want.
+@@ -37,7 +36,6 @@ CC = gcc
+ #  for instance. If the code builds cleanly but seg faults, try
+ #  rebuilding without optimization.
+ #
+-CFLAGS = -O -m32
+ #CFLAGS = -g 
+ #CFLAGS = -TARG:exc_max -64 -Ofast=ip27    #specific SGI Origin200 compiler#
+ 
+@@ -47,8 +45,6 @@ CFLAGS = -O -m32
+ #  Don't worry. The Makefile tests for ranlib existence and will work
+ #  fine on SGIs even if RANLIB is set.
+ #
+-AR     = ar rcv
+-RANLIB = ranlib
+ 
+ ## Machine specific definitions
+ #
+@@ -108,41 +104,41 @@ DIST = $(SRC) $(HDRS) $(READMES) Makefile
+ all: $(LIBTARGET)  
+ 
+ alistat: $(OBJ) alistat_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o alistat $(OBJ) alistat_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o alistat $(OBJ) alistat_main.o $(LIBS)
+ 
+ compalign: $(OBJ) compalign_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o compalign $(OBJ) compalign_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o compalign $(OBJ) compalign_main.o $(LIBS)
+ 
+ compstruct: $(OBJ) compstruct_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o compstruct $(OBJ) compstruct_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o compstruct $(OBJ) compstruct_main.o $(LIBS)
+ 
+ getseq: $(OBJ) getseq_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o getseq $(OBJ) getseq_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o getseq $(OBJ) getseq_main.o $(LIBS)
+ 
+ reformat: $(OBJ) reformat_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o reformat $(OBJ) reformat_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o reformat $(OBJ) reformat_main.o $(LIBS)
+ 
+ revcomp: $(OBJ) revcomp_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o revcomp $(OBJ) revcomp_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o revcomp $(OBJ) revcomp_main.o $(LIBS)
+ 
+ seqstat: $(OBJ) seqstat_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o seqstat $(OBJ) seqstat_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o seqstat $(OBJ) seqstat_main.o $(LIBS)
+ 
+ seqsplit: $(OBJ) seqsplit_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o seqstat $(OBJ) seqsplit_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o seqstat $(OBJ) seqsplit_main.o $(LIBS)
+ 
+ shuffle: $(OBJ) shuffle_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o shuffle $(OBJ) shuffle_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o shuffle $(OBJ) shuffle_main.o $(LIBS)
+ 
+ translate:  $(OBJ) translate_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o translate $(OBJ) translate_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o translate $(OBJ) translate_main.o $(LIBS)
+ 
+ weight: $(OBJ) weight_main.o
+-	$(CC) $(CFLAGS) $(MDEFS) -o weight $(OBJ) weight_main.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) -o weight $(OBJ) weight_main.o $(LIBS)
+ 
+ 
+ $(LIBTARGET): $(OBJ)
+-	$(AR) $(LIBTARGET) $(OBJ)
++	$(AR) rcv $(LIBTARGET) $(OBJ)
+ 	-if test -x /bin/ranlib; then /bin/ranlib $(LIBTARGET); else exit 0; fi
+ 	-if test -x /usr/bin/ranlib; then /usr/bin/ranlib $(LIBTARGET); else exit 0; fi
+ 	-if test -x $(RANLIB); then $(RANLIB) $(LIBTARGET); else exit 0; fi
+@@ -182,4 +178,4 @@ tags:
+ 	etags -t $(SRC) $(HDRS)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(MDEFS) -c $<		
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -c $<
+diff --git a/squid02/Makefile b/squid02/Makefile
+index d32240f..757e0dd 100644
+--- a/squid02/Makefile
++++ b/squid02/Makefile
+@@ -27,8 +27,6 @@ SCRIPTDIR   = ${exec_prefix}/bin
+ 
+ ## your compiler and compiler flags
+ #
+-CC     = gcc
+-CFLAGS = -g -O2 -m32
+ 
+ ## other defined flags for machine-specific stuff 
+ #
+@@ -37,8 +35,6 @@ LIBS  =  -lm
+ 
+ ## Archiver command
+ #
+-AR     = ar rcv
+-RANLIB = ranlib
+ 
+ ## instructions for installing man pages
+ #
+@@ -158,10 +154,10 @@ OBJS =	a2m.o\
+ all: version.h $(PROGS) libsquid.a
+ 
+ $(PROGS): %: %_main.o version.h $(OBJS) 
+-	$(CC) $(CFLAGS) $(MDEFS) $(PVMLIBDIR) -o $@ $@_main.o $(OBJS) $(PVMLIBS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(MDEFS) $(PVMLIBDIR) -o $@ $@_main.o $(OBJS) $(PVMLIBS) $(LIBS)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(PVMFLAG) $(PVMINCDIR) $(MDEFS) -c $<		
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(PVMFLAG) $(PVMINCDIR) $(MDEFS) -c $<
+ ################################################################
+ 
+ 
+@@ -172,7 +168,7 @@ $(PROGS): %: %_main.o version.h $(OBJS)
+ module: libsquid.a
+ 
+ libsquid.a: version.h $(OBJS)
+-	$(AR) libsquid.a $(OBJS)
++	$(AR) rcv libsquid.a $(OBJS)
+ 	$(RANLIB) libsquid.a
+ 	chmod 644 libsquid.a
+ #################################################################
+diff --git a/src/Makefile b/src/Makefile
+index d93182b..35c8b3d 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -21,7 +21,6 @@ SQUIDDIR02    = ../squid02
+ SQUIDSRCDIR02 = ../squid02
+ 
+ ## your compiler
+-CC = gcc
+ #CC = cc
+ 
+ ## any special compiler flags you want
+@@ -30,7 +29,6 @@ CC = gcc
+ #CFLAGS = -g -Wall -pedantic 
+ #CFLAGS = -TARG:exc_max 
+ #CFLAGS = -g -fullwarn -wlint,-fviah
+-CFLAGS = -O -m32
+ #CFLAGS = -p # profiling #
+ #CFLAGS = -64 -Ofast=ip27   #specific warhorse compiler#
+ 
+@@ -131,145 +129,145 @@ DEMOS =
+ all: 	$(PROGS)
+ 
+ main:              $(OBJ) main.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o  $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(LIBS)
+ cfgbuild:          $(OBJ) cfgbuild.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ eqrna:             $(OBJ) eqrna.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ eqrna_sample:      $(OBJ) eqrna_sample.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ shuffle:           $(OBJ) shuffle.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR) $@.o $(OBJ) $(LIBS)
+ rnamat_main:       $(OBJ2) rnamat_main.o
+-	           $(CC) $(CFLAGS) -o $@ -L$(SQUIDDIR02) $@.o $(OBJ2) $(LIBS)
++	           $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -L$(SQUIDDIR02) $@.o $(OBJ2) $(LIBS)
+ 
+ main.o:            ../src/main.c
+-	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	           $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ cfgbuild.o:        ../src/cfgbuild.c
+-	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	           $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ eqrna.o:           ../src/eqrna.c
+-	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	           $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ eqrna_sample.o:    ../src/eqrna_sample.c
+-	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	           $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ shuffle.o:         ../src/shuffle.c
+-	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	           $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnamat_main.o:     ../src/rnamat_main.c
+-	           $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?	
++	           $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?
+ 
+ cfgio.o:                      ../src/cfgio.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ cfgmodel.o:                   ../src/cfgmodel.c
+-		              $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++		                  $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ cfgparse.o:                   ../src/cfgparse.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ codcreatealign.o:             ../src/codcreatealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ coddp.o:                      ../src/coddp.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ coddpscanfast.o:              ../src/coddpscanfast.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ codmodel.o:                   ../src/codmodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ codon.o:                      ../src/codon.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ codscorealign.o:              ../src/codscorealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ er_math.o:                    ../src/er_math.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ er_vectop.o:                  ../src/er_vectop.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?
+ evd.o:                        ../src/evd.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolcodmodel.o:               ../src/evolcodmodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolemissions.o:              ../src/evolemissions.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolmisc.o:                   ../src/evolmisc.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolnullmodel.o:              ../src/evolnullmodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolothmodel.o:               ../src/evolothmodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolqrnaversion.o:            ../src/evolqrnaversion.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolscorewithmodels.o:        ../src/evolscorewithmodels.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolscorewithmodelscanfast.o: ../src/evolscorewithmodelscanfast.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolriboprob.o:               ../src/evolriboprob.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolrnadp.o:                  ../src/evolrnadp.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolrnadpscanfast.o:          ../src/evolrnadpscanfast.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolrnamodel.o:               ../src/evolrnamodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolrnascorealign.o:          ../src/evolrnascorealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ evolve.o:                     ../src/evolve.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ globals.o:                    ../src/globals.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ hexamer.o:                    ../src/hexamer.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ matrix.o:                     ../src/matrix.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ misc.o:                       ../src/misc.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ nrnscfg.o:                    ../src/nrnscfg.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ nstack.o:                     ../src/nstack.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?
+ nullmodel.o:                  ../src/nullmodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ othcreatealign.o:             ../src/othcreatealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ othdp.o:                      ../src/othdp.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ othdpscanfast.o:              ../src/othdpscanfast.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ othmodel.o:                   ../src/othmodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ othscorealign.o:              ../src/othscorealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ posterior.o:                  ../src/posterior.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ qrnaversion.o:                ../src/qrnaversion.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ riboprob.o:                   ../src/riboprob.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnacreatealign.o:             ../src/rnacreatealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnadp.o:                      ../src/rnadp.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnadpscanfast.o:              ../src/rnadpscanfast.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnaio.o:                      ../src/rnaio.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnamat.o:                     ../src/rnamat.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR02) -c $?
+ rnamodel.o:                   ../src/rnamodel.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnaoutput.o:                  ../src/rnaoutput.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnascorealign.o:              ../src/rnascorealign.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnascfg.o:                    ../src/rnascfg.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ rnascfgscanfast.o:            ../src/rnascfgscanfast.c
+-	                      $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ scorewithmodels.o:           ../src/scorewithmodels.c
+-	                     $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ scorewithmodelscanfast.o:    ../src/scorewithmodelscanfast.c
+-	                     $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ seqio.o:                     ../src/seqio.c
+-	                     $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ trace.o:                     ../src/trace.c
+-	                     $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ traceSCFG.o:                 ../src/traceSCFG.c
+-	                     $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ tying.o:                     ../src/tying.c
+-	                     $(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?	
++	                      $(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $?
+ 
+ 
+ install: $(PROGS)
+@@ -313,10 +311,10 @@ lint:
+ 	/usr/lib/lint/llib-lm.ln
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $<		
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $<
+ 
+ .m.o:
+-	$(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $<
+ 
+ 
+ 

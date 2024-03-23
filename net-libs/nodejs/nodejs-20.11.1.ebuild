@@ -106,7 +106,7 @@ src_prepare() {
 	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-20.6.0-paxmarking.patch )
 
 	# bug 922725
-	use riscv && PATCHES+=( "${FILESDIR}"/${P}-riscv.patch )
+	use riscv && PATCHES+=( "${FILESDIR}"/${PN}-20.11.0-riscv.patch )
 
 	default
 }

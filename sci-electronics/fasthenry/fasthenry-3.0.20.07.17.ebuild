@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Three dimensional inductance computation program, Whiteley Research version"
 HOMEPAGE="http://www.wrcad.com/freestuff.html"
@@ -27,6 +27,14 @@ PATCHES=(
 )
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862450
+	#
+	# Upstream provides a contact email. I have sent an email describing the
+	# bug. They responded to say it is now fixed and a new version will be
+	# available shortly.
+	filter-lto
+
 	tc-export CC AR
 	emake all
 }

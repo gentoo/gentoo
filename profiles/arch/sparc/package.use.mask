@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-02-13)
 # Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
 # is not keyworded here and currently fails tests (bug #924430).
@@ -68,7 +72,6 @@ app-alternatives/ninja samurai
 # Vulkan is not available on sparc.
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
-<dev-qt/qtwayland-5.15.11:5 vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
@@ -316,7 +319,6 @@ media-gfx/inkscape cdr visio wpg
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
 dev-python/werkzeug test
-dev-python/urllib3 test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-28)
 # Requires www-client/firefox which isn't available on sparc
@@ -657,7 +659,7 @@ net-vpn/tinc vde
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond

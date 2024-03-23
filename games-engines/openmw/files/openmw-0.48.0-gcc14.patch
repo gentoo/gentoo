@@ -1,0 +1,13 @@
+Fix build with gcc 14
+https://bugs.gentoo.org/925105
+
+--- a/components/bsa/bsa_file.cpp
++++ b/components/bsa/bsa_file.cpp
+@@ -26,6 +26,7 @@
+ #include <components/files/constrainedfilestream.hpp>
+ 
+ #include <cassert>
++#include <algorithm>
+ 
+ #include <boost/filesystem/path.hpp>
+ #include <boost/filesystem/fstream.hpp>

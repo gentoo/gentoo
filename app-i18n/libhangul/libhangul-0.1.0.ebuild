@@ -3,6 +3,8 @@
 
 EAPI="7"
 
+inherit libtool
+
 DESCRIPTION="Library for hangul input method logic, hanja dictionary"
 HOMEPAGE="https://github.com/libhangul/libhangul"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
@@ -19,6 +21,11 @@ RDEPEND="virtual/libiconv
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \

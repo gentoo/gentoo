@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake udev
+inherit cmake flag-o-matic udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/lib/}"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="ogg rtlsdr test websocket"
 
 RESTRICT="!test? ( test )"
@@ -43,6 +43,11 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/878525
+	# https://github.com/indilib/indi/issues/2023
+	filter-lto
+
 	local mycmakeargs=(
 		-DINDI_SYSTEM_HTTPLIB=ON
 		-DINDI_SYSTEM_JSONLIB=ON

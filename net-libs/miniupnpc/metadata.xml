@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">miniupnp/miniupnp</remote-id>
 	</upstream>
-	<use>
-		<flag name="ipv6">Run tests requiring IPv6-enabled kernel.</flag>
-	</use>
 </pkgmetadata>

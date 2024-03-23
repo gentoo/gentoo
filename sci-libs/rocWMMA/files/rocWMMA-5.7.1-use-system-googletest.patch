@@ -1,0 +1,25 @@
+Add an option to use system PR
+Upstream PR: https://github.com/ROCm/rocWMMA/pull/353
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -29,8 +29,12 @@ include( CMakeDependentOption )
+ cmake_dependent_option( ROCWMMA_BUILD_VALIDATION_TESTS "Build validation tests" ON "ROCWMMA_BUILD_TESTS" OFF )
+ cmake_dependent_option( ROCWMMA_BUILD_BENCHMARK_TESTS "Build benchmarking tests" OFF "ROCWMMA_BUILD_TESTS" OFF )
+ cmake_dependent_option( ROCWMMA_BUILD_EXTENDED_TESTS "Build extended test parameter coverage" OFF "ROCWMMA_BUILD_TESTS" OFF )
++cmake_dependent_option( ROCWMMA_USE_SYSTEM_GOOGLETEST "Use system Google Test library instead of downloading and building it" OFF "ROCWMMA_BUILD_TESTS" OFF )
+ 
+ # Test/benchmark requires additional dependencies
++if(ROCWMMA_USE_SYSTEM_GOOGLETEST)
++  find_package(GTest REQUIRED)
++else()
+ include( FetchContent )
+ 
+ FetchContent_Declare(
+@@ -53,6 +57,7 @@ if(NOT googletest_POPULATED)
+   # Restore shared libs setting
+   set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_OLD} CACHE INTERNAL "Build SHARED libraries" FORCE)
+ endif()
++endif()
+ 
+ set(ROCWMMA_TEST_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
+ set(ROCWMMA_COMMON_TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/hip_device.cpp

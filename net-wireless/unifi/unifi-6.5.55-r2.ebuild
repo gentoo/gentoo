@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,9 @@ HOMEPAGE="https://www.ubnt.com"
 SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 S="${WORKDIR}/UniFi"
 
-KEYWORDS="-* amd64 ~arm64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
 SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="systemd"
 RESTRICT="bindist mirror"
 
@@ -30,7 +30,10 @@ BDEPEND="app-arch/unzip"
 
 DOCS=( "readme.txt" )
 
-QA_PREBUILT="usr/lib/unifi/lib/native/Linux/x86_64/*.so"
+QA_PREBUILT="
+	usr/lib/unifi/lib/native/Linux/aarch64/*.so
+	usr/lib/unifi/lib/native/Linux/x86_64/*.so
+"
 
 src_prepare() {
 	# Remove unneeded files Mac and Windows

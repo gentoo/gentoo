@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">DeaDBeeF-Player/deadbeef-mpris2-plugin</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="OpenPGP key used to sign squid releases"
-HOMEPAGE="https://sourceware.org/elfutils/"
+HOMEPAGE="https://www.squid-cache.org/"
 SRC_URI="https://www.squid-cache.org/pgp.asc -> ${P}.asc"
 S="${WORKDIR}"
 

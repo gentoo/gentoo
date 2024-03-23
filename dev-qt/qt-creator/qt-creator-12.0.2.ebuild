@@ -25,7 +25,7 @@ else
 	[[ ${QTC_PV} == ${PV} ]] && QTC_REL=official || QTC_REL=development
 	SRC_URI="https://download.qt.io/${QTC_REL}_releases/qtcreator/$(ver_cut 1-2)/${PV/_/-}/${QTC_P}.tar.xz"
 	S=${WORKDIR}/${QTC_P}
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QT_PV}=
 	clang? (
 		dev-cpp/yaml-cpp:=
-		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}')
+		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=')
 	)
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? (

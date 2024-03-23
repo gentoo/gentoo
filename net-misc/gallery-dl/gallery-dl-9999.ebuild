@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,14 @@ RDEPEND="
 	>=dev-python/requests-2.11.0[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
+
+src_prepare() {
+	# Tests against real servers, some tests always fail and some are subject to change.
+	rm test/test_results.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_compile_all() {
 	emake PYTHON="${EPYTHON}" data/completion/{,_}gallery-dl man

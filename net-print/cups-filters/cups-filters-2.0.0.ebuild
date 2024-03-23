@@ -11,7 +11,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+foomatic"
 #IUSE=""
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	net-print/libcupsfilters

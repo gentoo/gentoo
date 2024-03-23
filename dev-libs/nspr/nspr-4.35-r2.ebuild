@@ -62,8 +62,19 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/867634
+	#
+	# Testsuite-only issue. Still, this makes it challenging to test the package with LTO
+	# enabled...
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# The build system overrides user optimization level based on a configure flag. #886987
 	local my_optlvl=$(get-flag '-O*')
+
+	# bgo #923802
+	append-lfs-flags
 
 	# We use the standard BUILD_xxx but nspr uses HOST_xxx
 	tc-export_build_env BUILD_CC

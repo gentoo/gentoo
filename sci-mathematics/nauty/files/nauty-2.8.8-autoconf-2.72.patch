@@ -1,0 +1,53 @@
+diff --git a/configure.ac b/configure.ac
+index 5f28e30..69d42ff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -186,9 +186,18 @@ dnl AC_PROG_CC
+ dnl CFLAGS=$user_cflags
+ MORECFLAGS=""
+ dnl  we need  AC_SYS_LARGEFILE and AC_FUNC_FSEEKO
++LARGEFILECFLAGS=""
+ AC_SYS_LARGEFILE
+-AS_IF([test "x$ac_cv_sys_file_offset_bits" = xno],[ac_cv_sys_file_offset_bits=0])
+-AC_SUBST(ac_cv_sys_file_offset_bits)
++dnl AS_IF([test "x$ac_cv_sys_file_offset_bits" = xno],[ac_cv_sys_file_offset_bits=0])
++dnl AC_SUBST(ac_cv_sys_file_offset_bits
++AS_CASE([$ac_cv_sys_largefile_opts],
++  ["none needed"], [],
++  ["support not detected"], [],
++  dnl otherwise it is a compiler flag
++  [LARGEFILECFLAGS="$ac_cv_sys_largefile_opts"]
++  )
++MORECFLAGS="$LARGEFILECFLAGS"
++AC_SUBST(LARGEFILECFLAGS)
+ 
+ dnl AS_IF([test "x$user_cflags" = x || test "x$user_cflags" = x-m32],
+ dnl [
+diff --git a/nauty-h.in b/nauty-h.in
+index ae65bc9..51508d9 100644
+--- a/nauty-h.in
++++ b/nauty-h.in
+@@ -60,13 +60,6 @@ it is necessary to check they are correct.
+ #define FLEX_ARRAY_OK @flex_array_ok@
+  /* whether the compiler supports flexible array members in structures */
+ 
+-#define _FILE_OFFSET_BITS @ac_cv_sys_file_offset_bits@
+-#if _FILE_OFFSET_BITS == 64
+-#define _LARGEFILE_SOURCE
+-#else
+-#undef _FILE_OFFSET_BITS
+-#endif
+-
+ /* Support of gcc extensions __builtin_clz, __builtin_clzl, __builtin_clzll */
+ #ifndef HAVE_HWLZCNT
+ #define HAVE_HWLZCNT @have_hwlzcnt@
+diff --git a/nauty-pc.in b/nauty-pc.in
+index cde86b3..c0bcef8 100644
+--- a/nauty-pc.in
++++ b/nauty-pc.in
+@@ -9,4 +9,4 @@ Version: @PACKAGE_VERSION@
+ URL: @PACKAGE_URL@
+ Libs: -L${libdir} -l@PACKAGE@
+ Libs.private: -lpthread
+-Cflags: -I${includedir}
++Cflags: -I${includedir} @LARGEFILECFLAGS@

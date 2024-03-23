@@ -13,10 +13,6 @@ ruby_targets_ruby33
 # New unstable PHP slot.
 php_targets_php8-3
 
-# Brian Evans <grknight@gentoo.org> (2022-12-09)
-# PHP 8.2 is in testing
-php_targets_php8-2
-
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
 # Needs dev-python/pypy* stable
 python_targets_pypy3

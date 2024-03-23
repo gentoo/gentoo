@@ -1,6 +1,10 @@
 # Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
 # Joonas Niilola <juippis@gentoo.org> (2024-02-16)
 # Test dependencies not keyworded on this arch.
 www-servers/nginx test

@@ -5,6 +5,11 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<use>
+		<flag name="rootless">
+			Enables dependencies for running in rootless mode.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">containerd/nerdctl</remote-id>
 	</upstream>

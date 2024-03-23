@@ -11,7 +11,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/s
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/1.9"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.10-disable-tests.patch #519062 #522050
 	"${FILESDIR}"/${PN}-1.5.9-header-extern-c.patch
 	"${FILESDIR}"/${PN}-1.6.3-fix-rpmspec-check.patch
+	"${FILESDIR}"/${P}-tests.patch
 )
 
 pkg_setup() {

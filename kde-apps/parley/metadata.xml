@@ -5,6 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="webengine">Build browser integration for the editor, requires <pkg>dev-qt/qtwebengine</pkg></flag>
+	</use>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
