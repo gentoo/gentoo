@@ -163,6 +163,7 @@ tree-sitter-grammar_src_compile() {
 	if [[ -f "${S}/pyproject.toml" ]]; then
 		sed -e "/SONAME_MINOR :=/s/:=.*$/:= $(_get_tsg_abi_ver)/" -i "${S}/Makefile" || die
 		emake \
+			STRIP="" \
 			PREFIX="${EPREFIX}/usr" \
 			LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 	else
