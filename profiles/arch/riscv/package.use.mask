@@ -32,7 +32,7 @@ sys-apps/openrc s6
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
 # Avoid keywording more Qt stuff
-dev-python/pyside2 datavis webengine
+dev-python/pyside2 datavis
 
 # Marek Szuba <marecki@gentoo.org> (2023-08-19)
 # dev-libs/pocl needs some work before it can be keyworded here (Bug #907333).
@@ -107,7 +107,6 @@ dev-libs/cyrus-sasl berkdb
 # Avoid dragging in "heavy"  parts of dev-qt/* unless/until
 # somebody needs them. bug #816981, bug #854261.
 # Unfortunately, tests demand qtwebengine too.
-dev-python/QtPy webengine
 dev-python/QtPy test
 
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
@@ -136,10 +135,6 @@ app-emulation/qemu xen
 # unkeyworded depdendency - sys-cluster/ceph
 app-emulation/qemu rbd
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2012-12-25)
-# Requires dev-qt/qtwebengine
-sci-astronomy/stellarium webengine
-
 # Alex Fan <alex.fan.q@gmail.com> (2021-12-12)
 # dev-python/uvloop fails test #806412
 # but with it installed, anyio passes all tests
@@ -164,11 +159,6 @@ sys-cluster/ceph pmdk
 dev-ruby/capybara test
 #  - dev-qt/qtwebengine (bdepend)
 dev-python/ipython qt5
-kde-apps/k3b webengine
-kde-apps/marble webengine
-kde-plasma/discover webengine
-kde-plasma/kdeplasma-addons webengine
-kde-plasma/libksysguard webengine
 net-irc/quassel urlpreview
 
 # Jonathan Davies <jpds@protonmail.com> (2021-09-03)
