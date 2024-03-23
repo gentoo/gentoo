@@ -76,8 +76,8 @@ dev-python/QtPy test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
-kde-apps/kleopatra:5 pim
-kde-apps/umbrello:5 php
+kde-apps/kleopatra pim
+kde-apps/umbrello php
 kde-misc/kio-gdrive share
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
