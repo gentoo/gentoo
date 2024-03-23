@@ -78,7 +78,6 @@ app-text/cb2bib
 app-text/kchmviewer
 app-text/kjots
 app-text/sigil
-dev-lang/typescript
 dev-python/spyder
 dev-python/spyder-terminal
 dev-python/spyder-unittest
@@ -88,7 +87,6 @@ dev-python/spyder-notebook
 dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5
-gnome-extra/gnome-shell-extension-pop-shell
 kde-apps/akonadi-calendar
 kde-apps/akonadi-import-wizard
 kde-apps/akonadiconsole
@@ -141,8 +139,6 @@ net-analyzer/nmapsi
 >=net-im/tokodon-24.02.0
 net-im/whatsie
 net-libs/signon-ui
-net-misc/nextcloud-client
-net-p2p/ktorrent:5
 sci-geosciences/qmapshack
 sci-mathematics/rkward:5
 sci-visualization/labplot:5
@@ -151,6 +147,11 @@ www-client/falkon
 www-client/otter
 www-client/qutebrowser
 media-video/jellyfin-media-player
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
+# Requires net-libs/nodejs
+dev-lang/typescript
+gnome-extra/gnome-shell-extension-pop-shell
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support

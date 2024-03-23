@@ -10,7 +10,6 @@ app-arch/lrzip-next
 # Bug #893234
 dev-qt/qtwebengine
 dev-qt/qtwebview
-dev-python/PyQt6-WebEngine
 dev-python/PyQtWebEngine
 app-admin/calamares
 app-text/zeal
@@ -26,7 +25,6 @@ app-text/calibre
 app-text/cb2bib
 app-text/kchmviewer
 app-text/sigil
-dev-lang/typescript
 dev-python/spyder
 dev-python/spyder-terminal
 dev-python/spyder-unittest
@@ -36,7 +34,6 @@ dev-python/spyder-notebook
 dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5
-gnome-extra/gnome-shell-extension-pop-shell
 kde-apps/akonadi-calendar:5
 kde-apps/akonadi-import-wizard:5
 kde-apps/akonadiconsole:5
@@ -85,8 +82,6 @@ media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
 net-libs/signon-ui
-net-misc/nextcloud-client
-net-p2p/ktorrent:5
 sci-geosciences/qmapshack
 >=sci-geosciences/gpsbabel-1.8.0
 sci-mathematics/rkward:5
