@@ -18,7 +18,7 @@ SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-
 	https://github.com/google/skia/archive/${SKIA_REV}.tar.gz -> skia-${SKIA_VER}-${SKIA_REV}.gh.tar.gz"
 
 # See https://github.com/aseprite/aseprite#license
-LICENSE="Aseprite-EULA"
+LICENSE="Aseprite-EULA MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -78,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.2.35_laf_fixes.patch"
 	"${FILESDIR}/${PN}-1.3.2_shared_fmt.patch"
 	"${FILESDIR}/${PN}-1.3.2_strict-aliasing.patch"
+	"${FILESDIR}/${PN}-1.3.5_laf-strict-aliasing.patch"
 )
 
 src_prepare() {
