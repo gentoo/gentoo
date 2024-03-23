@@ -446,8 +446,6 @@ multilib_src_install() {
 		if use kernel-install; then
 			dobin kernel-install
 			doman man/kernel-install.8
-			# copy the default set of plugins
-			cp "${S}/src/kernel-install/"*.install src/kernel-install || die
 			exeinto usr/lib/kernel/install.d
 			doexe src/kernel-install/*.install
 		fi
@@ -503,11 +501,13 @@ multilib_src_install_all() {
 	einstalldocs
 	if use boot; then
 		into /usr
-		exeinto usr/lib/kernel/install.d
-		doexe src/kernel-install/*.install
 		dobashcomp shell-completion/bash/bootctl
 		insinto /usr/share/zsh/site-functions
 		doins shell-completion/zsh/{_bootctl,_kernel-install}
+	fi
+	if use kernel-install; then
+		exeinto usr/lib/kernel/install.d
+		doexe src/kernel-install/*.install
 	fi
 	if use tmpfiles; then
 		doinitd "${FILESDIR}"/systemd-tmpfiles-setup
