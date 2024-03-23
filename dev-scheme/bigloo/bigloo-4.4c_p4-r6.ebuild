@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common toolchain-funcs
+inherit elisp-common flag-o-matic toolchain-funcs
 
 MY_PV=${PV/_p/-}  # e.g.: 4.4c_p4 -> 4.4c-4
 MY_P="${PN}-${MY_PV}"
@@ -71,6 +71,17 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/858248
+	#
+	# The code has various issues that make it look quite worrying to enable
+	# LTO, so I wouldn't risk it even if upstream fixes this one. Cannot even
+	# test compile the package due to bug #870481, bug #911667
+	#
+	# It is also impossible to test from git if any of these are fixed, since
+	# you need a working version in order to compile from git.
+	filter-lto
+
 	tc-export AR AS CC CPP CXX LD
 	export CFLAGS
 	export LDFLAGS

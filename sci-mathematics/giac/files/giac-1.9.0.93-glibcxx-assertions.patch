@@ -1,0 +1,31 @@
+From 77a08fddd1687e245f9f7567376f858607a76db0 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 4 Mar 2024 10:58:21 -0500
+Subject: [PATCH] configure.ac: delete _GLIBCXX_ASSERTIONS override
+
+This was added upstream when it was pointed out that the codebase
+contains undefined behavior that triggers glibcxx's assertions.
+Disabling the assertions without fixing the undefined behavior is not
+a satisfactory solution, so we drop the override.
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 62b63fb..3e4909f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,9 +46,8 @@ AC_CHECK_HEADERS(regex)
+ AC_CHECK_FUNCS(tgammaf)
+ 
+ dnl CXXFLAGS="$CXXFLAGS -std=c++0x"
+-dnl avoid "security" checks for vectors
+ dnl -DUSE_OBJET_BIDON added because xcas::localisation() does not load locales correctly for modules loaded before main() is executed
+-CXXFLAGS="$CXXFLAGS -U_GLIBCXX_ASSERTIONS -DUSE_OBJET_BIDON"
++CXXFLAGS="$CXXFLAGS -DUSE_OBJET_BIDON"
+ 
+ dnl Define DOUBLEVAL if bigendian
+ if test "x$ac_cv_c_bigendian" = "xyes"; then
+-- 
+2.43.0
+

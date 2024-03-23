@@ -1,0 +1,20 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -13027,7 +13027,7 @@
+ 
+     dnl Check for Meta Object Compiler
+ 
+-    AC_PATH_PROGS( MOC5, [moc-qt5 moc], no, [`dirname $qt5_libdir`/bin:$QT5DIR/bin:$PATH])
++    AC_PATH_PROGS( MOC5, [moc-qt5 moc], no, [$QT5DIR/bin])
+     if test "$MOC5" = "no"; then
+         AC_MSG_ERROR([Qt Meta Object Compiler not found.  Please specify
+ the root of your Qt installation by exporting QT5DIR before running "configure".])
+@@ -13163,7 +13163,7 @@
+             qt6_libexec_dirs="$qt6_libexec_dirs:$lib_dir/libexec"
+         fi
+     done
+-    AC_PATH_PROGS( MOC6, [moc-qt6 moc], no, [`dirname $qt6_libdir`/libexec:$QT6DIR/libexec:$qt6_libexec_dirs:`echo $qt6_libdirs | $SED -e 's/ /:/g'`:$PATH])
++    AC_PATH_PROGS( MOC6, [moc-qt6 moc], no, [$QT6DIR/bin:$QT6DIR/libexec])
+     if test "$MOC6" = "no"; then
+         AC_MSG_ERROR([Qt Meta Object Compiler not found.  Please specify
+ the root of your Qt installation by exporting QT6DIR before running "configure".])

@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pytest-httpserver</remote-id>
+		<remote-id type="pypi">pytest_httpserver</remote-id>
 		<remote-id type="github">csernazs/pytest-httpserver</remote-id>
 	</upstream>
 </pkgmetadata>

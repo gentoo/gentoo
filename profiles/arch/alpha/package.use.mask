@@ -1,6 +1,18 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-02-29)
+# sys-apps/xdg-desktop-portal is not keyworded here, #925731
+x11-base/xwayland libei
+
+# matoro <matoro_gentoo@matoro.tk> (2024-02-06)
+# Pulls in dev-python/scipy, which does not pass tests, #923067
+media-video/pipewire liblc3
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-24)
+# No LLVM on alpha.
+dev-util/perf bpf
+
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here
 dev-lang/php capstone
@@ -239,7 +251,7 @@ media-libs/mesa vulkan vulkan-overlay zink
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
 app-editors/emacs xwidgets
-gnome-extra/evolution-data-server oauth oauth-gtk3 oauth-gtk4
+gnome-extra/evolution-data-server oauth-gtk3 oauth-gtk4
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
@@ -317,6 +329,7 @@ dev-db/percona-server cjk
 # Mikle Kolyada <zlogene@gentoo.org> (2018-10-05)
 # Not keyworded (see bug #540540c#8)
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-09-30)
 # Optional dependency blocking security cleanup, bug #627316
@@ -529,7 +542,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond

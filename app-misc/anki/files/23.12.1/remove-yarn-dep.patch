@@ -1,0 +1,69 @@
+This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_runner_src_yarn.rs
+
+The ebuild ships a ready-to-use node_modules tarball which does not require
+sys-apps/yarn to be installed. Pre-built node_modules allows us to run JS tests.
+* Don't add inputs that depend on the yarn:bin target. This saves us from
+setting an extra environment variable.
+
+Rework when nodejs.eclass (GitHub PR 33426) gets added to the tree?
+The benefit of `yarn install --cache-folder .yarn --offline --ignore-scripts`
+is the hackability of `.yarn` contents in src_prepare.
+The drawback is that we lose JS tests since some npm test deps (which?) access
+the network to update their dependency graph before building.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/ninja_gen/src/node.rs
++++ b/build/ninja_gen/src/node.rs
+@@ -76,12 +76,11 @@ pub struct YarnInstall<'a> {
+ 
+ impl BuildAction for YarnInstall<'_> {
+     fn command(&self) -> &str {
+-        "$runner yarn $yarn $out"
++        "$runner yarn $out"
+     }
+ 
+     fn files(&mut self, build: &mut impl build::FilesHandle) {
+         build.add_inputs("", &self.package_json_and_lock);
+-        build.add_inputs("yarn", inputs![":yarn:bin"]);
+         build.add_outputs("out", vec!["node_modules/.marker"]);
+         for (key, value) in &self.exports {
+             let outputs: Vec<_> = value.iter().map(|o| format!("node_modules/{o}")).collect();
+@@ -139,9 +138,7 @@ pub fn setup_node(
+             );
+             build.add_dependency("yarn:bin", inputs![path]);
+         }
+-        Err(_) => {
+-            build.add_action("yarn", YarnSetup {})?;
+-        }
++        Err(_) => ()
+     };
+ 
+     for binary in binary_exports {
+--- a/build/runner/src/yarn.rs
++++ b/build/runner/src/yarn.rs
+@@ -2,23 +2,18 @@
+ // License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
+ 
+ use std::path::Path;
+-use std::process::Command;
+ 
+ use clap::Args;
+ 
+-use crate::run::run_command;
+-
+ #[derive(Args)]
+ pub struct YarnArgs {
+-    yarn_bin: String,
+     stamp: String,
+ }
+ 
+ pub fn setup_yarn(args: YarnArgs) {
++    println!("Patch: Linking pre-built node_modules.");
+     link_node_modules();
+ 
+-    run_command(Command::new(&args.yarn_bin).arg("install"));
+-
+     std::fs::write(args.stamp, b"").unwrap();
+ }
+ 

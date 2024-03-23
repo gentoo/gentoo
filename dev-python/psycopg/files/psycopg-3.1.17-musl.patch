@@ -1,0 +1,34 @@
+From eeb662bf89e9ffdb3e6fc40eb30d0b53e0b4bece Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 27 Jan 2024 15:28:34 +0100
+Subject: [PATCH] fix: add `libc.so` fallback for musl systems to the ctypes
+ impl
+
+Add a fallback to `libc.so` library name to fix loading the ctypes
+implementation on musl systems.  On musl, `find_library("c")` does
+not work (the problem has been reported to CPython in 2014, and has not
+been resolved yet), causing the module to fail on `assert libcname`.
+Instead, add a fallback to using `libc.so` and let ctypes raise
+an exception if such a library does not exist.
+---
+ psycopg/psycopg/pq/_pq_ctypes.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/psycopg/psycopg/pq/_pq_ctypes.py b/psycopg/psycopg/pq/_pq_ctypes.py
+index 9d4dd181..3ecff080 100644
+--- a/psycopg/psycopg/pq/_pq_ctypes.py
++++ b/psycopg/psycopg/pq/_pq_ctypes.py
+@@ -28,8 +28,8 @@ class FILE(Structure):
+ FILE_ptr = POINTER(FILE)
+ 
+ if sys.platform == "linux":
+-    libcname = ctypes.util.find_library("c")
+-    assert libcname
++    # find_library("c") does not work on musl, fall back to libc.so instead
++    libcname = ctypes.util.find_library("c") or "libc.so"
+     libc = ctypes.cdll.LoadLibrary(libcname)
+ 
+     fdopen = libc.fdopen
+-- 
+2.43.0
+

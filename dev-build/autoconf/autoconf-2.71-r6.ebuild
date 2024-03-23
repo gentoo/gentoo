@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 fi
 
-inherit toolchain-autoconf
+inherit toolchain-autoconf multiprocessing
 
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
@@ -37,7 +37,7 @@ BDEPEND=">=sys-devel/m4-1.4.16
 RDEPEND="${BDEPEND}
 	>=dev-build/autoconf-wrapper-15
 	sys-devel/gnuconfig
-	!~sys-devel/${P}:2.5"
+	!~${CATEGORY}/${P}:2.5"
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
@@ -74,7 +74,7 @@ src_prepare() {
 }
 
 src_test() {
-	emake check
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 src_install() {

@@ -29,7 +29,6 @@ HYPRPM_RDEPEND="
 	dev-build/cmake
 	dev-build/meson
 	dev-vcs/git
-	sys-auth/polkit
 	virtual/pkgconfig
 "
 # bundled wlroots has the following dependency string according to included headers.
@@ -56,7 +55,7 @@ WLROOTS_RDEPEND="
 	)
 "
 WLROOTS_DEPEND="
-	>=dev-libs/wayland-protocols-1.32
+	>=dev-libs/wayland-protocols-1.33
 "
 WLROOTS_BDEPEND="
 	dev-util/glslang
@@ -69,6 +68,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/wayland
+	gui-libs/hyprcursor
 	media-libs/libglvnd
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -83,6 +83,7 @@ DEPEND="
 	${RDEPEND}
 	${WLROOTS_DEPEND}
 	dev-libs/hyprland-protocols
+	dev-libs/hyprlang
 	>=dev-libs/wayland-protocols-1.25
 "
 BDEPEND="

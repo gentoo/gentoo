@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,6 +53,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# configure tests for the existence of fallocate64; if it can't find
+	# it it replaces it with a wrapper incompatible with musl... /o\
+	# we force it to assume its existence and then tell everyone to
+	# supply the *64 interface... bug 920159
+	# this workaround will stop working around once musl drops the *64 functions.
+
 	use static && append-ldflags -static
 	# OpenSSL is only used by a random helper tool we don't install.
 	ac_cv_header_attr_xattr_h=$(usex xattr) \
@@ -60,6 +66,7 @@ src_configure() {
 	ac_cv_lib_crypto_EVP_aes_192_ctr=no \
 	ac_cv_lib_lzo2_lzo1x_1_compress=$(usex lzo) \
 	ac_cv_header_lzo_lzo1x_h=$(usex lzo) \
+	ac_cv_func_fallocate64=yes \
 	econf
 }
 
@@ -80,7 +87,7 @@ _emake() {
 		OS="${os}" \
 		HAVE_SSE42=$(usex cpu_flags_x86_sse4_2 1 0) \
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0) \
-		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}" \
+		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS} -D_LARGEFILE64_SOURCE" \
 		CFLAGS_OPT='$(CFLAGS)' \
 		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		CC="$(tc-getCC)" \

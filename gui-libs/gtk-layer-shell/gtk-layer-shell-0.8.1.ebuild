@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,13 +12,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wmww/${PN}"
 else
 	SRC_URI="https://github.com/wmww/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Library to create desktop components for Wayland using the Layer Shell protocol"
 HOMEPAGE="https://github.com/wmww/gtk-layer-shell"
 
-LICENSE="MIT-with-advertising LGPL-3+"
+LICENSE="MIT LGPL-3+"
 SLOT="0"
 IUSE="examples gtk-doc introspection test vala"
 RESTRICT="!test? ( test )"

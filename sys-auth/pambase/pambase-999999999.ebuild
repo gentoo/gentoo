@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit pam python-any-r1 readme.gentoo-r1
 
@@ -12,16 +12,19 @@ HOMEPAGE="https://github.com/gentoo/pambase"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/gentoo/pambase.git"
+	EGIT_REPO_URI="
+		https://anongit.gentoo.org/git/proj/pambase.git
+		https://github.com/gentoo/pambase.git
+	"
 else
-	SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-	S="${WORKDIR}/${PN}-${P}"
+	SRC_URI="https://gitweb.gentoo.org/proj/pambase.git/snapshot/${P}.tar.bz2"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd yescrypt"
+IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 sssd systemd yescrypt"
 
 RESTRICT="binchecks"
 
@@ -54,11 +57,13 @@ RDEPEND="
 	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
 	yescrypt? ( sys-libs/libxcrypt[system] )
+	sssd? ( sys-auth/sssd )
 "
-
-BDEPEND="$(python_gen_any_dep '
+BDEPEND="
+	$(python_gen_any_dep '
 		dev-python/jinja[${PYTHON_USEDEP}]
-	')"
+	')
+"
 
 python_check_deps() {
 	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
@@ -84,6 +89,7 @@ src_configure() {
 		$(usex sha512 '--sha512' '') \
 		$(usex systemd '--systemd' '') \
 		$(usex yescrypt '--yescrypt' '') \
+		$(usex sssd '--sssd' '') \
 	|| die
 }
 

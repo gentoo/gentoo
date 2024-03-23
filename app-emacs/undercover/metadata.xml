@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/undercover-el/undercover.el/issues/</bugs-to>
     <remote-id type="github">undercover-el/undercover.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

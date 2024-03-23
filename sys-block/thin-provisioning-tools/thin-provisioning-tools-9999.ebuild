@@ -8,26 +8,25 @@ CRATES="
 	adler@1.0.2
 	aho-corasick@1.1.2
 	anstyle@1.0.4
-	anyhow@1.0.75
+	anyhow@1.0.79
 	atty@0.2.14
 	autocfg@1.1.0
-	base64@0.21.5
+	base64@0.21.7
 	bitflags@1.3.2
 	bitflags@2.4.1
 	bytemuck@1.14.0
 	byteorder@1.5.0
 	cassowary@0.3.0
 	cfg-if@1.0.0
-	clap@4.4.11
-	clap_builder@4.4.11
+	clap@4.4.16
+	clap_builder@4.4.16
 	clap_lex@0.6.0
-	console@0.15.7
+	console@0.15.8
 	crc32c@0.6.4
 	crc32fast@1.3.2
 	data-encoding@2.5.0
-	difflib@0.4.0
 	downcast@0.11.0
-	duct@0.13.6
+	duct@0.13.7
 	either@1.9.0
 	encode_unicode@0.3.6
 	env_logger@0.8.4
@@ -36,43 +35,41 @@ CRATES="
 	fastrand@2.0.1
 	fixedbitset@0.4.2
 	flate2@1.0.28
-	float-cmp@0.9.0
 	fragile@2.0.0
-	getrandom@0.2.11
+	getrandom@0.2.12
 	hermit-abi@0.1.19
 	hermit-abi@0.3.3
 	indicatif@0.17.7
 	instant@0.1.12
 	iovec@0.1.4
-	itertools@0.10.5
+	itertools@0.11.0
 	lazy_static@1.4.0
-	libc@0.2.150
+	libc@0.2.152
 	linux-raw-sys@0.4.12
 	log@0.4.20
-	memchr@2.6.4
+	memchr@2.7.1
 	minimal-lexical@0.2.1
 	miniz_oxide@0.7.1
-	mockall@0.11.4
-	mockall_derive@0.11.4
+	mockall@0.12.1
+	mockall_derive@0.12.1
 	nom@7.1.3
-	normalize-line-endings@0.3.0
 	num-derive@0.4.1
 	num-traits@0.2.17
 	num_cpus@1.16.0
 	number_prefix@0.4.0
 	numtoa@0.1.0
 	once_cell@1.19.0
-	os_pipe@1.1.4
+	os_pipe@1.1.5
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	predicates-core@1.0.6
 	predicates-tree@1.0.9
-	predicates@2.1.5
-	proc-macro2@1.0.70
-	quick-xml@0.29.0
+	predicates@3.0.4
+	proc-macro2@1.0.76
+	quick-xml@0.31.0
 	quickcheck@1.0.3
 	quickcheck_macros@1.0.0
-	quote@1.0.33
+	quote@1.0.35
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
@@ -86,18 +83,18 @@ CRATES="
 	retain_mut@0.1.7
 	roaring@0.10.2
 	rustc_version@0.4.0
-	rustix@0.38.27
+	rustix@0.38.30
 	safemem@0.3.3
-	semver@1.0.20
+	semver@1.0.21
 	shared_child@1.0.0
 	strsim@0.10.0
 	syn@1.0.109
-	syn@2.0.39
-	tempfile@3.8.1
+	syn@2.0.48
+	tempfile@3.9.0
 	termion@1.5.6
 	termtree@0.4.1
-	thiserror-impl@1.0.50
-	thiserror@1.0.50
+	thiserror-impl@1.0.56
+	thiserror@1.0.56
 	threadpool@1.8.1
 	tui@0.19.0
 	unicode-ident@1.0.12
@@ -107,32 +104,14 @@ CRATES="
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
-	windows-sys@0.45.0
-	windows-sys@0.48.0
 	windows-sys@0.52.0
-	windows-targets@0.42.2
-	windows-targets@0.48.5
 	windows-targets@0.52.0
-	windows_aarch64_gnullvm@0.42.2
-	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.0
-	windows_aarch64_msvc@0.42.2
-	windows_aarch64_msvc@0.48.5
 	windows_aarch64_msvc@0.52.0
-	windows_i686_gnu@0.42.2
-	windows_i686_gnu@0.48.5
 	windows_i686_gnu@0.52.0
-	windows_i686_msvc@0.42.2
-	windows_i686_msvc@0.48.5
 	windows_i686_msvc@0.52.0
-	windows_x86_64_gnu@0.42.2
-	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnu@0.52.0
-	windows_x86_64_gnullvm@0.42.2
-	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_gnullvm@0.52.0
-	windows_x86_64_msvc@0.42.2
-	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.0
 "
 

@@ -1,0 +1,11 @@
+--- a/configure.ac	2024-02-27 20:44:51.154115391 +0100
++++ b/configure.ac	2024-02-27 20:45:10.488884871 +0100
+@@ -263,7 +263,7 @@
+ itcl_SRC_DIR=`cd "${itcl_SRC_DIR}"; pwd`
+ AC_SUBST(itcl_SRC_DIR)
+ 
+-eval itcl_INCLUDE_SPEC="-I${itcl_SRC_DIR}/generic -I${itcl_SRC_DIR}"
++itcl_INCLUDE_SPEC="-I${itcl_SRC_DIR}/generic -I${itcl_SRC_DIR}"
+ AC_SUBST(itcl_INCLUDE_SPEC)
+ 
+ #--------------------------------------------------------------------

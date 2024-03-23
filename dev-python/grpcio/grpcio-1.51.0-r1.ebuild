@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 multiprocessing prefix pypi
+inherit distutils-r1 flag-o-matic multiprocessing prefix pypi
 
 DESCRIPTION="High-performance RPC framework (python libraries)"
 HOMEPAGE="https://grpc.io"
@@ -38,6 +38,11 @@ python_prepare_all() {
 }
 
 python_configure_all() {
+	# -Werror=odr -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/856775
+	# https://github.com/grpc/grpc/issues/36158
+	filter-lto
+
 	# os.environ.get('GRPC_BUILD_WITH_BORING_SSL_ASM', True)
 	export GRPC_BUILD_WITH_BORING_SSL_ASM=
 	export GRPC_PYTHON_DISABLE_LIBC_COMPATIBILITY=1

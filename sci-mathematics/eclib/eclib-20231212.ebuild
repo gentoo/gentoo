@@ -16,7 +16,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 # Subslot is from the soname, (LT_CURRENT - LT_AGE) in configure.ac.
 # (But for now, see src_prepare below.)
 SLOT="0/12"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="boost flint minimal test"
 RESTRICT="!test? ( test )"
 

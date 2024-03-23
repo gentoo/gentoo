@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">network/plasma-firewall</remote-id>
 	</upstream>
 	<use>
 		<flag name="firewalld">Build <pkg>net-firewall/firewalld</pkg> backend</flag>

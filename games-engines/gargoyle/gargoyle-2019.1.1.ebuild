@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Regarding licenses: libgarglk is licensed under the GPLv2. Bundled
@@ -15,6 +15,7 @@ inherit desktop edos2unix flag-o-matic multiprocessing toolchain-funcs xdg
 DESCRIPTION="An Interactive Fiction (IF) player supporting all major formats"
 HOMEPAGE="http://ccxvii.net/gargoyle/"
 SRC_URI="https://github.com/garglk/garglk/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/garglk-${PV}"
 
 LICENSE="BSD GPL-2 MIT Hugo Glulxe"
 SLOT="0"
@@ -35,8 +36,6 @@ BDEPEND="
 	app-arch/unzip
 	dev-util/ftjam
 	virtual/pkgconfig"
-
-S="${WORKDIR}/garglk-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
@@ -64,6 +63,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Aliasing violations in bundled glulxe library (bug #858716)
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# build system messes up flags and toolchain completely
 	# append flags to compiler commands to have consistent behavior
 	jam \

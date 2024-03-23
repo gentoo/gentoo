@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit autotools gnome.org python-r1 xdg
 
@@ -52,7 +52,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/yelp-tools
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
 

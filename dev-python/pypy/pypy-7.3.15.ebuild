@@ -24,9 +24,9 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/73"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 full-stdlib gdbm +jit ncurses sqlite tk"
-RESTRICT="!full-stdlib? ( test )"
+RESTRICT="test"
 
 RDEPEND="
 	|| (
@@ -99,7 +99,7 @@ src_compile() {
 		done
 
 		# Verify that CFFI module list is up-to-date
-		local expected_cksum=2d3acf18
+		local expected_cksum=-7df4eab0
 		local local_cksum=$(
 			../pypy-c - <<-EOF
 				import binascii

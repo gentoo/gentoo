@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.1-db-path.patch
 	"${FILESDIR}"/${PN}-4.8.1-clang.patch
 	"${FILESDIR}"/${PN}-4.17.0-libdir.patch
+	"${FILESDIR}"/${PN}-4.18.1-musl-nls.patch
 )
 
 pkg_pretend() {

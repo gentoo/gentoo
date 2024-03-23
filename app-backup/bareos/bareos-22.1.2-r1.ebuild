@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -99,6 +99,14 @@ REQUIRED_USE="
 	x86? ( !ceph )
 "
 
+PATCHES=(
+	# fix gentoo platform support
+	"${FILESDIR}/${PN}-21-cmake-gentoo.patch"
+	"${FILESDIR}/${PN}-22.0.2-werror.patch"
+	"${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
+	"${FILESDIR}/${PN}-22.1.2-include-algorithm.patch"
+)
+
 pkg_pretend() {
 	local active_removed_backend=""
 	if has_version "<app-backup/bareos-21[director,mysql]"; then
@@ -149,11 +157,6 @@ src_test() {
 }
 
 src_prepare() {
-	# fix gentoo platform support
-	eapply -p1 "${FILESDIR}/${PN}-21-cmake-gentoo.patch"
-	eapply "${FILESDIR}/${PN}-22.0.2-werror.patch"
-	eapply "${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
-
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"
 

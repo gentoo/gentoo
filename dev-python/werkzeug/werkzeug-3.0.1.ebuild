@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,7 +49,12 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# RequestRedirect class started incidentally being tested
+		# with pytest-8, though the test isn't prepared for that
+		# https://github.com/pallets/werkzeug/issues/2845
+		'tests/test_exceptions.py::test_response_body[RequestRedirect]'
+	)
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			"tests/test_serving.py::test_server[https]"

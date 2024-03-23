@@ -201,6 +201,9 @@ src_prepare() {
 	# always update for patches (including user's wrt #432348)
 	eautoreconf
 	tools/make_requests || die # perl
+	# tip: if need more for user patches, with portage can e.g. do
+	# echo "post_src_prepare() { tools/make_specfiles || die; }" \
+	#     > /etc/portage/env/app-emulation/wine-vanilla
 }
 
 src_configure() {
@@ -254,7 +257,6 @@ src_configure() {
 
 	tc-ld-force-bfd # builds with non-bfd but broken at runtime (bug #867097)
 	filter-lto # build failure
-	use mingw || filter-flags -fno-plt # build failure
 	use custom-cflags || strip-flags # can break in obscure ways at runtime
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 

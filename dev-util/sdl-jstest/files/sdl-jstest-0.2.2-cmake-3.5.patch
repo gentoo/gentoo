@@ -1,0 +1,33 @@
+https://github.com/Grumbel/sdl-jstest/pull/19
+https://github.com/Grumbel/sdl-jstest/commit/ae5dc5619fc1d6a26591b1e98edb81905eb891ed
+
+From e54d4391eb60707079ea4695394f3f83d16e2257 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 12 Jan 2024 18:20:38 -0800
+Subject: [PATCH] build: require cmake >= 3.5
+
+With cmake-3.27.9:
+
+CMake Deprecation Warning at CMakeLists.txt:17 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4969b63..268ac44 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ project(sdl-jstest)
+ 
+ set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")

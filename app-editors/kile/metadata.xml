@@ -10,7 +10,8 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">kile</remote-id>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="sourceforge">kile</remote-id>
+		<remote-id type="kde-invent">office/kile</remote-id>
 	</upstream>
 </pkgmetadata>

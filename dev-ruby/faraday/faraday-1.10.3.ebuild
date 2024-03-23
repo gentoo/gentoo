@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/lostisland/faraday/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 DEPEND+=" test? ( sys-process/lsof )"
 
@@ -39,6 +39,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 		>=dev-ruby/test-unit-2.4
 		>=dev-ruby/connection_pool-2.2.2
+		dev-ruby/patron
 		dev-ruby/rack
 		>=dev-ruby/rack-test-0.6
 		dev-ruby/webmock

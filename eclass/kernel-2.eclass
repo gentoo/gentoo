@@ -288,7 +288,7 @@
 # Moved this above inherit as crossdev.eclass uses CHOST internally.
 [[ ${PROFILE_ARCH} == ppc64 ]] && CHOST="powerpc64-${CHOST#*-}"
 
-inherit crossdev estack multiprocessing toolchain-funcs
+inherit crossdev estack multiprocessing optfeature toolchain-funcs
 
 case ${EAPI} in
 	7|8) ;;
@@ -656,9 +656,9 @@ if [[ ${ETYPE} == sources ]]; then
 		app-alternatives/cpio
 		dev-lang/perl
 		app-alternatives/bc
-		app-alternatives/yacc
-		app-alternatives/lex
 		dev-build/make
+		sys-devel/bison
+		sys-devel/flex
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
 		virtual/pkgconfig
@@ -992,6 +992,9 @@ postinst_sources() {
 			fi
 		fi
 	fi
+
+	optfeature "versioned kernel image installation and optionally automating tasks such as generating an initramfs or unified kernel image" \
+		"sys-kernel/installkernel"
 }
 
 # pkg_setup functions

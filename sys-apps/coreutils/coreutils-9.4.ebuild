@@ -63,9 +63,9 @@ BDEPEND="
 	app-arch/xz-utils
 	dev-lang/perl
 	test? (
+		dev-debug/strace
 		dev-lang/perl
 		dev-perl/Expect
-		dev-util/strace
 		${PYTHON_DEPS}
 	)
 	verify-sig? ( sec-keys/openpgp-keys-coreutils )

@@ -13,9 +13,10 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 DEPEND="
+	!app-i18n/fcitx-hangul:4
 	>=app-i18n/fcitx-5.1.6:5
 	>=app-i18n/libhangul-0.0.12
 	virtual/libiconv

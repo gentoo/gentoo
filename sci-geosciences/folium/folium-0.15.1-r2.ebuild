@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 inherit distutils-r1
 
 DESCRIPTION="Python Data, Leaflet.js Maps"
@@ -16,7 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.12.1-scm.patch
 	"${FILESDIR}"/${P}-gentoo.patch
 )
 
@@ -25,7 +25,9 @@ RDEPEND="sci-geosciences/xyzservices[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-python/setuptools-scm
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]

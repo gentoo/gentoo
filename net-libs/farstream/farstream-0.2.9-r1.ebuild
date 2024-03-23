@@ -43,7 +43,7 @@ DEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.18
+	>=dev-build/gtk-doc-am-1.18
 	virtual/pkgconfig
 "
 

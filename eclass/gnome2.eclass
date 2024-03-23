@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
@@ -79,7 +79,7 @@ gnome2_src_configure() {
 	local g2conf=()
 
 	# We consider packages installing gtk-doc to be handled by adding
-	# DEPEND="dev-util/gtk-doc-am" which provides tools to relink URLs in
+	# DEPEND="dev-build/gtk-doc-am" which provides tools to relink URLs in
 	# documentation to already installed documentation.  This decision also
 	# greatly helps with constantly broken doc generation.
 	# Remember to drop 'doc' USE flag from your package if it was only used to
@@ -214,7 +214,9 @@ gnome2_pkg_postinst() {
 		gnome2_schemas_update
 	fi
 	gnome2_scrollkeeper_update
-	gnome2_gdk_pixbuf_update
+	if [[ -n ${GNOME2_ECLASS_GDK_PIXBUF_LOADERS} ]]; then
+		gnome2_gdk_pixbuf_update
+	fi
 
 	if [[ ${#GNOME2_ECLASS_GIO_MODULES[@]} -gt 0 ]]; then
 		gnome2_giomodule_cache_update

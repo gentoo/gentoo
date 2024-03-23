@@ -16,7 +16,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug doc drm +eet efl-one elogind examples fbcon
 	+fontconfig fribidi gif glib +gstreamer harfbuzz heif hyphen ibus ico jpeg2k jpegxl json
 	nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim sdl +sound +svg
@@ -28,6 +28,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 	?? ( fbcon tslib )
 	drm? ( wayland )
 	examples? ( eet svg )
+	gstreamer? ( sound )
 	ibus? ( glib )
 	opengl? ( X )
 	pulseaudio? ( sound )
@@ -90,7 +91,7 @@ RDEPEND="${LUA_DEPS}
 	hyphen? ( dev-libs/hyphen )
 	ibus? ( app-i18n/ibus )
 	jpeg2k? ( media-libs/openjpeg:= )
-	jpegxl? ( media-libs/libjxl )
+	jpegxl? ( media-libs/libjxl:= )
 	json? ( >=media-libs/rlottie-0.0.1_pre20200424:= )
 	mono? ( dev-lang/mono )
 	opengl? ( virtual/opengl )
@@ -154,7 +155,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		--buildtype=plain
+		-Dbuildtype=plain
 
 		-D buffer=false
 		-D build-tests=false

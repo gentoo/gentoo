@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib toolchain-funcs
+inherit cmake-multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="Video stabilization library"
 HOMEPAGE="http://public.hronopik.de/vid.stab/"
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="openmp cpu_flags_x86_sse2 flag-o-matic"
+IUSE="openmp cpu_flags_x86_sse2"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

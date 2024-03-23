@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Please do not apply any patches which affect the generated output from
+# `automake`, as this package is used to submit patches upstream.
+
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit python-any-r1
@@ -14,7 +17,10 @@ else
 	MY_PN=${PN/-vanilla}
 	MY_P=${MY_PN}-${PV}
 
-	SRC_URI="mirror://gnu/${MY_PN}/${MY_P}.tar.xz"
+	SRC_URI="
+		mirror://gnu/${MY_PN}/${MY_P}.tar.xz
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN/-vanilla}/${PN/-vanilla}-1.16.5-tests-c99.patch.xz
+	"
 
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -42,6 +48,8 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-util/dejagnu
+		sys-devel/bison
+		sys-devel/flex
 	)
 "
 
@@ -51,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${MY_PN}-1.16.5-fix-py-compile-basedir.sh-test.patch
 	# upstreamed
 	"${FILESDIR}"/${MY_PN}-1.16.5-apostrophe-in-tests.patch
+	"${WORKDIR}"/${PN/-vanilla}-1.16.5-tests-c99.patch
 )
 
 pkg_setup() {
@@ -81,6 +90,11 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share/automake-vanilla-${PV} \
 		--program-suffix="-vanilla" \
 		--infodir="${MY_INFODIR}"
+}
+
+src_test() {
+	# Fails with byacc/flex
+	emake YACC="bison -y" LEX="flex" check
 }
 
 src_install() {
@@ -119,4 +133,6 @@ src_install() {
 	newenvd - "07automake${idx}" <<-EOF
 	INFOPATH="${MY_INFODIR}"
 	EOF
+
+	docompress "${MY_INFODIR}"
 }

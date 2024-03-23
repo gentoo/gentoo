@@ -48,7 +48,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.9.0
 	webkit? ( >=net-libs/webkit-gtk-2.38.0:6=[introspection] )
 	>=app-text/cmark-0.29.0:0=
-	d-spy? ( >=dev-util/d-spy-1.4.0:1 )
+	d-spy? ( >=dev-debug/d-spy-1.4.0:1 )
 	app-text/editorconfig-core-c
 	flatpak? (
 		dev-util/ostree

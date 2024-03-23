@@ -64,7 +64,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.1
 	virtual/pkgconfig
@@ -92,8 +92,6 @@ src_prepare() {
 	# Handle examples ourselves
 	sed 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' -i Makefile.am Makefile.in \
 		|| die "examples sed failed"
-
-	sed -e 's/sleep 2//' -i configure || die
 
 	eautoreconf # For configure.ac patching
 }

@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/921145
+https://github.com/ruby-gnome/ruby-gnome/commit/c196bf19a5d6a395011a90c3d1cb8f039d15824d
+
+From c196bf19a5d6a395011a90c3d1cb8f039d15824d Mon Sep 17 00:00:00 2001
+From: Sutou Kouhei <kou@clear-code.com>
+Date: Sat, 19 Aug 2023 15:45:46 +0900
+Subject: [PATCH] gtk3: fix a wrong type warning
+
+    compiling rb-gtk3-spin-button.c
+    rb-gtk3-spin-button.c:70:15: warning: incompatible function pointer types passing 'VALUE (VALUE)' (aka 'unsigned long (unsigned long)') to parameter of type 'VALUE (*)(VALUE, VALUE)' (aka 'unsigned long (*)(unsigned long, unsigned long)') [-Wincompatible-function-pointer-types]
+                  rb_gtk3_spin_button_input_rescue, (VALUE)&input_data);
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /Users/runner/hostedtoolcache/Ruby/3.2.2/x64/include/ruby-3.2.0/ruby/internal/iterator.h:364:62: note: passing argument to parameter 'r_proc' here
+    VALUE rb_rescue(VALUE (*b_proc)(VALUE), VALUE data1, VALUE (*r_proc)(VALUE, VALUE), VALUE data2);
+                                                                 ^
+
+Reported by MATSUMOTO Katsuyoshi. Thanks!!!
+--- a/ext/gtk3/rb-gtk3-spin-button.c
++++ b/ext/gtk3/rb-gtk3-spin-button.c
+@@ -46,7 +46,7 @@ rb_gtk3_spin_button_input_body(VALUE user_data)
+ }
+ 
+ static VALUE
+-rb_gtk3_spin_button_input_rescue(VALUE user_data)
++rb_gtk3_spin_button_input_rescue(VALUE user_data, VALUE error)
+ {
+     InputData *input_data = (InputData *)user_data;
+     g_value_set_int(input_data->data->return_value, GTK_INPUT_ERROR);
+

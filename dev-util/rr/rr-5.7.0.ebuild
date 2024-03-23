@@ -43,6 +43,10 @@ QA_FLAGS_IGNORED="
 
 RESTRICT="test" # toolchain and kernel version dependent
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.7.0-no-force-lto.patch
+)
+
 pkg_setup() {
 	if use kernel_linux; then
 		CONFIG_CHECK="SECCOMP"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal usr-ldscript
+inherit multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/${PN}.git"
@@ -52,11 +52,6 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
-
-	if multilib_is_native_abi; then
-		# We install attr into /bin, so we need the shared lib with it
-		gen_usr_ldscript -a attr
-	fi
 
 	# Add a wrapper until people upgrade.
 	# TODO: figure out when this was added & when we can drop it!

@@ -121,7 +121,7 @@ else
 	SRC_URI="https://github.com/koverstreet/bcachefs-tools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}"
 	S="${WORKDIR}/${P}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="Apache-2.0 BSD GPL-2 MIT"
@@ -159,6 +159,10 @@ BDEPEND="
 	virtual/pkgconfig
 	virtual/rust
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.0-fix-clang-musl.patch
+)
 
 llvm_check_deps() {
 	has_version -b "sys-devel/clang:${LLVM_SLOT}"

@@ -22,12 +22,12 @@ COMMON_DEPEND="x11-libs/gdk-pixbuf:2
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.50:2
-	>=sys-auth/polkit-0.102
+	>=sys-auth/polkit-0.102[daemon]
 	accountsservice? ( sys-apps/accountsservice )"
 
 BDEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	>=dev-build/libtool-2.2.6

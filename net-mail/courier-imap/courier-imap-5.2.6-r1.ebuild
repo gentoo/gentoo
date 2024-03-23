@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~s390 sparc x86"
 
 IUSE="berkdb debug +gdbm gnutls ipv6 selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"
@@ -114,8 +114,8 @@ src_install() {
 
 	#  Moved to courier-common
 	rm "${D}"/usr/sbin/deliverquota || die
-	rm "${D}"/usr/bin/maildirkw || die
-	rm "${D}"/usr/bin/makedat || die
+	rm "${D}"/usr/sbin/maildirkw || die
+	rm "${D}"/usr/sbin/makedat || die
 	rm "${D}"/usr/share/man/man1/maildirkw.1 || die
 	rm "${D}"/usr/share/man/man8/deliverquota.8 || die
 

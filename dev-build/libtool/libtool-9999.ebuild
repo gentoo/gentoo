@@ -8,7 +8,7 @@ EAPI=7
 # bug #225559
 LIBTOOLIZE="true"
 WANT_LIBTOOL="none"
-inherit autotools prefix
+inherit autotools prefix multiprocessing
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/libtool.git"
@@ -105,6 +105,10 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* ]] && local myconf="--program-prefix=g"
 
 	ECONF_SOURCE="${S}" econf ${myconf} --disable-ltdl-install
+}
+
+src_test() {
+	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 src_install() {

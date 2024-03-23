@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,12 +6,12 @@ EAPI=8
 inherit elisp-common
 
 DESCRIPTION="Higher-order logic programming language Lambda Prolog"
-HOMEPAGE="http://teyjus.cs.umn.edu/"
+HOMEPAGE="https://teyjus.cs.umn.edu/"
 SRC_URI="https://github.com/teyjus/teyjus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
+KEYWORDS="~amd64 ~x86"
 IUSE="emacs examples"
 
 RDEPEND="dev-lang/ocaml[ocamlopt]

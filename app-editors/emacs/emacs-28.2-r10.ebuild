@@ -32,7 +32,7 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-4.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
@@ -141,6 +141,12 @@ RDEPEND+=" ${IDEPEND}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
+
+# Suppress false positive QA warnings #898304 #925449
+QA_CONFIG_IMPL_DECL_SKIP=(
+	malloc_set_state malloc_get_state MIN
+	statvfs64 re_set_syntax re_compile_pattern re_search re_match
+)
 
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then

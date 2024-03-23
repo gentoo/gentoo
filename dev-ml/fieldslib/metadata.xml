@@ -5,10 +5,6 @@
 		<email>ml@gentoo.org</email>
 		<name>ML</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gienah@gentoo.org</email>
-		<name>Mark Wright</name>
-	</maintainer>
 	<longdescription lang="en">
 		This library defines a syntax extension for OCaml using Camlp4 that
 		can be used to define first class values representing record fields,

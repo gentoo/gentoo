@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/11" # subslot = soname version
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples hdf5 sparse"
 
 RDEPEND="

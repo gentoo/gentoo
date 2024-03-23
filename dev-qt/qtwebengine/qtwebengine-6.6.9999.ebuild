@@ -3,25 +3,24 @@
 
 EAPI=8
 
-# 3.12 needs QTBUG-117979 (see also QTBUG-115512)
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.6-patchset-7.tar.xz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.6-patchset-9.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 IUSE="
-	+alsa bindist custom-cflags designer geolocation +jumbo-build
-	kerberos opengl pdfium pulseaudio qml screencast +system-icu
-	vaapi vulkan +widgets
+	accessibility +alsa bindist custom-cflags designer geolocation
+	+jumbo-build kerberos opengl pdfium pulseaudio qml screencast
+	+system-icu vaapi vulkan +widgets
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
@@ -36,7 +35,7 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	~dev-qt/qtbase-${PV}:6[gui,opengl=,vulkan?,widgets?]
+	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl=,vulkan?,widgets?]
 	~dev-qt/qtwebchannel-${PV}:6[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
@@ -106,11 +105,12 @@ BDEPEND="
 "
 
 PATCHES=( "${WORKDIR}"/patches/${PN} )
-[[ ${PV} == 6.9999 ]] || # keep for 6.x.9999
+[[ ${PV} == 6.9999 ]] || # too fragile for 6.9999, but keep for 6.x.9999
 	PATCHES+=( "${WORKDIR}"/patches/chromium )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.6.2-clang18.patch
 )
 
 python_check_deps() {

@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas works on x86_64
+-atlas
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper works on x86_64
+-jasper
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2023-12-10)
 # cuDNN works here
 -cudnn
@@ -15,12 +23,6 @@
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot
-
-# Jimi Huotari <chiitoo@gentoo.org> (2023-03-03)
-# Unmask on amd64 only for now.
--qt6
--pyqt6
--pyside6
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here

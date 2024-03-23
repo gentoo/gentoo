@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,6 @@ distutils_enable_tests pytest
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_forked,pytest_subtests
+	local -x PYTEST_PLUGINS=xdist.plugin,xdist.looponfail,pytest_subtests
 	epytest
 }

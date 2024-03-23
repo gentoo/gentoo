@@ -71,7 +71,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-lang/perl-5.10.0
 	dev-libs/appstream-glib
-	>=dev-util/gtk-doc-am-1
+	>=dev-build/gtk-doc-am-1
 	dev-util/gtk-update-icon-cache
 	>=dev-util/intltool-0.40.1
 	>=sys-devel/gettext-0.19.8

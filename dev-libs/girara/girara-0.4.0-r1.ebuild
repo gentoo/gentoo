@@ -35,7 +35,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
+	test? ( x11-base/xorg-proto )
 "
 # Tests are run under virtx
 BDEPEND="

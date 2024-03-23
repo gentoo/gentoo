@@ -20,4 +20,5 @@
     <bugs-to>https://github.com/alphapapa/ts.el/issues/</bugs-to>
     <remote-id type="github">alphapapa/ts.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

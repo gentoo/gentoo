@@ -20,7 +20,7 @@ SRC_URI="
 "
 
 LICENSE="LGPL-3+"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc ppc64 x86"
 SLOT="0"
 IUSE="examples +twisted"
 

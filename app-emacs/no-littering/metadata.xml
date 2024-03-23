@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Some packages put files directly in user-emacs-directory or $HOME or in a
+    subdirectory of either of the two or elsewhere. Furthermore sometimes file
+    names are used that don’t provide any insight into what package might have
+    created them. This package sets out to fix this by changing the values of
+    path variables to put configuration files in no-littering-etc-directory
+    (defaulting to “etc/” under user-emacs-directory, thus usually
+    “$HOME/.config/emacs/etc/”) and persistent data files in
+    no-littering-var-directory (defaulting to “var/” under
+    user-emacs-directory, thus usually “$HOME/.config/emacs/var/”), and by
+    using descriptive file names and subdirectories when appropriate.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/emacscollective/no-littering/</bugs-to>
+    <remote-id type="github">emacscollective/no-littering</remote-id>
+  </upstream>
+</pkgmetadata>

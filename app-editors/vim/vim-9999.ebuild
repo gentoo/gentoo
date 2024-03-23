@@ -58,7 +58,9 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 # configure runs the Lua interpreter
 BDEPEND="
 	dev-build/autoconf
@@ -153,6 +155,11 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
+
+	# bug 908961
+	if use elibc_musl ; then
+		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
+	fi
 }
 
 src_configure() {

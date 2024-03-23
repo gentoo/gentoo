@@ -26,7 +26,7 @@ RDEPEND+=">=dev-vcs/git-1.6.0.0"
 
 ruby_add_rdepend ">=dev-ruby/addressable-2.8:0 >=dev-ruby/rchardet-1.8:1"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/minitar dev-ruby/test-unit:2 )"
+ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/minitar >=dev-ruby/mocha-2.1:2 dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	# Don't use hardcoded /tmp directory.

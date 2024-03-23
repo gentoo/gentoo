@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
+# Mask pdf support so net-print/cups-filters stabilisation
+# can go ahead (bug 627392)
+# and subsequently bug 923811
+net-print/cups-filters pdf
+net-print/libcupsfilters pdf
+net-print/cups-meta pdf
+
 # Sam James <sam@gentoo.org> (2023-06-18)
 # Qt 5 not stable here
 app-text/ansifilter gui
@@ -257,11 +265,6 @@ net-wireless/bluez obex
 dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
 sys-block/thin-provisioning-tools test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-09-30)
-# Mask pdf support so net-print/cups-filters stabilisation
-# can go ahead (bug 627392)
-net-print/cups-filters pdf
 
 # David Seifert <soap@gentoo.org> (2017-09-23)
 #  >=virtual/mpi-2.0-r4 does not have stable keywords on hppa

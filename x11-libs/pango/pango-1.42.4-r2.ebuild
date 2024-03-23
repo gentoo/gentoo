@@ -33,7 +33,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.20
+	>=dev-build/gtk-doc-am-1.20
 	virtual/pkgconfig
 	test? ( media-fonts/cantarell )
 	X? ( x11-base/xorg-proto )

@@ -8,8 +8,6 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="The MATE image viewer"
@@ -51,7 +49,7 @@ BDEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
 	dev-util/glib-utils
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "

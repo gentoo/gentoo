@@ -2,35 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+DESCRIPTION="Advanced IRC Client"
+HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake flag-o-matic python-single-r1 xdg-utils
+inherit cmake flag-o-matic python-single-r1 xdg
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
-	KVIRC_GIT_REVISION=""
-	KVIRC_GIT_SOURCES_DATE=""
 else
-	KVIRC_GIT_REVISION=""
-	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
-	KVIRC_GIT_SOURCES_DATE="${KVIRC_GIT_SOURCES_DATE:0:4}-${KVIRC_GIT_SOURCES_DATE:4:2}-${KVIRC_GIT_SOURCES_DATE:6:2}"
-fi
-
-DESCRIPTION="Advanced IRC Client"
-HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
-if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
-else
-	SRC_URI="https://github.com/kvirc/KVIrc/archive/${KVIRC_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kvirc/KVIrc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+	S="${WORKDIR}/KVIrc-${PV}"
 fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora"
+IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webengine"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
@@ -39,6 +29,7 @@ BDEPEND="dev-lang/perl:0
 	kde? ( kde-frameworks/extra-cmake-modules:0 )
 	nls? ( sys-devel/gettext )"
 DEPEND="dev-qt/qtcore:5
+	dev-qt/qtconcurrent:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -70,13 +61,10 @@ DEPEND="dev-qt/qtcore:5
 		media-libs/libogg
 		media-libs/libtheora
 		media-libs/libvorbis
-	)"
+	)
+	webengine? ( dev-qt/qtwebengine:5[widgets] )"
 RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
-
-if [[ "${PV}" != "9999" ]]; then
-	S="${WORKDIR}/KVIrc-${KVIRC_GIT_REVISION}"
-fi
 
 DOCS=()
 
@@ -92,9 +80,10 @@ src_prepare() {
 	if [[ "${PV}" == "9999" ]]; then
 		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
 		KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
+		einfo "Setting of revision number to ${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE}"
+		sed -e "/#define KVI_DEFAULT_FRAME_CAPTION/s/KVI_VERSION/& \" (${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE})\"/" \
+			-i src/kvirc/ui/KviMainWindow.cpp || die "Setting of revision number failed"
 	fi
-	einfo "Setting of revision number to ${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE}"
-	sed -e "/#define KVI_DEFAULT_FRAME_CAPTION/s/KVI_VERSION/& \" (${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE})\"/" -i src/kvirc/ui/KviMainWindow.cpp || die "Setting of revision number failed"
 }
 
 src_configure() {
@@ -103,8 +92,6 @@ src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLIB_SUFFIX=${libdir#lib}
-		-DMANUAL_REVISION=${KVIRC_GIT_REVISION}
-		-DMANUAL_SOURCES_DATE=${KVIRC_GIT_SOURCES_DATE//-/}
 		-DWANT_ENV_FLAGS=ON
 		-DWANT_VERBOSE=ON
 
@@ -114,23 +101,24 @@ src_configure() {
 		-DWANT_IPV6=ON
 		-DWANT_TRANSPARENCY=ON
 
-		-DWANT_AUDIOFILE=$(usex audiofile ON OFF)
-		-DWANT_DCC_VIDEO=$(usex dcc-video ON OFF)
-		-DWANT_DEBUG=$(usex debug ON OFF)
-		-DWANT_DOXYGEN=$(usex doc ON OFF)
-		-DWANT_GETTEXT=$(usex nls ON OFF)
-		-DWANT_GSM=$(usex gsm ON OFF)
-		-DWANT_KDE=$(usex kde ON OFF)
-		-DWANT_MEMORY_PROFILE=$(usex profile ON OFF)
-		-DWANT_OGG_THEORA=$(usex theora ON OFF)
-		-DWANT_OPENSSL=$(usex ssl ON OFF)
-		-DWANT_OSS=$(usex oss ON OFF)
-		-DWANT_PERL=$(usex perl ON OFF)
-		-DWANT_PHONON=$(usex phonon ON OFF)
-		-DWANT_PYTHON=$(usex python ON OFF)
-		-DWANT_QTDBUS=$(usex dbus ON OFF)
-		-DWANT_QTWEBKIT=OFF
-		-DWANT_SPELLCHECKER=$(usex spell ON OFF)
+		-DWANT_AUDIOFILE=$(usex audiofile)
+		-DWANT_DCC_VIDEO=$(usex dcc-video)
+		-DWANT_DEBUG=$(usex debug)
+		-DWANT_DOXYGEN=$(usex doc)
+		-DWANT_GETTEXT=$(usex nls)
+		-DWANT_GSM=$(usex gsm)
+		-DWANT_KDE=$(usex kde)
+		-DWANT_MEMORY_PROFILE=$(usex profile)
+		-DWANT_OGG_THEORA=$(usex theora)
+		-DWANT_OPENSSL=$(usex ssl)
+		-DWANT_OSS=$(usex oss)
+		-DWANT_PERL=$(usex perl)
+		-DWANT_PHONON=$(usex phonon)
+		-DWANT_PYTHON=$(usex python)
+		-DWANT_QTDBUS=$(usex dbus)
+		-DWANT_QTWEBENGINE=$(usex webengine)
+		-DWANT_SPELLCHECKER=$(usex spell)
+		-DQT_VERSION_MAJOR=5
 
 		# COMPILE_SVG_SUPPORT not used in source code.
 		-DWANT_QTSVG=OFF
@@ -139,6 +127,12 @@ src_configure() {
 		mycmakeargs+=(
 			-DPython3_INCLUDE_DIR="$(python_get_includedir)"
 			-DPython3_LIBRARY="$(python_get_library_path)"
+		)
+	fi
+	if [[ "${PV}" == "9999" ]]; then
+		mycmakeargs+=(
+			-DMANUAL_REVISION=${KVIRC_GIT_REVISION}
+			-DMANUAL_SOURCES_DATE=${KVIRC_GIT_SOURCES_DATE//-/}
 		)
 	fi
 
@@ -162,14 +156,4 @@ src_install() {
 			dodoc -r "${BUILD_DIR}/doc/api/html/"*
 		)
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }

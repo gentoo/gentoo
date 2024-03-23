@@ -124,6 +124,7 @@ src_install() {
 		emake -C "${BUILD_DIR}" INSTALL_ROOT="${D}" install_subtargets
 	}
 
+	local QT_QPA_PLATFORM=offscreen
 	multibuild_foreach_variant my_src_install
 	use doc && local HTML_DOCS=( doc/html )
 	einstalldocs

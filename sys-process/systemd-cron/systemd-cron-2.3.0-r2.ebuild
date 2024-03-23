@@ -17,6 +17,7 @@ IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid yearly"
 RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig"
+# Next release will switch openssl->libmd (https://github.com/systemd-cron/systemd-cron/commit/fe0b10b1ed55122a3cd07a382a951aeb87a3fee2)
 RDEPEND="
 	!sys-process/cronie[anacron]
 	acct-user/_cron-failure
@@ -38,9 +39,9 @@ PATCHES=(
 
 pkg_pretend() {
 	if use runparts && ! [ -x /usr/bin/run-parts ] ; then
-			eerror "Please complete the migration to merged-usr."
-			eerror "https://wiki.gentoo.org/wiki/Merge-usr"
-			die "systemd-cron no longer supports split-usr"
+		eerror "Please complete the migration to merged-usr."
+		eerror "https://wiki.gentoo.org/wiki/Merge-usr"
+		die "systemd-cron no longer supports split-usr"
 	fi
 }
 
@@ -92,7 +93,7 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" PCH= install
 	rm -f "${ED}"/usr/lib/sysusers.d/systemd-cron.conf
 }
 

@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/880429
+https://src.fedoraproject.org/rpms/libx86/blob/rawhide/f/libx86-c99-2.patch
+--- a/thunk.c
++++ b/thunk.c
+@@ -157,10 +157,10 @@ int LRMI_init() {
+ 	X86EMU_pioFuncs pioFuncs = {
+ 		(&x_inb),
+ 		(&x_inw),
+-		(&x_inl),
++		((x86emuu32 (*)(X86EMU_pioAddr)) &x_inl),
+ 		(&x_outb),
+ 		(&x_outw),
+-		(&x_outl)
++		((void (*)(X86EMU_pioAddr,  x86emuu32)) &x_outl)
+ 	};
+ 	
+ 	X86EMU_setupPioFuncs(&pioFuncs);

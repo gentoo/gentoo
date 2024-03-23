@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 elif [[ ${QT6_BUILD_TYPE} == live ]]; then
 	EGIT_SUBMODULES=() # skip qtquick3d-assimp
 fi
@@ -28,6 +28,11 @@ DEPEND="
 	test? ( ~dev-qt/qtbase-${PV}:6[network] )
 	vulkan? ( dev-util/vulkan-headers )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
+	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
+)
 
 CMAKE_SKIP_TESTS=(
 	# collada support is disabled in system media-libs/assimp (bug #891787)

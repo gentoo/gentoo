@@ -8,7 +8,7 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-6.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
@@ -109,6 +109,9 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 PATCHES=("${WORKDIR}/patch")
+
+# Suppress false positive QA warnings #898304
+QA_CONFIG_IMPL_DECL_SKIP=( malloc_{set,get}_state MIN )
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,8 @@ REQUIRED_USE="
 "
 
 DEPEND="
+	acct-group/groonga
+	acct-user/groonga
 	>=dev-libs/onigmo-6.1.1:0=
 	dev-libs/rapidjson
 	dev-libs/xxhash
@@ -33,11 +35,7 @@ DEPEND="
 	zlib? ( sys-libs/zlib:0= )
 	zstd? ( app-arch/zstd:0= )
 "
-RDEPEND="
-	${DEPEND}
-	acct-group/groonga
-	acct-user/groonga
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sphinx? ( dev-python/sphinx )
