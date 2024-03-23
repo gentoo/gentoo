@@ -26,7 +26,8 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="3"
-IUSE="+hepmc3 hepmc2 +zlib +python"
+IUSE="test +hepmc3 hepmc2 +zlib +python"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	^^ ( hepmc3 hepmc2 )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -55,7 +56,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/fortran
 	app-shells/bash
 	python? (
 		$(python_gen_cond_dep '
@@ -91,6 +91,10 @@ src_configure() {
 		--with-fastjet="${ESYSROOT}/usr" \
 		$(use_enable python pyext) \
 		$(usex python CYTHON="${ESYSROOT}/usr/bin/cython")
+}
+
+src_test() {
+	emake check
 }
 
 src_install() {
