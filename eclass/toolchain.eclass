@@ -1567,6 +1567,24 @@ gcc_do_filter_flags() {
 		fi
 	fi
 
+	declare -A l1_cache_sizes=()
+	# Workaround for inconsistent cache sizes on hybrid P/E cores
+	# See PR111768 (and bug #904426, bug #908523, and bug #915389)
+	if [[ ${CBUILD} == x86_64* || ${CBUILD} == i?86* && ${CFLAGS} == *-march=native* ]] && tc-is-gcc ; then
+		local x
+		local l1_cache_size
+		# Iterate over all cores and find their L1 cache size
+		for x in $(seq 0 $(($(nproc)-1))) ; do
+			[[ -z ${x} || ${x} -gt 64 ]] && break
+			local l1_cache_size=$(taskset --cpu-list ${x} $(tc-getCC) -Q --help=params -O2 -march=native \
+				| awk '{ if ($1 ~ /^.*param.*l1-cache-size/) print $2; }' || die)
+			l1_cache_sizes[${l1_cache_size}]=1
+		done
+		# If any of them are different, just pick the first one.
+		if [[ ${#l1_cache_sizes} != 1 ]] ; then
+			append-flags --param=l1-cache-size=${l1_cache_size}
+		fi
+	fi
 
 	if ver_test -lt 13.6 ; then
 		# These aren't supported by the just-built compiler either.
