@@ -46,6 +46,10 @@ BDEPEND="
 	qt6? ( dev-qt/qttools[linguist] )
 	!qt6? ( dev-qt/linguist-tools:5 )"
 
+PATCHES=(
+	"${FILESDIR}/punes-0.111-FULLSCREEN_RESFREQ-fix.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GIT_INFO=OFF
