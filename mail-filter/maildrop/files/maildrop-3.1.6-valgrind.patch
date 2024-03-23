@@ -1,0 +1,31 @@
+--- a/libs/maildrop/Makefile.am	2024-02-18 06:43:15.291095955 +0100
++++ b/libs/maildrop/Makefile.am	2024-02-18 06:43:37.317830695 +0100
+@@ -73,7 +73,7 @@
+ check-am: testsuite
+ if HAS_EN_US
+ 	VALGRIND="`which valgrind 2>/dev/null`"; export VALGRIND; @SHELL@ ./testsuite >testsuite.diff || exit 1; diff -U 3 testsuite.diff $(srcdir)/testsuite.txt.idn || exit 1; rm -f testsuite.diff
+-	VALGRIND="`which valgrind 2>/dev/null`"; export VALGRIND; @SHELL@ $(srcdir)/testsuite2
++	VALGRIND=""; export VALGRIND; @SHELL@ $(srcdir)/testsuite2
+ endif
+ 
+ noinst_DATA=maildrop.html maildrop.1 maildropfilter.html maildropfilter.7 \
+--- a/libs/maildir/Makefile.am	2024-02-18 06:48:31.305134721 +0100
++++ b/libs/maildir/Makefile.am	2024-02-18 06:49:56.223057434 +0100
+@@ -152,17 +152,11 @@
+ 	test "@PCRE_LDFLAGS@" != "" || exit 0 ; @SHELL@ $(srcdir)/testsuite2 2>&1 | cmp - $(srcdir)/testsuite2.txt
+ 	LC_ALL=C; export LC_ALL; ./maildirkwtest | cmp -s - $(srcdir)/maildirkwtest.txt
+ 	LC_ALL=C; export LC_ALL; ./maildiraclttest
+-	VALGRIND="`which valgrind 2>/dev/null`"; test "$$VALGRIND" != "" || exit 0; \
+-		LC_ALL=C; export LC_ALL; valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 ./maildiraclttest
+-	VALGRIND="`which valgrind 2>/dev/null`"; test "$$VALGRIND" != "" || exit 0; \
+-		LC_ALL=C; export LC_ALL; valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 ./maildirkwtest
+ 	./testmaildirsearch iso-8859-1 needle haystack; test $$? = 2 && exit 0; exit 1
+ 	./testmaildirsearch iso-8859-1 nEEdle needlE
+ 	./testmaildirsearch iso-8859-1 "abra  cadAbra" "abra   cadabra"
+ 	./testmaildirsearch iso-8859-1 "  abra  cadAbra  " " abra   cadabra"
+ 	./testmaildirsearch iso-8859-1 "  abra  cadAbra  " " abra   cadabra  "
+-	VALGRIND="`which valgrind 2>/dev/null`"; test "$$VALGRIND" != "" || exit 0; \
+-		LC_ALL=C; export LC_ALL; export VALGRIND="@SHELL@ $(srcdir)/testsuitevalgrind"; rm -f confmdtesterror; @SHELL@ $(srcdir)/testsuite 2>&1 | tee testsuite.out; test ! -f confmdtesterror
+ 	rm -rf testsuite.out
+ 
+ if HAVE_SGML

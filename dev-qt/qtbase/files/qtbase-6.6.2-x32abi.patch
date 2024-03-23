@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/925103
+--- a/src/corelib/thread/qthread.h
++++ b/src/corelib/thread/qthread.h
+@@ -166,5 +166,9 @@
+ #elif defined(Q_PROCESSOR_X86_64) && ((defined(Q_OS_LINUX) && defined(__GLIBC__)) || defined(Q_OS_FREEBSD))
+     // x86_64 Linux, BSD uses FS
++# if defined(__ILP32__)
++    __asm__("mov %%fs:%c1, %0" : "=r" (tid) : "i" (2 * sizeof(void*)) : );
++# else
+     __asm__("movq %%fs:%c1, %0" : "=r" (tid) : "i" (2 * sizeof(void*)) : );
++# endif
+ #elif defined(Q_PROCESSOR_X86_64) && defined(Q_OS_WIN)
+     // See https://en.wikipedia.org/wiki/Win32_Thread_Information_Block

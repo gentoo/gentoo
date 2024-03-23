@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools
+inherit cmake-multilib
 
 DESCRIPTION="A graphical music visualization plugin similar to milkdrop"
 HOMEPAGE="https://github.com/projectM-visualizer/projectm"
@@ -13,56 +13,35 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	MY_PV="${PV/_/-}"
-	SRC_URI="https://github.com/projectM-visualizer/projectm/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/projectM-visualizer/projectm/releases/download/v${MY_PV}/libprojectM-${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	S=${WORKDIR}/projectm-${MY_PV}/
+	S="${WORKDIR}/libprojectM-${MY_PV}"
 fi
 
 LICENSE="LGPL-2"
-SLOT="0/2"
-IUSE="gles2 jack pulseaudio qt5 sdl"
-REQUIRED_USE="
-	jack? ( qt5 )
-	pulseaudio? ( qt5 )
-"
+SLOT="4"
+IUSE="gles2-only static-libs"
 
-RDEPEND="
-	gles2? ( media-libs/mesa[gles2] )
-	media-libs/glm
-	media-libs/mesa[X(+)]
-	jack? ( virtual/jack )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtdeclarative:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtopengl:5
-	)
-	pulseaudio? ( media-libs/libpulse )
-	sdl? ( >=media-libs/libsdl2-2.0.5 )
-	sys-libs/zlib"
+RDEPEND="media-libs/mesa[X(+)]"
 
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
-	eautoreconf
+multilib_prc_prepare() {
+	cmake_src_prepare
 }
 
-src_configure() {
-	local myeconfargs=(
-		$(use_enable gles2 gles)
-		$(use_enable jack)
-		$(use_enable qt5 qt)
-		$(use_enable pulseaudio)
-		$(use_enable sdl)
-		--enable-emscripten=no
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DENABLE_SDL_UI=OFF
+		-DENABLE_CXX_INTERFACE=OFF
+		-DENABLE_GLES=$(usex gles2-only)
+		-DENABLE_SYSTEM_GLM=ON
+		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)
 	)
-	econf "${myeconfargs[@]}"
+
+	cmake_src_configure
 }
 
-src_install() {
+multilib_src_install_all() {
 	default
-	find "${ED}" -name '*.la' -delete || die
 }

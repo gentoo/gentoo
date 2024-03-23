@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/13" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="amd64 ~arm arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
@@ -166,7 +166,7 @@ src_configure() {
 		# - https://bugs.gentoo.org/835786
 		# - https://forums.gentoo.org/viewtopic-p-8695669.html
 
-		--buildtype $(usex debug debug plain)
+		-Dbuildtype=$(usex debug debug plain)
 		-Dopengl=true
 		$(meson_use wayland gles2)
 		#gles2_libname

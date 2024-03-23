@@ -1,0 +1,2 @@
+# Set an environment variable so we can easily test for the profile type
+PROFILE_23_USRTYPE=split-usr

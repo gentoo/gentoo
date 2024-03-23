@@ -1,0 +1,27 @@
+From 282b1a113e002d8b90dedb6a5b6a6dc35e7310d1 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 12 Mar 2024 01:45:16 -0400
+Subject: [PATCH] fix ridiculous ODR violation
+
+The return value of a function defined in another file is whatever that
+file defines, not "void because we didn't assign it to anything".
+---
+ sources/oc1.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sources/oc1.h b/sources/oc1.h
+index 7b068c8..e28017d 100644
+--- a/sources/oc1.h
++++ b/sources/oc1.h
+@@ -49,7 +49,7 @@ struct tree_node
+   EDGE edge; /* used only in the display module. */
+  };
+ 
+-void error(char *);
++int error(char *);
+ void free_ivector(int *,int,int);
+ void free_vector(float *,int,int);
+ void free_dvector(double*,int,float);
+-- 
+2.43.2
+

@@ -12,7 +12,7 @@ HOMEPAGE="
 "
 SRC_URI="https://github.com/preservim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-util/ctags-5.5"
 

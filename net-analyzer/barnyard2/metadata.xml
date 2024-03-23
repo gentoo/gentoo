@@ -20,6 +20,7 @@
 		</maintainer>
 		<doc>http://www.securixlive.com/barnyard2/docs/index.php</doc>
 		<bugs-to>mailto:dev@securixlive.com</bugs-to>
+		<remote-id type="github">firnsy/barnyard2</remote-id>
 	</upstream>
 	<use>
 		<flag name="gre">Enable GRE support</flag>

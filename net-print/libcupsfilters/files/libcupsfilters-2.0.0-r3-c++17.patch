@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/923959
+https://github.com/OpenPrinting/libcupsfilters/issues/35
+https://github.com/OpenPrinting/libcupsfilters/commit/668d7dac277c1d44732fc25e5491c79ff82e597d
+--- a/cupsfilters/pdftoraster.cxx
++++ b/cupsfilters/pdftoraster.cxx
+@@ -2198,7 +2198,11 @@
+ // For compatibility with g++ >= 4.7 compilers _GLIBCXX_THROW
+ // should be used as a guard, otherwise use traditional definition
+ #ifndef _GLIBCXX_THROW
++#if __cplusplus < 201703L
+ #define _GLIBCXX_THROW throw
++#else
++#define _GLIBCXX_THROW(...) noexcept(false)
++#endif
+ #endif
+ 
+ void * operator new(size_t size) _GLIBCXX_THROW (std::bad_alloc)

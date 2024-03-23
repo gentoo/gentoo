@@ -1,0 +1,14 @@
+ld.lld with "-L/usr/lib  -lhiprtc -ldl" fails in attempt to link
+64-bit library to 32-bit /usr/lib/libdl.so.2 with:
+"ld.lld: error: <...>/Scrt1.o is incompatible with elf32-i386"
+--- a/library/src/CMakeLists.txt
++++ b/library/src/CMakeLists.txt
+@@ -46,7 +46,7 @@ else()
+   if( WIN32 )
+     set( ROCFFT_RTC_LINK_LIBS "${HIP_PATH}/lib/hiprtc.lib" )
+   else()
+-    set( ROCFFT_RTC_LINK_LIBS -L${ROCM_PATH}/lib -lhiprtc -ldl )
++    set( ROCFFT_RTC_LINK_LIBS -lhiprtc -ldl )
+   endif()
+ endif()
+ 

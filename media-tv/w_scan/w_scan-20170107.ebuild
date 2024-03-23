@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
-DEPEND=">=virtual/linuxtv-dvb-headers-5.8"
+DEPEND="sys-kernel/linux-headers"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 

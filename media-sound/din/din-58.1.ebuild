@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools edos2unix xdg
+inherit autotools edos2unix flag-o-matic xdg
 
 DESCRIPTION="a software musical instrument and audio synthesizer"
 HOMEPAGE="https://dinisnoise.org/"
@@ -48,6 +48,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860513
+	# No upstream bugtracker. I believe upstream prefers emails,
+	# so I have emailed the author directly.
+	filter-lto
+
 	# Jack takes over alsa.
 	local sound_engine
 

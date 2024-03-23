@@ -12,7 +12,7 @@ HOMEPAGE="https://www.isc.org/kea/"
 
 PYTHON_COMPAT=( python3_{8..12} )
 
-inherit autotools fcaps python-single-r1 systemd tmpfiles
+inherit autotools fcaps flag-o-matic python-single-r1 systemd tmpfiles
 
 if [[ ${PV} = 9999* ]] ; then
 	inherit git-r3
@@ -90,6 +90,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/861617
+	#
+	# I would truly love to submit an upstream bug but their self-hosted gitlab
+	# won't let me sign up. -- Eli
+	filter-lto
+
 	local myeconfargs=(
 		--disable-install-configurations
 		--disable-rpath

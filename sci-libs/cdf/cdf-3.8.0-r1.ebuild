@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit java-pkg-opt-2 multilib toolchain-funcs
+inherit flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
 
 MY_DP="${PN}$(ver_cut 1)$(ver_cut 2)"
 MY_P="${MY_DP}_$(ver_cut 3)"
@@ -56,6 +56,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# Reported upstream by email in 2024-03-22 (bug #862675)
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	PV_SO=${PV:0:1}
 	emake \
 		OS=linux \

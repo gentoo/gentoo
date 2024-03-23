@@ -84,10 +84,6 @@ media-sound/easyeffects zamaudio
 # Feature currently relies on amd64 prebuilt binaries.
 media-video/obs-studio browser
 
-# Joonas Niilola <juippis@gentoo.org> (2021-06-23)
-# Pandoc is a required dep, and not keyworded.
-sys-apps/eza man
-
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
 # dev-python/django is not keyworded here
 dev-python/diskcache test
@@ -125,8 +121,7 @@ sci-mathematics/gmp-ecm -custom-tune
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
 # dropbox requires binaries unavaliable for ppc64
-# telepathy flag requires unkeyworded plasma-telepathy-meta
-kde-apps/kdenetwork-meta dropbox telepathy
+kde-apps/kdenetwork-meta dropbox
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-20)
 # zfs is keyworded on ppc64
@@ -201,7 +196,6 @@ dev-vcs/subversion kwallet
 # Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
 # I would need to keyword an awful lot of packages on ppc64
 # that would need Java 7 otherwise.
-dev-java/bsf python
 dev-java/ant-apache-bsf python
 
 # Jeroen Roovers <jer@gentoo.org> (2015-12-26)

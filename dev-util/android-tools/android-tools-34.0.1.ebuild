@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit cmake python-r1
+inherit flag-o-matic cmake python-r1
 
 DESCRIPTION="Android platform tools (adb, fastboot, and mkbootimg)"
 HOMEPAGE="https://github.com/nmeum/android-tools/ https://developer.android.com/"
@@ -61,6 +61,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 905713
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	local mycmakeargs=(
 		# Statically link the bundled boringssl
 		-DBUILD_SHARED_LIBS=OFF

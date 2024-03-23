@@ -10,7 +10,6 @@
 		<name>Markus Meier</name>
 	</maintainer>
 	<use>
-		<flag name="flickr">Add support for uploading photos to flickr</flag>
 		<flag name="gamepad">Support using game controllers as input devices</flag>
 		<flag name="geolocation">Enable geotagging support</flag>
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>

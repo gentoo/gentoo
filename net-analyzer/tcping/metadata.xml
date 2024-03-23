@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
-<email>netmon@gentoo.org</email>
+  <email>netmon@gentoo.org</email>
 </maintainer>
+<upstream>
+  <remote-id type="github">mkirchner/tcping</remote-id>
+</upstream>
 </pkgmetadata>

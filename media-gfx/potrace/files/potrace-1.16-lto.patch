@@ -1,0 +1,18 @@
+https://git.altlinux.org/srpms/p/potrace.git?p=potrace.git;a=commitdiff;h=385f40d2d9827049f5f43f73d05e9fc7472e0da4
+https://bugs.gentoo.org/868465
+--- a/configure.ac
++++ b/configure.ac
+@@ -251,9 +251,10 @@ AC_CHECK_FUNC(strncasecmp, ,
+ dnl ----------------------------------------------------------------------
+ dnl Check whether we have i386 features
+ AC_MSG_CHECKING([for Intel 386])
+-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[int x;
+-  asm("bsf %1,%0\njnz 0f\nmovl $32,%0\n0:":"=r"(x):"r"(x));
+-  return x; /* need this so that -O2 does not optimize the asm away */
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[int x = 1;
++  volatile asm("bsf %1,%0\njnz 0f\nmovl $32,%0\n0:":"=r"(x):"r"(x):"memory");
++  /* volatile and "memory" clobber ensures '-O2 -flto' does not optimize the asm away */
++  return x;
+ ]])],[AC_MSG_RESULT(yes) 
+  AC_DEFINE(HAVE_I386,, Can we use Intel 386 optimizations?)
+ ],[AC_MSG_RESULT(no)])	

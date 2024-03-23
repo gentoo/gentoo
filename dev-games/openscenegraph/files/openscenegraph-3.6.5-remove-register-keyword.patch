@@ -1,0 +1,172 @@
+diff -ruN osg/src/osgPlugins/cfg/ConfigLexer.cpp my/src/osgPlugins/cfg/ConfigLexer.cpp
+--- osg/src/osgPlugins/cfg/ConfigLexer.cpp	2020-01-31 12:03:07.000000000 +0100
++++ my/src/osgPlugins/cfg/ConfigLexer.cpp	2024-02-24 06:23:01.866597764 +0100
+@@ -832,9 +832,9 @@
+ 
+ YY_DECL
+ 	{
+-	register yy_state_type yy_current_state;
+-	register char *yy_cp, *yy_bp;
+-	register int yy_act;
++	yy_state_type yy_current_state;
++	char *yy_cp, *yy_bp;
++	int yy_act;
+ 
+ #line 35 ".././ConfigLexer.l"
+ 
+@@ -881,7 +881,7 @@
+ yy_match:
+ 		do
+ 			{
+-			register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)];
++			YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)];
+ 			if ( yy_accept[yy_current_state] )
+ 				{
+ 				yy_last_accepting_state = yy_current_state;
+@@ -1598,9 +1598,9 @@
+ 
+ int yyFlexLexer::yy_get_next_buffer()
+ 	{
+-	register char *dest = yy_current_buffer->yy_ch_buf;
+-	register char *source = yytext_ptr;
+-	register int number_to_move, i;
++	char *dest = yy_current_buffer->yy_ch_buf;
++	char *source = yytext_ptr;
++	int number_to_move, i;
+ 	int ret_val;
+ 
+ 	if ( yy_c_buf_p > &yy_current_buffer->yy_ch_buf[yy_n_chars + 1] )
+@@ -1730,14 +1730,14 @@
+ 
+ yy_state_type yyFlexLexer::yy_get_previous_state()
+ 	{
+-	register yy_state_type yy_current_state;
+-	register char *yy_cp;
++	yy_state_type yy_current_state;
++	char *yy_cp;
+ 
+ 	yy_current_state = yy_start;
+ 
+ 	for ( yy_cp = yytext_ptr + YY_MORE_ADJ; yy_cp < yy_c_buf_p; ++yy_cp )
+ 		{
+-		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
++		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+ 		if ( yy_accept[yy_current_state] )
+ 			{
+ 			yy_last_accepting_state = yy_current_state;
+@@ -1764,10 +1764,10 @@
+ 
+ yy_state_type yyFlexLexer::yy_try_NUL_trans( yy_state_type yy_current_state )
+ 	{
+-	register int yy_is_jam;
+-	register char *yy_cp = yy_c_buf_p;
++	int yy_is_jam;
++	char *yy_cp = yy_c_buf_p;
+ 
+-	register YY_CHAR yy_c = 1;
++	YY_CHAR yy_c = 1;
+ 	if ( yy_accept[yy_current_state] )
+ 		{
+ 		yy_last_accepting_state = yy_current_state;
+@@ -1786,9 +1786,9 @@
+ 	}
+ 
+ 
+-void yyFlexLexer::yyunput( int c, register char* yy_bp )
++void yyFlexLexer::yyunput( int c, char* yy_bp )
+ 	{
+-	register char *yy_cp = yy_c_buf_p;
++	char *yy_cp = yy_c_buf_p;
+ 
+ 	/* undo effects of setting up yytext */
+ 	*yy_cp = yy_hold_char;
+@@ -1796,10 +1796,10 @@
+ 	if ( yy_cp < yy_current_buffer->yy_ch_buf + 2 )
+ 		{ /* need to shift things up to make room */
+ 		/* +2 for EOB chars. */
+-		register int number_to_move = yy_n_chars + 2;
+-		register char *dest = &yy_current_buffer->yy_ch_buf[
++		int number_to_move = yy_n_chars + 2;
++		char *dest = &yy_current_buffer->yy_ch_buf[
+ 					yy_current_buffer->yy_buf_size + 2];
+-		register char *source =
++		char *source =
+ 				&yy_current_buffer->yy_ch_buf[number_to_move];
+ 
+ 		while ( source > yy_current_buffer->yy_ch_buf )
+@@ -2119,7 +2119,7 @@
+ int n;
+ #endif
+ 	{
+-	register int i;
++	int i;
+ 	for ( i = 0; i < n; ++i )
+ 		s1[i] = s2[i];
+ 	}
+@@ -2133,7 +2133,7 @@
+ yyconst char *s;
+ #endif
+ 	{
+-	register int n;
++	int n;
+ 	for ( n = 0; s[n]; ++n )
+ 		;
+ 
+diff -ruN osg/src/osgPlugins/cfg/ConfigParser.cpp my/src/osgPlugins/cfg/ConfigParser.cpp
+--- osg/src/osgPlugins/cfg/ConfigParser.cpp	2020-01-31 12:03:07.000000000 +0100
++++ my/src/osgPlugins/cfg/ConfigParser.cpp	2024-02-24 06:21:37.488008033 +0100
+@@ -351,7 +351,7 @@
+ #   define YYCOPY(To, From, Count)        \
+       do                    \
+     {                    \
+-      register YYSIZE_T yyi;        \
++      YYSIZE_T yyi;        \
+       for (yyi = 0; yyi < (Count); yyi++)    \
+         (To)[yyi] = (From)[yyi];        \
+     }                    \
+@@ -1025,7 +1025,7 @@
+      const char *yystr;
+ #   endif
+ {
+-  register const char *yys = yystr;
++  const char *yys = yystr;
+ 
+   while (*yys++ != '\0')
+     continue;
+@@ -1050,8 +1050,8 @@
+      const char *yysrc;
+ #   endif
+ {
+-  register char *yyd = yydest;
+-  register const char *yys = yysrc;
++  char *yyd = yydest;
++  const char *yys = yysrc;
+ 
+   while ((*yyd++ = *yys++) != '\0')
+     continue;
+@@ -1175,8 +1175,8 @@
+ #endif
+ {
+ 
+-  register int yystate;
+-  register int yyn;
++  int yystate;
++  int yyn;
+   int yyresult;
+   /* Number of tokens to shift before error messages enabled.  */
+   int yyerrstatus;
+@@ -1194,12 +1194,12 @@
+   /* The state stack.  */
+   short    yyssa[YYINITDEPTH];
+   short *yyss = yyssa;
+-  register short *yyssp;
++  short *yyssp;
+ 
+   /* The semantic value stack.  */
+   YYSTYPE yyvsa[YYINITDEPTH];
+   YYSTYPE *yyvs = yyvsa;
+-  register YYSTYPE *yyvsp;
++  YYSTYPE *yyvsp;
+ 
+ 
+ 

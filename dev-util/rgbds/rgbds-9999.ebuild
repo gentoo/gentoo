@@ -20,8 +20,10 @@ SLOT="0"
 
 DEPEND="media-libs/libpng"
 RDEPEND="${DEPEND}"
-BDEPEND="app-alternatives/yacc[bison]
-	virtual/pkgconfig"
+BDEPEND="
+	sys-devel/bison
+	virtual/pkgconfig
+"
 
 src_compile() {
 	append-flags -DNDEBUG
@@ -32,7 +34,16 @@ src_compile() {
 		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
+src_test() {
+	local dir
+	for dir in asm link fix gfx; do
+		pushd "test/${dir}" >/dev/null || die
+		./test.sh || die
+		popd >/dev/null || die
+	done
+}
+
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr Q= STRIP= install
-	dodoc README.rst
+	dodoc README.md
 }

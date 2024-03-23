@@ -16,7 +16,7 @@
 			<email>devel@buildbot.net</email>
 			<name>Developers List</name>
 		</maintainer>
-		<remote-id type="pypi">buildbot-grid-view</remote-id>
+		<remote-id type="pypi">buildbot-badges</remote-id>
 		<remote-id type="github">buildbot/buildbot</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/922630
+https://gitlab.gnome.org/GNOME/gnome-keyring/-/commit/f298c87e14e89656992ccfd17b133f4f2ab9c5ea
+
+From f298c87e14e89656992ccfd17b133f4f2ab9c5ea Mon Sep 17 00:00:00 2001
+From: Yaakov Selkowitz <yselkowi@redhat.com>
+Date: Wed, 24 Jan 2024 14:01:06 -0500
+Subject: [PATCH] gkm: fix test-sexp with GCC 14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+pkcs11/gkm/test-sexp.c: In function â€˜test_sign_verifyâ€™:
+pkcs11/gkm/test-sexp.c:231:92: error: passing argument 6 of â€˜gkm_crypto_sign_xsaâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+In file included from pkcs11/gkm/test-sexp.c:31:
+./pkcs11/gkm/gkm-crypto.h:92:86: note: expected â€˜CK_ULONG_PTRâ€™ {aka â€˜long unsigned int *â€™} but argument is of type â€˜gsize *â€™ {aka â€˜unsigned int *â€™}
+pkcs11/gkm/test-sexp.c:251:87: error: passing argument 6 of â€˜gkm_crypto_sign_xsaâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+./pkcs11/gkm/gkm-crypto.h:92:86: note: expected â€˜CK_ULONG_PTRâ€™ {aka â€˜long unsigned int *â€™} but argument is of type â€˜gsize *â€™ {aka â€˜unsigned int *â€™}
+pkcs11/gkm/test-sexp.c:271:91: error: passing argument 6 of â€˜gkm_crypto_sign_xsaâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+./pkcs11/gkm/gkm-crypto.h:92:86: note: expected â€˜CK_ULONG_PTRâ€™ {aka â€˜long unsigned int *â€™} but argument is of type â€˜gsize *â€™ {aka â€˜unsigned int *â€™}
+
+Signed-off-by: Yaakov Selkowitz <yselkowi@redhat.com>
+--- a/pkcs11/gkm/test-sexp.c
++++ b/pkcs11/gkm/test-sexp.c
+@@ -221,10 +221,10 @@ test_sign_verify (Test *test, gconstpointer unused)
+ {
+ 	gcry_sexp_t pubkey = NULL;
+ 	gboolean ret;
+-	guchar data[] = TEST_DATA;
+-	guchar data_size = TEST_DATA_SIZE;
+-	guchar signature[128];
+-	gsize signature_size = 128;
++	CK_BYTE data[] = TEST_DATA;
++	CK_ULONG data_size = TEST_DATA_SIZE;
++	CK_BYTE signature[128];
++	CK_ULONG signature_size = 128;
+ 
+ 	/* RSA */
+ 	/* sign some data */
+-- 
+GitLab

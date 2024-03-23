@@ -14,7 +14,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
 else
 	SRC_URI="https://github.com/kvirc/KVIrc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~ppc ~ppc64 ~riscv x86"
 	S="${WORKDIR}/KVIrc-${PV}"
 fi
 
@@ -29,6 +29,7 @@ BDEPEND="dev-lang/perl:0
 	kde? ( kde-frameworks/extra-cmake-modules:0 )
 	nls? ( sys-devel/gettext )"
 DEPEND="dev-qt/qtcore:5
+	dev-qt/qtconcurrent:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5

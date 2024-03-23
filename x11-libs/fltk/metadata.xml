@@ -9,6 +9,9 @@
 	GLUT emulation. FLTK also includes a UI builder called FLUID that
 	can be used to create applications.
 </longdescription>
+<upstream>
+	<remote-id type="github">fltk/fltk</remote-id>
+</upstream>
 <use>
 	<flag name="games">Builds and installs some extra games</flag>
 </use>

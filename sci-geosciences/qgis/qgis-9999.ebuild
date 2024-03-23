@@ -18,7 +18,7 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake python-single-r1 virtualx xdg
+inherit cmake flag-o-matic python-single-r1 virtualx xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
@@ -136,6 +136,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862660
+	# https://github.com/qgis/QGIS/issues/56859
+	#
+	# Do not trust with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DQGIS_MANUAL_SUBDIR=share/man/
 		-DQGIS_LIB_SUBDIR=$(get_libdir)

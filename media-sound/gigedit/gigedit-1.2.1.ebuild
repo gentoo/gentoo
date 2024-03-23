@@ -11,7 +11,7 @@ SRC_URI="http://download.linuxsampler.org/packages/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-cpp/gtkmm:3.0

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit flag-o-matic cmake
 
 DESCRIPTION="The DICOM Toolkit"
 HOMEPAGE="https://dicom.offis.de/dcmtk.php.en"
@@ -50,6 +50,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 908398
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DDCMTK_WITH_ICU=ON

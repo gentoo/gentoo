@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 MY_P=${P/_rc2/~rc2}
 
-inherit autotools python-single-r1
+inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="https://www.hamlib.github.io"
@@ -47,11 +47,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# fix hardcoded libdir paths
-	sed -i -e "s#fix}/lib#fix}/$(get_libdir)/hamlib#" \
-		-e "s#fix}/include#fix}/include/hamlib#" \
-		hamlib.pc.in || die "sed failed"
-
 	# Correct install target to whatever INSTALLDIRS says and use vendor
 	# installdirs everywhere (bug #611550)
 	sed -i -e "s#install_site#install#"	\
@@ -65,6 +60,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/926839
+	# https://github.com/Hamlib/Hamlib/issues/1524
+	filter-lto
+
 	econf \
 		--libdir=/usr/$(get_libdir)/hamlib \
 		--disable-static \

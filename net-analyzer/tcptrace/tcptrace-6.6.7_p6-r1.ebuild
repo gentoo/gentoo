@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A Tool for analyzing network packet dumps"
 HOMEPAGE="http://www.tcptrace.org/"
@@ -36,6 +36,19 @@ src_prepare() {
 		$(awk '{ print "'"${WORKDIR}"'/debian/patches/" $0; }' < "${WORKDIR}"/debian/patches/series)
 
 	eautoreconf
+}
+
+src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861260
+	#
+	# Upstream site no longer exists.
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	default
 }
 
 src_compile() {

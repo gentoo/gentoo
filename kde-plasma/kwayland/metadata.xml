@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
-		<remote-id type="kde-invent">frameworks/kwayland</remote-id>
+		<remote-id type="kde-invent">plasma/kwayland</remote-id>
 	</upstream>
 	<slots>
 		<subslots>

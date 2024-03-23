@@ -21,10 +21,12 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 	agent2? ( https://dev.gentoo.org/~fordfrog/distfiles/${P}-go-deps.tar.xz )
 "
 
+S=${WORKDIR}/${MY_P}
+
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy selinux server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	?? ( gnutls openssl )
@@ -121,8 +123,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
 	"${FILESDIR}/${PN}-5.0.22-system.sw.packages.patch"
 )
-
-S=${WORKDIR}/${MY_P}
 
 ZABBIXJAVA_BASE="opt/zabbix_java"
 

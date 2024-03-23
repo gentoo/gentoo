@@ -1,0 +1,53 @@
+From 927121fa9afe047009a2502491d1c7000871b45c Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 25 Oct 2023 19:28:50 -0400
+Subject: [PATCH] dnscache.8,tinydns.8: document TRUNCATELEN hack for microtiks
+
+---
+ dnscache.8 | 9 +++++++++
+ tinydns.8  | 9 +++++++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/dnscache.8 b/dnscache.8
+index 54fd357..38dab27 100644
+--- a/man/dnscache.8
++++ b/man/dnscache.8
+@@ -116,6 +116,15 @@ for other caches, not root servers.
+ It forwards queries to those caches the same way that a client does,
+ rather than contacting a chain of servers according to NS records.
+ 
++.B dnscache
++will use the value of
++.I $TRUNCATELEN
++as the cut-off for a UDP response. The standard value according to the
++RFC is 512 (bytes), but
++.I $TRUNCATELEN
++can be anywhere between 512 and 16384. This may be necessary to work
++around implementation bugs.
++
+ .SH Memory use
+ 
+ .B dnscache
+diff --git a/tinydns.8 b/tinydns.8
+index ff92edd..bc991dd 100644
+--- a/man/tinydns.8
++++ b/man/tinydns.8
+@@ -47,6 +47,15 @@ as specified by
+ a binary file created by
+ .BR tinydns-data (8).
+ 
++.B tinydns
++will use the value of
++.I $TRUNCATELEN
++as the cut-off for a UDP response. The standard value according to the
++RFC is 512 (bytes), but
++.I $TRUNCATELEN
++can be anywhere between 512 and 16384. This may be necessary to work
++around implementation bugs.
++
+ .SH Further details
+ 
+ .B tinydns
+-- 
+2.41.0
+

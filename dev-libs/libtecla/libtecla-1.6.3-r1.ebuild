@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,20 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# ld: <artificial>:(.text.startup+0x6c): undefined reference to `libtecla_version'
+	#
+	# For some mysterious reason this is running $LD directly to link the
+	# shared library rather than use the compiler as the linker driver. As a
+	# result -flto is effectively a no-op *at link time* and the shared library
+	# contains... nothing. Because it didn't process the bytecode. Of course,
+	# nothing can then link to it.
+	#
+	# https://bugs.gentoo.org/772014
+	filter-lto
+	default
 }
 
 src_compile() {

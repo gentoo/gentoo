@@ -12,7 +12,6 @@
   <use>
     <flag name="fluidsynth">compile with support for fluidsynth</flag>
     <flag name="fribidi">Support for right-to-left languages via <pkg>dev-libs/fribidi</pkg></flag>
-    <flag name="glew">enable support for OpenGL Extension Wrangler Library (<pkg>media-libs/glew</pkg>)</flag>
     <flag name="mpeg2">enable mpeg2 codec for cutscenes</flag>
     <flag name="net">enable cloud support via <pkg>media-libs/sdl2-net</pkg></flag>
     <flag name="sndio">Enable support for MIDI music using <pkg>media-sound/sndio</pkg></flag>

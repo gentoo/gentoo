@@ -93,6 +93,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/881107
+	# Seems to be fixed in git (1.4.9999)
+	filter-lto
+
 	unset FLTK_LIBDIRS
 
 	local FLTK_INCDIR=${EPREFIX}/usr/include/fltk

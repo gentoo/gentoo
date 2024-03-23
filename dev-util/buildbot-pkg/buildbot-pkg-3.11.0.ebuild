@@ -16,7 +16,7 @@ HOMEPAGE="https://buildbot.net/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~riscv ~amd64-linux ~x86-linux"
 
 # No real integration tests for this pkg.
 # all tests are related to making releases and final checks for distribution

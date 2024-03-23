@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="lusty-explorer"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="vim plugin: dynamic filesystem and buffer explorer"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1890"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1890"
 SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=26146 -> ${MY_P}.zip"
 S="${WORKDIR}/${MY_P}"
 

@@ -5,5 +5,8 @@
 	<email>netmon@gentoo.org</email>
 	<name>Gentoo network monitoring and analysis project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">ofalk/scanssh</remote-id>
+</upstream>
 <longdescription>Scanssh protocol scanner - scans a list of addresses an networks for running SSH protocol servers and their version numbers.</longdescription>
 </pkgmetadata>

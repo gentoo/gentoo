@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RESTRICT="test"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	media-libs/dav1d
-	media-libs/oneVPL[experimental?]
+	media-libs/libvpl[experimental?]
 	media-libs/svt-av1
 	media-libs/svt-hevc
 	media-video/ffmpeg

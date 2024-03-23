@@ -1,7 +1,0 @@
-https://github.com/CLIUtils/CLI11/issues/993
---- a/include/CLI/impl/StringTools_inl.hpp
-+++ b/include/CLI/impl/StringTools_inl.hpp
-@@ -12,2 +12,3 @@
- // [CLI11:public_includes:set]
-+#include <cstdint>
- #include <string>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #862666
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use x86 && append-cflags -ffloat-store
+
 	local mycmakeargs=(
 		-DBUILD_TEST=$(usex test)
 	)

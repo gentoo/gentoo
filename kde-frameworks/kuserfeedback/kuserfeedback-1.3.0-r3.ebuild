@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
+	>=dev-qt/linguist-tools-${QTMIN}:5
 	doc? (
 		>=dev-qt/qdoc-${QTMIN}:5
 		>=dev-qt/qthelp-${QTMIN}:5

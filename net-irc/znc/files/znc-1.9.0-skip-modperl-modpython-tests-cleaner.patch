@@ -1,0 +1,248 @@
+https://github.com/znc/znc/commit/f8552fc814ebe662a9fc16d6cafa1c0314498971
+
+From f8552fc814ebe662a9fc16d6cafa1c0314498971 Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <alexey+znc@asokolov.org>
+Date: Sun, 25 Feb 2024 14:12:53 +0000
+Subject: [PATCH] Skip modperl/modpython tests cleaner
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -411,6 +411,8 @@ else()
+ endif()
+ 
+ configure_file("include/znc/zncconfig.h.cmake.in" "include/znc/zncconfig.h")
++configure_file("test/integration/znctestconfig.h.cmake.in"
++	"test/integration/znctestconfig.h")
+ add_subdirectory(include)
+ add_subdirectory(src)
+ add_subdirectory(modules)
+--- a/test/integration/CMakeLists.txt
++++ b/test/integration/CMakeLists.txt
+@@ -45,6 +45,7 @@ add_executable(inttest
+ target_link_libraries(inttest Qt5::Network Threads::Threads)
+ target_include_directories(inttest PUBLIC
+ 	"${PROJECT_SOURCE_DIR}/framework"
++	"${PROJECT_BINARY_DIR}"
+ 	"${GTEST_ROOT}" "${GTEST_ROOT}/include"
+ 	"${GMOCK_ROOT}" "${GMOCK_ROOT}/include")
+ target_compile_definitions(inttest PRIVATE
+--- a/test/integration/tests/core.cpp
++++ b/test/integration/tests/core.cpp
+@@ -14,9 +14,11 @@
+  * limitations under the License.
+  */
+ 
++#include <gtest/gtest.h>
+ #include <gmock/gmock.h>
+ 
+ #include "znctest.h"
++#include "znctestconfig.h"
+ 
+ using testing::HasSubstr;
+ using testing::ContainsRegex;
+@@ -584,10 +586,9 @@ TEST_P(AllLanguages, ServerDependentCapInModule) {
+             )");
+             break;
+         case 2:
+-            if (QProcessEnvironment::systemEnvironment().value(
+-                    "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-                return;
+-            }
++#ifndef WANT_PYTHON
++            GTEST_SKIP() << "Modpython is disabled";
++#endif
+             znc->CanLeak();
+             InstallModule("testmod.py", R"(
+                 import znc
+@@ -603,10 +604,9 @@ TEST_P(AllLanguages, ServerDependentCapInModule) {
+             client.Write("znc loadmod modpython");
+             break;
+         case 3:
+-            if (QProcessEnvironment::systemEnvironment().value(
+-                    "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-                return;
+-            }
++#ifndef WANT_PERL
++            GTEST_SKIP() << "Modperl is disabled";
++#endif
+             znc->CanLeak();
+             InstallModule("testmod.pm", R"(
+                 package testmod;
+--- a/test/integration/tests/scripting.cpp
++++ b/test/integration/tests/scripting.cpp
+@@ -15,15 +15,15 @@
+  */
+ 
+ #include "znctest.h"
++#include "znctestconfig.h"
+ 
+ namespace znc_inttest {
+ namespace {
+ 
+ TEST_F(ZNCTest, Modperl) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PERL
++    GTEST_SKIP() << "Modperl is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+     auto ircd = ConnectIRCd();
+@@ -37,10 +37,9 @@ TEST_F(ZNCTest, Modperl) {
+ }
+ 
+ TEST_F(ZNCTest, Modpython) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PYTHON
++    GTEST_SKIP() << "Modpython is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+     auto ircd = ConnectIRCd();
+@@ -65,10 +64,9 @@ TEST_F(ZNCTest, Modpython) {
+ }
+ 
+ TEST_F(ZNCTest, ModpythonSocket) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PYTHON
++    GTEST_SKIP() << "Modpython is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -107,10 +105,9 @@ TEST_F(ZNCTest, ModpythonSocket) {
+ }
+ 
+ TEST_F(ZNCTest, ModperlSocket) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PERL
++    GTEST_SKIP() << "Modperl is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -160,10 +157,9 @@ TEST_F(ZNCTest, ModperlSocket) {
+ }
+ 
+ TEST_F(ZNCTest, ModpythonVCString) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PYTHON
++    GTEST_SKIP() << "Modpython is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -185,10 +181,9 @@ TEST_F(ZNCTest, ModpythonVCString) {
+ }
+ 
+ TEST_F(ZNCTest, ModperlVCString) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PERL
++    GTEST_SKIP() << "Modperl is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -214,10 +209,9 @@ TEST_F(ZNCTest, ModperlVCString) {
+ }
+ 
+ TEST_F(ZNCTest, ModperlNV) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PERL
++    GTEST_SKIP() << "Modperl is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -244,10 +238,9 @@ TEST_F(ZNCTest, ModperlNV) {
+ }
+ 
+ TEST_F(ZNCTest, ModpythonPackage) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PYTHON
++    GTEST_SKIP() << "Modpython is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -285,10 +278,12 @@ TEST_F(ZNCTest, ModpythonPackage) {
+ }
+ 
+ TEST_F(ZNCTest, ModpythonModperl) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
++#ifndef WANT_PYTHON
++    GTEST_SKIP() << "Modpython is disabled";
++#endif
++#ifndef WANT_PERL
++    GTEST_SKIP() << "Modperl is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+@@ -302,11 +297,9 @@ TEST_F(ZNCTest, ModpythonModperl) {
+ }
+ 
+ TEST_F(ZNCTest, ModpythonCommand) {
+-    if (QProcessEnvironment::systemEnvironment().value(
+-            "DISABLED_ZNC_PERL_PYTHON_TEST") == "1") {
+-        return;
+-    }
+-
++#ifndef WANT_PYTHON
++    GTEST_SKIP() << "Modpython is disabled";
++#endif
+     auto znc = Run();
+     znc->CanLeak();
+ 
+--- /dev/null
++++ b/test/integration/znctestconfig.h.cmake.in
+@@ -0,0 +1,23 @@
++/*
++ * Copyright (C) 2004-2024 ZNC, see the NOTICE file for details.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#ifndef ZNCTESTCONFIG_H
++#define ZNCTESTCONFIG_H
++
++#cmakedefine WANT_PYTHON 1
++#cmakedefine WANT_PERL 1
++
++#endif /* ZNCTESTCONFIG_H */

@@ -1,0 +1,85 @@
+From aaede4eff4f9aa160be767c7b1aee0cf27cbb0e8 Mon Sep 17 00:00:00 2001
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 3 Mar 2024 18:01:38 +0100
+Subject: [PATCH] use (?:sub){0,2} to work with all pcre versions
+
+---
+ autotests/html/highlight.ly.dark.html | 2 +-
+ autotests/html/highlight.ly.html      | 2 +-
+ autotests/reference/highlight.ly.ref  | 2 +-
+ data/syntax/lilypond.xml              | 6 +++---
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/autotests/html/highlight.ly.dark.html b/autotests/html/highlight.ly.dark.html
+index 8a8466174..441a16839 100644
+--- a/autotests/html/highlight.ly.dark.html
++++ b/autotests/html/highlight.ly.dark.html
+@@ -15,7 +15,7 @@
+ <span style="color:#7a7c7d;">%}</span>
+ 
+ <span style="font-weight:bold;">\header {</span>
+-  title = <span style="color:#f44f4f;">&quot;Katepart Lilypond syntax highlighting test file&quot;</span>
++  <span style="color:#2980b9;">title</span> = <span style="color:#f44f4f;">&quot;Katepart Lilypond syntax highlighting test file&quot;</span>
+   <span style="color:#2980b9;">composer</span> = <span style="color:#7a7c7d;">%{&quot;Wilbert Berendsen&quot;%}</span> <span style="color:#f44f4f;">&quot;Anonymus&quot;</span>
+   <span style="color:#2980b9;">poet</span> = <span style="color:#f44f4f;">&quot;The KDE team&quot;</span>
+   <span style="color:#2980b9;">opus</span> = <span style="color:#f44f4f;">&quot;1&quot;</span>
+diff --git a/autotests/html/highlight.ly.html b/autotests/html/highlight.ly.html
+index 8bc714646..1081ed38c 100644
+--- a/autotests/html/highlight.ly.html
++++ b/autotests/html/highlight.ly.html
+@@ -15,7 +15,7 @@
+ <span style="color:#898887;">%}</span>
+ 
+ <span style="font-weight:bold;">\header {</span>
+-  title = <span style="color:#bf0303;">&quot;Katepart Lilypond syntax highlighting test file&quot;</span>
++  <span style="color:#0057ae;">title</span> = <span style="color:#bf0303;">&quot;Katepart Lilypond syntax highlighting test file&quot;</span>
+   <span style="color:#0057ae;">composer</span> = <span style="color:#898887;">%{&quot;Wilbert Berendsen&quot;%}</span> <span style="color:#bf0303;">&quot;Anonymus&quot;</span>
+   <span style="color:#0057ae;">poet</span> = <span style="color:#bf0303;">&quot;The KDE team&quot;</span>
+   <span style="color:#0057ae;">opus</span> = <span style="color:#bf0303;">&quot;1&quot;</span>
+diff --git a/autotests/reference/highlight.ly.ref b/autotests/reference/highlight.ly.ref
+index f11654d43..9b7afdb3c 100644
+--- a/autotests/reference/highlight.ly.ref
++++ b/autotests/reference/highlight.ly.ref
+@@ -9,7 +9,7 @@
+ <Comment>%}</Comment><br/>
+ <Normal Text></Normal Text><br/>
+ <Keyword>\header {</Keyword><br/>
+-<Normal Text>  title = </Normal Text><Quoted Text>"Katepart Lilypond syntax highlighting test file"</Quoted Text><br/>
++<Normal Text>  </Normal Text><Variable>title</Variable><Normal Text> = </Normal Text><Quoted Text>"Katepart Lilypond syntax highlighting test file"</Quoted Text><br/>
+ <Normal Text>  </Normal Text><Variable>composer</Variable><Normal Text> = </Normal Text><Comment>%{"Wilbert Berendsen"%}</Comment><Normal Text> </Normal Text><Quoted Text>"Anonymus"</Quoted Text><br/>
+ <Normal Text>  </Normal Text><Variable>poet</Variable><Normal Text> = </Normal Text><Quoted Text>"The KDE team"</Quoted Text><br/>
+ <Normal Text>  </Normal Text><Variable>opus</Variable><Normal Text> = </Normal Text><Quoted Text>"1"</Quoted Text><br/>
+diff --git a/data/syntax/lilypond.xml b/data/syntax/lilypond.xml
+index 58a4459db..1894d4063 100644
+--- a/data/syntax/lilypond.xml
++++ b/data/syntax/lilypond.xml
+@@ -23,7 +23,7 @@
+   <!ENTITY markupnotextargs "arrow-head|beam|char|(semi|sesqui|double)?(flat|sharp)|draw-(circle|line)|epsfile|eyeglasses|filled-box|fret-diagram(-terse|-verbose)?|fromproperty|harp-pedal|(justify|wordwrap)-(field|string)|left-brace|lookup|markalphabet|markletter|musicglyph|natural|note-by-number|note|null|path|right-brace|simple|(back)?slashed-digit|stencil|strut|tied-lyric|triangle|verbatim-file">
+   <!ENTITY markupwithtextargs "markup|bold|(rounded-)?box|bracket|caps|(center|general|left|right)-align|circle|((center|dir|left|right)-)?column|combine|concat|dynamic|fill-line|finger|fontCaps|(abs-)?fontsize|fraction|halign|hbracket|hcenter-in|hcenter|hspace|huge|italic|justify|larger?|line|lower|magnify|medium|normal-size-(sub|super)|normal-text|normalsize|number|on-the-fly|override|pad-(around|markup|to-box|x)|page-ref|postscript|put-adjacent|raise|roman|rotate|sans|small(er)?|smallCaps|sub|super|teeny|text|tiny|translate(-scaled)?|transparent|typewriter|underline|upright|vcenter|whiteout|with-(color|dimensions|url)|wordwrap|(markup|column-|justified-|override-|wordwrap-)lines|wordwrap-(string-)?internal">
+   <!ENTITY deprecatedmarkup "bigger|h?center">
+-  <!ENTITY headervars "dedication|(sub){,2}title|poet|composer|meter|opus|arranger|instrument|piece|breakbefore|copyright|tagline|mutopia(title|composer|poet|opus|instrument)|date|enteredby|source|style|maintainer(Email|Web)?|moreInfo|lastupdated|texidoc|footer">
++  <!ENTITY headervars "dedication|(?:sub){0,2}title|poet|composer|meter|opus|arranger|instrument|piece|breakbefore|copyright|tagline|mutopia(title|composer|poet|opus|instrument)|date|enteredby|source|style|maintainer(Email|Web)?|moreInfo|lastupdated|texidoc|footer">
+ 
+   <!-- The '-new' entities are for for LilyPond 2.13.4 and higher, and '-old' for LilyPond up to 2.12 -->
+   <!ENTITY paper-margin "(top|bottom|left|right)-margin|(foot|head)-separation|indent|short-indent|paper-(height|width)|horizontal-shift|line-width">
+@@ -56,7 +56,7 @@
+ ]>
+ <language name="LilyPond" section="Other"
+           style="lilypond" indenter="lilypond"
+-          version="10" kateversion="5.0"
++          version="11" kateversion="5.0"
+           extensions="*.ly;*.LY;*.ily;*.ILY;*.lyi;*.LYI"
+           mimetype="text/x-lilypond"
+           author="Wilbert Berendsen (info@wilbertberendsen.nl)" license="LGPL">
+@@ -1076,7 +1076,7 @@
+         <RegExpr String="(&quot;?)\b(?:&engravers00;|&engravers01;|&engravers02;|&engravers1;|&engravers2;)\b\1" attribute="Engraver"/>
+         <keyword String="layoutobjects" attribute="Layout Object"/>
+         <keyword String="properties" attribute="Property"/>
+-        <RegExpr String="\b(&headervars;|&papervars;|&layoutvars;)\b" attribute="Variable"/>
++        <RegExpr String="\b(?:&headervars;|&papervars;|&layoutvars;)\b" attribute="Variable"/>
+         <keyword String="deprecatedproperties" attribute="Deprecated Property"/>
+         <IncludeRules context="default"/>
+       </context>
+-- 
+GitLab
+

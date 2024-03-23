@@ -1,0 +1,38 @@
+Without this, it'd silently (well, with a small warning in configure) fall back
+to no fancy tty stuff.
+--- a/configure.ac
++++ b/configure.ac
+@@ -319,6 +319,13 @@ if test "$gcal_cv_use_term" = yes; then
+   AC_MSG_CHECKING(for working terminal libraries)
+   SAVE_LIBS=$LIBS
+   LIBS="$LIBS $TTYLIBS"
++
++  PKG_CHECK_MODULES([NCURSES], [ncurses], [
++    TTYLIBS=$NCURSES_LIBS
++    CPPFLAGS="$NCURSES_CFLAGS $CPPFLAGS"
++    AC_DEFINE([HAVE_TTYLIBS], [1], [Link -lncurses or -ltermcap or -ltermlib to executable.])
++    AC_MSG_RESULT(using $TTYLIBS)
++  ], [
+   AC_TRY_LINK([#include <term.h>],
+     [tgetent(0); tgetflag(0); tgetnum(0); tgetstr(0);],
+     [gcal_ttylibs_ok=yes])
+@@ -385,7 +392,7 @@ if test "$gcal_cv_use_term" = yes; then
+     AC_MSG_WARN(note: $PACKAGE-$VERSION would work more flexible if libncurses.a)
+     AC_MSG_WARN(libtermcap.a or libtermlib.a are installed.)
+     AC_MSG_RESULT()
+-  fi
++  fi])
+ fi
+ 
+ dnl
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,7 +22,7 @@ MISC_LIBS = @LIBM@ @LIBS@
+ LIBS = $(MISC_LIBS)
+ 
+ AM_CFLAGS = -I$(top_srcdir)/lib -I$(srcdir) -I.. $(CPPFLAGS)
+-LDADD = ../lib/libgnu.a $(LIBINTL)
++LDADD = ../lib/libgnu.a $(LIBINTL) $(TTYLIBS) $(NCURSES_LIBS)
+ 
+ SRCS = \
+   file-io.c \

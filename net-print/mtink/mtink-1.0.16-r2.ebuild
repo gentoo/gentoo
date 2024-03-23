@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="mtink is a status monitor and inkjet cartridge changer for some Epson printers"
-HOMEPAGE="http://xwtools.automatix.de/"
-SRC_URI="http://xwtools.automatix.de/files/${P}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20160316185818/http://xwtools.automatix.de/"
+SRC_URI="https://web.archive.org/web/20160316185818/http://xwtools.automatix.de/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-motif.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-fix-function-declarations.patch
 )
 
 src_prepare() {

@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/korganizer/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="telemetry"
 
 # testkodaymatrix is broken, akonadi* tests need DBus, bug #665686

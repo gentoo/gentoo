@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome.org meson python-any-r1
+inherit flag-o-matic gnome.org meson python-any-r1
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -48,6 +48,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
+	filter-lto
+
 	local emesonargs=(
 		-Da11y=false
 		-Ddebugg=false

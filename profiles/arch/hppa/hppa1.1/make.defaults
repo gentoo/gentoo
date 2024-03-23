@@ -1,0 +1,9 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="hppa1.1-unknown-linux-gnu"
+
+CFLAGS="-O2 -pipe -march=1.1"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

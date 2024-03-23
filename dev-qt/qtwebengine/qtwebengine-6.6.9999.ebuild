@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# 3.12 needs QTBUG-117979 (see also QTBUG-115512)
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
@@ -19,9 +18,9 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	+alsa bindist custom-cflags designer geolocation +jumbo-build
-	kerberos opengl pdfium pulseaudio qml screencast +system-icu
-	vaapi vulkan +widgets
+	accessibility +alsa bindist custom-cflags designer geolocation
+	+jumbo-build kerberos opengl pdfium pulseaudio qml screencast
+	+system-icu vaapi vulkan +widgets
 "
 REQUIRED_USE="
 	designer? ( qml widgets )
@@ -36,7 +35,7 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	~dev-qt/qtbase-${PV}:6[gui,opengl=,vulkan?,widgets?]
+	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl=,vulkan?,widgets?]
 	~dev-qt/qtwebchannel-${PV}:6[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
@@ -111,6 +110,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
+	"${FILESDIR}"/${PN}-6.6.2-clang18.patch
 )
 
 python_check_deps() {

@@ -168,7 +168,6 @@ src_prepare() {
 	# https://bugs.gentoo.org/888291
 	eapply -p2 "${FILESDIR}"/${PN}-33.1-python3.12.patch
 
-
 	# Perl bits need to go into vendor_perl and not site_perl
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
 		-i "${S}"/bindings/perl/Makefile || die "Cannot convert site_perl to vendor_perl!"

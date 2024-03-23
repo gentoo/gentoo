@@ -24,7 +24,7 @@ ruby_add_bdepend "test? ( dev-ruby/bundler >=dev-ruby/rr-3.1:0 dev-ruby/timecop 
 
 all_ruby_prepare() {
 	sed -i -e '/rake/ s/~>/>=/' \
-		-e '/rspec/ s/2.13.0/3.0/' \
+		-e '/rspec/ s/3.12.0/3.12/' \
 		-e '/rake-compiler/ s:^:#:' serverengine.gemspec || die
 
 	sed -i -e '/color_enabled/ s:^:#:' -e '1irequire "fileutils"' spec/spec_helper.rb || die

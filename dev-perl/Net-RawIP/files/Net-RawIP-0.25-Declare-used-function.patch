@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/871597
+https://rt.cpan.org/Public/Bug/Display.html?id=124134
+
+From ebb883cb2e2f0031fd947bf36c0f089e5a5352ea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 19 Jan 2018 15:47:40 +0100
+Subject: [PATCH] Decalare used function
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC warns about implicit declarations of functions used in RawIP.xs
+but defined in eth.c. This patch adds their declarations into eth.h.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ MANIFEST | 1 +
+ RawIP.xs | 1 +
+ eth.h    | 3 +++
+ 3 files changed, 5 insertions(+)
+ create mode 100644 eth.h
+
+diff --git a/MANIFEST b/MANIFEST
+index 9bfa0ee..1211b02 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -18,6 +18,7 @@ lib/Net/RawIP/udphdr.pm
+ RawIP.xs
+ RawIP/libpcap.pod
+ eth.c
++eth.h
+ ifaddrlist.c
+ ifaddrlist.h
+ ip.h
+diff --git a/RawIP.xs b/RawIP.xs
+index cddc523..234ea5d 100644
+--- a/RawIP.xs
++++ b/RawIP.xs
+@@ -31,6 +31,7 @@ extern "C" {
+ #include <sys/cdefs.h>
+ #endif
+ #include "ifaddrlist.h"
++#include "eth.h"
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <pcap.h>
+diff --git a/eth.h b/eth.h
+new file mode 100644
+index 0000000..ab28b45
+--- /dev/null
++++ b/eth.h
+@@ -0,0 +1,3 @@
++int tap(char *dev,unsigned int *my_eth_ip,unsigned char *my_eth_mac);
++int mac_disc(unsigned int addr,unsigned char * eth_mac);
++void send_eth_packet(int fd, char* eth_device, u_char *pkt, int len, int flag);
+-- 
+2.13.6

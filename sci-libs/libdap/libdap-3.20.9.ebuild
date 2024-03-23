@@ -36,6 +36,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto, -Werror=strict-aliasing
+	# https://bugs.gentoo.org/878895
+	# https://github.com/OPENDAP/libdap4/issues/244
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# bug 619144
 	append-cxxflags -std=c++14
 

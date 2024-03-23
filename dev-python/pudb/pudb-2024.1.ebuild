@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/urwid-2.4[${PYTHON_USEDEP}]
-	dev-python/urwid_readline[${PYTHON_USEDEP}]
+	dev-python/urwid-readline[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 "
 BDEPEND="

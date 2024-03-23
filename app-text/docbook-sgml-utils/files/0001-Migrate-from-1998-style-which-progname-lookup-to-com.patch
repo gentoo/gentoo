@@ -1,0 +1,90 @@
+From a5956fccad44bed98b5de22a6169e0aa098d169f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 4 Mar 2024 18:16:32 -0500
+Subject: [PATCH] Migrate from 1998 style "which progname" lookup to command -v
+
+The "which" utility is not guaranteed to be installed either, and if it
+is, its behavior is not portable either. This means that when sgml tools
+are installed, the `which` check will report a fatal error because the
+which tool did not exist and the shell returned a nonzero status when
+attempting to fork+exec. If it did exist, it might not be an
+implementation of `which` that returns nonzero when commands do not
+exist.
+
+The general scripting suggestion is to use the "command -v" shell
+builtin that is required to exist in all POSIX 2008 compliant shells,
+and is thus guaranteed to work everywhere.
+
+For some in-depth discussions on the topic, see:
+- https://mywiki.wooledge.org/BashFAQ/081
+- https://unix.stackexchange.com/questions/85249/why-not-use-which-what-to-use-then/85250#85250
+
+Examples of open-source shells likely to be installed as /bin/sh on
+Linux, which implement the 15-year-old standard: ash, bash, busybox,
+dash, ksh, mksh and zsh.
+
+However, in this case there's a pretty good exuse for not using a 2008
+standard. The docbook-utils project is dead since 2004. So we patch it
+(and scratch our heads about where to try sending patches).
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ bin/jw.in | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/bin/jw.in b/bin/jw.in
+index 4bfb312..82bd497 100644
+--- a/bin/jw.in
++++ b/bin/jw.in
+@@ -58,8 +58,7 @@ SGML_ERRORS_LIST="\n\
+ \040 no-valid \t Do not require the document to be type-valid"
+ 
+ # Get name of main SGML configuration file
+-which sgmlwhich >/dev/null 2>/dev/null
+-if [ $? -eq 0 ]
++if command -v sgmlwhich >/dev/null
+ then
+   SGML_CONF=`sgmlwhich`
+ else
+@@ -296,10 +295,10 @@ fi
+ # Try to find the SGML normalizer
+ if [ -z "$SGML_NORM" ]
+ then
+-  SGML_NORM=`which sgmlnorm 2>/dev/null`
++  SGML_NORM=`command -v sgmlnorm`
+   if [ -z "SGML_NORM" ]
+   then
+-    SGML_NORM=`which osgmlnorm 2>/dev/null`
++    SGML_NORM=`command -v osgmlnorm`
+   fi
+ fi
+ 
+@@ -376,13 +375,11 @@ esac
+ # Choose a parser
+ if [ -z "$SGML_JADE" ]
+ then
+-  which jade >/dev/null 2>/dev/null
+-  if [ $? -eq 0 ]
++  if command -v jade >/dev/null
+   then
+     SGML_JADE="jade"
+   else
+-    which openjade >/dev/null 2>/dev/null
+-    if [ $? -eq 0 ]
++    if command -v openjade >/dev/null
+     then 
+       SGML_JADE="openjade"
+     else
+@@ -391,8 +388,7 @@ then
+     fi
+   fi
+ else
+-  which $SGML_JADE >/dev/null 2>/dev/null
+-  if [ $? -ne 0 ]
++  if ! command -v $SGML_JADE >/dev/null
+   then 
+     echo "`basename $0`: parser $SGML_JADE is not available" >&2
+     exit 6
+-- 
+2.43.0
+

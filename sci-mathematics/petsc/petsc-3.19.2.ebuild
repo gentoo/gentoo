@@ -42,7 +42,6 @@ DEPEND="
 "
 BDEPEND="
 	dev-build/cmake
-	sys-apps/which
 	virtual/pkgconfig
 "
 

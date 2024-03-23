@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
 HOMEPAGE="https://www.bulletphysics.com/"
@@ -54,6 +54,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror-strict-aliasing
+	# https://bugs.gentoo.org/863275
+	# https://github.com/bulletphysics/bullet3/issues/4590
+	#
+	# Do not trust with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_CPU_DEMOS=OFF
 		-DBUILD_OPENGL3_DEMOS=OFF

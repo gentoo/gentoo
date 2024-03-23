@@ -5,6 +5,14 @@
     <email>base-system@gentoo.org</email>
     <name>Gentoo Base System</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>liaoyuan@gmail.com</email>
+    <name>Yuan Liao</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <use>
     <flag name="lzma">Enables support for LZMA compressed kernel images</flag>
     <flag name="booke">Include support for Book-E memory management</flag>

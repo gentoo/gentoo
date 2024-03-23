@@ -1,0 +1,42 @@
+--- a/makefile
++++ b/makefile
+@@ -8,11 +8,15 @@ MANDIR=$(PREFIX)/share/man/man1
+ OBJ=obj
+ SRC=.
+ 
+-DPKG_BUILDFLAGS := $(shell command -v dpkg-buildflags 2> /dev/null)
+-ifdef DPKG_BUILDFLAGS
+-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+-endif
++CFLAGS ?= -O2
++LDFLAGS += -fPIC -shared -Wl,-soname,libjhead.so.1
++
++TARGET = libjhead.so.1.0.0
++TARGET0        = libjhead.so
++TARGET1        = libjhead.so.1
++TARGET2 = libjhead.so.1.0
++
+++all: objdir jhead $(TARGET)
+ 
+ # To enable electric fence, set ELECTRIC_FENCE=1
+ ifeq ($(ELECTRIC_FENCE),1)
+@@ -31,7 +35,7 @@ objs = $(OBJ)/jhead.o $(OBJ)/jpgfile.o $(OBJ)/jpgqguess.o $(OBJ)/paths.o \
+ 	$(OBJ)/exif.o $(OBJ)/iptc.o $(OBJ)/gpsinfo.o $(OBJ)/makernote.o
+ 
+ $(OBJ)/%.o:$(SRC)/%.c objdir
+-	${CC} $(CFLAGS) $(CPPFLAGS) -c $< -o $@
++	${CC} -fPIC $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ jhead: $(objs) jhead.h
+ 	${CC} $(LDFLAGS) -o jhead $(objs) -lm
+@@ -44,3 +48,9 @@ install: all
+ 	install -m 0755 jhead $(BINDIR)
+ 	install -m 0644 $(docs) $(DOCDIR)
+ 	install -m 0644 jhead.1 $(MANDIR)
++
++$(TARGET): $(objs) jhead
++	${CC} $(LDFLAGS) $(LFLAGS) -o $(TARGET) $(objs)
++	ln -s ${TARGET} ${TARGET0}
++	ln -s ${TARGET} ${TARGET1}
++	ln -s ${TARGET} ${TARGET2}

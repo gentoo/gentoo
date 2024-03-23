@@ -11,8 +11,8 @@
 		For example it is written in rust and not in ruby which makes it really faster
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/Peltoche/lsd/issues</bugs-to>
-		<changelog>https://github.com/Peltoche/lsd/blob/master/CHANGELOG.md</changelog>
-		<remote-id type="github">Peltoche/lsd</remote-id>
+		<bugs-to>https://github.com/lsd-rs/lsd/issues</bugs-to>
+		<changelog>https://github.com/lsd-rs/lsd/blob/master/CHANGELOG.md</changelog>
+		<remote-id type="github">lsd-rs/lsd</remote-id>
 	</upstream>
 </pkgmetadata>

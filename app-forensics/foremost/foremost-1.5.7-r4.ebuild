@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ SRC_URI="http://foremost.sourceforge.net/pkg/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~arm64-macos ~x64-macos"
-IUSE=""
 
 src_prepare() {
 	PATCHES=(
@@ -30,8 +29,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# see also bug 906187
+
 	emake \
-		RAW_FLAGS="${CFLAGS} -Wall ${LDFLAGS}" \
+		RAW_FLAGS="${CFLAGS} -Wall ${LDFLAGS} -D_LARGEFILE64_SOURCE" \
 		RAW_CC="$(tc-getCC) -DVERSION=\\\"${PV}\\\"" \
 		CONF=/etc
 }

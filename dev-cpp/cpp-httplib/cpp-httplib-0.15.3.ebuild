@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/yhirose/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="~amd64 ~loong ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT"
@@ -58,6 +58,28 @@ src_configure() {
 multilib_src_test() {
 	cp -p -R --reflink=auto "${S}/test" ./test || die
 
-	GTEST_FILTER='-*.*_Online' emake -C test \
+	local -a failing_tests=(
+		# Disable all online tests.
+		"*.*_Online"
+
+		# Fails on musl x86:
+		ServerTest.GetRangeWithMaxLongLength
+		ServerTest.GetStreamedWithTooManyRanges
+
+		# https://github.com/yhirose/cpp-httplib/issues/1798
+		# Filed by mgorny's testing, fails on openssl >=3.2:
+		SSLClientServerTest.ClientCertPresent
+		SSLClientServerTest.ClientEncryptedCertPresent
+		SSLClientServerTest.CustomizeServerSSLCtx
+		SSLClientServerTest.MemoryClientCertPresent
+		SSLClientServerTest.MemoryClientEncryptedCertPresent
+		SSLClientServerTest.TrustDirOptional
+	)
+
+	# Little dance to please the GTEST filter (join array using ":").
+	failing_tests_str="${failing_tests[@]}"
+	failing_tests_filter="${failing_tests_str// /:}"
+
+	GTEST_FILTER="-${failing_tests_filter}" emake -C test \
 		CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} -I."
 }

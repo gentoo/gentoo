@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools linux-info systemd
+inherit autotools flag-o-matic linux-info systemd
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
@@ -56,6 +56,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/861848
+	# https://github.com/rakshasa/rtorrent/issues/1264
+	filter-lto
+
 	default
 
 	# configure needs bash or script bombs out on some null shift, bug #291229

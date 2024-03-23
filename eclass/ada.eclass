@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ada.eclass
@@ -261,6 +261,10 @@ ada_export() {
 				export GCC_PV=${gcc_pv}
 				debug-print "${FUNCNAME}: GCC_PV = ${GCC_PV}"
 				;;
+			GCCPV)
+				export GCCPV=${gcc_pv}
+				debug-print "${FUNCNAME}: GCCPV = ${GCC_PV}"
+				;;
 			GNAT)
 				export GNAT=${EPREFIX}/usr/bin/gnat-${gcc_pv}
 				debug-print "${FUNCNAME}: GNAT = ${GNAT}"
@@ -465,7 +469,7 @@ ada_setup() {
 	if [[ ${#_ADA_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		if use "ada_target_${_ADA_SUPPORTED_IMPLS[0]}"; then
 			# Only one supported implementation, enable it explicitly
-			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCC_PV GNAT GNATBIND GNATLS GNATMAKE
+			ada_export "${_ADA_SUPPORTED_IMPLS[0]}" EADA GCCPV GCC_PV GNAT GNATBIND GNATLS GNATMAKE
 			ada_wrapper_setup
 		fi
 	else
@@ -481,7 +485,7 @@ ada_setup() {
 					die "More than one implementation in ADA_TARGET."
 				fi
 
-				ada_export "${impl}" EADA GCC_PV GNAT GNATBIND GNATLS GNATMAKE
+				ada_export "${impl}" EADA GCCPV GCC_PV GNAT GNATBIND GNATLS GNATMAKE
 				ada_wrapper_setup
 			fi
 		done

@@ -1,0 +1,28 @@
+https://github.com/thp/urlwatch/commit/123de66d019aef7fc18fab6d56cc2a54d81fea3f
+
+From: James Hewitt <james.hewitt@uk.ibm.com>
+Date: Wed, 17 Jan 2024 13:50:28 +0000
+Subject: [PATCH] Update CSS Selector to use new style
+
+New style of calling the CSSSelector directly instead of using the
+evaluate function. This has been supported since lxml 1.1 [1] and the
+evaluate method has been deprecated since lxml 2.1 [2].
+
+[1] https://github.com/lxml/lxml/blob/lxml-1.1/src/lxml/xpath.pxi#L66
+[2] https://github.com/lxml/lxml/blob/lxml-2.1/src/lxml/xpath.pxi#L143
+
+Signed-off-by: James Hewitt <james.hewitt@uk.ibm.com>
+--- a/lib/urlwatch/filters.py
++++ b/lib/urlwatch/filters.py
+@@ -761,9 +761,9 @@ def _get_filtered_elements(self):
+         excluded_elems = None
+         if self.filter_kind == 'css':
+             selected_elems = CSSSelector(self.expression,
+-                                         namespaces=self.namespaces).evaluate(root)
++                                         namespaces=self.namespaces)(root)
+             excluded_elems = CSSSelector(self.exclude,
+-                                         namespaces=self.namespaces).evaluate(root) if self.exclude else None
++                                         namespaces=self.namespaces)(root) if self.exclude else None
+         elif self.filter_kind == 'xpath':
+             selected_elems = root.xpath(self.expression, namespaces=self.namespaces)
+             excluded_elems = root.xpath(self.exclude, namespaces=self.namespaces) if self.exclude else None

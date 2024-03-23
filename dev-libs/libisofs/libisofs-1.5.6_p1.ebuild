@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ MY_P=${MY_PF}.pl01
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
 HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisofs"
-SRC_URI="http://files.libburnia-project.org/releases/${MY_P}.tar.gz"
+SRC_URI="https://files.libburnia-project.org/releases/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

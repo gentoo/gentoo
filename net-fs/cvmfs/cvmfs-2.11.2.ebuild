@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake linux-info bash-completion-r1
 
@@ -12,7 +12,7 @@ SRC_URI="https://ecsft.cern.ch/dist/cvmfs/${P}/source.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="server"
 
 CDEPEND="
@@ -60,7 +60,8 @@ src_prepare() {
 	cmake_src_prepare
 	# gentoo stuff
 	rm bootstrap.sh || die
-	sed -i -e "s:/usr/bin/systemctl:/bin/systemctl:g" cvmfs/cvmfs_config || die
+	sed -i -e "s:/usr/bin/systemctl:/bin/systemctl:g" \
+		-e "s:/bin/pidof:/usr/bin/pidof:g" cvmfs/cvmfs_config || die
 	sed -i -e 's/COPYING//' -e "s:cvmfs-\${CernVM-FS_VERSION_STRING}:${PF}:" \
 		CMakeLists.txt || die
 	eapply_user

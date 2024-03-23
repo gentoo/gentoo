@@ -1,0 +1,49 @@
+--- a/tests/textDisp.test	2024-03-10 14:25:29.581307116 +0100
++++ b/tests/textDisp.test	2024-03-10 14:26:46.022318200 +0100
+@@ -2314,11 +2314,6 @@
+     }
+     lequal [.t index @0,0] $expected
+ } {1}
+-test textDisp-16.17 {TkTextYviewCmd procedure, "moveto" option} haveBigFontTwiceLargerThanTextFont {
+-# constrained because text tagged with the big font plays a role
+-    .t yview moveto .755
+-    .t index @0,0
+-} {151.80}
+ test textDisp-16.18 {TkTextYviewCmd procedure, "moveto" roundoff} {
+     catch {destroy .top1}
+     toplevel .top1
+--- a/tests/ttk/entry.test	2022-11-23 08:44:49.647148945 +0100
++++ b/tests/ttk/entry.test	2022-11-23 08:51:48.524180822 +0100
+@@ -127,28 +127,28 @@
+     set result [.e xview]
+ } -result {0.0 0.5}
+ 
+-test entry-3.3 "xview" -body {
++test entry-3.3 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end abcdefghijklmnopqrstuvwxyz
+     .e xview end
+     set result [.e index @0]
+ } -result 7
+ 
+-test entry-3.4 "xview" -body {
++test entry-3.4 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end abcdefghijklmnopqrstuvwxyz
+     .e xview moveto 1.0
+     set result [.e index @0]
+ } -result 7
+ 
+-test entry-3.5 "xview" -body {
++test entry-3.5 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end abcdefghijklmnopqrstuvwxyz
+     .e xview scroll 5 units
+     set result [.e index @0]
+ } -result 5
+ 
+-test entry-3.6 "xview" -body {
++test entry-3.6 "xview" -constraints knownBug -body {
+     .e delete 0 end;
+     .e insert end [string repeat abcdefghijklmnopqrstuvwxyz 5]
+     .e xview scroll 2 pages

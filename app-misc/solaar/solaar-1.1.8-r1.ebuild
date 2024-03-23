@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit linux-info udev xdg distutils-r1
 
@@ -27,9 +27,9 @@ IUSE="doc appindicator libnotify"
 RDEPEND="
 	acct-group/plugdev
 	$(python_gen_cond_dep '
+		dev-python/evdev[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		dev-python/python-evdev[${PYTHON_USEDEP}]
 		dev-python/python-xlib[${PYTHON_USEDEP}]
 		>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]

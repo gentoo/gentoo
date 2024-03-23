@@ -18,7 +18,7 @@
     few caveats.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/Roblox/luau/issues/</bugs-to>
-    <remote-id type="github">Roblox/luau</remote-id>
+    <bugs-to>https://github.com/luau-lang/luau/issues/</bugs-to>
+    <remote-id type="github">luau-lang/luau</remote-id>
   </upstream>
 </pkgmetadata>

@@ -13,5 +13,6 @@
 			<email>rthomsen6@gmail.com</email>
 			<name>Ragnar Thomsen</name>
 		</maintainer>
+		<remote-id type="kde-invent">system/systemdgenie</remote-id>
 	</upstream>
 </pkgmetadata>

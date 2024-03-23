@@ -14,7 +14,7 @@ SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/ansi2html[${PYTHON_USEDEP}]

@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2024-02-14)
+# Fails to compile, bug #924396
+>=dev-lang/rust-1.75.0 lto
+
 # Eray Aslan <eras@gentoo.org> (2024-02-13)
 # tests require dev-db/mongodb which is not keyworded
 dev-libs/mongo-c-driver test
@@ -257,7 +265,6 @@ app-portage/g-sorcery bson
 
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
-sys-devel/clang default-libcxx
 sys-devel/clang-common default-libcxx
 sys-devel/clang-runtime libcxx
 
@@ -380,7 +387,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies

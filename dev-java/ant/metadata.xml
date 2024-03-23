@@ -12,6 +12,7 @@
       (<pkg>dev-java/bsf</pkg>)</flag>
     <flag name="commonslogging">Enable commons-logging Ant tasks</flag>
     <flag name="commonsnet">Enable commons-net Ant tasks</flag>
+    <flag name="imageio">Enable imageio Ant tasks</flag>
     <flag name="jai">Enable JAI (Java Imaging) Ant task</flag>
     <flag name="jakartamail">Enable Jakartamail Ant task</flag>
     <flag name="javamail">Enable JavaMail Ant task</flag>

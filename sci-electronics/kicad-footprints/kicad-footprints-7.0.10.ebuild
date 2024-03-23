@@ -14,14 +14,12 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://gitlab.com/kicad/libraries/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
 RDEPEND=">=sci-electronics/kicad-7.0.0"
 
 if [[ ${PV} == 9999 ]] ; then

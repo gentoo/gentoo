@@ -13,7 +13,7 @@ SRC_URI="https://github.com/raspberrypi/utils/archive/${COMMIT}.tar.gz -> ${P}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 
 DEPEND="
 	sys-apps/dtc

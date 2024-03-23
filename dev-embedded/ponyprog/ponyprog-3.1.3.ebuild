@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake udev
+inherit cmake flag-o-matic udev
 
 DESCRIPTION="EEPROM and microcontroller programmer/flasher"
 HOMEPAGE="https://github.com/lancos/ponyprog/"
@@ -30,6 +30,15 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
+
+src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/855272
+	# https://github.com/lancos/ponyprog/issues/28
+	filter-lto
+
+	cmake_src_configure
+}
 
 pkg_postinst() {
 	udev_reload

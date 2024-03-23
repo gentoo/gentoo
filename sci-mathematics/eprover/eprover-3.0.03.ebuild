@@ -29,6 +29,8 @@ BDEPEND="
 	sys-apps/help2man
 "
 
+PATCHES=( "${FILESDIR}/${PN}-3.0.03-unistd.patch" )
+
 src_prepare() {
 	default
 

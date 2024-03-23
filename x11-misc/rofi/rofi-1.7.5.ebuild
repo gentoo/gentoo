@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs xdg-utils
+inherit autotools flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
 HOMEPAGE="https://github.com/davatorium/rofi"
@@ -51,6 +51,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/881281
+	# fixed upstream in git next, remove on next version bump
+	filter-lto
+
 	# Doesn't work with reflex, bug #887049
 	export LEX=flex
 

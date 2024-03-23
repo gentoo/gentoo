@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,6 +48,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/863044
+	# Only contact method is email. I have sent one detailing the issue.
+	filter-lto
+
 	# The upstream Makefile says that GCC produces bad code with -O3.
 	replace-flags "-O3" "-O2"
 	default

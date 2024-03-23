@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Gameboy emulator with multiple renderers"
 HOMEPAGE="https://sourceforge.net/projects/gnuboy/"
@@ -39,6 +39,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# LTO type mismatches (bug #858701)
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local econfargs=(
 		$(use_with X x)
 		$(use_with sdl)

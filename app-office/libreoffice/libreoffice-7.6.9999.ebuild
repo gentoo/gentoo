@@ -234,7 +234,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXt
 	x11-libs/libXtst
 	java? (
-		dev-java/ant-core
+		dev-java/ant:0
 		>=virtual/jdk-11
 	)
 	test? (
@@ -298,9 +298,6 @@ PATCHES=(
 
 	# maybe upstreamable
 	"${FILESDIR}/${PN}-7.5.8.2-icu-74-compatibility.patch"
-
-	# 24.2 branch
-	"${FILESDIR}/${PN}-7.5.9.2-libxml2-2.12.patch" # bug 917691
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"

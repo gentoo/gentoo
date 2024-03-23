@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,9 +9,9 @@ PLOCALE_BACKUP="en"
 inherit plocale toolchain-funcs
 
 DESCRIPTION="IRC fileserver using DCC"
-HOMEPAGE="http://iroffer.dinoex.net/"
-SRC_URI="http://iroffer.dinoex.net/${P}.tar.gz
-	http://iroffer.dinoex.net/HISTORY/${P}.tar.gz"
+HOMEPAGE="https://iroffer.net/"
+SRC_URI="https://iroffer.net/${P}.tar.gz
+	https://iroffer.net/HISTORY/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

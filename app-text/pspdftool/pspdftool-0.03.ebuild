@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Tool for prepress preparation of PDF and PostScript documents"
 HOMEPAGE="https://sourceforge.net/projects/pspdftool"
@@ -24,6 +24,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing; do not trust for LTO-safety either.
+	# https://bugs.gentoo.org/855023
+	# Upstream is dead for nearly a decade. Not forwarded.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf $(use_with zlib)
 }
 

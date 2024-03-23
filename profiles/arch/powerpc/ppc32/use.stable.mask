@@ -1,5 +1,9 @@
-# Copyright 2014-2023 Gentoo Authors
+# Copyright 2014-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-03-07)
+# dev-lang/php:8.2 is not marked stable here yet (bug #920701)
+php_targets_php8-2
 
 # Sam James <sam@gentoo.org> (2022-03-03)
 # dev-lang/ocaml and dev-ml/* not marked stable here

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31"
+USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -23,7 +23,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/faraday:1 >=dev-ruby/rack-test-0.6 )"
+ruby_add_bdepend "test? ( dev-ruby/faraday:1 >=dev-ruby/rack-test-0.6 dev-ruby/webmock )"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die

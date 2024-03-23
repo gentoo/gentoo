@@ -28,9 +28,11 @@ fi
 # BSD for bundled pybind
 LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
 SLOT="0"
-IUSE="doc examples nls openmp"
+IUSE="doc examples nls openmp test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 # Contains bundled pybind but it's patched for wx
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
@@ -57,6 +59,9 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	nls? (
 		sys-devel/gettext
+	)
+	test? (
+		media-gfx/cairosvg
 	)
 "
 DEPEND="${COMMON_DEPEND}"
@@ -129,7 +134,8 @@ src_compile() {
 
 src_test() {
 	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
-	ln -s "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
+	mkdir -p "${BUILD_DIR}/qa/eeschema/" || die
+	dosym "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
 
 	# LD_LIBRARY_PATH is there to help it pick up the just-built libraries
 	LD_LIBRARY_PATH="${BUILD_DIR}/3d-viewer/3d_cache/sg:${LD_LIBRARY_PATH}" cmake_src_test

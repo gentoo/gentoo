@@ -9,4 +9,7 @@
 		<flag name="dolphin">Install the <pkg>kde-apps/dolphin</pkg> extension</flag>
 		<flag name="nautilus">Install the <pkg>gnome-base/nautilus</pkg> extension</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">owncloud/client</remote-id>
+	</upstream>
 </pkgmetadata>

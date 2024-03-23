@@ -1,0 +1,348 @@
+From: https://github.com/dekeonus/libjwt/tree/feat-multi-ssl
+
+Enables multiple ssl implemtations to be installed at the same time
+default libjwt will default to linking to openssl (if openssl enabled)
+
+
+diff --git a/configure.ac b/configure.ac
+index 6061add..447dd10 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,27 +6,105 @@ LT_INIT([])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_HEADERS([libjwt/config.h])
+ 
++AC_SUBST([LIBJWT_LTVERSION], [11:1:9])
+ AC_SUBST([AM_CFLAGS], [-Wall])
+ 
+-dnl Prefer OpenSSL unless asked to ignore it
++dnl Build with OpenSSL when asked
+ AC_ARG_WITH([openssl],
+-	AS_HELP_STRING([--without-openssl], [Ignore presence of OpenSSL libraries and use GnuTLS]))
+-
+-AS_IF([test "x$with_openssl" != "xno"], [
+-	PKG_CHECK_MODULES([OPENSSL], [openssl >= 0.9.8])
+-	AM_CONDITIONAL([HAVE_OPENSSL], [true])
+-], [
+-	PKG_CHECK_MODULES([GNUTLS], [gnutls >= 3.6.0])
+-	AM_CONDITIONAL([HAVE_OPENSSL], [false])
++	AS_HELP_STRING([--with-openssl], [Build using OpenSSL library]),
++	[with_openssl=$withval],
++	[blank_openssl=yes])
++
++dnl Build with GnutLS when asked
++AC_ARG_WITH([gnutls],
++	AS_HELP_STRING([--with-gnutls], [Build using GnuTLS library]),
++	[with_gnutls=$withval],
++	[blank_gnutls=yes])
++
++dnl If no with[out]-'ssl' default to openssl
++AS_IF([test "x$blank_openssl" = "xyes" -a "x$blank_gnutls" = "xyes"], [
++	with_openssl=yes
++])
++
++dnl emulate previous build, without-openssl means build with gnutls
++AS_IF([test "x$with_openssl" = "xno" -a "x$blank_gnutls" = "xyes"], [
++	with_gnutls=yes
++])
++
++AC_ARG_ENABLE([multi-ssl], AS_HELP_STRING([--enable-multi-ssl],
++		[Enable multiple ssl library implementations]),
++	[enable_multi_ssl=$enableval],
++	[enable_multi_ssl=no])
++
++AS_IF([test "x$enable_multi_ssl" = "xno"], [
++	AS_IF([test "x$with_openssl" = "xyes" -a "x$with_gnutls" = "xyes"], [
++AC_MSG_ERROR([You need to enable multi-ssl to support multiple ssl implementations concurrently])
++	])
++])
++AM_CONDITIONAL([MULTI_SSL], [test "x$enable_multi_ssl" = "xyes"])
++
++AS_IF([test "x$with_openssl" = "xyes"], [
++	PKG_CHECK_MODULES([OPENSSL], [openssl >= 0.9.8], [found_openssl=yes])
++])
++AM_CONDITIONAL([HAVE_OPENSSL], [test "x$found_openssl" = "xyes"])
++
++AS_IF([test "x$with_gnutls" = "xyes"], [
++	PKG_CHECK_MODULES([GNUTLS], [gnutls >= 3.6.0], [found_gnutls=yes])
++])
++AM_CONDITIONAL([HAVE_GNUTLS], [test "x$found_gnutls" = "xyes"])
++
++AS_IF([test "x$found_openssl" != "xyes" -a "x$found_gnutls" != "xyes"], [
++	AC_MSG_ERROR([Neither openssl nor gnutls was found])
+ ])
+ 
++dnl work out default, or only, ssl library
++AC_MSG_CHECKING([which ssl library to use as default])
++AC_ARG_WITH([default-ssl], AS_HELP_STRING([--with-default-ssl@<:@=Lib@:>@],
++		[set default ssl library [openssl|gnutls] for multi-ssl]),
++	[with_default_ssl=$withval],
++	[with_default_ssl=yes])
++dnl note, yes/blank case will require further nesting, if additional ssl lib support added
++AS_CASE([$with_default_ssl],
++	[openssl], [AS_IF([test "x$found_openssl" = "xyes"], [ssl_impl=openssl],
++		[AC_MSG_ERROR([requested default ssl lib openssl, but openssl not found])]
++			)],
++	[gnutls], [AS_IF([test "x$found_gnutls" = "xyes"], [ssl_impl=gnutls],
++		[AC_MSG_ERROR([requested default ssl lib gnutls, but gnutls not found])]
++			)],
++	[no], [AC_MSG_ERROR([unsupported configuration --without-default-ssl])],
++	[yes], [AS_IF([test "x$found_openssl" = "xyes"], [ssl_impl=openssl],
++			[ssl_impl=gnutls])],
++	[AC_MSG_ERROR([Unknown ssl library $with_default_ssl])]
++)
++AC_MSG_RESULT([$ssl_impl])
++
+ AC_ARG_WITH([examples],
+ 	AS_HELP_STRING([--without-examples], [do not build example programs]),
+-	[],
++	[with_examples=$withval],
+ 	[with_examples=yes])
+ 
+ AM_CONDITIONAL([BUILD_EXAMPLES], [test "x$with_examples" != "xno"])
+ 
++dnl should not reach default case, bail out if it triggers
++AS_CASE([$ssl_impl],
++	[openssl], [
++		AC_SUBST([SSL_DEF_LDFLAGS], [$OPENSSL_LDFLAGS])
++		AC_SUBST([SSL_DEF_INCLUDES], [$OPENSSL_INCLUDES])
++		AC_SUBST([SSL_DEF_CFLAGS], [$OPENSSL_CFLAGS])
++		AC_SUBST([SSL_DEF_LIBS], [$OPENSSL_LIBS])
++		],
++	[gnutls], [
++		AC_SUBST([SSL_DEF_LDFLAGS], [$GNUTLS_LDFLAGS])
++		AC_SUBST([SSL_DEF_INCLUDES], [$GNUTLS_INCLUDES])
++		AC_SUBST([SSL_DEF_CFLAGS], [$GNUTLS_CFLAGS])
++		AC_SUBST([SSL_DEF_LIBS], [$GNUTLS_LIBS])
++		],
++	[AC_MSG_ERROR([unable to set default ssl library])]
++)
++AM_CONDITIONAL([SSL_DEF_OPENSSL], [test "x$ssl_impl" = "xopenssl"])
++dnl currently unused, for additional ssl implementations
++dnl AM_CONDITIONAL([SSL_DEF_GNUTLS], [test "x$ssl_impl" = "xgnutls"])
++
+ PKG_CHECK_MODULES([JANSSON], [jansson >= 2.0])
+ PKG_CHECK_MODULES([CHECK], [check >= 0.9.4], [true], [true])
+ 
+@@ -44,6 +122,13 @@ DX_PDF_FEATURE(OFF)
+ DX_PS_FEATURE(OFF)
+ DX_INIT_DOXYGEN($PACKAGE_NAME, doxygen.cfg)
+ 
++
++AM_COND_IF([MULTI_SSL], [
++	AM_COND_IF([HAVE_OPENSSL],
++		[AC_CONFIG_FILES([libjwt/libjwt-ossl.pc])])
++	AM_COND_IF([HAVE_GNUTLS],
++		[AC_CONFIG_FILES([libjwt/libjwt-gnutls.pc])])
++	])
+ AC_CONFIG_FILES([
+ 	Makefile
+ 	include/Makefile
+diff --git a/libjwt/Makefile.am b/libjwt/Makefile.am
+index 21ea12d..b837d53 100644
+--- a/libjwt/Makefile.am
++++ b/libjwt/Makefile.am
+@@ -4,17 +4,51 @@ lib_LTLIBRARIES = libjwt.la
+ 
+ libjwt_la_SOURCES = jwt.c base64.c
+ 
+-if HAVE_OPENSSL
++if SSL_DEF_OPENSSL
+ libjwt_la_SOURCES += jwt-openssl.c
+ else
++## SSL_DEF_GNUTLS
+ libjwt_la_SOURCES += jwt-gnutls.c
+ endif
+ 
++if MULTI_SSL
++if HAVE_OPENSSL
++lib_LTLIBRARIES += libjwt-ossl.la
++libjwt_ossl_la_SOURCES = jwt.c base64.c jwt-openssl.c
++endif
++if HAVE_GNUTLS
++lib_LTLIBRARIES += libjwt-gnutls.la
++libjwt_gnutls_la_SOURCES = jwt.c base64.c jwt-gnutls.c
++endif
++endif
++
+ # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
+-libjwt_la_LDFLAGS = -version-info 11:1:9 $(OPENSSL_LDFLAGS) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
+-libjwt_la_CPPFLAGS = -I$(top_srcdir)/include $(OPENSSL_INCLUDES) $(GNUTLS_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
+-libjwt_la_CFLAGS = $(JANSSON_CFLAGS) $(OPENSSL_CFLAGS) $(GNUTLS_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
+-libjwt_la_LIBADD = $(JANSSON_LIBS) $(OPENSSL_LIBS) $(GNUTLS_LIBS) $(CODE_COVERAGE_LDFLAGS)
++libjwt_la_LDFLAGS = -version-info $(LIBJWT_LTVERSION) $(SSL_DEF_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
++libjwt_la_CPPFLAGS = -I$(top_srcdir)/include $(SSL_DEF_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
++libjwt_la_CFLAGS = $(JANSSON_CFLAGS) $(SSL_DEF_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
++libjwt_la_LIBADD = $(JANSSON_LIBS) $(SSL_DEF_LIBS) $(CODE_COVERAGE_LDFLAGS)
++if MULTI_SSL
++if HAVE_OPENSSL
++libjwt_ossl_la_LDFLAGS = -version-info $(LIBJWT_LTVERSION) $(OPENSSL_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
++libjwt_ossl_la_CPPFLAGS = -I$(top_srcdir)/include $(OPENSSL_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
++libjwt_ossl_la_CFLAGS = $(JANSSON_CFLAGS) $(OPENSSL_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
++libjwt_ossl_la_LIBADD = $(JANSSON_LIBS) $(OPENSSL_LIBS) $(CODE_COVERAGE_LDFLAGS)
++endif
++if HAVE_GNUTLS
++libjwt_gnutls_la_LDFLAGS = -version-info $(LIBJWT_LTVERSION) $(GNUTLS_LDFLAGS) $(JANSSON_LDFLAGS) -no-undefined
++libjwt_gnutls_la_CPPFLAGS = -I$(top_srcdir)/include $(GNUTLS_INCLUDES) $(CODE_COVERAGE_CPPFLAGS) -Wall
++libjwt_gnutls_la_CFLAGS = $(JANSSON_CFLAGS) $(GNUTLS_CFLAGS) $(CODE_COVERAGE_CFLAGS) -D_GNU_SOURCE
++libjwt_gnutls_la_LIBADD = $(JANSSON_LIBS) $(GNUTLS_LIBS) $(CODE_COVERAGE_LDFLAGS)
++endif
++endif
+ 
+ pkgconfiglibdir = $(libdir)/pkgconfig
+ pkgconfiglib_DATA = libjwt.pc
++if MULTI_SSL
++if HAVE_OPENSSL
++pkgconfiglib_DATA += libjwt-ossl.pc
++endif
++if HAVE_GNUTLS
++pkgconfiglib_DATA += libjwt-gnutls.pc
++endif
++endif
+diff --git a/libjwt/libjwt-gnutls.pc.in b/libjwt/libjwt-gnutls.pc.in
+new file mode 100644
+index 0000000..63962ee
+--- /dev/null
++++ b/libjwt/libjwt-gnutls.pc.in
+@@ -0,0 +1,12 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: @PACKAGE_NAME@
++Description: JWT C Library
++Version: @PACKAGE_VERSION@
++
++Cflags: -I${includedir}
++Libs: -L${libdir} -ljwt-gnutls
++Libs.private: @JANSSON_LIBS@ @GNUTLS_LIBS@
+diff --git a/libjwt/libjwt-ossl.pc.in b/libjwt/libjwt-ossl.pc.in
+new file mode 100644
+index 0000000..98c0ebe
+--- /dev/null
++++ b/libjwt/libjwt-ossl.pc.in
+@@ -0,0 +1,12 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: @PACKAGE_NAME@
++Description: JWT C Library
++Version: @PACKAGE_VERSION@
++
++Cflags: -I${includedir}
++Libs: -L${libdir} -ljwt-ossl
++Libs.private: @JANSSON_LIBS@ @OPENSSL_LIBS@
+diff --git a/libjwt/libjwt.pc.in b/libjwt/libjwt.pc.in
+index 0c81d36..0bb64f4 100644
+--- a/libjwt/libjwt.pc.in
++++ b/libjwt/libjwt.pc.in
+@@ -9,4 +9,4 @@ Version: @PACKAGE_VERSION@
+ 
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -ljwt
+-Libs.private: @JANSSON_LIBS@ @OPENSSL_LIBS@
++Libs.private: @JANSSON_LIBS@ @SSL_DEF_LIBS@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 6ca2a46..b64ad20 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -11,6 +11,14 @@ TESTS =			\
+ 	jwt_ec		\
+ 	jwt_validate
+ 
++if MULTI_SSL
++if HAVE_OPENSSL
++include ossl_tests.mk
++endif
++if HAVE_GNUTLS
++include gnutls_tests.mk
++endif
++endif
+ check_PROGRAMS = $(TESTS)
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/include
+diff --git a/tests/gnutls_tests.mk b/tests/gnutls_tests.mk
+new file mode 100644
+index 0000000..a6b4997
+--- /dev/null
++++ b/tests/gnutls_tests.mk
+@@ -0,0 +1,35 @@
++## for jwttest in $(jwttests)
++## do
++## TESTS += $(sslimpl)_$(jwttest)
++## $(sslimpl)_$(jwttest)_SOURCES = $(jwttest).c
++## $(sslimpl)_$(jwttest)_LDADD = -ljwt-$(sslimpl) $(CHECK_LIBS)
++## done
++
++TESTS += gnutls_jwt_new
++gnutls_jwt_new_SOURCES = jwt_new.c
++gnutls_jwt_new_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_grant
++gnutls_jwt_grant_SOURCES = jwt_grant.c
++gnutls_jwt_grant_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_header
++gnutls_jwt_header_SOURCES = jwt_header.c
++gnutls_jwt_header_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_dump
++gnutls_jwt_dump_SOURCES = jwt_dump.c
++gnutls_jwt_dump_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_encode
++gnutls_jwt_encode_SOURCES = jwt_encode.c
++gnutls_jwt_encode_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_rsa
++gnutls_jwt_rsa_SOURCES = jwt_rsa.c
++gnutls_jwt_rsa_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_rsa_pss
++gnutls_jwt_rsa_pss_SOURCES = jwt_rsa_pss.c
++gnutls_jwt_rsa_pss_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_ec
++gnutls_jwt_ec_SOURCES = jwt_ec.c
++gnutls_jwt_ec_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++TESTS += gnutls_jwt_validate
++gnutls_jwt_validate_SOURCES = jwt_validate.c
++gnutls_jwt_validate_LDADD = -ljwt-gnutls $(CHECK_LIBS)
++
+diff --git a/tests/ossl_tests.mk b/tests/ossl_tests.mk
+new file mode 100644
+index 0000000..83d0a99
+--- /dev/null
++++ b/tests/ossl_tests.mk
+@@ -0,0 +1,35 @@
++## for jwttest in $(jwttests)
++## do
++## TESTS += $(sslimpl)_$(jwttest)
++## $(sslimpl)_$(jwttest)_SOURCES = $(jwttest).c
++## $(sslimpl)_$(jwttest)_LDADD = -ljwt-$(sslimpl) $(CHECK_LIBS)
++## done
++
++TESTS += ossl_jwt_new
++ossl_jwt_new_SOURCES = jwt_new.c
++ossl_jwt_new_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_grant
++ossl_jwt_grant_SOURCES = jwt_grant.c
++ossl_jwt_grant_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_header
++ossl_jwt_header_SOURCES = jwt_header.c
++ossl_jwt_header_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_dump
++ossl_jwt_dump_SOURCES = jwt_dump.c
++ossl_jwt_dump_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_encode
++ossl_jwt_encode_SOURCES = jwt_encode.c
++ossl_jwt_encode_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_rsa
++ossl_jwt_rsa_SOURCES = jwt_rsa.c
++ossl_jwt_rsa_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_rsa_pss
++ossl_jwt_rsa_pss_SOURCES = jwt_rsa_pss.c
++ossl_jwt_rsa_pss_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_ec
++ossl_jwt_ec_SOURCES = jwt_ec.c
++ossl_jwt_ec_LDADD = -ljwt-ossl $(CHECK_LIBS)
++TESTS += ossl_jwt_validate
++ossl_jwt_validate_SOURCES = jwt_validate.c
++ossl_jwt_validate_LDADD = -ljwt-ossl $(CHECK_LIBS)
++

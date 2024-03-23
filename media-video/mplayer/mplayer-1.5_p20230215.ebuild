@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -145,7 +145,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dga? ( x11-base/xorg-proto )
-	dvb? ( virtual/linuxtv-dvb-headers )
+	dvb? ( sys-kernel/linux-headers )
 	X? ( x11-base/xorg-proto )
 	xinerama? ( x11-base/xorg-proto )
 	xscreensaver? ( x11-base/xorg-proto )
@@ -263,6 +263,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# undefined reference to `sse_int32_map_factor' etc
+	# https://bugs.gentoo.org/650458
+	# https://trac.mplayerhq.hu/ticket/2408
+	use libass && use cpu_flags_x86_sse4_1 && filter-lto
+
 	local myconf=()
 	local uses i
 
