@@ -1,0 +1,33 @@
+From e1516fcefe3dcc9710ae85cce0f536fd2d9fdcd6 Mon Sep 17 00:00:00 2001
+From: Fabio Cavallo <punes.development@gmail.com>
+Date: Sat, 23 Mar 2024 10:34:34 +0100
+Subject: [PATCH] Fixed compilation with FULLSCREEN_RESFREQ disabled (#388).
+
+--- a/src/core/emu.c
++++ b/src/core/emu.c
+@@ -43,11 +43,11 @@
+ #include "recent_roms.h"
+ #include "../../c++/crc/crc.h"
+ #include "gui.h"
++#include "nes20db.h"
+ #include "video/effects/pause.h"
+ #include "video/effects/tv_noise.h"
+ #if defined (FULLSCREEN_RESFREQ)
+ #include "video/gfx_monitor.h"
+-#include "nes20db.h"
+ #endif
+ 
+ #define RS_SCALE (1.0f / (1.0f + (float)RAND_MAX))
+--- a/src/gui/wdgOverlayUi.cpp
++++ b/src/gui/wdgOverlayUi.cpp
+@@ -34,9 +34,9 @@
+ #include "rewind.h"
+ #include "version.h"
+ #include "nes.h"
++#include "input/standard_controller.h"
+ #if defined (FULLSCREEN_RESFREQ)
+ #include "video/gfx_monitor.h"
+-#include "input/standard_controller.h"
+ #endif
+ 
+ void overlay_info_append_qstring(BYTE alignment, const QString &msg);
