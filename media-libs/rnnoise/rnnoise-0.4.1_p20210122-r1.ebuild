@@ -20,7 +20,7 @@ IUSE="doc"
 
 BDEPEND="
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 	)
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,15 +6,15 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="C++ MIME library designed to be easy to use and integrate, fast and efficient"
-HOMEPAGE="http://www.codesink.org/mimetic_mime_library.html"
-SRC_URI="http://www.codesink.org/download/${P}.tar.gz"
+HOMEPAGE="https://www.codesink.org/mimetic_mime_library.html"
+SRC_URI="https://www.codesink.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~loong ~ppc64 x86"
 IUSE="doc examples"
 
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/signed-char.patch"

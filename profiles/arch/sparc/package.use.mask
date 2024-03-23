@@ -1,6 +1,27 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-02-13)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is not keyworded here and currently fails tests (bug #924430).
+dev-qt/qtmultimedia:6 qml
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-15)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
+
 # Jaco Kroon <jaco@uls.co.za> (2024-01-09)
 # net-libs/pjproject[srtp] and net-misc/asterisk[srtp] depends on
 # net-libs/libsrtp which is -sparc.
@@ -44,14 +65,13 @@ dev-python/nbclient test
 dev-python/nbconvert test
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
 # Vulkan is not available on sparc.
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
-<dev-qt/qtwayland-5.15.11:5 vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
@@ -60,7 +80,7 @@ sys-apps/openrc s6
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
+dev-build/cmake gui
 
 # Rich Freeman <rich0@gentoo.org> (2023-09-13)
 # Tests require shellcheck which is not currently available
@@ -299,7 +319,6 @@ media-gfx/inkscape cdr visio wpg
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
 dev-python/werkzeug test
-dev-python/urllib3 test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-28)
 # Requires www-client/firefox which isn't available on sparc
@@ -418,10 +437,6 @@ dev-lang/spidermonkey jit
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-04-20)
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
-
-# Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
-# app-text/mupdf sparc keyword was dropped in bug #631970
-net-print/cups-filters pdf
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
@@ -644,7 +659,7 @@ net-vpn/tinc vde
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond

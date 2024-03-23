@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-6.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
@@ -31,7 +31,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	zlib? ( sys-libs/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
@@ -109,6 +109,9 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 PATCHES=("${WORKDIR}/patch")
+
+# Suppress false positive QA warnings #898304
+QA_CONFIG_IMPL_DECL_SKIP=( malloc_{set,get}_state MIN )
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 DOCS=(
 	ANNOUNCEMENT
@@ -99,6 +99,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/881107
+	# Seems to be fixed in git (1.4.9999)
+	filter-lto
+
 	local FLTK_INCDIR=${EPREFIX}/usr/include/fltk
 	local FLTK_LIBDIR=${EPREFIX}/usr/$(get_libdir)/fltk
 	FLTK_LIBDIRS+=${FLTK_LIBDIRS+:}${FLTK_LIBDIR}

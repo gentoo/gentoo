@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">sdk/kdiff3</remote-id>
 	</upstream>
 </pkgmetadata>

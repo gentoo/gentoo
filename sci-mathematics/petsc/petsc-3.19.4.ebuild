@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..11} pypy3 )
 
 inherit flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
@@ -41,8 +41,7 @@ DEPEND="
 	${PYTHON_DEPS}
 "
 BDEPEND="
-	dev-util/cmake
-	sys-apps/which
+	dev-build/cmake
 	virtual/pkgconfig
 "
 
@@ -93,6 +92,11 @@ petsc_select() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863260
+	# https://gitlab.com/petsc/petsc/-/issues/1560
+	filter-lto
+
 	# bug 548498
 	# PETSc runs mpi processes during configure that result in a sandbox
 	# violation by trying to open /proc/mtrr rw. This is not easy to

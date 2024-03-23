@@ -36,6 +36,10 @@ MIN_KERN_VER="3.2.0"
 # its seccomp filter!). Please double check this!
 MIN_PAX_UTILS_VER="1.3.3"
 
+# Minimum systemd version needed (which contains any new syscall changes for
+# its seccomp filter!). Please double check this!
+MIN_SYSTEMD_VER="254.9-r1"
+
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
@@ -47,7 +51,7 @@ fi
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
-IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -124,12 +128,13 @@ COMMON_DEPEND="
 	) )
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
+	!<sys-apps/systemd-${MIN_SYSTEMD_VER}
 	perl? ( dev-lang/perl )
 "
 
@@ -170,8 +175,12 @@ XFAIL_TEST_LIST=(
 	tst-system
 	tst-strerror
 	tst-strsignal
+
 	# Fails with certain PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
 	tst-sched1
+
+	# Fails regularly, unreliable
+	tst-valgrind-smoke
 )
 
 XFAIL_NSPAWN_TEST_LIST=(
@@ -503,8 +512,12 @@ setup_flags() {
 	# should not be a problem, but for glibc it matters as it is
 	# dealing with CET in ld.so. So if CET is supposed to be
 	# disabled for glibc, be explicit about it.
-	if (use amd64 || use x86) && ! use cet; then
-		append-flags '-fcf-protection=none'
+	if ! use cet; then
+		if use amd64 || use x86; then
+			append-flags '-fcf-protection=none'
+		elif use arm64; then
+			append-flags '-mbranch-protection=none'
+		fi
 	fi
 }
 
@@ -984,9 +997,8 @@ glibc_do_configure() {
 		*) myconf+=( libc_cv_ld_gnu_indirect_function=no ) ;;
 	esac
 
-	# Enable Intel Control-flow Enforcement Technology on amd64 if requested
-	case ${CTARGET} in
-		x86_64-*) myconf+=( $(use_enable cet) ) ;;
+	case ${ABI}-${CTARGET} in
+		amd64-x86_64-*|x32-x86_64-*-*-gnux32) myconf+=( $(use_enable cet) ) ;;
 		*) ;;
 	esac
 
@@ -1038,7 +1050,6 @@ glibc_do_configure() {
 		--libexecdir='$(libdir)'/misc/glibc
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
-		$(use_enable crypt)
 		$(use_multiarch || echo --disable-multi-arch)
 		$(use_enable systemtap)
 		$(use_enable nscd)
@@ -1194,7 +1205,6 @@ glibc_headers_configure() {
 		--host=${CTARGET_OPT:-${CTARGET}}
 		--with-headers=$(build_eprefix)$(alt_build_headers)
 		--prefix="$(host_eprefix)/usr"
-		$(use_enable crypt)
 		${EXTRA_ECONF}
 	)
 
@@ -1632,7 +1642,7 @@ pkg_preinst() {
 	# Keep around libcrypt so that Perl doesn't break when merging libxcrypt
 	# (libxcrypt is the new provider for now of libcrypt.so.{1,2}).
 	# bug #802207
-	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]" && ! has preserve-libs ${FEATURES}; then
+	if has_version "${CATEGORY}/${PN}[crypt]" && ! has preserve-libs ${FEATURES}; then
 		PRESERVED_OLD_LIBCRYPT=1
 		cp -p "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1)" "${T}/libcrypt$(get_libname 1)" || die
 	else

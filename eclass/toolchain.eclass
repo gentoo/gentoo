@@ -140,6 +140,11 @@ GCCMINOR=$(ver_cut 2 ${GCC_PV})
 # @DESCRIPTION:
 # GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
+# @ECLASS_VARIABLE: GCC_RUN_FIXINCLUDES
+# @INTERNAL
+# @DESCRIPTION:
+# Controls whether fixincludes should be used.
+GCC_RUN_FIXINCLUDES=0
 
 tc_use_major_version_only() {
 	local use_major_version_only=0
@@ -231,7 +236,7 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
-	IUSE+=" debug +cxx +nptl" TC_FEATURES+=( nptl )
+	IUSE+=" debug +cxx"
 	IUSE+=" +fortran" TC_FEATURES+=( fortran )
 	IUSE+=" doc hardened multilib objc"
 	IUSE+=" pgo"
@@ -253,8 +258,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" ada"
 	IUSE+=" vtv"
 	IUSE+=" jit"
-	tc_version_is_between 5.0 9 && IUSE+=" mpx"
-	IUSE+=" +pie +ssp +pch"
+	IUSE+=" +pie +ssp pch"
 
 	IUSE+=" systemtap" TC_FEATURES+=( systemtap )
 
@@ -329,7 +333,7 @@ fi
 
 if tc_has_feature systemtap ; then
 	# gcc needs sys/sdt.h headers on target
-	DEPEND+=" systemtap? ( dev-util/systemtap )"
+	DEPEND+=" systemtap? ( dev-debug/systemtap )"
 fi
 
 if tc_has_feature zstd ; then
@@ -338,7 +342,7 @@ if tc_has_feature zstd ; then
 fi
 
 if tc_has_feature valgrind ; then
-	BDEPEND+=" valgrind? ( dev-util/valgrind )"
+	BDEPEND+=" valgrind? ( dev-debug/valgrind )"
 fi
 
 # TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
@@ -356,7 +360,7 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	BDEPEND+=" d? ( || ( sys-devel/gcc[d(-)] <sys-devel/gcc-12[d(-)] ) )"
 fi
 
-PDEPEND=">=sys-devel/gcc-config-2.3"
+PDEPEND=">=sys-devel/gcc-config-2.11"
 
 #---->> S + SRC_URI essentials <<----
 
@@ -581,7 +585,7 @@ toolchain_src_prepare() {
 	setup_multilib_osdirnames
 
 	local actual_version=$(< "${S}"/gcc/BASE-VER)
-	if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
+	if ! tc_is_live && [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
 		eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
 		die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 	fi
@@ -673,6 +677,11 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DDEF_GENTOO_ZNOW"
 	fi
 
+	if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux-gnu* ]] ; then
+		einfo "Updating gcc to use x86-64 control flow protection by default ..."
+		hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
+	fi
+
 	if _tc_use_if_iuse hardened ; then
 		# Will add some hardened options as default, e.g. for gcc-12
 		# * -fstack-clash-protection
@@ -683,10 +692,6 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DGENTOO_FORTIFY_SOURCE_LEVEL=3"
 		# Add -D_GLIBCXX_ASSERTIONS
 		hardened_gcc_flags+=" -DDEF_GENTOO_GLIBCXX_ASSERTIONS"
-
-		if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
-			hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
-		fi
 
 		# Rebrand to make bug reports easier
 		BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
@@ -902,7 +907,7 @@ toolchain_src_configure() {
 		BUILD_CONFIG_TARGETS+=( bootstrap-lto )
 	fi
 
-	if tc_version_is_at_least 12 && _tc_use_if_iuse cet ; then
+	if tc_version_is_at_least 12 && _tc_use_if_iuse cet && [[ ${CTARGET} == x86_64-*-gnu* ]] ; then
 		BUILD_CONFIG_TARGETS+=( bootstrap-cet )
 	fi
 
@@ -1236,15 +1241,8 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse cet ; then
-		confgcc+=( $(use_enable cet) )
-	fi
-
-	if in_iuse cilk ; then
-		confgcc+=( $(use_enable cilk libcilkrts) )
-	fi
-
-	if in_iuse mpx ; then
-		confgcc+=( $(use_enable mpx libmpx) )
+		[[ ${CTARGET} == x86_64-*-gnu* ]] && confgcc+=( $(use_enable cet) )
+		[[ ${CTARGET} == aarch64-*-gnu* ]] && confgcc+=( $(use_enable cet standard-branch-protection) )
 	fi
 
 	if in_iuse systemtap ; then
@@ -1306,6 +1304,36 @@ toolchain_src_configure() {
 		)
 	fi
 
+	if tc_version_is_at_least 13.1 ; then
+		# Re-enable fixincludes for >= GCC 13 with older glibc
+		# https://gcc.gnu.org/PR107128
+		if ! is_crosscompile && use elibc_glibc && has_version "<sys-libs/glibc-2.38" ; then
+			GCC_RUN_FIXINCLUDES=1
+		fi
+
+		case ${CBUILD}-${CHOST}-${CTARGET} in
+			*i686-w64-mingw32*|*x86_64-w64-mingw32*)
+				# config/i386/t-cygming requires fixincludes (bug #925204)
+				GCC_RUN_FIXINCLUDES=1
+				;;
+			*mips*-sde-elf*)
+				# config/mips/t-sdemtk needs fixincludes too (bug #925204)
+				# It maps to mips*-sde-elf*, but only with --without-newlib.
+				if [[ ${confgcc} != *with-newlib* ]] ; then
+					GCC_RUN_FIXINCLUDES=1
+				fi
+				;;
+			*)
+				;;
+		esac
+
+		if [[ ${GCC_RUN_FIXINCLUDES} == 1 ]] ; then
+			confgcc+=( --enable-fixincludes )
+		else
+			confgcc+=( --disable-fixincludes )
+		fi
+	fi
+
 	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
@@ -1320,7 +1348,8 @@ toolchain_src_configure() {
 	# killing the 32bit builds which want /usr/lib.
 	export ac_cv_have_x='have_x=yes ac_x_includes= ac_x_libraries='
 
-	confgcc+=( "$@" ${EXTRA_ECONF} )
+	eval "local -a EXTRA_ECONF=(${EXTRA_ECONF})"
+	confgcc+=( "$@" "${EXTRA_ECONF[@]}" )
 
 	if ! is_crosscompile && ! tc-is-cross-compiler && [[ -n ${BUILD_CONFIG_TARGETS} ]] ; then
 		# e.g. ./configure --with-build-config='bootstrap-lto bootstrap-cet'
@@ -1357,6 +1386,7 @@ toolchain_src_configure() {
 		local confgcc_jit=(
 			"${confgcc[@]}"
 
+			--enable-lto
 			--disable-analyzer
 			--disable-bootstrap
 			--disable-cet
@@ -1372,7 +1402,6 @@ toolchain_src_configure() {
 			--disable-libssp
 			--disable-libstdcxx-pch
 			--disable-libvtv
-			--disable-lto
 			--disable-nls
 			--disable-objc-gc
 			--disable-systemtap
@@ -1721,7 +1750,7 @@ gcc_do_make() {
 		# The last known issues are with < GCC 4.9 or so, but it's easier
 		# to keep this bound somewhat fresh just to avoid problems. Ultimately,
 		# using not-O0 is just a build-time speed improvement anyway.
-		if tc-is-gcc && ver_test $(gcc-fullversion) -lt 10 ; then
+		if ! tc-is-gcc || ver_test $(gcc-fullversion) -lt 10 ; then
 			STAGE1_CFLAGS="-O0"
 		fi
 
@@ -1840,9 +1869,7 @@ toolchain_src_install() {
 	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete || die
 
-	# Re-enable fixincludes for >= GCC 13
-	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
-	if [[ ${GCCMAJOR} -lt 13 ]] ; then
+	if [[ ${GCC_RUN_FIXINCLUDES} == 0 ]] ; then
 		# We remove the generated fixincludes, as they can cause things to break
 		# (ncurses, openssl, etc).  We do not prevent them from being built, as
 		# in the following commit which we revert:
@@ -1984,6 +2011,8 @@ toolchain_src_install() {
 		rm "${D}${DATAPATH}"/info/dir || die
 	fi
 
+	docompress "${DATAPATH}"/{info,man}
+
 	# Prune empty dirs left behind
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
@@ -2002,8 +2031,6 @@ toolchain_src_install() {
 	# libgfortran.la: gfortran itself handles linkage correctly in the
 	# dynamic & static case (libgfortran.spec). bug #573302
 	# libgfortranbegin.la: Same as above, and it's an internal lib.
-	# libmpx.la: gcc itself handles linkage correctly (libmpx.spec).
-	# libmpxwrappers.la: See above.
 	# libitm.la: gcc itself handles linkage correctly (libitm.spec).
 	# libvtv.la: gcc itself handles linkage correctly.
 	# lib*san.la: Sanitizer linkage is handled internally by gcc, and they
@@ -2012,6 +2039,7 @@ toolchain_src_install() {
 		'(' \
 			-name libstdc++.la -o \
 			-name libstdc++fs.la -o \
+			-name libstdc++exp.la -o \
 			-name libsupc++.la -o \
 			-name libcc1.la -o \
 			-name libcc1plugin.la -o \
@@ -2020,8 +2048,6 @@ toolchain_src_install() {
 			-name 'libgomp-plugin-*.la' -o \
 			-name libgfortran.la -o \
 			-name libgfortranbegin.la -o \
-			-name libmpx.la -o \
-			-name libmpxwrappers.la -o \
 			-name libitm.la -o \
 			-name libvtv.la -o \
 			-name 'lib*san.la' \

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
@@ -97,9 +97,6 @@ src_prepare() {
 	sed -i -r \
 		-e 's:[[:space:]]?-(Werror|Os|Oz|falign-(functions|jumps|loops|labels)=1|fomit-frame-pointer)\>::g' \
 		Makefile.flags || die
-	#sed -i '/bbsh/s:^//::' include/applets.h
-	sed -i '/^#error Aborting compilation./d' applets/applets.c || die
-	use elibc_glibc && sed -i 's:-Wl,--gc-sections::' Makefile
 	sed -i \
 		-e "/^CROSS_COMPILE/s:=.*:= ${CHOST}-:" \
 		-e "/^AR\>/s:=.*:= $(tc-getAR):" \

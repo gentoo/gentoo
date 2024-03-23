@@ -28,7 +28,7 @@ RDEPEND="
 	virtual/libiconv"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? ( dev-lang/perl )"
 
 DOCS=( CREDITS KEYS NOTICE README )

@@ -32,7 +32,7 @@ RDEPEND=">=sys-libs/zlib-1.1.4
 	)"
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r4
-	>=app-alternatives/yacc-1.875
+	app-alternatives/yacc
 	${CATEGORY}/binutils-apple
 	>=dev-libs/mpfr-2.2.0_p10"
 PDEPEND="sys-libs/csu"
@@ -311,6 +311,8 @@ src_install() {
 	echo "INFOPATH=\"${EPREFIX}/usr/share/gcc-data/${CHOST}/${GCC_VERS}/info\"" >> ${gcc_envd_file}
 	echo "STDCXX_INCDIR=\"g++-v${GCC_VERS/\.*/}\"" >> ${gcc_envd_file}
 	is_crosscompile && echo "CTARGET=${CTARGET}" >> ${gcc_envd_file}
+
+	docompress /usr/share/gcc-data/${CTARGET}/${GCC_VERS}/{man,info}
 
 	# Move <cxxabi.h> to compiler-specific directories
 	[[ -f ${D}${STDCXX_INCDIR}/cxxabi.h ]] && \

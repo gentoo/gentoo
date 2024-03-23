@@ -1,8 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/jakartaee/mail-api/archive/2.0.1.tar.gz --slot 0 --keywords "~amd64" --ebuild jakarta-mail-2.0.1.ebuild
 
 EAPI=8
 
@@ -15,30 +12,21 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Implementation of the Jakarta Mail API"
 HOMEPAGE="https://github.com/jakartaee/mail-api"
 SRC_URI="https://github.com/jakartaee/mail-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/mail-api-${PV}/mail"
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
-# Common dependencies
-# POM: pom.xml
-# com.sun.activation:jakarta.activation:2.0.1 -> >=dev-java/jakarta-activation-2.0.1:2
-
 CP_DEPEND="dev-java/jakarta-activation:2"
 
-DEPEND="
-	>=virtual/jdk-11:*
-	${CP_DEPEND}
-"
+DEPEND="${CP_DEPEND}
+	>=virtual/jdk-11:*"
 
-RDEPEND="
-	>=virtual/jre-1.8:*
-	${CP_DEPEND}
-"
+RDEPEND="${CP_DEPEND}
+	>=virtual/jre-1.8:*"
 
 DOCS=( ../{CONTRIBUTING,NOTICE,README}.md )
-
-S="${WORKDIR}/mail-api-${PV}/mail"
 
 JAVA_ENCODING="iso-8859-1"
 
@@ -56,15 +44,25 @@ src_prepare() {
 }
 
 src_test() {
+	# test failure with jdk:21
+	# 1) testCheckAccessPresent(com.sun.mail.util.logging.LogManagerPropertiesTest)
+	# java.lang.UnsupportedOperationException:
+	# The Security Manager is deprecated and will be removed in a future release
+	# 	at java.base/java.lang.System.setSecurityManager(System.java:429)
+	# 	at com.sun.mail.util.logging.LogManagerPropertiesTest.testCheckAccessPresent(LogManagerPropertiesTest.java:89)
+	# https://github.com/jakartaee/mail-api/pull/704#issuecomment-1911924741
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 21; then
+		eapply "${FILESDIR}/jakarta-mail-2.0.1-LogManagerPropertiesTest.patch"
+	fi
 	pushd src/test/java || die
 		# Selection according to 137,138 pom.xml
-		# This one does not run because of
+		# MailHandlerTest does not run because of
 		# "java.io.IOException: Permission denied"
 		# excluding it costs 141 tests.
-		# 1) com.sun.mail.util.logging.MailHandlerTest
 		local JAVA_TEST_RUN_ONLY=$(find * \
-			\( -wholename "**/*TestSuite.java" \
-			-o -wholename "**/*Test.java" \) \
+			\( -path "**/*TestSuite.java" \
+			-o -path "**/*Test.java" \) \
 			! -name "MailHandlerTest.java" \
 			)
 		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"

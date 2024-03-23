@@ -3,25 +3,28 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="Introspection system for GObject-based libraries"
-HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
+HOMEPAGE="https://gi.readthedocs.io"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 IUSE="doctool gtk-doc test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 # virtual/pkgconfig needed at runtime, bug #505408
 RDEPEND="
 	>=dev-libs/gobject-introspection-common-${PV}
 	>=dev-libs/glib-2.$(($(ver_cut 2) - 1)).0:2
 	dev-libs/libffi:=
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' 3.12)
 	doctool? (
 		$(python_gen_cond_dep '
 			dev-python/mako[${PYTHON_USEDEP}]
@@ -49,6 +52,8 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-tests-py312.patch" )
 
 pkg_setup() {
 	python-single-r1_pkg_setup

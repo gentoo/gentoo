@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2022-02-13)
@@ -11,10 +11,6 @@ mail-client/mutt gsasl
 # Not yet tested so we may be able to drop this later.
 dev-lang/ruby systemtap
 
-# Fabian Groffen <grobian@gentoo.org> (2020-06-07)
-# installing kernels has no business in Prefix
-sys-apps/debianutils installkernel
-
 # Michael Haubenwallner <haubi@gentoo.org> (2019-05-02)
 # gold is linux only, and is required by cxx
 sys-devel/binutils gold default-gold
@@ -26,7 +22,7 @@ net-libs/libsoup gssapi samba vala
 net-libs/glib-networking gnome libproxy
 net-misc/wget metalink uuid
 sys-apps/dbus selinux elogind systemd
-app-doc/doxygen clang doxysearch qt5 gui
+app-text/doxygen clang doxysearch gui
 app-text/ghostscript-gpl cups
 app-text/texlive-core cjk
 

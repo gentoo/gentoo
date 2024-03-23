@@ -49,7 +49,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=sys-devel/automake-1.13.4
+	>=dev-build/automake-1.13.4
 	>=sys-devel/gettext-0.18.2
 	virtual/pkgconfig
 	dev-util/gdbus-codegen

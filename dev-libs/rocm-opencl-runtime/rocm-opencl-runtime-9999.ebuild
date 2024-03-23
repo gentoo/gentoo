@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND=">=dev-libs/rocr-runtime-5.3
 	media-libs/mesa[-opencl]"
 DEPEND="${RDEPEND}
 	dev-util/opencl-headers"
-BDEPEND=">=dev-util/rocm-cmake-5.3
+BDEPEND=">=dev-build/rocm-cmake-5.3
 	media-libs/glew
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
 	"
@@ -59,6 +59,17 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/856088
+	# https://github.com/ROCm/clr/issues/64
+	#
+	# Do not trust it for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	# Fix ld.lld linker error: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/155
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# Reported upstream: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/120
 	append-cflags -fcommon
 

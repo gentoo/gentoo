@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A cross-platform network library designed for games"
 HOMEPAGE="http://www.hawksoft.com/hawknl/"
@@ -20,6 +20,10 @@ PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
 src_configure() {
 	tc-export CC
+
+	# bug #855311
+	append-flags -fno-strict-aliasing
+	filter-lto
 }
 
 src_compile() {

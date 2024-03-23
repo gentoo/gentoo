@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,7 +96,7 @@ RDEPEND="${DEPEND_LCD_DEVICES}"
 DEPEND="
 	${RDEPEND}
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		app-text/xmlto
 	)
 	nfs? ( net-fs/nfs-utils )

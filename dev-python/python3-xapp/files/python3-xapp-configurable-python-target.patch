@@ -1,0 +1,31 @@
+From 70966ad200bf2a5e5769a2ac5f1d4da0a4a3aa51 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Tue, 2 Jan 2024 22:19:46 -0500
+Subject: [PATCH] Make python installation configurable for distro packaging.
+
+---
+ meson.build       | 2 +-
+ meson_options.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 meson_options.txt
+
+diff --git a/meson.build b/meson.build
+index a9b67ca..a930803 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,7 +1,7 @@
+ project('python-xapp', version: '2.4.1', meson_version: '>=0.47.0')
+ 
+ pymod = import('python')
+-python3 = pymod.find_installation('python3')
++python3 = pymod.find_installation(get_option('python_target'))
+ 
+ subdir('xapp')
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+new file mode 100644
+index 0000000..689a9c9
+--- /dev/null
++++ b/meson_options.txt
+@@ -0,0 +1 @@
++option('python_target', type: 'string', value: 'python3', description: 'Python installation to target')

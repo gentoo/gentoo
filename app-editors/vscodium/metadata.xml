@@ -13,6 +13,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="egl">Use EGL platform, enables smooth rending in high refresh rate monitors on X11/Xwayland</flag>
+		<flag name="wayland">Run in wayland mode under wayland sessions, xwayland otherwise. This flag doesn't affect x11 sessions.</flag>
+	</use>
 	<longdescription>
 		Microsoft’s vscode source code is open source (MIT-licensed), but the product available for download (Visual Studio Code) is licensed under the Microsoft-vscode license (a copy can be found in the licenses folder of your gentoo repository) and contains telemetry/tracking. The VSCodium project exists so that you don’t have to download+build from source. This project includes special build scripts that clone Microsoft’s vscode repo, run the build commands, and upload the resulting binaries for you to GitHub releases. These binaries are licensed under the MIT license. Telemetry is disabled.
 	</longdescription>

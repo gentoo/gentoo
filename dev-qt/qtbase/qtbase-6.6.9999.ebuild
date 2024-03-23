@@ -8,7 +8,7 @@ inherit flag-o-matic qt6-build toolchain-funcs
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 declare -A QT6_IUSE=(
@@ -167,6 +167,8 @@ src_configure() {
 		-DINSTALL_SYSCONFDIR="${QT6_SYSCONFDIR}"
 		-DINSTALL_TRANSLATIONSDIR="${QT6_TRANSLATIONDIR}"
 
+		-DQT_UNITY_BUILD=ON # ~30% faster build, affects other dev-qt/* too
+
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)
 		$(qt_feature udev libudev)
@@ -313,7 +315,7 @@ src_test() {
 		tst_qimagereader
 		tst_qimagewriter
 		tst_qpluginloader
-		tst_quuid
+		tst_quuid # >=6.6.2 had related fixes, needs retesting
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '

@@ -21,19 +21,19 @@ BDEPEND="dev-util/patchelf"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
+	dev-debug/gdb
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/wayland
-	dev-util/cmake
+	dev-build/cmake
 	app-alternatives/ninja
 	media-libs/alsa-lib
 	media-libs/freetype:2
 	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
-	sys-devel/gdb
 	sys-libs/zlib
 	x11-libs/cairo
 	x11-libs/libdrm

@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome.org meson python-any-r1 vala xdg
+inherit flag-o-matic gnome.org meson python-any-r1 vala xdg
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91"      # vte_api_version in meson.build
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
@@ -69,6 +69,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
+	filter-lto
+
 	local emesonargs=(
 		-Da11y=true
 		$(meson_use debug debugg)

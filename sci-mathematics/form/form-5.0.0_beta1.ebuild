@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	devref? ( dev-texlive/texlive-latexrecommended )
 	doc? ( dev-texlive/texlive-latexrecommended )
-	doxygen? ( app-doc/doxygen )
+	doxygen? ( app-text/doxygen )
 	emacs? ( app-editors/emacs:* )"
 
 SITEFILE="64${PN}-gentoo.el"

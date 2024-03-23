@@ -17,13 +17,13 @@ SRC_URI="https://gitlab.com/drobilla/sphinxygen/-/archive/v${PV}/${PN}-v${PV}.ta
 
 SLOT="0"
 LICENSE="ISC"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 S="${WORKDIR}/${PN}-v${PV}"
 
 DEPEND="
-	app-doc/doxygen
+	app-text/doxygen
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ GENQMAIL_PV=20200817
 QMAIL_SPP_PV=0.42
 
 QMAIL_TLS_PV=20200107
-QMAIL_TLS_F=notqmail-1.08-tls-${QMAIL_TLS_PV}.patch
+QMAIL_TLS_F=notqmail-1.08-tls_auth-${QMAIL_TLS_PV}.patch
 
 QMAIL_BIGTODO_F=notqmail-1.08-big-todo.patch
 

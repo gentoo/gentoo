@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
 HOMEPAGE="https://www.bulletphysics.com/"
@@ -25,7 +25,7 @@ RDEPEND="
 	tbb? ( <dev-cpp/tbb-2021.4.0:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.85-soversion.patch )
 
@@ -54,6 +54,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror-strict-aliasing
+	# https://bugs.gentoo.org/863275
+	# https://github.com/bulletphysics/bullet3/issues/4590
+	#
+	# Do not trust with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_CPU_DEMOS=OFF
 		-DBUILD_OPENGL3_DEMOS=OFF

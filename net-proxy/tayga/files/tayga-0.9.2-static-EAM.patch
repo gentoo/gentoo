@@ -4,7 +4,7 @@ Description: Support SIIT-DC styled EAM static maps
  .
 Author: Benda Xu <heroxbd@gentoo.org>
 Forwarded: Nathan Lutchansky <lutchann@litech.org>
-Last-Update: 2018-12-28
+Last-Update: 2024-01-09
 
 --- a/conffile.c
 +++ b/conffile.c
@@ -17,7 +17,7 @@ Last-Update: 2018-12-28
 +	unsigned int prefix4 = 32;
 +	if (slash) {
 +		prefix4 = atoi(slash+1);
-+		slash[0] = NULL;
++		slash[0] = '\0';
 +	}
 +
  	if (!inet_pton(AF_INET, args[0], &m->map4.addr)) {
@@ -33,7 +33,7 @@ Last-Update: 2018-12-28
 +	slash = strchr(args[1], '/');
 +	if (slash) {
 +		prefix6 = atoi(slash+1);
-+		slash[0] = NULL;
++		slash[0] = '\0';
 +	}
 +
 +	if ((32 - prefix4) != (128 - prefix6)) {

@@ -1,0 +1,42 @@
+https://git.openldap.org/openldap/openldap/-/commit/de89b06b031537fb2d14a532d79f7b0772fc1700
+From: =?UTF-8?q?Ond=C5=99ej=20Kuzn=C3=ADk?= <ondra@mistotebe.net>
+Date: Thu, 27 Jul 2023 11:19:20 +0100
+Subject: [PATCH] ITS#10074 Fix type mismatches in lloadd
+
+--- a/servers/lloadd/libevent_support.c
++++ b/servers/lloadd/libevent_support.c
+@@ -131,6 +131,12 @@ lload_libevent_cond_timedwait(
+     return ldap_pvt_thread_cond_wait( cond, mutex );
+ }
+ 
++unsigned long
++lload_libevent_thread_self( void )
++{
++    return (unsigned long)ldap_pvt_thread_self();
++}
++
+ int
+ lload_libevent_init( void )
+ {
+@@ -152,7 +158,7 @@ lload_libevent_init( void )
+ 
+     evthread_set_lock_callbacks( &cbs );
+     evthread_set_condition_callbacks( &cond_cbs );
+-    evthread_set_id_callback( ldap_pvt_thread_self );
++    evthread_set_id_callback( lload_libevent_thread_self );
+     return 0;
+ }
+ 
+--- a/servers/lloadd/module_init.c
++++ b/servers/lloadd/module_init.c
+@@ -151,7 +151,6 @@ lload_back_initialize( BackendInfo *bi )
+ {
+     bi->bi_flags = SLAP_BFLAG_STANDALONE;
+     bi->bi_open = lload_back_open;
+-    bi->bi_config = config_generic_wrapper;
+     bi->bi_pause = lload_pause_cb;
+     bi->bi_unpause = lload_unpause_cb;
+     bi->bi_close = lload_back_close;
+-- 
+GitLab
+

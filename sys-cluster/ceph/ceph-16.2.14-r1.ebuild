@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 LUA_COMPAT=( lua5-3 )
 
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -11,14 +11,13 @@ CMAKE_MAKEFILE_GENERATOR=emake
 inherit check-reqs bash-completion-r1 cmake python-r1 flag-o-matic \
 		lua-single udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
-SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
-
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="https://ceph.com/"
+SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
 
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
@@ -102,13 +101,13 @@ BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
 	app-alternatives/cpio
-	>=dev-util/cmake-3.5.0
+	dev-debug/valgrind
+	>=dev-build/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
 	dev-util/ragel
-	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/grep
 	sys-apps/util-linux
@@ -161,7 +160,7 @@ RDEPEND="
 		diskprediction? (
 			>=dev-python/scipy-1.4.0[${PYTHON_USEDEP}]
 		)
-		sci-libs/scikit-learn[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 	selinux? ( sec-policy/selinux-ceph )

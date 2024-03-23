@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">LizardByte/Sunshine</remote-id>
+		<bugs-to>https://bugs.gentoo.org</bugs-to>
+	</upstream>
+	<use>
+		<flag name="cuda">Enable accelerated video encoding on NVIDIA hardware</flag>
+		<flag name="libdrm">Enable video encoding via <pkg>x11-libs/libdrm</pkg></flag>
+		<flag name="svt-av1">Enables software AV1 encoding via <pkg>media-libs/svt-av1</pkg></flag>
+		<flag name="trayicon">Enable system tray icon</flag>
+		<flag name="x264">Enable software H.264 encoding via <pkg>media-libs/x264</pkg></flag>
+		<flag name="x265">Enable software HEVC encoding via <pkg>media-libs/x265</pkg></flag>
+	</use>
+</pkgmetadata>

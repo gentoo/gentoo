@@ -5,6 +5,11 @@
 		<email>sci-biology@gentoo.org</email>
 		<name>Gentoo Biology Project</name>
 	</maintainer>
+	<use>
+		<flag name="boost">Depend on <pkg>dev-libs/boost</pkg> for make.contigs to read .gz compressed files.</flag>
+		<flag name="gsl">Use <pkg>sci-libs/gsl</pkg> to support diversity estimates for estimiator.single.</flag>
+		<flag name="hdf5">Support Biom format 2.0 for the biom.info command via <pkg>sci-libs/hdf5</pkg>.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">mothur/mothur</remote-id>
 	</upstream>

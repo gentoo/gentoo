@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,13 +59,14 @@ RDEPEND="lua_single_target_luajit? ( ${LUA_DEPS} )
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 	)
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.0-no_upstream_optflags.patch
+	"${FILESDIR}"/${PN}-5.8.0-include_algorithm.patch
 )
 
 src_prepare() {

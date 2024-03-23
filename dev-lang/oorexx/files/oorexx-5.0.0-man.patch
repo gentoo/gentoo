@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1791,13 +1791,13 @@ install(PROGRAMS ${CMAKE_SAMPLES_OUTPUT_DIRECTORY}/rexxcps.rex COMPONENT Samples
+ 
+ if (NOT WIN32)
+    macro (add_manpage name cat)
+-      add_custom_command(OUTPUT ${name}.${cat}.gz
+-              COMMAND gzip -c
++      add_custom_command(OUTPUT ${name}.${cat}
++              COMMAND cp
+               ${CMAKE_CURRENT_SOURCE_DIR}/${build_platform_dir}/${name}.${cat}
+-              > ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${name}.${cat}.gz
++              ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${name}.${cat}
+               DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${build_platform_dir}/${name}.${cat})
+-      add_custom_target(${name}_man ALL DEPENDS ${name}.${cat}.gz)
+-      install(FILES ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${name}.${cat}.gz
++      add_custom_target(${name}_man ALL DEPENDS ${name}.${cat})
++      install(FILES ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${name}.${cat}
+           DESTINATION ${INSTALL_MAN_DIR}/man${cat}
+           PERMISSIONS OWNER_READ GROUP_READ WORLD_READ OWNER_WRITE)
+    endmacro (add_manpage)

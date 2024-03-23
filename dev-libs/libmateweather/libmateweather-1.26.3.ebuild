@@ -9,7 +9,7 @@ inherit mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="MATE library to access weather information from online services"
@@ -34,9 +34,9 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/libtool-2.2.6:2
+	>=dev-build/libtool-2.2.6:2
 	virtual/pkgconfig
 "
 

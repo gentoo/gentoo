@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,12 +15,18 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? (
+BDEPEND="
+	test? (
 		dev-util/cmocka
 		net-libs/socket_wrapper
-	)"
+	)
+"
 
-# Work around a problem with >=dev-util/cmake-3.3.0 (bug #558340)
+PATCHES=(
+	"${FILESDIR}"/${P}-cmocka-cmake.patch
+)
+
+# Work around a problem with >=dev-build/cmake-3.3.0 (bug #558340)
 # Because of this we cannot use cmake-multilib_src_configure() here.
 multilib_src_configure() {
 	local mycmakeargs=(

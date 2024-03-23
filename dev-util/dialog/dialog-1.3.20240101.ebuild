@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0/15"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="examples minimal nls unicode"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r5:=[unicode(+)?]"
@@ -25,7 +25,7 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	!minimal? ( sys-devel/libtool )
+	!minimal? ( dev-build/libtool )
 	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1 multiprocessing
+inherit flag-o-matic fortran-2 distutils-r1 multiprocessing
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="
@@ -63,7 +63,7 @@ BDEPEND="
 	>=dev-python/cython-0.29.35[${PYTHON_USEDEP}]
 	>=dev-python/meson-python-0.12.1[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.10.4[${PYTHON_USEDEP}]
-	>=dev-util/meson-1.1.0
+	>=dev-build/meson-1.1.0
 	!kernel_Darwin? ( dev-util/patchelf )
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
@@ -87,6 +87,9 @@ src_unpack() {
 }
 
 python_configure_all() {
+	# https://github.com/scipy/scipy/pull/19857
+	# Fixed in 1.13.0
+	filter-lto
 	DISTUTILS_ARGS=(
 		-Dblas=blas
 		-Dlapack=lapack

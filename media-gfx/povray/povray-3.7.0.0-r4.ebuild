@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ DEPEND="
 	X? ( media-libs/libsdl )"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	sys-devel/autoconf-archive"
+	dev-build/autoconf-archive"
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
@@ -90,6 +90,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859784
+	# https://github.com/POV-Ray/povray/issues/458
+	# Upstream activity is dead for 3 years now, so don't hold
+	# your breath for a fix.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Fixes bug 71255
 	if [[ $(get-flag march) == k6-2 ]]; then
 		filter-flags -fomit-frame-pointer

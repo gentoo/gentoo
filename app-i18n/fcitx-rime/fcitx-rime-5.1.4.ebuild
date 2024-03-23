@@ -12,9 +12,10 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/fcitx5-rime/fcitx5-rime-${PV}.tar.
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 DEPEND="
+	!app-i18n/fcitx-rime:4
 	>=app-i18n/fcitx-5.1.2:5
 	app-i18n/librime
 	app-i18n/rime-data

@@ -1,0 +1,5 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Options to pass to ebusd (run "ebusd --help" for more info)
+EBUSD_OPTS="--scanconfig"

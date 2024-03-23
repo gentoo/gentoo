@@ -1,0 +1,26 @@
+From 03bc2732826443328550358ba8f2c79195922bc8 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Wed, 7 Feb 2024 14:55:38 -0600
+Subject: [PATCH] configure: Change mistaken += to =
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 771004b..0f1457e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -540,7 +540,7 @@ and submitting patches upstream!])
+ # Rather than nesting these and making them ugly just use a counter.
+ AX_CHECK_COMPILE_FLAG([-fdata-sections], [strip=y])
+ AX_CHECK_COMPILE_FLAG([-ffunction-sections], [strip="y$strip"])
+-AX_CHECK_LINK_FLAG([[-Wl,--gc-sections]], [strip+="y$strip"])
++AX_CHECK_LINK_FLAG([[-Wl,--gc-sections]], [strip="y$strip"])
+ 
+ AS_IF([test x"$strip" = xyyy], [
+   EXTRA_CFLAGS="$EXTRA_CFLAGS -fdata-sections -ffunction-sections"
+-- 
+2.43.0
+

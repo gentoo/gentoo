@@ -5,4 +5,7 @@
     <email>toolchain@gentoo.org</email>
     <name>Gentoo Toolchain Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="savannah">src-highlite</remote-id>
+  </upstream>
 </pkgmetadata>

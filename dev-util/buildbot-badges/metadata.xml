@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dolsen@gentoo.org</email>
-		<name>Brian Dolbec</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>zorry@gentoo.org</email>
 		<name>Magnus Granberg</name>
 	</maintainer>
@@ -20,7 +16,7 @@
 			<email>devel@buildbot.net</email>
 			<name>Developers List</name>
 		</maintainer>
-		<remote-id type="pypi">buildbot-grid-view</remote-id>
+		<remote-id type="pypi">buildbot-badges</remote-id>
 		<remote-id type="github">buildbot/buildbot</remote-id>
 	</upstream>
 </pkgmetadata>

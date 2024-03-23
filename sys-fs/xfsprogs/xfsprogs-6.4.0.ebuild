@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic systemd usr-ldscript
+inherit flag-o-matic systemd usr-ldscript toolchain-funcs
 
 DESCRIPTION="XFS filesystem utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/ https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/"
@@ -60,6 +60,9 @@ src_configure() {
 	# Avoid automagic on libdevmapper (bug #709694)
 	export ac_cv_search_dm_task_create=no
 
+	# bug 903611
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# Build fails with -O3 (bug #712698)
 	replace-flags -O3 -O2
 
@@ -76,7 +79,7 @@ src_configure() {
 		$(use_enable libedit editline)
 	)
 
-	if is-flagq -flto ; then
+	if tc-is-lto ; then
 		myconf+=( --enable-lto )
 	else
 		myconf+=( --disable-lto )

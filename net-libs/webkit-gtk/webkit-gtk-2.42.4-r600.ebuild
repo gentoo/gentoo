@@ -15,7 +15,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="6/0" # soname version of libwebkit2gtk-6.0
-KEYWORDS="~amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
 
 IUSE="aqua avif examples gamepad keyring +gstreamer +introspection pdf +jpeg2k jpegxl +jumbo-build lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
@@ -75,7 +75,7 @@ RDEPEND="
 
 	dev-libs/hyphen
 	jpeg2k? ( >=media-libs/openjpeg-2.2.0:2= )
-	jpegxl? ( >=media-libs/libjxl-0.7.0 )
+	jpegxl? ( >=media-libs/libjxl-0.7.0:= )
 	avif? ( >=media-libs/libavif-0.9.0:= )
 	lcms? ( media-libs/lcms:2 )
 
@@ -117,6 +117,8 @@ BDEPEND="
 	virtual/perl-Data-Dumper
 	virtual/perl-Carp
 	virtual/perl-JSON-PP
+
+	wayland? ( dev-util/wayland-scanner )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -154,6 +156,7 @@ src_prepare() {
 
 	# Fix USE=-jumbo-build compilation on arm64
 	eapply "${FILESDIR}"/2.42.1-arm64-non-jumbo-fix.patch
+	eapply "${FILESDIR}"/2.42.3-arm64-non-jumbo-fix-925621.patch
 	# Fix assert failure on some machines, bug #920704
 	eapply "${FILESDIR}"/2.42.4-wasm-assert-fix.patch
 }

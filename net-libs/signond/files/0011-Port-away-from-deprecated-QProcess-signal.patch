@@ -1,0 +1,30 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From c8ad98249af541514ff7a81634d3295e712f1a39 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 17:15:00 +0200
+Subject: [PATCH 11/11] Port away from deprecated QProcess signal
+
+---
+ src/signond/pluginproxy.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/signond/pluginproxy.cpp b/src/signond/pluginproxy.cpp
+index 582aef4..2b9b28d 100644
+--- a/src/signond/pluginproxy.cpp
++++ b/src/signond/pluginproxy.cpp
+@@ -99,8 +99,9 @@ PluginProxy::PluginProxy(QString type, QObject *parent):
+      */
+     connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)),
+             this, SLOT(onExit(int, QProcess::ExitStatus)));
+-    connect(m_process, SIGNAL(error(QProcess::ProcessError)),
+-            this, SLOT(onError(QProcess::ProcessError)));
++
++    connect(m_process, &PluginProcess::errorOccurred,
++            this, &PluginProxy::onError);
+ }
+ 
+ PluginProxy::~PluginProxy()
+-- 
+2.43.0
+

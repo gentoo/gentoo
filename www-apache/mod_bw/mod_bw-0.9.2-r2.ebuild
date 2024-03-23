@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-BDEPEND="sys-devel/libtool"
+BDEPEND="dev-build/libtool"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.2-apache24.patch

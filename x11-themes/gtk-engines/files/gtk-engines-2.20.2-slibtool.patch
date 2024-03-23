@@ -1,4 +1,4 @@
-This fixes build with sys-devel/slibtool
+This fixes build with dev-build/slibtool
 
 --- gtk-engines-2.20.2/configure.ac
 +++ gtk-engines-2.20.2/configure.ac

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,12 +35,12 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
+	test? ( x11-base/xorg-proto )
 "
 # Tests are run under virtx
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? (
 		dev-libs/check
 		x11-libs/gtk+:3[X]

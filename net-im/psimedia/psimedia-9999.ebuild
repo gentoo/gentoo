@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="extras"
 
-BDEPEND="sys-devel/qconf"
+BDEPEND="dev-build/qconf"
 DEPEND="
 	dev-libs/glib
 	dev-qt/qtcore:5

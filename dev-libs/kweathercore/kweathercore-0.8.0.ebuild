@@ -7,14 +7,14 @@ ECM_NONGUI="true"
 ECM_QTHELP="true"
 ECM_TEST="true"
 KFMIN=5.245.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm kde.org
 
 DESCRIPTION="Library for retrieval of weather information including forecasts and alerts"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64"
 fi
 LICENSE="LGPL-2+"
 SLOT="6"

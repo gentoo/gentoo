@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ RDEPEND="
 	java? ( virtual/jre:1.8 )
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	java? ( virtual/jdk:1.8 )"
 
 PATCHES=(

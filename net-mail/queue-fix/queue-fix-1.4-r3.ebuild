@@ -8,7 +8,7 @@ inherit fixheadtails toolchain-funcs
 DESCRIPTION="Qmail Queue Repair Application with support for big-todo"
 HOMEPAGE="http://www.netmeridian.com/e-huss/"
 SRC_URI="http://www.netmeridian.com/e-huss/${P}.tar.gz
-	mirror://qmail/queue-fix-todo.patch"
+	http://qmail.org/queue-fix-todo.patch"
 
 LICENSE="all-rights-reserved public-domain" # includes code from qmail
 SLOT="0"

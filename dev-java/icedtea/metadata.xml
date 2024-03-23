@@ -5,10 +5,6 @@
 		<email>gnu_andrew@member.fsf.org</email>
 		<name>Andrew John Hughes</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 		<name>Java</name>

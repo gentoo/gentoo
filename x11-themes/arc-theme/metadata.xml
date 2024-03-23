@@ -5,10 +5,6 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">jnsh/arc-theme</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ RDEPEND="dev-libs/jsoncpp:0=
 	opencv? ( >=media-libs/opencv-4.5.2:=[contrib,contribdnn] )
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )
+BDEPEND="doc? ( app-text/doxygen )
 	python? ( dev-lang/swig )
 	test? (
 		dev-cpp/catch:0

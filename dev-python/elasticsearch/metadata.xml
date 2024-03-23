@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<doc>https://elasticsearch-py.readthedocs.io/</doc>
 		<remote-id type="github">elastic/elasticsearch-py</remote-id>
 		<remote-id type="pypi">elasticsearch</remote-id>
 	</upstream>

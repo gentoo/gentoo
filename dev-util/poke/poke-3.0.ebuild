@@ -12,8 +12,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/poke.git"
 	REGEN_BDEPEND="
-		>=sys-devel/autoconf-2.62
-		>=sys-devel/automake-1.16
+		>=dev-build/autoconf-2.62
+		>=dev-build/automake-1.16
 		sys-apps/gawk
 		sys-apps/help2man
 		sys-apps/texinfo

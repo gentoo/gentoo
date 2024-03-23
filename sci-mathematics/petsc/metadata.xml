@@ -21,4 +21,7 @@
 		<flag name="sparse">Use suitesparse (<pkg>sci-libs/suitesparse</pkg>) including cholmod (<pkg>sci-libs/cholmod</pkg>) for sparse factorization</flag>
 		<flag name="superlu">Use superlu (<pkg>sci-libs/superlu</pkg>) for preconditioning</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">petsc/petsc</remote-id>
+	</upstream>
 </pkgmetadata>

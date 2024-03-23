@@ -10,6 +10,6 @@
 		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
 	</use>
 	<upstream>
-		<remote-id type="freedesktop-gitlab">polkit/polkit</remote-id>
+		<remote-id type="github">polkit-org/polkit</remote-id>
 	</upstream>
 </pkgmetadata>

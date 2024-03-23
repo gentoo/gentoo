@@ -13,6 +13,5 @@ gnome-extra/gnome-user-share
 gnome-extra/office-runner
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
-sys-kernel/installkernel-systemd
 sys-process/systemd-cron
 www-misc/profile-sync-daemon

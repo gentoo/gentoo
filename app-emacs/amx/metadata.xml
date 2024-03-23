@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/DarwinAwardWinner/amx/issues/</bugs-to>
     <remote-id type="github">DarwinAwardWinner/amx</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

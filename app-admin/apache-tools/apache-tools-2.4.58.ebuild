@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/apr-1.5.0:1=
 	kernel_linux? ( sys-apps/util-linux )
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
-	sys-devel/libtool"
+	dev-build/libtool"
 BDEPEND="
 	virtual/pkgconfig
 "

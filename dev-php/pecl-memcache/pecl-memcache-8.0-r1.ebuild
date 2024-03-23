@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,7 +28,7 @@ RESTRICT='test'
 PATCHES=( "${FILESDIR}/8.0-patches-20211123.patch" )
 
 src_prepare() {
-	if use php_targets_php8-0 || use php_targets_php8-1 ; then
+	if use php_targets_php8-1 ; then
 		php-ext-source-r3_src_prepare
 	else
 		default
@@ -36,14 +36,14 @@ src_prepare() {
 }
 
 src_configure() {
-	if use php_targets_php8-0 || use php_targets_php8-1 ; then
+	if use php_targets_php8-1 ; then
 		local PHP_EXT_ECONF_ARGS=( --enable-memcache --with-zlib-dir="${EPREFIX}/usr" $(use_enable session memcache-session) )
 		php-ext-source-r3_src_configure
 	fi
 }
 
 src_install() {
-	if use php_targets_php8-0 || use php_targets_php8-1 ; then
+	if use php_targets_php8-1 ; then
 		php-ext-pecl-r3_src_install
 
 		php-ext-source-r3_addtoinifiles "memcache.allow_failover" "true"
