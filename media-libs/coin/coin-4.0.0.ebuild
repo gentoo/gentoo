@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	dev-libs/boost:0
 	x11-base/xorg-proto
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		qthelp? ( dev-qt/qthelp:5 )
 	)
 "
@@ -64,6 +64,11 @@ DOCS=(
 )
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/859832
+	# https://github.com/coin3d/coin/issues/521
+	filter-lto
+
 	use debug && append-cppflags -DCOIN_DEBUG=1
 
 	local mycmakeargs=(

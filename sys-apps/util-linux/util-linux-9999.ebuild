@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
+inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	pam python-r1 multilib-minimal multiprocessing systemd
 
 MY_PV="${PV/_/-}"
@@ -55,8 +55,10 @@ RDEPEND="
 	rtas? ( sys-libs/librtas )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
-	!build? ( systemd? ( sys-apps/systemd ) )
-	udev? ( virtual/libudev:= )
+	!build? (
+		systemd? ( sys-apps/systemd )
+		udev? ( virtual/libudev:= )
+	)
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -64,7 +66,7 @@ BDEPEND="
 		app-text/po4a
 		sys-devel/gettext
 	)
-	test? ( sys-devel/bc )
+	test? ( app-alternatives/bc )
 "
 DEPEND="
 	${RDEPEND}
@@ -143,6 +145,7 @@ src_prepare() {
 			lsfd/mkfds-rw-character-device
 			# Fails with network-sandbox at least in nspawn
 			lsfd/option-inet
+			utmp/last-ipv6
 		)
 
 		local known_failing_test
@@ -212,8 +215,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable suid makeinstall-setuid)
 		$(multilib_native_use_with readline)
 		$(multilib_native_use_with slang)
-		$(multilib_native_use_with systemd)
-		$(multilib_native_use_with udev)
 		$(multilib_native_usex ncurses "$(use_with magic libmagic)" '--without-libmagic')
 		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
@@ -226,6 +227,18 @@ multilib_src_configure() {
 		$(use_with ncurses tinfo)
 		$(use_with selinux)
 	)
+
+	if use build ; then
+		myeconfargs+=(
+			--without-systemd
+			--without-udev
+		)
+	else
+		myeconfargs+=(
+			$(multilib_native_use_with systemd)
+			$(multilib_native_use_with udev)
+		)
+	fi
 
 	if multilib_is_native_abi ; then
 		myeconfargs+=(
@@ -333,15 +346,13 @@ multilib_src_install() {
 
 	# This needs to be called AFTER python_install call, bug #689190
 	emake DESTDIR="${D}" install
-
-	if multilib_is_native_abi ; then
-		# Need the libs in /
-		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
-	fi
 }
 
 multilib_src_install_all() {
 	dodoc AUTHORS NEWS README* Documentation/{TODO,*.txt,releases/*}
+
+	dosym hexdump /usr/bin/hd
+	newman - hd.1 <<< '.so man1/hexdump.1'
 
 	# e2fsprogs-libs didn't install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die

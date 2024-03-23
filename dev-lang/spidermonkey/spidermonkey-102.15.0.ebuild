@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -7,7 +7,7 @@ EAPI="8"
 FIREFOX_PATCHSET="firefox-102esr-patches-13.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-102-patches-05j.tar.xz"
 
-LLVM_MAX_SLOT=16
+LLVM_MAX_SLOT=17
 
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="ssl,xml(+)"
@@ -61,7 +61,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html "
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 
 SLOT="$(ver_cut 1)"
 LICENSE="MPL-2.0"
@@ -72,6 +72,14 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	|| (
+		(
+			sys-devel/llvm:17
+			clang? (
+				sys-devel/clang:17
+				sys-devel/lld:17
+				virtual/rust:0/llvm-17
+			)
+		)
 		(
 			sys-devel/llvm:16
 			clang? (
@@ -432,6 +440,13 @@ src_test() {
 		echo "non262/extensions/reviver-mutates-holder-array-nonnative.js" >> "${T}"/known_failures.list
 		echo "non262/extensions/typedarray.js" >> "${T}"/known_failures.list
 		echo "non262/Math/fround.js" >> "${T}"/known_failures.list
+	fi
+
+	if use x86 ; then
+		echo "non262/Date/timeclip.js" >> "${T}"/known_failures.list
+		echo "test262/built-ins/Date/UTC/fp-evaluation-order.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.1.js" >> "${T}"/known_failures.list
+		echo "test262/language/types/number/S8.5_A2.2.js" >> "${T}"/known_failures.list
 	fi
 
 	${EPYTHON} \

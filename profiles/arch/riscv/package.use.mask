@@ -1,14 +1,26 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Robin H. Johnson <robbat2@gentoo.org) (2024-03-13)
+# sys-cluster/corosync not yet keyworded, niche use case for mdadm
+sys-fs/mdadm corosync
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-02-18)
+# alembic not stable yet
+media-gfx/openvdb alembic
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
+# No sys-block/nbdkit on riscv, yet
+app-emulation/libvirt nbd
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-22)
 # media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
-# are only available for amd64 and riscv
+# are only available for amd64, arm64 and riscv
 >=gui-libs/wlroots-0.17.0 -drm -liftoff
-
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
-app-alternatives/ninja samurai
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # media-libs/shaderc is keyworded here.
@@ -17,14 +29,6 @@ media-libs/libplacebo -shaderc
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-util/cmake gui
-
-# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
-# librttopo has not been tested on this arch
-dev-db/spatialite rttopo
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
 # Avoid keywording more Qt stuff
@@ -44,8 +48,9 @@ media-video/mpv lua_single_target_luajit -lua_single_target_lua5-1
 
 # Mike Gilbert <floppym@gentoo.org> (2023-05-27)
 # sd-boot should work here.
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -boot -ukify
 sys-apps/systemd-utils -boot -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # Sam James <sam@gentoo.org> (2023-05-10)
 # sys-cluster/ceph not keyworded here
@@ -67,10 +72,6 @@ app-editors/neovim lua_single_target_luajit
 # depend on dev-libs/libpcre2[jit] which not supported yet, bug #879511
 www-servers/varnish jit
 
-# Sam James <sam@gentoo.org> (2022-10-29)
-# pandoc not keyworded here, bug #878355
-app-admin/conky doc
-
 # Xin Yang <yangmame@icloud.com> (2022-10-18)
 # requires qtwebengine, bug #876301
 app-i18n/fcitx-libpinyin dictionary-manager
@@ -80,10 +81,6 @@ app-i18n/fcitx-libpinyin dictionary-manager
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-09-25)
 # Moved here from default/linux/...
 sys-devel/gcc -sanitize
-
-# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Requires proprietary binary-only libraries only available for a handful of arches
-sys-cluster/slurm nvml
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
 # Unkeyworded dependencies (xen-tools, aws stack), masking to reduce
@@ -158,7 +155,6 @@ dev-python/wcmatch doc
 # These depend on Haskell:
 #  - app-text/pandoc
 sys-cluster/ceph pmdk
-app-text/nuspell doc
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-09-15)
 # Marek Szuba <marecki@gentoo.org> (2021-09-07)
@@ -236,10 +232,6 @@ www-servers/nginx nginx_modules_http_lua
 # Marek Szuba <marecki@gentoo.org> (2021-07-11)
 # Causes 35 tests to fail with "fatal llvm error", bug #844946
 dev-db/postgresql llvm
-
-# Marek Szuba <marecki@gentoo.org> (2021-07-05)
-# sys-cluster/ucx fails to compile on this arch
-sys-cluster/slurm ucx
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:

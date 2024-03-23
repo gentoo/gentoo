@@ -1,8 +1,20 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# sci-libs/atlas works on x86_64
+-atlas
+
+# Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
+# media-libs/jasper works on x86_64
+-jasper
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2023-12-10)
+# cuDNN works here
+-cudnn
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2023-11-17)
 # ROCm/HIP works here
@@ -11,12 +23,6 @@
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
 # Unmask secureboot flag on arches where sbsigntools is keyworded
 -secureboot
-
-# Jimi Huotari <chiitoo@gentoo.org> (2023-03-03)
-# Unmask on amd64 only for now.
--qt6
--pyqt6
--pyside6
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
@@ -137,7 +143,6 @@
 # Simon Stelling <blubb@gentoo.org> (2007-02-16)
 # Since this profile forces >=portage-2.1.2, we can unmask all
 # SIMD assembler flags
--mpx
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes

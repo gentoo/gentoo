@@ -11,7 +11,7 @@
 		to a local drive letter, using raw ethernet frames to communicate.
 	</longdescription>
 	<use>
-		<flag name="tsr">Build the TSR program for DOS, which acts as a client.</flag>
+		<flag name="tsr">Install the precompiled TSR program for DOS, which acts as a client.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">etherdfs</remote-id>

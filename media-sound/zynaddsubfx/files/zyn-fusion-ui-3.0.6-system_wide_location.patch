@@ -1,0 +1,40 @@
+--- i/src/mruby-widget-lib/mrblib/script.rb
++++ w/src/mruby-widget-lib/mrblib/script.rb
+@@ -160,13 +160,13 @@ class ZRunner
+         search   = @search_path
+         search ||= ""
+         font_error = false
+-        sans = [search + "font/Roboto-Regular.ttf", "deps/nanovg/example/Roboto-Regular.ttf"]
++        sans = ["/usr/share/fonts/roboto/Roboto-Regular.ttf", search + "font/Roboto-Regular.ttf", "deps/nanovg/example/Roboto-Regular.ttf"]
+         if(@vg.create_font('sans', sans[0]) == -1 && @vg.create_font('sans', sans[1]) == -1)
+            GL::debug "[ERROR] could not find sans font"
+             font_error = true
+         end
+ 
+-        bold = [search + "font/Roboto-Bold.ttf", "deps/nanovg/example/Roboto-Bold.ttf"]
++        bold = ["/usr/share/fonts/roboto/Roboto-Bold.ttf", search + "font/Roboto-Bold.ttf", "deps/nanovg/example/Roboto-Bold.ttf"]
+         if(@vg.create_font('bold', bold[0]) == -1 && @vg.create_font('bold', bold[1]) == -1)
+            GL::debug "[ERROR] could not find bold font"
+             font_error = true
+--- i/src/mruby-widget-lib/src/api.c
++++ w/src/mruby-widget-lib/src/api.c
+@@ -110,7 +110,7 @@ zest_open(char *address)
+         if(strstr(path, "libzest"))
+             strstr(path, "libzest")[0] = 0;
+         char path2[256];
+-        snprintf(path2, sizeof(path2), "%s%s", path, "./qml/MainWindow.qml");
++        snprintf(path2, sizeof(path2), "%s%s", path, "../../share/zynaddsubfx/qml/MainWindow.qml");
+         FILE *f = fopen(path2, "r");
+         if(f) {
+             printf("[INFO:Zyn] Found Assets at %s\n", path);
+--- i/src/osc-bridge/src/bridge.c
++++ w/src/osc-bridge/src/bridge.c
+@@ -431,7 +431,7 @@ schema_t br_get_schema(bridge_t *br, uri_t uri)
+     schema_t sch;
+ 
+     //printf("[debug] loading json file\n");
+-    FILE *f = fopen("schema/test.json", "r");
++    FILE *f = fopen("/usr/share/zynaddsubfx/schema/test.json", "r");
+     if(!f && br->search_path) {
+         char tmp[256];
+         snprintf(tmp, sizeof(tmp), "%s%s", br->search_path, "schema/test.json");

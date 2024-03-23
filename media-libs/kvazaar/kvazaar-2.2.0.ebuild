@@ -11,7 +11,7 @@ if [[ ${PV} = *9999 ]] ; then
 else
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
-	KEYWORDS="~alpha amd64 arm ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv"
 fi
 inherit autotools flag-o-matic multilib-minimal
 
@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 	abi_x86_32? ( ${ASM_DEP} )
 	abi_x86_64? ( ${ASM_DEP} )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-2.2.0-backport-pr377.patch" )
 
 src_prepare() {
 	default

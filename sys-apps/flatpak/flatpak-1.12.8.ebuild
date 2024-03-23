@@ -1,8 +1,8 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 
 inherit linux-info python-any-r1
 
@@ -52,11 +52,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 # pyparsing version pinned for https://bugs.gentoo.org/825230
 BDEPEND="
-	>=sys-devel/automake-1.13.4
+	>=dev-build/automake-1.13.4
 	>=sys-devel/gettext-0.18.2
 	virtual/pkgconfig
 	dev-util/gdbus-codegen
-	sys-devel/bison
+	app-alternatives/yacc
 	introspection? ( >=dev-libs/gobject-introspection-1.40 )
 	doc? (
 		>=dev-util/gtk-doc-1.20

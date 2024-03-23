@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MATE_LA_PUNT="yes"
-PYTHON_COMPAT=( python{3_9,3_10,3_11} )
+PYTHON_COMPAT=( python{3_10,3_11} )
 
 inherit mate python-single-r1
 
@@ -29,7 +29,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 BDEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	doc? ( app-text/docbook-xml-dtd:4.1.2 )

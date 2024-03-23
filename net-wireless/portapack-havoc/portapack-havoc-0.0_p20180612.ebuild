@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Custom firmware for the HackRF SDR + PortaPack H1 addon"
 HOMEPAGE="https://github.com/furrtek/portapack-havoc/wiki"
@@ -9,9 +9,8 @@ COMMIT="609235b19f55d0bf278c0e7c4b9f9b6b15136247"
 SRC_URI="https://github.com/furrtek/portapack-havoc/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
 
 KEYWORDS="~amd64 ~x86"
 
@@ -29,7 +28,7 @@ src_compile() {
 src_install() {
 	insinto /usr/share/hackrf
 	newins firmware/portapack-h1-havoc.bin portapack-h1-havoc-${PV}.bin
-	ln -s portapack-h1-havoc-${PV}.bin "${ED}/usr/share/hackrf/portapack-h1-havoc.bin"
+	ln -s portapack-h1-havoc-${PV}.bin "${ED}/usr/share/hackrf/portapack-h1-havoc.bin" || die
 
 	cat << EOF > switch_to_havoc
 #!/bin/sh

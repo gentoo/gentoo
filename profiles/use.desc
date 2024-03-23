@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -52,6 +52,7 @@ coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
 crypt - Add support for encryption -- using mcrypt or gpg where applicable
 css - Enable reading of encrypted DVDs
+cuda - Enable NVIDIA CUDA support (computation on GPU)
 cups - Add support for CUPS (Common Unix Printing System)
 curl - Add support for client-side URL transfer library
 custom-cflags - Build with user-specified CFLAGS (unsupported)
@@ -131,6 +132,7 @@ hdf5 - Add support for the Hierarchical Data Format v5
 headers-only - Install only C headers instead of whole package. Mainly used by sys-devel/crossdev for toolchain bootstrap.
 heif - Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
+http2 - Enable support for the HTTP/2 protocol
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
 icu - Enable ICU (Internationalization Components for Unicode) support, using dev-libs/icu
@@ -200,6 +202,7 @@ mms - Support for Microsoft Media Server (MMS) streams
 mng - Add support for libmng (MNG images)
 modplug - Add libmodplug support for playing SoundTracker-style music files
 modules - Build the kernel modules
+modules-compress - Install compressed kernel modules (if kernel config enables module compression)
 modules-sign - Cryptographically sign installed kernel modules (requires CONFIG_MODULE_SIG=y in the kernel)
 mono - Build Mono bindings to support dotnet type stuff
 motif - Add support for the Motif toolkit
@@ -248,7 +251,7 @@ osc - Enable support for Open Sound Control
 oss - Add support for OSS (Open Sound System)
 otf - Install OpenType font versions
 pam - Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
-pch - Enable precompiled header support for faster compilation at the expense of disk space and memory (>=sys-devel/gcc-3.4 only)
+pch - Enable precompiled header support for faster compilation at the expense of disk space and memory
 pcmcia - Add support for PCMCIA slots/devices found on laptop computers
 pcre - Add support for Perl Compatible Regular Expressions
 pda - Add support for portable devices
@@ -352,7 +355,7 @@ usb - Add USB support to applications that have optional USB support (e.g. cups)
 v4l - Enable support for video4linux (using linux-headers or userspace libv4l libraries)
 vaapi - Enable Video Acceleration API for hardware decoding
 vala - Enable bindings for dev-lang/vala
-valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe to use even if not currently using dev-util/valgrind
+valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe to use even if not currently using dev-debug/valgrind
 vanilla - Do not add extra patches which change default behaviour; DO NOT USE THIS ON A GLOBAL SCALE as the severity of the meaning changes drastically
 vcd - Video CD support
 vdpau - Enable the Video Decode and Presentation API for Unix acceleration interface

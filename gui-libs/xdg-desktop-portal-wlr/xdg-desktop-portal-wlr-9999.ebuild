@@ -55,3 +55,11 @@ src_configure() {
 	fi
 	meson_src_configure
 }
+
+src_install() {
+	meson_src_install
+
+	# bug #915702
+	insinto /usr/share/xdg-desktop-portal/portals
+	doins "${WORKDIR}/${P}/contrib/wlroots-portals.conf"
+}

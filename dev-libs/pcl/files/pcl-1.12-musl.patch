@@ -1,0 +1,20 @@
+Include missing header files
+
+Bug: https://bugs.gentoo.org/895060
+
+diff --git a/pcl/pcl.c b/pcl/pcl.c
+index 58d8605..313370e 100644
+--- a/pcl/pcl.c
++++ b/pcl/pcl.c
+@@ -22,6 +22,8 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include "pcl_config.h"
+ #include "pcl.h"
+ #include "pcl_private.h"
+-- 
+2.41.0
+

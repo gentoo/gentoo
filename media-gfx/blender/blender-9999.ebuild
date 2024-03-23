@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -75,7 +75,7 @@ RDEPEND="${PYTHON_DEPS}
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
-	hip? ( dev-util/hip )
+	hip? ( >=dev-util/hip-5.7.1 )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -93,7 +93,7 @@ RDEPEND="${PYTHON_DEPS}
 	openpgl? ( >=media-libs/openpgl-0.5.0 )
 	opensubdiv? ( >=media-libs/opensubdiv-3.5.0 )
 	openvdb? (
-		>=media-gfx/openvdb-10.0.0:=[nanovdb?]
+		>=media-gfx/openvdb-10.1.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
 	optix? ( <dev-libs/optix-7.5.0 )
@@ -106,7 +106,7 @@ RDEPEND="${PYTHON_DEPS}
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff:= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	wayland? (
 		>=dev-libs/wayland-1.12
 		>=dev-libs/wayland-protocols-1.15
@@ -129,7 +129,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		dev-python/sphinx[latex]
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
@@ -142,6 +142,10 @@ BDEPEND="
 		dev-util/wayland-scanner
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.1-openvdb-11.patch"
+)
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -235,6 +239,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #922600
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	append-lfs-flags
 	blender_get_version
 

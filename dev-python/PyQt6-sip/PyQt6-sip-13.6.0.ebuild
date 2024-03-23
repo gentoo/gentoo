@@ -15,4 +15,4 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"

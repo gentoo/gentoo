@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,19 +6,25 @@ EAPI="7"
 LUA_COMPAT=( lua5-4 lua5-3 )
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs lua-single systemd linux-info ${SCM}
+inherit toolchain-funcs lua-single systemd linux-info ${SCM} multiprocessing
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
-	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
+	# This is arbitrary; upstream uses master.  Try to update when possible
+	VTEST_COMMIT="af198470d7ce482d3d26eb9ca3f246a438739366"
+	VTEST_DIR="${WORKDIR}/VTest-${VTEST_COMMIT}"
+	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz
+			test? ( https://github.com/vtest/VTest/archive/${VTEST_COMMIT}.tar.gz -> VTest-${VTEST_COMMIT}.tar.gz )"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 elif [[ ${PV} == 9999 ]]; then
+	VTEST_DIR="${WORKDIR}/VTest"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
 	EGIT_BRANCH=master
 else
+	VTEST_DIR="${WORKDIR}/VTest"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
@@ -26,10 +32,11 @@ fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
-ssl systemd +threads tools zlib lua 51degrees wurfl"
+ssl systemd test +threads tools zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	lua? ( ${LUA_REQUIRED_USE} )
 	?? ( slz zlib )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
@@ -43,7 +50,11 @@ DEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	lua? ( ${LUA_DEPS} )"
+	lua? ( ${LUA_DEPS} )
+	test? (
+		dev-libs/libpcre2
+		sys-libs/zlib
+	)"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
 	acct-user/haproxy"
@@ -64,6 +75,15 @@ pkg_setup() {
 	if use net_ns; then
 		CONFIG_CHECK="~NET_NS"
 		linux-info_pkg_setup
+	fi
+}
+
+src_unpack() {
+	if [[ ${PV} != *9999 ]]; then
+		default
+	else
+		git-r3_src_unpack
+		EGIT_REPO_URI="https://github.com/vtest/VTest" EGIT_CHECKOUT_DIR="${VTEST_DIR}" git-r3_src_unpack
 	fi
 }
 
@@ -126,6 +146,14 @@ src_compile() {
 			fi
 		done
 	fi
+}
+
+src_test() {
+	# https://github.com/vtest/VTest/issues/12
+	emake -C "${VTEST_DIR}" CC="$(tc-getCC)" FLAGS="${CFLAGS} -Wno-error=unused-result"
+	ulimit -n 65536 || die "${PN} requires ulimit -n set to at least 65536 for tests"
+	env -u A -u D TMPDIR="/tmp" emake reg-tests -- --v --j "$(makeopts_jobs)" \
+		HAPROXY_PROGRAM="${S}/haproxy" VTEST_PROGRAM="${VTEST_DIR}/vtest" REGTESTS_TYPE="default,bug,devel"
 }
 
 src_install() {

@@ -11,12 +11,15 @@
 	</maintainer>
 
 	<longdescription>
-		TorrentZip is a replacement for MameZip. The goal of the program is to 
-		use standard values when creating zips to create identical files over 
-		multiple systems. It has the ability to create a torrentzip format 
-		from a zip file.
+		Torrentzip converts zip archives to a standard format with some 
+		pre-defined values, sorting the files, and using particular 
+		compression settings so that running it on zip archives created 
+		by other tools will always result in the same output. This helps 
+		e.g. with sharing zip archives using BitTorrent (which is where 
+		the name comes from).
 	</longdescription>
 	<upstream>
+		<remote-id type="github">0-wiz-0/trrntzip</remote-id>
 		<remote-id type="sourceforge">trrntzip</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,6 +6,8 @@
     <name>Craig Andrews</name>
   </maintainer>
   <use>
+    <flag name="aclk">Enable Agent-Cloud Link (ACLK) for securely connecting a Netdata Agent to your web browser through Netdata Cloud</flag>
+    <flag name="bpf">Enable the extended Berkeley Packet Filter (eBPF) collector to monitor kernel-level metrics about applications with per-second granularity</flag>
     <flag name="cloud">Enable Netdata Cloud support</flag>
     <flag name="compression">Enable compression via zlib</flag>
     <flag name="dbengine">Enable the Netdata database engine</flag>

@@ -9,4 +9,8 @@
 	<remote-id type="github">borgmatic-collective/borgmatic</remote-id>
 	<remote-id type="pypi">borgmatic</remote-id>
 </upstream>
+<use>
+	<flag name="apprise">Allow backup monitoring to send notification to a wide variety
+		of services, using <pkg>dev-python/apprise</pkg></flag>
+</use>
 </pkgmetadata>

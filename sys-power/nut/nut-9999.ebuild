@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gpio cgi doc ipmi serial i2c +man snmp +usb modbus selinux split-usr ssl tcpd test xml zeroconf python monitor systemd"
+IUSE="gpio cgi doc ipmi serial i2c +man snmp +usb modbus selinux ssl tcpd test xml zeroconf python monitor systemd"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -170,7 +170,6 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 
 	dodir /sbin
-	use split-usr && dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
 		elog "CGI monitoring scripts are installed in ${EPREFIX}/usr/share/nut/cgi."

@@ -16,7 +16,7 @@ S=${WORKDIR}/${P/_/.}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND="
 	dev-db/sqlite:3

@@ -1,0 +1,95 @@
+From 90e00bb17bea76030c3b532c2156d040e202c4a2 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Fri, 1 Dec 2023 23:22:53 +0100
+Subject: [PATCH] Fix build against >=akonadi-contacts-23.08
+
+---
+ core/CMakeLists.txt                                    |  2 +-
+ core/app/DigikamCoreTarget.cmake                       |  6 +++---
+ core/utilities/extrasupport/CMakeLists.txt             |  2 +-
+ core/utilities/extrasupport/addressbook/CMakeLists.txt | 10 +++++-----
+ 4 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index 8115ddc6ca..c5940b1d6e 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -270,7 +270,7 @@ PRINT_OPTIONAL_LIBRARY_STATUS("bison"             "https://www.gnu.org/software/
+ PRINT_OPTIONAL_LIBRARY_STATUS("doxygen"           "https://github.com/doxygen/doxygen"                              "(version >= 1.8.0)"                    "digiKam will be compiled without API documentation building support."        Doxygen_FOUND)
+ PRINT_OPTIONAL_LIBRARY_STATUS("ccache"            "https://ccache.dev"                                              "(version >= 3.0.0)"                    "digiKam will be compiled without CCACHE build support."                      HAVE_CCACHE)
+ PRINT_OPTIONAL_LIBRARY_STATUS("flex"              "https://github.com/westes/flex"                                  "(version >= 2.5.0)"                    "digiKam will be compiled without Panorama support."                          FLEX_FOUND)
+-PRINT_OPTIONAL_LIBRARY_STATUS("libakonadicontact" "https://invent.kde.org/pim/akonadi-contacts"                     "(version >= ${AKONADI_MIN_VERSION})"   "digiKam will be compiled without KDE desktop address book support."          KF${QT_VERSION_MAJOR}AkonadiContact_FOUND)
++PRINT_OPTIONAL_LIBRARY_STATUS("libakonadicontact" "https://invent.kde.org/pim/akonadi-contacts"                     "(version >= ${AKONADI_MIN_VERSION})"   "digiKam will be compiled without KDE desktop address book support."          KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+ PRINT_OPTIONAL_LIBRARY_STATUS("libimagemagick"    "https://github.com/ImageMagick/ImageMagick.git"                  "(version >= 6.7.0)"                    "digiKam will be compiled without ImageMagick codecs."                        HAVE_IMAGE_MAGICK)
+ PRINT_OPTIONAL_LIBRARY_STATUS("libeigen3"         "https://github.com/eigenteam/eigen-git-mirror"                   "(version >= 3.0.0)"                    "digiKam will be compiled without Refocus tool support."                      Eigen3_FOUND)
+ PRINT_OPTIONAL_LIBRARY_STATUS("libgphoto2"        "https://github.com/gphoto/libgphoto2"                            "(version >= 2.4.0)"                    "digiKam will be compiled without GPhoto2 camera drivers support."            Gphoto2_FOUND)
+diff --git a/core/app/DigikamCoreTarget.cmake b/core/app/DigikamCoreTarget.cmake
+index 5ba888e259..2cc8807079 100644
+--- a/core/app/DigikamCoreTarget.cmake
++++ b/core/app/DigikamCoreTarget.cmake
+@@ -81,7 +81,7 @@ if(KF${QT_VERSION_MAJOR}FileMetaData_FOUND)
+ 
+ endif()
+ 
+-if(KF${QT_VERSION_MAJOR}AkonadiContact_FOUND)
++if(KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+ 
+     set(DIGIKAMCORE_OBJECTS
+         ${DIGIKAMCORE_OBJECTS}
+@@ -395,11 +395,11 @@ if(KF${QT_VERSION_MAJOR}FileMetaData_FOUND)
+ 
+ endif()
+ 
+-if(KF${QT_VERSION_MAJOR}AkonadiContact_FOUND)
++if(KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+ 
+     target_link_libraries(digikamcore
+                           PRIVATE
+-                          KF${QT_VERSION_MAJOR}::AkonadiContact
++                          KPim${QT_VERSION_MAJOR}::AkonadiContact
+     )
+ 
+ endif()
+diff --git a/core/utilities/extrasupport/CMakeLists.txt b/core/utilities/extrasupport/CMakeLists.txt
+index 910961937e..f911522b58 100644
+--- a/core/utilities/extrasupport/CMakeLists.txt
++++ b/core/utilities/extrasupport/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ #
+ 
+-if(KF${QT_VERSION_MAJOR}AkonadiContact_FOUND)
++if(KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+     add_subdirectory(addressbook)
+ endif()
+ 
+diff --git a/core/utilities/extrasupport/addressbook/CMakeLists.txt b/core/utilities/extrasupport/addressbook/CMakeLists.txt
+index e44a67d4dd..8ecc8fee4e 100644
+--- a/core/utilities/extrasupport/addressbook/CMakeLists.txt
++++ b/core/utilities/extrasupport/addressbook/CMakeLists.txt
+@@ -14,9 +14,9 @@ include_directories($<TARGET_PROPERTY:Qt${QT_VERSION_MAJOR}::Widgets,INTERFACE_I
+                     $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::I18n,INTERFACE_INCLUDE_DIRECTORIES>
+ )
+ 
+-if(KF${QT_VERSION_MAJOR}AkonadiContact_FOUND)
++if(KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+     include_directories(
+-        $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>
++        $<TARGET_PROPERTY:KPim${QT_VERSION_MAJOR}::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>
+         $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::Contacts,INTERFACE_INCLUDE_DIRECTORIES>
+ 
+         $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::CoreAddons,INTERFACE_INCLUDE_DIRECTORIES>
+@@ -35,7 +35,7 @@ add_library(akonadiiface STATIC $<TARGET_OBJECTS:core_akonadiiface_obj>)
+ 
+ target_link_libraries(akonadiiface PRIVATE Qt${QT_VERSION_MAJOR}::Core KF${QT_VERSION_MAJOR}::I18n)
+ 
+-if(KF${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+-    target_include_directories(core_akonadiiface_obj PRIVATE $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::AkonadiContact,INTERFACE_INCLUDE_DIRECTORIES>)
+-    target_link_libraries(akonadiiface PRIVATE KF${QT_VERSION_MAJOR}::AkonadiContact KF${QT_VERSION_MAJOR}::Contacts)
++if(KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
++    target_include_directories(core_akonadiiface_obj PRIVATE $<TARGET_PROPERTY:KPim${QT_VERSION_MAJOR}::AkonadiContact,INTERFACE_INCLUDE_DIRECTORIES>)
++    target_link_libraries(akonadiiface PRIVATE KPim${QT_VERSION_MAJOR}::AkonadiContact KF${QT_VERSION_MAJOR}::Contacts)
+ endif()
+-- 
+2.43.0
+

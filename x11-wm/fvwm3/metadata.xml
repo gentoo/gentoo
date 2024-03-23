@@ -5,13 +5,9 @@
 		fvwm3 is a multiple large virtual desktop window manager.
 		The successor to fvwm-2.6, Fvwm3 is intended to be extremely customizable and extendible while consuming a relatively small amount of resources.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>Matt.Jolly@footclan.ninja</email>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="go">Enable building <pkg>dev-lang/go</pkg> code (FvwmPrompt)</flag>

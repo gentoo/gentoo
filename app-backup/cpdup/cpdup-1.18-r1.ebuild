@@ -5,9 +5,9 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="A comprehensive filesystem mirroring program"
-HOMEPAGE="http://apollo.backplane.com/FreeSrc/"
-SRC_URI="http://apollo.backplane.com/FreeSrc/${P}.tgz"
+DESCRIPTION="Comprehensive filesystem mirroring program"
+HOMEPAGE="https://apollo.backplane.com/FreeSrc/"
+SRC_URI="https://apollo.backplane.com/FreeSrc/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="BSD-2"

@@ -10,7 +10,7 @@ inherit readme.gentoo-r1 java-pkg-2 systemd
 
 DESCRIPTION="The official server for the sandbox video game"
 HOMEPAGE="https://www.minecraft.net/"
-SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P}.jar"
+SRC_URI="https://piston-data.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P}.jar"
 S="${WORKDIR}"
 
 LICENSE="Mojang"

@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
-inherit python-single-r1 cmake
+inherit python-single-r1 cmake flag-o-matic
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0/7"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt5 rtaudio rubberband sdl test vdpau vidstab xine xml"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -103,6 +103,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #919981
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DCLANG_FORMAT=OFF

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,7 +44,8 @@ perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
-ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
+ssl? ( >=dev-libs/openssl-0.9.6-r1:0=
+	<dev-libs/openssl-3.2 )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
@@ -73,7 +74,7 @@ uuid? (
 
 DEPEND="${CDEPEND}
 sys-devel/bison
-sys-devel/flex
+app-alternatives/lex
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "

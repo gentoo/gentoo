@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">rtomayko/rdiscount</remote-id>
+    <remote-id type="github">davidfstr/rdiscount</remote-id>
+    <remote-id type="rubygems">rdiscount</remote-id>
   </upstream>
 </pkgmetadata>

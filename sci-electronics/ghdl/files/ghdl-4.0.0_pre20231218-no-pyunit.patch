@@ -1,0 +1,18 @@
+diff --git a/testsuite/testsuite.sh.orig b/testsuite/testsuite.sh
+index 0c1049f..52da6db 100755
+--- a/testsuite/testsuite.sh.orig
++++ b/testsuite/testsuite.sh
+@@ -130,9 +130,10 @@ do_test() {
+     pyunit)
+       # The Python Unit testsuite: regression testsuite for Python bindings to libghdl
+       # pyunit/dom fails with python 3.12
+-      gstart "[GHDL - test] pyunit"
+-      PYTHONPATH=$(pwd)/.. ${PYTHON:-python3} -m pytest -vsrA pyunit/lsp pyunit/libghdl
+-      gend
++      # gstart "[GHDL - test] pyunit"
++      # PYTHONPATH=$(pwd)/.. ${PYTHON:-python3} -m pytest -vsrA pyunit/lsp pyunit/libghdl
++      # gend
++      echo "Python Unit testsuite is disabled!"
+     ;;
+ 
+     vests)

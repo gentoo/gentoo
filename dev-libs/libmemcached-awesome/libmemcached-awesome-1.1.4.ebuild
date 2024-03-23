@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,8 +22,8 @@ RDEPEND="!app-forensics/memdump
 	sasl? ( dev-libs/cyrus-sasl:2 )"
 DEPEND="${RDEPEND}
 	test? ( net-misc/memcached )"
-BDEPEND="sys-devel/bison
-	sys-devel/flex
+BDEPEND="app-alternatives/yacc
+	app-alternatives/lex
 	virtual/pkgconfig"
 
 src_configure() {

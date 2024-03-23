@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,8 +27,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	sys-devel/bison:0
-	sys-devel/flex:0
+	app-alternatives/yacc:0
+	app-alternatives/lex:0
 "
 
 suitable_db_version() {
@@ -60,8 +60,8 @@ src_prepare() {
 	eautoreconf
 
 	# Workaround for missing install-sh, bug #705374
-	local amver=$(best_version sys-devel/automake)
-	amver=$(ver_cut 1-2 "${amver#sys-devel/automake-}")
+	local amver=$(best_version dev-build/automake)
+	amver=$(ver_cut 1-2 "${amver#dev-build/automake-}")
 	cp -p "${BROOT}/usr/share/automake-${amver}/install-sh" . || die
 }
 

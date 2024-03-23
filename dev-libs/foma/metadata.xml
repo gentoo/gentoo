@@ -5,4 +5,7 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">mhulden/foma</remote-id>
+  </upstream>
 </pkgmetadata>

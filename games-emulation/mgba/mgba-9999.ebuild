@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,14 @@ HOMEPAGE="https://mgba.io/"
 
 LICENSE="MPL-2.0 BSD LGPL-2.1+ public-domain discord? ( MIT )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="debug discord elf ffmpeg gles2 gles3 gui libretro lua +opengl +sdl +sqlite test"
+IUSE="
+	debug discord elf ffmpeg gles2 gles3 gui libretro
+	lua +opengl +sdl +sqlite test
+"
 REQUIRED_USE="
 	gui? ( || ( gles2 gles3 opengl ) sqlite )
-	lua? ( ${LUA_REQUIRED_USE} )"
+	lua? ( ${LUA_REQUIRED_USE} )
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -33,7 +37,10 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:= )
 	gles2? ( media-libs/libglvnd )
 	gles3? ( media-libs/libglvnd )
-	lua? ( ${LUA_DEPS} )
+	lua? (
+		${LUA_DEPS}
+		dev-libs/json-c:=
+	)
 	opengl? ( media-libs/libglvnd )
 	gui? (
 		dev-qt/qtcore:5
@@ -43,13 +50,16 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 	sdl? ( media-libs/libsdl2[sound,joystick,gles2?,opengl?,video] )
-	sqlite? ( dev-db/sqlite:3 )"
+	sqlite? ( dev-db/sqlite:3 )
+"
 DEPEND="
 	${RDEPEND}
-	test? ( dev-util/cmocka )"
+	test? ( dev-util/cmocka )
+"
 BDEPEND="
 	gui? ( dev-qt/linguist-tools:5 )
-	lua? ( virtual/pkgconfig )"
+	lua? ( virtual/pkgconfig )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.0-optional-updater.patch
@@ -67,25 +77,25 @@ src_configure() {
 		-DBUILD_GLES3=$(usex gles3)
 		-DBUILD_LIBRETRO=$(usex libretro)
 		-DBUILD_QT=$(usex gui)
-		-DBUILD_ROM_TEST=ON #918855
+		-DBUILD_ROM_TEST=yes #918855
 		-DBUILD_SDL=$(usex sdl) # also used for gamepads in QT build
 		-DBUILD_SUITE=$(usex test)
-		-DBUILD_UPDATER=OFF
+		-DBUILD_UPDATER=no
 		-DENABLE_SCRIPTING=$(usex lua)
-		-DMARKDOWN=OFF #752048
+		-DMARKDOWN=no #752048
 		-DUSE_DEBUGGERS=$(usex debug)
 		-DUSE_DISCORD_RPC=$(usex discord)
 		-DUSE_EDITLINE=$(usex debug)
 		-DUSE_ELF=$(usex elf)
-		-DUSE_EPOXY=OFF
+		-DUSE_EPOXY=no
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_GDB_STUB=$(usex debug)
-		-DUSE_LIBZIP=OFF
-		-DUSE_LZMA=ON
-		-DUSE_MINIZIP=ON
-		-DUSE_PNG=ON
+		-DUSE_LIBZIP=no
+		-DUSE_LZMA=yes
+		-DUSE_MINIZIP=yes
+		-DUSE_PNG=yes
 		-DUSE_SQLITE3=$(usex sqlite)
-		-DUSE_ZLIB=ON
+		-DUSE_ZLIB=yes
 		$(usev libretro -DLIBRETRO_LIBDIR="${EPREFIX}"/usr/$(get_libdir)/libretro)
 	)
 	use lua && mycmakeargs+=( -DUSE_LUA=$(ver_cut 1-2 $(lua_get_version)) )
@@ -94,7 +104,7 @@ src_configure() {
 }
 
 src_test() {
-	# CMakeLists.txt forces SKIP_RPATH=ON when PREFIX=/usr
+	# CMakeLists.txt forces SKIP_RPATH=yes when PREFIX=/usr
 	local -x LD_LIBRARY_PATH=${BUILD_DIR}:${LD_LIBRARY_PATH}
 
 	cmake_src_test
@@ -106,4 +116,13 @@ src_install() {
 	use !test || rm "${ED}"/usr/bin/mgba-cinema || die
 
 	rm -r "${ED}"/usr/share/doc/${PF}/{LICENSE,licenses} || die
+}
+
+pkg_preinst() {
+	# hack: .shader/ were directories in <0.11 and are now single (zip) files
+	# named the same, that leads to portage mis-merging and leaving an empty
+	# directory behind rather than the new file
+	if use gui && has_version '<games-emulation/mgba-0.11[gui]'; then
+		rm -rf -- "${EROOT}"/usr/share/mgba/shaders/*.shader/ || die
+	fi
 }

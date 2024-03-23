@@ -5,4 +5,5 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

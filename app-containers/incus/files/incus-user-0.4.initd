@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="incus-user socket daemon"
+description="incus-user socket daemon"
+
+DAEMON=/usr/sbin/incus-user
+PIDFILE=/run/incus-user.pid
+
+depend() {
+	need incus
+	need net
+}
+
+start() {
+	ebegin "Starting incus-user socket daemon"
+
+	start-stop-daemon --start \
+		--pidfile ${PIDFILE} \
+		--exec ${DAEMON} \
+		--background \
+		--make-pidfile \
+		-- \
+		--group incus
+	eend ${?}
+}
+
+stop() {
+	if [ "${RC_CMD}" = restart ]; then
+		start-stop-daemon --stop --quiet -p "${PIDFILE}"
+		eend ${?}
+	else
+		start-stop-daemon --stop --quiet -p "${PIDFILE}"
+		eend ${?}
+	fi
+}

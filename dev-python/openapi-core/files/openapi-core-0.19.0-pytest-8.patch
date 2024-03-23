@@ -1,0 +1,92 @@
+From 36da765cfc27cd6bda5c2773e3b3664a6473cd3b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 15 Feb 2024 15:53:50 +0100
+Subject: [PATCH] Remove spurious `pytest.warns()` to fix pytest-8
+ compatibility
+
+Remove the spurious `pytest.warns()` contexts within `pytest.raises()`
+in `test_shortcuts`, in order to fix compatibility with pytest-8.0.0.
+Prior to this version, the exception raised caused these assertions
+to be ignored entirely.  This is fixed in pytest-8.0.0, and the tests
+start failing because the warning is never raised prior
+to the exception.
+
+Fixes #789
+---
+ tests/unit/test_shortcuts.py | 21 +++++++--------------
+ 1 file changed, 7 insertions(+), 14 deletions(-)
+
+diff --git a/tests/unit/test_shortcuts.py b/tests/unit/test_shortcuts.py
+index 0dd1865..9a3f36c 100644
+--- a/tests/unit/test_shortcuts.py
++++ b/tests/unit/test_shortcuts.py
+@@ -423,8 +423,7 @@ class TestUnmarshalResponse:
+         mock_unmarshal.return_value = ResultMock(error_to_raise=ValueError)
+ 
+         with pytest.raises(ValueError):
+-            with pytest.warns(DeprecationWarning):
+-                unmarshal_response(request, response, spec=spec_v31)
++            unmarshal_response(request, response, spec=spec_v31)
+ 
+         mock_unmarshal.assert_called_once_with(request, response)
+ 
+@@ -597,15 +596,13 @@ class TestValidateRequest:
+         request = mock.Mock(spec=Request)
+ 
+         with pytest.raises(SpecError):
+-            with pytest.warns(DeprecationWarning):
+-                validate_request(request, spec=spec_invalid)
++            validate_request(request, spec=spec_invalid)
+ 
+     def test_spec_not_detected(self, spec_v20):
+         request = mock.Mock(spec=Request)
+ 
+         with pytest.raises(SpecError):
+-            with pytest.warns(DeprecationWarning):
+-                validate_request(request, spec=spec_v20)
++            validate_request(request, spec=spec_v20)
+ 
+     def test_request_type_invalid(self, spec_v31):
+         request = mock.sentinel.request
+@@ -733,8 +730,7 @@ class TestValidateRequest:
+         request = mock.Mock(spec=WebhookRequest)
+ 
+         with pytest.raises(SpecError):
+-            with pytest.warns(DeprecationWarning):
+-                validate_request(request, spec=spec_v30)
++            validate_request(request, spec=spec_v30)
+ 
+     @mock.patch(
+         "openapi_core.validation.request.validators.V31WebhookRequestValidator."
+@@ -889,16 +885,14 @@ class TestValidateResponse:
+         response = mock.Mock(spec=Response)
+ 
+         with pytest.raises(SpecError):
+-            with pytest.warns(DeprecationWarning):
+-                validate_response(request, response, spec=spec_invalid)
++            validate_response(request, response, spec=spec_invalid)
+ 
+     def test_spec_not_supported(self, spec_v20):
+         request = mock.Mock(spec=Request)
+         response = mock.Mock(spec=Response)
+ 
+         with pytest.raises(SpecError):
+-            with pytest.warns(DeprecationWarning):
+-                validate_response(request, response, spec=spec_v20)
++            validate_response(request, response, spec=spec_v20)
+ 
+     def test_request_type_invalid(self, spec_v31):
+         request = mock.sentinel.request
+@@ -965,8 +959,7 @@ class TestValidateResponse:
+         response = mock.Mock(spec=Response)
+ 
+         with pytest.raises(SpecError):
+-            with pytest.warns(DeprecationWarning):
+-                validate_response(request, response, spec=spec_v30)
++            validate_response(request, response, spec=spec_v30)
+ 
+     @mock.patch(
+         "openapi_core.validation.response.validators.V31WebhookResponseValidator."
+-- 
+2.43.1
+

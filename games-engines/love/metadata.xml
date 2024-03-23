@@ -5,6 +5,9 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">love2d/love</remote-id>
+	</upstream>
 	<use>
 		<flag name="gme">Use <pkg>media-libs/game-music-emu</pkg> to support additional music formats</flag>
 	</use>

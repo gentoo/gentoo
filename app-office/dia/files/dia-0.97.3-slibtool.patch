@@ -1,4 +1,4 @@
-This fixes build with sys-devel/slibtool
+This fixes build with dev-build/slibtool
 
 --- a/lib/Makefile.am
 +++ b/lib/Makefile.am

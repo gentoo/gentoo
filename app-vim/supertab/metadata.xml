@@ -8,4 +8,5 @@
   <upstream>
     <remote-id type="github">ervandew/supertab</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

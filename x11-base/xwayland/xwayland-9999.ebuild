@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,10 +16,10 @@ fi
 DESCRIPTION="Standalone X server running under Wayland"
 HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 
-IUSE="libei selinux video_cards_nvidia unwind xcsecurity"
-
 LICENSE="MIT"
 SLOT="0"
+
+IUSE="libei selinux unwind xcsecurity"
 
 COMMON_DEPEND="
 	dev-libs/libbsd
@@ -42,7 +42,6 @@ COMMON_DEPEND="
 
 	libei? ( dev-libs/libei )
 	unwind? ( sys-libs/libunwind )
-	video_cards_nvidia? ( gui-libs/egl-wayland )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -57,7 +56,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-xserver )
 "
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 	dev-util/wayland-scanner
 "
 
@@ -70,7 +69,6 @@ src_configure() {
 		$(meson_use selinux xselinux)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
-		$(meson_use video_cards_nvidia xwayland_eglstream)
 		-Ddpms=true
 		-Ddri3=true
 		-Ddrm=true

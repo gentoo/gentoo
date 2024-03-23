@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
-	BDEPEND="sys-devel/bison"
+	BDEPEND="app-alternatives/yacc"
 else
 	SRC_URI="
 		https://netfilter.org/projects/nftables/files/${P}.tar.xz
@@ -42,7 +42,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND+="
-	sys-devel/flex
+	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc

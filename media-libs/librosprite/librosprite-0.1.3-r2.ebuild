@@ -1,20 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit netsurf
 
-DESCRIPTION="framebuffer abstraction library, written in C"
-HOMEPAGE="http://www.netsurf-browser.org/projects/librosprite/"
+DESCRIPTION="Framebuffer abstraction library, written in C"
+HOMEPAGE="https://www.netsurf-browser.org/projects/librosprite/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE=""
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
-DEPEND="dev-util/netsurf-buildsystem"
+DEPEND="dev-build/netsurf-buildsystem"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.1.2-Werror.patch )
 

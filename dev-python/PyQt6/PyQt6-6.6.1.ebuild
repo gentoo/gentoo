@@ -17,7 +17,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 # defaults match what is provided with qtbase by default (except testlib),
 # reduces the need to set flags but does increase build time a fair amount
 IUSE="
@@ -61,7 +61,7 @@ DEPEND="
 	opengl? (
 		gles2-only? ( media-libs/libglvnd )
 	)
-	pdfium? ( >=dev-qt/qtwebengine-${QT_PV}[pdfium(-),widgets?] )
+	pdfium? ( >=dev-qt/qtwebengine-${QT_PV}[pdfium,widgets?] )
 	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
 	qml? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
 	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
@@ -91,9 +91,9 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# hack: qmake queries g++ or clang++ for info depending on which qtbase was
-	# built with, but ignores CHOST failing with -native-symlinks (bug #726112)
-	# and potentially using wrong information when cross-compiling
+	# hack: PyQt-builder runs qmake without our arguments and calls g++
+	# or clang++ depending on what qtbase was built with, not used for
+	# building but fails with -native-symlinks
 	mkdir "${T}"/cxx || die
 	local cxx
 	! cxx=$(type -P "${CHOST}"-g++) || ln -s -- "${cxx}" "${T}"/cxx/g++ || die

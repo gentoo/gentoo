@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="doc examples markdown"
 
 RDEPEND="
@@ -47,11 +47,18 @@ BDEPEND="
 
 DOCS=( README.rst )
 
+# For musl, bug 863962
+PATCHES=( "${FILESDIR}/${PN}-4.9.1-no-locales-for-tests.patch" )
+
 EPYTEST_DESELECT=(
 	# Needs investigation, we weren't running tests at all before
 	pelican/tests/test_testsuite.py::TestSuiteTest::test_error_on_warning
 	pelican/tests/test_pelican.py::TestPelican::test_basic_generation_works
 	pelican/tests/test_pelican.py::TestPelican::test_custom_generation_works
+
+	# For musl, bug 863962
+	# Per Alpine https://git.alpinelinux.org/aports/tree/testing/py3-pelican/APKBUILD
+	pelican/tests/test_contents.py::TestPage::test_datetime
 )
 
 distutils_enable_tests pytest

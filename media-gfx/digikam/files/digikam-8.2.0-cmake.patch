@@ -1,0 +1,181 @@
+From 433d0148be1cedea7e318bf3603fd17f906e721c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 17 Feb 2019 23:51:03 +0100
+Subject: [PATCH] Un-break optional Qt/KF detection
+
+And if we enable an option, make the necessary libraries REQUIRED.
+---
+ core/cmake/rules/RulesKDEFramework.cmake | 41 +++-------------
+ core/cmake/rules/RulesQtFramework.cmake  | 59 +++++-------------------
+ core/cmake/rules/RulesX11.cmake          |  7 +--
+ 3 files changed, 19 insertions(+), 88 deletions(-)
+
+diff --git a/core/cmake/rules/RulesKDEFramework.cmake b/core/cmake/rules/RulesKDEFramework.cmake
+index 9c646d0112..defa399391 100644
+--- a/core/cmake/rules/RulesKDEFramework.cmake
++++ b/core/cmake/rules/RulesKDEFramework.cmake
+@@ -26,35 +26,20 @@ find_package(KF${QT_VERSION_MAJOR} ${KF${QT_VERSION_MAJOR}_MIN_VERSION} QUIET
+ )
+ 
+ if(ENABLE_KFILEMETADATASUPPORT)
+-
+-    find_package(KF${QT_VERSION_MAJOR} ${KF${QT_VERSION_MAJOR}_MIN_VERSION} QUIET
+-                                        OPTIONAL_COMPONENTS
+-                                        FileMetaData            # For Plasma desktop file indexer support.
+-    )
+-
++    # For Plasma desktop file indexer support.
++    find_package(KF${QT_VERSION_MAJOR}FileMetaData ${KF${QT_VERSION_MAJOR}_MIN_VERSION} REQUIRED)
+ endif()
+ 
+ 
+ if(ENABLE_AKONADICONTACTSUPPORT)
+-
+-    find_package(KF${QT_VERSION_MAJOR} ${AKONADI_MIN_VERSION} QUIET
+-                                            OPTIONAL_COMPONENTS
+-                                            Akonadi
+-                                            AkonadiContact      # For KDE Mail Contacts support.
+-                                            Contacts            # API for contacts/address book data.
+-    )
+-
++    find_package(KF${QT_VERSION_MAJOR}Contacts ${KF${QT_VERSION_MAJOR}_MIN_VERSION} REQUIRED) # API for contacts/address book data.
++    find_package(KPim${QT_VERSION_MAJOR}Akonadi ${AKONADI_MIN_VERSION} REQUIRED)
++    find_package(KPim${QT_VERSION_MAJOR}AkonadiContact ${AKONADI_MIN_VERSION} REQUIRED) # For KDE Mail Contacts support.
+ endif()
+ 
+-find_package(KF${QT_VERSION_MAJOR} ${KSANE_MIN_VERSION} QUIET
+-                                      OPTIONAL_COMPONENTS
+-                                      Sane                      # For digital scanner support.
+-)
++find_package(KF${QT_VERSION_MAJOR}Sane ${KSANE_MIN_VERSION} QUIET) # For digital scanner support.
+ 
+-find_package(KF${QT_VERSION_MAJOR} ${CALENDAR_MIN_VERSION} QUIET
+-                                         OPTIONAL_COMPONENTS
+-                                         CalendarCore           # For Calendar tool.
+-)
++find_package(KF${QT_VERSION_MAJOR}CalendarCore ${CALENDAR_MIN_VERSION} QUIET) # For Calendar tool.
+ 
+ if ("${KF${QT_VERSION_MAJOR}CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
+ 
+@@ -62,18 +47,6 @@ if ("${KF${QT_VERSION_MAJOR}CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
+ 
+ endif()
+ 
+-if(ENABLE_AKONADICONTACTSUPPORT AND (NOT KF${QT_VERSION_MAJOR}AkonadiContact_FOUND OR NOT KF${QT_VERSION_MAJOR}Contacts_FOUND))
+-
+-    set(ENABLE_AKONADICONTACTSUPPORT OFF)
+-
+-endif()
+-
+-if(ENABLE_KFILEMETADATASUPPORT AND NOT KF${QT_VERSION_MAJOR}FileMetaData_FOUND)
+-
+-    set(ENABLE_KFILEMETADATASUPPORT OFF)
+-
+-endif()
+-
+ # Check if KIO have been compiled with KIOWidgets. digiKam only needs this one.
+ 
+ if(KF${QT_VERSION_MAJOR}KIO_FOUND)
+diff --git a/core/cmake/rules/RulesQtFramework.cmake b/core/cmake/rules/RulesQtFramework.cmake
+index 495ce4f4ef..0c58f3552a 100644
+--- a/core/cmake/rules/RulesQtFramework.cmake
++++ b/core/cmake/rules/RulesQtFramework.cmake
+@@ -18,48 +18,19 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED
+ )
+ 
+ if(ENABLE_QWEBENGINE)
+-
+-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED
+-                                       NO_MODULE
+-                                       COMPONENTS
+-                                       WebEngineWidgets
+-    )
+-
++    find_package(Qt${QT_VERSION_MAJOR}WebEngineWidgets REQUIRED NO_MODULE)
+ else()
+-
+-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED
+-                                       NO_MODULE
+-                                       COMPONENTS
+-                                       WebKitWidgets
+-    )
+-
++    find_package(Qt${QT_VERSION_MAJOR}WebKitWidgets REQUIRED NO_MODULE)
+ endif()
+ 
+-find_package(Qt${QT_VERSION_MAJOR}
+-             OPTIONAL_COMPONENTS
+-             DBus
+-             OpenGL
+-)
++find_package(Qt${QT_VERSION_MAJOR}DBus)
++find_package(Qt${QT_VERSION_MAJOR}OpenGL)
+ 
+ if(Qt6_FOUND)
+-
+-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED
+-                 NO_MODULE COMPONENTS
+-                 StateMachine
+-    )
+-
+-    find_package(Qt${QT_VERSION_MAJOR}
+-                 OPTIONAL_COMPONENTS
+-                 OpenGLWidgets
+-    )
+-
++    find_package(Qt${QT_VERSION_MAJOR}StateMachine REQUIRED NO_MODULE)
++    find_package(Qt${QT_VERSION_MAJOR}OpenGLWidgets)
+ else()
+-
+-    find_package(Qt${QT_VERSION_MAJOR}
+-                 OPTIONAL_COMPONENTS
+-                 XmlPatterns                # For Rajce plugin
+-    )
+-
++    find_package(Qt${QT_VERSION_MAJOR}XmlPatterns) # For Rajce plugin
+ endif()
+ 
+ if(ENABLE_DBUS)
+@@ -75,17 +46,9 @@ endif()
+ # Qt Dependencies For unit tests and CLI test tools
+ 
+ if(BUILD_TESTING)
++    find_package(Qt${QT_VERSION_MAJOR}Test REQUIRED NO_MODULE)
+ 
+-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED
+-                                       NO_MODULE
+-                                       COMPONENTS
+-                                       Test
+-    )
+-
+-    find_package(Qt${QT_VERSION_MAJOR}
+-                 QUIET
+-                 OPTIONAL_COMPONENTS
+-                 Qml WebView  # Optional, for 'sialis' O2 library test tool.
+-    )
+-
++    # Optional, for 'sialis' O2 library test tool.
++    find_package(Qt${QT_VERSION_MAJOR}Qml QUIET NO_MODULE)
++    find_package(Qt${QT_VERSION_MAJOR}WebView QUIET NO_MODULE)
+ endif()
+diff --git a/core/cmake/rules/RulesX11.cmake b/core/cmake/rules/RulesX11.cmake
+index d7659eed34..9c145970b2 100644
+--- a/core/cmake/rules/RulesX11.cmake
++++ b/core/cmake/rules/RulesX11.cmake
+@@ -11,12 +11,7 @@ find_package(X11)
+ if(X11_FOUND)
+ 
+     if(NOT Qt6_FOUND)
+-
+-        find_package(Qt5 ${QT_MIN_VERSION} NO_MODULE
+-                                           COMPONENTS
+-                                           X11Extras
+-        )
+-
++        find_package(Qt5X11Extras ${QT_MIN_VERSION} NO_MODULE)
+     endif()
+ 
+     set(HAVE_X11 TRUE)
+-- 
+2.43.0
+

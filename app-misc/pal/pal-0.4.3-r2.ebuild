@@ -1,28 +1,29 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit prefix toolchain-funcs
 
 DESCRIPTION="Command-line calendar program"
-HOMEPAGE="http://palcal.sourceforge.net/"
+HOMEPAGE="https://palcal.sourceforge.net/"
 SRC_URI="mirror://sourceforge/palcal/${P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 RDEPEND="
 	>=dev-libs/glib-2.0
-	nls? ( virtual/libintl )
 	sys-libs/ncurses:0
 	sys-libs/readline:0
+	nls? ( virtual/libintl )
 "
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 RESTRICT="test" # Has no tests to run
@@ -45,15 +46,14 @@ src_prepare() {
 }
 
 src_compile() {
-	cd src || die "failed to change to the src directory"
-	emake CC="$(tc-getCC)" OPT="${CFLAGS}" LDOPT="${LDFLAGS}"
+	emake -C src CC="$(tc-getCC)" OPT="${CFLAGS}" LDOPT="${LDFLAGS}"
 }
 
 src_install() {
 	dodoc ChangeLog doc/example.css
+	newman pal.1.template ${PN}.1
 
-	cd src || die "failed to change to the src directory"
-	emake DESTDIR="${D}" install-man install-bin install-share
+	emake -C src DESTDIR="${D}" install-bin install-share
 
 	if use nls; then
 		emake DESTDIR="${D}" install-mo

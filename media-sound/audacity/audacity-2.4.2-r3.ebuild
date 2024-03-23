@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -95,7 +95,7 @@ src_configure() {
 		-Daudacity_use_pa_alsa=$(usex alsa)
 		-Daudacity_use_pa_jack=$(usex jack linked off)
 		-Daudacity_use_pa_oss=$(usex oss)
-		#-Daudacity_use_pch leaving it to the default behavior
+		-Daudacity_use_pch=OFF
 		-Daudacity_use_portaudio=local # only 'local' option is present
 		-Daudacity_use_portmixer=$(usex portmixer local off)
 		-Daudacity_use_portsmf=$(usex portsmf local off)

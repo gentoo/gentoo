@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,7 @@ multilib_src_configure() {
 	fi
 
 	local emesonargs=(
-		--buildtype=release
+		-Dbuildtype=release
 		-Dfft=fftw
 		-Dresampler=libsamplerate
 		-Ddefault_library=$(use static-libs && echo "both" || echo "shared")

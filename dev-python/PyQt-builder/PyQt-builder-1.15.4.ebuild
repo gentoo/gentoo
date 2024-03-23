@@ -13,7 +13,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt-builder/"
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]

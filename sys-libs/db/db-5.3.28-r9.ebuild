@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ RDEPEND="tcl? ( >=dev-lang/tcl-8.5.15-r1:0=[${MULTILIB_USEDEP}] )"
 # bug #841698
 # Need binutils for tc-ld-force-bfd
 BDEPEND="
-	sys-devel/autoconf-archive
+	dev-build/autoconf-archive
 	sys-devel/binutils:*
 "
 

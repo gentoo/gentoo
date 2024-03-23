@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="sourceforge">vim-taglist</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

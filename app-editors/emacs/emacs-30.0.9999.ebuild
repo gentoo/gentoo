@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux small-ja-dic sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -119,7 +119,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	tree-sitter? ( dev-libs/tree-sitter )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	xattr? ( sys-apps/attr )
 	zlib? ( sys-libs/zlib )
 	gui? (
@@ -169,6 +169,12 @@ RDEPEND+=" ${IDEPEND}"
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
+# Suppress false positive QA warnings #898304 #925091
+QA_CONFIG_IMPL_DECL_SKIP=(
+	malloc_set_state malloc_get_state MIN static_assert alignof unreachable
+	statvfs64 re_set_syntax re_compile_pattern re_search re_match
+)
+
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[^0-9.]*\([0-9.]*\).*/\1/p' \
@@ -204,6 +210,12 @@ src_prepare() {
 	# effect on the installed image. Suppress it by supplying pkg-config
 	# with a wrong library name.
 	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
+
+	# Tests that use bubblewrap don't work in the sandbox:
+	# "bwrap: setting up uid map: Permission denied"
+	# So, disrupt the search for the bwrap executable.
+	sed -i -e 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
+		test/lisp/emacs-lisp/bytecomp-tests.el || die
 
 	AT_M4DIR=m4 eautoreconf
 }
@@ -368,7 +380,6 @@ src_configure() {
 		$(use_with libxml2 xml2) \
 		$(use_with mailutils) \
 		$(use_with selinux) \
-		$(use_with small-ja-dic) \
 		$(use_with sqlite sqlite3) \
 		$(use_with ssl gnutls) \
 		$(use_with systemd libsystemd) \
@@ -402,14 +413,6 @@ src_test() {
 	# subtests which caused failure. Elements should begin with a %.
 	# e.g. %lisp/gnus/mml-sec-tests.el.
 	local exclude_tests=(
-		# Reason: not yet known
-		# mml-secure-en-decrypt-{1,2,3,4}
-		# mml-secure-find-usable-keys-{1,2}
-		# mml-secure-key-checks
-		# mml-secure-select-preferred-keys-4
-		# mml-secure-sign-verify-1
-		%lisp/gnus/mml-sec-tests.el
-
 		# Reason: permission denied on /nonexistent
 		# (vc-*-bzr only fails if breezy is installed, as they
 		# try to access cache dirs under /nonexistent)
@@ -426,12 +429,34 @@ src_test() {
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
 
-		# Reason: fails if bubblewrap (bwrap) is installed
-		# "bwrap: setting up uid map: Permission denied"
-		#
-		# bytecomp-tests--dest-mountpoint
-		%lisp/emacs-lisp/bytecomp-tests.el
+		# Reason: tries to access network
+		# internet-is-working
+		%src/process-tests.el
+
+		# Reason: fails with stable version of tree-sitter-json due to
+		# ast changes. Bug #922525
+		%src/treesit-tests.log
+
+		# Reason: test is not skipped if tree-sitter-tsx is not installed
+		# Bug #922525
+		%lisp/progmodes/typescript-ts-mode-tests.el
 	)
+	use threads || exclude_tests+=(
+			%lisp/server-tests.el
+			%lisp/progmodes/eglot-tests.el
+			%src/emacs-module-tests.el
+			%src/keyboard-tests.el
+		)
+	use xpm || exclude_tests+=( %src/image-tests.el )
+
+	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
+	# for socket paths on Linux.
+	mkdir "${T}"/gpg || die
+	local f
+	for f in browser extra ssh; do
+		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \
+			> "test/lisp/gnus/mml-sec-resources/S.gpg-agent.${f}" || die
+	done
 
 	# See test/README for possible options
 	emake \

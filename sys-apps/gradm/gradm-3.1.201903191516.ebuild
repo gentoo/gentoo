@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs udev
+inherit flag-o-matic toolchain-funcs udev
 
 MY_PV="$(ver_rs 2 -)"
 
@@ -18,8 +18,8 @@ IUSE="pam"
 
 RDEPEND=""
 DEPEND="
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	pam? ( sys-libs/pam )"
 
 S=${WORKDIR}/${PN}
@@ -36,6 +36,9 @@ src_prepare() {
 src_compile() {
 	local target
 	use pam || target="nopam"
+
+	# bug #863569
+	filter-lto
 
 	emake ${target} CC="$(tc-getCC)" OPT_FLAGS="${CFLAGS}"
 }

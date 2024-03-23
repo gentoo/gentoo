@@ -12,7 +12,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE="nls split-usr"
+IUSE="nls"
 RESTRICT="test"
 
 RDEPEND="dev-libs/libxml2
@@ -40,18 +40,6 @@ src_prepare() {
 
 src_configure() {
 	econf --enable-largefile $(use_enable nls)
-}
-
-src_install() {
-	local ssbindir
-	if use split-usr; then
-		ssbindir=${EPREFIX}/sbin
-	else
-		ssbindir=${EPREFIX}/usr/sbin
-	fi
-
-	emake DESTDIR="${D}" sbindir="${ssbindir}" install
-	einstalldocs
 }
 
 pkg_postinst() {

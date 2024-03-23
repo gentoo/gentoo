@@ -32,9 +32,6 @@
 			used. You need this enabled on the server, but you might want to
 			disable it on the client.
 		</flag>
-		<flag name="snorenotify">
-			Support for Snore notification framework.
-		</flag>
 		<flag name="urlpreview">
 			Use QtWebEngine rendering engine for showing URL thumbnails.
 		</flag>

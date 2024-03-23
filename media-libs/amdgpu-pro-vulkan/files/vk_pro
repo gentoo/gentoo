@@ -1,0 +1,2 @@
+#!/bin/bash
+VK_DRIVER_FILES="/usr/share/vulkan/icd.d/amd_pro_icd32.json:/usr/share/vulkan/icd.d/amd_pro_icd64.json" "$@"

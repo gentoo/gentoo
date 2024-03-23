@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 pkg_postinst() {
-	optfeature "cpio support" app-arch/cpio
+	optfeature "cpio support" app-alternatives/cpio
 	optfeature "tar support" app-arch/tar
 	optfeature "qemu support" app-emulation/qemu
 	optfeature "dosfstools support" sys-fs/dosfstools

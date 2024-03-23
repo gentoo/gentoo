@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -130,7 +130,7 @@ fi
 # @DESCRIPTION:
 # Array of tests that should be skipped when running CTest.
 
-[[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-util/cmake-${CMAKE_MIN_VERSION}\" directly"
+[[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-build/cmake-${CMAKE_MIN_VERSION}\" directly"
 [[ ${CMAKE_BUILD_DIR} ]] && die "The ebuild must be migrated to BUILD_DIR"
 [[ ${CMAKE_REMOVE_MODULES} ]] && die "CMAKE_REMOVE_MODULES is banned, set CMAKE_REMOVE_MODULES_LIST array instead"
 [[ ${CMAKE_UTILS_QA_SRC_DIR_READONLY} ]] && die "Use CMAKE_QA_SRC_DIR_READONLY instead"
@@ -139,7 +139,7 @@ fi
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
-		BDEPEND="sys-devel/make"
+		BDEPEND="dev-build/make"
 		;;
 	ninja)
 		BDEPEND="${NINJA_DEPEND}"
@@ -151,7 +151,7 @@ case ${CMAKE_MAKEFILE_GENERATOR} in
 esac
 
 if [[ ${PN} != cmake ]]; then
-	BDEPEND+=" >=dev-util/cmake-3.20.5"
+	BDEPEND+=" >=dev-build/cmake-3.20.5"
 fi
 
 # @FUNCTION: cmake_run_in
@@ -541,6 +541,8 @@ cmake_src_configure() {
 		set(CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		set(BUILD_SHARED_LIBS ON CACHE BOOL "")
 		set(Python3_FIND_UNVERSIONED_NAMES FIRST CACHE STRING "")
+		set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "")
+		set(CMAKE_DISABLE_PRECOMPILE_HEADERS ON CACHE BOOL "")
 	_EOF_
 
 	if [[ -n ${_ECM_ECLASS} ]]; then

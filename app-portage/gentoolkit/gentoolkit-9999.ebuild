@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,10 +22,12 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 LICENSE="GPL-2"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Need newer Portage for eclean-pkg API, bug #900224
 DEPEND="
-	>=sys-apps/portage-3.0.53[${PYTHON_USEDEP}]
+	>=sys-apps/portage-3.0.57[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
@@ -40,10 +42,13 @@ RDEPEND="
 # >=meson-1.2.1-r1 for bug #912051
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/meson-1.2.1-r1
+	>=dev-build/meson-1.2.1-r1
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	' python3_12)
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)
 "
 
 src_prepare() {
@@ -64,6 +69,7 @@ src_configure() {
 my_src_configure() {
 	local emesonargs=(
 		-Dcode-only=${code_only}
+		$(meson_use test tests)
 		-Deprefix="${EPREFIX}"
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 	)
@@ -95,8 +101,8 @@ my_src_install() {
 	)
 
 	meson_src_install
-	python_optimize "${pydirs[@]}"
 	python_fix_shebang "${pydirs[@]}"
+	python_optimize "${pydirs[@]}"
 }
 
 pkg_postinst() {

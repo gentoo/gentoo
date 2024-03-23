@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -253,23 +253,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	cat <<EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
+	dotnet-pkg_src_prepare
 
-	# Reimplementing "dotnet build.fsx -p Init" in shell:
+	# Reimplementing "dotnet build.fsx -p Init" in shell.
 	mkdir -p "${S}/.deps" || die
 	ln -s "${WORKDIR}/fsharp-${FCS_COMMIT}" "${S}/.deps/${FCS_COMMIT}" || die
 	find "${S}/.deps/${FCS_COMMIT}/src" -type f \
 		 -exec sed -e "s|FSharp.Compiler|Fantomas.FCS|g" -i {} + || die
-
-	dotnet-pkg_src_prepare
 }
 
 src_configure() {

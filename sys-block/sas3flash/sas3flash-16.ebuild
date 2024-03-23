@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit mount-boot secureboot
 
 DESCRIPTION="Flash utility for LSI MPT-SAS3 controller"
@@ -10,7 +11,7 @@ HOMEPAGE="https://www.broadcom.com/products/storage/host-bus-adapters/sas-9300-8
 LICENSE="LSI"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x64-solaris"
-IUSE="doc efi"
+IUSE="doc uefi"
 
 RESTRICT="strip fetch mirror"
 BDEPEND="app-arch/unzip"
@@ -31,7 +32,7 @@ SRC_URI="
 	x86? ( ${SRC_URI_LINUX} )
 	ppc64? ( ${SRC_URI_LINUX} )
 	x64-solaris? ( ${SRC_URI_SOLARIS} )
-	efi? ( ${SRC_URI_UEFI} )
+	uefi? ( ${SRC_URI_UEFI} )
 	doc? ( "${SRC_URI_BASE}/oracle/files/${DISTFILE_DOC}" )"
 
 S="${WORKDIR}"
@@ -48,7 +49,7 @@ pkg_nofetch() {
 }
 
 pkg_setup() {
-	use efi && secureboot_pkg_setup
+	use uefi && secureboot_pkg_setup
 }
 
 supportedcards() {
@@ -86,7 +87,7 @@ src_install() {
 		DOCS+=( Installer_P"${PV}"_for_Solaris/README_Installer_P"${PV}"_Solaris.txt )
 	fi
 
-	if use efi; then
+	if use uefi; then
 		exeinto /boot/efi/
 		DOCS+=( Installer_P"${PV}"_for_UEFI/README_Installer_P"${PV}"_UEFI.txt )
 		if use amd64; then

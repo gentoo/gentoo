@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python{3_9,3_10,3_11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit autotools fcaps flag-o-matic linux-info python-single-r1 systemd toolchain-funcs
+inherit autotools fcaps flag-o-matic linux-info optfeature python-single-r1 systemd toolchain-funcs
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps cloud +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="caps cloud +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -84,6 +84,10 @@ FILECAPS=(
 	'usr/libexec/netdata/plugins.d/debugfs.plugin'
 )
 
+PATCHES=(
+	"${FILESDIR}/${P}-dbengine.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	linux-info_pkg_setup
@@ -101,6 +105,7 @@ src_configure() {
 		[[ $(tc-endian) == big ]] && append-flags -mno-vsx
 	fi
 
+	# --enable-lto only appends -flto
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
@@ -112,7 +117,7 @@ src_configure() {
 		$(use_enable nfacct plugin-nfacct) \
 		$(use_enable ipmi plugin-freeipmi) \
 		--disable-exporting-kinesis \
-		$(use_enable lto lto) \
+		--disable-lto \
 		$(use_enable mongodb exporting-mongodb) \
 		$(use_enable prometheus exporting-prometheus-remote-write) \
 		$(use_enable xen plugin-xenstat) \
@@ -160,4 +165,6 @@ pkg_postinst() {
 	if use ipmi ; then
 	    fcaps 'cap_dac_override' 'usr/libexec/netdata/plugins.d/freeipmi.plugin'
 	fi
+
+	optfeature "go.d external plugin" net-analyzer/netdata-go-plugin
 }

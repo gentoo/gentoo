@@ -1,0 +1,49 @@
+Patch from https://github.com/aristocratos/btop/pull/648/files.
+Allows to disable setting -D_FORTIFY_SOURCE in the build system,
+so the fortification level can be configured freely in make.conf.
+
+Bug: https://bugs.gentoo.org/898148
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,6 +41,7 @@ option(BTOP_LTO "Enable LTO" ON)
+ option(BTOP_USE_MOLD "Use mold to link btop" OFF)
+ option(BTOP_PEDANTIC "Enable a bunch of additional warnings" OFF)
+ option(BTOP_WERROR "Compile with warnings as errors" OFF)
++option(BTOP_FORTIFY "Detect buffer overflows with _FORTIFY_SOURCE=3" ON)
+ option(BTOP_GPU "Enable GPU support" ON)
+ cmake_dependent_option(BTOP_RSMI_STATIC "Link statically to ROCm SMI" OFF "BTOP_GPU" OFF)
+ 
+@@ -112,7 +113,7 @@ target_compile_definitions(btop PRIVATE
+   _FILE_OFFSET_BITS=64
+   $<$<CONFIG:Debug>:_GLIBCXX_ASSERTIONS _LIBCPP_ENABLE_ASSERTIONS=1>
+   # Only has an effect with optimizations enabled
+-  $<$<NOT:$<CONFIG:Debug>>:_FORTIFY_SOURCE=2>
++  $<$<AND:$<NOT:$<CONFIG:Debug>>,$<BOOL:${BTOP_FORTIFY}>>:_FORTIFY_SOURCE=3>
+ )
+ 
+ target_include_directories(btop SYSTEM PRIVATE include)
+--- a/Makefile
++++ b/Makefile
+@@ -50,6 +50,11 @@ ifeq ($(GPU_SUPPORT),true)
+ 	override ADDFLAGS += -DGPU_SUPPORT
+ endif
+ 
++FORTIFY_SOURCE ?= true
++ifeq ($(FORTIFY_SOURCE),true)
++	override ADDFLAGS += -D_FORTIFY_SOURCE=3
++endif
++
+ #? Compiler and Linker
+ ifeq ($(shell $(CXX) --version | grep clang >/dev/null 2>&1; echo $$?),0)
+ 	override CXX_IS_CLANG := true
+@@ -174,7 +179,7 @@ override GOODFLAGS := $(foreach flag,$(TESTFLAGS),$(strip $(shell echo "int main
+ override REQFLAGS   := -std=c++20
+ WARNFLAGS			:= -Wall -Wextra -pedantic
+ OPTFLAGS			:= -O2 -ftree-vectorize -flto=$(LTO)
+-LDCXXFLAGS			:= -pthread -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS -D_FILE_OFFSET_BITS=64 $(GOODFLAGS) $(ADDFLAGS)
++LDCXXFLAGS			:= -pthread -D_GLIBCXX_ASSERTIONS -D_FILE_OFFSET_BITS=64 $(GOODFLAGS) $(ADDFLAGS)
+ override CXXFLAGS	+= $(REQFLAGS) $(LDCXXFLAGS) $(OPTFLAGS) $(WARNFLAGS)
+ override LDFLAGS	+= $(LDCXXFLAGS) $(OPTFLAGS) $(WARNFLAGS)
+ INC					:= $(foreach incdir,$(INCDIRS),-isystem $(incdir)) -I$(SRCDIR)
+ 

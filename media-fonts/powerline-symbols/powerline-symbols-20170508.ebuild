@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/powerline/powerline"
 SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 # We're redistributing just the (unversioned) font from the upstream repo here
 
-LICENSE="MIT-with-advertising"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~loong ~riscv x86"
 IUSE=""

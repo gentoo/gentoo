@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -152,8 +152,16 @@ python_test() {
 		tests/unit/mainwindow/test_tabwidget.py::TestTabWidget::test_tab_text_not_edlided_for_wide_tabs
 	)
 
-	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
-	epytest -p xvfb -k 'not _bench and not _matches_tree and not _warning'
+	local epytestargs=(
+		# prefer pytest-xvfb over virtx given same upstream and is expected
+		-p xvfb
+		# skip warning tests broken by -Wdefault, and benchmarks
+		-k 'not _bench and not _matches_tree and not _warning'
+		# override eclass' settings, tempdirs are re-used by Qt
+		-o tmp_path_retention_policy=all
+	)
+
+	epytest "${epytestargs[@]}"
 }
 
 python_install_all() {
@@ -194,5 +202,13 @@ pkg_postinst() {
 		ewarn "USE=qt6 is disabled, be warned that Qt5's WebEngine uses an older"
 		ewarn "chromium version. While it is relatively maintained for security, it will"
 		ewarn "cause issues for sites/features designed with a newer version in mind."
+	fi
+
+	if { use qt6 && has_version 'dev-qt/qtwebengine:6[bindist]'; } ||
+		{ use !qt6 && has_version 'dev-qt/qtwebengine:5[bindist]'; }
+	then
+		ewarn
+		ewarn "USE=bindist is set on dev-qt/qtwebengine, be warned that this"
+		ewarn "will prevent playback of proprietary media formats (e.g. h264)."
 	fi
 }

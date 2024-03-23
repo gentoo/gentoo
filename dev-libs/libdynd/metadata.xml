@@ -15,9 +15,6 @@
     preview development state, and can be thought of as a sandbox where
     features are being tried and tweaked to gain experience with them.
   </longdescription>
-  <use>
-    <flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
-  </use>
   <upstream>
     <remote-id type="github">libdynd/libdynd</remote-id>
   </upstream>

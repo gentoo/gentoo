@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,10 @@ RDEPEND="
 	cdr? ( >=app-cdr/brasero-3.2.0 )
 	svg? ( >=gnome-base/librsvg-2.34:2 )
 	webp? ( >=media-libs/libwebp-0.2.0:= )
-	jpegxl? ( >=media-libs/libjxl-0.3.0 )
+	jpegxl? (
+		>=media-libs/libjxl-0.3.0
+		<media-libs/libjxl-0.9
+	)
 	heif? ( >=media-libs/libheif-1.11:= )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	colord? (
@@ -61,8 +64,8 @@ BDEPEND="
 	>=dev-libs/appstream-0.14.6
 	dev-util/glib-utils
 	dev-util/itstool
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "

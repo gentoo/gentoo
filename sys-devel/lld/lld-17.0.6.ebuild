@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~arm64-macos"
 IUSE="debug test zstd"
 RESTRICT="!test? ( test )"
 
@@ -27,7 +27,6 @@ RDEPEND="
 BDEPEND="
 	sys-devel/llvm:${LLVM_MAJOR}
 	test? (
-		>=dev-util/cmake-3.16
 		$(python_gen_any_dep ">=dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
 	)
 "
@@ -59,6 +58,9 @@ src_unpack() {
 }
 
 src_configure() {
+	# ODR violations (https://github.com/llvm/llvm-project/issues/83529, bug #922353)
+	filter-lto
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
@@ -68,6 +70,8 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_INCLUDE_TESTS=$(usex test)
+		-DLLVM_ENABLE_ZLIB=FORCE_ON
+		-DLLVM_ENABLE_ZSTD=$(usex zstd FORCE_ON OFF)
 	)
 
 	use test && mycmakeargs+=(

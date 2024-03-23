@@ -9,7 +9,6 @@
 		<remote-id type="github">facebookincubator/gloo</remote-id>
 	</upstream>
 	<use>
-		<flag name="cuda">Enable CUDA support</flag>
 		<flag name="libuv">Enable libuv support</flag>
 		<flag name="redis">Enable Redis backend for storage via <pkg>dev-libs/hiredis</pkg></flag>
 	</use>

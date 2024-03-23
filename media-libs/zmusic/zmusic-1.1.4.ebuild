@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PN="ZMusic"
 DESCRIPTION="GZDoom's music system as a standalone library"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ZDoom/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD DUMB-0.9.3 GPL-3 LGPL-2.1+ LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="alsa fluidsynth mpg123 +sndfile"
 
 DEPEND="
@@ -35,6 +35,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860117
+	# https://github.com/ZDoom/ZMusic/issues/56
+	filter-lto
+
 	local mycmakeargs=(
 		-DFORCE_INTERNAL_ZLIB=OFF
 		-DFORCE_INTERNAL_GME=ON

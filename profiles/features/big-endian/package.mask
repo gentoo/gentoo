@@ -1,5 +1,17 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-09)
+# Test failures on BE (#920353, #902191)
+net-misc/nextcloud-client
+
+# matoro <matoro_gentoo@matoro.tk> (2024-01-01)
+# Known broken on BE (#906100)
+games-simulation/openrct2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-18)
+# Using boringssl which is explicit no-support for BE (#733080)
+net-libs/quiche
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-17)
 # media-libs/libvpx casualties (#700902)
@@ -44,6 +56,7 @@ kde-apps/incidenceeditor
 kde-apps/eventviews
 kde-apps/calendarsupport
 kde-apps/calendarjanitor
+net-im/telegram-desktop
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # Test failures on BE (#700902)

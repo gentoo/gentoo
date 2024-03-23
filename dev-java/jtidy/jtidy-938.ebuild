@@ -14,7 +14,7 @@ SRC_URI="https://master.dl.sourceforge.net/project/jtidy/JTidy/r${PV}/jtidy-r${P
 
 LICENSE="HTML-Tidy W3C"
 SLOT="9"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND="dev-java/ant-core:0"

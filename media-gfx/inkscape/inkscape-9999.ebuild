@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,6 +8,9 @@ PYTHON_REQ_USE="xml(+)"
 MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
+DESCRIPTION="SVG based generic vector-drawing program"
+HOMEPAGE="https://inkscape.org/ https://gitlab.com/inkscape/inkscape/"
+
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/inkscape/inkscape.git"
@@ -16,8 +19,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-DESCRIPTION="SVG based generic vector-drawing program"
-HOMEPAGE="https://inkscape.org/ https://gitlab.com/inkscape/inkscape/"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -63,6 +65,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pillow[jpeg?,tiff,webp,${PYTHON_USEDEP}]
 		media-gfx/scour[${PYTHON_USEDEP}]
 	')
 	cdr? (
@@ -104,8 +107,6 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-S="${WORKDIR}/${MY_P}"
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -130,7 +131,9 @@ src_prepare() {
 }
 
 src_configure() {
-	# aliasing unsafe wrt #310393
+	# ODR violation (https://gitlab.com/inkscape/lib2geom/-/issues/71, bug #859628)
+	filter-lto
+	# Aliasing unsafe (bug #310393)
 	append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
@@ -185,14 +188,12 @@ src_install() {
 	cmake_src_install
 
 	find "${ED}" -type f -name "*.la" -delete || die
-
 	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.bz2' -exec bzip2 -d {} \; || die
-
 	find "${ED}"/usr/share/man -type f -maxdepth 3 -name '*.gz' -exec gzip -d {} \; || die
 
 	local extdir="${ED}"/usr/share/${PN}/extensions
-
 	if [[ -e "${extdir}" ]] && [[ -n $(find "${extdir}" -mindepth 1) ]]; then
+		python_fix_shebang "${ED}"/usr/share/${PN}/extensions
 		python_optimize "${ED}"/usr/share/${PN}/extensions
 	fi
 

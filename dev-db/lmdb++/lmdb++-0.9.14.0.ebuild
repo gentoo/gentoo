@@ -13,7 +13,6 @@ SRC_URI="mirror://sourceforge/lmdbxx/${PV}/${MY_P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="dev-db/lmdb"
 

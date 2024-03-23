@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">Levenshtein</remote-id>
-		<remote-id type="github">maxbachmann/Levenshtein</remote-id>
+		<remote-id type="github">rapidfuzz/Levenshtein</remote-id>
 	</upstream>
 </pkgmetadata>

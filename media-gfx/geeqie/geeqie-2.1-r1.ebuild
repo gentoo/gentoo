@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit lua-single meson optfeature xdg
+inherit flag-o-matic lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
 
 RDEPEND="gnome-extra/zenity
@@ -46,6 +46,7 @@ BDEPEND="
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-locale.patch
 	"${FILESDIR}"/${P}-lua_hpp.patch
 	"${FILESDIR}"/${P}-exiv2-0.28.0.patch
 )
@@ -63,6 +64,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/585432
+	# https://github.com/BestImageViewer/geeqie/issues/1270
+	filter-lto
+
 	local emesonargs=(
 		-Dgq_helpdir="share/doc/${PF}"
 		-Dgq_htmldir="share/doc/${PF}/html"

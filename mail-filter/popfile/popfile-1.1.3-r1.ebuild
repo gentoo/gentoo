@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit edos2unix
 
 DESCRIPTION="Anti-spam bayesian filter"
-HOMEPAGE="http://getpopfile.org"
-SRC_URI="http://getpopfile.org/downloads/${P}.zip"
+HOMEPAGE="https://getpopfile.org"
+SRC_URI="https://getpopfile.org/downloads/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="GPL-2"

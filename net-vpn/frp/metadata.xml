@@ -5,6 +5,10 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<use>
+		<flag name="client">Build and install frp client (frpc)</flag>
+		<flag name="server">Build and install frp server (frps)</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">fatedier/frp</remote-id>
 	</upstream>

@@ -5,4 +5,11 @@
 	<longdescription>
 		Babeltrace is a command-line tool and library to read and convert trace files to and from different formats. It supports the CTF format, which is outputted by the LTTng 2.0 tracers.
 	</longdescription>
+	<use>
+		<flag name="elfutils">Build the <pkg>dev-util/lttng-ust</pkg> debug information filter component class</flag>
+		<flag name="plugins">Build support for Babeltrace 2 Python plugins</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">efficios/babeltrace</remote-id>
+	</upstream>
 </pkgmetadata>

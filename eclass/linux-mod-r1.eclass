@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod-r1.eclass
@@ -109,9 +109,9 @@ esac
 if [[ ! ${_LINUX_MOD_R1_ECLASS} ]]; then
 _LINUX_MOD_R1_ECLASS=1
 
-inherit edo linux-info multiprocessing toolchain-funcs
+inherit dist-kernel-utils edo linux-info multiprocessing toolchain-funcs
 
-IUSE="dist-kernel modules-sign +strip ${MODULES_OPTIONAL_IUSE}"
+IUSE="dist-kernel modules-compress modules-sign +strip ${MODULES_OPTIONAL_IUSE}"
 
 RDEPEND="
 	sys-apps/kmod[tools]
@@ -468,6 +468,7 @@ linux-mod-r1_pkg_postinst() {
 	debug-print-function ${FUNCNAME[0]} "${@}"
 	_modules_check_function ${#} 0 0 || return 0
 
+	dist-kernel_compressed_module_cleanup "${EROOT}/lib/modules/${KV_FULL}"
 	_modules_update_depmod
 
 	# post_process ensures modules were installed and that the eclass' USE
@@ -649,6 +650,24 @@ _modules_prepare_kernel() {
 	fi
 
 	linux-info_pkg_setup
+
+	if use dist-kernel &&
+		! has_version "~virtual/dist-kernel-${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+	then
+		ewarn
+		ewarn "The kernel modules in ${CATEGORY}/${PN} are being built for"
+		ewarn "kernel version ${KV_FULL}. But this does not match the"
+		ewarn "installed version of virtual/dist-kernel."
+		ewarn
+		ewarn "If this is not intentional, the problem may be corrected by"
+		ewarn "using \"eselect kernel\" to set the default kernel version to"
+		ewarn "the same version as the installed version of virtual/dist-kernel."
+		ewarn
+		ewarn "If the distribution kernel is being downgraded, ensure that"
+		ewarn "virtual/dist-kernel is also downgraded to the same version"
+		ewarn "before rebuilding external kernel modules."
+		ewarn
+	fi
 }
 
 # @FUNCTION: _modules_prepare_sign
@@ -835,9 +854,18 @@ _modules_prepare_toolchain() {
 # If enabled in the kernel configuration, this compresses the given
 # modules using the same format.
 _modules_process_compress() {
+	use modules-compress || return
+
 	local -a compress
 	if linux_chkconfig_present MODULE_COMPRESS_XZ; then
-		compress=(xz -qT"$(makeopts_jobs)" --memlimit-compress=50%)
+		compress=(
+			xz -q
+			--memlimit-compress=50%
+			--threads="$(makeopts_jobs)"
+			# match options from kernel's Makefile.modinst (bug #920837)
+			--check=crc32
+			--lzma2=dict=1MiB
+		)
 	elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
 		if type -P pigz &>/dev/null; then
 			compress=(pigz -p"$(makeopts_jobs)")
@@ -846,13 +874,13 @@ _modules_process_compress() {
 		fi
 	elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
 		compress=(zstd -qT"$(makeopts_jobs)" --rm)
+	else
+		die "USE=modules-compress enabled but no MODULE_COMPRESS* configured"
 	fi
 
-	if [[ -v compress ]]; then
-		# could fail, assumes have commands that were needed for the kernel
-		einfo "Compressing modules (matching the kernel configuration) ..."
-		edob "${compress[@]}" -- "${@}"
-	fi
+	# could fail, assumes have commands that were needed for the kernel
+	einfo "Compressing modules (matching the kernel configuration) ..."
+	edob "${compress[@]}" -- "${@}"
 }
 
 # @FUNCTION: _modules_process_depmod.d

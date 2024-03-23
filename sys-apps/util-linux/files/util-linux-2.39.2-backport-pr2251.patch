@@ -1,0 +1,268 @@
+https://bugs.gentoo.org/914791
+https://github.com/util-linux/util-linux/issues/2249
+https://github.com/util-linux/util-linux/pull/2251
+
+From 8b36444f447949c3ab477f2c43b45a94c30ee7bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Sun, 21 May 2023 21:42:14 +0200
+Subject: [PATCH 1/4] fadvise: (test) dynamically calculate expected test
+ values
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
+---
+ tests/ts/fadvise/drop | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/tests/ts/fadvise/drop b/tests/ts/fadvise/drop
+index 7c7eee5dc2..86c0d5b0a3 100755
+--- a/tests/ts/fadvise/drop
++++ b/tests/ts/fadvise/drop
+@@ -16,7 +16,7 @@ ts_check_prog "sleep"
+ ts_cd "$TS_OUTDIR"
+ 
+ FILE="ddtest"
+-BS=4k
++BS=4096
+ COUNT=8
+ 
+ FILE_FS="$("$TS_CMD_FINDMNT" -nr -o FSTYPE -T "$PWD")"
+@@ -41,22 +41,22 @@ create_file() {
+     echo
+ 
+     create_file
+-    echo "offset: 8192"
+-    "$TS_CMD_FADVISE" -o 8192 "$FILE"
++    echo "offset: $(( 2 * $BS ))"
++    "$TS_CMD_FADVISE" -o $(( 2 * $BS )) "$FILE"
+     echo status: $?
+     "$TS_CMD_FINCORE" "$FILE"
+     echo
+ 
+     create_file
+-    echo "length: 16384"
+-    "$TS_CMD_FADVISE" -l 16384 "$FILE"
++    echo "length: $(( 4 * $BS ))"
++    "$TS_CMD_FADVISE" -l $(( 4 * $BS )) "$FILE"
+     echo status: $?
+     "$TS_CMD_FINCORE" "$FILE"
+     echo
+ 
+     create_file
+-    echo "offset: 8192, length: 16384 fd: 42"
+-    "$TS_CMD_FADVISE" -o 8192 -l 16384 --fd 42 42<"$FILE"
++    echo "offset: $(( 2 * $BS )), length: $(( 4 * $BS )) fd: 42"
++    "$TS_CMD_FADVISE" -o $(( 2 * $BS )) -l $(( 4 * $BS )) --fd 42 42<"$FILE"
+     echo status: $?
+     "$TS_CMD_FINCORE" "$FILE"
+     echo
+
+From e5009e773fc801eca887dd43b721cd1b1aa327be Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Sun, 21 May 2023 21:43:38 +0200
+Subject: [PATCH 2/4] fadvise: (tests) factor out calls to "fincore"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This will make it easier to pass argument later.
+
+Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
+---
+ tests/ts/fadvise/drop | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/tests/ts/fadvise/drop b/tests/ts/fadvise/drop
+index 86c0d5b0a3..8869b7da4d 100755
+--- a/tests/ts/fadvise/drop
++++ b/tests/ts/fadvise/drop
+@@ -28,37 +28,41 @@ create_file() {
+     dd if=/dev/zero of="$FILE" bs=$BS count=$COUNT conv=fsync >& /dev/null
+ }
+ 
++do_fincore() {
++    "$TS_CMD_FINCORE" "$FILE"
++}
++
+ {
+     create_file
+-    "$TS_CMD_FINCORE" "$FILE"
++    do_fincore
+     echo
+ 
+     create_file
+     echo "whole file"
+     "$TS_CMD_FADVISE" "$FILE"
+     echo status: $?
+-    "$TS_CMD_FINCORE" "$FILE"
++    do_fincore
+     echo
+ 
+     create_file
+     echo "offset: $(( 2 * $BS ))"
+     "$TS_CMD_FADVISE" -o $(( 2 * $BS )) "$FILE"
+     echo status: $?
+-    "$TS_CMD_FINCORE" "$FILE"
++    do_fincore
+     echo
+ 
+     create_file
+     echo "length: $(( 4 * $BS ))"
+     "$TS_CMD_FADVISE" -l $(( 4 * $BS )) "$FILE"
+     echo status: $?
+-    "$TS_CMD_FINCORE" "$FILE"
++    do_fincore
+     echo
+ 
+     create_file
+     echo "offset: $(( 2 * $BS )), length: $(( 4 * $BS )) fd: 42"
+     "$TS_CMD_FADVISE" -o $(( 2 * $BS )) -l $(( 4 * $BS )) --fd 42 42<"$FILE"
+     echo status: $?
+-    "$TS_CMD_FINCORE" "$FILE"
++    do_fincore
+     echo
+ 
+     rm "$FILE"
+
+From 33980996d0b429fc59c40f8352633c0a21a0f96a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Sun, 21 May 2023 21:44:20 +0200
+Subject: [PATCH 3/4] fadvise: (test) don't compare fincore page counts
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+These depend on the machines pagesize and are therefore not a good
+comparision.
+
+Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
+---
+ tests/expected/fadvise/drop | 20 ++++++++++----------
+ tests/ts/fadvise/drop       |  2 +-
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/tests/expected/fadvise/drop b/tests/expected/fadvise/drop
+index f2360b56fb..25f23e050a 100644
+--- a/tests/expected/fadvise/drop
++++ b/tests/expected/fadvise/drop
+@@ -1,23 +1,23 @@
+-  RES PAGES SIZE FILE
+-  32K     8  32K ddtest
++  RES SIZE FILE
++  32K  32K ddtest
+ 
+ whole file
+ status: 0
+-RES PAGES SIZE FILE
+- 0B     0  32K ddtest
++RES SIZE FILE
++ 0B  32K ddtest
+ 
+ offset: 8192
+ status: 0
+-RES PAGES SIZE FILE
+- 8K     2  32K ddtest
++RES SIZE FILE
++ 8K  32K ddtest
+ 
+ length: 16384
+ status: 0
+-  RES PAGES SIZE FILE
+-  16K     4  32K ddtest
++  RES SIZE FILE
++  16K  32K ddtest
+ 
+ offset: 8192, length: 16384 fd: 42
+ status: 0
+-  RES PAGES SIZE FILE
+-  16K     4  32K ddtest
++  RES SIZE FILE
++  16K  32K ddtest
+ 
+diff --git a/tests/ts/fadvise/drop b/tests/ts/fadvise/drop
+index 8869b7da4d..6c4298e872 100755
+--- a/tests/ts/fadvise/drop
++++ b/tests/ts/fadvise/drop
+@@ -29,7 +29,7 @@ create_file() {
+ }
+ 
+ do_fincore() {
+-    "$TS_CMD_FINCORE" "$FILE"
++    "$TS_CMD_FINCORE" -o RES,SIZE,FILE "$FILE"
+ }
+ 
+ {
+
+From c0f31b79f5d1c665cdc057fb32f4d161d28aa5b2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Sun, 21 May 2023 21:45:10 +0200
+Subject: [PATCH 4/4] fadvise: (test) test with 64k blocks
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This will allow the tests to also pass on systems with 64k pagesizes.
+
+Closes #2249
+Signed-off-by: Thomas Weißschuh <thomas@t-8ch.de>
+---
+ tests/expected/fadvise/drop | 26 +++++++++++++-------------
+ tests/ts/fadvise/drop       |  2 +-
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/tests/expected/fadvise/drop b/tests/expected/fadvise/drop
+index 25f23e050a..e7bb26b6e2 100644
+--- a/tests/expected/fadvise/drop
++++ b/tests/expected/fadvise/drop
+@@ -1,23 +1,23 @@
+-  RES SIZE FILE
+-  32K  32K ddtest
++  RES  SIZE FILE
++ 512K  512K ddtest
+ 
+ whole file
+ status: 0
+-RES SIZE FILE
+- 0B  32K ddtest
++RES  SIZE FILE
++ 0B  512K ddtest
+ 
+-offset: 8192
++offset: 131072
+ status: 0
+-RES SIZE FILE
+- 8K  32K ddtest
++  RES  SIZE FILE
++ 128K  512K ddtest
+ 
+-length: 16384
++length: 262144
+ status: 0
+-  RES SIZE FILE
+-  16K  32K ddtest
++  RES  SIZE FILE
++ 256K  512K ddtest
+ 
+-offset: 8192, length: 16384 fd: 42
++offset: 131072, length: 262144 fd: 42
+ status: 0
+-  RES SIZE FILE
+-  16K  32K ddtest
++  RES  SIZE FILE
++ 256K  512K ddtest
+ 
+diff --git a/tests/ts/fadvise/drop b/tests/ts/fadvise/drop
+index 6c4298e872..45dcb9110b 100755
+--- a/tests/ts/fadvise/drop
++++ b/tests/ts/fadvise/drop
+@@ -16,7 +16,7 @@ ts_check_prog "sleep"
+ ts_cd "$TS_OUTDIR"
+ 
+ FILE="ddtest"
+-BS=4096
++BS=65536
+ COUNT=8
+ 
+ FILE_FS="$("$TS_CMD_FINDMNT" -nr -o FSTYPE -T "$PWD")"

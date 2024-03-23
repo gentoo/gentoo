@@ -19,4 +19,5 @@
   <upstream>
     <remote-id type="github">itchyny/lightline.vim</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

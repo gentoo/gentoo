@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    The FsAutoComplete project (FSAC) provides a backend service for rich
+    editing or intellisense features for editors. It can be hosted using the
+    Language Server Protocol. Currently it is used by: Emacs, Neovim, Vim,
+    Visual Studio Code, Sublime Text.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/fsharp/FsAutoComplete/issues/</bugs-to>
+    <remote-id type="github">fsharp/FsAutoComplete</remote-id>
+  </upstream>
+</pkgmetadata>

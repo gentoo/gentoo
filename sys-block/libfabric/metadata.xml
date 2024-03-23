@@ -6,7 +6,6 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<use>
-		<flag name="cuda">Enable for CUDA provider</flag>
 		<flag name="efa">Enable Amazon EC2 Elastic Fabric Adapter provider</flag>
 		<flag name="usnic">Enable Cisco VIC (virtualized NIC) hardware on Cisco UCS server provider</flag>
 		<flag name="rocr">Enable Radeon Open Compute provider</flag>

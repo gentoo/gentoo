@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	EGIT_COMMIT="vulkan-sdk-${PV}.0"
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}"/${MY_PN}-${EGIT_COMMIT}
 fi
 
@@ -23,7 +23,20 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Utility-Libraries"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="~dev-util/vulkan-headers-${PV}"
+DEPEND="~dev-util/vulkan-headers-${PV}
+	test? (
+		dev-cpp/gtest
+		>=dev-cpp/magic_enum-0.9.2
+	)"
 RDEPEND="!<media-libs/vulkan-layers-1.3.268"
 BDEPEND="${PYTHON_DEPS}"
+
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTS=$(usex test ON OFF)
+	)
+	cmake_src_configure
+}

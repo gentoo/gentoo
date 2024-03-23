@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">dag/vim2hs</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

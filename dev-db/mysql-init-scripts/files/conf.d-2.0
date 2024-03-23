@@ -63,7 +63,7 @@ STOP_TIMEOUT=120
 
 # Or from NFS? P.S. This is not a good idea in most cases, but does have some
 # valid usage cases, so we provide the option.
-#rc_need="nfsmount"
+#rc_need="nfsclient"
 
 # Should any one of the instances satisfy the requirement for MySQL coming up?
 # By default, we say no.

@@ -1,0 +1,26 @@
+From 55bd4024dbfc315c0f57da57f2f9bd9c5c97dad1 Mon Sep 17 00:00:00 2001
+From: Din Music <din.music@canonical.com>
+Date: Thu, 18 Jan 2024 17:08:36 +0100
+Subject: [PATCH] shared/simplestreams/products: Search only for lxd archives
+
+Signed-off-by: Din Music <din.music@canonical.com>
+(cherry picked from commit 0c9253da9448475e6de60dd345c67c0179884f13)
+---
+ shared/simplestreams/products.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/shared/simplestreams/products.go b/shared/simplestreams/products.go
+index 542051403899..d80d8e7be251 100644
+--- a/shared/simplestreams/products.go
++++ b/shared/simplestreams/products.go
+@@ -10,8 +10,8 @@ import (
+ 	"github.com/canonical/lxd/shared/osarch"
+ )
+ 
+-var lxdCompatCombinedItems = []string{"lxd_combined.tar.gz", "incus_combined.tar.gz"}
+-var lxdCompatItems = []string{"lxd.tar.xz", "incus.tar.xz"}
++var lxdCompatCombinedItems = []string{"lxd_combined.tar.gz"}
++var lxdCompatItems = []string{"lxd.tar.xz"}
+ 
+ // Products represents the base of download.json.
+ type Products struct {

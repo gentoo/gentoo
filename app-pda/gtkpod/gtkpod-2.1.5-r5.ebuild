@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ EAPI=8
 inherit autotools flag-o-matic gnome2-utils xdg #python-single-r1
 
 DESCRIPTION="A graphical user interface to the Apple productline"
-HOMEPAGE="http://www.gtkpod.org/"
+HOMEPAGE="https://sourceforge.net/projects/gtkpod/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2"
@@ -60,7 +60,7 @@ DEPEND="${COMMON_DEPEND}
 
 BDEPEND="
 	dev-util/intltool
-	sys-devel/flex
+	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -68,6 +68,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.3-gold.patch
 	"${FILESDIR}"/${PN}-2.1.5-m4a.patch
+	"${FILESDIR}"/${PN}-2.1.5-conformance.patch
 )
 
 src_prepare() {

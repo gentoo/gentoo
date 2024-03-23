@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2 GPL-2+ GPL-3 LGPL-2 LGPL-2+ LGPL-2.1+ WTFPL-2"
@@ -41,7 +41,7 @@ DEPEND="
 	x11-libs/libX11
 	x11-libs/libXcursor
 	x11-libs/libXfixes
-	monitor? ( kde-plasma/libkscreen:5= )
+	monitor? ( >=kde-plasma/libkscreen-5.27.0:5= )
 	touchpad? (
 		virtual/libudev:=
 		x11-drivers/xf86-input-libinput

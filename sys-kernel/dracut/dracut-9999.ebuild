@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-arch/cpio
+	app-alternatives/cpio
 	>=app-shells/bash-4.0:0
 	sys-apps/coreutils[xattr(-)]
 	>=sys-apps/kmod-23[tools]
@@ -41,7 +41,7 @@ RDEPEND="
 		sys-apps/s6-linux-init[sysv-utils(-)]
 	)
 	>=sys-apps/util-linux-2.21
-	virtual/pkgconfig
+	virtual/pkgconfig[native-symlinks(+)]
 	virtual/udev
 
 	elibc_musl? ( sys-libs/fts-standalone )
@@ -149,4 +149,6 @@ pkg_postinst() {
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
 		sys-apps/rng-tools
+	optfeature "automatically generating an initramfs on each kernel installation" \
+		"sys-kernel/installkernel[dracut]"
 }

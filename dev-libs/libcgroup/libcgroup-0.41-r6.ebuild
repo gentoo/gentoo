@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,8 +20,8 @@ REQUIRED_USE="daemon? ( tools )"
 RESTRICT="test"
 
 BDEPEND="
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	elibc_musl? ( sys-libs/fts-standalone )
 "
 DEPEND="pam? ( sys-libs/pam )"

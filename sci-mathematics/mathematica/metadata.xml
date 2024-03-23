@@ -23,7 +23,6 @@
 	</longdescription>
 	<use>
 		<flag name="bundle">Install from Wolfram's bundle file or from Mathematica only</flag>
-		<flag name="cuda">Install with cuda support</flag>
 		<flag name="R">Enable <pkg>dev-lang/R</pkg> backend support</flag>
 		<flag name="ffmpeg">Enable <pkg>media-video/ffmpeg</pkg> backend support</flag>
 	</use>

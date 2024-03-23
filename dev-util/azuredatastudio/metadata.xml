@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Azure Data Studio is a data management and development tool with
+    connectivity to popular cloud and on-premises databases. Azure Data Studio
+    supports Windows, macOS, and Linux, with immediate capability to connect to
+    Azure SQL and SQL Server. Browse the extension library for more database
+    support options including MySQL, PostgreSQL, and MongoDB.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/microsoft/azuredatastudio/</bugs-to>
+    <remote-id type="github">microsoft/azuredatastudio</remote-id>
+  </upstream>
+</pkgmetadata>

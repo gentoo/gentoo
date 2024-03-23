@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -6,7 +6,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 python-single-r1
 
@@ -100,7 +100,6 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Genkernel https://gitweb.gentoo.org/proj/
 
 LICENSE="GPL-2"
 SLOT="0"
-RESTRICT=""
 IUSE="ibm +firmware"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -109,21 +108,20 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # because genkernel will usually build things like LVM2, cryptsetup,
 # mdadm... during initramfs generation which will require these
 # things.
-DEPEND=""
 RDEPEND="${PYTHON_DEPS}
-	app-arch/cpio
+	app-alternatives/cpio
 	>=app-misc/pax-utils-1.2.2
 	app-portage/elt-patches
 	app-portage/portage-utils
 	dev-util/gperf
 	sys-apps/sandbox
-	sys-devel/autoconf
-	sys-devel/autoconf-archive
-	sys-devel/automake
-	sys-devel/bc
-	sys-devel/bison
-	sys-devel/flex
-	sys-devel/libtool
+	dev-build/autoconf
+	dev-build/autoconf-archive
+	dev-build/automake
+	app-alternatives/bc
+	app-alternatives/yacc
+	app-alternatives/lex
+	dev-build/libtool
 	virtual/pkgconfig
 	elibc_glibc? ( sys-libs/glibc[static-libs(+)] )
 	firmware? ( sys-kernel/linux-firmware )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,13 +8,13 @@ MY_PV=$(ver_rs 3 '-')
 # It was also the last Bash based release. Later versions are Perl based
 
 DESCRIPTION="The CLI inxi collects and prints hardware and system information"
-HOMEPAGE="https://github.com/smxi/inxi"
+HOMEPAGE="https://codeberg.org/smxi/inxi"
 SRC_URI="https://github.com/smxi/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="bluetooth hddtemp opengl"
 
 RDEPEND="dev-lang/perl

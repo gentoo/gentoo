@@ -1,0 +1,108 @@
+https://bugs.gentoo.org/917537
+https://github.com/indexdata/yaz/issues/102
+https://github.com/indexdata/yaz/pull/103
+
+From b10643c42ea64b1ee09fe53aec2490129f903bcb Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Tue, 21 Nov 2023 23:39:48 +0900
+Subject: [PATCH] FIX: fix build error with libxml2 2.12.0
+
+libxml2 2.12.0 changed which header file to define functions
+and header inclusion. Due to this refactoring, some yaz source
+files need additional inclusion of libxml2 header file,
+especially for libxml/parser.h .
+
+Closes #102 .
+--- a/client/client.c
++++ b/client/client.c
+@@ -73,6 +73,10 @@
+ #include <readline/history.h>
+ #endif
+ 
++#if YAZ_HAVE_XML2
++#include <libxml/parser.h>
++#endif
++
+ 
+ #include "admin.h"
+ #include "tabcomplete.h"
+--- a/src/record_render.c
++++ b/src/record_render.c
+@@ -23,6 +23,7 @@
+ #include <yaz/base64.h>
+ 
+ #if YAZ_HAVE_XML2
++#include <libxml/parser.h>
+ #include <libxml/xpath.h>
+ #include <libxml/xpathInternals.h>
+ #endif
+--- a/test/test_ccl.c
++++ b/test/test_ccl.c
+@@ -11,6 +11,9 @@
+ #include <yaz/log.h>
+ #include <yaz/test.h>
+ 
++#if YAZ_HAVE_XML2
++#include <libxml/parser.h>
++#endif
+ 
+ static int tst_ccl_query(CCL_bibset bibset,
+                          const char *query,
+--- a/test/test_icu.c
++++ b/test/test_icu.c
+@@ -28,6 +28,7 @@
+ #endif
+ 
+ #if YAZ_HAVE_XML2
++#include <libxml/parser.h>
+ #include <libxml/xmlmemory.h>
+ #endif
+ 
+--- a/test/test_xml_include.c
++++ b/test/test_xml_include.c
+@@ -12,6 +12,9 @@
+ 
+ #include <yaz/xml_include.h>
+ #include <yaz/test.h>
++#if YAZ_HAVE_XML2
++#include <libxml/parser.h>
++#endif
+ 
+ static void tst_xml_include1(void)
+ {
+--- a/util/cclsh.c
++++ b/util/cclsh.c
+@@ -20,6 +20,9 @@
+ #include <readline/history.h>
+ #endif
+ 
++#if YAZ_HAVE_XML2
++#include <libxml/parser.h>
++#endif
+ 
+ static int debug = 0;
+ static char *prog;
+--- a/util/yaz-icu.c
++++ b/util/yaz-icu.c
+@@ -17,6 +17,8 @@
+ 
+ #if YAZ_HAVE_ICU
+ 
++#include <libxml/parser.h>
++
+ #include <unicode/ucnv.h>
+ #include <unicode/ustring.h>
+ #include <unicode/ucol.h>
+--- a/util/yaz-record-conv.c
++++ b/util/yaz-record-conv.c
+@@ -13,6 +13,10 @@
+ #include <yaz/record_conv.h>
+ #include <yaz/backtrace.h>
+ 
++#if YAZ_HAVE_XML2
++#include <libxml/parser.h>
++#endif
++
+ const char *prog = "yaz-record-conv";
+ 
+ static void usage(void)

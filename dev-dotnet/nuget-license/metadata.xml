@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    A .net core tool to print the licenses of a project. This tool support .NET
+    Core and .NET Standard Projects.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/tomchavakis/nuget-license/issues/</bugs-to>
+    <remote-id type="github">tomchavakis/nuget-license</remote-id>
+  </upstream>
+</pkgmetadata>

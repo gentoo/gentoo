@@ -11,4 +11,5 @@
 	<upstream>
 		<remote-id type="github">editorconfig/editorconfig-vim</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="github">garbas/vim-snipmate</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

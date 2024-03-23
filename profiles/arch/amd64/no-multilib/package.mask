@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-04)
@@ -24,9 +24,7 @@ app-arch/stuffit
 app-benchmarks/cpuburn
 app-editors/emacs:18
 app-emulation/crossover-bin
-app-emulation/protontricks
 app-emulation/q4wine
-app-emulation/winetricks
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-ndk
@@ -57,7 +55,6 @@ games-arcade/gish-demo
 games-arcade/jardinains
 games-arcade/thinktanks-demo
 games-emulation/gens
-<games-emulation/pcsx2-1.7
 games-emulation/vgba
 games-emulation/zinc
 games-emulation/zsnes
@@ -67,7 +64,6 @@ games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/sauerbraten
-games-fps/serious-sam-tse
 games-fps/soldieroffortune
 games-fps/ut2003
 games-fps/ut2003-demo

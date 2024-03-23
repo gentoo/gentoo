@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="An open-source C implementation of the RPKI/Router Protocol client"
 HOMEPAGE="https://rtrlib.realmv6.org/"
@@ -18,7 +18,7 @@ IUSE="doc ssh"
 RDEPEND="ssh? ( net-libs/libssh:0= )"
 DEPEND="
 	${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
+	doc? ( app-text/doxygen[dot] )
 "
 
 src_prepare() {
@@ -32,6 +32,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861581
+	# https://github.com/rtrlib/rtrlib/issues/287
+	#
+	# Do not trust LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DRTRLIB_TRANSPORT_SSH=$(usex ssh)
 	)

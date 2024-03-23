@@ -33,7 +33,9 @@ src_configure() {
 	# Uses removed 'register' keyword
 	append-cxxflags -std=c++14
 
-	econf $(use_enable resolvconf)
+	econf \
+		--cache-file="${S}"/config.cache \
+		$(use_enable resolvconf)
 }
 
 src_compile() {

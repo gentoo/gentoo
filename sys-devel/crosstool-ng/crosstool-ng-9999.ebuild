@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,9 +44,9 @@ BDEPEND="
 	dtc? ( sys-apps/dtc )
 	git? ( dev-vcs/git )
 	lzip? ( app-arch/lzip )
-	meson? ( dev-util/meson )
+	meson? ( dev-build/meson )
 	python? ( ${PYTHON_DEPS} )
-	ninja? ( dev-util/ninja )
+	ninja? ( app-alternatives/ninja )
 	rsync? ( net-misc/rsync )
 	subversion? ( dev-vcs/subversion )
 	wget? ( net-misc/wget )

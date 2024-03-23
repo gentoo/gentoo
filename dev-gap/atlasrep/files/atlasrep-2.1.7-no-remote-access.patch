@@ -1,0 +1,27 @@
+From 73fee69243be30b25af3322dc66ad061c5d8fa38 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 16 Dec 2023 13:41:05 -0500
+Subject: [PATCH 1/2] gap/userpref.g: disable AtlasRepAccessRemoteFiles by
+ default
+
+On Gentoo, we include all of the available data by default.
+---
+ gap/userpref.g | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gap/userpref.g b/gap/userpref.g
+index 067ddf1..75140b9 100644
+--- a/gap/userpref.g
++++ b/gap/userpref.g
+@@ -44,7 +44,7 @@ information shown by 'DisplayAtlasInfo', \
+ this information depends on the value of the preference at the time \
+ when the AtlasRep package and its data extensions get loaded."
+     ],
+-  default:= true,
++  default:= false,
+   values:= [ true, false ],
+   multi:= false,
+   package:= "AtlasRep",
+-- 
+2.41.0
+

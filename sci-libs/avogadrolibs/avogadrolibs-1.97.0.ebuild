@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	test? ( dev-cpp/gtest )"
 BDEPEND="
-	doc? ( app-doc/doxygen[dot] )
+	doc? ( app-text/doxygen[dot] )
 	qt5? ( dev-qt/linguist-tools:5 )"
 
 PATCHES=(

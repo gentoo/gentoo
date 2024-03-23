@@ -1,0 +1,10 @@
+--- a/scribus/CMakeLists.txt
++++ b/scribus/CMakeLists.txt
+@@ -40,7 +40,6 @@ include(styles/CMakeLists.txt)
+ include(text/CMakeLists.txt)
+ 
+ add_subdirectory(dtd)
+-add_subdirectory(ui/qml)
+ if(WITH_TESTS)
+ 	add_subdirectory(tests)
+ endif()

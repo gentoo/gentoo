@@ -1,8 +1,25 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-23)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is not keyworded here and currently fails tests (bug #919896).
+dev-qt/qtmultimedia:6 qml
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-06)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc
+
+# Sam James <sam@gentoo.org> (2024-01-02)
+# dev-libs/capstone not keyworded here
+dev-lang/php capstone
+
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
 
 # James Le Cuirot (2023-12-12)
 # USE=bpf depends on sys-devel/clang which is not keyworded on hppa
@@ -13,7 +30,7 @@ media-libs/libv4l bpf
 media-video/ffmpeg glslang shaderc vulkan
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
@@ -24,7 +41,6 @@ media-libs/libplacebo glslang shaderc vulkan
 # Vulkan is not available on hppa.
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
-<dev-qt/qtwayland-5.15.11:5 vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
@@ -32,15 +48,11 @@ sys-apps/openrc s6
 
 # Sam James <sam@gentoo.org> (2023-09-24)
 # Qt not keyworded here.
-app-doc/doxygen gui
+app-text/doxygen gui
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
+dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-18)
 # x11-libs/gtksourceview:4 not keyworded here
@@ -49,14 +61,6 @@ media-gfx/inkscape sourceview
 # Rich Freeman <rich0@gentoo.org> (2023-09-13)
 # Tests require shellcheck which is not currently available on hppa
 sys-process/systemd-cron test
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
-# MPV currently[1] has no plans to support >=lua5-3 making luajit
-# the only choice for maintained lua. Apply mask/force to override
-# the profile's defaults, and invert on arches where not keyworded.
-# Done this way also avoids conflicts for users using another default.
-# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
-media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
@@ -300,7 +304,7 @@ net-analyzer/wireshark ilbc
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-19)
 # gdbserver is not implemented yet for hppa target.
-sys-devel/gdb server
+dev-debug/gdb server
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-07)
 # Test dependencies are no longer keyworded due to dropped Rails

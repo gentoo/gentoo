@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs
 
 MY_PV="$(ver_cut 1-2)"
 
@@ -25,9 +25,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
 	sys-apps/which
-	sys-devel/bison
+	app-alternatives/yacc
 	sys-devel/gettext
-	sys-devel/flex
+	app-alternatives/lex
 	doc? ( dev-tex/latex2html )
 "
 
@@ -49,6 +49,13 @@ src_prepare() {
 	sed -e "s/cpp/$(tc-getCPP) -/" \
 		-i ../common/list_capabilities.sh \
 		-i ../common/list_af_names.sh || die
+}
+
+src_configure() {
+	# ODR violations (bug #863524)
+	filter-lto
+
+	default
 }
 
 src_compile() {

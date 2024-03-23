@@ -1,7 +1,9 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Legacy library for PPD files, split out of cups-filters"
 HOMEPAGE="https://github.com/OpenPrinting/libppd"
@@ -10,7 +12,7 @@ SRC_URI="https://github.com/OpenPrinting/libppd/releases/download/${PV}/${P}.tar
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+postscript +poppler"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 # pdftops has various possible implementations, but the default
 # really needs to be decent
@@ -28,6 +30,15 @@ BDEPEND="
 	>=sys-devel/gettext-0.18.3
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(

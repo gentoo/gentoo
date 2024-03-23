@@ -1,18 +1,17 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit toolchain-funcs vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook"
 HOMEPAGE="https://github.com/jowi24/vdr-fritz"
 SRC_URI="https://github.com/jowi24/vdr-fritz/releases/download/${PV}/${P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 DEPEND="
 	dev-libs/libgcrypt:=

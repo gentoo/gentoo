@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-install.eclass
@@ -21,12 +21,26 @@
 # Additionally, the inherited mount-boot eclass exports pkg_pretend.
 # It also stubs out pkg_preinst and pkg_prerm defined by mount-boot.
 
+# @ECLASS_VARIABLE: KERNEL_IUSE_GENERIC_UKI
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-null value, adds IUSE=generic-uki and required
+# logic to install a generic unified kernel image.
+
 # @ECLASS_VARIABLE: KV_LOCALVERSION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the kernel LOCALVERSION, e.g. '-gentoo'.
 # Needs to be set only when installing binary kernels,
 # kernel-build.eclass obtains it from kernel config.
+
+# @ECLASS_VARIABLE: INITRD_PACKAGES
+# @INTERNAL
+# @DESCRIPTION:
+# Used with KERNEL_IUSE_GENERIC_UKI. The eclass sets this to an array of
+# packages to depend on for building the generic UKI and their licenses.
+# Used in kernel-build.eclass.
 
 if [[ ! ${_KERNEL_INSTALL_ECLASS} ]]; then
 _KERNEL_INSTALL_ECLASS=1
@@ -36,7 +50,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit dist-kernel-utils mount-boot toolchain-funcs
+inherit dist-kernel-utils mount-boot multiprocessing toolchain-funcs
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -46,23 +60,149 @@ RESTRICT+="
 	arm? ( test )
 "
 
-# note: we need installkernel with initramfs support!
-IDEPEND="
+_IDEPEND_BASE="
 	!initramfs? (
-		|| (
-			sys-kernel/installkernel-gentoo
-			sys-kernel/installkernel-systemd
-		)
+		>=sys-kernel/installkernel-14
 	)
 	initramfs? (
-		>=sys-kernel/dracut-059-r4
-		|| (
-			<=sys-kernel/installkernel-gentoo-7
-			>=sys-kernel/installkernel-gentoo-8[dracut(-)]
-			sys-kernel/installkernel-systemd
-		)
+		>=sys-kernel/installkernel-14[dracut(-)]
 	)
 "
+
+LICENSE="GPL-2"
+if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+	IUSE+=" generic-uki modules-compress"
+	# https://github.com/AndrewAmmerlaan/dist-kernel-log-to-licenses
+	# This script can help with generating the array below, keep in mind
+	# that it is not a fully automatic solution, i.e. use flags will
+	# still have to handled manually.
+	declare -gA INITRD_PACKAGES=(
+		["app-alternatives/awk"]="CC0-1.0"
+		["app-alternatives/gzip"]="CC0-1.0"
+		["app-alternatives/sh"]="CC0-1.0"
+		["app-arch/bzip2"]="BZIP2"
+		["app-arch/gzip"]="GPL-3+"
+		["app-arch/lz4"]="BSD-2 GPL-2"
+		["app-arch/xz-utils"]="public-domain LGPL-2.1+ GPL-2+"
+		["app-arch/zstd"]="|| ( BSD GPL-2 )"
+		["app-crypt/argon2"]="|| ( Apache-2.0 CC0-1.0 )"
+		["app-crypt/gnupg[smartcard,tpm(-)]"]="GPL-3+"
+		["app-crypt/p11-kit"]="MIT"
+		["app-crypt/tpm2-tools"]="BSD"
+		["app-crypt/tpm2-tss"]="BSD-2"
+		["app-misc/ddcutil"]="GPL-2"
+		["app-misc/jq"]="MIT CC-BY-3.0"
+		["app-shells/bash"]="GPL-3+"
+		["dev-db/sqlite"]="public-domain"
+		["dev-libs/cyrus-sasl"]="BSD-with-attribution"
+		["dev-libs/expat"]="MIT"
+		["dev-libs/glib"]="LGPL-2.1+"
+		["dev-libs/hidapi"]="|| ( BSD GPL-3 HIDAPI )"
+		["dev-libs/icu"]="BSD"
+		["dev-libs/json-c"]="MIT"
+		["dev-libs/libaio"]="LGPL-2"
+		["dev-libs/libassuan"]="GPL-3 LGPL-2.1"
+		["dev-libs/libevent"]="BSD"
+		["dev-libs/libffi"]="MIT"
+		["dev-libs/libgcrypt"]="LGPL-2.1 MIT"
+		["dev-libs/libgpg-error"]="GPL-2 LGPL-2.1"
+		["dev-libs/libp11"]="LGPL-2.1"
+		["dev-libs/libpcre2"]="BSD"
+		["dev-libs/libtasn1"]="LGPL-2.1+"
+		["dev-libs/libunistring"]="|| ( LGPL-3+ GPL-2+ ) || ( FDL-1.2 GPL-3+ )"
+		["dev-libs/libusb"]="LGPL-2.1"
+		["dev-libs/lzo"]="GPL-2+"
+		["dev-libs/npth"]="LGPL-2.1+"
+		["dev-libs/nss"]="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
+		["dev-libs/oniguruma"]="BSD-2"
+		["dev-libs/opensc"]="LGPL-2.1"
+		["dev-libs/openssl"]="Apache-2.0"
+		["dev-libs/userspace-rcu"]="LGPL-2.1"
+		["media-libs/libmtp"]="LGPL-2.1"
+		["media-libs/libv4l"]="LGPL-2.1+"
+		["net-dns/c-ares"]="MIT ISC"
+		["net-dns/libidn2"]="|| ( GPL-2+ LGPL-3+ ) GPL-3+ unicode"
+		["net-fs/cifs-utils"]="GPL-3"
+		["net-fs/nfs-utils"]="GPL-2"
+		["net-fs/samba"]="GPL-3"
+		["net-libs/libmnl"]="LGPL-2.1"
+		["net-libs/libndp"]="LGPL-2.1+"
+		["net-libs/libtirpc"]="BSD BSD-2 BSD-4 LGPL-2.1+"
+		["net-libs/nghttp2"]="MIT"
+		["net-misc/curl"]="BSD curl ISC"
+		["net-misc/networkmanager[iwd]"]="GPL-2+ LGPL-2.1+"
+		["net-nds/openldap"]="OPENLDAP GPL-2"
+		["net-wireless/bluez"]="GPL-2+ LGPL-2.1+"
+		["net-wireless/iwd"]="GPL-2"
+		["sys-apps/acl"]="LGPL-2.1"
+		["sys-apps/attr"]="LGPL-2.1"
+		["sys-apps/baselayout"]="GPL-2"
+		["sys-apps/coreutils"]="GPL-3+"
+		["sys-apps/dbus"]="|| ( AFL-2.1 GPL-2 )"
+		["sys-apps/fwupd"]="LGPL-2.1+"
+		["sys-apps/gawk"]="GPL-3+"
+		["sys-apps/hwdata"]="GPL-2+"
+		["sys-apps/iproute2"]="GPL-2"
+		["sys-apps/kbd"]="GPL-2"
+		["sys-apps/keyutils"]="GPL-2 LGPL-2.1"
+		["sys-apps/kmod"]="LGPL-2"
+		["sys-apps/less"]="|| ( GPL-3 BSD-2 )"
+		["sys-apps/nvme-cli"]="GPL-2 GPL-2+"
+		["sys-apps/pcsc-lite"]="BSD ISC MIT GPL-3+ GPL-2"
+		["sys-apps/rng-tools"]="GPL-2"
+		["sys-apps/sed"]="GPL-3+"
+		["sys-apps/shadow"]="BSD GPL-2"
+		["sys-apps/systemd[boot(-),cryptsetup,pkcs11,policykit,tpm,ukify(-)]"]="GPL-2 LGPL-2.1 MIT public-domain"
+		["sys-apps/util-linux"]="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
+		["sys-auth/polkit"]="LGPL-2"
+		["sys-block/nbd"]="GPL-2"
+		["sys-devel/gcc"]="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
+		["sys-fs/btrfs-progs"]="GPL-2"
+		["sys-fs/cryptsetup"]="GPL-2+"
+		["sys-fs/dmraid"]="GPL-2"
+		["sys-fs/dosfstools"]="GPL-3"
+		["sys-fs/e2fsprogs"]="GPL-2 BSD"
+		["sys-fs/lvm2[lvm]"]="GPL-2"
+		["sys-fs/mdadm"]="GPL-2"
+		["sys-fs/multipath-tools"]="GPL-2"
+		["sys-fs/xfsprogs"]="LGPL-2.1"
+		["sys-kernel/dracut"]="GPL-2"
+		["sys-kernel/linux-firmware[redistributable,-unknown-license]"]="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT"
+		["sys-libs/glibc"]="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
+		["sys-libs/libapparmor"]="GPL-2 LGPL-2.1"
+		["sys-libs/libcap"]="|| ( GPL-2 BSD )"
+		["sys-libs/libcap-ng"]="LGPL-2.1"
+		["sys-libs/libnvme"]="LGPL-2.1+"
+		["sys-libs/libseccomp"]="LGPL-2.1"
+		["sys-libs/libxcrypt"]="LGPL-2.1+ public-domain BSD BSD-2"
+		["sys-libs/ncurses"]="MIT"
+		["sys-libs/pam"]="|| ( BSD GPL-2 )"
+		["sys-libs/readline"]="GPL-3+"
+		["sys-libs/zlib"]="ZLIB"
+		["sys-process/procps"]="GPL-2+ LGPL-2+ LGPL-2.1+"
+		["amd64? ( sys-firmware/intel-microcode )"]="amd64? ( intel-ucode )"
+		["x86? ( sys-firmware/intel-microcode )"]="x86? ( intel-ucode )"
+	)
+	LICENSE+="
+		generic-uki? ( ${INITRD_PACKAGES[@]} )
+	"
+
+	RDEPEND+="
+		sys-apps/kmod[lzma]
+	"
+	IDEPEND="
+		generic-uki? (
+			>=sys-kernel/installkernel-14[-dracut(-),-ukify(-)]
+		)
+		!generic-uki? (
+			${_IDEPEND_BASE}
+		)
+	"
+else
+	IDEPEND="${_IDEPEND_BASE}"
+fi
+unset _IDEPEND_BASE
+
 # needed by objtool that is installed along with the kernel and used
 # to build external modules
 # NB: linux-mod.eclass also adds this dep but it's cleaner to have
@@ -277,6 +417,12 @@ kernel-install_test() {
 	> "${T}"/empty-file || die
 	mkdir -p "${T}"/empty-directory || die
 
+	local compress="gzip"
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && use generic-uki; then
+		# Test with same compression method as the generic initrd
+		compress="xz -9e --check=crc32"
+	fi
+
 	dracut \
 		--conf "${T}"/empty-file \
 		--confdir "${T}"/empty-directory \
@@ -286,6 +432,7 @@ kernel-install_test() {
 		--omit "${omit_mods[*]}" \
 		--nostrip \
 		--no-early-microcode \
+		--compress="${compress}" \
 		"${T}/initrd" "${version}" || die
 
 	kernel-install_create_qemu_image "${T}/fs.img"
@@ -385,14 +532,25 @@ kernel-install_pkg_pretend() {
 		ewarn "for your hardware to work.  If in doubt, it is recommended"
 		ewarn "to pause or abort the build process and install it before"
 		ewarn "resuming."
+		elog
+		elog "If you decide to install linux-firmware later, you can rebuild"
+		elog "the initramfs via issuing a command equivalent to:"
+		elog
+		elog "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
+	fi
 
-		if use initramfs; then
-			elog
-			elog "If you decide to install linux-firmware later, you can rebuild"
-			elog "the initramfs via issuing a command equivalent to:"
-			elog
-			elog "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
-		fi
+	if ! use initramfs && ! has_version "${CATEGORY}/${PN}[-initramfs]"; then
+		ewarn
+		ewarn "WARNING: The standard configuration of the Gentoo distribution"
+		ewarn "kernels requires an initramfs! You have disabled the initramfs"
+		ewarn "USE flag and as a result dracut was not pulled in as a dependency."
+		ewarn "Please ensure that you are either overriding the standard"
+		ewarn "configuration or that an alternative initramfs generation plugin"
+		ewarn "is installed for your installkernel implementation!"
+		ewarn
+		ewarn "This is an advanced use case, you are on your own to ensure"
+		ewarn "that your system is bootable!"
+		ewarn
 	fi
 }
 
@@ -414,12 +572,14 @@ kernel-install_pkg_preinst() {
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	local kernel_dir=${ED}/usr/src/linux-${dir_ver}
 	local relfile=${kernel_dir}/include/config/kernel.release
+	local image_path=$(dist-kernel_get_image_path)
 	[[ ! -d ${kernel_dir} ]] &&
 		die "Kernel directory ${kernel_dir} not installed!"
 	[[ ! -f ${relfile} ]] &&
 		die "Release file ${relfile} not installed!"
 	local release
 	release="$(<"${relfile}")" || die
+	DIST_KERNEL_RELEASE="${release}"
 
 	# perform the version check for release ebuilds only
 	if [[ ${PV} != *9999 ]]; then
@@ -439,19 +599,37 @@ kernel-install_pkg_preinst() {
 		rm "${ED}/lib/modules/${release}"/{build,source} || die
 		dosym "../../../src/linux-${dir_ver}" "/usr/lib/modules/${release}/build"
 		dosym "../../../src/linux-${dir_ver}" "/usr/lib/modules/${release}/source"
+		for file in vmlinux vmlinuz; do
+			if [[ -L "${ED}/lib/modules/${release}/${file}" ]]; then
+				rm "${ED}/lib/modules/${release}/${file}" || die
+				dosym "../../../src/linux-${dir_ver}/${image_path}" "/usr/lib/modules/${release}/${file}"
+			fi
+		done
 	fi
+}
+
+# @FUNCTION: kernel-install_extract_from_uki
+# @USAGE: <type> <input> <output>
+# @DESCRIPTION:
+# Extracts kernel image or initrd from an UKI.  <type> must be "linux"
+# or "initrd".
+kernel-install_extract_from_uki() {
+	[[ ${#} -eq 3 ]] || die "${FUNCNAME}: invalid arguments"
+	local extract_type=${1}
+	local uki=${2}
+	local out=${3}
+
+	$(tc-getOBJCOPY) -O binary "-j.${extract_type}" "${uki}" "${out}" ||
+		die "Failed to extract ${extract_type}"
+	chmod 644 "${out}" || die
 }
 
 # @FUNCTION: kernel-install_install_all
 # @USAGE: <ver>
 # @DESCRIPTION:
-# Build an initramfs for the kernel if required and install the kernel.
-# This is called from pkg_postinst() and pkg_config().  <ver> is the
-# full kernel version.
-#
-# With sys-kernel/installkernel-systemd, or version 8 or greater of
-# sys-kernel/installkernel-gentoo, the generation of the initrd via dracut
-# is handled by kernel-install instead.
+# Install the kernel, initramfs/uki generation is optionally handled by
+# installkernel. This is called from pkg_postinst() and pkg_config().
+# <ver> is the full kernel version.
 kernel-install_install_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -459,26 +637,41 @@ kernel-install_install_all() {
 	local dir_ver=${1}
 	local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 	local relfile=${kernel_dir}/include/config/kernel.release
+	local image_path=$(dist-kernel_get_image_path)
+	local image_dir=${image_path%/*}
 	local module_ver
 	module_ver=$(<"${relfile}") || die
+
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+		if use generic-uki; then
+			# Populate placeholders
+			kernel-install_extract_from_uki linux \
+				"${kernel_dir}/${image_dir}"/uki.efi \
+				"${kernel_dir}/${image_path}"
+			kernel-install_extract_from_uki initrd \
+				"${kernel_dir}/${image_dir}"/uki.efi \
+				"${kernel_dir}/${image_dir}"/initrd
+			if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
+				ln -sf "../../../src/linux-${dir_ver}/${image_dir}/initrd" "${EROOT}/usr/lib/modules/${module_ver}/initrd" || die
+				ln -sf "../../../src/linux-${dir_ver}/${image_dir}/uki.efi" "${EROOT}/usr/lib/modules/${module_ver}/uki.efi" || die
+			else
+				ln -sf "../../../usr/src/linux-${dir_ver}/${image_dir}/initrd" "${EROOT}/lib/modules/${module_ver}/initrd" || die
+				ln -sf "../../../usr/src/linux-${dir_ver}/${image_dir}/uki.efi" "${EROOT}/lib/modules/${module_ver}/uki.efi" || die
+			fi
+		else
+			# Remove placeholders, -f because these have already been removed
+			# when doing emerge --config.
+			rm -f "${kernel_dir}/${image_dir}"/{initrd,uki.efi} || die
+		fi
+	fi
 
 	local success=
 	# not an actual loop but allows error handling with 'break'
 	while :; do
 		nonfatal mount-boot_check_status || break
 
-		local image_path=$(dist-kernel_get_image_path)
-		if use initramfs && has_version "<=sys-kernel/installkernel-gentoo-7"; then
-			# putting it alongside kernel image as 'initrd' makes
-			# kernel-install happier
-			nonfatal dist-kernel_build_initramfs \
-				"${kernel_dir}/${image_path%/*}/initrd" \
-				"${module_ver}" || break
-		fi
-
 		nonfatal dist-kernel_install_kernel "${module_ver}" \
-			"${kernel_dir}/${image_path}" \
-			"${kernel_dir}/System.map" || break
+			"${kernel_dir}/${image_path}" "${kernel_dir}/System.map" || break
 
 		success=1
 		break
@@ -504,9 +697,24 @@ kernel-install_pkg_postinst() {
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
 	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${dir_ver}"
+	dist-kernel_compressed_module_cleanup \
+		"${EROOT}/lib/modules/${DIST_KERNEL_RELEASE}"
 
 	if [[ -z ${ROOT} ]]; then
 		kernel-install_install_all "${dir_ver}"
+	fi
+
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && use generic-uki; then
+		ewarn "The prebuilt initramfs and unified kernel image are highly experimental!"
+		ewarn "These images may not work on your system. Please ensure that a working"
+		ewarn "alternative kernel(+initramfs) or UKI is also installed before rebooting!"
+		ewarn
+		ewarn "Note that when secureboot is enabled in the firmware settings any kernel"
+		ewarn "command line arguments supplied to the UKI by the bootloader are ignored."
+		ewarn "To ensure the root partition can be found, systemd-gpt-auto-generator must"
+		ewarn "be used. See [1] for more information."
+		ewarn
+		ewarn "[1]: https://wiki.gentoo.org/wiki/Systemd#Automatic_mounting_of_partitions_at_boot"
 	fi
 }
 
@@ -525,7 +733,7 @@ kernel-install_pkg_prerm() {
 kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ -z ${ROOT} ]] && use initramfs; then
+	if [[ -z ${ROOT} && ! ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		local dir_ver=${PV}${KV_LOCALVERSION}
 		local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 		local image_path=$(dist-kernel_get_image_path)
@@ -543,6 +751,25 @@ kernel-install_pkg_config() {
 	[[ -z ${ROOT} ]] || die "ROOT!=/ not supported currently"
 
 	kernel-install_install_all "${PV}${KV_LOCALVERSION}"
+}
+
+# @FUNCTION: kernel-install_compress_modules
+# @DESCRIPTION:
+# Compress modules installed in ED, if USE=modules-compress is enabled.
+kernel-install_compress_modules() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if use modules-compress; then
+		einfo "Compressing kernel modules ..."
+		# xz options taken from scripts/Makefile.modinst
+		# we don't do 'xz -T' because it applies multithreading per file,
+		# so it works only for big files, and we have lots of small files
+		# instead
+		find "${ED}/lib" -name '*.ko' -print0 |
+			xargs -0 -P "$(makeopts_jobs)" -n 128 \
+				xz --check=crc32 --lzma2=dict=1MiB
+		assert "Compressing kernel modules failed"
+	fi
 }
 
 fi

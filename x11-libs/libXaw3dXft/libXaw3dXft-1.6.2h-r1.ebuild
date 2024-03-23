@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Xaw3dXft library"
 HOMEPAGE="https://sourceforge.net/projects/sf-xpaint/"
 SRC_URI="https://downloads.sourceforge.net/project/sf-xpaint/${PN,,}/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="xpm"
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 	x11-misc/util-macros"
 

@@ -1,0 +1,11 @@
+--- i/test-libversion.c
++++ w/test-libversion.c
+@@ -660,7 +660,7 @@ int main(int argc, char **argv)
+     if(!handle)
+         handle = dlopen("libzest.so", RTLD_LAZY);
+     if(!handle)
+-        handle = dlopen("/opt/zyn-fusion/libzest.so", RTLD_LAZY);
++        handle = dlopen("/usr/lib64/zynaddsubfx/libzest.so", RTLD_LAZY);
+ #endif
+     if(!handle) {
+         printf("[ERROR] Cannot Open libzest.so\n");

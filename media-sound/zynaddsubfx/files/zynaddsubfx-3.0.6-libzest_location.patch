@@ -1,0 +1,11 @@
+--- i/src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp
++++ w/src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp
+@@ -68,7 +68,7 @@ public:
+ #else
+         handle = dlopen("./libzest.so", RTLD_LAZY);
+         if(!handle)
+-            handle = dlopen("/opt/zyn-fusion/libzest.so", RTLD_LAZY);
++            handle = dlopen("/usr/lib64/zynaddsubfx/libzest.so", RTLD_LAZY);
+         if(!handle)
+             handle = dlopen("libzest.so", RTLD_LAZY);
+ #endif

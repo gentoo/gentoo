@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,11 +62,11 @@ BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? (
 		dev-util/dejagnu
-		sys-devel/bc
+		app-alternatives/bc
 	)
 	nls? ( sys-devel/gettext )
 	zstd? ( virtual/pkgconfig )
-	sys-devel/flex
+	app-alternatives/lex
 	app-alternatives/yacc
 "
 
@@ -119,7 +119,8 @@ src_prepare() {
 			# This is applied conditionally for now just out of caution.
 			# It should be okay on non-prefix systems though. See bug #892549.
 			if is_cross || use prefix; then
-				eapply "${FILESDIR}"/binutils-2.40-linker-search-path.patch
+				eapply "${FILESDIR}"/binutils-2.40-linker-search-path.patch \
+					   "${FILESDIR}"/binutils-2.41-linker-prefix.patch
 			fi
 		fi
 	fi
@@ -183,12 +184,7 @@ src_configure() {
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
-	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
-	# https://github.com/gentoo/gentoo/pull/28355
-	# mold needs this too but right now tc-ld-is-mold is also not available
-	if tc-ld-is-lld; then
-		append-ldflags -Wl,--undefined-version
-	fi
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local x
 	echo
@@ -274,7 +270,7 @@ src_configure() {
 		$(use_with zstd)
 
 		# Disable modules that are in a combined binutils/gdb tree, bug #490566
-		--disable-{gdb,libdecnumber,readline,sim}
+		--disable-{gdb,gdbserver,libbacktrace,libdecnumber,readline,sim}
 		# Strip out broken static link flags: https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
 		# Change SONAME to avoid conflict across {native,cross}/binutils, binutils-libs. bug #666100
@@ -318,6 +314,9 @@ src_configure() {
 
 			if use hardened ; then
 				myconf+=(
+					# TOOD: breaks glibc test suite
+					#--enable-error-execstack=yes
+					#--enable-error-rwx-segments=yes
 					--enable-default-execstack=no
 				)
 			fi
@@ -334,10 +333,20 @@ src_configure() {
 		)
 	fi
 
+	if use test || { use pgo && tc-is-lto ; } ; then
+		# -Wa,* needs to be consistent everywhere or lto-wrapper will complain
+		filter-flags '-Wa,*'
+	fi
+
 	if ! is_cross ; then
-		myconf+=( $(use_enable pgo pgo-build lto) )
+		myconf+=( $(use_enable pgo pgo-build $(tc-is-lto && echo "lto" || echo "yes")) )
 
 		if use pgo ; then
+			# We let configure handle it for us because it has to run
+			# the testsuite later on for profiling, and LTO isn't compatible
+			# with the testsuite.
+			filter-lto
+
 			export BUILD_CFLAGS="${CFLAGS}"
 		fi
 	fi
@@ -356,7 +365,11 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake tooldir="${EPREFIX}${TOOLPATH}" all
+	# see linker prefix patch
+	emake \
+		tooldir="${EPREFIX}${TOOLPATH}" \
+		gentoo_prefix=$(usex prefix-guest "${EPREFIX}"/usr /usr) \
+		all
 
 	# only build info pages if the user wants them
 	if use doc ; then
@@ -371,10 +384,28 @@ src_compile() {
 src_test() {
 	cd "${MY_BUILDDIR}" || die
 
-	# bug #637066
-	filter-flags -Wall -Wreturn-type
+	# https://sourceware.org/PR31327
+	local -x XZ_OPT="-T1"
+	local -x XZ_DEFAULTS="-T1"
 
-	emake -k check
+	(
+		# Tests don't expect LTO
+		filter-lto
+
+		# lto-wrapper warnings which confuse tests
+		filter-flags '-Wa,*'
+
+		# bug #637066
+		filter-flags -Wall -Wreturn-type
+
+		emake -k check \
+			CFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET:-${CFLAGS}}" \
+			CXXFLAGS_FOR_TARGET="${CXXFLAGS_FOR_TARGET:-${CXXFLAGS}}" \
+			LDFLAGS_FOR_TARGET="${LDFLAGS_FOR_TARGET:-${LDFLAGS}}" \
+			CFLAGS="${CFLAGS}" \
+			CXXFLAGS="${CXXFLAGS}" \
+			LDFLAGS="${LDFLAGS}"
+	)
 }
 
 src_install() {
@@ -466,6 +497,8 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info}
+
+	docompress "${DATAPATH}"/{info,man}
 
 	# Trim all empty dirs
 	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null

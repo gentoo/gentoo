@@ -1,5 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-02-20)
+openexr
 
 # Unmask the flag which corresponds to ARCH.
 -ia64
@@ -94,7 +97,6 @@ semantic-desktop
 fits
 libburn
 topal
-indi
 flite
 sctp
 bs2b
@@ -206,3 +208,4 @@ rbd
 # Ben de Groot <yngwin@gentoo.org> (2015-02-01)
 # please remove when keyworded
 qt5
+qt6

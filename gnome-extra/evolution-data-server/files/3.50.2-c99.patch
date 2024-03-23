@@ -1,0 +1,27 @@
+https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/55558d3c23e68aada59c5deb59a664aea263f075
+
+From 55558d3c23e68aada59c5deb59a664aea263f075 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Fri, 1 Dec 2023 09:52:57 +0100
+Subject: [PATCH] build: Correct incompatible type warning from check for
+ I_CAL_EMAIL_PARAMETER
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 381a52b72..0b545e644 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -963,7 +963,7 @@ set(CMAKE_REQUIRED_LIBRARIES ${CALENDAR_LDFLAGS})
+ CHECK_C_SOURCE_COMPILES("#define LIBICAL_GLIB_UNSTABLE_API 1
+ 			#include <libical-glib/libical-glib.h>
+ 			int main(void) {
+-				icalparameter *param;
++				ICalParameter *param;
+ 				param = i_cal_property_get_first_parameter (NULL, I_CAL_EMAIL_PARAMETER);
+ 				i_cal_parameter_get_email (param);
+ 				i_cal_parameter_new_email (NULL);
+-- 
+GitLab

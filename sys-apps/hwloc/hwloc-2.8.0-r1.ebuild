@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
 # 2.69-r5 for --runstatedir
-BDEPEND=">=sys-devel/autoconf-2.69-r5
+BDEPEND=">=dev-build/autoconf-2.69-r5
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )

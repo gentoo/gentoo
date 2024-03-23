@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,11 +18,11 @@ HOMEPAGE="https://github.com/cucumber/aruba"
 SRC_URI="https://github.com/cucumber/aruba/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~riscv ~s390"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
-DEPEND="${DEPEND} test? ( sys-devel/bc )"
+DEPEND="${DEPEND} test? ( app-alternatives/bc )"
 RDEPEND="${RDEPEND}"
 
 ruby_add_rdepend "
@@ -48,8 +48,7 @@ all_ruby_prepare() {
 
 	sed -e 's:_relative ": "./:' \
 		-e 's/git ls-files -z/find * -print0/' \
-		-e '/\(kramdown\|pry-doc\|rake-manifest\|rubocop\|yard-junk\)/ s:^:#:' \
-		-e '/simplecov/ s/22/23/' \
+		-e '/\(kramdown\|pry-doc\|rake-manifest\|rubocop\|simplecov\|yard-junk\)/ s:^:#:' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid features with minor output differences

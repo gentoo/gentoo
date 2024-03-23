@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~riscv x86"
 
 BDEPEND="
 	>=dev-python/setuptools-scm-7.0.0[${PYTHON_USEDEP}]

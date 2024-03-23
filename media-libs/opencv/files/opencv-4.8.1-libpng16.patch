@@ -1,0 +1,58 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+Gentoo installs libpng as libpng16, so adjust the detection.
+
+diff --git a/cmake/OpenCVFindLibsGrfmt.cmake b/cmake/OpenCVFindLibsGrfmt.cmake
+index 46b5108..0ff88ea 100644
+--- a/cmake/OpenCVFindLibsGrfmt.cmake
++++ b/cmake/OpenCVFindLibsGrfmt.cmake
+@@ -245,9 +245,9 @@ if(NOT HAVE_SPNG AND WITH_PNG)
+     include(FindPNG)
+     if(PNG_FOUND)
+       include(CheckIncludeFile)
+-      check_include_file("${PNG_PNG_INCLUDE_DIR}/libpng/png.h" HAVE_LIBPNG_PNG_H)
+-      if(HAVE_LIBPNG_PNG_H)
+-        ocv_parse_header("${PNG_PNG_INCLUDE_DIR}/libpng/png.h" PNG_VERSION_LINES PNG_LIBPNG_VER_MAJOR PNG_LIBPNG_VER_MINOR PNG_LIBPNG_VER_RELEASE)
++      check_include_file("${PNG_PNG_INCLUDE_DIR}/libpng16/png.h" HAVE_LIBPNG16_PNG_H)
++      if(HAVE_LIBPNG16_PNG_H)
++        ocv_parse_header("${PNG_PNG_INCLUDE_DIR}/libpng16/png.h" PNG_VERSION_LINES PNG_LIBPNG_VER_MAJOR PNG_LIBPNG_VER_MINOR PNG_LIBPNG_VER_RELEASE)
+       else()
+         ocv_parse_header("${PNG_PNG_INCLUDE_DIR}/png.h" PNG_VERSION_LINES PNG_LIBPNG_VER_MAJOR PNG_LIBPNG_VER_MINOR PNG_LIBPNG_VER_RELEASE)
+       endif()
+@@ -255,7 +255,7 @@ if(NOT HAVE_SPNG AND WITH_PNG)
+   endif()
+
+   if(NOT PNG_FOUND)
+-    ocv_clear_vars(PNG_LIBRARY PNG_LIBRARIES PNG_INCLUDE_DIR PNG_PNG_INCLUDE_DIR HAVE_LIBPNG_PNG_H PNG_DEFINITIONS)
++    ocv_clear_vars(PNG_LIBRARY PNG_LIBRARIES PNG_INCLUDE_DIR PNG_PNG_INCLUDE_DIR HAVE_LIBPNG16_PNG_H PNG_DEFINITIONS)
+
+     set(PNG_LIBRARY libpng CACHE INTERNAL "")
+     set(PNG_LIBRARIES ${PNG_LIBRARY})
+diff --git a/cmake/templates/cvconfig.h.in b/cmake/templates/cvconfig.h.in
+index d6c7875..005e9b3 100644
+--- a/cmake/templates/cvconfig.h.in
++++ b/cmake/templates/cvconfig.h.in
+@@ -79,7 +79,7 @@
+ #cmakedefine HAVE_JPEG
+
+ /* libpng/png.h needs to be included */
+-#cmakedefine HAVE_LIBPNG_PNG_H
++#cmakedefine HAVE_LIBPNG16_PNG_H
+
+ /* GDCM DICOM codec */
+ #cmakedefine HAVE_GDCM
+diff --git a/modules/imgcodecs/src/grfmt_png.cpp b/modules/imgcodecs/src/grfmt_png.cpp
+index 388a3fc..4dde181 100644
+--- a/modules/imgcodecs/src/grfmt_png.cpp
++++ b/modules/imgcodecs/src/grfmt_png.cpp
+@@ -58,8 +58,8 @@
+ #  define _FILE_OFFSET_BITS 0
+ #endif
+
+-#ifdef HAVE_LIBPNG_PNG_H
+-#include <libpng/png.h>
++#ifdef HAVE_LIBPNG16_PNG_H
++#include <libpng16/png.h>
+ #else
+ #include <png.h>
+ #endif

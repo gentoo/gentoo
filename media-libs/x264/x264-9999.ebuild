@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Please bump with media-video/x264-encoder
+
 inherit multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="Free library for encoding X264/AVC streams"
@@ -20,7 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/164" # SONAME
-IUSE="cpu_flags_ppc_altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
+IUSE="cpu_flags_ppc_altivec +interlaced opencl static-libs +threads"
 
 ASM_DEP=">=dev-lang/nasm-2.13"
 DEPEND="
@@ -44,7 +46,7 @@ multilib_src_configure() {
 	local asm_conf=""
 
 	if \
-		[[ ${ABI} == x86* ]] && { use pic || use !cpu_flags_x86_sse ; } \
+		[[ ${ABI} == x86* ]] \
 		|| [[ ${ABI} == "x32" ]] \
 		|| [[ ${CHOST} == armv5* ]] \
 		|| [[ ${ABI} == ppc* ]] && { use !cpu_flags_ppc_altivec ; } \

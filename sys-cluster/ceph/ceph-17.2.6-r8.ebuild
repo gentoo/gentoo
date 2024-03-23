@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,17 +10,17 @@ inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single \
 		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
 XSIMD_HASH="aeec9c872c8b475dedd7781336710f2dd2666cb2"
+DESCRIPTION="Ceph distributed filesystem"
+HOMEPAGE="https://ceph.com/"
+
 SRC_URI="
 	https://download.ceph.com/tarballs/${P}.tar.gz
 	parquet? ( https://github.com/xtensor-stack/xsimd/archive/${XSIMD_HASH}.tar.gz -> ceph-xsimd-${PV}.tar.gz )
 "
-KEYWORDS="amd64 ~arm64"
-
-DESCRIPTION="Ceph distributed filesystem"
-HOMEPAGE="https://ceph.com/"
 
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
+KEYWORDS="amd64 ~arm64"
 
 CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
@@ -74,7 +74,7 @@ DEPEND="
 	sys-process/numactl:=
 	virtual/libcrypt:=
 	x11-libs/libpciaccess:=
-	babeltrace? ( dev-util/babeltrace )
+	babeltrace? ( dev-util/babeltrace:0/1 )
 	fuse? ( sys-fs/fuse:3= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
@@ -108,24 +108,24 @@ DEPEND="
 BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
-	app-arch/cpio
-	>=dev-util/cmake-3.5.0
+	app-alternatives/cpio
+	dev-debug/valgrind
+	>=dev-build/cmake-3.5.0
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/gperf
 	dev-util/ragel
-	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/grep
 	sys-apps/util-linux
 	sys-apps/which
-	sys-devel/bc
+	app-alternatives/bc
 	sys-devel/patch
 	virtual/pkgconfig
 	jaeger? (
-		sys-devel/bison
-		sys-devel/flex
+		app-alternatives/yacc
+		app-alternatives/lex
 	)
 	test? (
 		dev-util/cunit
@@ -167,7 +167,7 @@ RDEPEND="
 		diskprediction? (
 			>=dev-python/scipy-1.4.0[${PYTHON_USEDEP}]
 		)
-		sci-libs/scikit-learn[${PYTHON_USEDEP}]
+		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 	selinux? ( sec-policy/selinux-ceph )
@@ -381,6 +381,9 @@ ceph_src_configure() {
 
 	# hopefully this will not be necessary in the next release
 	use parquet && export ARROW_XSIMD_URL="file:///${DISTDIR}/ceph-xsimd-${PV}.tar.gz"
+
+	# https://bugs.gentoo.org/927066
+	filter-lto
 
 	cmake_src_configure
 

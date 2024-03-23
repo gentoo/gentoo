@@ -11,6 +11,7 @@
 		<remote-id type="kde-invent">network/kio-extras</remote-id>
 	</upstream>
 	<use>
+		<flag name="activities">Enable activities KIO worker and fileitem plugin</flag>
 		<flag name="ios">Enable AFC (Apple File Conduit) KIO worker for iOS devices support</flag>
 		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
 		<flag name="man">Enable manpages KIO worker</flag>

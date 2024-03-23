@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,9 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"
 BDEPEND="
@@ -24,6 +26,7 @@ BDEPEND="
 	dev-python/argparse-manpage[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/chainstream[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest-datafiles[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest

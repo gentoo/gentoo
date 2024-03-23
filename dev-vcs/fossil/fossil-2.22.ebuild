@@ -13,7 +13,7 @@ SRC_URI="https://fossil-scm.org/home/tarball/${MY_TAG}/fossil-src-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm ppc ppc64 ~riscv x86"
 IUSE="debug fusefs json system-sqlite +ssl static tcl tcl-stubs
 	  tcl-private-stubs test th1-docs th1-hooks"
 RESTRICT="!test? ( test )"

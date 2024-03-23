@@ -5,6 +5,9 @@
     <email>x11@gentoo.org</email>
     <name>X11</name>
   </maintainer>
+  <use>
+    <flag name="tools">Install optional tests and tools</flag>
+  </use>
   <upstream>
     <remote-id type="freedesktop-gitlab">mesa/drm</remote-id>
   </upstream>

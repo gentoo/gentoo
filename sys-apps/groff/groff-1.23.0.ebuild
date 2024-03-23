@@ -41,6 +41,11 @@ BDEPEND="
 
 DOCS=( BUG-REPORT ChangeLog MORE.STUFF NEWS PROBLEMS PROJECTS README TODO )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# False positive with older autoconf, will be fixed w/ autoconf-2.72
+	static_assert
+)
+
 PATCHES=(
 	# bug #16108, bug #17580, bug #121502
 	"${FILESDIR}"/${PN}-1.19.2-man-unicode-dashes.patch

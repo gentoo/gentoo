@@ -9,7 +9,7 @@
     <flag name="imagequant">Build with Image Quantization Library support</flag>
   </use>
   <upstream>
-    <remote-id type="pypi">Pillow</remote-id>
+    <remote-id type="pypi">pillow</remote-id>
     <remote-id type="github">python-pillow/Pillow</remote-id>
   </upstream>
 </pkgmetadata>

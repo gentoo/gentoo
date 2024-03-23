@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
-inherit desktop python-single-r1 toolchain-funcs xdg
+inherit desktop flag-o-matic python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
@@ -95,8 +95,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
-	sys-devel/bison
-	sys-devel/flex
+	app-alternatives/yacc
+	app-alternatives/lex
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
@@ -158,6 +158,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862579
+	# https://github.com/OSGeo/grass/issues/3506
+	#
+	# Do not trust it with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	addwrite /dev/dri/renderD128
 
 	local myeconfargs=(

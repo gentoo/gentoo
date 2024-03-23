@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		Debuggers and debugging-related tools.
+	</longdescription>
+	<longdescription lang="de">
+		Debugger und Werkzeuge zur Fehlersuche.
+	</longdescription>
+	<longdescription lang="pl">
+		Debugery i narzędzia związane z debugowaniem.
+	</longdescription>
+</catmetadata>

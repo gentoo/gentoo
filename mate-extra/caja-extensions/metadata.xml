@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+		<maintainer type="person" proxied="yes">
+			<email>immoloism@gmail.com</email>
+			<name>Ian Jordan</name>
+		</maintainer>
+		<maintainer type="project" proxied="proxy">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Proxy Maintainers</name>
+		</maintainer>
 	<use>
 		<flag name="cdr">Add an extension to burn files to cds using <pkg>app-cdr/brasero</pkg>.</flag>
 		<flag name="gajim">Add an extension to support <pkg>net-im/gajim</pkg>.</flag>
 		<flag name="image-converter">Add image conversion support.</flag>
 		<flag name="mail">Add an extension to support e-mail functionality.</flag>
+		<flag name="media">Add video audio extension with totem.</flag>
 		<flag name="open-terminal">Add an extension to support an open terminal.</flag>
 		<flag name="pidgin">Add an extension to support <pkg>net-im/pidgin</pkg></flag>
 		<flag name="share">Add an extension to support sharing files.</flag>

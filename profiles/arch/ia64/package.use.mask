@@ -1,5 +1,42 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Robin H. Johnson <robbat2@gentoo.org) (2024-03-13)
+# sys-cluster/corosync not yet keyworded, niche use case for mdadm
+sys-fs/mdadm corosync
+
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# matoro <matoro_gentoo@matoro.tk> (2024-02-29)
+# Observed crashes in git-remote-https due to this
+net-misc/curl adns
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-15)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
+
+# Sam James <sam@gentoo.org> (2024-01-02)
+# dev-libs/capstone not keyworded here
+dev-lang/php capstone
+
+# David Seifert <soap@gentoo.org> (2023-12-30)
+# sys-auth/sssd not keyworded here anymore
+app-admin/sudo sssd
+sys-auth/pambase sssd
+
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
 
 # James Le Cuirot (2023-12-12)
 # USE=bpf depends on sys-devel/clang which is not keyworded on ia64
@@ -10,7 +47,7 @@ media-libs/libv4l bpf
 media-video/ffmpeg glslang shaderc vulkan
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
@@ -19,15 +56,11 @@ sys-apps/openrc s6
 
 # Sam James <sam@gentoo.org> (2023-09-24)
 # Qt not keyworded here.
-app-doc/doxygen gui
+app-text/doxygen gui
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
+dev-build/cmake gui
 
 # Rich Freeman <rich0@gentoo.org> (2023-09-13)
 # Tests require shellcheck which is not currently available
@@ -226,7 +259,7 @@ app-text/texlive l10n_ja context
 # - net-libs/webkit-gtk: ruby build system
 app-editors/emacs xwidgets
 dev-util/geany-plugins markdown
-gnome-extra/evolution-data-server oauth oauth-gtk3 oauth-gtk4
+gnome-extra/evolution-data-server oauth-gtk3 oauth-gtk4
 # - gnome-extra/sushi: depends on webkit-gtk
 gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
@@ -414,11 +447,6 @@ net-misc/networkmanager wext
 media-sound/pulseaudio ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 
-# Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sys-boot/gnu-efi is not supported on all archs.
-<sys-apps/systemd-254 -gnuefi
-<sys-apps/systemd-utils-254 -boot
-
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
 net-misc/spice-gtk smartcard webdav
@@ -493,7 +521,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on ia64

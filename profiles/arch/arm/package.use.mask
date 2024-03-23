@@ -1,5 +1,37 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
+# virt-firmware is keyworded here
+sys-kernel/installkernel -efistub
+
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# Matt Jolly <kangie@gentoo.org> (2024-03-02)
+# Fails tests, potential false negatives #911402
+app-antivirus/clamav system-mspack
+
+# Joonas Niilola <juippis@gentoo.org> (2024-02-16)
+# Test dependencies not keyworded on this arch.
+www-servers/nginx test
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
+
+# Alexander Tsoy <alexander@tsoy.me> (2024-01-31)
+# Supports only 64-bit NEON
+media-libs/zita-resampler cpu_flags_arm_neon
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
+# No sys-block/nbdkit on arm, yet
+app-emulation/libvirt nbd
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
 
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, currently masked on this arch
@@ -42,8 +74,8 @@ dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/QtPy test
 games-util/lgogdownloader gui
-kde-apps/kde-apps-meta:5 pim
-kde-apps/kdenetwork-meta:5 bittorrent telepathy
+kde-apps/kde-apps-meta pim
+kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra:5 pim
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive share
@@ -137,8 +169,9 @@ net-im/prosody selinux
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm
 # bug #729720
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
@@ -218,10 +251,6 @@ sys-cluster/ceph babeltrace lttng
 net-analyzer/rrdtool rados
 www-servers/uwsgi uwsgi_plugins_rados
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-25)
-# (SM)BIOS outside of amd64/x86? - citation needed
-sys-apps/fwupd dell
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
 dev-ruby/capybara test
@@ -273,7 +302,7 @@ app-metrics/collectd -collectd_plugins_mqtt
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi java openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_pbs openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -330,7 +359,6 @@ media-sound/moc timidity
 # Markus Meier <maekke@gentoo.org> (2015-11-22)
 # unmask scanner for net-print/hplip, bug #518456
 net-print/hplip -scanner kde
-media-gfx/xsane ocr
 
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
@@ -341,7 +369,6 @@ media-gfx/xsane ocr
 media-video/ffmpeg -mmal
 media-video/ffmpeg-chromium -mmal
 media-video/mpv -mmal
-net-misc/moonlight -mmal
 
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330
@@ -374,6 +401,10 @@ sci-libs/netcdf hdf
 # Markus Meier <maekke@gentoo.org> (2014-09-24)
 # Unkeyworded deps, bug #519618
 sys-block/fio glusterfs rbd
+
+# Rick Farina <zerochaos@gentoo.org> (2014-07-27)
+# net-misc/dahdi doesn't build
+net-voip/yate dahdi
 
 # Markus Meier <maekke@gentoo.org> (2014-06-24)
 # Unkeyworded deps, bug #513108

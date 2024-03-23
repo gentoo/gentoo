@@ -15,7 +15,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	PATCHSET="${PN}-0.7.1-patchset-1"
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"

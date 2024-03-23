@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
 	toolchain-funcs
 
@@ -43,7 +43,6 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	>=dev-util/cmake-3.16
 	sys-devel/gnuconfig
 	kernel_Darwin? (
 		<sys-libs/libcxx-${LLVM_VERSION}.9999
@@ -356,7 +355,8 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 		-DLLVM_ENABLE_Z3_SOLVER=$(usex z3)
-		-DLLVM_ENABLE_ZSTD=$(usex zstd)
+		-DLLVM_ENABLE_ZLIB=FORCE_ON
+		-DLLVM_ENABLE_ZSTD=$(usex zstd FORCE_ON OFF)
 
 		-DLLVM_HOST_TRIPLE="${CHOST}"
 
@@ -424,16 +424,6 @@ multilib_src_configure() {
 			-DCMAKE_CROSSCOMPILING=ON
 			-DLLVM_TABLEGEN="${tblgen}"
 		)
-	fi
-
-	# workaround BMI bug in gcc-7 (fixed in 7.4)
-	# https://bugs.gentoo.org/649880
-	# apply only to x86, https://bugs.gentoo.org/650506
-	if tc-is-gcc && [[ ${MULTILIB_ABI_FLAG} == abi_x86* ]] &&
-			[[ $(gcc-major-version) -eq 7 && $(gcc-minor-version) -lt 4 ]]
-	then
-		local CFLAGS="${CFLAGS} -mno-bmi"
-		local CXXFLAGS="${CXXFLAGS} -mno-bmi"
 	fi
 
 	# LLVM can have very high memory consumption while linking,

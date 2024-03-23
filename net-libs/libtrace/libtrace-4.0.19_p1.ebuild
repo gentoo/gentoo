@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,8 +22,8 @@ RDEPEND=">=net-libs/libpcap-0.8
 	ncurses? ( sys-libs/ncurses:= )
 	numa? ( sys-process/numactl )"
 DEPEND="${RDEPEND}"
-BDEPEND="app-doc/doxygen[dot]
-	sys-devel/flex
+BDEPEND="app-text/doxygen[dot]
+	app-alternatives/lex
 	virtual/os-headers
 	virtual/pkgconfig
 	app-alternatives/yacc"
@@ -32,7 +32,7 @@ src_prepare() {
 	default
 
 	# Comment out FILE_PATTERNS definition (bug #706230)
-	if has_version ~app-doc/doxygen-1.8.16; then
+	if has_version ~app-text/doxygen-1.8.16; then
 		sed -i -e '/^FILE_PATTERNS/s|^|#|g' docs/${PN}.doxygen.in || die
 	fi
 

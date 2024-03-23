@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 DOCS=(
 	ANNOUNCEMENT
@@ -46,15 +46,12 @@ DOCS=(
 	CHANGES_1.1.txt
 	CHANGES_1.3.txt
 	CREDITS.txt
-	README.Android.md
 	README.CMake.txt
 	README.Cairo.txt
 	README.IDE.txt
-	README.Pico.txt
 	README.Unix.txt
 	README.Windows.txt
 	README.abi-version.txt
-	README.bundled-libs.txt
 	README.macOS.md
 	README.md
 	README.txt
@@ -66,10 +63,10 @@ FLTK_GAMES="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
-	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
-	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
-	"${FILESDIR}"/${PN}-1.3.5-cmake.patch
-	"${FILESDIR}"/${PN}-1.3.5-optim.patch
+	"${FILESDIR}"/${PN}-1.4.9999-makefile-dirs.patch
+	"${FILESDIR}"/${PN}-1.4.9999-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.4.9999-cmake.patch
+	"${FILESDIR}"/${PN}-1.4.9999-optim.patch
 )
 
 pkg_setup() {
@@ -94,9 +91,6 @@ src_prepare() {
 		-e "/^docdir/s:fltk:${PF}/html:" \
 		-e "/SILENT:/d" \
 		makeinclude.in || die
-
-	# also in Makefile:config.guess config.sub:
-	cp misc/config.{guess,sub} . || die
 
 	eautoconf
 	multilib_copy_sources

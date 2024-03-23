@@ -4,7 +4,7 @@
 EAPI=8
 
 PHP_EXT_NAME="mcrypt"
-USE_PHP="php8-0 php8-1"
+USE_PHP="php8-1"
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_ECONF_ARGS=()
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"

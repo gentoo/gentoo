@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php8-0 php8-1 php8-2" # deps must be registered separately below
+USE_PHP="php8-1 php8-2" # deps must be registered separately below
 
 POSTGRES_COMPAT=( 13 14 15 )
 
@@ -131,7 +131,6 @@ CDEPEND="
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
-		php_targets_php8-0? ( dev-lang/php:8.0[embed] )
 		php_targets_php8-1? ( dev-lang/php:8.1[embed] )
 		php_targets_php8-2? ( dev-lang/php:8.2[embed] )
 	)

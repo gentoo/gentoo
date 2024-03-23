@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="fcitx4">Enable support for <pkg>app-i18n/fcitx</pkg> 4</flag>
+		<flag name="fcitx5">Enable support for <pkg>app-i18n/fcitx</pkg> 5</flag>
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="renderer">Enable native candidate window</flag>

@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 RESTRICT="test" # bug #277165
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Name Service Switch module for Multicast DNS"
 HOMEPAGE="https://github.com/lathiat/nss-mdns"
@@ -17,6 +17,16 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( >=dev-libs/check-0.11[${MULTILIB_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/lld-17-undefined-versioned-symbols.patch
+)
+
+src_prepare() {
+	default
+	# Only needed for LLD 17 patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myconf=(

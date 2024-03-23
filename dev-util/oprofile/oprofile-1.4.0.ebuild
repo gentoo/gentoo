@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="apidoc java pch static-libs"
 
 BDEPEND="
-	apidoc? ( app-doc/doxygen[dot] )
+	apidoc? ( app-text/doxygen[dot] )
 	java? ( >=virtual/jdk-1.8:= )
 "
 CDEPEND="

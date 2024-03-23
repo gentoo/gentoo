@@ -12,5 +12,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">hoytech/lmdbxx</remote-id>
+		<remote-id type="sourceforge">lmdbxx</remote-id>
 	</upstream>
 </pkgmetadata>

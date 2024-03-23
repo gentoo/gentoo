@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ else
 		verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
 	"
 
-	KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc ~x86 ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
 fi
 
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
@@ -63,9 +63,9 @@ BDEPEND="
 	app-arch/xz-utils
 	dev-lang/perl
 	test? (
+		dev-debug/strace
 		dev-lang/perl
 		dev-perl/Expect
-		dev-util/strace
 		${PYTHON_DEPS}
 	)
 	verify-sig? ( sec-keys/openpgp-keys-coreutils )
@@ -76,7 +76,6 @@ RDEPEND+="
 		!sys-apps/util-linux[kill]
 		!sys-process/procps[kill]
 	)
-	!app-misc/realpath
 	!<sys-apps/util-linux-2.13
 	!<sys-apps/sandbox-2.10-r4
 	!sys-apps/stat

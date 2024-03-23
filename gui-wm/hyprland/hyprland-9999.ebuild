@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,22 @@ else
 	SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}-source"
 
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="X legacy-renderer systemd"
 
+# hyprpm (hyprland plugin manager) requires the dependencies at runtime
+# so that it can clone, compile and install plugins.
+HYPRPM_RDEPEND="
+	app-alternatives/ninja
+	dev-build/cmake
+	dev-build/meson
+	dev-vcs/git
+	virtual/pkgconfig
+"
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
 # enable x11-backend with X and vice versa
@@ -46,19 +55,20 @@ WLROOTS_RDEPEND="
 	)
 "
 WLROOTS_DEPEND="
-	>=dev-libs/wayland-protocols-1.32
+	>=dev-libs/wayland-protocols-1.33
 "
 WLROOTS_BDEPEND="
 	dev-util/glslang
 	dev-util/wayland-scanner
 "
-
 RDEPEND="
+	${HYPRPM_RDEPEND}
 	${WLROOTS_RDEPEND}
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/wayland
+	gui-libs/hyprcursor
 	media-libs/libglvnd
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -73,13 +83,14 @@ DEPEND="
 	${RDEPEND}
 	${WLROOTS_DEPEND}
 	dev-libs/hyprland-protocols
+	dev-libs/hyprlang
 	>=dev-libs/wayland-protocols-1.25
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
-	dev-util/cmake
+	dev-build/cmake
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

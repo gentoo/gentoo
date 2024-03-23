@@ -12,7 +12,6 @@
   efficiently as possible.
 </longdescription>
 <use>
-  <flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
   <flag name="gcc-plugin">Enable GCC extension plugin (experimental)</flag>
   <flag name="spinlock-check">Enable spinlock check</flag>
 </use>

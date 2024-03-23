@@ -1,5 +1,25 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# Anna (navi) Figueiredo Gomes <navi@vlhl.dev> (2024-02-14)
+# Fails to compile, bug #924396
+>=dev-lang/rust-1.75.0 lto
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-19)
+# JIT not supported here (#909826)
+dev-scheme/racket chez futures jit
 
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, currently masked on all PowerPC
@@ -29,10 +49,6 @@ sys-apps/openrc s6
 # configure: ERROR: Unavailable JVM features explicitly enabled for 'server': 'dtrace'
 # https://github.com/openjdk/jdk17u-dev/commit/5b29c6ec93372b20016565b84d449860b7233d6c
 dev-java/openjdk:17 systemtap
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
@@ -112,7 +128,7 @@ dev-embedded/urjtag ftd2xx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-11-05)
 # makes no sense on power
-sys-apps/fwupd amt dell uefi
+sys-apps/fwupd amt uefi
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
@@ -249,7 +265,6 @@ app-portage/g-sorcery bson
 
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
-sys-devel/clang default-libcxx
 sys-devel/clang-common default-libcxx
 sys-devel/clang-runtime libcxx
 
@@ -265,7 +280,7 @@ dev-db/percona-server -numa
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
-net-irc/quassel kde snorenotify
+net-irc/quassel kde
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
@@ -372,7 +387,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies

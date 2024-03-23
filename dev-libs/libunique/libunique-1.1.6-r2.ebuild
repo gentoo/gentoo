@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,12 +26,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.11
+	>=dev-build/gtk-doc-am-1.11
 	sys-devel/gettext
 	virtual/pkgconfig
 "
 # For eautoreconf
-#	dev-util/gtk-doc-am
+#	dev-build/gtk-doc-am
 
 PATCHES=(
 	# Include NUL terminator in unique_message_data_get_filename()

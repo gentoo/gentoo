@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/FileRoller"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="gtk-doc +introspection nautilus"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
@@ -47,7 +47,7 @@ and install the relevant package. For example:
 ace     - app-arch/unace
 arj     - app-arch/arj
 brotli  - app-arch/brotli
-cpio    - app-arch/cpio
+cpio    - app-alternatives/cpio
 deb     - app-arch/dpkg
 iso     - app-cdr/cdrtools
 jar,zip - app-arch/zip and app-arch/unzip

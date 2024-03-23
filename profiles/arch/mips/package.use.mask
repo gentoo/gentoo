@@ -1,5 +1,27 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-03-21)
+# Test suite is very fragile and doesn't even run on amd64.
+# No real point in running it here right now, bug #804115.
+dev-cpp/eigen test
+
+# matoro <matoro_gentoo@matoro.tk> (2024-02-29)
+# net-libs/libotr fails tests, #918448
+net-irc/irssi otr
+
+# matoro <matoro_gentoo@matoro.tk> (2024-02-28)
+# dev-util/glslang not keyworded here
+media-video/ffmpeg glslang
+
+# Sam James <sam@gentoo.org> (2024-01-02)
+# dev-libs/capstone not keyworded here
+dev-lang/php capstone
+
+# matoro <matoro_gentoo@matoro.tk> (2023-12-22)
+# Overflows R_MIPS_TLS_GOTTPREL with LTO
+# https://github.com/rust-lang/rust/issues/118794
+~dev-lang/rust-1.74.1 lto
 
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # media-libs/libjxl casualties
@@ -47,12 +69,8 @@ x11-misc/xscreensaver new-login
 app-i18n/ibus gtk4
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # app-i18n/fcitx:4 not keyworded here
@@ -211,7 +229,7 @@ dev-python/numpydoc test
 
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
-app-doc/doxygen clang
+app-text/doxygen clang
 
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2

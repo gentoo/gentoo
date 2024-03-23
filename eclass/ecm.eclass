@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -129,8 +129,8 @@ fi
 # "forceoptional-recursive".
 # Default value is "false", except for CATEGORY=kde-frameworks where it is
 # set to "true". If set to "false", do nothing.
-# For any other value, add "test" to IUSE and DEPEND on dev-qt/qtbase:6[test]
-# (for KF5: dev-qt/qttest:5). If set to "optional", build with
+# For any other value, add "test" to IUSE (and for KF5 DEPEND on
+# dev-qt/qttest:5). If set to "optional", build with
 # -DCMAKE_DISABLE_FIND_PACKAGE_Qt${_KFSLOT}Test=ON when USE=!test. If set
 # to "forceoptional", punt Qt${_KFSLOT}Test dependency and ignore "autotests",
 # "test", "tests" subdirs from top-level CMakeLists.txt when USE=!test.
@@ -243,7 +243,7 @@ case ${ECM_QTHELP} in
 	true)
 		IUSE+=" doc"
 		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${_KFSLOT} )"
-		BDEPEND+=" doc? ( >=app-doc/doxygen-1.8.13-r1 )"
+		BDEPEND+=" doc? ( >=app-text/doxygen-1.8.13-r1 )"
 		if [[ ${_KFSLOT} == 6 ]]; then
 			BDEPEND+=" dev-qt/qttools:${_KFSLOT}[assistant]"
 		else
@@ -260,9 +260,7 @@ esac
 case ${ECM_TEST} in
 	true|optional|forceoptional|forceoptional-recursive)
 		IUSE+=" test"
-		if [[ ${_KFSLOT} == 6 ]]; then
-			DEPEND+=" test? ( dev-qt/qtbase:${_KFSLOT}[test] )"
-		else
+		if [[ ${_KFSLOT} == 5 ]]; then
 			DEPEND+=" test? ( dev-qt/qttest:${_KFSLOT} )"
 		fi
 		RESTRICT+=" !test? ( test )"

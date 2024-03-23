@@ -1,10 +1,10 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit meson python-single-r1 vala
+inherit flag-o-matic meson python-single-r1 toolchain-funcs vala
 
 DESCRIPTION="VIPS Image Processing Library"
 HOMEPAGE="https://libvips.github.io/libvips/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/libvips/libvips/releases/download/v${PV}/${P}.tar.xz
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0/42" # soname
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="
 	archive deprecated doc exif fftw fits fontconfig graphicsmagick
 	gtk-doc heif +highway imagemagick imagequant +introspection +jpeg
@@ -50,7 +50,7 @@ RDEPEND="
 	introspection? ( dev-libs/gobject-introspection )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:= )
-	jpegxl? ( media-libs/libjxl )
+	jpegxl? ( media-libs/libjxl:= )
 	lcms? ( media-libs/lcms:2 )
 	matio? ( sci-libs/matio:= )
 	openexr? ( media-libs/openexr:= )
@@ -88,7 +88,7 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 	)
 	gtk-doc? ( dev-util/gtk-doc )
@@ -111,6 +111,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# workaround for bug in lld (bug #921728)
+	tc-ld-is-lld && filter-lto
+
 	local emesonargs=(
 		$(meson_use deprecated)
 		$(meson_use doc doxygen)

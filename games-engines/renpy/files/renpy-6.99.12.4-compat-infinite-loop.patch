@@ -1,0 +1,44 @@
+https://github.com/renpy/renpy/pull/1216
+https://github.com/bircoph/renpy/commit/ff308191a190bf7c5c2118a31f3d8569a0904c04
+
+commit ff308191a190bf7c5c2118a31f3d8569a0904c04
+Author: Andrew Savchenko <bircoph@gmail.com>
+Date:   Mon Jul 17 08:00:07 2017 +0300
+
+    Increase infinite loop hardcoded values
+    
+    On many old hardware, e.g on my Atom netbook games hit this limit,
+    but otherwise work fine. Increasing the limit helps. People are
+    also reporting this issue in many cases (old laptops, stow tablets,
+    etc where games fail due to this issue and work otherwise):
+    
+    https://translationprojectvisualnovels.blogspot.ru/2016/09/monster-girl-quest-android-15092016.html
+    https://lemmasoft.renai.us/forums/viewtopic.php?f=8&t=30521&start=90
+    https://steamcommunity.com/app/356530/discussions/0/365163686036650662/
+    (and many more, just google)
+
+index 00c7562..a7e361c 100644
+--- a/renpy/display/core.py
++++ b/renpy/display/core.py
+@@ -2845,7 +2845,7 @@ class Interface(object):
+ 
+             while rv is None:
+ 
+-                renpy.execution.not_infinite_loop(10)
++                renpy.execution.not_infinite_loop(50)
+ 
+                 # Check for a change in fullscreen preference.
+                 if ((self.fullscreen != renpy.game.preferences.fullscreen) or
+diff --git a/renpy/main.py b/renpy/main.py
+index 6f14d77..960d2fd 100644
+--- a/renpy/main.py
++++ b/renpy/main.py
+@@ -318,7 +318,7 @@ def main():
+     game.contexts = [ renpy.execution.Context(False) ]
+     game.contexts[0].init_phase = True
+ 
+-    renpy.execution.not_infinite_loop(60)
++    renpy.execution.not_infinite_loop(300)
+ 
+     # Load the script.
+     renpy.game.exception_info = 'While loading the script.'

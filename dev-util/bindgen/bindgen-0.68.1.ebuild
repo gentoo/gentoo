@@ -114,7 +114,7 @@ LICENSE="BSD"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 
 DEPEND="virtual/rust"
 RDEPEND="${DEPEND}

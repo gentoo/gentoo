@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">alabaster</remote-id>
-    <remote-id type="github">bitprophet/alabaster</remote-id>
+    <remote-id type="github">sphinx-doc/alabaster</remote-id>
   </upstream>
 </pkgmetadata>

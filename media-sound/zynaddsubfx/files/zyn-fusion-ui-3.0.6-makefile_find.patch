@@ -1,0 +1,69 @@
+From c1f5fcbad97c20b14a35e894477081d69519f6b0 Mon Sep 17 00:00:00 2001
+From: David Runge <dave@sleepmap.de>
+Date: Sat, 21 May 2022 13:19:48 +0200
+Subject: [PATCH] Use find internals instead of piping into grep
+
+Makefile:
+Use GNU find internals (e.g. `-iname`, `-exec` and conditionals) instead
+of piping into multiple instances of grep.
+Simplify line counting by using wc from find.
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@ linux:
+ # force rebuilding all code that depends on hotloading.
+ 	touch src/mruby-widget-lib/src/api.c  
+ 	cd mruby             && $(HOTLOADING) MRUBY_CONFIG=../build_config.rb rake
+-	$(CC) -shared -o libzest.so `find mruby/build/host -type f | grep -v mrbc | grep -e "\.o$$" | grep -v bin` ./deps/libnanovg.a \
++	$(CC) -shared -o libzest.so `find mruby/build/host -type f \( -not -iwholename "*mrbc*" -a -not -iwholename "*bin*" -a -iname "*.o" \)` \
+ 		./deps/libnanovg.a \
+ 		src/osc-bridge/libosc-bridge.a \
+ 		`pkg-config --libs libuv` -lm -lX11 -lGL -lpthread
+@@ -30,7 +30,7 @@ osx: deps/libuv.a
+ 	cd deps/pugl         && python2 ./waf
+ 	cd src/osc-bridge    && CFLAGS="-I ../../deps/libuv/include " make lib
+ 	cd mruby             && MRUBY_CONFIG=../build_config.rb rake
+-	$(CC) -shared -o libzest.so `find mruby/build/host -type f | grep -v mrbc | grep -e "\.o$$" | grep -v bin` ./deps/libnanovg.a \
++	$(CC) -shared -o libzest.so `find mruby/build/host -type f \( -not -iwholename "*mrbc*" -a -not -iwholename "*bin*" -a -iname "*.o" \)` ./deps/libnanovg.a \
+ 		./deps/libnanovg.a \
+ 		src/osc-bridge/libosc-bridge.a \
+ 		./deps/libuv/.libs/libuv.a  -lm -framework OpenGL -lpthread
+@@ -41,7 +41,7 @@ windows: buildpuglwin deps/libuv-win.a
+ 	$(AR) rc deps/libnanovg.a deps/nanovg/src/*.o
+ 	cd src/osc-bridge    && CFLAGS="-mstackrealign -I ../../deps/libuv/include " make lib
+ 	cd mruby             && WINDOWS=1 MRUBY_CONFIG=../build_config.rb rake
+-	$(CC) -mstackrealign -shared -o libzest.dll -static-libgcc `find mruby/build/w64 -type f | grep -e "\.o$$" | grep -v bin` \
++	$(CC) -mstackrealign -shared -o libzest.dll -static-libgcc `find mruby/build/w64 -type f \( -not -iwholename "*mrbc*" -a -not -iwholename "*bin*" -a -iname "*.o" \)` \
+         ./deps/libnanovg.a \
+         src/osc-bridge/libosc-bridge.a \
+         ./deps/libuv-win.a \
+@@ -98,21 +98,21 @@ stats:
+ 	@echo 'mruby-qml-parse  commits: ' `cd src/mruby-qml-parse && git log --oneline | wc -l`
+ 	@echo 'mruby-qml-spawn  commits: ' `cd src/mruby-qml-spawn && git log --oneline | wc -l`
+ 	@echo 'osc-bridge       commits: ' `cd src/osc-bridge      && git log --oneline | wc -l`
+-	@echo 'number of qml    files:' `find src/ -type f | grep -e qml$$ | wc -l`
+-	@echo 'number of ruby   files:' `find src/ -type f | grep -e rb$$ | wc -l`
+-	@echo 'number of c      files:' `find src/ -type f | grep -e c$$ | wc -l`
+-	@echo 'number of header files:' `find src/ -type f | grep -e h$$ | wc -l`
++	@echo 'number of qml    files:' `find src/ -type f -iname "*.qml" | wc -l`
++	@echo 'number of ruby   files:' `find src/ -type f -iname "*.rb" | wc -l`
++	@echo 'number of c      files:' `find src/ -type f -iname "*.c" | wc -l`
++	@echo 'number of header files:' `find src/ -type f -iname "*.h" | wc -l`
+ 	@echo 'lines of OSC schema:' `wc -l src/osc-bridge/schema/test.json`
+ 	@echo 'lines of qml:'
+-	@wc -l `find src/ -type f | grep qml$$` | tail -n 1
++	@`find src/ -type f -iname "*.qml" -exec wc -l {} +` | tail -n 1
+ 	@echo 'lines of ruby:'
+-	@wc -l `find src/ -type f | grep -e rb$$ | grep -v fcache` | tail -n 1
++	@`find src/ -type f \( -iname "*.rb" -a -not -iwholename "*fcache*" \) -exec wc -l {} +` | tail -n 1
+ 	@echo 'lines of c source:'
+-	@wc -l `find src/ -type f | grep -e c$$` | tail -n 1
++	@`find src/ -type f -iname "*.c" -exec wc -l {} +` | tail -n 1
+ 	@echo 'lines of c header:'
+-	@wc -l `find src/ -type f | grep -e h$$` | tail -n 1
++	@`find src/ -type f -iname "*.h" -exec wc -l {} +` | tail -n 1
+ 	@echo 'total lines of code:'
+-	@wc -l `find src/ -type f | grep -Ee "(qml|rb|c|h)$$" | grep -v fcache` | tail -n 1
++	@`find src/ -type f \( -iname "*.qml" -o -iname "*.rb" -o -iname "*.c" -o -iname "*.h" -a -not -iwholename "*fcache*" \) -exec wc -l {} +` | tail -n 1
+ 
+ 
+ verbose: ## Compile mruby with --trace

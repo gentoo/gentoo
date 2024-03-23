@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README"
 inherit ruby-fakegem
 
 DESCRIPTION="Universal capture of STDOUT and STDERR and handling of child process PID"
-HOMEPAGE="http://codeforpeople.com/lib/ruby/systemu/"
+HOMEPAGE="https://github.com/ahoward/systemu"
 
 LICENSE="Ruby-BSD"
 SLOT="0"

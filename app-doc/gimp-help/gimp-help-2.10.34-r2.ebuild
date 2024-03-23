@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit python-any-r1
 
 DESCRIPTION="GNU Image Manipulation Program help files"
@@ -32,6 +32,8 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	# The upstream build system isn't pure gettext and doesn't distinguish
 	# between empty and unset LINGUAS. Default to English only if either
 	# nls is unset or if LINGUAS exists but is empty. #891709

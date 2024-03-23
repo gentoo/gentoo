@@ -11,7 +11,6 @@
     <flag name="bpf">Enable support for eBPF (as well as XDP if supported by the kernel and the NIC driver)
         for low-level, high-speed packet processing</flag>
     <flag name="control-socket">Enable unix socket</flag>
-    <flag name="cuda">Enable NVIDIA Cuda computations support</flag>
     <flag name="detection">Enable detection modules</flag>
     <flag name="hyperscan">Enable high-performance regex matching with Hyperscan</flag>
     <flag name="lz4">Enable support for compressed pcap logging using the LZ4 algorithm</flag>

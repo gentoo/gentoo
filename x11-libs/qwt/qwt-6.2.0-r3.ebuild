@@ -15,7 +15,7 @@ HOMEPAGE="https://qwt.sourceforge.io/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="qwt"
-KEYWORDS="amd64 ~arm ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 SLOT="6/2.0"
 IUSE="designer doc examples opengl polar +qt5 qt6 svg"
 REQUIRED_USE="|| ( qt5 qt6 )"

@@ -1,17 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit mate python-any-r1 virtualx
 
-if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
-fi
+#if [[ ${PV} != 9999 ]]; then
+#	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+#fi
 
 DESCRIPTION="Atril document viewer for MATE"
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
@@ -62,7 +62,7 @@ BDEPEND="${COMMON_DEPEND}
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )

@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/project/deng/Doomsday%20Engine/${PV}/
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="demo +display-mode freedoom fluidsynth openal tools"
 
 RDEPEND="

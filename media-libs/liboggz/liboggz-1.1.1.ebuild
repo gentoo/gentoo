@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=media-libs/libogg-1.2.0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? ( app-text/docbook-sgml-utils )"
 
 PATCHES=( "${FILESDIR}/${P}-destdir.patch" )

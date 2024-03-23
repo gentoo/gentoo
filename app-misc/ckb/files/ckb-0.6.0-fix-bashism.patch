@@ -1,0 +1,16 @@
+From https://github.com/ckb-next/ckb-next/commit/76a47f95b442a1ae5a9c7448566eaafd8863ca8d
+From: Willow Barraco <contact@willowbarraco.fr>
+Date: Wed, 19 Jul 2023 09:38:09 +0200
+Subject: [PATCH] Fix ckb-next-daemon OpenRC service file
+
+--- a/linux/openrc/ckb-next-daemon.in
++++ b/linux/openrc/ckb-next-daemon.in
+@@ -7,4 +7,4 @@ command="@CMAKE_INSTALL_PREFIX@/bin/ckb-next-daemon"
+ description="Corsair Keyboards and Mice Daemon"
+ pidfile="/dev/input/ckb0/pid"
+ logfile="/var/log/${RC_SVCNAME}.log"
+-start_stop_daemon_args+="--background --stdout ${logfile} --stderr ${logfile}"
++start_stop_daemon_args="$start_stop_daemon_args --background --stdout ${logfile} --stderr ${logfile}"
+-- 
+2.43.0
+

@@ -1,0 +1,38 @@
+https://github.com/DCIT/perl-CryptX/pull/99
+https://bugs.gentoo.org/916387
+--- a/src/ltc/headers/tomcrypt_cfg.h
++++ b/src/ltc/headers/tomcrypt_cfg.h
+@@ -96,6 +96,9 @@ LTC_EXPORT int   LTC_CALL XSTRCMP(const char *s1, const char *s2);
+          #define LTC_AMD64_SSE4_1
+       #endif
+    #endif
++   #if defined(__AES__)
++       #define LTC_AMD64_AES_NI
++   #endif
+ #endif
+ 
+ /* detect PPC32 */
+--- a/src/ltc/headers/tomcrypt_private.h
++++ b/src/ltc/headers/tomcrypt_private.h
+@@ -77,7 +77,7 @@ typedef struct
+ 
+ /* tomcrypt_cipher.h */
+ 
+-#if defined(LTC_AES_NI) && defined(LTC_AMD64_SSE4_1)
++#if defined(LTC_AES_NI) && defined(LTC_AMD64_AES_NI)
+ #define LTC_HAS_AES_NI
+ #endif
+ 
+--- a/src/ltc/misc/crypt/crypt.c
++++ b/src/ltc/misc/crypt/crypt.c
+@@ -416,7 +416,7 @@ const char *crypt_build_settings =
+ #if defined(LTC_ADLER32)
+     " ADLER32 "
+ #endif
+-#if defined(LTC_AES_NI) && defined(LTC_AMD64_SSE4_1)
++#if defined(LTC_AES_NI) && defined(LTC_AMD64_AES_NI)
+     " AES-NI "
+ #endif
+ #if defined(LTC_BASE64)
+
+

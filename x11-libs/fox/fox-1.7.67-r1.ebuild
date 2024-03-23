@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="C++ Toolkit for developing Graphical User Interfaces easily and effectively"
 HOMEPAGE="http://www.fox-toolkit.org/"
@@ -31,7 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt"
-BDEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=( "${FILESDIR}"/"${PN}"-1.7.67-no-truetype.patch )
 
@@ -57,6 +57,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/864412
+	# Fixed in 1.7.84
+	#
+	# Do not trust it for LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf \
 		--disable-static \
 		--enable-$(usex debug debug release) \

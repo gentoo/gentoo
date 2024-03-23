@@ -1,0 +1,70 @@
+--- a/CMakeLists_Dependencies.cmake
++++ b/CMakeLists_Dependencies.cmake
+@@ -1,6 +1,16 @@
+ ##############################################################################################################
+ ########## Find Dependencies                                                                        ##########
+ 
++#<<HYPHEN for Hyphenation support
++find_package(HYPHEN)
++if(HYPHEN_FOUND)
++	message("System Hyphen Found OK")
++	set(HAVE_HYPHEN ON)
++else()
++	message("Hyphen or its developer libraries NOT found - using bundled Hyphen instead")
++endif()
++#>>HYPHEN for Hyphenation support
++
+ #<<PoDoFo for AI PDF import
+ option(WITH_PODOFO "Enable support for PDF embedded in AI" ON)
+ if (WITH_PODOFO)
+--- a/scribus/CMakeLists.txt
++++ b/scribus/CMakeLists.txt
+@@ -120,11 +120,6 @@ if(HAVE_PODOFO)
+ 
+ endif()
+ 
+-if(HAVE_HYPHEN)
+-	target_link_libraries(${EXE_NAME} PRIVATE ${HYPHEN_LIBRARY})
+-endif()
+-
+-
+ if(GESTURE_FRAME_PREVIEW)
+ 	 message(STATUS "Enable gesture frame preview [experimental]")
+ 	 set(GESTURE_FRAME_PREVIEW_SOURCES	pageitempreview.cpp)
+@@ -178,6 +173,12 @@ if(WANT_PCH)
+ 	target_precompile_headers(${EXE_NAME} PRIVATE scribus_pch.h)
+ endif()
+ 
++if(HAVE_HYPHEN)
++	target_link_libraries(${EXE_NAME} PRIVATE
++	${HYPHEN_LIBRARY}
++	)
++endif()
++
+ if(WIN32)
+ 	set_target_properties(${EXE_NAME}
+ 		PROPERTIES
+--- a/scribus/CMakeLists_Sources.txt
++++ b/scribus/CMakeLists_Sources.txt
+@@ -560,7 +560,9 @@ set(SCRIBUS_SOURCES
+ 	)
+ #endif()
+ 
+-if(NOT HAVE_HYPHEN)
++if(HAVE_HYPHEN)
++	include_directories(${HYPHEN_INCLUDE_DIR})
++else()
+ 	include_directories(third_party/hyphen)
+ 	set(SCRIBUS_SOURCES
+ 	${SCRIBUS_SOURCES}
+--- a/scribus/hyphenator.h
++++ b/scribus/hyphenator.h
+@@ -13,7 +13,7 @@ for which a new license (GPL+exception) is in place.
+ #include <QSet>
+ 
+ #include "scribusapi.h"
+-#include "third_party/hyphen/hyphen.h"
++#include <hyphen.h>
+ 
+ class ScribusDoc;
+ class ScribusMainWindow;

@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="github">kien/rainbow_parentheses.vim</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

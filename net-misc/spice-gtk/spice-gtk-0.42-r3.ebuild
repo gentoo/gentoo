@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit desktop meson optfeature python-any-r1 readme.gentoo-r1 vala xdg
 
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* ]] ; then
 	SPICE_PROTOCOL_VER=9999
 else
 	SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
 
 	SPICE_PROTOCOL_VER=0.14.3
 fi
@@ -74,7 +74,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	>=app-emulation/spice-protocol-${SPICE_PROTOCOL_VER}
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 "
 BDEPEND="
 	$(python_gen_any_dep '

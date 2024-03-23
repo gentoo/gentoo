@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/920054
+https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/patch/?id=deb66acabe44d103c8368b62a76ef37aa074748d
+
+From deb66acabe44d103c8368b62a76ef37aa074748d Mon Sep 17 00:00:00 2001
+From: Luca Boccassi <bluca@debian.org>
+Date: Mon, 6 Nov 2023 00:14:10 +0000
+Subject: Revert "Makefile: ensure CONF_USR_DIR honours the libdir config"
+
+LIBDIR in Debian and derivatives is not /usr/lib/, it's
+/usr/lib/<architecture triplet>/, which is different, and it's the
+wrong location where to install architecture-independent default
+configuration files, which should always go to /usr/lib/ instead.
+Installing these files to the per-architecture directory is not
+the right thing, hence revert the change.
+
+This reverts commit 946753a4459bd035132a27bb2eb87529c1979b90.
+
+Signed-off-by: Luca Boccassi <bluca@debian.org>
+Signed-off-by: Stephen Hemminger <stephen@networkplumber.org>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 5c559c8dc..a24844cf0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@ endif
+ PREFIX?=/usr
+ SBINDIR?=/sbin
+ CONF_ETC_DIR?=/etc/iproute2
+-CONF_USR_DIR?=$(LIBDIR)/iproute2
++CONF_USR_DIR?=$(PREFIX)/lib/iproute2
+ NETNS_RUN_DIR?=/var/run/netns
+ NETNS_ETC_DIR?=/etc/netns
+ DATADIR?=$(PREFIX)/share
+-- 
+cgit 1.2.3-korg

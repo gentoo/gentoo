@@ -19,7 +19,7 @@ SRC_URI="https://github.com/haml/haml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 IUSE="doc test"
 
@@ -49,6 +49,11 @@ all_ruby_prepare() {
 		test/test_helper.rb || die
 	# Remove tests that fails when RedCloth is available
 	rm -f test/haml/filters/markdown_test.rb || die
+	# Remove tests that require coffee-script (does not work with x32
+	# and coffee-script is obsolete anyway).
+	rm -f test/haml/filters/coffee_test.rb || die
+	sed -e '/describe.*coffee filter/,/^    end/ s:^:#:' \
+		-i test/haml/line_number_test.rb || die
 }
 
 each_ruby_test() {

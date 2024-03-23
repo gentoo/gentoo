@@ -1,0 +1,28 @@
+https://rt.cpan.org/Public/Bug/Display.html?id=149742
+
+From 319db4d47493f7ef3909efc1b3904c134c90af5e Mon Sep 17 00:00:00 2001
+From: Sergei Zhmylev <zhmylove@cpan.org>
+Date: Mon, 11 Sep 2023 21:29:17 +0300
+Subject: [PATCH] Make Build.PL compatible with Imlib2 v1.7.5+
+
+--- a/Build.PL
++++ b/Build.PL
+@@ -1,10 +1,14 @@
+ use Module::Build;
+ use strict;
+ 
+-# We need to find imlib2-config
+-my $CONFIG = "imlib2-config";
++my $CONFIG = "pkg-config imlib2";
+ 
+ my $version = `$CONFIG --version`;
++if (!$version) {
++  # Try deprecated imlib2-config
++  $CONFIG = "imlib2-config";
++  $version = `$CONFIG --version`;
++}
+ if (!$version) {
+   warn 'You must install the imlib2 library before you can install
+ Image::Imlib2. You can obtain imlib2 from
+-- 
+2.40.0

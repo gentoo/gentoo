@@ -16,7 +16,7 @@ S="${WORKDIR}/java-diff-utils-java-diff-utils-parent-${PV}/java-diff-utils"
 
 LICENSE="Apache-2.0"
 SLOT="4"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 RESTRICT="test" #839681
 
 BDEPEND="app-arch/unzip"

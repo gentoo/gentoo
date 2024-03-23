@@ -1,4 +1,4 @@
-# Copyright 2000-2023 Gentoo Authors
+# Copyright 2000-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -156,7 +156,7 @@ RDEPEND="
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
-	mp3? ( media-libs/libmpg123 )
+	mp3? ( media-sound/mpg123-base )
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
@@ -170,7 +170,7 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-libs/libpulse )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:=[client(+)] )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc0:2=[client(+)] )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )

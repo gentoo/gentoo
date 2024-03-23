@@ -1,0 +1,21 @@
+--- a/test/Makefile.am	2024-03-18 22:15:31.296275378 +0100
++++ b/test/Makefile.am	2024-03-18 22:15:57.499969373 +0100
+@@ -35,14 +35,16 @@
+   RIVET_TESTS_SRC=$(srcdir)
+ 
+ TESTS = \
+-testMath testMatVec testCmp testApi.sh testNaN.sh testBeams \
+-testImport.sh
++testMath testMatVec testCmp testApi.sh testNaN.sh testBeams
++if ENABLE_PYEXT
++TESTS += testImport.sh
+ 
+ if ENABLE_ANALYSES
+ 
+ TESTS += testCmdLine.sh
+ 
+ endif
++endif
+ 
+ EXTRA_DIST = testApi.hepmc testCmdLine.sh testImport.sh testApi.sh testNaN.sh
+ 

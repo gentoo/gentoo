@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	introspection? ( $(vala_depend) )
 	>=dev-util/gtk-doc-1.14
-	>=dev-util/gtk-doc-am-1.14
+	>=dev-build/gtk-doc-am-1.14
 	virtual/pkgconfig
 	test? ( dev-util/dbus-test-runner )
 "

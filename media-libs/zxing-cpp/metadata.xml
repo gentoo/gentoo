@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">nu-book/zxing-cpp</remote-id>
+		<remote-id type="github">zxing-cpp/zxing-cpp</remote-id>
 	</upstream>
 </pkgmetadata>

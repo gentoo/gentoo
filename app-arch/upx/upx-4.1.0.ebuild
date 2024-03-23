@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="GPL-2+ UPX-exception" # Read the exception before applying any patches
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="!app-arch/upx-bin"
 BDEPEND="app-arch/xz-utils[extra-filters]"

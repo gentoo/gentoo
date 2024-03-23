@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: verify-sig.eclass
@@ -68,7 +68,7 @@ case ${VERIFY_SIG_METHOD} in
 		BDEPEND="
 			verify-sig? (
 				app-crypt/gnupg
-				>=app-portage/gemato-16
+				>=app-portage/gemato-20
 			)
 		"
 		;;
@@ -159,16 +159,10 @@ verify-sig_verify_detached() {
 			# gpg can't handle very long TMPDIR
 			# https://bugs.gentoo.org/854492
 			local -x TMPDIR=/tmp
-			if has_version ">=app-portage/gemato-20"; then
-				gemato openpgp-verify-detached -K "${key}" \
-					"${extra_args[@]}" \
-					"${sig}" "${file}" ||
-					die "PGP signature verification failed"
-			else
-				gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
-					gpg --verify "${sig}" "${file}" ||
-					die "PGP signature verification failed"
-			fi
+			gemato openpgp-verify-detached -K "${key}" \
+				"${extra_args[@]}" --no-require-all-good \
+				"${sig}" "${file}" ||
+				die "PGP signature verification failed"
 			;;
 		signify)
 			signify -V -p "${key}" -m "${file}" -x "${sig}" ||

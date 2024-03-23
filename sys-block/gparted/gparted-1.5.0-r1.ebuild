@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit gnome2 optfeature virtualx
 
 DESCRIPTION="Partition editor for graphically managing your disk partitions"
@@ -15,7 +16,7 @@ IUSE="kde policykit wayland"
 
 DEPEND="
 	!policykit? (
-		kde? ( >=kde-plasma/kde-cli-tools-5.8.6-r1[kdesu] ) )
+		kde? ( >=kde-plasma/kde-cli-tools-5.8.6-r1:*[kdesu] ) )
 	policykit? ( >=sys-auth/polkit-0.102 )
 	>=dev-cpp/glibmm-2.56.1:2
 	>=dev-cpp/gtkmm-3.24:3.0

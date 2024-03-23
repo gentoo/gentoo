@@ -9,7 +9,6 @@
 		<flag name="clang">Force building using installed clang (rather
 			than the default CC/CXX; required for testing).</flag>
 		<flag name="libcxxabi">Build on top of <pkg>sys-libs/libcxxabi</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
-		<flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependence on gcc.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>

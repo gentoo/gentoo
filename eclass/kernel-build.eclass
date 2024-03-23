@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -30,9 +30,6 @@ _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{10..12} )
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-	# If we have enabled module signing IUSE
-	# then we can also enable secureboot IUSE
-	KERNEL_IUSE_SECUREBOOT=1
 	inherit secureboot
 fi
 
@@ -40,11 +37,11 @@ inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
 	${PYTHON_DEPS}
-	app-arch/cpio
-	sys-devel/bc
+	app-alternatives/cpio
+	app-alternatives/bc
+	sys-devel/bison
 	sys-devel/flex
 	virtual/libelf
-	app-alternatives/yacc
 	arm? ( sys-apps/dtc )
 	arm64? ( sys-apps/dtc )
 	riscv? ( sys-apps/dtc )
@@ -56,10 +53,10 @@ IUSE="+strip"
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If set to a non-null value, adds IUSE=modules-sign and required
-# logic to manipulate the kernel config while respecting the
-# MODULES_SIGN_HASH, MODULES_SIGN_CERT, and MODULES_SIGN_KEY  user
-# variables.
+# If set to a non-null value, inherits secureboot.eclass, adds
+# IUSE=modules-sign and required logic to manipulate the kernel
+# config while respecting the MODULES_SIGN_HASH, MODULES_SIGN_CERT,
+# and MODULES_SIGN_KEY  user variables.
 
 # @ECLASS_VARIABLE: MODULES_SIGN_HASH
 # @USER_VARIABLE
@@ -99,11 +96,25 @@ IUSE="+strip"
 # key in PEM format to use. Must be specified if MODULES_SIGN_KEY
 # is set to a path of a file that only contains the private key.
 
+# @ECLASS_VARIABLE: KERNEL_GENERIC_UKI_CMDLINE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# If KERNEL_IUSE_GENERIC_UKI is set, this variable allows setting the
+# built-in kernel command line for the UKI. If unset, the default is
+# root=/dev/gpt-auto-root ro
+: "${KERNEL_GENERIC_UKI_CMDLINE:="root=/dev/gpt-auto-root ro"}"
+
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
 	REQUIRED_USE="secureboot? ( modules-sign )"
 	BDEPEND+="
 		modules-sign? ( dev-libs/openssl )
+	"
+fi
+
+if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+	BDEPEND+="
+		generic-uki? ( ${!INITRD_PACKAGES[@]} )
 	"
 fi
 
@@ -277,9 +288,18 @@ kernel-build_src_install() {
 	# Modules were already stripped by the kernel build system
 	dostrip -x /lib/modules
 
+	local compress=()
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && ! use modules-compress; then
+		compress+=(
+			# force installing uncompressed modules even if compression
+			# is enabled via config
+			suffix-y=
+		)
+	fi
+
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
-		INSTALL_PATH="${ED}/boot" "${targets[@]}"
+		INSTALL_PATH="${ED}/boot" "${compress[@]}" "${targets[@]}"
 
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
@@ -333,7 +353,8 @@ kernel-build_src_install() {
 	# build/Module.symvers does not exist if CONFIG_MODULES is not set.
 	[[ -f build/Module.symvers ]] && doins build/Module.symvers
 	local image_path=$(dist-kernel_get_image_path)
-	cp -p "build/${image_path}" "${ED}${kernel_dir}/${image_path}" || die
+	local image=${ED}${kernel_dir}/${image_path}
+	cp -p "build/${image_path}" "${image}" || die
 
 	# If a key was generated, copy it so external modules can be signed
 	local suffix
@@ -364,9 +385,105 @@ kernel-build_src_install() {
 	# fix source tree and build dir symlinks
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
+	if [[ "${image_path}" == *vmlinux* ]]; then
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinux"
+	else
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinuz"
+	fi
 
-	if [[ ${KERNEL_IUSE_SECUREBOOT} ]]; then
-		secureboot_sign_efi_file "${ED}${kernel_dir}/${image_path}"
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+		secureboot_sign_efi_file "${image}"
+	fi
+
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+		if use generic-uki; then
+			# NB: if you pass a path that does not exist or is not a regular
+			# file/directory, dracut will silently ignore it and use the default
+			# https://github.com/dracutdevs/dracut/issues/1136
+			> "${T}"/empty-file || die
+			mkdir -p "${T}"/empty-directory || die
+
+			local dracut_modules=(
+				base bash btrfs cifs crypt crypt-gpg crypt-loop dbus dbus-daemon
+				dm dmraid dracut-systemd fido2 i18n fs-lib kernel-modules
+				kernel-network-modules kernel-modules-extra lunmask lvm nbd
+				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
+				pkcs11 qemu qemu-net resume rngd rootfs-block shutdown
+				systemd systemd-ac-power systemd-ask-password systemd-initrd
+				systemd-integritysetup systemd-pcrphase systemd-sysusers
+				systemd-udevd systemd-veritysetup terminfo tpm2-tss udev-rules
+				uefi-lib usrmount virtiofs
+			)
+
+			local dracut_args=(
+				--conf "${T}/empty-file"
+				--confdir "${T}/empty-directory"
+				--kernel-image "${image}"
+				--kmoddir "${ED}/lib/modules/${dir_ver}"
+				--kver "${dir_ver}"
+				--verbose
+				--compress="xz -9e --check=crc32"
+				--no-hostonly
+				--no-hostonly-cmdline
+				--no-hostonly-i18n
+				--no-machineid
+				--nostrip
+				--no-uefi
+				--early-microcode
+				--reproducible
+				--ro-mnt
+				--modules "${dracut_modules[*]}"
+				# Pulls in huge firmware files
+				--omit-drivers "nfp"
+			)
+
+			# Tries to update ld cache
+			addpredict /etc/ld.so.cache~
+			dracut "${dracut_args[@]}" "${image%/*}/initrd" ||
+				die "Failed to generate initramfs"
+
+			local ukify_args=(
+				--linux="${image}"
+				--initrd="${image%/*}/initrd"
+				--cmdline="${KERNEL_GENERIC_UKI_CMDLINE}"
+				--uname="${dir_ver}"
+				--output="${image%/*}/uki.efi"
+			)
+
+			if [[ ${KERNEL_IUSE_SECUREBOOT} ]] && use secureboot; then
+				ukify_args+=(
+					--signtool=sbsign
+					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
+					--secureboot-certificate="${SECUREBOOT_SIGN_CERT}"
+				)
+				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+					ukify_args+=(
+						--signing-engine="pkcs11"
+					)
+				else
+					# Sytemd-measure does not currently support pkcs11
+					ukify_args+=(
+						--measure
+						--pcrpkey="${ED}${kernel_dir}/certs/signing_key.x509"
+						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--phases="enter-initrd"
+						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--phases="enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready"
+					)
+				fi
+			fi
+
+			# systemd<255 does not install ukify in /usr/bin
+			PATH="${PATH}:${BROOT}/usr/lib/systemd:${BROOT}/lib/systemd" \
+				ukify build "${ukify_args[@]}" || die "Failed to generate UKI"
+
+			# Overwrite unnecessary image types to save space
+			> "${image}" || die
+		else
+			# Placeholders to ensure we own these files
+			> "${image%/*}/uki.efi" || die
+		fi
+		> "${image%/*}/initrd" || die
 	fi
 
 	# unset to at least be out of the environment file in, e.g. shared binpkgs
@@ -449,6 +566,17 @@ kernel-build_merge_configs() {
 			fi
 			merge_configs+=( "${WORKDIR}/modules-sign.config" )
 		fi
+	fi
+
+	# Only semi-related but let's use that to avoid changing stable ebuilds.
+	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
+		# NB: we enable this even with USE=-modules-compress, in order
+		# to support both uncompressed and compressed modules in prebuilt
+		# kernels
+		cat <<-EOF > "${WORKDIR}/module-compress.config" || die
+			CONFIG_MODULE_COMPRESS_XZ=y
+		EOF
+		merge_configs+=( "${WORKDIR}/module-compress.config" )
 	fi
 
 	if [[ ${#user_configs[@]} -gt 0 ]]; then

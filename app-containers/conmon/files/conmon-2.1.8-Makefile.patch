@@ -1,15 +1,60 @@
+# https://github.com/containers/conmon/pull/482
+# https://github.com/containers/conmon/pull/456
+From 26f8263a2e5c7bff1e2d5985a8a3d5f07ab3b0b0 Mon Sep 17 00:00:00 2001
+From: Rahil Bhimjiani <me@rahil.rocks>
+Date: Tue, 26 Sep 2023 03:21:49 +0530
+Subject: [PATCH] Remove checks for (long)deprecated libsystemd-journal in
+ favor of libsystemd
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1350301#c2
+
+Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
+---
+ Makefile    | 5 +----
+ meson.build | 5 +----
+ 2 files changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5e6c0d39..40df8e3d 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -41,4 +41 @@
+@@ -38,10 +38,7 @@ override CFLAGS += $(shell $(PKG_CONFIG) --cflags glib-2.0) -DVERSION=\"$(VERSIO
+ # "pkg-config --exists" will error if the package doesn't exist. Make can only compare
+ # output of commands, so the echo commands are to allow pkg-config to error out, make to catch it,
+ # and allow the compilation to complete.
 -ifeq ($(shell $(PKG_CONFIG) --exists libsystemd-journal && echo "0"), 0)
 -	override LIBS += $(shell $(PKG_CONFIG) --libs libsystemd-journal)
 -	override CFLAGS += $(shell $(PKG_CONFIG) --cflags libsystemd-journal) -D USE_JOURNALD=1
 -else ifeq ($(shell $(PKG_CONFIG) --exists libsystemd && echo "0"), 0)
 +ifeq ($(shell $(PKG_CONFIG) --exists libsystemd && echo "0"), 0)
-@@ -127 +123,0 @@
--	$(MAKE) -C tools
+ 	override LIBS += $(shell $(PKG_CONFIG) --libs libsystemd)
+ 	override CFLAGS += $(shell $(PKG_CONFIG) --cflags libsystemd) -D USE_JOURNALD=1
+ endif
+diff --git a/meson.build b/meson.build
+index 336e48f3..b454e349 100644
+--- a/meson.build
++++ b/meson.build
+@@ -47,10 +47,7 @@ else
+   libdl = cc.find_library('dl')
+ endif
+ 
+-sd_journal = dependency('libsystemd-journal', required : false)
+-if not sd_journal.found()
+-	sd_journal = dependency('libsystemd', required : false)
+-endif
++sd_journal = dependency('libsystemd', required : false)
+ if sd_journal.found()
+ 	add_project_arguments('-DUSE_JOURNALD=1', language : 'c')
+ endif
+diff --git a/docs/Makefile b/docs/Makefile
+index af20d2b8..25987664 100644
 --- a/docs/Makefile
 +++ b/docs/Makefile
-@@ -4 +4 @@
+@@ -1,6 +1,6 @@
+ PREFIX ?= /usr/local
+ DATADIR := ${PREFIX}/share
+ MANDIR := $(DATADIR)/man
 -GOMD2MAN = ../tools/build/go-md2man
 +GOMD2MAN ?= ../tools/build/go-md2man
+ 
+ docs: $(patsubst %.md,%,$(wildcard *.8.md))

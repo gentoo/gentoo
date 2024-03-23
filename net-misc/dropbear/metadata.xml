@@ -27,5 +27,6 @@
   </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:matt_johnston:dropbear_ssh_server</remote-id>
+  <remote-id type="github">mkj/dropbear</remote-id>
 </upstream>
 </pkgmetadata>

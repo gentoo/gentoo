@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,7 +73,7 @@ RDEPEND="${DEPEND}
 	app-alternatives/awk
 	dist-kernel? ( virtual/dist-kernel:= )
 	rootfs? (
-		app-arch/cpio
+		app-alternatives/cpio
 		app-misc/pax-utils
 	)
 	selinux? ( sec-policy/selinux-zfs )
@@ -81,7 +81,7 @@ RDEPEND="${DEPEND}
 		app-shells/ksh
 		sys-apps/kmod[tools]
 		sys-apps/util-linux
-		sys-devel/bc
+		app-alternatives/bc
 		sys-block/parted
 		sys-fs/lsscsi
 		sys-fs/mdadm

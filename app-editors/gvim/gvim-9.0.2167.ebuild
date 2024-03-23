@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 S="${WORKDIR}"/vim-${PV}
 
@@ -74,7 +74,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 # configure runs the Lua interpreter
 BDEPEND="
-	sys-devel/autoconf
+	dev-build/autoconf
 	virtual/pkgconfig
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
@@ -164,6 +164,11 @@ src_prepare() {
 	if ! use cscope; then
 		sed -i -e \
 			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
+	fi
+
+	# bug 908961
+	if use elibc_musl ; then
+		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
 	fi
 }
 

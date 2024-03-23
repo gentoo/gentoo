@@ -1,0 +1,18 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Guile only supports JIT on some arches
+# (armv7 only for arm)
+# (See 9.3.8 in the Guile manual)
+dev-scheme/guile -jit
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
+# Sam James <sam@gentoo.org> (2020-06-27)
+# Tests require Valgrind, available on armv7a
+dev-libs/rapidjson -test
+sys-apps/proot -test

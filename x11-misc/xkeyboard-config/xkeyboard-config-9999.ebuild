@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# <dev-python/pycountry-23.12.7 bug #920278
 BDEPEND="
 	dev-lang/perl
 	dev-libs/libxslt
@@ -40,9 +41,10 @@ BDEPEND="
 
 python_check_deps() {
 	use test || return 0
-	python_has_version "dev-python/pycountry[${PYTHON_USEDEP}]"
-	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"
-	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version \
+		"dev-python/pycountry[${PYTHON_USEDEP}]" \
+		"dev-python/pytest-xdist[${PYTHON_USEDEP}]" \
+		"dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

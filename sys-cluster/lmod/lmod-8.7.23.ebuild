@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ RDEPEND="${LUA_DEPS}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
-	sys-devel/bc
+	app-alternatives/bc
 	test? (
 		$(lua_gen_cond_dep '
 			dev-util/hermes[${LUA_SINGLE_USEDEP}]

@@ -5,7 +5,9 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
-
+<upstream>
+	<remote-id type="github">apache/commons-bsf</remote-id>
+</upstream>
 <longdescription>
 Bean Scripting Framework (BSF) is a set of Java classes which provides
 scripting language support within Java applications, and access to Java

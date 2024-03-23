@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="dev-util/hip
 	benchmark? ( virtual/blas )"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest
-	>=dev-util/cmake-3.22
+	>=dev-build/cmake-3.22
 	virtual/blas )"
 
 PATCHES=( "${FILESDIR}"/${PN}-5.4.2-libfmt9.patch )

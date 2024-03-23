@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index f80e166..8c1e794 100644
+--- a/Makefile
++++ b/Makefile
+@@ -128,8 +128,7 @@ install: fotoxx uninstall
+ 	cp -f -R  images/* $(DESTDIR)$(IMAGEDIR)
+ 	cp -f     metainfo/* $(DESTDIR)$(METAINFODIR)
+ 	# man page
+-	gzip -fk -9 man/fotoxx.man
+-	mv -f man/fotoxx.man.gz $(DESTDIR)$(MANDIR)/fotoxx.1.gz
++	cp man/fotoxx.man $(DESTDIR)$(MANDIR)/fotoxx.1
+ 	# desktop file and icon
+ 	cp -f fotoxx.desktop $(DESTDIR)$(MENUDIR)
+ 	cp -f fotoxx.png $(DESTDIR)$(ICONDIR)
+diff --git a/zfuncs.cc b/zfuncs.cc
+index 3ecf485..23f8d2d 100644
+--- a/zfuncs.cc
++++ b/zfuncs.cc
+@@ -6123,7 +6123,7 @@ int zinitapp(ch *appvers, int argc, ch *argv[])
+ 
+    strncatv(zdatadir,199,zprefix,"/share/",zappname,"/data",null);               //  /prefix/share/appname/data
+    strncatv(zimagedir,199,zprefix,"/share/",zappname,"/images",null);            //  /prefix/share/appname/images
+-   strncatv(zdocdir,199,zprefix,"/share/doc/",zappname,null);                    //  /prefix/share/doc/appname
++   strncatv(zdocdir,199,zprefix,"/share/doc/",zappvers,null);                    //  /prefix/share/doc/appname-version
+ 
+    ch_time = zstrdup(build_date_time,"zinitapp");
+    if (ch_time[4] == ' ') ch_time[4] = '0';                                      //  replace month day ' d' with '0d'

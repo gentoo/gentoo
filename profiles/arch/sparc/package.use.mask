@@ -1,5 +1,54 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eray Aslan <eras@gentoo.org> (2024-03-08)
+# mongodb dependencies are not keyworded
+mail-mta/postfix mongodb
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-02-13)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is not keyworded here and currently fails tests (bug #924430).
+dev-qt/qtmultimedia:6 qml
+
+# Eray Aslan <eras@gentoo.org> (2024-02-13)
+# tests require dev-db/mongodb which is not keyworded
+dev-libs/mongo-c-driver test
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-15)
+# net-libs/grpc not keyworded here
+app-admin/syslog-ng grpc
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
+# Unmask only where grub is keyworded
+sys-kernel/installkernel -grub
+
+# Jaco Kroon <jaco@uls.co.za> (2024-01-09)
+# net-libs/pjproject[srtp] and net-misc/asterisk[srtp] depends on
+# net-libs/libsrtp which is -sparc.
+net-libs/pjproject srtp
+net-misc/asterisk srtp
+
+# Sam James <sam@gentoo.org> (2024-01-05)
+# sys-apps/keyutils not stable here, because of test failures. bug #636252
+app-benchmarks/stress-ng keyutils
+app-crypt/mit-krb5 keyutils
+app-emulation/qemu keyutils
+net-fs/samba ads
+net-fs/cifs-utils ads creds pam
+sys-auth/sssd keyutils
+sys-libs/libnvme keyutils
+
+# Sam James <sam@gentoo.org> (2024-01-02)
+# dev-libs/capstone not keyworded here
+dev-lang/php capstone
+
+# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
+# sys-apps/xdg-desktop-portal not keyworded here yet
+x11-base/xwayland libei
+
+# Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
+# media-video/rav1e isn't keyworded here
+media-libs/libavif rav1e
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # Vulkan is not available here
@@ -16,14 +65,13 @@ dev-python/nbclient test
 dev-python/nbconvert test
 
 # Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-util/samurai is not keyworded here.
+# dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
 # Vulkan is not available on sparc.
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
-<dev-qt/qtwayland-5.15.11:5 vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
@@ -32,11 +80,7 @@ sys-apps/openrc s6
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
-dev-util/cmake gui
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-09-20)
-# Libei not keyworded here yet
-x11-base/xwayland libei
+dev-build/cmake gui
 
 # Rich Freeman <rich0@gentoo.org> (2023-09-13)
 # Tests require shellcheck which is not currently available
@@ -208,7 +252,6 @@ dev-cpp/eigen test
 
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
-sys-devel/clang default-compiler-rt default-lld
 sys-devel/clang-common default-compiler-rt default-lld
 sys-devel/clang-runtime compiler-rt
 sys-devel/llvm z3
@@ -225,13 +268,6 @@ sys-apps/grep static
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
-
-# Sam James <sam@gentoo.org> (2021-03-13)
-# media-libs/libavif isn't keyworded here
-media-libs/gd avif
-net-libs/webkit-gtk avif
-www-client/links avif
-dev-lang/php avif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
@@ -283,7 +319,6 @@ media-gfx/inkscape cdr visio wpg
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No keywords
 dev-python/werkzeug test
-dev-python/urllib3 test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-28)
 # Requires www-client/firefox which isn't available on sparc
@@ -402,10 +437,6 @@ dev-lang/spidermonkey jit
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-04-20)
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
-
-# Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
-# app-text/mupdf sparc keyword was dropped in bug #631970
-net-print/cups-filters pdf
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
@@ -628,7 +659,7 @@ net-vpn/tinc vde
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond

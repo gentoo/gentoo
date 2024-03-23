@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>lockalsash@gmail.com</email>
+		<name>Sv. Lockal</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/oneapi-src/oneDNN/issues</bugs-to>
+		<remote-id type="github">oneapi-src/oneDNN</remote-id>
+	</upstream>
+	<use>
+		<flag name="mkl">Use sci-libs/mkl for sgemm routines</flag>
+		<flag name="cblas">Use virtual/cblas for sgemm routines</flag>
+	</use>
+</pkgmetadata>

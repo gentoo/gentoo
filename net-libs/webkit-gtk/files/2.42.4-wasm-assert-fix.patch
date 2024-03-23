@@ -1,0 +1,53 @@
+From 509b303bf5650710bee5e151decc1a723a54657f Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Tue, 2 Jan 2024 12:25:20 -0800
+Subject: [PATCH] Source/JavaScriptCore/wasm/generateWasm.py: return value in
+ int for memorybits
+
+https://bugs.webkit.org/show_bug.cgi?id=266942
+
+Reviewed by Justin Michaud.
+
+The assert function currently checks, if power number raised to the
+number fits memorybits. This seems not always work on every system,
+as it happens, that the float numbers are not correctly rounded.
+
+This patch adds an int, so its being rounded to a full number and works
+on my system, where otherwise the rounding would fail. The return method
+also returns the result as an int.
+
+Example:
+import math
+
+2 ** 3
+= 8
+
+2.0 ** 3.0
+= 7.999999999999999
+
+int(2.0) ** int(3.0)
+= 8
+
+2 ** int(3.0)
+= 8
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+Canonical link: https://commits.webkit.org/272577@main
+---
+ Source/JavaScriptCore/wasm/generateWasm.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/JavaScriptCore/wasm/generateWasm.py b/Source/JavaScriptCore/wasm/generateWasm.py
+index 434223d346a0..7a99210b60a2 100755
+--- a/Source/JavaScriptCore/wasm/generateWasm.py
++++ b/Source/JavaScriptCore/wasm/generateWasm.py
+@@ -136,5 +136,5 @@ def memoryLog2Alignment(op):
+         if not match:
+             print(op["name"])
+         memoryBits = int(match.group(2) if match.group(2) else match.group(1))
+-    assert 2 ** math.log(memoryBits, 2) == memoryBits
++    assert 2 ** int(math.log(memoryBits, 2)) == memoryBits
+     return str(int(math.log(memoryBits / 8, 2)))
+-- 
+2.43.0
+

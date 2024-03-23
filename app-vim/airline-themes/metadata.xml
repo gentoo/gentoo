@@ -11,4 +11,5 @@
   <upstream>
     <remote-id type="github">vim-airline/vim-airline-themes</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

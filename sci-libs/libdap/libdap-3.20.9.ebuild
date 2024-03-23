@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	sys-devel/flex
+	app-alternatives/lex
 	test? ( dev-util/cppunit )"
 
 PATCHES=(
@@ -36,6 +36,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto, -Werror=strict-aliasing
+	# https://bugs.gentoo.org/878895
+	# https://github.com/OPENDAP/libdap4/issues/244
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# bug 619144
 	append-cxxflags -std=c++14
 

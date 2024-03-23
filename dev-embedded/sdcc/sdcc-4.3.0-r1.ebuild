@@ -14,7 +14,7 @@ else
 		doc? ( https://downloads.sourceforge.net/project/${PN}/sdcc-doc/${PV}/${PN}-doc-${PV}.tar.bz2 )
 	"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Small device C compiler (for various microprocessors)"

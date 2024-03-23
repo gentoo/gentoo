@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="readme.txt ChangeLog"
 RUBY_FAKEGEM_TASK_TEST=""
@@ -22,9 +22,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples hardened"
 
-DEPEND=">=virtual/jdk-1.8
+DEPEND="|| ( virtual/jdk:17 virtual/jdk:11 virtual/jdk:1.8 )
 	hardened? ( sys-apps/paxctl )"
-RDEPEND=">=virtual/jre-1.8:*"
+RDEPEND="|| ( virtual/jre:17 virtual/jre:11 virtual/jre:1.8 )"
 
 pkg_setup() {
 	ruby-ng_pkg_setup

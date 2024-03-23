@@ -6,7 +6,7 @@
 		<name>Petr Vaněk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">matrix-org/synapse</remote-id>
+		<remote-id type="github">element-hq/synapse</remote-id>
 		<remote-id type="pypi">matrix-synapse</remote-id>
 	</upstream>
 </pkgmetadata>

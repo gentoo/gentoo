@@ -1,5 +1,3 @@
-diff --git a/src/random.h b/src/random.h
-index d5a2bc6..38f0d14 100644
 --- a/src/random.h
 +++ b/src/random.h
 @@ -16,8 +16,8 @@

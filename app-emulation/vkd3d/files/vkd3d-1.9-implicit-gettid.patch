@@ -1,5 +1,7 @@
-Dirty quick fix for implicit function check, VKD3D_CHECK_FUNC ideally
-needs to be adjusted to be able to pass headers.
+Dirty quick fix for implicit function check, VKD3D_CHECK_FUNC is
+unsuitable to handle it.
+
+Update: https://gitlab.winehq.org/wine/vkd3d/-/merge_requests/528
 --- a/configure
 +++ b/configure
 @@ -18656,2 +18656,3 @@

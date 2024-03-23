@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1
+inherit bash-completion-r1 libtool
 
 DESCRIPTION="A download utility with segmented downloading with BitTorrent support"
 HOMEPAGE="https://aria2.github.io/"
@@ -112,6 +112,8 @@ src_prepare() {
 		-e '/^@ENABLE_BITTORRENT_TRUE@	LpdMessageDispatcherTest/d' \
 		-e '/^@ENABLE_BITTORRENT_TRUE@	LpdMessageReceiverTest/d' \
 		test/Makefile.in || die
+
+	elibtoolize
 }
 
 src_configure() {
@@ -185,6 +187,7 @@ src_configure() {
 
 src_install() {
 	default
+	find "${D}" -name '*.la' -delete || die
 	rm -r "${ED}"/usr/share/doc/${PF}/README{,.html} || die
 
 	dobashcomp doc/bash_completion/aria2c

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>vim@gentoo.org</email>
-	<name>Gentoo Vim Project</name>
-</maintainer>
-<upstream>
-	<remote-id type="github">vim-voom/VOoM</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">vim-voom/VOoM</remote-id>
+	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

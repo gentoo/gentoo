@@ -9,3 +9,14 @@
  endif()
  
  # SSL
+--- a/third_party/pfs/CMakeLists.txt	2023-12-26 13:43:57.634865410 +0100
++++ b/third_party/pfs/CMakeLists.txt	2023-12-26 13:44:20.865488661 +0100
+@@ -12,7 +12,7 @@
+ endif ()
+ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+ 
+-add_compile_options (-std=c++11 -Wall -Wextra -pedantic -Werror)
++add_compile_options (-std=c++11 -Wall -Wextra -pedantic)
+ 
+ include_directories (include)
+ 
