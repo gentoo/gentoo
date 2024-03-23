@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10,11} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
-inherit autotools linux-info python-single-r1 readme.gentoo-r1 udev
+inherit autotools flag-o-matic linux-info python-single-r1 readme.gentoo-r1 udev
 
 DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing"
@@ -141,6 +141,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861851
+	# https://bugs.launchpad.net/hplip/+bug/2055371
+	filter-lto
+
 	local drv_build minimal_build
 
 	if use hpcups ; then

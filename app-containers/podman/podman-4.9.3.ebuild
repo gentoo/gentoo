@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv"
+		KEYWORDS="amd64 arm64 ~riscv"
 	fi
 fi
 
@@ -91,6 +91,9 @@ src_prepare() {
 
 src_compile() {
 	export PREFIX="${EPREFIX}/usr"
+
+	# bug 906073
+	use elibc_musl && export CGO_CFLAGS="-D_LARGEFILE64_SOURCE"
 
 	# For non-live versions, prevent git operations which causes sandbox violations
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493

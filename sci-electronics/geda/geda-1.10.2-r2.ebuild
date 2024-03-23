@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,14 @@ MY_PN=${PN}-gaf
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="GPL Electronic Design Automation (gEDA):gaf core package"
-HOMEPAGE="http://wiki.geda-project.org/geda:gaf"
+HOMEPAGE="http://geda-project.org/ http://wiki.geda-project.org/geda:gaf"
 SRC_URI="http://ftp.geda-project.org/${MY_PN}/stable/v$(ver_cut 1-2)/${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
-IUSE="debug examples fam nls"
+IUSE="debug fam nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -57,30 +57,14 @@ src_prepare() {
 	default
 	rm -r xorn || die
 
-	if ! use doc ; then
-		sed -i -e '/^SUBDIRS = /s/docs//' Makefile.in || die
-	fi
-	if ! use examples ; then
-		sed -i -e 's/\texamples$//' Makefile.in || die
-	fi
-
-	# add missing GIO_LIB Bug #684870
-	sed -i -e 's/gsymcheck_LDFLAGS =/gsymcheck_LDFLAGS = $(GIO_LIBS)/' \
-		gsymcheck/src/Makefile.am || die
-
-	sed -i -e 's/gnetlist_LDFLAGS =/gnetlist_LDFLAGS = $(GIO_LIBS)/' \
-		gnetlist-legacy/src/Makefile.am || die
-
-	sed -i -e 's/gschlas_LDFLAGS =/gschlas_LDFLAGS = $(GIO_LIBS)/' \
-		utils/gschlas/Makefile.am || die
-
-	sed -i -e 's/sarlacc_schem_LDFLAGS =/sarlacc_schem_LDFLAGS = $(GIO_LIBS)/' \
-		contrib/sarlacc_schem/Makefile.am || die
-
 	# remove compressed files, compressed by portage in install phase
 	rm docs/wiki/media/geda/gsch2pcb-libs.tar.gz || die
 	rm docs/wiki/media/geda/pcb_plugin_template.tar.gz || die
 	rm docs/wiki/media/pcb/plugin_debug_window.tar.gz || die
+
+	# -Wmaybe-uninitialized is made fatal, which is not ideal for building
+	# releases. Upstream is working on fixing these anyway.
+	sed -i '/Werror_maybe_uninitialized_IF_SUPPORTED/d' configure.ac || die
 
 	eautoreconf
 }

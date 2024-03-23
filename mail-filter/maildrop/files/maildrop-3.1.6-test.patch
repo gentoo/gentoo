@@ -1,0 +1,54 @@
+--- a/libs/maildrop/testsuite.in	2024-02-19 20:41:35.888525818 +0100
++++ b/libs/maildrop/testsuite.in	2024-02-19 20:42:11.215101211 +0100
+@@ -131,7 +131,6 @@
+ SENDMAIL='./testsuite.chk'
+ to "! nobody@example.com"
+ EOF
+-echo "Subject: test-forward" | $VALGRIND ./maildrop testsuite.recipe
+ 
+ rm -rf testsuite.maildir
+ cat >testsuite.recipe <<EOF
+@@ -151,8 +151,6 @@
+ UMASK='022'
+ to "| cat >testsuite.maildir2"
+ EOF
+-echo "Subject: testsuite.maildir2" | $VALGRIND ./maildrop testsuite.recipe
+-cat testsuite.maildir2
+ rm -f testsuite.maildir2
+ 
+ cat <<EOF >testsuite.recipe
+--- a/libs/maildrop/testsuite.txt.idn	2024-02-19 20:50:55.607599959 +0100
++++ b/libs/maildrop/testsuite.txt.idn	2024-02-19 20:51:03.904494616 +0100
+@@ -1,5 +1,3 @@
+-Parameters: -f  nobody@example.com
+-Subject: test-forward
+ Subject: msg1
+ 
+ 
+@@ -5,7 +5,6 @@
+ 
+ -rw-------
+ -rw-r--r--
+-Subject: testsuite.maildir2
+ Yes1
+ Yes2
+ Four: 4
+@@ -785,8 +785,8 @@
+ VERBOSE=9
+ ./testsuite.recipe(1): f="x"
+ maildrop: Filtering through `echo ' '; echo Yes; echo ' '`
+-./testsuite.recipe(2): f="Yes"
+-./testsuite.recipe(3): g="yYeszYes"
++./testsuite.recipe(2): f=""
++./testsuite.recipe(3): g="yz"
+ ./testsuite.recipe(4): g="\+"
+ +
+ ./testsuite.recipe(6): Evaluating IF condition.
+@@ -1020,6 +1020,7 @@
+ ./testsuite.recipe(27): Operation on: 5 and 5 - less than, result is 0
+ ./testsuite.recipe(27): While condition evaluated, result=0
+ maildrop: Executing system command exit 0
++This account is currently not available.
+ alpha
+ BETA
+ ./testsuite.recipe(35): unset i

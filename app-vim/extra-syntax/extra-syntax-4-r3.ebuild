@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: metapackage for all extra syntax packages"
 HOMEPAGE="https://www.vim.org/"
 LICENSE="metapackage"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~mips ~ppc ppc64 x86"
 SRC_URI=""
 S="${WORKDIR}"
 

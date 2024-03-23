@@ -67,8 +67,10 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	rm "${ED}"/usr/lib/libopensmt.a || die
+	if use elibc_glibc ; then
+		dolib.so "${ED}"/usr/lib/libopensmt.so*
+		rm "${ED}"/usr/lib/libopensmt.so* || die
+	fi
 
-	dolib.so "${ED}"/usr/lib/libopensmt.*
-	rm "${ED}"/usr/lib/libopensmt.* || die
+	rm "${ED}"/usr/lib/libopensmt.a || die
 }

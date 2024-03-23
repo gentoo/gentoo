@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake java-pkg-2 optfeature xdg
 
-HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLauncher"
 DESCRIPTION="A custom, open source Minecraft launcher"
+HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLauncher"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -107,6 +107,20 @@ RDEPEND="
 
 src_prepare() {
 	cmake_src_prepare
+
+	local java="$(java-config -f)"
+	local java_version=${java//[^0-9]/}
+	if [[ ${java_version} -ge 20 ]]; then
+		elog "Java 20 and up has dropped binary compatibility with java 7."
+		elog "${PN} is being compiled with java ${java_version}."
+		elog "The sources will be patched to build binary compatible with"
+		elog "java 8 instead of java 7. This may cause issues with very old"
+		elog "Minecraft versions and/or older forge versions."
+		elog
+		elog "If you experience any problems, install an older java compiler"
+		elog "and select it with \"eselect java\", then recompile ${PN}."
+		eapply "${FILESDIR}/${PN}-8.2-openjdk21.patch"
+	fi
 
 	sed -i -e 's/-Werror//' CMakeLists.txt || die 'Failed to remove -Werror via sed'
 

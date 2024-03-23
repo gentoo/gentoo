@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	|| (
@@ -35,8 +35,6 @@ RDEPEND="
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
 
 src_compile() {
-	# mkdir -p bin || die
-
 	local go_tags="dfrunmount,dfrunsecurity,dfsecrets,dfssh,dfrunnetwork,dfheredoc,forceposix"
 	local go_ldflags="
 		-X main.DefaultBuildkitdImage=docker.io/earthly/buildkitd:v${PV}

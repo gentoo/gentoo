@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="activities fits +mpris raw semantic-desktop share X"
 
 # requires running environment
@@ -47,8 +47,10 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	media-gfx/exiv2:=
-	media-libs/kcolorpicker
+	>=media-libs/kcolorpicker-0.2.0
+	<media-libs/kcolorpicker-0.3.0
 	>=media-libs/kimageannotator-0.5.0
+	<media-libs/kimageannotator-0.7.0
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=

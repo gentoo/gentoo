@@ -1,8 +1,8 @@
 Upstream is archived: https://github.com/neovim/libtermkey
 
-From f3316ec933d618352ee9c6b1f1ef354c8896372e Mon Sep 17 00:00:00 2001
+From df7da7e0beb467b97e25e4222f723fbdff369a95 Mon Sep 17 00:00:00 2001
 From: orbea <orbea@riseup.net>
-Date: Thu, 7 Sep 2023 09:52:10 -0700
+Date: Wed, 28 Feb 2024 15:35:06 -0500
 Subject: [PATCH] build: Add a minimal configure.ac
 
 When building with slibtool using the rlibtool symlink the build will
@@ -12,23 +12,24 @@ rlibtool can determine if it should build shared or static libraries.
 This can be fixed by adding a minimal configure.ac that can generate the
 required files with autoreconf.
 
-Gentoo Bug: https://bugs.gentoo.org/913482
+Bug: https://bugs.gentoo.org/913482
 ---
- Makefile => Makefile.in | 29 +++++++++++++++--------------
- configure.ac            | 14 ++++++++++++++
- 2 files changed, 29 insertions(+), 14 deletions(-)
- rename Makefile => Makefile.in (91%)
+ Makefile => Makefile.in | 31 ++++++++++++++++---------------
+ configure.ac            | 16 ++++++++++++++++
+ 2 files changed, 32 insertions(+), 15 deletions(-)
+ rename Makefile => Makefile.in (89%)
  create mode 100644 configure.ac
 
 diff --git a/Makefile b/Makefile.in
-similarity index 91%
+similarity index 89%
 rename from Makefile
 rename to Makefile.in
-index 199f143..8f12b07 100644
+index 199f143..f59265b 100644
 --- a/Makefile
 +++ b/Makefile.in
 @@ -1,14 +1,10 @@
- pkgconfig = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config $(1))
+-pkgconfig = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config $(1))
++pkgconfig = $(shell PKG_CONFIG_PATH=@PKG_CONFIG_PATH@ @PKG_CONFIG@ $(1))
  
 -ifeq ($(shell uname),Darwin)
 -  LIBTOOL ?= glibtool
@@ -79,10 +80,10 @@ index 199f143..8f12b07 100644
  
 diff --git a/configure.ac b/configure.ac
 new file mode 100644
-index 0000000..46fe30e
+index 0000000..fdf86ce
 --- /dev/null
 +++ b/configure.ac
-@@ -0,0 +1,14 @@
+@@ -0,0 +1,16 @@
 +m4_define([MAJOR], [0])
 +m4_define([MINOR], [22])
 +
@@ -91,9 +92,12 @@ index 0000000..46fe30e
 +
 +LT_INIT
 +
++PKG_PROG_PKG_CONFIG
++
 +AC_SUBST([top_builddir], [$abs_builddir])
 +
 +AC_SUBST([MAJOR], [MAJOR])
 +AC_SUBST([MINOR], [MINOR])
 +
 +AC_OUTPUT
+-- 

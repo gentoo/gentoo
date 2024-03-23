@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
@@ -12,10 +12,6 @@ media-video/mpv -lua_single_target_luajit lua_single_target_lua5-1
 # Mike Rivnak <rivnakm1@gmail.com> (2022-11-30)
 # luajit is currently not supported on riscv, so use lua instead
 app-editors/neovim lua_single_target_lua5-1
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-11-13)
-# 1.64 segfaults, so we force 1.65 bootstrapping 1.65
-~dev-lang/rust-1.65.0 system-bootstrap
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-10)
 # GHC does not support native codegen for riscv at all.

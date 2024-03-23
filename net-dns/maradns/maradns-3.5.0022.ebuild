@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-inherit python-any-r1 systemd toolchain-funcs
+inherit flag-o-matic python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="A security-aware DNS server"
 HOMEPAGE="https://maradns.samiam.org"
@@ -18,11 +18,10 @@ IUSE="examples"
 
 BDEPEND="${PYTHON_DEPS}
 	dev-lang/perl"
-DEPEND="
+RDEPEND="
 	acct-group/maradns
 	acct-user/duende
 	acct-user/maradns"
-RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
@@ -34,6 +33,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861293
+	# https://github.com/samboy/MaraDNS/discussions/124
+	filter-lto
+
 	tc-export CC
 	./configure --ipv6 || die "Failed to configure"
 }

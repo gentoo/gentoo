@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,13 +21,13 @@ HOMEPAGE="https://openocd.sourceforge.io"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="capstone +cmsis-dap dummy +ftdi +jlink parport +usb verbose-io"
+IUSE="capstone +cmsis-dap dummy +ftdi gpiod +jlink parport +usb verbose-io"
 RESTRICT="strip" # includes non-native binaries
 
 RDEPEND="
 	acct-group/plugdev
 	>=dev-lang/jimtcl-0.81:=
-	dev-libs/libgpiod:0/2
+	gpiod? ( dev-libs/libgpiod:0/2 )
 	capstone? ( dev-libs/capstone )
 	cmsis-dap? ( dev-libs/hidapi )
 	jlink? ( >=dev-embedded/libjaylink-0.2.0 )
@@ -66,6 +66,7 @@ src_configure() {
 		$(use_enable ftdi openjtag)
 		$(use_enable ftdi presto)
 		$(use_enable ftdi usb-blaster)
+		$(use_enable gpiod linuxgpiod)
 		$(use_enable jlink)
 		$(use_enable parport)
 		$(use_enable parport parport_ppdev)

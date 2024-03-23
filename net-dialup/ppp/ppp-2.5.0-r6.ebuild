@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info pam tmpfiles
+inherit autotools linux-info pam tmpfiles
 
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="activefilter atm gtk pam selinux systemd"
 
 DEPEND="
@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}"/ppp-2.5.0-passwordfd-read-early.patch
 	"${FILESDIR}"/ppp-2.5.0-pidfile.patch
 	"${FILESDIR}"/${P}-radiusclient.conf-parsing.patch
+	"${FILESDIR}"/ppp-2.5.0-openssl-pkgconfig.patch
+	"${FILESDIR}"/ppp-2.5.0-pam-pkgconfig.patch
 )
 
 pkg_setup() {
@@ -68,6 +70,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Set the right paths in radiusclient.conf
 	sed -e "s:/usr/local/etc:/etc:" \

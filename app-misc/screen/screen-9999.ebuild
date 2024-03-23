@@ -65,6 +65,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-lfs-flags
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
 	if [[ ${CHOST} == *-solaris* ]]; then

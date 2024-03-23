@@ -36,8 +36,8 @@ BDEPEND="
 		dev-libs/gobject-introspection
 		dev-debug/valgrind
 		$(python_gen_cond_dep '
+			dev-python/evdev[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
-			dev-python/python-evdev[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -51,7 +51,7 @@ RDEPEND="
 	virtual/libudev:=
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		dev-python/python-evdev[${PYTHON_USEDEP}]
+		dev-python/evdev[${PYTHON_USEDEP}]
 	')
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )

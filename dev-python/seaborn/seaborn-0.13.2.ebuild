@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~amd64-linux"
 
 RDEPEND="
 	>=dev-python/matplotlib-3.4[${PYTHON_USEDEP}]

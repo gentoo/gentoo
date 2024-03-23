@@ -1,0 +1,213 @@
+Backport pnmcolormap2 test from 11.5.x to 11.2.x
+
+See also https://bugs.gentoo.org/907295
+
+--- a/test/pnmcolormap2.test
++++ b/test/pnmcolormap2.test
+@@ -5,51 +5,143 @@
+ tmpdir=${tmpdir:-/tmp}
+ map=${tmpdir}/map.ppm
+ 
+-echo "Test.  Should print 'match' eight times."
+-# Threshold values (targetN=xx.xx) here were produced by calculating
+-# the S/N ratio with reduced colors.
++echo "Test.  Should print 'match' eighteen times."
++
++# Threshold values (tgtN=xx.xx) were produced by calculating
++# the S/N ratio when the original image is compared against a
++# reference image with fewer colors than the target output image.
+ 
+ # colors in following tests / colors for calculating threshold
+-# 100 /  90
+-# 200 / 180
+-#  30 /  25
++# 256 / 224
++# 128 /  96  -splitspread
++# 128 / 108  other
++#  64 /  44  -center (default)
++#  64 /  48  -splitspread
++#  64 /  56  other
++
++# -center
++echo pnmcolormap  256
++tgt1=37.19;  tgt2=37.86;  tgt3=37.77
++pnmcolormap 256 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap  128
++tgt1=34.46;  tgt2=35.61;  tgt3=34.97
++pnmcolormap 128 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap  64
++tgt1=30.30;  tgt2=33.10;  tgt3=31.74
++pnmcolormap 64 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -meancolor 256
++tgt1=38.36;  tgt2=38.63;  tgt3=38.95
++pnmcolormap -meancolor 256 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -meancolor 128
++tgt1=35.86;  tgt2=37.17;  tgt3=36.65
++pnmcolormap -meancolor 128 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -meancolor 64
++tgt1=33.64;  tgt2=34.92;  tgt3=34.44
++pnmcolormap -meancolor 64 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -meanpixel 256
++tgt1=38.40;  tgt2=38.65;  tgt3=38.90
++pnmcolormap -meanpixel 256 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -meanpixel 128
++tgt1=35.75;  tgt2=37.13;  tgt3=36.69
++pnmcolormap -meanpixel 128 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -meanpixel 64
++tgt1=33.75;  tgt2=34.79;  tgt3=34.53
++pnmcolormap -meanpixel 64 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
++
++echo pnmcolormap -spreadluminosity 256
++tgt1=36.82;  tgt2=36.87;  tgt3=37.25
++pnmcolormap -spreadluminosity 256 testimg.ppm > ${map}
++pnmremap -mapfile=${map} testimg.ppm |\
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
++rm ${map}
+ 
+-pnmcolormap 100 testimg.ppm > ${map}
++echo pnmcolormap -spreadluminosity 128
++tgt1=34.61;  tgt2=33.40;  tgt3=34.66
++pnmcolormap -spreadluminosity 128 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=33.42 -target2=35.14 -target3=34.35 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap -meancolor 100 testimg.ppm > ${map}
++echo pnmcolormap -spreadluminosity 64
++tgt1=32.35;  tgt2=30.23;  tgt3=32.35
++pnmcolormap -spreadluminosity 64 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=34.91 -target2=36.86 -target3=35.84 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap -meanpixel 100 testimg.ppm > ${map}
++echo pnmcolormap -splitcolorct 256
++tgt1=37.55;  tgt2=38.37;  tgt3=38.04
++pnmcolormap -splitcolorct 256 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=34.95 -target2=36.77 -target3=35.81 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap -spreadluminosity 100 testimg.ppm > ${map}
++echo pnmcolormap -splitcolorct 128
++tgt1=34.84;  tgt2=35.72;  tgt3=34.64
++pnmcolormap -splitcolorct 128 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=33.71 -target2=32.91 -target3=33.93 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap -splitcolorct 100 testimg.ppm > ${map}
++echo pnmcolormap -splitcolorct 64
++tgt1=31.56;  tgt2=33.74;  tgt3=32.93
++pnmcolormap -splitcolorct 64 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=33.97 -target2=35.34 -target3=34.23 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap -splitspread 100 testimg.ppm > ${map}
++echo pnmcolormap -splitspread 256
++tgt1=35.18;  tgt2=37.26;  tgt3=36.17
++pnmcolormap -splitspread 256 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=32.98 -target2=35.06 -target3=33.19 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap 200 testimg.ppm > ${map}
++echo pnmcolormap -splitspread 128
++tgt1=33.18;  tgt2=35.58;  tgt3=33.71
++pnmcolormap -splitspread 128 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=36.14 -target2=36.87 -target3=36.79 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+ 
+-pnmcolormap 30 testimg.ppm > ${map}
++echo pnmcolormap -splitspread 64
++tgt1=31.27;  tgt2=33.03;  tgt3=30.97
++pnmcolormap -splitspread 64 testimg.ppm > ${map}
+ pnmremap -mapfile=${map} testimg.ppm |\
+-  pnmpsnr -target1=28.53 -target2=31.62 -target3=29.99 testimg.ppm -
++pnmpsnr -target1=${tgt1} -target2=${tgt2} -target3=${tgt3} testimg.ppm -
+ rm ${map}
+--- a/test/pnmcolormap2.ok
++++ b/test/pnmcolormap2.ok
+@@ -1,9 +1,37 @@
+-Test.  Should print 'match' eight times.
++Test.  Should print 'match' eighteen times.
++pnmcolormap 256
+ match
++pnmcolormap 128
+ match
++pnmcolormap 64
+ match
++pnmcolormap -meancolor 256
+ match
++pnmcolormap -meancolor 128
+ match
++pnmcolormap -meancolor 64
+ match
++pnmcolormap -meanpixel 256
+ match
++pnmcolormap -meanpixel 128
++match
++pnmcolormap -meanpixel 64
++match
++pnmcolormap -spreadluminosity 256
++match
++pnmcolormap -spreadluminosity 128
++match
++pnmcolormap -spreadluminosity 64
++match
++pnmcolormap -splitcolorct 256
++match
++pnmcolormap -splitcolorct 128
++match
++pnmcolormap -splitcolorct 64
++match
++pnmcolormap -splitspread 256
++match
++pnmcolormap -splitspread 128
++match
++pnmcolormap -splitspread 64
+ match

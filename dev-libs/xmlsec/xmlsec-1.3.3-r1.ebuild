@@ -45,6 +45,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-optimisation.patch
 	"${FILESDIR}"/${PN}-1.3.3-typo-fix.patch
+	"${FILESDIR}"/${PN}-1.3.3-slibtool.patch
 )
 
 src_prepare() {

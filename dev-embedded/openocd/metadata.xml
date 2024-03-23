@@ -17,6 +17,7 @@
 		<flag name="capstone">Use <pkg>dev-libs/capstone</pkg> for disassembly support</flag>
 		<flag name="cmsis-dap">Support for CMSIS-DAP compliant adapters</flag>
 		<flag name="dummy">Build the dummy port driver</flag>
+		<flag name="gpiod">Enable Linux GPIO bitbang support via libgpiod</flag>
 		<flag name="jlink"> Build the SEGGER J-Link driver</flag>
 		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>
 		<flag name="parport">Enable support for parport JTAG devices</flag>

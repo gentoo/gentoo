@@ -26,6 +26,11 @@ Date: Tue, 13 Feb 2024 17:34:19 +0000
 Subject: [PATCH] Use non-releasable memory for regex line-buffer
 Broken-by: 5aacb69f5c8
 
+From 44b3172e369435c2c1baa4e9c837252f729d2905 Mon Sep 17 00:00:00 2001
+From: Jeremy Harris <jgh146exb@wizmail.org>
+Date: Thu, 15 Feb 2024 19:56:40 +0000
+Subject: [PATCH] regex: avoid releasing built RE midloop
+
 diff --git a/src/src/exim.c b/src/src/exim.c
 --- a/src/exim.c
 +++ b/src/exim.c
@@ -176,7 +181,7 @@ diff --git a/src/src/regex.c b/src/src/regex.c
      return OK;
      }
    }
-@@ -110,9 +111,9 @@ FILE * mbox_file;
+@@ -110,9 +111,8 @@ FILE * mbox_file;
  unsigned long mbox_size;
  FILE * mbox_file;
  pcre_list * re_list_head;
@@ -184,7 +189,6 @@ diff --git a/src/src/regex.c b/src/src/regex.c
  long f_pos = 0;
 -int ret = FAIL;
 +int ret = FAIL, cnt, lcount = REGEX_LOOPCOUNT_STORE_RESET;
-+rmark reset_point;
  
  regex_vars_clear();
  
@@ -199,8 +203,7 @@ diff --git a/src/src/regex.c b/src/src/regex.c
 -/* match each line against all regexes */
 -linebuffer = store_get(32767, GET_TAINTED);
 -while (fgets(CS linebuffer, 32767, mbox_file))
-+reset_point = store_mark();
-   {
+-  {
 -  if (  mime_stream && mime_current_boundary		/* check boundary */
 -     && Ustrncmp(linebuffer, "--", 2) == 0
 -     && Ustrncmp((linebuffer+2), mime_current_boundary,
@@ -212,6 +215,8 @@ diff --git a/src/src/regex.c b/src/src/regex.c
 +  /* precompile our regexes */
 +  if ((re_list_head = compile(*listptr, cacheable, &cnt)))
 +    {
++    rmark reset_point = store_mark();
++
 +    while (fgets(CS big_buffer, big_buffer_size, mbox_file))
 +      {
 +      if (  mime_stream && mime_current_boundary		/* check boundary */
@@ -229,10 +234,11 @@ diff --git a/src/src/regex.c b/src/src/regex.c
 +	lcount = REGEX_LOOPCOUNT_STORE_RESET;
 +	}
 +      }
++
++    store_reset(reset_point);
 +    }
-   }
+-  }
 -/* no matches ... */
-+store_reset(reset_point);
  
 -done:
  if (!mime_stream)

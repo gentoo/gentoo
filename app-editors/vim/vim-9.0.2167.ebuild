@@ -58,7 +58,9 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 # configure runs the Lua interpreter
 BDEPEND="
 	dev-build/autoconf

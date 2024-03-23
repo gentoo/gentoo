@@ -10,6 +10,10 @@
     <name>Richard Ash</name>
     <description>Upstream - please CC on bugs that concerns upstream</description>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>mehw.is.me@inventati.org</email>
+    <name>Matthew White</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">audacity/audacity</remote-id>
   </upstream>

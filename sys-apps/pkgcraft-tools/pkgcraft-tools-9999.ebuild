@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ QA_FLAGS_IGNORED="usr/bin/pk"
 # Clang needed for bindgen
 BDEPEND="
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
-	>=virtual/rust-1.71
+	>=virtual/rust-1.74
 	test? ( dev-util/cargo-nextest )
 "
 

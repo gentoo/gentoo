@@ -181,6 +181,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: report upstream
+	# bug #915223
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"
 

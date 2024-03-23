@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Python framework for sequence labeling evaluation"
@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/scikit-learn[${PYTHON_USEDEP}]
+	dev-python/scikit-learn[${PYTHON_USEDEP}]
 "
 BDEPEND="test? (
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]

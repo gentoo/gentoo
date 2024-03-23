@@ -19,7 +19,7 @@ DOCS_S="${WORKDIR}/MathJax-docs-${DOCS_COMMIT}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc examples"
 
 BDEPEND="
@@ -62,7 +62,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -e 's/add_stylesheet/add_css_file/' -i "${DOCS_S}"/conf.py || die
+	if use doc; then
+		sed -e 's/add_stylesheet/add_css_file/' -i "${DOCS_S}"/conf.py || die
+	fi
 }
 
 src_compile() {

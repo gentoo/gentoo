@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	sys-libs/libcap"
 DEPEND="${COMMON_DEPEND}
-	>=virtual/linuxtv-dvb-headers-5.3"
+	sys-kernel/linux-headers"
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
 	media-tv/gentoo-vdr-scripts

@@ -11,14 +11,13 @@ SRC_URI="https://github.com/ocaml/Zarith/archive/release-${PV}.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc x86"
-IUSE="doc mpir +ocamlopt"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
+IUSE="doc +ocamlopt"
 RESTRICT="!ocamlopt? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.05:=[ocamlopt=]
-	!mpir? ( dev-libs/gmp:0= )
-	mpir? ( sci-libs/mpir:= )
+	dev-libs/gmp:0=
 "
 DEPEND="${RDEPEND} dev-lang/perl"
 
@@ -29,8 +28,7 @@ S="${WORKDIR}/Zarith-release-${PV}"
 src_configure() {
 	tc-export CC AR
 	./configure \
-		-ocamllibdir /usr/$(get_libdir)/ocaml \
-		$(usex mpir "-mpir" "-gmp") || die
+		-ocamllibdir /usr/$(get_libdir)/ocaml -gmp || die
 	sed -i \
 		-e 's|$(INSTALLDIR)|$(DESTDIR)$(INSTALLDIR)|g' \
 		project.mak || die
