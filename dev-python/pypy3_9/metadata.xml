@@ -5,6 +5,9 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">pypy/pypy</remote-id>
+	</upstream>
 	<use>
 		<flag name="ensurepip">
 			Install the ensurepip module that uses bundled wheels
@@ -12,7 +15,4 @@
 			be only possible to use venv `--without-pip`)
 		</flag>
 	</use>
-	<upstream>
-		<remote-id type="heptapod">pypy/pypy</remote-id>
-	</upstream>
 </pkgmetadata>

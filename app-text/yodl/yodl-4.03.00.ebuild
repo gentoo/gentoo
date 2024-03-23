@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 BDEPEND="
-	>=dev-util/icmake-8.00.00
+	>=dev-build/icmake-8.00.00
 	doc? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-plaingeneric

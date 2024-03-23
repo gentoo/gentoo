@@ -54,7 +54,10 @@ RDEPEND="
 	xfce? ( xfce-base/xfconf )
 	xrandr? ( x11-libs/libXrandr )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
+"
 BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="

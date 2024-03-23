@@ -27,7 +27,7 @@ RDEPEND="
 BDEPEND="
 	doc? ( app-text/yelp-tools )
 	dev-util/glib-utils
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig

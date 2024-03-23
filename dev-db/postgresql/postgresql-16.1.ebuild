@@ -34,7 +34,7 @@ acct-user/postgres
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
-kerberos? ( virtual/krb5 )
+kerberos? ( app-crypt/mit-krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? (
 	<sys-devel/llvm-18:=
@@ -46,7 +46,8 @@ perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
-ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
+ssl? ( >=dev-libs/openssl-0.9.6-r1:0=
+	<dev-libs/openssl-3.2 )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )

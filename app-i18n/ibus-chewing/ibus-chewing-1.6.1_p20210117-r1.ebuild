@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -25,7 +25,7 @@ RDEPEND="app-i18n/ibus
 	x11-libs/libX11
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/cmake-fedora
+BDEPEND="dev-build/cmake-fedora
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 

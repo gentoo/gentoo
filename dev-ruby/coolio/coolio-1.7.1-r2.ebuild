@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="cool.io.gemspec"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/cool.io/extconf.rb ext/iobuffer/extconf.rb)
 
-inherit ruby-fakegem
+inherit flag-o-matic ruby-fakegem
 
 DESCRIPTION="A high performance event framework for Ruby which uses the libev C library"
 HOMEPAGE="https://coolio.github.io/"
@@ -30,6 +30,10 @@ PATCHES=(
 # cool.io includes a bundled version of libev that is patched to work correctly with ruby.
 
 all_ruby_prepare() {
+	# See bug #855869 and its large number of dupes in bundled libev copies.
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	rm -r Gemfile* lib/.gitignore || die
 
 	sed -i -e '/[Bb]undler/d' Rakefile || die

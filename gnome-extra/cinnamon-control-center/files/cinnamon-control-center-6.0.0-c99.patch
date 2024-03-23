@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/919085
+https://github.com/linuxmint/cinnamon-control-center/commit/0361ff2974eb4741f3cd8b6db00dbe1ab56c8a59
+
+From 0361ff2974eb4741f3cd8b6db00dbe1ab56c8a59 Mon Sep 17 00:00:00 2001
+From: Leigh Scott <leigh123linux@gmail.com>
+Date: Thu, 18 Jan 2024 21:30:28 +0000
+Subject: [PATCH] network: Fix warning about missing cast to GtkWidget* (#324)
+
+Based on https://github.com/GNOME/gnome-control-center/commit/167d11e2107e46b4621cf6fc370c5b191b4b7732
+--- a/panels/network/connection-editor/net-connection-editor.c
++++ b/panels/network/connection-editor/net-connection-editor.c
+@@ -845,7 +845,7 @@ net_connection_editor_new (GtkWindow        *parent_window,
+         editor = g_object_new (NET_TYPE_CONNECTION_EDITOR, NULL);
+ 
+         if (parent_window) {
+-                editor->parent_window = g_object_ref (parent_window);
++                editor->parent_window = GTK_WIDGET (g_object_ref (parent_window));
+                 gtk_window_set_transient_for (GTK_WINDOW (editor->window),
+                                               parent_window);
+         }
+

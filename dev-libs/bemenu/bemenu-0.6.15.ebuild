@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ DEPEND="
 "
 BDEPEND="
 	app-text/scdoc
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 src_compile() {

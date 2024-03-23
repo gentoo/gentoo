@@ -14,7 +14,7 @@ S="${WORKDIR}/XADMaster-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	app-arch/bzip2:=
@@ -25,8 +25,33 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	gnustep-base/gnustep-make[native-exceptions]"
+BDEPEND="
+	|| (
+		sys-devel/gcc[objc]
+		gnustep-base/gnustep-make[libobjc2]
+	)"
 
 PATCHES=( "${FILESDIR}"/${P}-Wint-conversion.patch )
+
+check_objc_toolchain() {
+	if tc-is-gcc; then
+		has_version 'sys-devel/gcc[-objc]' &&
+			die "GCC requires sys-devel/gcc with USE=objc"
+	elif tc-is-clang; then
+		has_version 'gnustep-base/gnustep-make[-libobjc2]' &&
+			die "Clang requires gnustep-base/gnustep-make with USE=libobjc2"
+	else
+		die "${PN} can only be build using GCC or Clang"
+	fi
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && check_objc_toolchain
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && check_objc_toolchain
+}
 
 src_prepare() {
 	default

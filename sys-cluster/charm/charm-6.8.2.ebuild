@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -61,6 +61,14 @@ get_opts() {
 }
 
 src_prepare() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/863725
+	# https://github.com/UIUC-PPL/charm/issues/3789
+	#
+	# Do not trust with LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	append-cppflags $($(tc-getPKG_CONFIG) --cflags libtirpc)
 
 	sed \

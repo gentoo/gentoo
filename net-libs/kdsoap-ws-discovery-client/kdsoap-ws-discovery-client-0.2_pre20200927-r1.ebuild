@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qtxml:5 )
 "
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.2_pre20200317-no-install-docs.patch )
 

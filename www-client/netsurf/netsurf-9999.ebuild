@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,6 @@ HOMEPAGE="https://www.netsurf-browser.org/"
 EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="bmp fbcon truetype +gif +gtk +javascript +jpeg
 	+png +psl rosprite +svg +svgtiny +webp"
 
@@ -56,12 +55,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-libs/check
 	dev-perl/HTML-Parser
-	dev-util/netsurf-buildsystem
+	dev-build/netsurf-buildsystem
 	virtual/pkgconfig
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.9-conditionally-include-image-headers.patch"
 	"${FILESDIR}/${PN}-3.10-julia-libutf8proc-header-location.patch"
 	"${FILESDIR}/${PN}-3.10-disable-failing-tests.patch"
 )

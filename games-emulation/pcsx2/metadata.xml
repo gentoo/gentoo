@@ -14,6 +14,11 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="clang">
+			Use Clang compiler to build (the only compiler that is
+			currently supported by upstream on Linux, do not report
+			bugs if force-disabled)
+		</flag>
 		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	</use>
 	<upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,10 +40,10 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}
 	test? ( dev-libs/libgcrypt:0
 		dev-qt/qttest:5
-		sys-devel/gdb:0 )"
+		dev-debug/gdb:0 )"
 
 BDEPEND="sys-devel/gettext
-	doc? ( app-doc/doxygen )"
+	doc? ( app-text/doxygen )"
 
 src_prepare() {
 	# preprocessed graphics are unpacked into wrong directory

@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}-source"
 
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="amd64 ~riscv"
 fi
 
 LICENSE="BSD"
@@ -26,8 +26,8 @@ IUSE="X legacy-renderer systemd"
 # so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
-	dev-util/cmake
-	dev-util/meson
+	dev-build/cmake
+	dev-build/meson
 	dev-vcs/git
 	sys-auth/polkit
 	virtual/pkgconfig
@@ -89,7 +89,7 @@ BDEPEND="
 	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
-	dev-util/cmake
+	dev-build/cmake
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

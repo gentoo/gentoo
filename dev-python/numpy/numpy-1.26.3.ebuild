@@ -24,7 +24,7 @@ SLOT="0"
 # is barely supported anyway, see bug #914358.
 IUSE="+lapack"
 if [[ ${PV} != *_[rab]* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 RDEPEND="
@@ -35,7 +35,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	>=dev-util/meson-1.1.0
+	>=dev-build/meson-1.1.0
 	>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
 	lapack? (
 		virtual/pkgconfig

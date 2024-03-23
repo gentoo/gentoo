@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    CRISP provides algorithms for computing subgroups of finite soluble
+    groups related to a group class C. In particular, it allows to
+    compute C-radicals and C-injectors for Fitting classes (and Fitting
+    sets) C, C-residuals for formations C, and C-projectors for Schunck
+    classes C. In order to carry out these computations, the group class
+    C must be represented by an algorithm which can decide membership in
+    the group class. Moreover, CRISP contains algorithms for the
+    computation of normal subgroups invariant under a prescribed set of
+    automorphisms and belonging to a given group class. This includes
+    an improved method to compute the set of all normal subgroups of a
+    finite soluble group, its characteristic subgroups, minimal normal
+    subgroups and the socle and p-socles for given primes p.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">bh11/crisp</remote-id>
+  </upstream>
+</pkgmetadata>

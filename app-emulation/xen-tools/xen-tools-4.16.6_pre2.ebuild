@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
@@ -11,10 +11,10 @@ inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	REPO="xen.git"
-	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
+	EGIT_REPO_URI="https://xenbits.xen.org/git-http/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 
 	SEABIOS_VER="1.16.0"
 	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"
@@ -150,7 +150,7 @@ DEPEND="${COMMON_DEPEND}
 	hvm? ( x11-base/xorg-proto )
 	qemu? (
 		app-arch/snappy:=
-		dev-util/meson
+		dev-build/meson
 		sdl? (
 			media-libs/libsdl[X]
 			media-libs/libsdl2[X]

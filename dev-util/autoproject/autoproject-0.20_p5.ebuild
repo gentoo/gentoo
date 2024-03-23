@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-devel/autoconf:*
-	sys-devel/automake:*"
+	dev-build/autoconf:*
+	dev-build/automake:*"
 DEPEND="${RDEPEND}
 	test? ( sys-apps/texinfo )"
 

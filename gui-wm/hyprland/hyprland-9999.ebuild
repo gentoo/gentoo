@@ -26,10 +26,9 @@ IUSE="X legacy-renderer systemd"
 # so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
-	dev-util/cmake
-	dev-util/meson
+	dev-build/cmake
+	dev-build/meson
 	dev-vcs/git
-	sys-auth/polkit
 	virtual/pkgconfig
 "
 # bundled wlroots has the following dependency string according to included headers.
@@ -56,7 +55,7 @@ WLROOTS_RDEPEND="
 	)
 "
 WLROOTS_DEPEND="
-	>=dev-libs/wayland-protocols-1.32
+	>=dev-libs/wayland-protocols-1.33
 "
 WLROOTS_BDEPEND="
 	dev-util/glslang
@@ -69,6 +68,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/wayland
+	gui-libs/hyprcursor
 	media-libs/libglvnd
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -83,13 +83,14 @@ DEPEND="
 	${RDEPEND}
 	${WLROOTS_DEPEND}
 	dev-libs/hyprland-protocols
+	dev-libs/hyprlang
 	>=dev-libs/wayland-protocols-1.25
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
-	dev-util/cmake
+	dev-build/cmake
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

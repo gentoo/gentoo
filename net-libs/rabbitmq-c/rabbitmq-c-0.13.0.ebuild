@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/alanxz/${PN}.git"
 else
 	SRC_URI="https://github.com/alanxz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="MIT"
@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="ssl? ( dev-libs/openssl:0= )
 	tools? ( dev-libs/popt )"
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-doc/doxygen )
+BDEPEND="doc? ( app-text/doxygen )
 	tools? ( app-text/xmlto )"
 
 PATCHES=(

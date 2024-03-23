@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -182,7 +182,7 @@ LICENSE="|| ( MIT Apache-2.0 )"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD CC0-1.0 LGPL-3+ MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 ~riscv ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
@@ -204,6 +204,13 @@ src_configure() {
 	export LIBGIT2_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 	sed -i -e 's/strip = true/strip = false/g' Cargo.toml || die
+}
+
+src_test() {
+	# Set COLUMNS for deterministic help output, #913364
+	local -x COLUMNS=100
+
+	cargo_src_test
 }
 
 src_install() {

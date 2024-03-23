@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools
 
 DESCRIPTION="Small program to test performances of remote servers"
-HOMEPAGE="http://echoping.sourceforge.net/"
+HOMEPAGE="https://framagit.org/bortzmeyer/echoping"
 SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
 LICENSE="GPL-2"
 
@@ -27,7 +27,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=sys-devel/libtool-2
+	>=dev-build/libtool-2
 "
 
 REQUIRED_USE="gnutls? ( ssl )"
@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_certificate_type_set_priority.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-gnutls_session.patch
 	"${FILESDIR}"/${PN}-6.0.2_p434-fno-common.patch
+	"${FILESDIR}"/0001-correctly-link-to-libm.patch
 )
 
 src_prepare() {

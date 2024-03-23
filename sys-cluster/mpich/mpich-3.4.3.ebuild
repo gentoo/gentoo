@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,8 +30,8 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-lang/perl
-	sys-devel/libtool
-	valgrind? ( dev-util/valgrind )
+	dev-build/libtool
+	valgrind? ( dev-debug/valgrind )
 "
 RDEPEND="
 	${COMMON_DEPEND}

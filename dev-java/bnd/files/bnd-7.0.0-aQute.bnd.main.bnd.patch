@@ -1,0 +1,21 @@
+Upstream uses an older version of slf4j-simple
+--- a/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
++++ b/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
+@@ -486,14 +486,14 @@ public class bnd extends Processor {
+ 				System.setProperty(DEFAULT_LOG_LEVEL_KEY, "warn");
+ 				level = org.slf4j.spi.LocationAwareLogger.WARN_INT;
+ 			}
+-			Field field = org.slf4j.impl.SimpleLogger.class.getDeclaredField("CONFIG_PARAMS");
++			Field field = org.slf4j.simple.SimpleLogger.class.getDeclaredField("CONFIG_PARAMS");
+ 			field.setAccessible(true);
+ 			Object CONFIG_PARAMS = field.get(null);
+-			field = org.slf4j.impl.SimpleLoggerConfiguration.class.getDeclaredField("defaultLogLevel");
++			field = org.slf4j.simple.SimpleLoggerConfiguration.class.getDeclaredField("defaultLogLevel");
+ 			field.setAccessible(true);
+ 			field.set(CONFIG_PARAMS, level);
+ 
+-			field = org.slf4j.impl.SimpleLogger.class.getDeclaredField("currentLogLevel");
++			field = org.slf4j.simple.SimpleLogger.class.getDeclaredField("currentLogLevel");
+ 			field.setAccessible(true);
+ 			field.set(logger, level);
+ 		} catch (Exception e) {

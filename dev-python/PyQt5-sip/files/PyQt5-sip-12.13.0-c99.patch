@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/919000
+https://www.riverbankcomputing.com/hg/sip/rev/afc99fa84d0d
+
+diff --git a/siplib.c b/siplib.c
+index 8b0a6d5..d996a9c 100644
+--- a/siplib.c
++++ b/siplib.c
+@@ -3902,7 +3902,7 @@ static int parsePass1(PyObject **parseErrp, sipSimpleWrapper **selfp,
+     {
+     case '#':
+             /* A ctor has an argument with the /Transfer/ annotation. */
+-            *selfp = va_arg(va, PyObject *);
++            *selfp = (sipSimpleWrapper *) va_arg(va, PyObject *);
+             break;
+ 
+     case 'B':

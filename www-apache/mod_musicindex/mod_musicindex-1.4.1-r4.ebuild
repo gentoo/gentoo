@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ DEPEND="mp3? ( media-libs/libmad media-libs/libid3tag:= )
 	archive? ( app-arch/libarchive:= )
 	mysql? ( dev-db/mysql-connector-c:0= )"
 RDEPEND="${DEPEND}
-	sys-devel/libtool"
+	dev-build/libtool"
 
 APACHE2_MOD_CONF="50_${PN}"
 APACHE2_MOD_DEFINE="MUSICINDEX"

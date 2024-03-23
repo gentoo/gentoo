@@ -34,7 +34,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/libtool
+	dev-build/libtool
 	virtual/pkgconfig
 "
 

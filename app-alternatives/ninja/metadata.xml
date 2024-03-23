@@ -10,7 +10,7 @@
 		<name>Violet Purcell</name>
 	</maintainer>
 	<use>
-		<flag name="reference">Symlink to dev-util/ninja.</flag>
-		<flag name="samurai">Symlink to dev-util/samurai.</flag>
+		<flag name="reference">Symlink to dev-build/ninja.</flag>
+		<flag name="samurai">Symlink to dev-build/samurai.</flag>
 	</use>
 </pkgmetadata>

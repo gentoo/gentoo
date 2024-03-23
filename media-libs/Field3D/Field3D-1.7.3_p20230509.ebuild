@@ -12,7 +12,7 @@ SRC_URI="https://github.com/imageworks/Field3D/archive/${SRC_COMMIT}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc mpi test"
 
 RESTRICT="!test? ( test )"
@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/imath-3.1.4-r2:=
 	>=media-libs/openexr-3:0=
 	sci-libs/hdf5:=
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	mpi? ( virtual/mpi )
 "
 DEPEND="${RDEPEND}"

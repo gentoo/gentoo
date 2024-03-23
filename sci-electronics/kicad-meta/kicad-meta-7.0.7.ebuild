@@ -5,7 +5,6 @@ EAPI=8
 
 DESCRIPTION="Electronic Schematic and PCB design tools (meta package)"
 HOMEPAGE="http://www.kicad.org"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"

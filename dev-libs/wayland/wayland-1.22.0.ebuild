@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ BDEPEND="
 	~dev-util/wayland-scanner-${PV}
 	virtual/pkgconfig
 	doc? (
-		>=app-doc/doxygen-1.6[dot]
+		>=app-text/doxygen-1.6[dot]
 		app-text/xmlto
 		>=media-gfx/graphviz-2.26.0
 	)

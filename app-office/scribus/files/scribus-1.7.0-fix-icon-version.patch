@@ -1,0 +1,11 @@
+--- a/resources/iconsets/artwork/CMakeLists.txt
++++ b/resources/iconsets/artwork/CMakeLists.txt
+@@ -20,7 +20,7 @@ if(NOT WIN32 AND NOT APPLE)
+ 	FOREACH(res 16x16 32x32 64x64 128x128 256x256)
+ 		INSTALL(FILES
+ 			application-vnd.scribus_${res}.png
+-			RENAME application-vnd.scribus.png
++			RENAME application-vnd.scribus${TAG_VERSION}.png
+ 			DESTINATION ${SYSICONDIR}/${res}/mimetypes/
+ 		)
+ 	ENDFOREACH(res)

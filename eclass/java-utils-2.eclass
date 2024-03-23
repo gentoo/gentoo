@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -1972,7 +1972,10 @@ etestng() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	eapply_user
+	case ${EAPI} in
+		[678]) eapply_user ;;
+		*) default_src_prepare ;;
+	esac
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then

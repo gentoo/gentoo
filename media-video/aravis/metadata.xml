@@ -20,4 +20,7 @@
 		<flag name="packet-socket">Enable packet socket support.</flag>
 		<flag name="viewer">Build the GTK+-based video viewer.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">AravisProject/aravis</remote-id>
+	</upstream>
 </pkgmetadata>

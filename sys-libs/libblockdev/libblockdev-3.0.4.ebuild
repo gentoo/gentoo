@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,12 +12,12 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
 	BDEPEND="
-		sys-devel/autoconf-archive
+		dev-build/autoconf-archive
 	"
 else
 	MY_PV="${PV}-1"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ~ppc ppc64 ~riscv x86"
 fi
 LICENSE="LGPL-2+"
 SLOT="0/3"	# subslot is SOVERSION
@@ -54,7 +54,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 	test? (
@@ -63,6 +63,7 @@ BDEPEND+="
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 		')
+		sys-apps/lsb-release
 		sys-block/targetcli-fb
 	)
 "

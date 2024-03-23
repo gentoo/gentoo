@@ -66,6 +66,12 @@ src_install() {
 
 pkg_postinst() {
 	elog "Start/Restart keybase: run_keybase"
+	if ! use fuse; then
+		elog "  Note that without USE=fuse the kbfs package will not"
+		elog "  be installed automatically. Either install it manually"
+		elog "  or export KEYBASE_NO_KBFS=1 in your shell to avoid"
+		elog "  failures when executing run_keybase."
+	fi
 	elog "Run the service:       keybase service"
 	elog "Run the client:        keybase login"
 	ewarn "Note that the user keybasehelper is obsolete and can be removed"

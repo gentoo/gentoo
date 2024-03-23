@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2023-12-25)
+# Default to gbm on non-desktop with REQUIRED_USE: ^^ ( gbm wayland X )
+>=media-tv/kodi-20.2 gbm udev
+
 # Yongxiang Liang <tanekliang@gmail.com> (2023-12-12)
 # Default to lua 5.4 (upstream requires 5.3 or higher)
 app-i18n/fcitx-lua lua_single_target_lua5-4

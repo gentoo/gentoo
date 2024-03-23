@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,12 +35,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	test? ( dev-libs/appstream-glib )
-	dev-util/tinycmmc
+	dev-build/tinycmmc
 	virtual/pkgconfig
 "
 
 PATCHES=(
 	"${FILESDIR}"/${P}-appstream-util-nonet.patch
+	"${FILESDIR}"/${P}-cmake-3.5.patch
 	"${FILESDIR}"/${P}-sdl1.patch
 )
 

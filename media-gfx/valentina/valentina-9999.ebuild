@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,12 @@ EAPI=7
 inherit qmake-utils xdg git-r3
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="https://gitlab.com/smart-pattern/valentina"
+HOMEPAGE="https://smart-pattern.com.ua/"
 EGIT_REPO_URI="https://gitlab.com/smart-pattern/valentina.git"
 EGIT_BRANCH="develop"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
 
@@ -107,7 +105,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc AUTHORS.txt ChangeLog.txt README.txt
+	 dodoc AUTHORS.txt ChangeLog.txt CONTRIBUTING.md README.md
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1

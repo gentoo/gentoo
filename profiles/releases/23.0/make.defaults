@@ -7,11 +7,8 @@
 # This just makes sense nowadays, if only for distfiles...
 USE="lzma zstd"
 
-# bug 831045
-USE="${USE} -cli"
-
-# bug 849875
-USE="${USE} -dri"
+# make sure toolchain has sane defaults <toolchain@gentoo.org>
+USE="${USE} openmp"
 
 # bug 818376 (only on specific arches)
 LDFLAGS="-Wl,-O1 -Wl,--as-needed"

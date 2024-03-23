@@ -1,0 +1,42 @@
+https://github.com/bpftrace/bpftrace/commit/fe6362b4e2c1b9d0833c7d3f308c1d4006b54723
+
+From fe6362b4e2c1b9d0833c7d3f308c1d4006b54723 Mon Sep 17 00:00:00 2001
+From: gkamathe <73747618+gkamathe@users.noreply.github.com>
+Date: Fri, 16 Feb 2024 18:19:14 +0530
+Subject: [PATCH] =?UTF-8?q?fix=20bpftrace=5Ffuzz=20error=20for=20call=20to?=
+ =?UTF-8?q?=20'get=5Fkernel=E2=80=A6=5Fcflags'=20(#3007)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* fix bpftrace_fuzz error: no matching function for call to 'get_kernel_cflags'
+
+When compiling bpftace_fuzz we run into the following issue where 1
+argument is missing, adding the required argument
+
+src/fuzz_main.cpp:140:21: error: no matching function for call to 'get_kernel_cflags'
+      extra_flags = get_kernel_cflags(utsname.machine, ksrc, kobj);
+                    ^~~~~~~~~~~~~~~~~
+src/utils.h:180:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+std::vector<std::string> get_kernel_cflags(const char *uname_machine,
+                         ^
+Seems fourth argument was added via 4bcee640636e268de4b938a1007fb29a8836f049
+
+Signed-off-by: Gaurav Kamathe <kamathe.gaurav@gmail.com>
+
+---------
+
+Signed-off-by: Gaurav Kamathe <kamathe.gaurav@gmail.com>
+--- a/src/fuzz_main.cpp
++++ b/src/fuzz_main.cpp
+@@ -137,7 +137,8 @@ int fuzz_main(const char* data, size_t sz)
+     kobj = std::get<1>(kdirs);
+ 
+     if (ksrc != "")
+-      extra_flags = get_kernel_cflags(utsname.machine, ksrc, kobj);
++      extra_flags = get_kernel_cflags(
++          utsname.machine, ksrc, kobj, bpftrace.kconfig);
+   }
+   extra_flags.push_back("-include");
+   extra_flags.push_back(CLANG_WORKAROUNDS_H);
+

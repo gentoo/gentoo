@@ -10,7 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="sass">(deprecated) Enable SASS/SCSS support</flag>
 		<flag name="extended">Enable SASS/SCSS and WebP encoding support</flag>
 	</use>
 	<upstream>

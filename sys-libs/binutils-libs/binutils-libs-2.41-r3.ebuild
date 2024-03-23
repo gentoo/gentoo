@@ -24,7 +24,7 @@ LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0/${PV%_p?}.0"
 
 IUSE="64-bit-bfd cet multitarget nls static-libs test"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -154,7 +154,7 @@ multilib_src_configure() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
-	# Provided by sys-devel/gdb instead
+	# Provided by dev-debug/gdb instead
 	rm "${ED}"/usr/share/info/sframe-spec.info || die
 
 	# Provide libiberty.h directly.

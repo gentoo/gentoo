@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MYP=HepMC-${PV}
 
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-latexrecommended
@@ -70,6 +70,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# error: ‘hepevt_’ violates the C++ One Definition Rule [-Werror=odr]
+	# Bug 863284
+	filter-lto
 	# use MeV over GeV and mm over cm
 	local mycmakeargs=(
 		-Dlength=$(usex cm CM MM)

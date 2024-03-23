@@ -14,7 +14,6 @@
     for problems involving chemical kinetics, thermodynamics, and/or transport processes.
   </longdescription>
   <use>
-    <flag name="cti">Install conversion tools (ck2cti, ck2yaml, ctml_writer) from Chemkin to Cantera format</flag>
     <flag name="python">Install Python bindings and conversion tools from Chemkin to Cantera format</flag>
     <flag name="hdf5">Add HDF5 container files support</flag>
   </use>

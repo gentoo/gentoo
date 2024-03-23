@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ else
 			-> ${P}.tar.gz
 	"
 	S=${WORKDIR}/${PN}-${HASH_PCSX2_PATCHES}
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="Collection of game patches for use with PCSX2 (e.g. widescreen hacks)"

@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+description="liquid feedback updator"
+
+command="/usr/bin/lf_update.sh"
+command_args="$dbname"
+command_background=yes
+command_user="apache:apache"
+error_log=/var/log/liquid_feedback/lf_update.err
+output_log=/var/log/liquid_feedback/lf_update.log
+pidfile=/run/lqfb_core.pid

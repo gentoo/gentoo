@@ -33,7 +33,7 @@ BDEPEND="$(vala_depend)
 	$(python_gen_cond_dep '
 		dev-python/jinja[${PYTHON_USEDEP}]
 	')
-	>=dev-util/meson-0.60.0
+	>=dev-build/meson-0.60.0
 	virtual/pkgconfig
 	gtk-doc? (
 		$(python_gen_cond_dep '

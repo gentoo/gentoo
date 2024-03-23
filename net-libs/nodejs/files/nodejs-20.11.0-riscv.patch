@@ -1,0 +1,155 @@
+From dda5cdb15cfe5c7437f471054f5bd79a82b6eda2 Mon Sep 17 00:00:00 2001
+From: kxxt <rsworktech@outlook.com>
+Date: Wed, 17 Jan 2024 09:16:34 +0800
+Subject: [PATCH] Revert "deps: V8: cherry-pick 13192d6e10fa"
+
+This reverts commit bc2ebb972b34f54e042de9636e7451d2526436a9, which
+shouldn't be applied to v20.x.
+
+Fix https://github.com/nodejs/unofficial-builds/issues/106
+---
+ common.gypi                                      |  2 +-
+ deps/v8/src/builtins/riscv/builtins-riscv.cc     |  2 +-
+ deps/v8/src/codegen/riscv/assembler-riscv-inl.h  | 16 ++++++++--------
+ deps/v8/src/codegen/riscv/assembler-riscv.h      |  2 +-
+ deps/v8/src/execution/riscv/simulator-riscv.cc   |  8 ++++----
+ .../regexp/riscv/regexp-macro-assembler-riscv.cc |  2 +-
+ 6 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/common.gypi b/common.gypi
+index db09a8a33df06..fa0729ffe45e8 100644
+--- a/common.gypi
++++ b/common.gypi
+@@ -36,7 +36,7 @@
+ 
+     # Reset this number to 0 on major V8 upgrades.
+     # Increment by one for each non-official patch applied to deps/v8.
+-    'v8_embedder_string': '-node.17',
++    'v8_embedder_string': '-node.18',
+ 
+     ##### V8 defaults for Node.js #####
+ 
+diff --git a/deps/v8/src/builtins/riscv/builtins-riscv.cc b/deps/v8/src/builtins/riscv/builtins-riscv.cc
+index d6091434b9b0a..3404562785991 100644
+--- a/deps/v8/src/builtins/riscv/builtins-riscv.cc
++++ b/deps/v8/src/builtins/riscv/builtins-riscv.cc
+@@ -1512,7 +1512,7 @@ static void Generate_InterpreterEnterBytecode(MacroAssembler* masm) {
+   // Set the return address to the correct point in the interpreter entry
+   // trampoline.
+   Label builtin_trampoline, trampoline_loaded;
+-  Tagged<Smi> interpreter_entry_return_pc_offset(
++  Smi interpreter_entry_return_pc_offset(
+       masm->isolate()->heap()->interpreter_entry_return_pc_offset());
+   DCHECK_NE(interpreter_entry_return_pc_offset, Smi::zero());
+ 
+diff --git a/deps/v8/src/codegen/riscv/assembler-riscv-inl.h b/deps/v8/src/codegen/riscv/assembler-riscv-inl.h
+index ca6d641e2c94e..55f191e6afe76 100644
+--- a/deps/v8/src/codegen/riscv/assembler-riscv-inl.h
++++ b/deps/v8/src/codegen/riscv/assembler-riscv-inl.h
+@@ -128,9 +128,9 @@ Handle<HeapObject> Assembler::compressed_embedded_object_handle_at(
+ }
+ 
+ void Assembler::deserialization_set_special_target_at(
+-    Address instruction_payload, Tagged<Code> code, Address target) {
++    Address instruction_payload, Code code, Address target) {
+   set_target_address_at(instruction_payload,
+-                        !code.is_null() ? code->constant_pool() : kNullAddress,
++                        !code.is_null() ? code.constant_pool() : kNullAddress,
+                         target);
+ }
+ 
+@@ -159,13 +159,12 @@ void Assembler::deserialization_set_target_internal_reference_at(
+   }
+ }
+ 
+-Tagged<HeapObject> RelocInfo::target_object(PtrComprCageBase cage_base) {
++HeapObject RelocInfo::target_object(PtrComprCageBase cage_base) {
+   DCHECK(IsCodeTarget(rmode_) || IsEmbeddedObjectMode(rmode_));
+   if (IsCompressedEmbeddedObject(rmode_)) {
+-    return HeapObject::cast(
+-        Tagged<Object>(V8HeapCompressionScheme::DecompressTagged(
+-            cage_base,
+-            Assembler::target_compressed_address_at(pc_, constant_pool_))));
++    return HeapObject::cast(Object(V8HeapCompressionScheme::DecompressTagged(
++        cage_base,
++        Assembler::target_compressed_address_at(pc_, constant_pool_))));
+   } else {
+     return HeapObject::cast(
+         Object(Assembler::target_address_at(pc_, constant_pool_)));
+@@ -187,7 +186,8 @@ Handle<HeapObject> RelocInfo::target_object_handle(Assembler* origin) {
+   }
+ }
+ 
+-void RelocInfo::set_target_object(Tagged<HeapObject> target,
++void RelocInfo::set_target_object(Heap* heap, HeapObject target,
++                                  WriteBarrierMode write_barrier_mode,
+                                   ICacheFlushMode icache_flush_mode) {
+   DCHECK(IsCodeTarget(rmode_) || IsEmbeddedObjectMode(rmode_));
+   if (IsCompressedEmbeddedObject(rmode_)) {
+diff --git a/deps/v8/src/codegen/riscv/assembler-riscv.h b/deps/v8/src/codegen/riscv/assembler-riscv.h
+index bcd5a62d324ee..ed222b52d6927 100644
+--- a/deps/v8/src/codegen/riscv/assembler-riscv.h
++++ b/deps/v8/src/codegen/riscv/assembler-riscv.h
+@@ -286,7 +286,7 @@ class V8_EXPORT_PRIVATE Assembler : public AssemblerBase,
+   // This is for calls and branches within generated code.  The serializer
+   // has already deserialized the lui/ori instructions etc.
+   inline static void deserialization_set_special_target_at(Address location,
+-                                                           Tagged<Code> code,
++                                                           Code code,
+                                                            Address target);
+ 
+   // Get the size of the special target encoded at 'instruction_payload'.
+diff --git a/deps/v8/src/execution/riscv/simulator-riscv.cc b/deps/v8/src/execution/riscv/simulator-riscv.cc
+index 052a2d67dd7e4..9582db489638a 100644
+--- a/deps/v8/src/execution/riscv/simulator-riscv.cc
++++ b/deps/v8/src/execution/riscv/simulator-riscv.cc
+@@ -1781,7 +1781,7 @@ void RiscvDebugger::Debug() {
+           sreg_t value;
+           StdoutStream os;
+           if (GetValue(arg1, &value)) {
+-            Tagged<Object> obj(value);
++            Object obj(value);
+             os << arg1 << ": \n";
+ #ifdef DEBUG
+             obj.Print(os);
+@@ -1830,7 +1830,7 @@ void RiscvDebugger::Debug() {
+           PrintF("  0x%012" PRIxPTR " :  0x%016" REGIx_FORMAT
+                  "  %14" REGId_FORMAT " ",
+                  reinterpret_cast<intptr_t>(cur), *cur, *cur);
+-          Tagged<Object> obj(*cur);
++          Object obj(*cur);
+           Heap* current_heap = sim_->isolate_->heap();
+           if (obj.IsSmi() ||
+               IsValidHeapObject(current_heap, HeapObject::cast(obj))) {
+@@ -4692,7 +4692,7 @@ bool Simulator::DecodeRvvVS() {
+ Builtin Simulator::LookUp(Address pc) {
+   for (Builtin builtin = Builtins::kFirst; builtin <= Builtins::kLast;
+        ++builtin) {
+-    if (builtins_.code(builtin)->contains(isolate_, pc)) return builtin;
++    if (builtins_.code(builtin).contains(isolate_, pc)) return builtin;
+   }
+   return Builtin::kNoBuiltinId;
+ }
+@@ -4709,7 +4709,7 @@ void Simulator::DecodeRVIType() {
+         if (builtin != Builtin::kNoBuiltinId) {
+           auto code = builtins_.code(builtin);
+           if ((rs1_reg() != ra || imm12() != 0)) {
+-            if ((Address)get_pc() == code->instruction_start()) {
++            if ((Address)get_pc() == code.InstructionStart()) {
+               sreg_t arg0 = get_register(a0);
+               sreg_t arg1 = get_register(a1);
+               sreg_t arg2 = get_register(a2);
+diff --git a/deps/v8/src/regexp/riscv/regexp-macro-assembler-riscv.cc b/deps/v8/src/regexp/riscv/regexp-macro-assembler-riscv.cc
+index 72f89767eb348..4063b4b3d2194 100644
+--- a/deps/v8/src/regexp/riscv/regexp-macro-assembler-riscv.cc
++++ b/deps/v8/src/regexp/riscv/regexp-macro-assembler-riscv.cc
+@@ -1211,7 +1211,7 @@ static T* frame_entry_address(Address re_frame, int frame_offset) {
+ int64_t RegExpMacroAssemblerRISCV::CheckStackGuardState(Address* return_address,
+                                                         Address raw_code,
+                                                         Address re_frame) {
+-  Tagged<InstructionStream> re_code = InstructionStream::cast(Object(raw_code));
++  InstructionStream re_code = InstructionStream::cast(Object(raw_code));
+   return NativeRegExpMacroAssembler::CheckStackGuardState(
+       frame_entry<Isolate*>(re_frame, kIsolateOffset),
+       static_cast<int>(frame_entry<int64_t>(re_frame, kStartIndexOffset)),
+

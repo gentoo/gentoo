@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 
 # The doxygen dependency is suspect, but it appears to be used at runtime.
 RDEPEND="
-	>=app-doc/doxygen-1.7
+	>=app-text/doxygen-1.7
 	>=app-text/hunspell-1.3
 	>=dev-embedded/sdcc-2.5[mcs51]
 	>=dev-lang/tcl-8.5.9:*

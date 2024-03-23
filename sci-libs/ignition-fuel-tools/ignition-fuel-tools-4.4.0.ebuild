@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,9 +30,9 @@ RDEPEND="
 "
 #igncurl
 DEPEND="${RDEPEND}
-	dev-util/ignition-cmake:2"
+	dev-build/ignition-cmake:2"
 BDEPEND="
-	dev-util/ignition-cmake:2"
+	dev-build/ignition-cmake:2"
 
 S="${WORKDIR}/ign-fuel-tools-${PN}${IGN_MAJOR}_${PV}"
 

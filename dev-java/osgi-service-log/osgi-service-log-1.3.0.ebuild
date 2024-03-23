@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/osgi/org.osgi.service.log/${PV}/org.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="dev-java/osgi-core:0"
 

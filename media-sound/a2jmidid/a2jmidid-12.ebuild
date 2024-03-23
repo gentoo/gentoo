@@ -14,7 +14,7 @@ SRC_URI="https://dl.ladish.org/a2jmidid/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="dbus"
 REQUIRED_USE="dbus? ( ${PYTHON_REQUIRED_USE} )"
 

@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,8 +10,6 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Caja Actions"
@@ -32,7 +30,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
-	>=sys-devel/autoconf-2.53:*
-	>=sys-devel/libtool-2.2.6:2
+	>=dev-build/autoconf-2.53:*
+	>=dev-build/libtool-2.2.6:2
 	virtual/pkgconfig
 "

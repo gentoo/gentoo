@@ -24,10 +24,10 @@ MY_P=${P/_/.}
 DESCRIPTION="Matrix messaging app for GNOME written in Rust"
 HOMEPAGE="
 	https://wiki.gnome.org/Apps/Fractal
-	https://gitlab.gnome.org/GNOME/fractal/
+	https://gitlab.gnome.org/World/fractal/
 "
 SRC_URI="
-	https://gitlab.gnome.org/GNOME/fractal/-/archive/${PV/_/.}/${MY_P}.tar.bz2
+	https://gitlab.gnome.org/World/fractal/-/archive/${PV/_/.}/${MY_P}.tar.bz2
 	${CARGO_CRATE_URIS}
 "
 if [[ ${PKGBUMPING} != ${PVR} ]]; then
@@ -46,7 +46,7 @@ LICENSE+="
 # ring crate
 LICENSE+=" openssl"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 DEPEND="
 	>=dev-libs/glib-2.72

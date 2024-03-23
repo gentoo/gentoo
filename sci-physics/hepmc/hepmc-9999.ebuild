@@ -1,10 +1,10 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit cmake python-single-r1
+PYTHON_COMPAT=( python3_{10..12} )
+inherit fortran-2 cmake python-single-r1
 
 MYP=HepMC3-${PV}
 
@@ -26,12 +26,19 @@ IUSE="doc test examples python root"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_USEDEP}]
+		')
+	)
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	root? ( sci-physics/root:= )
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-latexrecommended
@@ -52,5 +59,5 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	use examples && docompress -x /usr/share/doc/${PF}/examples
-	python_optimize
+	use python && python_optimize
 }

@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/919413
+https://src.fedoraproject.org/rpms/openjfx/c/9e893037f3a20273c79603220b7a18a44be60fcc?branch=rawhide
+
+commit 42321838b98d2ebb3d8384c88a764ff2b4d70581
+Author: Florian Weimer <fweimer@openjdk.org>
+Date:   Fri Jun 16 12:19:10 2023 +0000
+
+    8307542: Call to FcConfigAppFontAddFile uses wrong prototype, arguments
+    
+    Reviewed-by: kcr
+
+--- a/modules/javafx.graphics/src/main/native-font/pango.c
++++ b/modules/javafx.graphics/src/main/native-font/pango.c
+@@ -243,7 +243,7 @@ JNIEXPORT jboolean JNICALL OS_NATIVE(FcConfigAppFontAddFile)
+         if (text) {
+ //            rc = (jboolean)FcConfigAppFontAddFile(arg0, text);
+             if (fp) {
+-                rc = (jboolean)((jboolean (*)(void *, const char *))fp)(arg0, text);
++                rc = (jboolean)((int (*)(void *, const char *))fp)((void *)arg0, text);
+             }
+             (*env)->ReleaseStringUTFChars(env, arg1, text);
+         }

@@ -1,0 +1,86 @@
+From 7f639c28262455226da4db9d9630a48fea99e0f4 Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl@carlschwan.eu>
+Date: Tue, 5 Mar 2024 16:08:58 +0100
+Subject: [PATCH] Fix crash when in embedded dummy mode
+
+This is an issue for Kile as they use Okular in the "dummy mode" which
+doesn't include the annotation tool.
+
+BUG: 476207
+---
+ part/pageview.cpp | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/part/pageview.cpp b/part/pageview.cpp
+index c5c1d3e55c..c01c5488c6 100644
+--- a/part/pageview.cpp
++++ b/part/pageview.cpp
+@@ -5084,7 +5084,9 @@ void PageView::slotSetMouseNormal()
+     // force an update of the cursor
+     updateCursor();
+     Okular::Settings::self()->save();
+-    d->annotator->detachAnnotation();
++    if (d->annotator) {
++        d->annotator->detachAnnotation();
++    }
+ }
+ 
+ void PageView::slotSetMouseZoom()
+@@ -5096,7 +5098,9 @@ void PageView::slotSetMouseZoom()
+     // force an update of the cursor
+     updateCursor();
+     Okular::Settings::self()->save();
+-    d->annotator->detachAnnotation();
++    if (d->annotator) {
++        d->annotator->detachAnnotation();
++    }
+ }
+ 
+ void PageView::slotSetMouseMagnifier()
+@@ -5108,7 +5112,9 @@ void PageView::slotSetMouseMagnifier()
+     // force an update of the cursor
+     updateCursor();
+     Okular::Settings::self()->save();
+-    d->annotator->detachAnnotation();
++    if (d->annotator) {
++        d->annotator->detachAnnotation();
++    }
+ }
+ 
+ void PageView::slotSetMouseSelect()
+@@ -5120,7 +5126,9 @@ void PageView::slotSetMouseSelect()
+     // force an update of the cursor
+     updateCursor();
+     Okular::Settings::self()->save();
+-    d->annotator->detachAnnotation();
++    if (d->annotator) {
++        d->annotator->detachAnnotation();
++    }
+ }
+ 
+ void PageView::slotSetMouseTextSelect()
+@@ -5132,7 +5140,9 @@ void PageView::slotSetMouseTextSelect()
+     // force an update of the cursor
+     updateCursor();
+     Okular::Settings::self()->save();
+-    d->annotator->detachAnnotation();
++    if (d->annotator) {
++        d->annotator->detachAnnotation();
++    }
+ }
+ 
+ void PageView::slotSetMouseTableSelect()
+@@ -5144,7 +5154,9 @@ void PageView::slotSetMouseTableSelect()
+     // force an update of the cursor
+     updateCursor();
+     Okular::Settings::self()->save();
+-    d->annotator->detachAnnotation();
++    if (d->annotator) {
++        d->annotator->detachAnnotation();
++    }
+ }
+ 
+ void PageView::showNoSigningCertificatesDialog(bool nonDateValidCerts)
+-- 
+GitLab
+

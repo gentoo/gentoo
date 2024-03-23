@@ -33,7 +33,7 @@ BDEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
 	apidoc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		media-gfx/graphviz
 	)
 	doc? (
@@ -112,6 +112,9 @@ src_prepare() {
 
 src_configure() {
 	local -a myconf
+
+	# bug #861368
+	filter-lto
 
 	if use debug; then
 		use kauth && myconf+=( --enable-debug-pam )

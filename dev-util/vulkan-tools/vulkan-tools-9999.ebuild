@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv"
-	S="${WORKDIR}"/${MY_PN}-sdk-${PV}.0
+	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}.0
 fi
 
 DESCRIPTION="Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS"
@@ -22,23 +22,23 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="cube wayland +X"
-
-REQUIRED_USE="cube? ( || ( X wayland ) )"
+IUSE="cube wayland X"
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
-	~media-libs/vulkan-loader-${PV}:=[${MULTILIB_USEDEP},wayland?,X?]
-	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
+	~dev-util/volk-${PV}:=[${MULTILIB_USEDEP}]
+	~media-libs/vulkan-loader-${PV}[${MULTILIB_USEDEP},wayland?,X?]
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
-		x11-libs/libX11:=[${MULTILIB_USEDEP}]
-		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libxcb:=[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}
 	~dev-util/vulkan-headers-${PV}
+	X? ( x11-libs/libXrandr[${MULTILIB_USEDEP}] )
 "
 
 pkg_setup() {
@@ -71,10 +71,15 @@ multilib_src_configure() {
 		-DVULKAN_HEADERS_INSTALL_DIR="${ESYSROOT}/usr"
 	)
 
-	use cube && mycmakeargs+=(
-		-DGLSLANG_INSTALL_DIR="${ESYSROOT}/usr"
-		-DCUBE_WSI_SELECTION=$(usex X XCB WAYLAND)
-	)
+	if use cube; then
+		if use X; then
+			mycmakeargs+=(-DCUBE_WSI_SELECTION=XCB)
+		elif use wayland; then
+			mycmakeargs+=(-DCUBE_WSI_SELECTION=WAYLAND)
+		else
+			mycmakeargs+=(-DCUBE_WSI_SELECTION=DISPLAY)
+		fi
+	fi
 
 	cmake_src_configure
 }

@@ -9,6 +9,10 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <longdescription>
     JPEG XL reference implementation
     (encoder and decoder), called libjxl.

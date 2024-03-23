@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -696,11 +696,17 @@ linux-info_get_any_version() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	if ! get_version; then
+	if [[ ${MERGE_TYPE} == binary && -z ${LINUX_INFO_BINARY_RESET} ]]; then
+		unset KV_FULL _LINUX_CONFIG_EXISTS_DONE KV_OUT_DIR
+		LINUX_INFO_BINARY_RESET=1
+	fi
+
+	if [[ ${MERGE_TYPE} != binary ]] && ! get_version; then
 		ewarn "Unable to calculate Linux Kernel version for build, attempting to use running version"
-		if ! get_running_version; then
-			die "Unable to determine any Linux Kernel version, please report a bug"
-		fi
+	fi
+
+	if [[ -z ${KV_FULL} ]] && ! get_running_version; then
+		die "Unable to determine any Linux Kernel version, please report a bug"
 	fi
 }
 

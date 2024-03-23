@@ -21,7 +21,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -48,12 +48,12 @@ OPTIONAL_DEPEND="
 	>=dev-python/xlrd-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/xlsxwriter-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/xlwt-1.3.0[${PYTHON_USEDEP}]
-	!x86? ( !hppa? (
+	!arm? ( !hppa? ( !ppc? ( !x86? (
 		$(python_gen_cond_dep '
 			dev-python/statsmodels[${PYTHON_USEDEP}]
 		' python3_{8..10} )
 		>=dev-python/scipy-1.8.1[${PYTHON_USEDEP}]
-	) )
+	) ) ) )
 	X? (
 		|| (
 			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
@@ -64,6 +64,7 @@ OPTIONAL_DEPEND="
 	)
 "
 DEPEND="
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23.2[${PYTHON_USEDEP}]
 "
 COMMON_DEPEND="
@@ -73,7 +74,7 @@ COMMON_DEPEND="
 "
 BDEPEND="
 	${COMMON_DEPEND}
-	>=dev-util/meson-1.2.1
+	>=dev-build/meson-1.2.1
 	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	test? (
