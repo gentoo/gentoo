@@ -643,16 +643,6 @@ toolchain_src_prepare() {
 
 	gnuconfig_update
 
-	# Update configure files
-	local f
-	einfo "Fixing misc issues in configure files"
-	for f in $(grep -l 'autoconf version 2.13' $(find "${S}" -name configure || die) || die) ; do
-		ebegin "  Updating ${f/${S}\/} [LANG]"
-		patch "${f}" "${FILESDIR}"/gcc-configure-LANG.patch >& "${T}"/configure-patch.log \
-			|| eerror "Please file a bug about this"
-		eend $?
-	done
-
 	if ! use prefix-guest && [[ -n ${EPREFIX} ]] ; then
 		einfo "Prefixifying dynamic linkers..."
 		for f in gcc/config/*/*linux*.h ; do
