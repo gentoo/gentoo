@@ -47,6 +47,7 @@ COMMON_DEPEND="
 	media-libs/mesa[X(+)]
 	net-misc/curl
 	>=sci-libs/opencascade-7.3.0:0=
+	<sci-libs/opencascade-7.8.0:0=
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
