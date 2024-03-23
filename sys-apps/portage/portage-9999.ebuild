@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
-inherit meson linux-info multiprocessing python-r1 tmpfiles
+inherit meson linux-info python-r1 tmpfiles
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -35,6 +35,7 @@ RESTRICT="!test? ( test )"
 # >=meson-1.2.1-r1 for bug #912051
 BDEPEND="
 	${PYTHON_DEPS}
+	>=app-arch/tar-1.27
 	>=dev-build/meson-1.2.1-r1
 	|| (
 		>=dev-build/meson-1.3.0-r1
@@ -43,15 +44,6 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	' python3_12)
-	test? (
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-vcs/git
-	)
-"
-DEPEND="
-	${PYTHON_DEPS}
-	>=app-arch/tar-1.27
-	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5
 	sys-devel/patch
 	!build? ( $(python_gen_impl_dep 'ssl(+)') )
@@ -62,6 +54,10 @@ DEPEND="
 	doc? (
 		~app-text/docbook-xml-dtd-4.4
 		app-text/xmlto
+	)
+	test? (
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)
 "
 # Require sandbox-2.2 for bug #288863.
@@ -164,9 +160,9 @@ src_compile() {
 }
 
 src_test() {
-	local -x PYTEST_ADDOPTS="-vv -ra -l -o console_output_style=count -n $(makeopts_jobs) --dist=worksteal"
-
-	python_foreach_impl meson_src_test --no-rebuild --verbose
+	local EPYTEST_XDIST=1
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	python_foreach_impl epytest
 }
 
 src_install() {

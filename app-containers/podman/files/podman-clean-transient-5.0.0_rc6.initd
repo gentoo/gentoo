@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2015-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This service runs once each boot to remove potential leftover
+# container state from previous boots.
+
+# This is needed when using transient storage mode in podman where the
+# database and other configs are stored in tmpfs, but some other files
+# are not. If we don't run this after an unclean boot then there may
+# be some leftover files that grow over time.
+
+description="Clean up podman transient data"
+
+command_user="${RUN_AS_USER:-root:root}"
+command="/usr/bin/podman"
+command_args="--log-level ${LOG_LEVEL:-info} system prune --external"

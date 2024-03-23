@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/871597
+https://rt.cpan.org/Public/Bug/Display.html?id=124134
+
+From 32cfda724ce867d1b4a3e581b4b305b300ddfed2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 19 Jan 2018 15:39:16 +0100
+Subject: [PATCH] Use _DEFAULT_SOURCE instead of _BSD_SOURCE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+_BSD_SOURCE is deprecated in glibc since 2.20 version.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ ifaddrlist.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ifaddrlist.c b/ifaddrlist.c
+index 41183d3..0729b2b 100644
+--- a/ifaddrlist.c
++++ b/ifaddrlist.c
+@@ -1,5 +1,5 @@
+ #ifdef   _LINUX_
+-#define  _BSD_SOURCE 1
++#define  _DEFAULT_SOURCE 1
+ #define  __FAVOR_BSD 1
+ #endif
+ 
+-- 
+2.13.6

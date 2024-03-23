@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse4_2"
 
 DEPEND="

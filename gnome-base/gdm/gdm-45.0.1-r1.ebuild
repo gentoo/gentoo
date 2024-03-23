@@ -23,7 +23,7 @@ IUSE="accessibility audit bluetooth-sound branding elogind fprint plymouth selin
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
 
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 # dconf, dbus and g-s-d are needed at install time for dconf update
 # keyutils is automagic dep that makes autologin unlock login keyring

@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,9 +27,16 @@ RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.1.2-musl.patch )
+
+src_prepare() {
+	mv "${WORKDIR}"/${SDK_P} "${S}"/pico-sdk || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
-		-DPICO_SDK_PATH="${WORKDIR}"/${SDK_P}
+		-DPICO_SDK_PATH="${S}"/pico-sdk
 	)
 	cmake_src_configure
 }

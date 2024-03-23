@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit qmake-utils python-single-r1 desktop xdg
 
@@ -22,7 +22,7 @@ DEPEND="${PYTHON_DEPS}
 		>=app-crypt/yubikey-manager-5.0.0[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
 	')
-	dev-python/pyotherside[${PYTHON_SINGLE_USEDEP}]
+	dev-python/pyotherside[qt5,${PYTHON_SINGLE_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgraphicaleffects:5

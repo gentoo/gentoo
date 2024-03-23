@@ -51,7 +51,7 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.46.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.8:=
+	>=dev-libs/tree-sitter-0.20.9:=
 	>=dev-libs/libtermkey-0.22
 	>=dev-libs/unibilium-2.0.0:0=
 "

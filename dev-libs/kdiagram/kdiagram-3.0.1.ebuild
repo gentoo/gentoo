@@ -8,7 +8,7 @@ ECM_QTHELP="true"
 ECM_TEST="true"
 KDE_ORG_CATEGORY="graphics"
 KFMIN=5.245.0
-QTMIN=6.6.0
+QTMIN=6.6.2
 inherit ecm kde.org
 
 DESCRIPTION="Powerful libraries (KChart, KGantt) for creating business diagrams"

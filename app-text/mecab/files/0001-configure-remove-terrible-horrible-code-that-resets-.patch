@@ -1,0 +1,33 @@
+From 8ddfa1e8c274759f287c9ee73d4d1625028c3bb8 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 29 Feb 2024 16:44:27 -0500
+Subject: [PATCH] configure: remove terrible horrible code that resets CFLAGS
+ to "-O3"
+
+... and totally ignores all user defined flags.
+---
+ configure.in | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index a5e2a5e..4ac75c1 100644
+--- a/configure.in
++++ b/configure.in
+@@ -85,14 +85,6 @@ else
+         fi
+ fi
+ 
+-dnl
+-dnl check gcc
+-dnl
+-if test -n "$GCC"; then
+-   CFLAGS="-O3 -Wall "
+-   CXXFLAGS="-O3 -Wall "
+-fi
+-
+ dnl
+ dnl check Char Code
+ dnl
+-- 
+2.43.0
+

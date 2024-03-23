@@ -11,4 +11,7 @@
     <flag name="lights">Install and setup the updated light maps</flag>
     <flag name="textures">Install and setup the updated textures</flag>
   </use>
+  <upstream>
+    <remote-id type="github">DarkPlacesEngine/darkplaces</remote-id>
+  </upstream>
 </pkgmetadata>

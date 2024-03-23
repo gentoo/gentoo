@@ -11,7 +11,7 @@ DESCRIPTION="A kramdown parser for the GFM dialect of Markdown"
 HOMEPAGE="https://github.com/kramdown/parser-gfm"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 SLOT="$(ver_cut 1)"
 IUSE="doc"
 

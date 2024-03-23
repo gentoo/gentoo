@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Flite text to speech engine"
 HOMEPAGE="http://www.festvox.org/flite/ https://github.com/festvox/flite"
@@ -58,6 +58,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4-audio-interface.patch
 	"${FILESDIR}"/${PN}-2.2-backport-pr30.patch
+	"${FILESDIR}"/${PN}-2.2-make-4.4.patch
 )
 
 get_audio() {
@@ -103,6 +104,13 @@ src_prepare() {
 
 	# custom makefiles
 	multilib_copy_sources
+}
+
+src_configure() {
+	# lto-type-mismatch
+	filter-lto
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

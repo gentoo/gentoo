@@ -18,7 +18,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	inherit pypi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2+"

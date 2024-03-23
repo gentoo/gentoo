@@ -311,6 +311,10 @@ src_install() {
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
 
+	sed -e "s/%PV%/${PV}/" "${FILESDIR}/sbat.csv" > "${T}/sbat.csv" || die
+	insinto /usr/share/grub
+	doins "${T}/sbat.csv"
+
 	if use elibc_musl; then
 		# https://bugs.gentoo.org/900348
 		QA_CONFIG_IMPL_DECL_SKIP=( re_{compile_pattern,match,search,set_syntax} )

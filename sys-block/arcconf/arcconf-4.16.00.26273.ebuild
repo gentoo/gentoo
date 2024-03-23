@@ -14,7 +14,7 @@ S="${WORKDIR}/linux"
 
 LICENSE="Microsemi"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 arm64"
 
 BDEPEND="app-arch/unzip"
 

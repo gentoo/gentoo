@@ -8,7 +8,7 @@ MY_PV=$(ver_rs 3 '-')
 # It was also the last Bash based release. Later versions are Perl based
 
 DESCRIPTION="The CLI inxi collects and prints hardware and system information"
-HOMEPAGE="https://github.com/smxi/inxi"
+HOMEPAGE="https://codeberg.org/smxi/inxi"
 SRC_URI="https://github.com/smxi/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 

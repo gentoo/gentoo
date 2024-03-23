@@ -1,5 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-03-10)
+# Ensure that KF5- and Qt5-based applications, of which there are still
+# many (even as part of KDE Gear 24.02), will not exhibit bugs and look
+# out of place in Plasma 6 sessions.
+=kde-plasma/plasma-meta-6.0*:6 qt5
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2014-06-03)
 # Ensure shared-mime-info is pulled in by glib, otherwise GNOME, XFCE, and

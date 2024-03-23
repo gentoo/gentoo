@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3 systemd toolchain-funcs
+inherit git-r3 shell-completion systemd toolchain-funcs
 
 EGIT_REPO_URI="https://github.com/dunst-project/dunst"
 
@@ -12,7 +12,6 @@ HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE="wayland"
 
 DEPEND="
@@ -75,9 +74,13 @@ src_install() {
 
 	emake "${myemakeargs[@]}" install
 
-	insinto /usr/share/zsh/site-functions
-	newins contrib/_dunst.zshcomp _dunst
-	newins contrib/_dunstctl.zshcomp _dunstctl
+	newbashcomp completions/dunst.bashcomp dunst
+	newbashcomp completions/dunstctl.bashcomp dunstctl
+	newfishcomp completions/dunst.fishcomp dunst
+	newfishcomp completions/dunstctl.fishcomp dunstctl
+	newfishcomp completions/dunstify.fishcomp dunstify
+	newzshcomp completions/_dunst.zshcomp _dunst
+	newzshcomp completions/_dunstctl.zshcomp _dunstctl
 
 	systemd_newuserunit dunst.systemd.service.in dunst.service
 }

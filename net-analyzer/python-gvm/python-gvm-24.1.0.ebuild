@@ -14,7 +14,7 @@ SRC_URI="https://github.com/greenbone/python-gvm/archive/v${PV}.tar.gz -> ${P}.t
 
 SLOT="0"
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]

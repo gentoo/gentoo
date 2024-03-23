@@ -12,7 +12,7 @@ SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/57/25/a928e7d08c825ef1cd
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/1.6.5-warnings.patch"
 	"${FILESDIR}/${PN}-1.7.7-fnocommon.patch"
-	"${FILESDIR}/${P}-1-missing-include.patch"
+	"${FILESDIR}/${PN}-1.8-missing-include.patch"
 )
 
 src_configure() {

@@ -19,9 +19,7 @@ fi
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
 RDEPEND=">=sci-electronics/kicad-7.0.0"
 
 if [[ ${PV} == 9999 ]] ; then

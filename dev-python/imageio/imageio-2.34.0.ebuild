@@ -42,7 +42,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/fsspec[${PYTHON_USEDEP}]
-		dev-python/imageio-ffmpeg[${PYTHON_USEDEP}]
+		>=dev-python/imageio-ffmpeg-0.4.9-r1[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/tifffile[${PYTHON_USEDEP}]
@@ -82,11 +82,4 @@ EPYTEST_DESELECT=(
 	# requires pillow-heif, also possibly Internet
 	tests/test_pillow.py::test_avif_remote
 	tests/test_pillow.py::test_heif_remote
-	# TODO: imageio-ffmpeg seems broken with current ffmpeg?
-	tests/test_ffmpeg.py::test_reader_more
-	tests/test_ffmpeg.py::test_reverse_read
-	tests/test_ffmpeg.py::test_write_audio_ac3
-	tests/test_ffmpeg.py::test_write_audio_default_codec
-	tests/test_ffmpeg.py::test_writer_pixelformat_size_verbose
-	tests/test_ffmpeg_info.py::test_overload_fps
 )
