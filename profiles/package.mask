@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-03-23)
+# Source incompatible with mygui-3.4.1
+# https://bugs.gentoo.org/927634
+>=dev-games/mygui-3.4.3
+
 # Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
 # Stuck on old EAPI6. Last stable release over 10 years ago.
 # Not compatible with PHP8. Removal on 2024-04-22.
