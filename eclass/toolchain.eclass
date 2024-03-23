@@ -1886,7 +1886,7 @@ toolchain_src_install() {
 		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
 		# and bug #843341.
 		#
-		# Both of the non-JIT and JIT builds  are configured to install to $(DESTDIR)
+		# Both of the non-JIT and JIT builds are configured to install to $(DESTDIR)
 		# Install the configuration with --enable-host-shared first
 		# *then* the one without, so that the faster build
 		# of "cc1" et al overwrites the slower build.
