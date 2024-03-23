@@ -46,7 +46,7 @@ LICENSE+="
 # ring crate
 LICENSE+=" openssl"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 arm64"
 
 DEPEND="
 	>=dev-libs/glib-2.72
