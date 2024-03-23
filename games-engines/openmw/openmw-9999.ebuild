@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${LUA_DEPS}
 	app-arch/lz4:=
-	>=dev-games/mygui-3.4.1
+	>=dev-games/mygui-3.4.3
 	dev-cpp/yaml-cpp:=
 	dev-db/sqlite:3
 	dev-games/recastnavigation:=
