@@ -123,17 +123,6 @@ src_prepare() {
 		-e 's:@bfdincludedir@:@includedir@:g' \
 		{bfd,opcodes}/Makefile.in || die
 
-	# Fix locale issues if possible, bug #122216
-	if [[ -e ${FILESDIR}/binutils-configure-LANG.patch ]] ; then
-		einfo "Fixing misc issues in configure files"
-		for f in $(find "${S}" -name configure -exec grep -l 'autoconf version 2.13' {} +) ; do
-			ebegin "  Updating ${f/${S}\/}"
-			patch "${f}" "${FILESDIR}"/binutils-configure-LANG.patch >& "${T}"/configure-patch.log \
-				|| eerror "Please file a bug about this"
-			eend $?
-		done
-	fi
-
 	# Apply things from PATCHES and user dirs
 	default
 
