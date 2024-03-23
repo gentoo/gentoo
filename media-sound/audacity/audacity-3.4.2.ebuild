@@ -128,6 +128,9 @@ PATCHES=(
 
 	# #920363
 	"${FILESDIR}/audacity-3.4.2-audiocom-std-string.patch"
+
+	# Fix build with USE="-lv2"
+	"${FILESDIR}/audacity-3.4.2-fix-build-with-use-lv2-off.patch"
 )
 
 src_prepare() {
