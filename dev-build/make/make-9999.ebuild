@@ -31,7 +31,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 "
 BDEPEND="
-	doc? ( sys-apps/texinfo )
+	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-make )
 	test? ( dev-lang/perl )
