@@ -6,11 +6,11 @@ EAPI=8
 inherit bash-completion-r1 vala
 
 DESCRIPTION="A configuration management system for Xfce"
-SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 HOMEPAGE="
 	https://docs.xfce.org/xfce/xfconf/start
 	https://gitlab.xfce.org/xfce/xfconf/
 "
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0/3"
