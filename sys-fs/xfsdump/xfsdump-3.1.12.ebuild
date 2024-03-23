@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="XFS dump/restore utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/ https://git.kernel.org/pub/scm/fs/xfs/xfsdump-dev.git/"
@@ -57,6 +57,9 @@ src_prepare() {
 src_configure() {
 	# bug #184564
 	unset PLATFORM
+
+	# bug 925234
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
 	export OPTIMIZER="${CFLAGS}"
 	export DEBUG=-DNDEBUG

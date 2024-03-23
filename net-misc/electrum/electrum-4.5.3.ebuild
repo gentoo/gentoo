@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cli ncurses qrcode +qt5"
 REQUIRED_USE="|| ( cli ncurses qt5 )"
 
@@ -29,7 +29,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	<dev-libs/libsecp256k1-0.4
 	>=dev-python/aiohttp-socks-0.8.4[${PYTHON_USEDEP}]
-	=dev-python/aiorpcX-0.22*[${PYTHON_USEDEP}]
+	=dev-python/aiorpcx-0.22*[${PYTHON_USEDEP}]
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
 	dev-python/bitstring[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
@@ -57,6 +57,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# test for qml/PyQt6 GUI that doesn't work anyway
+	tests/test_qml_types.py
+)
 
 src_prepare() {
 	# use backwards-compatible cryptodome API

@@ -35,7 +35,7 @@ src_prepare() {
 		-e "/rocm_install_symlink_subdir(rocthrust)/d" \
 		-e "/<INSTALL_INTERFACE/s:rocthrust/include/:include/:" -i thrust/CMakeLists.txt || die
 
-	sed -e "s:\${CMAKE_INSTALL_INCLUDEDIR}:&/rocthrust:" \
+	sed -e "s:\${CMAKE_INSTALL_INCLUDEDIR}:&/thrust:" \
 		-e "s:\${ROCM_INSTALL_LIBDIR}:\${CMAKE_INSTALL_LIBDIR}:" -i cmake/ROCMExportTargetsHeaderOnly.cmake || die
 
 	# disable downloading googletest and googlebenchmark

@@ -1,4 +1,4 @@
-if [[ "${EBUILD_PHASE}" == "setup" ]] ; then
+if [[ "${EBUILD_PHASE}" == "setup" ]] && [[ -e "${EROOT%/}/bin" ]] ; then
 	if [[ ! -h "${EROOT%/}/bin" ]] && [[ "${PROFILE_23_USRTYPE}" != "split-usr" ]] ; then
 		eerror ""
 		eerror "Your profile is of type merged-usr, but your directories"

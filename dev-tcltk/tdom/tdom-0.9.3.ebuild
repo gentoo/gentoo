@@ -13,7 +13,7 @@ SRC_URI="http://tdom.org/downloads/${P}-src.tgz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="threads"
 
 DEPEND="
@@ -29,7 +29,8 @@ PATCHES=(
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	stat64 arc4random_buf arc4random # used to test for Large File Support
+	opendir64 rewinddir64 closedir64 stat64 # used to test for Large File Support
+	arc4random_buf arc4random # used for BSD
 )
 
 src_prepare() {

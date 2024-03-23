@@ -4,7 +4,3 @@
 # Ionen Wolkens <ionen@gentoo.org> (2024-02-28)
 # 23.0 profiles have USE="-cli" overriding ebuild's IUSE="+cli" (bug #925520)
 media-video/mpv cli
-
-# temporarily here, until one round of stage rebuilds is done and we can
-# default-enable it globally again
-sys-devel/gcc openmp

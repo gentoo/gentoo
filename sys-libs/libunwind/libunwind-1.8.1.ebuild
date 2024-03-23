@@ -13,7 +13,7 @@ LIBUNWIND_DOCS_VERSION=1.8.0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 LIBUNWIND_DOCS_USEFLAG="+doc"
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -82,6 +82,8 @@ src_prepare() {
 
 	if [[ ${PV} == 9999 ]] ; then
 		eautoreconf
+	else
+		elibtoolize
 	fi
 }
 

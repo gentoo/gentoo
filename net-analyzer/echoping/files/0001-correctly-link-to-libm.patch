@@ -1,0 +1,32 @@
+From a951dcd0ea6cc64afbba2a438aead17706562486 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 4 Mar 2024 22:43:43 -0500
+Subject: [PATCH] correctly link to libm
+
+The program depends on math.h symbols via util.c, but blindly assumes
+that it will be available without explicitly linking to it -- a POSIX
+violation.
+
+Also an LTO violation.
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index a586281..3f96637 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,7 +6,7 @@ bin_PROGRAMS = echoping
+ man_MANS = echoping.1
+ echoping_SOURCES = echoping.c error.c readline.c writen.c util.c http.c icp.c HTParse.c echoping.h icp.h HTParse.h smtp.c
+ pkginclude_HEADERS = echoping.h compilation.h
+-echoping_LDADD = 
++echoping_LDADD = -lm
+ echoping_LDFLAGS = -export-dynamic
+ DOCS=DETAILS PLUGINS
+ SUBDIRS=plugins
+-- 
+2.43.0
+

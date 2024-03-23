@@ -512,8 +512,12 @@ setup_flags() {
 	# should not be a problem, but for glibc it matters as it is
 	# dealing with CET in ld.so. So if CET is supposed to be
 	# disabled for glibc, be explicit about it.
-	if (use amd64 || use x86) && ! use cet; then
-		append-flags '-fcf-protection=none'
+	if ! use cet; then
+		if use amd64 || use x86; then
+			append-flags '-fcf-protection=none'
+		elif use arm64; then
+			append-flags '-mbranch-protection=none'
+		fi
 	fi
 }
 

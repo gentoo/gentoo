@@ -23,7 +23,6 @@ SLOT="1"
 
 DEPEND="
 	media-libs/jg:1=
-	media-libs/soxr
 "
 RDEPEND="
 	${DEPEND}

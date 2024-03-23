@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv"
+		KEYWORDS="amd64 arm64 ~riscv"
 	fi
 fi
 

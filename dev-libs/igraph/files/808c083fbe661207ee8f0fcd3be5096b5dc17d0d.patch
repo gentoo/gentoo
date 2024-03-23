@@ -1,0 +1,35 @@
+From 808c083fbe661207ee8f0fcd3be5096b5dc17d0d Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Tue, 5 Mar 2024 14:54:46 +0100
+Subject: [PATCH] Fix `-Wstrict-aliasing`
+
+* Casting a `uint64_t*` to `double*` invokes undefined behavior, since
+  it violates the strict aliasing rules of ISO C. Instead of casting
+  pointers, let's read through a union which is supported by C and
+  yields the same performant assembly code.
+
+Closes: https://bugs.gentoo.org/924864
+---
+ src/random/random.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/random/random.c b/src/random/random.c
+index 8f2d0898aa..b5b44451ae 100644
+--- a/src/random/random.c
++++ b/src/random/random.c
+@@ -681,8 +681,13 @@ igraph_real_t igraph_rng_get_unif01(igraph_rng_t *rng) {
+          * Then we subtract 1 to arrive at the [0; 1) interval. This is fast
+          * but we lose one bit of precision as there are 2^53 possible doubles
+          * between 0 and 1. */
+-        uint64_t r = (igraph_i_rng_get_random_bits_uint64(rng, 52) & 0xFFFFFFFFFFFFFull) | 0x3FF0000000000000ull;
+-        return *(double *)(&r) - 1.0;
++        union {
++            uint64_t as_uint64_t;
++            double as_double;
++        } value;
++        value.as_uint64_t =
++            (igraph_i_rng_get_random_bits_uint64(rng, 52) & 0xFFFFFFFFFFFFFull) | 0x3FF0000000000000ull;
++        return value.as_double - 1.0;
+     }
+ }
+ 

@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 distutils-r1 systemd tmpfiles
 
@@ -16,20 +16,32 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/fail2ban/fail2ban/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux systemd"
+IUSE="selinux systemd test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/pyasyncore[${PYTHON_USEDEP}]
+		dev-python/pyasynchat[${PYTHON_USEDEP}]
+	' 3.12)
 	virtual/logger
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
 	systemd? (
 		$(python_gen_cond_dep '
 			dev-python/python-systemd[${PYTHON_USEDEP}]
+		')
+	)
+"
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/aiosmtpd[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -51,6 +63,7 @@ python_prepare_all() {
 
 python_test() {
 	# Skip testRepairDb for bug #907348 (didn't always fail..)
+	# https://github.com/fail2ban/fail2ban/issues/3586
 	bin/fail2ban-testcases \
 		--no-network \
 		--ignore databasetestcase.DatabaseTest.testRepairDb \

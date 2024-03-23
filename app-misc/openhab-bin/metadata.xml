@@ -5,6 +5,7 @@
 		<name>Florian Schmaus</name>
 		<email>flow@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">openhab/openhab-core</remote-id>
 	</upstream>

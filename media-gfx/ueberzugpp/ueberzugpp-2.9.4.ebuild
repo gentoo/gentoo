@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="X opencv opengl wayland xcb-errors"
 REQUIRED_USE="xcb-errors? ( X )"
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">AdaCore/lal-refactor</remote-id>
+	</upstream>
+</pkgmetadata>

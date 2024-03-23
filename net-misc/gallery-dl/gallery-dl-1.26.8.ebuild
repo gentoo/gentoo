@@ -20,19 +20,24 @@ else
 	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-PROPERTIES="test_network"                       # Tests require network access.
-RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/requests-2.11.0[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
+
+src_prepare() {
+	# Tests against real servers, some tests always fail and some are subject to change.
+	rm test/test_results.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_compile_all() {
 	emake PYTHON="${EPYTHON}" data/completion/{,_}gallery-dl man

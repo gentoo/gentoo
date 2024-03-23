@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake llvm.org llvm-utils python-single-r1
+inherit cmake flag-o-matic llvm.org llvm-utils python-single-r1
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
@@ -53,6 +53,9 @@ llvm.org_set_globals
 
 src_configure() {
 	llvm_prepend_path "${LLVM_MAJOR}"
+
+	# bug #858389 (https://github.com/llvm/llvm-project/issues/83636)
+	filter-lto
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"

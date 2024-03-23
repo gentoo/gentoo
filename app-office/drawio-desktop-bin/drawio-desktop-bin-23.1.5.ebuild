@@ -24,7 +24,7 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 # These are the licenses used by node_modules packages, drawio and drawio-desktop repositories
 LICENSE="

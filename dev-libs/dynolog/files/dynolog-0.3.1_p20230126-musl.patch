@@ -23,3 +23,18 @@ index 0728cdc..844076d 100644
  std::unordered_map<std::string, std::string> getMetadataForPid(
      pid_t pid,
      const std::unordered_map<std::string, std::string>& keysMap);
+--- a/hbt/src/perf_event/BPerfEventsGroup.cpp
++++ b/hbt/src/perf_event/BPerfEventsGroup.cpp
+@@ -76,10 +76,10 @@
+   cpu_cnt_ = ::libbpf_num_possible_cpus();
+ }
+ 
+-inline auto mapFdWrapperPtrIntoInode(
++inline ino_t mapFdWrapperPtrIntoInode(
+     const std::shared_ptr<FdWrapper>& fd_wrapper) {
+   if (fd_wrapper == nullptr) {
+-    return 0ull;
++    return (ino_t)0;
+   }
+   return fd_wrapper->getInode();
+ }

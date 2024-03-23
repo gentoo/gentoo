@@ -15,7 +15,7 @@ SRC_URI="
 	https://raw.githubusercontent.com/openhab/openhab-linuxpkg/10061acd36524afb12a033fea6dcf142b399bf56/resources/usr/bin/openhab-cli
 		 -> openhab-cli-2024-01-14
 "
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 LICENSE="EPL-2.0"
 SLOT="0"

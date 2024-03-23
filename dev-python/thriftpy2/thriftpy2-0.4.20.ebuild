@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 flag-o-matic pypi
 
 DESCRIPTION="Pure python approach of Apache Thrift"
 HOMEPAGE="
@@ -32,6 +32,18 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_compile() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/857105
+	# https://github.com/Thriftpy/thriftpy2/issues/246
+	#
+	# Don't trust this to LTO
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	distutils-r1_src_compile
+}
 
 python_test() {
 	local EPYTEST_DESELECT=(

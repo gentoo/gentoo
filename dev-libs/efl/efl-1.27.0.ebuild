@@ -28,6 +28,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 	?? ( fbcon tslib )
 	drm? ( wayland )
 	examples? ( eet svg )
+	gstreamer? ( sound )
 	ibus? ( glib )
 	opengl? ( X )
 	pulseaudio? ( sound )

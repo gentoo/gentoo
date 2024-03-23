@@ -19,23 +19,6 @@ games-emulation/pcsx2 clang
 # Reverse dependencies are not ready for media-libs/mesa to not provide OpenGL.
 media-libs/mesa opengl
 
-# Michael Orlitzky <mjo@gentoo.org> (2023-11-22)
-# USE=-gui is broken in this and the subsequent version (bug
-# 916718). Package is a PITA: the maintainer is combative, and the
-# issue tracker is a French-language forum that never sends me
-# confirmation emails when I try to sign up.
-=sci-mathematics/giac-1.9.0.67 gui
-
-# Michael Orlitzky <mjo@gentoo.org> (2023-12-04)
-# This was originally forced because gstreamer-less builds are untested
-# upstream and are often broken (e.g. bugs 911663 and 914362). But from
-# the user's perspective, having it forced is worse than having it fail
-# to build; if it fails, you can always set USE=gstreamer for one
-# version, i.e. at least you have a choice. The two latest 2.42.x
-# ebuilds in the tree both build fine with gstreamer disabled, so it is
-# at least safe to re-enable for those. Older ebuilds, who knows.
-<net-libs/webkit-gtk-2.42 gstreamer
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on
@@ -60,12 +43,6 @@ media-video/mpv lua_single_target_luajit
 # Doesn't build with boost installed on the system, some deps require boost
 # so force the flag on until problem fixed upstream
 >=sys-cluster/ceph-17.2.1 system-boost
-
-# Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
-# Use the jemalloc allocator for telegram, as recommended by upstream,
-# to reduce memory usage, at least on glibc.
-# See the ebuild for more info.
-net-im/telegram-desktop jemalloc
 
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Always build with PIE-default, just like GCC.

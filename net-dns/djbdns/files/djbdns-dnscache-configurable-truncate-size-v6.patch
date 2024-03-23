@@ -53,6 +53,14 @@ Only in djbdns-1.05/: .dnscache.c.swp
 diff -bru djbdns-1.05.o/server.c djbdns-1.05/server.c
 --- djbdns-1.05.o/server.c	2023-10-20 00:34:15.778688116 +0200
 +++ djbdns-1.05/server.c	2023-10-20 00:43:31.519954643 +0200
+@@ -2,6 +2,7 @@
+ #include "case.h"
+ #include "env.h"
+ #include "buffer.h"
++#include "scan.h"
+ #include "strerr.h"
+ #include "ip4.h"
+ #include "uint16.h"
 @@ -94,6 +94,7 @@
    int *udp53;
    unsigned int off;

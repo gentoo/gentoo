@@ -38,10 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	test? (
-		>=dev-qt/qtmultimedia-${QTMIN}:6[gstreamer,qml]
-		media-libs/gst-plugins-base:1.0[ogg,vorbis]
-		media-libs/gst-plugins-bad:1.0
-		media-libs/gst-plugins-good:1.0
+		>=dev-qt/qtmultimedia-${QTMIN}:6[qml]
 		x11-themes/sound-theme-freedesktop
 	)
 "

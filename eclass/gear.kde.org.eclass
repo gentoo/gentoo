@@ -94,6 +94,7 @@ if $(ver_test -gt 24.01.75); then
 		dragon | \
 		elisa | \
 		eventviews | \
+		ffmpegthumbs | \
 		filelight | \
 		granatier | \
 		grantlee-editor | \

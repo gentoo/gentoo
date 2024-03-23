@@ -16,7 +16,7 @@ DESCRIPTION="Perl client for memcached, in C language"
 # Bug: https://bugs.gentoo.org/718946#c4
 LICENSE="|| ( Artistic GPL-1+ ) LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=virtual/perl-Carp-1.250.0

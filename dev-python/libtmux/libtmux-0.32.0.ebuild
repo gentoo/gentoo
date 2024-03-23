@@ -53,5 +53,10 @@ python_test() {
 	local -a EPYTEST_DESELECT=(
 		libtmux/pane.py::libtmux.pane.Pane.send_keys
 	)
-	epytest
+	# tests/test_window.py::test_fresh_window_data fails if TMUX_PANE is set
+	# https://bugs.gentoo.org/927158
+	local -x TMUX_PANE=
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=libtmux.pytest_plugin
+	epytest -p pytest_mock -p rerunfailures
 }

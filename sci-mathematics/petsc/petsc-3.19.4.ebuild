@@ -42,7 +42,6 @@ DEPEND="
 "
 BDEPEND="
 	dev-build/cmake
-	sys-apps/which
 	virtual/pkgconfig
 "
 
@@ -93,6 +92,11 @@ petsc_select() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863260
+	# https://gitlab.com/petsc/petsc/-/issues/1560
+	filter-lto
+
 	# bug 548498
 	# PETSc runs mpi processes during configure that result in a sandbox
 	# violation by trying to open /proc/mtrr rw. This is not easy to

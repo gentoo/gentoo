@@ -8,7 +8,7 @@ HOMEPAGE="https://edu.kde.org"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+webengine"
 
 RDEPEND="

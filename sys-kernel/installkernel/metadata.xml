@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="dracut">Generate an initrd or UKI on each kernel installation</flag>
+		<flag name="efistub">EXPERIMENTAL: Update UEFI configuration on each kernel installation</flag>
 		<flag name="grub">Re-generate grub.cfg on each kernel installation, used grub.cfg is overridable with GRUB_CFG env var</flag>
 		<flag name="refind">Install a Gentoo icon for rEFInd alongside the (unified) kernel image, used icon is overridable with REFIND_ICON env var</flag>
 		<flag name="systemd">Use systemd's kernel-install to install kernels, overridable with SYSTEMD_KERNEL_INSTALL env var</flag>

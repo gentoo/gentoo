@@ -22,6 +22,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
+RESTRICT="test"         # w/o lexical-binding needed by buttercup >=1.34, should be fixed in git.
 
 DOCS=( AUTHORS.md CONTRIBUTING.md NEWS.md README.md )
 ELISP_REMOVE="${PN}-pkg.el"

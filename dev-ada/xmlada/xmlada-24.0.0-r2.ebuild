@@ -72,6 +72,14 @@ src_test() {
 		-cargs ${ADAFLAGS} || die "gprbuild failed"
 	emake --no-print-directory -C tests tests | tee xmlada.testLog
 	grep -q DIFF xmlada.testLog && die
+	rm docs/*/b__* || die
+	rm docs/*/*ali || die
+	rm docs/*/*std* || die
+	rm docs/*/*bexch || die
+	rm docs/*/*.o || die
+	rm docs/*/*example || die
+	rm docs/dom/domexample2 || die
+	rm docs/sax/saxexample_main || die
 }
 
 src_install() {

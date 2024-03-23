@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module to access CAN, ModBus, and other industrial serial buses and protocols"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 RDEPEND="
@@ -16,6 +16,11 @@ RDEPEND="
 	~dev-qt/qtserialport-${PV}:6
 "
 DEPEND="${RDEPEND}"
+
+CMAKE_SKIP_TESTS=(
+	# rarely fails randomly (perhaps related to -j)
+	tst_qcandbcfileparser
+)
 
 src_install() {
 	qt6-build_src_install

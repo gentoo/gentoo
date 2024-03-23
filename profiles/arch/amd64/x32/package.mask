@@ -33,6 +33,7 @@ sci-geosciences/viking
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
+dev-python/jupyter-server-proxy
 sci-misc/jupyterlab-desktop-bin
 dev-python/plotly
 dev-python/plotly-geo

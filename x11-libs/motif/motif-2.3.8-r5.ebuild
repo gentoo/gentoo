@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,6 +68,13 @@ src_prepare() {
 
 	# remember the name of the C compiler for the native ABI
 	MY_NATIVE_CC=$(tc-getCC)
+
+	# -Werror=lto-type-mismatch
+	#
+	# Helpfully, the motif bugtracker is entirely down. They are also
+	# on sourceforge but only for merge requests? The project is a
+	# fascinating kind of ghostly haunting. Punting on reporting... for now.
+	filter-lto
 }
 
 multilib_src_configure() {

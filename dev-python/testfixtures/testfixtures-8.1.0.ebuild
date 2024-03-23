@@ -14,8 +14,8 @@ HOMEPAGE="
 	https://github.com/Simplistix/testfixtures/
 "
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
@@ -25,6 +25,7 @@ BDEPEND="
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		>=dev-python/sybil-6[${PYTHON_USEDEP}]
 		>=dev-python/twisted-18[${PYTHON_USEDEP}]
+		sys-libs/timezone-data
 	)
 "
 

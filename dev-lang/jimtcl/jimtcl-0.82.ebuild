@@ -5,14 +5,13 @@ EAPI=8
 
 inherit toolchain-funcs edo
 
-SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~x86"
-
 DESCRIPTION="Small footprint implementation of Tcl programming language"
-HOMEPAGE="http://jim.tcl.tk/"
+HOMEPAGE="https://jim.tcl.tk/"
+SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~x86"
 IUSE="doc static-libs"
 
 DEPEND="

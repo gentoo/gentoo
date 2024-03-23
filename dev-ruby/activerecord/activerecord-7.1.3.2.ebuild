@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 # this is not null so that the dependencies will actually be filled
 RUBY_FAKEGEM_TASK_TEST="test"
@@ -43,7 +43,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/sqlite3-1.4.0
 		dev-ruby/mocha
-		<dev-ruby/minitest-5.16:*
+		dev-ruby/minitest:5
 	)"
 
 DEPEND+=" test? ( >=dev-db/sqlite-3.12.1 )"

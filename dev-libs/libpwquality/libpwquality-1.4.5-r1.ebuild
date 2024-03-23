@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit pam python-r1
+inherit libtool pam python-r1
 
 DESCRIPTION="Library for password quality checking and generating random passwords"
 HOMEPAGE="https://github.com/libpwquality/libpwquality"
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
+	elibtoolize
 
 	if use python ; then
 		# bug #830397

@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/13" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
@@ -39,11 +39,11 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.46[introspection?]
 	>=x11-libs/cairo-1.14[X]
+	>=x11-libs/pixman-0.42
 	>=dev-libs/fribidi-1.0.0
 	>=gnome-base/gsettings-desktop-schemas-42.0[introspection?]
 	>=dev-libs/glib-2.75.1:2
 	gnome-base/gnome-settings-daemon
-	>=dev-libs/json-glib-0.12.0[introspection?]
 	>=x11-libs/libxkbcommon-0.4.3
 	x11-libs/libICE
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
@@ -52,6 +52,7 @@ DEPEND="
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
 	>=dev-libs/libei-1.0.901
+	media-libs/libdisplay-info
 
 	gnome? ( gnome-base/gnome-desktop:4= )
 
@@ -60,10 +61,10 @@ DEPEND="
 	media-libs/libglvnd[X]
 
 	wayland? (
-		>=dev-libs/wayland-protocols-1.32
-		>=dev-libs/wayland-1.21.0
+		>=dev-libs/wayland-protocols-1.33
+		>=dev-libs/wayland-1.22
 
-		x11-libs/libdrm
+		>=x11-libs/libdrm-2.4.95
 		media-libs/mesa[gbm(+)]
 		>=dev-libs/libinput-1.19.0:=
 
@@ -81,7 +82,6 @@ DEPEND="
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-0.3.33:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	test? ( >=x11-libs/gtk+-3.19.8:3[X,introspection?] )
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 "
 # for now upstream has "have_x11 = true" in the meson.build, but sooner or later upstream is going to make X optional.
@@ -108,13 +108,15 @@ DEPEND+="
 #	)"
 
 RDEPEND="${DEPEND}
-	gnome-extra/zenity
-
 	!<gui-libs/gtk-4.6.4:4
 "
 DEPEND="${DEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
+	test? (
+		>=x11-libs/gtk+-3.19.8:3[X,introspection?,wayland]
+		gnome-extra/zenity
+	)
 "
 BDEPEND="
 	dev-util/wayland-scanner
@@ -192,6 +194,7 @@ src_configure() {
 		-Dtty_tests=false
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
+		-Dlibdisplay_info=enabled
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path

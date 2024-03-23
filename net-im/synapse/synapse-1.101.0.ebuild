@@ -86,7 +86,7 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="postgres systemd test"
 RESTRICT="!test? ( test )"
 
@@ -139,6 +139,11 @@ BDEPEND="
 		postgres? ( dev-db/postgresql[server] )
 	)
 "
+
+PATCHES=(
+	# fix tests with >=dev-python/netaddr-1.0.0
+	"${FILESDIR}/${P}-netaddr-tests.patch"
+)
 
 # Rust extension
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/synapse/synapse_rust.abi3.so"

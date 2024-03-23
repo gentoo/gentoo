@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>fordfrog@gentoo.org</email>
-		<name>Miroslav Šulc</name>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>alexander@tsoy.me</email>

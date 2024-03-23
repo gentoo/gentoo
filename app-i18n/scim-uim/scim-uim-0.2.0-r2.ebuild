@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit autotools
 
 DESCRIPTION="An input module for Smart Common Input Method (SCIM) which uses uim as backend"
 HOMEPAGE="http://www.scim-im.org/"
@@ -22,6 +24,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc43.patch
 	"${FILESDIR}"/${P}-uim-1.5.patch
 )
+
+src_prepare() {
+	default
+	# update the 2007 era configure / libtool scripts, which fail with LTO
+	eautoreconf
+}
 
 src_configure() {
 	econf --disable-static
