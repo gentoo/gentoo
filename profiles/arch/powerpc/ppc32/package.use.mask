@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-03-23)
+# sys-libs/libomp does not support ppc32 (bug #907213).
+sys-devel/clang-runtime openmp
+
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
 # Fails tests, potential false negatives #911402
 app-antivirus/clamav system-mspack
