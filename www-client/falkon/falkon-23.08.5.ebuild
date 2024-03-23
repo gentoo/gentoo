@@ -14,7 +14,7 @@ HOMEPAGE="https://www.falkon.org/ https://apps.kde.org/falkon/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE="dbus kde python +X"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
