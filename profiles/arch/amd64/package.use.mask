@@ -29,6 +29,7 @@ media-libs/libplacebo -libdovi
 # Only works on amd64 (and x32).
 dev-debug/gdb -cet
 sys-devel/binutils -cet
+sys-devel/clang-common -cet
 sys-devel/gcc -cet
 sys-libs/binutils-libs -cet
 sys-libs/glibc -cet

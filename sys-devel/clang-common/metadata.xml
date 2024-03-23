@@ -9,6 +9,16 @@
 	</upstream>
 	<use>
 		<flag name="bootstrap-prefix">!!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for bootstrapping Gentoo Prefix</flag>
+		<flag name="cet">
+			Enable support for control flow hijacking protection.
+
+			On amd64, this provides Intel Control Flow Enforcement Technology (CET).
+
+			Only provides benefits on newer CPUs. For Intel, the CPU
+			must be at least as new as Tiger Lake. For AMD, it must be
+			at least as new as Zen 3. This is harmless on older CPUs,
+			but provides no benefit either.
+		</flag>
 		<flag name="default-compiler-rt">Use compiler-rt + libunwind instead of libgcc as the default rtlib for clang</flag>
 		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
 		<flag name="default-lld">Use lld as the default linker for clang</flag>

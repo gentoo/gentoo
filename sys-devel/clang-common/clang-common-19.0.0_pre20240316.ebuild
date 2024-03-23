@@ -12,7 +12,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
-	bootstrap-prefix hardened llvm-libunwind
+	bootstrap-prefix cet hardened llvm-libunwind
 "
 
 PDEPEND="
@@ -174,6 +174,12 @@ src_install() {
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
+	if use amd64; then
+		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
+			-fcf-protection=$(usex cet full none)
+		EOF
+	fi
+
 	if use kernel_Darwin; then
 		newins - gentoo-hardened-ld.cfg <<-EOF
 			# There was -Wl,-z,relro here, but it's not supported on Mac
@@ -184,6 +190,7 @@ src_install() {
 			# Some of these options are added unconditionally, regardless of
 			# USE=hardened, for parity with sys-devel/gcc.
 			-Wl,-z,relro
+			-Wl,-z,now
 		EOF
 	fi
 
@@ -243,7 +250,6 @@ src_install() {
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
-			-Wl,-z,now
 		EOF
 	fi
 
