@@ -160,10 +160,6 @@ net-vpn/openconnect test
 dev-python/QtPy pyside2
 dev-python/qtconsole test
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
-# dev-qt/qtwebengine:5 isn't available on loong.
-dev-python/QtPy webengine
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # <dev-cpp/tbb-2021 fails to build on loong w/ gcc-13
 sci-libs/spqr tbb
