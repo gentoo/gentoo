@@ -56,14 +56,14 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	append-ldflags "-Wl,-soname,lib${QUIRC}.so.${LIB_VERSION}"
+	append-ldflags "-Wl,-soname,libquirc.so.${LIB_VERSION}"
 	emake V=1 DESTDIR="${D}" PREFIX="${EPREFIX}/usr" "${targets[@]}"
 }
 
 multilib_src_install() {
 	dolib.so "libquirc.so.${LIB_VERSION}"
 	dosym "libquirc.so.${LIB_VERSION}" "${EPREFIX}/usr/$(get_libdir)/libquirc.so"
-	dosym "libquirc.so.${LIB_VERSION}" "${EPREFIX}/usr/$(get_libdir)/libquirc.so.$(ver_cut 1 LIB_VERSION)"
+	dosym "libquirc.so.${LIB_VERSION}" "${EPREFIX}/usr/$(get_libdir)/libquirc.so.$(ver_cut 1 "${LIB_VERSION}")"
 
 	if multilib_is_native_abi; then
 		into "/usr/libexec/${PN}"
