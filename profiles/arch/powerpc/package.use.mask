@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
+# Requires unkeyworded dev-qt/qtwebengine (and revdeps)
+kde-apps/kleopatra pim
+net-p2p/ktorrent rss
+
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
 # mongodb dependencies are not keyworded
 mail-mta/postfix mongodb
