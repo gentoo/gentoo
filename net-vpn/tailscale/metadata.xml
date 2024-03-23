@@ -9,4 +9,7 @@
 		<name>Patrick McLean</name>
 		<email>chutzpah@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">tailscale/tailscale</remote-id>
+	</upstream>
 </pkgmetadata>

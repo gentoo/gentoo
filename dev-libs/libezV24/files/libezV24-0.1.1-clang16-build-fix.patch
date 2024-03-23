@@ -1,0 +1,21 @@
+Bug: https://bugs.gentoo.org/895044
+--- a/ezV24.c
++++ b/ezV24.c
+@@ -42,6 +42,7 @@
+ #include <errno.h>
+ #include <termios.h>
+ #include <sys/ioctl.h>
++#include <sys/param.h>
+ 
+ 
+ #define __EZV24_C__
+--- a/snprintf.c
++++ b/snprintf.c
+@@ -61,6 +61,7 @@
+ 
+ /* From: Id: sprint.c,v 1.5 1995/09/10 18:35:09 chuck Exp */
+ 
++#define _GNU_SOURCE
+ #include <ctype.h>
+ #include <stdlib.h>
+ #include <stdarg.h>

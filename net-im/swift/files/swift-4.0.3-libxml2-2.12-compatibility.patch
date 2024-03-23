@@ -1,0 +1,11 @@
+--- a/Swiften/Parser/LibXMLParser.cpp
++++ b/Swiften/Parser/LibXMLParser.cpp
+@@ -97,7 +97,7 @@
+     if (xmlParseChunk(p->context_, data.c_str(), boost::numeric_cast<int>(data.size()), false) == XML_ERR_OK) {
+         return true;
+     }
+-    xmlError* error = xmlCtxtGetLastError(p->context_);
++    const xmlError* error = xmlCtxtGetLastError(p->context_);
+     if (error->code == XML_WAR_NS_URI || error->code == XML_WAR_NS_URI_RELATIVE) {
+         xmlCtxtResetLastError(p->context_);
+         p->context_->errNo = XML_ERR_OK;

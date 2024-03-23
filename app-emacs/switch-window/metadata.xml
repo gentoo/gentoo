@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/dimitri/switch-window/issues/</bugs-to>
     <remote-id type="github">dimitri/switch-window</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

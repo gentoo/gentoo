@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	media-gfx/graphviz
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		dev-qt/qthelp:5
 	)
 "

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1
 
@@ -15,16 +15,14 @@ S="${WORKDIR}/${PN}-${P}"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
-IUSE="python test"
-RESTRICT="!test? ( test )"
+IUSE="python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="dev-libs/libbsd
 	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
-BDEPEND="python? ( dev-python/cython[${PYTHON_USEDEP}] )
-	test? ( dev-libs/check )"
+BDEPEND="python? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 DOCS=( README.md THANKS )
 
@@ -55,7 +53,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with python) \
-		$(use_enable test check)
+		--without-check
 }
 
 src_compile() {

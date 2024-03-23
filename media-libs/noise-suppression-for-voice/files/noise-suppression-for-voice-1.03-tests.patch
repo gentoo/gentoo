@@ -1,0 +1,28 @@
+From bf7a468427048f91b0759b9f5eb320cf61ca3ea9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Sat, 17 Feb 2024 15:25:53 +0100
+Subject: [PATCH] Get rid of -fsanitize=undefined for tests
+
+Upstream PR: https://github.com/werman/noise-suppression-for-voice/pull/189
+
+---
+ src/common/CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/common/CMakeLists.txt b/src/common/CMakeLists.txt
+index 4c2300e..273d76e 100644
+--- a/src/common/CMakeLists.txt
++++ b/src/common/CMakeLists.txt
+@@ -33,8 +33,6 @@ if (BUILD_TESTS)
+             $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/external/catch2>
+             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+     target_link_libraries(common_plugin_tests PRIVATE ${LIBRARIES})
+-    target_compile_options(common_plugin_tests PRIVATE -fsanitize=undefined)
+-    target_link_options(common_plugin_tests PRIVATE -fsanitize=undefined)
+ 
+     include(CTest)
+     include(Catch)
+-- 
+2.43.0
+

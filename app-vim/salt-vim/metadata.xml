@@ -10,7 +10,7 @@
 		<name>Gentoo Vim Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">saltstack/salt-vim</remote-id>
+		<remote-id type="github">vmware-archive/salt-vim</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

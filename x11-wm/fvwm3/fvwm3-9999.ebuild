@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/fvwmorg/fvwm3.git"
 	EGIT_BRANCH="main"
+	FVWM3_DOCS_PREBUILT=0
 else
 	SRC_URI="https://github.com/fvwmorg/fvwm3/releases/download/${PV}/${P}.tar.gz"
 	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]]; then
@@ -68,7 +69,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libevent:=
 	media-libs/fontconfig
 	media-libs/libpng:=
-	sys-apps/debianutils
 	sys-libs/zlib
 	x11-libs/libICE
 	x11-libs/libSM

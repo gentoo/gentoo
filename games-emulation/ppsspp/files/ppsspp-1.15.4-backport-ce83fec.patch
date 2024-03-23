@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/915888
+https://github.com/hrydgard/ppsspp/commit/ce83fec20651222131ef9b88ba2dfb0554b66608
+
+From ce83fec20651222131ef9b88ba2dfb0554b66608 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Henrik=20Rydg=C3=A5rd?= <hrydgard@gmail.com>
+Date: Sun, 29 Oct 2023 23:39:25 -0600
+Subject: [PATCH] Linux buildfix attempt
+
+---
+ unittest/TestThreadManager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/unittest/TestThreadManager.cpp b/unittest/TestThreadManager.cpp
+index f6a11f2fa363..10a8b581b768 100644
+--- a/unittest/TestThreadManager.cpp
++++ b/unittest/TestThreadManager.cpp
+@@ -1,5 +1,6 @@
+ #include <thread>
+ #include <vector>
++#include <cstdio>
+ 
+ #include "Common/Log.h"
+ #include "Common/TimeUtil.h"

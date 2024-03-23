@@ -14,7 +14,7 @@ command_args="agent --pidfile ${pidfile} --confdir /etc/puppetlabs/puppet ${PUPP
 
 depend() {
 	need localmount
-	use dns logger puppetserver netmount nfsmount
+	use dns logger puppetserver netmount
 }
 
 start_pre() {

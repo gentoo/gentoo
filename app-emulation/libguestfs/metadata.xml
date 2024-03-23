@@ -7,7 +7,7 @@
 		<flag name="fuse">Enable image mount support via <pkg>sys-fs/fuse</pkg></flag>
 		<flag name="inspect-icons">Use <pkg>media-gfx/icoutils</pkg> for accessing/inspecting icon file within images</flag>
 		<flag name="libvirt">Use <pkg>app-emulation/libvirt</pkg> to manipulate VMs</flag>
-		<flag name="systemtap">Use <pkg>dev-util/systemtap</pkg> to inspect VM via "probes"</flag>
+		<flag name="systemtap">Use <pkg>dev-debug/systemtap</pkg> to inspect VM via "probes"</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">libguestfs/libguestfs</remote-id>

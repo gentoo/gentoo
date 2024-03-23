@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -92,7 +92,7 @@ src_configure() {
 		-Ddefault-kill-user-processes=false
 		-Dacl=$(usex acl true false)
 		-Daudit=$(usex audit true false)
-		--buildtype $(usex debug debug release)
+		-Dbuildtype=$(usex debug debug release)
 		-Dhtml=$(usex doc auto false)
 		-Dpam=$(usex pam true false)
 		-Dselinux=$(usex selinux true false)

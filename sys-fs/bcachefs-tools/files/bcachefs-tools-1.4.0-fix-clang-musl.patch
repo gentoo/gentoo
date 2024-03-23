@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/921564
+From https://github.com/koverstreet/bcachefs-tools/commit/8e56da27fd23c169395b3b266b15a1c093aba849
+
+diff --git a/libbcachefs.c b/libbcachefs.c
+index 68b750a..ec6b272 100644
+--- a/libbcachefs.c
++++ b/libbcachefs.c
+@@ -445,6 +445,7 @@ struct bchfs_handle bcache_fs_open(const char *path)
+  */
+ struct bchfs_handle bchu_fs_open_by_dev(const char *path, int *idx)
+ {
++	struct bch_opts opts = bch2_opts_empty();
+ 	char buf[1024], *uuid_str;
+
+ 	struct stat stat = xstat(path);
+@@ -469,8 +470,6 @@ struct bchfs_handle bchu_fs_open_by_dev(const char *path, int *idx)
+ 		uuid_str = p + 1;
+ 	} else {
+ read_super:
+-		struct bch_opts opts = bch2_opts_empty();
+-
+ 		opt_set(opts, noexcl,	true);
+ 		opt_set(opts, nochanges, true);
+

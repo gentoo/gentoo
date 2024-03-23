@@ -1,16 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="C/C++ library for manipulating the LAS LiDAR format common in GIS"
 HOMEPAGE="https://github.com/libLAS/libLAS/"
 SRC_URI="https://github.com/libLAS/libLAS/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/libLAS-${PV}"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 IUSE="gdal"
 
@@ -24,8 +25,6 @@ RDEPEND="${DEPEND}"
 
 # tests known to fail due to LD_LIBRARY_PATH issue
 RESTRICT="test"
-
-S="${WORKDIR}/libLAS-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0_remove-std-c++98.patch
@@ -49,6 +48,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Aliasing violations (bug #862585)
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local mycmakeargs=(
 		-DLIBLAS_LIB_SUBDIR=$(get_libdir)
 		-DWITH_GDAL=$(usex gdal)

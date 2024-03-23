@@ -1,6 +1,16 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-07)
+# This doesn't work yet with musl-1.2.4, bug 906603
+sys-libs/compiler-rt-sanitizers msan
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-05)
+# gprofng is still somewhat messed up with musl-1.2.4, does not build
+# let's hope this is fixed with the next release
+# bug 912284
+<sys-devel/binutils-2.43 gprofng
+
 # Sam James <sam@gentoo.org> (2022-10-04)
 # libxcrypt migration isn't yet stable on musl.
 sys-auth/pambase yescrypt

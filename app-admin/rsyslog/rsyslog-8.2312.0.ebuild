@@ -21,7 +21,7 @@ else
 		doc? ( https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -40,7 +40,7 @@ REQUIRED_USE="
 	ssl? ( || ( gnutls openssl ) )
 "
 
-BDEPEND=">=sys-devel/autoconf-archive-2015.02.24
+BDEPEND=">=dev-build/autoconf-archive-2015.02.24
 	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (

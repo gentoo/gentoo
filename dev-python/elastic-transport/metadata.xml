@@ -10,7 +10,9 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
+    <doc>https://elastic-transport-python.readthedocs.io/</doc>
     <remote-id type="github">elastic/elastic-transport-python</remote-id>
     <remote-id type="pypi">elastic-transport</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

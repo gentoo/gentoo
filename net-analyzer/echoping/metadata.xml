@@ -12,7 +12,4 @@
 		<flag name="smtp">enable support for SMTP protocol.</flag>
 		<flag name="tos">enable support for TOS (TYpe Of Service).</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">echoping</remote-id>
-	</upstream>
 </pkgmetadata>

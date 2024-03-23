@@ -1,0 +1,26 @@
+From 479102b941ac4c8c86ce102ec6e5bc9ad59b0d89 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Tue, 23 Jan 2024 22:10:38 +0100
+Subject: [PATCH] native/common/jk_global.h: fix compilation on musl
+
+On musl, sys/socketvar.h does not exist, so we need to make sure,
+not to use it.
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ common/jk_global.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/jk_global.h b/common/jk_global.h
+index adcbd95f1..f4680ef8b 100644
+--- a/common/jk_global.h
++++ b/common/jk_global.h
+@@ -148,7 +148,7 @@ extern char *strdup(const char *str);
+ #include <netinet/tcp.h>
+ #include <arpa/inet.h>
+ #include <sys/un.h>
+-#if !defined(_OSD_POSIX) && !defined(AS400) && !defined(__CYGWIN__) && !defined(HPUX11)
++#if !defined(_OSD_POSIX) && !defined(AS400) && !defined(__CYGWIN__) && !defined(HPUX11) && !defined(PLATFORM_LINUX)
+ #include <sys/socketvar.h>
+ #endif
+ #if !defined(HPUX11) && !defined(AS400)

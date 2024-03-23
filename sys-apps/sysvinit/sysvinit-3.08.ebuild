@@ -21,7 +21,7 @@ S="${WORKDIR}/${P/_*}"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ ${PV} != *beta* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm arm64 hppa ~ia64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 IUSE="selinux ibm nls static"
 
@@ -141,7 +141,7 @@ src_compile() {
 }
 
 src_install() {
-	emake -C src install ROOT="${D}"
+	emake -C src install ROOT="${ED}"
 	dodoc README doc/*
 
 	insinto /etc
@@ -173,7 +173,7 @@ pkg_postinst() {
 	# Reload init to fix unmounting problems of / on next reboot.
 	# This is really needed, as without the new version of init cause init
 	# not to quit properly on reboot, and causes a fsck of / on next reboot.
-	if [[ -z ${ROOT} ]] ; then
+	if [[ -z ${EROOT} ]] ; then
 		if [[ -e /dev/initctl ]] && [[ ! -e /run/initctl ]] ; then
 			ln -s /dev/initctl /run/initctl \
 				|| ewarn "Failed to set /run/initctl symlink!"

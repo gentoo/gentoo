@@ -1,7 +1,9 @@
-# Copyright 2006-2021 Gentoo Authors
+# Copyright 2006-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
+inherit libtool
 
 DESCRIPTION="Library for hangul input method logic, hanja dictionary"
 HOMEPAGE="https://github.com/libhangul/libhangul"
@@ -9,7 +11,7 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="amd64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="nls static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -19,6 +21,11 @@ RDEPEND="virtual/libiconv
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit crossdev flag-o-matic toolchain-funcs
 
 DESCRIPTION="Free Win64 runtime and import library definitions"
 HOMEPAGE="https://www.mingw-w64.org/"
@@ -20,13 +20,7 @@ IUSE="default-ucrt headers-only idl libraries tools"
 RESTRICT="strip" # portage would use the wrong strip executable
 
 pkg_setup() {
-	: "${CBUILD:=${CHOST}}"
-	: "${CTARGET:=${CHOST}}"
-	[[ ${CTARGET} == ${CHOST} && ${CATEGORY} == cross-* ]] &&
-		CTARGET=${CATEGORY#cross-}
-
-	[[ ${CHOST} != ${CTARGET} ]] && MW_CROSS=true || MW_CROSS=false
-
+	target_is_not_host && MW_CROSS=true || MW_CROSS=false
 	[[ ${CBUILD} == ${CHOST} && ${CTARGET} == ${CHOST} ]] &&
 		die "Invalid configuration, please see: https://wiki.gentoo.org/wiki/Mingw"
 }

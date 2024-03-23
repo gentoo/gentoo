@@ -1,0 +1,26 @@
+From 6d20653b924481048fa017dc40cf9d7360f95a13 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 30 Jan 2024 20:44:18 +0200
+Subject: [PATCH] itemfactory: Add support for setting plugin dir in the
+ environment
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/src/item/itemfactory.cpp
++++ b/src/item/itemfactory.cpp
+@@ -31,6 +31,13 @@ namespace {
+ 
+ bool findPluginDir(QDir *pluginsDir)
+ {
++    QString pluginDirEnv = qEnvironmentVariable("COPYQ_PLUGIN_DIR");
++    if ( !pluginDirEnv.isEmpty() ) {
++        pluginsDir->setPath(pluginDirEnv);
++        if ( pluginsDir->isReadable() )
++            return true;
++    }
++
+ #ifdef COPYQ_PLUGIN_PREFIX
+     pluginsDir->setPath(COPYQ_PLUGIN_PREFIX);
+     if ( pluginsDir->isReadable() )
+-- 
+2.43.0
+

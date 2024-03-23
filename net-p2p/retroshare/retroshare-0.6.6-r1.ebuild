@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop qmake-utils xdg
+inherit flag-o-matic desktop qmake-utils xdg
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="https://retroshare.cc"
@@ -49,9 +49,9 @@ DEPEND="${RDEPEND}
 	dev-qt/qtcore:5
 	gui? ( dev-qt/designer:5 )"
 
-BDEPEND="dev-util/cmake
+BDEPEND="dev-build/cmake
 	virtual/pkgconfig
-	jsonapi? ( app-doc/doxygen )"
+	jsonapi? ( app-text/doxygen )"
 
 PATCHES=( "${FILESDIR}/${P}-fix-cxx17-compilation.patch" )
 
@@ -68,6 +68,9 @@ src_configure() {
 	local qupnplibs="none"
 	use miniupnp && qupnplibs="miniupnpc"
 	use libupnp && qupnplibs="upnp ixml"
+
+	# bug 907898
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
 	eqmake5 CONFIG+="${qconfigs[*]}" \
 		RS_MAJOR_VERSION=$(ver_cut 1) RS_MINOR_VERSION=$(ver_cut 2) \

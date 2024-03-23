@@ -12,4 +12,5 @@
     <remote-id type="github">abo-abo/swiper</remote-id>
     <doc lang="en">https://oremacs.com/swiper/</doc>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

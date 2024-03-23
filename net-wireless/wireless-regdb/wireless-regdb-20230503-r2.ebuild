@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,11 +14,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="crda"
-
-#PDEPEND is required here or crda test dep causes circular deps
-PDEPEND="crda? ( net-wireless/crda )"
-
 REQUIRED_USE="kernel_linux"
 
 pkg_pretend() {
@@ -40,12 +35,6 @@ pkg_pretend() {
 				ewarn "You can safely disable CFG80211_CRDA_SUPPORT"
 			fi
 		fi
-
-		if has_version net-wireless/crda || use crda; then
-			ewarn "Starting from kernel version 4.15 net-wireless/crda is no longer needed."
-			ewarn "The crda USE flag will be removed on or after Feb 01, 2024"
-		fi
-
 	else
 		CONFIG_CHECK="~CFG80211_CRDA_SUPPORT"
 		WARNING_CFG80211_CRDA_SUPPORT="REGULATORY DOMAIN PROBLEM: \
@@ -61,15 +50,6 @@ src_compile() {
 }
 
 src_install() {
-	if use crda; then
-		# This file is not ABI-specific, and crda itself always hardcodes
-		# this path.  So install into a common location for all ABIs to use.
-		insinto /usr/lib/crda
-		doins regulatory.bin
-
-		insinto /etc/wireless-regdb/pubkeys
-		doins sforshee.key.pub.pem
-	fi
 	# install the files the kernel needs unconditionally,
 	# they are small and kernels get upgraded
 	insinto /lib/firmware

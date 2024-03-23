@@ -1,6 +1,0 @@
-# /etc/conf.d/slurm: config file for /etc/init.d/slurm*
-SLURMCTLD_OPTIONS=""
-SLURMDBD_OPTIONS=""
-SLURMD_OPTIONS=""
-SLURM_USE_MUNGE="0"
-SLURM_USE_YPBIND="0"

@@ -1,0 +1,118 @@
+https://gitlab.com/accounts-sso/libaccounts-qt/-/merge_requests/21
+
+From 18557f7def9af8f4a9e0e93e9f575ae11e5066aa Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 7 Apr 2023 15:49:22 +0200
+Subject: [PATCH 5/5] Adjust buildsystem to include correct Qt Major version
+ number
+
+---
+ Accounts/Accounts.pro                      |  4 ++--
+ Accounts/AccountsQt5Config.cmake.in        |  2 +-
+ Accounts/AccountsQt6Config.cmake.in        |  5 +++++
+ Accounts/AccountsQt6ConfigVersion.cmake.in | 10 ++++++++++
+ Accounts/accounts-qt6.pc.in                | 15 +++++++++++++++
+ tests/tst_libaccounts.pro                  |  2 +-
+ 6 files changed, 34 insertions(+), 4 deletions(-)
+ create mode 100644 Accounts/AccountsQt6Config.cmake.in
+ create mode 100644 Accounts/AccountsQt6ConfigVersion.cmake.in
+ create mode 100644 Accounts/accounts-qt6.pc.in
+
+diff --git a/Accounts/Accounts.pro b/Accounts/Accounts.pro
+index 13804ee..da62da7 100644
+--- a/Accounts/Accounts.pro
++++ b/Accounts/Accounts.pro
+@@ -3,7 +3,7 @@ include( ../common-project-config.pri )
+ include( ../common-vars.pri )
+ 
+ TEMPLATE = lib
+-TARGET = accounts-qt5
++TARGET = accounts-qt$${QT_MAJOR_VERSION}
+ 
+ # Input
+ public_headers = \
+@@ -45,7 +45,7 @@ QT -= gui
+ 
+ INCLUDEPATH += $${TOP_SRC_DIR}
+ 
+-CMAKE_BASENAME = AccountsQt5
++CMAKE_BASENAME = AccountsQt$${QT_MAJOR_VERSION}
+ 
+ PKGCONFIG += \
+ 	glib-2.0 \
+diff --git a/Accounts/AccountsQt5Config.cmake.in b/Accounts/AccountsQt5Config.cmake.in
+index 55a8964..746f689 100644
+--- a/Accounts/AccountsQt5Config.cmake.in
++++ b/Accounts/AccountsQt5Config.cmake.in
+@@ -2,4 +2,4 @@
+ #  ACCOUNTSQT_LIBRARIES - The libraries needed to use libaccounts-qt
+ 
+ set(ACCOUNTSQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
+-set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+\ No newline at end of file
++set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+diff --git a/Accounts/AccountsQt6Config.cmake.in b/Accounts/AccountsQt6Config.cmake.in
+new file mode 100644
+index 0000000..55a8964
+--- /dev/null
++++ b/Accounts/AccountsQt6Config.cmake.in
+@@ -0,0 +1,5 @@
++#  ACCOUNTSQT_INCLUDE_DIRS - The libaccounts-qt include directories
++#  ACCOUNTSQT_LIBRARIES - The libraries needed to use libaccounts-qt
++
++set(ACCOUNTSQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
++set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+\ No newline at end of file
+diff --git a/Accounts/AccountsQt6ConfigVersion.cmake.in b/Accounts/AccountsQt6ConfigVersion.cmake.in
+new file mode 100644
+index 0000000..616cd60
+--- /dev/null
++++ b/Accounts/AccountsQt6ConfigVersion.cmake.in
+@@ -0,0 +1,10 @@
++set(PACKAGE_VERSION $${PROJECT_VERSION})
++
++if(\"${PACKAGE_VERSION}\" VERSION_LESS \"${PACKAGE_FIND_VERSION}\" )
++   set(PACKAGE_VERSION_COMPATIBLE FALSE)
++else(\"${PACKAGE_VERSION}\" VERSION_LESS \"${PACKAGE_FIND_VERSION}\" )
++   set(PACKAGE_VERSION_COMPATIBLE TRUE)
++   if( \"${PACKAGE_FIND_VERSION}\" STREQUAL \"${PACKAGE_VERSION}\")
++      set(PACKAGE_VERSION_EXACT TRUE)
++   endif( \"${PACKAGE_FIND_VERSION}\" STREQUAL \"${PACKAGE_VERSION}\")
++endif(\"${PACKAGE_VERSION}\" VERSION_LESS \"${PACKAGE_FIND_VERSION}\" )
+diff --git a/Accounts/accounts-qt6.pc.in b/Accounts/accounts-qt6.pc.in
+new file mode 100644
+index 0000000..c625b2e
+--- /dev/null
++++ b/Accounts/accounts-qt6.pc.in
+@@ -0,0 +1,15 @@
++prefix=$$INSTALL_PREFIX
++exec_prefix=${prefix}
++libdir=$$INSTALL_LIBDIR
++includedir=${prefix}/include/accounts-qt6
++servicefilesdir=${prefix}/share/accounts/services
++servicetypefilesdir=${prefix}/share/accounts/service-types
++providerfilesdir=${prefix}/share/accounts/providers
++
++Name: libaccounts-qt6
++Description: Accounts Library
++Version: $$PROJECT_VERSION
++Libs: -L${libdir} -laccounts-qt6
++Requires: Qt6Core Qt6Xml
++Cflags:  -I${includedir}
++
+diff --git a/tests/tst_libaccounts.pro b/tests/tst_libaccounts.pro
+index a5b91fe..9992c0b 100644
+--- a/tests/tst_libaccounts.pro
++++ b/tests/tst_libaccounts.pro
+@@ -9,7 +9,7 @@ QT = \
+     testlib \
+     xml
+ 
+-LIBS += -laccounts-qt5
++LIBS += -laccounts-qt$${QT_MAJOR_VERSION}
+ 
+ INCLUDEPATH += $${TOP_SRC_DIR}
+ QMAKE_LIBDIR += \
+-- 
+2.43.0
+

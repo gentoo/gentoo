@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -100,7 +100,7 @@ RDEPEND="${RDEPEND}
 "
 # Weird dep construct for newer gcc-config for bug #872416
 BDEPEND="
-	sys-devel/autoconf
+	dev-build/autoconf
 	virtual/pkgconfig
 	|| (
 		>=sys-devel/gcc-config-2.6

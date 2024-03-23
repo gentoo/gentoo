@@ -30,7 +30,7 @@ BDEPEND="${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]' python3_12)
 		doc? ( >=dev-python/sphinx-1.3 )
 	)
-	doc? ( >=app-doc/doxygen-1.8.6 )
+	doc? ( >=app-text/doxygen-1.8.6 )
 	man? (
 		>=app-text/asciidoc-8.6.8
 		>=app-text/xmlto-0.0.25

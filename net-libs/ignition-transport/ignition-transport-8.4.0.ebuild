@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,9 +24,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	dev-util/ignition-cmake:2"
+	dev-build/ignition-cmake:2"
 BDEPEND="
-	dev-util/ignition-cmake:2
+	dev-build/ignition-cmake:2
 	virtual/pkgconfig"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 S="${WORKDIR}/gz-transport-ignition-transport8_${PV}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -111,7 +111,7 @@ CRATES="
 	zeroize_derive-1.3.1
 "
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_10 )
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
@@ -164,13 +164,13 @@ DEPEND="
 	virtual/libcrypt:=
 	"
 
-BDEPEND=">=sys-devel/autoconf-2.69-r5
+BDEPEND=">=dev-build/autoconf-2.69-r5
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/argparse-manpage[${PYTHON_USEDEP}]
 	')
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 	test? ( dev-util/cmocka )
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -33,8 +33,9 @@ LIB_DEPEND="
 	zstd? ( app-arch/zstd:=[static-libs(+)] )
 	sys-libs/zlib:=[static-libs(+)]
 "
-
+# which: https://github.com/confluentinc/librdkafka/pull/4353
 BDEPEND="
+	sys-apps/which
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 "

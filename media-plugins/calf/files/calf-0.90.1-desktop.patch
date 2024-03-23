@@ -5,8 +5,8 @@
  *      /usr/share/applications/calf.desktop: warning: value "Application;AudioVideo;Audio;GNOME" for key "Categories" in group "Desktop Entry" contains a deprecated value "Application"
 
 
---- a/calf.desktop.in	2018-07-08 12:35:56.000000000 +0200
-+++ b/calf.desktop.in	2019-03-10 20:19:01.251946945 +0100
+--- a/calf.desktop.in
++++ b/calf.desktop.in
 @@ -3,7 +3,6 @@
  Name[pl]=Zestaw wtyczek Calf
  Name[ru]=Набор эффектов и инструментов Calf для JACK

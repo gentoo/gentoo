@@ -18,7 +18,7 @@ MY_DOCS_VERSION=$(ver_cut 1-2)
 MY_DOCS_USEFLAG="+doc"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/joelrosdahl.asc
-inherit cmake toolchain-funcs flag-o-matic verify-sig
+inherit cmake toolchain-funcs flag-o-matic prefix verify-sig
 
 DESCRIPTION="Fast compiler cache"
 HOMEPAGE="https://ccache.dev/"
@@ -78,9 +78,8 @@ src_unpack() {
 src_prepare() {
 	cmake_src_prepare
 
-	sed \
-		-e "/^EPREFIX=/s:'':'${EPREFIX}':" \
-		"${FILESDIR}"/ccache-config-3 > ccache-config || die
+	cp "${FILESDIR}"/ccache-config-3 ccache-config || die
+	eprefixify ccache-config
 }
 
 src_configure() {

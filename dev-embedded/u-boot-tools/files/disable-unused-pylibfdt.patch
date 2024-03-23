@@ -1,0 +1,17 @@
+Disable unused pylibfdt
+
+The `imply BINMAN` causes `pylibfdt` to be built, which requires python. We
+don't currently expose `pylibfdt`, or declare python dependencies, so disable
+it.
+
+diff -ur a/arch/Kconfig b/arch/Kconfig
+--- a/arch/Kconfig	2023-01-09 09:07:33.000000000 -0700
++++ b/arch/Kconfig	2023-08-11 14:01:05.998403114 -0600
+@@ -205,7 +205,6 @@
+ 	imply KEYBOARD
+ 	imply PHYSMEM
+ 	imply GENERATE_ACPI_TABLE
+-	imply BINMAN
+ 
+ config SH
+ 	bool "SuperH architecture"

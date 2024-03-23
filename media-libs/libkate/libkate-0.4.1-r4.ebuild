@@ -24,7 +24,7 @@ BDEPEND="
 	app-alternatives/yacc
 	sys-devel/flex[${MULTILIB_USEDEP}]
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-text/doxygen )
 "
 
 multilib_src_configure() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools desktop python-single-r1 xdg
 
@@ -59,7 +59,7 @@ COMMONDEPEND="
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
-		>=dev-libs/gumbo-0.10
+		>=dev-libs/gumbo-0.10:=
 		net-misc/curl
 		media-libs/fontconfig
 	)
@@ -91,7 +91,7 @@ COMMONDEPEND="
 	spell? ( >=app-text/enchant-2.0.0:2= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	webkit? ( net-libs/webkit-gtk:4.1 )
 "
 
@@ -147,6 +147,7 @@ src_configure() {
 		$(use_enable debug crash-dialog)
 		$(use_enable debug more-addressbook-debug)
 		$(use_enable debug more-ldap-debug)
+		$(use_enable debug more-archive-debug)
 		$(use_enable doc manual)
 		$(use_enable gnutls)
 		$(use_enable ldap)

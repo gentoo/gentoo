@@ -10,6 +10,10 @@
     <name>Gentoo Sysadmin Project</name>
   </maintainer>
   <use>
+    <!-- leave this global flag defined here to avoid a pkgcheck warning -->
+    <flag name="ipv6">
+      Enable ipv6 checks.
+    </flag>
     <flag name="nagios-dns">
       Install <pkg>net-dns/bind-tools</pkg> required for monitoring
       DNS servers. Disabling the flag does not remove any plugin file.

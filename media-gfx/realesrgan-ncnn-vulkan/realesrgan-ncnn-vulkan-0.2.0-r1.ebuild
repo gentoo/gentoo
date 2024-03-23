@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,12 +25,15 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-util/glslang
 	dev-util/vulkan-headers
+"
+BDEPEND="
+	dev-util/glslang
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-default-realesrgan-x4plus-model.patch
+	"${FILESDIR}"/${PN}-0.2.0-no-glslang-libs.patch
 )
 
 src_prepare() {
@@ -46,7 +49,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DGLSLANG_TARGET_DIR="${ESYSROOT}"/usr/$(get_libdir)/cmake
 		-DUSE_SYSTEM_NCNN=ON
 		-DUSE_SYSTEM_WEBP=ON
 	)

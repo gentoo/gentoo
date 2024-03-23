@@ -1,7 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-ARCH="arm"
-# This is a pretty specific profile to the armv7 arch, we can change that later
-CHOST="armv7a-softfloat-linux-gnueabi"
-CHOST_arm="${CHOST}"

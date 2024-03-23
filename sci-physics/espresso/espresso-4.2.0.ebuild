@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake cuda python-single-r1 savedconfig
 
 DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
-HOMEPAGE="http://espressomd.org"
+HOMEPAGE="https://espressomd.org"
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"
@@ -45,7 +45,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	doc? (
-		app-doc/doxygen[dot]
+		app-text/doxygen[dot]
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)

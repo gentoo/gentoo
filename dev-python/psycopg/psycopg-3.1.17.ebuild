@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
@@ -18,20 +19,29 @@ SRC_URI="
 	https://github.com/psycopg/psycopg/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${P}/psycopg
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="+native-extensions"
 
 DEPEND="
-	>=dev-db/postgresql-8.1:*
+	native-extensions? (
+		>=dev-db/postgresql-8.1:=
+	)
+	!native-extensions? (
+		>=dev-db/postgresql-8.1:*
+	)
 "
 RDEPEND="
 	${DEPEND}
 	>=dev-python/typing-extensions-4.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	native-extensions? (
+		dev-python/cython[${PYTHON_USEDEP}]
+		dev-python/tomli[${PYTHON_USEDEP}]
+	)
 	test? (
 		>=dev-db/postgresql-8.1[server]
 		dev-python/anyio[${PYTHON_USEDEP}]
@@ -41,9 +51,27 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_test() {
-	# tests are lurking in top-level directory
+PATCHES=(
+	# https://github.com/psycopg/psycopg/pull/725
+	"${FILESDIR}/${P}-musl.patch"
+)
+
+python_compile() {
+	# Python code + ctypes backend
+	cd psycopg || die
+	distutils-r1_python_compile
+
+	# optional C backend
+	if use native-extensions && [[ ${EPYTHON} != pypy3 ]]; then
+		local DISTUTILS_USE_PEP517=standalone
+		cd ../psycopg_c || die
+		distutils-r1_python_compile
+	fi
 	cd .. || die
+}
+
+src_test() {
+	rm -r psycopg{,_c} || die
 
 	initdb -D "${T}"/pgsql || die
 	# TODO: random port
@@ -70,7 +98,17 @@ python_test() {
 		tests/test_dns_srv.py::test_srv
 	)
 
+	local impls=( python )
+	if use native-extensions && [[ ${EPYTHON} != pypy3 ]]; then
+		impls+=( c )
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	# leak and timing tests are fragile whereas slow tests are slow
-	epytest -p anyio -k "not leak" -m "not timing and not slow"
+	local -x PSYCOPG_IMPL
+	for PSYCOPG_IMPL in "${impls[@]}"; do
+		einfo "Testing with ${PSYCOPG_IMPL} implementation ..."
+		# leak and timing tests are fragile whereas slow tests are slow
+		epytest -p anyio -k "not leak" \
+			-m "not timing and not slow and not flakey"
+	done
 }

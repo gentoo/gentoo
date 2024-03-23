@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-r1 verify-sig
 
@@ -26,7 +26,7 @@ DEPEND="${PYTHON_DEPS}
 	hfst? ( >=dev-util/hfstospell-0.5.0 )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig
-	>=sys-devel/autoconf-2.71
+	>=dev-build/autoconf-2.71
 	verify-sig? ( sec-keys/openpgp-keys-voikko )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/voikko.asc

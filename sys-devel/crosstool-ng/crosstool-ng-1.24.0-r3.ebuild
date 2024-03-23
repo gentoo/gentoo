@@ -44,7 +44,7 @@ BDEPEND="
 	dtc? ( sys-apps/dtc )
 	git? ( dev-vcs/git )
 	lzip? ( app-arch/lzip )
-	meson? ( dev-util/meson )
+	meson? ( dev-build/meson )
 	python? ( ${PYTHON_DEPS} )
 	ninja? ( app-alternatives/ninja )
 	rsync? ( net-misc/rsync )

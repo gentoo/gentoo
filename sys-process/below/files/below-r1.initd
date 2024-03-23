@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile=/run/${RC_SVCNAME}.pid
+LOGPATH=/var/log/${RC_SVCNAME}
+DATADIR=/var/lib/${RC_SVCNAME}
+command_user=root
+command=/usr/bin/below
+command_args="record ${BELOW_EXTRA_ARGS}"
+command_background=true
+directory="/var/lib/below"
+output_log="${LOGPATH}/${RC_SVCNAME}.log"
+error_log="${LOGPATH}/${RC_SVCNAME}.err"
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+start() {
+	if [ ! -d "${LOGPATH}" ] ; then
+		mkdir -p "${LOGPATH}"
+	fi
+	if [ ! -d "${DATADIR}" ] ; then
+		mkdir -p "${DATADIR}"
+	fi
+	default_start
+}

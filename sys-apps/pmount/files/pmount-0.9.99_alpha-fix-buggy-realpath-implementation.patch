@@ -1,0 +1,31 @@
+Fix bug in realpath implementation bundled with pmount which caused it to
+likely fail on paths with several symlinks.
+
+The issue was first noticed by failure in tests:
+Gentoo-Bug: https://bugs.gentoo.org/741810
+--- pmount-0.9.99-alpha/src/realpath.c.orig	2024-01-21 09:19:55.776224329 +0300
++++ pmount-0.9.99-alpha/src/realpath.c	2024-01-21 09:30:46.751233027 +0300
+@@ -128,6 +128,7 @@
+ 		} else {
+ #ifdef resolve_symlinks		/* Richard Gooch dislikes sl resolution */
+ 			int m;
++			char *old_buf;
+ 
+ 			/* Note: readlink doesn't add the null byte. */
+ 			link_path[n] = '\0';
+@@ -141,12 +142,13 @@
+ 
+ 			/* Insert symlink contents into path. */
+ 			m = strlen(path);
+-			if (buf)
+-				free(buf);
++			old_buf = buf; /* path might point to buf at this point */
+ 			buf = xmalloc(m + n + 1);
+ 			memcpy(buf, link_path, n);
+ 			memcpy(buf + n, path, m + 1);
+ 			path = buf;
++			if (old_buf)
++				free(old_buf);
+ #endif
+ 		}
+ 		*npath++ = '/';

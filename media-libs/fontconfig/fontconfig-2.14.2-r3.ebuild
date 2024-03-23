@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,6 +66,7 @@ PATCHES=(
 
 	# Patches from upstream (can usually be removed with next version bump)
 	"${FILESDIR}"/${P}-fix-sysroot-fc-cache.patch
+	"${FILESDIR}"/${PN}-2.14.2-math-fabs.patch
 )
 
 DOC_CONTENTS="Please make fontconfig configuration changes using

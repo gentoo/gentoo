@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit meson python-any-r1
+inherit flag-o-matic meson python-any-r1
 
 DEBUGBREAK_COMMIT="6b79ec8d8f8d4603111f580a0537f8f31c484c32"
 KLIB_COMMIT="cdb7e9236dc47abf8da7ebd702cc6f7f21f0c502"
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/Snaipe/Criterion/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="BSD-2 MIT ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
 	)"
-BDEPEND="dev-util/cmake
+BDEPEND="dev-build/cmake
 	virtual/pkgconfig"
 
 S="${WORKDIR}/Criterion-${PV}"
@@ -55,6 +55,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855674
+	# https://github.com/Snaipe/Criterion/issues/524
+	filter-lto
+
+	# bug 906379
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+
 	local emesonargs=(
 		-Dsamples=$(usex test true false)
 		-Dtests=$(usex test true false)

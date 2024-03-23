@@ -1,5 +1,5 @@
 Remove bundled m4 macros, instead use system ones from
-sys-devel/autoconf-archive. Use AX_BOOST_SYSTEM to prevent
+dev-build/autoconf-archive. Use AX_BOOST_SYSTEM to prevent
 underlinking issues with more recent boost versions.
 See also: https://bugs.gentoo.org/show_bug.cgi?id=550018
 

@@ -39,8 +39,8 @@ CDEPEND="
 BDEPEND="
 	${CDEPEND}
 	test? (
-		>=dev-python/httpretty-0.7.1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/passlib[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]

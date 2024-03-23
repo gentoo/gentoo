@@ -11,12 +11,13 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="debug doc test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-doc/doxygen )
+BDEPEND="doc? ( app-text/doxygen )
 	test? ( >=dev-cpp/gtest-1.11.0 )"
+PATCHES=( "${FILESDIR}/${PN}-1.8.3-fix-32bit-test.patch" )
 
 src_configure() {
 	local mycmakeargs=(

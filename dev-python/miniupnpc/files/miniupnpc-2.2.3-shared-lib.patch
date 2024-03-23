@@ -25,10 +25,7 @@ index b84146f..73b05b7 100644
  setup(name="miniupnpc",
        version=open('VERSION').read().strip(),
        author='Thomas BERNARD',
-@@ -27,9 +20,8 @@ setup(name="miniupnpc",
-       license=open('LICENSE').read(),
-       url='http://miniupnp.free.fr/',
-       description='miniUPnP client',
+@@ -30,6 +23,5 @@ setup(name="miniupnpc",
 -      cmdclass={'build_ext': make_then_build_ext},
        ext_modules=[
           Extension(name="miniupnpc", sources=["src/miniupnpcmodule.c"],

@@ -1,0 +1,35 @@
+From edfbed91b1c98abbed7c57463b88a1e8e134f2c3 Mon Sep 17 00:00:00 2001
+From: Chris Jefferson <caj21@st-andrews.ac.uk>
+Date: Wed, 24 Jan 2024 11:18:09 +0800
+Subject: [PATCH] Check arguments to IO_gmtime and IO_localtime
+
+---
+ src/io.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/io.c b/src/io.c
+index 731880e..2a1536e 100644
+--- a/src/io.c
++++ b/src/io.c
+@@ -1777,6 +1777,10 @@ static Obj FuncIO_gmtime(Obj self, Obj time)
+     Obj         tmp;
+     time_t      t;
+     struct tm * s;
++    if (!IS_INT(time)) {
++        SyClearErrorNo();
++        return Fail;
++    }
+     if (!IS_INTOBJ(time)) {
+         tmp = QuoInt(time, INTOBJ_INT(256));
+         if (!IS_INTOBJ(tmp))
+@@ -1808,6 +1812,10 @@ static Obj FuncIO_localtime(Obj self, Obj time)
+     Obj         tmp;
+     time_t      t;
+     struct tm * s;
++    if (!IS_INT(time)) {
++        SyClearErrorNo();
++        return Fail;
++    }
+     if (!IS_INTOBJ(time)) {
+         tmp = QuoInt(time, INTOBJ_INT(256));
+         if (!IS_INTOBJ(tmp))

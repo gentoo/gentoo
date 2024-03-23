@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<longdescription lang="en">
 		An alternative implementation of the zfs-auto-snapshot service for Linux

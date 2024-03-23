@@ -371,6 +371,10 @@ src_compile() {
 src_test() {
 	cd "${MY_BUILDDIR}" || die
 
+	# https://sourceware.org/PR31327
+	local -x XZ_OPT="-T1"
+	local -x XZ_DEFAULTS="-T1"
+
 	# bug #637066
 	filter-flags -Wall -Wreturn-type
 
@@ -466,6 +470,8 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info}
+
+	docompress "${DATAPATH}"/{info,man}
 
 	# Trim all empty dirs
 	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null

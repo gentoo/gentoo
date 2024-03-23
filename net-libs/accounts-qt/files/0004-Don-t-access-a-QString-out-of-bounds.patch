@@ -1,0 +1,42 @@
+https://gitlab.com/accounts-sso/libaccounts-qt/-/merge_requests/21
+
+From 3c4d5fa1f53cd66c9870b799e8518980176547b2 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 18 Oct 2022 02:03:59 +0200
+Subject: [PATCH 4/5] Don't access a QString out-of-bounds
+
+This asserts in Qt6
+---
+ Accounts/account-service.cpp | 2 +-
+ Accounts/account.cpp         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Accounts/account-service.cpp b/Accounts/account-service.cpp
+index e6c04f2..d8d4304 100644
+--- a/Accounts/account-service.cpp
++++ b/Accounts/account-service.cpp
+@@ -335,7 +335,7 @@ void AccountService::endGroup()
+     Q_D(AccountService);
+     d->prefix = d->prefix.section(slash, 0, -3,
+                                   QString::SectionIncludeTrailingSep);
+-    if (d->prefix[0] == slash) d->prefix.remove(0, 1);
++    if (!d->prefix.isEmpty() && d->prefix[0] == slash) d->prefix.remove(0, 1);
+ }
+ 
+ /*!
+diff --git a/Accounts/account.cpp b/Accounts/account.cpp
+index 2e40c60..104611a 100644
+--- a/Accounts/account.cpp
++++ b/Accounts/account.cpp
+@@ -548,7 +548,7 @@ void Account::endGroup()
+ {
+     d->prefix = d->prefix.section(slash, 0, -3,
+                                   QString::SectionIncludeTrailingSep);
+-    if (d->prefix[0] == slash) d->prefix.remove(0, 1);
++    if (!d->prefix.isEmpty() && d->prefix[0] == slash) d->prefix.remove(0, 1);
+ }
+ 
+ /*!
+-- 
+2.43.0
+

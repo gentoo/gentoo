@@ -1,5 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-02-17)
+# Broken on arm, see bug #924649 (https://github.com/golang/go/issues/65601).
+>=net-vpn/tailscale-1.60.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
@@ -9,7 +13,7 @@ dev-qt/qtwebview
 dev-python/PyQt6-WebEngine
 dev-python/PyQtWebEngine
 app-admin/calamares
-app-doc/zeal
+app-text/zeal
 app-editors/ghostwriter
 app-editors/retext
 app-misc/anki
@@ -48,7 +52,7 @@ kde-apps/kaddressbook:5
 kde-apps/kalarm:5
 kde-apps/kalgebra:5
 kde-apps/kdepim-addons:5
-kde-apps/kdepim-meta:5
+kde-apps/kdepim-meta
 kde-apps/kdepim-runtime:5
 kde-apps/kimagemapeditor:5
 kde-apps/kmail:5
@@ -96,7 +100,7 @@ media-video/jellyfin-media-player
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7
 # https://valgrind.org/info/platforms.html
-dev-util/valgrind
+dev-debug/valgrind
 
 # James Le Cuirot <chewi@gentoo.org> (2015-05-24)
 # This is built for armv7a and will not work on earlier generations.

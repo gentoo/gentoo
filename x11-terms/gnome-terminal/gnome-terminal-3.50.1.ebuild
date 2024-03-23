@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
-inherit gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
+inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="A terminal emulator for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal"
@@ -16,7 +16,7 @@ IUSE="debug gnome-shell nautilus vanilla"
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.48.1-cntr-ntfy-autottl-ts.patch.xz )"
 
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv x86"
 
 # FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 RDEPEND="
@@ -66,6 +66,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
+	filter-lto
+
 	local emesonargs=(
 		$(meson_use debug dbg)
 		-Ddocs=false

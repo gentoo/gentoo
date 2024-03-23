@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/tcl:0
 	app-alternatives/yacc
-	>=sys-devel/libtool-2
+	>=dev-build/libtool-2
 	virtual/pkgconfig
 "
 

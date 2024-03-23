@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/919413
+https://src.fedoraproject.org/rpms/openjfx/c/9e893037f3a20273c79603220b7a18a44be60fcc?branch=rawhide
+
+8323078: Incorrect length argument to g_utf8_strlen in pango.c
+
+Submitted upstream: <https://github.com/openjdk/jfx/pull/1320>
+
+--- a/modules/javafx.graphics/src/main/native-font/pango.c
++++ b/modules/javafx.graphics/src/main/native-font/pango.c
+@@ -402,7 +402,7 @@ JNIEXPORT jlong JNICALL OS_NATIVE(g_1utf8_1strlen)
+     (JNIEnv *env, jclass that, jlong str, jlong pos)
+ {
+     if (!str) return 0;
+-    return (jlong)g_utf8_strlen((const gchar *)str, (const gchar *)pos);
++    return (jlong)g_utf8_strlen((const gchar *)str, (gssize)pos);
+ }
+ 
+ JNIEXPORT jlong JNICALL OS_NATIVE(g_1utf16_1to_1utf8)

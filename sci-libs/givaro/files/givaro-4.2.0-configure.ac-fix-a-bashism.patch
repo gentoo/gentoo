@@ -1,0 +1,32 @@
+From 1132161483e756902c86c190855e260164c025fd Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 9 Feb 2024 16:41:03 -0500
+Subject: [PATCH] configure.ac: fix a bashism
+
+There's one instance of VAR+=" value" in the configure script, but
+that only works in bash. With dash, for example, it results in
+
+  checking whether gmp version is at least 40000... yes
+  ./configure: 17953: REQUIRED_FLAGS+= : not found
+
+We change it to a VAR="${VAR} value" instead.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b03e5e4d..a94286ac 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -121,7 +121,7 @@ AS_ECHO([---------------------------------------])
+ 
+ # Look for GMP and add flags if necessary
+ GIV_CHECK_GMP(40000)
+-REQUIRED_FLAGS+=" ${GMP_CFLAGS}"
++REQUIRED_FLAGS="${REQUIRED_FLAGS} ${GMP_CFLAGS}"
+ 
+ GIV_DOC
+ 
+-- 
+2.43.0
+

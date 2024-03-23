@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,9 +10,9 @@ DESCRIPTION="Utility for image scaling and processing"
 HOMEPAGE="https://entropymine.com/imageworsener/"
 SRC_URI="https://entropymine.com/${PN}/${P}.tar.gz"
 
-LICENSE="MIT-with-advertising"
+LICENSE="MIT"
 SLOT="0/3"  # because of libimageworsener.so.3.*.*
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="jpeg png static-libs test webp zlib"
 
 DEPEND="png? ( media-libs/libpng:0 )
@@ -22,7 +22,9 @@ DEPEND="png? ( media-libs/libpng:0 )
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( jpeg png webp zlib )"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PN}-1.3.5-runtest-exit-code.patch" )
 
 src_configure() {
 	local switch=''
@@ -44,5 +46,5 @@ src_install() {
 
 src_test() {
 	cd "${S}"/tests || die
-	./runtest "${S}"/${MY_PN}
+	./runtest "${S}"/${MY_PN} || die
 }

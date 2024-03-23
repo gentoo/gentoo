@@ -41,8 +41,8 @@ BDEPEND="
 	app-alternatives/lex
 	virtual/pkgconfig
 	doc? (
-		app-doc/doxygen[dot]
-		app-doc/xmltoman
+		app-text/doxygen[dot]
+		app-text/xmltoman
 		app-text/htmldoc
 		dev-perl/CGI
 		dev-perl/SQL-Translator

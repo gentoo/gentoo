@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ PIPEWIRE_DOCS_VERSION="${PV}"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
 PYTHON_COMPAT=( python3_{10..12} )
-inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
+inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]]; then
 	PIPEWIRE_DOCS_PREBUILT=0
@@ -84,17 +84,17 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	>=dev-util/meson-0.59
+	>=dev-build/meson-0.59
 	virtual/pkgconfig
 	dbus? ( dev-util/gdbus-codegen )
 	doc? (
 		${PYTHON_DEPS}
-		>=app-doc/doxygen-1.9.8
+		>=app-text/doxygen-1.9.8
 		media-gfx/graphviz
 	)
 	man? (
 		${PYTHON_DEPS}
-		>=app-doc/doxygen-1.9.8
+		>=app-text/doxygen-1.9.8
 	)
 "
 # * While udev could technically be optional, it's needed for a number of options,
@@ -193,9 +193,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# https://bugs.gentoo.org/838301
-	filter-flags -fno-semantic-interposition
-
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 
@@ -316,11 +313,17 @@ multilib_src_install_all() {
 
 	# Enable required wireplumber alsa and bluez monitors
 	if use sound-server; then
+		# Install sound-server enabler, alsa part, wireplumber 0.4.15 syntax, clean this up with wireplumber dep bump
 		dodir /etc/wireplumber/main.lua.d
 		echo "alsa_monitor.enabled = true" > "${ED}"/etc/wireplumber/main.lua.d/89-gentoo-sound-server-enable-alsa-monitor.lua || die
 
+		# Install sound-server enabler, bluetooth part, wireplumber 0.4.15 syntax, clean this up with wireplumber dep bump
 		dodir /etc/wireplumber/bluetooth.lua.d
 		echo "bluez_monitor.enabled = true" > "${ED}"/etc/wireplumber/bluetooth.lua.d/89-gentoo-sound-server-enable-bluez-monitor.lua || die
+
+		# Install sound-server enabler for wireplumber 0.4.81+ conf syntax
+		insinto /etc/pipewire/wireplumber.conf.d
+		doins "${FILESDIR}"/gentoo-sound-server-enable-audio-bluetooth.conf
 	fi
 
 	if use system-service; then

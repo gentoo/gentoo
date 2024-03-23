@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -88,7 +88,6 @@ pkg_preinst() {
 	}
 
 	multilib_foreach_abi multilib_pkg_preinst
-	gnome2_gdk_pixbuf_savelist
 }
 
 pkg_postinst() {

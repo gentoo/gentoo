@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 # configure options currently not used:
 # --enable-mem(no) memory debugging: needs Electric fence (efence), which
@@ -51,7 +51,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-util/gtk-doc-am-1.25-r1
+	>=dev-build/gtk-doc-am-1.25-r1
 	>=dev-util/intltool-0.51.0-r1
 	app-alternatives/lex
 	virtual/pkgconfig

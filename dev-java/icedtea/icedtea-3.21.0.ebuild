@@ -100,7 +100,7 @@ X_DEPEND="
 # The Javascript requirement is obsolete; OpenJDK 8+ has Nashorn
 COMMON_DEP="
 	>=dev-libs/glib-2.26:2=
-	>=dev-util/systemtap-1
+	>=dev-debug/systemtap-1
 	media-libs/fontconfig:1.0=
 	>=media-libs/freetype-2.5.3:2=
 	>=sys-libs/zlib-1.2.3
@@ -203,7 +203,9 @@ src_configure() {
 	# ${FILESDIR} directly.
 	mkdir -v gentoo_patches || die
 	cp -v "${FILESDIR}/openjdk-8-hotspot-arrayallocator.patch" gentoo_patches || die
+	cp -v "${FILESDIR}/openjdk-8-make-4.4.patch" gentoo_patches || die
 	export DISTRIBUTION_PATCHES="gentoo_patches//openjdk-8-hotspot-arrayallocator.patch"
+	DISTRIBUTION_PATCHES+=" gentoo_patches//openjdk-8-make-4.4.patch"
 
 	# For bootstrap builds as the sandbox control file might not yet exist.
 	addpredict /proc/self/coredump_filter #nowarn

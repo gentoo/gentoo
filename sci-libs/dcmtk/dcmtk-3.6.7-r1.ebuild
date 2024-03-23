@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit flag-o-matic cmake
 
 DESCRIPTION="The DICOM Toolkit"
 HOMEPAGE="https://dicom.offis.de/dcmtk.php.en"
@@ -25,7 +25,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="doc? (
-	app-doc/doxygen
+	app-text/doxygen
 	virtual/latex-base
 )"
 
@@ -50,6 +50,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug 908398
+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DDCMTK_WITH_ICU=ON

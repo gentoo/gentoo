@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 MY_P=${P/_rc2/~rc2}
 
-inherit autotools python-single-r1
+inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="https://www.hamlib.github.io"
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0/4.2"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="doc perl python tcl"
 
 RESTRICT="test"
@@ -32,8 +32,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	dev-lang/swig
-	>=sys-devel/libtool-2.2
-	doc? ( app-doc/doxygen
+	>=dev-build/libtool-2.2
+	doc? ( app-text/doxygen
 		dev-util/source-highlight )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -46,11 +46,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# fix hardcoded libdir paths
-	sed -i -e "s#fix}/lib#fix}/$(get_libdir)/hamlib#" \
-		-e "s#fix}/include#fix}/include/hamlib#" \
-		hamlib.pc.in || die "sed failed"
 
 	# Correct install target to whatever INSTALLDIRS says and use vendor
 	# installdirs everywhere (bug #611550)
@@ -65,6 +60,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/926839
+	# https://github.com/Hamlib/Hamlib/issues/1524
+	filter-lto
+
 	econf \
 		--libdir=/usr/$(get_libdir)/hamlib \
 		--disable-static \
