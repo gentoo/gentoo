@@ -1,0 +1,56 @@
+From: Nicholas Vinson <nvinson234@gmail.com>
+Subject: [binutils] libctf: Remove undefined functions from ver. map
+Date: Thu, 28 Dec 2023 14:10:09 -0500
+
+The functions ctf_label_set(), ctf_label_get(), ctf_arc_open(), ctf_fdopen(),
+ctf_open(), ctf_bfdopen(), and ctf_bfdopen_ctfsect() are not defined. Their
+inclusion in libctf/libctf.ver causes clang/llvm LTO optimizatiosn to fail with
+error messages similar to
+
+    error: version script assignment of LIBCTF_1.0 to symbol ctf_label_set
+    failed: symbol not defined
+
+This patch fixes the issue by removing the symbol names from libctf/libctf.ver
+
+Fixes Gentoo bug 914640 (https://bugs.gentoo.org/914640)
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+---
+ libctf/libctf.ver | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/libctf/libctf.ver b/libctf/libctf.ver
+index 0ff825d033b..08e1b27341f 100644
+--- a/libctf/libctf.ver
++++ b/libctf/libctf.ver
+@@ -80,9 +80,6 @@ LIBCTF_1.0 {
+ 	ctf_enum_name;
+ 	ctf_enum_value;
+ 
+-	ctf_label_set;
+-	ctf_label_get;
+-
+ 	ctf_label_topmost;
+ 	ctf_label_info;
+ 
+@@ -139,7 +136,6 @@ LIBCTF_1.0 {
+ 
+ 	ctf_arc_write;
+ 	ctf_arc_write_fd;
+-	ctf_arc_open;
+ 	ctf_arc_bufopen;
+ 	ctf_arc_close;
+ 	ctf_arc_open_by_name;
+@@ -165,10 +161,6 @@ LIBCTF_1.0 {
+ 	ctf_link_shuffle_syms;
+ 	ctf_link_write;
+ 
+-	ctf_fdopen;                             /* libctf only.  */
+-	ctf_open;                               /* libctf only.  */
+-	ctf_bfdopen;                            /* libctf only.  */
+-	ctf_bfdopen_ctfsect;                    /* libctf only.  */
+     local:
+ 	*;
+ };
+-- 
+2.43.0
