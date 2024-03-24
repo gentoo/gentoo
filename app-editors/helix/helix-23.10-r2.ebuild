@@ -296,6 +296,8 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}/helix-23.10-tree-sitter-gemini-path.patch"
+	"${FILESDIR}/helix-23.10-update-rescript-grammar.patch"
+	"${FILESDIR}/helix-23.10-update-tree-sitter-d.patch"
 )
 
 src_compile() {
