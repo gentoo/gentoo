@@ -1052,7 +1052,10 @@ src_configure() {
 	fi
 
 	# elf-hack
+	# Filter "-z,pack-relative-relocs" and let the build system handle it instead. 
 	if use amd64 || use x86 ; then
+		filter-flags "-z,pack-relative-relocs"
+
 		if tc-ld-is-mold ; then
 			# relr-elf-hack is currently broken with mold, bgo#916259
 			mozconfig_add_options_ac 'disable elf-hack with mold linker' --disable-elf-hack
