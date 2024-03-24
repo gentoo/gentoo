@@ -1,0 +1,27 @@
+From c2591445c90ae9c152cbc974122b77632de78e85 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@protonmail.com>
+Date: Wed, 13 Dec 2023 01:37:03 +0000
+Subject: [PATCH] chore: Update tree-sitter-d (#9021)
+
+One of the included changes is gdamore/tree-sitter-d#22 which
+fixes the build of Helix when using clang as `CC`.
+---
+ languages.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/languages.toml b/languages.toml
+index 66b43472..7f1c6b76 100644
+--- a/languages.toml
++++ b/languages.toml
+@@ -2220,7 +2220,7 @@ formatter = { command = "dfmt" }
+ 
+ [[grammar]]
+ name = "d"
+-source = { git = "https://github.com/gdamore/tree-sitter-d", rev="601c4a1e8310fb2f3c43fa8a923d0d27497f3c04" }
++source = { git = "https://github.com/gdamore/tree-sitter-d", rev = "5566f8ce8fc24186fad06170bbb3c8d97c935d74" }
+ 
+ [[language]]
+ name = "vhs"
+-- 
+2.43.2
+
