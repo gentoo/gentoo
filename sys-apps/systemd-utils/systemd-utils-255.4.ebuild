@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
 inherit bash-completion-r1 flag-o-matic linux-info meson-multilib python-single-r1
-inherit secureboot toolchain-funcs udev
+inherit secureboot udev
 
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
