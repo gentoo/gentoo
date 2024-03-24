@@ -354,6 +354,12 @@ src_configure() {
 			CROSSCFLAGS="${CROSSCFLAGS:-$(
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
+
+				# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
+				# strip-unsupported-flags miss these during compile-only tests
+				# (primarily done for 23.0 profiles' -z, not full coverage)
+				filter-flags '-Wl,-z,*'
+
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
 
