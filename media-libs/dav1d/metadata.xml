@@ -10,7 +10,7 @@
 		<flag name="xxhash">Enable <pkg>dev-libs/xxhash</pkg> support for hashing muxer</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://code.videolan.org/videolan/dav1d/issues</bugs-to>
+		<bugs-to>https://code.videolan.org/videolan/dav1d/-/issues</bugs-to>
 		<remote-id type="cpe">cpe:/a:videolan:dav1d</remote-id>
 	</upstream>
 </pkgmetadata>
