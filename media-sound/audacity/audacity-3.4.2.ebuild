@@ -70,6 +70,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/libpng:=
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
+	media-libs/opusfile
 	media-libs/portaudio[alsa?]
 	media-libs/portmidi
 	media-libs/portsmf:=
