@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python systemd tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -78,7 +78,8 @@ RDEPEND="
 	xen? (
 		app-emulation/xen-tools
 		dev-libs/yajl
-	)"
+	)
+	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -108,6 +109,7 @@ src_configure() {
 		-DENABLE_PLUGIN_XENSTAT=$(usex xen)
 		-DENABLE_PLUGIN_EBPF=$(usex bpf)
 		-DENABLE_PLUGIN_GO=FALSE
+		-DENABLE_PLUGIN_SYSTEMD_JOURNAL=$(usex systemd)
 	)
 	cmake_src_configure
 }
