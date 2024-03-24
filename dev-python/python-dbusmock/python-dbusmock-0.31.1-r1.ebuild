@@ -45,7 +45,10 @@ src_prepare() {
 }
 
 python_test() {
+	# tests are fragile to long socket paths
+	local -x TMPDIR=/tmp
 	# Tests break if XDG_DATA_DIRS is modified by flatpak install
 	unset XDG_DATA_DIRS
-	distutils-r1_python_test
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
