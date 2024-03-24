@@ -13,7 +13,7 @@ SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 
 # GPL-2 is there for the init script; everything else comes from
 # upstream.
-LICENSE="BSD ISC MIT GPL-3+ GPL-2"
+LICENSE="BSD GPL-3+ BSD-2 ISC GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 # This is called libusb so that it doesn't fool people in thinking that
