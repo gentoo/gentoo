@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-03-24)
+# Broken with modern compilers, broken with LTO. Upstream website no
+# longer exists. Unmaintained in Gentoo, no reverse dependencies.
+# Removal on 2024-04-23.  Bug #731942, #863041, #898298.
+sci-libs/xgks-pmel
+
 # Michał Górny <mgorny@gentoo.org> (2024-03-23)
 # No maintainer.  Broken tests.  Not ported to PEP517 build.
 # No release since 2020, little activity since.  No revdeps.
