@@ -23,6 +23,17 @@ Bug: https://github.com/ROCm/ROCR-Runtime/issues/181
  }
  
  hsa_signal_value_t BusyWaitSignal::LoadRelaxed() {
+--- a/core/runtime/hsa.cpp
++++ b/core/runtime/hsa.cpp
+@@ -155,7 +155,7 @@ template <class T> struct ValidityError<const T*> {
+ 
+ template <class T>
+ static __forceinline bool IsValid(T* ptr) {
+-  return (ptr == NULL) ? NULL : ptr->IsValid();
++  return (ptr == NULL) ? false : ptr->IsValid();
+ }
+ 
+ namespace AMD {
 --- a/core/util/lnx/os_linux.cpp
 +++ b/core/util/lnx/os_linux.cpp
 @@ -111,9 +111,12 @@ class os_thread {
