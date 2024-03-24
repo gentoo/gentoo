@@ -21,6 +21,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2 BSD BSD-2 CC0-1.0 GPL-2+ ISC LGPL-2+ MIT PSF-2 ZLIB"
 SLOT="0"
 IUSE="+doc nls split-usr test"
@@ -46,8 +48,6 @@ BDEPEND="
 "
 # we don't need shpinx dep for release tarballs
 [[ ${PV} == 9999 ]] && DEPEND+=" doc? ( dev-python/sphinx )"
-
-S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
 	use test || return 0
