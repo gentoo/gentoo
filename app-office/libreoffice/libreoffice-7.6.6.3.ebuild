@@ -296,9 +296,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
 
-	# 7.6 branch:
-	"${FILESDIR}/${PN}-7.6.6.1-detect-plasma6.patch" # bug 926227
-
 	# maybe upstreamable
 	"${FILESDIR}/${PN}-7.5.8.2-icu-74-compatibility.patch"
 )
