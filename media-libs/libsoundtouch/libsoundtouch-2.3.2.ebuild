@@ -8,7 +8,7 @@ inherit autotools multilib-minimal toolchain-funcs
 MY_PN=${PN/lib}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Audio processing library for changing tempo, pitch and playback rates"
-HOMEPAGE="https://www.surina.net/soundtouch/ https://gitlab.com/soundtouch/soundtouch"
+HOMEPAGE="https://www.surina.net/soundtouch/ https://codeberg.org/soundtouch/soundtouch"
 SRC_URI="https://www.surina.net/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_PN}"
 
