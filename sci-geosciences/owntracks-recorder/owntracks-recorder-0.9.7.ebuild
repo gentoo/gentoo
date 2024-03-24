@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,6 +67,7 @@ src_configure() {
 		WITH_HTTP=$(usex http)
 		WITH_TOURS=$(usex tours)
 		WITH_GREENWICH=$(usex greenwich)
+		WITH_TZ=yes
 
 		CC="$(tc-getCC)"
 		CPP="$(tc-getCPP)"
