@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools linux-info
 
 DESCRIPTION="FUSE implementation for overlayfs"
 HOMEPAGE="https://github.com/containers/fuse-overlayfs"
