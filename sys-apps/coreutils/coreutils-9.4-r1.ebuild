@@ -118,6 +118,7 @@ src_prepare() {
 		# Upstream patches
 		"${FILESDIR}"/${P}-gnulib-openssl-1.1.patch
 		"${FILESDIR}"/${P}-CVE-2024-0684.patch
+		"${FILESDIR}"/${P}-gnulib-clang-18-c23-stdckdint.patch
 	)
 
 	if ! use vanilla && [[ -d "${WORKDIR}"/${MY_PATCH} ]] ; then
