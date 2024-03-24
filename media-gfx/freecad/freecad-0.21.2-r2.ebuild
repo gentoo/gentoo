@@ -64,7 +64,7 @@ RDEPEND="
 	media-libs/qhull:=
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1
-	sci-libs/opencascade:=[json,vtk]
+	<sci-libs/opencascade-7.8.0:=[json,vtk]
 	sci-libs/orocos_kdl:=
 	sys-libs/zlib
 	virtual/libusb:1
