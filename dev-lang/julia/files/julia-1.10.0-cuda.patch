@@ -1,0 +1,30 @@
+diff --git a/Makefile b/Makefile
+index 1565014..5e9b4cc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -196,7 +196,7 @@ else ifeq ($(JULIA_BUILD_MODE),debug)
+ JL_PRIVATE_LIBS-0 += libjulia-internal-debug libjulia-codegen-debug
+ endif
+ ifeq ($(USE_GPL_LIBS), 1)
+-JL_PRIVATE_LIBS-$(USE_SYSTEM_LIBSUITESPARSE) += libamd libbtf libcamd libccolamd libcholmod libcholmod_cuda libcolamd libklu libldl librbio libspqr libspqr_cuda libsuitesparseconfig libumfpack
++JL_PRIVATE_LIBS-$(USE_SYSTEM_LIBSUITESPARSE) += libamd libbtf libcamd libccolamd libcholmod libcolamd libklu libldl librbio libspqr libsuitesparseconfig libumfpack
+ endif
+ JL_PRIVATE_LIBS-$(USE_SYSTEM_LIBBLASTRAMPOLINE) += libblastrampoline
+ JL_PRIVATE_LIBS-$(USE_SYSTEM_PCRE) += libpcre2-8
+
+diff --git a/base/Makefile b/base/Makefile
+index ad2bb6a..493302a 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -269,11 +269,9 @@ $(eval $(call symlink_system_library,LIBSUITESPARSE,libamd))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libcamd))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libccolamd))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libcholmod))
+-$(eval $(call symlink_system_library,LIBSUITESPARSE,libcholmod_cuda))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libcolamd))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libumfpack))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libspqr))
+-$(eval $(call symlink_system_library,LIBSUITESPARSE,libspqr_cuda))
+ $(eval $(call symlink_system_library,LIBSUITESPARSE,libsuitesparseconfig))
+ # EXCLUDED LIBRARIES (installed/used, but not vendored for use with dlopen):
+ # libunwind
