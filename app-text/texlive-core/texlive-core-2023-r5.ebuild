@@ -225,6 +225,10 @@ src_prepare() {
 	default
 
 	elibtoolize
+
+	# Drop this once cairo's autoconf patches are gone. See
+	# https://bugs.gentoo.org/927714#c4 and https://bugs.gentoo.org/853121.
+	"${S}"/reautoconf libs/cairo || die
 }
 
 src_configure() {
@@ -271,7 +275,6 @@ src_configure() {
 		--enable-tektronixwin
 		--enable-unitermwin
 		--enable-vlna
-		--enable-year2038
 		--disable-psutils
 		--disable-t1utils
 		--enable-ipc
