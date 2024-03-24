@@ -48,6 +48,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/krdc-winpr-version.patch"
+	)
+	ecm_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		# TODO: in port to KF6: PlasmaActivities
