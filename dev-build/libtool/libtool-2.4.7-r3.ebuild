@@ -98,7 +98,7 @@ src_configure() {
 	# to find a bash shell.  if /bin/sh is bash, it uses that.  this can
 	# cause problems for people who switch /bin/sh on the fly to other
 	# shells, so just force libtool to use /bin/bash all the time.
-	export CONFIG_SHELL="$(type -P bash)"
+	export CONFIG_SHELL="${EPREFIX}"/bin/bash
 
 	# Do not bother hardcoding the full path to sed.
 	# Just rely on $PATH. bug #574550
