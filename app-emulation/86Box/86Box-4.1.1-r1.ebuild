@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="dinput experimental +fluidsynth +munt new-dynarec +openal qt5 +qt6 +threads"
+IUSE="experimental +fluidsynth +munt new-dynarec +openal qt5 +qt6 +threads"
 
 DEPEND="
 	app-emulation/faudio
@@ -60,7 +60,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCPPTHREADS="$(usex threads)"
 		-DDEV_BRANCH="$(usex experimental)"
-		-DDINPUT="$(usex dinput)"
 		-DDYNAREC="ON"
 		-DMUNT_EXTERNAL="$(usex munt)"
 		-DFLUIDSYNTH="$(usex fluidsynth)"
