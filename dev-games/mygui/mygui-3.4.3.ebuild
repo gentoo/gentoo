@@ -42,6 +42,7 @@ STATIC_BUILD=${WORKDIR}/${P}_build_static
 PATCHES=(
 	"${FILESDIR}"/mygui-3.4.1-build.patch
 	"${FILESDIR}"/mygui-3.4.1-FHS.patch
+	"${FILESDIR}"/mygui-3.4.3-werror.patch
 )
 
 pkg_setup() {
