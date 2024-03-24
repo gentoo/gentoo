@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -219,7 +219,7 @@ src_prepare() {
 	sed -i -e 's/(executable-find "bwrap")/nil/' test/src/emacs-tests.el \
 		test/lisp/emacs-lisp/bytecomp-tests.el || die
 
-	#AT_M4DIR=m4 eautoreconf
+	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
