@@ -3,20 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-r1
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/rocminfo/"
+	EGIT_REPO_URI="https://github.com/ROCm/rocminfo/"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ROCm/rocminfo/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/rocminfo-rocm-${PV}"
 fi
 
 DESCRIPTION="ROCm Application for Reporting System Info"
-HOMEPAGE="https://github.com/RadeonOpenCompute/rocminfo"
+HOMEPAGE="https://github.com/ROCm/rocminfo"
 LICENSE="UoI-NCSA"
 SLOT="0/$(ver_cut 1-2)"
 
@@ -27,7 +27,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.0.0-detect-builtin-amdgpu.patch"
-	"${FILESDIR}/${PN}-6.0.0_python-3.12.patch"
 )
 
 src_prepare() {
