@@ -32,6 +32,6 @@ src_unpack() {
 		description = "tzdata shim to satisfy requirements (using system tzdata)"
 	EOF
 	cat > "${S}/tzdata.py" <<-EOF || die
-		raise ImportError("Please do not import tzdata, use zoneinfo module instead, see PEP 615")
+		raise ModuleNotFoundError("Please do not import tzdata, use zoneinfo module instead, see PEP 615")
 	EOF
 }
