@@ -203,7 +203,7 @@ src_configure() {
 		-Daudacity_use_wavpack=$(usex wavpack system off)
 		-Daudacity_use_libogg=$(usex ogg system off)
 		-Daudacity_use_libflac=$(usex flac system off)
-		-Daudacity_use_libopus=$(usex flac system off)
+		-Daudacity_use_libopus=$(usex opus system off)
 		-Daudacity_use_libvorbis=$(usex vorbis system off)
 		-Daudacity_use_libsndfile=system
 		-Daudacity_use_portaudio=system

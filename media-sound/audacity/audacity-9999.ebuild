@@ -97,7 +97,10 @@ RDEPEND="dev-db/sqlite:3
 	)
 	mpg123? ( media-sound/mpg123 )
 	ogg? ( media-libs/libogg )
-	opus? ( media-libs/opus )
+	opus? (
+		media-libs/opus
+		media-libs/opusfile
+	)
 	sbsms? ( media-libs/libsbsms )
 	twolame? ( media-sound/twolame )
 	vamp? ( media-libs/vamp-plugin-sdk )
@@ -192,7 +195,8 @@ src_configure() {
 		-Daudacity_use_libmp3lame=system
 		-Daudacity_use_libmpg123=$(usex mpg123 system off)
 		-Daudacity_use_libogg=$(usex ogg system off)
-		-Daudacity_use_libopus=$(usex flac system off)
+		-Daudacity_use_libopus=$(usex opus system off)
+		-Daudacity_use_opusfile=$(usex opus system off)
 		-Daudacity_use_libsndfile=system
 		-Daudacity_use_libvorbis=$(usex vorbis system off)
 		-Daudacity_use_lv2=$(usex lv2 system off)
