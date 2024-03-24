@@ -19,15 +19,17 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+l0 +vaapi"
 
-RDEPEND=">=media-libs/gmmlib-22.3.17:="
+RDEPEND="
+	>=dev-util/intel-graphics-compiler-1.0.15985.15
+	>=media-libs/gmmlib-22.3.17:=
+"
 
 DEPEND="
-	${DEPEND}
+	${RDEPEND}
 	dev-libs/intel-metrics-discovery:=
 	dev-libs/intel-metrics-library:=
 	dev-libs/libnl:3
 	dev-libs/libxml2:2
-	>=dev-util/intel-graphics-compiler-1.0.15985.15
 	>=dev-util/intel-graphics-system-controller-0.8.16:=
 	media-libs/mesa
 	>=virtual/opencl-3
