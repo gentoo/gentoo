@@ -177,6 +177,7 @@ src_configure() {
 
 		-DQT_UNITY_BUILD=ON # ~30% faster build, affects other dev-qt/* too
 
+		-DQT_FEATURE_relocatable=OFF #927691
 		$(qt_feature ssl openssl)
 		$(qt_feature ssl openssl_linked)
 		$(qt_feature udev libudev)
@@ -285,6 +286,10 @@ src_test() {
 		# broken with out-of-source + if qtbase is not already installed
 		tst_moc
 		tst_qmake
+		# similarly broken when relocatable=OFF (bug #927691)
+		tst_qapplication
+		tst_qt_cmake_create
+		tst_uic
 		# needs x11/opengl, we *could* run these but tend to be flaky
 		# when opengl rendering is involved (even if software-only)
 		tst_qopengl{,config,widget,window}
