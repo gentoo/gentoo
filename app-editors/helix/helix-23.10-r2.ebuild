@@ -300,6 +300,15 @@ PATCHES=(
 	"${FILESDIR}/helix-23.10-update-tree-sitter-d.patch"
 )
 
+src_prepare() {
+	default
+	for grammar_subdir in runtime/grammars/sources/*; do
+		if [ -d "${grammar_subdir}" ]; then
+			git config --global --add safe.directory "${PWD}/${grammar_subdir}"
+		fi
+	done
+}
+
 src_compile() {
 	use grammar || local -x HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
 
