@@ -8,6 +8,8 @@
 # @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @DESCRIPTION:
 # This eclass is for all functions pertaining to handling multilib configurations.
+# (For legacy EAPIs, this eclass was often needed for get_libdir. get_libdir is
+# provided by EAPI 6+ and hence this eclass isn't needed for that.)
 
 case ${EAPI} in
 	6|7|8) ;;

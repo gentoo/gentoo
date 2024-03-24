@@ -44,6 +44,17 @@ if [[ "${WEBAPP_OPTIONAL}" != "yes" ]]; then
 	RDEPEND="${DEPEND}"
 fi
 
+case ${EAPI} in
+	6)
+		DEPEND+=" app-alternatives/awk"
+		;;
+	*)
+		BDEPEND+=" app-alternatives/awk"
+		;;
+esac
+
+EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
+
 INSTALL_DIR="/${PN}"
 IS_UPGRADE=0
 IS_REPLACE=0
