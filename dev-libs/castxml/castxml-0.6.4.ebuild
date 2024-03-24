@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=18
+LLVM_MAX_SLOT=17
 inherit cmake llvm
 
 DESCRIPTION="C-family abstract syntax tree XML output tool"
