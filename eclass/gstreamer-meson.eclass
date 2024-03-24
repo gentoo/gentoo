@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # gstreamer@gentoo.org
 # @AUTHOR:
+# Mart Raudsepp <leio@gentoo.org>
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me>
 # Michał Górny <mgorny@gentoo.org>
 # Gilles Dartiguelongue <eva@gentoo.org>
@@ -12,7 +13,7 @@
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
 # Steven Newbury
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: meson multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins
 # @DESCRIPTION:
@@ -26,20 +27,24 @@
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
 
-# TODO: Remove after all older versions are gone from tree
-if ver_test ${PV} -lt 1.22.10 ; then
-	inherit virtualx
-fi
-# multilib-minimal goes last
-inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
-
 case "${EAPI:-0}" in
-	7)
+	7|8)
 		;;
 	*)
 		die "EAPI=\"${EAPI}\" is not supported"
 		;;
 esac
+
+PYTHON_COMPAT=( python3_{10..12} )
+[[ ${EAPI} == 8 ]] && inherit python-any-r1
+
+# TODO: Remove after all older versions are gone from tree
+if ver_test ${PV} -lt 1.22.10 ; then
+	inherit virtualx
+fi
+
+# multilib-minimal goes last
+inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
 
 # @ECLASS_VARIABLE: GST_PLUGINS_ENABLED
 # @DESCRIPTION:
@@ -208,6 +213,7 @@ BDEPEND="
 	virtual/pkgconfig
 	virtual/perl-JSON-PP
 "
+[[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
 
 if [[ "${PN}" != "gstreamer" ]]; then
 	RDEPEND="
@@ -445,6 +451,14 @@ gstreamer_multilib_src_compile() {
 	fi
 }
 
+# @FUNCTION: gstreamer-meson_pkg_setup
+# @DESCRIPTION:
+# Proxies python-any-r1_pkg_setup for forward-proofing any future pkg_setup needs.
+# Only exported for EAPI-8.
+gstreamer-meson_pkg_setup() {
+	python-any-r1_pkg_setup
+}
+
 # @FUNCTION: gstreamer_multilib_src_test
 # @DESCRIPTION:
 # Tests the gstreamer plugin (non-split)
@@ -483,3 +497,7 @@ gstreamer_multilib_src_install_all() {
 		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
 	done
 }
+
+if [[ ${EAPI} == 8 ]]; then
+	EXPORT_FUNCTIONS pkg_setup
+fi
