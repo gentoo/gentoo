@@ -1,0 +1,70 @@
+# Bug: https://bugs.gentoo.org/923956
+# Upstream PR: https://github.com/openssl/openssl/pull/23752
+--- a/providers/implementations/ciphers/cipher_aes_gcm_hw.c
++++ b/providers/implementations/ciphers/cipher_aes_gcm_hw.c
+@@ -142,9 +142,9 @@ static const PROV_GCM_HW aes_gcm = {
+ # include "cipher_aes_gcm_hw_armv8.inc"
+ #elif defined(PPC_AES_GCM_CAPABLE) && defined(_ARCH_PPC64)
+ # include "cipher_aes_gcm_hw_ppc.inc"
+-#elif defined(__riscv) && __riscv_xlen == 64
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ # include "cipher_aes_gcm_hw_rv64i.inc"
+-#elif defined(__riscv) && __riscv_xlen == 32
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 32
+ # include "cipher_aes_gcm_hw_rv32i.inc"
+ #else
+ const PROV_GCM_HW *ossl_prov_aes_hw_gcm(size_t keybits)
+--- a/providers/implementations/ciphers/cipher_aes_hw.c
++++ b/providers/implementations/ciphers/cipher_aes_hw.c
+@@ -142,9 +142,9 @@ const PROV_CIPHER_HW *ossl_prov_cipher_hw_aes_##mode(size_t keybits)           \
+ # include "cipher_aes_hw_t4.inc"
+ #elif defined(S390X_aes_128_CAPABLE)
+ # include "cipher_aes_hw_s390x.inc"
+-#elif defined(__riscv) && __riscv_xlen == 64
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ # include "cipher_aes_hw_rv64i.inc"
+-#elif defined(__riscv) && __riscv_xlen == 32
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 32
+ # include "cipher_aes_hw_rv32i.inc"
+ #else
+ /* The generic case */
+--- a/providers/implementations/ciphers/cipher_aes_ocb_hw.c
++++ b/providers/implementations/ciphers/cipher_aes_ocb_hw.c
+@@ -104,7 +104,7 @@ static const PROV_CIPHER_HW aes_t4_ocb = {                                     \
+     if (SPARC_AES_CAPABLE)                                                     \
+         return &aes_t4_ocb;
+ 
+-#elif defined(__riscv) && __riscv_xlen == 64
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ 
+ static int cipher_hw_aes_ocb_rv64i_zknd_zkne_initkey(PROV_CIPHER_CTX *vctx,
+                                                      const unsigned char *key,
+@@ -126,7 +126,7 @@ static const PROV_CIPHER_HW aes_rv64i_zknd_zkne_ocb = {                        \
+     if (RISCV_HAS_ZKND_AND_ZKNE())                                             \
+         return &aes_rv64i_zknd_zkne_ocb;
+ 
+-#elif defined(__riscv) && __riscv_xlen == 32
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 32
+ 
+ static int cipher_hw_aes_ocb_rv32i_zknd_zkne_initkey(PROV_CIPHER_CTX *vctx,
+                                                      const unsigned char *key,
+--- a/providers/implementations/ciphers/cipher_aes_xts_hw.c
++++ b/providers/implementations/ciphers/cipher_aes_xts_hw.c
+@@ -159,7 +159,7 @@ static const PROV_CIPHER_HW aes_xts_t4 = {                                     \
+ if (SPARC_AES_CAPABLE)                                                         \
+     return &aes_xts_t4;
+ 
+-#elif defined(__riscv) && __riscv_xlen == 64
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ 
+ static int cipher_hw_aes_xts_rv64i_zknd_zkne_initkey(PROV_CIPHER_CTX *ctx,
+                                                      const unsigned char *key,
+@@ -185,7 +185,7 @@ static const PROV_CIPHER_HW aes_xts_rv64i_zknd_zkne = {                        \
+ if (RISCV_HAS_ZKND_AND_ZKNE())                                                 \
+     return &aes_xts_rv64i_zknd_zkne;
+ 
+-#elif defined(__riscv) && __riscv_xlen == 32
++#elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 32
+ 
+ static int cipher_hw_aes_xts_rv32i_zknd_zkne_initkey(PROV_CIPHER_CTX *ctx,
+                                                      const unsigned char *key,
