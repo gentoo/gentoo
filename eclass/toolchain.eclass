@@ -1616,11 +1616,11 @@ gcc_do_filter_flags() {
 			[[ -z ${x} || ${x} -gt 64 ]] && break
 			l1_cache_size=$(taskset --cpu-list ${x} $(tc-getCC) -Q --help=params -O2 -march=native \
 				| awk '{ if ($1 ~ /^.*param.*l1-cache-size/) print $2; }' || die)
-			[[ -n ${l1_cache_size} && ${l1_cache_size} =~ "^[0-9]+$" ]] || break
+			[[ -n ${l1_cache_size} && ${l1_cache_size} =~ ^[0-9]+$ ]] || break
 			l1_cache_sizes[${l1_cache_size}]=1
 		done
 		# If any of them are different, just pick the first one.
-		if [[ ${#l1_cache_sizes} -gt 1 ]] ; then
+		if [[ ${#l1_cache_sizes[@]} -gt 1 ]] ; then
 			append-flags --param=l1-cache-size=${l1_cache_size}
 		fi
 	fi
