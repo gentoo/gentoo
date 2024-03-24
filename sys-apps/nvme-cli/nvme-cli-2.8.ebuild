@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linux-nvme/nvme-cli/archive/v${PV}.tar.gz -> ${P}.gh
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+json"
 
 RDEPEND="
