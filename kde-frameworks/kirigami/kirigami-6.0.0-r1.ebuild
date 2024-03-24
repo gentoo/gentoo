@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PATCHSET="${P}-patchset"
 ECM_EXAMPLES="true"
 ECM_QTHELP="false"
 ECM_TEST="true"
@@ -11,6 +12,7 @@ inherit ecm frameworks.kde.org toolchain-funcs
 
 DESCRIPTION="Lightweight user interface framework for mobile and convergent applications"
 HOMEPAGE="https://techbase.kde.org/Kirigami"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64"
@@ -30,6 +32,8 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
 "
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
+
+PATCHES=( "${WORKDIR}/${PATCHSET}" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
