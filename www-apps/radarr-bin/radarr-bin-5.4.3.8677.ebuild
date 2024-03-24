@@ -61,18 +61,18 @@ src_prepare() {
 }
 
 src_install() {
-	newinitd "${FILESDIR}/jellyfin.init" jellyfin
+	newinitd "${FILESDIR}/radarr.init" radarr
 
-	keepdir /var/lib/jellyfin
-	fowners -R jellyfin:jellyfin /var/lib/jellyfin
+	keepdir /var/lib/radarr
+	fowners -R radarr:radarr /var/lib/radarr
 
 	insinto /etc/logrotate.d
 	insopts -m0644 -o root -g root
-	newins "${FILESDIR}/jellyfin.logrotate" jellyfin
+	newins "${FILESDIR}/radarr.logrotate" radarr
 
-	dodir  "/opt/jellyfin"
+	dodir  "/opt/radarr"
 	cp -R "${S}/." "${D}/opt/radarr" || die "Install failed!"
 
 	systemd_dounit "${FILESDIR}/radarr.service"
-	systemd_newunit "${FILESDIR}/radarr.service" "jellyfin@.service"
+	systemd_newunit "${FILESDIR}/radarr.service" "radarr@.service"
 }
