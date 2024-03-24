@@ -3,16 +3,18 @@
 
 EAPI=8
 
+COMMIT="c63115464d8f6556fb4cac93ce8740afea1b00d5"
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit git-r3 linux-info python-single-r1 systemd toolchain-funcs
+inherit linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+SRC_URI="https://github.com/tvheadend/tvheadend/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
 
 REQUIRED_USE="
@@ -61,6 +63,8 @@ RDEPEND+="
 	dvb? ( media-tv/dtv-scan-tables )
 	xmltv? ( media-tv/xmltv )
 "
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 # Some patches from:
 # https://github.com/rpmfusion/tvheadend
