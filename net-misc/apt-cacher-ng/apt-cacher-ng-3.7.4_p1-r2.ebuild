@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6-optional-systemd.patch"
 	"${FILESDIR}/${PN}-3.7.4-strlcpy-glibc-2.38.patch"
 	"${FILESDIR}/${PN}-3.7.4-musl.patch"
+	"${FILESDIR}/${PN}-3.7.4-gcc14.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
