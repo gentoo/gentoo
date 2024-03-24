@@ -110,7 +110,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/freerdp-3.4.0-incompatible-pointer.patch"
 	)
-	default
+	cmake_src_prepare
 }
 
 option() {
