@@ -252,25 +252,36 @@ multilib_src_configure() {
 	fi
 }
 
-efi_arch() {
-	case "$(tc-arch)" in
-		amd64) echo x64 ;;
-		arm)   echo arm ;;
-		arm64) echo aa64 ;;
-		x86)   echo x86 ;;
-	esac
-}
-
 multilib_src_compile() {
 	local targets=()
 	if multilib_is_native_abi; then
 		if use boot; then
+			local efi_arch= efi_arch_alt=
+			case ${CHOST} in
+				aarch64*)     efi_arch=aa64 ;;
+				arm*)         efi_arch=arm ;;
+				loongarch32*) efi_arch=loongarch32 ;;
+				loongarch64*) efi_arch=loongarch64 ;;
+				riscv32*)     efi_arch=riscv32 ;;
+				riscv64*)     efi_arch=riscv64 ;;
+				x86_64*)      efi_arch=x64 efi_arch_alt=ia32;;
+				i?86*)        efi_arch=ia32 ;;
+			esac
 			targets+=(
 				bootctl
 				man/bootctl.1
-				src/boot/efi/linux$(efi_arch).efi.stub
-				src/boot/efi/systemd-boot$(efi_arch).efi
+				src/boot/efi/systemd-boot${efi_arch}.efi
+				src/boot/efi/linux${efi_arch}.efi.stub
+				src/boot/efi/addon${efi_arch}.efi.stub
 			)
+			if [[ -n ${efi_arch_alt} ]]; then
+				targets+=(
+					src/boot/efi/systemd-boot${efi_arch_alt}.efi
+					src/boot/efi/linux${efi_arch_alt}.efi.stub
+					src/boot/efi/addon${efi_arch_alt}.efi.stub
+				)
+			fi
+
 		fi
 		if use kernel-install; then
 			targets+=(
@@ -288,6 +299,7 @@ multilib_src_compile() {
 			if use test; then
 				targets+=(
 					systemd-runtest.env
+					test-offline-passwd
 				)
 			fi
 		fi
@@ -308,7 +320,9 @@ multilib_src_compile() {
 				systemd-hwdb
 				ata_id
 				cdrom_id
+				dmi_memory_id
 				fido_id
+				iocost
 				mtd_probe
 				scsi_id
 				v4l_id
@@ -336,15 +350,24 @@ multilib_src_compile() {
 				rules.d/50-udev-default.rules
 				rules.d/60-persistent-storage.rules
 				rules.d/64-btrfs.rules
+				rules.d/70-uaccess.rules.in
+				rules.d/71-seat.rules.in
+				rules.d/73-seat-late.rules.in
+				rules.d/99-systemd.rules
 			)
 			if use test; then
 				targets+=(
 					test-fido-id-desc
+					test-link-config-tables
 					test-udev-builtin
-					test-udev-event
+					test-udev-device-thread
+					test-udev-format
+					test-udev-manager
 					test-udev-node
+					test-udev-rule-runner
+					test-udev-rules
+					test-udev-spawn
 					test-udev-util
-					udev-rule-runner
 				)
 			fi
 		fi
@@ -377,38 +400,27 @@ multilib_src_compile() {
 multilib_src_test() {
 	local tests=()
 	if multilib_is_native_abi; then
+		if use boot; then
+			tests+=( --suite boot )
+		fi
+		if use kernel-install; then
+			tests+=( --suite kernel-install )
+		fi
 		if use sysusers; then
-			tests+=(
-				test-sysusers
-			)
+			tests+=( --suite sysusers )
 		fi
 		if use tmpfiles; then
-			tests+=(
-				test-systemd-tmpfiles
-				test-tmpfile-util
-			)
+			tests+=( --suite tmpfiles )
 		fi
 		if use udev; then
-			tests+=(
-				rule-syntax-check
-				test-fido-id-desc
-				test-udev
-				test-udev-builtin
-				test-udev-event
-				test-udev-node
-				test-udev-util
-			)
+			tests+=( --suite udev )
 		fi
 	fi
 	if use udev; then
-		tests+=(
-			test-libudev
-			test-libudev-sym
-			test-udev-device-thread
-		)
+		tests+=( --suite libudev )
 	fi
 	if [[ ${#tests[@]} -ne 0 ]]; then
-		meson_src_test "${tests[@]}"
+		meson_src_test --no-rebuild "${tests[@]}"
 	fi
 }
 
@@ -421,11 +433,6 @@ set_rpath() {
 }
 
 multilib_src_install() {
-	if use udev; then
-		meson_install --no-rebuild --tags libudev
-		insinto "/usr/$(get_libdir)/pkgconfig"
-		doins src/libudev/libudev.pc
-	fi
 	if multilib_is_native_abi; then
 		exeinto "/usr/$(get_libdir)/systemd"
 		doexe src/shared/libsystemd-shared-${PV%%.*}.so
@@ -433,8 +440,7 @@ multilib_src_install() {
 			set_rpath bootctl
 			dobin bootctl
 			doman man/bootctl.1
-			insinto /usr/lib/systemd/boot/efi
-			doins src/boot/efi/{linux$(efi_arch).{efi,elf}.stub,systemd-boot$(efi_arch).efi}
+			meson_install --no-rebuild --tags systemd-boot
 		fi
 		if use kernel-install; then
 			set_rpath kernel-install
@@ -461,8 +467,8 @@ multilib_src_install() {
 			dosym ../../bin/udevadm /usr/lib/systemd/systemd-udevd
 
 			exeinto /usr/lib/udev
-			set_rpath {ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
-			doexe {ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
+			set_rpath {ata_id,cdrom_id,dmi_memory_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
+			doexe {ata_id,cdrom_id,dmi_memory_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
 
 			rm -f rules.d/99-systemd.rules
 			insinto /usr/lib/udev/rules.d
@@ -484,6 +490,11 @@ multilib_src_install() {
 			doexe ukify
 			doman man/ukify.1
 		fi
+	fi
+	if use udev; then
+		meson_install --no-rebuild --tags libudev
+		insinto "/usr/$(get_libdir)/pkgconfig"
+		doins src/libudev/libudev.pc
 	fi
 }
 
