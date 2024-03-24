@@ -25,6 +25,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
