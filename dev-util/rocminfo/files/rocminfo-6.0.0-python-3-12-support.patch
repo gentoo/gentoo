@@ -1,0 +1,34 @@
+Fix "SyntaxWarning: invalid escape sequence" SyntaxWarning in python 3.12+
+Bug: https://github.com/ROCm/rocminfo/issues/69
+--- a/rocm_agent_enumerator
++++ b/rocm_agent_enumerator
+@@ -92,7 +92,7 @@ def getGCNISA(line, match_from_beginning = False):
+    return result.group(0)
+  return None
+ 
+-@staticVars(search_name=re.compile("gfx[0-9a-fA-F]+(:[-+:\w]+)?"))
++@staticVars(search_name=re.compile(r"gfx[0-9a-fA-F]+(:[-+:\w]+)?"))
+ def getGCNArchName(line):
+  result = getGCNArchName.search_name.search(line)
+ 
+@@ -149,9 +149,9 @@ def readFromROCMINFO(search_arch_name = False):
+ 
+   # search AMDGCN gfx ISA
+   if search_arch_name is True:
+-    line_search_term = re.compile("\A\s+Name:\s+(amdgcn-amd-amdhsa--gfx\d+)")
++    line_search_term = re.compile(r"\A\s+Name:\s+(amdgcn-amd-amdhsa--gfx\d+)")
+   else:
+-    line_search_term = re.compile("\A\s+Name:\s+(gfx\d+)")
++    line_search_term = re.compile(r"\A\s+Name:\s+(gfx\d+)")
+   for line in rocminfo_output:
+     if line_search_term.match(line) is not None:
+       if search_arch_name is True:
+@@ -172,7 +172,7 @@ def readFromLSPCI():
+   except:
+     lspci_output = []
+ 
+-  target_search_term = re.compile("1002:\w+")
++  target_search_term = re.compile(r"1002:\w+")
+   for line in lspci_output:
+     search_result = target_search_term.search(line)
+     if search_result is not None:
