@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,7 @@ IUSE="+center-tap-short"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.16.3-kernel-6.4.10-fix.patch
 	"${FILESDIR}"/${PN}-2.16.3-asus-c5000-support.patch
+	"${FILESDIR}"/${PN}-2.17.1-kernel-6.8-strscpy.patch
 )
 
 src_compile() {
