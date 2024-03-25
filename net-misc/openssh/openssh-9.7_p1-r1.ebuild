@@ -322,8 +322,6 @@ src_install() {
 	doman contrib/ssh-copy-id.1
 	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
 
-	diropts -m 0700
-	dodir /etc/skel/.ssh
 	rmdir "${ED}"/var/empty || die
 
 	systemd_dounit "${FILESDIR}"/sshd.socket
