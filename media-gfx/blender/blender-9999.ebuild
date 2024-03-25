@@ -11,8 +11,8 @@ DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
 
 if [[ ${PV} = *9999* ]] ; then
-	# Subversion is needed for downloading unit test files
-	inherit git-r3 subversion
+	EGIT_LFS="yes"
+	inherit git-r3
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
 else
@@ -182,13 +182,10 @@ src_unpack() {
 
 		git-r3_fetch "${ADDONS_EGIT_REPO_URI}"
 		git-r3_checkout "${ADDONS_EGIT_REPO_URI}" "${S}/scripts/addons"
+		# TODO
+		#if use test; then
 
-		if use test; then
-			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
-			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-		fi
-		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
-		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
+		#fi
 	else
 		default
 		if use test; then
@@ -257,6 +254,7 @@ src_configure() {
 		-DWITH_CLANG=$(usex osl)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
+		-DWITH_CPU_CHECK=no
 		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_CUDA_BINARIES=$(usex cuda $(usex cycles-bin-kernels))
 		-DWITH_CYCLES_DEVICE_ONEAPI=no
