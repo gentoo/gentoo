@@ -3,9 +3,11 @@
 
 EAPI=8
 
+inherit systemd
+
 DESCRIPTION="cronolog wrapper for use with dumb daemons like squid, varnish and so on"
-HOMEPAGE="https://cgit.gentoo.org/proj/fifo-cronolog.git"
-SRC_URI="http://dev.gentoo.org/~robbat2/distfiles/${P}.tar.bz2"
+HOMEPAGE="https://gitweb.gentoo.org/proj/fifo-cronolog.git"
+SRC_URI="http://dev.gentoo.org/~robbat2/distfiles/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
@@ -13,13 +15,20 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="app-admin/cronolog"
 
+src_compile() {
+	emake all
+}
+
 src_install() {
 	dosbin fifo-cronolog
-
-	newinitd fifo-cronolog.initd fifo-cronolog
-	newconfd fifo-cronolog.confd fifo-cronolog
-
 	dosym fifo-cronolog /usr/sbin/squid-cronolog
+	dosbin fifo-cronolog-setup
+
+	newinitd openrc/fifo-cronolog.initd fifo-cronolog
+	newconfd openrc/fifo-cronolog.confd fifo-cronolog
+
+	systemd_dounit systemd/fifo-cronolog@.service
+	dodoc README.md systemd/fifo-cronolog@example.service.env
 }
 
 pkg_postinst() {
