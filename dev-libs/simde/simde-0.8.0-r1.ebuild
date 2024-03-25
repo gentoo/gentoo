@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.6-musl.patch
+	"${FILESDIR}"/${P}-xop.patch
 )
 
 src_configure() {
