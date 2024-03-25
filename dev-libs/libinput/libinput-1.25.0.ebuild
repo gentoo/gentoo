@@ -44,6 +44,7 @@ BDEPEND="
 	test? (
 		$(python_gen_any_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -61,6 +62,7 @@ python_check_deps() {
 	if use test; then
 		python_has_version \
 			"dev-python/pytest[${PYTHON_USEDEP}]" \
+			"dev-python/pytest-xdist[${PYTHON_USEDEP}]" \
 		|| return
 	fi
 }
