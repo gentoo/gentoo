@@ -8,7 +8,7 @@ inherit gstreamer-meson
 
 DESCRIPTION="Video sink plugin for GStreamer that renders to a GtkWidget"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+egl gles2 +opengl wayland +X" # Keep default IUSE mirrored with gst-plugins-base
+IUSE="+egl +gles2 opengl wayland +X" # Keep default IUSE mirrored with gst-plugins-base
 # egl, wayland and X only matters if gst-plugins-base is built with USE=opengl and/or USE=gles2
 # We mirror egl/gles2/opengl/wayland/X due to automagic detection from gstreamer-gl.pc variables;
 # we don't care about matching egl/wayland/X if both opengl and gles2 are disabled here and on
