@@ -1,7 +1,7 @@
 # Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake desktop flag-o-matic
 
@@ -14,7 +14,6 @@ SRC_URI="
 	mirror://sourceforge/speed-dreams/${PN}-src-hq-cars-and-tracks-${MY_PV}.tar.xz
 	mirror://sourceforge/speed-dreams/${PN}-src-more-hq-cars-and-tracks-${MY_PV}.tar.xz
 	mirror://sourceforge/speed-dreams/${PN}-src-wip-cars-and-tracks-${MY_PV}.tar.xz"
-S="${WORKDIR}"
 
 LICENSE="GPL-2+ BitstreamVera CC0-1.0 Free-Art-1.2 OFL-1.1"
 SLOT="0"
@@ -44,6 +43,12 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3_rc1-xmlversion-rpath.patch
 )
+
+src_unpack() {
+	mkdir "${S}" || die
+	cd "${S}"
+	default
+}
 
 src_configure() {
 	append-cppflags -I. #806980
