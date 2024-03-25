@@ -690,43 +690,16 @@ PATCHES=(
 IUSE="+gui qt6 test"
 RESTRICT="!gui? ( test ) !test? ( test )"
 
-# The program itself is licensed under AGPL-3+ with contributed portions licensed
-# under BSD-3.
-# The translation files are licensed under BSD-3 and public-domain.
-# - ftl/
-LICENSE="AGPL-3+ BSD public-domain"
+# How to get an up-to-date summary of runtime JS libs' licenses:
+# ./node_modules/.bin/license-checker-rseidelsohn --production --excludePackages anki --summary
+LICENSE="AGPL-3+ BSD public-domain gui? ( 0BSD CC-BY-4.0 GPL-3+ Unlicense )"
 # Dependent crate licenses
 LICENSE+="
-	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0 ISC MIT
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 CC0-1.0 ISC MIT
 	MPL-2.0 Unicode-DFS-2016 ZLIB
 "
 # Manually added crate licenses
-LICENSE+=" openssl"
-# The supermemo importer is licensed under GPL-3+ and 0BSD.
-# - pylib/anki/importing/supermemo_xml.py
-#
-# Anki bundles 3rd-party code and assets:
-# The MathJax files are licensed under Apache-2.0.
-# - node_modules/mathjax/es5/
-#
-# The fancy deboss pattern is licensed under CC-BY-4.0.
-# - pylib/anki/statsbg.py
-#
-# The patched MPV controls are licensed under MIT.
-# - qt/aqt/mpv.py
-#
-# The Winpath module is licensed under MIT.
-# - qt/aqt/winpaths.py
-#
-# The licenses for the runtime JS libaries are documented in the source code.
-# - ts/licenses.json
-# How to get an up-to-date summary:
-# ./node_modules/.bin/license-checker-rseidelsohn --production --excludePackages anki --summary
-#
-# The vendored Flot plotting library is licensed under MIT.
-# - qt/aqt/data/web/js/vendor/plot.js
-LICENSE+=" gui? ( 0BSD CC-BY-4.0 GPL-3+ Unlicense )"
-
+LICENSE+=" Unicode-3.0 openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
