@@ -12,7 +12,9 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coredns/coredns.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	#SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	# The v1.11.2 tag went missing upstream, so use a previously fetched copy.
+	SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.gz"
 	SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 	KEYWORDS="amd64"
 fi
