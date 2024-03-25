@@ -15,7 +15,6 @@ SRC_URI="
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 COMMON_DEPEND="acct-group/bind_exporter
 	acct-user/bind_exporter"

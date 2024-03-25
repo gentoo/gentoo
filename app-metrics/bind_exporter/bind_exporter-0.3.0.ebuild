@@ -12,7 +12,6 @@ SRC_URI="https://github.com/digitalocean/bind_exporter/archive/v${PV}.tar.gz -> 
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 COMMON_DEPEND="acct-group/bind_exporter
 	acct-user/bind_exporter"
