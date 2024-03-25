@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib toolchain-funcs multilib-minimal
+inherit flag-o-matic multilib toolchain-funcs multilib-minimal
 
 MY_P="cmt_${PV}"
 S="${WORKDIR}/${MY_P}"
@@ -37,6 +37,11 @@ src_prepare() {
 }
 
 multilib_src_compile() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860120
+	# Upstream contact method is email. I have sent one describing the issue.
+	filter-lto
+
 	cd src
 	tc-export CXX
 	emake PLUGIN_LIB="cmt.so"
