@@ -1,0 +1,17 @@
+--- a/package-lint.el
++++ b/package-lint.el
+@@ -113,11 +113,9 @@ optional minimum version containing the feature.")
+ (defun package-lint--load-data (file)
+   "Load sexp data from FILE."
+   (with-temp-buffer
+-    (insert-file-contents
+-     (expand-file-name file
+-                       (if load-file-name
+-                           (file-name-directory load-file-name)
+-                         default-directory)))
++    (let ((ef (expand-file-name file "@SITEETC@")))
++      (insert-file-contents
++       (if (file-exists-p ef) ef file)))
+     (read (current-buffer))))
+ 
+ (defconst package-lint-symbol-info
