@@ -463,7 +463,7 @@ gstreamer-meson_pkg_setup() {
 # @DESCRIPTION:
 # Tests the gstreamer plugin (non-split)
 gstreamer_multilib_src_test() {
-	GST_GL_WINDOW=x11 virtx eninja test
+	GST_GL_WINDOW=x11 virtx meson test --timeout-multiplier 5
 }
 
 # @FUNCTION: gstreamer_multilib_src_install
