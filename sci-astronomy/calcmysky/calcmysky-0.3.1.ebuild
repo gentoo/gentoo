@@ -21,7 +21,7 @@ REQUIRED_USE="|| ( qt5 qt6 )"
 
 DEPEND="
 	dev-cpp/eigen:3
-	media-libs/glm
+	<media-libs/glm-1
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5[-gles2-only]
