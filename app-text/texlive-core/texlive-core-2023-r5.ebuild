@@ -216,7 +216,7 @@ src_prepare() {
 	cd "${S}" || die
 
 	sed -i \
-		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,$(pkg-config kpathsea --variable=includedir)\"," \
+		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,$($(tc-getPKG_CONFIG) kpathsea --variable=includedir)\"," \
 		texk/web2c/configure || die
 
 	local patch_dir="${WORKDIR}/tex-patches-${GENTOO_TEX_PATCHES_NUM}"
