@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 GST_ORG_MODULE=gst-plugins-good
 
 inherit gstreamer-meson
@@ -23,8 +23,6 @@ RDEPEND="
 	>=x11-libs/gtk+-3.15:3[${MULTILIB_USEDEP}]
 	gles2? ( ${GL_DEPS} )
 	opengl? ( ${GL_DEPS} )
-
-	!<media-libs/gst-plugins-bad-1.13.1:1.0
 "
 DEPEND="${RDEPEND}"
 
