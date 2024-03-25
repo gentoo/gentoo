@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">office/kbibtex</remote-id>
 	</upstream>
 	<use>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for HTML previews</flag>
