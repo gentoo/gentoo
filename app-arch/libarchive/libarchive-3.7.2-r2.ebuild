@@ -138,6 +138,13 @@ src_test() {
 	mkdir -p "${T}"/bin || die
 	# tests fail when lbzip2[symlink] is used in place of ref bunzip2
 	ln -s "${BROOT}/bin/bunzip2" "${T}"/bin || die
+	# workaround lrzip broken on 32-bit arches with >= 10 threads
+	# https://bugs.gentoo.org/927766
+	cat > "${T}"/bin/lrzip <<-EOF || die
+		#!/bin/sh
+		exec "$(type -P lrzip)" -p1 "\${@}"
+	EOF
+	chmod +x "${T}/bin/lrzip" || die
 	local -x PATH=${T}/bin:${PATH}
 	multilib-minimal_src_test
 }
