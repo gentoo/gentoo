@@ -230,7 +230,7 @@ _distutils_set_globals() {
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.17.0[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.21.1[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -240,7 +240,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-1.0.1[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.4.0[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -249,12 +249,12 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.13.1[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.15.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-5.11.1[${PYTHON_USEDEP}]
+					>=dev-python/pbr-6.0.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm)
@@ -264,27 +264,27 @@ _distutils_set_globals() {
 				;;
 			pdm-backend)
 				bdep+='
-					>=dev-python/pdm-backend-2.1.0[${PYTHON_USEDEP}]
+					>=dev-python/pdm-backend-2.1.8[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.6.1[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			scikit-build-core)
 				bdep+='
-					>=dev-python/scikit-build-core-0.4.6[${PYTHON_USEDEP}]
+					>=dev-python/scikit-build-core-0.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-67.8.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.7.9[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.8.3[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -299,7 +299,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-67.8.0-r1[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -508,7 +508,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps=">=dev-python/sphinx-5.3.0[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-7.2.6[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -532,7 +532,7 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in ">=dev-python/sphinx-5.3.0" \
+			for p in ">=dev-python/sphinx-7.2.6" \
 				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
 			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
@@ -540,7 +540,7 @@ distutils_enable_sphinx() {
 			done
 		}
 	else
-		deps=">=dev-python/sphinx-5.3.0"
+		deps=">=dev-python/sphinx-7.2.6"
 	fi
 
 	sphinx_compile_all() {
@@ -621,7 +621,7 @@ distutils_enable_tests() {
 			test_pkgs='>=dev-python/nose-1.3.7_p20221026[${PYTHON_USEDEP}]'
 			;;
 		pytest)
-			test_pkgs='>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]'
+			test_pkgs='>=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
 				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
 			fi
