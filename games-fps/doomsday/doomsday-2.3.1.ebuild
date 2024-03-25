@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit cmake python-any-r1 qmake-utils readme.gentoo-r1 xdg
+inherit cmake flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
 HOMEPAGE="https://www.dengine.net"
@@ -55,6 +55,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/858743
+	#
+	# Currently working on reporting an upstream bug. Four different websites
+	# including sourceforge and github but the only place for submitting bugs
+	# is a self-hosted redmine that has disabled registration.
+	filter-lto
+
 	local mycmakeargs=(
 		-DDENG_ASSIMP_EMBEDDED=OFF
 		-DDENG_ENABLE_DISPLAYMODE=$(usex display-mode)
