@@ -208,7 +208,7 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_PV}/patches
-	"${PATCHES_DIR}"/
+	"${PATCHES_DIR}"/patches
 )
 
 pkg_pretend() {
@@ -697,10 +697,10 @@ src_install() {
 
 	if use doc; then
 		dodoc UserManual.pdf UserManual.q{ch,hc}
-		docompress -x /usr/share/doc/${PF}/UserManual.*
+		docompress -x /usr/share/doc/${PF}/UserManual.q{ch,hc}
 	elif use gui; then
 		dodoc "${WORKDIR}"/${MY_PN}-help-${ORIGIN_PV}/UserManual.q{ch,hc}
-		docompress -x /usr/share/doc/${PF}/UserManual.*
+		docompress -x /usr/share/doc/${PF}/UserManual.q{ch,hc}
 	fi
 	dodoc ${PATCHES_DIR}/README.*
 
