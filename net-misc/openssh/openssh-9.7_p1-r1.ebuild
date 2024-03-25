@@ -307,7 +307,6 @@ src_test() {
 	emake -j1 "${tests[@]}" </dev/null
 }
 
-
 src_install() {
 	emake install-nokeys DESTDIR="${D}"
 	fperms 600 /etc/ssh/sshd_config
