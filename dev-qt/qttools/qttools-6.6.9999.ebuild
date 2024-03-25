@@ -39,8 +39,8 @@ RDEPEND="
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? (
 		$(llvm_gen_dep '
-			sys-devel/clang:${LLVM_SLOT}
-			sys-devel/llvm:${LLVM_SLOT}
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
 		')
 	)
 	designer? (
