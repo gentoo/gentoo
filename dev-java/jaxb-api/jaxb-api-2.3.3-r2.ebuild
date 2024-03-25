@@ -1,9 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/eclipse-ee4j/jaxb-api/archive/refs/tags/2.3.3.tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild jaxb-api-2.3.3.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
@@ -13,17 +10,13 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta XML Binding API"
-HOMEPAGE="https://github.com/eclipse-ee4j/jaxb-api"
-SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/jakartaee/jaxb-api"
+SRC_URI="https://github.com/jakartaee/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="EPL-1.0"
 SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
-
-# Common dependencies
-# POM: pom.xml
-# jakarta.activation:jakarta.activation-api:1.2.2 -> >=dev-java/jakarta-activation-api-2.0.1:0
-# jakarta.xml.bind:jakarta.xml.bind-api:2.3.3 -> >=dev-java/jaxb-api-2.3.3:0
 
 CDEPEND="dev-java/jakarta-activation-api:1"
 DEPEND="${CDEPEND}
@@ -33,7 +26,6 @@ RDEPEND="${CDEPEND}
 
 DOCS=( {LICENSE,NOTICE,README}.md )
 PATCHES=( "${FILESDIR}/jaxb-api-2.3.3-dropSecurityManager.patch" )
-S="${WORKDIR}/${P}/${PN}"
 
 JAVA_GENTOO_CLASSPATH="jakarta-activation-api-1"
 JAVA_GENTOO_CLASSPATH_EXTRA="jaxb-api.jar"
@@ -47,9 +39,4 @@ JAVA_TEST_SRC_DIR="${PN}-test/src/test/java"
 src_prepare() {
 	default #780585
 	java-pkg-2_src_prepare
-}
-
-src_install() {
-	default
-	java-pkg-simple_src_install
 }
