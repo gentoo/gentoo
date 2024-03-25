@@ -13,6 +13,8 @@ DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
 SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/refs/tags/version_${MY_PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
+
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
@@ -55,8 +57,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-libexpat-double-definition-fix.patch"
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
 )
-
-S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
 
 src_prepare() {
 	if has_version ">=sci-libs/opencascade-7.8.0"; then
