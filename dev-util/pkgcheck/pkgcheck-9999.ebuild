@@ -72,7 +72,7 @@ src_compile() {
 
 python_install_all() {
 	local DOCS=( NEWS.rst )
-	[[ ${PV} == *9999 ]] || doman man/*
+	[[ ${PV} == *9999 ]] || doman build/sphinx/man/*
 	distutils-r1_python_install_all
 
 	if use emacs ; then
