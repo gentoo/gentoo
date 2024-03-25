@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit user-info flag-o-matic autotools pam systemd toolchain-funcs verify-sig
+inherit user-info optfeature flag-o-matic autotools pam systemd toolchain-funcs verify-sig
 
 # Make it more portable between straight releases
 # and _p? releases.
@@ -59,7 +59,7 @@ REQUIRED_USE="
 	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( ssl !xmss )
+	X509? ( ssl !xmss !security-key )
 	xmss? ( ssl  )
 	test? ( ssl )
 "
@@ -74,39 +74,33 @@ LIB_DEPEND="
 		net-libs/ldns[ecdsa(+),ssl(+)]
 	)
 	libedit? ( dev-libs/libedit:=[static-libs(+)] )
-	security-key? ( >=dev-libs/libfido2-1.5.0:=[static-libs(+)] )
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? ( >=dev-libs/openssl-1.1.1l-r1:0=[static-libs(+)] )
 	virtual/libcrypt:=[static-libs(+)]
 	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
 "
 RDEPEND="
-	!net-misc/openssh
 	acct-group/sshd
 	acct-user/sshd
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	pam? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	virtual/os-headers
 	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-5.1 ) )
 	static? ( ${LIB_DEPEND} )
 "
-RDEPEND="${RDEPEND}
+RDEPEND="
+	${RDEPEND}
+	!net-misc/openssh
 	pam? ( >=sys-auth/pambase-20081028 )
 	!prefix? ( sys-apps/shadow )
-	X? ( x11-apps/xauth )
 "
-# Weird dep construct for newer gcc-config for bug #872416
 BDEPEND="
 	dev-build/autoconf
 	virtual/pkgconfig
-	|| (
-		>=sys-devel/gcc-config-2.6
-		>=sys-devel/clang-toolchain-symlinks-16-r1:*
-		>=sys-devel/clang-toolchain-symlinks-15-r1:15
-	)
 	verify-sig? ( sec-keys/openpgp-keys-openssh )
 "
 
@@ -152,9 +146,9 @@ src_prepare() {
 	# don't break .ssh/authorized_keys2 for fun
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
-	eapply -- "${PATCHES[@]}"
+	[[ -d ${WORKDIR}/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
-	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
+	eapply -- "${PATCHES[@]}"
 
 	local PATCHSET_VERSION_MACROS=()
 
@@ -291,7 +285,27 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share/openssh
 		--with-privsep-path="${EPREFIX}"/var/empty
 		--with-privsep-user=sshd
-		--with-hardening
+		# optional at runtime; guarantee a known path
+		--with-xauth="${EPREFIX}"/usr/bin/xauth
+
+		# --with-hardening adds the following in addition to flags we
+		# already set in our toolchain:
+		# * -ftrapv (which is broken with GCC anyway),
+		# * -ftrivial-auto-var-init=zero (which is nice, but not the end of
+		#    the world to not have)
+		# * -fzero-call-used-regs=used (history of miscompilations with
+		#    Clang (bug #872548), ICEs on m68k (bug #920350, gcc PR113086,
+		#    gcc PR104820, gcc PR104817, gcc PR110934)).
+		#
+		# Furthermore, OSSH_CHECK_CFLAG_COMPILE does not use AC_CACHE_CHECK,
+		# so we cannot just disable -fzero-call-used-regs=used.
+		#
+		# Therefore, just pass --without-hardening, given it doesn't negate
+		# our already hardened toolchain defaults, and avoids adding flags
+		# which are known-broken in both Clang and GCC and haven't been
+		# proven reliable.
+		--without-hardening
+
 		$(use_with audit audit linux)
 		$(use_with kerberos kerberos5 "${EPREFIX}"/usr)
 		$(use_with ldns)
@@ -306,7 +320,6 @@ src_configure() {
 
 	if use elibc_musl; then
 		# musl defines bogus values for UTMP_FILE and WTMP_FILE
-		# https://bugs.gentoo.org/753230
 		myconf+=( --disable-utmp --disable-wtmp )
 	fi
 
@@ -315,6 +328,80 @@ src_configure() {
 	tc-is-clang && myconf+=( --without-hardening )
 
 	econf "${myconf[@]}"
+}
+
+tweak_ssh_configs() {
+	cat <<-EOF >> ssh_config.out || die
+
+	Include "${EPREFIX}/etc/ssh/ssh_config.d/*.conf"
+	EOF
+	cat <<-EOF >> sshd_config.out || die
+
+	Include "${EPREFIX}/etc/ssh/sshd_config.d/*.conf"
+	EOF
+}
+
+create_config_dropins() {
+	local locale_vars=(
+		# These are language variables that POSIX defines.
+		# http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_02
+		LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
+
+		# These are the GNU extensions.
+		# https://www.gnu.org/software/autoconf/manual/html_node/Special-Shell-Variables.html
+		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
+	)
+
+	mkdir -p "${WORKDIR}"/etc/ssh/ssh{,d}_config.d || die
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_config.d/9999999gentoo.conf || die
+	# Send locale environment variables (bug #367017)
+	SendEnv ${locale_vars[*]}
+
+	# Send COLORTERM to match TERM (bug #658540)
+	SendEnv COLORTERM
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_config.d/9999999gentoo-security.conf || die
+	RevokedHostKeys "${EPREFIX}/etc/ssh/ssh_revoked_hosts"
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_revoked_hosts || die
+	# https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
+	ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo.conf || die
+	# Allow client to pass locale environment variables (bug #367017)
+	AcceptEnv ${locale_vars[*]}
+
+	# Allow client to pass COLORTERM to match TERM (bug #658540)
+	AcceptEnv COLORTERM
+	EOF
+
+	if use pam ; then
+		cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo-pam.conf || die
+		UsePAM yes
+		# This interferes with PAM.
+		PasswordAuthentication no
+		# PAM can do its own handling of MOTD.
+		PrintMotd no
+		PrintLastLog no
+		EOF
+	fi
+
+	if use livecd ; then
+		cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo-livecd.conf || die
+		# Allow root login with password on livecds.
+		PermitRootLogin Yes
+		EOF
+	fi
+}
+
+src_compile() {
+	default
+	tweak_ssh_configs
+	create_config_dropins
 }
 
 src_test() {
@@ -333,70 +420,6 @@ src_test() {
 	emake -j1 "${tests[@]}" </dev/null
 }
 
-# Gentoo tweaks to default config files.
-tweak_ssh_configs() {
-	local locale_vars=(
-		# These are language variables that POSIX defines.
-		# http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_02
-		LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
-
-		# These are the GNU extensions.
-		# https://www.gnu.org/software/autoconf/manual/html_node/Special-Shell-Variables.html
-		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
-	)
-
-	dodir /etc/ssh/ssh_config.d /etc/ssh/sshd_config.d
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config || die
-	Include "${EPREFIX}/etc/ssh/ssh_config.d/*.conf"
-	EOF
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config || die
-	Include "${EPREFIX}/etc/ssh/sshd_config.d/*.conf"
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/9999999gentoo.conf || die
-	# Send locale environment variables (bug #367017)
-	SendEnv ${locale_vars[*]}
-
-	# Send COLORTERM to match TERM (bug #658540)
-	SendEnv COLORTERM
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/9999999gentoo-security.conf || die
-	RevokedHostKeys "${EPREFIX}/etc/ssh/ssh_revoked_hosts"
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_revoked_hosts || die
-	# https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
-	ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo.conf || die
-	# Allow client to pass locale environment variables (bug #367017)
-	AcceptEnv ${locale_vars[*]}
-
-	# Allow client to pass COLORTERM to match TERM (bug #658540)
-	AcceptEnv COLORTERM
-	EOF
-
-	if use pam ; then
-		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo-pam.conf || die
-		UsePAM yes
-		# This interferes with PAM.
-		PasswordAuthentication no
-		# PAM can do its own handling of MOTD.
-		PrintMotd no
-		PrintLastLog no
-		EOF
-	fi
-
-	if use livecd ; then
-		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo-livecd.conf || die
-		# Allow root login with password on livecds.
-		PermitRootLogin Yes
-		EOF
-	fi
-}
-
 src_install() {
 	emake install-nokeys DESTDIR="${D}"
 	fperms 600 /etc/ssh/sshd_config
@@ -408,20 +431,25 @@ src_install() {
 		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
 	fi
 
-	tweak_ssh_configs
-
 	doman contrib/ssh-copy-id.1
 	dodoc CREDITS OVERVIEW README* TODO sshd_config
 	use hpn && dodoc HPN-README
 	use X509 || dodoc ChangeLog
 
-	diropts -m 0700
-	dodir /etc/skel/.ssh
 	rmdir "${ED}"/var/empty || die
 
 	systemd_dounit "${FILESDIR}"/sshd.socket
 	systemd_newunit "${FILESDIR}"/sshd.service.1 sshd.service
 	systemd_newunit "${FILESDIR}"/sshd_at.service.1 'sshd@.service'
+
+	# Install dropins with explicit mode, bug 906638, 915840
+	diropts -m0755
+	insopts -m0644
+	insinto /etc/ssh
+	doins -r "${WORKDIR}"/etc/ssh/ssh_config.d
+	diropts -m0700
+	insopts -m0600
+	doins -r "${WORKDIR}"/etc/ssh/sshd_config.d
 }
 
 pkg_preinst() {
@@ -431,6 +459,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	# bug #139235
+	optfeature "x11 forwarding" x11-apps/xauth
+
 	local old_ver
 	for old_ver in ${REPLACING_VERSIONS}; do
 		if ver_test "${old_ver}" -lt "5.8_p1"; then
