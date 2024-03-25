@@ -606,15 +606,22 @@ distutils_enable_tests() {
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
 	local test_deps=${RDEPEND}
-	local test_pkgs
 	case ${1} in
 		pytest)
-			test_pkgs='>=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
+			local test_pkgs='>=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
 				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
 			fi
 			if [[ ${EPYTEST_XDIST} ]]; then
 				test_pkgs+=' dev-python/pytest-xdist[${PYTHON_USEDEP}]'
+			fi
+
+			if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+				test_deps+=" ${test_pkgs//'${PYTHON_USEDEP}'/${PYTHON_USEDEP}}"
+			else
+				test_deps+=" $(python_gen_cond_dep "
+					${test_pkgs}
+				")"
 			fi
 			;;
 		setup.py)
@@ -634,15 +641,6 @@ distutils_enable_tests() {
 	_DISTUTILS_TEST_RUNNER=${1}
 	python_test() { distutils-r1_python_test; }
 
-	if [[ -n ${test_pkgs} ]]; then
-		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-			test_deps+=" ${test_pkgs//'${PYTHON_USEDEP}'/${PYTHON_USEDEP}}"
-		else
-			test_deps+=" $(python_gen_cond_dep "
-				${test_pkgs}
-			")"
-		fi
-	fi
 	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
