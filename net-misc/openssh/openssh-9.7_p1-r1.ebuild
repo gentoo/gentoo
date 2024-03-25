@@ -239,7 +239,7 @@ create_config_dropins() {
 		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
 	)
 
-	mkdir -p "${WORKDIR}"/etc/ssh/{ssh_config.d,sshd_config.d} || die
+	mkdir -p "${WORKDIR}"/etc/ssh/ssh{,d}_config.d || die
 
 	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_config.d/9999999gentoo.conf || die
 	# Send locale environment variables (bug #367017)
