@@ -813,13 +813,17 @@ git-r3_fetch() {
 
 		if [[ ${EGIT_LFS} ]]; then
 			# Fetch the LFS files from the current ref (if any)
-			local lfs_fetch_command=( git lfs fetch "${r}" )
+			local lfs_fetch_command=( git lfs fetch "${r}" "${remote_ref}" )
 
 			case "${EGIT_LFS_CLONE_TYPE}" in
 				shallow)
-					lfs_fetch_command+=(
-						--prune
-					)
+					if [[ -d ${GIT_DIR}/lfs/objects ]] && ! rmdir "${GIT_DIR}"/lfs/objects 2> /dev/null; then
+						# Only prune if the lfs directory is not empty.
+						# The prune command can take a very long time to resolve even if there are no lfs objects.
+						lfs_fetch_command+=(
+							--prune
+						)
+					fi
 					;;
 				single)
 					;;
