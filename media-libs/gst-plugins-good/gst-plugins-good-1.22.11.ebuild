@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 GST_ORG_MODULE="gst-plugins-good"
 
 inherit gstreamer-meson
@@ -22,11 +22,8 @@ RDEPEND="
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
 
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
-
-PATCHES=( "${FILESDIR}/gst-plugins-good-1.22.9-soup-tests-automagic.patch" )
 
 multilib_src_configure() {
 	# gst/matroska can use bzip2
