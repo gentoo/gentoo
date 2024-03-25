@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Loki Software binary patch tool"
-HOMEPAGE="http://www.icculus.org/loki_setup/"
+HOMEPAGE="https://github.com/icculus/loki_patch"
 SRC_URI="
 	mirror://gentoo/${P}.tar.bz2
 	mirror://gentoo/loki_setupdb-${PV}.tar.bz2"
@@ -23,9 +23,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
 	"${FILESDIR}"/${P}-patchdata.patch
+	"${FILESDIR}"/${P}-xdelta-gzip.patch
 )
 
 src_prepare() {
