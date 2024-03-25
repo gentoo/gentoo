@@ -26,7 +26,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv 
 #  and libpng/jpeg are required for gloverlay element;
 
 # Keep default IUSE options for relevant ones mirrored with gst-plugins-gtk and gst-plugins-bad
-IUSE="alsa +egl gbm gles2 +introspection ivorbis +ogg +opengl +orc +pango theora +vorbis wayland +X"
+IUSE="alsa +egl gbm +gles2 +introspection ivorbis +ogg opengl +orc +pango theora +vorbis wayland +X"
 GL_REQUIRED_USE="
 	|| ( gbm wayland X )
 	wayland? ( egl )
