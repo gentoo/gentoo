@@ -429,6 +429,7 @@ _git-r3_set_submodules() {
 
 		l=${l#submodule.}
 		local subname=${l%%.url=*}
+		local is_manually_specified=
 
 		# filter out on EGIT_SUBMODULES
 		if declare -p EGIT_SUBMODULES &>/dev/null; then
@@ -449,13 +450,14 @@ _git-r3_set_submodules() {
 				continue
 			else
 				einfo "Using submodule ${parent_path}${subname}"
+				is_manually_specified=1
 			fi
 		fi
 
 		# skip modules that have 'update = none', bug #487262.
 		local upd=$(echo "${data}" | git config -f /dev/fd/0 \
 			submodule."${subname}".update)
-		[[ ${upd} == none ]] && continue
+		[[ ${upd} == none && ! ${is_manually_specified} ]] && continue
 
 		# https://github.com/git/git/blob/master/refs.c#L31
 		# we are more restrictive than git itself but that should not
