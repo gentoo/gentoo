@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
-DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -32,15 +32,18 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_sphinx docs/source
 
-python_compile() {
-	# Parallel build breaks the test suite somehow. This should be
-	# reported upstream but first someone will need to figure out
-	# how to reproduce it outside of Gentoo.
-	distutils-r1_python_compile -j 1
+python_compile_all() {
+	use doc && emake -C docs html
+}
+
+python_install_all(){
+	use doc && local HTML_DOCS=( docs/build/html/. )
+	distutils-r1_python_install_all
 }
 
 python_test(){
