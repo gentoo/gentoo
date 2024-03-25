@@ -46,6 +46,10 @@ RDEPEND="
 	>=dev-qt/qtsvg-5.5:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-str-conflict-fix.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 
