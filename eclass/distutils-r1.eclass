@@ -1314,14 +1314,23 @@ distutils_wheel_install() {
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
-	# remove installed licenses
+	# remove installed licenses and other junk
 	find "${root}$(python_get_sitedir)" -depth \
-		\( -path '*.dist-info/COPYING*' \
-		-o -path '*.dist-info/LICENSE*' \
+		\( -ipath '*.dist-info/AUTHORS*' \
+		-o -ipath '*.dist-info/CHANGELOG*' \
+		-o -ipath '*.dist-info/CODE_OF_CONDUCT*' \
+		-o -ipath '*.dist-info/COPYING*' \
+		-o -ipath '*.dist-info/*LICEN[CS]E*' \
+		-o -ipath '*.dist-info/NOTICE*' \
+		-o -ipath '*.dist-info/*Apache*' \
+		-o -ipath '*.dist-info/*GPL*' \
+		-o -ipath '*.dist-info/*MIT*' \
+		-o -path '*.dist-info/RECORD' \
 		-o -path '*.dist-info/license_files/*' \
 		-o -path '*.dist-info/license_files' \
 		-o -path '*.dist-info/licenses/*' \
 		-o -path '*.dist-info/licenses' \
+		-o -path '*.dist-info/zip-safe' \
 		\) -delete || die
 }
 
