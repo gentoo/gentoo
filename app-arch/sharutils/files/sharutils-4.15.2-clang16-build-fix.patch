@@ -1,0 +1,53 @@
+Bug: https://bugs.gentoo.org/894322
+--- a/configure
++++ b/configure
+@@ -34315,7 +34315,7 @@ test "x$prefix" = xNONE && prefix=$ac_default_prefix
+ # Let make expand exec_prefix.
+ test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+ 
+-DEFS=-DHAVE_CONFIG_H
++DEFS="-DHAVE_CONFIG_H -D_GNU_SOURCE"
+ 
+ ac_libobjs=
+ ac_ltlibobjs=
+--- a/src/shar.c
++++ b/src/shar.c
+@@ -42,6 +42,7 @@ static const char cright_years_z[] =
+        the 'text' table in "scripts.def".  Localization of "shar" has
+        no effect on these comment strings.
+  */
++#include <libintl.h>
+ #define  SHAR_C  1
+ #include "shar-opts.h"
+ 
+--- a/src/unshar.c
++++ b/src/unshar.c
+@@ -22,6 +22,7 @@
+    knows about shell comment characters and the Unix commands 'echo',
+    'cat', and 'sed'.  */
+ 
++#include <libintl.h>
+ #define UNSHAR_C 1
+ #include "unshar-opts.h"
+ 
+--- a/src/uudecode.c
++++ b/src/uudecode.c
+@@ -52,6 +52,7 @@ static char const cright_years_z[] =
+ 
+ /* Reworked to GNU style by Ian Lance Taylor, ian@airs.com, August 93.  */
+ 
++#include <libintl.h>
+ #define  UUDECODE_C  1
+ #include "uudecode-opts.h"
+ #include "liballoca.h"
+--- a/src/uuencode.c
++++ b/src/uuencode.c
+@@ -61,6 +61,8 @@ static const char cright_years_z[] =
+ | Encode a file so it can be mailed to a remote system.	 |
+ \=======================================================*/
+ 
++/*#include <stdio.h>*/
++#include <libintl.h>
+ #define  UUENCODE_C  1
+ #include "uuencode-opts.h"
+ 
