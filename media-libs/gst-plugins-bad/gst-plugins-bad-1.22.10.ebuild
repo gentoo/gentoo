@@ -13,7 +13,7 @@ LICENSE="LGPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # TODO: egl and gtk IUSE only for transition
-IUSE="X bzip2 +egl gles2 gtk +introspection +opengl +orc vaapi vnc wayland qsv" # Keep default IUSE mirrored with gst-plugins-base where relevant
+IUSE="X bzip2 +egl +gles2 gtk +introspection opengl +orc vaapi vnc wayland qsv" # Keep default IUSE mirrored with gst-plugins-base where relevant
 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
 # We mirror opengl/gles2 from -base to ensure no automagic openglmixers plugin (with "opengl?" it'd still get built with USE=-opengl here)
