@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="C library for building NETCONF servers and clients"
 HOMEPAGE="https://github.com/CESNET/libnetconf2"
@@ -27,6 +27,15 @@ BDEPEND="
 	doc? ( app-text/doxygen[dot] )"
 
 src_configure() {
+	# fails tests, but only with LTO.
+	# [  ERROR   ] --- 0 != 0xffffffffffffffff
+	# [   LINE   ] --- /var/tmp/portage/net-libs/libnetconf2-2.1.31/work/libnetconf2-2.1.31/tests/client/test_client_ssh.c:716: error: Failure!
+	# [  FAILED  ] test_nc_client_ssh_ch_add_bind_listen
+	#
+	# https://bugs.gentoo.org/877449
+	# https://github.com/CESNET/libnetconf2/issues/471
+	filter-lto
+
 	local mycmakeargs=(
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_VALGRIND_TESTS=OFF
