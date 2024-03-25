@@ -1,0 +1,17 @@
+fa771991cabed444361de5077d6480e7471db8c5 adds a hack to force
+certifi to use the system certificate store.
+Let's use Gentoo's dev-python/certifi, which is a hack of its own,
+over the upstream solution.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/qt/aqt/__init__.py
++++ b/qt/aqt/__init__.py
+@@ -6,8 +6,6 @@ from __future__ import annotations
+ import logging
+ import sys
+ 
+-import pip_system_certs.wrapt_requests
+-
+ if sys.version_info[0] < 3 or sys.version_info[1] < 9:
+     raise Exception("Anki requires Python 3.9+")
+ 
