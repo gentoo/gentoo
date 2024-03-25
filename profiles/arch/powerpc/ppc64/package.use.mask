@@ -5,6 +5,10 @@
 # dev-qt/qtwebengine not available here
 dev-python/QtPy webengine test
 
+# José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
+# No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on ppc64.
+>=dev-python/qscintilla-python-2.14.1-r1 qt6
+
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is available here
 app-emulation/libvirt -virtiofsd

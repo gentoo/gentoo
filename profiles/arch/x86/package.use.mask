@@ -9,6 +9,10 @@ net-p2p/ktorrent rss
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
 
+# José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
+# No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on x86.
+>=dev-python/qscintilla-python-2.14.1-r1 qt6
+
 # Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
 # Qt6 not keyworded on x86
 sci-physics/root qt6
