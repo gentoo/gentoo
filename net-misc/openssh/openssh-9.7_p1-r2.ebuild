@@ -332,6 +332,7 @@ src_install() {
 	insopts -m0644
 	insinto /etc/ssh
 	doins -r "${WORKDIR}"/etc/ssh/ssh_config.d
+	doins "${WORKDIR}"/etc/ssh/ssh_revoked_hosts
 	diropts -m0700
 	insopts -m0600
 	doins -r "${WORKDIR}"/etc/ssh/sshd_config.d
