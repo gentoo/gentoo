@@ -60,7 +60,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	amd64? ( dev-libs/simde )
+	amd64? ( >=dev-libs/simde-0.8.0-r1 )
 	arm64? ( dev-libs/simde )
 	x86? ( dev-libs/simde )
 	X? (
@@ -144,9 +144,6 @@ src_compile() {
 			replace-flags -ggdb3 -ggdb
 			printf %s "${CFLAGS}"
 		)
-
-	# workaround simde bug with -mxop (bug #926959)
-	append-cppflags -DSIMDE_X86_XOP_NO_NATIVE=1
 
 	local conf=(
 		--disable-link-time-optimization
