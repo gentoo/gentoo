@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gstreamer-meson pax-utils
+inherit gstreamer-meson
 
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2+"
 SLOT="1.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="+caps +introspection +orc unwind"
+IUSE="+caps +introspection unwind"
 
 # gstreamer-1.22.x requires 2.62, but 2.64 is strongly recommended
 RDEPEND="
@@ -54,20 +54,4 @@ multilib_src_configure() {
 	fi
 
 	gstreamer_multilib_src_configure
-}
-
-multilib_src_install() {
-	# can't do "default", we want to install docs in multilib_src_install_all
-	DESTDIR="${D}" eninja install
-
-	# Needed for orc-using gst plugins on hardened/PaX systems, bug #421579
-	use orc && pax-mark -m "${ED}/usr/$(get_libdir)/gstreamer-${SLOT}/gst-plugin-scanner"
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	find "${ED}" -name '*.la' -delete || die
-
-	# Needed for orc-using gst plugins on hardened/PaX systems, bug #421579
-	use orc && pax-mark -m "${ED}/usr/bin/gst-launch-${SLOT}"
 }
