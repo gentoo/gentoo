@@ -393,11 +393,14 @@ src_install() {
 	# Pax mark blender for hardened support.
 	pax-mark m "${BUILD_DIR}"/bin/blender
 
-	cmake_src_install
-
 	if use man; then
+		# XXX: Stupid temporary hack for bug #925254
+		cmake_src_install -j1
+
 		# Slot the man page
 		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
+	else
+		cmake_src_install
 	fi
 
 	if use doc; then
