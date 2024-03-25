@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -31,18 +31,23 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.8:*"
 
-DOCS=( ../{LICENSE,NOTICE,README}.md )
-
+DOCS=( {LICENSE,NOTICE,README}.md )
+PATCHES=( "${FILESDIR}/jaxb-api-2.3.3-dropSecurityManager.patch" )
 S="${WORKDIR}/${P}/${PN}"
 
 JAVA_GENTOO_CLASSPATH="jakarta-activation-api-1"
 JAVA_GENTOO_CLASSPATH_EXTRA="jaxb-api.jar"
-JAVA_SRC_DIR="src/main/java"
-JAVA_RESOURCE_DIRS="src/main/resources"
+JAVA_RESOURCE_DIRS="${PN}/src/main/resources"
+JAVA_SRC_DIR="${PN}/src/main/java"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="../${PN}-test/src/test/java"
-JAVA_TEST_RESOURCE_DIRS="../${PN}-test/src/test/resources"
+JAVA_TEST_RESOURCE_DIRS="${PN}-test/src/test/resources"
+JAVA_TEST_SRC_DIR="${PN}-test/src/test/java"
+
+src_prepare() {
+	default #780585
+	java-pkg-2_src_prepare
+}
 
 src_install() {
 	default
