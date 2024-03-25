@@ -217,6 +217,80 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+tweak_ssh_configs() {
+	cat <<-EOF >> ssh_config.out || die
+
+	Include "${EPREFIX}/etc/ssh/ssh_config.d/*.conf"
+	EOF
+	cat <<-EOF >> sshd_config.out || die
+
+	Include "${EPREFIX}/etc/ssh/sshd_config.d/*.conf"
+	EOF
+}
+
+create_config_dropins() {
+	local locale_vars=(
+		# These are language variables that POSIX defines.
+		# http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_02
+		LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
+
+		# These are the GNU extensions.
+		# https://www.gnu.org/software/autoconf/manual/html_node/Special-Shell-Variables.html
+		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
+	)
+
+	mkdir -p "${WORKDIR}"/etc/ssh/{ssh_config.d,sshd_config.d} || die
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_config.d/9999999gentoo.conf || die
+	# Send locale environment variables (bug #367017)
+	SendEnv ${locale_vars[*]}
+
+	# Send COLORTERM to match TERM (bug #658540)
+	SendEnv COLORTERM
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_config.d/9999999gentoo-security.conf || die
+	RevokedHostKeys "${EPREFIX}/etc/ssh/ssh_revoked_hosts"
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/ssh_revoked_hosts || die
+	# https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
+	ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo.conf || die
+	# Allow client to pass locale environment variables (bug #367017)
+	AcceptEnv ${locale_vars[*]}
+
+	# Allow client to pass COLORTERM to match TERM (bug #658540)
+	AcceptEnv COLORTERM
+	EOF
+
+	if use pam ; then
+		cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo-pam.conf || die
+		UsePAM yes
+		# This interferes with PAM.
+		PasswordAuthentication no
+		# PAM can do its own handling of MOTD.
+		PrintMotd no
+		PrintLastLog no
+		EOF
+	fi
+
+	if use livecd ; then
+		cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo-livecd.conf || die
+		# Allow root login with password on livecds.
+		PermitRootLogin Yes
+		EOF
+	fi
+}
+
+src_compile() {
+	default
+	tweak_ssh_configs
+	create_config_dropins
+}
+
 src_test() {
 	local tests=( compat-tests )
 	local shell=$(egetshell "${UID}")
@@ -233,69 +307,6 @@ src_test() {
 	emake -j1 "${tests[@]}" </dev/null
 }
 
-# Gentoo tweaks to default config files.
-tweak_ssh_configs() {
-	local locale_vars=(
-		# These are language variables that POSIX defines.
-		# http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_02
-		LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
-
-		# These are the GNU extensions.
-		# https://www.gnu.org/software/autoconf/manual/html_node/Special-Shell-Variables.html
-		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
-	)
-
-	dodir /etc/ssh/ssh_config.d /etc/ssh/sshd_config.d
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config || die
-	Include "${EPREFIX}/etc/ssh/ssh_config.d/*.conf"
-	EOF
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config || die
-	Include "${EPREFIX}/etc/ssh/sshd_config.d/*.conf"
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/9999999gentoo.conf || die
-	# Send locale environment variables (bug #367017)
-	SendEnv ${locale_vars[*]}
-
-	# Send COLORTERM to match TERM (bug #658540)
-	SendEnv COLORTERM
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/9999999gentoo-security.conf || die
-	RevokedHostKeys "${EPREFIX}/etc/ssh/ssh_revoked_hosts"
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_revoked_hosts || die
-	# https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
-	ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
-	EOF
-
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo.conf || die
-	# Allow client to pass locale environment variables (bug #367017)
-	AcceptEnv ${locale_vars[*]}
-
-	# Allow client to pass COLORTERM to match TERM (bug #658540)
-	AcceptEnv COLORTERM
-	EOF
-
-	if use pam ; then
-		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo-pam.conf || die
-		UsePAM yes
-		# This interferes with PAM.
-		PasswordAuthentication no
-		# PAM can do its own handling of MOTD.
-		PrintMotd no
-		PrintLastLog no
-		EOF
-	fi
-
-	if use livecd ; then
-		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/9999999gentoo-livecd.conf || die
-		# Allow root login with password on livecds.
-		PermitRootLogin Yes
-		EOF
-	fi
-}
 
 src_install() {
 	emake install-nokeys DESTDIR="${D}"
@@ -308,8 +319,6 @@ src_install() {
 		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
 	fi
 
-	tweak_ssh_configs
-
 	doman contrib/ssh-copy-id.1
 	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
 
@@ -320,6 +329,15 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/sshd.socket
 	systemd_newunit "${FILESDIR}"/sshd.service.1 sshd.service
 	systemd_newunit "${FILESDIR}"/sshd_at.service.1 'sshd@.service'
+
+	# Install dropins with explicit mode, bug 906638, 915840
+	diropts -m0755
+	insopts -m0644
+	insinto /etc/ssh
+	doins -r "${WORKDIR}"/etc/ssh/ssh_config.d
+	diropts -m0700
+	insopts -m0600
+	doins -r "${WORKDIR}"/etc/ssh/sshd_config.d
 }
 
 pkg_preinst() {
