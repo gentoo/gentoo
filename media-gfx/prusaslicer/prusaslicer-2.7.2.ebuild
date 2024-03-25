@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-cpp/eigen:3
@@ -89,4 +89,11 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	CMAKE_SKIP_TESTS=(
+		"^libslic3r_tests$"
+	)
+	cmake_src_test
 }
