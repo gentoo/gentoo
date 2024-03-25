@@ -697,11 +697,11 @@ RESTRICT="!gui? ( test ) !test? ( test )"
 LICENSE="AGPL-3+ BSD public-domain"
 # Dependent crate licenses
 LICENSE+="
-	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0 ISC MIT
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 CC0-1.0 ISC MIT
 	MPL-2.0 Unicode-DFS-2016 ZLIB
 "
 # Manually added crate licenses
-LICENSE+=" openssl"
+LICENSE+=" openssl Unicode-3.0"
 # The supermemo importer is licensed under GPL-3+ and 0BSD.
 # - pylib/anki/importing/supermemo_xml.py
 #
