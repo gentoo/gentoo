@@ -572,8 +572,6 @@ distutils_enable_sphinx() {
 # with the specified test runner.  Also copies the current value
 # of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
 #
-# - nose: nosetests (dev-python/nose)
-#
 # - pytest: dev-python/pytest
 #
 # - setup.py: setup.py test (no deps included)
@@ -610,9 +608,6 @@ distutils_enable_tests() {
 	local test_deps=${RDEPEND}
 	local test_pkgs
 	case ${1} in
-		nose)
-			test_pkgs='>=dev-python/nose-1.3.7_p20221026[${PYTHON_USEDEP}]'
-			;;
 		pytest)
 			test_pkgs='>=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
@@ -1594,9 +1589,6 @@ distutils-r1_python_test() {
 	fi
 
 	case ${_DISTUTILS_TEST_RUNNER} in
-		nose)
-			"${EPYTHON}" -m nose -v "${@}"
-			;;
 		pytest)
 			epytest
 			;;
