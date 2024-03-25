@@ -124,8 +124,6 @@ esac
 #
 # - pbr - pbr backend
 #
-# - pdm - pdm.pep517 backend
-#
 # - pdm-backend - pdm.backend backend
 #
 # - poetry - poetry-core backend
@@ -255,11 +253,6 @@ _distutils_set_globals() {
 			pbr)
 				bdep+='
 					>=dev-python/pbr-6.0.0[${PYTHON_USEDEP}]
-				'
-				;;
-			pdm)
-				bdep+='
-					>=dev-python/pdm-pep517-1.1.4[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm-backend)
@@ -1002,12 +995,6 @@ _distutils-r1_print_package_versions() {
 					dev-python/wheel
 				)
 				;;
-			pdm)
-				packages+=(
-					dev-python/pdm-pep517
-					dev-python/setuptools
-				)
-				;;
 			pdm-backend)
 				packages+=(
 					dev-python/pdm-backend
@@ -1214,11 +1201,8 @@ _distutils-r1_backend_to_key() {
 		pbr.build)
 			echo pbr
 			;;
-		pdm.backend)
+		pdm.backend|pdm.pep517.api)
 			echo pdm-backend
-			;;
-		pdm.pep517.api)
-			echo pdm
 			;;
 		poetry.core.masonry.api|poetry.masonry.api)
 			echo poetry
@@ -1279,6 +1263,9 @@ _distutils-r1_get_backend() {
 		case ${build_backend} in
 			flit.buildapi)
 				new_backend=flit_core.buildapi
+				;;
+			pdm.pep517.api)
+				new_backend=pdm.backend
 				;;
 			poetry.masonry.api)
 				new_backend=poetry.core.masonry.api
