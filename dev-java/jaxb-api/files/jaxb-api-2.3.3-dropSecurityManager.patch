@@ -1,0 +1,10 @@
+--- a/jaxb-api-test/src/test/java/javax/xml/bind/test/JAXBContextTest.java
++++ b/jaxb-api-test/src/test/java/javax/xml/bind/test/JAXBContextTest.java
+@@ -265,7 +265,6 @@ public class JAXBContextTest {
+     private void enableSM() {
+         System.setSecurityManager(null);
+         System.setProperty("java.security.policy", classesDir + "javax/xml/bind/test.policy");
+-        System.setSecurityManager(new SecurityManager());
+     }
+ 
+     private void cleanResource(Path resource) {
