@@ -780,6 +780,7 @@ RDEPEND="
 "
 
 BDEPEND="
+	>=app-arch/zstd-1.5.5:=
 	dev-libs/protobuf
 	virtual/pkgconfig
 	>=virtual/rust-1.71.0
