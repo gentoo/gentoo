@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit gstreamer-meson pax-utils
 
@@ -23,7 +23,6 @@ RDEPEND="
 		>=sys-libs/libunwind-1.2_rc1[${MULTILIB_USEDEP}]
 		dev-libs/elfutils[${MULTILIB_USEDEP}]
 	)
-	!<media-libs/gst-plugins-bad-1.13.1:1.0
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
