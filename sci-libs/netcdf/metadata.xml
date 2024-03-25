@@ -14,6 +14,7 @@
   access, and sharing of scientific data.
   </longdescription>
   <use>
+    <flag name="blosc">Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg></flag>
     <flag name="dap">Support for remote data access with the built-in OPeNDAP client</flag>
     <flag name="hdf">Add support for the Hierarchical Data Format v.4 <pkg>sci-libs/hdf</pkg></flag>
   </use>
