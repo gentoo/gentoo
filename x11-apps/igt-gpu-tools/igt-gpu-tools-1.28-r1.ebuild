@@ -73,6 +73,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="${PYTHON_DEPS}"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-lib-Inline-igt_x86_features-into-ifunc-resolvers.patch
+)
+
 src_prepare() {
 	sed -e "s/find_program('rst2man-3'/find_program('rst2man.py', 'rst2man-3'/" -i man/meson.build
 	default_src_prepare
