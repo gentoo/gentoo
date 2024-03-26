@@ -253,7 +253,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	local targets=()
+	local targets=() optional_targets=()
 	if multilib_is_native_abi; then
 		if use boot; then
 			local efi_arch= efi_arch_alt=
@@ -275,7 +275,10 @@ multilib_src_compile() {
 				src/boot/efi/addon${efi_arch}.efi.stub
 			)
 			if [[ -n ${efi_arch_alt} ]]; then
-				targets+=(
+				# If we have a multilib toolchain, meson.build will build the
+				# "alt" arch (ia32). There's no easy way to detect this, so try
+				# to build it and ignore failure.
+				optional_targets+=(
 					src/boot/efi/systemd-boot${efi_arch_alt}.efi
 					src/boot/efi/linux${efi_arch_alt}.efi.stub
 					src/boot/efi/addon${efi_arch_alt}.efi.stub
@@ -392,8 +395,11 @@ multilib_src_compile() {
 			)
 		fi
 	fi
-	if multilib_is_native_abi || use udev; then
+	if [[ ${#targets[@]} -ne 0 ]]; then
 		meson_src_compile "${targets[@]}"
+	fi
+	if [[ ${#optional_targets[@]} -ne 0 ]]; then
+		nonfatal meson_src_compile "${optional_targets[@]}"
 	fi
 }
 
