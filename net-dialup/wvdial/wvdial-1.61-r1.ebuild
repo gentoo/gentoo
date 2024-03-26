@@ -11,7 +11,7 @@ SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~x86"
 
 DEPEND=">=net-libs/wvstreams-4.4"
 RDEPEND="${DEPEND}
