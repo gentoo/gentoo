@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Uses deprecated distutils-r1 API.  The current version is outdated,
+# from mid-2022.  No reverse dependencies.
+# Removal on 2024-04-25.  Bug #910015.
+sci-biology/HTSeq
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Uses deprecated distutils-r1 API.  Depends on dev-qt/qtwebengine:5.
 # Includes the libraries with no other reverse dependencies.
 # Removal on 2024-04-25.  Bug #909996.
