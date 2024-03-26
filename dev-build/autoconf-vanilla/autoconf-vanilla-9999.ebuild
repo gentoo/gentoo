@@ -51,7 +51,7 @@ RDEPEND="
 	${BDEPEND}
 	>=dev-build/autoconf-wrapper-15
 	sys-devel/gnuconfig
-	!~sys-devel/${P}:2.5
+	!~dev-build/${P}:2.5
 "
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
