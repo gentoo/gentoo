@@ -7,18 +7,34 @@ LLVM_COMPAT=( {15..17} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit llvm-r1 meson-multilib python-any-r1 linux-info
+inherit llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain
 
 MY_P="${P/_/-}"
+
+syn_PV=2.0.39
+proc_macro2_PV=1.0.70
+quote_PV=1.0.33
+unicode_ident_PV=1.0.12
+
+NAK_URI="
+	https://github.com/dtolnay/syn/archive/refs/tags/${syn_PV}.tar.gz -> syn-${syn_PV}.tar.gz
+	https://github.com/dtolnay/proc-macro2/archive/refs/tags/${proc_macro2_PV}.tar.gz -> proc-macro2-${proc_macro2_PV}.tar.gz
+	https://github.com/dtolnay/quote/archive/refs/tags/${quote_PV}.tar.gz -> quote-${quote_PV}.tar.gz
+	https://github.com/dtolnay/unicode-ident/archive/refs/tags/${unicode_ident_PV}.tar.gz -> unicode-ident-${unicode_ident_PV}.tar.gz
+"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
+	SRC_URI="${NAK_URI}"
 	inherit git-r3
 else
-	SRC_URI="https://archive.mesa3d.org/${MY_P}.tar.xz"
+	SRC_URI="
+		https://archive.mesa3d.org/${MY_P}.tar.xz
+		${NAK_URI}
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 fi
 
@@ -126,6 +142,7 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 "
+#Meson regression nouveau/NVK (upstream bug #10855)
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
@@ -142,7 +159,15 @@ BDEPEND="
 		dev-libs/libclc[spirv(-)]
 		$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
 	)
-	vulkan? ( dev-util/glslang )
+	vulkan? (
+		dev-util/glslang
+		video_cards_nouveau? (
+			>=dev-util/bindgen-0.68.1
+			>=dev-util/cbindgen-0.26.0
+			>=virtual/rust-1.74.1
+			<dev-build/meson-1.4.0
+		)
+	)
 	wayland? ( dev-util/wayland-scanner )
 "
 
@@ -155,6 +180,11 @@ x86? (
 	usr/lib/libOSMesa.so.8.0.0
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
+
+src_unpack() {
+	[[ ${PV} == 9999 ]] && git-r3_src_unpack
+	unpack ${A}
+}
 
 pkg_pretend() {
 	if use vulkan; then
@@ -239,6 +269,21 @@ src_prepare() {
 	default
 	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
 		bin/symbols-check.py || die # bug #830728
+
+	if use video_cards_nouveau; then
+		# NVK Subproject Handeling
+		pushd "${WORKDIR}" || die
+			for subpkg in proc-macro2-${proc_macro2_PV} syn-${syn_PV} quote-${quote_PV} unicode-ident-${unicode_ident_PV}; do
+				# copy subproject folder
+				subpkg_folder=mesa-${PV}/subprojects
+				cp -r ${subpkg} ${subpkg_folder} || die
+				# copy meson.build
+				cp ${subpkg_folder}/packagefiles/${subpkg%-*}/meson.build ${subpkg_folder}/${subpkg} || die
+				#ovewrite subpkg version when needed
+				sed -i -e "s/directory = \S\+/directory = ${subpkg}/" ${subpkg_folder}/${subpkg%-*}.wrap || die
+			done
+		popd || die
+	fi
 }
 
 multilib_src_configure() {
@@ -339,6 +384,16 @@ multilib_src_configure() {
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
+		if use video_cards_nouveau; then
+			vulkan_enable video_cards_nouveau nouveau
+			if ! multilib_is_native_abi; then
+				einfo "Applying Gentoo hack for nvk - 1/2"
+				echo -e "[binaries]\nrust = ['rustc', '--target=$(rust_abi $CBUILD)']" > "${T}/rust_fix.ini"
+				emesonargs+=(
+					--native-file "${T}"/rust_fix.ini
+				)
+			fi
+		fi
 	fi
 
 	driver_list() {
@@ -396,6 +451,11 @@ multilib_src_configure() {
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure
+
+	if ! multilib_is_native_abi && use video_cards_nouveau; then
+		einfo "Applying Gentoo hack for nvk - 2/2"
+		sed -i -E '{N; s/(rule rust_COMPILER_FOR_BUILD\n command = rustc) --target=[a-zA-Z0-9=:-]+ (.*) -C link-arg=-m[[:digit:]]+/\1 \2/g}' build.ninja
+	fi
 }
 
 multilib_src_test() {
