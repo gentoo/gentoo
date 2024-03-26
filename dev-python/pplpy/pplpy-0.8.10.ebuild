@@ -35,15 +35,9 @@ BDEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 
-distutils_enable_sphinx docs/source
-
 python_compile_all() {
-	use doc && emake -C docs html
-}
-
-python_install_all(){
-	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	rm -r ppl || die
+	use doc && build_sphinx docs/source
 }
 
 python_test(){
