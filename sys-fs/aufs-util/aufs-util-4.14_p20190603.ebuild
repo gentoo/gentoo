@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info multilib toolchain-funcs
+inherit flag-o-matic linux-info multilib toolchain-funcs
 
 DESCRIPTION="Utilities are always necessary for aufs"
 HOMEPAGE="http://aufs.sourceforge.net/"
@@ -47,5 +47,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# It uses an elaborate macro to insert __attribute__ ((section ("EXP"), used))
+	# as an export annotation, and then uses readelf to dump this and assemble a
+	# linker version script. Apparently visibility attributes is too boring. ;)
+	#
+	# It totally falls over when exposed to LTO.
+	filter-lto
+
 	emake all
 }
