@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Issues with OpenSSL 3.  Unmaintained.  Last activity in 2019.
+# Removal on 2024-04-25.  Bug #892031.
+sys-auth/pam_ssh
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Fails to compile.  Unmaintained.  Last activity in 2016.
 # Depends on an old wxGTK slot.
 # Removal on 2024-04-25.  Bug #895222.

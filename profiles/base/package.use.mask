@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# sys-auth/pam_ssh is being last rited, bug #892031.
+sys-auth/pambase pam_ssh
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-22)
 # Building with qt6 requires (masked) kde-frameworks:6
 app-admin/calamares qt6
