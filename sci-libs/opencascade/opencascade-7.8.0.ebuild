@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake virtualx
+inherit cmake flag-o-matic virtualx
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
@@ -134,6 +134,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/862912
+	# https://tracker.dev.opencascade.org/view.php?id=33091
+	filter-lto
+
 	local mycmakeargs=(
 		-D3RDPARTY_DIR="${ESYSROOT}/usr"
 		-DBUILD_CPP_STANDARD="C++17"
