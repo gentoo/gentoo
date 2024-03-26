@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-03-26)
+# Breaks revdeps that need embree-3 and seems intended to be
+# SLOT=4. Mask until the situation is improved (bug #927833).
+>=media-libs/embree-4
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-03-24)
 # Broken with modern compilers, broken with LTO. Upstream website no
 # longer exists. Unmaintained in Gentoo, no reverse dependencies.
