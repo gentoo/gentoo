@@ -27,12 +27,13 @@ SLOT="0/$(ver_cut 1-2)"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+BDEPEND="
+	dev-build/rocm-cmake
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
+		sys-devel/lld:${LLVM_SLOT}
 	')
 "
-DEPEND="${RDEPEND}"
 
 CMAKE_BUILD_TYPE=Release
 
@@ -42,7 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.0.0-add-gws-attribute.patch"
 	"${FILESDIR}/${PN}-6.1.0-fix-test-failures.patch"
 	"${FILESDIR}/${PN}-6.1.0-fix-test-failures2.patch"
-	)
+)
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]] ; then
@@ -68,7 +69,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DLLVM_DIR="$(get_llvm_prefix)"
 	)
-	cmake_src_configure
 	# do not trust CMake with autoselecting Clang, as it autoselects the latest one
 	# producing too modern LLVM bitcode and causing linker errors in other packages
 	CC="$(get_llvm_prefix)/bin/clang" CXX="$(get_llvm_prefix)/bin/clang++" cmake_src_configure
@@ -77,6 +77,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	local CLANG_EXE="$(get_llvm_prefix)/bin/clang"
+	# install symlink, so that clang won't ask for "--rocm-device-lib-path" flag anymore
 	local bitcodedir="$("${CLANG_EXE}" -print-resource-dir)/$(get_libdir)/amdgcn/bitcode"
 	dosym -r "/usr/lib/amdgcn/bitcode" "${bitcodedir#${EPREFIX}}"
 }
