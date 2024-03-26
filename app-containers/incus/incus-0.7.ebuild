@@ -124,7 +124,7 @@ src_compile() {
 	export GOPATH="${S}/_dist"
 	export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
-	for k in incus-benchmark incus-user incus lxc-to-incus lxd-to-incus ; do
+	for k in incus-benchmark incus-simplestreams incus-user incus lxc-to-incus lxd-to-incus ; do
 		ego install -v -x "${S}/cmd/${k}"
 	done
 
@@ -157,7 +157,7 @@ src_install() {
 	done
 
 	# User tools
-	for m in incus-agent incus-benchmark incus-migrate incus lxc-to-incus ; do
+	for m in incus-agent incus-benchmark incus-migrate incus-simplestreams incus lxc-to-incus ; do
 		dobin ${bindir}/${m}
 	done
 
