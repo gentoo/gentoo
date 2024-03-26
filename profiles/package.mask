@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unfinished package from 2021 that was added as a short-lived
+# dependency of dev-python/GitPython.  No reverse dependencies remain.
+# Removal on 2024-04-25.  Bug #924683.
+dev-python/sumtypes
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Uses deprecated distutils-r1 API.  The current version is outdated,
 # from mid-2022.  No reverse dependencies.
 # Removal on 2024-04-25.  Bug #910015.
