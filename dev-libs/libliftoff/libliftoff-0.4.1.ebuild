@@ -8,7 +8,7 @@ inherit meson
 DESCRIPTION="Lightweight KMS plane library"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/libliftoff"
 SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/v${PV}/downloads/${P}.tar.gz"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 LICENSE="MIT"
 SLOT="0"
 
