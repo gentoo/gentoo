@@ -168,15 +168,15 @@ src_install() {
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
-		-fstack-clash-protection
-		-fstack-protector-strong
+		-Xarch_host -fstack-clash-protection
+		-Xarch_host -fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
 	if use amd64; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
-			-fcf-protection=$(usex cet full none)
+			-Xarch_host -fcf-protection=$(usex cet full none)
 		EOF
 	fi
 

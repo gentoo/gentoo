@@ -169,15 +169,15 @@ src_install() {
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
-		-fstack-clash-protection
-		-fstack-protector-strong
+		-Xarch_host -fstack-clash-protection
+		-Xarch_host -fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
 	if use amd64; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
-			-fcf-protection=$(usex cet full none)
+			-Xarch_host -fcf-protection=$(usex cet full none)
 		EOF
 	fi
 
@@ -236,6 +236,8 @@ src_install() {
 	#endif
 	EOF
 
+	# TODO: Maybe -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST for
+	# non-hardened?
 	if use hardened ; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
@@ -244,7 +246,7 @@ src_install() {
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
-			-D_LIBCPP_ENABLE_ASSERTIONS=1
+			-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
