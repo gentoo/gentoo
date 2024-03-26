@@ -1,0 +1,13 @@
+# nouveau: add missing vl lib Gentoo bug 921658
+
+diff --git a/src/gallium/drivers/nouveau/meson.build b/src/gallium/drivers/nouveau/meson.build
+index d05ff93..f4a27a6 100644
+--- a/src/gallium/drivers/nouveau/meson.build
++++ b/src/gallium/drivers/nouveau/meson.build
+@@ -191,5 +191,5 @@ libnouveau = static_library(
+ driver_nouveau = declare_dependency(
+   compile_args : '-DGALLIUM_NOUVEAU',
+   dependencies : [idep_nir, idep_nouveau_codegen],
+-  link_with : [libnouveauwinsys, libnouveau_codegen, libnouveau],
++  link_with : [libnouveauwinsys, libnouveau_codegen, libnouveau, libgalliumvl],
+ )
