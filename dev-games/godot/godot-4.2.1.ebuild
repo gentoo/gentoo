@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit desktop python-any-r1 scons-utils shell-completion toolchain-funcs xdg
+inherit desktop python-any-r1 flag-o-matic scons-utils
+inherit shell-completion toolchain-funcs xdg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
 HOMEPAGE="https://godotengine.org/"
@@ -110,6 +111,8 @@ src_prepare() {
 src_compile() {
 	local -x BUILD_NAME=gentoo # replaces "custom_build" in version string
 
+	filter-lto #921017
+
 	local esconsargs=(
 		AR="$(tc-getAR)" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 
@@ -173,7 +176,7 @@ src_compile() {
 		module_upnp_enabled=$(usex upnp)
 		module_webp_enabled=$(usex webp)
 
-		# let *FLAGS handle these, e.g. can pass -flto as-is
+		# let *FLAGS handle these
 		debug_symbols=no
 		lto=none
 		optimize=custom
