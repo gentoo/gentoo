@@ -37,9 +37,10 @@ PDEPEND="net-dialup/ppp-scripts"
 PATCHES=(
 	"${FILESDIR}"/ppp-2.5.0-passwordfd-read-early.patch
 	"${FILESDIR}"/ppp-2.5.0-pidfile.patch
-	"${FILESDIR}"/${P}-radiusclient.conf-parsing.patch
+	"${FILESDIR}"/ppp-2.5.0-radiusclient.conf-parsing.patch
 	"${FILESDIR}"/ppp-2.5.0-openssl-pkgconfig.patch
 	"${FILESDIR}"/ppp-2.5.0-pam-pkgconfig.patch
+	"${FILESDIR}"/ppp-2.5.0-radius-mppe.patch
 )
 
 pkg_setup() {
