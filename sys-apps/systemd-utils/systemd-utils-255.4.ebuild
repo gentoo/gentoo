@@ -350,9 +350,9 @@ multilib_src_compile() {
 				rules.d/50-udev-default.rules
 				rules.d/60-persistent-storage.rules
 				rules.d/64-btrfs.rules
-				rules.d/70-uaccess.rules.in
-				rules.d/71-seat.rules.in
-				rules.d/73-seat-late.rules.in
+				rules.d/70-uaccess.rules
+				rules.d/71-seat.rules
+				rules.d/73-seat-late.rules
 				rules.d/99-systemd.rules
 			)
 			if use test; then
