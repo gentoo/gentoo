@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools optfeature prefix toolchain-funcs xdg
+inherit autotools flag-o-matic optfeature prefix toolchain-funcs xdg
 
 DESCRIPTION="An enhanced version of the game engine from the classic Mac game, Marathon"
 HOMEPAGE="https://alephone.lhowon.org/"
@@ -63,6 +63,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/873298
+	# https://github.com/Aleph-One-Marathon/alephone/issues/475
+	filter-lto
+
 	econf \
 		--enable-lua \
 		--enable-opengl \
