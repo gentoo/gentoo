@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Wrapper library that's stuck on Qt5.  No reverse dependencies left.
+# Removal on 2024-04-25.  Bug #926548.
+dev-python/anyqt
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Unfinished package from 2021 that was added as a short-lived
 # dependency of dev-python/GitPython.  No reverse dependencies remain.
 # Removal on 2024-04-25.  Bug #924683.
