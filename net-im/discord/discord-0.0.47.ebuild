@@ -17,12 +17,14 @@ inherit chromium-2 desktop linux-info optfeature unpacker xdg
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
 SRC_URI="https://dl.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz"
+S="${WORKDIR}/${MY_PN^}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64"
-RESTRICT="bindist mirror strip test"
+
 IUSE="appindicator +seccomp"
+RESTRICT="bindist mirror strip test"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
@@ -61,8 +63,6 @@ DESTDIR="/opt/${MY_PN}"
 QA_PREBUILT="*"
 
 CONFIG_CHECK="~USER_NS"
-
-S="${WORKDIR}/${MY_PN^}"
 
 src_unpack() {
 	unpack ${MY_PN}-${MY_PV}.tar.gz
