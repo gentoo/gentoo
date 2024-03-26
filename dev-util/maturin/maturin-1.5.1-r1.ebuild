@@ -495,7 +495,7 @@ src_configure() {
 		$(usev ssl native-tls)
 	)
 
-	cargo_src_configure
+	cargo_src_configure --no-default-features
 }
 
 python_compile_all() {
