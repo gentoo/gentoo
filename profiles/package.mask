@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# A dead wiget library with no reverse dependencies.  Homepage gone.
+# Removal on 2024-04-25.  Bug #926604.
+x11-libs/scw
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Deprecated upstream and the URL no longer works.
 # Removal on 2024-04-25.  Bug #926550.
 sys-firmware/bluez-firmware
