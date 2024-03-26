@@ -12,7 +12,7 @@ SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.xz"
 SRC_URI+=" test? ( https://download.osgeo.org/${PN}/${PV}/${PN}autotest-${PV}.tar.gz )"
 
 LICENSE="BSD Info-ZIP MIT"
-SLOT="0/33" # subslot is libgdal.so.<SONAME>
+SLOT="0/34" # subslot is libgdal.so.<SONAME>
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="armadillo +curl cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc fits geos gif gml hdf5 heif java jpeg jpeg2k lzma mysql netcdf odbc ogdi opencl oracle pdf png postgres python spatialite sqlite test webp xls zstd"
 RESTRICT="!test? ( test )"
@@ -27,7 +27,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	java? (
-		dev-java/ant-core
+		>=dev-java/ant-1.10.14-r3:0
 		dev-lang/swig
 	)
 	python? (
@@ -99,8 +99,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 PATCHES=(
+	"${FILESDIR}/gdal-3.8.0-java21.patch"
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
 	"${FILESDIR}"/${PN}-3.7.0-zlib-OF.patch
+	"${FILESDIR}"/${P}-libxml2-2.12-{1,2}.patch # bug 917564
 )
 
 pkg_setup() {
@@ -267,8 +269,8 @@ src_install() {
 		# Move the native library into the proper place for Gentoo.  The
 		# library in ${D} has already had its RPATH fixed, so we use it
 		# rather than ${BUILD_DIR}/swig/java/libgdalalljni.so.
-		java-pkg_doso "${D}/usr/share/java/libgdalalljni.so"
-		rm "${D}/usr/share/java/libgdalalljni.so" || die
+		java-pkg_doso "${D}/usr/$(get_libdir)/jni/libgdalalljni.so"
+		rm -rf "${ED}/usr/$(get_libdir)/jni" || die
 	fi
 
 	# TODO: install docs?
