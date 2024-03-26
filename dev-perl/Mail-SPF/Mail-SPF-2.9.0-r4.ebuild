@@ -21,7 +21,6 @@ RDEPEND="
 	>=dev-perl/URI-1.130.0
 	>=dev-perl/Net-DNS-Resolver-Programmable-0.3.0
 	virtual/perl-version
-	!!dev-perl/Mail-SPF-Query
 "
 BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.280.500
