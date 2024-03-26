@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Fails to compile.  Unmaintained.  Last activity in 2016.
+# Depends on an old wxGTK slot.
+# Removal on 2024-04-25.  Bug #895222.
+app-misc/tek
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Bad C++ code.  Unmaintained.  Carries a number of patches already.
 # No reverse dependencies.
 # Removal on 2024-04-25.  Bug #924925.
