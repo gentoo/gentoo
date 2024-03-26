@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_P=SDL2_net-${PV}
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer Network Support Library"
 HOMEPAGE="https://www.libsdl.org/projects/SDL_net/index.html"
@@ -18,6 +18,11 @@ IUSE="static-libs"
 
 RDEPEND=">=media-libs/libsdl2-2.0.4[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
