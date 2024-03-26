@@ -244,10 +244,13 @@ src_test() {
 		# We have a patch which fixes this (bug #259876)
 		#tests/touch/not-owner
 		#tests/touch/not-owner.sh
-
-		# bug #910640
-		tests/tty/tty-eof.pl
 	)
+
+	# This test is flaky (bug #910640).
+	cat > tests/tty/tty-eof.pl <<-EOF || die
+	#!/usr/bin/perl
+	exit 77;
+	EOF
 
 	# We set DISABLE_HARD_ERRORS because some of the tests hard error-out
 	# because of sandbox. They're skipped above but DISABLE_HARD_ERRORS is needed
