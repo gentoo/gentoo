@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b034cd03b..eb53b7a12 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -873,13 +873,7 @@ if(EXPERIMENTAL)
+   set(MANIFOLD_PYBIND OFF)
+   set(MANIFOLD_TEST OFF)
+ 
+-  if(CMAKE_UNITY_BUILD)
+-    set(CMAKE_UNITY_BUILD OFF)
+-    add_subdirectory(submodules/manifold EXCLUDE_FROM_ALL)
+-    set(CMAKE_UNITY_BUILD ON)
+-  else()
+-    add_subdirectory(submodules/manifold EXCLUDE_FROM_ALL)
+-  endif()
++  find_package(manifold REQUIRED)
+   target_link_libraries(OpenSCAD PRIVATE manifold)
+   add_sanitizers(manifold)
+ 
