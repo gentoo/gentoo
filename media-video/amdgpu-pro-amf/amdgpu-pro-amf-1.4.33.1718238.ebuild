@@ -15,7 +15,7 @@ MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 
 MY_PN="amf-amdgpu-pro"
 
-INTERNAL_VER="5.7"
+INTERNAL_VER="6.0.2"
 UBUNTU_VER="22.04"
 
 DESCRIPTION="AMD's closed source Advanced Media Framework (AMF) driver"
