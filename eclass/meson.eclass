@@ -425,7 +425,7 @@ meson_src_configure() {
 		export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
 		echo meson setup "${MESONARGS[@]}" >&2
 		meson setup "${MESONARGS[@]}"
-	) || die
+	) || die -n
 }
 
 # @FUNCTION: meson_src_compile
@@ -450,7 +450,7 @@ meson_src_compile() {
 
 	set -- meson compile "${mesoncompileargs[@]}"
 	echo "$@" >&2
-	"$@" || die "compile failed"
+	"$@" || die -n "compile failed"
 }
 
 # @FUNCTION: meson_src_test
@@ -469,7 +469,7 @@ meson_src_test() {
 
 	set -- meson test "${mesontestargs[@]}"
 	echo "$@" >&2
-	"$@" || die "tests failed"
+	"$@" || die -n "tests failed"
 }
 
 # @FUNCTION: meson_install
@@ -488,7 +488,7 @@ meson_install() {
 
 	set -- meson install "${mesoninstallargs[@]}"
 	echo "$@" >&2
-	"$@" || die "install failed"
+	"$@" || die -n "install failed"
 }
 
 # @FUNCTION: meson_src_install
