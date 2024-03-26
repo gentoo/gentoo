@@ -10,13 +10,16 @@ HOMEPAGE="https://github.com/embree/embree"
 SRC_URI="https://github.com/embree/embree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="3"
+SLOT="$(ver_cut 1)"
 KEYWORDS="-* ~amd64 ~arm64"
 X86_CPU_FLAGS=( sse2 sse4_2 avx avx2 avx512dq )
-CPU_FLAGS=( cpu_flags_arm_neon ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
-IUSE="compact-polys ispc +raymask ssp +tbb test ${CPU_FLAGS[@]}"
+CPU_FLAGS=( cpu_flags_arm_neon "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
+IUSE="compact-polys ispc +raymask ssp +tbb test ${CPU_FLAGS[*]}"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="|| ( ${CPU_FLAGS[@]} )"
+REQUIRED_USE="
+	amd64? ( || ( ${X86_CPU_FLAGS[*]/#/cpu_flags_x86_} ) )
+	arm64? ( cpu_flags_arm_neon )
+"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -30,7 +33,7 @@ DEPEND="${RDEPEND}"
 DOCS=( CHANGELOG.md README.md readme.pdf )
 
 PATCHES=(
-	"${FILESDIR}"/embree-4.3.0-dont-install-tutorials.patch
+	"${FILESDIR}/embree-4.3.1-dont-install-tutorials.patch"
 )
 
 pkg_setup() {
@@ -46,6 +49,15 @@ src_prepare() {
 	# disable RPM package building
 	sed -e 's|CPACK_RPM_PACKAGE_RELEASE 1|CPACK_RPM_PACKAGE_RELEASE 0|' \
 		-i CMakeLists.txt || die
+
+	# raise cmake minimum version to silence warning
+	sed -e 's#CMAKE_MINIMUM_REQUIRED(VERSION 3.[0-9].0)#CMAKE_MINIMUM_REQUIRED(VERSION 3.5)#I' \
+	    -i \
+	        CMakeLists.txt \
+	        kernels/rthwif/CMakeLists.txt \
+	        tutorials/embree_info/CMakeLists.txt \
+	        tutorials/minimal/CMakeLists.txt \
+	    || die
 }
 
 src_configure() {
@@ -94,6 +106,9 @@ src_configure() {
 		-DEMBREE_ISPC_SUPPORT=$(usex ispc)
 		-DEMBREE_RAY_MASK=$(usex raymask)
 
+		# TODO figure out sycl support
+		-DEMBREE_SYCL_SUPPORT="no"
+
 		-DEMBREE_STACK_PROTECTOR=$(usex ssp)
 		-DEMBREE_STATIC_LIB=OFF
 		-DEMBREE_TASKING_SYSTEM:STRING=$(usex tbb "TBB" "INTERNAL")
@@ -116,8 +131,37 @@ src_configure() {
 			-DEMBREE_TUTORIALS_LIBJPEG=OFF
 			-DEMBREE_TUTORIALS_LIBPNG=OFF
 			-DEMBREE_TUTORIALS_OPENIMAGEIO=OFF
+			-DCMAKE_DISABLE_FIND_PACKAGE_OpenImageIO="yes"
 		)
 	fi
 
 	cmake_src_configure
+}
+
+src_test() {
+	# NOTE Some Embree tests will fail due to EMBREE_BACKFACE_CULLING settings for blender...
+	local CMAKE_SKIP_TESTS=(
+		'^embree_verify$'
+		'^embree_verify_i2$'
+		'^viewer_models_curves_round_line_segments_3.ecs$'
+		'^viewer_models_curves_round_line_segments_7.ecs$'
+		'^viewer_models_curves_round_line_segments_8.ecs$'
+		'^viewer_models_curves_round_line_segments_9.ecs$'
+		'^viewer_coherent_models_curves_round_line_segments_3.ecs$'
+		'^viewer_coherent_models_curves_round_line_segments_7.ecs$'
+		'^viewer_coherent_models_curves_round_line_segments_8.ecs$'
+		'^viewer_coherent_models_curves_round_line_segments_9.ecs$'
+		'^viewer_quad_coherent_models_curves_round_line_segments_3.ecs$'
+		'^viewer_quad_coherent_models_curves_round_line_segments_7.ecs$'
+		'^viewer_quad_coherent_models_curves_round_line_segments_8.ecs$'
+		'^viewer_quad_coherent_models_curves_round_line_segments_9.ecs$'
+		'^viewer_grid_coherent_models_curves_round_line_segments_3.ecs$'
+		'^viewer_grid_coherent_models_curves_round_line_segments_7.ecs$'
+		'^viewer_grid_coherent_models_curves_round_line_segments_8.ecs$'
+		'^viewer_grid_coherent_models_curves_round_line_segments_9.ecs$'
+		'^hair_geometry$'
+		'^embree_tests$'
+	)
+
+	cmake_src_test
 }
