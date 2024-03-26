@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unmaintained.  EAPI 6.  Homepage gone.  No keywords for modern
+# architectures.
+# Removal on 2024-04-25.  Bug #927208.
+net-misc/blinkperl
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Unmaintained.  Multiple bugs open.  The current version is from 2018,
 # and it has been discontinued as a separate package since.
 # Removal on 2024-04-25.  Bug #926861.
