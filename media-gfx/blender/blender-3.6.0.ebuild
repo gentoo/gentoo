@@ -224,6 +224,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #922600
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	append-lfs-flags
 	blender_get_version
 

@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod-r1.eclass
@@ -650,6 +650,24 @@ _modules_prepare_kernel() {
 	fi
 
 	linux-info_pkg_setup
+
+	if use dist-kernel &&
+		! has_version "~virtual/dist-kernel-${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+	then
+		ewarn
+		ewarn "The kernel modules in ${CATEGORY}/${PN} are being built for"
+		ewarn "kernel version ${KV_FULL}. But this does not match the"
+		ewarn "installed version of virtual/dist-kernel."
+		ewarn
+		ewarn "If this is not intentional, the problem may be corrected by"
+		ewarn "using \"eselect kernel\" to set the default kernel version to"
+		ewarn "the same version as the installed version of virtual/dist-kernel."
+		ewarn
+		ewarn "If the distribution kernel is being downgraded, ensure that"
+		ewarn "virtual/dist-kernel is also downgraded to the same version"
+		ewarn "before rebuilding external kernel modules."
+		ewarn
+	fi
 }
 
 # @FUNCTION: _modules_prepare_sign

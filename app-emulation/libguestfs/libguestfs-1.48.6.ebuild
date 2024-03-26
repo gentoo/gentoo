@@ -90,7 +90,7 @@ COMMON_DEPEND="
 		sys-libs/libselinux:=
 		sys-libs/libsemanage
 	)
-	systemtap? ( dev-util/systemtap )
+	systemtap? ( dev-debug/systemtap )
 "
 # Some OCaml is always required
 # bug #729674

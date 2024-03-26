@@ -6,24 +6,29 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Dead simple tool to sign files and verify signatures"
-HOMEPAGE="https://github.com/jedisct1/minisign"
-
-if [[ ${PV} == "9999" ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/jedisct1/${PN}.git"
-else
-	SRC_URI="https://github.com/jedisct1/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-fi
+HOMEPAGE="https://github.com/jedisct1/minisign/"
+SRC_URI="
+	https://github.com/jedisct1/minisign/archive/${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="ISC"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
-BDEPEND="virtual/pkgconfig"
-DEPEND="dev-libs/libsodium:=[-minimal(-)]"
-RDEPEND="${DEPEND}"
+DEPEND="
+	dev-libs/libsodium:=[-minimal(-)]
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_configure() {
-	local mycmakeargs=( -DCMAKE_STRIP=OFF )
+	local mycmakeargs=(
+		-DCMAKE_STRIP=OFF
+	)
 	cmake_src_configure
 }

@@ -15,6 +15,7 @@
 	Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
 	</longdescription>
 	<use>
+		<flag name="atlas">Use <pkg>sci-libs/atlas</pkg> for blas, lapack and sparse blas routines</flag>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
 		<flag name="contribcvv">Enable CVV in contrib (requires Qt5)</flag>
 		<flag name="contribdnn">Enable DNN module contrib (requires tinydnn)</flag>
@@ -27,15 +28,17 @@
 		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
 		<flag name="cudnn">Enable support for nVidia cuDNN library</flag>
 		<flag name="dnnsamples">Enable dnn caffeemodel samples</flag>
-		<flag name="download">Enable download during cmake configure</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="features2d">Enable features2d module</flag>
 		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
 		<flag name="gflags">Use Google's C++ argument parsing library (<pkg>dev-cpp/gflags</pkg>)</flag>
 		<flag name="glog">Use Google's C++ logging library (<pkg>dev-cpp/glog</pkg>)</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
+		<flag name="jasper">Use <pkg>media-libs/jasper</pkg> for jpeg2k support</flag>
+		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
 		<flag name="non-free">Enable non-free components</flag>
 		<flag name="opencvapps">Enable compilation with opencvapps</flag>
+		<flag name="quirc">Enable qrcode decoding via <pkg>media-libs/quirc</pkg></flag>
 		<flag name="tbb">Enable multithreading with the Intel Threads Building Block (<pkg>dev-cpp/tbb</pkg>)</flag>
 		<flag name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>

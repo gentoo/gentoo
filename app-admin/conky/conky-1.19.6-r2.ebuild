@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python{3_9,3_10,3_11} )
+PYTHON_COMPAT=( python{3_10,3_11} )
 
 inherit cmake linux-info lua-single python-any-r1 readme.gentoo-r1 xdg
 
@@ -14,11 +14,12 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ppc64 ~riscv sparc x86"
 IUSE="apcupsd bundled-toluapp cmus curl doc extras hddtemp ical iconv imlib
 	intel-backlight iostats irc lua-cairo lua-imlib lua-rsvg math moc mpd
-	mysql ncurses nvidia +portmon pulseaudio rss systemd thinkpad truetype
-	wayland webserver wifi X xinerama xmms2"
+	mysql ncurses nvidia +portmon pulseaudio rss systemd test thinkpad
+	truetype wayland webserver wifi X xinerama xmms2"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
@@ -68,6 +69,9 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	test? (
+		dev-cpp/catch
+	)
 	wayland? (
 		dev-libs/wayland-protocols
 	)
@@ -111,7 +115,7 @@ CONFIG_CHECK="~IPV6"
 DOCS=( README.md AUTHORS )
 
 DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="You can find sample configurations at ${ROOT}/usr/share/doc/${PF}.
+DOC_CONTENTS="You can find sample configurations at /usr/share/doc/${PF}.
 To customize, copy to \${XDG_CONFIG_HOME}/conky/conky.conf and edit it to your liking.
 
 There are pretty html docs available at https://conky.cc/.
@@ -188,6 +192,7 @@ src_configure() {
 		-DBUILD_PORT_MONITORS=$(usex portmon)
 		-DBUILD_PULSEAUDIO=$(usex pulseaudio)
 		-DBUILD_RSS=$(usex rss)
+		-DBUILD_TESTS=$(usex test)
 		-DBUILD_WAYLAND=$(usex wayland)
 		-DBUILD_WLAN=$(usex wifi)
 		-DBUILD_XFT=$(usex truetype)

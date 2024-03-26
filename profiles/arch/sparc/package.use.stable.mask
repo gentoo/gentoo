@@ -1,6 +1,13 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
+# app-text/mupdf is not stable. bug #923811
+net-print/cups-filters pdf
+net-print/libcupsfilters pdf
+net-print/cups-meta pdf
+
+
 # Sam James <sam@gentoo.org> (2023-12-30)
 # Qt not marked stable here.
 app-text/doxygen gui

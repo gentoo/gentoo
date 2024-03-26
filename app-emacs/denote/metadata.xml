@@ -17,4 +17,5 @@
     <bugs-to>https://github.com/protesilaos/denote/issues/</bugs-to>
     <remote-id type="github">protesilaos/denote</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

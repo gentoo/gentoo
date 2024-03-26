@@ -5,6 +5,6 @@
 		<email>hanno@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">pam-mount</remote-id>
+		<remote-id type="codeberg">jengelh/pam_mount</remote-id>
 	</upstream>
 </pkgmetadata>

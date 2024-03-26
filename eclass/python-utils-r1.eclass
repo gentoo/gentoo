@@ -884,7 +884,7 @@ python_doheader() {
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local includedir=$(python_get_includedir)
-	local d=${includedir#${EPREFIX}}
+	local d=${includedir#${ESYSROOT}}
 
 	(
 		insopts -m 0644

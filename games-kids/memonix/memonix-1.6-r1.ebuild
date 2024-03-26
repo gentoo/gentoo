@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake desktop wrapper
+inherit cmake desktop flag-o-matic wrapper
 
 DESCRIPTION="Brain teasers, puzzle and memory games for kid's in one pack"
 HOMEPAGE="https://www.viewizard.com/memonix/"
@@ -20,6 +20,17 @@ RDEPEND="
 	media-libs/sdl-mixer[vorbis]
 "
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/858782
+	#
+	# Upstream site has been taken down for a long time.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	cmake_src_configure
+}
 
 src_install() {
 	exeinto /usr/"$(get_libdir)"

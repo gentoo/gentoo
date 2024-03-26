@@ -17,13 +17,6 @@ ruby_targets_ruby30
 # Ruby 2.7 is masked for removal.
 ruby_targets_ruby27
 
-# Sam James <sam@gentoo.org> (2022-08-02)
-# Masked for testing. The split of some packages may still
-# change. bug #838970.
-qt6
-pyqt6
-pyside6
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof

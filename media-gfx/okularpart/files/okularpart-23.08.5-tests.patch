@@ -1,0 +1,48 @@
+From 323fed918995fe2e01036c74c1498446b4d2f122 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Thu, 12 Oct 2017 14:09:09 +0200
+Subject: [PATCH] Move tests into existing (auto)tests subdirectories
+
+---
+ generators/comicbook/CMakeLists.txt           | 10 +++-------
+ generators/comicbook/autotests/CMakeLists.txt |  6 ++++++
+ 8 files changed, 27 insertions(+), 18 deletions(-)
+ create mode 100644 generators/chm/autotests/CMakeLists.txt
+ create mode 100644 generators/comicbook/autotests/CMakeLists.txt
+
+diff --git a/generators/comicbook/CMakeLists.txt b/generators/comicbook/CMakeLists.txt
+index a0e7569a2..91bcc6ec7 100644
+--- a/generators/comicbook/CMakeLists.txt
++++ b/generators/comicbook/CMakeLists.txt
+@@ -25,13 +25,9 @@ if (KArchive_HAVE_LZMA)
+     target_compile_definitions(okular_comicbook PRIVATE -DWITH_K7ZIP=1)
+ endif()
+ 
+-########### autotests ###############
+-
+-add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
+-ecm_add_test(autotests/comicbooktest.cpp
+-    TEST_NAME "comicbooktest"
+-    LINK_LIBRARIES Qt5::Test KF5::CoreAddons okularcore okular_comicbook
+-)
++if(BUILD_TESTING)
++    add_subdirectory(autotests)
++endif()
+ 
+ ########### install files ###############
+ install( FILES okularComicbook.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
+diff --git a/generators/comicbook/autotests/CMakeLists.txt b/generators/comicbook/autotests/CMakeLists.txt
+new file mode 100644
+index 000000000..aaacb341a
+--- /dev/null
++++ b/generators/comicbook/autotests/CMakeLists.txt
+@@ -0,0 +1,6 @@
++add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/../" )
++
++ecm_add_test(comicbooktest.cpp
++    TEST_NAME "comicbooktest"
++    LINK_LIBRARIES Qt5::Test KF5::CoreAddons okularcore okular_comicbook
++)
+-- 
+2.33.0
+

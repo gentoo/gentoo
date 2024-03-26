@@ -1,6 +1,77 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maciej Barć <xgqt@gentoo.org> (2024-03-23)
+# Binary package, which is compiled against glibc
+www-apps/jellyfin-bin
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-03-15)
+# Needs ada
+sci-electronics/ghdl
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-03-13)
+# To bootstrap uses an ada compiler built using glibc
+dev-lang/gnat-gpl
+dev-lang/spark
+dev-ada/gnatcoll-db
+dev-ada/gprbuild
+dev-ada/xmlada
+dev-ada/libgpr
+dev-ada/gnatcoll-core
+dev-ada/gnatcoll-bindings
+dev-ada/langkit
+dev-ada/templates-parser
+dev-ada/libadalang-tools
+dev-ada/libadalang
+dev-ada/spawn
+dev-ada/gtkada
+dev-ada/markdown
+dev-ada/VSS
+dev-ada/aws
+dev-ada/aunit
+dev-ada/ada_language_server
+dev-ada/gnatdoc
+dev-ada/gpr-unit-provider
+dev-ada/gpr
+dev-ada/gnatmem
+dev-ada/ada_libfswatch
+dev-ada/gnatsymbolize
+dev-ada/AdaSAT
+dev-ada/lal-refactor
+
+# Sergey Popov <pinkbyte@gentoo.org> (2024-03-05)
+# games-strategy/seven-kingdoms does not build on musl,
+# requires glibc-specific locale handling. (#923907)
+games-strategy/seven-kingdoms
+
+# Joshua Kinard <kumba@gentoo.org> (2024-02-27)
+# app-arch/lrzip-next cannot work w/ musl's pthreads at
+# this time. (#925547)
+app-arch/lrzip-next
+
+# Marek Szuba <marecki@gentoo.org> (2024-02-18)
+# Binary-only packages linked against glibc
+net-analyzer/nessus-agent-bin
+net-analyzer/nessus-bin
+
+# Marc Schiffbauer <mschiff@gentoo.org> (2024-02-16)
+# Binary package, which is compiled against glibc
+app-editors/logseq-desktop-bin
+
+# Christopher Fore <csfore@posteo.net> (2024-01-24)
+# >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
+# https://github.com/koverstreet/bcachefs-tools/issues/213
+>=sys-fs/bcachefs-tools-1.4.1
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
+# Uses glibc function getsourcefilter(),
+# which are not available on musl.
+net-misc/mcproxy
+
+# Giuseppe Foti  <foti.giuseppe@gmail.com> (2024-01-22)
+# Binary package, which is compiled against glibc
+app-office/drawio-desktop-bin
+
 # Maciej Barć <xgqt@gentoo.org> (2024-01-06)
 # Binary package, which is compiled against glibc
 app-office/joplin-desktop
@@ -53,15 +124,6 @@ dev-libs/cutlass
 # Conrad Kostecki <conikost@gentoo.org> (2022-12-31)
 # RTLD_DEEPBIND does not exist on musl
 dev-libs/intel-compute-runtime
-
-# Sam James <sam@gentoo.org> (2022-12-17)
-# Segfaults when building on musl, bug #885501
-=sys-devel/gcc-10.4.1_p20221208:10
-=sys-devel/gcc-10.4.1_p20221222:10
-=sys-devel/gcc-11.3.1_p20221209:11
-=sys-devel/gcc-11.3.1_p20221223:11
-=sys-devel/gcc-12.2.1_p20221231:12
-=sys-devel/gcc-12.2.1_p20230121:12
 
 # Sam James <sam@gentoo.org> (2022-10-17)
 # Needs porting to musl
@@ -136,7 +198,7 @@ www-client/chromium
 net-misc/netkit-telnetd
 net-misc/sitecopy
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
 app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
@@ -145,7 +207,9 @@ app-admin/puppetserver
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
+app-benchmarks/geekbench-ml
 app-crypt/rainbowcrack
+app-crypt/yubioath-flutter-bin
 app-editors/sublime-text
 app-editors/vscode
 app-editors/vscodium
@@ -284,12 +348,7 @@ x11-misc/xflux
 x11-misc/xflux-gui
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04, 2022-07-31)
-# Emacs 23 does not support x86_64-gentoo-linux-musl systems
-# (bug #830408). Emacs 24 and 25 have build failures (bug #862462).
 # Emacs 26 segfaults when dumping (bug #862489).
-app-editors/emacs:23
-app-editors/emacs:24
-app-editors/emacs:25
 app-editors/emacs:26
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-12-15)
@@ -325,6 +384,7 @@ dev-libs/cudnn-frontend
 dev-python/pycuda
 dev-util/nvidia-cuda-toolkit
 dev-libs/optix
+media-libs/nvidia-vaapi-driver
 x11-drivers/nvidia-drivers
 x11-misc/primus
 
@@ -379,7 +439,7 @@ sys-process/systemd-cron
 >=www-misc/profile-sync-daemon-6
 sys-block/wait-for-dri-devices-rules
 
-# rust-bin requires a glibc system
+# rust-bin isn't available on all platforms
 dev-lang/rust-bin
 mail-client/thunderbird-bin
 www-client/firefox-bin

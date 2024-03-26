@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/justbur/emacs-which-key/issues/</bugs-to>
     <remote-id type="github">justbur/emacs-which-key</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

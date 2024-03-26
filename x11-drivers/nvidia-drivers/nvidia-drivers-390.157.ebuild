@@ -148,7 +148,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR CC CXX LD OBJCOPY OBJDUMP
+	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
 	# latest branches has proper fixes, but legacy have more issues and are
@@ -185,8 +185,8 @@ src_compile() {
 
 	if use persistenced; then
 		# 390.xx persistenced does not auto-detect libtirpc
-		LIBS=$($(tc-getPKG_CONFIG) --libs libtirpc || die) \
-			common_cflags=$($(tc-getPKG_CONFIG) --cflags libtirpc || die) \
+		LIBS=$(${PKG_CONFIG} --libs libtirpc || die) \
+			common_cflags=$(${PKG_CONFIG} --cflags libtirpc || die) \
 			emake "${NV_ARGS[@]}" -C nvidia-persistenced
 	fi
 

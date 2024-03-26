@@ -1,0 +1,48 @@
+https://github.com/lsh123/xmlsec/pull/756
+https://github.com/lsh123/xmlsec/commit/de5251a8064231fbe6b9bccc669228cab4ab4ec7
+
+From de5251a8064231fbe6b9bccc669228cab4ab4ec7 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 30 Jan 2024 18:57:19 -0800
+Subject: [PATCH] configure.ac: fix the build with slibtool (#756)
+
+When building with LibreSSL or BoringSSL the build will try to link the
+$OPENSSL_LIBS with -Wl,-Bstatic, but this will fail when using slibtool
+if only dynamic libssl and libcrypto libraries are installed.
+
+  ld: cannot find -lssl: No such file or directory
+  ld: cannot find -lcrypto: No such file or directory
+
+With GNU libtool it will "helpfully" rearrange the linker output to
+obscure the issue.
+
+  -lssl -lcrypto -lxslt -lxml2 ../.libs/libxmlsec1.so -g -O2 -O -Wl,-Bstatic -Wl,-Bdynamic
+
+While with slibtool it will do as instructed and produce a build
+failure.
+
+  -Wl,-Bstatic -lssl -lcrypto -Wl,-Bdynamic -lxslt
+---
+ configure.ac | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ce8a278c..25e70b24 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -806,7 +806,6 @@ if test "z$OPENSSL_FOUND" = "zyes" ; then
+             #endif
+         ],[
+             OPENSSL_VERSION="LibreSSL >= 3.5"
+-            OPENSSL_LIBS="-Wl,-Bstatic $OPENSSL_LIBS -Wl,-Bdynamic"
+             enable_dh=no
+         ],[
+             OPENSSL_VERSION=""
+@@ -824,7 +823,6 @@ if test "z$OPENSSL_FOUND" = "zyes" ; then
+             #endif
+         ],[
+             OPENSSL_VERSION="BoringSSL >= 1.1.1"
+-            OPENSSL_LIBS="-Wl,-Bstatic $OPENSSL_LIBS -Wl,-Bdynamic"
+             enable_ripemd160=no
+             enable_dsa=no
+             enable_dh=no

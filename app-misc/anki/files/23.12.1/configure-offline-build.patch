@@ -1,0 +1,63 @@
+This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_configure_src_main.rs
+
+It replaces or skips network-reliant methods of the build setup and disables
+the setup for bundles and for offline documentation. This way, we achieve a
+lean offline build.
+Delete setup_python call to avoid setting an extra environment variable to
+prevent network access.
+
+The FreeBSD port offers greater flexibility with additional environment
+variables such as OFFLINE_BUILD and should probably be upstreamed. I
+have contacted the port maintainer (Kai Knoblich <kai@FreeBSD.org>).
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/configure/src/main.rs
++++ b/build/configure/src/main.rs
+@@ -11,25 +11,21 @@ mod web;
+ 
+ use anyhow::Result;
+ use aqt::build_and_check_aqt;
+-use bundle::build_bundle;
+ use ninja_gen::glob;
+ use ninja_gen::inputs;
+ use ninja_gen::protobuf::check_proto;
+ use ninja_gen::protobuf::setup_protoc;
+-use ninja_gen::python::setup_python;
+ use ninja_gen::Build;
+ use pylib::build_pylib;
+ use pylib::check_pylib;
+ use python::check_python;
+-use python::setup_venv;
++use python::setup_venv_stub;
+ use rust::build_rust;
+ use rust::check_minilints;
+ use rust::check_rust;
+ use web::build_and_check_web;
+ use web::check_sql;
+ 
+-use crate::python::setup_sphix;
+-
+ fn anki_version() -> String {
+     std::fs::read_to_string(".version")
+         .unwrap()
+@@ -44,16 +40,15 @@ fn main() -> Result<()> {
+     setup_protoc(build)?;
+     check_proto(build, inputs![glob!["proto/**/*.proto"]])?;
+ 
+-    setup_python(build)?;
+-    setup_venv(build)?;
++    println!("Patch: Using Python system environment.");
++    setup_venv_stub(build)?;
+ 
+     build_rust(build)?;
+     build_pylib(build)?;
+     build_and_check_web(build)?;
+     build_and_check_aqt(build)?;
+-    build_bundle(build)?;
+ 
+-    setup_sphix(build)?;
++    println!("Patch: Skipping build of bundles.");
+ 
+     check_rust(build)?;
+     check_pylib(build)?;

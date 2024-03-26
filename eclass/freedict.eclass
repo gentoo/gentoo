@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: freedict.eclass
@@ -28,8 +28,8 @@ FREEDICT_P=${PN/freedict-/}
 [[ ${FORLANG} ]] && die "FORLANG is banned, set DESCRIPTION instead"
 [[ ${TOLANG} ]] && die "TOLANG is banned, set DESCRIPTION instead"
 
-HOMEPAGE="http://freedict.sourceforge.net/en/"
-SRC_URI="http://freedict.sourceforge.net/download/linux/${FREEDICT_P}.tar.gz"
+HOMEPAGE="https://freedict.sourceforge.net/en/"
+SRC_URI="https://freedict.sourceforge.net/download/linux/${FREEDICT_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

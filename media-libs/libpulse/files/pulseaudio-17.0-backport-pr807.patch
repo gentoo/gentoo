@@ -1,0 +1,298 @@
+https://bugs.gentoo.org/918447
+https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/807
+
+From 26ccd1167a6188fb28745f3f5c9940657f64343c Mon Sep 17 00:00:00 2001
+From: matoro <75928-matoro1@users.noreply.gitlab.freedesktop.org>
+Date: Wed, 24 Jan 2024 12:08:28 -0500
+Subject: [PATCH] tests: remove check2 timeouts in favor of meson
+
+Meson already handles timeouts, configurable on the command line with
+--timeout-multiplier.  They are set to 300s for all tests.
+
+Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/807>
+---
+ src/tests/alsa-mixer-path-test.c | 1 -
+ src/tests/connect-stress.c       | 1 -
+ src/tests/cpu-mix-test.c         | 1 -
+ src/tests/cpu-remap-test.c       | 2 --
+ src/tests/cpu-sconv-test.c       | 1 -
+ src/tests/cpu-volume-test.c      | 1 -
+ src/tests/extended-test.c        | 1 -
+ src/tests/interpol-test.c        | 1 -
+ src/tests/lfe-filter-test.c      | 1 -
+ src/tests/lo-latency-test.c      | 1 -
+ src/tests/lock-autospawn-test.c  | 4 ----
+ src/tests/meson.build            | 1 +
+ src/tests/mult-s16-test.c        | 1 -
+ src/tests/once-test.c            | 4 ----
+ src/tests/passthrough-test.c     | 1 -
+ src/tests/rtpoll-test.c          | 4 ----
+ src/tests/sync-playback.c        | 1 -
+ src/tests/thread-mainloop-test.c | 4 ----
+ src/tests/thread-test.c          | 1 -
+ src/tests/volume-test.c          | 1 -
+ 20 files changed, 1 insertion(+), 32 deletions(-)
+
+diff --git a/src/tests/alsa-mixer-path-test.c b/src/tests/alsa-mixer-path-test.c
+index 63b4a4cacb..208d75d475 100644
+--- a/src/tests/alsa-mixer-path-test.c
++++ b/src/tests/alsa-mixer-path-test.c
+@@ -107,7 +107,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Alsa-mixer-path");
+     tc = tcase_create("alsa-mixer-path");
+     tcase_add_test(tc, mixer_path_test);
+-    tcase_set_timeout(tc, 30);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/connect-stress.c b/src/tests/connect-stress.c
+index a243df9ea1..35f8ea9c4a 100644
+--- a/src/tests/connect-stress.c
++++ b/src/tests/connect-stress.c
+@@ -223,7 +223,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Connect Stress");
+     tc = tcase_create("connectstress");
+     tcase_add_test(tc, connect_stress_test);
+-    tcase_set_timeout(tc, 20 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/cpu-mix-test.c b/src/tests/cpu-mix-test.c
+index 6b5b8e37a6..2190ea4bdf 100644
+--- a/src/tests/cpu-mix-test.c
++++ b/src/tests/cpu-mix-test.c
+@@ -212,7 +212,6 @@ int main(int argc, char *argv[]) {
+ #if defined (__arm__) && defined (__linux__) && defined (HAVE_NEON)
+     tcase_add_test(tc, mix_neon_test);
+ #endif
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/cpu-remap-test.c b/src/tests/cpu-remap-test.c
+index 2554688927..21fc5dc9dc 100644
+--- a/src/tests/cpu-remap-test.c
++++ b/src/tests/cpu-remap-test.c
+@@ -524,7 +524,6 @@ int main(int argc, char *argv[]) {
+ #if defined (__arm__) && defined (__linux__) && defined (HAVE_NEON)
+     tcase_add_test(tc, remap_neon_test);
+ #endif
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     tc = tcase_create("rearrange");
+@@ -532,7 +531,6 @@ int main(int argc, char *argv[]) {
+ #if defined (__arm__) && defined (__linux__) && defined (HAVE_NEON)
+     tcase_add_test(tc, rearrange_neon_test);
+ #endif
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/cpu-sconv-test.c b/src/tests/cpu-sconv-test.c
+index 6a84722fd8..5ae939d45b 100644
+--- a/src/tests/cpu-sconv-test.c
++++ b/src/tests/cpu-sconv-test.c
+@@ -251,7 +251,6 @@ int main(int argc, char *argv[]) {
+ #if defined (__arm__) && defined (__linux__) && defined (HAVE_NEON)
+     tcase_add_test(tc, sconv_neon_test);
+ #endif
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/cpu-volume-test.c b/src/tests/cpu-volume-test.c
+index 5de8c83045..c7d73be04b 100644
+--- a/src/tests/cpu-volume-test.c
++++ b/src/tests/cpu-volume-test.c
+@@ -235,7 +235,6 @@ int main(int argc, char *argv[]) {
+     tcase_add_test(tc, svolume_arm_test);
+ #endif
+     tcase_add_test(tc, svolume_orc_test);
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/extended-test.c b/src/tests/extended-test.c
+index e855c7746a..33c08eef4c 100644
+--- a/src/tests/extended-test.c
++++ b/src/tests/extended-test.c
+@@ -211,7 +211,6 @@ int main(int argc, char *argv[]) {
+     tc = tcase_create("extended");
+     tcase_add_test(tc, extended_test);
+     /* 4s of audio, 0.5s grace time */
+-    tcase_set_timeout(tc, 4.5);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/interpol-test.c b/src/tests/interpol-test.c
+index bb69e52537..e0e467bf53 100644
+--- a/src/tests/interpol-test.c
++++ b/src/tests/interpol-test.c
+@@ -282,7 +282,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Interpol");
+     tc = tcase_create("interpol");
+     tcase_add_test(tc, interpol_test);
+-    tcase_set_timeout(tc, 5 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/lfe-filter-test.c b/src/tests/lfe-filter-test.c
+index d779e05a4f..c5fdeb304f 100644
+--- a/src/tests/lfe-filter-test.c
++++ b/src/tests/lfe-filter-test.c
+@@ -184,7 +184,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("lfe-filter");
+     tc = tcase_create("lfe-filter");
+     tcase_add_test(tc, lfe_filter_test);
+-    tcase_set_timeout(tc, 10);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/lo-latency-test.c b/src/tests/lo-latency-test.c
+index 813b337697..3f985a5c63 100644
+--- a/src/tests/lo-latency-test.c
++++ b/src/tests/lo-latency-test.c
+@@ -175,7 +175,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Loopback latency");
+     tc = tcase_create("loopback latency");
+     tcase_add_test(tc, loopback_test);
+-    tcase_set_timeout(tc, 5 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/lock-autospawn-test.c b/src/tests/lock-autospawn-test.c
+index d475d2dcd6..13a3e40d01 100644
+--- a/src/tests/lock-autospawn-test.c
++++ b/src/tests/lock-autospawn-test.c
+@@ -114,10 +114,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Lock Auto Spawn");
+     tc = tcase_create("lockautospawn");
+     tcase_add_test(tc, lockautospawn_test);
+-    /* the default timeout is too small,
+-     * set it to a reasonable large one.
+-     */
+-    tcase_set_timeout(tc, 60 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index dceca55c7e..bbdd231300 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -208,6 +208,7 @@ endif
+ 
+ test_env = environment()
+ test_env.set('MAKE_CHECK', '1')
++test_env.set('CK_DEFAULT_TIMEOUT', '0')
+ 
+ foreach t : default_tests + norun_tests
+   name = t[0]
+diff --git a/src/tests/mult-s16-test.c b/src/tests/mult-s16-test.c
+index 91740c2fe9..b222c18114 100644
+--- a/src/tests/mult-s16-test.c
++++ b/src/tests/mult-s16-test.c
+@@ -102,7 +102,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Mult-s16");
+     tc = tcase_create("mult-s16");
+     tcase_add_test(tc, mult_s16_test);
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/once-test.c b/src/tests/once-test.c
+index c4d4b4be6c..f14d2edc6b 100644
+--- a/src/tests/once-test.c
++++ b/src/tests/once-test.c
+@@ -132,10 +132,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Once");
+     tc = tcase_create("once");
+     tcase_add_test(tc, once_test);
+-    /* the default timeout is too small,
+-     * set it to a reasonable large one.
+-     */
+-    tcase_set_timeout(tc, 60 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/passthrough-test.c b/src/tests/passthrough-test.c
+index 4a1ef783e9..cbeedd03ab 100644
+--- a/src/tests/passthrough-test.c
++++ b/src/tests/passthrough-test.c
+@@ -335,7 +335,6 @@ int main(int argc, char *argv[]) {
+     tcase_add_test(tc, passthrough_playback_test);
+     sink_num++;
+     tcase_add_test(tc, passthrough_volume_test);
+-    tcase_set_timeout(tc, 5);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/rtpoll-test.c b/src/tests/rtpoll-test.c
+index aab637be1d..48dcdd1205 100644
+--- a/src/tests/rtpoll-test.c
++++ b/src/tests/rtpoll-test.c
+@@ -91,10 +91,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("RT Poll");
+     tc = tcase_create("rtpoll");
+     tcase_add_test(tc, rtpoll_test);
+-    /* the default timeout is too small,
+-     * set it to a reasonable large one.
+-     */
+-    tcase_set_timeout(tc, 60 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/sync-playback.c b/src/tests/sync-playback.c
+index 18afa180b2..3c356a7508 100644
+--- a/src/tests/sync-playback.c
++++ b/src/tests/sync-playback.c
+@@ -208,7 +208,6 @@ int main(int argc, char *argv[]) {
+     tc = tcase_create("syncplayback");
+     tcase_add_test(tc, sync_playback_test);
+     /* 4s of audio, 0.5s grace time */
+-    tcase_set_timeout(tc, 4.5);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/thread-mainloop-test.c b/src/tests/thread-mainloop-test.c
+index 5f6952cdec..8ee14da57d 100644
+--- a/src/tests/thread-mainloop-test.c
++++ b/src/tests/thread-mainloop-test.c
+@@ -102,10 +102,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Thread MainLoop");
+     tc = tcase_create("threadmainloop");
+     tcase_add_test(tc, thread_mainloop_test);
+-    /* the default timeout is too small,
+-     * set it to a reasonable large one.
+-     */
+-    tcase_set_timeout(tc, 60 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/thread-test.c b/src/tests/thread-test.c
+index 4fcbfd4d3c..0c83e67e07 100644
+--- a/src/tests/thread-test.c
++++ b/src/tests/thread-test.c
+@@ -153,7 +153,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Thread");
+     tc = tcase_create("thread");
+     tcase_add_test(tc, thread_test);
+-    tcase_set_timeout(tc, 60 * 60);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+diff --git a/src/tests/volume-test.c b/src/tests/volume-test.c
+index 55486f6427..dc5b90d0d7 100644
+--- a/src/tests/volume-test.c
++++ b/src/tests/volume-test.c
+@@ -161,7 +161,6 @@ int main(int argc, char *argv[]) {
+     s = suite_create("Volume");
+     tc = tcase_create("volume");
+     tcase_add_test(tc, volume_test);
+-    tcase_set_timeout(tc, 120);
+     suite_add_tcase(s, tc);
+ 
+     sr = srunner_create(s);
+-- 
+GitLab
+

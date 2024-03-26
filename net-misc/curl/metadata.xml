@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>Matt.Jolly@footclan.ninja</email>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
 	</maintainer>
 	<maintainer type="project">
@@ -15,7 +15,6 @@
 		<flag name="gnutls">Enable gnutls ssl backend</flag>
 		<flag name="gopher">Enable Gopher protocol support</flag>
 		<flag name="hsts">Enable HTTP Strict Transport Security</flag>
-		<flag name="http2">Enable HTTP/2.0 support</flag>
 		<flag name="imap">Enable Internet Message Access Protocol support</flag>
 		<flag name="mbedtls">Enable mbedtls ssl backend</flag>
 		<flag name="nghttp3">Enable HTTP/3.0 support using <pkg>net-libs/nghttp3</pkg> and <pkg>net-libs/ngtcp2</pkg></flag>

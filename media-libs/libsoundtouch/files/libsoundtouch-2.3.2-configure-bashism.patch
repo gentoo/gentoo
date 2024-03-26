@@ -1,0 +1,33 @@
+https://codeberg.org/soundtouch/soundtouch/pulls/34
+
+From 429a4669cfee54ec69f8be61cc4b5ac2d87d1254 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 24 Mar 2024 07:19:34 +0000
+Subject: [PATCH 2/2] configure.ac: fix bashism in CXXFLAGS assignment
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking whether make supports nested variables... (cached) yes
+configure: 3698: CXXFLAGS+= -Ofast: not found
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,7 @@ AC_LANG(C++)
+ 
+ # Compiler flags. Apply -Ofast (implies -O3 -ffast-math) to allow gcc autovectorization
+ # generate effective SIMD code.
+-CXXFLAGS+=" -Ofast"
++CXXFLAGS="${CXXFLAGS} -Ofast"
+ 
+ # Set AR_FLAGS to avoid build warning "ar: `u' modifier ignored since `D' is the default (see `U')"
+ AR_FLAGS='cr'

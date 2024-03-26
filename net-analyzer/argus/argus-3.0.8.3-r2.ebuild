@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://openargus.org/"
@@ -15,9 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug sasl tcpd"
 
-RDEPEND="
-	acct-group/argus
-	acct-user/argus
+DEPEND="
 	net-libs/libnsl:=
 	net-libs/libpcap
 	net-libs/libtirpc
@@ -25,7 +23,11 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	acct-group/argus
+	acct-user/argus
+	${DEPEND}
+"
 BDEPEND="
 	>=sys-devel/bison-1.28
 	app-alternatives/lex
@@ -57,6 +59,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861146
+	# https://github.com/openargus/argus/issues/8
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use debug && touch .debug # enable debugging
 
 	econf \

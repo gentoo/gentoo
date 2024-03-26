@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>agrigo2001@yahoo.com.au</email>
-		<name>Adrian Grigo</name>
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
 	</maintainer>
-		<maintainer type="project" proxied="proxy">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,10 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andresimon.asc
 inherit desktop toolchain-funcs qmake-utils verify-sig xdg-utils
 
 DESCRIPTION="Handles text files containing ANSI terminal escape codes"
-HOMEPAGE="http://www.andre-simon.de/"
+HOMEPAGE="
+	http://andre-simon.de/doku/ansifilter/en/ansifilter.php
+	https://gitlab.com/saalen/ansifilter/
+"
 SRC_URI="
 	http://www.andre-simon.de/zip/${P}.tar.bz2
 	gui? ( https://gitlab.com/uploads/-/system/project/avatar/6678914/ansifilter2_logo_256.png )
@@ -73,7 +76,7 @@ src_compile() {
 
 src_install() {
 	emake -f makefile \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		doc_dir="/usr/share/doc/${PF}" \
 		-j1 \
 		install $(usev gui install-gui)

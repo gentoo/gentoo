@@ -18,7 +18,7 @@ S="${WORKDIR}/QR-Code-generator-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 src_prepare() {
 	# Move the CMake files into the project root.

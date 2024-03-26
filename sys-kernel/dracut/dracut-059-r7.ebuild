@@ -159,4 +159,6 @@ pkg_postinst() {
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
 		sys-apps/rng-tools
+	optfeature "automatically generating an initramfs on each kernel installation" \
+		"sys-kernel/installkernel[dracut]"
 }

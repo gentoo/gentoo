@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_MAJOR}"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 # base targets
 IUSE+=" +libfuzzer +memprof +orc +profile +xray"
@@ -88,6 +88,9 @@ src_prepare() {
 				cmake/config-ix.cmake || die
 		fi
 	done
+
+	# bug #926330
+	sed -i -e '/-Wthread-safety/d' CMakeLists.txt cmake/config-ix.cmake || die
 
 	# TODO: fix these tests to be skipped upstream
 	if use asan && ! use profile; then

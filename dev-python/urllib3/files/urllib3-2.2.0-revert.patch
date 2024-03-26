@@ -1,0 +1,42 @@
+From 49b2ddaf07ec9ef65ef12d0218117f20e739ee6e Mon Sep 17 00:00:00 2001
+From: Quentin Pradet <quentin.pradet@gmail.com>
+Date: Fri, 16 Feb 2024 11:35:30 +0400
+Subject: [PATCH] Stop casting request headers to HTTPHeaderDict (#3344)
+
+While this was done to fix a mypy error, we did not notice the
+consequences:
+
+ * This breaks boto3 that subclasses HTTPConnection because
+   HTTPHeaderDict does not support bytes values yet.
+ * When proxying, headers are still a dictionary by default.
+
+We can decide to reintroduce a forced conversion to HTTPHeaderDict in
+urllib3 3.0 if the above issues are fixed.
+---
+ changelog/3343.bugfix.rst     | 1 +
+ src/urllib3/connectionpool.py | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+ create mode 100644 changelog/3343.bugfix.rst
+
+diff --git a/changelog/3343.bugfix.rst b/changelog/3343.bugfix.rst
+new file mode 100644
+index 0000000000..4f2df9e7a4
+--- /dev/null
++++ b/changelog/3343.bugfix.rst
+@@ -0,0 +1 @@
++Fixed ``HTTPConnectionPool.urlopen`` to stop automatically casting non-proxy headers to ``HTTPHeaderDict``. This change was premature as it did not apply to proxy headers and ``HTTPHeaderDict`` does not handle byte header values correctly yet.
+diff --git a/src/urllib3/connectionpool.py b/src/urllib3/connectionpool.py
+index 1036f0d718..bd58ff14dd 100644
+--- a/src/urllib3/connectionpool.py
++++ b/src/urllib3/connectionpool.py
+@@ -751,8 +751,8 @@ def urlopen(  # type: ignore[override]
+         # have to copy the headers dict so we can safely change it without those
+         # changes being reflected in anyone else's copy.
+         if not http_tunnel_required:
+-            headers = HTTPHeaderDict(headers)
+-            headers.update(self.proxy_headers)
++            headers = headers.copy()  # type: ignore[attr-defined]
++            headers.update(self.proxy_headers)  # type: ignore[union-attr]
+ 
+         # Must keep the exception bound to a separate variable or else Python 3
+         # complains about UnboundLocalError.

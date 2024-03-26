@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="https://github.com/oneapi-src/oneTBB"
@@ -35,6 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #912210
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	local mycmakeargs=(
 		-DTBB_TEST=$(usex test)
 		-DTBB_ENABLE_IPO=OFF

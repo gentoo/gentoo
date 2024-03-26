@@ -5,10 +5,6 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
 	<longdescription lang="en">
 	JSON-RPC is a stateless, light-weight remote procedure call (RPC) protocol.
 	Primarily this specification defines several data structures and the rules

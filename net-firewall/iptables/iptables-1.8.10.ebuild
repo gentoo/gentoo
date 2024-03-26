@@ -13,8 +13,11 @@ LICENSE="GPL-2"
 # Subslot reflects PV when libxtables and/or libip*tc was changed
 # the last time.
 SLOT="0/1.8.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="conntrack netlink nftables pcap static-libs"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="conntrack netlink nftables pcap static-libs test"
+RESTRICT="!test? ( test )"
+# TODO: skip tests needing nftables if no xtables-nft-multi (bug #890628)
+REQUIRED_USE="test? ( conntrack nftables )"
 
 COMMON_DEPEND="
 	conntrack? ( >=net-libs/libnetfilter_conntrack-1.0.6 )

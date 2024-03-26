@@ -1,0 +1,37 @@
+Only build these when the user enables zlib and gzip support
+diff --git a/programs/CMakeLists.txt b/programs/CMakeLists.txt
+index e707a25..fcfaf12 100644
+--- a/programs/CMakeLists.txt
++++ b/programs/CMakeLists.txt
+@@ -80,22 +80,28 @@ if(LIBDEFLATE_BUILD_TESTS)
+     target_link_libraries(libdeflate_test_utils PUBLIC
+                           libdeflate_prog_utils ZLIB::ZLIB)
+ 
++    if(LIBDEFLATE_GZIP_SUPPORT AND LIBDEFLATE_ZLIB_SUPPORT)
+     # Build the benchmark and checksum programs.
+     add_executable(benchmark benchmark.c)
+     target_link_libraries(benchmark PRIVATE libdeflate_test_utils)
+     add_executable(checksum checksum.c)
+     target_link_libraries(checksum PRIVATE libdeflate_test_utils)
++    endif()
+ 
+     # Build the unit test programs and register them with CTest.
+     set(UNIT_TEST_PROGS
+-        test_checksums
+         test_custom_malloc
+         test_incomplete_codes
+         test_invalid_streams
+         test_litrunlen_overflow
+         test_overread
+         test_slow_decompression
+-        test_trailing_bytes
+     )
++    if(LIBDEFLATE_GZIP_SUPPORT AND LIBDEFLATE_ZLIB_SUPPORT)
++      list(APPEND UNIT_TEST_PROGS
++        test_checksums
++        test_trailing_bytes
++      )
++    endif()
+     foreach(PROG ${UNIT_TEST_PROGS})
+         add_executable(${PROG} ${PROG}.c)
+         target_link_libraries(${PROG} PRIVATE libdeflate_test_utils)

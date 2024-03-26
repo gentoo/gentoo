@@ -1,0 +1,16 @@
+Bug: https://bugs.gentoo.org/221361
+Reverts upstream commit eec7cdf0
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,11 +32,6 @@ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ AC_PROG_LN_S
+-AC_PROG_LEX([noyywrap])
+-if test $LEX = ":"
+-then
+-    AC_MSG_ERROR([no lex or flex found])
+-fi
+ AM_PROG_AR
+ PKG_PROG_PKG_CONFIG

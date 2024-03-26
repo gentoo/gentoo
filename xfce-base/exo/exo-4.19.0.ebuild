@@ -30,6 +30,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	# stray include, breaks USE=-X
+	# https://gitlab.xfce.org/xfce/exo/-/issues/111
+	sed -i -e '/gdkx\.h/d' exo-open/main.c || die
+	default
+}
+
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die

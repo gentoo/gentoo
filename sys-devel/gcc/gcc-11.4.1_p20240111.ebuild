@@ -8,6 +8,7 @@ PATCH_GCC_VER="11.4.0"
 PATCH_VER="12"
 MUSL_VER="2"
 MUSL_GCC_VER="11.4.0"
+PYTHON_COMPAT=( python3_{10..11} )
 
 if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
@@ -37,7 +38,7 @@ if tc_is_live ; then
 	EGIT_BRANCH=releases/gcc-$(ver_cut 1)
 elif [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
 	# Don't keyword live ebuilds
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 	:;
 fi
 
@@ -47,7 +48,7 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	# bug #830454
 	RDEPEND="elibc_glibc? ( sys-libs/glibc[cet(-)?] )"
 	DEPEND="${RDEPEND}"
-	BDEPEND=">=${CATEGORY}/binutils-2.30[cet(-)?]"
+	BDEPEND="amd64? ( >=${CATEGORY}/binutils-2.30[cet(-)?] )"
 fi
 
 src_prepare() {

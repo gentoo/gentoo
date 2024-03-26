@@ -25,6 +25,11 @@ RDEPEND="
 	>=dev-python/python-editor-0.3[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		sys-libs/timezone-data
+	)
+"
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest

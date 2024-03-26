@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Please do not apply any patches which affect the generated output from
+# `autoconf`, as this package is used to submit patches upstream.
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/autoconf.git"
 	inherit git-r3

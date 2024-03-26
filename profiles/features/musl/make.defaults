@@ -17,3 +17,10 @@ FEATURES="-multilib-strict"
 # that use a charset, it causes package collisons.
 # Note: we use a full path for locale.alias for bug #799437
 INSTALL_MASK="charset.alias /usr/share/locale/locale.alias"
+
+# Sam James <sam@gentoo.org> (2024-01-22)
+# Workaround for sandbox bug which causes this gnulib configure test to take
+# many real hours on slower machines, and certainly a huge amount of CPU hours
+# on others. Spoof the same result as configure gets on a modern musl system
+# for now. See bug #447970 and bug #922652.
+gl_cv_func_getcwd_path_max="no, but it is partly working"

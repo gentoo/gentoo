@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,10 +38,9 @@ elisp-enable-tests ert . -l eat-tests.el
 
 src_compile() {
 	rm -r terminfo || die
-	emake EMACS="${EMACS}" EMACSFLAGS="${EMACSFLAGS}"
+	emake EMACS="${EMACS}" EMACSFLAGS="${EMACSFLAGS}" -j1
 
 	elisp-compile term/eat.el
-
 	elisp-make-autoload-file
 }
 

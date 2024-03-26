@@ -12,6 +12,7 @@
 	</maintainer>
 	<use>
 		<flag name="gzip">Support the gzip format</flag>
+		<flag name="test">Build the test programs (requires <pkg>sys-libs/zlib</pkg>)</flag>
 		<flag name="utils">Build the libdeflate-gzip program</flag>
 		<flag name="zlib">Support the zlib format</flag>
 	</use>

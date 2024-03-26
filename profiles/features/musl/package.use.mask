@@ -1,16 +1,27 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-11)
+# Only works properly with glibc
+dev-debug/gdb cet
+sys-devel/binutils cet
+sys-devel/binutils-hppa64 cet
+sys-devel/clang-common cet
+sys-devel/gcc cet
+sys-libs/binutils-libs cet
+sys-libs/glibc cet
+
+# Violet Purcell <vimproved@inventati.org> (2024-01-25)
+# f16c support in gtk4 requires the ifunc attribute, which
+# is not available on musl. There is a configure check for
+# this, however it seems to be unreliable, see bug #922897.
+gui-libs/gtk cpu_flags_x86_f16c
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-12)
 # The systemd flag is globally masked on musl. But we need
 # systemd's kernel-install to use systemd-boot which is still
 # possible on musl via systemd-utils[boot].
 sys-kernel/installkernel -systemd
-
-# Alfredo Tupone <tupone@gentoo.org> (2024-01-09)
-# linked against glibc
-sci-libs/caffe2 mkl
-dev-libs/oneDNN mkl
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Requires dev-libs/level-zero.
@@ -52,6 +63,7 @@ dev-scheme/scm readline
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-auth/sssd is masked on musl
 app-admin/sudo sssd
+sys-auth/pambase sssd
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # sys-libs/libsmbios is masked on musl
@@ -64,13 +76,16 @@ net-irc/ngircd test
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Rolling mask for all USE flags which pull in a masked binary package
 # (linked against glibc). Use for all such packages.
+dev-libs/oneDNN mkl
 kde-apps/kdenetwork-meta dropbox
+media-libs/opencv atlas mkl
 media-video/ffmpeg amf
 net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
 sys-apps/hwloc gl
 sci-chemistry/gromacs mkl
 sci-libs/armadillo mkl
+sci-libs/caffe2 mkl
 sci-libs/dlib mkl
 sci-libs/trilinos mkl
 www-client/qutebrowser widevine
@@ -80,11 +95,6 @@ www-client/qutebrowser widevine
 net-analyzer/wireshark sdjournal
 sys-apps/ipmitool openbmc
 sys-auth/pambase homed
-
-# Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
-# Firefox does not build with these flags enabled on musl libc.
-# See bug #829033
-www-client/firefox clang pgo
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for

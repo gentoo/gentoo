@@ -33,6 +33,8 @@ src_prepare() {
 
 	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac || die
 
+	sed -i -e '/AX_WITH_PERL/d' configure.ac || die # bug 885055
+
 	eautoreconf
 }
 

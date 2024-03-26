@@ -1,0 +1,58 @@
+From d4287704f9e2ea07e0750b114ec0761c2732d03e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Mar 2024 21:40:25 +0100
+Subject: [PATCH] Drop unused QtNetwork dependency, fix KDE terminology
+
+'KDE version' -> 'KDE Frameworks version'
+
+Change-Id: I2e6a912be93d79b251dcf32c20796374c9ca9cf2
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ configure.ac | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6d56df8625f1..9d6b35b747e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13213,7 +13213,7 @@ then
+ 
+     QT5_CFLAGS="-I$qt5_incdir -DQT_CLEAN_NAMESPACE -DQT_THREAD_SUPPORT -DQT_NO_VERSION_TAGGING"
+     QT5_CFLAGS=$(printf '%s' "$QT5_CFLAGS" | sed -e "s/-I/${ISYSTEM?}/g")
+-    QT5_LIBS="-L$qt5_libdir -lQt5Core -lQt5Gui -lQt5Widgets -lQt5Network"
++    QT5_LIBS="-L$qt5_libdir -lQt5Core -lQt5Gui -lQt5Widgets"
+     if test "$_os" = "Emscripten"; then
+         QT5_LIBS="$QT5_LIBS -lqtpcre2 -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -L${qt5_platformsdir} -lqwasm"
+     fi
+@@ -13442,8 +13442,8 @@ then
+         AC_MSG_ERROR([KF5 libraries not found.  Please specify the root of your KF5 installation by exporting KF5DIR before running "configure".])
+     fi
+ 
+-    KF5_CFLAGS="-I$kf5_incdir -I$kf5_incdir/KCoreAddons -I$kf5_incdir/KI18n -I$kf5_incdir/KConfigCore -I$kf5_incdir/KWindowSystem -I$kf5_incdir/KIOCore -I$kf5_incdir/KIOWidgets -I$kf5_incdir/KIOFileWidgets -I$qt5_incdir -I$qt5_incdir/QtCore -I$qt5_incdir/QtGui -I$qt5_incdir/QtWidgets -I$qt5_incdir/QtNetwork -DQT_CLEAN_NAMESPACE -DQT_THREAD_SUPPORT -DQT_NO_VERSION_TAGGING"
+-    KF5_LIBS="-L$kf5_libdir -lKF5CoreAddons -lKF5I18n -lKF5ConfigCore -lKF5WindowSystem -lKF5KIOCore -lKF5KIOWidgets -lKF5KIOFileWidgets -L$qt5_libdir -lQt5Core -lQt5Gui -lQt5Widgets -lQt5Network"
++    KF5_CFLAGS="-I$kf5_incdir -I$kf5_incdir/KCoreAddons -I$kf5_incdir/KI18n -I$kf5_incdir/KConfigCore -I$kf5_incdir/KWindowSystem -I$kf5_incdir/KIOCore -I$kf5_incdir/KIOWidgets -I$kf5_incdir/KIOFileWidgets -I$qt5_incdir -I$qt5_incdir/QtCore -I$qt5_incdir/QtGui -I$qt5_incdir/QtWidgets -DQT_CLEAN_NAMESPACE -DQT_THREAD_SUPPORT -DQT_NO_VERSION_TAGGING"
++    KF5_LIBS="-L$kf5_libdir -lKF5CoreAddons -lKF5I18n -lKF5ConfigCore -lKF5WindowSystem -lKF5KIOCore -lKF5KIOWidgets -lKF5KIOFileWidgets -L$qt5_libdir -lQt5Core -lQt5Gui -lQt5Widgets"
+     KF5_CFLAGS=$(printf '%s' "$KF5_CFLAGS" | sed -e "s/-I/${ISYSTEM?}/g")
+ 
+     if test "$USING_X11" = TRUE; then
+@@ -13453,7 +13453,7 @@ then
+     AC_LANG_PUSH([C++])
+     save_CXXFLAGS=$CXXFLAGS
+     CXXFLAGS="$CXXFLAGS $KF5_CFLAGS"
+-    AC_MSG_CHECKING([whether KDE is >= 5.0])
++    AC_MSG_CHECKING([whether KDE Frameworks is >= 5.0])
+        AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <kcoreaddons_version.h>
+ 
+@@ -13461,7 +13461,7 @@ int main(int argc, char **argv) {
+        if (KCOREADDONS_VERSION_MAJOR == 5 && KCOREADDONS_VERSION_MINOR >= 0) return 0;
+        else return 1;
+ }
+-       ]])],[AC_MSG_RESULT([yes])],[AC_MSG_ERROR([KDE version too old])],[])
++       ]])],[AC_MSG_RESULT([yes])],[AC_MSG_ERROR([KDE Frameworks version too old])],[])
+     CXXFLAGS=$save_CXXFLAGS
+     AC_LANG_POP([C++])
+ fi
+-- 
+2.44.0
+

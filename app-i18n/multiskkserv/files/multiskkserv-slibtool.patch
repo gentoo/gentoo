@@ -1,0 +1,70 @@
+https://github.com/sina-ht/multiskkserv/pull/1
+https://github.com/sina-ht/multiskkserv/commit/20983c7ea43e4a0c12df123e17901fa40ed2f914
+
+From aa0f1cca52eb95ce859aa8a4f20fad9c12757080 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 21 Feb 2024 09:16:47 -0800
+Subject: [PATCH] build: avoid killall(1) for 'make check'
+
+When building the multiskkserv tests with slibtool instead of GNU
+libtool it fails when 'killall src/multiskkserv' fails to find any
+processes. This is because with slibtool it is a shell wrapper script
+for 'src/.libs/multiskkserv'.
+
+To avoid this issue a more robust 'check.sh' script was added to run the
+tests and correctly kill the multiskkserv process with both GNU libtool
+and slibtool.
+
+This was reported for Gentoo: https://bugs.gentoo.org/924142
+---
+ Makefile.am | 11 +----------
+ check.sh    | 18 ++++++++++++++++++
+ 2 files changed, 19 insertions(+), 10 deletions(-)
+ create mode 100755 check.sh
+
+diff --git a/Makefile.am b/Makefile.am
+index b98060a..940d61c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,16 +6,7 @@ EXTRA_DIST = COPYING.j README.j common.h compat.h test/SKK-JISYO.S test/henkan-e
+ 
+ check:
+ 	@mkdir -p $(top_builddir)/test
+-	$(top_builddir)/tools/skkdic-p2cdb $(top_builddir)/test/SKK-JISYO.S.cdb < $(top_srcdir)/test/SKK-JISYO.S
+-	$(top_builddir)/src/multiskkserv -s 127.0.0.1 -p 12347 $(top_builddir)/test/SKK-JISYO.S.cdb &
+-	@sleep 1
+-	@$(top_builddir)/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 stat
+-	$(top_builddir)/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat $(top_srcdir)/test/kan-euc.txt` tran > $(top_builddir)/test/kan-euc-tran.txt
+-	$(top_builddir)/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat $(top_srcdir)/test/ka-euc.txt` tran > $(top_builddir)/test/ka-euc-tran.txt
+-	$(top_builddir)/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat $(top_srcdir)/test/kanji-euc.txt` tran > $(top_builddir)/test/kanji-euc-tran.txt
+-	$(top_builddir)/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat $(top_srcdir)/test/henkan-euc.txt` tran > $(top_builddir)/test/henkan-euc-tran.txt
+-	$(top_builddir)/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat $(top_srcdir)/test/henkandekinai-euc.txt` tran > $(top_builddir)/test/henkandekinai-euc-tran.txt
+-	killall src/multiskkserv
++	$(top_srcdir)/check.sh "$(top_builddir)" "$(top_srcdir)"
+ 	@nkf -w $(top_srcdir)/test/kan-euc.txt
+ 	@nkf -w $(top_builddir)/test/kan-euc-tran.txt
+ 	@nkf -w $(top_srcdir)/test/ka-euc.txt
+diff --git a/check.sh b/check.sh
+new file mode 100755
+index 0000000..64705bf
+--- /dev/null
++++ b/check.sh
+@@ -0,0 +1,18 @@
++#!/bin/sh
++
++set -euvx
++
++builddir="${1:?}"
++srcdir="${2:?}"
++
++"$builddir"/tools/skkdic-p2cdb "$builddir"/test/SKK-JISYO.S.cdb < "$srcdir"/test/SKK-JISYO.S
++"$builddir"/src/multiskkserv -s 127.0.0.1 -p 12347 "$builddir"/test/SKK-JISYO.S.cdb &
++multiskkserv_pid=$!
++sleep 1
++"$builddir"/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 stat
++"$builddir"/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat "$srcdir"/test/kan-euc.txt` tran > "$builddir"/test/kan-euc-tran.txt
++"$builddir"/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat "$srcdir"/test/ka-euc.txt` tran > "$builddir"/test/ka-euc-tran.txt
++"$builddir"/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat "$srcdir"/test/kanji-euc.txt` tran > "$builddir"/test/kanji-euc-tran.txt
++"$builddir"/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat "$srcdir"/test/henkan-euc.txt` tran > "$builddir"/test/henkan-euc-tran.txt
++"$builddir"/src/multiskkserv-ctl -s 127.0.0.1 -p 12347 -y `cat "$srcdir"/test/henkandekinai-euc.txt` tran > "$builddir"/test/henkandekinai-euc-tran.txt
++kill -15 "$multiskkserv_pid"

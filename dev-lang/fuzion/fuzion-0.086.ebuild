@@ -6,7 +6,7 @@ EAPI=8
 inherit java-pkg-2
 
 DESCRIPTION="A language with a focus on simplicity, safety and correctness"
-HOMEPAGE="https://flang.dev/
+HOMEPAGE="https://fuzion-lang.dev/
 	https://github.com/tokiwa-software/fuzion/"
 
 if [[ "${PV}" == *9999* ]] ; then
@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/tokiwa-software/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -34,10 +34,18 @@ DEPEND="
 	virtual/jdk:17
 "
 BDEPEND="
-	test? ( sys-devel/clang:* )
+	test? (
+		sys-devel/clang:*
+	)
 "
 
 DOCS=( README.md release_notes.md )
+
+src_prepare() {
+	java-pkg-2_src_prepare
+
+	rm -fr tests/sockets || die
+}
 
 src_compile() {
 	emake -j1
@@ -49,13 +57,13 @@ src_test() {
 
 src_install() {
 	# Remove unnecessary files from build directory. bug #893450
-	local torm
-	local torm_path
-	for torm in tests run_tests.{failures,results} ; do
-		torm_path="${S}/build/${torm}"
+	local toremove
+	local toremove_path
+	for toremove in tests run_tests.{failures,results} ; do
+		toremove_path="${S}/build/${toremove}"
 
-		if [[ -e "${torm_path}" ]] ; then
-			rm -r "${torm_path}" || die "failed to remove ${torm_path}"
+		if [[ -e "${toremove_path}" ]] ; then
+			rm -r "${toremove_path}" || die "failed to remove ${toremove_path}"
 		fi
 	done
 
@@ -64,9 +72,9 @@ src_install() {
 	insopts -m755
 	doins -r build/bin
 
-	local bin
-	for bin in fz fzjava ; do
-		dosym -r "/usr/share/${PN}/bin/${bin}" "/usr/bin/${bin}"
+	local exe
+	for exe in fz fzjava ; do
+		dosym -r "/usr/share/${PN}/bin/${exe}" "/usr/bin/${exe}"
 	done
 
 	einstalldocs

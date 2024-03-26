@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,12 +14,10 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 
 SLOT="0"
-IUSE="apparmor btrfs +seccomp systemd doc test"
+IUSE="apparmor btrfs +seccomp systemd test"
 RESTRICT="test"
-EXTRA_DOCS=(
+DOCS=(
 	"CHANGELOG.md"
-	"CONTRIBUTING.md"
-	"install.md"
 	"troubleshooting.md"
 	"docs/tutorials"
 )
@@ -37,7 +35,7 @@ RDEPEND="
 	btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp:= )
 	apparmor? ( sys-libs/libapparmor:= )
-	app-containers/containers-common
+	>=app-containers/containers-common-0.58.0-r1
 	app-crypt/gpgme:=
 	dev-libs/libgpg-error:=
 	dev-libs/libassuan:=
@@ -121,5 +119,4 @@ src_test() {
 src_install() {
 	emake DESTDIR="${ED}" install install.completions
 	einstalldocs
-	use doc && dodoc -r "${EXTRA_DOCS[@]}"
 }

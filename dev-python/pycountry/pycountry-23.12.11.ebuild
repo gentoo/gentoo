@@ -18,10 +18,10 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
-distutils_enable_tests pytest
-
 BDEPEND="
 	test? (
 		dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_tests pytest

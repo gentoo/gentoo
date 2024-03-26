@@ -206,6 +206,13 @@ src_configure() {
 	sed -i -e 's/strip = true/strip = false/g' Cargo.toml || die
 }
 
+src_test() {
+	# Set COLUMNS for deterministic help output, #913364
+	local -x COLUMNS=100
+
+	cargo_src_test
+}
+
 src_install() {
 	cargo_src_install
 

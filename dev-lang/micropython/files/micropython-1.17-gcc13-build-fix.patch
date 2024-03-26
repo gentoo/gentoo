@@ -1,0 +1,62 @@
+https://github.com/micropython/micropython/pull/11402
+https://github.com/micropython/micropython/commit/32572439984e5640c6af46fbe7c27400c30112ce
+
+From f1c6cb7725960487195daa5c5c196fd8d3563811 Mon Sep 17 00:00:00 2001
+From: Damien George <damien@micropython.org>
+Date: Wed, 3 May 2023 15:23:24 +1000
+Subject: [PATCH] py/stackctrl: Add gcc pragmas to ignore dangling-pointer
+ warning.
+
+This warning became apparent in gcc 13.
+
+Signed-off-by: Damien George <damien@micropython.org>
+---
+ py/stackctrl.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/py/stackctrl.c b/py/stackctrl.c
+index c2f3adb5eedc..c2566ebad92b 100644
+--- a/py/stackctrl.c
++++ b/py/stackctrl.c
+@@ -28,8 +28,15 @@
+ #include "py/stackctrl.h"
+ 
+ void mp_stack_ctrl_init(void) {
++    #if __GNUC__ >= 13
++    #pragma GCC diagnostic push
++    #pragma GCC diagnostic ignored "-Wdangling-pointer"
++    #endif
+     volatile int stack_dummy;
+     MP_STATE_THREAD(stack_top) = (char *)&stack_dummy;
++    #if __GNUC__ >= 13
++    #pragma GCC diagnostic pop
++    #endif
+ }
+ 
+ void mp_stack_set_top(void *top) {
+
+From 32572439984e5640c6af46fbe7c27400c30112ce Mon Sep 17 00:00:00 2001
+From: Damien George <damien@micropython.org>
+Date: Tue, 7 Mar 2023 14:46:22 +1100
+Subject: [PATCH] mpy-cross/main: Fix return type of mp_import_stat.
+
+Fixes issue #10951.
+
+Signed-off-by: Damien George <damien@micropython.org>
+---
+ mpy-cross/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mpy-cross/main.c b/mpy-cross/main.c
+index 13bb17b13dba..8a4dd5bcbed5 100644
+--- a/mpy-cross/main.c
++++ b/mpy-cross/main.c
+@@ -344,7 +344,7 @@ int main(int argc, char **argv) {
+     return main_(argc, argv);
+ }
+ 
+-uint mp_import_stat(const char *path) {
++mp_import_stat_t mp_import_stat(const char *path) {
+     (void)path;
+     return MP_IMPORT_STAT_NO_EXIST;
+ }

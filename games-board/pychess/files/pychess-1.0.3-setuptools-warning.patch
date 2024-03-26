@@ -1,8 +1,0 @@
-Silence QA notice for:
-dist.py:275: UserWarning: Unknown distribution option: 'executables'
---- a/setup.py
-+++ b/setup.py
-@@ -323,3 +323,2 @@
-              "bdist_msi": bdist_msi_options},
--    executables=executables
- )

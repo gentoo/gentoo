@@ -22,7 +22,7 @@ _TOOLCHAIN_ECLASS=1
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit edo flag-o-matic gnuconfig libtool multilib pax-utils python-any-r1 toolchain-funcs prefix
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -84,6 +84,11 @@ tc_version_is_between() {
 # Used to override GCC version. Useful for e.g. live ebuilds or snapshots.
 # Defaults to ${PV}.
 
+# @ECLASS_VARIABLE: TOOLCHAIN_GCC_VALIDATE_FAILURES_VERSION
+# @DESCRIPTION:
+# Version of test comparison script (validate_fails.py) to use.
+: "${GCC_VALIDATE_FAILURES_VERSION:=7bbfb01a32b73842f8908de028703510a0e12057}"
+
 # @ECLASS_VARIABLE: TOOLCHAIN_USE_GIT_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -92,6 +97,39 @@ tc_version_is_between() {
 # release series (e.g. suppose 12.0 just got released, then adding snapshots
 # for 13.0, we don't want to create new patchsets for every single 13.0 snapshot,
 # so just grab patches from git each time if this variable is set).
+
+# @ECLASS_VARIABLE: GCC_TESTS_COMPARISON_DIR
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Source of previous GCC test results and location to store new results.
+: "${GCC_TESTS_COMPARISON_DIR:=${BROOT}/var/cache/gcc/testresults/${CHOST}}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_COMPARISON_SLOT
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Slot to compare test results with. Defaults to current slot.
+: "${GCC_TESTS_COMPARISON_SLOT:=${SLOT}}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_IGNORE_NO_BASELINE
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Ignore missing baseline/reference data and create new baseline.
+: "${GCC_TESTS_IGNORE_NO_BASELINE:=}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_CHECK_TARGET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Defaults to 'check'. Allows choosing a different test target, e.g.
+# 'test-gcc' (https://gcc.gnu.org/install/test.html).
+: "${GCC_TESTS_CHECK_TARGET:=check}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_RUNTESTFLAGS
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Extra options to pass to DejaGnu as RUNTESTFLAGS.
+: "${GCC_TESTS_RUNTESTFLAGS:=}"
 
 # @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
 # @DEFAULT_UNSET
@@ -140,6 +178,11 @@ GCCMINOR=$(ver_cut 2 ${GCC_PV})
 # @DESCRIPTION:
 # GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
+# @ECLASS_VARIABLE: GCC_RUN_FIXINCLUDES
+# @INTERNAL
+# @DESCRIPTION:
+# Controls whether fixincludes should be used.
+GCC_RUN_FIXINCLUDES=0
 
 tc_use_major_version_only() {
 	local use_major_version_only=0
@@ -306,6 +349,7 @@ BDEPEND="
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
 	test? (
+		${PYTHON_DEPS}
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)
@@ -315,7 +359,7 @@ DEPEND="${RDEPEND}"
 if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
 	# Snapshots don't contain info pages.
 	# If they start to, adjust gcc_cv_prog_makeinfo_modern logic in toolchain_src_configure.
-	# Needed unless/until https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 is fixed
+	# Needed unless/until https://gcc.gnu.org/PR106899 is fixed
 	BDEPEND+=" sys-apps/texinfo"
 fi
 
@@ -328,7 +372,7 @@ fi
 
 if tc_has_feature systemtap ; then
 	# gcc needs sys/sdt.h headers on target
-	DEPEND+=" systemtap? ( dev-util/systemtap )"
+	DEPEND+=" systemtap? ( dev-debug/systemtap )"
 fi
 
 if tc_has_feature zstd ; then
@@ -355,7 +399,7 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	BDEPEND+=" d? ( || ( sys-devel/gcc[d(-)] <sys-devel/gcc-12[d(-)] ) )"
 fi
 
-PDEPEND=">=sys-devel/gcc-config-2.3"
+PDEPEND=">=sys-devel/gcc-config-2.11"
 
 #---->> S + SRC_URI essentials <<----
 
@@ -479,6 +523,8 @@ get_gcc_src_uri() {
 	[[ -n ${MUSL_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 
+	GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> ${PN}-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
+
 	echo "${GCC_SRC_URI}"
 }
 
@@ -508,6 +554,8 @@ toolchain_pkg_setup() {
 	# Avoid really confusing logs from subconfigure spam, makes logs far
 	# more legible.
 	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
+	use test && python-any-r1_pkg_setup
 }
 
 #---->> src_unpack <<----
@@ -571,6 +619,11 @@ toolchain_src_prepare() {
 		tc_enable_hardened_gcc
 	fi
 
+	if use test ; then
+		cp "${DISTDIR}"/${PN}-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py "${T}"/validate_failures.py || die
+		chmod +x "${T}"/validate_failures.py || die
+	fi
+
 	# Make sure the pkg-config files install into multilib dirs.
 	# Since we configure with just one --libdir, we can't use that
 	# (as gcc itself takes care of building multilibs). bug #435728
@@ -580,7 +633,7 @@ toolchain_src_prepare() {
 	setup_multilib_osdirnames
 
 	local actual_version=$(< "${S}"/gcc/BASE-VER)
-	if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
+	if ! tc_is_live && [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
 		eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
 		die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 	fi
@@ -589,16 +642,6 @@ toolchain_src_prepare() {
 	elibtoolize --portage --shallow --no-uclibc
 
 	gnuconfig_update
-
-	# Update configure files
-	local f
-	einfo "Fixing misc issues in configure files"
-	for f in $(grep -l 'autoconf version 2.13' $(find "${S}" -name configure)) ; do
-		ebegin "  Updating ${f/${S}\/} [LANG]"
-		patch "${f}" "${FILESDIR}"/gcc-configure-LANG.patch >& "${T}"/configure-patch.log \
-			|| eerror "Please file a bug about this"
-		eend $?
-	done
 
 	if ! use prefix-guest && [[ -n ${EPREFIX} ]] ; then
 		einfo "Prefixifying dynamic linkers..."
@@ -672,6 +715,11 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DDEF_GENTOO_ZNOW"
 	fi
 
+	if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux-gnu* ]] ; then
+		einfo "Updating gcc to use x86-64 control flow protection by default ..."
+		hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
+	fi
+
 	if _tc_use_if_iuse hardened ; then
 		# Will add some hardened options as default, e.g. for gcc-12
 		# * -fstack-clash-protection
@@ -682,10 +730,6 @@ tc_enable_hardened_gcc() {
 		hardened_gcc_flags+=" -DGENTOO_FORTIFY_SOURCE_LEVEL=3"
 		# Add -D_GLIBCXX_ASSERTIONS
 		hardened_gcc_flags+=" -DDEF_GENTOO_GLIBCXX_ASSERTIONS"
-
-		if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
-			hardened_gcc_flags+=" -DEXTRA_OPTIONS_CF"
-		fi
 
 		# Rebrand to make bug reports easier
 		BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/Gentoo/Gentoo Hardened}
@@ -759,7 +803,7 @@ toolchain_src_configure() {
 	gcc_do_filter_flags
 
 	if ! tc_version_is_at_least 11 && [[ $(gcc-major-version) -ge 12 ]] ; then
-		# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105695
+		# https://gcc.gnu.org/PR105695
 		# bug #849359
 		export ac_cv_std_swap_in_utility=no
 	fi
@@ -901,7 +945,7 @@ toolchain_src_configure() {
 		BUILD_CONFIG_TARGETS+=( bootstrap-lto )
 	fi
 
-	if tc_version_is_at_least 12 && _tc_use_if_iuse cet ; then
+	if tc_version_is_at_least 12 && _tc_use_if_iuse cet && [[ ${CTARGET} == x86_64-*-gnu* ]] ; then
 		BUILD_CONFIG_TARGETS+=( bootstrap-cet )
 	fi
 
@@ -1000,7 +1044,7 @@ toolchain_src_configure() {
 		fi
 
 		confgcc+=(
-			# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100289
+			# https://gcc.gnu.org/PR100289
 			# TOOD: Find a way to disable this just for stage1 cross?
 			--disable-gcov
 
@@ -1235,7 +1279,8 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse cet ; then
-		confgcc+=( $(use_enable cet) )
+		[[ ${CTARGET} == x86_64-*-gnu* ]] && confgcc+=( $(use_enable cet) )
+		[[ ${CTARGET} == aarch64-*-gnu* ]] && confgcc+=( $(use_enable cet standard-branch-protection) )
 	fi
 
 	if in_iuse systemtap ; then
@@ -1297,9 +1342,39 @@ toolchain_src_configure() {
 		)
 	fi
 
+	if tc_version_is_at_least 13.1 ; then
+		# Re-enable fixincludes for >= GCC 13 with older glibc
+		# https://gcc.gnu.org/PR107128
+		if ! is_crosscompile && use elibc_glibc && has_version "<sys-libs/glibc-2.38" ; then
+			GCC_RUN_FIXINCLUDES=1
+		fi
+
+		case ${CBUILD}-${CHOST}-${CTARGET} in
+			*i686-w64-mingw32*|*x86_64-w64-mingw32*)
+				# config/i386/t-cygming requires fixincludes (bug #925204)
+				GCC_RUN_FIXINCLUDES=1
+				;;
+			*mips*-sde-elf*)
+				# config/mips/t-sdemtk needs fixincludes too (bug #925204)
+				# It maps to mips*-sde-elf*, but only with --without-newlib.
+				if [[ ${confgcc} != *with-newlib* ]] ; then
+					GCC_RUN_FIXINCLUDES=1
+				fi
+				;;
+			*)
+				;;
+		esac
+
+		if [[ ${GCC_RUN_FIXINCLUDES} == 1 ]] ; then
+			confgcc+=( --enable-fixincludes )
+		else
+			confgcc+=( --disable-fixincludes )
+		fi
+	fi
+
 	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
-		# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
+		# Safeguard against https://gcc.gnu.org/PR106899 being fixed
 		# without corresponding ebuild changes.
 		eqawarn "Snapshot release with pre-generated info pages found!"
 		eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
@@ -1311,7 +1386,8 @@ toolchain_src_configure() {
 	# killing the 32bit builds which want /usr/lib.
 	export ac_cv_have_x='have_x=yes ac_x_includes= ac_x_libraries='
 
-	confgcc+=( "$@" ${EXTRA_ECONF} )
+	eval "local -a EXTRA_ECONF=(${EXTRA_ECONF})"
+	confgcc+=( "$@" "${EXTRA_ECONF[@]}" )
 
 	if ! is_crosscompile && ! tc-is-cross-compiler && [[ -n ${BUILD_CONFIG_TARGETS} ]] ; then
 		# e.g. ./configure --with-build-config='bootstrap-lto bootstrap-cet'
@@ -1348,6 +1424,7 @@ toolchain_src_configure() {
 		local confgcc_jit=(
 			"${confgcc[@]}"
 
+			--enable-lto
 			--disable-analyzer
 			--disable-bootstrap
 			--disable-cet
@@ -1363,7 +1440,6 @@ toolchain_src_configure() {
 			--disable-libssp
 			--disable-libstdcxx-pch
 			--disable-libvtv
-			--disable-lto
 			--disable-nls
 			--disable-objc-gc
 			--disable-systemtap
@@ -1529,6 +1605,32 @@ gcc_do_filter_flags() {
 		fi
 	fi
 
+	declare -A l1_cache_sizes=()
+	# Workaround for inconsistent cache sizes on hybrid P/E cores
+	# See PR111768 (and bug #904426, bug #908523, and bug #915389)
+	if [[ ${CBUILD} == @(x86_64|i?86)* ]] && [[ ${CFLAGS} == *-march=native* ]] && tc-is-gcc ; then
+		local x
+		local l1_cache_size
+		# Iterate over all cores and find their L1 cache size
+		for x in $(seq 0 $(($(nproc)-1))) ; do
+			[[ -z ${x} || ${x} -gt 64 ]] && break
+			l1_cache_size=$(taskset --cpu-list ${x} $(tc-getCC) -Q --help=params -O2 -march=native \
+				| awk '{ if ($1 ~ /^.*param.*l1-cache-size/) print $2; }' || die)
+			[[ -n ${l1_cache_size} && ${l1_cache_size} =~ ^[0-9]+$ ]] || break
+			l1_cache_sizes[${l1_cache_size}]=1
+		done
+		# If any of them are different, abort. We can't just pass one value of
+		# l1-cache-size because it doesn't cancel out the -march=native one.
+		if [[ ${#l1_cache_sizes[@]} -gt 1 ]] ; then
+			eerror "Different values of l1-cache-size detected!"
+			eerror "GCC will fail to bootstrap when comparing files with these flags."
+			eerror "This CPU is likely big.little/hybrid hardware with power/efficiency cores."
+			eerror "Please install app-misc/resolve-march-native and run 'resolve-march-native'"
+			eerror "to find a safe value of CFLAGS for this CPU. Note that this may vary"
+			eerror "depending on the core it ran on. taskset can be used to fix the cores used."
+			die "Varying l1-cache-size found, aborting (bug #915389, gcc PR#111768)"
+		fi
+	fi
 
 	if ver_test -lt 13.6 ; then
 		# These aren't supported by the just-built compiler either.
@@ -1712,7 +1814,7 @@ gcc_do_make() {
 		# The last known issues are with < GCC 4.9 or so, but it's easier
 		# to keep this bound somewhat fresh just to avoid problems. Ultimately,
 		# using not-O0 is just a build-time speed improvement anyway.
-		if tc-is-gcc && ver_test $(gcc-fullversion) -lt 10 ; then
+		if ! tc-is-gcc || ver_test $(gcc-fullversion) -lt 10 ; then
 			STAGE1_CFLAGS="-O0"
 		fi
 
@@ -1761,7 +1863,7 @@ gcc_do_make() {
 			emake doc-man-doxygen
 
 			# Clean bogus manpages. bug #113902
-			find -name '*_build_*' -delete
+			find -name '*_build_*' -delete || die
 
 			# Blow away generated directory references. Newer versions of gcc
 			# have gotten better at this, but not perfect. This is easier than
@@ -1779,48 +1881,68 @@ gcc_do_make() {
 #---->> src_test <<----
 
 toolchain_src_test() {
-	cd "${WORKDIR}"/build || die
+	# GCC's testsuite is a special case.
+	#
+	# * Generally, people work off comparisons rather than a full set of
+	#   passing tests.
+	#
+	# * The guality (sic) tests are for debug info quality and are especially
+	#   unreliable.
+	#
+	# * The execute torture tests are hopefully a good way for us to smoketest
+	#   and find critical regresions.
 
-	# From opensuse's spec file:
-	# "asan needs a whole shadow address space"
+	# From opensuse's spec file: "asan needs a whole shadow address space"
 	ulimit -v unlimited
 
 	# 'asan' wants to be preloaded first, so does 'sandbox'.
-	# To make asan tests work disable sandbox for all of test suite.
-	# 'backtrace' tests also does not like 'libsandbox.so' presence.
-	#
-	# Nonfatal here as we die if compare_tests failed
-	SANDBOX_ON=0 LD_PRELOAD= nonfatal emake -k check
-	local success_tests=$?
+	# To make asan tests work, we disable sandbox for all of test suite.
+	# The 'backtrace' tests also do not like the presence of 'libsandbox.so'.
+	local -x SANDBOX_ON=0
+	local -x LD_PRELOAD=
 
-	if [[ ! -d "${BROOT}"/var/cache/gcc/${SLOT} ]] && ! [[ ${success_tests} -eq 0 ]] ; then
+	# Controls running expensive tests in e.g. the torture testsuite.
+	local -x GCC_TEST_RUN_EXPENSIVE=1
+
+	# nonfatal here as we die if the comparison below fails. Also, note that
+	# the exit code of targets other than 'check' may be unreliable.
+	nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}"
+
+	if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} && -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
+		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
+		# validate_failures.py manifest files support include directives.
+		einfo "Comparing with previous cached results at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+
+		edo "${T}"/validate_failures.py \
+			--srcpath="${S}" \
+			--build_dir="${WORKDIR}"/build \
+			--manifest="${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+	else
+		# nonfatal first because we want to run again with comparison data if available.
+		nonfatal edo "${T}"/validate_failures.py \
+			--srcpath="${S}" \
+			--build_dir="${WORKDIR}"/build
+		ret=$?
+
 		# We have no reference data saved from a previous run to know if
 		# the failures are tolerable or not, so we bail out.
-		eerror "Reference test data does NOT exist at ${BROOT}/var/cache/gcc/${SLOT}"
-		eerror "Tests failed and nothing to compare with, so this is a fatal error."
-		eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
+		eerror "No reference test data at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail!"
+		eerror "GCC's tests require a baseline to compare with for any reasonable interpretation of results."
 
-		if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
+		if [[ -n ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
+			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, creating new baseline manifest..."
+		elif [[ ${ret} != 0 ]]; then
+			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
 			die "Tests failed (failures occurred with no reference data)"
 		fi
 	fi
 
-	einfo "Testing complete! Review the following output to check for success or failure."
-	einfo "Please ignore any 'mail' lines in the summary output below (no mail is sent)."
-	einfo "Summary:"
-	"${S}"/contrib/test_summary
-
-	# If previous results exist on the system, compare with it
-	# TODO: Distribute some baseline results in e.g. gcc-patches.git?
-	if [[ -d "${BROOT}"/var/cache/gcc/${SLOT} ]] ; then
-		einfo "Comparing with previous cached results at ${BROOT}/var/cache/gcc/${SLOT}"
-
-		# Exit with the following values:
-		# 0 if there is nothing of interest
-		# 1 if there are errors when comparing single test case files
-		# N for the number of errors found when comparing directories
-		"${S}"/contrib/compare_tests "${BROOT}"/var/cache/gcc/${SLOT}/ . || die "Comparison for tests results failed, error code: $?"
-	fi
+	# Produce an updated set of expected results
+	edo "${T}"/validate_failures.py \
+		--srcpath="${S}" \
+		--build_dir="${WORKDIR}"/build \
+		--manifest="${T}"/${CHOST}.xfail \
+		--produce_manifest &> /dev/null
 }
 
 #---->> src_install <<----
@@ -1831,9 +1953,7 @@ toolchain_src_install() {
 	# Don't allow symlinks in private gcc include dir as this can break the build
 	find gcc/include*/ -type l -delete || die
 
-	# Re-enable fixincludes for >= GCC 13
-	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
-	if [[ ${GCCMAJOR} -lt 13 ]] ; then
+	if [[ ${GCC_RUN_FIXINCLUDES} == 0 ]] ; then
 		# We remove the generated fixincludes, as they can cause things to break
 		# (ncurses, openssl, etc).  We do not prevent them from being built, as
 		# in the following commit which we revert:
@@ -1850,7 +1970,7 @@ toolchain_src_install() {
 		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
 		# and bug #843341.
 		#
-		# Both of the non-JIT and JIT builds  are configured to install to $(DESTDIR)
+		# Both of the non-JIT and JIT builds are configured to install to $(DESTDIR)
 		# Install the configuration with --enable-host-shared first
 		# *then* the one without, so that the faster build
 		# of "cc1" et al overwrites the slower build.
@@ -1860,9 +1980,9 @@ toolchain_src_install() {
 		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" -j1 install
 
 		# Punt some tools which are really only useful while building gcc
-		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
+		find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \; || die
 		# This one comes with binutils
-		find "${ED}" -name libiberty.a -delete
+		find "${ED}" -name libiberty.a -delete || die
 
 		# Move the libraries to the proper location
 		gcc_movelibs
@@ -1877,16 +1997,16 @@ toolchain_src_install() {
 	# with it. Several reported bugs exist where the resulting image
 	# was wrong, rather than a simple compile/install failure:
 	# - bug #906155
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=42980
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=51814
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=103656
-	# - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109898
+	# - https://gcc.gnu.org/PR42980
+	# - https://gcc.gnu.org/PR51814
+	# - https://gcc.gnu.org/PR103656
+	# - https://gcc.gnu.org/PR109898
 	S="${WORKDIR}"/build emake DESTDIR="${D}" -j1 install
 
 	# Punt some tools which are really only useful while building gcc
-	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
+	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \; || die
 	# This one comes with binutils
-	find "${ED}" -name libiberty.a -delete
+	find "${ED}" -name libiberty.a -delete || die
 
 	# Move the libraries to the proper location
 	gcc_movelibs
@@ -1962,9 +2082,9 @@ toolchain_src_install() {
 		rm -rf "${ED}"/usr/share/{man,info}
 		rm -rf "${D}"${DATAPATH}/{man,info}
 	else
-		local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man)
+		local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man || die)
 		if [[ -d ${cxx_mandir} ]] ; then
-			cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/
+			cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/ || die
 		fi
 	fi
 
@@ -1975,7 +2095,10 @@ toolchain_src_install() {
 		rm "${D}${DATAPATH}"/info/dir || die
 	fi
 
-	# Prune empty dirs left behind
+	docompress "${DATAPATH}"/{info,man}
+
+	# Prune empty dirs left behind. It's fine not to die here as we may
+	# really have no empty dirs left.
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
 	# libstdc++.la: Delete as it doesn't add anything useful: g++ itself
@@ -2001,6 +2124,7 @@ toolchain_src_install() {
 		'(' \
 			-name libstdc++.la -o \
 			-name libstdc++fs.la -o \
+			-name libstdc++exp.la -o \
 			-name libsupc++.la -o \
 			-name libcc1.la -o \
 			-name libcc1plugin.la -o \
@@ -2012,17 +2136,17 @@ toolchain_src_install() {
 			-name libitm.la -o \
 			-name libvtv.la -o \
 			-name 'lib*san.la' \
-		')' -type f -delete
+		')' -type f -delete || die
 
 	# Use gid of 0 because some stupid ports don't have
 	# the group 'root' set to gid 0.  Send to /dev/null
 	# for people who are testing as non-root.
-	chown -R 0:0 "${D}${LIBPATH}" 2>/dev/null
+	chown -R 0:0 "${D}${LIBPATH}" 2>/dev/null || die
 
 	# Installing gdb pretty-printers into gdb-specific location.
 	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH}
-	pushd "${D}${LIBPATH}" >/dev/null
-	for py in $(find . -name '*-gdb.py') ; do
+	pushd "${D}${LIBPATH}" >/dev/null || die
+	for py in $(find . -name '*-gdb.py' || die) ; do
 		local multidir=${py%/*}
 
 		insinto "${gdbdir}/${multidir}"
@@ -2032,7 +2156,7 @@ toolchain_src_install() {
 
 		rm "${py}" || die
 	done
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# Don't scan .gox files for executable stacks - false positives
 	export QA_EXECSTACK="usr/lib*/go/*/*.gox"
@@ -2043,16 +2167,9 @@ toolchain_src_install() {
 	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
 
 	if use test ; then
-		# TODO: In future, install orphaned to allow comparison across
-		# more versions even after unmerged? Also would be useful for
-		# historical records and tracking down regressions a while
-		# after they first appeared, but were only just reported.
-		einfo "Copying test results to ${EPREFIX}/var/cache/gcc/${SLOT} for future comparison"
-		(
-			dodir /var/cache/gcc/${SLOT}
-			cd "${WORKDIR}"/build || die
-			find . -name \*.sum -exec cp --parents -v {} "${ED}"/var/cache/gcc/${SLOT} \;
-		)
+		mkdir "${T}"/test-results || die
+		cd "${WORKDIR}"/build || die
+		find . -name \*.sum -exec cp --parents -v {} "${T}"/test-results \; || die
 	fi
 }
 
@@ -2099,7 +2216,7 @@ gcc_movelibs() {
 			removedirs="${removedirs} ${FROMDIR}"
 			FROMDIR=${D}${FROMDIR}
 			if [[ ${FROMDIR} != "${TODIR}" && -d ${FROMDIR} ]] ; then
-				local files=$(find "${FROMDIR}" -maxdepth 1 ! -type d 2>/dev/null)
+				local files=$(find "${FROMDIR}" -maxdepth 1 ! -type d 2>/dev/null || die)
 				if [[ -n ${files} ]] ; then
 					mv ${files} "${TODIR}" || die
 				fi
@@ -2115,7 +2232,7 @@ gcc_movelibs() {
 	for FROMDIR in ${removedirs} ; do
 		rmdir "${D}"${FROMDIR} >& /dev/null
 	done
-
+	# XXX: Intentionally no die, here to remove empty dirs
 	find -depth "${ED}" -type d -exec rmdir {} + >& /dev/null
 }
 
@@ -2203,6 +2320,26 @@ create_revdep_rebuild_entry() {
 	# Ignore libraries built for ${CTARGET}, https://bugs.gentoo.org/692844.
 	SEARCH_DIRS_MASK="${LIBPATH}"
 	EOF
+}
+
+#---->> pkg_pre* <<----
+
+toolchain_pkg_preinst() {
+	if use test ; then
+		# Install as orphaned to allow comparison across more versions even
+		# after unmerged. Also useful for historical records and tracking
+		# down regressions a while after they first appeared, but were only
+		# just reported.
+		einfo "Copying test results to ${GCC_TESTS_COMPARISON_DIR}/${SLOT}/${CHOST}.xfail for future comparison"
+		(
+			mkdir -p "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" || die
+			cd "${T}"/test-results || die
+			# May not exist with test-fail-continue
+			if [[ -f "${T}"/${CHOST}.xfail ]] ; then
+				cp -v "${T}"/${CHOST}.xfail "${GCC_TESTS_COMPARISON_DIR}/${SLOT}" || die
+			fi
+		)
+	fi
 }
 
 #---->> pkg_post* <<----
@@ -2458,4 +2595,4 @@ fi
 # enabled-by-default state:
 #    econf $(usex foo '' --disable-foo)
 
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm

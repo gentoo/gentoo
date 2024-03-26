@@ -36,6 +36,10 @@ pkg_setup() {
 src_configure() {
 	python_setup
 	tc-export AR CC CXX
+	if use elibc_musl ; then # bug 906362
+		export CC="${CC} -D_LARGEFILE64_SOURCE"
+		export CXX="${CXX} -D_LARGEFILE64_SOURCE"
+	fi
 	unset CFLAGS
 	set -- ${EPYTHON} build/gen.py --no-last-commit-position --no-strip --no-static-libstdc++ --allow-warnings
 	edo "$@"

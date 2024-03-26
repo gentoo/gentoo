@@ -11,8 +11,8 @@
     for performance and correctness.
   </longdescription>
   <upstream>
-    <changelog>https://flang.dev/release_notes.txt</changelog>
-    <doc>https://flang.dev/docs/index</doc>
+    <changelog>https://fuzion-lang.dev/release_notes.txt</changelog>
+    <doc>https://fuzion-lang.dev/docs/index</doc>
     <bugs-to>https://github.com/tokiwa-software/fuzion/issues/</bugs-to>
     <remote-id type="github">tokiwa-software/fuzion</remote-id>
   </upstream>

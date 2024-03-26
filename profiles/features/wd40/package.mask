@@ -1,6 +1,24 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
+# Requires dev-python/cryptography
+app-emulation/virt-firmware
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-03)
+# Need dev-python/jsonschema (or its revdeps).
+dev-python/flasgger
+dev-python/nbclient
+dev-python/nbconvert
+dev-python/nbformat
+dev-python/nbsphinx
+dev-python/sphobjinv
+dev-python/warlock
+net-wireless/gnuradio
+net-wireless/gqrx
+net-wireless/gr-iqbal
+net-wireless/gr-osmosdr
+
 # Various packages requiring Rust.
 app-admin/ansible
 app-admin/ansible-core
@@ -12,6 +30,7 @@ app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
 app-crypt/rpm-sequoia
+app-emulation/virtiofsd
 app-eselect/eselect-rust
 app-misc/khal
 app-text/mdbook
@@ -27,6 +46,7 @@ dev-python/aws-sam-translator
 dev-python/cfn-lint
 >=dev-python/cryptography-36
 dev-python/apprise
+dev-python/cramjam
 dev-python/dirty-equals
 dev-python/hatch-jupyter-builder
 dev-python/inflect
@@ -89,6 +109,8 @@ dev-python/python-ironicclient
 dev-python/python-jose
 dev-python/python-neutronclient
 dev-python/python-openstackclient
+dev-python/python-snappy
+dev-python/quart-trio
 dev-python/readme-renderer
 dev-python/referencing
 dev-python/requests-kerberos

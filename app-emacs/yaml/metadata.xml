@@ -15,4 +15,5 @@
     <bugs-to>https://github.com/zkry/yaml.el/issues/</bugs-to>
     <remote-id type="github">zkry/yaml.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

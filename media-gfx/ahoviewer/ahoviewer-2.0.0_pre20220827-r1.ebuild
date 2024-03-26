@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ COMMON_DEPEND="dev-cpp/atkmm:0
 	dev-libs/libconfig:=[cxx]
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
-	media-libs/libnsgif
+	<media-libs/libnsgif-1.0.0
 	net-misc/curl
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

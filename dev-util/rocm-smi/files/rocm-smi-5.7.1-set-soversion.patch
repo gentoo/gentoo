@@ -1,0 +1,130 @@
+Forcefully set rocm_smi64 soversion to 1.
+Before intoduction of git-based versioning, soversion was 1.0.
+
+This patch repeats approach of similar patch from Debian, additionally removing dependency from git.
+https://salsa.debian.org/rocm-team/rocm-smi-lib/-/blob/master/debian/patches/0007-rocm_smi64-soversion.patch
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,18 +30,6 @@ set(SHARE_INSTALL_PREFIX
+     "share/${ROCM_SMI}"
+     CACHE STRING "Tests and Example install directory")
+ 
+-# provide git to utilities
+-find_program (GIT NAMES git)
+-
+-## Setup the package version based on git tags.
+-set(PKG_VERSION_GIT_TAG_PREFIX "rsmi_pkg_ver")
+-get_package_version_number("5.0.0" ${PKG_VERSION_GIT_TAG_PREFIX} GIT)
+-message("Package version: ${PKG_VERSION_STR}")
+-set(${AMD_SMI_LIBS_TARGET}_VERSION_MAJOR "${VERSION_MAJOR}")
+-set(${AMD_SMI_LIBS_TARGET}_VERSION_MINOR "${VERSION_MINOR}")
+-set(${AMD_SMI_LIBS_TARGET}_VERSION_PATCH "0")
+-set(${AMD_SMI_LIBS_TARGET}_VERSION_BUILD "0")
+-
+ # The following default version values should be updated as appropriate for
+ # ABI breaks (update MAJOR and MINOR), and ABI/API additions (update MINOR).
+ # Until ABI stabilizes VERSION_MAJOR will be 0. This should be over-ridden
+--- a/oam/CMakeLists.txt
++++ b/oam/CMakeLists.txt
+@@ -29,23 +29,11 @@ set(OAM_NAME "oam")
+ set(OAM_COMPONENT "lib${OAM_NAME}")
+ set(OAM_TARGET "${OAM_NAME}")
+ 
+-################# Determine the library version #########################
+-set(SO_VERSION_GIT_TAG_PREFIX "oam_so_ver")
+-
+-# VERSION_* variables should be set by get_version_from_tag
+-message("Package version: ${PKG_VERSION_STR}")
+-
+-# Debian package specific variables
+-# Set a default value for the package version
+-get_version_from_tag("1.0.0.0" ${SO_VERSION_GIT_TAG_PREFIX} GIT)
+-
+-# VERSION_* variables should be set by get_version_from_tag
+-if ( ${ROCM_PATCH_VERSION} )
+-    set ( VERSION_PATCH ${ROCM_PATCH_VERSION})
+-    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+-else()
+-    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}")
+-endif ()
++set(VERSION_MAJOR "@VERSION_MAJOR@")
++set(VERSION_MINOR "@VERSION_MINOR@")
++
++set(SO_VERSION_MAJOR "1")
++set(SO_VERSION_STRING "1.0")
+ set(${OAM_NAME}_VERSION_MAJOR "${VERSION_MAJOR}")
+ set(${OAM_NAME}_VERSION_MINOR "${VERSION_MINOR}")
+ set(${OAM_NAME}_VERSION_PATCH "0")
+@@ -78,7 +66,7 @@ target_include_directories(${OAM_TARGET} PRIVATE
+ 
+ ## Set the VERSION and SOVERSION values
+ set_property(TARGET ${OAM_TARGET} PROPERTY
+-             SOVERSION "${VERSION_MAJOR}")
++             SOVERSION "${SO_VERSION_MAJOR}")
+ set_property(TARGET ${OAM_TARGET} PROPERTY
+              VERSION "${SO_VERSION_STRING}")
+ 
+--- a/python_smi_tools/rsmiBindings.py.in
++++ b/python_smi_tools/rsmiBindings.py.in
+@@ -9,19 +9,9 @@ from enum import Enum
+ 
+ import os
+ 
+-# Use ROCm installation path if running from standard installation
+-# With File Reorg rsmiBindings.py will be installed in  /opt/rocm/libexec/rocm_smi.
+-# relative path changed accordingly
+-path_librocm = os.path.dirname(os.path.realpath(__file__)) + '/../../@CMAKE_INSTALL_LIBDIR@/librocm_smi64.so.@VERSION_MAJOR@'
+-if not os.path.isfile(path_librocm):
+-    print('Unable to find %s . Trying /opt/rocm*' % path_librocm)
+-    for root, dirs, files in os.walk('/opt', followlinks=True):
+-        if 'librocm_smi64.so.@VERSION_MAJOR@' in files:
+-            path_librocm = os.path.join(os.path.realpath(root), 'librocm_smi64.so.@VERSION_MAJOR@')
+-    if os.path.isfile(path_librocm):
+-        print('Using lib from %s' % path_librocm)
+-    else:
+-        print('Unable to find librocm_smi64.so.@VERSION_MAJOR@')
++path_librocm = ctypes.util.find_library("rocm_smi64")
++if not path_librocm:
++    print('Unable to find librocm_smi64.so')
+ 
+ # ----------> TODO: Support static libs as well as SO
+ 
+--- a/rocm_smi/CMakeLists.txt
++++ b/rocm_smi/CMakeLists.txt
+@@ -31,23 +31,10 @@ set(ROCM_SMI_TARGET "${ROCM_SMI}64")
+ ## Include common cmake modules
+ include(utils)
+ 
+-################# Determine the library version #########################
+-set(SO_VERSION_GIT_TAG_PREFIX "rsmi_so_ver")
+-
+-# VERSION_* variables should be set by get_version_from_tag
+-message("Package version: ${PKG_VERSION_STR}")
+-
+-# Debian package specific variables
+-# Set a default value for the package version
+-get_version_from_tag("5.0.0.0" ${SO_VERSION_GIT_TAG_PREFIX} GIT)
+-
+-# VERSION_* variables should be set by get_version_from_tag
+-if ( ${ROCM_PATCH_VERSION} )
+-    set ( VERSION_PATCH ${ROCM_PATCH_VERSION})
+-    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+-else()
+-    set(SO_VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}")
+-endif ()
++set(VERSION_MAJOR "@VERSION_MAJOR@")
++set(VERSION_MINOR "@VERSION_MINOR@")
++set(SO_VERSION_MAJOR "1")
++set(SO_VERSION_STRING "1.0")
+ set(${ROCM_SMI}_VERSION_MAJOR "${VERSION_MAJOR}")
+ set(${ROCM_SMI}_VERSION_MINOR "${VERSION_MINOR}")
+ set(${ROCM_SMI}_VERSION_PATCH "0")
+@@ -99,7 +86,7 @@ endif()
+ 
+ ## Set the VERSION and SOVERSION values
+ set_property(TARGET ${ROCM_SMI_TARGET} PROPERTY
+-             SOVERSION "${VERSION_MAJOR}")
++             SOVERSION "${SO_VERSION_MAJOR}")
+ set_property(TARGET ${ROCM_SMI_TARGET} PROPERTY
+              VERSION "${SO_VERSION_STRING}")
+ 

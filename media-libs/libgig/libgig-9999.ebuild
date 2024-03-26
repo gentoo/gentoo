@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools subversion
 
@@ -11,7 +11,6 @@ ESVN_REPO_URI="https://svn.linuxsampler.org/svn/libgig/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc"
 
 RDEPEND="
@@ -39,6 +38,8 @@ src_install() {
 
 	use doc && HTML_DOCS=( doc/html/. )
 	einstalldocs
+
+	find "${ED}" -name '*.la' -type f -delete || die
 
 	# For libgig.so to be found at runtime
 	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/libgig/\"" > 99${PN} || die

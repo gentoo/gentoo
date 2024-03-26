@@ -22,7 +22,8 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="guile nls static"
+IUSE="doc guile nls static test"
+RESTRICT="!test? ( test )"
 
 DEPEND="guile? ( >=dev-scheme/guile-1.8:= )"
 RDEPEND="
@@ -30,9 +31,13 @@ RDEPEND="
 	nls? ( virtual/libintl )
 "
 BDEPEND="
+	doc? ( sys-apps/texinfo )
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-make )
+	test? ( dev-lang/perl )
 "
+
+DOCS="AUTHORS NEWS README*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.4-default-cxx.patch
@@ -67,9 +72,13 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	emake all $(usev doc 'pdf html')
+}
+
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS NEWS README*
+	use doc && HTML_DOCS=( doc/make.html/. ) DOCS="$DOCS doc/make.pdf"
+	default
 
 	dosym gmake /usr/bin/make
 	dosym gmake.1 /usr/share/man/man1/make.1

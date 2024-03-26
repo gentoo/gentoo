@@ -5,4 +5,7 @@
 	<email>prolog@gentoo.org</email>
 	<name>Prolog</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">didoudiaz/gprolog</remote-id>
+</upstream>
 </pkgmetadata>

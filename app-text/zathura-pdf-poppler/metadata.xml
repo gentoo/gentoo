@@ -11,9 +11,9 @@
 			<email>sebastian+dev@ramacher.at</email>
 			<name>Sebastian Ramacher</name>
 		</maintainer>
-		<changelog>http://pwmt.org/projects/zathura/download/</changelog>
-		<doc lang="en">http://pwmt.org/projects/zathura/</doc>
-		<bugs-to>http://bugs.pwmt.org/</bugs-to>
+		<changelog>https://pwmt.org/projects/zathura/download/</changelog>
+		<bugs-to>https://git.pwmt.org/groups/pwmt/-/issues</bugs-to>
+		<doc lang="en">https://pwmt.org/projects/zathura/</doc>
 		<remote-id type="github">pwmt/zathura-pdf-poppler</remote-id>
 	</upstream>
 </pkgmetadata>

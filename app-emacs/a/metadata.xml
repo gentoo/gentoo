@@ -14,4 +14,5 @@
     <bugs-to>https://github.com/plexus/a.el/issues/</bugs-to>
     <remote-id type="github">plexus/a.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

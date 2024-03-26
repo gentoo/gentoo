@@ -1,0 +1,71 @@
+From fd2218e4a671f4aae752620481e541799585fa20 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Wed, 6 Mar 2024 20:06:07 -0500
+Subject: [PATCH] configure: fix broken bashisms resulting in logic failure
+
+In a configure check that was carefully written for pre-unix-wars
+versions of the bourne shell, some code which was only valid using GNU
+bash was included.
+
+Bash provides the standard `test XXX = YYY` or `[ XXX = YYY ]`
+utilities. It also provides the ability to spell the equals sign as a
+double equals. This does nothing whatsoever -- it adds no new
+functionality to bash, it forbids nothing, it is *literally* an exact
+alias.
+
+It should never be used under any circumstances. All developers must
+immediately forget that it exists. Using it is non-portable and does not
+work in /bin/sh scripts such as configure scripts, and it results in
+dangerous muscle memory when used in bash scripts because it makes
+people unthinkingly use the double equals even in /bin/sh scripts. To
+add insult to injury, it makes scripts take up more disk space (by a
+whole byte! and sometimes even a few bytes...)
+
+Delete this accidental bashism, and restore the ability to get correct
+./configure behavior on systems where /bin/sh is something other than a
+symlink to GNU bash.
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c0ac33c..619e162 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -44,7 +44,7 @@ AC_ARG_ENABLE(debug,
+ 	[  --enable-debug      Turn on debug compiler information],
+ 	[ENABLE_DEBUG_FLAG="$enableval"],
+ 	[ENABLE_DEBUG_FLAG="yes"])
+-if [[ "x$ENABLE_DEBUG_FLAG" == "xyes" ]] ; then
++if test "$ENABLE_DEBUG_FLAG" = yes ; then
+    CXXFLAGS=${CXXFLAGS}" -g "
+ fi
+ 
+@@ -63,7 +63,7 @@ dnl AM_LDFLAGS=" -lm "
+ dnl if the debug flags are on, check if we can also use 
+ dnl some profiling tools
+ dnl COMMENTED: Pass LDFLAGS to configure instead
+-dnl if [[ "x$ENABLE_DEBUG_FLAG" == "xyes" ]] ; then
++dnl if test "$ENABLE_DEBUG_FLAG" = yes ; then
+ dnl    AC_CHECK_LIB(profiler, google_initializer_module_profiler)
+ dnl    AC_CHECK_LIB(pthread, pthread_create)
+ dnl    AC_CHECK_LIB(tcmalloc, malloc)
+@@ -81,11 +81,11 @@ CXXFLAGS="$CXXFLAGS -Werror=deprecated-declarations"
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <memory>]],[[int *a= new int(1); std::auto_ptr<int> b; b.reset(a);]])],
+     [ac_compilation_deprecated="no"],[ac_compilation_deprecated="yes"])
+ AC_MSG_RESULT([$ac_compilation_deprecated])
+-if [[ "$ac_compilation_deprecated" == "yes" ]] ; then
++if test "$ac_compilation_deprecated" = yes ; then
+    AC_MSG_CHECKING([[if $CXX $CXXFLAGS supports atd::unique_ptr]])
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <memory>]],[[int *a= new int(1); std::unique_ptr<int> b; b.reset(a);]])],
+     [ac_supports_unique_ptr="yes"],[as_supports_unique_ptr="no"])
+-    if [[ "$ac_supports_unique_ptr" == "yes" ]] ; then
++    if test "$ac_supports_unique_ptr" = "yes" ; then
+        AC_DEFINE(USES_UNIQUE_PTR_AS_AUTO_PTR, [], [use unique_ptr instead of auto_ptr])
+     fi
+     AC_MSG_RESULT([$ac_supports_unique_ptr])
+-- 
+2.43.0
+

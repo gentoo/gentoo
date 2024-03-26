@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="${PV:0:3}"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-perl-5.26.patch
 	"${FILESDIR}"/${P}-K-R-decls-clang.patch
 	"${FILESDIR}"/${P}-Clang-16-fixes-for-various-tests.patch
+	"${FILESDIR}"/${P}-skip-AC_FUNC_GETLOADAVG-test.patch
 )
 
 src_configure() {

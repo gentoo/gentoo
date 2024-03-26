@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,3 +20,7 @@ RDEPEND="media-libs/gst-plugins-bad
 DEPEND="${RDEPEND}
 	>=media-libs/nv-codec-headers-11.1.5.1"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/nvidia-vaapi-driver-0.0.11_musl-support.patch"
+)

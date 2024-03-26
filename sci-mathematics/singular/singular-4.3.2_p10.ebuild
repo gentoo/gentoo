@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ S="${WORKDIR}/${PN}-${MY_DIR2}"
 # are no GPL-2-only files.
 LICENSE="BSD GPL-2 GPL-2+ GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x86-linux"
+KEYWORDS="amd64 ~ppc ~riscv ~x86 ~x86-linux"
 IUSE="emacs examples polymake +readline"
 
 # The interactive help uses "info" from sys-apps/texinfo.

@@ -17,7 +17,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 arm arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	app-arch/lz4:=

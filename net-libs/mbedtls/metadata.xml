@@ -24,6 +24,7 @@
 		<flag name="programs">Build Mbed TLS programs</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:arm:mbed_tls</remote-id>
 		<remote-id type="github">Mbed-TLS/mbedtls</remote-id>
 	</upstream>
 </pkgmetadata>

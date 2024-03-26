@@ -1,0 +1,57 @@
+From d4287704f9e2ea07e0750b114ec0761c2732d03e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Mar 2024 21:40:25 +0100
+Subject: [PATCH] Drop unused QtNetwork dependency, fix KDE terminology
+
+'KDE version' -> 'KDE Frameworks version'
+
+Change-Id: I2e6a912be93d79b251dcf32c20796374c9ca9cf2
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ configure.ac | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6d56df8625f1..9d6b35b747e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13341,7 +13341,7 @@ then
+ 
+     QT6_CFLAGS="-I$qt6_incdir -DQT_CLEAN_NAMESPACE -DQT_THREAD_SUPPORT -DQT_NO_VERSION_TAGGING"
+     QT6_CFLAGS=$(printf '%s' "$QT6_CFLAGS" | sed -e "s/-I/${ISYSTEM?}/g")
+-    QT6_LIBS="-L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets -lQt6Network"
++    QT6_LIBS="-L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets"
+     if test "$_os" = "Emscripten"; then
+         QT6_LIBS="$QT6_LIBS -lQt6BundledPcre2 -lQt6BundledZLIB -L${qt6_platformsdir} -lqwasm -sGL_ENABLE_GET_PROC_ADDRESS"
+     fi
+@@ -13521,15 +13521,15 @@ then
+         AC_MSG_ERROR([KF6 libraries not found.  Please specify the root of your KF6 installation by exporting KF6DIR before running "configure".])
+     fi
+ 
+-    KF6_CFLAGS="-I$kf6_incdir -I$kf6_incdir/KCoreAddons -I$kf6_incdir/KI18n -I$kf6_incdir/KConfig -I$kf6_incdir/KConfigCore -I$kf6_incdir/KWindowSystem -I$kf6_incdir/KIO -I$kf6_incdir/KIOCore -I$kf6_incdir/KIOWidgets -I$kf6_incdir/KIOFileWidgets -I$qt6_incdir -I$qt6_incdir/QtCore -I$qt6_incdir/QtGui -I$qt6_incdir/QtWidgets -I$qt6_incdir/QtNetwork -DQT_CLEAN_NAMESPACE -DQT_THREAD_SUPPORT -DQT_NO_VERSION_TAGGING"
+-    KF6_LIBS="-L$kf6_libdir -lKF6CoreAddons -lKF6I18n -lKF6ConfigCore -lKF6WindowSystem -lKF6KIOCore -lKF6KIOWidgets -lKF6KIOFileWidgets -L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets -lQt6Network"
++    KF6_CFLAGS="-I$kf6_incdir -I$kf6_incdir/KCoreAddons -I$kf6_incdir/KI18n -I$kf6_incdir/KConfig -I$kf6_incdir/KConfigCore -I$kf6_incdir/KWindowSystem -I$kf6_incdir/KIO -I$kf6_incdir/KIOCore -I$kf6_incdir/KIOWidgets -I$kf6_incdir/KIOFileWidgets -I$qt6_incdir -I$qt6_incdir/QtCore -I$qt6_incdir/QtGui -I$qt6_incdir/QtWidgets -DQT_CLEAN_NAMESPACE -DQT_THREAD_SUPPORT -DQT_NO_VERSION_TAGGING"
++    KF6_LIBS="-L$kf6_libdir -lKF6CoreAddons -lKF6I18n -lKF6ConfigCore -lKF6WindowSystem -lKF6KIOCore -lKF6KIOWidgets -lKF6KIOFileWidgets -L$qt6_libdir -lQt6Core -lQt6Gui -lQt6Widgets"
+     KF6_CFLAGS=$(printf '%s' "$KF6_CFLAGS" | sed -e "s/-I/${ISYSTEM?}/g")
+ 
+     AC_LANG_PUSH([C++])
+     save_CXXFLAGS=$CXXFLAGS
+     CXXFLAGS="$CXXFLAGS $KF6_CFLAGS"
+     dnl KF6 development version as of 2023-06 uses version number 5.240
+-    AC_MSG_CHECKING([whether KDE is >= 5.240])
++    AC_MSG_CHECKING([whether KDE Frameworks is >= 5.240])
+        AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <kcoreaddons_version.h>
+ 
+@@ -13537,7 +13537,7 @@ int main(int argc, char **argv) {
+        if (KCOREADDONS_VERSION_MAJOR == 6 || (KCOREADDONS_VERSION_MAJOR == 5 && KCOREADDONS_VERSION_MINOR >= 240)) return 0;
+        else return 1;
+ }
+-       ]])],[AC_MSG_RESULT([yes])],[AC_MSG_ERROR([KDE version too old])],[])
++       ]])],[AC_MSG_RESULT([yes])],[AC_MSG_ERROR([KDE Frameworks version too old])],[])
+     CXXFLAGS=$save_CXXFLAGS
+     AC_LANG_POP([C++])
+ fi
+-- 
+2.44.0
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D Printer Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/atomicobject/heatshrink/issues</bugs-to>
+		<remote-id type="github">atomicobject/heatshrink</remote-id>
+	</upstream>
+</pkgmetadata>

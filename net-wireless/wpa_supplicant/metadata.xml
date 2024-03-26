@@ -8,7 +8,6 @@
 	<use>
 		<flag name="ap">Add support for access point mode</flag>
 		<flag name="broadcom-sta">Flag to help users disable features not supported by broadcom-sta driver</flag>
-		<flag name="crda">Use <pkg>net-wireless/crda</pkg> for regulatory domain loading instead of in-kernel (4.15+) support</flag>
 		<flag name="eap-sim">Add support for EAP-SIM authentication algorithm</flag>
 		<flag name="eapol-test">Build and install eapol_test binary</flag>
 		<flag name="fasteap">Add support for FAST-EAP authentication algorithm</flag>

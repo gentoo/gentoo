@@ -1,0 +1,42 @@
+Index: jupyter_collaboration-2.0.3/pyproject.toml
+===================================================================
+--- jupyter_collaboration-2.0.3.orig/pyproject.toml
++++ jupyter_collaboration-2.0.3/pyproject.toml
+@@ -3,10 +3,11 @@
+ 
+ [build-system]
+ build-backend = "hatchling.build"
+-requires = ["hatchling>=1.4.0", "hatch-nodejs-version", "jupyterlab>=4.0.0"]
++requires = ["hatchling>=1.4.0", "jupyterlab>=4.0.0"]
+ 
+ [project]
+ name = "jupyter_collaboration"
++version = "2.0.5"
+ readme = "README.md"
+ license = { file = "LICENSE" }
+ requires-python = ">=3.8"
+@@ -34,7 +35,7 @@ dependencies = [
+     "jupyter_server_fileid>=0.7.0,<1",
+     "jsonschema>=4.18.0"
+ ]
+-dynamic = ["version", "description", "authors", "urls", "keywords"]
++dynamic = ["description", "authors", "urls", "keywords"]
+ 
+ [project.optional-dependencies]
+ dev = [
+@@ -63,15 +64,9 @@ line-length = 100
+ [tool.isort]
+ profile = "black"
+ 
+-[tool.hatch.version]
+-source = "nodejs"
+-
+ [tool.hatch.build.hooks.version]
+ path = "jupyter_collaboration/_version.py"
+ 
+-[tool.hatch.metadata.hooks.nodejs]
+-fields = ["description", "authors", "urls"]
+-
+ [tool.hatch.build.targets.sdist]
+ artifacts = ["/jupyter_collaboration/labextension"]
+ exclude = ["/.github", "/binder", "node_modules"]

@@ -17,6 +17,39 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
+# virt-firmware is keyworded here
+sys-kernel/installkernel -efistub
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
+# media-libs/libdovi is keyworded here
+media-libs/libplacebo -libdovi
+
+# Sam James <sam@gentoo.org> (2024-02-24)
+# Only works on amd64 (and x32).
+dev-debug/gdb -cet
+sys-devel/binutils -cet
+sys-devel/clang-common -cet
+sys-devel/gcc -cet
+sys-libs/binutils-libs -cet
+sys-libs/glibc -cet
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
+# net-libs/paho-mqtt-c is only available for amd64 and x86
+app-admin/syslog-ng -mqtt
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
+# Refind is only available on a subset of arches
+sys-kernel/installkernel -refind
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
+# dev-python/PyQt6 and dev-python/pyside6 are keyworded here
+dev-python/QtPy -pyqt6 -pyside6
+
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
+# virtiofsd is available here
+app-emulation/libvirt -virtiofsd
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-13)
 # Unmask only where grub is keyworded
 sys-kernel/installkernel -grub
@@ -36,7 +69,7 @@ dev-python/PyQt6 -pdfium
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-25)
 # media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
-# are only available for amd64 and riscv
+# are only available for amd64, arm64 and riscv
 >=gui-libs/wlroots-0.17.0 -drm -liftoff
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)
@@ -46,16 +79,6 @@ media-video/obs-studio -qsv -websocket
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # app-crypt/rpm-sequoia is keyworded here.
 app-arch/rpm -sequoia
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-11-20)
-# Qt6 is still experimental in freecad, currently the configure phase
-# gets itself stuck by importing both qt5 and qt6 cmake files.
-# Since there is no python3.12 support for shiboken2/pyside2, we have
-# to mask that flag as well.
-#
-# We have to mask this here as well as in base/package.use.mask
-# because qt6 is globally unmasked on amd64
-media-gfx/freecad qt6 python_single_target_python3_12
 
 # Florian Schmaus <flow@gentoo.org> (2023-11-10)
 # Only available for amd64.
@@ -67,6 +90,7 @@ media-libs/libplacebo -shaderc
 
 # Michał Górny <mgorny@gentoo.org> (2023-09-19)
 # dev-cpp/cpp-httplib is keyworded here.
+dev-debug/lldb -debuginfod
 sys-devel/llvm -debuginfod
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-09-13)
@@ -77,22 +101,17 @@ dev-qt/qtbase -renderdoc
 # media-libs/roc-toolkit is not keyworded in most places
 media-video/pipewire -roc
 
-# Matt Jolly <matt.jolly@footclan.ninja> (2023-08-10)
+# Matt Jolly <kangie@gentoo.org> (2023-08-10)
 # 'ssl' USE required for curl's nghttp3/quic support
 net-libs/ngtcp2 -ssl
 
-# Matt Jolly <matt.jolly@footclan.ninja> (2023-08-10)
+# Matt Jolly <kangie@gentoo.org> (2023-08-10)
 # nghttp3 has been tested to work on amd64
 net-misc/curl -nghttp3
 
 # Sam James <sam@gentoo.org> (2023-07-18)
 # dev-cpp/cppdap is not keyworded in most places
 dev-build/cmake -dap
-
-# Marek Szuba <marecki@gentoo.org> (2023-06-29)
-# Now that we globally unmask USE=qt6 for amd64, the mask set
-# in profiles/base/package.use.mask no longer has any effect on this arch.
-dev-python/pyotherside qt6
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-24)
 # dev-db/mongodb miraculously got keyworded here.
@@ -138,7 +157,7 @@ sys-libs/libomp -llvm_targets_AMDGPU
 net-misc/curl -rustls -curl_ssl_rustls
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
-# Quick Sync Video (through intel-mediasdk or oneVPL) is
+# Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv
 media-libs/gst-plugins-bad -qsv
@@ -330,7 +349,7 @@ dev-util/catalyst -system-bootloader
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
-media-video/mpv -libplacebo -vulkan
+media-video/mpv -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is keyworded on amd64
@@ -400,9 +419,9 @@ sys-boot/grub:2 -grub_platforms_xen-32
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sd-boot is not supported on all archs.
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
-sys-kernel/installkernel -ukify
+sys-kernel/installkernel -systemd-boot -ukify -uki
 
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag

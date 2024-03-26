@@ -57,7 +57,7 @@ LLVM_VERSION=$(ver_cut 1-3)
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MAIN_MAJOR=18
+_LLVM_MAIN_MAJOR=19
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -72,11 +72,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				18.0.0_pre20240113)
-					EGIT_COMMIT=8d817f6479a5df874028a8b40fd30aecd3479005
+				19.0.0_pre20240322)
+					EGIT_COMMIT=f3cfe016c5d8429c0dccfa6f85442e2ea0d45a58
 					;;
-				18.0.0_pre20240106)
-					EGIT_COMMIT=a085402ef54379758e6c996dbaedfcb92ad222b5
+				19.0.0_pre20240316)
+					EGIT_COMMIT=6d3cec01a6c29fa4e51ba129fa13dbf55d2b928e
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -205,10 +205,14 @@ ALL_LLVM_TARGET_FLAGS=(
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The current ABI version of LLVM dylib, in a form suitable for use
-# as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
-# for the main branch.
-LLVM_SOABI=${LLVM_MAJOR}
-[[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]] && LLVM_SOABI=${PV}
+# as a subslot.
+if [[ ${LLVM_MAJOR} == ${_LLVM_MAIN_MAJOR} ]]; then
+	LLVM_SOABI=${PV}
+elif ver_test ${PV} -ge 18.1.0_rc3; then
+	LLVM_SOABI=$(ver_cut 1-2)
+else
+	LLVM_SOABI=${LLVM_MAJOR}
+fi
 
 # == global scope logic ==
 
@@ -265,19 +269,35 @@ llvm.org_set_globals() {
 	fi
 
 	if [[ ${LLVM_MANPAGES} ]]; then
-		# use pregenerated tarball if available
-		local manpage_dist=$(llvm_manpage_get_dist)
-		if [[ -n ${manpage_dist} ]]; then
-			IUSE+=" doc"
+		# @ECLASS_VARIABLE: LLVM_MANPAGE_DIST
+		# @OUTPUT_VARIABLE
+		# @DESCRIPTION:
+		# The filename of the prebuilt manpage tarball for this version.
+		LLVM_MANPAGE_DIST=
+		if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
+			case ${PV} in
+				14*|15*|16.0.[0-3])
+					LLVM_MANPAGE_DIST="llvm-${PV}-manpages.tar.bz2"
+					;;
+				16*)
+					LLVM_MANPAGE_DIST="llvm-16.0.4-manpages.tar.bz2"
+					;;
+				17*)
+					LLVM_MANPAGE_DIST="llvm-17.0.1-manpages.tar.bz2"
+					;;
+				18*)
+					LLVM_MANPAGE_DIST="llvm-18.1.0-manpages.tar.bz2"
+					;;
+			esac
+		fi
+
+		IUSE+=" doc"
+		if [[ -n ${LLVM_MANPAGE_DIST} ]]; then
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/${manpage_dist}
+					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
 				)
 			"
-		else
-			IUSE+=" +doc"
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
 		fi
 	fi
 
@@ -433,32 +453,12 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
-# @FUNCTION: llvm_manpage_get_dist
-# @DESCRIPTION:
-# Output the filename of the manpage dist for this version,
-# if available.  Otherwise returns without output.
-llvm_manpage_get_dist() {
-	if [[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]]; then
-		case ${PV} in
-			14*|15*|16.0.[0-3])
-				echo "llvm-${PV}-manpages.tar.bz2"
-				;;
-			16*)
-				echo "llvm-16.0.4-manpages.tar.bz2"
-				;;
-			17*)
-				echo "llvm-17.0.1-manpages.tar.bz2"
-				;;
-		esac
-	fi
-}
-
 # @FUNCTION: llvm_are_manpages_built
 # @DESCRIPTION:
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || [[ -z $(llvm_manpage_get_dist) ]]
+	use doc || [[ -z ${LLVM_MANPAGE_DIST} ]]
 }
 
 # @FUNCTION: llvm_install_manpages

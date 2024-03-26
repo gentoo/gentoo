@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Offline Windows NT Password & Registry Editor"
 HOMEPAGE="https://pogostick.net/~pnh/ntpasswd/"
@@ -33,6 +33,9 @@ PATCHES=(
 src_prepare() {
 	default
 	sed -i -e '/-o/s:$(CC):$(CC) $(LDFLAGS):' Makefile || die
+
+	# MANY changes would be required for this code to be c99-compliant
+	append-flags -std=gnu90
 
 	if ! use static ; then
 		sed -i -e "/^all:/s/ \(chntpw\|reged\).static//g" Makefile || die

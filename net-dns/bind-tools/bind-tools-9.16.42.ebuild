@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${MY_P}.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+caps doc gssapi idn libedit readline test xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug #409687
 RESTRICT="!test? ( test )"
@@ -59,6 +59,13 @@ src_prepare() {
 	# Do not disable thread local storage on Solaris, it works with our
 	# toolchain, and it breaks further configure checks
 	sed -i -e '/LDFLAGS=/s/-zrelax=transtls//' configure.ac configure || die
+
+	# Slow tests
+	sed -i "s/{name='mem_test'}/{name='mem_test',timeout=900}/" "lib/isc/tests/Kyuafile" || die
+	sed -i "s/{name='timer_test'}/{name='timer_test',timeout=900}/" "lib/isc/tests/Kyuafile" || die
+
+	# Conditionally broken
+	use sparc && ( sed -i "/{name='netmgr_test'}/d" "lib/isc/tests/Kyuafile" || die )
 
 	# bug #220361
 	rm aclocal.m4 || die

@@ -26,7 +26,7 @@ src_prepare() {
 	default
 
 	use mfc && eapply "${FILESDIR}"/${PN}-c_dialect.patch
-	is-flagq -flto* && filter-flags -fuse-linker-plugin
+	tc-is-lto && filter-flags -fuse-linker-plugin
 	filter-lto
 }
 

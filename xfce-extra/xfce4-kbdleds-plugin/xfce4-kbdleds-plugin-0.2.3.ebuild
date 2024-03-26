@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="A panel plug-in to show state of Caps, Num and Scroll Lock keys"
 HOMEPAGE="https://github.com/oco2000/xfce4-kbdleds-plugin"
@@ -13,18 +13,35 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
-RDEPEND="
+DEPEND="
 	xfce-base/libxfce4ui:=
 	xfce-base/libxfce4util:=
-	xfce-base/xfce4-panel"
-DEPEND=${RDEPEND}
+	xfce-base/xfce4-panel
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+# for eautoreconf
+BDEPEND+="
+	dev-build/xfce4-dev-tools
+"
 
-# https://github.com/oco2000/xfce4-kbdleds-plugin/pull/7
-PATCHES=( "${FILESDIR}/${P}-xfce-4.16.patch" )
+PATCHES=(
+	# https://github.com/oco2000/xfce4-kbdleds-plugin/pull/7
+	"${FILESDIR}/${P}-xfce-4.16.patch"
+	# https://github.com/oco2000/xfce4-kbdleds-plugin/pull/10
+	"${FILESDIR}/${P}-x11-libs.patch" #913681
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default

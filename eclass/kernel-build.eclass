@@ -39,9 +39,9 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-alternatives/bc
-	app-alternatives/lex
+	sys-devel/bison
+	sys-devel/flex
 	virtual/libelf
-	app-alternatives/yacc
 	arm? ( sys-apps/dtc )
 	arm64? ( sys-apps/dtc )
 	riscv? ( sys-apps/dtc )
@@ -385,6 +385,11 @@ kernel-build_src_install() {
 	# fix source tree and build dir symlinks
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
+	if [[ "${image_path}" == *vmlinux* ]]; then
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinux"
+	else
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinuz"
+	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 		secureboot_sign_efi_file "${image}"

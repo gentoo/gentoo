@@ -1,7 +1,7 @@
 From 1d00e5ce0fb069911c4b525ec38289fb5d9021b0 Mon Sep 17 00:00:00 2001
 From: Paul Floyd <pjfloyd@wanadoo.fr>
 Date: Sat, 18 Nov 2023 08:49:34 +0100
-Subject: [PATCH 2/3] Bug 476548 - valgrind 3.22.0 fails on assertion when
+Subject: [PATCH 2/4] Bug 476548 - valgrind 3.22.0 fails on assertion when
  loading debuginfo file produced by mold
 
 (cherry picked from commit 9ea4ae66707a4dcc6f4328e11911652e4418c585)

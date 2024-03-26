@@ -14,6 +14,8 @@ EAPI=8
 # doing so since such a case is unlikely.
 FFMPEG_SUBSLOT=58.60.60
 
+SOC_PATCH="ffmpeg-rpi-6.1-r3.patch"
+
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
@@ -25,17 +27,36 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video. Includes libavcodec"
 HOMEPAGE="https://ffmpeg.org/"
+SRC_URI="soc? ( https://dev.gentoo.org/~chewi/distfiles/${SOC_PATCH} )"
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SRC_URI=""
+	:
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
+	SRC_URI+=" mirror://gentoo/${P}.tar.xz"
 else # Release
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ffmpeg.asc
 	inherit verify-sig
-	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.xz"
-	SRC_URI+=" verify-sig? ( https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc )"
 
-	BDEPEND=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
+	SRC_URI+="
+		https://ffmpeg.org/releases/${P/_/-}.tar.xz
+		verify-sig? (
+			https://ffmpeg.org/releases/${P/_/-}.tar.xz.asc
+			soc? ( https://dev.gentoo.org/~chewi/distfiles/${SOC_PATCH}.asc )
+		)
+	"
+
+	BDEPEND="
+		verify-sig? (
+			sec-keys/openpgp-keys-ffmpeg
+			soc? ( sec-keys/openpgp-keys-gentoo-developers )
+		)
+	"
+
+	src_unpack() {
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}"/${P/_/-}.tar.xz{,.asc} /usr/share/openpgp-keys/ffmpeg.asc
+			use soc && verify-sig_verify_detached "${DISTDIR}"/${SOC_PATCH}{,.asc} /usr/share/openpgp-keys/gentoo-developers.asc
+		fi
+		default
+	}
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
@@ -84,7 +105,7 @@ FFMPEG_FLAG_MAP=(
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb codec2:libcodec2 +dav1d:libdav1d fdk:libfdk-aac
 		jpeg2k:libopenjpeg jpegxl:libjxl bluray:libbluray gme:libgme gsm:libgsm
-		libaribb24 mmal modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
+		libaribb24 modplug:libmodplug opus:libopus qsv:libvpl libilbc librtmp ssh:libssh
 		speex:libspeex srt:libsrt svg:librsvg nvenc:ffnvcodec
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
@@ -108,7 +129,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa chromium doc +encode oss +pic sndio static-libs test v4l
+	alsa chromium doc +encode oss +pic sndio static-libs test v4l soc
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -235,7 +256,7 @@ RDEPEND="
 	)
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	jpeg2k? ( >=media-libs/openjpeg-2.1:2=[${MULTILIB_USEDEP}] )
-	jpegxl? ( >=media-libs/libjxl-0.7.0[$MULTILIB_USEDEP] )
+	jpegxl? ( >=media-libs/libjxl-0.7.0:=[$MULTILIB_USEDEP] )
 	lcms? ( >=media-libs/lcms-2.13:2[$MULTILIB_USEDEP] )
 	libaom? ( >=media-libs/libaom-1.0.0-r1:=[${MULTILIB_USEDEP}] )
 	libaribb24? ( >=media-libs/aribb24-1.0.3-r2[${MULTILIB_USEDEP}] )
@@ -251,19 +272,19 @@ RDEPEND="
 	libxml2? ( dev-libs/libxml2:=[${MULTILIB_USEDEP}] )
 	lv2? ( media-libs/lv2[${MULTILIB_USEDEP}] media-libs/lilv[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
-	mmal? ( media-libs/raspberrypi-userland )
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
-	qsv? ( media-libs/oneVPL[${MULTILIB_USEDEP}] )
+	qsv? ( media-libs/libvpl[${MULTILIB_USEDEP}] )
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
 	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.6.0:=[sftp,${MULTILIB_USEDEP}] )
@@ -280,7 +301,7 @@ RDEPEND="
 	vaapi? ( >=media-libs/libva-1.2.1-r1:0=[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vidstab? ( >=media-libs/vidstab-1.1.0[${MULTILIB_USEDEP}] )
-	vmaf? ( >=media-libs/libvmaf-2.0.0[${MULTILIB_USEDEP}] )
+	vmaf? ( >=media-libs/libvmaf-2.0.0:=[${MULTILIB_USEDEP}] )
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
@@ -342,6 +363,7 @@ REQUIRED_USE="
 	glslang? ( vulkan !shaderc )
 	libv4l? ( v4l )
 	shaderc? ( vulkan !glslang )
+	soc? ( libdrm )
 	test? ( encode )
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
@@ -354,6 +376,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
+	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -379,6 +402,9 @@ src_prepare() {
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
 
+	use soc &&
+		eapply "${DISTDIR}"/${SOC_PATCH}
+
 	default
 
 	# -fdiagnostics-color=auto gets appended after user flags which
@@ -391,6 +417,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=( )
+
+	# Conditional patch options
+	use soc && myconf+=( --enable-v4l2-request --enable-libudev --enable-sand )
 
 	# bug 842201
 	use ia64 && tc-is-gcc && append-flags \
@@ -475,7 +504,7 @@ multilib_src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	if [[ ${ABI} != x86 ]] && is-flagq "-flto*"; then
+	if [[ ${ABI} != x86 ]] && tc-is-lto; then
 		# Respect -flto value, e.g -flto=thin
 		local v="$(get-flag flto)"
 		[[ -n ${v} ]] && myconf+=( "--enable-lto=${v}" ) || myconf+=( "--enable-lto" )

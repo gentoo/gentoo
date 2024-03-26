@@ -1,0 +1,14 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+Bump cmake minimum version to remove warning
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 88d34f0..232c643 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+ 
+ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/adm/cmake")
+ 

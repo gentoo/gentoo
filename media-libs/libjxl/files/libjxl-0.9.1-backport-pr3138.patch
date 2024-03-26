@@ -1,0 +1,46 @@
+https://github.com/libjxl/libjxl/issues/3137
+https://github.com/libjxl/libjxl/pull/3138
+
+From 5e5dda47aee0a6f480984cf13cfc2be0044316e4 Mon Sep 17 00:00:00 2001
+From: Moritz Firsching <firsching@google.com>
+Date: Mon, 15 Jan 2024 13:43:01 +0100
+Subject: [PATCH] disable tooling test when not JPEGXL_ENABLE_TOOLS
+
+---
+ tools/conformance/CMakeLists.txt | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/tools/conformance/CMakeLists.txt b/tools/conformance/CMakeLists.txt
+index 5766612abf9..36249048c59 100644
+--- a/tools/conformance/CMakeLists.txt
++++ b/tools/conformance/CMakeLists.txt
+@@ -4,15 +4,18 @@
+ # license that can be found in the LICENSE file.
+ 
+ if(BUILD_TESTING AND CMAKE_EXECUTABLE_SUFFIX STREQUAL "")
+-# Script to validate the tooling.
+-find_program (BASH_PROGRAM bash)
+-if(BASH_PROGRAM)
+-  add_test(
+-    NAME conformance_tooling_test
+-    COMMAND
+-        ${BASH_PROGRAM} ${CMAKE_CURRENT_SOURCE_DIR}/tooling_test.sh
+-        ${CMAKE_BINARY_DIR} ${JPEGXL_TEST_DATA_PATH})
+-  # Skip the test if dependencies are not available.
+-  set_tests_properties(conformance_tooling_test PROPERTIES SKIP_RETURN_CODE 254)
+-endif()
++  # Script to validate the tooling.
++  # Only add it when djxl being build.
++  if(JPEGXL_ENABLE_TOOLS)
++    find_program (BASH_PROGRAM bash)
++    if(BASH_PROGRAM)
++      add_test(
++        NAME conformance_tooling_test
++        COMMAND
++            ${BASH_PROGRAM} ${CMAKE_CURRENT_SOURCE_DIR}/tooling_test.sh
++            ${CMAKE_BINARY_DIR} ${JPEGXL_TEST_DATA_PATH})
++      # Skip the test if dependencies are not available.
++      set_tests_properties(conformance_tooling_test PROPERTIES SKIP_RETURN_CODE 254)
++    endif() # BASH_PROGRAM
++  endif() # JPEGXL_ENABLE_TOOLS
+ endif() # BUILD_TESTING

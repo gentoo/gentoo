@@ -16,4 +16,5 @@
     pastebin-like services. It supports more than one service and will failover
     if one service fails.
   </longdescription>
+  <stabilize-allarches />
 </pkgmetadata>

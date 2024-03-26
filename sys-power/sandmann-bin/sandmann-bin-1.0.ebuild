@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="An autosuspend and wakeup daemon"
 HOMEPAGE="https://gitlab.com/Flow/sandmann"
 SRC_URI="https://geekplace.eu/projects/${MY_PN}/archive/${MY_P}.tar.xz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 LICENSE="GPL-3+ LGPL-3"
 SLOT="0"

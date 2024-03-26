@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
@@ -362,11 +362,6 @@ gnome2_gdk_pixbuf_savelist() {
 gnome2_gdk_pixbuf_update() {
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
 	[[ -x ${updater} ]] || updater="${EROOT%/}/usr/bin/gdk-pixbuf-query-loaders"
-
-	if [[ -z ${GNOME2_ECLASS_GDK_PIXBUF_LOADERS} ]]; then
-		debug-print "gdk-pixbuf loader cache does not need an update"
-		return
-	fi
 
 	if tc-is-cross-compiler ; then
 		ewarn "Updating of gdk-pixbuf loader cache skipped due to cross-compilation."

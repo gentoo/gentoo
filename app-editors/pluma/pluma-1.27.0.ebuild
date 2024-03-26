@@ -4,7 +4,7 @@
 EAPI=8
 
 MATE_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit mate python-single-r1 virtualx
 
 DESCRIPTION="Pluma text editor for the MATE desktop"
@@ -12,8 +12,6 @@ DESCRIPTION="Pluma text editor for the MATE desktop"
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
@@ -23,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	dev-libs/atk
+	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libpeas-1.2.0:0[gtk]
 	>=dev-libs/libxml2-2.5:2

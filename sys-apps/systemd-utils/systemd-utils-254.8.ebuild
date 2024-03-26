@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
-inherit bash-completion-r1 flag-o-matic linux-info meson-multilib python-single-r1
-inherit secureboot toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info meson-multilib optfeature
+inherit python-single-r1 secureboot toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
@@ -27,7 +27,7 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+acl boot +kmod kernel-install selinux split-usr sysusers +tmpfiles test +udev ukify"
 REQUIRED_USE="
 	|| ( kernel-install tmpfiles sysusers udev )
@@ -446,8 +446,6 @@ multilib_src_install() {
 		if use kernel-install; then
 			dobin kernel-install
 			doman man/kernel-install.8
-			# copy the default set of plugins
-			cp "${S}/src/kernel-install/"*.install src/kernel-install || die
 			exeinto usr/lib/kernel/install.d
 			doexe src/kernel-install/*.install
 		fi
@@ -504,11 +502,13 @@ multilib_src_install_all() {
 	einstalldocs
 	if use boot; then
 		into /usr
-		exeinto usr/lib/kernel/install.d
-		doexe src/kernel-install/*.install
 		dobashcomp shell-completion/bash/bootctl
 		insinto /usr/share/zsh/site-functions
 		doins shell-completion/zsh/{_bootctl,_kernel-install}
+	fi
+	if use kernel-install; then
+		exeinto usr/lib/kernel/install.d
+		doexe src/kernel-install/*.install
 	fi
 	if use tmpfiles; then
 		doinitd "${FILESDIR}"/systemd-tmpfiles-setup
@@ -571,5 +571,14 @@ pkg_postinst() {
 		systemd-hwdb --root="${ROOT}" update
 		eend $?
 		udev_reload
+	fi
+
+	if use boot; then
+		optfeature "automatically installing the kernels in systemd-boot's native layout and updating the bootloader configuration" \
+			"sys-kernel/installkernel[systemd-boot]"
+	fi
+	if use ukify; then
+		optfeature "automatically generating an unified kernel image on each kernel installation" \
+			"sys-kernel/installkernel[ukify]"
 	fi
 }

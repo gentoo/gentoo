@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,9 +25,10 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 
-DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
 DOTNET_PKG_PROJECTS=( "${S}/Coco.csproj" )
 PATCHES=( "${FILESDIR}/${P}-Coco-csproj.patch" )
+
+dotnet-pkg_force-compat
 
 src_unpack() {
 	dotnet-pkg_src_unpack

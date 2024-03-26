@@ -15,4 +15,5 @@
     <bugs-to>https://github.com/protesilaos/ef-themes/issues/</bugs-to>
     <remote-id type="github">protesilaos/ef-themes</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

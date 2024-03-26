@@ -102,7 +102,7 @@ dev-python/numpy lapack
 net-misc/openssh security-key
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
-# dev-util/systemtap is not keyworded on m68k
+# dev-debug/systemtap is not keyworded on m68k
 sys-libs/glibc systemtap
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)

@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic systemd
 if [[ ${PV} == 9999 ]] ; then
@@ -66,6 +66,7 @@ src_configure() {
 		--with-drivedbdir="${EPREFIX}/var/db/${PN}" #575292
 		--with-initscriptdir="${EPREFIX}/etc/init.d"
 		#--with-smartdscriptdir="${EPREFIX}/usr/share/${PN}"
+		--with-systemdenvfile=no
 		$(use_with caps libcap-ng)
 		$(use_with selinux)
 		$(use_with systemd libsystemd)
@@ -113,7 +114,7 @@ src_install() {
 	fi
 
 	# Make sure we never install drivedb.h into the db location
-	# of the acutal image so we don't record hashes because user
+	# of the actual image so we don't record hashes because user
 	# can modify that file
 	rm -f "${ED}${db_path}/drivedb.h" || die
 

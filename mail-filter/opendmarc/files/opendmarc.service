@@ -4,8 +4,8 @@ Documentation=man:opendmarc(8) man:opendmarc.conf(5) man:opendmarc-expire(8) man
 After=network.target nss-lookup.target syslog.target
 
 [Service]
-User=milter
-Group=milter
+User=opendmarc
+Group=opendmarc
 PIDFile=/var/run/opendmarc/opendmarc.pid
 ExecStartPre=/usr/sbin/opendmarc -c /etc/opendmarc/opendmarc.conf -n 
 ExecStart=/usr/sbin/opendmarc -c /etc/opendmarc/opendmarc.conf -f -P /var/run/opendmarc/opendmarc.pid

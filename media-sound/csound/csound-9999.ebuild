@@ -71,6 +71,7 @@ CDEPEND="
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-libs/libpulse )
 	utils? ( !media-sound/snd )
+	vim-syntax? ( !app-vim/csound-syntax )
 "
 RDEPEND="
 	${CDEPEND}

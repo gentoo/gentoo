@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/907091
+
+Remove off64_t, add AC_SYS_LARGEFILE to configure.ac instead
+
+--- a/include/PGFplatform.h
++++ b/include/PGFplatform.h
+@@ -341,10 +341,6 @@
+ #define __POSIX__ 
+ #endif 
+ 
+-#ifndef off64_t 
+-#define off64_t off_t 
+-#endif 
+-
+ #ifndef lseek64 
+ #define lseek64 lseek 
+ #endif 
+@@ -536,7 +532,7 @@
+ 			return NoError;
+ 		}
+ 	#else
+-		off64_t ret;
++		off_t ret;
+ 		if ((ret = lseek64(hFile, 0, SEEK_CUR)) == -1) {
+ 			return errno;
+ 		} else {
+@@ -554,7 +550,7 @@
+ 			return NoError;
+ 		}
+ 	#else
+-		if ((lseek64(hFile, (off64_t)posOff, posMode)) == -1) {
++		if ((lseek64(hFile, (off_t)posOff, posMode)) == -1) {
+ 			return errno;
+ 		} else {
+ 			return NoError;
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,6 +31,7 @@
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_HEADERS( [config.h] )
+ AC_PROG_CXX
++AC_SYS_LARGEFILE
+ 
+ dnl Check for doxygen support
+ AC_PATH_PROG([DOXYGEN], [doxygen])

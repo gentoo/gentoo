@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,34 +12,41 @@ EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
 LICENSE="BSD-2"
 # See bug #822336 re subslot
 SLOT="0/${PV}"
-KEYWORDS=""
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 test"
 RESTRICT="!test? ( test )"
-
 REQUIRED_USE="|| ( aom dav1d )"
 
-DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
-	media-libs/libpng[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+DEPEND="
+	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
+	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-3.3.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( >=media-libs/dav1d-1.0.0:=[${MULTILIB_USEDEP}] )
 	extras? ( test? ( dev-cpp/gtest ) )
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
-	rav1e? ( >=media-video/rav1e-0.5.1[capi] )
-	svt-av1? ( >=media-libs/svt-av1-0.9.1 )"
-RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
+	gdk-pixbuf? (
+		dev-libs/glib:2[${MULTILIB_USEDEP}]
+		x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
+	)
+	rav1e? ( >=media-video/rav1e-0.5.1:=[capi] )
+	svt-av1? ( >=media-libs/svt-av1-0.9.1 )
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		-DAVIF_CODEC_AOM=$(usex aom ON OFF)
-		-DAVIF_CODEC_DAV1D=$(usex dav1d ON OFF)
+		-DAVIF_CODEC_AOM=$(usex aom SYSTEM OFF)
+		-DAVIF_CODEC_DAV1D=$(usex dav1d SYSTEM OFF)
 		-DAVIF_CODEC_LIBGAV1=OFF
+		-DAVIF_LIBYUV=OFF
 
 		# Use system libraries.
-		-DAVIF_LOCAL_ZLIBPNG=OFF
-		-DAVIF_LOCAL_JPEG=OFF
+		-DAVIF_ZLIBPNG=SYSTEM
+		-DAVIF_JPEG=SYSTEM
 
 		-DAVIF_BUILD_GDK_PIXBUF=$(usex gdk-pixbuf ON OFF)
 
@@ -48,8 +55,8 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			-DAVIF_CODEC_RAV1E=$(usex rav1e ON OFF)
-			-DAVIF_CODEC_SVT=$(usex svt-av1 ON OFF)
+			-DAVIF_CODEC_RAV1E=$(usex rav1e SYSTEM OFF)
+			-DAVIF_CODEC_SVT=$(usex svt-av1 SYSTEM OFF)
 
 			-DAVIF_BUILD_EXAMPLES=$(usex examples ON OFF)
 			-DAVIF_BUILD_APPS=$(usex extras ON OFF)
@@ -77,12 +84,6 @@ multilib_src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-pkg_preinst() {
-	if use gdk-pixbuf ; then
-		gnome2_gdk_pixbuf_savelist
-	fi
 }
 
 pkg_postinst() {

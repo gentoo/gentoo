@@ -4,14 +4,14 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit cmake llvm llvm.org python-single-r1
+inherit cmake flag-o-matic llvm llvm.org python-single-r1
 
 DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${LLVM_SOABI}"
-KEYWORDS="amd64 ~arm arm64 ~loong x86"
+KEYWORDS="amd64 arm arm64 ~loong x86"
 IUSE="debug +libedit lzma ncurses +python test +xml"
 RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
@@ -60,6 +60,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# bug #858389 (https://github.com/llvm/llvm-project/issues/83636)
+	filter-lto
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 

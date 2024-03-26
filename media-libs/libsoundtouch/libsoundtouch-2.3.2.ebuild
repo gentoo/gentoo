@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,9 @@ inherit autotools multilib-minimal toolchain-funcs
 MY_PN=${PN/lib}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Audio processing library for changing tempo, pitch and playback rates"
-HOMEPAGE="https://www.surina.net/soundtouch/ https://gitlab.com/soundtouch/soundtouch"
+HOMEPAGE="https://www.surina.net/soundtouch/ https://codeberg.org/soundtouch/soundtouch"
 SRC_URI="https://www.surina.net/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_PN}"
 
 LICENSE="LGPL-2.1"
 # subslot = libSoundTouch.so soname
@@ -19,7 +20,9 @@ IUSE="cpu_flags_x86_sse openmp static-libs"
 
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_PN}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.2-configure-bashism.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -32,7 +35,6 @@ pkg_setup() {
 src_prepare() {
 	default
 	sed -i "s:^\(dist_doc_DATA=\)COPYING.TXT :\1:" Makefile.am || die
-	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:g' configure.ac || die
 	eautoreconf
 }
 

@@ -1,0 +1,12 @@
+Backport of fix for -DKITTY_NO_SIMD (aka for non-x86/amd64/arm64)
+https://github.com/kovidgoyal/kitty/issues/7225
+https://github.com/kovidgoyal/kitty/commit/393169f79daf60c038b3e11e657fa5f3ee41c24c
+--- a/kitty/simd-string-impl.h
++++ b/kitty/simd-string-impl.h
+@@ -21,5 +21,5 @@
+ bool FUNC(utf8_decode_to_esc)(UTF8Decoder *d UNUSED, const uint8_t *src UNUSED, size_t src_sz UNUSED) NOSIMD
+ const uint8_t* FUNC(find_either_of_two_bytes)(const uint8_t *haystack UNUSED, const size_t sz UNUSED, const uint8_t a UNUSED, const uint8_t b UNUSED) NOSIMD
+-void FUNC(xor_data64)(const uint8_t key[64], uint8_t* data, const size_t data_sz);
++void FUNC(xor_data64)(const uint8_t key[64] UNUSED, uint8_t* data UNUSED, const size_t data_sz UNUSED) NOSIMD
+ #undef NOSIMD
+ #else

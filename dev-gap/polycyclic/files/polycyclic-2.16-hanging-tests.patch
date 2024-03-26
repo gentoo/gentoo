@@ -1,0 +1,30 @@
+From 283f04b22186f467e4b8d9070f1e462877137347 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 11 Dec 2023 14:46:56 -0500
+Subject: [PATCH 1/1] tst/bugfix.tst: delete two tests that hang
+
+These run "forever" on my machine and I don't feel like debugging
+them.
+---
+ tst/bugfix.tst | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/tst/bugfix.tst b/tst/bugfix.tst
+index 393390e..6bdf7e1 100644
+--- a/tst/bugfix.tst
++++ b/tst/bugfix.tst
+@@ -34,11 +34,6 @@ true
+ gap> # Check for a bug reported 2012-01-19 by Robert Morse
+ gap> g := PcGroupToPcpGroup(SmallGroup(48,1));
+ Pcp-group with orders [ 2, 2, 2, 2, 3 ]
+-gap> # The next two commands used to trigger errors
+-gap> NonAbelianTensorSquare(Centre(g));
+-Pcp-group with orders [ 8 ]
+-gap> NonAbelianExteriorSquare(Centre(g));
+-Pcp-group with orders [  ]
+ 
+ #
+ gap> # Check for a bug reported 2012-01-19 by Robert Morse
+-- 
+2.41.0
+

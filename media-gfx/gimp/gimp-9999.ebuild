@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,16 +7,15 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{10..11} )
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single meson python-single-r1 vala xdg
+inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-SRC_URI=""
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
-IUSE="X aalib alsa doc gnome heif javascript jpeg2k jpegxl lua mng openexr postscript python test udev unwind vala vector-icons webp wmf xpm"
+IUSE="X aalib alsa doc gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript python test udev unwind vala vector-icons webp wmf xpm"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -40,7 +39,7 @@ COMMON_DEPEND="
 	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.46:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.48:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
 	>=media-libs/lcms-2.13.1:2
@@ -53,7 +52,7 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.16.0
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
 	>=x11-libs/gtk+-3.24.16:3[introspection]
-	>=x11-libs/pango-1.44.7
+	>=x11-libs/pango-1.50.0
 	>=x11-libs/libXmu-1.1.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
@@ -109,9 +108,15 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( "AUTHORS" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
+DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	use lua && lua-single_pkg_setup
 
 	if use python; then
@@ -175,6 +180,7 @@ src_configure() {
 		$(meson_feature lua)
 		$(meson_feature mng)
 		$(meson_feature openexr)
+		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
 		$(meson_feature python)
 		$(meson_feature test headless-tests)

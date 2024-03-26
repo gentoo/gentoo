@@ -1,0 +1,62 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 configure config.h.in config.h.in~
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = contrib src
++SUBDIRS = src
+ 
+ dist_man_MANS = man/nutcracker.8
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -197,11 +197,8 @@ AS_IF([test "x$disable_stats" = xyes],
+   [AC_DEFINE([HAVE_STATS], [1], [Define to 1 if stats is not disabled])])
+ AC_MSG_RESULT($disable_stats)
+ 
+-# Untar the yaml-0.2.5 in contrib/ before config.status is rerun
+-AC_CONFIG_COMMANDS_PRE([tar xvfz contrib/yaml-0.2.5.tar.gz -C contrib])
+-
+-# Call yaml-0.2.5 ./configure recursively
+-AC_CONFIG_SUBDIRS([contrib/yaml-0.2.5])
++# Use systems libyaml.
++PKG_CHECK_MODULES([YAML], [yaml-0.1 >= 0.2.5])
+ 
+ # Define Makefiles
+ AC_CONFIG_FILES([Makefile
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,7 +7,6 @@ endif
+ AM_CPPFLAGS += -I $(top_srcdir)/src/hashkit
+ AM_CPPFLAGS += -I $(top_srcdir)/src/proto
+ AM_CPPFLAGS += -I $(top_srcdir)/src/event
+-AM_CPPFLAGS += -I $(top_srcdir)/contrib/yaml-0.2.5/include
+ 
+ AM_CFLAGS =
+ # about -fno-strict-aliasing: https://github.com/twitter/twemproxy/issues/276
+@@ -20,9 +19,10 @@ AM_CFLAGS += -Wno-unused-parameter -Wno-unused-value
+ AM_CFLAGS += -Wconversion -Wsign-compare
+ AM_CFLAGS += -Wstrict-prototypes -Wmissing-prototypes -Wredundant-decls -Wmissing-declarations
+ AM_CFLAGS += -Wno-format-zero-length
++AM_CFLAGS += $(YAML_CFLAGS)
+ 
+ AM_LDFLAGS =
+-AM_LDFLAGS += -lm -lpthread -rdynamic
++AM_LDFLAGS += -lm -lpthread -rdynamic $(YAML_LIBS)
+ if OS_SOLARIS
+ AM_LDFLAGS += -lnsl -lsocket
+ endif
+@@ -58,7 +58,6 @@ nutcracker_SOURCES =			\
+ nutcracker_LDADD = $(top_builddir)/src/hashkit/libhashkit.a
+ nutcracker_LDADD += $(top_builddir)/src/proto/libproto.a
+ nutcracker_LDADD += $(top_builddir)/src/event/libevent.a
+-nutcracker_LDADD += $(top_builddir)/contrib/yaml-0.2.5/src/.libs/libyaml.a
+ 
+ TESTS = test_all
+ bin_PROGRAMS = test_all
+@@ -86,4 +85,3 @@ test_all_SOURCES = test_all.c \
+ test_all_LDADD = $(top_builddir)/src/hashkit/libhashkit.a
+ test_all_LDADD += $(top_builddir)/src/proto/libproto.a
+ test_all_LDADD += $(top_builddir)/src/event/libevent.a
+-test_all_LDADD += $(top_builddir)/contrib/yaml-0.2.5/src/.libs/libyaml.a

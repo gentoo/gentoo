@@ -1,0 +1,73 @@
+https://github.com/rust-lang/rust/pull/120661
+From: WANG Xuerui <xen0n@gentoo.org>
+Date: Mon, 5 Feb 2024 13:18:32 +0800
+Subject: [PATCH] target: default to the medium code model on LoongArch targets
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The Rust LoongArch targets have been using the default LLVM code model
+so far, which is "small" in LLVM-speak and "normal" in LoongArch-speak.
+As described in the "Code Model" section of LoongArch ELF psABI spec
+v20231219 [1], one can only make function calls as far as ±128MiB with
+the "normal" code model; this is insufficient for very large software
+containing Rust components that needs to be linked into the big text
+section, such as Chromium.
+
+Because:
+
+* we do not want to ask users to recompile std if they are to build
+  such software,
+* objects compiled with larger code models can be linked with those
+  with smaller code models without problems, and
+* the "medium" code model is comparable to the "small"/"normal" one
+  performance-wise (same data access pattern; each function call
+  becomes 2-insn long and indirect, but this may be relaxed back into
+  the direct 1-insn form in a future LLVM version), but is able to
+  perform function calls within ±128GiB,
+
+it is better to just switch the targets to the "medium" code model,
+which is also "medium" in LLVM-speak.
+
+[1]: https://github.com/loongson/la-abi-specs/blob/v2.30/laelf.adoc#code-models
+--- a/compiler/rustc_target/src/spec/targets/loongarch64_unknown_linux_gnu.rs
++++ b/compiler/rustc_target/src/spec/targets/loongarch64_unknown_linux_gnu.rs
+@@ -1,4 +1,4 @@
+-use crate::spec::{base, Target, TargetOptions};
++use crate::spec::{base, CodeModel, Target, TargetOptions};
+ 
+ pub fn target() -> Target {
+     Target {
+@@ -7,6 +7,7 @@ pub fn target() -> Target {
+         data_layout: "e-m:e-p:64:64-i64:64-i128:128-n64-S128".into(),
+         arch: "loongarch64".into(),
+         options: TargetOptions {
++            code_model: Some(CodeModel::Medium),
+             cpu: "generic".into(),
+             features: "+f,+d".into(),
+             llvm_abiname: "lp64d".into(),
+--- a/compiler/rustc_target/src/spec/targets/loongarch64_unknown_none.rs
++++ b/compiler/rustc_target/src/spec/targets/loongarch64_unknown_none.rs
+@@ -16,7 +16,7 @@ pub fn target() -> Target {
+             max_atomic_width: Some(64),
+             relocation_model: RelocModel::Static,
+             panic_strategy: PanicStrategy::Abort,
+-            code_model: Some(CodeModel::Small),
++            code_model: Some(CodeModel::Medium),
+             ..Default::default()
+         },
+     }
+--- a/compiler/rustc_target/src/spec/targets/loongarch64_unknown_none_softfloat.rs
++++ b/compiler/rustc_target/src/spec/targets/loongarch64_unknown_none_softfloat.rs
+@@ -17,7 +17,7 @@ pub fn target() -> Target {
+             max_atomic_width: Some(64),
+             relocation_model: RelocModel::Static,
+             panic_strategy: PanicStrategy::Abort,
+-            code_model: Some(CodeModel::Small),
++            code_model: Some(CodeModel::Medium),
+             ..Default::default()
+         },
+     }
+-- 
+2.43.0
+

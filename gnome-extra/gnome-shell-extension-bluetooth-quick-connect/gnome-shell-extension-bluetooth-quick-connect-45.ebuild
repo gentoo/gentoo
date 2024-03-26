@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect/ar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE=""
 
 RDEPEND="

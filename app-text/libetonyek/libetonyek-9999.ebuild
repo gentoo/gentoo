@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MDDS_VER="2.1"
+MDDS_VER="3.0"
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libetonyek.git"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit bash-completion-r1 lua-single python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic lua-single python-single-r1 toolchain-funcs
 
 DESCRIPTION="Function (graph) tracer for user-space"
 HOMEPAGE="https://github.com/namhyung/uftrace"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/namhyung/uftrace/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="capstone lua python unwind"
 
 REQUIRED_USE="
@@ -40,6 +40,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #858503 (https://github.com/namhyung/uftrace/issues/1343)
+	filter-lto
+
 	local myconf=(
 		--libdir="${EPREFIX}/usr/$(get_libdir)/uftrace"
 		$(use_with capstone)

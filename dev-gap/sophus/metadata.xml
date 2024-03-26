@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+
+  <longdescription lang="en">
+    The Sophus package is written to compute with nilpotent Lie algebras
+    over finite prime fields. Using this package, you can compute the
+    cover, the list of immediate descendants, and the automorphism group
+    of such Lie algebras. You can also test if two such Lie algebras are
+    isomorphic.
+
+    The immediate descendant function of the package can be used to
+    classify small-dimensional nilpotent Lie algebras over a given
+    field. For instance, the package author obtained a classification of
+    nilpotent Lie algebras with dimension at most 9 over F_2.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/sophus</remote-id>
+  </upstream>
+</pkgmetadata>

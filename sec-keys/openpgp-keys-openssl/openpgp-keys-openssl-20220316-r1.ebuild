@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="OpenPGP keys used by OpenSSL"
-HOMEPAGE="https://www.openssl.net/"
+HOMEPAGE="https://www.openssl.org/"
 # See https://www.openssl.org/source/ and https://www.openssl.org/community/omc.html
 # Mirrored from https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8657ABB260F056B1E5190839D9C4D26D0E604491 etc (unstable results)
 SRC_URI="

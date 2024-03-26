@@ -143,6 +143,9 @@ src_compile() {
 		--without-zstd
 	)
 	${multilib} || conf_gcc+=( --disable-multilib )
+	# libstdc++ may misdetect sys/sdt.h on systemtap-enabled system and fail
+	# (not passed in conf_gcc above given it is lost in sub-configure calls)
+	local -x glibcxx_cv_sys_sdt_h=no
 
 	local conf_gcc_stage1=(
 		--enable-languages=c
@@ -207,6 +210,11 @@ src_compile() {
 				CHOST=${CTARGET}
 				filter-flags '-fuse-ld=*'
 				filter-flags '-mfunction-return=thunk*' #878849
+
+				# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
+				# strip-unsupported-flags miss these during compile-only tests
+				# (primarily done for 23.0 profiles' -z, not full coverage)
+				filter-flags '-Wl,-z,*'
 
 				# -mavx with mingw-gcc has a history of obscure issues and
 				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`

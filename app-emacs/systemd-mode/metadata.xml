@@ -10,4 +10,5 @@
     <bugs-to>https://github.com/holomorph/systemd-mode/issues/</bugs-to>
     <remote-id type="github">holomorph/systemd-mode</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

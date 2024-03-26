@@ -28,7 +28,7 @@ else
 		S="${WORKDIR}/${MY_PN}-${PV}"
 	fi
 
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
 LICENSE="GPL-3+"

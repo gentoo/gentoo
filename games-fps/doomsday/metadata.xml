@@ -14,5 +14,7 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">deng</remote-id>
+		<remote-id type="github">skyjake/Doomsday-Engine</remote-id>
+		<bugs-to>https://tracker.dengine.net/projects/deng</bugs-to>
 	</upstream>
 </pkgmetadata>

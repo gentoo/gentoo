@@ -1,0 +1,22 @@
+May possibly be working for upstream due to transitive headers,
+needs more looking into.
+
+Without this:
+
+    gl_display.cc:945:10: error: 'x11' has not been declared
+      945 |   return x11::Connection::Get()->GetXlibDisplay();
+
+Likely a regression from [1].
+
+[1] https://github.com/qt/qtwebengine-chromium/commit/f2b407a61bea122d18a012f0049ba193725f0461
+--- a/src/3rdparty/chromium/ui/gl/gl_display.cc
++++ b/src/3rdparty/chromium/ui/gl/gl_display.cc
+@@ -29,4 +29,8 @@
+ #include "ui/gl/gl_surface.h"
+ 
++#if defined(USE_GLX)
++#include "ui/gfx/x/connection.h"
++#endif
++
+ #if BUILDFLAG(IS_OZONE)
+ #include "ui/ozone/buildflags.h"

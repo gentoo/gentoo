@@ -1,0 +1,193 @@
+From c1f9d0a5d112d2298ed4f3c696ea34c9b0c24ba6 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 16 Feb 2024 07:43:54 -0500
+Subject: [PATCH 1/1] configure{,.lib},rbldnsd_util.c: future proof the
+ ./configure script
+
+https://github.com/spamhaus/rbldnsd/pull/28
+---
+ configure      | 38 ++++++++++++++++++++++----------------
+ configure.lib  |  2 +-
+ rbldnsd_util.c |  4 ++--
+ 3 files changed, 25 insertions(+), 19 deletions(-)
+
+diff --git a/configure b/configure
+index b0cb655..6470c9e 100755
+--- a/configure
++++ b/configure
+@@ -90,7 +90,7 @@ else
+   if ac_yesno "sizes of standard integer types" \
+      ac_compile_run <<EOF
+ #include <stdio.h>
+-int main() {
++int main(int argc, char **argv) {
+   printf("#define SIZEOF_SHORT %d\n", sizeof(short));
+   printf("#define SIZEOF_INT %d\n", sizeof(int));
+   printf("#define SIZEOF_LONG %d\n", sizeof(long));
+@@ -105,7 +105,7 @@ EOF
+   if ac_yesno "for long long" \
+      ac_compile_run <<EOF
+ #include <stdio.h>
+-int main() {
++int main(int argc, char **argv) {
+   long long x;
+   printf("#define SIZEOF_LONG_LONG %d\n", sizeof(long long));
+   return 0;
+@@ -120,7 +120,7 @@ fi
+ 
+ if ac_compile_run_v "whether C compiler defines __SIZEOF_POINTER__" <<EOF
+ #include <stdio.h>
+-int main() {
++int main(int argc, char **argv) {
+ #ifdef __SIZEOF_POINTER__
+   return 0;
+ #else
+@@ -136,7 +136,7 @@ fi
+ 
+ if ac_verbose "byte order" "big-endian" "little-endian" \
+    ac_compile_run <<EOF
+-int main() {
++int main(int argc, char **argv) {
+   long one = 1;
+   if (*(char *)&one)
+     return 1; /* little-endian */
+@@ -150,8 +150,8 @@ fi
+ has_inline=
+ for c in inline __inline; do
+   if ac_compile_v "for $c" <<EOF
+-static $c int foo() { return 0; }
+-int main() { return foo(); }
++static $c int foo(void) { return 0; }
++int main(int argc, char **argv) { return foo(); }
+ EOF
+   then
+     has_inline=$c
+@@ -165,7 +165,7 @@ fi
+ if ac_compile_v "for socklen_t" <<EOF
+ #include <sys/types.h>
+ #include <sys/socket.h>
+-int foo() { socklen_t len; len = 0; return len; }
++int foo(void) { socklen_t len; len = 0; return len; }
+ EOF
+ then :
+ else
+@@ -173,7 +173,13 @@ else
+ fi
+ 
+ if ac_library_find_v 'connect()' "" "-lsocket -lnsl" <<EOF
+-int main() { gethostbyname(); connect(); return 0; }
++#include <netdb.h>
++#include <sys/socket.h>
++int main(int argc, char **argv) {
++  gethostbyname("");
++  connect(0, (const struct sockaddr *)0, (socklen_t)0);
++  return 0;
++}
+ EOF
+ then :
+ else
+@@ -189,7 +195,7 @@ if ac_link_v "for IPv6" <<EOF
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <netdb.h>
+-int main() {
++int main(int argc, char **argv) {
+   char h[200];
+   char s[200];
+   struct sockaddr_in6 sa;
+@@ -211,7 +217,7 @@ if ac_link_v "for mallinfo()" <<EOF
+ #include <sys/types.h>
+ #include <stdlib.h>
+ #include <malloc.h>
+-int main() {
++int main(int argc, char **argv) {
+   struct mallinfo mi = mallinfo();
+   return 0;
+ }
+@@ -224,7 +230,7 @@ fi
+ if ac_link_v "for poll()" <<EOF
+ #include <sys/types.h>
+ #include <sys/poll.h>
+-int main() {
++int main(int argc, char **argv) {
+   struct pollfd pfd[2];
+   return poll(pfd, 2, 10);
+ }
+@@ -251,7 +257,7 @@ int test(char *fmt, ...) {
+   vsnprintf(buf, sizeof(buf), fmt, ap);
+   return 0;
+ }
+-int main() {
++int main(int argc, char **argv) {
+   test("test%d", 40);
+   return 0;
+ }
+@@ -265,7 +271,7 @@ if ac_link_v "for writev()/readv()" <<EOF
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <sys/uio.h>
+-int main() {
++int main(int argc, char **argv) {
+   struct iovec iov;
+   return writev(1, &iov, 1) && readv(1, &iov, 1);
+ }
+@@ -278,7 +284,7 @@ fi
+ if ac_link_v "for setitimer()" <<EOF
+ #include <sys/types.h>
+ #include <sys/time.h>
+-int main() {
++int main(int argc, char **argv) {
+   struct itimerval itv;
+   itv.it_interval.tv_sec  = itv.it_value.tv_sec  = 10;
+   itv.it_interval.tv_usec = itv.it_value.tv_usec = 20;
+@@ -296,7 +302,7 @@ elif ac_link_v "for zlib support" -lz <<EOF
+ #include <sys/types.h>
+ #include <stdio.h>
+ #include <zlib.h>
+-int main() {
++int main(int argc, char **argv) {
+   z_stream z;
+   int r;
+   r = inflateInit2(&z, 0);
+@@ -319,7 +325,7 @@ elif [ n = "$enable_dso" ]; then
+   echo "#define NO_DSO		1	/* option disabled */" >>confdef.h
+ elif ac_link_v "for dlopen() in -dl with -rdynamic" -ldl -rdynamic <<EOF
+ #include <dlfcn.h>
+-int main() {
++int main(int argc, char **argv) {
+   void *handle, *func;
+   handle = dlopen("testfile", RTLD_NOW);
+   func = dlsym(handle, "function");
+diff --git a/configure.lib b/configure.lib
+index 39cf423..6b7245f 100644
+--- a/configure.lib
++++ b/configure.lib
+@@ -178,7 +178,7 @@ EOF
+   if ac_yesno "whether the C compiler ($ccld)
+            can produce executables" \
+      ac_compile_run <<EOF
+-int main() { return 0; }
++int main(int argc, char **argv) { return 0; }
+ EOF
+   then :
+   else
+diff --git a/rbldnsd_util.c b/rbldnsd_util.c
+index c6d628d..1402a67 100644
+--- a/rbldnsd_util.c
++++ b/rbldnsd_util.c
+@@ -50,10 +50,10 @@ char *parse_time(char *s, unsigned *tp) {
+     case 'w': case 'W': m *= 7;		/* week */
+     case 'd': case 'D': m *= 24;	/* day */
+     case 'h': case 'H': m *= 60;	/* hours */
+-    case 'm': case 'M': m *= 60;	/* minues */
++    case 'm': case 'M': m *= 60;	/* minutes */
+       if (0xffffffffu / m < *tp) return NULL;
+       *tp *= m;
+-    case 's': case 'S':			/* secounds */
++    case 's': case 'S':			/* seconds */
+       ++s;
+       break;
+   }
+-- 
+2.43.0
+

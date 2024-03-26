@@ -1,0 +1,66 @@
+From c8c19570aa9e46b67d44228241e7401af96cbccd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 29 Jan 2024 17:48:40 +0100
+Subject: [PATCH] Fix finding pthread_*name_np on vanilla musl libc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix the `pthread_getname_np` and `pthread_setname_np` search logic
+to support vanilla versions of musl and CPython, e.g. as used on Gentoo
+musl systems.  On such systems, there is no "libpthread.so" (there is
+only a static library) and the relevant functions are found
+in "libc.so".  Additionally, `ctypes.util.find_library("c")` does not
+work because of an old unsolved bug in CPython (linked in the code).
+
+To resolve the problem, add a fallback to trying `libc.so` if no pthread
+library can be found.  This roughly covers three possibilities:
+
+- a "typical" system with `libpthread.so` will find that library
+  and use it
+
+- a musl system will fall back to `libc.so`, load that library and find
+  pthread functions there
+
+- any other system will try to load `libc.so`, and fail
+
+The code in `get_os_thread_name_func()` remains fully relaxed, allowing
+either CDLL construction (i.e. finding the library) to fail,
+or the library not to contain `pthread_setname_np`.
+
+The code in `test_threads.py` was made more relaxed — rather than
+skipping if `libpthread.so` does not exist, it tries to load `libc.so`
+as a fallback, and skips if that fails.
+
+Originally reported as https://bugs.gentoo.org/923257.
+---
+ newsfragments/2939.bugfix.rst   |  1 +
+ src/trio/_core/_thread_cache.py |  9 +++++++--
+ src/trio/_tests/test_threads.py | 12 ++++++++++--
+ 3 files changed, 18 insertions(+), 4 deletions(-)
+ create mode 100644 newsfragments/2939.bugfix.rst
+
+diff --git a/src/trio/_tests/test_threads.py b/src/trio/_tests/test_threads.py
+index aefb4ba27..326cffd6b 100644
+--- a/src/trio/_tests/test_threads.py
++++ b/src/trio/_tests/test_threads.py
+@@ -237,9 +237,17 @@ def _get_thread_name(ident: int | None = None) -> str | None:
+ 
+     libpthread_path = ctypes.util.find_library("pthread")
+     if not libpthread_path:
+-        print(f"no pthread on {sys.platform})")
++        # musl includes pthread functions directly in libc.so
++        # (but note that find_library("c") does not work on musl,
++        #  see: https://github.com/python/cpython/issues/65821)
++        # so try that library instead
++        # if it doesn't exist, CDLL() will fail below
++        libpthread_path = "libc.so"
++    try:
++        libpthread = ctypes.CDLL(libpthread_path)
++    except Exception:
++        print(f"no pthread on {sys.platform}")
+         return None
+-    libpthread = ctypes.CDLL(libpthread_path)
+ 
+     pthread_getname_np = getattr(libpthread, "pthread_getname_np", None)
+ 

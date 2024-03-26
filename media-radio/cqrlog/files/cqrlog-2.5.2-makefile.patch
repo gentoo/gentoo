@@ -1,6 +1,8 @@
+diff --git a/Makefile b/Makefile
+index 5e09eeb..e7fbeb3 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -3,12 +3,10 @@
+@@ -3,12 +3,10 @@ ST=strip
  datadir  = $(DESTDIR)/usr/share/cqrlog
  bindir   = $(DESTDIR)/usr/bin
  sharedir = $(DESTDIR)/usr/share
@@ -15,7 +17,7 @@
  
  clean:
  	rm -f -v src/*.o src/*.ppu src/*.bak src/lnet/lib/*.ppu src/lnet/lib/*.o src/lnet/lib/*.bak src/cqrlog src/cqrlog.compiled src/ipc/*.o src/ipc/*.ppu src/cqrlog.or
-@@ -37,7 +35,7 @@
+@@ -37,7 +35,7 @@ install:
  	install -d -v         $(sharedir)/pixmaps/cqrlog
  	install -d -v         $(sharedir)/icons/cqrlog
  	install -d -v         $(sharedir)/applications
@@ -24,7 +26,7 @@
  	install -d -v         $(sharedir)/man/man1
  	install    -v -m 0755 src/cqrlog $(bindir)
  	install    -v -m 0755 tools/cqrlog-apparmor-fix $(datadir)/cqrlog-apparmor-fix
-@@ -60,7 +58,7 @@
+@@ -60,11 +58,11 @@ install:
  #	install    -v -m 0644 images/icon/256x256/*   $(datadir)/images/icon/256x256/
  #	install    -v -m 0644 images/*   $(datadir)/images/
  	install    -v -m 0644 tools/cqrlog.desktop $(sharedir)/applications/cqrlog.desktop
@@ -33,7 +35,12 @@
  	install    -v -m 0644 images/icon/32x32/cqrlog.png $(sharedir)/pixmaps/cqrlog/cqrlog.png
  	install    -v -m 0644 images/icon/128x128/cqrlog.png $(sharedir)/icons/cqrlog.png
  	install    -v -m 0644 src/changelog.html $(datadir)/changelog.html
-@@ -74,9 +72,8 @@
+-	install    -v -m 0644 tools/cqrlog.1.gz $(sharedir)/man/man1/cqrlog.1.gz
++	install    -v -m 0644 tools/cqrlog.1 $(sharedir)/man/man1/cqrlog.1
+ deb:
+ 	dpkg-buildpackage -rfakeroot -i -I
+ deb_src:
+@@ -74,9 +72,8 @@ debug:
  	gzip tools/cqrlog.1 -c > tools/cqrlog.1.gz
  
  cqrlog_qt5: src/cqrlog.lpi

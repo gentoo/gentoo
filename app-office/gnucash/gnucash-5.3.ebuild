@@ -108,6 +108,9 @@ PATCHES=(
 	# This is only to prevent webkit2gtk-4 from being selected.
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
+
+	# GCC 14 no longer includes <algorithm> by default, this is fixed in 5.5
+	"${FILESDIR}/${PN}-5.3-include-algorithm.patch"
 )
 
 # guile generates ELF files without use of C or machine code

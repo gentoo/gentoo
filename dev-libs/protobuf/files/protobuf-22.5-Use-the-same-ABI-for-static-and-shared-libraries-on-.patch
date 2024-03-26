@@ -1,0 +1,71 @@
+From 4329fde9cf3fab7d1b3a9abe0fbeee1ad8a8b111 Mon Sep 17 00:00:00 2001
+From: "Romain Geissler @ Amadeus" <romain.geissler@amadeus.com>
+Date: Tue, 6 Jun 2023 10:49:55 -0700
+Subject: [PATCH] Use the same ABI for static and shared libraries on
+ non-Windows platforms (#12983)
+
+Hi,
+
+It seems that until last year, the logic behind `PROTOBUF_USE_DLLS` was for Windows (MSCV) only. It was changed to all platforms here in https://github.com/protocolbuffers/protobuf/commit/5a0887fc6529596eff5c0f72febc602a9d494cc2
+
+Last month, the generated pkg config files were updated to reflect the protobuf build-time value of `PROTOBUF_USE_DLLS` as it was indeed noted that it changes the ABI. This was done in https://github.com/protocolbuffers/protobuf/pull/12700 In the commit message it is mentionned that most likely we shall rather have a stable ABI.
+
+Finally in https://github.com/protocolbuffers/protobuf/issues/12746 which at some point mentions https://issuetracker.google.com/issues/283987730#comment7 where a Google employee hits the linker issue:
+```
+undefined reference to `google::protobuf::internal::ThreadSafeArena::thread_cache_'
+```
+which denotes a mix of some .o or libs built `PROTOBUF_USE_DLLS` defined and some others build with `PROTOBUF_USE_DLLS` undefined, resulting in ABI incompatibilities.
+
+I also hit this issue while trying to include protobuf in a corporate environment using it's own proprietary build system in which it is expected that .a and .so use a compatible ABI.
+
+From my own understanding, ideally we should always use `thread_local` variables, but experience has shown that:
+ - old iOS (iOS < 9) didn't seem to accept `thread_local`, leading to the `GOOGLE_PROTOBUF_NO_THREADLOCAL` macro later renamed `PROTOBUF_NO_THREADLOCAL` which allowed to disable this, but it is not set anywhere in the protobuf code base. Also I doubt you still want to support such old iOS now, so maybe you should consider removing all `PROTOBUF_NO_THREADLOCAL` related code paths (this pull request doesn't do this).
+  - MSVC's DLL interface doesn't seem to accept exporting thread local variables (at least from what I understood, I know absolutely nothing about the Windows ecosystem), yet we can "hide" a thread local variable in a static function using a thread local variable. However in that case the access to TLS variable is not inlined, leading to worse performances, this hack shall be done only for Windows (actually when using MSVC) *AND* we build a shared library.
+  - In all other cases, a classical `thread_local` shall be used, no matter if we build a static or a shared library. In particular on Linux which I guess is the target Google cares the more about for its own production. This pull request achieves this.
+
+Am I right in my conclusion ?
+
+Closes #12983
+
+COPYBARA_INTEGRATE_REVIEW=https://github.com/protocolbuffers/protobuf/pull/12983 from Romain-Geissler-1A:stable-abi-use-dll-non-windows dc23ff50f67cf0c8e45900a78700d1fc3e8bec39
+PiperOrigin-RevId: 538230923
+---
+ src/google/protobuf/arena.cc            |  2 +-
+ src/google/protobuf/reflection_mode.cc  |  2 +-
+ src/google/protobuf/reflection_mode.h   | 10 ++++++----
+ src/google/protobuf/thread_safe_arena.h |  6 +++---
+ 4 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/src/google/protobuf/arena.cc b/src/google/protobuf/arena.cc
+index 51afdbdaf..6577a3669 100644
+--- a/src/google/protobuf/arena.cc
++++ b/src/google/protobuf/arena.cc
+@@ -519,7 +519,7 @@ ThreadSafeArena::ThreadCache& ThreadSafeArena::thread_cache() {
+       new internal::ThreadLocalStorage<ThreadCache>();
+   return *thread_cache_->Get();
+ }
+-#elif defined(PROTOBUF_USE_DLLS)
++#elif defined(PROTOBUF_USE_DLLS) && defined(_MSC_VER)
+ ThreadSafeArena::ThreadCache& ThreadSafeArena::thread_cache() {
+   static PROTOBUF_THREAD_LOCAL ThreadCache thread_cache;
+   return thread_cache;
+diff --git a/src/google/protobuf/thread_safe_arena.h b/src/google/protobuf/thread_safe_arena.h
+index e6e3b7fae..f53993a85 100644
+--- a/src/google/protobuf/thread_safe_arena.h
++++ b/src/google/protobuf/thread_safe_arena.h
+@@ -260,9 +260,9 @@ class PROTOBUF_EXPORT ThreadSafeArena {
+   // iOS does not support __thread keyword so we use a custom thread local
+   // storage class we implemented.
+   static ThreadCache& thread_cache();
+-#elif defined(PROTOBUF_USE_DLLS)
+-  // Thread local variables cannot be exposed through DLL interface but we can
+-  // wrap them in static functions.
++#elif defined(PROTOBUF_USE_DLLS) && defined(_MSC_VER)
++  // Thread local variables cannot be exposed through MSVC DLL interface but we
++  // can wrap them in static functions.
+   static ThreadCache& thread_cache();
+ #else
+   PROTOBUF_CONSTINIT static PROTOBUF_THREAD_LOCAL ThreadCache thread_cache_;
+-- 
+2.43.0
+

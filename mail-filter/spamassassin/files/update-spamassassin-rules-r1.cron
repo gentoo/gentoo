@@ -35,7 +35,8 @@ if (( $? == 0 || $? == 3 )); then
 	# check is to keep systemctl from outputting warnings if
 	# amavisd is not installed (bug #681872).
         systemctl try-restart spamassassin
-        systemctl is-active --quiet amavisd \
-            && systemctl try-reload-or-restart amavisd
+	if ( systemctl is-active --quiet amavisd ); then
+            systemctl try-reload-or-restart amavisd
+	fi
     fi
 fi

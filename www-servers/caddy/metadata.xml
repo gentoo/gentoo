@@ -13,6 +13,18 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <use>
+    <flag name="events-handlers-exec">
+      Builds a module which lets user exec command on Caddy events
+      https://caddyserver.com/docs/modules/events.handlers.exec
+      https://caddyserver.com/docs/caddyfile/options#event-options
+    </flag>
+    <flag name="security">
+      Authentication, Authorization, and Accounting. LDAP, OAuth, SAML, MFA, 2FA, JWT etc..
+      https://caddyserver.com/docs/modules/security
+      https://github.com/greenpau/caddy-security
+    </flag>
+  </use>
   <upstream>
     <remote-id type="github">caddyserver/caddy</remote-id>
     <bugs-to>https://github.com/caddyserver/caddy/issues</bugs-to>

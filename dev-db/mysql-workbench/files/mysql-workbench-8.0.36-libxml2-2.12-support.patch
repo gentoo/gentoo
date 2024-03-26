@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/923020
+https://github.com/mysql/mysql-workbench/pull/43
+
+From 8f8917671ab5a06f842a340f31c6d4ec7634147a Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 27 Jan 2024 22:51:15 +0200
+Subject: [PATCH] Fix support for libxml2-2.12 with its api and header changes
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/library/grt/src/grt.h
++++ b/library/grt/src/grt.h
+@@ -34,6 +34,7 @@
+ #include <vector>
+ #include <stdexcept>
+ #include <boost/function.hpp>
++#include <libxml/tree.h>
+ #include <libxml/xmlmemory.h>
+ #include "base/threading.h"
+ #include <string>
+--- a/library/grt/src/unserializer.cpp
++++ b/library/grt/src/unserializer.cpp
+@@ -401,7 +401,11 @@ ValueRef internal::Unserializer::unserialize_xmldata(const char *data, size_t si
+   xmlDocPtr doc = xmlReadMemory(data, (int)size, NULL, NULL, XML_PARSE_NOENT);
+ 
+   if (!doc) {
++#if LIBXML_VERSION >= 21200
++    const xmlError* error = xmlGetLastError();
++#else
+     xmlErrorPtr error = xmlGetLastError();
++#endif
+ 
+     if (error)
+       throw std::runtime_error(base::strfmt("Could not parse XML data. Line %d, %s", error->line, error->message));

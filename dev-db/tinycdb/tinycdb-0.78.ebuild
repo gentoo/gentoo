@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,8 +6,8 @@ EAPI="7"
 inherit toolchain-funcs
 
 DESCRIPTION="A very fast and simple package for creating and reading constant data bases"
-HOMEPAGE="http://www.corpit.ru/mjt/tinycdb.html"
-SRC_URI="http://www.corpit.ru/mjt/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.corpit.ru/mjt/tinycdb.html"
+SRC_URI="https://www.corpit.ru/mjt/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

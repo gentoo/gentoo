@@ -5,9 +5,6 @@
 <email>php-bugs@gentoo.org</email>
 <name>PHP Project</name>
 </maintainer>
-<use>
-<flag name="http2">Add support for HTTP/2 protocol via <pkg>net-libs/nghttp2</pkg></flag>
-</use>
 <upstream>
   <remote-id type="github">swoole/swoole-src</remote-id>
 </upstream>

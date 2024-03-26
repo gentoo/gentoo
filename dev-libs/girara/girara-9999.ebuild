@@ -34,18 +34,18 @@ RDEPEND="
 	x11-libs/pango
 	libnotify? ( x11-libs/libnotify )
 "
+# Tests are run under virtx
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
+	test? (
+		dev-libs/check
+		x11-base/xorg-proto
+		x11-libs/gtk+:3[X]
+	)
 "
-# Tests are run under virtx
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
-	test? (
-		dev-libs/check
-		x11-libs/gtk+:3[X]
-	)
 "
 
 src_configure() {

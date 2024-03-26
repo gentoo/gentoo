@@ -66,6 +66,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.0-no_upstream_optflags.patch
+	"${FILESDIR}"/${PN}-5.8.0-include_algorithm.patch
 )
 
 src_prepare() {

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
 	</maintainer>
 	<longdescription lang="en">
 		A modern ls with a lot of pretty colors and awesome icons.
@@ -11,8 +11,7 @@
 		For example it is written in rust and not in ruby which makes it really faster
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/Peltoche/lsd/issues</bugs-to>
-		<changelog>https://github.com/Peltoche/lsd/blob/master/CHANGELOG.md</changelog>
-		<remote-id type="github">Peltoche/lsd</remote-id>
+		<bugs-to>https://github.com/lsd-rs/lsd/issues</bugs-to>
+		<remote-id type="github">lsd-rs/lsd</remote-id>
 	</upstream>
 </pkgmetadata>

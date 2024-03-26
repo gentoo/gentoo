@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-minimal flag-o-matic
 
 WXSUBVERSION="${PV}-gtk3"				# 3.2.1-gtk3
 WXVERSION="$(ver_cut 1-3)"				# 3.2.1
@@ -20,7 +20,7 @@ S="${WORKDIR}/wxWidgets-${PV}"
 
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+X curl doc debug keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit"
 REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) keyring? ( X )"
 RESTRICT="!test? ( test )"
@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-wayland-control.patch"
 	"${FILESDIR}/${PN}-3.2.1-prefer-lib64-in-tests.patch"
 	"${FILESDIR}/${PN}-3.2.2.1-dont-break-flags.patch"
+	"${FILESDIR}/${PN}-3.2.2.1-backport-pr24197.patch"
 )
 
 src_prepare() {
@@ -126,6 +127,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Workaround for bug #915154
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# X independent options
 	local myeconfargs=(
 		--with-zlib=sys

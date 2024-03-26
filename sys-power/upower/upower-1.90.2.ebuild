@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0/3" # based on SONAME of libupower-glib.so
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 # gtk-doc files are not available as prebuilt in the tarball
 IUSE="doc +introspection ios selinux test"
@@ -82,7 +82,6 @@ src_configure() {
 		-Dman=true
 		$(meson_use doc gtk-doc)
 		$(meson_feature introspection)
-		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Dos_backend="${backend}"
 		$(meson_feature ios idevice)

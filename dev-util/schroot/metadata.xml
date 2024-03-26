@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="btrfs">Enable support for chroots using btrfs snapshots</flag>
 		<flag name="dchroot">Enables the building of a wrapper named "dchroot", replacing <pkg>sys-apps/dchroot</pkg></flag>

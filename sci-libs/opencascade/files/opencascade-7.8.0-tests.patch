@@ -1,0 +1,19 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+Fix test harness script
+
+diff --git a/adm/templates/draw.sh b/adm/templates/draw.sh
+index 02e6043..c7347e0 100755
+--- a/adm/templates/draw.sh
++++ b/adm/templates/draw.sh
+@@ -4,7 +4,8 @@ aCurrentPath="$PWD"
+ aScriptPath=${BASH_SOURCE%/*}; if [ -d "${aScriptPath}" ]; then cd "$aScriptPath"; fi; aScriptPath="$PWD";
+ 
+ source "${aScriptPath}/env.sh" "$1"
++shift
+ 
+ echo 'Hint: use "pload ALL" command to load standard commands'
+-cd ${aCurrentPath}
+-DRAWEXE
++cd "${aCurrentPath}"
++DRAWEXE "$@"

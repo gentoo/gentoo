@@ -1,0 +1,28 @@
+From be35c35ace48647bb73ae5028db7e8caaccd038d Mon Sep 17 00:00:00 2001
+From: Adrian Freihofer <adrian.freihofer@gmail.com>
+Date: Fri, 8 Dec 2023 14:24:17 +0100
+Subject: [PATCH 1/2] Makefile: add run-with-simulator to extra dists
+
+The run-with-simulator script is executed by the make check step of
+the rpm build process. Therefore it should be packaged into the release
+tar bundles.
+
+Signed-off-by: Adrian Freihofer <adrian.freihofer@gmail.com>
+---
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 160d84e..994a8e3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -143,5 +143,6 @@ EXTRA_DIST = \
+     VERSION \
+     $(TESTS_SHELL) \
+     $(SH_LOG_COMPILER) \
++    test/run-with-simulator \
+     test/ec_pki/openssl.cnf \
+     test/rsa_pki/etc
+-- 
+2.43.0
+

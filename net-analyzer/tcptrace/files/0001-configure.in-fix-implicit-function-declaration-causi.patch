@@ -1,0 +1,26 @@
+From f199970cdb38259f0748e79ece844dc2cd676cdf Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 19 Mar 2024 21:39:10 -0400
+Subject: [PATCH] configure.in: fix implicit function declaration causing test
+ to mistest
+
+---
+ configure.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure.in b/configure.in
+index 38132e0..e973815 100644
+--- a/configure.in
++++ b/configure.in
+@@ -51,6 +51,8 @@ dnl If strcmp returns 0, we are on an enironment that uses %llu, otherwise
+ dnl we are on a MacOSX environment that uses %qu
+ AC_TRY_RUN([
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
+ 
+ #define NIX "%llu"
+ 
+-- 
+2.43.2
+

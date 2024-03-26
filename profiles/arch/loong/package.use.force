@@ -1,5 +1,9 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2024-02-03)
+# We only have MariaDB on loong, not MySQL.
+dev-perl/DBD-MariaDB mariadb
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-08-05)
 # 1.71.0 is the first Rust version with loong support, so there's no previous

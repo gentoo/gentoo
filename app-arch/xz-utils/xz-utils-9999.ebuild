@@ -6,7 +6,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib multilib-minimal preserve-libs toolchain-funcs usr-ldscript
+inherit flag-o-matic libtool multilib multilib-minimal preserve-libs toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	# Per tukaani.org, git.tukaani.org is a mirror of github and
@@ -25,11 +25,11 @@ else
 
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="
-		https://github.com/tukaani-project/xz/releases/download/v${PV}/${MY_P}.tar.gz
+		https://github.com/tukaani-project/xz/releases/download/v${PV/_}/${MY_P}.tar.gz
 		mirror://sourceforge/lzmautils/${MY_P}.tar.gz
 		https://tukaani.org/xz/${MY_P}.tar.gz
 		verify-sig? (
-			https://github.com/tukaani-project/xz/releases/download/v${PV}/${MY_P}.tar.gz.sig
+			https://github.com/tukaani-project/xz/releases/download/v${PV/_}/${MY_P}.tar.gz.sig
 			https://tukaani.org/xz/${MY_P}.tar.gz.sig
 		)
 	"
@@ -45,9 +45,9 @@ DESCRIPTION="Utils for managing LZMA compressed files"
 HOMEPAGE="https://tukaani.org/xz/"
 
 # See top-level COPYING file as it outlines the various pieces and their licenses.
-LICENSE="public-domain LGPL-2.1+ GPL-2+"
+LICENSE="0BSD LGPL-2.1+ GPL-2+ doc? ( CC-BY-SA-4.0 )"
 SLOT="0"
-IUSE="doc +extra-filters pgo nls static-libs"
+IUSE="cpu_flags_arm_crc32 doc +extra-filters pgo nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-jiatan )"
@@ -71,6 +71,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc)
 		$(use_enable nls)
 		$(use_enable static-libs static)
+		$(use_enable cpu_flags_arm_crc32 arm64-crc32)
 	)
 
 	if ! multilib_is_native_abi ; then
@@ -121,12 +122,6 @@ multilib_src_compile() {
 		emake clean
 		emake CFLAGS="${CFLAGS} ${pgo_use_flags}"
 	fi
-}
-
-multilib_src_install() {
-	default
-
-	gen_usr_ldscript -a lzma
 }
 
 multilib_src_install_all() {

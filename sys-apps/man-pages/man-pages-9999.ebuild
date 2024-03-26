@@ -22,6 +22,7 @@ GENTOO_PATCH=2
 
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git"
 	inherit git-r3
@@ -34,10 +35,19 @@ else
 	if [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] ; then
 		SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-gentoo.tar.xz"
 	else
+		VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alejandro-colomar.asc
+		inherit verify-sig
+
 		SRC_URI="
 			https://www.kernel.org/pub/linux/docs/man-pages/Archive/${P}.tar.xz
 			https://www.kernel.org/pub/linux/docs/man-pages/${P}.tar.xz
+			verify-sig? (
+				https://www.kernel.org/pub/linux/docs/man-pages/Archive/${P}.tar.sign
+				https://www.kernel.org/pub/linux/docs/man-pages/${P}.tar.sign
+			)
 		"
+
+		BDEPEND="verify-sig? ( sec-keys/openpgp-keys-alejandro-colomar )"
 	fi
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos"
@@ -55,7 +65,7 @@ MY_L10N=( cs da de el es fi fr hu id it mk nb nl pl pt-BR ro sr sv uk vi )
 IUSE="l10n_ja l10n_ru l10n_zh-CN ${MY_L10N[@]/#/l10n_}"
 RESTRICT="binchecks"
 
-BDEPEND="
+BDEPEND+="
 	app-alternatives/bc
 "
 # Block packages that used to install colliding man pages:
@@ -79,9 +89,27 @@ done
 unset lang
 
 src_unpack() {
-	default
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		return
+	fi
 
-	[[ ${PV} == 9999 ]] && git-r3_src_unpack
+	if [[ ${PV} != *_rc* ]] && ! [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] && use verify-sig ; then
+		mkdir "${T}"/verify-sig || die
+		pushd "${T}"/verify-sig &>/dev/null || die
+
+		# Upstream sign the decompressed .tar
+		# Let's do it separately in ${T} then cleanup to avoid external
+		# effects on normal unpack.
+		cp "${DISTDIR}"/${P}.tar.xz . || die
+		xz -d ${P}.tar.xz || die
+		verify-sig_verify_detached ${P}.tar "${DISTDIR}"/${P}.tar.sign
+
+		popd &>/dev/null || die
+		rm -r "${T}"/verify-sig || die
+	fi
+
+	default
 }
 
 src_prepare() {

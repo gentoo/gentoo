@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-01-23)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is not keyworded here and currently fails tests (bug #919896).
+dev-qt/qtmultimedia:6 qml
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-01-06)
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
@@ -36,7 +41,6 @@ media-libs/libplacebo glslang shaderc vulkan
 # Vulkan is not available on hppa.
 dev-qt/qtdeclarative vulkan
 dev-qt/qtgui vulkan
-<dev-qt/qtwayland-5.15.11:5 vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch

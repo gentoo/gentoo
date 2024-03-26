@@ -1,5 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2024-03-08)
+# un-force pie, won't work on this arch
+sys-devel/gcc -pie
 
 # Fabian Groffen <grobian@gentoo.org> (2016-12-20)
 # Force the host target to avoid dependency hell

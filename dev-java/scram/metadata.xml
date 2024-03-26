@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">ongresinc/scram</remote-id>
+	</upstream>
 </pkgmetadata>

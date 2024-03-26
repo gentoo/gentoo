@@ -9,4 +9,5 @@
   <upstream>
     <remote-id type="github">susam/devil</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

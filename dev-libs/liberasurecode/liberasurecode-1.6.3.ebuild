@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends"
 HOMEPAGE="https://bitbucket.org/tsg-/liberasurecode/overview"
@@ -16,12 +16,23 @@ IUSE="doc static-libs"
 
 DEPEND="doc? ( app-text/doxygen )"
 
+PATCHES=(
+	# bashism in configure.ac
+	# Patch submitted upstream as https://review.opendev.org/c/openstack/liberasurecode/+/907156
+	"${FILESDIR}"/0001-configure-fix-basic-syntax-errors-in-the-shell-scrip.patch
+)
+
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_configure() {
+
+	# fails with -Werror=lto-type-mismatch
+	# https://bugs.launchpad.net/liberasurecode/+bug/2051613
+	filter-lto
+
 	econf \
 		--htmldir=/usr/share/doc/${PF} \
 		--disable-werror \

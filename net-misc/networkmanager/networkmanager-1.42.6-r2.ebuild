@@ -5,7 +5,7 @@ EAPI=8
 GNOME_ORG_MODULE="NetworkManager"
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit gnome.org linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd udev vala virtualx
+inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 readme.gentoo-r1 systemd udev vala virtualx
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -174,6 +174,9 @@ meson_nm_native_program() {
 }
 
 multilib_src_configure() {
+	# Workaround for LLD 17 (bug #915819)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 

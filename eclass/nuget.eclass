@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: nuget.eclass
@@ -224,6 +224,51 @@ nuget_unpack-non-nuget-archives() {
 				;;
 		esac
 	done
+}
+
+# @FUNCTION: nuget_writeconfig
+# @USAGE: <path>
+# @DESCRIPTION:
+# Create a "NuGet.config" config file that can be used to overwrite any other
+# Nuget configuration file in order to prevent Nuget executable from accessing
+# the network or undesired NuPkg package sources.
+#
+# If given path ends with a slash, a file name "NuGet.config" is assumed,
+# otherwise contents are written to specified file path exactly.
+#
+# Created configuration file clears all other NuPkg sources and inserts
+# "NUGET_PACKAGES" as the only one source.
+#
+# This function is used inside "dotnet-pkg_src_prepare"
+# from the "dotnet-pkg" eclass.
+#
+# This function is used inside "dotnet-pkg_src_prepare"
+# from the "dotnet-pkg" eclass.
+nuget_writeconfig() {
+	debug-print-function "${FUNCNAME[0]}" "${@}"
+
+	case "${1}" in
+		"" ) die "${FUNCNAME[0]}: no directory/file path specified" ;;
+		*/ ) mkdir -p "${1}" || die ;;
+	esac
+
+	local nuget_config_path
+
+	if [[ -d "${1}" ]] ; then
+		nuget_config_path="${1}/NuGet.config"
+	else
+		nuget_config_path="${1}"
+	fi
+
+	cat <<-EOF > "${nuget_config_path}" || die
+	<?xml version="1.0" encoding="utf-8"?>
+	<configuration>
+		<packageSources>
+			<clear />
+			<add key="nuget" value="${NUGET_PACKAGES}" />
+		</packageSources>
+	</configuration>
+	EOF
 }
 
 # @FUNCTION: nuget_donuget

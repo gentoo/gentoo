@@ -20,4 +20,5 @@
     <bugs-to>https://github.com/minad/tempel/issues/</bugs-to>
     <remote-id type="github">minad/tempel</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

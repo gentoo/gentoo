@@ -1,0 +1,27 @@
+From: https://github.com/Foxboron/sbctl/pull/188
+From: John Helmert III <ajak@gentoo.org>
+Date: Sat, 10 Feb 2024 11:46:01 -0800
+Subject: [PATCH] 91-sbctl.install: don't sign without signing keys
+
+It's expected that signing doesn't work without having previously
+generated keys, so don't try to sign when keys don't exist.
+
+Closes: https://github.com/Foxboron/sbctl/issues/187
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+--- a/contrib/kernel-install/91-sbctl.install
++++ b/contrib/kernel-install/91-sbctl.install
+@@ -28,6 +28,14 @@ fi
+ case "$COMMAND" in
+ add)
+ 	printf 'sbctl: Signing kernel %s\n' "$IMAGE_FILE"
++
++	# exit without error if keys don't exist
++	# https://github.com/Foxboron/sbctl/issues/187
++	if ! test -d /usr/share/secureboot/keys; then
++		echo "Secureboot key directory doesn't exist, not signing!"
++		exit 0
++	fi
++
+ 	sbctl sign -s "$IMAGE_FILE" 1>/dev/null
+ 	;;
+ remove)

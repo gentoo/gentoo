@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit cmake desktop xdg
+inherit cmake desktop flag-o-matic xdg
 
 MY_PV="${PV//./_}"
 MY_P="${PN}_${MY_PV}"
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/gpsbabel/gpsbabel.git"
 else
 	SRC_URI="https://github.com/gpsbabel/gpsbabel/archive/gpsbabel_${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/gpsbabel-gpsbabel_${MY_PV}"
 fi
 
@@ -76,6 +76,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/862576
+	# Fixed in newer versions: https://github.com/GPSBabel/gpsbabel/pull/824
+	filter-lto
+
 	local mycmakeargs=(
 		-DGPSBABEL_WITH_LIBUSB=pkgconfig
 		-DGPSBABEL_WITH_SHAPELIB=pkgconfig

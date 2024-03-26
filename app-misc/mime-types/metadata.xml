@@ -9,4 +9,5 @@
   <flag name="nginx">Enable mime-types support for
     <pkg>www-servers/nginx</pkg> package</flag>
 </use>
+<stabilize-allarches/>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -268,9 +268,14 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm Source/Nake.Tests/Multi_level_caching.cs		\
-	   Source/Nake.Tests/Nuget_references.cs		\
-	   Source/Utility.Tests/ShellFixture.cs	|| die
+	local -a bad_tests=(
+		Source/Nake.Tests/Environment_variable_interpolation.cs
+		Source/Nake.Tests/Loading_other_scripts.cs
+		Source/Nake.Tests/Multi_level_caching.cs
+		Source/Nake.Tests/Nuget_references.cs
+		Source/Utility.Tests/ShellFixture.cs
+	)
+	rm "${bad_tests[@]}" || die
 
 	dotnet-pkg_src_prepare
 }

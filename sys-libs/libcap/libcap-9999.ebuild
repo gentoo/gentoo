@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs pam usr-ldscript
+inherit multilib-minimal toolchain-funcs pam
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -76,8 +76,6 @@ multilib_src_install() {
 	# no configure, needs explicit install line #444724#c3
 	run_emake DESTDIR="${D}" install
 
-	gen_usr_ldscript -a cap
-	gen_usr_ldscript -a psx
 	if ! use static-libs ; then
 		rm "${ED}"/usr/$(get_libdir)/lib{cap,psx}.a || die
 	fi

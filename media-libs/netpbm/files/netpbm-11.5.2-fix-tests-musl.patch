@@ -1,0 +1,157 @@
+Some tests are broken on musl.
+
+https://sourceforge.net/p/netpbm/code/4843/
+pnmindex, ppmtomitsu tests that don't use pnmcolormap
+
+So far, this only fixed ppmtomitsu.
+
+See also https://bugs.gentoo.org/907295
+
+--- a/test/pnmindex.ok
++++ b/test/pnmindex.ok
+@@ -7,12 +7,18 @@
+ 3099638253 5290
+ Test 4. Should print 1397700642 3160
+ 1397700642 3160
+-Test 5. Should print 2303488589 28514
+-2303488589 28514
+-Test 6. Should print 1706277976 100455
+-1706277976 100455
+-Test 7. Should print 801388440 100455
++Test 5. Should print 243472565 28514
++243472565 28514
++Test 6. Should print 801388440 100455
+ 801388440 100455
++Test 7. Should print 256 twice
++256
++256
++Test 8. Should print 100 twice
++100
++100
++Test 9. Should print match
++match
+ Test Invalid
+ Expected failure 1 (no output)
+ Expected failure 2 (no output)
+--- a/test/pnmindex.test
++++ b/test/pnmindex.test
+@@ -3,6 +3,9 @@
+ # Also requires: pamcat pamscale pbmtext pnmcolormap pnmindex
+ # Also requires: pnminvert pnmquant pnmremap
+ 
++tmpdir=${tmpdir:-/tmp}
++pnmindex256_ppm=${tmpdir}/pnmindex256.ppm
++
+ echo "Test 1. Should print 3391481002 889"
+ pnmindex maze.pbm | cksum
+ 
+@@ -17,18 +20,28 @@
+ pnmindex -size 20 -across=3 testgrid.pbm testgrid.pbm testgrid.pbm \
+          testgrid.pbm testgrid.pbm testgrid.pbm | cksum
+ 
+-echo "Test 5. Should print 2303488589 28514"
+-pnmindex testimg.ppm | cksum
++echo "Test 5. Should print 243472565 28514"
++pnmindex -noquant testimg.ppm | cksum
+ 
+-echo "Test 6. Should print 1706277976 100455"
+-pnmindex -size 50 -across=2 testimg.ppm testimg.ppm testimg.ppm \
+-         testimg.ppm testimg.ppm testimg.ppm | cksum
+-
+-echo "Test 7. Should print 801388440 100455"
++echo "Test 6. Should print 801388440 100455"
+ pnmindex -size 50 -across=2 -noquant testimg.ppm testimg.ppm testimg.ppm \
+-         testimg.ppm testimg.ppm testimg.ppm | cksum
++         testimg.ppm testimg.ppm testimg.ppm | tee ${pnmindex256_ppm} | cksum
+ 
++echo "Test 7. Should print 256 twice"
++pnmindex testimg.ppm | ppmhist -nomap -noheader | wc -l
++pnmindex -colors 256 testimg.ppm | ppmhist -nomap -noheader | wc -l
+ 
++echo "Test 8. Should print 100 twice"
++pnmindex -colors 100 testimg.ppm | ppmhist -nomap -noheader | wc -l
++pnmindex -colors 100 testimg.ppm testimg.ppm | ppmhist -nomap -noheader | wc -l
++
++
++echo "Test 9. Should print match"
++pnmindex -size 50 -across=2 -quant -colors=256 testimg.ppm testimg.ppm testimg.ppm \
++         testimg.ppm testimg.ppm testimg.ppm |\
++    pnmpsnr -rgb -target1=41.31 -target2=40.76 -target3=40.71 ${pnmindex256_ppm} -
++
++
+ echo "Test Invalid"
+ 
+ . ${srcdir}/test-invalid.inc
+--- a/test/ppmtomitsu.ok
++++ b/test/ppmtomitsu.ok
+@@ -1,9 +1,9 @@
+-Test 0. Should print 458455366 101484
+-458455366 101484
++Test 0. Should print 668243897 101532
++668243897 101532
+ Test 1. Should print 3110813682 101562
+ 3110813682 101562
+-Test 2. Should print 4168174994 34399
+-4168174994 34399
++Test 2. Should print 825518840 34209
++825518840 34209
+ Test 3. Should print 3201293405 310
+ 3201293405 310
+ Test 4. Should print 3354679572 752
+@@ -10,5 +10,5 @@
+ 3354679572 752
+ Test 5. Should print 3999654426 101549
+ 3999654426 101549
+-Test 6. Should print 4201246884 101549
+-4201246884 101549
++Test 6. Should print 3103038403 101549
++3103038403 101549
+--- a/test/ppmtomitsu.test
++++ b/test/ppmtomitsu.test
+@@ -1,31 +1,31 @@
+ #! /bin/sh
+ # This script tests: ppmtomitsu
+-# Also requires: pnmcolormap pnmremap
++# Also requires: pamseq pamdepth
+ 
+ tmpdir=${tmpdir:-/tmp}
+-testimg100_ppm=${tmpdir}/testimg100.ppm
++testimg216_ppm=${tmpdir}/testimg216.ppm
+ 
+-echo "Test 0. Should print 458455366 101484"
+-# equivalent to: Pnmquant 100 testimg.ppm
+-pnmcolormap 100 testimg.ppm | pnmremap -nofloyd -mapfile=- testimg.ppm |\
+- tee ${testimg100_ppm} | cksum
++echo "Test 0. Should print 668243897 101532"
+ 
++pamseq 3 5 -tupletype=RGB | pamdepth 255 | pnmremap -nofloyd -mapfile=- testimg.ppm |\
++  tee ${testimg216_ppm} | cksum
++
+ echo "Test 1. Should print 3110813682 101562"
+-ppmtomitsu testimg.ppm | cksum 
++ppmtomitsu testimg.ppm | cksum
+ 
+-echo "Test 2. Should print 4168174994 34399"
+-ppmtomitsu ${testimg100_ppm} | cksum 
++echo "Test 2. Should print 825518840 34209"
++ppmtomitsu ${testimg216_ppm} | cksum
+ 
+ echo "Test 3. Should print 3201293405 310"
+-ppmtomitsu testgrid.pbm | cksum 
++ppmtomitsu testgrid.pbm | cksum
+ 
+ echo "Test 4. Should print 3354679572 752"
+-ppmtomitsu -tiny testgrid.pbm | cksum 
++ppmtomitsu -tiny testgrid.pbm | cksum
+ 
+ echo "Test 5. Should print 3999654426 101549"
+-ppmtomitsu -tiny testimg.ppm | cksum 
++ppmtomitsu -tiny testimg.ppm | cksum
+ 
+-echo "Test 6. Should print 4201246884 101549"
+-ppmtomitsu -tiny ${testimg100_ppm} | cksum 
++echo "Test 6. Should print 3103038403 101549"
++ppmtomitsu -tiny ${testimg216_ppm} | cksum
+ 
+-rm ${testimg100_ppm}
++rm ${testimg216_ppm}

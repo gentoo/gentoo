@@ -59,7 +59,7 @@ COMMONDEPEND="
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
-		>=dev-libs/gumbo-0.10
+		>=dev-libs/gumbo-0.10:=
 		net-misc/curl
 		media-libs/fontconfig
 	)
@@ -147,6 +147,7 @@ src_configure() {
 		$(use_enable debug crash-dialog)
 		$(use_enable debug more-addressbook-debug)
 		$(use_enable debug more-ldap-debug)
+		$(use_enable debug more-archive-debug)
 		$(use_enable doc manual)
 		$(use_enable gnutls)
 		$(use_enable ldap)

@@ -69,7 +69,7 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
 IUSE="+pcre"
 
 RDEPEND="pcre? ( dev-libs/libpcre2:= )"
@@ -80,6 +80,12 @@ BDEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/rg"
+
+src_prepare() {
+	default
+	# unforce static linking on musl
+	rm .cargo/config.toml || die
+}
 
 src_configure() {
 	# allow building on musl with dynamic linking support

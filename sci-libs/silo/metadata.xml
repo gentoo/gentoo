@@ -16,4 +16,7 @@
     <email>cluster@gentoo.org</email>
     <name>Gentoo Cluster Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">LLNL/Silo</remote-id>
+  </upstream>
 </pkgmetadata>

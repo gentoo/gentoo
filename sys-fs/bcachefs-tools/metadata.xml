@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>Matt.Jolly@footclan.ninja</email>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>csfore@posteo.net</email>
+		<name>Christopher Fore</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
@@ -14,5 +18,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">koverstreet/bcachefs-tools</remote-id>
+		<remote-id type="gitlab">Matt.Jolly/rust-bindgen-bcachefs</remote-id>
 	</upstream>
 </pkgmetadata>

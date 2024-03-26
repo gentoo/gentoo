@@ -193,6 +193,11 @@ _cargo_set_crate_uris() {
 		fi
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${name}-${version}.crate"
 		CARGO_CRATE_URIS+="${url} "
+
+		# when invoked by pkgbump, avoid fetching all the crates
+		# we just output the first one, to avoid creating empty groups
+		# in SRC_URI
+		[[ ${PKGBUMPING} == ${PVR} ]] && return
 	done
 
 	if declare -p GIT_CRATES &>/dev/null; then

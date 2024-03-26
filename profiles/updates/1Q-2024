@@ -40,12 +40,9 @@ move dev-util/muon dev-build/muon
 move dev-util/xfce4-dev-tools dev-build/xfce4-dev-tools
 move sys-devel/boost-m4 dev-build/boost-m4
 move dev-util/gtk-doc-am dev-build/gtk-doc-am
-move dev-util/bazel dev-build/bazel
 move dev-util/gn dev-build/gn
 move dev-util/gyp dev-build/gyp
 move dev-util/netsurf-buildsystem dev-build/netsurf-buildsystem
-move dev-util/tup dev-build/tup
-move sys-devel/cons dev-build/cons
 move dev-util/scons dev-build/scons
 move sys-devel/qconf dev-build/qconf
 move dev-util/b2 dev-build/b2
@@ -57,3 +54,48 @@ move dev-util/kdbg dev-debug/kdbg
 move dev-util/pwndbg dev-debug/pwndbg
 move dev-util/gef dev-debug/gef
 move dev-util/peda dev-debug/peda
+move dev-util/apitrace dev-debug/apitrace
+move dev-util/bpftrace dev-debug/bpftrace
+move dev-util/d-feet dev-debug/d-feet
+move dev-util/d-spy dev-debug/d-spy
+move dev-util/duma dev-debug/duma
+move dev-util/leaktracer dev-debug/leaktracer
+move dev-util/ltrace dev-debug/ltrace
+move dev-util/strace dev-debug/strace
+move dev-util/sysdig dev-debug/sysdig
+move dev-util/systemtap dev-debug/systemtap
+move dev-util/scap-driver dev-debug/scap-driver
+move dev-util/icmake dev-build/icmake
+move sci-libs/scikit-image dev-python/scikit-image
+move dev-python/confusable_homoglyphs dev-python/confusable-homoglyphs
+move dev-python/ml_dtypes dev-python/ml-dtypes
+slotmove =dev-java/commons-imaging-1.0_alpha3-r1 0 1
+move media-gfx/fotoxx media-gfx/fotocx
+move dev-python/editorconfig-core-py dev-python/editorconfig
+move dev-python/urwid_readline dev-python/urwid-readline
+move dev-python/python-evdev dev-python/evdev
+slotmove kde-apps/kdeaccessibility-meta 5 0
+slotmove kde-apps/kdeadmin-meta 5 0
+slotmove kde-apps/kde-apps-meta 5 0
+slotmove kde-apps/kdecore-meta 5 0
+slotmove kde-apps/kdeedu-meta 5 0
+slotmove kde-apps/kdegames-meta 5 0
+slotmove kde-apps/kdegraphics-meta 5 0
+slotmove kde-apps/kdemultimedia-meta 5 0
+slotmove kde-apps/kdenetwork-meta 5 0
+slotmove kde-apps/kdepim-meta 5 0
+slotmove kde-apps/kdesdk-meta 5 0
+slotmove kde-apps/kdeutils-meta 5 0
+move media-libs/oneVPL media-libs/libvpl
+move sys-auth/AusweisApp2 sys-auth/AusweisApp
+move sci-libs/scikit-learn dev-python/scikit-learn
+slotmove =dev-ruby/launchy-3.0.0 0 3
+move dev-python/DBUtils dev-python/dbutils
+move dev-python/aiorpcX dev-python/aiorpcx
+move www-apps/sonarr www-apps/sonarr-bin
+move www-apps/jellyfin www-apps/jellyfin-bin
+move www-apps/radarr www-apps/radarr-bin
+move www-apps/lidarr www-apps/lidarr-bin
+move www-apps/prowlarr www-apps/prowlarr-bin
+move www-apps/readarr www-apps/readarr-bin
+move www-apps/jackett www-apps/jackett-bin

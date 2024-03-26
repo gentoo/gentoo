@@ -22,6 +22,8 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
 LICENSE="GPL-2"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Need newer Portage for eclean-pkg API, bug #900224
 DEPEND="
@@ -44,6 +46,9 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	' python3_12)
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+	)
 "
 
 src_prepare() {
@@ -64,6 +69,7 @@ src_configure() {
 my_src_configure() {
 	local emesonargs=(
 		-Dcode-only=${code_only}
+		$(meson_use test tests)
 		-Deprefix="${EPREFIX}"
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 	)

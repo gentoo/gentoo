@@ -132,6 +132,7 @@ hdf5 - Add support for the Hierarchical Data Format v5
 headers-only - Install only C headers instead of whole package. Mainly used by sys-devel/crossdev for toolchain bootstrap.
 heif - Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
+http2 - Enable support for the HTTP/2 protocol
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
 icu - Enable ICU (Internationalization Components for Unicode) support, using dev-libs/icu

@@ -1,0 +1,12 @@
+diff --git a/tests/memload.c b/tests/memload.c
+index 6157a08..4f189d0 100644
+--- a/tests/memload.c
++++ b/tests/memload.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ 
++#include <stdlib.h>
+ #include <hamlib/config.h>
+ 
+ #include <hamlib/rig.h>

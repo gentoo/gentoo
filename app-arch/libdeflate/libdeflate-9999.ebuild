@@ -18,14 +18,31 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gzip static-libs +utils +zlib test"
-RESTRICT="!test? ( test )"
+# the zlib USE-flag enables support for zlib
+# the test USE-flag programs depend on sys-libs/zlib for comparison tests
+IUSE="+gzip +utils +zlib test"
+
+RESTRICT="
+	!test? ( test )
+"
+
+REQUIRED_USE="
+	utils? ( gzip )
+"
+
+DEPEND="
+	test? ( sys-libs/zlib )
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.19-make-gzip-tests-conditional.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DLIBDEFLATE_BUILD_SHARED_LIB="yes"
-		-DLIBDEFLATE_BUILD_STATIC_LIB="$(usex static-libs)"
-		-DLIBDEFLATE_USE_SHARED_LIB="$(usex !static-libs)"
+		-DLIBDEFLATE_BUILD_STATIC_LIB="no"
+		-DLIBDEFLATE_USE_SHARED_LIB="yes"
 
 		-DLIBDEFLATE_COMPRESSION_SUPPORT="yes"
 		-DLIBDEFLATE_DECOMPRESSION_SUPPORT="yes"

@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/xkbcommon/${PN}"
 else
 	SRC_URI="https://xkbcommon.org/download/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 PYTHON_COMPAT=( python3_{10..12} )
@@ -18,13 +18,14 @@ inherit bash-completion-r1 meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
 DESCRIPTION="Keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
 LICENSE="MIT"
+SLOT="0"
+
 IUSE="doc static-libs test tools wayland X"
 RESTRICT="!test? ( test )"
-SLOT="0"
 
 BDEPEND="
 	app-alternatives/yacc
-	doc? ( app-text/doxygen )
+	doc? ( app-text/doxygen[dot] )
 	test? ( ${PYTHON_DEPS} )
 	tools? ( wayland? ( dev-util/wayland-scanner ) )
 "

@@ -1,0 +1,81 @@
+This is an adapted patch from the games/anki FreeBSD port.
+https://github.com/freebsd/freebsd-ports/blob/109c3d4629b84972e660b689d169ac0761c1a519/games/anki/files/patch-build_runner_src_build.rs
+
+It adapts the ninja(-compatible) build system to the Gentoo system and
+prevents repo sync via git.
+* Mimic ninja-utils.eclass behavior to respect NINJA_VERBOSE.
+  Can also be implemented in the ebuild via runner args when the rest
+  of the patch gets dropped.
+* Respect NINJA_STATUS if already set.
+* Respect app-alternatives/ninja symlink (n2 is not yet in the tree).
+  This is a workaround. A proper implementation similar to
+  the LTO implementation (c6f429) should allow the build system to be set at
+  configure time.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/ninja_gen/src/build.rs
++++ b/build/ninja_gen/src/build.rs
+@@ -49,7 +49,7 @@ impl Build {
+             output_text: Default::default(),
+             action_names: Default::default(),
+             groups: Default::default(),
+-            have_n2: which::which("n2").is_ok(),
++            have_n2: false,
+         };
+ 
+         build.add_action("build:configure", ConfigureBuild {})?;
+--- a/build/runner/src/build.rs
++++ b/build/runner/src/build.rs
+@@ -56,11 +56,15 @@ pub fn run_build(args: BuildArgs) {
+ 
+     let start_time = Instant::now();
+     let mut command = Command::new(get_ninja_command());
++
++    if env::var("NINJA_VERBOSE").unwrap_or(String::from("ON")).eq("ON") {
++            command.arg("-v");
++    }
++
+     command
+         .arg("-f")
+         .arg(&build_file)
+         .args(ninja_args)
+-        .env("NINJA_STATUS", "[%f/%t; %r active; %es] ")
+         .env("PATH", &path)
+         .env(
+             "MYPY_CACHE_DIR",
+@@ -75,6 +79,11 @@ pub fn run_build(args: BuildArgs) {
+         // Updating svelte-check or its deps will likely remove the need for it.
+         .env("NODE_OPTIONS", "--no-experimental-fetch");
+ 
++        if env::var("NINJA_STATUS").is_err() {
++            command.env("NINJA_STATUS", "[%f/%t; %r active; %es] ");
++        }
++
++
+     // run build
+     let mut status = command.status().expect("ninja not installed");
+     if !status.success() && Instant::now().duration_since(start_time).as_secs() < 3 {
+@@ -109,11 +118,7 @@ pub fn run_build(args: BuildArgs) {
+ }
+ 
+ fn get_ninja_command() -> &'static str {
+-    if which::which("n2").is_ok() {
+-        "n2"
+-    } else {
+-        "ninja"
+-    }
++    "ninja"
+ }
+ 
+ fn setup_build_root() -> Utf8PathBuf {
+@@ -154,8 +159,9 @@ fn bootstrap_build() {
+ 
+ fn maybe_update_buildhash(build_root: &Utf8Path) {
+     // only updated on release builds
++    println!("Patch: Skipping buildhash update if {build_root}/buildhash exists.");
+     let path = build_root.join("buildhash");
+-    if env::var("RELEASE").is_ok() || !path.exists() {
++    if !path.exists() {
+         write_if_changed(&path, &get_buildhash())
+     }
+ }

@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/923291
+https://github.com/indexdata/yaz/issues/104
+https://github.com/indexdata/yaz/pull/105
+
+From 3c61afce2c2517369c2bf1ba6846ff17f81c4b18 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Tue, 21 Nov 2023 23:47:18 +0900
+Subject: [PATCH] FIX: fix build error with glibc 2.39
+
+glibc 2.39 does some refactoring for header file inclusion
+and some additional header inclusion is needed for yaz
+source.
+
+Closes #104 .
+--- a/src/record_conv.c
++++ b/src/record_conv.c
+@@ -11,6 +11,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <yaz/log.h>
+ #include <yaz/yaz-iconv.h>
+--- a/src/xmlquery.c
++++ b/src/xmlquery.c
+@@ -10,6 +10,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
+ 
+--- a/test/test_record_conv.c
++++ b/test/test_record_conv.c
+@@ -9,6 +9,7 @@
+ #include <yaz/record_conv.h>
+ #include <yaz/test.h>
+ #include <yaz/wrbuf.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <yaz/log.h>
+ #include <yaz/proto.h>
+--- a/test/test_retrieval.c
++++ b/test/test_retrieval.c
+@@ -9,6 +9,7 @@
+ #include <yaz/retrieval.h>
+ #include <yaz/test.h>
+ #include <yaz/wrbuf.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <yaz/log.h>
+ #include <yaz/oid_db.h>

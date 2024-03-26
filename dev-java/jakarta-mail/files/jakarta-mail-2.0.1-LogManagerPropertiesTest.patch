@@ -1,0 +1,11 @@
+--- a/src/test/java/com/sun/mail/util/logging/LogManagerPropertiesTest.java
++++ b/src/test/java/com/sun/mail/util/logging/LogManagerPropertiesTest.java
+@@ -78,7 +78,7 @@ public class LogManagerPropertiesTest extends AbstractLogging {
+         assertEquals(Arrays.toString(declared), 0, declared.length);
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void testCheckAccessPresent() {
+         LogManager m = LogManager.getLogManager();
+         m.checkAccess();

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/coin3d/coin/releases/download/v${PV}/${P}-src.tar.gz
 S="${WORKDIR}/${PN}"
 
 LICENSE="|| ( GPL-2 PEL )"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="debug doc +exceptions javascript man openal qthelp test threads"
 RESTRICT="!test? ( test )"
@@ -53,6 +53,11 @@ DOCS=(
 )
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/859832
+	# https://github.com/coin3d/coin/issues/521
+	filter-lto
+
 	use debug && append-cppflags -DCOIN_DEBUG=1
 
 	local mycmakeargs=(

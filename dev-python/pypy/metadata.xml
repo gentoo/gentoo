@@ -12,9 +12,8 @@
 		<flag name="full-stdlib">
 			Install complete stdlib as necessary to use PyPy for general
 			purpose programs.  By default, only a limited subset that is
-			used when building <pkg>dev-python/pypy3-exe</pkg> is
-			installed.  Note that PyPy2.7's stdlib contains multiple
-			known vulnerabilities.
+			used when building PyPy3 executables is installed.  Note
+			that PyPy2.7's stdlib contains multiple known vulnerabilities.
 		</flag>
 	</use>
 </pkgmetadata>

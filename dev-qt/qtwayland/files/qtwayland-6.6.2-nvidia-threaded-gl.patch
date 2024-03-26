@@ -1,0 +1,30 @@
+Backport from 6.6 branch which failed to make it in 6.6.2.
+
+https://bugreports.qt.io/browse/QTBUG-95817
+https://codereview.qt-project.org/c/qt/qtwayland/+/536732
+https://github.com/qt/qtwayland/commit/e4156bad6398dcbe8740041148d95ee9ed437d8b
+From: David Redondo <qt@david-redondo.de>
+Date: Wed, 31 Jan 2024 09:01:48 +0100
+Subject: [PATCH] client: Disable threaded GL on desktop NVIDIA
+
+Otherwise QtQuick windows freeze when resized.
+In order to still use threaded rendering on
+embedded platforms where resizing is not required
+we check if XDG_CURRENT_DESKTOP which should be
+set by  desktop environments.
+--- a/src/hardwareintegration/client/wayland-egl/qwaylandeglclientbufferintegration.cpp
++++ b/src/hardwareintegration/client/wayland-egl/qwaylandeglclientbufferintegration.cpp
+@@ -92,6 +92,13 @@ void QWaylandEglClientBufferIntegration::initialize(QWaylandDisplay *display)
+             break;
+         }
+     }
++
++    // On desktop NVIDIA resizing QtQuick freezes them when using threaded rendering QTBUG-95817
++    // In order to support threaded rendering on embedded platforms where resizing is not needed
++    // we check if XDG_CURRENT_DESKTOP is set which desktop environments should set
++    if (qstrcmp(vendor, "NVIDIA") == 0 && qEnvironmentVariableIsSet("XDG_CURRENT_DESKTOP")) {
++        m_supportsThreading = false;
++    }
+ }
+ 
+ bool QWaylandEglClientBufferIntegration::isValid() const

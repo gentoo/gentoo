@@ -22,11 +22,16 @@ DESCRIPTION="Free implementation of the Remote Desktop Protocol"
 HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
-SLOT="0/3"
-IUSE="aad alsa cpu_flags_arm_neon cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
+SLOT="3"
+IUSE="aad alsa cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
+"
+COMMON_DEPEND="
 	dev-libs/openssl:0=
 	sys-libs/zlib:0
 	aad? ( dev-libs/cJSON )
@@ -54,7 +59,7 @@ RDEPEND="
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
-		x11-libs/libXrandr
+		X? ( x11-libs/libXrandr )
 	)
 	icu? ( dev-libs/icu:0= )
 	jpeg? ( media-libs/libjpeg-turbo:0= )
@@ -62,7 +67,7 @@ RDEPEND="
 	openh264? ( media-libs/openh264:0= )
 	pulseaudio? ( media-libs/libpulse )
 	sdl? (
-		media-libs/libsdl2
+		media-libs/libsdl2[haptic(+),joystick(+),sound(+),video(+)]
 		media-libs/sdl2-ttf
 	)
 	server? (
@@ -81,24 +86,37 @@ RDEPEND="
 		sys-apps/pcsc-lite
 	)
 	systemd? ( sys-apps/systemd:0= )
-	wayland? (
-		dev-libs/wayland
-		x11-libs/libxkbcommon
+	client? (
+		wayland? (
+			dev-libs/wayland
+			x11-libs/libxkbcommon
+		)
 	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libxkbfile
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	valgrind? ( dev-debug/valgrind )
 "
-BDEPEND="
-	virtual/pkgconfig
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
+RDEPEND="${COMMON_DEPEND}
+	!net-misc/freerdp:0
+	client? ( !net-misc/freerdp:2[client] )
+	server? ( !net-misc/freerdp:2[server] )
 "
+
+option() {
+	usex "$1" ON OFF
+}
+
+option_client() {
+	if use client; then
+		option "$1"
+	else
+		echo OFF
+	fi
+}
 
 src_configure() {
 	# bug #881695
@@ -106,39 +124,46 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Wno-dev
-		-DBUILD_TESTING=$(usex test ON OFF)
-		-DCHANNEL_URBDRC=$(usex usb ON OFF)
-		-DWITH_AAD=$(usex aad ON OFF)
-		-DWITH_ALSA=$(usex alsa ON OFF)
+
+		# https://bugs.gentoo.org/927037
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+
+		-DBUILD_TESTING=$(option test)
+		-DCHANNEL_URBDRC=$(option usb)
+		-DWITH_AAD=$(option aad)
+		-DWITH_ALSA=$(option alsa)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT_SDL=$(usex sdl ON OFF)
-		-DWITH_CUPS=$(usex cups ON OFF)
-		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
+		-DWITH_CLIENT=$(option client)
+		-DWITH_CLIENT_SDL=$(option sdl)
+		-DWITH_SAMPLE=OFF
+		-DWITH_CUPS=$(option cups)
+		-DWITH_DEBUG_ALL=$(option debug)
 		-DWITH_MANPAGES=ON
-		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_FFMPEG=$(option ffmpeg)
 		-DWITH_FREERDP_DEPRECATED_COMMANDLINE=ON
-		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
-		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
-		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
-		-DWITH_FUSE=$(usex fuse ON OFF)
-		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
-		-DWITH_JPEG=$(usex jpeg ON OFF)
-		-DWITH_KRB5=$(usex kerberos ON OFF)
-		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
-		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_SWSCALE=$(option ffmpeg)
+		-DWITH_CAIRO=$(option !ffmpeg)
+		-DWITH_DSP_FFMPEG=$(option ffmpeg)
+		-DWITH_FUSE=$(option fuse)
+		-DWITH_GSTREAMER_1_0=$(option gstreamer)
+		-DWITH_JPEG=$(option jpeg)
+		-DWITH_KRB5=$(option kerberos)
+		-DWITH_NEON=$(option cpu_flags_arm_neon)
+		-DWITH_OPENH264=$(option openh264)
 		-DWITH_OSS=OFF
-		-DWITH_PCSC=$(usex smartcard ON OFF)
-		-DWITH_PKCS11=$(usex smartcard ON OFF)
-		-DWITH_PULSE=$(usex pulseaudio ON OFF)
-		-DWITH_SERVER=$(usex server ON OFF)
-		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
-		-DWITH_UNICODE_BUILTIN=$(usex icu OFF ON)
-		-DWITH_VALGRIND_MEMCHECK=$(usex valgrind ON OFF)
-		-DWITH_X11=$(usex X ON OFF)
-		-DWITH_XINERAMA=$(usex xinerama ON OFF)
-		-DWITH_XV=$(usex xv ON OFF)
-		-DWITH_WAYLAND=$(usex wayland ON OFF)
+		-DWITH_PCSC=$(option smartcard)
+		-DWITH_PKCS11=$(option smartcard)
+		-DWITH_PULSE=$(option pulseaudio)
+		-DWITH_SERVER=$(option server)
+		-DWITH_LIBSYSTEMD=$(option systemd)
+		-DWITH_UNICODE_BUILTIN=$(option !icu)
+		-DWITH_VALGRIND_MEMCHECK=$(option valgrind)
+		-DWITH_X11=$(option X)
+		-DWITH_XINERAMA=$(option xinerama)
+		-DWITH_XV=$(option xv)
+		-DWITH_WAYLAND=$(option_client wayland)
 		-DWITH_WEBVIEW=OFF
+		-DWITH_WINPR_TOOLS=$(option server)
 	)
 	cmake_src_configure
 }
@@ -146,5 +171,11 @@ src_configure() {
 src_test() {
 	local myctestargs=()
 	use elibc_musl && myctestargs+=( -E TestBacktrace )
+	has network-sandbox ${FEATURES} && myctestargs+=( -E TestConnect )
 	cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+	mv "${ED}"/usr/share/man/man7/wlog{,3}.7 || die
 }

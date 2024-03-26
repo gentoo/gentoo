@@ -1,0 +1,14 @@
+Remove example; unused, only generates not important QA warnings
+--- a/rocm_smi/CMakeLists.txt
++++ b/rocm_smi/CMakeLists.txt
+@@ -76,8 +76,10 @@ set(SMI_INC_LIST "")
+ 
+ set(SMI_EXAMPLE_EXE "rocm_smi_ex")
+ 
++if (WITH_EXAMPLE)
+ add_executable(${SMI_EXAMPLE_EXE} "example/rocm_smi_example.cc")
+ target_link_libraries(${SMI_EXAMPLE_EXE} ${ROCM_SMI_TARGET})
++endif()
+ add_library(${ROCM_SMI_TARGET}  ${CMN_SRC_LIST} ${SMI_SRC_LIST}
+                                               ${CMN_INC_LIST} ${SMI_INC_LIST})
+ target_link_libraries(${ROCM_SMI_TARGET} pthread rt)

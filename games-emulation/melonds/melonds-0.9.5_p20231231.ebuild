@@ -23,7 +23,7 @@ else
 		-> ${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 IUSE="+jit +opengl wayland"

@@ -11,7 +11,7 @@ HOMEPAGE="https://codeberg.org/NRK/sxcs"
 SRC_URI="https://codeberg.org/NRK/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="GPL-3+"
 SLOT="0"
 

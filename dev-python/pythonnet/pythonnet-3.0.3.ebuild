@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -230,15 +230,17 @@ BDEPEND="
 "
 
 CHECKREQS_DISK_BUILD="1500M"
-PATCHES=( "${FILESDIR}/${PN}-3.0.3-no-sourcelink.patch" )
-
 EPYTEST_DESELECT=(
+	'tests/test_codec.py::test_sequence'
 	'tests/test_engine.py::test_import_module'
 	'tests/test_engine.py::test_run_string'
 	'tests/test_method.py::test_getting_method_overloads_binding_does_not_leak_memory'
 	'tests/test_method.py::test_params_array_overloaded_failing'
 	'tests/test_module.py::test_assembly_load_recursion_bug'
 	'tests/test_module.py::test_implicit_assembly_load'
+)
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.3-no-sourcelink.patch"
 )
 
 DOCS=( AUTHORS.md CHANGELOG.md README.rst )
@@ -255,18 +257,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	distutils-r1_src_prepare
+	nuget_writeconfig "$(pwd)/"
 
-	# Because python scripts perform the build.
-	cat <<EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
+	distutils-r1_src_prepare
 }
 
 src_configure() {

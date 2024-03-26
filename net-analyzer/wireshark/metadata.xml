@@ -36,7 +36,6 @@
 		<flag name="dpauxmon">Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers</flag>
 		<flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
 		<flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
-		<flag name="http2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 		<flag name="ilbc">Build with iLBC support in RTP Player using <pkg>media-libs/libilbc</pkg></flag>
 		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 		<flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>

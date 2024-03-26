@@ -1,0 +1,41 @@
+From ab8993c9e10e09cb24210f76bb5e67f01bb37a9e Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Thu, 17 Nov 2022 19:09:47 +0100
+Subject: [PATCH] tests: add -j/--jobs option for run_tests.py
+
+This way it is possible to customize the number of parallel jobs to
+spawn for the tests, instead of unconditionally using all available
+CPUs. This can be helpful to run the tests without overloading the
+system.
+
+The default is still the number of available CPUs, so there is no
+behaviour change by default.
+---
+ tests/run_tests.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/run_tests.py b/tests/run_tests.py
+index bf4967d1..ea03ab4c 100755
+--- a/tests/run_tests.py
++++ b/tests/run_tests.py
+@@ -443,6 +443,8 @@ parser.add_argument("--dump-ast", action='store_true',
+                     help='Dump a unit-test AST to file')
+ parser.add_argument(
+     "--exclude", help='Comma separated list of checks to ignore')
++parser.add_argument("-j", "--jobs", type=int, default=multiprocessing.cpu_count(),
++                    help='Parallel jobs to run (defaults to %(default)s)')
+ parser.add_argument("check_names", nargs='*',
+                     help="The name of the check whose unit-tests will be run. Defaults to running all checks.")
+ args = parser.parse_args()
+@@ -460,7 +462,7 @@ _verbose = args.verbose
+ _no_standalone = args.no_standalone
+ _no_fixits = args.no_fixits
+ _only_standalone = args.only_standalone
+-_num_threads = multiprocessing.cpu_count()
++_num_threads = args.jobs
+ _lock = threading.Lock()
+ _was_successful = True
+ _qt5_installation = find_qt_installation(
+-- 
+2.35.1
+

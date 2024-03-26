@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>nativemad@gentoo.org</email>
-    <name>Andreas Schuerch</name>
-  </maintainer>
-  <maintainer type="person">
     <email>jsmolic@gentoo.org</email>
     <name>Jakov Smolić</name>
   </maintainer>

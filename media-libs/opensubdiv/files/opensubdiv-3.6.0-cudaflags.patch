@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -595,7 +595,7 @@ if(CUDA_FOUND)
+     )
+     set(OSD_GPU TRUE)
+ 
+-    if (UNIX)
++    if (FALSE)
+         list( APPEND CUDA_NVCC_FLAGS -Xcompiler -fPIC )
+         # Use OSD_CUDA_NVCC_FLAGS to specify --gpu-architecture or other CUDA
+         # compilation options. The overrides here are only for compatibility
+@@ -609,7 +609,7 @@ if(CUDA_FOUND)
+         endif()
+     endif()
+ 
+-    if (DEFINED OSD_CUDA_NVCC_FLAGS)
++    if (FALSE)
+         list( APPEND CUDA_NVCC_FLAGS ${OSD_CUDA_NVCC_FLAGS})
+     endif()
+ 

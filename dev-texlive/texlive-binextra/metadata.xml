@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Myriad additional TeX-related support programs. Includes
+		programs and macros for DVI file manipulation, literate
+		programming, patgen, and plenty more.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/883393
+https://gitlab.xiph.org/xiph/libfishsound/-/merge_requests/1
+
+From 8eb391d772cb3c3dbfb68b2216e095af705b0229 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Stegh=C3=B6fer?= <martin@steghoefer.eu>
+Date: Wed, 22 Oct 2014 22:03:15 +0200
+Subject: [PATCH] Fix incompatible flac callback types.
+
+Bug-Debian: https://bugs.debian.org/766394
+
+Starting from libflac 1.1.3 the flac API uses "size_t" as parameter type for the number of bytes in all callback functions.
+--- a/src/libfishsound/flac.c
++++ b/src/libfishsound/flac.c
+@@ -56,6 +56,13 @@
+ 
+ #define BITS_PER_SAMPLE 24
+ 
++#if defined(HAVE_FLAC_1_1_3)
++#  define flac_callback_bytes_type size_t
++#else
++#  define flac_callback_bytes_type unsigned int
++#endif
++
++
+ typedef struct _FishSoundFlacInfo {
+   FLAC__StreamDecoder *fsd;
+   FLAC__StreamEncoder *fse;
+@@ -106,7 +113,7 @@ fs_flac_command (FishSound * fsound, int command, void * data, int datasize)
+ #if FS_DECODE
+ static FLAC__StreamDecoderReadStatus
+ fs_flac_read_callback(const FLAC__StreamDecoder *decoder,
+-                      FLAC__byte buffer[], unsigned int *bytes,
++                      FLAC__byte buffer[], flac_callback_bytes_type *bytes,
+                       void *client_data)
+ {
+   FishSound* fsound = (FishSound*)client_data;
+@@ -121,7 +128,7 @@ fs_flac_read_callback(const FLAC__StreamDecoder *decoder,
+   }
+ 
+   memcpy(buffer, fi->buffer, fi->bufferlength);
+-  *bytes = (unsigned int)fi->bufferlength;
++  *bytes = (flac_callback_bytes_type)fi->bufferlength;
+   fi->bufferlength = 0;
+   return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
+ }
+@@ -346,7 +353,7 @@ dec_err:
+ #if FS_ENCODE
+ static FLAC__StreamEncoderWriteStatus
+ fs_flac_enc_write_callback(const FLAC__StreamEncoder *encoder,
+-                           const FLAC__byte buffer[], unsigned bytes,
++                           const FLAC__byte buffer[], flac_callback_bytes_type bytes,
+                            unsigned samples, unsigned current_frame,
+                            void *client_data)
+ {
+@@ -354,7 +361,7 @@ fs_flac_enc_write_callback(const FLAC__StreamEncoder *encoder,
+   FishSoundFlacInfo *fi = fsound->codec_data;
+ 
+   debug_printf(1, "IN");
+-  debug_printf(1, "bytes: %d, samples: %d", bytes, samples);
++  debug_printf(1, "bytes: %lld, samples: %d", (long long) bytes, samples);
+ 
+   if (fsound->callback.encoded) {
+     FishSoundEncoded encoded = (FishSoundEncoded) fsound->callback.encoded;
+-- 
+GitLab

@@ -80,7 +80,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-db/sqlite
 	<dev-libs/crossguid-0.2.2_p20190529
 	>=dev-libs/fribidi-1.0.5
-	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
+	cec? ( >=dev-libs/libcec-4.0 )
 	dev-libs/libpcre[cxx]
 	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]

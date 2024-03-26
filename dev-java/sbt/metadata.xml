@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>gienah@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 The interactive build tool.
 Use Scala to define your tasks. Then run them in parallel from the shell. 

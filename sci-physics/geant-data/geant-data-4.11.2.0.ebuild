@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,6 +6,13 @@ EAPI=8
 DESCRIPTION="Data files for Geant4 physical processes"
 HOMEPAGE="https://geant4.web.cern.ch"
 SRC_DATA="https://geant4-data.web.cern.ch/geant4-data/datasets"
+
+S="${WORKDIR}"
+
+LICENSE="geant4"
+
+SLOT="4"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 declare -A DATASETS
 
@@ -29,12 +36,6 @@ for DATASET in ${!DATASETS[@]}; do
 	SRC_URI+="${SRC_DATA}/${FILENAME}.${VERSION}.tar.gz "
 done
 unset DATASET FILENAME VERSION ENVVAR
-
-LICENSE="geant4"
-SLOT="4"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-
-S="${WORKDIR}"
 
 src_unpack() {
 	# unpack in destination only to avoid copy

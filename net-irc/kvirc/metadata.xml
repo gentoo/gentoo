@@ -12,6 +12,7 @@
 	<use>
 		<flag name="dcc-video">Support video connections over DCC protocol</flag>
 		<flag name="phonon">Support Phonon for audio output</flag>
+		<flag name="webengine">Support Qt WebEngine</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">kvirc/KVIrc</remote-id>

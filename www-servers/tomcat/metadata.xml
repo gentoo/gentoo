@@ -11,6 +11,9 @@
 	The Java Servlet and JavaServer Pages specifications are developed by
 	Sun under the Java Community Process.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">apache/tomcat</remote-id>
+	</upstream>
 	<use>
 		<flag name="extra-webapps">Build also the docs and examples webapp</flag>
 	</use>

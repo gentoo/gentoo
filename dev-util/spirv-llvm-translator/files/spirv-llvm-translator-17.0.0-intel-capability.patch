@@ -1,0 +1,181 @@
+diff --git a/include/LLVMSPIRVExtensions.inc b/include/LLVMSPIRVExtensions.inc
+index eb98c7f..4e2eb0b 100644
+--- a/include/LLVMSPIRVExtensions.inc
++++ b/include/LLVMSPIRVExtensions.inc
+@@ -41,7 +41,7 @@ EXT(SPV_INTEL_variable_length_array)
+ EXT(SPV_INTEL_fp_fast_math_mode)
+ EXT(SPV_INTEL_fpga_cluster_attributes)
+ EXT(SPV_INTEL_loop_fuse)
+-EXT(SPV_INTEL_long_constant_composite)
++EXT(SPV_INTEL_long_composites)
+ EXT(SPV_INTEL_optnone)
+ EXT(SPV_INTEL_fpga_dsp_control)
+ EXT(SPV_INTEL_memory_access_aliasing)
+diff --git a/lib/SPIRV/SPIRVWriter.cpp b/lib/SPIRV/SPIRVWriter.cpp
+index 807aa0c..0946dbe 100644
+--- a/lib/SPIRV/SPIRVWriter.cpp
++++ b/lib/SPIRV/SPIRVWriter.cpp
+@@ -409,11 +409,10 @@ SPIRVType *LLVMToSPIRVBase::transType(Type *T) {
+     const size_t NumElements = ST->getNumElements();
+     size_t SPIRVStructNumElements = NumElements;
+     // In case number of elements is greater than maximum WordCount and
+-    // SPV_INTEL_long_constant_composite is not enabled, the error will be
++    // SPV_INTEL_long_composites is not enabled, the error will be
+     // emitted by validate functionality of SPIRVTypeStruct class.
+     if (NumElements > MaxNumElements &&
+-        BM->isAllowedToUseExtension(
+-            ExtensionID::SPV_INTEL_long_constant_composite)) {
++        BM->isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_composites)) {
+       SPIRVStructNumElements = MaxNumElements;
+     }
+ 
+@@ -421,8 +420,7 @@ SPIRVType *LLVMToSPIRVBase::transType(Type *T) {
+     mapType(T, Struct);
+ 
+     if (NumElements > MaxNumElements &&
+-        BM->isAllowedToUseExtension(
+-            ExtensionID::SPV_INTEL_long_constant_composite)) {
++        BM->isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_composites)) {
+       uint64_t NumOfContinuedInstructions = NumElements / MaxNumElements - 1;
+       for (uint64_t J = 0; J < NumOfContinuedInstructions; J++) {
+         auto *Continued = BM->addTypeStructContinuedINTEL(MaxNumElements);
+@@ -1832,8 +1830,7 @@ LLVMToSPIRVBase::transValueWithoutDecoration(Value *V, SPIRVBasicBlock *BB,
+       } else
+         BVarInit = I->second;
+     } else if (Init && !isa<UndefValue>(Init)) {
+-      if (!BM->isAllowedToUseExtension(
+-              ExtensionID::SPV_INTEL_long_constant_composite)) {
++      if (!BM->isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_composites)) {
+         if (auto ArrTy = dyn_cast_or_null<ArrayType>(Init->getType())) {
+           // First 3 words of OpConstantComposite encode: 1) word count &
+           // opcode, 2) Result Type and 3) Result Id. Max length of SPIRV
+diff --git a/lib/SPIRV/libSPIRV/SPIRVEntry.h b/lib/SPIRV/libSPIRV/SPIRVEntry.h
+index a3c9441..e188099 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVEntry.h
++++ b/lib/SPIRV/libSPIRV/SPIRVEntry.h
+@@ -908,11 +908,11 @@ public:
+   }
+ 
+   SPIRVCapVec getRequiredCapability() const override {
+-    return getVec(CapabilityLongConstantCompositeINTEL);
++    return getVec(CapabilityLongCompositesINTEL);
+   }
+ 
+   std::optional<ExtensionID> getRequiredExtension() const override {
+-    return ExtensionID::SPV_INTEL_long_constant_composite;
++    return ExtensionID::SPV_INTEL_long_composites;
+   }
+ 
+   SPIRVWord getNumElements() const { return Elements.size(); }
+diff --git a/lib/SPIRV/libSPIRV/SPIRVModule.cpp b/lib/SPIRV/libSPIRV/SPIRVModule.cpp
+index 5ac7275..d8d06f6 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVModule.cpp
++++ b/lib/SPIRV/libSPIRV/SPIRVModule.cpp
+@@ -1175,10 +1175,10 @@ SPIRVValue *SPIRVModuleImpl::addCompositeConstant(
+   const int NumElements = Elements.size();
+ 
+   // In case number of elements is greater than maximum WordCount and
+-  // SPV_INTEL_long_constant_composite is not enabled, the error will be emitted
++  // SPV_INTEL_long_composites is not enabled, the error will be emitted
+   // by validate functionality of SPIRVCompositeConstant class.
+   if (NumElements <= MaxNumElements ||
+-      !isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_constant_composite))
++      !isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_composites))
+     return addConstant(new SPIRVConstantComposite(this, Ty, getId(), Elements));
+ 
+   auto Start = Elements.begin();
+@@ -1213,7 +1213,7 @@ SPIRVValue *SPIRVModuleImpl::addSpecConstantComposite(
+   // SPV_INTEL_long_constant_composite is not enabled, the error will be emitted
+   // by validate functionality of SPIRVSpecConstantComposite class.
+   if (NumElements <= MaxNumElements ||
+-      !isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_constant_composite))
++      !isAllowedToUseExtension(ExtensionID::SPV_INTEL_long_composites))
+     return addConstant(
+         new SPIRVSpecConstantComposite(this, Ty, getId(), Elements));
+ 
+diff --git a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+index d450a43..a2a0ddb 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+@@ -610,7 +610,7 @@ template <> inline void SPIRVMap<Capability, std::string>::init() {
+   add(CapabilityGroupNonUniformRotateKHR, "GroupNonUniformRotateKHR");
+   add(CapabilityAtomicFloat32AddEXT, "AtomicFloat32AddEXT");
+   add(CapabilityAtomicFloat64AddEXT, "AtomicFloat64AddEXT");
+-  add(CapabilityLongConstantCompositeINTEL, "LongConstantCompositeINTEL");
++  add(CapabilityLongCompositesINTEL, "LongCompositesINTEL");
+   add(CapabilityOptNoneINTEL, "OptNoneINTEL");
+   add(CapabilityAtomicFloat16AddEXT, "AtomicFloat16AddEXT");
+   add(CapabilityDebugInfoModuleINTEL, "DebugInfoModuleINTEL");
+diff --git a/test/SpecConstants/long-spec-const-composite.ll b/test/SpecConstants/long-spec-const-composite.ll
+index a45c895..e943296 100644
+--- a/test/SpecConstants/long-spec-const-composite.ll
++++ b/test/SpecConstants/long-spec-const-composite.ll
+@@ -1,5 +1,5 @@
+ ; RUN: llvm-as %s -o %t.bc
+-; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_constant_composite %t.bc -o %t.spv
++; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_composites %t.bc -o %t.spv
+ ; RUN: llvm-spirv %t.spv --to-text -o - | FileCheck %s --check-prefix=CHECK-SPIRV
+ ; RUN: llvm-spirv -r -emit-opaque-pointers %t.spv -o %t.rev.bc
+ ; RUN: llvm-dis < %t.rev.bc | FileCheck %s --check-prefix=CHECK-LLVM
+@@ -11,8 +11,8 @@
+ target datalayout = "e-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024-n8:16:32:64"
+ target triple = "spir64-unknown-unknown"
+ 
+-; CHECK-SPIRV: Capability LongConstantCompositeINTEL 
+-; CHECK-SPIRV: Extension "SPV_INTEL_long_constant_composite"
++; CHECK-SPIRV: Capability LongCompositesINTEL
++; CHECK-SPIRV: Extension "SPV_INTEL_long_composites"
+ ; CHECK-SPIRV-DAG: Decorate [[First:[0-9]+]] SpecId  0
+ ; CHECK-SPIRV-DAG: Decorate [[Last:[0-9]+]] SpecId 65548
+ ; CHECK-SPIRV: TypeInt [[TInt:[0-9]+]] 8
+diff --git a/test/long-constant-array.ll b/test/long-constant-array.ll
+index 415a723..cfef59d 100644
+--- a/test/long-constant-array.ll
++++ b/test/long-constant-array.ll
+@@ -1,16 +1,16 @@
+ ; RUN: llvm-as %s -o %t.bc
+ ; RUN: not llvm-spirv %t.bc -o %t.spv 2>&1 | FileCheck %s --check-prefix=CHECK-ERROR
+ 
+-; Check that everything is fine if SPV_INTEL_long_constant_composite is enabled
+-; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_constant_composite %t.bc -o %t.spv
++; Check that everything is fine if SPV_INTEL_long_composites is enabled
++; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_composites %t.bc -o %t.spv
+ ; RUN: llvm-spirv %t.spv --to-text -o - | FileCheck %s --check-prefix=CHECK-SPIRV
+ ; RUN: llvm-spirv -r -emit-opaque-pointers %t.spv -o %t.rev.bc
+ ; RUN: llvm-dis < %t.rev.bc | FileCheck %s --check-prefix=CHECK-LLVM
+ ; TODO: run validator once it supports the extension
+ ; RUNx: spirv-val %t.spv
+ 
+-; CHECK-SPIRV: Capability LongConstantCompositeINTEL 
+-; CHECK-SPIRV: Extension "SPV_INTEL_long_constant_composite"
++; CHECK-SPIRV: Capability LongCompositesINTEL
++; CHECK-SPIRV: Extension "SPV_INTEL_long_composites"
+ ; CHECK-SPIRV: TypeInt [[TInt:[0-9]+]] 8
+ ; CHECK-SPIRV: Constant {{[0-9]+}} [[ArrSize:[0-9]+]] 78000
+ ; CHECK-SPIRV: TypeArray [[TArr:[0-9]+]] [[TInt]] [[ArrSize]]
+diff --git a/test/long-type-struct.ll b/test/long-type-struct.ll
+index 9b83f62..de6352a 100644
+--- a/test/long-type-struct.ll
++++ b/test/long-type-struct.ll
+@@ -1,8 +1,8 @@
+ ; RUN: llvm-as %s -o %t.bc
+-; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_constant_composite %t.bc -o %t.spv
++; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_composites %t.bc -o %t.spv
+ ; RUN: llvm-spirv %t.spv --to-text -o - | FileCheck %s --check-prefix=CHECK-SPIRV
+ ; RUN: llvm-spirv -r -emit-opaque-pointers %t.spv -o %t.rev.bc
+-; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_constant_composite -spirv-text %t.rev.bc -o %t2.spt
++; RUN: llvm-spirv --spirv-ext=+SPV_INTEL_long_composites -spirv-text %t.rev.bc -o %t2.spt
+ ; RUN: FileCheck --input-file=%t2.spt %s --check-prefix=CHECK-SPIRV
+ ; RUN: llvm-dis < %t.rev.bc | FileCheck %s --check-prefix=CHECK-LLVM
+ ; TODO: run validator once it supports the extension
+@@ -10,8 +10,8 @@
+ 
+ ; RUN: not llvm-spirv %t.bc -o %t.spv 2>&1 | FileCheck %s --check-prefix=CHECK-ERROR
+ 
+-; CHECK-SPIRV: Capability LongConstantCompositeINTEL 
+-; CHECK-SPIRV: Extension "SPV_INTEL_long_constant_composite"
++; CHECK-SPIRV: Capability LongCompositesINTEL
++; CHECK-SPIRV: Extension "SPV_INTEL_long_composites"
+ ; CHECK-SPIRV: TypeInt [[TInt:[0-9]+]] 8
+ ; CHECK-SPIRV: TypePointer [[TIntPtr:[0-9]+]] 8 [[TInt]]
+ ; CHECK-SPIRV: TypeArray [[TArr:[0-9]+]]

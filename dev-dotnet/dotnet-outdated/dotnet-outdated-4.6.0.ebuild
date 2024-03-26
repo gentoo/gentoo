@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -301,10 +301,11 @@ SLOT="0"
 
 CHECKREQS_DISK_BUILD="1500M"
 DOTNET_PKG_PROJECTS=( src/DotNetOutdated/DotNetOutdated.csproj )
-DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
-DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_BUILD_EXTRA_ARGS[@]}" )
+PATCHES=( "${FILESDIR}/${PN}-4.6.0-net8.0.patch"  )
 
 DOCS=( CHANGELOG.md README.md )
+
+dotnet-pkg_force-compat
 
 pkg_setup() {
 	check-reqs_pkg_setup

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>fnkl.kernel@gmail.com</email>
+  <name>Sasha Finkelstein</name>
+</maintainer>
+<maintainer type="project">
+  <email>asahi@gentoo.org</email>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
+<upstream>
+  <remote-id type="github">WhatAmISupposedToPutHere/tiny-dfr</remote-id>
+</upstream>
+</pkgmetadata>

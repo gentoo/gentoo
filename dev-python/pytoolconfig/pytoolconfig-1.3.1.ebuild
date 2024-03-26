@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 RDEPEND="
 	>=dev-python/packaging-23.2[${PYTHON_USEDEP}]

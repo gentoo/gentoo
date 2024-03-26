@@ -1,0 +1,14 @@
+diff -ur lfm-3.1/setup.py lfm-3.1.new/setup.py
+--- lfm-3.1/setup.py	2024-03-06 11:44:37.646520051 -0600
++++ lfm-3.1.new/setup.py	2024-03-06 11:45:18.058725112 -0600
+@@ -45,10 +45,6 @@
+     print('ERROR: Python 3.4 or higher is required to run lfm.')
+     exit(-1)
+ 
+-# to avoid bug in pip 7.x. See https://bitbucket.org/pypa/wheel/issues/92
+-if 'bdist_wheel' in argv:
+-    raise RuntimeError("This setup.py does not support wheels")
+-
+ import shutil
+ try:
+     try:

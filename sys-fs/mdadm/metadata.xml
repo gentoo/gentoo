@@ -5,6 +5,9 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="corosync">Support for corosync cluster engine</flag>
+</use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:mdadm_project:mdadm</remote-id>
 </upstream>

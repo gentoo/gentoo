@@ -8,8 +8,6 @@ inherit mate
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="A MATE specific DBUS service that is used to bring up authentication dialogs"
@@ -25,7 +23,7 @@ COMMON_DEPEND="x11-libs/gdk-pixbuf:2
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.50:2
-	>=sys-auth/polkit-0.102
+	>=sys-auth/polkit-0.102[daemon]
 	accountsservice? ( sys-apps/accountsservice )"
 
 BDEPEND="${COMMON_DEPEND}
@@ -37,7 +35,7 @@ BDEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-        "${FILESDIR}"/${PN}-1.27.1-configure.patch
+		"${FILESDIR}"/${PN}-1.27.1-configure.patch
 )
 
 src_configure() {

@@ -1,0 +1,41 @@
+From ade5d72c3a7e2078025ecbb3c9a354c20a8d9c90 Mon Sep 17 00:00:00 2001
+From: Aleix Pol Gonzalez <aleixpol@kde.org>
+Date: Wed, 21 Feb 2024 12:25:09 +0000
+Subject: [PATCH] qpa: Don't build SPI support if Qt wasn't build with it
+
+Signed-off-by: Falko Becker <falko.becker@mbition.io>
+---
+ src/plugins/qpa/integration.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/qpa/integration.cpp b/src/plugins/qpa/integration.cpp
+index 9a9195d8173..238a2e60628 100644
+--- a/src/plugins/qpa/integration.cpp
++++ b/src/plugins/qpa/integration.cpp
+@@ -33,9 +33,12 @@
+ #include <QtGui/private/qgenericunixeventdispatcher_p.h>
+ #include <QtGui/private/qgenericunixfontdatabase_p.h>
+ #include <QtGui/private/qgenericunixthemes_p.h>
+-#include <QtGui/private/qspiaccessiblebridge_p.h>
+ #include <QtGui/private/qunixeventdispatcher_qpa_p.h>
+ 
++#if !defined(QT_NO_ACCESSIBILITY_ATSPI_BRIDGE)
++#include <QtGui/private/qspiaccessiblebridge_p.h>
++#endif
++
+ namespace KWin
+ {
+ 
+@@ -160,7 +163,9 @@ QPlatformOpenGLContext *Integration::createPlatformOpenGLContext(QOpenGLContext
+ QPlatformAccessibility *Integration::accessibility() const
+ {
+     if (!m_accessibility) {
++#if !defined(QT_NO_ACCESSIBILITY_ATSPI_BRIDGE)
+         m_accessibility.reset(new QSpiAccessibleBridge());
++#endif
+     }
+     return m_accessibility.get();
+ }
+-- 
+GitLab
+

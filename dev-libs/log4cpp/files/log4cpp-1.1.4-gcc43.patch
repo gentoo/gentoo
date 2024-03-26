@@ -1,0 +1,11 @@
+--- a/src/PatternLayout.cpp
++++ b/src/PatternLayout.cpp
+@@ -373,7 +373,7 @@
+                         literal = "";
+                     }
+                     if ((minWidth != 0) || (maxWidth != 0)) {
+-                        component = new FormatModifierComponent(component, std::abs(minWidth), maxWidth, minWidth < 0);
++                        component = new FormatModifierComponent(component, std::abs((float)minWidth), maxWidth, minWidth < 0);
+                         minWidth = maxWidth = 0;
+                     }
+                     _components.push_back(component);

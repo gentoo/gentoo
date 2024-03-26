@@ -1,0 +1,18 @@
+https://codeberg.org/soundtouch/soundtouch/pulls/35
+--- a/source/SoundTouchDLL/Makefile.am
++++ b/source/SoundTouchDLL/Makefile.am
+@@ -34,7 +34,7 @@ libSoundTouchDll_la_SOURCES=../SoundTouch/AAFilter.cpp ../SoundTouch/FIRFilter.c
+ # Compiler flags
+ 
+ # Modify the default 0.0.0 to LIB_SONAME.0.0
+-LDFLAGS=-version-info @LIB_SONAME@
++AM_LDFLAGS=$(LDFLAGS) -version-info @LIB_SONAME@
+ 
+ if X86
+ CXXFLAGS1=-mstackrealign -msse
+@@ -44,4 +44,4 @@ if X86_64
+ CXXFLAGS2=-fPIC
+ endif
+ 
+-CXXFLAGS+=$(AM_CXXFLAGS) $(CXXFLAGS1) $(CXXFLAGS2) -shared -DDLL_EXPORTS -fvisibility=hidden
++AM_CXXFLAGS=$(CXXFLAGS) $(CXXFLAGS1) $(CXXFLAGS2) -shared -DDLL_EXPORTS -fvisibility=hidden

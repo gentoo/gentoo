@@ -85,6 +85,7 @@ java
 hardened
 vaapi
 qt5
+qt6
 
 # Needs java
 pdfannotextractor

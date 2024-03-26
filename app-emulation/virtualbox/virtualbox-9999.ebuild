@@ -37,7 +37,7 @@ DESCRIPTION="Family of powerful x86 virtualization products for enterprise and h
 HOMEPAGE="https://www.virtualbox.org/"
 ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
 SRC_URI="
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.0.10_pre20230615.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.0_pre20240210.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 S="${WORKDIR}/trunk"
@@ -62,7 +62,6 @@ COMMON_DEPEND="
 	dbus? ( sys-apps/dbus )
 	gui? (
 		dev-qt/qtbase:6[widgets]
-		dev-qt/qt5compat:6
 		dev-qt/qtscxml:6
 		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
@@ -128,6 +127,7 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	!app-emulation/virtualbox-modules
 	gui? ( x11-libs/libxcb:= )
 	java? ( virtual/jre:1.8 )
 "
@@ -197,26 +197,8 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.0.11-configure-include-qt6-path.patch # bug #805365
-
-	# This patch is needed to avoid automagic detection based on a hardcoded
-	# list of Pythons in configure. It's necessary but not sufficient
-	# (see the rest of the ebuild's logic for the remainder) to handle
-	# proper Python selection.
-	"${FILESDIR}"/${PN}-6.1.34-r3-python.patch
-
-	# 865361
-	"${FILESDIR}"/${PN}-6.1.36-fcf-protection.patch
-
-	"${FILESDIR}"/${PN}-7.0.0-fix-compilation-clang.patch
-	"${FILESDIR}"/${PN}-7.0.9-python.patch
-	"${FILESDIR}"/${PN}-7.0.6-gcc-13.patch
-	"${FILESDIR}"/${PN}-7.0.8-mtune-keep-size.patch
-	# 913109
-	"${FILESDIR}"/${PN}-7.0.10-fix-binutils-hardened.patch
-
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.0.10_pre20230615/patches
+	"${WORKDIR}"/virtualbox-patches-7.1.0_pre20240210/patches
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
@@ -566,7 +548,7 @@ src_install() {
 	insinto ${vbox_inst_path}
 	doins -r components
 
-	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,VMMPreload,XPCOMIPCD} \
+	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,VMMPreload} \
 		vboximg-mount vbox-img *so *r0; do
 		vbox_inst ${each}
 	done
@@ -727,7 +709,7 @@ src_install() {
 		fi
 
 		# 378871
-		local installer_dir="${ED}/usr/$(get_libdir)/virtualbox/sdk/installer"
+		local installer_dir="${ED}/usr/$(get_libdir)/virtualbox/sdk/installer/python/vboxapi/src"
 		pushd "${installer_dir}" &> /dev/null || die
 		sed -e "s;%VBOX_INSTALL_PATH%;${vbox_inst_path};" \
 			-e "s;%VBOX_SDK_PATH%;${vbox_inst_path}/sdk;" \
@@ -736,10 +718,14 @@ src_install() {
 		find vboxapi -name \*.py -exec sed -e "1 i\#! ${PYTHON}" -i {} \+ || die
 		python_domodule vboxapi
 		popd &> /dev/null || die
+
+		# upstream added a /bin/sh stub here
+		# use /usr/bin/python3, python_doscript will take care of it
+		sed -e '1 i #! /usr/bin/python3' -i vboxshell.py
 		python_doscript vboxshell.py
 
 		# do not install the installer
-		rm -r "${installer_dir}" || die
+		rm -r "${installer_dir%vboxapi*}" || die
 	fi
 
 	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf

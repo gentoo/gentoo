@@ -25,7 +25,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://codeberg.org/${PN}/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="dwm for Wayland"

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Yet Another Part-of-Speech and Morphological Analyzer"
 HOMEPAGE="https://taku910.github.io/mecab/"
@@ -31,16 +31,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.98-iconv.patch
 	"${FILESDIR}"/${PN}-0.996-clang-16-register.patch
 	"${FILESDIR}"/${PN}-0.996-clang-16-binary_function.patch
+	"${FILESDIR}"/0001-configure-remove-terrible-horrible-code-that-resets-.patch
 )
 
 HTML_DOCS=( doc/. )
 
 src_prepare() {
 	default
-	sed -i \
-		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
-		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
-		configure.in
 	sed -i "s:/lib:/$(get_libdir):" ${PN}rc.in
 
 	mv configure.{in,ac} || die
@@ -48,6 +45,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/924569
+	# https://github.com/taku910/mecab/issues/75
+	filter-lto
+
 	econf \
 		$(use_enable static-libs static) \
 		$(use_with unicode charset UTF-8)

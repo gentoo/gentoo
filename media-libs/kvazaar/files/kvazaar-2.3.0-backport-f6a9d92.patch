@@ -1,0 +1,75 @@
+From f6a9d92a30083b5e228ca1126418e12c515bfa69 Mon Sep 17 00:00:00 2001
+From: Joose Sainio <joose.sainio@tuni.fi>
+Date: Thu, 18 Jan 2024 08:34:23 +0200
+Subject: [PATCH] Use separate .pc.in file for cmake and automake
+
+---
+ CMakeLists.txt         |  4 ++--
+ src/kvazaar.pc.in      | 11 +++++------
+ src/kvazaarCMake.pc.in | 12 ++++++++++++
+ 3 files changed, 19 insertions(+), 8 deletions(-)
+ create mode 100644 src/kvazaarCMake.pc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a39399b8..278939d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
+ project(kvazaar
+ LANGUAGES C CXX
+ HOMEPAGE_URL https://github.com/ultravideo/kvazaar
+-DESCRIPTION "An open-source VVC encoder licensed under 3-clause BSD"
++DESCRIPTION "An open-source HEVC encoder licensed under 3-clause BSD"
+ VERSION 2.3.0 )
+ 
+ option(BUILD_SHARED_LIBS "Build using shared kvazaar library" ON)
+@@ -98,7 +98,7 @@ set(KVZ_COMPILER_STRING "${KVZ_COMPILER_VERSION}")
+ add_definitions(-DCMAKE_BUILD)
+ 
+ # Apply dynamic info to the config files
+-configure_file("${PROJECT_SOURCE_DIR}/src/kvazaar.pc.in" "${PROJECT_SOURCE_DIR}/src/kvazaar.pc" @ONLY)
++configure_file("${PROJECT_SOURCE_DIR}/src/kvazaarCMake.pc.in" "${PROJECT_SOURCE_DIR}/src/kvazaar.pc" @ONLY)
+ configure_file("${PROJECT_SOURCE_DIR}/src/version.h.in" "${PROJECT_SOURCE_DIR}/src/version.h" @ONLY)
+ 
+ # Add all sources in src/ base
+diff --git a/src/kvazaar.pc.in b/src/kvazaar.pc.in
+index 73c49416..a254a27f 100644
+--- a/src/kvazaar.pc.in
++++ b/src/kvazaar.pc.in
+@@ -1,12 +1,11 @@
+-prefix=@CMAKE_INSTALL_PREFIX@
++prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
++libdir=@libdir@
+ incdir=${prefix}/include
+ 
+ Name: libkvazaar
+-Description: @CMAKE_PROJECT_DESCRIPTION@
+-URL: @CMAKE_PROJECT_HOMEPAGE_URL@
+-Version: @PROJECT_VERSION@
++Description: Open-source HEVC encoder
++Version: @VERSION@
+ Libs: -L${libdir} -lkvazaar
+ Libs.private: @LIBS@
+-Cflags: -I${incdir}
++Cflags: -I${incdir}
+\ No newline at end of file
+diff --git a/src/kvazaarCMake.pc.in b/src/kvazaarCMake.pc.in
+new file mode 100644
+index 00000000..73c49416
+--- /dev/null
++++ b/src/kvazaarCMake.pc.in
+@@ -0,0 +1,12 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${prefix}/lib
++incdir=${prefix}/include
++
++Name: libkvazaar
++Description: @CMAKE_PROJECT_DESCRIPTION@
++URL: @CMAKE_PROJECT_HOMEPAGE_URL@
++Version: @PROJECT_VERSION@
++Libs: -L${libdir} -lkvazaar
++Libs.private: @LIBS@
++Cflags: -I${incdir}

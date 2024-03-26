@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
@@ -48,6 +48,11 @@ distutils_enable_tests pytest
 # 	dev-python/sphinxcontrib-trio \
 # 	dev-python/sphinx-rtd-theme \
 # 	dev-python/towncrier
+
+PATCHES=(
+	# https://github.com/python-trio/trio/pull/2939
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(

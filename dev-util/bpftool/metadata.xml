@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to enable unprivileged run support</flag>
+		<flag name="llvm">Use <pkg>sys-devel/llvm</pkg></flag>
 	</use>
 </pkgmetadata>

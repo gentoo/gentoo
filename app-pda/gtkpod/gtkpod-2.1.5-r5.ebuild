@@ -9,7 +9,7 @@ EAPI=8
 inherit autotools flag-o-matic gnome2-utils xdg #python-single-r1
 
 DESCRIPTION="A graphical user interface to the Apple productline"
-HOMEPAGE="http://www.gtkpod.org/"
+HOMEPAGE="https://sourceforge.net/projects/gtkpod/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2"
@@ -68,6 +68,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.3-gold.patch
 	"${FILESDIR}"/${PN}-2.1.5-m4a.patch
+	"${FILESDIR}"/${PN}-2.1.5-conformance.patch
 )
 
 src_prepare() {

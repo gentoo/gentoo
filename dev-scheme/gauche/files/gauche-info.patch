@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -382,7 +382,6 @@
+@@ -330,7 +330,6 @@
  AC_PROG_LN_S
  AC_CHECK_TOOLS(AR, ar gar)
  AC_CHECK_PROGS(MAKEINFO, makeinfo)
@@ -16,18 +16,18 @@
  MAKEINFO     = @MAKEINFO@
 -GZIP_PROGRAM = @GZIP_PROGRAM@
  VERSION_INFO = @PACKAGE_STRING@
+ PREPROCESSOR = $(top_srcdir)/lib/tools/docprep
  
- MAKEDOC = $(GOSH) $(srcdir)/makedoc.scm
-@@ -59,7 +58,7 @@
- 	texi html htmls dvi pdf info \
+@@ -60,7 +59,7 @@
+ 	texi html htmls dvi pdf info epub \
  	clean distclean maintainer-clean
  
--.SUFFIXES: .texi .html .info.gz .pdf .dvi
-+.SUFFIXES: .texi .html .info .pdf .dvi
+-.SUFFIXES: .texi .html .info.gz .pdf .dvi .epub
++.SUFFIXES: .texi .html .info .pdf .dvi .epub
  
  all: info
  
-@@ -67,7 +66,7 @@
+@@ -68,7 +67,7 @@
  	if test ! -d "$(DESTDIR)$(mandir)/man1"; then $(MKINSTDIR) "$(DESTDIR)$(mandir)/man1"; fi
  	$(INSTALL_DATA) $(MANPAGES) "$(DESTDIR)$(mandir)/man1"
  	if test ! -d "$(DESTDIR)$(infodir)"; then $(MKINSTDIR) "$(DESTDIR)$(infodir)"; fi
@@ -36,7 +36,7 @@
  	  for info in *.info*; do \
  	    $(INSTALL_DATA) $$info "$(DESTDIR)$(infodir)/"; \
  	  done; \
-@@ -98,8 +97,8 @@
+@@ -99,8 +98,8 @@
  %-draft/index.html : %.texi
  	$(MAKEDOC) htmls $< "$(MAKEINFO)" "Development HEAD DRAFT"
  
@@ -47,15 +47,15 @@
  
  %.pdf : %.texi
  	$(MAKEDOC) pdf $< "$(MAKEINFO)"
-@@ -118,7 +117,7 @@
+@@ -122,7 +121,7 @@
  htmls-draft : gauche-refe-draft/index.html gauche-refj-draft/index.html
  dvi : gauche-refe.dvi gauche-refj.dvi
  pdf : gauche-refe.pdf gauche-refj.pdf
 -info : gauche-refe.info.gz gauche-refj.info.gz
 +info : gauche-refe.info gauche-refj.info
+ epub : gauche-refe.epub gauche-refj.epub
  
- gauche-refe.texi : $(TEXIS) extract.scm
- 	$(GOSH) $(srcdir)/extract.scm -en -o gauche-refe.texi $(srcdir)/gauche-ref.texi
+ gauche-refe.texi : $(TEXIS) $(PREPROCESSOR)
 --- a/doc/makedoc.scm
 +++ b/doc/makedoc.scm
 @@ -16,7 +16,7 @@
@@ -67,7 +67,7 @@
          [("html" input makeinfo)          (do-html input makeinfo)]
          [("htmls" input makeinfo version) (do-htmls input makeinfo version)]
          [("pdf" input makeinfo)           (do-pdf input makeinfo)]
-@@ -27,7 +27,7 @@
+@@ -28,7 +28,7 @@
  (define (usage)
    (print "Usage: gosh makedoc.scm command args ...")
    (print "Valid commands (and args):")
@@ -76,7 +76,7 @@
    (print "  html input MAKEINFO                 - generate single html")
    (print "  htmls input MAKEINFO VERSION-STRING - generate html files in subdir")
    (print "  pdf input MAKEINFO                  - generate pdf")
-@@ -55,14 +55,11 @@
+@@ -57,14 +57,11 @@
          (warn "makeinfo version ~a or greater is required, but ~a's \
                 version is ~a.  Skipping.\n" min-version makeinfo vers)))))
  

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-17.0.0-intel-capability.patch"
 	"${FILESDIR}/${PN}-16.0.0-llvm-link-llvm-dylib.patch"
 	"${FILESDIR}/${PN}-16.0.0-ld_library_path.patch"
 )

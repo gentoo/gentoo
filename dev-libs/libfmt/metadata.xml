@@ -8,5 +8,6 @@
 	<upstream>
 		<bugs-to>https://github.com/fmtlib/fmt/issues</bugs-to>
 		<remote-id type="github">fmtlib/fmt</remote-id>
+		<remote-id type="cpe">cpe:/a:fmt_project:fmt</remote-id>
 	</upstream>
 </pkgmetadata>

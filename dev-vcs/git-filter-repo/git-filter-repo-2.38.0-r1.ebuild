@@ -1,26 +1,27 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 
 DESCRIPTION="Quickly rewrite git repository history (filter-branch replacement)"
 HOMEPAGE="https://github.com/newren/git-filter-repo/"
 SRC_URI="https://github.com/newren/git-filter-repo/releases/download/v${PV}/${P}.tar.xz"
+S="${S}/release"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	${PYTHON_DEPS}
 	>=dev-vcs/git-$(ver_cut 1-2)
 "
-
-S="${S}/release"
+BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+"
 
 python_prepare_all() {
 	cat > PKG-INFO <<-EOF || die

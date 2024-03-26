@@ -25,7 +25,7 @@
 		<flag name="sphinx">Add suport for the sphinx full-text search engine</flag>
 		<flag name="sst-rsync">Add tools needed to support the rsync SST method</flag>
 		<flag name="sst-mariabackup">Add tools needed to support the mariabackup SST method</flag>
-		<flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
+		<flag name="systemtap">Build support for profiling and tracing using <pkg>dev-debug/systemtap</pkg></flag>
 		<flag name="s3">Build the S3 storage engine</flag>
 		<flag name="test">Install upstream testsuites for end use.</flag>
 		<flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>

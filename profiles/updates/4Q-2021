@@ -45,7 +45,6 @@ move app-emulation/docker-compose app-containers/docker-compose
 move app-emulation/docker-credential-helpers app-containers/docker-credential-helpers
 move app-emulation/docker-registry app-containers/docker-registry
 move app-emulation/docker-swarm app-containers/docker-swarm
-move app-emulation/go-secbench app-containers/go-secbench
 move app-emulation/slirp4netns app-containers/slirp4netns
 move app-emulation/podman app-containers/podman
 move app-emulation/k3d app-containers/k3d

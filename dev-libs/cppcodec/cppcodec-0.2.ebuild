@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( >=dev-cpp/catch-2.3.0:0 )"
+DEPEND="test? ( <dev-cpp/catch-3:0 )"
 BDEPEND="test? ( virtual/pkgconfig )"
 
 src_configure() {

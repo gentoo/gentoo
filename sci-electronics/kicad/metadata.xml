@@ -5,6 +5,10 @@
 		<email>zoltan@sinustrom.info</email>
 		<name>Zoltan Puskas</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,8 @@ inherit cmake wxwidgets xdg
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
 SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/refs/tags/version_${MY_PV}.tar.gz -> ${P}.tar.gz"
+
+S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
@@ -56,9 +58,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
 )
 
-S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
-
 src_prepare() {
+	if has_version ">=sci-libs/opencascade-7.8.0"; then
+		eapply "${FILESDIR}/prusaslicer-2.7.2-opencascade-7.8.0.patch"
+	fi
+
 	sed -i -e 's/PrusaSlicer-${SLIC3R_VERSION}+UNKNOWN/PrusaSlicer-${SLIC3R_VERSION}+Gentoo/g' version.inc || die
 
 	sed -i -e 's/find_package(OpenCASCADE 7.6.2 REQUIRED)/find_package(OpenCASCADE REQUIRED)/g' \

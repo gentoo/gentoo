@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/random2[${PYTHON_USEDEP}]

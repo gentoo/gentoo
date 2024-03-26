@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -83,7 +83,6 @@ src_configure() {
 		-Dman=true
 		$(meson_use doc gtk-doc)
 		$(meson_feature introspection)
-		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Dos_backend="${backend}"
 		$(meson_feature ios idevice)

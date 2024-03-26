@@ -28,6 +28,7 @@ DOCS=( AUTHORS ChangeLog NEWS README README.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.2-gentoo.patch
+	"${FILESDIR}"/${P}-libxml.patch
 )
 
 src_prepare() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Library for free and lossless compression of the LAS LiDAR format"
 HOMEPAGE="https://laszip.org/"
@@ -14,3 +14,12 @@ LICENSE="LGPL-2.1+"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 
 S="${WORKDIR}/${PN}-src-${PV}"
+
+src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/862582
+	# Fixed in newer version.
+	filter-lto
+
+	cmake_src_configure
+}

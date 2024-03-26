@@ -15,7 +15,7 @@ fi
 
 DESCRIPTION="Simple information system script"
 HOMEPAGE="https://github.com/dylanaraps/neofetch"
-LICENSE="MIT-with-advertising"
+LICENSE="MIT"
 SLOT="0"
 
 PATCHES=(

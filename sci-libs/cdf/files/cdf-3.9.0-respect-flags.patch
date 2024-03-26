@@ -1,0 +1,85 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1051,7 +1051,7 @@ install.tools: create.bin copy.tools
+ install.help_: create.help copy.help
+ 
+ install.lib: create.lib copy.lib.a
+-	@if [ -f $(LIBsrcDIR)/libcdf.so ] ; then \
++	@if [ -f $(LIBsrcDIR)/libcdf.$(SHAREDEXT) ] ; then \
+ 	   $(MAKE) $(EXTRAMAKE) MAKE=$(MAKE) "INSTALLDIR=$(INSTALLDIR)" install.lib.so ; \
+ 	 else \
+ 	   $(NULL) ; \
+@@ -1200,10 +1200,10 @@ copy.include:
+ 	      cp $(INCsrcDIR)/cdftools.h $(INSTALLDIR)/include
+ 
+ copy.lib.so:
+-	@echo cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib
+-	      cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib/libcdf.$(VERSION).so
+-	      rm -f $(INSTALLDIR)/lib/libcdf.so
+-	      cd $(INSTALLDIR)/lib && ln -s libcdf.$(VERSION).so libcdf.so
++	@echo cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
++	    cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib/libcdf.$(VERSION).so
++	    rm -f $(INSTALLDIR)/lib/libcdf.$(SHAREDEXT)
++	    cd $(INSTALLDIR)/lib && ln -s libcdf.$(VERSION).so libcdf.$(SHAREDEXT)
+ 
+ copy.lib.sl:
+ 	@echo cp $(LIBsrcDIR)/libcdf.sl $(INSTALLDIR)/lib
+--- a/src/lib/Makefile
++++ b/src/lib/Makefile
+@@ -62,9 +62,9 @@ AR=ar
+ RANLIBcmd=ranlib
+ MACos=Darwin
+ 
+-CFLAGS=$(COPTIONS) $(PIC) -I$(INCLUDEcdf) -I$(ZlibDIR)
++CFLAGS+=$(COPTIONS) $(PIC) -I$(INCLUDEcdf) -I$(ZlibDIR)
+ CFLAGS2=-DZ_PREFIX
+-LDFLAGS=$(LDOPTIONS)
++LDFLAGS+=$(LDOPTIONS)
+ ARFLAGS=$(AROPTIONS)
+ ZLIB=zlib
+ 
+@@ -108,17 +108,18 @@ ranlib.yes:
+ 
+ shared.yes: libcdf.$(SHAREDEXT)
+ 
++libcdf.$(SHAREDEXT) \
+ libcdf.so \
+ libcdf.dylib \
+ libcdf.dll \
+ libcdf.sl: $(OBJs)
+ 	@if [ -f $@ ] ; then rm $@ ; else $(NULL) ; fi
+-	@echo $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
+-	      $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
++	@echo $(LD) $(CFLAGS) $(LDFLAGS) -Wl,-soname,libcdf.$(SHAREDEXT) -o $@ $(OBJs) $(SYSLIBS)
++	      $(LD) $(CFLAGS) $(LDFLAGS) -Wl,-soname,libcdf.$(SHAREDEXT) -o $@ $(OBJs) $(SYSLIBS)
+ 
+ libcdf.o: $(OBJs)
+-	@echo $(CC) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
+-	      $(CC) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
++	@echo $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
++	      $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
+ 
+ .c.o:
+ 	@if [ "$<" = "cdfgzip.c" ] || [ "$<" = "cdfgzip64.c" ] ; then \
+--- a/src/tools/Makefile
++++ b/src/tools/Makefile
+@@ -33,7 +33,7 @@
+ SHELL=/bin/sh
+ 
+ CURSES=yes
+-CCx=gcc
++CCx=$(CC)
+ COPTIONS=-I/usr/include/ncurses -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_LARGEFILE_SOURCE -O2
+ COPTIONSld=
+ SYSLIBS=-lgcc
+@@ -43,8 +43,8 @@ MAKE=make
+ INCLUDEcdf= ../include
+ 
+ CC=$(CCx)
+-CFLAGS=$(COPTIONS) -I$(INCLUDEcdf)
+-CFLAGSld=$(COPTIONSld)
++CFLAGS+=$(COPTIONS) -I$(INCLUDEcdf)
++CFLAGSld=$(COPTIONSld) $(LDFLAGS)
+ 
+ WHICHOS=$(shell uname -a | cut -f1 -d" ")
+ ifeq ("$(WHICHOS)","Darwin")

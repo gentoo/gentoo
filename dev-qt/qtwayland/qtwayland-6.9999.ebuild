@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,14 +8,14 @@ inherit qt6-build
 DESCRIPTION="Wayland platform plugin for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-IUSE="compositor qml vulkan"
+IUSE="accessibility compositor qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
-	~dev-qt/qtbase-${PV}:6[gui,opengl,vulkan=,wayland]
+	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl,vulkan=,wayland]
 	media-libs/libglvnd
 	x11-libs/libxkbcommon
 	compositor? (
@@ -44,4 +44,12 @@ src_configure() {
 	)
 
 	qt6-build_src_configure
+}
+
+src_test() {
+	# users' session setting may break tst_clientextension (bug #927030)
+	unset DESKTOP_SESSION XDG_CURRENT_DESKTOP
+	unset GNOME_DESKTOP_SESSION_ID KDE_FULL_SESSION
+
+	qt6-build_src_test
 }

@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Please do not apply any patches which affect the generated output from
+# `autoconf`, as this package is used to submit patches upstream.
+
 inherit toolchain-autoconf
 
 MY_PN=${PN/-vanilla}

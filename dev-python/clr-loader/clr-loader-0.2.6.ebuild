@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,19 +51,20 @@ DOTNET_PKG_PROJECTS=(
 )
 
 EPYTEST_DESELECT=(
-	# Mono
+	# Mono only.
 	'tests/test_common.py::test_mono'
 	'tests/test_common.py::test_mono_debug'
 	'tests/test_common.py::test_mono_signal_chaining'
 	'tests/test_common.py::test_mono_set_dir'
 
-	# MS Windows only
+	# MS Windows only.
 	'tests/test_common.py::test_netfx'
 	'tests/test_common.py::test_netfx_chinese_path'
 	'tests/test_common.py::test_netfx_separate_domain'
 )
 
 distutils_enable_tests pytest
+dotnet-pkg_force-compat
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -71,8 +72,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	distutils-r1_src_prepare
-
 	# To be compatible with .NET >= 6.0.
 	cat <<-EOF > Directory.Build.props || die
 <Project>
@@ -81,17 +80,9 @@ src_prepare() {
 </PropertyGroup>
 </Project>
 EOF
+	nuget_writeconfig "$(pwd)/"
 
-	# Because python scripts perform the build.
-	cat <<EOF > NuGet.config || die
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-<packageSources>
-<clear />
-<add key="nuget" value="${NUGET_PACKAGES}" />
-</packageSources>
-</configuration>
-EOF
+	distutils-r1_src_prepare
 }
 
 src_configure() {

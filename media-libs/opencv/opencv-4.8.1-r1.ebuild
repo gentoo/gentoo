@@ -117,7 +117,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
-	<dev-libs/protobuf-23:=[${MULTILIB_USEDEP}]
+	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
 	cudnn? ( dev-libs/cudnn:= )
@@ -214,6 +214,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.1-libpng16.patch"
 	"${FILESDIR}/${PN}-4.8.1-ade-0.1.2a.tar.gz.patch"
 
+	"${FILESDIR}/${PN}-4.8.1-protobuf-22.patch" # bug 909087, in 4.9.0
+
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-${PV}-rgbd.patch"
 	# "${FILESDIR}/${PN}_contrib-4.8.1-NVIDIAOpticalFlowSDK-2.0.tar.gz.patch"
@@ -240,10 +242,6 @@ pkg_pretend() {
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	use java && java-pkg-opt-2_pkg_setup
-}
-
-src_unpack() {
-	unpack $(echo "${A}" | tr ' ' '\n' | grep -vP "(ade-0.1.2|NVIDIAOpticalFlowSDK)")
 }
 
 src_prepare() {

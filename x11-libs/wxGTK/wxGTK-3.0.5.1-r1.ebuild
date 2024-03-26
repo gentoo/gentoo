@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib-minimal
+inherit multilib-minimal flag-o-matic
 
 WXSUBVERSION=${PV}-gtk3				# 3.0.5.1-gtk3
 WXVERSION=${WXSUBVERSION%.*}			# 3.0.5
@@ -92,6 +92,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Workaround for bug #915154
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# X independent options
 	local myeconfargs=(
 		--with-zlib=sys

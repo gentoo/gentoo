@@ -12,6 +12,7 @@
 		<flag name="curl">Enable HTTP engine for S3 and WebDav support support via <pkg>net-misc/curl</pkg></flag>
 		<flag name="glusterfs">Enable GlusterFS gfapi support via <pkg>sys-cluster/glusterfs</pkg></flag>
 		<flag name="gnuplot">Install tools for generating gnuplots</flag>
+		<flag name="pandas">Install dependencies for complex python scripts</flag>
 		<flag name="io-uring">Enable efficient I/O via <pkg>sys-libs/liburing</pkg>.</flag>
 		<flag name="nfs">Enable NFS support</flag>
 		<flag name="numa">Enable numa support</flag>

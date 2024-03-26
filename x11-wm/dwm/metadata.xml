@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
+		<email>arkamar@gentoo.org</email>
+		<name>Petr Vaněk</name>
 	</maintainer>
 	<longdescription>
 		dwm is a dynamic window manager for X. It manages windows in tiling and

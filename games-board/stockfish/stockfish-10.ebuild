@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,6 @@ IUSE="cpu_flags_arm_v7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse
 	general-32 general-64 +optimize"
 
 DEPEND="|| ( app-arch/unzip app-arch/zip )"
-RDEPEND=""
 
 S="${WORKDIR}/src"
 

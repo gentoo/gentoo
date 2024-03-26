@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Creating and manipulating undirected and directed graphs"
 HOMEPAGE="https://igraph.org/"
@@ -27,6 +27,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	#
+	# Fixed in upstream git master.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DUSE_CCACHE=OFF
 		-DIGRAPH_GLPK_SUPPORT=ON

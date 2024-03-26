@@ -1,0 +1,21 @@
+--- a/test/test.cmake
++++ b/test/test.cmake
+@@ -573,10 +573,14 @@ function(setup_aom_test_targets)
+     if(((NOT MSVC) AND (NOT XCODE)) OR ENABLE_IDE_TEST_HOSTING)
+ 
+       # Pick a reasonable number of targets (this controls parallelization).
+-      processorcount(num_test_targets)
+-      if(num_test_targets EQUAL 0) # Just default to 10 targets when there's no
+-                                   # processor count available.
+-        set(num_test_targets 10)
++      if(DEFINED ENV{LIBAOM_TEST_PROCS})
++          set(num_test_targets $ENV{LIBAOM_TEST_PROCS})
++      else()
++          processorcount(num_test_targets)
++          if(num_test_targets EQUAL 0) # Just default to 10 targets when there's no
++                                       # processor count available.
++          set(num_test_targets 10)
++          endif()
+       endif()
+ 
+       math(EXPR max_shard_index "${num_test_targets} - 1")

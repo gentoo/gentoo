@@ -73,7 +73,7 @@ DEPEND="
 		sys-apps/systemd:=
 		sys-apps/util-linux
 	)
-	systemtap? ( dev-util/systemtap )"
+	systemtap? ( dev-debug/systemtap )"
 RDEPEND="${DEPEND}
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
 BDEPEND="

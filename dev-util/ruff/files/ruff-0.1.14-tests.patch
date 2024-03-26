@@ -1,0 +1,12 @@
+diff --git a/crates/ruff/tests/show_settings.rs b/crates/ruff/tests/show_settings.rs
+index e2016e378..90d56f969 100644
+--- a/crates/ruff/tests/show_settings.rs
++++ b/crates/ruff/tests/show_settings.rs
+@@ -21,6 +21,7 @@ const TEST_FILTERS: &[(&str, &str)] = &[
+ ];
+ 
+ #[test]
++#[ignore]
+ fn display_default_settings() {
+     insta::with_settings!({ filters => TEST_FILTERS.to_vec() }, {
+         assert_cmd_snapshot!(Command::new(get_cargo_bin(BIN_NAME))

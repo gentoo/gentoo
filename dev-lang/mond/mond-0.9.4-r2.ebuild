@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -103,15 +103,10 @@ LICENSE="MIT"
 SLOT="0"
 
 DOTNET_PKG_PROJECTS=( Mond.Repl/Mond.Repl.csproj )
-DOTNET_PKG_RESTORE_EXTRA_ARGS=(
-	-p:RollForward=Major
-	-p:TargetFramework="net${DOTNET_PKG_COMPAT}"
-	-p:TargetFrameworks="net${DOTNET_PKG_COMPAT}"
-)
-DOTNET_PKG_BUILD_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
-DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 
 DOCS=( README.md Examples )
+
+dotnet-pkg_force-compat
 
 src_unpack() {
 	dotnet-pkg_src_unpack

@@ -18,4 +18,5 @@
     non-interactive testing of normally interactive commands and functions,
     such as completing-read.
   </longdescription>
+  <stabilize-allarches />
 </pkgmetadata>

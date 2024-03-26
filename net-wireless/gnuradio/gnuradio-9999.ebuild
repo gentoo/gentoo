@@ -23,9 +23,7 @@ fi
 
 IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio +qt5 sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
 
-#RESTRICT="!test? ( test )"
-# https://github.com/gnuradio/gnuradio/issues/7085
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	audio? ( || ( alsa oss jack portaudio ) )
@@ -47,12 +45,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-libs/boost:=[python,${PYTHON_USEDEP}]')
+	dev-libs/gmp:=
 	dev-libs/log4cpp:=
 	$(python_gen_cond_dep 'dev-python/jsonschema[${PYTHON_USEDEP}]')
 	dev-libs/spdlog:=
 	dev-libs/libfmt:=
 	sci-libs/fftw:3.0=
-	sci-libs/mpir:=
 	sci-libs/volk:=
 	media-libs/libsndfile
 	sys-libs/libunwind
@@ -110,7 +108,6 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	wavelet? (
 		sci-libs/gsl:=
-		dev-libs/gmp:=
 		sci-libs/lapack
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11:= )
@@ -225,7 +222,7 @@ src_install() {
 
 src_test() {
 	# skip test which needs internet
-	virtx cmake_src_test -E metainfo_test
+	virtx cmake_src_test -E metainfo_test --output-on-failure
 }
 
 pkg_postinst() {

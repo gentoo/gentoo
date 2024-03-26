@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="https://pallini.di.uniroma1.it/${PN}${MY_PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~riscv ~x86"
 IUSE="cpu_flags_x86_popcnt examples"
 
 BDEPEND="sys-apps/help2man"

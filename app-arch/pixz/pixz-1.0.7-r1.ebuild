@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,6 +35,12 @@ DEPEND="
 
 src_prepare() {
 	default
+
+	# We're not interested in linting tests for our purposes (bug #915008)
+	cat > test/cppcheck-src.sh <<-EOF || die
+	#!/bin/sh
+	exit 77
+	EOF
 
 	[[ ${PV} == "9999" ]] && eautoreconf
 }

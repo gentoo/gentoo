@@ -13,6 +13,7 @@
 		<remote-id type="github">linuxmint/xapp</remote-id>
 	</upstream>
 	<use>
-		<flag name="mate">Install status applet for <pkg>mate-base/mate</pkg></flag>
+		<flag name="mate">Install integrations for <pkg>mate-base/mate</pkg></flag>
+		<flag name="xfce">Install integrations for <pkg>xfce-base/xfce4-meta</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
+DISTUTILS_USE_PEP517=setuptools
 
 PYTHON_REQ_USE="ncurses?"
 
@@ -31,6 +32,8 @@ REQUIRED_USE="
 	sync? ( qt5 )
 	vkb? ( qt5 )
 "
+
+BDEPEND="${DISTUTILS_DEPS}"
 
 RDEPEND="
 	dev-python/dnspython[${PYTHON_USEDEP}]
@@ -65,7 +68,9 @@ src_prepare() {
 	eapply "${FILESDIR}/3.3.6-no-user-root.patch"
 
 	# Prevent icon from being installed in the wrong location
-	sed -i '/icons/d' setup.py || die
+	sed -e '/icons/d' \
+		-e "s:\\(os.path.join(\\)share_dir:\\1'share':" \
+		-i setup.py || die
 
 	if use qt5; then
 		pyrcc5 icons.qrc -o electroncash_gui/qt/icons_rc.py || die

@@ -16,6 +16,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 RDEPEND="
+	!app-i18n/fcitx-chewing:4
 	>=app-i18n/fcitx-5.1.6:5
 	>=app-i18n/libchewing-0.5.0
 "

@@ -1,0 +1,33 @@
+From 959bcf358cb988f242284afe61a1d99fa705150b Mon Sep 17 00:00:00 2001
+From: "Kai A. Hiller" <V02460@gmail.com>
+Date: Thu, 22 Feb 2024 20:52:27 +0100
+Subject: [PATCH] Specify IP subnet literals in canonical form
+
+This is needed, because the netaddr package removed support for the
+implicit prefix form in version 1.0.0:
+https://github.com/netaddr/netaddr/pull/360
+
+Upstream-PR: https://github.com/element-hq/synapse/pull/16953
+
+diff --git a/tests/api/test_auth.py b/tests/api/test_auth.py
+index ce85ddf22a..bd229cf7e9 100644
+--- a/tests/api/test_auth.py
++++ b/tests/api/test_auth.py
+@@ -128,7 +128,7 @@ def test_get_user_by_req_appservice_valid_token_good_ip(self) -> None:
+             token="foobar",
+             url="a_url",
+             sender=self.test_user,
+-            ip_range_whitelist=IPSet(["192.168/16"]),
++            ip_range_whitelist=IPSet(["192.168.0.0/16"]),
+         )
+         self.store.get_app_service_by_token = Mock(return_value=app_service)
+         self.store.get_user_by_access_token = AsyncMock(return_value=None)
+@@ -147,7 +147,7 @@ def test_get_user_by_req_appservice_valid_token_bad_ip(self) -> None:
+             token="foobar",
+             url="a_url",
+             sender=self.test_user,
+-            ip_range_whitelist=IPSet(["192.168/16"]),
++            ip_range_whitelist=IPSet(["192.168.0.0/16"]),
+         )
+         self.store.get_app_service_by_token = Mock(return_value=app_service)
+         self.store.get_user_by_access_token = AsyncMock(return_value=None)

@@ -1,5 +1,9 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-02-05)
+# LLVM slots without keywords.
+llvm_slot_15
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-07-11)
 # dev-util/babeltrace fails tests on loong

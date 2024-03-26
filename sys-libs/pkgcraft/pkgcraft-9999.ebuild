@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 BDEPEND+="
 	dev-util/cargo-c
 	sys-devel/clang
-	>=virtual/rust-1.71
+	>=virtual/rust-1.74
 "
 
 QA_FLAGS_IGNORED="usr/lib.*/libpkgcraft.so.*"

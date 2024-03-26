@@ -1,0 +1,16 @@
+From ecea56a6fa388cfcf29aaff3817ddc0e3518637f Mon Sep 17 00:00:00 2001
+From: brummer10 <brummer-@web.de>
+Date: Sat, 9 Mar 2024 09:12:36 +0100
+Subject: [PATCH] Fix issue #149 build system: LTO detection fails if
+ -flto=auto or similar is used
+
+--- a/waftools/cpu_optimization.py
++++ b/waftools/cpu_optimization.py
+@@ -168,6 +168,6 @@ def configure(conf):
+             conf.env['OPT'] = False
+             cpu_model = append_optimization_flags(conf, cxxflags)
+
+-    if '-flto' in cxxflags:
++    if any(x.startswith('-flto') for x in cxxflags):
+         cxxflags.append ("-ffat-lto-objects")
+

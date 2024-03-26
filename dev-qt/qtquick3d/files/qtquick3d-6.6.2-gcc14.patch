@@ -1,0 +1,23 @@
+Qt undefs __AVX__ and others[1] to prevent bundled embree from using
+AVX/SSE4.2 code paths and result in linking errors, but this appears
+insufficient with gcc14[2].
+
+Until Qt improves this, for simplicity pass -mno-* to bundled embree
+as a workaround which lets the compiler disable these instead and
+that includes other features which depend on these.
+
+(note that embree is only used on amd64 and aarch64)
+
+Ideal would be to unbundle this and let system embree use the full
+feature set, but there is no machinery to easily allow it.
+
+[1] https://github.com/qt/qtquick3d/commit/7980cfd0
+[2] https://bugs.gentoo.org/917407
+--- a/src/3rdparty/embree/CMakeLists.txt
++++ b/src/3rdparty/embree/CMakeLists.txt
+@@ -64,2 +64,5 @@
+ # Use SSE2 only, ignore AVX/SSE4.2 for now
++if (TEST_architecture_arch STREQUAL x86_64)
++    qt_internal_extend_target(BundledEmbree COMPILE_OPTIONS -mno-avx -mno-sse4.2)
++endif()
+ qt_internal_extend_target(BundledEmbree DEFINES

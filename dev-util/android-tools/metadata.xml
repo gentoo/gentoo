@@ -6,8 +6,7 @@
 		<changelog>https://android.googlesource.com/platform/packages/modules/adb/+log</changelog>
 		<doc>https://android.googlesource.com/platform/packages/modules/adb/+/HEAD/OVERVIEW.TXT</doc>
 		<remote-id type="cpe">cpe:/a:google:android_debug_bridge</remote-id>
-		<remote-id type="github">android/platform_system_core</remote-id>
-		<remote-id type="launchpad">ubuntu</remote-id>
+		<remote-id type="github">nmeum/android-tools</remote-id>
 	</upstream>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>

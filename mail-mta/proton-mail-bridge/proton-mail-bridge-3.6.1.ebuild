@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -63,6 +63,7 @@ src_configure() {
 			-DBRIDGE_REPO_ROOT="${S}"
 			-DBRIDGE_TAG="NOTAG"
 			-DBRIDGE_VENDOR="Gentoo Linux"
+			-DCMAKE_DISABLE_PRECOMPILE_HEADERS=OFF
 		)
 		BUILD_DIR="${WORKDIR}"/gui_build \
 			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \

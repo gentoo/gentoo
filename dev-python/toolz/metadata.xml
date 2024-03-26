@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">toolz</remote-id>
+		<remote-id type="github">pytoolz/toolz</remote-id>
 	</upstream>
 </pkgmetadata>

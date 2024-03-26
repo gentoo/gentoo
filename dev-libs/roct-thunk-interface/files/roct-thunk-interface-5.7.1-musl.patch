@@ -1,0 +1,61 @@
+Upstream PR: https://github.com/ROCm/ROCT-Thunk-Interface/pull/96
+Bug: https://github.com/ROCm/ROCT-Thunk-Interface/issues/65
+--- a/src/globals.c
++++ b/src/globals.c
+@@ -32,5 +32,9 @@ unsigned long kfd_open_count;
+ unsigned long system_properties_count;
+ pthread_mutex_t hsakmt_mutex = PTHREAD_MUTEX_INITIALIZER;
+ bool is_dgpu;
++
++#ifndef PAGE_SIZE
+ int PAGE_SIZE;
++#endif
++
+ int PAGE_SHIFT;
+--- a/src/libhsakmt.h
++++ b/src/libhsakmt.h
+@@ -62,7 +62,11 @@ extern HsaVersionInfo kfd_version_info;
+ 	do { if ((minor) > kfd_version_info.KernelInterfaceMinorVersion)\
+ 		return HSAKMT_STATUS_NOT_SUPPORTED; } while (0)
+ 
++/* Might be defined in limits.h on platforms where it is constant (used by musl) */
++/* See also: https://pubs.opengroup.org/onlinepubs/7908799/xsh/limits.h.html */
++#ifndef PAGE_SIZE
+ extern int PAGE_SIZE;
++#endif
+ extern int PAGE_SHIFT;
+ 
+ /* VI HW bug requires this virtual address alignment */
+--- a/src/openclose.c
++++ b/src/openclose.c
+@@ -116,7 +116,9 @@ static void clear_after_fork(void)
+ 
+ static inline void init_page_size(void)
+ {
++#ifndef PAGE_SIZE
+ 	PAGE_SIZE = sysconf(_SC_PAGESIZE);
++#endif
+ 	PAGE_SHIFT = ffs(PAGE_SIZE) - 1;
+ }
+ 
+--- a/src/topology.c
++++ b/src/topology.c
+@@ -32,6 +32,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <ctype.h>
++#include <limits.h>
+ 
+ #include <errno.h>
+ #include <sys/sysinfo.h>
+@@ -1369,6 +1370,10 @@ static int topology_create_temp_cpu_cache_list(int node,
+ 	 * which can be present twice in the string above. 29 is for the prefix
+ 	 * and the +6 is for the cache suffix
+ 	 */
++#ifndef MAXNAMLEN
++/* MAXNAMLEN is the BSD name for NAME_MAX. glibc aliases this as NAME_MAX, but not musl */
++#define MAXNAMLEN NAME_MAX
++#endif
+ 	const uint32_t MAXPATHSIZE = 29 + MAXNAMLEN + (MAXNAMLEN + 6);
+ 	cpu_cacheinfo_t *p_temp_cpu_ci_list; /* a list of cpu_ci */
+ 	char path[MAXPATHSIZE], node_dir[MAXPATHSIZE];

@@ -1,3 +1,6 @@
+https://bugs.gentoo.org/879883
+https://github.com/madler/zlib/issues/751
+
 From 2ad2713e6cb9166dcede9a020f6913b8189ff0c6 Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Wed, 23 Nov 2022 04:17:16 +0000

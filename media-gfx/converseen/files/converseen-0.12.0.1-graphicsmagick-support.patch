@@ -1,0 +1,82 @@
+# See https://bugs.gentoo.org/628688 for further info and
+# development discussion about this patch.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,18 @@ else ()
+     find_package(Qt5 COMPONENTS Core Gui Network Widgets LinguistTools REQUIRED)
+ endif()
+ 
+-find_package(ImageMagick REQUIRED COMPONENTS Magick++ MagickWand MagickCore)
++find_package(ImageMagick COMPONENTS Magick++ MagickWand MagickCore)
++if (NOT ImageMagick_FOUND)
++    set(ImageMagick_INCLUDE_DIRS "GENTOO_INCLUDE/GraphicsMagick")
++    set(ImageMagick_Magick++_INCLUDE_DIRS "GENTOO_INCLUDE/GraphicsMagick/Magick++")
++    set(ImageMagick_MagickCore_INCLUDE_DIRS "GENTOO_INCLUDE/GraphicsMagick/magic")
++    set(ImageMagick_LIBRARY "GENTOO_LIB/libGraphicsMagick.so")
++    set(ImageMagick_Magick++_LIBRARY "GENTOO_LIB/libGraphicsMagick++.so")
++    set(ImageMagick_MagickCore_LIBRARY "GENTOO_LIB/libGraphicsMagick.so")
++    set(ImageMagick_MagickWand_LIBRARY "GENTOO_LIB/libGraphicsMagickWand.so")
++    set(ImageMagick_MagickWand_INCLUDE_DIRS "GENTOO_INCLUDE/GraphicsMagick/wand")
++    set(ImageMagick_LIBRARIES ${ImageMagick_LIBRARY} ${ImageMagick_Magick++_LIBRARY} ${ImageMagick_MagickCore_LIBRARY} ${ImageMagick_MagickWand_LIBRARY})
++endif ()
+ 
+ set(converseen_SOURCES
+     src/main.cpp
+--- a/src/converter.cpp
++++ b/src/converter.cpp
+@@ -290,8 +290,14 @@ bool Converter::writeImage(Image &my_image, const QString &format, const int &qu
+ 
+     error_status = "";
+ 
++/*  Workaround to compile with GraphicsMagick:
++    GraphicsMagick "MagickLibVersion" is greater that 0x100000
++    e.g. GraphicsMagick-1.3.25 has "MagickLibVersion=0x181501"
++    or GraphicsMagick-1.3.26 has "MagickLibVersion=0x191600" */
+ #if MagickLibVersion < 0x700
+     hasTransparency = my_image.matte();
++#elif MagickLibVersion > 0x100000
++    hasTransparency = my_image.matte();
+ #else
+     hasTransparency = my_image.alpha();
+ #endif
+@@ -349,6 +355,8 @@ Image Converter::convertPDFtoImage(Image &my_image)
+     
+ #if MagickLibVersion < 0x700
+     ximage.antiAlias(true);
++#elif MagickLibVersion > 0x100000
++    ximage.antiAlias(true);
+ #else
+     ximage.textAntiAlias(true);
+ #endif
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -32,8 +32,14 @@
+ using namespace Magick;
+ using namespace std;
+
++/*  Workaround to compile with GraphicsMagick:
++    GraphicsMagick "MagickLibVersion" is greater that 0x100000
++    e.g. GraphicsMagick-1.3.25 has "MagickLibVersion=0x181501"
++    or GraphicsMagick-1.3.26 has "MagickLibVersion=0x191600" */
+ #if MagickLibVersion < 0x700
+     typedef FilterTypes IMFilterType;
++#elif MagickLibVersion > 0x100000
++    typedef FilterTypes IMFilterType;
+ #else
+     typedef FilterType IMFilterType;
+ #endif
+--- a/src/formats.cpp
++++ b/src/formats.cpp
+@@ -174,6 +174,12 @@ bool Formats::isVideo(list<CoderInfo>::iterator entry)
+     QStringList videoFormats(QStringList() << "3G2" << "3GP" << "APNG" << "AVI" << "FLV" << "M2V" << "M4V" << "MKV" << "MOV" << "MP4" << "MPEG" << "MPG" << "WEBM" << "WMV");
+ 
+     return videoFormats.contains(currFormat);
++#elif MagickLibVersion > 0x100000
++    // Support for ImageMagick-6. This will be removed sooner as Linux distros drop the support!
++    QString currFormat = QString::fromStdString(entry->name());
++    QStringList videoFormats(QStringList() << "3G2" << "3GP" << "APNG" << "AVI" << "FLV" << "M2V" << "M4V" << "MKV" << "MOV" << "MP4" << "MPEG" << "MPG" << "WEBM" << "WMV");
++
++     return videoFormats.contains(currFormat);
+ #else
+     return (QString::fromStdString(entry->module()) == "VIDEO") ? true : false;
+ #endif

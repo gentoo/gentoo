@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
 else
 	inherit libtool
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86 ~x64-macos"
 	if [[ ${PV%_p*} != ${PV} ]]; then # Gentoo snapshot
 		SRC_URI="mirror://gentoo/${P}.tar.xz"
 	else # Official release
@@ -35,6 +35,12 @@ src_prepare() {
 	else
 		elibtoolize
 	fi
+}
+
+src_configure() {
+	# ODR violations (https://github.com/mstorsjo/fdk-aac/issues/156, bug #885355)
+	filter-lto
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

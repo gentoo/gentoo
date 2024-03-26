@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,6 @@ python_test() {
 		sys.exit(pytest.console_main())
 	EOF
 	chmod +x "${script}" || die
-	epytest
+	epytest -o tmp_path_retention_count=1
 	rm "${script}" || die
 }

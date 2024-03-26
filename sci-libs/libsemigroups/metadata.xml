@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    libsemigroups is a C++14 library containing implementations of
+    several algorithms for computing finite, and finitely presented,
+    semigroups and monoids. Namely:
+
+      * the Froidure-Pin algorithm for computing finite semigroups;
+      * the Todd-Coxeter algorithm for finitely presented semigroups
+        and monoids;
+      * the Knuth-Bendix algorithm for finitely presented semigroups
+        and monoids;
+      * the Schreier-Sims algorithm for permutation groups;
+      * a preliminary implementation of the Konieczny and Lallement-
+        McFadden algorithm for computing finite semigroups which act
+        on sets;
+      * an implementation of the Radoszewski-Rytter algorithm for
+        testing equivalence of words in free bands;
+      * an implementation of the algorithm for solving the word problem
+        for small overlap monoids, and for computing normal forms in
+        such monoids;
+      * a version of Sims low index subgroup algorithm for computing
+        one-sided congruences of a semigroup or monoid;
+      * a version of Stephen's procedure for finitely presented
+        semigroups and monoids (for a given word w this procedure
+        is for determining words equivalent to w or that are left
+        divisors of w).
+  </longdescription>
+  <upstream>
+    <remote-id type="github">libsemigroups/libsemigroups</remote-id>
+  </upstream>
+</pkgmetadata>

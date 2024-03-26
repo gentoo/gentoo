@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 		<name>Java</name>
@@ -31,5 +27,6 @@
 		<remote-id type="github">openjdk/jdk8u</remote-id>
 		<remote-id type="github">openjdk/jdk11u</remote-id>
 		<remote-id type="github">openjdk/jdk17u</remote-id>
+		<remote-id type="github">openjdk/jdk21u</remote-id>
 	</upstream>
 </pkgmetadata>

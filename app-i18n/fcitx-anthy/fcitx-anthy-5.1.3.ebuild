@@ -18,6 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	!app-i18n/fcitx-anthy:4
 	app-i18n/anthy
 	>=app-i18n/fcitx-5.1.6:5
 "

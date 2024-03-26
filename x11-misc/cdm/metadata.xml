@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>gienah@gentoo.org</email>
-  <name>Mark Wright</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 CDM is a minimalistic, yet full-featured replacement for
 login-managers like slim, kdm, gdm and qingy that provides a fast,

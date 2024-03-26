@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,10 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="https://galeracluster.com"
-SRC_URI="https://releases.galeracluster.com/${MY_PN}/source/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://releases.galeracluster.com/${MY_PN}.$(ver_cut 3)/source/${MY_P}.tar.gz
+		-> ${P}.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD"

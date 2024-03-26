@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Please do not apply any patches which affect the generated output from
+# `automake`, as this package is used to submit patches upstream.
+
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit python-any-r1
@@ -41,6 +44,8 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-util/dejagnu
+		sys-devel/bison
+		sys-devel/flex
 	)
 "
 
@@ -72,6 +77,11 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share/automake-vanilla-${PV} \
 		--program-suffix="-vanilla" \
 		--infodir="${MY_INFODIR}"
+}
+
+src_test() {
+	# Fails with byacc/flex
+	emake YACC="bison -y" LEX="flex" check
 }
 
 src_install() {
@@ -115,4 +125,6 @@ src_install() {
 	newenvd - "07automake${idx}" <<-EOF
 	INFOPATH="${MY_INFODIR}"
 	EOF
+
+	docompress "${MY_INFODIR}"
 }

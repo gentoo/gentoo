@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/913133
+
+From 7f4bb9de7c84bf55c446c98056259e4e6d8b61e7 Mon Sep 17 00:00:00 2001
+From: Richard Liu <richliu@techarea.org>
+Date: Fri, 19 Jan 2024 00:38:27 +0800
+Subject: [PATCH] fix compile error
+
+---
+ src/meta.cc | 2 +-
+ src/meta.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/meta.cc b/src/meta.cc
+index 9a2053f..5b15eff 100644
+--- a/src/meta.cc
++++ b/src/meta.cc
+@@ -831,7 +831,7 @@ bool scaseequals(string_view a, string_view b)
+     return true;
+ }
+ 
+-#if !defined(HAVE_STRLCPY) || !HAVE_STRLCPY
++#if !defined(HAVE_STRLCPY)
+ size_t strlcpy(char *tgt, const char *src, size_t tgtSize)
+ {
+     auto p = src;
+diff --git a/src/meta.h b/src/meta.h
+index a1f4080..dafb754 100644
+--- a/src/meta.h
++++ b/src/meta.h
+@@ -323,7 +323,7 @@ class NoCaseStringMap : public std::map<mstring, mstring, ltstring>
+ static constexpr string_view svRN = szRN;
+ static constexpr string_view svLF = "\n";
+ 
+-#if !defined(HAVE_STRLCPY) || !HAVE_STRLCPY
++#if !defined(HAVE_STRLCPY)
+ size_t strlcpy(char *tgt, const char *src, size_t tgtSize);
+ #endif
+ }
+-- 
+2.43.0
+

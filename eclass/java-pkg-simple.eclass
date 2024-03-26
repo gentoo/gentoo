@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -367,12 +367,13 @@ java-pkg-simple_src_compile() {
 	# gather sources
 	# if target < 9, we need to compile module-info.java separately
 	# as this feature is not supported before Java 9
-	if [[ java-pkg_get-target -lt 9 ]]; then
+	local target="$(java-pkg_get-target)"
+	if [[ ${target#1.} -lt 9 ]]; then
 		find "${JAVA_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${sources}
-		moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
 	else
 		find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
 	fi
+	moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
 
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory"
@@ -382,7 +383,7 @@ java-pkg-simple_src_compile() {
 	java-pkg-simple_getclasspath
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
 
-	if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+	if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
 		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
 	else
@@ -392,7 +393,7 @@ java-pkg-simple_src_compile() {
 	fi
 
 	# handle module-info.java separately as it needs at least JDK 9
-	if [[ -n ${moduleinfo} ]]; then
+	if [[ -n ${moduleinfo} ]] && [[ ${target#1.} -lt 9 ]]; then
 		if java-pkg_is-vm-version-ge "9" ; then
 			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
 
@@ -528,16 +529,17 @@ java-pkg-simple_src_test() {
 	# gathering sources for testing
 	# if target < 9, we need to compile module-info.java separately
 	# as this feature is not supported before Java 9
-	if [[ java-pkg_get-target -lt 9 ]]; then
+	local target="$(java-pkg_get-target)"
+	if [[ ${target#1.} -lt 9 ]]; then
 		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${test_sources}
-		moduleinfo=$(find "${JAVA_TEST_SRC_DIR[@]}" -name module-info.java)
 	else
 		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
 	fi
+	moduleinfo=$(find "${JAVA_TEST_SRC_DIR[@]}" -name module-info.java)
 
 	# compile
 	if [[ -s ${test_sources} ]]; then
-		if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+		if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
 			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${test_sources}
 		else
@@ -548,7 +550,7 @@ java-pkg-simple_src_test() {
 	fi
 
 	# handle module-info.java separately as it needs at least JDK 9
-	if [[ -n ${moduleinfo} ]]; then
+	if [[ -n ${moduleinfo} ]] && [[ ${target#1.} -lt 9 ]]; then
 		if java-pkg_is-vm-version-ge "9" ; then
 			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
 

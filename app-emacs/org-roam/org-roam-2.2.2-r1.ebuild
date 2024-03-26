@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,8 @@ RDEPEND="
 BDEPEND="${RDEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
+
+elisp-enable-tests buttercup tests
 
 src_install() {
 	elisp-make-autoload-file

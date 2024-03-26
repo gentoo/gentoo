@@ -10,4 +10,7 @@
 		<remote-id type="sourceforge">pyopengl</remote-id>
 		<remote-id type="github">mcfletch/pyopengl</remote-id>
 	</upstream>
+	<use>
+		<flag name="numpy">Building NumPy native format handlers.</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>pastalian46@gmail.com</email>
+		<name>Takuya Wakazono</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+	Automatically generate shell tab completion scripts for Python CLI apps.
+	Outputs tab completion scripts for bash, zsh, tcsh.
+	shtab processes an argparse.ArgumentParser object to generate a tab 
+	completion script for your shell.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">iterative/shtab</remote-id>
+		<remote-id type="pypi">shtab</remote-id>
+	</upstream>
+</pkgmetadata>

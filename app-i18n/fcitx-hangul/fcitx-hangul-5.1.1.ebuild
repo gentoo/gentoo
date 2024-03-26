@@ -16,6 +16,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 DEPEND="
+	!app-i18n/fcitx-hangul:4
 	>=app-i18n/fcitx-5.1.6:5
 	>=app-i18n/libhangul-0.0.12
 	virtual/libiconv

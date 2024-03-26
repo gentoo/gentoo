@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 flag-o-matic waf-utils systemd
+inherit distutils-r1 flag-o-matic waf-utils systemd toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -74,7 +74,7 @@ src_prepare() {
 }
 
 src_configure() {
-	is-flagq -flto* && filter-flags -fuse-linker-plugin
+	tc-is-lto && filter-flags -fuse-linker-plugin
 	filter-lto
 
 	local string_127=""

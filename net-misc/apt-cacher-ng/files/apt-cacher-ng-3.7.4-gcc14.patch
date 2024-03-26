@@ -1,0 +1,39 @@
+--- a/src/aconnect.cc
++++ b/src/aconnect.cc
+@@ -6,6 +6,7 @@
+ #include "debug.h"
+ #include "portutils.h"
+ 
++#include <algorithm>
+ #include <future>
+ 
+ #include <sys/types.h>
+--- a/src/acregistry.cc
++++ b/src/acregistry.cc
+@@ -5,6 +5,7 @@
+ #include "cleaner.h"
+ #include "evabase.h"
+ 
++#include <algorithm>
+ #include <list>
+ 
+ #define IN_ABOUT_ONE_DAY 100000
+--- a/src/caddrinfo.cc
++++ b/src/caddrinfo.cc
+@@ -1,5 +1,6 @@
+ #include "meta.h"
+ 
++#include <algorithm>
+ #include <deque>
+ #include <memory>
+ #include <list>
+--- a/src/header.cc
++++ b/src/header.cc
+@@ -10,6 +10,7 @@
+ #include "filereader.h"
+ #include "httpdate.h"
+ 
++#include <algorithm>
+ #include <map>
+ #include <iostream>
+ 

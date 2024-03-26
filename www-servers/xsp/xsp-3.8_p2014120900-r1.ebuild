@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit autotools dotnet systemd
 
 EGIT_COMMIT="e272a2c006211b6b03be2ef5bbb9e3f8fefd0768"
 DESCRIPTION="XSP is a small web server that can host ASP.NET pages"
-HOMEPAGE="http://www.mono-project.com/ASP.NET"
+HOMEPAGE="https://www.mono-project.com/ASP.NET"
 SRC_URI="https://github.com/mono/xsp/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/xsp-${EGIT_COMMIT}"
 

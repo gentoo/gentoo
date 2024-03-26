@@ -1,25 +1,28 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop llvm optfeature qt6-build
+LLVM_COMPAT=( {15..18} ) # see .cmake.conf for minimum
+LLVM_OPTIONAL=1
+inherit desktop llvm-r1 optfeature qt6-build
 
 DESCRIPTION="Qt Tools Collection"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 IUSE="
 	+assistant clang designer distancefieldgenerator gles2-only
-	+linguist opengl pixeltool qdbus qdoc qml qtattributionsscanner
+	+linguist opengl pixeltool +qdbus qdoc qml qtattributionsscanner
 	qtdiag qtplugininfo vulkan +widgets zstd
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
 # if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
 REQUIRED_USE="
 	assistant? ( widgets )
+	clang? ( ${LLVM_REQUIRED_USE} )
 	designer? ( qml widgets )
 	distancefieldgenerator? ( qml widgets )
 	pixeltool? ( widgets )
@@ -31,14 +34,14 @@ REQUIRED_USE="
 # and 3rdparty/ tries to FetchContent gtest)
 RESTRICT="test"
 
-QTTOOLS_LLVM_SLOTS=({17..15}) # QDOC_MINIMUM_CLANG_VERSION
-LLVM_MAX_SLOT=${QTTOOLS_LLVM_SLOTS[0]}
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[network,widgets?]
 	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
 	clang? (
-		<sys-devel/clang-$((LLVM_MAX_SLOT+1)):=
-		|| ( $(printf "sys-devel/clang:%d " "${QTTOOLS_LLVM_SLOTS[@]}") )
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
+		')
 	)
 	designer? (
 		~dev-qt/qtbase-${PV}:6[xml,zstd=]
@@ -56,12 +59,8 @@ DEPEND="
 	)
 "
 
-llvm_check_deps() {
-	has_version -d "sys-devel/clang:${LLVM_SLOT}"
-}
-
 pkg_setup() {
-	use clang && llvm_pkg_setup
+	use clang && llvm-r1_pkg_setup
 }
 
 src_configure() {
@@ -86,6 +85,8 @@ src_configure() {
 		# to lag behind and bundled may work out better for now
 		# https://github.com/litehtml/litehtml/issues/266
 		$(usev assistant -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=ON)
+
+		$(usev designer -DQT_UNITY_BUILD=OFF) # fails to build (QTBUG-122634)
 	)
 
 	qt6-build_src_configure

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,7 +71,7 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "PDF or PostScript document previews" "kde-apps/okular:${SLOT}"
+		optfeature "PDF or PostScript document previews" "media-gfx/okularpart:5" "kde-apps/okular:5"
 	fi
 	ecm_pkg_postinst
 }

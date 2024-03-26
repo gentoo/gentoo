@@ -10,4 +10,5 @@
     <bugs-to>https://gitlab.com/bennya/shrink-path.el/-/issues/</bugs-to>
     <remote-id type="gitlab">bennya/shrink-path.el</remote-id>
   </upstream>
+  <stabilize-allarches />
 </pkgmetadata>

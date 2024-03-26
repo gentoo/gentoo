@@ -5,10 +5,4 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<use>
-		<flag name="installkernel">
-			Install /sbin/installkernel script (for Linux).
-			installkernel is required whenever a kernel will be installed via make install
-		</flag>
-	</use>
 </pkgmetadata>

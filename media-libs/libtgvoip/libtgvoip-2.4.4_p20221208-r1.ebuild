@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${LIBTGVOIP_COMMIT}"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv"
 IUSE="+dsp +alsa pulseaudio"
 
 DEPEND="

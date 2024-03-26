@@ -13,7 +13,7 @@ SRC_URI="
 	scala3-2? ( https://github.com/com-lihaoyi/Ammonite/releases/download/${PV}/3.2-${PV} -> ${P}-3.2 )
 "
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 LICENSE="MIT"
 SLOT="0"
 
