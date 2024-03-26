@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="amd64 ~loong ~riscv x86"
 IUSE="cjk emoji +latin ms"
 
-LANGS="as bn bo brx doi dz gu hi km kn kok ks mai ml mr ne or pa ru sa sat sd si syc ta te th"
+LANGS="as bn bo brx doi gu hi km kn kok ks mai ml mr ne or pa ru sa sat sd si syc ta te th"
 for lang in ${LANGS}; do
 	IUSE+=" l10n_${lang}"
 done
@@ -70,7 +70,6 @@ RDEPEND="media-fonts/cantarell
 	l10n_bo? ( media-fonts/tibetan-machine-font )
 	l10n_brx? ( media-fonts/lohit-devanagari )
 	l10n_doi? ( media-fonts/lohit-devanagari )
-	l10n_dz? ( media-fonts/dzongkha-fonts )
 	l10n_gu? ( media-fonts/lohit-gujarati )
 	l10n_hi? ( media-fonts/lohit-devanagari )
 	l10n_km? ( media-fonts/khmer )
