@@ -1,0 +1,49 @@
+From 509e93de0f4d6052ff017a543aff70eb354dc590 Mon Sep 17 00:00:00 2001
+From: Isaac Muse <faceless.shop@gmail.com>
+Date: Tue, 26 Mar 2024 06:40:11 -0600
+Subject: [PATCH] Fix SmartSymbols Toc test (#2344)
+
+Fixes #2343
+---
+ tests/test_extensions/test_smartsymbols.py | 24 +++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_extensions/test_smartsymbols.py b/tests/test_extensions/test_smartsymbols.py
+index b438fb7d7..1a8688f0c 100644
+--- a/tests/test_extensions/test_smartsymbols.py
++++ b/tests/test_extensions/test_smartsymbols.py
+@@ -1,6 +1,9 @@
+ """Test cases for SmartSymbols."""
+ from .. import util
+ import markdown
++from pymdownx.__meta__ import parse_version
++
++PYMD_3_6 = parse_version(markdown.__version__) >= (3, 6, 0)
+ 
+ 
+ class TestSmartSymbols(util.MdCase):
+@@ -139,4 +142,23 @@ def test_toc_tokens(self):
+ 
+         md = markdown.Markdown(extensions=['toc', 'pymdownx.smartsymbols'])
+         md.convert('# *Foo* =/= `bar`')
+-        self.assertEqual(md.toc_tokens, [{'level': 1, 'id': 'foo-bar', 'name': 'Foo &ne; bar', 'children': []}])
++        self.assertEqual(
++            md.toc_tokens,
++            [
++                {
++                    'children': [],
++                    'data-toc-label': '',
++                    'html': '<em>Foo</em> &ne; <code>bar</code>',
++                    'id': 'foo-bar',
++                    'level': 1,
++                    'name': 'Foo &ne; bar'
++                }
++            ] if PYMD_3_6 else [
++                {
++                    'level': 1,
++                    'id': 'foo-bar',
++                    'name': 'Foo &ne; bar',
++                    'children': []
++                }
++            ]
++        )

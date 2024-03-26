@@ -32,6 +32,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/facelessuser/pymdown-extensions/issues/2343
+		"${FILESDIR}/${P}-md36.patch"
+	)
+
 	# broken on pypy3; unfortunately, the parametrization is based
 	# on indexes and these are pretty random, so we need to remove it
 	# entirely
