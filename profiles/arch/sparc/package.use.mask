@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2024-03-26)
+# net-dialup/ppp is broken on sparc, bug 918992.
+net-misc/networkmanager ppp
+
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
 # mongodb dependencies are not keyworded
 mail-mta/postfix mongodb
