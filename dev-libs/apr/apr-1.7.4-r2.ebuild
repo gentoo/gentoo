@@ -118,7 +118,7 @@ src_configure() {
 	# (May be possible to fix via libatomic linkage in future?)
 	# bug #740464
 	append-atomic-flags
-	if [[ ${LIBS} == *atomic* ]] ; then
+	if use x86 || [[ ${LIBS} == *atomic* ]] ; then
 		myconf+=( --disable-nonportable-atomics )
 	fi
 
