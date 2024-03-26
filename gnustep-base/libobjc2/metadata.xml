@@ -23,10 +23,6 @@
 		- Efficient support for @synchronized()
 		- Type-dependent dispatch, eliminating stack corruption from mismatched selectors.
 	</longdescription>
-	<use>
-		<flag name="boehm-gc">Enable Hans Boehm's garbage collector
-		(<pkg>dev-libs/boehm-gc</pkg>). Not recommended by upstream</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">gnustep/libobjc2</remote-id>
 	</upstream>
