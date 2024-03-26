@@ -681,7 +681,7 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.72
+	>=virtual/rust-1.76
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
