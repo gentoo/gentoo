@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 #https://github.com/pstavirs/ostinato/issues/173
 # libpcap dep is versioned to pull in the fix for #602098
 RDEPEND="
-	dev-libs/protobuf:=
+	<dev-libs/protobuf-22.5:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
