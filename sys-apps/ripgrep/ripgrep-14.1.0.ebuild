@@ -81,6 +81,12 @@ BDEPEND="
 
 QA_FLAGS_IGNORED="usr/bin/rg"
 
+src_prepare() {
+	default
+	# unforce static linking on musl
+	rm .cargo/config.toml || die
+}
+
 src_configure() {
 	# allow building on musl with dynamic linking support
 	# https://github.com/BurntSushi/rust-pcre2/issues/7
