@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit autotools flag-o-matic
 MY_PV="${PV/_beta/b}"
 
 DESCRIPTION="HTTP/HTML indexing and searching system"
-HOMEPAGE="http://www.htdig.org"
-SRC_URI="http://www.htdig.org/files/${PN}-${MY_PV}.tar.gz"
+HOMEPAGE="https://htdig.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
