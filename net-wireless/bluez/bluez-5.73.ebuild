@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit autotools linux-info python-single-r1 systemd udev multilib-minimal #readme.gentoo-r1
+inherit autotools flag-o-matic linux-info python-single-r1 systemd udev multilib-minimal #readme.gentoo-r1
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org https://github.com/bluez/bluez"
@@ -108,6 +108,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# unit/test-vcp test fails with LTO (bug #925745)
+	filter-lto
+
 	local myconf=(
 		# readline is automagic when client is enabled
 		# --enable-client always needs readline, bug #504038
