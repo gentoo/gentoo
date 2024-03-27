@@ -1,22 +1,23 @@
 certificate version 0.1
-pusher 0x1B55CE38F469B300! 1711526133 +1000
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1711526133-1548eb4f1caccad28e9cd96dac73fccdaf1b0ac6
+pusher Petr Vaněk <arkamar@gentoo.org> 1711526222 +0100
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1711526222-80ee09fd8bd2d73696060b7c19ff9cff356bfc44
 
-72be2e7b73c3db2c5a27546fd85ae8622bb44b6d ce49374a3c3df7571a6cd2c420d8c83b13ee88da refs/heads/master
+ce49374a3c3df7571a6cd2c420d8c83b13ee88da 504bdeccbb72080914f33c514cf4c6fbde3bc344 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQITBAABCgB9FiEEtPOGPq3mZVfDPPreG1XOOPRpswAFAmYD0PVfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEI0
-RjM4NjNFQURFNjY1NTdDMzNDRkFERTFCNTVDRTM4RjQ2OUIzMDAACgkQG1XOOPRp
-swBshQv+ITPp7BuVgrY2A5ozwcrhd87v1fmnO6IxUXCactFCifQaRaiIetP+wCoU
-xoCqnC9NKCwpCHNlcSEmh/RpH3jOQEYk/014l1m2DAMxkziptqAMUCHiM+858pf7
-q8UO7eLGXlAM8XMrknQU6QdkxiPUu6Kz96fw7QuzMify8qaQlM+55DqX/VeuZq5x
-TTTKGY8NJB6VHcI8JOOmubQyBen7KK1qF31dpEs+KzB9LhyxkCzCuuPz43Cg00GE
-JukDTes8751oI+QlX20EaKgnf9X8n3nYDw3TX52rosj7ipMe4r6gassF4Au+RzKv
-lcB8pWd6RK6xFzR1djD1g9AKYxzjKe112p6g6Bka1KFZ0lQdhaS8MYYQ0NBm6a9F
-yKvefumJy1ts3KcyziYtoNjm/RFcgdNFn+a5dqWW2Oi1PyPw7uWTAheJfO0fH2b8
-drnBrQ2Aj68dPgVaVIoGVeYLgGV8yJczTleLcYNuGAHBmctUpCws0L6YK5LyWikZ
-ClU/ocJM
-=HDSk
+iQJHBAABCAAxFiEEoDIFP/dmMcxNFBW7NR2RttffnlAFAmYD0U4THGFya2FtYXJA
+Z2VudG9vLm9yZwAKCRA1HZG219+eUFUaD/9gGdDN2/QULOo998m2v5m7FiPk3gmD
+mnIS8xbA3AQFB0un2WKNplgZO27WV6uw18W32VNT8gQ8HwmTIeppPdeByvtvepjZ
+79NxhIF58ee9IKeQpiuAFZM89J+uQA+/aL4s8fLicQf90jdHtknbkKhaIOynSOqn
+A3o/ud7hnHKv4GldGAuGsdvcnLTXQJtMU84MDDLHjIj/+9TCaZKXn+cHjNx0vqeJ
+tb4b4+Z2RJmfeXbbLcZU+rOPL68SCqXmN8rIBeWeAQH+DiePDv9i8WJmObgc/ZIi
+I/2X3VZQKZaAMnFHwpXYe7BWPB95E8xHHiOT+6YagQx+tswyYAonnCgouLksXeDk
+Y7Bcm8y0bNpZYPqueHybR6/qXn86pOhw+hOQFtwhrwEKK/8+lcNYurSU+c8AdR8a
+AolYjzqt8toAs8KiVGsD2nTou78oIjtKOLUQ4t0bFlHdelQ+eAfBQUMrJL9pY0Jv
+u74jhRV7JVFXSRyuhmcA/k/ysI+gX40LKue2PuMYOJZprdXnngvTNbIem9w2anwd
+Eo0H/vqjHSLb3U9E9jtbObCDrLg2zxj9SyNx+s/Ddt12rnznyp8XZGJFJiWj8z/B
+h2Tg/ppYxpfWo+ok+giKnF2/yzxfZr0X+KDwD3dJYg6YXpMJ+pkSdaGRbmmSUlCq
+CvjF0a2cnvTSTw==
+=ub+D
 -----END PGP SIGNATURE-----
