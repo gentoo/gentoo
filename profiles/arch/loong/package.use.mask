@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-03-27)
+# No rust-bin available for profiler
+<virtual/rust-1.73.0 profiler
+
 # Robin H. Johnson <robbat2@gentoo.org) (2024-03-13)
 # sys-cluster/corosync not yet keyworded, niche use case for mdadm
 sys-fs/mdadm corosync
