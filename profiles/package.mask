@@ -470,7 +470,7 @@ sci-libs/mpir
 ~kde-plasma/kwallet-pam-6.0.3
 ~kde-plasma/kwayland-6.0.3
 ~kde-plasma/kwayland-integration-6.0.3
-~kde-plasma/kwin-6.0.3
+~kde-plasma/kwin-6.0.3.1
 ~kde-plasma/kwrited-6.0.3
 ~kde-plasma/layer-shell-qt-6.0.3
 ~kde-plasma/libkscreen-6.0.3
