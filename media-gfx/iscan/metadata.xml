@@ -9,4 +9,7 @@
 		scanners and all-in-ones. However, the scanner driver it provides can
 		be used by any other SANE standard compliant scanner utility.
 	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">utsushi/utsushi</remote-id>
+	</upstream>
 </pkgmetadata>
