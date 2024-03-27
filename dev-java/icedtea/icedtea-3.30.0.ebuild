@@ -52,16 +52,9 @@ HOMEPAGE="https://icedtea.classpath.org"
 SRC_PKG="${ICEDTEA_PKG}.tar.xz"
 SRC_URI="
 	https://icedtea.classpath.org/download/source/${SRC_PKG}
-	${ICEDTEA_URL}/openjdk.tar.xz -> ${OPENJDK_GENTOO_TARBALL}
-	${ICEDTEA_URL}/corba.tar.xz -> ${CORBA_GENTOO_TARBALL}
-	${ICEDTEA_URL}/jaxp.tar.xz -> ${JAXP_GENTOO_TARBALL}
-	${ICEDTEA_URL}/jaxws.tar.xz -> ${JAXWS_GENTOO_TARBALL}
-	${ICEDTEA_URL}/jdk.tar.xz -> ${JDK_GENTOO_TARBALL}
-	${ICEDTEA_URL}/hotspot.tar.xz -> ${HOTSPOT_GENTOO_TARBALL}
-	${ICEDTEA_URL}/nashorn.tar.xz -> ${NASHORN_GENTOO_TARBALL}
-	${ICEDTEA_URL}/langtools.tar.xz -> ${LANGTOOLS_GENTOO_TARBALL}
-	shenandoah? ( ${ICEDTEA_URL}/shenandoah.tar.xz -> ${SHENANDOAH_GENTOO_TARBALL} )
-	arm? ( ${ICEDTEA_URL}/aarch32.tar.xz -> ${AARCH32_GENTOO_TARBALL} )
+	${ICEDTEA_URL}/openjdk-git.tar.xz -> ${OPENJDK_GENTOO_TARBALL}
+	shenandoah? ( ${ICEDTEA_URL}/shenandoah-git.tar.xz -> ${SHENANDOAH_GENTOO_TARBALL} )
+	arm? ( ${ICEDTEA_URL}/aarch32-git.tar.xz -> ${AARCH32_GENTOO_TARBALL} )
 	${DROP_URL}/cacao/${CACAO_TARBALL} -> ${CACAO_GENTOO_TARBALL}
 	${DROP_URL}/jamvm/${JAMVM_TARBALL} -> ${JAMVM_GENTOO_TARBALL}"
 
@@ -104,9 +97,8 @@ COMMON_DEP="
 	media-libs/fontconfig:1.0=
 	>=media-libs/freetype-2.5.3:2=
 	>=sys-libs/zlib-1.2.3
-	virtual/jpeg:0=
+	media-libs/libjpeg-turbo
 	gtk? (
-		>=dev-libs/atk-1.30.0
 		>=x11-libs/cairo-1.8.8
 		x11-libs/gdk-pixbuf:2
 		>=x11-libs/gtk+-2.8:2
@@ -214,15 +206,6 @@ src_configure() {
 	export LANG="C" LC_ALL="C"
 
 	local cacao_config config hotspot_port hs_config jamvm_config use_cacao use_jamvm use_zero zero_config
-	local vm=$(java-pkg_get-current-vm)
-
-	# gcj-jdk ensures ecj is present.
-	if use jbootstrap || has "${vm}" gcj-jdk; then
-		use jbootstrap || einfo "bootstrap is necessary when building with ${vm}, ignoring USE=\"-jbootstrap\""
-		config+=" --enable-bootstrap"
-	else
-		config+=" --disable-bootstrap"
-	fi
 
 	# Use Zero if requested
 	if use zero; then
@@ -263,8 +246,6 @@ src_configure() {
 	else
 		if use arm ; then
 			hs_config="--with-hotspot-src-zip="${DISTDIR}/${AARCH32_GENTOO_TARBALL}""
-		else
-			hs_config="--with-hotspot-src-zip="${DISTDIR}/${HOTSPOT_GENTOO_TARBALL}""
 		fi
 	fi
 
@@ -310,12 +291,6 @@ src_configure() {
 	# force bash for now https://bugs.gentoo.org/722292
 	CONFIG_SHELL="${EPREFIX}/bin/bash" econf ${config} \
 		--with-openjdk-src-zip="${DISTDIR}/${OPENJDK_GENTOO_TARBALL}" \
-		--with-corba-src-zip="${DISTDIR}/${CORBA_GENTOO_TARBALL}" \
-		--with-jaxp-src-zip="${DISTDIR}/${JAXP_GENTOO_TARBALL}" \
-		--with-jaxws-src-zip="${DISTDIR}/${JAXWS_GENTOO_TARBALL}" \
-		--with-jdk-src-zip="${DISTDIR}/${JDK_GENTOO_TARBALL}" \
-		--with-langtools-src-zip="${DISTDIR}/${LANGTOOLS_GENTOO_TARBALL}" \
-		--with-nashorn-src-zip="${DISTDIR}/${NASHORN_GENTOO_TARBALL}" \
 		--with-cacao-src-zip="${DISTDIR}/${CACAO_GENTOO_TARBALL}" \
 		--with-jamvm-src-zip="${DISTDIR}/${JAMVM_GENTOO_TARBALL}" \
 		--with-jdk-home="$(java-config -O)" \
@@ -330,6 +305,7 @@ src_configure() {
 		$(use_enable !headless-awt system-gif) \
 		$(use_enable !headless-awt system-png) \
 		$(use_enable doc docs) \
+		$(use_enable jbootstrap bootstrap) \
 		$(use_enable kerberos system-kerberos) \
 		$(use_enable system-lcms) \
 		$(use_with pax-kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
