@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt WebChannel"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~x86"
 fi
 
 IUSE="qml"
