@@ -55,7 +55,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/fortran
 	app-shells/bash
 	python? (
 		$(python_gen_cond_dep '
