@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourcehut">~grimler/Heimdall</remote-id>
+		<remote-id type="github">Benjamin-Dobell/Heimdall</remote-id>
 	</upstream>
 </pkgmetadata>
