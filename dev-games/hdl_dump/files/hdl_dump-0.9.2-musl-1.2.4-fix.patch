@@ -1,0 +1,135 @@
+Starting in Musl 1.2.4, it begins to error on LFS64 workarounds
+(off64_t, etc.) so we have to revert those to their normal names
+and add -D_FILE_OFFSET_BITS=64 to CFLAGS.
+
+https://musl.libc.org/releases.html
+
+diff --git a/osal_unix.c b/osal_unix.c
+index a4f7070..9d529c1 100644
+--- a/osal_unix.c
++++ b/osal_unix.c
+@@ -86,7 +86,7 @@ osal_open (const char *name,
+ 	   osal_handle_t *handle,
+ 	   int no_cache)
+ {
+-  handle->desc = open64 (name, O_RDONLY | O_LARGEFILE, 0);
++  handle->desc = open (name, O_RDONLY | O_LARGEFILE, 0);
+   return (handle->desc == -1 ? OSAL_ERR : OSAL_OK);
+ }
+ 
+@@ -108,21 +108,21 @@ osal_create_file (const char *path,
+ 		  u_int64_t estimated_size)
+ {
+   int result = RET_ERR;
+-  handle->desc = open64 (path,
++  handle->desc = open (path,
+ 			 O_CREAT | O_EXCL | O_LARGEFILE | O_RDWR,
+ 			 S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+   if (handle->desc != -1)
+     { /* success */
+       if (estimated_size > 0)
+ 	{
+-	  off64_t offs = lseek64 (handle->desc, estimated_size - 1, SEEK_END);
++	  off_t offs = lseek (handle->desc, estimated_size - 1, SEEK_END);
+ 	  if (offs != -1)
+ 	    {
+ 	      char dummy = '\0';
+ 	      u_int32_t bytes = write (handle->desc, &dummy, 1);
+ 	      if (bytes == 1)
+ 		{
+-		  offs = lseek64 (handle->desc, 0, SEEK_SET);
++		  offs = lseek (handle->desc, 0, SEEK_SET);
+ 		  if (offs == 0)
+ 		    { /* success */
+ 		      result = RET_OK;
+@@ -151,19 +151,19 @@ int /* OSAL_OK, OSAL_ERR */
+ osal_get_estimated_device_size (osal_handle_t handle,
+ 				u_int64_t *size_in_bytes)
+ {
+-  struct stat64 st;
++  struct stat st;
+   int result;
+-  memset (&st, 0, sizeof (struct stat64)); /* play on the safe side */
+-  result = fstat64 (handle.desc, &st) == 0 ? RET_OK : RET_ERR;
++  memset (&st, 0, sizeof (struct stat)); /* play on the safe side */
++  result = fstat (handle.desc, &st) == 0 ? RET_OK : RET_ERR;
+   if (result == RET_OK)
+     { /* success */
+       *size_in_bytes = st.st_size; /* might be 0 for block devices? */
+       if (*size_in_bytes == 0)
+ 	{ /* try with lseek... */
+-	  off64_t curr = lseek64 (handle.desc, 0, SEEK_CUR);
++	  off_t curr = lseek (handle.desc, 0, SEEK_CUR);
+ 	  if (curr >= 0)
+ 	    {
+-	      off64_t size = lseek64 (handle.desc, 0, SEEK_END);
++	      off_t size = lseek (handle.desc, 0, SEEK_END);
+ #if defined (__APPLE__)
+ 	      /* patch for MacOS X + external USB HDD box by G.S. */
+ 	      if (size == 0)
+@@ -192,7 +192,7 @@ osal_get_estimated_device_size (osal_handle_t handle,
+ 	      if (size >= 0)
+ 		{
+ 		  *size_in_bytes = size;
+-		  result = (lseek64 (handle.desc, curr, SEEK_SET) >= 0 ?
++		  result = (lseek (handle.desc, curr, SEEK_SET) >= 0 ?
+ 			    OSAL_OK : OSAL_ERR);
+ 		}
+ 	      else
+@@ -232,8 +232,8 @@ int
+ osal_get_volume_sect_size (const char *volume_root,
+ 			   u_int32_t *size_in_bytes)
+ {
+-  struct stat64 st;
+-  int result = stat64 (volume_root, &st) == 0 ? RET_OK : RET_ERR;
++  struct stat st;
++  int result = stat (volume_root, &st) == 0 ? RET_OK : RET_ERR;
+   if (result == RET_OK)
+     *size_in_bytes = st.st_blksize; 
+   return (result);
+@@ -245,13 +245,13 @@ int
+ osal_get_file_size (osal_handle_t handle,
+ 		    u_int64_t *size_in_bytes)
+ {
+-  off64_t offs_curr = lseek64 (handle.desc, 0, SEEK_CUR);
++  off_t offs_curr = lseek (handle.desc, 0, SEEK_CUR);
+   if (offs_curr != -1)
+     {
+-      off64_t offs_end = lseek64 (handle.desc, 0, SEEK_END);
++      off_t offs_end = lseek (handle.desc, 0, SEEK_END);
+       if (offs_end != -1)
+ 	{
+-	  if (lseek64 (handle.desc, offs_curr, SEEK_SET) == offs_curr)
++	  if (lseek (handle.desc, offs_curr, SEEK_SET) == offs_curr)
+ 	    { /* success */
+ 	      *size_in_bytes = offs_end;
+ 	      return (RET_OK);
+@@ -283,7 +283,7 @@ int
+ osal_seek (osal_handle_t handle,
+ 	   u_int64_t abs_pos)
+ {
+-  return (lseek64 (handle.desc, abs_pos, SEEK_SET) == -1 ? OSAL_ERR : OSAL_OK);
++  return (lseek (handle.desc, abs_pos, SEEK_SET) == -1 ? OSAL_ERR : OSAL_OK);
+ }
+ 
+ 
+@@ -364,7 +364,7 @@ osal_mmap (osal_mmap_t **mm,
+ 
+       offset -= align;
+       length += align;
+-      addr = mmap64 (NULL, length, PROT_READ, MAP_SHARED,
++      addr = mmap (NULL, length, PROT_READ, MAP_SHARED,
+ 		     handle.desc, offset);
+       if (addr != MAP_FAILED)
+ 	{ /* success */
+@@ -443,8 +443,8 @@ int /* RET_OK, RET_BAD_FORMAT, RET_BAD_DEVICE */
+ osal_map_device_name (const char *input,
+ 		      char output [MAX_PATH])
+ {
+-  struct stat64 st;
+-  int result = stat64 (input, &st) == 0 ? RET_OK : RET_ERR;
++  struct stat st;
++  int result = stat (input, &st) == 0 ? RET_OK : RET_ERR;
+   if (result == RET_OK)
+     { /* accept the input, only if it is a block device */
+ #if !defined (_DEBUG) /* in debug mode treat files as devices */
