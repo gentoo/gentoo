@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit check-reqs cmake optfeature python-single-r1 xdg
+inherit check-reqs cmake flag-o-matic optfeature python-single-r1 xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
@@ -162,6 +162,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/875221
+	# https://github.com/FreeCAD/FreeCAD/issues/13173
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_ADDONMGR=$(usex addonmgr)
 		-DBUILD_ARCH=ON
