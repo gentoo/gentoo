@@ -215,8 +215,9 @@ src_prepare() {
 
 	cd "${S}" || die
 
+	TL_KPATHSEA_INCLUDES=$($(tc-getPKG_CONFIG) kpathsea --variable=includedir || die "failed to invoke pkg-config")
 	sed -i \
-		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,$($(tc-getPKG_CONFIG) kpathsea --variable=includedir)\"," \
+		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${TL_KPATHSEA_INCLUDES}\"," \
 		texk/web2c/configure || die
 
 	local patch_dir="${WORKDIR}/tex-patches-${GENTOO_TEX_PATCHES_NUM}"
@@ -252,6 +253,7 @@ src_configure() {
 		--with-system-libpng
 		--with-system-teckit
 		--with-system-kpathsea
+		--with-kpathsea-includes="${TL_KPATHSEA_INCLUDES}"
 		--with-system-icu
 		--with-system-ptexenc
 		--with-system-harfbuzz
