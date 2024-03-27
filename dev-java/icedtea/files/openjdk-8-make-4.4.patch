@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/882611
+https://build.opensuse.org/package/view_file/openSUSE:Factory/java-1_8_0-openjdk/make-jobserver-detection.patch?expand=1
+--- openjdk/make/MakeHelpers.gmk
++++ openjdk/make/MakeHelpers.gmk
+@@ -145,7 +145,7 @@ endef
+ 
+ # Hook to be called as the very first thing when running a normal build
+ define AtMakeStart
+-	$(if $(findstring --jobserver,$(MAKEFLAGS)),$(error make -j is not supported, use make JOBS=n))
++	$(if $(findstring jobserver,$(.FEATURES)),,$(error make -j is not supported, use make JOBS=n))
+ 	$(call CheckEnvironment)
+ 	@$(PRINTF) $(LOG_INFO) "Running make as '$(MAKE) $(MFLAGS) $(MAKE_ARGS)'\n"
+ 	@$(PRINTF) "Building $(PRODUCT_NAME) for target '$(call GetRealTarget)' in configuration '$(CONF_NAME)'\n\n"
