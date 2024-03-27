@@ -200,8 +200,7 @@ pkg_postinst() {
 		ewarn "be a warning on startup, and may optionally want to backup first."
 	fi
 
-	# only show Qt6 warning on arches where USE=qt6 is unmasked
-	if use amd64 && use !qt6; then
+	if use !qt6; then
 		ewarn
 		ewarn "USE=qt6 is disabled, be warned that Qt5's WebEngine uses an older"
 		ewarn "chromium version. While it is relatively maintained for security, it will"
