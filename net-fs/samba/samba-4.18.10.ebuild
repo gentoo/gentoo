@@ -146,6 +146,7 @@ BDEPEND="${PYTHON_DEPS}
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.18.4-pam.patch
 	"${FILESDIR}"/ldb-2.5.2-skip-wav-tevent-check.patch
+	"${FILESDIR}"/cmocka-config_h.patch
 )
 
 CONFDIR="${FILESDIR}/4.4"
