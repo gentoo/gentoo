@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.0-fix-gzseek64-not-found.patch
+	"${FILESDIR}"/${PN}-0.11.0-bashisms-configure.patch
 )
 
 src_prepare() {
