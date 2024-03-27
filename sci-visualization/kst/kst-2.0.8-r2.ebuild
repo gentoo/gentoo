@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_P=Kst-${PV}
-inherit cmake xdg-utils
+inherit cmake flag-o-matic xdg-utils
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
 HOMEPAGE="https://kst-plot.kde.org/ https://invent.kde.org/graphics/kst-plot"
@@ -50,6 +50,11 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type=-mismatch
+	# https://bugs.gentoo.org/863296
+	# https://bugs.kde.org/show_bug.cgi?id=484572
+	filter-lto
+
 	local mycmakeargs=(
 		-Dkst_install_libdir="$(get_libdir)"
 		-Dkst_pch=OFF
