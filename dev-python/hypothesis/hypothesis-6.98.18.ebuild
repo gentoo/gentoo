@@ -59,7 +59,12 @@ python_test() {
 
 	# NB: paths need to be relative to pytest.ini,
 	# i.e. start with hypothesis-python/
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# regressions with <dev-python/pytest-8
+		# https://bugs.gentoo.org/927889
+		hypothesis-python/tests/cover/test_error_in_draw.py::test_adds_note_showing_which_strategy
+		hypothesis-python/tests/cover/test_error_in_draw.py::test_adds_note_showing_which_strategy_stateful
+	)
 	case ${EPYTHON} in
 		pypy3)
 			EPYTEST_DESELECT+=(
