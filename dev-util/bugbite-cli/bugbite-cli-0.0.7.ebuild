@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cargo edo shell-completion
 
-DESCRIPTION="library for bug, issue, and ticket mangling"
+DESCRIPTION="A command line tool for bug, issue, and ticket mangling"
 HOMEPAGE="https://github.com/radhermit/bugbite"
 SRC_URI="https://github.com/radhermit/bugbite/releases/download/${P}/${P}.tar.xz"
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 Unlicense ZLIB"
