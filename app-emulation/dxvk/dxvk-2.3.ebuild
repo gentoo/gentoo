@@ -92,6 +92,11 @@ src_prepare() {
 src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
+	# random segfaults been reported with LTO in some games, filter as
+	# a safety (note that optimizing this further won't really help
+	# performance, GPU does the actual work)
+	filter-lto
+
 	# -mavx with mingw-gcc has a history of obscure issues and
 	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
 	# crashes with -march=skylake >=wine-8.10, similar issues with
