@@ -6,6 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">sshlien/abcmidi</remote-id>
 		<remote-id type="sourceforge">abc</remote-id>
 	</upstream>
 </pkgmetadata>
