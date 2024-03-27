@@ -24,14 +24,16 @@ BDEPEND="
 	dev-lang/perl
 "
 
-[[ -n ${PATCH_VER} ]] && PATCHES=( "${WORKDIR}"/${PATCH_PV} )
-
 src_unpack() {
 	# Avoid kernel-2_src_unpack
 	default
 }
 
 src_prepare() {
+	local PATCHES=()
+	[[ -n ${PATCH_VER} ]] && PATCHES+=( "${WORKDIR}"/${PATCH_PV} )
+	PATCHES+=( "${FILESDIR}"/${PN}-sparc-move-struct-termio-to-asm-termios.h.patch )
+
 	# TODO: May need forward porting to newer versions
 	use elibc_musl && PATCHES+=(
 		"${FILESDIR}"/${PN}-5.15-remove-inclusion-sysinfo.h.patch
