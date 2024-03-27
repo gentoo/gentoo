@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,25 +20,27 @@ LICENSE="LGPL-2.1"
 SLOT="0/2"
 IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
 
-RDEPEND="
+COMMON_DEPEND="
 	>=dev-libs/libudfread-1.1.0[${MULTILIB_USEDEP}]
 	aacs? ( >=media-libs/libaacs-0.6.0[${MULTILIB_USEDEP}] )
 	bdplus? ( media-libs/libbdplus[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.8:* )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
 "
 DEPEND="
-	${RDEPEND}
-	java? ( >=virtual/jdk-1.8:* )
+	${COMMON_DEPEND}
+	java? (
+		>=dev-java/ant-1.10.14-r3:0
+		>=virtual/jdk-1.8:*
+	)
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.8:* )
 "
 BDEPEND="
 	virtual/pkgconfig
-	java? (
-		dev-java/ant-core
-		>=virtual/jdk-1.8:*
-	)
 "
 
 PATCHES=(
