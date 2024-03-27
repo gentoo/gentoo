@@ -72,6 +72,11 @@ if [[ ${PV} != *9999 ]] ; then
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-mkvtoolnix )"
 fi
 
+PATCHES=(
+	# https://bugs.gentoo.org/927380
+	"${FILESDIR}"/mkvtoolnix-83.0.0-fix-disable-gui.patch
+)
+
 src_prepare() {
 	default
 
