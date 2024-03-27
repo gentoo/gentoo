@@ -8,8 +8,8 @@ inherit autotools flag-o-matic
 MY_PV="${PV/_beta/b}"
 
 DESCRIPTION="HTTP/HTML indexing and searching system"
-HOMEPAGE="http://www.htdig.org"
-SRC_URI="http://www.htdig.org/files/${PN}-${MY_PV}.tar.gz"
+HOMEPAGE="https://htdig.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
