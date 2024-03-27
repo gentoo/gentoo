@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Location (places, maps, navigation) library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 RDEPEND="
