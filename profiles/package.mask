@@ -895,12 +895,6 @@ sys-libs/libhugetlbfs
 # Removal on 2024-03-04.  Bug #923701.
 dev-python/flask-gravatar
 
-# Michał Górny <mgorny@gentoo.org> (2024-01-31)
-# Breaks some plugins and a variety of test suites.  Upstream seems
-# to be planning to improve compatibility a bit.  Masking for testing
-# by the Python team.
->=dev-python/pytest-8
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
 # app-misc/ddcutil-2.1.0 causes core-dump crashes in
 # kde-plasma/powerdevil[brightness-control].
