@@ -329,7 +329,10 @@ multilib_src_configure() {
 		append-flags $(test-flags-CXX -fno-ipa-sra -fno-ipa-modref -fno-ipa-icf)
 	fi
 
-	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
+	# ODR violations (bug #917536, bug #926529). Just do it for GCC for now
+	# to avoid people grumbling. GCC is, anecdotally, more likely to miscompile
+	# LLVM with LTO anyway (which is not necessarily its fault).
+	tc-is-gcc && filter-lto
 
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
