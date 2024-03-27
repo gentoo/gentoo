@@ -12,6 +12,7 @@
   provide a fast, simple format for storing and reading data.
   </longdescription>
   <upstream>
+    <remote-id type="github">ketiltrout/getdata</remote-id>
     <remote-id type="sourceforge">getdata</remote-id>
   </upstream>
 </pkgmetadata>
