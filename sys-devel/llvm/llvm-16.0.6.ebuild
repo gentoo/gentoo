@@ -324,6 +324,11 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	if use ppc && tc-is-gcc && [[ $(gcc-major-version) -lt 14 ]]; then
+		# Workaround for bug #880677
+		append-flags $(test-flags-CXX -fno-ipa-sra -fno-ipa-modref -fno-ipa-icf)
+	fi
+
 	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
 
 	local ffi_cflags ffi_ldflags
