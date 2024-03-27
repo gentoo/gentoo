@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 cxx debug flac fortran lzma perl static-libs"
 
 DEPEND="
+	dev-libs/libltdl
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )

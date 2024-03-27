@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 cxx debug flac fortran lzma perl static-libs"
 
 DEPEND="
+	dev-libs/libltdl
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )
