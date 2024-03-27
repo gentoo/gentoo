@@ -15,7 +15,7 @@ LICENSE="MIT"
 SLOT="0/0.1.4.4"
 KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 
-IUSE="qt5 qt6"
+IUSE="+qt5 qt6"
 REQUIRED_USE="|| ( qt5 qt6 )"
 
 RDEPEND="
