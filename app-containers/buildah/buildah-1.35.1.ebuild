@@ -44,6 +44,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
 
+PATCHES=(
+	"${FILESDIR}"/dont-call-as-directly-upstream-pr-5436.patch
+)
+
 pkg_pretend() {
 	local CONFIG_CHECK=""
 	use btrfs && CONFIG_CHECK+=" ~BTRFS_FS"
