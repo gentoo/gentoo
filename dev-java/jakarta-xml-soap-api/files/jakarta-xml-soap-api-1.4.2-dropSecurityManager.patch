@@ -1,0 +1,11 @@
+bug #923606
+--- a/api/src/test/java/javax/xml/soap/test/SAAJFactoryTest.java
++++ b/api/src/test/java/javax/xml/soap/test/SAAJFactoryTest.java
+@@ -167,7 +167,6 @@ public class SAAJFactoryTest {
+     private void enableSM() {
+         System.setSecurityManager(null);
+         System.setProperty("java.security.policy", classesDir + "javax/xml/soap/test.policy");
+-        System.setSecurityManager(new SecurityManager());
+     }
+ 
+     protected MessageFactory factory() throws Throwable {
