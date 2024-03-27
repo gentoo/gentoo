@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="Library for reading and writing matlab files"
 HOMEPAGE="https://sourceforge.net/projects/matio/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -17,6 +19,11 @@ RDEPEND="
 	hdf5? ( sci-libs/hdf5:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( virtual/latex-base )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \
