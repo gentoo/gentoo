@@ -11,5 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">docbook</remote-id>
+		<remote-id type="github">docbook/wiki</remote-id>
 	</upstream>
 </pkgmetadata>
