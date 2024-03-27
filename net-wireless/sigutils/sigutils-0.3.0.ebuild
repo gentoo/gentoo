@@ -17,6 +17,7 @@ IUSE=""
 DEPEND="
 	sci-libs/fftw:3.0=
 	sci-libs/volk:=
+	media-libs/libsndfile:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
