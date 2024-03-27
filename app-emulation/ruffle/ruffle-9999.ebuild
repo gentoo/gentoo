@@ -51,9 +51,6 @@ src_unpack() {
 }
 
 src_configure() {
-	# see .cargo/config.toml, only needed if RUSTFLAGS is set by the user
-	[[ -v RUSTFLAGS ]] && RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
-
 	local workspaces=(
 		ruffle_{desktop,scanner}
 		exporter
