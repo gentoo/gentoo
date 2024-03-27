@@ -26,7 +26,7 @@ PDEPEND="
 	!default-compiler-rt? ( sys-devel/gcc )
 	default-libcxx? ( >=sys-libs/libcxx-${PV}[static-libs] )
 	!default-libcxx? ( sys-devel/gcc )
-	default-lld? ( sys-devel/lld )
+	default-lld? ( >=sys-devel/lld-${PV} )
 	!default-lld? ( sys-devel/binutils )
 "
 IDEPEND="
