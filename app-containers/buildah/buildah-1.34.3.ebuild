@@ -44,6 +44,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
 
+PATCHES=(
+	"${T}"/dont-call-as-directly-upstream-pr-5436.patch
+)
+
 pkg_pretend() {
 	local CONFIG_CHECK=""
 	use btrfs && CONFIG_CHECK+=" ~BTRFS_FS"
@@ -53,6 +57,27 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	cat <<'EOF' > "${T}/dont-call-as-directly-upstream-pr-5436.patch"
+--- a/Makefile
++++ b/Makefile
+@@ -10,6 +10,7 @@
+ BASHINSTALLDIR = $(PREFIX)/share/bash-completion/completions
+ BUILDFLAGS := -tags "$(BUILDTAGS)"
+ BUILDAH := buildah
++AS ?= as
+
+ GO := go
+ GO_LDFLAGS := $(shell if $(GO) version|grep -q gccgo; then echo "-gccgoflags"; else echo "-ldflags"; fi)
+@@ -77,7 +77,7 @@
+ bin/buildah: $(SOURCES) cmd/buildah/*.go internal/mkcw/embed/entrypoint_amd64.gz
+	$(GO_BUILD) $(BUILDAH_LDFLAGS) $(GO_GCFLAGS) "$(GOGCFLAGS)" -o $@ $(BUILDFLAGS) ./cmd/buildah
+
+-ifneq ($(shell as --version | grep x86_64),)
++ifneq ($(shell $(AS) --version | grep x86_64),)
+ internal/mkcw/embed/entrypoint_amd64.gz: internal/mkcw/embed/entrypoint_amd64
+	gzip -k9nf $^
+EOF
+
 	default
 
 	# ensure all  necessary files are there
