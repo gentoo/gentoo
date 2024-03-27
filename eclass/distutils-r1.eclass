@@ -124,8 +124,6 @@ esac
 #
 # - pbr - pbr backend
 #
-# - pdm - pdm.pep517 backend
-#
 # - pdm-backend - pdm.backend backend
 #
 # - poetry - poetry-core backend
@@ -230,7 +228,7 @@ _distutils_set_globals() {
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.17.0[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.21.1[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -240,7 +238,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-1.0.1[${PYTHON_USEDEP}]
+					>=dev-util/maturin-1.4.0[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -249,42 +247,37 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.13.1[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.15.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-5.11.1[${PYTHON_USEDEP}]
-				'
-				;;
-			pdm)
-				bdep+='
-					>=dev-python/pdm-pep517-1.1.4[${PYTHON_USEDEP}]
+					>=dev-python/pbr-6.0.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm-backend)
 				bdep+='
-					>=dev-python/pdm-backend-2.1.0[${PYTHON_USEDEP}]
+					>=dev-python/pdm-backend-2.1.8[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.6.1[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			scikit-build-core)
 				bdep+='
-					>=dev-python/scikit-build-core-0.4.6[${PYTHON_USEDEP}]
+					>=dev-python/scikit-build-core-0.8.2[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-67.8.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.7.9[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.8.3[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -299,7 +292,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-67.8.0-r1[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-69.0.3[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -508,7 +501,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps=">=dev-python/sphinx-5.3.0[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-7.2.6[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -532,7 +525,7 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in ">=dev-python/sphinx-5.3.0" \
+			for p in ">=dev-python/sphinx-7.2.6" \
 				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
 			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
@@ -540,7 +533,7 @@ distutils_enable_sphinx() {
 			done
 		}
 	else
-		deps=">=dev-python/sphinx-5.3.0"
+		deps=">=dev-python/sphinx-7.2.6"
 	fi
 
 	sphinx_compile_all() {
@@ -579,8 +572,6 @@ distutils_enable_sphinx() {
 # with the specified test runner.  Also copies the current value
 # of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
 #
-# - nose: nosetests (dev-python/nose)
-#
 # - pytest: dev-python/pytest
 #
 # - setup.py: setup.py test (no deps included)
@@ -615,29 +606,33 @@ distutils_enable_tests() {
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
 	local test_deps=${RDEPEND}
-	local test_pkgs
 	case ${1} in
-		nose)
-			test_pkgs='>=dev-python/nose-1.3.7_p20221026[${PYTHON_USEDEP}]'
-			;;
 		pytest)
-			test_pkgs='>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]'
+			local test_pkgs='>=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
 				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
 			fi
 			if [[ ${EPYTEST_XDIST} ]]; then
 				test_pkgs+=' dev-python/pytest-xdist[${PYTHON_USEDEP}]'
 			fi
+
+			if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+				test_deps+=" ${test_pkgs//'${PYTHON_USEDEP}'/${PYTHON_USEDEP}}"
+			else
+				test_deps+=" $(python_gen_cond_dep "
+					${test_pkgs}
+				")"
+			fi
 			;;
 		setup.py)
 			;;
 		unittest)
 			# unittest-or-fail is needed in py<3.12
-			test_deps+="
-				$(python_gen_cond_dep '
+			local test_pkgs="$(python_gen_cond_dep '
 					dev-python/unittest-or-fail[${PYTHON_USEDEP}]
-				' 3.10 3.11)
-			"
+				' 3.10 3.11
+			)"
+			[[ -n ${test_pkgs} ]] && test_deps+=" ${test_pkgs}"
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -646,15 +641,6 @@ distutils_enable_tests() {
 	_DISTUTILS_TEST_RUNNER=${1}
 	python_test() { distutils-r1_python_test; }
 
-	if [[ -n ${test_pkgs} ]]; then
-		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-			test_deps+=" ${test_pkgs//'${PYTHON_USEDEP}'/${PYTHON_USEDEP}}"
-		else
-			test_deps+=" $(python_gen_cond_dep "
-				${test_pkgs}
-			")"
-		fi
-	fi
 	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
@@ -1002,12 +988,6 @@ _distutils-r1_print_package_versions() {
 					dev-python/wheel
 				)
 				;;
-			pdm)
-				packages+=(
-					dev-python/pdm-pep517
-					dev-python/setuptools
-				)
-				;;
 			pdm-backend)
 				packages+=(
 					dev-python/pdm-backend
@@ -1214,11 +1194,8 @@ _distutils-r1_backend_to_key() {
 		pbr.build)
 			echo pbr
 			;;
-		pdm.backend)
+		pdm.backend|pdm.pep517.api)
 			echo pdm-backend
-			;;
-		pdm.pep517.api)
-			echo pdm
 			;;
 		poetry.core.masonry.api|poetry.masonry.api)
 			echo poetry
@@ -1280,6 +1257,9 @@ _distutils-r1_get_backend() {
 			flit.buildapi)
 				new_backend=flit_core.buildapi
 				;;
+			pdm.pep517.api)
+				new_backend=pdm.backend
+				;;
 			poetry.masonry.api)
 				new_backend=poetry.core.masonry.api
 				;;
@@ -1334,14 +1314,23 @@ distutils_wheel_install() {
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
-	# remove installed licenses
+	# remove installed licenses and other junk
 	find "${root}$(python_get_sitedir)" -depth \
-		\( -path '*.dist-info/COPYING*' \
-		-o -path '*.dist-info/LICENSE*' \
+		\( -ipath '*.dist-info/AUTHORS*' \
+		-o -ipath '*.dist-info/CHANGELOG*' \
+		-o -ipath '*.dist-info/CODE_OF_CONDUCT*' \
+		-o -ipath '*.dist-info/COPYING*' \
+		-o -ipath '*.dist-info/*LICEN[CS]E*' \
+		-o -ipath '*.dist-info/NOTICE*' \
+		-o -ipath '*.dist-info/*Apache*' \
+		-o -ipath '*.dist-info/*GPL*' \
+		-o -ipath '*.dist-info/*MIT*' \
+		-o -path '*.dist-info/RECORD' \
 		-o -path '*.dist-info/license_files/*' \
 		-o -path '*.dist-info/license_files' \
 		-o -path '*.dist-info/licenses/*' \
 		-o -path '*.dist-info/licenses' \
+		-o -path '*.dist-info/zip-safe' \
 		\) -delete || die
 }
 
@@ -1607,9 +1596,6 @@ distutils-r1_python_test() {
 	fi
 
 	case ${_DISTUTILS_TEST_RUNNER} in
-		nose)
-			"${EPYTHON}" -m nose -v "${@}"
-			;;
 		pytest)
 			epytest
 			;;
