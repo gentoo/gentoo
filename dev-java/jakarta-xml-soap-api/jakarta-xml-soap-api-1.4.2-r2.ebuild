@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="SOAP with Attachments API for Java (SAAJ) API (Eclipse Project for JAX-WS)"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jaxws"
 SRC_URI="https://github.com/jakartaee/saaj-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/saaj-api-${PV}"
 
 # EDL-1.0 equivalent to BSD
 # - 'SPDX-License-Identifier: BSD-3-Clause' in source files' headers
@@ -35,7 +36,9 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
-S="${WORKDIR}/saaj-api-${PV}"
+PATCHES=(
+	"${FILESDIR}/jakarta-xml-soap-api-1.4.2-dropSecurityManager.patch"
+)
 
 JAVA_SRC_DIR="api/src/main/java"
 
@@ -46,7 +49,7 @@ JAVA_TEST_EXTRA_ARGS=( -Xbootclasspath/a:target/classes )
 
 DOCS=( CONTRIBUTING.md NOTICE.md README.md )
 
-src_install() {
-	java-pkg-simple_src_install
-	einstalldocs # https://bugs.gentoo.org/789582
+src_prepare() {
+	default #780585
+	java-pkg-2_src_prepare
 }
