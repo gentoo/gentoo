@@ -9,7 +9,7 @@ EAPI=8
 #
 # Also recommend subscribing to the coreutils and bug-coreutils MLs.
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/coreutils.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).170-7b206"
+	MY_SNAPSHOT="$(ver_cut 1-2).185-541b02"
 	SRC_URI="https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
