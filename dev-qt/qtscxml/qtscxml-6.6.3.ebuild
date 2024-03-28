@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="State Chart XML (SCXML) support library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
 IUSE="qml"
