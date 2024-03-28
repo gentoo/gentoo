@@ -18,6 +18,7 @@ HOMEPAGE="
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/hepcedar/rivet"
+	EGIT_BRANCH="release-3-1-x"
 else
 	SRC_URI="https://www.hepforge.org/archive/rivet/${MY_PF}.tar.gz -> ${P}.tar.gz"
 	S=${WORKDIR}/${MY_PF}

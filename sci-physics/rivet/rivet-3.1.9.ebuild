@@ -32,11 +32,12 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+# <sci-physics/hepmc-3.2.7 due to https://gitlab.com/hepcedar/rivet/-/issues/414
 RDEPEND="
 	>=sci-physics/fastjet-3.4.0[plugins]
 	>=sci-physics/fastjet-contrib-1.048
 	hepmc2? ( sci-physics/hepmc:2=[-cm(-),gev(+)] )
-	hepmc3? ( sci-physics/hepmc:3=[-cm(-),gev(+)] )
+	hepmc3? ( <sci-physics/hepmc-3.2.7:3=[-cm(-),gev(+)] )
 
 	sci-libs/gsl
 	zlib? ( sys-libs/zlib )
