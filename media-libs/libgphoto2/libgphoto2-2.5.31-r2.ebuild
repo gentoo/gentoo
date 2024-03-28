@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples exif gd jpeg nls serial"
 
 # By default, drivers for all supported cameras will be compiled.
@@ -59,7 +59,7 @@ RDEPEND="
 	cameras_st2205? ( >=media-libs/gd-2.0.35-r4:=[${MULTILIB_USEDEP}] )
 	exif? ( >=media-libs/libexif-0.6.21-r1[${MULTILIB_USEDEP}] )
 	gd? ( >=media-libs/gd-2.0.35-r4:=[jpeg=,${MULTILIB_USEDEP}] )
-	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	serial? ( >=dev-libs/lockdev-1.0.3.1.2-r2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
@@ -76,6 +76,11 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gphoto2-config
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.31-c99.patch
+	"${FILESDIR}"/${PN}-2.5.30-c99-trim-unneeded.patch
+)
+
 pkg_pretend() {
 	if ! echo "${USE}" | grep "cameras_" > /dev/null 2>&1; then
 		einfo "No camera drivers will be built since you did not specify any."
@@ -88,8 +93,6 @@ src_prepare() {
 	# Handle examples ourselves
 	sed 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' -i Makefile.am Makefile.in \
 		|| die "examples sed failed"
-
-	sed -e 's/sleep 2//' -i configure || die
 
 	eautoreconf # For configure.ac patching
 }
@@ -105,6 +108,7 @@ multilib_src_configure() {
 	# --with-doc-dir needed to prevent duplicate docs installation, bug #586842
 	ECONF_SOURCE=${S} \
 	econf \
+		--cache-file="${BUILD_DIR}"/config.cache \
 		--with-doc-dir="${EPREFIX}"/usr/share/doc/${PF} \
 		--disable-docs \
 		--disable-gp2ddb \
