@@ -1,0 +1,11 @@
+--- libgphoto2-2.5.30.orig/tests/test-pedantic-compilation.c	2024-03-28 06:50:08.823424429 +0000
++++ libgphoto2-2.5.30/tests/test-pedantic-compilation.c	2024-03-28 06:52:55.077692822 +0000
+@@ -22,7 +22,7 @@
+ unsigned long stdc_version = __STDC_VERSION__;
+ #endif
+ 
+-int main()
++int main(void)
+ {
+ #ifdef __STDC_VERSION__
+   printf("stdc_version = %lu\n", stdc_version);
