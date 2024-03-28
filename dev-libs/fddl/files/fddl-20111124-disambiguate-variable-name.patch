@@ -1,0 +1,65 @@
+Disambiguate variable name from std::array.
+
+FAILED: tests/CMakeFiles/test_dynarray.dir/test_dynarray.cpp.o
+/usr/bin/x86_64-pc-linux-gnu-g++    -O2 -pipe -march=x86-64 -mtune=generic -MD -MT tests/CMakeFiles/test_dynarray.dir/test_dynarray.cpp.o -MF tests/CMakeFiles/test_dynarray.dir/test_dynarray.cpp.o.d -o tests/CMakeFiles/test_dynarray.dir/test_dynarray.cpp.o -c /var/tmp/portage/dev-libs/fddl-20111124-r1/work/fddl-20111124/tests/test_dynarray.cpp
+/var/tmp/portage/dev-libs/fddl-20111124-r1/work/fddl-20111124/tests/test_dynarray.cpp: In function ‘bool test_access()’:
+/var/tmp/portage/dev-libs/fddl-20111124-r1/work/fddl-20111124/tests/test_dynarray.cpp:9:11: error: reference to ‘array’ is ambiguous
+    9 |         *(array[0])=50;
+      |           ^~~~~
+In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/bits/memory_resource.h:47,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/string:58,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/bits/locale_classes.h:40,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/bits/ios_base.h:41,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/ios:44,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/ostream:40,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/iostream:41,
+                 from /var/tmp/portage/dev-libs/fddl-20111124-r1/work/fddl-20111124/tests/test_dynarray.cpp:1:
+/usr/lib/gcc/x86_64-pc-linux-gnu/13/include/g++-v13/tuple:2005:45: note: candidates are: ‘template<class _Tp, long unsigned int _Nm> struct std::array’
+ 2005 |   template<typename _Tp, size_t _Nm> struct array;
+      |                                             ^~~~~
+/var/tmp/portage/dev-libs/fddl-20111124-r1/work/fddl-20111124/tests/test_dynarray.cpp:6:15: note:                 ‘DynArray<int> array’
+    6 | DynArray<int> array;
+      |               ^~~~~
+
+diff -Nuar a/tests/test_dynarray.cpp b/tests/test_dynarray.cpp
+--- a/tests/test_dynarray.cpp	2024-03-28 14:52:14.811666764 +0000
++++ b/tests/test_dynarray.cpp	2024-03-28 14:51:55.379667423 +0000
+@@ -3,18 +3,18 @@
+ 
+ using namespace std;
+ 
+-DynArray<int> array;
++DynArray<int> test_array;
+ 
+ bool test_access(){
+-	*(array[0])=50;
+-	if (*(array[0]) != 50)
++	*(test_array[0])=50;
++	if (*(test_array[0]) != 50)
+ 		return false;
+ 	return true;
+ }
+ 
+ bool test_extend(){
+-	*(array[1024]) = 9999;
+-	if (*(array[1024]) != 9999)
++	*(test_array[1024]) = 9999;
++	if (*(test_array[1024]) != 9999)
+ 		return false;
+ 	return true;
+ }
+@@ -23,12 +23,12 @@
+ 	unsigned int fac = 1;
+ 	for (unsigned int i=1;i<11;i++){
+ 		fac = fac * i;
+-		*(array[fac]) = i;
++		*(test_array[fac]) = i;
+ 	}
+ 	fac = 1;
+ 	for (unsigned int i=1; i<11;i++){
+ 		fac = fac * i;
+-		if (*(array[fac]) != i){
++		if (*(test_array[fac]) != i){
+ 			return false;
+ 		}
+ 	}
