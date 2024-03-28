@@ -285,68 +285,6 @@ app-portage/gs-elpa
 # Removal on 2024-04-03.
 kde-misc/gmail-feed
 
-# Florian Schmaus <flow@gentoo.org> (2024-03-01)
-# TexLive 2023 is currently masked for testing.
-# Please report issues by creating a new bug report at
-# https://bugs.gentoo.org instead of commenting on the
-# tracking bug #836779 (https://bugs.gentoo.org/836779).
->=app-text/dvipsk-2023.03.11_p66203
->=app-text/dvisvgm-3.2
->=app-text/ps2pkm-1.8_p20230311
->=app-text/texlive-2023
->=app-text/texlive-core-2023
->=app-text/ttf2pk2-2.0_p20230311
->=dev-libs/kpathsea-6.3.5_p20230311
->=dev-libs/ptexenc-1.4.3_p20230311
->=dev-tex/biber-2.19
->=dev-tex/biblatex-3.19
->=dev-tex/bibtexu-4.00_p20230311
->=dev-tex/glossaries-4.53
->=dev-tex/latex-beamer-3.71
->=dev-tex/latexmk-4.83
->=dev-tex/minted-2.9
->=dev-tex/pgf-3.1.10
->=dev-tex/tex4ht-20230311_p69739
->=dev-texlive/texlive-basic-2023_p59159
->=dev-texlive/texlive-bibtexextra-2023_p67386
->=dev-texlive/texlive-binextra-2023_p69527
->=dev-texlive/texlive-context-2023_p69108
->=dev-texlive/texlive-fontsextra-2023_p69663
->=dev-texlive/texlive-fontsrecommended-2023_p54074
->=dev-texlive/texlive-fontutils-2023_p61207
->=dev-texlive/texlive-formatsextra-2023_p62226
->=dev-texlive/texlive-games-2023_p69159
->=dev-texlive/texlive-humanities-2023_p68465
->=dev-texlive/texlive-langarabic-2023_p69111
->=dev-texlive/texlive-langchinese-2023_p63995
->=dev-texlive/texlive-langcjk-2023_p65824
->=dev-texlive/texlive-langcyrillic-2023_p69727
->=dev-texlive/texlive-langczechslovak-2023_p54074
->=dev-texlive/texlive-langenglish-2023_p68790
->=dev-texlive/texlive-langeuropean-2023_p66432
->=dev-texlive/texlive-langfrench-2023_p67951
->=dev-texlive/texlive-langgerman-2023_p68711
->=dev-texlive/texlive-langgreek-2023_p65038
->=dev-texlive/texlive-langitalian-2023_p55129
->=dev-texlive/texlive-langjapanese-2023_p64603
->=dev-texlive/texlive-langkorean-2023_p54074
->=dev-texlive/texlive-langother-2023_p68719
->=dev-texlive/texlive-langpolish-2023_p54074
->=dev-texlive/texlive-langportuguese-2023_p67125
->=dev-texlive/texlive-langspanish-2023_p67307
->=dev-texlive/texlive-latex-2023_p69131
->=dev-texlive/texlive-latexextra-2023_p69752
->=dev-texlive/texlive-latexrecommended-2023_p69131
->=dev-texlive/texlive-luatex-2023_p69404
->=dev-texlive/texlive-mathscience-2023_p69485
->=dev-texlive/texlive-metapost-2023_p67071
->=dev-texlive/texlive-music-2023_p69613
->=dev-texlive/texlive-pictures-2023_p69409
->=dev-texlive/texlive-plaingeneric-2023_p68675
->=dev-texlive/texlive-pstricks-2023_p65367
->=dev-texlive/texlive-publishers-2023_p69759
->=dev-texlive/texlive-xetex-2023_p69452
-
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-29)
 # Ancient fork of gmp from 2017. Various build issues, fails tests. All
 # reverse dependencies turned out to be incorrect or preferred gmp
