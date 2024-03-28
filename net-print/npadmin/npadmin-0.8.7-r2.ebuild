@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+inherit autotools
 
 DESCRIPTION="Network printer command-line adminstration tool"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -18,7 +19,13 @@ SLOT="0"
 PATCHES=(
 	"${FILESDIR}"/${P}-stdlib.patch
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-makefile.patch
 )
+
+src_prepare() {
+	default
+	eautoconf
+}
 
 src_install() {
 	dobin npadmin
