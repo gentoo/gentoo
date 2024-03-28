@@ -29,6 +29,7 @@ DOCS=( ChangeLog ChangeLog.1999 FAQ NEWS README )
 
 PATCHES=(
 	"${FILESDIR}/${P}-slibtool.patch" # 775584
+	"${FILESDIR}/${P}-incompatible-types.patch" # 880931
 )
 
 src_prepare() {
