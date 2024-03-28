@@ -90,7 +90,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
-	openpgl? ( >=media-libs/openpgl-0.5.0 )
+	openpgl? ( media-libs/openpgl:= )
 	opensubdiv? ( >=media-libs/opensubdiv-3.5.0 )
 	openvdb? (
 		>=media-gfx/openvdb-10.1.0:=[nanovdb?]
