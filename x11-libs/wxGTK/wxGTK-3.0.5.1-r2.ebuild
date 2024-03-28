@@ -14,7 +14,7 @@ DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
 HOMEPAGE="https://wxwidgets.org/"
 SRC_URI="
 	https://github.com/wxWidgets/wxWidgets/releases/download/v${PV}/wxWidgets-${PV}.tar.bz2
-	https://dev.gentoo.org/~leio/distfiles/wxGTK-3.0.5_p20210214.tar.xz
+	https://dev.gentoo.org/~leio/distfiles/wxGTK-${WXVERSION}_p20210214.tar.xz
 	doc? ( https://github.com/wxWidgets/wxWidgets/releases/download/v${WXVERSION}/wxWidgets-${WXVERSION}-docs-html.tar.bz2 )"
 S="${WORKDIR}/wxWidgets-${PV}"
 
@@ -64,6 +64,8 @@ PATCHES=(
 	"${FILESDIR}"/wxGTK-ignore-c++-abi.patch #676878
 	"${FILESDIR}"/${PN}-configure-tests.patch
 	"${FILESDIR}"/${PN}-3.0.5.1-configure-modern-c.patch
+	"${FILESDIR}"/${PN}-3.0.5.1-excise-autoptr.patch
+
 )
 
 src_prepare() {
