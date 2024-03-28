@@ -1,0 +1,332 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b034cd03b..c8f3cc448 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,7 @@ option(EXPERIMENTAL "Enable Experimental Features" OFF)
+ option(ENABLE_LEGACY_RENDERERS "Enable legacy (non-VBO) OpenGL renderers" ON)
+ option(SNAPSHOT "Create dev snapshot, uses nightly icons" OFF)
+ option(HEADLESS "Build without GUI frontend" OFF)
++option(USE_QT6 "Build the GUI with Qt6" OFF)
+ option(ENABLE_EGL "Enable EGL support if available" ON)
+ option(ENABLE_GLX "Enable GLX support if available" ON)
+ # For now, we'll default to whatever OpenCSG uses (>=1.6 -> GLAD, <1.6 -> GLEW)
+@@ -57,8 +58,8 @@ option(ALLOW_BUNDLED_HIDAPI "Allow usage of bundled HIDAPI library (Windows only
+ option(ENABLE_PYTHON "Enable experimental Python Interpreter" OFF)
+ include(CMakeDependentOption)
+ cmake_dependent_option(APPLE_UNIX "Build OpenSCAD in Unix mode in MacOS X instead of an Apple Bundle" OFF "APPLE" OFF)
+-cmake_dependent_option(ENABLE_QTDBUS "Enable DBus input driver for Qt5." ON "NOT HEADLESS" OFF)
+-cmake_dependent_option(ENABLE_GAMEPAD "Enable Qt5Gamepad input driver." ON "NOT HEADLESS" OFF)
++cmake_dependent_option(ENABLE_QTDBUS "Enable DBus input driver for Qt." ON "NOT HEADLESS" OFF)
++cmake_dependent_option(ENABLE_GAMEPAD "Enable Qt5Gamepad input driver." ON "NOT HEADLESS;NOT USE_QT6" OFF)
+ 
+ if(EXPERIMENTAL AND ENABLE_TBB)
+   # TBB 2021.8.0 uses aligned memory deallocation.
+@@ -290,7 +291,7 @@ if (MSVC)
+   # call before setting local CMAKE_MODULE_PATH so we use VCPKG version of FindGLEW
+   find_graphics()
+ 
+-  # needed for Qt5QScintilla, maybe others
++  # needed for QtQScintilla, maybe others
+   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules")
+ else()
+   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules")
+@@ -513,11 +514,20 @@ if(NOT HEADLESS)
+   if (APPLE AND EXISTS /usr/local/opt/qt)
+     list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt")
+   endif()
+-  if (APPLE AND EXISTS /usr/local/opt/qt@5)
+-    list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt@5")
+-  endif()
+-  if (APPLE AND EXISTS /opt/homebrew/opt/qt@5)
+-    list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@5")
++  if (USE_QT6)
++    if (APPLE AND EXISTS /usr/local/opt/qt@6)
++      list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt@6")
++    endif()
++    if (APPLE AND EXISTS /opt/homebrew/opt/qt@6)
++      list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@6")
++    endif()
++  else()
++    if (APPLE AND EXISTS /usr/local/opt/qt@5)
++      list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt@5")
++    endif()
++    if (APPLE AND EXISTS /opt/homebrew/opt/qt@5)
++      list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@5")
++    endif()
+   endif()
+ 
+   if("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.14")
+@@ -528,48 +538,74 @@ if(NOT HEADLESS)
+   set_property(TARGET OpenSCAD PROPERTY AUTORCC ON)
+   set_property(TARGET OpenSCAD PROPERTY AUTOUIC_OPTIONS --tr q_)
+   set_property(TARGET OpenSCAD PROPERTY AUTORCC_OPTIONS --threshold 10 --compress 9)
+-  find_package(Qt5 5.4 COMPONENTS Core Widgets Multimedia OpenGL Concurrent Network Svg REQUIRED QUIET)
+-  message(STATUS "Qt5: ${Qt5_VERSION}")
++  if (USE_QT6)
++    find_package(Qt6 COMPONENTS Core Core5Compat Widgets Multimedia OpenGL OpenGLWidgets Concurrent Network Svg REQUIRED QUIET)
++    message(STATUS "Qt6: ${Qt6_VERSION}")
+ 
+-  if (Qt5_POSITION_INDEPENDENT_CODE)
+-    set_property(TARGET OpenSCAD PROPERTY POSITION_INDEPENDENT_CODE ON)
+-  endif()
+-
+-  if (("${Qt5_VERSION}" VERSION_GREATER_EQUAL "5.4"))
+-    target_compile_definitions(OpenSCAD PRIVATE USE_QOPENGLWIDGET)
+-  endif()
++    if (Qt6_POSITION_INDEPENDENT_CODE)
++      set_property(TARGET OpenSCAD PROPERTY POSITION_INDEPENDENT_CODE ON)
++    endif()
+ 
+-  find_package(Qt5QScintilla 2.8.0 REQUIRED QUIET)
+-  message(STATUS "QScintilla: ${QT5QSCINTILLA_VERSION_STRING}")
+-
+-  if(ENABLE_QTDBUS)
+-    find_package(Qt5DBus QUIET)
+-    if (Qt5DBus_FOUND)
+-      message(STATUS "DBus input driver enabled")
+-      target_compile_definitions(OpenSCAD PRIVATE ENABLE_DBUS)
+-      set(INPUT_DRIVER_DBUS_SOURCES src/gui/input/DBusInputDriver.cc)
+-      qt5_add_dbus_interface(INPUT_DRIVER_DBUS_SOURCES org.openscad.OpenSCAD.xml openscad_interface)
+-      qt5_add_dbus_adaptor(INPUT_DRIVER_DBUS_SOURCES org.openscad.OpenSCAD.xml gui/input/DBusInputDriver.h DBusInputDriver openscad_adaptor)
++    find_package(Qt6QScintilla 2.8.0 REQUIRED QUIET)
++    message(STATUS "QScintilla: ${QT6QSCINTILLA_VERSION_STRING}")
++
++    if(ENABLE_QTDBUS)
++      find_package(Qt6DBus QUIET)
++      if (Qt6DBus_FOUND)
++        message(STATUS "DBus input driver enabled")
++        target_compile_definitions(OpenSCAD PRIVATE ENABLE_DBUS)
++        set(INPUT_DRIVER_DBUS_SOURCES src/gui/input/DBusInputDriver.cc)
++        qt6_add_dbus_interface(INPUT_DRIVER_DBUS_SOURCES org.openscad.OpenSCAD.xml openscad_interface)
++        qt6_add_dbus_adaptor(INPUT_DRIVER_DBUS_SOURCES org.openscad.OpenSCAD.xml gui/input/DBusInputDriver.h DBusInputDriver openscad_adaptor)
++      else()
++        message(STATUS "DBus input driver disabled as the QtDBus module could not be found.")
++      endif()
+     else()
+-      message(STATUS "DBus input driver disabled as the QtDBus module could not be found.")
++      message(STATUS "DBus input driver disabled per user request.")
+     endif()
+   else()
+-    message(STATUS "DBus input driver disabled per user request.")
+-  endif()
++    find_package(Qt5 5.4 COMPONENTS Core Widgets Multimedia OpenGL Concurrent Network Svg REQUIRED QUIET)
++    message(STATUS "Qt5: ${Qt5_VERSION}")
++
++    if (Qt5_POSITION_INDEPENDENT_CODE)
++      set_property(TARGET OpenSCAD PROPERTY POSITION_INDEPENDENT_CODE ON)
++    endif()
++
++    if (("${Qt5_VERSION}" VERSION_GREATER_EQUAL "5.4"))
++       target_compile_definitions(OpenSCAD PRIVATE USE_QOPENGLWIDGET)
++    endif()
+ 
+-  if(ENABLE_GAMEPAD)
+-    find_package(Qt5Gamepad QUIET)
+-    if (Qt5Gamepad_FOUND)
+-      message(STATUS "Qt5Gamepad input driver enabled")
+-      set(GUI_SOURCES ${GUI_SOURCES} src/gui/input/QGamepadInputDriver.cc)
+-      target_compile_definitions(OpenSCAD PRIVATE ENABLE_QGAMEPAD)
++    find_package(Qt5QScintilla 2.8.0 REQUIRED QUIET)
++    message(STATUS "QScintilla: ${QT5QSCINTILLA_VERSION_STRING}")
++
++    if(ENABLE_QTDBUS)
++      find_package(Qt5DBus QUIET)
++      if (Qt5DBus_FOUND)
++        message(STATUS "DBus input driver enabled")
++        target_compile_definitions(OpenSCAD PRIVATE ENABLE_DBUS)
++        set(INPUT_DRIVER_DBUS_SOURCES src/gui/input/DBusInputDriver.cc)
++        qt5_add_dbus_interface(INPUT_DRIVER_DBUS_SOURCES org.openscad.OpenSCAD.xml openscad_interface)
++        qt5_add_dbus_adaptor(INPUT_DRIVER_DBUS_SOURCES org.openscad.OpenSCAD.xml gui/input/DBusInputDriver.h DBusInputDriver openscad_adaptor)
++      else()
++        message(STATUS "DBus input driver disabled as the QtDBus module could not be found.")
++      endif()
+     else()
+-      message(STATUS "Qt5Gamepad input driver disabled as the Qt5Gamepad module could not be found.")
++      message(STATUS "DBus input driver disabled per user request.")
+     endif()
+-  else()
+-    message(STATUS "Qt5Gamepad input driver disabled per user request.")
+-  endif()
+ 
++    if(ENABLE_GAMEPAD)
++      find_package(Qt5Gamepad QUIET)
++      if (Qt5Gamepad_FOUND)
++        message(STATUS "Qt5Gamepad input driver enabled")
++        set(GUI_SOURCES ${GUI_SOURCES} src/gui/input/QGamepadInputDriver.cc)
++        target_compile_definitions(OpenSCAD PRIVATE ENABLE_QGAMEPAD)
++      else()
++        message(STATUS "Qt5Gamepad input driver disabled as the Qt5Gamepad module could not be found.")
++      endif()
++    else()
++      message(STATUS "Qt5Gamepad input driver disabled per user request.")
++    endif()
++  endif()
+ endif()
+ 
+ # Setup ccache (if available) to speed up recompiles. It's especially useful
+@@ -1200,14 +1236,26 @@ elseif(MSVC)
+   )
+ endif()
+ 
+-if(NOT HEADLESS)
+-  target_link_libraries(OpenSCAD PRIVATE
+-    Qt5::Core Qt5::Widgets Qt5::Multimedia Qt5::OpenGL Qt5::Concurrent Qt5::Network Qt5::Svg
+-    ${QT5QSCINTILLA_LIBRARY} ${Qt5DBus_LIBRARIES} ${Qt5Gamepad_LIBRARIES}
+-  )
+-endif()
+-if(MXECROSS)
+-  target_link_libraries(OpenSCAD PRIVATE Qt5::QSvgPlugin)
++if (USE_QT6)
++  if(NOT HEADLESS)
++    target_link_libraries(OpenSCAD PRIVATE
++      Qt6::Core Qt6::Core5Compat Qt6::Widgets Qt6::Multimedia Qt6::OpenGL Qt6::OpenGLWidgets Qt6::Concurrent Qt6::Network Qt6::Svg
++      ${QT6QSCINTILLA_LIBRARY} ${Qt6DBus_LIBRARIES} ${Qt6Gamepad_LIBRARIES}
++    )
++  endif()
++  if(MXECROSS)
++    target_link_libraries(OpenSCAD PRIVATE Qt6::QSvgPlugin)
++  endif()
++else()
++  if(NOT HEADLESS)
++    target_link_libraries(OpenSCAD PRIVATE
++      Qt5::Core Qt5::Widgets Qt5::Multimedia Qt5::OpenGL Qt5::Concurrent Qt5::Network Qt5::Svg
++      ${QT5QSCINTILLA_LIBRARY} ${Qt5DBus_LIBRARIES} ${Qt5Gamepad_LIBRARIES}
++    )
++  endif()
++  if(MXECROSS)
++    target_link_libraries(OpenSCAD PRIVATE Qt5::QSvgPlugin)
++  endif()
+ endif()
+ 
+ # Configure icon-related files, for release vs nightly
+diff --git a/cmake/Modules/FindQt6QScintilla.cmake b/cmake/Modules/FindQt6QScintilla.cmake
+new file mode 100644
+index 000000000..374ecc7a0
+--- /dev/null
++++ b/cmake/Modules/FindQt6QScintilla.cmake
+@@ -0,0 +1,125 @@
++# QScintilla is a port to Qt of Neil Hodgson's Scintilla C++ editor control
++# available at http://www.riverbankcomputing.com/software/qscintilla/
++#
++# The module defines the following variables:
++#  QT6QSCINTILLA_FOUND - the system has QScintilla
++#  QT6QSCINTILLA_INCLUDE_DIR - where to find qsciscintilla.h
++#  QT6QSCINTILLA_INCLUDE_DIRS - qscintilla includes
++#  QT6QSCINTILLA_LIBRARY - where to find the QScintilla library
++#  QT6QSCINTILLA_LIBRARIES - additional libraries
++#  QT6QSCINTILLA_MAJOR_VERSION - major version
++#  QT6QSCINTILLA_MINOR_VERSION - minor version
++#  QT6QSCINTILLA_PATCH_VERSION - patch version
++#  QT6QSCINTILLA_VERSION_STRING - version (ex. 2.6.2)
++#  QT6QSCINTILLA_ROOT_DIR - root dir (ex. /usr/local)
++
++#=============================================================================
++# Copyright 2010-2013, Julien Schueller
++# All rights reserved.
++# 
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions are met: 
++# 
++# 1. Redistributions of source code must retain the above copyright notice, this
++#    list of conditions and the following disclaimer. 
++# 2. Redistributions in binary form must reproduce the above copyright notice,
++#    this list of conditions and the following disclaimer in the documentation
++#    and/or other materials provided with the distribution. 
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
++# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
++# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
++# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++# The views and conclusions contained in the software and documentation are those
++# of the authors and should not be interpreted as representing official policies, 
++# either expressed or implied, of the FreeBSD Project.
++#=============================================================================
++
++
++find_path ( QT6QSCINTILLA_INCLUDE_DIR
++  NAMES qsciscintilla.h
++  HINTS ${Qt6Widgets_INCLUDE_DIRS}
++  PATH_SUFFIXES qt6 Qsci
++)
++
++set ( QT6QSCINTILLA_INCLUDE_DIRS ${QT6QSCINTILLA_INCLUDE_DIR} )
++
++# version
++set ( _VERSION_FILE ${QT6QSCINTILLA_INCLUDE_DIR}/qsciglobal.h )
++if ( EXISTS ${_VERSION_FILE} )
++  file ( STRINGS ${_VERSION_FILE} _VERSION_LINE REGEX "define[ ]+QSCINTILLA_VERSION_STR" )
++  if ( _VERSION_LINE )
++    string ( REGEX REPLACE ".*define[ ]+QSCINTILLA_VERSION_STR[ ]+\"(.*)\".*" "\\1" QT6QSCINTILLA_VERSION_STRING "${_VERSION_LINE}" )
++    string ( REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+)" "\\1" QT6QSCINTILLA_MAJOR_VERSION "${QT6QSCINTILLA_VERSION_STRING}" )
++    string ( REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+)" "\\2" QT6QSCINTILLA_MINOR_VERSION "${QT6QSCINTILLA_VERSION_STRING}" )
++    string ( REGEX REPLACE "([0-9]+)\\.([0-9]+)\\.([0-9]+)" "\\3" QT6QSCINTILLA_PATCH_VERSION "${QT6QSCINTILLA_VERSION_STRING}" )
++  endif ()
++endif ()
++
++
++# check version
++set ( _QT6QSCINTILLA_VERSION_MATCH TRUE )
++if ( QScintilla_FIND_VERSION AND QT6QSCINTILLA_VERSION_STRING )
++  if ( QScintilla_FIND_VERSION_EXACT )
++    if ( NOT QScintilla_FIND_VERSION VERSION_EQUAL QT6QSCINTILLA_VERSION_STRING )
++      set ( _QT6QSCINTILLA_VERSION_MATCH FALSE )
++    endif ()
++  else ()
++    if ( QT6QSCINTILLA_VERSION_STRING VERSION_LESS QScintilla_FIND_VERSION )
++      set ( _QT6QSCINTILLA_VERSION_MATCH FALSE )
++    endif ()
++  endif ()
++endif ()
++
++
++find_library ( QT6QSCINTILLA_LIBRARY
++  NAMES qt6scintilla2 qscintilla2-qt6 qscintilla2 qscintilla2_qt6
++  HINTS ${Qt6Widgets_LIBRARIES}
++)
++
++set ( QT6QSCINTILLA_LIBRARIES ${QT6QSCINTILLA_LIBRARY} )
++
++IF( QT6QSCINTILLA_LIBRARY AND QT6QSCINTILLA_INCLUDE_DIR )
++        SET( QT6QSCINTILLA_FOUND TRUE )
++ENDIF( QT6QSCINTILLA_LIBRARY AND QT6QSCINTILLA_INCLUDE_DIR )
++
++#IF( QT6QSCINTILLA_FOUND )
++#                MESSAGE( STATUS "Found QScintilla-Qt6 header files in ${QT6QSCINTILLA_INCLUDE_DIR}")
++#                MESSAGE( STATUS "Found QScintilla-Qt6 libraries: ${QT6QSCINTILLA_LIBRARY}")
++#ENDIF(QT6QSCINTILLA_FOUND)
++
++# try to guess root dir from include dir
++if ( QT6QSCINTILLA_INCLUDE_DIR )
++  string ( REGEX REPLACE "(.*)/include.*" "\\1" QT6QSCINTILLA_ROOT_DIR ${QT6QSCINTILLA_INCLUDE_DIR} )
++# try to guess root dir from library dir
++elseif ( QT6QSCINTILLA_LIBRARY )
++  string ( REGEX REPLACE "(.*)/lib[/|32|64].*" "\\1" QT6QSCINTILLA_ROOT_DIR ${QT6QSCINTILLA_LIBRARY} )
++endif ()
++
++
++# handle the QUIETLY and REQUIRED arguments
++include ( FindPackageHandleStandardArgs )
++if ( CMAKE_VERSION VERSION_LESS 2.8.3 )
++  find_package_handle_standard_args( Qt6QScintilla DEFAULT_MSG QT6QSCINTILLA_LIBRARY QT6QSCINTILLA_INCLUDE_DIR _QT6QSCINTILLA_VERSION_MATCH )
++else ()
++  find_package_handle_standard_args( Qt6QScintilla REQUIRED_VARS QT6QSCINTILLA_LIBRARY QT6QSCINTILLA_INCLUDE_DIR _QT6QSCINTILLA_VERSION_MATCH VERSION_VAR QT6QSCINTILLA_VERSION_STRING )
++endif ()
++
++mark_as_advanced (
++  QT6QSCINTILLA_LIBRARY
++  QT6QSCINTILLA_LIBRARIES
++  QT6QSCINTILLA_INCLUDE_DIR
++  QT6QSCINTILLA_INCLUDE_DIRS
++  QT6QSCINTILLA_MAJOR_VERSION
++  QT6QSCINTILLA_MINOR_VERSION
++  QT6QSCINTILLA_PATCH_VERSION
++  QT6QSCINTILLA_VERSION_STRING
++  QT6QSCINTILLA_ROOT_DIR
++  )
