@@ -14,7 +14,7 @@ SRC_URI="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archiv
 
 LICENSE="BSD Apache-2.0 GPL-2 GPL-2+ GPL-3+ LGPL-2+ Ms-RL"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 S="${WORKDIR}"
 INSTALL_PATH=/usr/share/drivers/windows
 
