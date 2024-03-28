@@ -518,8 +518,8 @@ multilib_src_install_all() {
 		insinto /usr/share/zsh/site-functions
 		doins shell-completion/zsh/_systemd-tmpfiles
 		insinto /usr/lib/tmpfiles.d
-		doins tmpfiles.d/{tmp,x11}.conf
-		doins "${FILESDIR}"/legacy.conf
+		doins tmpfiles.d/x11.conf
+		doins "${FILESDIR}"/{legacy,tmp}.conf
 	fi
 	if use udev; then
 		doheader src/libudev/libudev.h
