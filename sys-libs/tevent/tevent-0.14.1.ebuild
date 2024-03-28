@@ -41,6 +41,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/cmocka-config_h.patch
+)
+
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 check_samba_dep_versions() {
