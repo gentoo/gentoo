@@ -36,6 +36,11 @@ distutils_enable_sphinx doc/source
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/jamielennox/requests-mock/pull/255
+		"${FILESDIR}/${P}-no-pbr.patch"
+	)
+
 	# Disable reno which only works inside a git repository
 	sed -i "s/'reno.sphinxext',//" doc/source/conf.py || die
 	# Remove the release notes section which requires reno
