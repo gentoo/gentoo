@@ -41,7 +41,7 @@ LICENSE+="
 # ring crate
 LICENSE+=" openssl"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
