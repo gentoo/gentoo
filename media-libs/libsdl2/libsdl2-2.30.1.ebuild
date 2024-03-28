@@ -223,6 +223,7 @@ multilib_src_configure() {
 			SDL_LIBS="-L${BUILD_DIR}/build/.libs -lSDL2"
 			ac_cv_lib_SDL2_ttf_TTF_Init=no
 			CFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+			LDFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 		)
 
 		mkdir "${BUILD_DIR}/test" || die
