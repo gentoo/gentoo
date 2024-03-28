@@ -1015,69 +1015,27 @@ test-compile() {
 }
 
 # @FUNCTION: append-atomic-flags
-# @USAGE: [bytes]
 # @DESCRIPTION:
-# Attempts to detect if appending -latomic is required to use
-# a specific-sized atomic intrinsic, and if so, appends it.  If the bytesize
-# is not specified, then check the four most common byte sizes (1, 2, 4, 8).
-# >=16-byte atomics are not included in this default set and must be explicitly
-# passed if required.  This may require you to add a macro definition like
-# -Duint128_t=__uint128_t to your CFLAGS.
+# Attempts to detect if appending -latomic works, and does so.
 append-atomic-flags() {
-	# this implementation is as described in bug #820101
-	local code
+	# Make sure that the flag is actually valid. If it isn't, then maybe the
+	# library both doesn't exist and is redundant, or maybe the toolchain is
+	# broken, but let the build succeed or fail on its own.
+	test-flags-CCLD "-latomic" &>/dev/null || return
 
-	# first, ensure we can compile a trivial program
-	# this is because we can't distinguish if test-compile
-	# fails because -latomic is actually needed or if we have a
-	# broken toolchain (like due to bad FLAGS)
-	read -r -d '' code <<- EOF
-		int main(void)
-		{
-			return 0;
-		}
-	EOF
-
-	# if toolchain is broken, just return silently.  it's better to
-	# let other pieces of the build fail later down the line than to
-	# make people think that something to do with atomic support is the
-	# cause of their problems.
-	test-compile "c+ld" "${code}" || return
-
-	local bytesizes
-	[[ "${#}" == "0" ]] && bytesizes=( "1" "2" "4" "8" ) || bytesizes="${@}"
-
-	for bytesize in ${bytesizes[@]}
-	do
-		# this sample program is informed by the great testing from the buildroot project:
-		# https://github.com/buildroot/buildroot/commit/6856e417da4f3aa77e2a814db2a89429af072f7d
-		read -r -d '' code <<- EOF
-			#include <stdint.h>
-			int main(void)
-			{
-				uint$((${bytesize} * 8))_t a = 0;
-				__atomic_add_fetch(&a, 3, __ATOMIC_RELAXED);
-				__atomic_compare_exchange_n(&a, &a, 2, 1, __ATOMIC_RELAXED, __ATOMIC_RELAXED);
-				return 0;
-			}
-		EOF
-
-		# do nothing if test program links fine
-		test-compile "c+ld" "${code}" && continue
-
-		# ensure that the toolchain supports -latomic
-		test-flags-CCLD "-latomic" &>/dev/null || die "-latomic is required but not supported by $(tc-getCC)"
-
-		append-libs "-latomic"
-
-		# verify that this did indeed fix the problem
-		test-compile "c+ld" "${code}" || \
-			die "libatomic does not include an implementation of ${bytesize}-byte atomics for this toolchain"
-
-		# if any of the required bytesizes require -latomic, no need to continue
-		# checking the others
-		return
-	done
+	# We unconditionally append this flag. In the case that it's needed, the
+	# flag is, well, needed. In the case that it's not needed, it causes no
+	# harm, because we ensure that this specific library is definitely
+	# certainly linked with as-needed.
+	#
+	# Really, this should be implemented directly in the compiler, including
+	# the use of push/pop for as-needed. It's exactly what the gcc spec file
+	# does for e.g. -lgcc_s, but gcc is concerned about doing so due to build
+	# system internals and as a result all users have to deal with this mess
+	# instead.
+	#
+	# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81358
+	append-libs "-Wl,--push-state,--as-needed,-latomic,--pop-state"
 }
 
 fi
