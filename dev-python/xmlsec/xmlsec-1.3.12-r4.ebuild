@@ -26,10 +26,9 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 # Doesn't yet support xmlsec-1.3.0: https://github.com/xmlsec/python-xmlsec/issues/252
-# Doesn't yet support lxml-5: https://github.com/xmlsec/python-xmlsec/issues/277
 RDEPEND="
 	<dev-libs/xmlsec-1.3.0:=[openssl]
-	<dev-python/lxml-5[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
