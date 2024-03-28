@@ -70,6 +70,11 @@ src_install() {
 	udev_dorules "${WORKDIR}"/${P}/misc/90-irqbalance.rules
 }
 
+pkg_postrm() {
+	udev_reload
+}
+
 pkg_postinst() {
+	udev_reload
 	optfeature "thermal events support (requires USE=thermal)" sys-power/thermald
 }
