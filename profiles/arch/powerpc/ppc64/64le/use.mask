@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-29)
+# not available here (see openexr, opencolorio, opencv)
+-openvdb
+-embree
+-openimageio
+-osl
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # PyPy3 is keyworded here.
 -python_targets_pypy3
