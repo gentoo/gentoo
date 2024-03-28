@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">sarnold/svg2rlg</remote-id>
+		<remote-id type="pypi">svg2rlg</remote-id>
 	</upstream>
 </pkgmetadata>

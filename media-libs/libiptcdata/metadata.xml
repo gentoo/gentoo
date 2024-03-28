@@ -15,5 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">libiptcdata</remote-id>
+		<remote-id type="github">ianw/libiptcdata</remote-id>
 	</upstream>
 </pkgmetadata>
