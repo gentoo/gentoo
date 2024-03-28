@@ -290,6 +290,7 @@ media-gfx/brscan4
 media-libs/amdgpu-pro-vulkan
 media-sound/baudline
 media-sound/teamspeak-server
+media-tv/plex-media-server
 media-video/amdgpu-pro-amf
 media-video/dvbackup
 media-video/makemkv
