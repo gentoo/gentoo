@@ -1,0 +1,30 @@
+diff -r -u libsemanage-3.6/src/semanage.conf libsemanage-3.6-patched/src/semanage.conf
+--- libsemanage-3.6/src/semanage.conf	2023-12-13 15:46:22.000000000 +0100
++++ libsemanage-3.6-patched/src/semanage.conf	2024-02-21 14:33:06.055611733 +0100
+@@ -40,3 +40,26 @@
+ # By default, semanage will generate policies for the SELinux target.
+ # To build policies for Xen, uncomment the following line.
+ #target-platform = xen
++
++# Set this to true to save the linked policy.
++# This is normally only useful for analysis
++# or debugging of policy.
++save-linked=false
++
++# Set this to 0 to disable assertion checking.
++# This should speed up building the kernel policy
++# from policy modules, but may leave you open to
++# dangerous rules which assertion checking
++# would catch.
++expand-check=1
++
++# Modules in the module store can be compressed
++# with bzip2.  Set this to the bzip2 blocksize
++# 1-9 when compressing.  The higher the number,
++# the more memory is traded off for disk space.
++# Set to 0 to disable bzip2 compression.
++bzip-blocksize=0
++
++# Reduce memory usage for bzip2 compression and
++# decompression of modules in the module store.
++bzip-small=true
