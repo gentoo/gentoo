@@ -1,0 +1,14 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+look for the merged clang library so we can find clang
+diff --git a/build_files/cmake/Modules/FindClang.cmake b/build_files/cmake/Modules/FindClang.cmake
+index 1957c63..5620b84 100644
+--- a/build_files/cmake/Modules/FindClang.cmake
++++ b/build_files/cmake/Modules/FindClang.cmake
+@@ -85,6 +85,7 @@ set(_CLANG_FIND_COMPONENTS
+   clangAST
+   clangLex
+   clangBasic
++  clang-cpp
+ )
+ 
+ set(_CLANG_LIBRARIES)

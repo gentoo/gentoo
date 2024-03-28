@@ -3,41 +3,50 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+# matches media-libs/osl
+LLVM_COMPAT=( {15..17} )
 
-inherit check-reqs cmake cuda flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
+inherit check-reqs cmake cuda flag-o-matic llvm-r1 pax-utils python-single-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
 
 if [[ ${PV} = *9999* ]] ; then
-	# Subversion is needed for downloading unit test files
-	inherit git-r3 subversion
+	EGIT_LFS="yes"
+	inherit git-r3
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
+	EGIT_SUBMODULES=( '*' '-lib/*' )
 	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
+	RESTRICT="!test? ( test )"
 else
-	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
-	# Update these between major releases.
-	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
-	# SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
+	SRC_URI="
+		https://download.blender.org/source/${P}.tar.xz
+	"
+	# 	test? (
+	# 		https://projects.blender.org/blender/blender-test-data/archive/blender-v$(ver_cut 1-2)-release.tar.gz
+	# 	)
+	# "
 	KEYWORDS="~amd64 ~arm ~arm64"
+	RESTRICT="test" # the test archive returns LFS references.
 fi
 
-SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
+SLOT="${PV%.*}"
 IUSE="+bullet +fluid +openexr +tbb
 	alembic collada +color-management cuda +cycles cycles-bin-kernels
-	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k
+	debug doc +embree +ffmpeg +fftw +gmp gnome hip jack jemalloc jpeg2k
 	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv
 	+openvdb optix osl +pdf +potrace +pugixml pulseaudio sdl
 	+sndfile test +tiff valgrind wayland +webp X"
-RESTRICT="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
 	cycles? ( openexr tiff tbb )
 	fluid? ( tbb )
+	gnome? ( wayland )
+	hip? ( cycles )
 	nanovdb? ( openvdb )
 	openvdb? ( tbb openexr )
 	optix? ( cuda )
@@ -45,7 +54,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	test? ( color-management )"
 
 # Library versions for official builds can be found in the blender source directory in:
-# build_files/build_environment/install_deps.sh
+# build_files/build_environment/cmake/versions.cmake
 RDEPEND="${PYTHON_DEPS}
 	app-arch/zstd
 	dev-libs/boost:=[nls?]
@@ -70,10 +79,12 @@ RDEPEND="${PYTHON_DEPS}
 	collada? ( >=media-libs/opencollada-1.6.68 )
 	color-management? ( media-libs/opencolorio:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	embree? ( >=media-libs/embree-3.13.0:=[raymask] )
+	embree? ( media-libs/embree:=[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
+	gnome? ( gui-libs/libdecor )
+	hip? ( >=dev-util/hip-5.7:= )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -83,7 +94,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
-	oidn? ( >=media-libs/oidn-1.4.0 )
+	oidn? ( >=media-libs/oidn-2.1.0 )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
@@ -94,8 +105,14 @@ RDEPEND="${PYTHON_DEPS}
 		>=media-gfx/openvdb-10.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
-	optix? ( <dev-libs/optix-7.5.0 )
-	osl? ( <media-libs/osl-1.13:= )
+	optix? ( dev-libs/optix )
+	osl? (
+		>=media-libs/osl-1.13:=
+		$(llvm_gen_dep '
+			>=media-libs/osl-1.13[llvm_slot_${LLVM_SLOT}]
+			media-libs/mesa[llvm_slot_${LLVM_SLOT}]
+		')
+	)
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
@@ -139,10 +156,17 @@ BDEPEND="
 	wayland? (
 		dev-util/wayland-scanner
 	)
+	X? (
+		x11-base/xorg-proto
+	)
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.1-fix-cflags-cleaner.patch"  # to be dropped for releases after Dec 8, 2023
+	"${FILESDIR}/${PN}-4.0.1-openvdb-11.patch"
+	"${FILESDIR}/${PN}-4.0.2-FindClang.patch"
+	"${FILESDIR}/${PN}-4.0.2-CUDA_NVCC_FLAGS.patch"
+	"${FILESDIR}/${PN}-4.0.2-r1-osl-1.13.patch"
 )
 
 blender_check_requirements() {
@@ -170,35 +194,36 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	if use osl; then
+		llvm-r1_pkg_setup
+	fi
+
 	blender_check_requirements
 	python-single-r1_pkg_setup
 }
 
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
+		if ! use test; then
+			EGIT_SUBMODULES+=( '-tests/*' )
+		fi
 		git-r3_src_unpack
 
 		git-r3_fetch "${ADDONS_EGIT_REPO_URI}"
 		git-r3_checkout "${ADDONS_EGIT_REPO_URI}" "${S}/scripts/addons"
-
-		if use test; then
-			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
-			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-		fi
-		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
-		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
 	else
 		default
+
 		if use test; then
-			#The tests are downloaded from: https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
-			mkdir -p lib || die
-			mv "${WORKDIR}/blender-${TEST_TARBALL_VERSION}-tests/tests" lib || die
+			mkdir -p "${S}/tests/data/" || die
+			mv blender-test-data/* "${S}/tests/data/" || die
 		fi
 	fi
-
 }
 
 src_prepare() {
+	use cuda && cuda_src_prepare
+
 	cmake_src_prepare
 
 	blender_get_version
@@ -221,6 +246,8 @@ src_prepare() {
 		-e "s|Icon=blender|Icon=blender-${BV}|" \
 		-i release/freedesktop/blender.desktop || die
 
+	sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${BLENDER_BIN}|${T}/usr/\${BLENDER_BIN}|g" -i source/creator/CMakeLists.txt || die
+
 	mv \
 		release/freedesktop/icons/scalable/apps/blender.svg \
 		"release/freedesktop/icons/scalable/apps/blender-${BV}.svg" || die
@@ -232,7 +259,7 @@ src_prepare() {
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
 		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i tests/CMakeLists.txt || die
-		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/testing.cmake || die
 	fi
 }
 
@@ -257,17 +284,16 @@ src_configure() {
 		-DWITH_ALEMBIC=$(usex alembic)
 		-DWITH_BOOST=yes
 		-DWITH_BULLET=$(usex bullet)
-		-DWITH_CLANG=$(usex osl)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_CUDA_BINARIES=$(usex cuda $(usex cycles-bin-kernels))
 		-DWITH_CYCLES_DEVICE_ONEAPI=no
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda)
-		-DWITH_CYCLES_DEVICE_HIP=no
+		-DWITH_CYCLES_DEVICE_HIP=$(usex hip)
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
-		-DWITH_CYCLES_HIP_BINARIES=no
+		-DWITH_CYCLES_HIP_BINARIES=$(usex hip $(usex cycles-bin-kernels))
 		-DWITH_CYCLES_ONEAPI_BINARIES=no
 		-DWITH_CYCLES_OSL=$(usex osl)
 		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
@@ -279,7 +305,7 @@ src_configure() {
 		-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
 		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD=no
-		-DWITH_GHOST_WAYLAND_LIBDECOR=no
+		-DWITH_GHOST_WAYLAND_LIBDECOR="$(usex gnome)"
 		-DWITH_GHOST_X11=$(usex X)
 		-DWITH_GMP=$(usex gmp)
 		-DWITH_GTESTS=$(usex test)
@@ -292,7 +318,6 @@ src_configure() {
 		-DWITH_INPUT_NDOF=$(usex ndof)
 		-DWITH_INTERNATIONAL=$(usex nls)
 		-DWITH_JACK=$(usex jack)
-		-DWITH_LLVM=$(usex osl)
 		-DWITH_MATERIALX=no
 		-DWITH_MEM_JEMALLOC=$(usex jemalloc)
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
@@ -328,6 +353,12 @@ src_configure() {
 		-DWITH_XR_OPENXR=no
 	)
 
+	if use cuda; then
+		mycmakeargs+=(
+			-DCUDA_NVCC_FLAGS="--compiler-bindir;$(cuda_gccdir)"
+		)
+	fi
+
 	if use optix; then
 		mycmakeargs+=(
 			-DCYCLES_RUNTIME_OPTIX_ROOT_DIR="${EPREFIX}"/opt/optix
@@ -338,8 +369,8 @@ src_configure() {
 	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
 	use arm64 && append-flags -flax-vector-conversions
 
-	append-cflags $(usex debug '-DDEBUG' '-DNDEBUG')
-	append-cppflags $(usex debug '-DDEBUG' '-DNDEBUG')
+	append-cflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
+	append-cppflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
 
 	if tc-is-gcc ; then
 		# These options only exist when GCC is detected.
@@ -352,18 +383,25 @@ src_configure() {
 		use cuda && use cycles-bin-kernels && mycmakeargs+=( -DCUDA_HOST_COMPILER="$(cuda_gccdir)" )
 	fi
 
+	if tc-is-clang || use osl; then
+		mycmakeargs+=(
+			-DWITH_CLANG=yes
+			-DWITH_LLVM=yes
+		)
+	fi
+
 	if use test ; then
 		local CYCLES_TEST_DEVICES=( "CPU" )
 		if use cycles-bin-kernels; then
 			use cuda && CYCLES_TEST_DEVICES+=( "CUDA" )
 			use optix && CYCLES_TEST_DEVICES+=( "OPTIX" )
+			use hip && CYCLES_TEST_DEVICES+=( "HIP" )
 		fi
 		mycmakeargs+=(
 			-DCYCLES_TEST_DEVICES:STRING="$(local IFS=";"; echo "${CYCLES_TEST_DEVICES[*]}")"
 			-DWITH_COMPOSITOR_REALTIME_TESTS=yes
-			-DWITH_GTESTS=yes
-			-DWITH_OPENGL_DRAW_TESTS=yes
-			-DWITH_OPENGL_RENDER_TESTS=yes
+			-DWITH_GPU_DRAW_TESTS=yes
+			-DWITH_GPU_RENDER_TESTS=yes
 		)
 	fi
 
@@ -373,7 +411,7 @@ src_configure() {
 src_test() {
 	# A lot of tests needs to have access to the installed data files.
 	# So install them into the image directory now.
-	DESTDIR="${T}" cmake_build install "$@"
+	DESTDIR="${T}" cmake_build install
 
 	blender_get_version
 	# Define custom blender data/script file paths not be able to find them otherwise during testing.
@@ -386,10 +424,20 @@ src_test() {
 	[ -d "$BLENDER_SYSTEM_SCRIPTS" ] || die "The custom script path is invalid, fix the ebuild!"
 	[ -d "$BLENDER_SYSTEM_DATAFILES" ] || die "The custom datafiles path is invalid, fix the ebuild!"
 
+	if use cuda; then
+		cuda_add_sandbox -w
+		addwrite "/dev/dri/renderD128"
+		addwrite "/dev/char/"
+	fi
+
+	if use X; then
+		xdg_environment_reset
+	fi
+
 	cmake_src_test
 
 	# Clean up the image directory for src_install
-	rm -fr "${T}"/usr || die
+	rm -fr "${T}/usr" || die
 }
 
 src_install() {
