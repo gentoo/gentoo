@@ -9,7 +9,7 @@ DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://StanfordLegion/${PN}.git https://github.com/StanfordLegion/${PN}.git"
+	EGIT_REPO_URI="https://github.com/StanfordLegion/${PN}.git"
 else
 	SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${P}
