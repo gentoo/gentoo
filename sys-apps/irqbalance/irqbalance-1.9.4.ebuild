@@ -3,11 +3,12 @@
 
 EAPI=8
 
-inherit autotools udev systemd linux-info optfeature
+inherit meson linux-info optfeature systemd udev
 
 DESCRIPTION="Distribute hardware interrupts across processors on a multiprocessor system"
 HOMEPAGE="https://github.com/Irqbalance/irqbalance"
 SRC_URI="https://github.com/Irqbalance/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${P}/contrib
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,35 +39,35 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# Follow systemd policies
 	# https://wiki.gentoo.org/wiki/Project:Systemd/Ebuild_policy
 	sed \
 		-e 's/ $IRQBALANCE_ARGS//' \
 		-e '/EnvironmentFile/d' \
-		-i misc/irqbalance.service || die
-
-	default
-	eautoreconf
+		-i "${WORKDIR}"/${P}/misc/irqbalance.service || die
 }
 
 src_configure() {
-	local myeconfargs=(
-		$(use_with caps libcap-ng)
-		$(use_enable numa)
-		$(use_with systemd)
-		$(use_enable thermal)
-		$(use_with tui irqbalance-ui)
+	local emesonargs=(
+		$(meson_feature caps capng)
+		$(meson_feature numa)
+		$(meson_feature systemd)
+		$(meson_feature thermal)
+		$(meson_feature tui ui)
 	)
-	econf "${myeconfargs[@]}"
+
+	meson_src_configure
 }
 
 src_install() {
-	default
+	meson_src_install
 
 	newinitd "${FILESDIR}"/irqbalance.init.4 irqbalance
 	newconfd "${FILESDIR}"/irqbalance.confd-1 irqbalance
-	systemd_dounit misc/irqbalance.service
-	udev_dorules misc/90-irqbalance.rules
+	systemd_dounit "${WORKDIR}"/${P}/misc/irqbalance.service
+	udev_dorules "${WORKDIR}"/${P}/misc/90-irqbalance.rules
 }
 
 pkg_postinst() {
