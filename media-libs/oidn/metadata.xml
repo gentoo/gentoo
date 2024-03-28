@@ -21,6 +21,9 @@
 		<flag name="hip">
 			Build OIDN with AMD HIP support.
 		</flag>
+		<flag name="openimageio">
+			Enable OpenImageIO Support
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenImageDenoise/oidn</remote-id>

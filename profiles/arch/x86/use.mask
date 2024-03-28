@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-29)
+# not keyworded
+openimageio
+
 # Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
 # sci-libs/atlas works on x86
 -atlas
