@@ -1,0 +1,47 @@
+From 3105518ec3bc3ac88374e2c3b204f23feda91b5b Mon Sep 17 00:00:00 2001
+From: Dmitriy Konev <ddkonev@gmail.com>
+Date: Sun, 18 Jun 2023 16:42:56 +0300
+Subject: [PATCH] Prevent finishing greeter by unhandled signals
+
+We have time gap between main() start and KSignalHandler registration
+in which signals will close greeter
+
+First this bug tried to fix in commit c63287ca1250d60f61c4429cbeb0215f5c3bebde
+but placing KSignalHandler registration at start of main() is bad idea
+because it broke mechanism for handling signals at all
+and this behaviour was fixed in commit 448df7517021b9c2e68de161008ebc180363abed
+by moving handlers bellow
+for this reason we have this time gap
+---
+ greeter/main.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/greeter/main.cpp b/greeter/main.cpp
+index bf95cd1e..0693646e 100644
+--- a/greeter/main.cpp
++++ b/greeter/main.cpp
+@@ -57,6 +57,12 @@ static void signalHandler(int signum)
+ 
+ int main(int argc, char *argv[])
+ {
++    sigset_t blockedSignals;
++    sigemptyset(&blockedSignals);
++    sigaddset(&blockedSignals, SIGTERM);
++    sigaddset(&blockedSignals, SIGUSR1);
++    pthread_sigmask(SIG_BLOCK, &blockedSignals, NULL);
++
+     LayerShellQt::Shell::useLayerShell();
+ 
+     // disable ptrace on the greeter
+@@ -101,6 +107,8 @@ int main(int argc, char *argv[])
+     // only connect signal handler once we can actual handle the signal properly
+     QObject::connect(KSignalHandler::self(), &KSignalHandler::signalReceived, &app, &signalHandler);
+ 
++    pthread_sigmask(SIG_UNBLOCK, &blockedSignals, NULL);
++
+     app.setQuitOnLastWindowClosed(false);
+     app.setQuitLockEnabled(false);
+     QCoreApplication::setApplicationName(QStringLiteral("kscreenlocker_greet"));
+-- 
+GitLab
+

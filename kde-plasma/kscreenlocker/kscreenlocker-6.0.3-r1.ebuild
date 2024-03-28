@@ -58,6 +58,8 @@ BDEPEND="
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:*"
 
+PATCHES=( "${FILESDIR}/${P}-fix-lockscreen-race.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 	use test || cmake_run_in greeter cmake_comment_add_subdirectory autotests
@@ -74,8 +76,7 @@ src_test() {
 src_install() {
 	ecm_src_install
 
-	local config
-	for config in kde6{,-fingerprint,-smartcard} ; do
-		newpamd "${FILESDIR}/${config}.pam" ${config/6}
-	done
+	newpamd "${FILESDIR}/kde-r1.pam" kde
+	newpamd "${FILESDIR}/kde-fingerprint.pam" kde-fingerprint
+	newpamd "${FILESDIR}/kde-smartcard.pam" kde-smartcard
 }
