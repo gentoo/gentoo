@@ -19,7 +19,7 @@ IUSE="${CPU_FLAGS[@]} debug"
 REQUIRED_USE="|| ( ${CPU_FLAGS[@]} )"
 
 RDEPEND="
-	media-libs/embree
+	media-libs/embree:=
 	dev-cpp/tbb:=
 "
 DEPEND="${RDEPEND}"

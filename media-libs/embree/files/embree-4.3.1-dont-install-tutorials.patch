@@ -16,7 +16,7 @@ diff --git a/common/cmake/package.cmake b/common/cmake/package.cmake
 index f7a182f7f..92ac45de0 100644
 --- a/common/cmake/package.cmake
 +++ b/common/cmake/package.cmake
-@@ -145,7 +145,7 @@ ENDIF()
+@@ -151,7 +151,7 @@ ENDIF()
  # Install Models
  ##############################################################
  
@@ -113,8 +113,8 @@ diff --git a/tutorials/embree_info/CMakeLists.txt b/tutorials/embree_info/CMakeL
 index fa8b74b89..6d10279ff 100644
 --- a/tutorials/embree_info/CMakeLists.txt
 +++ b/tutorials/embree_info/CMakeLists.txt
-@@ -18,8 +18,10 @@ ADD_EXECUTABLE(embree_info embree_info.cpp)
- TARGET_LINK_LIBRARIES(embree_info embree)
+@@ -22,8 +22,10 @@ ELSE()
+ ENDIF()
  
  SET_PROPERTY(TARGET embree_info PROPERTY FOLDER tutorials/single)
 -INSTALL(TARGETS embree_info DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT examples)
@@ -126,13 +126,6 @@ index fa8b74b89..6d10279ff 100644
  
  IF (EMBREE_SYCL_SUPPORT)
    SET_PROPERTY(TARGET embree_info APPEND PROPERTY COMPILE_FLAGS "-fsycl -Xclang -fsycl-allow-func-ptr -fsycl-targets=spir64")
-@@ -31,4 +33,4 @@ IF (COMMAND SIGN_TARGET)
-   SIGN_TARGET(embree_info)
- ENDIF()
- 
--ENDIF()
-\ No newline at end of file
-+ENDIF()
 diff --git a/tutorials/embree_tests/CMakeLists.txt b/tutorials/embree_tests/CMakeLists.txt
 index ab62b1954..b3647bc2d 100644
 --- a/tutorials/embree_tests/CMakeLists.txt
