@@ -1,10 +1,10 @@
 diff -Naur a/hbt/src/common/System.h b/hbt/src/common/System.h
 --- a/hbt/src/common/System.h	2024-01-21 15:26:26.940486370 +0000
 +++ b/hbt/src/common/System.h	2024-01-21 22:22:36.713134358 +0000
-@@ -445,6 +445,14 @@
-   asm volatile("mrs %0, cntvct_el0" : "=r"(tstamp));
+@@ -446,6 +446,14 @@
    cpu = getCpu();
    return tstamp;
+ }
 +#elif defined(__riscv)
 +inline TimeStamp rdtscp(CpuId& cpu) {
 +  TimeStamp tstamp;
@@ -12,7 +12,7 @@ diff -Naur a/hbt/src/common/System.h b/hbt/src/common/System.h
 +  asm volatile("rdcycle %0" : "=r"(tstamp));
 +  cpu = getCpu();
 +  return tstamp;
-+
- }
++}
  #endif
  
+ inline std::pair<TimeStamp, CpuId> rdtscp() {
