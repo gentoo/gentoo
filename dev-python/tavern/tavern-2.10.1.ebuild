@@ -44,6 +44,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/taverntesting/tavern/pull/922
+		"${FILESDIR}/${P}-pytest-8.patch"
+	)
+
 	# strip unnecessary pins, upstream doesn't update them a lot
 	sed -i -E -e 's:,?<=?[0-9.]+::' pyproject.toml || die
 	distutils-r1_src_prepare
