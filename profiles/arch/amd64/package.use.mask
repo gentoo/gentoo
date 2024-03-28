@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
+# only keyworded for amd64 currently
+media-gfx/blender -gnome
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
 # dev-qt/qtlanguageserver:6 is keyworded here
 dev-qt/qtdeclarative:6 -qmlls
