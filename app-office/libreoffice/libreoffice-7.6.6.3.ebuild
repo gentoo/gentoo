@@ -296,6 +296,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.2.0.4-qt5detect.patch"
 
+	# 24.2 branch
+	"${FILESDIR}/${P}-autoconf-2.72.patch" # bug 925162
+
 	# TODO: upstream
 	"${FILESDIR}/${PN}-7.6-unused-qt5network.patch"
 
