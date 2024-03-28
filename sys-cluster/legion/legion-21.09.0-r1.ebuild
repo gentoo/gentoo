@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
@@ -29,6 +29,11 @@ DEPEND="examples? ( virtual/mpi[cxx] )
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/863731
+	# Fixed upstream / in live ebuild.
+	filter-lto
+
 	local mycmakeargs=(
 		-DLegion_USE_HWLOC=$(usex hwloc)
 		-DLegion_USE_GASNet=$(usex gasnet)
