@@ -160,6 +160,10 @@ x86? (
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-dzn-Include-vulkan_core.h-instead-of-vulkan.h-in-the.patch
+)
+
 pkg_pretend() {
 	if use vulkan; then
 		if ! use video_cards_d3d12 &&
