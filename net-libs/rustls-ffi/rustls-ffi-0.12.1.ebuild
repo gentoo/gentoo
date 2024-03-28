@@ -56,6 +56,10 @@ BDEPEND="dev-util/cargo-c"
 
 QA_FLAGS_IGNORED="usr/lib.*/librustls.*"
 
+PATCHES=(
+	"${FILESDIR}"/rustls-ffi-0.12.1-no-rust-nightly.patch
+)
+
 src_prepare() {
 	default
 
@@ -69,9 +73,6 @@ src_configure() {
 	# textrels in ring
 	# Hopefully fixed with https://github.com/rustls/rustls-ffi/pull/389
 	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-Wl,-z,notext"
-
-	# https://github.com/rustls/rustls-ffi/issues/397
-	export RUSTC_BOOTSTRAP=1
 
 	multilib-minimal_src_configure
 }

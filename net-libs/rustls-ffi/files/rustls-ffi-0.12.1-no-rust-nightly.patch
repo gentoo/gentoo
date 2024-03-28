@@ -1,0 +1,48 @@
+https://github.com/rustls/rustls-ffi/issues/397
+https://github.com/rustls/rustls-ffi/pull/398
+
+From 68b7153018647baec43ea950f28b2f84e87f5296 Mon Sep 17 00:00:00 2001
+From: Daniel McCarney <daniel@binaryparadox.net>
+Date: Wed, 27 Mar 2024 21:08:16 -0400
+Subject: [PATCH] Cargo: configure cargo-c to use vendored .h
+
+Presently we pre-generate the rustls.h header file using `cbindgen`,
+commit the result to `src/rustls.h`, and check that the generated result
+matches the checked-in result in CI.
+
+The new experimental cargo-c build regenerates its own header file using
+`cbindgen` by default unless told to do otherwise. We'd prefer it didn't
+do this because we're using a `cbindgen` feature that requires nightly
+rust.
+
+This commit updates the `Cargo.toml` capi metadata to tell cargo-c to
+skip generation of its own header file. We then configure the
+pre-generated checked-in header file as an asset to be copied into the
+install include directory.
+
+This better matches how the `Makefile` build allowed building the static
+lib without needing nightly rust or `cbindgen`.
+---
+ Cargo.toml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 7a910a9d..4c2b2e94 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -41,6 +41,7 @@ regex = "1.9.6"
+ [package.metadata.capi.header]
+ name = "rustls"
+ subdirectory = false
++generation = false # Prefer a vendored .h
+ 
+ [package.metadata.capi.library]
+ name = "rustls"
+@@ -50,3 +51,6 @@ rustflags = "-Cmetadata=rustls-ffi"
+ [package.metadata.capi.pkg_config]
+ name = "rustls"
+ filename = "rustls"
++
++[package.metadata.capi.install]
++asset = [{ from = "src/rustls.h", to = "include" }]
+
