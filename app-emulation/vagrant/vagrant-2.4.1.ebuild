@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31"
+USE_RUBY="ruby31 ruby32 ruby33"
 
-RUBY_FAKEGEM_EXTENSIONS=(ext/vagrant_ssl/extconf.rb)
+RUBY_FAKEGEM_EXTENSIONS=(ext/vagrant/vagrant_ssl/extconf.rb)
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
 RUBY_FAKEGEM_EXTRAINSTALL="keys plugins templates version.txt"
@@ -19,7 +19,7 @@ DESCRIPTION="A tool for building and distributing development environments"
 HOMEPAGE="https://vagrantup.com/"
 SRC_URI="https://github.com/hashicorp/vagrant/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="BUSL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="test"
@@ -37,7 +37,7 @@ ruby_add_rdepend "
 	>=dev-ruby/ed25519-1.3.0
 	dev-ruby/erubi
 	>=dev-ruby/googleapis-common-protos-types-1.3.0
-	dev-ruby/grpc
+	>=dev-ruby/grpc-1.59.2
 	>=dev-ruby/hashicorp-checkpoint-0.1.5
 	>=dev-ruby/i18n-1.12:1
 	>=dev-ruby/listen-3.7
@@ -51,7 +51,7 @@ ruby_add_rdepend "
 	>=dev-ruby/rexml-3.2.0
 	>=dev-ruby/rgl-0.5.10
 	>=dev-ruby/rubyzip-2.3.2
-	>=dev-ruby/vagrant_cloud-3.0.5
+	>=dev-ruby/vagrant_cloud-3.1.1
 	>=dev-ruby/ipaddr-1.2.4
 "
 
@@ -59,6 +59,7 @@ ruby_add_bdepend "
 	>=dev-ruby/rake-13.0.0
 	test? (
 		~app-emulation/vagrant-${PV}
+		dev-ruby/fake_ftp
 		dev-ruby/rake-compiler
 		>=dev-ruby/rspec-3.11
 		>=dev-ruby/rspec-its-1.3.0
