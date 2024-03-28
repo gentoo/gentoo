@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,17 +43,8 @@ src_unpack() {
 }
 
 src_install() {
-	nuget_donuget "${DISTDIR}/microsoft.aspnetcore.app.ref.${PV}.nupkg"
-	nuget_donuget "${DISTDIR}/microsoft.netcore.app.ref.${PV}.nupkg"
-
-	local runtime=$(dotnet-pkg-base_get-runtime)
-	local -a nuget_namespaces=(
-		microsoft.aspnetcore.app.runtime
-		microsoft.netcore.app.host
-		microsoft.netcore.app.runtime
-	)
-	local nuget_namespace
-	for nuget_namespace in "${nuget_namespaces[@]}" ; do
-		nuget_donuget "${DISTDIR}/${nuget_namespace}.${runtime}.${PV}.nupkg"
+	local nuget
+	for nuget in ${NUGETS} ; do
+		nuget_donuget "${DISTDIR}/${nuget/@/.}.nupkg"
 	done
 }

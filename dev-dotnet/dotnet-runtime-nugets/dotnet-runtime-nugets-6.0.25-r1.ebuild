@@ -12,8 +12,6 @@ microsoft.aspnetcore.app.runtime.linux-musl-arm@${PV}
 microsoft.aspnetcore.app.runtime.linux-musl-arm64@${PV}
 microsoft.aspnetcore.app.runtime.linux-musl-x64@${PV}
 microsoft.aspnetcore.app.runtime.linux-x64@${PV}
-microsoft.net.illink.tasks@${PV}
-microsoft.net.sdk.webassembly.pack@${PV}
 microsoft.netcore.app.host.linux-arm@${PV}
 microsoft.netcore.app.host.linux-arm64@${PV}
 microsoft.netcore.app.host.linux-musl-arm@${PV}
@@ -38,26 +36,15 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${PV}/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 arm arm64"
 
 src_unpack() {
 	:
 }
 
 src_install() {
-	nuget_donuget "${DISTDIR}/microsoft.aspnetcore.app.ref.${PV}.nupkg"
-	nuget_donuget "${DISTDIR}/microsoft.net.illink.tasks.${PV}.nupkg"
-	nuget_donuget "${DISTDIR}/microsoft.net.sdk.webassembly.pack.${PV}.nupkg"
-	nuget_donuget "${DISTDIR}/microsoft.netcore.app.ref.${PV}.nupkg"
-
-	local runtime=$(dotnet-pkg-base_get-runtime)
-	local -a nuget_namespaces=(
-		microsoft.aspnetcore.app.runtime
-		microsoft.netcore.app.host
-		microsoft.netcore.app.runtime
-	)
-	local nuget_namespace
-	for nuget_namespace in "${nuget_namespaces[@]}" ; do
-		nuget_donuget "${DISTDIR}/${nuget_namespace}.${runtime}.${PV}.nupkg"
+	local nuget
+	for nuget in ${NUGETS} ; do
+		nuget_donuget "${DISTDIR}/${nuget/@/.}.nupkg"
 	done
 }
