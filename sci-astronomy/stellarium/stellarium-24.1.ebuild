@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake desktop flag-o-matic python-any-r1 xdg verify-sig virtualx
 
 DESCRIPTION="3D photo-realistic skies in real time"
@@ -33,8 +33,8 @@ SRC_URI="
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~riscv ~x86"
-IUSE="debug deep-sky doc gps media nls qt6 +scripting +show-my-sky stars telescope test webengine +xlsx"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="debug deep-sky doc gps +lens-distortion media nls qt6 +scripting +show-my-sky stars telescope test webengine +xlsx"
 
 # Python interpreter is used while building RemoteControl plugin
 BDEPEND="
@@ -51,6 +51,10 @@ RDEPEND="
 	media-fonts/dejavu
 	sys-libs/zlib
 	gps? ( sci-geosciences/gpsd:=[cxx] )
+	lens-distortion? (
+		media-gfx/exiv2:=
+		sci-libs/nlopt
+	)
 	media? ( virtual/opengl )
 	!qt6? (
 		dev-qt/qtcharts:5
@@ -100,7 +104,7 @@ DEPEND="${RDEPEND}
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/stellarium-0.20.3-unbundle-zlib.patch"
+	"${FILESDIR}/stellarium-0.23.4-unbundle-zlib.patch"
 )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
@@ -148,6 +152,7 @@ src_configure() {
 		-DENABLE_SCRIPTING=$(usex scripting)
 		-DENABLE_TESTING="$(usex test)"
 		-DENABLE_XLSX="$(usex xlsx)"
+		-DUSE_PLUGIN_LENSDISTORTIONESTIMATOR="$(usex lens-distortion)"
 		-DUSE_PLUGIN_TELESCOPECONTROL="$(usex telescope)"
 		"$(cmake_use_find_package doc Doxygen)"
 	)
