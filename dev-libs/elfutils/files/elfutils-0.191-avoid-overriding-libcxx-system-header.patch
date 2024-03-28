@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/925241
+
+Replace -I with -iquote to avoid overriding stack system header from libcxx-18
+with the previously built stack binary. Override DEFAULT_INLCUDES because m4
+adds -I. by default.
+
+--- a/config/eu.am
++++ b/config/eu.am
+@@ -31,7 +31,7 @@
+ ##
+ 
+ DEFS = -D_GNU_SOURCE -DHAVE_CONFIG_H -DLOCALEDIR='"${localedir}"'
+-AM_CPPFLAGS = -I. -I$(srcdir) -I$(top_srcdir)/lib -I..
++AM_CPPFLAGS = -iquote . -I$(srcdir) -I$(top_srcdir)/lib -I..
+ 
+ # Drop the 'u' flag that automake adds by default. It is incompatible
+ # with deterministic archives.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -19,6 +19,8 @@
+ include $(top_srcdir)/config/eu.am
+ DEFS += $(YYDEBUG) -DDEBUGPRED=@DEBUGPRED@ \
+ 	-DSRCDIR=\"$(shell cd $(srcdir);pwd)\" -DOBJDIR=\"$(shell pwd)\"
++
++DEFAULT_INCLUDES =
+ AM_CPPFLAGS += -I$(srcdir)/../libelf -I$(srcdir)/../libebl \
+ 	    -I$(srcdir)/../libdw -I$(srcdir)/../libdwelf \
+ 	    -I$(srcdir)/../libdwfl -I$(srcdir)/../libasm -I../debuginfod
