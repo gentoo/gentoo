@@ -33,6 +33,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
+# Dead upstream, as is the whole telepathy stack. Some parts depend on
+# dev-qt/qtwebengine:5.
+# Removal on 2024-05-06.  Bug #926679
+kde-apps/ktp-accounts-kcm
+kde-apps/ktp-approver
+kde-apps/ktp-auth-handler
+kde-apps/ktp-common-internals
+kde-apps/ktp-contact-list
+kde-apps/ktp-contact-runner
+kde-apps/ktp-desktop-applets
+kde-apps/ktp-filetransfer-handler
+kde-apps/ktp-kded-module
+kde-apps/ktp-send-file
+kde-apps/ktp-text-ui
+kde-apps/plasma-telepathy-meta
+net-libs/telepathy-logger-qt
+
 # James Le Cuirot <chewi@gentoo.org> (2024-04-05)
 # Dead upstream and broken beyond repair. Removal on 2024-05-05. Bug #928591.
 games-board/xmille
