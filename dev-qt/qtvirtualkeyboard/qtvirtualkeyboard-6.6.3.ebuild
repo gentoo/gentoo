@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Customizable input framework and virtual keyboard for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~loong ~x86"
+	KEYWORDS="~amd64 ~arm ~loong ~riscv ~x86"
 fi
 
 IUSE="+spell"
