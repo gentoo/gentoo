@@ -13,4 +13,7 @@
 		<flag name="unary-laws">Include infrastructure for testing class laws of unary type constructors. It is required that this flag match the value that the `unary-laws` flag was given when building `quickcheck-classes-base`.</flag>
 		<flag name="vector">You can disable the use of the `vector` package using `-f-vector`.  This may be useful for accelerating builds in sandboxes for expert users.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">andrewthad/quickcheck-classes</remote-id>
+	</upstream>
 </pkgmetadata>
