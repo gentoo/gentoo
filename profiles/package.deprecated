@@ -107,14 +107,6 @@ sys-apps/edac-utils
 # to packages not supporting Python 2 anymore.
 dev-python/future
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-17)
-# Nosetests are no longer maintained (since 2015!), are completely
-# broken with Python 3.11, and we were already patching it to make it
-# work with prior Python versions.  If your package still needs it
-# (sic!), then either port it to use a maintained test framework (pytest
-# preferably) or last rite it.
-dev-python/nose
-
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 # When possible, replace dependencies on these packages with a dependency on

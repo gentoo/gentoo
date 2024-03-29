@@ -75,7 +75,6 @@ dev-python/distlib test
 dev-python/fonttools test
 dev-python/hatchling test
 dev-python/isort test
-dev-python/nose test
 dev-python/numpydoc test
 dev-python/objgraph test
 dev-python/pip-run test

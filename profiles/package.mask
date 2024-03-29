@@ -693,14 +693,6 @@ sci-libs/mpir
 ~sys-auth/polkit-qt-0.200.0
 >=sys-libs/snapd-glib-1.64-r100
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-28)
-# Nosetests have been abandoned in 2015.  Upstream (while technically
-# still around) has refused to accept any patches since, and we have
-# already had to fork it, to keep it somewhat working.  All
-# the remaining reverse dependencies were finally ported or last rited.
-# Removal on 2024-03-29.  Bug #822414.
-dev-python/nose
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
