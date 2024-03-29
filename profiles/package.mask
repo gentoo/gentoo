@@ -778,7 +778,6 @@ sci-astronomy/casa-data
 # and was removed in the past).
 # Removal on 2024-03-15.  Bug #922816.
 dev-python/bsddb3
-media-sound/exaile
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
