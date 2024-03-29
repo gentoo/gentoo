@@ -53,6 +53,8 @@ TEXLIVE_MODULE_SRC_CONTENTS="
 	context-visualcounter.source.r47085
 "
 
+TEXLIVE_MODULE_OPTIONAL_ENGINE="luajittex"
+
 inherit texlive-module
 
 DESCRIPTION="TeXLive ConTeXt and packages"
@@ -69,7 +71,7 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=app-text/texlive-core-2023[xetex]
+	>=app-text/texlive-core-2023[xetex,luajittex?]
 "
 
 src_prepare() {
