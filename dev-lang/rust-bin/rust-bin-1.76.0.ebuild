@@ -10,7 +10,7 @@ MY_P="rust-${PV}"
 MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2024-02-08/rust-src-${PV}.tar.xz"
 GENTOO_BIN_BASEURI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}" # omit leading slash
 
-DESCRIPTION="Systems programming language from Mozilla"
+DESCRIPTION="Language empowering everyone to build reliable and efficient software"
 HOMEPAGE="https://www.rust-lang.org/"
 SRC_URI="$(rust_all_arch_uris ${MY_P})
 	rust-src? ( ${MY_SRC_URI} )
