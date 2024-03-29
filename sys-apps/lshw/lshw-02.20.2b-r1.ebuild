@@ -7,12 +7,12 @@ PLOCALES="ca es fr"
 
 inherit desktop flag-o-matic plocale toolchain-funcs xdg-utils
 
-MY_COMMIT=42fef565731411a784101de614a54bff79d1858e
-MY_PV=$(ver_cut 3 PV/b/B).$(ver_cut 1-3)_$(ver_cut 5-6)
+MY_PV=$(ver_cut 3 PV/b/B).$(ver_cut 1-2)
 
 DESCRIPTION="Hardware Lister"
 HOMEPAGE="https://www.ezix.org/project/wiki/HardwareLiSter"
-SRC_URI="https://ezix.org/src/pkg/lshw/archive/${MY_COMMIT}.tar.gz -> ${P}-${MY_PV}.tar.gz"
+SRC_URI="https://www.ezix.org/software/files/${PN}-${MY_PV}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,8 +27,6 @@ RDEPEND="sys-apps/hwdata
 	sqlite? ( dev-db/sqlite:3 )"
 BDEPEND="gtk? ( virtual/pkgconfig )
 	sqlite? ( virtual/pkgconfig )"
-
-S=${WORKDIR}/${PN}
 
 DOCS=( COPYING README.md docs/{Changelog,TODO,IODC.txt,lshw.xsd,proc_usb_info.txt} )
 
