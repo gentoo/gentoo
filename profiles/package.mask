@@ -767,11 +767,6 @@ dev-python/fb-re2
 # Removal on 2024-03-15.  Bug #922925.
 net-dns/odsclient
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-14)
-# Data for removed sci-astronomy/casacore.  No other revdeps.
-# Removal on 2024-03-15.  Bug #923954.
-sci-astronomy/casa-data
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
