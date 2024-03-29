@@ -756,12 +756,6 @@ dev-python/pendulum
 # May break on some arches b/c of visibility/map changes to ffi_type_longdouble
 =dev-libs/libffi-3.4.5
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-14)
-# Abandoned upstream in 2020.  Has a fork that has last been released
-# in 2021.  No revdeps.
-# Removal on 2024-03-15.  Bug #833088.
-dev-python/fb-re2
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
