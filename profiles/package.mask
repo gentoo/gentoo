@@ -34,7 +34,9 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2024-03-28)
-# Serious bug which is being investigated. Please downgrade ASAP.
+# Backdoor discovered in release tarballs. DOWNGRADE NOW.
+# https://www.openwall.com/lists/oss-security/2024/03/29/4
+# https://bugs.gentoo.org/928134
 >=app-arch/xz-utils-5.6.0
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
