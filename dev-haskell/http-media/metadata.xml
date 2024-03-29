@@ -32,4 +32,7 @@
 		
 		The API is agnostic to your choice of server.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">zmthy/http-media</remote-id>
+	</upstream>
 </pkgmetadata>
