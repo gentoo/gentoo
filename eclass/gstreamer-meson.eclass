@@ -488,13 +488,20 @@ gstreamer_multilib_src_install() {
 
 # @FUNCTION: gstreamer_multilib_src_install_all
 # @DESCRIPTION:
-# Installs documentation for requested gstreamer plugin
+# Installs documentation and presets for requested gstreamer plugin
 gstreamer_multilib_src_install_all() {
 	local plugin_dir
 
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
 		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
+		if [[ ${EAPI} == 8 ]]; then
+			local presets=( "${dir}"/*.prs )
+			if [[ -e ${presets[0]} ]]; then
+				insinto /usr/share/gstreamer-${SLOT}/presets
+				doins "${presets[@]}"
+			fi
+		fi
 	done
 }
 
