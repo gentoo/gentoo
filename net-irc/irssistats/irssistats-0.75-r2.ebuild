@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -16,10 +16,11 @@ KEYWORDS="amd64 ppc sparc x86"
 
 DEPEND="net-irc/irssi"
 
-src_prepare() {
-	default
-	eapply "${FILESDIR}/${P}-Makefile.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-Makefile.patch"
+	"${FILESDIR}/${P}-clang.patch"
+)
+
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
