@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-rename-with-systemd.patch"
+	"${FILESDIR}/${P}-x86-fixes.patch"
 )
 
 src_prepare() {
