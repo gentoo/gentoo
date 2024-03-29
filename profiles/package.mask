@@ -804,7 +804,6 @@ kde-misc/bismuth
 # Removal on 2024-03-15.  Bug #924587.
 dev-cpp/libodb
 dev-cpp/libodb-sqlite
-dev-util/build2
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
