@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
+# Telepathy is dead and packages masked for removal.
+telepathy
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-12-15)
 # KF6 is not in ::gentoo yet. Move to stable.use.mask on KF6 intro.
 kf6compat
