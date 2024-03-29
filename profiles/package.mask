@@ -780,12 +780,6 @@ sci-astronomy/casa-data
 dev-python/bsddb3
 media-sound/exaile
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-14)
-# All these firmwares are included in sys-kernel/linux-firmware, in some
-# cases in newer versions with security fixes.
-# Removal on 2024-03-15.  Bug #924589.
-sys-firmware/iwl1000-ucode
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
