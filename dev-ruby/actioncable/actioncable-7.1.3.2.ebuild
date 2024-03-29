@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
@@ -43,5 +43,5 @@ ruby_add_bdepend "
 	test? (
 		>=dev-ruby/railties-4.2.0
 		dev-ruby/test-unit:2
-		>=dev-ruby/mocha-0.14.0:0.14
+		dev-ruby/mocha
 	)"
