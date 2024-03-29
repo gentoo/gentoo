@@ -701,14 +701,6 @@ sci-libs/mpir
 # Removal on 2024-03-29.  Bug #822414.
 dev-python/nose
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-27)
-# dev-python/boto is dead, with last release in 2018.  It has been
-# replaced by dev-python/boto3.  It carries a ton of patches and still
-# depends on dev-python/nose.
-#
-# Removal on 2024-03-28.  Bug #888235.
-dev-python/boto
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
