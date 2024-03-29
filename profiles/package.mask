@@ -716,11 +716,6 @@ app-misc/rmlint
 # Removal on 2024-03-28.  Bug #888235.
 dev-python/boto
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-27)
-# Still depends on dev-python/nose.  No reverse dependencies.
-# Removal on 2024-03-28.  Bug #878721.
-sci-biology/biopandas
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
