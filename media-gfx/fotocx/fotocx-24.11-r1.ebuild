@@ -1,18 +1,18 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit optfeature xdg-utils
 
 DESCRIPTION="Program for improving image files made with a digital camera"
 HOMEPAGE="https://kornelix.net/fotocx/fotocx.html"
 SRC_URI="https://kornelix.net/downloads/downloads/${P}-source.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
 # For required dependencies read doc/README, for required tools read
 # data/userguide [INSTALLATION]. xdg-open (x11-misc/xdg-utils) is an
@@ -34,8 +34,6 @@ RDEPEND="
 	media-libs/exiftool
 	x11-misc/xdg-utils
 "
-
-S="${WORKDIR}/${PN}"
 
 PATCHES=( "${FILESDIR}/${PN}-24.11-documentation.patch" )
 
