@@ -446,10 +446,6 @@ app-emulation/libvirt virtualbox
 # Need to check if this has a chance to work with in-kernel drivers
 app-crypt/heimdal afs
 
-# James Le Cuirot <chewi@gentoo.org> (2017-05-22)
-# Only available on some architectures.
-dev-java/icedtea -shenandoah
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # Unkeyworded dependencies
 app-admin/rsyslog mongodb

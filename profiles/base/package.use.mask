@@ -834,12 +834,6 @@ sys-devel/gcc vtv
 # invokes it wrong.
 dev-lang/moarvm asan
 
-# James Le Cuirot <chewi@gentoo.org> (2016-04-10)
-# Slower and less reliable than HotSpot and we don't support Java on
-# any non-HotSpot platforms. Don't unmask these unless you know what
-# you're doing. This has upstream's approval.
-dev-java/icedtea cacao jamvm
-
 # Rick Farina <zerochaos@gentoo.org> (2015-10-06)
 # forward porting this patch is non-trivial, mask for now
 >=net-wireless/wpa_supplicant-2.5 wimax

@@ -405,10 +405,6 @@ dev-db/mariadb -jdbc
 # PGO is fixed on amd64
 >=www-client/firefox-48 -pgo
 
-# James Le Cuirot <chewi@gentoo.org> (2016-07-26)
-# Only available on some architectures.
-dev-java/icedtea -shenandoah
-
 # Mike Gilbert <floppym@gentoo.org> (2016-06-23)
 # This flag only has meaning on amd64
 sys-boot/grub:2 -grub_platforms_xen-32

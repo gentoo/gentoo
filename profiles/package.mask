@@ -806,14 +806,6 @@ dev-cpp/libodb
 dev-cpp/libodb-sqlite
 dev-util/build2
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-02-14)
-# "A harness to build OpenJDK using [...]" is no longer needed since
-# Gentoo can build openjdk from source.
-# Maintainer capacity missing to maintain these packages.
-# More than 30 open bugs.
-# Removal on 2024-03-15.
-dev-java/icedtea
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
