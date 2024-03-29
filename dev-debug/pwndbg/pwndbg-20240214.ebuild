@@ -45,15 +45,6 @@ RDEPEND="
 # Tests are architectur-specific (precompiled binaries)
 RESTRICT="test"
 
-src_prepare() {
-	if [[ ${PV} != 99999999 ]]; then
-		sed -e "s/__version__ = '\(.*\)'/__version__ = '${PV}'/" \
-			-i pwndbg/lib/version.py || die
-	fi
-
-	default
-}
-
 src_install() {
 	distutils-r1_src_install
 
