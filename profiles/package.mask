@@ -701,13 +701,6 @@ sci-libs/mpir
 # Removal on 2024-03-29.  Bug #822414.
 dev-python/nose
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-28)
-# The project is not really actively maintained upstream, and it still
-# depends on dev-python/nose.  There are other tools with similar
-# functionality.
-# Removal on 2024-03-29.  Bug #878695.
-app-misc/rmlint
-
 # Michał Górny <mgorny@gentoo.org> (2024-02-27)
 # dev-python/boto is dead, with last release in 2018.  It has been
 # replaced by dev-python/boto3.  It carries a ton of patches and still
