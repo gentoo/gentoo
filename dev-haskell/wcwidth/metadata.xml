@@ -15,4 +15,7 @@
 		the widths assigned by it. The command line tool can compile a width table
 		to Haskell code that assigns widths to the Char type.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">solidsnack/wcwidth</remote-id>
+	</upstream>
 </pkgmetadata>
