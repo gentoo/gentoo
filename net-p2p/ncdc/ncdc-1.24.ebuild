@@ -28,9 +28,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-lang/perl
 	dev-util/makeheaders
 	virtual/pkgconfig
-	dev-lang/perl
 	verify-sig? ( sec-keys/openpgp-keys-yorhel )
 "
 
