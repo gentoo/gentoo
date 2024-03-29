@@ -12,7 +12,7 @@ S="${WORKDIR}/libs-${P}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND=">=sys-apps/dbus-1.2.1"
 RDEPEND="${DEPEND}"
