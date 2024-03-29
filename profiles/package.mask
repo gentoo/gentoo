@@ -792,12 +792,6 @@ sys-firmware/iwl6030-ucode
 sys-firmware/iwl7260-ucode
 sys-firmware/iwl8000-ucode
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-14)
-# Does not work with >=kde-plasma/kwin-5.27 anymore.  Discontinued upstream.
-# https://github.com/Bismuth-Forge/bismuth/issues/471#issuecomment-1410969462
-# Removal on 2024-03-15.  Bug #924588.
-kde-misc/bismuth
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
