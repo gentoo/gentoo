@@ -12,13 +12,16 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-IUSE="accessibility +network opengl +sql +ssl vulkan +widgets"
+IUSE="accessibility +network opengl +sql +ssl svg vulkan +widgets"
 
 # behaves very badly when qtdeclarative is not already installed, also
 # other more minor issues (installs junk, sandbox/offscreen issues)
 RESTRICT="test"
 
-RDEPEND="~dev-qt/qtbase-${PV}:6[accessibility=,gui,network=,opengl=,sql?,ssl?,vulkan=,widgets=]"
+RDEPEND="
+	~dev-qt/qtbase-${PV}:6[accessibility=,gui,network=,opengl=,sql?,ssl?,vulkan=,widgets=]
+	svg? ( ~dev-qt/qtsvg-${PV}:6 )
+"
 DEPEND="
 	${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers )
@@ -31,6 +34,7 @@ BDEPEND="
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package sql Qt6Sql)
+		$(cmake_use_find_package svg Qt6Svg)
 		$(qt_feature network qml_network)
 		$(qt_feature ssl qml_ssl)
 	)
