@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,9 +58,11 @@ JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="${TARBALL_S}/tool/src/test/java"
 
 DOCS=( "${TARBALL_S}/tool/CHANGES.txt" )
+PATCHES=( "${FILESDIR}/antlr-tool-3.5.3-java21.patch" )
 
 src_prepare() {
 	java-pkg_clean
+	default #780585
 	java-pkg-2_src_prepare
 
 	# Some tests fail under Java 8 in ways that probably aren't limited
