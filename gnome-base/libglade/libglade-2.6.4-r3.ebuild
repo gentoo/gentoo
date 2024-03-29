@@ -45,6 +45,10 @@ src_prepare() {
 		sed 's/ tests//' -i Makefile.am Makefile.in || die "sed failed"
 	fi
 
+	# Deprecated macro that does nothing. Provided by gnome-base/gnome-common
+	# but adding an additional bdep for this is silly.
+	sed -i '/GNOME_COMMON_INIT/d' configure.in || die
+
 	mv configure.in configure.ac || die
 	gnome2_src_prepare
 }
