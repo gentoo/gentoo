@@ -1,0 +1,21 @@
+bug #919684
+--- a/tool/src/main/java/org/antlr/codegen/CodeGenerator.java
++++ b/tool/src/main/java/org/antlr/codegen/CodeGenerator.java
+@@ -36,6 +36,7 @@ import org.antlr.Tool;
+ import org.antlr.analysis.*;
+ import org.antlr.misc.*;
+ import org.antlr.stringtemplate.*;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
+ import org.antlr.tool.*;
+ 
+--- a/tool/src/main/antlr2/org/antlr/grammar/v2/codegen.g
++++ b/tool/src/main/antlr2/org/antlr/grammar/v2/codegen.g
+@@ -32,6 +32,7 @@ header {
+     import org.antlr.misc.*;
+ 	import java.util.*;
+ 	import org.antlr.stringtemplate.*;
++	import org.antlr.stringtemplate.StringTemplate;
+     import antlr.TokenWithIndex;
+     import antlr.CommonToken;
+     import org.antlr.codegen.*;
