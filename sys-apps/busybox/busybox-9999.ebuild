@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.34.1-skip-selinux-search.patch
 
 	"${FILESDIR}"/${PN}-1.36.0-fortify-source-3-fixdep.patch
+	"${FILESDIR}"/${PN}-1.36.1-kernel-6.8.patch
 
 	# "${FILESDIR}"/${P}-*.patch
 )
