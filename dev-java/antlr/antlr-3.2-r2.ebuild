@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc test"
 
@@ -11,19 +11,20 @@ DESCRIPTION="A parser generator for many languages"
 HOMEPAGE="https://www.antlr3.org/"
 SRC_URI="https://www.antlr3.org/download/${P}.tar.gz
 	https://www.antlr3.org/download/${P}.jar" # Prebuilt version needed.
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="3"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 RESTRICT="!test? ( test )"
 
-CDEPEND=">=dev-java/antlr-2.7.7-r7:0
+CP_DEPEND=">=dev-java/antlr-2.7.7-r7:0
 	dev-java/stringtemplate:0"
 
-RDEPEND="${CDEPEND}
+RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
-DEPEND="${CDEPEND}
+DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
 	test? ( dev-java/junit:4 )"
 
@@ -34,9 +35,7 @@ PATCHES=(
 	"${FILESDIR}/antlr-3.2-java21.patch"
 )
 
-S="${WORKDIR}/${P}"
 JAVA_GENTOO_CLASSPATH_EXTRA="${S}/${PN}-runtime.jar"
-JAVA_GENTOO_CLASSPATH="antlr,stringtemplate"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -50,7 +49,8 @@ src_prepare() {
 	# to the tests. This is bad but upstream is never going to update
 	# 3.2 even though other projects still rely on it. If any issues
 	# arise, we can only put pressure on those projects to upgrade.
-	if java-pkg_is-vm-version-ge 1.8; then
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 1.8; then
 		rm -v tool/src/test/java/org/antlr/test/Test{DFAConversion,SemanticPredicates,TopologicalSort}.java || die
 	fi
 
