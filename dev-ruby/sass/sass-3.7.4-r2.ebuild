@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -21,10 +21,11 @@ RUBY_S="ruby-sass-${PV}"
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux"
+IUSE="doc test"
 
 ruby_add_bdepend "
 	doc? ( >=dev-ruby/yard-0.5.3 )
-	test? ( dev-ruby/minitest:5.15 )
+	test? ( dev-ruby/minitest )
 "
 
 ruby_add_rdepend "
@@ -40,11 +41,6 @@ PATCHES=(
 # tests could use `less` if we had it
 
 all_ruby_prepare() {
-	# Match activesupport which gets dragged in
-	sed -i -e '/minitest.*>= 5/s:.*:&, "< 5.16":' ${PN}.gemspec || die
-	sed -i -e '/minitest/s:6.0:5.16:' Gemfile || die
-	sed -i -e "/require 'minitest\/autorun'/igem 'minitest', '< 5.16'" test/test_helper.rb || die
-
 	# We use dev-ruby/listen now instead of dev-ruby/sass-listen
 	sed -i \
 		-e "/sass-listen/s:, '~> 4.0.0'::" \
@@ -56,6 +52,10 @@ all_ruby_prepare() {
 
 	# Keep VERSION_DATE around since we don't create a new package
 	sed -i -e '/at_exit/,/end/ s:^:#:' Rakefile || die
+
+	# Fix minitest deprecations
+	sed -e 's/MiniTest/Minitest/' \
+		-i test/test_helper.rb test/sass/test_helper.rb test/sass/*_test.rb test/sass/{scss,util}/*_test.rb || die
 }
 
 each_ruby_test() {
