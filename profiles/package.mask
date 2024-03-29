@@ -721,13 +721,6 @@ dev-python/boto
 # Removal on 2024-03-28.  Bug #878721.
 sci-biology/biopandas
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-27)
-# Effectively unmaintained in Gentoo.  Still depends on dev-python/nose,
-# on top of that tests are restricted, so we don't even know if it
-# works at all.  No reverse dependencies.
-# Removal on 2024-03-28.  Bug #878725.
-sci-chemistry/nmrglue
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
