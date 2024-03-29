@@ -798,12 +798,6 @@ sys-firmware/iwl8000-ucode
 # Removal on 2024-03-15.  Bug #924588.
 kde-misc/bismuth
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-14)
-# A NIH build system with no revdeps.  Broken with ccache, clang
-# and possibly more.  Horrible bootstrap process.
-# Removal on 2024-03-15.  Bug #924587.
-dev-cpp/libodb
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
