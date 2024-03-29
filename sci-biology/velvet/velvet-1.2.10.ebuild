@@ -16,7 +16,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc openmp"
 
-BDEPEND="doc? ( virtual/latex-base )"
+BDEPEND="doc? ( virtual/latex-base )
+        openmp? (
+                || (
+                        sys-devel/gcc[openmp]
+                        sys-devel/clang-runtime[openmp]
+                )
+        )
+"
+
+PATCHES=( "${FILESDIR}/${P}-incompatible-pointers.patch" )
 
 src_prepare() {
 	default
@@ -49,7 +58,7 @@ src_prepare() {
 		CFLAGS="${CFLAGS}"
 		OPT="${CFLAGS}"
 	)
-	use openmp && MAKE_XOPTS+=( OPENMP=1 )
+	use openmp && MAKE_XOPTS+=( OPENMP=1 ) && tc-check-openmp
 	[[ ! -z "${VELVET_MAXKMERLENGTH}" ]] && MAKE_XOPTS+=( MAXKMERLENGTH=${VELVET_MAXKMERLENGTH} )
 	[[ ! -z "${VELVET_CATEGORIES}" ]] && MAKE_XOPTS+=( CATEGORIES=${VELVET_CATEGORIES} )
 	[[ ! -z "${VELVET_BIGASSEMBLY}" ]] && MAKE_XOPTS+=( BIGASSEMBLY=${VELVET_BIGASSEMBLY} )
