@@ -790,7 +790,6 @@ sys-firmware/iwl3160-ucode
 sys-firmware/iwl6005-ucode
 sys-firmware/iwl6030-ucode
 sys-firmware/iwl7260-ucode
-sys-firmware/iwl8000-ucode
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
