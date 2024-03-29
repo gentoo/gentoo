@@ -15,6 +15,5 @@ S=${WORKDIR}/${PN}-${COMMIT}
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/4"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 PATCHES=( "${FILESDIR}/${PN}-cmake.patch" )
