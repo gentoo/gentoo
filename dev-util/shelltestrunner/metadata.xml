@@ -12,4 +12,7 @@
 		and exit status.  Tests can be run selectively, in parallel, with a
 		timeout, in color, and/or with differences highlighted.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">simonmichael/shelltestrunner</remote-id>
+	</upstream>
 </pkgmetadata>
