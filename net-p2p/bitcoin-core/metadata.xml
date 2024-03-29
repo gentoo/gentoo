@@ -12,6 +12,7 @@
 	<use>
 		<flag name="berkdb">Support legacy wallets in Berkeley DB format</flag>
 		<flag name="bitcoin-cli">Build and install bitcoin-cli command line interface</flag>
+		<flag name="cli">Build and install bitcoin-cli command line interface</flag>
 		<flag name="daemon">Build and install bitcoind daemon</flag>
 		<flag name="external-signer">Include support for external wallet signer programs</flag>
 		<flag name="gui">Build and install Bitcoin-Qt GUI</flag>
