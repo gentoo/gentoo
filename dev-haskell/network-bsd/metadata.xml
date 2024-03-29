@@ -10,4 +10,7 @@
 		
 		See newer versions of &lt;https://hackage.haskell.org/package/network-bsd network-bsd&gt; for more information.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell/network-bsd</remote-id>
+	</upstream>
 </pkgmetadata>
