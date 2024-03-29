@@ -19,12 +19,12 @@ SRC_URI="
 		-> ${PN}-amd64-${PV}.deb )
 	arm64? ( https://github.com/jgraph/drawio-desktop/releases/download/v${PV}/drawio-arm64-${PV}.deb
 		-> ${PN}-arm64-${PV}.deb )
-	https://raw.githubusercontent.com/jgraph/drawio-desktop/bdf5a4de3331e8dabab2be4c8f7b1a5427118f3f/build/icon.svg
-		-> drawio-${PV}-icon-r1.svg
+	https://raw.githubusercontent.com/jgraph/drawio-desktop/3fee9d732fc8b78b2886e042262df8bda8ef6ba5/build/icon.svg
+		-> drawio-icon.svg
 "
 S="${WORKDIR}"
 
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 
 # These are the licenses used by node_modules packages, drawio and drawio-desktop repositories
 LICENSE="
@@ -89,8 +89,8 @@ src_install() {
 		newicon -s "${IC_SIZE}" -c mimetypes "usr/share/icons/hicolor/${IC_SIZE}x${IC_SIZE}/apps/drawio.png" \
 		application-vnd.jgraph.mxfile.png
 	done
-	newicon -s scalable "${DISTDIR}/drawio-${PV}-icon-r1.svg" drawio.svg
-	newicon -s scalable -c mimetypes "${DISTDIR}/drawio-${PV}-icon-r1.svg" application-vnd.jgraph.mxfile.svg
+	newicon -s scalable "${DISTDIR}/drawio-icon.svg" drawio.svg
+	newicon -s scalable -c mimetypes "${DISTDIR}/drawio-icon.svg" application-vnd.jgraph.mxfile.svg
 
 	# Create a desktop entry and associate it with the drawio mime type
 	domenu usr/share/applications/drawio.desktop
