@@ -18,13 +18,15 @@ IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
-	acct-user/${PN}
-	acct-group/${PN}
 	dev-libs/libaio
 	sys-apps/util-linux
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	acct-user/${PN}
+	acct-group/${PN}
+	${DEPEND}
+"
 BDEPEND="sys-apps/which"
 
 PATCHES=(
