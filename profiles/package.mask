@@ -735,13 +735,6 @@ sci-chemistry/nmrglue
 # Removal: 2024-03-24.  Bugs #925342, #837518.
 dev-libs/zlog
 
-# Vadim Misbakh-Soloviov <mva@gentoo.org> (2024-02-22)
-# Masked for removal in 30 (or more) days.
-# Fetches only from specific geo-locations, hostile upstream, security issues.
-# Consider to use the version from overlay named "mva" after tree-cleaning.
-# No revdeps.  Bug #876271
-www-plugins/gosuslugi-plugin
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
