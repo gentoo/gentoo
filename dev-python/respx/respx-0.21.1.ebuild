@@ -31,6 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/httpcore[${PYTHON_USEDEP}]
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/starlette[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 	)
@@ -39,5 +40,5 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	epytest -p 'no:*' -o addopts=
+	epytest -p 'no:*' -p asyncio -o addopts=
 }
