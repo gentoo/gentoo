@@ -10,4 +10,7 @@
 		<flag name="hashable">enable hashable instances</flag>
 		<flag name="template-haskell">enable template_haskell</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">ekmett/nats</remote-id>
+	</upstream>
 </pkgmetadata>
