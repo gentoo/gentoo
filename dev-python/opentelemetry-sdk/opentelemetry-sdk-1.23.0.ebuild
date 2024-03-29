@@ -50,7 +50,8 @@ BDEPEND="
 	)
 "
 
-EPYTEST_XDIST=1
+# Tests cannot handle xdist with high makeopts
+# https://bugs.gentoo.org/928132
 distutils_enable_tests pytest
 
 src_prepare() {
