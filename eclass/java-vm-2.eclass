@@ -1,17 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-vm-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Java Virtual Machine eclass
 # @DESCRIPTION:
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -27,10 +27,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 IDEPEND="app-eselect/eselect-java"
-
-if [[ ${EAPI} == 6 ]]; then
-	DEPEND+=" ${BDEPEND}"
-fi
 
 export WANT_JAVA_CONFIG=2
 
@@ -98,9 +94,6 @@ java-vm-2_pkg_postinst() {
 # @RETURN: 0 if >=app-eselect/eselect-java-0.5 is installed, 1 otherwise.
 has_eselect_java-vm_update() {
 	local has_version_args="-b"
-	if [[ ${EAPI} == 6 ]]; then
-		has_version_args="--host-root"
-	fi
 
 	has_version "${has_version_args}" ">=app-eselect/eselect-java-0.5"
 }
