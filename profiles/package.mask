@@ -728,13 +728,6 @@ sci-biology/biopandas
 # Removal on 2024-03-28.  Bug #878725.
 sci-chemistry/nmrglue
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-02-23)
-# A library without any reverse dependencies in tree. Maintainer-needed
-# package. Has open security bug without handling. Has open bump for a
-# long time.
-# Removal: 2024-03-24.  Bugs #925342, #837518.
-dev-libs/zlog
-
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
 =sys-apps/gentoo-functions-1*
