@@ -8,4 +8,7 @@
 	<longdescription>
 		For examples and an introduction to the library please take a look at the &lt;https://github.com/CRogers/should-not-typecheck#should-not-typecheck- README&gt; on github.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">CRogers/should-not-typecheck</remote-id>
+	</upstream>
 </pkgmetadata>
