@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library for communication with TI calculators"
 HOMEPAGE="http://lpg.ticalc.org/prj_tilp/"
@@ -32,6 +32,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927586
+	filter-lto
+
 	econf \
 		--disable-rpath \
 		$(use_enable static-libs static) \
