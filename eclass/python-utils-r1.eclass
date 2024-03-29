@@ -1349,6 +1349,9 @@ epytest() {
 		# override filterwarnings=error, we do not really want -Werror
 		# for end users, as it tends to fail on new warnings from deps
 		-Wdefault
+		# however, do error out if the package failed to load
+		# an appropriate async plugin
+		-Werror::pytest.PytestUnhandledCoroutineWarning
 		# override color output
 		"--color=${color}"
 		# count is more precise when we're dealing with a large number
