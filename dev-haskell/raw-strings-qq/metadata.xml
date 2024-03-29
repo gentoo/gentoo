@@ -5,4 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">23Skidoo/raw-strings-qq</remote-id>
+	</upstream>
 </pkgmetadata>
