@@ -787,7 +787,6 @@ media-sound/exaile
 sys-firmware/iwl1000-ucode
 sys-firmware/iwl3160-7260-bt-ucode
 sys-firmware/iwl3160-ucode
-sys-firmware/iwl6005-ucode
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
