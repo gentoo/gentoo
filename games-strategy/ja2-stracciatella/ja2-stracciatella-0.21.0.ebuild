@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -163,7 +163,7 @@ windows_x86_64_msvc@0.42.1
 # See dependencies/lib-lua/CMakeLists.txt
 LUA_COMPAT=( lua5-3 )
 
-inherit cargo cmake lua-single xdg
+inherit cargo cmake flag-o-matic lua-single xdg
 
 DESCRIPTION="An improved, cross-platform, stable Jagged Alliance 2 runtime"
 HOMEPAGE="https://github.com/ja2-stracciatella/"
@@ -207,6 +207,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/916965
+	# https://github.com/ja2-stracciatella/ja2-stracciatella/issues/1963
+	filter-lto
+
 	local mycmakeargs=(
 		-DUSE_SCCACHE=OFF
 
