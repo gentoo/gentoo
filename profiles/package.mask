@@ -762,11 +762,6 @@ dev-python/pendulum
 # Removal on 2024-03-15.  Bug #833088.
 dev-python/fb-re2
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-14)
-# Unmaintained.  EAPI 6.  The service was shut down.
-# Removal on 2024-03-15.  Bug #922925.
-net-dns/odsclient
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
