@@ -35,6 +35,11 @@ BDEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 
+python_compile() {
+	# https://bugs.gentoo.org/927770
+	distutils-r1_python_compile -j1
+}
+
 python_compile_all() {
 	rm -r ppl || die
 	use doc && build_sphinx docs/source
