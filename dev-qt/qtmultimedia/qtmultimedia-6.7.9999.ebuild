@@ -85,3 +85,18 @@ src_configure() {
 
 	qt6-build_src_configure
 }
+
+src_install() {
+	qt6-build_src_install
+
+	if use test; then
+		local delete=( # sigh
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Multimedia/Qt6MockMultimediaPlugin*.cmake
+			"${D}${QT6_MKSPECSDIR}"/modules/qt_plugin_mockmultimediaplugin.pri
+			"${D}${QT6_PLUGINDIR}"/multimedia/libmockmultimediaplugin.*
+			"${D}${QT6_PLUGINDIR}"/multimedia/objects-*
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -rf -- "${delete[@]}" || die
+	fi
+}
