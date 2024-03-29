@@ -53,7 +53,8 @@ src_configure() {
 		$(use_enable introspection) \
 		--disable-python \
 		--disable-scrollkeeper \
-		--with-gtk=3
+		--with-gtk=3 \
+		--disable-tests
 }
 
 src_install() {
