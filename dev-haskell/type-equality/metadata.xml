@@ -15,4 +15,7 @@
 		producing equality proofs, providing some form of
 		decidable equality on types.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">hesselink/type-equality</remote-id>
+	</upstream>
 </pkgmetadata>
