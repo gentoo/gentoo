@@ -34,10 +34,19 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2024-03-28)
+# Newer releases were signed by a potentially compromised upstream maintainer.
+# There is no evidence that these releases contain malicious code, but masked
+# out of an abundance of caution. See bug #928134.
+>=app-arch/xz-utils-5.4.3
+
+# Sam James <sam@gentoo.org> (2024-03-28)
 # Backdoor discovered in release tarballs. DOWNGRADE NOW.
 # https://www.openwall.com/lists/oss-security/2024/03/29/4
 # https://bugs.gentoo.org/928134
->=app-arch/xz-utils-5.6.0
+~app-arch/xz-utils-5.5.1_alpha
+~app-arch/xz-utils-5.5.2_beta
+~app-arch/xz-utils-5.6.0
+~app-arch/xz-utils-5.6.1
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Last release in 2012.  No reverse dependencies.
