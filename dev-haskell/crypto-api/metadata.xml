@@ -19,4 +19,7 @@
 		one cryptographic algorithm (ex: padding) is within
 		scope of this package.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell-github-trust/crypto-api</remote-id>
+	</upstream>
 </pkgmetadata>
