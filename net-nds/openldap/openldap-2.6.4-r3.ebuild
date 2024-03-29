@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,17 +34,15 @@ IUSE_OPTIONAL="debug gnutls iodbc odbc sasl ssl selinux static-libs +syslog test
 IUSE_CONTRIB="kerberos kinit pbkdf2 sha2 smbkrb5passwd"
 IUSE_CONTRIB="${IUSE_CONTRIB} cxx"
 IUSE="systemd ${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
-REQUIRED_USE="
-	cxx? ( sasl )
+REQUIRED_USE="cxx? ( sasl )
 	pbkdf2? ( ssl )
 	test? ( cleartext sasl )
 	autoca? ( !gnutls )
 	?? ( test minimal )
-	kerberos? ( ?? ( kinit smbkrb5passwd ) )
-"
+	kerberos? ( ?? ( kinit smbkrb5passwd ) )"
 RESTRICT="!test? ( test )"
 
-SYSTEM_LMDB_VER=0.9.31
+SYSTEM_LMDB_VER=0.9.30
 # openssl is needed to generate lanman-passwords required by samba
 COMMON_DEPEND="
 	kernel_linux? ( sys-apps/util-linux )
@@ -82,22 +80,19 @@ COMMON_DEPEND="
 		)
 	)
 "
-DEPEND="
-	${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}
 	sys-apps/groff
 "
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-ldap )
 "
 
 # The user/group are only used for running daemons which are
 # disabled in minimal builds, so elide the accounts too.
-BDEPEND="
-	!minimal? (
+BDEPEND="!minimal? (
 		acct-group/ldap
 		acct-user/ldap
-	)
+)
 "
 
 # for tracking versions
@@ -148,6 +143,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-cloak.patch
 	"${FILESDIR}"/${PN}-2.6.1-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.patch
+	"${FILESDIR}"/${PN}-2.6.4-clang16.patch
+	"${FILESDIR}"/${PN}-2.6.4-libressl.patch #903001
 )
 
 openldap_filecount() {
@@ -411,6 +408,7 @@ multilib_src_configure() {
 	# Optional Packages
 	myconf+=(
 		--without-fetch
+		$(multilib_native_use_with sasl cyrus-sasl)
 	)
 
 	if use experimental ; then
@@ -485,7 +483,6 @@ multilib_src_configure() {
 		# Optional Packages
 		myconf+=(
 			$(use_with systemd)
-			$(multilib_native_use_with sasl cyrus-sasl)
 		)
 	else
 		myconf+=(
@@ -683,7 +680,7 @@ multilib_src_test() {
 		#TESTS+=( pldif ) # not done by default, so also exclude here
 		#use odbc && TESTS+=( psql ) # not done by default, so also exclude here
 
-		emake -Onone "${TESTS[@]}"
+		emake "${TESTS[@]}"
 	fi
 }
 

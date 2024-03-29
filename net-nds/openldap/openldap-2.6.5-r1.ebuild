@@ -148,7 +148,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-cloak.patch
 	"${FILESDIR}"/${PN}-2.6.1-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.patch
-	"${FILESDIR}"/${PN}-2.6.6-fix-type-mismatch-lloadd.patch
 )
 
 openldap_filecount() {
@@ -412,6 +411,7 @@ multilib_src_configure() {
 	# Optional Packages
 	myconf+=(
 		--without-fetch
+		$(multilib_native_use_with sasl cyrus-sasl)
 	)
 
 	if use experimental ; then
@@ -486,7 +486,6 @@ multilib_src_configure() {
 		# Optional Packages
 		myconf+=(
 			$(use_with systemd)
-			$(multilib_native_use_with sasl cyrus-sasl)
 		)
 	else
 		myconf+=(
