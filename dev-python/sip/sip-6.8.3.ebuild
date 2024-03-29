@@ -5,13 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
-
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
-HOMEPAGE="
-	https://github.com/Python-SIP/sip/
-	https://pypi.org/project/sip/
+HOMEPAGE="https://github.com/Python-SIP/sip/"
+# gh does not include a way to generate some files, so combine with pypi
+SRC_URI+="
+	test? (
+		https://github.com/Python-SIP/sip/archive/refs/tags/${PV}.tar.gz
+			-> ${P}.gh.tar.gz
+	)
 "
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
@@ -25,3 +28,4 @@ RDEPEND="
 "
 
 distutils_enable_sphinx doc --no-autodoc
+distutils_enable_tests pytest
