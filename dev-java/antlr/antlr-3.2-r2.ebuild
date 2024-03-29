@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,7 @@ PATCHES=(
 	# These fixes have been applied in 3.5.
 	"${FILESDIR}/${PV}-test-fixes.patch"
 	"${FILESDIR}/${PV}-java-8.patch"
+	"${FILESDIR}/antlr-3.2-java21.patch"
 )
 
 S="${WORKDIR}/${P}"
