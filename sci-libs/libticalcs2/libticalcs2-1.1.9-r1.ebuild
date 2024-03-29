@@ -28,6 +28,11 @@ BDEPEND="
 
 DOCS=( AUTHORS LOGO NEWS README ChangeLog docs/api.txt )
 
+PATCHES=(
+	# https://github.com/debrouxl/tilibs/pull/87
+	"${FILESDIR}"/0001-libticalcs-fix-erroneous-bashism-in-configure-script.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
