@@ -14,6 +14,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://codeberg.org/martianh/mastodon.el.git"
+	S="${WORKDIR}/${P}/lisp"
 else
 	SRC_URI="https://codeberg.org/martianh/${PN}.el/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
