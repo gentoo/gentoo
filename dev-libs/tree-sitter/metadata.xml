@@ -17,6 +17,10 @@
 		<email>matthew@gentoo.org</email>
 		<name>Matthew Smith</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>pkgcore@gentoo.org</email>
+		<name>Pkgcore</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">tree-sitter/tree-sitter</remote-id>
 	</upstream>
