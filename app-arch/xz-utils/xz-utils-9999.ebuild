@@ -56,6 +56,9 @@ fi
 src_prepare() {
 	default
 
+	# Delete known-compromised test data (bug #928134)
+	rm tests/files/bad-3-corrupt_lzma2.xz tests/files/good-large_compressed.lzma || die
+
 	if [[ ${PV} == 9999 ]] ; then
 		eautopoint
 		eautoreconf
