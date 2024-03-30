@@ -64,6 +64,9 @@ src_install() {
 	# bug #115446). This change is documented in "README.gentoo".
 	mv "${ED}"/usr/share/EMBOSS/data/CODONS{,.orig} \
 		|| die "Failed to move CODON directory"
+
+	# collision with dev-texlive/texlive-latexextra, bug #927976
+	mv "${ED}"/usr/bin/{,emboss-}wordcount || die
 }
 
 pkg_postinst() {
