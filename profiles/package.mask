@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2024-03-30)
+# Old, ugly, broken, and requires OSS sound. Removal on 2024-04-30. Bug #928066.
+games-sports/gracer
+
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
