@@ -1,10 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 GST_ORG_MODULE="gst-plugins-bad"
-PYTHON_COMPAT=( python3_{10..11} )
-inherit gstreamer-meson python-any-r1
+inherit gstreamer-meson
 
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -46,18 +45,10 @@ RDEPEND="
 
 	vaapi? ( >=media-libs/libva-1.10[${MULTILIB_USEDEP}] )
 "
-
 DEPEND="${RDEPEND}"
-
-BDEPEND="
-	${PYTHON_DEPS}
-	dev-util/glib-utils
-"
+BDEPEND="dev-util/glib-utils"
 
 DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
-
-# FIXME: gstharness.c:889:gst_harness_new_with_padnames: assertion failed: (element != NULL)
-RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/0001-meson-Fix-libdrm-and-vaapi-configure-checks.patch
@@ -70,7 +61,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	GST_PLUGINS_NOAUTO="shm ipcpipeline librfb msdk hls"
+	GST_PLUGINS_NOAUTO="hls ipcpipeline librfb msdk shm wayland"
 
 	local emesonargs=(
 		-Dshm=enabled
