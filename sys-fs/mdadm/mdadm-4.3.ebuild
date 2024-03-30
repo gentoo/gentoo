@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-4.3-in_initrd-collision.patch #830461
 	"${FILESDIR}/${PN}"-4.2-mdadm_env.patch #628968
 	"${FILESDIR}/${PN}"-4.3-ldflags.patch
+	"${FILESDIR}/${PN}"-4.3-no-udev.patch
 	"${WORKDIR}/debian/patches/debian/0001-fix-manpages.patch"
 	"${WORKDIR}/debian/patches/debian/0003-host-name-in-default-mailfrom.patch"
 	"${WORKDIR}/debian/patches/debian/0004-exit-gracefully-when-md-device-not-found.patch"
