@@ -1,13 +1,14 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Statistical analysis and machine learning library"
 HOMEPAGE="https://statpatrec.sourceforge.net/"
 SRC_URI="mirror://sourceforge/statpatrec/${P^^}.tar.gz"
+S="${WORKDIR}/${P^^}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +19,6 @@ IUSE="root static-libs"
 DEPEND="root? ( sci-physics/root )"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P^^}
 PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${P}-gcc46.patch
@@ -36,4 +36,11 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_with root)
+}
+
+src_install() {
+	default
+	if use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }
