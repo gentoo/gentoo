@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -72,6 +72,8 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 RESTRICT="test"
 
 multilib_src_configure() {
+	GST_PLUGINS_NOAUTO="wayland"
+
 	local emesonargs=(
 		-Dwith_encoders=yes
 		-Dwith_drm=$(usex drm yes no)

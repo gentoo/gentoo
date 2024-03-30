@@ -72,6 +72,8 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 RESTRICT="test"
 
 multilib_src_configure() {
+	GST_PLUGINS_NOAUTO="wayland"
+
 	local emesonargs=(
 		-Dencoders=enabled
 		$(meson_feature drm)
