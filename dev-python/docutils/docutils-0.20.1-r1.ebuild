@@ -33,7 +33,7 @@ python_compile_all() {
 	cp docutils/writers/html4css1/html4css1.css . || die
 
 	cd tools || die
-	"${EPYTHON}" buildhtml.py --input-encoding=utf-8 \
+	"${EPYTHON}" buildhtml.py --input-encoding=utf-8 --no-datestamp \
 		--stylesheet-path=../html4css1.css, --traceback ../docs || die
 }
 
