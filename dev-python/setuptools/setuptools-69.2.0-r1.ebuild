@@ -28,7 +28,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-python/jaraco-text-3.7.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-8.12.0-r1[${PYTHON_USEDEP}]
-	>=dev-python/nspektr-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/ordered-set-4.0.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-23.2[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.6.2-r1[${PYTHON_USEDEP}]
