@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 17 )
+LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL=1
 
 inherit check-reqs cmake edo llvm-r1 toolchain-funcs
@@ -138,7 +138,7 @@ src_configure() {
 			-Dtarget="$(get_zig_target)"
 			-Dcpu="$(get_zig_mcpu)"
 			-Doptimize=Debug
-			-Dno-autodocs
+			-Dstd-docs=false
 			-Dno-langref
 			-Denable-llvm=false
 			-Dforce-link-libc
