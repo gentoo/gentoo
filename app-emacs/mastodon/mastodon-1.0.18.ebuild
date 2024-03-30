@@ -9,19 +9,29 @@ inherit elisp
 
 DESCRIPTION="Emacs client for Mastodon, federated microblogging social network"
 HOMEPAGE="https://codeberg.org/martianh/mastodon.el/"
-SRC_URI="https://codeberg.org/martianh/${PN}.el/archive/${PV}.tar.gz
-	-> ${P}.tar.gz"
-S="${WORKDIR}/${PN}.el/lisp"
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://codeberg.org/martianh/mastodon.el.git"
+else
+	SRC_URI="https://codeberg.org/martianh/${PN}.el/archive/${PV}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}.el/lisp"
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	app-emacs/persist
 	app-emacs/request
 "
-BDEPEND="${RDEPEND}"
+BDEPEND="
+	${RDEPEND}
+"
 
 DOCS=( ../README.org )
 ELISP_TEXINFO="../${PN}.texi"
