@@ -1,17 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit fortran-2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Design and analysis of subsonic isolated airfoils"
-HOMEPAGE="http://raphael.mit.edu/xfoil/"
+HOMEPAGE="https://web.mit.edu/drela/Public/web/xfoil/"
 SRC_URI="
-	http://web.mit.edu/drela/Public/web/${PN}/${PN}${PV}.tgz
-	doc? ( http://web.mit.edu/drela/Public/web/${PN}/dataflow.pdf )"
+	https://web.mit.edu/drela/Public/web/${PN}/${PN}${PV}.tgz
+	doc? ( https://web.mit.edu/drela/Public/web/${PN}/dataflow.pdf )"
+S="${WORKDIR}/${PN^}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
@@ -20,8 +21,6 @@ RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-overflow.patch )
-
-S="${WORKDIR}/${PN^}"
 
 src_prepare() {
 	# fix bug #147033
@@ -52,7 +51,11 @@ src_compile() {
 	pushd orrs >/dev/null || die
 	bin/osgen osmaps_ns.lst || die
 	popd >/dev/null || die
-	emake -C plotlib CFLAGS="${CFLAGS} -DUNDERSCORE"
+	emake -C plotlib \
+		CFLAGS="${CFLAGS} -DUNDERSCORE" \
+		CC="$(tc-getCC)" \
+		AR="$(tc-getAR) r" \
+		RANLIB="$(tc-getRANLIB)"
 
 	local i
 	for i in blu pplot pxplot xfoil; do
@@ -60,6 +63,9 @@ src_compile() {
 			PLTOBJ="../plotlib/libPlt_gSP.a" \
 			CFLAGS="${CFLAGS} -DUNDERSCORE" \
 			FTNLIB="${LDFLAGS}" \
+			CC="$(tc-getCC)" \
+			AR="$(tc-getAR) r" \
+			RANLIB="$(tc-getRANLIB)" \
 			$i
 	done
 }
