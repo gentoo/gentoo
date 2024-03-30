@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,17 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ziglang/zig.git"
 	inherit git-r3
 else
-	SRC_URI="https://ziglang.org/download/${PV}/${P}.tar.xz"
+	VERIFY_SIG_METHOD=minisig
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/minisig-keys/zig-software-foundation.pub
+	inherit verify-sig
+
+	SRC_URI="
+		https://ziglang.org/download/${PV}/${P}.tar.xz
+		verify-sig? ( https://ziglang.org/download/${PV}/${P}.tar.xz.minisig )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64"
+
+	BDEPEND="verify-sig? ( sec-keys/minisig-keys-zig-software-foundation )"
 fi
 
 # project itself: MIT
