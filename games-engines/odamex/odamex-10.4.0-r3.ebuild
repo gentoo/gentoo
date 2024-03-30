@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${PN}-src-${PV}.
 LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="+client hidpi master +odalaunch portmidi server upnp X"
+IUSE="+client hidpi master +odalaunch portmidi server upnp"
 REQUIRED_USE="|| ( client master server )"
 
 # protobuf is still bundled. Unfortunately an old version is required for C++98
@@ -26,11 +26,11 @@ RDEPEND="
 		media-libs/libsdl2[joystick,sound,video]
 		media-libs/sdl2-mixer
 		net-misc/curl
+		x11-libs/libX11
 		!hidpi? ( x11-libs/fltk:1 )
 		portmidi? ( media-libs/portmidi )
-		X? ( x11-libs/libX11 )
 	)
-	odalaunch? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	odalaunch? ( x11-libs/wxGTK:${WX_GTK_VER} )
 	server? (
 		dev-libs/jsoncpp:=
 		upnp? ( net-libs/miniupnpc:= )
@@ -70,7 +70,6 @@ src_configure() {
 		-DENABLE_PORTMIDI=$(usex portmidi)
 		-DUSE_MINIUPNP=$(usex upnp)
 	)
-	use client && mycmakeargs+=(-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X))
 
 	cmake_src_configure
 }
