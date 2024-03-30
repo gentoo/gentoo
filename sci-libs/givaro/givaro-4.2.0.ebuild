@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/givaro-4.1.1-fix-pc-libdir.patch"
 	"${FILESDIR}/${P}-configure.ac-fix-a-bashism.patch"
 	"${FILESDIR}/${P}-cstdint.patch"
+	"${FILESDIR}/${P}-gcc14.patch"
 )
 
 src_prepare() {
