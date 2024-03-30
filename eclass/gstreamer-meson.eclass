@@ -102,6 +102,7 @@ gstreamer_get_plugins() {
 		# gst-plugins-bad
 		hls
 		opencv
+		wayland
 	)
 
 	for option in ${extra_options[@]} ; do
@@ -282,8 +283,7 @@ gstreamer_get_plugin_dir() {
 # @INTERNAL
 # @DESCRIPTION:
 # Contains false-positives.
-# - gst-plugins-bad puts "shm" in external deps
-GST_PLUGINS_ENOAUTO="shm"
+GST_PLUGINS_ENOAUTO=""
 
 # @FUNCTION: gstreamer_multilib_src_configure
 # @DESCRIPTION:
