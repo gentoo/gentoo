@@ -41,6 +41,7 @@ games-sports/gracer
 # Newer releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
 # out of an abundance of caution. See bug #928134.
+sec-keys/openpgp-keys-jiatan
 >=app-arch/xz-utils-5.4.3
 
 # Sam James <sam@gentoo.org> (2024-03-28)
