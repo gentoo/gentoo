@@ -1,7 +1,11 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+VERIFY_SIG_METHOD=minisig
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/minisig-keys/zig-software-foundation.pub
+inherit verify-sig
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
@@ -10,7 +14,15 @@ SRC_URI="
 	arm? ( https://ziglang.org/download/${PV}/zig-linux-armv7a-${PV}.tar.xz )
 	arm64? ( https://ziglang.org/download/${PV}/zig-linux-aarch64-${PV}.tar.xz )
 	riscv? ( https://ziglang.org/download/${PV}/zig-linux-riscv64-${PV}.tar.xz )
-	x86? ( https://ziglang.org/download/${PV}/zig-linux-i386-${PV}.tar.xz )"
+	x86? ( https://ziglang.org/download/${PV}/zig-linux-i386-${PV}.tar.xz )
+	verify-sig? (
+		amd64? ( https://ziglang.org/download/${PV}/zig-linux-x86_64-${PV}.tar.xz.minisig )
+		arm? ( https://ziglang.org/download/${PV}/zig-linux-armv7a-${PV}.tar.xz.minisig )
+		arm64? ( https://ziglang.org/download/${PV}/zig-linux-aarch64-${PV}.tar.xz.minisig )
+		riscv? ( https://ziglang.org/download/${PV}/zig-linux-riscv64-${PV}.tar.xz.minisig )
+		x86? ( https://ziglang.org/download/${PV}/zig-linux-i386-${PV}.tar.xz.minisig )
+	)
+"
 
 # project itself: MIT
 # There are bunch of projects under "lib/" folder that are needed for cross-compilation.
@@ -28,7 +40,9 @@ SLOT="$(ver_cut 1-2)"
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="doc"
 
+BDEPEND="verify-sig? ( sec-keys/minisig-keys-zig-software-foundation )"
 IDEPEND="app-eselect/eselect-zig"
+
 # Zig provides its standard library in source form "/opt/zig-bin-{PV}/lib/",
 # and all other Zig libraries are meant to be consumed in source form,
 # because they can use compile-time mechanics (and it is easier for distributions to patch them)
@@ -41,7 +55,7 @@ PATCHES=(
 QA_PREBUILT="opt/${P}/zig"
 
 src_unpack() {
-	unpack ${A}
+	verify-sig_src_unpack
 
 	mv "${WORKDIR}/"* "${S}" || die
 }
