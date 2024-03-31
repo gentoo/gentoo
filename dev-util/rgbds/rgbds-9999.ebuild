@@ -38,6 +38,7 @@ src_test() {
 	local dir
 	for dir in asm link fix gfx; do
 		pushd "test/${dir}" >/dev/null || die
+		einfo "Running ${dir} tests."
 		./test.sh || die
 		popd >/dev/null || die
 	done
