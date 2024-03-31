@@ -1,0 +1,147 @@
+https://bugs.gentoo.org/928268
+https://github.com/gbdev/rgbds/issues/1387
+https://github.com/gbdev/rgbds/pull/1388
+https://github.com/gbdev/rgbds/commit/9ab3446d1a3d84d6b34062b8287be9169fbe663b
+
+From 1afbaa3cf2b667c33ae02e899ad7a833e3b71292 Mon Sep 17 00:00:00 2001
+From: Sylvie <35663410+Rangi42@users.noreply.github.com>
+Date: Sun, 31 Mar 2024 12:53:20 -0400
+Subject: [PATCH] Fix two bugs with RGBASM fixed-point math (#1388)
+
+- Fixed-point formulas are implemented using IEEE-754 floating-point
+  internally, which could give infinity or NaN values whose conversion
+  to fixed-point integer was platform-dependent.
+- Formatting fixed-point $8000_0000 (INT32_MIN, -2147483648) was
+  not putting the negative sign in front.
+---
+ src/asm/fixpoint.cpp         | 10 +++++++++-
+ src/asm/format.cpp           | 22 +++++++++++++---------
+ test/asm/format-extremes.asm |  8 ++++++++
+ test/asm/format-extremes.out |  4 ++++
+ test/asm/math.asm            |  8 ++++++--
+ 5 files changed, 40 insertions(+), 12 deletions(-)
+ create mode 100644 test/asm/format-extremes.asm
+ create mode 100644 test/asm/format-extremes.out
+
+diff --git a/src/asm/fixpoint.cpp b/src/asm/fixpoint.cpp
+index 97a091af..9334bbba 100644
+--- a/src/asm/fixpoint.cpp
++++ b/src/asm/fixpoint.cpp
+@@ -15,7 +15,6 @@
+ #endif
+ 
+ #define fix2double(i, q)	((double)((i) / pow(2.0, q)))
+-#define double2fix(d, q)	((int32_t)round((d) * pow(2.0, q)))
+ 
+ // 2*pi radians == 1 turn
+ #define turn2rad(f)	((f) * (M_PI * 2))
+@@ -33,6 +32,15 @@ double fix_PrecisionFactor(void)
+ 	return pow(2.0, fixPrecision);
+ }
+ 
++static int32_t double2fix(double d, int32_t q)
++{
++	if (isnan(d))
++		return 0;
++	if (isinf(d))
++		return d < 0 ? INT32_MIN : INT32_MAX;
++	return (int32_t)round(d * pow(2.0, q));
++}
++
+ int32_t fix_Sin(int32_t i, int32_t q)
+ {
+ 	return double2fix(sin(turn2rad(fix2double(i, q))), q);
+diff --git a/src/asm/format.cpp b/src/asm/format.cpp
+index 553e5c77..2b8b8a8a 100644
+--- a/src/asm/format.cpp
++++ b/src/asm/format.cpp
+@@ -180,11 +180,10 @@ void fmt_PrintNumber(char *buf, size_t bufLen, struct FormatSpec const *fmt, uin
+ 	char sign = fmt->sign; // 0 or ' ' or '+'
+ 
+ 	if (fmt->type == 'd' || fmt->type == 'f') {
+-		int32_t v = value;
+-
+-		if (v < 0 && v != INT32_MIN) {
++		if (int32_t v = value; v < 0) {
+ 			sign = '-';
+-			value = -v;
++			if (v != INT32_MIN)
++				value = -v;
+ 		}
+ 	}
+ 
+@@ -229,15 +228,20 @@ void fmt_PrintNumber(char *buf, size_t bufLen, struct FormatSpec const *fmt, uin
+ 			fracWidth = 255;
+ 		}
+ 
+-		snprintf(valueBuf, sizeof(valueBuf), "%.*f", (int)fracWidth,
+-			 value / fix_PrecisionFactor());
++		double fval = fabs(value / fix_PrecisionFactor());
++		snprintf(valueBuf, sizeof(valueBuf), "%.*f", (int)fracWidth, fval);
++	} else if (fmt->type == 'd') {
++		// Decimal numbers may be formatted with a '-' sign by `snprintf`, so `abs` prevents that,
++		// with a special case for `INT32_MIN` since `labs(INT32_MIN)` is UB. The sign will be
++		// printed later from `signChar`.
++		uint32_t uval = value != (uint32_t)INT32_MIN ? labs((int32_t)value) : value;
++		snprintf(valueBuf, sizeof(valueBuf), "%" PRIu32, uval);
+ 	} else {
+-		char const *spec = fmt->type == 'd' ? "%" PRId32
+-				 : fmt->type == 'u' ? "%" PRIu32
++		char const *spec = fmt->type == 'u' ? "%" PRIu32
+ 				 : fmt->type == 'X' ? "%" PRIX32
+ 				 : fmt->type == 'x' ? "%" PRIx32
+ 				 : fmt->type == 'o' ? "%" PRIo32
+-				 : "%" PRId32;
++				 : "%" PRIu32;
+ 
+ 		snprintf(valueBuf, sizeof(valueBuf), spec, value);
+ 	}
+diff --git a/test/asm/format-extremes.asm b/test/asm/format-extremes.asm
+new file mode 100644
+index 00000000..19ddb677
+--- /dev/null
++++ b/test/asm/format-extremes.asm
+@@ -0,0 +1,8 @@
++MACRO test
++	def v = \1
++	println "{#09x:v} = {#012o:v} = {#033b:v} = {u:v}U = {+d:v} = {+.16f:v}"
++ENDM
++	test $7fff_ffff ; INT32_MAX
++	test $8000_0000 ; INT32_MIN
++	test $0000_0000 ; UINT32_MIN
++	test $ffff_ffff ; UINT32_MAX
+diff --git a/test/asm/format-extremes.out b/test/asm/format-extremes.out
+new file mode 100644
+index 00000000..9e19b2f4
+--- /dev/null
++++ b/test/asm/format-extremes.out
+@@ -0,0 +1,4 @@
++$7fffffff = &17777777777 = %01111111111111111111111111111111 = 2147483647U = +2147483647 = +32767.9999847412109375
++$80000000 = &20000000000 = %10000000000000000000000000000000 = 2147483648U = -2147483648 = -32768.0000000000000000
++$00000000 = &00000000000 = %00000000000000000000000000000000 = 0U = +0 = +0.0000000000000000
++$ffffffff = &37777777777 = %11111111111111111111111111111111 = 4294967295U = -1 = -0.0000152587890625
+diff --git a/test/asm/math.asm b/test/asm/math.asm
+index b189fca8..9f87a11b 100644
+--- a/test/asm/math.asm
++++ b/test/asm/math.asm
+@@ -19,14 +19,18 @@ ENDM
+ 
+ 	assert DIV(5.0, 2.0) == 2.5
+ 	assert DIV(-5.0, 2.0) == -2.5
+-	assert DIV(-5.0, 0.0) == $8000_0000
++	assert DIV(5.0, 0.0) == $7fff_ffff ; +inf => INT32_MAX
++	assert DIV(-5.0, 0.0) == $8000_0000 ; -inf => INT32_MIN
++	assert DIV(0.0, 0.0) == $0000_0000 ; nan => 0
+ 
+ 	assert MUL(10.0, 0.5) == 5.0
+ 	assert MUL(10.0, 0.0) == 0.0
+ 
+ 	assert FMOD(5.0, 2.0) == 1.0
+ 	assert FMOD(-5.0, 2.0) == -1.0
+-	assert FMOD(-5.0, 0.0) == $8000_0000
++	assert FMOD(5.0, 0.0) == 0 ; nan
++	assert FMOD(-5.0, 0.0) == 0 ; nan
++	assert FMOD(0.0, 0.0) == 0 ; nan
+ 
+ 	assert POW(10.0, 2.0) == 100.0
+ 	assert POW(100.0, 0.5) == 10.0
