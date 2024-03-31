@@ -119,7 +119,7 @@ RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
+	cuda? ( <dev-util/nvidia-cuda-toolkit-12.4:0= )
 	cudnn? ( dev-libs/cudnn:= )
 	contribdnn? ( dev-libs/flatbuffers:= )
 	contribhdf? ( sci-libs/hdf5:= )
@@ -231,7 +231,7 @@ pkg_pretend() {
 		einfo "The CUDA architecture tuple for your device can be found at https://developer.nvidia.com/cuda-gpus."
 	fi
 
-	if [[ ${MERGE_TYPE} == "buildonly" ]] && [[ -n "${CUDA_GENERATION}" || -n "${CUDA_ARCH_BIN}" ]]; then
+	if use cuda && [[ ${MERGE_TYPE} == "buildonly" ]] && [[ -n "${CUDA_GENERATION}" || -n "${CUDA_ARCH_BIN}" ]]; then
 		local info_message="When building a binary package it's recommended to unset CUDA_GENERATION and CUDA_ARCH_BIN"
 		einfo "$info_message so all available architectures are build."
 	fi
@@ -566,7 +566,7 @@ multilib_src_configure() {
 	# workaround for bug 413429
 	tc-export CC CXX
 
-	if use cuda; then
+	if multilib_is_native_abi && use cuda; then
 		cuda_add_sandbox -w
 
 		if [[ -n "${CUDA_GENERATION}" ]]; then
