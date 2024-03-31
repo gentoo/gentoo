@@ -24,6 +24,10 @@ IUSE="debug nls static-libs"
 
 BDEPEND="nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}/attr-2.5.2-libgen-header-basename.patch"
+)
+
 src_prepare() {
 	default
 
