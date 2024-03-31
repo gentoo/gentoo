@@ -30,7 +30,6 @@ RESTRICT="!test? ( test )"
 # dlopen: qtsvg, vulkan-loader, wayland
 COMMON_DEPEND="
 	app-arch/lz4:=
-	app-arch/xz-utils
 	app-arch/zstd:=
 	dev-libs/libaio
 	dev-qt/qtbase:6[concurrent,gui,widgets]
