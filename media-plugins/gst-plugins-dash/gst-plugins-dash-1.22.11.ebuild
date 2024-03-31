@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 GST_ORG_MODULE=gst-plugins-bad
 
 inherit gstreamer-meson
@@ -14,11 +14,10 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	gstreamer_system_library gstadaptivedemux_dep:gstadaptivedemux
-	gstreamer_system_library gstisoff_dep:gstisoff
-	gstreamer_system_package pbutils_dep:gstreamer-pbutils
-	gstreamer_system_package tag_dep:gstreamer-tag
-	gstreamer_system_library gsturidownloader_dep:gsturidownloader
+	gstreamer_system_library \
+		gstadaptivedemux_dep:gstadaptivedemux \
+		gsturidownloader_dep:gsturidownloader \
+		gstisoff_dep:gstisoff
 }
 
 pkg_postinst() {
