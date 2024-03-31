@@ -76,6 +76,8 @@ PATCHES=(
 	# https://github.com/libarchive/libarchive/issues/2069
 	# (we can simply update the command since we don't support old lrzip)
 	"${FILESDIR}/${P}-lrzip.patch"
+	# https://github.com/libarchive/libarchive/pull/2101
+	"${FILESDIR}/${P}-safe-fprintf.patch"
 )
 
 src_prepare() {
