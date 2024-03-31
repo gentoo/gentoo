@@ -132,6 +132,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
 	"${FILESDIR}"/${P}-ipv6-configure-c99.patch
 	"${FILESDIR}"/${P}-mpd-stream-http-adjust_pollset.patch
+	"${FILESDIR}"/${PN}-8.6.0-rustls-fixes.patch
 )
 
 src_prepare() {
