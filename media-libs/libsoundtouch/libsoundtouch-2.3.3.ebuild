@@ -20,11 +20,6 @@ IUSE="cpu_flags_x86_sse openmp static-libs"
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.2-configure-bashism.patch
-	"${FILESDIR}"/${PN}-2.3.2-flags.patch
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
