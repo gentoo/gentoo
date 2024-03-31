@@ -27,13 +27,14 @@ ruby_add_rdepend "
 	|| ( dev-ruby/activesupport:7.1 dev-ruby/activesupport:7.0 dev-ruby/activesupport:6.1 )
 	|| ( dev-ruby/actionpack:7.1 dev-ruby/actionpack:7.0 dev-ruby/actionpack:6.1 )
 	|| ( dev-ruby/railties:7.1 dev-ruby/railties:7.0 dev-ruby/railties:6.1 )
-	>=dev-ruby/rspec-3.12:3"
+	>=dev-ruby/rspec-3.13:3"
 
 # Depend on the package being already installed for tests, because
 # requiring ammeter will load it, and we need a consistent set of rspec
 # and rspec-rails for that to work.
 ruby_add_bdepend "test? (
 	|| ( dev-ruby/activerecord:7.1[sqlite] dev-ruby/activerecord:7.0[sqlite] dev-ruby/activerecord:6.1[sqlite] )
+	|| ( dev-ruby/actionmailer:7.1 dev-ruby/actionmailer:7.0 dev-ruby/actionmailer:6.1 )
 	>=dev-ruby/capybara-2.2.0
 	>=dev-ruby/ammeter-1.1.5
 	~dev-ruby/rspec-rails-${PV}
