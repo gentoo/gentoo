@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="805967d09d659aa1504bd8551a4c52c4c98ef65c"
+WDL_COMMIT="9df70be13fcb75eb69adcf957ea3bff4f259fa84"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
@@ -53,8 +53,7 @@ src_prepare() {
 
 src_compile() {
 	emake -C "WDL-${WDL_COMMIT}/WDL/swell" \
-		ALLOW_WARNINGS=1 \
-		PRELOAD_GDK=1
+		ALLOW_WARNINGS=1
 }
 
 QA_PREBUILT="*/*.so */reaper */reaper_host_*"
