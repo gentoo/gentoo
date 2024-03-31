@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-bashism.patch
 	"${FILESDIR}"/${P}-strict-aliasing.patch
 	"${FILESDIR}"/${P}-variable-mismatch.patch
+	"${FILESDIR}"/${P}-macro-if-scope.patch
 )
 
 src_prepare() {
