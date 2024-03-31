@@ -60,6 +60,7 @@
 		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
 		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
 		<pkg>sys-apps/attr</pkg>. Requisite for the virtfs backend.</flag>
+		<flag name="xdp">Enable support for XDP through <pkg>net-libs/xdp-tools</pkg></flag>
 		<flag name="xen">Enables support for Xen backends</flag>
 	</use>
 	<upstream>
