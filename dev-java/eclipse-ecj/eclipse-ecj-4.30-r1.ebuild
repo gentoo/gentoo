@@ -18,7 +18,7 @@ SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${P
 S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 SLOT="4.30"
 
 BDEPEND="

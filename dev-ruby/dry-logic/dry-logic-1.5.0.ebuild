@@ -28,6 +28,9 @@ ruby_add_rdepend "
 	dev-ruby/dry-core:1
 	>=dev-ruby/zeitwerk-2.6:2
 "
+
+ruby_add_bdepend "test? ( dev-ruby/warning )"
+
 all_ruby_prepare() {
 	sed -e '3irequire "uri"' -i spec/spec_helper.rb || die
 }

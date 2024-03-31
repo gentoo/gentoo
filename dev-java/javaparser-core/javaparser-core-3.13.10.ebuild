@@ -15,7 +15,7 @@ S="${WORKDIR}/javaparser-${PV}"
 
 LICENSE="Apache-2.0 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 JAVACC_SLOT="7.0.4"
 

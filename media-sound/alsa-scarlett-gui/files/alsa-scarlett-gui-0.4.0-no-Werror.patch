@@ -1,0 +1,11 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -13,7 +13,7 @@ DEPDIR := .deps
+ DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+ 
+ CFLAGS ?= -ggdb -fno-omit-frame-pointer -O2
+-CFLAGS += -Wall -Werror -D_FORTIFY_SOURCE=2
++CFLAGS += -Wall -D_FORTIFY_SOURCE=2
+ CFLAGS += -DVERSION=\"$(VERSION)\"
+ CFLAGS += -Wno-error=deprecated-declarations
+ 

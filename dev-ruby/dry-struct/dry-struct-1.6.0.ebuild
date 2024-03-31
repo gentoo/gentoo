@@ -21,7 +21,7 @@ LICENSE="MIT"
 
 KEYWORDS="~amd64"
 SLOT="$(ver_cut 1)"
-IUSE=""
+IUSE="test"
 
 ruby_add_rdepend "
 	dev-ruby/dry-core:1
@@ -33,10 +33,12 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/dry-monads
 	dev-ruby/dry-struct
+	dev-ruby/warning
 )"
 
 all_ruby_prepare() {
 	# Avoid broken spec, already fixed upstream.
 	sed -e '/with Test::User/ s/context/xcontext/' \
+		-e '/with Test::SuperUSer/ s/context/xcontext/' \
 		-i spec/extensions/pretty_print_spec.rb || die
 }

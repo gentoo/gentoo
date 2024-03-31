@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-03-21)
+# Test suite is very fragile and doesn't even run on amd64.
+# No real point in running it here right now, bug #804115.
+dev-cpp/eigen test
+
 # matoro <matoro_gentoo@matoro.tk> (2024-02-29)
 # net-libs/libotr fails tests, #918448
 net-irc/irssi otr

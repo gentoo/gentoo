@@ -29,8 +29,7 @@ REQUIRED_USE="|| ( examples jgmodule shared )"
 
 DEPEND="
 	examples? (
-		media-libs/libglvnd
-		media-libs/libsdl2[opengl,sound,video]
+		media-libs/libsdl2[sound,video]
 		media-libs/speexdsp
 	)
 	jgmodule? (

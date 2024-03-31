@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit check-reqs cmake optfeature python-single-r1 qmake-utils xdg
+inherit check-reqs cmake flag-o-matic optfeature python-single-r1 qmake-utils xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
@@ -74,8 +74,8 @@ RDEPEND="
 		net-misc/curl
 	)
 	fem? (
-		!qt6? ( sci-libs/vtk:=[qt5,rendering] )
-		qt6? ( sci-libs/vtk:=[-qt5,qt6,rendering] )
+		!qt6? ( <sci-libs/vtk-9.3.0:=[qt5,rendering] )
+		qt6? ( <sci-libs/vtk-9.3.0:=[-qt5,qt6,rendering] )
 	)
 	gui? (
 		>=media-libs/coin-4.0.0
@@ -189,6 +189,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/875221
+	# https://github.com/FreeCAD/FreeCAD/issues/13173
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_ADDONMGR=$(usex addonmgr)
 		-DBUILD_ARCH=ON

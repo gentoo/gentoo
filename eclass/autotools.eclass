@@ -149,7 +149,7 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 	export WANT_AUTOCONF
 fi
 
-_libtool_atom=">=dev-build/libtool-2.4.7"
+_libtool_atom=">=dev-build/libtool-2.4.7-r3"
 if [[ -n ${WANT_LIBTOOL} ]] ; then
 	case ${WANT_LIBTOOL} in
 		none)   _libtool_atom="" ;;

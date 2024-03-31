@@ -40,7 +40,7 @@ RDEPEND="
 	>=dev-python/ssl-fetch-${SSL_FETCH_VER}[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	python_setup

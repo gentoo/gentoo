@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit libtool
+inherit autotools
 
 DESCRIPTION="Legacy library for PPD files, split out of cups-filters"
 HOMEPAGE="https://github.com/OpenPrinting/libppd"
@@ -31,9 +31,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
 src_prepare() {
 	default
-	elibtoolize
+	eautoreconf
 }
 
 src_configure() {

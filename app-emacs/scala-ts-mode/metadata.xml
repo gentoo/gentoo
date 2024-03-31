@@ -5,6 +5,10 @@
 		<name>Florian Schmaus</name>
 		<email>flow@gentoo.org</email>
 	</maintainer>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">KaranAhlawat/scala-ts-mode</remote-id>
 	</upstream>

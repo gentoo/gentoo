@@ -12,7 +12,6 @@ DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
 SLOT="0"
 LICENSE="BSD GPL-1 GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
-RESTRICT="mirror"
 GENTOO_TEX_PATCHES_NUM=3
 SRC_URI="
 	https://mirrors.ctan.org/systems/texlive/Source/${MY_P}.tar.xz
@@ -222,6 +221,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: report upstream
+	# bug #915223
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"
 

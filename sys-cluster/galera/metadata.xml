@@ -5,6 +5,10 @@
 		<email>mysql-bugs@gentoo.org</email>
 		<name>MySQL</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arkamar@gentoo.org</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
 	<use>
 		<flag name="garbd">Install Galera Arbitrator - a stateless daemon which acts as a lightweight group member</flag>
 	</use>

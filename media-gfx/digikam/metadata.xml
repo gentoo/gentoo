@@ -10,6 +10,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">graphics/digikam</remote-id>
 	</upstream>
 	<use>
 		<flag name="addressbook">Enable akonadi contact integration</flag>

@@ -1,0 +1,64 @@
+diff -urN AutoDock-Vina-1.2.5.orig/build/linux/debug/Makefile AutoDock-Vina-1.2.5/build/linux/debug/Makefile
+--- AutoDock-Vina-1.2.5.orig/build/linux/debug/Makefile	2024-03-05 13:23:49.210511903 +0300
++++ AutoDock-Vina-1.2.5/build/linux/debug/Makefile	2024-03-05 13:25:34.028499976 +0300
+@@ -1,7 +1,7 @@
+ BASE=/usr
+ BOOST_VERSION=
+ BOOST_INCLUDE = $(BASE)/include
+-C_PLATFORM=-static -pthread
++C_PLATFORM=-pthread
+ GPP=g++
+ C_OPTIONS= -g -std=gnu++11
+ BOOST_LIB_VERSION=
+diff -urN AutoDock-Vina-1.2.5.orig/build/linux/release/Makefile AutoDock-Vina-1.2.5/build/linux/release/Makefile
+--- AutoDock-Vina-1.2.5.orig/build/linux/release/Makefile	2024-03-05 13:23:49.213845279 +0300
++++ AutoDock-Vina-1.2.5/build/linux/release/Makefile	2024-03-05 13:26:10.285621339 +0300
+@@ -1,7 +1,7 @@
+ BASE=/usr/local
+ BOOST_VERSION=
+ BOOST_INCLUDE = $(BASE)/include
+-C_PLATFORM=-static -pthread
++C_PLATFORM=-pthread
+ GPP=g++
+ C_OPTIONS= -O3 -DNDEBUG -std=c++11
+ BOOST_LIB_VERSION=
+diff -urN AutoDock-Vina-1.2.5.orig/build/makefile_common AutoDock-Vina-1.2.5/build/makefile_common
+--- AutoDock-Vina-1.2.5.orig/build/makefile_common	2024-03-05 13:23:49.213845279 +0300
++++ AutoDock-Vina-1.2.5/build/makefile_common	2024-03-05 13:28:30.557370911 +0300
+@@ -14,7 +14,7 @@
+ #CC = ${GPP} ${C_PLATFORM} -ansi -pedantic -Wno-long-long ${C_OPTIONS} $(INCFLAGS)
+ CC = ${GPP} ${C_PLATFORM} -ansi -Wno-long-long ${C_OPTIONS} $(INCFLAGS)
+ 
+-LDFLAGS = -L$(BASE)/lib -L.
++LDFLAGS = -L.
+ 
+ # test if boost_thread-mt exists, this is
+ # necessary as some versions of boost only
+@@ -32,22 +32,22 @@
+ ifeq ($(BOOST_STATIC), y)
+ LIBS = ${BASE}/lib/libboost_system${BOOST_LIB_VERSION}.a ${BASE}/lib/libboost_thread${threadmt}${BOOST_LIB_VERSION}.a ${BASE}/lib/libboost_serialization${BOOST_LIB_VERSION}.a ${BASE}/lib/libboost_filesystem${BOOST_LIB_VERSION}.a ${BASE}/lib/libboost_program_options${BOOST_LIB_VERSION}.a
+ else
+-LIBS = -l boost_system${BOOST_LIB_VERSION} -l boost_thread${threadmt}${BOOST_LIB_VERSION} -l boost_serialization${BOOST_LIB_VERSION} -l boost_filesystem${BOOST_LIB_VERSION} -l boost_program_options${BOOST_LIB_VERSION}#-l pthread
++LIBS = -l boost_system -l boost_thread -l boost_serialization -l boost_filesystem -l boost_program_options -l pthread
+ endif
+ 
+ .SUFFIXES: .cpp .o
+ 
+ %.o : ../../../src/lib/%.cpp 
+-	$(CC) $(CFLAGS) -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -o $@ -c $< 
+ 
+ %.o : ../../../src/design/%.cpp 
+-	$(CC) $(CFLAGS) -I ../../../src/lib -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -I ../../../src/lib -o $@ -c $< 
+ 	
+ %.o : ../../../src/main/%.cpp 
+-	$(CC) $(CFLAGS) -I ../../../src/lib -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -I ../../../src/lib -o $@ -c $< 
+ 
+ %.o : ../../../src/split/%.cpp 
+-	$(CC) $(CFLAGS) -I ../../../src/lib -o $@ -c $< 
++	$(CC) $(CXXFLAGS) -I ../../../src/lib -o $@ -c $< 
+ 
+ all: vina vina_split
+ 

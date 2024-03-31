@@ -70,9 +70,9 @@ gentoo_path_check() {
 	# report
 	# ------
 	if [[ -n ${bad_paths[@]} ]]; then
-		eqawarn "QA Notice: The ebuild is installing to one or more unexpected paths:"
+		eqawarn "QA Notice: The ebuild is installing to one or more unexpected directories:"
 		eqawarn
-		eqatag -v non-gentoo-paths "${bad_paths[@]}"
+		eqatag -v non-gentoo-paths "${bad_paths[@]#${D%/}}"
 		eqawarn
 		eqawarn "Please fix the ebuild to use correct FHS/Gentoo policy paths."
 	fi

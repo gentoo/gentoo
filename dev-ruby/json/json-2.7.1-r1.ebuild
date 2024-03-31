@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,10 @@ DEPEND="${DEPEND}
 
 ruby_add_bdepend "dev-ruby/rake
 	doc? ( dev-ruby/rdoc )
-	test? ( dev-ruby/test-unit:2 )"
+	test? (
+		dev-ruby/test-unit:2
+		dev-ruby/test-unit-ruby-core
+	)"
 
 all_ruby_prepare() {
 	# Avoid building the extension twice!

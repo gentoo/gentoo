@@ -1,6 +1,0 @@
-# Copyright 2024 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-02-28)
-# 23.0 profiles have USE="-cli" overriding ebuild's IUSE="+cli" (bug #925520)
-media-video/mpv cli

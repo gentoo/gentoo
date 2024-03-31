@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_P="abcMIDI-${PV}"
 DESCRIPTION="Programs for processing ABC music notation files"
@@ -23,6 +23,15 @@ src_prepare() {
 	sed -i "s:-O2::" configure.ac || die
 	sed -i "s:@datarootdir@/doc/abcmidi:@docdir@:" Makefile.in || die
 	eautoreconf
+}
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/876421
+	# https://github.com/sshlien/abcmidi/issues/9
+	filter-lto
+
+	default
 }
 
 src_install() {

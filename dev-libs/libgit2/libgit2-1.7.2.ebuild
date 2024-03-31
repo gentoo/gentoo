@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-any-r1
+inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.org/"
@@ -16,7 +16,7 @@ S=${WORKDIR}/${P/_/-}
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 sparc ~x86 ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos"
 IUSE="examples gssapi +ssh test +threads trace"
 RESTRICT="!test? ( test )"
 
@@ -44,6 +44,11 @@ src_configure() {
 		-DUSE_HTTP_PARSER=system
 		-DREGEX_BACKEND=pcre2
 	)
+	# https://bugs.gentoo.org/927821
+	append-flags -fno-strict-aliasing
+	filter-lto
+	# https://bugs.gentoo.org/925207
+	append-lfs-flags
 	cmake_src_configure
 }
 

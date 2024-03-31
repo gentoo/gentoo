@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
+# virt-firmware is keyworded here
+sys-kernel/installkernel -efistub
+
 # Mart Raudsepp <leio@gentoo.org> (2024-03-03)
 # media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
 # are only available for amd64, arm64 and riscv
@@ -84,10 +88,6 @@ dev-lang/ruby -jit
 # avoid larger deptree, bug #882593
 dev-python/bracex doc
 
-# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
-# Mask nvml use flag for slurm
-sys-cluster/slurm nvml
-
 # Sam James <sam@gentoo.org> (2022-07-08)
 # Unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
@@ -124,10 +124,6 @@ media-video/ffmpeg vmaf
 # Sam James <sam@gentoo.org> (2022-02-02)
 # sys-cluster/knem is not keyworded on arm64
 sys-cluster/openmpi openmpi_fabrics_knem
-
-# Sam James <sam@gentoo.org> (2022-02-01)
-# sys-cluster/ucx is not keyworded on arm64
-sys-cluster/slurm ucx
 
 # Sam James <sam@gentoo.org> (2022-01-22)
 # Supports 64-bit NEON
@@ -198,7 +194,7 @@ media-sound/bluez-alsa man
 # Sam James <sam@gentoo.org> (2020-01-17)
 # gnuefi + systemd-boot works on arm64
 # bug #729720
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 
@@ -371,8 +367,12 @@ app-admin/syslog-ng mongodb
 # Mart Raudsepp <leio@gentoo.org> (2018-04-08)
 # Tests fail for bundled luajit, USE=luajit is globally
 # masked too (no-one has tested it yet).
-app-text/texlive-core luajittex
-dev-texlive/texlive-basic luajittex
+# Florian Schmaus <flow@gentoo.org> (2024-03-29)
+# Restricted to pre texlive 2023 releases, as we have users
+# reporting that luajittex works with 2023 on arm64.
+# For example https://bugs.gentoo.org/928122#c7
+<app-text/texlive-core-2023 luajittex
+<dev-texlive/texlive-basic-2023 luajittex
 
 # Mart Raudsepp <leio@gentoo.org> (2018-03-31)
 # Boost.Context can be built on arm64
@@ -449,10 +449,6 @@ app-emulation/libvirt virtualbox
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers
 app-crypt/heimdal afs
-
-# James Le Cuirot <chewi@gentoo.org> (2017-05-22)
-# Only available on some architectures.
-dev-java/icedtea -shenandoah
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # Unkeyworded dependencies

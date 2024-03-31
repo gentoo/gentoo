@@ -1,0 +1,17 @@
+--- a/setup.py
++++ b/setup.py
+@@ -14,13 +14,9 @@ setup(
+         Extension(
+             name="tree_sitter._binding",
+             sources=[
+-                "tree_sitter/core/lib/src/lib.c",
+                 "tree_sitter/binding.c"
+             ],
+-            include_dirs=[
+-                "tree_sitter/core/lib/include",
+-                "tree_sitter/core/lib/src"
+-            ],
++            libraries=["tree-sitter"],
+             define_macros=[
+                 ("PY_SSIZE_T_CLEAN", None),
+             ],

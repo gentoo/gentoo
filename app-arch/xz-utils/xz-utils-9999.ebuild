@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]] ; then
 	# bug #272880 and bug #286068
 	BDEPEND="sys-devel/gettext >=dev-build/libtool-2"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jiatan.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/lassecollin.asc
 	inherit verify-sig
 
 	MY_P="${PN/-utils}-${PV/_}"
@@ -50,11 +50,14 @@ SLOT="0"
 IUSE="cpu_flags_arm_crc32 doc +extra-filters pgo nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-jiatan )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
 fi
 
 src_prepare() {
 	default
+
+	# Delete known-compromised test data (bug #928134)
+	rm tests/files/bad-3-corrupt_lzma2.xz tests/files/good-large_compressed.lzma || die
 
 	if [[ ${PV} == 9999 ]] ; then
 		eautopoint

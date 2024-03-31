@@ -1,0 +1,31 @@
+https://invent.kde.org/network/krdc/-/merge_requests/90
+https://bugs.gentoo.org/927545
+
+From ae05b83ce36ca675c74006c772d9c30de46d96b9 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 24 Mar 2024 16:10:42 -0400
+Subject: [PATCH] Ensure WinPR version matches FreeRDP version
+
+Mixing WinPR 3 with FreeRDP 2 results in disaster.
+
+Bug: https://bugs.gentoo.org/927545
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 907b7b7d..0440ad34 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -135,7 +135,7 @@ if(WITH_RDP)
+         PURPOSE "FreeRDP provides RDP support"
+         TYPE REQUIRED
+     )
+-    find_package(WinPR)
++    find_package(WinPR 2.10)
+     set_package_properties(WinPR PROPERTIES
+         DESCRIPTION "Windows Portable Runtime"
+         URL "https://www.freerdp.com/"
+-- 
+GitLab
+

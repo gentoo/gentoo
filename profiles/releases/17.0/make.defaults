@@ -2,4 +2,5 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # make sure toolchain has sane defaults <toolchain@gentoo.org>
-USE="${USE} fortran openmp"
+# move cli and dri here from default/linux
+USE="${USE} cli dri fortran openmp"

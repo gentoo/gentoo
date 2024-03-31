@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/markdown-3.5[${PYTHON_USEDEP}]
@@ -32,6 +32,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/facelessuser/pymdown-extensions/issues/2343
+		"${FILESDIR}/${P}-md36.patch"
+	)
+
 	# broken on pypy3; unfortunately, the parametrization is based
 	# on indexes and these are pretty random, so we need to remove it
 	# entirely

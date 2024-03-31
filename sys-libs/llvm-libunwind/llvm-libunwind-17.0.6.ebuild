@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv sparc x86 ~arm64-macos ~x64-macos"
 IUSE="+clang debug static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"

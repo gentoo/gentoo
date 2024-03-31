@@ -57,6 +57,10 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
+src_test() {
+	emake -Onone check
+}
+
 src_install() {
 	default
 	find "${ED}" -name "*.la" -type f -delete || die

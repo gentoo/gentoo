@@ -20,10 +20,10 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/audacity/audacity.git"
 else
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	MY_P="Audacity-${PV}"
-	S="${WORKDIR}/${PN}-${MY_P}"
-	SRC_URI="https://github.com/audacity/audacity/archive/${MY_P}.tar.gz"
+	S="${WORKDIR}/${PN}-sources-${PV}"
+	SRC_URI="https://github.com/audacity/audacity/releases/download/Audacity-${PV}/${PN}-sources-${PV}.tar.gz"
 fi
 
 SRC_URI+=" audiocom? ( ${MY_THREADPOOL} )"
@@ -39,7 +39,6 @@ SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="test? ( mpg123 )"
 
 # dev-db/sqlite:3 hard dependency.
 # dev-libs/glib:2, x11-libs/gtk+:3 hard dependency, from
@@ -66,7 +65,9 @@ REQUIRED_USE="test? ( mpg123 )"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
-	dev-libs/rapidjson
+	dev-libs/rapidjson:=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
 	media-libs/portaudio[alsa?]
@@ -74,13 +75,13 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/portsmf:=
 	media-libs/soxr
 	media-sound/lame
+	sys-apps/util-linux
+	sys-libs/zlib:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	sys-apps/util-linux
 	alsa? ( media-libs/alsa-lib )
 	audiocom? (
-		dev-libs/rapidjson
 		net-misc/curl
 	)
 	ffmpeg? ( media-video/ffmpeg )
@@ -105,42 +106,44 @@ RDEPEND="dev-db/sqlite:3
 "
 DEPEND="${RDEPEND}
 	test? ( <dev-cpp/catch-3:0 )"
-BDEPEND="app-arch/unzip
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
 
 PATCHES=(
 	# Equivalent to previous versions
-	"${FILESDIR}/${PN}-3.2.3-disable-ccache.patch"
+	"${FILESDIR}/audacity-3.2.3-disable-ccache.patch"
 	# From Debian
-	"${FILESDIR}/${PN}-3.3.3-fix-rpaths.patch"
+	"${FILESDIR}/audacity-3.3.3-fix-rpaths.patch"
 
 	# Disables some header-based detection
-	"${FILESDIR}/${PN}-3.2.3-allow-overriding-alsa-jack.patch"
+	"${FILESDIR}/audacity-3.2.3-allow-overriding-alsa-jack.patch"
 
 	# For has_networking
-	"${FILESDIR}/${PN}-3.3.3-local-threadpool-libraries.patch"
+	"${FILESDIR}/audacity-3.3.3-local-threadpool-libraries.patch"
 
 	# Allows running tests without conan
-	"${FILESDIR}/${PN}-3.3.3-remove-conan-test-dependency.patch"
+	"${FILESDIR}/audacity-3.3.3-remove-conan-test-dependency.patch"
+
+	# #920363
+	"${FILESDIR}/audacity-3.4.2-audiocom-std-string.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	local header_subs="${S}/libraries/lib-note-track"
-	cat <<-EOF >"${header_subs}/WrapAllegro.h" || die
-	/* Hack the allegro.h header substitute to use system headers.  */
-	#include <portsmf/allegro.h>
-	EOF
-
 	# Keep in sync with has_networking and the ThreadPool.h SRC_URI.
 	if use audiocom; then
-		mkdir -p "${S}/"/lib-src/threadpool/ThreadPool/ || die
-		cp "${DISTDIR}"/progschj-ThreadPool-"${MY_THREADPOOL_DATE}".h \
-		   "${S}"/lib-src/threadpool/ThreadPool/ThreadPool.h || die
+		mkdir -p "${S}/lib-src/threadpool/ThreadPool/" || die
+		cp "${DISTDIR}/progschj-ThreadPool-${MY_THREADPOOL_DATE}.h" \
+		   "${S}/lib-src/threadpool/ThreadPool/ThreadPool.h" || die
 	fi
+
+	# Remove documentation incorrect installations
+	sed -i -e \
+		'/install( FILES "${topdir}\/LICENSE.txt" "${topdir}\/README.md"/,+1d' \
+		src/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -154,28 +157,29 @@ src_configure() {
 	setup-wxwidgets
 
 	# * always use system libraries if possible
-	# * options listed roughly in the order specified in
-	#   cmake-proxies/CMakeLists.txt
 	# * USE_VST was omitted, it appears to no longer have dependencies
 	#   (this is different from VST3)
 	local mycmakeargs=(
 		# Tell the CMake-based build system it's building a release.
 		-DAUDACITY_BUILD_LEVEL=2
-		-Daudacity_use_nyquist=local
-		-Daudacity_use_pch=OFF
-		-Daudacity_use_portmixer=$(usex portmixer system off)
-		-Daudacity_use_soxr=system
 
-		-Daudacity_conan_enabled=OFF
+		-Daudacity_conan_enabled=off
 
 		-Daudacity_has_networking=$(usex audiocom on off)
 		# Not useful on Gentoo.
 		-Daudacity_has_updates_check=OFF
 		-Daudacity_has_audiocom_upload=$(usex audiocom on off)
 
+		# Disable telemetry features.
+		-Daudacity_has_sentry_reporting=off
+		-Daudacity_has_crashreports=off
+
+		-Daudacity_has_tests=$(usex test on off)
+
 		# The VST3 SDK is unpackaged, and it appears to be under a breed
 		# of a proprietary license and the GPL.
-		-Daudacity_has_vst3=OFF
+		-Daudacity_has_vst3=off
+
 		-Daudacity_lib_preference=system
 		-Daudacity_obey_system_dependencies=ON
 		-Daudacity_use_expat=system
@@ -184,34 +188,33 @@ src_configure() {
 		-Daudacity_use_ladspa=$(usex ladspa)
 		-Daudacity_use_lame=system
 		-Daudacity_use_wxwidgets=system
+		-Daudacity_use_libflac=$(usex flac system off)
 		-Daudacity_use_libmp3lame=system
 		-Daudacity_use_libmpg123=$(usex mpg123 system off)
-		-Daudacity_use_wavpack=$(usex wavpack system off)
 		-Daudacity_use_libogg=$(usex ogg system off)
-		-Daudacity_use_libflac=$(usex flac system off)
 		-Daudacity_use_libopus=$(usex flac system off)
-		-Daudacity_use_libvorbis=$(usex vorbis system off)
 		-Daudacity_use_libsndfile=system
-		-Daudacity_use_portaudio=system
-		-Daudacity_use_midi=system
-		-Daudacity_use_vamp=$(usex vamp system off)
+		-Daudacity_use_libvorbis=$(usex vorbis system off)
 		-Daudacity_use_lv2=$(usex lv2 system off)
+		-Daudacity_use_midi=system
+		-Daudacity_use_nyquist=local
+		-Daudacity_use_pch=off
+		-Daudacity_use_portaudio=system
+		-Daudacity_use_portmixer=$(usex portmixer system off)
 		-Daudacity_use_portsmf=system
+		-Daudacity_use_rapidjson=system
 		-Daudacity_use_sbsms=$(usex sbsms system off)
 		-Daudacity_use_soundtouch=system
+		-Daudacity_use_soxr=system
 		-Daudacity_use_twolame=$(usex twolame system off)
-
-		# Disable telemetry features.
-		-Daudacity_has_sentry_reporting=off
-		-Daudacity_has_crashreports=off
+		-Daudacity_use_vamp=$(usex vamp system off)
+		-Daudacity_use_wavpack=$(usex wavpack system off)
 
 		# See the allow-overriding-alsa-jack.patch patch
 		-DPA_HAS_ALSA=$(usex alsa on off)
 		## Keep watch of PA_HAS_OSS in lib-src/portmixer/CMakeLists.txt;
 		## AFAICT it introduces no deps as-is, but that could change.
 		## Similar goes for PA_HAS_JACK.
-
-		-Daudacity_has_tests=$(usex test ON OFF)
 	)
 
 	cmake_src_configure
@@ -219,11 +222,4 @@ src_configure() {
 
 src_test() {
 	virtx cmake_src_test
-}
-
-src_install() {
-	cmake_src_install
-
-	# Remove bad doc install
-	rm -r "${ED}"/usr/share/doc || die
 }

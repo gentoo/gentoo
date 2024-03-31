@@ -17,8 +17,7 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="python test"
-# Tests fail in sandbox
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -73,6 +72,12 @@ src_compile() {
 		cd python || die
 		distutils-r1_src_compile
 	fi
+}
+
+src_test() {
+	# https://bugs.gentoo.org/778797#c4
+	# check_ip needs privileges and check_fw can't work on Linux
+	emake check XFAIL_TESTS="check_fw check_ip"
 }
 
 src_install() {

@@ -1,0 +1,34 @@
+diff --git a/src/Makefile b/src/Makefile
+index 95d51e8..6eab774 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -266,12 +266,7 @@ $(PROGRAM) : show_settings
+ # Gentoo users do want to see the real compile line.
+ # So remove the next five lines (the echo lines)
+ # and remove the '@' in the line after.
+-	@echo '$(CXX) $$(OBJ_FILES_ALL)'
+-	@echo '        $(LIBS_ALL)'
+-	@echo '        $(CXXFLAGS)'
+-	@echo '        $(LDFLAGS)'
+-	@echo '        -o $@'
+-	@$(CXX) \
++	$(CXX) \
+ 	  $(OBJ_FILES_ALL:%.o=$(OBJDIR)/%.o) \
+ 	  $(LIBS_ALL) \
+ 	  $(CXXFLAGS) \
+diff --git a/src/Makefile.rules b/src/Makefile.rules
+index 8ff7b35..0745227 100644
+--- a/src/Makefile.rules
++++ b/src/Makefile.rules
+@@ -92,9 +92,8 @@ $(TARGET_DIR_LOCAL)%.o : %.cpp \
+ 		  $(DEPTH)/Makefile.os
+ # Gentoo users do want to see the real compile line.
+ # So remove the next line and remove the '@' in the lines after.
+-	@echo $(CXX) -c $(SUBDIR)/$<
+-	@$(RM) $(TARGET_DIR_LOCAL)*.gcno $(TARGET_DIR_LOCAL)*.gcda
+-	@$(CXX) $(INCLUDE) $(CPPFLAGS) $(CPPFLAGS_FREEDOKO) $(CXXFLAGS) $(DEPGEN_FLAGS) -o $@ -c $<
++	$(RM) $(TARGET_DIR_LOCAL)*.gcno $(TARGET_DIR_LOCAL)*.gcda
++	$(CXX) $(INCLUDE) $(CPPFLAGS) $(CPPFLAGS_FREEDOKO) $(CXXFLAGS) $(DEPGEN_FLAGS) -o $@ -c $<
+ 
+ 
+ -include $(OBJ_FILES:%.o=$(TARGET_DIR_LOCAL)%.d)

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -124,7 +124,6 @@ pkg_setup() {
 	~NFT_LOG
 	~NFT_MASQ
 	~NFT_NAT
-	~NFT_OBJREF
 	~NFT_QUEUE
 	~NFT_QUOTA
 	~NFT_REDIR
@@ -151,6 +150,11 @@ pkg_setup() {
 	# bug #853055
 	if kernel_is -lt 5 18 ; then
 		CONFIG_CHECK+=" ~NFT_COUNTER"
+	fi
+
+	# bug #926685
+	if kernel_is -le 6 1 ; then
+		CONFIG_CHECK+=" ~NFT_OBJREF"
 	fi
 
 	linux-info_pkg_setup

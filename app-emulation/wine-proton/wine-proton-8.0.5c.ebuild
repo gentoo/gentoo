@@ -292,6 +292,11 @@ src_configure() {
 			filter-flags '-fstack-protector*' #870136
 			filter-flags '-mfunction-return=thunk*' #878849
 
+			# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
+			# strip-unsupported-flags miss these during compile-only tests
+			# (primarily done for 23.0 profiles' -z, not full coverage)
+			filter-flags '-Wl,-z,*'
+
 			# -mavx with mingw-gcc has a history of obscure issues and
 			# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
 			# crashes with -march=skylake >=wine-8.10, similar issues with

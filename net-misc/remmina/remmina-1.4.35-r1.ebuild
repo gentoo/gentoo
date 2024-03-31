@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake optfeature python-single-r1 xdg
+inherit cmake python-single-r1 xdg
 
 MY_P="${PN^}-v${PV}"
 

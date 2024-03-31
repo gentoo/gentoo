@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Benda Xu <heroxbd@gentoo.org> (2023-07-10)
@@ -7,9 +7,3 @@
 # Author: Fabian Groffen <grobian@gentoo.org>
 # Date:   Sun Feb 7 20:09:02 2021 +0100
 sys-devel/gcc ssp
-
-# Sam James <sam@gentoo.org> (2021-11-09)
-# Older GMP releases have a bug in their arm64 Darwin ASM
-# 6.2.2 isn't released but this will catch any releases we know are broken
-# like 6.2.1, and it's already fixed in git upstream.
-<dev-libs/gmp-6.2.2 asm cpudetection

@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/926959
+https://github.com/kovidgoyal/kitty/issues/7222
+https://github.com/simd-everywhere/simde/pull/1154
+From: "Michael R. Crusoe" <michael.crusoe@gmail.com>
+Date: Mon, 25 Mar 2024 10:33:22 +0100
+Subject: [PATCH 1/2] x86 xop: fix some native functions
+--- a/simde/arm/neon/paddl.h
++++ b/simde/arm/neon/paddl.h
+@@ -286,7 +286,7 @@ simde_vpaddlq_u16(simde_uint16x8_t a) {
+     simde_uint32x4_private r_;
+ 
+     #if defined(SIMDE_X86_XOP_NATIVE)
+-      r_.sse_m128i = _mm_haddd_epu16(a_.sse_m128i);
++      r_.m128i = _mm_haddd_epu16(a_.m128i);
+     #elif defined(SIMDE_X86_SSE2_NATIVE)
+       r_.m128i =
+         _mm_add_epi32(
+--- a/simde/x86/xop.h
++++ b/simde/x86/xop.h
+@@ -3727,7 +3727,7 @@ simde_mm256_permute2_pd (simde__m256d a, simde__m256d b, simde__m256i c, const i
+       SIMDE_LCC_REVERT_DEPRECATED_WARNINGS \
+     }))
+   #else
+-    #define simde_mm256_permute2_pd(a, b, c, imm8) simde_undeprecated_mm256_permute2_pd((a), (b), (c), (imm8))
++    #define simde_mm256_permute2_pd(a, b, c, imm8) _mm256_permute2_pd((a), (b), (c), (imm8))
+   #endif
+ #endif
+ #if defined(SIMDE_X86_XOP_ENABLE_NATIVE_ALIASES)

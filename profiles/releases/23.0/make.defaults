@@ -10,12 +10,6 @@ USE="lzma zstd"
 # make sure toolchain has sane defaults <toolchain@gentoo.org>
 USE="${USE} openmp"
 
-# bug 831045
-USE="${USE} -cli"
-
-# bug 849875
-USE="${USE} -dri"
-
 # bug 818376 (only on specific arches)
 LDFLAGS="-Wl,-O1 -Wl,--as-needed"
 

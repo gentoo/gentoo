@@ -1,0 +1,15 @@
+Simply disable the broken path rather than worry about it for now.
+
+Likely an easy fix but would rather this be handled upstream and
+reported by someone that is affected and can test.
+
+https://bugs.gentoo.org/926287
+--- a/src/gui/painting/qrgbafloat.h
++++ b/src/gui/painting/qrgbafloat.h
+@@ -20,5 +20,5 @@
+ public:
+     using Type = F;
+-#if defined(__AVX512FP16__) && QFLOAT16_IS_NATIVE
++#if 0
+     // AVX512FP16 has multiplication instructions
+     using FastType = F;

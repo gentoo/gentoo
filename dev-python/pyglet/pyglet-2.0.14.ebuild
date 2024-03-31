@@ -18,7 +18,7 @@ SRC_URI="https://github.com/pyglet/pyglet/archive/v${PV}.tar.gz -> ${P}.gh.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="examples image +sound"
 
 RDEPEND="

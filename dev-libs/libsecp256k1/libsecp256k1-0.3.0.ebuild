@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/0.2.0-fix-cross-compile.patch"
+	"${FILESDIR}/0.3.0-fix-cross-compile.patch"
 )
 
 S="${WORKDIR}/${MyPN}-${PV}"

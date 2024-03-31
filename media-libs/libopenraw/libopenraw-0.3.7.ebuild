@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=" "
-inherit cargo gnome2-utils
+inherit autotools cargo gnome2-utils
 
 DESCRIPTION="RAW image formats decoding library"
 HOMEPAGE="https://libopenraw.freedesktop.org/"
@@ -33,6 +33,15 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( net-misc/curl )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.7-slibtool.patch #913723
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/shirok/${PN^g}/releases/download/release${PV//./_}/$
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)8"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 test"
 RESTRICT="!test? ( test )"
 

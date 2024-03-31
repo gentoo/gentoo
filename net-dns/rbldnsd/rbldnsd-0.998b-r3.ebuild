@@ -11,7 +11,7 @@ SRC_URI="https://github.com/spamhaus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE="ipv6 zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )"
@@ -24,6 +24,12 @@ BDEPEND="
 # The test suite was dropped from the ebuild because it requires
 # python-2.7, and it will crash if you try to run it now.
 RESTRICT=test
+
+# This check properly includes malloc.h; if mallinfo2
+# is "implicitly defined," then it's not there.
+QA_CONFIG_IMPL_DECL_SKIP=(
+	mallinfo2
+)
 
 PATCHES=(
 	"${FILESDIR}/rbldnsd-0.998b-cstd.patch"

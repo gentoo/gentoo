@@ -91,7 +91,6 @@ dev-python/orjson
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
-dev-python/pendulum
 dev-python/pooch
 dev-python/pydantic
 dev-python/pydantic-core
@@ -128,6 +127,7 @@ dev-python/trustme
 dev-python/trio
 dev-python/trio-websocket
 dev-python/twine
+dev-python/uv
 dev-python/vdirsyncer
 dev-python/watchfiles
 dev-python/wcmatch

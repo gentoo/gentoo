@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-03-27)
+# No rust-bin available for profiler
+<virtual/rust-1.73.0 profiler
+
 # Robin H. Johnson <robbat2@gentoo.org) (2024-03-13)
 # sys-cluster/corosync not yet keyworded, niche use case for mdadm
 sys-fs/mdadm corosync
@@ -160,10 +164,6 @@ net-vpn/openconnect test
 dev-python/QtPy pyside2
 dev-python/qtconsole test
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
-# dev-qt/qtwebengine:5 isn't available on loong.
-dev-python/QtPy webengine
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # <dev-cpp/tbb-2021 fails to build on loong w/ gcc-13
 sci-libs/spqr tbb
@@ -171,8 +171,6 @@ sci-libs/spqr tbb
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-boot/gnu-efi upstream hasn't merged the loong port yet
 sys-apps/fwupd uefi
-<sys-apps/systemd-254 gnuefi
-<sys-apps/systemd-utils-254 boot
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # The loong port of sys-boot/grub:2 isn't upstreamed yet.
@@ -224,17 +222,12 @@ dev-python/PyQt5 location
 dev-python/QtPy test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
-# sys-libs/libhugetlbfs isn't buildable here yet due to arch-specific code.
-sys-apps/nvme-cli hugepages
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # Mask GRUB2 platforms not applicable to loong.
 sys-boot/grub:2 grub_platforms_coreboot grub_platforms_efi-32 grub_platforms_ieee1275 grub_platforms_multiboot grub_platforms_pc grub_platforms_qemu grub_platforms_uboot grub_platforms_xen grub_platforms_xen-pvh
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-30)
 # No Haskell on loong yet (in-tree ghc too old and not bootstrapped here as of
 # Oct 2023), hence no virtual/pandoc and friends.
-sys-apps/eza man
 www-apps/hugo test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-29)

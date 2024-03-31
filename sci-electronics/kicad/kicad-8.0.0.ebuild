@@ -48,7 +48,8 @@ COMMON_DEPEND="
 	>=media-libs/glm-0.9.9.1
 	media-libs/mesa[X(+)]
 	net-misc/curl
-	>=sci-libs/opencascade-7.3.0:0=
+	>=sci-libs/opencascade-7.5.0:0=
+	<sci-libs/opencascade-7.8.0:0=
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
@@ -79,6 +80,10 @@ if [[ ${PV} == 9999 ]] ; then
 fi
 
 CHECKREQS_DISK_BUILD="1500M"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.0.1-libgit2.patch
+)
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

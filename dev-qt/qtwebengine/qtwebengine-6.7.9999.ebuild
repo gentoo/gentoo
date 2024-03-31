@@ -113,6 +113,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.7.0-clang18.patch
+	"${FILESDIR}"/${PN}-6.7.0-x11-header.patch
 )
 
 python_check_deps() {
@@ -302,6 +303,10 @@ src_install() {
 
 	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
+
+	if use test && use webdriver; then
+		rm -- "${D}${QT6_BINDIR}"/testbrowser || die
+	fi
 }
 
 pkg_postinst() {

@@ -5,7 +5,7 @@ EAPI=8
 
 COMMIT=80c52493ef42e6fe605a69dcddd2a691cd8a1380
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit flag-o-matic perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
@@ -101,11 +101,12 @@ src_compile() {
 }
 
 multilib_src_test() {
-	if multilib_is_native_abi; then
-		cmake_src_test
-	else
-		einfo "Cannot test since python is not multilib."
-	fi
+	CMAKE_SKIP_TESTS=(
+		# https://github.com/silnrsi/graphite/pull/74
+		nametabletest
+	)
+
+	cmake_src_test
 }
 
 src_test() {

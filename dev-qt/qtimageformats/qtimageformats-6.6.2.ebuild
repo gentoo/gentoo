@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Additional format plugins for the Qt image I/O system"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc64 ~riscv ~x86"
 fi
 
 IUSE="mng"
@@ -20,6 +20,12 @@ RDEPEND="
 	mng? ( media-libs/libmng:= )
 "
 DEPEND="${RDEPEND}"
+
+CMAKE_SKIP_TESTS=(
+	# heif plugin is only for Mac, test is normally auto-skipped but may
+	# misbehave with kde-frameworks/kimageformats:6[heif] (bug #927971)
+	tst_qheif
+)
 
 src_configure() {
 	local mycmakeargs=(

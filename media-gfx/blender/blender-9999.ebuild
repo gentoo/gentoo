@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit check-reqs cmake cuda flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -11,8 +11,8 @@ DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
 
 if [[ ${PV} = *9999* ]] ; then
-	# Subversion is needed for downloading unit test files
-	inherit git-r3 subversion
+	EGIT_LFS="yes"
+	inherit git-r3
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
 else
@@ -36,17 +36,17 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff )
+	cycles? ( openexr tiff tbb )
 	fluid? ( tbb )
 	hip? ( cycles )
 	nanovdb? ( openvdb )
-	openvdb? ( tbb )
+	openvdb? ( tbb openexr )
 	optix? ( cuda )
-	osl? ( cycles )
+	osl? ( cycles pugixml )
 	test? ( color-management )"
 
 # Library versions for official builds can be found in the blender source directory in:
-# build_files/build_environment/install_deps.sh
+# build_files/build_environment/cmake/versions.cmake
 RDEPEND="${PYTHON_DEPS}
 	app-arch/zstd
 	dev-libs/boost:=[nls?]
@@ -85,7 +85,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
-	oidn? ( >=media-libs/oidn-1.4.0 )
+	oidn? ( >=media-libs/oidn-2.1.0 )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
@@ -182,13 +182,10 @@ src_unpack() {
 
 		git-r3_fetch "${ADDONS_EGIT_REPO_URI}"
 		git-r3_checkout "${ADDONS_EGIT_REPO_URI}" "${S}/scripts/addons"
+		# TODO
+		#if use test; then
 
-		if use test; then
-			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
-			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-		fi
-		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
-		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
+		#fi
 	else
 		default
 		if use test; then
@@ -234,7 +231,7 @@ src_prepare() {
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
 		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i tests/CMakeLists.txt || die
-		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/testing.cmake || die
 	fi
 }
 
@@ -254,8 +251,10 @@ src_configure() {
 		-DWITH_ALEMBIC=$(usex alembic)
 		-DWITH_BOOST=yes
 		-DWITH_BULLET=$(usex bullet)
+		-DWITH_CLANG=$(usex osl)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
+		-DWITH_CPU_CHECK=no
 		-DWITH_CYCLES=$(usex cycles)
 		-DWITH_CYCLES_CUDA_BINARIES=$(usex cuda $(usex cycles-bin-kernels))
 		-DWITH_CYCLES_DEVICE_ONEAPI=no
@@ -273,7 +272,6 @@ src_configure() {
 		-DWITH_FFTW3=$(usex fftw)
 		-DWITH_GHOST_WAYLAND=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
-		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
 		-DWITH_GHOST_WAYLAND_DYNLOAD=no
 		-DWITH_GHOST_WAYLAND_LIBDECOR=no
 		-DWITH_GHOST_X11=$(usex X)
@@ -288,6 +286,7 @@ src_configure() {
 		-DWITH_INPUT_NDOF=$(usex ndof)
 		-DWITH_INTERNATIONAL=$(usex nls)
 		-DWITH_JACK=$(usex jack)
+		-DWITH_LLVM=$(usex osl)
 		-DWITH_MATERIALX=no
 		-DWITH_MEM_JEMALLOC=$(usex jemalloc)
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
@@ -311,6 +310,7 @@ src_configure() {
 		-DWITH_PYTHON_INSTALL_ZSTANDARD=no
 		-DWITH_SDL=$(usex sdl)
 		-DWITH_STATIC_LIBS=no
+		-DWITH_STRICT_BUILD_OPTIONS=yes
 		-DWITH_SYSTEM_EIGEN3=yes
 		-DWITH_SYSTEM_FREETYPE=yes
 		-DWITH_SYSTEM_LZO=yes
@@ -344,12 +344,6 @@ src_configure() {
 		)
 		# Ease compiling with required gcc similar to cuda_sanitize but for cmake
 		use cuda && use cycles-bin-kernels && mycmakeargs+=( -DCUDA_HOST_COMPILER="$(cuda_gccdir)" )
-	fi
-	if tc-is-clang ; then
-		mycmakeargs+=(
-			-DWITH_CLANG=yes
-			-DWITH_LLVM=yes
-		)
 	fi
 
 	if use test ; then

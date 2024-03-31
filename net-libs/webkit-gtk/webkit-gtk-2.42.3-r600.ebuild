@@ -154,6 +154,7 @@ src_prepare() {
 
 	# Fix USE=-jumbo-build compilation on arm64
 	eapply "${FILESDIR}"/2.42.1-arm64-non-jumbo-fix.patch
+	eapply "${FILESDIR}"/2.42.3-arm64-non-jumbo-fix-925621.patch
 }
 
 src_configure() {

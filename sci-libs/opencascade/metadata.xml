@@ -10,26 +10,17 @@
 	<name>Proxy Maintainers</name>
 </maintainer>
 <use>
-	<flag name="eigen">
-		Enable support for eigenvalues through the header-only
-		<pkg>dev-cpp/eigen</pkg> package.
-	</flag>
-	<flag name="freeimage">
-		Enable support for image i/o via <pkg>media-libs/freeimage</pkg>
-	</flag>
-	<flag name="json">
-		Enable JSON support through <pkg>dev-libs/rapidjson</pkg>
-	</flag>
-	<flag name="optimize">
-		Don't clear allocated memory. Use optimized memory manager unless
-		tbb USE flag is set.
-	</flag>
-	<flag name="tbb">
-		Enable multithreading with the Intel Threads Building Block
-		<pkg>dev-cpp/tbb</pkg>
-	</flag>
-	<flag name="vtk">
-		Enable Visualization Toolkit support via <pkg>sci-libs/vtk</pkg>
-	</flag>
+	<flag name="eigen">Enable support for eigenvalues through the header-only <pkg>dev-cpp/eigen</pkg> package.</flag>
+	<flag name="freeimage">Enable support for image i/o via <pkg>media-libs/freeimage</pkg></flag>
+	<flag name="freetype">Enable <pkg>media-libs/freetype</pkg> support</flag>
+	<flag name="jemalloc">Enable jemalloc allocator support via <pkg>dev-libs/jemalloc</pkg></flag>
+	<flag name="json">Enable JSON support through <pkg>dev-libs/rapidjson</pkg></flag>
+	<flag name="optimize">Don't clear allocated memory. Use optimized memory manager unlesstbb USE flag is set.</flag>
+	<flag name="tbb">Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
+	<flag name="testprograms">Indicates whether non-regression OCCT test scripts should be installed</flag>
+	<flag name="vtk">Enable Visualization Toolkit support via <pkg>sci-libs/vtk</pkg></flag>
 </use>
+<upstream>
+	<remote-id type="github">Open-Cascade-SAS/OCCT</remote-id>
+</upstream>
 </pkgmetadata>

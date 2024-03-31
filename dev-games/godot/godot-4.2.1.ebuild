@@ -1,10 +1,11 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit bash-completion-r1 desktop python-any-r1 scons-utils toolchain-funcs xdg
+inherit desktop python-any-r1 flag-o-matic scons-utils
+inherit shell-completion toolchain-funcs xdg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
 HOMEPAGE="https://godotengine.org/"
@@ -85,10 +86,13 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# handle slotting
 	sed -i "1,5s/ godot/&${SLOT}/i" misc/dist/linux/godot.6 || die
 	sed -i "/id/s/Godot/&${SLOT}/" misc/dist/linux/org.godotengine.Godot.appdata.xml || die
 	sed -e "s/=godot/&${SLOT}/" -e "/^Name=/s/$/ ${SLOT}/" \
 		-i misc/dist/linux/org.godotengine.Godot.desktop || die
+	sed -e "s/godot/&${SLOT}/g" \
+		-i misc/dist/shell/{godot.bash-completion,godot.fish,_godot.zsh-completion} || die
 
 	sed -i "s|pkg-config |$(tc-getPKG_CONFIG) |" platform/linuxbsd/detect.py || die
 
@@ -106,6 +110,8 @@ src_prepare() {
 
 src_compile() {
 	local -x BUILD_NAME=gentoo # replaces "custom_build" in version string
+
+	filter-lto #921017
 
 	local esconsargs=(
 		AR="$(tc-getAR)" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
@@ -170,7 +176,7 @@ src_compile() {
 		module_upnp_enabled=$(usex upnp)
 		module_webp_enabled=$(usex webp)
 
-		# let *FLAGS handle these, e.g. can pass -flto as-is
+		# let *FLAGS handle these
 		debug_symbols=no
 		lto=none
 		optimize=custom
@@ -228,13 +234,6 @@ src_install() {
 	fi
 
 	newbashcomp misc/dist/shell/godot.bash-completion ${s}
-	bashcomp_alias ${s}{,-runner}
-
-	insinto /usr/share/fish/vendor_completions.d
-	newins misc/dist/shell/godot.fish ${s}.fish
-	dosym ${s}.fish /usr/share/fish/vendor_completions.d/${s}-runner.fish
-
-	insinto /usr/share/zsh/site-functions
-	newins misc/dist/shell/_godot.zsh-completion _${s}
-	dosym _${s} /usr/share/zsh/site-functions/_${s}-runner
+	newfishcomp misc/dist/shell/godot.fish ${s}.fish
+	newzshcomp misc/dist/shell/_godot.zsh-completion _${s}
 }

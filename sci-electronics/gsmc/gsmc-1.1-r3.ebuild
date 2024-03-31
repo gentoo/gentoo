@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A GTK program for doing Smith Chart calculations"
 HOMEPAGE="https://www.qsl.net/ik5nax/"
@@ -28,6 +28,16 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862456
+	#
+	# Upstream software dates to 2004 with no sign of activity.
+	filter-lto
+
+	default
 }
 
 src_install() {

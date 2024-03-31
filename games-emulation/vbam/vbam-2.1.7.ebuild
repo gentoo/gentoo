@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit wxwidgets xdg cmake
+inherit flag-o-matic wxwidgets xdg cmake
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
@@ -61,6 +61,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/926080
+	# https://github.com/visualboyadvance-m/visualboyadvance-m/issues/1260
+	filter-lto
+
 	use wxwidgets && setup-wxwidgets
 
 	local mycmakeargs=(

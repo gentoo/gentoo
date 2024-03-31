@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~loong ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~riscv ~s390 ~x86"
 IUSE="acl audit caps +berkdb doc dbus nls openmp python readline selinux +sequoia +sqlite"
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}

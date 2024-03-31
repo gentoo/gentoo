@@ -301,6 +301,10 @@ src_install() {
 
 	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
+
+	if use test && use webdriver; then
+		rm -- "${D}${QT6_BINDIR}"/testbrowser || die
+	fi
 }
 
 pkg_postinst() {

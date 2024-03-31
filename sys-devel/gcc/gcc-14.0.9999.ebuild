@@ -6,6 +6,7 @@ EAPI=8
 TOOLCHAIN_PATCH_DEV="sam"
 PATCH_GCC_VER="14.0.0"
 MUSL_GCC_VER="14.0.0"
+PYTHON_COMPAT=( python3_{10..11} )
 
 if [[ -n ${TOOLCHAIN_GCC_RC} ]] ; then
 	# Cheesy hack for RCs

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ OLD_PN=udev-gentoo-scripts
 OLD_P=${OLD_PN}-${PV}
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="https://anongit.gentoo.org/proj/${OLD_PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${OLD_PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${OLD_PN}.git/snapshot/${OLD_P}.tar.gz -> ${P}.tar.gz"

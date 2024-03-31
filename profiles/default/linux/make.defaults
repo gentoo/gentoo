@@ -20,13 +20,10 @@ USE="${USE} seccomp"
 # These USE flags were originally inserted here because of PHP
 # and were later removed by me. Reinserting the USE flags again because they are
 # global USE flags that may be expected to be set by other packages.
-USE="${USE} cli pcre"
-
-# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
-# Modular X: Support direct rendering by default
-# Andreas K. Huettel <dilfridge@gentoo.org> (2013-01-21)
-# Re-added following discussion with chithead
-USE="${USE} dri"
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-22)
+# Moving cli to 17.0, so it can be unset in 23.0 and this way overridden by
+# use defaults...
+USE="${USE} pcre"
 
 # Luca Barbato <lu_zero@gentoo.org> (2006-10-28)
 # on glibc system you cannot turn it off

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ PATCH_VER="6"
 MUSL_VER="2"
 MUSL_GCC_VER="10.5.0"
 GCC_TARGET_NO_MULTILIB=true
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit toolchain
 

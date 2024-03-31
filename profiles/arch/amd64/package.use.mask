@@ -29,6 +29,7 @@ media-libs/libplacebo -libdovi
 # Only works on amd64 (and x32).
 dev-debug/gdb -cet
 sys-devel/binutils -cet
+sys-devel/clang-common -cet
 sys-devel/gcc -cet
 sys-libs/binutils-libs -cet
 sys-libs/glibc -cet
@@ -404,10 +405,6 @@ dev-db/mariadb -jdbc
 # PGO is fixed on amd64
 >=www-client/firefox-48 -pgo
 
-# James Le Cuirot <chewi@gentoo.org> (2016-07-26)
-# Only available on some architectures.
-dev-java/icedtea -shenandoah
-
 # Mike Gilbert <floppym@gentoo.org> (2016-06-23)
 # This flag only has meaning on amd64
 sys-boot/grub:2 -grub_platforms_xen-32
@@ -418,7 +415,7 @@ sys-boot/grub:2 -grub_platforms_xen-32
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sd-boot is not supported on all archs.
-sys-apps/systemd -boot -gnuefi -ukify
+sys-apps/systemd -boot -ukify
 sys-apps/systemd-utils -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 

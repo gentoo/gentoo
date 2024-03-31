@@ -1,0 +1,64 @@
+https://github.com/OpenPrinting/libppd/pull/32
+https://github.com/OpenPrinting/libppd/commit/a040f26f3ca103c8ae7706d91ae157dca0974c49
+
+From e614c21b82a2f85487fe406a8bf4a2c9064501f8 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 18 Dec 2023 22:28:21 -0500
+Subject: [PATCH] build: fix failure to correctly link to zlib
+
+Checking for the header is NOT sufficient when utilizing its shared
+library symbols. Look it up with pkg-config explicitly, and explicitly
+add it to ensure that at runtime, libppd has its own DT_NEEDED
+dependency on libz.so; if libppd successfully links at all -- not a
+given, if -Wl,-no-undefined is used -- then it *may* transitively get
+libz.so from its recursive dependencies, but this is no guarantee at
+all.
+
+Fixes failure to build discovered at https://bugs.gentoo.org/920273
+---
+ Makefile.am  | 2 ++
+ configure.ac | 8 +++++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 7aed422b..c44aa3e0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -120,9 +120,11 @@ libppd_la_SOURCES = \
+ 	$(pkgppddefs_DATA)
+ libppd_la_LIBADD = \
+ 	$(LIBCUPSFILTERS_LIBS) \
++	$(ZLIB_LIBS) \
+ 	$(CUPS_LIBS)
+ libppd_la_CFLAGS = \
+ 	$(LIBCUPSFILTERS_CFLAGS) \
++	$(ZLIB_CFLAGS) \
+ 	$(CUPS_CFLAGS)
+ libppd_la_CXXFLAGS = \
+ 	$(libppd_la_CFLAGS)
+diff --git a/configure.ac b/configure.ac
+index 66927d80..7d8a459b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -164,6 +164,13 @@ AC_SUBST(CUPS_STATEDIR)
+ # ========================
+ PKG_CHECK_MODULES([LIBCUPSFILTERS], [libcupsfilters])
+ 
++# ==============
++# Check for zlib
++# ==============
++PKG_CHECK_MODULES([ZLIB], [zlib], ,[
++        AC_CHECK_HEADER([zlib.h])
++        AC_CHECK_LIB([z], [deflateInit])])
++
+ # ============================================================
+ # Check for whether we want to install the testppdfile utility
+ # ============================================================
+@@ -220,7 +227,6 @@ AC_CHECK_HEADERS([stdlib.h])
+ AC_CHECK_HEADERS([sys/stat.h])
+ AC_CHECK_HEADERS([sys/types.h])
+ AC_CHECK_HEADERS([unistd.h])
+-AC_CHECK_HEADERS([zlib.h])
+ AC_CHECK_HEADERS([endian.h])
+ AC_CHECK_HEADERS([dirent.h])
+ AC_CHECK_HEADERS([sys/ioctl.h])

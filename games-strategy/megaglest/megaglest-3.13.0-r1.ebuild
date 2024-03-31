@@ -1,4 +1,4 @@
-# Copyright 2010-2023 Gentoo Authors
+# Copyright 2010-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Todo: google-breakpad?
@@ -14,7 +14,7 @@ LUA_COMPAT=( lua5-{1..4} )
 VIRTUALX_REQUIRED="manual"
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake desktop lua-single readme.gentoo-r1 virtualx wxwidgets xdg-utils
+inherit cmake desktop flag-o-matic lua-single readme.gentoo-r1 virtualx wxwidgets xdg-utils
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
@@ -33,9 +33,8 @@ IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_s
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="
+COMMON_DEPEND="
 	${LUA_DEPS}
-	~games-strategy/${PN}-data-${PV}
 	dev-libs/libxml2
 	dev-libs/xerces-c[icu]
 	media-libs/fontconfig
@@ -61,7 +60,11 @@ RDEPEND="
 	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 	videos? ( media-video/vlc )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="
+	${COMMON_DEPEND}
+	~games-strategy/${PN}-data-${PV}
+"
 
 BDEPEND="sys-apps/help2man
 	virtual/pkgconfig
@@ -105,6 +108,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/926143
+	# https://github.com/MegaGlest/megaglest-source/issues/275
+	filter-lto
+
 	if use cpu_flags_x86_sse3; then
 		SSE=3
 	elif use cpu_flags_x86_sse2; then

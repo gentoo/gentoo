@@ -15,4 +15,3 @@ KEYWORDS="amd64"
 # Override eclass SRC_URI as 0.20.1 was bumped incorrectly.
 SRC_URI="https://github.com/tree-sitter/${PN}/archive/v${PV}.tar.gz
 	-> ${P}-2.tar.gz"
-S="${WORKDIR}"/${PN}-${PV}/src

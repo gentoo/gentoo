@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,9 +9,9 @@ DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://StanfordLegion/${PN}.git https://github.com/StanfordLegion/${PN}.git"
+	EGIT_REPO_URI="https://github.com/StanfordLegion/legion.git"
 else
-	SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
+	SRC_URI="https://github.com/StanfordLegion/legion/archive/${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${P}
 
 	KEYWORDS="~amd64"

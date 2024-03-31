@@ -1,0 +1,66 @@
+From b10af6b0173e647b54834edff087a5811b6bcfe1 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 20 Mar 2024 06:49:57 -0700
+Subject: [PATCH] bindings: cxx: link using the libtool archives
+
+When linking with internal dependencies that were built with libtool the
+most reliable method is to use the libtool archive (.la) files.
+
+When building with slibtool it fails when it doesn't find the -lgpiod
+linker flag, but if libgpiod is already installed to the system it will
+be built using the system version instead of the newly built libraries.
+
+Link: https://bugs.gentoo.org/913899
+Signed-off-by: orbea <orbea@riseup.net>
+[Bartosz: fix a typo in tests Makefile]
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+ bindings/cxx/Makefile.am          | 2 +-
+ bindings/cxx/examples/Makefile.am | 2 +-
+ bindings/cxx/tests/Makefile.am    | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/bindings/cxx/Makefile.am b/bindings/cxx/Makefile.am
+index 1eafaa2c..e2a89cf4 100644
+--- a/bindings/cxx/Makefile.am
++++ b/bindings/cxx/Makefile.am
+@@ -24,8 +24,8 @@ libgpiodcxx_la_CXXFLAGS = -Wall -Wextra -g -std=gnu++17
+ libgpiodcxx_la_CXXFLAGS += -fvisibility=hidden -I$(top_srcdir)/include/
+ libgpiodcxx_la_CXXFLAGS += $(PROFILING_CFLAGS)
+ libgpiodcxx_la_LDFLAGS = -version-info $(subst .,:,$(ABI_CXX_VERSION))
+-libgpiodcxx_la_LDFLAGS += -lgpiod -L$(top_builddir)/lib
+ libgpiodcxx_la_LDFLAGS += $(PROFILING_LDFLAGS)
++libgpiodcxx_la_LIBADD = $(top_builddir)/lib/libgpiod.la
+ 
+ include_HEADERS = gpiod.hpp
+ 
+diff --git a/bindings/cxx/examples/Makefile.am b/bindings/cxx/examples/Makefile.am
+index 64ced200..eca4d64a 100644
+--- a/bindings/cxx/examples/Makefile.am
++++ b/bindings/cxx/examples/Makefile.am
+@@ -3,7 +3,7 @@
+ 
+ AM_CXXFLAGS = -I$(top_srcdir)/bindings/cxx/ -I$(top_srcdir)/include
+ AM_CXXFLAGS += -Wall -Wextra -g -std=gnu++17
+-AM_LDFLAGS = -lgpiodcxx -L$(top_builddir)/bindings/cxx/
++LDADD = $(top_builddir)/bindings/cxx/libgpiodcxx.la
+ 
+ noinst_PROGRAMS = \
+ 	async_watch_line_value \
+diff --git a/bindings/cxx/tests/Makefile.am b/bindings/cxx/tests/Makefile.am
+index 02b5b6de..fbf80a10 100644
+--- a/bindings/cxx/tests/Makefile.am
++++ b/bindings/cxx/tests/Makefile.am
+@@ -4,9 +4,9 @@
+ AM_CXXFLAGS = -I$(top_srcdir)/bindings/cxx/ -I$(top_srcdir)/include
+ AM_CXXFLAGS += -I$(top_srcdir)/tests/gpiosim/
+ AM_CXXFLAGS += -Wall -Wextra -g -std=gnu++17 $(CATCH2_CFLAGS)
+-AM_LDFLAGS = -lgpiodcxx -L$(top_builddir)/bindings/cxx/
+-AM_LDFLAGS += -lgpiosim -L$(top_builddir)/tests/gpiosim/
+-AM_LDFLAGS += -pthread
++AM_LDFLAGS = -pthread
++LDADD = $(top_builddir)/bindings/cxx/libgpiodcxx.la
++LDADD += $(top_builddir)/tests/gpiosim/libgpiosim.la
+ 
+ noinst_PROGRAMS = gpiod-cxx-test
+ 

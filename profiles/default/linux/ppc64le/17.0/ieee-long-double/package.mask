@@ -1,8 +1,7 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-04)
 # We only need versions that support ieee-long-double.
-<sys-devel/clang-15.0.5
 <sys-devel/gcc-12
 <sys-libs/glibc-2.36-r7

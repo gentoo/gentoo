@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,10 +23,10 @@ src_prepare() {
 }
 
 src_configure() {
+	export PREFIX="${EPREFIX}"/usr
 	export LIBDIR=${PREFIX}/$(get_libdir)
 	export CFLAGS_EXTRA="${CFLAGS}"
 	export LDFLAGS_EXTRA="${LDFLAGS}"
-	export PREFIX=/usr
 	unset CFLAGS
 	unset LDFLAGS
 }

@@ -12,7 +12,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/lsd-rs/lsd/issues</bugs-to>
-		<changelog>https://github.com/lsd-rs/lsd/blob/master/CHANGELOG.md</changelog>
 		<remote-id type="github">lsd-rs/lsd</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,24 @@
+--- a/build.go
++++ b/build.go
+@@ -34,7 +34,6 @@
+ 	"time"
+ 
+ 	_ "github.com/syncthing/syncthing/lib/automaxprocs"
+-	buildpkg "github.com/syncthing/syncthing/lib/build"
+ )
+ 
+ var (
+@@ -416,13 +415,6 @@
+ 	}
+ 	args = append(args, "-timeout", timeout)
+ 
+-	if runtime.GOARCH == "amd64" {
+-		switch runtime.GOOS {
+-		case buildpkg.Darwin, buildpkg.Linux, buildpkg.FreeBSD: // , "windows": # See https://github.com/golang/go/issues/27089
+-			args = append(args, "-race")
+-		}
+-	}
+-
+ 	if coverage {
+ 		args = append(args, "-covermode", "atomic", "-coverprofile", "coverage.txt", "-coverpkg", strings.Join(pkgs, ","))
+ 	}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ago@gentoo.org</email>
+		<name>Agostino Sarubbo</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>radhermit@gentoo.org</email>
+		<name>Tim Harder</name>
+		<description>Upstream, please CC on bugs</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">radhermit/bugbite</remote-id>
+	</upstream>
+</pkgmetadata>

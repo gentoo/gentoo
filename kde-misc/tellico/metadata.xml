@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">office/tellico</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		Tellico is a KDE application for organizing your collections. It provides

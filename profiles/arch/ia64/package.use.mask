@@ -259,7 +259,7 @@ app-text/texlive l10n_ja context
 # - net-libs/webkit-gtk: ruby build system
 app-editors/emacs xwidgets
 dev-util/geany-plugins markdown
-gnome-extra/evolution-data-server oauth oauth-gtk3 oauth-gtk4
+gnome-extra/evolution-data-server oauth-gtk3 oauth-gtk4
 # - gnome-extra/sushi: depends on webkit-gtk
 gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
@@ -447,11 +447,6 @@ net-misc/networkmanager wext
 media-sound/pulseaudio ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 
-# Mike Gilbert <floppym@gentoo.org> (2015-09-05)
-# sys-boot/gnu-efi is not supported on all archs.
-<sys-apps/systemd-254 -gnuefi
-<sys-apps/systemd-utils-254 -boot
-
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
 net-misc/spice-gtk smartcard webdav
@@ -526,7 +521,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl
 
 # Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on ia64

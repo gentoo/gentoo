@@ -1,0 +1,99 @@
+https://github.com/bitcoin-core/secp256k1/pull/1159
+
+From 4764fb33a47e93769ee8b9353a270989227bc2f0 Mon Sep 17 00:00:00 2001
+From: Matt Whitlock <bitcoin@mattwhitlock.name>
+Date: Sun, 20 Nov 2022 01:46:07 -0500
+Subject: [PATCH] Makefile: build precomp generators using build-system
+ toolchain
+
+When cross-compiling libsecp256k1, if the `precomputed_ecmult*.c` source
+files need to be regenerated, then the generators need to be built for
+the *build* system, not for the *host* system. Autoconf supports this
+fairly cleanly via the `AX_PROG_CC_FOR_BUILD` macro (from Autoconf
+Archive), but Automake requires some hackery. When building the
+generators, we override the `CC` variable to its build-system
+counterpart, `CC_FOR_BUILD`, and we specify Automake per-program
+overrides for `CFLAGS`, `CPPFLAGS`, and `LDFLAGS`, setting their values
+respectively from the `CFLAGS_FOR_BUILD`, `CPPFLAGS_FOR_BUILD`, and
+`LDFLAGS_FOR_BUILD` variables, whose values in turn are populated by the
+aforementioned Autoconf macro and may be overridden on the `make`
+command line. Since Automake lacks support for overriding `EXEEXT` on a
+per-program basis, we define a recipe that builds the generator binaries
+with names suffixed with `$(EXEEXT)` and then renames them suffixed with
+`$(BUILD_EXEEXT)`.
+---
+ Makefile.am  | 35 +++++++++++++++++++++++++++--------
+ configure.ac |  1 +
+ 2 files changed, 28 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 32bc729a..de43723f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -185,15 +185,34 @@ endif
+ endif
+ 
+ ### Precomputed tables
+-EXTRA_PROGRAMS = precompute_ecmult precompute_ecmult_gen
+-CLEANFILES = $(EXTRA_PROGRAMS)
++PROGRAMS_FOR_BUILD = precompute_ecmult precompute_ecmult_gen
++$(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD)) : override CC = $(CC_FOR_BUILD)
++# Automake has no support for PROGRAMS suffixed with BUILD_EXEEXT
++# instead of EXEEXT, so if those extensions differ, then we define a
++# recipe that builds the latter and renames it to the former. Since
++# Cygwin toolchains always append '.exe' to the output file name given
++# by '-o', we ignore rename failures since the toolchain will have
++# already created the right output file. (Note: The leading spaces
++# before ifneq and endif here are a hack so Automake won't try to
++# interpret them as an Automake conditional.)
++ ifneq ($(BUILD_EXEEXT),$(EXEEXT))
++%$(BUILD_EXEEXT) : %$(EXEEXT)
++	mv -- '$<' '$@' || :
++ endif
++
++EXTRA_PROGRAMS = $(PROGRAMS_FOR_BUILD)
++CLEANFILES = $(addsuffix $(BUILD_EXEEXT),$(PROGRAMS_FOR_BUILD))
+ 
+ precompute_ecmult_SOURCES = src/precompute_ecmult.c
+-precompute_ecmult_CPPFLAGS = $(SECP_CONFIG_DEFINES) -DVERIFY
++precompute_ecmult_CFLAGS = $(CFLAGS_FOR_BUILD)
++precompute_ecmult_CPPFLAGS = $(CPPFLAGS_FOR_BUILD) $(SECP_CONFIG_DEFINES) -DVERIFY
++precompute_ecmult_LDFLAGS = $(LDFLAGS_FOR_BUILD)
+ precompute_ecmult_LDADD = $(COMMON_LIB)
+ 
+ precompute_ecmult_gen_SOURCES = src/precompute_ecmult_gen.c
+-precompute_ecmult_gen_CPPFLAGS = $(SECP_CONFIG_DEFINES) -DVERIFY
++precompute_ecmult_gen_CFLAGS = $(CFLAGS_FOR_BUILD)
++precompute_ecmult_gen_CPPFLAGS = $(CPPFLAGS_FOR_BUILD) $(SECP_CONFIG_DEFINES) -DVERIFY
++precompute_ecmult_gen_LDFLAGS = $(LDFLAGS_FOR_BUILD)
+ precompute_ecmult_gen_LDADD = $(COMMON_LIB)
+ 
+ # See Automake manual, Section "Errors with distclean".
+@@ -203,11 +222,11 @@ precompute_ecmult_gen_LDADD = $(COMMON_LIB)
+ # This means that rebuilds of the prebuilt files always need to be
+ # forced by deleting them.
+ src/precomputed_ecmult.c:
+-	$(MAKE) $(AM_MAKEFLAGS) precompute_ecmult$(EXEEXT)
+-	./precompute_ecmult$(EXEEXT)
++	$(MAKE) $(AM_MAKEFLAGS) precompute_ecmult$(BUILD_EXEEXT)
++	./precompute_ecmult$(BUILD_EXEEXT)
+ src/precomputed_ecmult_gen.c:
+-	$(MAKE) $(AM_MAKEFLAGS) precompute_ecmult_gen$(EXEEXT)
+-	./precompute_ecmult_gen$(EXEEXT)
++	$(MAKE) $(AM_MAKEFLAGS) precompute_ecmult_gen$(BUILD_EXEEXT)
++	./precompute_ecmult_gen$(BUILD_EXEEXT)
+ 
+ PRECOMP = src/precomputed_ecmult_gen.c src/precomputed_ecmult.c
+ precomp: $(PRECOMP)
+diff --git a/configure.ac b/configure.ac
+index e3877850..48072cb3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,6 +37,7 @@ fi
+ AC_PROG_CC
+ AM_PROG_AS
+ AM_PROG_AR
++AX_PROG_CC_FOR_BUILD
+ 
+ # Clear some cache variables as a workaround for a bug that appears due to a bad
+ # interaction between AM_PROG_AR and LT_INIT when combining MSVC's archiver lib.exe.

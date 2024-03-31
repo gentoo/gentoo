@@ -448,7 +448,7 @@ multilib_src_configure() {
 		-DENABLE_DOWNLOAD=yes
 		-DOPENCV_ENABLE_NONFREE="$(usex non-free)"
 		-DWITH_QUIRC="$(usex quirc)"
-		-DWITH_FLATBUFFERS="$(usex contribdnn)"
+		-DWITH_FLATBUFFERS="$(multilib_native_usex contribdnn)"
 		-DWITH_1394="$(usex ieee1394)"
 		# -DWITH_AVFOUNDATION="no" # IOS
 		-DWITH_VTK="$(multilib_native_usex vtk)"
@@ -579,7 +579,7 @@ multilib_src_configure() {
 	# ===================================================
 	# things we want to be hard enabled not worth useflag
 	# ===================================================
-		# -DOPENCV_DOC_INSTALL_PATH="share/doc/${P}"
+		-DOPENCV_DOC_INSTALL_PATH="share/doc/${P}"
 		# NOTE do this so testprograms do not fail TODO adjust path in code
 		-DOPENCV_TEST_DATA_INSTALL_PATH="share/${PN}$(ver_cut 1)/testdata"
 		-DOPENCV_TEST_INSTALL_PATH="libexec/${PN}/bin/test"

@@ -106,6 +106,13 @@ RDEPEND="${COMMON_DEPEND}
 	server? ( !net-misc/freerdp:2[server] )
 "
 
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/freerdp-3.4.0-incompatible-pointer.patch"
+	)
+	cmake_src_prepare
+}
+
 option() {
 	usex "$1" ON OFF
 }

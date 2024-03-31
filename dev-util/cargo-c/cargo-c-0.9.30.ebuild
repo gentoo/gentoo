@@ -352,7 +352,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="dev-libs/libgit2:=
 	dev-libs/openssl:=
@@ -370,6 +370,10 @@ src_unpack() {
 	if [[ -n ${MY_P} ]] ; then
 		tar -xf "${DISTDIR}"/"${MY_P}.crate" -C "${WORKDIR}" || die
 	fi
+
+	# libgit2-sys unnecessarily(?) requests <libgit2-1.8.0, bump to 2 for now
+	sed -e '/range_version/s/1\.8\.0/2/' \
+		-i "${ECARGO_VENDOR}"/libgit2-sys-0.16.2+1.7.2/build.rs || die
 }
 
 src_configure() {

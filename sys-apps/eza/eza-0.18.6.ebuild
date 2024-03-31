@@ -223,6 +223,12 @@ src_prepare() {
 	rm tests/cmd/absolute{,_recurse}_unix.toml
 
 	sed -i -e 's/^strip = true$/strip = false/g' Cargo.toml || die "failed to disable stripping"
+
+	if use git; then
+		# libgit2-sys unnecessarily(?) requests <libgit2-1.8.0, bump to 2 for now
+		sed -e '/range_version/s/1\.8\.0/2/' \
+			-i "${ECARGO_VENDOR}"/libgit2-sys-0.16.2+1.7.2/build.rs || die
+	fi
 }
 
 src_configure() {

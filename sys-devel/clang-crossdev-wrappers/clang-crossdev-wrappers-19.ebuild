@@ -17,6 +17,7 @@ PROPERTIES="live"
 
 RDEPEND="
 	sys-devel/clang:${SLOT}
+	sys-devel/lld:${SLOT}
 "
 
 src_install() {

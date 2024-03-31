@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 ROCM_VERSION=5.7
 inherit python-single-r1 cmake cuda flag-o-matic prefix rocm
 
@@ -220,6 +220,7 @@ src_configure() {
 	if use cuda; then
 		addpredict "/dev/nvidiactl" # bug 867706
 		addpredict "/dev/char"
+		addpredict "/proc/self/task" # bug 926116
 
 		mycmakeargs+=(
 			-DUSE_CUDNN=ON

@@ -11,9 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ago/distfiles/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
-
-IUSE=""
+KEYWORDS="amd64"
 
 src_compile() {
 	ego build -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.Version=${PV}-gentoo" ./cmd/${PN}
