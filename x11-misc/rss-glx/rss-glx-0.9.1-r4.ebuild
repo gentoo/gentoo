@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-strict-aliasing.patch
 	"${FILESDIR}"/${P}-variable-mismatch.patch
 	"${FILESDIR}"/${P}-macro-if-scope.patch
+	"${FILESDIR}"/${P}-param-bound-mismatch.patch
 )
 
 src_prepare() {
