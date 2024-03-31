@@ -1,0 +1,36 @@
+Fix strict aliasing violation in FMotion.cpp
+
+Bug: https://bugs.gentoo.org/928251
+
+--- a/src/FMotion.cpp
++++ b/src/FMotion.cpp
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <cmath>
+ 
+ // In case cmath doesn't pull in all the usual suspects from math.h
+@@ -54,15 +55,19 @@
+ #define FLOATTOINTCONST2 (((65536.0*16)))
+ inline int f2int2 (float f)
+ {
++	int i;
+ 	f += FLOATTOINTCONST2;
+-	return ((*((int *)(void *)&f)) & 0x007fffff) - 0x00400000;
++	memcpy(&i, &f, sizeof(i));
++	return (i & 0x007fffff) - 0x00400000;
+ }
+ 
+ #define FLOATTOINTCONST (((1.5*65536*256)))
+ inline int f2int (float f)
+ {
++	int i;
+ 	f += FLOATTOINTCONST;
+-	return ((*((int *)(void *)&f)) & 0x007fffff) - 0x00400000;
++	memcpy(&i, &f, sizeof(i));
++	return (i & 0x007fffff) - 0x00400000;
+ }
+ 
+ #define Float2Int(f) (f2int(f))
