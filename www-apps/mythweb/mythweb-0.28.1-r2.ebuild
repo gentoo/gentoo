@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit webapp
 
@@ -12,10 +12,10 @@ MY_P="mythweb-${MY_PV}"
 DESCRIPTION="PHP scripts intended to manage MythTV from a web browser"
 HOMEPAGE="https://www.mythtv.org"
 SRC_URI="https://github.com/MythTV/mythweb/archive/v${MY_PV}.tar.gz -> mythweb-${MY_PV}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-lang/php:*[json(+),mysql,session,posix]
@@ -29,8 +29,6 @@ DEPEND="${RDEPEND}"
 
 need_httpd_cgi
 
-S="${WORKDIR}/${MY_P}"
-
 src_configure() {
 	:
 }
@@ -43,7 +41,7 @@ src_install() {
 	webapp_src_preinst
 
 	# Install docs
-	cd "${S}"
+	cd "${S}" || die
 	dodoc README INSTALL
 
 	# Install htdocs files
