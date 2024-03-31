@@ -1,0 +1,41 @@
+Fixes missing definitions.
+
+FAILED: lib/CL/devices/almaif/CMakeFiles/pocl-devices-almaif.dir/MMAPDevice.cc.o
+/usr/bin/x86_64-pc-linux-gnu-g++ -DCL_HPP_TARGET_OPENCL_VERSION=300 -DCL_TARGET_OPENCL_VERSION=300 -DCL_USE_DEPRECATED_OPENCL_1_0_APIS -DCL_USE_DEPRECATED_OPENCL_1_1_APIS -DCL_USE_DEPRECATED_OPENCL_1_2_APIS -DCL_USE_DEPRECATED_OPENCL_2_0_APIS -DCL_USE_DEPRECATED_OPENCL_2_1_APIS -DCL_USE_DEPRECATED_OPENCL_2_2_APIS -Dpocl_devices_almaif_EXPORTS -I/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0_build -I/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/include -I/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/include/hpp -I/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices -I/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/.  -O2 -pipe -march=x86-64 -mtune=generic -std=c++11 -fPIC -Wno-ignored-attributes -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT lib/CL/devices/almaif/CMakeFiles/pocl-devices-almaif.dir/MMAPDevice.cc.o -MF lib/CL/devices/almaif/CMakeFiles/pocl-devices-almaif.dir/MMAPDevice.cc.o.d -o lib/CL/devices/almaif/CMakeFiles/pocl-devices-almaif.dir/MMAPDevice.cc.o -c /var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/MMAPDevice.cc
+In file included from /var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/MMAPDevice.hh:28,
+                 from /var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/MMAPDevice.cc:24:
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:45:36: error: ‘cl_kernel’ has not been declared
+   45 |                                    cl_kernel Kernel, _cl_command_node *Command);
+      |                                    ^~~~~~~~~
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:45:54: error: ‘_cl_command_node’ has not been declared
+   45 |                                    cl_kernel Kernel, _cl_command_node *Command);
+      |                                                      ^~~~~~~~~~~~~~~~
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:67:34: error: ‘pocl_mem_identifier’ has not been declared
+   67 |   virtual void writeDataToDevice(pocl_mem_identifier *DstMemId,
+      |                                  ^~~~~~~~~~~~~~~~~~~
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:71:35: error: ‘pocl_mem_identifier’ has not been declared
+   71 |                                   pocl_mem_identifier *SrcMemId, size_t Size,
+      |                                   ^~~~~~~~~~~~~~~~~~~
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:79:11: error: ‘cl_int’ does not name a type; did you mean ‘u_int’?
+   79 |   virtual cl_int allocateBuffer(pocl_mem_identifier *P, size_t Size);
+      |           ^~~~~~
+      |           u_int
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:81:27: error: ‘pocl_mem_identifier’ has not been declared
+   81 |   virtual void freeBuffer(pocl_mem_identifier *P);
+      |                           ^~~~~~~~~~~~~~~~~~~
+/var/tmp/portage/dev-libs/pocl-5.0/work/pocl-5.0/lib/CL/devices/almaif/AlmaIFDevice.hh:83:38: error: ‘pocl_mem_identifier’ has not been declared
+   83 |   virtual size_t pointerDeviceOffset(pocl_mem_identifier *P);
+      |                                      ^~~~~~~~~~~~~~~~~~~
+
+diff -Nuar a/lib/CL/devices/almaif/AlmaIFDevice.hh b/lib/CL/devices/almaif/AlmaIFDevice.hh
+--- a/lib/CL/devices/almaif/AlmaIFDevice.hh	2023-12-19 13:24:31.000000000 +0000
++++ b/lib/CL/devices/almaif/AlmaIFDevice.hh	2024-01-13 03:42:12.045091773 +0000
+@@ -34,6 +34,8 @@
+ #include <stdlib.h>
+ #include <string>
+ 
++#include "pocl_cl.h"
++
+ struct almaif_kernel_data_s;
+ 
+ class AlmaIFDevice {
