@@ -215,6 +215,12 @@ BDEPEND="
 	virtual/perl-JSON-PP
 "
 [[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
+# gst-plugins-{base,good} splits all require glib-utils due to gnome.mkenums_simple meson calls in gst-libs
+# The alternative would be to patch out the subdir calls, but some packages need it themselves too anyways, thus
+# something in a full upgrade path will require it anyways at build time, so not worth the risk.
+if [[ "${GST_ORG_MODULE}" == "gst-plugins-base" ]] || [[ "${GST_ORG_MODULE}" == "gst-plugins-bad" ]]; then
+	BDEPEND="${BDEPEND} dev-util/glib-utils"
+fi
 
 if [[ "${PN}" != "gstreamer" ]]; then
 	RDEPEND="
