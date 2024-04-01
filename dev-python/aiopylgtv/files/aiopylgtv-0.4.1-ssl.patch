@@ -1,0 +1,124 @@
+From 87e1447d1fc6e6db9a9e6bc9c8b5241b149cf6dd Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 14 Oct 2023 18:01:52 +0100
+Subject: [PATCH] Use WSS (SSL) connection as firmware update has removed
+ non-SSL support
+
+Closes: https://github.com/bendavid/aiopylgtv/issues/65
+---
+ aiopylgtv/lg-ca.pem       | 34 ++++++++++++++++++++++++++++++++++
+ aiopylgtv/webos_client.py | 17 +++++++++++++++--
+ setup.py                  |  1 +
+ 3 files changed, 50 insertions(+), 2 deletions(-)
+ create mode 100644 aiopylgtv/lg-ca.pem
+
+diff --git a/aiopylgtv/lg-ca.pem b/aiopylgtv/lg-ca.pem
+new file mode 100644
+index 0000000..05df860
+--- /dev/null
++++ b/aiopylgtv/lg-ca.pem
+@@ -0,0 +1,34 @@
++-----BEGIN CERTIFICATE-----
++MIIF+TCCA+GgAwIBAgICEAcwDQYJKoZIhvcNAQELBQAwgacxCzAJBgNVBAYTAktS
++MQ4wDAYDVQQIDAVTZW91bDEOMAwGA1UEBwwFU2VvdWwxHDAaBgNVBAoME0xHIEVs
++ZWN0cm9uaWNzIEluYy4xFjAUBgNVBAsMDUhFIExhYm9yYXRvcnkxHDAaBgNVBAMM
++E0xHIHdlYk9TIFRWIFJvb3QgQ0ExJDAiBgkqhkiG9w0BCQEWFXNlY3VyaXR5LXBh
++cnRAbGdlLmNvbTAeFw0xODAzMTIwMTMwMjhaFw0zNDA4MTUwMTMwMjhaMG8xCzAJ
++BgNVBAYTAktSMQ4wDAYDVQQIDAVTZW91bDEcMBoGA1UECgwTTEcgRWxlY3Ryb25p
++Y3MgSW5jLjEQMA4GA1UECwwHSEUgTGFiLjEgMB4GA1UEAwwXTEdFIFNTRyBJbnRl
++cm1lZGlhdGUgQ0EwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDl5xeN
+++UkKyfHifIGtO4igsl/UxXosQ0qeAMadDSdI8XLHAsfEnlCDVWwYSFD76A7+GO6m
++ttN5MTlsdVJPQ/lyy032cPkz38R9MHS6sOxqOCXurkX0wN/7fTODKVkS/Q3dCqYz
++eluWaMrZQBAW6vGQVgoilBxf5Z9jpV9Dj6IxXThomUlyM8HVCWmg38eht8ItiuSe
++1Bzpr8Bqv35wLEnPPK1QhKu9oxU10GS6Yn1GNQ6xMvpayf1jPuRK443tdR+IA2mD
++y/N8h623yvIbBxMt/rLmvzjWevLC8wyTlrEw5ei/GOfMlJq8fK3TK1S9CMqqe6uS
++O9YHJo5/ibg+aFKkJEDO4RNzK2W0A7F+a2eJIk8lz49rvZNC+X/waRUfso8YrAcX
++vQo4EbYDWTlFDNa15rYiZEE3lzqROto440Wb6v5ZavyvkRyQbUNbodUh42Wvo616
++kD6GG5/Le1QUpO6I66Hjs0MyJQApFuOR2OZhS8FjHPRONSNZJl1rAP7xtZ7fDika
++d0oqU9hHKOKQSb8e8QTLUyQGCW17FB8pgC8Du7ZZquRU/0RhK002yEdlWY+yDWs1
++8aLqKl64P5GiipYufRTWVS3Ev8e4W/ycdI3n4gOWNAUuHUkO+LRXxm1fimPV1rig
++Qrth9KtRc1g9FsDr+s2ZfxPft3LTozt1HRSBeQIDAQABo2YwZDAdBgNVHQ4EFgQU
++LItg7vqjBpi4I4JocmlXiCstl90wHwYDVR0jBBgwFoAUYJCBYPvCCUxyONKaiLR4
++beSYs/gwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAYYwDQYJKoZI
++hvcNAQELBQADggIBAEoyN23/Z+63ejYpBpJ3Xzowf3CEU7vN1J7QrxLJN+hJh2Go
++f/NO6p9v0REoNeQjVKXbd8ycNpOl5SY620XFip6F+gLGxlTRy2LX7BUpYwCHoAuD
++zSdRi7bhqmdwSZL7VGwm4RIGpeUWNqx2YH8xgJ7Zb4v0LCcCDsqB1JdobxB1ULbB
++ZQ/8BsuEjiWnWg0nTDz7VZmpP1fOs4vLYPzFVzq07Q9avxYh642JLshhVZ9/VwWL
++q5uGXNrxrvRNr4JR5emax9HV/o+LK9FdUP5XJWEXeXSRSvCYh7djtkQqzcmLdT4x
++zU6chJMuCJAG6qzv8r7EA0IrbWk5oBhxNet/cCExIUH/Rqivcfa7qPTsTYVSoM5J
++dw2ociET6vc2UmYzBiHV22Ez02aydOSmL4VkdR+ngxGTaCkEDBpHPLDaZ6Yzp/xB
++gCGkvL417B3rTuBvD2YYwQ2pSS9O5N0FOLFjX3L3d9ixlXwqWi07w79YONjLqjYm
++6OrYp5xtinZrxEEcdu/jt0pSOkYVG+NEg+kcLiRpxy4q7A3vVllREbLZL6R/5G3D
++ulTRmICailJN3PF+5YavaQI2H6yRdiw2OMzaLgHw3zU9NGN43mMI1q1Yl4PYA2sO
++qHkaceoSAL7CaC2ZvI51K88ekUfqC34L20hiZS8kLtE3BLS/olqMsyuAnBc+
++-----END CERTIFICATE-----
+diff --git a/aiopylgtv/webos_client.py b/aiopylgtv/webos_client.py
+index 6649dc5..8d20a22 100644
+--- a/aiopylgtv/webos_client.py
++++ b/aiopylgtv/webos_client.py
+@@ -5,7 +5,9 @@ import functools
+ import json
+ import logging
+ import os
++import ssl
+ from datetime import timedelta
++from importlib.resources import files
+ 
+ import numpy as np
+ import websockets
+@@ -66,7 +68,7 @@ class WebOsClient:
+     ):
+         """Initialize the client."""
+         self.ip = ip
+-        self.port = 3000
++        self.port = 3001
+         self.key_file_path = key_file_path
+         self.client_key = client_key
+         self.web_socket = None
+@@ -188,12 +190,22 @@ class WebOsClient:
+         ws = None
+         inputws = None
+         try:
++            cadata = files("aiopylgtv").joinpath("lg-ca.pem").read_text(encoding="ascii")
++
++            ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
++            ssl_context.minimum_version = ssl.TLSVersion.TLSv1_2
++            ssl_context.verify_mode = ssl.CERT_REQUIRED
++            ssl_context.verify_flags |= ssl.VERIFY_X509_PARTIAL_CHAIN
++            ssl_context.load_verify_locations(cadata=cadata)
++            ssl_context.check_hostname = False
++
+             ws = await asyncio.wait_for(
+                 websockets.connect(
+-                    f"ws://{self.ip}:{self.port}",
++                    f"wss://{self.ip}:{self.port}",
+                     ping_interval=None,
+                     close_timeout=self.timeout_connect,
+                     max_size=None,
++                    ssl=ssl_context,
+                 ),
+                 timeout=self.timeout_connect,
+             )
+@@ -242,6 +254,7 @@ class WebOsClient:
+                     inputsockpath,
+                     ping_interval=None,
+                     close_timeout=self.timeout_connect,
++                    ssl=ssl_context,
+                 ),
+                 timeout=self.timeout_connect,
+             )
+diff --git a/setup.py b/setup.py
+index 306a7d4..a7f67ef 100644
+--- a/setup.py
++++ b/setup.py
+@@ -6,6 +6,7 @@ with open("README.md") as f:
+ setup(
+     name="aiopylgtv",
+     packages=["aiopylgtv"],
++    package_data={"aiopylgtv": ["*.pem"]},
+     install_requires=["websockets>=8.1", "numpy>=1.17.0", "sqlitedict"],
+     python_requires=">=3.7",
+     zip_safe=True,
+-- 
+2.41.0
+
