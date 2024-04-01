@@ -1,0 +1,111 @@
+Original minimal fix for bug https://bugs.gentoo.org/927734
+with it lambdaroo starts compiling
+diff -ur MOO-1.8.1.orig/configure.in MOO-1.8.1/configure.in
+--- a/configure.in	2024-04-01 07:02:38.948009581 +0000
++++ b/configure.in	2024-04-01 07:04:19.706417934 +0000
+@@ -260,7 +260,8 @@
+ SAVECC="$CC"
+ CC="$CC $opt"
+ AC_TEST_PROGRAM([
+-int main(int argc, char *argv) { void *ptr; exit(0); }
++#include <stdlib.h>
++int main(int argc, char **argv) { void *ptr; exit(0); }
+ ],
+ [have_ansi=1
+ break],
+diff -ur MOO-1.8.1.orig/config.h.in MOO-1.8.1/config.h.in
+--- a/config.h.in	2024-04-01 07:11:20.263972630 +0000
++++ b/config.h.in	2024-04-01 07:13:06.909341833 +0000
+@@ -253,6 +253,7 @@
+  */
+ 
+ #include <limits.h>
++#include <string.h>
+ 
+ #if INT_MAX == 2147483647
+    typedef int		int32;
+fix for old name of configure.in
+--- a/Makefile.in	2024-05-09 05:39:45.019672388 -0000
++++ b/Makefile.in	2024-05-09 05:40:41.162384171 -0000
+@@ -69,7 +69,7 @@
+ 
+ DISTFILES = $(SRCS) Makefile.in restart restart.sh \
+ 	Minimal.db README.Minimal \
+-	ChangeLog.txt README configure.in configure config.h.in \
++	ChangeLog.txt README configure.ac configure config.h.in \
+ 	MOOCodeSequences.txt AddingNewMOOTypes.txt pgperf aclocal.m4
+ 
+ COBJS = $(CSRCS:.c=.o)
+@@ -94,7 +94,7 @@
+ restart:
+ 	touch restart
+ 
+-configure: configure.in
++configure: configure.ac
+ 	# autoconf
+ 	@echo "Not running autoconf; you must do this by hand."
+ 	touch configure
+QA fixes from Sam, modified for configure.in, as they are applied
+before renaming
+https://github.com/gentoo/gentoo/pull/36033#issuecomment-2101077890
+diff --git a/configure.in b/configure.in
+index 685bdfe..24cfe64 100644
+--- a/configure.in
++++ b/configure.in
+@@ -381,8 +381,10 @@ dnl ***************************************************************************
+ echo "checking whether or not fstat() can tell how much data is in a FIFO"
+ AC_TEST_PROGRAM([#include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
+ #include <fcntl.h>
+-main()
++#include <unistd.h>
++int main()
+ {
+ #ifdef NeXT
+ /* The NeXT claims to have FIFOs, but using them panics the kernel... */
+@@ -407,13 +409,15 @@ AC_TEST_PROGRAM([#include <sys/types.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #ifndef FD_ZERO
+ #define	NFDBITS		(sizeof(fd_set)*8)
+ #define	FD_ZERO(p)	bzero((char *)(p), sizeof(*(p)))
+ #define	FD_SET(n, p)	((p)->fds_bits[0] |= (1L<<((n)%NFDBITS)))
+ #define	FD_ISSET(n, p)	((p)->fds_bits[0] &  (1L<<((n)%NFDBITS)))
+ #endif /* FD_ZERO */
+-main()
++int main()
+ {
+ #ifdef NeXT
+ /* The NeXT claims to have FIFOs, but using them panics the kernel... */
+@@ -443,7 +447,9 @@ AC_TEST_PROGRAM([#include <sys/types.h>
+ #include <poll.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+-main()
++#include <stdlib.h>
++#include <unistd.h>
++int main()
+ {
+   int	rfd, wfd, result; struct pollfd fds[1];
+   unlink("/tmp/conftest-fifo");
+@@ -461,11 +467,14 @@ main()
+ dnl ***************************************************************************
+ echo checking whether POSIX-style non-blocking I/O works
+ AC_TEST_PROGRAM([#include <sys/types.h>
++#include <sys/stat.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <signal.h>
+-handler(int sig) { }
+-main ()
++#include <stdlib.h>
++#include <unistd.h>
++void handler(int sig) { return; }
++int main ()
+ { /* Testing a POSIX feature, so assume FIFOs */
+ #ifdef NeXT
+ /* The NeXT claims to have FIFOs, but using them panics the kernel... */
