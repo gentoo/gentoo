@@ -5,7 +5,7 @@ EAPI=8
 
 MATE_LA_PUNT="yes"
 
-inherit mate
+inherit flag-o-matic mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
@@ -69,6 +69,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/926751
+	# https://github.com/mate-desktop/caja/issues/1774
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	mate_src_configure \
 		--disable-update-mimedb \
 		$(use_enable introspection) \
