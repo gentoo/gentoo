@@ -1,4 +1,4 @@
-# Copyright 2014-2023 Gentoo Authors
+# Copyright 2014-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -99,6 +99,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.25b_alpha-fix-setuptools.patch
 	# https://code.wildfiregames.com/D4997
 	"${FILESDIR}"/${P}-add-missing-cstdint-include.patch
+	# https://code.wildfiregames.com/D5219
+	"${FILESDIR}"/${P}-libxml2-2.12.patch
 )
 
 pkg_setup() {
