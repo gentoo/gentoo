@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_COMMIT=3fc4ae7a8af35d380654e573d895216fd5ba407e
 
@@ -30,6 +30,12 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=( "${FILESDIR}"/${PN}-1.5.2-fix-installation-directories.patch )
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/926823
+	# https://github.com/ampas/CTL/issues/146
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DCTL_BUILD_TESTS=$(usex test)
