@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop xdg
+inherit desktop flag-o-matic xdg
 
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
@@ -52,7 +52,9 @@ src_prepare() {
 }
 
 src_compile() {
+	append-cflags -Wl,-z,lazy
 	emake -C "WDL-${WDL_COMMIT}/WDL/swell" \
+		PRELOAD_GDK=1 \
 		ALLOW_WARNINGS=1
 }
 
