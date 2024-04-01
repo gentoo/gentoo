@@ -6,14 +6,14 @@ inherit go-module systemd
 
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
 HOMEPAGE="https://www.consul.io"
-GIT_COMMIT="4fc94919996f7b7e5d16145f8d89cc5ee644b094"
+GIT_COMMIT="98cb473cc11f2de0ccb61106381b0c7e92819c58"
 
 SRC_URI="https://github.com/hashicorp/consul/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 LICENSE="BUSL-1.1 MPL-2.0"
 LICENSE+=" Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT"
-RESTRICT="test"
 SLOT="0"
+RESTRICT="test"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 BDEPEND="dev-go/gox"
@@ -23,11 +23,9 @@ COMMON_DEPEND="
 	DEPEND="${COMMON_DEPEND}"
 	RDEPEND="${COMMON_DEPEND}"
 
-S=${WORKDIR}/${P}
-
 src_prepare() {
 	default
-	sed -e 's|^GIT_DATE=.*|GIT_DATE=2024-03-26T21:43:41Z|' -i GNUmakefile || die
+	sed -e 's|^GIT_DATE=.*|GIT_DATE=2024-03-26T21:59:08Z|' -i Makefile || die
 }
 
 src_compile() {
