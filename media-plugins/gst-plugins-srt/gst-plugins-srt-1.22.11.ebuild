@@ -11,3 +11,4 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND=">=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+BDEPEND="dev-util/glib-utils"
