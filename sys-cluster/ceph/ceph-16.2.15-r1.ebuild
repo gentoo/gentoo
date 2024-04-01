@@ -406,9 +406,6 @@ src_install() {
 	python_setup
 	cmake_src_install
 
-	# the cmake_src_install here installs more egg-info files
-	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
-
 	find "${ED}" -name '*.la' -type f -delete || die
 
 	exeinto /usr/$(get_libdir)/ceph
@@ -465,8 +462,6 @@ python_install() {
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
 	DESTDIR="${ED}" cmake_build VERBOSE=1 install
 	popd >/dev/null || die
-
-	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
 
 	python_scriptinto /usr/sbin
 	python_doscript src/cephadm/cephadm

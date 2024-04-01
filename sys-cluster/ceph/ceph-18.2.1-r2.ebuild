@@ -418,8 +418,6 @@ src_install() {
 	python_setup
 	cmake_src_install
 
-	# the cmake_src_install here installs more egg-info files
-	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
 	python_optimize
 
 	find "${ED}" -name '*.la' -type f -delete || die
@@ -477,8 +475,6 @@ python_install() {
 	local CMAKE_USE_DIR="${S}"
 	DESTDIR="${ED}" cmake_build src/pybind/install
 	DESTDIR="${ED}" cmake_build src/cephadm/install
-
-	rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die
 
 	python_optimize
 }
