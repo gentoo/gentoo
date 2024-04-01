@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="Network performance measurement tool"
-HOMEPAGE="http://www.nuttcp.net/"
-SRC_URI="http://nuttcp.net/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://www.nuttcp.net/"
+SRC_URI="https://nuttcp.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipv6 xinetd"
+IUSE="xinetd"
 
 RDEPEND="xinetd? ( sys-apps/xinetd )"
 
@@ -36,13 +36,13 @@ src_prepare() {
 }
 
 src_compile() {
-	emake "$(usex ipv6 APPEXT='' NOIPV6=-DNO_IPV6)" CC="$(tc-getCC)"
+	emake APPEXT='' CC="$(tc-getCC)"
 }
 
 src_install() {
 	einstalldocs
 	doman "${PN}".8
-	newbin "${P}$(usex ipv6 '' -noipv6)" "${PN}"
+	newbin "${P}" "${PN}"
 
 	newinitd "${FILESDIR}"/"${PN}".initd "${PN}"
 	newconfd "${FILESDIR}"/"${PN}".confd "${PN}"
