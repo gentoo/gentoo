@@ -16,6 +16,7 @@ IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse2 doc fortran mpi o
 
 RDEPEND="mpi? ( virtual/mpi )"
 DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.1.3-autotools.patch )
 
