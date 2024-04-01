@@ -18,10 +18,9 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
+IUSE="audit bash debug pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
 
 COMMON_DEPEND="
-	ncurses? ( sys-libs/ncurses:0= )
 	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
 	sys-process/psmisc
@@ -30,8 +29,7 @@ COMMON_DEPEND="
 		>=sys-libs/libselinux-2.6
 	)"
 DEPEND="${COMMON_DEPEND}
-	virtual/os-headers
-	ncurses? ( virtual/pkgconfig )"
+	virtual/os-headers"
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	sysv-utils? (
@@ -62,7 +60,6 @@ src_configure() {
 		-Drootprefix="${EPREFIX}"
 		-Dshell=$(usex bash /bin/bash /bin/sh)
 		$(meson_use sysv-utils sysvinit)
-		-Dtermcap=$(usev ncurses)
 	)
 	# export DEBUG=$(usev debug)
 	meson_src_configure
