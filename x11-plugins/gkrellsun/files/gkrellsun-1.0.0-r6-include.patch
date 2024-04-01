@@ -1,0 +1,16 @@
+includes exist for a reason. No reason to use badly written extern declarations
+diff -ru gkrellsun-1.0.0.orig/src20/gkrellsun.c gkrellsun-1.0.0/src20/gkrellsun.c
+--- a/src20/gkrellsun.c	2024-04-01 09:51:43.815461580 +0000
++++ b/src20/gkrellsun.c	2024-04-01 09:53:30.245006285 +0000
+@@ -15,10 +15,9 @@
+ #endif
+ 
+ #include <math.h>
++#include <glib.h>
+ 
+ /* splint */
+-extern gchar* g_string_free (/*@only@*/ GString *, gboolean);
+-extern void pango_font_description_free (/*@owned@*/PangoFontDescription *);
+ 
+ #define PLUGIN_HEIGHT 54
+ #define SUN_WIDTH 54
