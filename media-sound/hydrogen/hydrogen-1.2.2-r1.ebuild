@@ -61,6 +61,7 @@ DOCS=( AUTHORS ChangeLog DEVELOPERS README.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.1-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-1.2.2-cflags.patch"
+	"${FILESDIR}/${P}-no-pch-include.patch"
 )
 
 src_prepare() {
