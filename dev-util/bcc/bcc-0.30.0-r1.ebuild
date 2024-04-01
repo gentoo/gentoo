@@ -114,8 +114,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	remove_egg_info() { rm -rf "${D}/$(python_get_sitedir)"/*.egg-info || die; }
-	python_foreach_impl remove_egg_info
 
 	python_replicate_script $(grep -Flr '#!/usr/bin/python' "${ED}/usr/share/bcc/tools")
 	python_foreach_impl python_optimize
