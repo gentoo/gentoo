@@ -1,10 +1,8 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..11} )
-
-inherit gstreamer-meson python-any-r1
+EAPI=8
+inherit gstreamer-meson
 
 MY_PN="gstreamer-vaapi"
 DESCRIPTION="Hardware accelerated video decoding through VA-API plugin for GStreamer"
@@ -14,7 +12,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="1.0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="+drm +egl gles2 +opengl wayland +X" # Keep default enabled IUSE in sync with gst-plugins-base and libva
+IUSE="+drm +egl +gles2 opengl wayland +X" # Keep default enabled IUSE in sync with gst-plugins-base and libva
 
 # gst-vaapi configure is based around GL platform mainly, unlike gst-plugins-bad that goes by GL API mainly; for less surprises,
 # we design gst-vaapi ebuild in terms of GL API as main choice as well, meaning that USE opengl and/or gles2 is required to
@@ -29,6 +27,7 @@ REQUIRED_USE="
 	|| ( drm gles2 opengl wayland X )
 	gles2? ( egl )
 	opengl? ( || ( egl X ) )
+	wayland? ( drm )
 "
 
 # glx doesn't require libva-glx (libva[opengl]) afaics, only by tests/test-display.c
@@ -64,7 +63,6 @@ RDEPEND="
 		x11-libs/libXrender[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
