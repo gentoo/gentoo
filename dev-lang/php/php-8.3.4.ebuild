@@ -36,14 +36,13 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
 	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
-	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
+	odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl
 	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode
 	valgrind webp +xml xmlreader xmlwriter xpm xslt zip zlib"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
-# The Oracle instant client provides its own incompatible ldap library.
 REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed phpdbg )
 	avif? ( gd zlib )
@@ -61,7 +60,6 @@ REQUIRED_USE="
 	xmlwriter? ( xml )
 	xslt? ( xml )
 	ldap-sasl? ( ldap )
-	oci8-instant-client? ( !ldap )
 	qdbm? ( !gdbm )
 	session-mm? ( session !threads )
 	mysql? ( || ( mysqli pdo ) )
@@ -104,7 +102,6 @@ COMMON_DEPEND="
 	lmdb? ( dev-db/lmdb:= )
 	mssql? ( dev-db/freetds[mssql] )
 	nls? ( sys-devel/gettext )
-	oci8-instant-client? ( dev-db/oracle-instantclient[sdk] )
 	odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) )
 	postgres? ( dev-db/postgresql:* )
 	qdbm? ( dev-db/qdbm )
@@ -260,14 +257,6 @@ src_prepare() {
 	   sapi/cli/tests/bug74600.phpt \
 	   sapi/cli/tests/bug78323.phpt \
 	   || die
-
-	# Most Oracle tests are borked,
-	#
-	#  * https://github.com/php/php-src/issues/11804
-	#  * https://github.com/php/php-src/pull/11820
-	#  * https://github.com/php/php-src/issues/11819
-	#
-	rm ext/oci8/tests/*.phpt || die
 
 	# https://github.com/php/php-src/issues/12801
 	rm ext/pcre/tests/gh11374.phpt || die
@@ -445,9 +434,6 @@ src_configure() {
 		)
 	fi
 
-	# Oracle support
-	our_conf+=( $(use_with oci8-instant-client oci8) )
-
 	# PDO support
 	if use pdo ; then
 		our_conf+=(
@@ -456,7 +442,6 @@ src_configure() {
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite)
 			$(use_with firebird pdo-firebird "${EPREFIX}/usr")
-			$(use_with oci8-instant-client pdo-oci)
 		)
 	fi
 
@@ -568,17 +553,6 @@ src_compile() {
 	# snmp seems to run during src_compile, too (bug #324739)
 	addpredict /usr/share/snmp/mibs/.index #nowarn
 	addpredict /var/lib/net-snmp/mib_indexes #nowarn
-
-	if use oci8-instant-client && use kerberos && use imap && use phar; then
-		# A conspiracy takes place when the first three of these flags
-		# are set together, causing the newly-built "php" to open
-		# /dev/urandom with mode rw when it starts. That's not actually
-		# a problem... unless you also have USE=phar, which runs that
-		# "php" to build some phar thingy in src_compile(). Later in
-		# src_test(), portage (at least) sets "addpredict /" so the
-		# problem does not repeat.
-		addpredict /dev/urandom #nowarn
-	fi
 
 	local sapi
 	for sapi in ${SAPIS} ; do
