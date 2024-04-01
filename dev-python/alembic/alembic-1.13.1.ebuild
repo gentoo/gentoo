@@ -34,6 +34,11 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/sqlalchemy/alembic/commit/6bdb9043868d4bd04ebe3fe8a4991735d5f87ed3
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# setup.cfg contains -p no:warnings in addopts which triggers
