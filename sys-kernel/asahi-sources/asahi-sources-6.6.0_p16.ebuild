@@ -25,15 +25,17 @@ fi
 DESCRIPTION="Asahi Linux kernel sources"
 HOMEPAGE="https://asahilinux.org"
 KERNEL_URI="https://github.com/AsahiLinux/linux/archive/refs/tags/${MY_P}.tar.gz -> ${PN}-${PV}.tar.gz"
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
+	https://raw.githubusercontent.com/chadmed/asahi-overlay/main/sys-kernel/asahi-kernel/files/asahi-kernel-6.6.0_p16-rust-alloc-fix.patch -> ${P}-rust-alloc-fix.patch
+"
 
 KEYWORDS="~arm64"
 IUSE="rust"
 
 DEPEND="
 	${DEPEND}
-	rust? ( || ( dev-lang/rust[rust-src]
-				 dev-lang/rust-bin[rust-src]
+	rust? ( || ( dev-lang/rust:stable/1.75[rust-src,rustfmt]
+				 ~dev-lang/rust-bin-1.75.0[rust-src,rustfmt]
 			)
 			dev-util/bindgen
 		)
@@ -42,6 +44,7 @@ DEPEND="
 PATCHES=(
 		"${FILESDIR}/${P}-enable-speakers-stage1.patch"
 		"${FILESDIR}/${P}-enable-speakers-stage2.patch"
+		"${DISTDIR}/${P}-rust-alloc-fix.patch"
 )
 
 src_unpack() {
