@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop flag-o-matic xdg
+inherit desktop xdg
 
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
@@ -49,10 +49,10 @@ src_prepare() {
 	default
 	cd "WDL-${WDL_COMMIT}" || die
 	eapply "${FILESDIR}"/libSwell-makefile-cflags.patch
+	eapply "${FILESDIR}"/libSwell-makefile-lazy-binding.patch
 }
 
 src_compile() {
-	append-cflags -Wl,-z,lazy
 	emake -C "WDL-${WDL_COMMIT}/WDL/swell" \
 		PRELOAD_GDK=1 \
 		ALLOW_WARNINGS=1
