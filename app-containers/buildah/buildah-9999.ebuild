@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
 
 PATCHES=(
-	"${FILESDIR}"/dont-call-as-directly-upstream-pr-5436.patch
+	"${FILESDIR}"/softcode-strip-upstream-pr-5446.patch
 )
 
 pkg_pretend() {
@@ -117,7 +117,7 @@ src_compile() {
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
 	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT=""
 
-	tc-export AS LD
+	tc-export AS LD STRIP
 	export GOMD2MAN="$(command -v go-md2man)"
 	default
 }
