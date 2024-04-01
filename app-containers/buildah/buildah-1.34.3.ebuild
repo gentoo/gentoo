@@ -60,15 +60,16 @@ src_prepare() {
 	cat <<'EOF' > "${T}/dont-call-as-directly-upstream-pr-5436.patch"
 --- a/Makefile
 +++ b/Makefile
-@@ -10,6 +10,7 @@
+@@ -14,6 +14,8 @@
  BASHINSTALLDIR = $(PREFIX)/share/bash-completion/completions
  BUILDFLAGS := -tags "$(BUILDTAGS)"
  BUILDAH := buildah
 +AS ?= as
++STRIP ?= strip
 
  GO := go
  GO_LDFLAGS := $(shell if $(GO) version|grep -q gccgo; then echo "-gccgoflags"; else echo "-ldflags"; fi)
-@@ -77,7 +77,7 @@
+@@ -76,14 +78,14 @@
  bin/buildah: $(SOURCES) cmd/buildah/*.go internal/mkcw/embed/entrypoint_amd64.gz
 	$(GO_BUILD) $(BUILDAH_LDFLAGS) $(GO_GCFLAGS) "$(GOGCFLAGS)" -o $@ $(BUILDFLAGS) ./cmd/buildah
 
@@ -76,6 +77,13 @@ src_prepare() {
 +ifneq ($(shell $(AS) --version | grep x86_64),)
  internal/mkcw/embed/entrypoint_amd64.gz: internal/mkcw/embed/entrypoint_amd64
 	gzip -k9nf $^
+
+ internal/mkcw/embed/entrypoint_amd64: internal/mkcw/embed/entrypoint_amd64.s
+	$(AS) -o $(patsubst %.s,%.o,$^) $^
+	$(LD) -o $@ $(patsubst %.s,%.o,$^)
+-	strip $@
++	$(STRIP) $@
+ endif
 EOF
 
 	default
@@ -138,7 +146,7 @@ src_compile() {
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
 	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT=""
 
-	tc-export AS LD
+	tc-export AS LD STRIP
 	export GOMD2MAN="$(command -v go-md2man)"
 	default
 }
