@@ -33,3 +33,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/python-attrs/attrs/pull/1249
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
