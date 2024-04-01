@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-underlinking.patch"
 	"${FILESDIR}/${P}-qa-implicit-declarations.patch"
+	"${FILESDIR}/${P}-c99-incompatible-pointers.patch"
 )
 
 src_prepare() {
