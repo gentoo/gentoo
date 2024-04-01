@@ -57,6 +57,8 @@ QA_CONFIG_IMPL_DECL_SKIP=( closefrom )
 
 DOCS=( {CHANGES,README}.md )
 
+PATCHES=( "${FILESDIR}/${P}-missing-includes.patch" )
+
 src_unpack() {
 	if use verify-sig; then
 		# Too many levels of symbolic links
