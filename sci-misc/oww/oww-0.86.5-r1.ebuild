@@ -18,7 +18,9 @@ RDEPEND="
 	net-misc/curl
 	gtk? ( x11-libs/gtk+:2 )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	dev-util/intltool"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.86.4-build.patch
