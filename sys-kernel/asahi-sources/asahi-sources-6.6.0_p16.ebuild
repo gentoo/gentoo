@@ -29,7 +29,7 @@ SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
 	https://raw.githubusercontent.com/chadmed/asahi-overlay/main/sys-kernel/asahi-kernel/files/asahi-kernel-6.6.0_p16-rust-alloc-fix.patch -> ${P}-rust-alloc-fix.patch
 "
 
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 IUSE="rust"
 
 DEPEND="
