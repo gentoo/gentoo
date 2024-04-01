@@ -90,6 +90,8 @@ RDEPEND="${CONFIGURE_DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 src_configure() {
 	local myconf
 
