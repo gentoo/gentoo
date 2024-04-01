@@ -5,7 +5,7 @@ EAPI=8
 
 FORTRAN_STANDARD="77 90"
 
-inherit fortran-2
+inherit flag-o-matic fortran-2
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
@@ -25,6 +25,11 @@ DEPEND="
 BDEPEND="doc? ( app-text/doxygen )"
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927588
+	# https://github.com/Unidata/netcdf-fortran/issues/437
+	filter-lto
+
 	econf \
 		--disable-valgrind \
 		--with-temp-large="${T}" \
