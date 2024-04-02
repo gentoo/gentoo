@@ -1,0 +1,20 @@
+diff -ru vmnet-0.4.orig/vmnet.c vmnet-0.4/vmnet.c
+--- vmnet-0.4.orig/vmnet.c	2024-04-02 08:35:41.521216356 +0000
++++ vmnet-0.4/vmnet.c	2024-04-02 08:37:34.760604906 +0000
+@@ -50,6 +50,7 @@
+  */
+ 
+ #define _GNU_SOURCE
++#define _XOPEN_SOURCE 700
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <pwd.h>
+@@ -197,7 +198,7 @@
+ 	int master, slave;
+ 	char name[1024];
+ 
+-	master = getpt();
++	master = posix_openpt(O_RDWR);
+ 	if (master < 0) {
+ 		return 0;
+ 	}
