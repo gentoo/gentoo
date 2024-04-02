@@ -438,7 +438,7 @@ texlive-module_pkg_postinst() {
 # installed texmf trees.
 
 texlive-module_pkg_postrm() {
-	etexmf-update
+	[[ -z ${REPLACED_BY_VERSION} ]] && etexmf-update
 }
 
 fi
