@@ -14,7 +14,7 @@ SRC_URI+="
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 IUSE="
