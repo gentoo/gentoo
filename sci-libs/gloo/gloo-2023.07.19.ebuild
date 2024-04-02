@@ -57,6 +57,8 @@ src_configure() {
 		-DUSE_TCP_OPENSSL_LINK=$(usex ssl ON OFF)
 	)
 	if use cuda; then
+		addpredict "/proc/self/task"
+
 		mycmakeargs+=(
 			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
 		)
