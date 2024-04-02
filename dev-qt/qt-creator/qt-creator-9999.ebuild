@@ -34,8 +34,8 @@ HOMEPAGE="https://www.qt.io/product/development-tools"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="
-	+clang designer doc +help qmldesigner serialterminal
-	+svg test +tracing webengine
+	+clang designer doc +help plugin-dev qmldesigner
+	serialterminal +svg test +tracing webengine
 "
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -97,6 +97,14 @@ src_prepare() {
 	# needed for finding docs at runtime in PF
 	sed -e "/_IDE_DOC_PATH/s/qtcreator/${PF}/" \
 		-i cmake/QtCreatorAPIInternal.cmake || die
+
+	if use plugin-dev; then #928423
+		# cmake --install --component integrates poorly with the cmake
+		# eclass and the install targets are otherwise missing, so strip
+		# out EXCLUDE_FROM_ALL until figure out a better solution
+		find . \( -name CMakeLists.txt -o -name '*.cmake' \) -exec sed -i -zE \
+			's/COMPONENT[[:space:]]+Devel[[:space:]]+EXCLUDE_FROM_ALL//g' {} + || die
+	fi
 }
 
 src_configure() {
