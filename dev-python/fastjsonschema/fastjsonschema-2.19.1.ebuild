@@ -23,3 +23,8 @@ distutils_enable_tests pytest
 EPYTEST_IGNORE=(
 	tests/benchmarks
 )
+
+PATCHES=(
+	# https://github.com/horejsek/python-fastjsonschema/pull/180
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
