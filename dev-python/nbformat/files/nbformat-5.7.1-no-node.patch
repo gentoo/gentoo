@@ -11,7 +11,7 @@ index e30d156..97e57de 100644
  [project]
  name = "nbformat"
 -dynamic = ["version"]
-+version = "5.7.1"
++version = "5.10.3"
  description = "The Jupyter Notebook format"
  license = { file = "COPYING.md" }
  keywords = ["Interactive", "Interpreter", "Shell", "Web"]
