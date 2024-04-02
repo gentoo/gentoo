@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/914349
+--- a/libaudiofile/modules/SimpleModule.h
++++ b/libaudiofile/modules/SimpleModule.h
+@@ -125,13 +125,17 @@ struct signConverter
+ 	static const int kScaleBits = (Format + 1) * CHAR_BIT - 1;
+ 	static const int kMinSignedValue = -1 << kScaleBits;
+ 
+-	struct signedToUnsigned : public std::unary_function<SignedType, UnsignedType>
++	struct signedToUnsigned
+ 	{
++		typedef SignedType argument_type;
++		typedef UnsignedType result_type;
+ 		UnsignedType operator()(SignedType x) { return x - kMinSignedValue; }
+ 	};
+ 
+-	struct unsignedToSigned : public std::unary_function<SignedType, UnsignedType>
++	struct unsignedToSigned
+ 	{
++		typedef SignedType argument_type;
++		typedef UnsignedType result_type;
+ 		SignedType operator()(UnsignedType x) { return x + kMinSignedValue; }
+ 	};
+ };
+@@ -323,8 +327,10 @@ private:
+ };
+ 
+ template <typename Arg, typename Result>
+-struct intToFloat : public std::unary_function<Arg, Result>
++struct intToFloat
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(Arg x) const { return x; }
+ };
+ 
+@@ -389,14 +395,18 @@ private:
+ };
+ 
+ template <typename Arg, typename Result, unsigned shift>
+-struct lshift : public std::unary_function<Arg, Result>
++struct lshift
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(const Arg &x) const { return x << shift; }
+ };
+ 
+ template <typename Arg, typename Result, unsigned shift>
+-struct rshift : public std::unary_function<Arg, Result>
++struct rshift
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(const Arg &x) const { return x >> shift; }
+ };
+ 
+@@ -491,8 +501,10 @@ private:
+ };
+ 
+ template <typename Arg, typename Result>
+-struct floatToFloat : public std::unary_function<Arg, Result>
++struct floatToFloat
+ {
++	typedef Arg argument_type;
++	typedef Result result_type;
+ 	Result operator()(Arg x) const { return x; }
+ };
+ 
