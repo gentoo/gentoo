@@ -5,7 +5,6 @@ EAPI=8
 
 APP_NAME="${P/-bin/}"
 APP_URI="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
-APP_RESOURCES_COMMIT=6dfb2758e531af693f0baffa15240f152aadd68b
 
 CHROMIUM_LANGS="
 	af am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
@@ -23,16 +22,17 @@ SRC_URI="
 	${APP_URI}/releases/download/v${PV}/heroic-${PV}.tar.xz
 		-> ${P}.tar.xz
 
-	${APP_URI}/raw/${APP_RESOURCES_COMMIT}/flatpak/com.heroicgameslauncher.hgl.desktop
-		-> com.heroicgameslauncher.hgl.desktop-${APP_RESOURCES_COMMIT}
+	${APP_URI}/raw/v${PV}/flatpak/com.heroicgameslauncher.hgl.desktop
+		-> com.heroicgameslauncher.hgl.desktop-${PV}
 
-	${APP_URI}/raw/${APP_RESOURCES_COMMIT}/flatpak/com.heroicgameslauncher.hgl.png
-		-> com.heroicgameslauncher.hgl.png-${APP_RESOURCES_COMMIT}
+	${APP_URI}/raw/v${PV}/flatpak/com.heroicgameslauncher.hgl.png
+		-> com.heroicgameslauncher.hgl.png-${PV}
 "
 S="${WORKDIR}/${APP_NAME}"
 
 LICENSE="GPL-3+"
 SLOT="0"
+IUSE="gamescope"
 KEYWORDS="~amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -88,6 +88,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	gamescope? ( gui-wm/gamescope )
 "
 
 QA_PREBUILT=".*"
@@ -107,6 +108,17 @@ src_prepare() {
 
 	cd locales || die
 	chromium_remove_language_paks
+
+	# Create gamescope desktop file
+	if use gamescope; then
+		cp "${DISTDIR}"/com.heroicgameslauncher.hgl.desktop-${PV}	\
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.desktop-${PV} || die
+
+		sed -i 's/Name=Heroic Games Launcher/Name=Heroic Games Launcher (Gamescope)/g' \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.desktop-${PV} || die
+		sed -i 's/Exec=heroic-run %u/Exec=env GDK_BACKEND=wayland gamescope -w 1920 -h 1080 -f -R --RT --force-grab-cursor --prefer-vk-device --adaptive-sync --nested-unfocused-refresh 30 -- heroic-run --ozone-platform=x11 --enable-features=UseOzonePlatform,WaylandWindowDecorations/g' \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.desktop-${PV} || die
+	fi
 }
 
 src_install() {
@@ -127,8 +139,12 @@ src_install() {
 	dosym -r "${app_root}"/heroic /usr/bin/heroic-run
 
 	# Install resources: desktop file and icon.
-	newmenu "${DISTDIR}"/com.heroicgameslauncher.hgl.desktop-${APP_RESOURCES_COMMIT}	\
+	newmenu "${DISTDIR}"/com.heroicgameslauncher.hgl.desktop-${PV}	\
 			com.heroicgameslauncher.hgl.desktop
-	newicon "${DISTDIR}"/com.heroicgameslauncher.hgl.png-${APP_RESOURCES_COMMIT}	\
+	if use gamescope; then
+		newmenu "${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.desktop-${PV}	\
+			com.heroicgameslauncher.hgl.gamescope.desktop
+	fi
+	newicon "${DISTDIR}"/com.heroicgameslauncher.hgl.png-${PV}	\
 			com.heroicgameslauncher.hgl.png
 }
