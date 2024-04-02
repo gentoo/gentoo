@@ -6,6 +6,14 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
+  <maintainer type="person">
+    <email>gonegrier.duarte@gmail.com</email>
+    <name>Gonçalo Negrier Duarte</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers</name>
+  </maintainer>
   <longdescription>
     Heroic is an Open Source Game Launcher for Linux, Windows and macOS. Right
     now it supports launching games from the Epic Games Store using Legendary
