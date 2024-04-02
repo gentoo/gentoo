@@ -1,0 +1,20 @@
+https://gitlab.com/kraxel/virt-firmware/-/merge_requests/11
+diff --git a/virt/firmware/bootcfg/linuxcfg.py b/virt/firmware/bootcfg/linuxcfg.py
+index 5682b15..121af73 100644
+--- a/virt/firmware/bootcfg/linuxcfg.py
++++ b/virt/firmware/bootcfg/linuxcfg.py
+@@ -188,9 +188,10 @@ class LinuxOsInfo(OsRelease):
+ 
+     def shim_path(self):
+         esp    = self.esp_path()
+-        subdir = self.esp_distro_dir()
++        distro_dir = self.esp_distro_dir()
+         arch   = self.efi_arch()
+-        shim   = f'{esp}/EFI/{subdir}/shim{arch}.efi'
+-        if os.path.exists(shim):
+-            return shim
++        for subdir in distro_dir, 'shim', 'Linux':
++            shim = f'{esp}/EFI/{subdir}/shim{arch}.efi'
++            if os.path.exists(shim):
++                return shim
+         return None
