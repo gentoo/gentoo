@@ -683,7 +683,6 @@ sci-libs/mpir
 ~dev-libs/appstream-1.0.2
 ~dev-libs/kdiagram-3.0.1
 ~dev-libs/kirigami-addons-1.1.0
-~dev-libs/kirigami-addons-1.0.1
 ~dev-libs/ktextaddons-1.5.4
 ~dev-libs/kweathercore-0.8.0
 ~games-puzzle/skladnik-0.5.2
