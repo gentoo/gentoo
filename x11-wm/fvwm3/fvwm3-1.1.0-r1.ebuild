@@ -19,7 +19,6 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/fvwmorg/fvwm3.git"
 	EGIT_BRANCH="main"
-	FVWM3_DOCS_PREBUILT=0
 else
 	SRC_URI="https://github.com/fvwmorg/fvwm3/releases/download/${PV}/${P}.tar.gz"
 	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]]; then
@@ -104,6 +103,10 @@ RDEPEND="${PYTHON_DEPS}
 
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
+
+PATCHES=(
+	"${FILESDIR}"/fvwm3-1.1.0-fix-go-detection-v2.patch
+)
 
 src_prepare() {
 	default
