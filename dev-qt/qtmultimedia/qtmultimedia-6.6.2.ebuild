@@ -54,6 +54,8 @@ DEPEND="
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 CMAKE_SKIP_TESTS=(
+	# unimportant and expects all backends to be available (bug #928420)
+	tst_backends
 	# tries to use real alsa or pulseaudio and fails in sandbox
 	tst_qaudiosink
 	tst_qaudiosource
