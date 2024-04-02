@@ -9,7 +9,7 @@ KDE_ORG_NAME="${PN}-kde"
 KDE_SELINUX_MODULE="${PN}"
 KFMIN=6.0.0
 QTMIN=6.6.2
-inherit ecm gear.kde.org
+inherit ecm flag-o-matic gear.kde.org
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
 HOMEPAGE="https://kdeconnect.kde.org/ https://apps.kde.org/kdeconnect/"
@@ -81,6 +81,11 @@ BDEPEND="
 "
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/921648
+	# https://bugs.kde.org/show_bug.cgi?id=480522
+	filter-lto
+
 	local mycmakeargs=(
 		-DMDNS_ENABLED=$(usex zeroconf)
 		-DBLUETOOTH_ENABLED=$(usex bluetooth)
