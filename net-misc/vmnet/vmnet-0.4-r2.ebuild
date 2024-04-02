@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${WORKDIR}"/${P/-/_}-1.diff
 	"${FILESDIR}"/${PN}-0.4-Fix-build-with-Clang-16.patch
+	"${FILESDIR}"/${PN}-0.4-replace-missing-musl-function.patch
 )
 
 src_compile() {
