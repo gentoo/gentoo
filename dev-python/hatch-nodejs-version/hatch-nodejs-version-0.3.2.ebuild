@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~sparc"
 
 RDEPEND="
 	>=dev-python/hatchling-0.21.0[${PYTHON_USEDEP}]
