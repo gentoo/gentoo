@@ -148,8 +148,8 @@ src_configure() {
 
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
-	# bug #895308
-	append-atomic-flags
+	# bug #895308 -- check inserts GNU ld-compatible arguments
+	[[ ${CHOST} == *-darwin* ]] || append-atomic-flags
 	# Configure doesn't respect LIBS
 	export LDLIBS="${LIBS}"
 

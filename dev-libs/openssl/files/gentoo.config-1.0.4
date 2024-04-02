@@ -32,6 +32,7 @@ if [[ $1 == "test" ]] ; then
 		"i686-apple-darwinX           |darwin-i386-cc" \
 		"i386-apple-darwinX           |darwin-i386-cc" \
 		"powerpc-apple-darwinX        |darwin-ppc-cc" \
+		"arm64-apple-darwinX          |darwin-arm64-cc" \
 		"i586-pc-winnt                |winnt-parity" \
 		"s390-ibm-linux-gnu           |linux-generic32 -DB_ENDIAN" \
 		"s390x-linux-gnu              |linux64-s390x" \
@@ -155,6 +156,7 @@ darwin)
 		powerpc)      machine=ppc-cc;;
 		i?86*)        machine=i386-cc;;
 		x86_64)       machine=x86_64-cc; system=${system}64;;
+		arm64)        machine=arm64-cc; system=${system}64;;
 	esac
 	;;
 hpux)
