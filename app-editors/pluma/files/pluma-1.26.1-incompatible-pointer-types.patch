@@ -1,0 +1,67 @@
+From 6bd34181f2490f313a835ce59f82f696c42a2d0a Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Thu, 21 Oct 2021 14:50:15 +0200
+Subject: [PATCH] filebrowser: fix warning -Wincompatible-pointer-types
+
+---
+ .../filebrowser/pluma-file-bookmarks-store.c  | 35 +++++++++----------
+ 1 file changed, 16 insertions(+), 19 deletions(-)
+
+diff --git a/plugins/filebrowser/pluma-file-bookmarks-store.c b/plugins/filebrowser/pluma-file-bookmarks-store.c
+index ed58f067c..0f92ca665 100644
+--- a/plugins/filebrowser/pluma-file-bookmarks-store.c
++++ b/plugins/filebrowser/pluma-file-bookmarks-store.c
+@@ -824,10 +824,8 @@ pluma_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
+ 				    GtkTreeIter * iter)
+ {
+ 	GObject * obj;
+-	GFile * file = NULL;
+ 	guint flags;
+ 	gchar * ret = NULL;
+-	gboolean isfs;
+ 
+ 	g_return_val_if_fail (PLUMA_IS_FILE_BOOKMARKS_STORE (model), NULL);
+ 	g_return_val_if_fail (iter != NULL, NULL);
+@@ -839,26 +837,25 @@ pluma_file_bookmarks_store_get_uri (PlumaFileBookmarksStore * model,
+ 			    &obj,
+ 			    -1);
+ 
+-	if (obj == NULL)
+-		return NULL;
+-
+-	isfs = (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_FS);
+-
+-	if (isfs && (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_MOUNT))
+-	{
+-		file = g_mount_get_root (G_MOUNT (obj));
+-	}
+-	else if (!isfs)
++	if (obj != NULL)
+ 	{
+-		file = g_object_ref (obj);
+-	}
++		if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_FS)
++		{
++			if (flags & PLUMA_FILE_BOOKMARKS_STORE_IS_MOUNT)
++			{
++				GFile * file;
+ 
+-	g_object_unref (obj);
++				file = g_mount_get_root (G_MOUNT (obj));
++				ret = g_file_get_uri (file);
++				g_object_unref (file);
++			}
++		}
++		else
++		{
++			ret = g_file_get_uri (G_FILE (obj));
++		}
+ 
+-	if (file)
+-	{
+-		ret = g_file_get_uri (file);
+-		g_object_unref (file);
++		g_object_unref (obj);
+ 	}
+ 
+ 	return ret;
