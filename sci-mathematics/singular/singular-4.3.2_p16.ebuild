@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools elisp-common flag-o-matic
+inherit autotools elisp-common
 
 MY_PN=Singular
 MY_PV=$(ver_rs 3 '')
@@ -42,6 +42,7 @@ SITEFILE=60${PN}-gentoo.el
 
 PATCHES=(
 	"${FILESDIR}/${P}-test-underlinking.patch"
+	"${FILESDIR}/${P}-lto.patch"
 )
 
 src_prepare() {
@@ -50,14 +51,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://bugs.gentoo.org/927675
-	# https://github.com/Singular/Singular/issues/1212
-	#
-	# Do not trust with LTO either.
-	append-flags -fno-strict-aliasing
-	filter-lto
-
 	local myconf=(
 		--disable-debug
 		--disable-doc
