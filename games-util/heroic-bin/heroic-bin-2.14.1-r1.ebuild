@@ -28,6 +28,7 @@ S="${WORKDIR}/${P/-bin}"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="gamescope"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -82,6 +83,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	gamescope? ( gui-wm/gamescope )
 "
 
 QA_PREBUILT=".*"
@@ -97,6 +99,17 @@ src_prepare() {
 
 	cd locales || die
 	chromium_remove_language_paks
+
+	# Create gamescope desktop file
+	if use gamescope; then
+		cp "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.desktop \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
+
+		sed -i 's/Name=Heroic Games Launcher/Name=Heroic Games Launcher (Gamescope)/g' \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
+		sed -i 's/Exec=heroic-run %u/Exec=env GDK_BACKEND=wayland gamescope -w 1920 -h 1080 -f -R --RT --force-grab-cursor --prefer-vk-device --adaptive-sync --nested-unfocused-refresh 30 -- heroic-run --ozone-platform=x11 --enable-features=UseOzonePlatform,WaylandWindowDecorations/g' \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
+	fi
 }
 
 src_install() {
@@ -119,6 +132,10 @@ src_install() {
 	# Install resources: desktop file and icon.
 	newmenu "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.desktop \
 			com.heroicgameslauncher.hgl.desktop
-	newicon "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.png \
+	if use gamescope; then
+		newmenu "${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop \
+			com.heroicgameslauncher.hgl.gamescope.desktop
+	fi
+	newicon "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.png	\
 			com.heroicgameslauncher.hgl.png
 }
