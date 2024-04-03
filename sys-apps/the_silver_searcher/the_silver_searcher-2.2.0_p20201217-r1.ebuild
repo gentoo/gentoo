@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ DOCS="README.md"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-lzma.patch
+	"${FILESDIR}"/${PN}-2.2.0-no_lfs64.patch
 )
 
 src_prepare() {
