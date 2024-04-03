@@ -83,7 +83,11 @@ src_configure() {
 	# https://github.com/rkd77/elinks/blob/d05ce90b35d82109aab320b490e3ca54aa6df057/src/util/lists.h#L14
 	# https://github.com/rkd77/elinks/blob/d05ce90b35d82109aab320b490e3ca54aa6df057/src/meson.build#L44
 	#
-	# Although they force fno-strict-aliasing, we should also not trust the LTO either.
+	# Although they force fno-strict-aliasing, they do so inconsistently and not for the testsuite (!!!).
+	# Just add it again.
+	#
+	# DO not trust the LTO either.
+	append-flags -fno-strict-aliasing
 	filter-lto
 
 	local emesonargs=(
