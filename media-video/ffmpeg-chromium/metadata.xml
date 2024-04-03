@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>chewi@gentoo.org</email>
-	<name>James Le Cuirot</name>
-</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>kangie@gentoo.org</email>
+		<name>Matt Jolly</name>
+	</maintainer>
 <use>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
 	<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
