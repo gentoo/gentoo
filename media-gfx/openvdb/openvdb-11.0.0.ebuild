@@ -352,6 +352,12 @@ my_src_install() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/926820
+	# https://github.com/AcademySoftwareFoundation/openvdb/issues/1784
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	multibuild_foreach_variant my_src_configure
 }
 

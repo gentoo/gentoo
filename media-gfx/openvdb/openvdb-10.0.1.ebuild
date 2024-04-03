@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cmake cuda llvm python-single-r1
+inherit cmake cuda flag-o-matic llvm python-single-r1
 
 DESCRIPTION="Library for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
@@ -100,6 +100,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/926820
+	# https://github.com/AcademySoftwareFoundation/openvdb/issues/1784
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local myprefix="${EPREFIX}/usr/"
 
 	local version
