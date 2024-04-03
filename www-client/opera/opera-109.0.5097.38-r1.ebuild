@@ -49,7 +49,7 @@ S=${WORKDIR}
 LICENSE="OPERA-2018"
 SLOT="0"
 KEYWORDS="-* amd64"
-IUSE="+ffmpeg-chromium +proprietary-codecs +suid qt5 qt6"
+IUSE="+proprietary-codecs +suid qt5 qt6"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -80,8 +80,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/pango
 	proprietary-codecs? (
-		!ffmpeg-chromium? ( >=media-video/ffmpeg-6.1-r1:0/58.60.60[chromium] )
-		ffmpeg-chromium? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
+		media-video/ffmpeg-chromium:${CHROMIUM_VERSION}
 	)
 	qt5? (
 		dev-qt/qtcore:5
@@ -155,7 +154,7 @@ src_install() {
 	# install proprietary codecs
 	rm "${OPERA_HOME}/resources/ffmpeg_preload_config.json" || die
 	if use proprietary-codecs; then
-		dosym ../../usr/$(get_libdir)/chromium/libffmpeg.so$(usex ffmpeg-chromium .${CHROMIUM_VERSION} "") \
+		dosym ../../usr/$(get_libdir)/chromium/libffmpeg.so.${CHROMIUM_VERSION} \
 			  /${OPERA_HOME}/libffmpeg.so
 	fi
 
