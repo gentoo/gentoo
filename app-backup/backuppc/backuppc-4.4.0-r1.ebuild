@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,7 +64,6 @@ need_apache2_4
 
 src_prepare() {
 	default
-
 	# Fix docs location using the marker that we've patched in.
 	sed "s+__DOCDIR__+${DOCDIR}+" -i lib/BackupPC/CGI/View.pm || die
 }
@@ -145,6 +144,10 @@ src_install() {
 }
 
 pkg_postinst() {
+	ewarn "WARNING: The --one-file-system option was added to RsyncArgs."
+	ewarn "If you update from a prior version keep in mind that"
+	ewarn "this prevents data of mounted partitions from being updated."
+	ewarn
 	elog "Installation finished, you may now start using BackupPC."
 	elog
 	elog "- Read the documentation in ${EROOT}/usr/share/doc/${PF}/BackupPC.html"
