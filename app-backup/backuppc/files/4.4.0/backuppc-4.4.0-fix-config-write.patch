@@ -1,0 +1,48 @@
+From 2c9270b9b849b2c86ae6301dd722c97757bc9256 Mon Sep 17 00:00:00 2001
+From: Craig Barratt <19445341+craigbarratt@users.noreply.github.com>
+Date: Fri, 15 Apr 2022 11:45:57 -0700
+Subject: [PATCH] remove erroneous 2nd argument to Data::Dumper; see #466
+
+---
+ configure.pl                 | 2 +-
+ lib/BackupPC/Storage/Text.pm | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.pl b/configure.pl
+index 6826ebc..d5deef5 100755
+--- a/configure.pl
++++ b/configure.pl
+@@ -668,7 +668,7 @@ if ( defined($Conf{CgiUserConfigEdit}) ) {
+           if ( defined($Conf{CgiUserConfigEdit}{$p}) );
+     }
+     $Conf{CgiUserConfigEdit} = $new;
+-    my $d = Data::Dumper->new([$new], [*value]);
++    my $d = Data::Dumper->new([$new]);
+     $d->Indent(1);
+     $d->Terse(1);
+     $d->Sortkeys(1);
+diff --git a/lib/BackupPC/Storage/Text.pm b/lib/BackupPC/Storage/Text.pm
+index e9df664..09fcb24 100644
+--- a/lib/BackupPC/Storage/Text.pm
++++ b/lib/BackupPC/Storage/Text.pm
+@@ -422,7 +422,7 @@ sub ConfigFileMerge
+                 my $var = $1;
+                 $skipExpr = "\$fakeVar = $2\n";
+                 if ( exists($newConf->{$var}) ) {
+-                    my $d = Data::Dumper->new([$newConf->{$var}], [*value]);
++                    my $d = Data::Dumper->new([$newConf->{$var}]);
+                     $d->Indent(1);
+                     $d->Terse(1);
+                     $d->Sortkeys(1);
+@@ -454,7 +454,7 @@ sub ConfigFileMerge
+     #
+     foreach my $var ( sort(keys(%$newConf)) ) {
+         next if ( $done->{$var} );
+-        my $d = Data::Dumper->new([$newConf->{$var}], [*value]);
++        my $d = Data::Dumper->new([$newConf->{$var}]);
+         $d->Indent(1);
+         $d->Terse(1);
+         $d->Sortkeys(1);
+-- 
+2.43.2
+
