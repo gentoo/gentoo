@@ -27,6 +27,11 @@ BDEPEND="
 	test? ( >=dev-python/pytest-mock-3.12.0[${PYTHON_USEDEP}] )
 "
 
+EPYTEST_DESELECT=(
+	# Needs dev-vcs/git
+	aiosmtpd/qa/test_0packaging.py::TestVersion
+)
+
 distutils_enable_tests pytest
 
 python_prepare_all() {
