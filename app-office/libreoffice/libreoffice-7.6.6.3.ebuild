@@ -298,7 +298,7 @@ PATCHES=(
 
 	# 24.2 branch
 	"${FILESDIR}/${P}-autoconf-2.72.patch" # bug 925162
-	"${FILESDIR}/${PN}-7.6.5.2-gcc14.patch"
+	"${FILESDIR}/${PN}-7.6.5.2-gcc14.patch" # bug 928152
 
 	# TODO: upstream
 	"${FILESDIR}/${PN}-7.6-unused-qt5network.patch"
