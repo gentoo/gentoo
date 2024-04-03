@@ -42,6 +42,8 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')"
 
+PATCHES=( "${FILESDIR}/${PN}-2.4.120-backport-pr353.patch" )
+
 python_check_deps() {
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
