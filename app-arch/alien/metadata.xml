@@ -5,8 +5,4 @@
     <email>lordvan@gentoo.org</email>
     <name>Thomas Raschbacher</name>
   </maintainer>
-  <maintainer type="person">
-    <email>monsieurp@gentoo.org</email>
-    <name>Patrice Clement</name>
-  </maintainer>
 </pkgmetadata>

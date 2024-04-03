@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>monsieurp@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription> 
 		Spiped (pronounced "ess-pipe-dee") is a utility for creating symmetrically
 		encrypted and authenticated pipes between socket addresses, so that one may

@@ -4,8 +4,5 @@
 	<upstream>
 		<remote-id type="github">HaraldKi/cpipe</remote-id>
 	</upstream>
-	<maintainer type="person">
-		<email>monsieurp@gentoo.org</email>
-		<name>Patrice Clement</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 </pkgmetadata>

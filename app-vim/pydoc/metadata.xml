@@ -5,9 +5,6 @@
     <email>vim@gentoo.org</email>
     <name>Gentoo Vim Project</name>
   </maintainer>
-  <maintainer type="person">
-    <email>monsieurp@gentoo.org</email>
-  </maintainer>
   <upstream>
     <remote-id type="github">fs111/pydoc.vim</remote-id>
   </upstream>

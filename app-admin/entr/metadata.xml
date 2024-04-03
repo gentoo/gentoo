@@ -5,10 +5,6 @@
 		<email>arkamar@gentoo.org</email>
 		<name>Petr Vaněk</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>monsieurp@gentoo.org</email>
-		<name>Patrice Clement</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>shell-tools@gentoo.org</email>
 		<name>Gentoo Shell Tools Project</name>
