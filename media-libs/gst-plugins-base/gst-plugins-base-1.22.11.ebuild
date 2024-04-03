@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv 
 # With the following limitations:
 #  * If opengl and/or gles2 is enabled, a platform has to be enabled - x11 or egl in our case, but x11 (glx) is acceptable only with opengl
 #  * If opengl and/or gles2 is enabled, a windowing system has to be enabled - x11, wayland or gbm in our case
-#  * glx platform requires opengl API
+#  * glx platform requires opengl API (but we don't REQUIRED_USE that as USE=X is common, glx is just disabled with USE=-opengl or USE=-X)
 #  * wayland, gbm and most other non-glx WSIs require egl platform
 # Additionally there is optional dmabuf support with egl for additional dmabuf based upload/download/eglimage options;
 #  and optional graphene usage for gltransformation and glvideoflip elements and more GLSL Uniforms support in glshader;
@@ -114,7 +114,7 @@ multilib_src_configure() {
 	if use opengl || use gles2; then
 		# because meson doesn't likes extraneous commas
 		local gl_api=( $(use opengl && echo opengl) $(use gles2 && echo gles2) )
-		local gl_platform=( $(use X && echo glx) $(use egl && echo egl) )
+		local gl_platform=( $(use X && use opengl && echo glx) $(use egl && echo egl) )
 		local gl_winsys=(
 			$(use X && echo x11)
 			$(use wayland && echo wayland)
