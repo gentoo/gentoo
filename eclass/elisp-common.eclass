@@ -699,9 +699,6 @@ elisp-site-regen() {
 	[[ -d ${sitelisp} ]] \
 		|| die "elisp-site-regen: Directory ${sitelisp} does not exist"
 
-	[[ -d ${T} ]] \
-		|| die "elisp-site-regen: Temporary directory ${T} does not exist"
-
 	ebegin "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE})"
 
 	for sf in "${sitelisp}"/site-gentoo.d/[0-9][0-9]*.el; do
