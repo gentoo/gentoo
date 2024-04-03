@@ -10,7 +10,6 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
 	bootstrap-prefix cet hardened llvm-libunwind
@@ -73,6 +72,11 @@ _doclang_cfg() {
 			@gentoo-common.cfg
 			@gentoo-common-ld.cfg
 		EOF
+		if [[ ${triple} == x86_64* ]]; then
+			cat >> "${ED}/etc/clang/${tool}.cfg" <<-EOF || die
+				@gentoo-cet.cfg
+			EOF
+		fi
 	done
 
 	if use kernel_Darwin; then
@@ -85,6 +89,11 @@ _doclang_cfg() {
 		# This configuration file is used by the ${triple}-clang-cpp driver.
 		@gentoo-common.cfg
 	EOF
+	if [[ ${triple} == x86_64* ]]; then
+		cat >> "${ED}/etc/clang/${triple}-clang-cpp.cfg" <<-EOF || die
+			@gentoo-cet.cfg
+		EOF
+	fi
 
 	# Install symlinks for triples with other vendor strings since some
 	# programs insist on mangling the triple.
@@ -175,11 +184,9 @@ src_install() {
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
-	if use amd64; then
-		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
-			-Xarch_host -fcf-protection=$(usex cet full none)
-		EOF
-	fi
+	newins - gentoo-cet.cfg <<-EOF
+		-Xarch_host -fcf-protection=$(usex cet full none)
+	EOF
 
 	if use kernel_Darwin; then
 		newins - gentoo-hardened-ld.cfg <<-EOF
@@ -236,6 +243,8 @@ src_install() {
 	#endif
 	EOF
 
+	# TODO: Maybe -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST for
+	# non-hardened?
 	if use hardened ; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
@@ -244,7 +253,7 @@ src_install() {
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
-			-D_LIBCPP_ENABLE_ASSERTIONS=1
+			-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
