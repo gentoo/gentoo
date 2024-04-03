@@ -22,7 +22,7 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	dev-libs/wayland[${MULTILIB_USEDEP}]
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
 	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
