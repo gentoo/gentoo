@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles
 
@@ -15,25 +15,24 @@ HOMEPAGE="https://www.mersenne.org/"
 MY_PV=$(ver_rs 2 'b' )
 
 SRC_URI="
-	amd64? ( https://www.mersenne.org/ftp_root/gimps/p95v${MY_PV/./}.linux64.tar.gz -> ${P}.linux64.tar.gz )
-	x86? ( https://www.mersenne.org/ftp_root/gimps/p95v${MY_PV/./}.linux32.tar.gz -> ${P}.linux32.tar.gz )
+	amd64? ( https://www.mersenne.org/download/software/v$(ver_cut 1)/$(ver_cut 1-2)/p95v${MY_PV/./}.linux64.tar.gz -> ${P}.linux64.tar.gz )
+	x86? ( https://www.mersenne.org/download/software/v$(ver_cut 1)/$(ver_cut 1-2)/p95v${MY_PV/./}.linux32.tar.gz -> ${P}.linux32.tar.gz )
 	"
 
+S="${WORKDIR}"
 SLOT="0"
 LICENSE="GIMPS"
 RESTRICT="mirror bindist"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 # Since there are no statically linked binaries for this version of mprime,
 # and no static binaries for amd64 in general, we use the dynamically linked
 # ones and try to cover the .so deps with the packages listed in RDEPEND.
-# libgmp.so.10.3.2 is bundled within the .tar.gz, but we use the system one.
+# libgmp.so.10.4.1 is bundled within the .tar.gz, but we use the system one.
 
-DEPEND=""
 RDEPEND="net-misc/curl
 	>=dev-libs/gmp-6.1.2"
 
-S="${WORKDIR}"
 OPTINSTALLDIR="/opt/gimps"
 
 QA_PREBUILT="opt/gimps/mprime"
