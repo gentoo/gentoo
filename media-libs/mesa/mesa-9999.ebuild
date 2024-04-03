@@ -369,6 +369,8 @@ multilib_src_configure() {
 		emesonargs+=(-Dglx=disabled)
 	fi
 
+	use debug && EMESON_BUILDTYPE=debug
+
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dshared-glapi=enabled
@@ -390,7 +392,6 @@ multilib_src_configure() {
 		-Dvideo-codecs=$(usex proprietary-codecs "all" "all_free")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
-		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure
