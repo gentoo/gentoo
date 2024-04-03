@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="sdk">Install PulseAudio headers and pkg-config files. Be aware apulse is not
-    a full PulseAudio replacement by design and some functionality may be missing.</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">i-rinat/apulse</remote-id>
-  </upstream>
+	<maintainer type="person" proxied="yes">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="sdk">Install PulseAudio headers and pkg-config files. Be aware apulse is not
+		a full PulseAudio replacement by design and some functionality may be missing.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">i-rinat/apulse</remote-id>
+	</upstream>
 </pkgmetadata>
