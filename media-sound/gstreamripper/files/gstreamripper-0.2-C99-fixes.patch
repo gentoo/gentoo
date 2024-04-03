@@ -1,0 +1,85 @@
+https://bugs.gentoo.org/885531
+--- a/src/callbacks.c	2024-04-03 16:35:36.682662231 +0000
++++ b/src/callbacks.c	2024-04-03 16:44:09.332605097 +0000
+@@ -410,7 +410,7 @@
+ 
+ 
+ gboolean
+-on_window1_delete_event(GtkWidget * widget,
++on_window1_delete_event(GtkButton * widget,
+ 			GdkEvent * event, gpointer user_data)
+ {
+ 	on_quit_button_clicked((widget), user_data);
+--- a/src/callbacks.h	2024-04-03 16:35:36.682662231 +0000
++++ b/src/callbacks.h	2024-04-03 16:46:35.340734393 +0000
+@@ -36,7 +36,7 @@
+ 
+ void on_locateButton_clicked();
+ 
+-gboolean on_window1_delete_event(GtkWidget * widget,GdkEvent * event,
++gboolean on_window1_delete_event(GtkButton * button,GdkEvent * event,
+                                                         gpointer user_data);
+ 
+ void loadPrefs();
+--- a/src/interface.c	2024-04-03 16:35:36.682662231 +0000
++++ b/src/interface.c	2024-04-03 16:53:11.479371945 +0000
+@@ -76,7 +76,7 @@
+ 	gtk_box_pack_start(GTK_BOX(hbox2), button1, FALSE, FALSE, 5);
+ 
+ 	notebook1 = gtk_notebook_new();
+-	gtk_notebook_set_scrollable(notebook1, TRUE);
++	gtk_notebook_set_scrollable(GTK_NOTEBOOK(notebook1), TRUE);
+ 	gtk_widget_show(notebook1);
+ 	gtk_box_pack_start(GTK_BOX(vbox1), notebook1, TRUE, TRUE, 0);
+ 
+https://bugs.gentoo.org/871012
+https://bugs.gentoo.org/919182
+--- a/src/main.c	2024-04-03 16:35:36.682662231 +0000
++++ b/src/main.c	2024-04-03 16:42:23.412236742 +0000
+@@ -11,7 +11,7 @@
+ 
+ #include "interface.h"
+ #include "support.h"
+-
++#include "callbacks.h"
+ int
+ main (int argc, char *argv[])
+ {
+--- a/src/callbacks.c	2024-04-03 17:00:00.604930862 +0000
++++ b/src/callbacks.c	2024-04-03 17:05:23.965001507 +0000
+@@ -23,7 +23,7 @@
+ #include "support.h"
+ #include "parse.h"
+ 
+-gint pids[256][2];		//pids[numberOFpidsAllowed][pid#,g_io_channel,ip]
++GIOChannel *pids[256][2];		//pids[numberOFpidsAllowed][pid#,g_io_channel,ip]
+ gchar *ips[256][1];
+ gint streams = 0;
+ gchar *binpath = "streamripper";
+@@ -165,7 +165,7 @@
+ 		return 0;
+ 	}
+ 
+-	pids[streams][0] = child_pid;
++	pids[streams][0] = g_io_channel_unix_new(child_pid);
+ 	ips[streams][0] = g_strdup(ip);
+ 
+ 
+@@ -365,7 +365,7 @@
+ 		gint i = 0;
+ 		for(; i < streams; i++)
+ 		{
+-			if(kill(pids[i][0], SIGKILL) == -1)
++			if(kill(g_io_channel_unix_get_fd(pids[i][0]), SIGKILL) == -1)
+ 			{
+ 				switch (errno)
+ 				{
+@@ -389,7 +389,7 @@
+ 	}
+ 	if(!all)		//just want to close one tab
+ 	{
+-		if((kill(pids[curtab][0], SIGKILL)) != -1)
++		if((kill(g_io_channel_unix_get_fd(pids[curtab][0]), SIGKILL)) != -1)
+ 		{
+ 			g_io_channel_shutdown((pids[curtab][1]), FALSE, NULL);
+ 		}
