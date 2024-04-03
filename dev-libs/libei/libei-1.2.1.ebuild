@@ -88,6 +88,11 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	# bug #916777
+	meson_src_test --no-suite sigalrm
+}
+
 src_install() {
 	meson_src_install
 
