@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_BINWRAP=""
 
@@ -27,11 +27,11 @@ ruby_add_rdepend ">=dev-ruby/temple-0.8.2 dev-ruby/thor dev-ruby/tilt:*"
 
 ruby_add_bdepend "
 	test? (
-		dev-ruby/minitest:5.15
+		dev-ruby/minitest:5
 		dev-ruby/nokogiri
-		<dev-ruby/railties-7.1
-		<dev-ruby/activemodel-7.1
-		<dev-ruby/actionpack-7.1
+		<dev-ruby/railties-7.2
+		<dev-ruby/activemodel-7.2
+		<dev-ruby/actionpack-7.2
 		dev-ruby/unindent
 	)
 	doc? (
@@ -45,7 +45,6 @@ all_ruby_prepare() {
 	sed -i \
 		-e '/bundler/I s:^:#:' \
 		-e '/simplecov/I s:^:#:' \
-		-e "1igem 'rails', '<7.1'" \
 		test/test_helper.rb || die
 	# Remove tests that fails when RedCloth is available
 	rm -f test/haml/filters/markdown_test.rb || die
