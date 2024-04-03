@@ -87,7 +87,6 @@ src_configure() {
 		"-DSBINDIR=${EPREFIX}/usr/bin"
 		"-DOPENVAS_FEED_LOCK_PATH=${EPREFIX}/var/lib/openvas/feed-update.lock"
 		"-DOPENVAS_RUN_DIR=/run/ospd"
-		"-DINSTALL_OLD_SYNC_SCRIPT=OFF"
 		"-DBUILD_WITH_NETSNMP=$(usex snmp)"
 	)
 	cmake_src_configure
