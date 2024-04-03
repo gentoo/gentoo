@@ -350,6 +350,7 @@ src_configure() {
 		-DSUNSHINE_REQUIRE_TRAY=$(usex trayicon)
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
 		-DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir)
+		-DSUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
 	CMAKE_USE_DIR="${S}" cmake_src_configure
