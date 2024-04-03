@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="
 	dev-python/fastjsonschema[${PYTHON_USEDEP}]
