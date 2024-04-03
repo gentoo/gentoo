@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>bircoph@gentoo.org</email>
-    <name>Andrew Savchenko</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="cmyk">Include support for CMYK rasterization</flag>
     <flag name="i18n">Enable support non-UTF8 national charsets</flag>

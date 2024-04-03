@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>bircoph@gentoo.org</email>
-    <name>Andrew Savchenko</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="debug">Build libtrip debugging library</flag>
     <flag name="dialogs">Enable support for configuration dialogs</flag>
