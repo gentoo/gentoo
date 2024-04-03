@@ -48,7 +48,7 @@ IUSE="doc +fortran test-rust"
 
 # umfpack is technically optional but it's preferred to have it available.
 DEPEND="
-	>=dev-python/numpy-1.21.6[lapack,${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.21.6:=[lapack,${PYTHON_USEDEP}]
 	sci-libs/arpack:=
 	sci-libs/umfpack
 	virtual/cblas
