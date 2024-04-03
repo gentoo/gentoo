@@ -1,0 +1,28 @@
+https://gitlab.freedesktop.org/xorg/app/xdm/-/merge_requests/22
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Mon, 25 Mar 2024 13:06:28 -0700
+Subject: [PATCH] Define _CONST_X_STRING when including Xaw & Xt headers
+
+Fixes build when building against libXaw 1.0.16 since
+xorg/lib/libxaw@d0fcbd97 changed the definition of XawListChange
+in <X11/Xaw/List.h> from _Xconst char * to String *, where
+String is defined as const if _CONST_X_STRING is defined.
+
+This also clears up 105 of the 162 -Wdiscarded-qualifiers warnings.
+
+Closes: #16
+Fixes: bccb777 ("Fix -Wincompatible-pointer-types warning from gcc (issue #15)")
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -417,6 +417,7 @@ AC_SUBST(XDM_PIXMAPDIR)
+ # Packages used by multiple programs
+ 
+ PKG_CHECK_MODULES(XDM_TOOLKIT, xaw7)
++XDM_TOOLKIT_CFLAGS="$XDM_TOOLKIT_CFLAGS -D_CONST_X_STRING"
+ PKG_CHECK_MODULES(DMCP, xdmcp)
+ PKG_CHECK_MODULES(XLIB, x11)
+ PKG_CHECK_MODULES(AUTH, xau)
+-- 
+GitLab
+
