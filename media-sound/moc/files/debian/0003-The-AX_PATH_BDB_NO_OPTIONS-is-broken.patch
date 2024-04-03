@@ -1,0 +1,26 @@
+From 4b5144d7997246d1e5ab7be7daec8bbc2ecd3b89 Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Sun, 10 Feb 2019 08:32:09 +0100
+Subject: [PATCH] The AX_PATH_BDB_NO_OPTIONS is broken
+
+for cross compilation and that breaks moc. Pass -P to $ac_cpp.
+---
+ m4/ax_path_bdb.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/ax_path_bdb.m4 b/m4/ax_path_bdb.m4
+index 585218d..461d423 100644
+--- a/m4/ax_path_bdb.m4
++++ b/m4/ax_path_bdb.m4
+@@ -179,7 +179,7 @@ AX_PATH_BDB_STUFF DB_VERSION_MAJOR,DB_VERSION_MINOR,DB_VERSION_PATCH
+       ]])
+     ],[
+       # Extract version from preprocessor output.
+-      HEADER_VERSION=`eval "$ac_cpp conftest.$ac_ext" 2> /dev/null \
++      HEADER_VERSION=`eval "$ac_cpp -P conftest.$ac_ext" 2> /dev/null \
+         | grep AX_PATH_BDB_STUFF | sed 's/[[^0-9,]]//g;s/,/./g;1q'`
+     ],[])
+ 
+-- 
+2.20.1
+

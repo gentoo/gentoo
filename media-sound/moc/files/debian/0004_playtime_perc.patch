@@ -1,0 +1,27 @@
+From 23a0cdc97e54bc8ac5edc0fca84aaf27bc34d910 Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Mon, 30 Jul 2018 07:31:13 +0200
+Subject: [PATCH] Assign "Switch on/off play time percentage"
+
+---
+ keys.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/keys.c b/keys.c
+index 7ff052e..c1a7dfa 100644
+--- a/keys.c
++++ b/keys.c
+@@ -204,8 +204,8 @@ static struct command commands[] = {
+ 		"toggle_percent",
+ 		"Switch on/off play time percentage",
+ 		CON_MENU,
+-		{ -1 },
+-		0
++		{CTRL('p'), -1 },
++		1
+ 	},
+ 	{
+ 		KEY_CMD_PLIST_ADD_FILE,
+-- 
+2.18.0
+

@@ -1,0 +1,22 @@
+From 0ce08aec4fda7077845aa483667b6bd2a9421bbb Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Sun, 27 Nov 2016 12:19:29 +0100
+Subject: [PATCH] Adapted the opus patch to config.example.in
+
+---
+ config.example.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: debian-git/config.example.in
+===================================================================
+--- debian-git.orig/config.example.in
++++ debian-git/config.example.in
+@@ -399,7 +399,7 @@
+ #PreferredDecoders += ogg(vorbis,*,ffmpeg):oga(vorbis,*,ffmpeg):ogv(ffmpeg)
+ #PreferredDecoders += application/ogg(vorbis):audio/ogg(vorbis)
+ #PreferredDecoders += flac(flac,*,ffmpeg)
+-#PreferredDecoders += opus(ffmpeg)
++#PreferredDecoders += opus(opus,ffmpeg)
+ #PreferredDecoders += spx(speex)
+ 
+ # Which resampling method to use.  There are a few methods of resampling

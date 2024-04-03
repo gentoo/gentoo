@@ -1,0 +1,18 @@
+From 9637b87ddeb33f6c04d17b090605fb5ee21cc243 Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Sat, 25 Jun 2022 16:18:58 +0300
+Subject: [PATCH] Rename configure.in to configure.ac
+
+Signed-off-by: Elimar Riesebieter <riesebie@lxtec.de>
+---
+ configure.in => configure.ac | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename configure.in => configure.ac (100%)
+
+diff --git a/configure.in b/configure.ac
+similarity index 100%
+rename from configure.in
+rename to configure.ac
+-- 
+2.36.1
+

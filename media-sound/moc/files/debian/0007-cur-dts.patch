@@ -1,0 +1,39 @@
+From dba3b4262b6187f688152126b4ca743f88e93c82 Mon Sep 17 00:00:00 2001
+From: John Fitzgerald <mocmaint@daper.net>
+Date: Sat, 25 Jun 2022 13:20:46 +0300
+Subject: [PATCH 3/3] cur dts
+
+Signed-off-by: Elimar Riesebieter <riesebie@lxtec.de>
+---
+ decoder_plugins/ffmpeg/ffmpeg.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/decoder_plugins/ffmpeg/ffmpeg.c b/decoder_plugins/ffmpeg/ffmpeg.c
+index fd4582f..64afe04 100644
+--- a/decoder_plugins/ffmpeg/ffmpeg.c
++++ b/decoder_plugins/ffmpeg/ffmpeg.c
+@@ -1172,7 +1172,7 @@ static bool seek_in_stream (struct ffmpeg_data *data)
+ static bool seek_in_stream (struct ffmpeg_data *data, int sec)
+ #endif
+ {
+-	int rc, flags = AVSEEK_FLAG_ANY;
++	int rc;
+ 	int64_t seek_ts;
+ 
+ #if SEEK_IN_DECODER
+@@ -1198,10 +1198,8 @@ static bool seek_in_stream (struct ffmpeg_data *data, int sec)
+ 		seek_ts += data->stream->start_time;
+ 	}
+ 
+-	if (data->stream->cur_dts > seek_ts)
+-		flags |= AVSEEK_FLAG_BACKWARD;
+-
+-	rc = av_seek_frame (data->ic, data->stream->index, seek_ts, flags);
++	rc = av_seek_frame (data->ic, data->stream->index, seek_ts,
++	                    AVSEEK_FLAG_BACKWARD);
+ 	if (rc < 0) {
+ 		log_errno ("Seek error", rc);
+ 		return false;
+-- 
+2.36.1
+

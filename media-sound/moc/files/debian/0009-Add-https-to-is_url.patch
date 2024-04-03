@@ -1,0 +1,25 @@
+From 868951edfb1cb719fcc662b93d6b19e658f6dfde Mon Sep 17 00:00:00 2001
+From: Elimar Riesebieter <riesebie@lxtec.de>
+Date: Sun, 30 Oct 2022 10:01:19 +0100
+Subject: [PATCH] Add https to is_url
+
+Signed-off-by: Elimar Riesebieter <riesebie@lxtec.de>
+---
+ files.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/files.c b/files.c
+index 16aa4b6..ed59217 100644
+--- a/files.c
++++ b/files.c
+@@ -85,6 +85,7 @@ void files_cleanup ()
+ inline int is_url (const char *str)
+ {
+ 	return !strncasecmp (str, "http://", sizeof ("http://") - 1)
++		|| !strncasecmp (str, "https://", sizeof ("https://") - 1)
+ 		|| !strncasecmp (str, "ftp://", sizeof ("ftp://") - 1);
+ }
+ 
+-- 
+2.37.2
+

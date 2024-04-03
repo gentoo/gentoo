@@ -1,0 +1,44 @@
+From 27fa391c6b3361ef781dbf0a045445ceabfaa07f Mon Sep 17 00:00:00 2001
+From: John Fitzgerald <mocmaint@daper.net>
+Date: Sat, 25 Jun 2022 13:18:08 +0300
+Subject: [PATCH 2/3] uncast warnings
+
+Signed-off-by: Elimar Riesebieter <riesebie@lxtec.de>
+---
+ decoder_plugins/ffmpeg/ffmpeg.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/decoder_plugins/ffmpeg/ffmpeg.c b/decoder_plugins/ffmpeg/ffmpeg.c
+index f5ea484..fd4582f 100644
+--- a/decoder_plugins/ffmpeg/ffmpeg.c
++++ b/decoder_plugins/ffmpeg/ffmpeg.c
+@@ -79,7 +79,7 @@ struct ffmpeg_data
+ 	AVIOContext *pb;
+ 	AVStream *stream;
+ 	AVCodecContext *enc;
+-	AVCodec *codec;
++	const AVCodec *codec;
+ 
+ 	char *remain_buf;
+ 	int remain_buf_len;
+@@ -848,7 +848,7 @@ static int ffmpeg_can_decode (struct io_stream *stream)
+ {
+ 	int res;
+ 	AVProbeData probe_data;
+-	AVInputFormat *fmt;
++	const AVInputFormat *fmt;
+ 	char buf[8096 + AVPROBE_PADDING_SIZE] = {0};
+ 
+ 	res = io_peek (stream, buf, sizeof (buf));
+@@ -1411,7 +1411,7 @@ static int ffmpeg_our_format_ext (const char *ext)
+ 
+ static int ffmpeg_our_format_mime (const char *mime_type)
+ {
+-	AVOutputFormat *fmt;
++	const AVOutputFormat *fmt;
+ 
+ 	fmt = av_guess_format (NULL, NULL, mime_type);
+ 	return fmt ? 1 : 0;
+-- 
+2.36.1
+

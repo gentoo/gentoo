@@ -1,0 +1,23 @@
+From: Shengjing Zhu <zhsj@debian.org>
+Date: Wed, 13 Sep 2023 11:04:52 +0800
+Subject: ffmpeg 6.0
+
+ffmpeg 6.0 removed AV_CODEC_*_TRUNCATED api.
+
+---
+ decoder_plugins/ffmpeg/ffmpeg.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/decoder_plugins/ffmpeg/ffmpeg.c b/decoder_plugins/ffmpeg/ffmpeg.c
+index 64afe04..e26c804 100644
+--- a/decoder_plugins/ffmpeg/ffmpeg.c
++++ b/decoder_plugins/ffmpeg/ffmpeg.c
+@@ -762,8 +762,6 @@ static void *ffmpeg_open_internal (struct ffmpeg_data *data)
+ 	}
+ 
+ 	set_downmixing (data);
+-	if (data->codec->capabilities & AV_CODEC_CAP_TRUNCATED)
+-		data->enc->flags |= AV_CODEC_FLAG_TRUNCATED;
+ 
+ 	if (avcodec_open2 (data->enc, data->codec, NULL) < 0)
+ 	{
