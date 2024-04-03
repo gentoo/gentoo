@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="9df70be13fcb75eb69adcf957ea3bff4f259fa84"
+WDL_COMMIT="ce8eaac26787a8e059cbeb808d566e8bf1438075"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
@@ -49,7 +49,6 @@ src_prepare() {
 	default
 	cd "WDL-${WDL_COMMIT}" || die
 	eapply "${FILESDIR}"/libSwell-makefile-cflags.patch
-	eapply "${FILESDIR}"/libSwell-makefile-lazy-binding.patch
 }
 
 src_compile() {
