@@ -419,7 +419,7 @@ CRATES_TEST="
 "
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
-inherit cargo distutils-r1 shell-completion toolchain-funcs
+inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 HOMEPAGE="https://www.maturin.rs/"
@@ -487,6 +487,10 @@ src_prepare() {
 
 src_configure() {
 	export OPENSSL_NO_VENDOR=1
+
+	# https://github.com/rust-lang/stacker/issues/79
+	use s390 && ! is-flagq '-march=*' &&
+		append-cflags $(test-flags-CC -march=z10)
 
 	local myfeatures=(
 		# like release.yml + native-tls for better platform support than rustls
