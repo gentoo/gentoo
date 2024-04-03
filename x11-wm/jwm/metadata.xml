@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wraeth@gentoo.org</email>
-		<name>Sam Jorna</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">joewing/jwm</remote-id>
 		<changelog>http://joewing.net/projects/jwm/snapshots/ChangeLog</changelog>
