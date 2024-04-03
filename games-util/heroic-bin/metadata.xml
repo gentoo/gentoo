@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
   <longdescription>
     Heroic is an Open Source Game Launcher for Linux, Windows and macOS. Right
     now it supports launching games from the Epic Games Store using Legendary
