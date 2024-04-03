@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}/sdk.patch"
 	"${FILESDIR}/check-key-before-remove.patch"
 	"${FILESDIR}/man.patch"
+	"${FILESDIR}/apulse-0.1.13-libgen.patch"
 )
 
 src_prepare() {
