@@ -6,13 +6,9 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<upstream>
-		<maintainer status="active">
-			<email>phil@riverbankcomputing.com</email>
-			<name>Phil Thompson</name>
-		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/hg/PyQt-builder/file/tip/NEWS</changelog>
+		<changelog>https://github.com/Python-PyQt/PyQt-builder/blob/main/docs/releases.md</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt-builder/</doc>
-		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<remote-id type="github">Python-PyQt/PyQt-builder</remote-id>
 		<remote-id type="pypi">PyQt-builder</remote-id>
 	</upstream>
 </pkgmetadata>
