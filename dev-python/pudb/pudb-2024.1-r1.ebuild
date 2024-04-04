@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 pypi optfeature
 
 DESCRIPTION="A full-screen, console-based Python debugger"
 HOMEPAGE="https://pypi.org/project/pudb/"
@@ -27,3 +27,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+pkg_postinst() {
+	optfeature_header "Install the following packages for additional functionality:"
+	optfeature "Auto-complete support"  dev-python/jedi
+}
