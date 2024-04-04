@@ -34,11 +34,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if use prefix ; then
-		# bug #668722
-		sed -i "s@cat /usr@cat ${EPREFIX}/usr@" bindings/python*/Makefile.am || die
-	fi
-
 	eautoreconf
 }
 
@@ -49,6 +44,7 @@ src_configure() {
 
 	local myconf=(
 		$(use_enable static-libs static)
+		--with-capability_header="${ESYSROOT}"/usr/include/linux/capability.h
 	)
 
 	local pythonconf=(
