@@ -1,4 +1,4 @@
-From 27284e6a9cb95dcd274abbe184b21eed8a899904 Mon Sep 17 00:00:00 2001
+From 81a1793bbbd90358b3d302e4f337f04031f1cddb Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
 Date: Sat, 7 May 2022 16:00:45 -0400
 Subject: [PATCH 1/3] Gentoo's existing build system patch
@@ -8,10 +8,10 @@ Subject: [PATCH 1/3] Gentoo's existing build system patch
  configure.ac               |  8 +++-----
  lib-src-reg/Makefile.am    |  8 ++++----
  lib-src/Makefile.am        |  8 ++++----
- src-reg/Makefile.am        | 15 +++++----------
- src/Makefile.am            | 14 +++++---------
+ src-reg/Makefile.am        | 15 ++++++---------
+ src/Makefile.am            | 13 ++++++-------
  wrap-gmp-gmpxx/Makefile.am |  4 ++--
- 7 files changed, 23 insertions(+), 39 deletions(-)
+ 7 files changed, 25 insertions(+), 36 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
 index 5dd0de0..4586f79 100644
@@ -101,10 +101,10 @@ index b2358cc..90b735a 100644
 -AM_CXXFLAGS     = -O2 -g
 +AM_CXXFLAGS     = $(CXXFLAGS)
 diff --git a/src-reg/Makefile.am b/src-reg/Makefile.am
-index a351951..38f8f9f 100644
+index a351951..3261b0b 100644
 --- a/src-reg/Makefile.am
 +++ b/src-reg/Makefile.am
-@@ -2,20 +2,15 @@ bin_PROGRAMS = checkregularity
+@@ -2,20 +2,17 @@ bin_PROGRAMS = checkregularity
  
  checkregularity_SOURCES = checkregularity.cc
  
@@ -113,7 +113,9 @@ index a351951..38f8f9f 100644
 -                  ../external/lib/libcddgmp.a \
 -                  ../external/lib/libgmpxx.a \
 -                  ../external/lib/libgmp.a
--
++LDADD           = ../lib-src/libTOPCOM.la \
++                  ../lib-src-reg/libCHECKREG.la
+ 
  AM_CPPFLAGS     = -I../lib-src
  AM_CPPFLAGS    += -I../lib-src-reg
 +AM_CPPFLAGS    += -L../lib-src-reg
@@ -123,18 +125,17 @@ index a351951..38f8f9f 100644
 +AM_CPPFLAGS    += $(CPPFLAGS)
  AM_CPPFLAGS    += -I$(includedir)
  
- 
--AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
 -
--AM_CXXFLAGS     = -O2
-+AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
+ AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
  
-+AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
+-AM_CXXFLAGS     = -O2
+-
++AM_CXXFLAGS     = $(CXXFLAGS)
 diff --git a/src/Makefile.am b/src/Makefile.am
-index ff7e574..63a76fc 100644
+index ff7e574..4a26296 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -83,18 +83,14 @@ santos_triang_SOURCES              = santos_triang.cc
+@@ -83,18 +83,17 @@ santos_triang_SOURCES              = santos_triang.cc
  santos_dim4_triang_SOURCES         = santos_dim4_triang.cc
  santos_22_triang_SOURCES           = santos_22_triang.cc
  
@@ -143,7 +144,9 @@ index ff7e574..63a76fc 100644
 -                  ../external/lib/libcddgmp.a \
 -                  ../external/lib/libgmpxx.a \
 -                  ../external/lib/libgmp.a
--
++LDADD           = ../lib-src/libTOPCOM.la \
++                  ../lib-src-reg/libCHECKREG.la
+ 
  AM_CPPFLAGS     = -I../lib-src
  AM_CPPFLAGS    += -I../lib-src-reg
 +AM_CPPFLAGS    += -L../lib-src-reg
@@ -153,11 +156,10 @@ index ff7e574..63a76fc 100644
 +AM_CPPFLAGS    += $(CPPFLAGS)
  AM_CPPFLAGS    += -I$(includedir)
  
--AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
-+AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
+ AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
  
 -AM_CXXFLAGS     = -O2
-+AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
++AM_CXXFLAGS     = $(CXXFLAGS)
 diff --git a/wrap-gmp-gmpxx/Makefile.am b/wrap-gmp-gmpxx/Makefile.am
 index b9ef8db..4c3f675 100644
 --- a/wrap-gmp-gmpxx/Makefile.am
@@ -172,9 +174,9 @@ index b9ef8db..4c3f675 100644
 -AM_CXXFLAGS     = -O2
 +AM_CXXFLAGS     = $(CXXFLAGS)
 -- 
-2.35.1
+2.43.2
 
-From 1980a3cba20ac549f488d7e00a01d3eee61485be Mon Sep 17 00:00:00 2001
+From 005b1f42e24e4018e46c417876a2f0775826505a Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
 Date: Sat, 7 May 2022 16:14:57 -0400
 Subject: [PATCH 2/3] configure.ac: don't try to invoke csh to print an
@@ -213,9 +215,9 @@ index a10fb97..0b2c0aa 100644
  dnl Checks for header files.
  AC_HEADER_STDC
 -- 
-2.35.1
+2.43.2
 
-From 041f20f5712262ab99bfdfe29e20355d5e4fbf5d Mon Sep 17 00:00:00 2001
+From f50a44f41366bf732fe8e8938f727db5635f75de Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
 Date: Sat, 7 May 2022 16:19:50 -0400
 Subject: [PATCH 3/3] configure.ac: run autoupdate.
@@ -253,5 +255,5 @@ index 0b2c0aa..cddaef6 100644
 +AC_CONFIG_FILES([wrap-gmp-gmpxx/Makefile lib-src/Makefile lib-src-reg/Makefile src/Makefile src-reg/Makefile examples/Makefile Makefile])
 +AC_OUTPUT
 -- 
-2.35.1
+2.43.2
 
