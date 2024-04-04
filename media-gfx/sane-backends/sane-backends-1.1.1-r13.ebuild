@@ -197,12 +197,6 @@ src_prepare() {
 
 	eautoreconf
 
-	# Fix for "make check".  Upstream sometimes forgets to update this.
-	local ver=$(./configure --version | awk '{print $NF; exit 0}')
-	sed -i \
-		-e "/by sane-desc 3.5 from sane-backends/s:sane-backends .*:sane-backends ${ver}:" \
-		testsuite/tools/data/html* || die
-
 	# don't bleed user LDFLAGS into pkgconfig files
 	sed 's|@LDFLAGS@ ||' -i tools/*.pc.in || die
 
