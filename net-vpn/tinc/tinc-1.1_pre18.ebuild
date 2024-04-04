@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
-inherit autotools systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="https://www.tinc-vpn.org/"
@@ -49,6 +49,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/877743
+	#
+	# Fixed upstream:
+	# https://github.com/gsliepen/tinc/commit/28b7a53b693f6b4e70218a926e68a36ece54cda1
+	filter-lto
+
 	econf \
 		--enable-jumbograms \
 		--enable-legacy-protocol \
