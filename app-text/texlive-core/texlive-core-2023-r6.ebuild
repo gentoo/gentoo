@@ -335,7 +335,7 @@ src_configure() {
 		--enable-afm2pl=yes
 		--enable-dvidvi=yes
 		--enable-dviljk=yes
-		$(use_enable cjk dvipdfm-x)
+		--enable-dvipdfm-x
 		--enable-dvipos=yes
 		--enable-gregorio=yes
 		--enable-gsftopk=yes
@@ -475,4 +475,10 @@ pkg_postinst() {
 	# eftmutil-sys here and the reasons why it sometimes fails.
 	nonfatal etexmf-update
 	nonfatal efmtutil-sys
+
+	texlive-common_update_tlpdb
+}
+
+pkg_postrm() {
+	texlive-common_update_tlpdb
 }
