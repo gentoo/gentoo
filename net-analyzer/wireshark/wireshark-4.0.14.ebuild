@@ -4,10 +4,9 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} )
-# TODO: check cmake/modules/UseAsn2Wrs.cmake for 3.12
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 
-inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
+inherit fcaps flag-o-matic readme.gentoo-r1 lua-single python-any-r1 qmake-utils xdg cmake
 
 DESCRIPTION="Network protocol analyzer (sniffer)"
 HOMEPAGE="https://www.wireshark.org/"
@@ -23,10 +22,9 @@ else
 	SRC_URI+=" verify-sig? ( https://www.wireshark.org/download/SIGNATURES-${PV}.txt -> ${P}-signatures.txt )"
 	S="${WORKDIR}/${P/_/}"
 
-	# 4.1.x is an experimental release until 4.2
-	#if [[ ${PV} != *_rc* ]] ; then
-	#	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~x86"
-	#fi
+	if [[ ${PV} != *_rc* ]] ; then
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~x86"
+	fi
 fi
 
 LICENSE="GPL-2"
@@ -41,7 +39,9 @@ REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 "
 
-RESTRICT="!test? ( test )"
+# Tests restricted for now because rely on pytest internals w/ >=3.11
+# See bug #897078 and https://gitlab.com/wireshark/wireshark/-/issues/18740.
+RESTRICT="!test? ( test ) test"
 
 # bug #753062 for speexdsp
 RDEPEND="
@@ -140,6 +140,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
 )
 
 python_check_deps() {
@@ -243,7 +244,6 @@ src_configure() {
 		# only appends -flto
 		-DENABLE_LTO=OFF
 		-DENABLE_LUA=$(usex lua)
-		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)
 		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
@@ -324,6 +324,8 @@ src_install() {
 	if [[ -d "${ED}"/usr/share/appdata ]] ; then
 		rm -r "${ED}"/usr/share/appdata || die
 	fi
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
@@ -338,7 +340,5 @@ pkg_postinst() {
 			"${EROOT}"/usr/bin/dumpcap
 	fi
 
-	ewarn "NOTE: To capture traffic with wireshark as normal user you have to"
-	ewarn "add yourself to the pcap group. This security measure ensures"
-	ewarn "that only trusted users are allowed to sniff your traffic."
+	readme.gentoo_print_elog
 }
