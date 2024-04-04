@@ -282,7 +282,9 @@ src_test() {
 }
 
 src_install() {
-	cmake_src_install
+	# bug #928577
+	# https://gitlab.com/wireshark/wireshark/-/commit/fe7bfdf6caac9204ab5f34eeba7b0f4a0314d3cd
+	cmake_src_install install-headers
 
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
