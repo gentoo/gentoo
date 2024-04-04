@@ -11,6 +11,7 @@ DESCRIPTION="Qt library and IM module for fcitx5"
 HOMEPAGE="https://github.com/fcitx/fcitx5-qt"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.xz -> ${P}.tar.xz"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="BSD LGPL-2.1+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
@@ -34,7 +35,7 @@ RDEPEND="
 		wayland? ( dev-qt/qtwayland:5 )
 	)
 	qt6? (
-		dev-qt/qtbase:6[dbus,gui,widgets,wayland?]
+		dev-qt/qtbase:6=[dbus,gui,widgets,wayland?]
 		wayland? ( dev-qt/qtwayland:6 )
 	)
 	X? (
@@ -49,8 +50,6 @@ BDEPEND="
 	virtual/pkgconfig
 	!onlyplugin? ( sys-devel/gettext )
 "
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
