@@ -3947,7 +3947,7 @@ TEXLIVE_MODULE_SRC_CONTENTS="
 	zref-vario.source.r68846
 "
 
-inherit texlive-module
+inherit optfeature texlive-module
 
 DESCRIPTION="TeXLive LaTeX additional packages"
 
@@ -3991,3 +3991,8 @@ TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/wordcount/wordcount.sh
 	texmf-dist/scripts/yplan/yplan
 "
+
+pkg_postinst() {
+	# https://bugs.gentoo.org/928388
+	optfeature "Install for SVG (Scalable Vector Graphics) support" media-gfx/inkscape
+}
