@@ -15,6 +15,10 @@ IUSE="static-libs ssl"
 DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-openssl-libs-configure.patch"
+)
+
 src_configure() {
 	econf $(use_enable static-libs static) $(use_with ssl)
 }
