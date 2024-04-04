@@ -36,13 +36,14 @@ src_prepare() {
 src_configure() {
 	use python && distutils-r1_src_configure
 
+	append-lfs-flags
 	export BUILD_DYNAMIC_LIB=1
 	export USE_STATIC_LIB=0
 	export BUILD_STATIC_LIB=0
 }
 
 src_compile() {
-	emake AR="$(tc-getAR)" CC="$(tc-getCC)" EXTRA="eeprog"
+	emake AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}" EXTRA="eeprog"
 
 	if use python ; then
 		cd py-smbus || die
