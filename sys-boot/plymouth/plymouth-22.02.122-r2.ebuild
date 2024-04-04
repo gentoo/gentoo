@@ -28,7 +28,7 @@ CDEPEND="
 	drm? ( x11-libs/libdrm )
 	gtk? (
 		dev-libs/glib:2
-		>=x11-libs/gtk+-3.14:3
+		>=x11-libs/gtk+-3.14:3[X]
 		x11-libs/cairo
 	)
 	pango? ( >=x11-libs/pango-1.21 )
