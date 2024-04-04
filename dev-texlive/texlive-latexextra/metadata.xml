@@ -9,4 +9,7 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<use>
+		<flag name="svg">Add support for SVG (Scalable Vector Graphics)</flag>
+	</use>
 </pkgmetadata>
