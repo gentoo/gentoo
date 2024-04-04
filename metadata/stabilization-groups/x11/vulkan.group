@@ -1,7 +1,10 @@
 dev-util/glslang
 dev-util/spirv-headers
 dev-util/spirv-tools
+dev-util/volk
 dev-util/vulkan-headers
 dev-util/vulkan-tools
+dev-util/vulkan-utility-libraries
+media-libs/shaderc
 media-libs/vulkan-layers
 media-libs/vulkan-loader
