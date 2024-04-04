@@ -420,61 +420,6 @@ texlive-module_src_install() {
 	texlive-common_handle_config_files
 }
 
-# @FUNCTION: texlive-module_update_tlpdb
-# @DESCRIPTION:
-# Update the TexLive package database at /usr/share/tlpkg/texlive.tlpdb.
-
-texlive-module_update_tlpdb() {
-	[[ ${TL_PV} -lt 2023 ]] && return
-
-	# If we are updating this package, then there is no need to update
-	# the tlpdb in postrm, as it will be again updated in postinst.
-	[[ ${EBUILD_PHASE} == postrm && -n ${REPLACED_BY_VERSION} ]] && return
-
-	local tlpkg="${EROOT}"/usr/share/tlpkg
-	local tlpobj="${tlpkg}"/tlpobj
-	local tlpdb="${tlpkg}"/texlive.tlpdb
-
-	ebegin "Regenerating TexLive package database"
-
-	local new_tlpdb="${T}"/texlive.tlpdb
-
-	touch "${new_tlpdb}" || die
-
-	find "${tlpobj}" -maxdepth 1 -type f -name "*.tlpobj" -print0 |
-		sort -z |
-		xargs -0 --no-run-if-empty cat >> "${new_tlpdb}"
-	assert "generating tlpdb failed"
-
-	if [[ -f ${tlpdb} ]]; then
-		cmp -s "${new_tlpdb}" "${tlpdb}"
-		local ret=$?
-		case ${ret} in
-			# content equal
-			0)
-				# Nothing to do, return.
-				eend 0
-				return
-				;;
-			# content differs
-			1)
-				;;
-			# cmp failed with an error
-			*)
-				eend ${ret} "comparing new and existing tlpdb failed (exit status: ${ret})"
-				die
-				;;
-		esac
-	fi
-
-	mv "${new_tlpdb}" "${tlpdb}"
-	eend $? "moving tlpdb into position failed (exit status: ${?})" || die
-
-	if [[ ! -s ${tlpdb} ]]; then
-		rm "${tlpdb}" || die
-	fi
-}
-
 # @FUNCTION: texlive-module_pkg_postinst
 # @DESCRIPTION:
 # exported function:
@@ -483,7 +428,7 @@ texlive-module_update_tlpdb() {
 
 texlive-module_pkg_postinst() {
 	etexmf-update
-	texlive-module_update_tlpdb
+	texlive-common_update_tlpdb
 	[[ -n ${TL_MODULE_INFORMATION} ]] && elog "${TL_MODULE_INFORMATION}"
 }
 
@@ -495,7 +440,7 @@ texlive-module_pkg_postinst() {
 
 texlive-module_pkg_postrm() {
 	[[ -z ${REPLACED_BY_VERSION} ]] && etexmf-update
-	texlive-module_update_tlpdb
+	texlive-common_update_tlpdb
 }
 
 fi
