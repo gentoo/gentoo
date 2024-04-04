@@ -1,0 +1,24 @@
+Install .pc file to /usr/share instead of /usr/lib because there are no .so files
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign dist-bzip2 dist-zip
+ 
+-pkgconfig_DATA = asio.pc
+-pkgconfigdir = $(libdir)/pkgconfig
++noarch_pkgconfig_DATA = asio.pc
+ 
+ SUBDIRS = include src
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@ AM_PROG_CC_C_O
+ AC_PROG_CXX
+ AC_LANG(C++)
+ AC_PROG_RANLIB
+-PKG_INSTALLDIR
++PKG_NOARCH_INSTALLDIR
+ 
+ AC_DEFINE(_REENTRANT, [1], [Define this])
+ 
