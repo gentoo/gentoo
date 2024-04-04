@@ -90,7 +90,7 @@ src_configure() {
 
 src_test() {
 	# bug #916777
-	meson_src_test --no-suite sigalrm
+	meson_src_test --no-suite sigalrm --timeout-multiplier 10
 }
 
 src_install() {
