@@ -27,17 +27,19 @@ BDEPEND="python? ( >=dev-lang/swig-2 )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-swig.patch
+	# https://bugs.gentoo.org/928450
+	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 src_prepare() {
 	default
 
 	if use prefix ; then
-		sed -i "s@cat /usr@cat ${EPREFIX}/usr@" bindings/python*/Makefile.am || die
 		# bug #668722
-		eautomake
+		sed -i "s@cat /usr@cat ${EPREFIX}/usr@" bindings/python*/Makefile.am || die
 	fi
-	elibtoolize
+
+	eautoreconf
 }
 
 src_configure() {
