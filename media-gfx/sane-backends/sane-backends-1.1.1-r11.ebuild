@@ -190,11 +190,6 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	default
 
-	# Patch out the git reference so we can run eautoreconf
-	sed \
-		-e "s/m4_esyscmd_s(\[git describe --dirty\])/${PV}/" \
-		-e '/^AM_MAINTAINER_MODE/d' \
-		-i configure.ac || die
 	eautoreconf
 
 	# Fix for "make check".  Upstream sometimes forgets to update this.
