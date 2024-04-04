@@ -16,11 +16,7 @@ EAPI=7
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
 
-if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTORECONF=1
-	GRUB_BOOTSTRAP=1
-fi
-
+GRUB_AUTORECONF=1
 PYTHON_COMPAT=( python3_{9..11} )
 WANT_LIBTOOL=none
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
@@ -50,6 +46,7 @@ if [[ ${PV} != 9999 ]]; then
 	else
 		SRC_URI="
 			mirror://gnu/${PN}/${P}.tar.xz
+			https://dev.gentoo.org/~floppym/dist/grub-2.12-bash-completion.patch.gz
 			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
 		"
 		S=${WORKDIR}/${P%_*}
@@ -165,6 +162,7 @@ src_prepare() {
 		"${FILESDIR}"/gfxpayload.patch
 		"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 		"${FILESDIR}"/grub-2.06-test-words.patch
+		"${WORKDIR}"/grub-2.12-bash-completion.patch
 	)
 
 	default
