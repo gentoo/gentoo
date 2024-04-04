@@ -23,16 +23,15 @@ else
 	SRC_URI+=" verify-sig? ( https://www.wireshark.org/download/SIGNATURES-${PV}.txt -> ${P}-signatures.txt )"
 	S="${WORKDIR}/${P/_/}"
 
-	# 4.1.x is an experimental release until 4.2
-	#if [[ ${PV} != *_rc* ]] ; then
-	#	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~riscv ~x86"
-	#fi
+	if [[ ${PV} != *_rc* ]] ; then
+		KEYWORDS="~amd64 ~arm64 ~hppa"
+	fi
 fi
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
-IUSE+=" +dumpcap +editcap +gui http2 ilbc kerberos libxml2 lua lz4 maxminddb"
+IUSE+=" +dumpcap +editcap +gui http2 http3 ilbc kerberos libxml2 lua lz4 maxminddb"
 IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap qt6 +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump wifi zlib +zstd"
@@ -56,6 +55,7 @@ RDEPEND="
 	ciscodump? ( >=net-libs/libssh-0.6:= )
 	filecaps? ( sys-libs/libcap )
 	http2? ( >=net-libs/nghttp2-1.11.0:= )
+	http3? ( net-libs/nghttp3 )
 	ilbc? ( media-libs/libilbc:= )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2 )
@@ -249,6 +249,7 @@ src_configure() {
 		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex http2)
+		-DENABLE_NGHTTP3=$(usex http3)
 		-DENABLE_OPUS=$(usex opus)
 		-DENABLE_PCAP=$(usex pcap)
 		-DENABLE_PLUGINS=$(usex plugins)
