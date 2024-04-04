@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple prefix
 DMF="R-${PV/_rc/RC}-202402290520"
 
 DESCRIPTION="Eclipse Compiler for Java"
-HOMEPAGE="https://www.eclipse.org/"
+HOMEPAGE="https://projects.eclipse.org/projects/eclipse.jdt"
 SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV/_rc/RC}.jar"
 S="${WORKDIR}"
 
