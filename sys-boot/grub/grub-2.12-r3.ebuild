@@ -31,6 +31,9 @@ fi
 
 inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
 
+DESCRIPTION="GNU GRUB boot loader"
+HOMEPAGE="https://www.gnu.org/software/grub/"
+
 MY_P=${P}
 if [[ ${PV} != 9999 ]]; then
 	inherit verify-sig
@@ -46,7 +49,7 @@ if [[ ${PV} != 9999 ]]; then
 	else
 		SRC_URI="
 			mirror://gnu/${PN}/${P}.tar.xz
-			https://dev.gentoo.org/~floppym/dist/grub-2.12-bash-completion.patch.gz
+			https://dev.gentoo.org/~floppym/dist/${P}-bash-completion.patch.gz
 			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
 		"
 		S=${WORKDIR}/${P%_*}
@@ -62,9 +65,6 @@ DEJAVU=dejavu-sans-ttf-2.37
 UNIFONT=unifont-15.0.06
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
-
-DESCRIPTION="GNU GRUB boot loader"
-HOMEPAGE="https://www.gnu.org/software/grub/"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )"
