@@ -198,9 +198,6 @@ src_prepare() {
 		-e "/by sane-desc 3.5 from sane-backends/s:sane-backends .*:sane-backends ${ver}:" \
 		testsuite/tools/data/html* || die
 
-	# don't bleed user LDFLAGS into pkgconfig files
-	sed 's|@LDFLAGS@ ||' -i tools/*.pc.in || die
-
 	# Needed for udev rules generation/installation
 	multilib_copy_sources
 }
