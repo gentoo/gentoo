@@ -72,7 +72,7 @@ src_prepare() {
 		bnd-util.jar=$(java-pkg_getjars --build-only bnd-util)
 		bnd.jar=$(java-pkg_getjars --build-only bnd)
 		bndlib.jar=$(java-pkg_getjars --build-only bndlib)
-		jaxrpc-lib.jar=$(java-pkg_getjars --build-only jax-rpc-api)
+		jaxrpc-lib.jar=$(java-pkg_getjars jax-rpc-api)
 		jdt.jar=$(java-pkg_getjars eclipse-ecj-${ECJ_SLOT})
 		libg.jar=$(java-pkg_getjars --build-only libg)
 		migration-lib.jar=$(java-pkg_getjars jakartaee-migration)
