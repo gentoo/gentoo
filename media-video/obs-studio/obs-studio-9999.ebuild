@@ -7,12 +7,15 @@ CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit cmake lua-single optfeature python-single-r1 xdg
+inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux_x86_64"
 CEF_REVISION="_v3"
 OBS_BROWSER_COMMIT="996b5a7bc43d912f1f4992e0032d4f263ac8b060"
 OBS_WEBSOCKET_COMMIT="d2d4bfb3e78cf2b02c8e2f5dda1d805eda8d8f32"
+
+DESCRIPTION="Software for Recording and Streaming Live Video Content"
+HOMEPAGE="https://obsproject.com"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -29,10 +32,8 @@ else
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
-SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
-DESCRIPTION="Software for Recording and Streaming Live Video Content"
-HOMEPAGE="https://obsproject.com"
+SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
 LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
