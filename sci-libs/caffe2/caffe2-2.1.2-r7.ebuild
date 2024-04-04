@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 ROCM_VERSION=5.7
 inherit python-single-r1 cmake cuda flag-o-matic prefix rocm
 
@@ -48,7 +48,7 @@ RDEPEND="
 	cuda? (
 		=dev-libs/cudnn-8*
 		>=dev-libs/cudnn-frontend-0.9.2:0/8
-		dev-util/nvidia-cuda-toolkit:=[profiler]
+		<dev-util/nvidia-cuda-toolkit-12.4.0:=[profiler]
 	)
 	fbgemm? ( >=dev-libs/FBGEMM-2023.11.02 )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -97,8 +97,6 @@ DEPEND="
 	')
 "
 
-S="${WORKDIR}"/${MYP}
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.1-gentoo.patch
 	"${FILESDIR}"/${PN}-1.13.0-install-dirs.patch
@@ -111,6 +109,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
 	"${FILESDIR}"/${PN}-2.1.2-rocm-fix-std-cpp17.patch
 )
+
+S="${WORKDIR}"/${MYP}
 
 src_prepare() {
 	filter-lto #bug 862672
