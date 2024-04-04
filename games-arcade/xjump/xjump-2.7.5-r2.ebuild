@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ PATCHES=(
 	"${WORKDIR}"/debian/patches/04_makefile_respect_cflags.patch
 	"${WORKDIR}"/debian/patches/05_unneded_deps.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-c99.patch
 )
 
 src_prepare() {
