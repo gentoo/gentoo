@@ -6,7 +6,7 @@
     <name>Robin H. Johnson</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">fredbcode/Vrrpd</remote-id>
+    <remote-id type="gitlab">fredbcode/Vrrpd</remote-id>
     <remote-id type="sourceforge">vrrpd</remote-id>
   </upstream>
 </pkgmetadata>
