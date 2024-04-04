@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake wxwidgets
+inherit cmake flag-o-matic wxwidgets
 
 MY_PN="iacfleet_pi"
 if [[ ${PV} == *9999 ]] ; then
@@ -30,6 +30,14 @@ DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/927485
+	# https://github.com/nohal/iacfleet_pi/issues/30
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	setup-wxwidgets unicode
 	cmake_src_configure
 }
