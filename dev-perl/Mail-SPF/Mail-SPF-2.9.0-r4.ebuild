@@ -31,8 +31,8 @@ BDEPEND="${RDEPEND}
 src_prepare() {
 	perl-module_src_prepare
 	sed -i -e "s:spfquery:spfquery.pl:" Build.PL || die "sed failed"
-	mv "${S}"/bin/spfquery{,.pl} || die "renaming spfquery failed"
-	mv "${S}"/sbin/spfd{,.pl} || die "renaming spfd failed"
+	mv "${S}"/bin/spfquery{,.pl} || die "renaming spfquery failed" # bug 281189
+	mv "${S}"/sbin/spfd{,.pl} || die "renaming spfd failed" # bugs 886179 and 928140
 }
 
 pkg_postinst() {
