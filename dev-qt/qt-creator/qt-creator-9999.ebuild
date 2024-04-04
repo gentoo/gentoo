@@ -34,7 +34,7 @@ HOMEPAGE="https://www.qt.io/product/development-tools"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="
-	+clang designer doc +help plugin-dev qmldesigner
+	+clang designer doc +help keyring plugin-dev qmldesigner
 	serialterminal +svg test +tracing webengine
 "
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
@@ -45,7 +45,7 @@ QT_PV=6.2.0:6 # IDE_QT_VERSION_MIN
 # := is used where Qt's private APIs are used for safety
 COMMON_DEPEND="
 	>=dev-qt/qt5compat-${QT_PV}
-	>=dev-qt/qtbase-${QT_PV}=[concurrent,gui,network,widgets,xml]
+	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
 	clang? (
 		dev-cpp/yaml-cpp:=
@@ -55,6 +55,10 @@ COMMON_DEPEND="
 	help? (
 		>=dev-qt/qttools-${QT_PV}[assistant]
 		webengine? ( >=dev-qt/qtwebengine-${QT_PV} )
+	)
+	keyring? (
+		app-crypt/libsecret
+		dev-libs/glib:2
 	)
 	qmldesigner? (
 		>=dev-qt/qtquick3d-${QT_PV}=
@@ -78,7 +82,7 @@ DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-qt/qttools-${QT_PV}[linguist]
-	doc? ( >=dev-qt/qttools-${QT_PV}[qdoc] )
+	doc? ( >=dev-qt/qttools-${QT_PV}[qdoc,qtattributionsscanner] )
 "
 
 PATCHES=(
@@ -158,6 +162,10 @@ src_configure() {
 		# not packaged, but allow using if found
 		#-DCMAKE_DISABLE_FIND_PACKAGE_LibDDemangle=yes
 		#-DCMAKE_DISABLE_FIND_PACKAGE_LibRustcDemangle=yes
+
+		# for bundled qtkeychain (no switch to unbundle right now)
+		# reminder: if ever unbundled/optional, qtbase[dbus] can be removed
+		-DLIBSECRET_SUPPORT=$(usex keyring)
 	)
 
 	cmake_src_configure
