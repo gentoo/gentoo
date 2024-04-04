@@ -112,6 +112,7 @@ BDEPEND="
 	doc? (
 		app-text/doxygen
 		dev-ruby/asciidoctor
+		dev-libs/libxslt
 	)
 	gui? (
 		qt6? (
