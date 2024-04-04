@@ -9,7 +9,7 @@ DESCRIPTION="3D data visualization library for the Qt5 framework"
 LICENSE="GPL-3"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm arm64 x86"
 fi
 
 IUSE="gles2-only qml"
