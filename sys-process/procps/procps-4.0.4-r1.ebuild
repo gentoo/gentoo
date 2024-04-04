@@ -17,7 +17,6 @@ LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/0-ng"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="elogind +kill modern-top +ncurses nls selinux static-libs systemd test unicode"
-REQUIRED_USE="unicode? ( ncurses )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -74,12 +73,16 @@ multilib_src_configure() {
 		$(multilib_native_use_with ncurses)
 		# bug #794997
 		$(multilib_native_use_enable !elibc_musl w)
-		$(multilib_native_use_enable unicode watch8bit)
 		$(use_enable nls)
 		$(use_enable selinux libselinux)
 		$(use_enable static-libs static)
 		$(use_with systemd)
 	)
+
+	if use ncurses; then
+		# Only pass whis when we are building the 'watch' command
+		myeconfargs+=( $(multilib_native_use_enable unicode watch8bit) )
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
