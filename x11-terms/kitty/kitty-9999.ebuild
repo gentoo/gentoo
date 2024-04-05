@@ -103,6 +103,7 @@ src_prepare() {
 	local sedargs=(
 		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/"
 		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//'
+		-e "s/cflags.append(fortify_source)/pass/" # use toolchain's _f_s
 		-e "s/ld_flags.append('-[sw]')/pass/"
 	)
 
