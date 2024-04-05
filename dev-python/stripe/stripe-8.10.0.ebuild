@@ -31,6 +31,7 @@ BDEPEND="
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/trio[${PYTHON_USEDEP}]
 		net-misc/curl
 	)
 "
