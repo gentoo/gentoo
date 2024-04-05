@@ -41,8 +41,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="
 	${PYTHON_DEPS}
-	acct-user/kismet
-	acct-group/kismet
 	networkmanager? ( net-misc/networkmanager )
 	dev-libs/glib:2
 	dev-libs/elfutils
@@ -67,6 +65,8 @@ CDEPEND="
 	ubertooth? ( net-wireless/ubertooth )
 	"
 RDEPEND="${CDEPEND}
+	acct-user/kismet
+	acct-group/kismet
 	$(python_gen_cond_dep '
 		dev-python/pyserial[${PYTHON_USEDEP}]
 	')
