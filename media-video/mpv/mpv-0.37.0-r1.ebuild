@@ -129,6 +129,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.37.0-drm-fix.patch
+	"${FILESDIR}"/${PN}-0.37.0-ffmpeg7.patch
 )
 
 pkg_setup() {
