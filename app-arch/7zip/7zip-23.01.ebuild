@@ -12,14 +12,14 @@ SRC_URI="
 	https://sourceforge.net/projects/sevenzip/files/7-Zip/${PV}/7z${NO_DOT_PV}-src.tar.xz/download -> ${PN}-${PV}.tar.xz
 	https://sourceforge.net/projects/sevenzip/files/7-Zip/${PV}/7z${NO_DOT_PV}-linux-x64.tar.xz/download -> ${PN}-${PV}-linux.tar.xz
 "
-LICENSE="LGPL-2 BSD rar? ( unRAR )"
+S="${WORKDIR}/CPP/7zip"
 
-IUSE="uasm jwasm rar"
-REQUIRED_USE="?? ( uasm jwasm )"
+LICENSE="LGPL-2 BSD rar? ( unRAR )"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="uasm jwasm rar"
+REQUIRED_USE="?? ( uasm jwasm )"
 
-S="${WORKDIR}/CPP/7zip/"
 DOCS=( readme.txt History.txt License.txt )
 HTML_DOCS=( MANUAL )
 RESTRICT="mirror"
