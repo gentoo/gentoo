@@ -27,6 +27,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-util/stripe-mock-0.183.0
+		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
