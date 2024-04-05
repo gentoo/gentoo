@@ -22,7 +22,6 @@ REQUIRED_USE="?? ( uasm jwasm )"
 
 DOCS=( readme.txt History.txt License.txt )
 HTML_DOCS=( MANUAL )
-RESTRICT="mirror"
 
 DEPEND="${RDEPEND}"
 BDEPEND="
