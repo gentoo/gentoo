@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit check-reqs toolchain-funcs unpacker
 
-DRIVER_PV="520.61.05"
+DRIVER_PV="550.54.15"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
@@ -15,30 +15,34 @@ S="${WORKDIR}"
 LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
-IUSE="debugger nsight profiler sanitizer static-libs vis-profiler"
+IUSE="debugger examples nsight profiler rdma sanitizer static-libs vis-profiler"
 RESTRICT="bindist mirror"
 
 # since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
-# actual required minimum driver version are different. Lowering the
-# bound helps Kepler sm_35 and sm_37 users.
-# https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions
+# actual required minimum driver version are different.
 RDEPEND="
-	<sys-devel/gcc-12_pre[cxx]
-	>=x11-drivers/nvidia-drivers-450.80.02
+	<sys-devel/gcc-14_pre[cxx]
+	>=x11-drivers/nvidia-drivers-525.60.13
+	examples? (
+		media-libs/freeglut
+		media-libs/glu
+	)
 	nsight? (
 		dev-libs/libpfm
 		dev-libs/wayland
 		dev-qt/qtwayland:6
 		|| (
 			dev-libs/openssl-compat:1.1.1
-			=dev-libs/openssl-1.1.1*
+			dev-libs/openssl:0/1.1
 		)
 		media-libs/tiff-compat:4
 		sys-libs/zlib
 	)
+	rdma? ( sys-cluster/rdma-core )
 	vis-profiler? (
 		>=virtual/jre-1.8:*
 	)"
+BDEPEND="nsight? ( dev-util/patchelf )"
 
 QA_PREBUILT="opt/cuda/*"
 CHECKREQS_DISK_BUILD="15000M"
@@ -48,8 +52,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# ATTENTION: change requires revbump
-	local cuda_supported_gcc="8.5 9.5 10 11"
+	# ATTENTION: change requires revbump, see link below for supported GCC # versions
+	# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements
+	local cuda_supported_gcc="8.5 9.5 10 11 12 13"
 
 	sed \
 		-e "s:CUDA_SUPPORTED_GCC:${cuda_supported_gcc}:g" \
@@ -67,8 +72,9 @@ src_install() {
 
 	# Install standard sub packages
 	local builddirs=(
-		builds/cuda_{cccl,cudart,cuobjdump,cuxxfilt,memcheck,nvcc,nvdisasm,nvml_dev,nvprune,nvrtc,nvtx}
-		builds/lib{cublas,cufft,curand,cusolver,cusparse,npp,nvjpeg}
+		builds/cuda_{cccl,cudart,cuobjdump,cuxxfilt,demo_suite,nvcc,nvdisasm,nvml_dev,nvprune,nvrtc,nvtx,opencl}
+		builds/lib{cublas,cufft,cufile,curand,cusolver,cusparse,npp,nvjitlink,nvjpeg}
+		builds/nvidia_fs
 		$(usex profiler "builds/cuda_nvprof builds/cuda_cupti builds/cuda_profiler_api" "")
 		$(usex vis-profiler "builds/cuda_nvvp" "")
 		$(usex debugger "builds/cuda_gdb" "")
@@ -124,6 +130,7 @@ src_install() {
 		eend $?
 	fi
 
+	use debugger && ldpathextradirs+=":${ecudadir}/extras/Debugger/lib64"
 	use profiler && ldpathextradirs+=":${ecudadir}/extras/CUPTI/lib64"
 
 	if use vis-profiler; then
@@ -145,20 +152,24 @@ src_install() {
 		local exes=(
 			${ncu_dir}/ncu
 			${ncu_dir}/ncu-ui
-			${ncu_dir}/nv-nsight-cu
-			${ncu_dir}/nv-nsight-cu-cli
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/libexec/QtWebEngineProcess
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/CrashReporter
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/OpenGLVersionChecker
+			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/QdstrmImporter
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/ncu-ui
 			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/ncu-ui.bin
-			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherTargetLdPreloadHelper
 			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherSubreaper
+			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherTargetLdPreloadHelper
 			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/ncu
 		)
 
-		dobin builds/integration/nsight-compute/{ncu,ncu-ui,nv-nsight-cu,nv-nsight-cu-cli}
+		dobin builds/integration/nsight-compute/{ncu,ncu-ui}
 		eend $?
+
+		# remove rdma libs (unless USE=rdma)
+		if ! use rdma; then
+			rm -r "${ED}"/${cudadir}/${ncu_dir}/host/target-linux-x64/CollectX || die
+		fi
 
 		local nsys_dir=$(grep -o 'nsight-systems-[0-9][0-9\.]*' -m1 manifests/cuda_x86_64.xml)
 		ebegin "Installing ${nsys_dir}"
@@ -180,15 +191,27 @@ src_install() {
 			${nsys_dir}/target-linux-x64/nsys-launcher
 			${nsys_dir}/target-linux-x64/sqlite3
 			${nsys_dir}/target-linux-x64/python/bin/python
+			${nsys_dir}/target-linux-x64/CudaGpuInfoDumper
 		)
 
-		dobin builds/integration/nsight-systems/{nsight-sys,nsys,nsys-exporter,nsys-ui}
+		# remove rdma libs (unless USE=rdma)
+		if ! use rdma; then
+			rm -r "${ED}"/${cudadir}/${nsys_dir}/target-linux-x64/CollectX || die
+		fi
+
+		dobin builds/integration/nsight-systems/{nsight-sys,nsys,nsys-ui}
 		eend $?
 
 		# nsight scripts and binaries need to have their executable bit set, #691284
 		for f in "${exes[@]}"; do
 			fperms +x ${cudadir}/${f}
 		done
+
+		# fix broken RPATHs
+		patchelf --set-rpath '$ORIGIN' \
+		"${ED}"/${cudadir}/${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/{libarrow.so,libparquet.so.500.0.0} || die
+		patchelf --set-rpath '$ORIGIN' \
+		"${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/{libarrow.so,libparquet.so.500.0.0} || die
 
 		# remove foreign archs (triggers SONAME warning, #749903)
 		rm -r "${ED}"/${cudadir}/${ncu_dir}/target/linux-desktop-glibc_2_19_0-ppc64le || die
@@ -201,9 +224,6 @@ src_install() {
 		rm "${ED}"/${cudadir}/${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/lib{crypto,ssl}.so* || die
 		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/lib{crypto,ssl}.so* || die
 
-		# unbundle libz
-		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libz.so* || die
-
 		# unbundle libpfm
 		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libpfm.so* || die
 
@@ -215,6 +235,30 @@ src_install() {
 		# TODO: unbundle sqlite
 	fi
 
+	if use examples; then
+		local exes=(
+			extras/demo_suite/bandwidthTest
+			extras/demo_suite/busGrind
+			extras/demo_suite/deviceQuery
+			extras/demo_suite/nbody
+			extras/demo_suite/oceanFFT
+			extras/demo_suite/randomFog
+			extras/demo_suite/vectorAdd
+		)
+
+		# set executable bit on demo_suite binaries
+		for f in "${exes[@]}"; do
+			fperms +x ${cudadir}/${f}
+		done
+	else
+		rm -r "${ED}"/${cudadir}/extras/demo_suite || die
+	fi
+
+	# remove rdma libs (unless USE=rdma)
+	if ! use rdma; then
+		rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/libcufile_rdma* || die
+	fi
+
 	# remove static libs (unless USE=static-libs)
 	if ! use static-libs; then
 		find "${ED}" -name '*_static*.a' -delete || die
@@ -223,6 +267,10 @@ src_install() {
 	# Add include and lib symlinks
 	dosym targets/x86_64-linux/include ${cudadir}/include
 	dosym targets/x86_64-linux/lib ${cudadir}/lib64
+
+	# Remove bad symlinks
+	rm "${ED}"/${cudadir}/targets/x86_64-linux/include/include || die
+	rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/lib64 || die
 
 	newenvd - 99cuda <<-EOF
 		PATH=${ecudadir}/bin${pathextradirs}
@@ -235,7 +283,24 @@ src_install() {
 	newins - 80${PN} <<-EOF
 		SEARCH_DIRS_MASK="${ecudadir}"
 	EOF
-	# TODO: Add pkgconfig files for installed libraries
+
+	# To address the sandbox errors encountered in packages with CUDA,
+	# such as those documented in https://bugs.gentoo.org/926116, it is
+	# necessary to modify the sandbox environment settings. This change
+	# specifically targets issues during the execution of
+	# CMakeDetermineCompilerABI_CUDA.bin, as observed in a range of
+	# software including caffe2, opencv, vtk, cholmod, and openvdb
+	# (refer to https://forums.gentoo.org/viewtopic-p-8789206.html).
+	# Granting access to /proc/self within the sandbox is essential for
+	# these applications to correctly determine the CUDA compiler ABI
+	# without triggering sandbox violations. While opening up /proc/self
+	# may seem to have security implications, its impact is limited as
+	# it only exposes information about the processes inside the same
+	# sandbox environment. The proposed configuration is as follows:
+	insinto /etc/sandbox.d
+	newins - 80${PN} <<-EOF
+		SANDBOX_PREDICT="/proc/self/task"
+	EOF
 }
 
 pkg_postinst_check() {
