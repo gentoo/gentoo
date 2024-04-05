@@ -58,6 +58,7 @@ RDEPEND="
 		dev-qt/qtbase:6[concurrent,cups,network,widgets,xml]
 		dev-qt/qt5compat:6
 		dev-qt/qtwebengine:6[widgets]
+		dev-qt/qtsvg:6
 		plugins? ( $(python_gen_cond_dep '
 			dev-python/PyQt6[${PYTHON_USEDEP}]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP}]
