@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-124-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-124-patches-03.tar.xz"
 
 LLVM_COMPAT=( 16 17 )
 
@@ -73,7 +73,6 @@ IUSE+=" geckodriver +gmp-autoupdate"
 #   firefox-120.0/intl/components/src/TimeZone.cpp:345:3: error: use of undeclared identifier 'MOZ_TRY'
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
-	!jumbo-build? ( !system-icu )
 	pgo? ( lto )
 	wifi? ( dbus )"
 
