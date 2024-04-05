@@ -43,6 +43,9 @@ src_prepare() {
 	if ! use telemetry; then
 		sed -i -e '/enable_telemetry/s:True:False:' stripe/__init__.py || die
 	fi
+	# https://github.com/stripe/stripe-python/pull/1297
+	sed -e 's:from mock:from unittest.mock:' \
+		-i tests/test_http_client.py || die
 	distutils-r1_src_prepare
 }
 
