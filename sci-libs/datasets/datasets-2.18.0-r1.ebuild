@@ -20,10 +20,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# For pin on fsspec see https://github.com/huggingface/datasets/issues/6333
 RDEPEND="
 	${PYTHON_DEPS}
 	sci-libs/pytorch[${PYTHON_SINGLE_USEDEP}]
+	sci-libs/caffe2[${PYTHON_SINGLE_USEDEP},numpy]
 	$(python_gen_cond_dep '
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/aiohttp[${PYTHON_USEDEP}]
