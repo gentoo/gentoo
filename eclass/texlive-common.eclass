@@ -22,6 +22,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+inherit edo
+
 if [[ -z ${_TEXLIVE_COMMON_ECLASS} ]]; then
 _TEXLIVE_COMMON_ECLASS=1
 
@@ -199,9 +201,9 @@ etexmf-update() {
 efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then
 		if [[ -z ${ROOT} && -x "${EPREFIX}"/usr/bin/fmtutil-sys ]] ; then
-			einfo "Rebuilding formats"
-			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null ||
-				die -n "fmtutil-sys returned non-zero exit status ${?}"
+			edob -m "Rebuilding TexLive formats" \
+				 -l fmtutils-sys-all \
+				 "${EPREFIX}"/usr/bin/fmtutil-sys --all
 		else
 			ewarn "Cannot run fmtutil-sys for some reason."
 			ewarn "Your formats might be inconsistent with your installed ${PN} version"
