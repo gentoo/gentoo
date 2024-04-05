@@ -9,8 +9,8 @@ NO_DOT_PV=$(ver_rs 1- '')
 DESCRIPTION="A free file archiver for extremely high compression"
 HOMEPAGE="https://www.7-zip.org/ https://sourceforge.net/projects/sevenzip/"
 SRC_URI="
-	https://sourceforge.net/projects/sevenzip/files/7-Zip/${PV}/7z${NO_DOT_PV}-src.tar.xz/download -> ${PN}-${PV}.tar.xz
-	https://sourceforge.net/projects/sevenzip/files/7-Zip/${PV}/7z${NO_DOT_PV}-linux-x64.tar.xz/download -> ${PN}-${PV}-linux.tar.xz
+	mirror://sourceforge/sevenzip/7-Zip/${PV}/7z${NO_DOT_PV}-src.tar.xz
+	mirror://sourceforge/sevenzip/7-Zip/${PV}/7z${NO_DOT_PV}-linux-x64.tar.xz
 "
 S="${WORKDIR}/CPP/7zip"
 
