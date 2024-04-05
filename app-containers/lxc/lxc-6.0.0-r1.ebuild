@@ -74,7 +74,6 @@ pkg_setup() {
 
 src_configure() {
 
-	# -Dinstall-init-files=false: prefer our own files from ${FILESDIR}
 	# -Dtools-multicall=false: will create a single binary called 'lxc' that conflicts with LXD.
 	local emesonargs=(
 		--localstatedir "${EPREFIX}/var"
@@ -82,13 +81,13 @@ src_configure() {
 		-Ddbus=true
 
 		-Dcoverity-build=false
-		-Dinstall-init-files=false
 		-Dinstall-state-dirs=false
 		-Doss-fuzz=false
 		-Dspecfile=false
 		-Dtools-multicall=false
 
 		-Dcommands=true
+		-Dinstall-init-files=true
 		-Dmemfd-rexec=true
 		-Dthread-safety=true
 
@@ -138,6 +137,13 @@ src_install() {
 	fi
 
 	find "${ED}" -name '*.la' -delete -o -name '*.a' -delete || die
+
+	# Replace upstream sysvinit/systemd files.
+	if use systemd; then
+	rm -r "${D}$(systemd_get_systemunitdir)" || die "Failed to remove systemd lib dir"
+	else
+		rm "${ED}"/etc/init.d/lxc-{containers,net} || die "Failed to remove sysvinit scripts"
+	fi
 
 	newinitd "${FILESDIR}/${PN}.initd.9" ${PN}
 	systemd_newunit "${FILESDIR}"/lxc-monitord.service.5.0.0 lxc-monitord.service
