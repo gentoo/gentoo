@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2024-04-05)
+# Dead upstream and broken beyond repair. Removal on 2024-05-05. Bug #928591.
+games-board/xmille
+
 # Michał Górny <mgorny@gentoo.org> (2024-03-30)
 # NIH package that was added for dev-python/setuptools but is no longer
 # used there.
