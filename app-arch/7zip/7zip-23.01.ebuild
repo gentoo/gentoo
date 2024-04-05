@@ -3,10 +3,10 @@
 
 EAPI=8
 
-inherit edos2unix toolchain-funcs flag-o-matic
+inherit edos2unix flag-o-matic toolchain-funcs
 
 NO_DOT_PV=$(ver_rs 1- '')
-DESCRIPTION="A free file archiver for extremely high compression"
+DESCRIPTION="Free file archiver for extremely high compression"
 HOMEPAGE="https://www.7-zip.org/ https://sourceforge.net/projects/sevenzip/"
 # linux-x64 tarball is used for docs
 SRC_URI="
@@ -29,6 +29,10 @@ BDEPEND="
 	uasm? ( dev-lang/uasm )
 	jwasm? ( dev-lang/jwasm )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-respect-build-env.patch"
+)
 
 # TODO(NRK): also build and install the library
 # TODO(NRK): make it so this package can be used as a drop-in replacement
@@ -60,18 +64,20 @@ src_prepare() {
 	# patch doesn't deal with CRLF even if file+patch match
 	# not even with --ignore-whitespace, --binary or --force
 	edos2unix ./7zip_gcc.mak ./var_gcc{,_x64}.mak ./var_clang{,_x64}.mak
-	PATCHES+=( "${FILESDIR}/${P}-respect-build-env.patch" )
+
+	default
 
 	sed -i -e 's/-Werror //g' ./7zip_gcc.mak || die "Error removing -Werror"
-	default
 }
 
 src_compile() {
 	pushd "./Bundles/Alone2" || die "Unable to switch directory"
+
 	append-ldflags -Wl,-z,noexecstack
 	export G_CFLAGS=${CFLAGS}
 	export G_CXXFLAGS=${CXXFLAGS}
 	export G_LDFLAGS=${LDFLAGS}
+
 	local args=(
 		-f "../../${mfile}"
 		CC=$(tc-getCC)
@@ -83,13 +89,14 @@ src_compile() {
 	if ! use rar; then
 		# disables non-free rar code but allows listing and extracting
 		# non-compressed rar archives
-		args+=(DISABLE_RAR_COMPRESS=1)
+		args+=( DISABLE_RAR_COMPRESS=1 )
 	fi
 	if use jwasm; then
-		args+=(USE_JWASM=1)
+		args+=( USE_JWASM=1 )
 	elif use uasm; then
-		args+=(MY_ASM=uasm)
+		args+=( MY_ASM=uasm )
 	fi
+
 	emake ${args[@]}
 	popd > /dev/null || die "Unable to switch directory"
 }
