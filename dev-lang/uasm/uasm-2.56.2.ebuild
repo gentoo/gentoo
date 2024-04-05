@@ -26,6 +26,8 @@ src_prepare() {
 src_compile() {
 	# Bug: https://github.com/Terraspace/UASM/issues/143
 	append-cflags -fcommon
+	# https://github.com/Terraspace/UASM/issues/197
+	append-cflags -Wno-error=incompatible-pointer-types
 
 	emake -f gccLinux64.mak \
 		CC="$(tc-getCC)" \
