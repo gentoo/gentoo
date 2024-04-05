@@ -8,6 +8,7 @@ inherit edos2unix toolchain-funcs flag-o-matic
 NO_DOT_PV=$(ver_rs 1- '')
 DESCRIPTION="A free file archiver for extremely high compression"
 HOMEPAGE="https://www.7-zip.org/ https://sourceforge.net/projects/sevenzip/"
+# linux-x64 tarball is used for docs
 SRC_URI="
 	mirror://sourceforge/sevenzip/7-Zip/${PV}/7z${NO_DOT_PV}-src.tar.xz
 	mirror://sourceforge/sevenzip/7-Zip/${PV}/7z${NO_DOT_PV}-linux-x64.tar.xz
