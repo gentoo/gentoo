@@ -118,8 +118,8 @@ src_configure() {
 		# external dependencies
 		-DLYX_EXTERNAL_Z=ON
 		-DLYX_EXTERNAL_ICONV=ON
-		-DLYX_EXTERNAL_HUNSPELL=ON
-		-DLYX_EXTERNAL_MYTHES=ON
+		-DLYX_EXTERNAL_HUNSPELL=$(usex !debug)
+		-DLYX_EXTERNAL_MYTHES=$(usex !debug)
 		-DLYX_EXTERNAL_BOOST=$(usex !debug)
 		-DLYX_PROGRAM_SUFFIX=OFF
 
