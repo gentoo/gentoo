@@ -17,7 +17,7 @@ IUSE="doc examples"
 BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
-	${FILESDIR}/${P}-CVE-null-getstring.patch  # upstream, bug #907928
+	"${FILESDIR}"/${P}-CVE-null-getstring.patch  # upstream, bug #907928
 )
 
 _newlib_so_with_symlinks() {
