@@ -1,0 +1,25 @@
+disable tests as we want them manually
+was
+sed -i '/^all:/s|selftests||' Makefile || die
+sed -i '/selftests/d' TARGETS || die
+--- bglibs-2.04.orig/Makefile	2024-05-09 09:01:28.041265589 +0000
++++ bglibs-2.04/Makefile	2024-05-09 09:01:55.520150501 +0000
+@@ -69,7 +69,7 @@
+ adt/hashs.lo adt/hashs.o: ltcompile adt/hashs.c include/bglibs/adt_common.h
+ 	./ltcompile adt/hashs.c
+ 
+-all: sysdeps.h libraries programs man selftests
++all: sysdeps.h libraries programs man 
+ 
+ base64/asc2bin.lo base64/asc2bin.o: ltcompile base64/asc2bin.c include/bglibs/base64.h include/bglibs/str.h sysdeps.h
+ 	./ltcompile base64/asc2bin.c
+--- bglibs-2.04.orig/TARGETS	2024-05-09 09:01:28.039265597 +0000
++++ bglibs-2.04/TARGETS	2024-05-09 09:02:01.744124433 +0000
+@@ -526,7 +526,6 @@
+ rt.lib
+ selftest-cmp
+ selftest-cmp.o
+-selftests
+ str/alloc.lo
+ str/alloc.o
+ str/buildmap.lo
