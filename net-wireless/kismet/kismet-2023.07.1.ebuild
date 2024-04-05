@@ -26,7 +26,11 @@ else
 	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
 
-	PATCHES=( "${DISTDIR}/${P}-stdint-fix.patch" )
+	PATCHES=(
+		"${DISTDIR}/${P}-stdint-fix.patch"
+		# https://github.com/kismetwireless/kismet/pull/517
+		"${FILESDIR}"/0001-configure.ac-bashism-fix-critical-existence-failure-.patch
+	)
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
@@ -108,9 +112,7 @@ src_prepare() {
 
 	default
 
-	if [ "${PV}" = "9999" ]; then
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_configure() {

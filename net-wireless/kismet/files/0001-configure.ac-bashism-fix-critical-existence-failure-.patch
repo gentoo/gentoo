@@ -1,0 +1,280 @@
+From d3732f93cbdc9edf39d31c7c50b72cc6a79be0dc Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Fri, 5 Apr 2024 00:42:29 -0400
+Subject: [PATCH] configure.ac: bashism: fix critical existence failure on
+ systems with dash
+
+Remove the consistent use of bashisms. An autoconf generated script is
+designed to work with POSIX sh, and contains a /bin/sh shebang. As a
+result, it *cannot* assume it will be run with bash, as it won't be.
+
+The bashism in question is the double equals (`==`) operator for the
+test command. It is actually a bash-specific alias for the single equals
+operator. It behaves exactly the same, except more confusing. It
+contains no added functionality and no behavior changes, it is merely an
+additional alternate spelling. In exchange for doing nothing whatsoever,
+even in bash, it breaks muscle memory when writing POSIX sh scripts and
+tricks developers into writing the wrong thing.
+
+It is terrible and should never be used under any circumstances.
+Ideally it would be removed altogether from GNU bash.
+
+Fixes the following warnings when running configure:
+
+```
+./configure: 5011: test: x: unexpected operator
+./configure: 5014: test: x: unexpected operator
+./configure: 5017: test: x: unexpected operator
+./configure: 8056: test: nox: unexpected operator
+./configure: 8109: test: yesx: unexpected operator
+./configure: 8120: test: 3: unexpected operator
+./configure: 8144: test: unexpected operator
+./configure: 9089: test: stdc++x: unexpected operator
+./configure: 9937: test: 0: unexpected operator
+./configure: 10084: test: 0: unexpected operator
+./configure: 10207: test: 0: unexpected operator
+./configure: 10283: test: 0: unexpected operator
+./configure: 11363: test: x: unexpected operator
+./configure: 11561: test: x: unexpected operator
+./configure: 11634: test: xno: unexpected operator
+./configure: 11663: test: xno: unexpected operator
+./configure: 12490: test: 3: unexpected operator
+./configure: 13150: test: no: unexpected operator
+./configure: 13167: test: no: unexpected operator
+```
+
+And the following fatal errors when trying to compile, since the
+resulting conditionals failed to define $(PROTOCBIN):
+
+```
+make -j8
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/kismet.proto
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/http.proto
+/bin/sh: 1: -I: not found
+make: [Makefile:808: protobuf_cpp/kismet.pb.h] Error 127 (ignored)
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/datasource.proto
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/linuxbluetooth.proto
+/bin/sh: 1: -I: not found
+make: [Makefile:808: protobuf_cpp/http.pb.h] Error 127 (ignored)
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/eventbus.proto
+/bin/sh: 1: -I: not found
+make: [Makefile:808: protobuf_cpp/linuxbluetooth.pb.h] Error 127 (ignored)
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/kismet.proto
+/bin/sh: 1: -I: not found
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/http.proto
+/bin/sh: 1: -I: not found
+/bin/sh: 1: -I: not found
+make: [Makefile:808: protobuf_cpp/datasource.pb.h] Error 127 (ignored)
+make: [Makefile:808: protobuf_cpp/eventbus.pb.h] Error 127 (ignored)
+make: [Makefile:806: protobuf_cpp/kismet.pb.cc] Error 127 (ignored)
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/datasource.proto
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/linuxbluetooth.proto
+cpp_out=./protobuf_cpp/ -I protobuf_definitions/ protobuf_definitions/eventbus.proto
+/bin/sh: 1: -I: not found
+```
+
+For extra interest, the failing command begins with `--flag` i.e. a flag
+passed to protoc, which Make then interprets as "ignore errors for this
+command", which means output files are not created but the build then
+continues and produces significantly more confusing errors such as:
+
+```
+kis_external.h:51:10: fatal error: protobuf_cpp/kismet.pb.h: No such file or directory
+```
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ configure.ac | 46 +++++++++++++++++++++++-----------------------
+ 1 file changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a967e3418..d3c961821 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -179,13 +179,13 @@ else
+     GCC_MINOR=$(echo $GCC_VERSION | cut -s -d'.' -f2)
+     GCC_PATCH=$(echo $GCC_VERSION | cut -s -d'.' -f3)
+ 
+-    if test "$GCC_MAJOR"x == x; then
++    if test "$GCC_MAJOR"x = x; then
+         GCC_MAJOR=$GCC_VERSION
+     fi
+-    if test "$GCC_MINOR"x == x; then
++    if test "$GCC_MINOR"x = x; then
+         GCC_MINOR=0
+     fi
+-    if test "$GCC_PATCH"x == x; then
++    if test "$GCC_PATCH"x = x; then
+         GCC_PATCH=0
+     fi
+ 
+@@ -318,7 +318,7 @@ AC_ARG_ENABLE([element-typesafety],
+   esac],
+   [want_te_typesafety=no]
+ )
+-if test "$want_te_typesafety"x == "yes"x; then
++if test "$want_te_typesafety"x = "yes"x; then
+     AC_DEFINE(TE_TYPE_SAFETY, 1, Enforce runtime type safety)
+ else
+     AC_DEFINE(TE_TYPE_SAFETY, 0, Do not enforce runtime type safety)
+@@ -357,7 +357,7 @@ AS_IF([test "x$with_python_interpreter" != "x"],
+     []
+ )
+ 
+-if test "$want_python"x == "no"x; then
++if test "$want_python"x = "no"x; then
+     BUILD_PYTHON_MODULES=0
+     BUILD_CAPTURE_SDR_RTL433=0
+     BUILD_CAPTURE_SDR_RTLAMR=0
+@@ -367,11 +367,11 @@ if test "$want_python"x == "no"x; then
+     BUILD_CAPTURE_PROXY_ADSB=0
+     AC_MSG_WARN([Disabling Python and Python-related tools])
+ else
+-    if test "$PYTHON_VERSION" == 3; then
++    if test "$PYTHON_VERSION" = 3; then
+         AC_PYTHON3_MODULE(setuptools)
+     fi
+ 
+-    if test "$HAVE_PYMOD_SETUPTOOLS" == "no"; then
++    if test "$HAVE_PYMOD_SETUPTOOLS" = "no"; then
+         AC_MSG_ERROR([Missing python setuptools, if you would like to build without python entirely, use --disable-python-tools, otherwise install python setuptools for your python version])
+     else
+         DATASOURCE_BINS="$DATASOURCE_BINS \$(CAPTURE_SDR_RTL433) \$(CAPTURE_SDR_RTLAMR) \$(CAPTURE_SDR_RTLADSB) \$(CAPTURE_FREAKLABS_ZIGBEE)"
+@@ -675,7 +675,7 @@ CC="$CXX"
+ AC_CHECK_LIB([stdc++], [main],
+         foundcxxl="stdc++" CXXLIBS="$CXXLIBS -lstdc++")
+ 
+-if test "$foundcxxl"x == "x" -a "$caponly" != 1; then
++if test "$foundcxxl"x = "x" -a "$caponly" != 1; then
+ 	AC_MSG_ERROR(No standard stdc++ libraries found.)
+ fi
+ CC="$oCC"
+@@ -939,7 +939,7 @@ if test "${wantpcre}x" = "nox" -a "${needpcre2}x" = "yesx"; then
+     AC_MSG_ERROR([Can not combine --disable-pcre and --enable-require-pcre2])
+ fi
+ 
+-if test "$caponly" == 0; then
++if test "$caponly" = 0; then
+     if test "$HAVE_CXX17" = "1"; then
+ 	    AC_MSG_CHECKING([Checking C++17 parallel functions])
+ 
+@@ -1017,7 +1017,7 @@ if test "$caponly" == 0; then
+ fi
+ 
+ # Dont' check pcre if we're only building datasources
+-if test "$caponly" == 0; then
++if test "$caponly" = 0; then
+     if test "$wantpcre" = "yes"; then
+         # Check for pcre2 first
+         
+@@ -1046,22 +1046,22 @@ if test "$caponly" == 0; then
+         LIBS="$OLIBS"
+ 
+         if test "$pcre2" != "yes"; then
+-            if test "${needpcre2}x" == "yesx"; then
++            if test "${needpcre2}x" = "yesx"; then
+                 AC_MSG_ERROR([Could not find libpcre2 and --enable-require-pcre2 selected])
+             fi
+ 
+     	    AC_CHECK_LIB([pcre], [pcre_compile], pcre1=yes, pcre1=no)
+ 
+-            if test "$pcre1" == "yes"; then
++            if test "$pcre1" = "yes"; then
+     	        AC_CHECK_HEADER([pcre.h], pcre1=yes, pcre1=no)
+             fi
+ 
+         fi
+ 
+-        if test "$pcre2" == "yes"; then
++        if test "$pcre2" = "yes"; then
+             AC_DEFINE(HAVE_LIBPCRE2, 1, libpcre2 regex support)
+             LIBS="$LIBS -lpcre2-8"
+-        elif test "$pcre1" == "yes"; then
++        elif test "$pcre1" = "yes"; then
+             AC_DEFINE(HAVE_LIBPCRE, 1, libpcre1 regex support)
+             LIBS="$LIBS -lpcre"
+         else
+@@ -1071,7 +1071,7 @@ if test "$caponly" == 0; then
+ fi
+ 
+ # Don't check for sqlite3 if we're only building datasources
+-if test "$caponly" == 0; then
++if test "$caponly" = 0; then
+     # Check for sqlite3
+     sql3l=no
+     AC_CHECK_LIB([sqlite3], [sqlite3_libversion], sql3l=yes, sql3l=no)
+@@ -1098,7 +1098,7 @@ if test "$caponly" == 0; then
+ fi # caponly
+ 
+ # don't check for openssl if we're only building datasources 
+-if test "$caponly" == 0; then 
++if test "$caponly" = 0; then 
+     AX_CHECK_OPENSSL(AC_DEFINE(HAVE_OPENSSL, 1, openssl library present),
+                      AC_MSG_ERROR(Failed to find OpenSSL library))
+ fi # caponly
+@@ -1212,7 +1212,7 @@ if test "$caponly" = 0 || test "$want_python" = "yes"; then
+     	[  --with-protoc[=PATH]     Custom location of the protoc protobuf compiler],
+         [ ])
+     
+-    if test x"$with_protoc" == "x"; then
++    if test x"$with_protoc" = "x"; then
+         PROTOCBIN=protoc
+         AC_CHECK_PROG(protoc, [protoc], yes)
+         if test x"$protoc" != x"yes"; then
+@@ -1254,7 +1254,7 @@ AC_ARG_WITH(protocc,
+ 	[  --with-protocc[=PATH]     Custom location of the protoc protobuf compiler],
+ 	[ PROTOCCBIN=$withval ]
+ 	)
+-if test x"$with_protocc" == "x"; then
++if test x"$with_protocc" = "x"; then
+     PROTOCCBIN="protoc-c"
+     AC_CHECK_PROG(protocc, [protoc-c], yes)
+     if test x"$protocc" != x"yes"; then
+@@ -1282,7 +1282,7 @@ AC_ARG_ENABLE(btgeiger,
+     [want_btgeiger=no]
+ )
+ 
+-AS_IF([test "x$want_btgeiger" == "xyes"], [
++AS_IF([test "x$want_btgeiger" = "xyes"], [
+        AS_IF([test "x$want_python" != "xyes"], [
+               AC_MSG_ERROR([Can not enable btgeiger without enabling python])
+               ])
+@@ -1301,7 +1301,7 @@ AC_ARG_ENABLE(bladerf,
+     [want_bladerf=no]
+ )
+ 
+-AS_IF([test "x$want_bladerf" == "xyes"], [
++AS_IF([test "x$want_bladerf" = "xyes"], [
+     PKG_CHECK_MODULES([libbladeRF], [libbladeRF], 
+         [
+         ], 
+@@ -1529,7 +1529,7 @@ if test "$havenetlink" = "yes"; then
+ 	fi
+ 
+ 	if test "$nlname" != ""; then
+-        if test "$picked_nl" == "tiny"; then
++        if test "$picked_nl" = "tiny"; then
+             NLLIBS="-lnl-tiny"
+         else
+ 		    NLLIBS=`pkg-config --libs $nlname`
+@@ -1837,7 +1837,7 @@ AC_ARG_ENABLE(asan,
+ 	 esac],
+ 	[want_asan=no]
+ )
+-if test "$want_asan" == "yes"; then
++if test "$want_asan" = "yes"; then
+     CPPFLAGS="$CPPFLAGS -fsanitize=address -fno-omit-frame-pointer"
+     LDFLAGS="$LDFLAGS -fsanitize=address"
+ fi
+@@ -1850,7 +1850,7 @@ AC_ARG_ENABLE(tsan,
+ 	 esac],
+ 	[want_tsan=no]
+ )
+-if test "$want_tsan" == "yes"; then
++if test "$want_tsan" = "yes"; then
+     CPPFLAGS="$CPPFLAGS -fsanitize=thread -fno-omit-frame-pointer"
+     LDFLAGS="$LDFLAGS -fsanitize=thread"
+ fi
+-- 
+2.43.2
+
