@@ -139,6 +139,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
+	"${FILESDIR}"/${PN}-6.6.3-pkgconf-deps.patch
+	"${FILESDIR}"/${PN}-6.7.0-qspan-ifdef.patch
 )
 
 src_prepare() {
