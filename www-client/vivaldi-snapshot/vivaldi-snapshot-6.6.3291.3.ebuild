@@ -85,7 +85,7 @@ CHROMIUM_LANGS="
 	zh-TW
 "
 
-inherit chromium-2 desktop linux-info unpacker xdg
+inherit chromium-2 desktop linux-info toolchain-funcs unpacker xdg
 
 VIVALDI_PN="${PN/%vivaldi/vivaldi-stable}"
 VIVALDI_HOME="opt/${PN}"
@@ -109,7 +109,7 @@ SRC_URI="
 
 LICENSE="Vivaldi"
 SLOT="0"
-IUSE="ffmpeg-chromium gtk proprietary-codecs qt5 widevine"
+IUSE="ffmpeg-chromium gtk proprietary-codecs qt5 qt6 widevine"
 RESTRICT="bindist mirror"
 REQUIRED_USE="ffmpeg-chromium? ( proprietary-codecs )"
 
@@ -144,6 +144,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
+	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 	widevine? ( www-plugins/chrome-binary-plugins )
 "
 
@@ -178,6 +179,7 @@ src_prepare() {
 	popd > /dev/null || die
 
 	if use proprietary-codecs; then
+		einfo Bundled $($(tc-getSTRINGS) ${VIVALDI_HOME}/lib/libffmpeg.so | grep -m1 "^FFmpeg version ")
 		rm ${VIVALDI_HOME}/lib/libffmpeg.so || die
 		rmdir ${VIVALDI_HOME}/lib || die
 	fi
@@ -186,8 +188,13 @@ src_prepare() {
 		rm ${VIVALDI_HOME}/libqt5_shim.so || die
 	fi
 
-	if ! false; then # use qt6; then (TODO)
+	if ! use qt6; then
 		rm ${VIVALDI_HOME}/libqt6_shim.so || die
+	fi
+
+	# Bug #928519, #928520.
+	if ! use amd64; then
+		rm ${VIVALDI_HOME}/relayproxy-linux || die
 	fi
 
 	eapply_user
