@@ -1,9 +1,12 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit flag-o-matic toolchain-funcs
+
+DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
+HOMEPAGE="https://github.com/libbpf/libbpf"
 
 if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
@@ -14,18 +17,24 @@ else
 fi
 S="${WORKDIR}/${P}/src"
 
-DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
-HOMEPAGE="https://github.com/libbpf/libbpf"
-
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="static-libs"
 
 DEPEND="
 	sys-kernel/linux-headers
-	virtual/libelf"
-RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig"
+	virtual/libelf
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+"
+
+DOCS=(
+	../{README,SYNC}.md
+)
 
 PATCHES=(
 	"${FILESDIR}"/libbpf-9999-paths.patch
@@ -48,6 +57,8 @@ src_install() {
 	if ! use static-libs; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+
+	dodoc "${DOCS[@]}"
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc
