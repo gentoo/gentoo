@@ -269,10 +269,12 @@ texlive-common_update_tlpdb() {
 
 	touch "${new_tlpdb}" || die
 
-	find "${tlpobj}" -maxdepth 1 -type f -name "*.tlpobj" -print0 |
-		sort -z |
-		xargs -0 --no-run-if-empty cat >> "${new_tlpdb}"
-	assert "generating tlpdb failed"
+	if [[ -d "${tlpobj}" ]]; then
+		find "${tlpobj}" -maxdepth 1 -type f -name "*.tlpobj" -print0 |
+			sort -z |
+			xargs -0 --no-run-if-empty cat >> "${new_tlpdb}"
+		assert "generating tlpdb failed"
+	fi
 
 	if [[ -f ${tlpdb} ]]; then
 		cmp -s "${new_tlpdb}" "${tlpdb}"
