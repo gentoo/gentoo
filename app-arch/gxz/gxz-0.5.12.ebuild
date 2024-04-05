@@ -18,6 +18,11 @@ src_compile() {
 	ego build ./cmd/gxz
 }
 
+src_test() {
+	# TODO: Need to give it test data?
+	ego test ./cmd/gxz
+}
+
 src_install() {
 	dobin gxz
 }
