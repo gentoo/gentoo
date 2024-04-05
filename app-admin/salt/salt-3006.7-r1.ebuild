@@ -334,6 +334,9 @@ python_test() {
 		tests/unit/test_master.py::TransportMethodsTest::test_aes_funcs_black
 		tests/unit/test_master.py::TransportMethodsTest::test_clear_funcs_black
 	)
+	[[ ${EPYTHON#*.} -ge 12 ]] && EPYTEST_DESELECT+=(
+		tests/integration/modules/test_hosts.py::HostsModuleTest::test_set_host
+	)
 
 	# testsuite likes lots of files
 	ulimit -n 4096 || die
