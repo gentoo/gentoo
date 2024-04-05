@@ -3,12 +3,12 @@
 @@ -1,2 +1,2 @@
  #define CATCH_CONFIG_MAIN
 -#include "catch.hpp"
-+#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
 --- a/unit_tests/test_index.cpp
 +++ b/unit_tests/test_index.cpp
 @@ -1,4 +1,4 @@
 -#include "catch.hpp"
-+#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
  
  #include "common.h"
  #include "KmerIndex.h"
@@ -16,7 +16,7 @@
 +++ b/unit_tests/test_kmerhashtable.cpp
 @@ -1,4 +1,4 @@
 -#include "catch.hpp"
-+#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
  
  #include <random>
  #include <string>
@@ -24,7 +24,7 @@
 +++ b/unit_tests/test_multinomial.cpp
 @@ -1,4 +1,4 @@
 -#include "catch.hpp"
-+#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
  
  #include <iostream>
  #include <vector>
@@ -32,7 +32,7 @@
 +++ b/unit_tests/test_weights.cpp
 @@ -1,4 +1,4 @@
 -#include "catch.hpp"
-+#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
  
  #include <vector>
  

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Near-optimal RNA-Seq quantification"
 HOMEPAGE="http://pachterlab.github.io/kallisto/"
@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-cpp/catch:0
+		>=dev-cpp/catch-3:0
 		sci-libs/hdf5
 	)"
 BDEPEND="virtual/pkgconfig"
@@ -51,6 +51,10 @@ src_prepare() {
 	# specific builddir nesting structure.
 	sed -e "s|../test/input/short_reads.fastq|$(readlink -f unit_tests/input/short_reads.fastq)|g" \
 		-i unit_tests/test_kmerhashtable.cpp || die
+
+	# This randomly hardcodes a particular std, which unfortunately is too old for catch2.
+	sed -i '/CMAKE_CXX_STANDARD/d' CMakeLists.txt || die
+	append-cxxflags -std=c++14
 }
 
 src_configure() {

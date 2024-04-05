@@ -142,7 +142,7 @@
  
 +find_package( Catch2 REQUIRED )
 +include_directories( ${Catch2_INCLUDE_DIRS} )
-+target_link_libraries( tests ${Catch2_LIBRARIES} )
++target_link_libraries( tests Catch2::Catch2WithMain )
 +
  find_package( ZLIB REQUIRED )
  if ( ZLIB_FOUND )
