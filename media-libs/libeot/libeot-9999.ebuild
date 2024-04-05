@@ -1,24 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-EGIT_REPO_URI="https://github.com/umanwizard/libeot.git"
 inherit autotools
-[[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')"
 HOMEPAGE="https://github.com/umanwizard/libeot"
-[[ ${PV} == 9999 ]] || SRC_URI="https://github.com/umanwizard/libeot/archive/v${PV}.tar.gz -> ${P}.tgz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/umanwizard/libeot.git"
+else
+	SRC_URI="https://github.com/umanwizard/libeot/archive/v${PV}.tar.gz -> ${P}.tgz"
+	KEYWORDS="~amd64 ~riscv ~x86"
+fi
 
 LICENSE="MPL-2.0"
 SLOT="0"
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
