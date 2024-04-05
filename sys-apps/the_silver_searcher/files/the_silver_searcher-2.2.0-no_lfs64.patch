@@ -1,6 +1,17 @@
 LFS64 interfaces are now generally considered deprecated, and are no longer
 available in MUSL since version 1.2.4.
 
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,6 +12,8 @@
+ AC_PREREQ([2.59])
+ AC_PROG_GREP
+ 
++AC_SYS_LARGEFILE
++
+ m4_ifdef(
+     [AM_SILENT_RULES],
+     [AM_SILENT_RULES([yes])])
 --- a/src/zfile.c
 +++ b/src/zfile.c
 @@ -4,7 +4,7 @@
