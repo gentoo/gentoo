@@ -48,7 +48,6 @@ RDEPEND="
 		=app-text/atril-${MATE_BRANCH}*
 		=mate-extra/caja-extensions-${MATE_BRANCH}*
 		=mate-extra/mate-calc-${MATE_BRANCH}*
-		=mate-extra/mate-netbook-${MATE_BRANCH}*
 		=mate-extra/mate-power-manager-${MATE_BRANCH}*
 		=mate-extra/mate-screensaver-${MATE_BRANCH}*
 		=mate-extra/mate-system-monitor-${MATE_BRANCH}*
@@ -66,12 +65,6 @@ PDEPEND="
 	virtual/notification-daemon:0"
 
 pkg_postinst() {
-	elog "1.27.x is a development release, if a stable desktop experince is required then use 1.26."
-	elog "Please report all issues to https:/bugs.gentoo.org"
-	elog ""
-	elog "For installation, usage and troubleshooting details regarding MATE;"
-	elog "read more about it at Gentoo Wiki: https://wiki.gentoo.org/wiki/MATE"
-	elog ""
 	if ! has_version x11-misc/mate-notification-daemon; then
 		elog "If you experience any issues with notifications, please try using"
 		elog "x11-misc/mate-notification-daemon instead your currently installed daemon"
