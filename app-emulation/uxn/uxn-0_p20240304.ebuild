@@ -19,7 +19,7 @@ elif [[ "${PV}" == *_p20240304 ]] ; then
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/uxn-${COMMIT}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 else
 	die "wrong package version (PV), please update the ebuild, given: ${PV}"
 fi
