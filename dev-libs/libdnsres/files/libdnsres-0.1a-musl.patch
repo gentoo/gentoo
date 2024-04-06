@@ -1,0 +1,80 @@
+Add a function that's missing from musl, use autotools machinery to
+use it when needed
+https://bugs.gentoo.org/880341
+--- a/configure.in
++++ b/configure.in
+@@ -191,6 +191,8 @@
+ 	[Define to unsigned int if you dont have it])]
+ )
+ 
++AC_REPLACE_FUNCS([inet_nsap_ntoa])
++
+ AC_MSG_CHECKING([whether our compiler supports __func__])
+ AC_TRY_COMPILE([],
+  [void foo() { const char *cp = __func__; }],
+--- a/inet_nsap_ntoa.c
++++ b/inet_nsap_ntoa.c
+@@ -0,0 +1,50 @@
++/* taken from glibc source */
++/*
++ * Copyright (c) 1996-1999 by Internet Software Consortium.
++ *
++ * Permission to use, copy, modify, and distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
++ * ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
++ * CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
++ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
++ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
++ * ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
++ * SOFTWARE.
++ */
++
++#if !defined(HAVE_INET_NSAP_NTOA)
++#include <sys/types.h>
++
++char *
++inet_nsap_ntoa(int binlen, const u_char *binary, char *ascii) {
++	int nib;
++	int i;
++	static char tmpbuf[255*2 + 128];
++	char *start;
++
++	if (ascii)
++		start = ascii;
++	else {
++		ascii = tmpbuf;
++		start = tmpbuf;
++	}
++
++	if (binlen > 255)
++		binlen = 255;
++
++	for (i = 0; i < binlen; i++) {
++		nib = *binary >> 4;
++		*ascii++ = nib + (nib < 10 ? '0' : '7');
++		nib = *binary++ & 0x0f;
++		*ascii++ = nib + (nib < 10 ? '0' : '7');
++		if (((i % 2) == 0 && (i + 1) < binlen))
++			*ascii++ = '.';
++	}
++	*ascii = '\0';
++	return (start);
++}
++#endif
+--- a/res_debug.c
++++ b/res_debug.c
+@@ -94,6 +94,10 @@
+ #include "dnsres-internal.h"
+ #include "resolv.h"
+ 
++#if !defined(HAVE_INET_NSAP_NTOA)
++char *inet_nsap_ntoa(int binlen, const u_char *binary, char *ascii);
++#endif
++
+ /* Signatures */
+                                         /* Size of a mod or exp in bits */
+ #define MIN_MD5RSA_KEY_PART_BITS         512

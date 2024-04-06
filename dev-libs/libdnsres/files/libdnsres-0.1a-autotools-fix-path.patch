@@ -1,0 +1,39 @@
+To fix hardcoded library path so stuff works both on 64 and 32 bit systems
+https://bugs.gentoo.org/713630
+--- a/configure.in
++++ b/configure.in
+@@ -43,11 +43,11 @@
+         if cd $withval; then withval=`pwd`; cd $owd; fi
+         EVENTINC="-I$withval"
+         EVENTLIB="-L$withval -levent"
+-     elif test -f $withval/include/event.h -a -f $withval/lib/libevent.a; then
++     elif test -f $withval/include/event.h -a -f ${libdir}/libevent.a; then
+         owd=`pwd`
+         if cd $withval; then withval=`pwd`; cd $owd; fi
+ 	EVENTINC="-I$withval/include"
+-	EVENTLIB="-L$withval/lib -levent"
++	EVENTLIB="-L${libdir} -levent"
+      else
+         AC_ERROR(event.h or libevent.a not found in $withval)
+      fi
+@@ -55,7 +55,7 @@
+   esac ],
+ [ if test -f ${prefix}/include/event.h; then
+      EVENTINC="-I${prefix}/include"
+-     EVENTLIB="-L${prefix}/lib -levent"
++     EVENTLIB="-L${libdir} -levent"
+   elif test -f /usr/include/event/event.h; then
+      EVENTINC="-I/usr/include/event"
+      EVENTLIB="-levent"
+was sed -i configure.in -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' || die
+--- a/configure.in
++++ b/configure.in
+@@ -2,7 +2,7 @@
+ AC_INIT(res_init.c)
+ 
+ AM_INIT_AUTOMAKE(libdnsres,0.1a)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE
+ 
+ dnl Initialize prefix.
