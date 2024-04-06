@@ -13,11 +13,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
-STRONGSWAN_PLUGINS_STD="eap-radius gcm led lookip systime-fix unity vici"
+STRONGSWAN_PLUGINS_STD="aes cmac curve25519 des dnskey drbg eap-radius fips-prf gcm hmac led lookip md5 nonce pem pgp
+pkcs1 pkcs7 pkcs8 pkcs12 pubkey random rc2 revocation sha1 sha2 sshkey systime-fix unity vici x509 xcbc"
 STRONGSWAN_PLUGINS_OPT_DISABLE="kdf"
-STRONGSWAN_PLUGINS_OPT="addrblock aesni blowfish bypass-lan ccm chapoly ctr error-notify forecast
-ha ipseckey newhope ntru padlock rdrand save-keys unbound whitelist
-xauth-noauth"
+STRONGSWAN_PLUGINS_OPT="acert af-alg agent addrblock aesni botan blowfish bypass-lan
+ccm chapoly ctr error-notify forecast files gcm ha ipseckey md4 mgf1 ntru newhope
+openxpki padlock rdrand save-keys sha3 soup test-vectors unbound whitelist xauth-noauth"
+
 for mod in $STRONGSWAN_PLUGINS_STD; do
 	IUSE="${IUSE} +strongswan_plugins_${mod}"
 done
