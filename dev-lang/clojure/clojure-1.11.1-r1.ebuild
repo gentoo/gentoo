@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,20 +32,17 @@ SRC_URI="
 		https://github.com/clojure/test.check/archive/v${TEST_CHECK_VER}.tar.gz -> test.check-${TEST_CHECK_VER}.tar.gz
 	)
 "
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="EPL-1.0 Apache-2.0 BSD"
-SLOT="$(ver_cut 1-2)"
-
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 x86 ~x86-linux"
-
-PATCHES=( "${FILESDIR}"/add-compile-spec-ant-build-target.patch )
-
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jre-1.8"
 DEPEND=">=virtual/jdk-1.8"
 
-S="${WORKDIR}"/${PN}-${P}
+PATCHES=( "${FILESDIR}"/add-compile-spec-ant-build-target.patch )
 
 DOCS=( changes.md CONTRIBUTING.md readme.txt )
 
@@ -90,7 +87,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar "${PN}.jar"
-	java-pkg_dolauncher ${PN}-${SLOT} --main clojure.main
+	java-pkg_dolauncher "${PN}" --main clojure.main
 
 	einstalldocs
 }

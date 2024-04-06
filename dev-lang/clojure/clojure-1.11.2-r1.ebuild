@@ -46,7 +46,7 @@ SRC_URI="
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="EPL-1.0 Apache-2.0 BSD"
-SLOT="$(ver_cut 1-2)"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 RESTRICT="!test? ( test )"
 
@@ -102,7 +102,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar "${PN}.jar"
-	java-pkg_dolauncher "${PN}-${SLOT}" --main clojure.main
+	java-pkg_dolauncher "${PN}" --main clojure.main
 
 	einstalldocs
 }
