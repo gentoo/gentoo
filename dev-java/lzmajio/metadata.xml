@@ -5,4 +5,7 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	</pkgmetadata>
+	<upstream>
+		<remote-id type="github">league/lzmajio</remote-id>
+	</upstream>
+</pkgmetadata>
