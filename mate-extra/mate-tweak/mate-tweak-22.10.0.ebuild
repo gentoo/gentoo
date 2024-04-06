@@ -16,7 +16,6 @@ SRC_URI="https://github.com/ubuntu-mate/mate-tweak/archive/refs/tags/${PV}.tar.g
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pulldown netbook"
 
 RDEPEND="
 	dev-python/distro
@@ -33,7 +32,6 @@ RDEPEND="
 DEPEND="
 	net-misc/rsync
 	dev-python/setuptools
-	dev-python/python-distutils-extra
 "
 
 pkg_setup() {
