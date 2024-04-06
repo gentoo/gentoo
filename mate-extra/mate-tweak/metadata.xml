@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+		<maintainer type="person" proxied="yes">
+			<email>immoloism@gmail.com</email>
+			<name>Ian Jordan</name>
+		</maintainer>
+		<maintainer type="person" proxied="yes">
+			<email>tacokoneko@gmail.com</email>
+		</maintainer>
+		<maintainer type="project" proxied="proxy">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Proxy Maintainers</name>
+		</maintainer>
+	<longdescription>
+		MATE Tweak is a small utility to fine-tune the MATE desktop environment
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ubuntu-mate/mate-tweak</remote-id>
+	</upstream>
+</pkgmetadata>
