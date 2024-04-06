@@ -26,7 +26,7 @@ all_ruby_prepare() {
 		-e '/ls-files/d' \
 		-e '/cucumber/ s/,.*$//' minitest-around.gemspec Rakefile || die
 	sed -e '/bundler/ s:^:#:' \
-		-i test/helper.rb || die
+		-i test/helper.rb Rakefile || die
 }
 
 each_ruby_test() {
