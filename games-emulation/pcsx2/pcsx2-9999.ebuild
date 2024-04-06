@@ -35,6 +35,7 @@ COMMON_DEPEND="
 	dev-qt/qtbase:6[concurrent,gui,widgets]
 	dev-qt/qtsvg:6
 	media-libs/libglvnd[X]
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsdl2[haptic,joystick]
 	media-libs/libwebp:=
