@@ -514,6 +514,10 @@ riscv		default/linux/riscv/23.0/rv64/lp64/desktop/systemd			dev
 riscv		default/linux/riscv/23.0/rv64/lp64/systemd				stable
 riscv		default/linux/riscv/23.0/rv64/multilib					exp
 riscv		default/linux/riscv/23.0/rv64/multilib/systemd				exp
+riscv		default/linux/riscv/23.0/rv32/ilp32d					exp
+riscv		default/linux/riscv/23.0/rv32/ilp32d/systemd				exp
+riscv		default/linux/riscv/23.0/rv32/ilp32					exp
+riscv		default/linux/riscv/23.0/rv32/ilp32/systemd				exp
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d				stable
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop			dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/desktop/gnome		dev
@@ -523,6 +527,8 @@ riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop			dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/gnome		dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/desktop/plasma		dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/multilib			exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d				exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32				exp
 
 
 # S390 Profiles
@@ -689,6 +695,10 @@ riscv		default/linux/riscv/23.0/rv64/lp64d/musl			dev
 riscv		default/linux/riscv/23.0/rv64/lp64/musl				dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64/musl		dev
+riscv		default/linux/riscv/23.0/rv32/ilp32d/musl			exp
+riscv		default/linux/riscv/23.0/rv32/ilp32/musl			exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d/musl		exp
+riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32/musl		exp
 x86		default/linux/x86/17.0/musl					exp
 x86		default/linux/x86/17.0/musl/selinux				exp
 x86		default/linux/x86/23.0/i686/musl				dev
