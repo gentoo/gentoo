@@ -43,6 +43,7 @@ DEPEND="
 RDEPEND+=" pam? ( >=sys-auth/pambase-20080219.1 )"
 BDEPEND="
 	test? (
+		sys-libs/nss_wrapper
 		$(python_gen_any_dep '
 			dev-python/attrs[${PYTHON_USEDEP}]
 			dev-python/iniconfig[${PYTHON_USEDEP}]
@@ -63,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2024.84-dbscp.patch
 	"${FILESDIR}"/${PN}-2022.82-tests.patch
 	"${FILESDIR}"/${PN}-2024.84-non-interactive-tests.patch
+	"${FILESDIR}"/${PN}-2024.84-fix-channels-tests.patch
 )
 
 set_options() {
@@ -106,7 +108,7 @@ src_prepare() {
 	restore_config localoptions.h
 
 	# remove tests that fail
-	rm test/test_aslr.py test/test_channels.py || die
+	rm test/test_aslr.py || die
 
 	# dropbearconver is not build with USE minimal
 	if use minimal; then
