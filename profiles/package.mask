@@ -873,17 +873,6 @@ net-misc/openr2
 # reverse dependencies are fixed. Tracker bug is bug #906077.
 =dev-libs/libfmt-10*
 
-# Sam James <sam@gentoo.org> (2023-04-13)
-# Leads to broken terminal output in e.g. vim and openrc and other applications
-# like joe crashing.
-# Bugs:
-# - reported at bottom of bug #904247 and bug #904263
-# - app-misc/tmux: https://github.com/tmux/tmux/issues/3531
-# - sys-apps/openrc: https://github.com/OpenRC/openrc/issues/619
-=sys-libs/ncurses-6.4_p20230424
-=sys-libs/ncurses-6.4_p20230506
-=sys-libs/ncurses-6.4_p20230527
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
