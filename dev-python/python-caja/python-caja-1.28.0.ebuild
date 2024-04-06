@@ -32,7 +32,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 BDEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
-	dev-util/gtk-doc-am
+	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	doc? ( app-text/docbook-xml-dtd:4.1.2 )
