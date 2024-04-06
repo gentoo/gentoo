@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,13 +18,17 @@ RESTRICT="test"
 RDEPEND="dev-libs/libxml2
 	acct-group/davfs2
 	acct-user/davfs2
-	net-libs/neon:=
+	net-libs/neon:0/27
 	sys-libs/zlib
 	nls? ( virtual/libintl virtual/libiconv )
 "
 BDEPEND="
 	nls? ( sys-devel/gettext )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.1-neon-version-support.patch
+)
 
 src_prepare() {
 	local f
@@ -39,7 +43,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-largefile $(use_enable nls) ssbindir="${EPREFIX}/usr/sbin"
+	econf --enable-largefile $(use_enable nls)
 }
 
 pkg_postinst() {
