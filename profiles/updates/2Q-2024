@@ -1,1 +1,2 @@
 move dev-python/lazy_loader dev-python/lazy-loader
+slotmove dev-lang/clojure 1.11 0
