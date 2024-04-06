@@ -22,6 +22,7 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="selinux test"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -63,6 +64,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
+	"${FILESDIR}"/dracut-060-grub-layout.patch
 )
 
 src_configure() {
