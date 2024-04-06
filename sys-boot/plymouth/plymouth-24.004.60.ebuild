@@ -17,46 +17,47 @@ fi
 DESCRIPTION="Graphical boot animation (splash) and logger"
 HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug +drm +gtk +pango selinux freetype +split-usr static-libs +udev doc upstart-monitoring systemd"
 
+BDEPEND="
+	app-text/docbook-xsl-stylesheets
+	>=dev-build/meson-0.61
+	dev-libs/libxslt
+	virtual/pkgconfig
+"
+
 DEPEND="
-	virtual/libc
-	>=media-libs/libpng-1.2.16:=
+	dev-libs/libevdev
 	drm? ( x11-libs/libdrm )
+	elibc_musl? ( sys-libs/rpmatch-standalone )
+	freetype? ( media-libs/freetype:2 )
 	gtk? (
 		dev-libs/glib:2
-		>=x11-libs/gtk+-3.14:3
 		x11-libs/cairo
+		>=x11-libs/gtk+-3.14:3
+	)
+	>=media-libs/libpng-1.2.16:=
+	pango? (
+		x11-libs/cairo
+		>=x11-libs/pango-1.21
 	)
 	systemd? ( sys-apps/systemd )
-	pango? (
-		>=x11-libs/pango-1.21
-		x11-libs/cairo
-	)
-	freetype? ( media-libs/freetype:2 )
 	udev? ( virtual/libudev )
-	dev-libs/libevdev
-	x11-libs/libxkbcommon
-	x11-misc/xkeyboard-config
 	upstart-monitoring? (
 		sys-apps/dbus
 		sys-libs/ncurses
 	)
+	virtual/libc
+	x11-libs/libxkbcommon
+	x11-misc/xkeyboard-config
+"
 
-	elibc_musl? ( sys-libs/rpmatch-standalone )
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
-	virtual/pkgconfig
-"
-BDEPEND="${DEPEND}
-	>=dev-build/meson-0.61
-"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-plymouthd )
-	udev? ( virtual/udev )
 	>sys-kernel/dracut-0.37-r3
+	udev? ( virtual/udev )
 "
 
 DOC_CONTENTS="
@@ -105,7 +106,7 @@ src_install() {
 	# looks like make install create /var/run/plymouth
 	# this is not needed for systemd, same should hold for openrc
 	# so remove
-	rm -rf "${D}"/var/run
+	rm -rf "${D}"/var/run || die
 
 	# fix broken symlink
 	dosym ../../bizcom.png /usr/share/plymouth/themes/spinfinity/header-image.png
