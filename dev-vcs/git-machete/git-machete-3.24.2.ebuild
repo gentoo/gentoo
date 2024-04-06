@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,10 @@ BDEPEND="test? (
 	>=dev-python/pytest-xdist-3.2.1[${PYTHON_USEDEP}]
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.24.2_no-strays-in-site-packages.patch
+)
+
 DOCS=( CONTRIBUTING.md README.md )
 
 distutils_enable_tests pytest
@@ -34,6 +38,8 @@ EPYTEST_DESELECT=(
 
 src_install() {
 	distutils-r1_src_install
+
+	doman docs/man/${PN}.1
 
 	newbashcomp completion/${PN}.completion.bash ${PN}
 
