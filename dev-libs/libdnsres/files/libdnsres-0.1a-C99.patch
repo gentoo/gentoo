@@ -1,0 +1,317 @@
+Port to C99, fix glibc-specific defines, missing or bad includes
+https://bugs.gentoo.org/880341
+--- a/arc4random.c
++++ b/arc4random.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <stdlib.h>
++#include <time.h>
+ 
+ #include "config.h"
+ 
+@@ -9,8 +10,8 @@
+  * application anyway.  Screw you, hippy!
+  */
+ 
+-u_int32_t
+-arc4random(void)
++u_int32_t arc4random(void);
++u_int32_t arc4random(void)
+ {
+ 	static int init;
+ 
+--- a/dnsres.h
++++ b/dnsres.h
+@@ -118,10 +118,7 @@
+ #define _DNSRES_H_
+ 
+ #include <sys/param.h>
+-#if (!defined(BSD)) || (BSD < 199306)
+-# include <sys/bitypes.h>
+-#endif
+-#include <sys/cdefs.h>
++#include <sys/types.h>
+ 
+ /*
+  * Type values for resources and queries
+@@ -373,7 +370,10 @@
+ };
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ struct addrinfo;
+ struct dnsres;
+ struct dnsres_cbstate;
+@@ -431,7 +431,10 @@
+ int		dnsres_net_addrcmp(struct sockaddr *, struct sockaddr *);
+ int		dnsres_getrrsetbyname(const char *, unsigned int, unsigned int, unsigned int, struct dnsres_rrsetinfo **);
+ void		dnsres_freerrset(struct dnsres_rrsetinfo *);
+-__END_DECLS
++
++#ifdef __cplusplus
++}
++#endif
+ 
+ /*
+  * Global defines and variables for resolver stub.
+--- a/resolv.h
++++ b/resolv.h
+@@ -119,12 +119,7 @@
+ #define	_RESOLV_H_
+ 
+ #include <sys/param.h>
+-#if (!defined(BSD)) || (BSD < 199306)
+-# include <sys/bitypes.h>
+-#else
+ # include <sys/types.h>
+-#endif
+-#include <sys/cdefs.h>
+ #include <sys/socket.h>
+ #include <stdio.h>
+ 
+@@ -275,7 +270,10 @@
+ struct dnsres_target;
+ struct res_search_state;
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ int			res_hnok(const char *);
+ int			res_ownok(const char *);
+ int			res_mailok(const char *);
+@@ -353,7 +351,10 @@
+ void			res_close(struct dnsres_socket *);
+ unsigned short		getshort(const unsigned char *);
+ unsigned int		getlong(const unsigned char *);
+-__END_DECLS
++
++#ifdef __cplusplus
++}
++#endif
+ 
+ #ifndef HAVE_FGETLN
+ char			*fgetln(FILE *, size_t *);
+--- a/res_debug.c
++++ b/res_debug.c
+@@ -109,8 +109,7 @@
+ 
+ /* XXX: we should use getservbyport() instead. */
+ static const char *
+-dewks(wks)
+-	int wks;
++dewks(int wks)
+ {
+ 	static char nbuf[20];
+ 
+@@ -169,8 +168,7 @@
+ 
+ /* XXX: we should use getprotobynumber() instead. */
+ static const char *
+-deproto(protonum)
+-	int protonum;
++deproto(int protonum)
+ {
+ 	static char nbuf[20];
+ 
+@@ -390,10 +388,7 @@
+ }
+ 
+ const u_char *
+-__dnsres_p_cdnname(cp, msg, len, file)
+-	const u_char *cp, *msg;
+-	int len;
+-	FILE *file;
++__dnsres_p_cdnname(const u_char *cp, const u_char *msg, int len, FILE *file)
+ {
+ 	char name[DNSRES_MAXDNAME];
+ 	int n;
+@@ -420,11 +415,7 @@
+    length supplied).  */
+ 
+ const u_char *
+-__dnsres_p_fqnname(cp, msg, msglen, name, namelen)
+-	const u_char *cp, *msg;
+-	int msglen;
+-	char *name;
+-	int namelen;
++__dnsres_p_fqnname(const u_char *cp, const u_char *msg, int msglen, char *name, int namelen)
+ {
+ 	int n, newlen;
+ 
+@@ -444,9 +435,7 @@
+  */
+ 
+ const u_char *
+-__dnsres_p_fqname(cp, msg, file)
+-	const u_char *cp, *msg;
+-	FILE *file;
++__dnsres_p_fqname(const u_char *cp, const u_char *msg, FILE *file)
+ {
+ 	char name[DNSRES_MAXDNAME];
+ 	const u_char *n;
+@@ -918,10 +907,7 @@
+ };
+ 
+ int
+-__dnsres_sym_ston(syms, name, success)
+-	const struct res_sym *syms;
+-	char *name;
+-	int *success;
++__dnsres_sym_ston(const struct res_sym *syms, char *name, int *success)
+ {
+ 	for (; syms->name != 0; syms++) {
+ 		if (strcasecmp (name, syms->name) == 0) {
+@@ -936,10 +922,7 @@
+ }
+ 
+ const char *
+-__dnsres_sym_ntos(syms, number, success)
+-	const struct res_sym *syms;
+-	int number;
+-	int *success;
++__dnsres_sym_ntos(const struct res_sym *syms, int number, int *success)
+ {
+ 	static char unname[20];
+ 
+@@ -959,10 +942,7 @@
+ 
+ 
+ const char *
+-__dnsres_sym_ntop(syms, number, success)
+-	const struct res_sym *syms;
+-	int number;
+-	int *success;
++__dnsres_sym_ntop(const struct res_sym *syms, int number, int *success)
+ {
+ 	static char unname[20];
+ 
+@@ -983,8 +963,7 @@
+  * Return a string for the type
+  */
+ const char *
+-__dnsres_p_type(type)
+-	int type;
++__dnsres_p_type(int type)
+ {
+ 	return (__dnsres_sym_ntos (__dnsres_p_type_syms, type, (int *)0));
+ }
+@@ -993,8 +972,7 @@
+  * Return a mnemonic for class
+  */
+ const char *
+-__dnsres_p_class(class)
+-	int class;
++__dnsres_p_class(int class)
+ {
+ 	return (__dnsres_sym_ntos (__dnsres_p_class_syms, class, (int *)0));
+ }
+@@ -1003,8 +981,7 @@
+  * Return a mnemonic for an option
+  */
+ const char *
+-__dnsres_p_option(option)
+-	u_long option;
++__dnsres_p_option(u_long option)
+ {
+ 	static char nbuf[40];
+ 
+@@ -1033,8 +1010,7 @@
+  * Return a mnemonic for a time to live
+  */
+ const char *
+-p_time(value)
+-	u_int32_t value;
++p_time(u_int32_t value)
+ {
+ 	static char nbuf[40];
+ 	char *ebuf;
+@@ -1115,8 +1091,7 @@
+ 
+ /* takes an XeY precision/size value, returns a string representation. */
+ static const char *
+-precsize_ntoa(prec)
+-	u_int8_t prec;
++precsize_ntoa(u_int8_t prec)
+ {
+ 	static char retbuf[sizeof "90000000.00"];
+ 	unsigned long val;
+@@ -1133,8 +1108,7 @@
+ 
+ /* converts ascii size/precision X * 10**Y(cm) to 0xXY.  moves pointer. */
+ static u_int8_t
+-precsize_aton(strptr)
+-	char **strptr;
++precsize_aton(unsigned char **strptr)
+ {
+ 	unsigned int mval = 0, cmval = 0;
+ 	u_int8_t retval = 0;
+@@ -1175,9 +1149,7 @@
+ 
+ /* converts ascii lat/lon to unsigned encoded 32-bit number.  moves pointer. */
+ static u_int32_t
+-latlon2ul(latlonstrptr,which)
+-	char **latlonstrptr;
+-	int *which;
++latlon2ul(unsigned char **latlonstrptr, int *which)
+ {
+ 	unsigned char *cp;
+ 	u_int32_t retval;
+@@ -1274,9 +1246,7 @@
+ /* converts a zone file representation in a string to an RDATA on-the-wire
+  * representation. */
+ int
+-loc_aton(ascii, binary)
+-	const char *ascii;
+-	u_char *binary;
++loc_aton(const char *ascii, u_char *binary)
+ {
+ 	const unsigned char *maxcp;
+ 	u_char *bcp;
+@@ -1385,19 +1355,14 @@
+ }
+ 
+ const char *
+-loc_ntoa(binary, ascii)
+-	const u_char *binary;
+-	char *ascii;
++loc_ntoa(const u_char *binary, char *ascii)
+ {
+ 	return loc_ntoal(binary, ascii, 255);
+ }
+ 
+ /* takes an on-the-wire LOC RR and formats it in a human readable format. */
+ static const char *
+-loc_ntoal(binary, ascii, ascii_len)
+-	const u_char *binary;
+-	char *ascii;
+-	int ascii_len;
++loc_ntoal(const u_char *binary, char *ascii, int ascii_len)
+ {
+ 	static char *error = "?";
+ 	register const u_char *cp = binary;
+@@ -1499,8 +1464,7 @@
+ 
+ /* Return the number of DNS hierarchy levels in the name. */
+ int
+-__dnsres_dn_count_labels(name)
+-	char *name;
++__dnsres_dn_count_labels(char *name)
+ {
+ 	int i, len, count;
+ 
+@@ -1530,8 +1494,7 @@
+  * SIG records are required to be printed like this, by the Secure DNS RFC.
+  */
+ char *
+-__dnsres_p_secstodate (secs)
+-	unsigned long secs;
++__dnsres_p_secstodate (unsigned long secs)
+ {
+ 	static char output[15];		/* YYYYMMDDHHMMSS and null */
+ 	time_t clock = secs;
