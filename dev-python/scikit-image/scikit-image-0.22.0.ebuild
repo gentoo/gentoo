@@ -24,7 +24,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/imageio-2.27[${PYTHON_USEDEP}]
-	>=dev-python/lazy_loader-0.3[${PYTHON_USEDEP}]
+	>=dev-python/lazy-loader-0.3[${PYTHON_USEDEP}]
 	>=dev-python/networkx-2.8[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.22[${PYTHON_USEDEP}]
 	>=dev-python/pillow-9.0.1[${PYTHON_USEDEP}]

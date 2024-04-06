@@ -28,7 +28,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/imageio-2.33[${PYTHON_USEDEP}]
-	>=dev-python/lazy_loader-0.3[${PYTHON_USEDEP}]
+	>=dev-python/lazy-loader-0.3[${PYTHON_USEDEP}]
 	>=dev-python/networkx-2.8[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23[${PYTHON_USEDEP}]
 	>=dev-python/pillow-9.1[${PYTHON_USEDEP}]
