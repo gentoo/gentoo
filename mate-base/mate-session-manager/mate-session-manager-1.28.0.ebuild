@@ -16,7 +16,6 @@ HOMEPAGE="https://mate-desktop.org/"
 LICENSE="GPL-2+ GPL-3+ HPND LGPL-2+ LGPL-2.1+"
 SLOT="0"
 IUSE="debug elogind gles2 gnome-keyring nls systemd"
-REQUIRED_USE="^^ ( elogind systemd )"
 
 # x11-misc/xdg-user-dirs{,-gtk} are needed to create the various XDG_*_DIRs, and
 # create .config/user-dirs.dirs which is read by glib to get G_USER_DIRECTORY_*
