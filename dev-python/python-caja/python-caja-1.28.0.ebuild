@@ -19,16 +19,13 @@ SLOT="0"
 IUSE="doc"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-COMMON_DEPEND="${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.50:2
 	$( python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' )
 	>=mate-base/caja-1.17.1[introspection]
 	>=x11-libs/gtk+-3.22:3
 "
-
-RDEPEND="${COMMON_DEPEND}"
-
-BDEPEND="${COMMON_DEPEND}
+BDEPEND="${RDEPEND}
 	dev-util/gtk-doc
 	dev-build/gtk-doc-am
 	>=sys-devel/gettext-0.19.8
