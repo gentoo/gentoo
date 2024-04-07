@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2024-04-07)
+# Relies on musl-incompatible ldconfig behaviour to determine the list of host
+# library directories. More importantly however, protontricks is useless without
+# Steam and Steam will almost certainly never support musl (see e.g.
+# https://github.com/ValveSoftware/steam-for-linux/issues/9284).
+app-emulation/protontricks
+
 # Matthew Smith <matthew@gentoo.org> (2024-04-07)
 # Mask until execinfo.h use can be properly patched, bug #853856
 media-gfx/renderdoc
