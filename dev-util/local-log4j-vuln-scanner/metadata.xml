@@ -5,4 +5,7 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">hillu/local-log4j-vuln-scanner</remote-id>
+	</upstream>
 </pkgmetadata>
