@@ -73,8 +73,8 @@ RDEPEND="
 		net-misc/curl
 	)
 	fem? (
-		!qt6? ( <sci-libs/vtk-9.3.0:=[qt5,rendering] )
-		qt6? ( <sci-libs/vtk-9.3.0:=[-qt5,qt6,rendering] )
+		!qt6? ( sci-libs/vtk:=[qt5,rendering] )
+		qt6? ( sci-libs/vtk:=[-qt5,qt6,rendering] )
 	)
 	gui? (
 		>=media-libs/coin-4.0.0
@@ -164,6 +164,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-0.21.1-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-0.21.2-vtk9.3-fix.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
