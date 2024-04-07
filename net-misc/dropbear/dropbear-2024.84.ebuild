@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2022.82-tests.patch
 	"${FILESDIR}"/${PN}-2024.84-non-interactive-tests.patch
 	"${FILESDIR}"/${PN}-2024.84-fix-channels-tests.patch
+	"${FILESDIR}"/${PN}-2024.84-test-bg-sleep.patch
 )
 
 set_options() {
