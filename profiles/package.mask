@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ben Kohler <bkohler@gentoo.org> (2024-04-07)
+# Long ago forked to and obsoleted by sys-apps/memtest86+.  Upstream has 
+# abandoned this for their proprietary UEFI-based one (packaged in gentoo as 
+# as sys-apps/memtest86-bin).
+# Removal on 2024-05-07.  Bug #502464, #607494, #628528, #750677, #887003,
+# #912973, #920109
+sys-apps/memtest86
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
 # Dead upstream for many years, in a state of decay and no revdeps.
 # Removal on 2024-05-06.  Bug #926193, #891791
