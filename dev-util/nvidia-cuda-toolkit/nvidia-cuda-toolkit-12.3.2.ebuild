@@ -276,6 +276,12 @@ src_install() {
 	newins - 80${PN} <<-EOF
 		SEARCH_DIRS_MASK="${ecudadir}"
 	EOF
+
+	# https://bugs.gentoo.org/926116
+	insinto /etc/sandbox.d
+	newins - 80${PN} <<-EOF
+		SANDBOX_PREDICT="/proc/self/task"
+	EOF
 }
 
 pkg_postinst_check() {

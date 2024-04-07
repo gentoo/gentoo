@@ -279,19 +279,7 @@ src_install() {
 		SEARCH_DIRS_MASK="${ecudadir}"
 	EOF
 
-	# To address the sandbox errors encountered in packages with CUDA,
-	# such as those documented in https://bugs.gentoo.org/926116, it is
-	# necessary to modify the sandbox environment settings. This change
-	# specifically targets issues during the execution of
-	# CMakeDetermineCompilerABI_CUDA.bin, as observed in a range of
-	# software including caffe2, opencv, vtk, cholmod, and openvdb
-	# (refer to https://forums.gentoo.org/viewtopic-p-8789206.html).
-	# Granting access to /proc/self within the sandbox is essential for
-	# these applications to correctly determine the CUDA compiler ABI
-	# without triggering sandbox violations. While opening up /proc/self
-	# may seem to have security implications, its impact is limited as
-	# it only exposes information about the processes inside the same
-	# sandbox environment. The proposed configuration is as follows:
+	# https://bugs.gentoo.org/926116
 	insinto /etc/sandbox.d
 	newins - 80${PN} <<-EOF
 		SANDBOX_PREDICT="/proc/self/task"
