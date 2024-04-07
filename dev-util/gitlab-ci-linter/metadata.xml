@@ -3,6 +3,9 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
-			<name>William Hubbs</name>
-				</maintainer>
-					</pkgmetadata>
+		<name>William Hubbs</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">orobardet/gitlab-ci-linter</remote-id>
+	</upstream>
+</pkgmetadata>
