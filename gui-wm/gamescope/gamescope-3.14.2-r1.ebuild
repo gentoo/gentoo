@@ -11,9 +11,22 @@ MY_PV="${MY_PV//_/-}"
 
 DESCRIPTION="Efficient micro-compositor for running games"
 HOMEPAGE="https://github.com/ValveSoftware/gamescope"
-SRC_URI="https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/Joshua-Ashton/reshade/archive/${RESHADE_COMMIT}.tar.gz -> reshade-${RESHADE_COMMIT}.tar.gz"
-KEYWORDS="~amd64"
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/ValveSoftware/${PN}.git"
+	# Prevent wlroots and other submodule from being pull
+	# Not messing with system packages
+	EGIT_SUBMODULES=( src/reshade )
+	inherit git-r3
+else
+	SRC_URI="
+		https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/Joshua-Ashton/reshade/archive/${RESHADE_COMMIT}.tar.gz -> reshade-${RESHADE_COMMIT}.tar.gz
+	"
+	KEYWORDS="~amd64"
+fi
+
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="pipewire +wsi-layer"
@@ -21,7 +34,6 @@ IUSE="pipewire +wsi-layer"
 RDEPEND="
 	=dev-libs/libliftoff-0.4*
 	>=dev-libs/wayland-1.21
-	>=dev-libs/wayland-protocols-1.17
 	=gui-libs/wlroots-0.17*[X,libinput(+)]
 	>=media-libs/libavif-1.0.0:=
 	>=media-libs/libdisplay-info-0.1.1
@@ -48,6 +60,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	>=dev-libs/wayland-protocols-1.34
 	>=dev-libs/stb-20240201-r1
 	dev-util/vulkan-headers
 	media-libs/glm
@@ -59,8 +72,6 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-deprecated-stb.patch
@@ -75,12 +86,16 @@ src_prepare() {
 
 	# ReShade is bundled as a git submodule, but it references an unofficial
 	# fork, so we cannot unbundle it. Symlink to its extracted sources.
-	rmdir src/reshade || die
-	ln -snfT ../../reshade-${RESHADE_COMMIT} src/reshade || die
+	# For 9999, use the bundled submodule.
+	if [[ ${PV} != "9999" ]]; then
+		rmdir src/reshade || die
+		ln -snfT ../../reshade-${RESHADE_COMMIT} src/reshade || die
+	fi
 
 	# SPIRV-Headers is required by ReShade. It is bundled as a git submodule but
 	# not wrapped with Meson, so we can symlink to our system-wide headers.
-	mkdir thirdparty/SPIRV-Headers/include || die
+	# For 9999, this submodule is not included.
+	mkdir -p thirdparty/SPIRV-Headers/include || die
 	ln -snf "${ESYSROOT}"/usr/include/spirv thirdparty/SPIRV-Headers/include/ || die
 }
 
