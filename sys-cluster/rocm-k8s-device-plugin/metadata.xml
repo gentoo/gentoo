@@ -5,4 +5,7 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">ROCm/k8s-device-plugin</remote-id>
+	</upstream>
 </pkgmetadata>
