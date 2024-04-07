@@ -34,6 +34,15 @@
 #--- END OF EXAMPLES ---
 
 # Ben Kohler <bkohler@gentoo.org> (2024-04-07)
+# Abandoned upstream long ago in favor of Unifi Protect (running only on an
+# official Unifi appliance.  Likely contains lots of security holes in bundled
+# libs.
+# Removal on 2024-05-07.  Bug #928881
+acct-group/unifi-video
+acct-user/unifi-video
+media-video/unifi-video
+
+# Ben Kohler <bkohler@gentoo.org> (2024-04-07)
 # Long ago forked to and obsoleted by sys-apps/memtest86+.  Upstream has 
 # abandoned this for their proprietary UEFI-based one (packaged in gentoo as 
 # as sys-apps/memtest86-bin).
