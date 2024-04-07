@@ -35,7 +35,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
 # Dead upstream for many years, in a state of decay and no revdeps.
-# Removal on 2024-05-06.  Bug #926193
+# Removal on 2024-05-06.  Bug #926193, #891791
 net-im/telepathy-connection-managers
 net-libs/sofia-sip
 net-libs/telepathy-accounts-signon
