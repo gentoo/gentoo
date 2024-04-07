@@ -7,41 +7,46 @@ DISTUTILS_EXT=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
-inherit distutils-r1 linux-info
+inherit distutils-r1
 
-DESCRIPTION="MATE Tweak is a small utility to fine-tune the MATE desktop environment"
+DESCRIPTION="Tweak tool for the MATE Desktop"
 HOMEPAGE="https://github.com/ubuntu-mate/mate-tweak"
 SRC_URI="https://github.com/ubuntu-mate/mate-tweak/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="dropdown netbook"
 
 RDEPEND="
-	dev-python/distro
-	dev-python/psutil
-	dev-python/setproctitle
+	$(python_gen_cond_dep '
+		dev-python/distro[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+		dev-python/setproctitle[${PYTHON_USEDEP}]
+	')
 	gnome-base/dconf
 	x11-libs/libnotify
 	mate-base/libmatekbd
 	mate-base/mate-panel
-	pulldown? ( x11-terms/tilda )
+	dropdown? ( x11-terms/tilda )
 	netbook? ( mate-extra/mate-netbook )
 "
 
-DEPEND="
+BDEPEND="
+	dev-util/intltool
 	net-misc/rsync
-	dev-python/setuptools
+	sys-devel/gettext
 "
 
+PATCHES=(
+	"${FILESDIR}/mate-tweak-22.10.0-avoid-distutilsextra.patch"
+)
+
 pkg_setup() {
-	linux-info_pkg_setup
 	python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	default
-
 	# Correct paths in mate-tweak script - makes "Window Behavior" options work
 	# from https://github.com/shiznix/unity-gentoo/blob/master/mate-extra/mate-tweak/mate-tweak-22.10.0_p_p0_p01.ebuild
 	sed -e "s:brisk-menu/brisk-menu:brisk-menu:g" \
@@ -58,6 +63,6 @@ src_prepare() {
 src_install() {
 	distutils-r1_src_install
 	rsync -av "${ED}"/usr/lib/python*/site-packages/usr/ "${ED}"/usr || die
-	rm -r "${ED}"/usr/lib/python*/site-packages/{usr,__pycache__,setup.py}
+	rm -r "${ED}"/usr/lib/python*/site-packages/{usr,__pycache__,setup.py} || die
 	python_fix_shebang "${ED}"
 }
