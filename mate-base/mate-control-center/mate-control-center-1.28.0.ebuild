@@ -63,14 +63,6 @@ BDEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	# https://github.com/mate-desktop/mate-control-center/issues/701
-	# temoprarily disable ayatana appindicator support until it's fixed
-	# for 1.28.0 release
-	#"${FILESDIR}"/${PN}-1.26.0-ayatana-detection.patch
-	"${FILESDIR}/${PN}"-1.28.0-optional-systemd.patch
-)
-
 src_configure() {
 	mate_src_configure \
 		--disable-update-mimedb \
