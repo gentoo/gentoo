@@ -79,6 +79,9 @@ PDEPEND="
 "
 
 CHECKREQS_DISK_BUILD="20G"
+PATCHES=(
+	"${FILESDIR}/${PN}-8.0.101-runtime-64.patch"
+)
 
 # Created by dotnet itself:
 QA_PREBUILT="
