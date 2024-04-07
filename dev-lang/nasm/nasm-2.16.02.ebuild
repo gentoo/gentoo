@@ -16,8 +16,11 @@ KEYWORDS="~amd64 ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
+	# Windows.
 	_BitScanReverse
 	_BitScanReverse64
+
+	# Linux headers that are not included.
 	__cpu_to_le16
 	__cpu_to_le32
 	__cpu_to_le64
@@ -27,7 +30,17 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	cpu_to_le16
 	cpu_to_le32
 	cpu_to_le64
+
+	# __typeof as gnu extensions are not enabled
 	typeof
+
+	# musl doesn't define __bswap_N in endian.h (it's named _bswapN
+	# instead). could be fixed to call this instead, or to include
+	# musl's byteswap.h instead, but it is much easier to fall back on
+	# __builtin_bswapN. Bug #928848
+	__bswap_16
+	__bswap_32
+	__bswap_64
 )
 
 # [fonts note] doc/psfonts.ph defines ordered list of font preference.
