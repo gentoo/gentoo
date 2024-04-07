@@ -20,7 +20,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 src_configure() {
 	grep -q 'build-backend = "setuptools' pyproject.toml ||
