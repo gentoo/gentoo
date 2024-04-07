@@ -33,10 +33,10 @@ src_prepare() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/878065
-	# Upstream is a) sourceforge, b) inactive for 3 years. Bug not reported.
+	# https://sourceforge.net/p/xoscope/bugs/23/
 	filter-lto
 
 	default
