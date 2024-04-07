@@ -16,13 +16,36 @@ inherit check-reqs eapi8-dosym flag-o-matic java-pkg-2 java-vm-2 multiprocessing
 MY_PV="$(ver_rs 1 'u' 2 '-' ${PV%_p*}-ga)"
 SLOT="${PV%%[.+]*}"
 
+# variable name format: <UPPERCASE_KEYWORD>_XPAK
+X86_XPAK="8.402_p06"
+
+# Usage: bootstrap_uri <keyword> <version> [extracond]
+# Example: $(bootstrap_uri x86 8.402_p06)
+# Output: ppc64? ( big-endian? ( https://...8.402_p06-x86.tar.xz ) )
+bootstrap_uri() {
+	local baseuri="https://dev.gentoo.org/~arthurzam/distfiles/dev-java/${PN}/${PN}-bootstrap"
+	local suff="tar.xz"
+	local kw="${1:?${FUNCNAME[0]}: keyword not specified}"
+	local ver="${2:?${FUNCNAME[0]}: version not specified}"
+	local cond="${3-}"
+
+	# here be dragons
+	echo "${kw}? ( ${cond:+${cond}? (} ${baseuri}-${ver}-${kw}.${suff} ${cond:+) })"
+}
+
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
-SRC_URI="https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk${MY_PV}.tar.gz
+		-> ${P}.tar.gz
+	!system-bootstrap? (
+		$(bootstrap_uri x86 ${X86_XPAK})
+	)
+"
 
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64 arm64 ppc64 x86"
-IUSE="alsa debug cups doc examples headless-awt javafx +jbootstrap selinux source"
+IUSE="alsa debug cups doc examples headless-awt javafx +jbootstrap selinux system-bootstrap source"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -105,13 +128,22 @@ pkg_pretend() {
 
 pkg_setup() {
 	openjdk_check_requirements
+	java-vm-2_pkg_setup
+
+	[[ ${MERGE_TYPE} == "binary" ]] && return
 
 	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT} icedtea-${SLOT} icedtea-bin-${SLOT}"
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
-	java-vm-2_pkg_setup
-	java-pkg-2_pkg_setup
+	if use system-bootstrap; then
+		for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
+			if [[ -d ${BROOT}/usr/lib/jvm/${vm} ]]; then
+				java-pkg-2_pkg_setup
+				return
+			fi
+		done
+	fi
 }
 
 src_prepare() {
@@ -125,6 +157,11 @@ src_prepare() {
 }
 
 src_configure() {
+	if ! use system-bootstrap; then
+		local xpakvar="${ARCH^^}_XPAK"
+		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
+	fi
+
 	# general build info found here:
 	# https://hg.openjdk.java.net/jdk8/jdk8/raw-file/tip/README-builds.html
 
@@ -156,7 +193,7 @@ src_configure() {
 			--with-extra-ldflags="${LDFLAGS}"
 			--with-freetype-lib="$( $(tc-getPKG_CONFIG) --variable=libdir freetype2 )"
 			--with-freetype-include="$( $(tc-getPKG_CONFIG) --variable=includedir freetype2)/freetype2"
-			--with-giflib=system
+			--with-giflib="${XPAK_BOOTSTRAP:-system}"
 			--with-jtreg=no
 			--with-jobs=1
 			--with-num-cores=1
@@ -167,7 +204,7 @@ src_configure() {
 			--with-vendor-url="https://gentoo.org"
 			--with-vendor-bug-url="https://bugs.gentoo.org"
 			--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
-			--with-zlib=system
+			--with-zlib="${XPAK_BOOTSTRAP:-system}"
 			--with-native-debug-symbols=$(usex debug internal none)
 			$(usex headless-awt --disable-headful '')
 			$(tc-is-clang && echo "--with-toolchain-type=clang")

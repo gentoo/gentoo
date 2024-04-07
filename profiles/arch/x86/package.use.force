@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Joonas Niilola <juippis@gentoo.org> (2023-03-16)
@@ -15,6 +15,7 @@ www-client/firefox system-libvpx
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-16)
 # Bootstrapping is possible using our build snapshot, so don't force
 # system bootstrap
+dev-java/openjdk:8 -system-bootstrap
 dev-java/openjdk:11 -system-bootstrap
 dev-java/openjdk:17 -system-bootstrap
 dev-java/openjdk:21 -system-bootstrap
