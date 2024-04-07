@@ -11,19 +11,16 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="LGPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-# TODO: egl and gtk IUSE only for transition
-IUSE="X bzip2 +egl +gles2 gtk +introspection opengl +orc vaapi vnc wayland qsv" # Keep default IUSE mirrored with gst-plugins-base where relevant
+IUSE="X bzip2 +introspection +orc udev vaapi vnc wayland"
 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
-# We mirror opengl/gles2 from -base to ensure no automagic openglmixers plugin (with "opengl?" it'd still get built with USE=-opengl here)
-# FIXME	gtk? ( >=media-plugins/gst-plugins-gtk-${PV}:${SLOT}[${MULTILIB_USEDEP}] )
 # Baseline requirement for libva is 1.6, but 1.10 gets more features
 RDEPEND="
 	!media-plugins/gst-plugins-va
 	!media-plugins/gst-transcoder
 
 	>=media-libs/gstreamer-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
-	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},egl?,introspection?,gles2=,opengl=]
+	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
@@ -36,14 +33,10 @@ RDEPEND="
 
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
 
-	qsv? (
-		dev-libs/libgudev[${MULTILIB_USEDEP}]
-		media-libs/libva[wayland?,X?,${MULTILIB_USEDEP}]
-		media-libs/libvpl[wayland?,X?,${MULTILIB_USEDEP}]
-		x11-libs/libdrm[${MULTILIB_USEDEP}]
+	vaapi? (
+		>=media-libs/libva-1.10:=[${MULTILIB_USEDEP}]
+		udev? ( dev-libs/libgudev )
 	)
-
-	vaapi? ( >=media-libs/libva-1.10[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/glib-utils"
@@ -61,42 +54,24 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	GST_PLUGINS_NOAUTO="hls ipcpipeline librfb msdk shm wayland"
+	GST_PLUGINS_NOAUTO="bz2 hls ipcpipeline librfb shm va wayland"
 
 	local emesonargs=(
 		-Dshm=enabled
 		-Dipcpipeline=enabled
 		-Dhls=disabled
+		$(meson_feature bzip2 bz2)
+		$(meson_feature vaapi va)
+		-Dudev=$(usex udev $(usex vaapi enabled disabled) disabled)
 		$(meson_feature vnc librfb)
+		-Dx11=$(usex X $(usex vnc enabled disabled) disabled)
 		$(meson_feature wayland)
 	)
 
-	if use qsv; then
-		emesonargs+=(
-			-Dmsdk=enabled
-			-Dmfx_api=oneVPL
-		)
-	else
-		emesonargs+=( -Dmsdk=disabled )
-	fi
-
-	# XXX: See comment above IUSE wrt egl; this was actually typo'd with
-	# myconf for ages and nothing exploded.
-	#if use opengl || use gles2; then
-	#	emesonargs+=( -Dgl=enabled )
-	#else
-	#	emesonargs+=( -Dgl=disabled )
-	#fi
-
-	gstreamer_multilib_src_configure "$(meson_feature vaapi va)"
+	gstreamer_multilib_src_configure
 }
 
 multilib_src_test() {
 	# Tests are slower than upstream expects
 	CK_DEFAULT_TIMEOUT=300 gstreamer_multilib_src_test
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	find "${ED}" -name '*.la' -delete || die
 }
