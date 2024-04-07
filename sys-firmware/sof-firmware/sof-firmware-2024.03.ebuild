@@ -11,10 +11,13 @@ S="${WORKDIR}"/sof-bin-${PV}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+tools"
 
 RDEPEND="
-	media-libs/alsa-lib
-	sys-libs/glibc
+	tools? (
+		media-libs/alsa-lib
+		sys-libs/glibc
+	)
 "
 
 QA_PREBUILT="usr/bin/sof-ctl
@@ -25,6 +28,12 @@ src_install() {
 	dodir /lib/firmware/intel
 	dodir /usr/bin
 	FW_DEST="${D}/lib/firmware/intel" TOOLS_DEST="${D}/usr/bin" "${S}/install.sh" || die
+
+	# Drop tools if requested (i.e. useful for musl systems, where glibc
+	# is not available)
+	if ! use tools ; then
+		rm -rv "${D}"/usr/bin || die
+	fi
 }
 
 pkg_preinst() {
