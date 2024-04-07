@@ -16,5 +16,8 @@
   The extension packages a native elisp version that can be run inside
   GNU Emacs itself.
 </longdescription>
+<upstream>
+  <remote-id type="github">stsquad/emacs_chrome</remote-id>
+</upstream>
 <stabilize-allarches/>
 </pkgmetadata>
