@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthew Smith <matthew@gentoo.org> (2024-04-07)
+# Renderdoc masked on musl, bug #853856
+dev-qt/qtbase renderdoc
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-11)
 # Only works properly with glibc
 dev-debug/gdb cet
