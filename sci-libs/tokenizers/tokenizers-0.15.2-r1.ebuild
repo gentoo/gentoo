@@ -6,8 +6,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_EXT=1
+DISTUTILS_SINGLE_IMPL=1
 
 CRATES="
 	adler@1.0.2
@@ -290,9 +291,13 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test"
 
-BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? ( sci-libs/datasets[${PYTHON_SINGLE_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/setuptools-rust[${PYTHON_USEDEP}]
+	')
+"
 
 distutils_enable_tests pytest
 
@@ -305,6 +310,7 @@ src_unpack() {
 src_prepare() {
 	default
 	cd bindings/python
+	eapply "${FILESDIR}"/${P}-test.patch
 	distutils-r1_src_prepare
 }
 
@@ -327,8 +333,7 @@ src_test() {
 	# Tests do not work
 	#cargo_src_test
 	cd ../bindings/python
-	# Need dataset module
-	#distutils-r1_src_test
+	distutils-r1_src_test
 }
 
 src_install() {
