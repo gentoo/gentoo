@@ -45,7 +45,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-pkg_setup() {
+src_configure() {
 	local makeopts=(
 		DISABLE_MODULE=$(usex jgmodule 0 1)
 		ENABLE_EXAMPLE=$(usex examples 1 0)
