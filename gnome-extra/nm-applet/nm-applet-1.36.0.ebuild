@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="appindicator +modemmanager selinux teamd"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 # >=networkmanager-1.46 for ensuring stable-ssid checkbox feature will work
 RDEPEND="
