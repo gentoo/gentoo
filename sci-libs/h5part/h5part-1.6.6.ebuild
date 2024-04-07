@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P="${P^^[hp]}"
 DESCRIPTION="Portable High Performance Parallel Data Interface to HDF5"
-HOMEPAGE="http://vis.lbl.gov/Research/H5Part/"
+HOMEPAGE="https://vis.lbl.gov/archive/Research/H5Part/"
 SRC_URI="https://codeforge.lbl.gov/frs/download.php/latestfile/18/${MY_P}.tar.gz"
 
 LICENSE="BSD"
