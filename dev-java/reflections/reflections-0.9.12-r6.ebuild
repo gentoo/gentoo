@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml
-# com.google.code.gson:gson:2.8.6 -> >=dev-java/gson-2.8.8:2.6
+# com.google.code.gson:gson:2.8.6 -> >=dev-java/gson-2.8.8:0
 # org.dom4j:dom4j:2.1.1 -> >=dev-java/dom4j-2.1.3:1
 # org.javassist:javassist:3.26.0-GA -> !!!suitable-mavenVersion-not-found!!!
 # org.slf4j:slf4j-api:1.7.30 -> >=dev-java/slf4j-api-1.7.30:0
@@ -30,7 +30,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	dev-java/dom4j:1
-	dev-java/gson:2.6
+	dev-java/gson:0
 	dev-java/javassist:3
 	dev-java/slf4j-api:0
 	dev-java/slf4j-simple:0

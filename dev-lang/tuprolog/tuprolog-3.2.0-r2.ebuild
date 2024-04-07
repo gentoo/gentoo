@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="virtual/jdk:1.8
 	dev-java/javassist:3
 	dev-java/commons-lang:3.6
-	dev-java/gson:2.6"
+	dev-java/gson:0"
 
 DEPEND="${RDEPEND}
 	>=dev-java/ant-1.10.14
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.6,gson:2.6"
+EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.6,gson"
 
 PATCHES=( "${WORKDIR}/${PV}" )
 

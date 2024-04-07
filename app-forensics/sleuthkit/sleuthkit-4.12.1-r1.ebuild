@@ -36,7 +36,7 @@ DEPEND="
 		>=dev-java/c3p0-0.9.5.5:0
 		dev-java/commons-lang:3.6
 		>=dev-java/commons-validator-1.6:0
-		>=dev-java/gson-2.8.5:2.6
+		>=dev-java/gson-2.8.5:0
 		dev-java/guava:0
 		>=dev-java/jdbc-postgresql-9.4:0
 		>=dev-java/joda-time-2.4:0
@@ -257,7 +257,7 @@ src_compile() {
 		java-pkg_jar-from --into "${TSK_JAR_DIR}" c3p0
 		java-pkg_jar-from --into "${TSK_JAR_DIR}" commons-lang:3.6
 		java-pkg_jar-from --into "${TSK_JAR_DIR}" commons-validator
-		java-pkg_jar-from --into "${TSK_JAR_DIR}" gson:2.6
+		java-pkg_jar-from --into "${TSK_JAR_DIR}" gson
 		java-pkg_jar-from --into "${TSK_JAR_DIR}" guava
 		java-pkg_jar-from --into "${TSK_JAR_DIR}" jdbc-postgresql
 		java-pkg_jar-from --into "${TSK_JAR_DIR}" joda-time
