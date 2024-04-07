@@ -51,13 +51,10 @@ src_prepare() {
 		rmdir "${S}/greatest" || die
 		mv "${WORKDIR}/greatest-${GREATEST_PV}" "${S}/greatest" || die
 	fi
-	# Some m4 macros append Werror, we do not want that.
-	append-flags "-Wno-error"
 }
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-werror \
 		$(use_enable static-libs static)
 }
 
