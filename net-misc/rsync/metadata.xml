@@ -8,7 +8,7 @@
 	<upstream>
 		<changelog>https://rsync.samba.org/ftp/rsync/NEWS</changelog>
 		<remote-id type="cpe">cpe:/a:samba:rsync</remote-id>
-		<remote-id type="github">WayneD/rsync</remote-id>
+		<remote-id type="github">RsyncProject/rsync</remote-id>
 	</upstream>
 	<use>
 		<flag name="rrsync">Install rrsync script to setup restricted rsync users via ssh logins</flag>
