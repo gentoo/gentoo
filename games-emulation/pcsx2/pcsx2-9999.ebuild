@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	dev-libs/libaio
 	dev-qt/qtbase:6[concurrent,gui,widgets]
 	dev-qt/qtsvg:6
+	media-libs/freetype
 	media-libs/libglvnd[X]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
@@ -50,7 +51,10 @@ COMMON_DEPEND="
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
-	vulkan? ( media-libs/vulkan-loader )
+	vulkan? (
+		media-libs/shaderc
+		media-libs/vulkan-loader
+	)
 	wayland? ( dev-libs/wayland )
 "
 # patches is a optfeature but always pull given PCSX2 complaints if it
@@ -100,9 +104,6 @@ src_configure() {
 		local -x CC=${CHOST}-clang CXX=${CHOST}-clang++
 		strip-unsupported-flags
 	fi
-
-	# for bundled old glslang (bug #858374)
-	use vulkan && append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
