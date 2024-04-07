@@ -163,6 +163,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-0.21.1-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-0.21.2-vtk9.3-fix.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
