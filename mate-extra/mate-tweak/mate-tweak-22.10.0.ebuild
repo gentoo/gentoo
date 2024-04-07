@@ -16,7 +16,7 @@ SRC_URI="https://github.com/ubuntu-mate/mate-tweak/archive/refs/tags/${PV}.tar.g
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dropdown netbook"
+IUSE="dropdown"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -29,7 +29,6 @@ RDEPEND="
 	mate-base/libmatekbd
 	mate-base/mate-panel
 	dropdown? ( x11-terms/tilda )
-	netbook? ( mate-extra/mate-netbook )
 "
 
 BDEPEND="

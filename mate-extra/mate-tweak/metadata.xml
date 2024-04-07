@@ -16,4 +16,6 @@
 	<upstream>
 		<remote-id type="github">ubuntu-mate/mate-tweak</remote-id>
 	</upstream>
+	<use>
+		<flag name="dropdown">Install tilda for extra support features..</flag>
 </pkgmetadata>
