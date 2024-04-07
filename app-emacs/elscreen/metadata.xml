@@ -19,6 +19,9 @@
   ElScreen provides the ease-to-use environment to save or restore several
   window-configurations.
 </longdescription>
+<upstream>
+  <remote-id type="github">knu/elscreen</remote-id>
+</upstream>
 <stabilize-allarches/>
 <use>
   <flag name="wanderlust">Include support for <pkg>app-emacs/wanderlust</pkg>
