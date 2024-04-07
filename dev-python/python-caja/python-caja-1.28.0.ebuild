@@ -16,9 +16,7 @@ fi
 DESCRIPTION="Python bindings for the Caja file manager"
 LICENSE="GPL-2+"
 SLOT="0"
-
 IUSE="doc"
-
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 COMMON_DEPEND="${PYTHON_DEPS}
