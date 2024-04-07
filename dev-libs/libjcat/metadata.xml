@@ -13,6 +13,8 @@
 		in Microsoft Windows.
 	</longdescription>
 	<use>
+		<flag name="ed25519">Enable ED25519 verification support
+			via <pkg>dev-libs/nettle</pkg> and <pkg>net-libs/gnutls</pkg></flag>
 		<flag name="gpg">Enable GPG verification support via <pkg>app-crypt/gpgme</pkg></flag>
 		<flag name="pkcs7">Enable PKCS7 verification support via <pkg>net-libs/gnutls</pkg></flag>
 	</use>
