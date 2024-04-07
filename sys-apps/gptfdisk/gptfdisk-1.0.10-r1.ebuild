@@ -32,6 +32,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.9-build_flags.patch
+	"${FILESDIR}"/${PN}-1.0.10_utf16-to-utf8-conversion.patch
 )
 
 src_prepare() {
