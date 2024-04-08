@@ -45,7 +45,10 @@ src_configure() {
 		$(use_enable test czmq_selftest)
 	)
 
-	econf "${myeconfargs[@]}"
+	# Force bash for configure until the fixes for bug #923922 land in a release
+	# https://github.com/zeromq/zproject/pull/1336
+	# https://github.com/zeromq/libzmq/pull/4651
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
 }
 
 src_install() {
