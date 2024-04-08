@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -41,7 +41,7 @@ extra_commands="checkconfig"
 extra_stopped_commands="bootstrap_galera"
 
 description_checkconfig="Verify the server's configuration"
-description_boostrap_galera="Start a new Galera cluster with this server as the initial node"
+description_bootstrap_galera="Start a new Galera cluster with this server as the initial node"
 supervisor=s6
 name=$(mysql_svcname)
 s6_service_timeout_stop="$((1000*${STOP_TIMEOUT:-120}))"
