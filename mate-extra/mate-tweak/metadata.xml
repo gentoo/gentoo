@@ -18,4 +18,5 @@
 	</upstream>
 	<use>
 		<flag name="dropdown">Install tilda for extra support features..</flag>
+	</use>
 </pkgmetadata>
