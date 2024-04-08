@@ -3,10 +3,6 @@
 
 EAPI=8
 
-APP_NAME="${P/-bin/}"
-APP_URI="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
-APP_RESOURCES_COMMIT=6dfb2758e531af693f0baffa15240f152aadd68b
-
 CHROMIUM_LANGS="
 	af am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
@@ -20,20 +16,19 @@ DESCRIPTION="GOG and Epic Games Launcher for Linux"
 HOMEPAGE="https://heroicgameslauncher.com/
 	https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/"
 SRC_URI="
-	${APP_URI}/releases/download/v${PV}/heroic-${PV}.tar.xz
+	https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v${PV}/heroic-${PV}.tar.xz
 		-> ${P}.tar.xz
-
-	${APP_URI}/raw/${APP_RESOURCES_COMMIT}/flatpak/com.heroicgameslauncher.hgl.desktop
-		-> com.heroicgameslauncher.hgl.desktop-${APP_RESOURCES_COMMIT}
-
-	${APP_URI}/raw/${APP_RESOURCES_COMMIT}/flatpak/com.heroicgameslauncher.hgl.png
-		-> com.heroicgameslauncher.hgl.png-${APP_RESOURCES_COMMIT}
+	https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/raw/v${PV}/flatpak/com.heroicgameslauncher.hgl.desktop
+		-> com.heroicgameslauncher.hgl.${PV}.desktop
+	https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/raw/v${PV}/flatpak/com.heroicgameslauncher.hgl.png
+		-> com.heroicgameslauncher.hgl.${PV}.png
 "
-S="${WORKDIR}/${APP_NAME}"
+S="${WORKDIR}/${P/-bin}"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="gamescope"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -88,13 +83,10 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	gamescope? ( gui-wm/gamescope )
 "
 
 QA_PREBUILT=".*"
-
-src_unpack() {
-	unpack "${P}.tar.xz"
-}
 
 src_configure() {
 	default
@@ -107,10 +99,21 @@ src_prepare() {
 
 	cd locales || die
 	chromium_remove_language_paks
+
+	# Create gamescope desktop file
+	if use gamescope; then
+		cp "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.desktop \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
+
+		sed -i 's/Name=Heroic Games Launcher/Name=Heroic Games Launcher (Gamescope)/g' \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
+		sed -i 's/Exec=heroic-run %u/Exec=env GDK_BACKEND=wayland gamescope -w 1920 -h 1080 -f -R --RT --force-grab-cursor --prefer-vk-device --adaptive-sync --nested-unfocused-refresh 30 -- heroic-run --ozone-platform=x11 --enable-features=UseOzonePlatform,WaylandWindowDecorations/g' \
+			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
+	fi
 }
 
 src_install() {
-	local app_root=/opt/${APP_NAME}
+	local app_root=/opt/${P/-bin}
 	local app_dest="${ED}"/${app_root}
 
 	dodoc LICENSE.*
@@ -119,16 +122,20 @@ src_install() {
 	dodir "${app_root%/*}"
 	cp -r "${S}" "${app_dest}" || die
 
-	dosym -r "${PYTHON}"	\
-		  "${app_root}"/resources/app.asar.unpacked/node_modules/register-scheme/build/node_gyp_bins/python3
+	dosym -r "${PYTHON}" \
+		"${app_root}"/resources/app.asar.unpacked/node_modules/register-scheme/build/node_gyp_bins/python3
 
 	find "${app_dest}" -type f -name "*.a" -exec rm {} + || die
 
 	dosym -r "${app_root}"/heroic /usr/bin/heroic-run
 
 	# Install resources: desktop file and icon.
-	newmenu "${DISTDIR}"/com.heroicgameslauncher.hgl.desktop-${APP_RESOURCES_COMMIT}	\
+	newmenu "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.desktop \
 			com.heroicgameslauncher.hgl.desktop
-	newicon "${DISTDIR}"/com.heroicgameslauncher.hgl.png-${APP_RESOURCES_COMMIT}	\
+	if use gamescope; then
+		newmenu "${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop \
+			com.heroicgameslauncher.hgl.gamescope.desktop
+	fi
+	newicon "${DISTDIR}"/com.heroicgameslauncher.hgl.${PV}.png	\
 			com.heroicgameslauncher.hgl.png
 }
