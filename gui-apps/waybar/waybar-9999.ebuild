@@ -21,7 +21,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="evdev experimental jack +libinput +logind mpd mpris network pipewire pulseaudio sndio systemd test tray +udev upower wifi"
 REQUIRED_USE="
-	mpris? ( logind )
 	upower? ( logind )
 "
 
