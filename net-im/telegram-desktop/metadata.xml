@@ -5,6 +5,10 @@
 		<email>esteve.varela@gmail.com</email>
 		<name>Esteve Varela Colominas</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>aliaksei.urbanski@gmail.com</email>
+		<name>Aliaksei Urbanski</name>
+	</maintainer>
 	<maintainer type="person" proxied="proxy">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
