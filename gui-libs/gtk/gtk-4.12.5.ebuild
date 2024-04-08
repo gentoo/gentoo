@@ -89,6 +89,7 @@ BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
+	vulkan? ( media-libs/shaderc )
 	wayland? (
 		dev-util/wayland-scanner
 	)
