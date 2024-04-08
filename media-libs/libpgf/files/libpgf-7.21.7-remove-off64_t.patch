@@ -1,35 +1,27 @@
 https://bugs.gentoo.org/907091
+https://bugs.gentoo.org/927796
 
-Remove off64_t, add AC_SYS_LARGEFILE to configure.ac instead
+Remove off64_t, lseek64, add AC_SYS_LARGEFILE to configure.ac instead
 
 --- a/include/PGFplatform.h
 +++ b/include/PGFplatform.h
-@@ -341,10 +341,6 @@
- #define __POSIX__ 
- #endif 
- 
--#ifndef off64_t 
--#define off64_t off_t 
--#endif 
--
- #ifndef lseek64 
- #define lseek64 lseek 
- #endif 
-@@ -536,7 +532,7 @@
+@@ -536,8 +536,8 @@
  			return NoError;
  		}
  	#else
 -		off64_t ret;
+-		if ((ret = lseek64(hFile, 0, SEEK_CUR)) == -1) {
 +		off_t ret;
- 		if ((ret = lseek64(hFile, 0, SEEK_CUR)) == -1) {
++		if ((ret = lseek(hFile, 0, SEEK_CUR)) == -1) {
  			return errno;
  		} else {
-@@ -554,7 +550,7 @@
+ 			*pos = (UINT64)ret;
+@@ -554,7 +554,7 @@
  			return NoError;
  		}
  	#else
 -		if ((lseek64(hFile, (off64_t)posOff, posMode)) == -1) {
-+		if ((lseek64(hFile, (off_t)posOff, posMode)) == -1) {
++		if ((lseek(hFile, (off_t)posOff, posMode)) == -1) {
  			return errno;
  		} else {
  			return NoError;
