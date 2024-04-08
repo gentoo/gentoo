@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Library for free and lossless compression of the LAS LiDAR format"
 HOMEPAGE="https://laszip.org/"
-SRC_URI="https://github.com/LASzip/LASzip/releases/download/${PV}/${PN}-src-${PV}.tar.gz"
+SRC_URI="https://github.com/LASzip/LASzip/releases/download/${PV}/${PN}-src-${PV}.tar.bz2"
 S="${WORKDIR}/${PN}-src-${PV}"
 
 LICENSE="LGPL-2.1+"
