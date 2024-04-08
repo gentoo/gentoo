@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,8 +27,6 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-minimal.patch
 )
 
-LA="libanjuta-${PV%%.*}.la"
-
 src_configure() {
 	gnome2_src_configure \
 		--disable-debug \
@@ -42,12 +40,12 @@ src_configure() {
 
 src_compile() {
 	emake -C libanjuta/interfaces libanjuta-interfaces.la
-	emake -C libanjuta ${LA}
+	emake -C libanjuta libanjuta-${PV%%.*}.la
 }
 
 src_install() {
 	emake DESTDIR="${D}" -C libanjuta install-am
 	emake DESTDIR="${D}" -C libanjuta/interfaces install-am
 	emake DESTDIR="${D}" -C src install-dist_anjuta_pixmapsDATA
-	rm -v "${ED}"/usr/$(get_libdir)/${LA} || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
