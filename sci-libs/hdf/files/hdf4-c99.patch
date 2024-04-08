@@ -1,0 +1,371 @@
+From a3d4d30fe457fc9a85fce5508119dffd3ace54c1 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 21:28:39 -0400
+Subject: [PATCH 01/11] fix tests omitting required header
+
+sys/time.h is not time.h.
+
+Purports to be fixed by https://github.com/HDFGroup/hdf4/commit/276e2c205b767d31f9d0b757f53a36aee1e1f9b2
+which however doesn't directly include time.h, as of the current
+version. In later releases it does.
+---
+ hdf/test/buffer.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hdf/test/buffer.c b/hdf/test/buffer.c
+index c7990e7..9f0f06f 100644
+--- a/hdf/test/buffer.c
++++ b/hdf/test/buffer.c
+@@ -50,6 +50,7 @@
+ #ifdef H4_HAVE_SYS_TIME_H
+ #include <sys/time.h>
+ #endif
++#include <time.h>
+ #include "tutils.h"
+ #include "hfile.h"
+ 
+-- 
+2.43.2
+
+
+From 02ec8e25e096241e20664acfc6596767f050ec86 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 20:41:06 -0400
+Subject: [PATCH 02/11] fix util omitting required header
+
+sys/wait.h is POSIX, but for some godforsaken reason upstream has
+decided to only include it behind random OS identifier macros. In a
+newer upstream version, they at least migrate over to including it
+whenever the header exists.
+
+https://github.com/HDFGroup/hdf4/commit/67e11955e41471c8892acc3c8930ea538f719a03
+---
+ hdf/util/he_file.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/hdf/util/he_file.c b/hdf/util/he_file.c
+index 8686e2f..d6c5e7f 100644
+--- a/hdf/util/he_file.c
++++ b/hdf/util/he_file.c
+@@ -17,9 +17,7 @@
+ #include "he.h"
+ 
+ /* get the prototype for the wait() func. */
+-#if defined SUN | defined HP9000 | defined IRIX | defined UNIX386
+ #include <sys/wait.h>
+-#endif /* SUN | HP9000 */
+ #ifdef H4_HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif
+-- 
+2.43.2
+
+
+From 60223f44459e7b43a26bdccf473804f1f0fd710f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 20:46:48 -0400
+Subject: [PATCH 03/11] another POSIX function with a missing header
+
+For this one it is not immediately apparent to me that it's fixed
+upstream at all. Will check later.
+---
+ mfhdf/libsrc/file.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mfhdf/libsrc/file.c b/mfhdf/libsrc/file.c
+index a53301f..df73212 100644
+--- a/mfhdf/libsrc/file.c
++++ b/mfhdf/libsrc/file.c
+@@ -20,6 +20,7 @@
+ #include <assert.h>
+ #endif /* DEBUG */
+ 
++#include <unistd.h>
+ #include    <string.h>
+ #include    <errno.h>
+ #include    "local_nc.h"
+-- 
+2.43.2
+
+
+From 2b4772cf958a1af0fff6117d4f7127607d3f1a50 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 20:48:56 -0400
+Subject: [PATCH 04/11] add brand new definition of function no one bothered to
+ define at all
+
+Added upstream in https://github.com/HDFGroup/hdf4/commit/8a4137d60e2d932703fc6ee91501ad374ccba885
+---
+ mfhdf/test/hdftest.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/mfhdf/test/hdftest.h b/mfhdf/test/hdftest.h
+index a211c49..a946e5c 100644
+--- a/mfhdf/test/hdftest.h
++++ b/mfhdf/test/hdftest.h
+@@ -52,6 +52,9 @@
+ 
+ /*************************** Utility Functions ***************************/
+ 
++/* Generates the correct name for the test file */
++intn make_datafilename(char* basename, char* testfile, unsigned int size);
++
+ /* Calls SDcreate, SDwritedata, and SDendaccess */
+ int32 make_SDS(int32 sd_id, char* sds_name, int32 type, int32 rank,
+ 			  int32* dim_sizes, int32 unlim_dim, VOIDP written_data);
+@@ -65,6 +68,9 @@ int32 make_Ext3D_SDS(int32 sd_id, char* sds_name, int32 type, int32 rank,
+ 		     int32* dim_sizes, VOIDP written_data,
+ 		     int32 offset, char* ext_file_name);
+ 
++/* Verifies the unlimited dimension's size and the variable's data. */
++int verify_info_data(int32 sds_id, int32 expected_dimsize, int16 *result);
++
+ /* Calls SDnametoindex and SDselect */
+ int32 get_SDSbyName(int32 sd_id, char* sds_name);
+ 
+-- 
+2.43.2
+
+
+From 1be129c91ec9db6991daebddfe5124cc8180f0ea Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 20:58:13 -0400
+Subject: [PATCH 05/11] fix typoed function definition
+
+https://github.com/HDFGroup/hdf4/commit/490abfc71219657ecfa81cd90413b623f73603fd
+---
+ mfhdf/test/hdftest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mfhdf/test/hdftest.c b/mfhdf/test/hdftest.c
+index da9a36b..04f8641 100644
+--- a/mfhdf/test/hdftest.c
++++ b/mfhdf/test/hdftest.c
+@@ -59,7 +59,7 @@ extern int test_SDSprops();
+ extern int test_coordvar();
+ extern int test_chunk();
+ extern int test_compression();
+-extern int test_dimension();
++extern int test_dimensions();
+ extern int test_attributes();
+ extern int test_datasizes();
+ extern int test_datainfo();
+-- 
+2.43.2
+
+
+From 60fcf1802bd015b01095c6a0463200f09c47f677 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 21:53:59 -0400
+Subject: [PATCH 06/11] make defines actually do anything whatsoever
+
+Rendered obsolete by https://github.com/HDFGroup/hdf4/commit/218c8da49eda25799577ac905209c1e972a77771
+---
+ mfhdf/test/tdatainfo.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/mfhdf/test/tdatainfo.c b/mfhdf/test/tdatainfo.c
+index df2539b..ab36044 100644
+--- a/mfhdf/test/tdatainfo.c
++++ b/mfhdf/test/tdatainfo.c
+@@ -23,6 +23,9 @@
+  * -BMR, Jul 2010
+  ****************************************************************************/
+ 
++#ifndef DATAINFO_TESTER
++#define DATAINFO_TESTER /* to include mfdatainfo.h */
++#endif
+ #include "mfhdf.h"
+ 
+ #ifdef H4_HAVE_SYS_TYPES_H
+@@ -44,10 +47,6 @@
+ #define ssize_t int32
+ #endif
+ 
+-#ifndef DATAINFO_TESTER
+-#define DATAINFO_TESTER /* to include mfdatainfo.h */
+-#endif
+-
+ #ifdef H4_HAVE_LIBSZ
+ #include "szlib.h"
+ #endif
+-- 
+2.43.2
+
+
+From e967cb577fa0ba39cee7d5a128672c61adbb839e Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 22:01:14 -0400
+Subject: [PATCH 07/11] Include correct header
+
+https://github.com/HDFGroup/hdf4/commit/3f61fb461d2d19cc1d9da41f29e5cbb2ce0c4365
+---
+ mfhdf/test/tfile.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mfhdf/test/tfile.c b/mfhdf/test/tfile.c
+index a90fc02..b0ea001 100644
+--- a/mfhdf/test/tfile.c
++++ b/mfhdf/test/tfile.c
+@@ -13,6 +13,7 @@
+ 
+ /* $Id: tfile.c 5218 2009-08-29 04:21:49Z bmribler $ */
+ 
++#include "local_nc.h"
+ #include "mfhdf.h"
+ 
+ #ifdef HDF
+-- 
+2.43.2
+
+
+From fda204abcb83516177d6c81a23261e1c641bcdcf Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 22:03:18 -0400
+Subject: [PATCH 08/11] include header needed for unlink()
+
+Upstream in https://github.com/HDFGroup/hdf4/commit/9055b673990b2dc3c9248f720f3e8a03f8d86434
+
+It is unclear why they think it was only needed then...
+---
+ mfhdf/test/tsd.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mfhdf/test/tsd.c b/mfhdf/test/tsd.c
+index 397aeba..a6e9b6c 100644
+--- a/mfhdf/test/tsd.c
++++ b/mfhdf/test/tsd.c
+@@ -15,6 +15,8 @@
+  * tsd.c - tests SDstart for file with no write permission
+ ****************************************************************************/
+ 
++#include <unistd.h>
++
+ #include "mfhdf.h"
+ 
+ #ifdef HDF
+-- 
+2.43.2
+
+
+From 572ef6889599b58535bd2285d98ac63c7fdf870d Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 22:49:39 -0400
+Subject: [PATCH 09/11] include the getopt() header
+
+Which isn't getopt.h, though upstream helpfully added one in
+https://github.com/HDFGroup/hdf4/commit/9be7f29942d286873d0b4fa125be11b3f79f6916
+
+They then went a bit further and stopped using getopt at all:
+https://github.com/HDFGroup/hdf4/commit/0b3ad421b3ba8045d078196edd0492067f1ea576
+
+Helpful rationale:
+>  Instead of relying on the system getopt(), HDF4 includes its own
+
+Intriguing.
+
+"Fortunately" this is a patch for an old version of hdf4. All we want to
+do is get the POSIX prototype which we intend to link to.
+---
+ mfhdf/hdiff/hdiff_main.c | 1 +
+ mfhdf/ncdump/ncdump.c    | 1 +
+ mfhdf/ncgen/main.c       | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/mfhdf/hdiff/hdiff_main.c b/mfhdf/hdiff/hdiff_main.c
+index 2fb2342..e2987be 100644
+--- a/mfhdf/hdiff/hdiff_main.c
++++ b/mfhdf/hdiff/hdiff_main.c
+@@ -12,6 +12,7 @@
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ 
+ 
++#include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/mfhdf/ncdump/ncdump.c b/mfhdf/ncdump/ncdump.c
+index bdaa120..8697c0a 100644
+--- a/mfhdf/ncdump/ncdump.c
++++ b/mfhdf/ncdump/ncdump.c
+@@ -4,6 +4,7 @@
+  *   $Id$
+  *********************************************************************/
+ 
++#include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/mfhdf/ncgen/main.c b/mfhdf/ncgen/main.c
+index 16c0204..7f6e2c0 100644
+--- a/mfhdf/ncgen/main.c
++++ b/mfhdf/ncgen/main.c
+@@ -4,6 +4,7 @@
+  *   $Id$
+  *********************************************************************/
+ 
++#include <unistd.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+-- 
+2.43.2
+
+
+From b569c20be9d3c65ba48bd2a81a5daa9ee8a419bc Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 22:57:19 -0400
+Subject: [PATCH 10/11] Remove never-defined macros that prevented including a
+ crucial header
+
+Also removed upstream:
+https://github.com/HDFGroup/hdf4/commit/3f61fb461d2d19cc1d9da41f29e5cbb2ce0c4365
+---
+ mfhdf/ncgen/close.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/mfhdf/ncgen/close.c b/mfhdf/ncgen/close.c
+index 036d8f0..3dedbd7 100644
+--- a/mfhdf/ncgen/close.c
++++ b/mfhdf/ncgen/close.c
+@@ -6,9 +6,7 @@
+ 
+ #include <stdio.h>
+ #include "ncgen.h"
+-#ifdef EIP
+ #include "genlib.h"
+-#endif
+ 
+ extern void fline(), cline();
+ extern int netcdf_flag;
+-- 
+2.43.2
+
+
+From 9bce6a7a5ea7095f4a51d38bd7e378670c33fb06 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 7 Apr 2024 23:23:16 -0400
+Subject: [PATCH 11/11] fix blatantly missing type
+
+Upstream applied via:
+https://github.com/HDFGroup/hdf4/commit/38e08e0d12d2ee84917111583a007fdcb5ad1aed
+---
+ mfhdf/hdfimport/gen_sds_floats.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mfhdf/hdfimport/gen_sds_floats.c b/mfhdf/hdfimport/gen_sds_floats.c
+index 81f62c5..d08576f 100644
+--- a/mfhdf/hdfimport/gen_sds_floats.c
++++ b/mfhdf/hdfimport/gen_sds_floats.c
+@@ -23,7 +23,7 @@
+ #define RANK2          2  /* Number of dimensions of the SDS */
+ #define RANK3          3  /* Number of dimensions of the SDS */
+ 
+-main() 
++int main()
+ {
+     /************************* Variable declaration ************************/
+ 
+-- 
+2.43.2
+
