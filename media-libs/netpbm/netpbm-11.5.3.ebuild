@@ -155,12 +155,14 @@ src_prepare() {
 			-i test/Test-Order || die
 	fi
 
-	# this test requires LC_ALL=en_US.iso88591, not available on musl
+	# pbmtext-iso88591 requires LC_ALL=en_US.iso88591, not available on musl
+	# pbmtext-utf8 requires locale, not available on musl
 	# ppmpat-random and pnmindex are broken on musl
 	# bug #907295
 	if use elibc_musl; then
 		sed \
 			-e 's:pbmtext-iso88591.*::' \
+			-e 's:pbmtext-utf8.*::' \
 			-e 's:ppmpat-random.*::' \
 			-e 's:pnmindex.*::' \
 			-i test/Test-Order || die
