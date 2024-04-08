@@ -6,9 +6,12 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  cfortran is a header file to ease bridge between C and FORTRAN. It
-  provides an interface  between C and FORTRAN routines and global
-  data, i.e. structures and COMMON blocks. This package includes
-  patches from Debian for better support on newer compilers and architectures.
+    cfortran is a header file to ease bridge between C and FORTRAN. It
+    provides an interface  between C and FORTRAN routines and global
+    data, i.e. structures and COMMON blocks. This package includes
+    patches from Debian for better support on newer compilers and architectures.
   </longdescription>
+  <upstream>
+    <remote-id type="github">bastien-roucaries/cfortran</remote-id>
+  </upstream>
 </pkgmetadata>
