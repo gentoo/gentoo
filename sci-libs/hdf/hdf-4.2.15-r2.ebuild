@@ -37,6 +37,9 @@ PATCHES=(
 
 	# backport fix for Modern C
 	"${FILESDIR}"/hdf4-c99.patch
+
+	# These tools were dropped upstream. Get them from netcdf...
+	"${FILESDIR}"/0001-simply-do-not-build-the-mfhdf-tools-ncgen-ncdump.patch
 )
 
 src_prepare() {
@@ -78,9 +81,4 @@ src_install() {
 	else
 		rm -r share/hdf4_examples || die
 	fi
-
-	mv bin/ncgen{,-hdf} || die
-	mv bin/ncdump{,-hdf} || die
-	mv share/man/man1/ncgen{,-hdf}.1 || die
-	mv share/man/man1/ncdump{,-hdf}.1 || die
 }
