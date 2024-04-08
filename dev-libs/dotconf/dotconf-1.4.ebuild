@@ -3,11 +3,12 @@
 
 EAPI=8
 
-inherit autotools git-r3 toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="dot.conf configuration file parser"
 HOMEPAGE="https://github.com/williamh/dotconf"
 if [[ ${PV} == 9999* ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/williamh/dotconf.git"
 else
 	SRC_URI="https://github.com/williamh/dotconf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
