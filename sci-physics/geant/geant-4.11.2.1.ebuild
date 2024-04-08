@@ -67,6 +67,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.11.0.2-musl-avoid-execinfo.patch
+	"${FILESDIR}"/${PN}-4.11.2.1-find-soxt-noversion.patch
 )
 
 src_configure() {
