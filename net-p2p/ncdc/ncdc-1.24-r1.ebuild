@@ -11,10 +11,11 @@ SRC_URI="
 	https://dev.yorhel.nl/download/${P}.tar.gz
 	verify-sig? ( https://dev.yorhel.nl/download/${P}.tar.gz.asc )
 "
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-
 LICENSE="MIT"
 SLOT="0"
+
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+
 IUSE="geoip"
 
 RDEPEND="
@@ -35,6 +36,10 @@ BDEPEND="
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
+
+PATCHES=(
+	"${FILESDIR}/ncdc-1.24-fix-clang16-c99-errors.patch"
+)
 
 src_configure() {
 	local myeconfargs=(
