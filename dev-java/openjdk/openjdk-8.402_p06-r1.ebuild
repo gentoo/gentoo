@@ -85,7 +85,6 @@ DEPEND="
 	x11-libs/libXtst
 	|| (
 		dev-java/openjdk-bin:${SLOT}
-		dev-java/icedtea-bin:${SLOT}
 		dev-java/openjdk:${SLOT}
 	)
 "
@@ -132,7 +131,7 @@ pkg_setup() {
 
 	[[ ${MERGE_TYPE} == "binary" ]] && return
 
-	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT} icedtea-${SLOT} icedtea-bin-${SLOT}"
+	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT}"
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
