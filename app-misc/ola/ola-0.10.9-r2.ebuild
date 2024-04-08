@@ -61,8 +61,11 @@ BDEPEND="app-alternatives/yacc
 		)
 	)"
 
+# ola-0.10.9-liblo.patch fixes compilation against
+# media-libs/liblo-0.32. See https://bugs.gentoo.org/927000
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.9-nullptr.patch
+	"${FILESDIR}"/${PN}-0.10.9-liblo.patch
 )
 
 src_prepare() {
