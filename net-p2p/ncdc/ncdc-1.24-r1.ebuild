@@ -36,6 +36,10 @@ BDEPEND="
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
 
+PATCHES=(
+	"${FILESDIR}/ncdc-1.24-fix-clang16-c99-errors.patch"
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_with geoip)
