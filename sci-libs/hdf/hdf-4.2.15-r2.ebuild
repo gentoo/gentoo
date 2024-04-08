@@ -50,6 +50,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862720
+	#
+	# Do not trust with LTO either, just because of strict-aliasing.
+	# But also because it does have blatant LTO errors too.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
 	# GCC 10 workaround
 	# bug #723014
