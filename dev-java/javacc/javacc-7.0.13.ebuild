@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
-	test? (	dev-java/ant:0[junit] )"
+	test? (	>=dev-java/ant-1.10.14:0[junit] )"
 
 RDEPEND=">=virtual/jre-1.8:*"
 
