@@ -46,7 +46,6 @@ BDEPEND="
 	"
 
 src_prepare() {
-	default
 	# see bug #907759
 	sed -i "s/ cc / $(tc-getBUILD_CC) /" "${S}"/CMakeLists.txt
 	cmake_src_prepare
@@ -72,7 +71,6 @@ src_configure() {
 }
 
 src_install() {
-	default
 	cmake_src_install
 	mv "${D}/usr/share/doc/${PN}"/* "${D}/usr/share/doc/${PF}" || die
 	rmdir "${D}/usr/share/doc/${PN}"
