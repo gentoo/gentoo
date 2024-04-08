@@ -20,7 +20,7 @@ IUSE="exif introspection libnotify pcre +trash-panel-plugin udisks"
 DEPEND="
 	>=dev-libs/glib-2.70.0
 	>=x11-libs/gdk-pixbuf-2.40.0
-	>=x11-libs/gtk+-3.24.0:3
+	>=x11-libs/gtk+-3.24.0:3[X]
 	>=xfce-base/exo-4.19.0:=
 	>=xfce-base/libxfce4ui-4.17.6:=
 	>=xfce-base/libxfce4util-4.17.2:=
