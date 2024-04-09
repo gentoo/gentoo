@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic git-r3 gnome2-utils
+inherit cmake-multilib git-r3 gnome2-utils
 
 DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl/"
@@ -42,8 +42,6 @@ DEPEND+="
 "
 
 multilib_src_configure() {
-	filter-lto
-
 	local mycmakeargs=(
 		-DJPEGXL_ENABLE_BENCHMARK=OFF
 		-DJPEGXL_ENABLE_COVERAGE=OFF

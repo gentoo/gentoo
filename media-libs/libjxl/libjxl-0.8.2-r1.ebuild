@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib
 
 # This changes frequently.  Please check the testdata submodule when bumping.
 TESTDATA_COMMIT="d6168ffb9e1cc24007e64b65dd84d822ad1fc759"
@@ -36,8 +36,6 @@ PATCHES=(
 )
 
 multilib_src_configure() {
-	filter-lto
-
 	local mycmakeargs=(
 		-DJPEGXL_ENABLE_BENCHMARK=OFF
 		-DJPEGXL_ENABLE_COVERAGE=OFF
