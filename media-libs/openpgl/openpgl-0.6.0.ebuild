@@ -29,6 +29,13 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/926890
+	#
+	# Upstream "solved" this by setting -fno-strict-aliasing themselves.
+	# Do not trust with LTO.
+	filter-lto
+
 	local mycmakeargs=(
 		-DOPENPGL_ISA_SSE4="$(usex cpu_flags_x86_sse4_2)"
 		-DOPENPGL_ISA_AVX2="$(usex cpu_flags_x86_avx2)"
