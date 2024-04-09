@@ -353,6 +353,7 @@ S=${WORKDIR}/${P/_/-}
 PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
 	"${FILESDIR}"/${PN}-6.1-wint-conversion.patch
+	"${FILESDIR}"/ffmpeg-6.1.1.-vulkan-fix.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
