@@ -29,7 +29,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.50:2
 	)
 	open-terminal? ( >=mate-base/mate-desktop-1.17.0 )
 	pidgin? ( >=dev-libs/dbus-glib-0.60 )
-	upnp? ( >=net-libs/gupnp-0.13:0= )
+	upnp? ( >=net-libs/gupnp-1.6.5 )
 	xattr? ( sys-apps/attr )
 "
 
