@@ -146,6 +146,7 @@ PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
+	"${FILESDIR}/fix-musl-llvm.patch"
 )
 
 # ARM/Windows functions (bug 923335)
@@ -267,6 +268,12 @@ src_prepare() {
 	#   https://github.com/php/php-src/pull/13017
 	#
 	rm ext/dom/tests/DOMNode_isEqualNode.phpt || die
+
+	# This is a memory usage test with hard-coded limits. Whenever the
+	# limits are surpassed... they get increased... but in the meantime,
+	# the tests fail. This is not really a test that end users should
+	# be running pre-install, in my opinion. Bug 927461.
+	rm ext/fileinfo/tests/bug78987.phpt || die
 }
 
 src_configure() {

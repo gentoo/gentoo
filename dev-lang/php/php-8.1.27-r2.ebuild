@@ -150,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/php-capstone-optional.patch"
 	"${FILESDIR}/php-8.1.27-gcc14-libxml.patch"
 	"${FILESDIR}/php-8.1.27-implicit-decls.patch"
+	"${FILESDIR}/fix-musl-llvm.patch"
 )
 
 # ARM/Windows functions that are expected to be undefined.
@@ -250,8 +251,8 @@ src_prepare() {
 	   ext/curl/tests/bug77535.phpt \
 	   ext/curl/tests/curl_error_basic.phpt \
 	   ext/session/tests/bug74514.phpt \
-	   ext/session/tests/bug74936.phpt || die
-
+	   ext/session/tests/bug74936.phpt \
+	   ext/fileinfo/tests/bug78987.phpt || die
 }
 
 src_configure() {
