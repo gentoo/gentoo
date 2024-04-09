@@ -222,11 +222,6 @@ src_prepare() {
 	local patchinstallargs=(
 		--all
 		--no-autoconf
-		# patches known broken with USE=-mingw, retry occasionally (bug #921360)
-		$(usev !mingw '
-			-W winedevice-Default_Drivers
-			-W fltmgr.sys-FltBuildDefaultSecurityDescriptor
-		')
 		${MY_WINE_STAGING_CONF}
 	)
 
