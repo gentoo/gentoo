@@ -14,7 +14,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
-    <changelog>http://www.gitorious.org/ogg2mp3/ogg2mp3/commits/master</changelog>
-    <doc>http://www.gitorious.org/ogg2mp3/pages/Home</doc>
+    <remote-id type="github">fithp/ogg2mp3</remote-id>
   </upstream>
 </pkgmetadata>
