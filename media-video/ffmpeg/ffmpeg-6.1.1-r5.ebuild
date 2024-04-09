@@ -381,6 +381,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
 	"${FILESDIR}"/${PN}-6.1-gcc-14.patch
 	"${FILESDIR}"/${PN}-6.0.1-alignment.patch
+	"${FILESDIR}"/ffmpeg-6.1.1-vulkan-rename.patch
+
 )
 
 MULTILIB_WRAPPED_HEADERS=(
