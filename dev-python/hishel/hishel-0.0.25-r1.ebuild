@@ -18,7 +18,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="
+	dev-python/httpx[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]
+"
+
 BDEPEND="
+	${RDEPEND}
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	test? (
 		dev-python/anyio[${PYTHON_USEDEP}]
