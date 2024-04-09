@@ -62,6 +62,9 @@ BDEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.28.0-optional-systemd.patch
+)
 
 src_configure() {
 	mate_src_configure \
