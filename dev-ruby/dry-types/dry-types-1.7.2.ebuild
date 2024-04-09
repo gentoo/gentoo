@@ -35,4 +35,5 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/dry-monads
 	dev-ruby/dry-struct
+	dev-ruby/warning
 )"
