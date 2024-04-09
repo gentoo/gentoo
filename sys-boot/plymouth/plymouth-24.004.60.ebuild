@@ -72,6 +72,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		--localstatedir "${EPREFIX}"/var
 		$(meson_feature gtk)
 		$(meson_feature freetype)
 		$(meson_feature pango)
@@ -94,7 +95,7 @@ src_install() {
 	insinto /usr/share/plymouth
 	newins "${DISTDIR}"/gentoo-logo.png bizcom.png
 
-	if use split-usr ; then
+	if use split-usr; then
 		# Install compatibility symlinks as some rdeps hardcode the paths
 		dosym ../usr/bin/plymouth /bin/plymouth
 		dosym ../usr/sbin/plymouth-set-default-theme /sbin/plymouth-set-default-theme
