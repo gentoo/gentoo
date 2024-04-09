@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Tools for Flash-Friendly File System (F2FS)"
 HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/"
@@ -39,6 +39,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863896
+	# Sent an email to linux-f2fs-devel@ but it hasn't been accepted yet...
+	filter-lto
+
 	local myconf=(
 		# This is required to install to /sbin, bug #481110
 		--bindir="${EPREFIX}"/sbin
