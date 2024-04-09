@@ -2637,10 +2637,6 @@ java-pkg_setup-vm() {
 	debug-print-function ${FUNCNAME} $*
 
 	local vendor="$(java-pkg_get-vm-vendor)"
-	if [[ "${vendor}" == icedtea* ]] && java-pkg_is-vm-version-ge "1.8" ; then
-		addpredict "/dev/random"
-		addpredict "/proc/self/coredump_filter"
-	fi
 }
 
 # @FUNCTION: java-pkg_needs-vm

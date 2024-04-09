@@ -225,7 +225,7 @@ set_java_env() {
 # Environment variables within this file will be resolved. You should
 # escape the $ when referring to variables that should be resolved later
 # such as ${JAVA_HOME}. Subshells may be used but avoid using double
-# quotes. See icedtea-bin.env.sh for a good example.
+# quotes.
 
 java-vm_install-env() {
 	debug-print-function ${FUNCNAME} "$*"
