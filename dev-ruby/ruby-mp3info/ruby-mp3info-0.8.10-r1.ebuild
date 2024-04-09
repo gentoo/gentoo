@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 RUBY_FAKEGEM_GEMSPEC="ruby-mp3info.gemspec"
@@ -10,19 +10,24 @@ RUBY_FAKEGEM_GEMSPEC="ruby-mp3info.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A pure Ruby library for access to mp3 files (internal infos and tags)"
-HOMEPAGE="http://rubyforge.org/projects/ruby-mp3info/"
+HOMEPAGE="https://github.com/moumar/ruby-mp3info"
 SRC_URI="https://github.com/moumar/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
+IUSE="test"
 
 DEPEND+=" test? ( media-sound/id3v2 )"
 
-ruby_add_bdepend "test? ( dev-ruby/hoe dev-ruby/test-unit:2 )"
+ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	sed -i -e "s:/tmp/test.mp3:${T}/test.mp3:" test/test_ruby-mp3info.rb || die
+	sed -i -e 's/MiniTest/Minitest/' test/helper.rb || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib test/test_ruby-mp3info.rb || die
 }
