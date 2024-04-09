@@ -107,7 +107,7 @@ src_prepare() {
 
 		sed -i 's/Name=Heroic Games Launcher/Name=Heroic Games Launcher (Gamescope)/g' \
 			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
-		sed -i 's/Exec=heroic-run %u/Exec=env GDK_BACKEND=wayland gamescope -w 1920 -h 1080 -f -R --RT --force-grab-cursor --prefer-vk-device --adaptive-sync --nested-unfocused-refresh 30 -- heroic-run --ozone-platform=x11 --enable-features=UseOzonePlatform,WaylandWindowDecorations/g' \
+		sed -i 's/Exec=heroic-run %u/Exec=env GDK_BACKEND=wayland gamescope -f -R --RT --force-grab-cursor --prefer-vk-device --adaptive-sync --nested-unfocused-refresh 30 -- heroic-run --ozone-platform=x11 --enable-features=UseOzonePlatform,WaylandWindowDecorations/g' \
 			"${WORKDIR}"/com.heroicgameslauncher.hgl.gamescope.${PV}.desktop || die
 	fi
 }
