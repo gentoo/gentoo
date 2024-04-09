@@ -16,12 +16,13 @@ DESCRIPTION="The MATE Desktop configuration tool"
 LICENSE="FDL-1.1+ GPL-2+ LGPL-2+ LGPL-2.1+ HPND"
 SLOT="0"
 
-IUSE="accountsservice appindicator debug nls systemd"
+IUSE="accountsservice debug nls systemd"
 
 COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.50:2
 	dev-libs/libxml2:2
+	dev-libs/libayatana-appindicator
 	>=gnome-base/dconf-0.13.4
 	>=gnome-base/librsvg-2.0:2
 	>=mate-base/libmatekbd-1.17.0
@@ -47,7 +48,6 @@ COMMON_DEPEND="
 	x11-libs/pango
 	>=x11-wm/marco-1.17.0:=
 	accountsservice? ( sys-apps/accountsservice )
-	appindicator? ( dev-libs/libayatana-appindicator )
 	systemd? ( sys-apps/systemd )
 "
 
@@ -69,7 +69,7 @@ PATCHES=(
 src_configure() {
 	mate_src_configure \
 		--disable-update-mimedb \
-		$(use_enable appindicator) \
+		--with-appindicator \
 		$(use_enable nls) \
 		$(use_enable debug)
 }
