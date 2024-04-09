@@ -101,6 +101,8 @@ python_test() {
 		tests/cli/test_others.py::test_info_command_json
 		# why does it try to use python 2.7?!
 		tests/cli/test_run.py::test_import_another_sitecustomize
+		# fails in tinderbox (bug #928964)
+		tests/test_project.py::test_project_packages_path
 	)
 	[[ ${EPYTHON} != python3.10 ]] && EPYTEST_DESELECT+=(
 		# test seems hardcoded to 3.10
