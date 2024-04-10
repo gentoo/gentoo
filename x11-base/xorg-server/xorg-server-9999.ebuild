@@ -72,7 +72,7 @@ CDEPEND="
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 DEPEND="${CDEPEND}
-	>=x11-base/xorg-proto-2021.4.99.2
+	>=x11-base/xorg-proto-2024.1
 	>=x11-libs/xtrans-1.3.5
 	media-fonts/font-util
 	test? ( >=x11-libs/libxcvt-0.1.0 )
