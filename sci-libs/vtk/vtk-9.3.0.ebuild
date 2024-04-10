@@ -268,6 +268,10 @@ src_prepare() {
 			-i Utilities/Doxygen/CMakeLists.txt || die
 	fi
 
+	if use opencascade && has_version ">=sci-libs/opencascade-7.8.0"; then
+		eapply "${FILESDIR}/vtk-9.3.0-opencascade-7.8.0.patch"
+	fi
+
 	cmake_src_prepare
 
 	if use test; then
@@ -321,6 +325,7 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_IOExportPDF="YES"
 		-DVTK_MODULE_ENABLE_VTK_IOLAS="$(usex las "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IONetCDF="YES"
+		-DVTK_MODULE_ENABLE_VTK_IOOCCT="$(usex opencascade "YES" "No")"
 		-DVTK_MODULE_ENABLE_VTK_IOOggTheora="YES"
 		-DVTK_MODULE_ENABLE_VTK_IOOpenVDB="$(usex openvdb "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOSQL="YES" # sqlite
