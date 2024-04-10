@@ -21,5 +21,6 @@ PLYはLexとYaccの有名なコンパイラ・コンストラクション・ツ�
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">ply</remote-id>
+		<remote-id type="github">dabeaz/ply</remote-id>
 	</upstream>
 </pkgmetadata>
