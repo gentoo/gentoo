@@ -35,7 +35,7 @@ src_configure() {
 }
 
 src_test() {
-	edo cargo nextest run $(usev !debug '--release') --color always --all-features --tests ${static_stuff}
+	edo cargo nextest run $(usev !debug '--release') --color always --features test --tests ${static_stuff}
 }
 
 src_install() {
