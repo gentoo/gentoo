@@ -1,0 +1,17 @@
+https://github.com/commonmark/cmark/commit/a739d4911b5fa5586679b8e55999719cc910d26b
+From: John MacFarlane <jgm@berkeley.edu>
+Date: Wed, 13 Mar 2024 14:31:28 -0700
+Subject: [PATCH] Flag root node as open...
+
+in `cmark_parser_new_with_mem_into_root`. Closes #532.
+--- a/src/blocks.c
++++ b/src/blocks.c
+@@ -98,6 +98,8 @@ cmark_parser *cmark_parser_new_with_mem_into_root(int options, cmark_mem *mem, c
+   cmark_strbuf_init(mem, &parser->linebuf, 0);
+   cmark_strbuf_init(mem, &parser->content, 0);
+ 
++  root->flags = CMARK_NODE__OPEN;
++
+   parser->refmap = cmark_reference_map_new(mem);
+   parser->root = root;
+   parser->current = root;
