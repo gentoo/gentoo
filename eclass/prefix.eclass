@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: prefix.eclass
@@ -19,18 +19,6 @@ esac
 
 if [[ -z ${_PREFIX_ECLASS} ]]; then
 _PREFIX_ECLASS=1
-
-# @ECLASS_VARIABLE: EPREFIX
-# @DESCRIPTION:
-# The offset prefix of a Gentoo Prefix installation.  When Gentoo Prefix
-# is not used, ${EPREFIX} should be "".  Prefix Portage sets EPREFIX,
-# hence this eclass has nothing to do here in that case.
-# Note that setting EPREFIX in the environment with Prefix Portage sets
-# Portage into cross-prefix mode.
-if [[ ! ${EPREFIX+set} ]]; then
-	export EPREFIX=''
-fi
-
 
 # @FUNCTION: eprefixify
 # @USAGE: <list of to be eprefixified files>
