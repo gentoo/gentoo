@@ -11,5 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">serverfiles</remote-id>
+		<remote-id type="github">biolab/serverfiles</remote-id>
 	</upstream>
 </pkgmetadata>
