@@ -47,7 +47,7 @@ CDEPEND="
 	sys-libs/zlib:=[minizip]
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )
-	jemalloc? ( dev-libs/jemalloc:=[-lazy-lock] )
+	jemalloc? ( dev-libs/jemalloc:= )
 	!qt6? (
 		>=dev-qt/qtcore-5.15:5=
 		>=dev-qt/qtgui-5.15:5=[dbus?,jpeg,png,wayland?,X?]
@@ -96,7 +96,6 @@ BDEPEND="
 	virtual/pkgconfig
 	wayland? ( dev-util/wayland-scanner )
 "
-# dev-libs/jemalloc:=[-lazy-lock] -> https://bugs.gentoo.org/803233
 
 PATCHES=(
 	"${FILESDIR}/tdesktop-4.2.4-jemalloc-only-telegram-r1.patch"
