@@ -41,7 +41,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
-	dev-python/alabaster
+	dev-python/sphinx-rtd-theme
 
 python_prepare_all() {
 	# avoid pytest-mpi dep, we do not use mpi anyway
