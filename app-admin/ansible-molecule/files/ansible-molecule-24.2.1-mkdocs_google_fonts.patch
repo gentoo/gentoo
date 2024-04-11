@@ -1,0 +1,10 @@
+--- a/mkdocs.yml
++++ b/mkdocs.yml
+@@ -9,6 +9,7 @@
+ 
+ theme:
+   name: ansible
++  font: false
+   features:
+     - announce.dismiss
+     - content.action.edit
