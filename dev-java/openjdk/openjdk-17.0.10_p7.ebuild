@@ -227,8 +227,6 @@ src_configure() {
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
 
-	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
-
 	use lto && myconf+=( --with-jvm-features=link-time-opt )
 
 	if use javafx; then
