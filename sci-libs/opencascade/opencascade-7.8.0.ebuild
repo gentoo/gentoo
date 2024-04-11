@@ -70,6 +70,7 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	tbb? ( dev-cpp/tbb:= )
 	vtk? (
+		dev-lang/tk:=
 		sci-libs/vtk:=[rendering]
 		tbb? (
 			sci-libs/vtk:=[tbb,-cuda]
@@ -182,7 +183,6 @@ src_configure() {
 		# no package in tree
 		-DUSE_OPENVR="no"
 		-DUSE_RAPIDJSON="$(usex json)"
-		-DUSE_QT="$(usex gui)"
 		-DUSE_TBB="$(usex tbb)"
 		-DUSE_TK="$(usex tk)"
 		-DUSE_VTK="$(usex vtk)"
@@ -210,7 +210,7 @@ src_configure() {
 		)
 	fi
 
-	if use gui; then
+	if use examples || use gui; then
 		mycmakeargs+=(
 			-D3RDPARTY_QT_DIR="${ESYSROOT}/usr"
 			-DBUILD_SAMPLES_QT="$(usex examples)"
