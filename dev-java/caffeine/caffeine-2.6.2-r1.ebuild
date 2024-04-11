@@ -3,9 +3,8 @@
 
 EAPI=8
 
-JAVA_PKG_IUSE="doc source test"
+JAVA_PKG_IUSE="doc source"
 MAVEN_ID="com.github.ben-manes.caffeine:caffeine:${PV}"
-JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
