@@ -171,11 +171,6 @@ x11-libs/scw
 sys-firmware/bluez-firmware
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Wrapper library that's stuck on Qt5.  No reverse dependencies left.
-# Removal on 2024-04-25.  Bug #926548.
-dev-python/anyqt
-
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Unfinished package from 2021 that was added as a short-lived
 # dependency of dev-python/GitPython.  No reverse dependencies remain.
 # Removal on 2024-04-25.  Bug #924683.
@@ -342,14 +337,6 @@ sci-libs/scikit-optimize
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-09)
-# Requires pyside2/shiboken2, which is unmaintained upstream and
-# not compatible with llvm-16 and up or python-3.12 and up.
-# No upstream activity for 2 years.
-# dev-python/QtPy is an alternative that does support Qt6.
-# Removal on: 2024-04-09.  Bug #926548
-dev-python/anyqt
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-03-08)
 # A library without reverse dependencies.
