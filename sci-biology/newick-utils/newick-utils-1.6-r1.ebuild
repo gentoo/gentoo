@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools flag-o-matic
 
 DESCRIPTION="Tools for processing phylogenetic trees"
-HOMEPAGE="http://cegg.unige.ch/newick_utils"
-SRC_URI="http://cegg.unige.ch/pub/${P}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20120206012743/http://cegg.unige.ch/newick_utils"
+SRC_URI="https://web.archive.org/web/20120126210029if_/http://cegg.unige.ch/pub/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
