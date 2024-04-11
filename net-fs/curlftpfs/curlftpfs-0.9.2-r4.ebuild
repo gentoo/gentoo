@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic
 
 DESCRIPTION="File system for accessing ftp hosts based on FUSE"
-HOMEPAGE="http://curlftpfs.sourceforge.net/"
+HOMEPAGE="https://curlftpfs.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
