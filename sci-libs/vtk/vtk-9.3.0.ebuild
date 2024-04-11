@@ -325,7 +325,7 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_IOExportPDF="YES"
 		-DVTK_MODULE_ENABLE_VTK_IOLAS="$(usex las "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IONetCDF="YES"
-		-DVTK_MODULE_ENABLE_VTK_IOOCCT="$(usex opencascade "YES" "No")"
+		-DVTK_MODULE_ENABLE_VTK_IOOCCT="$(usex opencascade "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOOggTheora="YES"
 		-DVTK_MODULE_ENABLE_VTK_IOOpenVDB="$(usex openvdb "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOSQL="YES" # sqlite
