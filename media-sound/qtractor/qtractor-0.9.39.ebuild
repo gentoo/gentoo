@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Audio/MIDI multi-track sequencer written in C++ with the Qt framework"
 HOMEPAGE="https://qtractor.sourceforge.io https://github.com/rncbc/qtractor"
@@ -54,6 +54,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/927061
+	# https://github.com/rncbc/qtractor/commit/83ed590eed798f24b6aa1a792b38c2fc61051356
+	#
+	# Remove on next version bump.
+	filter-lto
+
 	local mycmakeargs=(
 		-DCONFIG_DSSI=$(usex dssi 1 0)
 		-DCONFIG_GRADIENT=1
