@@ -162,6 +162,7 @@ src_prepare() {
 		"${FILESDIR}"/gfxpayload.patch
 		"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 		"${FILESDIR}"/grub-2.06-test-words.patch
+		"${FILESDIR}"/grub-2.12-fwsetup.patch
 		"${WORKDIR}"/grub-2.12-bash-completion.patch
 	)
 
