@@ -33,7 +33,7 @@ RDEPEND="
 	${DEPEND}
 	dev-python/wheel[${PYTHON_USEDEP}]
 	>=dev-python/joblib-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.22.3[${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.22.3:=[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/threadpoolctl-2.0.0[${PYTHON_USEDEP}]
 "
