@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-04-11)
+# Contains a bug that could render the kernel fail to boot.
+# https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
+# The fix is:
+# https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7d24c0aa8e678f41457d1304e2091cac6fd1a2e
+=sys-kernel/gentoo-kernel-6.6.26
+=sys-kernel/gentoo-kernel-bin-6.6.26
+=sys-kernel/vanilla-kernel-6.6.26
+=virtual/dist-kernel-6.6.26
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
 # Obsolete java-vm, bugs #848804 #830248.
 # Removal on 2024-05-08
