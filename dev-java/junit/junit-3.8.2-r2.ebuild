@@ -9,8 +9,8 @@ MAVEN_ID="junit:junit:3.8.2"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Simple framework to write repeatable tests"
-SRC_URI="mirror://sourceforge/project/junit/junit/${PV}/junit${PV}.zip"
 HOMEPAGE="https://junit.org/"
+SRC_URI="mirror://sourceforge/project/junit/junit/${PV}/junit${PV}.zip"
 S="${WORKDIR}/junit${PV}"
 
 LICENSE="CPL-1.0"
