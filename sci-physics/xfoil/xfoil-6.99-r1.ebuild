@@ -20,7 +20,10 @@ IUSE="doc examples"
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-overflow.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-overflow.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+)
 
 src_prepare() {
 	# fix bug #147033

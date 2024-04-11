@@ -1,0 +1,12 @@
+Fix bug #771615
+
+--- a/bin/Makefile	2024-04-11 08:00:24.832420892 +0200
++++ b/bin/Makefile	2024-04-11 07:59:56.052410291 +0200
+@@ -152,7 +152,7 @@
+ 	$(INSTALLCMD) pplot $(BINDIR)
+
+ blu: blu.o profil.o
+-	$(FC) -o blu blu.o profil.o
++	$(FC) -o blu blu.o profil.o $(FTNLIB)
+ 	$(INSTALLCMD) blu $(BINDIR)
+
