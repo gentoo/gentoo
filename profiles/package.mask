@@ -41,7 +41,7 @@
 =sys-kernel/gentoo-kernel-6.6.26
 =sys-kernel/gentoo-kernel-bin-6.6.26
 =sys-kernel/vanilla-kernel-6.6.26
-=virtual/dist-kernel-6.6.26
+=sys-kernel/vanilla-kernel-6.8.5
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
 # Obsolete java-vm, bugs #848804 #830248.
