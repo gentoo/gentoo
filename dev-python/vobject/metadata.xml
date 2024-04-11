@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">eventable/vobject</remote-id>
+		<remote-id type="github">skarim/vobject</remote-id>
 		<remote-id type="pypi">vobject</remote-id>
 	</upstream>
 </pkgmetadata>
