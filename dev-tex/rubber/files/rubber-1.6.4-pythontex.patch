@@ -1,0 +1,30 @@
+From 9915f94d320662a719802e32763a7f4e2e4045c7 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 11 Apr 2024 20:25:55 +0200
+Subject: [PATCH] Invoke PythonTeX as "pythontex.py" in Gentoo
+
+In Gentoo:
+> /usr/bin/pythontex.py
+
+In Debian:
+> /usr/bin/pythontex
+---
+ rubber/latex_modules/pythontex.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rubber/latex_modules/pythontex.py b/rubber/latex_modules/pythontex.py
+index 3c5675b..b0bb535 100644
+--- a/rubber/latex_modules/pythontex.py
++++ b/rubber/latex_modules/pythontex.py
+@@ -20,7 +20,7 @@ class PythonTeXDep(rubber.depend.Shell):
+     def __init__(self, document):
+         self.doc = document
+         basename = self.doc.basename()
+-        super().__init__(('pythontex', basename))
++        super().__init__(('pythontex.py', basename))
+         self.pythontex_files = 'pythontex-files-' + basename
+ 
+         pytxcode = basename + '.pytxcode'
+-- 
+2.44.0
+
