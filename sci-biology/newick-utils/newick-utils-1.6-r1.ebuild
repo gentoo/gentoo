@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Tools for processing phylogenetic trees"
 HOMEPAGE="http://cegg.unige.ch/newick_utils"
@@ -31,6 +31,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862279
+	# https://github.com/tjunier/newick_utils/issues/34
+	filter-lto
+
 	econf \
 		--disable-static \
 		--without-guile \
