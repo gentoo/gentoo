@@ -20,10 +20,10 @@ RDEPEND="
 	valadoc? ( >=media-gfx/graphviz-2.16 )
 "
 DEPEND="${RDEPEND}
+	dev-libs/gobject-introspection
 	test? (
 		dev-libs/dbus-glib
 		>=dev-libs/glib-2.26:2
-		dev-libs/gobject-introspection
 	)
 "
 BDEPEND="
