@@ -511,7 +511,7 @@ pkg_postinst() {
 			ewarn
 			ewarn "USE=sound-server is disabled! If you want PipeWire to provide"
 			ewarn "your sound, please enable it. See the wiki at"
-			ewarn "https://wiki.gentoo.org/wiki/PipeWire#Replacing_PulseAudio"
+			ewarn "https://wiki.gentoo.org/wiki/PipeWire"
 			ewarn "for more details."
 			ewarn
 		fi
