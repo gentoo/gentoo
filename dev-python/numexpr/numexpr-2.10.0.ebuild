@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 
 DEPEND="
-	>=dev-python/numpy-2.0.0_rc[${PYTHON_USEDEP}]
+	>=dev-python/numpy-2.0.0_rc:=[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
