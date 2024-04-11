@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 
 CP_DEPEND="
 	dev-java/c3p0:0
-	=dev-java/protobuf-java-3.25*:0
+	>=dev-java/protobuf-java-3.25:0 <dev-java/protobuf-java-3.26:0
 	dev-java/slf4j-api:0
 "
 DEPEND="${CP_DEPEND}
