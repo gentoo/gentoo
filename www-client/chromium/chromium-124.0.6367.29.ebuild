@@ -68,7 +68,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PATCHSET_PPC64="122.0.6261.57-1raptor0~deb12u1"
+PATCHSET_PPC64="123.0.6312.105-1raptor0~deb12u1"
 PATCH_V="${PV%%\.*}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	system-toolchain? (
@@ -457,6 +457,7 @@ src_prepare() {
 		done
 		PATCHES+=( "${WORKDIR}/ppc64le" )
 		PATCHES+=( "${WORKDIR}/debian/patches/fixes/rust-clanglib.patch" )
+		PATCHES+=( "${WORKDIR}/debian/patches/fixes/blink-fonts-shape-result.patch" )
 	fi
 
 	default
