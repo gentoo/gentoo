@@ -37,7 +37,6 @@ PDEPEND="
 "
 
 REQUIRED_USE="
-	acl? ( ads )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
