@@ -161,7 +161,7 @@ x86? (
 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-dzn-Include-vulkan_core.h-instead-of-vulkan.h-in-the.patch
+	"${FILESDIR}"/24.0.4-dzn-Include-vulkan_core.h-instead-of-vulkan.h-in-the.patch
 )
 
 pkg_pretend() {
