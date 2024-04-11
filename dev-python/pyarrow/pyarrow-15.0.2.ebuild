@@ -25,7 +25,7 @@ IUSE="+parquet +snappy ssl"
 
 RDEPEND="
 	~dev-libs/apache-arrow-${PV}[compute,dataset,json,parquet?,re2,snappy?,ssl?]
-	dev-python/numpy:=[${PYTHON_USEDEP}]
+	<dev-python/numpy-2:=[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
