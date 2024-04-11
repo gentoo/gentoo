@@ -14,11 +14,13 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="test" # bug 258460
 
-RDEPEND=">=net-misc/curl-7.17.0
+RDEPEND="
+	>=net-misc/curl-7.17.0
 	>=sys-fs/fuse-2.2:0=
-	>=dev-libs/glib-2.0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	>=dev-libs/glib-2.0
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-64bit_filesize.patch
