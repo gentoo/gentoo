@@ -60,5 +60,9 @@ src_configure() {
 		-DNCNN_VULKAN=$(usex vulkan)
 	)
 
+	# temporary workaround due to a >=clang-18 regression (bug #929228)
+	tc-is-clang && [[ $(clang-major-version) -ge 18 ]] &&
+		mycmakeargs+=( -DNCNN_AVX512BF16=no )
+
 	cmake_src_configure
 }
