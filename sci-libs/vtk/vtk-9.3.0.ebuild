@@ -147,7 +147,7 @@ DEPEND="
 	dev-cpp/cli11
 	dev-cpp/eigen
 	dev-cpp/nlohmann_json
-	dev-libs/pegtl
+	>=dev-libs/pegtl-3
 	dev-libs/utfcpp
 	test? (
 		media-libs/glew
