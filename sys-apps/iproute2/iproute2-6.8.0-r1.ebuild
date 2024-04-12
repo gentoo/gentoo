@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo toolchain-funcs
+inherit edo toolchain-funcs flag-o-matic
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
@@ -103,6 +103,11 @@ src_configure() {
 		sed -i '/^LDLIBS/s:-lresolv::' "${S}"/Makefile || die
 	fi
 	popd >/dev/null || die
+
+	# build system does not pass CFLAGS to LDFLAGS, as is recommended by GCC upstream
+	# https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-flto
+	# https://bugs.gentoo.org/929233
+	append-ldflags ${CFLAGS}
 
 	# run "configure" script first which will create "config.mk"...
 	# Using econf breaks since 5.14.0 (a9c3d70d902a0473ee5c13336317006a52ce8242)
