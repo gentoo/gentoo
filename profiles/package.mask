@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-12)
+# EAPI6. Fails to compile with go versions in tree. Upstream is archived.
+# Uses deprecated go eclasses. Maintainer needed, no rev deps.
+# Removal: 2024-05-12.  Bugs #794913, #679348, #771072, #844607.
+app-emulation/runv
+
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
@@ -65,8 +71,8 @@ acct-user/unifi-video
 media-video/unifi-video
 
 # Ben Kohler <bkohler@gentoo.org> (2024-04-07)
-# Long ago forked to and obsoleted by sys-apps/memtest86+.  Upstream has 
-# abandoned this for their proprietary UEFI-based one (packaged in gentoo as 
+# Long ago forked to and obsoleted by sys-apps/memtest86+.  Upstream has
+# abandoned this for their proprietary UEFI-based one (packaged in gentoo as
 # as sys-apps/memtest86-bin).
 # Removal on 2024-05-07.  Bug #502464, #607494, #628528, #750677, #887003,
 # #912973, #920109
