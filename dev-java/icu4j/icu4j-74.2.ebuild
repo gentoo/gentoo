@@ -19,7 +19,7 @@ SRC_URI="https://github.com/unicode-org/icu/archive/release-${PV/./-}.tar.gz -> 
 S="${WORKDIR}/icu-release-${PV/./-}/icu4j/main"
 
 LICENSE="icu"
-SLOT="70"
+SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="

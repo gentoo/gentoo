@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ CP_DEPEND="
 	~dev-java/antlr-runtime-${PV}:${SLOT}
 	dev-java/antlr-runtime:3.5
 	dev-java/jakarta-json-api:1
-	dev-java/icu4j:70
+	dev-java/icu4j:0
 	dev-java/stringtemplate:4
 	dev-java/treelayout:0
 "
@@ -97,7 +97,7 @@ src_test() {
 		antlr-runtime-${SLOT}
 		antlr-runtime-3.5
 		jakarta-json-api-1
-		icu4j-70
+		icu4j
 		stringtemplate-4
 		treelayout
 	)
