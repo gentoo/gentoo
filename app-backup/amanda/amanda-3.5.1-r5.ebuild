@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools perl-module systemd toolchain-funcs
 
 DESCRIPTION="The Advanced Maryland Automatic Network Disk Archiver"
 HOMEPAGE="http://www.amanda.org/"
-SRC_URI="mirror://sourceforge/amanda/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/amanda/${P}.tar.gz"
 
 LICENSE="HPND BSD BSD-2 GPL-2+ GPL-3+"
 SLOT="0"

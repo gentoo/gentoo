@@ -7,7 +7,7 @@ inherit libtool multilib-minimal
 
 DESCRIPTION="An enhanced version of the quicktime4linux library"
 HOMEPAGE="http://libquicktime.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

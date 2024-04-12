@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 # DISTUTILS_USE_PEP517=setuptools broken, installs files to /usr/CXX
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Set of facilities to extend Python with C++"
 HOMEPAGE="http://cxx.sourceforge.net"
-SRC_URI="mirror://sourceforge/cxx/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/cxx/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Synchronize two directory trees in a fast way"
 HOMEPAGE="https://sourceforge.net/projects/mirdir/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-Unix.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-Unix.tar.gz"
 S="${WORKDIR}/${P}-UNIX"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Fast, intelligent, automatic spam detector using Bayesian analysis"
 HOMEPAGE="https://spamprobe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="QPL-1.0"
 SLOT="0"

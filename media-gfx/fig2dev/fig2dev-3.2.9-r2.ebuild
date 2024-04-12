@@ -9,7 +9,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Set of tools for creating TeX documents with graphics"
 HOMEPAGE="https://www.xfig.org/"
-SRC_URI="mirror://sourceforge/mcj/${P}.tar.xz
+SRC_URI="https://downloads.sourceforge.net/mcj/${P}.tar.xz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2"
 #S="${WORKDIR}/${MY_P}"
 

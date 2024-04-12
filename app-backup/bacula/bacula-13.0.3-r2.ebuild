@@ -10,7 +10,7 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bacula.org/"
-SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/bacula/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

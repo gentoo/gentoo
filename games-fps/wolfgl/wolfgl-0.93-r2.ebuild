@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,10 +9,10 @@ EAPI=6
 DESCRIPTION="Wolfenstein and Spear of Destiny port using OpenGL"
 HOMEPAGE="http://wolfgl.sourceforge.net/"
 SRC_URI="mirror://gentoo/${P}.tbz2
-	mirror://sourceforge/wolfgl/wolfdata.zip
-	mirror://sourceforge/wolfgl/sdmdata.zip"
-#	mirror://sourceforge/wolfgl/wolfglx-wl6-${PV}.zip
-#	mirror://sourceforge/wolfgl/wolfglx-sod-${PV}.zip
+	https://downloads.sourceforge.net/wolfgl/wolfdata.zip
+	https://downloads.sourceforge.net/wolfgl/sdmdata.zip"
+#	https://downloads.sourceforge.net/wolfgl/wolfglx-wl6-${PV}.zip
+#	https://downloads.sourceforge.net/wolfgl/wolfglx-sod-${PV}.zip
 
 LICENSE="GPL-2"
 SLOT="0"

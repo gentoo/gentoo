@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A remake of the computer game Ultima IV"
 HOMEPAGE="http://xu4.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xu4/${P}.tar.gz
-	mirror://sourceforge/xu4/ultima4-1.01.zip
-	mirror://sourceforge/xu4/u4upgrad.zip"
+SRC_URI="https://downloads.sourceforge.net/xu4/${P}.tar.gz
+	https://downloads.sourceforge.net/xu4/ultima4-1.01.zip
+	https://downloads.sourceforge.net/xu4/u4upgrad.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

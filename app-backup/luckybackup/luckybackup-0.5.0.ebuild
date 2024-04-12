@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Powerful and flexible backup (and syncing) tool, using RSync and Qt"
 HOMEPAGE="https://luckybackup.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

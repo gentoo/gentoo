@@ -8,19 +8,19 @@ inherit desktop flag-o-matic toolchain-funcs
 DESCRIPTION="FreeDoko is a Doppelkopf-game"
 HOMEPAGE="https://free-doko.sourceforge.net"
 SRC_URI="
-	mirror://sourceforge/free-doko/FreeDoko_${PV}.src.zip
-	backgrounds? ( mirror://sourceforge/free-doko/backgrounds.zip -> ${PN}-backgrounds.zip )
-	gnomecards? ( mirror://sourceforge/free-doko/gnome-games.zip )
-	kdecards? ( mirror://sourceforge/free-doko/kdecarddecks.zip )
-	openclipartcards? ( mirror://sourceforge/free-doko/openclipart.zip )
-	pysolcards? ( mirror://sourceforge/free-doko/pysol.zip )
-	xskatcards? ( mirror://sourceforge/free-doko/xskat.zip )
+	https://downloads.sourceforge.net/free-doko/FreeDoko_${PV}.src.zip
+	backgrounds? ( https://downloads.sourceforge.net/free-doko/backgrounds.zip -> ${PN}-backgrounds.zip )
+	gnomecards? ( https://downloads.sourceforge.net/free-doko/gnome-games.zip )
+	kdecards? ( https://downloads.sourceforge.net/free-doko/kdecarddecks.zip )
+	openclipartcards? ( https://downloads.sourceforge.net/free-doko/openclipart.zip )
+	pysolcards? ( https://downloads.sourceforge.net/free-doko/pysol.zip )
+	xskatcards? ( https://downloads.sourceforge.net/free-doko/xskat.zip )
 	!xskatcards? (
 		!kdecards? (
 			!gnomecards? (
 				!openclipartcards? (
 					!pysolcards? (
-						mirror://sourceforge/free-doko/xskat.zip ) ) ) ) )"
+						https://downloads.sourceforge.net/free-doko/xskat.zip ) ) ) ) )"
 S="${WORKDIR}/FreeDoko_${PV}"
 
 LICENSE="GPL-2+"

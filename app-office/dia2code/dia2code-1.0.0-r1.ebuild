@@ -7,7 +7,7 @@ inherit gnome2
 
 DESCRIPTION="Convert UML diagrams produced with Dia to various source code flavours"
 HOMEPAGE="http://dia2code.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

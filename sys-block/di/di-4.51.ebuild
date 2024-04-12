@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Disk Information Utility"
 HOMEPAGE="https://diskinfo-di.sourceforge.io/"
-SRC_URI="mirror://sourceforge/diskinfo-di/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/diskinfo-di/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	unset SRC_URI
 else
 	KEYWORDS="~amd64 ~ppc64 ~x86"
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 fi
 
 DESCRIPTION="An application for notetaking, sketching, and keeping a journal using a stylus"

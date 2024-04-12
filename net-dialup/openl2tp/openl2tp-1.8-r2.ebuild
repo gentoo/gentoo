@@ -7,7 +7,7 @@ inherit linux-info
 
 DESCRIPTION="Userspace tools for kernel L2TP implementation"
 HOMEPAGE="https://sourceforge.net/projects/openl2tp/"
-SRC_URI="mirror://sourceforge/openl2tp/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/openl2tp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

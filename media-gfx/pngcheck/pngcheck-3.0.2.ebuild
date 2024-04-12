@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Verifies the integrity of PNG, JNG and MNG files with internal checksums"
 HOMEPAGE="http://www.libpng.org/pub/png/apps/pngcheck.html"
-SRC_URI="mirror://sourceforge/png-mng/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/png-mng/${P}.tar.gz"
 
 LICENSE="HPND GPL-2+"
 SLOT="0"

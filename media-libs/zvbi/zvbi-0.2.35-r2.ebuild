@@ -7,7 +7,7 @@ inherit libtool multilib-minimal
 
 DESCRIPTION="VBI Decoding Library for Zapping"
 HOMEPAGE="https://zapping.sourceforge.net"
-SRC_URI="mirror://sourceforge/project/zapping/${PN}/${PV}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/zapping/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"

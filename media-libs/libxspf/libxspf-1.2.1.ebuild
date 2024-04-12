@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Playlist handling library"
 HOMEPAGE="https://libspiff.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libspiff/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/libspiff/${P}.tar.bz2"
 
 LICENSE="BSD LGPL-2.1"
 SLOT="0"

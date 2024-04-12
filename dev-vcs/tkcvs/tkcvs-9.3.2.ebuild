@@ -8,7 +8,7 @@ inherit desktop
 MYP=${PN}_${PV}
 DESCRIPTION="Tcl/Tk-based graphical interface to CVS with Subversion support"
 HOMEPAGE="https://tkcvs.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${MYP}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MYP}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

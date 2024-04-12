@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A GUI front-end to dd/dc3dd"
 HOMEPAGE="https://sourceforge.net/projects/air-imager/"
-SRC_URI="mirror://sourceforge/air-imager/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/air-imager/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -13,8 +13,8 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		mirror://sourceforge/qbittorrent/${P}.tar.xz
-		verify-sig? ( mirror://sourceforge/qbittorrent/${P}.tar.xz.asc )
+		https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz
+		verify-sig? ( https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz.asc )
 	"
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 

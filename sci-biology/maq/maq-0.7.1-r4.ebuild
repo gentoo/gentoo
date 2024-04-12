@@ -8,8 +8,8 @@ inherit autotools
 DESCRIPTION="Mapping and Assembly with Qualities, mapping NGS reads to reference genomes"
 HOMEPAGE="https://maq.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
-	mirror://sourceforge/${PN}/calib-36.dat.gz"
+	https://downloads.sourceforge.net/${PN}/${P}.tar.bz2
+	https://downloads.sourceforge.net/${PN}/calib-36.dat.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

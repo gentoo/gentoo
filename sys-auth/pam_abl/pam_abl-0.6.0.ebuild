@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit cmake db-use pam
 
 DESCRIPTION="PAM module for blacklisting hosts and users repeatedly failed authentication"
 HOMEPAGE="http://pam-abl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

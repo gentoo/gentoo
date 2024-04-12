@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="WorldOfGooDemo"
 
 DESCRIPTION="Puzzle game with a strong emphasis on physics (demo version)"
 HOMEPAGE="https://2dboy.com/"
-SRC_URI="mirror://sourceforge/slackbuildsdirectlinks/worldofgoo/${MY_PN}.${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/slackbuildsdirectlinks/worldofgoo/${MY_PN}.${PV}.tar.gz"
 
 LICENSE="2dboy-EULA"
 SLOT="0"

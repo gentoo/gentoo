@@ -9,7 +9,7 @@ MY_P="${PN}${PV}"
 
 DESCRIPTION="Tcl Thread extension"
 HOMEPAGE="http://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/project/tcl/Thread%20Extension/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/tcl/Thread%20Extension/${PV}/${MY_P}.tar.gz"
 
 S="${WORKDIR}"/${MY_P}
 

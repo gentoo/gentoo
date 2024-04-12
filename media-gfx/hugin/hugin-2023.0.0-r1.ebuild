@@ -4,13 +4,13 @@
 EAPI=7
 
 WX_GTK_VER="3.2-gtk3"
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-single-r1 wxwidgets cmake xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"

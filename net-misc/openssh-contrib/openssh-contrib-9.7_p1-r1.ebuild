@@ -33,7 +33,7 @@ DESCRIPTION="Port of OpenBSD's free SSH release with HPN/X509 patches"
 HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${HPN_VER:+hpn? (
-		$(printf "mirror://sourceforge/project/hpnssh/Patches/${HPN_PATCH_DIR}/%s\n" "${HPN_PATCHES[@]}")
+		$(printf "https://downloads.sourceforge.net/project/hpnssh/Patches/${HPN_PATCH_DIR}/%s\n" "${HPN_PATCHES[@]}")
 		https://dev.gentoo.org/~chutzpah/dist/openssh/${HPN_GLUE_PATCH}.xz
 	)}
 	${X509_VER:+X509? (

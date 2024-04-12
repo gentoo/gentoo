@@ -1,4 +1,4 @@
-# Copyright 2003-2021 Gentoo Authors
+# Copyright 2003-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Utility for getting info out of DVDs"
 HOMEPAGE="https://sourceforge.net/projects/lsdvd/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

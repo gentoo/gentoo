@@ -7,7 +7,7 @@ inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="Dictionary Client/Server for the DICT protocol"
 HOMEPAGE="http://www.dict.org/ https://sourceforge.net/projects/dict/"
-SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dict/${P}.tar.gz"
 
 LICENSE="GPL-1+ GPL-2+"
 SLOT="0"

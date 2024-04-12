@@ -7,7 +7,7 @@ inherit linux-mod-r1
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/linux-gpib-${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/linux-gpib/linux-gpib-${PV}.tar.gz"
 S="${WORKDIR}/linux-gpib-kernel-${PV}"
 
 LICENSE="GPL-2"

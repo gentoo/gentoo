@@ -3,14 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Object-oriented python bindings for subversion"
 HOMEPAGE="https://pysvn.sourceforge.io/"
-SRC_URI="mirror://sourceforge/project/pysvn/pysvn/V${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/pysvn/pysvn/V${PV}/${P}.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="0"

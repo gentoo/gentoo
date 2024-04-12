@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Pidgin-libnotify provides popups for pidgin via a libnotify interface"
 HOMEPAGE="https://gaim-libnotify.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gaim-libnotify/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/gaim-libnotify/${P}.tar.gz
 	mirror://debian/pool/main/p/${PN}/${PN}_${PV}-4.debian.tar.gz"
 
 LICENSE="GPL-2+"

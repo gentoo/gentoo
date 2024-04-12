@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="HTML parser written in Java that can be used as a tool, library or Ant task"
 HOMEPAGE="https://htmlcleaner.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/htmlcleaner/htmlcleaner/htmlcleaner%20v${PV}/htmlcleaner-src-${PV}.zip"
+SRC_URI="https://downloads.sourceforge.net/project/htmlcleaner/htmlcleaner/htmlcleaner%20v${PV}/htmlcleaner-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="0"

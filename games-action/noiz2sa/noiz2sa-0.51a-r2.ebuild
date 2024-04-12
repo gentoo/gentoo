@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Abstract Shooting Game"
 HOMEPAGE="https://www.asahi-net.or.jp/~cs8k-cyu/windows/noiz2sa_e.html https://sourceforge.net/projects/noiz2sa/"
-SRC_URI="mirror://sourceforge/noiz2sa/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/noiz2sa/${P}.tar.gz"
 S="${WORKDIR}/${PN}/src"
 
 LICENSE="BSD"

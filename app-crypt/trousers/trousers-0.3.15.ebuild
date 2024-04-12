@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools linux-info readme.gentoo-r1 systemd udev
 
 DESCRIPTION="An open-source TCG Software Stack (TSS) v1.1 implementation"
 HOMEPAGE="http://trousers.sf.net"
-SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/trousers/${PN}/${P}.tar.gz"
 
 LICENSE="CPL-1.0 GPL-2"
 SLOT="0"

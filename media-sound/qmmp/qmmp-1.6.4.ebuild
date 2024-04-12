@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
 HOMEPAGE="https://qmmp.ylsoftware.com"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://qmmp.ylsoftware.com/files/${P}.tar.bz2
-		mirror://sourceforge/${PN}-dev/files/${P}.tar.bz2"
+		https://downloads.sourceforge.net/${PN}-dev/files/${P}.tar.bz2"
 	KEYWORDS="amd64 x86"
 else
 	inherit subversion

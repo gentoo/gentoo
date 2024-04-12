@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit desktop toolchain-funcs
 MY_PV=$(ver_rs 1 '')
 DESCRIPTION="Node builder specially designed for OpenGL ports of the DOOM game engine"
 HOMEPAGE="https://glbsp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/glbsp/${PN}_src_${MY_PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/glbsp/${PN}_src_${MY_PV}.tar.gz"
 S="${WORKDIR}"/${P}-source
 
 LICENSE="GPL-2+"

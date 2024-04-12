@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tiny Vector Matrix library using Expression Templates"
 HOMEPAGE="http://tvmet.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="LGPL-2.1"

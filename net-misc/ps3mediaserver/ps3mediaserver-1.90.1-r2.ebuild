@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit desktop xdg
 
 DESCRIPTION="DLNA compliant UPNP server for streaming media to Playstation 3"
 HOMEPAGE="https://github.com/ps3mediaserver/ps3mediaserver"
-SRC_URI="mirror://sourceforge/project/ps3mediaserver/pms-${PV}-generic-linux-unix.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/ps3mediaserver/pms-${PV}-generic-linux-unix.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

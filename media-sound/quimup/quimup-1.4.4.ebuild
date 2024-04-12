@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop qmake-utils
 
 DESCRIPTION="Qt5 client for the music player daemon (MPD)"
 HOMEPAGE="https://sourceforge.net/projects/quimup/"
-SRC_URI="mirror://sourceforge/${PN}/${PN^}_${PV}_source.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN^}_${PV}_source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

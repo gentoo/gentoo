@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A XSLT and XQuery Processor"
 HOMEPAGE="https://www.saxonica.com/index.html https://saxon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/saxon/Saxon-HE/$(ver_cut 1-2)/saxonhe${PV//./-}source.zip"
+SRC_URI="https://downloads.sourceforge.net/project/saxon/Saxon-HE/$(ver_cut 1-2)/saxonhe${PV//./-}source.zip"
 S="${WORKDIR}"
 
 LICENSE="MPL-1.0"

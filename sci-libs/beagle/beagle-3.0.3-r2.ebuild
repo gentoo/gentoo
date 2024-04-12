@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Open BEAGLE, a versatile EC/GA/GP framework"
 HOMEPAGE="https://chgagne.github.io/beagle/"
-SRC_URI="mirror://sourceforge/beagle/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/beagle/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

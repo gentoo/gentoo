@@ -9,7 +9,7 @@ DESCRIPTION="Standard informational utilities and process-handling tools"
 HOMEPAGE="https://gitlab.com/procps-ng/procps"
 # Per e.g. https://gitlab.com/procps-ng/procps/-/releases/v4.0.4, the dist tarballs
 # are still hosted on SF.
-SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}-ng/${PN}-ng-${PV}.tar.xz"
 S="${WORKDIR}"/${PN}-ng-${PV}
 
 # See bug #913210

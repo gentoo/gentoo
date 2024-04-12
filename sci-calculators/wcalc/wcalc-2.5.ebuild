@@ -7,7 +7,7 @@ inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A flexible command-line scientific calculator"
 HOMEPAGE="http://w-calc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/w-calc/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/w-calc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

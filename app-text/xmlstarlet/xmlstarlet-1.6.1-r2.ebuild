@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A set of tools to transform, query, validate, and edit XML documents"
 HOMEPAGE="https://xmlstar.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xmlstar/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/xmlstar/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

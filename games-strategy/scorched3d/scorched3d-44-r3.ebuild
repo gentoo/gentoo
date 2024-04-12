@@ -8,7 +8,7 @@ inherit autotools desktop edos2unix flag-o-matic wxwidgets
 
 DESCRIPTION="Multi-player tank battle in 3D (OpenGL)"
 HOMEPAGE="http://www.scorched3d.co.uk/"
-SRC_URI="mirror://sourceforge/scorched3d/Scorched3D-${PV}-src.tar.gz
+SRC_URI="https://downloads.sourceforge.net/scorched3d/Scorched3D-${PV}-src.tar.gz
 	https://salsa.debian.org/games-team/scorched3d/-/raw/master/debian/scorched3d.png"
 S="${WORKDIR}/scorched"
 

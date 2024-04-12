@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="A decoder for yENC format, popular on Usenet"
 HOMEPAGE="https://yydecode.sourceforge.net/"
-SRC_URI="mirror://sourceforge/yydecode/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/yydecode/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

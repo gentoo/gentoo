@@ -10,7 +10,7 @@ inherit autotools flag-o-matic linux-info python-single-r1 readme.gentoo-r1 udev
 
 DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~billie/distfiles/${PN}-3.23.12-patches-1.tar.xz"
 
 LICENSE="GPL-2"

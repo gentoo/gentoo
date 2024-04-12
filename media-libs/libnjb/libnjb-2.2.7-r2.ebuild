@@ -7,7 +7,7 @@ inherit libtool udev
 
 DESCRIPTION="Library for communicating with the Creative Nomad JukeBox digital audio player"
 HOMEPAGE="https://libnjb.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

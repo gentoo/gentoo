@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Seven Kingdoms: Ancient Adversaries"
 HOMEPAGE="https://7kfans.com/"
-SRC_URI="mirror://sourceforge/skfans/${MY_P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/skfans/${MY_P}.tar.gz
 	https://dev.gentoo.org/~pinkbyte/distfiles/${MY_PN}.png"
 
 LICENSE="GPL-2"

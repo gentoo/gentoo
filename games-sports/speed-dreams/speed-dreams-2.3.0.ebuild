@@ -10,10 +10,10 @@ MY_PV="${PV}-r8786"
 DESCRIPTION="Fork of the famous open racing car simulator TORCS"
 HOMEPAGE="http://www.speed-dreams.org/"
 SRC_URI="
-	mirror://sourceforge/speed-dreams/${PN}-src-base-${MY_PV}.tar.xz
-	mirror://sourceforge/speed-dreams/${PN}-src-hq-cars-and-tracks-${MY_PV}.tar.xz
-	mirror://sourceforge/speed-dreams/${PN}-src-more-hq-cars-and-tracks-${MY_PV}.tar.xz
-	mirror://sourceforge/speed-dreams/${PN}-src-wip-cars-and-tracks-${MY_PV}.tar.xz"
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-base-${MY_PV}.tar.xz
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-hq-cars-and-tracks-${MY_PV}.tar.xz
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-more-hq-cars-and-tracks-${MY_PV}.tar.xz
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-wip-cars-and-tracks-${MY_PV}.tar.xz"
 
 LICENSE="GPL-2+ BitstreamVera CC0-1.0 Free-Art-1.2 OFL-1.1"
 SLOT="0"

@@ -9,7 +9,7 @@ MY_P=${PN}-srcdata-$(ver_rs 1- '')1
 
 DESCRIPTION="Remake of the famous Stunts game"
 HOMEPAGE="http://www.ultimatestunts.nl/"
-SRC_URI="mirror://sourceforge/ultimatestunts/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ultimatestunts/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

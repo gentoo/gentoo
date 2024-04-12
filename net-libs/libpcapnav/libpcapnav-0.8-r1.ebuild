@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file"
 HOMEPAGE="http://netdude.sourceforge.net/"
-SRC_URI="mirror://sourceforge/netdude/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/netdude/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

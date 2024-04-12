@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit desktop wrapper
 
 DESCRIPTION="Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s"
 HOMEPAGE="http://scummvm.sourceforge.net/"
-SF_BASE_URL="mirror://sourceforge/scummvm/"
+SF_BASE_URL="https://downloads.sourceforge.net/scummvm/"
 LYS_BASE_URL="http://www.lysator.liu.se/~zino/scummvm/queen/"
 FILE_DE="FOTAQ_Ger_talkie-1.0.zip"
 FILE_EN="FOTAQ_Talkie-1.1.zip"

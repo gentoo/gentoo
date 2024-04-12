@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,14 +8,14 @@ inherit font
 DESCRIPTION="Microsoft's TrueType core fonts"
 HOMEPAGE="https://corefonts.sourceforge.net/"
 SRC_URI="mirror://gentoo/EUupdate.EXE
-	mirror://sourceforge/corefonts/andale32.exe
-	mirror://sourceforge/corefonts/arialb32.exe
-	mirror://sourceforge/corefonts/comic32.exe
-	mirror://sourceforge/corefonts/courie32.exe
-	mirror://sourceforge/corefonts/georgi32.exe
-	mirror://sourceforge/corefonts/impact32.exe
-	mirror://sourceforge/corefonts/webdin32.exe
-	mirror://sourceforge/corefonts/wd97vwr32.exe"
+	https://downloads.sourceforge.net/corefonts/andale32.exe
+	https://downloads.sourceforge.net/corefonts/arialb32.exe
+	https://downloads.sourceforge.net/corefonts/comic32.exe
+	https://downloads.sourceforge.net/corefonts/courie32.exe
+	https://downloads.sourceforge.net/corefonts/georgi32.exe
+	https://downloads.sourceforge.net/corefonts/impact32.exe
+	https://downloads.sourceforge.net/corefonts/webdin32.exe
+	https://downloads.sourceforge.net/corefonts/wd97vwr32.exe"
 S="${WORKDIR}"
 
 LICENSE="MSttfEULA"

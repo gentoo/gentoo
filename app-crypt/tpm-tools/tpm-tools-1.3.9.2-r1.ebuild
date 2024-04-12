@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="TrouSerS' support tools for the Trusted Platform Modules"
 HOMEPAGE="http://trousers.sourceforge.net"
-SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/trousers/${PN}/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"

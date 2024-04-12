@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Statistical analysis and machine learning library"
 HOMEPAGE="https://statpatrec.sourceforge.net/"
-SRC_URI="mirror://sourceforge/statpatrec/${P^^}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/statpatrec/${P^^}.tar.gz"
 S="${WORKDIR}/${P^^}"
 
 LICENSE="GPL-2"

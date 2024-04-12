@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Assembly Language Debugger"
 HOMEPAGE="http://ald.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ald/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ald/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

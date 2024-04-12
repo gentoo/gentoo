@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/enzyme/
 "
 SRC_URI+="
-	test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )
+	test? ( https://downloads.sourceforge.net/matroska/test_files/matroska_test_w1_1.zip )
 "
 
 LICENSE="Apache-2.0"

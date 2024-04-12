@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit autotools desktop lua-single toolchain-funcs xdg-utils
 
 DESCRIPTION="Client for the nethack-style but more in the line of UO"
 HOMEPAGE="http://crossfire.real-time.com/"
-SRC_URI="mirror://sourceforge/crossfire/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/crossfire/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

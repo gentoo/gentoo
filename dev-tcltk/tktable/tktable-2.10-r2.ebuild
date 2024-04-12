@@ -7,7 +7,7 @@ MY_P="Tktable${PV}"
 
 DESCRIPTION="full-featured 2D table widget"
 HOMEPAGE="http://tktable.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tktable/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tktable/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="amd64 ppc x86"

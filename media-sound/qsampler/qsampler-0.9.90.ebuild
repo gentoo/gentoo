@@ -9,7 +9,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/qsampler/code"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+	SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

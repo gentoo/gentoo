@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Tools for MJPEG video"
 HOMEPAGE="https://mjpeg.sourceforge.io/"
-SRC_URI="mirror://sourceforge/project/mjpeg/mjpegtools/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/mjpeg/mjpegtools/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 # Compare with version in SONAME on major bumps (e.g. 2.1 -> 2.2)

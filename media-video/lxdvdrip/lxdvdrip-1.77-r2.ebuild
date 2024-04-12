@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Command line tool to automate the process of ripping and burning DVDs"
 HOMEPAGE="https://sourceforge.net/projects/lxdvdrip/"
-SRC_URI="mirror://sourceforge/lxdvdrip/${P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/lxdvdrip/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"

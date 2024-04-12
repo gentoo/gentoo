@@ -7,7 +7,7 @@ MY_P=${P/editor}
 
 DESCRIPTION="File viewer, editor and analyzer for text, binary, and executable files"
 HOMEPAGE="https://hte.sourceforge.net/ https://github.com/sebastianbiallas/ht/"
-#SRC_URI="mirror://sourceforge/hte/${MY_P}.tar.bz2"
+#SRC_URI="https://downloads.sourceforge.net/hte/${MY_P}.tar.bz2"
 # tarball is done as: 'make dist' and then rename to mention latest commt
 SRC_URI="https://dev.gentoo.org/~sam/distfiles/${MY_P}.tar.gz"
 

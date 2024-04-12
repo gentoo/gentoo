@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic optfeature python-single-r1 xdg
 
@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/scribusproject/scribus"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 	S="${WORKDIR}/${P}"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi

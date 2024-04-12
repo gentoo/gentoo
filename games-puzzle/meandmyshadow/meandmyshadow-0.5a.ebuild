@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit xdg cmake lua-single
 
 DESCRIPTION="Puzzle/platform game with a player and its shadow"
 HOMEPAGE="https://acmepjz.github.io/meandmyshadow/"
-SRC_URI="mirror://sourceforge/meandmyshadow/${PV}/${P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/meandmyshadow/${PV}/${P}-src.tar.gz"
 
 LICENSE="
 	Apache-2.0 BitstreamVera CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0

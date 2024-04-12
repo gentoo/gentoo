@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A free/libre COBOL compiler"
 HOMEPAGE="https://gnucobol.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3 LGPL-3 FDL-1.3"
 SLOT="0"

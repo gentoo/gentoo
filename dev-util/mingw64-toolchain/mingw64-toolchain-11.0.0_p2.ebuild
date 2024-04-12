@@ -20,7 +20,7 @@ HOMEPAGE="
 	https://sourceware.org/binutils/
 "
 SRC_URI="
-	mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_PV}.tar.bz2
+	https://downloads.sourceforge.net/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_PV}.tar.bz2
 	mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.xz
 "
 if [[ ${GCC_PV} == *-* ]]; then

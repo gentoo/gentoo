@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="An MTA designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

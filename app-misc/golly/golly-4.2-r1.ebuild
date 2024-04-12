@@ -11,7 +11,7 @@ inherit desktop python-single-r1 toolchain-funcs wxwidgets xdg
 DESCRIPTION="simulator for Conway's Game of Life and other cellular automata"
 HOMEPAGE="http://golly.sourceforge.net/
 	https://sourceforge.net/projects/golly/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-src.tar.gz"
 S="${WORKDIR}/${P}-src"
 
 LICENSE="GPL-2"

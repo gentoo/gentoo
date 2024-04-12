@@ -11,7 +11,7 @@ MY_P="${PN}${PV/_beta/b}"
 
 DESCRIPTION="Tk Widget Set"
 HOMEPAGE="https://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"

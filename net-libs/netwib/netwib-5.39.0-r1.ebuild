@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: netwib, netwox and netwag go together, bump all or bump none
@@ -13,8 +13,8 @@ HOMEPAGE="
 	http://ntwib.sourceforge.net/
 "
 SRC_URI="
-	mirror://sourceforge/ntwib/${P}-src.tgz
-	doc? ( mirror://sourceforge/ntwib/${P}-doc_html.tgz )"
+	https://downloads.sourceforge.net/ntwib/${P}-src.tgz
+	doc? ( https://downloads.sourceforge.net/ntwib/${P}-doc_html.tgz )"
 S="${WORKDIR}/${P}-src/src"
 
 LICENSE="GPL-3"

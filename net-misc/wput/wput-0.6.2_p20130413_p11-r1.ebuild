@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ if [[ ${PV} == *_p* ]] ; then
 	SRC_URI+=" mirror://debian/pool/main/w/wput/wput_${MY_PV}+git$(ver_cut 5)-$(ver_cut 7).debian.tar.xz"
 	S="${WORKDIR}"/${PN}-${MY_PV}+git$(ver_cut 5)
 else
-	SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tgz"
+	SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}-${MY_PV}.tgz"
 fi
 
 LICENSE="GPL-2+"
