@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,14 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="
-		mirror://sourceforge/freetype/${P/_/}.tar.xz
+		https://downloads.sourceforge.net/freetype/${P/_/}.tar.xz
 		mirror://nongnu/freetype/${P/_/}.tar.xz
 		utils? (
-			mirror://sourceforge/freetype/ft2demos-${PV}.tar.xz
+			https://downloads.sourceforge.net/freetype/ft2demos-${PV}.tar.xz
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.xz
 		)
 		doc? (
-			mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.xz
+			https://downloads.sourceforge.net/freetype/${PN}-doc-${PV}.tar.xz
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.xz
 		)
 	"

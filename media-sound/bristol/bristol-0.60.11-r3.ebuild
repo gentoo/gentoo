@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Synthesizer keyboard emulation package: Moog, Hammond and others"
 HOMEPAGE="https://sourceforge.net/projects/bristol"
-SRC_URI="mirror://sourceforge/bristol/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/bristol/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

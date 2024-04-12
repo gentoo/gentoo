@@ -8,7 +8,7 @@ inherit cmake flag-o-matic xdg-utils
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
 HOMEPAGE="https://kst-plot.kde.org/ https://invent.kde.org/graphics/kst-plot"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.2"

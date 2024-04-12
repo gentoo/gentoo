@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Library of cd audio related routines"
 HOMEPAGE="https://libcdaudio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

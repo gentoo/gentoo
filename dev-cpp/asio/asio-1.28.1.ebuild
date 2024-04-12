@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Asynchronous Network Library"
 HOMEPAGE="https://think-async.com https://github.com/chriskohlhoff/asio"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${P}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0"

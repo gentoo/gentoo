@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Free implementation of the OpenGL Character Renderer (GLC)"
 HOMEPAGE="https://quesoglc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-free.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-free.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

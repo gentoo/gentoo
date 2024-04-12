@@ -7,7 +7,7 @@ inherit edo flag-o-matic toolchain-funcs
 
 DESCRIPTION="Cross-platform object-oriented scripting shell using the squirrel language"
 HOMEPAGE="https://squirrelsh.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

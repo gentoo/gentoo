@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit autotools systemd toolchain-funcs
 
 HOMEPAGE="https://www.privoxy.org https://sourceforge.net/projects/ijbswa/"
 DESCRIPTION="A web proxy with advanced filtering capabilities for enhancing privacy"
-SRC_URI="mirror://sourceforge/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.tar.gz"
 
 IUSE="+acl brotli client-tags compression editor extended-host-patterns
 extended-statistics external-filters +fast-redirects +force fuzz

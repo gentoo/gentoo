@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="C++ classes for flexible logging to files, syslog and other destinations"
 HOMEPAGE="http://log4cpp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="LGPL-2.1"

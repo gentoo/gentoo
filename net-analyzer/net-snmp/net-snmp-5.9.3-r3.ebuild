@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	# https://github.com/net-snmp/net-snmp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+	SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi

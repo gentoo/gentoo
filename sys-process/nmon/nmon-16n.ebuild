@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 MY_P="lmon${PV}"
 DESCRIPTION="Nigel's performance MONitor for CPU, memory, network, disks, etc"
 HOMEPAGE="http://nmon.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.c"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.c"
 S="${WORKDIR}"
 
 LICENSE="GPL-3"

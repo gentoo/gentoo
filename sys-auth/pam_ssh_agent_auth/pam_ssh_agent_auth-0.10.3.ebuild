@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/jbeverly/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/pamsshagentauth/${PN}/v${PV}/${P}.tar.bz2
+	SRC_URI="https://downloads.sourceforge.net/pamsshagentauth/${PN}/v${PV}/${P}.tar.bz2
 	https://dev.gentoo.org/~juippis/distfiles/tmp/pam_ssh_agent_auth-0.10.3-openssl-1.1.1.patch"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi

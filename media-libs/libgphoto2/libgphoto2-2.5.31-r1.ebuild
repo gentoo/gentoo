@@ -10,7 +10,7 @@ inherit autotools multilib-minimal udev
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
-SRC_URI="mirror://sourceforge/gphoto/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/gphoto/${P}.tar.xz"
 
 LICENSE="GPL-2"
 

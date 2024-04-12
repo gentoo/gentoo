@@ -9,8 +9,8 @@ DESCRIPTION="Software synthesizer capable of making a countless number of instru
 HOMEPAGE="https://zynaddsubfx.sourceforge.net/"
 
 SRC_URI="
-	mirror://sourceforge/zynaddsubfx/${P}.tar.bz2
-	mirror://sourceforge/zynaddsubfx/zyn-fusion-ui-src-${PV}.tar.bz2
+	https://downloads.sourceforge.net/zynaddsubfx/${P}.tar.bz2
+	https://downloads.sourceforge.net/zynaddsubfx/zyn-fusion-ui-src-${PV}.tar.bz2
 "
 
 LICENSE="GPL-2"

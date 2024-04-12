@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop flag-o-matic toolchain-funcs
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
 HOMEPAGE="http://www.trilon.com/xv/index.html http://www.sonic.net/~roelofs/greg_xv.html"
-SRC_URI="mirror://sourceforge/png-mng/${P}-jumbo-patches-${JUMBOV}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/png-mng/${P}-jumbo-patches-${JUMBOV}.tar.gz
 	ftp://ftp.cis.upenn.edu/pub/xv/${P}.tar.gz
 	mirror://gentoo/${P}.png.bz2"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 DESCRIPTION="Software codec for dv-format video (camcorders etc)"
 HOMEPAGE="http://libdv.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
+	https://downloads.sourceforge.net/${PN}/${P}.tar.gz
 	mirror://gentoo/${PN}-1.0.0-pic.patch.bz2"
 
 LICENSE="GPL-2"

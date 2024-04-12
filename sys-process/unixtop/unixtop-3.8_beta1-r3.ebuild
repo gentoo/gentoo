@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="top for UNIX systems"
 HOMEPAGE="https://unixtop.sourceforge.net/"
-SRC_URI="mirror://sourceforge/unixtop/top-${PV/_/}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/unixtop/top-${PV/_/}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

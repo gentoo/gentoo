@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="A Java extension of BSD YACC-compatible parser generator"
 HOMEPAGE="https://byaccj.sourceforge.net/"
 MY_P="${PN}${PV}_src"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

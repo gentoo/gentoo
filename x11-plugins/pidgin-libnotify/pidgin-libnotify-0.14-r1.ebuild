@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="pidgin-libnotify provides popups for pidgin via a libnotify interface"
 HOMEPAGE="http://gaim-libnotify.sourceforge.net/"
-SRC_URI="mirror://sourceforge/gaim-libnotify/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/gaim-libnotify/${P}.tar.gz
 	mirror://debian/pool/main/p/${PN}/${PN}_${PV}-4.debian.tar.gz"
 
 LICENSE="GPL-2"

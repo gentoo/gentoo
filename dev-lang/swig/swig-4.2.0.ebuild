@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Simplified Wrapper and Interface Generator"
 HOMEPAGE="http://www.swig.org/ https://github.com/swig/swig"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ BSD BSD-2"
 SLOT="0"

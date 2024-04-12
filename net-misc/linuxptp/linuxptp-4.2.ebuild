@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="The Linux Precision Time Protocol (PTP) implementation"
 HOMEPAGE="https://linuxptp.nwtime.org/"
-SRC_URI="mirror://sourceforge/project/${PN}/v$(ver_cut 1-2)/${P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/v$(ver_cut 1-2)/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

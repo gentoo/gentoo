@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,8 @@ MY_P=${MY_PN}${MY_PV}
 
 DESCRIPTION="Image library supporting many formats"
 HOMEPAGE="https://freeimage.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
-	mirror://sourceforge/${PN}/${MY_P}.pdf
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.zip
+	https://downloads.sourceforge.net/${PN}/${MY_P}.pdf
 	https://dev.gentoo.org/~juippis/distfiles/tmp/freeimage-3.18.0-unbundling.patch"
 
 LICENSE="|| ( GPL-2 FIPL-1.0 )"

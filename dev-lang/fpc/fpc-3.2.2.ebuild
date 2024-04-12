@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,13 @@ inherit prefix toolchain-funcs
 
 HOMEPAGE="https://www.freepascal.org/"
 DESCRIPTION="Free Pascal Compiler"
-SRC_URI="mirror://sourceforge/freepascal/fpcbuild-${PV}.tar.gz
-	mirror://sourceforge/freepascal/fpc-${PV}.source.tar.gz
-	amd64? ( mirror://sourceforge/freepascal/${P}.x86_64-linux.tar )
-	arm64? ( mirror://sourceforge/freepascal/${P}.aarch64-linux.tar )
-	sparc? ( mirror://sourceforge/freepascal/${P}.sparc64-linux.tar )
-	x86? ( mirror://sourceforge/freepascal/${P}.i386-linux.tar )
-	doc? ( mirror://sourceforge/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz )"
+SRC_URI="https://downloads.sourceforge.net/freepascal/fpcbuild-${PV}.tar.gz
+	https://downloads.sourceforge.net/freepascal/fpc-${PV}.source.tar.gz
+	amd64? ( https://downloads.sourceforge.net/freepascal/${P}.x86_64-linux.tar )
+	arm64? ( https://downloads.sourceforge.net/freepascal/${P}.aarch64-linux.tar )
+	sparc? ( https://downloads.sourceforge.net/freepascal/${P}.sparc64-linux.tar )
+	x86? ( https://downloads.sourceforge.net/freepascal/${P}.i386-linux.tar )
+	doc? ( https://downloads.sourceforge.net/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz )"
 S="${WORKDIR}/fpcbuild-${PV}/fpcsrc"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"

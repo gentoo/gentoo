@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="${P/_alpha/a}"
 
 DESCRIPTION="A set of tools for CD/DVD reading and recording, including cdrecord"
 HOMEPAGE="https://sourceforge.net/projects/cdrtools/"
-SRC_URI="mirror://sourceforge/${PN}/$([[ -z ${PV/*_alpha*} ]] && echo 'alpha')/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/$([[ -z ${PV/*_alpha*} ]] && echo 'alpha')/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"

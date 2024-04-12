@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers"
 HOMEPAGE="https://rkhunter.sf.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-grep-3.8.patch.xz"
 
 LICENSE="GPL-2+"

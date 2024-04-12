@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A speech synthesis system written entirely in Java"
 HOMEPAGE="https://freetts.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-src.zip"
 
 LICENSE="jsapi? ( sun-bcla-jsapi ) freetts"
 SLOT="0"

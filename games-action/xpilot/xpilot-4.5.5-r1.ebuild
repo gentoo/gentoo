@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Multi-player 2D client/server space game"
 HOMEPAGE="http://www.xpilot.org/"
 SRC_URI="
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
-	mirror://sourceforge/xpilotgame/${P}.tar.bz2"
+	https://downloads.sourceforge.net/xpilotgame/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

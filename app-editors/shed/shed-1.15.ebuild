@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Simple Hex EDitor"
 HOMEPAGE="https://shed.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

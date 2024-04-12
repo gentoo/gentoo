@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="wqy-bitmapsong"
 
 DESCRIPTION="WenQuanYi Bitmap Song CJK font"
 HOMEPAGE="http://wenq.org/wqy2/index.cgi?Home"
-SRC_URI="mirror://sourceforge/wqy/${MY_PN}-pcf-${PV/_rc/-RC}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wqy/${MY_PN}-pcf-${PV/_rc/-RC}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

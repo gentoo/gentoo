@@ -8,7 +8,7 @@ MYP=maildrop-${PV}
 
 DESCRIPTION="Mail delivery agent/filter"
 HOMEPAGE="https://www.courier-mta.org/maildrop/"
-SRC_URI="mirror://sourceforge/courier/${MYP}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/courier/${MYP}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

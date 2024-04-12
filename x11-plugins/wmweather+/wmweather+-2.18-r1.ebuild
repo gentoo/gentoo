@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts"
 HOMEPAGE="https://www.sourceforge.net/projects/wmweatherplus/"
-SRC_URI="mirror://sourceforge/wmweatherplus/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wmweatherplus/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

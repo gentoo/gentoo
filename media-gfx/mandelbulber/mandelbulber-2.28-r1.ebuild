@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Tool to render 3D fractals"
 HOMEPAGE="https://www.mandelbulber.com"
-SRC_URI="https://github.com/buddhi1980/${PN}2/releases/download/${PV}/${MY_P}.tar.gz mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/buddhi1980/${PN}2/releases/download/${PV}/${MY_P}.tar.gz https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="CC-BY-4.0 GPL-3"

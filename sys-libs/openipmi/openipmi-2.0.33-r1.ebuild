@@ -10,7 +10,7 @@ MY_PN="OpenIPMI"
 MY_P="${MY_PN}-${PV/_/-}"
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="https://sourceforge.net/projects/openipmi/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1 GPL-2"

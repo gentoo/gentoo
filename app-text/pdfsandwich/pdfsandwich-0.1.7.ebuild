@@ -6,7 +6,7 @@ inherit flag-o-matic
 
 DESCRIPTION="generator of sandwich OCR pdf files"
 HOMEPAGE="http://www.tobias-elze.de/pdfsandwich"
-SRC_URI="mirror://sourceforge/pdfsandwich/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/pdfsandwich/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~x86"

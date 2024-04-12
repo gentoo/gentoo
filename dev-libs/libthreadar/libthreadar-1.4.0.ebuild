@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Threading library used by dar archiver"
 HOMEPAGE="https://sourceforge.net/projects/libthreadar/"
-SRC_URI="mirror://sourceforge/libthreadar/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/libthreadar/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

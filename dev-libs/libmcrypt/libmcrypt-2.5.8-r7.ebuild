@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Provides an uniform interface to access several encryption algorithms"
 HOMEPAGE="https://mcrypt.sourceforge.net"
-SRC_URI="mirror://sourceforge/mcrypt/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/mcrypt/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

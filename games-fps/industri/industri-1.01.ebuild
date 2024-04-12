@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit toolchain-funcs
 
 DESCRIPTION="Quake/Tenebrae based, single player game"
 HOMEPAGE="http://industri.sourceforge.net/"
-SRC_URI="mirror://sourceforge/industri/industri_BIN-${PV}-src.tar.gz
-	mirror://sourceforge/industri/industri-1.00.zip"
+SRC_URI="https://downloads.sourceforge.net/industri/industri_BIN-${PV}-src.tar.gz
+	https://downloads.sourceforge.net/industri/industri-1.00.zip"
 S="${WORKDIR}"/industri_BIN
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A package to convert movies to DVD format and to build DVDs with"
 HOMEPAGE="http://videotrans.sourceforge.net/"
-SRC_URI="mirror://sourceforge/videotrans/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/videotrans/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit python-single-r1 wxwidgets cmake xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"

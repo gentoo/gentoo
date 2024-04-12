@@ -7,7 +7,7 @@ MY_P=Togl${PV}
 
 DESCRIPTION="A Tk widget for OpenGL rendering"
 HOMEPAGE="http://togl.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

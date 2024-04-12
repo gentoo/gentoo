@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,10 +17,10 @@ SRC_URI="
 	https://github.com/performous/compact_enc_det/archive/${HASH_CED}.tar.gz
 		-> ${PN}-ced-${HASH_CED}.tar.gz
 	songs? (
-		mirror://sourceforge/performous/ultrastar-songs-jc-1.zip
-		mirror://sourceforge/performous/ultrastar-songs-libre-3.zip
-		mirror://sourceforge/performous/ultrastar-songs-restricted-3.zip
-		mirror://sourceforge/performous/ultrastar-songs-shearer-1.zip
+		https://downloads.sourceforge.net/performous/ultrastar-songs-jc-1.zip
+		https://downloads.sourceforge.net/performous/ultrastar-songs-libre-3.zip
+		https://downloads.sourceforge.net/performous/ultrastar-songs-restricted-3.zip
+		https://downloads.sourceforge.net/performous/ultrastar-songs-shearer-1.zip
 	)"
 
 LICENSE="

@@ -12,8 +12,8 @@ inherit systemd toolchain-funcs
 DESCRIPTION="An ethernet-based file system for DOS"
 HOMEPAGE="http://etherdfs.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${MY_P}.tar.xz
-	tsr? ( mirror://sourceforge/${PN}/v${MY_PV_TSR}/${PN}.zip -> ${PN}-tsr-${MY_PV_TSR}.zip )
+	https://downloads.sourceforge.net/${PN}/${MY_P}.tar.xz
+	tsr? ( https://downloads.sourceforge.net/${PN}/v${MY_PV_TSR}/${PN}.zip -> ${PN}-tsr-${MY_PV_TSR}.zip )
 "
 S="${WORKDIR}/${MY_P}"
 

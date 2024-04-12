@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit desktop toolchain-funcs
 
 DESCRIPTION="Retro side-scrolling shoot'em up based on the editor war story"
 HOMEPAGE="https://wordwarvi.sourceforge.net"
-SRC_URI="mirror://sourceforge/wordwarvi/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wordwarvi/${P}.tar.gz"
 
 LICENSE="GPL-2+ CC-BY-2.0 CC-BY-SA-3.0"
 SLOT="0"

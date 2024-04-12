@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
 HOMEPAGE="https://sourceforge.net/projects/elilo/"
-SRC_URI="mirror://sourceforge/elilo/${P}-all.tar.gz
+SRC_URI="https://downloads.sourceforge.net/elilo/${P}-all.tar.gz
 	mirror://debian/pool/main/e/elilo/elilo_3.14-3.debian.tar.gz"
 
 LICENSE="GPL-2"

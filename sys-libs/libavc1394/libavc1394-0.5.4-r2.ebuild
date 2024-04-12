@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set"
 HOMEPAGE="https://sourceforge.net/projects/libavc1394/"
-SRC_URI="mirror://sourceforge/libavc1394/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/libavc1394/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

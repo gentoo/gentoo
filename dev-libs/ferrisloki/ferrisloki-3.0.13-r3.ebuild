@@ -7,7 +7,7 @@ inherit flag-o-matic autotools
 
 DESCRIPTION="Loki C++ library from Modern C++ Design"
 HOMEPAGE="https://data-room-software.org/libferris/"
-SRC_URI="mirror://sourceforge/witme/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/witme/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

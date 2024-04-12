@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit readme.gentoo-r1 toolchain-funcs xdg
 DESCRIPTION="Turn-based strategy game heavily inspired by the classic Panzer General"
 HOMEPAGE="https://lgames.sourceforge.io/LGeneral/"
 SRC_URI="
-	mirror://sourceforge/lgeneral/${P}.tar.gz
-	mirror://sourceforge/lgeneral/kukgen-data-1.1.tar.gz"
+	https://downloads.sourceforge.net/lgeneral/${P}.tar.gz
+	https://downloads.sourceforge.net/lgeneral/kukgen-data-1.1.tar.gz"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"

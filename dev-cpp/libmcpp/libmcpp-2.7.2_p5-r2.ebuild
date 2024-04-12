@@ -10,7 +10,7 @@ MY_P=$(ver_cut 1-4 ${MY_PN}-${PV})
 
 DESCRIPTION="A portable C++ preprocessor"
 HOMEPAGE="http://mcpp.sourceforge.net"
-SRC_URI="mirror://sourceforge/mcpp/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/mcpp/${MY_P}.tar.gz"
 SRC_URI+=" mirror://debian/pool/main/m/${MY_PN}/${MY_PN}_${PV/_p/-}.debian.tar.xz"
 S="${WORKDIR}"/${MY_P}
 

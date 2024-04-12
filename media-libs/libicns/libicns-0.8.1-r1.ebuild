@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A library for manipulating MacOS X .icns icon format"
 HOMEPAGE="https://sourceforge.net/projects/icns/"
-SRC_URI="mirror://sourceforge/icns/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/icns/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

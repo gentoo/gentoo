@@ -7,7 +7,7 @@ inherit autotools elisp-common toolchain-funcs
 
 DESCRIPTION="Interactively examine a C program"
 HOMEPAGE="https://cscope.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cscope/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/cscope/${P}.tar.gz"
 
 LICENSE="BSD GPL-2+"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="Interactively examine a C program"
 HOMEPAGE="https://sourceforge.net/projects/kscope/"
-SRC_URI="mirror://sourceforge/kscope/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/kscope/${P}.tar.gz"
 S="${WORKDIR}"/${PN}
 
 LICENSE="BSD"

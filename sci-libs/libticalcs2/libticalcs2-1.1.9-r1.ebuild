@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Library for communication with TI calculators"
 HOMEPAGE="http://lpg.ticalc.org/prj_tilp/"
-SRC_URI="mirror://sourceforge/tilp/tilp2-linux/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/tilp/tilp2-linux/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

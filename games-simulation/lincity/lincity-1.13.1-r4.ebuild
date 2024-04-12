@@ -8,7 +8,7 @@ inherit autotools flag-o-matic desktop
 DESCRIPTION="City simulation game for X"
 HOMEPAGE="https://lincity.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/lincity/${P}.tar.gz
+	https://downloads.sourceforge.net/lincity/${P}.tar.gz
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2"

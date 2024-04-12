@@ -7,7 +7,7 @@ inherit pam flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="Uses ssh-agent to provide single sign-on"
 HOMEPAGE="http://pam-ssh.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pam-ssh/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/pam-ssh/${P}.tar.xz"
 
 LICENSE="BSD-2 BSD ISC"
 SLOT="0"

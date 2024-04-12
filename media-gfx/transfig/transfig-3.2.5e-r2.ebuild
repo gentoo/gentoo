@@ -9,7 +9,7 @@ MY_P="${PN}.${PV}"
 
 DESCRIPTION="Set of tools for creating TeX documents with graphics"
 HOMEPAGE="https://www.xfig.org/"
-SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/mcj/${MY_P}.tar.gz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
 	https://dev.gentoo.org/~sultan/distfiles/media-gfx/transfig/${P}-gentoo-patchset-r1.tar.bz2"
 S="${WORKDIR}/${MY_P}"

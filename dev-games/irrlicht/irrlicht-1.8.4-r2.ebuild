@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="open source high performance realtime 3D engine written in C++"
 HOMEPAGE="https://irrlicht.sourceforge.io/"
 SRC_URI="
-	mirror://sourceforge/irrlicht/${P}.zip
+	https://downloads.sourceforge.net/irrlicht/${P}.zip
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
 S="${WORKDIR}/${P}/source/${PN^}"
 

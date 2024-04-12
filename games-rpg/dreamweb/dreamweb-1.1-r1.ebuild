@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,15 +7,15 @@ inherit desktop wrapper
 
 DESCRIPTION="Top-down adventure game set in a gritty futuristic/dystopian city"
 HOMEPAGE="https://wiki.scummvm.org/index.php/Dreamweb"
-SRC_URI="doc? ( mirror://sourceforge/scummvm/${PN}-manuals-en-highres.zip )
-	l10n_de? ( mirror://sourceforge/scummvm/${PN}-cd-de-${PV}.zip )
-	l10n_en? ( mirror://sourceforge/scummvm/${PN}-cd-us-${PV}.zip )
-	l10n_en-GB? ( mirror://sourceforge/scummvm/${PN}-cd-uk-${PV}.zip )
-	l10n_es? ( mirror://sourceforge/scummvm/${PN}-cd-es-${PV}.zip )
-	l10n_fr? ( mirror://sourceforge/scummvm/${PN}-cd-fr-${PV}.zip )
-	l10n_it? ( mirror://sourceforge/scummvm/${PN}-cd-it-${PV}.zip )
+SRC_URI="doc? ( https://downloads.sourceforge.net/scummvm/${PN}-manuals-en-highres.zip )
+	l10n_de? ( https://downloads.sourceforge.net/scummvm/${PN}-cd-de-${PV}.zip )
+	l10n_en? ( https://downloads.sourceforge.net/scummvm/${PN}-cd-us-${PV}.zip )
+	l10n_en-GB? ( https://downloads.sourceforge.net/scummvm/${PN}-cd-uk-${PV}.zip )
+	l10n_es? ( https://downloads.sourceforge.net/scummvm/${PN}-cd-es-${PV}.zip )
+	l10n_fr? ( https://downloads.sourceforge.net/scummvm/${PN}-cd-fr-${PV}.zip )
+	l10n_it? ( https://downloads.sourceforge.net/scummvm/${PN}-cd-it-${PV}.zip )
 	!l10n_de? ( !l10n_en? ( !l10n_en-GB? ( !l10n_es? ( !l10n_fr? ( !l10n_it? \
-		( mirror://sourceforge/scummvm/${PN}-cd-us-${PV}.zip ) ) ) ) ) )
+		( https://downloads.sourceforge.net/scummvm/${PN}-cd-us-${PV}.zip ) ) ) ) ) )
 	http://www.scummvm.org/images/cat-dreamweb.png"
 S="${WORKDIR}"
 

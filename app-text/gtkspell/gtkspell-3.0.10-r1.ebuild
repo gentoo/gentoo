@@ -9,7 +9,7 @@ MY_P="${PN}3-${PV}"
 
 DESCRIPTION="Spell checking widget for GTK"
 HOMEPAGE="http://gtkspell.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${MY_P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PV}/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"

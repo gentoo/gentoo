@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Software modem that uses an IAX channel instead of a traditional phone line"
 HOMEPAGE="https://sourceforge.net/projects/iaxmodem/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ FW_PV="2008-08-10"
 
 DESCRIPTION="Driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/linux-gpib/${P}.tar.gz
 	firmware? ( https://linux-gpib.sourceforge.io/firmware/gpib_firmware-${FW_PV}.tar.gz )
 "
 S="${WORKDIR}/${PN}-user-${PV}"

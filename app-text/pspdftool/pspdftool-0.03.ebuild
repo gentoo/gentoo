@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Tool for prepress preparation of PDF and PostScript documents"
 HOMEPAGE="https://sourceforge.net/projects/pspdftool"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

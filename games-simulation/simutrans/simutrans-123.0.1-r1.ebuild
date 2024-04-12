@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,8 +13,8 @@ MY_SVN_REVISION="10421"
 DESCRIPTION="A free Transport Tycoon clone"
 HOMEPAGE="https://www.simutrans.com/"
 SRC_URI="
-	mirror://sourceforge/simutrans/simutrans-src-${MY_PV}.zip
-	!minimal? ( mirror://sourceforge/simutrans/${MY_PAK_64} -> simutrans_${MY_PAK_64} )
+	https://downloads.sourceforge.net/simutrans/simutrans-src-${MY_PV}.zip
+	!minimal? ( https://downloads.sourceforge.net/simutrans/${MY_PAK_64} -> simutrans_${MY_PAK_64} )
 	https://tastytea.de/files/simutrans_language_pack-Base+texts-${PV}.zip
 	https://github.com/aburch/simutrans/raw/9c84822/simutrans.svg
 "

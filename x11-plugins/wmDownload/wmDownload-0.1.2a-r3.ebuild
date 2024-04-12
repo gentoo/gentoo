@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="dockapp that displays how much data you've received on each eth and ppp device"
-SRC_URI="mirror://sourceforge/wmdownload/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wmdownload/${P}.tar.gz"
 HOMEPAGE="https://wmdownload.sourceforge.net/"
 
 LICENSE="GPL-2"

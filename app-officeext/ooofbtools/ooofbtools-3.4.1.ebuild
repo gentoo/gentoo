@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit office-ext-r1
 
 DESCRIPTION="Open/LibreOffice extension for the FictionBook2 format with validation"
 HOMEPAGE="https://sourceforge.net/projects/fbtools/"
-SRC_URI="mirror://sourceforge/fbtools/files/release/${MY_PN}-${PV}.zip"
+SRC_URI="https://downloads.sourceforge.net/fbtools/files/release/${MY_PN}-${PV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

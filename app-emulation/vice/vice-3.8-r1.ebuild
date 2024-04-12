@@ -7,7 +7,7 @@ inherit multibuild toolchain-funcs xdg
 
 DESCRIPTION="Versatile Commodore Emulator"
 HOMEPAGE="https://vice-emu.sourceforge.io/"
-SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/vice-emu/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

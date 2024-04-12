@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit flag-o-matic toolchain-funcs optfeature
 DESCRIPTION="Intelligent Battery Monitor"
 HOMEPAGE="https://ibam.sourceforge.net"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.gz
+	https://downloads.sourceforge.net/${PN}/${P}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${PATCH_LEVEL}.diff.gz
 "
 

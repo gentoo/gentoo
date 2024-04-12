@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ REQUIRED_USE="
 "
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="mirror://sourceforge/project/${PN}/Sources/${P}.tar.xz"
+	SRC_URI="https://downloads.sourceforge.net/project/${PN}/Sources/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"

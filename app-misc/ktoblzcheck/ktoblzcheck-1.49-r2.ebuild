@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Library to check account numbers and bank codes of German banks"
 HOMEPAGE="https://ktoblzcheck.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

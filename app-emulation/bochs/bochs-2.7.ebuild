@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="LGPL-ed pc emulator"
 HOMEPAGE="http://bochs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/bochs/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/bochs/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

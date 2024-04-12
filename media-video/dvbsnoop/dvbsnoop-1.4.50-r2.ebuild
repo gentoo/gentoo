@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="DVB/MPEG stream analyzer program"
-SRC_URI="mirror://sourceforge/dvbsnoop/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dvbsnoop/${P}.tar.gz"
 HOMEPAGE="http://dvbsnoop.sourceforge.net/"
 
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit cmake desktop
 
 DESCRIPTION="Qt-based chess application + engine \"gupta\""
 HOMEPAGE="https://sourceforge.net/projects/gambitchess/"
-SRC_URI="mirror://sourceforge/project/${PN}chess/${MY_P}/${MY_P}-src.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}chess/${MY_P}/${MY_P}-src.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="CC0-1.0"

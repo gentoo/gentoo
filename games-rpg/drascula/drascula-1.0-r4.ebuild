@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,15 +6,15 @@ EAPI=8
 inherit desktop wrapper
 
 INT_PV="1.1"
-INT_URI="mirror://sourceforge/scummvm/drascula-int-${INT_PV}.zip"
+INT_URI="https://downloads.sourceforge.net/scummvm/drascula-int-${INT_PV}.zip"
 DAT_PV="2.2.0"
 AUD_PV="2.0"
 
 DESCRIPTION="Drascula: The Vampire Strikes Back"
 HOMEPAGE="http://www.alcachofasoft.com/"
-SRC_URI="mirror://sourceforge/scummvm/drascula-${PV}.zip
+SRC_URI="https://downloads.sourceforge.net/scummvm/drascula-${PV}.zip
 	https://github.com/scummvm/scummvm/raw/v${DAT_PV}/dists/engine-data/drascula.dat -> drascula-${DAT_PV}.dat
-	sound? ( mirror://sourceforge/scummvm/drascula-audio-${AUD_PV}.zip )
+	sound? ( https://downloads.sourceforge.net/scummvm/drascula-audio-${AUD_PV}.zip )
 	https://salsa.debian.org/games-team/drascula/raw/master/debian/icons/drascula.png
 	l10n_es? ( ${INT_URI} )
 	l10n_de? ( ${INT_URI} )

@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handles power management and special keys on laptops"
 HOMEPAGE="http://pbbuttons.berlios.de"
-SRC_URI="mirror://sourceforge/pbbuttons/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/pbbuttons/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

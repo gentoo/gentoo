@@ -7,7 +7,7 @@ inherit virtualx
 
 DESCRIPTION="Tcl Standard Library"
 HOMEPAGE="http://www.tcl.tk/software/tcllib/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

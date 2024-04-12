@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Small and simple library for loading and writing PNG images"
 HOMEPAGE="https://sourceforge.net/projects/pnglite/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.zip"
 
 LICENSE="ZLIB"
 SLOT="0"

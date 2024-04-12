@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit desktop python-single-r1 toolchain-funcs wxwidgets xdg
 DESCRIPTION="simulator for Conway's Game of Life and other cellular automata"
 HOMEPAGE="http://golly.sourceforge.net/
 	https://sourceforge.net/projects/golly/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-src.tar.gz"
 S="${WORKDIR}/${P}-src"
 
 LICENSE="GPL-2"

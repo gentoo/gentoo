@@ -5,11 +5,11 @@ EAPI=8
 
 inherit virtualx autotools
 
-BASE_URI_ITCLTK="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-4-source"
+BASE_URI_ITCLTK="https://downloads.sourceforge.net/incrtcl/%5BIncr%20Tcl_Tk%5D-4-source"
 
 DESCRIPTION="Widget collection for incrTcl/incrTk"
 HOMEPAGE="http://incrtcl.sourceforge.net/itcl/"
-SRC_URI="mirror://sourceforge/incrtcl/%5BIncr%20Widgets%5D/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/incrtcl/%5BIncr%20Widgets%5D/${PV}/${P}.tar.gz"
 
 LICENSE="HPND Old-MIT tcltk"
 SLOT="0"

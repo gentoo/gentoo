@@ -5,8 +5,8 @@ EAPI=8
 inherit flag-o-matic autotools
 
 DESCRIPTION="Mail delivery agent/filter"
-[[ -z ${PV/?.?/}   ]] && SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
-[[ -z ${PV/?.?.?/} ]] && SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+[[ -z ${PV/?.?/}   ]] && SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
+[[ -z ${PV/?.?.?/} ]] && SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
 [[ -z ${SRC_URI}   ]] && SRC_URI="https://www.courier-mta.org/beta/${PN}/${P%%_pre}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/maildrop/"
 

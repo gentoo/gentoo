@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Implements Wake On LAN (Magic Paket) functionality in a small program"
 HOMEPAGE="http://ahh.sourceforge.net/wol/"
-SRC_URI="mirror://sourceforge/ahh/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ahh/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit gnome2 multilib-minimal
 
 DESCRIPTION="GL extensions for Gtk+ 2.0"
 HOMEPAGE="http://gtkglext.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

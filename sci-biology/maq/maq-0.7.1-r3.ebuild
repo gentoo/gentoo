@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ inherit autotools
 DESCRIPTION="Mapping and Assembly with Qualities, mapping NGS reads to reference genomes"
 HOMEPAGE="http://maq.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
-	mirror://sourceforge/${PN}/calib-36.dat.gz"
+	https://downloads.sourceforge.net/${PN}/${P}.tar.bz2
+	https://downloads.sourceforge.net/${PN}/calib-36.dat.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

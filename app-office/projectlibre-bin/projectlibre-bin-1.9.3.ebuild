@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Open source desktop alternative to Microsoft Project"
 HOMEPAGE="https://www.projectlibre.com/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/${MY_PN}/${MY_P}.tar.gz
 	https://sourceforge.net/p/projectlibre/code/ci/master/tree/projectlibre_build/resources/${MY_PN}.desktop?format=raw -> ${MY_PN}.desktop
 	https://sourceforge.net/p/projectlibre/code/ci/master/tree/projectlibre_build/resources/${MY_PN}.png?format=raw -> ${MY_PN}.png"
 S="${WORKDIR}/${MY_P}"

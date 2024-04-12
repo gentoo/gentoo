@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,10 +10,10 @@ MY_PV="${PV}-r7616"
 DESCRIPTION="Fork of the famous open racing car simulator TORCS"
 HOMEPAGE="http://www.speed-dreams.org/"
 SRC_URI="
-	mirror://sourceforge/speed-dreams/${PN}-src-base-${MY_PV}.tar.xz
-	mirror://sourceforge/speed-dreams/${PN}-src-hq-cars-and-tracks-${MY_PV}.tar.xz
-	mirror://sourceforge/speed-dreams/${PN}-src-more-hq-cars-and-tracks-${MY_PV}.tar.xz
-	mirror://sourceforge/speed-dreams/${PN}-src-wip-cars-and-tracks-${MY_PV}.tar.xz"
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-base-${MY_PV}.tar.xz
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-hq-cars-and-tracks-${MY_PV}.tar.xz
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-more-hq-cars-and-tracks-${MY_PV}.tar.xz
+	https://downloads.sourceforge.net/speed-dreams/${PN}-src-wip-cars-and-tracks-${MY_PV}.tar.xz"
 S="${WORKDIR}"
 
 LICENSE="GPL-2+ BitstreamVera CC0-1.0 Free-Art-1.2 OFL-1.1"

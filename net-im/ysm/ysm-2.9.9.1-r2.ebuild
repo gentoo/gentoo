@@ -9,7 +9,7 @@ MY_PV=$(ver_rs 1- _)
 
 DESCRIPTION="A console ICQ client supporting versions 7/8"
 HOMEPAGE="http://ysmv7.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ysmv7/${PN}v7_${MY_PV}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/ysmv7/${PN}v7_${MY_PV}.tar.bz2"
 S="${WORKDIR}"/${PN}v7_${MY_PV}
 
 LICENSE="GPL-2"

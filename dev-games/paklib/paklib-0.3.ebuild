@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="library for accessing Quake pak files"
 HOMEPAGE="https://sourceforge.net/projects/paklib/"
-SRC_URI="mirror://sourceforge/paklib/pak-${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/paklib/pak-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

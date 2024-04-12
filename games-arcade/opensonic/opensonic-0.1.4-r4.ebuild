@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Free open-source game based on the Sonic the Hedgehog universe"
 HOMEPAGE="https://opensnc.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/project/opensnc/Open%20Sonic/${PV}/opensnc-src-${PV}.tar.gz
+	https://downloads.sourceforge.net/project/opensnc/Open%20Sonic/${PV}/opensnc-src-${PV}.tar.gz
 	mirror+https://dev.gentoo.org/~ionen/distfiles/loggcompat-4.4.2.tar.gz"
 S="${WORKDIR}/opensnc-src-${PV}"
 

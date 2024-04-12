@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/scribusproject/scribus"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 	S="${WORKDIR}/${P}"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi

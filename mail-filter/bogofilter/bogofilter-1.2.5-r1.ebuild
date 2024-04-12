@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools db-use flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bayesian spam filter designed with fast algorithms, and tuned for speed"
 HOMEPAGE="https://bogofilter.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

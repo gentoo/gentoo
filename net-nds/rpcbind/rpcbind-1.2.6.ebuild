@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://linux-nfs.org/~steved/rpcbind.git"
 	inherit autotools git-r3
 else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 

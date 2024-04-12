@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Cisco netflow probe from libpcap, ULOG, tee/divert sources"
 HOMEPAGE="https://sourceforge.net/projects/ndsad"
-SRC_URI="mirror://sourceforge/ndsad/ndsad-${PV}.tgz"
+SRC_URI="https://downloads.sourceforge.net/ndsad/ndsad-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

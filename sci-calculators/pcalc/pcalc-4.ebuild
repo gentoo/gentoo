@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="the programmers calculator"
 HOMEPAGE="https://github.com/vapier/pcalc"
-SRC_URI="mirror://sourceforge/pcalc/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/pcalc/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="SAX: Simple API for XML in Java"
 HOMEPAGE="http://sax.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip -> ${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PN}.zip -> ${P}.zip"
 LICENSE="public-domain"
 
 SLOT="0"

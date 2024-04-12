@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jacl is an implementation of Tcl written in Java"
 HOMEPAGE="http://tcljava.sourceforge.net"
-SRC_URI="mirror://sourceforge/project/tcljava/jacl/${PV}/jacl${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/tcljava/jacl/${PV}/jacl${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

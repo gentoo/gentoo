@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ RESTRICT="test"
 
 DESCRIPTION="Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3"
 HOMEPAGE="http://heirloom.sourceforge.net/sh.html"
-SRC_URI="mirror://sourceforge/heirloom/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/heirloom/${P}.tar.bz2"
 
 LICENSE="CDDL"
 SLOT="0"

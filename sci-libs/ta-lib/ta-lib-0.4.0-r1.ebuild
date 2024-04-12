@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Technical Analysis Library for analyzing financial markets trends"
 HOMEPAGE="https://www.ta-lib.org/"
-SRC_URI="mirror://sourceforge/ta-lib/${P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ta-lib/${P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

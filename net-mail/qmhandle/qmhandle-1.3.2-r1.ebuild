@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Qmail message queue tool"
 HOMEPAGE="http://qmhandle.sourceforge.net/"
-SRC_URI="mirror://sourceforge/qmhandle/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/qmhandle/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

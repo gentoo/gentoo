@@ -23,20 +23,20 @@ BV_SPARC_SOLARIS=1.0.23
 DESCRIPTION="Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp"
 HOMEPAGE="https://www.sbcl.org/ http://sbcl.sourceforge.net/"
 BSD_SOCKETS_TEST_PATCH=bsd-sockets-test-2.3.1.patch
-SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
+SRC_URI="https://downloads.sourceforge.net/sbcl/${P}-source.tar.bz2
 	https://dev.gentoo.org/~grozin/${BSD_SOCKETS_TEST_PATCH}.gz
 	!system-bootstrap? (
-		x86? ( mirror://sourceforge/sbcl/${PN}-${BV_X86}-x86-linux-binary.tar.bz2 )
-		amd64? ( mirror://sourceforge/sbcl/${PN}-${BV_AMD64}-x86-64-linux-binary.tar.bz2 )
-		ppc? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC}-powerpc-linux-binary.tar.bz2 )
-		ppc64? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC64LE}-ppc64le-linux-binary.tar.bz2 )
-		sparc? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
-		alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
-		arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
-		arm64? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM64}-arm64-linux-binary.tar.bz2 )
-		x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
-		ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
-		x64-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )
+		x86? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_X86}-x86-linux-binary.tar.bz2 )
+		amd64? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_AMD64}-x86-64-linux-binary.tar.bz2 )
+		ppc? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_PPC}-powerpc-linux-binary.tar.bz2 )
+		ppc64? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_PPC64LE}-ppc64le-linux-binary.tar.bz2 )
+		sparc? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
+		alpha? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
+		arm? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
+		arm64? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_ARM64}-arm64-linux-binary.tar.bz2 )
+		x64-macos? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
+		ppc-macos? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
+		x64-solaris? ( https://downloads.sourceforge.net/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )
 	)"
 
 LICENSE="MIT"

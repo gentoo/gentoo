@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="Popular short read aligner for Next-generation sequencing data"
 HOMEPAGE="https://bowtie-bio.sourceforge.net/bowtie2/"
-SRC_URI="mirror://sourceforge/project/${PN}-bio/bowtie2/${PV}/bowtie2-${PV}-source.zip"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}-bio/bowtie2/${PV}/bowtie2-${PV}-source.zip"
 S="${WORKDIR}/${PN}2-${PV}"
 
 LICENSE="GPL-3"

@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Extensible, multi-language source code documentation generator"
 HOMEPAGE="http://www.naturaldocs.org/"
-SRC_URI="mirror://sourceforge/naturaldocs/${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/naturaldocs/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="GPL-2"

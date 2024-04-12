@@ -17,9 +17,9 @@ PS_CARD_MIN_P="${MY_PN}-Cardsets--Minimal-3.0.0"
 DESCRIPTION="Exciting collection of more than 1000 solitaire card games"
 HOMEPAGE="https://pysolfc.sourceforge.io/"
 SRC_URI="
-	mirror://sourceforge/pysolfc/${MY_P}.tar.xz
-	extra-cardsets? ( mirror://sourceforge/pysolfc/${PS_CARD_P}.tar.bz2 )
-	!extra-cardsets? ( mirror://sourceforge/pysolfc/${PS_CARD_MIN_P}.tar.xz )
+	https://downloads.sourceforge.net/pysolfc/${MY_P}.tar.xz
+	extra-cardsets? ( https://downloads.sourceforge.net/pysolfc/${PS_CARD_P}.tar.bz2 )
+	!extra-cardsets? ( https://downloads.sourceforge.net/pysolfc/${PS_CARD_MIN_P}.tar.xz )
 "
 S=${WORKDIR}/${MY_P}
 

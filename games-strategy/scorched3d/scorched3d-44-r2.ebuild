@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools desktop edos2unix wxwidgets
 
 DESCRIPTION="Multi-player tank battle in 3D (OpenGL)"
 HOMEPAGE="http://www.scorched3d.co.uk/"
-SRC_URI="mirror://sourceforge/scorched3d/Scorched3D-${PV}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/scorched3d/Scorched3D-${PV}-src.tar.gz"
 S="${WORKDIR}/scorched"
 
 LICENSE="GPL-2"

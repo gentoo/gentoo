@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ MY_CMD="pptp-command-20130515"
 
 DESCRIPTION="Linux client for PPTP"
 HOMEPAGE="http://pptpclient.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pptpclient/${MY_P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/pptpclient/${MY_P}.tar.gz
 	https://dev.gentoo.org/~pinkbyte/distfiles/pptpclient/${MY_CMD}.bz2"
 
 SLOT="0"

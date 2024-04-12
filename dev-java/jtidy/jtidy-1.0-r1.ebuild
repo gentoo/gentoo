@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Java port of HTML Tidy, an HTML syntax checker and pretty printer"
 HOMEPAGE="http://jtidy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/JTidy/${MY_PV}/${PN}-${MY_PV}-sources.zip -> ${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/JTidy/${MY_PV}/${PN}-${MY_PV}-sources.zip -> ${P}.zip"
 LICENSE="HTML-Tidy W3C"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"

@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="A forwarding, non-caching, compressing web proxy server"
 HOMEPAGE="http://ziproxy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

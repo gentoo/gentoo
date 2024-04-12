@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="DUMA (Detect Unintended Memory Access) is a memory debugging library"
 HOMEPAGE="http://duma.sourceforge.net"
-SRC_URI="mirror://sourceforge/duma/${P//[.-]/_}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/duma/${P//[.-]/_}.tar.gz
 	mirror://gentoo/${P}-GNUmakefile.patch.bz2"
 S=${WORKDIR}/${P//[.-]/_}
 

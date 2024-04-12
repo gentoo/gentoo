@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Library providing a uniform interface to a large number of hash algorithms"
 HOMEPAGE="https://mhash.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mhash/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/mhash/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

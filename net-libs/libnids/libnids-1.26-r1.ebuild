@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools flag-o-matic toolchain-funcs
 DESCRIPTION="An implementation of an E-component of Network Intrusion Detection System"
 HOMEPAGE="https://github.com/MITRECND/libnids http://libnids.sourceforge.net/"
 SRC_URI="https://github.com/MITRECND/libnids/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	mirror://sourceforge/${PN}/${P}.tar.gz"
+	https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1.2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="https://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
 SRC_URI="
 	https://www.xs4all.nl/~waterlan/${PN}/${P/_/-}.tar.gz
-	mirror://sourceforge/${PN}/${P/_/-}.tar.gz
+	https://downloads.sourceforge.net/${PN}/${P/_/-}.tar.gz
 "
 S="${WORKDIR}/${P/_/-}"
 

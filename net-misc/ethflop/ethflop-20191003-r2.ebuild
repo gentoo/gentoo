@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 DESCRIPTION="A network-backed floppy emulator for DOS"
 HOMEPAGE="http://ethflop.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="ISC"

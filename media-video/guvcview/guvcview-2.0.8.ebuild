@@ -8,7 +8,7 @@ inherit autotools qmake-utils toolchain-funcs
 
 DESCRIPTION="Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices"
 HOMEPAGE="http://guvcview.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

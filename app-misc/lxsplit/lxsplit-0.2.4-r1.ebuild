@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Command-line file splitter/joiner for Linux"
 HOMEPAGE="http://lxsplit.sourceforge.net"
-SRC_URI="mirror://sourceforge/lxsplit/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lxsplit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

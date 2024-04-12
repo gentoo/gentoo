@@ -37,7 +37,7 @@ MY_PN=${PN/tls/TLS}
 
 DESCRIPTION="Embedded client/server TLSv1 SSL library and small HTTP(S) server"
 HOMEPAGE="http://axtls.sourceforge.net/"
-SRC_URI="mirror://sourceforge/axtls/${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/axtls/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}/${PN}-code"
 
 LICENSE="BSD GPL-2"

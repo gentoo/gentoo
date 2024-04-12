@@ -7,7 +7,7 @@ inherit cmake udev
 
 DESCRIPTION="Implementation of the OBEX protocol used for transferring data to mobile devices"
 HOMEPAGE="https://sourceforge.net/projects/openobex/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-Source.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}-Source.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/2"

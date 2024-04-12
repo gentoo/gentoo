@@ -7,7 +7,7 @@ inherit autotools desktop flag-o-matic qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Portable DjVu viewer using Qt"
 HOMEPAGE="https://djvu.sourceforge.net/djview4.html"
-SRC_URI="mirror://sourceforge/djvu/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/djvu/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

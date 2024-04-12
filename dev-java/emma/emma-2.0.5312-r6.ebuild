@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Free Java code coverage tool"
 HOMEPAGE="https://emma.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/emma/emma-release/${PV}/${P}-src.zip"
+SRC_URI="https://downloads.sourceforge.net/project/emma/emma-release/${PV}/${P}-src.zip"
 S="${WORKDIR}/${P}"
 
 LICENSE="CPL-1.0"

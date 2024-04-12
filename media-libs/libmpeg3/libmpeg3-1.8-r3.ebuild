@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="An MPEG library for linux"
 HOMEPAGE="http://heroinewarrior.com/libmpeg3.php"
 SRC_URI="
-	mirror://sourceforge/heroines/${P}-src.tar.bz2
+	https://downloads.sourceforge.net/heroines/${P}-src.tar.bz2
 	https://dev.gentoo.org/~soap/distfiles/${P}-patches-r0.tar.xz"
 
 LICENSE="GPL-2"

@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="RFC2217-compliant serial port redirector"
 HOMEPAGE="https://sourceforge.net/projects/sercd/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

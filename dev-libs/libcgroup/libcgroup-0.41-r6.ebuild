@@ -7,7 +7,7 @@ inherit autotools flag-o-matic linux-info pam systemd
 
 DESCRIPTION="Tools and libraries to configure and manage kernel control groups"
 HOMEPAGE="http://libcg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

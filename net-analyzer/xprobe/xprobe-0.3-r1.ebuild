@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P=${PN}2-${PV}
 
 DESCRIPTION="Active OS fingerprinting tool - this is Xprobe2"
 HOMEPAGE="http://sys-security.com/blog/xprobe2"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"

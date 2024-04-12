@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="MPEG-1 and MPEG-4 video encoding library"
 HOMEPAGE="http://fame.sourceforge.net/"
-SRC_URI="mirror://sourceforge/fame/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/fame/${P}.tar.gz
 	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-2.tar.bz2"
 
 LICENSE="GPL-2"

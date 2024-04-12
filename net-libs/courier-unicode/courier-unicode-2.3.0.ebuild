@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Unicode library used by the courier mail server"
 HOMEPAGE="https://www.courier-mta.org/"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0/7"

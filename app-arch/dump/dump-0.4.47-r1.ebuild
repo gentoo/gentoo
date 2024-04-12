@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_P="${PN}-$(ver_rs 2 b)"
 
 DESCRIPTION="Dump/restore ext2fs backup utilities"
 HOMEPAGE="http://dump.sourceforge.net/"
-SRC_URI="mirror://sourceforge/dump/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dump/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"

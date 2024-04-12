@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Secure file wiping utility based on Peter Gutman's patterns"
 HOMEPAGE="http://wipe.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wipe/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/wipe/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

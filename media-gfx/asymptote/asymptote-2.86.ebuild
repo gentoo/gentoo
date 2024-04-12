@@ -9,7 +9,7 @@ inherit autotools elisp-common latex-package python-r1
 
 DESCRIPTION="A vector graphics language that provides a framework for technical drawing"
 HOMEPAGE="https://asymptote.sourceforge.io/"
-SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
+SRC_URI="https://downloads.sourceforge.net/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"

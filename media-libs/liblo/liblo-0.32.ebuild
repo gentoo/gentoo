@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Lightweight OSC (Open Sound Control) implementation"
 HOMEPAGE="https://sourceforge.net/projects/liblo/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

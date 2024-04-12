@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit multilib-minimal
 
 DESCRIPTION="Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec"
 HOMEPAGE="https://sourceforge.net/projects/opencore-amr/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

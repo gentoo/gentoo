@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JSch is a pure Java implementation of SSH2"
 HOMEPAGE="http://www.jcraft.com/jsch/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"

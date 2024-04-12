@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_P=${P/_/}
 DESCRIPTION="TiVo File Decoder"
 HOMEPAGE="https://tivodecode.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit desktop edos2unix java-pkg-2 java-ant-2
 DESCRIPTION="Unofficial online version of the Classic BattleTech board game"
 HOMEPAGE="https://megamek.org/"
 SRC_URI="
-	mirror://sourceforge/${PN}/MegaMek-v${PV}.zip
+	https://downloads.sourceforge.net/${PN}/MegaMek-v${PV}.zip
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 S="${WORKDIR}"
 

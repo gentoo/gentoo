@@ -12,7 +12,7 @@ HOMEPAGE="https://www.nagios.org/"
 # The name of the directory into which our Gentoo icons will be
 # extracted, and also the basename of the archive containing it.
 GENTOO_ICONS="${PN}-gentoo-icons-20141125"
-SRC_URI="mirror://sourceforge/nagios/${MY_P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/nagios/${MY_P}.tar.gz
 	web? ( https://dev.gentoo.org/~mjo/distfiles/${GENTOO_ICONS}.tar )"
 
 LICENSE="GPL-2"

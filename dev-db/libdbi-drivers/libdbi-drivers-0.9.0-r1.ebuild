@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="The libdbi-drivers project maintains drivers for libdbi"
 HOMEPAGE="http://libdbi-drivers.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit desktop java-pkg-2 java-ant-2 prefix virtualx
 
 DESCRIPTION="Fully functional LDAP browser written in Java"
 HOMEPAGE="https://jxplorer.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-project.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-project.zip"
 S="${WORKDIR}/${PN}"
 
 LICENSE="CAOSL"

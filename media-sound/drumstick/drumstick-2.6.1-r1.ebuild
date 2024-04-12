@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="Qt/C++ wrapper for ALSA sequencer"
 HOMEPAGE="https://drumstick.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

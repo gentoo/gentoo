@@ -13,8 +13,8 @@ VIDEOS_P=${PN}-videos-${VIDEOS_PV}.wz
 DESCRIPTION="3D real-time strategy game"
 HOMEPAGE="https://wz2100.net/"
 SRC_URI="
-	mirror://sourceforge/warzone2100/releases/${PV}/${PN}_src.tar.xz -> ${P}.tar.xz
-	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )
+	https://downloads.sourceforge.net/warzone2100/releases/${PV}/${PN}_src.tar.xz -> ${P}.tar.xz
+	videos? ( https://downloads.sourceforge.net/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )
 "
 S="${WORKDIR}/${PN}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools xdg-utils
 
 DESCRIPTION="A free ASCII-Text Screen Editor for UNIX"
 HOMEPAGE="https://sourceforge.net/projects/joe-editor/"
-SRC_URI="mirror://sourceforge/joe-editor/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/joe-editor/${P}.tar.gz"
 
 LICENSE="GPL-1+ CC-BY-3.0"
 SLOT="0"

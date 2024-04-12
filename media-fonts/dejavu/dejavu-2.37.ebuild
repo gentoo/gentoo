@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,8 +17,8 @@ MY_BP=${PN}-fonts-ttf-${MY_PV}
 MY_SP=${PN}-fonts-${MY_PV}
 
 if [[ -z ${snapv} ]]; then
-	SRC_URI="!fontforge? ( mirror://sourceforge/${PN}/${MY_BP}.tar.bz2 )
-		fontforge? ( mirror://sourceforge/${PN}/${MY_SP}.tar.bz2 )"
+	SRC_URI="!fontforge? ( https://downloads.sourceforge.net/${PN}/${MY_BP}.tar.bz2 )
+		fontforge? ( https://downloads.sourceforge.net/${PN}/${MY_SP}.tar.bz2 )"
 else
 	SRC_URI="!fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_BP}-${snapv}.tar.bz2 )
 		fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_SP}-${snapv}.tar.bz2 )"

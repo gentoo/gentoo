@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs virtualx xdg
 
 DESCRIPTION="GPL Electronic Design Automation: Printed Circuit Board editor"
 HOMEPAGE="http://pcb.geda-project.org/"
-SRC_URI="mirror://sourceforge/pcb/pcb/${P}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/pcb/pcb/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

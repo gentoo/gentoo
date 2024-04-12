@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ MY_P=$(ver_cut 1-4 ${MY_PN}-${PV})
 
 DESCRIPTION="A portable C++ preprocessor"
 HOMEPAGE="http://mcpp.sourceforge.net"
-SRC_URI="mirror://sourceforge/mcpp/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/mcpp/${MY_P}.tar.gz"
 SRC_URI+=" mirror://debian/pool/main/m/${MY_PN}/${MY_PN}_${PV/_p/-}.debian.tar.xz"
 S="${WORKDIR}"/${MY_P}
 

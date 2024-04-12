@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Advanced TFTP implementation client/server"
 HOMEPAGE="https://sourceforge.net/projects/atftp/"
-SRC_URI="mirror://sourceforge/atftp/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/atftp/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

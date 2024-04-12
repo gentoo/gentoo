@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="LXDE GTK+ theme switcher"
 HOMEPAGE="https://wiki.lxde.org/en/LXAppearance"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

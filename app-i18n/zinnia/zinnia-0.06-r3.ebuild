@@ -1,4 +1,4 @@
-# Copyright 2010-2021 Gentoo Authors
+# Copyright 2010-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic perl-module toolchain-funcs
 
 DESCRIPTION="Zinnia - Online hand recognition system with machine learning"
 HOMEPAGE="https://taku910.github.io/zinnia/ https://github.com/taku910/zinnia https://sourceforge.net/projects/zinnia/"
-SRC_URI="mirror://sourceforge/zinnia/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/zinnia/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="library to smooth charset/localization issues"
 HOMEPAGE="http://natspec.sourceforge.net/"
-SRC_URI="mirror://sourceforge/natspec/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/natspec/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="Reimplementation of the bibliographic facilities provided by LaTeX"
 HOMEPAGE="https://www.ctan.org/tex-archive/macros/latex/contrib/biblatex https://github.com/plk/biblatex/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tds.tgz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tds.tgz"
 
 LICENSE="LPPL-1.3"
 SLOT="0"

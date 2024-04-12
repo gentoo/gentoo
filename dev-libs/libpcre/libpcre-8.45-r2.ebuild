@@ -11,7 +11,7 @@ MY_P="pcre-${PV/_rc/-RC}"
 if [[ ${PV} != *_rc* ]] ; then
 	# Only the final releases are available here.
 	SRC_URI="
-		mirror://sourceforge/pcre/${MY_P}.tar.bz2
+		https://downloads.sourceforge.net/pcre/${MY_P}.tar.bz2
 		https://ftp.pcre.org/pub/pcre/${MY_P}.tar.bz2
 		ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${MY_P}.tar.bz2
 	"

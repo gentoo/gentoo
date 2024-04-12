@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Pngnq is a tool for quantizing PNG images in RGBA format"
 HOMEPAGE="http://pngnq.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD pngnq rwpng"
 SLOT="0"

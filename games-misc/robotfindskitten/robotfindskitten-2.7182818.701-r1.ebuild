@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Help robot find kitten"
 HOMEPAGE="http://robotfindskitten.org/"
-SRC_URI="mirror://sourceforge/rfk/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/rfk/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

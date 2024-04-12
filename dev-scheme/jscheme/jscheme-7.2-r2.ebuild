@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit java-pkg-2
 
 DESCRIPTION="A Scheme dialect with a simple Java interface called Javadot notation"
 HOMEPAGE="https://jscheme.sourceforge.net/jscheme/main.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="Apache-1.1"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
 	https://motif.ics.com/"
-SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
 	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-5.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"

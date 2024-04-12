@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ fi
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal/"
-SRC_URI+=" test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
+SRC_URI+=" test? ( https://downloads.sourceforge.net/matroska/test_files/matroska_test_w1_1.zip )"
 
 LICENSE="MIT"
 SLOT="0"

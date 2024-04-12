@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A library to render text and shapes into a buffer usable by the Logitech G15"
 HOMEPAGE="https://sourceforge.net/projects/g15tools/"
-SRC_URI="mirror://sourceforge/g15tools/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/g15tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

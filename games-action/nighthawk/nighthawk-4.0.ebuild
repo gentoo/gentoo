@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake desktop
 
 DESCRIPTION="Tribute to Paradroid by Andrew Braybrook"
 HOMEPAGE="https://night-hawk.sourceforge.io/"
-SRC_URI="mirror://sourceforge/night-hawk/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/night-hawk/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

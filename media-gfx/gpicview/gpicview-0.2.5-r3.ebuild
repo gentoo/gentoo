@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="A Simple and Fast Image Viewer for X"
 HOMEPAGE="http://lxde.sourceforge.net/gpicview"
-SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

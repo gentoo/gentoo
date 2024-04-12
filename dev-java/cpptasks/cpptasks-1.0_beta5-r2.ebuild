@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Ant-tasks to compile various source languages and produce executables"
 HOMEPAGE="https://ant-contrib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ant-contrib/ant-contrib/${P/_/-}/${P/_beta/b}.tar.gz"
 S="${WORKDIR}/${P/_beta/b}"
 
 LICENSE="Apache-2.0"

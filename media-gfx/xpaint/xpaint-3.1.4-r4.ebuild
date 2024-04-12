@@ -7,7 +7,7 @@ inherit autotools desktop toolchain-funcs xdg
 
 DESCRIPTION="Image editor with tiff, jpeg and png support"
 HOMEPAGE="https://sf-xpaint.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/sf-xpaint/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

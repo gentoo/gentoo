@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="Courier authentication library"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/authlib/"
 
 LICENSE="GPL-3"

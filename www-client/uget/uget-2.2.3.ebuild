@@ -7,7 +7,7 @@ inherit autotools xdg
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="https://www.ugetdm.com"
-SRC_URI="mirror://sourceforge/urlget/${P}-1.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/urlget/${P}-1.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

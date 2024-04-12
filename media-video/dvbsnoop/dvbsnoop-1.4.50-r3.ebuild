@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="DVB/MPEG stream analyzer program"
 HOMEPAGE="https://sourceforge.net/projects/dvbsnoop/"
-SRC_URI="mirror://sourceforge/dvbsnoop/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dvbsnoop/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

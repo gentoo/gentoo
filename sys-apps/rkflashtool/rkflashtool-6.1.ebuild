@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tool for flashing Rockchip devices"
 HOMEPAGE="https://sourceforge.net/projects/rkflashtool/"
-SRC_URI="mirror://sourceforge/project/${PN}/${P}/${P}-src.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${P}/${P}-src.tar.xz"
 S="${WORKDIR}/${P}-src"
 
 LICENSE="BSD-2"

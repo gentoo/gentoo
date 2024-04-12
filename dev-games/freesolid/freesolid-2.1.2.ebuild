@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="FreeSOLID-${PV}"
 
 DESCRIPTION="Library for collision detection of three-dimensional objects"
 HOMEPAGE="https://sourceforge.net/projects/freesolid/"
-SRC_URI="mirror://sourceforge/freesolid/${MY_P}.zip"
+SRC_URI="https://downloads.sourceforge.net/freesolid/${MY_P}.zip"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1+"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Adds stencil shadows and per pixel lights to quake"
 HOMEPAGE="https://tenebrae.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tenebrae/tenebraedata.zip
+SRC_URI="https://downloads.sourceforge.net/tenebrae/tenebraedata.zip
 	mirror://gentoo/${P}.tbz2"
 S="${WORKDIR}"
 

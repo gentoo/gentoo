@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="XSL Stylesheets for Docbook"
 HOMEPAGE="https://github.com/docbook/wiki/wiki"
-SRC_URI="mirror://sourceforge/docbook/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/docbook/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ MY_P="${P/sdl-/}"
 DESCRIPTION="Port of the classic Sopwith game using LibSDL"
 HOMEPAGE="http://sdl-sopwith.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${MY_P}.tar.gz
+	https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz
 	https://src.fedoraproject.org/rpms/sopwith/raw/master/f/sopwith.png
 "
 

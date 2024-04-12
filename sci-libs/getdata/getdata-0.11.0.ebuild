@@ -9,7 +9,7 @@ inherit autotools fortran-2 flag-o-matic
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="https://getdata.sourceforge.net"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="LGPL-2.1+"

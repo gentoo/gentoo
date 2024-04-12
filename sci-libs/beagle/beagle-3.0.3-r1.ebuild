@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Open BEAGLE, a versatile EC/GA/GP framework"
-SRC_URI="mirror://sourceforge/beagle/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/beagle/${P}.tar.gz"
 HOMEPAGE="https://chgagne.github.io/beagle/"
 
 SLOT="0"

@@ -8,8 +8,8 @@ inherit autotools desktop flag-o-matic
 DESCRIPTION="A graphical rogue-like adventure game"
 HOMEPAGE="https://sourceforge.net/projects/scourge/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.src.tar.gz
-	mirror://sourceforge/${PN}/${P}.data.tar.gz"
+	https://downloads.sourceforge.net/${PN}/${P}.src.tar.gz
+	https://downloads.sourceforge.net/${PN}/${P}.data.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"

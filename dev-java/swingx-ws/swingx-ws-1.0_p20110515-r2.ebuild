@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Utilities and widgets to integrate Swing GUIs with web applications"
 HOMEPAGE="https://java.net/projects/swingx-ws/"
-SRC_URI="mirror://sourceforge/bt747/Development/${MY_P}.zip"
+SRC_URI="https://downloads.sourceforge.net/bt747/Development/${MY_P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="bt747"
 KEYWORDS="~amd64 ~x86"

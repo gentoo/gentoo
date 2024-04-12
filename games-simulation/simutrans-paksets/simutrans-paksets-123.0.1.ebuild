@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,10 +10,10 @@ MY_PAK_128="simupak128-2.8.2-for123.zip"
 DESCRIPTION="PakSets (scenario data) for games-simulation/simutrans"
 HOMEPAGE="https://www.simutrans.com/paksets/"
 SRC_URI="
-	128? ( mirror://sourceforge/simutrans/${MY_PAK_128} -> simutrans_${MY_PAK_128} )
+	128? ( https://downloads.sourceforge.net/simutrans/${MY_PAK_128} -> simutrans_${MY_PAK_128} )
 	comic192? ( https://github.com/Flemmbrav/Pak192.Comic/releases/download/2021-V0.6-RC2/pak192.comic.0.6.RC2.zip -> simutrans_pak192.comic.0.6.RC2.zip )
-	cs128? ( mirror://sourceforge/simutrans/${MY_PAK_CS_128} -> simutrans_${MY_PAK_CS_128} )
-	german128? ( mirror://sourceforge/simutrans/${MY_PAK_GERMAN_128} -> simutrans_${MY_PAK_GERMAN_128} )
+	cs128? ( https://downloads.sourceforge.net/simutrans/${MY_PAK_CS_128} -> simutrans_${MY_PAK_CS_128} )
+	german128? ( https://downloads.sourceforge.net/simutrans/${MY_PAK_GERMAN_128} -> simutrans_${MY_PAK_GERMAN_128} )
 	nippon64? ( https://github.com/wa-st/pak-nippon/releases/download/v0.5.0/pak.nippon-v0.5.0.zip -> simutrans_pak.nippon-v0.5.0.zip )
 	excentrique48? ( https://github.com/Varkalandar/pak48.Excentrique/releases/download/v0.19_RC3/pak48.excentrique_v019rc3.zip -> simutrans_pak48.excentrique_v019rc3.zip )
 "

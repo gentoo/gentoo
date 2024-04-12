@@ -7,7 +7,7 @@ inherit flag-o-matic meson
 
 DESCRIPTION="Pidgin's GLib Ncurses Toolkit"
 HOMEPAGE="https://keep.imfreedom.org/libgnt/libgnt"
-SRC_URI="mirror://sourceforge/pidgin/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/pidgin/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 

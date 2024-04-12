@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="a front-end for Oracle program sqlplus with command-line editing"
 HOMEPAGE="https://gitlab.com/jessp011/gqlplus"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/gqlplus-1.16-sqlplus-handling-fixes.patch"
 
 LICENSE="GPL-2"

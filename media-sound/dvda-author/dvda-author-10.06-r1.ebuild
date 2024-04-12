@@ -7,7 +7,7 @@ inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Author a DVD-Audio DVD"
 HOMEPAGE="https://dvd-audio.sourceforge.net"
-SRC_URI="mirror://sourceforge/dvd-audio/${P}-300.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dvd-audio/${P}-300.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

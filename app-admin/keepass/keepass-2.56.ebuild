@@ -8,7 +8,7 @@ inherit desktop optfeature wrapper xdg-utils
 MY_PN="KeePass"
 DESCRIPTION="A free, open source, light-weight and easy-to-use password manager"
 HOMEPAGE="https://keepass.info/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-Source.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PN}-${PV}-Source.zip"
 S="${WORKDIR}"
 
 LICENSE="GPL-2"

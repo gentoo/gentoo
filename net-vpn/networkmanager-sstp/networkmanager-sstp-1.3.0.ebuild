@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit autotools
 
 DESCRIPTION="Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/network-manager-sstp https://sourceforge.net/projects/sstp-client/"
-SRC_URI="mirror://sourceforge/project/sstp-client/network-manager-sstp//${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/sstp-client/network-manager-sstp//${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

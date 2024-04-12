@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit prefix
 
 DESCRIPTION="LSB version query program"
 HOMEPAGE="https://wiki.linuxfoundation.org/lsb/"
-SRC_URI="mirror://sourceforge/lsb/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lsb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

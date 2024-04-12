@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="XMLUnit extends JUnit and NUnit to enable unit testing of XML"
 HOMEPAGE="https://sourceforge.net/projects/xmlunit/ https://www.xmlunit.org"
-SRC_URI="mirror://sourceforge/project/xmlunit/xmlunit%20for%20Java/XMLUnit%20for%20Java%20${PV}/${P}-src.zip"
+SRC_URI="https://downloads.sourceforge.net/project/xmlunit/xmlunit%20for%20Java/XMLUnit%20for%20Java%20${PV}/${P}-src.zip"
 S="${WORKDIR}/${P}"
 
 LICENSE="BSD"

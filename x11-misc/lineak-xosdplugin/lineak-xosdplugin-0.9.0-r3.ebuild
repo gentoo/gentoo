@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MY_P=${P/.0/}
 DESCRIPTION="Xosd plugin for LINEAK"
 HOMEPAGE="https://lineak.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lineak/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lineak/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"

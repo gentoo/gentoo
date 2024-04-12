@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ inherit cmake flag-o-matic fortran-2 java-pkg-opt-2 lua-single python-single-r1 
 
 DESCRIPTION="Multi-language scientific plotting library"
 HOMEPAGE="https://plplot.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P/_p*}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}+dfsg2-${PV/*_p}.debian.tar.xz"
 S="${WORKDIR}/${P/_p*}"
 

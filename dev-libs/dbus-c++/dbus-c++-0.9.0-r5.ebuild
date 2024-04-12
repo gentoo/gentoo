@@ -7,7 +7,7 @@ inherit multilib-minimal autotools virtualx
 
 DESCRIPTION="Provides a C++ API for D-BUS"
 HOMEPAGE="https://sourceforge.net/projects/dbus-cplusplus/"
-SRC_URI="mirror://sourceforge/dbus-cplusplus/lib${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dbus-cplusplus/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="networked mud that can be used for different types of collaborative software"
 HOMEPAGE="https://sourceforge.net/projects/lambdamoo/"
-SRC_URI="mirror://sourceforge/lambdamoo/LambdaMOO-${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lambdamoo/LambdaMOO-${PV}.tar.gz"
 
 LICENSE="LambdaMOO GPL-2"
 SLOT="0"

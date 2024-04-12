@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ GENTOO_THEME_VERSION="2.1"
 DESCRIPTION="A DirectFB getty replacement"
 HOMEPAGE="http://qingy.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
+	https://downloads.sourceforge.net/${PN}/${P}.tar.bz2
 	mirror://gentoo/${PN}-gentoo-theme-${GENTOO_THEME_VERSION}.tar.bz2
 	https://dev.gentoo.org/~gienah/2big4tree/sys-apps/qingy/${P}-screensavers.patch.gz
 "

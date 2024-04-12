@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Command line MPEG audio/video/system file toolbox"
-SRC_URI="mirror://sourceforge/mpgtx/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/mpgtx/${P}.tar.gz"
 HOMEPAGE="http://mpgtx.sourceforge.net/"
 
 LICENSE="GPL-2"

@@ -8,8 +8,8 @@ inherit autotools flag-o-matic multibuild toolchain-funcs virtualx
 DESCRIPTION="The Next Generation Spice (Electronic Circuit Simulator)"
 HOMEPAGE="http://ngspice.sourceforge.net"
 SRC_URI="
-	mirror://sourceforge/ngspice/${P}.tar.gz
-	doc? ( mirror://sourceforge/ngspice/${P}-manual.pdf )
+	https://downloads.sourceforge.net/ngspice/${P}.tar.gz
+	doc? ( https://downloads.sourceforge.net/ngspice/${P}-manual.pdf )
 "
 
 LICENSE="BSD GPL-2 MPL-2.0"

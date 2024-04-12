@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Mailfilter is a utility to get rid of unwanted spam mails"
 HOMEPAGE="https://mailfilter.sourceforge.io/"
-SRC_URI="mirror://sourceforge/mailfilter/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/mailfilter/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

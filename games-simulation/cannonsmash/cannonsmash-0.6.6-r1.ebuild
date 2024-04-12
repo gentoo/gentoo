@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit desktop
 MY_OGG=danslatristesse2-48.ogg
 DESCRIPTION="3D tabletennis game"
 HOMEPAGE="http://cannonsmash.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/csmash-${PV}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/${PN}/csmash-${PV}.tar.gz
 	vorbis? ( http://nan.p.utmc.or.jp/${MY_OGG} )"
 
 LICENSE="GPL-2"

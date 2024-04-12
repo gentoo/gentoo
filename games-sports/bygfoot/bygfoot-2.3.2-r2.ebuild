@@ -7,7 +7,7 @@ inherit desktop flag-o-matic vcs-clean
 
 DESCRIPTION="GTK+2 Soccer Management Game"
 HOMEPAGE="https://bygfoot.sourceforge.io/new/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

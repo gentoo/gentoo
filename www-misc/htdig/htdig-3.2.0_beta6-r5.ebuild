@@ -9,7 +9,7 @@ MY_PV="${PV/_beta/b}"
 
 DESCRIPTION="HTTP/HTML indexing and searching system"
 HOMEPAGE="https://htdig.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

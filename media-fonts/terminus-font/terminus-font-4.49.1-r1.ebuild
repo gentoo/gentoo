@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit font python-any-r1
 
 DESCRIPTION="A clean fixed font for the console and X11"
 HOMEPAGE="https://terminus-font.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}-$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="OFL-1.1 GPL-2"
 SLOT="0"

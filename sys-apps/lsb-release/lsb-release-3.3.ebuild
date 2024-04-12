@@ -7,7 +7,7 @@ inherit prefix
 
 DESCRIPTION="LSB version query program"
 HOMEPAGE="https://wiki.linuxfoundation.org/lsb/"
-# mirror://sourceforge/lsb/${P}.tar.gz
+# https://downloads.sourceforge.net/lsb/${P}.tar.gz
 SRC_URI="https://github.com/thkukuk/lsb-release_os-release/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}_os-release-${PV}
 

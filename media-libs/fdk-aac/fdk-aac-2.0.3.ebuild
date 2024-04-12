@@ -15,7 +15,7 @@ else
 	if [[ ${PV%_p*} != ${PV} ]]; then # Gentoo snapshot
 		SRC_URI="mirror://gentoo/${P}.tar.xz"
 	else # Official release
-		SRC_URI="mirror://sourceforge/opencore-amr/${P}.tar.gz"
+		SRC_URI="https://downloads.sourceforge.net/opencore-amr/${P}.tar.gz"
 	fi
 fi
 

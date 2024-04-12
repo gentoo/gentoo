@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ DESCRIPTION="UFO: Alien Invasion - X-COM inspired strategy game"
 HOMEPAGE="https://ufoai.org/"
 SRC_URI="
 	https://dev.gentoo.org/~chewi/distfiles/${PN}-code-${COMMIT}.zip
-	mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-data.tar
+	https://downloads.sourceforge.net/${PN}/${PN}-${DIST_VERSION}-data.tar
 "
 
 # https://ufoai.org/licenses/

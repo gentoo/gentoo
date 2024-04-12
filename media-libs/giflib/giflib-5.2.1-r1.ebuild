@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="https://sourceforge.net/projects/giflib/"
-SRC_URI="mirror://sourceforge/giflib/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/giflib/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/7"

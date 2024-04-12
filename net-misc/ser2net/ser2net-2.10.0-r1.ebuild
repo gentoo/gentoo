@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Serial To Network Proxy"
-SRC_URI="mirror://sourceforge/ser2net/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ser2net/${P}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/ser2net"
 
 KEYWORDS="amd64 ppc x86"

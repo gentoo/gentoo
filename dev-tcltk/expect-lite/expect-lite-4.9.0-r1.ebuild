@@ -5,7 +5,7 @@ EAPI="8"
 
 DESCRIPTION="Quick and easy command line automation tool built on top of expect"
 HOMEPAGE="https://expect-lite.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

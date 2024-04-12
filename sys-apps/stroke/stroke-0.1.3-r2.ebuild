@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Powerful tool to change file timestamps (including ctimes)"
 HOMEPAGE="https://stroke.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"

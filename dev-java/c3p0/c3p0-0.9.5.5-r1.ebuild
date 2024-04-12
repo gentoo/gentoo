@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JDBC drivers with JNDI-bindable DataSources"
 HOMEPAGE="https://www.mchange.com/projects/c3p0/"
-SRC_URI="mirror://sourceforge/project/c3p0/c3p0-src/c3p0-${PV}/${P}.src.tgz"
+SRC_URI="https://downloads.sourceforge.net/project/c3p0/c3p0-src/c3p0-${PV}/${P}.src.tgz"
 
 LICENSE="|| ( EPL-1.0 LGPL-2.1 )"
 SLOT="0"

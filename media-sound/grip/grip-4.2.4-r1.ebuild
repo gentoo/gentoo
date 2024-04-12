@@ -7,7 +7,7 @@ inherit meson xdg
 
 DESCRIPTION="GTK+ based Audio CD Player/Ripper"
 HOMEPAGE="https://sourceforge.net/projects/grip/"
-SRC_URI="mirror://sourceforge/grip/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/grip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

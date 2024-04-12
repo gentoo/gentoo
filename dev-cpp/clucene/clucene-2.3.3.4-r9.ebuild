@@ -9,7 +9,7 @@ inherit cmake
 
 DESCRIPTION="High-performance, full-featured text search engine based off of lucene in C++"
 HOMEPAGE="https://clucene.sourceforge.net"
-SRC_URI="mirror://sourceforge/clucene/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/clucene/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"

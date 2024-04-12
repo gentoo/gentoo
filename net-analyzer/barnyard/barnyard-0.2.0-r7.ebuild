@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools toolchain-funcs
 DESCRIPTION="Fast output system for Snort"
 HOMEPAGE="https://sourceforge.net/projects/barnyard"
 SRC_URI="
-	mirror://sourceforge/barnyard/barnyard-${PV/_/-}.tar.gz
+	https://downloads.sourceforge.net/barnyard/barnyard-${PV/_/-}.tar.gz
 	https://dev.gentoo.org/~jsmolic/distfiles/${P}-patches.tar.xz
 "
 

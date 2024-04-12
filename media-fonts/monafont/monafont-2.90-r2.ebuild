@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ inherit font
 DESCRIPTION="Japanese bitmap and TrueType fonts suitable for browsing 2ch"
 HOMEPAGE="https://monafont.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${MY_P}.tar.bz2
-	truetype? ( mirror://sourceforge/${PN}/${PN}-ttf-${PV}.zip )"
+	https://downloads.sourceforge.net/${PN}/${MY_P}.tar.bz2
+	truetype? ( https://downloads.sourceforge.net/${PN}/${PN}-ttf-${PV}.zip )"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain"

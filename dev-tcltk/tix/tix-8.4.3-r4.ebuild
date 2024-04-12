@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools
 MY_P="Tix${PV}"
 DESCRIPTION="A widget library for Tcl/Tk"
 HOMEPAGE="http://tix.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tix/${MY_P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tix/${MY_P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

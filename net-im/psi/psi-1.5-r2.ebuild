@@ -10,7 +10,7 @@ inherit plocale qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 	https://github.com/psi-im/psi-l10n/archive/${PV}.tar.gz -> psi-l10n-${PV}.tar.gz"
 
 LICENSE="GPL-2"

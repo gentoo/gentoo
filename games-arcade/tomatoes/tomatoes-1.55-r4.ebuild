@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit desktop toolchain-funcs
 DATA_PV=1.5
 DESCRIPTION="How many tomatoes can you smash in ten short minutes?"
 HOMEPAGE="https://tomatoes.sourceforge.net/about.html"
-SRC_URI="mirror://sourceforge/tomatoes/tomatoes-linux-src-${PV}.tar.bz2
-	mirror://sourceforge/tomatoes/tomatoes-linux-${DATA_PV}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/tomatoes/tomatoes-linux-src-${PV}.tar.bz2
+	https://downloads.sourceforge.net/tomatoes/tomatoes-linux-${DATA_PV}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

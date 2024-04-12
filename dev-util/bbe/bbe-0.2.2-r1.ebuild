@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Sed-like editor for binary files"
 HOMEPAGE="https://sourceforge.net/projects/bbe-/"
-SRC_URI="mirror://sourceforge/project/bbe-/bbe/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/bbe-/bbe/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

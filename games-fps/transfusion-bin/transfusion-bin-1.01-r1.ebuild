@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit desktop wrapper
 MY_PN="${PN/-bin/}"
 DESCRIPTION="Blood remake"
 HOMEPAGE="https://www.transfusion-game.com/"
-SRC_URI="mirror://sourceforge/blood/${MY_PN}-1.0-linux.i386.zip
-	mirror://sourceforge/blood/${MY_PN}-patch-${PV}-linux.i386.zip
+SRC_URI="https://downloads.sourceforge.net/blood/${MY_PN}-1.0-linux.i386.zip
+	https://downloads.sourceforge.net/blood/${MY_PN}-patch-${PV}-linux.i386.zip
 	mirror://gentoo/${MY_PN}.png"
 S="${WORKDIR}/${MY_PN}"
 
