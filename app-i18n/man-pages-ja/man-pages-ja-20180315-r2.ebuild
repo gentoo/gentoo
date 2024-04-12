@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
+
 GENTOO_MAN_P="portage-${PN}-20060415"
 
-DESCRIPTION="A collection of manual pages translated into Japanese"
+DESCRIPTION="Collection of manual pages translated into Japanese"
 HOMEPAGE="http://linuxjm.osdn.jp/ https://github.com/hattya/portage-man-pages-ja"
 SRC_URI="http://linuxjm.osdn.jp/${P}.tar.gz
 	https://dev.gentoo.org/~hattya/distfiles/${GENTOO_MAN_P}.tar.gz"
@@ -12,12 +13,10 @@ SRC_URI="http://linuxjm.osdn.jp/${P}.tar.gz
 LICENSE="GPL-2+ GPL-2 LGPL-2+ LGPL-2 BSD MIT ISC HPND FDL-1.1+ LDP-1 LDP-1a man-pages Texinfo-manual"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE=""
 
 RDEPEND="virtual/man"
 
 src_prepare() {
-
 	sed -i -e "/^\(man\|shadow\)/s:Y:N:" script/pkgs.list || die
 
 	# remove man pages that are provided by other packages.
@@ -41,24 +40,21 @@ src_compile() {
 }
 
 src_install() {
-
 	local x y z pkg
-
 	for x in $(tac script/pkgs.list | grep -v '^[#].*'); do
-		if [[ -z "$pkg" ]]; then
-			pkg=$x
+		if [[ -z ${pkg} ]]; then
+			pkg=${x}
 			continue
 		fi
 
-		if [[ "$x" == "N" ]]; then
+		if [[ ${x} == "N" ]]; then
 			pkg=
 			continue
 		fi
 
-		einfo "install $pkg"
-
-		for y in $(ls -d manual/$pkg/man* 2>/dev/null); do
-			doman -i18n=ja $y/*
+		einfo "install ${pkg}"
+		for y in $(ls -d manual/${pkg}/man* 2>/dev/null); do
+			doman -i18n=ja ${y}/*
 		done
 
 		pkg=
@@ -69,21 +65,19 @@ src_install() {
 	cd "${WORKDIR}"/${GENTOO_MAN_P}
 
 	for x in *; do
-		if [ -d "$x" ]; then
-			einfo "install $x"
+		if [[ -d ${x} ]]; then
+			einfo "install ${x}"
 
-			for z in $(for y in $x/*.[1-9]; do echo ${y##*.}; done | sort | uniq); do
-				doman -i18n=ja $x/*.$z
+			for z in $(for y in ${x}/*.[1-9]; do echo ${y##*.}; done | sort -u); do
+				doman -i18n=ja ${x}/*.${z}
 			done
 		fi
 	done
 
 	newdoc ChangeLog ChangeLog.GentooJP
-
 }
 
 pkg_postinst() {
-
 	echo
 	elog "JM (Japanese Manual) project has used utf8 encoding"
 	elog "since 2012/04."
@@ -93,5 +87,4 @@ pkg_postinst() {
 	elog "\tLANG=\"ja_JP.utf8\""
 	elog "\texport LANG"
 	echo
-
 }
