@@ -66,7 +66,13 @@ pkg_postinst() {
 	gnome2_schemas_update
 	elog "Remember to install the necessary gst-plugins packages to read your audio files."
 	elog "You can also use the gst-plugins-meta pakcage and its USE flags."
-	elog "Lollypop now relies on yt-dlp instead of youtube-dl, since version 1.4.36."
+
+	local log_yt_dlp ver
+	for ver in ${REPLACING_VERSIONS}; do
+		ver_test "${ver}" -lt "1.4.36" && log_yt_dlp=1
+	done
+	[[ ${log_yt_dlp} ]] &&
+		elog "Since version 1.4.36, Lollypop relies on yt-dlp instead of youtube-dl."
 }
 
 pkg_postrm() {
