@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
-	fam web webmail gnutls"
+	fam web webmail gnutls split-usr"
 
 DEPEND="
 	>=net-libs/courier-authlib-0.72.1
@@ -232,7 +232,9 @@ src_install() {
 	# users should be able to send mail. Could be restricted with suictl.
 	chmod u+s "${D}/usr/bin/sendmail"
 
-	dosym ../bin/sendmail /usr/sbin/sendmail
+	if use split-usr; then
+		dosym ../bin/sendmail /usr/sbin/sendmail
+	fi
 }
 
 src_test() {
