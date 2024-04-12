@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">aws/s2n-tls</remote-id>
+	</upstream>
 	<longdescription>
 s2n is a C99 implementation of the TLS/SSL protocols that is designed to be simple, small, fast, and with security as a
 priority. It is released and licensed under the Apache License 2.0.
