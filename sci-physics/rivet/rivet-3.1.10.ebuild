@@ -66,6 +66,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
 	"${FILESDIR}"/${PN}-3.1.9-pythontests.patch
+	"${FILESDIR}"/${PN}-3.1.10-ref_cin.patch
 )
 
 pkg_setup() {
