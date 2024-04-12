@@ -339,12 +339,6 @@ sci-chemistry/mdtraj
 =mail-mta/postfix-3.10*
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
-# Stopped working after GMail changes some 1.5 years ago,
-# no more upstream development.
-# Removal on 2024-04-03.
-kde-misc/gmail-feed
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-02-28)
 # KDE Plasma 6.0.3, Gear 24.02.1 and Frameworks 6.0.0 mask
 #
 # Don't do anything unless you're intentionally moving to Plasma 6, which is
