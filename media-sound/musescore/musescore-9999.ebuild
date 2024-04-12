@@ -63,9 +63,10 @@ RDEPEND="
 	jack? ( virtual/jack )
 	video? ( media-video/ffmpeg )
 "
+# dev-cpp/gtest is required even when tests are disabled!
 DEPEND="
 	${RDEPEND}
-	test? ( dev-cpp/gtest )
+	dev-cpp/gtest
 "
 
 PATCHES=(
