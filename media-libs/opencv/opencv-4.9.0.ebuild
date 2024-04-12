@@ -145,7 +145,7 @@ RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	cuda? ( <dev-util/nvidia-cuda-toolkit-12.4:0= )
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	cudnn? ( dev-libs/cudnn:= )
 	contribdnn? ( dev-libs/flatbuffers:= )
 	contribhdf? ( sci-libs/hdf5:= )
@@ -217,6 +217,7 @@ RDEPEND="
 			dev-qt/qtbase:6[gui,widgets,concurrent,opengl?]
 		)
 	)
+	quirc? ( media-libs/quirc )
 	tesseract? ( app-text/tesseract[opencl=,${MULTILIB_USEDEP}] )
 	tbb? ( dev-cpp/tbb:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
@@ -591,6 +592,7 @@ multilib_src_configure() {
 	# ===================================================
 	# configure modules to be build
 	# ===================================================
+		-DBUILD_opencv_gapi="$(usex ffmpeg yes "$(usex gstreamer)")"
 		-DBUILD_opencv_features2d="$(usex features2d)"
 		-DBUILD_opencv_java_bindings_generator="$(usex java)"
 		-DBUILD_opencv_js="no"
@@ -678,6 +680,7 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi && use cuda; then
 		cuda_add_sandbox -w
+		sandbox_write "/proc/self/task"
 		CUDAHOSTCXX="$(cuda_get_cuda_compiler)"
 		CUDAARCHS="$(cuda_get_host_native_arch)"
 		export CUDAHOSTCXX

@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
+# media-libs/quirc is keyworded on amd64
+-quirc
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
 # dev-libs/optix works on amd64
 -optix
