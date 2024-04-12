@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">awslabs/aws-c-io</remote-id>
+	</upstream>
 	<longdescription>
 This is a module for the AWS SDK for C. It handles all IO and TLS work for application protocols.
 
