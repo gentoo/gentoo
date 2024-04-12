@@ -77,7 +77,7 @@ mydoc="doc/biber.tex"
 
 src_prepare() {
 	#disable 64-bit only Tests on non 64-bit archs
-	use amd64 || use arm64 || eapply "${FILESDIR}/${P}-disable-64bit-only-tests.patch"
+	use amd64 || use arm64 || eapply "${FILESDIR}/${PN}-2.16-disable-64bit-only-tests.patch"
 
 	default
 }
