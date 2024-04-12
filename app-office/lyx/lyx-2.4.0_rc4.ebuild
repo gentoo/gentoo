@@ -15,8 +15,9 @@ S=${WORKDIR}/${P/_rc/~RC}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="aspell cups debug dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
+IUSE="aspell cups dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	app-text/mythes
@@ -118,17 +119,17 @@ src_configure() {
 		# external dependencies
 		-DLYX_EXTERNAL_Z=ON
 		-DLYX_EXTERNAL_ICONV=ON
-		-DLYX_EXTERNAL_HUNSPELL=$(usex !debug)
-		-DLYX_EXTERNAL_MYTHES=$(usex !debug ON OFF)
-		-DLYX_EXTERNAL_BOOST=$(usex !debug)
+		-DLYX_EXTERNAL_HUNSPELL=ON
+		-DLYX_EXTERNAL_MYTHES=ON
+		-DLYX_EXTERNAL_BOOST=ON
 		-DLYX_PROGRAM_SUFFIX=OFF
 
 		# debug control
 		-DLYX_NO_OPTIMIZE=OFF
-		-DLYX_RELEASE=$(usex !debug)
-		-DLYX_DEBUG=$(usex debug)
-		-DLYX_DEBUG_GLIBC=$(usex debug)
-		-DLYX_STDLIB_DEBUG=$(usex debug)
+		-DLYX_RELEASE=ON
+		-DLYX_DEBUG=OFF
+		-DLYX_DEBUG_GLIBC=OFF
+		-DLYX_STDLIB_DEBUG=OFF
 	)
 
 	cmake_src_configure
