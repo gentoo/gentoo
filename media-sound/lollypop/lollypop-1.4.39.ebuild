@@ -64,8 +64,11 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-	elog "Remember to install the necessary gst-plugins packages to read your audio files."
-	elog "You can also use the gst-plugins-meta pakcage and its USE flags."
+
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "Remember to install the necessary gst-plugins packages for your audio files."
+		elog "You can also use the gst-plugins-meta package and its USE flags."
+	fi
 
 	local log_yt_dlp ver
 	for ver in ${REPLACING_VERSIONS}; do
