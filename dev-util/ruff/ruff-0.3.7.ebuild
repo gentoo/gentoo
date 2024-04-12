@@ -37,6 +37,7 @@ CRATES="
 	cast@0.3.0
 	cc@1.0.88
 	cfg-if@1.0.0
+	cfg_aliases@0.1.1
 	chic@1.2.2
 	chrono@0.4.37
 	ciborium-io@0.2.2
@@ -50,7 +51,7 @@ CRATES="
 	clap_complete_nushell@0.1.11
 	clap_derive@4.5.4
 	clap_lex@0.7.0
-	clearscreen@2.0.1
+	clearscreen@3.0.0
 	codspeed-criterion-compat@2.4.0
 	codspeed@2.4.0
 	colorchoice@1.0.0
@@ -85,7 +86,8 @@ CRATES="
 	either@1.10.0
 	ena@0.14.2
 	encode_unicode@0.3.6
-	env_logger@0.10.2
+	env_filter@0.1.0
+	env_logger@0.11.3
 	equivalent@1.0.1
 	errno@0.3.8
 	fastrand@2.0.1
@@ -144,8 +146,8 @@ CRATES="
 	lexical-parse-integer@0.8.6
 	lexical-util@0.8.5
 	libc@0.2.153
-	libcst@1.2.0
-	libcst_derive@1.2.0
+	libcst@1.3.1
+	libcst_derive@1.3.1
 	libmimalloc-sys@0.1.35
 	libredox@0.0.1
 	linked-hash-map@0.5.6
@@ -153,7 +155,7 @@ CRATES="
 	lock_api@0.4.11
 	log@0.4.21
 	lsp-server@0.7.6
-	lsp-types@0.95.0
+	lsp-types@0.95.1
 	matchers@0.1.0
 	matches@0.1.10
 	memchr@2.7.2
@@ -163,8 +165,7 @@ CRATES="
 	mio@0.8.11
 	natord@1.0.9
 	new_debug_unreachable@1.0.4
-	nextest-workspace-hack@0.1.0
-	nix@0.26.4
+	nix@0.28.0
 	nom@7.1.3
 	notify@6.1.1
 	nu-ansi-term@0.46.0
@@ -204,7 +205,7 @@ CRATES="
 	pretty_assertions@1.4.0
 	proc-macro2@1.0.79
 	pyproject-toml@0.9.0
-	quick-junit@0.3.5
+	quick-junit@0.3.6
 	quick-xml@0.31.0
 	quote@1.0.35
 	rand@0.8.5
@@ -262,10 +263,9 @@ CRATES="
 	strum_macros@0.26.2
 	subtle@2.5.0
 	syn@1.0.109
-	syn@2.0.57
+	syn@2.0.58
 	tempfile@3.10.1
 	term@0.7.0
-	termcolor@1.4.1
 	terminal_size@0.3.0
 	terminfo@0.8.0
 	test-case-core@3.3.1
@@ -327,7 +327,7 @@ CRATES="
 	wasm-bindgen@0.2.92
 	web-sys@0.3.68
 	webpki-roots@0.26.1
-	which@4.4.2
+	which@6.0.1
 	wild@2.2.1
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.6
@@ -353,6 +353,7 @@ CRATES="
 	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.4
 	winnow@0.6.5
+	winsafe@0.0.19
 	yansi-term@0.1.2
 	yansi@0.5.1
 	zerocopy-derive@0.7.32
@@ -405,11 +406,6 @@ DEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/.*"
-
-PATCHES=(
-	"${FILESDIR}/ruff-0.1.14-tests.patch"
-	"${FILESDIR}/ruff-0.2.0-tests.patch"
-)
 
 DOCS=(
 	BREAKING_CHANGES.md
