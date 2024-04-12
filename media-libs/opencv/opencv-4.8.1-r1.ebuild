@@ -568,6 +568,7 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi && use cuda; then
 		cuda_add_sandbox -w
+		sandbox_write "/proc/self/task"
 
 		if [[ -n "${CUDA_GENERATION}" ]]; then
 			mycmakeargs+=(
