@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">biblatex-biber</remote-id>
 		<remote-id type="github">plk/biber</remote-id>
