@@ -370,10 +370,6 @@ media-video/ffmpeg -mmal
 media-video/ffmpeg-chromium -mmal
 media-video/mpv -mmal
 
-# Markus Meier <maekke@gentoo.org> (2015-10-10)
-# unkeyworded deps, bug #552330
-app-portage/g-sorcery bson
-
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
 media-libs/freeimage tiff

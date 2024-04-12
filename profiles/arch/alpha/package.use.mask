@@ -390,11 +390,6 @@ net-libs/gnutls test-full
 # libilbc has not been ported to alpha and likely never will be.
 media-video/ffmpeg libilbc
 
-# Tobias Klausmann <klausman@gentoo.org> (2017-03-02)
-# BSON requires pymongo and assorted other packages that are not available on
-# alpha.
-app-portage/g-sorcery bson
-
 # Tobias Klausmann <klausman@gentoo.org> (2016-01-25)
 # The tests use hypothesis which complains about too-slow tests on
 # hardware that is "too slow".

@@ -332,10 +332,6 @@ mail-mta/exim redis
 # Many unkeyworded rails deps, bug #650642
 net-analyzer/wireshark doc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-18)
-# unkeyworded deps, bug #552330
-app-portage/g-sorcery bson
-
 # Mart Raudsepp <leio@gentoo.org> (2018-01-08)
 # mail-client/evolution[ytnef] requires net-mail/ytnef which is not keyworded
 mail-client/evolution ytnef

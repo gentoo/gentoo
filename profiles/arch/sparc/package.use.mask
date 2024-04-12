@@ -407,10 +407,6 @@ net-misc/scponly unison
 net-analyzer/nagios-plugin-check_raid 3ware aacraid hpa hpsa megaraid-sas mpt-sas2 mpt
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
-# dev-python/pymongo is not keyworded
-app-portage/g-sorcery bson
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
 # app-emacs/wanderlust is not keyworded
 app-emacs/elscreen wanderlust
 
