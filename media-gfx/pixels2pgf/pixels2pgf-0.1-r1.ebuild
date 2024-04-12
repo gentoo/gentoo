@@ -3,22 +3,16 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/projg2/${PN}.git"
-inherit autotools git-r3
-
 DESCRIPTION="Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles"
 HOMEPAGE="https://github.com/projg2/pixels2pgf/"
+SRC_URI="https://github.com/projg2/pixels2pgf/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	media-libs/libsdl:0=
 	media-libs/sdl-image:0=
 "
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
