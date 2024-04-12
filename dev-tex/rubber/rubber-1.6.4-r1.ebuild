@@ -110,6 +110,5 @@ src_install() {
 	dodir /usr/share/man/fr
 	mv "${D}"/usr/share/{doc/man-fr,man/fr/man1} || die
 	mv "${D}"/usr/share/{doc/man-en,man/man1} || die
-	dodir /usr/share/doc/${P}
 	mv "${D}"/usr/share/doc/{rubber.*,${PF}/} || die
 }
