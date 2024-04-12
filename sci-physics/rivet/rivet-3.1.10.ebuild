@@ -66,6 +66,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
 	"${FILESDIR}"/${PN}-3.1.9-pythontests.patch
+	"${FILESDIR}"/${PN}-3.1.10-ref_cin.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/844
 )
 
 pkg_setup() {
