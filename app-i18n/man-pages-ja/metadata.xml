@@ -15,5 +15,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="osdn">linuxjm</remote-id>
+    <remote-id type="github">hattya/portage-man-pages-ja</remote-id>
   </upstream>
 </pkgmetadata>
