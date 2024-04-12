@@ -58,6 +58,7 @@ src_install() {
 	meson_src_install
 	python_optimize
 	python_fix_shebang "${ED}/usr/bin"
+	python_fix_shebang "${ED}/usr/libexec/lollypop-sp"
 }
 
 pkg_postinst() {
