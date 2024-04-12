@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: stardict.eclass
@@ -48,7 +48,7 @@ if [[ -n ${FROM_LANG} && -n ${TO_LANG} ]]; then
 fi
 
 HOMEPAGE="http://stardict.sourceforge.net/"
-SRC_URI="mirror://sourceforge/stardict/${DICT_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/stardict/${DICT_P}.tar.bz2"
 S="${WORKDIR}/${DICT_P}"
 
 LICENSE="GPL-2"
