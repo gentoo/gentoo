@@ -2325,7 +2325,7 @@ create_revdep_rebuild_entry() {
 #---->> pkg_pre* <<----
 
 toolchain_pkg_preinst() {
-	if use test ; then
+	if [[ ${MERGE_TYPE} != binary ]] && use test ; then
 		# Install as orphaned to allow comparison across more versions even
 		# after unmerged. Also useful for historical records and tracking
 		# down regressions a while after they first appeared, but were only
