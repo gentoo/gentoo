@@ -5,7 +5,7 @@ EAPI=8
 
 CHECKREQS_DISK_BUILD=3500M
 VIRTUALX_REQUIRED="test"
-inherit cmake qmake-utils xdg check-reqs virtualx
+inherit cmake flag-o-matic qmake-utils xdg check-reqs virtualx
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -97,6 +97,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# confuses rcc, bug #908808
+	filter-lto
+
 	# bug #766111
 	export PATH="$(qt5_get_bindir):${PATH}"
 
