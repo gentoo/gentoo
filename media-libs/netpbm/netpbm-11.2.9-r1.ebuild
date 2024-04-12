@@ -18,7 +18,7 @@ HOMEPAGE="https://netpbm.sourceforge.net/"
 SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="Artistic BSD GPL-2 IJG LGPL-2.1 MIT public-domain"
-SLOT="0/advanced"
+SLOT="0/stable"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml"
 
@@ -57,6 +57,8 @@ PATCHES=(
 	"${FILESDIR}"/netpbm-10.86.21-build.patch
 	"${FILESDIR}"/netpbm-11.0.0-misc-deps.patch
 	"${FILESDIR}"/netpbm-11.1.0-fix-clang-O2.patch
+	"${FILESDIR}"/netpbm-11.2.7-fix-pnmcolormap2-test.patch
+	"${FILESDIR}"/netpbm-11.6.1-incompatible-pointer-types.patch
 )
 
 netpbm_libtype() {
@@ -93,41 +95,46 @@ src_prepare() {
 	default
 
 	# make sure we use system libs
-	sed '/SUPPORT_SUBDIRS/s:urt::' -i GNUmakefile || die
+	sed -i '/SUPPORT_SUBDIRS/s:urt::' GNUmakefile || die
 	rm -r urt converter/other/jbig/libjbig converter/other/jpeg2000/libjasper || die
+
+	# fix typo in a test
+	sed -i \
+		-e 's:^o#! /bin/sh:#! /bin/sh:' \
+		test/stdin-ppm3.test || die
 
 	# take care of the importinc stuff ourselves by only doing it once
 	# at the top level and having all subdirs use that one set #149843
-	sed \
+	sed -i \
 		-e '/^importinc:/s|^|importinc:\nmanual_|' \
 		-e '/-Iimportinc/s|-Iimp|-I"$(BUILDDIR)"/imp|g'\
-		-i common.mk || die
-	sed \
+		common.mk || die
+	sed -i \
 		-e '/%.c/s: importinc$::' \
-		-i common.mk lib/Makefile lib/util/Makefile || die
-	sed \
+		common.mk lib/Makefile lib/util/Makefile || die
+	sed -i \
 		-e 's:pkg-config:$(PKG_CONFIG):' \
-		-i GNUmakefile converter/other/Makefile other/pamx/Makefile || die
+		GNUmakefile converter/other/Makefile other/pamx/Makefile || die
 
 	# The postscript knob is currently bound up with a fork test.
 	if ! use postscript ; then
-		sed \
+		sed -i \
 			-e 's:$(DONT_HAVE_PROCESS_MGMT):Y:' \
-			-i converter/other/Makefile generator/Makefile || die
-		sed -r \
+			converter/other/Makefile generator/Makefile || die
+		sed -i -r \
 			-e 's:(pbmtextps|pnmtops|pstopnm).*::' \
-			-i test/all-in-place.{ok,test} || die
-		sed \
+			test/all-in-place.{ok,test} || die
+		sed -i \
 			-e 's:lps-roundtrip.*::' \
 			-e 's:pbmtextps-dump.*::' \
 			-e 's:pbmtextps.*::' \
-			-i test/Test-Order || die
-		sed \
+			test/Test-Order || die
+		sed -i \
 			-e '/^$/d' \
-			-i test/all-in-place.ok || die
-		sed \
+			test/all-in-place.ok || die
+		sed -i \
 			'2iexit 80' \
-			-i test/ps-{alt-,flate-,}roundtrip.test || die
+			test/ps-{alt-,flate-,}roundtrip.test || die
 	fi
 
 	# the new postscript test needs +x
@@ -135,35 +142,34 @@ src_prepare() {
 
 	# Do not test png if not built
 	if ! use png ; then
-		sed -E \
+		sed -i -E \
 			-e 's:(pamtopng|pngtopam|pnmtopng).*::' \
-			-i test/all-in-place.{ok,test} || die
-		sed \
+			test/all-in-place.{ok,test} || die
+		sed -i \
 			-e '/^$/d' \
-			-i test/all-in-place.ok || die
+			test/all-in-place.ok || die
 
-		sed -E \
+		sed -i -E \
 			-e 's:(pamrgbatopng|pngtopnm).*::' \
-			-i test/legacy-names.{ok,test} || die
-		sed \
+			test/legacy-names.{ok,test} || die
+		sed -i \
 			-e '/^$/d' \
-			-i test/legacy-names.ok || die
-		sed \
+			test/legacy-names.ok || die
+		sed -i \
 			-e 's:png-roundtrip.*::' \
 			-e 's:winicon-roundtrip.*::' \
-			-i test/Test-Order || die
+			test/Test-Order || die
 	fi
 
 	# pbmtext-iso88591 requires LC_ALL=en_US.iso88591, not available on musl
 	# pbmtext-utf8 requires locale, not available on musl
-	# ppmpat-random and pnmindex are broken on musl
+	# ppmpat-random is broken on musl
 	# bug #907295
 	if use elibc_musl; then
 		sed \
 			-e 's:pbmtext-iso88591.*::' \
 			-e 's:pbmtext-utf8.*::' \
 			-e 's:ppmpat-random.*::' \
-			-e 's:pnmindex.*::' \
 			-i test/Test-Order || die
 	fi
 }
@@ -253,7 +259,7 @@ src_install() {
 	dodoc README
 
 	cd doc || die
-	dodoc HISTORY USERDOC
+	dodoc HISTORY Netpbm.programming USERDOC
 	docinto html
 	dodoc -r ../userguide/*.html
 }
