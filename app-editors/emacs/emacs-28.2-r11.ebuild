@@ -385,6 +385,10 @@ src_test() {
 
 		# Reason: quoting issues (fixed in Emacs 29)
 		%lib-src/emacsclient-tests.el
+
+		# Reason: tries to access network
+		# internet-is-working
+		%src/process-tests.el
 	)
 	use threads || exclude_tests+=(
 			%src/emacs-module-tests.el
