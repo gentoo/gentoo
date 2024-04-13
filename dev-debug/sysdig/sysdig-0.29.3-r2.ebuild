@@ -34,7 +34,8 @@ RDEPEND="${LUA_DEPS}
 	net-libs/grpc:=
 	net-misc/curl
 	sys-libs/ncurses:=
-	sys-libs/zlib:="
+	sys-libs/zlib:=
+	virtual/libelf:="
 
 DEPEND="${RDEPEND}
 	dev-cpp/nlohmann_json
