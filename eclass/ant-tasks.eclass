@@ -1,7 +1,7 @@
 # Copyright 2007-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @DEPRECATED:
+# @DEAD
 # @ECLASS: ant-tasks.eclass
 # @MAINTAINER:
 # java@gentoo.org
