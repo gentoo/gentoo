@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~sparc ~x86"
 
 RDEPEND=">=dev-libs/glib-2
 	x11-libs/gtk+:2
