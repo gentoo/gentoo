@@ -292,7 +292,6 @@ dev-java/ant-apache-regexp
 dev-java/ant-apache-log4j
 dev-java/ant-apache-xalan2
 dev-java/ant-commons-logging
-dev-java/ant-swing
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
