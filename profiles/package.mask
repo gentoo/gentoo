@@ -263,18 +263,6 @@ dev-ruby/atomic
 # https://github.com/containers/buildah/issues/5320
 =app-containers/buildah-1.34.0
 
-# Eli Schwartz <eschwartz93@gmail.com> (2024-03-14)
-# Deprecated, doesn't work with python 3.12. Unmaintained with last
-# serious release in 2019, and another release in 2024 that claims
-# to support python 3.12 but fails tests if you actually do. No
-# route to making it work with python 3.13 at all, and upstream
-# explicitly states that future "like Python 2, is now done". The
-# package is entirely redundant to packages not supporting python
-# 2 anymore, and the ones that do support it should be using
-# dev-python/six instead, anyways.  Bug #888271
-# Removal on 2024-04-13.
-dev-python/future
-
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*

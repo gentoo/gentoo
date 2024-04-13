@@ -93,13 +93,6 @@ dev-python/python-distutils-extra
 # details. Please migrate to app-admin/rasdaemon instead.
 sys-apps/edac-utils
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-24)
-# Unmaintained with last release in 2019.  We already patched it to work
-# with Python 3.9+.  The upstream code is also vulnerable
-# to CVE-2022-40899.  Above all, this library is completely redundant
-# to packages not supporting Python 2 anymore.
-dev-python/future
-
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 # When possible, replace dependencies on these packages with a dependency on
