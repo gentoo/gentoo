@@ -37,6 +37,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl=,vulkan?,widgets?]
+	~dev-qt/qtdeclarative-${PV}:6[widgets?]
 	~dev-qt/qtwebchannel-${PV}:6[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
@@ -68,7 +69,6 @@ RDEPEND="
 	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-libs/libpulse[glib] )
-	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 	screencast? (
 		dev-libs/glib:2
 		media-libs/mesa[gbm(+)]
@@ -82,7 +82,6 @@ RDEPEND="
 		x11-libs/libdrm
 	)
 	!vaapi? ( media-libs/libvpx:= )
-	widgets? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
 "
 DEPEND="
 	${RDEPEND}
