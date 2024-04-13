@@ -594,7 +594,7 @@ setup_env() {
 	# and make sure glibc__ORIG_CC and glibc__ORIG_CXX is defined now.
 	export glibc__ORIG_CC=${CC}
 	export glibc__ORIG_CXX=${CXX}
-	export glibc__ORIG_CPP="${CPP}"
+	export glibc__ORIG_CPP=${CPP}
 
 	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
 		export glibc__force_gcc=yes

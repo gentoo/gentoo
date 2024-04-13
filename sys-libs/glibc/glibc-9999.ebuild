@@ -589,10 +589,12 @@ setup_env() {
 	# Reset CC and CXX to the value at start of emerge
 	export CC=${glibc__ORIG_CC:-${CC:-$(tc-getCC ${CTARGET})}}
 	export CXX=${glibc__ORIG_CXX:-${CXX:-$(tc-getCXX ${CTARGET})}}
+	export CPP=${glibc__ORIG_CPP:-${CPP:-$(tc-getCPP ${CTARGET})}}
 
 	# and make sure glibc__ORIG_CC and glibc__ORIG_CXX is defined now.
 	export glibc__ORIG_CC=${CC}
 	export glibc__ORIG_CXX=${CXX}
+	export glibc__ORIG_CPP=${CPP}
 
 	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
 		export glibc__force_gcc=yes
@@ -641,6 +643,7 @@ setup_env() {
 
 		export CC="$(tc-getCC ${CTARGET})"
 		export CXX="$(tc-getCXX ${CTARGET})"
+		export CPP="$(tc-getCPP ${CTARGET})"
 
 		# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
 		# can't detect them automatically due to ${CHOST} mismatch and fallbacks
@@ -657,6 +660,7 @@ setup_env() {
 	# acts on CC?)
 	export glibc__GLIBC_CC=${CC}
 	export glibc__GLIBC_CXX=${CXX}
+	export glibc__GLIBC_CPP=${CPP}
 
 	export glibc__abi_CFLAGS="$(get_abi_CFLAGS)"
 
@@ -671,6 +675,8 @@ setup_env() {
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
 	export CXX="${glibc__GLIBC_CXX} ${glibc__abi_CFLAGS} ${CFLAGS}"
+
+	export CPP="${glibc__GLIBC_CPP} ${glibc__abi_CFLAGS}"
 
 	if is_crosscompile; then
 		# Assume worst-case bootstrap: glibc is built for the first time
