@@ -10,7 +10,7 @@ HOMEPAGE="https://thrift.apache.org/lib/cpp.html"
 SRC_URI="mirror://apache/thrift/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0/0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~s390 ~x86"
 IUSE="libevent lua +ssl test"
 
