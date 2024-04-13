@@ -13,7 +13,7 @@ S="${WORKDIR}/dockapps-be3f170"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
