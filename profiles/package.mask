@@ -317,7 +317,6 @@ dev-java/failureaccess
 # a fix anytime soon.
 #
 # dev-python/pygame_sdl2: also py3.12, bug #911781
-# games-engines/renpy: also py3.12, bug #925693
 #
 # Includes their few reverse dependencies and their exclusive
 # dependencies without Python 3.12 support.
@@ -325,7 +324,6 @@ dev-java/failureaccess
 # Removal on 2024-04-09.
 dev-python/astunparse
 dev-python/pygame_sdl2
-games-engines/renpy
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
