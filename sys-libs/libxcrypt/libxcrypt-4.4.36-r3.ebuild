@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 # NEED_BOOTSTRAP is for developers to quickly generate a tarball
 # for publishing to the tree.
 NEED_BOOTSTRAP="no"
-inherit crossdev multilib python-any-r1 flag-o-matic toolchain-funcs multilib-minimal
+inherit crossdev multibuild multilib python-any-r1 flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others"
 HOMEPAGE="https://github.com/besser82/libxcrypt"
