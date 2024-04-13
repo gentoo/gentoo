@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P_ORIG/_/-}/${PN}"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~hppa ~mips ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ppc ~sparc ~x86"
 
 DOCS=( ../{BUGS,CHANGES,HINTS,README} )
 
