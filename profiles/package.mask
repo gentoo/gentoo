@@ -850,7 +850,6 @@ sys-libs/libhugetlbfs
 # some ideas how to help, please see bug #914477.
 # Removal on 2024-03-01.
 net-libs/libpri
-net-misc/dahdi
 
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
