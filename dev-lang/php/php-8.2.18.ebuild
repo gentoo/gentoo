@@ -150,7 +150,6 @@ PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
 	"${FILESDIR}/php-capstone-optional.patch"
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
-	"${FILESDIR}/php-8.1.27-implicit-decls.patch"
 	"${FILESDIR}/fix-musl-llvm.patch"
 )
 
