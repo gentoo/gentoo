@@ -322,7 +322,6 @@ dev-java/failureaccess
 # dependencies without Python 3.12 support.
 #
 # Removal on 2024-04-09.
-dev-python/astunparse
 dev-python/pygame_sdl2
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
