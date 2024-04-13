@@ -312,18 +312,6 @@ dev-java/ant-xz
 dev-java/gnu-jaf
 dev-java/failureaccess
 
-# Michał Górny <mgorny@gentoo.org> (2024-03-10)
-# Packages that still require <dev-python/cython-3 and do not promise
-# a fix anytime soon.
-#
-# dev-python/pygame_sdl2: also py3.12, bug #911781
-#
-# Includes their few reverse dependencies and their exclusive
-# dependencies without Python 3.12 support.
-#
-# Removal on 2024-04-09.
-dev-python/pygame_sdl2
-
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*
