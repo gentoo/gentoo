@@ -46,9 +46,15 @@ DEPEND="${RDEPEND}
 PDEPEND="modules? ( =dev-debug/scap-driver-${PV}* )"
 
 src_prepare() {
-	# manually apply patch to falcosecurity-libs dependency
-	pushd "${WORKDIR}" && \
-		eapply -p0 "${FILESDIR}/${PV}-libs-gcc13.patch" && \
+	# manually apply patches to falcosecurity-libs dependency
+	pushd "${WORKDIR}"
+		# gcc13 needs explicit <cstdint>
+		eapply -p0 "${FILESDIR}/${PV}-libs-gcc13.patch" || die
+
+		# musl has no libanl (#929227)
+		if [ ${ELIBC} == "musl" ] ; then
+			eapply -p0 "${FILESDIR}/${PV}-libs-no-libanl.patch" || die
+		fi
 	popd
 
 	# force C++14 standard for libs & main
