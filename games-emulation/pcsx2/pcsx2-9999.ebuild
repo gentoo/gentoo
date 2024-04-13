@@ -79,6 +79,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
+	"${FILESDIR}"/${PN}-1.7.5700-vanilla-shaderc.patch
 )
 
 src_prepare() {
