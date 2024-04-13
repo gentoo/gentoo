@@ -16,7 +16,7 @@ IUSE="+introspection"
 RDEPEND="
 	>=dev-libs/glib-2.42.1:2
 	>=dev-libs/libxml2-2.9.2:2
-	>=net-libs/libsoup-2.48:2.4
+	>=net-libs/libsoup-2.48:2.4[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.42 )
 "
 DEPEND="${RDEPEND}"
@@ -24,3 +24,7 @@ BDEPEND="
 	>=dev-build/gtk-doc-am-1.10
 	virtual/pkgconfig
 "
+
+src_configure() {
+	gnome2_src_configure $(use_enable introspection)
+}
