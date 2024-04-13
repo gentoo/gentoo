@@ -4,7 +4,7 @@
 EAPI=8
 
 # Fails to build with with "lua5-1".
-LUA_COMPAT=( lua5-{3,4} )
+LUA_COMPAT=( lua5-{3,4} luajit )
 
 inherit lua-single
 
@@ -20,7 +20,7 @@ else
 	SRC_URI="https://git.sr.ht/~technomancy/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
 LICENSE="MIT"
@@ -39,6 +39,10 @@ src_prepare() {
 
 	# Turn off failing tests. bug https://bugs.gentoo.org/906351
 	sed -e 's|"failures",||' -e 's|"repl",||' -i test/init.lua || die
+
+	# Remove bad tests, bug #923281
+	rm test/macro.fnl || die
+	sed -i test/init.lua -e 's|"test.macro",||' || die
 }
 
 src_test() {
