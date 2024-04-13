@@ -32,7 +32,7 @@ CP_DEPEND="
 	~dev-java/antlr-runtime-${PV}:${SLOT}
 	dev-java/antlr-runtime:3.5
 	dev-java/jakarta-json-api:1
-	dev-java/icu4j:0
+	>=dev-java/icu4j-74.2-r1:0
 	dev-java/stringtemplate:4
 	dev-java/treelayout:0
 "
