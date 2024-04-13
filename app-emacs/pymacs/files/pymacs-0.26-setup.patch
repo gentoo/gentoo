@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -70,7 +70,7 @@ def cfg_to_args(path='setup.cfg'):
+     config = RawConfigParser()
+     f = codecs.open(path, encoding='utf-8')
+     try:
+-        config.readfp(f)
++        config.read_file(f)
+     finally:
+         f.close()
+ 
