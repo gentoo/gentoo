@@ -328,7 +328,6 @@ dev-python/astunparse
 dev-python/pygame_sdl2
 dev-python/python-efl
 games-engines/renpy
-net-misc/econnman
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
