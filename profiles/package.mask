@@ -305,7 +305,6 @@ dev-java/ant-javamail
 dev-java/ant-junit
 dev-java/ant-jdepend
 dev-java/ant-antlr
-dev-java/ant-apache-bcel
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
