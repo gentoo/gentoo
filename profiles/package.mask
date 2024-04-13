@@ -285,11 +285,6 @@ sci-visualization/jupyter-dash
 # Unused java libraries. Removal on 2024-04-11.
 dev-java/ant-eclipse-ecj
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
-# Unused java libraries. The ant tasks are now provided by dev-java/ant.
-# Removal on 2024-04-09.
-dev-java/ant-apache-regexp
-
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*
