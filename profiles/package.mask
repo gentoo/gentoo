@@ -293,16 +293,13 @@ dev-java/ant-apache-log4j
 dev-java/ant-apache-xalan2
 dev-java/ant-commons-logging
 dev-java/ant-swing
-dev-java/ant-junit4
 dev-java/ant-testutil
-dev-java/ant-junitlauncher
 dev-java/ant-jai
 dev-java/ant-commons-net
 dev-java/ant-apache-bsf
 dev-java/ant-jmf
 dev-java/ant-apache-oro
 dev-java/ant-javamail
-dev-java/ant-junit
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
