@@ -289,7 +289,6 @@ dev-java/ant-eclipse-ecj
 # Unused java libraries. The ant tasks are now provided by dev-java/ant.
 # Removal on 2024-04-09.
 dev-java/ant-apache-regexp
-dev-java/ant-apache-log4j
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
