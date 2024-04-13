@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ SLOT="4"
 
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
-	>=gui-libs/gtk-4.4.0:4
+	>=gui-libs/gtk-4.4.0:4[introspection]
 	gui-libs/libadwaita:1
 	dev-libs/gobject-introspection
 	!app-editors/ghex:2
