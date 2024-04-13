@@ -75,6 +75,8 @@ if [[ ${PV} != 9999 ]]; then
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dwmw2@kernel.org.key"
 fi
 
+QA_CONFIG_IMPL_DECL_SKIP=( memset_s )
+
 CONFIG_CHECK="~TUN"
 
 pkg_pretend() {
