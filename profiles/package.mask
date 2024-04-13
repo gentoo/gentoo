@@ -297,7 +297,6 @@ dev-java/ant-testutil
 dev-java/ant-jai
 dev-java/ant-commons-net
 dev-java/ant-apache-bsf
-dev-java/ant-jmf
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
