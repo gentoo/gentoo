@@ -6,7 +6,7 @@ EAPI=8
 # Note: if bumping pax-utils because of syscall changes in glibc, please
 # revbump glibc and update the dependency in its ebuild for the affected
 # versions.
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit meson python-single-r1
 
