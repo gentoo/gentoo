@@ -1908,7 +1908,7 @@ toolchain_src_test() {
 	# the exit code of targets other than 'check' may be unreliable.
 	nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}"
 
-	if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} && -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
+	if [[ -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
 		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
 		# validate_failures.py manifest files support include directives.
 		einfo "Comparing with previous cached results at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
