@@ -26,3 +26,16 @@ index c15c13c..f9f9f45 100644
  #include <string>
  #include <unordered_map>
  #include <map>
+
+diff --git libs-e5c53d648f3c4694385bbe488e7d47eaa36c229a-orig/userspace/libsinsp/scap_open_exception.h libs-e5c53d648f3c4694385bbe488e7d47eaa36c229a/userspace/libsinsp/scap_open_exception.h
+index 6877456..b6fa6be 100644
+--- libs-e5c53d648f3c4694385bbe488e7d47eaa36c229a-orig/userspace/libsinsp/scap_open_exception.h
++++ libs-e5c53d648f3c4694385bbe488e7d47eaa36c229a/userspace/libsinsp/scap_open_exception.h
+@@ -17,6 +17,7 @@ limitations under the License.
+ #pragma once
+ 
+ #include "sinsp_exception.h"
++#include <cstdint>
+ 
+ /*!
+   \brief Instances of this exception are thrown when calls to scap_open()
