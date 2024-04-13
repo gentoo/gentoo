@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,13 +34,20 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-PATCHES=(
-	# https://github.com/aio-libs/aiohttp-cors/pull/278
-	"${FILESDIR}/${P}-tests.patch"
-	"${FILESDIR}/${P}-py3_7.patch"
-	# https://github.com/aio-libs/aiohttp-cors/pull/412
-	"${FILESDIR}/${P}-py3_11.patch"
-)
+src_prepare() {
+	local PATCHES=(
+		# https://github.com/aio-libs/aiohttp-cors/pull/278
+		"${FILESDIR}/${P}-tests.patch"
+		"${FILESDIR}/${P}-py3_7.patch"
+		# https://github.com/aio-libs/aiohttp-cors/pull/412
+		"${FILESDIR}/${P}-py3_11.patch"
+	)
+
+	# doesn't do anything, except for breaking pytest-8
+	rm conftest.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
