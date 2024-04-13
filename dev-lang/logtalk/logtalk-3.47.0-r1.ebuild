@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="Open source object-oriented logic programming language"
 HOMEPAGE="https://logtalk.org"
@@ -98,8 +98,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	ewarn "The following integration scripts are installed"
 	ewarn "for running logtalk with selected Prolog compilers:"
@@ -125,9 +124,4 @@ pkg_postinst() {
 	ewarn "Please run 'etc-update && source /etc/profile' to update"
 	ewarn "the environment now, otherwise it will be updated at next"
 	ewarn "login."
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
