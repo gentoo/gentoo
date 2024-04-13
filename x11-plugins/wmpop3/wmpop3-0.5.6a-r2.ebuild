@@ -11,7 +11,7 @@ SRC_URI="https://www.dockapps.net/download/${P/wmpop3/WMPop3}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 
 DEPEND="x11-wm/windowmaker
 	x11-libs/libXpm"
