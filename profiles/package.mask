@@ -275,12 +275,6 @@ dev-ruby/atomic
 # Removal on 2024-04-13.
 dev-python/future
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-03-12)
-# Not more needed, >=sci-visualization/dash-2.11 provide
-# direct integration with jupyter nodebook
-# Removal on 2024-04-11.
-sci-visualization/jupyter-dash
-
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*

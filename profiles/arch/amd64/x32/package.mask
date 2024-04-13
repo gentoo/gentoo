@@ -39,7 +39,6 @@ dev-python/plotly
 dev-python/plotly-geo
 dev-python/chart-studio
 sci-visualization/dash
-sci-visualization/jupyter-dash
 >=dev-python/notebook-7
 dev-python/spyder-notebook
 app-emacs/emacs-ipython-notebook
