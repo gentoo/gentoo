@@ -309,7 +309,6 @@ dev-java/ant-apache-bcel
 dev-java/ant-apache-resolver
 dev-java/ant-jsch
 dev-java/ant-xz
-dev-java/gnu-jaf
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
