@@ -5,8 +5,8 @@ Bug: https://bugs.gentoo.org/913188
 Bug: https://bugs.gentoo.org/913189
 
 
---- a/7zip_gcc.mak
-+++ b/7zip_gcc.mak
+--- a/CPP/7zip/7zip_gcc.mak
++++ b/CPP/7zip/7zip_gcc.mak
 @@ -87,14 +87,14 @@ SHARED_EXT=.dll
  LDFLAGS = -shared -DEF $(DEF_FILE) $(LDFLAGS_STATIC)
  else

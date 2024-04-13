@@ -8,12 +8,12 @@ inherit edos2unix flag-o-matic toolchain-funcs
 NO_DOT_PV=$(ver_rs 1- '')
 DESCRIPTION="Free file archiver for extremely high compression"
 HOMEPAGE="https://www.7-zip.org/ https://sourceforge.net/projects/sevenzip/"
-# linux-x64 tarball is used for docs
+# linux-x64 tarball is only used for docs
 SRC_URI="
 	mirror://sourceforge/sevenzip/7-Zip/${PV}/7z${NO_DOT_PV}-src.tar.xz
 	mirror://sourceforge/sevenzip/7-Zip/${PV}/7z${NO_DOT_PV}-linux-x64.tar.xz
 "
-S="${WORKDIR}/CPP/7zip"
+S="${WORKDIR}"
 
 LICENSE="LGPL-2 BSD rar? ( unRAR )"
 SLOT="0"
@@ -63,16 +63,18 @@ pkg_setup() {
 src_prepare() {
 	# patch doesn't deal with CRLF even if file+patch match
 	# not even with --ignore-whitespace, --binary or --force
+	pushd "./CPP/7zip" || die "Unable to switch directory"
 	edos2unix ./7zip_gcc.mak ./var_gcc{,_x64}.mak ./var_clang{,_x64}.mak
+	sed -i -e 's/-Werror //g' ./7zip_gcc.mak || die "Error removing -Werror"
+	popd >/dev/null || die "Unable to switch directory"
 
 	default
-
-	sed -i -e 's/-Werror //g' ./7zip_gcc.mak || die "Error removing -Werror"
 }
 
 src_compile() {
-	pushd "./Bundles/Alone2" || die "Unable to switch directory"
+	pushd "./CPP/7zip/Bundles/Alone2" || die "Unable to switch directory"
 
+	# avoid executable stack when using uasm/jwasm, harmless otherwise
 	append-ldflags -Wl,-z,noexecstack
 	export G_CFLAGS=${CFLAGS}
 	export G_CXXFLAGS=${CXXFLAGS}
@@ -102,8 +104,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin "./Bundles/Alone2/b/${bdir}/7zz"
-
-	pushd "${WORKDIR}" || die "Unable to switch directory"
+	dobin "./CPP/7zip/Bundles/Alone2/b/${bdir}/7zz"
 	einstalldocs
 }
