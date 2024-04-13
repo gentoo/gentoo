@@ -189,11 +189,6 @@ net-irc/kvirc kde
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
 
-# Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
-# I would need to keyword an awful lot of packages on ppc64
-# that would need Java 7 otherwise.
-dev-java/ant-apache-bsf python
-
 # Jeroen Roovers <jer@gentoo.org> (2015-12-26)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
