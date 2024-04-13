@@ -11,7 +11,7 @@ SRC_URI="http://people.easter-eggs.org/~valos/wmdrawer/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 RDEPEND="x11-libs/gdk-pixbuf-xlib
 	>=x11-libs/gdk-pixbuf-2.42.0:2
