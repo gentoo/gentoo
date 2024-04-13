@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Disabled for now: bug #850628
 # https://bugs.launchpad.net/cloud-init/+bug/1978328
 #DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_10 python3_11 )
+PYTHON_COMPAT=( python3_10 python3_11 python3_12 )
 
 inherit distutils-r1 udev
 
