@@ -35,7 +35,7 @@ RDEPEND="
 
 	vaapi? (
 		>=media-libs/libva-1.10:=[${MULTILIB_USEDEP}]
-		udev? ( dev-libs/libgudev )
+		udev? ( dev-libs/libgudev[${MULTILIB_USEDEP}] )
 	)
 "
 DEPEND="${RDEPEND}"
