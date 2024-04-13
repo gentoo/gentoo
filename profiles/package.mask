@@ -303,7 +303,6 @@ dev-java/ant-jmf
 dev-java/ant-apache-oro
 dev-java/ant-javamail
 dev-java/ant-junit
-dev-java/ant-jdepend
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
