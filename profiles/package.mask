@@ -316,7 +316,6 @@ dev-java/failureaccess
 # Packages that still require <dev-python/cython-3 and do not promise
 # a fix anytime soon.
 #
-# dev-python/python-efl: econnman as revdep, bug #925692.
 # dev-python/pygame_sdl2: also py3.12, bug #911781
 # games-engines/renpy: also py3.12, bug #925693
 #
@@ -326,7 +325,6 @@ dev-java/failureaccess
 # Removal on 2024-04-09.
 dev-python/astunparse
 dev-python/pygame_sdl2
-dev-python/python-efl
 games-engines/renpy
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
