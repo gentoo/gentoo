@@ -14,7 +14,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="3"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+suid test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 PROPERTIES="test_privileged"
 
 BDEPEND="
@@ -53,11 +53,13 @@ multilib_src_configure() {
 }
 
 src_test() {
-	(
-		addwrite /dev/cuse
-		addwrite /dev/fuse
-		multilib-minimal_src_test
-	) || die
+	# For tests to pass:
+	# sandbox must be disabled.
+	# Write access to /dev/cuse* and /dev/fuse is required.
+	# root must be a member of the portage group; CAP_DAC_OVERRIDE is dropped.
+	# TMPDIR must be short for unix socket paths.
+	local -x TMPDIR=/tmp
+	multilib-minimal_src_test
 }
 
 multilib_src_test() {
