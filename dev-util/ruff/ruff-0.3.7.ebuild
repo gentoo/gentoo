@@ -399,7 +399,7 @@ BDEPEND="
 	>=virtual/rust-1.71
 "
 RDEPEND="
-	dev-libs/jemalloc:=
+	!elibc_musl? ( !elibc_Darwin? ( !elibc_bionic? ( dev-libs/jemalloc:= ) ) )
 "
 DEPEND="
 	${RDEPEND}
@@ -422,8 +422,11 @@ src_configure() {
 }
 
 src_compile() {
-	local -x CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
-	local -x JEMALLOC_OVERRIDE="${ESYSROOT}/usr/$(get_libdir)"/libjemalloc.so
+	# Gentoo bug #927338
+	if use !elibc_musl && use !elibc_Darwin && use !elibc_bionic; then
+		local -x CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+		local -x JEMALLOC_OVERRIDE="${ESYSROOT}/usr/$(get_libdir)"/libjemalloc.so
+	fi
 	cargo_src_compile --bin ruff --bin ruff_shrinking
 
 	local releasedir
