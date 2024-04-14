@@ -15,9 +15,8 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/jazzband/django-polymorphic/archive/v${PV}.tar.gz
-		-> ${P//_/-}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S="${WORKDIR}/${P//_/-}"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~arm64 ~x86"
