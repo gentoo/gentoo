@@ -19,7 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 RESTRICT="test"
 RDEPEND="
-	app-containers/containers-image
+	<app-containers/containers-image-5.29.2
 	app-containers/containers-storage
 	app-containers/containers-shortnames
 	!<app-containers/podman-4.5.0-r1
