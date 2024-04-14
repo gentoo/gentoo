@@ -28,9 +28,10 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-pyzor )
 "
-DEPEND="
+BDEPEND="
 	test? (
 		$(python_gen_impl_dep 'gdbm')
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}]
 	)
 "
