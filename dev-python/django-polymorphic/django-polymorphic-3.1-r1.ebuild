@@ -19,8 +19,8 @@ SRC_URI="
 "
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
