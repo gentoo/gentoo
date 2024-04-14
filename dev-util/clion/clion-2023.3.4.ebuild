@@ -64,11 +64,13 @@ src_prepare() {
 		bin/gdb/linux
 		bin/lldb/linux
 		bin/ninja
+		lib/async-profiler/aarch64/libasyncProfiler.so
 		plugins/cwm-plugin/quiche-native/darwin-aarch64
 		plugins/cwm-plugin/quiche-native/darwin-x86-64
 		plugins/cwm-plugin/quiche-native/linux-aarch64
 		plugins/cwm-plugin/quiche-native/win32-x86-64
 		plugins/remote-dev-server/selfcontained
+		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_aarch64.so
 	)
 
 	rm -rv "${remove_me[@]}" || die
