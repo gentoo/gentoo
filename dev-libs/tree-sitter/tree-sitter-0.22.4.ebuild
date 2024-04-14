@@ -17,6 +17,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+RESTRICT="test" # tests are for CLI and not the lib
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.22.2-no-static.patch"
