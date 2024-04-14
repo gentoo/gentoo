@@ -161,13 +161,23 @@ _rocm_set_globals() {
 				gfx906 gfx908 gfx90a gfx1030
 			)
 			;;
-		5.*|9999)
+		5.*)
 			unofficial_amdgpu_targets=(
 				gfx803 gfx900 gfx1010 gfx1011 gfx1012
 				gfx1031 gfx1100 gfx1101 gfx1102
 			)
 			official_amdgpu_targets=(
 				gfx906 gfx908 gfx90a gfx1030
+			)
+			;;
+		6.*|9999)
+			unofficial_amdgpu_targets=(
+				gfx803 gfx900 gfx940 gfx941
+				gfx1010 gfx1011 gfx1012
+				gfx1031 gfx1101 gfx1102
+			)
+			official_amdgpu_targets=(
+				gfx906 gfx908 gfx90a gfx942 gfx1030 gfx1100
 			)
 			;;
 		*)

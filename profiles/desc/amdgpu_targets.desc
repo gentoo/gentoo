@@ -1,15 +1,21 @@
-# Copyright 1999-2023 Gentoo Authors.
+# Copyright 1999-2024 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
-# Reference:
-# GPU name and Architecture codename: https://github.com/GPUOpen-Tools/device_info/blob/master/DeviceInfo.cpp
-# See also: https://www.coelacanth-dream.com/posts/2019/12/30/did-rid-product-matome-p2/#fn:67
+# Reference: GPU name and architecture codename documented by
+# GPUOpen-Tools https://github.com/GPUOpen-Tools/device_info/blob/master/DeviceInfo.cpp
+# ROCm official document (Instinct accelerator only) https://rocm.docs.amd.com/en/latest/reference/gpu-arch/gpu-arch-spec-overview.html
+# Kernel document (note: GC version is not amdgpu gfx target) https://www.kernel.org/doc/html/latest/gpu/amdgpu/driver-misc.html#discrete-gpu-info
+# Kernel source code (map of IP version vs amdgpu gfx target) https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/amd/amdkfd/kfd_device.c kgd2kfd_probe function
+# Mesa drm source code https://gitlab.freedesktop.org/mesa/drm/blob/main/data/amdgpu.ids
 
 gfx803 - Fiji GPU, codename fiji, including Radeon R9 Nano/Fury/FuryX, Radeon Pro Duo, FirePro S9300x2, Radeon Instinct MI8
 gfx900 - Vega GPU, codename vega10, including Radeon Vega Frontier Edition, Radeon RX Vega 56/64, Radeon RX Vega 64 Liquid, Radeon Pro Vega 48/56/64/64X, Radeon Pro WX 8200/9100, Radeon Pro V320/V340/SSG, Radeon Instinct MI25
 gfx906 - Vega GPU, codename vega20, including Radeon (Pro) VII, Radeon Instinct MI50/MI60
 gfx908 - CDNA Accelerator, codename arcturus, including AMD Instinct MI100 Accelerator
 gfx90a - CDNA2 Accelerator, codename aldebaran, including AMD Instinct MI200 series Accelerators
+gfx940 - CDNA3 Accelerator, codename aqua_vangaram, MI300A rev 0
+gfx941 - CDNA3 Accelerator, codename aqua_vangaram, MI300X rev 0
+gfx942 - CDNA3 Accelerator, codename aqua_vangaram, MI300A and MI300X rev >=1
 gfx1010 - RDNA GPU, codename navi10, including Radeon RX 5700XT/5700/5700M/5700B/5700XTB/5600XT/5600/5600M, Radeon Pro 5700XT/5700, Radeon Pro W5700X/W5700
 gfx1011 - RDNA GPU, codename navi12, including Radeon Pro 5600M/V520
 gfx1012 - RDNA GPU, codename navi14, including Radeon RX 5500XT/5500/5500M/5500XTB/5300/5300M, Radeon Pro 5500XT/5500M/5300/5300M, Radeon Pro W5500X/W5500/W5500M/W5300M
