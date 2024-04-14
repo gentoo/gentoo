@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A Java data mining package"
-HOMEPAGE="https://www.cs.waikato.ac.nz/ml/weka/"
+HOMEPAGE="https://ml.cms.waikato.ac.nz/weka"
 SRC_URI="mirror://sourceforge/project/weka/weka-3-8/${PV}/weka-${PV//./-}.zip"
 
 SLOT="0"
