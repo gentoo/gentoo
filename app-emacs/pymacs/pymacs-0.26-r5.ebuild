@@ -12,7 +12,7 @@ DESCRIPTION="A tool that allows both-side communication between Python and Emacs
 HOMEPAGE="https://www.emacswiki.org/emacs/PyMacs
 	https://github.com/dgentry/Pymacs/"
 
-if [[ "${PV}" == *9999* ]] ; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/dgentry/${PN^}.git"
@@ -35,7 +35,7 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.26-setup.patch"  )
+PATCHES=( "${FILESDIR}/${PN}-0.26-setup.patch" )
 
 DOCS=( "${PN}.rst" )
 SITEFILE="50${PN}-gentoo.el"
@@ -49,7 +49,9 @@ src_compile() {
 	elisp_src_compile
 
 	if use doc; then
-		VARTEXFONTS="${T}/fonts" emake RST2LATEX="rst2latex.py" "${PN}.pdf"
+		# docutils 0.21.1 renamed rst2latex.py to rst2latex
+		local r2l=$(command -v rst2latex || command -v rst2latex.py || die)
+		VARTEXFONTS="${T}"/fonts emake RST2LATEX="${r2l}" ${PN}.pdf
 	fi
 }
 
@@ -57,5 +59,5 @@ src_install() {
 	distutils-r1_src_install
 	elisp_src_install
 
-	use doc && dodoc "${PN}.pdf"
+	use doc && dodoc ${PN}.pdf
 }
