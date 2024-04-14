@@ -187,6 +187,7 @@ RDEPEND="
 	!<dev-texlive/texlive-basic-2023
 	!<dev-texlive/texlive-mathscience-2023
 	!<dev-texlive/texlive-langother-2023
+	!<dev-texlive/texlive-music-2023
 "
 
 S="${WORKDIR}/${MY_P}"
