@@ -6,7 +6,7 @@ index 7d25a37..79257d1 100644
    set (ENV{VTK_DIR} "${3RDPARTY_VTK_DIR}")
  endif()
  
--find_package(VTK)
+-find_package(VTK QUIET)
 +find_package(VTK
 +  COMPONENTS
 +    CommonCore
