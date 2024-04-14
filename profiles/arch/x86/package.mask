@@ -83,8 +83,3 @@ sci-mathematics/rkward:5
 sci-visualization/labplot:5
 www-client/falkon
 www-client/otter
-
-# Viorel Munteanu <ceamac@gentoo.org> (2022-12-22)
-# The x86 build is broken and no longer available.  Bug #887831
-# Removal on 2023-01-22.
-dev-util/clion
