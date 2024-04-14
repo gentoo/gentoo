@@ -30,16 +30,13 @@ RDEPEND="
 "
 DEPEND="
 	test? (
-		gdbm? ( $(python_gen_impl_dep 'gdbm') )
-		redis? ( dev-python/redis[${PYTHON_USEDEP}] )
+		$(python_gen_impl_dep 'gdbm')
+		dev-python/redis[${PYTHON_USEDEP}]
 	)
 "
 
-# TODO: maybe upstream would support skipping tests for which the
-# dependencies are missing?
 REQUIRED_USE="
 	pyzord? ( || ( gdbm redis ) )
-	test? ( gdbm redis )
 "
 
 distutils_enable_sphinx docs
