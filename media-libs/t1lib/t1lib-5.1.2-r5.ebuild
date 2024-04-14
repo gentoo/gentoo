@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool toolchain-funcs
+inherit autotools flag-o-matic libtool toolchain-funcs
 
 DESCRIPTION="Type 1 Font Rasterizer Library for UNIX/X11"
 HOMEPAGE="https://www.t1lib.org/"
@@ -14,14 +14,18 @@ SLOT="5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="X doc static-libs"
 
-RDEPEND="X? (
+RDEPEND="
+	X? (
 		x11-libs/libXaw
 		x11-libs/libX11
 		x11-libs/libXt
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+DEPEND="
+	${RDEPEND}
 	doc? ( virtual/latex-base )
-	X? ( x11-base/xorg-proto )"
+	X? ( x11-base/xorg-proto )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.1-parallel.patch
@@ -30,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.2-CVE-2010-2642_2011-0433_2011-5244.patch
 	"${FILESDIR}"/${PN}-5.1.2-CVE-2011-0764.patch
 	"${FILESDIR}"/${PN}-5.1.2-CVE-2011-1552_1553_1554.patch
+	"${FILESDIR}"/${PN}-5.1.2-c99.patch
+	"${FILESDIR}"/${PN}-5.1.2-c99-configure.patch
 )
 
 src_prepare() {
@@ -37,11 +43,16 @@ src_prepare() {
 
 	sed -i -e "s:dvips:#dvips:" "${S}"/doc/Makefile.in || die
 	sed -i -e "s:\./\(t1lib\.config\):/etc/t1lib/\1:" "${S}"/xglyph/xglyph.c || die
-	# Needed for sane .so versionning on fbsd. Please don't drop.
+
+	eautoconf
+	# Needed for sane .so versioning on fbsd. Please don't drop.
 	elibtoolize
 }
 
 src_configure() {
+	# lto-type-mismatch
+	filter-lto
+
 	econf \
 		--datadir="${EPREFIX}/etc" \
 		$(use_enable static-libs static) \

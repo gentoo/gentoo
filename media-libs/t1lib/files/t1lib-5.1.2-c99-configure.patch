@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -144,6 +144,7 @@ dnl We don'use
+   CFLAGS="$CFLAGS"
+   AC_CACHE_CHECK( "for gcc strength-reduce bug", ac_cv_c_gcc_strength_bug,
+                   AC_TRY_RUN([
++#include <stdlib.h>
+ int main(void) {
+   static int Array[[3]];
+   unsigned int B = 3;
