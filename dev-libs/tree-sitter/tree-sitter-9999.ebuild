@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.20.9-no-static.patch"
+	"${FILESDIR}/${PN}-0.22.2-no-static.patch"
 )
 
 src_prepare() {
