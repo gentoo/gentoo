@@ -39,6 +39,8 @@ PATCHES=(
 )
 
 src_prepare() {
+	sed -i '/^have/d' converters/shell-completion/bash/img2sixel
+
 	default
 	if use python; then
 		cd python || die
