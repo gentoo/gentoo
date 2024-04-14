@@ -52,7 +52,7 @@ src_prepare() {
 }
 
 src_configure() {
-	CONFIG_SHELL="${EPREFIX}/bin/bash" \
+	local -x CONFIG_SHELL="${EPREFIX}/bin/bash"
 	econf \
 		--disable-static \
 		--enable-python
