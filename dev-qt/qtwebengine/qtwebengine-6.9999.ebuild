@@ -46,6 +46,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libwebp:=
+	media-libs/mesa[gbm(+)]
 	media-libs/openjpeg:2=
 	media-libs/opus
 	media-libs/tiff:=
@@ -61,6 +62,7 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXtst
+	x11-libs/libdrm
 	x11-libs/libxcb:=
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
@@ -71,16 +73,10 @@ RDEPEND="
 	pulseaudio? ( media-libs/libpulse[glib] )
 	screencast? (
 		dev-libs/glib:2
-		media-libs/mesa[gbm(+)]
 		media-video/pipewire:=
-		x11-libs/libdrm
 	)
 	system-icu? ( dev-libs/icu:= )
-	vaapi? (
-		media-libs/libva:=[X]
-		media-libs/mesa[gbm(+)]
-		x11-libs/libdrm
-	)
+	vaapi? ( media-libs/libva:=[X] )
 	!vaapi? ( media-libs/libvpx:= )
 "
 DEPEND="
