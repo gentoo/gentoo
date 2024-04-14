@@ -30,7 +30,8 @@ src_prepare() {
 src_compile() {
 	emake \
 		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		STRIP="" # bug 930020
 }
 
 src_install() {
