@@ -11,10 +11,10 @@ SRC_URI="http://www.etallen.com/${PN}/${P}.src.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 BDEPEND="
-	app-arch/gzip
+	app-alternatives/gzip
 	dev-lang/perl
 "
 
