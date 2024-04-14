@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ IUSE="+nss"
 CP_DEPEND="
 	dev-java/bcprov:0
 	dev-java/commons-compress:0
+	dev-java/commons-io:1
 	dev-java/fec:0
 	dev-java/freenet-ext:29
 	dev-java/jbitcollider-core:0
