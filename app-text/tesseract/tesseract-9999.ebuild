@@ -12,14 +12,9 @@ EGIT_REPO_URI="https://github.com/tesseract-ocr/${PN}.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc float32 jpeg opencl openmp png static-libs tiff training webp"
+IUSE="doc float32 jpeg openmp png static-libs tiff training webp"
 
 COMMON_DEPEND=">=media-libs/leptonica-1.74:=[${MULTILIB_USEDEP},zlib,tiff?,jpeg?,png?,webp?]
-	opencl? (
-		virtual/opencl[${MULTILIB_USEDEP}]
-		media-libs/tiff:=[${MULTILIB_USEDEP}]
-		media-libs/leptonica:=[tiff]
-	)
 	training? (
 		dev-libs/icu:=
 		x11-libs/pango:=
@@ -56,7 +51,6 @@ multilib_src_configure() {
 		--enable-shared
 		--disable-graphics
 		$(use_enable float32)
-		$(use_enable opencl)
 		$(use_enable openmp)
 		$(use_enable static-libs static)
 	)
