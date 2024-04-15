@@ -611,7 +611,7 @@ src_prepare() {
 		rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch || die
 	fi
 
-	if ! use ppc64; then
+	if ! use ppc64 && ! use riscv; then
 		rm -v "${WORKDIR}"/firefox-patches/*ppc64*.patch || die
 	fi
 
@@ -1061,8 +1061,9 @@ src_configure() {
 		else
 			mozconfig_add_options_ac 'relr elf-hack' --enable-elf-hack=relr
 		fi
-	elif use ppc64 ; then
-		# '--disable-elf-hack' is not recognized on ppc64, bgo#917049
+	elif use ppc64 || use riscv ; then
+		# '--disable-elf-hack' is not recognized on ppc64/riscv,
+		# see bgo #917049, #930046
 		:;
 	else
 		mozconfig_add_options_ac 'disable elf-hack on non-supported arches' --disable-elf-hack
