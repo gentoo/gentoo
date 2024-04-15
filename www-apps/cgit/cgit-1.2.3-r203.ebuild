@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1..2} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -64,7 +64,6 @@ src_configure() {
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf || die "echo CGIT_SCRIPT_PATH failed"
 	echo "CGIT_DATA_PATH = ${MY_HTDOCSDIR}" >> cgit.conf || die "echo CGIT_DATA_PATH failed"
 	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf || die "echo CACHE_ROOT failed"
-	echo "DESTDIR = ${D}" >> cgit.conf || die "echo DESTDIR failed"
 	if use lua; then
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf || die "echo LUA_PKGCONFIG failed"
 	else
@@ -80,7 +79,7 @@ src_compile() {
 src_install() {
 	webapp_src_preinst
 
-	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" install
+	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" DESTDIR="${D}" install
 
 	insinto /etc
 	doins "${FILESDIR}"/cgitrc
