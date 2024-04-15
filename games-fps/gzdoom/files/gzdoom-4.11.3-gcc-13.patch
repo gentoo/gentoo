@@ -1,0 +1,93 @@
+diff -ur gzdoom-g4.11.3.orig/src/common/engine/palettecontainer.cpp gzdoom-g4.11.3/src/common/engine/palettecontainer.cpp
+--- gzdoom-g4.11.3.orig/src/common/engine/palettecontainer.cpp  2024-04-14 19:53:48.782878668 -0700
++++ gzdoom-g4.11.3/src/common/engine/palettecontainer.cpp       2024-04-14 21:24:33.325860449 -0700
+@@ -32,6 +32,8 @@
+ **
+ */
+
++#include <cmath>
++
+ #include "palutil.h"
+ #include "sc_man.h"
+ #include "m_crc32.h"
+diff -ur gzdoom-g4.11.3.orig/src/common/models/model.h gzdoom-g4.11.3/src/common/models/model.h
+--- gzdoom-g4.11.3.orig/src/common/models/model.h       2024-04-14 19:53:48.782878668 -0700
++++ gzdoom-g4.11.3/src/common/models/model.h    2024-04-14 21:21:11.397496585 -0700
+@@ -5,6 +5,7 @@
+ #include "i_modelvertexbuffer.h"
+ #include "matrix.h"
+ #include "TRS.h"
++#include "zstring.h"
+
+ class DBoneComponents;
+ class FModelRenderer;
+diff -ur gzdoom-g4.11.3.orig/src/common/objects/autosegs.cpp gzdoom-g4.11.3/src/common/objects/autosegs.cpp
+--- gzdoom-g4.11.3.orig/src/common/objects/autosegs.cpp 2024-04-14 19:53:48.782878668 -0700
++++ gzdoom-g4.11.3/src/common/objects/autosegs.cpp      2024-04-14 21:27:23.818003319 -0700
+@@ -43,6 +43,7 @@
+ */
+
+ #include "autosegs.h"
++#include <cassert>
+
+ #ifdef _WIN32
+ #include <windows.h>
+diff -ur gzdoom-g4.11.3.orig/src/common/objects/autosegs.h gzdoom-g4.11.3/src/common/objects/autosegs.h
+--- gzdoom-g4.11.3.orig/src/common/objects/autosegs.h   2024-04-14 19:53:48.782878668 -0700
++++ gzdoom-g4.11.3/src/common/objects/autosegs.h        2024-04-14 19:54:02.935765813 -0700
+@@ -35,6 +35,7 @@
+ #ifndef AUTOSEGS_H
+ #define AUTOSEGS_H
+
++#include <cstdint>
+ #include <type_traits>
+
+ #if defined(__clang__)
+diff -ur gzdoom-g4.11.3.orig/src/common/textures/bitmap.h gzdoom-g4.11.3/src/common/textures/bitmap.h
+--- gzdoom-g4.11.3.orig/src/common/textures/bitmap.h    2024-04-14 19:53:48.789545114 -0700
++++ gzdoom-g4.11.3/src/common/textures/bitmap.h 2024-04-14 21:16:08.662942358 -0700
+@@ -36,6 +36,7 @@
+ #ifndef __BITMAP_H__
+ #define __BITMAP_H__
+
++#include <cstring>
+ #include "palentry.h"
+
+ struct FCopyInfo;
+diff -ur gzdoom-g4.11.3.orig/src/common/thirdparty/md5.cpp gzdoom-g4.11.3/src/common/thirdparty/md5.cpp
+--- gzdoom-g4.11.3.orig/src/common/thirdparty/md5.cpp   2024-04-14 19:53:48.789545114 -0700
++++ gzdoom-g4.11.3/src/common/thirdparty/md5.cpp        2024-04-14 21:23:35.613195976 -0700
+@@ -17,6 +17,8 @@
+
+ #include <string.h>            /* for memcpy() */
+ #include <algorithm>
++#include <cstdint>
++#include <cstring>             /* for memcpy() */
+
+ #include "md5.h"
+
+diff -ur gzdoom-g4.11.3.orig/src/common/utility/engineerrors.cpp gzdoom-g4.11.3/src/common/utility/engineerrors.cpp
+--- gzdoom-g4.11.3.orig/src/common/utility/engineerrors.cpp     2024-04-14 19:53:48.792878340 -0700
++++ gzdoom-g4.11.3/src/common/utility/engineerrors.cpp  2024-04-14 21:26:23.212980340 -0700
+@@ -35,8 +35,8 @@
+
+ bool gameisdead;
+
+-#ifdef _WIN32
+ #include <cstdarg>
++#ifdef _WIN32
+ #include <windows.h>
+ #include "zstring.h"
+ void I_DebugPrint(const char *cp)
+diff -ur gzdoom-g4.11.3.orig/src/common/utility/palette.cpp gzdoom-g4.11.3/src/common/utility/palette.cpp
+--- gzdoom-g4.11.3.orig/src/common/utility/palette.cpp  2024-04-14 19:53:48.792878340 -0700
++++ gzdoom-g4.11.3/src/common/utility/palette.cpp       2024-04-14 21:22:38.558788350 -0700
+@@ -33,6 +33,8 @@
+ */
+
+ #include <algorithm>
++#include <cfloat>
++#include <cmath>
+ #include "palutil.h"
+ #include "palentry.h"
+ #include "sc_man.h"
