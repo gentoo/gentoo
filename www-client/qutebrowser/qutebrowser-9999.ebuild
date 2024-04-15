@@ -28,6 +28,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+adblock pdf widevine"
 
+# TODO: keep an eye on fixes for pdfjs-4.1, may potentially be solved by
+# newer qtwebengine, qutebrowser upstream workarounds, pdfjs changes, or
+# if our pdfjs ebuild ever switch to the legacy sdist
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
@@ -40,7 +43,7 @@ RDEPEND="
 		dev-python/zipp[${PYTHON_USEDEP}]
 		dev-qt/qtbase:6[icu,sqlite]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
-		pdf? ( www-plugins/pdfjs )
+		pdf? ( <www-plugins/pdfjs-4.1 )
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
 "
