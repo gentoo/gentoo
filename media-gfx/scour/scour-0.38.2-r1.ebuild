@@ -13,7 +13,10 @@ HOMEPAGE="
 	https://github.com/scour-project/scour/
 	https://pypi.org/project/scour/
 "
-SRC_URI="https://github.com/scour-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/scour-project/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
