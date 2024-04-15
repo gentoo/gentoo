@@ -1,9 +1,9 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake multiprocessing
 
 DESCRIPTION="High performance C++ OpenPGP library"
 HOMEPAGE="https://www.rnpgp.org/ https://github.com/rnpgp/rnp"
@@ -16,7 +16,7 @@ IUSE="+botan man test"
 
 RDEPEND="app-arch/bzip2
 	dev-libs/json-c:=
-	>=dev-libs/sexpp-0.8.5[-static-libs(-)]
+	=dev-libs/sexpp-0.8.6*[-static-libs(-)]
 	sys-libs/zlib
 	botan? ( dev-libs/botan:2= )
 	!botan? ( >=dev-libs/openssl-1.1.1:= )"
@@ -76,7 +76,7 @@ src_configure() {
 
 src_test() {
 	cd "${BUILD_DIR}"/src/tests || die
-	ctest -j"${MAKEOPTS}" -R .* --output-on-failure || die
+	ctest -j$(makeopts_jobs) -R .* --output-on-failure || die
 }
 
 src_install() {
