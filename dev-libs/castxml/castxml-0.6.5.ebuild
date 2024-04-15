@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 17 )
+LLVM_COMPAT=( {17..19} )
 
 inherit cmake llvm-r1
 
