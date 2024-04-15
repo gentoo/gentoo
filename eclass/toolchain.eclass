@@ -1908,6 +1908,15 @@ toolchain_src_test() {
 	# the exit code of targets other than 'check' may be unreliable.
 	nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}"
 
+	# Produce an updated failure manifest.
+	einfo "Generating a new failure manifest ${T}/${CHOST}.xfail"
+	rm -f "${T}"/${CHOST}.xfail
+	edo "${T}"/validate_failures.py \
+		--srcpath="${S}" \
+		--build_dir="${WORKDIR}"/build \
+		--manifest="${T}"/${CHOST}.xfail \
+		--produce_manifest &> /dev/null
+
 	if [[ -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
 		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
 		# validate_failures.py manifest files support include directives.
@@ -1936,13 +1945,6 @@ toolchain_src_test() {
 			die "Tests failed (failures occurred with no reference data)"
 		fi
 	fi
-
-	# Produce an updated set of expected results
-	edo "${T}"/validate_failures.py \
-		--srcpath="${S}" \
-		--build_dir="${WORKDIR}"/build \
-		--manifest="${T}"/${CHOST}.xfail \
-		--produce_manifest &> /dev/null
 }
 
 #---->> src_install <<----
