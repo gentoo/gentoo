@@ -3,9 +3,11 @@
 
 EAPI=8
 
+CMAKE_IN_SOURCE_BUILD=1 # Simplifies doc build
+CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit edo bash-completion-r1 python-any-r1 toolchain-funcs
+inherit bash-completion-r1 edo cmake python-any-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
@@ -24,9 +26,9 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	${PYTHON_DEPS}
 	dev-util/re2c
 	doc? (
+		${PYTHON_DEPS}
 		app-text/asciidoc
 		app-text/doxygen
 		dev-libs/libxslt
@@ -38,42 +40,31 @@ PDEPEND="
 	app-alternatives/ninja
 "
 
-PATCHES=(
-	"${FILESDIR}"/ninja-cflags.patch
-)
+pkg_setup() {
+	:
+}
 
-run_for_build() {
-	if tc-is-cross-compiler; then
-		local -x AR=$(tc-getBUILD_AR)
-		local -x CXX=$(tc-getBUILD_CXX)
-		local -x CFLAGS=
-		local -x CXXFLAGS="${BUILD_CXXFLAGS} -D_FILE_OFFSET_BITS=64"
-		local -x LDFLAGS=${BUILD_LDFLAGS}
+docs_enabled() {
+	use doc && ! tc-is-cross-compiler
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test ON OFF)
+	)
+	cmake_src_configure
+
+	if docs_enabled; then
+		python_setup
+		edo ${EPYTHON} configure.py
 	fi
-	echo "$@" >&2
-	"$@"
 }
 
 src_compile() {
-	tc-export AR CXX
+	cmake_src_compile
 
-	# configure.py appends CFLAGS to CXXFLAGS
-	unset CFLAGS
-
-	local -x CXXFLAGS="${CXXFLAGS} -D_FILE_OFFSET_BITS=64"
-
-	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
-
-	if tc-is-cross-compiler; then
-		mv ninja ninja-build || die
-		${EPYTHON} configure.py || die
-		./ninja-build -v ninja || die
-	else
-		ln ninja ninja-build || die
-	fi
-
-	if use doc; then
-		./ninja-build -v doxygen manual || die
+	if docs_enabled; then
+		edo ./ninja -v -j1 doxygen manual
 	fi
 }
 
@@ -81,21 +72,20 @@ src_test() {
 	if ! tc-is-cross-compiler; then
 		# Bug 485772
 		ulimit -n 2048
-		edo ./ninja -v ninja_test
-		edo ./ninja_test
+		cmake_src_test
 	fi
 }
 
 src_install() {
-	dodoc README.md CONTRIBUTING.md
+	cmake_src_install
 
-	if use doc; then
+	mv "${ED}"/usr/bin/ninja{,-reference} || die
+
+	if docs_enabled; then
 		docinto html
 		dodoc -r doc/doxygen/html/.
 		dodoc doc/manual.html
 	fi
-
-	newbin ninja ninja-reference
 
 	newbashcomp misc/bash-completion ${PN}
 
