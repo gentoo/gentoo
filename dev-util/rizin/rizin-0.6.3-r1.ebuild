@@ -3,10 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 # This is the commit that the CI for the release commit used
-BINS_COMMIT="1203a9a2f51e32337c8434d9f4f7c4543552e271"
+BINS_COMMIT="903588ed69d7717069955322b31dad5e666b338a"
 
 inherit meson python-any-r1
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://rizin.re/"
 
 SRC_URI="mirror+https://github.com/rizinorg/rizin/releases/download/v${PV}/rizin-src-v${PV}.tar.xz
 	test? ( https://github.com/rizinorg/rizin-testbins/archive/${BINS_COMMIT}.tar.gz -> rizin-testbins-${BINS_COMMIT}.tar.gz )"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0/${PV}"
@@ -28,13 +28,11 @@ RESTRICT="test? ( fetch ) !test? ( test )"
 RDEPEND="
 	app-arch/lz4:0=
 	app-arch/xz-utils
-	app-arch/zstd:=
 	>=dev-libs/capstone-5:0=
 	dev-libs/libmspack
 	dev-libs/libzip:0=
 	dev-libs/openssl:0=
-	dev-libs/libpcre2:0=
-	>=dev-libs/tree-sitter-0.19.0
+	>=dev-libs/tree-sitter-0.19.0:=
 	dev-libs/xxhash
 	sys-apps/file
 	sys-libs/zlib:0=
@@ -44,6 +42,7 @@ BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.0-never-rebuild-parser.patch"
+	"${FILESDIR}/${PN}-0.5.2-find-tree-sitter-parser.patch"
 )
 
 S="${WORKDIR}/${PN}-v${PV}"
@@ -75,12 +74,11 @@ src_configure() {
 		-Duse_sys_capstone=enabled
 		-Duse_sys_libmspack=enabled
 		-Duse_sys_libzip=enabled
-		-Duse_sys_libzstd=enabled
 		-Duse_sys_lz4=enabled
 		-Duse_sys_lzma=enabled
 		-Duse_sys_magic=enabled
-		-Duse_sys_openssl=enabled
-		-Duse_sys_pcre2=enabled
+		# https://github.com/rizinorg/rizin/issues/3841
+		# -Duse_sys_openssl=enabled
 		-Duse_sys_tree_sitter=enabled
 		-Duse_sys_xxhash=enabled
 		-Duse_sys_zlib=enabled
