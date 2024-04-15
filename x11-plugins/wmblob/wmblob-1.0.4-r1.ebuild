@@ -11,7 +11,7 @@ SRC_URI="https://github.com/bbidulock/wmblob/releases/download/${PV}/${P}.tar.bz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 RDEPEND="x11-libs/gtk+:2
 	x11-libs/libX11
