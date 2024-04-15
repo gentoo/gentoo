@@ -329,6 +329,7 @@ do_configure() {
 		conf+=(
 			--without-{pthread,reentrant}
 
+			# XXX: Revisit on next ABI break (>6) (bug #928873)
 			--disable-opaque-curses
 			--disable-opaque-form
 			--disable-opaque-menu
