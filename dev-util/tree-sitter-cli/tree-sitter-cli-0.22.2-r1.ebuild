@@ -29,7 +29,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 # Test seems to require files (grammar definitions) that we don't have.
 RESTRICT="test"
 
-BDEPEND="~dev-libs/tree-sitter-${PV}"
+BDEPEND="~dev-libs/tree-sitter-${PV}:="
 RDEPEND="${BDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${MY_PN}"
