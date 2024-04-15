@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="A decoder for yENC format, popular on Usenet"
-HOMEPAGE="http://yydecode.sourceforge.net/"
+HOMEPAGE="https://yydecode.sourceforge.net/"
 SRC_URI="mirror://sourceforge/yydecode/${P}.tar.gz"
 
 LICENSE="GPL-2"
