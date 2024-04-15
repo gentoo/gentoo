@@ -153,6 +153,17 @@ src_test() {
 		:sandbox/openat_filename
 	)
 
+	if use arm ; then
+		skip_tests+=(
+			# bug #920905
+			# https://gitlab.torproject.org/tpo/core/tor/-/issues/40912
+			:sandbox/opendir_dirname
+			:sandbox/openat_filename
+			:sandbox/chmod_filename
+			:sandbox/rename_filename
+		)
+	fi
+
 	# The makefile runs these by parallel by chunking them with a script
 	# but that means we lose verbosity and can't skip individual tests easily
 	# either.
