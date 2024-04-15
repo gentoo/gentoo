@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2024-04-15)
+# Unexpected ABI break, bug #930039
+=dev-libs/tree-sitter-0.22.4
+
 # Fabian Groffen <grobian@gentoo.org> (2024-04-13)
 # Python wrapper around liblmsensors, no reverse dependencies
 # Removal on 2024-05-13, bug #929495
