@@ -8,6 +8,9 @@
   <maintainer type="project">
     <email>radio@gentoo.org</email>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <upstream>
     <remote-id type="github">CastXML/pygccxml</remote-id>
     <remote-id type="pypi">pygccxml</remote-id>
