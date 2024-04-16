@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/audacity/audacity.git"
 else
-	KEYWORDS="amd64 ~arm64 ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	MY_P="Audacity-${PV}"
 	S="${WORKDIR}/${PN}-${MY_P}"
 	SRC_URI="https://github.com/audacity/audacity/archive/${MY_P}.tar.gz"
@@ -36,8 +36,13 @@ LICENSE="GPL-2+
 	audiocom? ( ZLIB )
 "
 SLOT="0"
-IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mad mpg123 ogg
+IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mad mpg123 +ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
+REQUIRED_USE="
+	mad? ( !mpg123 )
+	opus? ( ogg )
+	vorbis? ( ogg )
+"
 RESTRICT="!test? ( test )"
 
 # dev-db/sqlite:3 hard dependency.
@@ -77,10 +82,7 @@ RDEPEND="dev-db/sqlite:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	sys-apps/util-linux
 	alsa? ( media-libs/alsa-lib )
-	audiocom? (
-		dev-libs/rapidjson
-		net-misc/curl
-	)
+	audiocom? ( net-misc/curl )
 	ffmpeg? ( media-video/ffmpeg )
 	flac? ( media-libs/flac:=[cxx] )
 	id3tag? ( media-libs/libid3tag:= )
@@ -93,7 +95,7 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/suil
 	)
 	mad? ( media-libs/libmad )
-	mpg123? ( media-sound/mpg123 )
+	mpg123? ( media-sound/mpg123-base )
 	ogg? ( media-libs/libogg )
 	opus? ( media-libs/opus )
 	sbsms? ( media-libs/libsbsms )
@@ -103,15 +105,13 @@ RDEPEND="dev-db/sqlite:3
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}
+	audiocom? ( dev-libs/rapidjson )
+	x11-base/xorg-proto
 	test? ( <dev-cpp/catch-3:0 )"
 BDEPEND="app-arch/unzip
+	|| ( dev-lang/nasm dev-lang/yasm )
 	sys-devel/gettext
-	virtual/pkgconfig
-"
-
-REQUIRED_USE="
-	mad? ( !mpg123 )
-"
+	virtual/pkgconfig"
 
 PATCHES=(
 	# Equivalent to previous versions
@@ -137,6 +137,9 @@ PATCHES=(
 
 	# Allows running tests without conan
 	"${FILESDIR}/${PN}-3.3.3-remove-conan-test-dependency.patch"
+
+	# #920363
+	"${FILESDIR}/${PN}-3.4.2-audiocom-std-string.patch"
 )
 
 src_prepare() {
@@ -203,9 +206,9 @@ src_configure() {
 		-Daudacity_use_wavpack=$(usex wavpack system off)
 		-Daudacity_use_libogg=$(usex ogg system off)
 		-Daudacity_use_libflac=$(usex flac system off)
-		-Daudacity_use_libopus=$(usex flac system off)
-		-Daudacity_use_libvorbis=$(usex vorbis system off)
+		-Daudacity_use_libopus=$(usex opus system off)
 		-Daudacity_use_libsndfile=system
+		-Daudacity_use_libvorbis=$(usex vorbis system off)
 		-Daudacity_use_portaudio=system
 		-Daudacity_use_midi=system
 		-Daudacity_use_vamp=$(usex vamp system off)

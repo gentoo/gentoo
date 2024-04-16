@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="alsa doc ffmpeg +flac id3tag jack +ladspa +lv2 mad ogg oss
 	portmidi +portmixer portsmf sbsms twolame vamp +vorbis +vst"
 
@@ -31,7 +31,7 @@ RDEPEND="dev-libs/expat
 	>=media-sound/lame-3.100-r3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	alsa? ( media-libs/alsa-lib )
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	flac? ( media-libs/flac:=[cxx] )
 	id3tag? ( media-libs/libid3tag:= )
 	jack? ( virtual/jack )
@@ -51,11 +51,12 @@ RDEPEND="dev-libs/expat
 	vamp? ( media-libs/vamp-plugin-sdk )
 	vorbis? ( media-libs/libvorbis )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="app-arch/unzip
+	|| ( dev-lang/nasm dev-lang/yasm )
 	sys-devel/gettext
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 REQUIRED_USE="portmidi? ( portsmf )"
 
@@ -64,8 +65,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-vertical-track-resizing.patch"
 	"${FILESDIR}/${P}-fix-gettimeofday.patch"
 	"${FILESDIR}/${P}-fix-metainfo.patch"
+	"${FILESDIR}/${P}-add-missing-include-limits.patch"
 	"${FILESDIR}/${P}-add-missing-include-portaudio.patch"
 	"${FILESDIR}/${P}-disable-ccache.patch"
+	"${FILESDIR}/${P}-fix-libflac-undefined-references.patch"
 )
 
 src_prepare() {
