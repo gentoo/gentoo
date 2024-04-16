@@ -63,6 +63,10 @@ DOCS=( AUTHORS MAILING-LIST NEWS README )
 # gnulib FPs
 QA_CONFIG_IMPL_DECL_SKIP=( unreachable MIN alignof static_assert )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.24.5-libproxy-no-debug.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
