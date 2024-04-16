@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtsingleapplication[X]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	x11-libs/qscintilla
+	x11-libs/qscintilla[qt5(+)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"

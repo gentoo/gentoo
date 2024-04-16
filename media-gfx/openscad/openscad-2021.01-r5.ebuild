@@ -46,7 +46,7 @@ RDEPEND="
 	media-libs/lib3mf
 	sci-mathematics/cgal:=
 	x11-libs/cairo
-	>=x11-libs/qscintilla-2.10.3:=
+	>=x11-libs/qscintilla-2.10.3:=[qt5(+)]
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}"

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test qt5 +qt6"
+IUSE="test qt5"
 
 RDEPEND="qt5? (
 		dev-qt/qtwidgets:5
@@ -22,7 +22,7 @@ RDEPEND="qt5? (
 		dev-qt/qtprintsupport:5
 		dev-qt/qtconcurrent:5
 		)
-	qt6? ( dev-qt/qtbase:6
+	!qt5? ( dev-qt/qtbase:6
 		dev-qt/qtsvg:6
 		dev-qt/qt5compat:6
 		)
@@ -33,5 +33,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	use test || mycmakeargs=( "-DWITH_TESTS=OFF" )
+	use qt5 && mycmakeargs+=( "-DCMAKE_DISABLE_FIND_PACKAGE_Qt6=True" )
 	cmake_src_configure
 }
