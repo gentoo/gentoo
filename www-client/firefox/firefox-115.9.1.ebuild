@@ -1062,8 +1062,8 @@ src_configure() {
 	# Solution: Disable build system's elf-hack completely, and add "-z,pack-relative-relocs"
 	#  manually with gcc.
 	#
-	# elf-hack configure option isn't available on ppc64, #916259, #929244.
-	if use ppc64; then
+	# elf-hack configure option isn't available on ppc64/riscv, #916259, #929244, #930046.
+	if use ppc64 || use riscv ; then
 		:;
 	else
 		mozconfig_add_options_ac 'elf-hack disabled' --disable-elf-hack
