@@ -448,6 +448,12 @@ unset -f _distutils_set_globals
 # An array containing options to be passed to the build system.
 # Supported by a subset of build systems used by the eclass.
 #
+# For maturin, the arguments will be passed as `maturin build`
+# arguments.
+#
+# For meson-python, the arguments will be passed as `meson setup`
+# arguments.
+#
 # For setuptools, the arguments will be passed as first parameters
 # to setup.py invocations (via esetup.py), as well as to the PEP517
 # backend.  For future compatibility, only global options should be used
