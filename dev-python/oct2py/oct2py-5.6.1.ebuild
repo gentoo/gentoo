@@ -20,7 +20,7 @@ IUSE="examples"
 
 RDEPEND="
 	>=dev-python/numpy-1.12[${PYTHON_USEDEP}]
-	>=dev-python/octave_kernel-0.34.0[${PYTHON_USEDEP}]
+	>=dev-python/octave-kernel-0.34.0[${PYTHON_USEDEP}]
 	>=dev-python/scipy-0.17[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
