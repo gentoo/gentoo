@@ -44,17 +44,13 @@ pkg_setup() {
 	:
 }
 
-docs_enabled() {
-	use doc && ! tc-is-cross-compiler
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
 	)
 	cmake_src_configure
 
-	if docs_enabled; then
+	if use doc; then
 		python_setup
 		edo ${EPYTHON} configure.py
 	fi
@@ -63,8 +59,17 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 
-	if docs_enabled; then
-		edo ./ninja -v -j1 doxygen manual
+	if use doc; then
+		local ninja=./ninja
+		if tc-is-cross-compiler; then
+			ninja=$(type -P ninja)
+		fi
+		if [[ -n ${ninja} ]]; then
+			edo "${ninja}" -v -j1 doxygen manual
+			DOCS_BUILT=yes
+		else
+			DOCS_BUILT=no
+		fi
 	fi
 }
 
@@ -81,7 +86,7 @@ src_install() {
 
 	mv "${ED}"/usr/bin/ninja{,-reference} || die
 
-	if docs_enabled; then
+	if [[ ${DOCS_BUILT} == yes ]]; then
 		docinto html
 		dodoc -r doc/doxygen/html/.
 		dodoc doc/manual.html
