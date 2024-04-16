@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
+# dev-qt/qtlanguageserver:6 is keyworded here
+dev-qt/qtdeclarative:6 -qmlls
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
