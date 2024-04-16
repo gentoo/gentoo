@@ -36,15 +36,6 @@ RDEPEND="
 distutils_enable_tests unittest
 
 src_test() {
-	# Make a copy of the original config
-	cp "${WORKDIR}/${P}/greenbone/feed/sync/config.py" "${WORKDIR}/${P}/greenbone/feed/sync/config.py.orig" || die
-
-	# Patch the config.py to avoid sandbox violation.
-	sed -i \
-		-e 's:DEFAULT_CONFIG_FILE = "/etc/gvm/greenbone-feed-sync.toml":DEFAULT_CONFIG_FILE = "'"${WORKDIR}/${P}-${TARGET}"'/install/etc/gvm/greenbone-feed-sync.toml":' \
-		-e 's:DEFAULT_ENTERPRISE_KEY_PATH = "/etc/gvm/greenbone-enterprise-feed-key":DEFAULT_ENTERPRISE_KEY_PATH = "'"${WORKDIR}/${P}-${TARGET}"'/install/etc/gvm/greenbone-enterprise-feed-key":' \
-		"${WORKDIR}/${P}/greenbone/feed/sync/config.py" || die
-
 	# Disable tests that require network access.
 	sed -i \
 		-e 's:test_do_not_run_as_root:_&:' \
@@ -54,12 +45,9 @@ src_test() {
 		-e 's:test_sync_nvts_verbose:_&:' \
 		-e 's:test_sync_nvts:_&:' \
 		-e 's:test_sync_nvts_error:_&:' \
-		    "${WORKDIR}/${P}"/tests/test_main.py || die
+			tests/test_main.py || die
 
 	distutils-r1_src_test
-
-	# Restore config.py after test.
-	mv "${WORKDIR}/${P}/greenbone/feed/sync/config.py.orig" "${WORKDIR}/${P}/greenbone/feed/sync/config.py" || die
 }
 
 python_install() {
