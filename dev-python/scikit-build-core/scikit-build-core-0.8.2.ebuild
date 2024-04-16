@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -47,6 +47,8 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO / we don't package validate_pyproject anyway
 		tests/test_schema.py::test_compare_schemas
+		# setuptools now respects PEP 625
+		tests/test_setuptools_pep517.py::test_pep517_sdist
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
