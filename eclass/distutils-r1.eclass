@@ -454,6 +454,9 @@ unset -f _distutils_set_globals
 # For meson-python, the arguments will be passed as `meson setup`
 # arguments.
 #
+# For scikit-build-core, the arguments will be passed as `cmake`
+# options (e.g. `-DFOO=BAR` form should be used).
+#
 # For setuptools, the arguments will be passed as first parameters
 # to setup.py invocations (via esetup.py), as well as to the PEP517
 # backend.  For future compatibility, only global options should be used
@@ -1408,6 +1411,46 @@ distutils_pep517_install() {
 						"builddir": "${BUILD_DIR}",
 						"setup-args": sys.argv[1:],
 						"compile-args": ["-v"] + ninjaopts,
+					}))
+				EOF
+			)
+			;;
+		scikit-build-core)
+			# TODO: split out the config/toolchain logic from cmake.eclass
+			# for now, we copy the most important bits
+			local CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE:-RelWithDebInfo}
+			cat >> "${BUILD_DIR}"/config.cmake <<- _EOF_ || die
+				set(CMAKE_ASM_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_ASM-ATT_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_EXE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_MODULE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_SHARED_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+				set(CMAKE_STATIC_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+			_EOF_
+
+			# hack around CMake ignoring CPPFLAGS
+			local -x CFLAGS="${CFLAGS} ${CPPFLAGS}"
+			local -x CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
+
+			local cmake_args=(
+				"-C${BUILD_DIR}/config.cmake"
+				"${DISTUTILS_ARGS[@]}"
+			)
+
+			# NB: we need to pass strings for boolean fields
+			# https://github.com/scikit-build/scikit-build-core/issues/707
+			config_settings=$(
+				"${EPYTHON}" - "${cmake_args[@]}" <<-EOF || die
+					import json
+					import sys
+					print(json.dumps({
+						"cmake.args": ";".join(sys.argv[1:]),
+						"cmake.build-type": "${CMAKE_BUILD_TYPE}",
+						"cmake.verbose": "true",
+						"install.strip": "false",
 					}))
 				EOF
 			)
