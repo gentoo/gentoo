@@ -64,7 +64,7 @@ qt6_docs_generate_metadata() {
 		-grpc/qtgrpc="qtgrpc qtprotobuf"
 		+httpserver/qthttpserver
 		+imageformats/qtimageformats: # empty examples
-#		-languageserver/qtlanguageserver # docs and examples are empty
+#		+languageserver/qtlanguageserver # docs and examples are empty
 		+location/qtlocation
 		-lottie/qtlottie:="qtlottieanimation" # empty examples
 		+multimedia/qtmultimedia
