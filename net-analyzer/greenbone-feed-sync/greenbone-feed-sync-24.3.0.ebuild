@@ -11,8 +11,8 @@ DESCRIPTION="New script for syncing the Greenbone Community Feed"
 HOMEPAGE="https://github.com/greenbone/greenbone-feed-sync"
 SRC_URI="https://github.com/greenbone/greenbone-feed-sync/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-3+"
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE="cron"
 
