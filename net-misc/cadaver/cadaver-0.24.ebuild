@@ -23,6 +23,8 @@ DOCS=( BUGS ChangeLog FAQ NEWS README.md THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.23.2-disable-nls.patch
 	"${FILESDIR}"/${PN}-0.24-neon-0.33.patch
+	"${FILESDIR}"/${PN}-0.24-autoconf-2.72.patch
+	"${FILESDIR}"/${PN}-0.24-link-cflags.patch
 )
 
 src_prepare() {
