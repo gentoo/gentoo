@@ -54,10 +54,9 @@ distutils_enable_tests pytest
 # 	dev-python/myst-parser
 
 src_configure() {
-	export ZMQ_DRAFT_API=$(usex drafts '1' '0')
-
-	# TODO: remove this when we update the eclass
-	export SKBUILD_INSTALL_STRIP=false
+	DISTUTILS_ARGS=(
+		-DZMQ_DRAFT_API="$(usex drafts)"
+	)
 }
 
 src_test() {
