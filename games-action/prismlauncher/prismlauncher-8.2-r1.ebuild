@@ -28,7 +28,7 @@ else
 	# The Prism's files are unpacked to ${WORKDIR}/PrismLauncher-${PV}
 	S="${WORKDIR}/${MY_PN}-${PV}"
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64"
 fi
 
 # GPL-3 for PolyMC (PrismLauncher is forked from it) and Prism itself
@@ -120,7 +120,7 @@ src_prepare() {
 		elog
 		elog "If you experience any problems, install an older java compiler"
 		elog "and select it with \"eselect java\", then recompile ${PN}."
-		eapply "${FILESDIR}/${PN}-8.2-openjdk21.patch"
+		eapply "${FILESDIR}/${P}-openjdk21.patch"
 	fi
 
 	sed -i -e 's/-Werror//' CMakeLists.txt || die 'Failed to remove -Werror via sed'
@@ -140,6 +140,7 @@ src_configure(){
 
 		-DENABLE_LTO=$(usex lto)
 		-DBUILD_TESTING=$(usex test)
+		-DDEBUG_ADDRESS_SANITIZER=0
 	)
 
 	if use debug; then
