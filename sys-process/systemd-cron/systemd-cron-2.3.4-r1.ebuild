@@ -23,7 +23,7 @@ RDEPEND="
 	acct-group/_cron-failure
 	app-crypt/libmd:=
 	sys-process/cronbase
-	>=sys-apps/systemd-253
+	>=sys-apps/systemd-255[-split-usr(-)]
 	!etc-crontab-systemd? ( !sys-process/dcron )
 	runparts? ( sys-apps/debianutils )
 "
@@ -31,14 +31,6 @@ DEPEND="
 	dev-libs/openssl:=
 	sys-process/cronbase
 "
-
-pkg_pretend() {
-	if use runparts && ! [ -x /usr/bin/run-parts ] ; then
-		eerror "Please complete the migration to merged-usr."
-		eerror "https://wiki.gentoo.org/wiki/Merge-usr"
-		die "systemd-cron no longer supports split-usr"
-	fi
-}
 
 src_prepare() {
 	sed -i \
