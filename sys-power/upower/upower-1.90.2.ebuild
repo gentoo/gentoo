@@ -51,6 +51,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-1.90.2-backport-pr207.patch" )
+
 QA_MULTILIB_PATHS="usr/lib/${PN}/.*"
 
 python_check_deps() {
