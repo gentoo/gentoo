@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+ BSD CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="acl smtp snmp"
 
 DEPEND="
