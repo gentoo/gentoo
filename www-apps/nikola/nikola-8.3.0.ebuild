@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11,12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit bash-completion-r1 distutils-r1 optfeature pypi
@@ -14,7 +14,7 @@ S="${WORKDIR}/${P^}"
 
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 RESTRICT="test" # needs coveralls
 
 BDEPEND=">=dev-python/docutils-0.13[${PYTHON_USEDEP}]" # needs rst2man to build manpage

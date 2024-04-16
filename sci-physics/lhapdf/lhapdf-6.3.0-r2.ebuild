@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="
 	dev-texlive/texlive-bibtexextra
@@ -52,6 +52,7 @@ src_prepare() {
 }
 
 src_configure() {
+	local -x CONFIG_SHELL="${EPREFIX}/bin/bash"
 	econf \
 		--disable-static \
 		--enable-python
@@ -78,6 +79,7 @@ src_install() {
 
 	cd "${S}"/wrappers/python || die
 	distutils-r1_src_install
+	rm -r "${D}/$(python_get_sitedir)"/*.egg-info || die
 
 	find "${ED}" -name '*.la' -delete || die
 }

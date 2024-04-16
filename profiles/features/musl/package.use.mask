@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Akinori Hattori <hattya@gentoo.org> (2024-04-15)
+# app-i18n/nkf is masked on musl
+app-i18n/multiskkserv test
+app-text/namazu l10n_ja
+games-roguelike/hengband l10n_ja
+
 # Pacho Ramos <pacho@gentoo.org> (2024-04-07)
 # sof tools need glibc at runtime, bug #925179
 sys-firmware/sof-firmware tools

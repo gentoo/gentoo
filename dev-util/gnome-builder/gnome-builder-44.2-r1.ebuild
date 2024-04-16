@@ -31,10 +31,12 @@ REQUIRED_USE="
 # Editorconfig needs old pcre, with vte migrating away, might want it optional or ported to pcre2?
 # An introspection USE flag of a dep is required if any introspection based language plugin wants to use it (grep for gi.repository). Last full check at 3.28.4
 
+# >=gtk-4.12.5 for relying on GtkStackPage autoptr cleanup added in that version
+
 # TODO: Handle llvm slots via llvm.eclass; see plugins/clang/meson.build
 RDEPEND="
 	>=dev-libs/glib-2.75.0:2
-	>=gui-libs/gtk-4.8:4[introspection]
+	>=gui-libs/gtk-4.12.5:4[introspection]
 	>=gui-libs/libadwaita-1.3.0:1
 	>=gui-libs/libpanel-1.1.2:1
 	>=gui-libs/gtksourceview-5.7.2:5[introspection]
@@ -125,6 +127,10 @@ that are currently available with packages include:
 # gjs/gettext/mono/PHPize stuff, but most of these are probably installed for other reasons anyways, when needed inside IDE
 # stylelint for stylesheet (CSS and co) linting
 # gvls for vala language-server integration
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-gtk-4.12.5-build.patch
+)
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"

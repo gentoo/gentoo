@@ -37,6 +37,7 @@ distutils_enable_sphinx docs
 src_prepare() {
 	# Do not install "docs" directory into site-packages
 	# https://github.com/jelmer/dulwich/issues/1248
+	[[ ${PV} != 0.21.7 ]] && die "Remove the hack!"
 	sed -i -e '/package_data/d' setup.py || die
 	rm -r *.egg-info || die
 

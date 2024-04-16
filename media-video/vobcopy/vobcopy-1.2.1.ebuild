@@ -11,7 +11,7 @@ SRC_URI="https://github.com/barak/vobcopy/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 DEPEND="media-libs/libdvdread:0="
 

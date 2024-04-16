@@ -117,7 +117,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
-	tree-sitter? ( dev-libs/tree-sitter )
+	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
 	xattr? ( sys-apps/attr )
 	zlib? ( sys-libs/zlib )

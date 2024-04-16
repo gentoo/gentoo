@@ -4,6 +4,8 @@
 # Akinori Hattori <hattya@gentoo.org> (2024-04-14)
 # musl iconv does not implement required encodings.
 app-i18n/nkf
+app-text/cmigemo
+www-client/jd
 
 # Marek Szuba <marecki@gentoo.org> (2024-04-07)
 # Relies on musl-incompatible ldconfig behaviour to determine the list of host

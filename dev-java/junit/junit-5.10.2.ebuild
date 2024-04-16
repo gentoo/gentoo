@@ -24,7 +24,7 @@ S="${WORKDIR}/junit5-r${PV}"
 
 LICENSE="EPL-2.0"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="doc migration-support suite vintage"
 
 CP_DEPEND="

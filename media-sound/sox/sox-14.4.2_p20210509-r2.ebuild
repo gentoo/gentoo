@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ IUSE="alsa amr ao encode flac id3tag ladspa mad magic ogg openmp oss opus png pu
 
 BDEPEND="
 	app-arch/unzip
+	dev-build/autoconf-archive
 	virtual/pkgconfig
 "
 RDEPEND="

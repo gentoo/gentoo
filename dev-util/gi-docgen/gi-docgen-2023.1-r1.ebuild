@@ -1,15 +1,20 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="A documentation generator for GObject-based libraries"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gi-docgen https://pypi.org/project/gi-docgen/"
+HOMEPAGE="
+	https://gitlab.gnome.org/GNOME/gi-docgen
+	https://pypi.org/project/gi-docgen/
+"
 
 LICENSE="|| ( Apache-2.0 GPL-3+ ) CC0-1.0 OFL-1.1 MIT"
 SLOT="0"
@@ -27,8 +32,7 @@ RDEPEND="
 	')
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{8..10})
+	' 3.10)
 "
-DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest

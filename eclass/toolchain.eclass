@@ -117,6 +117,13 @@ tc_version_is_between() {
 # Ignore missing baseline/reference data and create new baseline.
 : "${GCC_TESTS_IGNORE_NO_BASELINE:=}"
 
+# @ECLASS_VARIABLE: GCC_TESTS_REGEN_BASELINE
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Ignore baseline/reference data and create new baseline.
+: "${GCC_TESTS_REGEN_BASELINE:=}"
+
 # @ECLASS_VARIABLE: GCC_TESTS_CHECK_TARGET
 # @USER_VARIABLE
 # @DESCRIPTION:
@@ -1908,17 +1915,34 @@ toolchain_src_test() {
 	# the exit code of targets other than 'check' may be unreliable.
 	nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}"
 
-	if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} && -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
+	# Produce an updated failure manifest.
+	einfo "Generating a new failure manifest ${T}/${CHOST}.xfail"
+	rm -f "${T}"/${CHOST}.xfail
+	edo "${T}"/validate_failures.py \
+		--srcpath="${S}" \
+		--build_dir="${WORKDIR}"/build \
+		--manifest="${T}"/${CHOST}.xfail \
+		--produce_manifest &> /dev/null
+
+	local manifest="${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+
+	if [[ -f "${manifest}" ]] ; then
 		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
 		# validate_failures.py manifest files support include directives.
-		einfo "Comparing with previous cached results at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+		einfo "Comparing with previous cached results at ${manifest}"
 
-		edo "${T}"/validate_failures.py \
+		nonfatal edo "${T}"/validate_failures.py \
 			--srcpath="${S}" \
 			--build_dir="${WORKDIR}"/build \
-			--manifest="${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+			--manifest="${manifest}"
+		ret=$?
+
+		if [[ -n ${GCC_TESTS_REGEN_BASELINE} ]] ; then
+			eerror "GCC_TESTS_REGEN_BASELINE is set, ignoring test result and creating a new baseline..."
+		elif [[ ${ret} != 0 ]]; then
+			die "Tests failed (failures not listed in the baseline data)"
+		fi
 	else
-		# nonfatal first because we want to run again with comparison data if available.
 		nonfatal edo "${T}"/validate_failures.py \
 			--srcpath="${S}" \
 			--build_dir="${WORKDIR}"/build
@@ -1926,23 +1950,18 @@ toolchain_src_test() {
 
 		# We have no reference data saved from a previous run to know if
 		# the failures are tolerable or not, so we bail out.
-		eerror "No reference test data at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail!"
+		eerror "No reference test data at ${manifest}!"
 		eerror "GCC's tests require a baseline to compare with for any reasonable interpretation of results."
 
 		if [[ -n ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
-			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, creating new baseline manifest..."
+			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, ignoring test result and creating a new baseline..."
+		elif [[ -n ${GCC_TESTS_REGEN_BASELINE} ]] ; then
+			eerror "GCC_TESTS_REGEN_BASELINE is set, ignoring test result and creating using a new baseline..."
 		elif [[ ${ret} != 0 ]]; then
-			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
+			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal and generate a baseline.)"
 			die "Tests failed (failures occurred with no reference data)"
 		fi
 	fi
-
-	# Produce an updated set of expected results
-	edo "${T}"/validate_failures.py \
-		--srcpath="${S}" \
-		--build_dir="${WORKDIR}"/build \
-		--manifest="${T}"/${CHOST}.xfail \
-		--produce_manifest &> /dev/null
 }
 
 #---->> src_install <<----

@@ -3,11 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
-MY_P="${P/_/}"
+
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
 
+MY_P="${P/_/}"
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/ https://gitlab.com/inkscape/inkscape/"
 
