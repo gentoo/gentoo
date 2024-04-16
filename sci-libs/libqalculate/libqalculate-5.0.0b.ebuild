@@ -11,7 +11,7 @@ MY_PV="${PV//b/}"
 
 DESCRIPTION="A modern multi-purpose calculator library"
 HOMEPAGE="https://qalculate.github.io/"
-SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/Qalculate/${PN}/releases/download/v${MY_PV}/${P}.tar.gz"
 S="${WORKDIR}"/"${PN}-${MY_PV}"
 
 LICENSE="GPL-2+"
