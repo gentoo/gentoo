@@ -24,8 +24,8 @@ IUSE="alsa amr ao encode flac id3tag ladspa mad magic ogg openmp oss opus png pu
 
 BDEPEND="
 	app-arch/unzip
-	virtual/pkgconfig
 	dev-build/autoconf-archive
+	virtual/pkgconfig
 "
 RDEPEND="
 	dev-libs/libltdl:0=
