@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2024-04-16)
+# Official latest Python support 3.8, replacement app-metrics/go-carbon
+# is more performant and designed to be a drop-in replacement.
+# Removal on 2024-05-16, bug #929444
+dev-python/carbon
+
 # Matthew Smith <matthew@gentoo.org> (2024-04-15)
 # Unexpected ABI break, bug #930039
 =dev-libs/tree-sitter-0.22.4
