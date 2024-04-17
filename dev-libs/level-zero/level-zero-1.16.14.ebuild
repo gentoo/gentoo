@@ -13,6 +13,8 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
+DEPEND="dev-libs/spdlog:="
+
 src_prepare() {
 	# Don't hardcore -Werror
 	sed -e 's/-Werror//g' -i CMakeLists.txt || die
