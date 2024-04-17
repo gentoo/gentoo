@@ -251,7 +251,7 @@ BDEPEND="
 	)
 	>=dev-build/gn-${GN_MIN_VER}
 	dev-lang/perl
-	>=dev-build/ninja-1.7.2
+	<dev-build/ninja-1.12.0
 	>=dev-util/gperf-3.0.3
 	dev-vcs/git
 	>=net-libs/nodejs-7.6.0[inspector]
