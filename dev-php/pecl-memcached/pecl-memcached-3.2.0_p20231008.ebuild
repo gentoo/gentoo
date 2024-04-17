@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PHP_EXT_NAME="memcached"
 DOCS=( ChangeLog README.markdown )
 
-USE_PHP="php8-1 php8-2"
+USE_PHP="php8-1 php8-2 php8-3"
 PHP_EXT_NEEDED_USE="json(+)?,session(-)?"
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
@@ -25,9 +25,15 @@ IUSE="igbinary json sasl +session test"
 REQUIRED_USE="test? ( igbinary )"
 RESTRICT="!test? ( test )"
 
+# php-ext-pecl-r3 doesn't expose a $*_USEDEP so we roll our own
+IGBINARY_DEPEND=""
+for slot in ${USE_PHP} ; do
+	IGBINARY_DEPEND+="dev-php/igbinary[php_targets_${slot}(-)?] "
+done
+
 COMMON_DEPEND="|| ( dev-libs/libmemcached-awesome[sasl(-)?] >=dev-libs/libmemcached-1.0.14[sasl(-)?] )
 	sys-libs/zlib
-	igbinary? ( dev-php/igbinary[php_targets_php8-1(-)?,php_targets_php8-2(-)?] )
+	igbinary? ( ${IGBINARY_DEPEND} )
 "
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
