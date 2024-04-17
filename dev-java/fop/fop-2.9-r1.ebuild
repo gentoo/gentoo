@@ -31,6 +31,7 @@ BDEPEND="
 "
 
 CP_DEPEND="
+	>=dev-java/ant-1.10.14-r3:0
 	dev-java/batik:1.16
 	dev-java/commons-io:1
 	dev-java/commons-logging:0
@@ -43,7 +44,6 @@ CP_DEPEND="
 
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
-	>=dev-java/ant-1.10.14-r3:0
 	test? (
 		dev-java/mockito:2
 		dev-java/pdfbox:0
@@ -52,7 +52,6 @@ DEPEND="${CP_DEPEND}
 "
 
 RDEPEND="${CP_DEPEND}
-	>=dev-java/ant-1.10.14-r3:0
 	>=virtual/jre-1.8:*"
 
 DOCS=( NOTICE README )
