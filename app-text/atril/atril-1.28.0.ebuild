@@ -52,6 +52,7 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
+	gnome-base/gvfs
 	virtual/libintl
 "
 
