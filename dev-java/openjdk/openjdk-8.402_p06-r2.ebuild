@@ -18,6 +18,7 @@ SLOT="${PV%%[.+]*}"
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
 X86_XPAK="8.402_p06"
+PPC64_XPAK="8.402_p06"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri x86 8.402_p06)
@@ -40,12 +41,13 @@ SRC_URI="
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri x86 ${X86_XPAK})
+		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 	)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64 arm64 ppc64 x86"
-IUSE="alsa debug cups doc examples headless-awt javafx +jbootstrap selinux system-bootstrap source"
+IUSE="alsa big-endian debug cups doc examples headless-awt javafx +jbootstrap selinux system-bootstrap source"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
