@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,9 @@ HOMEPAGE="https://www.geekbench.com"
 SRC_URI="https://cdn.primatelabs.com/Geekbench-${PV}-LinuxARM.tar.gz"
 S="${WORKDIR}/dist/Geekbench-${PV}-LinuxARM"
 
-KEYWORDS="-* arm"
 LICENSE="geekbench"
 SLOT="2"
+KEYWORDS="-* arm"
 
 RESTRICT="bindist mirror"
 

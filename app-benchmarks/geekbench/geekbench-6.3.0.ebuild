@@ -11,9 +11,9 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64 ~arm64"
 LICENSE="geekbench"
 SLOT="6"
+KEYWORDS="-* ~amd64 ~arm64"
 
 RESTRICT="bindist mirror"
 
