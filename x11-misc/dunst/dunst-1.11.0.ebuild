@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit shell-completion systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 DESCRIPTION="Lightweight replacement for common notification daemons"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
@@ -74,14 +74,6 @@ src_install() {
 	)
 
 	emake "${myemakeargs[@]}" install
-
-	newbashcomp contrib/dunst.bashcomp dunst
-	newbashcomp contrib/dunstctl.bashcomp dunstctl
-	newfishcomp contrib/dunst.fishcomp dunst
-	newfishcomp contrib/dunstctl.fishcomp dunstctl
-	newfishcomp contrib/dunstify.fishcomp dunstify
-	newzshcomp contrib/_dunst.zshcomp _dunst
-	newzshcomp contrib/_dunstctl.zshcomp _dunstctl
 
 	systemd_newuserunit dunst.systemd.service.in dunst.service
 }

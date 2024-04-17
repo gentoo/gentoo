@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3 shell-completion systemd toolchain-funcs
+inherit git-r3 systemd toolchain-funcs
 
 EGIT_REPO_URI="https://github.com/dunst-project/dunst"
 
@@ -73,14 +73,6 @@ src_install() {
 	)
 
 	emake "${myemakeargs[@]}" install
-
-	newbashcomp completions/dunst.bashcomp dunst
-	newbashcomp completions/dunstctl.bashcomp dunstctl
-	newfishcomp completions/dunst.fishcomp dunst
-	newfishcomp completions/dunstctl.fishcomp dunstctl
-	newfishcomp completions/dunstify.fishcomp dunstify
-	newzshcomp completions/_dunst.zshcomp _dunst
-	newzshcomp completions/_dunstctl.zshcomp _dunstctl
 
 	systemd_newuserunit dunst.systemd.service.in dunst.service
 }
