@@ -39,7 +39,7 @@ S="${WORKDIR}/${MY_PN}-${PV}/sources/pyside6"
 # x11extras (for X)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="
 	3d bluetooth charts +concurrent +dbus designer gles2-only +gui help location
 	multimedia +network network-auth nfc positioning +opengl pdfium positioning
