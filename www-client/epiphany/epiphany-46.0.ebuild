@@ -20,7 +20,7 @@ DEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.5:2
 	>=dev-libs/glib-2.74.0:2
 	gnome-base/gsettings-desktop-schemas
-	>=media-libs/gstreamer-1.0
+	media-libs/gstreamer:1.0
 	>=gui-libs/gtk-4.12.0:4
 	>=app-text/iso-codes-0.35
 	>=dev-libs/json-glib-1.6
