@@ -31,6 +31,7 @@ RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
+	<dev-python/sphinx-7.3[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-5[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
