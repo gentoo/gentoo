@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="wayland"
 
 DEPEND="
