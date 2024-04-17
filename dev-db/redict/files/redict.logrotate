@@ -1,0 +1,6 @@
+/var/log/redict/redict.log /var/log/redict/sentinel.log {
+	compress
+	delaycompress
+	notifempty
+	missingok
+}

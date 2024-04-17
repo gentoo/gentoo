@@ -1,0 +1,14 @@
+[Unit]
+Description=A persistent key-value database
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/run/redict/redict.pid
+ExecStart=/usr/sbin/redict-server /etc/redict/redict.conf
+User=redict
+Group=redict
+
+[Install]
+WantedBy=multi-user.target
+
