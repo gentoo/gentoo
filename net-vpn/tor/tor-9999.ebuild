@@ -160,6 +160,7 @@ src_test() {
 			:sandbox/opendir_dirname
 			:sandbox/openat_filename
 			:sandbox/chmod_filename
+			:sandbox/chown_filename
 			:sandbox/rename_filename
 		)
 	fi
