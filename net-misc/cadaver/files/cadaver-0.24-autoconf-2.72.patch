@@ -1,6 +1,6 @@
 https://github.com/notroj/cadaver/pull/42
 
-From 4f2ab67be45132ffdd9765d47b8457ca986b6fe3 Mon Sep 17 00:00:00 2001
+From 2eab7a8225b6fc0c6fd4773794abe83561f2d733 Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Wed, 17 Apr 2024 00:48:11 +0100
 Subject: [PATCH] m4: fix quoting in readline.m4
@@ -16,12 +16,6 @@ no
 checking for tputs in -lncurses... no
 [...]
 ```
----
- m4/readline.m4 | 25 +++++++++++--------------
- 1 file changed, 11 insertions(+), 14 deletions(-)
-
-diff --git a/m4/readline.m4 b/m4/readline.m4
-index c0ab8af..9d650b9 100644
 --- a/m4/readline.m4
 +++ b/m4/readline.m4
 @@ -9,24 +9,21 @@ AC_ARG_ENABLE(readline,
@@ -34,7 +28,7 @@ index c0ab8af..9d650b9 100644
 -	AC_CHECK_LIB(readline, readline)
 +AS_IF([test "$use_readline" = "yes"], [
 +	AC_CHECK_LIB([curses], [tputs], [LIBS="$LIBS -lcurses"],
-+		[AC_CHECK_LIB(ncurses, tputs)])
++		[AC_CHECK_LIB([ncurses], [tputs])])
 +	AC_CHECK_LIB([readline], [readline])
  
 -	AC_SEARCH_LIBS(add_history, history,
@@ -60,4 +54,6 @@ index c0ab8af..9d650b9 100644
 -])
 -
 +])])
+-- 
+2.44.0
 
