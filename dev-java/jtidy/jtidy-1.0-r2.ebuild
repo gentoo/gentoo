@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/JTidy/${MY_PV}/${PN}-${MY_PV}-source
 
 LICENSE="HTML-Tidy W3C"
 SLOT="0"
-KEYWORDS="~amd64 ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND=">=dev-java/ant-1.10.14-r3:0"
