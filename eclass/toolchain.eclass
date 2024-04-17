@@ -406,6 +406,12 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	BDEPEND+=" d? ( || ( sys-devel/gcc[d(-)] <sys-devel/gcc-12[d(-)] ) )"
 fi
 
+if tc_has_feature rust && tc_version_is_at_least 14.0.0_pre20230421 ; then
+	# This was added upstream in r14-9968-g3e1e73fc995844 as a temporary measure.
+	# See https://inbox.sourceware.org/gcc/34fec7ea-8762-4cac-a1c8-ff54e20e31ed@embecosm.com/
+	BDEPEND+=" rust? ( virtual/rust )"
+fi
+
 PDEPEND=">=sys-devel/gcc-config-2.11"
 
 #---->> S + SRC_URI essentials <<----
