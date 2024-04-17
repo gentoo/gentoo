@@ -26,14 +26,13 @@ case ${PV} in
 		;;
 esac
 
-KEYWORDS="-* ~amd64"
-
 MY_PN="google-chrome-${SLOT}"
 MY_P="${MY_PN}_${MY_PV}"
-
 SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb"
+S="${WORKDIR}/${CHROMEDIR}"
 
 LICENSE="google-chrome"
+KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -49,7 +48,6 @@ for x in 0 beta stable unstable; do
 	fi
 done
 
-S="${WORKDIR}/${CHROMEDIR}"
 QA_PREBUILT="*"
 
 pkg_nofetch() {
