@@ -1,0 +1,173 @@
+# Patch comes from https://codeberg.org/redict/redict/pulls/40
+# https://codeberg.org/redict/redict/pulls/42
+# and https://codeberg.org/redict/redict/pulls/43
+# All got merged upstream and should be removed next release.
+
+From 5defea5b98859f4e1162b82120114e222b2a7465 Mon Sep 17 00:00:00 2001
+From: Maytham Alsudany <maytha8thedev@gmail.com>
+Date: Wed, 10 Apr 2024 01:10:49 +0300
+Subject: [PATCH 1/2] Add ability to use system jemalloc
+
+This time, this shouldn't cause CI tests to fail.
+
+Co-authored-by: Chris Lamb <lamby@debian.org>
+Signed-off-by: Maytham Alsudany <maytha8thedev@gmail.com>
+---
+ deps/Makefile | 2 ++
+ src/Makefile  | 8 +++++++-
+ src/debug.c   | 3 +++
+ src/object.c  | 5 +++++
+ src/sds.c     | 4 ++++
+ src/zmalloc.c | 4 ++++
+ src/zmalloc.h | 4 ++++
+ 7 files changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/deps/Makefile b/deps/Makefile
+index 9a273aefc..345e1f703 100644
+--- a/deps/Makefile
++++ b/deps/Makefile
+@@ -39,7 +39,9 @@ distclean:
+ 	-(cd hiredict && $(MAKE) clean) > /dev/null || true
+ 	-(cd linenoise && $(MAKE) clean) > /dev/null || true
+ 	-(cd lua && $(MAKE) clean) > /dev/null || true
++ifneq ($(USE_SYSTEM_JEMALLOC),yes)
+ 	-(cd jemalloc && [ -f Makefile ] && $(MAKE) distclean) > /dev/null || true
++endif
+ 	-(cd hdr_histogram && $(MAKE) clean) > /dev/null || true
+ 	-(cd fpconv && $(MAKE) clean) > /dev/null || true
+ 	-(rm -f .make-*)
+diff --git a/src/Makefile b/src/Makefile
+index 0739466b6..d399c6eb2 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -266,10 +266,16 @@ ifeq ($(MALLOC),tcmalloc_minimal)
+ endif
+ 
+ ifeq ($(MALLOC),jemalloc)
++	FINAL_CFLAGS+= -DUSE_JEMALLOC
++ifeq ($(USE_SYSTEM_JEMALLOC),yes)
++	FINAL_CFLAGS+= -DUSE_SYSTEM_JEMALLOC $(shell $(PKG_CONFIG) --cflags jemalloc)
++	FINAL_LIBS := $(shell $(PKG_CONFIG) --libs jemalloc) $(FINAL_LIBS)
++else
+ 	DEPENDENCY_TARGETS+= jemalloc
+-	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
++	FINAL_CFLAGS+= -I../deps/jemalloc/include
+ 	FINAL_LIBS := ../deps/jemalloc/lib/libjemalloc.a $(FINAL_LIBS)
+ endif
++endif
+ 
+ # LIBSSL & LIBCRYPTO
+ LIBSSL_LIBS=
+diff --git a/src/debug.c b/src/debug.c
+index 89d33bfd7..2257d655e 100644
+--- a/src/debug.c
++++ b/src/debug.c
+@@ -56,6 +56,9 @@ void bugReportEnd(int killViaSignal, int sig);
+ void logStackTrace(void *eip, int uplevel, int current_thread);
+ void sigalrmSignalHandler(int sig, siginfo_t *info, void *secret);
+ 
++#if defined(USE_JEMALLOC) && defined(USE_SYSTEM_JEMALLOC)
++#define je_mallctl mallctl
++#endif
+ /* ================================= Debugging ============================== */
+ 
+ /* Compute the sha1 of string at 's' with 'len' bytes long.
+diff --git a/src/object.c b/src/object.c
+index cf7811e81..5da8fbcc9 100644
+--- a/src/object.c
++++ b/src/object.c
+@@ -15,6 +15,11 @@
+ #define strtold(a,b) ((long double)strtod((a),(b)))
+ #endif
+ 
++#if defined(USE_JEMALLOC) && defined(USE_SYSTEM_JEMALLOC)
++#define je_mallctl mallctl
++#define je_malloc_stats_print malloc_stats_print
++#endif
++
+ /* ===================== Creation and parsing of objects ==================== */
+ 
+ robj *createObject(int type, void *ptr) {
+diff --git a/src/sds.c b/src/sds.c
+index 0a295132c..a1ac73d5a 100644
+--- a/src/sds.c
++++ b/src/sds.c
+@@ -24,6 +24,10 @@
+ #include "sds.h"
+ #include "sdsalloc.h"
+ 
++#if defined(USE_JEMALLOC) && defined(USE_SYSTEM_JEMALLOC)
++#define je_nallocx nallocx
++#endif
++
+ const char *SDS_NOINIT = "SDS_NOINIT";
+ 
+ static inline int sdsHdrSize(char type) {
+diff --git a/src/zmalloc.c b/src/zmalloc.c
+index d737e2b14..7187599aa 100644
+--- a/src/zmalloc.c
++++ b/src/zmalloc.c
+@@ -56,6 +56,9 @@ void zlibc_free(void *ptr) {
+ #define free(ptr) tc_free(ptr)
+ /* Explicitly override malloc/free etc when using jemalloc. */
+ #elif defined(USE_JEMALLOC)
++#if defined(USE_SYSTEM_JEMALLOC)
++#define je_mallctl mallctl
++#else
+ #define malloc(size) je_malloc(size)
+ #define calloc(count,size) je_calloc(count,size)
+ #define realloc(ptr,size) je_realloc(ptr,size)
+@@ -63,6 +66,7 @@ void zlibc_free(void *ptr) {
+ #define mallocx(size,flags) je_mallocx(size,flags)
+ #define dallocx(ptr,flags) je_dallocx(ptr,flags)
+ #endif
++#endif
+ 
+ #define update_zmalloc_stat_alloc(__n) atomicIncr(used_memory,(__n))
+ #define update_zmalloc_stat_free(__n) atomicDecr(used_memory,(__n))
+diff --git a/src/zmalloc.h b/src/zmalloc.h
+index df7d290da..c10858439 100644
+--- a/src/zmalloc.h
++++ b/src/zmalloc.h
+@@ -27,7 +27,11 @@
+ #include <jemalloc/jemalloc.h>
+ #if (JEMALLOC_VERSION_MAJOR == 2 && JEMALLOC_VERSION_MINOR >= 1) || (JEMALLOC_VERSION_MAJOR > 2)
+ #define HAVE_MALLOC_SIZE 1
++#if defined(USE_SYSTEM_JEMALLOC)
++#define zmalloc_size(p) malloc_usable_size(p)
++#else
+ #define zmalloc_size(p) je_malloc_usable_size(p)
++#endif
+ #else
+ #error "Newer version of jemalloc required"
+ #endif
+-- 
+2.39.2
+
+
+From 940b0fab0318f5f306a67d0818635acc522402c4 Mon Sep 17 00:00:00 2001
+From: Maytham Alsudany <maytha8thedev@gmail.com>
+Date: Wed, 10 Apr 2024 01:11:24 +0300
+Subject: [PATCH 2/2] Mention USE_SYSTEM_JEMALLOC setting in README
+
+Signed-off-by: Maytham Alsudany <maytha8thedev@gmail.com>
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index 14caf183d..ae77a235a 100644
+--- a/README.md
++++ b/README.md
+@@ -23,6 +23,8 @@ toolchain, and GNU make. To build Redict, simply run "make".
+ You can pass the following variables to Redict to customize the build:
+ 
+ * `USE_JEMALLOC=no MALLOC=libc`: use the libc allocator rather than jemalloc
++* `USE_SYSTEM_JEMALLOC=yes`: use the system's installed jemalloc libraries
++   rather than the vendored copy.
+ * `BUILD_TLS=yes`: build with TLS support. Requires OpenSSL.
+ * `USE_SYSTEMD=yes`: build with systemd support. Requires libsystemd.
+ * `PROG_SUFFIX="-suffix"`: Append "-suffix" to executable names
+-- 
+2.39.2
+
