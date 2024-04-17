@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>navi@vlhl.dev</email>
+		<name>Anna (navi) Figueiredo Gomes</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libhiredict.so.</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="codeberg">redict/hiredict</remote-id>
+	</upstream>
+	<use>
+		<flag name="shim">
+			Install header shims for the hiredis api.
+		</flag>
+	</use>
+</pkgmetadata>

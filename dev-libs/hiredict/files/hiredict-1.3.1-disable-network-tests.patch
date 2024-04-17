@@ -1,0 +1,16 @@
+diff --git a/test.c b/test.c
+index 48d53e9..91bc794 100644
+--- a/test.c
++++ b/test.c
+@@ -2459,9 +2467,11 @@ int main(int argc, char **argv) {
+     }
+ #endif /* HIREDICT_TEST_ASYNC */
+ 
++#if 0
+     cfg.type = CONN_TCP;
+     printf("\nTesting asynchronous API using polling_adapter TCP (%s:%d):\n", cfg.tcp.host, cfg.tcp.port);
+     test_async_polling(cfg);
++#endif
+     if (test_unix_socket) {
+         cfg.type = CONN_UNIX;
+         printf("\nTesting asynchronous API using polling_adapter UNIX (%s):\n", cfg.unix_sock.path);
