@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-3 )
 PYTHON_COMPAT=( python3_{9..11} )
-inherit lua-single python-any-r1 xdg
+inherit autotools lua-single python-any-r1 xdg
 
 DESCRIPTION="Modification of the classical Freedroid engine into an RPG"
 HOMEPAGE="https://www.freedroid.org/"
@@ -30,13 +30,19 @@ RDEPEND="
 		media-libs/glew:0=
 		media-libs/libglvnd[X]
 	)
-	sound? ( media-libs/sdl-mixer[vorbis] )"
+	sound? ( media-libs/sdl-mixer[vorbis] )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/gettext
 	app-alternatives/awk
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0-AC_INCLUDES_DEFAULT.patch
+)
 
 pkg_setup() {
 	lua-single_pkg_setup
@@ -45,6 +51,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	eautoreconf
 
 	python_fix_shebang src/gen_savestruct.py
 	rm data/sound/speak.py || die # unused, skip install + python rdep
