@@ -1,0 +1,263 @@
+commit 6aa348188a565ca3438f6c057fbcef9e119bc994
+Author: James E Keenan <jkeenan@cpan.org>
+Date:   Wed Jul 19 09:58:45 2023 -0400
+
+    cpan/Compress-Raw-Zlib - Update to version 2.205
+    
+      2.205 16 July 2023
+    
+          * 2.205
+            Sun, 16 Jul 2023 16:11:31 +0100
+            3effdb9dbaa9bedfff3cad44902e515409ffae78
+    
+          * Test::More::isn't warns in perl 5.38
+            Sun, 9 Jul 2023 21:38:15 +0100
+            928bbc6ddc5178621fb477b38a1b4b4de38866cf
+    
+          * add zlib-ng 2.1.3
+            Thu, 29 Jun 2023 19:51:58 +0100
+            b1aa2583b4c114c2194890a0e015fdc439928c31
+    
+          * add zlib-ng 2.1.2
+            Fri, 9 Jun 2023 14:51:17 +0100
+            0d505d9156ca7e9cac15e2d6e574099300f91a14
+    
+          * Change storage of ZLIBNG_VER_STATUS from IV to PV https://github.com/pmqs/Compress-Raw-Zlib/issues/24
+            Fri, 9 Jun 2023 14:30:36 +0100
+            0a8fb7141a43b8e49609fb06f05fad5150a97c2a
+    
+          * Fix to allow building with C++17 register keyword not allowed in C++17 https://github.com/pmqs/Compress-Raw-Zlib/issues/23
+            Mon, 22 May 2023 12:42:51 +0100
+            a7c12acdd4ce7fdc070f50ac78e68e04c8699c81
+    
+          * Change while loop for `LimitOutput`  example https://github.com/pmqs/Compress-Raw-Zlib/issues/21
+            Sun, 21 May 2023 21:32:19 +0100
+            972f03b5b0bf06d44991bbee2d2c9216e4175154
+    
+          * [doc] zlib.h: Remove duplicate "the" (#22)
+            Mon, 1 May 2023 22:46:39 +0200
+            89b43e6978d8e9b16801f48881cadf822585be0d
+    
+          * Add zlib compat version for 2.0.7
+            Sat, 18 Mar 2023 08:42:59 +0000
+            e7d79cbd5924fbdcd3515fb3b0ad171c7720105c
+
+diff --git a/MANIFEST b/MANIFEST
+index e1ca7244ad..7ef9a23dc8 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -435,8 +435,8 @@ cpan/Compress-Raw-Zlib/t/02zlib.t			Compress::Raw::Zlib
+ cpan/Compress-Raw-Zlib/t/07bufsize.t			Compress::Raw::Zlib
+ cpan/Compress-Raw-Zlib/t/09limitoutput.t		Compress::Raw::Zlib
+ cpan/Compress-Raw-Zlib/t/18lvalue.t			Compress::Raw::Zlib
+-cpan/Compress-Raw-Zlib/t/19nonpv.t
+-cpan/Compress-Raw-Zlib/t/compress/CompTestUtils.pm
++cpan/Compress-Raw-Zlib/t/19nonpv.t			Test file related to Compress::Raw::Zlib
++cpan/Compress-Raw-Zlib/t/compress/CompTestUtils.pm	Module related to Compress::Raw::Zlib
+ cpan/Compress-Raw-Zlib/typemap				Compress::Raw::Zlib
+ cpan/Compress-Raw-Zlib/Zlib.xs				Compress::Raw::Zlib
+ cpan/Compress-Raw-Zlib/zlib-src/adler32.c		Compress::Raw::Zlib
+diff --git a/Porting/Maintainers.pl b/Porting/Maintainers.pl
+index c54773a7f4..3b3c15a190 100755
+--- a/Porting/Maintainers.pl
++++ b/Porting/Maintainers.pl
+@@ -218,7 +218,8 @@ use File::Glob qw(:case);
+     },
+ 
+     'Compress::Raw::Zlib' => {
+-        'DISTRIBUTION' => 'PMQS/Compress-Raw-Zlib-2.204.tar.gz',
++        'DISTRIBUTION' => 'PMQS/Compress-Raw-Zlib-2.205.tar.gz',
++        'SYNCINFO'     => 'jkeenan on Wed Jul 19 09:58:08 2023',
+         'FILES'    => q[cpan/Compress-Raw-Zlib],
+         'EXCLUDED' => [
+             qr{^examples/},
+diff --git a/cpan/Compress-Raw-Zlib/Makefile.PL b/cpan/Compress-Raw-Zlib/Makefile.PL
+index 299093bb81..59449186f4 100644
+--- a/cpan/Compress-Raw-Zlib/Makefile.PL
++++ b/cpan/Compress-Raw-Zlib/Makefile.PL
+@@ -201,7 +201,6 @@ my @names = qw(
+     ZLIBNG_VER_MAJOR
+     ZLIBNG_VER_MINOR
+     ZLIBNG_VER_REVISION
+-    ZLIBNG_VER_STATUS
+     ZLIBNG_VER_MODIFIED
+ );
+ 
+diff --git a/cpan/Compress-Raw-Zlib/Zlib.xs b/cpan/Compress-Raw-Zlib/Zlib.xs
+index c47c66d4be..2d4fc58972 100644
+--- a/cpan/Compress-Raw-Zlib/Zlib.xs
++++ b/cpan/Compress-Raw-Zlib/Zlib.xs
+@@ -951,6 +951,17 @@ ZLIB_VERNUM()
+ uLong
+ Zip_zlibCompileFlags()
+ 
++const char*
++ZLIBNG_VER_STATUS()
++    CODE:
++#ifdef ZLIBNG_VER_STATUS
++        RETVAL = STRINGIFY(ZLIBNG_VER_STATUS);
++#else
++        RETVAL = "0";
++#endif
++    OUTPUT:
++        RETVAL
++
+ MODULE = Compress::Raw::Zlib	PACKAGE = Compress::Raw::Zlib	PREFIX = Zip_
+ 
+ #define Zip_adler32(buf, adler) CRZ_adler32(adler, buf, (uInt)len)
+diff --git a/cpan/Compress-Raw-Zlib/lib/Compress/Raw/Zlib.pm b/cpan/Compress-Raw-Zlib/lib/Compress/Raw/Zlib.pm
+index 7250f382a6..7db53f7a4e 100644
+--- a/cpan/Compress-Raw-Zlib/lib/Compress/Raw/Zlib.pm
++++ b/cpan/Compress-Raw-Zlib/lib/Compress/Raw/Zlib.pm
+@@ -10,7 +10,7 @@ use warnings ;
+ use bytes ;
+ our ($VERSION, $XS_VERSION, @ISA, @EXPORT, %EXPORT_TAGS, @EXPORT_OK, $AUTOLOAD, %DEFLATE_CONSTANTS, @DEFLATE_CONSTANTS);
+ 
+-$VERSION = '2.204_001';
++$VERSION = '2.205';
+ $XS_VERSION = $VERSION;
+ $VERSION = eval $VERSION;
+ 
+@@ -1282,7 +1282,7 @@ simpler.
+             last OUTER
+                 unless $status == Z_OK || $status == Z_BUF_ERROR ;
+         }
+-        while ($status == Z_OK && length $input);
++        while length $input;
+     }
+ 
+     die "inflation failed\n"
+@@ -1453,7 +1453,7 @@ Below is typical code that shows how to use C<LimitOutput>.
+             last OUTER
+                 unless $status == Z_OK || $status == Z_BUF_ERROR ;
+         }
+-        while ($status == Z_OK && length $input);
++        while length $input;
+     }
+ 
+     die "inflation failed\n"
+diff --git a/cpan/Compress-Raw-Zlib/t/01version.t b/cpan/Compress-Raw-Zlib/t/01version.t
+index e6300b5e7b..3c2bac7152 100644
+--- a/cpan/Compress-Raw-Zlib/t/01version.t
++++ b/cpan/Compress-Raw-Zlib/t/01version.t
+@@ -67,6 +67,9 @@ SKIP:
+             '2.0.4' => '1.2.11.zlib-ng',
+             '2.0.5' => '1.2.11.zlib-ng',
+             '2.0.6' => '1.2.11.zlib-ng',
++            '2.0.7' => '1.2.11.zlib-ng',
++            '2.1.2' => '1.2.13.zlib-ng',
++            '2.1.3' => '1.2.13.zlib-ng',
+         );
+ 
+         my $zv = Compress::Raw::Zlib::zlibng_version();
+diff --git a/cpan/Compress-Raw-Zlib/zlib-src/deflate.c b/cpan/Compress-Raw-Zlib/zlib-src/deflate.c
+index abe61387a7..765e5000ad 100644
+--- a/cpan/Compress-Raw-Zlib/zlib-src/deflate.c
++++ b/cpan/Compress-Raw-Zlib/zlib-src/deflate.c
+@@ -51,6 +51,13 @@
+ 
+ #include "deflate.h"
+ 
++/*
++  Perl-specific change to allow building with C++
++  The 'register' keyword not allowed from C++17
++  see https://github.com/pmqs/Compress-Raw-Zlib/issues/23
++*/
++#define register
++
+ const char deflate_copyright[] =
+    " deflate 1.2.13 Copyright 1995-2022 Jean-loup Gailly and Mark Adler ";
+ /*
+@@ -1279,9 +1286,9 @@ local uInt longest_match(
+     IPos cur_match)
+ {
+     unsigned chain_length = s->max_chain_length;/* max hash chain length */
+-    Bytef *scan = s->window + s->strstart; /* current string */
+-    Bytef *match;                      /* matched string */
+-    int len;                           /* length of current match */
++    register Bytef *scan = s->window + s->strstart; /* current string */
++    register Bytef *match;                      /* matched string */
++    register int len;                           /* length of current match */
+     int best_len = (int)s->prev_length;         /* best match length so far */
+     int nice_match = s->nice_match;             /* stop if match long enough */
+     IPos limit = s->strstart > (IPos)MAX_DIST(s) ?
+@@ -1296,13 +1303,13 @@ local uInt longest_match(
+     /* Compare two bytes at a time. Note: this is not always beneficial.
+      * Try with and without -DUNALIGNED_OK to check.
+      */
+-    Bytef *strend = s->window + s->strstart + MAX_MATCH - 1;
+-    ush scan_start = *(ushf*)scan;
+-    ush scan_end   = *(ushf*)(scan + best_len - 1);
++    register Bytef *strend = s->window + s->strstart + MAX_MATCH - 1;
++    register ush scan_start = *(ushf*)scan;
++    register ush scan_end   = *(ushf*)(scan + best_len - 1);
+ #else
+-    Bytef *strend = s->window + s->strstart + MAX_MATCH;
+-    Byte scan_end1  = scan[best_len - 1];
+-    Byte scan_end   = scan[best_len];
++    register Bytef *strend = s->window + s->strstart + MAX_MATCH;
++    register Byte scan_end1  = scan[best_len - 1];
++    register Byte scan_end   = scan[best_len];
+ #endif
+ 
+     /* The code is optimized for HASH_BITS >= 8 and MAX_MATCH-2 multiple of 16.
+@@ -1429,10 +1436,10 @@ local uInt longest_match(
+     deflate_state *s,
+     IPos cur_match)
+ {
+-    Bytef *scan = s->window + s->strstart; /* current string */
+-    Bytef *match;                       /* matched string */
+-    int len;                           /* length of current match */
+-    Bytef *strend = s->window + s->strstart + MAX_MATCH;
++    register Bytef *scan = s->window + s->strstart; /* current string */
++    register Bytef *match;                       /* matched string */
++    register int len;                           /* length of current match */
++    register Bytef *strend = s->window + s->strstart + MAX_MATCH;
+ 
+     /* The code is optimized for HASH_BITS >= 8 and MAX_MATCH-2 multiple of 16.
+      * It is easy to get rid of this optimization if necessary.
+diff --git a/cpan/Compress-Raw-Zlib/zlib-src/trees.c b/cpan/Compress-Raw-Zlib/zlib-src/trees.c
+index 20d3735261..6d1e36ac9c 100644
+--- a/cpan/Compress-Raw-Zlib/zlib-src/trees.c
++++ b/cpan/Compress-Raw-Zlib/zlib-src/trees.c
+@@ -1,4 +1,3 @@
+-
+ /* trees.c -- output deflated data using Huffman coding
+  * Copyright (C) 1995-2021 Jean-loup Gailly
+  * detect_data_type() function provided freely by Cosmin Truta, 2006
+@@ -37,6 +36,13 @@
+ 
+ #include "deflate.h"
+ 
++/*
++  Perl-specific change to allow building with C++
++  The 'register' keyword not allowed from C++17
++  see https://github.com/pmqs/Compress-Raw-Zlib/issues/23
++*/
++#define register
++
+ #ifdef ZLIB_DEBUG
+ #  include <ctype.h>
+ #endif
+@@ -1140,7 +1146,7 @@ local unsigned bi_reverse(
+     unsigned code,
+     int len)
+ {
+-    unsigned res = 0;
++    register unsigned res = 0;
+     do {
+         res |= code & 1;
+         code >>= 1, res <<= 1;
+diff --git a/cpan/Compress-Raw-Zlib/zlib-src/zlib.h b/cpan/Compress-Raw-Zlib/zlib-src/zlib.h
+index bb740aaafa..ecc3f59489 100644
+--- a/cpan/Compress-Raw-Zlib/zlib-src/zlib.h
++++ b/cpan/Compress-Raw-Zlib/zlib-src/zlib.h
+@@ -729,7 +729,7 @@ ZEXTERN int ZEXPORT deflateParams OF((z_streamp strm,
+    Then no more input data should be provided before the deflateParams() call.
+    If this is done, the old level and strategy will be applied to the data
+    compressed before deflateParams(), and the new level and strategy will be
+-   applied to the the data compressed after deflateParams().
++   applied to the data compressed after deflateParams().
+ 
+      deflateParams returns Z_OK on success, Z_STREAM_ERROR if the source stream
+    state was inconsistent or if a parameter was invalid, or Z_BUF_ERROR if
