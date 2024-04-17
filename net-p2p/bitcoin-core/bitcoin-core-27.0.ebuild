@@ -17,8 +17,7 @@ SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-# IUSE="+cli" doesn't work due to https://bugs.gentoo.org/831045#c3
-IUSE="+asm +berkdb +bitcoin-cli +daemon dbus examples +external-signer gui kde libs +man nat-pmp +qrcode +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
+IUSE="+asm +berkdb +cli +daemon dbus examples +external-signer gui kde libs +man nat-pmp +qrcode +sqlite system-leveldb +system-libsecp256k1 systemtap test upnp zeromq"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -35,7 +34,7 @@ RDEPEND="
 	>=dev-libs/boost-1.81.0:=
 	>=dev-libs/libevent-2.1.12:=
 	berkdb? ( >=sys-libs/db-4.8.30:$(db_ver_to_slot 4.8)=[cxx] )
-	bitcoin-cli? ( !net-p2p/bitcoin-cli )
+	cli? ( !net-p2p/bitcoin-cli )
 	daemon? (
 		!net-p2p/bitcoind
 		acct-group/bitcoin
@@ -109,9 +108,9 @@ pkg_pretend() {
 			installation.
 		EOF
 	fi
-	if use daemon && ! use bitcoin-cli && ! has_version "${CATEGORY}/${PN}[daemon,-bitcoin-cli]" ; then
+	if use daemon && ! use cli && ! has_version "${CATEGORY}/${PN}[daemon,-bitcoin-cli(-),-cli(-)]" ; then
 		efmt ewarn <<-EOF
-			You are enabling USE="daemon" but not USE="bitcoin-cli". This is a valid
+			You are enabling USE="daemon" but not USE="cli". This is a valid
 			configuration, but you will be unable to interact with your bitcoind node
 			via the command line using this installation.
 		EOF
@@ -179,7 +178,7 @@ src_configure() {
 		$(use_enable man)
 		$(use_enable external-signer)
 		--with-utils
-		$(use_enable {bitcoin,util}-cli)
+		$(use_enable {,util-}cli)
 		--enable-util-tx
 		--${wallet}-util-wallet
 		--disable-util-util
@@ -229,7 +228,7 @@ src_install() {
 	! use test || rm -f -- "${ED}"/usr/bin/test_bitcoin{,-qt} || die
 
 	newbashcomp contrib/completions/bash/bitcoin-tx.bash bitcoin-tx
-	use bitcoin-cli && newbashcomp contrib/completions/bash/bitcoin-cli.bash bitcoin-cli
+	use cli && newbashcomp contrib/completions/bash/bitcoin-cli.bash bitcoin-cli
 	if use daemon ; then
 		newbashcomp contrib/completions/bash/bitcoind.bash bitcoind
 		use gui && bashcomp_alias bitcoind bitcoin-qt
@@ -317,7 +316,7 @@ pkg_postinst() {
 			EOF
 	fi
 
-	if use bitcoin-cli && use daemon ; then
+	if use cli && use daemon ; then
 		efmt -su elog <<-EOF
 			To use bitcoin-cli with the /etc/init.d/bitcoind service:
 			 - Add your user(s) to the 'bitcoin' group.
