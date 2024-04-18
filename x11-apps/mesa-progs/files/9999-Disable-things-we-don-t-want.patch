@@ -1,4 +1,4 @@
-From edef3e745190669dcaedcb6c7798f5bd625254a7 Mon Sep 17 00:00:00 2001
+From b7bced77da267e51eaceeef68a213007ba54aa86 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Thu, 18 Apr 2024 13:24:18 -0400
 Subject: [PATCH] Disable things we don't want
@@ -6,15 +6,16 @@ Subject: [PATCH] Disable things we don't want
 v2: Enable libglad to satisfy egl dependencies
 v3: Enable most of libutil to fix undefined references in es2gears
 v4: Disable dmabufshare and remove dep on libXext
+v5: Drop trackball.c and showbuffer.c
 ---
  meson.build                   |  3 ++-
  src/egl/opengl/meson.build    | 35 ----------------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
- src/util/meson.build          |  7 +------
+ src/util/meson.build          |  9 +--------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 3 insertions(+), 87 deletions(-)
+ 7 files changed, 3 insertions(+), 89 deletions(-)
 
 diff --git a/meson.build b/meson.build
 index d487a11f..ff360c2e 100644
@@ -134,16 +135,16 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git a/src/util/meson.build b/src/util/meson.build
-index b4fe614f..e56b456e 100644
+index b4fe614f..d2c42dc2 100644
 --- a/src/util/meson.build
 +++ b/src/util/meson.build
-@@ -22,17 +22,12 @@ inc_util = include_directories('.')
+@@ -22,17 +22,10 @@ inc_util = include_directories('.')
  
  files_libutil = files(
    'glinfo_common.c',
 -  'readtex.c',
-   'showbuffer.c',
-   'trackball.c',
+-  'showbuffer.c',
+-  'trackball.c',
    'matrix.c',
  )
  
