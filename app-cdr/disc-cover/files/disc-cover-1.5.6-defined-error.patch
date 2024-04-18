@@ -1,0 +1,10 @@
+--- disc-cover-1.5.6.orig/disc-cover	2006-06-20 14:16:24.000000000 +0200
++++ disc-cover-1.5.6/disc-cover	2023-12-26 00:27:51.511140810 +0100
+@@ -743,7 +743,7 @@
+ {
+ 	my ($error) = defined($_[0]) ? $_[0] : undef ;
+ 	shift;
+-	my (@solutions) = defined(@_) ? @_ : undef;
++	my (@solutions) = @_;
+ 
+ 	warn "Error: $error\n" if defined ($error);
