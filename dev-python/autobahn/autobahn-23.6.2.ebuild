@@ -11,7 +11,6 @@ inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="WebSocket and WAMP for Twisted and Asyncio"
 HOMEPAGE="
-	https://crossbar.io/autobahn/
 	https://github.com/crossbario/autobahn-python/
 	https://pypi.org/project/autobahn/
 "
