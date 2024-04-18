@@ -190,11 +190,6 @@ pkg_pretend() {
 		die "systemd no longer supports split-usr"
 	fi
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
-		if use test && has pid-sandbox ${FEATURES}; then
-			ewarn "Tests are known to fail with PID sandboxing enabled."
-			ewarn "See https://bugs.gentoo.org/674458."
-		fi
-
 		local CONFIG_CHECK="~BLK_DEV_BSG ~CGROUPS
 			~CGROUP_BPF ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
 			~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
@@ -248,6 +243,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/systemd-test-process-util.patch"
 	)
 
 	if ! use vanilla; then
