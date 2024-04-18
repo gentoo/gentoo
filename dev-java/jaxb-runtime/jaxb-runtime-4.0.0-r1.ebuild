@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -43,7 +43,7 @@ src_compile() {
 	einfo "Compiling txw-runtime"
 	JAVA_SRC_DIR="txw/runtime/src/main/java"
 	JAVA_JAR_FILENAME="txw-runtime.jar"
-	java-pkg-simple_src_compile
+	java-pkg-simple_compile_jar
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":txw-runtime.jar"
 	rm -r target || die
 
@@ -52,7 +52,7 @@ src_compile() {
 	JAVA_RESOURCE_DIRS="core/src/main/resources"
 	JAVA_JAR_FILENAME="core.jar"
 	JAVA_CLASSPATH_EXTRA+=" istack-commons-runtime,jaxb-api-4"
-	java-pkg-simple_src_compile
+	java-pkg-simple_compile_jar
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":core.jar"
 	rm -r target || die
 
@@ -60,20 +60,18 @@ src_compile() {
 	JAVA_SRC_DIR="runtime/impl/src/main/java"
 	JAVA_RESOURCE_DIRS="runtime/impl/src/main/resources"
 	JAVA_JAR_FILENAME="runtime.jar"
-	java-pkg-simple_src_compile
+	java-pkg-simple_compile_jar
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":runtime.jar"
 	rm -r target || die
 
 	if use doc; then
 		einfo "Compiling javadocs"
-		rm {core,runtime/impl}/src/main/java/module-info.java || die
 		JAVA_SRC_DIR=(
 			"txw/runtime/src/main/java"
 			"core/src/main/java"
 			"runtime/impl/src/main/java"
 		)
-		JAVA_JAR_FILENAME="ignoreme.jar"
-		java-pkg-simple_src_compile
+		java-pkg-simple_call_ejavadoc
 	fi
 }
 
