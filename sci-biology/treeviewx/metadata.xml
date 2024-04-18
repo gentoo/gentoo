@@ -11,4 +11,7 @@
 		files (such as those output by PAUP*, ClustalX, TREE-PUZZLE, and other
 		programs).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rdmpage/treeviewx</remote-id>
+	</upstream>
 </pkgmetadata>
