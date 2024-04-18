@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_IN_SOURCE_BUILD=1 # Simplifies doc build
 CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python3_{10..12} )
 
@@ -51,6 +50,13 @@ src_configure() {
 	cmake_src_configure
 
 	if use doc; then
+		if tc-is-cross-compiler; then
+			mycmakeargs=( -DBUILD_TESTING=OFF )
+			local BUILD_DIR=${WORKDIR}/native
+			local SYSROOT=
+			tc-env_build cmake_src_configure
+		fi
+
 		python_setup
 		edo ${EPYTHON} configure.py
 	fi
@@ -60,16 +66,11 @@ src_compile() {
 	cmake_src_compile
 
 	if use doc; then
-		local ninja=./ninja
 		if tc-is-cross-compiler; then
-			ninja=$(type -P ninja)
+			local BUILD_DIR=${WORKDIR}/native
+			cmake_build ninja
 		fi
-		if [[ -n ${ninja} ]]; then
-			edo "${ninja}" -v -j1 doxygen manual
-			DOCS_BUILT=yes
-		else
-			DOCS_BUILT=no
-		fi
+		edo "${BUILD_DIR}/ninja" -v -j1 doxygen manual
 	fi
 }
 
@@ -86,7 +87,7 @@ src_install() {
 
 	mv "${ED}"/usr/bin/ninja{,-reference} || die
 
-	if [[ ${DOCS_BUILT} == yes ]]; then
+	if use doc; then
 		docinto html
 		dodoc -r doc/doxygen/html/.
 		dodoc doc/manual.html
