@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-18)
+# Upstream gone, unfetchable, stuck on EAPI 6. Bug 605796
+# Removal on 2024-05-18
+sci-visualization/spectromatic
+
 # Fabian Groffen <grobian@gentoo.org> (2024-04-16)
 # Official latest Python support 3.8, replacement app-metrics/go-carbon
 # is more performant and designed to be a drop-in replacement.
