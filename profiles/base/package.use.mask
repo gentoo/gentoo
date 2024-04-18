@@ -623,10 +623,6 @@ dev-python/autobahn xbr
 # Mostly intended for development and not for general use.
 >=www-client/chromium-84 headless
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-21)
-# Multiple runtime crashes, see bug #724672
-media-gfx/inkscape jemalloc
-
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
 net-fs/samba test
