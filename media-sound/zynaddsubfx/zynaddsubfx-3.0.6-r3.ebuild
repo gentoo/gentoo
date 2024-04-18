@@ -16,7 +16,7 @@ IUSE="+alsa doc dssi +fltk jack lash portaudio"
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
 DEPEND="
-	dev-libs/mxml
+	dev-libs/mxml:0
 	media-libs/liblo
 	sci-libs/fftw:3.0
 	sys-libs/zlib
