@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -65,25 +65,23 @@ src_compile() {
 	"
 	JAVA_SRC_DIR="lang-model/src/main/java"
 	JAVA_JAR_FILENAME="lang-model.jar"
-	java-pkg-simple_src_compile
+	java-pkg-simple_compile_jar
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":lang-model.jar"
 	rm -r target || die
 
 	JAVA_SRC_DIR="api/src/main/java"
 	JAVA_RESOURCE_DIRS="api/src/main/resources"
 	JAVA_JAR_FILENAME="cdi-api.jar"
-	java-pkg-simple_src_compile
+	java-pkg-simple_compile_jar
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":cdi-api.jar"
 	rm -r target || die
 
 	if use doc; then
-		rm lang-model/src/main/java/module-info.java || die
 		JAVA_SRC_DIR=(
 			"lang-model/src/main/java"
 			"api/src/main/java"
 		)
-		JAVA_JAR_FILENAME="ignoreme.jar"
-		java-pkg-simple_src_compile
+		java-pkg-simple_call_ejavadoc
 	fi
 }
 
