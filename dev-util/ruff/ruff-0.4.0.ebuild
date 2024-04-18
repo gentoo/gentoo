@@ -20,15 +20,12 @@ CRATES="
 	anstyle-query@1.0.2
 	anstyle-wincon@3.0.2
 	anstyle@1.0.6
-	anyhow@1.0.81
-	argfile@0.1.6
+	anyhow@1.0.82
+	argfile@0.2.0
 	arrayvec@0.7.4
-	ascii-canvas@3.0.0
 	autocfg@1.1.0
 	base64@0.21.7
 	bincode@1.3.3
-	bit-set@0.5.3
-	bit-vec@0.6.3
 	bitflags@1.3.2
 	bitflags@2.5.0
 	bstr@1.9.1
@@ -39,7 +36,7 @@ CRATES="
 	cfg-if@1.0.0
 	cfg_aliases@0.1.1
 	chic@1.2.2
-	chrono@0.4.37
+	chrono@0.4.38
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
@@ -52,8 +49,8 @@ CRATES="
 	clap_derive@4.5.4
 	clap_lex@0.7.0
 	clearscreen@3.0.0
-	codspeed-criterion-compat@2.4.0
-	codspeed@2.4.0
+	codspeed-criterion-compat@2.4.1
+	codspeed@2.4.1
 	colorchoice@1.0.0
 	colored@2.1.0
 	console@0.15.8
@@ -75,8 +72,6 @@ CRATES="
 	darling_core@0.20.8
 	darling_macro@0.20.8
 	diff@0.1.13
-	dirs-next@2.0.0
-	dirs-sys-next@0.1.2
 	dirs-sys@0.3.7
 	dirs-sys@0.4.1
 	dirs@4.0.0
@@ -84,7 +79,6 @@ CRATES="
 	drop_bomb@0.1.5
 	dyn-clone@1.0.17
 	either@1.10.0
-	ena@0.14.2
 	encode_unicode@0.3.6
 	env_filter@0.1.0
 	env_logger@0.11.3
@@ -93,7 +87,6 @@ CRATES="
 	fastrand@2.0.1
 	fern@0.6.2
 	filetime@0.2.23
-	fixedbitset@0.4.2
 	flate2@1.0.28
 	fnv@1.0.7
 	form_urlencoded@1.2.1
@@ -124,7 +117,7 @@ CRATES="
 	indoc@2.0.5
 	inotify-sys@0.1.5
 	inotify@0.9.6
-	insta-cmd@0.5.0
+	insta-cmd@0.6.0
 	insta@1.38.0
 	instant@0.1.12
 	is-docker@0.2.0
@@ -132,15 +125,12 @@ CRATES="
 	is-terminal@0.4.12
 	is-wsl@0.4.0
 	itertools@0.10.5
-	itertools@0.11.0
 	itertools@0.12.1
 	itoa@1.0.10
 	jod-thread@0.1.2
 	js-sys@0.3.69
 	kqueue-sys@1.0.4
 	kqueue@1.0.8
-	lalrpop-util@0.20.2
-	lalrpop@0.20.2
 	lazy_static@1.4.0
 	lexical-parse-float@0.8.5
 	lexical-parse-integer@0.8.6
@@ -152,7 +142,6 @@ CRATES="
 	libredox@0.0.1
 	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.13
-	lock_api@0.4.11
 	log@0.4.21
 	lsp-server@0.7.6
 	lsp-types@0.95.1
@@ -164,7 +153,6 @@ CRATES="
 	miniz_oxide@0.7.2
 	mio@0.8.11
 	natord@1.0.9
-	new_debug_unreachable@1.0.4
 	nix@0.28.0
 	nom@7.1.3
 	notify@6.1.1
@@ -178,8 +166,6 @@ CRATES="
 	option-ext@0.2.0
 	os_str_bytes@6.6.1
 	overload@0.1.1
-	parking_lot@0.12.1
-	parking_lot_core@0.9.9
 	paste@1.0.14
 	path-absolutize@3.1.1
 	path-dedot@3.1.1
@@ -188,26 +174,23 @@ CRATES="
 	peg-runtime@0.8.2
 	peg@0.8.2
 	pep440_rs@0.4.0
-	pep440_rs@0.5.0
+	pep440_rs@0.6.0
 	pep508_rs@0.3.0
 	percent-encoding@2.3.1
-	petgraph@0.6.4
 	phf@0.11.2
 	phf_codegen@0.11.2
 	phf_generator@0.11.2
-	phf_shared@0.10.0
 	phf_shared@0.11.2
 	pin-project-lite@0.2.13
 	pmutil@0.6.1
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
-	precomputed-hash@0.1.1
 	pretty_assertions@1.4.0
-	proc-macro2@1.0.79
+	proc-macro2@1.0.80
 	pyproject-toml@0.9.0
 	quick-junit@0.3.6
 	quick-xml@0.31.0
-	quote@1.0.35
+	quote@1.0.36
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
@@ -235,7 +218,6 @@ CRATES="
 	schemars@0.8.16
 	schemars_derive@0.8.16
 	scoped-tls@1.0.1
-	scopeguard@1.2.0
 	seahash@4.1.0
 	serde-wasm-bindgen@0.6.5
 	serde@1.0.197
@@ -255,7 +237,6 @@ CRATES="
 	smallvec@1.13.2
 	spin@0.9.8
 	static_assertions@1.1.0
-	string_cache@0.8.7
 	strip-ansi-escapes@0.2.0
 	strsim@0.10.0
 	strsim@0.11.0
@@ -263,9 +244,8 @@ CRATES="
 	strum_macros@0.26.2
 	subtle@2.5.0
 	syn@1.0.109
-	syn@2.0.58
+	syn@2.0.59
 	tempfile@3.10.1
-	term@0.7.0
 	terminal_size@0.3.0
 	terminfo@0.8.0
 	test-case-core@3.3.1
@@ -276,7 +256,6 @@ CRATES="
 	thread_local@1.1.8
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
-	tiny-keccak@2.0.2
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
@@ -300,7 +279,6 @@ CRATES="
 	unicode-ident@1.0.12
 	unicode-normalization@0.1.23
 	unicode-width@0.1.11
-	unicode-xid@0.2.4
 	unicode_names2@1.2.2
 	unicode_names2_generator@1.2.2
 	unscanny@0.1.0
