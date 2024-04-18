@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (2024-04-18)
+# Wayland client is broken/deprecated by upstream. Bug 930197.
+>=net-misc/freerdp-3 wayland
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
 # Depends on last-rited kde-apps/ktp-accounts-kcm
 dev-util/kdevelop reviewboard
