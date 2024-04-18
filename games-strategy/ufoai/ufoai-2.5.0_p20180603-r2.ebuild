@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ SRC_URI="
 	https://dev.gentoo.org/~chewi/distfiles/${PN}-code-${COMMIT}.zip
 	mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-data.tar
 "
+S="${WORKDIR}/${PN}-code-${COMMIT}"
 
 # https://ufoai.org/licenses/
 LICENSE="GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0 MIT"
@@ -29,7 +30,7 @@ IUSE="+client cpu_flags_x86_sse debug server"
 REQUIRED_USE="|| ( client server )"
 
 RDEPEND="
-	dev-libs/mxml
+	dev-libs/mxml:0
 	net-misc/curl
 	sys-libs/zlib
 
@@ -57,8 +58,6 @@ DEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${PN}-code-${COMMIT}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-install.patch
