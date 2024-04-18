@@ -8,6 +8,7 @@ inherit cmake flag-o-matic xdg
 DESCRIPTION="Software synthesizer based on ZynAddSubFX"
 HOMEPAGE="https://yoshimi.github.io/"
 SRC_URI="https://github.com/${PN^}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,7 +17,7 @@ IUSE="+lv2"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	dev-libs/mxml
+	dev-libs/mxml:0
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/libsndfile
@@ -30,8 +31,6 @@ DEPEND="
 	lv2? ( media-libs/lv2 )
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${P}/src"
 
 DOCS=( ../Changelog ../README.txt )
 
