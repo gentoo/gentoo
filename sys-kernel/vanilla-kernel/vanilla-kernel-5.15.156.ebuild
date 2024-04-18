@@ -9,7 +9,7 @@ MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.15.19
 CONFIG_HASH=ec69da7a42b5b7c3da91572ef22097b069ddbd01
-GENTOO_CONFIG_VER=g11
+GENTOO_CONFIG_VER=g12
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
