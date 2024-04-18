@@ -9,6 +9,7 @@ DESCRIPTION="Security and system auditing tool"
 HOMEPAGE="https://cisofy.com/lynis/"
 SRC_URI="https://cisofy.com/files/${P}.tar.gz"
 
+S="${WORKDIR}/${PN}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -17,8 +18,6 @@ IUSE="+cron systemd"
 RDEPEND="
 	app-shells/bash
 	cron? ( !systemd? ( virtual/cron ) )"
-
-S="${WORKDIR}/${PN}"
 
 src_install() {
 	doman lynis.8
