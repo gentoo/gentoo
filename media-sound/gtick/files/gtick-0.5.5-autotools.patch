@@ -1,0 +1,27 @@
+--- a/configure.ac	2020-05-17 13:08:52.000000000 +0300
++++ b/configure.ac	2024-04-18 07:54:45.000000000 +0300
+@@ -24,7 +24,6 @@
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([m], [floor])
+-AC_CHECK_LIB([sndfile], [sf_open])
+ AC_CHECK_LIB([check], [fail_if])
+ AC_CHECK_LIB([dmalloc], [dmalloc_debug])
+ 
+@@ -71,7 +70,7 @@
+ fi
+ 
+ # GNU gettext
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT(external)
+ AM_GNU_GETTEXT_VERSION(0.19.8)
+ 
+ # directory containing configuration support files
+--- a/Makefile.am	2014-07-27 21:32:03.000000000 +0400
++++ b/Makefile.am	2024-04-18 07:54:01.400000000 +0300
+@@ -1,4 +1,4 @@
+-SUBDIRS = doc intl po src testsuite
++SUBDIRS = doc po src testsuite
+ 
+ EXTRA_DIST = config.rpath \
+ 	     autogen.sh \

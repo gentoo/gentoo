@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop xdg-utils
+inherit autotools desktop xdg-utils
 
 DESCRIPTION="Metronome application supporting different meters and speeds ranging"
 HOMEPAGE="https://www.antcom.de/gtick"
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="nls sndfile"
 
-RDEPEND="media-sound/pulseaudio
+RDEPEND="media-libs/libpulse
+	virtual/libintl
 	x11-libs/gtk+:2
 	sndfile? ( media-libs/libsndfile )"
 DEPEND="${RDEPEND}"
@@ -24,14 +25,17 @@ BDEPEND="virtual/pkgconfig
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${PN}-0.5.5-desktop.patch
+	"${FILESDIR}"/${PN}-0.5.5-autotools.patch
 )
 
 src_prepare() {
 	default
 
 	sed -i 's:^\(appdatadir = .*/\)appdata:\1metainfo:' \
-		Makefile.in || die
+		Makefile.{am,in} || die
+
+	eautoreconf
 }
 
 src_configure() {
