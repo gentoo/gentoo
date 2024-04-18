@@ -43,7 +43,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/9999-Disable-things-we-don-t-want.patch
+	"${FILESDIR}"/${PV}-Disable-things-we-don-t-want.patch
 )
 
 pkg_setup() {
@@ -72,6 +72,7 @@ multilib_src_configure() {
 		-Degl=enabled
 		-Dgles1=disabled
 		$(meson_feature gles2)
+		-Dglut=disabled
 		-Dosmesa=disabled
 		$(meson_feature vulkan)
 		$(meson_feature wayland)
