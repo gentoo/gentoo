@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/opengl
 	virtual/glu
-	virtual/jpeg:0=
+	media-libs/libjpeg-turbo:0=
 	x11-libs/libX11
 	x11-libs/libXext
 	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
