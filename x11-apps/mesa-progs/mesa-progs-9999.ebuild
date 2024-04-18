@@ -25,14 +25,21 @@ IUSE="gles2 vulkan wayland X"
 
 RDEPEND="
 	media-libs/libglvnd[${MULTILIB_USEDEP},X?]
-	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+	wayland? (
+		dev-libs/wayland[${MULTILIB_USEDEP}]
+		gui-libs/libdecor[${MULTILIB_USEDEP}]
+		x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
+	)
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
+		vulkan? (
+			x11-libs/libxcb:=[${MULTILIB_USEDEP}]
+			x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
+		)
 	)
 "
 DEPEND="${RDEPEND}
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-protocols-1.12 )
 	X? ( x11-base/xorg-proto )
 "
