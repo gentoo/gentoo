@@ -16,8 +16,8 @@ HOMEPAGE="
 	https://pypi.org/project/autobahn/
 "
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="amd64 arm arm64 ~riscv ~sparc x86"
 IUSE="test xbr"
 RESTRICT="!test? ( test )"
