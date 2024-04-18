@@ -18,10 +18,10 @@ else
 	KEYWORDS="~amd64"
 fi
 
+S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="MIT"
 SLOT="0"
 IUSE="mbedtls"
-
 DEPEND="
 	dev-libs/json-c:=
 	dev-libs/libuv:=
@@ -30,8 +30,6 @@ DEPEND="
 	!mbedtls? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_install() {
 	cmake_src_install
