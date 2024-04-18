@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit cmake go-module systemd xdg-utils
+inherit cmake desktop go-module systemd xdg-utils
 
 MY_PN="${PN/-mail/}"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Serves ProtonMail to IMAP/SMTP clients"
+DESCRIPTION="Serves Proton Mail to IMAP/SMTP clients"
 HOMEPAGE="https://proton.me/mail/bridge https://github.com/ProtonMail/proton-bridge/"
 SRC_URI="https://github.com/ProtonMail/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~marecki/dists/${CATEGORY}/${PN}/${P}-deps.tar.xz"
@@ -91,6 +91,8 @@ src_install() {
 			CMAKE_USE_DIR="${S}"/internal/frontend/bridge-gui/bridge-gui \
 			cmake_src_install
 		mv "${ED}"/usr/bin/bridge-gui "${ED}"/usr/bin/${PN}-gui || die
+		newicon "${S}"/dist/bridge.svg ${PN}.svg
+		make_desktop_entry ${PN}-gui "Proton Mail Bridge" ${PN}.svg "Email;Network"
 	fi
 
 	systemd_newuserunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
