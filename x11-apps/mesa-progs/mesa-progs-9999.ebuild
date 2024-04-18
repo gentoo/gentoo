@@ -14,8 +14,8 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/demos.git"
 else
-	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.bz2
-		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.bz2"
+	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.xz
+		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
