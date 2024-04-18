@@ -110,6 +110,7 @@ COMMON_DEPEND="
 	snapper? ( sys-apps/dbus )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl(-),${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.19[${MULTILIB_USEDEP}] )
+	!system-mitkrb5? ( sys-libs/keyutils[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:= )
 	unwind? (
 		llvm-libunwind? ( sys-libs/llvm-libunwind:= )
