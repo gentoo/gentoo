@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 # Check QPDF_MIN_VERSION in pyproject.toml on bumps, as well as
 # https://qpdf.readthedocs.io/en/stable/release-notes.html.
@@ -26,10 +26,10 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	dev-python/deprecated[${PYTHON_USEDEP}]
+	dev-python/deprecation[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP}]
+	>=dev-python/pillow-9.0[lcms,${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pybind11-2.10.1[${PYTHON_USEDEP}]
@@ -45,8 +45,7 @@ BDEPEND="
 		>=dev-python/python-xmp-toolkit-2.0.1[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/tomli[${PYTHON_USEDEP}]
-		' 3.10)
-		media-libs/tiff[zlib]
+		' 3.{8..10})
 	)
 "
 
@@ -60,9 +59,4 @@ EPYTEST_DESELECT=(
 src_prepare() {
 	sed -e '/-n auto/d' -i pyproject.toml || die
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p timeout
 }

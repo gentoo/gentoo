@@ -29,7 +29,7 @@ RDEPEND="
 	dev-python/deprecated[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP}]
+	>=dev-python/pillow-10.0.1[lcms,${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/pybind11-2.10.1[${PYTHON_USEDEP}]
