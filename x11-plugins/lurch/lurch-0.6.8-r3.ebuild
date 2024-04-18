@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ SRC_URI="https://github.com/gkdr/lurch/releases/download/v${PV}/lurch-${PV}-src.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 # NOTE
 #   The build systems of axc (ex-libaxolotl)
@@ -35,7 +34,7 @@ RDEPEND="
 	dev-libs/glib
 	dev-libs/libgcrypt:=
 	dev-libs/libxml2
-	dev-libs/mxml
+	dev-libs/mxml:0
 	net-im/pidgin:=
 	>=net-libs/libsignal-protocol-c-2.3.2
 	"
