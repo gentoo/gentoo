@@ -14,6 +14,7 @@ SRC_URI="
 	arm64? ( https://download.jetbrains.com/idea/ideaIC-${MY_PV}-aarch64.tar.gz -> ${P}-aarch64.tar.gz )
 	"
 
+S="${WORKDIR}/idea-IC-${PV}"
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
 	codehaus-classworlds CPL-1.0 EPL-1.0 EPL-2.0
 	GPL-2 GPL-2-with-classpath-exception ISC
@@ -37,7 +38,6 @@ RDEPEND="${DEPEND}
 
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
-S="${WORKDIR}/idea-IC-${PV}"
 
 QA_PREBUILT="opt/${PN}/*"
 
