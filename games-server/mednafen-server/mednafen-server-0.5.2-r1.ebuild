@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Server for Mednafen emulator"
 HOMEPAGE="http://mednafen.fobby.net/releases/"
-SRC_URI="http://mednafen.fobby.net/releases/files/${P}.tar.gz"
+SRC_URI="http://mednafen.fobby.net/releases/files/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
