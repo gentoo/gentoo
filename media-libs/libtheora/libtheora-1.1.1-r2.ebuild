@@ -7,7 +7,7 @@ inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="The Theora Video Compression Codec"
 HOMEPAGE="https://www.theora.org"
-SRC_URI="https://downloads.xiph.org/releases/theora/${P/_}.tar.bz2"
+SRC_URI="https://downloads.xiph.org/releases/theora/${P/_}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
