@@ -83,6 +83,11 @@ RESTRICT="test"
 
 GOPATH="${S}/_dist"
 
+src_unpack() {
+	verify-sig_src_unpack
+	go-module_src_unpack
+}
+
 src_prepare() {
 	export GOPATH="${S}/_dist"
 
@@ -147,7 +152,12 @@ src_test() {
 
 src_install() {
 	export GOPATH="${S}/_dist"
-	local bindir="_dist/bin"
+
+	if [[ "${GOARCH}" != "amd64" ]]; then
+		local bindir="_dist/bin/linux_${GOARCH}"
+	else
+		local bindir="_dist/bin"
+	fi
 
 	newsbin "${FILESDIR}"/incus-startup-0.4.sh incus-startup
 
@@ -176,11 +186,13 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/incus-user-0.4.service incus-user.service
 	systemd_newunit "${FILESDIR}"/incus-user-0.4.socket incus-user.socket
 
-	# Generate and install shell completion files.
-	mkdir -p "${D}"/usr/share/{bash-completion/completions/,fish/vendor_completions.d/,zsh/site-functions/} || die
-	"${bindir}"/incus completion bash > "${D}"/usr/share/bash-completion/completions/incus || die
-	"${bindir}"/incus completion fish > "${D}"/usr/share/fish/vendor_completions.d/incus.fish || die
-	"${bindir}"/incus completion zsh > "${D}"/usr/share/zsh/site-functions/_incus || die
+	if ! tc-is-cross-compiler; then
+		# Generate and install shell completion files.
+		mkdir -p "${D}"/usr/share/{bash-completion/completions/,fish/vendor_completions.d/,zsh/site-functions/} || die
+		"${bindir}"/incus completion bash > "${D}"/usr/share/bash-completion/completions/incus || die
+		"${bindir}"/incus completion fish > "${D}"/usr/share/fish/vendor_completions.d/incus.fish || die
+		"${bindir}"/incus completion zsh > "${D}"/usr/share/zsh/site-functions/_incus || die
+	fi
 
 	dodoc AUTHORS
 	dodoc -r doc/*
