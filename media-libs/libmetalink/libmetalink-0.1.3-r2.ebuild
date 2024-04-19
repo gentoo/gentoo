@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Library for handling Metalink files"
 HOMEPAGE="https://launchpad.net/libmetalink"
-SRC_URI="https://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.bz2"
+SRC_URI="https://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
