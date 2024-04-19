@@ -45,6 +45,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	net-misc/networkmanager
 	>=net-vpn/eduvpn-common-1.99.0[${PYTHON_USEDEP}]
 "
 
