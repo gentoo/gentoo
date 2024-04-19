@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit meson-multilib
 
 DESCRIPTION="AudioProcessing library from the webrtc.org codebase"
 HOMEPAGE="https://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/"
-SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.gz"
+SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="1"
