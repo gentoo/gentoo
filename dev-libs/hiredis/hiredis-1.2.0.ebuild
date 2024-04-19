@@ -30,13 +30,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-disable-network-tests.patch
 )
 
-src_prepare() {
-	default
-
-	# use GNU ld syntax on Solaris
-	sed -i -e '/DYLIB_MAKE_CMD=.* -G/d' Makefile || die
-}
-
 _build() {
 	emake \
 		AR="$(tc-getAR)" \
