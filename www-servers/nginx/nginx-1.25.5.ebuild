@@ -154,7 +154,7 @@ HTTP_LDAP_MODULE_URI="https://github.com/kvspb/nginx-auth-ldap/archive/${HTTP_LD
 HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 
 # nginx-vod-module (https://github.com/kaltura/nginx-vod-module, AGPL-3+)
-HTTP_VOD_MODULE_PV="1.28"
+HTTP_VOD_MODULE_PV="1.33"
 HTTP_VOD_MODULE_P="nginx-vod-module-${HTTP_VOD_MODULE_PV}"
 HTTP_VOD_MODULE_URI="https://github.com/kaltura/nginx-vod-module/archive/${HTTP_VOD_MODULE_PV}.tar.gz"
 HTTP_VOD_MODULE_WD="${WORKDIR}/nginx-vod-module-${HTTP_VOD_MODULE_PV}"
