@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-19)
+# EAPI=6, library only without any reverse dependencies, uses
+# deprecated go eclasses, maintainer-needed.
+# Removal on 2024-05-19, bug #930249
+dev-go/qr
+dev-go/twofactor
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-18)
 # Upstream gone, unfetchable, stuck on EAPI 6. Bug 605796
 # Removal on 2024-05-18
