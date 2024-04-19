@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="RAW image formats decoding library"
 HOMEPAGE="https://libopenraw.freedesktop.org/"
-SRC_URI="https://${PN}.freedesktop.org/download/${P}.tar.bz2"
+SRC_URI="https://${PN}.freedesktop.org/download/${P}.tar.xz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/7"
