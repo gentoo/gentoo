@@ -36,7 +36,7 @@ DEPEND="
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/cairo
-		>=x11-libs/gtk+-3.14:3
+		>=x11-libs/gtk+-3.14:3[X]
 	)
 	>=media-libs/libpng-1.2.16:=
 	pango? (
