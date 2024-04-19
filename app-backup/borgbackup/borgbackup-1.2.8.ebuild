@@ -14,7 +14,7 @@ HOMEPAGE="https://borgbackup.readthedocs.io/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 # "import file mismatch" when in S, "attempted relative import with no
 # known parent package" when in BUILD_DIR/install/.../borg/testsuite.
