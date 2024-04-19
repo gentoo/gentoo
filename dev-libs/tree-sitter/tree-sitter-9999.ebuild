@@ -16,7 +16,10 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0"
+# ABI is not stable. Revisit after tree-sitter-1.0.
+# https://bugs.gentoo.org/930039
+# https://github.com/tree-sitter/tree-sitter/pull/3302
+SLOT="0/${PV}"
 RESTRICT="test" # tests are for CLI and not the lib
 
 PATCHES=(
