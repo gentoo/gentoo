@@ -64,7 +64,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
 inherit check-reqs chromium-2 desktop flag-o-matic llvm ninja-utils pax-utils
-inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-utils
+inherit python-any-r1 qmake-utils readme.gentoo-r1 systemd toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
@@ -1435,5 +1435,13 @@ pkg_postinst() {
 			elog "--qt-version=6, e.g. by adding it to CHROMIUM_FLAGS in"
 			elog "/etc/chromium/default."
 		fi
+	fi
+
+	if systemd_is_booted && ! -f /etc/machine-id ; then
+		ewarn "The lack of an '/etc/machine-id' file on this system booted with systemd"
+		ewarn "indicates that the Gentoo handbook was not followed to completion."
+		ewarn ""
+		ewarn "Chromium is known to behave unpredictably with this system configuration;"
+		ewarn "please complete the configuration of this system before logging any bugs."
 	fi
 }
