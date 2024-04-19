@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit gnome2
 
 DESCRIPTION="Convert UML diagrams produced with Dia to various source code flavours"
@@ -14,16 +15,18 @@ KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="${DEPEND}"
-DEPEND="
-	dev-libs/libxml2
+RDEPEND="dev-libs/libxml2"
+DEPEND="${RDEPEND}
 	test? ( app-shells/bash )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-imports.patch
+)
+
 src_prepare() {
 	# Script makes use of arrays
-	sed -e 's:/bin/sh:/bin/bash:' \
-		-i tests/tests.sh || die
+	sed -e 's:/bin/sh:/bin/bash:' -i tests/tests.sh || die
 	gnome2_src_prepare
 }
 
