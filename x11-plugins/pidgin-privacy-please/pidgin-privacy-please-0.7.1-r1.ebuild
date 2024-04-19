@@ -11,7 +11,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="<net-im/pidgin-3[gtk]"
 DEPEND="${RDEPEND}"
