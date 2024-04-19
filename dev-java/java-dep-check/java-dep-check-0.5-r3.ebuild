@@ -1,4 +1,4 @@
-# Copyright 2016-2023 Gentoo Authors
+# Copyright 2016-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,8 +19,8 @@ RDEPEND=">=virtual/jre-1.8:*
 	${CP_DEPEND}"
 DEPEND=">=virtual/jdk-1.8:*
 	${CP_DEPEND}"
+PDEPEND="dev-java/javatoolkit:0"
 
-JAVA_LAUNCHER_FILENAME="${PN}"
 JAVA_MAIN_CLASS="javadepchecker.Main"
 
 src_unpack() {
