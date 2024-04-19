@@ -19,11 +19,11 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="debug +drm +gtk +pango selinux freetype +split-usr static-libs +udev doc upstart-monitoring systemd"
+IUSE="debug +drm +gtk +pango selinux freetype +split-usr +udev doc upstart-monitoring systemd"
 
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
-	>=dev-build/meson-0.61
+	>=dev-build/meson-0.62
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
