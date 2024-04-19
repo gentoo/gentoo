@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2024-04-23)
+# Security issues (Bug #918527) and blocking cleanup of vulnerable
+# dev-lang/erlang versions. Please upgrade.
+# https://www.rabbitmq.com/docs/upgrade
+# Removal on 2024-05-23
+<net-misc/rabbitmq-server-3.13.1
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-20)
 # EAPI6 package, with no reverse dependencies. Not really maintained
 # since gentoo's transition to git. Distfile is fetch and mirror
