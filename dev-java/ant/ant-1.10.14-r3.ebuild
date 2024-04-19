@@ -14,8 +14,8 @@ inherit java-pkg-2 java-pkg-simple verify-sig prefix
 
 DESCRIPTION="Java-based build tool similar to 'make' that uses XML configuration files"
 HOMEPAGE="https://ant.apache.org/"
-SRC_URI="mirror://apache/ant/source/apache-${P}-src.tar.gz
-	verify-sig? ( https://downloads.apache.org/ant/source/apache-${P}-src.tar.gz.asc )"
+SRC_URI="mirror://apache/ant/source/apache-${P}-src.tar.xz
+	verify-sig? ( https://downloads.apache.org/ant/source/apache-${P}-src.tar.xz.asc )"
 S="${WORKDIR}/apache-${P}"
 
 LICENSE="Apache-2.0"
