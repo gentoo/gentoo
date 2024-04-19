@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake-multilib
 
 DESCRIPTION="Fast C++ logging library"
 HOMEPAGE="https://github.com/gabime/spdlog"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="test"
+IUSE="test static-libs"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -36,17 +36,17 @@ PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
 )
 
-src_prepare() {
+multilib_src_prepare() {
 	cmake_src_prepare
 	rm -r include/spdlog/fmt/bundled || die "Failed to delete bundled libfmt"
 }
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DSPDLOG_BUILD_BENCH=no
 		-DSPDLOG_BUILD_EXAMPLE=no
 		-DSPDLOG_FMT_EXTERNAL=yes
-		-DSPDLOG_BUILD_SHARED=yes
+		-DSPDLOG_BUILD_SHARED=$(usex static-libs)
 		-DSPDLOG_BUILD_TESTS=$(usex test)
 	)
 

@@ -28,12 +28,13 @@ BDEPEND="
 	)
 "
 DEPEND="
-	>=dev-libs/libfmt-8.0.0:=
+	>=dev-libs/libfmt-9.1.0-r2[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-force_external_fmt.patch"
+	"${FILESDIR}/${P}-fix-tests.patch"
 )
 
 multilib_src_prepare() {
