@@ -30,6 +30,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859913
+	# https://github.com/ImageMagick/libfpx/issues/6
+	#
+	# Do not trust for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	append-ldflags -Wl,--no-undefined
 	econf \
 		$(use_enable static-libs static) \
