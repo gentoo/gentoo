@@ -34,6 +34,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	virtual/libusb:1
 	cxx? ( dev-libs/boost )
+	doc? ( !dev-embedded/libftdi:0[doc] )
 	python? ( ${PYTHON_DEPS} )
 	tools? ( dev-libs/confuse:= )
 "
