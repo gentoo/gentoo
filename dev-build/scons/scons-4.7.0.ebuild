@@ -76,6 +76,7 @@ src_prepare() {
 			test/TEX/newglossary.py
 			test/TEX/variant_dir_newglossary.py
 			test/Configure/option--config.py
+			test/D/HSTeoh/sconstest-linkingProblem_gdc.py
 			# broken by commas in date, sic!
 			test/option/option-v.py
 			test/Interactive/version.py
