@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Replacement for pipewire-media-session"
@@ -44,13 +44,12 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	sys-devel/gettext
-	test? ( sys-apps/dbus )
 "
 
 DEPEND="
 	${LUA_DEPS}
-	>=dev-libs/glib-2.68
-	>=media-video/pipewire-1.0.2:=
+	>=dev-libs/glib-2.62
+	>=media-video/pipewire-0.3.65-r1:=
 	virtual/libintl
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
@@ -71,7 +70,7 @@ RDEPEND="${DEPEND}
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.81-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
+	"${FILESDIR}"/${PN}-0.4.10-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
 )
 
 src_configure() {
@@ -94,6 +93,17 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	# We copy the default config, so that Gentoo tools can pick up on any
+	# updates and /etc does not end up with stale overrides.
+	# If a reflinking CoW filesystem is used (e.g. Btrfs), then the files
+	# will not actually get stored twice until modified.
+	insinto /etc
+	doins -r "${ED}"/usr/share/wireplumber
 }
 
 pkg_postinst() {
