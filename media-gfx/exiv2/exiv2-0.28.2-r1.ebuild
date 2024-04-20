@@ -22,20 +22,19 @@ LICENSE="GPL-2"
 # We may be able to change it to $(ver_cut 1-2) once e.g.
 # https://github.com/Exiv2/exiv2/pull/917 is merged.
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+bmff doc examples nls +png test webready +xmp"
+IUSE="+bmff doc examples jpegxl nls +png test webready +xmp"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/inih[${MULTILIB_USEDEP}]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
+	jpegxl? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	png? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
-	webready? (
-		net-misc/curl[${MULTILIB_USEDEP}]
-	)
+	webready? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	xmp? ( dev-libs/expat[${MULTILIB_USEDEP}] )
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 BDEPEND="
@@ -74,7 +73,7 @@ src_prepare() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DEXIV2_BUILD_SAMPLES=NO
-		-DEXIV2_ENABLE_BROTLI=OFF
+		-DEXIV2_ENABLE_BROTLI=$(usex jpegxl)
 		-DEXIV2_ENABLE_NLS=$(usex nls)
 		-DEXIV2_ENABLE_PNG=$(usex png)
 		-DEXIV2_ENABLE_CURL=$(usex webready)
