@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-python/sip-6.7[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-8[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
