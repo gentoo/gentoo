@@ -341,7 +341,7 @@ dev-ruby/atomic
 ~kde-frameworks/modemmanager-qt-6.1.0
 ~kde-frameworks/networkmanager-qt-6.1.0
 ~kde-frameworks/prison-6.1.0
-~kde-frameworks/solid-6.1.0
+~kde-frameworks/solid-6.1.1
 ~kde-frameworks/sonnet-6.1.0
 ~kde-frameworks/syntax-highlighting-6.1.0
 ~kde-frameworks/threadweaver-6.1.0
