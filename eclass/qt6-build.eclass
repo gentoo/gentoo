@@ -23,19 +23,19 @@ _QT6_BUILD_ECLASS=1
 
 inherit cmake flag-o-matic toolchain-funcs
 
-# @ECLASS_VARIABLE: QT6_MODULE
-# @PRE_INHERIT
-# @DESCRIPTION:
-# The upstream name of the module this package belongs to.
-# Used for SRC_URI and EGIT_REPO_URI.
-: "${QT6_MODULE:=${PN}}"
-
 # @ECLASS_VARIABLE: QT6_BUILD_TYPE
 # @DESCRIPTION:
 # Read only variable set based on PV to one of:
 #  - release: official 6.x.x releases
 #  - pre-release: development 6.x.x_rc/beta/alpha releases
 #  - live: *.9999 (dev branch), 6.x.9999 (stable branch)
+
+# @ECLASS_VARIABLE: QT6_MODULE
+# @PRE_INHERIT
+# @DESCRIPTION:
+# The upstream name of the module this package belongs to.
+# Used for SRC_URI and EGIT_REPO_URI.
+: "${QT6_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: QT6_RESTRICT_TESTS
 # @DEFAULT_UNSET
