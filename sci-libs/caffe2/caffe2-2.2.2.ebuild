@@ -15,6 +15,8 @@ HOMEPAGE="https://pytorch.org/"
 SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${MYP}.tar.gz"
 
+S="${WORKDIR}"/${MYP}
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -106,8 +108,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
 	"${FILESDIR}"/${PN}-2.1.2-rocm-fix-std-cpp17.patch
 )
-
-S="${WORKDIR}"/${MYP}
 
 src_prepare() {
 	filter-lto #bug 862672
