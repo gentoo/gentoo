@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-20)
+# EAPI6 package, with no reverse dependencies. Not really maintained
+# since gentoo's transition to git. Distfile is fetch and mirror
+# restricted, and based on comment in ebuild, the source isn't stable
+# and we can lose the only source for distfile.
+# Removal on 2024-05-20, bug #930346.
+sys-block/megamgr
+
 # Maciej Barć <xgqt@gentoo.org> (2024-04-20)
 # No reverse dependencies, old packages for mono, uses abandoned mono.eclass.
 # Dotnet Project is not willing to take up those packages.
