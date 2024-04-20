@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+    <remote-id type="codeberg">pf-kernel/linux</remote-id>
   </upstream>
 </pkgmetadata>
