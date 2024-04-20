@@ -20,7 +20,7 @@ VALA_DEPEND="
 	dev-libs/folks[vala(+)]
 	gnome-online-accounts? ( net-libs/gnome-online-accounts[vala] )
 	gnome-extra/evolution-data-server[gtk,vala]
-	>=dev-libs/libportal-0.6:=[vala]
+	>=dev-libs/libportal-0.6:=[gtk,vala]
 "
 RDEPEND="
 	>=dev-libs/folks-0.14.0:=[eds]
