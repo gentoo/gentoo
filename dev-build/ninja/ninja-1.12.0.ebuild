@@ -3,10 +3,9 @@
 
 EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit bash-completion-r1 edo cmake python-any-r1 toolchain-funcs
+inherit bash-completion-r1 edo python-any-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
@@ -21,19 +20,17 @@ HOMEPAGE="https://ninja-build.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+IUSE="doc"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/re2c
 	doc? (
-		${PYTHON_DEPS}
 		app-text/asciidoc
 		app-text/doxygen
 		dev-libs/libxslt
 		media-gfx/graphviz
 	)
-	test? ( dev-cpp/gtest )
 "
 PDEPEND="
 	app-alternatives/ninja
@@ -43,49 +40,45 @@ pkg_setup() {
 	:
 }
 
-src_configure() {
-	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test ON OFF)
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/ninja-cflags.patch
 	)
-	cmake_src_configure
+	default
+}
 
-	if use doc; then
-		if tc-is-cross-compiler; then
-			mycmakeargs=( -DBUILD_TESTING=OFF )
-			local BUILD_DIR=${WORKDIR}/native
-			local SYSROOT=
-			tc-env_build cmake_src_configure
-		fi
-
-		python_setup
-		edo ${EPYTHON} configure.py
+bootstrap() {
+	if tc-is-cross-compiler; then
+		local -x AR=$(tc-getBUILD_AR)
+		local -x CXX=$(tc-getBUILD_CXX)
+		local -x CFLAGS=
+		local -x CXXFLAGS="${BUILD_CXXFLAGS} -D_FILE_OFFSET_BITS=64"
+		local -x LDFLAGS=${BUILD_LDFLAGS}
 	fi
+	edo ${EPYTHON} configure.py --with-python=python --bootstrap --verbose
 }
 
 src_compile() {
-	cmake_src_compile
+	python_setup
+
+	tc-export AR CXX
+	unset CFLAGS
+	export CXXFLAGS="${CXXFLAGS} -D_FILE_OFFSET_BITS=64"
+
+	bootstrap
 
 	if use doc; then
-		if tc-is-cross-compiler; then
-			local BUILD_DIR=${WORKDIR}/native
-			cmake_build ninja
-		fi
-		edo "${BUILD_DIR}/ninja" -v -j1 doxygen manual
+		edo ./ninja -v doxygen manual
 	fi
-}
 
-src_test() {
-	if ! tc-is-cross-compiler; then
-		# Bug 485772
-		ulimit -n 2048
-		cmake_src_test
+	if tc-is-cross-compiler; then
+		edo ${EPYTHON} configure.py --with-python=python
+		edo ./ninja -v ninja
 	fi
 }
 
 src_install() {
-	cmake_src_install
-
-	mv "${ED}"/usr/bin/ninja{,-reference} || die
+	newbin ninja{,-reference}
 
 	if use doc; then
 		docinto html
