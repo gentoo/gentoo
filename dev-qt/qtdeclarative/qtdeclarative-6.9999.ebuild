@@ -4,6 +4,11 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
+
+# behaves very badly when qtdeclarative is not already installed, also
+# other more minor issues (installs junk, sandbox/offscreen issues)
+QT6_RESTRICT_TESTS=1
+
 inherit python-any-r1 qt6-build
 
 DESCRIPTION="Qt Declarative (Quick 2)"
@@ -13,10 +18,6 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="accessibility +network opengl qmlls +sql +ssl svg vulkan +widgets"
-
-# behaves very badly when qtdeclarative is not already installed, also
-# other more minor issues (installs junk, sandbox/offscreen issues)
-RESTRICT="test"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[accessibility=,gui,network=,opengl=,sql?,ssl?,vulkan=,widgets=]
