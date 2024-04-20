@@ -50,7 +50,7 @@ LICENSE="|| ( Apache-2.0 MIT ISC )"
 LICENSE+=" BSD ISC MIT"
 # For Ring (see its LICENSE)
 LICENSE+=" ISC openssl SSLeay MIT"
-SLOT="0/${PV}"
+SLOT="0/${PV%.*}"
 KEYWORDS="~amd64"
 
 BDEPEND="dev-util/cargo-c"
@@ -66,10 +66,6 @@ src_prepare() {
 src_configure() {
 	# bug #927231
 	filter-lto
-
-	# textrels in ring
-	# Hopefully fixed with https://github.com/rustls/rustls-ffi/pull/389
-	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-Wl,-z,notext"
 
 	multilib-minimal_src_configure
 }
