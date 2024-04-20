@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -15,8 +15,8 @@ KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/libowfat
-	dev-libs/dietlibc"
-
+	dev-libs/dietlibc
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -26,10 +26,13 @@ PATCHES=(
 DOCS=( CHANGES README TODO )
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -I/usr/include/libowfat" \
-		LDFLAGS="${LDFLAGS}" \
-		DIET="diet"\
+	local mymakeflags=(
+		CFLAGS="${CFLAGS} -I/usr/include/libowfat"
+		LDFLAGS="${LDFLAGS}"
+		DIET="diet"
 		CC="$(tc-getCC)"
+	)
+	emake "${mymakeflags[@]}"
 }
 
 src_install() {
