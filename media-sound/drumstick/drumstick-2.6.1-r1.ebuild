@@ -49,6 +49,7 @@ src_configure() {
 		-DUSE_FLUIDSYNTH=$(usex fluidsynth)
 		-DUSE_NETWORK=$(usex network)
 		-DUSE_PULSEAUDIO=$(usex pulseaudio)
+		-DUSE_QT=5 # bug 919682
 		-DBUILD_DOCS=$(usex doc)
 	)
 	cmake_src_configure
