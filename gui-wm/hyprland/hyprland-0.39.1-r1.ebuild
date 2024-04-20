@@ -95,6 +95,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://bugs.gentoo.org/930132
+	# https://github.com/hyprwm/Hyprland/pull/5653
+	"${FILESDIR}/bash-completion-fix-0.39.1.patch"
+)
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
