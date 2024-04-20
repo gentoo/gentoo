@@ -62,5 +62,10 @@ src_test() {
 		)
 	fi
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	distutils-r1_src_test
+}
+
+python_test() {
+	epytest -p rerunfailures
 }
