@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit udev
 
@@ -12,12 +12,11 @@ SRC_URI="https://github.com/projg2/uam/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	acct-group/plugdev
 	virtual/udev"
-DEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 pkg_postinst() {
 	elog "To be able to access uam-mounted filesystems, you have to be"
@@ -36,5 +35,9 @@ pkg_postinst() {
 	elog "If you'd like to receive libnotify-based notifications, you need"
 	elog "to install the [x11-misc/sw-notify-send] tool."
 
+	udev_reload
+}
+
+pkg_postrm() {
 	udev_reload
 }
