@@ -37,6 +37,15 @@ inherit cmake flag-o-matic toolchain-funcs
 #  - pre-release: development 6.x.x_rc/beta/alpha releases
 #  - live: *.9999 (dev branch), 6.x.9999 (stable branch)
 
+# @ECLASS_VARIABLE: QT6_RESTRICT_TESTS
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set to a non-empty value, will not add IUSE="test" and set
+# RESTRICT="test" instead.  Primarily intended for ebuilds where
+# running tests is unmaintained (or missing) rather than just
+# temporarily restricted not to have a broken USE (bug #930266).
+
 if [[ ${PV} == *.9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=(
@@ -68,7 +77,9 @@ HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 SLOT=6/${PV%%_*}
 
-if [[ ${PN} != qttranslations ]]; then
+if [[ ${QT6_RESTRICT_TESTS} ]]; then
+	RESTRICT="test"
+else
 	IUSE="test"
 	RESTRICT="!test? ( test )"
 fi
@@ -139,7 +150,7 @@ qt6-build_src_configure() {
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
 		# note that if qtbase was built with tests, this is default ON
-		-DQT_BUILD_TESTS=$(usex test ON OFF)
+		-DQT_BUILD_TESTS=$(in_iuse test && use test && echo ON || echo OFF)
 		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
 		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
