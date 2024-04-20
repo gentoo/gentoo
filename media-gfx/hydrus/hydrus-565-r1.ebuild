@@ -62,7 +62,7 @@ RDEPEND="
 		dev-python/twisted[${PYTHON_USEDEP}]
 
 		dev-python/QtPy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
-		|| ( dev-python/QtPy[pyside2] dev-python/QtPy[pyside6] )
+		|| ( dev-python/QtPy[pyside2] dev-python/QtPy[pyqt6] )
 
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
 		media-video/ffmpeg
