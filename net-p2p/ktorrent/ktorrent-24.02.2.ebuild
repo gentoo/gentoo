@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_HANDBOOK="optional"
-ECM_TEST="optional"
+ECM_TEST="true"
 KFMIN=6.0.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.6.2
