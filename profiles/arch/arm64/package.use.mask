@@ -351,10 +351,6 @@ media-video/mplayer -sdl
 media-video/mpv -sdl
 >=x11-libs/wxGTK-3 -sdl
 
-# Michał Górny <mgorny@gentoo.org> (2018-07-07)
-# Unkeyworded dependencies.
-net-libs/gnome-online-accounts gnome
-
 # Jan Vesely <jano.vesely@gmail.com> (2018-06-15)
 # Mesa clover only works on r600 or radeonsi GPUs. The corresponding
 # video_cards useflags are not available on arm
