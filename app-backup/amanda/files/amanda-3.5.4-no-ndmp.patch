@@ -1,0 +1,32 @@
+diff -ur amanda-tag-community-3.5.4.orig/perl/Makefile.am amanda-tag-community-3.5.4/perl/Makefile.am
+--- amanda-tag-community-3.5.4.orig/perl/Makefile.am	2024-04-13 03:27:58.245243730 -0400
++++ amanda-tag-community-3.5.4/perl/Makefile.am	2024-04-13 02:57:41.721169046 -0400
+@@ -139,8 +139,10 @@
+ libDevice_la_LIBADD = amglue/libamglue.la \
+ 	$(top_builddir)/device-src/libamdevice.la \
+ 	$(top_builddir)/xfer-src/libamxfer.la \
+-	$(top_builddir)/ndmp-src/libndmlib.la \
+ 	$(top_builddir)/common-src/libamanda.la
++if WANT_NDMP
++libDevice_la_LIBADD += $(top_builddir)/ndmp-src/libndmlib.la
++endif
+ Amanda_DATA += Amanda/Device.pm
+ MAINTAINERCLEANFILES += Amanda/Device.c Amanda/Device.pm
+ endif
+diff -ur amanda-tag-community-3.5.4.orig/server-src/Makefile.am amanda-tag-community-3.5.4/server-src/Makefile.am
+--- amanda-tag-community-3.5.4.orig/server-src/Makefile.am	2024-04-13 03:27:58.249243801 -0400
++++ amanda-tag-community-3.5.4/server-src/Makefile.am	2024-04-13 03:28:59.274321715 -0400
+@@ -90,9 +90,12 @@
+ 	libamserver.la               \
+ 	../device-src/libamdevice.la     \
+ 	../xfer-src/libamxfer.la         \
+-	../ndmp-src/libndmlib.la         \
+ 	../common-src/libamanda.la
+ 
++if WANT_NDMP
++LDADD += ../ndmp-src/libndmlib.la
++endif
++
+ libamserver_la_SOURCES=	amindex.c	cmdfile.c \
+ 			diskfile.c	driverio.c	cmdline.c  \
+ 			holding.c	infofile.c	logfile.c	\

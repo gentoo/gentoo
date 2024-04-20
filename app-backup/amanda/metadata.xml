@@ -21,5 +21,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">amanda</remote-id>
+		<remote-id type="github">zmanda/amanda</remote-id>
 	</upstream>
 </pkgmetadata>
