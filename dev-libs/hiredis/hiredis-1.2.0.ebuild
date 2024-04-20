@@ -28,19 +28,22 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-disable-network-tests.patch
+	"${FILESDIR}"/${PN}-1.2.0-conditional-werror.patch # bug 930336
 )
 
 _build() {
-	emake \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
-		PREFIX="${EPREFIX}/usr" \
-		LIBRARY_PATH="$(get_libdir)" \
-		USE_SSL=$(usex ssl 1 0) \
-		TEST_ASYNC=$(usex test 1 0) \
-		DEBUG_FLAGS= \
-		OPTIMIZATION= \
-		"$@"
+	local myconf=(
+		AR="$(tc-getAR)"
+		CC="$(tc-getCC)"
+		PREFIX="${EPREFIX}/usr"
+		LIBRARY_PATH="$(get_libdir)"
+		USE_SSL=$(usex ssl 1 0)
+		TEST_ASYNC=$(usex test 1 0)
+		DEBUG_FLAGS=
+		OPTIMIZATION=
+		USE_WERROR=0
+	)
+	emake "${myconf[@]}" "$@"
 }
 
 src_compile() {
